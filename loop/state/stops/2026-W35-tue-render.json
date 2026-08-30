@@ -1,0 +1,42 @@
+{
+  "stage": "tue-render",
+  "week": "2026-W35",
+  "at": "2026-08-30T19:48:51+00:00",
+  "code": "BREAKER_TRIPPED",
+  "message": "publishing is halted: strike \u2014 TEST: simulated copyright strike",
+  "detail": {
+    "state": "tripped",
+    "tripped_at": "2026-08-30T19:48:51+00:00",
+    "cause": "strike",
+    "detail": "TEST: simulated copyright strike",
+    "history": [
+      {
+        "event": "trip",
+        "at": "2026-08-30T19:39:56+00:00",
+        "cause": "validator",
+        "detail": "V5 sources=FAIL(7); V6 plans=FAIL(4)"
+      },
+      {
+        "event": "reset",
+        "at": "2026-08-30T19:41:00+00:00",
+        "cleared_cause": "validator",
+        "note": "dry-run trip during loop construction"
+      },
+      {
+        "event": "reset",
+        "at": "2026-08-30T19:48:51+00:00",
+        "cleared_cause": null,
+        "note": "test baseline"
+      },
+      {
+        "event": "trip",
+        "at": "2026-08-30T19:48:51+00:00",
+        "cause": "strike",
+        "detail": "TEST: simulated copyright strike"
+      }
+    ]
+  },
+  "unblock": "Fix the underlying cause, then: python loop/breaker.py reset --note \"<what you fixed>\"",
+  "work_done_before_stop": [],
+  "notes": []
+}

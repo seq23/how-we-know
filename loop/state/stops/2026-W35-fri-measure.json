@@ -1,0 +1,13 @@
+{
+  "stage": "fri-measure",
+  "week": "2026-W35",
+  "at": "2026-08-30T19:48:53+00:00",
+  "code": "NOTHING_PUBLISHED",
+  "message": "no video has published yet, so there is no retention or RPM to pull. The ranking for Sunday falls back to demand evidence.",
+  "detail": null,
+  "unblock": "This clears itself after the first public video.",
+  "work_done_before_stop": [
+    "recomputed retention streak from 0 measured video(s): 0 consecutive below 30.0%"
+  ],
+  "notes": []
+}

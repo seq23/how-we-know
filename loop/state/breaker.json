@@ -1,0 +1,20 @@
+{
+  "state": "closed",
+  "tripped_at": null,
+  "cause": null,
+  "detail": null,
+  "history": [
+    {
+      "event": "trip",
+      "at": "2026-08-30T19:39:56+00:00",
+      "cause": "validator",
+      "detail": "V5 sources=FAIL(7); V6 plans=FAIL(4)"
+    },
+    {
+      "event": "reset",
+      "at": "2026-08-30T19:41:00+00:00",
+      "cleared_cause": "validator",
+      "note": "dry-run trip during loop construction"
+    }
+  ]
+}

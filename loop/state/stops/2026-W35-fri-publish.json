@@ -1,0 +1,21 @@
+{
+  "stage": "fri-publish",
+  "week": "2026-W35",
+  "at": "2026-08-30T19:48:53+00:00",
+  "code": "NOTHING_PUBLISHABLE",
+  "message": "no video has a receipt proving it uploaded correctly, so nothing is being made public",
+  "detail": {
+    "01-why-deep-sea-creatures-look-so-weird": "no upload receipt",
+    "02-how-deep-sea-creatures-survive-pressure": "no upload receipt",
+    "03-why-deep-sea-creatures-are-surfacing": "no upload receipt",
+    "04-why-deep-sea-creatures-are-so-scary": "no upload receipt"
+  },
+  "unblock": "Run bin/loop-thursday.sh once OAuth exists. Until then this stop is the correct outcome, not a failure.",
+  "work_done_before_stop": [],
+  "notes": [
+    "01-why-deep-sea-creatures-look-so-weird: not flipped \u2014 no upload receipt",
+    "02-how-deep-sea-creatures-survive-pressure: not flipped \u2014 no upload receipt",
+    "03-why-deep-sea-creatures-are-surfacing: not flipped \u2014 no upload receipt",
+    "04-why-deep-sea-creatures-are-so-scary: not flipped \u2014 no upload receipt"
+  ]
+}

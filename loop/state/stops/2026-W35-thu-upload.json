@@ -1,0 +1,18 @@
+{
+  "stage": "thu-upload",
+  "week": "2026-W35",
+  "at": "2026-08-30T19:48:53+00:00",
+  "code": "NOTHING_RENDERED",
+  "message": "no queue row has a healthy render receipt; there is nothing to upload this week",
+  "detail": {
+    "statuses": {
+      "01-why-deep-sea-creatures-look-so-weird": "approved",
+      "02-how-deep-sea-creatures-survive-pressure": "approved",
+      "03-why-deep-sea-creatures-are-surfacing": "approved",
+      "04-why-deep-sea-creatures-are-so-scary": "approved"
+    }
+  },
+  "unblock": "Run bin/loop-tuesday.sh, or inspect loop/state/stops/ for why it produced nothing.",
+  "work_done_before_stop": [],
+  "notes": []
+}
