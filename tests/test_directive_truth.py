@@ -18,15 +18,7 @@ PUNC = str.maketrans("", "", "“”\"'’‘()[]{},.;:!?")
 
 # Words that belong to the DIRECTIVE's own grammar (headings, column labels),
 # not to any claim about the world. Everything else must come from the prose.
-STRUCT = set("""IS NOT WHAT WHY HOW WHO WHOSE WHERE WHEN THE A AN AND OR OF TO IN ON AT FOR
-WITH FROM BE IT ITS THIS THAT THESE THOSE TWO THREE FOUR FIVE SIX ONE ALL ANY EACH EVERY MY OUR
-DOES DO DID CAN COULD WILL WOULD MAY MIGHT MUST HAVE HAS HAD ARE WAS WERE NO
-KINDS SUPPORTS MADE READ RUN RAISE COUNT UP GOES ARRIVES ELSE GREATEST HONESTLY STATED SHOWS
-LEAVES ENTERS BELONGS ACTUALLY STILL ALSO ONLY BEFORE AFTER LIKE BESIDE VILLAINS DAMAGES BLURS
-ALWAYS LARGER DEEPER SEA DEEP TEST CHECK RULE TOUR CHART LADDER STRATEGIES QUESTIONS CUES REMOVES
-BARGAIN LIMIT GOAL METHOD EVIDENCE HABIT PROBLEMS PLANS ZONE ZONES BODY BODIES DOMINATES AFFECTS
-MATTERS LEADS SEES DIFFERENT OCEAN WORK AROUND THEY NEED HAPPENS WAY LOOK REPORTS CLAIM
-ANSWER PART REVEAL GATE RELEASE VALUE RANGE MEASURED FIRST LAST NEXT PICK""".split())
+STRUCT = set("""IS NOT AND OR OF TO IN ON AT FOR WITH FROM A AN THE""".split())
 
 ROOT = os.path.join(os.path.dirname(__file__), "..")
 
@@ -58,8 +50,16 @@ def check():
         name = os.path.basename(f)[:2]
         for kind, args, line in directives(body):
             seen += 1
+            # Field 0 is the directive's TITLE (or the term of a define/contrast):
+            # an editorial label chosen by the annotator, like a chapter heading.
+            # It asserts nothing, so only its NUMBERS are checked. Every LATER
+            # field is a CLAIM drawn on screen and is checked in full.
+            fields = args.split("|")
+            for num in re.findall(r"\d[\d,\.]*", fields[0]):
+                if num.lower() not in plow:
+                    flags.append((name, "NUMBER", num, line[:74]))
             # a LABEL=DETAIL pair is two independent phrases; split before testing
-            parts = re.split(r"[|=]", args)
+            parts = re.split(r"[|=]", "|".join(fields[1:]))
             for part in parts:
                 for num in re.findall(r"\d[\d,\.]*", part):
                     if num.lower() not in plow:
@@ -77,8 +77,31 @@ def check():
                         continue
                     if stem(t) and stem(t) in plow:     # inflection, not a new fact
                         continue
+                    # possessive: the apostrophe was stripped, so ROV's -> ROVs
+                    if t.endswith("s") and t[:-1].lower() + "'s" in plow:
+                        continue
                     flags.append((name, "PROPER", t, line[:74]))
     return flags, seen, len(scripts)
+
+
+def check_parses():
+    """A directive the planner cannot parse is silently ignored and the beat
+    falls back to prose heuristics — it LOOKS annotated and renders nothing new.
+    That is the 'runs but inert' failure, so it is a hard error, not a warning."""
+    sys.path.insert(0, os.path.join(ROOT, "visuals"))
+    import planner, segments_ext2                     # noqa: F401  (installs parser)
+    dead, total = [], 0
+    for f in sorted(glob.glob(os.path.join(ROOT, "scripts", "*.md"))):
+        body = open(f).read().split("## Narration", 1)[1].split("\n## Human fingerprint", 1)[0]
+        for kind, args, line in directives(body):
+            total += 1
+            got = planner.parse_directive(line)
+            if got is None:
+                dead.append((os.path.basename(f)[:2], line[:74]))
+                continue
+            seg, kw = got
+            getattr(segments_ext2, seg)(0.7, **kw)     # must also RENDER
+    return dead, total
 
 
 if __name__ == "__main__":
@@ -92,5 +115,10 @@ if __name__ == "__main__":
         sys.exit(1)
     for s, k, t, l in flags:
         print(f"  FAIL {s}  {k:7} {t!r:24} {l}")
-    print("FAILED" if flags else "all green - no invented number or name on screen")
-    sys.exit(1 if flags else 0)
+    dead, total = check_parses()
+    print(f"{total} v2 directives parse and render, {len(dead)} inert")
+    for n, l in dead:
+        print(f"  FAIL {n}  directive does not parse - beat falls back silently: {l}")
+    ok = not flags and not dead
+    print("all green - no invented number or name on screen" if ok else "FAILED")
+    sys.exit(0 if ok else 1)

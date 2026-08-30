@@ -23,7 +23,8 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "55144d5d17794e7ab3418f3abae69233df6560d0e7c6e178d1a2e86a19a37667",
-      "bytes": 1904924
+      "bytes": 1904924,
+      "thumbnail_ok": true
     },
     {
       "slot": "anglerfish",
@@ -43,13 +44,14 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "c3ef2a3531839b870e1b8f903bfbec918a1555d40cf0ed6177b702e07c1ec6f4",
-      "bytes": 1614895
+      "bytes": 1614895,
+      "thumbnail_ok": true
     },
     {
       "slot": "anglerfish",
       "search_phrase": "anglerfish",
       "title": "Anglerfish and Rattail",
-      "caption": "Happy National Friendship Day! We initially spotted an anglerfish in the genus Chaunacops swimming just above the seafloor during a dive off the coast of Halifax during the Deep Connections 2019: Exploring Atlantic Canyons and Seamounts of the United States and Canada expedition (check out video of the fish ). As it neared the seafloor, it had a close encounter with a grendair, or rattail fish. So while they probably aren\u2019t exactly \u201cfriends,\u201d it is always interesting (and important) to have the opportunity to observe animal interactions in the deep ocean.",
+      "caption": "Happy National Friendship Day! We initially spotted an anglerfish in the genus Chaunacops swimming just above the seafloor during a dive off the coast of Halifax during the Deep Connections 2019: Exploring Atlantic Canyons and Seamounts of the United States and Canada expedition (check out video of the fish ). As it neared the seafloor, it had a close encounter with a grendair, or rattail fish. So while they probably aren’t exactly “friends,” it is always interesting (and important) to have the opportunity to observe animal interactions in the deep ocean.",
       "source_org": "NOAA Ocean Exploration",
       "item_url": "https://oceanexplorer.noaa.gov/multimedia/daily-image-media-20210801/",
       "direct_url": "https://oceanexplorer.noaa.gov/wp-content/uploads/2021/07/20210801-hires.jpg",
@@ -63,7 +65,8 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "9045fcd5368c27c08755820161e77f318909bc80d8974a1c11bad4a454f04afc",
-      "bytes": 919341
+      "bytes": 919341,
+      "thumbnail_ok": true
     },
     {
       "slot": "jelly",
@@ -83,13 +86,14 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "00b1d01d9359ba41b8cd59bcced9df6a1f0aad87816a422bbab8f68b64a2ad8a",
-      "bytes": 1536866
+      "bytes": 1536866,
+      "thumbnail_ok": true
     },
     {
       "slot": "jelly",
       "search_phrase": "benthocodon",
       "title": "Benthocodon Hydromedusae",
-      "caption": "During Dive 07 of the second Voyage to the Ridge 2022 expedition, we had frequent \u201cfly-bys\u201d of Benthocodon hydromedusae. We saw the one in this video at a depth of 3,270 meters (2.03 miles) and were able to collect it using the suction sampler on the remotely operated vehicle.",
+      "caption": "During Dive 07 of the second Voyage to the Ridge 2022 expedition, we had frequent “fly-bys” of Benthocodon hydromedusae. We saw the one in this video at a depth of 3,270 meters (2.03 miles) and were able to collect it using the suction sampler on the remotely operated vehicle.",
       "source_org": "NOAA Ocean Exploration",
       "item_url": "https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-22voyage-to-the-ridge-gallery-media-dive07-jelly1/",
       "direct_url": "https://oceanexplorer.noaa.gov/wp-content/uploads/2022/07/dive07-jelly1-1280x720-poster.jpg",
@@ -103,13 +107,15 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "098c5071aceac2ae6e4fc15a22d7660d40634c6291da9845cd9ab4fd01287c53",
-      "bytes": 161328
+      "bytes": 161328,
+      "thumbnail_ok": false,
+      "thumbnail_excluded_reason": "NOAA Ocean Exploration wordmark is burned into the top-left of the frame. Public domain, but the wordmark would sit inside our own layout."
     },
     {
       "slot": "siphonophore",
       "search_phrase": "siphonophore",
       "title": "Siphonophore",
-      "caption": "While exploring an unnamed seamount in the central Pacific Ocean during the 2017 Discovering the Deep: Exploring Remote Pacific MPAs expedition , we observed this deepwater siphonophore at a depth of 1,531 meters (almost a meter). Although it looks like a single organism, it\u2019s actually a colony of individual hydrozoans, each specialized for different functions such as swimming, feeding, and reproduction. Watch the video . Visit How to Make Any Picture Your Computer or Phone\u2019s Wallpaper for instructions on how to make this wallpaper yours. Other wallpaper images are available in the Multimedia Library (Media Type: Wallpaper).",
+      "caption": "While exploring an unnamed seamount in the central Pacific Ocean during the 2017 Discovering the Deep: Exploring Remote Pacific MPAs expedition , we observed this deepwater siphonophore at a depth of 1,531 meters (almost a meter). Although it looks like a single organism, it’s actually a colony of individual hydrozoans, each specialized for different functions such as swimming, feeding, and reproduction. Watch the video . Visit How to Make Any Picture Your Computer or Phone’s Wallpaper for instructions on how to make this wallpaper yours. Other wallpaper images are available in the Multimedia Library (Media Type: Wallpaper).",
       "source_org": "NOAA Ocean Exploration",
       "item_url": "https://oceanexplorer.noaa.gov/multimedia/calendar-wallpaper/",
       "direct_url": "https://oceanexplorer.noaa.gov/wp-content/uploads/2026/07/august2026-hires.jpg",
@@ -123,13 +129,15 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "fa7832a2aa77960ce39e80b4bfb33b188e1903a7e3050048dc5198cef83fca09",
-      "bytes": 659832
+      "bytes": 659832,
+      "thumbnail_ok": false,
+      "thumbnail_excluded_reason": "NOAA Ocean Exploration calendar wallpaper: agency wordmark and an August date grid are composited over the animal."
     },
     {
       "slot": "octopus",
       "search_phrase": "dumbo octopus",
       "title": "Dumbo Octopus",
-      "caption": "Seen during the Gulf of Mexico 2014 expedition, this dumbo octopus displayed a body posture that had never before been observed in cirrate octopods. This was perhaps one of the most photogenic animals seen during the expedition and was a biological highlight for many who tuned in. Learn about other cephalopod sightings from the expedition in this mission log, \u201c Dumbos and Bobtails and Squids \u2013 Oh My! \u201d. From: Highlight Images .",
+      "caption": "Seen during the Gulf of Mexico 2014 expedition, this dumbo octopus displayed a body posture that had never before been observed in cirrate octopods. This was perhaps one of the most photogenic animals seen during the expedition and was a biological highlight for many who tuned in. Learn about other cephalopod sightings from the expedition in this mission log, “ Dumbos and Bobtails and Squids – Oh My! ”. From: Highlight Images .",
       "source_org": "NOAA Ocean Exploration",
       "item_url": "https://oceanexplorer.noaa.gov/multimedia/daily-image-media-20211217/",
       "direct_url": "https://oceanexplorer.noaa.gov/wp-content/uploads/2021/12/20211217-hires.jpg",
@@ -143,7 +151,8 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "31e5b212d8f25651a2ee509c6f8a6352c2aa7165bf6a68b48b5e908bf68ca9b5",
-      "bytes": 1021196
+      "bytes": 1021196,
+      "thumbnail_ok": true
     },
     {
       "slot": "octopus",
@@ -163,7 +172,8 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "6b871f83fd08b5d4c3d1e47b2fdfa65145d90b5391fe185a16658cf06e4da861",
-      "bytes": 1644320
+      "bytes": 1644320,
+      "thumbnail_ok": true
     },
     {
       "slot": "octopus",
@@ -183,13 +193,14 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "eb5fe2b58913e22894134055854c90940590287f174df58df1090b174e5ab1cc",
-      "bytes": 1118711
+      "bytes": 1118711,
+      "thumbnail_ok": true
     },
     {
       "slot": "squid",
       "search_phrase": "deep sea squid",
       "title": "Biological Sightings From Seirios",
-      "caption": "As remotely operated vehicle (ROV) Deep Discoverer is investigating the seafloor, ROV Seirios \u201cwatches\u201d from above, catching glimpses of things we\u2019d otherwise miss, such as a whiplash squid (left) and a rather large fish (right), both observed during the second Voyage to the Ridge 2022 expedition. Learn more",
+      "caption": "As remotely operated vehicle (ROV) Deep Discoverer is investigating the seafloor, ROV Seirios “watches” from above, catching glimpses of things we’d otherwise miss, such as a whiplash squid (left) and a rather large fish (right), both observed during the second Voyage to the Ridge 2022 expedition. Learn more",
       "source_org": "NOAA Ocean Exploration",
       "item_url": "https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-22voyage-to-the-ridge-features-view-from-above-media-squid-fish/",
       "direct_url": "https://oceanexplorer.noaa.gov/wp-content/uploads/2022/08/squid-fish-hires.jpg",
@@ -203,13 +214,14 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "33b63cda85a8b0623260307647e1fbed05bda754306e829ee039a4cefb07b06b",
-      "bytes": 1033915
+      "bytes": 1033915,
+      "thumbnail_ok": true
     },
     {
       "slot": "squid",
       "search_phrase": "deep sea squid",
       "title": "Long-Armed Squid",
-      "caption": "This long-armed squid, Chiroteuthis veranyi , was imaged at a depth of approximately 1,400 meters (4,593 feet) while exploring Hudson Canyon as part of the 2021 ROV Shakedown expedition. At the start of any major exploration period, NOAA Ocean Exploration dedicates a series of days at sea to \u201cshake down\u201d and test the readiness of the ship\u2019s mission systems and the remotely operated vehicles (ROVs). This particular expedition focused on taking ROVs Deep Discoverer and Seirios on a series of progressively deeper dives on increasingly complex topography to test the brand new ROV control system, thruster motors, motor controllers, and hydraulic system on Deep Discoverer as well as new science and navigation instruments that were added to Deep Discoverer during the offseason.",
+      "caption": "This long-armed squid, Chiroteuthis veranyi , was imaged at a depth of approximately 1,400 meters (4,593 feet) while exploring Hudson Canyon as part of the 2021 ROV Shakedown expedition. At the start of any major exploration period, NOAA Ocean Exploration dedicates a series of days at sea to “shake down” and test the readiness of the ship’s mission systems and the remotely operated vehicles (ROVs). This particular expedition focused on taking ROVs Deep Discoverer and Seirios on a series of progressively deeper dives on increasingly complex topography to test the brand new ROV control system, thruster motors, motor controllers, and hydraulic system on Deep Discoverer as well as new science and navigation instruments that were added to Deep Discoverer during the offseason.",
       "source_org": "NOAA Ocean Exploration",
       "item_url": "https://oceanexplorer.noaa.gov/multimedia/daily-image-media-20210907/",
       "direct_url": "https://oceanexplorer.noaa.gov/wp-content/uploads/2021/08/20210907-hires.jpg",
@@ -223,7 +235,8 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "da20115cbdbac5ab36809c5a0644ff8957f46117ee02cce04d2ac805c5cd1828",
-      "bytes": 655666
+      "bytes": 655666,
+      "thumbnail_ok": true
     },
     {
       "slot": "vent",
@@ -243,13 +256,14 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "6e45781eb563e1410f1e7c4c36a0c1ccbe37ea044a535e4ce756686a522f556a",
-      "bytes": 1110794
+      "bytes": 1110794,
+      "thumbnail_ok": true
     },
     {
       "slot": "vent",
       "search_phrase": "hydrothermal vent chimney",
       "title": "Zoarcid Eel",
-      "caption": "Towards the latter part of Dive 02 of the second Voyage to the Ridge 2022 expedition, at a depth of 2,948 meters (1.83 miles), we observed this zoarcid eel in the genus Pachycara lying on within cobbles and boulders on the seafloor near an inactive hydrothermal vent chimney. These eels are typically found at active vent sites, suggesting that there may have been hydrothermal activity nearby, even if the team couldn\u2019t see it.",
+      "caption": "Towards the latter part of Dive 02 of the second Voyage to the Ridge 2022 expedition, at a depth of 2,948 meters (1.83 miles), we observed this zoarcid eel in the genus Pachycara lying on within cobbles and boulders on the seafloor near an inactive hydrothermal vent chimney. These eels are typically found at active vent sites, suggesting that there may have been hydrothermal activity nearby, even if the team couldn’t see it.",
       "source_org": "NOAA Ocean Exploration",
       "item_url": "https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-22voyage-to-the-ridge-gallery-media-dive02-eels/",
       "direct_url": "https://oceanexplorer.noaa.gov/wp-content/uploads/2022/07/dive02-eels-hires.jpg",
@@ -263,13 +277,14 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "f7b5f1e7ae2e88b18f3df68ff8afd18fa22dff664dd379942cdf4ca69cec518a",
-      "bytes": 1624449
+      "bytes": 1624449,
+      "thumbnail_ok": true
     },
     {
       "slot": "vent",
       "search_phrase": "hydrothermal vent chimney",
       "title": "Small Black Smoker Hydrothermal Vent",
-      "caption": "Heated water \u201cshimmers\u201d as it is emitted from a small black smoker hydrothermal vent seen at a depth of 2,947 meters (1.83 miles) near the end of Dive 02 of the second Voyage to the Ridge 2022 expedition. If you look closely, you will see several small caridean shrimp crawling over the chimney structure; these shrimp rely on chemosynthesis for food. The variation in the color of the vent structure is from the white mineral anhydrite (calcium sulfate) and oxidized sulfides (yellow to brownish red). These vents can reach upwards of 350\u00b0C (662\u00b0F), although the highest temperature reading made here was 54\u00b0C (129\u00b0F).",
+      "caption": "Heated water “shimmers” as it is emitted from a small black smoker hydrothermal vent seen at a depth of 2,947 meters (1.83 miles) near the end of Dive 02 of the second Voyage to the Ridge 2022 expedition. If you look closely, you will see several small caridean shrimp crawling over the chimney structure; these shrimp rely on chemosynthesis for food. The variation in the color of the vent structure is from the white mineral anhydrite (calcium sulfate) and oxidized sulfides (yellow to brownish red). These vents can reach upwards of 350°C (662°F), although the highest temperature reading made here was 54°C (129°F).",
       "source_org": "NOAA Ocean Exploration",
       "item_url": "https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-22voyage-to-the-ridge-gallery-media-ex2205-dive02-smoker/",
       "direct_url": "https://oceanexplorer.noaa.gov/wp-content/uploads/2022/07/ex2205-dive02-smoker-1280x720-poster.jpg",
@@ -283,13 +298,14 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "d050f3b11cbcea3d24035086cad98a056b453229485aed912eeafa7e29b049f4",
-      "bytes": 148383
+      "bytes": 148383,
+      "thumbnail_ok": true
     },
     {
       "slot": "crab",
       "search_phrase": "squat lobster",
       "title": "Coral and Jellyfish",
-      "caption": "This glass sponge ( Lefroyella sp.) was seen at a depth of 1,453 meters (nearly a mile) during a dive on Cachalote Guyot, which is west of the Azores in the North Atlantic Ocean, during the second Voyage to the Ridge 2022 expedition. The sponge was serving as habitat for a variety of animals, including the squat lobster (superfamily Galatheoidea) and anemone (family Hormathiidae) seen here. Visit How to Make Any Picture Your Computer or Phone\u2019s Wallpaper for instructions on how to make this wallpaper yours. Other wallpaper images are available in the Multimedia Library (Media Type: Wallpaper).",
+      "caption": "This glass sponge ( Lefroyella sp.) was seen at a depth of 1,453 meters (nearly a mile) during a dive on Cachalote Guyot, which is west of the Azores in the North Atlantic Ocean, during the second Voyage to the Ridge 2022 expedition. The sponge was serving as habitat for a variety of animals, including the squat lobster (superfamily Galatheoidea) and anemone (family Hormathiidae) seen here. Visit How to Make Any Picture Your Computer or Phone’s Wallpaper for instructions on how to make this wallpaper yours. Other wallpaper images are available in the Multimedia Library (Media Type: Wallpaper).",
       "source_org": "NOAA Ocean Exploration",
       "item_url": "https://oceanexplorer.noaa.gov/multimedia/coral-and-jellyfish/",
       "direct_url": "https://oceanexplorer.noaa.gov/wp-content/uploads/2026/03/ex2503-coral-jellyfish-1920x1080-1.jpg",
@@ -303,13 +319,14 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "3289402a16bc7bd5ff8dbf6b9176e50d9030006327da5447c3cd98e1fbce4410",
-      "bytes": 1094387
+      "bytes": 1094387,
+      "thumbnail_ok": true
     },
     {
       "slot": "crab",
       "search_phrase": "squat lobster",
       "title": "Glass Sponge as Habitat",
-      "caption": "This glass sponge ( Lefroyella sp.) was seen at a depth of 1,453 meters (nearly a mile) during a dive on Cachalote Guyot, which is west of the Azores in the North Atlantic Ocean, during the second Voyage to the Ridge 2022 expedition. The sponge was serving as habitat for a variety of animals, including the squat lobster (superfamily Galatheoidea) and anemone (family Hormathiidae) seen here. Visit How to Make Any Picture Your Computer or Phone\u2019s Wallpaper for instructions on how to make this wallpaper yours. Other wallpaper images are available in the Multimedia Library (Media Type: Wallpaper).",
+      "caption": "This glass sponge ( Lefroyella sp.) was seen at a depth of 1,453 meters (nearly a mile) during a dive on Cachalote Guyot, which is west of the Azores in the North Atlantic Ocean, during the second Voyage to the Ridge 2022 expedition. The sponge was serving as habitat for a variety of animals, including the squat lobster (superfamily Galatheoidea) and anemone (family Hormathiidae) seen here. Visit How to Make Any Picture Your Computer or Phone’s Wallpaper for instructions on how to make this wallpaper yours. Other wallpaper images are available in the Multimedia Library (Media Type: Wallpaper).",
       "source_org": "NOAA Ocean Exploration",
       "item_url": "https://oceanexplorer.noaa.gov/multimedia/glass-sponge-as-habitat/",
       "direct_url": "https://oceanexplorer.noaa.gov/wp-content/uploads/2026/02/ex2205-sponge-anemone-crab-1920x1080-1.jpg",
@@ -323,13 +340,14 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "bc79d9bc885dd6cc7afc5da86e15a0f8eaea7112ca3cbfcb8bebeb0a675925b4",
-      "bytes": 1177060
+      "bytes": 1177060,
+      "thumbnail_ok": true
     },
     {
       "slot": "crab",
       "search_phrase": "squat lobster",
       "title": "Coral and Sponge Community",
-      "caption": "Papah\u0101naumoku\u0101kea ROV and Mapping expedition Dive 16 began in a high-density and high-diversity coral and sponge community that included numerous species of Chrysogorgia , Hemicorallium , and bamboo corals; Poliopogon , Stelodoryx , Farrea , and Bolosoma sponges; and a variety of smaller associates, including brittle stars, squat lobsters, mollusks, foraminifera, hydroids, and many other taxa. Throughout the dive, we observed rapid transitions between high-density, high-diversity communities to sparse, low-diversity communities that appeared to correlate with changes in seafloor geology and/or current strength.",
+      "caption": "Papahānaumokuākea ROV and Mapping expedition Dive 16 began in a high-density and high-diversity coral and sponge community that included numerous species of Chrysogorgia , Hemicorallium , and bamboo corals; Poliopogon , Stelodoryx , Farrea , and Bolosoma sponges; and a variety of smaller associates, including brittle stars, squat lobsters, mollusks, foraminifera, hydroids, and many other taxa. Throughout the dive, we observed rapid transitions between high-density, high-diversity communities to sparse, low-diversity communities that appeared to correlate with changes in seafloor geology and/or current strength.",
       "source_org": "NOAA Ocean Exploration",
       "item_url": "https://oceanexplorer.noaa.gov/multimedia/coral-and-sponge-community/",
       "direct_url": "https://oceanexplorer.noaa.gov/wp-content/uploads/2025/08/dive16-coral-sponge.jpg",
@@ -343,13 +361,14 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "234e6ea6603cdc25d62cab2fc9e36cc4fdd98d0284409839b68b823c19113926",
-      "bytes": 1214558
+      "bytes": 1214558,
+      "thumbnail_ok": true
     },
     {
       "slot": "sponge",
       "search_phrase": "glass sponge",
       "title": "Volcanic Rocks",
-      "caption": "During Dive 01 of the 2026 American Samoa ROV + Mapping Exploration expedition, volcanic rocks, likely columnar basalts, were seen as the remotely operated vehicle moved from the explored seamount\u2019s caldera up to a ridge feature. These rocks provided hard attachment surfaces for animals such as the stalked glass sponge seen extending into the water column in this image.",
+      "caption": "During Dive 01 of the 2026 American Samoa ROV + Mapping Exploration expedition, volcanic rocks, likely columnar basalts, were seen as the remotely operated vehicle moved from the explored seamount’s caldera up to a ridge feature. These rocks provided hard attachment surfaces for animals such as the stalked glass sponge seen extending into the water column in this image.",
       "source_org": "NOAA Ocean Exploration",
       "item_url": "https://oceanexplorer.noaa.gov/multimedia/volcanic-rocks/",
       "direct_url": "https://oceanexplorer.noaa.gov/wp-content/uploads/2026/08/ex2606-dive01-volcanicrocks.jpg",
@@ -363,7 +382,8 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "df1f1ba0ceaba1cd412b250bdbd282f26615a430b8962389c2ff6b494203ae1f",
-      "bytes": 391010
+      "bytes": 391010,
+      "thumbnail_ok": true
     },
     {
       "slot": "sponge",
@@ -383,7 +403,8 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "981a5094a3fc03f25f6b3bc55b039de949699b7567a885a63017e104869275dc",
-      "bytes": 1148111
+      "bytes": 1148111,
+      "thumbnail_ok": true
     },
     {
       "slot": "sponge",
@@ -403,7 +424,8 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "0d771de7055e2d6ada7fab36feb63ed851047c2f9fa40ab07890bae98a344b47",
-      "bytes": 930278
+      "bytes": 930278,
+      "thumbnail_ok": true
     },
     {
       "slot": "coral",
@@ -423,7 +445,8 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "a7094299ebbf11185570fb74d6827802c3d278360972d02681523e9a57a1c1f7",
-      "bytes": 1474632
+      "bytes": 1474632,
+      "thumbnail_ok": true
     },
     {
       "slot": "coral",
@@ -443,13 +466,14 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "ef4461a0614f13d67b5a0e3fab88246e58e2c8ac0c966c32040bd8ea97837268",
-      "bytes": 762427
+      "bytes": 762427,
+      "thumbnail_ok": true
     },
     {
       "slot": "coral",
       "search_phrase": "iridogorgia",
       "title": "Iridogorgia Coral",
-      "caption": "This beautifully spiraling Iridogorgia coral was observed at a depth of 1,695 meters (5,561 feet) during Papah\u0101naumoku\u0101kea ROV and Mapping expedition Dive 01. Iridogorgia , along with Paragorgia , Metallogorgia , and Paramercidae , were the dominant coral fauna present during the dive.",
+      "caption": "This beautifully spiraling Iridogorgia coral was observed at a depth of 1,695 meters (5,561 feet) during Papahānaumokuākea ROV and Mapping expedition Dive 01. Iridogorgia , along with Paragorgia , Metallogorgia , and Paramercidae , were the dominant coral fauna present during the dive.",
       "source_org": "NOAA Ocean Exploration",
       "item_url": "https://oceanexplorer.noaa.gov/multimedia/iridogorgia-coral/",
       "direct_url": "https://oceanexplorer.noaa.gov/wp-content/uploads/2025/08/ex2503-iridogorgia.jpg",
@@ -463,7 +487,8 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "9fd1d1c89c5e93cb9aedf4ed96d260004d75a9228539733defece586538bcb23",
-      "bytes": 1673563
+      "bytes": 1673563,
+      "thumbnail_ok": true
     },
     {
       "slot": "cucumber",
@@ -483,13 +508,14 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "3f04611abfab05706faa65ab13b4f089e70417b06dc715bcbbd4ba4ba0a6ba1a",
-      "bytes": 654153
+      "bytes": 654153,
+      "thumbnail_ok": true
     },
     {
       "slot": "cucumber",
       "search_phrase": "sea cucumber",
       "title": "Sea Cucumber",
-      "caption": "This sea cucumber, or holothurian, was seen perched on polymetallic nodules during Dive 09 of the 2026 Cook Islands ROV Exploration cruise. Sea cucumbers are considered deposit feeders, feeding on nutrients attached to sediments on the seafloor. They use their modified tube feet to \u201ceat\u201d seafloor mud, extracting what little nutrition may have persisted after slowly sinking from the productive upper ocean, and then expelling undigested mud. The sea cucumber in this image has a rather full gut!",
+      "caption": "This sea cucumber, or holothurian, was seen perched on polymetallic nodules during Dive 09 of the 2026 Cook Islands ROV Exploration cruise. Sea cucumbers are considered deposit feeders, feeding on nutrients attached to sediments on the seafloor. They use their modified tube feet to “eat” seafloor mud, extracting what little nutrition may have persisted after slowly sinking from the productive upper ocean, and then expelling undigested mud. The sea cucumber in this image has a rather full gut!",
       "source_org": "NOAA Ocean Exploration",
       "item_url": "https://oceanexplorer.noaa.gov/multimedia/sea-cucumber-8/",
       "direct_url": "https://oceanexplorer.noaa.gov/wp-content/uploads/2026/07/ex2605-dive09-seacucumber.jpg",
@@ -503,7 +529,8 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "43a24d0ae24edd635e088df6931490f48f42ad8c54bbd900c13d641b79161af8",
-      "bytes": 1093863
+      "bytes": 1093863,
+      "thumbnail_ok": true
     },
     {
       "slot": "cucumber",
@@ -523,7 +550,8 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "3e41b66be0b4416e3cb5a56c8c392f3f5e76b6e7b0fe2909eff2ac2969943a34",
-      "bytes": 1291963
+      "bytes": 1291963,
+      "thumbnail_ok": true
     },
     {
       "slot": "star",
@@ -543,7 +571,8 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "2205d730638dd1fa4ffb319c9cf98927e4fca04f0c704fd90b8dcb623076edad",
-      "bytes": 675138
+      "bytes": 675138,
+      "thumbnail_ok": true
     },
     {
       "slot": "star",
@@ -563,7 +592,8 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "65c2ac32163115948c42838d8c157931bc359ff3ce166c8d817f6f41d7a81290",
-      "bytes": 988666
+      "bytes": 988666,
+      "thumbnail_ok": true
     },
     {
       "slot": "star",
@@ -583,7 +613,8 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "1c87378d75b2ff807ef9b814f9879bd2a8df7eef84353a809e7e2a89161186cf",
-      "bytes": 1503484
+      "bytes": 1503484,
+      "thumbnail_ok": true
     },
     {
       "slot": "fish",
@@ -603,7 +634,8 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "65f1473918542347b437e2c00f12cc364783cf62cb7441ab0c41d2a5f665cebd",
-      "bytes": 1525526
+      "bytes": 1525526,
+      "thumbnail_ok": true
     },
     {
       "slot": "fish",
@@ -623,7 +655,8 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "b220e83aa82a87dec6ebc290d83bcae0b12586174739aedadd50bc8cd602aa83",
-      "bytes": 1029757
+      "bytes": 1029757,
+      "thumbnail_ok": true
     },
     {
       "slot": "fish",
@@ -643,13 +676,14 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "b58127fbaa0a04edccc46e6a13ec4e1f99728938a615e99b8a813aa480387af0",
-      "bytes": 1399659
+      "bytes": 1399659,
+      "thumbnail_ok": true
     },
     {
       "slot": "seafloor",
       "search_phrase": "manganese nodules",
       "title": "Basalt and Nodules",
-      "caption": "The two dominant types of substrate encountered during Dive 08 of the 2026 Cook Islands ROV Exploration cruise are visible here\u2014larger, rounded, manganese-encrusted basalts in the background and densely packed polymetallic nodules in the foreground.",
+      "caption": "The two dominant types of substrate encountered during Dive 08 of the 2026 Cook Islands ROV Exploration cruise are visible here—larger, rounded, manganese-encrusted basalts in the background and densely packed polymetallic nodules in the foreground.",
       "source_org": "NOAA Ocean Exploration",
       "item_url": "https://oceanexplorer.noaa.gov/multimedia/basalt-and-nodules/",
       "direct_url": "https://oceanexplorer.noaa.gov/wp-content/uploads/2026/07/ex2605-dive08-basaltandnodules.jpg",
@@ -663,7 +697,8 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "92df3bb1af4cfaaee0d5e6f760e56b9ead4b3b3ade466da021f274ee2e50d532",
-      "bytes": 1537474
+      "bytes": 1537474,
+      "thumbnail_ok": true
     },
     {
       "slot": "seafloor",
@@ -683,7 +718,8 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "be4ef46b320e653a593d5a4b9344d4f7812bece2d3a984fa4c16dfb6850ad35a",
-      "bytes": 828927
+      "bytes": 828927,
+      "thumbnail_ok": true
     },
     {
       "slot": "seafloor",
@@ -703,7 +739,8 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "bbb8ef106d8c59c45e0198050d09816983b9083001ebe2ed37eac774f522a6f4",
-      "bytes": 1312403
+      "bytes": 1312403,
+      "thumbnail_ok": true
     },
     {
       "slot": "vehicle",
@@ -723,7 +760,8 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "4111877e9975da81fc71a36d578fcf0b0b09b65c2f4ed6196bc88927ebbcbe4e",
-      "bytes": 1267828
+      "bytes": 1267828,
+      "thumbnail_ok": true
     },
     {
       "slot": "vehicle",
@@ -743,7 +781,8 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "8dc78e8090b37dbef4f3c4a346365d7c161251efe0a0d79c104f3e6da7e32572",
-      "bytes": 491964
+      "bytes": 491964,
+      "thumbnail_ok": true
     },
     {
       "slot": "vehicle",
@@ -763,7 +802,8 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "b4310f7f8290b677216a7a1e6e3d2da7d0f8f89cbcb0457bc66abd6d32d8914e",
-      "bytes": 880565
+      "bytes": 880565,
+      "thumbnail_ok": true
     },
     {
       "slot": "frilled_shark",
@@ -783,13 +823,14 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "148cebaf17fcb1de5b2dc65dce5dc4da40f25131a0c373160b9a1c786b19150e",
-      "bytes": 957981
+      "bytes": 957981,
+      "thumbnail_ok": true
     },
     {
       "slot": "frilled_shark",
       "search_phrase": "deep sea shark",
       "title": "Deep-Sea Shark",
-      "caption": "A deep-sea shark species (likely Etmopteridae) was observed swimming at a depth of 1,118 meters (3,668 feet) towards the end of Dive 05 of the Papah\u0101naumoku\u0101kea ROV and Mapping expedition.",
+      "caption": "A deep-sea shark species (likely Etmopteridae) was observed swimming at a depth of 1,118 meters (3,668 feet) towards the end of Dive 05 of the Papahānaumokuākea ROV and Mapping expedition.",
       "source_org": "NOAA Ocean Exploration",
       "item_url": "https://oceanexplorer.noaa.gov/multimedia/deep-sea-shark/",
       "direct_url": "https://oceanexplorer.noaa.gov/wp-content/uploads/2025/08/dive05-deep-sea-shark.jpg",
@@ -803,7 +844,8 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "4926c7b8e93f197a079b3de1adf1375a8f926cbe86edee31ba4f6fc6f2b4ff58",
-      "bytes": 983632
+      "bytes": 983632,
+      "thumbnail_ok": true
     },
     {
       "slot": "frilled_shark",
@@ -823,13 +865,14 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "27486de08e615e983c63619d2c47caa29b15b6b38bae563bd5fd46292263b403",
-      "bytes": 957965
+      "bytes": 957965,
+      "thumbnail_ok": true
     },
     {
       "slot": "snailfish",
       "search_phrase": "snailfish",
       "title": "Deep-Sea Snailfish",
-      "caption": "An example of a deep-sea snailfish. The fish in this video was spotted at a depth of 1,365 meters (4,480 feet) during dive 8 of NOAA Ocean Exploration\u2019s 2023 Seascape Alaska 5 expedition. Learn More",
+      "caption": "An example of a deep-sea snailfish. The fish in this video was spotted at a depth of 1,365 meters (4,480 feet) during dive 8 of NOAA Ocean Exploration’s 2023 Seascape Alaska 5 expedition. Learn More",
       "source_org": "NOAA Ocean Exploration",
       "item_url": "https://oceanexplorer.noaa.gov/multimedia/deep-sea-snailfish/",
       "direct_url": "https://oceanexplorer.noaa.gov/wp-content/uploads/2026/01/Seascape-Alaska-Snailfish-1920x1080-1.jpg",
@@ -843,7 +886,8 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "318f666182b28d6c3a9ef987ad84a6126e416fd745e71445eb46db61d0e2f7c4",
-      "bytes": 1661702
+      "bytes": 1661702,
+      "thumbnail_ok": true
     },
     {
       "slot": "snailfish",
@@ -863,7 +907,8 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "fab59425f73ca001953677ee0cbdd1132ed4c87d354c4dc5050529bf656e876e",
-      "bytes": 996650
+      "bytes": 996650,
+      "thumbnail_ok": true
     },
     {
       "slot": "snailfish",
@@ -883,13 +928,14 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "80f100828f25d8cfec21e5360996895e0f11f9150bb9c9066e556e230b951912",
-      "bytes": 1203579
+      "bytes": 1203579,
+      "thumbnail_ok": true
     },
     {
       "slot": "trench",
       "search_phrase": "mariana trench",
       "title": "Prickelfish",
-      "caption": "During the 2016 Deepwater Exploration of the Marianas expedition, while diving on the western wall of the Mariana Trench at a site dubbed \u201cHadal Wall\u201d to explore the transition between the abyssal and hadal zones and to document and characterize fauna on a diversity of habitat types, we encountered this fish, potentially a Malacosarcus sp., or prickelfish. Seen at a depth of nearly 5,900 meters (3.7 miles), the fish was a bit of a mystery for our science team as these prickelfish are usually found at shallower depths.",
+      "caption": "During the 2016 Deepwater Exploration of the Marianas expedition, while diving on the western wall of the Mariana Trench at a site dubbed “Hadal Wall” to explore the transition between the abyssal and hadal zones and to document and characterize fauna on a diversity of habitat types, we encountered this fish, potentially a Malacosarcus sp., or prickelfish. Seen at a depth of nearly 5,900 meters (3.7 miles), the fish was a bit of a mystery for our science team as these prickelfish are usually found at shallower depths.",
       "source_org": "NOAA Ocean Exploration",
       "item_url": "https://oceanexplorer.noaa.gov/multimedia/daily-image-media-20211123/",
       "direct_url": "https://oceanexplorer.noaa.gov/wp-content/uploads/2021/11/20211123-hires.jpg",
@@ -903,7 +949,8 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "226ba4a9b7ce8ba541137d21af00dfea0d96ea56436b3585594b32d0252701b4",
-      "bytes": 277421
+      "bytes": 277421,
+      "thumbnail_ok": true
     },
     {
       "slot": "trench",
@@ -923,7 +970,8 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "84591324b0a71dd6072b6f924162393051516eaf1889a9198a1b40ab7e4a0943",
-      "bytes": 965662
+      "bytes": 965662,
+      "thumbnail_ok": true
     },
     {
       "slot": "trench",
@@ -943,13 +991,14 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "deda793a1dc9c55a8eada805a0b39c599e617a7d2e0d9c39339f843928cd2d6b",
-      "bytes": 322012
+      "bytes": 322012,
+      "thumbnail_ok": true
     },
     {
       "slot": "biolum",
       "search_phrase": "bioluminescent",
       "title": "Dana Octopus Squid",
-      "caption": "This Dana octopus squid followed remotely operated vehicle Deep Discoverer during much of its descent to the seafloor to explore along the far westernmost edge of the Clipperton Fracture Zone during the Discovering the Deep: Mountains in the Deep: Exploring the Central Pacific Basin expedition. Notice the bioluminescent spotlights on the tips of two of the squid\u2019s arms.",
+      "caption": "This Dana octopus squid followed remotely operated vehicle Deep Discoverer during much of its descent to the seafloor to explore along the far westernmost edge of the Clipperton Fracture Zone during the Discovering the Deep: Mountains in the Deep: Exploring the Central Pacific Basin expedition. Notice the bioluminescent spotlights on the tips of two of the squid’s arms.",
       "source_org": "NOAA Ocean Exploration",
       "item_url": "https://oceanexplorer.noaa.gov/multimedia/daily-image-media-20210218/",
       "direct_url": "https://oceanexplorer.noaa.gov/wp-content/uploads/2021/02/20210218-hires.jpg",
@@ -963,13 +1012,14 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "8349ed91fd83825a0afc26cb9dc4d12500565d016afc1f4401bdf2c712d097b9",
-      "bytes": 568223
+      "bytes": 568223,
+      "thumbnail_ok": true
     },
     {
       "slot": "biolum",
       "search_phrase": "bioluminescence deep sea",
       "title": "Comb Jelly",
-      "caption": "When caught in the light of a remotely operated vehicle like our Deep Discoverer , comb jellies (ctenophores) put on dazzling rainbow-hued light shows. Sometimes mistaken for bioluminescence, these colorful displays result when light is scattered by the moving rows of combs, or cilia, the animal uses to propel itself through the water. This ctenophore was seen swimming just above the seafloor during a Gulf of Mexico 2018 dive. In the image, the ctenophore\u2019s mouth is oriented upwards. The bright white lines at the base of the animal are the tops of the comb rows; they converge on an organ that helps to detect the orientation of the animal\u2026so it knows which way is up (or down)!",
+      "caption": "When caught in the light of a remotely operated vehicle like our Deep Discoverer , comb jellies (ctenophores) put on dazzling rainbow-hued light shows. Sometimes mistaken for bioluminescence, these colorful displays result when light is scattered by the moving rows of combs, or cilia, the animal uses to propel itself through the water. This ctenophore was seen swimming just above the seafloor during a Gulf of Mexico 2018 dive. In the image, the ctenophore’s mouth is oriented upwards. The bright white lines at the base of the animal are the tops of the comb rows; they converge on an organ that helps to detect the orientation of the animal…so it knows which way is up (or down)!",
       "source_org": "NOAA Ocean Exploration",
       "item_url": "https://oceanexplorer.noaa.gov/multimedia/daily-image-media-20201015/",
       "direct_url": "https://oceanexplorer.noaa.gov/wp-content/uploads/2020/10/20201015-hires.jpg",
@@ -983,13 +1033,14 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "57f590e0cd36ce94c33dfb9b1086b58d327e4d60c11c07b557d66dbea88fcb40",
-      "bytes": 737295
+      "bytes": 737295,
+      "thumbnail_ok": true
     },
     {
       "slot": "eyes",
       "search_phrase": "big eye fish deep sea",
       "title": "Squid Eats Fish",
-      "caption": "Time for an afternoon snack! This squid\u2019s eyes were perhaps bigger than its stomach, as it snatched a fish from off the seafloor and carried the fish away. Feeding events like this are always exciting to see and offer unique glimpses into the lives and behaviors of animals of the deep, expanding our understanding of the underwater realm.",
+      "caption": "Time for an afternoon snack! This squid’s eyes were perhaps bigger than its stomach, as it snatched a fish from off the seafloor and carried the fish away. Feeding events like this are always exciting to see and offer unique glimpses into the lives and behaviors of animals of the deep, expanding our understanding of the underwater realm.",
       "source_org": "NOAA Ocean Exploration",
       "item_url": "https://oceanexplorer.noaa.gov/multimedia/video-shorts-ex1304-squid-fish/",
       "direct_url": "https://oceanexplorer.noaa.gov/wp-content/uploads/2021/04/ex1304-squid-fish-poster.jpg",
@@ -1003,13 +1054,14 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "db716b0e51571bc76b494ac77ceee236b185e0a95de4efa32b1f8450bf62c7f1",
-      "bytes": 1280058
+      "bytes": 1280058,
+      "thumbnail_ok": true
     },
     {
       "slot": "eyes",
       "search_phrase": "deep sea fish eye",
       "title": "Anglerfish",
-      "caption": "This anglerfish, in the genus Chaunacops , was seen during the Deep Connections 2019: Exploring Atlantic Canyons and Seamounts of the United States and Canada expedition, while exploring an intriguing step-like feature within Verrill Canyon off the coast of Halifax, Canada. These fish have a small lure on a short stalk between their eyes that they wiggle in order to attract prey. While we often see these fish on the seafloor resting or \u201cwalking\u201d on modified fins, sometimes they do take to the water column and swim, as seen in this image. Watch a video of this fish in action!",
+      "caption": "This anglerfish, in the genus Chaunacops , was seen during the Deep Connections 2019: Exploring Atlantic Canyons and Seamounts of the United States and Canada expedition, while exploring an intriguing step-like feature within Verrill Canyon off the coast of Halifax, Canada. These fish have a small lure on a short stalk between their eyes that they wiggle in order to attract prey. While we often see these fish on the seafloor resting or “walking” on modified fins, sometimes they do take to the water column and swim, as seen in this image. Watch a video of this fish in action!",
       "source_org": "NOAA Ocean Exploration",
       "item_url": "https://oceanexplorer.noaa.gov/multimedia/daily-image-media-20210113/",
       "direct_url": "https://oceanexplorer.noaa.gov/wp-content/uploads/2021/01/20210113-hires.jpg",
@@ -1023,7 +1075,8 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "1daeee1cf5f923b922cb52702f4cb268029c659554c948fb1f623945038bc878",
-      "bytes": 264978
+      "bytes": 264978,
+      "thumbnail_ok": true
     },
     {
       "slot": "eyes",
@@ -1043,7 +1096,8 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "dc3a615ef111b0fe14a86f51269df60c1c6edd928848ccf68db72a70e0a95714",
-      "bytes": 1522162
+      "bytes": 1522162,
+      "thumbnail_ok": true
     },
     {
       "slot": "transparent",
@@ -1063,13 +1117,14 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "3a7643690b72db7942072ea3703fc4590fd3eea9fec4b851513fa250d3b30b66",
-      "bytes": 752177
+      "bytes": 752177,
+      "thumbnail_ok": true
     },
     {
       "slot": "transparent",
       "search_phrase": "transparent sea cucumber",
       "title": "May 1, 2021: Sea Cucumber",
-      "caption": "The swimming sea cucumber, Enypniastes eximia , sometimes referred to as the \u201c headless chicken monster ,\u201d is a widespread species present in the abyss. It is encountered widely around the world with records from the Gulf of Mexico, Tropical Atlantic, East Atlantic, New Zealand, and the Southern Ocean (Antarctica). This one was seen off Puerto Rico in 2018 . Swimming sea cucumbers have a special \u2018flap\u2019 which they use to \u2018lift\u2019 themselves off the seafloor. The transparent body reveals the sediment-filled intestine looping around from the mouth (top) to the anus (bottom). From: Holothurian Hill .",
+      "caption": "The swimming sea cucumber, Enypniastes eximia , sometimes referred to as the “ headless chicken monster ,” is a widespread species present in the abyss. It is encountered widely around the world with records from the Gulf of Mexico, Tropical Atlantic, East Atlantic, New Zealand, and the Southern Ocean (Antarctica). This one was seen off Puerto Rico in 2018 . Swimming sea cucumbers have a special ‘flap’ which they use to ‘lift’ themselves off the seafloor. The transparent body reveals the sediment-filled intestine looping around from the mouth (top) to the anus (bottom). From: Holothurian Hill .",
       "source_org": "NOAA Ocean Exploration",
       "item_url": "https://oceanexplorer.noaa.gov/multimedia/daily-image-media-20210501/",
       "direct_url": "https://oceanexplorer.noaa.gov/wp-content/uploads/2021/04/20210501-hires.jpg",
@@ -1083,7 +1138,8 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "178bbc039818cb02fcfc6fdee252660148bd99260546c32e21eb40346d20aa5c",
-      "bytes": 1212678
+      "bytes": 1212678,
+      "thumbnail_ok": true
     },
     {
       "slot": "transparent",
@@ -1103,7 +1159,8 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "ba308d6e07d381fc353bcb99f11aa6a2ca7c63c4bda4b1604304382f998ffbba",
-      "bytes": 714192
+      "bytes": 714192,
+      "thumbnail_ok": true
     },
     {
       "slot": "red_animal",
@@ -1123,13 +1180,14 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "72eb53347822548c5ce2664c6345b991027a1fcdaf6e22693fd436a7386588a4",
-      "bytes": 1129948
+      "bytes": 1129948,
+      "thumbnail_ok": true
     },
     {
       "slot": "red_animal",
       "search_phrase": "red deep sea shrimp",
       "title": "Red Shrimp",
-      "caption": "This red shrimp was observed within a small opening in an outcrop during a Deepwater Wonders of Wake: Exploring the Pacific Remote Islands Marine National Monument dive on a site unofficially dubbed \u201cRevolver Seamount,\u201d approximately 70 miles southwest of Wake Island.",
+      "caption": "This red shrimp was observed within a small opening in an outcrop during a Deepwater Wonders of Wake: Exploring the Pacific Remote Islands Marine National Monument dive on a site unofficially dubbed “Revolver Seamount,” approximately 70 miles southwest of Wake Island.",
       "source_org": "NOAA Ocean Exploration",
       "item_url": "https://oceanexplorer.noaa.gov/multimedia/daily-image-media-20211102/",
       "direct_url": "https://oceanexplorer.noaa.gov/wp-content/uploads/2021/10/20211102-hires.jpg",
@@ -1143,13 +1201,14 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "6ef552dda9aeb0fc07a00fae359c986924728a4da319c33b46dcc280883b4db6",
-      "bytes": 1266224
+      "bytes": 1266224,
+      "thumbnail_ok": true
     },
     {
       "slot": "red_animal",
       "search_phrase": "red deep sea shrimp",
       "title": "Shrimp",
-      "caption": "A close look at a beautifully colored red shrimp. The shrimp measured nearly 20 centimeters (7.9 inches) long and had modified swimming legs. It was seen during a Windows to the Deep 2018: Exploration of the Southeast U.S. Continental Margin dive on a site dubbed \u201cRichardson Ridge.\u201d Red light does not reach ocean depths, so deep-sea animals that are red actually appear black and thus are less visible to predators and prey. This is why red is such a common color for animals in the deep ocean.",
+      "caption": "A close look at a beautifully colored red shrimp. The shrimp measured nearly 20 centimeters (7.9 inches) long and had modified swimming legs. It was seen during a Windows to the Deep 2018: Exploration of the Southeast U.S. Continental Margin dive on a site dubbed “Richardson Ridge.” Red light does not reach ocean depths, so deep-sea animals that are red actually appear black and thus are less visible to predators and prey. This is why red is such a common color for animals in the deep ocean.",
       "source_org": "NOAA Ocean Exploration",
       "item_url": "https://oceanexplorer.noaa.gov/multimedia/daily-image-media-20210418/",
       "direct_url": "https://oceanexplorer.noaa.gov/wp-content/uploads/2021/04/20210418-hires.jpg",
@@ -1163,13 +1222,14 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "2afa9ac56c7fce21f86f0dd32c2d048f98eb9103b79c0f36d87f618449911853",
-      "bytes": 1345902
+      "bytes": 1345902,
+      "thumbnail_ok": true
     },
     {
       "slot": "column",
       "search_phrase": "midwater water column",
       "title": "Foram Finders",
-      "caption": "During Dive 08 of the Papah\u0101naumoku\u0101kea ROV and Mapping expedition, foraminifera, or \u201cforams,\u201d were seen swimming during several of the midwater transects. Forams are single-celled marine organisms that secrete calcium carbonate shells. The chemistry of fossil foram shells found in sediment samples can be analyzed to provide important information about environmental changes throughout geologic time. So while they aren\u2019t uncommon in the fossil record, we don\u2019t often get to see them alive and swimming in the water column!",
+      "caption": "During Dive 08 of the Papahānaumokuākea ROV and Mapping expedition, foraminifera, or “forams,” were seen swimming during several of the midwater transects. Forams are single-celled marine organisms that secrete calcium carbonate shells. The chemistry of fossil foram shells found in sediment samples can be analyzed to provide important information about environmental changes throughout geologic time. So while they aren’t uncommon in the fossil record, we don’t often get to see them alive and swimming in the water column!",
       "source_org": "NOAA Ocean Exploration",
       "item_url": "https://oceanexplorer.noaa.gov/multimedia/foram-finders/",
       "direct_url": "https://oceanexplorer.noaa.gov/wp-content/uploads/2025/08/dive08-foram-finders-cover.jpg",
@@ -1183,7 +1243,9 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "b9ddd533778054fe219f21878e7a632cc7c2e602dd88b965f65779128ad242b3",
-      "bytes": 882022
+      "bytes": 882022,
+      "thumbnail_ok": false,
+      "thumbnail_excluded_reason": "Expedition title card: the words FORAM FINDERS are burned into the frame. Public domain, but it is a graphic, not a photograph."
     },
     {
       "slot": "column",
@@ -1203,7 +1265,8 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "97216e668c65e28671ba007bae75f17d202e6cde17861db317c6dd36a8b61725",
-      "bytes": 412581
+      "bytes": 412581,
+      "thumbnail_ok": true
     },
     {
       "slot": "column",
@@ -1223,7 +1286,8 @@
       "commercial_use_permitted": true,
       "date_checked": "2026-08-30",
       "sha256": "c0446b8e57da0b805acddb584800527a31738343305434c7a99d143bfadc50df",
-      "bytes": 648895
+      "bytes": 648895,
+      "thumbnail_ok": true
     }
   ],
   "rejected": [
@@ -1325,15 +1389,15 @@
       "slot": "octopus",
       "item_url": "https://oceanexplorer.noaa.gov/multimedia/daily-image-media-20210212/",
       "title": "Dumbo Octopus",
-      "credit": "NOAA Ocean Exploration, Exploring Puerto Rico\u2019s Seamounts, Trenches, and Troughs",
-      "reason": "credit carries a co-author: 'NOAA Ocean Exploration, Exploring Puerto Rico\u2019s Seamounts, Trenches, and Troughs'"
+      "credit": "NOAA Ocean Exploration, Exploring Puerto Rico’s Seamounts, Trenches, and Troughs",
+      "reason": "credit carries a co-author: 'NOAA Ocean Exploration, Exploring Puerto Rico’s Seamounts, Trenches, and Troughs'"
     },
     {
       "slot": "octopus",
       "item_url": "https://oceanexplorer.noaa.gov/multimedia/daily-image-media-20201106/",
       "title": "Dumbo Octopus",
-      "credit": "NOAA Ocean Exploration, Exploring Puerto Rico\u2019s Seamounts, Trenches, and Troughs",
-      "reason": "credit carries a co-author: 'NOAA Ocean Exploration, Exploring Puerto Rico\u2019s Seamounts, Trenches, and Troughs'"
+      "credit": "NOAA Ocean Exploration, Exploring Puerto Rico’s Seamounts, Trenches, and Troughs",
+      "reason": "credit carries a co-author: 'NOAA Ocean Exploration, Exploring Puerto Rico’s Seamounts, Trenches, and Troughs'"
     },
     {
       "slot": "squid",
@@ -1405,8 +1469,8 @@
       "slot": "coral",
       "item_url": "https://oceanexplorer.noaa.gov/multimedia/corals/",
       "title": "Corals",
-      "credit": "Amanda Demopoulos, USGS; NOAA Ocean Exploration, ONR, NOPP, BOEM, NOAA IOCM, USGS, \u00a9 Woods Hole Oceanographic Institution.",
-      "reason": "third-party or copyrighted credit: 'Amanda Demopoulos, USGS; NOAA Ocean Exploration, ONR, NOPP, BOEM, NOAA IOCM, USGS, \u00a9 Woods Hole Oceanographic Institution.'"
+      "credit": "Amanda Demopoulos, USGS; NOAA Ocean Exploration, ONR, NOPP, BOEM, NOAA IOCM, USGS, © Woods Hole Oceanographic Institution.",
+      "reason": "third-party or copyrighted credit: 'Amanda Demopoulos, USGS; NOAA Ocean Exploration, ONR, NOPP, BOEM, NOAA IOCM, USGS, © Woods Hole Oceanographic Institution.'"
     },
     {
       "slot": "coral",
@@ -1426,8 +1490,8 @@
       "slot": "coral",
       "item_url": "https://oceanexplorer.noaa.gov/multimedia/coral-collection/",
       "title": "Coral Collection",
-      "credit": "Amanda Demopoulos, USGS; NOAA Ocean Exploration, ONR, NOPP, BOEM, NOAA IOCM, USGS; \u00a9 Woods Hole Oceanographic Institution",
-      "reason": "third-party or copyrighted credit: 'Amanda Demopoulos, USGS; NOAA Ocean Exploration, ONR, NOPP, BOEM, NOAA IOCM, USGS; \u00a9 Woods Hole Oceanographic Institution'"
+      "credit": "Amanda Demopoulos, USGS; NOAA Ocean Exploration, ONR, NOPP, BOEM, NOAA IOCM, USGS; © Woods Hole Oceanographic Institution",
+      "reason": "third-party or copyrighted credit: 'Amanda Demopoulos, USGS; NOAA Ocean Exploration, ONR, NOPP, BOEM, NOAA IOCM, USGS; © Woods Hole Oceanographic Institution'"
     },
     {
       "slot": "coral",
@@ -1636,5 +1700,6 @@
       "item_url": "https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-ex2107-gallery-media-dive03-squid/",
       "reason": "too small: 640px"
     }
-  ]
+  ],
+  "thumbnail_exclusions_note": "Reviewed by eye at full size. NOAA's galleries mix ROV stills with title cards and calendar wallpapers; both are public domain and neither is usable as a thumbnail. Two automated detectors (near-white plateaus, localised high-frequency edge density) were tried and neither separated these from bright or dark photographs, so the exclusion is recorded as reviewed data rather than shipped as a heuristic that does not work."
 }

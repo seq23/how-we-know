@@ -32,8 +32,12 @@ Ocean zones are useful boundaries, not physical walls. NOAA places the midnight,
 
 ### Most energy falls or swims down from above
 
+{{chain: HOW ENERGY REACHES THE MIDNIGHT ZONE | The surface ocean captures solar energy through photosynthesis | Some sinks as marine snow | Larger packages arrive as carcasses | Animals transport energy through vertical migration | >Only a small fraction of primary production reaches the deep bottom}}
 {{text}}
-The surface ocean captures solar energy through photosynthesis. Some of that production sinks as marine snow: fragments of organisms, mucus, fecal pellets, and mineral particles. Larger packages arrive as carcasses. Animals also transport energy through vertical migration. Many organisms feed closer to the surface at night and descend during the day, where midnight-zone predators can intercept them or consume their waste. The transfer is inefficient. NOAA notes that only a small fraction of primary production reaches the deep bottom, and food availability generally declines with depth. That scarcity favors slow metabolism, patient ambush, expandable stomachs, and the ability to exploit meals of unusual size. It does not mean every animal is starving at every moment. Currents, slopes, migrations, and falls create patches. The next loop is vision: the sun is gone, yet the zone may contain more biological flashes than any daylight habitat.
+The surface ocean captures solar energy through photosynthesis. Some of that production sinks as marine snow: fragments of organisms, mucus, fecal pellets, and mineral particles. Larger packages arrive as carcasses. Animals also transport energy through vertical migration. Many organisms feed closer to the surface at night and descend during the day, where midnight-zone predators can intercept them or consume their waste. The transfer is inefficient. NOAA notes that only a small fraction of primary production reaches the deep bottom, and food availability generally declines with depth.
+
+{{checklist: WHAT SCARCITY FAVORS | +Slow metabolism | +Patient ambush | +Expandable stomachs | +The ability to exploit meals of unusual size | >It does not mean every animal is starving at every moment}}
+That scarcity favors slow metabolism, patient ambush, expandable stomachs, and the ability to exploit meals of unusual size. It does not mean every animal is starving at every moment. Currents, slopes, migrations, and falls create patches. The next loop is vision: the sun is gone, yet the zone may contain more biological flashes than any daylight habitat.
 
 ### Bioluminescence becomes the visual language
 
@@ -43,7 +47,11 @@ MBARI's surveys found that light production is widespread in the water column, i
 ### One name covers a wide physical gradient
 
 {{pressure: 4000}}
-At 1,000 meters, pressure is roughly one hundred atmospheres. Near 4,000 meters, it approaches four hundred. Temperature is usually cold, but oxygen and currents vary among ocean basins. Animals do not experience the midnight zone as a uniform room. Many move vertically. Species have narrower preferred ranges. Seamounts and slopes interrupt open water. Hydrothermal vents can add local chemical energy on the seafloor. This is why statements such as the largest habitat on Earth need careful definitions: the deep ocean is unquestionably vast, but zone area, volume, and seafloor habitat are different measurements. The stable definition is depth and light. The bathypelagic zone spans about 1,000 to 4,000 meters and receives no sunlight. Its food webs depend on imported organic matter, predation, migration, and local chemosynthetic sources. Its animals turn darkness into information through bioluminescence. This episode closes the first twenty-video foundation with a map rather than a monster, giving every creature episode a place in the water column.
+{{magnitude: PRESSURE ACROSS THE ZONE | atmospheres | At 1,000 metres=100 | Near 4,000 metres=400}}
+At 1,000 meters, pressure is roughly one hundred atmospheres. Near 4,000 meters, it approaches four hundred. Temperature is usually cold, but oxygen and currents vary among ocean basins. Animals do not experience the midnight zone as a uniform room. Many move vertically. Species have narrower preferred ranges. Seamounts and slopes interrupt open water. Hydrothermal vents can add local chemical energy on the seafloor. This is why statements such as the largest habitat on Earth need careful definitions: the deep ocean is unquestionably vast, but zone area, volume, and seafloor habitat are different measurements.
+
+{{define: The bathypelagic zone | About 1,000 to 4,000 metres, receiving no sunlight | Its food webs depend on imported organic matter, predation, migration and local chemosynthetic sources}}
+The stable definition is depth and light. The bathypelagic zone spans about 1,000 to 4,000 meters and receives no sunlight. Its food webs depend on imported organic matter, predation, migration, and local chemosynthetic sources. Its animals turn darkness into information through bioluminescence. This episode closes the first twenty-video foundation with a map rather than a monster, giving every creature episode a place in the water column.
 
 ### One imagined hour in permanent night
 
@@ -52,11 +60,15 @@ There is no sunrise in the bathypelagic zone. Food arrives as sinking particles,
 
 ### How the zone connects the surface and abyss
 
+{{chain: DARK BUT ENERGETICALLY CONNECTED | Sinking particles carry carbon downward | Migrating animals feed near the surface and return to depth | Predators intercept that movement | >Carcasses and waste continue toward the bottom}}
 {{text}}
 The midnight zone is not isolated from the sunlit ocean even though sunlight does not reach it. Sinking particles carry carbon downward. Migrating animals feed near the surface and return to depth. Predators intercept that movement. Carcasses and waste continue toward the bottom. The zone is therefore dark but energetically connected to processes above.
 
 {{ambient}}
-Its enormous volume also makes observation deceptive. An ROV or submersible illuminates a tiny moving window. Animals can avoid the light, approach it, or remain beyond camera range. Nets sample different organisms and can damage delicate bodies. Acoustic instruments detect broader patterns but cannot always identify species. A complete picture requires those methods together. The humanized episode should make the machinery visible for a moment so the viewer understands why a habitat containing so much water can still be described from relatively narrow observations.
+Its enormous volume also makes observation deceptive.
+
+{{sources: EACH METHOD SEES SOMETHING DIFFERENT | An ROV or submersible=illuminates a tiny moving window | Nets=sample different organisms and can damage delicate bodies | Acoustic instruments=detect broader patterns but cannot always identify species}}
+An ROV or submersible illuminates a tiny moving window. Animals can avoid the light, approach it, or remain beyond camera range. Nets sample different organisms and can damage delicate bodies. Acoustic instruments detect broader patterns but cannot always identify species. A complete picture requires those methods together. The humanized episode should make the machinery visible for a moment so the viewer understands why a habitat containing so much water can still be described from relatively narrow observations.
 
 ### The observation window
 
@@ -66,7 +78,10 @@ The final master should show the ROV lights briefly and explain that the camera 
 ### The scale of one dive
 
 {{ambient}}
-A single dive crosses only a narrow path through a zone spanning thousands of meters. Conditions can change horizontally as well as vertically. Oxygen, currents, particles, and animal density vary. The episode should not let one beautiful expedition clip become the visual definition of the entire midnight zone. Use multiple documented settings or clearly label the footage as one observation.
+A single dive crosses only a narrow path through a zone spanning thousands of meters. Conditions can change horizontally as well as vertically.
+
+{{checklist: WHAT VARIES HORIZONTALLY AS WELL AS VERTICALLY | ?Oxygen | ?Currents | ?Particles | ?Animal density | >One expedition clip is not the visual definition of the whole zone}}
+Oxygen, currents, particles, and animal density vary. The episode should not let one beautiful expedition clip become the visual definition of the entire midnight zone. Use multiple documented settings or clearly label the footage as one observation.
 
 ### Dark is not empty
 
@@ -81,7 +96,10 @@ Give the viewer a slow hour rather than a fast zone list. Follow a particle of m
 ### Evidence limit
 
 {{stat: 70 | PERCENT | WHOI describes the midnight zone as roughly 70 percent of all seawater | WHOI}}
-The 1,000- and 4,000-meter boundaries are conventional approximations. Local light, temperature, oxygen, currents, and seafloor depth vary. WHOI describes the midnight zone as roughly 70 percent of all seawater, but that does not mean 70 percent of ocean species live there. ROV lights can also alter behavior, so what cameras observe is not a perfectly neutral window.
+The 1,000- and 4,000-meter boundaries are conventional approximations. Local light, temperature, oxygen, currents, and seafloor depth vary.
+
+{{contrast: WHAT 70 PERCENT MEANS | is=Roughly 70 percent of all seawater | not=That 70 percent of ocean species live there | not=A perfectly neutral window, because ROV lights can alter behavior}}
+WHOI describes the midnight zone as roughly 70 percent of all seawater, but that does not mean 70 percent of ocean species live there. ROV lights can also alter behavior, so what cameras observe is not a perfectly neutral window.
 
 ### Closing
 

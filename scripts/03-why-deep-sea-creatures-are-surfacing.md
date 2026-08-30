@@ -58,7 +58,7 @@ Until that evidence is available, the most accurate answer is often that several
 {{contrast: WHO COMES UP EVERY NIGHT | is=Many twilight-zone animals | not=Many permanent deep residents}}
 A common question is: Do deep-sea animals come to the surface every night? Many twilight-zone animals do; many permanent deep residents do not.
 
-{{checklist: A STRANDING AS AN EARTHQUAKE PREDICTION | -There is no reliable scientific basis for treating a single stranding as an earthquake prediction}}
+{{contrast: A STRANDED DEEP-SEA FISH | is=A clue | not=A reliable scientific basis for an earthquake prediction}}
 A common question is: Does a stranded deep-sea fish predict an earthquake? There is no reliable scientific basis for treating a single stranding as an earthquake prediction.
 
 {{contrast: STORMS AND CURRENTS | is=Can affect water masses | is=Can strand organisms | not=An assumed cause for a specific sighting}}

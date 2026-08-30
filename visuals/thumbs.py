@@ -67,6 +67,22 @@ def F(path, size):
 
 # --------------------------------------------------------------- image grading
 
+def exposure_lift(im: Image.Image, gamma: float) -> Image.Image:
+    """Open up a frame whose subject is genuinely dark.
+
+    Needed because the saliency model assumes the subject is the bright,
+    coloured thing in dark water -- and one episode's subject is transparency,
+    which is precisely an animal that is neither. Rather than lower the
+    subject-presence floor until the transparent-animal frame slips under it
+    (which would make the guard inert again), lift the picture until the animal
+    is genuinely visible. The guard then measures the frame that actually ships.
+    """
+    if gamma <= 1.0:
+        return im.convert("RGB")
+    x = np.asarray(im.convert("RGB"), np.float32) / 255.0
+    return Image.fromarray((np.clip(x ** (1.0 / gamma), 0, 1) * 255).astype(np.uint8), "RGB")
+
+
 def grade(im: Image.Image) -> Image.Image:
     """Pull a NOAA frame onto the channel palette without killing its subject.
 
@@ -114,30 +130,213 @@ def cover(im: Image.Image, w: int, h: int, subject=(0.5, 0.5),
     return im.crop((x, y, x + w, y + h))
 
 
-def auto_focal(im: Image.Image, side: str = "left") -> tuple[float, float]:
-    """Find the animal.
+# ------------------------------------------------------------------- saliency
 
-    An ROV still is a lit subject in dark water, so saliency here is simply
-    brightness times saturation: the creature is the bright, coloured thing and
-    the water is the dark, desaturated rest. Taking the centroid of the top few
-    per cent of that beats hand-picking twenty focal points by eye, and it keeps
-    working if the manifest is re-harvested and the images change.
+SAL_W, SAL_H = 192, 108
+
+
+def saliency(im: Image.Image) -> np.ndarray:
+    """Where the animal is, as a field rather than a point.
+
+    Normalised to its own peak, which is what you want for LOCATING a subject.
+    Returned as a SAL_H x SAL_W map so that everything downstream can ask about
+    *extent*, not just location -- which is what lets the zoom be derived rather
+    than hand-tuned per episode.
     """
-    small = im.convert("RGB").resize((160, 90), Image.BILINEAR)
+    sal = saliency_abs(im)
+    return sal / (sal.max() + 1e-6)
+
+
+def saliency_abs(im: Image.Image) -> np.ndarray:
+    """The same field, on an absolute 0-1 scale rather than normalised to its own peak.
+
+    Normalising by the maximum is right for locating a subject and wrong for
+    judging whether one is present: it maps the brightest pixel of an empty
+    frame of water to 1.0 just as happily as it maps a lit animal.
+    """
+    small = im.convert("RGB").resize((SAL_W, SAL_H), Image.BILINEAR)
     a = np.asarray(small).astype(np.float32) / 255.0
-    mx, mn = a.max(2), a.min(2)
-    sat = (mx - mn) / (mx + 1e-5)
-    sal = (mx ** 1.3) * (0.35 + 0.65 * sat)
-    sal = np.asarray(Image.fromarray((sal / (sal.max() + 1e-6) * 255).astype(np.uint8))
-                     .filter(ImageFilter.GaussianBlur(3)), np.float32)
-    thr = np.percentile(sal, 96)
-    ys, xs = np.nonzero(sal >= thr)
-    if len(xs) == 0:
-        return (0.5, 0.5)
-    wts = sal[ys, xs]
-    fx = float((xs * wts).sum() / wts.sum()) / 159.0
-    fy = float((ys * wts).sum() / wts.sum()) / 89.0
-    return (float(np.clip(fx, 0.03, 0.97)), float(np.clip(fy, 0.05, 0.95)))
+
+    # Distance from the frame's dominant colour, NOT brightness.
+    #
+    # The first version scored brightness times saturation, which encodes an
+    # assumption: that the subject is a lit animal in dark water. Half these
+    # photographs are the other polarity -- a dark purple sea cucumber hanging
+    # in bright teal water, a black silhouette against a lit seafloor -- and on
+    # those the measure locked onto the WATER and reported the animal as
+    # background. That is what cropped ep 01's subject through the head: the
+    # framer put the brightest region in shot and the animal was not it.
+    #
+    # Distance from the background colour is polarity-agnostic: it finds the
+    # thing that is unlike the water, whether that thing is brighter or darker.
+    # The median is the background estimate because water is, by area, most of
+    # any ROV still.
+    bg = np.median(a.reshape(-1, 3), axis=0)
+    wts = np.array([0.6, 0.8, 0.5], np.float32)      # green carries most signal
+    d = np.sqrt((((a - bg) ** 2) * wts).sum(-1)) * 1.9
+
+    return np.asarray(Image.fromarray((np.clip(d, 0, 1) * 255).astype(np.uint8))
+                      .filter(ImageFilter.GaussianBlur(3)), np.float32) / 255.0
+
+
+def _wpct(mass: np.ndarray, q: float) -> float:
+    """Weighted quantile of a 1-D marginal, in 0-1 coordinates."""
+    c = np.cumsum(mass)
+    if c[-1] <= 0:
+        return 0.5
+    return float(np.searchsorted(c, q * c[-1]) / max(1, len(mass) - 1))
+
+
+def subject_box(im: Image.Image, keep: float = 0.80) -> tuple[float, float, float, float]:
+    """Bounding box of the subject in 0-1 source coordinates.
+
+    This is the fix for the whole defect class. A centroid tells you where to
+    point but not how far to push in, so the zoom had to be hand-tuned per
+    episode -- and a hand-tuned constant is exactly what cannot adapt when the
+    subject is a thin smelt in a wide volume of water. A box has size, so the
+    zoom can be derived instead of guessed.
+
+    Marginal weighted quantiles rather than connected components: numpy-only,
+    and robust to the speckle of marine snow that a component labeller would
+    happily treat as twenty separate subjects.
+    """
+    sal = saliency(im)
+    core = np.where(sal >= np.percentile(sal, 88), sal, 0.0)
+    if core.sum() <= 0:
+        core = sal
+    lo, hi = (1.0 - keep) / 2, 1.0 - (1.0 - keep) / 2
+    x0, x1 = _wpct(core.sum(0), lo), _wpct(core.sum(0), hi)
+    y0, y1 = _wpct(core.sum(1), lo), _wpct(core.sum(1), hi)
+    # never let the box collapse to nothing on a low-contrast frame
+    if x1 - x0 < 0.06:
+        cx = (x0 + x1) / 2; x0, x1 = cx - 0.03, cx + 0.03
+    if y1 - y0 < 0.06:
+        cy = (y0 + y1) / 2; y0, y1 = cy - 0.03, cy + 0.03
+    return (max(0.0, x0), max(0.0, y0), min(1.0, x1), min(1.0, y1))
+
+
+def auto_focal(im: Image.Image, side: str = "left") -> tuple[float, float]:
+    """Centre of the subject box. Kept as the single-point view of the same data."""
+    x0, y0, x1, y1 = subject_box(im)
+    return (float(np.clip((x0 + x1) / 2, 0.03, 0.97)),
+            float(np.clip((y0 + y1) / 2, 0.05, 0.95)))
+
+
+# The free region: the part of the frame the type does not occupy. The scrim
+# fades rather than ending hard, so this is inset from the geometric half.
+# Derived from the actual type box, not from the geometric half. compose() lays
+# the hook into a band 64px in and 0.50*TW wide, so the type really occupies
+# 0.05-0.55 of the frame; calling everything past 0.50 "free" is what let the
+# midnight-zone depth labels be drawn straight through the hook while the code
+# believed they were clear of it.
+FREE_X = {"left": (0.57, 0.99), "right": (0.01, 0.43)}
+FREE_Y = (0.06, 0.97)
+
+# Absolute saliency at which a pixel counts as subject rather than water,
+# and the share of the free half that must reach it. Calibrated against all 61
+# manifest assets: frames that read as empty by eye score 0.00-0.04 here, frames
+# with a clear animal score 0.35-0.90. Below the floor the picture is water, and
+# a card of water is the defect this rebuild exists to fix.
+SUBJECT_LEVEL = 0.30
+MIN_SUBJECT_ENERGY = 0.07
+
+# Which asset each episode actually resolved to, filled in by build().
+chosen: dict = {}
+used: set = set()
+
+
+def frame_subject(src: Image.Image, side: str, fill: float = 0.70,
+                  max_upscale: float = 1.30):
+    """Choose the crop so the subject actually lands, whole, in the free half.
+
+    Derives the zoom from the subject's size, places the box centre at the free
+    region's centre, and -- the part that was missing -- re-checks after the
+    crop window is clamped to the source bounds. Clamping is what threw ep 01's
+    subject off the top edge: `cover` silently slid the window and told nobody.
+    Here, if clamping moves the subject out of the free region, the zoom backs
+    off (a looser crop has more room to slide) and we try again.
+
+    Returns (subject, place, zoom) for `cover`, plus the chosen box.
+    """
+    sw, sh = src.size
+    bx0, by0, bx1, by1 = subject_box(src)
+    bw, bh = max(1e-3, bx1 - bx0), max(1e-3, by1 - by0)
+
+    fx0, fx1 = FREE_X[side]
+    fy0, fy1 = FREE_Y
+    fw, fh = fx1 - fx0, fy1 - fy0
+    place = ((fx0 + fx1) / 2, (fy0 + fy1) / 2)
+
+    base = max(TW / sw, TH / sh)          # scale that merely fills the frame
+    # Zoom so the subject spans `fill` of the free region on its binding axis.
+    # This is the number that used to be hand-written per episode.
+    want = min((fw * TW) / (bw * sw * base), (fh * TH) / (bh * sh * base)) * fill
+
+    # When the animal already fills the source -- a head-on close-up of a
+    # rattail, say -- there is no crop that fits it into half a frame, and
+    # trying produced the worst failure of the lot: a wall of scales with the
+    # eye hidden behind the words. Frame it against the WHOLE frame instead and
+    # let the scrim carry the type over it. A big subject is not a problem to be
+    # cropped away.
+    oversized = bw > fw or bh > fh
+    if oversized:
+        want = min(1.0 / (bw * sw * base / TW), 1.0 / (bh * sh * base / TH)) * fill
+
+    zmax = max_upscale / base             # never upscale past sharpness
+    zoom = float(np.clip(want, 1.0, zmax))
+
+    # For a frame-filling animal the box centre is a meaningless target -- it is
+    # just the middle of the picture, so aiming it at the free half does nothing
+    # and centring it buries the animal under the type. What matters on a big
+    # subject is its focal detail: the eye, the mouth, the lit edge. Steer by the
+    # saliency peak instead, so THAT is what clears the words.
+    sub = ((bx0 + bx1) / 2, (by0 + by1) / 2)
+    if oversized:
+        sal = saliency(src)
+        py, px = np.unravel_index(int(np.argmax(sal)), sal.shape)
+        sub = (float(px) / (SAL_W - 1), float(py) / (SAL_H - 1))
+
+    for _ in range(14):
+        s = base * zoom
+        nw, nh = max(TW, int(round(sw * s))), max(TH, int(round(sh * s)))
+        x = max(0, min(nw - TW, int(round(nw * sub[0] - TW * place[0]))))
+        y = max(0, min(nh - TH, int(round(nh * sub[1] - TH * place[1]))))
+        # where the box actually ends up, in output 0-1 coords
+        ox0, ox1 = (nw * bx0 - x) / TW, (nw * bx1 - x) / TW
+        oy0, oy1 = (nh * by0 - y) / TH, (nh * by1 - y) / TH
+        if oversized:
+            break
+        inside = (ox0 >= fx0 - 0.06 and ox1 <= fx1 + 0.06
+                  and oy0 >= fy0 - 0.04 and oy1 <= fy1 + 0.04)
+        if inside or zoom <= 1.0001:
+            break
+        zoom = max(1.0, zoom * 0.88)
+
+    return sub, place, zoom, (bx0, by0, bx1, by1)
+
+
+def free_region_energy(im: Image.Image, side: str) -> float:
+    """Share of the finished frame's free half that carries real subject matter.
+
+    The empty-frame check. Ep 03 was not a cropping accident -- nothing was
+    clamped -- it was a frame that contained no subject at all, emitted without
+    complaint. Composition must be able to fail loudly, so this measures the
+    finished picture and `build` refuses anything that comes back empty.
+
+    The level is ABSOLUTE, deliberately. The first version of this check
+    thresholded at a percentile of the frame's own distribution, which meant
+    every frame had ~12% of its pixels above its own 88th percentile and the
+    guard passed everything put to it -- a validator that runs and asserts
+    nothing. Subject presence is a property of the picture, not of its own
+    ranking, so it has to be measured against a fixed level.
+    """
+    sal = saliency_abs(im)
+    fx0, fx1 = FREE_X[side]
+    band = sal[int(SAL_H * FREE_Y[0]):int(SAL_H * FREE_Y[1]),
+               int(SAL_W * fx0):int(SAL_W * fx1)]
+    if band.size == 0:
+        return 0.0
+    return float((band >= SUBJECT_LEVEL).mean())
 
 
 def scrim(w: int, h: int, side: str = "left", strength: float = 0.90) -> Image.Image:
@@ -234,11 +433,14 @@ def downwelling(w, h, rng, cx=0.62, warm=False):
     """
     yy = np.linspace(0, 1, h, dtype=np.float32)[:, None]
     xx = np.linspace(0, 1, w, dtype=np.float32)[None, :]
-    shaft = np.exp(-((xx - cx) ** 2) / 0.115)
-    fall = np.clip(1.0 - yy * 0.96, 0, 1) ** 1.30
-    a = np.clip(fall * (0.34 + 0.66 * shaft), 0, 1)
+    shaft = np.exp(-((xx - cx) ** 2) / 0.150)
+    fall = np.clip(1.0 - yy * 0.82, 0, 1) ** 1.05
+    a = np.clip(fall * (0.42 + 0.58 * shaft), 0, 1)
 
-    lit = np.array((52, 168, 206) if not warm else (74, 128, 150), np.float32)
+    # Brighter than looks right at 1280px, and correct at 168px. A silhouette is
+    # a contrast effect: the shape is only as legible as the water behind it, and
+    # the first version lost every creature into its own background in the feed.
+    lit = np.array((104, 214, 240) if not warm else (150, 190, 205), np.float32)
     dark = np.array(INK, np.float32)
     rgb = dark[None, None, :] + (lit - dark)[None, None, :] * a[..., None]
 
@@ -441,13 +643,20 @@ def art_whalefall(size, rng):
     sx, sy = w * 0.30, fy - 40
     spine = [(sx + i * (w * 0.62 / 24), sy - 60 + math.sin(i / 24 * 2.3) * 30) for i in range(25)]
     m.paste(255, (0, 0), _spine_mask(size, spine, [20] * 25))
-    for i in range(2, 21, 2):                                          # ribcage
+    # Ribs hang DOWNWARD from the spine only, and there are few of them. Drawing
+    # both sides of every other vertebra produced a lattice that read as
+    # chain-link fencing once it was 168px wide.
+    # A ribcage reads as a cage: ribs sweeping down and OUT to a wide belly, then
+    # tucking back. Straight ribs hanging off a straight spine read as a rake.
+    for i in range(3, 22, 3):
         x, y = spine[i]
-        span = 150 * math.sin(i / 21 * math.pi) ** 0.55 + 40
-        for s in (-1, 1):
-            rib = [(x, y), (x + s * span * 0.50, y + span * 0.55),
-                   (x + s * span * 0.66, y + span * 1.05), (x + s * span * 0.52, y + span * 1.38)]
-            m.paste(255, (0, 0), _spine_mask(size, rib, [17, 14, 11, 8]))
+        span = 150 * math.sin(i / 22 * math.pi) ** 0.5 + 52
+        for sgn in (-1, 1):
+            rib = [(x, y),
+                   (x + sgn * span * 0.42, y + span * 0.34),
+                   (x + sgn * span * 0.60, y + span * 0.86),
+                   (x + sgn * span * 0.40, y + span * 1.30)]
+            m.paste(255, (0, 0), _spine_mask(size, rib, [24, 20, 15, 10]))
     hx, hy = spine[0]                                                  # skull and jaw
     d.polygon([(hx + 10, hy - 40), (hx - 250, hy + 10), (hx - 236, hy + 40), (hx + 10, hy + 34)], fill=255)
     d.polygon([(hx + 4, hy + 30), (hx - 244, hy + 52), (hx - 238, hy + 76), (hx + 4, hy + 66)], fill=255)
@@ -510,7 +719,7 @@ def art_yeticrab(size, rng):
     return img
 
 
-def art_column(size, rng):
+def art_column(size, rng, free=(0.50, 0.99)):
     """Ep 20 - the midnight zone. The subject is an absence: the depth at which
     sunlight stops. So the picture is the light itself dying down the frame,
     with the bathypelagic band marked where the lock puts it, 1,000-4,000 m."""
@@ -524,13 +733,15 @@ def art_column(size, rng):
 
     ov = Image.new("RGBA", size, (0, 0, 0, 0))
     od = ImageDraw.Draw(ov)
-    od.line([(w * 0.50, y0), (w, y0)], fill=(*CYAN, 200), width=3)
-    lf = F(F_LABEL, 22)
-    tracked(od, (w * 0.52, y0 - 34), "SUNLIGHT ENDS", lf, (*CYAN, 225), track=3)
-    for k, (lbl, fy) in enumerate((("1,000 M", 0.46), ("4,000 M", 0.88))):
+    f0, f1 = free
+    od.line([(w * f0, y0), (w, y0)], fill=(*CYAN, 200), width=3)
+    lf = F(F_LABEL, 24)
+    tracked(od, (w * f0 + 10, y0 - 36), "SUNLIGHT ENDS", lf, (*CYAN, 235), track=3)
+    for lbl, fy in (("1,000 M", 0.46), ("4,000 M", 0.88)):
         yy = int(h * fy)
-        od.line([(w * 0.80, yy), (w * 0.955, yy)], fill=(*MUTED, 150), width=2)
-        od.text((w * 0.80, yy - 26), lbl, font=F(F_LABEL, 20), fill=(*MUTED, 190))
+        lx = w * (f0 + (f1 - f0) * 0.42)
+        od.line([(lx, yy), (w * (f1 - 0.03), yy)], fill=(*MUTED, 170), width=2)
+        od.text((lx, yy - 28), lbl, font=F(F_LABEL, 22), fill=(*MUTED, 210))
     # a few animals still down there, barely lit
     for _ in range(7):
         x = rng.uniform(w * 0.52, w * 0.95); y = rng.uniform(h * 0.50, h * 0.92)
@@ -602,7 +813,7 @@ def compose(base: Image.Image, hook: str, kicker: str | None,
     probe = np.asarray(img.convert("RGB"), np.float32) / 255.0
     band = probe[int(TH * 0.14):int(TH * 0.88), x0:x0 + boxw]
     lum = float((band @ np.array([0.299, 0.587, 0.114], np.float32)).mean())
-    strength = float(np.clip(0.78 + lum * 1.30, 0.78, 0.97))
+    strength = float(np.clip(0.86 + lum * 1.30, 0.86, 0.985))
     img.alpha_composite(scrim(TW, TH, side, strength))
 
     ov = Image.new("RGBA", (TW, TH), (0, 0, 0, 0))
@@ -656,31 +867,31 @@ def compose(base: Image.Image, hook: str, kicker: str | None,
 
 EPISODES = {
     "01": dict(kicker="Deep-sea bodies", hook="Why they look like that",
-               media=15986, side="left", zoom=1.25),
+               media=[15986, 15400, 12924, 8479]),
     "02": dict(kicker="Pressure", hook="Mostly water, so it holds",
-               media=14848, side="left", zoom=1.75),
+               media=[14848, 12924, 8479]),
     "03": dict(kicker="Nightly migration", hook="They rise every night",
-               media=10281, side="left", zoom=2.40),
+               media=[15400, 10660, 10281]),
     "04": dict(kicker="Why it looks frightening", hook="A mouth built for scarcity",
-               media=12097, side="right", zoom=1.30),
+               media=[12097, 13309, 15767], fill=0.45),
     "05": dict(kicker="Colour at depth", hook="Down here, red is invisible",
-               media=13043, side="left", zoom=1.15),
+               media=[13043, 15248, 10403]),
     "06": dict(kicker="Transparency", hook="No outline, no shadow",
-               media=14878, side="left", zoom=1.55),
+               media=[14878, 12924, 8479], lift=2.0),
     "07": dict(kicker="Depth and strangeness", hook="Deeper is not creepier",
-               media=12013, side="left", zoom=1.15),
+               media=[15526, 14809, 12013, 15757, 15632]),
     "08": dict(kicker="Who lives down there", hook="More than you would guess",
-               media=19137, side="left", zoom=1.10),
+               media=[19137, 10268, 19126, 23998]),
     "09": dict(kicker="The scariest", hook="There is no scariest",
-               media=14526, side="left", zoom=2.60),
+               media=[15767, 13309, 11605, 14526], fill=0.40),
     "10": dict(kicker="Challenger Deep", hook="About 10,935 metres",
                art="trench", side="left"),
     "11": dict(kicker="Dumbo octopus", hook="It swims on ear-like fins",
-               media=15895, side="left", zoom=1.20),
+               media=[15895, 10184, 4091]),
     "12": dict(kicker="Frilled shark", hook="Not a living fossil",
                art="shark", side="left"),
     "13": dict(kicker="Bioluminescence", hook="Light made by chemistry",
-               media=12212, side="left", zoom=1.95),
+               media=[12212, 14878]),
     "14": dict(kicker="Colossal squid", hook="495 kilograms, measured",
                art="squid", side="left"),
     "15": dict(kicker="Challenger Deep", hook="Crewed, eleven kilometres down",
@@ -690,21 +901,25 @@ EPISODES = {
     "17": dict(kicker="Yeti crab", hook="It farms what it eats",
                art="yeticrab", side="left"),
     "18": dict(kicker="Black smokers", hook="340°C and still liquid",
-               media=5177, side="right", zoom=1.25),
-    "19": dict(kicker="The deepest fish", hook="Filmed at 8,336 metres",
-               media=22125, side="left", zoom=1.45),
+               media=[16065, 5177]),
+    "19": dict(kicker="The deepest fish", hook="Snailfish hold the depth record",
+               media=[22125, 14304], lift=1.8),
     "20": dict(kicker="The midnight zone", hook="Below one thousand metres",
                art="column", side="left"),
 }
 
+# Every generator takes (size, rng, free) so that art is always told which part
+# of the frame the type will occupy. Positioning marks by eye against a layout
+# the drawing cannot see is what put "SUNLIGHT ENDS" through the middle of the
+# midnight-zone hook.
 ART = {
-    "shark": art_shark,
-    "squid": art_squid,
-    "trench": lambda s, r: art_trench(s, r, crewed=False),
-    "trench_crewed": lambda s, r: art_trench(s, r, crewed=True),
+    "shark": lambda s, r, free: art_shark(s, r),
+    "squid": lambda s, r, free: art_squid(s, r),
+    "trench": lambda s, r, free: art_trench(s, r, crewed=False),
+    "trench_crewed": lambda s, r, free: art_trench(s, r, crewed=True),
     "column": art_column,
-    "whalefall": art_whalefall,
-    "yeticrab": art_yeticrab,
+    "whalefall": lambda s, r, free: art_whalefall(s, r),
+    "yeticrab": lambda s, r, free: art_yeticrab(s, r),
 }
 
 
@@ -712,28 +927,89 @@ def load_manifest():
     if not os.path.exists(MANIFEST):
         return {}
     man = json.load(open(MANIFEST))
-    return {int(a["local_file"].split("__")[1]): a for a in man["assets"]}
+    ok, blocked = {}, {}
+    # thumbnail_ok is a reviewed field, not a rights field: these items are
+    # public domain and perfectly reusable, they are simply title cards,
+    # calendar wallpapers or wordmarked frames rather than clean photographs.
+    for a in man["assets"]:
+        mid = int(a["local_file"].split("__")[1])
+        (ok if a.get("thumbnail_ok", True) else blocked)[mid] = a
+    return ok, blocked
 
 
-def build(num: str, spec: dict, assets: dict):
+def build(num: str, spec: dict, assets: dict, blocked: dict):
     rng = random.Random(int(num) * 7919)
     credit = None
     if spec.get("media"):
-        rec = assets.get(spec["media"])
-        if rec is None:
-            raise KeyError(f"episode {num}: media {spec['media']} not in rights manifest")
-        src = Image.open(os.path.join(IMAGERY, rec["local_file"]))
-        side = spec.get("side", "left")
-        subject = spec.get("focal") or auto_focal(src, side)
-        place = spec.get("place") or ((0.74, 0.46) if side == "left" else (0.26, 0.46))
-        base = grade(cover(src, TW, TH, subject, place, spec.get("zoom", 1.0)))
-        credit = "NOAA OCEAN EXPLORATION"
+        side = spec.get("side", "auto")
+        cands = spec["media"]
+        if isinstance(cands, int):
+            cands = [cands]
+
+        # Each candidate is a photograph that is TRUTHFUL for this episode's
+        # claim -- that judgement stays hand-made, because it is where the
+        # evidence discipline lives. Which of them gets used is decided by
+        # measuring the finished frame, not by guessing in advance. That is the
+        # general repair: a single hand-picked asset plus a hand-tuned zoom has
+        # no way to notice it has framed an empty patch of water.
+        scored = []
+        for mid in cands:
+            if mid in blocked:
+                continue          # reviewed out as a graphic, not an error
+            if mid in used:
+                continue          # one photograph per channel: a repeat across
+                                  # two thumbnails reads as a mistake in a grid
+            rec = assets.get(mid)
+            if rec is None:
+                raise KeyError(f"episode {num}: media {mid} not in rights manifest")
+            src = exposure_lift(Image.open(os.path.join(IMAGERY, rec["local_file"])),
+                                spec.get("lift", 1.0))
+            # Let the type go opposite the animal rather than fixing the side by
+            # hand. Ep 09 put the words straight on top of the anglerfish and
+            # left the empty half of the water bare, because "side" was a
+            # constant while the subject's position is a property of the photo.
+            this_side = side
+            if this_side == "auto":
+                bx0, _, bx1, _ = subject_box(src)
+                this_side = "right" if (bx0 + bx1) / 2 < 0.5 else "left"
+            # 0.70 rather than filling the free half edge to edge: an animal
+            # cropped to exactly its bounding box has no room around it and
+            # reads as texture, not as a creature. Ep 04 at 0.92 was a wall of
+            # goosefish skin with no fish visible in it.
+            subject, place, zoom, box = frame_subject(src, this_side, spec.get("fill", 0.70))
+            if spec.get("focal"):
+                subject = spec["focal"]
+            cand = grade(cover(src, TW, TH, subject, place, zoom))
+            scored.append((free_region_energy(cand, this_side), mid, cand, rec, this_side))
+
+        # Declared order is an editorial judgement made by eye at full size, so
+        # it wins: take the FIRST candidate that clears the floor, not the
+        # highest-scoring one. Ranking by score instead put the vivid orange
+        # anemone ahead of the snailfish on the episode about snailfish -- the
+        # measure likes bright busy frames, which is not the same as liking the
+        # right subject. The metric's job is to reject failures, not to direct.
+        passing = [t for t in scored if t[0] >= MIN_SUBJECT_ENERGY]
+        energy, mid, base, rec, side = passing[0] if passing else max(scored, key=lambda t: t[0])
+
+        # Rule 0: no frame ships without a subject in it. An empty card is a
+        # defect, not a style. If the best of the truthful candidates still
+        # frames nothing, refuse loudly rather than emitting a blank.
+        if energy < MIN_SUBJECT_ENERGY:
+            raise ValueError(
+                f"episode {num}: no candidate frames a subject "
+                f"(best={mid} energy={energy:.4f} < {MIN_SUBJECT_ENERGY}); "
+                f"tried {cands}")
+        chosen[num] = (mid, energy, rec)
+        used.add(mid)
         route = "A"
+        credit = "NOAA OCEAN EXPLORATION"
     else:
-        base = ART[spec["art"]]((TW, TH), rng).convert("RGB")
+        side = spec.get("side", "left")
+        base = ART[spec["art"]]((TW, TH), rng, FREE_X[side]).convert("RGB")
         route = "B"
-    return compose(base, spec["hook"], spec.get("kicker"),
-                   spec.get("side", "left"), credit), route
+    if route == "B":
+        side = spec.get("side", "left")
+    return compose(base, spec["hook"], spec.get("kicker"), side, credit), route
 
 
 def slug_for(num: str) -> str:
@@ -745,10 +1021,11 @@ def slug_for(num: str) -> str:
 def main(compare=False):
     os.makedirs(OUT, exist_ok=True)
     os.makedirs(PROOFS, exist_ok=True)
-    assets = load_manifest()
+    assets, blocked = load_manifest()
+    chosen.clear(); used.clear()
     made = []
     for num in sorted(EPISODES):
-        im, route = build(num, EPISODES[num], assets)
+        im, route = build(num, EPISODES[num], assets, blocked)
         slug = slug_for(num)
         p = os.path.join(OUT, f"{slug}.jpg")
         im.save(p, "JPEG", quality=90, optimize=True, progressive=True)

@@ -162,9 +162,23 @@ def evidence_chain(t, stages=(), title="HOW THE NUMBER IS MADE", conclusion=""):
 
         # card height follows the tallest card's CONTENT — a fixed height leaves
         # a third of every card empty, which is what a first pass at this did.
+        def fit_wrap(text, base, path, maxw, maxlines, minsize):
+            """Largest size <= base whose WRAPPED text fits maxlines.
+
+            _cfit alone shrinks until the string fits on ONE line and then the
+            caller wraps it anyway — so a long stage rendered at the minimum size
+            with two lines of slack. Wrapping is the thing to measure."""
+            size = int(base)
+            while size > minsize:
+                f = font(path, size)
+                if len(_cwrap(d, text, f, maxw)) <= maxlines:
+                    return f
+                size -= 2
+            return font(path, minsize)
+
         content = []
         for lab, det in st:
-            fli = _cfit(d, lab, F_LABEL, fl.size, maxw, minsize=17)
+            fli = fit_wrap(lab, fl.size, F_LABEL, maxw, 3, 17)
             ll = _cwrap(d, lab, fli, maxw)[:3]
             dl = _cwrap(d, det, fd, maxw)[:4] if det else []
             content.append((fli, ll, dl,
@@ -453,12 +467,18 @@ def contrast_pair(t, term="", includes=(), excludes=(),
     tw = colw - 52                       # text starts to the right of its marker
     pad = 34
 
+    # ONE type size across BOTH columns. Fitting each item independently makes the
+    # longer-worded side render smaller, which reads as one column mattering less
+    # than the other — the opposite of what a contrast is for.
+    allit = inc + exc
+    fu = font(F_LABEL, min([_cfit(d, it, F_LABEL, fi.size, tw, minsize=18).size
+                            for it in allit] or [fi.size]))
+
     def measure(items):
         rows = []
         for it in items:
-            fii = _cfit(d, it, F_LABEL, fi.size, tw, minsize=18)
-            lines = _cwrap(d, it, fii, tw)[:3]
-            rows.append((fii, lines, len(lines) * fii.size * 1.26))
+            lines = _cwrap(d, it, fu, tw)[:3]
+            rows.append((fu, lines, len(lines) * fu.size * 1.26))
         return rows, (sum(r[2] for r in rows) + pad * (len(rows) - 1) if rows else 0)
 
     measured = [measure(inc), measure(exc)]

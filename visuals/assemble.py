@@ -11,10 +11,15 @@ try:
     import segments_ext as SX
 except ImportError:
     SX = None
+try:
+    import segments_ext2 as SX2
+except ImportError:
+    SX2 = None
 
 def seg_fn(name):
     if hasattr(S, name):  return getattr(S, name)
     if SX and hasattr(SX, name): return getattr(SX, name)
+    if SX2 and hasattr(SX2, name): return getattr(SX2, name)
     raise KeyError(f"unknown segment type: {name}")
 
 def probe(path):

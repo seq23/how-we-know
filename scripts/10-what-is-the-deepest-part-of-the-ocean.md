@@ -23,7 +23,7 @@ What is the deepest part of the ocean?
 
 ### The right way to see it
 
-{{text}}
+{{chain: WHAT THE DEPTH ACTUALLY IS | An instrument | A survey path | Corrections | Uncertainty | >Not one eternal number carved into the seafloor}}
 The exact depth is not one eternal number carved into the seafloor. It is a measurement with an instrument, a survey path, corrections, and uncertainty. The rest of this video follows that question through the actual environmental constraints described by NOAA, MBARI, Smithsonian, and Woods Hole sources in the companion article.
 
 ### Producer POV
@@ -37,8 +37,11 @@ Challenger Deep is a depression at the southern end of the Mariana Trench in the
 
 ### The best current estimate is about 10.9 kilometers
 
-{{stat: 10,935 | METRES | Plus or minus 6 metres at 95 percent confidence | NOAA}}
-NOAA commonly reports Challenger Deep at approximately 10,935 meters, or 35,876 feet, below mean sea level. A modern pressure-based submersible study reported 10,935 meters with an uncertainty of plus or minus 6 meters at 95 percent confidence. That uncertainty matters. Ocean depth is calculated from pressure, gravity, seawater properties, instrument calibration, vessel position, and the geometry of the survey path. A number presented without its method and uncertainty can look more exact than the measurement really is.
+{{uncertain: 10,935 | metres | 6 | 95 percent confidence | Challenger Deep, below mean sea level}}
+NOAA commonly reports Challenger Deep at approximately 10,935 meters, or 35,876 feet, below mean sea level. A modern pressure-based submersible study reported 10,935 meters with an uncertainty of plus or minus 6 meters at 95 percent confidence. That uncertainty matters.
+
+{{checklist: WHAT OCEAN DEPTH IS CALCULATED FROM | ?Pressure | ?Gravity | ?Seawater properties | ?Instrument calibration | ?Vessel position | ?The geometry of the survey path}}
+Ocean depth is calculated from pressure, gravity, seawater properties, instrument calibration, vessel position, and the geometry of the survey path. A number presented without its method and uncertainty can look more exact than the measurement really is.
 
 ### The bottom is dark, cold, and under extreme pressure
 
@@ -47,35 +50,53 @@ At nearly eleven kilometers, sunlight is absent and pressure is roughly eleven h
 
 ### Exploration requires full-ocean-depth engineering
 
-{{text}}
-Mapping vessels use sonar to build regional bathymetric models, while landers and submersibles provide direct pressure, imagery, sampling, and seafloor observations. Each method answers a different part of the depth question and carries different uncertainty. Only vehicles designed for full-ocean depth can operate at Challenger Deep. The engineering problem is not simply reaching the bottom; systems must survive pressure, navigate without light or GPS, communicate through water, and return usable measurements with traceable calibration.
+{{sources: EACH METHOD ANSWERS A DIFFERENT PART | Mapping vessels=sonar builds regional bathymetric models | Landers and submersibles=direct pressure, imagery, sampling and seafloor observations}}
+Mapping vessels use sonar to build regional bathymetric models, while landers and submersibles provide direct pressure, imagery, sampling, and seafloor observations. Each method answers a different part of the depth question and carries different uncertainty.
+
+{{checklist: THE ENGINEERING PROBLEM | ?Survive pressure | ?Navigate without light or GPS | ?Communicate through water | ?Return usable measurements with traceable calibration | >Not simply reaching the bottom}}
+Only vehicles designed for full-ocean depth can operate at Challenger Deep. The engineering problem is not simply reaching the bottom; systems must survive pressure, navigate without light or GPS, communicate through water, and return usable measurements with traceable calibration.
 
 ### Common myths and questions
 
-{{ambient}}
-A common question is: Is the Mariana Trench the deepest part of the ocean? The Mariana Trench is the deepest trench. Challenger Deep is the deepest known depression within that trench and the deepest known point in the global ocean. A common question is: Why do sources give different depths for Challenger Deep? Surveys use different instruments, tracks, gravity corrections, seawater assumptions, reference levels, and uncertainty methods. Small differences do not necessarily mean one expedition failed. A common question is: Has anyone reached the bottom of Challenger Deep? Yes. Crewed and uncrewed full-ocean-depth vehicles have reached and surveyed parts of Challenger Deep, beginning with the crewed Trieste descent in 1960. A common question is: Do fish live at the deepest point? No fish has been confirmed at the absolute deepest seafloor. Hadal snailfish hold depth records above the bottom, while deeper trench sediments support microbes and invertebrates.
+{{define: Challenger Deep | The deepest known depression within the Mariana Trench | And the deepest known point in the global ocean}}
+A common question is: Is the Mariana Trench the deepest part of the ocean? The Mariana Trench is the deepest trench. Challenger Deep is the deepest known depression within that trench and the deepest known point in the global ocean.
+
+{{checklist: WHY SOURCES GIVE DIFFERENT DEPTHS | ?Different instruments | ?Different tracks | ?Different gravity corrections | ?Different seawater assumptions | ?Different reference levels | >Small differences do not necessarily mean one expedition failed}}
+A common question is: Why do sources give different depths for Challenger Deep? Surveys use different instruments, tracks, gravity corrections, seawater assumptions, reference levels, and uncertainty methods. Small differences do not necessarily mean one expedition failed.
+
+{{timeline: 1960=Crewed Trieste descent | 2021=Revised depth published}}
+A common question is: Has anyone reached the bottom of Challenger Deep? Yes. Crewed and uncrewed full-ocean-depth vehicles have reached and surveyed parts of Challenger Deep, beginning with the crewed Trieste descent in 1960.
+
+{{contrast: DO FISH LIVE AT THE DEEPEST POINT? | is=Hadal snailfish, which hold depth records above the bottom | is=Microbes and invertebrates in deeper trench sediments | not=Any fish confirmed at the absolute deepest seafloor}}
+A common question is: Do fish live at the deepest point? No fish has been confirmed at the absolute deepest seafloor. Hadal snailfish hold depth records above the bottom, while deeper trench sediments support microbes and invertebrates.
 
 ### How a depth becomes a number
 
 {{timeline: 2020=Submersible transects | 2021=Revised depth published}}
-A ship can map the trench with sonar, but a maximum depth depends on where the track crosses the seafloor and how sound speed is corrected. A submersible can infer depth from pressure, but that requires corrections for water properties, atmospheric pressure, gravity, gravity gradients, and sea level. The 2021 analysis used submersible transects from June 2020 and reported the deepest observed seafloor at 10,935 meters below mean sea level, with an uncertainty of plus or minus six meters at 95 percent confidence. The uncertainty is not a weakness. It is part of the measurement.
+A ship can map the trench with sonar, but a maximum depth depends on where the track crosses the seafloor and how sound speed is corrected.
+
+{{chain: HOW A PRESSURE READING BECOMES A DEPTH | A submersible infers depth from pressure | Corrections for water properties and atmospheric pressure | Corrections for gravity and gravity gradients | A correction to sea level | >The uncertainty is not a weakness; it is part of the measurement}}
+A submersible can infer depth from pressure, but that requires corrections for water properties, atmospheric pressure, gravity, gravity gradients, and sea level.
+
+{{uncertain: 10,935 | metres | 6 | 95 percent confidence | The deepest observed seafloor below mean sea level}}
+The 2021 analysis used submersible transects from June 2020 and reported the deepest observed seafloor at 10,935 meters below mean sea level, with an uncertainty of plus or minus six meters at 95 percent confidence. The uncertainty is not a weakness. It is part of the measurement.
 
 ### What a depth number leaves out
 
-{{ambient}}
+{{checklist: WHAT SOUNDINGS DEPEND ON | ?Water-column conditions | ?Instrument calibration | ?Navigation | ?Processing | ?The exact path of the survey}}
 A single maximum-depth value sounds final, but the seafloor is irregular and the measurement is an estimate with uncertainty. Soundings depend on water-column conditions, instrument calibration, navigation, processing, and the exact path of the survey. Pressure-derived depth calculations require assumptions about seawater properties and gravity. Different methods can produce slightly different values without one team being careless. That is why the best modern estimate is reported with an uncertainty rather than as a perfectly exact floor.
 
-{{text}}
+{{contrast: CHALLENGER DEEP | is=The deepest known depression within the Mariana Trench | is=More than one basin | not=The depth of the whole trench everywhere | not=A vertical crack with one uniform bottom}}
 The geography also matters. The Mariana Trench is a long tectonic feature. Challenger Deep is the deepest known depression within it, and it contains more than one basin. Saying 'the Mariana Trench is 10,935 meters deep everywhere' would be wrong. The deepest point is a local extreme. Most of the trench and most of the global seafloor are shallower. The video should visualize a profile rather than a flat hole. That makes the measurement challenge visible and prevents the familiar error of treating a trench as a vertical crack with one uniform bottom.
 
 ### The scale check
 
-{{stat: 3,682 | METRES | The average ocean depth}}
+{{magnitude: DEPTH BESIDE THE AVERAGE | metres | Average ocean depth=3,682 | Challenger Deep=10,935}}
 Before the closing, compare Challenger Deep with the average ocean depth and with the height of a familiar mountain only if the comparison uses current, sourced values. The visual should not imply that a mountain could literally be dropped into the trench without considering sea level, shape, and the uneven bottom. It is an analogy for scale, not a survey method. The strongest ending returns to measurement: the deepest known point remains a value scientists refine, not a mystical coordinate beyond uncertainty. That gives the next expedition something meaningful to improve.
 
 ### Why deepest known is the correct phrase
 
-{{text}}
+{{define: Deepest known | The deepest point supported by current surveys | Not a guarantee that no unmeasured depression could ever be refined}}
 The ocean has not been mapped at identical resolution everywhere, and measurements continue to improve. Challenger Deep is the deepest known point supported by current surveys, not a guarantee that no unmeasured depression could ever be refined. The word known protects the claim without weakening it. It tells the viewer that science is reporting the best evidence available, with room for better measurement.
 
 ### Measurement beats myth
@@ -95,7 +116,7 @@ Build the episode as a measurement detective story. Start with the famous number
 
 ### Evidence limit
 
-{{stat: 10,935 | METRES | Reported with its uncertainty and referenced to mean sea level}}
+{{contrast: WHAT THE FIGURE IS | is=The deepest known seafloor depression measured with current methods | is=A value that belongs with its uncertainty and reference to mean sea level | not=A guarantee that every point of the ocean has been mapped at equal resolution}}
 Challenger Deep is the deepest known seafloor depression measured with current methods, not a guarantee that every point of the ocean has been mapped at equal resolution. The seafloor is irregular, surveys follow finite tracks, and different methods can produce slightly different results. The reported 10,935-meter figure belongs with its uncertainty and reference to mean sea level.
 
 ### Closing

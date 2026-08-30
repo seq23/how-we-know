@@ -24,7 +24,13 @@ What is the deepest fish ever recorded?
 ### A record made by a camera, not a net
 
 {{stat: 8,336 | METRES | Filmed in the Izu-Ogasawara Trench on 15 August 2022}}
-On August 15, 2022, researchers lowered a baited autonomous lander into the Izu-Ogasawara Trench south of Japan. At 8,336 meters, the camera recorded a single juvenile snailfish swimming through the illuminated area. The peer-reviewed description appeared in 2023 and established a new maximum observation depth for a bony fish. The animal was not captured. That matters because the researchers could not examine bones, tissues, or genetics, so the paper identified it as a probable Pseudoliparis belyaevi or a related endemic species rather than pretending the video supplied perfect taxonomy. In the neighboring Japan Trench, the expedition collected two P. belyaevi at 8,022 meters. Those specimens hold the capture record. Headlines often combine the two achievements. A precise account separates deepest filmed from deepest caught. The first open loop is why a soft, almost fragile-looking snailfish succeeds where most familiar fish physiology fails.
+On August 15, 2022, researchers lowered a baited autonomous lander into the Izu-Ogasawara Trench south of Japan. At 8,336 meters, the camera recorded a single juvenile snailfish swimming through the illuminated area. The peer-reviewed description appeared in 2023 and established a new maximum observation depth for a bony fish.
+
+{{contrast: WHAT THE VIDEO COULD NOT SUPPLY | is=A probable Pseudoliparis belyaevi or a related endemic species | not=Bones | not=Tissues | not=Genetics}}
+The animal was not captured. That matters because the researchers could not examine bones, tissues, or genetics, so the paper identified it as a probable Pseudoliparis belyaevi or a related endemic species rather than pretending the video supplied perfect taxonomy.
+
+{{sources: TWO RECORDS, TWO STANDARDS OF PROOF | Deepest filmed=a juvenile snailfish at 8,336 metres, in the Izu-Ogasawara Trench | Deepest caught=two P. belyaevi at 8,022 metres, in the Japan Trench}}
+In the neighboring Japan Trench, the expedition collected two P. belyaevi at 8,022 meters. Those specimens hold the capture record. Headlines often combine the two achievements. A precise account separates deepest filmed from deepest caught. The first open loop is why a soft, almost fragile-looking snailfish succeeds where most familiar fish physiology fails.
 
 ### Producer POV
 
@@ -33,45 +39,73 @@ On August 15, 2022, researchers lowered a baited autonomous lander into the Izu-
 ### The body avoids some obvious pressure problems
 
 {{anatomy: A BODY WITHOUT A SWIM BLADDER | no gas-filled swim bladder@0.46,0.44 | soft and scaleless@0.64,0.54}}
-Hadal snailfish lack a gas-filled swim bladder, which would be difficult to maintain across extreme pressure. Their bodies are soft and scaleless, with much of the support provided by surrounding water. Pressure still acts on every molecule. It can change membrane behavior and destabilize proteins. Deep species accumulate protective molecules, including trimethylamine N-oxide, that help counter pressure effects on proteins. The concentration needed rises with depth, but that solution has limits because the same chemistry disrupts cellular water balance at high levels. This creates a predicted depth ceiling for fishes. The animal in the video was also a juvenile. Researchers have observed patterns in which smaller individuals occupy deeper parts of trench populations, possibly because of competition, food distribution, or physiology. One record cannot settle the mechanism. The next loop is ecological: a trench seems food-starved, yet baited landers often attract dense groups of hadal animals.
+Hadal snailfish lack a gas-filled swim bladder, which would be difficult to maintain across extreme pressure. Their bodies are soft and scaleless, with much of the support provided by surrounding water. Pressure still acts on every molecule. It can change membrane behavior and destabilize proteins.
+
+{{chain: WHY THE COUNTERMEASURE HAS A CEILING | Pressure changes membrane behavior and destabilizes proteins | Deep species accumulate trimethylamine N-oxide | The concentration needed rises with depth | >At high levels the same chemistry disrupts cellular water balance}}
+Deep species accumulate protective molecules, including trimethylamine N-oxide, that help counter pressure effects on proteins. The concentration needed rises with depth, but that solution has limits because the same chemistry disrupts cellular water balance at high levels. This creates a predicted depth ceiling for fishes. The animal in the video was also a juvenile. Researchers have observed patterns in which smaller individuals occupy deeper parts of trench populations, possibly because of competition, food distribution, or physiology. One record cannot settle the mechanism. The next loop is ecological: a trench seems food-starved, yet baited landers often attract dense groups of hadal animals.
 
 ### Trenches can concentrate food
 
 {{text}}
-The hadal zone is not simply a flat extension of the abyss. Steep walls and trench geometry can funnel organic material downslope. Amphipods, crustaceans, and microbial processes create feeding opportunities. Snailfish feed on small trench animals and may exploit locally concentrated prey. A baited camera changes the scene by introducing a strong food signal, so it is excellent for revealing who can arrive but not a neutral census of everyday abundance. Researchers therefore use repeated deployments across depths and trenches. In the 2023 study, snailfish were seen across thousands of meters of depth, with the deepest individual recorded at 8,336 meters. No fish appeared in deeper deployments approaching 9,700 meters. That absence aligns with physiological predictions, but absence on camera is never absolute proof that no fish can exist below. The open loop is the boundary: if Challenger Deep is roughly 10,935 meters, why does the fish record stop more than two and a half kilometers above it?
+The hadal zone is not simply a flat extension of the abyss. Steep walls and trench geometry can funnel organic material downslope. Amphipods, crustaceans, and microbial processes create feeding opportunities. Snailfish feed on small trench animals and may exploit locally concentrated prey.
+
+{{contrast: A BAITED CAMERA | is=Excellent for revealing who can arrive | not=A neutral census of everyday abundance}}
+A baited camera changes the scene by introducing a strong food signal, so it is excellent for revealing who can arrive but not a neutral census of everyday abundance. Researchers therefore use repeated deployments across depths and trenches. In the 2023 study, snailfish were seen across thousands of meters of depth, with the deepest individual recorded at 8,336 meters. No fish appeared in deeper deployments approaching 9,700 meters.
+
+{{contrast: ABSENCE ON CAMERA | is=Aligned with physiological predictions | not=Absolute proof that no fish can exist below}}
+That absence aligns with physiological predictions, but absence on camera is never absolute proof that no fish can exist below. The open loop is the boundary: if Challenger Deep is roughly 10,935 meters, why does the fish record stop more than two and a half kilometers above it?
 
 ### The deepest trench floor may be beyond fish physiology
 
 {{pressure: 10935}}
-Pressure rises by about one atmosphere every ten meters. Between 8,336 meters and Challenger Deep, the added load is enormous. More importantly, biochemical countermeasures cannot increase without cost. The prevailing evidence suggests bony fishes approach a lower depth limit around the low eight-thousands, while invertebrates continue deeper. Future records may shift by tens or hundreds of meters as new trenches are surveyed, but a fish at the absolute deepest floor would challenge current models. That is why the 8,336-meter observation matters beyond a record book. It tests the relationship between molecular stability, body design, ecology, and geography. The correct title is not the deepest creature; many invertebrates live deeper. It is the deepest fish recorded on video. That single word keeps the claim honest. Next, the series moves upward to the midnight zone—a vast band between 1,000 and 4,000 meters where sunlight is gone but animal light is common.
+Pressure rises by about one atmosphere every ten meters. Between 8,336 meters and Challenger Deep, the added load is enormous. More importantly, biochemical countermeasures cannot increase without cost. The prevailing evidence suggests bony fishes approach a lower depth limit around the low eight-thousands, while invertebrates continue deeper. Future records may shift by tens or hundreds of meters as new trenches are surveyed, but a fish at the absolute deepest floor would challenge current models. That is why the 8,336-meter observation matters beyond a record book. It tests the relationship between molecular stability, body design, ecology, and geography.
+
+{{contrast: THE CORRECT TITLE | is=The deepest fish recorded on video | not=The deepest creature, because many invertebrates live deeper}}
+The correct title is not the deepest creature; many invertebrates live deeper. It is the deepest fish recorded on video. That single word keeps the claim honest. Next, the series moves upward to the midnight zone—a vast band between 1,000 and 4,000 meters where sunlight is gone but animal light is common.
 
 ### Two records, two standards of proof
 
 {{text}}
-In the Izu-Ogasawara Trench, researchers filmed a solitary juvenile snailfish at 8,336 meters. No specimen was captured, so the paper identifies it as probably Pseudoliparis belyaevi or a new endemic species. In the neighboring Japan Trench, two P. belyaevi specimens were collected at 8,022 meters, setting the deepest-caught record. Video proves an animal was present and moving at a measured depth. A specimen allows stronger anatomical and genetic identification. Neither evidence type is automatically better for every question.
+In the Izu-Ogasawara Trench, researchers filmed a solitary juvenile snailfish at 8,336 meters. No specimen was captured, so the paper identifies it as probably Pseudoliparis belyaevi or a new endemic species. In the neighboring Japan Trench, two P. belyaevi specimens were collected at 8,022 meters, setting the deepest-caught record.
+
+{{sources: WHAT EACH EVIDENCE TYPE PROVES | Video=an animal was present and moving at a measured depth | A specimen=stronger anatomical and genetic identification}}
+Video proves an animal was present and moving at a measured depth. A specimen allows stronger anatomical and genetic identification. Neither evidence type is automatically better for every question.
 
 ### Why the boundary is biochemical, not a wall
 
 {{ambient}}
-Researchers connect the apparent fish depth limit to cellular chemistry, including the balance of compounds that help proteins function under pressure. As depth increases, the required biochemical adjustments approach constraints imposed by the animal's body fluids. That creates a predicted range rather than a sharp line painted across every trench. Temperature, species history, food, and local conditions can still influence where fish are observed.
+Researchers connect the apparent fish depth limit to cellular chemistry, including the balance of compounds that help proteins function under pressure. As depth increases, the required biochemical adjustments approach constraints imposed by the animal's body fluids.
+
+{{contrast: THE FISH DEPTH LIMIT | is=A predicted range | not=A sharp line painted across every trench}}
+That creates a predicted range rather than a sharp line painted across every trench.
+
+{{checklist: WHAT CAN STILL INFLUENCE WHERE FISH ARE OBSERVED | ?Temperature | ?Species history | ?Food | ?Local conditions}}
+Temperature, species history, food, and local conditions can still influence where fish are observed.
 
 {{ladder: Deepest caught=8022 | Deepest filmed=8336 | Challenger Deep=10935}}
 The kilometer below the deepest confirmed fish is therefore not empty. Amphipods, microbes, and other pressure-adapted organisms continue into deeper hadal water. The record tells us something specific about bony fish, not life as a whole. The edit should show the filmed fish, the captured specimens, the predicted range, and Challenger Deep on the same depth scale. The unused space below the fish becomes the final open question instead of a claim that nothing lives there.
 
 ### The record label
 
+{{checklist: THE RECORD LABEL | +Say FILMED or CAUGHT every time | ?The species identification for the filmed animal remains cautious | -No specimen was recovered}}
 {{text}}
 Every time the depth record appears, the edit must say FILMED or CAUGHT. The two labels are the episode's spine. The species identification for the filmed animal remains cautious because no specimen was recovered. That is not a flaw in the study; it is the correct limit of video evidence. The final title and description should preserve that distinction.
 
 ### The next record
 
 {{ambient}}
-A future deeper sighting would not make this episode worthless. The evidence framework would still hold: identify the depth method, distinguish film from capture, state the species confidence, and compare the result with the proposed biochemical boundary. The script is built to survive a new record because it explains how records are established, not only who currently holds one.
+A future deeper sighting would not make this episode worthless.
+
+{{steps: THE EVIDENCE FRAMEWORK | Identify the depth method | Distinguish film from capture | State the species confidence | Compare the result with the proposed biochemical boundary}}
+The evidence framework would still hold: identify the depth method, distinguish film from capture, state the species confidence, and compare the result with the proposed biochemical boundary. The script is built to survive a new record because it explains how records are established, not only who currently holds one.
 
 ### What to notice in the edit
 
 {{text}}
-Split the screen into FILMED and CAUGHT. Keep the depth, trench, and evidence type visible. Then show the proposed physiological boundary around 8,200–8,400 meters as a shaded range, not a brick wall. This turns the episode into a record audit rather than a simple countdown.
+Split the screen into FILMED and CAUGHT.
+
+{{checklist: KEEP VISIBLE | ?The depth | ?The trench | ?The evidence type | >Show the proposed boundary as a shaded range, not a brick wall}}
+Keep the depth, trench, and evidence type visible. Then show the proposed physiological boundary around 8,200–8,400 meters as a shaded range, not a brick wall. This turns the episode into a record audit rather than a simple countdown.
 
 ### Evidence limit
 

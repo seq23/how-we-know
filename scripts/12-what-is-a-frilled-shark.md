@@ -32,8 +32,17 @@ Most shark silhouettes are easy to recognize: a rigid torpedo body, a tall dorsa
 
 ### Why living fossil is a dangerous shortcut
 
-{{text}}
-The phrase living fossil is memorable and scientifically slippery. It is often used for organisms whose visible anatomy resembles forms known from older branches of the fossil record. The phrase does not mean a living species stopped evolving. DNA changes, populations split, environments shift, and selection continues. A frilled shark alive now is not an eighty-million-year-old individual, and its genome is not a museum cast. The more careful statement is that frilled sharks preserve a combination of traits considered primitive within living sharks, including six gill pairs and an elongated body plan. That is interesting without pretending time froze. The popular title also collapses multiple species and uncertain fossil comparisons into one claim. When a video says unchanged for eighty million years, ask what was compared: a tooth, a body outline, a family-level trait, or a complete species? Usually the dramatic number outruns the evidence. The next question is what this unusual mouth and tooth arrangement actually lets the shark do.
+{{define: Living fossil | Used for organisms whose visible anatomy resembles forms known from older branches of the fossil record | It does not mean a living species stopped evolving}}
+The phrase living fossil is memorable and scientifically slippery. It is often used for organisms whose visible anatomy resembles forms known from older branches of the fossil record. The phrase does not mean a living species stopped evolving.
+
+{{checklist: WHAT CONTINUES REGARDLESS | +DNA changes | +Populations split | +Environments shift | +Selection continues}}
+DNA changes, populations split, environments shift, and selection continues. A frilled shark alive now is not an eighty-million-year-old individual, and its genome is not a museum cast.
+
+{{contrast: THE MORE CAREFUL STATEMENT | is=A combination of traits considered primitive within living sharks | is=Six gill pairs and an elongated body plan | not=Pretending time froze | not=One claim collapsing multiple species and uncertain fossil comparisons}}
+The more careful statement is that frilled sharks preserve a combination of traits considered primitive within living sharks, including six gill pairs and an elongated body plan. That is interesting without pretending time froze. The popular title also collapses multiple species and uncertain fossil comparisons into one claim.
+
+{{checklist: WHEN A VIDEO SAYS UNCHANGED, ASK WHAT WAS COMPARED | ?A tooth | ?A body outline | ?A family-level trait | ?A complete species}}
+When a video says unchanged for eighty million years, ask what was compared: a tooth, a body outline, a family-level trait, or a complete species? Usually the dramatic number outruns the evidence. The next question is what this unusual mouth and tooth arrangement actually lets the shark do.
 
 ### Anatomy suggests a feeding strategy, but cameras are scarce
 
@@ -42,7 +51,7 @@ The frilled shark's jaws can open wide, and the teeth form repeating white traps
 
 ### A rare animal becomes a projection screen
 
-{{ambient}}
+{{contrast: WHAT WE CAN AND CANNOT SAY | is=The shark is rare in observations | is=We can describe the gills, teeth, and body | not=Its total abundance, inferred from viral clips | not=A hunting sequence nobody has recorded}}
 Frilled sharks live beyond the ordinary reach of divers, and many records come from fisheries interactions or brief submersible encounters. That creates a perfect environment for sea-serpent language. A long body enters the frame, the camera is shaky, and the caption supplies a prehistoric story. The scientific value is quieter. The animal shows that shark evolution produced more than the fast, stiff-bodied hunters most people know. It also demonstrates why scarcity must not be confused with extinction, danger, or supernatural origin. We can say the shark is rare in observations. We cannot infer its total abundance from viral clips. We can describe the gills, teeth, and body. We should not claim a hunting sequence nobody has recorded. The best correction is not to make the animal less strange. It is to make the strangeness precise. The frilled shark is a modern deep-water shark with an ancient-looking arrangement of traits, not a creature that escaped evolution. Next, the series moves from darkness as a habitat to darkness as a canvas for living light.
 
 ### Start by removing the best clickbait line
@@ -52,15 +61,18 @@ The frilled shark is real enough without a false evolutionary freeze. Its long b
 
 ### What a fossil resemblance can and cannot prove
 
-{{text}}
+{{contrast: THE SAFER CLAIM | is=Its lineage has ancient roots | is=Its body retains a combination of traits viewers find unfamiliar | not=That the exact modern species has remained unchanged for a stated number of millions of years}}
 A modern animal can retain features that resemble ancient relatives while still evolving continuously. Genes change. Populations adapt. Environments shift. The phrase 'living fossil' compresses that history into a misleading image of an organism frozen in time. For the frilled shark, the safer claim is that its lineage has ancient roots and its body retains a combination of traits viewers find unfamiliar—not that the exact modern species has remained unchanged for a stated number of millions of years.
 
 {{ambient}}
-The feeding story needs the same restraint. Long jaws and backward-pointing teeth support hypotheses about gripping slippery prey. Stomach contents and anatomy add evidence. Direct observations of successful hunting are scarce. The video should label each layer: observed anatomy, documented diet evidence, and inferred behavior. That separation is more credible than animating one dramatic strike and narrating it as settled fact.
+The feeding story needs the same restraint. Long jaws and backward-pointing teeth support hypotheses about gripping slippery prey. Stomach contents and anatomy add evidence. Direct observations of successful hunting are scarce.
+
+{{steps: LABEL EACH LAYER | Observed anatomy | Documented diet evidence | Inferred behavior | >More credible than animating one dramatic strike and narrating it as settled fact}}
+The video should label each layer: observed anatomy, documented diet evidence, and inferred behavior. That separation is more credible than animating one dramatic strike and narrating it as settled fact.
 
 ### The phrase we are retiring
 
-{{text}}
+{{checklist: THE PHRASE WE ARE RETIRING | -Unchanged for an exact prehistoric span | +The lineage is ancient | -The living animal as a time capsule}}
 The final script must not call the frilled shark unchanged for an exact prehistoric span. The lineage is ancient; the living animal is not a time capsule. Retiring that sentence costs a cleaner clickbait claim, but it protects the entire channel from a correction that would be easy for viewers to make.
 
 ### One final wording rule
@@ -75,8 +87,11 @@ Use anatomy labels and a silhouette comparison with a typical shark. Do not anim
 
 ### Evidence limit
 
-{{text}}
-The phrase 'living fossil' can suggest that a modern species is identical to an ancient ancestor or has stopped evolving. That is not supported. The frilled shark belongs to an old lineage and retains features people describe as primitive, but the living species has its own evolutionary history. Feeding behavior remains poorly observed, so claims about striking like a snake or swallowing a particular fraction of body size should be presented as hypotheses unless tied to direct evidence.
+{{contrast: WHAT IS SUPPORTED | is=The frilled shark belongs to an old lineage | is=It retains features people describe as primitive | not=That a modern species is identical to an ancient ancestor | not=That it has stopped evolving}}
+The phrase 'living fossil' can suggest that a modern species is identical to an ancient ancestor or has stopped evolving. That is not supported. The frilled shark belongs to an old lineage and retains features people describe as primitive, but the living species has its own evolutionary history.
+
+{{checklist: PRESENT AS HYPOTHESES UNLESS TIED TO DIRECT EVIDENCE | ?Striking like a snake | ?Swallowing a particular fraction of body size | >Feeding behavior remains poorly observed}}
+Feeding behavior remains poorly observed, so claims about striking like a snake or swallowing a particular fraction of body size should be presented as hypotheses unless tied to direct evidence.
 
 ### Closing
 

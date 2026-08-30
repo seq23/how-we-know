@@ -92,3 +92,13 @@ needs `import segments_ext2` before it plans or assembles.
     shows one treatment more than twice in a row and will substitute a text beat
     if you repeat one; two different informational directives in sequence both
     survive.
+
+## The guard
+
+`tests/test_directive_truth.py` enforces rule 6 mechanically. For every v2
+directive in every script it checks that each **number** and each **proper name**
+drawn on screen appears verbatim in that script's own narration, and that the
+directive actually **parses and renders** — a directive the planner cannot parse
+is silently ignored, so the beat looks annotated and shows nothing new. The test
+hard-fails if it inspects zero directives, and treats a directive's title as an
+editorial label (numbers still checked) while every later field is a claim.

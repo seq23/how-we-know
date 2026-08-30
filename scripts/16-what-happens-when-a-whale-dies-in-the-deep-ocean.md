@@ -32,8 +32,11 @@ Most organic matter produced near the surface is eaten, recycled, or broken down
 
 ### The first stage is large and fast
 
-{{text}}
-Sharks, hagfish, ratfish, amphipods, and other mobile scavengers detect the carcass and remove soft tissue. Video from whale falls often shows hagfish entering openings and twisting through tissue while larger fish tear from the outside. This phase may last months or years, not hours, depending on the carcass and site. The animals do not consume every resource equally. Thick blubber, small scraps, and material pressed into sediment remain after the major muscles are gone. The area around the whale becomes enriched with organic matter. That supports dense worms, crustaceans, and mollusks in a second phase often called enrichment opportunist. The names are categories imposed by researchers; real communities overlap. One stage does not switch off on a specific date. The next unresolved question is why a skeleton with little visible flesh can continue feeding life for much longer than the scavenger phase.
+{{chain: THE FIRST STAGE | Mobile scavengers detect the carcass | Sharks, hagfish, ratfish and amphipods remove soft tissue | Thick blubber, small scraps and material pressed into sediment remain | >The area around the whale becomes enriched with organic matter}}
+Sharks, hagfish, ratfish, amphipods, and other mobile scavengers detect the carcass and remove soft tissue. Video from whale falls often shows hagfish entering openings and twisting through tissue while larger fish tear from the outside. This phase may last months or years, not hours, depending on the carcass and site. The animals do not consume every resource equally. Thick blubber, small scraps, and material pressed into sediment remain after the major muscles are gone. The area around the whale becomes enriched with organic matter.
+
+{{define: Enrichment opportunist | A second phase supporting dense worms, crustaceans and mollusks | The names are categories imposed by researchers; real communities overlap}}
+That supports dense worms, crustaceans, and mollusks in a second phase often called enrichment opportunist. The names are categories imposed by researchers; real communities overlap. One stage does not switch off on a specific date. The next unresolved question is why a skeleton with little visible flesh can continue feeding life for much longer than the scavenger phase.
 
 ### Bones store an energy reserve
 
@@ -43,17 +46,30 @@ Whale bones contain lipids. In low-oxygen microenvironments, microbes break down
 ### From food island to hard substrate
 
 {{ambient}}
-As bone lipids are exhausted and sulfide production falls, the remaining skeleton can still provide hard surface in an environment dominated by soft sediment. Suspension feeders and other attached organisms may use the bones. Eventually the structure breaks down or becomes buried. The full sequence shows why a whale fall cannot be summarized as sharks eating a carcass. It links surface photosynthesis, animal migration, deep scavenging, microbial metabolism, chemosynthesis, and habitat structure. Smithsonian descriptions use distinct stages to make that succession understandable, while emphasizing that durations vary. A responsibly sourced video should not claim every whale fall lasts the same number of years or hosts the same species. It should also avoid treating a deliberately placed research carcass as identical to every natural event. The measured lesson is already powerful: one whale can subsidize a deep-sea neighborhood for decades. The next episode follows a crab that does something even more deliberate with chemosynthesis—it cultivates bacteria on its own arms.
+As bone lipids are exhausted and sulfide production falls, the remaining skeleton can still provide hard surface in an environment dominated by soft sediment. Suspension feeders and other attached organisms may use the bones. Eventually the structure breaks down or becomes buried. The full sequence shows why a whale fall cannot be summarized as sharks eating a carcass.
+
+{{checklist: WHAT A WHALE FALL LINKS | +Surface photosynthesis | +Animal migration | +Deep scavenging | +Microbial metabolism | +Chemosynthesis | +Habitat structure}}
+It links surface photosynthesis, animal migration, deep scavenging, microbial metabolism, chemosynthesis, and habitat structure. Smithsonian descriptions use distinct stages to make that succession understandable, while emphasizing that durations vary.
+
+{{contrast: WHAT A RESPONSIBLE VIDEO SHOULD NOT CLAIM | is=One whale can subsidize a deep-sea neighborhood for decades | not=That every whale fall lasts the same number of years | not=That a placed research carcass is identical to every natural event}}
+A responsibly sourced video should not claim every whale fall lasts the same number of years or hosts the same species. It should also avoid treating a deliberately placed research carcass as identical to every natural event. The measured lesson is already powerful: one whale can subsidize a deep-sea neighborhood for decades. The next episode follows a crab that does something even more deliberate with chemosynthesis—it cultivates bacteria on its own arms.
 
 ### One body, three ecological chapters
 
 {{stat: 2 | YEARS | The scavenger phase can last up to about two years | Smithsonian}}
+{{steps: THREE ECOLOGICAL CHAPTERS | Mobile scavengers=remove soft tissue, up to about two years | Enrichment opportunist=worms, crustaceans and mollusks use leftovers and nutrient-rich sediment | Sulfophilic=bacteria break down lipids in bones, lasting decades | >The carcass shifts from meal to habitat}}
 The first chapter belongs to mobile scavengers that remove soft tissue. Smithsonian says this phase can last up to about two years. The enrichment-opportunist phase follows as worms, crustaceans, and mollusks use leftovers and nutrient-rich sediment, also on the order of years. The sulfophilic stage can last decades. Bacteria break down lipids in bones and generate reduced chemicals that support additional microbes and animals. The carcass shifts from meal to habitat.
 
 ### Why the phases overlap
 
 {{text}}
-The familiar three-stage whale-fall diagram is a model, not a stopwatch. Mobile scavengers can arrive while soft tissue remains. Smaller organisms use enriched sediment before every large piece is gone. Microbial processes inside bone begin while other feeding continues. Current, oxygen, sediment, carcass size, and local species change the pace. A small carcass in one setting will not reproduce the timeline of a large whale in another.
+The familiar three-stage whale-fall diagram is a model, not a stopwatch.
+
+{{checklist: WHY THE PHASES OVERLAP | ?Mobile scavengers can arrive while soft tissue remains | ?Smaller organisms use enriched sediment before every large piece is gone | ?Microbial processes inside bone begin while other feeding continues}}
+Mobile scavengers can arrive while soft tissue remains. Smaller organisms use enriched sediment before every large piece is gone. Microbial processes inside bone begin while other feeding continues.
+
+{{checklist: WHAT CHANGES THE PACE | ?Current | ?Oxygen | ?Sediment | ?Carcass size | ?Local species}}
+Current, oxygen, sediment, carcass size, and local species change the pace. A small carcass in one setting will not reproduce the timeline of a large whale in another.
 
 {{ambient}}
 The overlap matters because it turns the whale into more than a pile of calories. It changes local chemistry, creates hard structure on soft sediment, and can provide habitat over long periods. The edit should keep one timeline on screen while multiple processes appear together. That avoids the false impression that the ecosystem waits for a clean handoff between chapters. The final image should be the same skeleton at a later time, still functioning as habitat after the dramatic scavenger footage has ended.
@@ -66,7 +82,10 @@ Use the same section of skeleton in each phase so the audience can see the habit
 ### What the camera may miss
 
 {{text}}
-Much of the later whale-fall community is small, slow, microbial, or inside sediment and bone. A dramatic ROV pass can overrepresent large scavengers and underrepresent the processes that last longest. Original diagrams and sourced microscopy stills may explain the later stages better than a montage of sharks. The edit should follow the ecology, not only the largest available footage.
+Much of the later whale-fall community is small, slow, microbial, or inside sediment and bone.
+
+{{contrast: WHAT A DRAMATIC ROV PASS SHOWS | is=Large scavengers | not=The small, slow, microbial processes inside sediment and bone | not=The processes that last longest}}
+A dramatic ROV pass can overrepresent large scavengers and underrepresent the processes that last longest. Original diagrams and sourced microscopy stills may explain the later stages better than a montage of sharks. The edit should follow the ecology, not only the largest available footage.
 
 ### What to notice in the edit
 
@@ -76,7 +95,10 @@ Use a time-lapse structure with the same whale silhouette changing across years.
 ### Evidence limit
 
 {{ambient}}
-Stage names and time ranges are simplified models. Duration depends on whale size, depth, temperature, oxygen, burial, scavenger access, and local community. The phases can overlap rather than switching cleanly. A whale fall supports a rich ecosystem, but it is not accurate to claim that every carcass produces the same species sequence or lasts the same number of years.
+Stage names and time ranges are simplified models.
+
+{{checklist: WHAT DURATION DEPENDS ON | ?Whale size | ?Depth | ?Temperature | ?Oxygen | ?Burial | ?Scavenger access}}
+Duration depends on whale size, depth, temperature, oxygen, burial, scavenger access, and local community. The phases can overlap rather than switching cleanly. A whale fall supports a rich ecosystem, but it is not accurate to claim that every carcass produces the same species sequence or lasts the same number of years.
 
 ### Closing
 

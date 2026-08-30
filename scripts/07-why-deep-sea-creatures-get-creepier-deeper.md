@@ -38,12 +38,18 @@ The strongest transition is not a horror gradient; it is an environmental gradie
 ### The twilight zone still rewards visual camouflage
 
 {{light}}
-Between about 200 and 1,000 meters, faint light remains. Transparency, silvering, counter-illumination, large eyes and nightly migration can all reduce detection. Many animals here are small and delicate even when close-up images make them look dramatic.
+Between about 200 and 1,000 meters, faint light remains. Transparency, silvering, counter-illumination, large eyes and nightly migration can all reduce detection.
+
+{{contrast: THE TWILIGHT ZONE | is=Transparency, silvering, counter-illumination, large eyes and nightly migration | is=Animals that are small and delicate | not=The drama that close-up images imply}}
+Many animals here are small and delicate even when close-up images make them look dramatic.
 
 ### The midnight and abyss favor low-energy survival
 
 {{zones: MIDNIGHT}}
-Below the reach of sunlight, animals cannot depend on photosynthetic production at their own depth. Many wait, drift, scavenge, filter particles or use lures rather than chase prey over long distances. Large mouths and flexible stomachs are useful because the timing and size of the next meal are uncertain.
+Below the reach of sunlight, animals cannot depend on photosynthetic production at their own depth.
+
+{{checklist: HOW THE MIDNIGHT AND ABYSS FEED | ?Wait | ?Drift | ?Scavenge | ?Filter particles | ?Use lures | >Rather than chase prey over long distances}}
+Many wait, drift, scavenge, filter particles or use lures rather than chase prey over long distances. Large mouths and flexible stomachs are useful because the timing and size of the next meal are uncertain.
 
 ### Some of the deepest animals look less monstrous, not more
 
@@ -72,10 +78,19 @@ In the twilight zone, faint light still rewards large eyes, transparency, silver
 ### Why the horror ladder is backwards
 
 {{contrast: THE POPULAR DEPTH CHART | is=A storytelling device | not=A survey | not=A place for gelatinous drifters, deposit feeders, scavengers, sea cucumbers, amphipods, worms and microbes}}
-The popular depth chart usually selects one memorable predator for each band and makes the body designs look progressively more extreme. That is a storytelling device, not a survey. Deeper zones contain predators, but they also contain gelatinous drifters, deposit feeders, scavengers, sea cucumbers, amphipods, worms, microbes, and fish whose bodies are less armored and less visually dramatic. Food often becomes scarcer with depth, so waiting, drifting, conserving energy, and using whatever arrives can matter more than speed or aggression.
+The popular depth chart usually selects one memorable predator for each band and makes the body designs look progressively more extreme. That is a storytelling device, not a survey.
+
+{{checklist: WHAT DEEPER ZONES ALSO CONTAIN | +Gelatinous drifters | +Deposit feeders and scavengers | +Sea cucumbers and amphipods | +Worms and microbes | +Fish that are less armored and less visually dramatic}}
+Deeper zones contain predators, but they also contain gelatinous drifters, deposit feeders, scavengers, sea cucumbers, amphipods, worms, microbes, and fish whose bodies are less armored and less visually dramatic. Food often becomes scarcer with depth, so waiting, drifting, conserving energy, and using whatever arrives can matter more than speed or aggression.
 
 {{descent: 8336 | THE RECORD THAT ENDS THE LADDER}}
-The deepest confirmed fish record also complicates the horror ladder. Snailfish do not look like the final boss in a game. Their soft bodies, reduced ossification, and pressure-compatible chemistry are part of what lets them occupy trenches. Below the likely fish depth boundary, other animals continue. The biological story is not that life becomes more monstrous until nothing can survive. It is that different body plans reach different limits. The episode should use the familiar scary chart as bait, then dismantle it with a broader community. Each time a predator appears, follow it with a non-predatory or low-energy specialist from a similar depth. That structural contrast is the human judgment the automated list would miss.
+The deepest confirmed fish record also complicates the horror ladder. Snailfish do not look like the final boss in a game.
+
+{{contrast: WHAT LETS SNAILFISH OCCUPY TRENCHES | is=Soft bodies | is=Reduced ossification | is=Pressure-compatible chemistry | not=Looking like the final boss in a game}}
+Their soft bodies, reduced ossification, and pressure-compatible chemistry are part of what lets them occupy trenches. Below the likely fish depth boundary, other animals continue. The biological story is not that life becomes more monstrous until nothing can survive.
+
+{{contrast: THE BIOLOGICAL STORY | is=Different body plans reach different limits | not=That life becomes more monstrous until nothing can survive}}
+It is that different body plans reach different limits. The episode should use the familiar scary chart as bait, then dismantle it with a broader community. Each time a predator appears, follow it with a non-predatory or low-energy specialist from a similar depth. That structural contrast is the human judgment the automated list would miss.
 
 ### A depth chart without villains
 
@@ -85,12 +100,18 @@ The final depth chart should replace the usual monster lineup with ecological ro
 ### The deeper-is-worse illusion
 
 {{chain: HOW THE CREEPINESS CURVE IS MADE | Cameras linger on the unusual animal | Editors choose the sharpest teeth | Soft, slow, common organisms get less attention | The internet treats the selected images as a census | >Partly biology, partly camera technology, partly what humans choose to share}}
-Depth videos also suffer from selection bias. Cameras linger on the unusual animal. Editors choose the sharpest teeth. Soft, slow, common organisms receive less attention because they are harder to identify and less likely to become a thumbnail. The internet then treats the selected images as a representative census. This episode should reveal that pipeline. The creepiness curve is partly biology, partly camera technology, and partly what humans choose to share.
+Depth videos also suffer from selection bias. Cameras linger on the unusual animal.
+
+{{contrast: WHY SOFT ORGANISMS GET LESS ATTENTION | is=Harder to identify | is=Less likely to become a thumbnail | not=The sharpest teeth editors choose}}
+Editors choose the sharpest teeth. Soft, slow, common organisms receive less attention because they are harder to identify and less likely to become a thumbnail. The internet then treats the selected images as a representative census. This episode should reveal that pipeline. The creepiness curve is partly biology, partly camera technology, and partly what humans choose to share.
 
 ### The retention payoff
 
 {{contrast: WHAT BELONGS AT THE DEEPEST POINT | is=The limit of confirmed fish | is=A transition to other forms of life | not=The ugliest creature}}
-The deepest point on the chart should not contain the ugliest creature. It should contain the limit of confirmed fish and a transition to other forms of life. That reversal gives the viewer a genuine surprise while correcting the premise. The episode begins as a horror ladder and ends as a lesson in energy budgets, sampling bias, and physiological boundaries. The chart becomes more interesting when the expected monster is replaced by a question: which body plans can keep functioning as pressure rises and food becomes less predictable?
+The deepest point on the chart should not contain the ugliest creature. It should contain the limit of confirmed fish and a transition to other forms of life. That reversal gives the viewer a genuine surprise while correcting the premise.
+
+{{steps: WHERE THE EPISODE ENDS UP | Energy budgets | Sampling bias | Physiological boundaries | >Which body plans keep functioning as pressure rises and food becomes less predictable}}
+The episode begins as a horror ladder and ends as a lesson in energy budgets, sampling bias, and physiological boundaries. The chart becomes more interesting when the expected monster is replaced by a question: which body plans can keep functioning as pressure rises and food becomes less predictable?
 
 ### Final editorial note
 
@@ -100,12 +121,18 @@ A second correction belongs here too. Deeper water does not always mean larger t
 ### What to notice in the edit
 
 {{zones:}}
-Make this a descending counterexample. At each zone, show the trait the viewer expects and then the trait the habitat actually rewards. End on the deepest confirmed fish rather than a dramatic predator. The visual rhythm should slow as the depth increases, matching the shift toward lower-energy life instead of accelerating into a horror-game finale.
+Make this a descending counterexample. At each zone, show the trait the viewer expects and then the trait the habitat actually rewards.
+
+{{contrast: WHAT TO END ON | is=The deepest confirmed fish | not=A dramatic predator | not=A horror-game finale}}
+End on the deepest confirmed fish rather than a dramatic predator. The visual rhythm should slow as the depth increases, matching the shift toward lower-energy life instead of accelerating into a horror-game finale.
 
 ### Evidence limit
 
 {{contrast: WHAT THE RECORD SUPPORTS | is=Deep-sea gigantism in certain groups | is=One filmed snailfish as the deepest confirmed fish | not=That animals generally become larger, more aggressive, or more grotesque with depth | not=A description of every trench community}}
-Some deep animals are large or heavily armed, and deep-sea gigantism occurs in certain groups. That does not mean animals generally become larger, more aggressive, or more grotesque with depth. Sampling also biases what becomes famous: a fanged fish makes a better thumbnail than a sediment-eating sea cucumber. The deepest confirmed fish record is one filmed snailfish; it does not describe every trench community.
+Some deep animals are large or heavily armed, and deep-sea gigantism occurs in certain groups. That does not mean animals generally become larger, more aggressive, or more grotesque with depth. Sampling also biases what becomes famous: a fanged fish makes a better thumbnail than a sediment-eating sea cucumber.
+
+{{contrast: THE DEEPEST CONFIRMED FISH RECORD | is=One filmed snailfish | not=A description of every trench community}}
+The deepest confirmed fish record is one filmed snailfish; it does not describe every trench community.
 
 ### Closing
 

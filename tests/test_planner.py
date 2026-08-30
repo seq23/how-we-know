@@ -38,7 +38,10 @@ check("compare needs two", planner.parse_directive("{{compare: Everest=8849}}") 
 
 print("plans over all scripts")
 INFO = {"stat_card","depth_descent","comparison","zone_column","pressure_gauge",
-        "light_attenuation","world_map","timeline","anatomy_callout","size_ladder"}
+        "light_attenuation","world_map","timeline","anatomy_callout","size_ladder",
+        # extended pack (segments_ext2)
+        "evidence_chain","uncertainty_bar","source_compare","process_steps",
+        "contrast_pair","magnitude_bar","definition_card","checklist_reveal"}
 KNOWN = INFO | {"text_beat","quote_card","ambient_drift"}
 scripts = sorted(glob.glob(os.path.join(os.path.dirname(__file__), "..", "scripts", "*.md")))
 check("found 20 scripts", len(scripts) == 20, str(len(scripts)))

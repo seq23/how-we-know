@@ -7,6 +7,7 @@ segment that would display one.
 """
 import re, json, sys, os
 
+
 WPM = 145
 MIN_BEAT, MAX_BEAT = 3.5, 9.0      # seconds of narration per visual
 NO_REPEAT_WINDOW = 3               # a segment type may not recur within N beats
@@ -123,6 +124,16 @@ def parse_directive(line):
     except Exception:
         return None      # malformed -> ignore, fall back to heuristics
     return None
+
+# The extended pack wraps parse_directive, so it must load AFTER the base
+# definition above exists. Importing it at the top of the module silently
+# produced a no-op graft and left every v2 directive unparsed.
+try:
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import segments_ext2 as _ext2
+    _ext2.install(sys.modules[__name__])
+except Exception:
+    _ext2 = None
 
 # ---------- parsing ----------
 def parse(md):
