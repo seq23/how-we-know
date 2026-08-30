@@ -1,0 +1,29 @@
+# Python
+.venv/
+.venv-tts/
+__pycache__/
+*.pyc
+
+# Rendered video and intermediate frames — regenerable in ~10 min per video,
+# and too large to belong in git history.
+renders/*.mp4
+renders/*.work/
+renders/*.png
+visuals/sample/
+visuals/_ext_test/
+*.log
+
+# Voice reference audio. Deliberately excluded: this is the owner's own voice,
+# and voice biometrics should not live in a repository that could ever be shared
+# or made public. BACK THIS UP SEPARATELY — it is not reproducible.
+voice/*.wav
+voice/*.m4a
+
+# Large source archive kept locally
+source/*.zip
+
+# Local secrets — never commit
+.env
+*.key
+credentials*.json
+token*.json

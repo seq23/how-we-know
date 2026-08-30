@@ -1,0 +1,51 @@
+{
+  "approved_by": "Sequoia",
+  "approved": "2026-08-30",
+  "approval_type": "standing_broad",
+  "selection_rule": "Rank candidates by (search demand / competition). Take the top N per week under the cadence ceiling. Never repeat a published question.",
+  "cadence": {
+    "videos_per_week": 4,
+    "deliberate": true,
+    "note": "Ceiling is intentional. Never raised to clear a backlog."
+  },
+  "admitted_domains": [
+    "Deep sea and ocean science",
+    "Ocean technology, submersibles, ROVs, sonar",
+    "Marine geology, trenches, vents, seafloor mapping",
+    "Expedition and exploration history",
+    "Earth science: weather systems, climate mechanics, geology, volcanology",
+    "Space science and astronomy",
+    "Engineering failures and forensic analysis",
+    "Natural history and animal adaptation",
+    "Archaeology and ancient technology",
+    "Aviation and maritime incident analysis"
+  ],
+  "hard_exclusions": [
+    "Adult or sexual content",
+    "Drugs, substances, or paraphernalia",
+    "Firearms, weapons, explosives",
+    "Gambling, betting, trading signals",
+    "Medical, health, dietary, supplement or mental-health advice",
+    "Financial, investment, tax or legal advice",
+    "Named living private individuals as subject matter",
+    "Named companies framed critically in a way that invites defamation exposure",
+    "Active political controversy, elections, partisan framing",
+    "Religion framed as true or false",
+    "Conspiracy, cryptid, paranormal, or pseudoscience framed as real",
+    "Recent tragedy involving identifiable victims within 12 months",
+    "True crime involving identifiable victims or perpetrators",
+    "Anything requiring third-party footage that is not license-cleared",
+    "Content directed at children (COPPA exposure)",
+    "Dangerous acts, stunts, or anything replicable and harmful"
+  ],
+  "content_rules": [
+    "Every digit-bearing sentence maps to a named public source.",
+    "No claim of personal expertise, credentials, or professional advice.",
+    "Uncertainty and evidence limits stated explicitly where they exist.",
+    "One owner POV line per video, drawn from the POV bank. Never invented.",
+    "Structure rotated; no two consecutive videos share a shape.",
+    "All visuals originally generated or license-cleared with a rights-manifest entry."
+  ],
+  "escalation": "A candidate that is admitted by domain but touches any exclusion is a NAMED STOP for owner review. It is never auto-published.",
+  "new_niche_requirement": "Entering a domain outside 'Deep sea' requires a ~20 minute POV top-up interview before first publish, because tier:specific lines do not transfer."
+}

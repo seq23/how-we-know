@@ -1,0 +1,186 @@
+{
+  "generated": "2026-08-30",
+  "rule": "one POV per video, no reuse, owner's own words only",
+  "assignments": [
+    {
+      "video": "01-why-deep-sea-creatures-look-so-weird",
+      "pov_id": "pov-012",
+      "tier": "specific",
+      "source_answer": 7,
+      "line": "My first thought is never that it's ugly. Ugly is a surface-level judgment. If something survived an environment that extreme for millions of years, the weirdness has a function.",
+      "why": "adaptation: 'ugly is a surface-level judgment'",
+      "tag": "adaptation"
+    },
+    {
+      "video": "02-how-deep-sea-creatures-survive-pressure",
+      "pov_id": "pov-013",
+      "tier": "specific",
+      "source_answer": 7,
+      "line": "I want to know what problem that body is solving.",
+      "why": "adaptation: 'what problem is that body solving'",
+      "tag": "adaptation"
+    },
+    {
+      "video": "03-why-deep-sea-creatures-are-surfacing",
+      "pov_id": "pov-038",
+      "tier": "transferable",
+      "source_answer": 19,
+      "line": "How do we know an animal behaves a certain way when we've seen it three times?",
+      "why": "evidence: conclusions drawn from very few sightings",
+      "tag": "evidence"
+    },
+    {
+      "video": "04-why-deep-sea-creatures-are-so-scary",
+      "pov_id": "pov-010",
+      "tier": "specific",
+      "source_answer": 6,
+      "line": "The monster part is mostly imagination. Most of these animals want nothing to do with us.",
+      "why": "fear: the monster part is imagination",
+      "tag": "fear"
+    },
+    {
+      "video": "05-why-many-deep-sea-creatures-are-red",
+      "pov_id": "pov-016",
+      "tier": "transferable",
+      "source_answer": 9,
+      "line": "It reminds me of companies and systems. Something looks completely irrational when you judge it outside the environment it was built for.",
+      "why": "systems: irrational until you know the environment",
+      "tag": "systems"
+    },
+    {
+      "video": "06-why-some-deep-sea-creatures-are-transparent",
+      "pov_id": "pov-007",
+      "tier": "specific",
+      "source_answer": 4,
+      "line": "Both, honestly. Some of them look completely wrong by every standard we have for what an animal should look like — and I'm still fascinated, because none of it is random.",
+      "why": "fear/fascination: looks wrong, none of it random",
+      "tag": "fear"
+    },
+    {
+      "video": "07-why-deep-sea-creatures-get-creepier-deeper",
+      "pov_id": "pov-011",
+      "tier": "specific",
+      "source_answer": 6,
+      "line": "But being afraid of the deep itself is completely rational. It's freezing, dark, hard to navigate, it crushes equipment, and you cannot breathe. The environment is far more dangerous than whatever creature people are picturing.",
+      "why": "fear: the environment is more dangerous than the creature",
+      "tag": "fear"
+    },
+    {
+      "video": "08-what-creatures-live-in-the-deep-sea",
+      "pov_id": "pov-019",
+      "tier": "specific",
+      "source_answer": 17,
+      "line": "A lot of these animals are smaller and more fragile than the footage suggests. The environment is the giant, not the animal.",
+      "why": "systems: misunderstood as a collection of monsters",
+      "tag": "systems"
+    },
+    {
+      "video": "09-what-is-the-scariest-deep-sea-creature",
+      "pov_id": "pov-009",
+      "tier": "specific",
+      "source_answer": 5,
+      "line": "Anything with huge eyes and that many arms already has a psychological advantage. I don't need to meet one in person.",
+      "why": "fear: huge eyes, many arms, psychological advantage",
+      "tag": "fear"
+    },
+    {
+      "video": "10-what-is-the-deepest-part-of-the-ocean",
+      "pov_id": "pov-003",
+      "tier": "specific",
+      "source_answer": 2,
+      "line": "Thirty-six thousand feet is just a number to me. Everest fitting inside it and still being underwater — that's what makes it land.",
+      "why": "scale: Everest inside it is what makes it land",
+      "tag": "scale"
+    },
+    {
+      "video": "11-what-is-a-dumbo-octopus",
+      "pov_id": "pov-020",
+      "tier": "specific",
+      "source_answer": 10,
+      "line": "It excites me more than it bothers me — but it does bother the evidence-driven part of me.",
+      "why": "systems: the environment is the giant, not the animal",
+      "tag": "unknown"
+    },
+    {
+      "video": "12-what-is-a-frilled-shark",
+      "pov_id": "pov-037",
+      "tier": "transferable",
+      "source_answer": 18,
+      "line": "We're shown the most dramatic thirty seconds out of what may have been hundreds of hours underwater. That doesn't make it fake. It means I want to separate what the camera captured from the story built around it.",
+      "why": "media: the footage is real, the documentary is constructed",
+      "tag": "media"
+    },
+    {
+      "video": "13-how-does-bioluminescence-work-in-the-deep-sea",
+      "pov_id": "pov-015",
+      "tier": "specific",
+      "source_answer": 8,
+      "line": "Some of them light their own undersides to erase their silhouette. That isn't just survival. That's manipulating the information available to everything around them.",
+      "why": "bioluminescence: lighting their undersides to erase a silhouette",
+      "tag": "bioluminescence"
+    },
+    {
+      "video": "14-how-big-is-a-colossal-squid",
+      "pov_id": "pov-008",
+      "tier": "specific",
+      "source_answer": 5,
+      "line": "The giant squid is the one that gets me. Not because I think it's coming for anyone. It's the size, the intelligence, and the fact that it exists around us without us regularly seeing it.",
+      "why": "fear: the giant squid is the one that gets me",
+      "tag": "fear"
+    },
+    {
+      "video": "15-how-do-people-reach-challenger-deep",
+      "pov_id": "pov-034",
+      "tier": "transferable",
+      "source_answer": 15,
+      "line": "Being willing to take a risk doesn't mean everyone else involved understood that risk.",
+      "why": "risk: vision does not cancel engineering",
+      "tag": "risk"
+    },
+    {
+      "video": "16-what-happens-when-a-whale-dies-in-the-deep-ocean",
+      "pov_id": "pov-025",
+      "tier": "specific",
+      "source_answer": 16,
+      "line": "It's far more structurally and biologically complicated than that. Trenches, mountains, vents, currents, entire ecosystems running under conditions that should make life seem impossible.",
+      "why": "unknown: trenches, vents, ecosystems where life should be impossible",
+      "tag": "unknown"
+    },
+    {
+      "video": "17-what-is-a-yeti-crab",
+      "pov_id": "pov-014",
+      "tier": "specific",
+      "source_answer": 8,
+      "line": "Bioluminescence is the one that impresses me most, because they use it for everything — hunting, hiding, communicating, attracting mates, confusing predators.",
+      "why": "bioluminescence: not just surviving, manipulating information",
+      "tag": "bioluminescence"
+    },
+    {
+      "video": "18-why-does-black-smoker-water-not-boil",
+      "pov_id": "pov-017",
+      "tier": "transferable",
+      "source_answer": 9,
+      "line": "Once you understand the pressure something had to survive, every strange feature starts making sense. People judge the visible result without understanding the conditions that created it.",
+      "why": "systems: understand the pressure it had to survive",
+      "tag": "systems"
+    },
+    {
+      "video": "19-what-is-the-deepest-fish-ever-recorded",
+      "pov_id": "pov-043",
+      "tier": "specific",
+      "source_answer": 20,
+      "line": "The deep ocean isn't one subject. It's an entire world sitting underneath the one we think we understand.",
+      "why": "evidence: conclusions from incomplete observations",
+      "tag": "thesis"
+    },
+    {
+      "video": "20-what-is-the-midnight-zone",
+      "pov_id": "pov-005",
+      "tier": "specific",
+      "source_answer": 3,
+      "line": "The ocean being large isn't the unsettling part. Space is large too. It's that you can be inside it with no orientation at all — no horizon, no light, no way to tell up from down.",
+      "why": "disorientation: no horizon, no way to tell up from down",
+      "tag": "disorientation"
+    }
+  ]
+}
