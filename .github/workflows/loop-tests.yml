@@ -1,0 +1,25 @@
+name: loop · tests
+
+on:
+  push:
+    paths: ['loop/**', 'bin/loop-*.sh', '.github/workflows/**', 'scripts/**', 'pov/**']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install the one dependency the tests need
+        run: pip install --quiet pyyaml
+      - name: Loop tests
+        run: python loop/tests/run_all.py
+      - name: Shell syntax
+        run: for f in bin/loop-*.sh; do bash -n "$f"; done

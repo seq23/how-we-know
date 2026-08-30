@@ -1,6 +1,6 @@
 {
   "week": "2026-W35",
-  "generated": "2026-08-30T19:51:24+00:00",
+  "generated": "2026-08-30T20:00:32+00:00",
   "videos_per_week": 4,
   "breaker": "closed",
   "validators": [
@@ -72,16 +72,8 @@
   "approval": {
     "required": true,
     "page": "docs/approve/index.html",
-    "state": "approved",
-    "by": "Sequoia Taylor",
-    "at": "2026-08-30T19:51:26+00:00",
-    "approved": [
-      "01-why-deep-sea-creatures-look-so-weird",
-      "02-how-deep-sea-creatures-survive-pressure",
-      "03-why-deep-sea-creatures-are-surfacing",
-      "04-why-deep-sea-creatures-are-so-scary"
-    ],
-    "held": []
+    "state": "pending",
+    "file": "loop/state/approvals/2026-W35.json"
   },
   "items": [
     {
@@ -94,7 +86,7 @@
       "render": "renders/01-why-deep-sea-creatures-look-so-weird.mp4",
       "source": "authored-inventory",
       "pov_needs_confirmation": true,
-      "status": "approved",
+      "status": "pending-approval",
       "pov_id": "pov-012",
       "pov_bank_line": "My first thought is never that it's ugly. Ugly is a surface-level judgment. If something survived an environment that extreme for millions of years, the weirdness has a function.",
       "pov_script_line": "I used to look at deep-sea animals as a collection of freaks. The source material changed that. Once I matched each feature to a constraint\u2014darkness, pressure, cold, scarce food\u2014the transparent head and oversized mouth stopped looking random and started looking precise.",
@@ -108,10 +100,7 @@
       "attribution_gaps": [
         "Woods Hole"
       ],
-      "planned_beats": 55,
-      "pov_choice": "bank",
-      "pov_final": "My first thought is never that it's ugly. Ugly is a surface-level judgment. If something survived an environment that extreme for millions of years, the weirdness has a function.",
-      "approved_at": "2026-08-30T19:51:26+00:00"
+      "planned_beats": 55
     },
     {
       "slug": "02-how-deep-sea-creatures-survive-pressure",
@@ -123,7 +112,7 @@
       "render": "renders/02-how-deep-sea-creatures-survive-pressure.mp4",
       "source": "authored-inventory",
       "pov_needs_confirmation": true,
-      "status": "approved",
+      "status": "pending-approval",
       "pov_id": "pov-013",
       "pov_bank_line": "I want to know what problem that body is solving.",
       "pov_script_line": "The correction I had to make in my own head was simple: deep-sea animals are not spending their lives holding back an ocean that wants to flatten them. Most are water-rich and live with their internal pressure close to the water around them.",
@@ -138,10 +127,7 @@
         "MBARI",
         "Woods Hole"
       ],
-      "planned_beats": 56,
-      "pov_choice": "bank",
-      "pov_final": "I want to know what problem that body is solving.",
-      "approved_at": "2026-08-30T19:51:26+00:00"
+      "planned_beats": 56
     },
     {
       "slug": "03-why-deep-sea-creatures-are-surfacing",
@@ -153,7 +139,7 @@
       "render": "renders/03-why-deep-sea-creatures-are-surfacing.mp4",
       "source": "authored-inventory",
       "pov_needs_confirmation": true,
-      "status": "approved",
+      "status": "pending-approval",
       "pov_id": "pov-038",
       "pov_bank_line": "How do we know an animal behaves a certain way when we've seen it three times?",
       "pov_script_line": "I understand why one unusual animal feels like a signal. I also know how quickly I can turn one image into a trend when I have not checked the species, time of day, current, condition, or previous records.",
@@ -168,10 +154,7 @@
         "MBARI",
         "Smithsonian"
       ],
-      "planned_beats": 56,
-      "pov_choice": "bank",
-      "pov_final": "How do we know an animal behaves a certain way when we've seen it three times?",
-      "approved_at": "2026-08-30T19:51:26+00:00"
+      "planned_beats": 56
     },
     {
       "slug": "04-why-deep-sea-creatures-are-so-scary",
@@ -183,7 +166,7 @@
       "render": "renders/04-why-deep-sea-creatures-are-so-scary.mp4",
       "source": "authored-inventory",
       "pov_needs_confirmation": true,
-      "status": "approved",
+      "status": "pending-approval",
       "pov_id": "pov-010",
       "pov_bank_line": "The monster part is mostly imagination. Most of these animals want nothing to do with us.",
       "pov_script_line": "The close-up teeth still work on me. Then I check the scale, and the 'monster' is often a small fish using the only feeding equipment that makes sense where a missed meal can matter.",
@@ -198,10 +181,7 @@
         "MBARI",
         "Woods Hole"
       ],
-      "planned_beats": 62,
-      "pov_choice": "bank",
-      "pov_final": "The monster part is mostly imagination. Most of these animals want nothing to do with us.",
-      "approved_at": "2026-08-30T19:51:26+00:00"
+      "planned_beats": 62
     }
   ],
   "unauthored": []

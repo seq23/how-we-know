@@ -1,0 +1,52 @@
+name: loop · approval gate
+
+# The return path from the credentialless approval page. The page cannot write
+# to the repo, so "Approve all" opens a prefilled issue; this workflow reads it,
+# stamps the queue, and closes the issue. Two clicks, no tokens, no server.
+on:
+  issues:
+    types: [opened, edited]
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: loop-state
+  cancel-in-progress: false
+
+jobs:
+  approve:
+    # Only the repository owner may approve a week.
+    if: >
+      startsWith(github.event.issue.title, 'APPROVE ') &&
+      github.event.issue.user.login == github.repository_owner
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Record the approval
+        id: rec
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_USER: ${{ github.event.issue.user.login }}
+        run: |
+          set -uo pipefail
+          WEEK="${ISSUE_TITLE#APPROVE }"
+          printf '%s' "$ISSUE_BODY" > /tmp/approval.txt
+          bin/loop-stage.sh approve loop/approve.py \
+            --week "$WEEK" --body-file /tmp/approval.txt --by "$ISSUE_USER"
+      - name: Acknowledge and close
+        if: success()
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh issue comment "${{ github.event.issue.number }}" \
+            --body "Approved and recorded. The Mac picks this up at Tuesday 02:00 — pull, synthesise, render, receipts, push."
+          gh issue close "${{ github.event.issue.number }}"

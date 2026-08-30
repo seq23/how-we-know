@@ -1,0 +1,34 @@
+name: loop · Fri 09:00 · flip to public
+
+# Flips private uploads to public, but only against a receipt proving the upload
+# happened. Refuses while the circuit breaker is tripped.
+on:
+  schedule:
+    - cron: '0 13 * * 5'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: loop-state
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Flip to public and feed the site
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Absent today: the stage takes a NAMED STOP, never a crash.
+          YT_OAUTH_CLIENT_JSON: ${{ secrets.YT_OAUTH_CLIENT_JSON }}
+          YT_OAUTH_REFRESH_TOKEN: ${{ secrets.YT_OAUTH_REFRESH_TOKEN }}
+        run: bin/loop-stage.sh fri-publish loop/publish.py

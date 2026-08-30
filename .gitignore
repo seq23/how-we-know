@@ -22,8 +22,22 @@ voice/*.m4a
 # Large source archive kept locally
 source/*.zip
 
-# Local secrets — never commit
+# Local secrets — never commit.
+# The whole directory is ignored, not a list of filenames: a deny-list only
+# covers the names someone thought of, and `client_secret.json` matched none of
+# the four patterns that used to live here. Anything credential-shaped goes in
+# .secrets/ and nothing in .secrets/ is ever committable.
+.secrets/
 .env
 *.key
+*.pem
 credentials*.json
-token*.json
+client_secret*.json
+*token*.json
+*_api_key*
+service-account*.json
+
+# Loop: visual plans are regenerated from the frozen work copy in loop/work/,
+# the same way renders/ are. The work copies themselves ARE committed — they are
+# the record of exactly what was spoken in a given week.
+loop/plans/

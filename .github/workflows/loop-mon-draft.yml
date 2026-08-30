@@ -1,0 +1,32 @@
+name: loop · Mon 06:00 · draft, validate, gate
+
+# Builds loop/render_queue.json — the only handoff to the Mac — and rebuilds the
+# one-page approval gate. Any validator failure trips the circuit breaker here,
+# before anything is voiced.
+on:
+  schedule:
+    - cron: '0 10 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: loop-state
+  cancel-in-progress: false
+
+jobs:
+  draft:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Draft the week and publish the approval gate
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: bin/loop-stage.sh mon-draft loop/draft.py

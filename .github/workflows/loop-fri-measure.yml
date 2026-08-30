@@ -1,0 +1,33 @@
+name: loop · Fri 17:00 · measure
+
+# Pulls retention and RPM, writes measurement, and can trip the circuit breaker
+# on the retention floor or on a strike. Sunday's ranking reads what this writes.
+on:
+  schedule:
+    - cron: '0 21 * * 5'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: loop-state
+  cancel-in-progress: false
+
+jobs:
+  measure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Measure last week
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          YT_OAUTH_CLIENT_JSON: ${{ secrets.YT_OAUTH_CLIENT_JSON }}
+          YT_OAUTH_REFRESH_TOKEN: ${{ secrets.YT_OAUTH_REFRESH_TOKEN }}
+        run: bin/loop-stage.sh fri-measure loop/measure.py

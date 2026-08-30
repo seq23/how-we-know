@@ -1,0 +1,34 @@
+{
+  "repo": "seq23/how-we-know",
+  "channel_handle": "@howweknowdeep",
+  "cadence": {
+    "videos_per_week": 4,
+    "deliberate": true,
+    "note": "Mirrors pov/topic-taxonomy.json. NEVER raised to clear a backlog. loop/tests/test_cadence_ceiling.py fails if this drifts from the taxonomy or exceeds 4."
+  },
+  "retention": {
+    "floor_pct": 30.0,
+    "breach_streak_to_trip": 3,
+    "note": "Average view percentage. Three consecutive videos below the floor trips the breaker."
+  },
+  "pov": {
+    "rotation_window": 12
+  },
+  "approval": {
+    "page": "docs/approve/index.html",
+    "minutes_budget": 20,
+    "mechanism": "prefilled GitHub issue",
+    "issue_title_prefix": "APPROVE "
+  },
+  "publishing": {
+    "upload_privacy_first": "private",
+    "public_flip_stage": "fri-publish",
+    "require_receipt_before_public": true
+  },
+  "credentials": {
+    "youtube_data_api_key_env": "YOUTUBE_API_KEY",
+    "youtube_oauth_client_env": "YT_OAUTH_CLIENT_JSON",
+    "youtube_oauth_refresh_env": "YT_OAUTH_REFRESH_TOKEN",
+    "note": "None of these exist yet. Every lane that needs one takes a NAMED STOP, never a crash and never a silent skip."
+  }
+}

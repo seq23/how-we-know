@@ -1,0 +1,414 @@
+{
+  "week": "2026-W35",
+  "generated": "2026-08-30T20:00:21+00:00",
+  "videos_per_week": 4,
+  "cadence_ceiling_note": "Deliberate. Never raised to clear a backlog.",
+  "selected": [
+    {
+      "slug": "01-why-deep-sea-creatures-look-so-weird",
+      "question": "Why deep sea creatures look so weird?",
+      "script": "scripts/01-why-deep-sea-creatures-look-so-weird.md",
+      "source": "authored-inventory",
+      "scored": true,
+      "scored_by": "owner approval at authoring time"
+    },
+    {
+      "slug": "02-how-deep-sea-creatures-survive-pressure",
+      "question": "How deep sea creatures survive the pressure?",
+      "script": "scripts/02-how-deep-sea-creatures-survive-pressure.md",
+      "source": "authored-inventory",
+      "scored": true,
+      "scored_by": "owner approval at authoring time"
+    },
+    {
+      "slug": "03-why-deep-sea-creatures-are-surfacing",
+      "question": "Why deep sea creatures are surfacing?",
+      "script": "scripts/03-why-deep-sea-creatures-are-surfacing.md",
+      "source": "authored-inventory",
+      "scored": true,
+      "scored_by": "owner approval at authoring time"
+    },
+    {
+      "slug": "04-why-deep-sea-creatures-are-so-scary",
+      "question": "Why deep sea creatures are so scary?",
+      "script": "scripts/04-why-deep-sea-creatures-are-so-scary.md",
+      "source": "authored-inventory",
+      "scored": true,
+      "scored_by": "owner approval at authoring time"
+    }
+  ],
+  "shortfall": 0,
+  "inventory_remaining": 16,
+  "competition_scoring": {
+    "available": false,
+    "why": "Needs a YouTube Data API key. Until one exists the mined list below is demand evidence only and is never auto-promoted into a publishing decision."
+  },
+  "advisory_candidates": [
+    {
+      "query": "how do scientists know so much",
+      "domain": "method-evidence",
+      "seed_hits": 26,
+      "is_question": true,
+      "demand_score": 52.0,
+      "competition": null,
+      "scored": false
+    },
+    {
+      "query": "what lives in the deep",
+      "domain": "depth-and-zones",
+      "seed_hits": 26,
+      "is_question": true,
+      "demand_score": 52.0,
+      "competition": null,
+      "scored": false
+    },
+    {
+      "query": "how do scientists know how old something is",
+      "domain": "method-evidence",
+      "seed_hits": 14,
+      "is_question": true,
+      "demand_score": 28.0,
+      "competition": null,
+      "scored": false
+    },
+    {
+      "query": "why deep sea creatures",
+      "domain": "deep-sea-biology",
+      "seed_hits": 14,
+      "is_question": true,
+      "demand_score": 28.0,
+      "competition": null,
+      "scored": false
+    },
+    {
+      "query": "what lives in the deep sea",
+      "domain": "depth-and-zones",
+      "seed_hits": 13,
+      "is_question": true,
+      "demand_score": 26.0,
+      "competition": null,
+      "scored": false
+    },
+    {
+      "query": "why deep sea",
+      "domain": "depth-and-zones",
+      "seed_hits": 25,
+      "is_question": true,
+      "demand_score": 22.0,
+      "competition": null,
+      "scored": false
+    },
+    {
+      "query": "how do scientists know about other galaxies",
+      "domain": "space",
+      "seed_hits": 11,
+      "is_question": true,
+      "demand_score": 22.0,
+      "competition": null,
+      "scored": false
+    },
+    {
+      "query": "how do scientists know about other planets",
+      "domain": "space",
+      "seed_hits": 10,
+      "is_question": true,
+      "demand_score": 20.0,
+      "competition": null,
+      "scored": false
+    },
+    {
+      "query": "how do scientists know how old the earth is",
+      "domain": "method-evidence",
+      "seed_hits": 7,
+      "is_question": true,
+      "demand_score": 14.0,
+      "competition": null,
+      "scored": false
+    },
+    {
+      "query": "how do scientists know how big the universe is",
+      "domain": "space",
+      "seed_hits": 7,
+      "is_question": true,
+      "demand_score": 14.0,
+      "competition": null,
+      "scored": false
+    },
+    {
+      "query": "what lives in the deep ocean",
+      "domain": "depth-and-zones",
+      "seed_hits": 7,
+      "is_question": true,
+      "demand_score": 14.0,
+      "competition": null,
+      "scored": false
+    },
+    {
+      "query": "deep ocean pressure",
+      "domain": "depth-and-zones",
+      "seed_hits": 22,
+      "is_question": false,
+      "demand_score": 12.1,
+      "competition": null,
+      "scored": false
+    },
+    {
+      "query": "how do scientists know what planets are made of",
+      "domain": "space",
+      "seed_hits": 6,
+      "is_question": true,
+      "demand_score": 12.0,
+      "competition": null,
+      "scored": false
+    },
+    {
+      "query": "how do scientists know what is inside the earth",
+      "domain": "method-evidence",
+      "seed_hits": 6,
+      "is_question": true,
+      "demand_score": 12.0,
+      "competition": null,
+      "scored": false
+    },
+    {
+      "query": "whale fall the madrean",
+      "domain": "deep-sea-biology",
+      "seed_hits": 9,
+      "is_question": false,
+      "demand_score": 11.25,
+      "competition": null,
+      "scored": false
+    },
+    {
+      "query": "midnight zone in ocean",
+      "domain": "depth-and-zones",
+      "seed_hits": 9,
+      "is_question": false,
+      "demand_score": 11.25,
+      "competition": null,
+      "scored": false
+    },
+    {
+      "query": "hydrothermal vents video",
+      "domain": "pressure-physics",
+      "seed_hits": 20,
+      "is_question": false,
+      "demand_score": 11.0,
+      "competition": null,
+      "scored": false
+    },
+    {
+      "query": "how do scientists know the age of the universe",
+      "domain": "space",
+      "seed_hits": 5,
+      "is_question": true,
+      "demand_score": 10.0,
+      "competition": null,
+      "scored": false
+    },
+    {
+      "query": "how do scientists know the age of fossils",
+      "domain": "method-evidence",
+      "seed_hits": 5,
+      "is_question": true,
+      "demand_score": 10.0,
+      "competition": null,
+      "scored": false
+    },
+    {
+      "query": "why deep sea creatures are scary",
+      "domain": "deep-sea-biology",
+      "seed_hits": 5,
+      "is_question": true,
+      "demand_score": 10.0,
+      "competition": null,
+      "scored": false
+    },
+    {
+      "query": "why deep sea creatures are weird",
+      "domain": "deep-sea-biology",
+      "seed_hits": 5,
+      "is_question": true,
+      "demand_score": 10.0,
+      "competition": null,
+      "scored": false
+    },
+    {
+      "query": "hydrothermal vents life",
+      "domain": "pressure-physics",
+      "seed_hits": 18,
+      "is_question": false,
+      "demand_score": 9.9,
+      "competition": null,
+      "scored": false
+    },
+    {
+      "query": "midnight zone creatures",
+      "domain": "deep-sea-biology",
+      "seed_hits": 18,
+      "is_question": false,
+      "demand_score": 9.9,
+      "competition": null,
+      "scored": false
+    },
+    {
+      "query": "how do scientists know the layers of the earth",
+      "domain": "method-evidence",
+      "seed_hits": 4,
+      "is_question": true,
+      "demand_score": 8.0,
+      "competition": null,
+      "scored": false
+    },
+    {
+      "query": "how do scientists know what dinosaurs looked like",
+      "domain": "method-evidence",
+      "seed_hits": 4,
+      "is_question": true,
+      "demand_score": 8.0,
+      "competition": null,
+      "scored": false
+    },
+    {
+      "query": "how do scientists know what dinosaurs sound like",
+      "domain": "method-evidence",
+      "seed_hits": 4,
+      "is_question": true,
+      "demand_score": 8.0,
+      "competition": null,
+      "scored": false
+    },
+    {
+      "query": "why deep sea creatures are coming out",
+      "domain": "deep-sea-biology",
+      "seed_hits": 4,
+      "is_question": true,
+      "demand_score": 8.0,
+      "competition": null,
+      "scored": false
+    },
+    {
+      "query": "why deep sea divers use helium",
+      "domain": "depth-and-zones",
+      "seed_hits": 4,
+      "is_question": true,
+      "demand_score": 8.0,
+      "competition": null,
+      "scored": false
+    },
+    {
+      "query": "how deep is the ocean",
+      "domain": "depth-and-zones",
+      "seed_hits": 4,
+      "is_question": true,
+      "demand_score": 8.0,
+      "competition": null,
+      "scored": false
+    },
+    {
+      "query": "whale fall video",
+      "domain": "deep-sea-biology",
+      "seed_hits": 13,
+      "is_question": false,
+      "demand_score": 7.15,
+      "competition": null,
+      "scored": false
+    },
+    {
+      "query": "hadal abyssal zone eng sub",
+      "domain": "depth-and-zones",
+      "seed_hits": 5,
+      "is_question": false,
+      "demand_score": 6.25,
+      "competition": null,
+      "scored": false
+    },
+    {
+      "query": "how deep is the deepest part of the ocean",
+      "domain": "depth-and-zones",
+      "seed_hits": 3,
+      "is_question": true,
+      "demand_score": 6.0,
+      "competition": null,
+      "scored": false
+    },
+    {
+      "query": "what is deep sea fragment in fisch",
+      "domain": "depth-and-zones",
+      "seed_hits": 3,
+      "is_question": true,
+      "demand_score": 6.0,
+      "competition": null,
+      "scored": false
+    },
+    {
+      "query": "why deep sea creatures are big",
+      "domain": "deep-sea-biology",
+      "seed_hits": 3,
+      "is_question": true,
+      "demand_score": 6.0,
+      "competition": null,
+      "scored": false
+    },
+    {
+      "query": "what is whale fall",
+      "domain": "deep-sea-biology",
+      "seed_hits": 3,
+      "is_question": true,
+      "demand_score": 6.0,
+      "competition": null,
+      "scored": false
+    },
+    {
+      "query": "midnight zone 1997",
+      "domain": "depth-and-zones",
+      "seed_hits": 10,
+      "is_question": false,
+      "demand_score": 5.5,
+      "competition": null,
+      "scored": false
+    },
+    {
+      "query": "challenger deep point of no return",
+      "domain": "depth-and-zones",
+      "seed_hits": 4,
+      "is_question": false,
+      "demand_score": 5.0,
+      "competition": null,
+      "scored": false
+    },
+    {
+      "query": "deep sea creatures horror",
+      "domain": "deep-sea-biology",
+      "seed_hits": 4,
+      "is_question": false,
+      "demand_score": 5.0,
+      "competition": null,
+      "scored": false
+    },
+    {
+      "query": "challenger deep mariana trench",
+      "domain": "depth-and-zones",
+      "seed_hits": 4,
+      "is_question": false,
+      "demand_score": 5.0,
+      "competition": null,
+      "scored": false
+    },
+    {
+      "query": "whale carcass deep sea",
+      "domain": "deep-sea-biology",
+      "seed_hits": 4,
+      "is_question": false,
+      "demand_score": 5.0,
+      "competition": null,
+      "scored": false
+    }
+  ],
+  "candidate_skips": {
+    "already_published": 0,
+    "already_authored": 2,
+    "excluded": 13
+  },
+  "owner_action": "Open docs/approve/ \u2014 approve, or swap any row for an advisory candidate. Five minutes."
+}

@@ -1,0 +1,35 @@
+name: loop · Sun 06:00 · rank topics
+
+# The brain half of the loop. Mines demand, ranks it, and proposes the week.
+# Cron is UTC; 10:00 UTC is 06:00 America/New_York during EDT (11:00 UTC in EST
+# — the loop is a weekly cadence, so a one-hour DST drift is immaterial).
+on:
+  schedule:
+    - cron: '0 10 * * 0'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: loop-state
+  cancel-in-progress: false
+
+jobs:
+  rank:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Rank next week's topics
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Absent today. Its absence is what makes the competition lane a
+          # NAMED STOP instead of a demand-only publishing decision.
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: bin/loop-stage.sh sun-rank loop/rank.py
