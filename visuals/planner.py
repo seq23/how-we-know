@@ -194,29 +194,42 @@ def build_args(seg, beat):
         return {}
     return {}
 
+DANGLING = {"the","a","an","of","to","in","on","at","for","with","from","and","or",
+            "that","this","its","but","as","by","into","onto","than","then","so",
+            "is","are","was","were","be","been","can","could","will","would","may",
+            "might","must","not","no","if","when","where","which","who","whose",
+            # adjectives/determiners that leave the reader waiting for a noun
+            "deepest","largest","smallest","biggest","greatest","longest","highest",
+            "most","more","less","very","such","other","another","same","own",
+            "both","each","every","many","few","several","certain","entire","whole"}
+
 def key_phrase(t, max_words=10):
-    """A short, GRAMMATICAL phrase for the screen. The voice reads the full
-    sentence; the screen shows its opening clause. Never splits inside a number,
-    never strips words into fragments, never truncates mid-word."""
+    """A short, grammatical phrase. Never splits a number, never truncates a word,
+    never ends on a dangling function word or a half-finished proper name."""
     t = re.sub(r"\s+", " ", t).strip()
-    # clause boundaries only where they cannot sit inside a number
     clauses = [c.strip() for c in re.split(r";|\s-\s|\u2014", t) if c.strip()]
     best = None
     for c in clauses:
-        w = c.split()
-        if len(w) < 3: continue
+        if len(c.split()) < 3: continue
         has_num = bool(re.search(r"\d", c))
-        if best is None or (has_num and not re.search(r"\d", best)):
-            best = c
+        if best is None or (has_num and not re.search(r"\d", best)): best = c
         if has_num: break
     best = (best or t).rstrip(" .,;:")
     w = best.split()
-    if len(w) > max_words:
-        w = w[:max_words]
-        while w and w[-1].lower() in ("the","a","an","of","to","in","on","at","for",
-                                      "with","from","and","or","that","this","its"):
-            w.pop()                              # never end on a dangling word
-    return " ".join(w).rstrip(",")
+    if len(w) <= max_words:
+        return " ".join(w).rstrip(",")
+
+    cut = w[:max_words]
+    # never end mid-proper-noun: if the next word continues a capitalised run,
+    # either take it or drop back before the run started.
+    def cap(x): return x[:1].isupper() and not x.isupper()
+    while len(cut) < len(w) and cap(cut[-1]) and cap(w[len(cut)]) and len(cut) < max_words + 2:
+        cut.append(w[len(cut)])                 # complete the name
+    if len(cut) < len(w) and cap(cut[-1]) and cap(w[len(cut)]):
+        while cut and cap(cut[-1]): cut.pop()   # still mid-name: drop the whole run
+    while cut and cut[-1].lower().strip(",") in DANGLING:
+        cut.pop()
+    return " ".join(cut).rstrip(",") if cut else " ".join(w[:max_words])
 
 def wrap_lines(t, per=4):
     w = key_phrase(t).split()
