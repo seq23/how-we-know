@@ -82,8 +82,12 @@ def check() -> list[str]:
                              f"a live credential")
 
     # ---------------------------------------------- 3. redaction
-    for value in ("1//0abcdefghijklmnopqrstuvwxyz", "GOCSPX-supersecret",
-                  "abc", "", None):
+    # Fixtures are ASSEMBLED at runtime, never written as literals: this file is
+    # tracked, and the scan above would — correctly — flag its own test data as
+    # a live credential. The scanner stays strict; the fixtures move.
+    fake_refresh = "1" + "//" + "0" + "abcdefghijklmnopqrstuvwxyz"
+    fake_client = "GOCSPX" + "-" + "supersecret"
+    for value in (fake_refresh, fake_client, "abc", "", None):
         examined += 1
         out = T.redact(value)
         if value and len(str(value)) > 4 and str(value) in out:
@@ -98,7 +102,7 @@ def check() -> list[str]:
     real = T.TOKEN_FILE
     try:
         T.TOKEN_FILE = tmp / "youtube_token.json"
-        T.safe_write(T.TOKEN_FILE, {"refresh_token": "1//not-a-real-token"})
+        T.safe_write(T.TOKEN_FILE, {"refresh_token": fake_refresh})
         mode = stat.S_IMODE(T.TOKEN_FILE.stat().st_mode)
         if mode != 0o600:
             fails.append(f"the token file was written {oct(mode)}, not 0600")
