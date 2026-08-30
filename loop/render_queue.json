@@ -1,7 +1,7 @@
 {
   "week": "2026-W35",
-  "generated": "2026-08-30T20:00:32+00:00",
-  "videos_per_week": 4,
+  "generated": "2026-08-30T21:13:35+00:00",
+  "videos_per_week": 2,
   "breaker": "closed",
   "validators": [
     {
@@ -24,163 +24,128 @@
     },
     {
       "validator": "V3 taxonomy",
-      "examined": 4,
+      "examined": 2,
       "status": "PASS",
       "failures": [],
       "notes": []
     },
     {
       "validator": "V4 pov",
-      "examined": 4,
+      "examined": 2,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "01-why-deep-sea-creatures-look-so-weird: script POV is an editorial paraphrase, not a bank line \u2014 owner confirmation required (this is the Monday 15-minute step, not a defect)",
-        "02-how-deep-sea-creatures-survive-pressure: script POV is an editorial paraphrase, not a bank line \u2014 owner confirmation required (this is the Monday 15-minute step, not a defect)",
-        "03-why-deep-sea-creatures-are-surfacing: script POV is an editorial paraphrase, not a bank line \u2014 owner confirmation required (this is the Monday 15-minute step, not a defect)",
-        "04-why-deep-sea-creatures-are-so-scary: script POV is an editorial paraphrase, not a bank line \u2014 owner confirmation required (this is the Monday 15-minute step, not a defect)"
+        "14-how-big-is-a-colossal-squid: script POV is an editorial paraphrase, not a bank line \u2014 owner confirmation required (this is the Monday 15-minute step, not a defect)",
+        "15-how-do-people-reach-challenger-deep: script POV is an editorial paraphrase, not a bank line \u2014 owner confirmation required (this is the Monday 15-minute step, not a defect)"
       ]
     },
     {
       "validator": "V5 sources-present",
-      "examined": 4,
+      "examined": 2,
       "status": "PASS",
       "failures": [],
       "notes": []
     },
     {
       "validator": "V6 attribution (soft)",
-      "examined": 4,
-      "status": "PASS",
-      "failures": [],
-      "notes": [
-        "01-why-deep-sea-creatures-look-so-weird: narration names Woods Hole with no matching ## Sources entry",
-        "02-how-deep-sea-creatures-survive-pressure: narration names MBARI, Woods Hole with no matching ## Sources entry",
-        "03-why-deep-sea-creatures-are-surfacing: narration names MBARI, Smithsonian with no matching ## Sources entry",
-        "04-why-deep-sea-creatures-are-so-scary: narration names MBARI, Woods Hole with no matching ## Sources entry"
-      ]
-    },
-    {
-      "validator": "V7 plans",
-      "examined": 4,
+      "examined": 2,
       "status": "PASS",
       "failures": [],
       "notes": []
+    },
+    {
+      "validator": "V7 plans",
+      "examined": 2,
+      "status": "PASS",
+      "failures": [],
+      "notes": []
+    },
+    {
+      "validator": "V8 source-urls",
+      "examined": 0,
+      "status": "N/A(nothing generated)",
+      "failures": [],
+      "notes": [
+        "no generated scripts this week; nothing to fetch"
+      ]
     }
   ],
   "validators_passed": true,
   "approval": {
-    "required": true,
+    "required": false,
+    "mode": "notified, not asked",
     "page": "docs/approve/index.html",
-    "state": "pending",
-    "file": "loop/state/approvals/2026-W35.json"
+    "state": "auto-approved",
+    "override_until": "Tuesday 02:00, when the Mac starts rendering"
+  },
+  "cadence": {
+    "videos_per_week": 2,
+    "why": "configured default (2/week)"
+  },
+  "runway": {
+    "unpublished_scripts": 20,
+    "publishable": 10,
+    "basis": "publish queue",
+    "videos_per_week": 2,
+    "weeks_remaining": 5.0,
+    "warn_below_weeks": 4.0,
+    "critical_below_weeks": 2.0,
+    "level": "ok",
+    "never_go_dark": true,
+    "message": "5.0 weeks of queue at 2/week (10 publishable of 20 on disk)."
+  },
+  "authoring": {
+    "generated_this_week": 0,
+    "cost_usd": 0.0,
+    "model": "anthropic/claude-sonnet-4.5"
   },
   "items": [
     {
-      "slug": "01-why-deep-sea-creatures-look-so-weird",
-      "question": "Why deep sea creatures look so weird?",
-      "script": "scripts/01-why-deep-sea-creatures-look-so-weird.md",
-      "work_copy": "loop/work/01-why-deep-sea-creatures-look-so-weird.md",
-      "audio_dir": "audio/01-why-deep-sea-creatures-look-so-weird",
-      "plan": "loop/plans/01-why-deep-sea-creatures-look-so-weird.json",
-      "render": "renders/01-why-deep-sea-creatures-look-so-weird.mp4",
+      "slug": "14-how-big-is-a-colossal-squid",
+      "question": "How big is a colossal squid?",
+      "script": "scripts/14-how-big-is-a-colossal-squid.md",
+      "generated": false,
+      "author_cost_usd": null,
+      "author_model": null,
+      "pov_id": "pov-008",
+      "pov_line": "The giant squid is the one that gets me. Not because I think it's coming for anyone. It's the size, the intelligence, and the fact that it exists around us without us regularly seeing it.",
+      "pov_matched_by": "hand assignment in pov/pov-assignments.json",
+      "work_copy": "loop/work/14-how-big-is-a-colossal-squid.md",
+      "audio_dir": "audio/14-how-big-is-a-colossal-squid",
+      "plan": "loop/plans/14-how-big-is-a-colossal-squid.json",
+      "render": "renders/14-how-big-is-a-colossal-squid.mp4",
       "source": "authored-inventory",
+      "status": "queued",
       "pov_needs_confirmation": true,
-      "status": "pending-approval",
-      "pov_id": "pov-012",
-      "pov_bank_line": "My first thought is never that it's ugly. Ugly is a surface-level judgment. If something survived an environment that extreme for millions of years, the weirdness has a function.",
-      "pov_script_line": "I used to look at deep-sea animals as a collection of freaks. The source material changed that. Once I matched each feature to a constraint\u2014darkness, pressure, cold, scarce food\u2014the transparent head and oversized mouth stopped looking random and started looking precise.",
-      "source_count": 5,
-      "sources_cited": [
-        "NOAA",
-        "MBARI",
-        "Woods Hole",
-        "Smithsonian"
-      ],
-      "attribution_gaps": [
-        "Woods Hole"
-      ],
-      "planned_beats": 55
-    },
-    {
-      "slug": "02-how-deep-sea-creatures-survive-pressure",
-      "question": "How deep sea creatures survive the pressure?",
-      "script": "scripts/02-how-deep-sea-creatures-survive-pressure.md",
-      "work_copy": "loop/work/02-how-deep-sea-creatures-survive-pressure.md",
-      "audio_dir": "audio/02-how-deep-sea-creatures-survive-pressure",
-      "plan": "loop/plans/02-how-deep-sea-creatures-survive-pressure.json",
-      "render": "renders/02-how-deep-sea-creatures-survive-pressure.mp4",
-      "source": "authored-inventory",
-      "pov_needs_confirmation": true,
-      "status": "pending-approval",
-      "pov_id": "pov-013",
-      "pov_bank_line": "I want to know what problem that body is solving.",
-      "pov_script_line": "The correction I had to make in my own head was simple: deep-sea animals are not spending their lives holding back an ocean that wants to flatten them. Most are water-rich and live with their internal pressure close to the water around them.",
+      "pov_bank_line": "The giant squid is the one that gets me. Not because I think it's coming for anyone. It's the size, the intelligence, and the fact that it exists around us without us regularly seeing it.",
+      "pov_script_line": "The hardest part of this script was refusing the biggest number on the internet. A measured specimen and a projected maximum are not the same thing.",
       "source_count": 4,
-      "sources_cited": [
-        "NOAA",
-        "MBARI",
-        "Woods Hole",
-        "Smithsonian"
-      ],
-      "attribution_gaps": [
-        "MBARI",
-        "Woods Hole"
-      ],
-      "planned_beats": 56
+      "sources_cited": [],
+      "attribution_gaps": [],
+      "planned_beats": 57
     },
     {
-      "slug": "03-why-deep-sea-creatures-are-surfacing",
-      "question": "Why deep sea creatures are surfacing?",
-      "script": "scripts/03-why-deep-sea-creatures-are-surfacing.md",
-      "work_copy": "loop/work/03-why-deep-sea-creatures-are-surfacing.md",
-      "audio_dir": "audio/03-why-deep-sea-creatures-are-surfacing",
-      "plan": "loop/plans/03-why-deep-sea-creatures-are-surfacing.json",
-      "render": "renders/03-why-deep-sea-creatures-are-surfacing.mp4",
+      "slug": "15-how-do-people-reach-challenger-deep",
+      "question": "How do people reach Challenger Deep?",
+      "script": "scripts/15-how-do-people-reach-challenger-deep.md",
+      "generated": false,
+      "author_cost_usd": null,
+      "author_model": null,
+      "pov_id": "pov-034",
+      "pov_line": "Being willing to take a risk doesn't mean everyone else involved understood that risk.",
+      "pov_matched_by": "hand assignment in pov/pov-assignments.json",
+      "work_copy": "loop/work/15-how-do-people-reach-challenger-deep.md",
+      "audio_dir": "audio/15-how-do-people-reach-challenger-deep",
+      "plan": "loop/plans/15-how-do-people-reach-challenger-deep.json",
+      "render": "renders/15-how-do-people-reach-challenger-deep.mp4",
       "source": "authored-inventory",
+      "status": "queued",
       "pov_needs_confirmation": true,
-      "status": "pending-approval",
-      "pov_id": "pov-038",
-      "pov_bank_line": "How do we know an animal behaves a certain way when we've seen it three times?",
-      "pov_script_line": "I understand why one unusual animal feels like a signal. I also know how quickly I can turn one image into a trend when I have not checked the species, time of day, current, condition, or previous records.",
-      "source_count": 4,
-      "sources_cited": [
-        "NOAA",
-        "MBARI",
-        "Woods Hole",
-        "Smithsonian"
-      ],
-      "attribution_gaps": [
-        "MBARI",
-        "Smithsonian"
-      ],
-      "planned_beats": 56
-    },
-    {
-      "slug": "04-why-deep-sea-creatures-are-so-scary",
-      "question": "Why deep sea creatures are so scary?",
-      "script": "scripts/04-why-deep-sea-creatures-are-so-scary.md",
-      "work_copy": "loop/work/04-why-deep-sea-creatures-are-so-scary.md",
-      "audio_dir": "audio/04-why-deep-sea-creatures-are-so-scary",
-      "plan": "loop/plans/04-why-deep-sea-creatures-are-so-scary.json",
-      "render": "renders/04-why-deep-sea-creatures-are-so-scary.mp4",
-      "source": "authored-inventory",
-      "pov_needs_confirmation": true,
-      "status": "pending-approval",
-      "pov_id": "pov-010",
-      "pov_bank_line": "The monster part is mostly imagination. Most of these animals want nothing to do with us.",
-      "pov_script_line": "The close-up teeth still work on me. Then I check the scale, and the 'monster' is often a small fish using the only feeding equipment that makes sense where a missed meal can matter.",
+      "pov_bank_line": "Being willing to take a risk doesn't mean everyone else involved understood that risk.",
+      "pov_script_line": "I had to delete a cleaner title because it stopped being true. That is exactly the kind of correction this channel needs to make before the audience makes it for us.",
       "source_count": 5,
-      "sources_cited": [
-        "NOAA",
-        "MBARI",
-        "Woods Hole",
-        "Smithsonian"
-      ],
-      "attribution_gaps": [
-        "MBARI",
-        "Woods Hole"
-      ],
+      "sources_cited": [],
+      "attribution_gaps": [],
       "planned_beats": 62
     }
   ],

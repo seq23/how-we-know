@@ -1,34 +1,6 @@
 {
-  "checked": "2026-08-30T20:00:31+00:00",
-  "scripts_with_gaps": 4,
-  "gaps": [
-    {
-      "slug": "01-why-deep-sea-creatures-look-so-weird",
-      "missing_from_sources": [
-        "Woods Hole"
-      ]
-    },
-    {
-      "slug": "02-how-deep-sea-creatures-survive-pressure",
-      "missing_from_sources": [
-        "MBARI",
-        "Woods Hole"
-      ]
-    },
-    {
-      "slug": "03-why-deep-sea-creatures-are-surfacing",
-      "missing_from_sources": [
-        "MBARI",
-        "Smithsonian"
-      ]
-    },
-    {
-      "slug": "04-why-deep-sea-creatures-are-so-scary",
-      "missing_from_sources": [
-        "MBARI",
-        "Woods Hole"
-      ]
-    }
-  ],
+  "checked": "2026-08-30T21:13:34+00:00",
+  "scripts_with_gaps": 0,
+  "gaps": [],
   "fix": "Add the named body's own URL to that script's ## Sources list. This validator turns green on its own once it is there."
 }

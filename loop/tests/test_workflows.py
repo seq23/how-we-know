@@ -18,9 +18,10 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 WF = os.path.join(ROOT, ".github", "workflows")
 
 REQUIRED_STAGES = {
+    "loop-sat-score.yml": "loop/score.py",
     "loop-sun-rank.yml": "loop/rank.py",
     "loop-mon-draft.yml": "loop/draft.py",
-    "loop-approve.yml": "loop/approve.py",
+    "loop-override.yml": "loop/override.py",
     "loop-fri-publish.yml": "loop/publish.py",
     "loop-fri-measure.yml": "loop/measure.py",
 }

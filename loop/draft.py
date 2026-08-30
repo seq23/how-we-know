@@ -1,24 +1,24 @@
-"""Monday 06:00 — assemble the week, validate it, publish the approval gate.
+"""Monday 06:00 - assemble the week, author what is missing, validate, publish.
 
-Output: `loop/render_queue.json` — **the only handoff to the Mac.** Git is the
-message bus; there is no server and no webhook. Whatever this file says on
-Tuesday 02:00 is what gets voiced and rendered.
+Output: `loop/render_queue.json` - the only handoff to the Mac.
 
-The stage does three things:
+Nothing here waits on the owner. Topics were picked automatically on Sunday and
+POV lines were matched from her bank, which IS her approved voice. This stage:
 
-1. **Assemble.** For each approved topic, resolve the authored script, its POV
-   assignment, its sources and its planned beat count. Where a topic has no
-   authored script, write a research brief and take an AUTHOR_REQUIRED named
-   stop for that row only — the rest of the week still ships.
+1. **Assembles** every picked topic that already has an authored script.
+2. **Authors** the rest through `loop/author.py` (OpenRouter). A generated
+   script is validated at FULL strength - the validators are not relaxed
+   because a machine wrote it, they matter more, and V8 fetches every citation
+   because a fabricated URL is an LLM's signature failure.
+3. **Validates** the week. Any hard failure trips the circuit breaker.
+4. **Publishes the dashboard** at `docs/approve/` - what was picked, what was
+   drafted, what it cost, with a Drop button. Read-only by default. Nothing
+   blocks on it.
 
-2. **Validate.** Run all six validators (`loop/validate.py`). *Any* failure
-   trips the circuit breaker with cause `validator`, which halts publishing
-   while leaving drafting and rendering intact.
-
-3. **Gate.** Regenerate `docs/approve/index.html` with this week's four rows
-   inlined, so the owner's approval is one page, four POV confirmations and one
-   button.
+`AUTHOR_REQUIRED` is now the *fallback*, reached only when generation fails or
+its output fails validation - not the normal path.
 """
+
 from __future__ import annotations
 
 import sys
@@ -27,6 +27,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import breaker  # noqa: E402
+import author  # noqa: E402
+import cadence  # noqa: E402
 import gate  # noqa: E402
 import ledger  # noqa: E402
 import validate  # noqa: E402
@@ -88,7 +90,7 @@ def brief_for(topic: dict, week: str) -> Path:
 def main() -> None:
     cfg = config()
     week = week_id()
-    per_week = cfg["cadence"]["videos_per_week"]
+    per_week, cadence_why = cadence.effective(explain=True)
 
     with Stage("mon-draft", week,
                zero_work_hint="loop/next_topics.json selected nothing. Run "
@@ -103,24 +105,56 @@ def main() -> None:
             st.note(f"next_topics.json is for {topics['week']}, today is {week}"
                     " — using it anyway (a re-run inside the same cycle)")
 
-        # ---- 1. assemble -------------------------------------------------
-        items, unauthored = [], []
+        # ---- 1. assemble, authoring whatever is missing --------------
+        items, unauthored, authored_cost = [], [], 0.0
         for t in topics["selected"][:per_week]:
             script = ROOT / t["script"] if t.get("script") else None
+
+            if t.get("needs_authoring") and (script is None or not script.exists()):
+                pov = {"pov_id": t.get("pov_id"), "line": t.get("pov_line", "")}
+                if not pov["line"]:
+                    unauthored.append(t)
+                    st.note(f"{t['slug']}: no POV line matched; not authored")
+                    continue
+                try:
+                    res = author.draft(t["question"], t["slug"], pov)
+                except author.AuthorStop as e:
+                    # Named, expected, and never a crash. The week continues on
+                    # whatever inventory covers.
+                    unauthored.append({**t, "author_stop": e.code,
+                                       "author_message": e.message})
+                    st.note(f"{t['slug']}: NAMED STOP [{e.code}] {e.message}")
+                    continue
+                authored_cost += res.get("cost_usd") or 0.0
+                script = ROOT / res["path"]
+                t["script"] = res["path"]
+                t["generated"] = True
+                t["author_cost_usd"] = res.get("cost_usd")
+                t["author_model"] = res["model"]
+                st.work(f"authored {t['slug']} via {res['model']} "
+                        f"${res.get('cost_usd')} ({res['words']} words, "
+                        f"attempt {res['attempt']})")
+
             if not script or not script.exists():
                 unauthored.append(t)
                 continue
+
             items.append({
                 "slug": t["slug"],
                 "question": t["question"],
                 "script": t["script"],
+                "generated": bool(t.get("generated")),
+                "author_cost_usd": t.get("author_cost_usd"),
+                "author_model": t.get("author_model"),
+                "pov_id": t.get("pov_id"),
+                "pov_line": t.get("pov_line"),
+                "pov_matched_by": t.get("pov_matched_by"),
                 "work_copy": f"loop/work/{t['slug']}.md",
                 "audio_dir": f"audio/{t['slug']}",
                 "plan": f"loop/plans/{t['slug']}.json",
                 "render": f"renders/{t['slug']}.mp4",
                 "source": t.get("source", "authored-inventory"),
-                "pov_needs_confirmation": False,
-                "status": "pending-approval",
+                "status": "queued",
             })
             st.work(f"assembled {t['slug']}")
 
@@ -130,22 +164,39 @@ def main() -> None:
 
         if not items:
             st.named_stop(
-                "NO_APPROVED_SCRIPTS",
-                "zero scripts are available for this week — nothing can be "
+                "NO_SCRIPTS",
+                "zero scripts are available for this week - nothing can be "
                 "voiced on Tuesday",
                 detail={"unauthored": [t.get("question") for t in unauthored],
-                        "inventory_remaining": topics.get("inventory_remaining")},
-                unblock="Author the briefs in loop/briefs/ into scripts/, or "
-                        "reduce the week deliberately. The cadence ceiling is "
-                        "never raised to compensate.")
+                        "author_stops": [t.get("author_stop")
+                                         for t in unauthored
+                                         if t.get("author_stop")]},
+                unblock="Check loop/state/spend.json and the author stop codes. "
+                        "The cadence ceiling is never raised to compensate.")
 
-        if len(items) > per_week:  # belt and braces; the slice above prevents it
+        if len(items) > per_week:
             st.named_stop("CADENCE_CEILING",
                           f"{len(items)} items exceeds the deliberate ceiling "
                           f"of {per_week}")
 
         # ---- 2. validate -------------------------------------------------
+        st.note(f"cadence: {cadence_why}")
         passed, report = validate.run_all(items)
+
+        # The evidence gate for 3/week. Recorded ONLY when a generated script
+        # has cleared every hard validator - a validated artifact, never the
+        # mere existence of a working API key. This is what makes the
+        # escalation safe to automate: the flip reads a fact written by a
+        # passing validator run, and the taxonomy ceiling still caps it.
+        if passed:
+            for it in items:
+                if it.get("generated"):
+                    ev = cadence.record_authoring_evidence(
+                        it["slug"], it["script"], report)
+                    st.work(f"authoring evidence recorded for {it['slug']} - "
+                            f"{len(ev['scripts'])} validated generated "
+                            f"script(s); cadence may now escalate to "
+                            f"{cfg['cadence']['escalation']['to']}/week")
         for row in report:
             st.note(f"{row['status']:<16} {row['validator']} "
                     f"(examined {row['examined']})")
@@ -161,10 +212,18 @@ def main() -> None:
             "validators": report,
             "validators_passed": passed,
             "approval": {
-                "required": True,
+                "required": False,
+                "mode": "notified, not asked",
                 "page": "docs/approve/index.html",
-                "state": "pending",
-                "file": f"loop/state/approvals/{week}.json",
+                "state": "auto-approved",
+                "override_until": "Tuesday 02:00, when the Mac starts rendering",
+            },
+            "cadence": {"videos_per_week": per_week, "why": cadence_why},
+            "runway": cadence.runway(per_week),
+            "authoring": {
+                "generated_this_week": sum(1 for i in items if i["generated"]),
+                "cost_usd": round(authored_cost, 6),
+                "model": author.DEFAULT_MODEL,
             },
             "items": items,
             "unauthored": [t.get("question") for t in unauthored],
@@ -189,14 +248,20 @@ def main() -> None:
                         "python loop/breaker.py reset --note \"…\"")
 
         if unauthored:
+            # The FALLBACK, not the normal path: generation failed or its
+            # output failed validation for these rows.
             st.named_stop(
                 "AUTHOR_REQUIRED",
-                f"{len(unauthored)} slot(s) had no authored script; briefs were "
-                f"written to loop/briefs/. The week still ships "
+                f"{len(unauthored)} slot(s) could not be authored automatically; "
+                f"briefs were written to loop/briefs/. The week still ships "
                 f"{len(items)} video(s).",
-                detail={"briefs": [t.get("question") for t in unauthored]},
-                unblock="Author the briefs into scripts/ and add their POV rows "
-                        "to pov/pov-assignments.json.")
+                detail={"briefs": [t.get("question") for t in unauthored],
+                        "stops": [t.get("author_stop") for t in unauthored
+                                  if t.get("author_stop")]},
+                unblock="Check the stop codes above. If OPENROUTER_KEY_MISSING, "
+                        "put the key in .secrets/openrouter_key.txt. If "
+                        "DRAFT_FAILED_VALIDATION, the brief in loop/briefs/ is "
+                        "ready for a human.")
 
 
 if __name__ == "__main__":

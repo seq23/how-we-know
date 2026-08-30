@@ -22,7 +22,7 @@ LOOP = os.path.abspath(os.path.join(HERE, ".."))
 ROOT = os.path.abspath(os.path.join(LOOP, ".."))
 PY = sys.executable
 
-STAGE_FILES = ["rank.py", "draft.py", "approve.py", "prepare.py",
+STAGE_FILES = ["rank.py", "draft.py", "override.py", "prepare.py",
                "upload.py", "publish.py", "measure.py"]
 
 

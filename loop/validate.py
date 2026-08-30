@@ -12,6 +12,9 @@ that only make sense once a week has been selected:
   V6  attribution       every organisation the narration names appears in
                         ## Sources — SOFT: reported, does not halt publishing
   V7  plans             every queued script plans to real beats
+  V8  source-urls       every source URL in a GENERATED script actually
+                        resolves - a fabricated citation is an LLM's signature
+                        failure and looks completely normal to a human skim
 
 Every validator **hard-fails when it examined zero items.** A validator that
 passes an empty loop is the defect it is supposed to catch.
@@ -22,15 +25,18 @@ from __future__ import annotations
 
 import json
 import re
+import socket
 import subprocess
 import sys
+import urllib.error
+import urllib.request
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import ledger  # noqa: E402
 from common import ROOT, config, now, read_json, write_json  # noqa: E402
-from rank import excluded  # noqa: E402
+import exclusions  # noqa: E402
 
 PY = sys.executable
 
@@ -52,6 +58,9 @@ class Result:
         self.examined = 0
         self.failures: list[str] = []
         self.notes: list[str] = []
+        # Set only by a validator that legitimately governs nothing this week.
+        # Never set it to quiet a validator that SHOULD have found items.
+        self.exempt = False
 
     def fail(self, msg: str):
         self.failures.append(msg)
@@ -62,13 +71,16 @@ class Result:
     @property
     def ok(self) -> bool:
         # Zero examined is itself a failure: it means the validator could not
-        # reach what it governs.
+        # reach what it governs. The single exception is a validator that
+        # governs generated scripts in a week that generated none.
+        if self.exempt and self.examined == 0:
+            return not self.failures
         return self.examined > 0 and not self.failures
 
     @property
     def status(self) -> str:
         if self.examined == 0:
-            return "FAIL(examined 0)"
+            return "N/A(nothing generated)" if self.exempt else "FAIL(examined 0)"
         return "PASS" if not self.failures else f"FAIL({len(self.failures)})"
 
     def as_dict(self):
@@ -92,8 +104,19 @@ def narration(path) -> str:
 
 
 def sources_block(path) -> str:
+    """Just the ## Sources list - stopping at the next ## heading.
+
+    Ten of the twenty scripts carry a `## B-roll plan` AFTER `## Sources`, and
+    taking everything to end-of-file swallowed it, so every B-roll line
+    ("- 00:12 - source-card: original motion graphic") was read as a source
+    entry with no URL. The bug only showed once a week drew on scripts 19 and
+    20; scripts 01-04 happen to end at Sources.
+    """
     body = Path(path).read_text()
-    return body.split("## Sources", 1)[1] if "## Sources" in body else ""
+    if "## Sources" not in body:
+        return ""
+    after = body.split("## Sources", 1)[1]
+    return re.split(r"\n## ", after, maxsplit=1)[0]
 
 
 def script_pov(path) -> str:
@@ -135,10 +158,17 @@ def v3_taxonomy(items) -> Result:
     r = Result("V3 taxonomy")
     for it in items:
         r.examined += 1
-        hit = excluded(it["question"])
-        if hit:
-            r.fail(f"{it['slug']}: question touches hard exclusion — {hit}")
-        text = narration(ROOT / it["script"]).lower()
+        d = exclusions.decide(it["question"])
+        if not d.admitted:
+            r.fail(f"{it['slug']}: question refused by the gate — {d.rule} "
+                   f"(matched {d.matched!r})")
+        text = narration(ROOT / it["script"])
+        # Narration mode: advice-giving and false framing, not vocabulary.
+        db = exclusions.decide_body(text)
+        if not db.admitted:
+            r.fail(f"{it['slug']}: narration refused by the gate — {db.rule} "
+                   f"(matched {db.matched!r})")
+        text = text.lower()
         # Prose-level check on the exclusions that a title would never reveal.
         for name, pat in (("Conspiracy, cryptid, paranormal, pseudoscience",
                            r"\b(mermaids are real|megalodon is alive|proves aliens)\b"),
@@ -165,8 +195,15 @@ def v4_pov(items) -> Result:
     for it in items:
         r.examined += 1
         a = assigns.get(it["slug"])
+        if not a and it.get("pov_id"):
+            # Matched automatically by loop/pov_match.py. The bank IS the
+            # owner's approved voice, so selecting from it needs no per-script
+            # human decision - only the guarantee that the line is verbatim
+            # from the bank, which is checked below like any other.
+            a = {"pov_id": it["pov_id"],
+                 "line": it.get("pov_line") or bank.get(it["pov_id"], "")}
         if not a:
-            r.fail(f"{it['slug']}: no entry in pov/pov-assignments.json — "
+            r.fail(f"{it['slug']}: no POV line assigned and none matched — "
                    f"the pipeline does not invent a POV line")
             continue
         pid = a["pov_id"]
@@ -290,6 +327,89 @@ def v7_plans(items) -> Result:
     return r
 
 
+def v8_source_urls(items) -> Result:
+    """Fetch every source URL in a generated script. HARD.
+
+    Only generated scripts are checked: the twenty human-authored scripts were
+    sourced by a person, and putting a weekly network dependency in front of
+    them would make the loop fail on a flaky connection rather than on a defect.
+    A machine-written citation gets no such benefit of the doubt.
+
+    404 / 410 / DNS failure  -> FAIL. The page does not exist.
+    401 / 403 / 405          -> pass. Several real bodies (ocean.si.edu among
+                                them) refuse scripted requests; that is
+                                bot-blocking, not a fabricated URL.
+    network unreachable      -> FAIL, reported as such. A validator that
+                                silently passes when it cannot check is the
+                                exact defect this suite exists to prevent.
+    """
+    r = Result("V8 source-urls")
+    generated = [it for it in items
+                 if str(it.get("script", "")).startswith("loop/drafts/")
+                 or it.get("generated")]
+    if not generated:
+        # Nothing generated this week is a legitimate state, but the validator
+        # must not then claim to have examined something. It reports zero and
+        # run_all() treats a zero-item HARD validator as failing - so this one
+        # is explicitly exempt when there is genuinely no generated script.
+        r.examined = 0
+        r.exempt = True
+        r.note("no generated scripts this week; nothing to fetch")
+        return r
+
+    checked = 0
+    for it in generated:
+        path = ROOT / it["script"]
+        if not path.exists():
+            r.fail(f"{it['slug']}: {it['script']} does not exist")
+            continue
+        srcs = sources_block(path)
+        urls = re.findall(r"https?://[^\s)>\]]+", srcs)
+        if len(urls) < 3:
+            r.fail(f"{it['slug']}: only {len(urls)} source URL(s)")
+        for u in urls:
+            checked += 1
+            r.examined += 1
+            code, why = probe(u)
+            if code in (404, 410):
+                r.fail(f"{it['slug']}: source URL does not exist "
+                       f"(HTTP {code}) - {u}")
+            elif code == 0:
+                r.fail(f"{it['slug']}: source URL unreachable ({why}) - {u}")
+            elif code in (401, 403, 405):
+                r.note(f"{it['slug']}: {u} returned {code} (bot-blocked, "
+                       f"treated as reachable)")
+    if checked == 0:
+        r.fail("a generated script was queued but no URL was examined")
+    return r
+
+
+def probe(url: str, timeout: int = 20) -> tuple[int, str]:
+    """Return (status_code, reason). 0 means the host could not be reached."""
+    for method in ("HEAD", "GET"):
+        req = urllib.request.Request(url, method=method, headers={
+            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                          "AppleWebKit/537.36 (KHTML, like Gecko) "
+                          "Chrome/125.0 Safari/537.36"})
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as resp:
+                return resp.status, "ok"
+        except urllib.error.HTTPError as e:
+            if e.code == 405 and method == "HEAD":
+                continue          # some servers reject HEAD; retry with GET
+            return e.code, "http error"
+        except (urllib.error.URLError, socket.timeout, TimeoutError) as e:
+            reason = getattr(e, "reason", e)
+            if isinstance(reason, socket.gaierror):
+                return 0, "DNS does not resolve - the domain does not exist"
+            if method == "GET":
+                return 0, f"{type(reason).__name__}"
+        except Exception:
+            if method == "GET":
+                return 0, "unreachable"
+    return 0, "unreachable"
+
+
 # ------------------------------------------------------------------ runner
 
 def run_all(items) -> tuple[bool, list[dict]]:
@@ -301,7 +421,7 @@ def run_all(items) -> tuple[bool, list[dict]]:
     """
     results = [v1_directive_truth(), v2_planner(), v3_taxonomy(items),
                v4_pov(items), v5_sources_present(items), v6_attribution(items),
-               v7_plans(items)]
+               v7_plans(items), v8_source_urls(items)]
     rows = [r.as_dict() for r in results]
     return all(r.ok for r in results), rows
 

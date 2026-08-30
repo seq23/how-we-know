@@ -2,7 +2,8 @@ name: loop · tests
 
 on:
   push:
-    paths: ['loop/**', 'bin/loop-*.sh', '.github/workflows/**', 'scripts/**', 'pov/**']
+    paths: ['loop/**', 'auth/**', 'bin/loop-*.sh', '.github/workflows/**',
+            'scripts/**', 'pov/**', 'docs/CHANNEL-PLAN.md', 'research/publish_order.json']
   pull_request:
   workflow_dispatch:
 
@@ -21,5 +22,7 @@ jobs:
         run: pip install --quiet pyyaml
       - name: Loop tests
         run: python loop/tests/run_all.py
+      - name: Conformance with the locked plan
+        run: python loop/validate_plan.py
       - name: Shell syntax
         run: for f in bin/loop-*.sh; do bash -n "$f"; done

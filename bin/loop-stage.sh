@@ -30,7 +30,11 @@ WEEK="$("$PY" -c "import sys;sys.path.insert(0,'loop');from common import week_i
 # ---------------------------------------------------------------- commit
 git config user.name  "how-we-know loop"
 git config user.email "loop@users.noreply.github.com"
+# research/ is another agent's directory and the loop never edits it - but the
+# weekly scoring stage RUNS that agent's entrypoint, which rewrites
+# publish_order.json. Committing the result is how the ranking reaches the Mac.
 git add loop docs 2>/dev/null
+if [ "$STAGE" = "weekly-score" ]; then git add research/publish_order.json 2>/dev/null; fi
 if git diff --cached --quiet; then
   echo "no repo changes to commit"
 else

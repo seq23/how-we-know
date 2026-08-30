@@ -32,6 +32,26 @@ from common import LOOP, ROOT, Stage, config, now, read_json, write_json, week_i
 QUEUE = LOOP / "render_queue.json"
 FEED = LOOP / "site_feed.json"
 API = "https://www.googleapis.com/youtube/v3/videos?part=status"
+READ = "https://www.googleapis.com/youtube/v3/videos"
+
+
+def read_status(token: str, video_id: str) -> dict:
+    """What YouTube actually says about this video right now."""
+    q = urllib.parse.urlencode({"part": "status,snippet", "id": video_id})
+    req = urllib.request.Request(f"{READ}?{q}",
+                                 headers={"Authorization": f"Bearer {token}"})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        data = json.loads(r.read())
+    items = data.get("items") or []
+    if not items:
+        return {"found": False}
+    st = items[0].get("status", {})
+    return {"found": True,
+            "privacy": st.get("privacyStatus"),
+            "upload_status": st.get("uploadStatus"),
+            "rejection_reason": st.get("rejectionReason"),
+            "made_for_kids": st.get("madeForKids"),
+            "title": items[0].get("snippet", {}).get("title")}
 
 
 def set_privacy(token: str, video_id: str, privacy: str) -> None:
@@ -56,8 +76,25 @@ def main() -> None:
         if q is None:
             st.named_stop("NO_QUEUE", "loop/render_queue.json does not exist")
 
+        # She will hand-publish the first few through YouTube Studio, both to
+        # test the lock and to strengthen the pending compliance audit. Those
+        # videos already exist and are already public; the loop records them
+        # and moves on rather than trying to upload or flip them again.
+        hand = [it for it in q["items"]
+                if it.get("hand_published") or it.get("status") == "published"]
+        for it in hand:
+            if it.get("status") != "published":
+                it["status"] = "published"
+            if it.get("video_id"):
+                ledger.record_published(it["slug"], it["question"],
+                                        it["video_id"],
+                                        it.get("upload_receipt", "hand-published"))
+            st.note(f"{it['slug']}: already on the channel - not re-uploaded")
+
         eligible, blocked = [], {}
         for it in q["items"]:
+            if it in hand:
+                continue
             rp = it.get("upload_receipt")
             rr = it.get("render_receipt")
             if not rp:
@@ -106,14 +143,39 @@ def main() -> None:
                         "or set the repo secrets. See docs/loop.md § OAuth.")
 
         token = up.access_token(creds)
-        flipped = []
+        flipped, locked = [], []
         for it, rec in eligible:
             try:
                 set_privacy(token, rec["video_id"], "public")
             except urllib.error.HTTPError as e:
-                st.note(f"{it['slug']}: flip failed "
-                        f"{e.code} {e.read().decode('utf-8','ignore')[:300]}")
+                body = e.read().decode("utf-8", "ignore")[:300]
+                if "forbidden" in body.lower() or e.code == 403:
+                    locked.append({"slug": it["slug"],
+                                   "video_id": rec["video_id"],
+                                   "why": f"HTTP {e.code}: {body[:160]}"})
+                    it["status"] = "locked-private"
+                    st.note(f"{it['slug']}: flip REFUSED - {e.code}")
+                    continue
+                st.note(f"{it['slug']}: flip failed {e.code} {body}")
                 continue
+
+            # VERIFY. An unaudited project can accept the privacy PUT and leave
+            # the video private anyway - the request succeeds and nothing is
+            # public. Never report a video live on the strength of a 200.
+            after = read_status(token, rec["video_id"])
+            if after.get("privacy") != "public":
+                locked.append({"slug": it["slug"], "video_id": rec["video_id"],
+                               "why": f"the API accepted the flip but YouTube "
+                                      f"still reports privacyStatus="
+                                      f"{after.get('privacy')!r}",
+                               "upload_status": after.get("upload_status"),
+                               "rejection_reason": after.get("rejection_reason")})
+                it["status"] = "locked-private"
+                it["privacy"] = after.get("privacy")
+                st.note(f"{it['slug']}: LOCKED - accepted but still "
+                        f"{after.get('privacy')}")
+                continue
+
             it["privacy"] = "public"
             it["status"] = "published"
             it["published_at"] = now()
@@ -122,9 +184,31 @@ def main() -> None:
             flipped.append(it)
             st.work(f"public: {it['slug']} -> {rec['video_id']}")
 
+        if locked:
+            write_json(LOOP / "state" / "locked_uploads.json",
+                       {"at": now(), "week": week, "locked": locked,
+                        "meaning": "Google will not let this project's API "
+                                   "uploads go public. Reported by Google as "
+                                   "not appealable for an unaudited project.",
+                        "workaround": "Publish these by hand in YouTube Studio. "
+                                      "The loop will detect them as already "
+                                      "public and stop trying."})
+
         if not flipped:
-            st.named_stop("FLIP_FAILED",
-                          "every privacy flip failed", detail=blocked)
+            st.named_stop(
+                "UPLOADS_LOCKED_PRIVATE" if locked else "FLIP_FAILED",
+                (f"{len(locked)} upload(s) cannot be made public: the project "
+                 f"is not audited, so YouTube keeps API uploads private. "
+                 f"NOTHING WENT LIVE." if locked
+                 else "every privacy flip failed"),
+                detail={"locked": locked, "blocked": blocked},
+                unblock=("Publish these by hand in YouTube Studio - the loop "
+                         "detects hand-published videos and will not re-upload "
+                         "them. Longer term, complete the Google API "
+                         "compliance audit. This is a detected condition, not "
+                         "a silent success: no video is reported live unless "
+                         "YouTube confirms privacyStatus=public."
+                         if locked else "See the blocked reasons above."))
 
         write_json(QUEUE, q)
 

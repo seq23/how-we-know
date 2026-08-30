@@ -1,27 +1,28 @@
-"""Sunday 06:00 — mine demand, rank, propose next week's four topics.
+"""Sunday 06:00 - mine demand, rank, and PICK next week's four topics.
 
-Output: `loop/next_topics.json`, the thing the owner spends five minutes on.
+The owner gave blanket topic approval: pick whatever the data says will earn
+passively, subject only to hard exclusions. So this stage decides, and she is
+notified rather than asked. Nothing waits on her.
 
-Two sources feed the week, in strict priority order:
+Two sources feed the week:
 
-1. **Authored inventory.** `scripts/` currently holds 20 finished, sourced,
-   directive-annotated scripts and nothing has published yet — five weeks of
-   runway at the cadence ceiling. While inventory covers the week, the week is
-   fully scored already: those questions were chosen and approved by the owner
-   when the scripts were written. No competition score is needed to ship them.
+1. **Authored inventory.** `scripts/` holds finished, sourced, human-written
+   scripts that have not published yet. Free and already validated, so they go
+   first.
+2. **Mined demand.** `research/topic_backlog.json` - 2,184 real YouTube
+   autocomplete strings. Every candidate passes `loop/exclusions.py`, the hard
+   programmatic gate that now carries her judgement. The shortfall is handed to
+   the authoring lane on Monday.
 
-2. **Mined demand.** `research/topic_backlog.json` — 2,184 real YouTube
-   autocomplete strings, filtered against the approved taxonomy. Demand is
-   real. **Competition is not measurable without a YouTube Data API key**, and
-   the standing rule is that the loop never publishes against an unscored
-   topic list. So mined candidates are emitted as *advisory* — ranked by demand
-   with `scored: false` — and the shortfall lane takes a NAMED STOP instead of
-   quietly promoting demand evidence into a publishing decision.
+Competition scoring still needs a YouTube Data API key. Its absence no longer
+stops the week: demand ranking picks, the exclusion gate constrains, and the
+`competition_scoring.available` flag records that the ratio was half-computed.
+An unscored ranking is a weaker ranking, not an unsafe one - safety comes from
+the gate, which is absolute either way.
 
-The stage always writes the candidate list, so it is never "exit 0 having done
-nothing": ranking 2,184 real queries is real work even in the week it also
-stops.
+**Rule 0 here means: an empty admitted set is a hard failure, not a pass.**
 """
+
 from __future__ import annotations
 
 import os
@@ -31,7 +32,10 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
+import cadence  # noqa: E402
+import exclusions  # noqa: E402
 import ledger  # noqa: E402
+import pov_match  # noqa: E402
 from common import (LOOP, ROOT, Stage, config, now, read_json,  # noqa: E402
                     week_id, write_json)
 
@@ -39,63 +43,51 @@ BACKLOG = ROOT / "research" / "topic_backlog.json"
 TAXONOMY = ROOT / "pov" / "topic-taxonomy.json"
 OUT = LOOP / "next_topics.json"
 
-# The 16 hard exclusions, expressed as the surface forms an autocomplete string
-# would actually carry. Kept alongside the taxonomy, never instead of it.
-EXCLUSION_PATTERNS = {
-    "Adult or sexual content": r"\b(sex|porn|nude|nsfw|erotic)\b",
-    "Drugs, substances, or paraphernalia": r"\b(drug|cocaine|weed|vape|opioid|meth)\b",
-    "Firearms, weapons, explosives": r"\b(gun|rifle|firearm|bomb|explosive|ammo)\b",
-    "Gambling, betting, trading signals": r"\b(bet|betting|casino|gambl|odds|trading signal)\b",
-    "Medical, health, dietary, supplement or mental-health advice":
-        r"\b(cure|treat(?:ment)?|symptom|diagnos|supplement|dosage|diet|therapy|depression|anxiety)\b",
-    "Financial, investment, tax or legal advice":
-        r"\b(invest|stock|crypto|tax|lawsuit|sue|attorney|lawyer)\b",
-    "Named living private individuals as subject matter": r"\bnet worth\b",
-    "Named companies framed critically": r"\b(scam|fraud|exposed|lawsuit against)\b",
-    "Active political controversy, elections, partisan framing":
-        r"\b(election|vote|democrat|republican|president|senate|partisan)\b",
-    "Religion framed as true or false": r"\b(god|bible|quran|creationis|genesis flood)\b",
-    "Conspiracy, cryptid, paranormal, pseudoscience":
-        r"\b(conspiracy|cryptid|mermaid|megalodon alive|bermuda triangle|alien|ufo|nessie|loch ness|ghost|haunted|paranormal|flat earth)\b",
-    "Recent tragedy involving identifiable victims": r"\b(victims? name|last words|bodies recovered)\b",
-    "True crime involving identifiable victims or perpetrators":
-        r"\b(murder|killer|homicide|serial killer|true crime)\b",
-    "Third-party footage that is not license-cleared": r"\b(full episode|documentary download|leaked footage)\b",
-    "Content directed at children (COPPA)": r"\b(for kids|nursery|toddler|baby shark|preschool)\b",
-    "Dangerous acts, stunts, replicable harm": r"\b(how to make|diy bomb|challenge gone wrong|stunt)\b",
-}
+# The plan's measured finding, restated: "Every opening is a 'why does...' or
+# 'how does...' question. Every dead end is a 'what is a...'." Measured across
+# all 20 scripts - "what is a frilled shark" returned 20/20 strong title
+# matches, "why does black-smoker water not boil" returned 0/20.
+MECHANISM_Q = re.compile(r"^(why|how)\b", re.I)
+IDENTITY_Q = re.compile(r"^what (?:is|are) (?:a|an|the)\b", re.I)
 
 
-def excluded(query: str):
-    """Return the exclusion a query touches, or None. Never auto-published."""
-    q = query.lower()
-    for name, pat in EXCLUSION_PATTERNS.items():
-        if re.search(pat, q):
-            return name
-    return None
+def shape_score(row: dict) -> float:
+    """Question SHAPE, not demand. Deliberately not called demand_score.
 
+    `seed_hits` is dead and must stay dead: it counted how many a-z variants of
+    one seed string produced a hit, so it measured seed-string length rather
+    than demand - 81% of multi-hit queries got every hit from variants of a
+    single seed. The plan retires it and this function does not touch it.
 
-def demand_score(row: dict) -> float:
-    """Demand only. Deliberately NOT called a rank: without a competition
-    denominator this is half of the ratio the taxonomy's selection rule names.
+    Real demand and competition are measured by the research agent's weekly
+    scoring pass, which writes research/publish_order.json. Until a candidate
+    has been through that pass it carries NO demand measurement, and this score
+    only orders the queue of things to send for scoring. Every row it produces
+    is marked `demand_measured: false` so nothing downstream can mistake shape
+    for demand.
     """
-    s = float(row.get("seed_hits", 1))
-    if row.get("is_question"):
-        s *= 1.6           # question-form queries are what this channel answers
+    q = row.get("query", "")
+    s = 1.0
+    if MECHANISM_Q.match(q):
+        s *= 2.0           # the shape that consistently found an opening
+    elif IDENTITY_Q.match(q):
+        s *= 0.4           # the shape that was consistently already answered
+    elif row.get("is_question"):
+        s *= 1.2
     w = int(row.get("words", 0))
     if 4 <= w <= 9:
         s *= 1.25          # specific enough to answer in one video
     elif w < 4:
         s *= 0.55          # "why deep sea" is a category, not a question
-    return round(s, 2)
+    return round(s, 3)
 
 
-def rank_candidates(limit: int = 40) -> tuple[list[dict], dict]:
+def rank_candidates(limit: int = 40) -> tuple[list[dict], dict, list[dict]]:
     d = read_json(BACKLOG)
     seen_q = ledger.published_questions()
     inv_q = {ledger.normalise(s["question"]) for s in ledger.all_scripts()}
-    out, skipped = [], {"already_published": 0, "already_authored": 0,
-                        "excluded": 0}
+    out, refusals = [], []
+    skipped = {"already_published": 0, "already_authored": 0, "excluded": 0}
     for row in d["queries"]:
         q = row["query"]
         n = ledger.normalise(q)
@@ -105,93 +97,192 @@ def rank_candidates(limit: int = 40) -> tuple[list[dict], dict]:
         if n in inv_q:
             skipped["already_authored"] += 1
             continue
-        ex = excluded(q)
-        if ex:
+        d = exclusions.decide(q, row.get("domain"))
+        if not d.admitted:
             skipped["excluded"] += 1
+            refusals.append({"query": q, "rule": d.rule, "matched": d.matched})
             continue
         out.append({
             "query": q,
             "domain": row.get("domain"),
             "seed_hits": row.get("seed_hits"),
             "is_question": row.get("is_question"),
-            "demand_score": demand_score(row),
+            # NOT demand. Shape only, until the weekly scoring pass measures it.
+            "shape_score": shape_score(row),
+            "demand_measured": False,
             "competition": None,
             "scored": False,
+            "note": "shape_score orders candidates for SCORING, never for "
+                    "publishing. Demand and competition come from "
+                    "research/publish_order.json.",
         })
-    out.sort(key=lambda r: -r["demand_score"])
-    return out[:limit], skipped
+    out.sort(key=lambda r: -r["shape_score"])
+    return out[:limit], skipped, refusals
 
 
 def main() -> None:
     cfg = config()
-    per_week = cfg["cadence"]["videos_per_week"]
+    per_week, cadence_why = cadence.effective(explain=True)
     week = week_id()
     have_yt_key = bool(os.environ.get(
         cfg["credentials"]["youtube_data_api_key_env"], "").strip())
 
     with Stage("sun-rank", week,
-               zero_work_hint="research/topic_backlog.json produced no usable "
-                              "candidates and scripts/ held no unpublished "
+               zero_work_hint="research/topic_backlog.json produced no admitted "
+                              "candidate and scripts/ held no unpublished "
                               "script. Re-run research/mine.py.") as st:
 
-        inv = ledger.inventory()
-        st.note(f"authored inventory: {len(inv)} unpublished script(s)")
+        st.note(f"cadence: {cadence_why}")
 
-        candidates, skipped = rank_candidates()
-        st.work(f"ranked {len(candidates)} mined candidates by demand "
-                f"(skipped {skipped})")
+        # Publish order is another agent's file and is READ ONLY here. Its
+        # absence is a named stop, never a fallback to filename order.
+        try:
+            inv, order_meta = cadence.ordered_inventory()
+        except cadence.PublishOrderStale as e:
+            # Loud, not invisible. A stale ranking is the dangerous case: the
+            # loop would keep publishing in last month's order and look
+            # perfectly healthy doing it.
+            st.named_stop(
+                "PUBLISH_ORDER_STALE", str(e),
+                detail={"threshold_days":
+                        config()["publish_order"]["staleness_days"],
+                        "meta": cadence.order_meta_raw()},
+                unblock="Run the weekly scoring stage: "
+                        ".venv/bin/python loop/score.py (Actions runs it every "
+                        "Saturday). The loop will not publish against a "
+                        "ranking this old.")
+        except cadence.PublishOrderMissing as e:
+            st.named_stop(
+                "PUBLISH_ORDER_MISSING", str(e),
+                detail={"expected": str(cadence.PUBLISH_ORDER.relative_to(ROOT))},
+                unblock="research/publish_order.json ranks the scripts on "
+                        "demand/competition with title coverage weighted 50%. "
+                        "It is generated by another agent. Until it exists the "
+                        "loop will not pick a publish sequence - it refuses "
+                        "rather than defaulting to episode order.")
+        st.note(f"publish order: {order_meta['ranked']} ranked, "
+                f"{order_meta['unranked']} unranked, from {order_meta['source']}")
+        if order_meta["unranked"]:
+            st.note(f"{order_meta['unranked']} unpublished script(s) are not in "
+                    f"the ranking; they queue AFTER every ranked entry, never "
+                    f"promoted to the front")
 
+        # The runway guard. Loud and early, and it never halts publishing -
+        # stopping the channel to protect the backlog would be going dark.
+        rw = cadence.runway(per_week)
+        st.note(f"runway: {rw['message']}")
+
+        candidates, skipped, refusals = rank_candidates()
+        st.work(f"ranked {len(candidates)} admitted candidates by demand; "
+                f"the exclusion gate refused {skipped['excluded']}")
+
+        # ---- pick automatically. She is notified, not asked. ----
         selection = [{
-            "slug": s["slug"],
-            "question": s["question"],
-            "script": s["path"],
+            "slug": s_["slug"],
+            "question": s_["question"],
+            "script": s_["path"],
             "source": "authored-inventory",
-            "scored": True,
-            "scored_by": "owner approval at authoring time",
-        } for s in inv[:per_week]]
+            "publish_rank": s_.get("publish_rank"),
+            "front_loaded": s_.get("front_loaded", False),
+            "needs_authoring": False,
+        } for s_ in inv[:per_week]]
 
-        for s in selection:
-            st.work(f"proposed {s['slug']}")
+        for c in candidates:
+            if len(selection) >= per_week:
+                break
+            slug = re.sub(r"[^a-z0-9]+", "-", c["query"].lower()).strip("-")[:60]
+            selection.append({
+                "slug": slug,
+                "question": c["query"],
+                "script": f"loop/drafts/{slug}.md",
+                "source": "mined-demand",
+                "domain": c.get("domain"),
+                "shape_score": c["shape_score"],
+                "seed_hits_provenance_only": c.get("seed_hits"),
+                "needs_authoring": True,
+            })
 
-        shortfall = per_week - len(selection)
+        # Rule 0, and the owner's judgement, both land here: an empty admitted
+        # set is a hard failure. It never degrades into publishing nothing
+        # quietly, and it never degrades into publishing something ungated.
+        if not selection:
+            st.named_stop(
+                "NO_ADMITTED_TOPICS",
+                f"zero topics survived selection: {len(inv)} inventory scripts "
+                f"and {len(candidates)} admitted candidates. The exclusion gate "
+                f"refused {skipped['excluded']}.",
+                detail={"skipped": skipped,
+                        "sample_refusals": refusals[:10]},
+                unblock="Re-run research/mine.py for fresh candidates, or widen "
+                        "research/seeds.json. The gate is not the thing to "
+                        "loosen.")
+
+        # Match a POV line to every pick now, so Monday has nothing to decide.
+        used = [r.get("pov_id") for r in ledger.load()["published"]]
+        try:
+            selection = pov_match.select_week(selection, used)
+        except pov_match.NoPovMatch as e:
+            st.named_stop("NO_POV_MATCH", str(e),
+                          unblock="Add lines to pov/pov-bank.json, or wait for "
+                                  "the rotation window to clear. The pipeline "
+                                  "does not invent a POV line.")
+
+        for s_ in selection:
+            st.work(f"picked {s_['slug']} "
+                    f"({s_['source']}, pov {s_['pov_id']})")
+
         doc = {
             "week": week,
             "generated": now(),
             "videos_per_week": per_week,
-            "cadence_ceiling_note":
-                "Deliberate. Never raised to clear a backlog.",
+            "cadence_ceiling_note": "Deliberate. Never raised to clear a backlog.",
+            "selection_mode": "automatic",
+            "owner_involvement": "notified, not asked",
             "selected": selection,
-            "shortfall": shortfall,
-            "inventory_remaining": max(0, len(inv) - len(selection)),
+            "to_author": sum(1 for s_ in selection if s_["needs_authoring"]),
+            "inventory_remaining": max(0, len(inv) - sum(
+                1 for s_ in selection if not s_["needs_authoring"])),
+            "cadence": {"videos_per_week": per_week, "why": cadence_why},
+            "publish_order": order_meta,
+            "runway": rw,
+            "gate": {
+                "authority": "pov/topic-taxonomy.json",
+                "enforced_by": "loop/exclusions.py",
+                "refused_this_week": skipped["excluded"],
+                "refusals_sample": refusals[:15],
+            },
             "competition_scoring": {
                 "available": have_yt_key,
-                "why": "Needs a YouTube Data API key. Until one exists the "
-                       "mined list below is demand evidence only and is never "
-                       "auto-promoted into a publishing decision.",
+                "why": "Needs a YouTube Data API key. Without it the ranking is "
+                       "demand-only - a weaker ranking, not an unsafe one. "
+                       "Safety comes from the exclusion gate, which is absolute "
+                       "either way.",
             },
             "advisory_candidates": candidates,
             "candidate_skips": skipped,
-            "owner_action": "Open docs/approve/ — approve, or swap any row for "
-                            "an advisory candidate. Five minutes.",
+            "override": {
+                "how": "Open docs/approve/ and press Drop, or run "
+                       "bin/loop-override.sh <week> <slug>",
+                "closes": "Tuesday 02:00, when the Mac starts rendering",
+            },
         }
         write_json(OUT, doc)
-        st.work(f"wrote {OUT.relative_to(ROOT)}")
+        st.work(f"wrote {OUT.relative_to(ROOT)} - {len(selection)} picked, "
+                f"{doc['to_author']} to author")
 
-        if shortfall > 0:
+        # Surfaced LAST and deliberately: the week is already written, so this
+        # warns without costing the week. It is a named stop, which means an
+        # issue and an email - weeks ahead of running out, not on the week it
+        # happens.
+        if rw["level"] in ("warn", "critical"):
             st.named_stop(
-                "COMPETITION_UNSCORED",
-                f"{shortfall} of {per_week} slot(s) would have to come from the "
-                f"mined list, and competition is unscored. The mined candidates "
-                f"are written to next_topics.json as advisory; they are not "
-                f"promoted to the queue.",
-                detail={"shortfall": shortfall,
-                        "inventory_remaining": len(inv),
-                        "top_advisory": [c["query"] for c in candidates[:8]]},
-                unblock="Either add a YOUTUBE_API_KEY repo secret so the "
-                        "demand÷competition ratio can be computed, or pick the "
-                        "shortfall rows by hand on the approval page. The week "
-                        "still ships with whatever inventory covers.",
-            )
+                f"RUNWAY_{rw['level'].upper()}",
+                rw["message"],
+                detail=rw,
+                unblock="Run the authoring lane to refill inventory "
+                        "(loop/author.py), or add scripts by hand. The week "
+                        "above still ships - publishing is never halted to "
+                        "protect the backlog, because that IS going dark.")
 
 
 if __name__ == "__main__":
