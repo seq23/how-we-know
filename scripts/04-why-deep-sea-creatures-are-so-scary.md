@@ -23,7 +23,7 @@ Why deep sea creatures are so scary?
 
 ### The right way to see it
 
-{{text}}
+{{chain: HOW THE FEAR ARRIVES | Teeth, staring eyes, darkness, unfamiliar movement | The brain reacts | Before we know size, behavior, or actual risk | >Fear comes from anatomy plus context}}
 Fear comes from anatomy plus context. Our brains react to teeth, staring eyes, darkness, and unfamiliar movement before we know the animal’s size, behavior, or actual risk. The rest of this video follows that question through the actual environmental constraints described by NOAA, MBARI, Smithsonian, and Woods Hole sources in the companion article.
 
 ### Producer POV
@@ -37,7 +37,7 @@ People quickly notice teeth, staring eyes, spines and mouths. In a photograph wi
 
 ### The teeth are often about not losing one meal
 
-{{text}}
+{{contrast: LONG INWARD-POINTING TEETH | is=Secure prey during a rare encounter | is=An expandable jaw or stomach uses prey too large for a more rigid feeder | not=Interest in humans}}
 Deep water is food-poor compared with the sunlit ocean. Long inward-pointing teeth can secure prey during a rare encounter. An expandable jaw or stomach lets an animal use prey that would be too large for a more rigid feeder. That does not make the animal interested in humans. Most iconic 'monster' fishes are small and live far beyond normal human access.
 
 ### Bioluminescence looks supernatural because we rarely see it
@@ -52,17 +52,26 @@ For humans and machines, darkness, distance, cold, pressure and communication li
 
 ### Common myths and questions
 
-{{text}}
-A common question is: Can an anglerfish eat a human? No. The familiar deep-sea anglerfish shown in close-up images is far too small. A common question is: What is the most dangerous thing in the deep ocean? For a human expedition, pressure, cold, equipment failure, darkness and distance are much greater risks than animal attack. A common question is: Why do deep-sea photos look like horror images? Close framing, black backgrounds and lack of scale exaggerate unfamiliar features. A common question is: Are giant squid aggressive toward people? Live giant squid are rarely observed. There is no evidence that they routinely hunt humans.
+{{contrast: CAN AN ANGLERFISH EAT A HUMAN? | is=The familiar deep-sea anglerfish shown in close-up images is far too small | not=No}}
+A common question is: Can an anglerfish eat a human? No. The familiar deep-sea anglerfish shown in close-up images is far too small.
+
+{{checklist: THE GREATEST RISKS TO A HUMAN EXPEDITION | +Pressure | +Cold | +Equipment failure | +Darkness | +Distance | -Animal attack}}
+A common question is: What is the most dangerous thing in the deep ocean? For a human expedition, pressure, cold, equipment failure, darkness and distance are much greater risks than animal attack.
+
+{{chain: WHY THE PHOTOS LOOK LIKE HORROR IMAGES | Close framing | Black backgrounds | Lack of scale | >Unfamiliar features are exaggerated}}
+A common question is: Why do deep-sea photos look like horror images? Close framing, black backgrounds and lack of scale exaggerate unfamiliar features.
+
+{{contrast: GIANT SQUID | is=Rarely observed alive | not=Any evidence that they routinely hunt humans}}
+A common question is: Are giant squid aggressive toward people? Live giant squid are rarely observed. There is no evidence that they routinely hunt humans.
 
 ### The fear test
 
-{{ambient}}
+{{steps: THE FEAR TEST | Size=is the animal centimeters long or meters long? | Distance=was the camera inches from the mouth? | Behavior=attacking, feeding, drifting, or simply facing the lens? | Actual human exposure=most iconic deep-sea animals do not share ordinary human space at all}}
 For every frightening image, run four checks. First: size. Is the animal centimeters long or meters long? Second: distance. Was the camera inches from the mouth? Third: behavior. Is the animal attacking, feeding, drifting, or simply facing the lens? Fourth: actual human exposure. Most iconic deep-sea animals do not share ordinary human space at all. Anglerfish lures, dragonfish teeth, and giant squid size are real biological features. The leap from unsettling anatomy to human danger is usually ours.
 
 ### How the camera manufactures a predator
 
-{{text}}
+{{checklist: CUES THE IMAGE REMOVES | -No horizon | -No hand | -No ruler | -No familiar object | >The picture is not fake, but it is selected and framed for maximum visual impact}}
 A deep-sea image can remove every cue the brain uses to judge danger. There may be no horizon, no hand, no ruler, and no familiar object. The animal fills the frame. The lens is close. Hard ROV light creates sharp shadows. Teeth remain visible because they are pale and reflective. Slow movement can look deliberate when the real reason is low energy availability. A still frame freezes the exact moment a jaw opens and erases the minutes of uneventful drifting around it. The resulting picture is not fake, but it is selected and framed for maximum visual impact.
 
 {{anatomy: WHAT WE READ INTO IT | forward-facing eyes@0.24,0.34 | exposed teeth@0.19,0.64 | lure@0.36,0.18}}
@@ -70,12 +79,12 @@ The human fear response then does the rest. Forward-facing eyes suggest attentio
 
 ### The fear reveal
 
-{{ambient}}
+{{contrast: ENVIRONMENTAL DANGER BESIDE ANIMAL DANGER | is=Pressure | is=Cold | is=Darkness | is=Distance | not=The creatures, which are rarely the main hazard to humans}}
 Near the end, the edit should reveal the actual size and normal distance of each animal that appeared frightening in close-up. That reveal is not a debunk. It is the episode's central contrast. The audience gets the image that earned the click, then receives the context that keeps the channel from becoming a fear factory. The anglerfish can remain visually disturbing while also being a small, remote specialist. A dragonfish can keep its impossible-looking teeth while the narration explains why losing prey is costly. The final comparison should place environmental danger beside animal danger. Pressure, cold, darkness, and distance win by a wide margin. The creatures are the memorable faces of the deep; they are rarely the main hazard to humans.
 
 ### The thumbnail bargain
 
-{{text}}
+{{checklist: THE THUMBNAIL BARGAIN | +The thumbnail can use the frightening face | ?The first minute has to repay that choice with scale and context | ?If the creature is tiny, say so | ?If the shot was made inches from the animal under artificial light, show that | -Letting the image carry a false threat claim}}
 The thumbnail can use the frightening face, but the first minute has to repay that choice with scale and context. That is the bargain. We are not pretending the image is boring; we are refusing to let the image carry a false threat claim. If the creature is tiny, say so. If the shot was made inches from the animal under artificial light, show that. The audience can enjoy the fear and still leave with a more accurate model.
 
 ### The line I will keep
@@ -95,8 +104,11 @@ Open with a tight crop, then pull back to reveal scale. Repeat the technique wit
 
 ### Evidence limit
 
-{{pressure: 1000}}
-'Scary' is subjective, and a close-up can remove the information needed to judge danger. Some deep predators are genuinely large, and many are dangerous to prey. That is different from posing a routine threat to humans. The script should not claim that no deep-sea animal could ever injure a person; it should say that pressure, cold, darkness, distance, and machinery dominate the practical risk of deep-ocean exploration.
+{{define: Scary | Subjective | A close-up can remove the information needed to judge danger}}
+'Scary' is subjective, and a close-up can remove the information needed to judge danger. Some deep predators are genuinely large, and many are dangerous to prey. That is different from posing a routine threat to humans.
+
+{{contrast: WHAT DOMINATES THE PRACTICAL RISK | is=Pressure | is=Cold | is=Darkness | is=Distance | is=Machinery | not=A claim that no deep-sea animal could ever injure a person}}
+The script should not claim that no deep-sea animal could ever injure a person; it should say that pressure, cold, darkness, distance, and machinery dominate the practical risk of deep-ocean exploration.
 
 ### Closing
 

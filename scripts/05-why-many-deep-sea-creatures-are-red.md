@@ -23,7 +23,7 @@ Why many deep sea creatures are red?
 
 ### The right way to see it
 
-{{text}}
+{{chain: WHY RED GOES DARK | Seawater removes red wavelengths early | A red body sits in deep blue light | It reflects very little visible light back to an observer | >Color only works when matching light reaches it}}
 Color only works when matching light reaches it. Seawater removes red wavelengths early, so a red body in deep blue light reflects very little visible light back to an observer. The rest of this video follows that question through the actual environmental constraints described by NOAA, MBARI, Smithsonian, and Woods Hole sources in the companion article.
 
 ### Producer POV
@@ -37,7 +37,7 @@ An object looks red near the surface because red wavelengths strike it and are r
 
 ### Darkness can be camouflage
 
-{{ambient}}
+{{contrast: RED OR BLACK SKIN | is=Blends into the background under the available blue-green light | is=A red stomach lining hides the glow of recently eaten bioluminescent prey | not=A detectable silhouette}}
 In dim midwater, avoiding a detectable silhouette is critical. Red or black skin helps an animal blend into the background when viewed by predators or prey using the available blue-green light. Some animals combine red external tissue with a red stomach lining that hides the glow of recently eaten bioluminescent prey.
 
 ### Not every red animal lives at the same depth
@@ -47,13 +47,22 @@ Ocean color patterns shift gradually. Near the surface, blue and silver counters
 
 ### ROV lights reveal colors the animal does not normally display
 
-{{text}}
+{{chain: WHY EXPEDITION FOOTAGE LOOKS CRIMSON | ROV lamps=bright white light that includes red wavelengths | The camera=records vivid crimson bodies | Natural deep-sea illumination=the same bodies look nearly black | >The colour is functioning as concealment}}
 A remotely operated vehicle carries bright white lights that include red wavelengths. The camera therefore records vivid crimson bodies that would look nearly black under natural deep-sea illumination. That is why expedition footage can show an apparently bright animal in an environment where the color functions as concealment.
 
 ### Common myths and questions
 
-{{ambient}}
-A common question is: Can deep-sea animals see red? Many deep-sea visual systems are most sensitive to blue-green wavelengths. Sensitivity varies, and some species have specialized visual capabilities. A common question is: Why do red deep-sea animals look bright in video? ROV lights contain red wavelengths that natural deep water lacks. A common question is: Are all deep-sea animals red? No. Black, transparent, silver, pale and bioluminescent forms are also common. A common question is: Is red coloration the same as bioluminescence? No. Pigment controls reflected light; bioluminescence produces light chemically.
+{{contrast: DEEP-SEA VISUAL SYSTEMS | is=Most sensitive to blue-green wavelengths | not=Uniform — sensitivity varies, and some species have specialized visual capabilities}}
+A common question is: Can deep-sea animals see red? Many deep-sea visual systems are most sensitive to blue-green wavelengths. Sensitivity varies, and some species have specialized visual capabilities.
+
+{{define: ROV light | Contains red wavelengths that natural deep water lacks | It is why red deep-sea animals look bright in video}}
+A common question is: Why do red deep-sea animals look bright in video? ROV lights contain red wavelengths that natural deep water lacks.
+
+{{checklist: ARE ALL DEEP-SEA ANIMALS RED? | -No | +Black forms are also common | +Transparent | +Silver | +Pale | +Bioluminescent}}
+A common question is: Are all deep-sea animals red? No. Black, transparent, silver, pale and bioluminescent forms are also common.
+
+{{sources: PIGMENT IS NOT BIOLUMINESCENCE | Pigment=controls reflected light | Bioluminescence=produces light chemically}}
+A common question is: Is red coloration the same as bioluminescence? No. Pigment controls reflected light; bioluminescence produces light chemically.
 
 ### Turn off the red light
 
@@ -65,22 +74,25 @@ Color is reflected light. At the surface, a red body reflects red wavelengths to
 {{light}}
 Imagine lowering a row of colored cards through clear water. The cards do not carry their appearance with them. Their appearance depends on which wavelengths remain available to reflect. Red wavelengths are absorbed relatively quickly, so a red body loses the light that would make it look red. Under the blue-green light that penetrates deeper, that same body can appear dark. The animal has not changed pigment. The lighting environment has changed the information available to a viewer or predator.
 
-{{text}}
-This is why ROV footage needs interpretation. White lamps bring a broad spectrum into a place where it normally does not exist. A shrimp that looks scarlet on camera may look nearly black under ambient conditions. The light makes the footage useful for identification, but it can mislead the audience about camouflage. Depth is also not a single switch. Water clarity, particles, angle, weather, and local conditions affect light penetration. Red coloration can be useful in one depth range and irrelevant in another. Some animals combine pigment with transparency, counterillumination, reflective tissue, or behavior. The strongest version of this script does not claim that every red deep-sea animal evolved for exactly the same reason. It shows the physics, then asks whether the documented habitat and behavior fit the camouflage explanation for that species.
+{{contrast: WHAT ROV LAMPS DO TO THE FOOTAGE | is=Bring a broad spectrum into a place where it normally does not exist | is=Make the footage useful for identification | not=Show the animal as its own world lights it | not=Leave the audience a true impression of camouflage}}
+This is why ROV footage needs interpretation. White lamps bring a broad spectrum into a place where it normally does not exist. A shrimp that looks scarlet on camera may look nearly black under ambient conditions. The light makes the footage useful for identification, but it can mislead the audience about camouflage.
+
+{{checklist: WHAT ELSE AFFECTS LIGHT PENETRATION | ?Water clarity | ?Particles | ?Angle | ?Weather | ?Local conditions | >Depth is not a single switch}}
+Depth is also not a single switch. Water clarity, particles, angle, weather, and local conditions affect light penetration. Red coloration can be useful in one depth range and irrelevant in another. Some animals combine pigment with transparency, counterillumination, reflective tissue, or behavior. The strongest version of this script does not claim that every red deep-sea animal evolved for exactly the same reason. It shows the physics, then asks whether the documented habitat and behavior fit the camouflage explanation for that species.
 
 ### A camera-light warning
 
-{{ambient}}
+{{define: Color | An interaction among pigment, available wavelengths, viewing angle, and the sensor recording it | Not a fixed label attached to a body}}
 Every red-creature shot should carry a small note when artificial white light is doing the revealing. Without that note, the footage quietly teaches the opposite of the biology. The audience sees a vivid red animal and hears that red is camouflage, which can sound contradictory. The correction is visual: show the same body under a simplified deep-water light spectrum, then restore the ROV lamps. That lets viewers watch the color change as an effect of illumination rather than accept it as a verbal claim. It also gives the editor a repeatable technique for future color episodes. Whenever a video depends on what an animal looks like, ask what light produced the image. Color is not a fixed label attached to a body. It is an interaction among pigment, available wavelengths, viewing angle, and the sensor recording it.
 
 ### The claim I will not make
 
-{{text}}
+{{contrast: THE SUPPORTED CLAIM | is=Red tissue can return little available light and appear dark in many deep settings | not=That red pigment always evolved for camouflage | not=That every red animal is invisible at the same depth}}
 I will not say that red pigment always evolved for camouflage or that every red animal is invisible at the same depth. Pigment can have multiple functions, and light fields vary. The supported claim is narrower: because red wavelengths disappear quickly, red tissue can return little available light and appear dark in many deep settings. The species, depth, and behavior decide whether that physical advantage is biologically relevant.
 
 ### A simple edit check
 
-{{light}}
+{{checklist: THE EDIT CHECK | ?Does this shot use natural ambient light or artificial illumination? | +If it uses white ROV light, the caption must say so | -A shot of uncertain depth used as proof of a depth-specific camouflage claim}}
 Pause every time the narrator says red, black, or invisible and ask whether the current shot uses natural ambient light or artificial illumination. If it uses white ROV light, the caption must say so. If depth is uncertain, do not use the shot as proof of a depth-specific camouflage claim. The audience should be able to see why the same animal changes appearance instead of being asked to trust a color fact that contradicts the screen.
 
 ### Final editorial note
@@ -95,8 +107,11 @@ Treat the episode like a lighting experiment. Show the same original illustratio
 
 ### Evidence limit
 
-{{stat: 100 | METRES | An educational approximation, not a universal hard line}}
-The depth at which a color disappears varies with water clarity, particles, sun angle, and the amount of light. 'Red disappears at 100 meters' is an educational approximation, not a universal hard line. Red coloration is also not used by every deep animal and does not make an animal perfectly invisible. Bioluminescent predators, close-range vision, silhouette, movement, and other senses still matter.
+{{define: Red disappears at 100 meters | An educational approximation | Not a universal hard line: the depth varies with water clarity, particles, sun angle, and the amount of light}}
+The depth at which a color disappears varies with water clarity, particles, sun angle, and the amount of light. 'Red disappears at 100 meters' is an educational approximation, not a universal hard line.
+
+{{checklist: WHAT STILL MATTERS | -Red coloration is not used by every deep animal | -It does not make an animal perfectly invisible | ?Bioluminescent predators | ?Close-range vision | ?Silhouette and movement | ?Other senses}}
+Red coloration is also not used by every deep animal and does not make an animal perfectly invisible. Bioluminescent predators, close-range vision, silhouette, movement, and other senses still matter.
 
 ### Closing
 

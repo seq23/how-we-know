@@ -23,7 +23,7 @@ Why deep sea creatures get creepier the deeper you go?
 
 ### The right way to see it
 
-{{text}}
+{{chain: WHAT DEPTH ACTUALLY CHANGES | Light | Pressure | Temperature | Food supply | >Which traits are useful — not a ladder from normal to monstrous}}
 Depth changes light, pressure, temperature, and food supply. Those gradients change which traits are useful, but they do not create a universal ladder from normal to monstrous. The rest of this video follows that question through the actual environmental constraints described by NOAA, MBARI, Smithsonian, and Woods Hole sources in the companion article.
 
 ### Producer POV
@@ -47,22 +47,31 @@ Below the reach of sunlight, animals cannot depend on photosynthetic production 
 
 ### Some of the deepest animals look less monstrous, not more
 
-{{text}}
+{{contrast: THE DEEPEST ECOSYSTEMS | is=Hadal snailfish, soft, pale and tadpole-like | is=Sea cucumbers and amphipods, which dominate many trench observations | not=Populated only by giant fanged predators}}
 Hadal snailfish are soft, pale and tadpole-like. Sea cucumbers and amphipods dominate many trench observations. The deepest ecosystems are not populated only by giant fanged predators. The 'creepier with depth' pattern is partly selection bias: dramatic images are more likely to be shared.
 
 ### Common myths and questions
 
+{{contrast: ARE DEEPER ANIMALS ALWAYS LARGER? | is=Deep-sea gigantism, which occurs in some groups | not=A rule — many deep animals are tiny}}
+A common question is: Are deeper animals always larger? No. Deep-sea gigantism occurs in some groups, while many deep animals are tiny.
+
+{{chain: WHY SOME DEEP FISH LOSE THEIR EYES | Vision provides little benefit | Large functional eyes still cost something to maintain | >The cost may not be repaid}}
+A common question is: Why do some deep fish lose their eyes? Where vision provides little benefit, maintaining large functional eyes may not repay its biological cost.
+
+{{contrast: A LARGE GAPE | is=Helps capture and swallow a rare meal | not=Universal, since many deep animals use other feeding strategies}}
+A common question is: Why are deep-sea mouths so large? A large gape can help capture and swallow a rare meal, but many deep animals use other feeding strategies.
+
 {{stat: 8,336 | METRES | The deepest confirmed fish sighting | NOAA}}
-A common question is: Are deeper animals always larger? No. Deep-sea gigantism occurs in some groups, while many deep animals are tiny. A common question is: Why do some deep fish lose their eyes? Where vision provides little benefit, maintaining large functional eyes may not repay its biological cost. A common question is: Why are deep-sea mouths so large? A large gape can help capture and swallow a rare meal, but many deep animals use other feeding strategies. A common question is: What is the deepest fish ever filmed? NOAA reports a snailfish filmed at 8,336 meters as the deepest confirmed fish sighting.
+A common question is: What is the deepest fish ever filmed? NOAA reports a snailfish filmed at 8,336 meters as the deepest confirmed fish sighting.
 
 ### Descend until the horror story fails
 
-{{zones:}}
+{{steps: WHAT EACH ZONE ACTUALLY REWARDS | Twilight zone=large eyes, transparency, silvering, counter-illumination | Midnight zone=lures, low-energy movement, large feeding equipment in some predators | Abyssal plains=slow scavengers, deposit feeders, jellies, sea cucumbers | Trenches=amphipods, sea cucumbers, microbes, snailfish | >The environmental gradient is real; the guaranteed progression is not}}
 In the twilight zone, faint light still rewards large eyes, transparency, silvering, and counter-illumination. In the midnight zone, complete darkness and scarce food reward lures, low-energy movement, and large feeding equipment in some predators. On abyssal plains, slow scavengers, deposit feeders, jellies, and sea cucumbers are common. In trenches, amphipods, sea cucumbers, microbes, and snailfish dominate many observations. The environmental gradient is real. The guaranteed progression from normal to monster is not.
 
 ### Why the horror ladder is backwards
 
-{{ambient}}
+{{contrast: THE POPULAR DEPTH CHART | is=A storytelling device | not=A survey | not=A place for gelatinous drifters, deposit feeders, scavengers, sea cucumbers, amphipods, worms and microbes}}
 The popular depth chart usually selects one memorable predator for each band and makes the body designs look progressively more extreme. That is a storytelling device, not a survey. Deeper zones contain predators, but they also contain gelatinous drifters, deposit feeders, scavengers, sea cucumbers, amphipods, worms, microbes, and fish whose bodies are less armored and less visually dramatic. Food often becomes scarcer with depth, so waiting, drifting, conserving energy, and using whatever arrives can matter more than speed or aggression.
 
 {{descent: 8336 | THE RECORD THAT ENDS THE LADDER}}
@@ -70,17 +79,17 @@ The deepest confirmed fish record also complicates the horror ladder. Snailfish 
 
 ### A depth chart without villains
 
-{{zones:}}
+{{steps: A DEPTH CHART WITHOUT VILLAINS | Twilight zone=put a migrator beside a predator | Midnight zone=put a gelatinous drifter beside an anglerfish | Abyssal=put a sea cucumber, scavenging crustacean and microbe beside the dramatic fish | Hadal=show the snailfish record, then animals that live deeper than confirmed fish}}
 The final depth chart should replace the usual monster lineup with ecological roles. Put a migrator beside a predator in the twilight zone. Put a gelatinous drifter beside an anglerfish in the midnight zone. Put a sea cucumber, scavenging crustacean, and microbe beside the dramatic abyssal fish. In the hadal section, show the snailfish record and then continue the chart with animals that live deeper than confirmed fish. The visual message becomes diversity under constraint rather than escalating evil. That change is structural, not cosmetic. It keeps this episode from repeating the ranked-list format and gives the viewer a reason to stay to the bottom of the chart: the expected final monster never arrives. The payoff is a softer animal and a harder biological limit.
 
 ### The deeper-is-worse illusion
 
-{{text}}
+{{chain: HOW THE CREEPINESS CURVE IS MADE | Cameras linger on the unusual animal | Editors choose the sharpest teeth | Soft, slow, common organisms get less attention | The internet treats the selected images as a census | >Partly biology, partly camera technology, partly what humans choose to share}}
 Depth videos also suffer from selection bias. Cameras linger on the unusual animal. Editors choose the sharpest teeth. Soft, slow, common organisms receive less attention because they are harder to identify and less likely to become a thumbnail. The internet then treats the selected images as a representative census. This episode should reveal that pipeline. The creepiness curve is partly biology, partly camera technology, and partly what humans choose to share.
 
 ### The retention payoff
 
-{{ambient}}
+{{contrast: WHAT BELONGS AT THE DEEPEST POINT | is=The limit of confirmed fish | is=A transition to other forms of life | not=The ugliest creature}}
 The deepest point on the chart should not contain the ugliest creature. It should contain the limit of confirmed fish and a transition to other forms of life. That reversal gives the viewer a genuine surprise while correcting the premise. The episode begins as a horror ladder and ends as a lesson in energy budgets, sampling bias, and physiological boundaries. The chart becomes more interesting when the expected monster is replaced by a question: which body plans can keep functioning as pressure rises and food becomes less predictable?
 
 ### Final editorial note
@@ -95,7 +104,7 @@ Make this a descending counterexample. At each zone, show the trait the viewer e
 
 ### Evidence limit
 
-{{ambient}}
+{{contrast: WHAT THE RECORD SUPPORTS | is=Deep-sea gigantism in certain groups | is=One filmed snailfish as the deepest confirmed fish | not=That animals generally become larger, more aggressive, or more grotesque with depth | not=A description of every trench community}}
 Some deep animals are large or heavily armed, and deep-sea gigantism occurs in certain groups. That does not mean animals generally become larger, more aggressive, or more grotesque with depth. Sampling also biases what becomes famous: a fanged fish makes a better thumbnail than a sediment-eating sea cucumber. The deepest confirmed fish record is one filmed snailfish; it does not describe every trench community.
 
 ### Closing

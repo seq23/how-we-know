@@ -23,8 +23,11 @@ Why deep sea creatures look so weird?
 
 ### The right way to see it
 
-{{text}}
-The useful question is not “Why is this creature weird?” It is “What problem does this feature solve?” Once you ask that, the huge mouth, transparent head, glowing lure, soft tissue, and needle-like teeth stop looking random. The rest of this video follows that question through the actual environmental constraints described by NOAA, MBARI, Smithsonian, and Woods Hole sources in the companion article.
+{{contrast: THE USEFUL QUESTION | is=What problem does this feature solve? | not=Why is this creature weird?}}
+The useful question is not “Why is this creature weird?” It is “What problem does this feature solve?”
+
+{{checklist: WHAT STOPS LOOKING RANDOM | +The huge mouth | +The transparent head | +The glowing lure | +The soft tissue | +The needle-like teeth}}
+Once you ask that, the huge mouth, transparent head, glowing lure, soft tissue, and needle-like teeth stop looking random. The rest of this video follows that question through the actual environmental constraints described by NOAA, MBARI, Smithsonian, and Woods Hole sources in the companion article.
 
 ### Producer POV
 
@@ -47,41 +50,62 @@ A large mouth, long teeth, hinged jaws, or an expandable stomach lets an animal 
 
 ### Soft bodies can be an advantage under pressure
 
-{{text}}
+{{contrast: WHAT PRESSURE DAMAGES | is=Compressible gas spaces | not=Bodies that are mostly water | not=Animals without lungs or large gas-filled swim bladders}}
 Pressure is especially damaging to compressible gas spaces. Many deep-sea animals are mostly water and lack lungs or large gas-filled swim bladders, so their bodies are less crushable than a human body or an air-filled machine. The result can be a soft, gelatinous form that looks fragile at the surface but is mechanically appropriate at depth.
 
 ### Common myths and questions
 
-{{ambient}}
-A common question is: Are all deep-sea animals ugly? No. 'Ugly' is a human judgment. Deep-sea animals include delicate jellies, corals, worms, octopuses, fishes and many microscopic organisms with very different forms. A common question is: Do deep-sea animals look the same when brought up? Not always. Nets, decompression, warming and handling can damage soft tissues or alter an animal's appearance. A common question is: Why do so many have large teeth? In food-poor habitats, long teeth can help secure prey once contact occurs. Many species, however, have tiny mouths or feed on particles instead. A common question is: Why do some deep-sea animals glow? Bioluminescence can attract prey, hide a silhouette, confuse predators, illuminate nearby objects or communicate.
+{{define: Ugly | A human judgment, not a description of the animal | Deep-sea animals include delicate jellies, corals, worms, octopuses, fishes and many microscopic organisms with very different forms}}
+A common question is: Are all deep-sea animals ugly? No. 'Ugly' is a human judgment. Deep-sea animals include delicate jellies, corals, worms, octopuses, fishes and many microscopic organisms with very different forms.
+
+{{chain: WHAT HAPPENS ON THE WAY UP | Nets | Decompression | Warming | Handling | >Soft tissues can be damaged, or an animal's appearance altered}}
+A common question is: Do deep-sea animals look the same when brought up? Not always. Nets, decompression, warming and handling can damage soft tissues or alter an animal's appearance.
+
+{{contrast: LONG TEETH | is=Help secure prey once contact occurs in food-poor habitats | not=Universal | not=Present in the many species with tiny mouths | not=Present in species that feed on particles}}
+A common question is: Why do so many have large teeth? In food-poor habitats, long teeth can help secure prey once contact occurs. Many species, however, have tiny mouths or feed on particles instead.
+
+{{checklist: WHAT BIOLUMINESCENCE CAN DO | +Attract prey | +Hide a silhouette | +Confuse predators | +Illuminate nearby objects | +Communicate}}
+A common question is: Why do some deep-sea animals glow? Bioluminescence can attract prey, hide a silhouette, confuse predators, illuminate nearby objects or communicate.
 
 ### Four problems, four body plans
 
 {{zones:}}
-This episode works as a problem-solution montage rather than a parade of creatures. First, darkness rewards eyes that collect faint light, bodies that erase their outline, and light organs that communicate without sunlight. Second, scarce food rewards jaws and stomachs that can use a rare opportunity. Third, high pressure punishes large gas spaces and favors water-rich bodies. Fourth, cold and low food supply reward slow, efficient movement. None of those rules produces one standard deep-sea shape. They produce many different answers. A barreleye, anglerfish, siphonophore, sea cucumber, and deep octopus can occupy the same broad world while solving different versions of the same problem.
+This episode works as a problem-solution montage rather than a parade of creatures.
+
+{{steps: FOUR PROBLEMS, FOUR BODY PLANS | Darkness=rewards eyes that collect faint light, bodies that erase their outline, and light organs that communicate without sunlight | Scarce food=rewards jaws and stomachs that can use a rare opportunity | High pressure=punishes large gas spaces and favors water-rich bodies | Cold and low food supply=reward slow, efficient movement | >None of those rules produces one standard deep-sea shape}}
+First, darkness rewards eyes that collect faint light, bodies that erase their outline, and light organs that communicate without sunlight. Second, scarce food rewards jaws and stomachs that can use a rare opportunity. Third, high pressure punishes large gas spaces and favors water-rich bodies. Fourth, cold and low food supply reward slow, efficient movement. None of those rules produces one standard deep-sea shape. They produce many different answers. A barreleye, anglerfish, siphonophore, sea cucumber, and deep octopus can occupy the same broad world while solving different versions of the same problem.
 
 ### A better way to look at the body
 
-{{text}}
+{{steps: HOW TO READ THE IMAGE | Start with the water, not the face | Ask what light is available | Ask how often food arrives | Ask whether the image shows a living animal at depth or a specimen after capture}}
 The fastest way to stop treating a deep-sea animal as a monster is to rebuild the scene around it. Start with the water, not the face. Ask whether the animal is drifting in open water, moving over mud, sitting near a vent, or crossing a trench wall. Then ask what light is available. A reflective side, a transparent tissue, a red body, and a light organ can all be forms of concealment, but they work in different light fields. Next ask how often food arrives. A large mouth can look excessive in a photograph while functioning as insurance in a habitat where the next meal is unpredictable. Finally, ask whether the image shows a living animal at depth or a specimen after capture. Delicate tissue can collapse, eyes can change position, and colors can look dramatically different under deck lights.
 
 {{anatomy: RESTORE THE CONTEXT | transparent shield@0.28,0.26 | lure@0.36,0.18 | giant mouth@0.15,0.58}}
-That sequence changes the emotional meaning of the image without making it less compelling. The animal still looks unfamiliar. It simply stops looking arbitrary. The barreleye's transparent shield becomes a protected viewing window. The anglerfish's lure becomes a way to shorten a costly chase. A gelatinous animal's softness becomes compatible with a body that contains little compressible gas. A giant mouth becomes a response to scarcity rather than proof of aggression. This is the channel's editorial rule for every creature episode: restore depth, scale, condition, and function before using the close-up. If those four pieces are missing, the image may be excellent entertainment, but it is weak evidence about how the animal normally looks or lives.
+That sequence changes the emotional meaning of the image without making it less compelling. The animal still looks unfamiliar. It simply stops looking arbitrary. The barreleye's transparent shield becomes a protected viewing window. The anglerfish's lure becomes a way to shorten a costly chase. A gelatinous animal's softness becomes compatible with a body that contains little compressible gas. A giant mouth becomes a response to scarcity rather than proof of aggression. This is the channel's editorial rule for every creature episode: restore depth, scale, condition, and function before using the close-up.
+
+{{checklist: RESTORE BEFORE THE CLOSE-UP | +Depth | +Scale | +Condition | +Function | >If those four pieces are missing, the image is weak evidence}}
+If those four pieces are missing, the image may be excellent entertainment, but it is weak evidence about how the animal normally looks or lives.
 
 ### The question I want the viewer to keep
 
-{{ambient}}
+{{steps: THE HABIT | Pause before naming it | Restore the habitat | Identify the constraint | >That single habit turns shock into curiosity}}
 When the next bizarre animal appears, pause before naming it. Restore the habitat, then identify the constraint. That single habit turns shock into curiosity. It is also how this channel avoids becoming a slideshow of grotesque close-ups: every image has to earn its explanation through depth, scale, condition, and function.
 
 ### What to notice in the edit
 
-{{text}}
+{{checklist: THE VISUAL TEST | -A close-up without restored context | +Put the depth on screen | +Show the animal's approximate size when the source provides it | +Distinguish a live ROV observation from a specimen damaged by nets or decompression}}
 The visual test for this episode is simple: never show a close-up without restoring context. Put the depth on screen. Show the animal's approximate size when the source provides it. Distinguish a live ROV observation from a specimen damaged by nets or decompression. The goal is not to make the creature less interesting. It is to stop the camera from manufacturing the weirdness we then pretend to explain.
 
 ### Evidence limit
 
-{{ambient}}
-There is no single adaptation called a deep-sea body plan, and 'weird' is not a scientific category. NOAA describes the deep ocean as dark, cold, food-poor, and high-pressure, but species occupy different depths and habitats. A feature that helps in open midwater may be useless on the seafloor. A live animal may also look very different from a preserved specimen. The script can explain documented functions and plausible tradeoffs; it cannot claim that every unusual feature evolved for one reason.
+{{define: Weird | Not a scientific category | There is no single adaptation called a deep-sea body plan}}
+There is no single adaptation called a deep-sea body plan, and 'weird' is not a scientific category.
+
+{{checklist: WHAT NOAA DESCRIBES THE DEEP OCEAN AS | +Dark | +Cold | +Food-poor | +High-pressure | >But species occupy different depths and habitats}}
+NOAA describes the deep ocean as dark, cold, food-poor, and high-pressure, but species occupy different depths and habitats. A feature that helps in open midwater may be useless on the seafloor. A live animal may also look very different from a preserved specimen.
+
+{{contrast: WHAT THIS SCRIPT CAN CLAIM | is=Documented functions | is=Plausible tradeoffs | not=That every unusual feature evolved for one reason}}
+The script can explain documented functions and plausible tradeoffs; it cannot claim that every unusual feature evolved for one reason.
 
 ### Closing
 

@@ -23,7 +23,7 @@ Why some deep sea creatures are transparent?
 
 ### The right way to see it
 
-{{text}}
+{{contrast: TRANSPARENCY | is=Reducing the visible outline enough to improve survival | not=Magic invisibility | not=A way to hide eyes, digestive organs, pigments and reflective tissues}}
 Transparency is not magic invisibility. Eyes, digestive organs, pigments, and reflective tissues remain difficult to hide. The adaptation works by reducing the visible outline enough to improve survival. The rest of this video follows that question through the actual environmental constraints described by NOAA, MBARI, Smithsonian, and Woods Hole sources in the companion article.
 
 ### Producer POV
@@ -37,7 +37,7 @@ Midwater animals cannot shelter behind rocks, plants or the seafloor. A visible 
 
 ### Transparency is easier for some tissues than others
 
-{{text}}
+{{contrast: WHAT CAN BE MADE CLEAR | is=Gelatinous tissue, mostly water with little light-absorbing material | not=Muscles | not=Eyes | not=Digestive organs | not=Pigments}}
 Gelatinous animals can be almost entirely clear because their bodies contain large amounts of water and relatively little light-absorbing material. Muscles, eyes, digestive organs and pigments are harder to hide. Some species conceal those opaque parts with mirrors, red pigment, compact organs or special positioning.
 
 ### The barreleye uses transparency as a window, not whole-body camouflage
@@ -52,8 +52,17 @@ At greater depths where sunlight is absent, being clear may offer less advantage
 
 ### Common myths and questions
 
-{{ambient}}
-A common question is: Are transparent animals invisible? No. Edges, eyes, organs and changes in refraction can still reveal them. A common question is: Why are many jellies transparent? Their water-rich tissues transmit light and reduce a strong silhouette in open water. A common question is: Is the barreleye's entire head empty? No. A transparent fluid-filled shield covers and protects its eyes; the rest of the head contains normal tissues and organs. A common question is: Do transparent animals live only in the deep sea? No. Transparency also occurs in plankton and other animals closer to the surface.
+{{checklist: ARE TRANSPARENT ANIMALS INVISIBLE? | -No | ?Edges can still reveal them | ?Eyes | ?Organs | ?Changes in refraction}}
+A common question is: Are transparent animals invisible? No. Edges, eyes, organs and changes in refraction can still reveal them.
+
+{{chain: WHY MANY JELLIES ARE TRANSPARENT | Water-rich tissues | Light is transmitted rather than reflected | A strong silhouette is reduced | >In open water, that is the whole advantage}}
+A common question is: Why are many jellies transparent? Their water-rich tissues transmit light and reduce a strong silhouette in open water.
+
+{{contrast: THE BARRELEYE'S HEAD | is=A transparent fluid-filled shield that covers and protects its eyes | not=Empty | not=Free of normal tissues and organs}}
+A common question is: Is the barreleye's entire head empty? No. A transparent fluid-filled shield covers and protects its eyes; the rest of the head contains normal tissues and organs.
+
+{{define: Transparency | An adaptation that also occurs in plankton and other animals closer to the surface | Not confined to the deep sea}}
+A common question is: Do transparent animals live only in the deep sea? No. Transparency also occurs in plankton and other animals closer to the surface.
 
 ### What can be transparent—and what cannot
 
@@ -62,25 +71,37 @@ A body is not one optical material. Gelatinous tissue can transmit light well, b
 
 ### Why becoming invisible is incomplete
 
-{{text}}
-Transparency sounds like a perfect solution until the body has to digest food, move muscles, carry pigments, protect a nervous system, and reproduce. Those structures interact with light. A transparent animal can still reveal its gut, eyes, eggs, or prey. That is why open-water camouflage often combines partial transparency with reflective surfaces, small size, vertical posture, counterillumination, or behavior. The goal is not literal invisibility from every angle. It is reducing contrast against the background seen by a particular predator.
+{{checklist: WHAT A TRANSPARENT BODY STILL HAS TO DO | ?Digest food | ?Move muscles | ?Carry pigments | ?Protect a nervous system | ?Reproduce | >Those structures interact with light}}
+Transparency sounds like a perfect solution until the body has to digest food, move muscles, carry pigments, protect a nervous system, and reproduce. Those structures interact with light. A transparent animal can still reveal its gut, eyes, eggs, or prey.
+
+{{contrast: THE GOAL OF OPEN-WATER CAMOUFLAGE | is=Reducing contrast against the background seen by a particular predator | is=Partial transparency plus reflective surfaces, small size, vertical posture, counterillumination, or behavior | not=Literal invisibility from every angle}}
+That is why open-water camouflage often combines partial transparency with reflective surfaces, small size, vertical posture, counterillumination, or behavior. The goal is not literal invisibility from every angle. It is reducing contrast against the background seen by a particular predator.
 
 {{ambient}}
-The barreleye makes the distinction especially clear. Its transparent shield does not make the whole fish disappear. It lets the tubular eyes look upward through protected tissue and rotate as the animal changes its feeding position. Net-caught specimens once obscured that anatomy because the shield was damaged. Live ROV observations changed the interpretation. That history is a useful reminder for the entire channel: specimen photographs and live behavior answer different questions. A specimen can support anatomy and identification. A live observation can reveal posture, movement, orientation, and the function of structures that collapse after capture. The humanized version of this episode should let the audience feel that discovery. The strange feature is not simply displayed; the evidence changes the explanation.
+The barreleye makes the distinction especially clear. Its transparent shield does not make the whole fish disappear. It lets the tubular eyes look upward through protected tissue and rotate as the animal changes its feeding position. Net-caught specimens once obscured that anatomy because the shield was damaged. Live ROV observations changed the interpretation.
+
+{{sources: TWO KINDS OF EVIDENCE | A specimen=supports anatomy and identification | A live observation=reveals posture, movement, orientation, and the function of structures that collapse after capture}}
+That history is a useful reminder for the entire channel: specimen photographs and live behavior answer different questions. A specimen can support anatomy and identification. A live observation can reveal posture, movement, orientation, and the function of structures that collapse after capture. The humanized version of this episode should let the audience feel that discovery. The strange feature is not simply displayed; the evidence changes the explanation.
 
 ### The organ problem
 
 {{anatomy: THE ORGAN PROBLEM | digestive system@0.44,0.58 | eyes@0.24,0.34 | reproductive tissue@0.52,0.56}}
-The most convincing transparent animals are never uniformly invisible. Their digestive systems, eyes, reproductive tissue, or recent meals can betray them. That imperfection is the story. Evolution does not get to remove every organ that scatters light. It works around the organs the animal still needs. Some species narrow or reposition opaque structures. Some use mirrors or pigments. Some stay small. Some orient their bodies to present less visible area. The video should pause on an animal whose gut remains visible and explain that transparency is a reduction in detection, not a magic cloak. This makes the adaptation feel more biological and less like a visual effect. It also prevents us from claiming that a transparent creature disappears equally well to every predator, wavelength, and viewing angle. The animal is playing probabilities, not becoming absent.
+The most convincing transparent animals are never uniformly invisible. Their digestive systems, eyes, reproductive tissue, or recent meals can betray them. That imperfection is the story. Evolution does not get to remove every organ that scatters light. It works around the organs the animal still needs.
+
+{{checklist: HOW SPECIES WORK AROUND THE ORGANS THEY STILL NEED | ?Narrow or reposition opaque structures | ?Use mirrors or pigments | ?Stay small | ?Orient the body to present less visible area}}
+Some species narrow or reposition opaque structures. Some use mirrors or pigments. Some stay small. Some orient their bodies to present less visible area.
+
+{{anatomy: A GUT THAT STILL SHOWS | visible gut@0.44,0.58 | eyes@0.24,0.34}}
+The video should pause on an animal whose gut remains visible and explain that transparency is a reduction in detection, not a magic cloak. This makes the adaptation feel more biological and less like a visual effect. It also prevents us from claiming that a transparent creature disappears equally well to every predator, wavelength, and viewing angle. The animal is playing probabilities, not becoming absent.
 
 ### A predator does not see like our camera
 
-{{light}}
+{{contrast: WHAT A PREDATOR MAY DETECT | is=Contrast | is=Polarization | is=Motion | is=Wavelengths our display does not reproduce | not=The image a human sees on a color-corrected screen}}
 Camouflage is measured against another animal's visual system, not a human watching a color-corrected screen. Predators may detect contrast, polarization, motion, or wavelengths our display does not reproduce. A body that looks obvious in a paused frame may be harder to detect while drifting. The script should therefore say 'reduces visibility' rather than 'becomes invisible.' That wording is both more accurate and more interesting because it keeps the predator in the story.
 
 ### The final visual test
 
-{{ambient}}
+{{steps: THE FINAL VISUAL TEST | Open blue water | Black water under ROV light | A high-contrast graphic grid | >The animal's visibility changes each time}}
 Place a transparent animal over three backgrounds: open blue water, black water under ROV light, and a high-contrast graphic grid. The animal's visibility changes each time. That is the point. Transparency is contextual, and a camera designed to expose faint structures can make successful camouflage look ineffective. The final edit should celebrate the structures revealed by the camera while explaining that a predator does not receive the same optimized image.
 
 ### Final editorial note
@@ -95,7 +116,7 @@ Use an anatomy case study rather than a general list. Begin with a silhouette, r
 
 ### Evidence limit
 
-{{ambient}}
+{{contrast: TRANSPARENCY, HONESTLY STATED | is=Works best in open water | is=Works against certain viewing angles and light conditions | not=Perfect invisibility | not=Free, because tissues still need structure and protection}}
 Transparency is not perfect invisibility. It works best in open water and against certain viewing angles and light conditions. It can be costly because tissues still need structure and protection. The barreleye's transparent shield should not be generalized to all barreleyes or all transparent animals without species-specific evidence. MBARI's feeding scenario around siphonophores is presented as a working hypothesis, not direct proof of every meal.
 
 ### Closing

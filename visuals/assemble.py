@@ -42,7 +42,29 @@ def render_beat(beat, idx, workdir, seconds):
     shutil.rmtree(fdir)
     return clip
 
-def assemble(plan_path, out_path, audio_dir=None, master_audio=None, workdir=None):
+def mix_bed(narration, out, duck_db=-32.0, seed=7):
+    """Lay the generated ambient bed under narration. The bed is low-frequency
+    only, so it fills silence without masking speech. Sidechain-free: at -32 dB
+    it never competes, and ducking would pump audibly under a calm read."""
+    import subprocess as sp
+    dur = probe(narration)
+    bed_wav = out + ".bed.wav"
+    here = os.path.dirname(os.path.abspath(__file__))
+    sp.run([sys.executable, os.path.join(here, "music.py"), str(dur + 2), bed_wav,
+            "--seed", str(seed)], check=True)
+    sp.run(["ffmpeg","-hide_banner","-loglevel","error","-y",
+            "-i", narration, "-i", bed_wav,
+            "-filter_complex",
+            f"[1:a]volume={duck_db}dB,aformat=sample_fmts=fltp:sample_rates=48000[b];"
+            f"[0:a]aformat=sample_fmts=fltp:sample_rates=48000[v];"
+            f"[v][b]amix=inputs=2:duration=first:dropout_transition=0:normalize=0[a]",
+            "-map","[a]","-c:a","pcm_s16le", out], check=True)
+    os.remove(bed_wav)
+    return out
+
+
+def assemble(plan_path, out_path, audio_dir=None, master_audio=None, workdir=None,
+             music=True):
     plan = json.load(open(plan_path))
     workdir = workdir or out_path + ".work"
     os.makedirs(workdir, exist_ok=True)
@@ -84,6 +106,12 @@ def assemble(plan_path, out_path, audio_dir=None, master_audio=None, workdir=Non
     else:
         track = None
 
+    if track and music:
+        try:
+            track = mix_bed(track, os.path.join(workdir, "mixed.wav"))
+        except Exception as e:
+            print(f"  music bed skipped: {e}")      # narration alone is still valid
+
     if track:
         subprocess.run(["ffmpeg","-hide_banner","-loglevel","error","-y","-i",silent,
                         "-i",track,"-c:v","copy","-c:a","aac","-b:a","192k",
@@ -101,6 +129,7 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("plan"); ap.add_argument("out")
     ap.add_argument("--audio-dir"); ap.add_argument("--master-audio")
+    ap.add_argument("--no-music", action="store_true")
     a = ap.parse_args()
-    r = assemble(a.plan, a.out, a.audio_dir, a.master_audio)
+    r = assemble(a.plan, a.out, a.audio_dir, a.master_audio, music=not a.no_music)
     print(json.dumps(r, indent=2))
