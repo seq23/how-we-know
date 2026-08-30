@@ -1,0 +1,42 @@
+name: loop · Sat 06:00 · score demand ÷ competition
+
+# Runs the research agent's demand/competition pass so the publish order is
+# re-derived on current data every week. The owner never has to ask for it.
+#
+# Saturday, deliberately AHEAD of Sunday's publish decision: the queue must be
+# ranked on this week's evidence, not last month's. If this stage silently stops
+# running, the loop would keep publishing in a stale order and look perfectly
+# healthy doing it - so the stage hard-fails when it ranks nothing, and
+# loop/cadence.py raises on a ranking older than the staleness threshold.
+#
+# 10:00 UTC is 06:00 America/New_York during EDT.
+on:
+  schedule:
+    - cron: '0 10 * * 6'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: loop-state
+  cancel-in-progress: false
+
+jobs:
+  score:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Score and rank the publish order
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # search.list costs 100 units against 10,000/day. A quota stop is a
+          # legitimate named outcome, not a failure.
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: bin/loop-stage.sh weekly-score loop/score.py

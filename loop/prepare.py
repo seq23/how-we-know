@@ -46,24 +46,24 @@ def substitute_pov(text: str, line: str) -> tuple[str, bool]:
 
 def main() -> None:
     with Stage("prepare",
-               zero_work_hint="No queue row was approved. The owner's Monday "
-                              "approval has not landed.") as st:
+               zero_work_hint="The queue held no usable row. Monday's draft "
+                              "stage produced nothing.") as st:
         q = read_json(QUEUE, default=None)
         if q is None:
             st.named_stop("NO_QUEUE", "loop/render_queue.json does not exist",
                           unblock="Run: python loop/draft.py")
-        if q.get("approval", {}).get("state") != "approved":
-            st.named_stop(
-                "NOT_APPROVED",
-                f"week {q['week']} has not been approved; nothing is voiced or "
-                f"rendered without the owner's approval",
-                unblock="Open docs/approve/ and press Approve, or run "
-                        f"bin/loop-approve.sh {q['week']}")
+        # No approval gate. Topics were picked automatically under the hard
+        # exclusion gate and POV lines came from her own bank, so there is
+        # nothing here that requires her. The only human input this stage
+        # honours is a DROP - an explicit override, applied if she used one.
+        dropped = [i["slug"] for i in q["items"] if i.get("status") == "dropped"]
+        if dropped:
+            st.note(f"owner override dropped: {', '.join(dropped)}")
 
         WORK.mkdir(parents=True, exist_ok=True)
         prepared = []
         for it in q["items"]:
-            if it.get("status") != "approved":
+            if it.get("status") not in ("queued", "approved"):
                 st.note(f"{it['slug']}: status={it.get('status')} — skipped")
                 continue
             src = ROOT / it["script"]
@@ -81,8 +81,8 @@ def main() -> None:
                     + (" (POV substituted from the bank)" if changed else ""))
 
         if not prepared:
-            st.named_stop("NOTHING_APPROVED",
-                          "the queue contains no approved row to prepare",
+            st.named_stop("NOTHING_TO_PREPARE",
+                          "every row in the queue was dropped or is unusable",
                           detail={"statuses": [i.get("status")
                                                for i in q["items"]]})
         write_json(QUEUE, q)

@@ -2,14 +2,26 @@
   "repo": "seq23/how-we-know",
   "channel_handle": "@howweknowdeep",
   "cadence": {
-    "videos_per_week": 4,
+    "videos_per_week": 2,
+    "default": 2,
+    "escalated": 3,
+    "ceiling": 4,
     "deliberate": true,
-    "note": "Mirrors pov/topic-taxonomy.json. NEVER raised to clear a backlog. loop/tests/test_cadence_ceiling.py fails if this drifts from the taxonomy or exceeds 4."
+    "note": "Operating cadence is 2. The taxonomy's 4 is the CEILING, never the target. Escalation to 3 is evidence-gated (see below) and is never raised to clear a backlog. Change videos_per_week here; no logic reads a hardcoded number.",
+    "escalation": {
+      "to": 3,
+      "automatic": true,
+      "condition": "at least one OpenRouter-authored script has passed full validation - a validated artifact, not merely a working lane",
+      "evidence_file": "loop/state/authoring_evidence.json",
+      "why": "3/week only makes sense once the loop can replace what it spends. Until the authoring lane has demonstrably produced a publishable script, spending inventory faster shortens the runway with nothing refilling it."
+    }
   },
   "retention": {
     "floor_pct": 30.0,
     "breach_streak_to_trip": 3,
-    "note": "Average view percentage. Three consecutive videos below the floor trips the breaker."
+    "note": "Average view percentage AND average view duration against the ~7.5 minute runtime. Viewers leaving inside the first 2 minutes invalidates the format, not just the topic - it is reported as a prominent finding, never a number buried in JSON.",
+    "runtime_minutes": 7.5,
+    "early_exit_minutes": 2.0
   },
   "pov": {
     "rotation_window": 12
@@ -30,5 +42,25 @@
     "youtube_oauth_client_env": "YT_OAUTH_CLIENT_JSON",
     "youtube_oauth_refresh_env": "YT_OAUTH_REFRESH_TOKEN",
     "note": "None of these exist yet. Every lane that needs one takes a NAMED STOP, never a crash and never a silent skip."
+  },
+  "publish_order": {
+    "source": "research/publish_order.json",
+    "owner": "another agent - READ ONLY from the loop",
+    "ranking": "demand / competition, title coverage weighted 50%",
+    "front_load": 4,
+    "rule": "Publish the top 4 first, then continue down the ranked order. NEVER filename or episode-number order.",
+    "absent_behaviour": "NAMED STOP. Never fall back to alphabetical - a silent fallback to episode order is exactly the failure this policy exists to prevent.",
+    "entrypoint": "research/publish_order.py",
+    "entrypoint_note": "The research agent owns this command and its contract; the loop owns only the schedule. Overridden by the file's own 'generator' field when it names something else.",
+    "staleness_days": 10,
+    "staleness_why": "Scoring runs weekly. 10 days allows one missed cycle plus three days of slack. Beyond that the ranking predates a full cycle of trend movement and is a NAMED STOP, because a queue frozen in August is wrong by October and a loop publishing in stale order looks perfectly healthy while doing it.",
+    "honour_pin": true,
+    "pin_note": "A pinned head is an owner override, not a computed result. It is never re-sorted, and it falls away on its own once those episodes are published."
+  },
+  "runway": {
+    "warn_weeks": 4,
+    "critical_weeks": 2,
+    "never_go_dark": true,
+    "why": "At 2/week, 20 scripts is 10 weeks. Warning at 4 weeks leaves ~8 unpublished videos in hand: enough time to notice the stop, run the authoring lane, and fall back to a human if generation fails. Warning at 2 weeks would be a scramble. The runway guard NEVER trips the circuit breaker - halting publishing to protect the backlog is the definition of going dark."
   }
 }

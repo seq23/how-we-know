@@ -3,5 +3,30 @@
   "tripped_at": null,
   "cause": null,
   "detail": null,
-  "history": []
+  "history": [
+    {
+      "event": "trip",
+      "at": "2026-08-30T20:36:12+00:00",
+      "cause": "validator",
+      "detail": "V5 sources-present=FAIL(24)"
+    },
+    {
+      "event": "reset",
+      "at": "2026-08-30T20:37:07+00:00",
+      "cleared_cause": "validator",
+      "note": "V5 sources_block bug fixed"
+    },
+    {
+      "event": "reset",
+      "at": "2026-08-30T20:49:00+00:00",
+      "cleared_cause": null,
+      "note": "clean state after rework"
+    },
+    {
+      "event": "reset",
+      "at": "2026-08-30T21:13:28+00:00",
+      "cleared_cause": null,
+      "note": "clean state"
+    }
+  ]
 }

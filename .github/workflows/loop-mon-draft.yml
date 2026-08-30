@@ -1,8 +1,9 @@
 name: loop · Mon 06:00 · draft, validate, gate
 
-# Builds loop/render_queue.json — the only handoff to the Mac — and rebuilds the
-# one-page approval gate. Any validator failure trips the circuit breaker here,
-# before anything is voiced.
+# Builds loop/render_queue.json - the only handoff to the Mac - authors any topic
+# that has no script yet, and rebuilds the dashboard. Nothing waits on the owner.
+# Any hard validator failure trips the circuit breaker here, before anything is
+# voiced. Generated scripts are validated at FULL strength, not relaxed.
 on:
   schedule:
     - cron: '0 10 * * 1'
@@ -26,7 +27,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Draft the week and publish the approval gate
+      - name: Draft the week, author the shortfall, publish the dashboard
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # The authoring lane. Absent -> a named OPENROUTER_KEY_MISSING stop
+          # and the week ships whatever inventory covers; never a crash.
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          OPENROUTER_MODEL: ${{ vars.OPENROUTER_MODEL }}
         run: bin/loop-stage.sh mon-draft loop/draft.py
