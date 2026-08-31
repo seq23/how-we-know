@@ -1,0 +1,1047 @@
+[
+  {
+    "segment": "depth_descent",
+    "seconds": 6.62,
+    "heading": "Cold open",
+    "narration": "The thing most likely to kill a human at a thousand meters is not a fish.",
+    "args": {
+      "to_depth": 1000,
+      "label": "THE REAL HAZARD"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "It is the environment. Teeth, glowing lures, and black water trigger fear instantly, but pressure, cold, distance, and equipment failure are the real hazards.",
+    "args": {
+      "lines": [
+        "It is the environment.",
+        "Teeth, glowing lures, and",
+        "black water"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 3.5,
+    "heading": "Title card",
+    "narration": "Why deep sea creatures are so scary?",
+    "args": {
+      "lines": [
+        "Why deep sea creatures",
+        "are so scary?"
+      ]
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "The right way to see it",
+    "narration": "Fear comes from anatomy plus context. Our brains react to teeth, staring eyes, darkness, and unfamiliar movement before we know the animal\u2019s size, behavior, or actual risk.",
+    "args": {
+      "title": "HOW THE FEAR ARRIVES",
+      "stages": [
+        "Teeth, staring eyes, darkness, unfamiliar movement",
+        "The brain reacts",
+        "Before we know size, behavior, or actual risk"
+      ],
+      "conclusion": "Fear comes from anatomy plus context"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The right way to see it",
+    "narration": "The rest of this video follows that question through the actual environmental constraints described by NOAA, MBARI, Smithsonian, and Woods Hole sources in the companion article.",
+    "args": {
+      "lines": [
+        "The rest of this",
+        "video follows that question",
+        "through"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 9.0,
+    "heading": "Producer POV",
+    "narration": "The close-up teeth still work on me. Then I check the scale, and the 'monster' is often a small fish using the only feeding equipment that makes sense where a missed meal can matter.",
+    "args": {
+      "text": "The close-up teeth still work on me. Then I check the scale, and the 'monster' is often a small fish using the only feeding equipment that makes sense where a missed meal can matter.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "anatomy_callout",
+    "seconds": 9.0,
+    "heading": "Our brains treat unfamiliar anatomy as a threat",
+    "narration": "People quickly notice teeth, staring eyes, spines and mouths. In a photograph with no scale or context, a fish only a few centimeters long can look like a giant predator.",
+    "args": {
+      "title": "WHAT THE BRAIN NOTICES FIRST",
+      "parts": [
+        [
+          "teeth",
+          0.19,
+          0.64
+        ],
+        [
+          "staring eyes",
+          0.24,
+          0.34
+        ],
+        [
+          "spines",
+          0.55,
+          0.22
+        ],
+        [
+          "mouths",
+          0.14,
+          0.57
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "Our brains treat unfamiliar anatomy as a threat",
+    "narration": "Dark backgrounds and ROV lighting intensify the effect by isolating the animal against black water.",
+    "args": {
+      "lines": [
+        "Dark backgrounds and ROV",
+        "lighting intensify the effect",
+        "by isolating"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.86,
+    "heading": "The teeth are often about not losing one meal",
+    "narration": "Deep water is food-poor compared with the sunlit ocean. Long inward-pointing teeth can secure prey during a rare encounter.",
+    "args": {
+      "term": "LONG INWARD-POINTING TEETH",
+      "includes": [
+        "Secure prey during a rare encounter",
+        "An expandable jaw or stomach uses prey too large for a more rigid feeder"
+      ],
+      "excludes": [
+        "Interest in humans"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "The teeth are often about not losing one meal",
+    "narration": "An expandable jaw or stomach lets an animal use prey that would be too large for a more rigid feeder.",
+    "args": {
+      "lines": [
+        "An expandable jaw or",
+        "stomach lets an animal",
+        "use prey"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "The teeth are often about not losing one meal",
+    "narration": "That does not make the animal interested in humans. Most iconic 'monster' fishes are small and live far beyond normal human access.",
+    "args": {
+      "term": "LONG INWARD-POINTING TEETH",
+      "includes": [
+        "Secure prey during a rare encounter",
+        "An expandable jaw or stomach uses prey too large for a more rigid feeder"
+      ],
+      "excludes": [
+        "Interest in humans"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "anatomy_callout",
+    "seconds": 5.79,
+    "heading": "Bioluminescence looks supernatural because we rarely see it",
+    "narration": "Light made by living tissue can resemble a lure, eye, spark or moving signal.",
+    "args": {
+      "title": "LIGHT AS EQUIPMENT",
+      "parts": [
+        [
+          "lure",
+          0.36,
+          0.18
+        ],
+        [
+          "eye",
+          0.24,
+          0.34
+        ],
+        [
+          "moving signal",
+          0.62,
+          0.44
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Bioluminescence looks supernatural because we rarely see it",
+    "narration": "In the deep sea it is a practical communication and survival system, not evidence of a hostile or mysterious force.",
+    "args": {
+      "lines": [
+        "In the deep sea",
+        "it is a practical",
+        "communication"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "anatomy_callout",
+    "seconds": 7.03,
+    "heading": "Bioluminescence looks supernatural because we rarely see it",
+    "narration": "The same adaptation can attract prey, hide a silhouette, distract a predator or help animals find mates.",
+    "args": {
+      "title": "LIGHT AS EQUIPMENT",
+      "parts": [
+        [
+          "lure",
+          0.36,
+          0.18
+        ],
+        [
+          "eye",
+          0.24,
+          0.34
+        ],
+        [
+          "moving signal",
+          0.62,
+          0.44
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "pressure_gauge",
+    "seconds": 6.21,
+    "heading": "The deep sea is genuinely hazardous, but not mainly because of animals",
+    "narration": "For humans and machines, darkness, distance, cold, pressure and communication limits are the dominant hazards.",
+    "args": {
+      "depth_m": 1000
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "The deep sea is genuinely hazardous, but not mainly because of animals",
+    "narration": "The creatures themselves are usually observed by remotely operated vehicles and are not a direct threat to people.",
+    "args": {
+      "lines": [
+        "The creatures themselves are",
+        "usually observed by remotely",
+        "operated vehicles"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "pressure_gauge",
+    "seconds": 6.21,
+    "heading": "The deep sea is genuinely hazardous, but not mainly because of animals",
+    "narration": "Fear is therefore understandable, but it is usually aimed at appearance rather than actual risk.",
+    "args": {
+      "depth_m": 1000
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Common myths and questions",
+    "narration": "A common question is: Can an anglerfish eat a human? No. The familiar deep-sea anglerfish shown in close-up images is far too small.",
+    "args": {
+      "term": "CAN AN ANGLERFISH EAT A HUMAN?",
+      "includes": [
+        "The familiar deep-sea anglerfish shown in close-up images is far too small"
+      ],
+      "excludes": [
+        "No"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 5.79,
+    "heading": "Common myths and questions",
+    "narration": "A common question is: What is the most dangerous thing in the deep ocean?",
+    "args": {
+      "title": "THE GREATEST RISKS TO A HUMAN EXPEDITION",
+      "items": [
+        "+Pressure",
+        "+Cold",
+        "+Equipment failure",
+        "+Darkness",
+        "+Distance",
+        "-Animal attack"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Common myths and questions",
+    "narration": "For a human expedition, pressure, cold, equipment failure, darkness and distance are much greater risks than animal attack.",
+    "args": {
+      "lines": [
+        "For a human expedition,",
+        "pressure, cold, equipment failure,",
+        "darkness"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "Common myths and questions",
+    "narration": "A common question is: Why do deep-sea photos look like horror images? Close framing, black backgrounds and lack of scale exaggerate unfamiliar features.",
+    "args": {
+      "title": "WHY THE PHOTOS LOOK LIKE HORROR IMAGES",
+      "stages": [
+        "Close framing",
+        "Black backgrounds",
+        "Lack of scale"
+      ],
+      "conclusion": "Unfamiliar features are exaggerated"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Common myths and questions",
+    "narration": "A common question is: Are giant squid aggressive toward people? Live giant squid are rarely observed. There is no evidence that they routinely hunt humans.",
+    "args": {
+      "term": "GIANT SQUID",
+      "includes": [
+        "Rarely observed alive"
+      ],
+      "excludes": [
+        "Any evidence that they routinely hunt humans"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 7.03,
+    "heading": "The fear test",
+    "narration": "For every frightening image, run four checks. First: size. Is the animal centimeters long or meters long?",
+    "args": {
+      "title": "THE FEAR TEST",
+      "steps": [
+        [
+          "Size",
+          "is the animal centimeters long or meters long?"
+        ],
+        [
+          "Distance",
+          "was the camera inches from the mouth?"
+        ],
+        [
+          "Behavior",
+          "attacking, feeding, drifting, or simply facing the lens?"
+        ],
+        [
+          "Actual human exposure",
+          "most iconic deep-sea animals do not share ordinary human space at all"
+        ]
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 9.0,
+    "heading": "The fear test",
+    "narration": "Second: distance. Was the camera inches from the mouth? Third: behavior. Is the animal attacking, feeding, drifting, or simply facing the lens?",
+    "args": {
+      "subject": "anglerfish",
+      "label": "Anglerfish",
+      "pick": 0
+    },
+    "from": "directive-rhythm+species-section"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 6.62,
+    "heading": "The fear test",
+    "narration": "Fourth: actual human exposure. Most iconic deep-sea animals do not share ordinary human space at all.",
+    "args": {
+      "title": "THE FEAR TEST",
+      "steps": [
+        [
+          "Size",
+          "is the animal centimeters long or meters long?"
+        ],
+        [
+          "Distance",
+          "was the camera inches from the mouth?"
+        ],
+        [
+          "Behavior",
+          "attacking, feeding, drifting, or simply facing the lens?"
+        ],
+        [
+          "Actual human exposure",
+          "most iconic deep-sea animals do not share ordinary human space at all"
+        ]
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 9.0,
+    "heading": "The fear test",
+    "narration": "Anglerfish lures, dragonfish teeth, and giant squid size are real biological features. The leap from unsettling anatomy to human danger is usually ours.",
+    "args": {
+      "subject": "giant_squid",
+      "label": "giant squid",
+      "pick": 0
+    },
+    "from": "directive-rhythm+species-beat"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 5.38,
+    "heading": "How the camera manufactures a predator",
+    "narration": "A deep-sea image can remove every cue the brain uses to judge danger.",
+    "args": {
+      "title": "CUES THE IMAGE REMOVES",
+      "items": [
+        "-No horizon",
+        "-No hand",
+        "-No ruler",
+        "-No familiar object"
+      ],
+      "note": "The picture is not fake, but it is selected and framed for maximum visual impact"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 5.38,
+    "heading": "How the camera manufactures a predator",
+    "narration": "There may be no horizon, no hand, no ruler, and no familiar object.",
+    "args": {
+      "subject": "anglerfish",
+      "label": "anglerfish",
+      "pick": 1
+    },
+    "from": "directive-rhythm+species-section"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 6.21,
+    "heading": "How the camera manufactures a predator",
+    "narration": "The animal fills the frame. The lens is close. Hard ROV light creates sharp shadows.",
+    "args": {
+      "title": "CUES THE IMAGE REMOVES",
+      "items": [
+        "-No horizon",
+        "-No hand",
+        "-No ruler",
+        "-No familiar object"
+      ],
+      "note": "The picture is not fake, but it is selected and framed for maximum visual impact"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "How the camera manufactures a predator",
+    "narration": "Teeth remain visible because they are pale and reflective. Slow movement can look deliberate when the real reason is low energy availability.",
+    "args": {
+      "lines": [
+        "Teeth remain visible because",
+        "they are pale and",
+        "reflective. Slow"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 7.86,
+    "heading": "How the camera manufactures a predator",
+    "narration": "A still frame freezes the exact moment a jaw opens and erases the minutes of uneventful drifting around it.",
+    "args": {
+      "title": "CUES THE IMAGE REMOVES",
+      "items": [
+        "-No horizon",
+        "-No hand",
+        "-No ruler",
+        "-No familiar object"
+      ],
+      "note": "The picture is not fake, but it is selected and framed for maximum visual impact"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "How the camera manufactures a predator",
+    "narration": "The resulting picture is not fake, but it is selected and framed for maximum visual impact.",
+    "args": {
+      "lines": [
+        "The resulting picture is",
+        "not fake, but it",
+        "is selected"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "anatomy_callout",
+    "seconds": 4.97,
+    "heading": "How the camera manufactures a predator",
+    "narration": "The human fear response then does the rest. Forward-facing eyes suggest attention.",
+    "args": {
+      "title": "WHAT WE READ INTO IT",
+      "parts": [
+        [
+          "forward-facing eyes",
+          0.24,
+          0.34
+        ],
+        [
+          "exposed teeth",
+          0.19,
+          0.64
+        ],
+        [
+          "lure",
+          0.36,
+          0.18
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "How the camera manufactures a predator",
+    "narration": "Exposed teeth suggest attack. A lure looks deceptive because we map human intention onto it.",
+    "args": {
+      "lines": [
+        "Exposed teeth suggest attack.",
+        "A lure looks deceptive",
+        "because we"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "anatomy_callout",
+    "seconds": 9.0,
+    "heading": "How the camera manufactures a predator",
+    "narration": "A body without a familiar outline looks diseased or unfinished. Those reactions are useful to acknowledge because pretending the animals are not frightening would sound dishonest.",
+    "args": {
+      "title": "WHAT WE READ INTO IT",
+      "parts": [
+        [
+          "forward-facing eyes",
+          0.24,
+          0.34
+        ],
+        [
+          "exposed teeth",
+          0.19,
+          0.64
+        ],
+        [
+          "lure",
+          0.36,
+          0.18
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "How the camera manufactures a predator",
+    "narration": "The editorial move is to separate the feeling from the ecological claim.",
+    "args": {
+      "lines": [
+        "The editorial move is",
+        "to separate the feeling"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "anatomy_callout",
+    "seconds": 9.0,
+    "heading": "How the camera manufactures a predator",
+    "narration": "I can say an anglerfish face unsettles me. I cannot turn that reaction into evidence that it poses a meaningful threat to people.",
+    "args": {
+      "title": "WHAT WE READ INTO IT",
+      "parts": [
+        [
+          "forward-facing eyes",
+          0.24,
+          0.34
+        ],
+        [
+          "exposed teeth",
+          0.19,
+          0.64
+        ],
+        [
+          "lure",
+          0.36,
+          0.18
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "How the camera manufactures a predator",
+    "narration": "The episode should repeatedly restore size and distance after each dramatic close-up.",
+    "args": {
+      "lines": [
+        "The episode should repeatedly",
+        "restore size and distance",
+        "after"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "anatomy_callout",
+    "seconds": 9.0,
+    "heading": "How the camera manufactures a predator",
+    "narration": "That visual reset is the correction. It lets the thumbnail earn the click while the video earns trust by showing what the thumbnail left out.",
+    "args": {
+      "title": "WHAT WE READ INTO IT",
+      "parts": [
+        [
+          "forward-facing eyes",
+          0.24,
+          0.34
+        ],
+        [
+          "exposed teeth",
+          0.19,
+          0.64
+        ],
+        [
+          "lure",
+          0.36,
+          0.18
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 8.69,
+    "heading": "The fear reveal",
+    "narration": "Near the end, the edit should reveal the actual size and normal distance of each animal that appeared frightening in close-up.",
+    "args": {
+      "term": "ENVIRONMENTAL DANGER BESIDE ANIMAL DANGER",
+      "includes": [
+        "Pressure",
+        "Cold",
+        "Darkness",
+        "Distance"
+      ],
+      "excludes": [
+        "The creatures, which are rarely the main hazard to humans"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "The fear reveal",
+    "narration": "That reveal is not a debunk. It is the episode's central contrast.",
+    "args": {
+      "lines": [
+        "That reveal is not",
+        "a debunk. It is",
+        "the episode's"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "The fear reveal",
+    "narration": "The audience gets the image that earned the click, then receives the context that keeps the channel from becoming a fear factory.",
+    "args": {
+      "term": "ENVIRONMENTAL DANGER BESIDE ANIMAL DANGER",
+      "includes": [
+        "Pressure",
+        "Cold",
+        "Darkness",
+        "Distance"
+      ],
+      "excludes": [
+        "The creatures, which are rarely the main hazard to humans"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 5.38,
+    "heading": "The fear reveal",
+    "narration": "The anglerfish can remain visually disturbing while also being a small, remote specialist.",
+    "args": {
+      "subject": "anglerfish",
+      "label": "anglerfish",
+      "pick": 2
+    },
+    "from": "directive-rhythm+species-beat"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 6.62,
+    "heading": "The fear reveal",
+    "narration": "A dragonfish can keep its impossible-looking teeth while the narration explains why losing prey is costly.",
+    "args": {
+      "term": "ENVIRONMENTAL DANGER BESIDE ANIMAL DANGER",
+      "includes": [
+        "Pressure",
+        "Cold",
+        "Darkness",
+        "Distance"
+      ],
+      "excludes": [
+        "The creatures, which are rarely the main hazard to humans"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "The fear reveal",
+    "narration": "The final comparison should place environmental danger beside animal danger. Pressure, cold, darkness, and distance win by a wide margin.",
+    "args": {
+      "lines": [
+        "The final comparison should",
+        "place environmental danger beside",
+        "animal danger."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.03,
+    "heading": "The fear reveal",
+    "narration": "The creatures are the memorable faces of the deep; they are rarely the main hazard to humans.",
+    "args": {
+      "term": "ENVIRONMENTAL DANGER BESIDE ANIMAL DANGER",
+      "includes": [
+        "Pressure",
+        "Cold",
+        "Darkness",
+        "Distance"
+      ],
+      "excludes": [
+        "The creatures, which are rarely the main hazard to humans"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 8.28,
+    "heading": "The thumbnail bargain",
+    "narration": "The thumbnail can use the frightening face, but the first minute has to repay that choice with scale and context.",
+    "args": {
+      "title": "THE THUMBNAIL BARGAIN",
+      "items": [
+        "+The thumbnail can use the frightening face",
+        "?The first minute has to repay that choice with scale and context",
+        "?If the creature is tiny, say so",
+        "?If the shot was made inches from the animal under artificial light, show that",
+        "-Letting the image carry a false threat claim"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The thumbnail bargain",
+    "narration": "That is the bargain. We are not pretending the image is boring; we are refusing to let the image carry a false threat claim.",
+    "args": {
+      "lines": [
+        "That is the bargain.",
+        "We are not pretending",
+        "the image"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 8.69,
+    "heading": "The thumbnail bargain",
+    "narration": "If the creature is tiny, say so. If the shot was made inches from the animal under artificial light, show that.",
+    "args": {
+      "title": "THE THUMBNAIL BARGAIN",
+      "items": [
+        "+The thumbnail can use the frightening face",
+        "?The first minute has to repay that choice with scale and context",
+        "?If the creature is tiny, say so",
+        "?If the shot was made inches from the animal under artificial light, show that",
+        "-Letting the image carry a false threat claim"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "The thumbnail bargain",
+    "narration": "The audience can enjoy the fear and still leave with a more accurate model.",
+    "args": {
+      "lines": [
+        "The audience can enjoy",
+        "the fear and still",
+        "leave"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "The line I will keep",
+    "narration": "I can say the animal scares me. I cannot say it is hunting people, predicting disaster, or becoming more dangerous because the frame looks dramatic. That distinction is the episode's ethical center.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Final editorial note",
+    "narration": "That context is what turns a strong thumbnail into a trustworthy documentary opening.",
+    "args": {
+      "lines": [
+        "That context is what",
+        "turns a strong thumbnail"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Final editorial note",
+    "narration": "That context is what turns a strong thumbnail into a trustworthy documentary opening.",
+    "args": {
+      "lines": [
+        "That context is what",
+        "turns a strong thumbnail"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "anatomy_callout",
+    "seconds": 8.28,
+    "heading": "What to notice in the edit",
+    "narration": "Open with a tight crop, then pull back to reveal scale. Repeat the technique with teeth, eyes, and bioluminescent lures.",
+    "args": {
+      "title": "TEETH, EYES, LURES",
+      "parts": [
+        [
+          "teeth",
+          0.19,
+          0.64
+        ],
+        [
+          "eyes",
+          0.24,
+          0.34
+        ],
+        [
+          "bioluminescent lure",
+          0.36,
+          0.18
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "What to notice in the edit",
+    "narration": "This structure lets the viewer feel the fear before the episode explains it.",
+    "args": {
+      "lines": [
+        "This structure lets the",
+        "viewer feel the fear",
+        "before"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "anatomy_callout",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "The final reveal should be a submersible or pressure diagram, shifting the threat from the creature to the environment without pretending the animal is harmless to its own prey.",
+    "args": {
+      "title": "TEETH, EYES, LURES",
+      "parts": [
+        [
+          "teeth",
+          0.19,
+          0.64
+        ],
+        [
+          "eyes",
+          0.24,
+          0.34
+        ],
+        [
+          "bioluminescent lure",
+          0.36,
+          0.18
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 5.79,
+    "heading": "Evidence limit",
+    "narration": "'Scary' is subjective, and a close-up can remove the information needed to judge danger.",
+    "args": {
+      "term": "Scary",
+      "meaning": "Subjective",
+      "boundary": "A close-up can remove the information needed to judge danger",
+      "source": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "Some deep predators are genuinely large, and many are dangerous to prey. That is different from posing a routine threat to humans.",
+    "args": {
+      "lines": [
+        "Some deep predators are",
+        "genuinely large, and many",
+        "are dangerous"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "The script should not claim that no deep-sea animal could ever injure a person; it should say that pressure, cold, darkness, distance, and machinery dominate the practical risk of deep-ocean exploration.",
+    "args": {
+      "term": "WHAT DOMINATES THE PRACTICAL RISK",
+      "includes": [
+        "Pressure",
+        "Cold",
+        "Darkness",
+        "Distance",
+        "Machinery"
+      ],
+      "excludes": [
+        "A claim that no deep-sea animal could ever injure a person"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "depth_descent",
+    "seconds": 5.38,
+    "heading": "Closing",
+    "narration": "The deep sea is dangerous, but the horror face is usually a distraction.",
+    "args": {
+      "to_depth": 1000,
+      "label": "CRUSHING PRESSURE"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Closing",
+    "narration": "Restore scale, behavior, and distance, and the creature becomes an animal again.",
+    "args": {
+      "lines": [
+        "Restore scale, behavior, and",
+        "distance, and the creature",
+        "becomes"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "depth_descent",
+    "seconds": 6.62,
+    "heading": "Closing",
+    "narration": "The black water, crushing pressure, and long route home are what should make the human nervous.",
+    "args": {
+      "to_depth": 1000,
+      "label": "CRUSHING PRESSURE"
+    },
+    "from": "directive"
+  }
+]

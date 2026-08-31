@@ -1,0 +1,12 @@
+{
+  "_comment": "Single source of truth for launch-gating switches. Read by both the app (src/lib/site.ts) and the node generators (scripts/*.mjs). Change values here and nowhere else.",
+  "canonicalOrigin": "https://howweknowdeep.com",
+  "searchIndexingEnabled": true,
+  "_searchIndexingEnabled": "THE NOINDEX SWITCH. false => every page emits <meta name=\"robots\" content=\"noindex,follow\"> and robots.txt serves Disallow: /. Flip to true when the first videos are public, then run `npm run build` and redeploy. Nothing else needs editing.",
+  "customDomainLive": true,
+  "_customDomainLive": "false while the site is only reachable at *.pages.dev. Flip to true ONLY after howweknowdeep.com is attached to the Pages project and resolving; it activates the www -> apex and pages.dev -> apex redirects in public/_redirects. Flipping it early makes the staging URL redirect to a domain that does not resolve yet.",
+  "privacyContactEmail": "",
+  "_privacyContactEmail": "Contact address published on /privacy and /terms for privacy questions, complaints and data-deletion requests. YouTube API Services Developer Policy III.A.2.i requires one, and the API audit form checks for it. Empty => both pages render an explicit 'not yet published' line and point at the Google security settings revocation route instead, and validate-legal-policy.mjs prints a NAMED STOP naming this key. The candidate is the Gmail that owns @howweknowdeep (cryptoclearr@gmail.com), left unset because publishing an address is the owner's decision, not the build's. Set it here, rebuild, redeploy.",
+  "webAnalyticsToken": "",
+  "_webAnalyticsToken": "Cloudflare Web Analytics beacon token. Cookieless, no consent banner required. Empty => beacon not emitted. Paste the token from Cloudflare dash > Web Analytics to activate."
+}

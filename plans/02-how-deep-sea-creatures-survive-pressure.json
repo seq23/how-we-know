@@ -1,0 +1,819 @@
+[
+  {
+    "segment": "depth_descent",
+    "seconds": 8.69,
+    "heading": "Cold open",
+    "narration": "At 2,000 meters, the surrounding pressure is about 200 atmospheres. The surprising part is not that deep-sea animals have stronger armor.",
+    "args": {
+      "to_depth": 2000,
+      "label": "ABOUT 200 ATMOSPHERES"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Cold open",
+    "narration": "It is that many avoid the most crushable feature in the first place: a large pocket of gas.",
+    "args": {
+      "lines": [
+        "It is that many",
+        "avoid the most crushable",
+        "feature"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 3.5,
+    "heading": "Title card",
+    "narration": "How deep sea creatures survive the pressure?",
+    "args": {
+      "lines": [
+        "How deep sea creatures",
+        "survive the pressure?"
+      ]
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 6.62,
+    "heading": "The right way to see it",
+    "narration": "The mistake is imagining a deep-sea animal as an air-filled object being squeezed from the outside.",
+    "args": {
+      "term": "A DEEP-SEA ANIMAL",
+      "includes": [
+        "Water-rich, with few large gas spaces",
+        "Internal conditions close to the surrounding water"
+      ],
+      "excludes": [
+        "An air-filled object being squeezed from the outside"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "The right way to see it",
+    "narration": "Most permanent deep residents are water-rich, have few large gas spaces, and maintain internal conditions close to the surrounding water.",
+    "args": {
+      "lines": [
+        "Most permanent deep residents",
+        "are water-rich, have few",
+        "large gas"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "The right way to see it",
+    "narration": "The rest of this video follows that question through the actual environmental constraints described by NOAA, MBARI, Smithsonian, and Woods Hole sources in the companion article.",
+    "args": {
+      "term": "A DEEP-SEA ANIMAL",
+      "includes": [
+        "Water-rich, with few large gas spaces",
+        "Internal conditions close to the surrounding water"
+      ],
+      "excludes": [
+        "An air-filled object being squeezed from the outside"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 9.0,
+    "heading": "Producer POV",
+    "narration": "The correction I had to make in my own head was simple: deep-sea animals are not spending their lives holding back an ocean that wants to flatten them.",
+    "args": {
+      "text": "The correction I had to make in my own head was simple: deep-sea animals are not spending their lives holding back an ocean that wants to flatten them.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 6.21,
+    "heading": "Producer POV",
+    "narration": "Most are water-rich and live with their internal pressure close to the water around them.",
+    "args": {
+      "text": "Most are water-rich and live with their internal pressure close to the water around them.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 5.38,
+    "heading": "Pressure acts most dramatically on gas",
+    "narration": "Ocean pressure rises by roughly one atmosphere for every 10 meters of seawater.",
+    "args": {
+      "value": "10",
+      "unit": "METRES",
+      "caption": "One additional atmosphere for every 10 metres of seawater",
+      "source": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "Pressure acts most dramatically on gas",
+    "narration": "Air compresses strongly under that load; liquid water does not compress nearly as much.",
+    "args": {
+      "lines": [
+        "Air compresses strongly under",
+        "that load"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 4.97,
+    "heading": "Pressure acts most dramatically on gas",
+    "narration": "Animals with lungs or large gas spaces face a serious mechanical problem.",
+    "args": {
+      "value": "10",
+      "unit": "METRES",
+      "caption": "One additional atmosphere for every 10 metres of seawater",
+      "source": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "Pressure acts most dramatically on gas",
+    "narration": "Many permanent deep-sea residents instead have water-rich tissues and no large internal air cavity.",
+    "args": {
+      "lines": [
+        "Many permanent deep-sea residents",
+        "instead have water-rich tissues"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "pressure_gauge",
+    "seconds": 9.0,
+    "heading": "They are built for one pressure regime",
+    "narration": "Deep-sea animals are not simply pressure-proof versions of shallow animals. Their membranes, enzymes, circulation and behavior function as a coordinated system under their normal conditions.",
+    "args": {
+      "depth_m": 2000
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "They are built for one pressure regime",
+    "narration": "That is why an animal thriving at 2,000 meters may be stressed when brought to the surface even if it is not visibly crushed.",
+    "args": {
+      "lines": [
+        "That is why an",
+        "animal thriving at 2,000",
+        "meters"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "pressure_gauge",
+    "seconds": 4.97,
+    "heading": "They are built for one pressure regime",
+    "narration": "Pressure changes chemical reaction rates, and rapid decompression can disrupt normal physiology.",
+    "args": {
+      "depth_m": 2000
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 6.21,
+    "heading": "Vertical migrants tolerate large daily changes",
+    "narration": "Some midwater species move hundreds of meters each night and return to depth by day.",
+    "args": {
+      "value": "100",
+      "unit": "ATMOSPHERES",
+      "caption": "Pressure change during nightly migration, without apparent harm",
+      "source": "NOAA"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Vertical migrants tolerate large daily changes",
+    "narration": "NOAA notes that certain species experience pressure changes equivalent to about 100 atmospheres during these migrations without apparent harm.",
+    "args": {
+      "lines": [
+        "NOAA notes that certain",
+        "species experience pressure changes",
+        "equivalent"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 7.03,
+    "heading": "Vertical migrants tolerate large daily changes",
+    "narration": "Their tolerance does not mean every deep-sea species can make the same trip. Depth range is species-specific.",
+    "args": {
+      "value": "100",
+      "unit": "ATMOSPHERES",
+      "caption": "Pressure change during nightly migration, without apparent harm",
+      "source": "NOAA"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 5.79,
+    "heading": "Why humans and submersibles need protection",
+    "narration": "Humans depend on gas-filled lungs and cannot expose the body directly to deep-ocean pressure.",
+    "args": {
+      "title": "WHY WE NEED A HULL AND THEY DO NOT",
+      "steps": [
+        [
+          "Gas-filled lungs",
+          "humans cannot expose the body directly to deep-ocean pressure"
+        ],
+        [
+          "Rigid pressure hull",
+          "keeps submersible occupants near surface pressure"
+        ],
+        [
+          "Pressure housings",
+          "cameras and electronics need them, or oil-filled designs"
+        ]
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Why humans and submersibles need protection",
+    "narration": "Submersibles keep occupants near surface pressure inside a rigid pressure hull. Cameras and electronics also need pressure housings or oil-filled designs because air-filled components can collapse.",
+    "args": {
+      "lines": [
+        "Submersibles keep occupants near",
+        "surface pressure inside a",
+        "rigid pressure"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Common myths and questions",
+    "narration": "A common question is: Why are deep-sea fish not flattened? Their internal pressure is close to the surrounding water pressure, and many lack large compressible gas spaces.",
+    "args": {
+      "term": "WHY DEEP-SEA FISH ARE NOT FLATTENED",
+      "includes": [
+        "Internal pressure close to the surrounding water pressure"
+      ],
+      "excludes": [
+        "Large compressible gas spaces"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 4.97,
+    "heading": "Common myths and questions",
+    "narration": "A common question is: Can a deep-sea animal live at the surface?",
+    "args": {
+      "title": "CAN A DEEP-SEA ANIMAL LIVE AT THE SURFACE?",
+      "items": [
+        "+Some vertical migrants can visit shallower water",
+        "-Many permanent deep residents cannot tolerate the change in pressure",
+        "-Nor the change in temperature",
+        "-Nor in light",
+        "-Nor in water chemistry"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Common myths and questions",
+    "narration": "Some vertical migrants can visit shallower water. Many permanent deep residents cannot tolerate the combined changes in pressure, temperature, light and water chemistry.",
+    "args": {
+      "lines": [
+        "Some vertical migrants can",
+        "visit shallower water. Many",
+        "permanent deep"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 9.0,
+    "heading": "Common myths and questions",
+    "narration": "A common question is: Does pressure increase at a constant rate? A useful approximation is one additional atmosphere for every 10 meters of seawater, although density and local conditions create small differences.",
+    "args": {
+      "value": "10",
+      "unit": "METRES",
+      "caption": "One additional atmosphere of seawater, as a useful approximation",
+      "source": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Common myths and questions",
+    "narration": "A common question is: Are gelatinous bodies weak? They may be delicate during collection, but in their normal environment a water-rich body can be efficient and well matched to high pressure.",
+    "args": {
+      "term": "A GELATINOUS BODY",
+      "includes": [
+        "Efficient in its normal environment",
+        "Well matched to high pressure"
+      ],
+      "excludes": [
+        "Weak, though it may be delicate during collection"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "depth_descent",
+    "seconds": 4.97,
+    "heading": "The balloon test",
+    "narration": "Picture two objects descending together: a sealed balloon and a water-filled bag.",
+    "args": {
+      "to_depth": 2000,
+      "label": "A PRESSURE REGIME"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "The balloon test",
+    "narration": "The balloon changes dramatically because gas compresses. The water-filled bag changes much less.",
+    "args": {
+      "lines": [
+        "The balloon changes dramatically",
+        "because gas compresses. The",
+        "water-filled bag"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "depth_descent",
+    "seconds": 9.0,
+    "heading": "The balloon test",
+    "narration": "That is not a complete model of an animal, but it explains why lungs and gas-filled swim bladders are such important pressure problems.",
+    "args": {
+      "to_depth": 2000,
+      "label": "A PRESSURE REGIME"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "The balloon test",
+    "narration": "Deep species still need proteins, membranes, enzymes, and nervous systems that function under high pressure.",
+    "args": {
+      "lines": [
+        "Deep species still need",
+        "proteins, membranes, enzymes, and",
+        "nervous systems"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "depth_descent",
+    "seconds": 9.0,
+    "heading": "The balloon test",
+    "narration": "They are not immune. They are adapted to a pressure regime. Bring some of them to the surface too quickly and the chemistry, temperature, and tissues can fail even when there is no dramatic crushing event.",
+    "args": {
+      "to_depth": 2000,
+      "label": "A PRESSURE REGIME"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "What pressure actually changes",
+    "narration": "Pressure is not one problem with one solution. It changes gas volume, chemical reactions, protein shape, membrane behavior, buoyancy, and the engineering required to observe an animal.",
+    "args": {
+      "title": "WHAT PRESSURE CHANGES",
+      "items": [
+        "+Gas volume",
+        "+Chemical reactions",
+        "+Protein shape",
+        "+Membrane behavior",
+        "+Buoyancy",
+        "+The engineering required to observe an animal"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.03,
+    "heading": "What pressure actually changes",
+    "narration": "That is why a deep species cannot be summarized as simply 'strong enough' to resist the water.",
+    "args": {
+      "term": "A PERMANENT DEEP SPECIES",
+      "includes": [
+        "Highly successful at its own depth"
+      ],
+      "excludes": [
+        "Simply 'strong enough' to resist the water",
+        "Robust during a rapid trip to the surface"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "What pressure actually changes",
+    "narration": "The animal's tissues are mostly water, but its cells still have to maintain working molecules and membranes.",
+    "args": {
+      "lines": [
+        "The animal's tissues are",
+        "mostly water, but its",
+        "cells still"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "What pressure actually changes",
+    "narration": "Pressure-adapted proteins and cellular chemistry function inside a narrow environmental range. A species that lives permanently at depth may be highly successful there and still be physiologically fragile during a rapid trip to the surface.",
+    "args": {
+      "term": "A PERMANENT DEEP SPECIES",
+      "includes": [
+        "Highly successful at its own depth"
+      ],
+      "excludes": [
+        "Simply 'strong enough' to resist the water",
+        "Robust during a rapid trip to the surface"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 4.97,
+    "heading": "What pressure actually changes",
+    "narration": "The comparison with a submersible helps because it exposes two opposite strategies.",
+    "args": {
+      "title": "TWO OPPOSITE STRATEGIES",
+      "sources": [
+        [
+          "The vehicle",
+          "protects a small pocket of surface pressure inside a rigid sphere, and needs walls"
+        ],
+        [
+          "The animal",
+          "lives in equilibrium with the water around it, and needs compatible biology"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "What pressure actually changes",
+    "narration": "The vehicle protects a small pocket of surface pressure inside a rigid sphere.",
+    "args": {
+      "lines": [
+        "The vehicle protects a",
+        "small pocket of surface",
+        "pressure inside"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 4.97,
+    "heading": "What pressure actually changes",
+    "narration": "The animal generally does not preserve a human-like pocket of surface conditions.",
+    "args": {
+      "title": "TWO OPPOSITE STRATEGIES",
+      "sources": [
+        [
+          "The vehicle",
+          "protects a small pocket of surface pressure inside a rigid sphere, and needs walls"
+        ],
+        [
+          "The animal",
+          "lives in equilibrium with the water around it, and needs compatible biology"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "What pressure actually changes",
+    "narration": "It lives in equilibrium with the water around it and adapts its chemistry accordingly. The vehicle needs walls. The animal needs compatible biology.",
+    "args": {
+      "lines": [
+        "It lives in equilibrium",
+        "with the water around",
+        "it"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.38,
+    "heading": "What pressure actually changes",
+    "narration": "Both can fail when moved outside their design range, but for different reasons.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "What pressure actually changes",
+    "narration": "This also explains why researchers value pressure-retaining samplers. A specimen that reaches the deck alive but decompressed may no longer behave or even look as it did at depth.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "What pressure actually changes",
+    "narration": "When we describe pressure survival, the honest answer includes the observation problem: many of the animals we want to study are altered by the act of bringing them to us.",
+    "args": {
+      "lines": [
+        "When we describe pressure",
+        "survival, the honest answer",
+        "includes"
+      ]
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "What a surface demonstration cannot reproduce",
+    "narration": "A balloon, syringe, or crushed container can demonstrate gas compression, but it cannot reproduce the molecular biology of a living deep-sea animal.",
+    "args": {
+      "term": "WHAT A BALLOON DEMONSTRATION SHOWS",
+      "includes": [
+        "Gas compression",
+        "Why trapped gas is vulnerable"
+      ],
+      "excludes": [
+        "How enzymes keep working",
+        "How membranes maintain the right flexibility",
+        "Why one species tolerates a pressure change that harms another"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "What a surface demonstration cannot reproduce",
+    "narration": "That matters because dramatic classroom demonstrations often become the whole explanation. They show why trapped gas is vulnerable.",
+    "args": {
+      "lines": [
+        "That matters because dramatic",
+        "classroom demonstrations often become"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "What a surface demonstration cannot reproduce",
+    "narration": "They do not show how enzymes keep working, how membranes maintain the right flexibility, how nervous tissue responds, or why one species tolerates a pressure change that harms another.",
+    "args": {
+      "term": "WHAT A BALLOON DEMONSTRATION SHOWS",
+      "includes": [
+        "Gas compression",
+        "Why trapped gas is vulnerable"
+      ],
+      "excludes": [
+        "How enzymes keep working",
+        "How membranes maintain the right flexibility",
+        "Why one species tolerates a pressure change that harms another"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "What a surface demonstration cannot reproduce",
+    "narration": "The video should say this plainly before the final payoff. The simple experiment is a doorway into the biology, not a substitute for it.",
+    "args": {
+      "lines": [
+        "The video should say",
+        "this plainly before the",
+        "final payoff."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.03,
+    "heading": "What a surface demonstration cannot reproduce",
+    "narration": "That keeps the episode accessible without pretending the deep ocean is solved by one piece of physics.",
+    "args": {
+      "term": "WHAT A BALLOON DEMONSTRATION SHOWS",
+      "includes": [
+        "Gas compression",
+        "Why trapped gas is vulnerable"
+      ],
+      "excludes": [
+        "How enzymes keep working",
+        "How membranes maintain the right flexibility",
+        "Why one species tolerates a pressure change that harms another"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 5.38,
+    "heading": "The three-part answer",
+    "narration": "The final answer should land in three parts. Mechanically, reduce vulnerable gas spaces.",
+    "args": {
+      "title": "THE THREE-PART ANSWER",
+      "steps": [
+        [
+          "Mechanically",
+          "reduce vulnerable gas spaces"
+        ],
+        [
+          "Chemically",
+          "maintain proteins and membranes that work under the local pressure"
+        ],
+        [
+          "Ecologically",
+          "remain within the depth and temperature range the species is adapted to"
+        ]
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The three-part answer",
+    "narration": "Chemically, maintain proteins and membranes that work under the local pressure. Ecologically, remain within the depth and temperature range the species is adapted to.",
+    "args": {
+      "lines": [
+        "Chemically, maintain proteins and",
+        "membranes that work under",
+        "the local"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "The three-part answer",
+    "narration": "Leaving out any one part creates the wrong picture: a water-filled bag with no biology, a chemistry lecture with no physical intuition, or an animal that can supposedly travel anywhere in the ocean.",
+    "args": {
+      "title": "THE THREE-PART ANSWER",
+      "steps": [
+        [
+          "Mechanically",
+          "reduce vulnerable gas spaces"
+        ],
+        [
+          "Chemically",
+          "maintain proteins and membranes that work under the local pressure"
+        ],
+        [
+          "Ecologically",
+          "remain within the depth and temperature range the species is adapted to"
+        ]
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "pressure_gauge",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "The edit should alternate between the pressure scale and examples of body design: a human lung, a gas bladder, a water-rich gelatinous animal, and a rigid submersible pressure sphere.",
+    "args": {
+      "depth_m": 2000
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "That contrast keeps the explanation physical. It also prevents the common mistake of using a dramatic implosion animation as if every deep animal were an air-filled machine.",
+    "args": {
+      "lines": [
+        "That contrast keeps the",
+        "explanation physical. It also",
+        "prevents"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 7.45,
+    "heading": "Evidence limit",
+    "narration": "The phrase 'water is incompressible' is a useful simplification, not a claim that pressure has no biological effect.",
+    "args": {
+      "term": "Water is incompressible",
+      "meaning": "A useful simplification",
+      "boundary": "Not a claim that pressure has no biological effect",
+      "source": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Evidence limit",
+    "narration": "NOAA notes that pressure changes chemical reaction rates and that pressure-adapted animals can develop metabolic problems at the surface.",
+    "args": {
+      "lines": [
+        "NOAA notes that pressure",
+        "changes chemical reaction rates"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "Some vertical migrants also tolerate large daily pressure changes, but that does not mean every permanent deep resident can move freely between the surface and the abyss.",
+    "args": {
+      "term": "Water is incompressible",
+      "meaning": "A useful simplification",
+      "boundary": "Not a claim that pressure has no biological effect",
+      "source": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "depth_descent",
+    "seconds": 7.45,
+    "heading": "Closing",
+    "narration": "Deep-sea animals survive pressure by being built for it from the molecule up, not by wearing invisible armor.",
+    "args": {
+      "to_depth": 2000,
+      "label": "AS THE WATER ABOVE GETS HEAVIER"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "The cleanest clue is what they do not carry: large gas spaces that would behave very differently as the water above them gets heavier.",
+    "args": {
+      "lines": [
+        "The cleanest clue is",
+        "what they do not",
+        "carry: large"
+      ]
+    },
+    "from": "directive-rhythm"
+  }
+]
