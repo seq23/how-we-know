@@ -1,16 +1,18 @@
 {
-  "week": "2026-W35",
-  "generated": "2026-08-30T21:13:35+00:00",
+  "week": "2026-W36",
+  "generated": "2026-08-31T10:10:50+00:00",
   "videos_per_week": 2,
   "breaker": "closed",
   "validators": [
     {
       "validator": "V1 directive-truth",
       "examined": 279,
-      "status": "PASS",
-      "failures": [],
+      "status": "FAIL(1)",
+      "failures": [
+        "tests/test_directive_truth.py exited 1\ninspected 279 v2 directives across 20 scripts\nTraceback (most recent call last):\n  File \"/home/runner/work/how-we-know/how-we-know/tests/test_directive_truth.py\", line 118, in <module>\n    dead, total = check_parses()\n                  ^^^^^^^^^^^^^^\n  File \"/home/runner/work/how-we-know/how-we-know/tests/test_directive_truth.py\", line 92, in check_parses\n    import planner, segments_ext2                     # noqa: F401  (installs parser)\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/how-we-know/how-we-know/visuals/segments_ext2.py\", line 36, in <module>\n    from PIL import Image, ImageDraw\nModuleNotFoundError: No module named 'PIL'\n"
+      ],
       "notes": [
-        "all green - no invented number or name on screen"
+        "ModuleNotFoundError: No module named 'PIL'"
       ]
     },
     {
@@ -70,7 +72,7 @@
       ]
     }
   ],
-  "validators_passed": true,
+  "validators_passed": false,
   "approval": {
     "required": false,
     "mode": "notified, not asked",
@@ -84,15 +86,15 @@
   },
   "runway": {
     "unpublished_scripts": 20,
-    "publishable": 10,
-    "basis": "publish queue",
+    "publishable": 20,
+    "basis": "unpublished scripts (no usable ranking)",
     "videos_per_week": 2,
-    "weeks_remaining": 5.0,
+    "weeks_remaining": 10.0,
     "warn_below_weeks": 4.0,
     "critical_below_weeks": 2.0,
     "level": "ok",
     "never_go_dark": true,
-    "message": "5.0 weeks of queue at 2/week (10 publishable of 20 on disk)."
+    "message": "10.0 weeks of queue at 2/week (20 publishable of 20 on disk)."
   },
   "authoring": {
     "generated_this_week": 0,

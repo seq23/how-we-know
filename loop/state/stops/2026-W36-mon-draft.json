@@ -1,0 +1,40 @@
+{
+  "stage": "mon-draft",
+  "week": "2026-W36",
+  "at": "2026-08-31T10:10:50+00:00",
+  "code": "VALIDATOR_FAILED",
+  "message": "a validator failed; the circuit breaker is now tripped and publishing is halted. Drafting and rendering are untouched.",
+  "detail": [
+    {
+      "validator": "V1 directive-truth",
+      "examined": 279,
+      "status": "FAIL(1)",
+      "failures": [
+        "tests/test_directive_truth.py exited 1\ninspected 279 v2 directives across 20 scripts\nTraceback (most recent call last):\n  File \"/home/runner/work/how-we-know/how-we-know/tests/test_directive_truth.py\", line 118, in <module>\n    dead, total = check_parses()\n                  ^^^^^^^^^^^^^^\n  File \"/home/runner/work/how-we-know/how-we-know/tests/test_directive_truth.py\", line 92, in check_parses\n    import planner, segments_ext2                     # noqa: F401  (installs parser)\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/how-we-know/how-we-know/visuals/segments_ext2.py\", line 36, in <module>\n    from PIL import Image, ImageDraw\nModuleNotFoundError: No module named 'PIL'\n"
+      ],
+      "notes": [
+        "ModuleNotFoundError: No module named 'PIL'"
+      ]
+    }
+  ],
+  "unblock": "Fix the failure, re-run python loop/draft.py, then python loop/breaker.py reset --note \"\u2026\"",
+  "work_done_before_stop": [
+    "assembled 14-how-big-is-a-colossal-squid",
+    "assembled 15-how-do-people-reach-challenger-deep",
+    "ran 8 validators over 2 item(s)",
+    "wrote loop/render_queue.json with 2 item(s)",
+    "rebuilt approval page docs/approve/index.html"
+  ],
+  "notes": [
+    "next_topics.json is for 2026-W35, today is 2026-W36 \u2014 using it anyway (a re-run inside the same cycle)",
+    "cadence: configured default (2/week)",
+    "FAIL(1)          V1 directive-truth (examined 279)",
+    "PASS             V2 planner (examined 1)",
+    "PASS             V3 taxonomy (examined 2)",
+    "PASS             V4 pov (examined 2)",
+    "PASS             V5 sources-present (examined 2)",
+    "PASS             V6 attribution (soft) (examined 2)",
+    "PASS             V7 plans (examined 2)",
+    "N/A(nothing generated) V8 source-urls (examined 0)"
+  ]
+}
