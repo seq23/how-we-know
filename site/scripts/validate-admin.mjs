@@ -1,0 +1,30 @@
+import fs from 'node:fs'
+import { assert, readJson } from './validation-helpers.mjs'
+
+const route = fs.readFileSync('src/routes/admin.tsx', 'utf8')
+const helper = fs.readFileSync('src/lib/admin.ts', 'utf8')
+const workflow = fs.readFileSync('.github/workflows/approve-human-pass.yml', 'utf8')
+const approvalScript = fs.readFileSync('production/automation/approve_human_pass.py', 'utf8')
+const viteConfig = fs.readFileSync('vite.config.ts', 'utf8')
+const sitemap = fs.readFileSync('public/sitemap.xml', 'utf8')
+const status = readJson('content/admin-status.json')
+
+assert(route.includes("createFileRoute('/admin')"), 'Admin route is not registered at /admin')
+assert(route.includes("name: 'robots', content: 'noindex, nofollow, noarchive'"), 'Admin route must be noindex')
+assert(viteConfig.includes("'/admin'"), 'Admin route must be included in the prerender inventory')
+assert(!sitemap.includes('/admin'), 'Admin route must remain outside the public sitemap')
+assert(!route.includes('import.meta.env.GITHUB_TOKEN') && !route.includes('import.meta.env.YOUTUBE_TOKEN'), 'Admin client must not load provider credentials')
+assert(!route.includes('api.github.com'), 'Credentialless admin must not call the GitHub API')
+assert(route.includes('window.localStorage'), 'Admin page must retain the non-secret repository address locally')
+assert(helper.includes('VITE_GITHUB_REPOSITORY'), 'Admin helper must support an optional configured repository default')
+assert(workflow.includes('workflow_dispatch:'), 'Human-pass approval must be manually dispatched')
+assert(workflow.includes('contents: write'), 'Approval workflow needs scoped repository write permission')
+assert(workflow.includes('approve_human_pass.py'), 'Approval workflow must use the canonical approval script')
+assert(workflow.includes('git push'), 'Approval workflow must commit its receipt')
+assert(approvalScript.includes('unchecked required items'), 'Approval script must fail closed on incomplete checklists')
+assert(approvalScript.includes('scriptSha256'), 'Approval script must record the narration hash')
+assert(status.humanPass.total === 20, 'Admin status must cover all twenty scripts')
+assert(status.humanPass.items.length === 20, 'Admin status item list must cover all twenty scripts')
+assert(status.releaseGate.state === 'blocked' || status.releaseGate.state === 'ready', 'Admin release gate is invalid')
+
+console.log('Credentialless admin validation passed.')

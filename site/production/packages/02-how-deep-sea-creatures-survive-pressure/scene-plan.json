@@ -1,0 +1,107 @@
+{
+  "sequence": 2,
+  "slug": "how-deep-sea-creatures-survive-pressure",
+  "status": "production-ready-unrendered",
+  "scriptWordCount": 1243,
+  "estimatedDurationSeconds": 514,
+  "narratorProfile": "kokoro-af-heart-v1",
+  "musicRotation": "ambient-02",
+  "scenes": [
+    {
+      "order": 1,
+      "chapter": "Opening",
+      "start": "00:00",
+      "estimatedEnd": "00:29",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "At two thousand meters, the pressure is roughly two hundred times the pressure at sea level. A human without protection would not survive. Yet animals swim there as normally as a t"
+    },
+    {
+      "order": 2,
+      "chapter": "The right way to see it",
+      "start": "00:29",
+      "estimatedEnd": "00:55",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "The mistake is imagining a deep-sea animal as an air-filled object being squeezed from the outside. Most permanent deep residents are water-rich, have few large gas spaces, and mai"
+    },
+    {
+      "order": 3,
+      "chapter": "Pressure acts most dramatically on gas",
+      "start": "00:55",
+      "estimatedEnd": "01:43",
+      "visualMode": "source-card",
+      "narrationExcerpt": "Ocean pressure rises by roughly one atmosphere for every 10 meters of seawater. Air compresses strongly under that load; liquid water does not compress nearly as much. Animals with"
+    },
+    {
+      "order": 4,
+      "chapter": "They are built for one pressure regime",
+      "start": "01:43",
+      "estimatedEnd": "02:35",
+      "visualMode": "diagram",
+      "narrationExcerpt": "Deep-sea animals are not simply pressure-proof versions of shallow animals. Their membranes, enzymes, circulation and behavior function as a coordinated system under their normal c"
+    },
+    {
+      "order": 5,
+      "chapter": "Vertical migrants tolerate large daily changes",
+      "start": "02:35",
+      "estimatedEnd": "03:22",
+      "visualMode": "comparison-grid",
+      "narrationExcerpt": "Some midwater species move hundreds of meters each night and return to depth by day. NOAA notes that certain species experience pressure changes equivalent to about 100 atmospheres"
+    },
+    {
+      "order": 6,
+      "chapter": "Why humans and submersibles need protection",
+      "start": "03:22",
+      "estimatedEnd": "04:04",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "Humans depend on gas-filled lungs and cannot expose the body directly to deep-ocean pressure. Submersibles keep occupants near surface pressure inside a rigid pressure hull. Camera"
+    },
+    {
+      "order": 7,
+      "chapter": "A quick comparison",
+      "start": "04:04",
+      "estimatedEnd": "04:43",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "Gas spaces helps with gas compresses strongly; a useful example is Reduce or eliminate large gas cavities. Water-rich tissue helps with water is difficult to compress; a useful exa"
+    },
+    {
+      "order": 8,
+      "chapter": "Common myths and questions",
+      "start": "04:43",
+      "estimatedEnd": "05:35",
+      "visualMode": "source-card",
+      "narrationExcerpt": "A common question is: Why are deep-sea fish not flattened? Their internal pressure is close to the surrounding water pressure, and many lack large compressible gas spaces. A common"
+    },
+    {
+      "order": 9,
+      "chapter": "The pattern to remember",
+      "start": "05:35",
+      "estimatedEnd": "07:38",
+      "visualMode": "diagram",
+      "narrationExcerpt": "Before we finish, notice the pattern. First, remove the assumptions that come from daylight and surface pressure. Second, identify the real constraint: light, food, pressure, tempe"
+    },
+    {
+      "order": 10,
+      "chapter": "What the evidence can and cannot say",
+      "start": "07:38",
+      "estimatedEnd": "08:06",
+      "visualMode": "comparison-grid",
+      "narrationExcerpt": "The supporting sources for this episode come from NOAA Ocean Exploration, Smithsonian Ocean. They support the environmental conditions, measurements, and biological examples used h"
+    },
+    {
+      "order": 11,
+      "chapter": "Closing",
+      "start": "08:06",
+      "estimatedEnd": "08:34",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "Deep animals do not defeat pressure with armor. They avoid the mechanical weakness of trapped gas and build their chemistry to work under the pressure they call home. The full sour"
+    }
+  ],
+  "requiredAssets": [
+    "original-depth-gradient",
+    "original-particle-field",
+    "original-creature-silhouettes"
+  ],
+  "externalAssetsRequired": false,
+  "articlePath": "/questions/how-deep-sea-creatures-survive-pressure",
+  "metadataPath": "production/metadata/02-how-deep-sea-creatures-survive-pressure.json"
+}

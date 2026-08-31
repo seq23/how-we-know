@@ -1,0 +1,107 @@
+{
+  "sequence": 4,
+  "slug": "why-deep-sea-creatures-are-so-scary",
+  "status": "production-ready-unrendered",
+  "scriptWordCount": 1203,
+  "estimatedDurationSeconds": 498,
+  "narratorProfile": "kokoro-af-heart-v1",
+  "musicRotation": "ambient-04",
+  "scenes": [
+    {
+      "order": 1,
+      "chapter": "Opening",
+      "start": "00:00",
+      "estimatedEnd": "00:31",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "Put a tiny fish under a bright ROV light, remove every familiar object from the frame, and photograph its teeth from inches away. You can make an animal smaller than your hand look"
+    },
+    {
+      "order": 2,
+      "chapter": "The right way to see it",
+      "start": "00:31",
+      "estimatedEnd": "00:53",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "Fear comes from anatomy plus context. Our brains react to teeth, staring eyes, darkness, and unfamiliar movement before we know the animal\u2019s size, behavior, or actual risk. The res"
+    },
+    {
+      "order": 3,
+      "chapter": "Our brains treat unfamiliar anatomy as a threat",
+      "start": "00:53",
+      "estimatedEnd": "01:38",
+      "visualMode": "source-card",
+      "narrationExcerpt": "People quickly notice teeth, staring eyes, spines and mouths. In a photograph with no scale or context, a fish only a few centimeters long can look like a giant predator. Dark back"
+    },
+    {
+      "order": 4,
+      "chapter": "The teeth are often about not losing one meal",
+      "start": "01:38",
+      "estimatedEnd": "02:29",
+      "visualMode": "diagram",
+      "narrationExcerpt": "Deep water is food-poor compared with the sunlit ocean. Long inward-pointing teeth can secure prey during a rare encounter. An expandable jaw or stomach lets an animal use prey tha"
+    },
+    {
+      "order": 5,
+      "chapter": "Bioluminescence looks supernatural because we rarely see it",
+      "start": "02:29",
+      "estimatedEnd": "03:16",
+      "visualMode": "comparison-grid",
+      "narrationExcerpt": "Light made by living tissue can resemble a lure, eye, spark or moving signal. In the deep sea it is a practical communication and survival system, not evidence of a hostile or myst"
+    },
+    {
+      "order": 6,
+      "chapter": "The deep sea is genuinely hazardous, but not mainly because of animals",
+      "start": "03:16",
+      "estimatedEnd": "04:02",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "For humans and machines, darkness, distance, cold, pressure and communication limits are the dominant hazards. The creatures themselves are usually observed by remotely operated ve"
+    },
+    {
+      "order": 7,
+      "chapter": "A quick comparison",
+      "start": "04:02",
+      "estimatedEnd": "04:34",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "Long teeth helps with hold slippery prey; a useful example is Very low. Glowing lure helps with attract prey; a useful example is None at normal human distances. Large eyes helps w"
+    },
+    {
+      "order": 8,
+      "chapter": "Common myths and questions",
+      "start": "04:34",
+      "estimatedEnd": "05:17",
+      "visualMode": "source-card",
+      "narrationExcerpt": "A common question is: Can an anglerfish eat a human? No. The familiar deep-sea anglerfish shown in close-up images is far too small. A common question is: What is the most dangerou"
+    },
+    {
+      "order": 9,
+      "chapter": "The pattern to remember",
+      "start": "05:17",
+      "estimatedEnd": "07:19",
+      "visualMode": "diagram",
+      "narrationExcerpt": "Before we finish, notice the pattern. First, remove the assumptions that come from daylight and surface pressure. Second, identify the real constraint: light, food, pressure, tempe"
+    },
+    {
+      "order": 10,
+      "chapter": "What the evidence can and cannot say",
+      "start": "07:19",
+      "estimatedEnd": "07:49",
+      "visualMode": "comparison-grid",
+      "narrationExcerpt": "The supporting sources for this episode come from NOAA Ocean Exploration, NOAA Ocean Today, Smithsonian Ocean. They support the environmental conditions, measurements, and biologic"
+    },
+    {
+      "order": 11,
+      "chapter": "Closing",
+      "start": "07:49",
+      "estimatedEnd": "08:17",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "The deep ocean is dangerous to humans, but mostly because of pressure, distance, cold, darkness, and equipment failure. The animals are usually the least dangerous part of the scen"
+    }
+  ],
+  "requiredAssets": [
+    "original-depth-gradient",
+    "original-particle-field",
+    "original-creature-silhouettes"
+  ],
+  "externalAssetsRequired": false,
+  "articlePath": "/questions/why-deep-sea-creatures-are-so-scary",
+  "metadataPath": "production/metadata/04-why-deep-sea-creatures-are-so-scary.json"
+}

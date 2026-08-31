@@ -1,0 +1,131 @@
+{
+  "sequence": 19,
+  "slug": "what-is-the-deepest-fish-ever-recorded",
+  "status": "production-ready-unrendered-human-pass-required",
+  "scriptWordCount": 1159,
+  "estimatedDurationSeconds": 480,
+  "narratorProfile": "kokoro-af-heart-v1",
+  "musicRotation": "ambient-03",
+  "scenes": [
+    {
+      "order": 1,
+      "chapter": "Cold open",
+      "start": "00:00",
+      "estimatedEnd": "00:09",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "The deepest fish ever filmed was a small translucent snailfish, not a giant predator, swimming more than eight kilometers below the surface."
+    },
+    {
+      "order": 2,
+      "chapter": "Title card",
+      "start": "00:09",
+      "estimatedEnd": "00:12",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "What is the deepest fish ever recorded?"
+    },
+    {
+      "order": 3,
+      "chapter": "A record made by a camera, not a net",
+      "start": "00:12",
+      "estimatedEnd": "01:12",
+      "visualMode": "source-card",
+      "narrationExcerpt": "On August 15, 2022, researchers lowered a baited autonomous lander into the Izu-Ogasawara Trench south of Japan. At 8,336 meters, the camera recorded a single juvenile snailfish sw"
+    },
+    {
+      "order": 4,
+      "chapter": "The body avoids some obvious pressure problems",
+      "start": "01:12",
+      "estimatedEnd": "02:12",
+      "visualMode": "diagram",
+      "narrationExcerpt": "Hadal snailfish lack a gas-filled swim bladder, which would be difficult to maintain across extreme pressure. Their bodies are soft and scaleless, with much of the support provided"
+    },
+    {
+      "order": 5,
+      "chapter": "Trenches can concentrate food",
+      "start": "02:12",
+      "estimatedEnd": "03:19",
+      "visualMode": "comparison-grid",
+      "narrationExcerpt": "The hadal zone is not simply a flat extension of the abyss. Steep walls and trench geometry can funnel organic material downslope. Amphipods, crustaceans, and microbial processes c"
+    },
+    {
+      "order": 6,
+      "chapter": "The deepest trench floor may be beyond fish physiology",
+      "start": "03:19",
+      "estimatedEnd": "04:22",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "Pressure rises by about one atmosphere every ten meters. Between 8,336 meters and Challenger Deep, the added load is enormous. More importantly, biochemical countermeasures cannot "
+    },
+    {
+      "order": 7,
+      "chapter": "How to read the evidence",
+      "start": "04:22",
+      "estimatedEnd": "05:02",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "A final production note matters here. Deep-sea footage is often separated from the instrument record that gives it meaning. For this episode, every depth, date, size, and record cl"
+    },
+    {
+      "order": 8,
+      "chapter": "Narration quality gate",
+      "start": "05:02",
+      "estimatedEnd": "05:27",
+      "visualMode": "source-card",
+      "narrationExcerpt": "The human review pass should also read every number aloud. Long strings of digits can sound natural on a page and awkward in narration. Pronunciations of scientific names, trench n"
+    },
+    {
+      "order": 9,
+      "chapter": "Context before spectacle",
+      "start": "05:27",
+      "estimatedEnd": "06:00",
+      "visualMode": "diagram",
+      "narrationExcerpt": "Another check is scale. Deep-sea images usually remove familiar references, so a small animal can appear enormous and a brief movement can look aggressive. The production should sh"
+    },
+    {
+      "order": 10,
+      "chapter": "Observation versus inference 2",
+      "start": "06:00",
+      "estimatedEnd": "06:31",
+      "visualMode": "comparison-grid",
+      "narrationExcerpt": "The script also separates what the camera directly records from what researchers infer. Direct evidence includes a measured depth, a timestamped encounter, a collected specimen, or"
+    },
+    {
+      "order": 11,
+      "chapter": "A reusable source rule 3",
+      "start": "06:31",
+      "estimatedEnd": "07:03",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "For the channel, the stable rule is one claim, one traceable source, and one stated boundary. If a source describes one species, the script does not silently expand the claim to an"
+    },
+    {
+      "order": 12,
+      "chapter": "Production continuity 4",
+      "start": "07:03",
+      "estimatedEnd": "07:33",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "The visual edit should vary from the previous episode even when the evidence structure stays consistent. Use a discovery-led opening for one topic, a mechanism diagram for another,"
+    },
+    {
+      "order": 13,
+      "chapter": "Evidence limit",
+      "start": "07:33",
+      "estimatedEnd": "07:48",
+      "visualMode": "source-card",
+      "narrationExcerpt": "The filmed 8,336-meter animal was not collected, so its exact species identification remains probable rather than confirmed by a specimen. The companion article lists the sources a"
+    },
+    {
+      "order": 14,
+      "chapter": "Outro",
+      "start": "07:48",
+      "estimatedEnd": "08:00",
+      "visualMode": "diagram",
+      "narrationExcerpt": "The deep ocean is more useful when the uncertainty stays visible. The sourced article is linked below. Next, continue through the twenty-video launch sequence from the channel libr"
+    }
+  ],
+  "requiredAssets": [
+    "production/broll/original/19-what-is-the-deepest-fish-ever-recorded.mp4",
+    "production/thumbnails/png/19-what-is-the-deepest-fish-ever-recorded.png"
+  ],
+  "externalAssetsRequired": false,
+  "articlePath": "/questions/what-is-the-deepest-fish-ever-recorded",
+  "metadataPath": "production/metadata/19-what-is-the-deepest-fish-ever-recorded.json",
+  "humanPassPath": "production/human-pass/19-what-is-the-deepest-fish-ever-recorded.md"
+}

@@ -1,0 +1,2377 @@
+[
+  {
+    "question": "Why deep sea creatures look so weird?",
+    "slug": "why-deep-sea-creatures-look-so-weird",
+    "subject": "deep-sea",
+    "method": "inferred-from-proxy",
+    "directAnswer": "Deep-sea creatures look unusual because darkness, crushing pressure, cold, and scarce food reward body plans that would be unnecessary near the surface—large mouths, light organs, soft tissues, unusual eyes, and energy-saving movement.",
+    "description": "The real evolutionary reasons deep-sea animals have large teeth, transparent heads, glowing lures and unfamiliar body shapes.",
+    "publishedAt": "2026-07-30",
+    "reviewedAt": "2026-07-30",
+    "keyStat": {
+      "value": "1 atmosphere per 10 m",
+      "label": "Approximate increase in ocean pressure with depth",
+      "sourceId": "noaa-animal-pressure"
+    },
+    "sections": [
+      {
+        "heading": "Their bodies solve a different set of problems",
+        "paragraphs": [
+          "A deep-sea animal is not an ordinary surface animal distorted by depth. Its body is the result of generations living where sunlight disappears, temperatures are low, pressure is high, and meals can be separated by long periods.",
+          "Features that look excessive to us often have a narrow job: find a faint signal, catch a rare meal, avoid making an expensive chase, or disappear from a predator that sees only silhouettes and flashes of light."
+        ]
+      },
+      {
+        "heading": "Darkness changes eyes, color, and communication",
+        "paragraphs": [
+          "Some species enlarge their eyes to collect the little light or bioluminescence available. Others reduce their eyes because vision offers little return. Transparent tissue can erase an outline, while red or black skin can make an animal nearly invisible after red wavelengths have been absorbed by seawater.",
+          "Bioluminescence can function as a lure, warning, decoy, searchlight, counter-illumination system, or signal to another member of the species."
+        ]
+      },
+      {
+        "heading": "Scarce food favors oversized feeding equipment",
+        "paragraphs": [
+          "A large mouth, long teeth, hinged jaws, or an expandable stomach lets an animal accept a meal when one finally appears. The anglerfish's lure is an energy strategy as much as a hunting trick: bring prey close instead of swimming through darkness searching for it.",
+          "These traits are not universal. Many deep-sea animals are small, delicate filter feeders, scavengers, or gelatinous drifters rather than dramatic predators."
+        ]
+      },
+      {
+        "heading": "Soft bodies can be an advantage under pressure",
+        "paragraphs": [
+          "Pressure is especially damaging to compressible gas spaces. Many deep-sea animals are mostly water and lack lungs or large gas-filled swim bladders, so their bodies are less crushable than a human body or an air-filled machine.",
+          "The result can be a soft, gelatinous form that looks fragile at the surface but is mechanically appropriate at depth."
+        ]
+      }
+    ],
+    "comparison": {
+      "columns": [
+        "Feature",
+        "Deep-sea problem it helps solve",
+        "Example"
+      ],
+      "rows": [
+        [
+          "Large or tubular eyes",
+          "Detect faint light and silhouettes",
+          "Barreleye"
+        ],
+        [
+          "Bioluminescent lure",
+          "Bring prey close without a long chase",
+          "Anglerfish"
+        ],
+        [
+          "Expandable mouth or stomach",
+          "Use rare feeding opportunities",
+          "Anglerfish and gulper eels"
+        ],
+        [
+          "Transparent or red tissue",
+          "Reduce visibility",
+          "Jellies, squids and midwater fishes"
+        ]
+      ]
+    },
+    "faqs": [
+      {
+        "question": "Are all deep-sea animals ugly?",
+        "answer": "No. 'Ugly' is a human judgment. Deep-sea animals include delicate jellies, corals, worms, octopuses, fishes and many microscopic organisms with very different forms."
+      },
+      {
+        "question": "Do deep-sea animals look the same when brought up?",
+        "answer": "Not always. Nets, decompression, warming and handling can damage soft tissues or alter an animal's appearance."
+      },
+      {
+        "question": "Why do so many have large teeth?",
+        "answer": "In food-poor habitats, long teeth can help secure prey once contact occurs. Many species, however, have tiny mouths or feed on particles instead."
+      },
+      {
+        "question": "Why do some deep-sea animals glow?",
+        "answer": "Bioluminescence can attract prey, hide a silhouette, confuse predators, illuminate nearby objects or communicate."
+      }
+    ],
+    "sourceIds": [
+      "noaa-wild-bizarre",
+      "noaa-animal-pressure",
+      "noaa-bioluminescence",
+      "smithsonian-deep-sea",
+      "mbari-barreleye"
+    ],
+    "relatedZones": [
+      "twilight",
+      "midnight"
+    ],
+    "relatedCreatures": [
+      "anglerfish",
+      "barreleye",
+      "dragonfish"
+    ],
+    "video": {
+      "status": "unplanned",
+      "videoId": null,
+      "title": null,
+      "descriptionFirstLine": null,
+      "thumbnailUrl": null,
+      "uploadDate": null,
+      "duration": null,
+      "transcript": null,
+      "chapters": []
+    }
+  },
+  {
+    "question": "How deep sea creatures survive the pressure?",
+    "slug": "how-deep-sea-creatures-survive-pressure",
+    "subject": "deep-sea",
+    "method": "measured-by-instrument",
+    "directAnswer": "Most deep-sea animals are largely water and avoid large gas-filled spaces, so pressure does not crush them like an air-filled body. Their cells and metabolism are also adapted to function at the pressures where they live.",
+    "description": "Why deep-sea animals are not crushed, how pressure changes with depth, and why rapid ascent can still harm them.",
+    "publishedAt": "2026-07-30",
+    "reviewedAt": "2026-07-30",
+    "keyStat": {
+      "value": "~200 atmospheres",
+      "label": "Approximate water pressure at 2,000 meters",
+      "sourceId": "noaa-animal-pressure"
+    },
+    "sections": [
+      {
+        "heading": "Pressure acts most dramatically on gas",
+        "paragraphs": [
+          "Ocean pressure rises by roughly one atmosphere for every 10 meters of seawater. Air compresses strongly under that load; liquid water does not compress nearly as much.",
+          "Animals with lungs or large gas spaces face a serious mechanical problem. Many permanent deep-sea residents instead have water-rich tissues and no large internal air cavity."
+        ]
+      },
+      {
+        "heading": "They are built for one pressure regime",
+        "paragraphs": [
+          "Deep-sea animals are not simply pressure-proof versions of shallow animals. Their membranes, enzymes, circulation and behavior function as a coordinated system under their normal conditions.",
+          "That is why an animal thriving at 2,000 meters may be stressed when brought to the surface even if it is not visibly crushed. Pressure changes chemical reaction rates, and rapid decompression can disrupt normal physiology."
+        ]
+      },
+      {
+        "heading": "Vertical migrants tolerate large daily changes",
+        "paragraphs": [
+          "Some midwater species move hundreds of meters each night and return to depth by day. NOAA notes that certain species experience pressure changes equivalent to about 100 atmospheres during these migrations without apparent harm.",
+          "Their tolerance does not mean every deep-sea species can make the same trip. Depth range is species-specific."
+        ]
+      },
+      {
+        "heading": "Why humans and submersibles need protection",
+        "paragraphs": [
+          "Humans depend on gas-filled lungs and cannot expose the body directly to deep-ocean pressure. Submersibles keep occupants near surface pressure inside a rigid pressure hull.",
+          "Cameras and electronics also need pressure housings or oil-filled designs because air-filled components can collapse."
+        ]
+      }
+    ],
+    "comparison": {
+      "columns": [
+        "Body or system",
+        "Pressure challenge",
+        "Typical solution"
+      ],
+      "rows": [
+        [
+          "Gas spaces",
+          "Gas compresses strongly",
+          "Reduce or eliminate large gas cavities"
+        ],
+        [
+          "Water-rich tissue",
+          "Water is difficult to compress",
+          "Soft, largely aqueous bodies"
+        ],
+        [
+          "Cell chemistry",
+          "Reactions and proteins behave differently",
+          "Pressure-adapted cellular machinery"
+        ],
+        [
+          "Rapid ascent",
+          "Abrupt environmental change",
+          "Remain within the species' normal depth range"
+        ]
+      ]
+    },
+    "faqs": [
+      {
+        "question": "Why are deep-sea fish not flattened?",
+        "answer": "Their internal pressure is close to the surrounding water pressure, and many lack large compressible gas spaces."
+      },
+      {
+        "question": "Can a deep-sea animal live at the surface?",
+        "answer": "Some vertical migrants can visit shallower water. Many permanent deep residents cannot tolerate the combined changes in pressure, temperature, light and water chemistry."
+      },
+      {
+        "question": "Does pressure increase at a constant rate?",
+        "answer": "A useful approximation is one additional atmosphere for every 10 meters of seawater, although density and local conditions create small differences."
+      },
+      {
+        "question": "Are gelatinous bodies weak?",
+        "answer": "They may be delicate during collection, but in their normal environment a water-rich body can be efficient and well matched to high pressure."
+      }
+    ],
+    "sourceIds": [
+      "noaa-animal-pressure",
+      "noaa-deep-habitat",
+      "noaa-cephalopods",
+      "smithsonian-deep-sea"
+    ],
+    "relatedZones": [
+      "midnight",
+      "abyss",
+      "hadal"
+    ],
+    "relatedCreatures": [
+      "hadal-snailfish",
+      "vampire-squid",
+      "dumbo-octopus"
+    ],
+    "video": {
+      "status": "unplanned",
+      "videoId": null,
+      "title": null,
+      "descriptionFirstLine": null,
+      "thumbnailUrl": null,
+      "uploadDate": null,
+      "duration": null,
+      "transcript": null,
+      "chapters": []
+    }
+  },
+  {
+    "question": "Why deep sea creatures are surfacing?",
+    "slug": "why-deep-sea-creatures-are-surfacing",
+    "subject": "deep-sea",
+    "method": "measured-by-instrument",
+    "directAnswer": "Many midwater animals rise naturally toward the surface every night to feed, then descend before daylight. A true deep resident found at the surface is a separate event that requires species, health, current, weather, and collection context.",
+    "description": "The difference between normal nightly migration and an unusual deep-sea animal sighting at the surface.",
+    "publishedAt": "2026-07-30",
+    "reviewedAt": "2026-07-30",
+    "keyStat": {
+      "value": "Every night",
+      "label": "Timing of the planet's largest daily animal migration",
+      "sourceId": "whoi-migration"
+    },
+    "sections": [
+      {
+        "heading": "Most upward movement is normal",
+        "paragraphs": [
+          "The ocean's deep scattering layer contains fishes, squid, crustaceans and zooplankton that hide in darker water during the day. After sunset, many move upward to feed where surface production has concentrated food.",
+          "Before dawn, they descend again. This diel vertical migration is one of the largest organized movements of animal biomass on Earth."
+        ]
+      },
+      {
+        "heading": "A viral surface sighting may be a different phenomenon",
+        "paragraphs": [
+          "News posts often group any unusual-looking fish under 'deep-sea creature.' That can blur important distinctions. Some species routinely use a wide depth range; others are permanent deep residents; and some photographed animals were caught, stranded, injured or already dead.",
+          "Identifying the species and the exact observation method matters before assigning a cause."
+        ]
+      },
+      {
+        "heading": "One observation does not establish a global trend",
+        "paragraphs": [
+          "A scientifically meaningful trend requires repeated observations collected with comparable methods. A single oarfish, anglerfish, squid or unfamiliar larval form at the surface can be notable without proving that deep-sea animals as a group are abandoning depth.",
+          "Responsible interpretation separates a documented event from a proposed explanation."
+        ]
+      },
+      {
+        "heading": "What researchers would check",
+        "paragraphs": [
+          "Scientists would examine the animal's normal depth range, time of day, condition, location, currents, water temperature, oxygen, storms, capture history and whether similar records exist.",
+          "Until that evidence is available, the most accurate answer is often that several causes are possible and the event is not yet diagnostic."
+        ]
+      }
+    ],
+    "comparison": {
+      "columns": [
+        "Observation",
+        "Likely interpretation",
+        "Evidence needed"
+      ],
+      "rows": [
+        [
+          "Large nightly rise of many small animals",
+          "Normal diel vertical migration",
+          "Acoustic and time-of-day data"
+        ],
+        [
+          "One deep resident alive near shore",
+          "Unusual individual event",
+          "Species ID, health and local ocean conditions"
+        ],
+        [
+          "Animal hauled up by fishing gear",
+          "Human-mediated ascent",
+          "Capture depth and gear record"
+        ],
+        [
+          "Repeated regional shift over years",
+          "Possible ecological change",
+          "Long-term standardized observations"
+        ]
+      ]
+    },
+    "faqs": [
+      {
+        "question": "Do deep-sea animals come to the surface every night?",
+        "answer": "Many twilight-zone animals do; many permanent deep residents do not."
+      },
+      {
+        "question": "Does a stranded deep-sea fish predict an earthquake?",
+        "answer": "There is no reliable scientific basis for treating a single stranding as an earthquake prediction."
+      },
+      {
+        "question": "Can storms move deep-sea animals?",
+        "answer": "Storms and currents can affect water masses and strand organisms, but the cause of a specific sighting must be investigated rather than assumed."
+      },
+      {
+        "question": "Are warming oceans forcing all deep animals upward?",
+        "answer": "Ocean warming and oxygen change can alter distributions, but a broad claim about all deep-sea animals requires long-term species-specific evidence."
+      }
+    ],
+    "sourceIds": [
+      "noaa-vertical-migration",
+      "noaa-scattering-layer",
+      "whoi-migration",
+      "whoi-twilight"
+    ],
+    "relatedZones": [
+      "twilight"
+    ],
+    "relatedCreatures": [
+      "vampire-squid",
+      "dragonfish",
+      "giant-squid"
+    ],
+    "video": {
+      "status": "unplanned",
+      "videoId": null,
+      "title": null,
+      "descriptionFirstLine": null,
+      "thumbnailUrl": null,
+      "uploadDate": null,
+      "duration": null,
+      "transcript": null,
+      "chapters": []
+    }
+  },
+  {
+    "question": "Why deep sea creatures are so scary?",
+    "slug": "why-deep-sea-creatures-are-so-scary",
+    "subject": "deep-sea",
+    "method": "inferred-from-proxy",
+    "directAnswer": "Deep-sea creatures seem scary because humans read large teeth, black eyes, unfamiliar proportions, and darkness as danger signals. Those features usually serve ordinary survival jobs such as catching scarce food, sensing faint light, or avoiding predators.",
+    "description": "Why deep-sea animals trigger fear even though their dramatic anatomy is usually an adaptation, not aggression toward humans.",
+    "publishedAt": "2026-07-30",
+    "reviewedAt": "2026-07-30",
+    "keyStat": {
+      "value": "Below ~1,000 m",
+      "label": "Sunlight is absent in the open ocean",
+      "sourceId": "noaa-deep-ocean"
+    },
+    "sections": [
+      {
+        "heading": "Our brains treat unfamiliar anatomy as a threat",
+        "paragraphs": [
+          "People quickly notice teeth, staring eyes, spines and mouths. In a photograph with no scale or context, a fish only a few centimeters long can look like a giant predator.",
+          "Dark backgrounds and ROV lighting intensify the effect by isolating the animal against black water."
+        ]
+      },
+      {
+        "heading": "The teeth are often about not losing one meal",
+        "paragraphs": [
+          "Deep water is food-poor compared with the sunlit ocean. Long inward-pointing teeth can secure prey during a rare encounter. An expandable jaw or stomach lets an animal use prey that would be too large for a more rigid feeder.",
+          "That does not make the animal interested in humans. Most iconic 'monster' fishes are small and live far beyond normal human access."
+        ]
+      },
+      {
+        "heading": "Bioluminescence looks supernatural because we rarely see it",
+        "paragraphs": [
+          "Light made by living tissue can resemble a lure, eye, spark or moving signal. In the deep sea it is a practical communication and survival system, not evidence of a hostile or mysterious force.",
+          "The same adaptation can attract prey, hide a silhouette, distract a predator or help animals find mates."
+        ]
+      },
+      {
+        "heading": "The deep sea is genuinely hazardous, but not mainly because of animals",
+        "paragraphs": [
+          "For humans and machines, darkness, distance, cold, pressure and communication limits are the dominant hazards. The creatures themselves are usually observed by remotely operated vehicles and are not a direct threat to people.",
+          "Fear is therefore understandable, but it is usually aimed at appearance rather than actual risk."
+        ]
+      }
+    ],
+    "comparison": {
+      "columns": [
+        "Scary-looking trait",
+        "Actual function",
+        "Typical human risk"
+      ],
+      "rows": [
+        [
+          "Long teeth",
+          "Hold slippery prey",
+          "Very low"
+        ],
+        [
+          "Glowing lure",
+          "Attract prey",
+          "None at normal human distances"
+        ],
+        [
+          "Large eyes",
+          "Collect faint light",
+          "None"
+        ],
+        [
+          "Black or red body",
+          "Camouflage",
+          "None"
+        ]
+      ]
+    },
+    "faqs": [
+      {
+        "question": "Can an anglerfish eat a human?",
+        "answer": "No. The familiar deep-sea anglerfish shown in close-up images is far too small."
+      },
+      {
+        "question": "What is the most dangerous thing in the deep ocean?",
+        "answer": "For a human expedition, pressure, cold, equipment failure, darkness and distance are much greater risks than animal attack."
+      },
+      {
+        "question": "Why do deep-sea photos look like horror images?",
+        "answer": "Close framing, black backgrounds and lack of scale exaggerate unfamiliar features."
+      },
+      {
+        "question": "Are giant squid aggressive toward people?",
+        "answer": "Live giant squid are rarely observed. There is no evidence that they routinely hunt humans."
+      }
+    ],
+    "sourceIds": [
+      "noaa-deep-ocean",
+      "noaa-wild-bizarre",
+      "noaa-bioluminescence",
+      "noaa-anglerfish",
+      "smithsonian-giant-squid"
+    ],
+    "relatedZones": [
+      "twilight",
+      "midnight"
+    ],
+    "relatedCreatures": [
+      "anglerfish",
+      "dragonfish",
+      "giant-squid"
+    ],
+    "video": {
+      "status": "unplanned",
+      "videoId": null,
+      "title": null,
+      "descriptionFirstLine": null,
+      "thumbnailUrl": null,
+      "uploadDate": null,
+      "duration": null,
+      "transcript": null,
+      "chapters": []
+    }
+  },
+  {
+    "question": "Why many deep sea creatures are red?",
+    "slug": "why-many-deep-sea-creatures-are-red",
+    "subject": "deep-sea",
+    "method": "measured-by-instrument",
+    "directAnswer": "Red light is absorbed near the ocean surface and does not illuminate deep water. A red animal therefore reflects little visible light at depth and can appear black, making red coloration an effective form of camouflage.",
+    "description": "Why red animals can become nearly invisible in the deep sea and how light absorption changes ocean color.",
+    "publishedAt": "2026-07-30",
+    "reviewedAt": "2026-07-30",
+    "keyStat": {
+      "value": "Red disappears first",
+      "label": "Red wavelengths are absorbed faster than blue light in seawater",
+      "sourceId": "noaa-red-color"
+    },
+    "sections": [
+      {
+        "heading": "Color depends on the light that reaches an object",
+        "paragraphs": [
+          "An object looks red near the surface because red wavelengths strike it and are reflected to an observer. Deeper down, those wavelengths have already been absorbed by the water.",
+          "Without red illumination, red tissue returns almost no visible red light and looks dark gray or black."
+        ]
+      },
+      {
+        "heading": "Darkness can be camouflage",
+        "paragraphs": [
+          "In dim midwater, avoiding a detectable silhouette is critical. Red or black skin helps an animal blend into the background when viewed by predators or prey using the available blue-green light.",
+          "Some animals combine red external tissue with a red stomach lining that hides the glow of recently eaten bioluminescent prey."
+        ]
+      },
+      {
+        "heading": "Not every red animal lives at the same depth",
+        "paragraphs": [
+          "Ocean color patterns shift gradually. Near the surface, blue and silver countershading is common. Deeper, transparency becomes useful. Farther down, red and black bodies become more common.",
+          "These are broad patterns, not rigid rules. Habitat, behavior and visual systems vary among species."
+        ]
+      },
+      {
+        "heading": "ROV lights reveal colors the animal does not normally display",
+        "paragraphs": [
+          "A remotely operated vehicle carries bright white lights that include red wavelengths. The camera therefore records vivid crimson bodies that would look nearly black under natural deep-sea illumination.",
+          "That is why expedition footage can show an apparently bright animal in an environment where the color functions as concealment."
+        ]
+      }
+    ],
+    "comparison": {
+      "columns": [
+        "Depth-light condition",
+        "Common visual strategy",
+        "Why it helps"
+      ],
+      "rows": [
+        [
+          "Bright surface water",
+          "Countershading and silvering",
+          "Matches light from above and below"
+        ],
+        [
+          "Dim twilight",
+          "Transparency and reflective tissue",
+          "Reduces silhouette"
+        ],
+        [
+          "Very low light",
+          "Red or black pigmentation",
+          "Returns little available light"
+        ],
+        [
+          "Self-generated light",
+          "Photophores and counter-illumination",
+          "Controls visibility or signaling"
+        ]
+      ]
+    },
+    "faqs": [
+      {
+        "question": "Can deep-sea animals see red?",
+        "answer": "Many deep-sea visual systems are most sensitive to blue-green wavelengths. Sensitivity varies, and some species have specialized visual capabilities."
+      },
+      {
+        "question": "Why do red deep-sea animals look bright in video?",
+        "answer": "ROV lights contain red wavelengths that natural deep water lacks."
+      },
+      {
+        "question": "Are all deep-sea animals red?",
+        "answer": "No. Black, transparent, silver, pale and bioluminescent forms are also common."
+      },
+      {
+        "question": "Is red coloration the same as bioluminescence?",
+        "answer": "No. Pigment controls reflected light; bioluminescence produces light chemically."
+      }
+    ],
+    "sourceIds": [
+      "noaa-red-color",
+      "noaa-animal-color",
+      "mbari-strawberry-squid",
+      "whoi-midnight"
+    ],
+    "relatedZones": [
+      "twilight",
+      "midnight"
+    ],
+    "relatedCreatures": [
+      "vampire-squid",
+      "dragonfish"
+    ],
+    "video": {
+      "status": "unplanned",
+      "videoId": null,
+      "title": null,
+      "descriptionFirstLine": null,
+      "thumbnailUrl": null,
+      "uploadDate": null,
+      "duration": null,
+      "transcript": null,
+      "chapters": []
+    }
+  },
+  {
+    "question": "Why some deep sea creatures are transparent?",
+    "slug": "why-some-deep-sea-creatures-are-transparent",
+    "subject": "deep-sea",
+    "method": "inferred-from-proxy",
+    "directAnswer": "Transparency reduces the shadow and outline of an animal in open water. Where there is little structure to hide behind, clear tissues can make a creature harder for predators and prey to detect from multiple directions.",
+    "description": "How transparent tissue works as camouflage in open water and why some organs still remain visible.",
+    "publishedAt": "2026-07-30",
+    "reviewedAt": "2026-07-30",
+    "keyStat": {
+      "value": "200–1,000 m",
+      "label": "The twilight zone where transparency is especially useful",
+      "sourceId": "whoi-twilight"
+    },
+    "sections": [
+      {
+        "heading": "Open water has nowhere to hide",
+        "paragraphs": [
+          "Midwater animals cannot shelter behind rocks, plants or the seafloor. A visible outline against downwelling light can reveal them to a predator below or prey above.",
+          "Clear, watery tissue allows more light to pass through instead of reflecting a strong silhouette."
+        ]
+      },
+      {
+        "heading": "Transparency is easier for some tissues than others",
+        "paragraphs": [
+          "Gelatinous animals can be almost entirely clear because their bodies contain large amounts of water and relatively little light-absorbing material. Muscles, eyes, digestive organs and pigments are harder to hide.",
+          "Some species conceal those opaque parts with mirrors, red pigment, compact organs or special positioning."
+        ]
+      },
+      {
+        "heading": "The barreleye uses transparency as a window, not whole-body camouflage",
+        "paragraphs": [
+          "The barreleye fish has a transparent, fluid-filled shield over its tubular eyes. MBARI observations showed that the eyes can rotate as the fish changes from looking upward to feeding forward.",
+          "The shield protects the eyes while preserving a clear field of view around stinging gelatinous animals."
+        ]
+      },
+      {
+        "heading": "Transparency has limits",
+        "paragraphs": [
+          "At greater depths where sunlight is absent, being clear may offer less advantage than being red or black. Bioluminescent flashes can also reveal internal organs if they are not shielded.",
+          "That is why transparency often appears alongside other strategies rather than replacing them."
+        ]
+      }
+    ],
+    "comparison": {
+      "columns": [
+        "Strategy",
+        "Best suited environment",
+        "Tradeoff"
+      ],
+      "rows": [
+        [
+          "Transparency",
+          "Open dim water",
+          "Opaque organs remain visible"
+        ],
+        [
+          "Silvering",
+          "Brighter open water",
+          "Can flash at the wrong angle"
+        ],
+        [
+          "Red or black pigment",
+          "Very low light",
+          "Becomes visible under white ROV lights"
+        ],
+        [
+          "Counter-illumination",
+          "Water with light from above",
+          "Requires energy and precise control"
+        ]
+      ]
+    },
+    "faqs": [
+      {
+        "question": "Are transparent animals invisible?",
+        "answer": "No. Edges, eyes, organs and changes in refraction can still reveal them."
+      },
+      {
+        "question": "Why are many jellies transparent?",
+        "answer": "Their water-rich tissues transmit light and reduce a strong silhouette in open water."
+      },
+      {
+        "question": "Is the barreleye's entire head empty?",
+        "answer": "No. A transparent fluid-filled shield covers and protects its eyes; the rest of the head contains normal tissues and organs."
+      },
+      {
+        "question": "Do transparent animals live only in the deep sea?",
+        "answer": "No. Transparency also occurs in plankton and other animals closer to the surface."
+      }
+    ],
+    "sourceIds": [
+      "noaa-animal-color",
+      "noaa-cephalopods",
+      "mbari-barreleye",
+      "whoi-twilight"
+    ],
+    "relatedZones": [
+      "twilight"
+    ],
+    "relatedCreatures": [
+      "barreleye",
+      "vampire-squid"
+    ],
+    "video": {
+      "status": "unplanned",
+      "videoId": null,
+      "title": null,
+      "descriptionFirstLine": null,
+      "thumbnailUrl": null,
+      "uploadDate": null,
+      "duration": null,
+      "transcript": null,
+      "chapters": []
+    }
+  },
+  {
+    "question": "Why deep sea creatures get creepier the deeper you go?",
+    "slug": "why-deep-sea-creatures-get-creepier-deeper",
+    "subject": "deep-sea",
+    "method": "inferred-from-proxy",
+    "directAnswer": "They do not objectively become creepier with depth. As sunlight and food disappear and pressure rises, different adaptations become useful—dark colors, soft bodies, unusual jaws, reduced eyes, sensitive organs, and bioluminescence—which humans often interpret as frightening.",
+    "description": "Why animal forms change with depth and why the idea that every deeper zone is scarier is an oversimplification.",
+    "publishedAt": "2026-07-30",
+    "reviewedAt": "2026-07-30",
+    "keyStat": {
+      "value": "~4°C",
+      "label": "Average deep-ocean temperature below roughly 200 meters",
+      "sourceId": "noaa-deep-habitat"
+    },
+    "sections": [
+      {
+        "heading": "Depth changes the design constraints",
+        "paragraphs": [
+          "The strongest transition is not a horror gradient; it is an environmental gradient. Light fades, temperature drops, pressure rises and food from photosynthesis becomes remote.",
+          "Natural selection favors traits that work under those conditions, whether or not they look familiar to people."
+        ]
+      },
+      {
+        "heading": "The twilight zone still rewards visual camouflage",
+        "paragraphs": [
+          "Between about 200 and 1,000 meters, faint light remains. Transparency, silvering, counter-illumination, large eyes and nightly migration can all reduce detection.",
+          "Many animals here are small and delicate even when close-up images make them look dramatic."
+        ]
+      },
+      {
+        "heading": "The midnight and abyss favor low-energy survival",
+        "paragraphs": [
+          "Below the reach of sunlight, animals cannot depend on photosynthetic production at their own depth. Many wait, drift, scavenge, filter particles or use lures rather than chase prey over long distances.",
+          "Large mouths and flexible stomachs are useful because the timing and size of the next meal are uncertain."
+        ]
+      },
+      {
+        "heading": "Some of the deepest animals look less monstrous, not more",
+        "paragraphs": [
+          "Hadal snailfish are soft, pale and tadpole-like. Sea cucumbers and amphipods dominate many trench observations. The deepest ecosystems are not populated only by giant fanged predators.",
+          "The 'creepier with depth' pattern is partly selection bias: dramatic images are more likely to be shared."
+        ]
+      }
+    ],
+    "comparison": {
+      "columns": [
+        "Zone",
+        "Dominant visual condition",
+        "Commonly useful adaptations"
+      ],
+      "rows": [
+        [
+          "Sunlight",
+          "Bright and directional light",
+          "Countershading, speed, schooling"
+        ],
+        [
+          "Twilight",
+          "Faint downwelling light",
+          "Transparency, large eyes, migration"
+        ],
+        [
+          "Midnight",
+          "No sunlight",
+          "Bioluminescence, dark pigment, lures"
+        ],
+        [
+          "Abyss and hadal",
+          "Dark, cold, high pressure",
+          "Soft bodies, scavenging, chemical sensing"
+        ]
+      ]
+    },
+    "faqs": [
+      {
+        "question": "Are deeper animals always larger?",
+        "answer": "No. Deep-sea gigantism occurs in some groups, while many deep animals are tiny."
+      },
+      {
+        "question": "Why do some deep fish lose their eyes?",
+        "answer": "Where vision provides little benefit, maintaining large functional eyes may not repay its biological cost."
+      },
+      {
+        "question": "Why are deep-sea mouths so large?",
+        "answer": "A large gape can help capture and swallow a rare meal, but many deep animals use other feeding strategies."
+      },
+      {
+        "question": "What is the deepest fish ever filmed?",
+        "answer": "NOAA reports a snailfish filmed at 8,336 meters as the deepest confirmed fish sighting."
+      }
+    ],
+    "sourceIds": [
+      "noaa-deep-habitat",
+      "noaa-animal-color",
+      "noaa-deepest-fish",
+      "smithsonian-deep-sea",
+      "whoi-zones"
+    ],
+    "relatedZones": [
+      "twilight",
+      "midnight",
+      "abyss",
+      "hadal"
+    ],
+    "relatedCreatures": [
+      "hadal-snailfish",
+      "anglerfish",
+      "vampire-squid"
+    ],
+    "video": {
+      "status": "unplanned",
+      "videoId": null,
+      "title": null,
+      "descriptionFirstLine": null,
+      "thumbnailUrl": null,
+      "uploadDate": null,
+      "duration": null,
+      "transcript": null,
+      "chapters": []
+    }
+  },
+  {
+    "question": "What creatures live in the deep sea?",
+    "slug": "what-creatures-live-in-the-deep-sea",
+    "subject": "deep-sea",
+    "method": "reconstructed-from-fragments",
+    "directAnswer": "The deep sea contains fishes, squid, octopuses, jellies, comb jellies, crustaceans, worms, sea cucumbers, corals, sponges, microbes, and many other groups. Different communities occupy open water, seafloor plains, trenches, vents, seeps, and animal falls.",
+    "description": "A zone-by-zone guide to the major animals and habitats found below the sunlit ocean.",
+    "publishedAt": "2026-07-30",
+    "reviewedAt": "2026-07-30",
+    "keyStat": {
+      "value": "8,336 m",
+      "label": "Depth of the deepest confirmed fish sighting",
+      "sourceId": "noaa-deepest-fish"
+    },
+    "sections": [
+      {
+        "heading": "The deep sea is many habitats, not one empty place",
+        "paragraphs": [
+          "Open water below 200 meters covers an enormous volume, while the seafloor includes continental slopes, canyons, abyssal plains, seamounts and trenches.",
+          "Hydrothermal vents, cold seeps and whale falls create concentrated islands of food and chemical energy within the broader food-poor deep ocean."
+        ]
+      },
+      {
+        "heading": "Twilight-zone animals",
+        "paragraphs": [
+          "Lanternfishes, bristlemouths, dragonfishes, squid, krill, siphonophores, jellies and zooplankton are common members of the mesopelagic community.",
+          "Many rise toward the surface at night and return to depth before daylight."
+        ]
+      },
+      {
+        "heading": "Midnight and abyssal animals",
+        "paragraphs": [
+          "Anglerfishes, rattails, deep-sea squid, octopuses, sea cucumbers, amphipods, sponges, corals and gelatinous animals occupy the dark water column and seafloor.",
+          "Many depend on marine snow, scavenging, predation or chemosynthetic food webs."
+        ]
+      },
+      {
+        "heading": "Hadal trench animals",
+        "paragraphs": [
+          "Trench communities include amphipods, sea cucumbers, worms, microbes and specialized snailfishes in the shallower portion of the hadal zone.",
+          "Fish appear to have a physiological depth limit near 8,400 meters, while invertebrates and microbes continue deeper."
+        ]
+      }
+    ],
+    "comparison": {
+      "columns": [
+        "Habitat",
+        "Representative life",
+        "Primary food pathway"
+      ],
+      "rows": [
+        [
+          "Twilight water column",
+          "Lanternfish, squid, jellies",
+          "Surface production and migration"
+        ],
+        [
+          "Midnight water column",
+          "Anglerfish, dragonfish, siphonophores",
+          "Predation and sinking particles"
+        ],
+        [
+          "Abyssal seafloor",
+          "Sea cucumbers, worms, sponges",
+          "Marine snow and carcasses"
+        ],
+        [
+          "Vents and seeps",
+          "Tubeworms, mussels, microbes",
+          "Chemosynthesis"
+        ],
+        [
+          "Hadal trenches",
+          "Amphipods, snailfish, microbes",
+          "Accumulated organic matter and local chemistry"
+        ]
+      ]
+    },
+    "faqs": [
+      {
+        "question": "Do sharks live in the deep sea?",
+        "answer": "Yes. Several shark species use deep water, although sharks are not present at the greatest trench depths."
+      },
+      {
+        "question": "Are there plants in the deep sea?",
+        "answer": "Photosynthetic plants cannot grow where sunlight is absent. Deep ecosystems rely on food sinking from above or on chemosynthesis."
+      },
+      {
+        "question": "What is the most common deep-sea fish?",
+        "answer": "Bristlemouths are often described as extraordinarily abundant and may be the most numerous vertebrates on Earth."
+      },
+      {
+        "question": "How many deep-sea species are undiscovered?",
+        "answer": "No reliable exact count exists. New species and previously unseen behaviors continue to be documented."
+      }
+    ],
+    "sourceIds": [
+      "mbari-animals",
+      "smithsonian-deep-sea",
+      "whoi-twilight",
+      "whoi-midnight",
+      "whoi-hadal",
+      "noaa-deepest-fish"
+    ],
+    "relatedZones": [
+      "twilight",
+      "midnight",
+      "abyss",
+      "hadal"
+    ],
+    "relatedCreatures": [
+      "anglerfish",
+      "vampire-squid",
+      "barreleye",
+      "giant-squid",
+      "hadal-snailfish"
+    ],
+    "video": {
+      "status": "unplanned",
+      "videoId": null,
+      "title": null,
+      "descriptionFirstLine": null,
+      "thumbnailUrl": null,
+      "uploadDate": null,
+      "duration": null,
+      "transcript": null,
+      "chapters": []
+    }
+  },
+  {
+    "question": "What is the scariest deep sea creature?",
+    "slug": "what-is-the-scariest-deep-sea-creature",
+    "subject": "deep-sea",
+    "method": "reconstructed-from-fragments",
+    "directAnswer": "There is no scientific 'scariest' deep-sea creature. Anglerfish, viperfish, dragonfish, giant squid, and giant isopods are common human choices, but their frightening features are adaptations for feeding, sensing, camouflage, or scavenging—not evidence that they hunt people.",
+    "description": "A reality-based comparison of the deep-sea animals people most often call scary.",
+    "publishedAt": "2026-07-30",
+    "reviewedAt": "2026-07-30",
+    "keyStat": {
+      "value": "No scientific ranking",
+      "label": "There is no scientific measure of which deep-sea animal is scariest; the features people fear are feeding, sensing and camouflage adaptations",
+      "sourceId": "smithsonian-anglerfish"
+    },
+    "sections": [
+      {
+        "heading": "'Scariest' is a human category",
+        "paragraphs": [
+          "Science can compare size, bite mechanics, hunting strategy, venom or ecological role. It cannot measure a universal fear ranking.",
+          "The answer therefore depends on whether a person reacts most strongly to teeth, size, parasitic reproduction, armor, darkness or unfamiliar movement."
+        ]
+      },
+      {
+        "heading": "Anglerfish: the iconic horror face",
+        "paragraphs": [
+          "Deep-sea anglerfish combine a lure, large mouth and needle-like teeth. Close-up photographs make them look enormous, but many species are small.",
+          "The lure is a low-energy feeding tool in a habitat where searching widely for prey is costly."
+        ]
+      },
+      {
+        "heading": "Dragonfish and viperfish: teeth that secure prey",
+        "paragraphs": [
+          "These fishes carry long teeth that remain visible even when the mouth is closed. The equipment helps hold slippery prey during brief encounters in darkness.",
+          "Their dramatic appearance does not translate into a meaningful threat to humans at the surface."
+        ]
+      },
+      {
+        "heading": "Giant squid: fear created by scale and rarity",
+        "paragraphs": [
+          "Giant squid are legitimately large and possess long tentacles, a beak and enormous eyes. Yet they are elusive and only rarely observed alive.",
+          "Most evidence suggests a deep-ocean predator-prey relationship with sperm whales—not a pattern of attacks on people."
+        ]
+      },
+      {
+        "heading": "Giant isopods: familiar anatomy at unfamiliar scale",
+        "paragraphs": [
+          "Giant isopods resemble oversized terrestrial pill bugs. Their armored segments and scavenging diet trigger disgust or fear in some viewers.",
+          "On the seafloor, they are recyclers that consume carrion and other available food."
+        ]
+      }
+    ],
+    "comparison": {
+      "columns": [
+        "Candidate",
+        "Why people fear it",
+        "What the feature actually does"
+      ],
+      "rows": [
+        [
+          "Anglerfish",
+          "Lure, mouth and teeth",
+          "Ambushes prey"
+        ],
+        [
+          "Dragonfish",
+          "Long exposed teeth",
+          "Secures prey in darkness"
+        ],
+        [
+          "Giant squid",
+          "Large size and tentacles",
+          "Captures open-ocean prey"
+        ],
+        [
+          "Giant isopod",
+          "Armor and scavenging",
+          "Protects the body and processes carrion"
+        ],
+        [
+          "Vampire squid",
+          "Name and cloak-like arms",
+          "Feeds on marine snow and uses defensive light"
+        ]
+      ]
+    },
+    "faqs": [
+      {
+        "question": "What deep-sea animal is most dangerous to humans?",
+        "answer": "There is no well-supported candidate that poses a routine danger to humans. Environmental conditions are the dominant hazard."
+      },
+      {
+        "question": "Is the vampire squid dangerous?",
+        "answer": "No. It eats marine snow and small particles rather than drinking blood or attacking large animals."
+      },
+      {
+        "question": "How big is a deep-sea anglerfish?",
+        "answer": "Size varies widely across anglerfish. Many famous deep-sea forms are much smaller than their close-up images imply."
+      },
+      {
+        "question": "Has a giant squid attacked a person?",
+        "answer": "There is no established pattern of giant squid hunting people."
+      }
+    ],
+    "sourceIds": [
+      "noaa-anglerfish",
+      "smithsonian-anglerfish",
+      "smithsonian-dragonfish",
+      "smithsonian-giant-squid",
+      "smithsonian-isopod",
+      "mbari-vampire-squid"
+    ],
+    "relatedZones": [
+      "twilight",
+      "midnight"
+    ],
+    "relatedCreatures": [
+      "anglerfish",
+      "dragonfish",
+      "giant-squid",
+      "giant-isopod",
+      "vampire-squid"
+    ],
+    "video": {
+      "status": "unplanned",
+      "videoId": null,
+      "title": null,
+      "descriptionFirstLine": null,
+      "thumbnailUrl": null,
+      "uploadDate": null,
+      "duration": null,
+      "transcript": null,
+      "chapters": []
+    }
+  },
+  {
+    "question": "What is the deepest part of the ocean?",
+    "slug": "what-is-the-deepest-part-of-the-ocean",
+    "subject": "marine-geology",
+    "method": "measured-by-instrument",
+    "directAnswer": "The deepest known part of the ocean is Challenger Deep in the Mariana Trench, approximately 10,935 meters (35,876 feet) below sea level. Reported values vary slightly because different surveys, instruments, and uncertainty corrections produce different estimates.",
+    "description": "Where Challenger Deep is, how deep it is, why published measurements differ, and what conditions exist at the deepest known seafloor.",
+    "publishedAt": "2026-07-30",
+    "reviewedAt": "2026-07-30",
+    "keyStat": {
+      "value": "10,935 m ± 6 m",
+      "label": "Deepest observed seafloor depth reported by a modern submersible-transect study",
+      "sourceId": "noaa-challenger-depth-study"
+    },
+    "sections": [
+      {
+        "heading": "Challenger Deep lies inside the Mariana Trench",
+        "paragraphs": [
+          "Challenger Deep is a depression at the southern end of the Mariana Trench in the western Pacific Ocean. The trench forms where one tectonic plate bends and descends beneath another, creating a long, narrow hadal environment rather than a single open-ocean hole.",
+          "The name refers to a deep basin with multiple surveyed pools, not one permanently fixed point marked on the seafloor. Different expeditions may cross slightly different tracks and identify slightly different local lows."
+        ]
+      },
+      {
+        "heading": "The best current estimate is about 10.9 kilometers",
+        "paragraphs": [
+          "NOAA commonly reports Challenger Deep at approximately 10,935 meters, or 35,876 feet, below mean sea level. A modern pressure-based submersible study reported 10,935 meters with an uncertainty of plus or minus 6 meters at 95 percent confidence.",
+          "That uncertainty matters. Ocean depth is calculated from pressure, gravity, seawater properties, instrument calibration, vessel position, and the geometry of the survey path. A number presented without its method and uncertainty can look more exact than the measurement really is."
+        ]
+      },
+      {
+        "heading": "The bottom is dark, cold, and under extreme pressure",
+        "paragraphs": [
+          "At nearly eleven kilometers, sunlight is absent and pressure is roughly eleven hundred times atmospheric pressure at sea level. Temperatures are close to freezing, although local conditions vary with water masses and seafloor processes.",
+          "The hadal zone still supports life. Microbes and specialized invertebrates occupy trench sediments, while the deepest confirmed fishes live above the absolute bottom. The environment is biologically active, but it is not a place where ordinary surface organisms can function unchanged."
+        ]
+      },
+      {
+        "heading": "Exploration requires full-ocean-depth engineering",
+        "paragraphs": [
+          "Mapping vessels use sonar to build regional bathymetric models, while landers and submersibles provide direct pressure, imagery, sampling, and seafloor observations. Each method answers a different part of the depth question and carries different uncertainty.",
+          "Only vehicles designed for full-ocean depth can operate at Challenger Deep. The engineering problem is not simply reaching the bottom; systems must survive pressure, navigate without light or GPS, communicate through water, and return usable measurements with traceable calibration."
+        ]
+      }
+    ],
+    "comparison": {
+      "columns": [
+        "Reference point",
+        "Approximate depth or height",
+        "How it compares"
+      ],
+      "rows": [
+        [
+          "Average global ocean depth",
+          "3,682 m",
+          "Challenger Deep is almost three times deeper"
+        ],
+        [
+          "Abyssal zone",
+          "4,000–6,000 m",
+          "Still several kilometers above the trench floor"
+        ],
+        [
+          "Deepest confirmed fish sighting",
+          "8,336 m",
+          "Still more than two kilometers above the trench floor"
+        ],
+        [
+          "Challenger Deep",
+          "About 10,935 m deep",
+          "Deepest known part of the ocean"
+        ]
+      ]
+    },
+    "faqs": [
+      {
+        "question": "Is the Mariana Trench the deepest part of the ocean?",
+        "answer": "The Mariana Trench is the deepest trench. Challenger Deep is the deepest known depression within that trench and the deepest known point in the global ocean."
+      },
+      {
+        "question": "Why do sources give different depths for Challenger Deep?",
+        "answer": "Surveys use different instruments, tracks, gravity corrections, seawater assumptions, reference levels, and uncertainty methods. Small differences do not necessarily mean one expedition failed."
+      },
+      {
+        "question": "Has anyone reached the bottom of Challenger Deep?",
+        "answer": "Yes. Crewed and uncrewed full-ocean-depth vehicles have reached and surveyed parts of Challenger Deep, beginning with the crewed Trieste descent in 1960."
+      },
+      {
+        "question": "Do fish live at the deepest point?",
+        "answer": "No fish has been confirmed at the absolute deepest seafloor. Hadal snailfish hold depth records above the bottom, while deeper trench sediments support microbes and invertebrates."
+      }
+    ],
+    "sourceIds": [
+      "noaa-ocean-depth",
+      "noaa-seafloor-mapping",
+      "noaa-challenger-depth-study",
+      "whoi-ocean-trenches",
+      "whoi-hadal",
+      "noaa-deepest-fish"
+    ],
+    "relatedZones": [
+      "hadal"
+    ],
+    "relatedCreatures": [
+      "hadal-snailfish"
+    ],
+    "video": {
+      "status": "unplanned",
+      "videoId": null,
+      "title": null,
+      "descriptionFirstLine": null,
+      "thumbnailUrl": null,
+      "uploadDate": null,
+      "duration": null,
+      "transcript": null,
+      "chapters": []
+    }
+  },
+  {
+    "question": "What is a dumbo octopus?",
+    "slug": "what-is-a-dumbo-octopus",
+    "subject": "deep-sea",
+    "method": "observed-once",
+    "directAnswer": "A dumbo octopus is a finned deep-sea octopus in the cirrate group. It swims mainly with ear-like fins and webbed arms, and confirmed observations extend to 6,957 meters.",
+    "description": "How dumbo octopuses swim, feed, and survive from the deep seafloor into the hadal zone.",
+    "publishedAt": "2026-07-30",
+    "reviewedAt": "2026-07-30",
+    "keyStat": {
+      "value": "6,957 m",
+      "label": "Deepest confirmed in-situ cirrate octopus observation",
+      "sourceId": "noaa-dumbo-hadal-study"
+    },
+    "sections": [
+      {
+        "heading": "It is a finned cirrate octopus",
+        "paragraphs": [
+          "Dumbo octopus is a nickname for several finned octopuses, including species in the genus Grimpoteuthis. Unlike familiar shallow-water octopuses, cirrates have a pair of fins on the mantle and webbing between their arms.",
+          "The fins are not decorative ears. They help produce slow, controlled movement where conserving energy matters more than sudden acceleration."
+        ]
+      },
+      {
+        "heading": "Its deepest confirmed sighting changed the map",
+        "paragraphs": [
+          "A 2020 peer-reviewed study reported unequivocal video observations of a Grimpoteuthis species at 5,760 and 6,957 meters in the Indian Ocean.",
+          "That did not prove every dumbo octopus lives that deep. It established that at least one cirrate octopus can occupy hadal habitat below 6,000 meters."
+        ]
+      },
+      {
+        "heading": "It moves differently from a shallow-water octopus",
+        "paragraphs": [
+          "Many cirrate octopuses rely on their fins and webbed arms rather than repeated jet propulsion. Some deep-living species also lack the ink defenses familiar from shallow octopuses.",
+          "Those traits fit an environment where darkness is permanent and steady movement can be more valuable than a costly burst."
+        ]
+      },
+      {
+        "heading": "Much of its life is still inferred",
+        "paragraphs": [
+          "ROV and lander video can document depth, posture, movement, and nearby habitat, but observations are brief. Diet, reproduction, growth, and population structure remain poorly known for many species.",
+          "The honest story is not that scientists know nothing. It is that a few strong observations must not be inflated into a complete biography."
+        ]
+      }
+    ],
+    "comparison": {
+      "columns": [
+        "Feature",
+        "What the evidence shows",
+        "Example or boundary"
+      ],
+      "rows": [
+        [
+          "Fins",
+          "Primary slow propulsion",
+          "Cirrate dumbo octopus"
+        ],
+        [
+          "Webbed arms",
+          "Steering and hovering",
+          "Many cirrates"
+        ],
+        [
+          "Ink sac",
+          "Often reduced or absent",
+          "Deep cirrates"
+        ],
+        [
+          "Confirmed depth",
+          "To 6,957 m in one study",
+          "Grimpoteuthis sp."
+        ]
+      ]
+    },
+    "faqs": [
+      {
+        "question": "Is Dumbo one species?",
+        "answer": "No. The nickname is used for multiple finned cirrate octopuses."
+      },
+      {
+        "question": "Why are the fins so large?",
+        "answer": "They provide controlled propulsion without relying only on jetting."
+      },
+      {
+        "question": "Do dumbo octopuses live in trenches?",
+        "answer": "At least one Grimpoteuthis species has been filmed at hadal depths below 6,000 meters."
+      },
+      {
+        "question": "Are they blind?",
+        "answer": "Vision varies. Some cirrates have reduced eyes, while others retain useful light detection."
+      }
+    ],
+    "sourceIds": [
+      "noaa-dumbo-octopus",
+      "noaa-dumbo-hadal-study",
+      "noaa-cephalopods",
+      "smithsonian-deep-sea"
+    ],
+    "relatedZones": [
+      "midnight",
+      "abyss",
+      "hadal"
+    ],
+    "relatedCreatures": [
+      "dumbo-octopus",
+      "vampire-squid"
+    ],
+    "video": {
+      "status": "unplanned",
+      "videoId": null,
+      "title": null,
+      "descriptionFirstLine": null,
+      "thumbnailUrl": null,
+      "uploadDate": null,
+      "duration": null,
+      "transcript": null,
+      "chapters": []
+    }
+  },
+  {
+    "question": "What is a frilled shark?",
+    "slug": "what-is-a-frilled-shark",
+    "subject": "deep-sea",
+    "method": "reconstructed-from-fragments",
+    "directAnswer": "A frilled shark is a rare deep-water shark with an eel-like body, six pairs of frilled gill slits, and flexible jaws. Calling it unchanged for 80 million years is misleading.",
+    "description": "The real biology of the frilled shark—and why the popular living-fossil story goes too far.",
+    "publishedAt": "2026-07-30",
+    "reviewedAt": "2026-07-30",
+    "keyStat": {
+      "value": "6 pairs",
+      "label": "Gill-slit pairs, with the first forming a frilled collar",
+      "sourceId": "smithsonian-frilled-shark"
+    },
+    "sections": [
+      {
+        "heading": "It is a shark with an eel-like silhouette",
+        "paragraphs": [
+          "The frilled shark has a long body, a terminal mouth, rows of three-pronged teeth, and six pairs of gill slits. The first pair connects beneath the throat and creates the frilled appearance behind the head.",
+          "Its shape is unusual among familiar sharks, but it remains a modern shark adapted to deep water—not an ancient animal frozen in time."
+        ]
+      },
+      {
+        "heading": "The living-fossil label is shorthand, not a clock",
+        "paragraphs": [
+          "Frilled sharks are often called living fossils because some features resemble ancient shark lineages. That phrase does not mean the species stopped evolving or remained genetically identical for tens of millions of years.",
+          "Every living population has a current evolutionary history, and resemblance to older body plans is not proof of zero change."
+        ]
+      },
+      {
+        "heading": "Its feeding behavior remains partly inferred",
+        "paragraphs": [
+          "Flexible jaws and long, inward-pointing teeth suggest an ability to seize slippery prey such as squid and fish. Direct feeding observations in the wild are rare.",
+          "A plausible mechanical explanation is not the same as a filmed behavior, so strong sources separate anatomy from inference."
+        ]
+      },
+      {
+        "heading": "Rarity shapes the myths around it",
+        "paragraphs": [
+          "Most people encounter frilled sharks through rare captures, museum material, or short video clips. That scarcity encourages dramatic claims about sea serpents and prehistoric survival.",
+          "The real animal is more useful: a case study in how a shark body can be reorganized for deep-water life."
+        ]
+      }
+    ],
+    "comparison": {
+      "columns": [
+        "Feature",
+        "What the evidence shows",
+        "Example or boundary"
+      ],
+      "rows": [
+        [
+          "Body",
+          "Elongated and eel-like",
+          "Frilled shark"
+        ],
+        [
+          "Gills",
+          "Six pairs with frilled first pair",
+          "Frilled shark"
+        ],
+        [
+          "Teeth",
+          "Numerous three-pronged teeth",
+          "Prey retention"
+        ],
+        [
+          "Evolution claim",
+          "Modern lineage with ancient-looking traits",
+          "Not unchanged in time"
+        ]
+      ]
+    },
+    "faqs": [
+      {
+        "question": "Is the frilled shark prehistoric?",
+        "answer": "It belongs to an old shark lineage, but living frilled sharks are modern organisms that continue to evolve."
+      },
+      {
+        "question": "Has anyone filmed it feeding?",
+        "answer": "Wild feeding behavior is poorly documented; many feeding claims are inferred from anatomy and stomach contents."
+      },
+      {
+        "question": "Does it attack people?",
+        "answer": "It is a deep-water shark and is not considered a routine human threat."
+      },
+      {
+        "question": "Why is it called frilled?",
+        "answer": "The first pair of gill slits meets beneath the throat and creates a collar-like frill."
+      }
+    ],
+    "sourceIds": [
+      "smithsonian-frilled-shark",
+      "smithsonian-deep-sea",
+      "smithsonian-dragonfish"
+    ],
+    "relatedZones": [
+      "twilight",
+      "midnight"
+    ],
+    "relatedCreatures": [
+      "frilled-shark",
+      "dragonfish"
+    ],
+    "video": {
+      "status": "unplanned",
+      "videoId": null,
+      "title": null,
+      "descriptionFirstLine": null,
+      "thumbnailUrl": null,
+      "uploadDate": null,
+      "duration": null,
+      "transcript": null,
+      "chapters": []
+    }
+  },
+  {
+    "question": "How does bioluminescence work in the deep sea?",
+    "slug": "how-does-bioluminescence-work-in-the-deep-sea",
+    "subject": "deep-sea",
+    "method": "measured-by-instrument",
+    "directAnswer": "Deep-sea bioluminescence is light produced by chemical reactions in organisms. Animals use it for camouflage, prey attraction, defense, illumination, and communication where sunlight is weak or absent.",
+    "description": "How deep-sea animals make light and why the same glow can serve completely different jobs.",
+    "publishedAt": "2026-07-30",
+    "reviewedAt": "2026-07-30",
+    "keyStat": {
+      "value": "76%",
+      "label": "Water-column animals observed by MBARI that could produce light",
+      "sourceId": "mbari-bioluminescence-project"
+    },
+    "sections": [
+      {
+        "heading": "The light comes from chemistry",
+        "paragraphs": [
+          "Bioluminescence is light generated by a chemical reaction, often involving a light-emitting molecule and an enzyme or photoprotein. Some animals make the chemistry themselves; others rely on symbiotic bacteria.",
+          "It is different from fluorescence, which absorbs external light and re-emits it. Bioluminescence supplies its own reaction energy."
+        ]
+      },
+      {
+        "heading": "Blue-green light dominates for a reason",
+        "paragraphs": [
+          "Blue-green wavelengths travel farther through seawater than red light, so many marine light organs emit in that range and many eyes are tuned to detect it.",
+          "Exceptions matter. Some dragonfishes produce red light that many other deep-sea animals cannot see, creating a private searchlight effect."
+        ]
+      },
+      {
+        "heading": "One flash can solve several problems",
+        "paragraphs": [
+          "Counter-illumination can erase a silhouette from below. A lure can draw prey. A sudden cloud or chain of flashes can distract a predator. Paired patterns can carry species-specific signals.",
+          "The function depends on where the light is located, when it is emitted, and how observers respond—not simply on the presence of a glow."
+        ]
+      },
+      {
+        "heading": "Prevalence is measured through observation",
+        "paragraphs": [
+          "MBARI researchers reported that 76 percent of water-column animals and 45 percent of seafloor animals observed to 4,000 meters were capable of producing light.",
+          "Those values describe the animals their ROV surveys could observe and classify. They are powerful estimates, not a census of every deep-sea species on Earth."
+        ]
+      }
+    ],
+    "comparison": {
+      "columns": [
+        "Feature",
+        "What the evidence shows",
+        "Example or boundary"
+      ],
+      "rows": [
+        [
+          "Counter-illumination",
+          "Hide silhouette",
+          "Squid and fish"
+        ],
+        [
+          "Lure",
+          "Attract prey",
+          "Anglerfish"
+        ],
+        [
+          "Defensive flash",
+          "Startle or misdirect",
+          "Jellies and shrimp"
+        ],
+        [
+          "Searchlight",
+          "Illuminate prey",
+          "Dragonfish"
+        ]
+      ]
+    },
+    "faqs": [
+      {
+        "question": "Is bioluminescence the same as fluorescence?",
+        "answer": "No. Bioluminescence creates light chemically; fluorescence requires incoming light."
+      },
+      {
+        "question": "Why is most marine bioluminescence blue?",
+        "answer": "Blue-green wavelengths travel efficiently through seawater and match common visual sensitivity."
+      },
+      {
+        "question": "Can deep-sea fish see red light?",
+        "answer": "Many cannot, but some dragonfishes can produce and detect red light."
+      },
+      {
+        "question": "Do all deep-sea animals glow?",
+        "answer": "No, although ROV surveys show light production is widespread in the water column."
+      }
+    ],
+    "sourceIds": [
+      "mbari-bioluminescence-project",
+      "noaa-bioluminescence",
+      "noaa-midnight-zone",
+      "smithsonian-deep-sea"
+    ],
+    "relatedZones": [
+      "twilight",
+      "midnight",
+      "abyss"
+    ],
+    "relatedCreatures": [
+      "dragonfish",
+      "anglerfish",
+      "barreleye"
+    ],
+    "video": {
+      "status": "unplanned",
+      "videoId": null,
+      "title": null,
+      "descriptionFirstLine": null,
+      "thumbnailUrl": null,
+      "uploadDate": null,
+      "duration": null,
+      "transcript": null,
+      "chapters": []
+    }
+  },
+  {
+    "question": "How big is a colossal squid?",
+    "slug": "how-big-is-a-colossal-squid",
+    "subject": "deep-sea",
+    "method": "reconstructed-from-fragments",
+    "directAnswer": "Colossal squid are the heaviest known invertebrates. Te Papa's preserved female weighs 495 kilograms and measures about 4.2 meters, while living adults remain poorly observed.",
+    "description": "Measured colossal squid size, record-setting eyes, rotating hooks, and the large gap between specimens and living behavior.",
+    "publishedAt": "2026-07-30",
+    "reviewedAt": "2026-07-30",
+    "keyStat": {
+      "value": "495 kg",
+      "label": "Weight of Te Papa's preserved colossal squid",
+      "sourceId": "tepapa-colossal-overview"
+    },
+    "sections": [
+      {
+        "heading": "Mass and length tell different stories",
+        "paragraphs": [
+          "Colossal squid are known for mass more than extreme length. Te Papa's preserved female weighs 495 kilograms and is about 4.2 meters long.",
+          "Giant squid can be longer because of extended feeding tentacles, so largest depends on whether the comparison is mass, total length, or eye size."
+        ]
+      },
+      {
+        "heading": "Its eyes are the largest studied in an animal",
+        "paragraphs": [
+          "Te Papa reports eyes roughly 27 centimeters across in a living colossal squid, with exceptionally large pupils suited to detecting faint light and large moving silhouettes.",
+          "Preservation can change dimensions, so sources distinguish direct specimen measurements from estimates for living tissue."
+        ]
+      },
+      {
+        "heading": "Hooks replace the giant squid's toothed suckers",
+        "paragraphs": [
+          "The colossal squid's tentacle clubs carry swiveling hooks as well as suckers. Those structures are real specimen anatomy, not an illustration invented for a monster story.",
+          "How the animal uses them during a complete hunt remains difficult to observe in the Southern Ocean."
+        ]
+      },
+      {
+        "heading": "Specimens reveal anatomy, not a full lifestyle",
+        "paragraphs": [
+          "Most knowledge comes from animals recovered by fisheries, remains in predator stomachs, and a small number of specimens. Scientists still lack routine video of healthy adults hunting in their normal habitat.",
+          "A museum specimen can answer size and anatomy questions while leaving behavior, lifespan, and population abundance unresolved."
+        ]
+      }
+    ],
+    "comparison": {
+      "columns": [
+        "Feature",
+        "What the evidence shows",
+        "Example or boundary"
+      ],
+      "rows": [
+        [
+          "Mass",
+          "Up to roughly 495 kg in preserved specimen",
+          "Colossal squid"
+        ],
+        [
+          "Total length",
+          "Often longer due to tentacles",
+          "Giant squid"
+        ],
+        [
+          "Eye diameter",
+          "About 27 cm estimated living",
+          "Colossal squid"
+        ],
+        [
+          "Tentacle weapon",
+          "Rotating hooks",
+          "Colossal squid"
+        ]
+      ]
+    },
+    "faqs": [
+      {
+        "question": "Is a colossal squid larger than a giant squid?",
+        "answer": "It is heavier, while giant squid can be longer in total length."
+      },
+      {
+        "question": "Has a living adult been filmed in the wild?",
+        "answer": "Healthy adult behavior remains very poorly observed."
+      },
+      {
+        "question": "How large are its eyes?",
+        "answer": "Te Papa estimates around 27 centimeters across in a living animal."
+      },
+      {
+        "question": "Where do colossal squid live?",
+        "answer": "They are associated with cold deep waters of the Southern Ocean around Antarctica."
+      }
+    ],
+    "sourceIds": [
+      "tepapa-colossal-overview",
+      "tepapa-colossal-eyes",
+      "smithsonian-giant-squid",
+      "noaa-cephalopods"
+    ],
+    "relatedZones": [
+      "midnight",
+      "abyss"
+    ],
+    "relatedCreatures": [
+      "colossal-squid",
+      "giant-squid"
+    ],
+    "video": {
+      "status": "unplanned",
+      "videoId": null,
+      "title": null,
+      "descriptionFirstLine": null,
+      "thumbnailUrl": null,
+      "uploadDate": null,
+      "duration": null,
+      "transcript": null,
+      "chapters": []
+    }
+  },
+  {
+    "question": "How do people reach Challenger Deep?",
+    "slug": "how-do-people-reach-challenger-deep",
+    "subject": "ocean-technology",
+    "method": "measured-by-instrument",
+    "directAnswer": "People reach Challenger Deep in pressure-resistant crewed submersibles that descend nearly 11 kilometers. Trieste first arrived in 1960; modern dives use repeatable full-ocean-depth vehicles and precision depth measurements.",
+    "description": "The engineering, navigation, history, and measurement behind human dives to the deepest known ocean floor.",
+    "publishedAt": "2026-07-30",
+    "reviewedAt": "2026-07-30",
+    "keyStat": {
+      "value": "10,935 ± 6 m",
+      "label": "Deepest observed seafloor depth in a 2021 pressure-derived study",
+      "sourceId": "noaa-challenger-depth-study"
+    },
+    "sections": [
+      {
+        "heading": "The vehicle must resist full-ocean pressure",
+        "paragraphs": [
+          "A crewed submersible uses a small pressure sphere, buoyant material, batteries, life support, navigation systems, and releasable ballast. At Challenger Deep, external pressure is more than one thousand times surface atmospheric pressure.",
+          "The design goal is not to make the entire vehicle hollow and strong. It is to protect a small human volume while other systems tolerate or equalize with seawater pressure."
+        ]
+      },
+      {
+        "heading": "Trieste proved the descent in 1960",
+        "paragraphs": [
+          "Jacques Piccard and U.S. Navy Lieutenant Don Walsh reached Challenger Deep in the bathyscaphe Trieste on January 23, 1960.",
+          "The dive established the possibility of a crewed descent, but the exact depth was later recalculated and modern measurement methods are more precise."
+        ]
+      },
+      {
+        "heading": "Modern vehicles are designed for repeat dives",
+        "paragraphs": [
+          "Recent full-ocean-depth submersibles use syntactic foam, modern pressure spheres, digital navigation, and improved sensors. Repeatability changes the science because multiple transects can compare locations and calibrate depth.",
+          "A single historic arrival answers whether humans can get there. A repeatable vehicle can support mapping, sampling, and method development."
+        ]
+      },
+      {
+        "heading": "Depth is calculated, not read from one perfect gauge",
+        "paragraphs": [
+          "Pressure must be corrected for water properties, gravity, atmospheric pressure, and local conditions before it becomes a seafloor depth. A 2021 study reported 10,935 meters with a plus-or-minus-six-meter confidence interval.",
+          "That uncertainty is part of the result. The deepest point is not a painted line on a flat floor, and new transects can refine the estimate."
+        ]
+      }
+    ],
+    "comparison": {
+      "columns": [
+        "Feature",
+        "What the evidence shows",
+        "Example or boundary"
+      ],
+      "rows": [
+        [
+          "1960 Trieste",
+          "First crewed arrival",
+          "One historic dive"
+        ],
+        [
+          "Modern full-depth submersible",
+          "Repeatable dives",
+          "Mapping and sampling"
+        ],
+        [
+          "Pressure sensor",
+          "Measures pressure",
+          "Requires corrections"
+        ],
+        [
+          "Acoustic altimeter",
+          "Profiles distance to seafloor",
+          "Supports transects"
+        ]
+      ]
+    },
+    "faqs": [
+      {
+        "question": "How long does the descent take?",
+        "answer": "Timing varies by vehicle and mission, but a one-way descent takes several hours."
+      },
+      {
+        "question": "Is Challenger Deep exactly 11,000 meters?",
+        "answer": "No. A 2021 study reported 10,935 meters with stated uncertainty."
+      },
+      {
+        "question": "How many people have been there?",
+        "answer": "The count changes as new dives occur, so fixed viral totals become outdated quickly."
+      },
+      {
+        "question": "Can a submarine go there?",
+        "answer": "Only vehicles specifically engineered and certified for full-ocean-depth pressure can attempt the descent."
+      }
+    ],
+    "sourceIds": [
+      "noaa-trieste-history",
+      "noaa-challenger-depth-study",
+      "noaa-ocean-depth",
+      "noaa-seafloor-mapping",
+      "whoi-ocean-trenches"
+    ],
+    "relatedZones": [
+      "hadal"
+    ],
+    "relatedCreatures": [
+      "hadal-snailfish"
+    ],
+    "video": {
+      "status": "unplanned",
+      "videoId": null,
+      "title": null,
+      "descriptionFirstLine": null,
+      "thumbnailUrl": null,
+      "uploadDate": null,
+      "duration": null,
+      "transcript": null,
+      "chapters": []
+    }
+  },
+  {
+    "question": "What happens when a whale dies in the deep ocean?",
+    "slug": "what-happens-when-a-whale-dies-in-the-deep-ocean",
+    "subject": "deep-sea",
+    "method": "observed-once",
+    "directAnswer": "A whale carcass can become a whale fall, feeding scavengers, worms, microbes, and chemosynthetic communities in stages that may support deep-sea life for decades.",
+    "description": "How one whale body becomes a long-lived island of food on the deep seafloor.",
+    "publishedAt": "2026-07-30",
+    "reviewedAt": "2026-07-30",
+    "keyStat": {
+      "value": "Decades",
+      "label": "Potential duration of the sulfophilic whale-fall stage",
+      "sourceId": "smithsonian-whale-fall"
+    },
+    "sections": [
+      {
+        "heading": "The carcass becomes a concentrated food source",
+        "paragraphs": [
+          "If a whale sinks rather than washing ashore or being consumed near the surface, its body can deliver tons of organic material to a food-limited seafloor.",
+          "The event is called a whale fall. It is not one feeding frenzy but a succession of communities using different parts of the carcass."
+        ]
+      },
+      {
+        "heading": "Mobile scavengers arrive first",
+        "paragraphs": [
+          "Sharks, hagfish, ratfish, amphipods, and other scavengers remove soft tissue. The duration depends on carcass size, depth, temperature, and local scavenger abundance.",
+          "This phase can last months to years; it does not occur on a universal clock."
+        ]
+      },
+      {
+        "heading": "Worms and sediment communities follow",
+        "paragraphs": [
+          "As large tissue disappears, smaller organisms exploit remaining blubber and nutrient-enriched sediment. Bone-eating worms can access lipids and collagen inside the skeleton.",
+          "The surrounding mud also changes as organic material and microbes reshape local chemistry."
+        ]
+      },
+      {
+        "heading": "Bone lipids can support chemosynthesis",
+        "paragraphs": [
+          "During the sulfophilic stage, microbes break down lipids in whale bones and produce sulfide. Sulfide-oxidizing bacteria and associated animals can persist for years or decades.",
+          "A whale fall therefore connects surface productivity with deep chemosynthetic ecosystems long after the animal dies."
+        ]
+      }
+    ],
+    "comparison": {
+      "columns": [
+        "Feature",
+        "What the evidence shows",
+        "Example or boundary"
+      ],
+      "rows": [
+        [
+          "Mobile scavenger",
+          "Removes soft tissue",
+          "Sharks and hagfish"
+        ],
+        [
+          "Enrichment opportunist",
+          "Uses scraps and enriched sediment",
+          "Worms and crustaceans"
+        ],
+        [
+          "Sulfophilic",
+          "Uses sulfide from bone lipids",
+          "Bacteria, mussels, worms"
+        ],
+        [
+          "Duration",
+          "Years to decades",
+          "Sulfophilic stage can persist longest"
+        ]
+      ]
+    },
+    "faqs": [
+      {
+        "question": "Does every dead whale become a whale fall?",
+        "answer": "No. Some carcasses strand, float, decompose, or are consumed before reaching deep seafloor."
+      },
+      {
+        "question": "How long can a whale fall last?",
+        "answer": "Large skeletons can support later-stage communities for decades."
+      },
+      {
+        "question": "What eats the bones?",
+        "answer": "Microbes, bone-eating worms, and associated organisms exploit organic material in and around bones."
+      },
+      {
+        "question": "Are whale falls like hydrothermal vents?",
+        "answer": "Both can support chemosynthetic communities, but their energy sources and lifespans differ."
+      }
+    ],
+    "sourceIds": [
+      "smithsonian-whale-fall",
+      "smithsonian-deep-sea",
+      "noaa-deep-habitat"
+    ],
+    "relatedZones": [
+      "midnight",
+      "abyss"
+    ],
+    "relatedCreatures": [
+      "giant-isopod",
+      "dragonfish"
+    ],
+    "video": {
+      "status": "unplanned",
+      "videoId": null,
+      "title": null,
+      "descriptionFirstLine": null,
+      "thumbnailUrl": null,
+      "uploadDate": null,
+      "duration": null,
+      "transcript": null,
+      "chapters": []
+    }
+  },
+  {
+    "question": "What is a yeti crab?",
+    "slug": "what-is-a-yeti-crab",
+    "subject": "deep-sea",
+    "method": "observed-once",
+    "directAnswer": "Yeti crabs are deep-sea crustaceans in the family Kiwaidae. Some grow chemosynthetic bacteria on hair-like setae and harvest those bacteria as food near vents or methane seeps.",
+    "description": "How yeti crabs turn chemical-rich seafloor fluids into a farm growing on their own bodies.",
+    "publishedAt": "2026-07-30",
+    "reviewedAt": "2026-07-30",
+    "keyStat": {
+      "value": "2005",
+      "label": "Year the yeti-crab family was first described",
+      "sourceId": "plos-yeti-crab"
+    },
+    "sections": [
+      {
+        "heading": "Yeti crab names a small deep-sea family",
+        "paragraphs": [
+          "Yeti crabs belong to Kiwaidae, a family first described in 2005. Their pale bodies and hair-covered appendages inspired the nickname.",
+          "Different Kiwa species live at hydrothermal vents or methane seeps and do not all use exactly the same behavior."
+        ]
+      },
+      {
+        "heading": "The hairs carry bacterial communities",
+        "paragraphs": [
+          "Hair-like setae on the claws, chest, or legs provide surface for bacteria. At vents and seeps, those microbes can use reduced chemicals such as sulfide or methane-related compounds as energy sources.",
+          "The crab gains access to food produced without sunlight."
+        ]
+      },
+      {
+        "heading": "Kiwa puravida appears to farm its food",
+        "paragraphs": [
+          "A 2011 study described Kiwa puravida waving bacteria-covered claws through seep fluid. Lipid and isotope evidence indicated the epibiotic bacteria were its main food source.",
+          "Specialized mouth appendages scraped the bacteria from the setae, supporting the farming interpretation."
+        ]
+      },
+      {
+        "heading": "Farming is a testable behavior, not a metaphor",
+        "paragraphs": [
+          "Researchers linked arm waving, microbial growth surfaces, chemical-rich fluid, and feeding anatomy. The word farming summarizes that evidence but should not imply planning identical to human agriculture.",
+          "It describes behavior that increases microbial productivity and then harvests the result."
+        ]
+      }
+    ],
+    "comparison": {
+      "columns": [
+        "Feature",
+        "What the evidence shows",
+        "Example or boundary"
+      ],
+      "rows": [
+        [
+          "Kiwa puravida",
+          "Methane seep",
+          "Waves claw bacteria through fluid"
+        ],
+        [
+          "Hair-like setae",
+          "Host chemosynthetic bacteria",
+          "Harvested by the crab as food"
+        ],
+        [
+          "Vents and seeps",
+          "Chemical energy, not sunlight",
+          "Habitat for the described species"
+        ],
+        [
+          "Energy source",
+          "Chemosynthesis",
+          "No sunlight required"
+        ]
+      ]
+    },
+    "faqs": [
+      {
+        "question": "Are yeti crabs true crabs?",
+        "answer": "They are decapod crustaceans in their own deep-sea family, Kiwaidae."
+      },
+      {
+        "question": "Why are they hairy?",
+        "answer": "Setae provide surface for microbial communities and may have sensory roles."
+      },
+      {
+        "question": "Do they eat the bacteria?",
+        "answer": "For Kiwa puravida, isotope, lipid, behavior, and anatomy support bacteria as a major food source."
+      },
+      {
+        "question": "Are all yeti crabs the same?",
+        "answer": "No. Species differ in habitat, body form, and distribution of bacteria-bearing setae."
+      }
+    ],
+    "sourceIds": [
+      "plos-yeti-crab",
+      "noaa-hydrothermal-vents",
+      "smithsonian-deep-sea"
+    ],
+    "relatedZones": [
+      "midnight",
+      "abyss"
+    ],
+    "relatedCreatures": [
+      "yeti-crab",
+      "giant-isopod"
+    ],
+    "video": {
+      "status": "unplanned",
+      "videoId": null,
+      "title": null,
+      "descriptionFirstLine": null,
+      "thumbnailUrl": null,
+      "uploadDate": null,
+      "duration": null,
+      "transcript": null,
+      "chapters": []
+    }
+  },
+  {
+    "question": "Why does black-smoker water not boil?",
+    "slug": "why-does-black-smoker-water-not-boil",
+    "subject": "marine-geology",
+    "method": "measured-by-instrument",
+    "directAnswer": "Black-smoker fluid can exceed 340°C without boiling because immense seafloor pressure raises water's boiling point. Minerals precipitate when the hot fluid mixes with cold seawater.",
+    "description": "Why superheated hydrothermal fluid remains liquid and turns into a black mineral plume at the seafloor.",
+    "publishedAt": "2026-07-30",
+    "reviewedAt": "2026-07-30",
+    "keyStat": {
+      "value": ">340°C",
+      "label": "Hydrothermal vent fluid temperature reported by NOAA",
+      "sourceId": "noaa-hydrothermal-vents"
+    },
+    "sections": [
+      {
+        "heading": "Pressure changes the boiling point",
+        "paragraphs": [
+          "Water boils when its vapor pressure matches surrounding pressure. At deep hydrothermal vents, surrounding pressure is hundreds of times greater than at sea level, so the boiling point rises far above 100°C.",
+          "Vent fluid can therefore remain liquid at temperatures that would produce steam in a kitchen."
+        ]
+      },
+      {
+        "heading": "The fluid begins as seawater in fractured crust",
+        "paragraphs": [
+          "Cold seawater enters cracks in oceanic crust, is heated near magma, reacts with rock, and becomes enriched in dissolved metals and chemicals.",
+          "The heated, buoyant fluid rises and exits through seafloor fractures or mineral chimneys."
+        ]
+      },
+      {
+        "heading": "The black smoke is mineral, not combustion",
+        "paragraphs": [
+          "When hot fluid meets near-freezing seawater, dissolved metals combine with sulfur and precipitate as tiny sulfide particles. Those particles form the dark plume and build chimney walls.",
+          "A black smoker is not burning and the plume is not ordinary smoke."
+        ]
+      },
+      {
+        "heading": "Life uses the chemical gradient",
+        "paragraphs": [
+          "Microbes oxidize reduced chemicals in vent fluid and form the base of chemosynthetic food webs. Animals cluster where temperature and chemistry fall within survivable ranges.",
+          "The hottest source fluid is not where most visible animals sit; they occupy mixing zones around it."
+        ]
+      }
+    ],
+    "comparison": {
+      "columns": [
+        "Feature",
+        "What the evidence shows",
+        "Example or boundary"
+      ],
+      "rows": [
+        [
+          "Sea level",
+          "100°C boiling point",
+          "1 atmosphere"
+        ],
+        [
+          "Deep vent",
+          "Boiling point much higher",
+          "Hundreds of atmospheres"
+        ],
+        [
+          "Black plume",
+          "Metal-sulfide particles",
+          "Not combustion smoke"
+        ],
+        [
+          "Animal habitat",
+          "Cooler mixing zone",
+          "Not hottest source fluid"
+        ]
+      ]
+    },
+    "faqs": [
+      {
+        "question": "Is black-smoker fluid literally 400°C?",
+        "answer": "Some vents approach or exceed 400°C, but NOAA's general reference reports temperatures over 340°C and individual measurements vary."
+      },
+      {
+        "question": "Why is the plume black?",
+        "answer": "Fine metal-sulfide mineral particles form as hot fluid mixes with cold seawater."
+      },
+      {
+        "question": "Do animals live inside the hottest fluid?",
+        "answer": "Visible animals generally occupy cooler mixing zones around vents."
+      },
+      {
+        "question": "Does the water ever become supercritical?",
+        "answer": "At sufficient temperature and pressure, seawater can approach or cross supercritical conditions; this depends on vent depth and chemistry."
+      }
+    ],
+    "sourceIds": [
+      "noaa-hydrothermal-vents",
+      "noaa-animal-pressure",
+      "smithsonian-deep-sea"
+    ],
+    "relatedZones": [
+      "midnight",
+      "abyss"
+    ],
+    "relatedCreatures": [
+      "yeti-crab",
+      "giant-isopod"
+    ],
+    "video": {
+      "status": "unplanned",
+      "videoId": null,
+      "title": null,
+      "descriptionFirstLine": null,
+      "thumbnailUrl": null,
+      "uploadDate": null,
+      "duration": null,
+      "transcript": null,
+      "chapters": []
+    }
+  },
+  {
+    "question": "What is the deepest fish ever recorded?",
+    "slug": "what-is-the-deepest-fish-ever-recorded",
+    "subject": "deep-sea",
+    "method": "observed-once",
+    "directAnswer": "The deepest fish recorded on video is a snailfish filmed at 8,336 meters in the Izu-Ogasawara Trench. Snailfish collected at 8,022 meters are the deepest fish captured.",
+    "description": "The 8,336-meter snailfish record, why juveniles may go deepest, and the physiological boundary that keeps fish above the deepest trench floor.",
+    "publishedAt": "2026-07-30",
+    "reviewedAt": "2026-07-30",
+    "keyStat": {
+      "value": "8,336 m",
+      "label": "Maximum confirmed video depth for a fish",
+      "sourceId": "uwa-deepest-fish-study"
+    },
+    "sections": [
+      {
+        "heading": "The record is a video observation",
+        "paragraphs": [
+          "In August 2022, a baited lander filmed a snailfish at 8,336 meters in the Izu-Ogasawara Trench. The peer-reviewed report was published in 2023.",
+          "Because the animal was not captured, researchers identified it as a probable Pseudoliparis species rather than assigning a perfectly certain species name."
+        ]
+      },
+      {
+        "heading": "The deepest captured fish came from 8,022 meters",
+        "paragraphs": [
+          "In the neighboring Japan Trench, researchers collected two Pseudoliparis belyaevi at 8,022 meters. That is the deepest confirmed capture, while 8,336 meters remains the video record.",
+          "Observed and captured are separate record categories and should not be blended."
+        ]
+      },
+      {
+        "heading": "Snailfish bodies suit trench conditions",
+        "paragraphs": [
+          "Hadal snailfish are soft-bodied, scaleless, and lack gas-filled swim bladders. Their cellular chemistry includes adaptations that help proteins and membranes function under pressure.",
+          "They feed in trench ecosystems where amphipods and other small animals can be locally abundant."
+        ]
+      },
+      {
+        "heading": "Fish appear to have a depth ceiling",
+        "paragraphs": [
+          "Pressure constrains protein stability and the chemistry organisms use to counteract it. Researchers expect a physiological lower limit for fishes above the deepest trench floors.",
+          "The 8,336-meter record is therefore close to a predicted boundary, but future observations can still refine the exact limit."
+        ]
+      }
+    ],
+    "comparison": {
+      "columns": [
+        "Feature",
+        "What the evidence shows",
+        "Example or boundary"
+      ],
+      "rows": [
+        [
+          "Deepest filmed",
+          "8,336 m",
+          "Probable Pseudoliparis"
+        ],
+        [
+          "Deepest captured",
+          "8,022 m",
+          "P. belyaevi"
+        ],
+        [
+          "Habitat",
+          "Ocean trenches",
+          "Hadal zone"
+        ],
+        [
+          "Body",
+          "Soft, scaleless, no swim bladder",
+          "Pressure adaptation"
+        ]
+      ]
+    },
+    "faqs": [
+      {
+        "question": "Was the 8,336-meter fish captured?",
+        "answer": "No. It was recorded on video; specimens were captured at 8,022 meters."
+      },
+      {
+        "question": "Why are snailfish so deep?",
+        "answer": "Their soft bodies, lack of gas spaces, pressure-adapted chemistry, and trench food webs support hadal life."
+      },
+      {
+        "question": "Could fish live at Challenger Deep?",
+        "answer": "Current physiology and observations suggest fishes reach a limit well above the deepest 10,935-meter floor."
+      },
+      {
+        "question": "Is the species identification certain?",
+        "answer": "The filmed individual was not collected, so the study treated the species-level identification as probable rather than absolute."
+      }
+    ],
+    "sourceIds": [
+      "uwa-deepest-fish-study",
+      "noaa-deepest-fish",
+      "noaa-animal-pressure",
+      "whoi-hadal"
+    ],
+    "relatedZones": [
+      "hadal"
+    ],
+    "relatedCreatures": [
+      "hadal-snailfish"
+    ],
+    "video": {
+      "status": "unplanned",
+      "videoId": null,
+      "title": null,
+      "descriptionFirstLine": null,
+      "thumbnailUrl": null,
+      "uploadDate": null,
+      "duration": null,
+      "transcript": null,
+      "chapters": []
+    }
+  },
+  {
+    "question": "What is the midnight zone?",
+    "slug": "what-is-the-midnight-zone",
+    "subject": "deep-sea",
+    "method": "measured-by-instrument",
+    "directAnswer": "The midnight zone, or bathypelagic zone, spans roughly 1,000 to 4,000 meters. Sunlight does not reach it; animals rely on sinking food, predation, migration, and chemosynthetic inputs.",
+    "description": "Conditions, animals, food webs, pressure, and living light in the ocean's bathypelagic midnight zone.",
+    "publishedAt": "2026-07-30",
+    "reviewedAt": "2026-07-30",
+    "keyStat": {
+      "value": "1,000–4,000 m",
+      "label": "NOAA depth range for the midnight zone",
+      "sourceId": "noaa-midnight-zone"
+    },
+    "sections": [
+      {
+        "heading": "It begins where sunlight is effectively absent",
+        "paragraphs": [
+          "NOAA defines the midnight, or bathypelagic, zone from about 1,000 to 4,000 meters. Sunlight does not penetrate this aphotic band.",
+          "Any visible flash comes from an organism, a vehicle, or another artificial source."
+        ]
+      },
+      {
+        "heading": "Pressure and temperature shape every activity",
+        "paragraphs": [
+          "Pressure increases through the zone from roughly 100 to 400 times surface atmospheric pressure, while temperature is generally cold and stable away from hydrothermal inputs.",
+          "Animals avoid gas spaces and use pressure-adapted proteins, membranes, and body plans."
+        ]
+      },
+      {
+        "heading": "Food arrives unevenly",
+        "paragraphs": [
+          "Marine snow, fecal pellets, carcasses, and migrating animals carry energy downward from surface production. Predators exploit rare encounters and many species conserve movement.",
+          "Only a fraction of surface production reaches these depths, but local events such as animal falls create temporary abundance."
+        ]
+      },
+      {
+        "heading": "Bioluminescence replaces sunlight as information",
+        "paragraphs": [
+          "Light organs can hide silhouettes, attract prey, distract predators, or communicate. MBARI observations show light production remains widespread through the deep water column.",
+          "The midnight zone is dark to the sun, not visually empty to the animals living there."
+        ]
+      }
+    ],
+    "comparison": {
+      "columns": [
+        "Feature",
+        "What the evidence shows",
+        "Example or boundary"
+      ],
+      "rows": [
+        [
+          "Twilight",
+          "200–1,000 m",
+          "Faint sunlight remains"
+        ],
+        [
+          "Midnight",
+          "1,000–4,000 m",
+          "No sunlight"
+        ],
+        [
+          "Abyss",
+          "4,000–6,000 m",
+          "Mostly deep seafloor"
+        ],
+        [
+          "Hadal",
+          ">6,000 m",
+          "Trenches"
+        ]
+      ]
+    },
+    "faqs": [
+      {
+        "question": "Is the midnight zone completely dark?",
+        "answer": "It receives no meaningful sunlight, but organisms produce bioluminescent light."
+      },
+      {
+        "question": "How cold is it?",
+        "answer": "It is generally only a few degrees above freezing, though local conditions vary."
+      },
+      {
+        "question": "What animals live there?",
+        "answer": "Dragonfishes, anglerfishes, squids, jellies, crustaceans, and many other groups."
+      },
+      {
+        "question": "Is the midnight zone the seafloor?",
+        "answer": "Not necessarily. It is a water-depth band; the bottom may be shallower or much deeper depending on location."
+      }
+    ],
+    "sourceIds": [
+      "noaa-midnight-zone",
+      "whoi-midnight",
+      "mbari-bioluminescence-project",
+      "noaa-animal-pressure",
+      "smithsonian-deep-sea"
+    ],
+    "relatedZones": [
+      "midnight"
+    ],
+    "relatedCreatures": [
+      "dragonfish",
+      "anglerfish",
+      "vampire-squid"
+    ],
+    "video": {
+      "status": "unplanned",
+      "videoId": null,
+      "title": null,
+      "descriptionFirstLine": null,
+      "thumbnailUrl": null,
+      "uploadDate": null,
+      "duration": null,
+      "transcript": null,
+      "chapters": []
+    }
+  }
+]

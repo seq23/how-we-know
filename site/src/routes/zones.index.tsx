@@ -1,0 +1,5 @@
+import { createFileRoute } from '@tanstack/react-router'
+import { oceanZones, formatDepth } from '~/lib/ocean-data'
+import { pageMeta } from '~/lib/seo'
+export const Route=createFileRoute('/zones/')({head:()=>pageMeta('Ocean zones','A reference guide to the sunlight, twilight, midnight, abyssal and hadal zones.','/zones'),component:ZonesIndex})
+function ZonesIndex(){return <main className="shell index-page"><header className="index-hero"><p className="eyebrow">Depth map</p><h1>Five working zones from sunlight to trench.</h1><p>Zone boundaries vary slightly across scientific and educational sources. These pages use a consistent publishing convention and state that convention openly.</p></header><div className="zone-list">{oceanZones.map((zone,index)=><a className="zone-row" key={zone.slug} href={`/zones/${zone.slug}`}><span className="zone-number">0{index+1}</span><div><h2>{zone.name}</h2><p>{zone.scientificName} · {formatDepth(zone.minDepthM,zone.maxDepthM)}</p></div><span>{zone.light}</span></a>)}</div></main>}

@@ -1,0 +1,131 @@
+{
+  "sequence": 14,
+  "slug": "how-big-is-a-colossal-squid",
+  "status": "production-ready-unrendered-human-pass-required",
+  "scriptWordCount": 1191,
+  "estimatedDurationSeconds": 493,
+  "narratorProfile": "kokoro-af-heart-v1",
+  "musicRotation": "ambient-02",
+  "scenes": [
+    {
+      "order": 1,
+      "chapter": "Cold open",
+      "start": "00:00",
+      "estimatedEnd": "00:07",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "The heaviest known invertebrate has eyes about the size of soccer balls and rotating hooks on its tentacles."
+    },
+    {
+      "order": 2,
+      "chapter": "Title card",
+      "start": "00:07",
+      "estimatedEnd": "00:10",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "How big is a colossal squid?"
+    },
+    {
+      "order": 3,
+      "chapter": "The word largest needs a measuring rule",
+      "start": "00:10",
+      "estimatedEnd": "01:13",
+      "visualMode": "source-card",
+      "narrationExcerpt": "Colossal squid and giant squid are often placed in the same headline, but they hold different kinds of records. Giant squid can reach greater total length because their feeding ten"
+    },
+    {
+      "order": 4,
+      "chapter": "Eyes built to detect a large moving signal",
+      "start": "01:13",
+      "estimatedEnd": "02:20",
+      "visualMode": "diagram",
+      "narrationExcerpt": "Te Papa's anatomical work describes colossal squid eyes as the largest animal eyes ever studied. In a living animal, the diameter is estimated around 27 centimeters, with pupils se"
+    },
+    {
+      "order": 5,
+      "chapter": "Rotating hooks, a beak, and very little live footage",
+      "start": "02:20",
+      "estimatedEnd": "03:29",
+      "visualMode": "comparison-grid",
+      "narrationExcerpt": "The colossal squid's tentacle clubs carry swiveling hooks. Some can rotate in their sockets, while others are fixed. The arms carry suckers and smaller hooks. The beak is robust, a"
+    },
+    {
+      "order": 6,
+      "chapter": "A specimen is a library, not a movie",
+      "start": "03:29",
+      "estimatedEnd": "04:33",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "Te Papa's preserved colossal squid has supported repeated examinations of eyes, hooks, beak, tissue, and internal anatomy. Samples can be revisited as methods improve. That makes t"
+    },
+    {
+      "order": 7,
+      "chapter": "How to read the evidence",
+      "start": "04:33",
+      "estimatedEnd": "05:12",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "A final production note matters here. Deep-sea footage is often separated from the instrument record that gives it meaning. For this episode, every depth, date, size, and record cl"
+    },
+    {
+      "order": 8,
+      "chapter": "Narration quality gate",
+      "start": "05:12",
+      "estimatedEnd": "05:38",
+      "visualMode": "source-card",
+      "narrationExcerpt": "The human review pass should also read every number aloud. Long strings of digits can sound natural on a page and awkward in narration. Pronunciations of scientific names, trench n"
+    },
+    {
+      "order": 9,
+      "chapter": "Context before spectacle",
+      "start": "05:38",
+      "estimatedEnd": "06:11",
+      "visualMode": "diagram",
+      "narrationExcerpt": "Another check is scale. Deep-sea images usually remove familiar references, so a small animal can appear enormous and a brief movement can look aggressive. The production should sh"
+    },
+    {
+      "order": 10,
+      "chapter": "Observation versus inference 2",
+      "start": "06:11",
+      "estimatedEnd": "06:42",
+      "visualMode": "comparison-grid",
+      "narrationExcerpt": "The script also separates what the camera directly records from what researchers infer. Direct evidence includes a measured depth, a timestamped encounter, a collected specimen, or"
+    },
+    {
+      "order": 11,
+      "chapter": "A reusable source rule 3",
+      "start": "06:42",
+      "estimatedEnd": "07:14",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "For the channel, the stable rule is one claim, one traceable source, and one stated boundary. If a source describes one species, the script does not silently expand the claim to an"
+    },
+    {
+      "order": 12,
+      "chapter": "Production continuity 4",
+      "start": "07:14",
+      "estimatedEnd": "07:43",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "The visual edit should vary from the previous episode even when the evidence structure stays consistent. Use a discovery-led opening for one topic, a mechanism diagram for another,"
+    },
+    {
+      "order": 13,
+      "chapter": "Evidence limit",
+      "start": "07:43",
+      "estimatedEnd": "08:01",
+      "visualMode": "source-card",
+      "narrationExcerpt": "Size records depend on mass versus length, specimen condition, and missing tentacles. The 495-kilogram Te Papa specimen is a direct measured reference, not a universal adult size. "
+    },
+    {
+      "order": 14,
+      "chapter": "Outro",
+      "start": "08:01",
+      "estimatedEnd": "08:13",
+      "visualMode": "diagram",
+      "narrationExcerpt": "The deep ocean is more useful when the uncertainty stays visible. The sourced article is linked below. Next, continue through the twenty-video launch sequence from the channel libr"
+    }
+  ],
+  "requiredAssets": [
+    "production/broll/original/14-how-big-is-a-colossal-squid.mp4",
+    "production/thumbnails/png/14-how-big-is-a-colossal-squid.png"
+  ],
+  "externalAssetsRequired": false,
+  "articlePath": "/questions/how-big-is-a-colossal-squid",
+  "metadataPath": "production/metadata/14-how-big-is-a-colossal-squid.json",
+  "humanPassPath": "production/human-pass/14-how-big-is-a-colossal-squid.md"
+}

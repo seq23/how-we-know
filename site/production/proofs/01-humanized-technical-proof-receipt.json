@@ -1,0 +1,42 @@
+{
+  "status": "TECHNICAL_PIPELINE_PROOF_NOT_FINAL",
+  "createdOn": "2026-07-30",
+  "narrationEngine": "eSpeak fallback \u2014 not Kokoro and not approved for publication",
+  "purpose": "Proves the humanized plaintext, original motion asset, thumbnail, music mix, H.264 video, and AAC audio pipeline work in this sandbox.",
+  "files": [
+    {
+      "path": "production/proofs/01-humanized-technical-proof.txt",
+      "sha256": "60f6d8ee2bedb5432c73a12e4f9002ef62b4c5933980b56d9f384df190696972",
+      "bytes": 663
+    },
+    {
+      "path": "production/proofs/01-humanized-technical-proof.wav",
+      "sha256": "c3e51c70e46f291029e688789e6bb4ea4fadeab746add9304e0549fe5e56724e",
+      "bytes": 2006570
+    },
+    {
+      "path": "production/proofs/01-humanized-technical-proof.mp4",
+      "sha256": "2505ce39f87aa117e4fea02934c79b6339d1625bbabbbff582ac331a998d1d64",
+      "bytes": 5122942
+    }
+  ],
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video"
+      },
+      {
+        "codec_name": "aac",
+        "codec_type": "audio"
+      }
+    ],
+    "format": {
+      "duration": "45.500000",
+      "size": "5122942"
+    }
+  },
+  "releaseBoundary": "Do not publish. Final narration requires an approved Kokoro audition; final masters require full human watch-through."
+}

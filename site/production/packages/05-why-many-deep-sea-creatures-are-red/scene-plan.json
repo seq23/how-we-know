@@ -1,0 +1,107 @@
+{
+  "sequence": 5,
+  "slug": "why-many-deep-sea-creatures-are-red",
+  "status": "production-ready-unrendered",
+  "scriptWordCount": 1171,
+  "estimatedDurationSeconds": 485,
+  "narratorProfile": "kokoro-af-heart-v1",
+  "musicRotation": "ambient-01",
+  "scenes": [
+    {
+      "order": 1,
+      "chapter": "Opening",
+      "start": "00:00",
+      "estimatedEnd": "00:24",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "A bright red shrimp looks conspicuous in a bucket on deck. At depth, the same color can function almost like black camouflage. Red light is absorbed near the ocean surface and does"
+    },
+    {
+      "order": 2,
+      "chapter": "The right way to see it",
+      "start": "00:24",
+      "estimatedEnd": "00:47",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "Color only works when matching light reaches it. Seawater removes red wavelengths early, so a red body in deep blue light reflects very little visible light back to an observer. Th"
+    },
+    {
+      "order": 3,
+      "chapter": "Color depends on the light that reaches an object",
+      "start": "00:47",
+      "estimatedEnd": "01:32",
+      "visualMode": "source-card",
+      "narrationExcerpt": "An object looks red near the surface because red wavelengths strike it and are reflected to an observer. Deeper down, those wavelengths have already been absorbed by the water. Wit"
+    },
+    {
+      "order": 4,
+      "chapter": "Darkness can be camouflage",
+      "start": "01:32",
+      "estimatedEnd": "02:19",
+      "visualMode": "diagram",
+      "narrationExcerpt": "In dim midwater, avoiding a detectable silhouette is critical. Red or black skin helps an animal blend into the background when viewed by predators or prey using the available blue"
+    },
+    {
+      "order": 5,
+      "chapter": "Not every red animal lives at the same depth",
+      "start": "02:19",
+      "estimatedEnd": "03:02",
+      "visualMode": "comparison-grid",
+      "narrationExcerpt": "Ocean color patterns shift gradually. Near the surface, blue and silver countershading is common. Deeper, transparency becomes useful. Farther down, red and black bodies become mor"
+    },
+    {
+      "order": 6,
+      "chapter": "ROV lights reveal colors the animal does not normally display",
+      "start": "03:02",
+      "estimatedEnd": "03:48",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "A remotely operated vehicle carries bright white lights that include red wavelengths. The camera therefore records vivid crimson bodies that would look nearly black under natural d"
+    },
+    {
+      "order": 7,
+      "chapter": "A quick comparison",
+      "start": "03:48",
+      "estimatedEnd": "04:26",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "Bright surface water helps with countershading and silvering; a useful example is Matches light from above and below. Dim twilight helps with transparency and reflective tissue; a "
+    },
+    {
+      "order": 8,
+      "chapter": "Common myths and questions",
+      "start": "04:26",
+      "estimatedEnd": "05:03",
+      "visualMode": "source-card",
+      "narrationExcerpt": "A common question is: Can deep-sea animals see red? Many deep-sea visual systems are most sensitive to blue-green wavelengths. Sensitivity varies, and some species have specialized"
+    },
+    {
+      "order": 9,
+      "chapter": "The pattern to remember",
+      "start": "05:03",
+      "estimatedEnd": "07:06",
+      "visualMode": "diagram",
+      "narrationExcerpt": "Before we finish, notice the pattern. First, remove the assumptions that come from daylight and surface pressure. Second, identify the real constraint: light, food, pressure, tempe"
+    },
+    {
+      "order": 10,
+      "chapter": "What the evidence can and cannot say",
+      "start": "07:06",
+      "estimatedEnd": "07:37",
+      "visualMode": "comparison-grid",
+      "narrationExcerpt": "The supporting sources for this episode come from NOAA Ocean Exploration, Monterey Bay Aquarium Research Institute, Woods Hole Oceanographic Institution. They support the environme"
+    },
+    {
+      "order": 11,
+      "chapter": "Closing",
+      "start": "07:37",
+      "estimatedEnd": "08:04",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "Red is not a warning color in a place without red light. It is a clever way to disappear using the physics of the water itself. The full sourced answer, references, and related dee"
+    }
+  ],
+  "requiredAssets": [
+    "original-depth-gradient",
+    "original-particle-field",
+    "original-creature-silhouettes"
+  ],
+  "externalAssetsRequired": false,
+  "articlePath": "/questions/why-many-deep-sea-creatures-are-red",
+  "metadataPath": "production/metadata/05-why-many-deep-sea-creatures-are-red.json"
+}

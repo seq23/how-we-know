@@ -1,0 +1,107 @@
+{
+  "sequence": 8,
+  "slug": "what-creatures-live-in-the-deep-sea",
+  "status": "production-ready-unrendered",
+  "scriptWordCount": 1159,
+  "estimatedDurationSeconds": 480,
+  "narratorProfile": "kokoro-af-heart-v1",
+  "musicRotation": "ambient-04",
+  "scenes": [
+    {
+      "order": 1,
+      "chapter": "Opening",
+      "start": "00:00",
+      "estimatedEnd": "00:28",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "Ask what lives in the deep sea and most people picture one anglerfish in empty black water. In reality, the deep ocean is the largest living space on Earth and contains an enormous"
+    },
+    {
+      "order": 2,
+      "chapter": "The right way to see it",
+      "start": "00:28",
+      "estimatedEnd": "00:49",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "The answer changes with depth and terrain. Open midwater, continental slopes, abyssal plains, seamounts, vents, seeps, whale falls, and trenches support different communities. The "
+    },
+    {
+      "order": 3,
+      "chapter": "The deep sea is many habitats, not one empty place",
+      "start": "00:49",
+      "estimatedEnd": "01:32",
+      "visualMode": "source-card",
+      "narrationExcerpt": "Open water below 200 meters covers an enormous volume, while the seafloor includes continental slopes, canyons, abyssal plains, seamounts and trenches. Hydrothermal vents, cold see"
+    },
+    {
+      "order": 4,
+      "chapter": "Twilight-zone animals",
+      "start": "01:32",
+      "estimatedEnd": "02:10",
+      "visualMode": "diagram",
+      "narrationExcerpt": "Lanternfishes, bristlemouths, dragonfishes, squid, krill, siphonophores, jellies and zooplankton are common members of the mesopelagic community. Many rise toward the surface at ni"
+    },
+    {
+      "order": 5,
+      "chapter": "Midnight and abyssal animals",
+      "start": "02:10",
+      "estimatedEnd": "02:49",
+      "visualMode": "comparison-grid",
+      "narrationExcerpt": "Anglerfishes, rattails, deep-sea squid, octopuses, sea cucumbers, amphipods, sponges, corals and gelatinous animals occupy the dark water column and seafloor. Many depend on marine"
+    },
+    {
+      "order": 6,
+      "chapter": "Hadal trench animals",
+      "start": "02:49",
+      "estimatedEnd": "03:31",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "Trench communities include amphipods, sea cucumbers, worms, microbes and specialized snailfishes in the shallower portion of the hadal zone. Fish appear to have a physiological dep"
+    },
+    {
+      "order": 7,
+      "chapter": "A quick comparison",
+      "start": "03:31",
+      "estimatedEnd": "04:14",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "Twilight water column helps with lanternfish, squid, jellies; a useful example is Surface production and migration. Midnight water column helps with anglerfish, dragonfish, siphono"
+    },
+    {
+      "order": 8,
+      "chapter": "Common myths and questions",
+      "start": "04:14",
+      "estimatedEnd": "04:59",
+      "visualMode": "source-card",
+      "narrationExcerpt": "A common question is: Do sharks live in the deep sea? Yes. Several shark species use deep water, although sharks are not present at the greatest trench depths. A common question is"
+    },
+    {
+      "order": 9,
+      "chapter": "The pattern to remember",
+      "start": "04:59",
+      "estimatedEnd": "07:02",
+      "visualMode": "diagram",
+      "narrationExcerpt": "Before we finish, notice the pattern. First, remove the assumptions that come from daylight and surface pressure. Second, identify the real constraint: light, food, pressure, tempe"
+    },
+    {
+      "order": 10,
+      "chapter": "What the evidence can and cannot say",
+      "start": "07:02",
+      "estimatedEnd": "07:34",
+      "visualMode": "comparison-grid",
+      "narrationExcerpt": "The supporting sources for this episode come from Monterey Bay Aquarium Research Institute, Smithsonian Ocean, Woods Hole Oceanographic Institution, NOAA Ocean Exploration. They su"
+    },
+    {
+      "order": 11,
+      "chapter": "Closing",
+      "start": "07:34",
+      "estimatedEnd": "07:59",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "There is no single deep-sea animal community. There are layered ecosystems connected by sinking food, daily migration, predation, scavenging, and chemical energy. The full sourced "
+    }
+  ],
+  "requiredAssets": [
+    "original-depth-gradient",
+    "original-particle-field",
+    "original-creature-silhouettes"
+  ],
+  "externalAssetsRequired": false,
+  "articlePath": "/questions/what-creatures-live-in-the-deep-sea",
+  "metadataPath": "production/metadata/08-what-creatures-live-in-the-deep-sea.json"
+}

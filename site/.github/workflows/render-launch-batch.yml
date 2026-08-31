@@ -1,0 +1,59 @@
+name: Render Twenty-Video Launch Batch
+on:
+  workflow_dispatch:
+    inputs:
+      voice:
+        description: Approved Kokoro voice ID
+        required: true
+        default: af_heart
+      speed:
+        description: Approved narration speed
+        required: true
+        default: '0.98'
+      video_count:
+        description: Number of videos to render
+        type: choice
+        options: ['1', '5', '10', '20']
+        default: '20'
+permissions:
+  contents: read
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Install render runtime
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y espeak-ng libsndfile1 ffmpeg
+          python -m pip install --upgrade pip
+          pip install -r production/automation/requirements-tts.txt
+      - name: Enforce human editorial approval
+        run: python production/automation/validate_human_pass.py --count '${{ inputs.video_count }}'
+      - name: Generate approved narration and render MP4s
+        env:
+          KOKORO_VOICE: ${{ inputs.voice }}
+          KOKORO_SPEED: ${{ inputs.speed }}
+          VIDEO_COUNT: ${{ inputs.video_count }}
+        run: bash production/automation/render_all.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: twenty-video-narration-wavs
+          path: production/audio/narration/*.wav
+          compression-level: 0
+          if-no-files-found: error
+          retention-days: 14
+      - uses: actions/upload-artifact@v4
+        with:
+          name: twenty-video-public-review-mp4s
+          path: |
+            production/outputs/*.mp4
+            production/outputs/render-receipt.json
+          compression-level: 0
+          if-no-files-found: error
+          retention-days: 14

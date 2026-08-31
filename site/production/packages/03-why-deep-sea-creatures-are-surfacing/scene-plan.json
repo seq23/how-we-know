@@ -1,0 +1,107 @@
+{
+  "sequence": 3,
+  "slug": "why-deep-sea-creatures-are-surfacing",
+  "status": "production-ready-unrendered",
+  "scriptWordCount": 1231,
+  "estimatedDurationSeconds": 509,
+  "narratorProfile": "kokoro-af-heart-v1",
+  "musicRotation": "ambient-03",
+  "scenes": [
+    {
+      "order": 1,
+      "chapter": "Opening",
+      "start": "00:00",
+      "estimatedEnd": "00:28",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "A strange fish appears near the surface, the image goes viral, and the headline says the deep sea is sending a warning. The real story is usually less supernatural and more interes"
+    },
+    {
+      "order": 2,
+      "chapter": "The right way to see it",
+      "start": "00:28",
+      "estimatedEnd": "00:52",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "There are two different questions hidden inside the headline. Are we seeing normal nightly migration by midwater animals, or an unusual appearance by a permanent deep resident? Tho"
+    },
+    {
+      "order": 3,
+      "chapter": "Most upward movement is normal",
+      "start": "00:52",
+      "estimatedEnd": "01:40",
+      "visualMode": "source-card",
+      "narrationExcerpt": "The ocean's deep scattering layer contains fishes, squid, crustaceans and zooplankton that hide in darker water during the day. After sunset, many move upward to feed where surface"
+    },
+    {
+      "order": 4,
+      "chapter": "A viral surface sighting may be a different phenomenon",
+      "start": "01:40",
+      "estimatedEnd": "02:28",
+      "visualMode": "diagram",
+      "narrationExcerpt": "News posts often group any unusual-looking fish under 'deep-sea creature.' That can blur important distinctions. Some species routinely use a wide depth range; others are permanent"
+    },
+    {
+      "order": 5,
+      "chapter": "One observation does not establish a global trend",
+      "start": "02:28",
+      "estimatedEnd": "03:14",
+      "visualMode": "comparison-grid",
+      "narrationExcerpt": "A scientifically meaningful trend requires repeated observations collected with comparable methods. A single oarfish, anglerfish, squid or unfamiliar larval form at the surface can"
+    },
+    {
+      "order": 6,
+      "chapter": "What researchers would check",
+      "start": "03:14",
+      "estimatedEnd": "04:00",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "Scientists would examine the animal's normal depth range, time of day, condition, location, currents, water temperature, oxygen, storms, capture history and whether similar records"
+    },
+    {
+      "order": 7,
+      "chapter": "A quick comparison",
+      "start": "04:00",
+      "estimatedEnd": "04:43",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "Large nightly rise of many small animals helps with normal diel vertical migration; a useful example is Acoustic and time-of-day data. One deep resident alive near shore helps with"
+    },
+    {
+      "order": 8,
+      "chapter": "Common myths and questions",
+      "start": "04:43",
+      "estimatedEnd": "05:30",
+      "visualMode": "source-card",
+      "narrationExcerpt": "A common question is: Do deep-sea animals come to the surface every night? Many twilight-zone animals do; many permanent deep residents do not. A common question is: Does a strande"
+    },
+    {
+      "order": 9,
+      "chapter": "The pattern to remember",
+      "start": "05:30",
+      "estimatedEnd": "07:33",
+      "visualMode": "diagram",
+      "narrationExcerpt": "Before we finish, notice the pattern. First, remove the assumptions that come from daylight and surface pressure. Second, identify the real constraint: light, food, pressure, tempe"
+    },
+    {
+      "order": 10,
+      "chapter": "What the evidence can and cannot say",
+      "start": "07:33",
+      "estimatedEnd": "08:02",
+      "visualMode": "comparison-grid",
+      "narrationExcerpt": "The supporting sources for this episode come from NOAA Ocean Exploration, Woods Hole Oceanographic Institution. They support the environmental conditions, measurements, and biologi"
+    },
+    {
+      "order": 11,
+      "chapter": "Closing",
+      "start": "08:02",
+      "estimatedEnd": "08:29",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "One strange sighting is a clue, not a global diagnosis. The responsible answer begins with species, condition, time, place, currents, and a comparison with previous records. The fu"
+    }
+  ],
+  "requiredAssets": [
+    "original-depth-gradient",
+    "original-particle-field",
+    "original-creature-silhouettes"
+  ],
+  "externalAssetsRequired": false,
+  "articlePath": "/questions/why-deep-sea-creatures-are-surfacing",
+  "metadataPath": "production/metadata/03-why-deep-sea-creatures-are-surfacing.json"
+}

@@ -1,0 +1,139 @@
+{
+  "sequence": 20,
+  "slug": "what-is-the-midnight-zone",
+  "status": "production-ready-unrendered-human-pass-required",
+  "scriptWordCount": 1226,
+  "estimatedDurationSeconds": 507,
+  "narratorProfile": "kokoro-af-heart-v1",
+  "musicRotation": "ambient-04",
+  "scenes": [
+    {
+      "order": 1,
+      "chapter": "Cold open",
+      "start": "00:00",
+      "estimatedEnd": "00:09",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "The ocean's midnight zone is three kilometers thick, receives no sunlight, and still contains flashes of the planet's most common animal-made light."
+    },
+    {
+      "order": 2,
+      "chapter": "Title card",
+      "start": "00:09",
+      "estimatedEnd": "00:11",
+      "visualMode": "source-card",
+      "narrationExcerpt": "What is the midnight zone?"
+    },
+    {
+      "order": 3,
+      "chapter": "A zone defined by depth and the end of sunlight",
+      "start": "00:11",
+      "estimatedEnd": "01:10",
+      "visualMode": "diagram",
+      "narrationExcerpt": "Ocean zones are useful boundaries, not physical walls. NOAA places the midnight, or bathypelagic, zone between roughly 1,000 and 4,000 meters. Above it, the twilight zone retains f"
+    },
+    {
+      "order": 4,
+      "chapter": "Most energy falls or swims down from above",
+      "start": "01:10",
+      "estimatedEnd": "02:10",
+      "visualMode": "comparison-grid",
+      "narrationExcerpt": "The surface ocean captures solar energy through photosynthesis. Some of that production sinks as marine snow: fragments of organisms, mucus, fecal pellets, and mineral particles. L"
+    },
+    {
+      "order": 5,
+      "chapter": "Bioluminescence becomes the visual language",
+      "start": "02:10",
+      "estimatedEnd": "03:10",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "MBARI's surveys found that light production is widespread in the water column, including the depth range of the midnight zone. Photophores beneath a fish can erase its silhouette a"
+    },
+    {
+      "order": 6,
+      "chapter": "One name covers a wide physical gradient",
+      "start": "03:10",
+      "estimatedEnd": "04:17",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "At 1,000 meters, pressure is roughly one hundred atmospheres. Near 4,000 meters, it approaches four hundred. Temperature is usually cold, but oxygen and currents vary among ocean b"
+    },
+    {
+      "order": 7,
+      "chapter": "How to read the evidence",
+      "start": "04:17",
+      "estimatedEnd": "04:56",
+      "visualMode": "source-card",
+      "narrationExcerpt": "A final production note matters here. Deep-sea footage is often separated from the instrument record that gives it meaning. For this episode, every depth, date, size, and record cl"
+    },
+    {
+      "order": 8,
+      "chapter": "Narration quality gate",
+      "start": "04:56",
+      "estimatedEnd": "05:22",
+      "visualMode": "diagram",
+      "narrationExcerpt": "The human review pass should also read every number aloud. Long strings of digits can sound natural on a page and awkward in narration. Pronunciations of scientific names, trench n"
+    },
+    {
+      "order": 9,
+      "chapter": "Context before spectacle",
+      "start": "05:22",
+      "estimatedEnd": "05:55",
+      "visualMode": "comparison-grid",
+      "narrationExcerpt": "Another check is scale. Deep-sea images usually remove familiar references, so a small animal can appear enormous and a brief movement can look aggressive. The production should sh"
+    },
+    {
+      "order": 10,
+      "chapter": "Observation versus inference 2",
+      "start": "05:55",
+      "estimatedEnd": "06:26",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "The script also separates what the camera directly records from what researchers infer. Direct evidence includes a measured depth, a timestamped encounter, a collected specimen, or"
+    },
+    {
+      "order": 11,
+      "chapter": "A reusable source rule 3",
+      "start": "06:26",
+      "estimatedEnd": "06:58",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "For the channel, the stable rule is one claim, one traceable source, and one stated boundary. If a source describes one species, the script does not silently expand the claim to an"
+    },
+    {
+      "order": 12,
+      "chapter": "Production continuity 4",
+      "start": "06:58",
+      "estimatedEnd": "07:27",
+      "visualMode": "source-card",
+      "narrationExcerpt": "The visual edit should vary from the previous episode even when the evidence structure stays consistent. Use a discovery-led opening for one topic, a mechanism diagram for another,"
+    },
+    {
+      "order": 13,
+      "chapter": "Context before spectacle 5",
+      "start": "07:27",
+      "estimatedEnd": "08:00",
+      "visualMode": "diagram",
+      "narrationExcerpt": "Another check is scale. Deep-sea images usually remove familiar references, so a small animal can appear enormous and a brief movement can look aggressive. The production should sh"
+    },
+    {
+      "order": 14,
+      "chapter": "Evidence limit",
+      "start": "08:00",
+      "estimatedEnd": "08:16",
+      "visualMode": "comparison-grid",
+      "narrationExcerpt": "Ocean-zone boundaries are conventions that vary slightly among institutions; this system uses NOAA's 1,000-to-4,000-meter definition for the midnight zone. The companion article li"
+    },
+    {
+      "order": 15,
+      "chapter": "Outro",
+      "start": "08:16",
+      "estimatedEnd": "08:27",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "The deep ocean is more useful when the uncertainty stays visible. The sourced article is linked below. Next, continue through the twenty-video launch sequence from the channel libr"
+    }
+  ],
+  "requiredAssets": [
+    "production/broll/original/20-what-is-the-midnight-zone.mp4",
+    "production/thumbnails/png/20-what-is-the-midnight-zone.png"
+  ],
+  "externalAssetsRequired": false,
+  "articlePath": "/questions/what-is-the-midnight-zone",
+  "metadataPath": "production/metadata/20-what-is-the-midnight-zone.json",
+  "humanPassPath": "production/human-pass/20-what-is-the-midnight-zone.md"
+}

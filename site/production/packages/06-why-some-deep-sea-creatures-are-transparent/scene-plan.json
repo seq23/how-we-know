@@ -1,0 +1,107 @@
+{
+  "sequence": 6,
+  "slug": "why-some-deep-sea-creatures-are-transparent",
+  "status": "production-ready-unrendered",
+  "scriptWordCount": 1162,
+  "estimatedDurationSeconds": 481,
+  "narratorProfile": "kokoro-af-heart-v1",
+  "musicRotation": "ambient-02",
+  "scenes": [
+    {
+      "order": 1,
+      "chapter": "Opening",
+      "start": "00:00",
+      "estimatedEnd": "00:26",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "In open water there is no rock, tree, cave, or seafloor to hide behind. One solution is to reduce the body\u2019s shadow until the animal almost vanishes. Transparency reduces the shado"
+    },
+    {
+      "order": 2,
+      "chapter": "The right way to see it",
+      "start": "00:26",
+      "estimatedEnd": "00:48",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "Transparency is not magic invisibility. Eyes, digestive organs, pigments, and reflective tissues remain difficult to hide. The adaptation works by reducing the visible outline enou"
+    },
+    {
+      "order": 3,
+      "chapter": "Open water has nowhere to hide",
+      "start": "00:48",
+      "estimatedEnd": "01:31",
+      "visualMode": "source-card",
+      "narrationExcerpt": "Midwater animals cannot shelter behind rocks, plants or the seafloor. A visible outline against downwelling light can reveal them to a predator below or prey above. Clear, watery t"
+    },
+    {
+      "order": 4,
+      "chapter": "Transparency is easier for some tissues than others",
+      "start": "01:31",
+      "estimatedEnd": "02:16",
+      "visualMode": "diagram",
+      "narrationExcerpt": "Gelatinous animals can be almost entirely clear because their bodies contain large amounts of water and relatively little light-absorbing material. Muscles, eyes, digestive organs "
+    },
+    {
+      "order": 5,
+      "chapter": "The barreleye uses transparency as a window, not whole-body camouflage",
+      "start": "02:16",
+      "estimatedEnd": "03:01",
+      "visualMode": "comparison-grid",
+      "narrationExcerpt": "The barreleye fish has a transparent, fluid-filled shield over its tubular eyes. MBARI observations showed that the eyes can rotate as the fish changes from looking upward to feedi"
+    },
+    {
+      "order": 6,
+      "chapter": "Transparency has limits",
+      "start": "03:01",
+      "estimatedEnd": "03:45",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "At greater depths where sunlight is absent, being clear may offer less advantage than being red or black. Bioluminescent flashes can also reveal internal organs if they are not shi"
+    },
+    {
+      "order": 7,
+      "chapter": "A quick comparison",
+      "start": "03:45",
+      "estimatedEnd": "04:23",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "Transparency helps with open dim water; a useful example is Opaque organs remain visible. Silvering helps with brighter open water; a useful example is Can flash at the wrong angle"
+    },
+    {
+      "order": 8,
+      "chapter": "Common myths and questions",
+      "start": "04:23",
+      "estimatedEnd": "05:03",
+      "visualMode": "source-card",
+      "narrationExcerpt": "A common question is: Are transparent animals invisible? No. Edges, eyes, organs and changes in refraction can still reveal them. A common question is: Why are many jellies transpa"
+    },
+    {
+      "order": 9,
+      "chapter": "The pattern to remember",
+      "start": "05:03",
+      "estimatedEnd": "07:06",
+      "visualMode": "diagram",
+      "narrationExcerpt": "Before we finish, notice the pattern. First, remove the assumptions that come from daylight and surface pressure. Second, identify the real constraint: light, food, pressure, tempe"
+    },
+    {
+      "order": 10,
+      "chapter": "What the evidence can and cannot say",
+      "start": "07:06",
+      "estimatedEnd": "07:37",
+      "visualMode": "comparison-grid",
+      "narrationExcerpt": "The supporting sources for this episode come from NOAA Ocean Exploration, Monterey Bay Aquarium Research Institute, Woods Hole Oceanographic Institution. They support the environme"
+    },
+    {
+      "order": 11,
+      "chapter": "Closing",
+      "start": "07:37",
+      "estimatedEnd": "08:00",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "A transparent animal is not unfinished. It is using the absence of structure as its camouflage system. The full sourced answer, references, and related deep-sea pages are linked in"
+    }
+  ],
+  "requiredAssets": [
+    "original-depth-gradient",
+    "original-particle-field",
+    "original-creature-silhouettes"
+  ],
+  "externalAssetsRequired": false,
+  "articlePath": "/questions/why-some-deep-sea-creatures-are-transparent",
+  "metadataPath": "production/metadata/06-why-some-deep-sea-creatures-are-transparent.json"
+}

@@ -1,0 +1,88 @@
+[
+  {
+    "source": "NOAA Ocean Exploration",
+    "url": "https://oceanexplorer.noaa.gov/",
+    "defaultAdmission": "conditional",
+    "commercialUse": "Often permitted for NOAA-created material, subject to item-level credits and restrictions.",
+    "requiredChecks": [
+      "Confirm the item was created by NOAA",
+      "Read the caption and embedded metadata",
+      "Preserve required credit and permit text",
+      "Do not assume third-party footage inside a NOAA video is public domain"
+    ],
+    "checkedAt": "2026-07-30"
+  },
+  {
+    "source": "NOAA Digital Library",
+    "url": "https://www.noaa.gov/noaa-collections/photo-library",
+    "defaultAdmission": "conditional",
+    "commercialUse": "Still images are generally public domain unless otherwise noted; videos require additional review.",
+    "requiredChecks": [
+      "Inspect the individual record",
+      "Capture creator and credit line",
+      "Verify video contains no third-party footage"
+    ],
+    "checkedAt": "2026-07-30"
+  },
+  {
+    "source": "MBARI",
+    "url": "https://www.mbari.org/about/for-media/",
+    "defaultAdmission": "permission-required",
+    "commercialUse": "Not automatically approved for a monetized channel; licensing or editorial permission may be required.",
+    "requiredChecks": [
+      "Submit a media request",
+      "Retain written permission",
+      "Record any licensing fee and exact usage limits"
+    ],
+    "checkedAt": "2026-07-30"
+  },
+  {
+    "source": "Schmidt Ocean Institute",
+    "url": "https://schmidtocean.org/footage-requests-and-consent/",
+    "defaultAdmission": "not-approved-for-monetized-use",
+    "commercialUse": "Standard streamlined lane is CC BY-NC-SA 4.0; monetized use requires separate permission analysis.",
+    "requiredChecks": [
+      "Confirm whether the intended channel use is commercial",
+      "Request separate permission when necessary",
+      "Store exact attribution and share-alike obligations"
+    ],
+    "checkedAt": "2026-07-30"
+  },
+  {
+    "source": "Pexels",
+    "url": "https://www.pexels.com/license/",
+    "defaultAdmission": "candidate-approved",
+    "commercialUse": "Free commercial use under the Pexels license, subject to prohibited uses and third-party rights.",
+    "requiredChecks": [
+      "Save the asset page URL",
+      "Check visible brands, trademarks and recognizable people",
+      "Do not redistribute the clip as standalone stock"
+    ],
+    "checkedAt": "2026-07-30"
+  },
+  {
+    "source": "Pixabay",
+    "url": "https://pixabay.com/service/license-summary/",
+    "defaultAdmission": "candidate-approved",
+    "commercialUse": "Free use under the Pixabay Content License, subject to prohibited uses and third-party rights.",
+    "requiredChecks": [
+      "Save the asset page URL",
+      "Review recognizable trademarks, logos and people",
+      "Do not distribute the clip on a standalone basis"
+    ],
+    "checkedAt": "2026-07-30"
+  },
+  {
+    "source": "YouTube Audio Library",
+    "url": "https://support.google.com/youtube/answer/3376882",
+    "defaultAdmission": "track-specific",
+    "commercialUse": "Copyright-safe for YouTube when the track's listed license terms are followed.",
+    "requiredChecks": [
+      "Record track title and artist",
+      "Record license type",
+      "Copy required attribution exactly when shown",
+      "Retain the download date and library screenshot or receipt"
+    ],
+    "checkedAt": "2026-07-30"
+  }
+]

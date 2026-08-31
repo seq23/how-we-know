@@ -1,0 +1,107 @@
+{
+  "sequence": 1,
+  "slug": "why-deep-sea-creatures-look-so-weird",
+  "status": "production-ready-unrendered",
+  "scriptWordCount": 1304,
+  "estimatedDurationSeconds": 540,
+  "narratorProfile": "kokoro-af-heart-v1",
+  "musicRotation": "ambient-01",
+  "scenes": [
+    {
+      "order": 1,
+      "chapter": "Opening",
+      "start": "00:00",
+      "estimatedEnd": "00:32",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "Imagine judging a submarine by the rules of a bicycle. That is roughly what happens when we judge a deep-sea animal by the rules of daylight. The animal is not badly designed. We a"
+    },
+    {
+      "order": 2,
+      "chapter": "The right way to see it",
+      "start": "00:32",
+      "estimatedEnd": "00:58",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "The useful question is not \u201cWhy is this creature weird?\u201d It is \u201cWhat problem does this feature solve?\u201d Once you ask that, the huge mouth, transparent head, glowing lure, soft tissu"
+    },
+    {
+      "order": 3,
+      "chapter": "Their bodies solve a different set of problems",
+      "start": "00:58",
+      "estimatedEnd": "01:55",
+      "visualMode": "source-card",
+      "narrationExcerpt": "A deep-sea animal is not an ordinary surface animal distorted by depth. Its body is the result of generations living where sunlight disappears, temperatures are low, pressure is hi"
+    },
+    {
+      "order": 4,
+      "chapter": "Darkness changes eyes, color, and communication",
+      "start": "01:55",
+      "estimatedEnd": "02:48",
+      "visualMode": "diagram",
+      "narrationExcerpt": "Some species enlarge their eyes to collect the little light or bioluminescence available. Others reduce their eyes because vision offers little return. Transparent tissue can erase"
+    },
+    {
+      "order": 5,
+      "chapter": "Scarce food favors oversized feeding equipment",
+      "start": "02:48",
+      "estimatedEnd": "03:42",
+      "visualMode": "comparison-grid",
+      "narrationExcerpt": "A large mouth, long teeth, hinged jaws, or an expandable stomach lets an animal accept a meal when one finally appears. The anglerfish's lure is an energy strategy as much as a hun"
+    },
+    {
+      "order": 6,
+      "chapter": "Soft bodies can be an advantage under pressure",
+      "start": "03:42",
+      "estimatedEnd": "04:31",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "Pressure is especially damaging to compressible gas spaces. Many deep-sea animals are mostly water and lack lungs or large gas-filled swim bladders, so their bodies are less crusha"
+    },
+    {
+      "order": 7,
+      "chapter": "A quick comparison",
+      "start": "04:31",
+      "estimatedEnd": "05:09",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "Large or tubular eyes helps with detect faint light and silhouettes; a useful example is Barreleye. Bioluminescent lure helps with bring prey close without a long chase; a useful e"
+    },
+    {
+      "order": 8,
+      "chapter": "Common myths and questions",
+      "start": "05:09",
+      "estimatedEnd": "05:59",
+      "visualMode": "source-card",
+      "narrationExcerpt": "A common question is: Are all deep-sea animals ugly? No. 'Ugly' is a human judgment. Deep-sea animals include delicate jellies, corals, worms, octopuses, fishes and many microscopi"
+    },
+    {
+      "order": 9,
+      "chapter": "The pattern to remember",
+      "start": "05:59",
+      "estimatedEnd": "08:01",
+      "visualMode": "diagram",
+      "narrationExcerpt": "Before we finish, notice the pattern. First, remove the assumptions that come from daylight and surface pressure. Second, identify the real constraint: light, food, pressure, tempe"
+    },
+    {
+      "order": 10,
+      "chapter": "What the evidence can and cannot say",
+      "start": "08:01",
+      "estimatedEnd": "08:32",
+      "visualMode": "comparison-grid",
+      "narrationExcerpt": "The supporting sources for this episode come from NOAA Ocean Exploration, Smithsonian Ocean, Monterey Bay Aquarium Research Institute. They support the environmental conditions, me"
+    },
+    {
+      "order": 11,
+      "chapter": "Closing",
+      "start": "08:32",
+      "estimatedEnd": "08:59",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "The deep sea does not manufacture monsters. It manufactures specialists. What looks bizarre at the surface is often an elegant answer to darkness, pressure, cold, and uncertainty. "
+    }
+  ],
+  "requiredAssets": [
+    "original-depth-gradient",
+    "original-particle-field",
+    "original-creature-silhouettes"
+  ],
+  "externalAssetsRequired": false,
+  "articlePath": "/questions/why-deep-sea-creatures-look-so-weird",
+  "metadataPath": "production/metadata/01-why-deep-sea-creatures-look-so-weird.json"
+}

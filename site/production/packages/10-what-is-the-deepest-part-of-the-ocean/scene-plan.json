@@ -1,0 +1,107 @@
+{
+  "sequence": 10,
+  "slug": "what-is-the-deepest-part-of-the-ocean",
+  "status": "production-ready-unrendered",
+  "scriptWordCount": 1373,
+  "estimatedDurationSeconds": 568,
+  "narratorProfile": "kokoro-af-heart-v1",
+  "musicRotation": "ambient-02",
+  "scenes": [
+    {
+      "order": 1,
+      "chapter": "Opening",
+      "start": "00:00",
+      "estimatedEnd": "00:27",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "If Mount Everest were lowered into the deepest known part of the ocean, its summit would still be underwater. That place is Challenger Deep, inside the Mariana Trench. The deepest "
+    },
+    {
+      "order": 2,
+      "chapter": "The right way to see it",
+      "start": "00:27",
+      "estimatedEnd": "00:48",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "The exact depth is not one eternal number carved into the seafloor. It is a measurement with an instrument, a survey path, corrections, and uncertainty. The rest of this video foll"
+    },
+    {
+      "order": 3,
+      "chapter": "Challenger Deep lies inside the Mariana Trench",
+      "start": "00:48",
+      "estimatedEnd": "01:45",
+      "visualMode": "source-card",
+      "narrationExcerpt": "Challenger Deep is a depression at the southern end of the Mariana Trench in the western Pacific Ocean. The trench forms where one tectonic plate bends and descends beneath another"
+    },
+    {
+      "order": 4,
+      "chapter": "The best current estimate is about 10.9 kilometers",
+      "start": "01:45",
+      "estimatedEnd": "02:44",
+      "visualMode": "diagram",
+      "narrationExcerpt": "NOAA commonly reports Challenger Deep at approximately 10,935 meters, or 35,876 feet, below mean sea level. A modern pressure-based submersible study reported 10,935 meters with an"
+    },
+    {
+      "order": 5,
+      "chapter": "The bottom is dark, cold, and under extreme pressure",
+      "start": "02:44",
+      "estimatedEnd": "03:41",
+      "visualMode": "comparison-grid",
+      "narrationExcerpt": "At nearly eleven kilometers, sunlight is absent and pressure is roughly eleven hundred times atmospheric pressure at sea level. Temperatures are close to freezing, although local c"
+    },
+    {
+      "order": 6,
+      "chapter": "Exploration requires full-ocean-depth engineering",
+      "start": "03:41",
+      "estimatedEnd": "04:38",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "Mapping vessels use sonar to build regional bathymetric models, while landers and submersibles provide direct pressure, imagery, sampling, and seafloor observations. Each method an"
+    },
+    {
+      "order": 7,
+      "chapter": "A quick comparison",
+      "start": "04:38",
+      "estimatedEnd": "05:22",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "Average global ocean depth helps with 3,682 m; a useful example is Challenger Deep is almost three times deeper. Typical abyssal plain helps with 3,000\u20136,000 m; a useful example is"
+    },
+    {
+      "order": 8,
+      "chapter": "Common myths and questions",
+      "start": "05:22",
+      "estimatedEnd": "06:23",
+      "visualMode": "source-card",
+      "narrationExcerpt": "A common question is: Is the Mariana Trench the deepest part of the ocean? The Mariana Trench is the deepest trench. Challenger Deep is the deepest known depression within that tre"
+    },
+    {
+      "order": 9,
+      "chapter": "The pattern to remember",
+      "start": "06:23",
+      "estimatedEnd": "08:25",
+      "visualMode": "diagram",
+      "narrationExcerpt": "Before we finish, notice the pattern. First, remove the assumptions that come from daylight and surface pressure. Second, identify the real constraint: light, food, pressure, tempe"
+    },
+    {
+      "order": 10,
+      "chapter": "What the evidence can and cannot say",
+      "start": "08:25",
+      "estimatedEnd": "08:58",
+      "visualMode": "comparison-grid",
+      "narrationExcerpt": "The supporting sources for this episode come from NOAA National Ocean Service, NOAA Ocean Exploration, NOAA Central Library Repository, Woods Hole Oceanographic Institution. They s"
+    },
+    {
+      "order": 11,
+      "chapter": "Closing",
+      "start": "08:58",
+      "estimatedEnd": "09:28",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "Challenger Deep is about 10.9 kilometers below sea level, but the deeper lesson is how difficult it is to measure, reach, and understand a place under roughly eleven hundred atmosp"
+    }
+  ],
+  "requiredAssets": [
+    "original-depth-gradient",
+    "original-particle-field",
+    "original-creature-silhouettes"
+  ],
+  "externalAssetsRequired": false,
+  "articlePath": "/questions/what-is-the-deepest-part-of-the-ocean",
+  "metadataPath": "production/metadata/10-what-is-the-deepest-part-of-the-ocean.json"
+}

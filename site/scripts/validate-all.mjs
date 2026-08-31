@@ -1,0 +1,16 @@
+import './validate-required-files.mjs'
+import './validate-content.mjs'
+import './validate-taxonomy.mjs'
+import './validate-launch-flags.mjs'
+import './validate-routes.mjs'
+import './validate-video-contract.mjs'
+import './validate-rights-manifest.mjs'
+import './validate-design-system.mjs'
+import './validate-explorer.mjs'
+import './validate-measurement.mjs'
+import './validate-production.mjs'
+import './validate-humanization.mjs'
+import './validate-admin.mjs'
+import './validate-legal-policy.mjs'
+
+console.log('All dependency-free structural validators passed.')

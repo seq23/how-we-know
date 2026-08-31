@@ -1,0 +1,1 @@
+export function NotFound() { return <main className="shell prose-page"><p className="eyebrow">404</p><h1>This route is below our current map.</h1><p>Return to the question index or browse the zone and creature references.</p><p><a className="button" href="/questions">Browse questions</a></p></main> }

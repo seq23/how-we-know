@@ -1,0 +1,225 @@
+[
+  {
+    "slug": "anglerfish",
+    "name": "Deep-sea anglerfish",
+    "scientificName": "Lophiiformes (deep-sea lineages)",
+    "minDepthM": 200,
+    "maxDepthM": 2000,
+    "zones": [
+      "twilight",
+      "midnight"
+    ],
+    "summary": "A diverse group best known for a lure that brings prey within striking distance in dark water.",
+    "adaptations": [
+      "Bioluminescent lure in many deep-sea species",
+      "Large mouth and flexible feeding anatomy",
+      "Energy-saving ambush strategy"
+    ],
+    "sourceIds": [
+      "noaa-anglerfish",
+      "smithsonian-anglerfish"
+    ]
+  },
+  {
+    "slug": "vampire-squid",
+    "name": "Vampire squid",
+    "scientificName": "Vampyroteuthis infernalis",
+    "minDepthM": 600,
+    "maxDepthM": 900,
+    "zones": [
+      "twilight"
+    ],
+    "summary": "A low-energy cephalopod that eats marine snow rather than hunting like a typical squid.",
+    "adaptations": [
+      "Sticky feeding filaments",
+      "Tolerance of low-oxygen water",
+      "Bioluminescent defensive displays"
+    ],
+    "sourceIds": [
+      "mbari-vampire-squid",
+      "noaa-cephalopods"
+    ]
+  },
+  {
+    "slug": "barreleye",
+    "name": "Barreleye fish",
+    "scientificName": "Macropinna microstoma",
+    "minDepthM": 600,
+    "maxDepthM": 800,
+    "zones": [
+      "twilight"
+    ],
+    "summary": "A fish with tubular eyes inside a transparent, fluid-filled shield that helps it look upward and track prey.",
+    "adaptations": [
+      "Rotating tubular eyes",
+      "Transparent protective head shield",
+      "Large fins for precise hovering"
+    ],
+    "sourceIds": [
+      "mbari-barreleye"
+    ]
+  },
+  {
+    "slug": "giant-squid",
+    "name": "Giant squid",
+    "scientificName": "Architeuthis dux",
+    "minDepthM": 300,
+    "maxDepthM": 1000,
+    "zones": [
+      "twilight",
+      "midnight"
+    ],
+    "summary": "A rarely observed open-ocean squid with exceptionally large eyes and long feeding tentacles.",
+    "adaptations": [
+      "Very large light-gathering eyes",
+      "Long tentacles for capturing prey",
+      "Jet propulsion in open water"
+    ],
+    "sourceIds": [
+      "smithsonian-giant-squid"
+    ]
+  },
+  {
+    "slug": "dumbo-octopus",
+    "name": "Dumbo octopus",
+    "scientificName": "Grimpoteuthis spp.",
+    "minDepthM": 1000,
+    "maxDepthM": 4000,
+    "zones": [
+      "midnight"
+    ],
+    "summary": "A deep-sea octopus that moves with ear-like fins and lacks the ink defense common in shallower octopuses.",
+    "adaptations": [
+      "Fin-driven swimming",
+      "Soft body without gas-filled spaces",
+      "Reduced need for visual camouflage in darkness"
+    ],
+    "sourceIds": [
+      "noaa-cephalopods",
+      "smithsonian-deep-sea"
+    ]
+  },
+  {
+    "slug": "hadal-snailfish",
+    "name": "Hadal snailfish",
+    "scientificName": "Liparidae (hadal species)",
+    "minDepthM": 6000,
+    "maxDepthM": 8336,
+    "zones": [
+      "hadal"
+    ],
+    "summary": "Soft-bodied fishes that include the deepest fish yet confirmed on video.",
+    "adaptations": [
+      "No scales",
+      "Soft, pressure-tolerant body plan",
+      "Specialized physiology for trench depths"
+    ],
+    "sourceIds": [
+      "noaa-deepest-fish",
+      "mbari-animals"
+    ]
+  },
+  {
+    "slug": "dragonfish",
+    "name": "Deep-sea dragonfish",
+    "scientificName": "Stomiidae",
+    "minDepthM": 200,
+    "maxDepthM": 1500,
+    "zones": [
+      "twilight",
+      "midnight"
+    ],
+    "summary": "A small predatory fish with long teeth, sensitive eyes and light-producing organs.",
+    "adaptations": [
+      "Fang-like teeth",
+      "Bioluminescent photophores",
+      "Dark coloration for concealment"
+    ],
+    "sourceIds": [
+      "smithsonian-dragonfish",
+      "noaa-wild-bizarre"
+    ]
+  },
+  {
+    "slug": "giant-isopod",
+    "name": "Giant isopod",
+    "scientificName": "Bathynomus spp.",
+    "minDepthM": 170,
+    "maxDepthM": 2140,
+    "zones": [
+      "twilight",
+      "midnight"
+    ],
+    "summary": "A large crustacean scavenger that feeds on animal falls and other food reaching the seafloor.",
+    "adaptations": [
+      "Slow metabolism",
+      "Armored body",
+      "Ability to exploit rare large meals"
+    ],
+    "sourceIds": [
+      "smithsonian-isopod"
+    ]
+  },
+  {
+    "slug": "frilled-shark",
+    "name": "Frilled shark",
+    "scientificName": "Chlamydoselachus anguineus",
+    "minDepthM": 50,
+    "maxDepthM": 1570,
+    "zones": [
+      "sunlight",
+      "twilight",
+      "midnight"
+    ],
+    "summary": "A rare eel-shaped shark with six pairs of gill slits, three-pronged teeth, and flexible jaws.",
+    "adaptations": [
+      "Elongated flexible body",
+      "Inward-pointing trident teeth",
+      "Wide-opening terminal jaws"
+    ],
+    "sourceIds": [
+      "smithsonian-frilled-shark"
+    ]
+  },
+  {
+    "slug": "colossal-squid",
+    "name": "Colossal squid",
+    "scientificName": "Mesonychoteuthis hamiltoni",
+    "minDepthM": 500,
+    "maxDepthM": 2200,
+    "zones": [
+      "twilight",
+      "midnight"
+    ],
+    "summary": "The heaviest known invertebrate, with enormous eyes and rotating hooks on the tentacle clubs.",
+    "adaptations": [
+      "Very large light-collecting eyes",
+      "Rotating tentacle hooks",
+      "Cold-water Southern Ocean physiology"
+    ],
+    "sourceIds": [
+      "tepapa-colossal-overview",
+      "tepapa-colossal-eyes"
+    ]
+  },
+  {
+    "slug": "yeti-crab",
+    "name": "Yeti crab",
+    "scientificName": "Kiwaidae",
+    "minDepthM": 1000,
+    "maxDepthM": 2600,
+    "zones": [
+      "midnight"
+    ],
+    "summary": "Deep-sea crustaceans that carry chemosynthetic bacteria on dense setae; some species harvest the bacteria as food.",
+    "adaptations": [
+      "Bacteria-bearing setae",
+      "Chemosynthetic symbiosis",
+      "Specialized scraping mouthparts"
+    ],
+    "sourceIds": [
+      "plos-yeti-crab",
+      "noaa-hydrothermal-vents"
+    ]
+  }
+]

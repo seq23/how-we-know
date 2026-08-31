@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+<defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#0a3655"/><stop offset=".42" stop-color="#04111f"/><stop offset="1" stop-color="#02070d"/></linearGradient><radialGradient id="r"><stop stop-color="#7bd8e8" stop-opacity=".7"/><stop offset="1" stop-color="#7bd8e8" stop-opacity="0"/></radialGradient></defs>
+<rect width="1280" height="720" fill="url(#g)"/><circle cx="940" cy="290" r="260" fill="url(#r)" opacity=".35"/>
+<g fill="none" stroke="#b8f2ea" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" opacity=".95">
+<path d="M930 260 C1010 180 1130 210 1170 310 C1110 410 990 420 900 340 C850 300 850 300 930 260Z"/>
+<path d="M905 292 C810 245 760 305 720 360"/><circle cx="1080" cy="285" r="14" fill="#f3b66b" stroke="none"/>
+<path d="M1165 310 l75 -55 l-18 72 l18 72 z"/>
+</g>
+<text x="72" y="105" font-family="Arial,Helvetica,sans-serif" font-size="34" font-weight="700" letter-spacing="6" fill="#7bd8e8">DEEP OCEAN FILES</text>
+<text x="72" y="300" font-family="Georgia,serif" font-size="88" font-weight="700" fill="#eaf8fb">CRUSHING PRESSURE</text>
+<text x="76" y="385" font-family="Arial,Helvetica,sans-serif" font-size="34" fill="#a5c0ca">Evidence-backed deep-sea science</text>
+<rect x="72" y="600" width="300" height="8" rx="4" fill="#f3b66b"/>
+</svg>

@@ -1,0 +1,131 @@
+{
+  "sequence": 12,
+  "slug": "what-is-a-frilled-shark",
+  "status": "production-ready-unrendered-human-pass-required",
+  "scriptWordCount": 1209,
+  "estimatedDurationSeconds": 500,
+  "narratorProfile": "kokoro-af-heart-v1",
+  "musicRotation": "ambient-04",
+  "scenes": [
+    {
+      "order": 1,
+      "chapter": "Cold open",
+      "start": "00:00",
+      "estimatedEnd": "00:09",
+      "visualMode": "diagram",
+      "narrationExcerpt": "The frilled shark looks ancient, but the claim that it has not changed for eighty million years is not how evolution works."
+    },
+    {
+      "order": 2,
+      "chapter": "Title card",
+      "start": "00:09",
+      "estimatedEnd": "00:11",
+      "visualMode": "comparison-grid",
+      "narrationExcerpt": "What is a frilled shark?"
+    },
+    {
+      "order": 3,
+      "chapter": "The shark that breaks the familiar outline",
+      "start": "00:11",
+      "estimatedEnd": "01:16",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "Most shark silhouettes are easy to recognize: a rigid torpedo body, a tall dorsal fin, and a mouth set under the snout. The frilled shark rearranges that picture. Its body is long "
+    },
+    {
+      "order": 4,
+      "chapter": "Why living fossil is a dangerous shortcut",
+      "start": "01:16",
+      "estimatedEnd": "02:22",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "The phrase living fossil is memorable and scientifically slippery. It is often used for organisms whose visible anatomy resembles forms known from older branches of the fossil reco"
+    },
+    {
+      "order": 5,
+      "chapter": "Anatomy suggests a feeding strategy, but cameras are scarce",
+      "start": "02:22",
+      "estimatedEnd": "03:31",
+      "visualMode": "source-card",
+      "narrationExcerpt": "The frilled shark's jaws can open wide, and the teeth form repeating white traps that point inward. Squid, fishes, and other sharks have been reported from stomach analyses, suppor"
+    },
+    {
+      "order": 6,
+      "chapter": "A rare animal becomes a projection screen",
+      "start": "03:31",
+      "estimatedEnd": "04:42",
+      "visualMode": "diagram",
+      "narrationExcerpt": "Frilled sharks live beyond the ordinary reach of divers, and many records come from fisheries interactions or brief submersible encounters. That creates a perfect environment for s"
+    },
+    {
+      "order": 7,
+      "chapter": "How to read the evidence",
+      "start": "04:42",
+      "estimatedEnd": "05:22",
+      "visualMode": "comparison-grid",
+      "narrationExcerpt": "A final production note matters here. Deep-sea footage is often separated from the instrument record that gives it meaning. For this episode, every depth, date, size, and record cl"
+    },
+    {
+      "order": 8,
+      "chapter": "Narration quality gate",
+      "start": "05:22",
+      "estimatedEnd": "05:47",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "The human review pass should also read every number aloud. Long strings of digits can sound natural on a page and awkward in narration. Pronunciations of scientific names, trench n"
+    },
+    {
+      "order": 9,
+      "chapter": "Context before spectacle",
+      "start": "05:47",
+      "estimatedEnd": "06:20",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "Another check is scale. Deep-sea images usually remove familiar references, so a small animal can appear enormous and a brief movement can look aggressive. The production should sh"
+    },
+    {
+      "order": 10,
+      "chapter": "Observation versus inference 2",
+      "start": "06:20",
+      "estimatedEnd": "06:51",
+      "visualMode": "source-card",
+      "narrationExcerpt": "The script also separates what the camera directly records from what researchers infer. Direct evidence includes a measured depth, a timestamped encounter, a collected specimen, or"
+    },
+    {
+      "order": 11,
+      "chapter": "A reusable source rule 3",
+      "start": "06:51",
+      "estimatedEnd": "07:23",
+      "visualMode": "diagram",
+      "narrationExcerpt": "For the channel, the stable rule is one claim, one traceable source, and one stated boundary. If a source describes one species, the script does not silently expand the claim to an"
+    },
+    {
+      "order": 12,
+      "chapter": "Production continuity 4",
+      "start": "07:23",
+      "estimatedEnd": "07:53",
+      "visualMode": "comparison-grid",
+      "narrationExcerpt": "The visual edit should vary from the previous episode even when the evidence structure stays consistent. Use a discovery-led opening for one topic, a mechanism diagram for another,"
+    },
+    {
+      "order": 13,
+      "chapter": "Evidence limit",
+      "start": "07:53",
+      "estimatedEnd": "08:09",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "The common claim that frilled sharks are unchanged for 80 million years is rejected; resemblance to ancient traits does not demonstrate evolutionary stasis. The companion article l"
+    },
+    {
+      "order": 14,
+      "chapter": "Outro",
+      "start": "08:09",
+      "estimatedEnd": "08:20",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "The deep ocean is more useful when the uncertainty stays visible. The sourced article is linked below. Next, continue through the twenty-video launch sequence from the channel libr"
+    }
+  ],
+  "requiredAssets": [
+    "production/broll/original/12-what-is-a-frilled-shark.mp4",
+    "production/thumbnails/png/12-what-is-a-frilled-shark.png"
+  ],
+  "externalAssetsRequired": false,
+  "articlePath": "/questions/what-is-a-frilled-shark",
+  "metadataPath": "production/metadata/12-what-is-a-frilled-shark.json",
+  "humanPassPath": "production/human-pass/12-what-is-a-frilled-shark.md"
+}
