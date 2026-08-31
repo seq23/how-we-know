@@ -40,6 +40,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "loop"))
 
+import advise  # noqa: E402
 from common import Stage, config, read_json, write_json  # noqa: E402
 
 MEASURE = ROOT / "loop/state/measurement.json"
@@ -209,7 +210,27 @@ def to_prose(mid: str, r: dict) -> str:
                 f"**Evidence.** {f['evidence']}", ""]
         if f.get("no_change"):
             out += [f"**No change.** {f['no_change']}", ""]
+    out += _advice_section(r)
     return "\n".join(out)
+
+
+def _advice_section(r: dict) -> list[str]:
+    """The model's read, clearly separated from what the rules did.
+
+    Labelled as advisory on purpose: nothing downstream acts on it, and a reader
+    should never have to wonder whether a paragraph changed the configuration.
+    """
+    a = r.get("advice")
+    if not a:
+        return []
+    if not a.get("ok"):
+        return ["## Second opinion — unavailable", "",
+                f"_{a.get('why', 'no reason recorded')}_", "",
+                "The review above ran and decided normally; only the advisory "
+                "is missing.", ""]
+    cost = f" (${a['cost']:.4f})" if a.get("cost") else ""
+    return ["## Second opinion — advisory only, nothing was applied from it" + cost,
+            "", a["text"], ""]
 
 
 def main() -> int:
@@ -219,6 +240,15 @@ def main() -> int:
         rows = collect(mid)
         st.note(f"{len(rows)} measurement row(s) in {mid}")
         r = review(rows, cfg, mid)
+        r["month"] = mid
+
+        # Advisory. Additive by construction: any failure here is a line in the
+        # report, never a failed stage - the decision above already stands.
+        r["advice"] = advise.advise(r, cfg, rows)
+        if r["advice"]["ok"]:
+            st.note("second opinion obtained")
+        else:
+            st.note(f"no second opinion: {r['advice']['why'][:90]}")
 
         OUTDIR.mkdir(parents=True, exist_ok=True)
         write_json(OUTDIR / f"{mid}.json", r)
