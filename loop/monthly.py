@@ -117,6 +117,36 @@ def apply_change(key: str, current: float, mid: str, why: str,
     return {"key": key, "applied": True, "from": current, "to": clamped, "why": why}
 
 
+def apply_absolute(key: str, current: float, target: float, mid: str,
+                   why: str, source: str = "model") -> dict:
+    """Set a bounded value to a specific target, through the same fence.
+
+    The rules move by a fixed step; the model names a value. Both are clamped to
+    CHANGE_BOUNDS and both respect the cooldown, so "the model wins" never means
+    "the model is unbounded".
+    """
+    b = CHANGE_BOUNDS[key]
+    clamped = max(b["min"], min(b["max"], round(float(target), 2)))
+    if changed_recently(key, mid):
+        return {"key": key, "applied": False, "from": current, "to": current,
+                "why": why, "source": source,
+                "blocked_by": "cooldown: changed last month, and the effect "
+                              "cannot be measured yet"}
+    if clamped == current:
+        return {"key": key, "applied": False, "from": current, "to": current,
+                "why": why, "source": source,
+                "blocked_by": f"already at {current} (bounds {b['min']}-{b['max']})"}
+    cfg = json.loads(CONFIG.read_text())
+    section, field = key.split(".")
+    cfg[section][field] = clamped
+    CONFIG.write_text(json.dumps(cfg, indent=2) + "\n")
+    out = {"key": key, "applied": True, "from": current, "to": clamped,
+           "why": why, "source": source}
+    if clamped != round(float(target), 2):
+        out["clamped_from"] = round(float(target), 2)
+    return out
+
+
 def review(rows: list[dict], cfg: dict, mid: str) -> dict:
     runtime_min = float(cfg["retention"].get("runtime_minutes", 7.5))
     floor_pct = float(cfg["retention"].get("floor_pct", 35))
@@ -199,8 +229,13 @@ def to_prose(mid: str, r: dict) -> str:
             f"{r['avg_view_percentage']}% ({r['avg_view_duration_s']/60:.1f} min).", ""]
     for c in r.get("changes", []):
         if c["applied"]:
-            out += [f"## CHANGED `{c['key']}`: {c['from']} → {c['to']}", "",
-                    f"**Because.** {c['why']}", ""]
+            who = "the model" if c.get("source") == "model" else "the rules"
+            clamp = (f" (asked for {c['clamped_from']}, clamped to the "
+                     f"allowed range)" if c.get("clamped_from") else "")
+            out += [f"## CHANGED `{c['key']}`: {c['from']} → {c['to']}{clamp}", "",
+                    f"**Decided by** {who}. {c['why']}", "",
+                    "_Already applied and live for the next drafting cycle. "
+                    "Overrule by editing `loop/config.json`._", ""]
         else:
             out += [f"## NOT changed `{c['key']}` (held at {c['from']})", "",
                     f"**Would have, because.** {c['why']}", "",
@@ -229,8 +264,20 @@ def _advice_section(r: dict) -> list[str]:
                 "The review above ran and decided normally; only the advisory "
                 "is missing.", ""]
     cost = f" (${a['cost']:.4f})" if a.get("cost") else ""
-    return ["## Second opinion — advisory only, nothing was applied from it" + cost,
-            "", a["text"], ""]
+    prop = (a.get("proposal") or {})
+    out = [f"## Second opinion{cost}", ""]
+    if prop.get("conclusion"):
+        out += [prop["conclusion"], ""]
+    if prop.get("reasoning"):
+        out += [f"**Reasoning.** {prop['reasoning']}", ""]
+    if prop.get("for_the_owner"):
+        out += ["**For you — outside what the loop may change on its own.**", "",
+                prop["for_the_owner"], ""]
+    if a.get("parse_note"):
+        out += [f"_Nothing applied from this: {a['parse_note']}_", ""]
+    if not prop:
+        out += ["_Raw reply:_", "", a["text"], ""]
+    return out
 
 
 def main() -> int:
@@ -242,13 +289,47 @@ def main() -> int:
         r = review(rows, cfg, mid)
         r["month"] = mid
 
-        # Advisory. Additive by construction: any failure here is a line in the
-        # report, never a failed stage - the decision above already stands.
+        # The model reads the same month and may overrule the rules - the owner's
+        # instruction is to follow its advice by default. It goes through the SAME
+        # fence: apply_change clamps to CHANGE_BOUNDS and refuses inside the
+        # cooldown, so a wrong recommendation is bounded exactly like a wrong rule.
+        #
+        # Any failure here is a line in the report, never a failed stage. The
+        # deterministic decision above already stands on its own.
         r["advice"] = advise.advise(r, cfg, rows)
-        if r["advice"]["ok"]:
-            st.note("second opinion obtained")
+        a = r["advice"]
+        if not a.get("ok"):
+            st.note(f"no second opinion: {a['why'][:90]}")
         else:
-            st.note(f"no second opinion: {r['advice']['why'][:90]}")
+            st.note("second opinion obtained")
+            prop = (a.get("proposal") or {}).get("change")
+            if a.get("parse_note"):
+                st.note(f"proposal not applied: {a['parse_note']}")
+            elif prop and prop.get("key") in CHANGE_BOUNDS:
+                cur = float(cfg["retention"].get("runtime_minutes"))
+                already = next((c for c in r.get("changes", [])
+                                if c["key"] == prop["key"] and c["applied"]), None)
+                # Reload: the rules may have already moved this value on disk.
+                live = json.loads(CONFIG.read_text())
+                cur = float(live[prop["key"].split(".")[0]][prop["key"].split(".")[1]])
+                target = float(prop["to"])
+                if already:
+                    # The model overrules the rules. Rewind the rule's change
+                    # first so the cooldown and bounds are judged against the
+                    # month's starting value, not a half-applied one.
+                    live[prop["key"].split(".")[0]][prop["key"].split(".")[1]] = already["from"]
+                    CONFIG.write_text(json.dumps(live, indent=2) + "\n")
+                    r["changes"] = [c for c in r["changes"] if c is not already]
+                    cur = float(already["from"])
+                res = apply_absolute(prop["key"], cur, target, mid,
+                                     (a.get("proposal") or {}).get("reasoning", ""),
+                                     source="model")
+                r.setdefault("changes", []).append(res)
+                st.note(f"model proposal {prop['key']} -> {target}: "
+                        + ("applied" if res["applied"] else res.get("blocked_by", "")))
+            elif prop:
+                st.note(f"proposal names an out-of-fence key {prop.get('key')!r}; "
+                        "reported only")
 
         OUTDIR.mkdir(parents=True, exist_ok=True)
         write_json(OUTDIR / f"{mid}.json", r)

@@ -7,13 +7,24 @@ alone - so the honest comparison is not "a model versus me", it is "a model
 versus a few if-statements". The owner made that argument on 2026-08-31 and she
 was right.
 
-**The split that keeps it safe.** This ADVISES. `monthly.py` DECIDES.
+**The split that keeps it safe.** The model decides WHAT; the fence decides WHAT
+IS ALLOWED.
 
-A model that can edit `loop/config.json` unattended is an unbounded actor with no
-cooldown and no floor; a model that writes a paragraph a human reads is pure
-upside. So nothing here touches configuration, and nothing downstream reads this
-output as an instruction. It is appended to the emailed report, labelled, and
-that is all.
+Owner instruction, 2026-08-31: *"i want it to decide advise email and follow
+advice as a default. and if i have an issue with the advice ill step in."* So the
+recommendation is APPLIED, not merely printed - but through exactly the same
+bounds the deterministic rules use: a floor, a ceiling, one change per month, and
+a cooldown after any change.
+
+That boundary is the whole safety argument. A model that can set any value in
+`loop/config.json` has no floor and no memory of last month; a model that can
+only move a named parameter inside a stated range cannot run away, however wrong
+it is. It may also propose things outside the fence - a different cadence, a new
+topic domain - and those are REPORTED and not applied, because they are
+irreversible in a way runtime length is not.
+
+When the model and the rules disagree, the model wins. That is the instruction,
+and it is defensible precisely because the fence holds either way.
 
 **It is additive, never a dependency.** No key, no credit, an API error, a
 timeout, a refusal - any of them and the review still runs, still decides, still
@@ -101,12 +112,22 @@ def build_prompt(report: dict, cfg: dict, videos: list[dict]) -> list[dict]:
         {"role": "user", "content":
             "Here is this month's measurement and what the automatic rules did "
             "with it.\n\n```json\n" + json.dumps(facts, indent=2) + "\n```\n\n"
-            "Answer in at most 200 words:\n"
-            "1. What, if anything, does this data actually support concluding?\n"
-            "2. Is the automatic decision right? Say so if it is - agreement is "
-            "a useful answer.\n"
-            "3. One thing worth trying next, or 'nothing yet' if the data does "
-            "not support one.\n"},
+            "Your recommendation will be APPLIED automatically, so be "
+            "conservative and say so when the data does not support acting.\n\n"
+            "Reply with a JSON object and nothing else:\n"
+            "{\n"
+            '  "conclusion": "<what this data supports, <=80 words>",\n'
+            '  "automatic_decision_right": true|false,\n'
+            '  "change": {"key": "retention.runtime_minutes", "to": <number>} '
+            "or null,\n"
+            '  "reasoning": "<why, naming the numbers, <=80 words>",\n'
+            '  "for_the_owner": "<anything outside the fence that only a human '
+            'should decide, or empty>"\n'
+            "}\n\n"
+            "`change` is the ONLY key you may set, and it will be clamped to "
+            "4.0-12.0 minutes and refused if anything was changed last month. "
+            "Use null when the data is too thin or no change is warranted - null "
+            "is the correct answer more often than not on a young channel.\n"},
     ]
 
 
@@ -129,8 +150,46 @@ def advise(report: dict, cfg: dict, videos: list[dict]) -> dict:
             return {"ok": False, "text": "", "cost": None,
                     "why": "the model returned an empty response"}
         usage = out.get("usage") or {}
+        parsed, parse_note = _parse(text)
         return {"ok": True, "text": text[:MAX_ADVICE_CHARS],
+                "proposal": parsed, "parse_note": parse_note,
                 "cost": usage.get("cost"), "why": ""}
     except Exception as e:                      # noqa: BLE001 - never take the lane down
         return {"ok": False, "text": "", "cost": None,
                 "why": f"{type(e).__name__}: {str(e)[:160]}"}
+
+
+def _parse(text: str) -> tuple[dict | None, str]:
+    """Pull the JSON object out of the reply.
+
+    Models fence JSON in markdown often enough that refusing to handle it would
+    make the lane fail on formatting rather than on substance. But a reply that
+    cannot be parsed applies NOTHING - it is reported as prose and the
+    deterministic rules stand. Silently guessing at a malformed recommendation is
+    exactly how an automatic actor does something nobody intended.
+    """
+    import re
+    blob = text.strip()
+    m = re.search(r"```(?:json)?\s*(\{.*?\})\s*```", blob, re.S)
+    if m:
+        blob = m.group(1)
+    else:
+        i, j = blob.find("{"), blob.rfind("}")
+        if i == -1 or j <= i:
+            return None, "no JSON object in the reply; nothing applied"
+        blob = blob[i:j + 1]
+    try:
+        d = json.loads(blob)
+    except json.JSONDecodeError as e:
+        return None, f"reply was not valid JSON ({e.msg}); nothing applied"
+    if not isinstance(d, dict):
+        return None, "reply parsed but was not an object; nothing applied"
+    ch = d.get("change")
+    if ch is not None:
+        if not isinstance(ch, dict) or "key" not in ch or "to" not in ch:
+            return d, "change field malformed; nothing applied"
+        try:
+            float(ch["to"])
+        except (TypeError, ValueError):
+            return d, f"change.to is not a number ({ch['to']!r}); nothing applied"
+    return d, ""
