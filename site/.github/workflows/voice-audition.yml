@@ -1,0 +1,40 @@
+name: Generate Kokoro Voice Audition
+on:
+  workflow_dispatch:
+    inputs:
+      voice:
+        description: Kokoro voice ID
+        required: true
+        default: af_heart
+      speeds:
+        description: Comma-separated audition speeds
+        required: true
+        default: 0.94,0.98,1.02
+permissions:
+  contents: read
+jobs:
+  audition:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Install speech runtime
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y espeak-ng libsndfile1
+          python -m pip install --upgrade pip
+          pip install -r production/automation/requirements-tts.txt
+      - name: Generate three audition WAVs
+        run: |
+          python production/automation/synthesize_audition.py \
+            --voice '${{ inputs.voice }}' \
+            --speeds '${{ inputs.speeds }}'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: kokoro-voice-audition-${{ inputs.voice }}
+          path: production/audition/generated/*.wav
+          if-no-files-found: error
+          retention-days: 14

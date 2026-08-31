@@ -1,0 +1,102 @@
+[
+  {
+    "slug": "sunlight",
+    "name": "Sunlight Zone",
+    "scientificName": "Epipelagic",
+    "minDepthM": 0,
+    "maxDepthM": 200,
+    "light": "Bright to dim natural sunlight",
+    "temperature": "Highly variable",
+    "pressureAtBaseAtm": 21,
+    "summary": "The upper ocean where photosynthesis can occur and most familiar marine food webs begin.",
+    "conditions": [
+      "Enough light for photosynthesis",
+      "Strongest daily and seasonal temperature changes",
+      "Highest direct connection to weather and atmosphere"
+    ],
+    "sourceIds": [
+      "whoi-zones",
+      "smithsonian-deep-sea"
+    ]
+  },
+  {
+    "slug": "twilight",
+    "name": "Twilight Zone",
+    "scientificName": "Mesopelagic",
+    "minDepthM": 200,
+    "maxDepthM": 1000,
+    "light": "Fading sunlight; too little for photosynthesis",
+    "temperature": "Cold and declining",
+    "pressureAtBaseAtm": 101,
+    "summary": "A dim global layer where enormous numbers of animals migrate upward at night and descend before dawn.",
+    "conditions": [
+      "No photosynthesis",
+      "Bioluminescence is common",
+      "Diel vertical migration moves animals and carbon"
+    ],
+    "sourceIds": [
+      "whoi-twilight",
+      "noaa-vertical-migration"
+    ]
+  },
+  {
+    "slug": "midnight",
+    "name": "Midnight Zone",
+    "scientificName": "Bathypelagic",
+    "minDepthM": 1000,
+    "maxDepthM": 4000,
+    "light": "No sunlight",
+    "temperature": "Near 4°C in much of the open ocean",
+    "pressureAtBaseAtm": 401,
+    "summary": "The largest continuously dark habitat, where food is scarce and animals rely on specialized senses, lures and low-energy strategies.",
+    "conditions": [
+      "Perpetual darkness",
+      "High hydrostatic pressure",
+      "Sparse food delivered from above or captured from other animals"
+    ],
+    "sourceIds": [
+      "whoi-midnight",
+      "noaa-deep-habitat"
+    ]
+  },
+  {
+    "slug": "abyss",
+    "name": "Abyssal Zone",
+    "scientificName": "Abyssopelagic",
+    "minDepthM": 4000,
+    "maxDepthM": 6000,
+    "light": "No sunlight",
+    "temperature": "Near freezing",
+    "pressureAtBaseAtm": 601,
+    "summary": "A vast, cold region above the deep seafloor, supplied mainly by organic material sinking from shallower water.",
+    "conditions": [
+      "Near-freezing water",
+      "Crushing pressure",
+      "Very limited food except around special habitats"
+    ],
+    "sourceIds": [
+      "whoi-abyssal",
+      "smithsonian-deep-sea"
+    ]
+  },
+  {
+    "slug": "hadal",
+    "name": "Hadal Zone",
+    "scientificName": "Hadalpelagic",
+    "minDepthM": 6000,
+    "maxDepthM": 11000,
+    "light": "No sunlight",
+    "temperature": "Just above freezing",
+    "pressureAtBaseAtm": 1101,
+    "summary": "The trench zone: narrow, extremely deep habitats with specialized communities and the ocean’s highest pressures.",
+    "conditions": [
+      "Extreme pressure",
+      "Steep trench topography",
+      "Food can collect along trench floors and slopes"
+    ],
+    "sourceIds": [
+      "whoi-hadal",
+      "noaa-deepest-fish"
+    ]
+  }
+]

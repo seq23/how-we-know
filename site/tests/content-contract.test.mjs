@@ -1,0 +1,3 @@
+import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';const questions=JSON.parse(fs.readFileSync('content/questions.json','utf8'))
+test('every admitted question has a dormant or complete video record',()=>{assert.equal(questions.length,20);for(const item of questions){assert.ok(['unplanned','planned','in-production','published'].includes(item.video.status));if(item.video.status!=='published')assert.equal(item.video.videoId,null)}})
+test('direct answers are extraction-sized',()=>{for(const item of questions)assert.ok(item.directAnswer.trim().split(/\s+/).length<=40,item.slug)})

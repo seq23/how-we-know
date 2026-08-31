@@ -1,0 +1,117 @@
+[
+  {
+    "id": "chatgpt",
+    "category": "ai-assistant",
+    "domains": [
+      "chatgpt.com",
+      "chat.openai.com"
+    ],
+    "utmSources": [
+      "chatgpt",
+      "openai"
+    ]
+  },
+  {
+    "id": "perplexity",
+    "category": "ai-assistant",
+    "domains": [
+      "perplexity.ai"
+    ],
+    "utmSources": [
+      "perplexity"
+    ]
+  },
+  {
+    "id": "claude",
+    "category": "ai-assistant",
+    "domains": [
+      "claude.ai"
+    ],
+    "utmSources": [
+      "claude",
+      "anthropic"
+    ]
+  },
+  {
+    "id": "gemini",
+    "category": "ai-assistant",
+    "domains": [
+      "gemini.google.com"
+    ],
+    "utmSources": [
+      "gemini"
+    ]
+  },
+  {
+    "id": "copilot",
+    "category": "ai-assistant",
+    "domains": [
+      "copilot.microsoft.com"
+    ],
+    "utmSources": [
+      "copilot"
+    ]
+  },
+  {
+    "id": "poe",
+    "category": "ai-assistant",
+    "domains": [
+      "poe.com"
+    ],
+    "utmSources": [
+      "poe"
+    ]
+  },
+  {
+    "id": "you-com",
+    "category": "ai-assistant",
+    "domains": [
+      "you.com"
+    ],
+    "utmSources": [
+      "you-com",
+      "you.com"
+    ]
+  },
+  {
+    "id": "google",
+    "category": "organic-search",
+    "domains": [
+      "google.com"
+    ],
+    "utmSources": [
+      "google"
+    ]
+  },
+  {
+    "id": "bing",
+    "category": "organic-search",
+    "domains": [
+      "bing.com"
+    ],
+    "utmSources": [
+      "bing"
+    ]
+  },
+  {
+    "id": "duckduckgo",
+    "category": "organic-search",
+    "domains": [
+      "duckduckgo.com"
+    ],
+    "utmSources": [
+      "duckduckgo"
+    ]
+  },
+  {
+    "id": "youtube",
+    "category": "youtube",
+    "domains": [
+      "youtube.com",
+      "youtu.be"
+    ],
+    "utmSources": [
+      "youtube"
+    ]
+  }
+]

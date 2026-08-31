@@ -1,0 +1,80 @@
+{
+  "sequence": 8,
+  "query": "What creatures live in the deep sea?",
+  "slug": "what-creatures-live-in-the-deep-sea",
+  "title": "What creatures live in the deep sea?",
+  "description": "The deep sea contains fishes, squid, octopuses, jellies, comb jellies, crustaceans, worms, sea cucumbers, corals, sponges, microbes, and many other groups. Different communities occupy open water, seafloor plains, trenches, vents, seeps, and animal falls.\n\nRead the sourced companion article: ${SITE_URL}/questions/what-creatures-live-in-the-deep-sea\n\nChapters:\n00:00 Opening\n00:28 The right way to see it\n00:49 The deep sea is many habitats, not one empty place\n01:32 Twilight-zone animals\n02:10 Midnight and abyssal animals\n02:49 Hadal trench animals\n03:31 A quick comparison\n04:14 Common myths and questions\n04:59 The pattern to remember\n07:02 What the evidence can and cannot say\n07:34 Closing\n\nSources and methodology are listed in the companion article. Educational content; no sensational claims or fabricated sightings.",
+  "descriptionFirstLine": "The deep sea contains fishes, squid, octopuses, jellies, comb jellies, crustaceans, worms, sea cucumbers, corals, sponges, microbes, and many other groups. Different communities occupy open water, seafloor plains, trenches, vents, seeps, and animal falls.",
+  "articlePath": "/questions/what-creatures-live-in-the-deep-sea",
+  "categoryId": "28",
+  "defaultLanguage": "en",
+  "privacyStatus": "private",
+  "madeForKids": false,
+  "containsSyntheticNarration": true,
+  "alteredContentDisclosure": "review-at-upload",
+  "tags": [
+    "deep sea",
+    "ocean",
+    "marine biology",
+    "deep sea creatures",
+    "ocean science"
+  ],
+  "chapters": [
+    {
+      "time": "00:00",
+      "title": "Opening"
+    },
+    {
+      "time": "00:28",
+      "title": "The right way to see it"
+    },
+    {
+      "time": "00:49",
+      "title": "The deep sea is many habitats, not one empty place"
+    },
+    {
+      "time": "01:32",
+      "title": "Twilight-zone animals"
+    },
+    {
+      "time": "02:10",
+      "title": "Midnight and abyssal animals"
+    },
+    {
+      "time": "02:49",
+      "title": "Hadal trench animals"
+    },
+    {
+      "time": "03:31",
+      "title": "A quick comparison"
+    },
+    {
+      "time": "04:14",
+      "title": "Common myths and questions"
+    },
+    {
+      "time": "04:59",
+      "title": "The pattern to remember"
+    },
+    {
+      "time": "07:02",
+      "title": "What the evidence can and cannot say"
+    },
+    {
+      "time": "07:34",
+      "title": "Closing"
+    }
+  ],
+  "thumbnailPath": "production/thumbnails/png/08-what-creatures-live-in-the-deep-sea.png",
+  "scriptPath": "production/scripts/plaintext/08-what-creatures-live-in-the-deep-sea.txt",
+  "videoOutputPath": "production/outputs/08-what-creatures-live-in-the-deep-sea.mp4",
+  "sourceIds": [
+    "mbari-animals",
+    "smithsonian-deep-sea",
+    "whoi-twilight",
+    "whoi-midnight",
+    "whoi-hadal",
+    "noaa-deepest-fish"
+  ],
+  "articleSlug": "what-creatures-live-in-the-deep-sea"
+}

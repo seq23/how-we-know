@@ -1,0 +1,139 @@
+{
+  "sequence": 17,
+  "slug": "what-is-a-yeti-crab",
+  "status": "production-ready-unrendered-human-pass-required",
+  "scriptWordCount": 1229,
+  "estimatedDurationSeconds": 509,
+  "narratorProfile": "kokoro-af-heart-v1",
+  "musicRotation": "ambient-01",
+  "scenes": [
+    {
+      "order": 1,
+      "chapter": "Cold open",
+      "start": "00:00",
+      "estimatedEnd": "00:09",
+      "visualMode": "diagram",
+      "narrationExcerpt": "A crab in total darkness waves its arms through methane-rich water to grow the bacteria it later scrapes into its mouth."
+    },
+    {
+      "order": 2,
+      "chapter": "Title card",
+      "start": "00:09",
+      "estimatedEnd": "00:11",
+      "visualMode": "comparison-grid",
+      "narrationExcerpt": "What is a yeti crab?"
+    },
+    {
+      "order": 3,
+      "chapter": "A family science met only recently",
+      "start": "00:11",
+      "estimatedEnd": "01:11",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "The first described yeti crab appeared in scientific literature in 2005, collected near hydrothermal vents in the South Pacific. The animal was pale, with long appendages covered i"
+    },
+    {
+      "order": 4,
+      "chapter": "The dancing behavior that suggested cultivation",
+      "start": "01:11",
+      "estimatedEnd": "02:13",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "During dives at a methane seep off Costa Rica, researchers observed a new yeti crab species rhythmically waving its long, bacteria-covered claws through the escaping fluid. They na"
+    },
+    {
+      "order": 5,
+      "chapter": "Chemistry, anatomy, and behavior point to the same meal",
+      "start": "02:13",
+      "estimatedEnd": "03:10",
+      "visualMode": "source-card",
+      "narrationExcerpt": "The 2011 PLOS ONE study combined several lines of evidence. Lipid and stable-isotope patterns indicated that the epibiotic bacteria were the crab's main food source. The crab posse"
+    },
+    {
+      "order": 6,
+      "chapter": "One family, several microbial arrangements",
+      "start": "03:10",
+      "estimatedEnd": "04:18",
+      "visualMode": "diagram",
+      "narrationExcerpt": "Not every Kiwa species has been studied with the same methods. Antarctic species cluster around vent flows and carry thick bacterial growth on the underside. Other species have lon"
+    },
+    {
+      "order": 7,
+      "chapter": "How to read the evidence",
+      "start": "04:18",
+      "estimatedEnd": "04:58",
+      "visualMode": "comparison-grid",
+      "narrationExcerpt": "A final production note matters here. Deep-sea footage is often separated from the instrument record that gives it meaning. For this episode, every depth, date, size, and record cl"
+    },
+    {
+      "order": 8,
+      "chapter": "Narration quality gate",
+      "start": "04:58",
+      "estimatedEnd": "05:23",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "The human review pass should also read every number aloud. Long strings of digits can sound natural on a page and awkward in narration. Pronunciations of scientific names, trench n"
+    },
+    {
+      "order": 9,
+      "chapter": "Context before spectacle",
+      "start": "05:23",
+      "estimatedEnd": "05:56",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "Another check is scale. Deep-sea images usually remove familiar references, so a small animal can appear enormous and a brief movement can look aggressive. The production should sh"
+    },
+    {
+      "order": 10,
+      "chapter": "Observation versus inference 2",
+      "start": "05:56",
+      "estimatedEnd": "06:27",
+      "visualMode": "source-card",
+      "narrationExcerpt": "The script also separates what the camera directly records from what researchers infer. Direct evidence includes a measured depth, a timestamped encounter, a collected specimen, or"
+    },
+    {
+      "order": 11,
+      "chapter": "A reusable source rule 3",
+      "start": "06:27",
+      "estimatedEnd": "06:59",
+      "visualMode": "diagram",
+      "narrationExcerpt": "For the channel, the stable rule is one claim, one traceable source, and one stated boundary. If a source describes one species, the script does not silently expand the claim to an"
+    },
+    {
+      "order": 12,
+      "chapter": "Production continuity 4",
+      "start": "06:59",
+      "estimatedEnd": "07:29",
+      "visualMode": "comparison-grid",
+      "narrationExcerpt": "The visual edit should vary from the previous episode even when the evidence structure stays consistent. Use a discovery-led opening for one topic, a mechanism diagram for another,"
+    },
+    {
+      "order": 13,
+      "chapter": "Context before spectacle 5",
+      "start": "07:29",
+      "estimatedEnd": "08:02",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "Another check is scale. Deep-sea images usually remove familiar references, so a small animal can appear enormous and a brief movement can look aggressive. The production should sh"
+    },
+    {
+      "order": 14,
+      "chapter": "Evidence limit",
+      "start": "08:02",
+      "estimatedEnd": "08:17",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "Detailed bacterial-farming evidence is strongest for Kiwa puravida; not every yeti-crab species has been tested with identical behavioral and chemical methods. The companion articl"
+    },
+    {
+      "order": 15,
+      "chapter": "Outro",
+      "start": "08:17",
+      "estimatedEnd": "08:29",
+      "visualMode": "source-card",
+      "narrationExcerpt": "The deep ocean is more useful when the uncertainty stays visible. The sourced article is linked below. Next, continue through the twenty-video launch sequence from the channel libr"
+    }
+  ],
+  "requiredAssets": [
+    "production/broll/original/17-what-is-a-yeti-crab.mp4",
+    "production/thumbnails/png/17-what-is-a-yeti-crab.png"
+  ],
+  "externalAssetsRequired": false,
+  "articlePath": "/questions/what-is-a-yeti-crab",
+  "metadataPath": "production/metadata/17-what-is-a-yeti-crab.json",
+  "humanPassPath": "production/human-pass/17-what-is-a-yeti-crab.md"
+}

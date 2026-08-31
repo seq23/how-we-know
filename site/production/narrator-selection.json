@@ -1,0 +1,25 @@
+{
+  "id": "kokoro-af-heart-v1",
+  "engine": "Kokoro-82M",
+  "voice": "af_heart",
+  "languageCode": "a",
+  "sampleRate": 24000,
+  "speed": 0.98,
+  "license": "Apache-2.0",
+  "status": "selected-configured-human-audition-pending",
+  "selectionReason": "Stable American-English voice exposed in the official Kokoro inference example; permissive Apache-licensed code and weights.",
+  "fallback": {
+    "engine": "FFmpeg flite",
+    "voice": "slt",
+    "use": "pipeline smoke tests only; not approved for public release"
+  },
+  "qualityGate": [
+    "Pronunciation pass",
+    "No clipped phrases",
+    "Consistent loudness",
+    "No unexplained voice change",
+    "Human audition before publication"
+  ],
+  "activationWorkflow": ".github/workflows/voice-audition.yml",
+  "finalRenderWorkflow": ".github/workflows/render-launch-batch.yml"
+}

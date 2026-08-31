@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Production Asset Rights Manifest",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "assetId",
+      "localFilename",
+      "assetStatus",
+      "subject",
+      "sourceOrganization",
+      "originalUrl",
+      "rightsBasis",
+      "commercialUseAllowed",
+      "modificationAllowed",
+      "licenseCheckedDate",
+      "fileSha256",
+      "videosUsedIn"
+    ],
+    "properties": {
+      "assetId": {
+        "type": "string",
+        "minLength": 1
+      },
+      "localFilename": {
+        "type": "string",
+        "minLength": 1
+      },
+      "assetStatus": {
+        "enum": [
+          "candidate",
+          "approved",
+          "downloaded",
+          "rejected",
+          "retired"
+        ]
+      },
+      "subject": {
+        "type": "string"
+      },
+      "depthZone": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "sourceOrganization": {
+        "type": "string"
+      },
+      "originalUrl": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "format": "uri"
+      },
+      "assetPageUrl": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "format": "uri"
+      },
+      "directDownloadUrl": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "format": "uri"
+      },
+      "rightsBasis": {
+        "type": "string"
+      },
+      "attributionRequired": {
+        "type": "boolean"
+      },
+      "requiredCreditText": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "commercialUseAllowed": {
+        "type": "boolean"
+      },
+      "modificationAllowed": {
+        "type": "boolean"
+      },
+      "licenseCheckedDate": {
+        "type": "string",
+        "format": "date"
+      },
+      "downloadDate": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "format": "date"
+      },
+      "fileSha256": {
+        "type": "string",
+        "pattern": "^[a-f0-9]{64}$"
+      },
+      "writtenPermissionPath": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "videosUsedIn": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "notes": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,1985 @@
+{
+  "artifact": "How We Know",
+  "repository": "how-we-know",
+  "version": "1.4.0",
+  "generatedAt": "2026-08-30T19:40:31.598Z",
+  "validationStatus": "STRUCTURALLY CHECKED — LOCAL VALIDATION REQUIRED",
+  "implementedPhases": [
+    "Research Phase 0",
+    "Site Phases 1-4",
+    "Measurement Phase structural implementation",
+    "Channel Phase 1 production foundation",
+    "Channel Phase 2 final script system",
+    "Channel Phase 3 batch assembly line",
+    "Channel Phase 4 publishing and reciprocal-link contract",
+    "Channel Phase 5 twenty-video release packages",
+    "Optional local TTS, FFmpeg render, upload and sync automation",
+    "Provider-gated Cloudflare Workers deployment",
+    "Credentialless noindex owner operations guide at /admin",
+    "Exact GitHub workflow, file, folder, receipt and runbook links",
+    "Receipt-backed human-pass approval GitHub workflow",
+    "Static snapshot readiness generation for twenty videos",
+    "Twenty-script humanization pass with unique cold opens, POV drafts, evidence limits and structural variation",
+    "Exhaustive digit-bearing sentence source mapping and anti-template validation",
+    "Local eSpeak/FFmpeg technical proof marked not final",
+    "GitHub Actions Kokoro voice audition and twenty-video final-render activation",
+    "YouTube OAuth refresh-token and scheduled batch-upload activation"
+  ],
+  "counts": {
+    "files": 385,
+    "questions": 20,
+    "zones": 5,
+    "creatures": 11,
+    "sources": 43,
+    "publicRoutes": 45,
+    "prerenderRoutes": 46,
+    "initialVideoQueue": 20,
+    "finalVideoScripts": 20,
+    "admittedMediaAssets": 64,
+    "originalMusicBeds": 4,
+    "originalMotionClips": 20,
+    "thumbnailRenders": 20
+  },
+  "unprovenBoundaries": [
+    "npm dependency installation and package-lock creation",
+    "Framework-aware TypeScript semantic typecheck",
+    "TanStack Start production build and prerendered HTML inspection",
+    "Browser and deployed Cloudflare Workers journeys, including responsive /admin review",
+    "Owner confirmation that every drafted first-person observation is personally true",
+    "Human approval of the selected Kokoro voice and speed",
+    "Live dispatch, commit and push from the human-pass approval workflow",
+    "Execution of the internet-enabled GitHub Actions Kokoro runner",
+    "Twenty generated Kokoro WAVs and twenty public-review MP4 outputs",
+    "YouTube OAuth upload, publication and public video metadata",
+    "Analytics, Search Console, indexation, ranking, backlink and citation telemetry"
+  ],
+  "hashAlgorithm": "SHA-256",
+  "manifestSelfHash": "excluded to avoid circular hashing",
+  "files": [
+    {
+      "path": ".env.example",
+      "bytes": 384,
+      "sha256": "090f86b2fb37785d7904dae641ac9fd0ef4310c1afa0a0e0c1a5b7e6fc07c641"
+    },
+    {
+      "path": ".github/workflows/approve-human-pass.yml",
+      "bytes": 1588,
+      "sha256": "62997ac604c5082573a84fd24cfddf5cad8a7ad4f5c381e806237e213475030c"
+    },
+    {
+      "path": ".github/workflows/deploy-cloudflare.yml",
+      "bytes": 617,
+      "sha256": "59e74415f299222bb15ba3e46b9c824737b58366f55d219ae21100b424c82cfe"
+    },
+    {
+      "path": ".github/workflows/render-launch-batch.yml",
+      "bytes": 1905,
+      "sha256": "120774d25189711dbfd2f3e0a3f071e93119060c08be123316d2c0040746e0b4"
+    },
+    {
+      "path": ".github/workflows/validate.yml",
+      "bytes": 307,
+      "sha256": "ad00fe346265448ab8dc893819a075f151b99c0a3c9fc204b49de9f2e2eff33a"
+    },
+    {
+      "path": ".github/workflows/voice-audition.yml",
+      "bytes": 1212,
+      "sha256": "524f35b87f9299478af413398273b41fea6aa3e9b93fa5cda1ad314b449c0e9d"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 232,
+      "sha256": "fded997412d69baa7401ebec5e9b91c185c529cd58a1df7ba165337998327f2a"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2110,
+      "sha256": "77fc037c5ac7b10191e986c92ee646c296859b5639d260e511d282bdab113868"
+    },
+    {
+      "path": "content/admin-status.json",
+      "bytes": 9906,
+      "sha256": "885176ad5d80071262db2e803d71bbcad21f3a7b9221f3cd2e9d415c00dc65c4"
+    },
+    {
+      "path": "content/creatures.json",
+      "bytes": 5880,
+      "sha256": "3e00b9b8a5db83b7887390917df7c61d74b4e6fb43128ae533ecfb9624ce3625"
+    },
+    {
+      "path": "content/questions.json",
+      "bytes": 93481,
+      "sha256": "d3d66e6631eb17d21940f5154202b69bf9a0aa6ddbb2fda120a40a0e3dc50b3d"
+    },
+    {
+      "path": "content/sources.json",
+      "bytes": 16773,
+      "sha256": "258329fe238f7d1ffd58da427f68ce288512b23a3b9a355301d05df120689e10"
+    },
+    {
+      "path": "content/traffic-sources.json",
+      "bytes": 1726,
+      "sha256": "fc2029f2a19d39f866fd6528fae4596f27364348ae33b64ed78f5155880a01cf"
+    },
+    {
+      "path": "content/zones.json",
+      "bytes": 3067,
+      "sha256": "8aaa2478fdf728ade1aaf59caf69709690281198a563c1ecc84573960c5c6aaa"
+    },
+    {
+      "path": "data/measurement/kpi-contract.json",
+      "bytes": 1636,
+      "sha256": "4c4a61b5156fd4f0acc2a1c3f04b7b3fb07768baab2fdf6129971cb3154ed2f5"
+    },
+    {
+      "path": "data/measurement/observations.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "docs/architecture.md",
+      "bytes": 2894,
+      "sha256": "77255ae0789891c968550c2480ce73c67c57f6c90ad1a0b86dc34202ca4f8d51"
+    },
+    {
+      "path": "docs/content-contract.md",
+      "bytes": 785,
+      "sha256": "0b89485c39a2688299f29842112bf2d893bdae0a73594385363f868f1728659c"
+    },
+    {
+      "path": "docs/deployment.md",
+      "bytes": 1074,
+      "sha256": "5c932ed95113ca9100c893f3dd306e351a79324d3bbb15f42e1d52231e2aa1ef"
+    },
+    {
+      "path": "docs/full-intended-system.md",
+      "bytes": 425,
+      "sha256": "ec0b3308b7d03aa228b92575fcc9e96980533bbee637e2d823260840b4479b04"
+    },
+    {
+      "path": "docs/measurement.md",
+      "bytes": 1695,
+      "sha256": "81a7fad80e89680fc1d9c410ba1fb98f3974cc363fb49a9007c1505aa36c827a"
+    },
+    {
+      "path": "docs/package-lock-status.md",
+      "bytes": 556,
+      "sha256": "01cd83eb9379813489cf6ff6a794740acbc451d64bbfb3cf2695b986ba161ea1"
+    },
+    {
+      "path": "docs/phase-ledger.md",
+      "bytes": 1367,
+      "sha256": "1b5f51e07d34837b589842d5b5910fc1d5d9f647b999c7ea0bcf28e5c751781d"
+    },
+    {
+      "path": "docs/research-channel-production.md",
+      "bytes": 1288,
+      "sha256": "6be602cc93746f422dad4852f36e0a18e9fc8f45cf8ad9e682ba0c359ae39e8c"
+    },
+    {
+      "path": "docs/research-provenance.md",
+      "bytes": 3122,
+      "sha256": "a144ffcb83cfb738663ff66692af4ea61a3043a2056ae356e84aa432f39b0f0b"
+    },
+    {
+      "path": "docs/runbooks/ADMIN_OPERATIONS_GUIDE.md",
+      "bytes": 1793,
+      "sha256": "e740063019d6bf2bbec17503757d87ba7396371e1361512efcd7ced0071c194f"
+    },
+    {
+      "path": "docs/runbooks/HUMANIZED_SCRIPT_AND_RENDER_GATE.md",
+      "bytes": 2588,
+      "sha256": "9436ee9c4ad9f90011b5228a294e05a215a215e61a4a482355de6b8f76e72a62"
+    },
+    {
+      "path": "docs/runbooks/TWENTY_VIDEO_ACTIVATION.md",
+      "bytes": 4200,
+      "sha256": "affcccc011fead6716f6ed608339037af838139a1982ead937289507b934b5c4"
+    },
+    {
+      "path": "docs/runbooks/VOICE_AUDITION_AND_RENDER.md",
+      "bytes": 2268,
+      "sha256": "19e8bb638516f58c02dc1e6718f0c1c70ae83a0004f182a239f1ed34581de1de"
+    },
+    {
+      "path": "docs/runbooks/channel-production.md",
+      "bytes": 978,
+      "sha256": "10c2e40b4661b0550fe48eec07f29530a3699ae773aafda8c40d87305c131ab5"
+    },
+    {
+      "path": "docs/runbooks/provider-deployment.md",
+      "bytes": 696,
+      "sha256": "fd2c592b0644e78421d0117d59d8f57ce0be2368992efd8e494710b99a218546"
+    },
+    {
+      "path": "docs/runbooks/youtube-publishing.md",
+      "bytes": 479,
+      "sha256": "921bdd22b74d984902760c3cd2f7a5652b2ee737202131e1e9407654442f9f49"
+    },
+    {
+      "path": "docs/scope-receipt.md",
+      "bytes": 1698,
+      "sha256": "7b6ffbc0fbd06a96ce4a61c067874247907507ed6e342d23799bad580cabc72c"
+    },
+    {
+      "path": "docs/validation-report.md",
+      "bytes": 1644,
+      "sha256": "abd86e48c683de434d2db2f2c4a2e29a83edc38c951771a8222585c9d3d3d025"
+    },
+    {
+      "path": "docs/validation.md",
+      "bytes": 1412,
+      "sha256": "9aecba1cad164fc4a09c1c7bed787d201693d3df3c14b44777fa484a705d54b1"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 146972,
+      "sha256": "ef1d562e0b95683921e7463988575970a7fd0c09dc5420577e5bd3a76489d40a"
+    },
+    {
+      "path": "package.json",
+      "bytes": 1888,
+      "sha256": "c7a44c3a838fa9b60d5f7481f464930f8390eaa5b535f54d7793ea2ad0c9393d"
+    },
+    {
+      "path": "production/README.md",
+      "bytes": 488,
+      "sha256": "a799d0c5ec0e1a41a0ecd59cf1dc23f429ede53bd3a64ea0b2ac4adcd572bc30"
+    },
+    {
+      "path": "production/asset-rights-manifest.csv",
+      "bytes": 26043,
+      "sha256": "1cf430363ed46c515bff20af7850d9aa945a9d94f2e593fb6fbf3e3ce8e330ae"
+    },
+    {
+      "path": "production/asset-rights-manifest.json",
+      "bytes": 57881,
+      "sha256": "921c5e5839f0945b9907451103001eec6cb325bbff8372358113b84389e832f0"
+    },
+    {
+      "path": "production/asset-rights-manifest.schema.json",
+      "bytes": 2391,
+      "sha256": "f200c6e10e77eb1135bbd52b9c2e5d966561b87fb64dcbc8aa86e4efeeac9433"
+    },
+    {
+      "path": "production/assets/audio/.gitkeep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "production/assets/footage/.gitkeep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "production/assets/renders/.gitkeep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "production/assets/thumbnails/.gitkeep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "production/audio/music/ambient-01.m4a",
+      "bytes": 1132497,
+      "sha256": "695b342c6a3d4e696697725e68f33d1c52ef18572ef2e8564f157b648945bacc"
+    },
+    {
+      "path": "production/audio/music/ambient-02.m4a",
+      "bytes": 437117,
+      "sha256": "54917d5a2ff38576f2bad574c4d82e80eb324c4f42cf30dd168edba4024c1477"
+    },
+    {
+      "path": "production/audio/music/ambient-03.m4a",
+      "bytes": 1195205,
+      "sha256": "a1589caf5e9300ee5b14bc5251e48c79b084ce4a4fb5bdc8dade41eddd18ec01"
+    },
+    {
+      "path": "production/audio/music/ambient-04.m4a",
+      "bytes": 1120867,
+      "sha256": "8e0dc9f2adf54fd7a05631e3e560fe5f8efa3623e42a5e729a86b9477e68ec1e"
+    },
+    {
+      "path": "production/audio/narration/README.md",
+      "bytes": 256,
+      "sha256": "d17b2fa0cae74752203e6a1fc756e6f46802284e23f36f932dde05ad30e39cde"
+    },
+    {
+      "path": "production/audition/audition-script.txt",
+      "bytes": 361,
+      "sha256": "c3c3537d9e938c31fdd9ae87c5e878f2ff8a8ea020f8aa51f18a63d905a7568c"
+    },
+    {
+      "path": "production/automation/KOKORO_COLAB.md",
+      "bytes": 584,
+      "sha256": "1fcc29c522931be0800c6fb5d3c09f912702aa1abc9da73771ae7c1ee31842b5"
+    },
+    {
+      "path": "production/automation/add_final_humanized_supplements.py",
+      "bytes": 13078,
+      "sha256": "8bd0478f42ad9614c8ca0e59790febb9380be73024d2ae2a3a23e3914936e2e9"
+    },
+    {
+      "path": "production/automation/add_humanized_expansions.py",
+      "bytes": 26374,
+      "sha256": "af9aac9f44893252d46e059afec987470a9d4248ea4e7e81508eccb279181936"
+    },
+    {
+      "path": "production/automation/apply_humanization_pass.py",
+      "bytes": 67692,
+      "sha256": "75a701406e3c27bd6f0f94b9e3ba826f2955c8c83d18b4fe020f925011c26be0"
+    },
+    {
+      "path": "production/automation/approve_human_pass.py",
+      "bytes": 3543,
+      "sha256": "df03d3c967c668b6f1df21890185856e61422edd7897fdb0c985b5507595ce4e"
+    },
+    {
+      "path": "production/automation/bootstrap_youtube_oauth.py",
+      "bytes": 1105,
+      "sha256": "454435f6d130dec97f2bf346fe815df2424654270a1d5169e0fffbce895ac41c"
+    },
+    {
+      "path": "production/automation/final_length_topups.py",
+      "bytes": 5293,
+      "sha256": "fdde095293f8551448683ed0f56c5de6108ceb7f8f0f4366c8501b530b6f5a21"
+    },
+    {
+      "path": "production/automation/generate_exhaustive_number_audit.py",
+      "bytes": 4454,
+      "sha256": "6fbba0e14e581643f53502c89b60c97b5dfe0f2e21fd513ded8da40f757a9fa9"
+    },
+    {
+      "path": "production/automation/generate_music.sh",
+      "bytes": 1445,
+      "sha256": "5bdbb09420399ad148ea767946bce6300298cd3a16b3cc180da9383b3aaeb9e5"
+    },
+    {
+      "path": "production/automation/length_floor_repair.py",
+      "bytes": 3515,
+      "sha256": "94ef4fe5a05d6dfabbf336e1f647c437b29d0132d0c5db9f2acf4c202e2e59b8"
+    },
+    {
+      "path": "production/automation/render_all.sh",
+      "bytes": 1070,
+      "sha256": "edb35514abccdf4f08d04e018a91fde081689a5b4f6498a4232c690cfe7a7914"
+    },
+    {
+      "path": "production/automation/render_video.sh",
+      "bytes": 1114,
+      "sha256": "cbc520a85568c8df80dee905751dba0411c598cf56448cb48b37ce468a276fe4"
+    },
+    {
+      "path": "production/automation/requirements-tts.txt",
+      "bytes": 30,
+      "sha256": "ff72818d6f9170ee514ef274a7ebfbd2cad0f0573a88e236fe1a33e1a7c4e65a"
+    },
+    {
+      "path": "production/automation/requirements-youtube.txt",
+      "bytes": 82,
+      "sha256": "b71bc337de5b5f0c9962f886c52995e855164ccbdce4bfb3f8008b9e03eb72d3"
+    },
+    {
+      "path": "production/automation/sync_published_video.mjs",
+      "bytes": 1046,
+      "sha256": "f17f82e9dbcde7bbc11603d70ed3d80bf8a9e2b8e193e686ca198b76d2378bca"
+    },
+    {
+      "path": "production/automation/sync_site_from_receipts.py",
+      "bytes": 2022,
+      "sha256": "2fd747a7f0ee017b1dcb3bced693f27d93f390d123748abd5b5b240d207f09b3"
+    },
+    {
+      "path": "production/automation/synthesize_audition.py",
+      "bytes": 1306,
+      "sha256": "2994d40ca2105658d89f43113fe618675c8129828b304b0a2c121caec872e8f8"
+    },
+    {
+      "path": "production/automation/synthesize_narration.py",
+      "bytes": 1032,
+      "sha256": "2e402c27b91d416e71a5886972862cf824aeaa866e3130bda02caea33138e85f"
+    },
+    {
+      "path": "production/automation/top_up_humanized_scripts.py",
+      "bytes": 8462,
+      "sha256": "25cdd3ee25d848dc918ad55b394e314146b21664a90826db36cd05c861ad8a45"
+    },
+    {
+      "path": "production/automation/upload_batch.py",
+      "bytes": 1915,
+      "sha256": "cf55b0f0fed9310387418db6cee557345b18490e1f2de71c2c4bff58195e1db3"
+    },
+    {
+      "path": "production/automation/upload_youtube.py",
+      "bytes": 4375,
+      "sha256": "ba37720142910b08523af9699e22da19723892a57bcfda381fad98bc77c15acd"
+    },
+    {
+      "path": "production/automation/validate_human_pass.py",
+      "bytes": 1149,
+      "sha256": "529ab84e035c0edbc32478eb73c62a3c2e55472a846cb7a345c3f79bdb956bc1"
+    },
+    {
+      "path": "production/automation/validate_rendered_batch.py",
+      "bytes": 1629,
+      "sha256": "7051e98f75bf21843e97510b93955445fb14553651e1318bf2f2097ab92549cb"
+    },
+    {
+      "path": "production/broll/original/01-why-deep-sea-creatures-look-so-weird.mp4",
+      "bytes": 171363,
+      "sha256": "2cb78dba0e386c087620d252c3cf392aad608cf0ffcd469348a13089d2fe90b9"
+    },
+    {
+      "path": "production/broll/original/02-how-deep-sea-creatures-survive-pressure.mp4",
+      "bytes": 178717,
+      "sha256": "9eab510bb079e29b70a390c98e36026d0702673d09832f0f7bcb7ddf8adb1ded"
+    },
+    {
+      "path": "production/broll/original/03-why-deep-sea-creatures-are-surfacing.mp4",
+      "bytes": 179251,
+      "sha256": "50d1201dfd5ef7261f168363196a79b9cbf536248e0109ee5b8af9bb368468c1"
+    },
+    {
+      "path": "production/broll/original/04-why-deep-sea-creatures-are-so-scary.mp4",
+      "bytes": 168472,
+      "sha256": "9b92bf4a2f759b1bee9d80ff2c1bc231818f9156d7316d76648e774cb3ea0355"
+    },
+    {
+      "path": "production/broll/original/05-why-many-deep-sea-creatures-are-red.mp4",
+      "bytes": 181542,
+      "sha256": "32ae65f39a51a9c7e684d1c1069a1ec76b47f515359d035c36f8793e5cc12f8a"
+    },
+    {
+      "path": "production/broll/original/06-why-some-deep-sea-creatures-are-transparent.mp4",
+      "bytes": 177087,
+      "sha256": "9cc23c9606a11e52bf282c7eb2e1f234d9345736255bf1882ebfac87ca7a3515"
+    },
+    {
+      "path": "production/broll/original/07-why-deep-sea-creatures-get-creepier-deeper.mp4",
+      "bytes": 184616,
+      "sha256": "3c4f2bb1449431ce556e30f7dbc316a9a779b2988664bd6c7ecb99900b32adfc"
+    },
+    {
+      "path": "production/broll/original/08-what-creatures-live-in-the-deep-sea.mp4",
+      "bytes": 183753,
+      "sha256": "f761b2fd037e03e308ba0603c212018095e67962749540bbb68cd7f57904c838"
+    },
+    {
+      "path": "production/broll/original/09-what-is-the-scariest-deep-sea-creature.mp4",
+      "bytes": 177349,
+      "sha256": "69a10be8dff5c972f9c93c5e404c35f9ee87e4735e91ee1803a72e2c241cfb5a"
+    },
+    {
+      "path": "production/broll/original/10-what-is-the-deepest-part-of-the-ocean.mp4",
+      "bytes": 176898,
+      "sha256": "651fbacef3ed9dcabc69e6f050d92f2f70652daff437095156297a251ed1af22"
+    },
+    {
+      "path": "production/broll/original/11-what-is-a-dumbo-octopus.mp4",
+      "bytes": 61295,
+      "sha256": "a32eed13a5e1aa06ee145be00887f03489b03df413493bc842cbc82912733314"
+    },
+    {
+      "path": "production/broll/original/12-what-is-a-frilled-shark.mp4",
+      "bytes": 60688,
+      "sha256": "eaadac4a6048351d1d7020a83cb0dfa5e830578251a363782ca1f97dbee42377"
+    },
+    {
+      "path": "production/broll/original/13-how-does-bioluminescence-work-in-the-deep-sea.mp4",
+      "bytes": 56785,
+      "sha256": "d1f880da84070250a5d6decffea098431d32a665f917af381f8f97a83f9031c8"
+    },
+    {
+      "path": "production/broll/original/14-how-big-is-a-colossal-squid.mp4",
+      "bytes": 63532,
+      "sha256": "aabebd93913ca9cdb57c3f5a94a22a5e51c24750cce179eaeea952277d835a6e"
+    },
+    {
+      "path": "production/broll/original/15-how-do-people-reach-challenger-deep.mp4",
+      "bytes": 55838,
+      "sha256": "c07d05e2a4351504272509c18abf672f813b5e69e28d0cca9aa6001e313b1623"
+    },
+    {
+      "path": "production/broll/original/16-what-happens-when-a-whale-dies-in-the-deep-ocean.mp4",
+      "bytes": 61230,
+      "sha256": "4023618b2b9d6acadea4a63e3a3c26ecd509a2111cda8365992ff8d4d7a6694d"
+    },
+    {
+      "path": "production/broll/original/17-what-is-a-yeti-crab.mp4",
+      "bytes": 63475,
+      "sha256": "49ee0b21a5db98c05b5e109b6dee01e75d029fdc4f3a2a6ebc2b8b9603493b5c"
+    },
+    {
+      "path": "production/broll/original/18-why-does-black-smoker-water-not-boil.mp4",
+      "bytes": 57823,
+      "sha256": "365805ddea8cb085c1311cf0cdf4ed50c2eb3fbcd215dfcc84264dc7fb991944"
+    },
+    {
+      "path": "production/broll/original/19-what-is-the-deepest-fish-ever-recorded.mp4",
+      "bytes": 59046,
+      "sha256": "a768f8b403851926bc48a0a3678cd151698a463640376d2279181d2758a4f802"
+    },
+    {
+      "path": "production/broll/original/20-what-is-the-midnight-zone.mp4",
+      "bytes": 56651,
+      "sha256": "eb7db2cdbd3e48f74d7dee5f1af40c95430d4d8b71114d9f8fe28db9d3d59f1a"
+    },
+    {
+      "path": "production/broll/stills/01-why-deep-sea-creatures-look-so-weird.svg",
+      "bytes": 1387,
+      "sha256": "a574540db1b24b22bcedc723e085b2db888cb4915ac0892fe0ad8d20eaadf4ee"
+    },
+    {
+      "path": "production/broll/stills/02-how-deep-sea-creatures-survive-pressure.svg",
+      "bytes": 1391,
+      "sha256": "76a70f64f47769ba7145b025d49d4d33437ab8a514908af5fbf9a3bdabeb651b"
+    },
+    {
+      "path": "production/broll/stills/03-why-deep-sea-creatures-are-surfacing.svg",
+      "bytes": 1394,
+      "sha256": "e8b1b298875a0ed488d13e9edae5bb2fb6d58d3fc7256b4d02a3bf04b390e469"
+    },
+    {
+      "path": "production/broll/stills/04-why-deep-sea-creatures-are-so-scary.svg",
+      "bytes": 1387,
+      "sha256": "526c43c4cfcc805fe800f901baa68ea90aa423d4825b56a4c719a3aa5bb88651"
+    },
+    {
+      "path": "production/broll/stills/05-why-many-deep-sea-creatures-are-red.svg",
+      "bytes": 1393,
+      "sha256": "fc2ece1d8d4c8bb0dd32325b56d291717bcd6124f66d4ec78da1ad57fda385b3"
+    },
+    {
+      "path": "production/broll/stills/06-why-some-deep-sea-creatures-are-transparent.svg",
+      "bytes": 1390,
+      "sha256": "50e9284b7851450cf880f157305206d008971fbe4ac3a3d4b8a6d02490c728b0"
+    },
+    {
+      "path": "production/broll/stills/07-why-deep-sea-creatures-get-creepier-deeper.svg",
+      "bytes": 1394,
+      "sha256": "e05d440410f131ff3677fa4d98f93364329d5a69a33ebf7de5dc3f7cb1b4f6d3"
+    },
+    {
+      "path": "production/broll/stills/08-what-creatures-live-in-the-deep-sea.svg",
+      "bytes": 1395,
+      "sha256": "cfea0ecaf38c6b4e03f74fcaac967634ecdbee09c1a5d4b107808aa28de9ff41"
+    },
+    {
+      "path": "production/broll/stills/09-what-is-the-scariest-deep-sea-creature.svg",
+      "bytes": 1391,
+      "sha256": "1232b7a1e8bf12659c94c95be89dbce08fee5518ae28848e14001eb317f0015d"
+    },
+    {
+      "path": "production/broll/stills/10-what-is-the-deepest-part-of-the-ocean.svg",
+      "bytes": 1391,
+      "sha256": "a87cbdf9d8ea3f689ed0785872cb73e051d6039236fbd24dd0e451dd9a9f2ffa"
+    },
+    {
+      "path": "production/broll/stills/11-what-is-a-dumbo-octopus.svg",
+      "bytes": 1269,
+      "sha256": "0e53d3c4d406152eb19ec04ec748b2fc71edd696617b7a00a3b70a40f86b7d0d"
+    },
+    {
+      "path": "production/broll/stills/12-what-is-a-frilled-shark.svg",
+      "bytes": 1242,
+      "sha256": "5edc1bc664a32c404f9a6ffe2f1edb23d282236fb8516559f1766e10b078e086"
+    },
+    {
+      "path": "production/broll/stills/13-how-does-bioluminescence-work-in-the-deep-sea.svg",
+      "bytes": 1244,
+      "sha256": "c3dced77eb8ec8bb0a7fbdd93d61fd70a0feb1cb0a1275227948eabdc5ab8868"
+    },
+    {
+      "path": "production/broll/stills/14-how-big-is-a-colossal-squid.svg",
+      "bytes": 1266,
+      "sha256": "0c371e3c8ab058e6abe940b874e87c0cedfead09443c556764ec7777b587563e"
+    },
+    {
+      "path": "production/broll/stills/15-how-do-people-reach-challenger-deep.svg",
+      "bytes": 1210,
+      "sha256": "0f4292287760c9a3498710f259c276a8716ae41c986ce8dfdeb922fe41d6afb5"
+    },
+    {
+      "path": "production/broll/stills/16-what-happens-when-a-whale-dies-in-the-deep-ocean.svg",
+      "bytes": 1225,
+      "sha256": "b54b17531975d41ea3580f8870646d9ad5c3de0c42504b8472255d49503bdf0a"
+    },
+    {
+      "path": "production/broll/stills/17-what-is-a-yeti-crab.svg",
+      "bytes": 1241,
+      "sha256": "8137f93e89fcc8e906444d1f23132591d5e87bb20c4643ff078bc0422b98e134"
+    },
+    {
+      "path": "production/broll/stills/18-why-does-black-smoker-water-not-boil.svg",
+      "bytes": 1275,
+      "sha256": "58c6c4a786a7a65af11d850d03e649f6fce82ceb6e0456da25bcabc7ddab0751"
+    },
+    {
+      "path": "production/broll/stills/19-what-is-the-deepest-fish-ever-recorded.svg",
+      "bytes": 1258,
+      "sha256": "8428812929f1f086a0bd805d9930c23fa06b8a04e6351c9a6e746077d0618179"
+    },
+    {
+      "path": "production/broll/stills/20-what-is-the-midnight-zone.svg",
+      "bytes": 1231,
+      "sha256": "d2eaf3381f0c336758ba4bdb102c41616802d8fe3f5402914b18e8e54a68d738"
+    },
+    {
+      "path": "production/candidate-footage-sources.json",
+      "bytes": 3422,
+      "sha256": "182615bdbabe350c85d452c64d96d43891fbf2cad5191cc0afe8521ce9165150"
+    },
+    {
+      "path": "production/editing-template-spec.md",
+      "bytes": 1360,
+      "sha256": "b820526af8012c172c8ba5cd9a08b99bb74e94c5bc75464e0c82a4ef20e7bb78"
+    },
+    {
+      "path": "production/human-pass/01-why-deep-sea-creatures-look-so-weird.md",
+      "bytes": 1784,
+      "sha256": "08b3ab7313b6e62135e81dc3136a0af2be8bf72cc7e2f1b9a9705ec66787db41"
+    },
+    {
+      "path": "production/human-pass/02-how-deep-sea-creatures-survive-pressure.md",
+      "bytes": 1763,
+      "sha256": "0503bcc18a6cfba14a04f935f5cbfa60531ae30196486027f6201577031e72b5"
+    },
+    {
+      "path": "production/human-pass/03-why-deep-sea-creatures-are-surfacing.md",
+      "bytes": 1693,
+      "sha256": "9bff7a8223c97b2bad63dfcd8d7ac67a70d4216b7570a283119ca5c897a7300a"
+    },
+    {
+      "path": "production/human-pass/04-why-deep-sea-creatures-are-so-scary.md",
+      "bytes": 1696,
+      "sha256": "43fc385dddc410e9c665289420d608376ccf8e88bc14ad12acd1ec016a21ff55"
+    },
+    {
+      "path": "production/human-pass/05-why-many-deep-sea-creatures-are-red.md",
+      "bytes": 1656,
+      "sha256": "00477abbc8119de67af777a800221e5607f23e9a8fdec4ae2753b03a35f757d7"
+    },
+    {
+      "path": "production/human-pass/06-why-some-deep-sea-creatures-are-transparent.md",
+      "bytes": 1700,
+      "sha256": "34ae083d0f334f63a5ecb994937ead43e52bb2d055dd1d2096c067cd8c4f8595"
+    },
+    {
+      "path": "production/human-pass/07-why-deep-sea-creatures-get-creepier-deeper.md",
+      "bytes": 1718,
+      "sha256": "0964b75a01d278fc3472c162f8a3e52358c4d5ab74b1298f436acce509742615"
+    },
+    {
+      "path": "production/human-pass/08-what-creatures-live-in-the-deep-sea.md",
+      "bytes": 1728,
+      "sha256": "766281c5deaf67b005a846ef6debf778547e5f40c75942200ccfc6bce2ce11cd"
+    },
+    {
+      "path": "production/human-pass/09-what-is-the-scariest-deep-sea-creature.md",
+      "bytes": 1700,
+      "sha256": "f20261530cbc6361f1bdccfe4c4d9044d9ef2d97f24248e5215213f43bc81006"
+    },
+    {
+      "path": "production/human-pass/10-what-is-the-deepest-part-of-the-ocean.md",
+      "bytes": 1746,
+      "sha256": "1b5eda3b43c0311dc6f305059edd7dd06c7489314f7c6ca35e2fff07112ce016"
+    },
+    {
+      "path": "production/human-pass/11-what-is-a-dumbo-octopus.md",
+      "bytes": 1622,
+      "sha256": "edc7549cc152f2accb7b02bc18f6b8e73dbce9148f329f3a19d8f76478fa0cf3"
+    },
+    {
+      "path": "production/human-pass/12-what-is-a-frilled-shark.md",
+      "bytes": 1656,
+      "sha256": "0c54d1dd5445d2a408e2c79004ef21b9e94ceb6248f2847ac44a069077ddb9be"
+    },
+    {
+      "path": "production/human-pass/13-how-does-bioluminescence-work-in-the-deep-sea.md",
+      "bytes": 1741,
+      "sha256": "04508dc1c0d66b457f4990ad985ed7e536c107e5f669e09db4b45a16a22b157b"
+    },
+    {
+      "path": "production/human-pass/14-how-big-is-a-colossal-squid.md",
+      "bytes": 1661,
+      "sha256": "97c89f627d3d569e70fa1a248753a765561385e342419bce200e99f197954494"
+    },
+    {
+      "path": "production/human-pass/15-how-do-people-reach-challenger-deep.md",
+      "bytes": 1665,
+      "sha256": "77d7c9805f71dcf4397d88e27f03bd5803884e39bdc81acc6109bc0cefaa173b"
+    },
+    {
+      "path": "production/human-pass/16-what-happens-when-a-whale-dies-in-the-deep-ocean.md",
+      "bytes": 1743,
+      "sha256": "eb755c786e3435e13d809889ac9cdf54845d2f78e9935c7b5e6a9894750cb866"
+    },
+    {
+      "path": "production/human-pass/17-what-is-a-yeti-crab.md",
+      "bytes": 1600,
+      "sha256": "5a9e9d735c6d030a1b72c4b96b41dfbfa48d36c9e75b5f21ac8dc67a0eaf5c6e"
+    },
+    {
+      "path": "production/human-pass/18-why-does-black-smoker-water-not-boil.md",
+      "bytes": 1655,
+      "sha256": "d99e05075004a1426560d0e53c5e2fd26e16d2d1e32b37aa68a6a71b1c969e4c"
+    },
+    {
+      "path": "production/human-pass/19-what-is-the-deepest-fish-ever-recorded.md",
+      "bytes": 1663,
+      "sha256": "ba73290b51aa165f49a7df2655ff4c55061d07a8783310908105bd9d51cd82b3"
+    },
+    {
+      "path": "production/human-pass/20-what-is-the-midnight-zone.md",
+      "bytes": 1691,
+      "sha256": "6da2409b020fe0286389346a59165e888c87c7e36f42a659ff74b0060d993254"
+    },
+    {
+      "path": "production/human-pass/approval-ledger.json",
+      "bytes": 7119,
+      "sha256": "2ffd10246dc88cad08902110c1f35b3f7b93a3d9abe6e228d0cf575027bacdc8"
+    },
+    {
+      "path": "production/launch-cadence.json",
+      "bytes": 365,
+      "sha256": "549e0a904b192b0fde5aa831f280488a221d1ec5a118838323b3fdb1fcefcba9"
+    },
+    {
+      "path": "production/licenses/THIRD_PARTY.md",
+      "bytes": 860,
+      "sha256": "00d1c4d515d8abbf97a972299fb9dfccaf8c3c11aaaf9a0d7f8f0f995a3fc9e8"
+    },
+    {
+      "path": "production/metadata/01-why-deep-sea-creatures-look-so-weird.json",
+      "bytes": 3154,
+      "sha256": "753760777116e06519964aaf131992ac86438b434af2f0d927f8553307349572"
+    },
+    {
+      "path": "production/metadata/02-how-deep-sea-creatures-survive-pressure.json",
+      "bytes": 3084,
+      "sha256": "ea7e439268d41ea1217e28a781cd9e6cdf04995fcae818f01e386d46509246e3"
+    },
+    {
+      "path": "production/metadata/03-why-deep-sea-creatures-are-surfacing.json",
+      "bytes": 3079,
+      "sha256": "473c5f490766d7944ad2fa2e0f8be4eaff4ef34ad0ed86635807b5384f185b56"
+    },
+    {
+      "path": "production/metadata/04-why-deep-sea-creatures-are-so-scary.json",
+      "bytes": 3247,
+      "sha256": "c9ea824c53716561a8b89ad122bd3e3572ee7d9dc4f8753c4321ce4ba802076c"
+    },
+    {
+      "path": "production/metadata/05-why-many-deep-sea-creatures-are-red.json",
+      "bytes": 3059,
+      "sha256": "696b35074901175d00a915d701ac09fd6122d30e22db1c60ec42046a8db4d7bc"
+    },
+    {
+      "path": "production/metadata/06-why-some-deep-sea-creatures-are-transparent.json",
+      "bytes": 3114,
+      "sha256": "5ed862a056e03375caae3010a3db97687bf85fb54a601a3be0b36da79e2d07d1"
+    },
+    {
+      "path": "production/metadata/07-why-deep-sea-creatures-get-creepier-deeper.json",
+      "bytes": 3319,
+      "sha256": "3a364ece478a4f156f2b319fa05b22b29df68485153aded2bc473ec8e7e022a6"
+    },
+    {
+      "path": "production/metadata/08-what-creatures-live-in-the-deep-sea.json",
+      "bytes": 3045,
+      "sha256": "f7ab5e19621dc1890016ff87a00f499e44631b3a4befdfa2da1196a907244ffc"
+    },
+    {
+      "path": "production/metadata/09-what-is-the-scariest-deep-sea-creature.json",
+      "bytes": 3395,
+      "sha256": "0001a18c7d93dc46e65543a08707790d93d309492904cbdc341f8babfc962fd8"
+    },
+    {
+      "path": "production/metadata/10-what-is-the-deepest-part-of-the-ocean.json",
+      "bytes": 3260,
+      "sha256": "b3e798faa77f975b74580e57f445d313e0df9a3510624dcea02cd3b3cd3faed2"
+    },
+    {
+      "path": "production/metadata/11-what-is-a-dumbo-octopus.json",
+      "bytes": 3208,
+      "sha256": "4129317f4fe4fe1b5e0fb00042f66cf83795f85e8d47960c08afe403c647b5ed"
+    },
+    {
+      "path": "production/metadata/12-what-is-a-frilled-shark.json",
+      "bytes": 3318,
+      "sha256": "71b5924233c701a95a0c1d69f5e72078e8e9b810fdb1e1b0d20fbaa3722bfe56"
+    },
+    {
+      "path": "production/metadata/13-how-does-bioluminescence-work-in-the-deep-sea.json",
+      "bytes": 3612,
+      "sha256": "eae13e3968d3911d0220c917d23268e4fa4b58b1d4e58b0346159b7cd472c9a1"
+    },
+    {
+      "path": "production/metadata/14-how-big-is-a-colossal-squid.json",
+      "bytes": 3538,
+      "sha256": "eb51afc944474e83c3cb6ebd5468a01229027988923e670bf6246f3207323ab1"
+    },
+    {
+      "path": "production/metadata/15-how-do-people-reach-challenger-deep.json",
+      "bytes": 3771,
+      "sha256": "f3e6d388c77f191f7e12a1b8742492a6988513720339001a613487c478654602"
+    },
+    {
+      "path": "production/metadata/16-what-happens-when-a-whale-dies-in-the-deep-ocean.json",
+      "bytes": 3465,
+      "sha256": "0ad5d1fa8df6f5148efc45a8beec3e6b8be2f64406cf52b409c1a5dbac9bfbe2"
+    },
+    {
+      "path": "production/metadata/17-what-is-a-yeti-crab.json",
+      "bytes": 3382,
+      "sha256": "df9e558f4c57e5c0273cf10b3fde875d18f10cb6e1e8d36de51f84a228cb7a35"
+    },
+    {
+      "path": "production/metadata/18-why-does-black-smoker-water-not-boil.json",
+      "bytes": 3527,
+      "sha256": "90fdacea2e6fcc6447176bd9282adb63863b71b2e6d083d0b0b7c6b959e9b446"
+    },
+    {
+      "path": "production/metadata/19-what-is-the-deepest-fish-ever-recorded.json",
+      "bytes": 3621,
+      "sha256": "59bd3bac4501bdd455d239c5c0314bc04324368434c752da882a37fae672031e"
+    },
+    {
+      "path": "production/metadata/20-what-is-the-midnight-zone.json",
+      "bytes": 3673,
+      "sha256": "46791fc14f9b91262d3baa19db76982ce6d8f742108ff570480369d18d0ac1ac"
+    },
+    {
+      "path": "production/music-rights-ledger.csv",
+      "bytes": 881,
+      "sha256": "e1586f2b2e254ceec77eefbfabe7ad8922b08fca7baa2f7552326488071091da"
+    },
+    {
+      "path": "production/narrator-evaluation.md",
+      "bytes": 1231,
+      "sha256": "c44fe3d12698a2ba5ac181031e757c1763fc4559b95507349cf7b63ed90361eb"
+    },
+    {
+      "path": "production/narrator-scorecard.csv",
+      "bytes": 167,
+      "sha256": "99dee7417fead76afbf3a15751cd3489973bb899b58cdeffa81052a324d50ff7"
+    },
+    {
+      "path": "production/narrator-selection.json",
+      "bytes": 834,
+      "sha256": "e0fe0acb2cbcd17079f54fb8daa9ce3f2465c759c769ff4fc2650e75e3ac9163"
+    },
+    {
+      "path": "production/narrator-selection.md",
+      "bytes": 507,
+      "sha256": "c39856bcea187b853fb3ca2186258867b29fefe86f9bac8c47d11af2f2d1dec8"
+    },
+    {
+      "path": "production/packages/01-why-deep-sea-creatures-look-so-weird/README.md",
+      "bytes": 221,
+      "sha256": "a2fae27448e14eae7e86133859ebfb186f5216d23725fa0ab178c6ee3b71b798"
+    },
+    {
+      "path": "production/packages/01-why-deep-sea-creatures-look-so-weird/scene-plan.json",
+      "bytes": 4816,
+      "sha256": "57f847717e09ccd9b3b3ae987a5d93538ea3492f1d80cfa2e2295496618e6116"
+    },
+    {
+      "path": "production/packages/02-how-deep-sea-creatures-survive-pressure/README.md",
+      "bytes": 228,
+      "sha256": "b9c41060b1a54bd3fe60b05841cb221558547fb5996927342b05efa4fafc3784"
+    },
+    {
+      "path": "production/packages/02-how-deep-sea-creatures-survive-pressure/scene-plan.json",
+      "bytes": 4785,
+      "sha256": "1e8fefc6193f49d8e78b660adcb88788a00caf68043e7260b55d374b73561f07"
+    },
+    {
+      "path": "production/packages/03-why-deep-sea-creatures-are-surfacing/README.md",
+      "bytes": 221,
+      "sha256": "39035996a38fde985baf74784907cd7a82e1769b325fe3cab7d1b5d8ea1563fc"
+    },
+    {
+      "path": "production/packages/03-why-deep-sea-creatures-are-surfacing/scene-plan.json",
+      "bytes": 4772,
+      "sha256": "4ec7e8de9a75c4fe27ef682f3235e9a62a93db171773eb58835fbd1f2bf1edca"
+    },
+    {
+      "path": "production/packages/04-why-deep-sea-creatures-are-so-scary/README.md",
+      "bytes": 220,
+      "sha256": "ebaaaae2e81c2d4bc0249c1c0ca2cf69fe1e5a2ac09d763aa0d5962c8e1bb77e"
+    },
+    {
+      "path": "production/packages/04-why-deep-sea-creatures-are-so-scary/scene-plan.json",
+      "bytes": 4834,
+      "sha256": "d0a62d3244c1bbec1a561738fcbae9eddc70e9e4cd9d5a5be7ed3b82d0d7de42"
+    },
+    {
+      "path": "production/packages/05-why-many-deep-sea-creatures-are-red/README.md",
+      "bytes": 220,
+      "sha256": "26b6e47125b50d803a143d1830d4660c069b097694f03b90c9a9f6de8cc4613a"
+    },
+    {
+      "path": "production/packages/05-why-many-deep-sea-creatures-are-red/scene-plan.json",
+      "bytes": 4788,
+      "sha256": "f0115024b7b3efd5f08fd382d5ae0a4eb94c41e4c39cc5ca4537dd77245de2a2"
+    },
+    {
+      "path": "production/packages/06-why-some-deep-sea-creatures-are-transparent/README.md",
+      "bytes": 228,
+      "sha256": "19c755696425ed51027e231e3e0dbadacfdfaa898d0a45429250526d34b6259e"
+    },
+    {
+      "path": "production/packages/06-why-some-deep-sea-creatures-are-transparent/scene-plan.json",
+      "bytes": 4811,
+      "sha256": "0b59af0cfdfe0fb58bda9b9951f01cb0e8b2400c3df53bf24dad28f581c37340"
+    },
+    {
+      "path": "production/packages/07-why-deep-sea-creatures-get-creepier-deeper/README.md",
+      "bytes": 238,
+      "sha256": "16c071af58b152e75fd362639d5cc36bffb17a6dbd7aabfd5c95be3b4d1bf213"
+    },
+    {
+      "path": "production/packages/07-why-deep-sea-creatures-get-creepier-deeper/scene-plan.json",
+      "bytes": 4819,
+      "sha256": "b94fc2daab86e8fc5c1a8e7f630d2609c7e55c32857d487302a28d611cb29ccd"
+    },
+    {
+      "path": "production/packages/08-what-creatures-live-in-the-deep-sea/README.md",
+      "bytes": 220,
+      "sha256": "5caa104eb903416cbb25f36cfee01b8a000c78ef3839ec40636f09f61cb5d925"
+    },
+    {
+      "path": "production/packages/08-what-creatures-live-in-the-deep-sea/scene-plan.json",
+      "bytes": 4727,
+      "sha256": "12417405cf1a799b52ba0350860c0d7d6efedfb7653b24e5b96e5c7545360c0c"
+    },
+    {
+      "path": "production/packages/09-what-is-the-scariest-deep-sea-creature/README.md",
+      "bytes": 223,
+      "sha256": "86f177bf2c024e42f2e1fd56dca9e1ca25b06b32d0294c666ec8031281260e3e"
+    },
+    {
+      "path": "production/packages/09-what-is-the-scariest-deep-sea-creature/scene-plan.json",
+      "bytes": 5190,
+      "sha256": "bfd220d36a9437f43916dac29c9480736648ef60a30ad0bbe745f48509321a9d"
+    },
+    {
+      "path": "production/packages/10-what-is-the-deepest-part-of-the-ocean/README.md",
+      "bytes": 222,
+      "sha256": "0f73217a2c311748f3cbcd583a245c8ca69b52c5a57568a6eab1d38b22cad2a0"
+    },
+    {
+      "path": "production/packages/10-what-is-the-deepest-part-of-the-ocean/scene-plan.json",
+      "bytes": 4817,
+      "sha256": "4b6e689a78f20c3bc4625066476b421c1e28fb4452af6e13211f127a643bc827"
+    },
+    {
+      "path": "production/packages/11-what-is-a-dumbo-octopus/README.md",
+      "bytes": 127,
+      "sha256": "4668afe2aa313e598147506c15a9b3b1f5f7643f4d254bc51479e0c1d038ea6e"
+    },
+    {
+      "path": "production/packages/11-what-is-a-dumbo-octopus/scene-plan.json",
+      "bytes": 5345,
+      "sha256": "3d7a9dbbb686ed0d0076a9ebb77f4a49c0e20f667817f62206761ce566f4ef1b"
+    },
+    {
+      "path": "production/packages/12-what-is-a-frilled-shark/README.md",
+      "bytes": 127,
+      "sha256": "232931bb69bac7173d52c4e652bfc4155742d27e2b8a35330f6876d138e013e3"
+    },
+    {
+      "path": "production/packages/12-what-is-a-frilled-shark/scene-plan.json",
+      "bytes": 5775,
+      "sha256": "54318843459e382154a64ee84ef55d6d4e6e142d44ca33bb5fc97113cb7e1891"
+    },
+    {
+      "path": "production/packages/13-how-does-bioluminescence-work-in-the-deep-sea/README.md",
+      "bytes": 149,
+      "sha256": "d07b548aa5ce5ad047e50212f8670030dc68c7d64332fe4a054d75e33fcc1e95"
+    },
+    {
+      "path": "production/packages/13-how-does-bioluminescence-work-in-the-deep-sea/scene-plan.json",
+      "bytes": 5879,
+      "sha256": "d4630e5ce84f8089082ac9a65d1410df4b1aaf9979d86d3f2d864e2cda7d0378"
+    },
+    {
+      "path": "production/packages/14-how-big-is-a-colossal-squid/README.md",
+      "bytes": 131,
+      "sha256": "6998bc9f9b912c6639184cc86522a1f7c8042643deec8f0cecb570044468d268"
+    },
+    {
+      "path": "production/packages/14-how-big-is-a-colossal-squid/scene-plan.json",
+      "bytes": 5770,
+      "sha256": "f03e967b1fa72e2502028eb2db1665d27e89c5c1f9486215e31d86a9cbb5be27"
+    },
+    {
+      "path": "production/packages/15-how-do-people-reach-challenger-deep/README.md",
+      "bytes": 139,
+      "sha256": "1474bc988dc64aa98755f2e7bd9ab3a204eee18a2a1cffcf057114bccc0a1b77"
+    },
+    {
+      "path": "production/packages/15-how-do-people-reach-challenger-deep/scene-plan.json",
+      "bytes": 5883,
+      "sha256": "c2f9b710613d931dfc75864cdb27b0a2545e914d51b1b14f7484cbb06c872044"
+    },
+    {
+      "path": "production/packages/16-what-happens-when-a-whale-dies-in-the-deep-ocean/README.md",
+      "bytes": 152,
+      "sha256": "4200e4113c978e97f121446d856fda5c7d8935c624e3e58886327f43e3a95046"
+    },
+    {
+      "path": "production/packages/16-what-happens-when-a-whale-dies-in-the-deep-ocean/scene-plan.json",
+      "bytes": 5873,
+      "sha256": "3018cc5bb5d09110a39808941ecf4236a9a087636837e8ee1f90b14cbb988cfb"
+    },
+    {
+      "path": "production/packages/17-what-is-a-yeti-crab/README.md",
+      "bytes": 123,
+      "sha256": "838c820596681737548d750c3d11dcb3a870e2d154afff9fc36147338cdf8009"
+    },
+    {
+      "path": "production/packages/17-what-is-a-yeti-crab/scene-plan.json",
+      "bytes": 6117,
+      "sha256": "1de126c79f567cda68b6bb0d82cc56c10d3bdc2c152e44f3dfc4d30737b6e285"
+    },
+    {
+      "path": "production/packages/18-why-does-black-smoker-water-not-boil/README.md",
+      "bytes": 140,
+      "sha256": "47573a89bc1cc0ed937e4d8a6da20e4bde06b85a49200e3efbd7b9587c9e14a9"
+    },
+    {
+      "path": "production/packages/18-why-does-black-smoker-water-not-boil/scene-plan.json",
+      "bytes": 6194,
+      "sha256": "ba5427280181834c7dab367c493f872c727ffca2880d567fbaa37c9595bab4a1"
+    },
+    {
+      "path": "production/packages/19-what-is-the-deepest-fish-ever-recorded/README.md",
+      "bytes": 142,
+      "sha256": "6517cee068d430375c35800c453a25819bfd2e9783dd9f1eaf394c3ba165405c"
+    },
+    {
+      "path": "production/packages/19-what-is-the-deepest-fish-ever-recorded/scene-plan.json",
+      "bytes": 5875,
+      "sha256": "4bf419c9344c40bc3e5a34d19cc952c937434656f4cbace70ead3d8a57744a7c"
+    },
+    {
+      "path": "production/packages/20-what-is-the-midnight-zone/README.md",
+      "bytes": 129,
+      "sha256": "37d37b68cc370b0732b0ab2fe01144b2130f8b8e9636912699a262aa6ebc34ac"
+    },
+    {
+      "path": "production/packages/20-what-is-the-midnight-zone/scene-plan.json",
+      "bytes": 6181,
+      "sha256": "f478aca9fa6b769a273916d8b3d1596998d79c7844bd268ab9371905fb6fb252"
+    },
+    {
+      "path": "production/proofs/01-humanized-technical-proof-receipt.json",
+      "bytes": 1359,
+      "sha256": "1a0639a6d23932a9834dff2515265457f3817efe7d71e1e29e47b1e9d6d3c932"
+    },
+    {
+      "path": "production/proofs/01-humanized-technical-proof.mp4",
+      "bytes": 5122942,
+      "sha256": "2505ce39f87aa117e4fea02934c79b6339d1625bbabbbff582ac331a998d1d64"
+    },
+    {
+      "path": "production/proofs/01-humanized-technical-proof.txt",
+      "bytes": 663,
+      "sha256": "60f6d8ee2bedb5432c73a12e4f9002ef62b4c5933980b56d9f384df190696972"
+    },
+    {
+      "path": "production/proofs/01-humanized-technical-proof.wav",
+      "bytes": 2006570,
+      "sha256": "c3e51c70e46f291029e688789e6bb4ea4fadeab746add9304e0549fe5e56724e"
+    },
+    {
+      "path": "production/proofs/01-pipeline-proof-frame.png",
+      "bytes": 569997,
+      "sha256": "ef4d06ce093e1d834c7d413b72e7f2c0af238e1313b9c450ca889d9e01fca980"
+    },
+    {
+      "path": "production/proofs/01-pipeline-proof.mp4",
+      "bytes": 2299498,
+      "sha256": "800be1559a35b3c62e161fcceb47bafd0480a306ed69bed260c15fab4fcf45ee"
+    },
+    {
+      "path": "production/proofs/01-pipeline-proof.txt",
+      "bytes": 779,
+      "sha256": "9b19ecc6cddb0d46c267878c2c6b4ab6672e1bb061eee84a517d3146570c2c20"
+    },
+    {
+      "path": "production/proofs/01-pipeline-proof.wav",
+      "bytes": 1388718,
+      "sha256": "5f879c83f50f086b8693c3c7e9834fca4db877690bddaac5b0123ac2200d45a6"
+    },
+    {
+      "path": "production/release-calendar.json",
+      "bytes": 5209,
+      "sha256": "482b7af97190879204b2deb565a0ef89b448486c62c65dd667e4e9bea8a879c1"
+    },
+    {
+      "path": "production/research/humanization-audit.json",
+      "bytes": 50572,
+      "sha256": "8338b75f7648eb9a5ae2364f14686c8153db1bf060d0b95729411a407873f902"
+    },
+    {
+      "path": "production/research/humanization-audit.md",
+      "bytes": 33434,
+      "sha256": "44d7bb51acd1b377caf6da317dde2a19d2d96bb273b68ba29b9db8c7bc326cf7"
+    },
+    {
+      "path": "production/research/number-verification-exhaustive.json",
+      "bytes": 60656,
+      "sha256": "c84e6575336f93773e1a623d10bdb19655ae81ac17863171a6c6603e423f2cd4"
+    },
+    {
+      "path": "production/research/number-verification-exhaustive.md",
+      "bytes": 26536,
+      "sha256": "51d8df81b39fa074d5a937ec2a787aa6873eae057d22ca3ed977e8419948807c"
+    },
+    {
+      "path": "production/research/number-verification.json",
+      "bytes": 23549,
+      "sha256": "83e12c2731608850d2846072af7528d1c1bf29c7a3e3214e3f0af5b755e8d748"
+    },
+    {
+      "path": "production/research/number-verification.md",
+      "bytes": 13231,
+      "sha256": "9eba30dc030afe3e65e480f4e86fc9bcc82d1a30e55824f85453528080021405"
+    },
+    {
+      "path": "production/script-template.md",
+      "bytes": 1418,
+      "sha256": "5fb014e1499252ffb2785004bbc89539a425fd9b2a4a785f6f70d73be6ca5c76"
+    },
+    {
+      "path": "production/scripts/drafts/.gitkeep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "production/scripts/final/.gitkeep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "production/scripts/final/01-why-deep-sea-creatures-look-so-weird.md",
+      "bytes": 10188,
+      "sha256": "29c76055a1f2da86c274ded583d863add491ee1d65d980c546def45cd593dc00"
+    },
+    {
+      "path": "production/scripts/final/02-how-deep-sea-creatures-survive-pressure.md",
+      "bytes": 10162,
+      "sha256": "a0c84443a465846c87ce69c33b9d3647eef55a8b44680a6a9db65ed87ce52888"
+    },
+    {
+      "path": "production/scripts/final/03-why-deep-sea-creatures-are-surfacing.md",
+      "bytes": 10633,
+      "sha256": "578fd440c4c4320aca5e1847039b7badec0ac6add23cb70eb7b9a9e905ddbf7b"
+    },
+    {
+      "path": "production/scripts/final/04-why-deep-sea-creatures-are-so-scary.md",
+      "bytes": 10175,
+      "sha256": "18f4df8f39ef43103e193eb8d6d1aa9dd2cf7547cf0f5e092b6f43c895e6c0c7"
+    },
+    {
+      "path": "production/scripts/final/05-why-many-deep-sea-creatures-are-red.md",
+      "bytes": 10307,
+      "sha256": "23da1b39d39fd88f3ee919f82317b1d486e46f7f8a6be12dbfd1552c3dc471ab"
+    },
+    {
+      "path": "production/scripts/final/06-why-some-deep-sea-creatures-are-transparent.md",
+      "bytes": 10745,
+      "sha256": "0b81a846a36d5622b44ac4f55f46b11d75cd50213079bd0738ffbe80e0cb1bc0"
+    },
+    {
+      "path": "production/scripts/final/07-why-deep-sea-creatures-get-creepier-deeper.md",
+      "bytes": 11441,
+      "sha256": "e6e776132113a5d60236640ad2b11cef40637084b936b8a1a817042d59640ecc"
+    },
+    {
+      "path": "production/scripts/final/08-what-creatures-live-in-the-deep-sea.md",
+      "bytes": 11022,
+      "sha256": "7327519a96f38bc6da0a6cef30abf7b941fc02446849727afeddbf20f4c3039f"
+    },
+    {
+      "path": "production/scripts/final/09-what-is-the-scariest-deep-sea-creature.md",
+      "bytes": 11202,
+      "sha256": "47628484d06f4cf1604afbd875b539d74c1fe6eedb0916af30ea005a73ec91af"
+    },
+    {
+      "path": "production/scripts/final/10-what-is-the-deepest-part-of-the-ocean.md",
+      "bytes": 10948,
+      "sha256": "953dc262bc78c787ecbe8be83fb5e4fcc27ab03522e3499fe842a6b174954344"
+    },
+    {
+      "path": "production/scripts/final/11-what-is-a-dumbo-octopus.md",
+      "bytes": 11398,
+      "sha256": "84e64460f2c44d1a7906f51c440b63f5f1892bfc265fd3913c911a4d59523af5"
+    },
+    {
+      "path": "production/scripts/final/12-what-is-a-frilled-shark.md",
+      "bytes": 11432,
+      "sha256": "4624278b7d1d7c8198983a419396b081e4d03298aa7b73800ebc14c346cd306d"
+    },
+    {
+      "path": "production/scripts/final/13-how-does-bioluminescence-work-in-the-deep-sea.md",
+      "bytes": 11546,
+      "sha256": "a69b7828f63f13593d71b4ebb267e3327476af18da464cf390aed27e5a13a168"
+    },
+    {
+      "path": "production/scripts/final/14-how-big-is-a-colossal-squid.md",
+      "bytes": 12108,
+      "sha256": "0b9ff196d9fa5d5eb33277fca18e066ccb2bdbcc307a66c530e01f8b2143209f"
+    },
+    {
+      "path": "production/scripts/final/15-how-do-people-reach-challenger-deep.md",
+      "bytes": 12161,
+      "sha256": "731daa622cbb2f8f5a04d2f7901678ddd4c66b9e604079798e3915b695ea3aee"
+    },
+    {
+      "path": "production/scripts/final/16-what-happens-when-a-whale-dies-in-the-deep-ocean.md",
+      "bytes": 11561,
+      "sha256": "a62a38a79d4b8d7cd82cb38cd628f13049899447ea69f3de6b9616471ecffc29"
+    },
+    {
+      "path": "production/scripts/final/17-what-is-a-yeti-crab.md",
+      "bytes": 11763,
+      "sha256": "811a356d1aa7af21683894a562d626b2638a66ef6776cc6aa70aaf6fcf46838e"
+    },
+    {
+      "path": "production/scripts/final/18-why-does-black-smoker-water-not-boil.md",
+      "bytes": 11920,
+      "sha256": "31433a1af02d67a7c1490bcde4dd38aef0509f828e5fc0619ae8562955dd619c"
+    },
+    {
+      "path": "production/scripts/final/19-what-is-the-deepest-fish-ever-recorded.md",
+      "bytes": 11847,
+      "sha256": "eb17a06fc30c1855a21d565ae787556b2d08120ab8dd98954080520c255e3194"
+    },
+    {
+      "path": "production/scripts/final/20-what-is-the-midnight-zone.md",
+      "bytes": 11910,
+      "sha256": "a70ae75bb5c5882043eb6448dfe2e985f5e16ad0beec110bb47b9f02ef27d55c"
+    },
+    {
+      "path": "production/scripts/index.json",
+      "bytes": 7054,
+      "sha256": "8408d0c93647a903cbbd6ec9f015a521293664f3d41fbe5278df3ccbce5a1346"
+    },
+    {
+      "path": "production/scripts/plaintext/01-why-deep-sea-creatures-look-so-weird.txt",
+      "bytes": 7245,
+      "sha256": "896480b2c42b3507c911920709da12a0bc9986061e9333fb7c33616700463881"
+    },
+    {
+      "path": "production/scripts/plaintext/02-how-deep-sea-creatures-survive-pressure.txt",
+      "bytes": 7432,
+      "sha256": "981c2bd0273c0db2387dc1b72014fc06cbae4d0fec90bfced3d95635b9fc8309"
+    },
+    {
+      "path": "production/scripts/plaintext/03-why-deep-sea-creatures-are-surfacing.txt",
+      "bytes": 7760,
+      "sha256": "91c854506cc911d0b952e23b83bf598e21112d5f2fee6c9114a132b6fc6f1039"
+    },
+    {
+      "path": "production/scripts/plaintext/04-why-deep-sea-creatures-are-so-scary.txt",
+      "bytes": 7182,
+      "sha256": "f27fe0abbe64c201b7e68415dae767939248092856113ed22d460f4f11d88e1a"
+    },
+    {
+      "path": "production/scripts/plaintext/05-why-many-deep-sea-creatures-are-red.txt",
+      "bytes": 7463,
+      "sha256": "816e57416dcb6ae9bd6bb7bf4747c0402038168f18d570bdd217dfd3452ac972"
+    },
+    {
+      "path": "production/scripts/plaintext/06-why-some-deep-sea-creatures-are-transparent.txt",
+      "bytes": 7673,
+      "sha256": "3b5f3b5b4973f8cec2e555b819463a3e0e86378edc004ac4e3d69174cda5950b"
+    },
+    {
+      "path": "production/scripts/plaintext/07-why-deep-sea-creatures-get-creepier-deeper.txt",
+      "bytes": 8332,
+      "sha256": "ddb7cb2e7a6c866f7da6ec9514ada5cd2df03298eaddffe84b99f16f082078d5"
+    },
+    {
+      "path": "production/scripts/plaintext/08-what-creatures-live-in-the-deep-sea.txt",
+      "bytes": 7835,
+      "sha256": "87307ab164fa86004bc217a5fb64b28b8d960fcba79386c117b41774b24660a9"
+    },
+    {
+      "path": "production/scripts/plaintext/09-what-is-the-scariest-deep-sea-creature.txt",
+      "bytes": 8051,
+      "sha256": "e7aa27624be1e7826d30d1a8ab7fe69f173eb7ce7f85fe6a9e7ec58fd4c23a15"
+    },
+    {
+      "path": "production/scripts/plaintext/10-what-is-the-deepest-part-of-the-ocean.txt",
+      "bytes": 7593,
+      "sha256": "92fbc4f14aeb40fb89ca3ac8e643245b8ce28c3209ae1581bb5637af6ceb4ca3"
+    },
+    {
+      "path": "production/scripts/plaintext/11-what-is-a-dumbo-octopus.txt",
+      "bytes": 7353,
+      "sha256": "927f3d7ed1650cff65188eea2ab098196e84fb04c1392183d469abe9dd3ec17d"
+    },
+    {
+      "path": "production/scripts/plaintext/12-what-is-a-frilled-shark.txt",
+      "bytes": 7329,
+      "sha256": "1436a2ed04c96d32e800d147bd29a48e8af09355fc098f2f7cb573b558fff4f0"
+    },
+    {
+      "path": "production/scripts/plaintext/13-how-does-bioluminescence-work-in-the-deep-sea.txt",
+      "bytes": 7308,
+      "sha256": "c110b00db492f2b6cb0f22a7dcdb834bb0803ab6b830c10c37be75d1eb4f0433"
+    },
+    {
+      "path": "production/scripts/plaintext/14-how-big-is-a-colossal-squid.txt",
+      "bytes": 7470,
+      "sha256": "67e61784472ff1244505959412df7cf0da3380ff1e55f9966166e8860cfc082e"
+    },
+    {
+      "path": "production/scripts/plaintext/15-how-do-people-reach-challenger-deep.txt",
+      "bytes": 7595,
+      "sha256": "3d6c204ac11a9b45f8e94a40ea18c186573f5de5467ecc6daddbcb52085f55ef"
+    },
+    {
+      "path": "production/scripts/plaintext/16-what-happens-when-a-whale-dies-in-the-deep-ocean.txt",
+      "bytes": 7519,
+      "sha256": "e79af7efb14d0877a6ac82fd380596524d1228172f3ff6002bb556a35db0eff8"
+    },
+    {
+      "path": "production/scripts/plaintext/17-what-is-a-yeti-crab.txt",
+      "bytes": 7538,
+      "sha256": "93c4902522fe01806ee677b986eaccb330c0bae006c17799d6a816d02f387bcc"
+    },
+    {
+      "path": "production/scripts/plaintext/18-why-does-black-smoker-water-not-boil.txt",
+      "bytes": 7733,
+      "sha256": "f3bf72111f741c35ba1cec1ef81175bc36f966a54d56e88bb814330c2b0efa43"
+    },
+    {
+      "path": "production/scripts/plaintext/19-what-is-the-deepest-fish-ever-recorded.txt",
+      "bytes": 7456,
+      "sha256": "8584fbae3da6832b1f7b09ae2d20bd37a118701dce5ba2f2fbfdbc5b386d910d"
+    },
+    {
+      "path": "production/scripts/plaintext/20-what-is-the-midnight-zone.txt",
+      "bytes": 7411,
+      "sha256": "2e0bdb91f0a95e267c2a9ebfc14e9561008d495c952a4ee01b04fb05e63f0cb9"
+    },
+    {
+      "path": "production/sync-checklist.md",
+      "bytes": 830,
+      "sha256": "283559f37061346a3a63cbbec402810b34c7fb2248ba302894454c2335aad794"
+    },
+    {
+      "path": "production/thumbnail-template-spec.md",
+      "bytes": 818,
+      "sha256": "c4f268d3da1137e4dfc0af833e2258d5f581df53f913a033e69500d7cb0f5092"
+    },
+    {
+      "path": "production/thumbnails/png/01-why-deep-sea-creatures-look-so-weird.png",
+      "bytes": 243044,
+      "sha256": "0a76ac2941e177731f8bb89b2cfc18cace8a05789d49726809bdc5801bbfbfb1"
+    },
+    {
+      "path": "production/thumbnails/png/02-how-deep-sea-creatures-survive-pressure.png",
+      "bytes": 243607,
+      "sha256": "53af9f48faec3a37b0dbbfebe75871d35924906d8cd7da98a7eaafd913c4334f"
+    },
+    {
+      "path": "production/thumbnails/png/03-why-deep-sea-creatures-are-surfacing.png",
+      "bytes": 241821,
+      "sha256": "2ffb0b5c8ec720cd22efce030bac7a623c241704ba1a6120a2f1e48156ac54be"
+    },
+    {
+      "path": "production/thumbnails/png/04-why-deep-sea-creatures-are-so-scary.png",
+      "bytes": 245631,
+      "sha256": "2e9605f5a488476daf5348e6e1e24b55c4b588d6d409ca71456dae7775807c43"
+    },
+    {
+      "path": "production/thumbnails/png/05-why-many-deep-sea-creatures-are-red.png",
+      "bytes": 241436,
+      "sha256": "16d6a5b82184101981e2d9e14f7592805fe08051b75fea3bb94b9ab77a266dec"
+    },
+    {
+      "path": "production/thumbnails/png/06-why-some-deep-sea-creatures-are-transparent.png",
+      "bytes": 241868,
+      "sha256": "060c7e3fad7b34cdcdb80a63bd3f201eabfe89b9aa3440c55e7f4ab50dd7e82c"
+    },
+    {
+      "path": "production/thumbnails/png/07-why-deep-sea-creatures-get-creepier-deeper.png",
+      "bytes": 238825,
+      "sha256": "e71b98f8cc964fbb1a88852b090b0ad5c91b8081418c0df56bf294f80d02dcd0"
+    },
+    {
+      "path": "production/thumbnails/png/08-what-creatures-live-in-the-deep-sea.png",
+      "bytes": 242763,
+      "sha256": "f6246804f4a439a02a661db4c45cc2289e88bc00eaf9aea2563057f45ab49b08"
+    },
+    {
+      "path": "production/thumbnails/png/09-what-is-the-scariest-deep-sea-creature.png",
+      "bytes": 242024,
+      "sha256": "d1cad1d74376ba1627b18f201e8fc3379f62297fee36f5a1d04c2ea0984b83dc"
+    },
+    {
+      "path": "production/thumbnails/png/10-what-is-the-deepest-part-of-the-ocean.png",
+      "bytes": 238477,
+      "sha256": "533c7fc1a067f59f969b7a2d518aa61baad56fea140d24952a75b910f084059d"
+    },
+    {
+      "path": "production/thumbnails/png/11-what-is-a-dumbo-octopus.png",
+      "bytes": 264469,
+      "sha256": "a4736b2e0866462f3711d8aab9da8ddee372508992dd796dc060c9b95faf11a2"
+    },
+    {
+      "path": "production/thumbnails/png/12-what-is-a-frilled-shark.png",
+      "bytes": 262164,
+      "sha256": "464d5f59b9be61b4b2a5e703f00e74d8f877350ba77113313f46058b383d2482"
+    },
+    {
+      "path": "production/thumbnails/png/13-how-does-bioluminescence-work-in-the-deep-sea.png",
+      "bytes": 245044,
+      "sha256": "dfab98c094775b8c3c621afefad3d3ce7285e0bc96075fc0268e6520d19987e6"
+    },
+    {
+      "path": "production/thumbnails/png/14-how-big-is-a-colossal-squid.png",
+      "bytes": 260056,
+      "sha256": "34869ff0d0ed6d8bb8f3486bbcb7fdfe2087fe88bfa1ecb837b2d545e36d4fce"
+    },
+    {
+      "path": "production/thumbnails/png/15-how-do-people-reach-challenger-deep.png",
+      "bytes": 238320,
+      "sha256": "4c1588dad9a5ff40fea520b9e4747ec3841f9cc6f18fb9c570c6cfc7cc72520f"
+    },
+    {
+      "path": "production/thumbnails/png/16-what-happens-when-a-whale-dies-in-the-deep-ocean.png",
+      "bytes": 271764,
+      "sha256": "af4f5ec3ccc71475e39cd083db473c45fcb2ee3c2b3a7eca37da05b44c1be2a1"
+    },
+    {
+      "path": "production/thumbnails/png/17-what-is-a-yeti-crab.png",
+      "bytes": 261201,
+      "sha256": "81357c99ebfa6dc9e43e73e1010ba1e4bda4555aba7810f5784b148839e2a86f"
+    },
+    {
+      "path": "production/thumbnails/png/18-why-does-black-smoker-water-not-boil.png",
+      "bytes": 249915,
+      "sha256": "228a5ab650b24a6461e7bbf277760939a854880dec2aa4b30581fbf039df59e6"
+    },
+    {
+      "path": "production/thumbnails/png/19-what-is-the-deepest-fish-ever-recorded.png",
+      "bytes": 258989,
+      "sha256": "37234fbe5669abbd318c9aa7cf2ec209f03c0da7120ca9b9d2464201a68cd39e"
+    },
+    {
+      "path": "production/thumbnails/png/20-what-is-the-midnight-zone.png",
+      "bytes": 229807,
+      "sha256": "525c7176e2733efdbe45ca0aa9e5dac87d08330c507c4797a6eca90dbad16469"
+    },
+    {
+      "path": "production/thumbnails/svg/01-why-deep-sea-creatures-look-so-weird.svg",
+      "bytes": 1387,
+      "sha256": "a574540db1b24b22bcedc723e085b2db888cb4915ac0892fe0ad8d20eaadf4ee"
+    },
+    {
+      "path": "production/thumbnails/svg/02-how-deep-sea-creatures-survive-pressure.svg",
+      "bytes": 1391,
+      "sha256": "76a70f64f47769ba7145b025d49d4d33437ab8a514908af5fbf9a3bdabeb651b"
+    },
+    {
+      "path": "production/thumbnails/svg/03-why-deep-sea-creatures-are-surfacing.svg",
+      "bytes": 1394,
+      "sha256": "e8b1b298875a0ed488d13e9edae5bb2fb6d58d3fc7256b4d02a3bf04b390e469"
+    },
+    {
+      "path": "production/thumbnails/svg/04-why-deep-sea-creatures-are-so-scary.svg",
+      "bytes": 1387,
+      "sha256": "526c43c4cfcc805fe800f901baa68ea90aa423d4825b56a4c719a3aa5bb88651"
+    },
+    {
+      "path": "production/thumbnails/svg/05-why-many-deep-sea-creatures-are-red.svg",
+      "bytes": 1393,
+      "sha256": "fc2ece1d8d4c8bb0dd32325b56d291717bcd6124f66d4ec78da1ad57fda385b3"
+    },
+    {
+      "path": "production/thumbnails/svg/06-why-some-deep-sea-creatures-are-transparent.svg",
+      "bytes": 1390,
+      "sha256": "50e9284b7851450cf880f157305206d008971fbe4ac3a3d4b8a6d02490c728b0"
+    },
+    {
+      "path": "production/thumbnails/svg/07-why-deep-sea-creatures-get-creepier-deeper.svg",
+      "bytes": 1394,
+      "sha256": "e05d440410f131ff3677fa4d98f93364329d5a69a33ebf7de5dc3f7cb1b4f6d3"
+    },
+    {
+      "path": "production/thumbnails/svg/08-what-creatures-live-in-the-deep-sea.svg",
+      "bytes": 1395,
+      "sha256": "cfea0ecaf38c6b4e03f74fcaac967634ecdbee09c1a5d4b107808aa28de9ff41"
+    },
+    {
+      "path": "production/thumbnails/svg/09-what-is-the-scariest-deep-sea-creature.svg",
+      "bytes": 1391,
+      "sha256": "1232b7a1e8bf12659c94c95be89dbce08fee5518ae28848e14001eb317f0015d"
+    },
+    {
+      "path": "production/thumbnails/svg/10-what-is-the-deepest-part-of-the-ocean.svg",
+      "bytes": 1391,
+      "sha256": "a87cbdf9d8ea3f689ed0785872cb73e051d6039236fbd24dd0e451dd9a9f2ffa"
+    },
+    {
+      "path": "production/thumbnails/svg/11-what-is-a-dumbo-octopus.svg",
+      "bytes": 1269,
+      "sha256": "0e53d3c4d406152eb19ec04ec748b2fc71edd696617b7a00a3b70a40f86b7d0d"
+    },
+    {
+      "path": "production/thumbnails/svg/12-what-is-a-frilled-shark.svg",
+      "bytes": 1242,
+      "sha256": "5edc1bc664a32c404f9a6ffe2f1edb23d282236fb8516559f1766e10b078e086"
+    },
+    {
+      "path": "production/thumbnails/svg/13-how-does-bioluminescence-work-in-the-deep-sea.svg",
+      "bytes": 1244,
+      "sha256": "c3dced77eb8ec8bb0a7fbdd93d61fd70a0feb1cb0a1275227948eabdc5ab8868"
+    },
+    {
+      "path": "production/thumbnails/svg/14-how-big-is-a-colossal-squid.svg",
+      "bytes": 1266,
+      "sha256": "0c371e3c8ab058e6abe940b874e87c0cedfead09443c556764ec7777b587563e"
+    },
+    {
+      "path": "production/thumbnails/svg/15-how-do-people-reach-challenger-deep.svg",
+      "bytes": 1210,
+      "sha256": "0f4292287760c9a3498710f259c276a8716ae41c986ce8dfdeb922fe41d6afb5"
+    },
+    {
+      "path": "production/thumbnails/svg/16-what-happens-when-a-whale-dies-in-the-deep-ocean.svg",
+      "bytes": 1225,
+      "sha256": "b54b17531975d41ea3580f8870646d9ad5c3de0c42504b8472255d49503bdf0a"
+    },
+    {
+      "path": "production/thumbnails/svg/17-what-is-a-yeti-crab.svg",
+      "bytes": 1241,
+      "sha256": "8137f93e89fcc8e906444d1f23132591d5e87bb20c4643ff078bc0422b98e134"
+    },
+    {
+      "path": "production/thumbnails/svg/18-why-does-black-smoker-water-not-boil.svg",
+      "bytes": 1275,
+      "sha256": "58c6c4a786a7a65af11d850d03e649f6fce82ceb6e0456da25bcabc7ddab0751"
+    },
+    {
+      "path": "production/thumbnails/svg/19-what-is-the-deepest-fish-ever-recorded.svg",
+      "bytes": 1258,
+      "sha256": "8428812929f1f086a0bd805d9930c23fa06b8a04e6351c9a6e746077d0618179"
+    },
+    {
+      "path": "production/thumbnails/svg/20-what-is-the-midnight-zone.svg",
+      "bytes": 1231,
+      "sha256": "d2eaf3381f0c336758ba4bdb102c41616802d8fe3f5402914b18e8e54a68d738"
+    },
+    {
+      "path": "production/video-queue.json",
+      "bytes": 13627,
+      "sha256": "c126494b34c5ddecd0c0158d3bb63766cf5c3f2a7d6287a9451c605773b9bd84"
+    },
+    {
+      "path": "production/weekly-production-runbook.md",
+      "bytes": 1482,
+      "sha256": "6b16300c07a8ee78ad084938c47e35faf50a04d7cac4ff58d1d41183efd09310"
+    },
+    {
+      "path": "public/favicon.svg",
+      "bytes": 481,
+      "sha256": "5f29817ff162d0920b50409cc87e8ce9d3fb0c63c0f1b6e6274cda1f5307a8e4"
+    },
+    {
+      "path": "public/llms.txt",
+      "bytes": 8572,
+      "sha256": "550fbf522fb70fb3b0f3130698c953f12c86cda852381279195344a2320cd220"
+    },
+    {
+      "path": "public/og-default.svg",
+      "bytes": 1529,
+      "sha256": "2e62f5dfcacf602c4be880120ddcd0340890090a2683aef9e6763a6f15c4c801"
+    },
+    {
+      "path": "public/robots.txt",
+      "bytes": 75,
+      "sha256": "7392a056ce712d50386c139d4218969715251c0a60474279f7f85951e4e6cf67"
+    },
+    {
+      "path": "public/site.webmanifest",
+      "bytes": 212,
+      "sha256": "ee1ac00ea8b5707085715f2d930f7a4000b528e6f891adc88de6fdf8e9f81c43"
+    },
+    {
+      "path": "public/sitemap.xml",
+      "bytes": 4248,
+      "sha256": "a6fe1a9dc3bfbc2b5910e187f2f325cc06826439ff0e440f3e593b12f3265fca"
+    },
+    {
+      "path": "scripts/generate-admin-status.mjs",
+      "bytes": 3204,
+      "sha256": "d7491b119ecf9a22f793ffcc3c54d7f37e7c82c184b36581e6a7ec5a986cee67"
+    },
+    {
+      "path": "scripts/generate-artifact-manifest.mjs",
+      "bytes": 4385,
+      "sha256": "dfdf6b2d266768c7abab36d7764e831e04d33c04785be4e4201cb84dfc16c584"
+    },
+    {
+      "path": "scripts/generate-static-assets.mjs",
+      "bytes": 4899,
+      "sha256": "c616777ea0b8a625f101cb2b20a2f7ccea93aeb24088cc3fcb3249297d083c78"
+    },
+    {
+      "path": "scripts/validate-admin.mjs",
+      "bytes": 2429,
+      "sha256": "477c0bb2a793fc6aafee497e81c65a5c4eee3e9e66d0aa619fdcc6cdaf7fb10a"
+    },
+    {
+      "path": "scripts/validate-all.mjs",
+      "bytes": 489,
+      "sha256": "8ed7ccdcac760008dbb07cd338e9490b8d2e20788bf02d337bc6b8b806ef9cac"
+    },
+    {
+      "path": "scripts/validate-content.mjs",
+      "bytes": 5766,
+      "sha256": "4544ff9ac74b3986ee98226f79d6417746d9e302fd2794d6634c4326f8a2ef76"
+    },
+    {
+      "path": "scripts/validate-design-system.mjs",
+      "bytes": 943,
+      "sha256": "c94ba431b880df93e134f4a1868ce8912c0e41a15658c0e46f78d8cf0e0cd5ee"
+    },
+    {
+      "path": "scripts/validate-explorer.mjs",
+      "bytes": 1249,
+      "sha256": "c02806ac2c6ee3d6b73f3c038b4d78505e03e4fcdfbc2ac51d9f5dbeec93759b"
+    },
+    {
+      "path": "scripts/validate-humanization.mjs",
+      "bytes": 8104,
+      "sha256": "0489803697da172447569593b0c8311c9b8ec4769095b2568e0660b530596454"
+    },
+    {
+      "path": "scripts/validate-measurement.mjs",
+      "bytes": 1219,
+      "sha256": "6b95338fe755a2665cecfedaea4629e197587bfbe6e981b837534960b7bf0128"
+    },
+    {
+      "path": "scripts/validate-production.mjs",
+      "bytes": 1666,
+      "sha256": "99cc928fe31cb10cf276818b27a136cbef07da3cc859323666ff2ed793fb8aaa"
+    },
+    {
+      "path": "scripts/validate-required-files.mjs",
+      "bytes": 2537,
+      "sha256": "4a28f81a5d73a9f05e5195bf9d24e62d74fe62a53960bd5bb41184f3793e17ab"
+    },
+    {
+      "path": "scripts/validate-rights-manifest.mjs",
+      "bytes": 2262,
+      "sha256": "d439c4baf493ee31942d4c9d5ce2b59e780c6cf0cb5f34557e77fe7e58918cae"
+    },
+    {
+      "path": "scripts/validate-routes.mjs",
+      "bytes": 3521,
+      "sha256": "4540600c6d041d010f78721edd1bf7d7a97c4a31222551c1ff65fcc55edf2231"
+    },
+    {
+      "path": "scripts/validate-taxonomy.mjs",
+      "bytes": 2646,
+      "sha256": "193f0a2e63fa4e5c338a161df7172ee480f90ffe974cf8d22f67658b2051c0e0"
+    },
+    {
+      "path": "scripts/validate-video-contract.mjs",
+      "bytes": 2534,
+      "sha256": "d66812b8115786456ad27da68d04ee0d0fc83efd0d1a5af36915600786800367"
+    },
+    {
+      "path": "scripts/validation-helpers.mjs",
+      "bytes": 847,
+      "sha256": "f7d3fc1a7c94bbb1fcb61e37877b0423d6b6480122d3f5073188292399f91865"
+    },
+    {
+      "path": "src/components/Analytics.tsx",
+      "bytes": 1713,
+      "sha256": "d99c410fe239de22ee99ab4e50f5e4668344a17b72abb9b370bfc1357d89e102"
+    },
+    {
+      "path": "src/components/ComparisonTable.tsx",
+      "bytes": 363,
+      "sha256": "95ef8467eed737c32a07e9bd3474df58fc6a709d90db4e85e04731f1816a313b"
+    },
+    {
+      "path": "src/components/DepthExplorer.tsx",
+      "bytes": 5970,
+      "sha256": "de3a28b4f466e82b3a629873b7c98c19dbc68a36a0169dd474f19ff8969399f7"
+    },
+    {
+      "path": "src/components/DirectAnswer.tsx",
+      "bytes": 337,
+      "sha256": "965f199ddf3bdfa784d84e48563b733a8dc686be46275a2821ae2d9441335884"
+    },
+    {
+      "path": "src/components/ErrorBoundary.tsx",
+      "bytes": 328,
+      "sha256": "71f1e2a758d046f435b7c3afdefed3dd5409166d5e8c9e3b8f65e51070e07469"
+    },
+    {
+      "path": "src/components/KeyStat.tsx",
+      "bytes": 439,
+      "sha256": "e920e93e952bd70f034b0c168a28544445c583915a4c68bc93efb71e08a7b5ed"
+    },
+    {
+      "path": "src/components/NotFound.tsx",
+      "bytes": 302,
+      "sha256": "dec4c4db5f4e4103f786fa365d6610844bc7b4c7f25060696db70987c55d98b3"
+    },
+    {
+      "path": "src/components/QuestionPage.tsx",
+      "bytes": 2445,
+      "sha256": "4ba1eefa117345c2a5dd9b05887f09b9c3446596d202cc04f7f2884a5fb53294"
+    },
+    {
+      "path": "src/components/SiteFooter.tsx",
+      "bytes": 1101,
+      "sha256": "770a8d73a4d7d300c356d3b7bbb7cd58a80437ca5e3823895abab777d0da1133"
+    },
+    {
+      "path": "src/components/SiteHeader.tsx",
+      "bytes": 1674,
+      "sha256": "52007160eeed67c1c2f0929856925451e9ea8748130e2e75c4bd6f6501a158a2"
+    },
+    {
+      "path": "src/components/SourcesList.tsx",
+      "bytes": 490,
+      "sha256": "34b25999eafe60398cc07f2ce2146c1e6637a16a3699c22e4623cd7be146b413"
+    },
+    {
+      "path": "src/components/VideoPanel.tsx",
+      "bytes": 1741,
+      "sha256": "cbfe4afffef65598b4d4a3e252a4d049d8055770e480fa824232f3ea6274ab5c"
+    },
+    {
+      "path": "src/lib/admin.ts",
+      "bytes": 1179,
+      "sha256": "bdbb4355d72dfa610eefdb0e29d4477b06f5db5f6df7afbf1f3104de46ac2703"
+    },
+    {
+      "path": "src/lib/creatures-data.ts",
+      "bytes": 264,
+      "sha256": "07ea1531e2d67fc9827e5beb54cb978ef8c31938c0236f5827e4e88f30f8c456"
+    },
+    {
+      "path": "src/lib/explorer.ts",
+      "bytes": 2322,
+      "sha256": "959c8d72cd2385e6a0e6af2406ba52817df08b3d00e7c67c21abc971dc66299b"
+    },
+    {
+      "path": "src/lib/method-index.ts",
+      "bytes": 1003,
+      "sha256": "226004eb5f30565ab1f9f0641462c64fcda902a75741f124a9d5d9191a182794"
+    },
+    {
+      "path": "src/lib/ocean-data.ts",
+      "bytes": 371,
+      "sha256": "25122b8ecfd9e4cec9d8f5db866d1a2b46f841da0af09fc12fbc37da98257ae7"
+    },
+    {
+      "path": "src/lib/questions-data.ts",
+      "bytes": 272,
+      "sha256": "9ecd4abc096ae06932a73406393028a4094898080ae5df79abcac8a3a2a46384"
+    },
+    {
+      "path": "src/lib/schema.ts",
+      "bytes": 2845,
+      "sha256": "a7c87d61d14a07a7f864b81226b84c49bfbfed1d572c4ab30b13412db93b85bc"
+    },
+    {
+      "path": "src/lib/seo.ts",
+      "bytes": 952,
+      "sha256": "92a24e6db2e15d29625d577c8bceed4dcf9adf85e00da281081f9c25e63b73e1"
+    },
+    {
+      "path": "src/lib/site.ts",
+      "bytes": 584,
+      "sha256": "cfc78dea2cc4044cdca2d71183a633601c942f9f69ef53847266a429b71abfb3"
+    },
+    {
+      "path": "src/lib/sources-data.ts",
+      "bytes": 388,
+      "sha256": "33f979014f1b24ad37c7153312981faddf5c7f10e132d1acc064bff92ad7ef3a"
+    },
+    {
+      "path": "src/lib/taxonomy.ts",
+      "bytes": 4483,
+      "sha256": "d2867dbedddaa3a84b28ecb5bc92994c2fd6850f2280e94d38eee3670b21fd27"
+    },
+    {
+      "path": "src/lib/traffic-source.ts",
+      "bytes": 2646,
+      "sha256": "81b9b0e5eddf53dc4e9b5a433538a53470a35d4a1cd99e71e30f0d92c0d284e4"
+    },
+    {
+      "path": "src/lib/types.ts",
+      "bytes": 1833,
+      "sha256": "c1aad4119272c63348f65f71f37db4e16b687298d348892a6221bbf455c1c018"
+    },
+    {
+      "path": "src/lib/video-data.ts",
+      "bytes": 86,
+      "sha256": "b60e238ba3d88835a0b31b588af91accf892caedf8b2c2919e361a23f560d67b"
+    },
+    {
+      "path": "src/routeTree.gen.ts",
+      "bytes": 10162,
+      "sha256": "dee3707ae44b8c3dfc860b86d74f3913cd0dd475a1026c2b62856a417609e9ef"
+    },
+    {
+      "path": "src/router.tsx",
+      "bytes": 394,
+      "sha256": "8cd046098eca3724331bada5f3bb85e194610af748ce099f412473de75f8bda5"
+    },
+    {
+      "path": "src/routes/__root.tsx",
+      "bytes": 1414,
+      "sha256": "c20b252112b1d142feb03bea15893b32b9beeb45709692eaade53747a29e4e00"
+    },
+    {
+      "path": "src/routes/admin.tsx",
+      "bytes": 15493,
+      "sha256": "c9fb1d147c7fa14c996edd66ec477a7b38ec6193cf96110f66609c68bd7a5b90"
+    },
+    {
+      "path": "src/routes/creatures.$creature.tsx",
+      "bytes": 2283,
+      "sha256": "09f5f71c755adc8f7323b6dbc533d86c5398214742de4d1683a6ad967bf86e75"
+    },
+    {
+      "path": "src/routes/creatures.index.tsx",
+      "bytes": 877,
+      "sha256": "0bf20e354851ac5812026d1c47b58be76d5e268bd8cc60f86276181cb70f00d9"
+    },
+    {
+      "path": "src/routes/editorial-policy.tsx",
+      "bytes": 1257,
+      "sha256": "810310527bacfcefea02bc42e062aac17bbbe9a9d66d73947393ff60e5a66277"
+    },
+    {
+      "path": "src/routes/explore.tsx",
+      "bytes": 1691,
+      "sha256": "246ac19916b6fad80f02ed6f500d9e13f3f96415bec0d9f033d21d186c442e3e"
+    },
+    {
+      "path": "src/routes/index.tsx",
+      "bytes": 3878,
+      "sha256": "a5e2e4600f39eebf5535b08c13e3f8bd34d0d1f4a943adbb044e185a00463d10"
+    },
+    {
+      "path": "src/routes/methodology.tsx",
+      "bytes": 1852,
+      "sha256": "ec0f03ebec72c4dc1fa395029893dc6382a57eea1b525212ec0d3bd945e41f83"
+    },
+    {
+      "path": "src/routes/methods.$method.tsx",
+      "bytes": 1651,
+      "sha256": "d96d2c91b002c1a663c99897601fd9d393f02bc94a1c8a10c95826fbb0ec03ef"
+    },
+    {
+      "path": "src/routes/methods.index.tsx",
+      "bytes": 1373,
+      "sha256": "ff8513401e5934ab8f54ab110c359874bc993286c131175a652f2f3759f0265c"
+    },
+    {
+      "path": "src/routes/privacy.tsx",
+      "bytes": 1196,
+      "sha256": "b74df522b5ac18057927fd1128a1c59fee16ca903a9b8829ef044a9988cd56c2"
+    },
+    {
+      "path": "src/routes/questions.$question.tsx",
+      "bytes": 1320,
+      "sha256": "97fd0d6e25a3f423946d63434e29a17f0493757ea83eaad68cbcf1af068da928"
+    },
+    {
+      "path": "src/routes/questions.index.tsx",
+      "bytes": 943,
+      "sha256": "24f9a6cd3de57ba13a87cdf5c33ba00e7a58278c89bf171953f6295b17ecb538"
+    },
+    {
+      "path": "src/routes/watch.index.tsx",
+      "bytes": 3583,
+      "sha256": "73e8a1188cdc77b258d88dde86edacc0841ed8dc80026160c180bc90be1b6ee6"
+    },
+    {
+      "path": "src/routes/zones.$zone.tsx",
+      "bytes": 2780,
+      "sha256": "33ed8f1c81ae542fede8f3786f17c77f6a901cd796c00bca5c65efc17dd78f81"
+    },
+    {
+      "path": "src/routes/zones.index.tsx",
+      "bytes": 1029,
+      "sha256": "b5ba4584fa9952f0115efccb58117d7aa55b721c55e7849da684efb48c8ad58d"
+    },
+    {
+      "path": "src/styles/app.css",
+      "bytes": 25091,
+      "sha256": "5133cc0347bb4572f104edef97120d069d5f0a9a57b4d64a505299855871f5a9"
+    },
+    {
+      "path": "tests/admin-contract.test.mjs",
+      "bytes": 1112,
+      "sha256": "84651c2790f972c36a8398a97ba0043791f249a7a32d3d92d7a419dcb875a3f4"
+    },
+    {
+      "path": "tests/content-contract.test.mjs",
+      "bytes": 624,
+      "sha256": "fac166e97ab26d14d7f5c6de8d9c35439e06fead3fede66d9eabf8f08489a547"
+    },
+    {
+      "path": "tests/humanization-contract.test.mjs",
+      "bytes": 3172,
+      "sha256": "dbbde3968c84b4a098011b79f6258fd662cb94469569ae1228302b4318c1ed54"
+    },
+    {
+      "path": "tests/production-contract.test.mjs",
+      "bytes": 1325,
+      "sha256": "57d5caa4ee874c7cf755eb5f5d3ccc8eeb88643cd44b4628f842b12477b453c1"
+    },
+    {
+      "path": "tests/route-inventory.test.mjs",
+      "bytes": 556,
+      "sha256": "737610dc9d6ddc1bddce624352abb0076014b6b566aa0807cdb286a81f863c2f"
+    },
+    {
+      "path": "tests/static-assets-determinism.test.mjs",
+      "bytes": 858,
+      "sha256": "c0bf51bef780d09bdf7b889e24640d3a4d127bf9e8b0763885cb41b669852af6"
+    },
+    {
+      "path": "tests/video-contract.test.mjs",
+      "bytes": 635,
+      "sha256": "e71f9c7e087df0338ebe5d6ebc28065301e439238e8c2cc30e1e0a4b153f370d"
+    },
+    {
+      "path": "tsconfig.json",
+      "bytes": 470,
+      "sha256": "0a8eaeb9b9de91362c8b8279406c3a28f2df6b9943a5917c2625234aea1b7158"
+    },
+    {
+      "path": "vite.config.ts",
+      "bytes": 1277,
+      "sha256": "9ca93ddfe9df2911ceb99d9ffc0c7dcc890b7644223c8791ecfa880dbff8e89f"
+    },
+    {
+      "path": "wrangler.jsonc",
+      "bytes": 306,
+      "sha256": "112dcf2838c2f50a8008a0eb978448aa2a94ec23ea20e6429e71d1b14c38f9e2"
+    }
+  ]
+}

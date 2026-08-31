@@ -1,0 +1,19 @@
+node_modules/
+.output/
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+youtube-token.json
+client_secret*.json
+production/audition/generated/
+production/audio/narration/*.wav
+production/outputs/*.mp4
+production/outputs/render-receipt.json
+
+# Wrangler's local state and any dist output. Added 2026-08-31 when site/ was first
+# committed - node_modules and .output were already covered, these were not, and an
+# untracked build dir is the kind of thing that gets swept in by a broad `git add`.
+.wrangler/
+dist/

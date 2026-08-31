@@ -1,0 +1,139 @@
+{
+  "sequence": 18,
+  "slug": "why-does-black-smoker-water-not-boil",
+  "status": "production-ready-unrendered-human-pass-required",
+  "scriptWordCount": 1174,
+  "estimatedDurationSeconds": 486,
+  "narratorProfile": "kokoro-af-heart-v1",
+  "musicRotation": "ambient-02",
+  "scenes": [
+    {
+      "order": 1,
+      "chapter": "Cold open",
+      "start": "00:00",
+      "estimatedEnd": "00:07",
+      "visualMode": "comparison-grid",
+      "narrationExcerpt": "Water leaves some seafloor vents hotter than a pizza oven, yet it does not explode into steam."
+    },
+    {
+      "order": 2,
+      "chapter": "Title card",
+      "start": "00:07",
+      "estimatedEnd": "00:10",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "Why does black-smoker water not boil?"
+    },
+    {
+      "order": 3,
+      "chapter": "One hundred degrees is not a universal boiling point",
+      "start": "00:10",
+      "estimatedEnd": "01:05",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "The familiar boiling point of water, one hundred degrees Celsius, belongs to a specific pressure: roughly one atmosphere at sea level. Boiling begins when vapor bubbles can exist a"
+    },
+    {
+      "order": 4,
+      "chapter": "A circulation system inside the crust",
+      "start": "01:05",
+      "estimatedEnd": "01:59",
+      "visualMode": "source-card",
+      "narrationExcerpt": "Seawater percolates down through cracks near spreading centers and volcanic regions. As it travels through hot rock, it warms and reacts chemically. Magnesium can be removed. Metal"
+    },
+    {
+      "order": 5,
+      "chapter": "The smoke is a mineral cloud",
+      "start": "01:59",
+      "estimatedEnd": "02:55",
+      "visualMode": "diagram",
+      "narrationExcerpt": "The dark plume consists largely of tiny metal-sulfide particles. When the hot fluid mixes with cold, oxygenated seawater, dissolved metals precipitate. The particles scatter light "
+    },
+    {
+      "order": 6,
+      "chapter": "Life occupies the boundary, not the furnace",
+      "start": "02:55",
+      "estimatedEnd": "03:54",
+      "visualMode": "comparison-grid",
+      "narrationExcerpt": "Chemosynthetic microbes oxidize compounds such as hydrogen sulfide and use the released energy to fix carbon. Some live freely in microbial mats. Others live inside tubeworms, muss"
+    },
+    {
+      "order": 7,
+      "chapter": "How to read the evidence",
+      "start": "03:54",
+      "estimatedEnd": "04:33",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "A final production note matters here. Deep-sea footage is often separated from the instrument record that gives it meaning. For this episode, every depth, date, size, and record cl"
+    },
+    {
+      "order": 8,
+      "chapter": "Narration quality gate",
+      "start": "04:33",
+      "estimatedEnd": "04:59",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "The human review pass should also read every number aloud. Long strings of digits can sound natural on a page and awkward in narration. Pronunciations of scientific names, trench n"
+    },
+    {
+      "order": 9,
+      "chapter": "Context before spectacle",
+      "start": "04:59",
+      "estimatedEnd": "05:32",
+      "visualMode": "source-card",
+      "narrationExcerpt": "Another check is scale. Deep-sea images usually remove familiar references, so a small animal can appear enormous and a brief movement can look aggressive. The production should sh"
+    },
+    {
+      "order": 10,
+      "chapter": "Observation versus inference 2",
+      "start": "05:32",
+      "estimatedEnd": "06:02",
+      "visualMode": "diagram",
+      "narrationExcerpt": "The script also separates what the camera directly records from what researchers infer. Direct evidence includes a measured depth, a timestamped encounter, a collected specimen, or"
+    },
+    {
+      "order": 11,
+      "chapter": "A reusable source rule 3",
+      "start": "06:02",
+      "estimatedEnd": "06:34",
+      "visualMode": "comparison-grid",
+      "narrationExcerpt": "For the channel, the stable rule is one claim, one traceable source, and one stated boundary. If a source describes one species, the script does not silently expand the claim to an"
+    },
+    {
+      "order": 12,
+      "chapter": "Production continuity 4",
+      "start": "06:34",
+      "estimatedEnd": "07:04",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "The visual edit should vary from the previous episode even when the evidence structure stays consistent. Use a discovery-led opening for one topic, a mechanism diagram for another,"
+    },
+    {
+      "order": 13,
+      "chapter": "Context before spectacle 5",
+      "start": "07:04",
+      "estimatedEnd": "07:37",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "Another check is scale. Deep-sea images usually remove familiar references, so a small animal can appear enormous and a brief movement can look aggressive. The production should sh"
+    },
+    {
+      "order": 14,
+      "chapter": "Evidence limit",
+      "start": "07:37",
+      "estimatedEnd": "07:54",
+      "visualMode": "source-card",
+      "narrationExcerpt": "Vent temperatures and phase behavior vary with depth, salinity, and chemistry. The episode uses NOAA's over-340°C reference rather than treating 400°C as universal. The companion a"
+    },
+    {
+      "order": 15,
+      "chapter": "Outro",
+      "start": "07:54",
+      "estimatedEnd": "08:06",
+      "visualMode": "diagram",
+      "narrationExcerpt": "The deep ocean is more useful when the uncertainty stays visible. The sourced article is linked below. Next, continue through the twenty-video launch sequence from the channel libr"
+    }
+  ],
+  "requiredAssets": [
+    "production/broll/original/18-why-does-black-smoker-water-not-boil.mp4",
+    "production/thumbnails/png/18-why-does-black-smoker-water-not-boil.png"
+  ],
+  "externalAssetsRequired": false,
+  "articlePath": "/questions/why-does-black-smoker-water-not-boil",
+  "metadataPath": "production/metadata/18-why-does-black-smoker-water-not-boil.json",
+  "humanPassPath": "production/human-pass/18-why-does-black-smoker-water-not-boil.md"
+}

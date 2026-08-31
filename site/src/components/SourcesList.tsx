@@ -1,0 +1,2 @@
+import type { SourceReference } from '~/lib/types'
+export function SourcesList({ sources }: { sources:SourceReference[] }) { return <section className="sources" aria-labelledby="sources-title"><div><p className="eyebrow">Evidence</p><h2 id="sources-title">Sources reviewed</h2></div><ol>{sources.map((source)=><li key={source.id}><a href={source.url} target="_blank" rel="noreferrer">{source.name}</a><span>{source.organization} · checked {source.checkedAt}</span></li>)}</ol></section> }

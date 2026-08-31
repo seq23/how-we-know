@@ -1,0 +1,54 @@
+{
+  "name": "how-we-know",
+  "version": "1.4.0",
+  "private": true,
+  "sideEffects": false,
+  "type": "module",
+  "packageManager": "npm@10.9.2",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "vite dev",
+    "generate": "node scripts/generate-admin-status.mjs && node scripts/generate-static-assets.mjs",
+    "manifest": "node scripts/generate-artifact-manifest.mjs",
+    "validate": "node scripts/validate-all.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "typecheck": "tsc --noEmit",
+    "build": "npm run generate && npm run validate && npm test && npm run typecheck && vite build && node scripts/finalize-404.mjs",
+    "verify": "npm run build",
+    "preview": "vite preview",
+    "start": "node .output/server/index.mjs",
+    "validate:production": "node scripts/validate-production.mjs",
+    "render:music": "bash production/automation/generate_music.sh",
+    "render:all": "bash production/automation/render_all.sh",
+    "deploy": "wrangler deploy",
+    "voice:audition": "python production/automation/synthesize_audition.py",
+    "render:validate": "python production/automation/validate_rendered_batch.py --count 20",
+    "youtube:batch:dry": "python production/automation/upload_batch.py --start-date 2026-08-03 --timezone America/Chicago --limit 20",
+    "human:validate": "python production/automation/validate_human_pass.py --count 20",
+    "validate:live": "node scripts/validate-live-canonicals.mjs && node scripts/validate-legal-policy.mjs --live",
+    "deploy:pages": "npm run build && wrangler pages deploy .output/public --project-name how-we-know --branch main --commit-dirty=true && npm run validate:live"
+  },
+  "dependencies": {
+    "@tanstack/react-router": "1.170.18",
+    "@tanstack/react-start": "1.168.30",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@types/node": "26.4.0",
+    "@types/react": "19.2.17",
+    "@types/react-dom": "19.0.3",
+    "@vitejs/plugin-react": "6.0.4",
+    "nitro": "3.0.260610-beta",
+    "typescript": "6.0.3",
+    "vite": "8.1.5",
+    "wrangler": "4.113.0"
+  },
+  "allowScripts": {
+    "esbuild@0.28.1": true,
+    "workerd@1.20260721.1": true,
+    "sharp@0.34.5": true
+  }
+}

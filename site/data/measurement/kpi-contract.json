@@ -1,0 +1,47 @@
+{
+  "version": "1.0.0",
+  "updatedAt": "2026-07-30",
+  "truthBoundary": "Owned surfaces, schema, generated routes, and modeled opportunities are not external visibility or citation outcomes.",
+  "metrics": [
+    {
+      "id": "query-opportunities",
+      "type": "owned-planning",
+      "description": "Distinct researched query opportunities before admission."
+    },
+    {
+      "id": "admitted-pages",
+      "type": "owned-production",
+      "description": "Question, creature, zone, and watch routes admitted to the canonical data model."
+    },
+    {
+      "id": "published-pages",
+      "type": "owned-production",
+      "description": "Routes emitted successfully by the production build."
+    },
+    {
+      "id": "indexed-pages",
+      "type": "external-observed",
+      "description": "URLs observed as indexed through search-provider evidence."
+    },
+    {
+      "id": "search-visibility",
+      "type": "external-observed",
+      "description": "Observed impressions, clicks, rankings, or query coverage from search-provider evidence."
+    },
+    {
+      "id": "ai-surfacing",
+      "type": "external-observed",
+      "description": "Observed assistant referrals or manually verified answer-engine mentions."
+    },
+    {
+      "id": "external-references",
+      "type": "external-observed",
+      "description": "Observed backlinks, embeds, citations, or references from third-party surfaces."
+    },
+    {
+      "id": "verified-citations",
+      "type": "external-verified",
+      "description": "Evidence-backed external citations retaining source, timestamp, query, surfaced URL, and observation artifact."
+    }
+  ]
+}

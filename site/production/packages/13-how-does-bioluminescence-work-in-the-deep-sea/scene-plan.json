@@ -1,0 +1,131 @@
+{
+  "sequence": 13,
+  "slug": "how-does-bioluminescence-work-in-the-deep-sea",
+  "status": "production-ready-unrendered-human-pass-required",
+  "scriptWordCount": 1197,
+  "estimatedDurationSeconds": 495,
+  "narratorProfile": "kokoro-af-heart-v1",
+  "musicRotation": "ambient-01",
+  "scenes": [
+    {
+      "order": 1,
+      "chapter": "Cold open",
+      "start": "00:00",
+      "estimatedEnd": "00:07",
+      "visualMode": "comparison-grid",
+      "narrationExcerpt": "In one MBARI survey, more than three out of four visible water-column animals could make their own light."
+    },
+    {
+      "order": 2,
+      "chapter": "Title card",
+      "start": "00:07",
+      "estimatedEnd": "00:11",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "How does bioluminescence work in the deep sea?"
+    },
+    {
+      "order": 3,
+      "chapter": "The ocean's darkness is not actually dark",
+      "start": "00:11",
+      "estimatedEnd": "01:17",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "Below the reach of sunlight, a camera with its lamps off can still record flashes, pulses, and glowing clouds. Bioluminescence is light produced by a chemical reaction inside or on"
+    },
+    {
+      "order": 4,
+      "chapter": "Water selects the color palette",
+      "start": "01:17",
+      "estimatedEnd": "02:21",
+      "visualMode": "source-card",
+      "narrationExcerpt": "Seawater filters wavelengths unevenly. Red light disappears quickly, while blue-green light travels farther. That makes blue-green emission efficient for signals, camouflage, and i"
+    },
+    {
+      "order": 5,
+      "chapter": "The same chemistry can hide, hunt, warn, or lie",
+      "start": "02:21",
+      "estimatedEnd": "03:26",
+      "visualMode": "diagram",
+      "narrationExcerpt": "Counter-illumination is one of the most elegant uses. In the twilight zone, a predator looking upward sees the faint surface glow behind an animal. Photophores on the animal's unde"
+    },
+    {
+      "order": 6,
+      "chapter": "A percentage is not a census",
+      "start": "03:26",
+      "estimatedEnd": "04:38",
+      "visualMode": "comparison-grid",
+      "narrationExcerpt": "The 76-percent figure is valuable because it came from systematic review of animals MBARI could observe in the water column, not from a collection of dramatic clips. It still has b"
+    },
+    {
+      "order": 7,
+      "chapter": "How to read the evidence",
+      "start": "04:38",
+      "estimatedEnd": "05:17",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "A final production note matters here. Deep-sea footage is often separated from the instrument record that gives it meaning. For this episode, every depth, date, size, and record cl"
+    },
+    {
+      "order": 8,
+      "chapter": "Narration quality gate",
+      "start": "05:17",
+      "estimatedEnd": "05:43",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "The human review pass should also read every number aloud. Long strings of digits can sound natural on a page and awkward in narration. Pronunciations of scientific names, trench n"
+    },
+    {
+      "order": 9,
+      "chapter": "Context before spectacle",
+      "start": "05:43",
+      "estimatedEnd": "06:16",
+      "visualMode": "source-card",
+      "narrationExcerpt": "Another check is scale. Deep-sea images usually remove familiar references, so a small animal can appear enormous and a brief movement can look aggressive. The production should sh"
+    },
+    {
+      "order": 10,
+      "chapter": "Observation versus inference 2",
+      "start": "06:16",
+      "estimatedEnd": "06:46",
+      "visualMode": "diagram",
+      "narrationExcerpt": "The script also separates what the camera directly records from what researchers infer. Direct evidence includes a measured depth, a timestamped encounter, a collected specimen, or"
+    },
+    {
+      "order": 11,
+      "chapter": "A reusable source rule 3",
+      "start": "06:46",
+      "estimatedEnd": "07:18",
+      "visualMode": "comparison-grid",
+      "narrationExcerpt": "For the channel, the stable rule is one claim, one traceable source, and one stated boundary. If a source describes one species, the script does not silently expand the claim to an"
+    },
+    {
+      "order": 12,
+      "chapter": "Production continuity 4",
+      "start": "07:18",
+      "estimatedEnd": "07:48",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "The visual edit should vary from the previous episode even when the evidence structure stays consistent. Use a discovery-led opening for one topic, a mechanism diagram for another,"
+    },
+    {
+      "order": 13,
+      "chapter": "Evidence limit",
+      "start": "07:48",
+      "estimatedEnd": "08:04",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "The 76-percent estimate comes from MBARI-observed water-column animals to 4,000 meters; it is not a complete census of all deep-ocean species. The companion article lists the sourc"
+    },
+    {
+      "order": 14,
+      "chapter": "Outro",
+      "start": "08:04",
+      "estimatedEnd": "08:15",
+      "visualMode": "source-card",
+      "narrationExcerpt": "The deep ocean is more useful when the uncertainty stays visible. The sourced article is linked below. Next, continue through the twenty-video launch sequence from the channel libr"
+    }
+  ],
+  "requiredAssets": [
+    "production/broll/original/13-how-does-bioluminescence-work-in-the-deep-sea.mp4",
+    "production/thumbnails/png/13-how-does-bioluminescence-work-in-the-deep-sea.png"
+  ],
+  "externalAssetsRequired": false,
+  "articlePath": "/questions/how-does-bioluminescence-work-in-the-deep-sea",
+  "metadataPath": "production/metadata/13-how-does-bioluminescence-work-in-the-deep-sea.json",
+  "humanPassPath": "production/human-pass/13-how-does-bioluminescence-work-in-the-deep-sea.md"
+}

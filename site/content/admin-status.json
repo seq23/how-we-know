@@ -1,0 +1,211 @@
+{
+  "narrator": {
+    "state": "pending",
+    "label": "Audition pending",
+    "voice": "af_heart",
+    "speed": 0.98
+  },
+  "humanPass": {
+    "approved": 0,
+    "total": 20,
+    "pending": 20,
+    "items": [
+      {
+        "sequence": 1,
+        "slug": "why-deep-sea-creatures-look-so-weird",
+        "title": "Why deep sea creatures look so weird?",
+        "status": "pending",
+        "finalScriptPath": "production/scripts/final/01-why-deep-sea-creatures-look-so-weird.md",
+        "plaintextPath": "production/scripts/plaintext/01-why-deep-sea-creatures-look-so-weird.txt",
+        "humanPassPath": "production/human-pass/01-why-deep-sea-creatures-look-so-weird.md"
+      },
+      {
+        "sequence": 2,
+        "slug": "how-deep-sea-creatures-survive-pressure",
+        "title": "How deep sea creatures survive the pressure?",
+        "status": "pending",
+        "finalScriptPath": "production/scripts/final/02-how-deep-sea-creatures-survive-pressure.md",
+        "plaintextPath": "production/scripts/plaintext/02-how-deep-sea-creatures-survive-pressure.txt",
+        "humanPassPath": "production/human-pass/02-how-deep-sea-creatures-survive-pressure.md"
+      },
+      {
+        "sequence": 3,
+        "slug": "why-deep-sea-creatures-are-surfacing",
+        "title": "Why deep sea creatures are surfacing?",
+        "status": "pending",
+        "finalScriptPath": "production/scripts/final/03-why-deep-sea-creatures-are-surfacing.md",
+        "plaintextPath": "production/scripts/plaintext/03-why-deep-sea-creatures-are-surfacing.txt",
+        "humanPassPath": "production/human-pass/03-why-deep-sea-creatures-are-surfacing.md"
+      },
+      {
+        "sequence": 4,
+        "slug": "why-deep-sea-creatures-are-so-scary",
+        "title": "Why deep sea creatures are so scary?",
+        "status": "pending",
+        "finalScriptPath": "production/scripts/final/04-why-deep-sea-creatures-are-so-scary.md",
+        "plaintextPath": "production/scripts/plaintext/04-why-deep-sea-creatures-are-so-scary.txt",
+        "humanPassPath": "production/human-pass/04-why-deep-sea-creatures-are-so-scary.md"
+      },
+      {
+        "sequence": 5,
+        "slug": "why-many-deep-sea-creatures-are-red",
+        "title": "Why many deep sea creatures are red?",
+        "status": "pending",
+        "finalScriptPath": "production/scripts/final/05-why-many-deep-sea-creatures-are-red.md",
+        "plaintextPath": "production/scripts/plaintext/05-why-many-deep-sea-creatures-are-red.txt",
+        "humanPassPath": "production/human-pass/05-why-many-deep-sea-creatures-are-red.md"
+      },
+      {
+        "sequence": 6,
+        "slug": "why-some-deep-sea-creatures-are-transparent",
+        "title": "Why some deep sea creatures are transparent?",
+        "status": "pending",
+        "finalScriptPath": "production/scripts/final/06-why-some-deep-sea-creatures-are-transparent.md",
+        "plaintextPath": "production/scripts/plaintext/06-why-some-deep-sea-creatures-are-transparent.txt",
+        "humanPassPath": "production/human-pass/06-why-some-deep-sea-creatures-are-transparent.md"
+      },
+      {
+        "sequence": 7,
+        "slug": "why-deep-sea-creatures-get-creepier-deeper",
+        "title": "Why deep sea creatures get creepier the deeper you go?",
+        "status": "pending",
+        "finalScriptPath": "production/scripts/final/07-why-deep-sea-creatures-get-creepier-deeper.md",
+        "plaintextPath": "production/scripts/plaintext/07-why-deep-sea-creatures-get-creepier-deeper.txt",
+        "humanPassPath": "production/human-pass/07-why-deep-sea-creatures-get-creepier-deeper.md"
+      },
+      {
+        "sequence": 8,
+        "slug": "what-creatures-live-in-the-deep-sea",
+        "title": "What creatures live in the deep sea?",
+        "status": "pending",
+        "finalScriptPath": "production/scripts/final/08-what-creatures-live-in-the-deep-sea.md",
+        "plaintextPath": "production/scripts/plaintext/08-what-creatures-live-in-the-deep-sea.txt",
+        "humanPassPath": "production/human-pass/08-what-creatures-live-in-the-deep-sea.md"
+      },
+      {
+        "sequence": 9,
+        "slug": "what-is-the-scariest-deep-sea-creature",
+        "title": "What is the scariest deep sea creature?",
+        "status": "pending",
+        "finalScriptPath": "production/scripts/final/09-what-is-the-scariest-deep-sea-creature.md",
+        "plaintextPath": "production/scripts/plaintext/09-what-is-the-scariest-deep-sea-creature.txt",
+        "humanPassPath": "production/human-pass/09-what-is-the-scariest-deep-sea-creature.md"
+      },
+      {
+        "sequence": 10,
+        "slug": "what-is-the-deepest-part-of-the-ocean",
+        "title": "What is the deepest part of the ocean?",
+        "status": "pending",
+        "finalScriptPath": "production/scripts/final/10-what-is-the-deepest-part-of-the-ocean.md",
+        "plaintextPath": "production/scripts/plaintext/10-what-is-the-deepest-part-of-the-ocean.txt",
+        "humanPassPath": "production/human-pass/10-what-is-the-deepest-part-of-the-ocean.md"
+      },
+      {
+        "sequence": 11,
+        "slug": "what-is-a-dumbo-octopus",
+        "title": "What is a dumbo octopus?",
+        "status": "pending",
+        "finalScriptPath": "production/scripts/final/11-what-is-a-dumbo-octopus.md",
+        "plaintextPath": "production/scripts/plaintext/11-what-is-a-dumbo-octopus.txt",
+        "humanPassPath": "production/human-pass/11-what-is-a-dumbo-octopus.md"
+      },
+      {
+        "sequence": 12,
+        "slug": "what-is-a-frilled-shark",
+        "title": "What is a frilled shark?",
+        "status": "pending",
+        "finalScriptPath": "production/scripts/final/12-what-is-a-frilled-shark.md",
+        "plaintextPath": "production/scripts/plaintext/12-what-is-a-frilled-shark.txt",
+        "humanPassPath": "production/human-pass/12-what-is-a-frilled-shark.md"
+      },
+      {
+        "sequence": 13,
+        "slug": "how-does-bioluminescence-work-in-the-deep-sea",
+        "title": "How does bioluminescence work in the deep sea?",
+        "status": "pending",
+        "finalScriptPath": "production/scripts/final/13-how-does-bioluminescence-work-in-the-deep-sea.md",
+        "plaintextPath": "production/scripts/plaintext/13-how-does-bioluminescence-work-in-the-deep-sea.txt",
+        "humanPassPath": "production/human-pass/13-how-does-bioluminescence-work-in-the-deep-sea.md"
+      },
+      {
+        "sequence": 14,
+        "slug": "how-big-is-a-colossal-squid",
+        "title": "How big is a colossal squid?",
+        "status": "pending",
+        "finalScriptPath": "production/scripts/final/14-how-big-is-a-colossal-squid.md",
+        "plaintextPath": "production/scripts/plaintext/14-how-big-is-a-colossal-squid.txt",
+        "humanPassPath": "production/human-pass/14-how-big-is-a-colossal-squid.md"
+      },
+      {
+        "sequence": 15,
+        "slug": "how-do-people-reach-challenger-deep",
+        "title": "How do people reach Challenger Deep?",
+        "status": "pending",
+        "finalScriptPath": "production/scripts/final/15-how-do-people-reach-challenger-deep.md",
+        "plaintextPath": "production/scripts/plaintext/15-how-do-people-reach-challenger-deep.txt",
+        "humanPassPath": "production/human-pass/15-how-do-people-reach-challenger-deep.md"
+      },
+      {
+        "sequence": 16,
+        "slug": "what-happens-when-a-whale-dies-in-the-deep-ocean",
+        "title": "What happens when a whale dies in the deep ocean?",
+        "status": "pending",
+        "finalScriptPath": "production/scripts/final/16-what-happens-when-a-whale-dies-in-the-deep-ocean.md",
+        "plaintextPath": "production/scripts/plaintext/16-what-happens-when-a-whale-dies-in-the-deep-ocean.txt",
+        "humanPassPath": "production/human-pass/16-what-happens-when-a-whale-dies-in-the-deep-ocean.md"
+      },
+      {
+        "sequence": 17,
+        "slug": "what-is-a-yeti-crab",
+        "title": "What is a yeti crab?",
+        "status": "pending",
+        "finalScriptPath": "production/scripts/final/17-what-is-a-yeti-crab.md",
+        "plaintextPath": "production/scripts/plaintext/17-what-is-a-yeti-crab.txt",
+        "humanPassPath": "production/human-pass/17-what-is-a-yeti-crab.md"
+      },
+      {
+        "sequence": 18,
+        "slug": "why-does-black-smoker-water-not-boil",
+        "title": "Why does black-smoker water not boil?",
+        "status": "pending",
+        "finalScriptPath": "production/scripts/final/18-why-does-black-smoker-water-not-boil.md",
+        "plaintextPath": "production/scripts/plaintext/18-why-does-black-smoker-water-not-boil.txt",
+        "humanPassPath": "production/human-pass/18-why-does-black-smoker-water-not-boil.md"
+      },
+      {
+        "sequence": 19,
+        "slug": "what-is-the-deepest-fish-ever-recorded",
+        "title": "What is the deepest fish ever recorded?",
+        "status": "pending",
+        "finalScriptPath": "production/scripts/final/19-what-is-the-deepest-fish-ever-recorded.md",
+        "plaintextPath": "production/scripts/plaintext/19-what-is-the-deepest-fish-ever-recorded.txt",
+        "humanPassPath": "production/human-pass/19-what-is-the-deepest-fish-ever-recorded.md"
+      },
+      {
+        "sequence": 20,
+        "slug": "what-is-the-midnight-zone",
+        "title": "What is the midnight zone?",
+        "status": "pending",
+        "finalScriptPath": "production/scripts/final/20-what-is-the-midnight-zone.md",
+        "plaintextPath": "production/scripts/plaintext/20-what-is-the-midnight-zone.txt",
+        "humanPassPath": "production/human-pass/20-what-is-the-midnight-zone.md"
+      }
+    ]
+  },
+  "production": {
+    "narrationWavs": 0,
+    "renderedMp4s": 0,
+    "renderReceiptPresent": false
+  },
+  "youtube": {
+    "receiptFiles": 0,
+    "liveIds": 0
+  },
+  "site": {
+    "publishedVideos": 0
+  },
+  "releaseGate": {
+    "state": "blocked",
+    "label": "Blocked pending human/runtime work"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "strategy": "twenty-video-launch-wave",
+  "videosPerDay": 4,
+  "days": 5,
+  "localTimes": [
+    "09:00",
+    "12:30",
+    "16:00",
+    "19:30"
+  ],
+  "timezone": "America/Chicago",
+  "rationale": "Twenty videos are ready at launch, but scheduling four per day avoids a single mass-upload burst and preserves review windows.",
+  "allUploadsStartPrivate": true
+}

@@ -1,0 +1,115 @@
+{
+  "sequence": 9,
+  "slug": "what-is-the-scariest-deep-sea-creature",
+  "status": "production-ready-unrendered",
+  "scriptWordCount": 1271,
+  "estimatedDurationSeconds": 526,
+  "narratorProfile": "kokoro-af-heart-v1",
+  "musicRotation": "ambient-01",
+  "scenes": [
+    {
+      "order": 1,
+      "chapter": "Opening",
+      "start": "00:00",
+      "estimatedEnd": "00:29",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "There is no scientific unit called a scare. So the honest answer depends on what unsettles you: teeth, size, armor, parasitic reproduction, or simply an animal that moves in a way "
+    },
+    {
+      "order": 2,
+      "chapter": "The right way to see it",
+      "start": "00:29",
+      "estimatedEnd": "00:50",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "Instead of pretending there is an objective winner, we can compare the animals people nominate most often and separate appearance from actual danger. The rest of this video follows"
+    },
+    {
+      "order": 3,
+      "chapter": "'Scariest' is a human category",
+      "start": "00:50",
+      "estimatedEnd": "01:32",
+      "visualMode": "source-card",
+      "narrationExcerpt": "Science can compare size, bite mechanics, hunting strategy, venom or ecological role. It cannot measure a universal fear ranking. The answer therefore depends on whether a person r"
+    },
+    {
+      "order": 4,
+      "chapter": "Anglerfish: the iconic horror face",
+      "start": "01:32",
+      "estimatedEnd": "02:14",
+      "visualMode": "diagram",
+      "narrationExcerpt": "Deep-sea anglerfish combine a lure, large mouth and needle-like teeth. Close-up photographs make them look enormous, but many species are small. The lure is a low-energy feeding to"
+    },
+    {
+      "order": 5,
+      "chapter": "Dragonfish and viperfish: teeth that secure prey",
+      "start": "02:14",
+      "estimatedEnd": "02:57",
+      "visualMode": "comparison-grid",
+      "narrationExcerpt": "These fishes carry long teeth that remain visible even when the mouth is closed. The equipment helps hold slippery prey during brief encounters in darkness. Their dramatic appearan"
+    },
+    {
+      "order": 6,
+      "chapter": "Giant squid: fear created by scale and rarity",
+      "start": "02:57",
+      "estimatedEnd": "03:39",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "Giant squid are legitimately large and possess long tentacles, a beak and enormous eyes. Yet they are elusive and only rarely observed alive. Most evidence suggests a deep-ocean pr"
+    },
+    {
+      "order": 7,
+      "chapter": "Giant isopods: familiar anatomy at unfamiliar scale",
+      "start": "03:39",
+      "estimatedEnd": "04:19",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "Giant isopods resemble oversized terrestrial pill bugs. Their armored segments and scavenging diet trigger disgust or fear in some viewers. On the seafloor, they are recyclers that"
+    },
+    {
+      "order": 8,
+      "chapter": "A quick comparison",
+      "start": "04:19",
+      "estimatedEnd": "05:02",
+      "visualMode": "source-card",
+      "narrationExcerpt": "Anglerfish helps with lure, mouth and teeth; a useful example is Ambushes prey. Dragonfish helps with long exposed teeth; a useful example is Secures prey in darkness. Giant squid "
+    },
+    {
+      "order": 9,
+      "chapter": "Common myths and questions",
+      "start": "05:02",
+      "estimatedEnd": "05:45",
+      "visualMode": "diagram",
+      "narrationExcerpt": "A common question is: What deep-sea animal is most dangerous to humans? There is no well-supported candidate that poses a routine danger to humans. Environmental conditions are the"
+    },
+    {
+      "order": 10,
+      "chapter": "The pattern to remember",
+      "start": "05:45",
+      "estimatedEnd": "07:48",
+      "visualMode": "comparison-grid",
+      "narrationExcerpt": "Before we finish, notice the pattern. First, remove the assumptions that come from daylight and surface pressure. Second, identify the real constraint: light, food, pressure, tempe"
+    },
+    {
+      "order": 11,
+      "chapter": "What the evidence can and cannot say",
+      "start": "07:48",
+      "estimatedEnd": "08:18",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "The supporting sources for this episode come from NOAA Ocean Today, Smithsonian Ocean, Monterey Bay Aquarium Research Institute. They support the environmental conditions, measurem"
+    },
+    {
+      "order": 12,
+      "chapter": "Closing",
+      "start": "08:18",
+      "estimatedEnd": "08:45",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "The scariest deep-sea creature is a mirror. It reveals which visual signals your brain treats as danger. Ecologically, these animals are predators, scavengers, and specialists\u2014not "
+    }
+  ],
+  "requiredAssets": [
+    "original-depth-gradient",
+    "original-particle-field",
+    "original-creature-silhouettes"
+  ],
+  "externalAssetsRequired": false,
+  "articlePath": "/questions/what-is-the-scariest-deep-sea-creature",
+  "metadataPath": "production/metadata/09-what-is-the-scariest-deep-sea-creature.json"
+}

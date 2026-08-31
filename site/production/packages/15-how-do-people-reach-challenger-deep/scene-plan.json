@@ -1,0 +1,131 @@
+{
+  "sequence": 15,
+  "slug": "how-do-people-reach-challenger-deep",
+  "status": "production-ready-unrendered-human-pass-required",
+  "scriptWordCount": 1175,
+  "estimatedDurationSeconds": 486,
+  "narratorProfile": "kokoro-af-heart-v1",
+  "musicRotation": "ambient-03",
+  "scenes": [
+    {
+      "order": 1,
+      "chapter": "Cold open",
+      "start": "00:00",
+      "estimatedEnd": "00:09",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "At the deepest ocean floor, every square centimeter of a human pressure sphere carries the weight of nearly eleven kilometers of seawater."
+    },
+    {
+      "order": 2,
+      "chapter": "Title card",
+      "start": "00:09",
+      "estimatedEnd": "00:12",
+      "visualMode": "source-card",
+      "narrationExcerpt": "How do people reach Challenger Deep?"
+    },
+    {
+      "order": 3,
+      "chapter": "A vehicle built around one protected bubble",
+      "start": "00:12",
+      "estimatedEnd": "01:14",
+      "visualMode": "diagram",
+      "narrationExcerpt": "A full-ocean-depth submersible does not make every component resist pressure in the same way. The crew sits inside a compact metal sphere engineered to keep one atmosphere of press"
+    },
+    {
+      "order": 4,
+      "chapter": "Trieste reached the bottom before precision caught up",
+      "start": "01:14",
+      "estimatedEnd": "02:19",
+      "visualMode": "comparison-grid",
+      "narrationExcerpt": "On January 23, 1960, Jacques Piccard and U.S. Navy Lieutenant Don Walsh descended in the bathyscaphe Trieste. The vehicle used a gasoline-filled float for buoyancy and an attached "
+    },
+    {
+      "order": 5,
+      "chapter": "Repeatability changes exploration into measurement",
+      "start": "02:19",
+      "estimatedEnd": "03:21",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "Modern full-ocean-depth vehicles use stronger materials, syntactic foam, digital control, acoustic communications, and improved navigation. A repeatable submersible can cross the s"
+    },
+    {
+      "order": 6,
+      "chapter": "Depth is a calculation with an uncertainty budget",
+      "start": "03:21",
+      "estimatedEnd": "04:29",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "A 2021 peer-reviewed analysis used submersible transects and pressure observations to revise the maximum depth of Challenger Deep. The deepest observed seafloor value was 10,935 me"
+    },
+    {
+      "order": 7,
+      "chapter": "How to read the evidence",
+      "start": "04:29",
+      "estimatedEnd": "05:09",
+      "visualMode": "source-card",
+      "narrationExcerpt": "A final production note matters here. Deep-sea footage is often separated from the instrument record that gives it meaning. For this episode, every depth, date, size, and record cl"
+    },
+    {
+      "order": 8,
+      "chapter": "Narration quality gate",
+      "start": "05:09",
+      "estimatedEnd": "05:34",
+      "visualMode": "diagram",
+      "narrationExcerpt": "The human review pass should also read every number aloud. Long strings of digits can sound natural on a page and awkward in narration. Pronunciations of scientific names, trench n"
+    },
+    {
+      "order": 9,
+      "chapter": "Context before spectacle",
+      "start": "05:34",
+      "estimatedEnd": "06:07",
+      "visualMode": "comparison-grid",
+      "narrationExcerpt": "Another check is scale. Deep-sea images usually remove familiar references, so a small animal can appear enormous and a brief movement can look aggressive. The production should sh"
+    },
+    {
+      "order": 10,
+      "chapter": "Observation versus inference 2",
+      "start": "06:07",
+      "estimatedEnd": "06:38",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "The script also separates what the camera directly records from what researchers infer. Direct evidence includes a measured depth, a timestamped encounter, a collected specimen, or"
+    },
+    {
+      "order": 11,
+      "chapter": "A reusable source rule 3",
+      "start": "06:38",
+      "estimatedEnd": "07:10",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "For the channel, the stable rule is one claim, one traceable source, and one stated boundary. If a source describes one species, the script does not silently expand the claim to an"
+    },
+    {
+      "order": 12,
+      "chapter": "Production continuity 4",
+      "start": "07:10",
+      "estimatedEnd": "07:40",
+      "visualMode": "source-card",
+      "narrationExcerpt": "The visual edit should vary from the previous episode even when the evidence structure stays consistent. Use a discovery-led opening for one topic, a mechanism diagram for another,"
+    },
+    {
+      "order": 13,
+      "chapter": "Evidence limit",
+      "start": "07:40",
+      "estimatedEnd": "07:55",
+      "visualMode": "diagram",
+      "narrationExcerpt": "The number of people who have reached Challenger Deep changes with new expeditions; this episode deliberately avoids a fixed headcount. The companion article lists the sources and "
+    },
+    {
+      "order": 14,
+      "chapter": "Outro",
+      "start": "07:55",
+      "estimatedEnd": "08:06",
+      "visualMode": "comparison-grid",
+      "narrationExcerpt": "The deep ocean is more useful when the uncertainty stays visible. The sourced article is linked below. Next, continue through the twenty-video launch sequence from the channel libr"
+    }
+  ],
+  "requiredAssets": [
+    "production/broll/original/15-how-do-people-reach-challenger-deep.mp4",
+    "production/thumbnails/png/15-how-do-people-reach-challenger-deep.png"
+  ],
+  "externalAssetsRequired": false,
+  "articlePath": "/questions/how-do-people-reach-challenger-deep",
+  "metadataPath": "production/metadata/15-how-do-people-reach-challenger-deep.json",
+  "humanPassPath": "production/human-pass/15-how-do-people-reach-challenger-deep.md"
+}

@@ -1,0 +1,131 @@
+{
+  "sequence": 16,
+  "slug": "what-happens-when-a-whale-dies-in-the-deep-ocean",
+  "status": "production-ready-unrendered-human-pass-required",
+  "scriptWordCount": 1152,
+  "estimatedDurationSeconds": 477,
+  "narratorProfile": "kokoro-af-heart-v1",
+  "musicRotation": "ambient-04",
+  "scenes": [
+    {
+      "order": 1,
+      "chapter": "Cold open",
+      "start": "00:00",
+      "estimatedEnd": "00:08",
+      "visualMode": "source-card",
+      "narrationExcerpt": "A dead whale can feed a deep-sea community longer than the whale lived at the surface as an adult."
+    },
+    {
+      "order": 2,
+      "chapter": "Title card",
+      "start": "00:08",
+      "estimatedEnd": "00:12",
+      "visualMode": "diagram",
+      "narrationExcerpt": "What happens when a whale dies in the deep ocean?"
+    },
+    {
+      "order": 3,
+      "chapter": "A single body changes a food-poor landscape",
+      "start": "00:12",
+      "estimatedEnd": "01:17",
+      "visualMode": "comparison-grid",
+      "narrationExcerpt": "Most organic matter produced near the surface is eaten, recycled, or broken down before it reaches the deep seafloor. A whale carcass is different. If it sinks intact, it can deliv"
+    },
+    {
+      "order": 4,
+      "chapter": "The first stage is large and fast",
+      "start": "01:17",
+      "estimatedEnd": "02:15",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "Sharks, hagfish, ratfish, amphipods, and other mobile scavengers detect the carcass and remove soft tissue. Video from whale falls often shows hagfish entering openings and twistin"
+    },
+    {
+      "order": 5,
+      "chapter": "Bones store an energy reserve",
+      "start": "02:15",
+      "estimatedEnd": "03:13",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "Whale bones contain lipids. In low-oxygen microenvironments, microbes break down that material and generate sulfide. Sulfide-oxidizing bacteria use chemical energy, creating a foun"
+    },
+    {
+      "order": 6,
+      "chapter": "From food island to hard substrate",
+      "start": "03:13",
+      "estimatedEnd": "04:19",
+      "visualMode": "source-card",
+      "narrationExcerpt": "As bone lipids are exhausted and sulfide production falls, the remaining skeleton can still provide hard surface in an environment dominated by soft sediment. Suspension feeders an"
+    },
+    {
+      "order": 7,
+      "chapter": "How to read the evidence",
+      "start": "04:19",
+      "estimatedEnd": "04:58",
+      "visualMode": "diagram",
+      "narrationExcerpt": "A final production note matters here. Deep-sea footage is often separated from the instrument record that gives it meaning. For this episode, every depth, date, size, and record cl"
+    },
+    {
+      "order": 8,
+      "chapter": "Narration quality gate",
+      "start": "04:58",
+      "estimatedEnd": "05:24",
+      "visualMode": "comparison-grid",
+      "narrationExcerpt": "The human review pass should also read every number aloud. Long strings of digits can sound natural on a page and awkward in narration. Pronunciations of scientific names, trench n"
+    },
+    {
+      "order": 9,
+      "chapter": "Context before spectacle",
+      "start": "05:24",
+      "estimatedEnd": "05:57",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "Another check is scale. Deep-sea images usually remove familiar references, so a small animal can appear enormous and a brief movement can look aggressive. The production should sh"
+    },
+    {
+      "order": 10,
+      "chapter": "Observation versus inference 2",
+      "start": "05:57",
+      "estimatedEnd": "06:28",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "The script also separates what the camera directly records from what researchers infer. Direct evidence includes a measured depth, a timestamped encounter, a collected specimen, or"
+    },
+    {
+      "order": 11,
+      "chapter": "A reusable source rule 3",
+      "start": "06:28",
+      "estimatedEnd": "07:00",
+      "visualMode": "source-card",
+      "narrationExcerpt": "For the channel, the stable rule is one claim, one traceable source, and one stated boundary. If a source describes one species, the script does not silently expand the claim to an"
+    },
+    {
+      "order": 12,
+      "chapter": "Production continuity 4",
+      "start": "07:00",
+      "estimatedEnd": "07:29",
+      "visualMode": "diagram",
+      "narrationExcerpt": "The visual edit should vary from the previous episode even when the evidence structure stays consistent. Use a discovery-led opening for one topic, a mechanism diagram for another,"
+    },
+    {
+      "order": 13,
+      "chapter": "Evidence limit",
+      "start": "07:29",
+      "estimatedEnd": "07:45",
+      "visualMode": "comparison-grid",
+      "narrationExcerpt": "Stage durations vary widely with carcass size, depth, temperature, oxygen, and local community. The sequence is a model, not a universal timetable. The companion article lists the "
+    },
+    {
+      "order": 14,
+      "chapter": "Outro",
+      "start": "07:45",
+      "estimatedEnd": "07:57",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "The deep ocean is more useful when the uncertainty stays visible. The sourced article is linked below. Next, continue through the twenty-video launch sequence from the channel libr"
+    }
+  ],
+  "requiredAssets": [
+    "production/broll/original/16-what-happens-when-a-whale-dies-in-the-deep-ocean.mp4",
+    "production/thumbnails/png/16-what-happens-when-a-whale-dies-in-the-deep-ocean.png"
+  ],
+  "externalAssetsRequired": false,
+  "articlePath": "/questions/what-happens-when-a-whale-dies-in-the-deep-ocean",
+  "metadataPath": "production/metadata/16-what-happens-when-a-whale-dies-in-the-deep-ocean.json",
+  "humanPassPath": "production/human-pass/16-what-happens-when-a-whale-dies-in-the-deep-ocean.md"
+}

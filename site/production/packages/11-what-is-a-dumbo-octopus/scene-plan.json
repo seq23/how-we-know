@@ -1,0 +1,123 @@
+{
+  "sequence": 11,
+  "slug": "what-is-a-dumbo-octopus",
+  "status": "production-ready-unrendered-human-pass-required",
+  "scriptWordCount": 1151,
+  "estimatedDurationSeconds": 476,
+  "narratorProfile": "kokoro-af-heart-v1",
+  "musicRotation": "ambient-03",
+  "scenes": [
+    {
+      "order": 1,
+      "chapter": "Cold open",
+      "start": "00:00",
+      "estimatedEnd": "00:08",
+      "visualMode": "source-card",
+      "narrationExcerpt": "A soft-bodied octopus was filmed nearly seven kilometers down, where the pressure is roughly seven hundred times surface pressure."
+    },
+    {
+      "order": 2,
+      "chapter": "Title card",
+      "start": "00:08",
+      "estimatedEnd": "00:10",
+      "visualMode": "diagram",
+      "narrationExcerpt": "What is a dumbo octopus?"
+    },
+    {
+      "order": 3,
+      "chapter": "A name that hides a whole group",
+      "start": "00:10",
+      "estimatedEnd": "01:19",
+      "visualMode": "comparison-grid",
+      "narrationExcerpt": "Dumbo octopus is not one tidy species with one fixed depth and one fixed appearance. It is a nickname used for finned octopuses in the cirrate lineage. Their most obvious feature i"
+    },
+    {
+      "order": 4,
+      "chapter": "The observation at 6,957 meters",
+      "start": "01:19",
+      "estimatedEnd": "02:27",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "In 2020, Alan Jamieson and Michael Vecchione reported clear lander video of a cirrate octopus identified as Grimpoteuthis at 5,760 meters and again at 6,957 meters in the Indian Oc"
+    },
+    {
+      "order": 5,
+      "chapter": "A body built around water, not air",
+      "start": "02:27",
+      "estimatedEnd": "03:38",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "Pressure is most dramatic when it compresses gas. A dumbo octopus does not carry lungs, and its tissues are mostly water, so the body is not a hollow object waiting to be crushed. "
+    },
+    {
+      "order": 6,
+      "chapter": "What the camera still cannot tell us",
+      "start": "03:38",
+      "estimatedEnd": "04:48",
+      "visualMode": "source-card",
+      "narrationExcerpt": "The hadal sighting opened a larger habitat than researchers could confidently assign to cephalopods, but it also exposed how sparse the record remains. We do not have a continuous "
+    },
+    {
+      "order": 7,
+      "chapter": "How to read the evidence",
+      "start": "04:48",
+      "estimatedEnd": "05:27",
+      "visualMode": "diagram",
+      "narrationExcerpt": "A final production note matters here. Deep-sea footage is often separated from the instrument record that gives it meaning. For this episode, every depth, date, size, and record cl"
+    },
+    {
+      "order": 8,
+      "chapter": "Narration quality gate",
+      "start": "05:27",
+      "estimatedEnd": "05:53",
+      "visualMode": "comparison-grid",
+      "narrationExcerpt": "The human review pass should also read every number aloud. Long strings of digits can sound natural on a page and awkward in narration. Pronunciations of scientific names, trench n"
+    },
+    {
+      "order": 9,
+      "chapter": "Context before spectacle",
+      "start": "05:53",
+      "estimatedEnd": "06:26",
+      "visualMode": "depth-gradient",
+      "narrationExcerpt": "Another check is scale. Deep-sea images usually remove familiar references, so a small animal can appear enormous and a brief movement can look aggressive. The production should sh"
+    },
+    {
+      "order": 10,
+      "chapter": "Observation versus inference 2",
+      "start": "06:26",
+      "estimatedEnd": "06:56",
+      "visualMode": "creature-silhouette",
+      "narrationExcerpt": "The script also separates what the camera directly records from what researchers infer. Direct evidence includes a measured depth, a timestamped encounter, a collected specimen, or"
+    },
+    {
+      "order": 11,
+      "chapter": "A reusable source rule 3",
+      "start": "06:56",
+      "estimatedEnd": "07:28",
+      "visualMode": "source-card",
+      "narrationExcerpt": "For the channel, the stable rule is one claim, one traceable source, and one stated boundary. If a source describes one species, the script does not silently expand the claim to an"
+    },
+    {
+      "order": 12,
+      "chapter": "Evidence limit",
+      "start": "07:28",
+      "estimatedEnd": "07:45",
+      "visualMode": "diagram",
+      "narrationExcerpt": "The 6,957-meter record is a confirmed observation of one Grimpoteuthis individual, not the universal depth range of every animal called a dumbo octopus. The companion article lists"
+    },
+    {
+      "order": 13,
+      "chapter": "Outro",
+      "start": "07:45",
+      "estimatedEnd": "07:56",
+      "visualMode": "comparison-grid",
+      "narrationExcerpt": "The deep ocean is more useful when the uncertainty stays visible. The sourced article is linked below. Next, continue through the twenty-video launch sequence from the channel libr"
+    }
+  ],
+  "requiredAssets": [
+    "production/broll/original/11-what-is-a-dumbo-octopus.mp4",
+    "production/thumbnails/png/11-what-is-a-dumbo-octopus.png"
+  ],
+  "externalAssetsRequired": false,
+  "articlePath": "/questions/what-is-a-dumbo-octopus",
+  "metadataPath": "production/metadata/11-what-is-a-dumbo-octopus.json",
+  "humanPassPath": "production/human-pass/11-what-is-a-dumbo-octopus.md"
+}
