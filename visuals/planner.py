@@ -132,6 +132,8 @@ try:
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
     import segments_ext2 as _ext2
     _ext2.install(sys.modules[__name__])
+    import segments_species as _sp
+    _sp.install(sys.modules[__name__])
 except Exception:
     _ext2 = None
 

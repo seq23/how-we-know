@@ -1,0 +1,845 @@
+[
+  {
+    "segment": "depth_descent",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "Challenger Deep is about 10,935 meters below mean sea level. The honest version of that sentence includes six more meters: plus or minus six, at a 95 percent confidence interval.",
+    "args": {
+      "to_depth": 10935,
+      "label": "CHALLENGER DEEP"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 3.5,
+    "heading": "Title card",
+    "narration": "What is the deepest part of the ocean?",
+    "args": {
+      "lines": [
+        "What is the deepest",
+        "part of the ocean?"
+      ]
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 4.97,
+    "heading": "The right way to see it",
+    "narration": "The exact depth is not one eternal number carved into the seafloor.",
+    "args": {
+      "title": "WHAT THE DEPTH ACTUALLY IS",
+      "stages": [
+        "An instrument",
+        "A survey path",
+        "Corrections",
+        "Uncertainty"
+      ],
+      "conclusion": "Not one eternal number carved into the seafloor"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "The right way to see it",
+    "narration": "It is a measurement with an instrument, a survey path, corrections, and uncertainty.",
+    "args": {
+      "lines": [
+        "It is a measurement",
+        "with an instrument, a",
+        "survey path"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "The right way to see it",
+    "narration": "The rest of this video follows that question through the actual environmental constraints described by NOAA, MBARI, Smithsonian, and Woods Hole sources in the companion article.",
+    "args": {
+      "title": "WHAT THE DEPTH ACTUALLY IS",
+      "stages": [
+        "An instrument",
+        "A survey path",
+        "Corrections",
+        "Uncertainty"
+      ],
+      "conclusion": "Not one eternal number carved into the seafloor"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 9.0,
+    "heading": "Producer POV",
+    "narration": "I kept seeing the depth repeated as one perfect number. The measurement paper is more interesting because it shows how much pressure calibration, gravity correction, water level, and uncertainty sit behind that clean figure.",
+    "args": {
+      "text": "I kept seeing the depth repeated as one perfect number. The measurement paper is more interesting because it shows how much pressure calibration, gravity correction, water level, and uncertainty sit behind that clean figure.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "zone_column",
+    "seconds": 7.45,
+    "heading": "Challenger Deep lies inside the Mariana Trench",
+    "narration": "Challenger Deep is a depression at the southern end of the Mariana Trench in the western Pacific Ocean.",
+    "args": {
+      "highlight": "HADAL"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Challenger Deep lies inside the Mariana Trench",
+    "narration": "The trench forms where one tectonic plate bends and descends beneath another, creating a long, narrow hadal environment rather than a single open-ocean hole.",
+    "args": {
+      "lines": [
+        "The trench forms where",
+        "one tectonic plate bends",
+        "and descends"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "zone_column",
+    "seconds": 8.28,
+    "heading": "Challenger Deep lies inside the Mariana Trench",
+    "narration": "The name refers to a deep basin with multiple surveyed pools, not one permanently fixed point marked on the seafloor.",
+    "args": {
+      "highlight": "HADAL"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Challenger Deep lies inside the Mariana Trench",
+    "narration": "Different expeditions may cross slightly different tracks and identify slightly different local lows.",
+    "args": {
+      "lines": [
+        "Different expeditions may cross",
+        "slightly different tracks and",
+        "identify slightly"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "uncertainty_bar",
+    "seconds": 6.62,
+    "heading": "The best current estimate is about 10.9 kilometers",
+    "narration": "NOAA commonly reports Challenger Deep at approximately 10,935 meters, or 35,876 feet, below mean sea level.",
+    "args": {
+      "value": "10,935",
+      "unit": "metres",
+      "plus": "6",
+      "minus": null,
+      "confidence": "95 percent confidence",
+      "caption": "Challenger Deep, below mean sea level"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The best current estimate is about 10.9 kilometers",
+    "narration": "A modern pressure-based submersible study reported 10,935 meters with an uncertainty of plus or minus 6 meters at 95 percent confidence. That uncertainty matters.",
+    "args": {
+      "lines": [
+        "A modern pressure-based submersible",
+        "study reported 10,935 meters"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 8.28,
+    "heading": "The best current estimate is about 10.9 kilometers",
+    "narration": "Ocean depth is calculated from pressure, gravity, seawater properties, instrument calibration, vessel position, and the geometry of the survey path.",
+    "args": {
+      "title": "WHAT OCEAN DEPTH IS CALCULATED FROM",
+      "items": [
+        "?Pressure",
+        "?Gravity",
+        "?Seawater properties",
+        "?Instrument calibration",
+        "?Vessel position",
+        "?The geometry of the survey path"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "The best current estimate is about 10.9 kilometers",
+    "narration": "A number presented without its method and uncertainty can look more exact than the measurement really is.",
+    "args": {
+      "lines": [
+        "A number presented without",
+        "its method and uncertainty",
+        "can look"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "pressure_gauge",
+    "seconds": 7.86,
+    "heading": "The bottom is dark, cold, and under extreme pressure",
+    "narration": "At nearly eleven kilometers, sunlight is absent and pressure is roughly eleven hundred times atmospheric pressure at sea level.",
+    "args": {
+      "depth_m": 10935
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "The bottom is dark, cold, and under extreme pressure",
+    "narration": "Temperatures are close to freezing, although local conditions vary with water masses and seafloor processes.",
+    "args": {
+      "lines": [
+        "Temperatures are close to",
+        "freezing, although local conditions",
+        "vary"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "pressure_gauge",
+    "seconds": 9.0,
+    "heading": "The bottom is dark, cold, and under extreme pressure",
+    "narration": "The hadal zone still supports life. Microbes and specialized invertebrates occupy trench sediments, while the deepest confirmed fishes live above the absolute bottom.",
+    "args": {
+      "depth_m": 10935
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "The bottom is dark, cold, and under extreme pressure",
+    "narration": "The environment is biologically active, but it is not a place where ordinary surface organisms can function unchanged.",
+    "args": {
+      "lines": [
+        "The environment is biologically",
+        "active, but it"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 8.69,
+    "heading": "Exploration requires full-ocean-depth engineering",
+    "narration": "Mapping vessels use sonar to build regional bathymetric models, while landers and submersibles provide direct pressure, imagery, sampling, and seafloor observations.",
+    "args": {
+      "title": "EACH METHOD ANSWERS A DIFFERENT PART",
+      "sources": [
+        [
+          "Mapping vessels",
+          "sonar builds regional bathymetric models"
+        ],
+        [
+          "Landers and submersibles",
+          "direct pressure, imagery, sampling and seafloor observations"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "Exploration requires full-ocean-depth engineering",
+    "narration": "Each method answers a different part of the depth question and carries different uncertainty.",
+    "args": {
+      "lines": [
+        "Each method answers a",
+        "different part of the",
+        "depth question"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "Exploration requires full-ocean-depth engineering",
+    "narration": "Only vehicles designed for full-ocean depth can operate at Challenger Deep. The engineering problem is not simply reaching the bottom; systems must survive pressure, navigate without light or GPS, communicate through water, and return usable measurements with traceable calibration.",
+    "args": {
+      "title": "THE ENGINEERING PROBLEM",
+      "items": [
+        "?Survive pressure",
+        "?Navigate without light or GPS",
+        "?Communicate through water",
+        "?Return usable measurements with traceable calibration"
+      ],
+      "note": "Not simply reaching the bottom"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 5.79,
+    "heading": "Common myths and questions",
+    "narration": "A common question is: Is the Mariana Trench the deepest part of the ocean?",
+    "args": {
+      "term": "Challenger Deep",
+      "meaning": "The deepest known depression within the Mariana Trench",
+      "boundary": "And the deepest known point in the global ocean",
+      "source": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 9.0,
+    "heading": "Common myths and questions",
+    "narration": "The Mariana Trench is the deepest trench. Challenger Deep is the deepest known depression within that trench and the deepest known point in the global ocean.",
+    "args": {
+      "subject": "mariana_trench",
+      "label": "Challenger Deep",
+      "pick": 0
+    },
+    "from": "directive-rhythm+species-beat"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 5.38,
+    "heading": "Common myths and questions",
+    "narration": "A common question is: Why do sources give different depths for Challenger Deep?",
+    "args": {
+      "title": "WHY SOURCES GIVE DIFFERENT DEPTHS",
+      "items": [
+        "?Different instruments",
+        "?Different tracks",
+        "?Different gravity corrections",
+        "?Different seawater assumptions",
+        "?Different reference levels"
+      ],
+      "note": "Small differences do not necessarily mean one expedition failed"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Common myths and questions",
+    "narration": "Surveys use different instruments, tracks, gravity corrections, seawater assumptions, reference levels, and uncertainty methods. Small differences do not necessarily mean one expedition failed.",
+    "args": {
+      "lines": [
+        "Surveys use different instruments,",
+        "tracks, gravity corrections, seawater",
+        "assumptions, reference"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "timeline",
+    "seconds": 4.97,
+    "heading": "Common myths and questions",
+    "narration": "A common question is: Has anyone reached the bottom of Challenger Deep?",
+    "args": {
+      "events": [
+        [
+          1960,
+          "Crewed Trieste descent"
+        ],
+        [
+          2021,
+          "Revised depth published"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 9.0,
+    "heading": "Common myths and questions",
+    "narration": "Yes. Crewed and uncrewed full-ocean-depth vehicles have reached and surveyed parts of Challenger Deep, beginning with the crewed Trieste descent in 1960.",
+    "args": {
+      "subject": "trieste",
+      "label": "Trieste",
+      "pick": 0
+    },
+    "from": "directive-rhythm+species-beat"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 8.69,
+    "heading": "Common myths and questions",
+    "narration": "A common question is: Do fish live at the deepest point? No fish has been confirmed at the absolute deepest seafloor.",
+    "args": {
+      "term": "DO FISH LIVE AT THE DEEPEST POINT?",
+      "includes": [
+        "Hadal snailfish, which hold depth records above the bottom",
+        "Microbes and invertebrates in deeper trench sediments"
+      ],
+      "excludes": [
+        "Any fish confirmed at the absolute deepest seafloor"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 6.62,
+    "heading": "Common myths and questions",
+    "narration": "Hadal snailfish hold depth records above the bottom, while deeper trench sediments support microbes and invertebrates.",
+    "args": {
+      "subject": "snailfish",
+      "label": "Hadal snailfish",
+      "pick": 0
+    },
+    "from": "directive-rhythm+species-beat"
+  },
+  {
+    "segment": "timeline",
+    "seconds": 9.0,
+    "heading": "How a depth becomes a number",
+    "narration": "A ship can map the trench with sonar, but a maximum depth depends on where the track crosses the seafloor and how sound speed is corrected.",
+    "args": {
+      "events": [
+        [
+          2020,
+          "Submersible transects"
+        ],
+        [
+          2021,
+          "Revised depth published"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "How a depth becomes a number",
+    "narration": "A submersible can infer depth from pressure, but that requires corrections for water properties, atmospheric pressure, gravity, gravity gradients, and sea level.",
+    "args": {
+      "title": "HOW A PRESSURE READING BECOMES A DEPTH",
+      "stages": [
+        "A submersible infers depth from pressure",
+        "Corrections for water properties and atmospheric pressure",
+        "Corrections for gravity and gravity gradients",
+        "A correction to sea level"
+      ],
+      "conclusion": "The uncertainty is not a weakness; it is part of the measurement"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "uncertainty_bar",
+    "seconds": 9.0,
+    "heading": "How a depth becomes a number",
+    "narration": "The 2021 analysis used submersible transects from June 2020 and reported the deepest observed seafloor at 10,935 meters below mean sea level, with an uncertainty of plus or minus six meters at 95 percent confidence.",
+    "args": {
+      "value": "10,935",
+      "unit": "metres",
+      "plus": "6",
+      "minus": null,
+      "confidence": "95 percent confidence",
+      "caption": "The deepest observed seafloor below mean sea level"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "How a depth becomes a number",
+    "narration": "The uncertainty is not a weakness. It is part of the measurement.",
+    "args": {
+      "lines": [
+        "The uncertainty is not",
+        "a weakness. It is",
+        "part"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 7.86,
+    "heading": "What a depth number leaves out",
+    "narration": "A single maximum-depth value sounds final, but the seafloor is irregular and the measurement is an estimate with uncertainty.",
+    "args": {
+      "title": "WHAT SOUNDINGS DEPEND ON",
+      "items": [
+        "?Water-column conditions",
+        "?Instrument calibration",
+        "?Navigation",
+        "?Processing",
+        "?The exact path of the survey"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "What a depth number leaves out",
+    "narration": "Soundings depend on water-column conditions, instrument calibration, navigation, processing, and the exact path of the survey.",
+    "args": {
+      "lines": [
+        "Soundings depend on water-column",
+        "conditions, instrument calibration, navigation,",
+        "processing"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "What a depth number leaves out",
+    "narration": "Pressure-derived depth calculations require assumptions about seawater properties and gravity. Different methods can produce slightly different values without one team being careless.",
+    "args": {
+      "title": "WHAT SOUNDINGS DEPEND ON",
+      "items": [
+        "?Water-column conditions",
+        "?Instrument calibration",
+        "?Navigation",
+        "?Processing",
+        "?The exact path of the survey"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "What a depth number leaves out",
+    "narration": "That is why the best modern estimate is reported with an uncertainty rather than as a perfectly exact floor.",
+    "args": {
+      "lines": [
+        "That is why the",
+        "best modern estimate is",
+        "reported"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 4.97,
+    "heading": "What a depth number leaves out",
+    "narration": "The geography also matters. The Mariana Trench is a long tectonic feature.",
+    "args": {
+      "term": "CHALLENGER DEEP",
+      "includes": [
+        "The deepest known depression within the Mariana Trench",
+        "More than one basin"
+      ],
+      "excludes": [
+        "The depth of the whole trench everywhere",
+        "A vertical crack with one uniform bottom"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "What a depth number leaves out",
+    "narration": "Challenger Deep is the deepest known depression within it, and it contains more than one basin.",
+    "args": {
+      "lines": [
+        "Challenger Deep is the",
+        "deepest known depression within",
+        "it"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 4.97,
+    "heading": "What a depth number leaves out",
+    "narration": "Saying 'the Mariana Trench is 10,935 meters deep everywhere' would be wrong.",
+    "args": {
+      "term": "CHALLENGER DEEP",
+      "includes": [
+        "The deepest known depression within the Mariana Trench",
+        "More than one basin"
+      ],
+      "excludes": [
+        "The depth of the whole trench everywhere",
+        "A vertical crack with one uniform bottom"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "What a depth number leaves out",
+    "narration": "The deepest point is a local extreme. Most of the trench and most of the global seafloor are shallower.",
+    "args": {
+      "lines": [
+        "The deepest point is",
+        "a local extreme."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "What a depth number leaves out",
+    "narration": "The video should visualize a profile rather than a flat hole. That makes the measurement challenge visible and prevents the familiar error of treating a trench as a vertical crack with one uniform bottom.",
+    "args": {
+      "term": "CHALLENGER DEEP",
+      "includes": [
+        "The deepest known depression within the Mariana Trench",
+        "More than one basin"
+      ],
+      "excludes": [
+        "The depth of the whole trench everywhere",
+        "A vertical crack with one uniform bottom"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "magnitude_bar",
+    "seconds": 9.0,
+    "heading": "The scale check",
+    "narration": "Before the closing, compare Challenger Deep with the average ocean depth and with the height of a familiar mountain only if the comparison uses current, sourced values.",
+    "args": {
+      "title": "DEPTH BESIDE THE AVERAGE",
+      "unit": "metres",
+      "items": [
+        [
+          "Average ocean depth",
+          "3,682"
+        ],
+        [
+          "Challenger Deep",
+          "10,935"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The scale check",
+    "narration": "The visual should not imply that a mountain could literally be dropped into the trench without considering sea level, shape, and the uneven bottom.",
+    "args": {
+      "lines": [
+        "The visual should not",
+        "imply that a mountain",
+        "could literally"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "magnitude_bar",
+    "seconds": 9.0,
+    "heading": "The scale check",
+    "narration": "It is an analogy for scale, not a survey method. The strongest ending returns to measurement: the deepest known point remains a value scientists refine, not a mystical coordinate beyond uncertainty. That gives the next expedition something meaningful to improve.",
+    "args": {
+      "title": "DEPTH BESIDE THE AVERAGE",
+      "unit": "metres",
+      "items": [
+        [
+          "Average ocean depth",
+          "3,682"
+        ],
+        [
+          "Challenger Deep",
+          "10,935"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 6.21,
+    "heading": "Why deepest known is the correct phrase",
+    "narration": "The ocean has not been mapped at identical resolution everywhere, and measurements continue to improve.",
+    "args": {
+      "term": "Deepest known",
+      "meaning": "The deepest point supported by current surveys",
+      "boundary": "Not a guarantee that no unmeasured depression could ever be refined",
+      "source": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Why deepest known is the correct phrase",
+    "narration": "Challenger Deep is the deepest known point supported by current surveys, not a guarantee that no unmeasured depression could ever be refined.",
+    "args": {
+      "lines": [
+        "Challenger Deep is the",
+        "deepest known point supported",
+        "by current"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "Why deepest known is the correct phrase",
+    "narration": "The word known protects the claim without weakening it. It tells the viewer that science is reporting the best evidence available, with room for better measurement.",
+    "args": {
+      "term": "Deepest known",
+      "meaning": "The deepest point supported by current surveys",
+      "boundary": "Not a guarantee that no unmeasured depression could ever be refined",
+      "source": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 3.5,
+    "heading": "Measurement beats myth",
+    "narration": "That is the final rule.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Final editorial note",
+    "narration": "It is also the safer title language for future updates. It is also the safer title language for future updates.",
+    "args": {
+      "lines": [
+        "It is also the",
+        "safer title language for",
+        "future updates."
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "size_ladder",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "Build the episode as a measurement detective story. Start with the famous number, then peel back sonar, pressure sensors, gravity, and seafloor shape.",
+    "args": {
+      "items": [
+        [
+          "Challenger Deep",
+          10935.0
+        ],
+        [
+          "Average ocean depth",
+          3682.0
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "Compare the average ocean depth of 3,682 meters with Challenger Deep, but avoid the usual 'Everest fits' line unless the mountain and trench reference levels are explained carefully.",
+    "args": {
+      "lines": [
+        "Compare the average ocean",
+        "depth of 3,682 meters",
+        "with Challenger Deep"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "Challenger Deep is the deepest known seafloor depression measured with current methods, not a guarantee that every point of the ocean has been mapped at equal resolution.",
+    "args": {
+      "term": "WHAT THE FIGURE IS",
+      "includes": [
+        "The deepest known seafloor depression measured with current methods",
+        "A value that belongs with its uncertainty and reference to mean sea level"
+      ],
+      "excludes": [
+        "A guarantee that every point of the ocean has been mapped at equal resolution"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Evidence limit",
+    "narration": "The seafloor is irregular, surveys follow finite tracks, and different methods can produce slightly different results.",
+    "args": {
+      "lines": [
+        "The seafloor is irregular,",
+        "surveys follow finite tracks,",
+        "and different"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 5.79,
+    "heading": "Evidence limit",
+    "narration": "The reported 10,935-meter figure belongs with its uncertainty and reference to mean sea level.",
+    "args": {
+      "term": "WHAT THE FIGURE IS",
+      "includes": [
+        "The deepest known seafloor depression measured with current methods",
+        "A value that belongs with its uncertainty and reference to mean sea level"
+      ],
+      "excludes": [
+        "A guarantee that every point of the ocean has been mapped at equal resolution"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "depth_descent",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "The deepest part of the ocean is not just a place. It is a measurement problem under almost eleven kilometers of water.",
+    "args": {
+      "to_depth": 10935,
+      "label": "ALMOST ELEVEN KILOMETRES OF WATER"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Closing",
+    "narration": "The number matters, but the corrections behind it are what turn a dramatic claim into evidence.",
+    "args": {
+      "lines": [
+        "The number matters, but",
+        "the corrections behind it",
+        "are what"
+      ]
+    },
+    "from": "directive-rhythm"
+  }
+]

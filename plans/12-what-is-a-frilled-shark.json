@@ -1,0 +1,917 @@
+[
+  {
+    "segment": "anatomy_callout",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "The frilled shark looks ancient. That does not mean the living species stopped evolving in the distant past. 'Living fossil' is a visual shortcut, not a time machine.",
+    "args": {
+      "title": "AN ANCIENT-LOOKING BODY",
+      "parts": [
+        [
+          "mouth at the end of the head",
+          0.1,
+          0.5
+        ],
+        [
+          "frilled collar",
+          0.3,
+          0.48
+        ],
+        [
+          "long flexible body",
+          0.6,
+          0.5
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 3.5,
+    "heading": "Title card",
+    "narration": "What is a frilled shark?",
+    "args": {
+      "lines": [
+        "What is a frilled",
+        "shark?"
+      ]
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 9.0,
+    "heading": "The shark that breaks the familiar outline",
+    "narration": "Most shark silhouettes are easy to recognize: a rigid torpedo body, a tall dorsal fin, and a mouth set under the snout.",
+    "args": {
+      "value": "6",
+      "unit": "PAIRS",
+      "caption": "Six pairs of gill slits; the first joins beneath the throat",
+      "source": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 4.97,
+    "heading": "The shark that breaks the familiar outline",
+    "narration": "The frilled shark rearranges that picture. Its body is long and flexible.",
+    "args": {
+      "subject": "frilled_shark",
+      "label": "frilled shark",
+      "pick": 0
+    },
+    "from": "directive-rhythm+species-beat"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 9.0,
+    "heading": "The shark that breaks the familiar outline",
+    "narration": "The mouth opens at the end of the head. Six pairs of gill slits sit behind it, and the first pair joins beneath the throat to form the frilled collar that gives the animal its name.",
+    "args": {
+      "value": "6",
+      "unit": "PAIRS",
+      "caption": "Six pairs of gill slits; the first joins beneath the throat",
+      "source": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The shark that breaks the familiar outline",
+    "narration": "Rows of narrow, three-cusped teeth angle inward. Smithsonian descriptions compare the animal to an eel because that is the fastest visual reference, not because it is closely related to eels.",
+    "args": {
+      "lines": [
+        "Rows of narrow, three-cusped",
+        "teeth angle inward. Smithsonian",
+        "descriptions compare"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 6.62,
+    "heading": "The shark that breaks the familiar outline",
+    "narration": "It remains a shark, with cartilaginous skeleton, shark skin, and a lineage within the hexanchiform sharks.",
+    "args": {
+      "value": "6",
+      "unit": "PAIRS",
+      "caption": "Six pairs of gill slits; the first joins beneath the throat",
+      "source": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "The shark that breaks the familiar outline",
+    "narration": "Rare encounters usually happen when an animal is caught or recorded near continental slopes.",
+    "args": {
+      "lines": [
+        "Rare encounters usually happen",
+        "when an animal is",
+        "caught"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 9.0,
+    "heading": "The shark that breaks the familiar outline",
+    "narration": "That scarcity creates the first open loop: if the body looks so unlike a modern shark, why do people keep calling it a survivor from prehistory?",
+    "args": {
+      "value": "6",
+      "unit": "PAIRS",
+      "caption": "Six pairs of gill slits; the first joins beneath the throat",
+      "source": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 6.21,
+    "heading": "Producer POV",
+    "narration": "I almost kept an exact 'unchanged for millions of years' line because it is clickable.",
+    "args": {
+      "text": "I almost kept an exact 'unchanged for millions of years' line because it is clickable.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 5.38,
+    "heading": "Producer POV",
+    "narration": "I cut it because an ancient-looking body is not proof that evolution stopped.",
+    "args": {
+      "text": "I cut it because an ancient-looking body is not proof that evolution stopped.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "Why living fossil is a dangerous shortcut",
+    "narration": "The phrase living fossil is memorable and scientifically slippery. It is often used for organisms whose visible anatomy resembles forms known from older branches of the fossil record. The phrase does not mean a living species stopped evolving.",
+    "args": {
+      "term": "Living fossil",
+      "meaning": "Used for organisms whose visible anatomy resembles forms known from older branches of the fossil record",
+      "boundary": "It does not mean a living species stopped evolving",
+      "source": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "Why living fossil is a dangerous shortcut",
+    "narration": "DNA changes, populations split, environments shift, and selection continues. A frilled shark alive now is not an eighty-million-year-old individual, and its genome is not a museum cast.",
+    "args": {
+      "title": "WHAT CONTINUES REGARDLESS",
+      "items": [
+        "+DNA changes",
+        "+Populations split",
+        "+Environments shift",
+        "+Selection continues"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Why living fossil is a dangerous shortcut",
+    "narration": "The more careful statement is that frilled sharks preserve a combination of traits considered primitive within living sharks, including six gill pairs and an elongated body plan.",
+    "args": {
+      "term": "THE MORE CAREFUL STATEMENT",
+      "includes": [
+        "A combination of traits considered primitive within living sharks",
+        "Six gill pairs and an elongated body plan"
+      ],
+      "excludes": [
+        "Pretending time froze",
+        "One claim collapsing multiple species and uncertain fossil comparisons"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Why living fossil is a dangerous shortcut",
+    "narration": "That is interesting without pretending time froze. The popular title also collapses multiple species and uncertain fossil comparisons into one claim.",
+    "args": {
+      "lines": [
+        "That is interesting without",
+        "pretending time froze. The",
+        "popular title"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "Why living fossil is a dangerous shortcut",
+    "narration": "When a video says unchanged for eighty million years, ask what was compared: a tooth, a body outline, a family-level trait, or a complete species?",
+    "args": {
+      "title": "WHEN A VIDEO SAYS UNCHANGED, ASK WHAT WAS COMPARED",
+      "items": [
+        "?A tooth",
+        "?A body outline",
+        "?A family-level trait",
+        "?A complete species"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Why living fossil is a dangerous shortcut",
+    "narration": "Usually the dramatic number outruns the evidence. The next question is what this unusual mouth and tooth arrangement actually lets the shark do.",
+    "args": {
+      "lines": [
+        "Usually the dramatic number",
+        "outruns the evidence. The",
+        "next question"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "anatomy_callout",
+    "seconds": 7.03,
+    "heading": "Anatomy suggests a feeding strategy, but cameras are scarce",
+    "narration": "The frilled shark's jaws can open wide, and the teeth form repeating white traps that point inward.",
+    "args": {
+      "title": "TEETH THAT HOLD SLIPPERY PREY",
+      "parts": [
+        [
+          "wide jaws",
+          0.12,
+          0.52
+        ],
+        [
+          "three-cusped teeth",
+          0.17,
+          0.58
+        ],
+        [
+          "frilled collar",
+          0.3,
+          0.48
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 8.28,
+    "heading": "Anatomy suggests a feeding strategy, but cameras are scarce",
+    "narration": "Squid, fishes, and other sharks have been reported from stomach analyses, supporting the idea that the animal seizes slippery prey.",
+    "args": {
+      "subject": "deep_squid",
+      "label": "Squid",
+      "pick": 0
+    },
+    "from": "directive-rhythm+species-beat"
+  },
+  {
+    "segment": "anatomy_callout",
+    "seconds": 9.0,
+    "heading": "Anatomy suggests a feeding strategy, but cameras are scarce",
+    "narration": "Yet direct wild feeding observations remain rare. Some accounts describe a snake-like strike, but anatomy alone cannot prove the exact motion or speed.",
+    "args": {
+      "title": "TEETH THAT HOLD SLIPPERY PREY",
+      "parts": [
+        [
+          "wide jaws",
+          0.12,
+          0.52
+        ],
+        [
+          "three-cusped teeth",
+          0.17,
+          0.58
+        ],
+        [
+          "frilled collar",
+          0.3,
+          0.48
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Anatomy suggests a feeding strategy, but cameras are scarce",
+    "narration": "Deep-water capture can also distort behavior. An exhausted shark at the surface is not a clean demonstration of how it moves at depth.",
+    "args": {
+      "lines": [
+        "Deep-water capture can also",
+        "distort behavior. An exhausted",
+        "shark"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "anatomy_callout",
+    "seconds": 7.03,
+    "heading": "Anatomy suggests a feeding strategy, but cameras are scarce",
+    "narration": "This distinction matters because every unusual feature attracts a cinematic explanation. Flexible jaws may allow large prey.",
+    "args": {
+      "title": "TEETH THAT HOLD SLIPPERY PREY",
+      "parts": [
+        [
+          "wide jaws",
+          0.12,
+          0.52
+        ],
+        [
+          "three-cusped teeth",
+          0.17,
+          0.58
+        ],
+        [
+          "frilled collar",
+          0.3,
+          0.48
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Anatomy suggests a feeding strategy, but cameras are scarce",
+    "narration": "A long body may permit a different approach angle. Those are testable ideas, not license to invent a filmed ambush.",
+    "args": {
+      "lines": [
+        "A long body may",
+        "permit a different approach",
+        "angle. Those"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "anatomy_callout",
+    "seconds": 9.0,
+    "heading": "Anatomy suggests a feeding strategy, but cameras are scarce",
+    "narration": "The correct documentary move is to show what the teeth look like, explain what prey-retention teeth generally do, and label the unobserved part as inference.",
+    "args": {
+      "title": "TEETH THAT HOLD SLIPPERY PREY",
+      "parts": [
+        [
+          "wide jaws",
+          0.12,
+          0.52
+        ],
+        [
+          "three-cusped teeth",
+          0.17,
+          0.58
+        ],
+        [
+          "frilled collar",
+          0.3,
+          0.48
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Anatomy suggests a feeding strategy, but cameras are scarce",
+    "narration": "The unresolved loop is why an animal with such a broad popular reputation remains so poorly documented in its normal habitat.",
+    "args": {
+      "lines": [
+        "The unresolved loop is",
+        "why an animal"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 8.28,
+    "heading": "A rare animal becomes a projection screen",
+    "narration": "Frilled sharks live beyond the ordinary reach of divers, and many records come from fisheries interactions or brief submersible encounters.",
+    "args": {
+      "term": "WHAT WE CAN AND CANNOT SAY",
+      "includes": [
+        "The shark is rare in observations",
+        "We can describe the gills, teeth, and body"
+      ],
+      "excludes": [
+        "Its total abundance, inferred from viral clips",
+        "A hunting sequence nobody has recorded"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "A rare animal becomes a projection screen",
+    "narration": "That creates a perfect environment for sea-serpent language. A long body enters the frame, the camera is shaky, and the caption supplies a prehistoric story.",
+    "args": {
+      "lines": [
+        "That creates a perfect",
+        "environment for sea-serpent language.",
+        "A long"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 8.69,
+    "heading": "A rare animal becomes a projection screen",
+    "narration": "The scientific value is quieter. The animal shows that shark evolution produced more than the fast, stiff-bodied hunters most people know.",
+    "args": {
+      "term": "WHAT WE CAN AND CANNOT SAY",
+      "includes": [
+        "The shark is rare in observations",
+        "We can describe the gills, teeth, and body"
+      ],
+      "excludes": [
+        "Its total abundance, inferred from viral clips",
+        "A hunting sequence nobody has recorded"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "A rare animal becomes a projection screen",
+    "narration": "It also demonstrates why scarcity must not be confused with extinction, danger, or supernatural origin.",
+    "args": {
+      "lines": [
+        "It also demonstrates why",
+        "scarcity must not be",
+        "confused"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.45,
+    "heading": "A rare animal becomes a projection screen",
+    "narration": "We can say the shark is rare in observations. We cannot infer its total abundance from viral clips.",
+    "args": {
+      "term": "WHAT WE CAN AND CANNOT SAY",
+      "includes": [
+        "The shark is rare in observations",
+        "We can describe the gills, teeth, and body"
+      ],
+      "excludes": [
+        "Its total abundance, inferred from viral clips",
+        "A hunting sequence nobody has recorded"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "A rare animal becomes a projection screen",
+    "narration": "We can describe the gills, teeth, and body. We should not claim a hunting sequence nobody has recorded.",
+    "args": {
+      "lines": [
+        "We can describe the",
+        "gills, teeth, and body.",
+        "We should"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.45,
+    "heading": "A rare animal becomes a projection screen",
+    "narration": "The best correction is not to make the animal less strange. It is to make the strangeness precise.",
+    "args": {
+      "term": "WHAT WE CAN AND CANNOT SAY",
+      "includes": [
+        "The shark is rare in observations",
+        "We can describe the gills, teeth, and body"
+      ],
+      "excludes": [
+        "Its total abundance, inferred from viral clips",
+        "A hunting sequence nobody has recorded"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "A rare animal becomes a projection screen",
+    "narration": "The frilled shark is a modern deep-water shark with an ancient-looking arrangement of traits, not a creature that escaped evolution.",
+    "args": {
+      "lines": [
+        "The frilled shark is",
+        "a modern deep-water shark"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.03,
+    "heading": "A rare animal becomes a projection screen",
+    "narration": "Next, the series moves from darkness as a habitat to darkness as a canvas for living light.",
+    "args": {
+      "term": "WHAT WE CAN AND CANNOT SAY",
+      "includes": [
+        "The shark is rare in observations",
+        "We can describe the gills, teeth, and body"
+      ],
+      "excludes": [
+        "Its total abundance, inferred from viral clips",
+        "A hunting sequence nobody has recorded"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "anatomy_callout",
+    "seconds": 9.0,
+    "heading": "Start by removing the best clickbait line",
+    "narration": "The frilled shark is real enough without a false evolutionary freeze. Its long body, frill-like gill openings, flexible jaws, and three-pronged teeth create an eel-like profile unlike familiar sharks.",
+    "args": {
+      "title": "WHAT THE BODY SUPPORTS",
+      "parts": [
+        [
+          "flexible jaws",
+          0.12,
+          0.52
+        ],
+        [
+          "three-pronged teeth",
+          0.17,
+          0.58
+        ],
+        [
+          "frill-like gill openings",
+          0.3,
+          0.48
+        ],
+        [
+          "long body",
+          0.62,
+          0.5
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Start by removing the best clickbait line",
+    "narration": "Smithsonian notes that its feeding behavior has not been directly observed and describes swallowing large prey as a scientific interpretation based on anatomy.",
+    "args": {
+      "lines": [
+        "Smithsonian notes that its",
+        "feeding behavior has not",
+        "been directly"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "anatomy_callout",
+    "seconds": 7.45,
+    "heading": "Start by removing the best clickbait line",
+    "narration": "That distinction is the episode: a body can support a hypothesis without giving us a complete behavior sequence.",
+    "args": {
+      "title": "WHAT THE BODY SUPPORTS",
+      "parts": [
+        [
+          "flexible jaws",
+          0.12,
+          0.52
+        ],
+        [
+          "three-pronged teeth",
+          0.17,
+          0.58
+        ],
+        [
+          "frill-like gill openings",
+          0.3,
+          0.48
+        ],
+        [
+          "long body",
+          0.62,
+          0.5
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 5.79,
+    "heading": "What a fossil resemblance can and cannot prove",
+    "narration": "A modern animal can retain features that resemble ancient relatives while still evolving continuously.",
+    "args": {
+      "term": "THE SAFER CLAIM",
+      "includes": [
+        "Its lineage has ancient roots",
+        "Its body retains a combination of traits viewers find unfamiliar"
+      ],
+      "excludes": [
+        "That the exact modern species has remained unchanged for a stated number of millions of years"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "What a fossil resemblance can and cannot prove",
+    "narration": "Genes change. Populations adapt. Environments shift. The phrase 'living fossil' compresses that history into a misleading image of an organism frozen in time.",
+    "args": {
+      "lines": [
+        "Genes change. Populations adapt.",
+        "Environments shift. The phrase",
+        "'living fossil'"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "What a fossil resemblance can and cannot prove",
+    "narration": "For the frilled shark, the safer claim is that its lineage has ancient roots and its body retains a combination of traits viewers find unfamiliar\u2014not that the exact modern species has remained unchanged for a stated number of millions of years.",
+    "args": {
+      "term": "THE SAFER CLAIM",
+      "includes": [
+        "Its lineage has ancient roots",
+        "Its body retains a combination of traits viewers find unfamiliar"
+      ],
+      "excludes": [
+        "That the exact modern species has remained unchanged for a stated number of millions of years"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.45,
+    "heading": "What a fossil resemblance can and cannot prove",
+    "narration": "The feeding story needs the same restraint. Long jaws and backward-pointing teeth support hypotheses about gripping slippery prey.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.38,
+    "heading": "What a fossil resemblance can and cannot prove",
+    "narration": "Stomach contents and anatomy add evidence. Direct observations of successful hunting are scarce.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 5.79,
+    "heading": "What a fossil resemblance can and cannot prove",
+    "narration": "The video should label each layer: observed anatomy, documented diet evidence, and inferred behavior.",
+    "args": {
+      "title": "LABEL EACH LAYER",
+      "steps": [
+        [
+          "Observed anatomy",
+          ""
+        ],
+        [
+          "Documented diet evidence",
+          ""
+        ],
+        [
+          "Inferred behavior",
+          ""
+        ]
+      ],
+      "note": "More credible than animating one dramatic strike and narrating it as settled fact"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "What a fossil resemblance can and cannot prove",
+    "narration": "That separation is more credible than animating one dramatic strike and narrating it as settled fact.",
+    "args": {
+      "lines": [
+        "That separation is more",
+        "credible than animating one",
+        "dramatic strike"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 6.21,
+    "heading": "The phrase we are retiring",
+    "narration": "The final script must not call the frilled shark unchanged for an exact prehistoric span.",
+    "args": {
+      "title": "THE PHRASE WE ARE RETIRING",
+      "items": [
+        "-Unchanged for an exact prehistoric span",
+        "+The lineage is ancient",
+        "-The living animal as a time capsule"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "The phrase we are retiring",
+    "narration": "The lineage is ancient; the living animal is not a time capsule.",
+    "args": {
+      "lines": [
+        "The lineage is ancient"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "The phrase we are retiring",
+    "narration": "Retiring that sentence costs a cleaner clickbait claim, but it protects the entire channel from a correction that would be easy for viewers to make.",
+    "args": {
+      "title": "THE PHRASE WE ARE RETIRING",
+      "items": [
+        "-Unchanged for an exact prehistoric span",
+        "+The lineage is ancient",
+        "-The living animal as a time capsule"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.03,
+    "heading": "One final wording rule",
+    "narration": "Use 'ancient-looking' only as a description of our reaction, never as evidence that the animal stopped evolving.",
+    "args": {
+      "variant": 2
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "anatomy_callout",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "Use anatomy labels and a silhouette comparison with a typical shark. Do not animate a speculative lunge as if it were filmed behavior.",
+    "args": {
+      "title": "SILHOUETTE COMPARISON",
+      "parts": [
+        [
+          "mouth at the end of the head",
+          0.1,
+          0.5
+        ],
+        [
+          "six gill pairs",
+          0.34,
+          0.54
+        ],
+        [
+          "frilled collar",
+          0.3,
+          0.44
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "If a reconstruction is shown, label it clearly. This episode's structural variation is to correct the viral claim first, then earn back the viewer's interest with what the evidence genuinely supports.",
+    "args": {
+      "lines": [
+        "If a reconstruction is",
+        "shown, label it clearly.",
+        "This episode's"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 8.28,
+    "heading": "Evidence limit",
+    "narration": "The phrase 'living fossil' can suggest that a modern species is identical to an ancient ancestor or has stopped evolving.",
+    "args": {
+      "term": "WHAT IS SUPPORTED",
+      "includes": [
+        "The frilled shark belongs to an old lineage",
+        "It retains features people describe as primitive"
+      ],
+      "excludes": [
+        "That a modern species is identical to an ancient ancestor",
+        "That it has stopped evolving"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "That is not supported. The frilled shark belongs to an old lineage and retains features people describe as primitive, but the living species has its own evolutionary history.",
+    "args": {
+      "lines": [
+        "That is not supported.",
+        "The frilled shark belongs"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "Feeding behavior remains poorly observed, so claims about striking like a snake or swallowing a particular fraction of body size should be presented as hypotheses unless tied to direct evidence.",
+    "args": {
+      "title": "PRESENT AS HYPOTHESES UNLESS TIED TO DIRECT EVIDENCE",
+      "items": [
+        "?Striking like a snake",
+        "?Swallowing a particular fraction of body size"
+      ],
+      "note": "Feeding behavior remains poorly observed"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "anatomy_callout",
+    "seconds": 4.97,
+    "heading": "Closing",
+    "narration": "The frilled shark does not need a frozen-in-time claim to be compelling.",
+    "args": {
+      "title": "AN UNFAMILIAR BODY",
+      "parts": [
+        [
+          "frill-like gill openings",
+          0.3,
+          0.48
+        ],
+        [
+          "long flexible body",
+          0.62,
+          0.5
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "It is a modern animal with an unfamiliar body, rare observations, and a feeding story that anatomy suggests but cameras have barely tested.",
+    "args": {
+      "lines": [
+        "It is a modern",
+        "animal with an unfamiliar",
+        "body, rare"
+      ]
+    },
+    "from": "directive-rhythm"
+  }
+]

@@ -1,0 +1,911 @@
+[
+  {
+    "segment": "depth_descent",
+    "seconds": 4.97,
+    "heading": "Cold open",
+    "narration": "The famous 'only four people have reached Challenger Deep' line is outdated.",
+    "args": {
+      "to_depth": 10935,
+      "label": "CHALLENGER DEEP"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "Cold open",
+    "narration": "The engineering is still rare. The visitor count is not a stable fact anymore.",
+    "args": {
+      "lines": [
+        "The engineering is still",
+        "rare. The visitor count"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 3.5,
+    "heading": "Title card",
+    "narration": "How do people reach Challenger Deep?",
+    "args": {
+      "lines": [
+        "How do people reach",
+        "Challenger Deep?"
+      ]
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "pressure_gauge",
+    "seconds": 5.79,
+    "heading": "A vehicle built around one protected bubble",
+    "narration": "A full-ocean-depth submersible does not make every component resist pressure in the same way.",
+    "args": {
+      "depth_m": 10935
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "A vehicle built around one protected bubble",
+    "narration": "The crew sits inside a compact metal sphere engineered to keep one atmosphere of pressure.",
+    "args": {
+      "lines": [
+        "The crew sits inside",
+        "a compact metal sphere",
+        "engineered"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 5.79,
+    "heading": "A vehicle built around one protected bubble",
+    "narration": "Batteries, cameras, thrusters, and electronics may use oil filling, pressure-tolerant housings, or separate vessels.",
+    "args": {
+      "title": "WHAT SITS OUTSIDE THE SPHERE",
+      "items": [
+        "?Batteries",
+        "?Cameras",
+        "?Thrusters",
+        "?Electronics"
+      ],
+      "note": "Oil filling, pressure-tolerant housings, or separate vessels"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "A vehicle built around one protected bubble",
+    "narration": "Syntactic foam supplies buoyancy through microscopic hollow spheres embedded in resin. Ballast makes the vehicle descend; releasing it allows the vehicle to rise even if electrical power is lost.",
+    "args": {
+      "lines": [
+        "Syntactic foam supplies buoyancy",
+        "through microscopic hollow spheres",
+        "embedded"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "A vehicle built around one protected bubble",
+    "narration": "The geometry matters. A sphere distributes external load more evenly than a box, which is why the human compartment is small and curved.",
+    "args": {
+      "term": "WHY THE HUMAN COMPARTMENT IS SMALL AND CURVED",
+      "includes": [
+        "A sphere distributes external load more evenly"
+      ],
+      "excludes": [
+        "A box"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "A vehicle built around one protected bubble",
+    "narration": "Viewports, penetrations, and seals are critical because a local weakness can control the whole design.",
+    "args": {
+      "lines": [
+        "Viewports, penetrations, and seals",
+        "are critical because a",
+        "local weakness"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 5.79,
+    "heading": "A vehicle built around one protected bubble",
+    "narration": "The descent is slow, giving the support ship time to track the vehicle acoustically.",
+    "args": {
+      "term": "WHY THE HUMAN COMPARTMENT IS SMALL AND CURVED",
+      "includes": [
+        "A sphere distributes external load more evenly"
+      ],
+      "excludes": [
+        "A box"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "A vehicle built around one protected bubble",
+    "narration": "The first open loop is historical: the basic idea worked in 1960, but the number reported by the vehicle was not the final depth scientists accepted.",
+    "args": {
+      "lines": [
+        "The first open loop",
+        "is historical: the basic",
+        "idea worked"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 4.97,
+    "heading": "Producer POV",
+    "narration": "I had to delete a cleaner title because it stopped being true.",
+    "args": {
+      "text": "I had to delete a cleaner title because it stopped being true.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 7.86,
+    "heading": "Producer POV",
+    "narration": "That is exactly the kind of correction this channel needs to make before the audience makes it for us.",
+    "args": {
+      "text": "That is exactly the kind of correction this channel needs to make before the audience makes it for us.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "timeline",
+    "seconds": 7.03,
+    "heading": "Trieste reached the bottom before precision caught up",
+    "narration": "On January 23, 1960, Jacques Piccard and U.S. Navy Lieutenant Don Walsh descended in the bathyscaphe Trieste.",
+    "args": {
+      "events": [
+        [
+          1960,
+          "Piccard and Walsh descend in Trieste"
+        ],
+        [
+          2021,
+          "Peer-reviewed depth analysis"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 6.62,
+    "heading": "Trieste reached the bottom before precision caught up",
+    "narration": "The vehicle used a gasoline-filled float for buoyancy and an attached pressure sphere for the crew.",
+    "args": {
+      "subject": "trieste",
+      "label": "Trieste",
+      "pick": 0
+    },
+    "from": "directive-rhythm+species-section"
+  },
+  {
+    "segment": "timeline",
+    "seconds": 5.38,
+    "heading": "Trieste reached the bottom before precision caught up",
+    "narration": "They reached the floor of Challenger Deep and remained there briefly before returning.",
+    "args": {
+      "events": [
+        [
+          1960,
+          "Piccard and Walsh descend in Trieste"
+        ],
+        [
+          2021,
+          "Peer-reviewed depth analysis"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "Trieste reached the bottom before precision caught up",
+    "narration": "The onboard depth indicator produced a value that was later corrected through additional calculations.",
+    "args": {
+      "lines": [
+        "The onboard depth indicator",
+        "produced a value that",
+        "was later"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 9.0,
+    "heading": "Trieste reached the bottom before precision caught up",
+    "narration": "This is not a flaw in the achievement. It shows that reaching the place and measuring the place are different engineering problems.",
+    "args": {
+      "title": "TWO DIFFERENT ENGINEERING PROBLEMS",
+      "sources": [
+        [
+          "Reaching the place",
+          "the historic dive proved humans could survive the journey"
+        ],
+        [
+          "Measuring the place",
+          "repeatable routes, calibrated sensors and defensible transects"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 4.97,
+    "heading": "Trieste reached the bottom before precision caught up",
+    "narration": "Water density changes with temperature and salinity. Gravity varies slightly with location.",
+    "args": {
+      "title": "WHY THE ONBOARD VALUE NEEDED CORRECTION",
+      "items": [
+        "?Water density changes with temperature and salinity",
+        "?Gravity varies slightly with location",
+        "?Pressure instruments have calibration uncertainty",
+        "?The seafloor is not one level basin"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 8.28,
+    "heading": "Trieste reached the bottom before precision caught up",
+    "narration": "Pressure instruments have calibration uncertainty. The seafloor is not one level basin; Challenger Deep contains separate depressions and uneven terrain.",
+    "args": {
+      "subject": "mariana_trench",
+      "label": "Challenger Deep",
+      "pick": 0
+    },
+    "from": "directive-rhythm+species-beat"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "Trieste reached the bottom before precision caught up",
+    "narration": "The historic dive proved humans could survive the journey. Modern work asks for repeatable routes, calibrated sensors, and transects that make the depth estimate defensible.",
+    "args": {
+      "title": "WHY THE ONBOARD VALUE NEEDED CORRECTION",
+      "items": [
+        "?Water density changes with temperature and salinity",
+        "?Gravity varies slightly with location",
+        "?Pressure instruments have calibration uncertainty",
+        "?The seafloor is not one level basin"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 7.45,
+    "heading": "Trieste reached the bottom before precision caught up",
+    "narration": "The next loop is how modern vehicles turned a once-in-history descent into a platform that could dive repeatedly.",
+    "args": {
+      "subject": "trieste",
+      "label": "Trieste",
+      "pick": 1
+    },
+    "from": "directive-rhythm+species-section"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 6.21,
+    "heading": "Repeatability changes exploration into measurement",
+    "narration": "Modern full-ocean-depth vehicles use stronger materials, syntactic foam, digital control, acoustic communications, and improved navigation.",
+    "args": {
+      "title": "WHAT MODERN FULL-OCEAN-DEPTH VEHICLES USE",
+      "items": [
+        "+Stronger materials",
+        "+Syntactic foam",
+        "+Digital control",
+        "+Acoustic communications",
+        "+Improved navigation"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Repeatability changes exploration into measurement",
+    "narration": "A repeatable submersible can cross the same depression more than once, approach different landing points, and compare pressure-derived depth with acoustic altitude above the bottom.",
+    "args": {
+      "lines": [
+        "A repeatable submersible can",
+        "cross the same depression"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 7.45,
+    "heading": "Repeatability changes exploration into measurement",
+    "narration": "This matters because the deepest observed point can be missed if a vehicle lands on a nearby rise.",
+    "args": {
+      "title": "WHAT MODERN FULL-OCEAN-DEPTH VEHICLES USE",
+      "items": [
+        "+Stronger materials",
+        "+Syntactic foam",
+        "+Digital control",
+        "+Acoustic communications",
+        "+Improved navigation"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Repeatability changes exploration into measurement",
+    "narration": "It also changes safety. Systems can be inspected after each dive, maintenance records accumulate, and the vehicle's real behavior becomes better known.",
+    "args": {
+      "lines": [
+        "It also changes safety.",
+        "Systems can be inspected",
+        "after"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 5.79,
+    "heading": "Repeatability changes exploration into measurement",
+    "narration": "Repeat dives have also made old viral counts of people at Challenger Deep obsolete.",
+    "args": {
+      "title": "WHAT MODERN FULL-OCEAN-DEPTH VEHICLES USE",
+      "items": [
+        "+Stronger materials",
+        "+Syntactic foam",
+        "+Digital control",
+        "+Acoustic communications",
+        "+Improved navigation"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Repeatability changes exploration into measurement",
+    "narration": "A title such as only four people have gone deeper than Everest may have been true at one moment and false later.",
+    "args": {
+      "term": "THE STABLE STORY",
+      "includes": [
+        "The engineering and method"
+      ],
+      "excludes": [
+        "A frozen headcount",
+        "A title such as only four people have gone deeper than Everest"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Repeatability changes exploration into measurement",
+    "narration": "The stable story is the engineering and method, not a frozen headcount.",
+    "args": {
+      "lines": [
+        "The stable story is",
+        "the engineering and method"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 8.69,
+    "heading": "Repeatability changes exploration into measurement",
+    "narration": "The unresolved question becomes surprisingly technical: when a sensor reports pressure, how does that number become meters below mean sea level?",
+    "args": {
+      "term": "THE STABLE STORY",
+      "includes": [
+        "The engineering and method"
+      ],
+      "excludes": [
+        "A frozen headcount",
+        "A title such as only four people have gone deeper than Everest"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "uncertainty_bar",
+    "seconds": 7.45,
+    "heading": "Depth is a calculation with an uncertainty budget",
+    "narration": "A 2021 peer-reviewed analysis used submersible transects and pressure observations to revise the maximum depth of Challenger Deep.",
+    "args": {
+      "value": "10,935",
+      "unit": "metres",
+      "plus": "6",
+      "minus": null,
+      "confidence": "95 percent confidence",
+      "caption": "The deepest observed seafloor value"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Depth is a calculation with an uncertainty budget",
+    "narration": "The deepest observed seafloor value was 10,935 meters, with an uncertainty of plus or minus six meters at 95 percent confidence.",
+    "args": {
+      "lines": [
+        "The deepest observed seafloor",
+        "value was 10,935 meters"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 5.79,
+    "heading": "Depth is a calculation with an uncertainty budget",
+    "narration": "The team corrected for water-column properties, atmospheric pressure, gravity, gravity gradients, and water-level effects.",
+    "args": {
+      "title": "WHAT THE TEAM CORRECTED FOR",
+      "items": [
+        "?Water-column properties",
+        "?Atmospheric pressure",
+        "?Gravity",
+        "?Gravity gradients",
+        "?Water-level effects"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "Depth is a calculation with an uncertainty budget",
+    "narration": "An acoustic altimeter measured the vehicle's height above the seafloor as it crossed the terrain.",
+    "args": {
+      "lines": [
+        "An acoustic altimeter measured",
+        "the vehicle's height above",
+        "the seafloor"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 4.97,
+    "heading": "Depth is a calculation with an uncertainty budget",
+    "narration": "That combination is stronger than reading one gauge at one landing point.",
+    "args": {
+      "title": "WHAT THE TEAM CORRECTED FOR",
+      "items": [
+        "?Water-column properties",
+        "?Atmospheric pressure",
+        "?Gravity",
+        "?Gravity gradients",
+        "?Water-level effects"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 7.03,
+    "heading": "Depth is a calculation with an uncertainty budget",
+    "narration": "The uncertainty is not an embarrassment to hide after the number. It is part of the measurement.",
+    "args": {
+      "term": "The uncertainty",
+      "meaning": "Part of the measurement",
+      "boundary": "Not an embarrassment to hide after the number",
+      "source": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Depth is a calculation with an uncertainty budget",
+    "narration": "Challenger Deep may still be described as roughly eleven kilometers, but a sourced article should preserve the method and range.",
+    "args": {
+      "lines": [
+        "Challenger Deep may still",
+        "be described as roughly",
+        "eleven kilometers"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "Depth is a calculation with an uncertainty budget",
+    "narration": "Human exploration at full ocean depth is therefore two stories at once: a pressure vessel protecting a few people, and an instrument system turning an extreme journey into usable evidence.",
+    "args": {
+      "term": "The uncertainty",
+      "meaning": "Part of the measurement",
+      "boundary": "Not an embarrassment to hide after the number",
+      "source": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "Depth is a calculation with an uncertainty budget",
+    "narration": "Next, the series follows a very different descent\u2014a whale carcass carrying years of food to the seafloor.",
+    "args": {
+      "lines": [
+        "Next, the series follows",
+        "a very different descent"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "pressure_gauge",
+    "seconds": 6.21,
+    "heading": "A descent built around one protected bubble",
+    "narration": "A crewed full-ocean-depth submersible keeps its occupants near surface pressure inside a small, rigid sphere.",
+    "args": {
+      "depth_m": 10935
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 7.03,
+    "heading": "A descent built around one protected bubble",
+    "narration": "Everything outside that sphere\u2014batteries, cameras, lights, syntactic foam, thrusters, cables, and viewports\u2014must tolerate or isolate extreme pressure.",
+    "args": {
+      "subject": "trieste",
+      "label": "Trieste",
+      "pick": 2
+    },
+    "from": "directive-rhythm+species-section"
+  },
+  {
+    "segment": "pressure_gauge",
+    "seconds": 9.0,
+    "heading": "A descent built around one protected bubble",
+    "narration": "Trieste reached the bottom in 1960. Modern vehicles add repeatability, better navigation, higher-resolution imaging, sampling, and pressure-derived depth measurements. Repeated dives turn a singular stunt into a survey platform.",
+    "args": {
+      "depth_m": 10935
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 5.38,
+    "heading": "Why repeat dives matter more than a guest list",
+    "narration": "A first descent proves that a vehicle can reach the target and return.",
+    "args": {
+      "term": "WHAT REPEATED DESCENTS ALLOW",
+      "includes": [
+        "Mapping and sampling",
+        "Comparison and calibration",
+        "Repair based on actual performance"
+      ],
+      "excludes": [
+        "One landing describing an entire depression"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Why repeat dives matter more than a guest list",
+    "narration": "Repeated descents allow mapping, sampling, comparison, calibration, and repair based on actual performance.",
+    "args": {
+      "lines": [
+        "Repeated descents allow mapping,",
+        "sampling, comparison, calibration, and",
+        "repair based"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Why repeat dives matter more than a guest list",
+    "narration": "They also expose the variability of the trench floor. One landing cannot describe an entire depression, much less the full Mariana Trench. A repeatable vehicle turns a historic event into a scientific program.",
+    "args": {
+      "term": "WHAT REPEATED DESCENTS ALLOW",
+      "includes": [
+        "Mapping and sampling",
+        "Comparison and calibration",
+        "Repair based on actual performance"
+      ],
+      "excludes": [
+        "One landing describing an entire depression"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.21,
+    "heading": "Why repeat dives matter more than a guest list",
+    "narration": "The cabin is only one part of that program. Navigation must work without GPS underwater.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 7.03,
+    "heading": "Why repeat dives matter more than a guest list",
+    "narration": "Acoustic systems, inertial instruments, pressure sensors, cameras, lights, batteries, thrusters, ballast, and communications each have failure modes.",
+    "args": {
+      "title": "EACH HAS FAILURE MODES",
+      "items": [
+        "?Acoustic systems",
+        "?Inertial instruments",
+        "?Pressure sensors",
+        "?Cameras and lights",
+        "?Batteries and thrusters",
+        "?Ballast and communications"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Why repeat dives matter more than a guest list",
+    "narration": "The depth estimate itself is calculated from measured pressure and environmental assumptions.",
+    "args": {
+      "lines": [
+        "The depth estimate itself",
+        "is calculated from measured",
+        "pressure"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "Why repeat dives matter more than a guest list",
+    "narration": "The human story is not merely who sat in the sphere. It is the network of engineers, pilots, scientists, ship crew, and analysts required to make the observation defensible.",
+    "args": {
+      "title": "EACH HAS FAILURE MODES",
+      "items": [
+        "?Acoustic systems",
+        "?Inertial instruments",
+        "?Pressure sensors",
+        "?Cameras and lights",
+        "?Batteries and thrusters",
+        "?Ballast and communications"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 8.28,
+    "heading": "The publication-day recheck",
+    "narration": "Any visitor count must be removed or rechecked on the day of publication because additional descents can make it obsolete.",
+    "args": {
+      "title": "THE PUBLICATION-DAY RECHECK",
+      "items": [
+        "-Any visitor count, unless rechecked on the day of publication",
+        "+Engineering",
+        "+Repeatability",
+        "+Measured depth"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "The publication-day recheck",
+    "narration": "The script deliberately avoids building the title around that count. The stable story is engineering, repeatability, and measured depth.",
+    "args": {
+      "lines": [
+        "The script deliberately avoids",
+        "building the title around",
+        "that count."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 6.62,
+    "heading": "The publication-day recheck",
+    "narration": "That choice makes the episode durable instead of accurate only on the day it was drafted.",
+    "args": {
+      "title": "THE PUBLICATION-DAY RECHECK",
+      "items": [
+        "-Any visitor count, unless rechecked on the day of publication",
+        "+Engineering",
+        "+Repeatability",
+        "+Measured depth"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 7.03,
+    "heading": "The release gate",
+    "narration": "Before publication, recheck the depth value, the source date, and any wording that implies a current record.",
+    "args": {
+      "title": "THE RELEASE GATE",
+      "items": [
+        "?Recheck the depth value",
+        "?Recheck the source date",
+        "?Recheck any wording that implies a current record",
+        "-Do not add a visitor total simply because it makes the title cleaner"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "The release gate",
+    "narration": "Do not add a visitor total simply because it makes the title cleaner.",
+    "args": {
+      "lines": [
+        "Do not add a",
+        "visitor total simply because",
+        "it makes"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 5.38,
+    "heading": "The release gate",
+    "narration": "The engineering narrative remains strong without it, and the episode will age better.",
+    "args": {
+      "title": "THE RELEASE GATE",
+      "items": [
+        "?Recheck the depth value",
+        "?Recheck the source date",
+        "?Recheck any wording that implies a current record",
+        "-Do not add a visitor total simply because it makes the title cleaner"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "The reliable hook",
+    "narration": "The protected pressure sphere and the return journey are dramatic enough. We do not need an unstable headcount.",
+    "args": {
+      "lines": [
+        "The protected pressure sphere",
+        "and the return journey",
+        "are dramatic"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "depth_descent",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "Use an engineering cutaway rather than a celebrity count. Start with the pressure sphere, expand outward to the vehicle, then show the descent timeline from surface to trench floor.",
+    "args": {
+      "to_depth": 10935,
+      "label": "SURFACE TO TRENCH FLOOR"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "The viewer should understand why the cabin is small, why buoyancy material matters, and why a return trip depends on systems that cannot be casually repaired at depth.",
+    "args": {
+      "lines": [
+        "The viewer should understand",
+        "why the cabin is",
+        "small, why"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "Do not publish a total number of people who have reached Challenger Deep unless it is checked immediately before release against a current, authoritative log. The count changes. Depth values also depend on method and uncertainty.",
+    "args": {
+      "value": "10,935",
+      "unit": "METRES",
+      "caption": "An approximate estimate that depends on method and uncertainty",
+      "source": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 8.69,
+    "heading": "Evidence limit",
+    "narration": "The stable claims are the 1960 Trieste descent, the approximate 10,935-meter depth estimate, and the engineering requirement for full-ocean-depth pressure protection.",
+    "args": {
+      "title": "THE STABLE CLAIMS",
+      "items": [
+        "+The 1960 Trieste descent",
+        "+The approximate 10,935-meter depth estimate",
+        "+The engineering requirement for full-ocean-depth pressure protection",
+        "-A total number of people who have reached Challenger Deep"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "depth_descent",
+    "seconds": 4.97,
+    "heading": "Closing",
+    "narration": "Reaching Challenger Deep is not impressive because the guest list is short.",
+    "args": {
+      "to_depth": 10935,
+      "label": "NEARLY ELEVEN KILOMETRES OF WATER"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "It is impressive because every life-supporting centimeter has to work beneath nearly eleven kilometers of water\u2014and still bring the people inside back to the surface.",
+    "args": {
+      "lines": [
+        "It is impressive because",
+        "every life-supporting centimeter has",
+        "to work"
+      ]
+    },
+    "from": "directive-rhythm"
+  }
+]

@@ -1,4 +1,9 @@
-"""Rights-checked imagery harvester for NOAA Ocean Exploration.
+"""Rights-checked imagery harvester: NOAA Ocean Exploration, plus public domain.
+
+Two gates, one manifest. `harvest` walks NOAA Ocean Exploration; `pd_harvest`
+(python imagery.py --pd) fetches a hand-chosen set of items whose own item page
+asserts public domain or CC0, verified live. Both write channel/imagery/rights.json
+and neither may delete the other's records.
 
 Route A of the thumbnail rebuild. The premise of this channel is evidence
 discipline, so the rule here is the same one we apply to claims: nothing enters
@@ -32,6 +37,7 @@ import html
 import json
 import os
 import re
+import sys
 import time
 import urllib.parse
 import urllib.request
@@ -229,25 +235,341 @@ def harvest(terms: dict[str, list[str]], per_term: int = 8, want: int = 3) -> li
                 got += 1
                 time.sleep(0.2)
 
+    # A second harvester (pd_harvest) writes non-NOAA public-domain records into
+    # the same manifest. Rewriting the file wholesale would silently delete that
+    # work -- and the deletion would only surface later, as a KeyError at
+    # thumbnail build time. So merge on `local_file` and keep what we did not
+    # produce.
+    accepted = _merge_assets(_load_manifest_assets(), accepted, keep_source=SOURCE_NOAA_OE)
+    _write_manifest(accepted, rejected, gate="noaa-ocean-exploration")
+    return accepted
+
+
+SOURCE_NOAA_OE = "NOAA Ocean Exploration"
+
+# One place that decides whether an image may ship, for every source. NOAA
+# Ocean Exploration items go through credit_is_noaa_only(); everything else
+# through pd_licence_ok(). Both write the same fields, so the manifest stays one
+# auditable list rather than two half-documented ones.
+MANIFEST_POLICY = (
+    "Two gates, one manifest. (1) NOAA Ocean Exploration: accept only items whose "
+    "item-page credit resolves to NOAA alone; reject any credit naming a non-federal "
+    "partner (MBARI, Ocean Exploration Trust, WHOI/UW, GFOE, universities, named "
+    "individual photographers) or containing a copyright notice; reject items with no "
+    "credit line. Presence on a noaa.gov host is not evidence of public domain. "
+    "(2) Other sources: accept only items whose own item page asserts public domain or "
+    "CC0, verified live against the Wikimedia Commons extmetadata API (Copyrighted=False "
+    "and a public-domain/CC0 licence tag). CC-BY, CC-BY-SA, CC-BY-NC and "
+    "'no known copyright restrictions' are all rejected. Every record carries the item "
+    "URL, the direct URL, the rights basis, the date checked and the sha256 of the "
+    "bytes actually on disk."
+)
+
+
+def _load_manifest_assets() -> list[dict]:
+    if not os.path.exists(MANIFEST):
+        return []
+    try:
+        return json.load(open(MANIFEST)).get("assets", [])
+    except Exception:
+        return []
+
+
+def _merge_assets(existing: list[dict], fresh: list[dict], keep_source: str) -> list[dict]:
+    """Fresh records replace same-file old ones; records from OTHER sources survive."""
+    fresh_files = {a["local_file"] for a in fresh}
+    kept = [a for a in existing
+            if a["local_file"] not in fresh_files and a.get("source_org") != keep_source]
+    return kept + fresh
+
+
+def _write_manifest(assets: list[dict], rejected: list[dict], gate: str) -> None:
+    """Rewrite the manifest, replacing only THIS gate's rejections."""
+    old = {}
+    if os.path.exists(MANIFEST):
+        try:
+            old = json.load(open(MANIFEST))
+        except Exception:
+            old = {}
+    for r in rejected:
+        r.setdefault("gate", gate)
+    prev_rej = [r for r in old.get("rejected", [])
+                if r.get("gate", "noaa-ocean-exploration") != gate]
     manifest = {
         "generated": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-        "policy": (
-            "Accept only items whose NOAA item-page credit resolves to NOAA alone. "
-            "Reject any credit naming a non-federal partner (MBARI, Ocean Exploration "
-            "Trust, WHOI/UW, GFOE, universities, named individual photographers) or "
-            "containing a copyright notice. Reject items with no credit line. "
-            "Presence on a noaa.gov host is not evidence of public domain."
-        ),
+        "policy": MANIFEST_POLICY,
         "media_kit_url": MEDIA_KIT,
-        "accepted_count": len(accepted),
-        "rejected_count": len(rejected),
-        "assets": accepted,
-        "rejected": rejected,
+        "accepted_count": len(assets),
+        "rejected_count": len(prev_rej) + len(rejected),
+        "assets": assets,
+        "rejected": prev_rej + rejected,
     }
+    if "thumbnail_exclusions_note" in old:
+        manifest["thumbnail_exclusions_note"] = old["thumbnail_exclusions_note"]
     os.makedirs(OUT, exist_ok=True)
     with open(MANIFEST, "w") as f:
         json.dump(manifest, f, indent=2)
+
+
+# ------------------------------------------------- gate 2: public-domain sources
+#
+# The NOAA Ocean Exploration set cannot cover every episode. Four subjects have
+# no NOAA photograph that is BOTH truthful and usable: the Mariana Trench as a
+# place, the descent to it, the frilled shark, and a midnight-zone animal. For
+# those the honest alternatives are a historical scientific plate, a historical
+# bathymetric chart, and a US Navy / NOAA archival photograph -- all genuinely
+# public domain, none of them a lookalike animal wearing another species' name.
+#
+# Each item below was chosen by hand (the identification and the "is this
+# actually the subject" judgement must be human), but its LICENCE is verified
+# programmatically at fetch time against Wikimedia Commons' extmetadata, so a
+# retag or a deletion breaks the build instead of quietly shipping.
+
+COMMONS_API = "https://commons.wikimedia.org/w/api.php"
+
+# Only these. "No known copyright restrictions" (the Flickr Commons tag) is a
+# statement that the holder found no restrictions, not a public-domain
+# dedication, so it is not enough.
+PD_LICENCE_TAGS = {"public domain", "cc0", "cc0 1.0", "pd", "pd-usgov", "pdm-owner"}
+
+
+def commons_imageinfo(title: str) -> dict:
+    url = (f"{COMMONS_API}?action=query&format=json&prop=imageinfo"
+           f"&iiprop=url|size|mime|extmetadata&titles={urllib.parse.quote(title)}")
+    pages = json.loads(_get(url))["query"]["pages"]
+    page = next(iter(pages.values()))
+    if "missing" in page or not page.get("imageinfo"):
+        raise KeyError(f"commons file not found: {title}")
+    return page["imageinfo"][0]
+
+
+def pd_licence_ok(info: dict) -> tuple[bool, str]:
+    """The whole rights decision for gate 2, in one auditable place."""
+    em = info.get("extmetadata", {})
+
+    def val(key):
+        return re.sub(r"<[^>]+>", "", str(em.get(key, {}).get("value", ""))).strip()
+
+    short = val("LicenseShortName").lower()
+    copyrighted = val("Copyrighted").lower()
+    if copyrighted == "true":
+        return False, f"item page marks the work as copyrighted ({short or 'no licence tag'})"
+    if short not in PD_LICENCE_TAGS:
+        return False, f"licence is {short!r}, which is not public domain or CC0"
+    return True, f"Commons item page asserts {val('LicenseShortName')} (Copyrighted=False)"
+
+
+def pd_harvest(items: list[dict] | None = None) -> list[dict]:
+    """Fetch, licence-check and record the hand-chosen public-domain items."""
+    items = PD_ITEMS if items is None else items
+    os.makedirs(ASSETS, exist_ok=True)
+    accepted, rejected = [], []
+    for it in items:
+        info = commons_imageinfo(it["commons_title"])
+        ok, why = pd_licence_ok(info)
+        if not ok:
+            rejected.append({"gate": "public-domain", "slot": it["slot"],
+                             "item_url": info.get("descriptionurl"),
+                             "title": it["title"], "reason": why})
+            continue
+        src = info["url"].split("?")[0]
+        ext = os.path.splitext(urllib.parse.urlparse(src).path)[1] or ".jpg"
+        fname = f"{it['slot']}__{it['id']}__{it['stem']}{ext}"
+        path = os.path.join(ASSETS, fname)
+        blob = _get(src, binary=True)
+        with open(path, "wb") as f:
+            f.write(blob)
+        rec = {
+            "slot": it["slot"],
+            "search_phrase": it.get("search_phrase", it["stem"]),
+            "title": it["title"],
+            "caption": it["caption"],
+            "source_org": it["source_org"],
+            "item_url": info.get("descriptionurl"),
+            "origin_url": it.get("origin_url"),
+            "direct_url": src,
+            "local_file": os.path.relpath(path, OUT),
+            "width": info.get("width"),
+            "height": info.get("height"),
+            "rights_basis": it["rights_basis"],
+            "rights_check": why,
+            "media_kit_url": it.get("rights_url", info.get("descriptionurl")),
+            "required_credit": it["required_credit"],
+            "thumb_credit": it["thumb_credit"],
+            "treatment": it["treatment"],
+            "commercial_use_permitted": True,
+            "date_checked": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
+            "sha256": hashlib.sha256(blob).hexdigest(),
+            "bytes": len(blob),
+            "thumbnail_ok": it.get("thumbnail_ok", True),
+        }
+        if it.get("crop"):
+            rec["crop"] = it["crop"]
+        if not rec["thumbnail_ok"]:
+            rec["thumbnail_excluded_reason"] = it["thumbnail_excluded_reason"]
+        accepted.append(rec)
+        time.sleep(1.5)          # Commons rate-limits bots hard; be a good citizen
+
+    # Keep every record this run did not itself produce -- including the whole
+    # NOAA Ocean Exploration set. Records are matched by the numeric id embedded
+    # in the filename, so re-running replaces rather than duplicates.
+    mine = {it["id"] for it in items}
+    kept = [a for a in _load_manifest_assets()
+            if int(a["local_file"].split("__")[1]) not in mine]
+    _write_manifest(kept + accepted, rejected, gate="public-domain")
+    if rejected:
+        raise SystemExit("licence check FAILED for: " +
+                         "; ".join(f"{r['title']}: {r['reason']}" for r in rejected))
     return accepted
+
+
+PD_ITEMS = [
+    {
+        "id": 900001, "slot": "trench", "stem": "krummel-1907-marianen-graben",
+        "commons_title": "File:Mariana Trench Map 1907.jpg",
+        "title": "Der Marianen-Graben (1907 bathymetric chart)",
+        "caption": ("Otto Krümmel's chart of the Mariana Trench, printed in Handbuch "
+                    "der Ozeanographie (1907). The figures are individual soundings in "
+                    "metres and the closed contours are the trench itself -- this is "
+                    "what the deepest place on Earth looked like when it was measured "
+                    "by dropping a weighted line."),
+        "source_org": "NOAA Photo Library (via Wikimedia Commons)",
+        "origin_url": "https://www.photolib.noaa.gov/htmls/map00052.htm",
+        "rights_url": "https://www.photolib.noaa.gov/about.html#about_images",
+        "rights_basis": (
+            "Two independent public-domain bases. (1) Published 1907 in Otto Krümmel, "
+            "Handbuch der Ozeanographie; Krümmel died in 1912, so the work is out of "
+            "copyright worldwide and in the United States as a pre-1930 publication. "
+            "(2) The scan is published by the NOAA Photo Library and tagged "
+            "PD-USGov-NOAA on its Commons item page."),
+        "required_credit": "Otto Krümmel, Handbuch der Ozeanographie (1907); scan: NOAA Photo Library",
+        "thumb_credit": "KRÜMMEL CHART, 1907", "treatment": "chart",
+        # to the ruled border of the chart: the surrounding page carries
+        # show-through from the reverse of the sheet, which is not the chart
+        "crop": [0.020, 0.070, 0.940, 0.962],
+    },
+    {
+        "id": 900002, "slot": "frilled_shark", "stem": "gunther-1887-plate-lxiv",
+        "commons_title": "File:Chlamydoselachus anguineus1.jpg",
+        "title": "Chlamydoselachus anguineus, Challenger Report Plate LXIV (1887)",
+        "caption": ("Robert Mintern's lithograph of the frilled shark, Plate LXIV of "
+                    "Albert Günther's Report on the Deep-Sea Fishes Collected by "
+                    "H.M.S. Challenger During the Years 1873-1876 (1887). The species "
+                    "had been described by Garman three years earlier; this is the "
+                    "animal itself, drawn from a specimen, not a reconstruction."),
+        "source_org": "Biodiversity Heritage Library / Internet Archive (via Wikimedia Commons)",
+        "origin_url": "https://archive.org/details/reportondeepseaf00gn",
+        "rights_basis": (
+            "Published 1887; the illustrator Robert Mintern died in 1908, so the plate "
+            "is out of copyright in every jurisdiction that uses life+70 or shorter, "
+            "and in the United States as a pre-1930 publication. The Commons item page "
+            "carries PD-scan / PD-old-auto-expired and marks the file not copyrighted."),
+        "required_credit": ("Robert Mintern, in A. Günther, Report on the Deep-Sea Fishes "
+                            "of H.M.S. Challenger (1887), Plate LXIV"),
+        "thumb_credit": "CHALLENGER REPORT PLATE, 1887", "treatment": "plate",
+    },
+    {
+        "id": 900003, "slot": "frilled_shark", "stem": "noaa-2004-frilled-shark-in-situ",
+        "commons_title": "File:Chlamydoselachus anguineus NOOA.jpg",
+        "title": "Frilled shark in its natural habitat (NOAA, 2004)",
+        "caption": ("A frilled shark filmed from the submersible Johnson-Sea-Link II at "
+                    "2,866 feet on 26 August 2004, during NOAA's Estuary to the Abyss "
+                    "expedition. Identified on board by shark biologist Josh Loefer; "
+                    "NOAA published it as the first known footage of the species in the "
+                    "wild."),
+        "source_org": "NOAA Ocean Exploration (2004 archive, via Wikimedia Commons)",
+        "origin_url": ("https://web.archive.org/web/20250903065752/"
+                       "https://oceanexplorer.noaa.gov/explorations/04etta/logs/aug27/"
+                       "media/frilled_shark.html"),
+        "rights_basis": (
+            "Work of the U.S. federal government: a NOAA Office of Ocean Exploration "
+            "expedition image, published on oceanexplorer.noaa.gov with a NOAA-only "
+            "credit and no copyright notice. The Commons item page carries "
+            "PD-USGov-NOAA and marks the file not copyrighted."),
+        "required_credit": "NOAA Ocean Exploration, Estuary to the Abyss 2004",
+        "thumb_credit": "NOAA OCEAN EXPLORATION", "treatment": "photo",
+        "thumbnail_ok": False,
+        "thumbnail_excluded_reason": (
+            "Public domain and correctly identified, but the video overlay -- date, "
+            "time, DEPTH 2866FT, TEMP, SALIN -- is burned into the top of the frame, "
+            "and the shark itself is a low-contrast blur that disappears entirely at "
+            "168 px. Same reason as the wordmarked NOAA frames: usable, not usable "
+            "inside our own layout."),
+    },
+    {
+        "id": 900004, "slot": "vehicle", "stem": "trieste-nh96797-1960",
+        "commons_title": ("File:Bathyscaphe Trieste with USS Lewis (DE-535) over the "
+                          "Marianas Trench, 23 January 1960 (NH 96797).jpg"),
+        "title": "Bathyscaphe Trieste before the Challenger Deep dive, 23 January 1960",
+        "caption": ("Trieste on the surface over the Mariana Trench on the morning of "
+                    "23 January 1960, hours before Jacques Piccard and Don Walsh rode "
+                    "her to the bottom of Challenger Deep. The destroyer escort USS "
+                    "Lewis is steaming past behind her."),
+        "source_org": "U.S. Naval History and Heritage Command (via Wikimedia Commons)",
+        "origin_url": "https://www.history.navy.mil/our-collections/photography.html",
+        "rights_basis": (
+            "Official U.S. Navy photograph NH 96797, a work of the U.S. federal "
+            "government prepared by a Navy employee in the course of duty, and "
+            "therefore public domain under 17 U.S.C. 105. The Commons item page marks "
+            "the file not copyrighted."),
+        "required_credit": "U.S. Navy photo NH 96797",
+        "thumb_credit": "U.S. NAVY, 23 JANUARY 1960", "treatment": "archive",
+    },
+    {
+        "id": 900005, "slot": "vehicle", "stem": "trieste-piccard-walsh-1960",
+        "commons_title": "File:Bathyscaphe Trieste Piccard-Walsh.jpg",
+        "title": "Don Walsh and Jacques Piccard inside Trieste, 1960",
+        "caption": ("Lieutenant Don Walsh, USN, and Jacques Piccard in the crew sphere "
+                    "of the bathyscaphe Trieste, 1960 -- the two men who reached the "
+                    "bottom of Challenger Deep, in the space they did it from."),
+        "source_org": "NOAA Photo Library, Ship Collection (via Wikimedia Commons)",
+        "origin_url": "https://www.photolib.noaa.gov/",
+        "rights_basis": (
+            "NOAA Ship Collection image ship3224, a work of the U.S. federal government "
+            "and therefore public domain under 17 U.S.C. 105. The Commons item page "
+            "carries PD-USGov-NOAA and marks the file not copyrighted."),
+        "required_credit": "NOAA Photo Library, Ship Collection (ship3224)",
+        "thumb_credit": "NOAA PHOTO LIBRARY, 1960", "treatment": "archive",
+    },
+    {
+        "id": 900006, "slot": "vehicle", "stem": "trieste-nh96801-hoisted",
+        "commons_title": "File:Bathyscaphe Trieste.jpg",
+        "title": "Bathyscaphe Trieste hoisted from the water",
+        "caption": ("Trieste lifted clear of the water by a floating crane during "
+                    "testing by the Navy Electronics Laboratory at San Diego, before "
+                    "shipping to the Marianas. The striped cylinder is the petrol "
+                    "float; the crew sphere is the small ball slung beneath it."),
+        "source_org": "U.S. Naval History and Heritage Command (via Wikimedia Commons)",
+        "origin_url": "https://www.history.navy.mil/our-collections/photography.html",
+        "rights_basis": (
+            "Official U.S. Navy photograph NH 96801, released by the U.S. Navy "
+            "Electronics Laboratory; a work of the U.S. federal government and "
+            "therefore public domain under 17 U.S.C. 105. The Commons item page marks "
+            "the file not copyrighted."),
+        "required_credit": "U.S. Navy photo NH 96801",
+        "thumb_credit": "U.S. NAVY PHOTO NH 96801", "treatment": "archive",
+    },
+    {
+        "id": 900007, "slot": "column", "stem": "gunther-1887-melanocetus-murrayi",
+        "commons_title": "File:Melanocetus murrayi (Murrays abyssal anglerfish).jpg",
+        "title": "Melanocetus murrayi, Challenger Report plate (1887)",
+        "caption": ("Robert Mintern's lithograph of Melanocetus murrayi, Murray's "
+                    "abyssal anglerfish, from Albert Günther's Report on the Deep-Sea "
+                    "Fishes Collected by H.M.S. Challenger (1887). A bathypelagic "
+                    "animal: it lives in the midnight zone, below 1,000 metres, where "
+                    "the only light is the light animals make."),
+        "source_org": "Biodiversity Heritage Library / Internet Archive (via Wikimedia Commons)",
+        "origin_url": "https://archive.org/details/reportondeepseaf00gn",
+        "rights_basis": (
+            "Published 1887; illustrator Robert Mintern died in 1908. Out of copyright "
+            "worldwide under life+70 and in the United States as a pre-1930 "
+            "publication. The Commons item page carries PD-scan / PD-old-70 and marks "
+            "the file not copyrighted."),
+        "required_credit": ("Robert Mintern, in A. Günther, Report on the Deep-Sea Fishes "
+                            "of H.M.S. Challenger (1887)"),
+        "thumb_credit": "CHALLENGER REPORT PLATE, 1887", "treatment": "plate",
+    },
+]
 
 
 TERMS = {
@@ -280,6 +602,14 @@ TERMS = {
 }
 
 if __name__ == "__main__":
+    if "--pd" in sys.argv:
+        got = pd_harvest()
+        print(f"public-domain gate: accepted {len(got)}")
+        for a in got:
+            print(f"  {a['slot']:14} {a['width']}x{a['height']:<5} {a['rights_check']}")
+        print(f"manifest -> {MANIFEST}")
+        raise SystemExit(0)
+
     got = harvest(TERMS)
     with open(MANIFEST) as f:
         man = json.load(f)

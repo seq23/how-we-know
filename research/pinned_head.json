@@ -1,0 +1,13 @@
+{
+  "_what_this_is": "OWNER OVERRIDE. Not a computed result. These four episodes were directed by the owner and lead the publish queue in this exact order regardless of what the combined score says.",
+  "_directed_by": "Sequoia, via coordinator",
+  "_directed_on": "2026-08-30",
+  "_how_it_expires": "An entry falls out of the pinned head automatically once its slug appears in research/published.json. When all four have been published the head is empty and the queue becomes purely score-ranked. No code change is needed.",
+  "_contract": "Ordered list. Each entry names a query that must match an episode question extracted from scripts/*.md. A pinned query that matches no script is reported as an error, never silently dropped.",
+  "pinned": [
+    "how big is a colossal squid",
+    "how do people reach challenger deep",
+    "why does black-smoker water not boil",
+    "why some deep sea creatures are transparent"
+  ]
+}

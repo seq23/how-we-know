@@ -1,0 +1,814 @@
+[
+  {
+    "segment": "light_attenuation",
+    "seconds": 5.38,
+    "heading": "Cold open",
+    "narration": "A red shrimp can look almost black in the water where it lives.",
+    "args": {},
+    "from": "directive"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "Bring in white ROV lights and the same animal suddenly turns bright red. The color did not change. The available light did.",
+    "args": {
+      "subject": "red_shrimp",
+      "label": "red shrimp",
+      "pick": 0
+    },
+    "from": "directive-rhythm+species-section"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 3.5,
+    "heading": "Title card",
+    "narration": "Why many deep sea creatures are red?",
+    "args": {
+      "lines": [
+        "Why many deep sea",
+        "creatures are red?"
+      ]
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "The right way to see it",
+    "narration": "Color only works when matching light reaches it. Seawater removes red wavelengths early, so a red body in deep blue light reflects very little visible light back to an observer.",
+    "args": {
+      "title": "WHY RED GOES DARK",
+      "stages": [
+        "Seawater removes red wavelengths early",
+        "A red body sits in deep blue light",
+        "It reflects very little visible light back to an observer"
+      ],
+      "conclusion": "Color only works when matching light reaches it"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The right way to see it",
+    "narration": "The rest of this video follows that question through the actual environmental constraints described by NOAA, MBARI, Smithsonian, and Woods Hole sources in the companion article.",
+    "args": {
+      "lines": [
+        "The rest of this",
+        "video follows that question",
+        "through"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 5.38,
+    "heading": "Producer POV",
+    "narration": "What surprised me is that red is not a warning color down there.",
+    "args": {
+      "text": "What surprised me is that red is not a warning color down there.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 6.21,
+    "heading": "Producer POV",
+    "narration": "Under the light that actually reaches the animal, red can function more like black camouflage.",
+    "args": {
+      "text": "Under the light that actually reaches the animal, red can function more like black camouflage.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "light_attenuation",
+    "seconds": 7.45,
+    "heading": "Color depends on the light that reaches an object",
+    "narration": "An object looks red near the surface because red wavelengths strike it and are reflected to an observer.",
+    "args": {},
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Color depends on the light that reaches an object",
+    "narration": "Deeper down, those wavelengths have already been absorbed by the water. Without red illumination, red tissue returns almost no visible red light and looks dark gray or black.",
+    "args": {
+      "lines": [
+        "Deeper down, those wavelengths",
+        "have already been absorbed"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Darkness can be camouflage",
+    "narration": "In dim midwater, avoiding a detectable silhouette is critical. Red or black skin helps an animal blend into the background when viewed by predators or prey using the available blue-green light.",
+    "args": {
+      "term": "RED OR BLACK SKIN",
+      "includes": [
+        "Blends into the background under the available blue-green light",
+        "A red stomach lining hides the glow of recently eaten bioluminescent prey"
+      ],
+      "excludes": [
+        "A detectable silhouette"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Darkness can be camouflage",
+    "narration": "Some animals combine red external tissue with a red stomach lining that hides the glow of recently eaten bioluminescent prey.",
+    "args": {
+      "lines": [
+        "Some animals combine red",
+        "external tissue with a",
+        "red stomach"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "zone_column",
+    "seconds": 5.79,
+    "heading": "Not every red animal lives at the same depth",
+    "narration": "Ocean color patterns shift gradually. Near the surface, blue and silver countershading is common.",
+    "args": {
+      "highlight": null
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Not every red animal lives at the same depth",
+    "narration": "Deeper, transparency becomes useful. Farther down, red and black bodies become more common.",
+    "args": {
+      "lines": [
+        "Deeper, transparency becomes useful.",
+        "Farther down, red and",
+        "black bodies"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "zone_column",
+    "seconds": 6.21,
+    "heading": "Not every red animal lives at the same depth",
+    "narration": "These are broad patterns, not rigid rules. Habitat, behavior and visual systems vary among species.",
+    "args": {
+      "highlight": null
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 4.97,
+    "heading": "ROV lights reveal colors the animal does not normally display",
+    "narration": "A remotely operated vehicle carries bright white lights that include red wavelengths.",
+    "args": {
+      "title": "WHY EXPEDITION FOOTAGE LOOKS CRIMSON",
+      "stages": [
+        "ROV lamps=bright white light that includes red wavelengths",
+        "The camera=records vivid crimson bodies",
+        "Natural deep-sea illumination=the same bodies look nearly black"
+      ],
+      "conclusion": "The colour is functioning as concealment"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "ROV lights reveal colors the animal does not normally display",
+    "narration": "The camera therefore records vivid crimson bodies that would look nearly black under natural deep-sea illumination.",
+    "args": {
+      "lines": [
+        "The camera therefore records",
+        "vivid crimson bodies that",
+        "would look"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 8.28,
+    "heading": "ROV lights reveal colors the animal does not normally display",
+    "narration": "That is why expedition footage can show an apparently bright animal in an environment where the color functions as concealment.",
+    "args": {
+      "title": "WHY EXPEDITION FOOTAGE LOOKS CRIMSON",
+      "stages": [
+        "ROV lamps=bright white light that includes red wavelengths",
+        "The camera=records vivid crimson bodies",
+        "Natural deep-sea illumination=the same bodies look nearly black"
+      ],
+      "conclusion": "The colour is functioning as concealment"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Common myths and questions",
+    "narration": "A common question is: Can deep-sea animals see red? Many deep-sea visual systems are most sensitive to blue-green wavelengths. Sensitivity varies, and some species have specialized visual capabilities.",
+    "args": {
+      "term": "DEEP-SEA VISUAL SYSTEMS",
+      "includes": [
+        "Most sensitive to blue-green wavelengths"
+      ],
+      "excludes": [
+        "Uniform \u2014 sensitivity varies, and some species have specialized visual capabilities"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "Common myths and questions",
+    "narration": "A common question is: Why do red deep-sea animals look bright in video? ROV lights contain red wavelengths that natural deep water lacks.",
+    "args": {
+      "term": "ROV light",
+      "meaning": "Contains red wavelengths that natural deep water lacks",
+      "boundary": "It is why red deep-sea animals look bright in video",
+      "source": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 8.28,
+    "heading": "Common myths and questions",
+    "narration": "A common question is: Are all deep-sea animals red? No. Black, transparent, silver, pale and bioluminescent forms are also common.",
+    "args": {
+      "title": "ARE ALL DEEP-SEA ANIMALS RED?",
+      "items": [
+        "-No",
+        "+Black forms are also common",
+        "+Transparent",
+        "+Silver",
+        "+Pale",
+        "+Bioluminescent"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 8.28,
+    "heading": "Common myths and questions",
+    "narration": "A common question is: Is red coloration the same as bioluminescence? No. Pigment controls reflected light; bioluminescence produces light chemically.",
+    "args": {
+      "title": "PIGMENT IS NOT BIOLUMINESCENCE",
+      "sources": [
+        [
+          "Pigment",
+          "controls reflected light"
+        ],
+        [
+          "Bioluminescence",
+          "produces light chemically"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 6.62,
+    "heading": "Turn off the red light",
+    "narration": "Color is reflected light. At the surface, a red body reflects red wavelengths to our eyes.",
+    "args": {
+      "value": "100",
+      "unit": "METRES",
+      "caption": "Red light does not penetrate at about 100 metres",
+      "source": "NOAA"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "Turn off the red light",
+    "narration": "As those wavelengths are absorbed by seawater, there is less red light available to reflect.",
+    "args": {
+      "lines": [
+        "As those wavelengths are",
+        "absorbed by seawater, there"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 7.45,
+    "heading": "Turn off the red light",
+    "narration": "NOAA's educational page says red light does not penetrate at about 100 meters, while blue travels much farther.",
+    "args": {
+      "value": "100",
+      "unit": "METRES",
+      "caption": "Red light does not penetrate at about 100 metres",
+      "source": "NOAA"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Turn off the red light",
+    "narration": "That makes red and black useful midwater colors. The dramatic red animals in expedition footage are often being illuminated by white lamps that restore wavelengths absent from their normal world.",
+    "args": {
+      "lines": [
+        "That makes red and",
+        "black useful midwater colors.",
+        "The dramatic"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "light_attenuation",
+    "seconds": 7.86,
+    "heading": "The color experiment the ocean performs",
+    "narration": "Imagine lowering a row of colored cards through clear water. The cards do not carry their appearance with them.",
+    "args": {},
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The color experiment the ocean performs",
+    "narration": "Their appearance depends on which wavelengths remain available to reflect. Red wavelengths are absorbed relatively quickly, so a red body loses the light that would make it look red.",
+    "args": {
+      "lines": [
+        "Their appearance depends on",
+        "which wavelengths remain available",
+        "to reflect."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "light_attenuation",
+    "seconds": 5.38,
+    "heading": "The color experiment the ocean performs",
+    "narration": "Under the blue-green light that penetrates deeper, that same body can appear dark.",
+    "args": {},
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "The color experiment the ocean performs",
+    "narration": "The animal has not changed pigment. The lighting environment has changed the information available to a viewer or predator.",
+    "args": {
+      "lines": [
+        "The animal has not",
+        "changed pigment. The lighting",
+        "environment has"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "The color experiment the ocean performs",
+    "narration": "This is why ROV footage needs interpretation. White lamps bring a broad spectrum into a place where it normally does not exist.",
+    "args": {
+      "term": "WHAT ROV LAMPS DO TO THE FOOTAGE",
+      "includes": [
+        "Bring a broad spectrum into a place where it normally does not exist",
+        "Make the footage useful for identification"
+      ],
+      "excludes": [
+        "Show the animal as its own world lights it",
+        "Leave the audience a true impression of camouflage"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 5.79,
+    "heading": "The color experiment the ocean performs",
+    "narration": "A shrimp that looks scarlet on camera may look nearly black under ambient conditions.",
+    "args": {
+      "subject": "red_shrimp",
+      "label": "shrimp",
+      "pick": 1
+    },
+    "from": "directive-rhythm+species-beat"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 6.62,
+    "heading": "The color experiment the ocean performs",
+    "narration": "The light makes the footage useful for identification, but it can mislead the audience about camouflage.",
+    "args": {
+      "term": "WHAT ROV LAMPS DO TO THE FOOTAGE",
+      "includes": [
+        "Bring a broad spectrum into a place where it normally does not exist",
+        "Make the footage useful for identification"
+      ],
+      "excludes": [
+        "Show the animal as its own world lights it",
+        "Leave the audience a true impression of camouflage"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 7.45,
+    "heading": "The color experiment the ocean performs",
+    "narration": "Depth is also not a single switch. Water clarity, particles, angle, weather, and local conditions affect light penetration.",
+    "args": {
+      "title": "WHAT ELSE AFFECTS LIGHT PENETRATION",
+      "items": [
+        "?Water clarity",
+        "?Particles",
+        "?Angle",
+        "?Weather",
+        "?Local conditions"
+      ],
+      "note": "Depth is not a single switch"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "The color experiment the ocean performs",
+    "narration": "Red coloration can be useful in one depth range and irrelevant in another.",
+    "args": {
+      "lines": [
+        "Red coloration can be",
+        "useful in one depth",
+        "range"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "The color experiment the ocean performs",
+    "narration": "Some animals combine pigment with transparency, counterillumination, reflective tissue, or behavior. The strongest version of this script does not claim that every red deep-sea animal evolved for exactly the same reason.",
+    "args": {
+      "title": "WHAT ELSE AFFECTS LIGHT PENETRATION",
+      "items": [
+        "?Water clarity",
+        "?Particles",
+        "?Angle",
+        "?Weather",
+        "?Local conditions"
+      ],
+      "note": "Depth is not a single switch"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "The color experiment the ocean performs",
+    "narration": "It shows the physics, then asks whether the documented habitat and behavior fit the camouflage explanation for that species.",
+    "args": {
+      "lines": [
+        "It shows the physics,",
+        "then asks whether the",
+        "documented habitat"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 6.62,
+    "heading": "A camera-light warning",
+    "narration": "Every red-creature shot should carry a small note when artificial white light is doing the revealing.",
+    "args": {
+      "term": "Color",
+      "meaning": "An interaction among pigment, available wavelengths, viewing angle, and the sensor recording it",
+      "boundary": "Not a fixed label attached to a body",
+      "source": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "A camera-light warning",
+    "narration": "Without that note, the footage quietly teaches the opposite of the biology.",
+    "args": {
+      "lines": [
+        "Without that note, the",
+        "footage quietly teaches the",
+        "opposite"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 7.03,
+    "heading": "A camera-light warning",
+    "narration": "The audience sees a vivid red animal and hears that red is camouflage, which can sound contradictory.",
+    "args": {
+      "term": "Color",
+      "meaning": "An interaction among pigment, available wavelengths, viewing angle, and the sensor recording it",
+      "boundary": "Not a fixed label attached to a body",
+      "source": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "A camera-light warning",
+    "narration": "The correction is visual: show the same body under a simplified deep-water light spectrum, then restore the ROV lamps.",
+    "args": {
+      "lines": [
+        "The correction is visual:",
+        "show the same body",
+        "under"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 8.28,
+    "heading": "A camera-light warning",
+    "narration": "That lets viewers watch the color change as an effect of illumination rather than accept it as a verbal claim.",
+    "args": {
+      "term": "Color",
+      "meaning": "An interaction among pigment, available wavelengths, viewing angle, and the sensor recording it",
+      "boundary": "Not a fixed label attached to a body",
+      "source": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "A camera-light warning",
+    "narration": "It also gives the editor a repeatable technique for future color episodes.",
+    "args": {
+      "lines": [
+        "It also gives the",
+        "editor a repeatable technique",
+        "for future"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 6.62,
+    "heading": "A camera-light warning",
+    "narration": "Whenever a video depends on what an animal looks like, ask what light produced the image.",
+    "args": {
+      "term": "Color",
+      "meaning": "An interaction among pigment, available wavelengths, viewing angle, and the sensor recording it",
+      "boundary": "Not a fixed label attached to a body",
+      "source": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "A camera-light warning",
+    "narration": "Color is not a fixed label attached to a body. It is an interaction among pigment, available wavelengths, viewing angle, and the sensor recording it.",
+    "args": {
+      "lines": [
+        "Color is not a",
+        "fixed label attached to",
+        "a body."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "The claim I will not make",
+    "narration": "I will not say that red pigment always evolved for camouflage or that every red animal is invisible at the same depth.",
+    "args": {
+      "term": "THE SUPPORTED CLAIM",
+      "includes": [
+        "Red tissue can return little available light and appear dark in many deep settings"
+      ],
+      "excludes": [
+        "That red pigment always evolved for camouflage",
+        "That every red animal is invisible at the same depth"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The claim I will not make",
+    "narration": "Pigment can have multiple functions, and light fields vary. The supported claim is narrower: because red wavelengths disappear quickly, red tissue can return little available light and appear dark in many deep settings.",
+    "args": {
+      "lines": [
+        "Pigment can have multiple",
+        "functions, and light fields",
+        "vary."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 5.38,
+    "heading": "The claim I will not make",
+    "narration": "The species, depth, and behavior decide whether that physical advantage is biologically relevant.",
+    "args": {
+      "term": "THE SUPPORTED CLAIM",
+      "includes": [
+        "Red tissue can return little available light and appear dark in many deep settings"
+      ],
+      "excludes": [
+        "That red pigment always evolved for camouflage",
+        "That every red animal is invisible at the same depth"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "A simple edit check",
+    "narration": "Pause every time the narrator says red, black, or invisible and ask whether the current shot uses natural ambient light or artificial illumination.",
+    "args": {
+      "title": "THE EDIT CHECK",
+      "items": [
+        "?Does this shot use natural ambient light or artificial illumination?",
+        "+If it uses white ROV light, the caption must say so",
+        "-A shot of uncertain depth used as proof of a depth-specific camouflage claim"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "A simple edit check",
+    "narration": "If it uses white ROV light, the caption must say so. If depth is uncertain, do not use the shot as proof of a depth-specific camouflage claim.",
+    "args": {
+      "lines": [
+        "If it uses white",
+        "ROV light, the caption",
+        "must say"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "A simple edit check",
+    "narration": "The audience should be able to see why the same animal changes appearance instead of being asked to trust a color fact that contradicts the screen.",
+    "args": {
+      "title": "THE EDIT CHECK",
+      "items": [
+        "?Does this shot use natural ambient light or artificial illumination?",
+        "+If it uses white ROV light, the caption must say so",
+        "-A shot of uncertain depth used as proof of a depth-specific camouflage claim"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Final editorial note",
+    "narration": "This check also prevents a beautiful deck photograph from being treated as a faithful view of the animal's normal visual world.",
+    "args": {
+      "lines": [
+        "This check also prevents",
+        "a beautiful deck photograph",
+        "from being"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Final editorial note",
+    "narration": "This check also prevents a beautiful deck photograph from being treated as a faithful view of the animal's normal visual world.",
+    "args": {
+      "lines": [
+        "This check also prevents",
+        "a beautiful deck photograph",
+        "from being"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "light_attenuation",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "Treat the episode like a lighting experiment. Show the same original illustration under full-spectrum light, then remove red wavelengths and let the body darken.",
+    "args": {},
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "Follow with an ROV-light reveal. Do not use unlicensed expedition footage simply because it demonstrates the effect well; the original diagram and admitted media must carry the explanation unless an external clip passes the rights manifest.",
+    "args": {
+      "lines": [
+        "Follow with an ROV-light",
+        "reveal. Do not use",
+        "unlicensed expedition"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 7.86,
+    "heading": "Evidence limit",
+    "narration": "The depth at which a color disappears varies with water clarity, particles, sun angle, and the amount of light.",
+    "args": {
+      "term": "Red disappears at 100 meters",
+      "meaning": "An educational approximation",
+      "boundary": "Not a universal hard line: the depth varies with water clarity, particles, sun angle, and the amount of light",
+      "source": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "Evidence limit",
+    "narration": "'Red disappears at 100 meters' is an educational approximation, not a universal hard line.",
+    "args": {
+      "lines": [
+        "'Red disappears at 100",
+        "meters' is an educational",
+        "approximation"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "Red coloration is also not used by every deep animal and does not make an animal perfectly invisible. Bioluminescent predators, close-range vision, silhouette, movement, and other senses still matter.",
+    "args": {
+      "title": "WHAT STILL MATTERS",
+      "items": [
+        "-Red coloration is not used by every deep animal",
+        "-It does not make an animal perfectly invisible",
+        "?Bioluminescent predators",
+        "?Close-range vision",
+        "?Silhouette and movement",
+        "?Other senses"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "light_attenuation",
+    "seconds": 7.45,
+    "heading": "Closing",
+    "narration": "Red deep-sea animals are not dressed for our lights. They are dressed for the wavelengths their world removes.",
+    "args": {},
+    "from": "directive"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "The next time an ROV reveals a brilliant scarlet squid or shrimp, remember that the camera brought the red light with it.",
+    "args": {
+      "subject": "red_shrimp",
+      "label": "shrimp",
+      "pick": 2
+    },
+    "from": "directive-rhythm+species-beat"
+  }
+]

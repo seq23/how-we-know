@@ -1,0 +1,826 @@
+[
+  {
+    "segment": "depth_descent",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "A finned octopus was filmed at 6,957 meters\u2014nearly seven kilometers down\u2014moving in water that our machines enter only with full-ocean-depth engineering. It had not survived a descent. It was already home.",
+    "args": {
+      "to_depth": 6957,
+      "label": "NEARLY SEVEN KILOMETRES DOWN"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 3.5,
+    "heading": "Title card",
+    "narration": "What is a dumbo octopus?",
+    "args": {
+      "lines": [
+        "What is a dumbo",
+        "octopus?"
+      ]
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 6.21,
+    "heading": "A name that hides a whole group",
+    "narration": "Dumbo octopus is not one tidy species with one fixed depth and one fixed appearance.",
+    "args": {
+      "term": "Dumbo octopus",
+      "meaning": "A nickname for finned octopuses in the cirrate lineage",
+      "boundary": "Not one tidy species with one fixed depth and one fixed appearance",
+      "source": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "A name that hides a whole group",
+    "narration": "It is a nickname used for finned octopuses in the cirrate lineage.",
+    "args": {
+      "lines": [
+        "It is a nickname",
+        "used for finned octopuses"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 8.28,
+    "heading": "A name that hides a whole group",
+    "narration": "Their most obvious feature is the pair of fins on the mantle, positioned where a cartoon elephant might have ears.",
+    "args": {
+      "term": "Dumbo octopus",
+      "meaning": "A nickname for finned octopuses in the cirrate lineage",
+      "boundary": "Not one tidy species with one fixed depth and one fixed appearance",
+      "source": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "A name that hides a whole group",
+    "narration": "The resemblance gave them a friendly name, but the anatomy solves a serious problem.",
+    "args": {
+      "lines": [
+        "The resemblance gave them",
+        "a friendly name, but",
+        "the anatomy"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 4.97,
+    "heading": "A name that hides a whole group",
+    "narration": "In deep water, rapid movement is expensive and prey may be scarce.",
+    "args": {
+      "title": "WHAT THE FINS SOLVE",
+      "stages": [
+        "Rapid movement is expensive in deep water",
+        "Prey may be scarce",
+        "Cirrates pulse the fins and reshape the web between the arms"
+      ],
+      "conclusion": "Small changes in posture, without a powerful jet every few seconds"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "A name that hides a whole group",
+    "narration": "Cirrates can pulse the fins, reshape the web between the arms, and make small changes in posture without firing a powerful jet every few seconds.",
+    "args": {
+      "lines": [
+        "Cirrates can pulse the",
+        "fins, reshape the web",
+        "between"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 7.03,
+    "heading": "A name that hides a whole group",
+    "narration": "NOAA footage has shown these animals hovering above canyon walls and seafloor terrain thousands of meters down.",
+    "args": {
+      "title": "WHAT THE FINS SOLVE",
+      "stages": [
+        "Rapid movement is expensive in deep water",
+        "Prey may be scarce",
+        "Cirrates pulse the fins and reshape the web between the arms"
+      ],
+      "conclusion": "Small changes in posture, without a powerful jet every few seconds"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 9.0,
+    "heading": "A name that hides a whole group",
+    "narration": "The body looks delicate because water supports it. On a deck, soft tissue can collapse and distort, which is why a live observation matters more than a damaged specimen photograph.",
+    "args": {
+      "title": "WHY A LIVE OBSERVATION MATTERS MORE",
+      "sources": [
+        [
+          "A live observation",
+          "the body looks delicate because water supports it"
+        ],
+        [
+          "A damaged specimen photograph",
+          "on a deck, soft tissue can collapse and distort"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "A name that hides a whole group",
+    "narration": "The first open loop is simple: fins explain how it moves, but they do not explain how far down the design can work.",
+    "args": {
+      "lines": [
+        "The first open loop",
+        "is simple: fins explain",
+        "how it"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 4.97,
+    "heading": "Producer POV",
+    "narration": "The detail that stays with me is not the record by itself.",
+    "args": {
+      "text": "The detail that stays with me is not the record by itself.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 6.62,
+    "heading": "Producer POV",
+    "narration": "It is that the octopus is simply moving in the place our equipment struggles to reach.",
+    "args": {
+      "text": "It is that the octopus is simply moving in the place our equipment struggles to reach.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "magnitude_bar",
+    "seconds": 9.0,
+    "heading": "The observation at 6,957 meters",
+    "narration": "In 2020, Alan Jamieson and Michael Vecchione reported clear lander video of a cirrate octopus identified as Grimpoteuthis at 5,760 meters and again at 6,957 meters in the Indian Ocean.",
+    "args": {
+      "title": "CONFIRMED IN-SITU OBSERVATIONS",
+      "unit": "metres",
+      "items": [
+        [
+          "First 2020 observation",
+          "5,760"
+        ],
+        [
+          "Deepest 2020 observation",
+          "6,957"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "The observation at 6,957 meters",
+    "narration": "Before that work, the deepest unambiguous photographic evidence for a cephalopod was much shallower.",
+    "args": {
+      "lines": [
+        "Before that work, the",
+        "deepest unambiguous photographic evidence"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "magnitude_bar",
+    "seconds": 5.38,
+    "heading": "The observation at 6,957 meters",
+    "narration": "The new observations extended confirmed in-situ cephalopod depth by more than 1,800 meters.",
+    "args": {
+      "title": "CONFIRMED IN-SITU OBSERVATIONS",
+      "unit": "metres",
+      "items": [
+        [
+          "First 2020 observation",
+          "5,760"
+        ],
+        [
+          "Deepest 2020 observation",
+          "6,957"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 6.62,
+    "heading": "The observation at 6,957 meters",
+    "narration": "That number needs discipline. It does not mean all dumbo octopuses routinely live at 6,957 meters.",
+    "args": {
+      "term": "WHAT THE NUMBER PROVES",
+      "includes": [
+        "That a finned octopus can occupy hadal habitat",
+        "That it remains coordinated under conditions once treated as marginal"
+      ],
+      "excludes": [
+        "That all dumbo octopuses routinely live at 6,957 meters",
+        "A global depth distribution"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The observation at 6,957 meters",
+    "narration": "It does not turn one sighting into a global depth distribution. It proves that a finned octopus can occupy hadal habitat and remain coordinated under conditions once treated as marginal for cephalopods.",
+    "args": {
+      "lines": [
+        "It does not turn",
+        "one sighting into a",
+        "global depth"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 8.69,
+    "heading": "The observation at 6,957 meters",
+    "narration": "The lander provided depth, time, and video context without hauling the animal through thousands of meters of changing pressure and temperature.",
+    "args": {
+      "term": "WHAT THE NUMBER PROVES",
+      "includes": [
+        "That a finned octopus can occupy hadal habitat",
+        "That it remains coordinated under conditions once treated as marginal"
+      ],
+      "excludes": [
+        "That all dumbo octopuses routinely live at 6,957 meters",
+        "A global depth distribution"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "The observation at 6,957 meters",
+    "narration": "The strange part is not that the octopus survived a descent. It was already home.",
+    "args": {
+      "lines": [
+        "The strange part is",
+        "not that the octopus",
+        "survived"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.86,
+    "heading": "The observation at 6,957 meters",
+    "narration": "The next unresolved question is what its soft body is doing at a molecular level to remain functional there.",
+    "args": {
+      "term": "WHAT THE NUMBER PROVES",
+      "includes": [
+        "That a finned octopus can occupy hadal habitat",
+        "That it remains coordinated under conditions once treated as marginal"
+      ],
+      "excludes": [
+        "That all dumbo octopuses routinely live at 6,957 meters",
+        "A global depth distribution"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "pressure_gauge",
+    "seconds": 9.0,
+    "heading": "A body built around water, not air",
+    "narration": "Pressure is most dramatic when it compresses gas. A dumbo octopus does not carry lungs, and its tissues are mostly water, so the body is not a hollow object waiting to be crushed.",
+    "args": {
+      "depth_m": 6957
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "A body built around water, not air",
+    "narration": "Pressure still affects proteins, membranes, and biochemical reactions, but deep species evolve around those constraints.",
+    "args": {
+      "lines": [
+        "Pressure still affects proteins,",
+        "membranes, and biochemical reactions,",
+        "but deep"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "pressure_gauge",
+    "seconds": 9.0,
+    "heading": "A body built around water, not air",
+    "narration": "Cirrate octopuses also tend to abandon some familiar shallow-water defenses. An ink cloud has limited value in permanent darkness, and repeated jet propulsion can be costly.",
+    "args": {
+      "depth_m": 6957
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "A body built around water, not air",
+    "narration": "Their fins provide efficient motion; the arm web can form a bell-like surface; small sensory structures called cirri may help with feeding. Scientists can describe those structures, yet behavior is harder.",
+    "args": {
+      "lines": [
+        "Their fins provide efficient",
+        "motion"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 8.28,
+    "heading": "A body built around water, not air",
+    "narration": "A few minutes of video may show hovering, landing, or arm movements, but it rarely reveals an entire feeding sequence.",
+    "args": {
+      "term": "WHAT A FEW MINUTES OF VIDEO SHOWS",
+      "includes": [
+        "Hovering",
+        "Landing",
+        "Arm movements"
+      ],
+      "excludes": [
+        "An entire feeding sequence"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "A body built around water, not air",
+    "narration": "This is where documentary storytelling often overreaches. A graceful clip invites a complete narrative, while the evidence may support only movement, depth, and morphology.",
+    "args": {
+      "lines": [
+        "This is where documentary",
+        "storytelling often overreaches. A",
+        "graceful clip"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "A body built around water, not air",
+    "narration": "The missing piece is not a monster fact. It is the daily ecology of an animal that is almost never watched for long.",
+    "args": {
+      "term": "WHAT A FEW MINUTES OF VIDEO SHOWS",
+      "includes": [
+        "Hovering",
+        "Landing",
+        "Arm movements"
+      ],
+      "excludes": [
+        "An entire feeding sequence"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "What the camera still cannot tell us",
+    "narration": "The hadal sighting opened a larger habitat than researchers could confidently assign to cephalopods, but it also exposed how sparse the record remains.",
+    "args": {
+      "title": "HOW SPARSE THE RECORD REMAINS",
+      "items": [
+        "-No continuous survey of every trench",
+        "?Different cirrate species occupy different depths",
+        "?A single baited lander may attract or miss animals",
+        "-Species-specific timing and brooding behavior",
+        "-Even the word dumbo blurs distinctions between genera"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "What the camera still cannot tell us",
+    "narration": "We do not have a continuous survey of every trench. Different cirrate species occupy different depths.",
+    "args": {
+      "lines": [
+        "We do not have",
+        "a continuous survey of",
+        "every trench."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 7.03,
+    "heading": "What the camera still cannot tell us",
+    "narration": "A single baited lander may attract or miss animals in ways that change what the camera sees.",
+    "args": {
+      "title": "HOW SPARSE THE RECORD REMAINS",
+      "items": [
+        "-No continuous survey of every trench",
+        "?Different cirrate species occupy different depths",
+        "?A single baited lander may attract or miss animals",
+        "-Species-specific timing and brooding behavior",
+        "-Even the word dumbo blurs distinctions between genera"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 9.0,
+    "heading": "What the camera still cannot tell us",
+    "narration": "Reproduction is another gap. Deep octopuses generally produce relatively few, large eggs, but species-specific timing and brooding behavior can be difficult to observe. Even the word dumbo can blur important distinctions between genera.",
+    "args": {
+      "subject": "deep_octopus",
+      "label": "Deep octopuses",
+      "pick": 0
+    },
+    "from": "directive-rhythm+species-beat"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "What the camera still cannot tell us",
+    "narration": "The responsible conclusion is narrow and still remarkable: finned octopuses are not confined to the upper deep sea, and at least one has been documented at 6,957 meters.",
+    "args": {
+      "title": "THREE DIFFERENT CLAIMS",
+      "items": [
+        "?Observed",
+        "?Captured",
+        "?Inferred"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "What the camera still cannot tell us",
+    "narration": "When you see a viral caption calling it the deepest octopus ever, check whether it says observed, captured, or inferred.",
+    "args": {
+      "lines": [
+        "When you see a",
+        "viral caption calling it"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "What the camera still cannot tell us",
+    "narration": "Those are different claims. The next episode turns from a soft-bodied cephalopod to a shark whose body looks like an eel, and whose reputation is older than the evidence.",
+    "args": {
+      "title": "THREE DIFFERENT CLAIMS",
+      "items": [
+        "?Observed",
+        "?Captured",
+        "?Inferred"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "size_ladder",
+    "seconds": 6.21,
+    "heading": "The record changes the map",
+    "narration": "Before the 2020 paper, the deepest unambiguous photographic evidence for a cephalopod was 5,145 meters.",
+    "args": {
+      "items": [
+        [
+          "Previous photographic record",
+          5145.0
+        ],
+        [
+          "First 2020 observation",
+          5760.0
+        ],
+        [
+          "Deepest 2020 observation",
+          6957.0
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 7.45,
+    "heading": "The record changes the map",
+    "narration": "Jamieson and Vecchione reported HD lander video of Grimpoteuthis at 5,760 and 6,957 meters in the Indian Ocean.",
+    "args": {
+      "subject": "deep_octopus",
+      "label": "Grimpoteuthis",
+      "pick": 1
+    },
+    "from": "directive-rhythm+species-beat"
+  },
+  {
+    "segment": "magnitude_bar",
+    "seconds": 9.0,
+    "heading": "The record changes the map",
+    "narration": "That extended the confirmed in-situ depth by 1,812 meters and increased the potential benthic habitat available to cephalopods from an estimated 75 to 99 percent of the global seafloor.",
+    "args": {
+      "title": "POTENTIAL BENTHIC HABITAT AVAILABLE TO CEPHALOPODS",
+      "unit": "percent of the global seafloor",
+      "items": [
+        [
+          "Estimated before",
+          "75"
+        ],
+        [
+          "Estimated after",
+          "99"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "The record changes the map",
+    "narration": "The key word is potential. One observation does not prove that every finned octopus occupies every trench.",
+    "args": {
+      "lines": [
+        "The key word is",
+        "potential. One observation does",
+        "not prove"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 7.45,
+    "heading": "What the record changes",
+    "narration": "The 6,957-meter observation mattered because it expanded the documented depth of octopus life by more than a kilometer.",
+    "args": {
+      "value": "99",
+      "unit": "PERCENT",
+      "caption": "Potential benthic habitat available to cephalopods, up from an estimated 75 percent",
+      "source": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "What the record changes",
+    "narration": "It also changed the estimated share of seafloor habitat potentially available to octopuses.",
+    "args": {
+      "lines": [
+        "It also changed the",
+        "estimated share of seafloor",
+        "habitat potentially"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "What the record changes",
+    "narration": "But the camera recorded an animal, not its entire life history. It did not reveal where the eggs were laid, how long development took, what the individual had eaten, or whether the same species routinely occupies that depth.",
+    "args": {
+      "title": "WHAT THE CAMERA DID NOT REVEAL",
+      "items": [
+        "-Where the eggs were laid",
+        "-How long development took",
+        "-What the individual had eaten",
+        "-Whether the same species routinely occupies that depth"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 5.79,
+    "heading": "What the record changes",
+    "narration": "A record is the edge of confirmed observation, not the edge of biological possibility.",
+    "args": {
+      "term": "A record",
+      "meaning": "The edge of confirmed observation",
+      "boundary": "Not the edge of biological possibility",
+      "source": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "What the record changes",
+    "narration": "That distinction makes the footage more interesting. The dumbo octopus is not impressive because a narrator can attach a superlative.",
+    "args": {
+      "lines": [
+        "That distinction makes the",
+        "footage more interesting. The",
+        "dumbo octopus"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "What the record changes",
+    "narration": "It is impressive because a soft-bodied cephalopod was functioning on a trench floor where observation is expensive and rare.",
+    "args": {
+      "lines": [
+        "It is impressive because",
+        "a soft-bodied cephalopod was",
+        "functioning"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "What the record changes",
+    "narration": "The human point of view in this episode should be wonder disciplined by the frame: here is what the dive showed, here is what the paper inferred, and here is what remains unseen.",
+    "args": {
+      "title": "WONDER DISCIPLINED BY THE FRAME",
+      "steps": [
+        [
+          "Here is what the dive showed",
+          ""
+        ],
+        [
+          "Here is what the paper inferred",
+          ""
+        ],
+        [
+          "Here is what remains unseen",
+          ""
+        ]
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.45,
+    "heading": "The owner check",
+    "narration": "Before approval, I need to listen for how the narrator says the genus name and the depth record.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.69,
+    "heading": "The owner check",
+    "narration": "A technically correct script can still sound careless if the scientific name is mangled or the number rushes past without context.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The owner check",
+    "narration": "The final master should let the animal move long enough for the viewer to see that it is not a cartoon character attached to fins.",
+    "args": {
+      "lines": [
+        "The final master should",
+        "let the animal move",
+        "long enough"
+      ]
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "depth_descent",
+    "seconds": 8.28,
+    "heading": "What to notice in the edit",
+    "narration": "Open with the depth record, then move backward into anatomy: fins, webbed arms, soft tissue, and the absence of lungs.",
+    "args": {
+      "to_depth": 6957,
+      "label": "THE DEPTH RECORD"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "What to notice in the edit",
+    "narration": "This reverses the usual creature-profile order. Use an original silhouette and depth track unless a specific external clip is commercially admitted.",
+    "args": {
+      "lines": [
+        "This reverses the usual",
+        "creature-profile order. Use an",
+        "original silhouette"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "depth_descent",
+    "seconds": 8.28,
+    "heading": "What to notice in the edit",
+    "narration": "The source paper itself is CC BY, but that does not automatically license every image or video appearing elsewhere online.",
+    "args": {
+      "to_depth": 6957,
+      "label": "THE DEPTH RECORD"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "The 6,957-meter record is a confirmed observation of one Grimpoteuthis individual, not the universal depth range of every animal called a dumbo octopus.",
+    "args": {
+      "term": "THE 6,957-METRE RECORD",
+      "includes": [
+        "A confirmed observation of one Grimpoteuthis individual",
+        "Coordinated presence at that site and depth"
+      ],
+      "excludes": [
+        "The universal depth range of every animal called a dumbo octopus",
+        "A complete diet, population size, reproductive cycle, or global distribution"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "'Dumbo octopus' is a nickname for multiple cirrate species. The video proves coordinated presence at that site and depth; it does not reveal a complete diet, population size, reproductive cycle, or global distribution.",
+    "args": {
+      "subject": "deep_octopus",
+      "label": "Dumbo octopus",
+      "pick": 2
+    },
+    "from": "directive-rhythm+species-beat"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Closing",
+    "narration": "A dumbo octopus is not impressive because it looks cute under pressure.",
+    "args": {
+      "lines": [
+        "A dumbo octopus is",
+        "not impressive because it",
+        "looks cute"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "It is impressive because a soft, finned body can function at a depth that rewrote the known cephalopod map. The record is narrow, and it is still extraordinary.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+destagnate"
+  }
+]

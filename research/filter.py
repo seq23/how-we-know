@@ -20,7 +20,13 @@ NOISE = [
 BARRED = [
  r"\bconspiracy\b", r"\bmegalodon (?:is )?alive\b", r"\bmermaid", r"\bcryptid\b",
  r"\bbermuda triangle\b", r"\balien", r"\bufo\b", r"\bnessie\b", r"\bloch ness\b",
- r"\bcure\b", r"\bsupplement", r"\bdiet\b", r"\bstock market\b", r"\binvest",
+ r"\bcure\b", r"\bsupplement", r"\bdiet\b", r"\bstock market\b",
+ # Financial-advice exclusion. Was r"\binvest", which is a prefix and therefore
+ # also matched "investigation": it barred all 270 "air crash investigation"
+ # queries across the broad mining pass and made incident-analysis look like the
+ # single riskiest candidate domain (36% exclusion rate) when its real rate is
+ # under 1%. Anchored to the actual money words instead.
+ r"\binvest(?:s|ed|ing|ment|ments|or|ors)\b", r"\binvest in\b",
  r"\bdied\b.*\bvideo\b", r"\bgore\b", r"\bdeath video\b",
 ]
 # Domain buckets, ordered: first match wins.

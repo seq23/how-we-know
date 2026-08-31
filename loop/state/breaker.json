@@ -1,8 +1,8 @@
 {
-  "state": "closed",
-  "tripped_at": null,
-  "cause": null,
-  "detail": null,
+  "state": "tripped",
+  "tripped_at": "2026-08-31T16:34:03+00:00",
+  "cause": "manual",
+  "detail": "MANUAL LAUNCH IN PROGRESS. The owner is publishing the first four videos by hand (2026-08-31). The loop must not publish while she does: YouTube cannot replace a video file, so an autonomous publish landing mid-session creates a video that can only be deleted and re-uploaded, losing its URL and any watch time. Reset only when she says the manual session is finished. Deliberate hold, not a fault.",
   "history": [
     {
       "event": "trip",
@@ -27,6 +27,12 @@
       "at": "2026-08-30T21:13:28+00:00",
       "cleared_cause": null,
       "note": "clean state"
+    },
+    {
+      "event": "trip",
+      "at": "2026-08-31T16:34:03+00:00",
+      "cause": "manual",
+      "detail": "MANUAL LAUNCH IN PROGRESS. The owner is publishing the first four videos by hand (2026-08-31). The loop must not publish while she does: YouTube cannot replace a video file, so an autonomous publish landing mid-session creates a video that can only be deleted and re-uploaded, losing its URL and any watch time. Reset only when she says the manual session is finished. Deliberate hold, not a fault."
     }
   ]
 }

@@ -1,0 +1,921 @@
+[
+  {
+    "segment": "depth_descent",
+    "seconds": 6.21,
+    "heading": "Cold open",
+    "narration": "Below the reach of sunlight, much of the light you see is made by life.",
+    "args": {
+      "to_depth": 4000,
+      "label": "LIGHT MADE BY LIFE"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "It can hide a silhouette, lure prey, warn a predator, find a mate, or send a signal we still do not understand.",
+    "args": {
+      "lines": [
+        "It can hide a",
+        "silhouette, lure prey, warn",
+        "a predator"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 3.5,
+    "heading": "Title card",
+    "narration": "How does bioluminescence work in the deep sea?",
+    "args": {
+      "lines": [
+        "How does bioluminescence work",
+        "in the deep sea?"
+      ]
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 7.86,
+    "heading": "The ocean's darkness is not actually dark",
+    "narration": "Below the reach of sunlight, a camera with its lamps off can still record flashes, pulses, and glowing clouds.",
+    "args": {
+      "term": "Bioluminescence",
+      "meaning": "Light produced by a chemical reaction inside or on an organism",
+      "boundary": "A light-emitting molecule releases energy as photons when the reaction is triggered",
+      "source": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "The ocean's darkness is not actually dark",
+    "narration": "Bioluminescence is light produced by a chemical reaction inside or on an organism.",
+    "args": {
+      "lines": [
+        "Bioluminescence is light produced",
+        "by a chemical reaction",
+        "inside"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 4.97,
+    "heading": "The ocean's darkness is not actually dark",
+    "narration": "A light-emitting molecule releases energy as photons when the reaction is triggered.",
+    "args": {
+      "term": "Bioluminescence",
+      "meaning": "Light produced by a chemical reaction inside or on an organism",
+      "boundary": "A light-emitting molecule releases energy as photons when the reaction is triggered",
+      "source": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 4.97,
+    "heading": "The ocean's darkness is not actually dark",
+    "narration": "The exact molecules and control systems vary. Some animals manufacture the components.",
+    "args": {
+      "title": "HOW ANIMALS PRODUCE IT",
+      "items": [
+        "?Some manufacture the components",
+        "?Some host luminous bacteria",
+        "?Some release glowing material into the water"
+      ],
+      "note": "The exact molecules and control systems vary"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "The ocean's darkness is not actually dark",
+    "narration": "Some host luminous bacteria. Some can release glowing material into the water.",
+    "args": {
+      "lines": [
+        "Some host luminous bacteria.",
+        "Some can release glowing",
+        "material"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 8.69,
+    "heading": "The ocean's darkness is not actually dark",
+    "narration": "This is not fluorescence. Fluorescent tissue needs an outside light source to excite it; bioluminescence can produce light in complete darkness.",
+    "args": {
+      "term": "BIOLUMINESCENCE IS NOT FLUORESCENCE",
+      "includes": [
+        "Can produce light in complete darkness"
+      ],
+      "excludes": [
+        "Fluorescent tissue, which needs an outside light source to excite it"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "magnitude_bar",
+    "seconds": 7.45,
+    "heading": "The ocean's darkness is not actually dark",
+    "narration": "MBARI researchers have spent decades using sensitive cameras and ROV observations to measure how common the ability is.",
+    "args": {
+      "title": "ANIMALS OBSERVED THAT COULD PRODUCE LIGHT",
+      "unit": "percent",
+      "items": [
+        [
+          "In the water column",
+          "76"
+        ],
+        [
+          "On the bottom",
+          "45"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The ocean's darkness is not actually dark",
+    "narration": "Their reported numbers are striking: about 76 percent of animals observed in the water column and 45 percent of animals observed on the bottom, from the surface to 4,000 meters, could produce light.",
+    "args": {
+      "lines": [
+        "Their reported numbers are",
+        "striking: about 76 percent",
+        "of animals"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "magnitude_bar",
+    "seconds": 7.45,
+    "heading": "The ocean's darkness is not actually dark",
+    "narration": "The first open loop is not why animals glow. It is why the color is so often blue-green.",
+    "args": {
+      "title": "ANIMALS OBSERVED THAT COULD PRODUCE LIGHT",
+      "unit": "percent",
+      "items": [
+        [
+          "In the water column",
+          "76"
+        ],
+        [
+          "On the bottom",
+          "45"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 9.0,
+    "heading": "Producer POV",
+    "narration": "I kept wanting to say 'three quarters of deep-sea animals glow.' The MBARI figure is powerful, but it comes from animals their ROV surveys could observe, not a census of every species in the ocean.",
+    "args": {
+      "text": "I kept wanting to say 'three quarters of deep-sea animals glow.' The MBARI figure is powerful, but it comes from animals their ROV surveys could observe, not a census of every species in the ocean.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "light_attenuation",
+    "seconds": 5.38,
+    "heading": "Water selects the color palette",
+    "narration": "Seawater filters wavelengths unevenly. Red light disappears quickly, while blue-green light travels farther.",
+    "args": {},
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "Water selects the color palette",
+    "narration": "That makes blue-green emission efficient for signals, camouflage, and illumination in much of the ocean.",
+    "args": {
+      "lines": [
+        "That makes blue-green emission",
+        "efficient for signals, camouflage,",
+        "and illumination"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "light_attenuation",
+    "seconds": 7.03,
+    "heading": "Water selects the color palette",
+    "narration": "Eyes evolve in the same optical environment, so many deep-sea animals are especially sensitive to those wavelengths.",
+    "args": {},
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Water selects the color palette",
+    "narration": "The result is a shared channel: light that can travel, and eyes prepared to receive it. But evolution exploits blind spots.",
+    "args": {
+      "lines": [
+        "The result is a",
+        "shared channel: light that",
+        "can travel"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 5.38,
+    "heading": "Water selects the color palette",
+    "narration": "Some deep-sea dragonfishes produce red bioluminescence and possess visual pigments that detect it.",
+    "args": {
+      "term": "'DEEP-SEA LIGHT IS BLUE'",
+      "includes": [
+        "A dominant pattern"
+      ],
+      "excludes": [
+        "A law",
+        "True of dragonfishes, which produce red bioluminescence and can detect it"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Water selects the color palette",
+    "narration": "Many potential prey cannot. The fish gains something close to a private flashlight.",
+    "args": {
+      "lines": [
+        "Many potential prey cannot.",
+        "The fish gains something",
+        "close"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 5.79,
+    "heading": "Water selects the color palette",
+    "narration": "This is why a statement like deep-sea light is blue is useful but incomplete.",
+    "args": {
+      "term": "'DEEP-SEA LIGHT IS BLUE'",
+      "includes": [
+        "A dominant pattern"
+      ],
+      "excludes": [
+        "A law",
+        "True of dragonfishes, which produce red bioluminescence and can detect it"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Water selects the color palette",
+    "narration": "It describes a dominant pattern, not a law. The next loop is function.",
+    "args": {
+      "lines": [
+        "It describes a dominant",
+        "pattern, not a law.",
+        "The next"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Water selects the color palette",
+    "narration": "A glowing organ under the belly and a glowing lure above the mouth may use similar chemistry, but they are solving opposite problems: one tries not to be seen, and the other tries to be noticed.",
+    "args": {
+      "term": "'DEEP-SEA LIGHT IS BLUE'",
+      "includes": [
+        "A dominant pattern"
+      ],
+      "excludes": [
+        "A law",
+        "True of dragonfishes, which produce red bioluminescence and can detect it"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 9.0,
+    "heading": "The same chemistry can hide, hunt, warn, or lie",
+    "narration": "Counter-illumination is one of the most elegant uses. In the twilight zone, a predator looking upward sees the faint surface glow behind an animal.",
+    "args": {
+      "title": "THE SAME CHEMISTRY, OPPOSITE PROBLEMS",
+      "sources": [
+        [
+          "Counter-illumination",
+          "photophores on the underside match the background and reduce the silhouette"
+        ],
+        [
+          "An anglerfish lure",
+          "placed where prey can approach the mouth"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 5.38,
+    "heading": "The same chemistry can hide, hunt, warn, or lie",
+    "narration": "Photophores on the animal's underside can match that background and reduce the silhouette.",
+    "args": {
+      "subject": "anglerfish",
+      "label": "anglerfish",
+      "pick": 0
+    },
+    "from": "directive-rhythm+species-section"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 5.79,
+    "heading": "The same chemistry can hide, hunt, warn, or lie",
+    "narration": "An anglerfish uses light differently, placing a lure where prey can approach the mouth.",
+    "args": {
+      "title": "THE SAME CHEMISTRY, OPPOSITE PROBLEMS",
+      "sources": [
+        [
+          "Counter-illumination",
+          "photophores on the underside match the background and reduce the silhouette"
+        ],
+        [
+          "An anglerfish lure",
+          "placed where prey can approach the mouth"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 4.97,
+    "heading": "The same chemistry can hide, hunt, warn, or lie",
+    "narration": "Some shrimp release luminous clouds, creating a bright distraction while they escape.",
+    "args": {
+      "subject": "red_shrimp",
+      "label": "shrimp",
+      "pick": 0
+    },
+    "from": "directive-rhythm+species-beat"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 9.0,
+    "heading": "The same chemistry can hide, hunt, warn, or lie",
+    "narration": "Jellies can send waves of light across the body. Other animals use light organs as searchlights or as patterns that may help identify mates.",
+    "args": {
+      "title": "THE SAME CHEMISTRY, OPPOSITE PROBLEMS",
+      "sources": [
+        [
+          "Counter-illumination",
+          "photophores on the underside match the background and reduce the silhouette"
+        ],
+        [
+          "An anglerfish lure",
+          "placed where prey can approach the mouth"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 7.86,
+    "heading": "The same chemistry can hide, hunt, warn, or lie",
+    "narration": "Function cannot be assigned from color alone. Researchers examine organ position, timing, behavior, and the response of nearby animals.",
+    "args": {
+      "title": "WHAT RESEARCHERS EXAMINE BEFORE ASSIGNING FUNCTION",
+      "items": [
+        "?Organ position",
+        "?Timing",
+        "?Behavior",
+        "?The response of nearby animals"
+      ],
+      "note": "Function cannot be assigned from color alone"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 5.38,
+    "heading": "The same chemistry can hide, hunt, warn, or lie",
+    "narration": "A flash after contact suggests a different role from a steady ventral glow.",
+    "args": {
+      "subject": "anglerfish",
+      "label": "anglerfish",
+      "pick": 1
+    },
+    "from": "directive-rhythm+species-section"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 6.62,
+    "heading": "The same chemistry can hide, hunt, warn, or lie",
+    "narration": "Laboratory chemistry explains how photons are produced, while ROV video shows when the system is used.",
+    "args": {
+      "title": "WHAT RESEARCHERS EXAMINE BEFORE ASSIGNING FUNCTION",
+      "items": [
+        "?Organ position",
+        "?Timing",
+        "?Behavior",
+        "?The response of nearby animals"
+      ],
+      "note": "Function cannot be assigned from color alone"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 9.0,
+    "heading": "The same chemistry can hide, hunt, warn, or lie",
+    "narration": "The open question is scale: how do scientists estimate prevalence when cameras can see only a tiny sample of an enormous habitat?",
+    "args": {
+      "subject": "red_shrimp",
+      "label": "shrimp",
+      "pick": 1
+    },
+    "from": "directive-rhythm+species-section"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "A percentage is not a census",
+    "narration": "The 76-percent figure is valuable because it came from systematic review of animals MBARI could observe in the water column, not from a collection of dramatic clips.",
+    "args": {
+      "title": "THE BOUNDARIES OF THE FIGURE",
+      "items": [
+        "?Gelatinous animals can be difficult to sample",
+        "?Small organisms may escape detection",
+        "?An ROV's presence and lights can alter behavior",
+        "?Some species may not emit during a brief encounter",
+        "?Others may be mistaken for reflected light"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 6.62,
+    "heading": "A percentage is not a census",
+    "narration": "It still has boundaries. Gelatinous animals can be difficult to sample. Small organisms may escape detection.",
+    "args": {
+      "subject": "deep_squid",
+      "label": "squid",
+      "pick": 0
+    },
+    "from": "directive-rhythm+species-section"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 8.28,
+    "heading": "A percentage is not a census",
+    "narration": "An ROV's presence and lights can alter behavior. Some species may possess light organs without emitting during a brief encounter.",
+    "args": {
+      "title": "THE BOUNDARIES OF THE FIGURE",
+      "items": [
+        "?Gelatinous animals can be difficult to sample",
+        "?Small organisms may escape detection",
+        "?An ROV's presence and lights can alter behavior",
+        "?Some species may not emit during a brief encounter",
+        "?Others may be mistaken for reflected light"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "A percentage is not a census",
+    "narration": "Others may be mistaken for reflected light unless the camera design and observation are controlled.",
+    "args": {
+      "lines": [
+        "Others may be mistaken",
+        "for reflected light unless",
+        "the camera"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 6.21,
+    "heading": "A percentage is not a census",
+    "narration": "Good science states the sampling frame. The result is not every animal in every ocean.",
+    "args": {
+      "term": "WHAT THE RESULT IS",
+      "includes": [
+        "Strong evidence that bioluminescence is a dominant ecological tool",
+        "In the largest dark habitat on Earth"
+      ],
+      "excludes": [
+        "Every animal in every ocean"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "A percentage is not a census",
+    "narration": "It is strong evidence that bioluminescence is one of the dominant ecological tools in the largest dark habitat on Earth.",
+    "args": {
+      "lines": [
+        "It is strong evidence",
+        "that bioluminescence is one"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.45,
+    "heading": "A percentage is not a census",
+    "narration": "That conclusion is bigger than a montage of glowing creatures because it links optics, chemistry, behavior, and evolution.",
+    "args": {
+      "term": "WHAT THE RESULT IS",
+      "includes": [
+        "Strong evidence that bioluminescence is a dominant ecological tool",
+        "In the largest dark habitat on Earth"
+      ],
+      "excludes": [
+        "Every animal in every ocean"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "A percentage is not a census",
+    "narration": "When the next blue flash crosses the screen, ask where the organ sits and what happened immediately before it fired.",
+    "args": {
+      "lines": [
+        "When the next blue",
+        "flash crosses the screen,",
+        "ask"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "A percentage is not a census",
+    "narration": "Those two details often reveal more than the brightness. Next comes a squid whose eyes are so large that the measurement sounds invented.",
+    "args": {
+      "term": "WHAT THE RESULT IS",
+      "includes": [
+        "Strong evidence that bioluminescence is a dominant ecological tool",
+        "In the largest dark habitat on Earth"
+      ],
+      "excludes": [
+        "Every animal in every ocean"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "One chemistry, many jobs",
+    "narration": "Bioluminescence is light produced by a chemical reaction, often involving a light-emitting molecule called a luciferin and an enzyme or photoprotein.",
+    "args": {
+      "lines": [
+        "Bioluminescence is light produced",
+        "by a chemical reaction,",
+        "often involving"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "One chemistry, many jobs",
+    "narration": "The exact chemistry varies among organisms. In blue-dominated seawater, blue-green light often travels efficiently, which helps explain the color of many marine signals.",
+    "args": {
+      "lines": [
+        "The exact chemistry varies",
+        "among organisms. In blue-dominated",
+        "seawater, blue-green"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "One chemistry, many jobs",
+    "narration": "The same ability can serve opposing roles: an anglerfish lure attracts, counter-illumination hides, a flash can startle, and a glowing cloud can distract. A single animal may use more than one function.",
+    "args": {
+      "title": "THE SAME ABILITY, OPPOSING ROLES",
+      "items": [
+        "+An anglerfish lure attracts",
+        "+Counter-illumination hides",
+        "+A flash can startle",
+        "+A glowing cloud can distract"
+      ],
+      "note": "A single animal may use more than one function"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 7.45,
+    "heading": "Why one flash can mean opposite things",
+    "narration": "A light signal has no meaning outside behavior and context. A predator can use light to attract prey.",
+    "args": {
+      "title": "THE SAME MECHANISM, A DIFFERENT FUNCTION",
+      "sources": [
+        [
+          "A predator",
+          "uses light to attract prey"
+        ],
+        [
+          "Prey",
+          "uses a flash to startle a predator, or to illuminate it for a larger hunter"
+        ],
+        [
+          "Members of one species",
+          "use patterned signals to find one another"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Why one flash can mean opposite things",
+    "narration": "Prey can use a flash to startle a predator or illuminate it for a larger hunter.",
+    "args": {
+      "lines": [
+        "Prey can use a",
+        "flash to startle a",
+        "predator"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 4.97,
+    "heading": "Why one flash can mean opposite things",
+    "narration": "An animal can match dim light from above to erase its silhouette.",
+    "args": {
+      "title": "THE SAME MECHANISM, A DIFFERENT FUNCTION",
+      "sources": [
+        [
+          "A predator",
+          "uses light to attract prey"
+        ],
+        [
+          "Prey",
+          "uses a flash to startle a predator, or to illuminate it for a larger hunter"
+        ],
+        [
+          "Members of one species",
+          "use patterned signals to find one another"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Why one flash can mean opposite things",
+    "narration": "Members of the same species can use patterned signals to find one another.",
+    "args": {
+      "lines": [
+        "Members of the same",
+        "species can use patterned",
+        "signals"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 5.38,
+    "heading": "Why one flash can mean opposite things",
+    "narration": "The chemical mechanism may be similar while the ecological function is completely different.",
+    "args": {
+      "title": "THE SAME MECHANISM, A DIFFERENT FUNCTION",
+      "sources": [
+        [
+          "A predator",
+          "uses light to attract prey"
+        ],
+        [
+          "Prey",
+          "uses a flash to startle a predator, or to illuminate it for a larger hunter"
+        ],
+        [
+          "Members of one species",
+          "use patterned signals to find one another"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Why one flash can mean opposite things",
+    "narration": "That is why the MBARI percentages need careful narration. They demonstrate how common light production was among animals observed in a large ROV dataset.",
+    "args": {
+      "term": "WHAT THE MBARI PERCENTAGES SHOW",
+      "includes": [
+        "How common light production was among animals observed in a large ROV dataset"
+      ],
+      "excludes": [
+        "That every animal glows",
+        "That every species was equally detectable",
+        "That one function dominates"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Why one flash can mean opposite things",
+    "narration": "They do not tell us that every animal glows, that every species was equally detectable, or that one function dominates.",
+    "args": {
+      "lines": [
+        "They do not tell",
+        "us that every animal",
+        "glows"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.03,
+    "heading": "Why one flash can mean opposite things",
+    "narration": "The humanized edit should return to the same original light animation and change only the surrounding scene.",
+    "args": {
+      "term": "WHAT THE MBARI PERCENTAGES SHOW",
+      "includes": [
+        "How common light production was among animals observed in a large ROV dataset"
+      ],
+      "excludes": [
+        "That every animal glows",
+        "That every species was equally detectable",
+        "That one function dominates"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Why one flash can mean opposite things",
+    "narration": "The audience sees that chemistry is the tool; behavior supplies the meaning.",
+    "args": {
+      "lines": [
+        "The audience sees that",
+        "chemistry is the tool"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 9.0,
+    "heading": "The disclosure in the percentage",
+    "narration": "When the percentage appears on screen, the label should read 'animals observed in MBARI's ROV dataset,' not 'all deep-sea animals.' That extra line is small, but it separates a real study result from an invented universal census.",
+    "args": {
+      "value": "76",
+      "unit": "PERCENT",
+      "caption": "Animals observed in MBARI's ROV dataset, not all deep-sea animals",
+      "source": "MBARI"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "The disclosure in the percentage",
+    "narration": "The narration should also distinguish generated light from fluorescence before showing any glowing image.",
+    "args": {
+      "lines": [
+        "The narration should also",
+        "distinguish generated light from",
+        "fluorescence before"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "This episode should feel like a mechanism demonstration. Begin with darkness, add the chemical reaction as a clean original animation, then reuse the same burst of light in four contexts: lure, camouflage, warning, and communication.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "That structural repetition has meaning; the surrounding behavior changes the function. Do not use MBARI footage unless the individual asset has commercial rights clearance.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "MBARI reports that 76 percent of observed water-column creatures and 45 percent of observed bottom-dwelling creatures in its ROV work could produce light, from the surface to 4,000 meters.",
+    "args": {
+      "value": "4,000",
+      "unit": "METRES",
+      "caption": "The surveyed range, from the surface to 4,000 metres",
+      "source": "MBARI"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Evidence limit",
+    "narration": "Those percentages describe the surveyed animals researchers could see and classify. They are not a universal species census.",
+    "args": {
+      "lines": [
+        "Those percentages describe the",
+        "surveyed animals researchers could",
+        "see"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 6.21,
+    "heading": "Evidence limit",
+    "narration": "Fluorescence is also different from bioluminescence: fluorescence re-emits incoming light, while bioluminescence generates light chemically.",
+    "args": {
+      "term": "FLUORESCENCE AND BIOLUMINESCENCE",
+      "includes": [
+        "Bioluminescence generates light chemically"
+      ],
+      "excludes": [
+        "Fluorescence, which re-emits incoming light"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "depth_descent",
+    "seconds": 6.62,
+    "heading": "Closing",
+    "narration": "The deep ocean is dark, but it is not visually silent. Life supplies its own signals.",
+    "args": {
+      "to_depth": 4000,
+      "label": "LIFE SUPPLIES ITS OWN SIGNALS"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Closing",
+    "narration": "The useful question is not only which animal glows, but what that light is doing at that exact moment.",
+    "args": {
+      "lines": [
+        "The useful question is",
+        "not only which animal",
+        "glows"
+      ]
+    },
+    "from": "directive-rhythm"
+  }
+]

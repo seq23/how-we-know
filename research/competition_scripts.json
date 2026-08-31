@@ -1,0 +1,4195 @@
+{
+  "measured_at": "2026-08-30T20:51:53.626674+00:00",
+  "generator": "research/competition.py",
+  "source": "YouTube Data API v3 (search.list, videos.list, channels.list)",
+  "key_source": ".secrets/youtube_api_key.txt",
+  "key_handling": "The API key is never printed, logged, or written here.",
+  "quota_units_spent": 2040,
+  "quota_budget": 2500,
+  "allocation_plan": {
+    "mode": "from_scripts",
+    "rationale": "Scoring the 20 scripts that already exist. The publish order is decided this week, so these queries outrank domains nobody will touch for months.",
+    "episodes": [
+      {
+        "slug": "01-why-deep-sea-creatures-look-so-weird",
+        "title": "Why deep sea creatures look so weird?",
+        "query": "why deep sea creatures look so weird"
+      },
+      {
+        "slug": "02-how-deep-sea-creatures-survive-pressure",
+        "title": "How deep sea creatures survive the pressure?",
+        "query": "how deep sea creatures survive the pressure"
+      },
+      {
+        "slug": "03-why-deep-sea-creatures-are-surfacing",
+        "title": "Why deep sea creatures are surfacing?",
+        "query": "why deep sea creatures are surfacing"
+      },
+      {
+        "slug": "04-why-deep-sea-creatures-are-so-scary",
+        "title": "Why deep sea creatures are so scary?",
+        "query": "why deep sea creatures are so scary"
+      },
+      {
+        "slug": "05-why-many-deep-sea-creatures-are-red",
+        "title": "Why many deep sea creatures are red?",
+        "query": "why many deep sea creatures are red"
+      },
+      {
+        "slug": "06-why-some-deep-sea-creatures-are-transparent",
+        "title": "Why some deep sea creatures are transparent?",
+        "query": "why some deep sea creatures are transparent"
+      },
+      {
+        "slug": "07-why-deep-sea-creatures-get-creepier-deeper",
+        "title": "Why deep sea creatures get creepier the deeper you go?",
+        "query": "why deep sea creatures get creepier the deeper you go"
+      },
+      {
+        "slug": "08-what-creatures-live-in-the-deep-sea",
+        "title": "What creatures live in the deep sea?",
+        "query": "what creatures live in the deep sea"
+      },
+      {
+        "slug": "09-what-is-the-scariest-deep-sea-creature",
+        "title": "What is the scariest deep sea creature?",
+        "query": "what is the scariest deep sea creature"
+      },
+      {
+        "slug": "10-what-is-the-deepest-part-of-the-ocean",
+        "title": "What is the deepest part of the ocean?",
+        "query": "what is the deepest part of the ocean"
+      },
+      {
+        "slug": "11-what-is-a-dumbo-octopus",
+        "title": "What is a dumbo octopus?",
+        "query": "what is a dumbo octopus"
+      },
+      {
+        "slug": "12-what-is-a-frilled-shark",
+        "title": "What is a frilled shark?",
+        "query": "what is a frilled shark"
+      },
+      {
+        "slug": "13-how-does-bioluminescence-work-in-the-deep-sea",
+        "title": "How does bioluminescence work in the deep sea?",
+        "query": "how does bioluminescence work in the deep sea"
+      },
+      {
+        "slug": "14-how-big-is-a-colossal-squid",
+        "title": "How big is a colossal squid?",
+        "query": "how big is a colossal squid"
+      },
+      {
+        "slug": "15-how-do-people-reach-challenger-deep",
+        "title": "How do people reach Challenger Deep?",
+        "query": "how do people reach challenger deep"
+      },
+      {
+        "slug": "16-what-happens-when-a-whale-dies-in-the-deep-ocean",
+        "title": "What happens when a whale dies in the deep ocean?",
+        "query": "what happens when a whale dies in the deep ocean"
+      },
+      {
+        "slug": "17-what-is-a-yeti-crab",
+        "title": "What is a yeti crab?",
+        "query": "what is a yeti crab"
+      },
+      {
+        "slug": "18-why-does-black-smoker-water-not-boil",
+        "title": "Why does black-smoker water not boil?",
+        "query": "why does black-smoker water not boil"
+      },
+      {
+        "slug": "19-what-is-the-deepest-fish-ever-recorded",
+        "title": "What is the deepest fish ever recorded?",
+        "query": "what is the deepest fish ever recorded"
+      },
+      {
+        "slug": "20-what-is-the-midnight-zone",
+        "title": "What is the midnight zone?",
+        "query": "what is the midnight zone"
+      }
+    ],
+    "total_searches": 20,
+    "estimated_units": 2040
+  },
+  "candidates_scored": 20,
+  "candidates_unmeasured": [],
+  "unmeasured_note": "Anything listed here has NO competition value. It is not scored as zero and must not be ranked as if it were measured.",
+  "domain_summary": {
+    "existing-script": {
+      "queries_scored": 20,
+      "mean_opportunity": 0.505,
+      "median_opportunity": 0.531,
+      "mean_title_gap": 0.635,
+      "median_of_median_views": 499295,
+      "median_of_median_subs": 221500,
+      "queries": [
+        "why deep sea creatures look so weird",
+        "how deep sea creatures survive the pressure",
+        "why deep sea creatures are surfacing",
+        "why deep sea creatures are so scary",
+        "why many deep sea creatures are red",
+        "why some deep sea creatures are transparent",
+        "why deep sea creatures get creepier the deeper you go",
+        "what creatures live in the deep sea",
+        "what is the scariest deep sea creature",
+        "what is the deepest part of the ocean",
+        "what is a dumbo octopus",
+        "what is a frilled shark",
+        "how does bioluminescence work in the deep sea",
+        "how big is a colossal squid",
+        "how do people reach challenger deep",
+        "what happens when a whale dies in the deep ocean",
+        "what is a yeti crab",
+        "why does black-smoker water not boil",
+        "what is the deepest fish ever recorded",
+        "what is the midnight zone"
+      ],
+      "sample_caveat": "20 query sample. Deliberately unequal across domains: quota was concentrated where it could move the ranking. Treat a 2-query domain as a smoke test, not a measurement."
+    }
+  },
+  "results": [
+    {
+      "query": "why does black-smoker water not boil",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.18,
+        "max_coverage": 0.6,
+        "strong_match_count": 0,
+        "strong_match_rate": 0.0,
+        "loose_match_rate": 0.85,
+        "gap_signal": 1.0,
+        "interpretation": "nobody has made the definitive video on this query"
+      },
+      "view_profile": {
+        "median": 251642.0,
+        "p90": 2391170,
+        "max": 30915336,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 2800.0,
+        "max_subscribers": 1070000,
+        "under_100k_subs": 16,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 365,
+        "published_last_365d": 10,
+        "n": 20
+      },
+      "opportunity_score": 0.711,
+      "opportunity_components": {
+        "title_gap": 1.0,
+        "incumbent_subs": 0.508,
+        "view_ceiling": 0.228,
+        "staleness": 0.5
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-08-30T20:51:50.629440+00:00"
+      },
+      "top_results": [
+        {
+          "title": "The Water Here Is 750\u00b0F \u2014 So Why Isn&#39;t It Boiling | Deep Dive Dispatch",
+          "views": 17,
+          "subs": 6,
+          "published_at": "2026-03-26T14:38:21Z",
+          "coverage": 0.2
+        },
+        {
+          "title": "\ud83d\udd25In  black ocean life thrives with no sunlight  only boiling vents Earth\u2019s alien world Black Smokers",
+          "views": 835,
+          "subs": 389,
+          "published_at": "2025-10-04T10:13:58Z",
+          "coverage": 0.4
+        },
+        {
+          "title": "Boiling Water Found Deep Beneath the Ocean",
+          "views": 23,
+          "subs": 172,
+          "published_at": "2026-03-14T18:00:15Z",
+          "coverage": 0.2
+        },
+        {
+          "title": "The Ocean Floor Is Leaking Black Smoke | Deep Sea Documentary for Sleep",
+          "views": 48,
+          "subs": 15,
+          "published_at": "2026-06-19T02:05:32Z",
+          "coverage": 0.2
+        },
+        {
+          "title": "Black Smokers: What Thrives Where the Ocean Boils? | Documentary For Sleep",
+          "views": 1104,
+          "subs": 30100,
+          "published_at": "2025-12-10T21:00:57Z",
+          "coverage": 0.6
+        },
+        {
+          "title": "Hydrothermal Vents | Oases in the Deep Sea",
+          "views": 761992,
+          "subs": 1070000,
+          "published_at": "2022-04-22T17:49:24Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "\ud83d\ude97 Car BreakDown | Coolant boiling up Instead of cooling the car, what will u do this case? #shorts",
+          "views": 964486,
+          "subs": 600,
+          "published_at": "2023-06-16T07:50:23Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Black Smokers Shoot Superheated Water That Stays Liquid",
+          "views": 713,
+          "subs": 641,
+          "published_at": "2026-06-05T18:41:01Z",
+          "coverage": 0.6
+        },
+        {
+          "title": "How Life Survives Around Boiling Ocean Vents",
+          "views": 12,
+          "subs": 92,
+          "published_at": "2026-08-10T18:53:45Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Is YOUR Coolant Going Down But NO Leak | Bad radiator CAP Signs | #Shorts",
+          "views": 1052374,
+          "subs": 67700,
+          "published_at": "2021-07-20T08:30:05Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How Long to Boil Corn on the Cob",
+          "views": 531500,
+          "subs": 176000,
+          "published_at": "2022-07-06T00:00:09Z",
+          "coverage": 0.2
+        },
+        {
+          "title": "How to Prep Babyback Ribs for the Smoker. Peel membrane. Mustard as a binder. Add rub. #bbqribs",
+          "views": 896636,
+          "subs": 1630,
+          "published_at": "2023-02-22T03:04:15Z",
+          "coverage": 0.2
+        },
+        {
+          "title": "Scientists Found a Real Godzilla \u2014 At the Bottom o",
+          "views": 961,
+          "subs": 156,
+          "published_at": "2026-08-13T17:02:54Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Deep Sea Creatures That Live In Boiling Sea Water",
+          "views": 1131,
+          "subs": 3970,
+          "published_at": "2026-03-06T00:00:42Z",
+          "coverage": 0.2
+        },
+        {
+          "title": "Fully Black Seasoned Blackstone Cleaning and Maintenance | How To Clean a Blackstone | Seasoning",
+          "views": 30915336,
+          "subs": 211000,
+          "published_at": "2022-10-16T22:15:28Z",
+          "coverage": 0.2
+        },
+        {
+          "title": "How to cook eggs on stainless steel",
+          "views": 2391170,
+          "subs": 269000,
+          "published_at": "2023-10-31T17:41:06Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How Chefs Actually Cook Salmon Skin! #salmon #cookingtips #fishrecipe #salmonrecipes",
+          "views": 502153,
+          "subs": 7410,
+          "published_at": "2025-07-28T01:00:10Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Easy rib recipe to make right at home. No smoker or grill needed",
+          "views": 2603122,
+          "subs": 11500,
+          "published_at": "2022-06-12T21:20:08Z",
+          "coverage": 0.2
+        },
+        {
+          "title": "Water Can Reach 400\u00b0C Without Boiling",
+          "views": 47,
+          "subs": 34,
+          "published_at": "2026-08-17T17:14:45Z",
+          "coverage": 0.2
+        },
+        {
+          "title": "Ribs in Boiling water #cooking",
+          "views": 1242284,
+          "subs": 74800,
+          "published_at": "2024-08-03T21:28:36Z",
+          "coverage": 0.2
+        }
+      ],
+      "domain": "existing-script"
+    },
+    {
+      "query": "why some deep sea creatures are transparent",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.47,
+        "max_coverage": 0.6,
+        "strong_match_count": 0,
+        "strong_match_rate": 0.0,
+        "loose_match_rate": 0.15,
+        "gap_signal": 1.0,
+        "interpretation": "nobody has made the definitive video on this query"
+      },
+      "view_profile": {
+        "median": 1088612.0,
+        "p90": 6427866,
+        "max": 305981333,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 156000.0,
+        "max_subscribers": 14500000,
+        "under_100k_subs": 9,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 524,
+        "published_last_365d": 7,
+        "n": 20
+      },
+      "opportunity_score": 0.67,
+      "opportunity_components": {
+        "title_gap": 1.0,
+        "incumbent_subs": 0.258,
+        "view_ceiling": 0.138,
+        "staleness": 0.65
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-08-30T20:51:31.378605+00:00"
+      },
+      "top_results": [
+        {
+          "title": "This Deep Sea Creature Looks Unreal",
+          "views": 696706,
+          "subs": 6300,
+          "published_at": "2025-05-03T10:01:23Z",
+          "coverage": 0.4
+        },
+        {
+          "title": "New deep-sea sighting: The barreleye fish has a transparent head and tubular eyes",
+          "views": 2530492,
+          "subs": 290000,
+          "published_at": "2021-12-09T17:15:29Z",
+          "coverage": 0.6
+        },
+        {
+          "title": "Macropinna microstoma: A deep-sea fish with a transparent head and tubular eyes",
+          "views": 6418793,
+          "subs": 290000,
+          "published_at": "2009-02-23T23:40:42Z",
+          "coverage": 0.6
+        },
+        {
+          "title": "&quot;This Fish Has a Transparent HEAD?! \ud83d\udc40 | Deep Sea Alien Barreleye&quot;",
+          "views": 20106,
+          "subs": 24,
+          "published_at": "2025-06-11T08:43:58Z",
+          "coverage": 0.6
+        },
+        {
+          "title": "These Deep Sea Creatures Are Rarely Seen",
+          "views": 2207950,
+          "subs": 2890000,
+          "published_at": "2024-04-30T19:49:50Z",
+          "coverage": 0.6
+        },
+        {
+          "title": "Why Are So Many Deep Sea Animals Transparent",
+          "views": 2,
+          "subs": 4,
+          "published_at": "2026-08-19T12:07:55Z",
+          "coverage": 0.6
+        },
+        {
+          "title": "Weirdest Deep-Sea Creatures",
+          "views": 4883586,
+          "subs": 175000,
+          "published_at": "2023-12-18T16:32:57Z",
+          "coverage": 0.6
+        },
+        {
+          "title": "Why Deep Sea Creatures Get Creepier the Deeper You Go",
+          "views": 16780541,
+          "subs": 228000,
+          "published_at": "2025-11-02T15:27:57Z",
+          "coverage": 0.6
+        },
+        {
+          "title": "Barreleye Fish \ud83d\udc1f A Fish With TRANSPARENT Head!",
+          "views": 183111,
+          "subs": 2880000,
+          "published_at": "2024-10-31T20:00:05Z",
+          "coverage": 0.2
+        },
+        {
+          "title": "Not every fish looks cute! \u2620\ufe0f",
+          "views": 4197898,
+          "subs": 76800,
+          "published_at": "2025-10-16T13:30:26Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "weird sea creatures | ocean animals  #fish #animals #seacreatures",
+          "views": 1051848,
+          "subs": 10800,
+          "published_at": "2023-12-31T01:53:24Z",
+          "coverage": 0.4
+        },
+        {
+          "title": "8 Incredible Deep Sea Oddities!",
+          "views": 1125376,
+          "subs": 5860000,
+          "published_at": "2015-09-01T20:00:08Z",
+          "coverage": 0.4
+        },
+        {
+          "title": "The Deep-Sea Fish with a Transparent Head!",
+          "views": 3301,
+          "subs": 836,
+          "published_at": "2024-06-22T11:00:32Z",
+          "coverage": 0.6
+        },
+        {
+          "title": "Transparent Kayak Hits Different In Deep Water..",
+          "views": 305981333,
+          "subs": 8750000,
+          "published_at": "2023-02-07T11:42:36Z",
+          "coverage": 0.4
+        },
+        {
+          "title": "The Strangest Creatures of the Ocean | BBC Earth",
+          "views": 6427866,
+          "subs": 14500000,
+          "published_at": "2025-02-22T14:00:55Z",
+          "coverage": 0.2
+        },
+        {
+          "title": "Why Deep Sea Camouflage Gets Weirder The Deeper You Go",
+          "views": 1238648,
+          "subs": 137000,
+          "published_at": "2025-10-25T15:00:06Z",
+          "coverage": 0.4
+        },
+        {
+          "title": "Top 5 Transparent Sea Animals \ud83d\ude31 you won&#39;t believe #5",
+          "views": 12754,
+          "subs": 349000,
+          "published_at": "2025-04-23T18:00:39Z",
+          "coverage": 0.4
+        },
+        {
+          "title": "The Fish With a Transparent Head | Relaxing Deep Sea Animal Facts",
+          "views": 16,
+          "subs": 0,
+          "published_at": "2026-08-04T02:30:26Z",
+          "coverage": 0.6
+        },
+        {
+          "title": "Meet the Barreleye: The Deep-Sea Fish With a Transparent Skull",
+          "views": 1,
+          "subs": 17,
+          "published_at": "2026-08-26T06:24:25Z",
+          "coverage": 0.6
+        },
+        {
+          "title": "Barreleye Fish: The Bizarre Deep Sea Creature With a Transparent Head",
+          "views": 37,
+          "subs": 2,
+          "published_at": "2026-08-20T16:00:27Z",
+          "coverage": 0.6
+        }
+      ],
+      "domain": "existing-script"
+    },
+    {
+      "query": "how big is a colossal squid",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.533,
+        "max_coverage": 0.667,
+        "strong_match_count": 0,
+        "strong_match_rate": 0.0,
+        "loose_match_rate": 0.3,
+        "gap_signal": 1.0,
+        "interpretation": "nobody has made the definitive video on this query"
+      },
+      "view_profile": {
+        "median": 984157.5,
+        "p90": 5575272,
+        "max": 57248949,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 333000.0,
+        "max_subscribers": 22800000,
+        "under_100k_subs": 3,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 677,
+        "published_last_365d": 6,
+        "n": 20
+      },
+      "opportunity_score": 0.669,
+      "opportunity_components": {
+        "title_gap": 1.0,
+        "incumbent_subs": 0.211,
+        "view_ceiling": 0.144,
+        "staleness": 0.7
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-08-30T20:51:44.338911+00:00"
+      },
+      "top_results": [
+        {
+          "title": "Just How BIG Are Giant Squid? feat.Sea&amp;Me",
+          "views": 168368,
+          "subs": 140000,
+          "published_at": "2023-12-02T17:00:33Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "We Were Wrong About The Colossal Squid&#39;s Size",
+          "views": 395995,
+          "subs": 19100,
+          "published_at": "2025-12-18T14:48:01Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "3D Giant Squid Size Comparison | Colossal Squid Size",
+          "views": 935807,
+          "subs": 246000,
+          "published_at": "2024-06-14T20:00:29Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Colossal Squid vs Giant Squid: Uncovering the Ocean&#39;s Ultimate Giant",
+          "views": 517062,
+          "subs": 611000,
+          "published_at": "2024-10-04T10:00:32Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "What Is The Difference Between a Giant Squid and a Colossal Squid?",
+          "views": 36111,
+          "subs": 140000,
+          "published_at": "2026-02-06T17:00:39Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Discovering A Rare Giant Squid  | Colossal Squid",
+          "views": 1783681,
+          "subs": 420000,
+          "published_at": "2014-06-10T01:25:54Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Why Evolution Made the Same Giant Animal Twice",
+          "views": 1584854,
+          "subs": 206000,
+          "published_at": "2025-11-04T19:11:09Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "The New Hunt for the Colossal Squid",
+          "views": 5191172,
+          "subs": 8630000,
+          "published_at": "2026-03-28T14:05:38Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How BIG is the Giant Squid?",
+          "views": 483926,
+          "subs": 618000,
+          "published_at": "2022-11-02T22:00:07Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Hunt for the Giant Squid | SPECIAL | Nat Geo Animals",
+          "views": 6760789,
+          "subs": 6480000,
+          "published_at": "2025-01-24T13:00:17Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Scientists film giant squid in its natural habitat",
+          "views": 1032508,
+          "subs": 7070000,
+          "published_at": "2013-01-25T00:52:04Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Colossal Squid Is SCARY!",
+          "views": 5575272,
+          "subs": 918000,
+          "published_at": "2024-10-21T17:00:14Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Why did it take so long to find giant squids? - Anna Rothschild",
+          "views": 1177841,
+          "subs": 22800000,
+          "published_at": "2024-09-26T15:01:18Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Monster Squid Size Comparison | KRAKEN Vs COLOSSAL SQUID",
+          "views": 221662,
+          "subs": 246000,
+          "published_at": "2025-05-27T20:00:17Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "What is the difference between Giant Squid and Colossal Squid? #animals #ocean #facts  #science",
+          "views": 190349,
+          "subs": 6760,
+          "published_at": "2024-10-24T14:50:33Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Nothing About Colossal Squids Is Normal... Here&#39;s Why",
+          "views": 497928,
+          "subs": 206000,
+          "published_at": "2026-02-12T16:45:06Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Giant Squid Attacks Surfboard!",
+          "views": 57248949,
+          "subs": 45000,
+          "published_at": "2017-06-22T16:52:54Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Colossal Squid Vs El Gran Maja - Largest Sea Monsters",
+          "views": 1296973,
+          "subs": 707000,
+          "published_at": "2025-02-26T04:03:54Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "New Zealand\u2019s Colossal Squid is No Joke | Object of Intrigue | Atlas Obscura",
+          "views": 706974,
+          "subs": 146000,
+          "published_at": "2019-12-10T14:45:01Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Scientists Found Giants Hiding Deep in the Ocean",
+          "views": 1088086,
+          "subs": 457000,
+          "published_at": "2026-06-22T17:48:25Z",
+          "coverage": 0.0
+        }
+      ],
+      "domain": "existing-script"
+    },
+    {
+      "query": "how do people reach challenger deep",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.3,
+        "max_coverage": 0.75,
+        "strong_match_count": 1,
+        "strong_match_rate": 0.05,
+        "loose_match_rate": 0.5,
+        "gap_signal": 0.95,
+        "interpretation": "1 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 333268.0,
+        "p90": 13411139,
+        "max": 81226686,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 179500.0,
+        "max_subscribers": 28200000,
+        "under_100k_subs": 9,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 541,
+        "published_last_365d": 6,
+        "n": 20
+      },
+      "opportunity_score": 0.662,
+      "opportunity_components": {
+        "title_gap": 0.95,
+        "incumbent_subs": 0.249,
+        "view_ceiling": 0.211,
+        "staleness": 0.7
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-08-30T20:51:46.004112+00:00"
+      },
+      "top_results": [
+        {
+          "title": "What was the role of JAMES CAMERON in Challenger Deep",
+          "views": 202,
+          "subs": 18700,
+          "published_at": "2019-12-17T16:00:04Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How to Get to the Challenger\u2019s Deep in Fisch - Challenger\u2019s Deep Location Guide! (Roblox)",
+          "views": 28570,
+          "subs": 178000,
+          "published_at": "2025-03-19T13:00:40Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Who Dared to Go to the Bottom of the Mariana Trench? #deepsea #oceanfacts #exploration",
+          "views": 480610,
+          "subs": 637,
+          "published_at": "2023-10-30T01:15:00Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Ship crossing Mariana Trench \ud83d\ude33\ud83d\ude33 Challenger Deep",
+          "views": 2646359,
+          "subs": 181000,
+          "published_at": "2023-09-27T10:25:48Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "What They Found In the Deepest Place on Earth",
+          "views": 12712733,
+          "subs": 457000,
+          "published_at": "2025-08-18T16:00:34Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Inside the Sub That Reached Earth&#39;s Deepest Point | Bathyscaphe Trieste",
+          "views": 1462575,
+          "subs": 407000,
+          "published_at": "2025-10-04T12:00:01Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "WHAT SCIENTISTS FOUND AT THE BOTTOM OF CHALLENGER DEEP WAS IMPOSSIBLE!",
+          "views": 482,
+          "subs": 10600,
+          "published_at": "2025-10-01T15:45:03Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Who Were The First To Reach Challenger Deep? - Firsts of the World",
+          "views": 19,
+          "subs": 98,
+          "published_at": "2025-09-22T05:50:06Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Could You Survive Extreme Ocean Pressure? \ud83d\ude35",
+          "views": 14492714,
+          "subs": 28200000,
+          "published_at": "2025-02-23T13:30:24Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How Deep Is the Ocean? The Shocking Truth About Challenger Deep",
+          "views": 88357,
+          "subs": 674,
+          "published_at": "2025-06-08T19:50:40Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How Fast Could You Reach the Mariana Trench? \ud83c\udf0a\ud83d\ude28",
+          "views": 1390,
+          "subs": 342,
+          "published_at": "2026-08-29T20:31:51Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "This Incredible Animation Shows How Deep The Ocean Really Is",
+          "views": 81226686,
+          "subs": 4210000,
+          "published_at": "2017-04-04T00:00:01Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Challenger Deep",
+          "views": 570,
+          "subs": 9050,
+          "published_at": "2020-07-11T17:17:21Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "What Exists in the Deepest Place on Earth?",
+          "views": 2195209,
+          "subs": 206000,
+          "published_at": "2026-04-05T15:30:00Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "A beer bottle discovered at Challenger Deep (Mariana Trench)",
+          "views": 167391,
+          "subs": 69,
+          "published_at": "2023-01-13T22:24:20Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Mariana Trench: Record-breaking journey to the bottom of the ocean - BBC News",
+          "views": 12198817,
+          "subs": 20000000,
+          "published_at": "2019-05-14T14:50:10Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "James Cameron dives to Challenger Deep in the Mariana Trench - the deepest point on Earth",
+          "views": 185926,
+          "subs": 2110000,
+          "published_at": "2012-03-26T09:02:41Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Exploring Challenger Deep&#39;s Extreme Depths",
+          "views": 3585,
+          "subs": 2690,
+          "published_at": "2025-09-24T16:00:35Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Insane ocean discovery \ud83d\ude2d",
+          "views": 13411139,
+          "subs": 8190000,
+          "published_at": "2025-06-22T20:37:44Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Tiny sub used in James Cameron&#39;s deep sea dive",
+          "views": 1259188,
+          "subs": 19800000,
+          "published_at": "2012-03-09T13:41:30Z",
+          "coverage": 0.25
+        }
+      ],
+      "domain": "existing-script"
+    },
+    {
+      "query": "why many deep sea creatures are red",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.49,
+        "max_coverage": 0.6,
+        "strong_match_count": 0,
+        "strong_match_rate": 0.0,
+        "loose_match_rate": 0.05,
+        "gap_signal": 1.0,
+        "interpretation": "nobody has made the definitive video on this query"
+      },
+      "view_profile": {
+        "median": 2796229.0,
+        "p90": 16780541,
+        "max": 24114944,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 387000.0,
+        "max_subscribers": 32800000,
+        "under_100k_subs": 6,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 484,
+        "published_last_365d": 6,
+        "n": 20
+      },
+      "opportunity_score": 0.657,
+      "opportunity_components": {
+        "title_gap": 1.0,
+        "incumbent_subs": 0.202,
+        "view_ceiling": 0.079,
+        "staleness": 0.7
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-08-30T20:51:29.727135+00:00"
+      },
+      "top_results": [
+        {
+          "title": "Why Deep Sea Creatures Get Creepier the Deeper You Go",
+          "views": 16780541,
+          "subs": 228000,
+          "published_at": "2025-11-02T15:27:57Z",
+          "coverage": 0.6
+        },
+        {
+          "title": "Why Deep Sea Camouflage Gets Weirder The Deeper You Go",
+          "views": 1238648,
+          "subs": 137000,
+          "published_at": "2025-10-25T15:00:06Z",
+          "coverage": 0.4
+        },
+        {
+          "title": "These Deep Sea Creatures Are Rarely Seen",
+          "views": 2207950,
+          "subs": 2890000,
+          "published_at": "2024-04-30T19:49:50Z",
+          "coverage": 0.6
+        },
+        {
+          "title": "Why are DEEP SEA Creatures Coming to Surface? | Leviathan Mystery | Dhruv Rathee",
+          "views": 24114944,
+          "subs": 32800000,
+          "published_at": "2025-03-14T15:58:31Z",
+          "coverage": 0.6
+        },
+        {
+          "title": "Top 6 Mysterious Deep Sea Creatures You Won\u2019t Believe Exist #seamonster #deepsea #bloop #elgranmaja",
+          "views": 6288311,
+          "subs": 140000,
+          "published_at": "2025-10-16T23:15:03Z",
+          "coverage": 0.6
+        },
+        {
+          "title": "The Unspeakable Horrors of the Deep Sea (ft. LindsayNikole)",
+          "views": 10394078,
+          "subs": 4300000,
+          "published_at": "2023-04-28T19:00:15Z",
+          "coverage": 0.4
+        },
+        {
+          "title": "Top 5 most dangerous deep sea creatures #facts #animals #wildlife",
+          "views": 1534740,
+          "subs": 573000,
+          "published_at": "2025-06-21T13:16:09Z",
+          "coverage": 0.6
+        },
+        {
+          "title": "Deep Sea Monsters and Where They Might Live",
+          "views": 2777196,
+          "subs": 122000,
+          "published_at": "2025-09-03T14:10:07Z",
+          "coverage": 0.4
+        },
+        {
+          "title": "Are We Permanently Blinding Deep Sea Creatures?",
+          "views": 356017,
+          "subs": 31000,
+          "published_at": "2026-08-20T14:00:17Z",
+          "coverage": 0.6
+        },
+        {
+          "title": "Deep sea creatures are found | Ocean Sunfish Vs Sea Eater",
+          "views": 8128965,
+          "subs": 707000,
+          "published_at": "2025-05-05T04:53:40Z",
+          "coverage": 0.6
+        },
+        {
+          "title": "We&#39;ve Barely Seen the Deep Sea \u2620\ufe0f",
+          "views": 4926580,
+          "subs": 964000,
+          "published_at": "2025-01-09T16:12:56Z",
+          "coverage": 0.4
+        },
+        {
+          "title": "This Deep Sea Creature Looks Unreal",
+          "views": 696706,
+          "subs": 6300,
+          "published_at": "2025-05-03T10:01:23Z",
+          "coverage": 0.4
+        },
+        {
+          "title": "Sea Monster || Red [\u26a0\ufe0fThalassophobia]",
+          "views": 743540,
+          "subs": 746000,
+          "published_at": "2023-05-23T01:11:49Z",
+          "coverage": 0.4
+        },
+        {
+          "title": "15 Massive Sea Creatures Caught on Camera",
+          "views": 1177975,
+          "subs": 546000,
+          "published_at": "2025-07-25T18:31:03Z",
+          "coverage": 0.4
+        },
+        {
+          "title": "Deep sea creatures are found Great White Shark Vs El Gran Maja",
+          "views": 19193522,
+          "subs": 707000,
+          "published_at": "2025-04-13T04:50:12Z",
+          "coverage": 0.6
+        },
+        {
+          "title": "Mythical Sea Creatures That Really Existed! ",
+          "views": 4242787,
+          "subs": 88400,
+          "published_at": "2025-08-11T21:34:59Z",
+          "coverage": 0.4
+        },
+        {
+          "title": "Scary sighting of Red in the deep sea - The Sea Beast Epic Scene 2022",
+          "views": 546876,
+          "subs": 1530,
+          "published_at": "2022-07-12T15:20:35Z",
+          "coverage": 0.6
+        },
+        {
+          "title": "3 Rare Deep Sea Animals Caught While Fishing #shorts",
+          "views": 2815262,
+          "subs": 39800,
+          "published_at": "2023-06-01T01:00:04Z",
+          "coverage": 0.4
+        },
+        {
+          "title": "15 MOST DANGEROUS Ocean Creatures In The World",
+          "views": 8093940,
+          "subs": 3150000,
+          "published_at": "2020-07-19T16:00:12Z",
+          "coverage": 0.2
+        },
+        {
+          "title": "Why Deep Sea Creatures Get Creepier the Deeper You Go | Documentary for Sleep",
+          "views": 316284,
+          "subs": 59700,
+          "published_at": "2025-12-13T21:15:03Z",
+          "coverage": 0.6
+        }
+      ],
+      "domain": "existing-script"
+    },
+    {
+      "query": "how does bioluminescence work in the deep sea",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.388,
+        "max_coverage": 0.75,
+        "strong_match_count": 4,
+        "strong_match_rate": 0.2,
+        "loose_match_rate": 0.45,
+        "gap_signal": 0.8,
+        "interpretation": "4 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 109449.0,
+        "p90": 2399062,
+        "max": 6427866,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 307000.0,
+        "max_subscribers": 22800000,
+        "under_100k_subs": 8,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 1152,
+        "published_last_365d": 3,
+        "n": 20
+      },
+      "opportunity_score": 0.613,
+      "opportunity_components": {
+        "title_gap": 0.8,
+        "incumbent_subs": 0.216,
+        "view_ceiling": 0.28,
+        "staleness": 0.85
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-08-30T20:51:42.666801+00:00"
+      },
+      "top_results": [
+        {
+          "title": "Bioluminescence in the deep sea: How and why do animals create their own light?",
+          "views": 417995,
+          "subs": 290000,
+          "published_at": "2022-01-18T16:46:23Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "How Does Bioluminescence Work?",
+          "views": 1755,
+          "subs": 2260,
+          "published_at": "2023-07-14T19:00:16Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Deep Sea Creatures Exhibit Bioluminescence | Blue Planet | BBC Earth",
+          "views": 1826114,
+          "subs": 14500000,
+          "published_at": "2009-05-19T03:04:41Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "The brilliance of bioluminescence - Leslie Kenna",
+          "views": 2399062,
+          "subs": 22800000,
+          "published_at": "2013-05-15T16:25:30Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "This is Why Waves Glow | Bioluminescence | Wild to Know",
+          "views": 135937,
+          "subs": 619000,
+          "published_at": "2020-09-11T11:07:14Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "How Does Bioluminescence Work",
+          "views": 6,
+          "subs": 3,
+          "published_at": "2026-07-20T17:00:00Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How Bioluminescence works",
+          "views": 41357,
+          "subs": 109000,
+          "published_at": "2023-06-26T15:00:35Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Why Is (Almost) All Bioluminescence in the Ocean?",
+          "views": 1041999,
+          "subs": 2090000,
+          "published_at": "2022-11-26T14:00:22Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "10 Fun Facts About Bioluminescence",
+          "views": 11909,
+          "subs": 44000,
+          "published_at": "2024-08-14T19:11:03Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Into the Abyss Bioluminescence Glowing Secrets in the Sea | Bioluminescent Ocean Animals That Shine",
+          "views": 3947,
+          "subs": 2660,
+          "published_at": "2025-09-08T13:00:06Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How Does Bioluminescence Work? | Glow in the Dark Nature",
+          "views": 49,
+          "subs": 2600,
+          "published_at": "2026-07-17T15:00:10Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How Deep Sea Creatures Emit Their Own Light | The New York Times",
+          "views": 93210,
+          "subs": 5240000,
+          "published_at": "2017-08-23T15:51:46Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Why is the Water Glowing?",
+          "views": 4393123,
+          "subs": 4370000,
+          "published_at": "2023-09-06T19:00:04Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Bioluminescent Swimming",
+          "views": 125688,
+          "subs": 1680000,
+          "published_at": "2024-08-24T13:01:02Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "What is bioluminescence and how does it work?",
+          "views": 12437,
+          "subs": 11900,
+          "published_at": "2023-08-30T03:44:09Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "The Strangest Creatures of the Ocean | BBC Earth",
+          "views": 6427866,
+          "subs": 14500000,
+          "published_at": "2025-02-22T14:00:55Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Bioluminescence: The Deep Sea Light Shows of Strange Creatures",
+          "views": 27276,
+          "subs": 324000,
+          "published_at": "2024-12-28T22:15:53Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Instagram vs Reality:  Bioluminescent Plankton | Beyond the Filter |Travel Guide",
+          "views": 917476,
+          "subs": 278,
+          "published_at": "2023-05-15T01:00:03Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "What is Bioluminescence? | Nat Geo Kids Deep-sea Creatures Playlist",
+          "views": 54938,
+          "subs": 2020000,
+          "published_at": "2015-06-17T17:48:18Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Bioluminescent Orb Kit \ud83e\uddec #bioluminescence #marinebiology #scienceathome",
+          "views": 166260,
+          "subs": 2380,
+          "published_at": "2023-03-28T15:29:01Z",
+          "coverage": 0.25
+        }
+      ],
+      "domain": "existing-script"
+    },
+    {
+      "query": "what happens when a whale dies in the deep ocean",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.54,
+        "max_coverage": 1.0,
+        "strong_match_count": 5,
+        "strong_match_rate": 0.25,
+        "loose_match_rate": 0.15,
+        "gap_signal": 0.75,
+        "interpretation": "5 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 34523.5,
+        "p90": 7551139,
+        "max": 28573068,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 19145.0,
+        "max_subscribers": 1070000,
+        "under_100k_subs": 12,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 595,
+        "published_last_365d": 7,
+        "n": 20
+      },
+      "opportunity_score": 0.603,
+      "opportunity_components": {
+        "title_gap": 0.75,
+        "incumbent_subs": 0.388,
+        "view_ceiling": 0.352,
+        "staleness": 0.65
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-08-30T20:51:47.545565+00:00"
+      },
+      "top_results": [
+        {
+          "title": "The Stages of Whale Decomposition",
+          "views": 2971284,
+          "subs": 1070000,
+          "published_at": "2022-03-22T12:00:13Z",
+          "coverage": 0.2
+        },
+        {
+          "title": "From Death to Life: How a Dead Whale Feeds the Ocean for 100 Years \ud83d\udc33\ud83c\udf0a #Bluewhale",
+          "views": 4872,
+          "subs": 1370,
+          "published_at": "2025-05-09T09:08:00Z",
+          "coverage": 0.4
+        },
+        {
+          "title": "What Happens When a Whale Dies in the Deep Ocean?",
+          "views": 1075,
+          "subs": 6090,
+          "published_at": "2026-07-26T15:00:20Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "What Happens When a Whale Dies?",
+          "views": 98570,
+          "subs": 918000,
+          "published_at": "2024-12-09T17:00:27Z",
+          "coverage": 0.6
+        },
+        {
+          "title": "What Happens To Whales When They Die?",
+          "views": 30590,
+          "subs": 5030,
+          "published_at": "2022-05-18T06:00:32Z",
+          "coverage": 0.4
+        },
+        {
+          "title": "What Happens When a Whale Dies?",
+          "views": 7212606,
+          "subs": 611000,
+          "published_at": "2024-05-30T11:15:04Z",
+          "coverage": 0.6
+        },
+        {
+          "title": "Death into Life \ud83d\udda4 When a whale dies at sea it becomes food for thousands of creatures #nature",
+          "views": 7945910,
+          "subs": 648000,
+          "published_at": "2024-02-09T22:39:03Z",
+          "coverage": 0.4
+        },
+        {
+          "title": "What Happens After a Whale Dies in the Deep Sea",
+          "views": 4790,
+          "subs": 3260,
+          "published_at": "2026-06-22T23:16:36Z",
+          "coverage": 0.8
+        },
+        {
+          "title": "What happens to Whale Bodies when they Die?",
+          "views": 7551139,
+          "subs": 509000,
+          "published_at": "2019-03-22T17:32:55Z",
+          "coverage": 0.6
+        },
+        {
+          "title": "What Actually Happens When a Whale Dies?",
+          "views": 1794,
+          "subs": 220,
+          "published_at": "2026-02-18T13:01:36Z",
+          "coverage": 0.6
+        },
+        {
+          "title": "What Happens When a Giant Whale Dies and Sinks? (Whale Fall)",
+          "views": 14150,
+          "subs": 611000,
+          "published_at": "2025-02-07T11:00:19Z",
+          "coverage": 0.6
+        },
+        {
+          "title": "Dead whale with gas builds up, ready to explode",
+          "views": 1019535,
+          "subs": 817,
+          "published_at": "2024-04-13T09:24:04Z",
+          "coverage": 0.2
+        },
+        {
+          "title": "What Happens When a Whale Dies at the Bottom of the Ocean?",
+          "views": 4,
+          "subs": 10,
+          "published_at": "2026-08-12T15:54:22Z",
+          "coverage": 0.8
+        },
+        {
+          "title": "What Happens to Whales After Their Time Ends Whale Fall!",
+          "views": 6166814,
+          "subs": 772000,
+          "published_at": "2024-11-22T11:00:11Z",
+          "coverage": 0.4
+        },
+        {
+          "title": "What happens when the largest animal on Earth \u2014 the blue whale \u2014 dies?",
+          "views": 38457,
+          "subs": 32200,
+          "published_at": "2025-06-18T00:05:01Z",
+          "coverage": 0.6
+        },
+        {
+          "title": "Whale Falls | What Happens When a Giant Dies in the Deep Sea?",
+          "views": 254,
+          "subs": 3380,
+          "published_at": "2026-08-11T13:56:57Z",
+          "coverage": 0.8
+        },
+        {
+          "title": "What Happens When a Whale Dies at the Bottom of the Ocean?",
+          "views": 3,
+          "subs": 10,
+          "published_at": "2026-08-13T07:10:08Z",
+          "coverage": 0.8
+        },
+        {
+          "title": "What Happens When a Blue Whale Passes Away",
+          "views": 4124,
+          "subs": 610,
+          "published_at": "2024-12-18T05:00:15Z",
+          "coverage": 0.4
+        },
+        {
+          "title": "Beached Whales: The Struggle to Return to the Sea",
+          "views": 28573068,
+          "subs": 57500,
+          "published_at": "2023-08-08T22:00:29Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "What Happens After a Whale Dies? \ud83d\udc0b\ud83c\udf0a #2danimation",
+          "views": 4349753,
+          "subs": 754000,
+          "published_at": "2026-03-16T13:43:59Z",
+          "coverage": 0.6
+        }
+      ],
+      "domain": "existing-script"
+    },
+    {
+      "query": "what is the deepest part of the ocean",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.333,
+        "max_coverage": 1.0,
+        "strong_match_count": 2,
+        "strong_match_rate": 0.1,
+        "loose_match_rate": 0.9,
+        "gap_signal": 0.9,
+        "interpretation": "2 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 8760005.5,
+        "p90": 47418359,
+        "max": 81226686,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 2055000.0,
+        "max_subscribers": 44500000,
+        "under_100k_subs": 2,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 1012,
+        "published_last_365d": 3,
+        "n": 20
+      },
+      "opportunity_score": 0.598,
+      "opportunity_components": {
+        "title_gap": 0.9,
+        "incumbent_subs": 0.098,
+        "view_ceiling": 0.008,
+        "staleness": 0.85
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-08-30T20:51:38.004289+00:00"
+      },
+      "top_results": [
+        {
+          "title": "What They Found In the Deepest Place on Earth",
+          "views": 12712733,
+          "subs": 457000,
+          "published_at": "2025-08-18T16:00:34Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Inside the Marianas Trench: Earth&#39;s Deepest Point | How the Earth Was Made (S1, E2) | Full Episode",
+          "views": 3035867,
+          "subs": 15500000,
+          "published_at": "2024-07-02T00:00:18Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "This Incredible Animation Shows How Deep The Ocean Really Is",
+          "views": 81226686,
+          "subs": 4210000,
+          "published_at": "2017-04-04T00:00:01Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "What Exists in the Deepest Place on Earth?",
+          "views": 2195209,
+          "subs": 206000,
+          "published_at": "2026-04-05T15:30:00Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Marianas Trench: The Deepest Part Of The Ocean",
+          "views": 58232,
+          "subs": 2150000,
+          "published_at": "2022-05-22T05:00:00Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "The Ocean is Way Deeper Than You Think",
+          "views": 50447059,
+          "subs": 7940000,
+          "published_at": "2016-11-11T14:13:55Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Fascinating 3D Journey to the Ocean Depths",
+          "views": 12593431,
+          "subs": 44500000,
+          "published_at": "2020-11-02T11:00:00Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "The Deepest Place on Earth | How the Earth Was Made (S1, E2) | Full Episode | History",
+          "views": 2486805,
+          "subs": 15500000,
+          "published_at": "2020-12-20T02:59:53Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "The Deepest Place on Earth | Extreme Wonder",
+          "views": 2338607,
+          "subs": 15100,
+          "published_at": "2023-06-08T10:22:47Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Just How Deep Is The Ocean? \ud83c\udf0a\ud83e\udd14",
+          "views": 47418359,
+          "subs": 28200000,
+          "published_at": "2024-05-13T14:30:19Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "The Deepest Part of the Ocean!",
+          "views": 809041,
+          "subs": 1690000,
+          "published_at": "2017-12-07T22:00:00Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Why Deep Sea Creatures Get Creepier the Deeper You Go",
+          "views": 16780541,
+          "subs": 228000,
+          "published_at": "2025-11-02T15:27:57Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Ocean DEPTH Comparison \ud83c\udf0a (3D Animation)",
+          "views": 14647331,
+          "subs": 1960000,
+          "published_at": "2021-10-02T11:57:44Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "How Deep The Ocean REALLY Is",
+          "views": 33876348,
+          "subs": 8630000,
+          "published_at": "2023-10-04T13:16:35Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "The Deepest Dive Humanly Possible: A Trip to the Mariana Trench | How the Earth Was Made (S1)",
+          "views": 2615021,
+          "subs": 15500000,
+          "published_at": "2025-04-23T16:01:35Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Mariana Trench: What They Found In The Deepest Place On Earth",
+          "views": 3984933,
+          "subs": 28500,
+          "published_at": "2026-03-03T20:36:00Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Real Footage of the Mysterious Mariana Trench",
+          "views": 2783020,
+          "subs": 139000,
+          "published_at": "2025-05-03T22:01:01Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How Deep Does The Ocean Go?",
+          "views": 16875204,
+          "subs": 202000,
+          "published_at": "2024-01-11T21:49:04Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "What\u2019s Hiding at the Most Solitary Place on Earth? The Deep Sea",
+          "views": 25611265,
+          "subs": 25500000,
+          "published_at": "2019-09-15T12:30:01Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "We&#39;ve Barely Seen the Deep Sea \u2620\ufe0f",
+          "views": 4926580,
+          "subs": 964000,
+          "published_at": "2025-01-09T16:12:56Z",
+          "coverage": 0.0
+        }
+      ],
+      "domain": "existing-script"
+    },
+    {
+      "query": "what is the scariest deep sea creature",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.338,
+        "max_coverage": 0.75,
+        "strong_match_count": 2,
+        "strong_match_rate": 0.1,
+        "loose_match_rate": 0.5,
+        "gap_signal": 0.9,
+        "interpretation": "2 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 2505611.5,
+        "p90": 6427866,
+        "max": 16780541,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 1295000.0,
+        "max_subscribers": 14500000,
+        "under_100k_subs": 3,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 350,
+        "published_last_365d": 10,
+        "n": 20
+      },
+      "opportunity_score": 0.563,
+      "opportunity_components": {
+        "title_gap": 0.9,
+        "incumbent_subs": 0.127,
+        "view_ceiling": 0.086,
+        "staleness": 0.5
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-08-30T20:51:36.457851+00:00"
+      },
+      "top_results": [
+        {
+          "title": "The Strangest Creatures of the Ocean | BBC Earth",
+          "views": 6427866,
+          "subs": 14500000,
+          "published_at": "2025-02-22T14:00:55Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "The Craziest Deep Sea Creatures At Every Depth",
+          "views": 673765,
+          "subs": 1380000,
+          "published_at": "2026-04-03T23:59:46Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Why Deep Sea Creatures Get Creepier the Deeper You Go",
+          "views": 16780541,
+          "subs": 228000,
+          "published_at": "2025-11-02T15:27:57Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "The Most Disturbing Creatures in Each Ocean Layer",
+          "views": 1444239,
+          "subs": 1980000,
+          "published_at": "2026-07-06T16:00:39Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Most Terrifying Sea Creatures Explained in 10 Minutes",
+          "views": 1042519,
+          "subs": 61400,
+          "published_at": "2025-12-16T17:03:15Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Weirdest Deep-Sea Creatures",
+          "views": 4883586,
+          "subs": 175000,
+          "published_at": "2023-12-18T16:32:57Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Deep Sea Creatures You Won&#39;t Believe Exist... \ud83d\ude28",
+          "views": 5304198,
+          "subs": 3550000,
+          "published_at": "2023-06-07T19:00:08Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "8 Terrifying Sea Creatures That Actually Exist",
+          "views": 967419,
+          "subs": 2890000,
+          "published_at": "2026-05-02T15:55:27Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Terrifying Sea Creatures That Actually Exist",
+          "views": 6220833,
+          "subs": 5170000,
+          "published_at": "2022-04-09T14:00:45Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "The Deeper You Go, The Creepier Prehistoric Oceans Get",
+          "views": 5483264,
+          "subs": 521000,
+          "published_at": "2025-08-23T22:38:59Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "25 Creepiest Deep Sea Creatures You&#39;ve Never Heard Of",
+          "views": 42220,
+          "subs": 2830000,
+          "published_at": "2025-08-15T22:06:19Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "15 Massive Sea Creatures Caught on Camera",
+          "views": 1177975,
+          "subs": 546000,
+          "published_at": "2025-07-25T18:31:03Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "The Unspeakable Horrors of the Deep Sea (ft. LindsayNikole)",
+          "views": 10394078,
+          "subs": 4300000,
+          "published_at": "2023-04-28T19:00:15Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Top 6 Mysterious Deep Sea Creatures You Won\u2019t Believe Exist #seamonster #deepsea #bloop #elgranmaja",
+          "views": 6288311,
+          "subs": 140000,
+          "published_at": "2025-10-16T23:15:03Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Craziest Ocean Creatures Caught On Camera",
+          "views": 2776008,
+          "subs": 1970000,
+          "published_at": "2026-03-03T21:30:23Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Mythical Sea Creatures That Really Existed! ",
+          "views": 4242894,
+          "subs": 88400,
+          "published_at": "2025-08-11T21:34:59Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Top 5 Scariest Deep Sea Creatures That Actually Exist",
+          "views": 2235215,
+          "subs": 60700,
+          "published_at": "2025-05-19T13:08:39Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "The Scariest Deep Sea Creatures Alive Right Now",
+          "views": 164599,
+          "subs": 1210000,
+          "published_at": "2026-02-15T16:00:04Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "The Creepiest Fish Found at the Bottom of Our Oceans",
+          "views": 851989,
+          "subs": 206000,
+          "published_at": "2025-11-14T21:25:17Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Scary Deep Sea Creatures More Terrifying Than Megalodon",
+          "views": 43171,
+          "subs": 7850000,
+          "published_at": "2025-10-06T20:00:44Z",
+          "coverage": 0.5
+        }
+      ],
+      "domain": "existing-script"
+    },
+    {
+      "query": "why deep sea creatures look so weird",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.49,
+        "max_coverage": 1.0,
+        "strong_match_count": 4,
+        "strong_match_rate": 0.2,
+        "loose_match_rate": 0.3,
+        "gap_signal": 0.8,
+        "interpretation": "4 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 2476624.0,
+        "p90": 10970088,
+        "max": 25611265,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 719500.0,
+        "max_subscribers": 25500000,
+        "under_100k_subs": 1,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 593,
+        "published_last_365d": 6,
+        "n": 20
+      },
+      "opportunity_score": 0.551,
+      "opportunity_components": {
+        "title_gap": 0.8,
+        "incumbent_subs": 0.163,
+        "view_ceiling": 0.087,
+        "staleness": 0.7
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-08-30T20:51:23.478215+00:00"
+      },
+      "top_results": [
+        {
+          "title": "Why Deep Sea Creatures Get Creepier the Deeper You Go",
+          "views": 16780541,
+          "subs": 228000,
+          "published_at": "2025-11-02T15:27:57Z",
+          "coverage": 0.6
+        },
+        {
+          "title": "Why DEEP SEA Creatures Look so WEIRD?",
+          "views": 4100129,
+          "subs": 9830000,
+          "published_at": "2023-12-29T15:33:45Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Why Do Deep-Sea Animals Look So Weird? | Monterey Bay Aquarium&#39;s Into The Deep",
+          "views": 48276,
+          "subs": 474000,
+          "published_at": "2022-02-10T19:00:12Z",
+          "coverage": 0.8
+        },
+        {
+          "title": "Why Are Deep Sea Creatures Evolving Into Giants?",
+          "views": 1883589,
+          "subs": 2890000,
+          "published_at": "2026-05-23T16:00:41Z",
+          "coverage": 0.6
+        },
+        {
+          "title": "Why Do Deep Sea Creatures Look So Scary?",
+          "views": 214814,
+          "subs": 332000,
+          "published_at": "2016-01-11T20:00:36Z",
+          "coverage": 0.8
+        },
+        {
+          "title": "Why Do Deep Sea Creatures Look So Weird?",
+          "views": 961383,
+          "subs": 918000,
+          "published_at": "2023-11-03T20:00:01Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Why Animals Get Creepier the Deeper You Go",
+          "views": 3799596,
+          "subs": 2090000,
+          "published_at": "2023-06-10T13:00:37Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Why Deep Sea Migration Gets Weirder the Closer You Look | For Sleep",
+          "views": 980124,
+          "subs": 137000,
+          "published_at": "2025-06-28T15:00:06Z",
+          "coverage": 0.6
+        },
+        {
+          "title": "Why Squids get Creepier the Deeper you Go",
+          "views": 2745298,
+          "subs": 206000,
+          "published_at": "2025-10-16T22:29:18Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "The Craziest Deep Sea Creatures At Every Depth",
+          "views": 673765,
+          "subs": 1380000,
+          "published_at": "2026-04-03T23:59:46Z",
+          "coverage": 0.6
+        },
+        {
+          "title": "Weirdest Deep-Sea Creatures",
+          "views": 4883532,
+          "subs": 175000,
+          "published_at": "2023-12-18T16:32:57Z",
+          "coverage": 0.6
+        },
+        {
+          "title": "These Deep Sea Creatures Are Rarely Seen",
+          "views": 2207950,
+          "subs": 2890000,
+          "published_at": "2024-04-30T19:49:50Z",
+          "coverage": 0.6
+        },
+        {
+          "title": "The Strangest Creatures of the Ocean | BBC Earth",
+          "views": 6427866,
+          "subs": 14500000,
+          "published_at": "2025-02-22T14:00:55Z",
+          "coverage": 0.2
+        },
+        {
+          "title": "The Deeper You Go, The Creepier Prehistoric Oceans Get",
+          "views": 5483264,
+          "subs": 521000,
+          "published_at": "2025-08-23T22:38:59Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "The Creepiest Fish Found at the Bottom of Our Oceans",
+          "views": 851989,
+          "subs": 206000,
+          "published_at": "2025-11-14T21:25:17Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "This Deep Sea Creature Looks Unreal",
+          "views": 696706,
+          "subs": 6300,
+          "published_at": "2025-05-03T10:01:23Z",
+          "coverage": 0.6
+        },
+        {
+          "title": "What\u2019s Hiding at the Most Solitary Place on Earth? The Deep Sea",
+          "views": 25611265,
+          "subs": 25500000,
+          "published_at": "2019-09-15T12:30:01Z",
+          "coverage": 0.4
+        },
+        {
+          "title": "Into the Abyss: Creatures of the Midwater (Full Movie)",
+          "views": 10970088,
+          "subs": 1070000,
+          "published_at": "2024-12-06T12:05:24Z",
+          "coverage": 0.2
+        },
+        {
+          "title": "Top 6 Mysterious Deep Sea Creatures You Won\u2019t Believe Exist #seamonster #deepsea #bloop #elgranmaja",
+          "views": 6288311,
+          "subs": 140000,
+          "published_at": "2025-10-16T23:15:03Z",
+          "coverage": 0.6
+        },
+        {
+          "title": "Why Does Deep Sea Life Look So Strange?",
+          "views": 341441,
+          "subs": 4990000,
+          "published_at": "2016-05-19T17:00:00Z",
+          "coverage": 0.6
+        }
+      ],
+      "domain": "existing-script"
+    },
+    {
+      "query": "what is the deepest fish ever recorded",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.412,
+        "max_coverage": 1.0,
+        "strong_match_count": 7,
+        "strong_match_rate": 0.35,
+        "loose_match_rate": 0.45,
+        "gap_signal": 0.65,
+        "interpretation": "7 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 665323.0,
+        "p90": 12712733,
+        "max": 16846012,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 704500.0,
+        "max_subscribers": 14500000,
+        "under_100k_subs": 3,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 1188,
+        "published_last_365d": 3,
+        "n": 20
+      },
+      "opportunity_score": 0.511,
+      "opportunity_components": {
+        "title_gap": 0.65,
+        "incumbent_subs": 0.165,
+        "view_ceiling": 0.168,
+        "staleness": 0.85
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-08-30T20:51:52.140223+00:00"
+      },
+      "top_results": [
+        {
+          "title": "This is the Deepest Fish Ever Recorded in the Ocean",
+          "views": 781325,
+          "subs": 13800000,
+          "published_at": "2023-04-03T17:57:57Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Deepest fish \ud83d\udc20 8,336 metres by the Pseudoliparis snailfish",
+          "views": 549321,
+          "subs": 13200000,
+          "published_at": "2023-04-04T08:58:08Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Scientists break world record for deepest fish ever caught \u2014 and filmed",
+          "views": 10334,
+          "subs": 4910000,
+          "published_at": "2023-04-03T17:02:58Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "The Strangest Creatures of the Ocean | BBC Earth",
+          "views": 6427866,
+          "subs": 14500000,
+          "published_at": "2025-02-22T14:00:55Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "15 Massive Sea Creatures Caught on Camera",
+          "views": 1177975,
+          "subs": 546000,
+          "published_at": "2025-07-25T18:31:03Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Why Deep Sea Creatures Get Creepier the Deeper You Go",
+          "views": 16780541,
+          "subs": 228000,
+          "published_at": "2025-11-02T15:27:57Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "These are the deepest fish ever filmed",
+          "views": 48343,
+          "subs": 590000,
+          "published_at": "2023-04-03T14:41:57Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "DEEPEST FISH EVER FOUND",
+          "views": 463273,
+          "subs": 340000,
+          "published_at": "2014-12-26T13:25:05Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "What They Found In the Deepest Place on Earth",
+          "views": 12712733,
+          "subs": 457000,
+          "published_at": "2025-08-18T16:00:34Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Finding the world&#39;s deepest fish",
+          "views": 357888,
+          "subs": 25000,
+          "published_at": "2023-04-03T00:58:57Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Deepest fish ever filmed",
+          "views": 2455,
+          "subs": 819000,
+          "published_at": "2023-04-04T06:36:40Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "These Deep Sea Creatures Are Rarely Seen",
+          "views": 2207950,
+          "subs": 2890000,
+          "published_at": "2024-04-30T19:49:50Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Weirdest Deep-Sea Creatures",
+          "views": 4883586,
+          "subs": 175000,
+          "published_at": "2023-12-18T16:32:57Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Researchers near Japan capture footage of deepest fish ever recorded underwater",
+          "views": 314616,
+          "subs": 4040000,
+          "published_at": "2023-04-03T13:43:30Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "10 BIGGEST CATCHES OF ALL TIME",
+          "views": 16846012,
+          "subs": 5420000,
+          "published_at": "2020-01-19T23:00:08Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "The Deepest Living Fish Ever Recorded!",
+          "views": 55682,
+          "subs": 918000,
+          "published_at": "2024-02-13T19:00:23Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "What Is The Largest Fish Ever Caught? \ud83c\udf0e",
+          "views": 492475,
+          "subs": 1820000,
+          "published_at": "2022-07-30T19:52:01Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "The 10 BIGGEST fish ever caught",
+          "views": 492105,
+          "subs": 11700,
+          "published_at": "2025-09-08T21:50:40Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Deep Sea Monsters and Where They Might Live",
+          "views": 2777196,
+          "subs": 122000,
+          "published_at": "2025-09-03T14:10:07Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Meet the rare Giant Oarfish",
+          "views": 852116,
+          "subs": 2760,
+          "published_at": "2023-07-25T12:26:16Z",
+          "coverage": 0.0
+        }
+      ],
+      "domain": "existing-script"
+    },
+    {
+      "query": "why deep sea creatures get creepier the deeper you go",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.583,
+        "max_coverage": 1.0,
+        "strong_match_count": 5,
+        "strong_match_rate": 0.25,
+        "loose_match_rate": 0.25,
+        "gap_signal": 0.75,
+        "interpretation": "5 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 688455.5,
+        "p90": 10394078,
+        "max": 16780541,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 228000.0,
+        "max_subscribers": 4300000,
+        "under_100k_subs": 5,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 303,
+        "published_last_365d": 13,
+        "n": 20
+      },
+      "opportunity_score": 0.499,
+      "opportunity_components": {
+        "title_gap": 0.75,
+        "incumbent_subs": 0.235,
+        "view_ceiling": 0.166,
+        "staleness": 0.35
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-08-30T20:51:32.902078+00:00"
+      },
+      "top_results": [
+        {
+          "title": "Why Deep Sea Creatures Get Creepier the Deeper You Go",
+          "views": 16780541,
+          "subs": 228000,
+          "published_at": "2025-11-02T15:27:57Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Why Squids get Creepier the Deeper you Go",
+          "views": 2745298,
+          "subs": 206000,
+          "published_at": "2025-10-16T22:29:18Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Why Animals Get Creepier the Deeper You Go",
+          "views": 3799596,
+          "subs": 2090000,
+          "published_at": "2023-06-10T13:00:37Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Why Deep Sea Creatures Get Creepier the Deeper You Go | Documentary for Sleep",
+          "views": 316284,
+          "subs": 59700,
+          "published_at": "2025-12-13T21:15:03Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Why Deep Sea Camouflage Gets Weirder The Deeper You Go",
+          "views": 1238648,
+          "subs": 137000,
+          "published_at": "2025-10-25T15:00:06Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "The Deeper You Go, The Creepier Prehistoric Oceans Get",
+          "views": 5483264,
+          "subs": 521000,
+          "published_at": "2025-08-23T22:38:59Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Why Deep Sea Creatures Get Creepier the Deeper You Go | Full Documentary",
+          "views": 96410,
+          "subs": 26400,
+          "published_at": "2026-01-21T16:00:06Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Why Sharks get Creepier the Deeper you Go",
+          "views": 12213785,
+          "subs": 1070000,
+          "published_at": "2021-02-09T12:00:15Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Why Sharks Get Scarier The Further Down You Go",
+          "views": 183638,
+          "subs": 206000,
+          "published_at": "2026-03-30T15:30:00Z",
+          "coverage": 0.167
+        },
+        {
+          "title": "Why The Deep Sea Is **HORRIFYING**",
+          "views": 703146,
+          "subs": 3700000,
+          "published_at": "2026-03-20T17:00:48Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Why Deep Sea Creatures Grow So Terrifyingly Huge?",
+          "views": 750682,
+          "subs": 228000,
+          "published_at": "2025-11-04T19:11:54Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Why Animals Look Creepier The Deeper You Go",
+          "views": 69770,
+          "subs": 232000,
+          "published_at": "2024-03-15T19:00:30Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "The Unspeakable Horrors of the Deep Sea (ft. LindsayNikole)",
+          "views": 10394078,
+          "subs": 4300000,
+          "published_at": "2023-04-28T19:00:15Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Why Eels get Creepier the Deeper you Go",
+          "views": 486987,
+          "subs": 206000,
+          "published_at": "2025-10-29T19:48:04Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Why Sharks Get Scarier The Deeper You Go",
+          "views": 720737,
+          "subs": 238000,
+          "published_at": "2025-07-27T19:00:04Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "The Craziest Deep Sea Creatures At Every Depth",
+          "views": 673765,
+          "subs": 1380000,
+          "published_at": "2026-04-03T23:59:46Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "THOSE CREATURES ARE SO CUTE! \u2502Why Deep Sea Creatures Get Creepier the Deeper You Go React",
+          "views": 6094,
+          "subs": 24700,
+          "published_at": "2026-01-21T21:00:32Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "The Deeper You Go, The Creepier Prehistoric Oceans Get",
+          "views": 216305,
+          "subs": 521000,
+          "published_at": "2025-08-30T14:10:30Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Why Does the OCEAN Get Creepier the Deeper You Go?",
+          "views": 137194,
+          "subs": 59400,
+          "published_at": "2026-06-11T10:04:57Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Why Deep Sea Creatures Get Creepier the Deeper You Go",
+          "views": 172,
+          "subs": 176,
+          "published_at": "2025-12-13T18:26:44Z",
+          "coverage": 1.0
+        }
+      ],
+      "domain": "existing-script"
+    },
+    {
+      "query": "how deep sea creatures survive the pressure",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.69,
+        "max_coverage": 1.0,
+        "strong_match_count": 11,
+        "strong_match_rate": 0.55,
+        "loose_match_rate": 0.1,
+        "gap_signal": 0.45,
+        "interpretation": "11 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 9776.0,
+        "p90": 2207950,
+        "max": 14492714,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 38500.0,
+        "max_subscribers": 28200000,
+        "under_100k_subs": 13,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 565,
+        "published_last_365d": 5,
+        "n": 20
+      },
+      "opportunity_score": 0.471,
+      "opportunity_components": {
+        "title_gap": 0.45,
+        "incumbent_subs": 0.345,
+        "view_ceiling": 0.43,
+        "staleness": 0.75
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-08-30T20:51:25.083777+00:00"
+      },
+      "top_results": [
+        {
+          "title": "How Do Deep Sea Fish Survive the Extreme Pressure?",
+          "views": 202605,
+          "subs": 31900,
+          "published_at": "2022-09-29T09:30:11Z",
+          "coverage": 0.8
+        },
+        {
+          "title": "How Deep-Sea Creatures Survive Crushing Pressure",
+          "views": 5078,
+          "subs": 420,
+          "published_at": "2025-09-15T13:30:17Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How Do Deep-Sea Animals Survive Crushing Pressure?",
+          "views": 23375,
+          "subs": 1020000,
+          "published_at": "2026-06-30T21:00:06Z",
+          "coverage": 0.8
+        },
+        {
+          "title": "4 reasons why deep-sea fish can survive the pressure",
+          "views": 7869,
+          "subs": 83900,
+          "published_at": "2025-05-08T20:43:21Z",
+          "coverage": 0.8
+        },
+        {
+          "title": "Why Don\u2019t Sea Creatures Implode?",
+          "views": 11683,
+          "subs": 10500,
+          "published_at": "2024-09-03T17:00:34Z",
+          "coverage": 0.4
+        },
+        {
+          "title": "Pressure is no problem for these deep sea animals!",
+          "views": 33654,
+          "subs": 45100,
+          "published_at": "2023-06-30T02:50:04Z",
+          "coverage": 0.6
+        },
+        {
+          "title": "Could You Survive Extreme Ocean Pressure? \ud83d\ude35",
+          "views": 14492714,
+          "subs": 28200000,
+          "published_at": "2025-02-23T13:30:24Z",
+          "coverage": 0.4
+        },
+        {
+          "title": "How Do Deep-Sea Creatures Survive the Pressure? | The Marine Life Explorer",
+          "views": 27,
+          "subs": 567,
+          "published_at": "2025-01-31T01:07:17Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How do fish survive in the deep ocean? - CrowdScience podcast, BBC World Service",
+          "views": 76585,
+          "subs": 2180000,
+          "published_at": "2024-11-18T13:01:00Z",
+          "coverage": 0.4
+        },
+        {
+          "title": "Under Pressure: How Whales Conquer CRUSHING Depths",
+          "views": 14627,
+          "subs": 422000,
+          "published_at": "2023-07-01T19:40:41Z",
+          "coverage": 0.2
+        },
+        {
+          "title": "How to Survive the Deep Sea",
+          "views": 1706075,
+          "subs": 1070000,
+          "published_at": "2021-12-14T12:00:00Z",
+          "coverage": 0.6
+        },
+        {
+          "title": "How Deep-Sea Fish Survive Extreme Pressure? Unlocking the Secrets",
+          "views": 4522,
+          "subs": 466,
+          "published_at": "2023-08-01T00:30:02Z",
+          "coverage": 0.8
+        },
+        {
+          "title": "How Do Strange Deep-Sea Creatures Survive Extreme Pressure? - Strange Science HQ",
+          "views": 5,
+          "subs": 248,
+          "published_at": "2025-08-18T18:38:14Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "INTO THE ABYSS | The Science Behind How Deep Sea Creatures Survive Extreme Pressure",
+          "views": 123,
+          "subs": 161,
+          "published_at": "2026-08-25T21:00:32Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Creatures That Survive Crushing Pressure at the Bottom of the Mariana Trench",
+          "views": 2419,
+          "subs": 3970,
+          "published_at": "2026-04-10T23:00:09Z",
+          "coverage": 0.6
+        },
+        {
+          "title": "These Deep Sea Creatures Are Rarely Seen",
+          "views": 2207950,
+          "subs": 2890000,
+          "published_at": "2024-04-30T19:49:50Z",
+          "coverage": 0.6
+        },
+        {
+          "title": "What Would Happen To Your Body In The Deep Ocean?",
+          "views": 2984598,
+          "subs": 8630000,
+          "published_at": "2025-05-26T17:47:57Z",
+          "coverage": 0.2
+        },
+        {
+          "title": "How Deep-Sea Animals Survive Pressure That Crushes Steel",
+          "views": 2,
+          "subs": 0,
+          "published_at": "2026-08-29T19:00:07Z",
+          "coverage": 0.8
+        },
+        {
+          "title": "How Deep Sea Creatures Survive Ocean Pressures",
+          "views": 4,
+          "subs": 2,
+          "published_at": "2025-07-18T01:53:41Z",
+          "coverage": 0.8
+        },
+        {
+          "title": "How Do Deep-Sea Creatures Survive Extreme Pressure?",
+          "views": 2548,
+          "subs": 58500,
+          "published_at": "2024-10-06T09:32:40Z",
+          "coverage": 1.0
+        }
+      ],
+      "domain": "existing-script"
+    },
+    {
+      "query": "what creatures live in the deep sea",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.487,
+        "max_coverage": 1.0,
+        "strong_match_count": 8,
+        "strong_match_rate": 0.4,
+        "loose_match_rate": 0.35,
+        "gap_signal": 0.6,
+        "interpretation": "8 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 3509991.5,
+        "p90": 10970088,
+        "max": 16780541,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 510000.0,
+        "max_subscribers": 44500000,
+        "under_100k_subs": 2,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 476,
+        "published_last_365d": 7,
+        "n": 20
+      },
+      "opportunity_score": 0.444,
+      "opportunity_components": {
+        "title_gap": 0.6,
+        "incumbent_subs": 0.185,
+        "view_ceiling": 0.065,
+        "staleness": 0.65
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-08-30T20:51:34.634395+00:00"
+      },
+      "top_results": [
+        {
+          "title": "What creatures live in the &quot;Midnight Zone&quot; of the deep sea? | Into The Deep",
+          "views": 133826,
+          "subs": 474000,
+          "published_at": "2020-12-02T19:44:54Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "The Strangest Creatures of the Ocean | BBC Earth",
+          "views": 6427866,
+          "subs": 14500000,
+          "published_at": "2025-02-22T14:00:55Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Deep Sea Monsters and Where They Might Live",
+          "views": 2777196,
+          "subs": 122000,
+          "published_at": "2025-09-03T14:10:07Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "The Most Disturbing Creatures in Each Ocean Layer",
+          "views": 1444239,
+          "subs": 1980000,
+          "published_at": "2026-07-06T16:00:39Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "8 Terrifying Sea Creatures That Actually Exist",
+          "views": 967419,
+          "subs": 2890000,
+          "published_at": "2026-05-02T15:55:27Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "The Giants Found In The Deepest Parts Of Our Oceans",
+          "views": 1227221,
+          "subs": 238000,
+          "published_at": "2025-05-18T19:00:16Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Weirdest Deep-Sea Creatures",
+          "views": 4883586,
+          "subs": 175000,
+          "published_at": "2023-12-18T16:32:57Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Into the Abyss: Creatures of the Midwater (Full Movie)",
+          "views": 10970088,
+          "subs": 1070000,
+          "published_at": "2024-12-06T12:05:24Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Deep Sea Animals and Where They Thrives",
+          "views": 674822,
+          "subs": 149000,
+          "published_at": "2026-01-31T02:53:36Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "15 Massive Sea Creatures Caught on Camera",
+          "views": 1177975,
+          "subs": 546000,
+          "published_at": "2025-07-25T18:31:03Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "We&#39;ve Barely Seen the Deep Sea \u2620\ufe0f",
+          "views": 4926580,
+          "subs": 964000,
+          "published_at": "2025-01-09T16:12:56Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Why Deep Sea Creatures Get Creepier the Deeper You Go",
+          "views": 16780541,
+          "subs": 228000,
+          "published_at": "2025-11-02T15:27:57Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Top 6 Mysterious Deep Sea Creatures You Won\u2019t Believe Exist #seamonster #deepsea #bloop #elgranmaja",
+          "views": 6288311,
+          "subs": 140000,
+          "published_at": "2025-10-16T23:15:03Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "These Deep Sea Creatures Are Rarely Seen",
+          "views": 2207950,
+          "subs": 2890000,
+          "published_at": "2024-04-30T19:49:50Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Deep sea creatures are found | Ocean Sunfish Vs Sea Eater",
+          "views": 8128965,
+          "subs": 707000,
+          "published_at": "2025-05-05T04:53:40Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Deep Sea Creatures You Won&#39;t Believe Exist... \ud83d\ude28",
+          "views": 5304198,
+          "subs": 3550000,
+          "published_at": "2023-06-07T19:00:08Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Fascinating 3D Journey to the Ocean Depths",
+          "views": 12593431,
+          "subs": 44500000,
+          "published_at": "2020-11-02T11:00:00Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "THE DEEP OCEAN | 4K TV ULTRA HD / Full Documentary - Beautiful Coral Reef Fish Video - Stress Relief",
+          "views": 1602500,
+          "subs": 49400,
+          "published_at": "2024-10-15T10:31:51Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Mythical Sea Creatures That Really Existed! ",
+          "views": 4242787,
+          "subs": 88400,
+          "published_at": "2025-08-11T21:34:59Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "What Exists in the Deepest Place on Earth?",
+          "views": 2195209,
+          "subs": 206000,
+          "published_at": "2026-04-05T15:30:00Z",
+          "coverage": 0.0
+        }
+      ],
+      "domain": "existing-script"
+    },
+    {
+      "query": "what is the midnight zone",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.65,
+        "max_coverage": 1.0,
+        "strong_match_count": 12,
+        "strong_match_rate": 0.6,
+        "loose_match_rate": 0.3,
+        "gap_signal": 0.4,
+        "interpretation": "12 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 98168.0,
+        "p90": 10970088,
+        "max": 16875204,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 215000.0,
+        "max_subscribers": 14500000,
+        "under_100k_subs": 8,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 806,
+        "published_last_365d": 5,
+        "n": 20
+      },
+      "opportunity_score": 0.403,
+      "opportunity_components": {
+        "title_gap": 0.4,
+        "incumbent_subs": 0.238,
+        "view_ceiling": 0.287,
+        "staleness": 0.75
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-08-30T20:51:53.625026+00:00"
+      },
+      "top_results": [
+        {
+          "title": "Into the Midnight Zone: Secrets of the Ocean Void",
+          "views": 6649771,
+          "subs": 1070000,
+          "published_at": "2024-07-05T11:00:53Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "What Lurks in the Midnight Zone? | Blue Planet II | BBC Earth",
+          "views": 648282,
+          "subs": 14500000,
+          "published_at": "2023-06-28T13:00:44Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "What creatures live in the &quot;Midnight Zone&quot; of the deep sea? | Into The Deep",
+          "views": 133826,
+          "subs": 474000,
+          "published_at": "2020-12-02T19:44:54Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "10 Mind Blowing Facts For Kids About the Ocean&#39;s MIDNIGHT ZONE",
+          "views": 3458,
+          "subs": 82900,
+          "published_at": "2025-10-08T13:45:03Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How Deep Is the Ocean REALLY? The Terrifying Midnight Zone",
+          "views": 9387,
+          "subs": 143,
+          "published_at": "2025-10-07T14:30:26Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "What Lurks in the Midnight Zone? | Blue Planet II | BBC Earth",
+          "views": 2009724,
+          "subs": 14500000,
+          "published_at": "2021-07-08T16:00:32Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Why Deep Sea Creatures Get Creepier the Deeper You Go",
+          "views": 16780541,
+          "subs": 228000,
+          "published_at": "2025-11-02T15:27:57Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Into the Abyss: Creatures of the Midwater (Full Movie)",
+          "views": 10970088,
+          "subs": 1070000,
+          "published_at": "2024-12-06T12:05:24Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Ocean Zones | Nautilus Live",
+          "views": 128982,
+          "subs": 689000,
+          "published_at": "2023-05-04T15:00:54Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Ocean Zones - The Sunlight, Twilight, and Midnight Zones of the Ocean!",
+          "views": 8793,
+          "subs": 395000,
+          "published_at": "2025-07-25T21:15:00Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Creatures Of The Midnight Zone | Blue Planet II Narration By David Attenborough | BBC Earth Relax",
+          "views": 527046,
+          "subs": 24800,
+          "published_at": "2025-12-01T16:01:21Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "What&#39;s the Ocean Midnight Zone!? | Clip | Earth Cubs",
+          "views": 2955,
+          "subs": 261000,
+          "published_at": "2024-06-24T08:57:03Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "The Midnight Zone",
+          "views": 1701,
+          "subs": 2710,
+          "published_at": "2024-06-07T13:36:55Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Scientists explore &#39;Midnight Zone&#39; to study ocean",
+          "views": 15512,
+          "subs": 4630000,
+          "published_at": "2020-02-05T17:14:57Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "What Are The Sea Zones? Explaining Deep Sea Exploration - Behind the News",
+          "views": 128601,
+          "subs": 169000,
+          "published_at": "2016-09-08T04:31:57Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Scariest animals in the Midnight Zone",
+          "views": 28542,
+          "subs": 1290,
+          "published_at": "2023-06-22T22:33:45Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Inside the Ocean Zone Where Almost Nothing Survives",
+          "views": 17190,
+          "subs": 20400,
+          "published_at": "2026-01-10T13:01:40Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How Deep Does The Ocean Go?",
+          "views": 16875204,
+          "subs": 202000,
+          "published_at": "2024-01-11T21:49:04Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "different ocean floor and it&#39;s creature #ocean #creature",
+          "views": 67735,
+          "subs": 2340,
+          "published_at": "2025-08-24T13:49:05Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "The Midnight Zone by Lauren Groff",
+          "views": 1685,
+          "subs": 303,
+          "published_at": "2021-12-25T01:08:43Z",
+          "coverage": 1.0
+        }
+      ],
+      "domain": "existing-script"
+    },
+    {
+      "query": "why deep sea creatures are so scary",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.525,
+        "max_coverage": 1.0,
+        "strong_match_count": 11,
+        "strong_match_rate": 0.55,
+        "loose_match_rate": 0.3,
+        "gap_signal": 0.45,
+        "interpretation": "11 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 2365782.0,
+        "p90": 10394078,
+        "max": 24114944,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 1680000.0,
+        "max_subscribers": 32800000,
+        "under_100k_subs": 0,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 369,
+        "published_last_365d": 9,
+        "n": 20
+      },
+      "opportunity_score": 0.343,
+      "opportunity_components": {
+        "title_gap": 0.45,
+        "incumbent_subs": 0.111,
+        "view_ceiling": 0.089,
+        "staleness": 0.55
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-08-30T20:51:28.191659+00:00"
+      },
+      "top_results": [
+        {
+          "title": "Why Deep Sea Creatures Get Creepier the Deeper You Go",
+          "views": 16780541,
+          "subs": 228000,
+          "published_at": "2025-11-02T15:27:57Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Why Deep Sea Creatures Grow So Terrifyingly Huge?",
+          "views": 750682,
+          "subs": 228000,
+          "published_at": "2025-11-04T19:11:54Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "The Craziest Deep Sea Creatures At Every Depth",
+          "views": 673765,
+          "subs": 1380000,
+          "published_at": "2026-04-03T23:59:46Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "The Deeper You Go, The Creepier Prehistoric Oceans Get",
+          "views": 5483264,
+          "subs": 521000,
+          "published_at": "2025-08-23T22:38:59Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "The Creepiest Fish Found at the Bottom of Our Oceans",
+          "views": 851989,
+          "subs": 206000,
+          "published_at": "2025-11-14T21:25:17Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Why Do Deep Sea Creatures Look So Scary?",
+          "views": 214813,
+          "subs": 332000,
+          "published_at": "2016-01-11T20:00:36Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "The Most Disturbing Creatures in Each Ocean Layer",
+          "views": 1444239,
+          "subs": 1980000,
+          "published_at": "2026-07-06T16:00:39Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Why DEEP SEA Creatures Look so WEIRD?",
+          "views": 4100129,
+          "subs": 9830000,
+          "published_at": "2023-12-29T15:33:45Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Why Do So Many Animals in the Deep Sea Not Die?",
+          "views": 368494,
+          "subs": 206000,
+          "published_at": "2026-06-21T15:15:23Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Why Squids get Creepier the Deeper you Go",
+          "views": 2745298,
+          "subs": 206000,
+          "published_at": "2025-10-16T22:29:18Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Why DEEP-SEA Creatures Are Coming Out to Surface? Leviathan is Coming?",
+          "views": 2523614,
+          "subs": 4740000,
+          "published_at": "2025-03-07T05:26:28Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Why Are Deep Sea Creatures Evolving Into Giants?",
+          "views": 1883589,
+          "subs": 2890000,
+          "published_at": "2026-05-23T16:00:41Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "The Strangest Creatures of the Ocean | BBC Earth",
+          "views": 6427866,
+          "subs": 14500000,
+          "published_at": "2025-02-22T14:00:55Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Weirdest Deep-Sea Creatures",
+          "views": 4883586,
+          "subs": 175000,
+          "published_at": "2023-12-18T16:32:57Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "The Unspeakable Horrors of the Deep Sea (ft. LindsayNikole)",
+          "views": 10394078,
+          "subs": 4300000,
+          "published_at": "2023-04-28T19:00:15Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "These Deep Sea Creatures Are Rarely Seen",
+          "views": 2207950,
+          "subs": 2890000,
+          "published_at": "2024-04-30T19:49:50Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "8 Terrifying Sea Creatures That Actually Exist",
+          "views": 967419,
+          "subs": 2890000,
+          "published_at": "2026-05-02T15:55:27Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Deep Sea Creatures You Won&#39;t Believe Exist... \ud83d\ude28",
+          "views": 5304198,
+          "subs": 3550000,
+          "published_at": "2023-06-07T19:00:08Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Why are DEEP SEA Creatures Coming to Surface? | Leviathan Mystery | Dhruv Rathee",
+          "views": 24114944,
+          "subs": 32800000,
+          "published_at": "2025-03-14T15:58:31Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "The Deeper You Go, The Creepier Prehistoric Oceans Get",
+          "views": 216305,
+          "subs": 521000,
+          "published_at": "2025-08-30T14:10:30Z",
+          "coverage": 0.0
+        }
+      ],
+      "domain": "existing-script"
+    },
+    {
+      "query": "why deep sea creatures are surfacing",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.787,
+        "max_coverage": 1.0,
+        "strong_match_count": 16,
+        "strong_match_rate": 0.8,
+        "loose_match_rate": 0.1,
+        "gap_signal": 0.2,
+        "interpretation": "16 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 319715.0,
+        "p90": 6427866,
+        "max": 24114944,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 90650.0,
+        "max_subscribers": 32800000,
+        "under_100k_subs": 10,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 534,
+        "published_last_365d": 2,
+        "n": 20
+      },
+      "opportunity_score": 0.325,
+      "opportunity_components": {
+        "title_gap": 0.2,
+        "incumbent_subs": 0.292,
+        "view_ceiling": 0.214,
+        "staleness": 0.9
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-08-30T20:51:26.647276+00:00"
+      },
+      "top_results": [
+        {
+          "title": "Why Deep Sea Creatures Get Creepier the Deeper You Go",
+          "views": 16780541,
+          "subs": 228000,
+          "published_at": "2025-11-02T15:27:57Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Why are DEEP SEA Creatures Coming to Surface? | Leviathan Mystery | Dhruv Rathee",
+          "views": 24114944,
+          "subs": 32800000,
+          "published_at": "2025-03-14T15:58:31Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Why These Deep Sea Creatures Are Surfacing",
+          "views": 3055,
+          "subs": 460,
+          "published_at": "2025-03-10T10:25:00Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "These Deep Sea Creatures Are Rarely Seen",
+          "views": 2207950,
+          "subs": 2890000,
+          "published_at": "2024-04-30T19:49:50Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Why DEEP SEA Creatures Look so WEIRD?",
+          "views": 4100129,
+          "subs": 9830000,
+          "published_at": "2023-12-29T15:33:45Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Deep Sea Creatures: Why They&#39;re Surfacing!",
+          "views": 128,
+          "subs": 1950,
+          "published_at": "2025-03-16T01:24:46Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Deep Sea Mysteries: Why Are Ocean Creatures Surfacing?",
+          "views": 12,
+          "subs": 36,
+          "published_at": "2025-03-19T10:38:10Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Why Are Deep Sea Creatures Surfacing??  \ud83d\ude31\ud83d\ude31",
+          "views": 187,
+          "subs": 117,
+          "published_at": "2025-07-07T22:45:04Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Why Deep sea creatures are Surfacing ?",
+          "views": 238,
+          "subs": 1,
+          "published_at": "2025-03-19T04:47:39Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "The Strangest Creatures of the Ocean | BBC Earth",
+          "views": 6427866,
+          "subs": 14500000,
+          "published_at": "2025-02-22T14:00:55Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Why Deep Sea Creatures Are Surfacing!",
+          "views": 7,
+          "subs": 37,
+          "published_at": "2025-02-26T19:37:50Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Why Are Deep Sea Creatures Surfacing? The Hidden Ocean Mystery Explained || Fex Tv.",
+          "views": 2,
+          "subs": 7,
+          "published_at": "2026-05-25T10:47:55Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Rare deep-sea anglerfish spotted on ocean&#39;s surface for first time",
+          "views": 583290,
+          "subs": 2410000,
+          "published_at": "2025-02-12T00:51:32Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Why are Deep Sea creatures surfacing? | &quot; LEVIATHAN ! &quot; | Is this the END..? | Letstute",
+          "views": 83862,
+          "subs": 1220000,
+          "published_at": "2025-03-14T14:53:18Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Blobfish True Appearance!",
+          "views": 555568,
+          "subs": 766,
+          "published_at": "2023-09-02T17:00:05Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Why Are These Deep Sea Creatures Suddenly Surfacing?! \ud83d\ude31\ud83c\udf0a",
+          "views": 38,
+          "subs": 44,
+          "published_at": "2025-05-29T07:53:51Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "This Deep Sea Creature Looks Unreal",
+          "views": 696706,
+          "subs": 6300,
+          "published_at": "2025-05-03T10:01:23Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Why Are Deep-sea Creatures Coming Out? | Leviathan is Coming! \ud83e\udd2f\u2620\ufe0f #Nature #Sea #Leviathan #Shorts",
+          "views": 640604,
+          "subs": 1450000,
+          "published_at": "2025-03-13T09:31:00Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Why are all these deep sea creatures surfacing all of a sudden",
+          "views": 25977,
+          "subs": 1300000,
+          "published_at": "2025-06-26T02:45:04Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Weirdest Deep-Sea Creatures",
+          "views": 4883586,
+          "subs": 175000,
+          "published_at": "2023-12-18T16:32:57Z",
+          "coverage": 0.75
+        }
+      ],
+      "domain": "existing-script"
+    },
+    {
+      "query": "what is a dumbo octopus",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.95,
+        "max_coverage": 1.0,
+        "strong_match_count": 18,
+        "strong_match_rate": 0.9,
+        "loose_match_rate": 0.0,
+        "gap_signal": 0.1,
+        "interpretation": "18 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 29969.0,
+        "p90": 1362684,
+        "max": 15084018,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 109300.0,
+        "max_subscribers": 26400000,
+        "under_100k_subs": 10,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 1111,
+        "published_last_365d": 1,
+        "n": 20
+      },
+      "opportunity_score": 0.303,
+      "opportunity_components": {
+        "title_gap": 0.1,
+        "incumbent_subs": 0.28,
+        "view_ceiling": 0.36,
+        "staleness": 0.95
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-08-30T20:51:39.482238+00:00"
+      },
+      "top_results": [
+        {
+          "title": "Dumbo Octopus \ud83d\udc19 (10 FACTS You NEVER KNEW)",
+          "views": 9055,
+          "subs": 131000,
+          "published_at": "2024-02-16T14:00:20Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Facts: The Dumbo Octopus",
+          "views": 86964,
+          "subs": 87600,
+          "published_at": "2021-07-16T17:00:24Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "The Dumbo Octopus",
+          "views": 368787,
+          "subs": 18800000,
+          "published_at": "2015-12-08T15:20:35Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Dumbo Octopus \ud83d\udc19 Cutest Deep-Sea Dweller!",
+          "views": 1362684,
+          "subs": 2880000,
+          "published_at": "2023-08-14T19:00:25Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Dumbo Octopus Facts: the CUTEST OCTOPUS \ud83d\udc19 Animal Fact Files",
+          "views": 27306,
+          "subs": 131000,
+          "published_at": "2019-01-10T01:30:04Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Best of 2015: Adorable Dumbo Octopuses | Nautilus Live",
+          "views": 588061,
+          "subs": 689000,
+          "published_at": "2015-10-02T17:51:42Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Rare Dumbo Octopus Shows Off for Deep-sea Submersible | National Geographic",
+          "views": 894021,
+          "subs": 26400000,
+          "published_at": "2018-10-29T17:00:09Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Dumbo Octopus in Action | Nautilus Live",
+          "views": 4264147,
+          "subs": 689000,
+          "published_at": "2014-09-08T22:15:47Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "The Dumbo Octopus: Cute But DEADLY at 13,000 Feet",
+          "views": 85734,
+          "subs": 1220,
+          "published_at": "2024-10-17T05:23:43Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "What is a Dumbo Octopus? \ud83e\udd14",
+          "views": 18264,
+          "subs": 28,
+          "published_at": "2025-06-14T16:38:15Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "The unexpected sighting of the Dumbo octopus | CBC Kids News",
+          "views": 5018,
+          "subs": 290000,
+          "published_at": "2023-10-19T09:45:05Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Dumbo Octopus more like the cutest octopus!/#Cute/#octopus/#capcut",
+          "views": 18464,
+          "subs": 2030,
+          "published_at": "2024-01-09T14:39:18Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Ever Hear Of The Dumbo Octopus?",
+          "views": 2058,
+          "subs": 2830,
+          "published_at": "2024-07-02T01:11:51Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Dumbo Octopus \ud83d\udc19 The Cutest Octopus You&#39;ll Ever See!",
+          "views": 33883,
+          "subs": 2880000,
+          "published_at": "2023-03-01T20:40:49Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Why The Dumbo Octopus Is Dangerous In the Deep Sea",
+          "views": 19594,
+          "subs": 180,
+          "published_at": "2025-09-10T17:37:35Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Dumbo Octopus Hatchling",
+          "views": 21999,
+          "subs": 8830,
+          "published_at": "2019-12-18T18:01:38Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Shy Octopus Hides Inside Its Own Tentacles | Nautilus Live",
+          "views": 15084018,
+          "subs": 689000,
+          "published_at": "2015-08-24T03:59:50Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Meet the Dumbo Octopus #somesay #dumbooctopus #ocean #deepsea",
+          "views": 16070,
+          "subs": 2310,
+          "published_at": "2025-07-25T11:24:44Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Dumbo Octopus #funny #animals #dumbooctopus #cute #shorts #youtubeshorts",
+          "views": 32632,
+          "subs": 32700,
+          "published_at": "2025-06-20T14:00:53Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Do You Know About the Cutest Deep-Sea Dweller, the Dumbo Octopus? #viral  #amazingjourney #factsrix",
+          "views": 2941,
+          "subs": 1030,
+          "published_at": "2023-08-17T17:16:23Z",
+          "coverage": 1.0
+        }
+      ],
+      "domain": "existing-script"
+    },
+    {
+      "query": "what is a yeti crab",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 1.0,
+        "max_coverage": 1.0,
+        "strong_match_count": 20,
+        "strong_match_rate": 1.0,
+        "loose_match_rate": 0.0,
+        "gap_signal": 0.0,
+        "interpretation": "20 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 6655.0,
+        "p90": 128396,
+        "max": 389393,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 5165.0,
+        "max_subscribers": 26400000,
+        "under_100k_subs": 15,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 836,
+        "published_last_365d": 3,
+        "n": 20
+      },
+      "opportunity_score": 0.289,
+      "opportunity_components": {
+        "title_gap": 0.0,
+        "incumbent_subs": 0.47,
+        "view_ceiling": 0.454,
+        "staleness": 0.85
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-08-30T20:51:49.136195+00:00"
+      },
+      "top_results": [
+        {
+          "title": "Ghostly Yeti Crab Swarms Discovered Near Antarctica | National Geographic",
+          "views": 371507,
+          "subs": 26400000,
+          "published_at": "2012-01-25T13:42:35Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "What Exactly Is: Yeti Crab | The Crabominable Deep-Sea Crustacean",
+          "views": 8133,
+          "subs": 27600,
+          "published_at": "2025-11-14T23:30:16Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "The Mythical Hairy Crab of the Deep - Yeti Crab Facts - Animal a Day",
+          "views": 2387,
+          "subs": 5020,
+          "published_at": "2023-08-04T19:00:24Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Top 5 Amazing Facts about the Yeti Crab",
+          "views": 11334,
+          "subs": 192,
+          "published_at": "2025-05-23T19:20:43Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "The Yeti Crab - Ocean&#39;s Furry Marvel!",
+          "views": 1317,
+          "subs": 168,
+          "published_at": "2024-10-31T10:45:08Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Yeti Crab \ud83e\udd80 The Hairy Crab!",
+          "views": 94457,
+          "subs": 2880000,
+          "published_at": "2024-05-17T19:00:16Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Yeti Crab \ud83e\udd80 The Hairy Crab!",
+          "views": 15475,
+          "subs": 2880000,
+          "published_at": "2024-05-16T12:00:27Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Nothing About Yeti Crabs is Normal... Here&#39;s Why",
+          "views": 299,
+          "subs": 18,
+          "published_at": "2026-01-12T22:30:03Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "The Bizarre Life of the Yeti Crab #yeti #crabs #amazing #animals #animalfacts #shorts #science",
+          "views": 1530,
+          "subs": 2350,
+          "published_at": "2025-07-12T16:00:16Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Yeti crab #facts #shorts #crab",
+          "views": 10662,
+          "subs": 2690,
+          "published_at": "2024-09-06T23:47:34Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Most Weirdest Creature | Yeti Crab",
+          "views": 2783,
+          "subs": 9240,
+          "published_at": "2023-07-26T12:30:00Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Wild Kratts - Seasquatch the Yeti Crab | Kids Videos",
+          "views": 389393,
+          "subs": 2980000,
+          "published_at": "2019-03-30T10:00:03Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Yeti crab eating bacteria from its claws",
+          "views": 40083,
+          "subs": 20500,
+          "published_at": "2011-12-05T11:04:41Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Yeti Crab Facts",
+          "views": 359,
+          "subs": 347,
+          "published_at": "2020-10-10T05:47:14Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "DEEP SEA YETI?!? YETI CRAB",
+          "views": 5177,
+          "subs": 35400,
+          "published_at": "2020-09-29T20:32:47Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Anglerfish vs Yeti Crab Colony | The Vent Field War \u2014 Hydrothermal Battle #shorts #ocean #wildlife",
+          "views": 1274,
+          "subs": 172,
+          "published_at": "2026-08-30T10:30:16Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "unbelievable|Facts about yeti Crab information |",
+          "views": 741,
+          "subs": 349,
+          "published_at": "2024-01-16T19:59:46Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Yeti Crab - Animal of the Week",
+          "views": 128396,
+          "subs": 762000,
+          "published_at": "2019-11-11T17:00:12Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "The Yeti Crab in the Void",
+          "views": 878,
+          "subs": 292,
+          "published_at": "2025-08-13T23:00:23Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "\ud83e\udd80 Discover the Yeti Crab: Deep Sea&#39;s Furry Mystery!",
+          "views": 18645,
+          "subs": 5310,
+          "published_at": "2024-05-21T17:00:10Z",
+          "coverage": 1.0
+        }
+      ],
+      "domain": "existing-script"
+    },
+    {
+      "query": "what is a frilled shark",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 1.0,
+        "max_coverage": 1.0,
+        "strong_match_count": 20,
+        "strong_match_rate": 1.0,
+        "loose_match_rate": 0.0,
+        "gap_signal": 0.0,
+        "interpretation": "20 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 73709.0,
+        "p90": 951295,
+        "max": 13911652,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 98800.0,
+        "max_subscribers": 6490000,
+        "under_100k_subs": 10,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 820,
+        "published_last_365d": 5,
+        "n": 20
+      },
+      "opportunity_score": 0.215,
+      "opportunity_components": {
+        "title_gap": 0.0,
+        "incumbent_subs": 0.286,
+        "view_ceiling": 0.305,
+        "staleness": 0.75
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-08-30T20:51:41.079166+00:00"
+      },
+      "top_results": [
+        {
+          "title": "Ancient Frilled Shark Facts \ud83e\udd88",
+          "views": 64085,
+          "subs": 11000,
+          "published_at": "2024-07-22T03:59:00Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Alien Sharks: The Frilled Shark",
+          "views": 1049597,
+          "subs": 6490000,
+          "published_at": "2013-08-08T18:33:55Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Why it Sucks To Be Born As a Frilled Shark",
+          "views": 222522,
+          "subs": 334000,
+          "published_at": "2025-06-09T02:16:14Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Frilled Shark: Aliens of the Deep Sea",
+          "views": 79220,
+          "subs": 2150000,
+          "published_at": "2025-05-24T01:22:35Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "The Frilled Shark: A Deep-Sea Living Fossil | A Prehistoric Shark",
+          "views": 246,
+          "subs": 247,
+          "published_at": "2024-08-17T10:10:07Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Facts: The Frilled Shark",
+          "views": 33019,
+          "subs": 87600,
+          "published_at": "2024-10-25T16:00:14Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "The Frilled Shark: A Mysterious Deep-Sea Predator #frilled #shark #discovery #animals",
+          "views": 8025,
+          "subs": 132,
+          "published_at": "2023-08-21T01:23:03Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Frilled shark \ud83d\ude31",
+          "views": 224642,
+          "subs": 1970000,
+          "published_at": "2023-12-17T14:29:00Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Frilled Shark \ud83e\udd8e\ud83e\udd88 #animation #original #cartoon",
+          "views": 13911652,
+          "subs": 1110000,
+          "published_at": "2024-04-11T23:00:03Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "The Frilled Shark\u2019s Ancient Teeth! \ud83d\udc0d Prehistoric Living Fossil Rescue! | Octonauts Full Episode",
+          "views": 3858,
+          "subs": 260,
+          "published_at": "2025-12-28T12:15:24Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Examining a Rare Frilled Shark! | Shark Week",
+          "views": 291616,
+          "subs": 6490000,
+          "published_at": "2020-08-15T15:00:10Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Nothing About Frilled Sharks Is Normal\u2026 Here\u2019s Why",
+          "views": 505,
+          "subs": 184,
+          "published_at": "2026-01-19T19:37:20Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Rare, Prehistoric Frilled Shark in Japan",
+          "views": 951295,
+          "subs": 24300,
+          "published_at": "2007-05-03T17:38:23Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Frilled Shark \ud83e\udd88 The Terrifying Teeth of the Deep!",
+          "views": 119436,
+          "subs": 2880000,
+          "published_at": "2023-11-09T20:00:34Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "&quot;Living fossil&quot; frilled shark dies in captivity",
+          "views": 85510,
+          "subs": 239000,
+          "published_at": "2020-01-17T09:34:29Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "The Frilled Shark is One Frightening Fish",
+          "views": 82341,
+          "subs": 5740000,
+          "published_at": "2016-06-06T16:00:01Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Why It Sucks to Be a Frilled Shark",
+          "views": 448,
+          "subs": 71,
+          "published_at": "2026-01-17T17:49:31Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "The Frilled Shark  A Living Fossil from 80 Million Years Ago",
+          "views": 1751,
+          "subs": 420,
+          "published_at": "2025-09-08T15:36:45Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "frilled shark",
+          "views": 68198,
+          "subs": 110000,
+          "published_at": "2023-12-21T17:35:27Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Meet the frilled shark \u2014 a living fossil from the deep!",
+          "views": 14062,
+          "subs": 36,
+          "published_at": "2025-10-16T10:25:43Z",
+          "coverage": 1.0
+        }
+      ],
+      "domain": "existing-script"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "_status": "RESEARCH OUTPUT. No file in scripts/ was created or edited.",
+  "generated_at": "2026-08-30T21:20:21.259225+00:00",
+  "generator": "research/rework.py",
+  "the_pattern": "Every opening in this dataset is a 'why does...' or 'how does...' question and every dead end is a 'what is a...'. An identification question has one answer, so the first decent video closes it permanently; a mechanism question can always be answered better. These three subjects are kept and their questions reshaped.",
+  "method": "Replacements are MINED from Google autocomplete using one identical mechanism-shaped template set per subject, then put through the same demand gate as every other candidate. Nothing here is invented.",
+  "demand_floor": 0.16,
+  "competition_named_stop": {
+    "name": "YOUTUBE_QUOTA_EXHAUSTED",
+    "what_is_missing": "The saturation half of the gate for these candidates. search.list costs 100 units and the 10,000/day allowance was spent scoring the 20 existing episodes (2,040) and 74 domain queries (7,548).",
+    "consequence": "Every candidate below carries competition: null. A recommendation to rework rests on demand evidence ALONE and is not final until the replacement question is shown to be unsaturated.",
+    "how_it_clears": "Quota resets at midnight Pacific. Re-run `python weekly.py` and the candidates are scored automatically; no code change is needed."
+  },
+  "subjects": [
+    {
+      "subject": "dumbo octopus",
+      "killed_query": "what is a dumbo octopus",
+      "killed_slug": "11-what-is-a-dumbo-octopus",
+      "status": "NO_CANDIDATES",
+      "requests_made": 162,
+      "recommendation": "KILL THE SUBJECT. A comparable mechanism-shaped probe of 162 autocomplete requests produced no mechanism question about this animal that anyone types. There is no rework here, only a different way to make the same unwatched video.",
+      "canary": {
+        "probe": "why do octopuses",
+        "completions": 23,
+        "meaning": "The suggest endpoint answers mechanism-shaped probes normally. Zero candidates for this subject is therefore a property of the subject, not a failed request."
+      }
+    },
+    {
+      "subject": "yeti crab",
+      "killed_query": "what is a yeti crab",
+      "killed_slug": "17-what-is-a-yeti-crab",
+      "status": "NO_CANDIDATES",
+      "requests_made": 162,
+      "recommendation": "KILL THE SUBJECT. A comparable mechanism-shaped probe of 162 autocomplete requests produced no mechanism question about this animal that anyone types. There is no rework here, only a different way to make the same unwatched video.",
+      "canary": {
+        "probe": "why do octopuses",
+        "completions": 23,
+        "meaning": "The suggest endpoint answers mechanism-shaped probes normally. Zero candidates for this subject is therefore a property of the subject, not a failed request."
+      }
+    },
+    {
+      "subject": "frilled shark",
+      "killed_query": "what is a frilled shark",
+      "killed_slug": "12-what-is-a-frilled-shark",
+      "status": "NO_CANDIDATES",
+      "requests_made": 162,
+      "recommendation": "KILL THE SUBJECT. A comparable mechanism-shaped probe of 162 autocomplete requests produced no mechanism question about this animal that anyone types. There is no rework here, only a different way to make the same unwatched video.",
+      "canary": {
+        "probe": "why do octopuses",
+        "completions": 23,
+        "meaning": "The suggest endpoint answers mechanism-shaped probes normally. Zero candidates for this subject is therefore a property of the subject, not a failed request."
+      }
+    }
+  ]
+}

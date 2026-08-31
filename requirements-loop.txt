@@ -1,0 +1,10 @@
+# Runtime dependencies for the scheduled loop workflows.
+#
+# Added 2026-08-31 after the Monday draft stage failed with
+# `ModuleNotFoundError: No module named 'PIL'`. The workflows had no pip install
+# step at all, so a validator crashed on import and the circuit breaker read that
+# crash as a validation failure. Publishing was correctly halted - but for the
+# wrong reason, and a breaker that trips on missing packages is one people learn
+# to ignore. Pin these so the loop only ever fails for real reasons.
+pillow==12.3.0
+numpy==2.5.2

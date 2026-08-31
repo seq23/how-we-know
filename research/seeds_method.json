@@ -1,0 +1,167 @@
+{
+  "_purpose": "Method-shape probe. The channel's premise is 'how we know', so the question that matters per domain is whether an evidence/method surface exists in autocomplete at all. The general pass in seeds_broad.json does not reach it because its seeds are topic nouns, not method stems.",
+  "_seed_shape": "IDENTICAL template for every domain, varied only by the domain's natural noun: how do we know about {n} | how do scientists know about {n}. Same request budget per domain as the general pass shape (each seed bare, then suffixed a-z).",
+  "_authored": "2026-08-30",
+  "domains": {
+    "deep-sea-ocean-science": {
+      "in_current_taxonomy": true,
+      "method_noun": "the deep sea",
+      "seeds": [
+        "how do we know about the deep sea",
+        "how do scientists know about the deep sea"
+      ]
+    },
+    "ocean-technology": {
+      "in_current_taxonomy": true,
+      "method_noun": "submarines",
+      "seeds": [
+        "how do we know about submarines",
+        "how do scientists know about submarines"
+      ]
+    },
+    "marine-geology": {
+      "in_current_taxonomy": true,
+      "method_noun": "the seafloor",
+      "seeds": [
+        "how do we know about the seafloor",
+        "how do scientists know about the seafloor"
+      ]
+    },
+    "expedition-history": {
+      "in_current_taxonomy": true,
+      "method_noun": "explorers",
+      "seeds": [
+        "how do we know about explorers",
+        "how do scientists know about explorers"
+      ]
+    },
+    "earth-science-geology-volcano": {
+      "in_current_taxonomy": true,
+      "method_noun": "volcanoes",
+      "seeds": [
+        "how do we know about volcanoes",
+        "how do scientists know about volcanoes"
+      ]
+    },
+    "space-astronomy": {
+      "in_current_taxonomy": true,
+      "method_noun": "space",
+      "seeds": [
+        "how do we know about space",
+        "how do scientists know about space"
+      ]
+    },
+    "engineering-failure": {
+      "in_current_taxonomy": true,
+      "method_noun": "bridge collapses",
+      "seeds": [
+        "how do we know about bridge collapses",
+        "how do scientists know about bridge collapses"
+      ]
+    },
+    "natural-history-adaptation": {
+      "in_current_taxonomy": true,
+      "method_noun": "evolution",
+      "seeds": [
+        "how do we know about evolution",
+        "how do scientists know about evolution"
+      ]
+    },
+    "archaeology-ancient-tech": {
+      "in_current_taxonomy": true,
+      "method_noun": "ancient civilizations",
+      "seeds": [
+        "how do we know about ancient civilizations",
+        "how do scientists know about ancient civilizations"
+      ]
+    },
+    "incident-analysis": {
+      "in_current_taxonomy": true,
+      "method_noun": "plane crashes",
+      "seeds": [
+        "how do we know about plane crashes",
+        "how do scientists know about plane crashes"
+      ]
+    },
+    "paleontology-extinction": {
+      "in_current_taxonomy": false,
+      "method_noun": "dinosaurs",
+      "seeds": [
+        "how do we know about dinosaurs",
+        "how do scientists know about dinosaurs"
+      ]
+    },
+    "measurement-and-dating": {
+      "in_current_taxonomy": false,
+      "method_noun": "the age of things",
+      "seeds": [
+        "how do we know about the age of things",
+        "how do scientists know about the age of things"
+      ]
+    },
+    "infrastructure-megaprojects": {
+      "in_current_taxonomy": false,
+      "method_noun": "tunnels",
+      "seeds": [
+        "how do we know about tunnels",
+        "how do scientists know about tunnels"
+      ]
+    },
+    "energy-and-power": {
+      "in_current_taxonomy": false,
+      "method_noun": "nuclear reactors",
+      "seeds": [
+        "how do we know about nuclear reactors",
+        "how do scientists know about nuclear reactors"
+      ]
+    },
+    "materials-and-manufacturing": {
+      "in_current_taxonomy": false,
+      "method_noun": "materials",
+      "seeds": [
+        "how do we know about materials",
+        "how do scientists know about materials"
+      ]
+    },
+    "physics-fundamentals": {
+      "in_current_taxonomy": false,
+      "method_noun": "atoms",
+      "seeds": [
+        "how do we know about atoms",
+        "how do scientists know about atoms"
+      ]
+    },
+    "polar-extreme-environments": {
+      "in_current_taxonomy": false,
+      "method_noun": "antarctica",
+      "seeds": [
+        "how do we know about antarctica",
+        "how do scientists know about antarctica"
+      ]
+    },
+    "weather-and-storms": {
+      "in_current_taxonomy": false,
+      "method_noun": "hurricanes",
+      "seeds": [
+        "how do we know about hurricanes",
+        "how do scientists know about hurricanes"
+      ]
+    },
+    "animal-senses-cognition": {
+      "in_current_taxonomy": false,
+      "method_noun": "animal senses",
+      "seeds": [
+        "how do we know about animal senses",
+        "how do scientists know about animal senses"
+      ]
+    },
+    "logistics-how-things-move": {
+      "in_current_taxonomy": false,
+      "method_noun": "shipping",
+      "seeds": [
+        "how do we know about shipping",
+        "how do scientists know about shipping"
+      ]
+    }
+  }
+}

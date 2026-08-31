@@ -1,0 +1,46 @@
+{
+  "_what_this_is": "Manifest of the last weekly run. Diagnostic only -- the loop's input is publish_order.json.",
+  "started_utc": "2026-08-30T21:21:24.071863+00:00",
+  "finished_utc": "2026-08-30T21:21:46.190734+00:00",
+  "entrypoint": "python research/weekly.py",
+  "rule_0": "No stage exits 0 having done nothing. Each stage below is done, skipped with a reason, or a named stop with a reason.",
+  "stages": [
+    {
+      "stage": "competition",
+      "status": "skipped",
+      "reason": "existing competition data is 0.0 days old, under the 6.0-day reuse window. Skipping saves 2,040 quota units and makes a re-run inside the same week free. Use --force-competition to override.",
+      "quota_units_spent": 0
+    },
+    {
+      "stage": "trends",
+      "status": "skipped",
+      "reason": "--skip-trends"
+    },
+    {
+      "stage": "rank",
+      "argv": [
+        "--pause",
+        "0.4"
+      ],
+      "returncode": 0,
+      "seconds": 22.1,
+      "quota_exhausted": false,
+      "tail": "0.562  0.48  0.66  1.00\n   7 score  01-why-deep-sea-creatures-look-so-weird        0.560  0.57  0.55  0.80\n   8 score  20-what-is-the-midnight-zone                   0.540  0.72  0.40  0.40\n   9 score  07-why-deep-sea-creatures-get-creepier-deeper  0.519  0.54  0.50  0.75\n  10 score  08-what-creatures-live-in-the-deep-sea         0.500  0.56  0.44  0.60\n  11 score  09-what-is-the-scariest-deep-sea-creature      0.490  0.43  0.56  0.90\n  12 score  19-what-is-the-deepest-fish-ever-recorded      0.455  0.40  0.51  0.65\n  13 score  04-why-deep-sea-creatures-are-so-scary         0.438  0.56  0.34  0.45\n  14 score  16-what-happens-when-a-whale-dies-in-the-deep  0.422  0.30  0.60  0.75\n  15 score  13-how-does-bioluminescence-work-in-the-deep-  0.406  0.27  0.61  0.80\n  16 score  02-how-deep-sea-creatures-survive-pressure     0.299  0.19  0.47  0.45\n\nKILLED 4:\n   killed              12-what-is-a-frilled-shark                    (saturation)\n   killed              11-what-is-a-dumbo-octopus                    (saturation)\n   killed              17-what-is-a-yeti-crab                        (demand,saturation)\n   killed_provisional  03-why-deep-sea-creatures-are-surfacing       (saturation)\n",
+      "status": "done"
+    },
+    {
+      "stage": "rework",
+      "status": "skipped",
+      "reason": "--skip-rework"
+    }
+  ],
+  "fatal": null,
+  "competition_data_age_days": 0.02,
+  "competition_data_stale": false,
+  "result": {
+    "queue_length": 16,
+    "killed": 4,
+    "next_to_publish": "how big is a colossal squid",
+    "runway_weeks_at_2_per_week": 8.0
+  }
+}

@@ -1,0 +1,950 @@
+[
+  {
+    "segment": "anatomy_callout",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "That fish is not deformed. The photograph is what happens when an animal built for darkness meets our daylight, our camera angle, and our idea of what a normal body should look like.",
+    "args": {
+      "title": "BUILT FOR DARKNESS",
+      "parts": [
+        [
+          "eyes",
+          0.24,
+          0.34
+        ],
+        [
+          "mouth",
+          0.15,
+          0.58
+        ],
+        [
+          "teeth",
+          0.19,
+          0.64
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "Cold open",
+    "narration": "The useful question is not why deep-sea creatures are weird. It is what problem each feature solves.",
+    "args": {
+      "lines": [
+        "The useful question is",
+        "not why deep-sea creatures",
+        "are weird."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 3.5,
+    "heading": "Title card",
+    "narration": "Why deep sea creatures look so weird?",
+    "args": {
+      "lines": [
+        "Why deep sea creatures",
+        "look so weird?"
+      ]
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.45,
+    "heading": "The right way to see it",
+    "narration": "The useful question is not \u201cWhy is this creature weird?\u201d It is \u201cWhat problem does this feature solve?\u201d",
+    "args": {
+      "term": "THE USEFUL QUESTION",
+      "includes": [
+        "What problem does this feature solve?"
+      ],
+      "excludes": [
+        "Why is this creature weird?"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 7.86,
+    "heading": "The right way to see it",
+    "narration": "Once you ask that, the huge mouth, transparent head, glowing lure, soft tissue, and needle-like teeth stop looking random.",
+    "args": {
+      "title": "WHAT STOPS LOOKING RANDOM",
+      "items": [
+        "+The huge mouth",
+        "+The transparent head",
+        "+The glowing lure",
+        "+The soft tissue",
+        "+The needle-like teeth"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The right way to see it",
+    "narration": "The rest of this video follows that question through the actual environmental constraints described by NOAA, MBARI, Smithsonian, and Woods Hole sources in the companion article.",
+    "args": {
+      "lines": [
+        "The rest of this",
+        "video follows that question",
+        "through"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 4.97,
+    "heading": "Producer POV",
+    "narration": "I used to look at deep-sea animals as a collection of freaks.",
+    "args": {
+      "text": "I used to look at deep-sea animals as a collection of freaks.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 9.0,
+    "heading": "Producer POV",
+    "narration": "The source material changed that. Once I matched each feature to a constraint\u2014darkness, pressure, cold, scarce food\u2014the transparent head and oversized mouth stopped looking random and started looking precise.",
+    "args": {
+      "text": "The source material changed that. Once I matched each feature to a constraint\u2014darkness, pressure, cold, scarce food\u2014the transparent head and oversized mouth stopped looking random and started looking precise.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "zone_column",
+    "seconds": 4.97,
+    "heading": "Their bodies solve a different set of problems",
+    "narration": "A deep-sea animal is not an ordinary surface animal distorted by depth.",
+    "args": {
+      "highlight": null
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Their bodies solve a different set of problems",
+    "narration": "Its body is the result of generations living where sunlight disappears, temperatures are low, pressure is high, and meals can be separated by long periods.",
+    "args": {
+      "lines": [
+        "Its body is the",
+        "result of generations living",
+        "where sunlight"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "zone_column",
+    "seconds": 9.0,
+    "heading": "Their bodies solve a different set of problems",
+    "narration": "Features that look excessive to us often have a narrow job: find a faint signal, catch a rare meal, avoid making an expensive chase, or disappear from a predator that sees only silhouettes and flashes of light.",
+    "args": {
+      "highlight": null
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "light_attenuation",
+    "seconds": 5.38,
+    "heading": "Darkness changes eyes, color, and communication",
+    "narration": "Some species enlarge their eyes to collect the little light or bioluminescence available.",
+    "args": {},
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Darkness changes eyes, color, and communication",
+    "narration": "Others reduce their eyes because vision offers little return. Transparent tissue can erase an outline, while red or black skin can make an animal nearly invisible after red wavelengths have been absorbed by seawater.",
+    "args": {
+      "lines": [
+        "Others reduce their eyes",
+        "because vision offers little",
+        "return. Transparent"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "light_attenuation",
+    "seconds": 7.86,
+    "heading": "Darkness changes eyes, color, and communication",
+    "narration": "Bioluminescence can function as a lure, warning, decoy, searchlight, counter-illumination system, or signal to another member of the species.",
+    "args": {},
+    "from": "directive"
+  },
+  {
+    "segment": "anatomy_callout",
+    "seconds": 8.69,
+    "heading": "Scarce food favors oversized feeding equipment",
+    "narration": "A large mouth, long teeth, hinged jaws, or an expandable stomach lets an animal accept a meal when one finally appears.",
+    "args": {
+      "title": "FEEDING EQUIPMENT",
+      "parts": [
+        [
+          "large mouth",
+          0.15,
+          0.58
+        ],
+        [
+          "long teeth",
+          0.19,
+          0.64
+        ],
+        [
+          "hinged jaws",
+          0.26,
+          0.52
+        ],
+        [
+          "lure",
+          0.36,
+          0.18
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 9.0,
+    "heading": "Scarce food favors oversized feeding equipment",
+    "narration": "The anglerfish's lure is an energy strategy as much as a hunting trick: bring prey close instead of swimming through darkness searching for it.",
+    "args": {
+      "subject": "anglerfish",
+      "label": "anglerfish",
+      "pick": 0
+    },
+    "from": "directive-rhythm+species-beat"
+  },
+  {
+    "segment": "anatomy_callout",
+    "seconds": 8.69,
+    "heading": "Scarce food favors oversized feeding equipment",
+    "narration": "These traits are not universal. Many deep-sea animals are small, delicate filter feeders, scavengers, or gelatinous drifters rather than dramatic predators.",
+    "args": {
+      "title": "FEEDING EQUIPMENT",
+      "parts": [
+        [
+          "large mouth",
+          0.15,
+          0.58
+        ],
+        [
+          "long teeth",
+          0.19,
+          0.64
+        ],
+        [
+          "hinged jaws",
+          0.26,
+          0.52
+        ],
+        [
+          "lure",
+          0.36,
+          0.18
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Soft bodies can be an advantage under pressure",
+    "narration": "Pressure is especially damaging to compressible gas spaces. Many deep-sea animals are mostly water and lack lungs or large gas-filled swim bladders, so their bodies are less crushable than a human body or an air-filled machine.",
+    "args": {
+      "term": "WHAT PRESSURE DAMAGES",
+      "includes": [
+        "Compressible gas spaces"
+      ],
+      "excludes": [
+        "Bodies that are mostly water",
+        "Animals without lungs or large gas-filled swim bladders"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Soft bodies can be an advantage under pressure",
+    "narration": "The result can be a soft, gelatinous form that looks fragile at the surface but is mechanically appropriate at depth.",
+    "args": {
+      "lines": [
+        "The result can be",
+        "a soft, gelatinous form",
+        "that looks"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 6.21,
+    "heading": "Common myths and questions",
+    "narration": "A common question is: Are all deep-sea animals ugly? No. 'Ugly' is a human judgment.",
+    "args": {
+      "term": "Ugly",
+      "meaning": "A human judgment, not a description of the animal",
+      "boundary": "Deep-sea animals include delicate jellies, corals, worms, octopuses, fishes and many microscopic organisms with very different forms",
+      "source": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "Common myths and questions",
+    "narration": "Deep-sea animals include delicate jellies, corals, worms, octopuses, fishes and many microscopic organisms with very different forms.",
+    "args": {
+      "lines": [
+        "Deep-sea animals include delicate",
+        "jellies, corals, worms, octopuses,",
+        "fishes"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 5.38,
+    "heading": "Common myths and questions",
+    "narration": "A common question is: Do deep-sea animals look the same when brought up?",
+    "args": {
+      "title": "WHAT HAPPENS ON THE WAY UP",
+      "stages": [
+        "Nets",
+        "Decompression",
+        "Warming",
+        "Handling"
+      ],
+      "conclusion": "Soft tissues can be damaged, or an animal's appearance altered"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Common myths and questions",
+    "narration": "Not always. Nets, decompression, warming and handling can damage soft tissues or alter an animal's appearance.",
+    "args": {
+      "lines": [
+        "Not always. Nets, decompression,",
+        "warming and handling can",
+        "damage soft"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Common myths and questions",
+    "narration": "A common question is: Why do so many have large teeth? In food-poor habitats, long teeth can help secure prey once contact occurs. Many species, however, have tiny mouths or feed on particles instead.",
+    "args": {
+      "term": "LONG TEETH",
+      "includes": [
+        "Help secure prey once contact occurs in food-poor habitats"
+      ],
+      "excludes": [
+        "Universal",
+        "Present in the many species with tiny mouths",
+        "Present in species that feed on particles"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "Common myths and questions",
+    "narration": "A common question is: Why do some deep-sea animals glow? Bioluminescence can attract prey, hide a silhouette, confuse predators, illuminate nearby objects or communicate.",
+    "args": {
+      "title": "WHAT BIOLUMINESCENCE CAN DO",
+      "items": [
+        "+Attract prey",
+        "+Hide a silhouette",
+        "+Confuse predators",
+        "+Illuminate nearby objects",
+        "+Communicate"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "zone_column",
+    "seconds": 5.38,
+    "heading": "Four problems, four body plans",
+    "narration": "This episode works as a problem-solution montage rather than a parade of creatures.",
+    "args": {
+      "highlight": null
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 8.28,
+    "heading": "Four problems, four body plans",
+    "narration": "First, darkness rewards eyes that collect faint light, bodies that erase their outline, and light organs that communicate without sunlight.",
+    "args": {
+      "title": "FOUR PROBLEMS, FOUR BODY PLANS",
+      "steps": [
+        [
+          "Darkness",
+          "rewards eyes that collect faint light, bodies that erase their outline, and light organs that communicate without sunlight"
+        ],
+        [
+          "Scarce food",
+          "rewards jaws and stomachs that can use a rare opportunity"
+        ],
+        [
+          "High pressure",
+          "punishes large gas spaces and favors water-rich bodies"
+        ],
+        [
+          "Cold and low food supply",
+          "reward slow, efficient movement"
+        ]
+      ],
+      "note": "None of those rules produces one standard deep-sea shape"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Four problems, four body plans",
+    "narration": "Second, scarce food rewards jaws and stomachs that can use a rare opportunity.",
+    "args": {
+      "lines": [
+        "Second, scarce food rewards",
+        "jaws and stomachs that",
+        "can use"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 8.69,
+    "heading": "Four problems, four body plans",
+    "narration": "Third, high pressure punishes large gas spaces and favors water-rich bodies. Fourth, cold and low food supply reward slow, efficient movement.",
+    "args": {
+      "title": "FOUR PROBLEMS, FOUR BODY PLANS",
+      "steps": [
+        [
+          "Darkness",
+          "rewards eyes that collect faint light, bodies that erase their outline, and light organs that communicate without sunlight"
+        ],
+        [
+          "Scarce food",
+          "rewards jaws and stomachs that can use a rare opportunity"
+        ],
+        [
+          "High pressure",
+          "punishes large gas spaces and favors water-rich bodies"
+        ],
+        [
+          "Cold and low food supply",
+          "reward slow, efficient movement"
+        ]
+      ],
+      "note": "None of those rules produces one standard deep-sea shape"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "Four problems, four body plans",
+    "narration": "None of those rules produces one standard deep-sea shape. They produce many different answers.",
+    "args": {
+      "lines": [
+        "None of those rules",
+        "produces one standard deep-sea",
+        "shape. They"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "Four problems, four body plans",
+    "narration": "A barreleye, anglerfish, siphonophore, sea cucumber, and deep octopus can occupy the same broad world while solving different versions of the same problem.",
+    "args": {
+      "title": "FOUR PROBLEMS, FOUR BODY PLANS",
+      "steps": [
+        [
+          "Darkness",
+          "rewards eyes that collect faint light, bodies that erase their outline, and light organs that communicate without sunlight"
+        ],
+        [
+          "Scarce food",
+          "rewards jaws and stomachs that can use a rare opportunity"
+        ],
+        [
+          "High pressure",
+          "punishes large gas spaces and favors water-rich bodies"
+        ],
+        [
+          "Cold and low food supply",
+          "reward slow, efficient movement"
+        ]
+      ],
+      "note": "None of those rules produces one standard deep-sea shape"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 7.86,
+    "heading": "A better way to look at the body",
+    "narration": "The fastest way to stop treating a deep-sea animal as a monster is to rebuild the scene around it.",
+    "args": {
+      "title": "HOW TO READ THE IMAGE",
+      "steps": [
+        [
+          "Start with the water, not the face",
+          ""
+        ],
+        [
+          "Ask what light is available",
+          ""
+        ],
+        [
+          "Ask how often food arrives",
+          ""
+        ],
+        [
+          "Ask whether the image shows a living animal at depth or a specimen after capture",
+          ""
+        ]
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 9.0,
+    "heading": "A better way to look at the body",
+    "narration": "Start with the water, not the face. Ask whether the animal is drifting in open water, moving over mud, sitting near a vent, or crossing a trench wall.",
+    "args": {
+      "subject": "anglerfish",
+      "label": "anglerfish",
+      "pick": 1
+    },
+    "from": "directive-rhythm+species-section"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "A better way to look at the body",
+    "narration": "Then ask what light is available. A reflective side, a transparent tissue, a red body, and a light organ can all be forms of concealment, but they work in different light fields.",
+    "args": {
+      "title": "HOW TO READ THE IMAGE",
+      "steps": [
+        [
+          "Start with the water, not the face",
+          ""
+        ],
+        [
+          "Ask what light is available",
+          ""
+        ],
+        [
+          "Ask how often food arrives",
+          ""
+        ],
+        [
+          "Ask whether the image shows a living animal at depth or a specimen after capture",
+          ""
+        ]
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 9.0,
+    "heading": "A better way to look at the body",
+    "narration": "Next ask how often food arrives. A large mouth can look excessive in a photograph while functioning as insurance in a habitat where the next meal is unpredictable.",
+    "args": {
+      "subject": "barreleye",
+      "label": "barreleye",
+      "pick": 0
+    },
+    "from": "directive-rhythm+species-section"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 6.62,
+    "heading": "A better way to look at the body",
+    "narration": "Finally, ask whether the image shows a living animal at depth or a specimen after capture.",
+    "args": {
+      "title": "HOW TO READ THE IMAGE",
+      "steps": [
+        [
+          "Start with the water, not the face",
+          ""
+        ],
+        [
+          "Ask what light is available",
+          ""
+        ],
+        [
+          "Ask how often food arrives",
+          ""
+        ],
+        [
+          "Ask whether the image shows a living animal at depth or a specimen after capture",
+          ""
+        ]
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 7.03,
+    "heading": "A better way to look at the body",
+    "narration": "Delicate tissue can collapse, eyes can change position, and colors can look dramatically different under deck lights.",
+    "args": {
+      "subject": "anglerfish",
+      "label": "anglerfish",
+      "pick": 2
+    },
+    "from": "directive-rhythm+species-section"
+  },
+  {
+    "segment": "anatomy_callout",
+    "seconds": 5.79,
+    "heading": "A better way to look at the body",
+    "narration": "That sequence changes the emotional meaning of the image without making it less compelling.",
+    "args": {
+      "title": "RESTORE THE CONTEXT",
+      "parts": [
+        [
+          "transparent shield",
+          0.28,
+          0.26
+        ],
+        [
+          "lure",
+          0.36,
+          0.18
+        ],
+        [
+          "giant mouth",
+          0.15,
+          0.58
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 7.86,
+    "heading": "A better way to look at the body",
+    "narration": "The animal still looks unfamiliar. It simply stops looking arbitrary. The barreleye's transparent shield becomes a protected viewing window.",
+    "args": {
+      "subject": "barreleye",
+      "label": "barreleye",
+      "pick": 1
+    },
+    "from": "directive-rhythm+species-beat"
+  },
+  {
+    "segment": "anatomy_callout",
+    "seconds": 9.0,
+    "heading": "A better way to look at the body",
+    "narration": "The anglerfish's lure becomes a way to shorten a costly chase. A gelatinous animal's softness becomes compatible with a body that contains little compressible gas.",
+    "args": {
+      "title": "RESTORE THE CONTEXT",
+      "parts": [
+        [
+          "transparent shield",
+          0.28,
+          0.26
+        ],
+        [
+          "lure",
+          0.36,
+          0.18
+        ],
+        [
+          "giant mouth",
+          0.15,
+          0.58
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "A better way to look at the body",
+    "narration": "A giant mouth becomes a response to scarcity rather than proof of aggression.",
+    "args": {
+      "lines": [
+        "A giant mouth becomes",
+        "a response to scarcity",
+        "rather"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "anatomy_callout",
+    "seconds": 8.28,
+    "heading": "A better way to look at the body",
+    "narration": "This is the channel's editorial rule for every creature episode: restore depth, scale, condition, and function before using the close-up.",
+    "args": {
+      "title": "RESTORE THE CONTEXT",
+      "parts": [
+        [
+          "transparent shield",
+          0.28,
+          0.26
+        ],
+        [
+          "lure",
+          0.36,
+          0.18
+        ],
+        [
+          "giant mouth",
+          0.15,
+          0.58
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "A better way to look at the body",
+    "narration": "If those four pieces are missing, the image may be excellent entertainment, but it is weak evidence about how the animal normally looks or lives.",
+    "args": {
+      "title": "RESTORE BEFORE THE CLOSE-UP",
+      "items": [
+        "+Depth",
+        "+Scale",
+        "+Condition",
+        "+Function"
+      ],
+      "note": "If those four pieces are missing, the image is weak evidence"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 7.03,
+    "heading": "The question I want the viewer to keep",
+    "narration": "When the next bizarre animal appears, pause before naming it. Restore the habitat, then identify the constraint.",
+    "args": {
+      "title": "THE HABIT",
+      "steps": [
+        [
+          "Pause before naming it",
+          ""
+        ],
+        [
+          "Restore the habitat",
+          ""
+        ],
+        [
+          "Identify the constraint",
+          ""
+        ]
+      ],
+      "note": "That single habit turns shock into curiosity"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The question I want the viewer to keep",
+    "narration": "That single habit turns shock into curiosity. It is also how this channel avoids becoming a slideshow of grotesque close-ups: every image has to earn its explanation through depth, scale, condition, and function.",
+    "args": {
+      "lines": [
+        "That single habit turns",
+        "shock into curiosity. It",
+        "is also"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 6.21,
+    "heading": "What to notice in the edit",
+    "narration": "The visual test for this episode is simple: never show a close-up without restoring context.",
+    "args": {
+      "title": "THE VISUAL TEST",
+      "items": [
+        "-A close-up without restored context",
+        "+Put the depth on screen",
+        "+Show the animal's approximate size when the source provides it",
+        "+Distinguish a live ROV observation from a specimen damaged by nets or decompression"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "What to notice in the edit",
+    "narration": "Put the depth on screen. Show the animal's approximate size when the source provides it.",
+    "args": {
+      "lines": [
+        "Put the depth on",
+        "screen. Show the animal's",
+        "approximate size"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 5.38,
+    "heading": "What to notice in the edit",
+    "narration": "Distinguish a live ROV observation from a specimen damaged by nets or decompression.",
+    "args": {
+      "title": "THE VISUAL TEST",
+      "items": [
+        "-A close-up without restored context",
+        "+Put the depth on screen",
+        "+Show the animal's approximate size when the source provides it",
+        "+Distinguish a live ROV observation from a specimen damaged by nets or decompression"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "The goal is not to make the creature less interesting. It is to stop the camera from manufacturing the weirdness we then pretend to explain.",
+    "args": {
+      "lines": [
+        "The goal is not",
+        "to make the creature",
+        "less interesting."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 7.03,
+    "heading": "Evidence limit",
+    "narration": "There is no single adaptation called a deep-sea body plan, and 'weird' is not a scientific category.",
+    "args": {
+      "term": "Weird",
+      "meaning": "Not a scientific category",
+      "boundary": "There is no single adaptation called a deep-sea body plan",
+      "source": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 7.45,
+    "heading": "Evidence limit",
+    "narration": "NOAA describes the deep ocean as dark, cold, food-poor, and high-pressure, but species occupy different depths and habitats.",
+    "args": {
+      "title": "WHAT NOAA DESCRIBES THE DEEP OCEAN AS",
+      "items": [
+        "+Dark",
+        "+Cold",
+        "+Food-poor",
+        "+High-pressure"
+      ],
+      "note": "But species occupy different depths and habitats"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Evidence limit",
+    "narration": "A feature that helps in open midwater may be useless on the seafloor.",
+    "args": {
+      "lines": [
+        "A feature that helps",
+        "in open midwater may",
+        "be useless"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 4.97,
+    "heading": "Evidence limit",
+    "narration": "A live animal may also look very different from a preserved specimen.",
+    "args": {
+      "title": "WHAT NOAA DESCRIBES THE DEEP OCEAN AS",
+      "items": [
+        "+Dark",
+        "+Cold",
+        "+Food-poor",
+        "+High-pressure"
+      ],
+      "note": "But species occupy different depths and habitats"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 8.28,
+    "heading": "Evidence limit",
+    "narration": "The script can explain documented functions and plausible tradeoffs; it cannot claim that every unusual feature evolved for one reason.",
+    "args": {
+      "term": "WHAT THIS SCRIPT CAN CLAIM",
+      "includes": [
+        "Documented functions",
+        "Plausible tradeoffs"
+      ],
+      "excludes": [
+        "That every unusual feature evolved for one reason"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "light_attenuation",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "The deep sea does not manufacture monsters. It manufactures specialists. The next time a creature looks impossible, ask what light reaches it, how often it eats, whether it carries gas, and what the camera has done to its scale. That answer is usually more surprising than the word weird.",
+    "args": {},
+    "from": "directive"
+  }
+]

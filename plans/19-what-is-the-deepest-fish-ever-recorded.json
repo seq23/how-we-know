@@ -1,0 +1,895 @@
+[
+  {
+    "segment": "size_ladder",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "The deepest fish ever filmed was a snailfish at 8,336 meters. The deepest fish ever caught was recorded at 8,022 meters. Those are different records, and the distinction matters.",
+    "args": {
+      "items": [
+        [
+          "Deepest filmed",
+          8336.0
+        ],
+        [
+          "Deepest caught",
+          8022.0
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 3.5,
+    "heading": "Title card",
+    "narration": "What is the deepest fish ever recorded?",
+    "args": {
+      "lines": [
+        "What is the deepest",
+        "fish ever recorded?"
+      ]
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 7.03,
+    "heading": "A record made by a camera, not a net",
+    "narration": "On August 15, 2022, researchers lowered a baited autonomous lander into the Izu-Ogasawara Trench south of Japan.",
+    "args": {
+      "value": "8,336",
+      "unit": "METRES",
+      "caption": "Filmed in the Izu-Ogasawara Trench on 15 August 2022",
+      "source": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 6.21,
+    "heading": "A record made by a camera, not a net",
+    "narration": "At 8,336 meters, the camera recorded a single juvenile snailfish swimming through the illuminated area.",
+    "args": {
+      "subject": "snailfish",
+      "label": "snailfish",
+      "pick": 0
+    },
+    "from": "directive-rhythm+species-beat"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 7.03,
+    "heading": "A record made by a camera, not a net",
+    "narration": "The peer-reviewed description appeared in 2023 and established a new maximum observation depth for a bony fish.",
+    "args": {
+      "value": "8,336",
+      "unit": "METRES",
+      "caption": "Filmed in the Izu-Ogasawara Trench on 15 August 2022",
+      "source": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "A record made by a camera, not a net",
+    "narration": "The animal was not captured. That matters because the researchers could not examine bones, tissues, or genetics, so the paper identified it as a probable Pseudoliparis belyaevi or a related endemic species rather than pretending the video supplied perfect taxonomy.",
+    "args": {
+      "term": "WHAT THE VIDEO COULD NOT SUPPLY",
+      "includes": [
+        "A probable Pseudoliparis belyaevi or a related endemic species"
+      ],
+      "excludes": [
+        "Bones",
+        "Tissues",
+        "Genetics"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 5.79,
+    "heading": "A record made by a camera, not a net",
+    "narration": "In the neighboring Japan Trench, the expedition collected two P. belyaevi at 8,022 meters.",
+    "args": {
+      "title": "TWO RECORDS, TWO STANDARDS OF PROOF",
+      "sources": [
+        [
+          "Deepest filmed",
+          "a juvenile snailfish at 8,336 metres, in the Izu-Ogasawara Trench"
+        ],
+        [
+          "Deepest caught",
+          "two P. belyaevi at 8,022 metres, in the Japan Trench"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 4.97,
+    "heading": "A record made by a camera, not a net",
+    "narration": "Those specimens hold the capture record. Headlines often combine the two achievements.",
+    "args": {
+      "subject": "snailfish",
+      "label": "snailfish",
+      "pick": 1
+    },
+    "from": "directive-rhythm+species-section"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 9.0,
+    "heading": "A record made by a camera, not a net",
+    "narration": "A precise account separates deepest filmed from deepest caught. The first open loop is why a soft, almost fragile-looking snailfish succeeds where most familiar fish physiology fails.",
+    "args": {
+      "title": "TWO RECORDS, TWO STANDARDS OF PROOF",
+      "sources": [
+        [
+          "Deepest filmed",
+          "a juvenile snailfish at 8,336 metres, in the Izu-Ogasawara Trench"
+        ],
+        [
+          "Deepest caught",
+          "two P. belyaevi at 8,022 metres, in the Japan Trench"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 9.0,
+    "heading": "Producer POV",
+    "narration": "The record only made sense once I separated 'filmed' from 'caught.' The filmed animal was not collected, so even its species identification remains cautious.",
+    "args": {
+      "text": "The record only made sense once I separated 'filmed' from 'caught.' The filmed animal was not collected, so even its species identification remains cautious.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "anatomy_callout",
+    "seconds": 6.62,
+    "heading": "The body avoids some obvious pressure problems",
+    "narration": "Hadal snailfish lack a gas-filled swim bladder, which would be difficult to maintain across extreme pressure.",
+    "args": {
+      "title": "A BODY WITHOUT A SWIM BLADDER",
+      "parts": [
+        [
+          "no gas-filled swim bladder",
+          0.46,
+          0.44
+        ],
+        [
+          "soft and scaleless",
+          0.64,
+          0.54
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "The body avoids some obvious pressure problems",
+    "narration": "Their bodies are soft and scaleless, with much of the support provided by surrounding water.",
+    "args": {
+      "lines": [
+        "Their bodies are soft",
+        "and scaleless, with much"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "anatomy_callout",
+    "seconds": 5.79,
+    "heading": "The body avoids some obvious pressure problems",
+    "narration": "Pressure still acts on every molecule. It can change membrane behavior and destabilize proteins.",
+    "args": {
+      "title": "A BODY WITHOUT A SWIM BLADDER",
+      "parts": [
+        [
+          "no gas-filled swim bladder",
+          0.46,
+          0.44
+        ],
+        [
+          "soft and scaleless",
+          0.64,
+          0.54
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 6.21,
+    "heading": "The body avoids some obvious pressure problems",
+    "narration": "Deep species accumulate protective molecules, including trimethylamine N-oxide, that help counter pressure effects on proteins.",
+    "args": {
+      "title": "WHY THE COUNTERMEASURE HAS A CEILING",
+      "stages": [
+        "Pressure changes membrane behavior and destabilizes proteins",
+        "Deep species accumulate trimethylamine N-oxide",
+        "The concentration needed rises with depth"
+      ],
+      "conclusion": "At high levels the same chemistry disrupts cellular water balance"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The body avoids some obvious pressure problems",
+    "narration": "The concentration needed rises with depth, but that solution has limits because the same chemistry disrupts cellular water balance at high levels.",
+    "args": {
+      "lines": [
+        "The concentration needed rises",
+        "with depth, but that",
+        "solution has"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 7.03,
+    "heading": "The body avoids some obvious pressure problems",
+    "narration": "This creates a predicted depth ceiling for fishes. The animal in the video was also a juvenile.",
+    "args": {
+      "title": "WHY THE COUNTERMEASURE HAS A CEILING",
+      "stages": [
+        "Pressure changes membrane behavior and destabilizes proteins",
+        "Deep species accumulate trimethylamine N-oxide",
+        "The concentration needed rises with depth"
+      ],
+      "conclusion": "At high levels the same chemistry disrupts cellular water balance"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The body avoids some obvious pressure problems",
+    "narration": "Researchers have observed patterns in which smaller individuals occupy deeper parts of trench populations, possibly because of competition, food distribution, or physiology.",
+    "args": {
+      "lines": [
+        "Researchers have observed patterns",
+        "in which smaller individuals",
+        "occupy deeper"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "The body avoids some obvious pressure problems",
+    "narration": "One record cannot settle the mechanism. The next loop is ecological: a trench seems food-starved, yet baited landers often attract dense groups of hadal animals.",
+    "args": {
+      "title": "WHY THE COUNTERMEASURE HAS A CEILING",
+      "stages": [
+        "Pressure changes membrane behavior and destabilizes proteins",
+        "Deep species accumulate trimethylamine N-oxide",
+        "The concentration needed rises with depth"
+      ],
+      "conclusion": "At high levels the same chemistry disrupts cellular water balance"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Trenches can concentrate food",
+    "narration": "The hadal zone is not simply a flat extension of the abyss.",
+    "args": {
+      "lines": [
+        "The hadal zone is",
+        "not simply a flat",
+        "extension"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Trenches can concentrate food",
+    "narration": "Steep walls and trench geometry can funnel organic material downslope. Amphipods, crustaceans, and microbial processes create feeding opportunities.",
+    "args": {
+      "lines": [
+        "Steep walls and trench",
+        "geometry can funnel organic",
+        "material downslope."
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 4.97,
+    "heading": "Trenches can concentrate food",
+    "narration": "Snailfish feed on small trench animals and may exploit locally concentrated prey.",
+    "args": {
+      "subject": "snailfish",
+      "label": "Snailfish",
+      "pick": 2
+    },
+    "from": "directive+destagnate+species-beat"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Trenches can concentrate food",
+    "narration": "A baited camera changes the scene by introducing a strong food signal, so it is excellent for revealing who can arrive but not a neutral census of everyday abundance.",
+    "args": {
+      "term": "A BAITED CAMERA",
+      "includes": [
+        "Excellent for revealing who can arrive"
+      ],
+      "excludes": [
+        "A neutral census of everyday abundance"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Trenches can concentrate food",
+    "narration": "Researchers therefore use repeated deployments across depths and trenches. In the 2023 study, snailfish were seen across thousands of meters of depth, with the deepest individual recorded at 8,336 meters. No fish appeared in deeper deployments approaching 9,700 meters.",
+    "args": {
+      "lines": [
+        "Researchers therefore use repeated",
+        "deployments across depths and",
+        "trenches."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 8.28,
+    "heading": "Trenches can concentrate food",
+    "narration": "That absence aligns with physiological predictions, but absence on camera is never absolute proof that no fish can exist below.",
+    "args": {
+      "term": "ABSENCE ON CAMERA",
+      "includes": [
+        "Aligned with physiological predictions"
+      ],
+      "excludes": [
+        "Absolute proof that no fish can exist below"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 9.0,
+    "heading": "Trenches can concentrate food",
+    "narration": "The open loop is the boundary: if Challenger Deep is roughly 10,935 meters, why does the fish record stop more than two and a half kilometers above it?",
+    "args": {
+      "subject": "mariana_trench",
+      "label": "Challenger Deep",
+      "pick": 0
+    },
+    "from": "directive-rhythm+species-beat"
+  },
+  {
+    "segment": "pressure_gauge",
+    "seconds": 8.28,
+    "heading": "The deepest trench floor may be beyond fish physiology",
+    "narration": "Pressure rises by about one atmosphere every ten meters. Between 8,336 meters and Challenger Deep, the added load is enormous.",
+    "args": {
+      "depth_m": 10935
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The deepest trench floor may be beyond fish physiology",
+    "narration": "More importantly, biochemical countermeasures cannot increase without cost. The prevailing evidence suggests bony fishes approach a lower depth limit around the low eight-thousands, while invertebrates continue deeper.",
+    "args": {
+      "lines": [
+        "More importantly, biochemical countermeasures",
+        "cannot increase without cost.",
+        "The prevailing"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "pressure_gauge",
+    "seconds": 9.0,
+    "heading": "The deepest trench floor may be beyond fish physiology",
+    "narration": "Future records may shift by tens or hundreds of meters as new trenches are surveyed, but a fish at the absolute deepest floor would challenge current models.",
+    "args": {
+      "depth_m": 10935
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The deepest trench floor may be beyond fish physiology",
+    "narration": "That is why the 8,336-meter observation matters beyond a record book. It tests the relationship between molecular stability, body design, ecology, and geography.",
+    "args": {
+      "lines": [
+        "That is why the",
+        "8,336-meter observation matters beyond",
+        "a record"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 4.97,
+    "heading": "The deepest trench floor may be beyond fish physiology",
+    "narration": "The correct title is not the deepest creature; many invertebrates live deeper.",
+    "args": {
+      "term": "THE CORRECT TITLE",
+      "includes": [
+        "The deepest fish recorded on video"
+      ],
+      "excludes": [
+        "The deepest creature, because many invertebrates live deeper"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "The deepest trench floor may be beyond fish physiology",
+    "narration": "It is the deepest fish recorded on video. That single word keeps the claim honest.",
+    "args": {
+      "lines": [
+        "It is the deepest",
+        "fish recorded on video.",
+        "That single"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "The deepest trench floor may be beyond fish physiology",
+    "narration": "Next, the series moves upward to the midnight zone\u2014a vast band between 1,000 and 4,000 meters where sunlight is gone but animal light is common.",
+    "args": {
+      "term": "THE CORRECT TITLE",
+      "includes": [
+        "The deepest fish recorded on video"
+      ],
+      "excludes": [
+        "The deepest creature, because many invertebrates live deeper"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Two records, two standards of proof",
+    "narration": "In the Izu-Ogasawara Trench, researchers filmed a solitary juvenile snailfish at 8,336 meters.",
+    "args": {
+      "lines": [
+        "In the Izu-Ogasawara Trench,",
+        "researchers filmed a solitary",
+        "juvenile snailfish"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Two records, two standards of proof",
+    "narration": "No specimen was captured, so the paper identifies it as probably Pseudoliparis belyaevi or a new endemic species.",
+    "args": {
+      "lines": [
+        "No specimen was captured,",
+        "so the paper identifies",
+        "it"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.45,
+    "heading": "Two records, two standards of proof",
+    "narration": "In the neighboring Japan Trench, two P. belyaevi specimens were collected at 8,022 meters, setting the deepest-caught record.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 4.97,
+    "heading": "Two records, two standards of proof",
+    "narration": "Video proves an animal was present and moving at a measured depth.",
+    "args": {
+      "title": "WHAT EACH EVIDENCE TYPE PROVES",
+      "sources": [
+        [
+          "Video",
+          "an animal was present and moving at a measured depth"
+        ],
+        [
+          "A specimen",
+          "stronger anatomical and genetic identification"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "Two records, two standards of proof",
+    "narration": "A specimen allows stronger anatomical and genetic identification. Neither evidence type is automatically better for every question.",
+    "args": {
+      "lines": [
+        "A specimen allows stronger",
+        "anatomical and genetic identification.",
+        "Neither evidence"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.69,
+    "heading": "Why the boundary is biochemical, not a wall",
+    "narration": "Researchers connect the apparent fish depth limit to cellular chemistry, including the balance of compounds that help proteins function under pressure.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.21,
+    "heading": "Why the boundary is biochemical, not a wall",
+    "narration": "As depth increases, the required biochemical adjustments approach constraints imposed by the animal's body fluids.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 5.79,
+    "heading": "Why the boundary is biochemical, not a wall",
+    "narration": "That creates a predicted range rather than a sharp line painted across every trench.",
+    "args": {
+      "term": "THE FISH DEPTH LIMIT",
+      "includes": [
+        "A predicted range"
+      ],
+      "excludes": [
+        "A sharp line painted across every trench"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 5.79,
+    "heading": "Why the boundary is biochemical, not a wall",
+    "narration": "Temperature, species history, food, and local conditions can still influence where fish are observed.",
+    "args": {
+      "title": "WHAT CAN STILL INFLUENCE WHERE FISH ARE OBSERVED",
+      "items": [
+        "?Temperature",
+        "?Species history",
+        "?Food",
+        "?Local conditions"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "size_ladder",
+    "seconds": 9.0,
+    "heading": "Why the boundary is biochemical, not a wall",
+    "narration": "The kilometer below the deepest confirmed fish is therefore not empty. Amphipods, microbes, and other pressure-adapted organisms continue into deeper hadal water.",
+    "args": {
+      "items": [
+        [
+          "Deepest caught",
+          8022.0
+        ],
+        [
+          "Deepest filmed",
+          8336.0
+        ],
+        [
+          "Challenger Deep",
+          10935.0
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "Why the boundary is biochemical, not a wall",
+    "narration": "The record tells us something specific about bony fish, not life as a whole.",
+    "args": {
+      "lines": [
+        "The record tells us",
+        "something specific about bony",
+        "fish"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "size_ladder",
+    "seconds": 8.69,
+    "heading": "Why the boundary is biochemical, not a wall",
+    "narration": "The edit should show the filmed fish, the captured specimens, the predicted range, and Challenger Deep on the same depth scale.",
+    "args": {
+      "items": [
+        [
+          "Deepest caught",
+          8022.0
+        ],
+        [
+          "Deepest filmed",
+          8336.0
+        ],
+        [
+          "Challenger Deep",
+          10935.0
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Why the boundary is biochemical, not a wall",
+    "narration": "The unused space below the fish becomes the final open question instead of a claim that nothing lives there.",
+    "args": {
+      "lines": [
+        "The unused space below",
+        "the fish becomes the",
+        "final open"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "The record label",
+    "narration": "Every time the depth record appears, the edit must say FILMED or CAUGHT.",
+    "args": {
+      "lines": [
+        "Every time the depth",
+        "record appears, the edit",
+        "must say"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.69,
+    "heading": "The record label",
+    "narration": "The two labels are the episode's spine. The species identification for the filmed animal remains cautious because no specimen was recovered.",
+    "args": {
+      "variant": 2
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The record label",
+    "narration": "That is not a flaw in the study; it is the correct limit of video evidence. The final title and description should preserve that distinction.",
+    "args": {
+      "lines": [
+        "That is not a",
+        "flaw in the study"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 4.14,
+    "heading": "The next record",
+    "narration": "A future deeper sighting would not make this episode worthless.",
+    "args": {
+      "variant": 2
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "The next record",
+    "narration": "The evidence framework would still hold: identify the depth method, distinguish film from capture, state the species confidence, and compare the result with the proposed biochemical boundary.",
+    "args": {
+      "title": "THE EVIDENCE FRAMEWORK",
+      "steps": [
+        [
+          "Identify the depth method",
+          ""
+        ],
+        [
+          "Distinguish film from capture",
+          ""
+        ],
+        [
+          "State the species confidence",
+          ""
+        ],
+        [
+          "Compare the result with the proposed biochemical boundary",
+          ""
+        ]
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The next record",
+    "narration": "The script is built to survive a new record because it explains how records are established, not only who currently holds one.",
+    "args": {
+      "lines": [
+        "The script is built",
+        "to survive a new",
+        "record because"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 3.5,
+    "heading": "What to notice in the edit",
+    "narration": "Split the screen into FILMED and CAUGHT.",
+    "args": {
+      "lines": [
+        "Split the screen into",
+        "FILMED and CAUGHT"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "Keep the depth, trench, and evidence type visible. Then show the proposed physiological boundary around 8,200\u20138,400 meters as a shaded range, not a brick wall.",
+    "args": {
+      "title": "KEEP VISIBLE",
+      "items": [
+        "?The depth",
+        "?The trench",
+        "?The evidence type"
+      ],
+      "note": "Show the proposed boundary as a shaded range, not a brick wall"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "What to notice in the edit",
+    "narration": "This turns the episode into a record audit rather than a simple countdown.",
+    "args": {
+      "lines": [
+        "This turns the episode",
+        "into a record audit",
+        "rather"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "timeline",
+    "seconds": 7.86,
+    "heading": "Evidence limit",
+    "narration": "The 8,336-meter animal was probably a known snailfish or a new endemic species because no physical specimen was taken.",
+    "args": {
+      "events": [
+        [
+          1970,
+          "Cusk-eel trawl reached deeper, with uncertainty"
+        ],
+        [
+          2022,
+          "Snailfish filmed at 8,336 metres"
+        ],
+        [
+          2023,
+          "Peer-reviewed description published"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Evidence limit",
+    "narration": "A 1970 cusk-eel trawl reached deeper, but NOAA notes uncertainty about where in the trawl path the fish was caught.",
+    "args": {
+      "lines": [
+        "A 1970 cusk-eel trawl",
+        "reached deeper, but NOAA",
+        "notes uncertainty"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "timeline",
+    "seconds": 7.03,
+    "heading": "Evidence limit",
+    "narration": "Research suggests a fish depth boundary around 8,200\u20138,400 meters, but a future observation could refine the range.",
+    "args": {
+      "events": [
+        [
+          1970,
+          "Cusk-eel trawl reached deeper, with uncertainty"
+        ],
+        [
+          2022,
+          "Snailfish filmed at 8,336 metres"
+        ],
+        [
+          2023,
+          "Peer-reviewed description published"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "depth_descent",
+    "seconds": 7.86,
+    "heading": "Closing",
+    "narration": "The deepest-fish record is not one number. It is a chain of evidence: depth, camera, specimen, trench, and identification.",
+    "args": {
+      "to_depth": 8336,
+      "label": "THE DEEPEST FISH RECORDED ON VIDEO"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Closing",
+    "narration": "Keeping those pieces separate makes the record more credible\u2014and makes the remaining kilometer to Challenger Deep even more biologically interesting.",
+    "args": {
+      "lines": [
+        "Keeping those pieces separate",
+        "makes the record more",
+        "credible"
+      ]
+    },
+    "from": "directive-rhythm"
+  }
+]

@@ -1,0 +1,863 @@
+[
+  {
+    "segment": "stat_card",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "Hydrothermal vent fluid can exceed 340 degrees Celsius and remain liquid. The boiling point you learned at sea level is not a universal switch. Pressure moves it.",
+    "args": {
+      "value": "340",
+      "unit": "DEGREES CELSIUS",
+      "caption": "Vent fluid can exceed 340 degrees Celsius and remain liquid",
+      "source": "NOAA"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 3.5,
+    "heading": "Title card",
+    "narration": "Why does black-smoker water not boil?",
+    "args": {
+      "lines": [
+        "Why does black-smoker water",
+        "not boil?"
+      ]
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "pressure_gauge",
+    "seconds": 8.69,
+    "heading": "One hundred degrees is not a universal boiling point",
+    "narration": "The familiar boiling point of water, one hundred degrees Celsius, belongs to a specific pressure: roughly one atmosphere at sea level.",
+    "args": {
+      "depth_m": 3000
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "One hundred degrees is not a universal boiling point",
+    "narration": "Boiling begins when vapor bubbles can exist against the surrounding pressure. Increase that pressure and the temperature required for stable vapor rises.",
+    "args": {
+      "title": "WHY PRESSURE MOVES THE BOILING POINT",
+      "stages": [
+        "Boiling begins when vapor bubbles can exist against the surrounding pressure",
+        "Increase that pressure"
+      ],
+      "conclusion": "The temperature required for stable vapor rises"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 8.28,
+    "heading": "One hundred degrees is not a universal boiling point",
+    "narration": "Hydrothermal vents lie beneath kilometers of seawater. At two or three thousand meters, the surrounding pressure is hundreds of atmospheres.",
+    "args": {
+      "title": "WHY THE FLUID STAYS LIQUID",
+      "stages": [
+        "Hydrothermal vents lie beneath kilometers of seawater",
+        "The surrounding pressure is hundreds of atmospheres",
+        "Vent fluid can exceed 340 degrees Celsius"
+      ],
+      "conclusion": "The fluid stays dense and liquid-like instead of flashing into steam"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 5.79,
+    "heading": "One hundred degrees is not a universal boiling point",
+    "narration": "NOAA reports vent fluid above 340 degrees Celsius, and some measured systems are hotter.",
+    "args": {
+      "subject": "black_smoker",
+      "label": "Hydrothermal vents",
+      "pick": 0
+    },
+    "from": "directive-rhythm+species-section"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "One hundred degrees is not a universal boiling point",
+    "narration": "Under that pressure the fluid can remain dense and liquid-like instead of flashing into steam the way it would in an open pot.",
+    "args": {
+      "title": "WHY THE FLUID STAYS LIQUID",
+      "stages": [
+        "Hydrothermal vents lie beneath kilometers of seawater",
+        "The surrounding pressure is hundreds of atmospheres",
+        "Vent fluid can exceed 340 degrees Celsius"
+      ],
+      "conclusion": "The fluid stays dense and liquid-like instead of flashing into steam"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "One hundred degrees is not a universal boiling point",
+    "narration": "Salts and dissolved chemicals alter the phase behavior further. The first open loop is origin: the vent is not a pipe connected to magma. The fluid usually begins as ordinary seawater entering fractured ocean crust.",
+    "args": {
+      "title": "WHAT ELSE ALTERS THE PHASE BEHAVIOR",
+      "items": [
+        "?Salts",
+        "?Dissolved chemicals"
+      ],
+      "note": "The vent is not a pipe connected to magma"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 9.0,
+    "heading": "Producer POV",
+    "narration": "I used to hear 'water hotter than boiling that does not boil' as a magic trick. The pressure explanation makes it more impressive, not less.",
+    "args": {
+      "text": "I used to hear 'water hotter than boiling that does not boil' as a magic trick. The pressure explanation makes it more impressive, not less.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "A circulation system inside the crust",
+    "narration": "Seawater percolates down through cracks near spreading centers and volcanic regions. As it travels through hot rock, it warms and reacts chemically.",
+    "args": {
+      "lines": [
+        "Seawater percolates down through",
+        "cracks near spreading centers",
+        "and volcanic"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "A circulation system inside the crust",
+    "narration": "Magnesium can be removed. Metals and sulfur-bearing compounds enter solution. The heated fluid becomes buoyant and rises through fractures until it exits the seafloor.",
+    "args": {
+      "title": "WHAT THE ROCK-WATER REACTIONS DO",
+      "items": [
+        "?Magnesium can be removed",
+        "?Metals enter solution",
+        "?Sulfur-bearing compounds enter solution"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "A circulation system inside the crust",
+    "narration": "The route can extend through a complex subsurface network, so temperature and chemistry differ from vent to vent. The chimney is built by the fluid it channels.",
+    "args": {
+      "term": "WHY VENTS DIFFER FROM ONE ANOTHER",
+      "includes": [
+        "A complex subsurface network",
+        "Temperature and chemistry that differ from vent to vent"
+      ],
+      "excludes": [
+        "One route shared by every vent"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 5.79,
+    "heading": "A circulation system inside the crust",
+    "narration": "This is why a black smoker is not a miniature underwater volcano ejecting ash.",
+    "args": {
+      "term": "A BLACK SMOKER",
+      "includes": [
+        "A hydrothermal circulation outlet"
+      ],
+      "excludes": [
+        "A miniature underwater volcano ejecting ash",
+        "A pipe connected to magma"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 9.0,
+    "heading": "A circulation system inside the crust",
+    "narration": "It is a hydrothermal circulation outlet. The pressure keeps the fluid from ordinary boiling, while the rock-water reactions load it with dissolved material.",
+    "args": {
+      "subject": "black_smoker",
+      "label": "black smoker",
+      "pick": 1
+    },
+    "from": "directive-rhythm+species-section"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.86,
+    "heading": "A circulation system inside the crust",
+    "narration": "The next loop begins the instant that clear, hot, mineral-rich fluid meets near-freezing seawater and appears to turn black.",
+    "args": {
+      "term": "A BLACK SMOKER",
+      "includes": [
+        "A hydrothermal circulation outlet"
+      ],
+      "excludes": [
+        "A miniature underwater volcano ejecting ash",
+        "A pipe connected to magma"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.69,
+    "heading": "The smoke is a mineral cloud",
+    "narration": "The dark plume consists largely of tiny metal-sulfide particles. When the hot fluid mixes with cold, oxygenated seawater, dissolved metals precipitate.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.28,
+    "heading": "The smoke is a mineral cloud",
+    "narration": "The particles scatter light like smoke and settle onto chimney surfaces, building structures that can grow, branch, collapse, and reform.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.86,
+    "heading": "The smoke is a mineral cloud",
+    "narration": "Black smokers are commonly rich in iron sulfides; white smokers carry different mineral mixtures that produce a lighter appearance.",
+    "args": {
+      "term": "BLACK AND WHITE SMOKERS",
+      "includes": [
+        "Black smokers are commonly rich in iron sulfides",
+        "White smokers carry different mineral mixtures"
+      ],
+      "excludes": [
+        "Combustion",
+        "Anything that needs oxygen to burn"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 8.69,
+    "heading": "The smoke is a mineral cloud",
+    "narration": "There is no combustion. Nothing needs oxygen to burn. The word smoker is visual shorthand. Chemistry also changes rapidly across centimeters.",
+    "args": {
+      "term": "Smoker",
+      "meaning": "Visual shorthand",
+      "boundary": "There is no combustion, and nothing needs oxygen to burn",
+      "source": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "The smoke is a mineral cloud",
+    "narration": "Fluid near the outlet may be lethal to most animals, while a short distance away mixing lowers temperature and supplies both reduced chemicals and oxygen.",
+    "args": {
+      "term": "CHEMISTRY CHANGES ACROSS CENTIMETERS",
+      "includes": [
+        "A short distance away, mixing lowers temperature",
+        "Mixing supplies both reduced chemicals and oxygen"
+      ],
+      "excludes": [
+        "Fluid near the outlet, which may be lethal to most animals"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "The smoke is a mineral cloud",
+    "narration": "That sharp gradient creates the energy opportunity for microbes. The unresolved question is how an ecosystem can flourish around a source that is simultaneously hot, toxic, and completely separated from sunlight.",
+    "args": {
+      "title": "WHERE THE ENERGY OPPORTUNITY APPEARS",
+      "stages": [
+        "Fluid near the outlet is lethal to most animals",
+        "A short distance away, mixing lowers temperature",
+        "Mixing supplies reduced chemicals and oxygen"
+      ],
+      "conclusion": "That sharp gradient creates the energy opportunity for microbes"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Life occupies the boundary, not the furnace",
+    "narration": "Chemosynthetic microbes oxidize compounds such as hydrogen sulfide and use the released energy to fix carbon.",
+    "args": {
+      "lines": [
+        "Chemosynthetic microbes oxidize compounds",
+        "such as hydrogen sulfide",
+        "and use"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 7.45,
+    "heading": "Life occupies the boundary, not the furnace",
+    "narration": "Some live freely in microbial mats. Others live inside tubeworms, mussels, clams, or on the bodies of crustaceans.",
+    "args": {
+      "title": "WHERE THE CHEMOSYNTHETIC MICROBES LIVE",
+      "items": [
+        "?Freely in microbial mats",
+        "?Inside tubeworms",
+        "?Inside mussels and clams",
+        "?On the bodies of crustaceans"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 7.45,
+    "heading": "Life occupies the boundary, not the furnace",
+    "narration": "The visible animals position themselves in mixing zones where chemicals are available but temperature and toxicity remain tolerable.",
+    "args": {
+      "subject": "snailfish",
+      "label": "snailfish",
+      "pick": 0
+    },
+    "from": "directive-rhythm+species-section"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Life occupies the boundary, not the furnace",
+    "narration": "A camera may frame a tubeworm beside a black plume, making it look as though the animal is bathing in 340-degree water.",
+    "args": {
+      "term": "WHERE THE ANIMALS ARE",
+      "includes": [
+        "Mixing zones where chemicals are available",
+        "Where temperature and toxicity remain tolerable"
+      ],
+      "excludes": [
+        "Bathing in 340-degree water"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Life occupies the boundary, not the furnace",
+    "narration": "It is not. Temperature can fall dramatically over a short distance as vent fluid mixes with seawater. The most accurate story therefore joins physics, geology, chemistry, and biology.",
+    "args": {
+      "lines": [
+        "It is not. Temperature",
+        "can fall dramatically over",
+        "a short"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 6.62,
+    "heading": "Life occupies the boundary, not the furnace",
+    "narration": "Pressure raises the boiling point. Crustal circulation heats and alters seawater. Cooling precipitates the mineral smoke.",
+    "args": {
+      "title": "FOUR FIELDS, ONE STORY",
+      "steps": [
+        [
+          "Physics",
+          "pressure raises the boiling point"
+        ],
+        [
+          "Geology",
+          "crustal circulation heats and alters seawater"
+        ],
+        [
+          "Chemistry",
+          "cooling precipitates the mineral smoke"
+        ],
+        [
+          "Biology",
+          "microbial metabolism captures chemical energy"
+        ]
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 9.0,
+    "heading": "Life occupies the boundary, not the furnace",
+    "narration": "Microbial metabolism captures chemical energy. Next comes an animal living far deeper than most vent communities: a snailfish recorded at 8,336 meters.",
+    "args": {
+      "subject": "snailfish",
+      "label": "snailfish",
+      "pick": 1
+    },
+    "from": "directive-rhythm+species-beat"
+  },
+  {
+    "segment": "magnitude_bar",
+    "seconds": 7.45,
+    "heading": "Boiling is a pressure question",
+    "narration": "At sea level, water boils near 100 degrees Celsius because its vapor pressure can match the surrounding atmosphere.",
+    "args": {
+      "title": "BOILING POINT AND VENT FLUID",
+      "unit": "degrees Celsius",
+      "items": [
+        [
+          "Water at sea level",
+          "100"
+        ],
+        [
+          "Vent fluid can exceed",
+          "340"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Boiling is a pressure question",
+    "narration": "Deep underwater, the surrounding pressure is much greater, so liquid water can remain stable at far higher temperatures.",
+    "args": {
+      "lines": [
+        "Deep underwater, the surrounding",
+        "pressure is much greater,",
+        "so liquid"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "magnitude_bar",
+    "seconds": 5.38,
+    "heading": "Boiling is a pressure question",
+    "narration": "Seawater moves through cracks, is heated near magma, reacts with rock, and rises.",
+    "args": {
+      "title": "BOILING POINT AND VENT FLUID",
+      "unit": "degrees Celsius",
+      "items": [
+        [
+          "Water at sea level",
+          "100"
+        ],
+        [
+          "Vent fluid can exceed",
+          "340"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "Boiling is a pressure question",
+    "narration": "When the hot fluid meets near-freezing seawater, dissolved minerals precipitate into dark particles and build black-smoker chimneys.",
+    "args": {
+      "lines": [
+        "When the hot fluid",
+        "meets near-freezing seawater, dissolved",
+        "minerals precipitate"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Where the usable energy appears",
+    "narration": "The hottest fluid is not the habitat most animals occupy. Life clusters where vent fluid mixes with cold seawater and creates gradients in temperature and chemistry.",
+    "args": {
+      "variant": 2
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 4.97,
+    "heading": "Where the usable energy appears",
+    "narration": "Microbes use reduced chemicals from the vent system to build organic matter.",
+    "args": {
+      "variant": 3
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "Where the usable energy appears",
+    "narration": "Larger organisms depend directly or indirectly on that microbial production. The energy story therefore sits at the boundary, not inside the hottest jet.",
+    "args": {
+      "title": "WHAT THE MICROBES SUPPORT",
+      "stages": [
+        "Microbes use reduced chemicals from the vent system",
+        "They build organic matter"
+      ],
+      "conclusion": "Larger organisms depend on that microbial production, directly or indirectly"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 7.03,
+    "heading": "Where the usable energy appears",
+    "narration": "Black smokers also change with time. Flow paths clog or shift. Chimneys grow, break, and become inactive.",
+    "args": {
+      "title": "HOW A VENT FIELD CHANGES WITH TIME",
+      "items": [
+        "?Flow paths clog or shift",
+        "?Chimneys grow",
+        "?Chimneys break",
+        "?Chimneys become inactive"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 6.62,
+    "heading": "Where the usable energy appears",
+    "narration": "A vent field can contain hot focused flow, diffuse seepage, and older mineral structures at once.",
+    "args": {
+      "title": "WHAT A VENT FIELD CAN CONTAIN AT ONCE",
+      "items": [
+        "?Hot focused flow",
+        "?Diffuse seepage",
+        "?Older mineral structures"
+      ],
+      "note": "Avoid one perfect chimney standing in for every vent"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Where the usable energy appears",
+    "narration": "The video should avoid one perfect chimney standing in for every vent.",
+    "args": {
+      "lines": [
+        "The video should avoid",
+        "one perfect chimney standing"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 7.45,
+    "heading": "Where the usable energy appears",
+    "narration": "Use the cutaway to show circulation through cracks, then return to the seafloor and show multiple mixing zones.",
+    "args": {
+      "title": "WHAT A VENT FIELD CAN CONTAIN AT ONCE",
+      "items": [
+        "?Hot focused flow",
+        "?Diffuse seepage",
+        "?Older mineral structures"
+      ],
+      "note": "Avoid one perfect chimney standing in for every vent"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Where the usable energy appears",
+    "narration": "This makes the non-boiling water part of a larger system rather than a single physics trick.",
+    "args": {
+      "lines": [
+        "This makes the non-boiling",
+        "water part of a",
+        "larger system"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 7.45,
+    "heading": "The temperature card",
+    "narration": "Use 'can exceed 340 degrees Celsius' rather than turning one value into the temperature of every black smoker.",
+    "args": {
+      "value": "340",
+      "unit": "DEGREES CELSIUS",
+      "caption": "'Can exceed' \u2014 not the temperature of every black smoker",
+      "source": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The temperature card",
+    "narration": "Pair it with the pressure explanation and a visible mixing gradient. The animals belong around the gradient, not inside the hottest fluid.",
+    "args": {
+      "lines": [
+        "Pair it with the",
+        "pressure explanation and a",
+        "visible mixing"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 8.69,
+    "heading": "The temperature card",
+    "narration": "That correction should survive into the thumbnail, description, and chapters so the packaging does not overstate what the script carefully explains.",
+    "args": {
+      "value": "340",
+      "unit": "DEGREES CELSIUS",
+      "caption": "'Can exceed' \u2014 not the temperature of every black smoker",
+      "source": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "The word smoke",
+    "narration": "The plume looks like smoke because minerals precipitate when hot fluid meets cold seawater.",
+    "args": {
+      "lines": [
+        "The plume looks like",
+        "smoke because minerals precipitate",
+        "when hot"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "The word smoke",
+    "narration": "It is not combustion. That distinction belongs in the first explanation, not buried at the end.",
+    "args": {
+      "lines": [
+        "It is not combustion.",
+        "That distinction belongs in",
+        "the first"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "The word smoke",
+    "narration": "The same visual can then show chimney growth: dissolved material becomes particles, particles settle, and layers of mineral structure accumulate around the flow.",
+    "args": {
+      "title": "HOW A CHIMNEY GROWS",
+      "stages": [
+        "Dissolved material becomes particles",
+        "Particles settle"
+      ],
+      "conclusion": "Layers of mineral structure accumulate around the flow"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.79,
+    "heading": "The closing correction",
+    "narration": "Do not use stock footage of smoke, fire, or lava to illustrate the plume.",
+    "args": {
+      "variant": 4
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.38,
+    "heading": "The closing correction",
+    "narration": "Those images teach combustion and open-air boiling, which are exactly the wrong mechanisms.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The closing correction",
+    "narration": "Original mineral-particle animation is both safer for copyright and better science. The final shot should move from the hot jet into the cooler biological zone, making the boundary between geology and life visible.",
+    "args": {
+      "lines": [
+        "Original mineral-particle animation is",
+        "both safer for copyright",
+        "and better"
+      ]
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Final editorial note",
+    "narration": "It also gives the viewer a clean mental model: pressure changes boiling conditions, chemistry changes the water, cooling reveals the minerals, and gradients make life possible.",
+    "args": {
+      "lines": [
+        "It also gives the",
+        "viewer a clean mental",
+        "model: pressure"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Final editorial note",
+    "narration": "It also gives the viewer a clean mental model: pressure changes boiling conditions, chemistry changes the water, cooling reveals the minerals, and gradients make life possible.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "pressure_gauge",
+    "seconds": 8.28,
+    "heading": "What to notice in the edit",
+    "narration": "Use a pressure-versus-boiling diagram and a cutaway through ocean crust. Do not depict the vent as a hollow underwater volcano.",
+    "args": {
+      "depth_m": 3000
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 8.28,
+    "heading": "What to notice in the edit",
+    "narration": "Show seawater circulation, heating, chemical reaction, and mineral precipitation. The black plume is a particle cloud, not smoke from combustion.",
+    "args": {
+      "title": "WHAT THE CUTAWAY SHOULD SHOW",
+      "steps": [
+        [
+          "Seawater circulation",
+          ""
+        ],
+        [
+          "Heating",
+          ""
+        ],
+        [
+          "Chemical reaction",
+          ""
+        ],
+        [
+          "Mineral precipitation",
+          ""
+        ]
+      ],
+      "note": "The black plume is a particle cloud, not smoke from combustion"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "What to notice in the edit",
+    "narration": "This physics-first structure should look completely different from the preceding animal episode.",
+    "args": {
+      "lines": [
+        "This physics-first structure should",
+        "look completely different from",
+        "the preceding"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "Vent temperatures vary, and NOAA's current public fact page says seawater may exceed 340\u00b0C\u2014not that every black smoker is exactly 340\u00b0C or 400\u00b0C.",
+    "args": {
+      "term": "WHAT NOAA SAYS",
+      "includes": [
+        "Seawater may exceed 340 degrees Celsius"
+      ],
+      "excludes": [
+        "That every black smoker is exactly 340",
+        "That every black smoker is 400"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "The fluid can also enter supercritical regimes depending on pressure, temperature, and salinity; this short script does not model that full phase chemistry.",
+    "args": {
+      "title": "WHAT THIS SHORT SCRIPT DOES NOT MODEL",
+      "items": [
+        "-Supercritical regimes",
+        "?Which depend on pressure",
+        "?On temperature",
+        "?On salinity"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "Evidence limit",
+    "narration": "Animals do not live inside the hottest jet. They occupy gradients and mixing zones around the vent.",
+    "args": {
+      "lines": [
+        "Animals do not live",
+        "inside the hottest jet.",
+        "They occupy"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "depth_descent",
+    "seconds": 4.97,
+    "heading": "Closing",
+    "narration": "Black-smoker water does not ignore boiling. It obeys a different pressure condition.",
+    "args": {
+      "to_depth": 3000,
+      "label": "THE HOT FLUID MEETS THE COLD OCEAN"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Closing",
+    "narration": "The hot fluid, cold ocean, and dissolved minerals meet in seconds\u2014and the chimney records that meeting layer by layer.",
+    "args": {
+      "lines": [
+        "The hot fluid, cold",
+        "ocean, and dissolved minerals",
+        "meet"
+      ]
+    },
+    "from": "directive-rhythm"
+  }
+]
