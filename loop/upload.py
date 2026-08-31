@@ -110,7 +110,15 @@ def build_payload(item: dict) -> dict:
     path = ROOT / item.get("work_copy", item["script"])
     text = path.read_text() if path.exists() else (ROOT / item["script"]).read_text()
 
-    title = item["question"].strip().rstrip("?") + "?"
+    # Sentence case. The question arrives from research/publish_order.json, whose
+    # `query` field is a lowercase search string - it is a query, not a headline.
+    # Uploading it verbatim put "what is the deepest part of the ocean?" on the
+    # channel, which the site's own video contract caught by asserting the video
+    # title equals the question record. Fix it here, at upload time: the credential
+    # holds youtube.upload and youtube.readonly only, so a title cannot be corrected
+    # afterwards - videos.update returns 403 without the broader youtube scope.
+    title = item["question"].strip().rstrip("?")
+    title = (title[:1].upper() + title[1:] if title else title) + "?"
     if len(title) > TITLE_MAX:
         title = title[:TITLE_MAX - 1].rsplit(" ", 1)[0] + "?"
 
