@@ -1,8 +1,8 @@
 {
-  "state": "closed",
-  "tripped_at": null,
-  "cause": null,
-  "detail": null,
+  "state": "tripped",
+  "tripped_at": "2026-08-31T10:10:50+00:00",
+  "cause": "validator",
+  "detail": "V1 directive-truth=FAIL(1)",
   "history": [
     {
       "event": "trip",
@@ -27,6 +27,12 @@
       "at": "2026-08-30T21:13:28+00:00",
       "cleared_cause": null,
       "note": "clean state"
+    },
+    {
+      "event": "trip",
+      "at": "2026-08-31T10:10:50+00:00",
+      "cause": "validator",
+      "detail": "V1 directive-truth=FAIL(1)"
     }
   ]
 }
