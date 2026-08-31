@@ -44,8 +44,21 @@ AUTH_URL = "https://accounts.google.com/o/oauth2/v2/auth"
 CHANNELS_URL = "https://www.googleapis.com/youtube/v3/channels"
 
 # youtube.upload to publish; youtube.readonly to confirm which channel we are on.
+# yt-analytics.readonly added 2026-08-31. Without it loop/measure.py gets a 403
+# every Friday and the measurement lane is inert - no retention, no RPM, and the
+# monthly review has nothing to read. Retention is the one measurement that can
+# tell us the ~8 minute format is wrong, so a silent 403 there is expensive.
+#
+# It also needs the YouTube Analytics API enabled on Cloud project 681552889891;
+# the scope alone is not enough and the failure looks identical either way.
+#
+# NOTE: adding a scope invalidates nothing, but the existing refresh token does
+# NOT gain it - re-running auth/youtube_auth.py is required, and until that
+# happens measure.py will keep 403ing. check_auth.py reports which scopes the
+# live token actually carries; trust that over this list.
 SCOPES = ["https://www.googleapis.com/auth/youtube.upload",
-          "https://www.googleapis.com/auth/youtube.readonly"]
+          "https://www.googleapis.com/auth/youtube.readonly",
+          "https://www.googleapis.com/auth/yt-analytics.readonly"]
 
 EXPECTED_HANDLE = "@howweknowdeep"
 
@@ -132,8 +145,14 @@ def load(refresh: bool = True) -> dict:
     # Reuse a still-valid access token; 120s of slack for clock skew.
     if not refresh and tok.get("access_token") and \
             tok.get("expires_at", 0) > time.time() + 120:
+        # `scopes` is passed through so callers can detect scope DRIFT, not just
+        # expiry. Without it, youtube_auth.py read "not expired" as "authorised"
+        # and skipped re-consent after yt-analytics.readonly was added to SCOPES -
+        # the token stayed valid for the two scopes it had, the new one was never
+        # granted, and measure.py kept returning 403 behind a green auth run.
         return {"status": "ok", "access_token": tok["access_token"],
                 "obtained_at": tok.get("obtained_at"),
+                "scopes": tok.get("scopes") or [],
                 "refresh_token_age_days": _age_days(tok)}
 
     data = urllib.parse.urlencode({
@@ -172,6 +191,7 @@ def load(refresh: bool = True) -> dict:
     safe_write(TOKEN_FILE, tok)
     return {"status": "ok", "access_token": tok["access_token"],
             "obtained_at": tok.get("obtained_at"),
+            "scopes": tok.get("scopes") or [],
             "refresh_token_age_days": _age_days(tok)}
 
 

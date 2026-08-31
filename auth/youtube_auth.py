@@ -203,11 +203,31 @@ def main() -> int:
               "client instead.")
     print(f"  client_id: {T.redact(client['client_id'], 12)}")
 
-    # Already authorised? Then this run must not re-prompt.
+    # Already authorised? Then this run must not re-prompt - UNLESS the stored
+    # token is missing a scope T.SCOPES now asks for.
+    #
+    # 2026-08-31: yt-analytics.readonly was added to T.SCOPES so loop/measure.py
+    # could pull retention. Re-running this script printed "A valid token is
+    # already stored - not re-prompting" and exited 0, because "valid" was being
+    # read as "not expired". The token was indeed valid - for the two scopes it
+    # already had - so the new scope was never granted and measure.py kept
+    # returning 403. A check that passes while the thing it guards is wrong.
+    #
+    # Google does not widen an existing grant. A new scope needs a new consent,
+    # so scope drift must force the prompt.
     existing = T.load()
     if existing["status"] == "ok":
-        print("\n  A valid token is already stored — not re-prompting.")
-        return report(existing["access_token"], existing)
+        granted = set(existing.get("scopes") or [])
+        missing = [s for s in T.SCOPES if s not in granted] if granted else []
+        if granted and missing:
+            print("\n  A stored token exists, but it is missing "
+                  f"{len(missing)} scope(s) this build now requires:")
+            for s in missing:
+                print(f"    - {s.rsplit('/', 1)[1]}")
+            print("  Google will not widen an existing grant, so re-consenting now.")
+        else:
+            print("\n  A valid token is already stored — not re-prompting.")
+            return report(existing["access_token"], existing)
     if existing["status"] == "expired_refresh":
         print("\n  The stored refresh token has expired; re-consenting now.")
 

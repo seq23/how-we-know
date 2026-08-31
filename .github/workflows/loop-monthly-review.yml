@@ -1,0 +1,35 @@
+name: loop · 1st 07:00 · monthly review
+# Reads a month of measurement and says what to change.
+#
+# Runs on the 1st so it reviews a completed month, not a partial one. 07:12
+# rather than 07:00 because every scheduled job on the planet lands on the hour.
+#
+# This exists because measure.py writes numbers into a JSON file and nobody reads
+# a JSON file. A finding nobody sees is the same as no finding.
+on:
+  schedule:
+    - cron: '12 7 1 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+  actions: write
+
+concurrency:
+  group: main-automation
+  cancel-in-progress: false
+
+jobs:
+  monthly:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Install loop dependencies
+        run: pip install -r requirements-loop.txt
+      - name: Review the month
+        run: bin/loop-stage.sh monthly-review loop/monthly.py
