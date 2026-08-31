@@ -33,3 +33,51 @@ jobs:
         run: pip install -r requirements-loop.txt
       - name: Review the month
         run: bin/loop-stage.sh monthly-review loop/monthly.py
+
+      # The review is worthless sitting in a file nobody opens. loop-stage.sh only
+      # raises an issue on a NAMED STOP (exit 3), and this stage deliberately always
+      # exits 0 - thin data and an applied change are both normal operation, not
+      # faults. So the report gets its own delivery: a NEW issue each month, which is
+      # a fresh email, rather than a comment on a thread that stops notifying.
+      #
+      # `if: always()` because the report is the point. If the stage itself failed,
+      # that is exactly the month she most needs to see.
+      - name: Deliver the report
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          MONTH="$(date -u +%Y-%m)"
+          FILE="loop/state/monthly/${MONTH}.md"
+          if [ ! -s "$FILE" ]; then
+            echo "no report at $FILE - the stage did not produce one"
+            exit 1
+          fi
+          BODY="$(mktemp)"
+          cat "$FILE" > "$BODY"
+          {
+            echo
+            echo "---"
+            echo
+            echo "Decided automatically. Any change above is already applied to"
+            echo "\`loop/config.json\` and is live for the next drafting cycle -"
+            echo "nothing is waiting on you. Overrule by editing that file."
+            echo
+            echo "Run: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          } >> "$BODY"
+
+          gh issue create \
+            --title "Monthly review — ${MONTH}" \
+            --body-file "$BODY" \
+            --label monthly-review >/dev/null 2>&1 \
+            || gh issue create --title "Monthly review — ${MONTH}" --body-file "$BODY" >/dev/null
+          echo "delivered the ${MONTH} review"
+
+          # Close last month's so the issue list stays a signal rather than a pile.
+          PREV="$(date -u -d '1 month ago' +%Y-%m 2>/dev/null || date -u -v-1m +%Y-%m)"
+          OLD="$(gh issue list --state open --search "Monthly review — ${PREV} in:title" \
+                 --json number --jq '.[0].number' 2>/dev/null)"
+          if [ -n "$OLD" ] && [ "$OLD" != "null" ]; then
+            gh issue close "$OLD" --comment "Superseded by the ${MONTH} review." >/dev/null 2>&1 \
+              && echo "closed #$OLD"
+          fi
