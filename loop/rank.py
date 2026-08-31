@@ -279,10 +279,23 @@ def main() -> None:
                 f"RUNWAY_{rw['level'].upper()}",
                 rw["message"],
                 detail=rw,
-                unblock="Run the authoring lane to refill inventory "
-                        "(loop/author.py), or add scripts by hand. The week "
-                        "above still ships - publishing is never halted to "
-                        "protect the backlog, because that IS going dark.")
+                unblock=(
+                    "TWO things, and the second is easy to miss.\n\n"
+                    "1. Refill scripts: the authoring lane (loop/author.py) "
+                    "writes them, or add them by hand.\n\n"
+                    "2. BATCH THE VOICE AND RENDER YOURSELF. Those stages "
+                    "cannot run in GitHub Actions - the voice model is local "
+                    "and the upload credential lives in .secrets/, not in "
+                    "GitHub - and the Mac-side launchd jobs are deliberately "
+                    "NOT installed (decided 2026-08-31: a 6am job on a laptop "
+                    "that sleeps would fail quietly some weeks). A script "
+                    "existing does NOT mean a video exists. One overnight "
+                    "pass produces roughly eight weeks:\n\n"
+                    "    cd ~/GitHub/how-we-know\n"
+                    "    ./voice/narrate-all.sh\n"
+                    "    nohup caffeinate -i -m bash bin/assemble-all.sh &\n\n"
+                    "The week above still ships - publishing is never halted "
+                    "to protect the backlog, because that IS going dark."))
 
 
 if __name__ == "__main__":

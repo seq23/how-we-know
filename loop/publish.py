@@ -14,7 +14,9 @@ site build reads the feed; the loop does not reach into another component's
 files to change them.
 """
 from __future__ import annotations
+import cadence
 
+import datetime as _dt
 import json
 import sys
 import urllib.error
@@ -54,10 +56,21 @@ def read_status(token: str, video_id: str) -> dict:
             "title": items[0].get("snippet", {}).get("title")}
 
 
-def set_privacy(token: str, video_id: str, privacy: str) -> None:
-    body = json.dumps({"id": video_id,
-                       "status": {"privacyStatus": privacy,
-                                  "selfDeclaredMadeForKids": False}}).encode()
+def set_privacy(token: str, video_id: str, privacy: str,
+                publish_at: str | None = None) -> None:
+    """Flip a video, or schedule it.
+
+    `publish_at` is an RFC3339 UTC timestamp. YouTube requires privacyStatus to
+    stay `private` alongside it; the video goes public by itself at that moment.
+    Passing publish_at with privacyStatus=public is rejected by the API.
+    """
+    status = {"selfDeclaredMadeForKids": False}
+    if publish_at:
+        status["privacyStatus"] = "private"
+        status["publishAt"] = publish_at
+    else:
+        status["privacyStatus"] = privacy
+    body = json.dumps({"id": video_id, "status": status}).encode()
     req = urllib.request.Request(API, data=body, method="PUT", headers={
         "Authorization": f"Bearer {token}",
         "Content-Type": "application/json; charset=UTF-8"})
@@ -143,10 +156,35 @@ def main() -> None:
                         "or set the repo secrets. See docs/loop.md § OAuth.")
 
         token = up.access_token(creds)
-        flipped, locked = [], []
-        for it, rec in eligible:
+        # SPACE THE WEEK. This loop used to flip every eligible video at once, so
+        # a cadence of 2/week meant both landing at 09:00 Friday - which is not a
+        # cadence, it is a burst followed by six silent days. The algorithm reads
+        # consistency, and a viewer who subscribes after one video should not get
+        # the next one the same morning.
+        #
+        # The first goes public now; each subsequent one is scheduled 7/cadence
+        # days out (3 days at cadence 2, 2 at cadence 3). Order follows
+        # research/publish_order.json, which is already the ranking - so the
+        # strongest video takes the live slot rather than whichever happened to
+        # finish uploading first.
+        per_week = max(1, int(cadence.effective()))
+        spacing_days = max(1, round(7 / per_week))
+        now = _dt.datetime.now(_dt.timezone.utc)
+
+        flipped, locked, scheduled = [], [], []
+        for n, (it, rec) in enumerate(eligible):
+            publish_at = None
+            if n:
+                publish_at = (now + _dt.timedelta(days=n * spacing_days)) \
+                    .replace(microsecond=0).isoformat().replace("+00:00", "Z")
             try:
-                set_privacy(token, rec["video_id"], "public")
+                set_privacy(token, rec["video_id"], "public", publish_at)
+                if publish_at:
+                    it["status"] = "scheduled"
+                    it["publish_at"] = publish_at
+                    scheduled.append({"slug": it["slug"], "publish_at": publish_at})
+                    st.note(f"{it['slug']}: scheduled for {publish_at}")
+                    continue
             except urllib.error.HTTPError as e:
                 body = e.read().decode("utf-8", "ignore")[:300]
                 if "forbidden" in body.lower() or e.code == 403:
