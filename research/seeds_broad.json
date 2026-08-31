@@ -1,0 +1,88 @@
+{
+  "_purpose": "Comparably-seeded candidate domains for a data-driven taxonomy. Every domain gets EXACTLY the same seed budget and the same seed shape, so counts are comparable. Unequal seeding produces a fake winner.",
+  "_seed_shape": "8 seeds per domain: 2 generic domain nouns, 3 question stems (why/how/what), 3 concrete named entities.",
+  "_authored": "2026-08-30",
+  "_note": "Seed STRINGS are authored by hand. Every mined result is a real autocomplete response; nothing downstream is model-generated.",
+  "domains": {
+    "deep-sea-ocean-science": {
+      "in_current_taxonomy": true,
+      "seeds": ["deep sea", "ocean science", "why deep sea creatures", "how deep is the ocean", "what lives in the deep sea", "mariana trench", "anglerfish", "bioluminescence"]
+    },
+    "ocean-technology": {
+      "in_current_taxonomy": true,
+      "seeds": ["submersible", "underwater robot", "why do submarines implode", "how does sonar work", "what is an rov", "deep sea submersible alvin", "sonar mapping", "underwater drone"]
+    },
+    "marine-geology": {
+      "in_current_taxonomy": true,
+      "seeds": ["seafloor", "ocean trench", "why is the ocean floor spreading", "how is the seafloor mapped", "what is a hydrothermal vent", "mid ocean ridge", "black smoker vent", "subduction zone"]
+    },
+    "expedition-history": {
+      "in_current_taxonomy": true,
+      "seeds": ["expedition", "exploration history", "why did the expedition fail", "how did explorers navigate", "what happened to the expedition", "shackleton endurance", "franklin expedition", "everest expedition"]
+    },
+    "earth-science-geology-volcano": {
+      "in_current_taxonomy": true,
+      "seeds": ["volcano", "plate tectonics", "why do volcanoes erupt", "how do earthquakes happen", "what causes tsunamis", "yellowstone supervolcano", "san andreas fault", "krakatoa eruption"]
+    },
+    "space-astronomy": {
+      "in_current_taxonomy": true,
+      "seeds": ["astronomy", "outer space", "why is space dark", "how do telescopes work", "what is a black hole", "james webb telescope", "voyager probe", "solar eclipse"]
+    },
+    "engineering-failure": {
+      "in_current_taxonomy": true,
+      "seeds": ["engineering failure", "structural collapse", "why do bridges collapse", "how do buildings fall down", "what caused the dam to break", "tacoma narrows bridge", "hyatt regency walkway", "challenger o ring"]
+    },
+    "natural-history-adaptation": {
+      "in_current_taxonomy": true,
+      "seeds": ["animal adaptation", "evolution of animals", "why do animals camouflage", "how do animals survive extreme", "what is convergent evolution", "tardigrade survival", "octopus camouflage", "arctic fox adaptation"]
+    },
+    "archaeology-ancient-tech": {
+      "in_current_taxonomy": true,
+      "seeds": ["archaeology", "ancient technology", "why was the pyramid built", "how did they build the pyramids", "what is roman concrete", "antikythera mechanism", "gobekli tepe", "stonehenge construction"]
+    },
+    "incident-analysis": {
+      "in_current_taxonomy": true,
+      "seeds": ["air crash investigation", "maritime accident", "why did the plane crash", "how do investigators find the cause", "what does the black box record", "titanic sinking cause", "ntsb investigation", "costa concordia"]
+    },
+    "paleontology-extinction": {
+      "in_current_taxonomy": false,
+      "seeds": ["paleontology", "mass extinction", "why did the dinosaurs die", "how are fossils formed", "what killed the dinosaurs", "chicxulub crater", "permian extinction", "trilobite fossil"]
+    },
+    "measurement-and-dating": {
+      "in_current_taxonomy": false,
+      "seeds": ["carbon dating", "scientific measurement", "why is carbon dating accurate", "how do scientists know how old", "what is radiometric dating", "ice core dating", "tree ring dating", "atomic clock accuracy"]
+    },
+    "infrastructure-megaprojects": {
+      "in_current_taxonomy": false,
+      "seeds": ["megaproject", "tunnel construction", "why do tunnels not flood", "how are tunnels built underwater", "what holds up a suspension bridge", "channel tunnel", "hoover dam construction", "panama canal locks"]
+    },
+    "energy-and-power": {
+      "in_current_taxonomy": false,
+      "seeds": ["nuclear reactor", "power grid", "why did chernobyl explode", "how does a nuclear reactor work", "what happens in a blackout", "fukushima meltdown", "fusion reactor iter", "grid frequency"]
+    },
+    "materials-and-manufacturing": {
+      "in_current_taxonomy": false,
+      "seeds": ["how it's made", "materials science", "why is steel stronger", "how are microchips made", "what is carbon fiber made of", "semiconductor fabrication", "glass manufacturing", "damascus steel"]
+    },
+    "physics-fundamentals": {
+      "in_current_taxonomy": false,
+      "seeds": ["physics explained", "speed of light", "why is the sky blue", "how does gravity work", "what is quantum entanglement", "double slit experiment", "time dilation", "absolute zero"]
+    },
+    "polar-extreme-environments": {
+      "in_current_taxonomy": false,
+      "seeds": ["antarctica", "arctic ice", "why is antarctica so cold", "how do people survive antarctica", "what is under the antarctic ice", "lake vostok", "ice sheet melting", "permafrost thaw"]
+    },
+    "weather-and-storms": {
+      "in_current_taxonomy": false,
+      "seeds": ["hurricane", "tornado", "why do hurricanes form", "how do tornadoes form", "what is a derecho", "hurricane eye wall", "storm chasing", "lightning strike science"]
+    },
+    "animal-senses-cognition": {
+      "in_current_taxonomy": false,
+      "seeds": ["animal senses", "animal intelligence", "why can dogs smell so well", "how do bats echolocate", "what colors can animals see", "octopus intelligence", "bird navigation magnetic", "elephant communication"]
+    },
+    "logistics-how-things-move": {
+      "in_current_taxonomy": false,
+      "seeds": ["container ship", "supply chain", "why are ports congested", "how does air traffic control work", "what happens to lost cargo", "ever given suez", "shipping container logistics", "cargo plane loading"]
+    }
+  }
+}

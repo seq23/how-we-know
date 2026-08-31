@@ -27,6 +27,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Install loop dependencies
+        run: pip install -r requirements-loop.txt
       - name: Draft the week, author the shortfall, publish the dashboard
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

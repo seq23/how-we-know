@@ -13,6 +13,7 @@ except ImportError:
     SX = None
 try:
     import segments_ext2 as SX2
+    import segments_species  # grafts species_image onto `segments`
 except ImportError:
     SX2 = None
 

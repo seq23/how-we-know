@@ -1,0 +1,6 @@
+{
+  "_what_this_is": "Slugs of episodes already published, newest last. research/publish_order.py reads this to expire entries from the owner-pinned head and to drop published episodes from the queue.",
+  "_who_writes_it": "The loop, or the owner, after an upload succeeds. Nothing in research/ writes to it.",
+  "_contract": "published: array of script slugs, e.g. \"14-how-big-is-a-colossal-squid\". Unknown slugs are reported, not ignored.",
+  "published": []
+}

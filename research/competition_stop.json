@@ -1,0 +1,25 @@
+{
+  "status": "NAMED_STOP",
+  "name": "YOUTUBE_API_KEY_ABSENT",
+  "what_is_missing": "A YouTube Data API v3 key.",
+  "why_it_cannot_be_worked_around": "Competition scoring needs the top ~20 search results for each query with their view counts, channel subscriber counts and publish dates. The only permitted source is the YouTube Data API. Scraping the search page violates YouTube's Terms of Service and returns unstable markup, so no keyless fallback is implemented and none will be.",
+  "who_must_supply_it": "The owner. The key comes with the Google Cloud project already needed for channel uploads -- enable 'YouTube Data API v3' on that project and create an API key. Free tier, 10,000 quota units/day, no card required.",
+  "how_to_supply_it": [
+    "export YOUTUBE_API_KEY=AIza...",
+    "or write the key as a single line into research/.youtube_api_key",
+    "or pass --key on the command line"
+  ],
+  "what_stays_unknown_until_then": [
+    "Whether any candidate query is actually under-served.",
+    "The competition denominator in the taxonomy's own selection rule, 'rank candidates by (search demand / competition)'.",
+    "Whether high-demand domains are high-demand because they are already saturated with good videos."
+  ],
+  "this_script_is": "written, self-tested, and ready to run unchanged the moment a key exists.",
+  "checked_utc": "2026-08-30T20:45:54.266126+00:00",
+  "locations_checked": [
+    "env YOUTUBE_API_KEY",
+    "env YT_API_KEY",
+    "--key argument",
+    "/Users/sequoiataylor/GitHub/how-we-know/research/.youtube_api_key"
+  ]
+}

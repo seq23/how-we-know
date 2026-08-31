@@ -1,0 +1,889 @@
+[
+  {
+    "segment": "depth_descent",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "The yeti crab does not carry a garden. It waves bacteria-covered claws through chemical-rich water, then harvests the growth. 'Farming' sounds cute until you see the isotope evidence behind it.",
+    "args": {
+      "to_depth": 1040,
+      "label": "CHEMICAL-RICH WATER"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 3.5,
+    "heading": "Title card",
+    "narration": "What is a yeti crab?",
+    "args": {
+      "lines": [
+        "What is a yeti",
+        "crab?"
+      ]
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "timeline",
+    "seconds": 7.86,
+    "heading": "A family science met only recently",
+    "narration": "The first described yeti crab appeared in scientific literature in 2005, collected near hydrothermal vents in the South Pacific.",
+    "args": {
+      "events": [
+        [
+          2005,
+          "First yeti crab described"
+        ],
+        [
+          2011,
+          "Kiwa puravida described"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "A family science met only recently",
+    "narration": "The animal was pale, with long appendages covered in dense hair-like setae.",
+    "args": {
+      "lines": [
+        "The animal was pale,",
+        "with long appendages covered",
+        "in dense"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "timeline",
+    "seconds": 9.0,
+    "heading": "A family science met only recently",
+    "narration": "Researchers placed it in a new family, Kiwaidae. Since then, additional species have been found at vents and methane seeps, including dense populations in Antarctic waters.",
+    "args": {
+      "events": [
+        [
+          2005,
+          "First yeti crab described"
+        ],
+        [
+          2011,
+          "Kiwa puravida described"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "A family science met only recently",
+    "narration": "The nickname yeti crab makes them sound like one species, but the family contains animals with different body proportions and different arrangements of setae.",
+    "args": {
+      "term": "THE NICKNAME 'YETI CRAB'",
+      "includes": [
+        "A family of animals with different body proportions",
+        "Different arrangements of setae"
+      ],
+      "excludes": [
+        "One species"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "A family science met only recently",
+    "narration": "Some carry bacteria mainly on claws; others cultivate them across the underside of the body.",
+    "args": {
+      "lines": [
+        "Some carry bacteria mainly",
+        "on claws"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 4.97,
+    "heading": "A family science met only recently",
+    "narration": "The crabs live where chemical energy enters the ecosystem from the seafloor.",
+    "args": {
+      "title": "WHERE THE ENERGY COMES FROM",
+      "stages": [
+        "Chemical energy enters the ecosystem from the seafloor",
+        "Microbes use compounds such as hydrogen sulfide or methane-related products"
+      ],
+      "conclusion": "Carbon is fixed without sunlight"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "A family science met only recently",
+    "narration": "Microbes can use compounds such as hydrogen sulfide or methane-related products to fix carbon without sunlight.",
+    "args": {
+      "lines": [
+        "Microbes can use compounds",
+        "such as hydrogen sulfide",
+        "or methane-related"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 8.69,
+    "heading": "A family science met only recently",
+    "narration": "The first open loop is whether the bacteria are merely passengers on the crab or a crop the animal actively encourages.",
+    "args": {
+      "title": "WHERE THE ENERGY COMES FROM",
+      "stages": [
+        "Chemical energy enters the ecosystem from the seafloor",
+        "Microbes use compounds such as hydrogen sulfide or methane-related products"
+      ],
+      "conclusion": "Carbon is fixed without sunlight"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 8.69,
+    "heading": "Producer POV",
+    "narration": "I thought 'farming bacteria' was just a metaphor. The lipid and isotope evidence is why the phrase belongs here at all.",
+    "args": {
+      "text": "I thought 'farming bacteria' was just a metaphor. The lipid and isotope evidence is why the phrase belongs here at all.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "depth_descent",
+    "seconds": 9.0,
+    "heading": "The dancing behavior that suggested cultivation",
+    "narration": "During dives at a methane seep off Costa Rica, researchers observed a new yeti crab species rhythmically waving its long, bacteria-covered claws through the escaping fluid. They named it Kiwa puravida.",
+    "args": {
+      "to_depth": 1040,
+      "label": "A METHANE SEEP OFF COSTA RICA"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "The dancing behavior that suggested cultivation",
+    "narration": "The motion was too consistent to dismiss as random current response. Fluid near the seep carries reduced chemicals that chemosynthetic bacteria can use.",
+    "args": {
+      "title": "WHY THE WAVING IS NOT RANDOM",
+      "stages": [
+        "The motion was too consistent to dismiss as random current response",
+        "Fluid near the seep carries reduced chemicals",
+        "Waving may thin the boundary layer around the bacteria"
+      ],
+      "conclusion": "Improving access to those compounds"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "The dancing behavior that suggested cultivation",
+    "narration": "Waving may thin the boundary layer around the bacteria and improve access to those compounds.",
+    "args": {
+      "lines": [
+        "Waving may thin the",
+        "boundary layer around the",
+        "bacteria"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "The dancing behavior that suggested cultivation",
+    "narration": "The crab was not sweeping free bacteria into its mouth. It was moving its own attached microbial community through a better growth environment.",
+    "args": {
+      "title": "WHY THE WAVING IS NOT RANDOM",
+      "stages": [
+        "The motion was too consistent to dismiss as random current response",
+        "Fluid near the seep carries reduced chemicals",
+        "Waving may thin the boundary layer around the bacteria"
+      ],
+      "conclusion": "Improving access to those compounds"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "The dancing behavior that suggested cultivation",
+    "narration": "That behavior inspired the term farming. The word is useful because the crab appears to improve production of a food source attached to its body.",
+    "args": {
+      "term": "THE TERM FARMING",
+      "includes": [
+        "Useful, because the crab improves production of a food source attached to its body"
+      ],
+      "excludes": [
+        "Foresight",
+        "Planting",
+        "Ownership in a human sense"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "The dancing behavior that suggested cultivation",
+    "narration": "It can also mislead if it suggests foresight, planting, or ownership in a human sense.",
+    "args": {
+      "lines": [
+        "It can also mislead",
+        "if it suggests foresight,",
+        "planting"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.86,
+    "heading": "The dancing behavior that suggested cultivation",
+    "narration": "The next loop is evidence: how did researchers show the microbes were food rather than camouflage or waste-processing partners?",
+    "args": {
+      "term": "THE TERM FARMING",
+      "includes": [
+        "Useful, because the crab improves production of a food source attached to its body"
+      ],
+      "excludes": [
+        "Foresight",
+        "Planting",
+        "Ownership in a human sense"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "Chemistry, anatomy, and behavior point to the same meal",
+    "narration": "The 2011 PLOS ONE study combined several lines of evidence. Lipid and stable-isotope patterns indicated that the epibiotic bacteria were the crab's main food source.",
+    "args": {
+      "title": "THREE LINES OF EVIDENCE",
+      "steps": [
+        [
+          "Lipid and stable-isotope patterns",
+          "the epibiotic bacteria were the crab's main food source"
+        ],
+        [
+          "Specialized mouth appendages",
+          "capable of scraping bacteria from the setae"
+        ],
+        [
+          "Video",
+          "showed the arm-waving behavior in seep fluid"
+        ]
+      ],
+      "note": "No single observation carries the whole claim"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Chemistry, anatomy, and behavior point to the same meal",
+    "narration": "The crab possessed specialized mouth appendages capable of scraping bacteria from the setae and transferring them toward the mouth.",
+    "args": {
+      "lines": [
+        "The crab possessed specialized",
+        "mouth appendages capable of",
+        "scraping bacteria"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 6.21,
+    "heading": "Chemistry, anatomy, and behavior point to the same meal",
+    "narration": "Video showed the arm-waving behavior in seep fluid. No single observation carries the whole claim.",
+    "args": {
+      "title": "THREE LINES OF EVIDENCE",
+      "steps": [
+        [
+          "Lipid and stable-isotope patterns",
+          "the epibiotic bacteria were the crab's main food source"
+        ],
+        [
+          "Specialized mouth appendages",
+          "capable of scraping bacteria from the setae"
+        ],
+        [
+          "Video",
+          "showed the arm-waving behavior in seep fluid"
+        ]
+      ],
+      "note": "No single observation carries the whole claim"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 5.38,
+    "heading": "Chemistry, anatomy, and behavior point to the same meal",
+    "narration": "A crab with bacteria on its arms might be using them for detoxification.",
+    "args": {
+      "term": "WHAT ONE OBSERVATION ALONE COULD MEAN",
+      "includes": [
+        "Bacteria used for detoxification",
+        "A scraping appendage used for grooming",
+        "Waving as courtship or competition"
+      ],
+      "excludes": [
+        "Proof of farming on its own"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Chemistry, anatomy, and behavior point to the same meal",
+    "narration": "A scraping appendage might serve grooming. Waving might be courtship or competition.",
+    "args": {
+      "lines": [
+        "A scraping appendage might",
+        "serve grooming. Waving might",
+        "be courtship"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 5.79,
+    "heading": "Chemistry, anatomy, and behavior point to the same meal",
+    "narration": "When chemistry, morphology, and repeated feeding-related behavior align, the farming explanation becomes much stronger.",
+    "args": {
+      "term": "WHAT ONE OBSERVATION ALONE COULD MEAN",
+      "includes": [
+        "Bacteria used for detoxification",
+        "A scraping appendage used for grooming",
+        "Waving as courtship or competition"
+      ],
+      "excludes": [
+        "Proof of farming on its own"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Chemistry, anatomy, and behavior point to the same meal",
+    "narration": "The study even documented the crab harvesting its bacterial coating. That evidence makes the story more extraordinary than a vague headline, because the mechanism is visible.",
+    "args": {
+      "lines": [
+        "The study even documented",
+        "the crab harvesting its",
+        "bacterial coating."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 5.38,
+    "heading": "Chemistry, anatomy, and behavior point to the same meal",
+    "narration": "The unresolved question is how much this strategy varies across the yeti-crab family.",
+    "args": {
+      "term": "WHAT ONE OBSERVATION ALONE COULD MEAN",
+      "includes": [
+        "Bacteria used for detoxification",
+        "A scraping appendage used for grooming",
+        "Waving as courtship or competition"
+      ],
+      "excludes": [
+        "Proof of farming on its own"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 9.0,
+    "heading": "One family, several microbial arrangements",
+    "narration": "Not every Kiwa species has been studied with the same methods. Antarctic species cluster around vent flows and carry thick bacterial growth on the underside.",
+    "args": {
+      "value": "340",
+      "unit": "DEGREES CELSIUS",
+      "caption": "Black-smoker water can exceed 340 degrees Celsius without boiling",
+      "source": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "One family, several microbial arrangements",
+    "narration": "Other species have long setose claws. Temperature creates a narrow usable zone near vents: too close can be lethal, too far may reduce chemical supply.",
+    "args": {
+      "term": "THE USABLE ZONE NEAR VENTS",
+      "includes": [
+        "Narrow"
+      ],
+      "excludes": [
+        "Too close, which can be lethal",
+        "Too far, which may reduce chemical supply"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "One family, several microbial arrangements",
+    "narration": "Population density and body orientation can therefore become part of the farming system.",
+    "args": {
+      "lines": [
+        "Population density and body",
+        "orientation can therefore become",
+        "part"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "One family, several microbial arrangements",
+    "narration": "A strong video should keep the specific claim attached to Kiwa puravida when discussing the detailed arm-waving evidence, then explain the broader family carefully.",
+    "args": {
+      "term": "THE USABLE ZONE NEAR VENTS",
+      "includes": [
+        "Narrow"
+      ],
+      "excludes": [
+        "Too close, which can be lethal",
+        "Too far, which may reduce chemical supply"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 8.28,
+    "heading": "One family, several microbial arrangements",
+    "narration": "The family is young in the scientific record, not newly evolved. Deep habitats existed long before researchers saw the animals.",
+    "args": {
+      "term": "The discovery date",
+      "meaning": "A record of human knowledge",
+      "boundary": "Not the crab's origin, because deep habitats existed long before researchers saw the animals",
+      "source": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "One family, several microbial arrangements",
+    "narration": "The discovery date records human knowledge, not the crab's origin. That distinction is a recurring theme in deep-sea work.",
+    "args": {
+      "lines": [
+        "The discovery date records",
+        "human knowledge, not the",
+        "crab's origin."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 8.69,
+    "heading": "One family, several microbial arrangements",
+    "narration": "We discover a lineage and immediately write as though it appeared. The correct story is that a hidden ecosystem became observable.",
+    "args": {
+      "term": "The discovery date",
+      "meaning": "A record of human knowledge",
+      "boundary": "Not the crab's origin, because deep habitats existed long before researchers saw the animals",
+      "source": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "species_image",
+    "seconds": 7.45,
+    "heading": "One family, several microbial arrangements",
+    "narration": "Next, the channel moves to black smokers, where water can exceed 340 degrees Celsius without boiling into steam.",
+    "args": {
+      "subject": "black_smoker",
+      "label": "black smokers",
+      "pick": 0
+    },
+    "from": "directive-rhythm+species-beat"
+  },
+  {
+    "segment": "timeline",
+    "seconds": 8.69,
+    "heading": "From strange dance to tested diet",
+    "narration": "Researchers described Kiwa puravida in a 2011 peer-reviewed paper. The crab waves bacteria-covered chelipeds in fluid escaping from a methane seep.",
+    "args": {
+      "events": [
+        [
+          2005,
+          "Kiwaidae named"
+        ],
+        [
+          2011,
+          "Peer-reviewed description of Kiwa puravida"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "From strange dance to tested diet",
+    "narration": "The authors tested whether those epibiotic bacteria were a main food source using lipid and isotope analyses, and they described specialized setae used to harvest the bacteria.",
+    "args": {
+      "title": "WHAT THE AUTHORS TESTED",
+      "steps": [
+        [
+          "Lipid analyses",
+          ""
+        ],
+        [
+          "Isotope analyses",
+          ""
+        ],
+        [
+          "Specialized setae used to harvest the bacteria",
+          ""
+        ]
+      ],
+      "note": "Behavior, anatomy and chemistry point in the same direction"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "From strange dance to tested diet",
+    "narration": "The behavior, anatomy, and chemistry point in the same direction. The word farming remains an interpretation, but it is not based on appearance alone.",
+    "args": {
+      "lines": [
+        "The behavior, anatomy, and",
+        "chemistry point in the",
+        "same direction."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "What makes farming the cautious word",
+    "narration": "The crab's repeated waving brings bacteria-covered setae into contact with flowing, chemically rich water.",
+    "args": {
+      "lines": [
+        "The crab's repeated waving",
+        "brings bacteria-covered setae into",
+        "contact"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 4.97,
+    "heading": "What makes farming the cautious word",
+    "narration": "Stable-isotope and lipid evidence supports those bacteria as an important food source.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "What makes farming the cautious word",
+    "narration": "The crab also scrapes material from the setae toward its mouth. Together, those observations make cultivation or farming a useful shorthand.",
+    "args": {
+      "lines": [
+        "The crab also scrapes",
+        "material from the setae",
+        "toward"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "What makes farming the cautious word",
+    "narration": "But the word can imply planning and ownership that the evidence does not require.",
+    "args": {
+      "lines": [
+        "But the word can",
+        "imply planning and ownership"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.28,
+    "heading": "What makes farming the cautious word",
+    "narration": "The safer explanation is behavioral engineering. The crab creates conditions that favor a microbial food source and then harvests it.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "What makes farming the cautious word",
+    "narration": "Related yeti crabs use different body surfaces and live in different vent or seep environments, so one species should not stand in for the whole family.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 6.21,
+    "heading": "What makes farming the cautious word",
+    "narration": "The visual structure should move from behavior, to microbes, to chemical flow, to feeding evidence.",
+    "args": {
+      "title": "THE VISUAL STRUCTURE",
+      "steps": [
+        [
+          "Behavior",
+          ""
+        ],
+        [
+          "Microbes",
+          ""
+        ],
+        [
+          "Chemical flow",
+          ""
+        ],
+        [
+          "Feeding evidence",
+          ""
+        ]
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "What makes farming the cautious word",
+    "narration": "That sequence shows why the interpretation is strong without pretending researchers watched the crab make a human-style agricultural decision.",
+    "args": {
+      "lines": [
+        "That sequence shows why",
+        "the interpretation is strong",
+        "without pretending"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The word on screen",
+    "narration": "When the title uses 'farms,' the first on-screen definition should say that the crab promotes and harvests bacterial growth; it does not prove conscious planning.",
+    "args": {
+      "lines": [
+        "When the title uses",
+        "'farms,' the first on-screen",
+        "definition should"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.38,
+    "heading": "The word on screen",
+    "narration": "That one sentence keeps the curiosity hook while showing the evidence behind it.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "The word on screen",
+    "narration": "The episode should also name the species, because not every yeti crab uses the same body surface or habitat.",
+    "args": {
+      "lines": [
+        "The episode should also",
+        "name the species, because"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.62,
+    "heading": "The source hierarchy",
+    "narration": "The behavior comes from direct observation. The feeding interpretation gains support from isotope and lipid evidence.",
+    "args": {
+      "variant": 2
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "The source hierarchy",
+    "narration": "Broader statements about the family come from comparing species. Keeping that hierarchy visible prevents the title's farming metaphor from becoming a stronger claim than the paper supports.",
+    "args": {
+      "variant": 3
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "The final edit check",
+    "narration": "Show the waving, the bacterial growth, and the feeding motion as separate evidence steps before using the farming shorthand.",
+    "args": {
+      "lines": [
+        "Show the waving, the",
+        "bacterial growth, and the",
+        "feeding motion"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.62,
+    "heading": "Final editorial note",
+    "narration": "That sequence keeps the metaphor attached to evidence. That sequence keeps the metaphor attached to evidence.",
+    "args": {
+      "variant": 4
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "What to notice in the edit",
+    "narration": "Structure the episode like a research-paper detective story: behavior first, then anatomy, then chemical evidence.",
+    "args": {
+      "lines": [
+        "Structure the episode like",
+        "a research-paper detective story:",
+        "behavior first"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "What to notice in the edit",
+    "narration": "Label each evidence layer. An original animation can show boundary-layer flow over the claws and the harvesting motion.",
+    "args": {
+      "lines": [
+        "Label each evidence layer.",
+        "An original animation can",
+        "show boundary-layer"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "The PLOS paper is CC BY and its figures may be reusable with attribution, but any figure chosen still needs an asset record and exact credit.",
+    "args": {
+      "variant": 2
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 4.97,
+    "heading": "Evidence limit",
+    "narration": "Not every yeti crab species uses the same microbial arrangement or behavior.",
+    "args": {
+      "value": "1,040",
+      "unit": "METRES",
+      "caption": "Kiwa puravida described from Costa Rican methane seeps at about 1,000-1,040 metres",
+      "source": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "Kiwa puravida was described from Costa Rican methane seeps at about 1,000\u20131,040 meters, while other kiwaids live in different vent and seep settings.",
+    "args": {
+      "lines": [
+        "Kiwa puravida was described",
+        "from Costa Rican methane",
+        "seeps"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "The paper supports bacteria as a major food source for this species; it does not establish identical farming behavior across the whole family.",
+    "args": {
+      "term": "WHAT THE PAPER SUPPORTS",
+      "includes": [
+        "Bacteria as a major food source for this species"
+      ],
+      "excludes": [
+        "Identical farming behavior across the whole family",
+        "The same microbial arrangement in every yeti crab species"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "depth_descent",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "The yeti crab story works because three kinds of evidence agree: what the crab does, what its body is built to do, and what its tissues say it has eaten.",
+    "args": {
+      "to_depth": 1040,
+      "label": "A TESTED DIET"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Closing",
+    "narration": "The dance is memorable. The tested diet is the reason it is science.",
+    "args": {
+      "lines": [
+        "The dance is memorable.",
+        "The tested diet is",
+        "the reason"
+      ]
+    },
+    "from": "directive-rhythm"
+  }
+]

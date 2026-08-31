@@ -41,3 +41,10 @@ service-account*.json
 # the same way renders/ are. The work copies themselves ARE committed — they are
 # the record of exactly what was spoken in a given week.
 loop/plans/
+
+# Generated narration. Same class as renders/*.mp4 above: large binary output that
+# the pipeline reproduces from scripts/ and voice/ on demand. Added 2026-08-31 after
+# `git add audio/` staged 176 wavs - renders were ignored and audio was not, so the
+# rule only covered half the generated media. The beats.json manifests ARE tracked;
+# they are small and they are the audio-to-plan contract.
+audio/**/*.wav

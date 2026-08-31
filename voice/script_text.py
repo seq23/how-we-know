@@ -4,6 +4,11 @@ Rules:
   - Keep only content under the `## Narration` H2, up to the next H2.
   - Drop all markdown headings (###, ####, ...) - they are structural
     (e.g. "Cold open", "Title card"), not spoken words.
+  - Drop `{{directive}}` lines entirely (visuals/CONTRACT.md v1 and v2). They are
+    instructions to the visual planner and must NEVER be spoken. They sit on their
+    own line immediately before the paragraph they govern, but a multi-line
+    directive is also tolerated here: anything between `{{` and the matching `}}`
+    is removed.
   - Strip the `[HUMAN]` production marker but keep the prose after it.
   - Drop bold-label metadata lines (**Status:** ...), list bullets and blockquotes.
   - Normalise inline markdown emphasis and smart quotes so the tokenizer
@@ -37,8 +42,19 @@ def _clean_inline(text: str) -> str:
     return re.sub(r"[ \t]+", " ", text).strip()
 
 
+# A visual directive. Non-greedy across newlines so a directive that has been
+# wrapped over several lines is still removed whole.
+_DIRECTIVE = re.compile(r"\{\{.*?\}\}", re.S)
+
+
+def strip_directives(text: str) -> str:
+    """Remove every {{...}} visual directive. Speaking one is a hard defect."""
+    return _DIRECTIVE.sub(" ", text)
+
+
 def extract_narration(md: str, section: str = "Narration") -> list[str]:
     """Return a list of narration paragraphs."""
+    md = strip_directives(md)
     lines = md.splitlines()
 
     # Locate the `## <section>` block. If absent, treat the whole file as prose.
@@ -101,6 +117,7 @@ def read_script(path: str, section: str = "Narration") -> list[str]:
         raw = f.read()
     if path.lower().endswith((".md", ".markdown")):
         return extract_narration(raw, section)
+    raw = strip_directives(raw)
     paras = [_clean_inline(p) for p in re.split(r"\n\s*\n", raw)]
     return [p for p in paras if p and re.search(r"[A-Za-z]", p)]
 

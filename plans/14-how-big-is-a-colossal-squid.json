@@ -1,0 +1,867 @@
+[
+  {
+    "segment": "stat_card",
+    "seconds": 4.97,
+    "heading": "Cold open",
+    "narration": "The biggest colossal squid claims usually describe an animal nobody has measured.",
+    "args": {
+      "value": "495",
+      "unit": "KILOGRAMS",
+      "caption": "The most famous intact specimen, about 4.2 metres long",
+      "source": "Te Papa"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Cold open",
+    "narration": "The safest numbers come from specimens, and the most famous intact specimen weighed 495 kilograms and measured about 4.2 meters.",
+    "args": {
+      "lines": [
+        "The safest numbers come",
+        "from specimens, and the",
+        "most famous"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 3.5,
+    "heading": "Title card",
+    "narration": "How big is a colossal squid?",
+    "args": {
+      "lines": [
+        "How big is a",
+        "colossal squid?"
+      ]
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 7.86,
+    "heading": "The word largest needs a measuring rule",
+    "narration": "Colossal squid and giant squid are often placed in the same headline, but they hold different kinds of records.",
+    "args": {
+      "title": "TWO DIFFERENT KINDS OF RECORD",
+      "sources": [
+        [
+          "Giant squid",
+          "greater total length, because the feeding tentacles are extremely long"
+        ],
+        [
+          "Colossal squid",
+          "more compact and much heavier"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The word largest needs a measuring rule",
+    "narration": "Giant squid can reach greater total length because their feeding tentacles are extremely long. Colossal squid are more compact and much heavier.",
+    "args": {
+      "lines": [
+        "Giant squid can reach",
+        "greater total length because",
+        "their feeding"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.45,
+    "heading": "The word largest needs a measuring rule",
+    "narration": "The best-known preserved female at Te Papa in New Zealand weighs 495 kilograms and measures about 4.2 meters.",
+    "args": {
+      "term": "THE TE PAPA SPECIMEN",
+      "includes": [
+        "The heaviest known invertebrate specimen"
+      ],
+      "excludes": [
+        "Necessarily the longest cephalopod"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "The word largest needs a measuring rule",
+    "narration": "That makes it the heaviest known invertebrate specimen, not necessarily the longest cephalopod.",
+    "args": {
+      "lines": [
+        "That makes it the",
+        "heaviest known invertebrate specimen,",
+        "not necessarily"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "The word largest needs a measuring rule",
+    "narration": "The distinction matters because drawings often stretch a colossal squid to giant-squid proportions, while headlines switch between length and mass without warning.",
+    "args": {
+      "term": "THE TE PAPA SPECIMEN",
+      "includes": [
+        "The heaviest known invertebrate specimen"
+      ],
+      "excludes": [
+        "Necessarily the longest cephalopod"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 5.38,
+    "heading": "The word largest needs a measuring rule",
+    "narration": "Specimens also change after capture and preservation. Tentacles can be missing. Tissue contracts.",
+    "args": {
+      "title": "WHY SPECIMENS ARE HARD TO COMPARE",
+      "items": [
+        "?Specimens change after capture and preservation",
+        "?Tentacles can be missing",
+        "?Tissue contracts"
+      ],
+      "note": "Measurements from an intact animal beat estimates reconstructed from a beak"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "The word largest needs a measuring rule",
+    "narration": "Measurements taken from an intact animal are more useful than estimates reconstructed from a beak.",
+    "args": {
+      "lines": [
+        "Measurements taken from an",
+        "intact animal are more",
+        "useful"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "The word largest needs a measuring rule",
+    "narration": "The first open loop is visual: why would an animal living in deep Antarctic water invest so much biological material in eyes that can measure roughly 27 centimeters across?",
+    "args": {
+      "title": "WHY SPECIMENS ARE HARD TO COMPARE",
+      "items": [
+        "?Specimens change after capture and preservation",
+        "?Tentacles can be missing",
+        "?Tissue contracts"
+      ],
+      "note": "Measurements from an intact animal beat estimates reconstructed from a beak"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 5.79,
+    "heading": "Producer POV",
+    "narration": "The hardest part of this script was refusing the biggest number on the internet.",
+    "args": {
+      "text": "The hardest part of this script was refusing the biggest number on the internet.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 4.97,
+    "heading": "Producer POV",
+    "narration": "A measured specimen and a projected maximum are not the same thing.",
+    "args": {
+      "text": "A measured specimen and a projected maximum are not the same thing.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 6.21,
+    "heading": "Eyes built to detect a large moving signal",
+    "narration": "Te Papa's anatomical work describes colossal squid eyes as the largest animal eyes ever studied.",
+    "args": {
+      "value": "27",
+      "unit": "CENTIMETRES",
+      "caption": "Estimated eye diameter in a living animal",
+      "source": "Te Papa"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Eyes built to detect a large moving signal",
+    "narration": "In a living animal, the diameter is estimated around 27 centimeters, with pupils several centimeters wide.",
+    "args": {
+      "lines": [
+        "In a living animal,",
+        "the diameter is estimated",
+        "around 27"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 5.38,
+    "heading": "Eyes built to detect a large moving signal",
+    "narration": "Large eyes collect more light, but simple brightness is not the whole explanation.",
+    "args": {
+      "value": "27",
+      "unit": "CENTIMETRES",
+      "caption": "Estimated eye diameter in a living animal",
+      "source": "Te Papa"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Eyes built to detect a large moving signal",
+    "narration": "Modeling work has suggested that very large deep-sea eyes may be especially useful for detecting the broad bioluminescent disturbance made when a sperm whale moves through surrounding plankton.",
+    "args": {
+      "lines": [
+        "Modeling work has suggested",
+        "that very large deep-sea",
+        "eyes"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 9.0,
+    "heading": "Eyes built to detect a large moving signal",
+    "narration": "The specimen evidence proves the eye is enormous. The exact ecological advantage is still tested through models and comparative anatomy because healthy colossal squid are not routinely observed in the wild.",
+    "args": {
+      "value": "27",
+      "unit": "CENTIMETRES",
+      "caption": "Estimated eye diameter in a living animal",
+      "source": "Te Papa"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "Eyes built to detect a large moving signal",
+    "narration": "The eyes also carry light organs near them, an unusual arrangement whose behavior is not fully documented.",
+    "args": {
+      "lines": [
+        "The eyes also carry",
+        "light organs near them,",
+        "an unusual"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "Eyes built to detect a large moving signal",
+    "narration": "This is a useful example of evidence layers: direct measurement of the organ, strong optical principles, and a more tentative hypothesis about the signal it detects.",
+    "args": {
+      "title": "THE EVIDENCE LAYERS",
+      "steps": [
+        [
+          "Direct measurement",
+          "of the organ"
+        ],
+        [
+          "Strong optical principles",
+          ""
+        ],
+        [
+          "A more tentative hypothesis",
+          "about the signal it detects"
+        ]
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Eyes built to detect a large moving signal",
+    "narration": "The next question is what the squid does when the target is close enough to strike.",
+    "args": {
+      "lines": [
+        "The next question is",
+        "what the squid does"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.45,
+    "heading": "Rotating hooks, a beak, and very little live footage",
+    "narration": "The colossal squid's tentacle clubs carry swiveling hooks. Some can rotate in their sockets, while others are fixed.",
+    "args": {
+      "term": "WHAT THE ANATOMY PROVIDES",
+      "includes": [
+        "Swiveling hooks on the tentacle clubs",
+        "Suckers and smaller hooks on the arms",
+        "A robust beak"
+      ],
+      "excludes": [
+        "A complete hunting sequence from a healthy adult at depth"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Rotating hooks, a beak, and very little live footage",
+    "narration": "The arms carry suckers and smaller hooks. The beak is robust, as expected for a large predatory cephalopod.",
+    "args": {
+      "lines": [
+        "The arms carry suckers",
+        "and smaller hooks. The",
+        "beak"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 6.21,
+    "heading": "Rotating hooks, a beak, and very little live footage",
+    "narration": "These structures are available for direct study because specimens have been recovered from Antarctic fisheries.",
+    "args": {
+      "term": "WHAT THE ANATOMY PROVIDES",
+      "includes": [
+        "Swiveling hooks on the tentacle clubs",
+        "Suckers and smaller hooks on the arms",
+        "A robust beak"
+      ],
+      "excludes": [
+        "A complete hunting sequence from a healthy adult at depth"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "Rotating hooks, a beak, and very little live footage",
+    "narration": "What is missing is a complete hunting sequence from a healthy adult at depth.",
+    "args": {
+      "lines": [
+        "What is missing is",
+        "a complete hunting sequence"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Rotating hooks, a beak, and very little live footage",
+    "narration": "It is tempting to animate the hooks like grappling equipment and assign a dramatic attack speed, but the anatomy does not provide a full behavior script.",
+    "args": {
+      "term": "WHAT THE ANATOMY PROVIDES",
+      "includes": [
+        "Swiveling hooks on the tentacle clubs",
+        "Suckers and smaller hooks on the arms",
+        "A robust beak"
+      ],
+      "excludes": [
+        "A complete hunting sequence from a healthy adult at depth"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Rotating hooks, a beak, and very little live footage",
+    "narration": "Stomach contents, predator remains, and distribution records suggest prey such as Antarctic fishes and interactions with sperm whales. Scars on whales show that large squids are not passive prey.",
+    "args": {
+      "lines": [
+        "Stomach contents, predator remains,",
+        "and distribution records suggest",
+        "prey"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 7.86,
+    "heading": "Rotating hooks, a beak, and very little live footage",
+    "narration": "Still, the balance between ambush, active pursuit, and scavenging is not resolved by one body in a museum tank.",
+    "args": {
+      "title": "NOT RESOLVED BY ONE BODY IN A MUSEUM TANK",
+      "items": [
+        "?Ambush",
+        "?Active pursuit",
+        "?Scavenging"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Rotating hooks, a beak, and very little live footage",
+    "narration": "The open loop becomes a scientific one: how do you describe an animal accurately when nearly every close look begins after it has left its normal environment?",
+    "args": {
+      "lines": [
+        "The open loop becomes",
+        "a scientific one: how",
+        "do you"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 7.03,
+    "heading": "A specimen is a library, not a movie",
+    "narration": "Te Papa's preserved colossal squid has supported repeated examinations of eyes, hooks, beak, tissue, and internal anatomy.",
+    "args": {
+      "title": "EACH METHOD ANSWERS A DIFFERENT QUESTION",
+      "sources": [
+        [
+          "The preserved specimen",
+          "eyes, hooks, beak, tissue and internal anatomy, revisited as methods improve"
+        ],
+        [
+          "Fisheries records",
+          "where encounters occur"
+        ],
+        [
+          "Beaks in sperm-whale stomachs",
+          "predator-prey relationships, after soft tissue has vanished"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "A specimen is a library, not a movie",
+    "narration": "Samples can be revisited as methods improve. That makes the specimen a durable evidence object.",
+    "args": {
+      "lines": [
+        "Samples can be revisited",
+        "as methods improve. That",
+        "makes"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 9.0,
+    "heading": "A specimen is a library, not a movie",
+    "narration": "It does not show migration routes, courtship, hunting posture, or lifespan. Fisheries records tell researchers where encounters occur, but encounter location is not always the animal's preferred depth.",
+    "args": {
+      "title": "EACH METHOD ANSWERS A DIFFERENT QUESTION",
+      "sources": [
+        [
+          "The preserved specimen",
+          "eyes, hooks, beak, tissue and internal anatomy, revisited as methods improve"
+        ],
+        [
+          "Fisheries records",
+          "where encounters occur"
+        ],
+        [
+          "Beaks in sperm-whale stomachs",
+          "predator-prey relationships, after soft tissue has vanished"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "A specimen is a library, not a movie",
+    "narration": "Beaks in sperm-whale stomachs reveal predator-prey relationships, but soft tissue has already vanished. Each method answers a different question.",
+    "args": {
+      "lines": [
+        "Beaks in sperm-whale stomachs",
+        "reveal predator-prey relationships, but",
+        "soft tissue"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "A specimen is a library, not a movie",
+    "narration": "The right conclusion is not that the colossal squid is unknowable. We know its mass can exceed any other confirmed invertebrate, its eyes are extraordinary, and its tentacles carry rotating hooks.",
+    "args": {
+      "term": "WHAT WE KNOW",
+      "includes": [
+        "Its mass can exceed any other confirmed invertebrate",
+        "Its eyes are extraordinary",
+        "Its tentacles carry rotating hooks"
+      ],
+      "excludes": [
+        "Migration routes, courtship, hunting posture, or lifespan"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "A specimen is a library, not a movie",
+    "narration": "We also know the viral life story is much more complete than the evidence.",
+    "args": {
+      "lines": [
+        "We also know the",
+        "viral life story is",
+        "much"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "A specimen is a library, not a movie",
+    "narration": "A good episode preserves that gap. The next subject returns to the deepest trench, where the historical record has the opposite problem: many modern dives have made an old four-person statistic obsolete.",
+    "args": {
+      "term": "WHAT WE KNOW",
+      "includes": [
+        "Its mass can exceed any other confirmed invertebrate",
+        "Its eyes are extraordinary",
+        "Its tentacles carry rotating hooks"
+      ],
+      "excludes": [
+        "Migration routes, courtship, hunting posture, or lifespan"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 9.0,
+    "heading": "Measure the specimen before imagining the monster",
+    "narration": "Colossal squid and giant squid are different animals. Colossal squid have a heavier body, rotating hooks on parts of the arms and tentacles, a beak, and extremely large eyes. But live behavior remains poorly documented.",
+    "args": {
+      "value": "4.2",
+      "unit": "METRES",
+      "caption": "A measured specimen, not a projected maximum",
+      "source": "Te Papa"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 4.97,
+    "heading": "Measure the specimen before imagining the monster",
+    "narration": "Museums can measure a specimen's mass, mantle, arms, tentacles, beak, and eyes.",
+    "args": {
+      "title": "TWO CATEGORIES OF NUMBER",
+      "sources": [
+        [
+          "Museums",
+          "measure a specimen's mass, mantle, arms, tentacles, beak and eyes"
+        ],
+        [
+          "A theoretical maximum",
+          "uses incomplete specimens, beaks from predator stomachs, and assumptions about body proportions"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Measure the specimen before imagining the monster",
+    "narration": "Estimates of a theoretical maximum use incomplete specimens, beaks found in predator stomachs, and assumptions about body proportions.",
+    "args": {
+      "lines": [
+        "Estimates of a theoretical",
+        "maximum use incomplete specimens,",
+        "beaks found"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 8.69,
+    "heading": "Measure the specimen before imagining the monster",
+    "narration": "Those projections may be useful, but they should not be narrated as if a complete animal was placed on a scale.",
+    "args": {
+      "title": "TWO CATEGORIES OF NUMBER",
+      "sources": [
+        [
+          "Museums",
+          "measure a specimen's mass, mantle, arms, tentacles, beak and eyes"
+        ],
+        [
+          "A theoretical maximum",
+          "uses incomplete specimens, beaks from predator stomachs, and assumptions about body proportions"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 7.45,
+    "heading": "The record belongs to a specimen, not a silhouette",
+    "narration": "Te Papa's displayed specimen is useful precisely because it can be measured, re-examined, and compared with other material.",
+    "args": {
+      "title": "WHAT STILL NEEDS CONTEXT",
+      "items": [
+        "?The animal was frozen, thawed, unfolded and preserved",
+        "?Tentacles can contract or be damaged",
+        "?Water and ice can affect mass"
+      ],
+      "note": "Total length, mantle length and mass answer different size questions"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "The record belongs to a specimen, not a silhouette",
+    "narration": "Its reported mass and total length are real specimen values, but even they require context.",
+    "args": {
+      "lines": [
+        "Its reported mass and",
+        "total length are real",
+        "specimen values"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 5.79,
+    "heading": "The record belongs to a specimen, not a silhouette",
+    "narration": "The animal was frozen, thawed, unfolded, and preserved. Tentacles can contract or be damaged.",
+    "args": {
+      "title": "WHAT STILL NEEDS CONTEXT",
+      "items": [
+        "?The animal was frozen, thawed, unfolded and preserved",
+        "?Tentacles can contract or be damaged",
+        "?Water and ice can affect mass"
+      ],
+      "note": "Total length, mantle length and mass answer different size questions"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "The record belongs to a specimen, not a silhouette",
+    "narration": "Water and ice can affect mass. Total length, mantle length, and mass therefore answer different size questions.",
+    "args": {
+      "lines": [
+        "Water and ice can",
+        "affect mass. Total length,",
+        "mantle length"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "The record belongs to a specimen, not a silhouette",
+    "narration": "Projected maxima are a separate category. Larger beaks recovered from sperm whale stomachs suggest that larger colossal squid exist, but the relationship between beak size and total body mass is not yet supported by a large sample of complete specimens.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 6.21,
+    "heading": "The record belongs to a specimen, not a silhouette",
+    "narration": "The video should never place a projected giant beside the measured specimen without a label.",
+    "args": {
+      "title": "THREE LABELS THAT MUST LOOK DIFFERENT ON SCREEN",
+      "items": [
+        "+Measured",
+        "?Estimated",
+        "?Possible"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The record belongs to a specimen, not a silhouette",
+    "narration": "'Measured,' 'estimated,' and 'possible' must look different on screen. That visual honesty lets the animal remain extraordinary without borrowing certainty from an incomplete record.",
+    "args": {
+      "lines": [
+        "'Measured,' 'estimated,' and 'possible'",
+        "must look different on",
+        "screen."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 9.0,
+    "heading": "The final size card",
+    "narration": "The last measurement card should show mass, total length, and mantle length as separate fields, with a note that preservation and damage affect comparison.",
+    "args": {
+      "value": "495",
+      "unit": "KILOGRAMS",
+      "caption": "Mass, total length and mantle length answer different questions",
+      "source": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The final size card",
+    "narration": "A projected maximum belongs on a different card. The audience can still imagine a larger animal; the video simply refuses to label that imagination as a specimen record.",
+    "args": {
+      "lines": [
+        "A projected maximum belongs",
+        "on a different card.",
+        "The audience"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 3.5,
+    "heading": "One final wording rule",
+    "narration": "Use 'measured specimen' whenever the 495-kilogram value appears.",
+    "args": {
+      "lines": [
+        "Use 'measured specimen' whenever",
+        "the 495-kilogram value appears"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 4.97,
+    "heading": "What to notice in the edit",
+    "narration": "Build the episode around a measurement table rather than a sea-monster silhouette.",
+    "args": {
+      "value": "4.2",
+      "unit": "METRES",
+      "caption": "Measured, not estimated and not projected",
+      "source": "Te Papa"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "What to notice in the edit",
+    "narration": "Mark which values are directly measured, which come from a specimen, and which are inferred.",
+    "args": {
+      "lines": [
+        "Mark which values are",
+        "directly measured, which come"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "Use original diagrams. Te Papa's pages are excellent factual references, but at least one displayed specimen image is marked CC BY-NC-ND, which is not acceptable for a monetized modified video.",
+    "args": {
+      "value": "4.2",
+      "unit": "METRES",
+      "caption": "Measured, not estimated and not projected",
+      "source": "Te Papa"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.03,
+    "heading": "Evidence limit",
+    "narration": "Size records depend on whether the claim refers to mass, total length, mantle length, or eye diameter.",
+    "args": {
+      "term": "THE 495-KILOGRAM ANIMAL",
+      "includes": [
+        "A measured specimen associated with Te Papa"
+      ],
+      "excludes": [
+        "Proof of a species maximum",
+        "A universal exact record without a current source"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "Damaged and contracted specimens complicate length. The 495-kilogram, roughly 4.2-meter animal is a measured specimen associated with Te Papa; it does not prove a species maximum.",
+    "args": {
+      "lines": [
+        "Damaged and contracted specimens",
+        "complicate length. The 495-kilogram,",
+        "roughly 4.2-meter"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "Claims that colossal squid have the largest eyes should remain tied to measured or documented specimens and not become a universal exact record without a current source.",
+    "args": {
+      "term": "THE 495-KILOGRAM ANIMAL",
+      "includes": [
+        "A measured specimen associated with Te Papa"
+      ],
+      "excludes": [
+        "Proof of a species maximum",
+        "A universal exact record without a current source"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "The colossal squid is enormous without borrowing a fictional maximum. The most honest version separates the animal on the table from the animal we imagine in the dark\u2014and tells the viewer which number belongs to which one.",
+    "args": {
+      "value": "495",
+      "unit": "KILOGRAMS",
+      "caption": "The animal on the table, not the animal we imagine",
+      "source": ""
+    },
+    "from": "directive"
+  }
+]

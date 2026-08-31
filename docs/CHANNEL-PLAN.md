@@ -81,14 +81,25 @@ incumbent of 2,800 subscribers.
 
 ## The publish queue
 
-**Pinned head** — owner override, marked as such, falls away once published:
+**The publish order is the ranking. There is no hand-picked head.**
 
-1. How big is a colossal squid
-2. How do people reach Challenger Deep
-3. Why does black-smoker water not boil
-4. Why some deep sea creatures are transparent
+Superseded 2026-08-31. Four episodes were pinned earlier that day, chosen from
+opportunity data before the combined score existed. Once demand was measured properly,
+two of them scored below episodes further down the queue, and the owner removed the pin:
+*"why the fuck are we not doing the top 4 by score."*
 
-Everything after position 4 ranks by combined score. **Never filename order.**
+Current top four, by `combined_score`:
+
+1. What is the deepest part of the ocean — 0.685
+2. Why many deep sea creatures are red — 0.562
+3. Why deep sea creatures look so weird — 0.561 *(rendered, voiced, approved)*
+4. How big is a colossal squid — 0.557
+
+**The scores below #1 are close.** Only the top position is clearly ahead; 2 through 7
+sit inside about 0.04 of each other, which is narrower than the measurement is precise.
+Read the ordering as a ranking, not as a set of distinctions.
+
+**Never filename order.**
 
 **Killed as saturated:** `what is a frilled shark`, `what is a yeti crab`,
 `what is a dumbo octopus`. Being reworked from identification questions into mechanism
@@ -156,6 +167,34 @@ no claimed traction, no invented team — and honest is the only version worth f
 **Never sign the demo-credentials waiver** over the account that owns the channel.
 
 ---
+
+## Visuals — show the animal
+
+**Owner note, 2026-08-31, after watching episode 1:** *"I would rather have more
+animal pictures — the descriptions are happening and we have no animal photos of what
+we are describing."*
+
+Episode 1 was approved with this as the standing correction. **When the narration names
+a species, the screen should show it.** Abstractions are the fallback, not the default.
+
+**The imagery is public domain or CC0 only** — the channel is monetised, and CC-BY is
+not a public-domain dedication. Every asset is verified live against source metadata and
+re-hashed before it is drawn.
+
+**The richest source is the expedition the channel is named after:** the 1887 *Report on
+the Deep-Sea Fishes of H.M.S. Challenger*, illustrated by Robert Mintern (d. 1908) —
+public domain worldwide, hundreds of species plates. Then NOAA (`PD-USGov-NOAA`, but
+watch for burned-in DVR overlays), Smithsonian Open Access (CC0), and BHL scans.
+
+**Credit what the image actually is.** A plate is labelled as a plate, not as a
+photograph.
+
+**Some species cannot be illustrated honestly and must not be faked.** *Mesonychoteuthis
+hamiltoni* was described in 1925 from stomach contents — no historical plate exists and
+every photograph is CC-BY-SA. The same holds for *Kiwa* and for whale falls. **A giant
+squid plate captioned "colossal squid" is a lie told in pictures**, and on a channel
+called How We Know that is the worst available failure. Where no honest image exists,
+the drawn treatment stands and the script says what is and is not known.
 
 ## The measurement that could invalidate all of this
 

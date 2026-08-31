@@ -1,0 +1,1446 @@
+{
+  "generated": "2026-08-31T16:00:06+00:00",
+  "survey_date": "2026-08-31",
+  "policy": "Third gate, own manifest. An image may be shown while the narration names a species only if ALL of: (1) its Wikimedia Commons item page reports Copyrighted=False and a public-domain or CC0 licence tag, checked live at fetch time (CC-BY, CC-BY-SA, CC-BY-NC and 'no known copyright restrictions' all hard-fail); (2) its own artist, credit and description name no non-federal party and carry no copyright notice, which catches Commons files mistagged PD-USGov when the description credits a university or an individual photographer; (3) a human has written down what the picture literally IS (depicts), why it is this animal (subject_basis) and what the on-screen credit says (credit_line). The credit names the medium and its year -- an 1887 lithograph is credited as a plate, never as a photograph. Records reused from rights.json are not re-downloaded; they keep the sha256 their licence was checked against. A subject with no qualifying image is recorded in UNILLUSTRATABLE with the survey behind it, and is never illustrated with a different animal.",
+  "rights_fields_required": [
+    "source_org",
+    "item_url",
+    "direct_url",
+    "rights_basis",
+    "rights_check",
+    "required_credit",
+    "commercial_use_permitted",
+    "date_checked",
+    "sha256",
+    "subject",
+    "depicts",
+    "credit_line",
+    "subject_basis",
+    "treatment"
+  ],
+  "asset_count": 33,
+  "subjects_covered": [
+    "anglerfish",
+    "barreleye",
+    "black_smoker",
+    "deep_octopus",
+    "deep_squid",
+    "frilled_shark",
+    "giant_squid",
+    "grenadier",
+    "mariana_trench",
+    "red_jelly",
+    "red_shrimp",
+    "sea_cucumber",
+    "siphonophore",
+    "snailfish",
+    "trieste"
+  ],
+  "subjects_unillustratable": [
+    "colossal_squid",
+    "hadal_snailfish",
+    "osedax",
+    "whale_fall",
+    "yeti_crab"
+  ],
+  "index": {
+    "anglerfish": {
+      "display": "Anglerfish",
+      "terms": [
+        "anglerfish",
+        "angler fish"
+      ],
+      "episodes": [
+        "01",
+        "03",
+        "04",
+        "07",
+        "08",
+        "09",
+        "13"
+      ],
+      "assets": [
+        "assets/sp-anglerfish__910004__ford-1864-melanocetus-johnsonii.jpg",
+        "assets/sp-anglerfish__910005__noaa-2004-melanocetus-johnsonii.jpg",
+        "assets/anglerfish__13309__ex2206-dive06-anglerfish-hires.jpg",
+        "assets/anglerfish__12097__ex2206-dive08-goosefish-hires.jpg",
+        "assets/eyes__14526__20210113-hires.jpg",
+        "assets/column__900007__gunther-1887-melanocetus-murrayi.jpg"
+      ],
+      "status": "covered"
+    },
+    "barreleye": {
+      "display": "Barreleye",
+      "terms": [
+        "barreleye"
+      ],
+      "episodes": [
+        "01",
+        "06"
+      ],
+      "assets": [
+        "assets/sp-barreleye__910003__vaillant-1888-opisthoproctus-soleatus.jpg",
+        "assets/sp-barreleye__910002__noaa-2024-barreleye-gulf-of-alaska.jpg"
+      ],
+      "status": "covered"
+    },
+    "siphonophore": {
+      "display": "Siphonophore",
+      "terms": [
+        "siphonophore"
+      ],
+      "episodes": [
+        "01",
+        "08"
+      ],
+      "assets": [
+        "assets/sp-siphonophore__910006__haeckel-1888-siphonophorae-plate.jpg",
+        "assets/siphonophore__28649__august2026-hires.jpg"
+      ],
+      "status": "covered"
+    },
+    "sea_cucumber": {
+      "display": "Sea cucumber",
+      "terms": [
+        "sea cucumber",
+        "holothurian"
+      ],
+      "episodes": [
+        "01",
+        "07",
+        "08"
+      ],
+      "assets": [
+        "assets/cucumber__28654__ex2605-dive09-seacucumber.jpg",
+        "assets/transparent__15986__20210501-hires.jpg",
+        "assets/cucumber__28794__ex2605-dive11-seacucumber.jpg"
+      ],
+      "status": "covered"
+    },
+    "deep_octopus": {
+      "display": "Deep-sea octopus",
+      "terms": [
+        "deep octopus",
+        "dumbo octopus",
+        "grimpoteuthis"
+      ],
+      "episodes": [
+        "01",
+        "11"
+      ],
+      "assets": [
+        "assets/octopus__10184__20211217-hires.jpg",
+        "assets/octopus__4091__atlantis-octopus-hires.jpg",
+        "assets/octopus__15895__20201016-hires.jpg"
+      ],
+      "status": "covered"
+    },
+    "red_shrimp": {
+      "display": "Red deep-sea shrimp",
+      "terms": [
+        "red shrimp",
+        "shrimp"
+      ],
+      "episodes": [
+        "05"
+      ],
+      "assets": [
+        "assets/red_animal__13043__ex2301-dive05-red-shrimp-hires.jpg",
+        "assets/red_animal__15248__20210418-hires.jpg",
+        "assets/red_animal__10403__20211102-hires.jpg"
+      ],
+      "status": "covered"
+    },
+    "red_jelly": {
+      "display": "Red deep-sea jellyfish",
+      "terms": [
+        "red jellyfish",
+        "jelly"
+      ],
+      "episodes": [
+        "05",
+        "08"
+      ],
+      "assets": [
+        "assets/jelly__14848__20211103-hires.jpg"
+      ],
+      "status": "covered"
+    },
+    "deep_squid": {
+      "display": "Deep-sea squid",
+      "terms": [
+        "squid"
+      ],
+      "episodes": [
+        "05",
+        "09",
+        "14"
+      ],
+      "assets": [
+        "assets/biolum__12212__20210218-hires.jpg"
+      ],
+      "status": "covered"
+    },
+    "snailfish": {
+      "display": "Snailfish",
+      "terms": [
+        "snailfish"
+      ],
+      "episodes": [
+        "07",
+        "08",
+        "10",
+        "18",
+        "19"
+      ],
+      "assets": [
+        "assets/sp-snailfish__910001__gunther-1887-paraliparis-bathybius.jpg",
+        "assets/snailfish__22125__Seascape-Alaska-Snailfish-1920x1080-1.jpg",
+        "assets/snailfish__14304__dive07-snailfish-hires.jpg"
+      ],
+      "status": "covered"
+    },
+    "hadal_snailfish": {
+      "display": "Hadal snailfish",
+      "terms": [
+        "hadal snailfish"
+      ],
+      "episodes": [
+        "10",
+        "19"
+      ],
+      "assets": [],
+      "status": "unillustratable",
+      "why": "Every image of a hadal snailfish is recent and rights-encumbered. The Mariana snailfish (Pseudoliparis swirei) and the 8,336 m Izu-Ogasawara record fish were filmed by the Newcastle University / University of Western Australia hadal landers and by the Minderoo-UWA Deep Sea Research Centre; those are institutional works under copyright or CC-BY at best, not public-domain dedications. No historical plate exists either: the hadal Liparidae were described from the 1950s onward, decades after the pre-1930 window.",
+      "surveyed": "89 Commons files matching 'Careproctus', 'Paraliparis', 'Liparis liparis' and 'Pseudoliparis amblystomopsis'; 28 returned public domain and every one of them is a shallower or mid-depth genus -- the Challenger and U.S. Fish Commission plates. None is a hadal species.",
+      "do_not_substitute": "A shallower snailfish is the near-miss, and it is a good enough picture that the temptation is real: the 1887 Paraliparis bathybius plate and the NOAA frames at 758 m and 1,365 m all show unmistakable snailfish. They are in the index under `snailfish` and each one states its own identity on screen -- the plate carries 'Paraliparis bathybius, not one of the hadal record-holders' and the photographs carry their depth in the credit line. That is what makes them usable beside a hadal sentence: the frame corrects the inference the narration might otherwise invite.",
+      "what_ships_instead": "A snailfish that says which snailfish it is. The depth record itself is carried by the numbers -- the stat and uncertainty segments -- not by a photograph.",
+      "nearest": "snailfish",
+      "nearest_condition": "only records carrying a standing_note, so the frame itself says which snailfish it is and that it is not a record-holder"
+    },
+    "mariana_trench": {
+      "display": "The Mariana Trench",
+      "terms": [
+        "mariana trench",
+        "challenger deep"
+      ],
+      "episodes": [
+        "10",
+        "15"
+      ],
+      "assets": [
+        "assets/trench__900001__krummel-1907-marianen-graben.jpg"
+      ],
+      "status": "covered"
+    },
+    "trieste": {
+      "display": "Bathyscaphe Trieste",
+      "terms": [
+        "trieste"
+      ],
+      "episodes": [
+        "10",
+        "15"
+      ],
+      "assets": [
+        "assets/vehicle__900006__trieste-nh96801-hoisted.jpg",
+        "assets/vehicle__900005__trieste-piccard-walsh-1960.jpg",
+        "assets/vehicle__900004__trieste-nh96797-1960.jpg"
+      ],
+      "status": "covered"
+    },
+    "giant_squid": {
+      "display": "Giant squid",
+      "terms": [
+        "giant squid",
+        "architeuthis"
+      ],
+      "episodes": [
+        "04",
+        "09",
+        "14"
+      ],
+      "assets": [
+        "assets/sp-giant_squid__910007__verrill-1882-architeuthis-dux.jpg"
+      ],
+      "status": "covered"
+    },
+    "frilled_shark": {
+      "display": "Frilled shark",
+      "terms": [
+        "frilled shark"
+      ],
+      "episodes": [
+        "12"
+      ],
+      "assets": [
+        "assets/frilled_shark__900002__gunther-1887-plate-lxiv.jpg"
+      ],
+      "status": "covered"
+    },
+    "viperfish": {
+      "display": "Viperfish",
+      "terms": [
+        "viperfish"
+      ],
+      "episodes": [
+        "09"
+      ],
+      "assets": [],
+      "status": "uncovered",
+      "why": "no public-domain candidate has been surveyed for this subject yet"
+    },
+    "dragonfish": {
+      "display": "Dragonfish",
+      "terms": [
+        "dragonfish"
+      ],
+      "episodes": [
+        "04",
+        "08",
+        "09",
+        "12",
+        "20"
+      ],
+      "assets": [],
+      "status": "uncovered",
+      "why": "no public-domain candidate has been surveyed for this subject yet"
+    },
+    "lanternfish": {
+      "display": "Lanternfish",
+      "terms": [
+        "lanternfish"
+      ],
+      "episodes": [
+        "08"
+      ],
+      "assets": [],
+      "status": "uncovered",
+      "why": "no public-domain candidate has been surveyed for this subject yet"
+    },
+    "grenadier": {
+      "display": "Rattail / grenadier",
+      "terms": [
+        "rattail",
+        "grenadier"
+      ],
+      "episodes": [
+        "08"
+      ],
+      "assets": [
+        "assets/eyes__12013__20210107-hires.jpg"
+      ],
+      "status": "covered"
+    },
+    "black_smoker": {
+      "display": "Black smoker vent",
+      "terms": [
+        "black smoker",
+        "hydrothermal vent"
+      ],
+      "episodes": [
+        "17",
+        "18"
+      ],
+      "assets": [
+        "assets/vent__16065__ex2205-dive02-smoker-1280x720-poster.jpg",
+        "assets/vent__5177__1605activevent-hires.jpg"
+      ],
+      "status": "covered"
+    },
+    "whale_fall": {
+      "display": "Whale fall",
+      "terms": [
+        "whale fall",
+        "whale bone"
+      ],
+      "episodes": [
+        "16"
+      ],
+      "assets": [],
+      "status": "unillustratable",
+      "why": "Three routes, all closed. (a) The best public-domain candidate, File:Whalefall hires.jpg (2048x1536), is tagged PD-USGov-NOAA but its own description says 'Image courtesy of Craig Smith, University of Hawaii' -- a university employee's photograph, not a federal work, so the tag is wrong and the third-party screen rejects it. (b) The three genuinely clean federal frames are NOAA Undersea Research Program images at 483x328, 388x477 and 377x423. Those are honest and usable in principle, but they are below the smallest Wikimedia thumbnail bucket, which means only the original file is addressable and upload.wikimedia.org now refuses automated fetches of originals; and at that size they cannot be placed in a 1920x1080 frame without an upscale that would show. (c) Every remaining whale-fall image, including the MBARI and Monterey Bay sanctuary material, is CC BY 2.0 or CC BY-SA.",
+      "surveyed": "39 Commons files matching 'whale fall', 'Osedax' and 'whale skeleton seafloor'; 7 returned public domain, of which 4 are unrelated (a Landsat scene of Elephant Island, a feeding humpback at the surface, a 1942 bombing raid, a Massachusetts town history) and the 3 relevant ones are the sub-bucket NOAA NURP frames above.",
+      "do_not_substitute": "A seafloor sediment frame or a surface humpback is the near-miss. Episode 16 is about a carcass on the abyssal floor and the succession of animals that work it; neither substitute shows that.",
+      "what_ships_instead": "The drawn whale-fall treatment (thumbs.art_whalefall). If the resolution route ever reopens -- a direct fetch from nurp.noaa.gov rather than through Commons -- the three NURP frames are named above and are clean.",
+      "reopenable": true
+    },
+    "vampire_squid": {
+      "display": "Vampire squid",
+      "terms": [
+        "vampire squid"
+      ],
+      "episodes": [
+        "09"
+      ],
+      "assets": [],
+      "status": "uncovered",
+      "why": "no public-domain candidate has been surveyed for this subject yet"
+    },
+    "isopod": {
+      "display": "Giant isopod",
+      "terms": [
+        "isopod"
+      ],
+      "episodes": [
+        "09"
+      ],
+      "assets": [],
+      "status": "uncovered",
+      "why": "no public-domain candidate has been surveyed for this subject yet"
+    },
+    "krill": {
+      "display": "Krill",
+      "terms": [
+        "krill"
+      ],
+      "episodes": [
+        "08"
+      ],
+      "assets": [],
+      "status": "uncovered",
+      "why": "no public-domain candidate has been surveyed for this subject yet"
+    },
+    "amphipod": {
+      "display": "Amphipod",
+      "terms": [
+        "amphipod"
+      ],
+      "episodes": [
+        "08"
+      ],
+      "assets": [],
+      "status": "uncovered",
+      "why": "no public-domain candidate has been surveyed for this subject yet"
+    },
+    "cusk_eel": {
+      "display": "Cusk-eel",
+      "terms": [
+        "cusk-eel",
+        "cusk eel"
+      ],
+      "episodes": [
+        "19"
+      ],
+      "assets": [],
+      "status": "uncovered",
+      "why": "no public-domain candidate has been surveyed for this subject yet"
+    },
+    "colossal_squid": {
+      "display": "Colossal squid",
+      "terms": [
+        "colossal squid",
+        "mesonychoteuthis"
+      ],
+      "episodes": [
+        "14"
+      ],
+      "assets": [],
+      "status": "unillustratable",
+      "why": "Mesonychoteuthis hamiltoni was described by Robson in 1925 from two arm crowns recovered from a sperm whale's stomach, so there is no historical plate drawn from a whole animal and nothing pre-1930 to fall back on. Every photograph in existence is of a modern specimen -- Te Papa's preserved female, the Natural History Museum's beak and tentacular club -- and all of them are CC BY-SA 3.0/4.0 or CC BY 3.0. A CC-BY licence is a permission, not a public-domain dedication, and does not clear the monetisation bar this channel set.",
+      "surveyed": "31 Commons files matching 'Mesonychoteuthis hamiltoni' and 'colossal squid'; 3 returned public domain and NONE of the three depicts the animal (two are distribution maps, one is a user drawing tagged as own work).",
+      "do_not_substitute": "A giant squid plate is the obvious temptation and is forbidden. Episode 14 is ABOUT the confusion between the two animals -- its own narration says 'drawings often stretch a colossal squid to giant-squid proportions'. Illustrating that sentence with a stretched giant squid would enact the error the episode exists to correct.",
+      "what_ships_instead": "The drawn squid treatment (thumbs.art_squid) and the informational segments. Episode 14 also names the GIANT squid as its explicit contrast animal, and that one IS covered here from Verrill's 1882 plate -- labelled GIANT SQUID, never colossal."
+    },
+    "yeti_crab": {
+      "display": "Yeti crab",
+      "terms": [
+        "yeti crab",
+        "kiwa"
+      ],
+      "episodes": [
+        "17"
+      ],
+      "assets": [],
+      "status": "unillustratable",
+      "why": "Kiwa hirsuta was described in 2005 and Kiwa puravida in 2011, so the genus post-dates every public-domain illustration corpus. All Commons images are Ifremer or MNHN expedition photographs under CC BY 4.0, or journal figures under CC BY, or CC BY-SA.",
+      "surveyed": "32 Commons files matching 'Kiwa hirsuta', 'Kiwa puravida' and 'yeti crab'; 1 returned public domain and it is a portrait of a New Zealand soldier named Te Moananui-a-Kiwa Ngarimu -- a name collision, not a crab.",
+      "do_not_substitute": "A squat lobster (Munidopsis, galatheid) is the near-miss. NOAA has clean public-domain squat lobster frames and they are NOT Kiwa. Episode 17 is specifically about how Kiwa farms bacteria on its own setae; a galatheid captioned 'yeti crab' would illustrate a different animal doing a different thing.",
+      "what_ships_instead": "The drawn yeti crab treatment (thumbs.art_yeticrab)."
+    },
+    "osedax": {
+      "display": "Osedax bone worm",
+      "terms": [
+        "osedax"
+      ],
+      "episodes": [
+        "16"
+      ],
+      "assets": [],
+      "status": "unillustratable",
+      "why": "Osedax was described in 2004. Every Commons image is a journal figure under CC BY 3.0/4.0 or an aquarium photograph under CC0-claimed terms that do not verify as CC0 in extmetadata.",
+      "surveyed": "39 Commons files matching 'Osedax' and 'whale fall'; the PD results are the NOAA whale-fall photographs recorded below, none of which resolves an Osedax worm.",
+      "do_not_substitute": "A tubeworm (Riftia) is the near-miss and is a vent animal, not a bone worm.",
+      "what_ships_instead": "The whale-fall NOAA photographs, which ARE covered, credited as the skeleton and the community rather than as the worm."
+    }
+  },
+  "assets": [
+    {
+      "subject": "snailfish",
+      "title": "Paraliparis bathybius, Challenger Report plate (1887)",
+      "depicts": "lithograph",
+      "credit_line": "CHALLENGER REPORT PLATE, 1887",
+      "treatment": "plate",
+      "subject_basis": "A snailfish (Liparidae) drawn from a Challenger specimen by Robert Mintern for Gunther's Report on the Deep-Sea Fishes, 1887. Snailfish are the family that holds the vertebrate depth records named in episodes 07, 10 and 19. This plate is a deep-water Paraliparis, NOT Pseudoliparis belyaevi and NOT a hadal record-holder; it is credited as the plate it is and the narration's record claims are carried by the numbers, not by this picture.",
+      "standing_note": "Paraliparis bathybius \u2014 not one of the hadal record-holders",
+      "source_org": "Biodiversity Heritage Library / Internet Archive (via Wikimedia Commons)",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Paraliparis_bathybius.jpg",
+      "origin_url": "https://archive.org/details/reportondeepseaf00gn",
+      "direct_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Paraliparis_bathybius.jpg/1920px-Paraliparis_bathybius.jpg",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/c/c6/Paraliparis_bathybius.jpg",
+      "local_file": "assets/sp-snailfish__910001__gunther-1887-paraliparis-bathybius.jpg",
+      "width": 1920,
+      "height": 641,
+      "source_width": 2548,
+      "source_height": 850,
+      "rights_basis": "Published 1887 in A. Gunther, Report on the Deep-Sea Fishes Collected by H.M.S. Challenger. The illustrator Robert Mintern died in 1908, so the plate is out of copyright under life+70 worldwide and in the United States as a pre-1930 publication. The Commons item page carries PD-scan / PD-old-70 and marks the file not copyrighted.",
+      "rights_check": "Commons item page asserts Public domain (Copyrighted=False); no third-party or copyright stakeholder named in artist, credit or description",
+      "required_credit": "R. Mintern, in A. Gunther, Report on the Deep-Sea Fishes of H.M.S. Challenger (1887)",
+      "commercial_use_permitted": true,
+      "date_checked": "2026-08-31",
+      "sha256": "30d7f7311d21bbcfced0edf00e70153ec574ce025856071e1fb978cafdede1cf",
+      "bytes": 663441,
+      "origin": "commons-public-domain"
+    },
+    {
+      "subject": "barreleye",
+      "title": "Opisthoproctus soleatus, Travailleur et Talisman plate (1888)",
+      "depicts": "lithograph",
+      "credit_line": "TALISMAN EXPEDITION PLATE, 1888",
+      "treatment": "plate",
+      "subject_basis": "Opisthoproctus soleatus is a barreleye, in the same family (Opisthoproctidae) the narration names. Drawn by Bideault for Leon Vaillant's report on the Travailleur and Talisman expeditions, 1888.",
+      "standing_note": "",
+      "source_org": "Biodiversity Heritage Library / Internet Archive (via Wikimedia Commons)",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Opisthoproctus_soleatus1.jpg",
+      "origin_url": "https://archive.org/details/xpeditionsscie00vail",
+      "direct_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Opisthoproctus_soleatus1.jpg/960px-Opisthoproctus_soleatus1.jpg",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Opisthoproctus_soleatus1.jpg",
+      "local_file": "assets/sp-barreleye__910003__vaillant-1888-opisthoproctus-soleatus.jpg",
+      "width": 800,
+      "height": 591,
+      "source_width": 997,
+      "source_height": 737,
+      "rights_basis": "Published 1888 in L. Vaillant, Expeditions scientifiques du Travailleur et du Talisman. Vaillant died in 1914. Out of copyright under life+70 and in the United States as a pre-1930 publication. The Commons item page carries PD-scan / PD-old-70 and marks the file not copyrighted.",
+      "rights_check": "Commons item page asserts Public domain (Copyrighted=False); no third-party or copyright stakeholder named in artist, credit or description",
+      "required_credit": "Bideault, in L. Vaillant, Expeditions scientifiques du Travailleur et du Talisman (1888)",
+      "commercial_use_permitted": true,
+      "date_checked": "2026-08-31",
+      "sha256": "8217cacfbcd96421e280ae72b32c6bb19576ce25d265712d99366a9122eeab9b",
+      "bytes": 221356,
+      "origin": "commons-public-domain"
+    },
+    {
+      "subject": "barreleye",
+      "title": "Barreleye (Opisthoproctidae), Gulf of Alaska, 2024",
+      "depicts": "specimen photograph",
+      "credit_line": "NOAA OCEAN EXPLORATION, 2024",
+      "treatment": "photo",
+      "subject_basis": "NOAA's own caption identifies it to FAMILY: 'A barreleye fish (in the family Opisthoproctidae) collected with the Methot trawl during the Exploring Pelagic Biodiversity of the Gulf of Alaska expedition.' The Commons page also files it under Category:Macropinna microstoma, which NOAA does not say. So it is credited as a barreleye and never as Macropinna. Episodes 01 and 06 both say 'barreleye' and neither says Macropinna, so family level is exactly the claim the narration makes.",
+      "standing_note": "Specimen on deck, not in habitat",
+      "source_org": "NOAA Ocean Exploration (via Wikimedia Commons)",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Barreleye-fish_GoK.jpg",
+      "origin_url": "https://archive.oceanexplorer.noaa.gov/explorations/24skq-ak-seamounts/gallery/gallery.html",
+      "direct_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Barreleye-fish_GoK.jpg/1920px-Barreleye-fish_GoK.jpg",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/b/b5/Barreleye-fish_GoK.jpg",
+      "local_file": "assets/sp-barreleye__910002__noaa-2024-barreleye-gulf-of-alaska.jpg",
+      "width": 1920,
+      "height": 1440,
+      "source_width": 4000,
+      "source_height": 3000,
+      "rights_basis": "Work of the U.S. federal government: a NOAA Ocean Exploration expedition image published on oceanexplorer.noaa.gov with no individual or institutional co-credit and no copyright notice. The Commons item page carries PD-USGov-NOAA and marks the file not copyrighted.",
+      "rights_check": "Commons item page asserts Public domain (Copyrighted=False); no third-party or copyright stakeholder named in artist, credit or description",
+      "required_credit": "NOAA Ocean Exploration, Exploring Pelagic Biodiversity of the Gulf of Alaska and the Impact of Its Seamounts, 2024",
+      "commercial_use_permitted": true,
+      "date_checked": "2026-08-31",
+      "sha256": "6f3a8beb72a2ae6eb1006a9189f092cddb6eb3b3c3858b9ab52c074d4aeac43d",
+      "bytes": 3470626,
+      "origin": "commons-public-domain"
+    },
+    {
+      "subject": "anglerfish",
+      "title": "Melanocetus johnsonii, the humpback anglerfish (1864)",
+      "depicts": "lithograph",
+      "credit_line": "ZOOLOGICAL SOCIETY PLATE, 1864",
+      "treatment": "plate",
+      "subject_basis": "G. H. Ford's plate XXV from the Proceedings of the Zoological Society of London, 1864 -- the illustration published WITH Gunther's original description of the species. It shows the illicium and esca, the lure episodes 01, 04, 09 and 13 all describe.",
+      "standing_note": "",
+      "source_org": "Biodiversity Heritage Library / Internet Archive (via Wikimedia Commons)",
+      "item_url": "https://commons.wikimedia.org/wiki/File:MelanocetusJohnsoniiFord.jpg",
+      "origin_url": "https://archive.org/details/proceedingsofgen64zool",
+      "direct_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/MelanocetusJohnsoniiFord.jpg/1280px-MelanocetusJohnsoniiFord.jpg",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/4/43/MelanocetusJohnsoniiFord.jpg",
+      "local_file": "assets/sp-anglerfish__910004__ford-1864-melanocetus-johnsonii.jpg",
+      "width": 1280,
+      "height": 985,
+      "source_width": 2102,
+      "source_height": 1617,
+      "rights_basis": "Published 1864 (issued 1865) in the Proceedings of the Zoological Society of London; the illustrator George Henry Ford died in 1876. Out of copyright worldwide and in the United States as a pre-1930 publication. The Commons item page carries PD-old-70 and marks the file not copyrighted.",
+      "rights_check": "Commons item page asserts Public domain (Copyrighted=False); no third-party or copyright stakeholder named in artist, credit or description",
+      "required_credit": "G. H. Ford, Proceedings of the Zoological Society of London (1864), Plate XXV",
+      "commercial_use_permitted": true,
+      "date_checked": "2026-08-31",
+      "sha256": "0c1f76f6894850b2f185a0134e8981b7586f495c71b6b0139eab3f2d0f61ad17",
+      "bytes": 914146,
+      "origin": "commons-public-domain"
+    },
+    {
+      "subject": "siphonophore",
+      "title": "Siphonophore colony, Challenger Report plate (1888)",
+      "depicts": "lithograph",
+      "credit_line": "CHALLENGER REPORT PLATE, 1888",
+      "treatment": "plate",
+      "subject_basis": "A plate from Ernst Haeckel's Report on the Siphonophorae Collected by H.M.S. Challenger, 1888 -- the same expedition this channel is named after, and the monograph that established what a siphonophore colony looks like. Episodes 01 and 08 name the siphonophore as the colonial animal that is not one animal.",
+      "standing_note": "",
+      "source_org": "Biodiversity Heritage Library / Internet Archive (via Wikimedia Commons)",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Haeckel_Siphonophorae_7.jpg",
+      "origin_url": "https://archive.org/details/reportonsiphonop00haec",
+      "direct_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Haeckel_Siphonophorae_7.jpg/1920px-Haeckel_Siphonophorae_7.jpg",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/c/cb/Haeckel_Siphonophorae_7.jpg",
+      "local_file": "assets/sp-siphonophore__910006__haeckel-1888-siphonophorae-plate.jpg",
+      "width": 1920,
+      "height": 2699,
+      "source_width": 2318,
+      "source_height": 3258,
+      "rights_basis": "Published 1888 in E. Haeckel, Report on the Siphonophorae Collected by H.M.S. Challenger. Haeckel died in 1919, so the plate is out of copyright under life+70 worldwide and in the United States as a pre-1930 publication. The Commons item page marks the file not copyrighted.",
+      "rights_check": "Commons item page asserts Public domain (Copyrighted=False); no third-party or copyright stakeholder named in artist, credit or description",
+      "required_credit": "E. Haeckel, Report on the Siphonophorae Collected by H.M.S. Challenger (1888)",
+      "commercial_use_permitted": true,
+      "date_checked": "2026-08-31",
+      "sha256": "603adaa1de9f8b05f3c83bd2a5c81f035adc213f66354a2caa931618fd325d68",
+      "bytes": 1563352,
+      "origin": "commons-public-domain"
+    },
+    {
+      "subject": "giant_squid",
+      "title": "Architeuthis dux, Verrill (1882)",
+      "depicts": "lithograph",
+      "credit_line": "VERRILL PLATE, 1882",
+      "treatment": "plate",
+      "subject_basis": "Addison Emery Verrill's 1882 plate of Architeuthis dux from The Cephalopods of the Northeastern Coast of America -- a GIANT squid, drawn from Newfoundland specimens. Episode 14 names the giant squid as its explicit contrast animal ('Giant squid can reach greater total length because their feeding tentacles are extremely long'), and the long feeding tentacles are the thing this plate shows. It is credited GIANT SQUID on screen and must NEVER appear on a colossal squid line.",
+      "standing_note": "",
+      "source_org": "Biodiversity Heritage Library / Internet Archive (via Wikimedia Commons)",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Architeuthis_dux_Verrill_1882.jpg",
+      "origin_url": "https://archive.org/details/cephalopodsofnor00verr",
+      "direct_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Architeuthis_dux_Verrill_1882.jpg/1920px-Architeuthis_dux_Verrill_1882.jpg",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/6/60/Architeuthis_dux_Verrill_1882.jpg",
+      "local_file": "assets/sp-giant_squid__910007__verrill-1882-architeuthis-dux.jpg",
+      "width": 1920,
+      "height": 923,
+      "source_width": 2500,
+      "source_height": 1202,
+      "rights_basis": "Published 1882 in A. E. Verrill, The Cephalopods of the Northeastern Coast of America. Verrill died in 1926, so the plate is out of copyright under life+70 worldwide and in the United States as a pre-1930 publication. The Commons item page carries PD-scan / PD-old-auto-expired and marks the file not copyrighted.",
+      "rights_check": "Commons item page asserts Public domain (Copyrighted=False); no third-party or copyright stakeholder named in artist, credit or description",
+      "required_credit": "A. E. Verrill, The Cephalopods of the Northeastern Coast of America (1882)",
+      "commercial_use_permitted": true,
+      "date_checked": "2026-08-31",
+      "sha256": "0aa0d4d5362cc8b731acb937cda31b50ea2bfc0fd77a95c58ee29cd8ebaf7e3c",
+      "bytes": 291469,
+      "origin": "commons-public-domain"
+    },
+    {
+      "subject": "anglerfish",
+      "title": "Melanocetus johnsonii, NOAA Ship Delaware II (2004)",
+      "depicts": "specimen photograph",
+      "credit_line": "NOAA PHOTO LIBRARY, 2004",
+      "treatment": "photo",
+      "subject_basis": "A humpback anglerfish specimen photographed by personnel of NOAA Ship Delaware II. Pairs with the 1864 Ford plate of the same species: the drawing and the animal, 140 years apart.",
+      "standing_note": "Specimen on deck, not in habitat",
+      "source_org": "NOAA Photo Library (via Wikimedia Commons)",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Melanocetus_johnsonii_by_NOAA.jpg",
+      "origin_url": "https://www.photolib.noaa.gov/",
+      "direct_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Melanocetus_johnsonii_by_NOAA.jpg/1280px-Melanocetus_johnsonii_by_NOAA.jpg",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Melanocetus_johnsonii_by_NOAA.jpg",
+      "local_file": "assets/sp-anglerfish__910005__noaa-2004-melanocetus-johnsonii.jpg",
+      "width": 1280,
+      "height": 771,
+      "source_width": 2119,
+      "source_height": 1276,
+      "rights_basis": "Work of the U.S. federal government: authored by 'Personnel of NOAA Ship DELAWARE II', a federal crew acting in the course of duty, published by the NOAA Photo Library. Public domain under 17 U.S.C. 105. The Commons item page carries PD-USGov-NOAA and marks the file not copyrighted.",
+      "rights_check": "Commons item page asserts Public domain (Copyrighted=False); no third-party or copyright stakeholder named in artist, credit or description",
+      "required_credit": "NOAA Photo Library; personnel of NOAA Ship Delaware II",
+      "commercial_use_permitted": true,
+      "date_checked": "2026-08-31",
+      "sha256": "f3c62342a9fd39afc5710f827ba77e3d64f4177bad9e8cbb991820823c45de80",
+      "bytes": 183707,
+      "origin": "commons-public-domain"
+    },
+    {
+      "slot": "red_animal",
+      "search_phrase": "red deep sea shrimp",
+      "title": "Bright Red Shrimp",
+      "caption": "We were treated to some beautiful close-up views of this bright red shrimp, seen at a depth of 1,795 meters (5,889 feet) during Dive 05 of the 2023 Shakedown + EXPRESS West Coast Exploration expedition. Red is a common color for animals in the deep ocean, as red light does not reach ocean depths, so deep-sea animals that are red actually appear black and thus are less visible to predators and prey.",
+      "source_org": "NOAA Ocean Exploration",
+      "item_url": "https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-express-ex2301-gallery-media-ex2301-dive05-red-shrimp/",
+      "direct_url": "https://oceanexplorer.noaa.gov/wp-content/uploads/2023/04/ex2301-dive05-red-shrimp-hires.jpg",
+      "local_file": "assets/red_animal__13043__ex2301-dive05-red-shrimp-hires.jpg",
+      "width": 1920,
+      "height": 1080,
+      "rights_basis": "Work of the U.S. federal government published by NOAA Ocean Exploration. Item page credit resolves to NOAA alone with no third-party co-credit and no copyright notice, which is the test NOAA's own media kit sets for reuse.",
+      "rights_check": "NOAA-only credit, no copyright notice",
+      "media_kit_url": "https://oceanexplorer.noaa.gov/about/media-kit/",
+      "required_credit": "NOAA Ocean Exploration, 2023 Shakedown + EXPRESS West Coast Exploration",
+      "commercial_use_permitted": true,
+      "date_checked": "2026-08-30",
+      "sha256": "72eb53347822548c5ce2664c6345b991027a1fcdaf6e22693fd436a7386588a4",
+      "bytes": 1129948,
+      "thumbnail_ok": true,
+      "subject": "red_shrimp",
+      "depicts": "photograph",
+      "credit_line": "NOAA OCEAN EXPLORATION, ROV LAMPS",
+      "treatment": "photo",
+      "subject_basis": "NOAA: 'this bright red shrimp, seen at a depth of 1,795 meters'. The frame is lit by the ROV's white lamps, which is the episode's whole point, so the credit says so.",
+      "standing_note": "",
+      "origin": "rights.json"
+    },
+    {
+      "slot": "red_animal",
+      "search_phrase": "red deep sea shrimp",
+      "title": "Shrimp",
+      "caption": "A close look at a beautifully colored red shrimp. The shrimp measured nearly 20 centimeters (7.9 inches) long and had modified swimming legs. It was seen during a Windows to the Deep 2018: Exploration of the Southeast U.S. Continental Margin dive on a site dubbed \u201cRichardson Ridge.\u201d Red light does not reach ocean depths, so deep-sea animals that are red actually appear black and thus are less visible to predators and prey. This is why red is such a common color for animals in the deep ocean.",
+      "source_org": "NOAA Ocean Exploration",
+      "item_url": "https://oceanexplorer.noaa.gov/multimedia/daily-image-media-20210418/",
+      "direct_url": "https://oceanexplorer.noaa.gov/wp-content/uploads/2021/04/20210418-hires.jpg",
+      "local_file": "assets/red_animal__15248__20210418-hires.jpg",
+      "width": 1920,
+      "height": 1080,
+      "rights_basis": "Work of the U.S. federal government published by NOAA Ocean Exploration. Item page credit resolves to NOAA alone with no third-party co-credit and no copyright notice, which is the test NOAA's own media kit sets for reuse.",
+      "rights_check": "NOAA-only credit, no copyright notice",
+      "media_kit_url": "https://oceanexplorer.noaa.gov/about/media-kit/",
+      "required_credit": "NOAA Ocean Exploration, Windows to the Deep 2018",
+      "commercial_use_permitted": true,
+      "date_checked": "2026-08-30",
+      "sha256": "2afa9ac56c7fce21f86f0dd32c2d048f98eb9103b79c0f36d87f618449911853",
+      "bytes": 1345902,
+      "thumbnail_ok": true,
+      "subject": "red_shrimp",
+      "depicts": "photograph",
+      "credit_line": "NOAA OCEAN EXPLORATION, ROV LAMPS",
+      "treatment": "photo",
+      "subject_basis": "NOAA: 'A close look at a beautifully colored red shrimp... nearly 20 centimeters long.'",
+      "standing_note": "",
+      "origin": "rights.json"
+    },
+    {
+      "slot": "red_animal",
+      "search_phrase": "red deep sea shrimp",
+      "title": "Red Shrimp",
+      "caption": "This red shrimp was observed within a small opening in an outcrop during a Deepwater Wonders of Wake: Exploring the Pacific Remote Islands Marine National Monument dive on a site unofficially dubbed \u201cRevolver Seamount,\u201d approximately 70 miles southwest of Wake Island.",
+      "source_org": "NOAA Ocean Exploration",
+      "item_url": "https://oceanexplorer.noaa.gov/multimedia/daily-image-media-20211102/",
+      "direct_url": "https://oceanexplorer.noaa.gov/wp-content/uploads/2021/10/20211102-hires.jpg",
+      "local_file": "assets/red_animal__10403__20211102-hires.jpg",
+      "width": 1920,
+      "height": 1080,
+      "rights_basis": "Work of the U.S. federal government published by NOAA Ocean Exploration. Item page credit resolves to NOAA alone with no third-party co-credit and no copyright notice, which is the test NOAA's own media kit sets for reuse.",
+      "rights_check": "NOAA-only credit, no copyright notice",
+      "media_kit_url": "https://oceanexplorer.noaa.gov/about/media-kit/",
+      "required_credit": "NOAA Ocean Exploration, Deepwater Wonders of Wake",
+      "commercial_use_permitted": true,
+      "date_checked": "2026-08-30",
+      "sha256": "6ef552dda9aeb0fc07a00fae359c986924728a4da319c33b46dcc280883b4db6",
+      "bytes": 1266224,
+      "thumbnail_ok": true,
+      "subject": "red_shrimp",
+      "depicts": "photograph",
+      "credit_line": "NOAA OCEAN EXPLORATION, ROV LAMPS",
+      "treatment": "photo",
+      "subject_basis": "NOAA: 'This red shrimp was observed within a small opening in an outcrop.'",
+      "standing_note": "",
+      "origin": "rights.json"
+    },
+    {
+      "slot": "jelly",
+      "search_phrase": "deep sea jellyfish",
+      "title": "Red Jellyfish",
+      "caption": "Happy World Jellyfish Day! The dusky red jelly, Poralia sp., is a common sight during midwater transects. This one was seen during midwater exploration off Bear Seamount within the Northeast Canyons and Seamounts Marine National Monument as part of the Deep Connections 2019 expedition. During the water column portion of the dive, we observed a multitude of midwater life, including a rattail fish, a hydromedusa, a sawtooth eel, a potentially undescribed ctenophore, a smelt, and a chimera, as seen in this video of dive highlights . The water column is one of the largest, yet least explored, habitats on Earth.",
+      "source_org": "NOAA Ocean Exploration",
+      "item_url": "https://oceanexplorer.noaa.gov/multimedia/daily-image-media-20211103/",
+      "direct_url": "https://oceanexplorer.noaa.gov/wp-content/uploads/2021/10/20211103-hires.jpg",
+      "local_file": "assets/jelly__14848__20211103-hires.jpg",
+      "width": 1920,
+      "height": 1080,
+      "rights_basis": "Work of the U.S. federal government published by NOAA Ocean Exploration. Item page credit resolves to NOAA alone with no third-party co-credit and no copyright notice, which is the test NOAA's own media kit sets for reuse.",
+      "rights_check": "NOAA-only credit, no copyright notice",
+      "media_kit_url": "https://oceanexplorer.noaa.gov/about/media-kit/",
+      "required_credit": "NOAA Ocean Exploration, Deep Connections 2019",
+      "commercial_use_permitted": true,
+      "date_checked": "2026-08-30",
+      "sha256": "00b1d01d9359ba41b8cd59bcced9df6a1f0aad87816a422bbab8f68b64a2ad8a",
+      "bytes": 1536866,
+      "thumbnail_ok": true,
+      "subject": "red_jelly",
+      "depicts": "photograph",
+      "credit_line": "NOAA OCEAN EXPLORATION, ROV LAMPS",
+      "treatment": "photo",
+      "subject_basis": "NOAA: 'The dusky red jelly, Poralia sp., is a common sight during midwater transects.'",
+      "standing_note": "",
+      "origin": "rights.json"
+    },
+    {
+      "slot": "biolum",
+      "search_phrase": "bioluminescent",
+      "title": "Dana Octopus Squid",
+      "caption": "This Dana octopus squid followed remotely operated vehicle Deep Discoverer during much of its descent to the seafloor to explore along the far westernmost edge of the Clipperton Fracture Zone during the Discovering the Deep: Mountains in the Deep: Exploring the Central Pacific Basin expedition. Notice the bioluminescent spotlights on the tips of two of the squid\u2019s arms.",
+      "source_org": "NOAA Ocean Exploration",
+      "item_url": "https://oceanexplorer.noaa.gov/multimedia/daily-image-media-20210218/",
+      "direct_url": "https://oceanexplorer.noaa.gov/wp-content/uploads/2021/02/20210218-hires.jpg",
+      "local_file": "assets/biolum__12212__20210218-hires.jpg",
+      "width": 1920,
+      "height": 1080,
+      "rights_basis": "Work of the U.S. federal government published by NOAA Ocean Exploration. Item page credit resolves to NOAA alone with no third-party co-credit and no copyright notice, which is the test NOAA's own media kit sets for reuse.",
+      "rights_check": "NOAA-only credit, no copyright notice",
+      "media_kit_url": "https://oceanexplorer.noaa.gov/about/media-kit/",
+      "required_credit": "NOAA Ocean Exploration, Mountains in the Deep: Exploring the Central Pacific Basin",
+      "commercial_use_permitted": true,
+      "date_checked": "2026-08-30",
+      "sha256": "8349ed91fd83825a0afc26cb9dc4d12500565d016afc1f4401bdf2c712d097b9",
+      "bytes": 568223,
+      "thumbnail_ok": true,
+      "subject": "deep_squid",
+      "depicts": "photograph",
+      "credit_line": "NOAA OCEAN EXPLORATION, ROV LAMPS",
+      "treatment": "photo",
+      "subject_basis": "NOAA: 'This Dana octopus squid followed remotely operated vehicle Deep Discoverer during much of its descent.'",
+      "standing_note": "",
+      "origin": "rights.json"
+    },
+    {
+      "slot": "anglerfish",
+      "search_phrase": "anglerfish",
+      "title": "Anglerfish",
+      "caption": "An anglerfish in the genus Chaunacops , commonly called a toadfish or coffinfish. This individual was seen swimming during Dive 06 of the third Voyage to the Ridge 2022 expedition.",
+      "source_org": "NOAA Ocean Exploration",
+      "item_url": "https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-22voyage-to-the-ridge-gallery-media-ex2206-dive06-anglerfish/",
+      "direct_url": "https://oceanexplorer.noaa.gov/wp-content/uploads/2022/08/ex2206-dive06-anglerfish-hires.jpg",
+      "local_file": "assets/anglerfish__13309__ex2206-dive06-anglerfish-hires.jpg",
+      "width": 1920,
+      "height": 1080,
+      "rights_basis": "Work of the U.S. federal government published by NOAA Ocean Exploration. Item page credit resolves to NOAA alone with no third-party co-credit and no copyright notice, which is the test NOAA's own media kit sets for reuse.",
+      "rights_check": "NOAA-only credit, no copyright notice",
+      "media_kit_url": "https://oceanexplorer.noaa.gov/about/media-kit/",
+      "required_credit": "NOAA Ocean Exploration, Voyage to the Ridge 2022",
+      "commercial_use_permitted": true,
+      "date_checked": "2026-08-30",
+      "sha256": "c3ef2a3531839b870e1b8f903bfbec918a1555d40cf0ed6177b702e07c1ec6f4",
+      "bytes": 1614895,
+      "thumbnail_ok": true,
+      "subject": "anglerfish",
+      "depicts": "photograph",
+      "credit_line": "NOAA OCEAN EXPLORATION",
+      "treatment": "photo",
+      "subject_basis": "NOAA: 'An anglerfish in the genus Chaunacops, commonly called a toadfish or coffinfish.'",
+      "standing_note": "",
+      "origin": "rights.json"
+    },
+    {
+      "slot": "anglerfish",
+      "search_phrase": "anglerfish",
+      "title": "Goosefish",
+      "caption": "A goosefish, a type of anglerfish, seen during Dive 08 of the third Voyage to the Ridge expedition.",
+      "source_org": "NOAA Ocean Exploration",
+      "item_url": "https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-22voyage-to-the-ridge-gallery-media-ex2206-dive08-goosefish-2/",
+      "direct_url": "https://oceanexplorer.noaa.gov/wp-content/uploads/2022/09/ex2206-dive08-goosefish-hires.jpg",
+      "local_file": "assets/anglerfish__12097__ex2206-dive08-goosefish-hires.jpg",
+      "width": 1920,
+      "height": 1080,
+      "rights_basis": "Work of the U.S. federal government published by NOAA Ocean Exploration. Item page credit resolves to NOAA alone with no third-party co-credit and no copyright notice, which is the test NOAA's own media kit sets for reuse.",
+      "rights_check": "NOAA-only credit, no copyright notice",
+      "media_kit_url": "https://oceanexplorer.noaa.gov/about/media-kit/",
+      "required_credit": "NOAA Ocean Exploration, Voyage to the Ridge 2022",
+      "commercial_use_permitted": true,
+      "date_checked": "2026-08-30",
+      "sha256": "55144d5d17794e7ab3418f3abae69233df6560d0e7c6e178d1a2e86a19a37667",
+      "bytes": 1904924,
+      "thumbnail_ok": true,
+      "subject": "anglerfish",
+      "depicts": "photograph",
+      "credit_line": "NOAA OCEAN EXPLORATION",
+      "treatment": "photo",
+      "subject_basis": "NOAA: 'A goosefish, a type of anglerfish, seen during Dive 08 of the third Voyage to the Ridge expedition.'",
+      "standing_note": "",
+      "origin": "rights.json"
+    },
+    {
+      "slot": "eyes",
+      "search_phrase": "deep sea fish eye",
+      "title": "Anglerfish",
+      "caption": "This anglerfish, in the genus Chaunacops , was seen during the Deep Connections 2019: Exploring Atlantic Canyons and Seamounts of the United States and Canada expedition, while exploring an intriguing step-like feature within Verrill Canyon off the coast of Halifax, Canada. These fish have a small lure on a short stalk between their eyes that they wiggle in order to attract prey. While we often see these fish on the seafloor resting or \u201cwalking\u201d on modified fins, sometimes they do take to the water column and swim, as seen in this image. Watch a video of this fish in action!",
+      "source_org": "NOAA Ocean Exploration",
+      "item_url": "https://oceanexplorer.noaa.gov/multimedia/daily-image-media-20210113/",
+      "direct_url": "https://oceanexplorer.noaa.gov/wp-content/uploads/2021/01/20210113-hires.jpg",
+      "local_file": "assets/eyes__14526__20210113-hires.jpg",
+      "width": 1920,
+      "height": 1080,
+      "rights_basis": "Work of the U.S. federal government published by NOAA Ocean Exploration. Item page credit resolves to NOAA alone with no third-party co-credit and no copyright notice, which is the test NOAA's own media kit sets for reuse.",
+      "rights_check": "NOAA-only credit, no copyright notice",
+      "media_kit_url": "https://oceanexplorer.noaa.gov/about/media-kit/",
+      "required_credit": "NOAA Ocean Exploration, Deep Connections 2019",
+      "commercial_use_permitted": true,
+      "date_checked": "2026-08-30",
+      "sha256": "1daeee1cf5f923b922cb52702f4cb268029c659554c948fb1f623945038bc878",
+      "bytes": 264978,
+      "thumbnail_ok": true,
+      "subject": "anglerfish",
+      "depicts": "photograph",
+      "credit_line": "NOAA OCEAN EXPLORATION",
+      "treatment": "photo",
+      "subject_basis": "NOAA: 'This anglerfish, in the genus Chaunacops.'",
+      "standing_note": "",
+      "origin": "rights.json"
+    },
+    {
+      "slot": "siphonophore",
+      "search_phrase": "siphonophore",
+      "title": "Siphonophore",
+      "caption": "While exploring an unnamed seamount in the central Pacific Ocean during the 2017 Discovering the Deep: Exploring Remote Pacific MPAs expedition , we observed this deepwater siphonophore at a depth of 1,531 meters (almost a meter). Although it looks like a single organism, it\u2019s actually a colony of individual hydrozoans, each specialized for different functions such as swimming, feeding, and reproduction. Watch the video . Visit How to Make Any Picture Your Computer or Phone\u2019s Wallpaper for instructions on how to make this wallpaper yours. Other wallpaper images are available in the Multimedia Library (Media Type: Wallpaper).",
+      "source_org": "NOAA Ocean Exploration",
+      "item_url": "https://oceanexplorer.noaa.gov/multimedia/calendar-wallpaper/",
+      "direct_url": "https://oceanexplorer.noaa.gov/wp-content/uploads/2026/07/august2026-hires.jpg",
+      "local_file": "assets/siphonophore__28649__august2026-hires.jpg",
+      "width": 1920,
+      "height": 1080,
+      "rights_basis": "Work of the U.S. federal government published by NOAA Ocean Exploration. Item page credit resolves to NOAA alone with no third-party co-credit and no copyright notice, which is the test NOAA's own media kit sets for reuse.",
+      "rights_check": "NOAA-only credit, no copyright notice",
+      "media_kit_url": "https://oceanexplorer.noaa.gov/about/media-kit/",
+      "required_credit": "NOAA Ocean Exploration, Discovering the Deep: Exploring Remote Pacific MPAs",
+      "commercial_use_permitted": true,
+      "date_checked": "2026-08-30",
+      "sha256": "fa7832a2aa77960ce39e80b4bfb33b188e1903a7e3050048dc5198cef83fca09",
+      "bytes": 659832,
+      "thumbnail_ok": false,
+      "thumbnail_excluded_reason": "NOAA Ocean Exploration calendar wallpaper: agency wordmark and an August date grid are composited over the animal.",
+      "subject": "siphonophore",
+      "depicts": "photograph",
+      "credit_line": "NOAA OCEAN EXPLORATION",
+      "treatment": "photo",
+      "subject_basis": "NOAA: 'we observed this deepwater siphonophore at a depth of 1,531 meters.'",
+      "standing_note": "",
+      "origin": "rights.json"
+    },
+    {
+      "slot": "cucumber",
+      "search_phrase": "sea cucumber",
+      "title": "Sea Cucumber",
+      "caption": "This sea cucumber, or holothurian, was seen perched on polymetallic nodules during Dive 09 of the 2026 Cook Islands ROV Exploration cruise. Sea cucumbers are considered deposit feeders, feeding on nutrients attached to sediments on the seafloor. They use their modified tube feet to \u201ceat\u201d seafloor mud, extracting what little nutrition may have persisted after slowly sinking from the productive upper ocean, and then expelling undigested mud. The sea cucumber in this image has a rather full gut!",
+      "source_org": "NOAA Ocean Exploration",
+      "item_url": "https://oceanexplorer.noaa.gov/multimedia/sea-cucumber-8/",
+      "direct_url": "https://oceanexplorer.noaa.gov/wp-content/uploads/2026/07/ex2605-dive09-seacucumber.jpg",
+      "local_file": "assets/cucumber__28654__ex2605-dive09-seacucumber.jpg",
+      "width": 1920,
+      "height": 1080,
+      "rights_basis": "Work of the U.S. federal government published by NOAA Ocean Exploration. Item page credit resolves to NOAA alone with no third-party co-credit and no copyright notice, which is the test NOAA's own media kit sets for reuse.",
+      "rights_check": "NOAA-only credit, no copyright notice",
+      "media_kit_url": "https://oceanexplorer.noaa.gov/about/media-kit/",
+      "required_credit": "NOAA Ocean Exploration, 2026 Cook Islands ROV Exploration",
+      "commercial_use_permitted": true,
+      "date_checked": "2026-08-30",
+      "sha256": "43a24d0ae24edd635e088df6931490f48f42ad8c54bbd900c13d641b79161af8",
+      "bytes": 1093863,
+      "thumbnail_ok": true,
+      "subject": "sea_cucumber",
+      "depicts": "photograph",
+      "credit_line": "NOAA OCEAN EXPLORATION",
+      "treatment": "photo",
+      "subject_basis": "NOAA: 'This sea cucumber, or holothurian, was seen perched on polymetallic nodules.'",
+      "standing_note": "",
+      "origin": "rights.json"
+    },
+    {
+      "slot": "transparent",
+      "search_phrase": "transparent sea cucumber",
+      "title": "May 1, 2021: Sea Cucumber",
+      "caption": "The swimming sea cucumber, Enypniastes eximia , sometimes referred to as the \u201c headless chicken monster ,\u201d is a widespread species present in the abyss. It is encountered widely around the world with records from the Gulf of Mexico, Tropical Atlantic, East Atlantic, New Zealand, and the Southern Ocean (Antarctica). This one was seen off Puerto Rico in 2018 . Swimming sea cucumbers have a special \u2018flap\u2019 which they use to \u2018lift\u2019 themselves off the seafloor. The transparent body reveals the sediment-filled intestine looping around from the mouth (top) to the anus (bottom). From: Holothurian Hill .",
+      "source_org": "NOAA Ocean Exploration",
+      "item_url": "https://oceanexplorer.noaa.gov/multimedia/daily-image-media-20210501/",
+      "direct_url": "https://oceanexplorer.noaa.gov/wp-content/uploads/2021/04/20210501-hires.jpg",
+      "local_file": "assets/transparent__15986__20210501-hires.jpg",
+      "width": 1920,
+      "height": 1080,
+      "rights_basis": "Work of the U.S. federal government published by NOAA Ocean Exploration. Item page credit resolves to NOAA alone with no third-party co-credit and no copyright notice, which is the test NOAA's own media kit sets for reuse.",
+      "rights_check": "NOAA-only credit, no copyright notice",
+      "media_kit_url": "https://oceanexplorer.noaa.gov/about/media-kit/",
+      "required_credit": "NOAA Ocean Exploration, Exploring Deep-sea Habitats off Puerto Rico and the U.S. Virgin Islands",
+      "commercial_use_permitted": true,
+      "date_checked": "2026-08-30",
+      "sha256": "178bbc039818cb02fcfc6fdee252660148bd99260546c32e21eb40346d20aa5c",
+      "bytes": 1212678,
+      "thumbnail_ok": true,
+      "subject": "sea_cucumber",
+      "depicts": "photograph",
+      "credit_line": "NOAA OCEAN EXPLORATION",
+      "treatment": "photo",
+      "subject_basis": "NOAA: 'The swimming sea cucumber, Enypniastes eximia.'",
+      "standing_note": "",
+      "origin": "rights.json"
+    },
+    {
+      "slot": "cucumber",
+      "search_phrase": "sea cucumber",
+      "title": "Sea Cucumber",
+      "caption": "This sea cucumber with interesting and long appendages was seen on the seafloor during Dive 11 of the 2026 Cook Islands ROV Exploration cruise.",
+      "source_org": "NOAA Ocean Exploration",
+      "item_url": "https://oceanexplorer.noaa.gov/multimedia/sea-cucumber-9/",
+      "direct_url": "https://oceanexplorer.noaa.gov/wp-content/uploads/2026/08/ex2605-dive11-seacucumber.jpg",
+      "local_file": "assets/cucumber__28794__ex2605-dive11-seacucumber.jpg",
+      "width": 1920,
+      "height": 1080,
+      "rights_basis": "Work of the U.S. federal government published by NOAA Ocean Exploration. Item page credit resolves to NOAA alone with no third-party co-credit and no copyright notice, which is the test NOAA's own media kit sets for reuse.",
+      "rights_check": "NOAA-only credit, no copyright notice",
+      "media_kit_url": "https://oceanexplorer.noaa.gov/about/media-kit/",
+      "required_credit": "NOAA Ocean Exploration, 2026 Cook Islands ROV Exploration",
+      "commercial_use_permitted": true,
+      "date_checked": "2026-08-30",
+      "sha256": "3f04611abfab05706faa65ab13b4f089e70417b06dc715bcbbd4ba4ba0a6ba1a",
+      "bytes": 654153,
+      "thumbnail_ok": true,
+      "subject": "sea_cucumber",
+      "depicts": "photograph",
+      "credit_line": "NOAA OCEAN EXPLORATION",
+      "treatment": "photo",
+      "subject_basis": "NOAA: 'This sea cucumber with interesting and long appendages was seen on the seafloor during Dive 11 of the 2026 Cook Islands ROV Exploration cruise.'",
+      "standing_note": "",
+      "origin": "rights.json"
+    },
+    {
+      "slot": "octopus",
+      "search_phrase": "dumbo octopus",
+      "title": "Dumbo Octopus",
+      "caption": "Seen during the Gulf of Mexico 2014 expedition, this dumbo octopus displayed a body posture that had never before been observed in cirrate octopods. This was perhaps one of the most photogenic animals seen during the expedition and was a biological highlight for many who tuned in. Learn about other cephalopod sightings from the expedition in this mission log, \u201c Dumbos and Bobtails and Squids \u2013 Oh My! \u201d. From: Highlight Images .",
+      "source_org": "NOAA Ocean Exploration",
+      "item_url": "https://oceanexplorer.noaa.gov/multimedia/daily-image-media-20211217/",
+      "direct_url": "https://oceanexplorer.noaa.gov/wp-content/uploads/2021/12/20211217-hires.jpg",
+      "local_file": "assets/octopus__10184__20211217-hires.jpg",
+      "width": 1920,
+      "height": 1080,
+      "rights_basis": "Work of the U.S. federal government published by NOAA Ocean Exploration. Item page credit resolves to NOAA alone with no third-party co-credit and no copyright notice, which is the test NOAA's own media kit sets for reuse.",
+      "rights_check": "NOAA-only credit, no copyright notice",
+      "media_kit_url": "https://oceanexplorer.noaa.gov/about/media-kit/",
+      "required_credit": "NOAA Ocean Exploration, Exploration of the Gulf of Mexico 2014",
+      "commercial_use_permitted": true,
+      "date_checked": "2026-08-30",
+      "sha256": "31e5b212d8f25651a2ee509c6f8a6352c2aa7165bf6a68b48b5e908bf68ca9b5",
+      "bytes": 1021196,
+      "thumbnail_ok": true,
+      "subject": "deep_octopus",
+      "depicts": "photograph",
+      "credit_line": "NOAA OCEAN EXPLORATION",
+      "treatment": "photo",
+      "subject_basis": "NOAA: 'this dumbo octopus displayed a body posture that had never before been observed in cirrate octopods.'",
+      "standing_note": "",
+      "origin": "rights.json"
+    },
+    {
+      "slot": "octopus",
+      "search_phrase": "dumbo octopus",
+      "title": "Dumbo Octopus",
+      "caption": "In 2014, we had a great dive exploring the main edifice of the Atlantis II Seamounts group, encountering a wide diversity of life, including this squee-worthy dumbo octopus! Learn more",
+      "source_org": "NOAA Ocean Exploration",
+      "item_url": "https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-ex2104-features-looking-back-media-atlantis-octopus/",
+      "direct_url": "https://oceanexplorer.noaa.gov/wp-content/uploads/2021/06/atlantis-octopus-hires.jpg",
+      "local_file": "assets/octopus__4091__atlantis-octopus-hires.jpg",
+      "width": 1920,
+      "height": 1080,
+      "rights_basis": "Work of the U.S. federal government published by NOAA Ocean Exploration. Item page credit resolves to NOAA alone with no third-party co-credit and no copyright notice, which is the test NOAA's own media kit sets for reuse.",
+      "rights_check": "NOAA-only credit, no copyright notice",
+      "media_kit_url": "https://oceanexplorer.noaa.gov/about/media-kit/",
+      "required_credit": "NOAA Ocean Exploration, Our Deepwater Backyard: Exploring Atlantic Canyons and Seamounts 2014",
+      "commercial_use_permitted": true,
+      "date_checked": "2026-08-30",
+      "sha256": "6b871f83fd08b5d4c3d1e47b2fdfa65145d90b5391fe185a16658cf06e4da861",
+      "bytes": 1644320,
+      "thumbnail_ok": true,
+      "subject": "deep_octopus",
+      "depicts": "photograph",
+      "credit_line": "NOAA OCEAN EXPLORATION",
+      "treatment": "photo",
+      "subject_basis": "NOAA: 'this squee-worthy dumbo octopus' at the Atlantis II Seamounts.",
+      "standing_note": "",
+      "origin": "rights.json"
+    },
+    {
+      "slot": "octopus",
+      "search_phrase": "dumbo octopus",
+      "title": "Dumbo Octopus",
+      "caption": "Everyone loves a dumbo octopus! We observed this one, an Opisthoteuthis agassizii , during Dive 12 of the 2019 Southeastern U.S. Deep-sea Exploration . The dots are clear windows in the skin. We are uncertain of their purpose, but suspect they may gather additional light. Want more octopods? Check out our Octopus Friday Image Gallery .",
+      "source_org": "NOAA Ocean Exploration",
+      "item_url": "https://oceanexplorer.noaa.gov/multimedia/daily-image-media-20201016/",
+      "direct_url": "https://oceanexplorer.noaa.gov/wp-content/uploads/2020/10/20201016-hires.jpg",
+      "local_file": "assets/octopus__15895__20201016-hires.jpg",
+      "width": 1920,
+      "height": 1080,
+      "rights_basis": "Work of the U.S. federal government published by NOAA Ocean Exploration. Item page credit resolves to NOAA alone with no third-party co-credit and no copyright notice, which is the test NOAA's own media kit sets for reuse.",
+      "rights_check": "NOAA-only credit, no copyright notice",
+      "media_kit_url": "https://oceanexplorer.noaa.gov/about/media-kit/",
+      "required_credit": "NOAA Ocean Exploration, 2019 Southeastern U.S. Deep-sea Exploration",
+      "commercial_use_permitted": true,
+      "date_checked": "2026-08-30",
+      "sha256": "eb5fe2b58913e22894134055854c90940590287f174df58df1090b174e5ab1cc",
+      "bytes": 1118711,
+      "thumbnail_ok": true,
+      "subject": "deep_octopus",
+      "depicts": "photograph",
+      "credit_line": "NOAA OCEAN EXPLORATION",
+      "treatment": "photo",
+      "subject_basis": "NOAA: 'an Opisthoteuthis agassizii, during Dive 12 of the 2019 Southeastern U.S. Deep-sea Exploration.'",
+      "standing_note": "",
+      "origin": "rights.json"
+    },
+    {
+      "slot": "snailfish",
+      "search_phrase": "snailfish",
+      "title": "Deep-Sea Snailfish",
+      "caption": "An example of a deep-sea snailfish. The fish in this video was spotted at a depth of 1,365 meters (4,480 feet) during dive 8 of NOAA Ocean Exploration\u2019s 2023 Seascape Alaska 5 expedition. Learn More",
+      "source_org": "NOAA Ocean Exploration",
+      "item_url": "https://oceanexplorer.noaa.gov/multimedia/deep-sea-snailfish/",
+      "direct_url": "https://oceanexplorer.noaa.gov/wp-content/uploads/2026/01/Seascape-Alaska-Snailfish-1920x1080-1.jpg",
+      "local_file": "assets/snailfish__22125__Seascape-Alaska-Snailfish-1920x1080-1.jpg",
+      "width": 1920,
+      "height": 1080,
+      "rights_basis": "Work of the U.S. federal government published by NOAA Ocean Exploration. Item page credit resolves to NOAA alone with no third-party co-credit and no copyright notice, which is the test NOAA's own media kit sets for reuse.",
+      "rights_check": "NOAA-only credit, no copyright notice",
+      "media_kit_url": "https://oceanexplorer.noaa.gov/about/media-kit/",
+      "required_credit": "NOAA Ocean Exploration, Seascape Alaska",
+      "commercial_use_permitted": true,
+      "date_checked": "2026-08-30",
+      "sha256": "318f666182b28d6c3a9ef987ad84a6126e416fd745e71445eb46db61d0e2f7c4",
+      "bytes": 1661702,
+      "thumbnail_ok": true,
+      "subject": "snailfish",
+      "depicts": "photograph",
+      "credit_line": "NOAA OCEAN EXPLORATION, 1,365 M",
+      "treatment": "photo",
+      "subject_basis": "NOAA: 'An example of a deep-sea snailfish... spotted at a depth of 1,365 meters.' The depth is ON the credit line deliberately. Episodes 10 and 19 discuss hadal snailfish at 7,000-8,300 m; this animal is a snailfish but is not one of the record-holders, and a credit that names its depth prevents the viewer inferring otherwise.",
+      "standing_note": "Deep-sea snailfish at 1,365 m \u2014 not a hadal record-holder",
+      "origin": "rights.json"
+    },
+    {
+      "slot": "snailfish",
+      "search_phrase": "snailfish",
+      "title": "Snailfish",
+      "caption": "This snailfish was seen resting on a closed anemone at 758 meters (2,487 feet) depth during Dive 07 of the Seascape Alaska 3 expedition.",
+      "source_org": "NOAA Ocean Exploration",
+      "item_url": "https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-seascape-alaska-ex2304-gallery-media-dive07-snailfish/",
+      "direct_url": "https://oceanexplorer.noaa.gov/wp-content/uploads/2023/07/dive07-snailfish-hires.jpg",
+      "local_file": "assets/snailfish__14304__dive07-snailfish-hires.jpg",
+      "width": 1920,
+      "height": 1080,
+      "rights_basis": "Work of the U.S. federal government published by NOAA Ocean Exploration. Item page credit resolves to NOAA alone with no third-party co-credit and no copyright notice, which is the test NOAA's own media kit sets for reuse.",
+      "rights_check": "NOAA-only credit, no copyright notice",
+      "media_kit_url": "https://oceanexplorer.noaa.gov/about/media-kit/",
+      "required_credit": "NOAA Ocean Exploration, Seascape Alaska",
+      "commercial_use_permitted": true,
+      "date_checked": "2026-08-30",
+      "sha256": "80f100828f25d8cfec21e5360996895e0f11f9150bb9c9066e556e230b951912",
+      "bytes": 1203579,
+      "thumbnail_ok": true,
+      "subject": "snailfish",
+      "depicts": "photograph",
+      "credit_line": "NOAA OCEAN EXPLORATION, 758 M",
+      "treatment": "photo",
+      "subject_basis": "NOAA: 'This snailfish was seen resting on a closed anemone at 758 meters depth.' Same reasoning as above.",
+      "standing_note": "Snailfish at 758 m \u2014 not a hadal record-holder",
+      "origin": "rights.json"
+    },
+    {
+      "slot": "vent",
+      "search_phrase": "hydrothermal vent chimney",
+      "title": "Small Black Smoker Hydrothermal Vent",
+      "caption": "Heated water \u201cshimmers\u201d as it is emitted from a small black smoker hydrothermal vent seen at a depth of 2,947 meters (1.83 miles) near the end of Dive 02 of the second Voyage to the Ridge 2022 expedition. If you look closely, you will see several small caridean shrimp crawling over the chimney structure; these shrimp rely on chemosynthesis for food. The variation in the color of the vent structure is from the white mineral anhydrite (calcium sulfate) and oxidized sulfides (yellow to brownish red). These vents can reach upwards of 350\u00b0C (662\u00b0F), although the highest temperature reading made here was 54\u00b0C (129\u00b0F).",
+      "source_org": "NOAA Ocean Exploration",
+      "item_url": "https://oceanexplorer.noaa.gov/multimedia/okeanos-explorations-22voyage-to-the-ridge-gallery-media-ex2205-dive02-smoker/",
+      "direct_url": "https://oceanexplorer.noaa.gov/wp-content/uploads/2022/07/ex2205-dive02-smoker-1280x720-poster.jpg",
+      "local_file": "assets/vent__16065__ex2205-dive02-smoker-1280x720-poster.jpg",
+      "width": 1280,
+      "height": 720,
+      "rights_basis": "Work of the U.S. federal government published by NOAA Ocean Exploration. Item page credit resolves to NOAA alone with no third-party co-credit and no copyright notice, which is the test NOAA's own media kit sets for reuse.",
+      "rights_check": "NOAA-only credit, no copyright notice",
+      "media_kit_url": "https://oceanexplorer.noaa.gov/about/media-kit/",
+      "required_credit": "NOAA Ocean Exploration, Voyage to the Ridge 2022",
+      "commercial_use_permitted": true,
+      "date_checked": "2026-08-30",
+      "sha256": "d050f3b11cbcea3d24035086cad98a056b453229485aed912eeafa7e29b049f4",
+      "bytes": 148383,
+      "thumbnail_ok": true,
+      "subject": "black_smoker",
+      "depicts": "photograph",
+      "credit_line": "NOAA OCEAN EXPLORATION",
+      "treatment": "photo",
+      "subject_basis": "NOAA: 'Heated water shimmers as it is emitted from a small black smoker hydrothermal vent seen at a depth of 2,947 meters.'",
+      "standing_note": "",
+      "origin": "rights.json"
+    },
+    {
+      "slot": "vent",
+      "search_phrase": "hydrothermal vent chimney",
+      "title": "Active Hydrothermal Vent",
+      "caption": "An actively venting hydrothermal vent chimney shrouded in black smoke and covered with vent animals including shrimp, crabs, snails, and scaleworms. Learn more",
+      "source_org": "NOAA Ocean Exploration",
+      "item_url": "https://oceanexplorer.noaa.gov/multimedia/explorations-ex2405-ex2406-learning-at-sea-1605activevent/",
+      "direct_url": "https://oceanexplorer.noaa.gov/wp-content/uploads/2024/10/1605activevent-hires.jpg",
+      "local_file": "assets/vent__5177__1605activevent-hires.jpg",
+      "width": 1920,
+      "height": 1080,
+      "rights_basis": "Work of the U.S. federal government published by NOAA Ocean Exploration. Item page credit resolves to NOAA alone with no third-party co-credit and no copyright notice, which is the test NOAA's own media kit sets for reuse.",
+      "rights_check": "NOAA-only credit, no copyright notice",
+      "media_kit_url": "https://oceanexplorer.noaa.gov/about/media-kit/",
+      "required_credit": "NOAA Ocean Exploration, 2016 Deepwater Exploration of the Marianas",
+      "commercial_use_permitted": true,
+      "date_checked": "2026-08-30",
+      "sha256": "6e45781eb563e1410f1e7c4c36a0c1ccbe37ea044a535e4ce756686a522f556a",
+      "bytes": 1110794,
+      "thumbnail_ok": true,
+      "subject": "black_smoker",
+      "depicts": "photograph",
+      "credit_line": "NOAA OCEAN EXPLORATION",
+      "treatment": "photo",
+      "subject_basis": "NOAA: 'An actively venting hydrothermal vent chimney shrouded in black smoke and covered with vent animals.'",
+      "standing_note": "",
+      "origin": "rights.json"
+    },
+    {
+      "slot": "eyes",
+      "search_phrase": "deep sea fish eye",
+      "title": "Deep-Sea Lizardfish",
+      "caption": "This deep-sea lizardfish ( Bathysaurus mollis ) was seen on Dive 08 of the Mountains in the Deep: Exploring the Central Pacific Basin expedition. Bathysaurus have beautiful, yellow eyes and a mouth full of impressive teeth. They are apex predators in the abyss and are known to strike at other large fishes. These lizardfish are widely observed on abyssal plains. Scientists were able to identify this one down to species ( Bathysaurus mollis ) due to its pale coloration. From: A Dive Into the Abyss .",
+      "source_org": "NOAA Ocean Exploration",
+      "item_url": "https://oceanexplorer.noaa.gov/multimedia/daily-image-media-20210107/",
+      "direct_url": "https://oceanexplorer.noaa.gov/wp-content/uploads/2020/12/20210107-hires.jpg",
+      "local_file": "assets/eyes__12013__20210107-hires.jpg",
+      "width": 1920,
+      "height": 1080,
+      "rights_basis": "Work of the U.S. federal government published by NOAA Ocean Exploration. Item page credit resolves to NOAA alone with no third-party co-credit and no copyright notice, which is the test NOAA's own media kit sets for reuse.",
+      "rights_check": "NOAA-only credit, no copyright notice",
+      "media_kit_url": "https://oceanexplorer.noaa.gov/about/media-kit/",
+      "required_credit": "NOAA Ocean Exploration, Mountains in the Deep: Exploring the Central Pacific Basin",
+      "commercial_use_permitted": true,
+      "date_checked": "2026-08-30",
+      "sha256": "dc3a615ef111b0fe14a86f51269df60c1c6edd928848ccf68db72a70e0a95714",
+      "bytes": 1522162,
+      "thumbnail_ok": true,
+      "subject": "grenadier",
+      "depicts": "photograph",
+      "credit_line": "NOAA OCEAN EXPLORATION",
+      "treatment": "photo",
+      "subject_basis": "NOAA: 'This deep-sea lizardfish (Bathysaurus mollis)'. Filed under the deep-benthic-fish subject, credited as what it is; it is NOT a grenadier and is here only as a same-habitat benthic fish for episode 08's survey line.",
+      "standing_note": "",
+      "origin": "rights.json"
+    },
+    {
+      "slot": "trench",
+      "search_phrase": "krummel-1907-marianen-graben",
+      "title": "Der Marianen-Graben (1907 bathymetric chart)",
+      "caption": "Otto Kr\u00fcmmel's chart of the Mariana Trench, printed in Handbuch der Ozeanographie (1907). The figures are individual soundings in metres and the closed contours are the trench itself -- this is what the deepest place on Earth looked like when it was measured by dropping a weighted line.",
+      "source_org": "NOAA Photo Library (via Wikimedia Commons)",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Mariana_Trench_Map_1907.jpg",
+      "origin_url": "https://www.photolib.noaa.gov/htmls/map00052.htm",
+      "direct_url": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Mariana_Trench_Map_1907.jpg",
+      "local_file": "assets/trench__900001__krummel-1907-marianen-graben.jpg",
+      "width": 2915,
+      "height": 2321,
+      "rights_basis": "Two independent public-domain bases. (1) Published 1907 in Otto Kr\u00fcmmel, Handbuch der Ozeanographie; Kr\u00fcmmel died in 1912, so the work is out of copyright worldwide and in the United States as a pre-1930 publication. (2) The scan is published by the NOAA Photo Library and tagged PD-USGov-NOAA on its Commons item page.",
+      "rights_check": "Commons item page asserts Public domain (Copyrighted=False)",
+      "media_kit_url": "https://www.photolib.noaa.gov/about.html#about_images",
+      "required_credit": "Otto Kr\u00fcmmel, Handbuch der Ozeanographie (1907); scan: NOAA Photo Library",
+      "thumb_credit": "KR\u00dcMMEL CHART, 1907",
+      "treatment": "chart",
+      "commercial_use_permitted": true,
+      "date_checked": "2026-08-30",
+      "sha256": "cc94ad820d093f7a27848e30de207df08678dbf6cafdd7badbf51229d30c36c4",
+      "bytes": 2602386,
+      "thumbnail_ok": true,
+      "crop": [
+        0.02,
+        0.07,
+        0.94,
+        0.962
+      ],
+      "subject": "mariana_trench",
+      "depicts": "chart",
+      "credit_line": "KRUMMEL CHART, 1907",
+      "subject_basis": "Otto Krummel's 1907 bathymetric chart of the Mariana Trench. Episode 10 is about how the depth is measured; this is the measurement, as it was in 1907.",
+      "standing_note": "",
+      "origin": "rights.json"
+    },
+    {
+      "slot": "vehicle",
+      "search_phrase": "trieste-nh96801-hoisted",
+      "title": "Bathyscaphe Trieste hoisted from the water",
+      "caption": "Trieste lifted clear of the water by a floating crane during testing by the Navy Electronics Laboratory at San Diego, before shipping to the Marianas. The striped cylinder is the petrol float; the crew sphere is the small ball slung beneath it.",
+      "source_org": "U.S. Naval History and Heritage Command (via Wikimedia Commons)",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Bathyscaphe_Trieste.jpg",
+      "origin_url": "https://www.history.navy.mil/our-collections/photography.html",
+      "direct_url": "https://upload.wikimedia.org/wikipedia/commons/3/36/Bathyscaphe_Trieste.jpg",
+      "local_file": "assets/vehicle__900006__trieste-nh96801-hoisted.jpg",
+      "width": 5665,
+      "height": 4560,
+      "rights_basis": "Official U.S. Navy photograph NH 96801, released by the U.S. Navy Electronics Laboratory; a work of the U.S. federal government and therefore public domain under 17 U.S.C. 105. The Commons item page marks the file not copyrighted.",
+      "rights_check": "Commons item page asserts Public domain (Copyrighted=False)",
+      "media_kit_url": "https://commons.wikimedia.org/wiki/File:Bathyscaphe_Trieste.jpg",
+      "required_credit": "U.S. Navy photo NH 96801",
+      "thumb_credit": "U.S. NAVY PHOTO NH 96801",
+      "treatment": "archive",
+      "commercial_use_permitted": true,
+      "date_checked": "2026-08-30",
+      "sha256": "6f7f562417f0f7f546645915538a8ac6efed8f9f7b4fa70a8060366160bc52bf",
+      "bytes": 2060686,
+      "thumbnail_ok": true,
+      "subject": "trieste",
+      "depicts": "archival photograph",
+      "credit_line": "U.S. NAVY PHOTO NH 96801",
+      "subject_basis": "Trieste hoisted from the water, showing the petrol float and the crew sphere.",
+      "standing_note": "",
+      "origin": "rights.json"
+    },
+    {
+      "slot": "vehicle",
+      "search_phrase": "trieste-piccard-walsh-1960",
+      "title": "Don Walsh and Jacques Piccard inside Trieste, 1960",
+      "caption": "Lieutenant Don Walsh, USN, and Jacques Piccard in the crew sphere of the bathyscaphe Trieste, 1960 -- the two men who reached the bottom of Challenger Deep, in the space they did it from.",
+      "source_org": "NOAA Photo Library, Ship Collection (via Wikimedia Commons)",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Bathyscaphe_Trieste_Piccard-Walsh.jpg",
+      "origin_url": "https://www.photolib.noaa.gov/",
+      "direct_url": "https://upload.wikimedia.org/wikipedia/commons/3/33/Bathyscaphe_Trieste_Piccard-Walsh.jpg",
+      "local_file": "assets/vehicle__900005__trieste-piccard-walsh-1960.jpg",
+      "width": 1110,
+      "height": 1801,
+      "rights_basis": "NOAA Ship Collection image ship3224, a work of the U.S. federal government and therefore public domain under 17 U.S.C. 105. The Commons item page carries PD-USGov-NOAA and marks the file not copyrighted.",
+      "rights_check": "Commons item page asserts Public domain (Copyrighted=False)",
+      "media_kit_url": "https://commons.wikimedia.org/wiki/File:Bathyscaphe_Trieste_Piccard-Walsh.jpg",
+      "required_credit": "NOAA Photo Library, Ship Collection (ship3224)",
+      "thumb_credit": "NOAA PHOTO LIBRARY, 1960",
+      "treatment": "archive",
+      "commercial_use_permitted": true,
+      "date_checked": "2026-08-30",
+      "sha256": "1f37f95f817d6ef7e100dd52963fe7bf3745ff16cca6f00763bae36e31b3ebd1",
+      "bytes": 831422,
+      "thumbnail_ok": true,
+      "subject": "trieste",
+      "depicts": "archival photograph",
+      "credit_line": "NOAA PHOTO LIBRARY, 1960",
+      "subject_basis": "Don Walsh and Jacques Piccard inside Trieste's crew sphere.",
+      "standing_note": "",
+      "origin": "rights.json"
+    },
+    {
+      "slot": "vehicle",
+      "search_phrase": "trieste-nh96797-1960",
+      "title": "Bathyscaphe Trieste before the Challenger Deep dive, 23 January 1960",
+      "caption": "Trieste on the surface over the Mariana Trench on the morning of 23 January 1960, hours before Jacques Piccard and Don Walsh rode her to the bottom of Challenger Deep. The destroyer escort USS Lewis is steaming past behind her.",
+      "source_org": "U.S. Naval History and Heritage Command (via Wikimedia Commons)",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Bathyscaphe_Trieste_with_USS_Lewis_(DE-535)_over_the_Marianas_Trench,_23_January_1960_(NH_96797).jpg",
+      "origin_url": "https://www.history.navy.mil/our-collections/photography.html",
+      "direct_url": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Bathyscaphe_Trieste_with_USS_Lewis_%28DE-535%29_over_the_Marianas_Trench%2C_23_January_1960_%28NH_96797%29.jpg",
+      "local_file": "assets/vehicle__900004__trieste-nh96797-1960.jpg",
+      "width": 4112,
+      "height": 3058,
+      "rights_basis": "Official U.S. Navy photograph NH 96797, a work of the U.S. federal government prepared by a Navy employee in the course of duty, and therefore public domain under 17 U.S.C. 105. The Commons item page marks the file not copyrighted.",
+      "rights_check": "Commons item page asserts Public domain (Copyrighted=False)",
+      "media_kit_url": "https://commons.wikimedia.org/wiki/File:Bathyscaphe_Trieste_with_USS_Lewis_(DE-535)_over_the_Marianas_Trench,_23_January_1960_(NH_96797).jpg",
+      "required_credit": "U.S. Navy photo NH 96797",
+      "thumb_credit": "U.S. NAVY, 23 JANUARY 1960",
+      "treatment": "archive",
+      "commercial_use_permitted": true,
+      "date_checked": "2026-08-30",
+      "sha256": "d59185206629ad1a3b1b24f01331db666480dcf999e9196fff96f70eff2b0d3d",
+      "bytes": 6155984,
+      "thumbnail_ok": true,
+      "subject": "trieste",
+      "depicts": "archival photograph",
+      "credit_line": "U.S. NAVY, 23 JANUARY 1960",
+      "subject_basis": "Trieste on the surface over the Mariana Trench hours before the Challenger Deep descent, with the destroyer escort USS Lewis steaming past behind her. Episode 10's timeline names 'Crewed Trieste descent, 1960'.",
+      "standing_note": "",
+      "origin": "rights.json"
+    },
+    {
+      "slot": "frilled_shark",
+      "search_phrase": "gunther-1887-plate-lxiv",
+      "title": "Chlamydoselachus anguineus, Challenger Report Plate LXIV (1887)",
+      "caption": "Robert Mintern's lithograph of the frilled shark, Plate LXIV of Albert G\u00fcnther's Report on the Deep-Sea Fishes Collected by H.M.S. Challenger During the Years 1873-1876 (1887). The species had been described by Garman three years earlier; this is the animal itself, drawn from a specimen, not a reconstruction.",
+      "source_org": "Biodiversity Heritage Library / Internet Archive (via Wikimedia Commons)",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Chlamydoselachus_anguineus1.jpg",
+      "origin_url": "https://archive.org/details/reportondeepseaf00gn",
+      "direct_url": "https://upload.wikimedia.org/wikipedia/commons/b/bb/Chlamydoselachus_anguineus1.jpg",
+      "local_file": "assets/frilled_shark__900002__gunther-1887-plate-lxiv.jpg",
+      "width": 2577,
+      "height": 1029,
+      "rights_basis": "Published 1887; the illustrator Robert Mintern died in 1908, so the plate is out of copyright in every jurisdiction that uses life+70 or shorter, and in the United States as a pre-1930 publication. The Commons item page carries PD-scan / PD-old-auto-expired and marks the file not copyrighted.",
+      "rights_check": "Commons item page asserts Public domain (Copyrighted=False)",
+      "media_kit_url": "https://commons.wikimedia.org/wiki/File:Chlamydoselachus_anguineus1.jpg",
+      "required_credit": "Robert Mintern, in A. G\u00fcnther, Report on the Deep-Sea Fishes of H.M.S. Challenger (1887), Plate LXIV",
+      "thumb_credit": "CHALLENGER REPORT PLATE, 1887",
+      "treatment": "plate",
+      "commercial_use_permitted": true,
+      "date_checked": "2026-08-30",
+      "sha256": "4c38d9b6d66d1138e0fd7f08335b8e759b7705f7ae7bb9c2b580928799cca16c",
+      "bytes": 713452,
+      "thumbnail_ok": true,
+      "subject": "frilled_shark",
+      "depicts": "lithograph",
+      "credit_line": "CHALLENGER REPORT PLATE, 1887",
+      "subject_basis": "Mintern's Plate LXIV of Chlamydoselachus anguineus, episode 12's subject.",
+      "standing_note": "",
+      "origin": "rights.json"
+    },
+    {
+      "slot": "column",
+      "search_phrase": "gunther-1887-melanocetus-murrayi",
+      "title": "Melanocetus murrayi, Challenger Report plate (1887)",
+      "caption": "Robert Mintern's lithograph of Melanocetus murrayi, Murray's abyssal anglerfish, from Albert G\u00fcnther's Report on the Deep-Sea Fishes Collected by H.M.S. Challenger (1887). A bathypelagic animal: it lives in the midnight zone, below 1,000 metres, where the only light is the light animals make.",
+      "source_org": "Biodiversity Heritage Library / Internet Archive (via Wikimedia Commons)",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Melanocetus_murrayi_(Murrays_abyssal_anglerfish).jpg",
+      "origin_url": "https://archive.org/details/reportondeepseaf00gn",
+      "direct_url": "https://upload.wikimedia.org/wikipedia/commons/5/58/Melanocetus_murrayi_%28Murrays_abyssal_anglerfish%29.jpg",
+      "local_file": "assets/column__900007__gunther-1887-melanocetus-murrayi.jpg",
+      "width": 1483,
+      "height": 887,
+      "rights_basis": "Published 1887; illustrator Robert Mintern died in 1908. Out of copyright worldwide under life+70 and in the United States as a pre-1930 publication. The Commons item page carries PD-scan / PD-old-70 and marks the file not copyrighted.",
+      "rights_check": "Commons item page asserts Public domain (Copyrighted=False)",
+      "media_kit_url": "https://commons.wikimedia.org/wiki/File:Melanocetus_murrayi_(Murrays_abyssal_anglerfish).jpg",
+      "required_credit": "Robert Mintern, in A. G\u00fcnther, Report on the Deep-Sea Fishes of H.M.S. Challenger (1887)",
+      "thumb_credit": "CHALLENGER REPORT PLATE, 1887",
+      "treatment": "plate",
+      "commercial_use_permitted": true,
+      "date_checked": "2026-08-30",
+      "sha256": "63f8d50b6b193070afb2a3bda152e82b9e3269063be4c411e43583ae4109dc4d",
+      "bytes": 427671,
+      "thumbnail_ok": true,
+      "subject": "anglerfish",
+      "depicts": "lithograph",
+      "credit_line": "CHALLENGER REPORT PLATE, 1887",
+      "subject_basis": "Mintern's plate of Melanocetus murrayi, Murray's abyssal anglerfish.",
+      "standing_note": "",
+      "origin": "rights.json"
+    }
+  ],
+  "rejected_on_purpose": [
+    {
+      "commons_title": "File:Whalefall hires.jpg",
+      "subject": "whale_fall",
+      "commons_licence": "PD-USGov-NOAA, Copyrighted=False",
+      "reason": "The file's own description says 'This image was captured six years later by Craig Smith from the University of Hawaii. Image courtesy of Craig Smith, University of Hawaii.' A university employee's photograph is not a work of the U.S. federal government under 17 U.S.C. 105, so the PD-USGov-NOAA tag is a mistagging. Hosting on oceanexplorer.noaa.gov proves nothing -- that is the same finding the NOAA gate in imagery.py was built on. Rejected by the third-party screen.",
+      "cost": "The best whale-fall community image (2048x1536). The three NOAA Undersea Research Program frames below are smaller but clean."
+    },
+    {
+      "commons_title": "File:Euphausia superba.jpg",
+      "subject": "krill",
+      "commons_licence": "PD-USGov-NOAA, Copyrighted=False",
+      "reason": "Author is 'Dr. Wayne Trivelpiece', a named individual. Trivelpiece was a NOAA Southwest Fisheries Science Center scientist, which would make this a federal work, but the Commons page asserts nothing about his employment and the manifest cannot record a rights basis it has not verified. Held out rather than guessed. Krill are named once, in episode 08, and the episode does not depend on the picture.",
+      "cost": "One 4240x2893 krill photograph, in one episode, in one sentence."
+    },
+    {
+      "commons_title": "File:Colossal squid at Te Papa.jpg (and 14 sibling files)",
+      "subject": "colossal_squid",
+      "commons_licence": "CC BY-SA 3.0 / CC BY-SA 4.0 / CC BY 3.0",
+      "reason": "CC-BY and CC-BY-SA are permissions, not public-domain dedications. Absolute constraint; no exception for a subject we badly want.",
+      "cost": "All imagery of the colossal squid. See UNILLUSTRATABLE."
+    },
+    {
+      "commons_title": "File:Kiwa hirsuta (MNHN-IU-2010-1683) 001.jpeg (and 11 siblings)",
+      "subject": "yeti_crab",
+      "commons_licence": "CC BY 4.0 / CC BY-SA 2.5",
+      "reason": "As above.",
+      "cost": "All imagery of the yeti crab. See UNILLUSTRATABLE."
+    }
+  ],
+  "failures": []
+}
