@@ -1,0 +1,81 @@
+name: loop · daily 18:00 CT · publish a Short from R2
+
+# The Shorts lane, off the owner's Mac.
+#
+# Pulls a verified Short from Cloudflare R2, uploads it to YouTube as PRIVATE
+# with the EVENING slot loop/shorts_lane.py assigns (19:00 America/Chicago on
+# Mon, Wed, Fri, Sat), and commits loop/state/shorts_ledger.json back.
+#
+# WHY THE CUTTING IS NOT HERE. V14 (attribution) and V15 (caption crop) read the
+# finished pixels with Apple's Vision framework, which does not exist on
+# ubuntu-latest. Cutting here would mean running neither, and an unrun validator
+# is not a passing one — so the cut and its verification stay on the Mac, and
+# loop/r2.py:push_shorts() refuses to shelve anything that fails them. Nothing
+# unverified can reach this workflow. The full argument is in the header of
+# loop/shorts_cloud.py.
+#
+# There is deliberately no ffmpeg and no Pillow step: this lane does not cut,
+# it publishes.
+#
+# 23:00 UTC is 18:00 America/Chicago during CDT — an hour before the earliest
+# slot it hands out, so a Short is never uploaded after the time it was meant to
+# go live. The slots themselves are computed in local time and do not drift when
+# the clocks change, even though this cron does.
+on:
+  schedule:
+    - cron: '0 23 * * *'
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: 'Max Shorts this run'
+        required: false
+        default: '2'
+      dry_run:
+        description: 'Plan only — resolve the shelf and the slots, upload nothing'
+        type: boolean
+        required: false
+        default: false
+
+permissions:
+  contents: write
+  issues: write
+
+# Shared with every other loop stage that writes loop/state/, including the
+# episode upload lane. Both spend from one 10,000-unit daily YouTube allowance
+# through loop/quota.py, and that account is a file in this repo — two stages
+# committing it at once is a rebase race, not a merge.
+concurrency:
+  group: loop-state
+  cancel-in-progress: false
+
+jobs:
+  shorts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install wrangler
+        run: npm install -g wrangler@4
+      - name: Install loop dependencies
+        run: pip install -r requirements-loop.txt
+      - name: Pull a verified Short from R2 and schedule it
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # NOT a secret, and deliberately literal — see THE TRAP in loop/r2.py.
+          CLOUDFLARE_ACCOUNT_ID: 8d147e242033699dd37c6f5a451f48d2
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          YT_OAUTH_CLIENT_JSON: ${{ secrets.YT_OAUTH_CLIENT_JSON }}
+          YT_OAUTH_REFRESH_TOKEN: ${{ secrets.YT_OAUTH_REFRESH_TOKEN }}
+        run: |
+          ARGS="--limit ${{ github.event.inputs.limit || 2 }}"
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            ARGS="$ARGS --dry-run"
+          fi
+          bin/loop-stage.sh shorts-cloud loop/shorts_cloud.py $ARGS

@@ -1,0 +1,101 @@
+name: loop · daily 09:00 CT · upload from R2
+
+# The upload lane, off the owner's Mac.
+#
+# It pulls the next pending episode's render and thumbnail from Cloudflare R2,
+# uploads to YouTube as PRIVATE with the publishAt date the locked cadence
+# assigns, sets the thumbnail, and commits the updated loop/state/ledger.json so
+# tomorrow's run knows what is already done.
+#
+# This replaces the launchd agent com.howweknow.backfill, which needed the
+# laptop awake at 09:00. The two must never both run: they draw from the same
+# ranked queue and the same daily quota, and neither can see the other's
+# in-flight work.
+#
+# THE COMMIT-BACK. bin/loop-stage.sh commits loop/ and pushes with GITHUB_TOKEN.
+# A GITHUB_TOKEN push raises no `push` event, so no other workflow triggers off
+# it. That is fine here — nothing needs to.
+#
+# 14:00 UTC is 09:00 America/Chicago during CDT. The exact minute does not
+# matter: this lane only SCHEDULES videos, it never makes one public. The
+# publish times themselves are computed in local time by loop/backfill.py's
+# slots(), so they do not drift when the clocks change even though this cron
+# does.
+on:
+  # DISARMED until this lane has completed a real upload end to end.
+  #
+  # 09:00 America/Chicago IS 14:00 UTC, so this cron fired at the exact moment
+  # the Mac's com.howweknow.backfill agent did. Each reads its own copy of
+  # loop/state/ledger.json - the Mac's local file, this one's committed copy -
+  # so both would have seen the same episode as unpublished and uploaded it
+  # twice. Two schedulers, two records, no link: the same failure the Thursday
+  # lane already had.
+  #
+  # Arm this ONLY after: (1) the renders are in R2, (2) a workflow_dispatch run
+  # has uploaded and scheduled a real episode, and (3) the Mac agent has been
+  # unloaded in the same change. Not before, and never both at once.
+  #
+  #  schedule:
+  #    - cron: '0 14 * * *'
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: 'Max videos this run (4 is the quota-safe number)'
+        required: false
+        default: '4'
+      dry_run:
+        description: 'Plan only — resolve the shelf and the slots, upload nothing'
+        type: boolean
+        required: false
+        default: false
+
+permissions:
+  contents: write
+  issues: write
+
+# Shared with every other loop stage that writes loop/state/. Two stages
+# committing the ledger at once is a rebase race, not a merge.
+concurrency:
+  group: loop-state
+  cancel-in-progress: false
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      # Pinned to the major the `wrangler r2 object` contract in loop/r2.py was
+      # verified against. Installed as its own step so a broken install fails
+      # here, loudly, rather than half way through an upload.
+      - name: Install wrangler
+        run: npm install -g wrangler@4
+      - name: Install loop dependencies
+        run: pip install -r requirements-loop.txt
+      - name: Pull from R2 and upload to YouTube, private and dated
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # NOT a secret, and deliberately literal. Without it wrangler resolves
+          # the account through /memberships, which an R2-scoped token cannot
+          # read, and every r2 command fails with `Authentication error
+          # [code: 10000]` — an error that reads exactly like a broken token and
+          # is not. See THE TRAP in loop/r2.py.
+          CLOUDFLARE_ACCOUNT_ID: 8d147e242033699dd37c6f5a451f48d2
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          # There is no .secrets/ on a runner, so loop/upload.py falls through
+          # to these. Absent -> a named OAUTH_MISSING stop, never a crash.
+          YT_OAUTH_CLIENT_JSON: ${{ secrets.YT_OAUTH_CLIENT_JSON }}
+          YT_OAUTH_REFRESH_TOKEN: ${{ secrets.YT_OAUTH_REFRESH_TOKEN }}
+        run: |
+          ARGS="--limit ${{ github.event.inputs.limit || 4 }}"
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            ARGS="$ARGS --dry-run"
+          fi
+          bin/loop-stage.sh cloud-upload loop/cloud_upload.py $ARGS

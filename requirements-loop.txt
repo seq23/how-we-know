@@ -8,3 +8,11 @@
 # to ignore. Pin these so the loop only ever fails for real reasons.
 pillow==12.3.0
 numpy==2.5.2
+
+# NOTHING IS NEEDED HERE FOR CLOUDFLARE R2, and that is deliberate. The cloud
+# upload lane reaches R2 through the `wrangler` CLI (installed by npm in
+# .github/workflows/loop-upload-cloud.yml), not through boto3 and the S3 API.
+# boto3 would mean minting a SECOND credential — an R2 S3 API token with its own
+# access key and secret — where the owner already has a working Cloudflare API
+# token that wrangler authenticates with. One credential that exists beats four
+# that have to be created, stored and rotated.
