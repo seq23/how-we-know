@@ -1,0 +1,15 @@
+{
+  "sufficient": false,
+  "videos_measured": 0,
+  "views": 0,
+  "findings": [],
+  "changes": [],
+  "note": "0 measured video(s), 0 view(s) - below 3/100. No change made this month. Publishing continues; this is a young channel, not a fault.",
+  "month": "2026-09",
+  "advice": {
+    "ok": false,
+    "text": "",
+    "cost": null,
+    "why": "no OpenRouter key in .secrets/openrouter_key.txt or $OPENROUTER_API_KEY - advisory skipped, review unaffected"
+  }
+}
