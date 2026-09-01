@@ -22,8 +22,24 @@ name: loop · daily 18:00 CT · publish a Short from R2
 # go live. The slots themselves are computed in local time and do not drift when
 # the clocks change, even though this cron does.
 on:
-  schedule:
-    - cron: '0 23 * * *'
+  # DISARMED until this lane has completed one real upload end to end, for the
+  # same reason as loop-upload-cloud.yml — not because a Mac agent competes with
+  # it (none does; com.howweknow.shorts is gone), but because arming a lane that
+  # has never performed the irreversible half of its job means its first real
+  # attempt happens unattended, at 23:00 UTC, against a live channel.
+  #
+  # Everything up to the upload IS proven: the shelf resolves from a runner, the
+  # evening slots compute, the quota reserves, and the whole lane runs end to end
+  # against the filesystem stub. What has never run is `resumable_upload` through
+  # the repo-secret credential path.
+  #
+  # Arm it with ONE dispatched run first:
+  #     gh workflow run loop-shorts-cloud.yml -f dry_run=true
+  #     gh workflow run loop-shorts-cloud.yml -f limit=1
+  # confirm the Short exists and is private with a publishAt, then uncomment.
+  #
+  #  schedule:
+  #    - cron: '0 23 * * *'
   workflow_dispatch:
     inputs:
       limit:
