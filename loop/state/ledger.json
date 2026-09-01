@@ -5,9 +5,112 @@
       "question": "what is the deepest part of the ocean",
       "video_id": "qBeLl0z4s54",
       "receipt": "loop/state/receipts/10-what-is-the-deepest-part-of-the-ocean-upload.json",
-      "published_at": "2026-08-31T19:46:19+00:00"
+      "published_at": "2026-08-31T19:46:19+00:00",
+      "retired_at": "2026-09-01T12:30:00+00:00",
+      "retired_reason": "superseded by sfveDF88ZHo: clipped final word fixed, burned-in captions, NOAA footage",
+      "privacy": "private",
+      "superseded_by": "sfveDF88ZHo"
+    },
+    {
+      "slug": "10-what-is-the-deepest-part-of-the-ocean",
+      "question": "what is the deepest part of the ocean",
+      "video_id": "sfveDF88ZHo",
+      "published_at": "2026-09-01T12:30:06+00:00",
+      "privacy": "public",
+      "receipt": "loop/state/receipts/10-what-is-the-deepest-part-of-the-ocean-upload.json",
+      "note": "re-upload: 3-frame tail pad, burned-in captions, 1 NOAA footage beat"
+    },
+    {
+      "slug": "05-why-many-deep-sea-creatures-are-red",
+      "question": "why many deep sea creatures are red",
+      "video_id": "mOP33elEfpU",
+      "uploaded_at": "2026-09-01T12:40:24+00:00",
+      "privacy": "private",
+      "scheduled_publish_at": "2026-09-06T15:00:00Z",
+      "note": "backfill: scheduled, not yet public"
+    },
+    {
+      "slug": "01-why-deep-sea-creatures-look-so-weird",
+      "question": "why deep sea creatures look so weird",
+      "video_id": "EY__zREBIUk",
+      "uploaded_at": "2026-09-01T12:40:36+00:00",
+      "privacy": "private",
+      "scheduled_publish_at": "2026-09-08T15:00:00Z",
+      "note": "backfill: scheduled, not yet public"
+    },
+    {
+      "slug": "14-how-big-is-a-colossal-squid",
+      "question": "how big is a colossal squid",
+      "video_id": "9FcDJniofMM",
+      "uploaded_at": "2026-09-01T12:40:46+00:00",
+      "privacy": "private",
+      "scheduled_publish_at": "2026-09-13T15:00:00Z",
+      "note": "backfill: scheduled, not yet public"
+    },
+    {
+      "slug": "20-what-is-the-midnight-zone",
+      "question": "what is the midnight zone",
+      "video_id": "izdEaeOQBvI",
+      "uploaded_at": "2026-09-01T12:40:58+00:00",
+      "privacy": "private",
+      "scheduled_publish_at": "2026-09-15T15:00:00Z",
+      "note": "backfill: scheduled, not yet public"
+    },
+    {
+      "slug": "07-why-deep-sea-creatures-get-creepier-deeper",
+      "question": "why deep sea creatures get creepier the deeper you go",
+      "video_id": "MAV4PF056RA",
+      "uploaded_at": "2026-09-01T12:56:51+00:00",
+      "privacy": "private",
+      "scheduled_publish_at": "2026-09-20T15:00:00Z",
+      "note": "adopted 2026-09-01: uploaded unintentionally by test_named_stops before the LOOP_DRY_RUN guard existed. Render, metadata and thumbnail were correct, so it was scheduled rather than re-uploaded, saving 1600 quota units."
+    },
+    {
+      "slug": "06-why-some-deep-sea-creatures-are-transparent",
+      "question": "why some deep sea creatures are transparent",
+      "video_id": "MozJZ-ChEZU",
+      "uploaded_at": "2026-09-01T13:32:09+00:00",
+      "privacy": "private",
+      "scheduled_publish_at": "2026-09-22T15:00:00Z",
+      "note": "backfill: scheduled, not yet public"
+    },
+    {
+      "slug": "15-how-do-people-reach-challenger-deep",
+      "question": "how do people reach challenger deep",
+      "video_id": "MWOUa3UEXSk",
+      "uploaded_at": "2026-09-01T13:32:19+00:00",
+      "privacy": "private",
+      "scheduled_publish_at": "2026-09-27T15:00:00Z",
+      "note": "backfill: scheduled, not yet public"
+    },
+    {
+      "slug": "08-what-creatures-live-in-the-deep-sea",
+      "question": "what creatures live in the deep sea",
+      "video_id": "jec80gk8rM0",
+      "uploaded_at": "2026-09-01T13:32:35+00:00",
+      "privacy": "private",
+      "scheduled_publish_at": "2026-09-29T15:00:00Z",
+      "note": "backfill: scheduled, not yet public"
+    },
+    {
+      "slug": "09-what-is-the-scariest-deep-sea-creature",
+      "question": "what is the scariest deep sea creature",
+      "video_id": "G1TqXmf36Qo",
+      "uploaded_at": "2026-09-01T13:32:49+00:00",
+      "privacy": "private",
+      "scheduled_publish_at": "2026-10-04T15:00:00Z",
+      "note": "backfill: scheduled, not yet public"
+    },
+    {
+      "slug": "19-what-is-the-deepest-fish-ever-recorded",
+      "question": "what is the deepest fish ever recorded",
+      "video_id": "OdYunlbB73g",
+      "uploaded_at": "2026-09-01T13:33:09+00:00",
+      "privacy": "private",
+      "scheduled_publish_at": "2026-10-06T15:00:00Z",
+      "note": "backfill: scheduled, not yet public"
     }
   ],
   "queued": [],
-  "updated": "2026-08-31T19:46:19+00:00"
+  "updated": "2026-09-01T13:36:10+00:00"
 }

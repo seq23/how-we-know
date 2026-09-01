@@ -55,6 +55,15 @@ def load_credentials(cfg) -> dict | None:
          once by `auth/youtube_auth.py`.
       2. Repo-secret environment variables, for the Actions-side publish stage.
     """
+    # LOOP_DRY_RUN means "behave exactly as an un-credentialed machine would".
+    # Stripping env vars is not enough - .secrets/ is on disk and auth.load()
+    # reads it, so a test that meant to run credential-less was in fact running
+    # fully authorised against the live channel. Refusing the credential here is
+    # what makes every downstream lane take its real, named, un-credentialed
+    # path instead.
+    if DRY_RUN:
+        return None
+
     res = auth.load()
     if res["status"] == "ok":
         return {"access_token": res["access_token"], "source": "secrets",
@@ -86,6 +95,33 @@ def load_credentials(cfg) -> dict | None:
             "refresh_token": refresh, "source": "env"}
 
 
+def credential_stop(creds, cfg) -> tuple[str, str, str]:
+    """`(code, message, unblock)` for a lane that has no usable credential.
+
+    One wording, shared. The library lane and the cloud lane both ran into
+    `access_token(None)` raising AttributeError — a traceback where a named,
+    actionable stop belongs — and each was about to invent its own message for
+    the same three states.
+    """
+    if creds and creds.get("unusable"):
+        code = {"expired_refresh": "OAUTH_EXPIRED",
+                "no_token": "OAUTH_NOT_CONSENTED"}.get(creds["unusable"],
+                                                       "OAUTH_UNUSABLE")
+        return (code,
+                f"the stored credential is not usable ({creds['unusable']}). "
+                f"Not retried — retrying an invalid_grant never succeeds.",
+                auth.stop_message(creds["unusable"]))
+    c = cfg["credentials"]["youtube_oauth_client_env"]
+    r = cfg["credentials"]["youtube_oauth_refresh_env"]
+    return ("OAUTH_MISSING",
+            "no YouTube credential is available on this machine",
+            f"On the Mac: .venv/bin/python auth/youtube_auth.py. "
+            f"In GitHub Actions there is no .secrets/, so the lane reads the "
+            f"repo secrets {c} and {r} — set both "
+            f"(see docs/CLOUD-UPLOAD-SETUP.md) and confirm the workflow step "
+            f"passes them through as env.")
+
+
 def access_token(creds: dict) -> str:
     """Resolve a bearer token from whichever credential shape we were handed."""
     if creds.get("access_token"):
@@ -100,6 +136,21 @@ def access_token(creds: dict) -> str:
 
 
 # ------------------------------------------------------------------ metadata
+
+# --- the dry-run guard ----------------------------------------------------
+# loop/tests/test_named_stops.py EXECUTES this module with live credentials to
+# check that a blocked lane names its stop. That was harmless only while the
+# lane had nothing to do. On 2026-09-01 a library fallback was added here, the
+# test ran, the fallback found a finished episode, and it UPLOADED IT
+# (MAV4PF056RA) - a real write to a real channel, from a test.
+#
+# The lesson is not "be careful with tests". It is that a module which performs
+# irreversible external writes must be able to be asked not to, and every test
+# that runs it must ask. LOOP_DRY_RUN=1 suppresses every network WRITE while
+# leaving all the reads, the payload composition and the stop logic intact -
+# which is exactly what the test is there to exercise.
+DRY_RUN = os.environ.get("LOOP_DRY_RUN") == "1"
+
 
 def build_payload(item: dict) -> dict:
     """Compose the video's YouTube metadata from the script itself.
@@ -203,15 +254,60 @@ def main() -> None:
 
         ready = [it for it in q["items"]
                  if it.get("status") == "rendered" and it.get("render_receipt")]
+
+        # FALL BACK TO THE LIBRARY ON DISK - by DELEGATING, not duplicating.
+        # The weekly queue records what THIS WEEK drafted. It is silent about a
+        # back catalogue, so an empty queue is not an empty channel: on
+        # 2026-09-01 it held two unrendered rows while thirteen finished renders
+        # sat in renders/.
+        #
+        # loop/backfill.py owns library uploads end to end - it picks the slug in
+        # combined_score order, assigns the next cadence slot, attaches the
+        # thumbnail and WRITES THE LEDGER. Re-implementing any of that here would
+        # recreate the exact defect this repo keeps hitting: two components each
+        # keeping their own list with no link between them. The first draft of
+        # this fallback did precisely that, uploading without a ledger row, so
+        # the daily backfill agent would have re-uploaded the same episode hours
+        # later. One writer, one record.
+        # THE FALLBACK IS GONE, DELIBERATELY, AND THIS IS WHY.
+        #
+        # It used to delegate to `backfill.run(limit=1)` here. From 2026-09-01
+        # library uploads belong to the CLOUD lane
+        # (.github/workflows/loop-upload-cloud.yml -> loop/cloud_upload.py),
+        # which draws from the same ranked order and the same ledger.
+        #
+        # Two machines cannot both hold that job. This one runs from launchd at
+        # 02:00 against whatever `loop/state/ledger.json` was last PULLED —
+        # launchd does not `git pull` — so a Thursday run could not see an
+        # episode the cloud lane uploaded on Monday, and would upload it again.
+        # A duplicate video on a channel whose whole argument is a predictable
+        # cadence is not a recoverable error: the second one is public before
+        # anyone looks.
+        #
+        # The Mac keeps the WEEKLY lane, which uploads what this week rendered
+        # against a queue row. It no longer touches the back catalogue.
         if not ready:
+            pending = []
+            try:
+                import backfill
+                pending = [s for s, _, _ in backfill.library_pending()]
+            except Exception:                     # noqa: BLE001
+                pass
             st.named_stop(
                 "NOTHING_RENDERED",
-                "no queue row has a healthy render receipt; there is nothing to "
-                "upload this week",
+                "no queue row has a healthy render receipt. "
+                + (f"{len(pending)} finished episode(s) are waiting, but the "
+                   f"back catalogue is the CLOUD lane's job now, not this "
+                   f"one." if pending else
+                   "The finished library holds nothing unpublished either."),
                 detail={"statuses": {i["slug"]: i.get("status")
-                                     for i in q["items"]}},
-                unblock="Run bin/loop-tuesday.sh, or inspect "
-                        "loop/state/stops/ for why it produced nothing.")
+                                     for i in q["items"]},
+                        "library_pending": pending},
+                unblock=("Run bin/loop-tuesday.sh to render this week's "
+                         "episode. For the back catalogue: push it with "
+                         "bin/push-to-r2.sh and let the daily "
+                         "loop-upload-cloud workflow take it — never run "
+                         "loop/backfill.py alongside that workflow."))
 
         # Payloads are real work and are composed whether or not we can upload.
         payloads = {}

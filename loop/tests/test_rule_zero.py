@@ -23,7 +23,13 @@ ROOT = os.path.abspath(os.path.join(LOOP, ".."))
 PY = sys.executable
 
 STAGE_FILES = ["rank.py", "draft.py", "override.py", "prepare.py",
-               "upload.py", "publish.py", "measure.py"]
+               "upload.py", "publish.py", "measure.py",
+               # The library lanes. Added 2026-09-01 with the move to R2: a new
+               # stage that nothing registers here is exempt from Rule 0
+               # without anyone noticing, which is the same silence the rule
+               # exists to break.
+               "backfill.py", "cloud_upload.py",
+               "shorts_lane.py", "shorts_cloud.py"]
 
 
 def run_snippet(code: str):

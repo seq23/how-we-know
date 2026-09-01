@@ -24,6 +24,14 @@ REQUIRED_STAGES = {
     "loop-override.yml": "loop/override.py",
     "loop-fri-publish.yml": "loop/publish.py",
     "loop-fri-measure.yml": "loop/measure.py",
+    # The daily lane that replaced the Mac's launchd backfill agent. If this
+    # file ever stops invoking the stage, uploading silently returns to needing
+    # a laptop that is awake — and nothing else would say so.
+    "loop-upload-cloud.yml": "loop/cloud_upload.py",
+    # Shorts are the discovery half of the strategy and were sitting cut and
+    # unpublished. If this stops being invoked they go back to sitting there,
+    # and a channel that looks healthy is publishing at half its reach.
+    "loop-shorts-cloud.yml": "loop/shorts_cloud.py",
 }
 
 
