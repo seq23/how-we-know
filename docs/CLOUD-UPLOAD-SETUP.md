@@ -130,11 +130,56 @@ the exact variable — `R2_CREDENTIALS_MISSING: CLOUDFLARE_API_TOKEN is not set`
 or `OAUTH_MISSING`. A failed run is the notification; a green run that did
 nothing would tell you nothing.
 
-Then, when the dry run is clean, let the daily schedule take it — or push the
-button once:
+---
+
+## The one thing left: arm the two crons
+
+**Both workflows are disarmed.** `workflow_dispatch` works; the `schedule:`
+blocks are commented out in both files. Everything up to the irreversible call
+is proven — a real GitHub runner authenticated to R2, resolved the shelf,
+computed the same publish slots the Mac computes, and reserved quota — but
+**neither lane has yet performed a real upload**, and an unproven lane that
+first tries at 14:00 UTC unattended is the wrong way to find out.
+
+### Step 1 — one real episode, watched
 
 ```bash
-gh workflow run loop-upload-cloud.yml -f limit=4
+gh workflow run loop-upload-cloud.yml -f limit=1
+gh run watch
+```
+
+Check it in YouTube Studio: **private**, with a scheduled date, thumbnail
+attached. Then confirm the workflow committed the ledger:
+
+```bash
+git pull && python3 -c "import json;d=json.load(open('loop/state/ledger.json'));print(len(d['published']),'published')"
+```
+
+### Step 2 — arm the episode cron AND unload the Mac agent, in ONE change
+
+Never both armed, never neither. **09:00 America/Chicago IS 14:00 UTC**, so the
+Mac's `com.howweknow.backfill` and the workflow's cron fire at the same instant,
+each reading its own copy of the ledger — the Mac's local file and the
+workflow's committed copy. Both would see the same episode as unpublished and
+upload it twice.
+
+```bash
+launchctl unload ~/Library/LaunchAgents/com.howweknow.backfill.plist
+rm ~/Library/LaunchAgents/com.howweknow.backfill.plist
+# then uncomment the `schedule:` block in .github/workflows/loop-upload-cloud.yml
+# and commit both in one go
+```
+
+### Step 3 — the same for Shorts
+
+There is no competing Mac agent for Shorts, so this one only needs its own first
+run:
+
+```bash
+gh workflow run loop-shorts-cloud.yml -f dry_run=true
+gh workflow run loop-shorts-cloud.yml -f limit=1
+# confirm the Short is private with a publishAt, then uncomment the
+# `schedule:` block in .github/workflows/loop-shorts-cloud.yml
 ```
 
 ---
