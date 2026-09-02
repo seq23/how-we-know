@@ -269,6 +269,10 @@ print("QUOTA", json.dumps(q))
                          f"units through loop/quota.py: {q}")
 
         # -- 4b. an exhausted quota is a named stop, not an upload ---------
+        # AND IT IS GREEN. Run 33521586490 failed this job daily for a
+        # condition whose own unblock text was "nothing to do" — see
+        # loop/stop_policy.json. The stop must still be named, still be
+        # printed, still refuse to upload; only the exit code changed.
         examined += 1
         r = run("""
 import quota as Q
@@ -283,11 +287,19 @@ except SystemExit as e:
 print("RC", rc)
 print("CALLS", json.dumps(CALLS))
 """, stub_env, tmp)
-        if "RC 3" not in r.stdout:
-            fails.append("an exhausted quota did not produce a NAMED STOP "
-                         f"(exit 3): {r.stdout.strip()[-400:]}")
-        if "QUOTA_EXHAUSTED" not in (r.stdout + r.stderr):
+        out = r.stdout + r.stderr
+        if "RC 0" not in r.stdout:
+            fails.append("an exhausted quota did not exit 0 as a SELF-RESOLVING "
+                         f"stop: {r.stdout.strip()[-400:]}")
+        if "QUOTA_EXHAUSTED" not in out:
             fails.append("the exhausted-quota stop is not named QUOTA_EXHAUSTED")
+        if "NAMED STOP" not in out:
+            fails.append("the exhausted-quota stop printed no NAMED STOP "
+                         "banner — exiting 0 without one is a silent skip")
+        if "SELF-RESOLVING" not in out:
+            fails.append("the exhausted-quota stop did not declare itself "
+                         "self-resolving, so a reader cannot tell why a stop "
+                         "left the job green")
         if '"insert"' in r.stdout:
             fails.append("THE IMPORTANT ONE: the lane uploaded a video it "
                          "could not afford. Quota is reserved, not assumed.")
@@ -568,9 +580,14 @@ except SystemExit as e:
 print("RC", rc)
 print("CALLS", json.dumps(CALLS))
 """, env, tmp)
-        if "RC 3" not in r.stdout or "QUOTA_EXHAUSTED" not in (r.stdout + r.stderr):
-            fails.append("an exhausted quota did not stop the Shorts lane: "
+        out = r.stdout + r.stderr
+        if "RC 0" not in r.stdout or "QUOTA_EXHAUSTED" not in out:
+            fails.append("an exhausted quota did not take a self-resolving "
+                         f"QUOTA_EXHAUSTED stop in the Shorts lane: "
                          f"{r.stdout.strip()[-300:]}")
+        if "NAMED STOP" not in out or "SELF-RESOLVING" not in out:
+            fails.append("the Shorts quota stop left the job green without "
+                         "saying so — that is a silent skip, not a named stop")
         if '"insert"' in r.stdout:
             fails.append("the Shorts lane uploaded a Short it could not afford")
 

@@ -137,17 +137,47 @@ with zero units is rewritten into a `ZERO_WORK` named stop.
 
 | Exit | Meaning |
 |---|---|
-| `0` | real work happened |
+| `0` | real work happened, **or** a self-resolving named stop |
 | `1` | genuine failure |
-| `3` | **NAMED STOP** — legitimate, named, and surfaced to a human |
+| `3` | **NAMED STOP that needs a human** — surfaced as a failed job and an issue |
 
-A named stop writes `loop/state/stops/<week>-<stage>.json`, prints a banner,
-appends to the Actions job summary, opens or updates a `loop-stop` issue, and
-**fails the job on purpose** — a failed run is the one notification that reaches
-the owner's inbox for $0.
+A named stop always writes `loop/state/stops/<week>-<stage>.json`, prints a
+banner and appends to the Actions job summary. Whether it also **fails the job
+and opens a `loop-stop` issue** depends on its disposition — a failed run is the
+one notification that reaches the owner's inbox for $0, and it is worth exactly
+as much as it is rare.
 
 A week that produces zero scripts therefore emails her. It does not silently
 no-op.
+
+### Which stops page a human
+
+`loop/stop_policy.json` is the taxonomy, and **needs-a-human is the default**: a
+code that nobody has classified stays loud. A stop is downgraded to
+*self-resolving* — same banner, same record, same job summary, exit `0` — only
+when all three hold:
+
+1. its code is listed in the policy;
+2. it can say **when** it resolves (`QUOTA_EXHAUSTED` must carry
+   `detail["resets_at"]`, which comes from `quota.next_reset()`, not from prose);
+3. it has not fired on more than `max_consecutive` runs of that stage in a row.
+
+The third is the important one. A "self-resolving" stop that never resolves is
+an inert lane wearing a reassuring label, so the streak in
+`loop/state/stops/_streaks.json` escalates it back to exit 3 — three
+quota-blocked days running is a structural shortfall, not a busy afternoon. Any
+successful run of the stage clears the streak.
+
+`ZERO_WORK` is never self-resolving. Rule 0 is the one stop that must always
+reach a person.
+
+**Why this exists.** Run 33521586490 (2026-09-01) ended with
+`NAMED STOP [QUOTA_EXHAUSTED]`, whose own unblock text read *"Nothing to do; the
+allowance resets at midnight Pacific and this lane runs daily"* — and exit code
+3. A daily lane that exhausts a daily quota does that every single day, and the
+one notification channel the loop has was being spent on the outcome that needs
+nobody. Guarded by `loop/tests/test_stop_taxonomy.py`, which asserts the exit
+codes and the issue behaviour, not the wording.
 
 ---
 

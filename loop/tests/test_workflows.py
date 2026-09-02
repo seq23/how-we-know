@@ -76,7 +76,7 @@ def load_yaml():
 
 def check() -> list[str]:
     yaml = load_yaml()
-    fails, seen = [], 0
+    fails, seen, dep_jobs = [], 0, 0
     files = sorted(glob.glob(os.path.join(WF, "*.yml")) +
                    glob.glob(os.path.join(WF, "*.yaml")))
     for path in files:
@@ -107,6 +107,29 @@ def check() -> list[str]:
                 fails.append(f"{name}:{jname}: no steps — a job that does "
                              f"nothing is Rule 0's failure mode in YAML form")
 
+        # THE DEPENDENCY GUARD. Run 33381208414 (2026-08-31, Mon draft) failed
+        # with `ModuleNotFoundError: No module named 'PIL'`: the workflow ran a
+        # loop stage having installed nothing, a validator crashed on import,
+        # and the circuit breaker read that crash as a content defect and
+        # halted publishing. Nobody was looking for a missing wheel — the
+        # message said a validator failed. requirements-loop.txt was added the
+        # same day, but nothing stopped the next workflow from forgetting it.
+        # This does. A job that runs python without installing the pins is a
+        # breaker trip waiting for a date.
+        for jname, job in (jobs or {}).items():
+            steps = job.get("steps") or []
+            runs = " ".join(str(st.get("run", "")) for st in steps
+                            if isinstance(st, dict))
+            if "loop-stage.sh" not in runs and "python loop/" not in runs \
+                    and "run_all.py" not in runs:
+                continue
+            dep_jobs += 1
+            if "requirements-loop.txt" not in runs:
+                fails.append(f"{name}:{jname}: runs a loop stage but never "
+                             f"installs requirements-loop.txt — a missing wheel "
+                             f"will surface as a failed validator and trip the "
+                             f"breaker for a defect that does not exist")
+
     for wf, stage in REQUIRED_STAGES.items():
         path = os.path.join(WF, wf)
         if not os.path.exists(path):
@@ -118,7 +141,13 @@ def check() -> list[str]:
     if seen == 0:
         fails.append("examined ZERO workflow files — this test cannot reach "
                      "what it governs")
-    print(f"inspected {seen} workflow file(s)")
+    if dep_jobs == 0:
+        fails.append("examined ZERO jobs that run a loop stage — the "
+                     "dependency guard matched nothing, so it is asserting "
+                     "nothing. Either every lane stopped running python, or "
+                     "the way workflows invoke stages changed under it.")
+    print(f"inspected {seen} workflow file(s), {dep_jobs} of them running a "
+          f"loop stage")
     return fails
 
 

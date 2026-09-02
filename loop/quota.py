@@ -31,7 +31,7 @@ and the backfill simply spreads over several daily runs.
 from __future__ import annotations
 
 import json
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -62,6 +62,21 @@ HEADROOM = 400
 
 def _today() -> str:
     return datetime.now(RESET_TZ).strftime("%Y-%m-%d")
+
+
+def next_reset() -> str:
+    """When today's allowance comes back, as an ISO timestamp in Pacific time.
+
+    A quota stop is only allowed to be self-resolving if it can say WHEN it
+    resolves — see loop/stop_policy.json. This is that answer, computed rather
+    than asserted in prose, so a lane cannot claim to be self-healing on a
+    schedule nobody checked.
+    """
+    n = datetime.now(RESET_TZ)
+    tomorrow = (n + timedelta(days=1)).date()
+    midnight = datetime(tomorrow.year, tomorrow.month, tomorrow.day,
+                        tzinfo=RESET_TZ)
+    return midnight.isoformat(timespec="seconds")
 
 
 def _load() -> dict:
