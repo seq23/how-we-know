@@ -59,9 +59,17 @@ MIN_VIEWS = 100
 # state a figure, and say where the evidence stops - it stops being the channel.
 # Ceiling 12.0 because watch time is the YPP constraint and a longer video that
 # holds is the fastest route to 4,000 hours; past twelve the risk outweighs it.
+# FLOOR RAISED TO 10.0 ON 2026-09-01 — this is an owner decision, not a tuning
+# parameter. Her instruction: "every batch going forward 10:00 min or longer".
+#
+# Without this the fence would quietly undo her: the review is allowed to shorten
+# by 1.5 a month against an old floor of 4.0, so two thin months would have taken
+# runtime from 10.5 back to 7.5 and nobody would have noticed the decision being
+# reversed by an if-statement. The model may still recommend shortening below 10;
+# it is reported to her and refused, which is the correct place for that argument.
 CHANGE_BOUNDS = {
-    "retention.runtime_minutes": {"min": 4.0, "max": 12.0,
-                                  "shorten": -1.5, "lengthen": 1.0},
+    "retention.runtime_minutes": {"min": 10.0, "max": 12.0,
+                                  "shorten": -0.5, "lengthen": 0.5},
 }
 COOLDOWN_MONTHS = 1
 
@@ -148,7 +156,7 @@ def apply_absolute(key: str, current: float, target: float, mid: str,
 
 
 def review(rows: list[dict], cfg: dict, mid: str) -> dict:
-    runtime_min = float(cfg["retention"].get("runtime_minutes", 7.5))
+    runtime_min = float(cfg["retention"].get("runtime_minutes", 10.5))
     floor_pct = float(cfg["retention"].get("floor_pct", 35))
     early_min = float(cfg["retention"].get("early_exit_minutes", 2.0))
 

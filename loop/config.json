@@ -19,8 +19,8 @@
   "retention": {
     "floor_pct": 30.0,
     "breach_streak_to_trip": 3,
-    "note": "Average view percentage AND average view duration against the ~7.5 minute runtime. Viewers leaving inside the first 2 minutes invalidates the format, not just the topic - it is reported as a prominent finding, never a number buried in JSON.",
-    "runtime_minutes": 7.5,
+    "note": "Average view percentage AND average view duration against the ~10.5 minute runtime. Viewers leaving inside the first 2 minutes invalidates the format, not just the topic - it is reported as a prominent finding, never a number buried in JSON. Raised from 7.5 on 2026-09-01 by owner decision: every batch from here is 10-11 minutes, because YPP counts 4,000 watch HOURS from long-form only and runtime multiplies that directly.",
+    "runtime_minutes": 10.5,
     "early_exit_minutes": 2.0
   },
   "pov": {

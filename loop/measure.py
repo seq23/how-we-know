@@ -42,18 +42,18 @@ def load() -> dict:
 
 
 def retention_checkpoint(rows: list[dict], cfg: dict) -> dict:
-    """Average view DURATION against the ~7.5 minute runtime.
+    """Average view DURATION against the ~10.5 minute runtime.
 
     This is the single piece of evidence that could invalidate the whole
     content design rather than one topic. Average view *percentage* hides it: a
-    30% retention on a 7.5 minute video is 2m15s, which sounds survivable and
+    30% retention on a 10.5 minute video is 3m09s, which sounds survivable and
     is not - it means viewers are leaving before the first real explanation
     lands, and no amount of better topic selection fixes a format problem.
 
     So this is computed as seconds, compared against the runtime, and written
     to `loop/state/retention_finding.md` as prose the owner actually reads.
     """
-    runtime_min = float(cfg["retention"].get("runtime_minutes", 7.5))
+    runtime_min = float(cfg["retention"].get("runtime_minutes", 10.5))
     early_min = float(cfg["retention"].get("early_exit_minutes", 2.0))
     measured = [r for r in rows if r.get("average_view_duration_s")]
     if not measured:
@@ -110,7 +110,8 @@ def write_finding(cp: dict, cfg: dict) -> None:
             "it - the same thing will happen to the next four videos.",
             "",
             "**What this invalidates:** the cold-open-then-method structure, "
-            "the ~7.5 minute runtime, or both. Consider a much shorter cut, or "
+            "the ~10.5 minute runtime, or both. The runtime floor is an owner "
+                    "decision (10-11 min); the fix is the opening, not a shorter cut. "
             "moving the concrete payoff into the first 30 seconds.",
             "",
             "This is the one finding that should stop the content design being "
@@ -142,13 +143,17 @@ def retention_streak(rows: list[dict], floor: float) -> int:
     return streak
 
 
-def fetch_analytics(token: str, video_ids: list[str]) -> dict:
+CORE_METRICS = ("views,estimatedMinutesWatched,averageViewDuration,"
+                "averageViewPercentage")
+MONEY_METRICS = "estimatedRevenue"
+
+
+def _analytics_call(token: str, video_ids: list[str], metrics: str) -> dict:
     q = urllib.parse.urlencode({
         "ids": "channel==MINE",
         "startDate": "2020-01-01",
         "endDate": now()[:10],
-        "metrics": "views,estimatedMinutesWatched,averageViewDuration,"
-                   "averageViewPercentage,estimatedRevenue",
+        "metrics": metrics,
         "dimensions": "video",
         "filters": "video==" + ",".join(video_ids),
     })
@@ -156,6 +161,48 @@ def fetch_analytics(token: str, video_ids: list[str]) -> dict:
                                  headers={"Authorization": f"Bearer {token}"})
     with urllib.request.urlopen(req, timeout=60) as r:
         return json.loads(r.read())
+
+
+def fetch_analytics(token: str, video_ids: list[str]) -> dict:
+    """Watch-time metrics, with revenue added only if it is actually permitted.
+
+    `estimatedRevenue` is a MONETARY metric. It needs
+    yt-analytics-monetary.readonly, which this token deliberately does not
+    carry, and asking for it alongside ordinary metrics fails the WHOLE request
+    with `401 Insufficient permission to access this report` - not a partial
+    result, not a warning. Confirmed 2026-08-31: dropping that one metric turns
+    the identical call into a 200.
+
+    So the lane was dead for a reason that had nothing to do with the token, and
+    would have stayed dead every week while looking like an auth problem. The
+    core metrics are what the loop actually decides on; revenue is zero until
+    YPP (1,000 subs and 4,000 watch hours) and is therefore asked for
+    SEPARATELY, with its failure downgraded to a note.
+
+    When the channel is monetised, add yt-analytics-monetary.readonly to
+    auth/tokens.py SCOPES and re-consent; this function then picks revenue up
+    with no other change.
+    """
+    data = _analytics_call(token, video_ids, CORE_METRICS)
+    try:
+        money = _analytics_call(token, video_ids, MONEY_METRICS)
+    except urllib.error.HTTPError as e:
+        data["revenue_unavailable"] = (
+            f"HTTP {e.code} - needs yt-analytics-monetary.readonly; "
+            f"revenue is zero until YPP anyway")
+        return data
+
+    # Merge revenue in by video id, so callers see the same shape as before.
+    cols = [h["name"] for h in data.get("columnHeaders", [])]
+    mcols = [h["name"] for h in money.get("columnHeaders", [])]
+    if "video" in cols and "video" in mcols:
+        vi, mi = cols.index("video"), mcols.index("video")
+        ri = mcols.index(MONEY_METRICS)
+        by_id = {row[mi]: row[ri] for row in money.get("rows", [])}
+        data["columnHeaders"].append({"name": MONEY_METRICS})
+        for row in data.get("rows", []):
+            row.append(by_id.get(row[vi], 0))
+    return data
 
 
 def check_strikes(token: str, video_ids: list[str]) -> list[dict]:
@@ -222,14 +269,76 @@ def main() -> None:
                 unblock="Same credentials as the upload lane, plus the "
                         "yt-analytics.readonly scope. See docs/loop.md § OAuth.")
 
-        token = up.access_token(creds)
+        # Everything from here on talks to Google. A network or auth failure is
+        # an ordinary, recurring condition for a scheduled job - not a bug - so
+        # it takes a NAMED STOP that says what to do, rather than escaping as a
+        # traceback. A stack trace in a cron log is a stop nobody sees.
+        #
+        # The real work above (the retention streak, the breaker) has already
+        # been done and written, which is why the stop is legitimate here and
+        # not a Rule 0 violation.
+        try:
+            token = up.access_token(creds)
 
-        strikes = check_strikes(token, video_ids)
-        if strikes:
-            breaker.trip("strike", json.dumps(strikes)[:400])
-            st.work(f"tripped the circuit breaker on {len(strikes)} strike(s)")
+            strikes = check_strikes(token, video_ids)
+            if strikes:
+                breaker.trip("strike", json.dumps(strikes)[:400])
+                st.work(f"tripped the circuit breaker on {len(strikes)} strike(s)")
 
-        data = fetch_analytics(token, video_ids)
+            data = fetch_analytics(token, video_ids)
+        except urllib.error.HTTPError as e:
+            body = ""
+            try:
+                body = e.read().decode("utf-8", "replace")[:400]
+            except Exception:                       # noqa: BLE001
+                pass
+            m["weeks"].append({"week": week, "at": now(), "measured": False,
+                               "reason": f"HTTP_{e.code}",
+                               "known_videos": len(video_ids)})
+            m["updated"] = now()
+            write_json(MEASURE, m)
+            st.work("recorded an unmeasured week in loop/state/measurement.json")
+
+            if e.code in (401, 403):
+                st.named_stop(
+                    "OAUTH_REJECTED",
+                    f"Google rejected the stored credentials with HTTP {e.code}. "
+                    f"{len(video_ids)} published video(s) went unmeasured this "
+                    f"week. Sunday's ranking falls back to demand evidence and "
+                    f"the retention breaker cannot fire until this is cleared.",
+                    detail={"code": e.code, "body": body},
+                    unblock="The refresh token is expired, revoked, or missing "
+                            "the yt-analytics.readonly scope. Re-run "
+                            "auth/youtube_auth.py to re-consent; it forces a "
+                            "fresh grant when the scope set has changed.")
+            else:
+                st.named_stop(
+                    f"ANALYTICS_HTTP_{e.code}",
+                    f"the YouTube API returned HTTP {e.code}. This week is "
+                    f"unmeasured; nothing is lost, the next run re-reads the "
+                    f"same window.",
+                    detail={"code": e.code, "body": body},
+                    unblock="Usually transient (5xx or quota). If it repeats for "
+                            "more than two weeks the quota or the project needs "
+                            "looking at.")
+        except urllib.error.URLError as e:
+            # HTTPError SUBCLASSES URLError. The clause above catches it first
+            # today, but that makes clause ORDER load-bearing: reorder these two
+            # and every 401 silently becomes "transient, no action required" -
+            # the precise opposite of the truth, on the one lane whose failure
+            # is otherwise invisible. Re-raise so the ordering cannot decide it.
+            if isinstance(e, urllib.error.HTTPError):
+                raise
+            m["weeks"].append({"week": week, "at": now(), "measured": False,
+                               "reason": "NETWORK", "known_videos": len(video_ids)})
+            m["updated"] = now()
+            write_json(MEASURE, m)
+            st.work("recorded an unmeasured week in loop/state/measurement.json")
+            st.named_stop(
+                "NETWORK_UNREACHABLE",
+                f"could not reach the YouTube API ({e.reason}). This week is "
+                f"unmeasured; the next run re-reads the same window.",
+                unblock="Transient. No action unless it repeats.")
         cols = [h["name"] for h in data.get("columnHeaders", [])]
         for row in data.get("rows", []):
             d = dict(zip(cols, row))
