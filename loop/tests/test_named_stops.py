@@ -27,7 +27,20 @@ PY = sys.executable
 LANES = [
     ("upload.py", ("OAUTH_MISSING", "NOTHING_RENDERED")),
     ("publish.py", ("OAUTH_MISSING", "NOTHING_PUBLISHABLE", "BREAKER_TRIPPED")),
-    ("measure.py", ("OAUTH_MISSING", "NOTHING_PUBLISHED")),
+    # OAUTH_REJECTED covers a token Google actively refuses (401/403) as
+    # distinct from OAUTH_MISSING (no token on disk at all). The two need
+    # different remedies: re-consent vs. first-time grant.
+    ("measure.py", ("OAUTH_MISSING", "NOTHING_PUBLISHED", "OAUTH_REJECTED",
+                    "NETWORK_UNREACHABLE")),
+    # The reach lanes. Both write to live videos — one inserts a caption
+    # track, the other rewrites the snippet of every published episode — so
+    # both must refuse an absent credential by NAME rather than crashing
+    # through it. CAPTIONS_SCOPE_MISSING is the force-ssl consent only the
+    # owner can give; it is a legitimate halt, not a failure.
+    ("captions_lane.py", ("OAUTH_MISSING", "CAPTIONS_SCOPE_MISSING",
+                          "NOTHING_PUBLISHED", "NO_CAPTION_FILES")),
+    ("localize.py", ("OAUTH_MISSING", "NOTHING_PUBLISHED",
+                     "OPENROUTER_KEY_MISSING", "LOCALIZATIONS_UP_TO_DATE")),
 ]
 
 
@@ -38,6 +51,12 @@ def check() -> list[str]:
               "YOUTUBE_API_KEY"):
         env.pop(k, None)
     env["LOOP_NO_DOTENV"] = "1"
+    # Stripping the env vars is NOT enough isolation: .secrets/youtube_token.json
+    # is still on disk and the lanes read it, so this test runs with real
+    # credentials against the real channel. On 2026-09-01 that uploaded a video
+    # (MAV4PF056RA) the moment upload.py gained a library fallback. Every lane
+    # that can write to YouTube must honour this flag.
+    env["LOOP_DRY_RUN"] = "1"
 
     for fname, acceptable in LANES:
         examined += 1
@@ -68,8 +87,46 @@ def check() -> list[str]:
     return fails
 
 
+def check_alert_reaches_a_human() -> list[str]:
+    """A named stop must actually arrive in someone's inbox.
+
+    Two ways this silently fails, both of which were live on 2026-09-01:
+
+    1. **No @-mention.** GitHub's default notification setting for your OWN
+       repositories is "Participating and @mentions". An issue opened by Actions
+       is neither, so the issue appears in the repo and no email is sent. The
+       stop is then perfectly recorded and perfectly invisible.
+    2. **The unblock names a command that no longer exists.** The runway stop
+       still told her to run `voice/narrate-all.sh` and `bin/assemble-all.sh`
+       after those were replaced by a single `bin/batch-session.sh`. An
+       instruction read once every eight weeks is exactly the one nobody
+       notices has rotted.
+    """
+    import os
+    fails, examined = [], 0
+    stage = open(os.path.join(ROOT, "bin", "loop-stage.sh")).read()
+    examined += 1
+    if "@${OWNER_HANDLE:-" not in stage and "@seq23" not in stage:
+        fails.append("bin/loop-stage.sh does not @-mention the owner, so an "
+                     "issue it opens will not email anyone under GitHub's "
+                     "default notification settings")
+    rank = open(os.path.join(ROOT, "loop", "rank.py")).read()
+    import re
+    for m in set(re.findall(r"bin/[a-z0-9-]+\.sh", rank)):
+        examined += 1
+        f = os.path.join(ROOT, m)
+        if not os.path.exists(f):
+            fails.append(f"loop/rank.py tells the owner to run {m}, which does "
+                         f"not exist")
+        elif not os.access(f, os.X_OK):
+            fails.append(f"loop/rank.py tells the owner to run {m}, which is "
+                         f"not executable")
+    print(f"inspected {examined} alert-delivery case(s)")
+    return fails
+
+
 if __name__ == "__main__":
-    f = check()
+    f = check() + check_alert_reaches_a_human()
     for x in f:
         print(f"  ✗ {x}")
     print("all green - every blocked lane names its stop and says how to clear it"

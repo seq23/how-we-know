@@ -284,11 +284,32 @@ def report(access_token: str, meta: dict) -> int:
         print(f"  !!      the account that owns {T.EXPECTED_HANDLE}.")
         print("  " + "!" * 58)
 
-    print("\n  Two Google behaviours to expect, both designed for:")
-    print("   • An unverified app has uploads forced to PRIVATE. The loop")
-    print("     uploads private first and flips to public later, so this is free.")
-    print("   • A project in Testing mode expires refresh tokens after 7 days.")
-    print("     Publish the app on the OAuth consent screen to stop that.")
+    # These are CONDITIONALS, and they are worded as conditionals on purpose.
+    #
+    # 2026-09-02: the second line used to read "A project in Testing mode
+    # expires refresh tokens after 7 days" — printed unconditionally, on every
+    # run, having checked nothing. It was read as a diagnosis of THIS project,
+    # relayed to the owner as a live weekly-credential-death risk, and acted on.
+    # It was false: the `how-we-know` project shows "Publishing status: In
+    # production" in the Cloud console, so no token expires on a schedule.
+    #
+    # A message that states a specific broken condition it never verified is
+    # the same defect class as a validator that asserts prose instead of
+    # behaviour. This script cannot read the project's publishing status — the
+    # OAuth flow does not expose it — so it must not claim to know it. It says
+    # "if", and it says where to look.
+    print("\n  Two Google behaviours to know about. Neither is checked here —")
+    print("  this script cannot read the project's publishing status, so these")
+    print("  are conditionals, not a diagnosis of your project:")
+    print("   • IF the app is unverified, YouTube forces every upload to")
+    print("     PRIVATE. This loop uploads private and flips public later")
+    print("     against a receipt, so it costs nothing. (True for this project")
+    print("     as of 2026-09-02: in production, but not yet verified.)")
+    print("   • IF the project is in *Testing* publishing mode, refresh tokens")
+    print("     expire after 7 days. Check: console.cloud.google.com → APIs &")
+    print("     Services → OAuth consent screen → Publishing status. If it")
+    print("     says 'In production' this does not apply to you. (It said")
+    print("     'In production' for this project on 2026-09-02.)")
     print("\n  Next: .venv/bin/python auth/check_auth.py")
     print("=" * 64 + "\n")
     return 0

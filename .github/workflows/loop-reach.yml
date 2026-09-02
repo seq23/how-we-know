@@ -1,0 +1,120 @@
+name: loop · daily 10:00 CT · reach (captions + localizations)
+
+# NON-ENGLISH REACH. Two lanes that run AFTER a video is already up:
+#
+#   loop/captions_lane.py   uploads the English .srt that captions/ has held
+#                           since narration. It is not a courtesy to readers:
+#                           YouTube Studio states that "English subtitles are
+#                           the default source for auto-translation of
+#                           subtitles and audio", so the track is the SOURCE
+#                           FILE for auto-translated subtitles in 100+
+#                           languages and for auto-dubbed audio. Without it
+#                           none of that can fire.
+#   loop/localize.py        writes localized titles and descriptions in
+#                           es, pt-BR, hi, id, de, and sets snippet.
+#                           defaultLanguage=en — which, unset, makes
+#                           localizations impossible at the API and renders no
+#                           subtitle UI at all in Studio.
+#
+# WHY ITS OWN WORKFLOW, AND NOT A STEP IN loop-upload-cloud.yml.
+# A reach failure must never be able to fail an upload, or to be READ as one.
+# Sharing a job means a red run beside a perfectly good upload, and the next
+# person reads "upload failed". Separate workflow, separate run, separate
+# issue. The upload lane's reliability is untouched by anything here.
+#
+# EACH LANE IS ITS OWN STEP WITH `if: always()`. bin/loop-stage.sh exits 3 on a
+# named stop, and the default `bash -e` shell would abandon the job there. The
+# caption lane can legitimately stop (a scope, an exhausted allowance) on a day
+# the localization lane still has work — one blocker must not take the other
+# lane down with it.
+#
+# 15:00 UTC is 10:00 America/Chicago during CDT — an hour after the upload
+# lane, so the day's new video already exists to be captioned. The exact minute
+# does not matter: nothing here ever makes a video public.
+
+on:
+  # DISARMED until each lane has completed one real run end to end, the same
+  # rule loop-upload-cloud.yml follows. Arm it only after a workflow_dispatch
+  # run has inserted a caption track and written a localization for real.
+  #
+  #  schedule:
+  #    - cron: '0 15 * * *'
+  workflow_dispatch:
+    inputs:
+      lane:
+        description: 'Which lane to run'
+        type: choice
+        options: [both, captions, localize]
+        default: both
+      limit:
+        description: 'Max videos per lane this run'
+        required: false
+        default: '15'
+      dry_run:
+        description: 'Compose and translate; write nothing to YouTube'
+        type: boolean
+        required: false
+        default: false
+
+permissions:
+  contents: write
+  issues: write
+
+# Shared with every other loop stage that writes loop/state/. Two stages
+# committing at once is a rebase race, not a merge.
+concurrency:
+  group: loop-state
+  cancel-in-progress: false
+
+jobs:
+  reach:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install loop dependencies
+        run: pip install -r requirements-loop.txt
+
+      - name: Upload the English caption tracks
+        if: ${{ github.event.inputs.lane != 'localize' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # There is no .secrets/ on a runner, so the lane falls through to
+          # these. Absent -> a named OAUTH_MISSING stop, never a crash.
+          #
+          # NOTE: a refresh token minted BEFORE youtube.force-ssl was added to
+          # auth/tokens.py SCOPES does not carry it, and Google never widens an
+          # existing grant. If this step reports CAPTIONS_SCOPE_MISSING while
+          # the Mac works, that is why: re-run auth/youtube_auth.py and update
+          # the YT_OAUTH_REFRESH_TOKEN repo secret from the new token.
+          YT_OAUTH_CLIENT_JSON: ${{ secrets.YT_OAUTH_CLIENT_JSON }}
+          YT_OAUTH_REFRESH_TOKEN: ${{ secrets.YT_OAUTH_REFRESH_TOKEN }}
+        run: |
+          ARGS="--limit ${{ github.event.inputs.limit || 15 }}"
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            ARGS="$ARGS --dry-run"
+          fi
+          bin/loop-stage.sh captions loop/captions_lane.py $ARGS
+
+      - name: Localize titles and descriptions
+        if: ${{ always() && github.event.inputs.lane != 'captions' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          YT_OAUTH_CLIENT_JSON: ${{ secrets.YT_OAUTH_CLIENT_JSON }}
+          YT_OAUTH_REFRESH_TOKEN: ${{ secrets.YT_OAUTH_REFRESH_TOKEN }}
+          # The same key loop/author.py and loop/advise.py already use.
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: |
+          ARGS="--limit ${{ github.event.inputs.limit || 15 }}"
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            ARGS="$ARGS --dry-run"
+          fi
+          bin/loop-stage.sh localize loop/localize.py $ARGS
+
+      - name: Reach validators
+        if: always()
+        run: python loop/validate.py --reach
