@@ -50,7 +50,18 @@ API = "https://openrouter.ai/api/v1/chat/completions"
 # plausible NOAA URL costs far more than six cents to catch.
 DEFAULT_MODEL = "anthropic/claude-sonnet-4.5"
 
-TARGET_WORDS = 2100          # the existing 20 scripts run 1943-2580
+# Owner decision, 2026-09-01: every batch from here is 10-11 minutes.
+# Long-form is where YouTube rewards a channel, and the Partner Programme
+# threshold is 4,000 watch HOURS from long-form only - so runtime is a direct
+# multiplier on the metric that gates monetisation.
+#
+# The number is derived, not guessed. Measured across all 16 finished episodes:
+# ~1,200 narration words renders to 8.1 minutes, an effective 150 words/minute
+# once beat pacing and pauses are counted. A 10.5-minute target therefore needs
+# ~1,575 narration words. TARGET_WORDS counts the WHOLE script - directives,
+# headings, chapters and sources - which historically ran ~1.75x the narration,
+# so 1,575 narration words is ~2,750 total.
+TARGET_WORDS = 2750          # ~1,575 narration words -> ~10.5 minutes at 150 wpm
 MAX_ATTEMPTS = 2
 
 
@@ -328,9 +339,12 @@ def shape_problems(text: str, pov: dict) -> list[str]:
                      f"looks truncated: {last.strip()[:80]!r}")
     nar = text.split("## Narration", 1)[-1].split("## Human fingerprint", 1)[0]
     words = len([w for w in re.sub(r"\{\{[^}]*\}\}", " ", nar).split()])
-    if words < 900:
-        p.append(f"narration is only {words} words; too short to be an 8-minute "
-                 f"video")
+    # Floor raised with the 10-11 minute target. 1,400 narration words is ~9.3
+    # minutes at the measured 150 wpm - under the target but not catastrophically
+    # short, which is the right place for a hard floor. It is a floor, not the aim.
+    if words < 1400:
+        p.append(f"narration is only {words} words; at the measured 150 wpm that "
+                 f"is ~{words/150:.1f} minutes, under the 10-11 minute target")
     # The gate that carries the owner's judgement applies to generated text
     # too - in narration mode, which targets advice-giving and false framing
     # rather than vocabulary. The topic itself was already gated by decide().
