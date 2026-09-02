@@ -15,13 +15,20 @@ a whole directory rather than as a list of filenames.
 
 **Two Google behaviours are designed for, not discovered at runtime:**
 
-* An **unverified app** has its uploads forced to `private`. The loop uploads
-  private first by design and flips to public later against a receipt, so this
-  costs nothing.
+* An **unverified app** has its uploads forced to `private`. **This project is
+  in production but NOT verified** (checked in the Cloud console 2026-09-02:
+  "Publishing status: In production", with a "Your app requires verification"
+  banner), so that forcing is live. It costs nothing because the loop uploads
+  private by design and flips to public later against a receipt — but that
+  design is *required*, not a preference. Anyone who "simplifies" it by
+  uploading with `privacyStatus=public` will find YouTube silently ignoring it.
 * A project in **Testing** publishing mode issues refresh tokens that expire
-  after **7 days**. That is an expected state. `load()` reports it as
-  `expired_refresh`, and every caller turns it into an actionable message naming
-  the fix — never a retry into a wall.
+  after **7 days**. **This project is NOT in Testing**, so that does not apply
+  here — checked 2026-09-02. The handling stays because publishing status can
+  be changed back: `load()` reports the state as `expired_refresh` and every
+  caller turns it into an actionable message naming the fix, never a retry into
+  a wall. Nothing in this repo may state the project IS in Testing; no code
+  here can see that setting, and asserting it unchecked has already cost time.
 """
 from __future__ import annotations
 
@@ -56,8 +63,36 @@ CHANNELS_URL = "https://www.googleapis.com/youtube/v3/channels"
 # NOT gain it - re-running auth/youtube_auth.py is required, and until that
 # happens measure.py will keep 403ing. check_auth.py reports which scopes the
 # live token actually carries; trust that over this list.
-SCOPES = ["https://www.googleapis.com/auth/youtube.upload",
+# youtube (full) is REQUIRED, not a convenience: videos.update - the private ->
+# public flip that publish.py exists to perform, and the privacy flip that
+# retire.py performs - returns 403 insufficientPermissions under youtube.upload
+# alone. Confirmed 2026-09-01 against both a fresh upload and the live video.
+#
+# This was invisible until now because the channel's first video was uploaded
+# with privacyStatus=public directly, so the flip had never once been exercised.
+# Every scheduled publish would have failed the same way, weekly, with the
+# render and upload lanes reporting green ahead of it.
+# youtube.force-ssl added 2026-09-02, and it is the ONLY scope in this list the
+# stored token does not already carry. captions.insert accepts force-ssl or
+# youtubepartner and nothing else - the plain `youtube` scope does NOT cover it,
+# which is why videos.update works today and captions do not. Verified against
+# developers.google.com/youtube/v3/docs/captions/insert on 2026-09-02.
+#
+# What it unblocks is bigger than subtitles. YouTube Studio states it plainly:
+# "English subtitles are the default source for auto-translation of subtitles
+# and audio." No English caption track means no auto-translated subtitles and no
+# auto-dubbed audio, in any language - the channel's cheapest route to Partner
+# Programme watch hours before the threshold doubles on 2026-02-01.
+#
+# Adding it here does NOT break anything already working: the stored token stays
+# valid for the four scopes it has, and every lane except loop/captions_lane.py
+# runs on those. What it does do is make ONE run of auth/youtube_auth.py grant
+# it - that script forces the consent prompt on scope drift (see the note below)
+# rather than reporting "already valid".
+SCOPES = ["https://www.googleapis.com/auth/youtube",
+          "https://www.googleapis.com/auth/youtube.upload",
           "https://www.googleapis.com/auth/youtube.readonly",
+          "https://www.googleapis.com/auth/youtube.force-ssl",
           "https://www.googleapis.com/auth/yt-analytics.readonly"]
 
 EXPECTED_HANDLE = "@howweknowdeep"

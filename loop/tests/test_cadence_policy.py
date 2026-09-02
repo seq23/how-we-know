@@ -192,8 +192,13 @@ def check() -> list[str]:
         fails.append(f"full inventory reported runway level {ok['level']!r}")
 
     # Force the threshold by asking at an absurd cadence: same arithmetic.
+    #
+    # The numerator is publishable PLUS videos already uploaded and dated but
+    # not yet aired - a scheduled video has not been consumed, it just has not
+    # played. This test used to divide unpublished scripts alone, which stopped
+    # matching once runway() started counting the scheduled tail on 2026-09-01.
     examined += 1
-    inv = ok["unpublished_scripts"]
+    inv = ok["publishable"] + ok.get("scheduled_not_yet_aired", 0)
     if inv:
         per = max(1, int(inv / max(0.5, warn - 1)))
         low = cadence.runway(per)

@@ -71,9 +71,17 @@ def status() -> dict:
     age = out.get("refresh_token_age_days")
     if age is not None and age >= 6:
         out["warning"] = (
-            f"The refresh token is {age} days old. A project in Testing mode "
-            f"expires them at 7 days. Publish the app on the OAuth consent "
-            f"screen, or re-run auth/youtube_auth.py.")
+            # Conditional, not a diagnosis. Nothing here can read the project's
+            # publishing status, and stating it unchecked sent a false
+            # reliability risk up the chain on 2026-09-02. The `how-we-know`
+            # project was "In production" when it was actually looked at.
+            f"The refresh token is {age} days old. That only matters IF the "
+            f"Cloud project is in *Testing* publishing mode, which expires "
+            f"them at 7 days — this script cannot see that setting. Check "
+            f"console.cloud.google.com → OAuth consent screen → Publishing "
+            f"status. 'In production' means this warning does not apply. If it "
+            f"does say Testing, publish the app, or re-run "
+            f"auth/youtube_auth.py.")
 
     out["quota"] = {
         "remaining": None,

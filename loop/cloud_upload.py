@@ -122,11 +122,32 @@ def run(limit: int = 4, dry_run: bool = False) -> int:
         # -- the shared allowance ---------------------------------------
         afford = limit if dry_run else quota.videos_affordable(limit)
         if afford == 0:
+            # NAME WHO SPENT IT. This stop fired on 2026-09-01 (run
+            # 33521586490) and the message said only "no quota left", so it
+            # read as a fault in this lane. It was not: the Mac's launchd
+            # backfill agent had already spent the day at 09:00, which is the
+            # documented dual-lane transition, not a bug. A stop that does not
+            # name its cause gets triaged from scratch every time it fires.
+            others = ", ".join(
+                f"{k} {v}" for k, v in sorted(
+                    (quota._load().get("by_lane") or {}).items())  # noqa: SLF001
+                if k != LANE) or "nothing else"
             st.named_stop("QUOTA_EXHAUSTED",
-                          f"no quota left today for a whole video. "
-                          f"{quota.report()}",
-                          unblock="Nothing to do; the allowance resets at "
-                                  "midnight Pacific and this lane runs daily.")
+                          f"no quota left today for a whole video "
+                          f"({quota.PER_VIDEO} units). Already spent today by: "
+                          f"{others}. {quota.report()}",
+                          detail={"pending": [s for s, _, _ in pending]},
+                          unblock="Usually nothing to do — the allowance "
+                                  "resets at midnight Pacific and this lane "
+                                  "runs daily, so tomorrow's run picks up "
+                                  "exactly where this one stopped. If the "
+                                  "spending lane above is 'backfill', the "
+                                  "Mac's launchd agent com.howweknow.backfill "
+                                  "is still uploading the same library from "
+                                  "the other side. Two lanes on one 10,000-"
+                                  "unit allowance is the documented transition "
+                                  "state, not a fault: unload the Mac agent "
+                                  "once this lane has uploaded once, watched.")
         if afford < limit:
             st.note(f"quota allows {afford} of {limit} today. {quota.report()}")
 

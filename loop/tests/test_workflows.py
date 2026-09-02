@@ -32,6 +32,12 @@ REQUIRED_STAGES = {
     # unpublished. If this stops being invoked they go back to sitting there,
     # and a channel that looks healthy is publishing at half its reach.
     "loop-shorts-cloud.yml": "loop/shorts_cloud.py",
+    # Non-English reach. If this stops being invoked, every new episode ships
+    # with no caption track — which is what YouTube auto-translates subtitles
+    # AND audio from — and no localized metadata, so it exists only for English
+    # search. Nothing else would report it; the channel would simply grow more
+    # slowly for no visible reason.
+    "loop-reach.yml": "loop/captions_lane.py",
 }
 
 

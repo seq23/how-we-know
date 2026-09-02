@@ -29,7 +29,12 @@ STAGE_FILES = ["rank.py", "draft.py", "override.py", "prepare.py",
                # without anyone noticing, which is the same silence the rule
                # exists to break.
                "backfill.py", "cloud_upload.py",
-               "shorts_lane.py", "shorts_cloud.py"]
+               "shorts_lane.py", "shorts_cloud.py",
+               # The reach lanes, added 2026-09-02. Both run AFTER the upload
+               # lane and neither is allowed to fail it, which makes them
+               # exactly the kind of stage that could sit inert for months
+               # looking green. Registering them here is what stops that.
+               "captions_lane.py", "localize.py"]
 
 
 def run_snippet(code: str):

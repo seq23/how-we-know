@@ -287,6 +287,59 @@ The model decides *what*; the loop decides *what is allowed*. It may move
 It may **not** change cadence, abandon deep sea, or publish anything — those are
 reported to the owner and never applied automatically.
 
+### The reach lanes: captions and localizations
+
+Added 2026-09-02, after two defects that had been live since launch and that
+nothing in the repo could have reported.
+
+**1. Twenty timed caption files existed and none had ever been uploaded.**
+`captions/` has held a `.srt` and a `.vtt` per episode since narration, and
+there was no `captions.insert` call anywhere in the repo — `loop/upload.py`
+posted `part=snippet,status` and nothing else. The captions viewers see are
+*burned into the picture* by the renderer, so they are pixels; YouTube cannot
+read them. What that cost is larger than accessibility. YouTube Studio states:
+*"English subtitles are the default source for auto-translation of subtitles
+and audio."* The English track is the source file for auto-translated subtitles
+in 100+ languages **and for auto-dubbed audio**, so with no track none of it can
+fire. `loop/captions_lane.py` uploads it. It needs
+`https://www.googleapis.com/auth/youtube.force-ssl`, which the plain `youtube`
+scope does not cover — granted on 2026-09-02 after one browser re-consent.
+
+**2. `snippet.defaultLanguage` was unset on every video, which gated the whole
+translation surface.** The API rejects `localizations` without it, and in Studio
+the per-video Languages page renders nothing but a "Set language" dropdown and
+a disabled Confirm — no subtitle upload, no translations table, no dubbing
+control. `loop/localize.py` sets it to exactly `en` (never `en-US`; a library
+split between the two is an inconsistency nothing would report) and writes
+localized titles and descriptions in **es, pt-BR, hi, id, de**, prompting for
+the phrase a native speaker would actually search rather than a literal
+translation. A second model call back-checks each title for a wrong core noun
+and either corrects it or refuses the language — it caught Sonnet rendering
+"deepest" into Indonesian as *terlaut*, which is not a word.
+
+**The trap both lanes are built around: `videos.update` REPLACES the parts you
+name.** Sending `part=snippet,localizations` with a partial snippet erases the
+title, description, tags and categoryId of a live video, behind a 200 OK. Every
+snippet-bearing write goes through `loop/ytmeta.py`, which reads the live
+snippet, merges, sends it back whole, and *refuses* rather than truncating when
+it cannot. Validator **V19** fails the build if any other module in `loop/`
+issues such a call.
+
+Neither lane may fail an upload. They live in their own workflow
+(`.github/workflows/loop-reach.yml`), each in a step that survives the other's
+named stop, and validators **V16–V19** run as a separate group
+(`loop/validate.py --reach`) rather than inside the Monday render gate — a
+lagging translation must never be able to halt drafting and, through the
+breaker, publishing.
+
+Quota, from Google's published table: `captions.insert` 400 and `captions.list`
+50, so 450 a video and 6,750 for the fifteen-video backfill; `videos.list` 1
+plus `videos.update` 50, so 51 a video and 765 for the same backfill. Both
+spend through `loop/quota.py` behind `quota.upload_reserve()`, which holds a
+whole video's allowance back while the day's upload is still to come and
+releases it once an uploading lane has booked units. The caption backfill
+therefore spreads over several daily runs by design rather than eating the day.
+
 ---
 
 ## 4. Incidents worth remembering
@@ -384,6 +437,54 @@ for the "before" half and pixel comparison for the "after": OCR on the band
 would false-fail, because a Short's band legitimately shows the words being
 narrated. A beat whose credit cannot be resolved is dropped; if that beat is the
 anchor, the Short fails rather than shipping uncredited.
+
+
+### Shorts supply, and why all three ranks publish
+
+`visuals/shorts.py` ranks each episode's chapters. **Rank measures relevance to
+that episode's core question — not how good a Short it makes**, and those are
+different things. Episode 01's rank 3 is "Scarce food favors oversized feeding
+equipment" (a large mouth, long teeth, hinged jaws, the anglerfish's lure),
+which is plainly stronger short-form material than its rank 2 on soft bodies
+under pressure. Publishing only ranks 1-2 would have thrown that away for a
+reason that does not survive looking at the output.
+
+The genuinely unpublishable category is filtered at SOURCE regardless of rank:
+chapters whose heading is production apparatus, and narration that talks about
+the video rather than the subject. **That is the guard that matters; rank is
+not.**
+
+| Ranks published | Shorts | Runway at 4/week |
+|---|---|---|
+| 1 only | 16 | 4.0 weeks |
+| 1-2 | 32 | 8.0 weeks |
+| **1-3 (current)** | **48** | **12.0 weeks** |
+| *episode runway for comparison* | *16* | *7.5 weeks at 2/week* |
+
+Ranks 1-2 would exactly match the episode runway; **1-3 gives a 12-week margin,
+and Shorts consume no episode inventory** — they are cut from finished renders,
+so more Shorts costs nothing but quota.
+
+**No approval step.** The owner declined per-Short review (2026-09-01): ranks
+1-3 publish automatically. `loop/shorts_approval.py` remains as a VETO only —
+naming a file there keeps it off the channel permanently, and records that it
+was seen and refused rather than merely never reviewed. Nothing has to be
+approved for it to publish.
+
+### One ledger, two upload lanes, no arbitration
+
+Both `bin/loop-backfill-daily.sh` (Mac) and `loop-upload-cloud.yml` (Actions)
+decide what is left by reading `loop/state/ledger.json`. Reading separate copies
+is how duplicate public videos happen — the Mac's local file and the workflow's
+committed copy disagreeing about what has already gone out.
+
+So the Mac lane **pulls before deciding and pushes after acting**, and the cloud
+lane commits its own result. Whichever runs first does the work; the other finds
+nothing pending. **Neither has to be disarmed and no human has to sequence
+them.** A failed pull is a NAMED STOP rather than an upload against a possibly
+stale ledger: a duplicate public video is worse than a skipped day, and the next
+run picks it up unchanged.
+
 
 ## 5. What runs on the Mac, and what does not
 
