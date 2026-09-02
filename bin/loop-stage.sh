@@ -58,6 +58,14 @@ if [ "$RC" -ne 0 ] && command -v gh >/dev/null 2>&1 && [ -n "${GITHUB_TOKEN:-}" 
   TITLE="loop: $STAGE needs you — $WEEK"
   BODY_FILE="$(mktemp)"
   {
+    # @-mention the owner. GitHub's DEFAULT notification setting for your own
+    # repositories is "Participating and @mentions" - an issue opened by Actions
+    # is neither, so without this line the issue appears silently in the repo
+    # and no email is ever sent. This is the only thing that makes a named stop
+    # reach a human who is not looking at GitHub, which is the entire point of
+    # a named stop.
+    echo "@${OWNER_HANDLE:-seq23}"
+    echo
     if [ "$RC" -eq 3 ]; then
       echo "The **$STAGE** stage took a NAMED STOP for week \`$WEEK\`."
       echo

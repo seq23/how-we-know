@@ -14,6 +14,8 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, "..", ".."))
+VENV = os.path.join(ROOT, ".venv", "bin", "python")
+PY = VENV if os.path.exists(VENV) else sys.executable
 
 
 def main() -> int:
@@ -26,7 +28,14 @@ def main() -> int:
     for f in files:
         name = os.path.basename(f)
         print(f"\n──── {name}")
-        r = subprocess.run([sys.executable, f], cwd=ROOT)
+        # Each test picks its OWN interpreter needs: test_workflows re-execs
+        # into the system python3 for pyyaml, while the validators need the
+        # venv's numpy and Pillow. Launching every test from the venv lets each
+        # one do that, and stops a missing package from being reported as a
+        # failing validator - which happened twice, once for PIL and once for
+        # numpy, each time sending someone after a content bug that did not
+        # exist. An unrun validator is not a failing one.
+        r = subprocess.run([PY, f], cwd=ROOT)
         if r.returncode != 0:
             failed.append(name)
 

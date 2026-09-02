@@ -68,6 +68,18 @@ def check() -> list[str]:
     real_live = validate._live_videos                      # noqa: SLF001
     real_cap, real_loc = validate.CAPTIONS_STATE, validate.LOCALIZATIONS_STATE
     real_src, real_dir = validate.UPLOAD_SRC, validate.REACH_LOOP_DIR
+    real_caps = validate.REACH_CAPTIONS_DIR
+
+    # V16 needs an .srt on disk for the video it is judging. Point it at a
+    # fixture the test owns rather than at captions/, so this proves the
+    # VALIDATOR's logic and not the state of a directory: an earlier version
+    # read the real captions/ and went red on a runner, where the answer was
+    # "the file is not checked out", not "the validator is wrong".
+    caps = os.path.join(tmp, "captions")
+    os.makedirs(caps, exist_ok=True)
+    with open(os.path.join(caps, f"{SLUG}.srt"), "w") as fh:
+        fh.write("1\n00:00:00,000 --> 00:00:02,000\nHello.\n\n")
+    validate.REACH_CAPTIONS_DIR = caps
 
     try:
         # ---------------------------------------------- zero-item guard
@@ -168,6 +180,18 @@ def check() -> list[str]:
         if not validate.v16_caption_track().ok:
             fails.append("V16 failed a video that has a recorded caption track")
 
+        # ------------------------- V16: an .srt that does not exist at all
+        # Not the same as "no track uploaded": there is nothing TO upload, and
+        # no amount of quota or consent fixes it.
+        examined += 1
+        empty_caps = os.path.join(tmp, "no-captions")
+        os.makedirs(empty_caps, exist_ok=True)
+        validate.REACH_CAPTIONS_DIR = empty_caps
+        if validate.v16_caption_track().ok:
+            fails.append("V16 passed a published video whose .srt does not "
+                         "exist — nothing could ever caption it")
+        validate.REACH_CAPTIONS_DIR = caps
+
         # ------------------------------------------- V17: no localizations
         examined += 1
         validate.LOCALIZATIONS_STATE = write(tmp, "loc-none.json", {"videos": {}})
@@ -262,6 +286,7 @@ def check() -> list[str]:
         validate._live_videos = real_live                  # noqa: SLF001
         validate.CAPTIONS_STATE, validate.LOCALIZATIONS_STATE = real_cap, real_loc
         validate.UPLOAD_SRC, validate.REACH_LOOP_DIR = real_src, real_dir
+        validate.REACH_CAPTIONS_DIR = real_caps
 
     # ------------------------------------------ the merge itself, directly
     # V19 asserts merge_snippet REFUSES a partial snippet. This asserts the

@@ -839,6 +839,7 @@ REACH_STATE = ROOT / "loop" / "state"
 CAPTIONS_STATE = REACH_STATE / "captions.json"
 LOCALIZATIONS_STATE = REACH_STATE / "localizations.json"
 UPLOAD_SRC = ROOT / "loop" / "upload.py"
+REACH_CAPTIONS_DIR = ROOT / "captions"
 
 CANONICAL_LANGUAGE = "en"
 REACH_LANGUAGES = ["de", "es", "hi", "id", "pt-BR"]
@@ -889,7 +890,7 @@ def v16_caption_track() -> Result:
     for row in _live_videos():
         r.examined += 1
         vid, slug = row["video_id"], row["slug"]
-        srt = ROOT / "captions" / f"{slug}.srt"
+        srt = Path(REACH_CAPTIONS_DIR) / f"{slug}.srt"
         if not srt.exists():
             r.fail(f"{slug}: captions/{slug}.srt does not exist, so no track "
                    f"can ever be uploaded for it")
