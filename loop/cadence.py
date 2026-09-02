@@ -346,7 +346,28 @@ def runway(per_week: int | None = None) -> dict:
     except (PublishOrderMissing, PublishOrderStale):
         publishable = len(inv)
         basis = "unpublished scripts (no usable ranking)"
-    weeks = round(publishable / n, 1) if n else 0.0
+    # A video that is uploaded and DATED is still runway - it has not aired yet.
+    # Counting it as consumed the moment it is uploaded made this read 2.5 weeks
+    # on 2026-09-01 while eleven episodes sat scheduled through mid-October, and
+    # it would have read 0.0 once the backfill finished, with eight weeks of
+    # video queued and airing. An alarm that is wrong in the alarming direction
+    # is one people learn to ignore, which is worse than no alarm.
+    scheduled_ahead = 0
+    try:
+        import ledger as _led
+        from datetime import datetime, timezone
+        now_utc = datetime.now(timezone.utc)
+        for r in _led.load()["published"]:
+            stamp = r.get("scheduled_publish_at")
+            if not stamp:
+                continue
+            when = datetime.fromisoformat(stamp.replace("Z", "+00:00"))
+            if when > now_utc and r.get("privacy") != "public":
+                scheduled_ahead += 1
+    except Exception:                       # noqa: BLE001 - never break the guard
+        scheduled_ahead = 0
+
+    weeks = round((publishable + scheduled_ahead) / n, 1) if n else 0.0
     warn = float(cfg["runway"]["warn_weeks"])
     crit = float(cfg["runway"]["critical_weeks"])
     level = "ok"
@@ -357,6 +378,7 @@ def runway(per_week: int | None = None) -> dict:
     return {
         "unpublished_scripts": len(inv),
         "publishable": publishable,
+        "scheduled_not_yet_aired": scheduled_ahead,
         "basis": basis,
         "videos_per_week": n,
         "weeks_remaining": weeks,

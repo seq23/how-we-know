@@ -261,12 +261,18 @@ def build_prompt(question: str, pov: dict) -> list[dict]:
 # ---------------------------------------------------------------- the call
 
 def call_openrouter(messages: list[dict], model: str, key: str,
-                    timeout: int = 300) -> dict:
+                    timeout: int = 300, temperature: float = 0.4) -> dict:
+    """The one HTTP client for OpenRouter. Every lane uses this; none forks it.
+
+    `temperature` defaults to 0.4 — factual work, not creative writing. The
+    localisation lane passes 0.0: there is exactly one right way to say
+    "deepest" in Indonesian and any sampling at all is a chance to miss it.
+    """
     body = json.dumps({
         "model": model,
         "messages": messages,
         "max_tokens": 16000,
-        "temperature": 0.4,          # factual work; not a creative writing task
+        "temperature": temperature,
         "usage": {"include": True},  # ask OpenRouter to report real cost
     }).encode()
     req = urllib.request.Request(API, data=body, method="POST", headers={

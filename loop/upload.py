@@ -66,7 +66,12 @@ def load_credentials(cfg) -> dict | None:
 
     res = auth.load()
     if res["status"] == "ok":
+        # `scopes` is carried through because the caption lane needs to know,
+        # BEFORE it spends 400 units, whether this grant includes force-ssl.
+        # A 403 after the fact is the same information at 400x the price, and
+        # it arrives as a traceback rather than as a named stop.
         return {"access_token": res["access_token"], "source": "secrets",
+                "scopes": res.get("scopes") or [],
                 "refresh_token_age_days": res.get("refresh_token_age_days")}
     if res["status"] in ("no_token", "expired_refresh", "error"):
         # A present-but-unusable credential is NOT the same as no credential.
@@ -165,9 +170,26 @@ def build_payload(item: dict) -> dict:
     # `query` field is a lowercase search string - it is a query, not a headline.
     # Uploading it verbatim put "what is the deepest part of the ocean?" on the
     # channel, which the site's own video contract caught by asserting the video
-    # title equals the question record. Fix it here, at upload time: the credential
-    # holds youtube.upload and youtube.readonly only, so a title cannot be corrected
-    # afterwards - videos.update returns 403 without the broader youtube scope.
+    # title equals the question record. Fix it here, at upload time, because
+    # getting it right once is cheaper than correcting it after.
+    #
+    # CORRECTION, 2026-09-02. This comment used to end: "the credential holds
+    # youtube.upload and youtube.readonly only, so a title cannot be corrected
+    # afterwards - videos.update returns 403 without the broader youtube scope."
+    # That was true when it was written and has been false since 2026-09-01,
+    # when the full `https://www.googleapis.com/auth/youtube` scope was added to
+    # auth/tokens.py SCOPES and granted. Checked again on 2026-09-02 against
+    # .secrets/youtube_token.json, which records all four scopes as granted:
+    # youtube, youtube.upload, youtube.readonly, yt-analytics.readonly.
+    #
+    # So a title CAN be corrected afterwards, today, with no re-consent —
+    # loop/publish.py and loop/retire.py already call videos.update, and
+    # loop/localize.py writes the snippet back whole. The stale sentence had
+    # already cost one researcher a wrong recommendation; it is left quoted
+    # here so the next person recognises it if they meet it in an old branch.
+    #
+    # (Captions are the different case: captions.insert needs force-ssl, which
+    # the plain youtube scope does NOT cover. See loop/captions_lane.py.)
     title = item["question"].strip().rstrip("?")
     title = (title[:1].upper() + title[1:] if title else title) + "?"
     if len(title) > TITLE_MAX:
@@ -211,8 +233,26 @@ def build_payload(item: dict) -> dict:
             total += len(t) + 1
 
     return {
+        # defaultLanguage is NOT cosmetic and NOT optional here.
+        #
+        # Observed in the owner's YouTube Studio on 2026-09-02: with the video
+        # language unset, the per-video Languages page renders only a "Set
+        # language" dropdown and a disabled Confirm button. No subtitle upload,
+        # no translations table, no dubbing control at all. Unset language gates
+        # the ENTIRE subtitles-and-translation surface, and all 16 videos were
+        # in that state. The API mirrors it: videos.update rejects
+        # `localizations` outright unless snippet.defaultLanguage is set.
+        #
+        # The value is exactly "en", never "en-US". "English" (en) is what the
+        # Studio UI now holds as the channel default, and a channel where some
+        # videos say en and others en-US is an inconsistency nothing would ever
+        # report. One canonical value; loop/validate.py V18 asserts it.
+        #
+        # defaultAudioLanguage says the narration itself is English, which is
+        # what an auto-dub would be translating FROM.
         "snippet": {"title": title, "description": description, "tags": tags,
-                    "categoryId": "27"},   # 27 = Education
+                    "categoryId": "27",    # 27 = Education
+                    "defaultLanguage": "en", "defaultAudioLanguage": "en"},
         # private is the design, not a limitation to work around: an
         # unverified Google app has uploads FORCED private anyway, and the loop
         # flips to public on Friday only against a receipt.
