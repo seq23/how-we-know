@@ -72,6 +72,15 @@ jobs:
         run: npm install -g wrangler@4
       - name: Install loop dependencies
         run: pip install -r requirements-loop.txt
+      # See loop-reach.yml for why this exists: a scope missing from
+      # YT_OAUTH_REFRESH_TOKEN must fail here, by name, before any quota is
+      # spent - not surface as a 403 mid-upload. auth/check_ci_scopes.py
+      # checks against auth/tokens.py:T.SCOPES, never a copy of it.
+      - name: Verify the CI YouTube credential's scopes
+        env:
+          YT_OAUTH_CLIENT_JSON: ${{ secrets.YT_OAUTH_CLIENT_JSON }}
+          YT_OAUTH_REFRESH_TOKEN: ${{ secrets.YT_OAUTH_REFRESH_TOKEN }}
+        run: python3 auth/check_ci_scopes.py
       - name: Pull a verified Short from R2 and schedule it
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
