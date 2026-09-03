@@ -1,7 +1,7 @@
 {
   "episodes": 17,
   "mean_runtime_s": 487.1,
-  "measured_at": "2026-09-03T13:14:38+00:00",
+  "measured_at": "2026-09-03T17:49:30+00:00",
   "measured_seconds_total": 8280.67,
   "narration_words_total": 19953,
   "note": "Derived, never hardcoded. wpm = spoken narration words / measured render minutes across every episode that has both. script_ratio is whole-script words : narration words, which is what a whole-script budget has to be divided by before it means anything about runtime.",
@@ -109,7 +109,7 @@
       "wpm": 140.47
     }
   ],
-  "script_ratio": 1.806,
+  "script_ratio": 1.7926,
   "wpm": 144.58,
   "wpm_range": [
     133.52,
