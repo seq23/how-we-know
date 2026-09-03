@@ -157,21 +157,19 @@ def slots_total(cfg: dict) -> int:
     return sum(allocation(cfg).values())
 
 
-def live_slots(cfg: dict) -> dict[str, int]:
-    """This week's actual split, derived from the cadence rather than stored.
+def slots_at(cfg: dict, per_week: int) -> dict[str, int]:
+    """The domain split AT A GIVEN weekly rate — not necessarily this week's.
 
-    The allocation is expressed once, at `cadence.ceiling`, and the live split
-    falls out of `cadence.videos_per_week`. Storing both would be the defect
-    this module exists to prevent: the cadence escalates itself from 2 to 3 to
-    4 on evidence, and a second stored split would silently stop agreeing with
-    it the first time it moved.
+    `live_slots()` below is this for `cadence.videos_per_week`; `cadence.py`'s
+    scale-to-4 gate needs the split at a rate it is only CONSIDERING moving
+    to, before it commits, which is why this takes the rate as a parameter
+    rather than always reading it off the config.
 
     Largest ceiling share first, so a domain never loses its last live slot to
     rounding while a smaller one keeps one.
     """
     alloc = allocation(cfg)
     ceiling = int(cfg["cadence"]["ceiling"])
-    live = int(cfg["cadence"]["videos_per_week"])
     total = sum(alloc.values()) or 1
     if total != ceiling:
         raise ValueError(
@@ -180,12 +178,69 @@ def live_slots(cfg: dict) -> dict[str, int]:
             f"disagree the live split is arithmetic on a number nobody owns.")
     order = sorted(alloc, key=lambda d: (-alloc[d], d))
     out = {d: 0 for d in alloc}
-    left = live
+    left = int(per_week)
     for d in order:
         take = min(alloc[d], left)
         out[d] = take
         left -= take
     return out
+
+
+def live_slots(cfg: dict) -> dict[str, int]:
+    """This week's actual split, derived from the cadence rather than stored.
+
+    The allocation is expressed once, at `cadence.ceiling`, and the live split
+    falls out of `cadence.videos_per_week`. Storing both would be the defect
+    this module exists to prevent: the cadence escalates itself from 2 to 3 to
+    4 on evidence, and a second stored split would silently stop agreeing with
+    it the first time it moved.
+    """
+    return slots_at(cfg, int(cfg["cadence"]["videos_per_week"]))
+
+
+def domains_support(cfg: dict, per_week: int, need_weeks: float) -> tuple[bool, str]:
+    """Can EVERY domain that would carry a slot at `per_week` refill itself?
+
+    The aggregate queue-depth guard (`cadence.queue_supports`) answers "is
+    there enough inventory in total" — which stopped being the honest question
+    the moment a second domain started supplying its own inventory. Two
+    domains at 2/week each is not the same runway as one domain holding all
+    four slots' worth of topics; a materials queue that has decayed to zero
+    would be invisible to the aggregate check as long as deep sea alone still
+    covers the total.
+
+    So this checks EACH domain that would hold a live slot at `per_week`
+    against the SAME `need_weeks` floor the aggregate check uses, using its
+    own queue depth divided by its own slot count. A domain assigned zero
+    slots at this rate is not checked — it supplies nothing to refill.
+
+    Hard-fails (returns False) on a domain with slots but zero surviving
+    queue; that is the emptiest possible reason to refuse, not a pass on an
+    empty loop.
+    """
+    slots = slots_at(cfg, per_week)
+    depth = queue_depth()
+    short = []
+    for name, n in slots.items():
+        if n <= 0:
+            continue
+        d = depth.get(name, 0)
+        weeks = d / n if n else 0.0
+        if d <= 0:
+            short.append(f"{name}: 0 queued topics with {n} slot(s)/week")
+        elif weeks <= need_weeks:
+            short.append(f"{name}: {d} queued topic(s) / {n} slot(s) = "
+                        f"{weeks:.1f} weeks, at or below the {need_weeks:g}-"
+                        f"week floor")
+    if short:
+        return False, ("not every domain that would carry a slot at "
+                       f"{per_week}/week can refill itself: "
+                       + "; ".join(short))
+    active = {n: s for n, s in slots.items() if s > 0}
+    return True, (f"every domain carrying a slot at {per_week}/week clears "
+                  f"the {need_weeks:g}-week floor on its OWN queue: "
+                  + ", ".join(f"{n} ({depth.get(n, 0)}/{s}/wk)"
+                             for n, s in active.items()))
 
 
 def min_episodes_to_judge(cfg: dict) -> int:

@@ -198,6 +198,19 @@ def effective(explain: bool = False):
         want = int(scale.get("to", n))
         if want > n:
             ok, why = queue_supports(want)
+            # 2026-09-03: with materials-and-manufacturing added, the honest
+            # gate is whether BOTH domains that would carry a slot at `want`
+            # can refill themselves, not just the aggregate total - see
+            # domains.domains_support(). Checked second, after the cheap
+            # aggregate check, and its message is APPENDED rather than
+            # replacing the aggregate one so a human sees which check failed.
+            if ok:
+                import domains as D                          # noqa: PLC0415
+                need = float(scale.get("requires_runway_weeks",
+                                       cfg["runway"]["warn_weeks"]))
+                dok, dwhy = D.domains_support(cfg, want, need)
+                if not dok:
+                    ok, why = False, f"{why}; {dwhy}"
             if ok:
                 reason = f"scaled to {want}/week (owner decision): {why}"
                 n = want
