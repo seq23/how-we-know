@@ -385,6 +385,46 @@ def reallocate(cfg: dict, per_domain: dict[str, dict]) -> dict:
     }
 
 
+# --------------------------------------------------------- per-domain runway
+
+def domain_runway(cfg: dict, per_week: int | None = None) -> dict[str, dict]:
+    """Weeks of queue remaining, PER DOMAIN — a single global number is not
+    enough once two domains draw down independently.
+
+    2026-09-03: deep sea and materials-and-manufacturing are projected to
+    exhaust within a week of each other (~2026-10-26) while sharing one
+    aggregate runway figure that would say nothing about which is actually
+    short. Each domain's weeks-remaining is its own queue_depth() divided by
+    its own live slot count — the same arithmetic `cadence.runway()` does in
+    aggregate, just not pooled across domains that do not share inventory.
+
+    A domain with zero live slots this week is reported with `weeks: None`
+    (not zero) — it is not "out of runway", it simply is not being drawn from
+    yet, which is a different claim entirely.
+    """
+    slots = live_slots(cfg) if per_week is None else slots_at(cfg, per_week)
+    depth = queue_depth()
+    warn = float(cfg["runway"]["warn_weeks"])
+    crit = float(cfg["runway"]["critical_weeks"])
+    out = {}
+    for name, n in slots.items():
+        d = depth.get(name, 0)
+        if n <= 0:
+            out[name] = {"slots_per_week": 0, "queued": d, "weeks": None,
+                        "level": "not_active",
+                        "message": f"{name}: 0 slots/week this week, not "
+                                   f"drawing from its queue"}
+            continue
+        weeks = round(d / n, 1)
+        level = ("critical" if weeks <= crit else
+                 "warn" if weeks <= warn else "ok")
+        out[name] = {"slots_per_week": n, "queued": d, "weeks": weeks,
+                    "level": level,
+                    "message": f"{name}: {weeks} week(s) at {n}/week "
+                               f"({d} queued)"}
+    return out
+
+
 def main() -> int:
     from common import config                               # noqa: PLC0415
     cfg = config()
