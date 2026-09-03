@@ -360,6 +360,71 @@ REQUIRED_SECTIONS = ["## Direct-answer lock", "## Narration",
                      "## Human fingerprint gate", "## Chapters", "## Sources"]
 
 
+# Same rule as tests/test_directive_truth.py's V1 check ("a directive may not
+# put a value on screen its own script does not speak"), reapplied HERE, one
+# generation attempt earlier, so the model's own retry loop can fix it before
+# the draft is ever written to disk. This is the self-heal item 13a asks for:
+# extending the retry loop already in draft() rather than only catching the
+# defect after the fact in the full validate.run_all() batch gate, where
+# nothing retries and the draft is simply rejected wholesale.
+_DIRECTIVE_KINDS = ("chain", "uncertain", "sources", "steps", "contrast",
+                   "magnitude", "define", "checklist")
+_PUNC = str.maketrans("", "", "“”\"'’‘()[]{},.;:!?")
+_STRUCT = set("IS NOT AND OR OF TO IN ON AT FOR WITH FROM A AN THE".split())
+
+
+def _stem(w: str) -> str:
+    w = w.lower()
+    for suf in ("ations", "ation", "ings", "ing", "edly", "ed", "es", "s",
+               "ly", "d"):
+        if len(w) > len(suf) + 3 and w.endswith(suf):
+            return w[:-len(suf)]
+    return w
+
+
+def directive_truth_problems(text: str) -> list[str]:
+    """Every number and proper noun a v2 directive draws must already be in
+    this script's own narration prose. Mirrors tests/test_directive_truth.py's
+    check() exactly, against one in-memory draft rather than every file on
+    disk, so it can run inside the retry loop before anything is written."""
+    if "## Narration" not in text:
+        return []
+    body = text.split("## Narration", 1)[1].split("## Human fingerprint", 1)[0]
+    prose = " ".join(l for l in body.split("\n") if not l.strip().startswith("{{"))
+    plow = prose.lower()
+    flags = []
+    for line in body.split("\n"):
+        line = line.strip()
+        m = re.match(r"^\{\{\s*(\w+)\s*:?\s*(.*?)\s*\}\}$", line)
+        if not (m and m.group(1).lower() in _DIRECTIVE_KINDS):
+            continue
+        fields = m.group(2).split("|")
+        for num in re.findall(r"\d[\d,\.]*", fields[0]):
+            if num.lower() not in plow:
+                flags.append(f"directive draws number {num!r} the narration "
+                            f"never speaks: {line[:74]!r}")
+        parts = re.split(r"[|=]", "|".join(fields[1:]))
+        for part in parts:
+            for num in re.findall(r"\d[\d,\.]*", part):
+                if num.lower() not in plow:
+                    flags.append(f"directive draws number {num!r} the "
+                                f"narration never speaks: {line[:74]!r}")
+            toks = part.split()
+            for i, tok in enumerate(toks):
+                t = tok.translate(_PUNC).lstrip("+-?>")
+                if not t or not t[0].isupper() or i == 0:
+                    continue
+                if t.upper() in _STRUCT or t.lower() in plow:
+                    continue
+                if _stem(t) and _stem(t) in plow:
+                    continue
+                if t.endswith("s") and t[:-1].lower() + "'s" in plow:
+                    continue
+                flags.append(f"directive draws name {t!r} the narration "
+                            f"never speaks: {line[:74]!r}")
+    return flags
+
+
 def shape_problems(text: str, pov: dict) -> list[str]:
     """Cheap structural checks before the expensive ones. Not a substitute for
     loop/validate.py — that still runs at full strength afterwards."""
@@ -409,6 +474,15 @@ def shape_problems(text: str, pov: dict) -> list[str]:
     if not d.admitted:
         p.append(f"generated text touches a hard exclusion: {d.rule} "
                  f"(matched {d.matched!r})")
+    # 2026-08-31: the one real authoring run failed the FULL validate.run_all()
+    # gate on "V1 directive-truth FAIL(1)" — a directive drawing a number or
+    # name its own narration never spoke. Nothing in the retry loop above
+    # could have caught it, because it is the SAME rule loop/validate.py V1
+    # enforces, checked one stage later where nothing retries. Checking it
+    # here means a model that draws an inert directive gets the chance to fix
+    # it inside its own two attempts, the same as every other structural
+    # problem in this function.
+    p += directive_truth_problems(text)
     return p
 
 
