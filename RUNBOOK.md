@@ -56,9 +56,16 @@ publishing right through the batch. There is no rush and no gap.
 
 ## Shorts run themselves
 
-**48 Shorts, 12 weeks of runway, no approval step.** All three ranked chapters
-per episode publish automatically at 4/week in the evening slot. You do not
-review them.
+**51 Shorts cut, no approval step.** All three ranked chapters per episode
+publish automatically in the evening slot. You do not review them.
+
+**They now go out at 9 a week, not 4** (your decision, 2 September). That is
+about **five to six weeks of runway** rather than twelve. When the cut ones run
+out you get one email — `SHORTS_INVENTORY_EXHAUSTED` — asking you to choose
+between cutting more chapters from the existing episodes and moving Shorts to a
+proper vertical format. **Nothing switches format on its own**, deliberately:
+the 51 already cut are in the current format and re-cutting them would throw
+away work you have already paid for.
 
 If you ever spot a bad one, that is the only manual lever:
 
@@ -132,14 +139,44 @@ a second run.
 
 ## The publishing rhythm
 
-- **Long-form: Sunday and Tuesday, 10:00 Central.** Pinned in local time, so it
-  does not drift when the clocks change.
-- **Shorts: 18:00–21:00 local, ~4 a week.** Nearly the inverse window — Shorts
-  peak in the evening, long-form in the morning.
+- **Long-form: Sunday and Tuesday, 10:00 Central — becoming Sunday, Monday,
+  Tuesday and Friday.** Pinned in local time, so it does not drift when the
+  clocks change.
+- **Shorts: 18:00–21:00 local, 9 a week.** 19:00 every evening, plus a second
+  at 21:00 on Saturday and Sunday. Nearly the inverse window — Shorts peak in
+  the evening, long-form in the morning.
 - **Shorts do not count toward monetisation.** YouTube's 4,000 watch hours come
   from long-form only. Shorts exist to be found; episodes exist to be watched.
 
 ---
+
+## The step up to 4 a week, and when it happens
+
+You raised the cadence to **4 long-form and 9 Shorts a week** on 2 September.
+Two things are worth knowing and nothing here needs doing.
+
+- **Nothing already scheduled moves.** Fourteen episodes are uploaded, dated and
+  airing through **20 October**. The loop only ever hands out dates *after* the
+  last one on the calendar, so the first 4-a-week slot is **Friday 23 October** —
+  no gap, no double post, nothing re-dated.
+- **It starts itself, when the queue can carry it.** There is no date to
+  remember and no switch to flip. The loop goes to 4 a week once it has enough
+  finished episodes in hand to keep publishing at that rate for a month. Until
+  then it keeps publishing at the lower rate and emails you once, saying so.
+
+If you get an email titled **CADENCE_SCALE_WITHHELD**, that is the loop telling
+you it is holding at the lower rate because the queue is thin. Nothing is
+broken and nothing has stopped. The fix is the same as the runway warning: run
+`bin/batch-session.sh` on the Mac so there are finished episodes, not just
+scripts.
+
+**Your one command is unchanged**, and it is faster now: rendering happens while
+narration is still running, so a full batch is about 19 hours instead of 22. If
+you would rather do a week at a time:
+
+```bash
+bin/batch-session.sh --max-episodes 4
+```
 
 ## If something looks wrong
 

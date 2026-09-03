@@ -10,7 +10,7 @@ the markdown would agree with any edit to the markdown, which is not a check.
 
 Nine assertions, each traceable to a line in the plan:
 
-    1  cadence is 2/week, from config, never hardcoded
+    1  cadence is 2/week from config, raising itself to 3 then 4, never hardcoded
     2  the 3/week escalation is gated on a validated generated script
     3  research/publish_order.json is the publish source, with NO filename fallback
     4  the owner-pinned head publishes first, in order, while unpublished
@@ -45,6 +45,8 @@ PLAN = ROOT / "docs" / "CHANNEL-PLAN.md"
 # change these - that is the point.
 PLAN_CADENCE = 2
 PLAN_ESCALATED = 3
+PLAN_SCALE = 4        # owner decision 2026-09-02; also the taxonomy ceiling
+PLAN_SHORTS = 9       # the middle of the owner's 8-10 Shorts/week band
 PLAN_PUBLISH_SOURCE = "research/publish_order.json"
 PLAN_PINNED = [
     "how big is a colossal squid",
@@ -96,7 +98,7 @@ def src(name: str) -> str:
 # ------------------------------------------------------------------ checks
 
 def c1_cadence() -> Check:
-    c = Check(1, "cadence is 2/week, from config")
+    c = Check(1, "cadence starts at 2/week from config and raises itself to 4")
     cfg = config()["cadence"]
     if cfg["videos_per_week"] != PLAN_CADENCE:
         c.fail(f"config says {cfg['videos_per_week']}/week, the plan says "
@@ -104,8 +106,18 @@ def c1_cadence() -> Check:
     if cfg["escalated"] != PLAN_ESCALATED:
         c.fail(f"config escalates to {cfg['escalated']}, the plan says "
                f"{PLAN_ESCALATED}")
+    if int(cfg.get("scale", {}).get("to", 0)) != PLAN_SCALE:
+        c.fail(f"config scales to {cfg.get('scale', {}).get('to')}, the plan "
+               f"says {PLAN_SCALE}")
+    if int(cfg.get("scale", {}).get("to", 0)) > int(cfg["ceiling"]):
+        c.fail("the scale target exceeds the taxonomy ceiling")
+    if int(cfg.get("shorts_per_week", 0)) != PLAN_SHORTS:
+        c.fail(f"config publishes {cfg.get('shorts_per_week')} Shorts/week, "
+               f"the plan says {PLAN_SHORTS}")
+    if not 8 <= int(cfg.get("shorts_per_week", 0)) <= 10:
+        c.fail("Shorts cadence is outside the owner's 8-10/week band")
     live = cadence.effective()
-    if live not in (PLAN_CADENCE, PLAN_ESCALATED):
+    if live not in (PLAN_CADENCE, PLAN_ESCALATED, PLAN_SCALE):
         c.fail(f"the live cadence resolves to {live}/week")
     # Not hardcoded anywhere.
     for f in ("rank.py", "draft.py", "prepare.py"):

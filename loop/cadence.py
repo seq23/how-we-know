@@ -2,12 +2,34 @@
 
 Three owner decisions live here as code reading `loop/config.json`:
 
-**Cadence is 2/week**, escalating to 3 on exactly one condition: the OpenRouter
-authoring lane has produced at least one script that passed full validation. Not
-"the lane runs" - a validated artifact. The flip is automatic and evidence-gated,
-so nobody has to remember to make it. The logic is safe to automate because the
-evidence is a fact on disk written only by a passing validator run, never by
-intent, and the ceiling from `pov/topic-taxonomy.json` still caps it.
+**Cadence starts at 2/week and raises itself in two evidence-gated steps.** The
+first is to 3, on exactly one condition: the OpenRouter authoring lane has
+produced at least one script that passed full validation. Not "the lane runs" -
+a validated artifact. The second is to the owner's 4/week target, and it adds a
+QUEUE-DEPTH condition: the runway measured *at the raised rate* must still be
+level `ok`. Both flips are automatic and evidence-gated, so nobody has to
+remember to make them. The logic is safe to automate because the evidence is a
+fact on disk written only by a passing validator run, never by intent, and the
+ceiling from `pov/topic-taxonomy.json` still caps it.
+
+**Why the 4/week raise is gated on runway rather than on a date.** Fourteen
+episodes are uploaded, private and dated, running Sunday and Tuesday at 10:00
+Central gaplessly through 2026-10-20, and they must publish exactly as
+scheduled. A hand-flipped flag on 20 October is a promise someone has to keep.
+What protects those rows is structural instead: `backfill.schedule_for` anchors
+every new slot AFTER the last date already on the calendar, and no lane ever
+rewrites a row that already has one - so a cadence change literally cannot
+re-date, re-order or re-upload anything already scheduled. It can only govern
+episodes that do not exist yet. `validate.v20_cadence_schedule` proves that
+continuously by re-deriving the slots and refusing any drift.
+
+Raising cadence SHORTENS runway, so `queue_supports()` asks the only question
+that matters - "would the channel still have runway if it published this fast?"
+- and refuses the raise otherwise, as a NAMED reason rather than a silent
+publish at the old rate. That makes the scale self-arming *and* self-reversing:
+it cannot fire into a thin queue, and it stands down on its own if the queue
+thins again. Breaking cadence reliability costs more than the extra episodes
+earn.
 
 **Publish order comes from `research/publish_order.json`** - regenerated weekly
 by the research agent's own entrypoint, and read-only here. Three ways it can be
@@ -104,6 +126,49 @@ def record_authoring_evidence(slug: str, script: str, validators: list) -> dict:
     return ev
 
 
+class QueueTooThin(Exception):
+    """The queue cannot sustain the cadence being asked for. Named, not silent."""
+
+
+def queue_supports(per_week: int) -> tuple[bool, str]:
+    """Can the queue sustain `per_week`? The guard that makes scaling safe.
+
+    THIS IS THE QUEUE-DEPTH GUARD. It refuses to raise cadence when the topic
+    queue holds less runway than the cadence requires, and it says so in words a
+    human reads - never by quietly publishing at the old rate, and never by
+    breaking the gapless schedule already on the calendar.
+
+    "Enough runway" is defined at the RAISED rate, not the current one, because
+    that is the rate the queue would actually be spent at. The floor is
+    `cadence.scale.requires_runway_weeks`, which defaults to the same
+    `runway.warn_weeks` the loop already emails about: raising cadence into a
+    runway that would immediately warn is how a channel goes dark.
+
+    Hard-fails on zero items. A queue holding nothing is not "runway ok because
+    the loop is empty" - it is the emptiest possible reason to refuse.
+    """
+    cfg = config()
+    scale = cfg["cadence"].get("scale", {})
+    need = float(scale.get("requires_runway_weeks", cfg["runway"]["warn_weeks"]))
+    r = runway(per_week)
+    depth = r["publishable"] + r.get("scheduled_not_yet_aired", 0)
+    if depth <= 0:
+        return False, (f"the publish queue holds ZERO episodes ({r['basis']}), "
+                       f"so there is nothing to publish {per_week}/week from. "
+                       f"A guard that examined nothing has failed, not passed.")
+    if r["weeks_remaining"] <= need:
+        return False, (f"{depth} episode(s) is {r['weeks_remaining']} weeks at "
+                       f"{per_week}/week, at or below the {need:g}-week floor. "
+                       f"Raising cadence shortens runway; raising into a runway "
+                       f"that would immediately warn is how a channel goes "
+                       f"dark. Publishing continues at the lower cadence - "
+                       f"nothing stops, and the raise re-arms itself as soon as "
+                       f"authoring refills the queue.")
+    return True, (f"{depth} episode(s) is {r['weeks_remaining']} weeks at "
+                  f"{per_week}/week, clear of the {need:g}-week floor "
+                  f"({r['basis']})")
+
+
 def effective(explain: bool = False):
     """The cadence to use this week. Never exceeds the taxonomy ceiling."""
     cfg = config()
@@ -111,6 +176,7 @@ def effective(explain: bool = False):
     base = int(c["videos_per_week"])
     ceiling = int(c.get("ceiling", 4))
     esc = c.get("escalation", {})
+    scale = c.get("scale", {})
     reason = f"configured default ({base}/week)"
     n = base
 
@@ -123,10 +189,80 @@ def effective(explain: bool = False):
                       f"{len(ev['scripts'])} validated script(s), first at "
                       f"{ev['first_at']}")
 
+    # ---- the owner's 4/week scale, gated on QUEUE DEPTH, not on a date ----
+    # Deliberately AFTER the escalation step and deliberately not a flag: this
+    # arms itself the moment the queue can carry it and stands down on its own
+    # if it cannot. It never touches a slot already assigned - see the module
+    # docstring and validate.v20_cadence_schedule.
+    if scale.get("automatic") and authoring_evidence():
+        want = int(scale.get("to", n))
+        if want > n:
+            ok, why = queue_supports(want)
+            if ok:
+                reason = f"scaled to {want}/week (owner decision): {why}"
+                n = want
+            else:
+                reason += (f"; NOT scaled to {want}/week - {why}")
+
     if n > ceiling:
         reason += f" (capped at the ceiling of {ceiling})"
         n = ceiling
     return (n, reason) if explain else n
+
+
+def shorts_effective(explain: bool = False):
+    """Shorts per week. Configuration, NOT derived from the episode cadence.
+
+    Shorts are a different lane with a different job. They do not count toward
+    the 4,000 watch hours - long-form does - so they buy nothing on the half of
+    the Partner Programme threshold that hours measure. What they buy is
+    SUBSCRIBERS, which research put at roughly 12x more binding than hours on
+    this channel, and they cost nothing to make because the inventory is already
+    cut. That is why this number moves independently and moves further.
+
+    It is deliberately NOT gated on the cut-Short inventory. That inventory is
+    on the Mac's disk and in R2, and the cloud lane that assigns slots cannot
+    always see it - a cadence that silently depends on which machine ran is
+    worse than a loud stop. Exhaustion is a NAMED STOP in `shorts_lane.run()`
+    instead, and `shorts_runway_weeks()` reports the number long before then.
+    """
+    c = config()["cadence"]
+    floor = int(c.get("shorts_floor", 4))
+    want = int(c.get("shorts_per_week", floor))
+    n = max(floor, want)
+    why = (f"{n} Shorts/week from loop/config.json (floor {floor}). "
+           f"Own evening ladder, never the episode slot.")
+    return (n, why) if explain else n
+
+
+def scheduled_tail() -> list[dict]:
+    """Every episode uploaded and DATED but not yet aired, oldest slot first.
+
+    The 14 rows this returns today are the gapless Sunday/Tuesday run through
+    2026-10-20. They are read-only to every lane in this repo: nothing re-dates
+    a row that already carries `scheduled_publish_at`, and the slot allocator
+    anchors past the last of them. This function exists so a guard can prove
+    that rather than assert it.
+    """
+    import datetime as _dt
+    out = []
+    try:
+        rows = ledger.load()["published"]
+    except Exception:                       # noqa: BLE001 - never break a guard
+        return []
+    now_utc = _dt.datetime.now(_dt.timezone.utc)
+    for r in rows:
+        stamp = r.get("scheduled_publish_at")
+        if not stamp or r.get("privacy") == "public":
+            continue
+        try:
+            when = _dt.datetime.fromisoformat(stamp.replace("Z", "+00:00"))
+        except ValueError:
+            continue
+        if when > now_utc:
+            out.append({"slug": r["slug"], "video_id": r.get("video_id"),
+                        "scheduled_publish_at": stamp, "when": when})
+    return sorted(out, key=lambda r: r["when"])
 
 
 # ------------------------------------------------------------ publish order

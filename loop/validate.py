@@ -39,8 +39,15 @@ that only make sense once a week has been selected:
                         thrown-away source rows OCR as text, and the Short's
                         picture band fits the cropped master at least twice as
                         well as it fits the whole one
+  V20 cadence-schedule  a cadence change cannot disturb a slot already on the
+                        calendar. The allocator is re-run against the real
+                        ledger and every date it hands out must fall strictly
+                        after the last scheduled episode, never collide with
+                        one, and never land on a measured-weak day. Also proves
+                        both weekday ladders are long enough for the cadence and
+                        that the queue-depth guard actually bounds the raise
 
-V1-V15 are the RENDER GATE: `run_all(items)`, run by loop/draft.py in front of
+V1-V15 and V20 are the RENDER GATE: `run_all(items)`, run by loop/draft.py in front of
 the pipeline. V16-V19 are the REACH group: `run_reach()`, run by
 `loop/validate.py --reach`, and they govern what a video looks like on YouTube
 after it is published. They are deliberately kept out of the render gate — a
@@ -1064,6 +1071,144 @@ def v19_snippet_merge() -> Result:
     return r
 
 
+def v20_cadence_schedule() -> Result:
+    """The cadence raise cannot disturb anything already scheduled — proven.
+
+    THE FAILURE THIS EXISTS TO CATCH LOOKS EXACTLY LIKE SUCCESS. Fourteen
+    episodes are uploaded, private and dated, running Sunday and Tuesday at
+    10:00 Central gaplessly through 2026-10-20. A cadence change that re-dated,
+    re-ordered or doubled up one of those slots would produce a perfectly
+    healthy-looking log and a channel that published twice on a Sunday and went
+    silent the following week. Nothing else in the repo would notice.
+
+    So this validator does not assert a policy; it re-derives the schedule and
+    compares:
+
+      * **Every dated row keeps its date.** The slot allocator is re-run against
+        the real ledger at the CURRENT cadence, and no slot it hands out may
+        collide with, precede, or duplicate a date already on the calendar.
+      * **The new slots continue the run rather than restarting it.** The first
+        newly-allocated slot must fall strictly after the last existing one.
+      * **The weekday ladders are long enough for the cadence** — long-form and
+        Shorts both — because wrapping round would stack two videos on one
+        morning and call it a cadence increase.
+      * **No slot lands on a measured-weak day.** Wednesday and Thursday
+        underperform for long-form, and no cadence the ceiling allows may reach
+        them.
+      * **The queue-depth guard actually governs the raise**, and refuses when
+        the queue is empty rather than passing an empty loop.
+
+    Hard-fails when it examines zero items.
+    """
+    r = Result("V20 cadence-schedule")
+    sys.path.insert(0, str(ROOT / "loop"))
+    import backfill                                      # noqa: PLC0415
+    import cadence as C                                  # noqa: PLC0415
+    import shorts_lane                                   # noqa: PLC0415
+    import ledger as L                                   # noqa: PLC0415
+    from datetime import datetime, timezone              # noqa: PLC0415
+
+    per_week = C.effective()
+    cfg = config()
+    ceiling = int(cfg["cadence"].get("ceiling", 4))
+
+    # ---- the ladders are long enough, and never reach a weak day --------
+    r.examined += 1
+    try:
+        days = backfill.weekdays_for(ceiling)
+        weak = {2, 3}                       # Wednesday, Thursday
+        on_weak = sorted(weak & set(days))
+        if on_weak:
+            r.fail(f"the publish ladder reaches weekday(s) {on_weak} at the "
+                   f"{ceiling}/week ceiling; Wednesday and Thursday are the "
+                   f"two measured-weak days and no cadence may use them")
+    except backfill.CadenceExceedsLadder as e:
+        r.fail(f"the publish weekday ladder cannot carry the {ceiling}/week "
+               f"ceiling: {e}")
+
+    r.examined += 1
+    shorts_week = C.shorts_effective()
+    try:
+        rungs = shorts_lane.slot_ladder(shorts_week)
+        if len(set(rungs)) != len(rungs):
+            r.fail(f"the Shorts evening ladder repeats a rung at "
+                   f"{shorts_week}/week: two Shorts would share one slot")
+        outside = sorted({h for _, h in rungs if not 18 <= h <= 21})
+        if outside:
+            r.fail(f"Shorts slot hour(s) {outside} fall outside the 18:00-21:00 "
+                   f"evening peak; a Short on the long-form schedule lands in "
+                   f"the worst part of its own day")
+        if backfill.PUBLISH_HOUR_LOCAL in {h for _, h in rungs}:
+            r.fail("a Shorts slot uses the long-form publish hour")
+    except shorts_lane.ShortsCadenceExceedsLadder as e:
+        r.fail(f"the Shorts ladder cannot carry {shorts_week}/week: {e}")
+
+    # ---- nothing already dated may move -------------------------------
+    tail = C.scheduled_tail()
+    taken = {row["scheduled_publish_at"] for row in tail}
+    led = L.load()
+    if tail:
+        last = tail[-1]["when"]
+        fresh = backfill.schedule_for(led, max(4, per_week * 2), per_week)
+        for when in fresh:
+            r.examined += 1
+            stamp = when.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+            if stamp in taken:
+                r.fail(f"the slot allocator handed out {stamp}, which episode "
+                       f"{[t['slug'] for t in tail if t['scheduled_publish_at'] == stamp]} "
+                       f"already holds — raising cadence must never re-date or "
+                       f"double-book a scheduled episode")
+            if when <= last:
+                r.fail(f"the allocator handed out {stamp}, at or before the "
+                       f"last scheduled episode ({last:%Y-%m-%dT%H:%M:%SZ}). "
+                       f"New slots must CONTINUE the run, not reopen it")
+            if when.astimezone(backfill.PUBLISH_TZ).weekday() in {2, 3}:
+                r.fail(f"{stamp} falls on a Wednesday or Thursday")
+        r.note(f"{len(tail)} episode(s) dated through "
+               f"{last:%Y-%m-%d}; the next {len(fresh)} slot(s) all fall after "
+               f"it at {per_week}/week")
+    else:
+        # No dated tail is legitimate only when the channel has none. Do NOT
+        # let that pass silently as zero examined.
+        r.examined += 1
+        if any(row.get("scheduled_publish_at") for row in led["published"]):
+            r.fail("the ledger carries scheduled rows but none resolved as a "
+                   "future slot — the tail reader is not reaching what it "
+                   "governs")
+        r.note("no episode is currently scheduled ahead")
+
+    # ---- Shorts slots do not collide either ---------------------------
+    sled = shorts_lane.load_ledger()
+    s_taken = {row["scheduled_publish_at"] for row in sled["published"]
+               if row.get("scheduled_publish_at")}
+    for when in shorts_lane.schedule_for(sled, max(4, shorts_week)):
+        r.examined += 1
+        stamp = when.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+        if stamp in s_taken:
+            r.fail(f"the Shorts allocator handed out {stamp}, which a Short "
+                   f"already holds")
+
+    # ---- the queue-depth guard governs the raise ----------------------
+    r.examined += 1
+    src = (ROOT / "loop" / "cadence.py").read_text()
+    seg = src.split("def effective")[1].split("\ndef ")[0]
+    if "queue_supports" not in seg:
+        r.fail("cadence.effective() does not consult queue_supports(); the "
+               "cadence raise is ungated and would publish faster than the "
+               "queue can refill")
+    r.examined += 1
+    ok, why = C.queue_supports(10_000)      # a cadence nothing could sustain
+    if ok:
+        r.fail("queue_supports() approved 10,000 videos a week — the "
+               "queue-depth guard does not actually bound anything")
+    if "floor" not in why and "ZERO" not in why:
+        r.fail(f"the queue-depth refusal does not say why: {why!r}")
+
+    if r.examined == 0:
+        r.fail("examined ZERO cadence-schedule cases")
+    return r
+
+
 def run_reach() -> tuple[bool, list[dict]]:
     """The post-publish reach validators. Separate from the render gate."""
     results = [v16_caption_track(), v17_localizations(),
@@ -1111,7 +1256,8 @@ def run_all(items) -> tuple[bool, list[dict]]:
                v7_plans(items), v8_source_urls(items),
                v9_footage_window(), v10_footage_crop(), v11_footage_hash(),
                v12_footage_scope(), v13_render_not_clipped(),
-               v14_shorts_attribution(), v15_shorts_caption_crop()]
+               v14_shorts_attribution(), v15_shorts_caption_crop(),
+               v20_cadence_schedule()]
     rows = [r.as_dict() for r in results]
     return all(r.ok for r in results), rows
 
