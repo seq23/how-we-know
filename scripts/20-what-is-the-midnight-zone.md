@@ -1,6 +1,7 @@
 # What is the midnight zone?
 
-**Status:** HUMANIZED EDITORIAL PASS COMPLETE — OWNER CONFIRMATION AND MASTER WATCH REQUIRED  
+**Status:** HUMANIZED EDITORIAL PASS COMPLETE — OWNER CONFIRMATION AND MASTER WATCH REQUIRED    
+**Domain:** deep-sea-ocean-science  
 **Article:** /questions/what-is-the-midnight-zone  
 **Word count:** 1152  
 **Estimated narration:** 7m 57s at 145 WPM
@@ -91,7 +92,7 @@ That is the image to leave behind.
 ### What to notice in the edit
 
 {{descent: 4000 | THREE VERTICAL KILOMETRES}}
-Give the viewer a slow hour rather than a fast zone list. Follow a particle of marine snow, a migrating animal passing through, a flash of bioluminescence, and a predator waiting in darkness. The pace should be quieter than the previous record video. Keep the depth gauge moving slowly to reinforce that the zone itself spans three vertical kilometers.
+Settle into a slow hour here rather than a fast zone list: a particle of marine snow, a migrating animal passing through, a flash of bioluminescence, a predator waiting in darkness. It runs quieter than the last record-chasing episode, and the depth gauge moves slowly on purpose — a reminder that the zone itself spans three vertical kilometers.
 
 ### Evidence limit
 
