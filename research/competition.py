@@ -641,10 +641,18 @@ def main() -> int:
     ap.add_argument("--results", type=int, default=20)
     ap.add_argument("--out", default=DEFAULT_OUT)
     ap.add_argument("--selftest", action="store_true")
+    ap.add_argument("--force", action="store_true",
+                    help="re-run even if the output is within its staleness "
+                         "window (research/staleness.py)")
     args = ap.parse_args()
 
     if args.selftest:
         return selftest()
+
+    if not args.dry_run:
+        import staleness  # noqa: PLC0415
+        staleness.guard(args.out, staleness.WINDOWS_DAYS["competition.py"],
+                        "research/competition.py", force=args.force)
 
     if args.dry_run:
         pairs, plan = build_allocation(args)

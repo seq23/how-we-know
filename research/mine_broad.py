@@ -345,6 +345,9 @@ def main() -> None:
     ap.add_argument("--reclassify", metavar="FILE", default=None,
                     help="re-label an existing mined file after a filter.py "
                          "change; no network")
+    ap.add_argument("--force", action="store_true",
+                    help="re-run even if the output is within its staleness "
+                         "window (research/staleness.py)")
     args = ap.parse_args()
 
     if args.selftest:
@@ -352,6 +355,10 @@ def main() -> None:
     if args.reclassify:
         reclassify(args.reclassify)
         return
+
+    import staleness  # noqa: PLC0415
+    staleness.guard(args.out, staleness.WINDOWS_DAYS["mine_broad.py"],
+                    "research/mine_broad.py", force=args.force)
 
     spec = json.load(open(args.seedfile, encoding="utf-8"))["domains"]
     if args.only:
