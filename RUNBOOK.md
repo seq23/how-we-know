@@ -5,7 +5,7 @@ How We Know, and nothing else. Reference detail lives in
 [`docs/OPERATING-MANUAL.md`](docs/OPERATING-MANUAL.md); the locked strategy lives
 in [`docs/CHANNEL-PLAN.md`](docs/CHANNEL-PLAN.md).
 
-Last true: 2026-09-02.
+Last true: 2026-09-03.
 
 ---
 
@@ -123,7 +123,11 @@ quota:
   findable outside English at all.
 
 Both are aimed at one thing: **long-form watch hours before the Partner
-Programme threshold doubles from 4,000 to 8,000 on 2026-02-01.**
+Programme threshold doubles from 4,000 to 8,000 on 2027-02-01.** (Corrected
+2026-09-03 — this page said 2026-02-01, a year early; that date has already
+passed and nothing changed, which is itself proof it was a typo, not a real
+deadline.) Channels admitted before that date keep the 4,000-hour bar. See
+"Monetisation, both gates" below for the nearer one.
 
 If you ever want to run them by hand:
 
@@ -141,7 +145,9 @@ a second run.
 
 - **Long-form: Sunday and Tuesday, 10:00 Central — becoming Sunday, Monday,
   Tuesday and Friday.** Pinned in local time, so it does not drift when the
-  clocks change.
+  clocks change. Sunday and Tuesday are deep sea; Monday and Friday, once the
+  second domain is live, are materials-and-manufacturing — see "A second
+  domain" below.
 - **Shorts: 18:00–21:00 local, 9 a week.** 19:00 every evening, plus a second
   at 21:00 on Saturday and Sunday. Nearly the inverse window — Shorts peak in
   the evening, long-form in the morning.
@@ -178,6 +184,49 @@ you would rather do a week at a time:
 bin/batch-session.sh --max-episodes 4
 ```
 
+## A second domain, on top of deep sea
+
+Added 2026-09-03. **Materials-and-manufacturing runs ON TOP of deep sea, not
+instead of it**, once the 4/week ceiling is reached — deep sea keeps Sunday
+and Tuesday, materials takes Monday and Friday. Nothing for you to do; the
+loop decides the split monthly and writes its reasoning to
+`loop/state/monthly/<month>.md`.
+
+- **Why a second domain at all.** `research/proposed-taxonomy.json` scored 20
+  candidate domains; materials ranks lower on demand than deep sea but has
+  roughly 4x the commercial-intent share (`research/commercial.json`) — the
+  honest trade is **about 3x slower subscriber acquisition** than deep sea in
+  exchange for a category advertisers pay more to reach.
+- **Each domain needs its own source allowlist and visual identity.** Deep
+  sea's approved organisations (NOAA, MBARI, Woods Hole, ...) publish nothing
+  about materials science; a new domain names its own public bodies before it
+  can cite anything, and gets its own palette so a materials episode does not
+  read as the wrong channel.
+- **The loop will not scale to 4/week on an empty second queue.** If materials
+  has no scored topics yet, the ceiling holds at whatever deep sea alone can
+  carry — it will not "average" the two domains' inventory together and scale
+  early on a queue that is not really there.
+- **A domain retires on its own queue running dry**, never on a fixed episode
+  count, and the next-ranked domain in the taxonomy takes its slots
+  automatically.
+
+## Monetisation, both gates
+
+There are two Partner Programme tiers, not one, and the loop now tracks both
+— nearest first:
+
+| | subscribers | long-form hours | unlocks |
+|---|---|---|---|
+| Expanded YPP | 500 | 3,000 | fan funding (memberships, Super Thanks) — no ads |
+| Standard YPP | 1,000 | 4,000 → **8,000 on 2027-02-01** | ads, plus everything Expanded unlocks |
+
+Expanded is the nearer gate — half the subscribers, three-quarters of the
+hours — and channels admitted before 2027-02-01 keep the lower 4,000-hour
+Standard bar for good. **3,000,000 Shorts views in 90 days is a SEPARATE path
+to either tier — Shorts views never add into the long-form hours total.**
+`loop/ypp.py` reports progress against both tiers and both routes every
+monthly review, nearest gate first.
+
 ## If something looks wrong
 
 - **A video published at the wrong time** — check `loop/state/ledger.json` for its
@@ -213,3 +262,22 @@ bin/batch-session.sh --max-episodes 4
 - **Three episodes have no footage and never will** — colossal squid, whale fall,
   and surviving pressure. No public-domain video of them exists. They stay
   illustrated rather than mislabelled.
+- **Every video from 2026-09-03 on has a hard 10-minute floor**, checked
+  against the RENDERED file, not just the word count. The first 20 episodes
+  predate the rule and run 7.5–8.9 minutes; they are deliberately not
+  re-rendered — they're already made, and re-rendering wastes money. Six of
+  them are under 8:00 (no mid-rolls run under 8:00 at all): episodes 01, 02,
+  04, 05, 14 and 16. Five of the six are already uploaded and dated; that is
+  not being changed either.
+- **Chapters come from the timed caption file, not the script.** The script's
+  own `## Chapters` timestamps are an estimate and drift from the real render
+  by anywhere from 2 to 58 seconds; `loop/upload.py` now reads
+  `captions/<slug>.chapters.txt` when it exists, which is the same file
+  `visuals/captions.py` derives from the actual audio timing.
+- **The "What to notice in the edit" narration talks to you, not about the
+  channel.** It used to describe production strategy in the third person
+  (engagement, monetisation, the pinned comment) — the same transparency is
+  still there, rewritten to address the viewer directly.
+- **The `## Direct-answer lock` in a script is never spoken.** It feeds the
+  description's first line, the thumbnail brief and the Shorts scorer —
+  `## Narration` is the only section a viewer ever hears.
