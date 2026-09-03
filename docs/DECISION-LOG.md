@@ -209,6 +209,80 @@ it here first.
 
 ---
 
+## 2026-09-03 (review pass) — a wrong constant reintroduced by the fix that deleted one, and a live production incident folded in
+
+**What happened.** An adversarial review of this branch, before its PR, found
+that `loop/durations.py:measure_model()` re-read `## Narration` word counts
+fresh off `scripts/*.md` every run, but the SAME commit (`d2b4733`) that
+measured 144.58 wpm also rewrote those same 20 scripts (items 2/3). The 17
+already-rendered episodes' AUDIO reflects the PRE-edit text — they are
+deliberately not re-rendered. Reproduced directly: `loop/durations.py
+--refresh`, the module's own documented maintenance command, silently moved
+the measured wpm from 144.58 (range 133.52-154.19, correct) to 142.38 (range
+129.18-151.95, wrong), the moment it was run after the rewrite. **Fixed**:
+`loop/state/durations.json` now freezes `narration_words_at_measurement` per
+episode the first time it is measured; `measure_model()` never re-derives it
+from current script text once frozen. The 17 existing episodes were
+backfilled with the correct (pre-edit) counts. Proven negatively —
+`loop/tests/test_durations_frozen_words.py`.
+
+**Separately, real production evidence surfaced mid-review** (not
+hypothetical): `loop-upload-cloud` run 33783826056 (success) and `loop-reach`
+run 33783829147 (failure, `CAPTIONS_SCOPE_MISSING`) both spent quota and both
+committed `loop/state/quota.json` through `bin/loop-stage.sh` a minute apart.
+The loser's rebase hit a real conflict; the retry loop could not recover
+(retried a push while a rebase was still unmerged, and never checked whether
+a push actually landed before falling through). **Fixed**: a git merge
+driver for `quota.json` (sums both lanes' real spends instead of
+conflicting — `loop/tools/merge_quota_json.py`), and `bin/loop-stage.sh` now
+aborts a stuck rebase before retrying and fails the job outright if a push
+never lands. Both proven negatively with a real two-clone git race
+(`loop/tests/test_shared_state_arbitration.py`).
+
+**The captions failure's actual cause**: not a missing consent — the owner
+had already re-consented locally, but the repo secret `YT_OAUTH_REFRESH_TOKEN`
+predated `youtube.force-ssl` being added to `T.SCOPES` by a day and was never
+updated. `auth/youtube_auth.py` already guarded scope drift on the LOCAL
+token (added after an identical incident 2026-08-31); its reach never
+extended to the CI credential. **Fixed**: `auth/check_ci_scopes.py`, wired
+into all three cloud workflows before any quota is spent, asserts the CI
+credential's actual granted scopes (via Google's tokeninfo endpoint) against
+`T.SCOPES` directly.
+
+**A regression this branch would otherwise have shipped**: it wires
+`loop/arming.py` into all three cloud lanes, gated on
+`loop/state/lane_evidence.json` — a file that has never existed anywhere in
+this repo's history. All three lanes were proven for real on 2026-09-03
+using code that predates `loop/arming.py` existing on `main` (upload-cloud
+run 33783826056; shorts-cloud via commit `dc100d2`'s video `HZhm2dXaR9c`;
+reach run 33784690518). Left alone, merging would have every lane hit
+`LANE_NOT_ARMED_*` on its next scheduled run — a live, working pipeline
+silently regressing until a human re-dispatched each lane by hand to
+re-prove what was already proven. **Fixed**: seeded `lane_evidence.json`
+with all three lanes' real evidence, citing the actual commits/runs/video
+IDs, so the merge preserves continuity rather than a false cold start.
+
+**Verified, not fixed (no code changes needed):**
+- The 6-of-17-under-8:00 claim (01, 02, 04, 05, 14, 16) — reproduced exactly
+  with an independent ffprobe pass.
+- `renders/<slug>-final.mp4` (not the bare `.mp4`) is what `loop/r2.py`
+  ships — confirmed directly in `loop/r2.py`.
+- `floor_avd_seconds=146` does not depend on the wpm figure at all (it is
+  derived from measured render SECONDS, which the freezing bug never
+  touched) — unaffected by either defect above.
+- V21/V22/V23/V24 are registered in `run_all()` and reached through the same
+  single entry point (`loop/draft.py`) every pre-existing validator uses —
+  no new entry point, no coverage gap.
+- No code in this branch's diff sets a video's privacy to public or adds a
+  delete path — checked by grepping the full diff for both.
+
+**The defect class, precisely, again**: a measurement and the text it was
+measured against drifted apart after the fact, and nothing checked that they
+still agreed — the identical shape as the 150-wpm near miss recorded above,
+occurring inside the very commit that fixed the first instance of it.
+
+---
+
 ## Owner actions still required, dated
 
 See the PR/branch report for the full dated list with automation status for
