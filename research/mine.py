@@ -6,7 +6,7 @@ Demand signal:   a query appearing in autocomplete means people type it.
 Depth signal:    how many distinct completions a seed produces.
 Provenance:      seed + endpoint + timestamp recorded for every topic.
 """
-import json, time, urllib.parse, urllib.request, sys, re
+import json, os, time, urllib.parse, urllib.request, sys, re
 from datetime import datetime, timezone
 
 UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"
@@ -41,7 +41,14 @@ def expand(seeds, alphabet=True, pause=0.35):
     return found
 
 if __name__ == "__main__":
-    seeds = json.load(open(sys.argv[1]))["seeds"] if len(sys.argv)>1 else ["deep sea"]
+    import staleness  # noqa: E402
+    force = "--force" in sys.argv
+    argv = [a for a in sys.argv if a != "--force"]
+    staleness.guard(os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                 "mined_queries.json"),
+                    staleness.WINDOWS_DAYS["mine.py"], "research/mine.py",
+                    force=force)
+    seeds = json.load(open(argv[1]))["seeds"] if len(argv)>1 else ["deep sea"]
     print(f"mining {len(seeds)} seeds…", flush=True)
     found = expand(seeds)
     rows = []

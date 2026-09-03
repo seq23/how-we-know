@@ -527,7 +527,14 @@ def main() -> None:
     ap.add_argument("--out", default=DEFAULT_OUT)
     ap.add_argument("--resume", action="store_true",
                     help="reuse anything already in the cache file")
+    ap.add_argument("--force", action="store_true",
+                    help="re-run even if the output is within its staleness "
+                         "window (research/staleness.py)")
     args = ap.parse_args()
+
+    import staleness  # noqa: PLC0415
+    staleness.guard(args.out, staleness.WINDOWS_DAYS["trends.py"],
+                    "research/trends.py", force=args.force)
 
     probes = load_probes(args)
     if not probes:

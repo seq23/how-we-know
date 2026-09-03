@@ -306,6 +306,16 @@ def build_prompt(question: str, pov: dict) -> list[dict]:
 
 # ---------------------------------------------------------------- the call
 
+# A transient API 500 is item 13a's textbook case: known, safe, deterministic
+# remedy (wait briefly, retry the exact same request), never masking a real
+# defect because it only fires for the specific server-side codes that mean
+# "try again", never for anything this lane's own request caused (401, 402,
+# 403, 404, 429 all skip straight past this and reach the caller unchanged).
+TRANSIENT_HTTP_CODES = (500, 502, 503, 504)
+TRANSIENT_RETRIES = 3
+TRANSIENT_BACKOFF_S = 2.0
+
+
 def call_openrouter(messages: list[dict], model: str, key: str,
                     timeout: int = 300, temperature: float = 0.4) -> dict:
     """The one HTTP client for OpenRouter. Every lane uses this; none forks it.
@@ -313,6 +323,17 @@ def call_openrouter(messages: list[dict], model: str, key: str,
     `temperature` defaults to 0.4 — factual work, not creative writing. The
     localisation lane passes 0.0: there is exactly one right way to say
     "deepest" in Indonesian and any sampling at all is a chance to miss it.
+
+    SELF-HEALS a transient server error or a dropped connection: up to
+    TRANSIENT_RETRIES attempts, `TRANSIENT_BACKOFF_S * attempt` between them.
+    Every attempt after the first prints `[self-heal]` so it shows up in
+    whichever lane's log called this — draft.py, advise.py and localize.py
+    all go through here, so the fix is shared once rather than three times.
+    A retry that still fails after the budget is exhausted raises normally;
+    it never swallows the error; the caller's existing NAMED STOP path is the
+    escalation, unchanged. A heal that keeps firing on every call is visible
+    in the log by construction — the same log a human already reads for
+    st.note() lines — rather than being silently absorbed forever.
     """
     body = json.dumps({
         "model": model,
@@ -321,14 +342,39 @@ def call_openrouter(messages: list[dict], model: str, key: str,
         "temperature": temperature,
         "usage": {"include": True},  # ask OpenRouter to report real cost
     }).encode()
-    req = urllib.request.Request(API, data=body, method="POST", headers={
+    req_headers = {
         "Authorization": f"Bearer {key}",
         "Content-Type": "application/json",
         "HTTP-Referer": "https://github.com/seq23/how-we-know",
         "X-Title": "How We Know - authoring lane",
-    })
-    with urllib.request.urlopen(req, timeout=timeout) as r:
-        return json.loads(r.read())
+    }
+    last_err: Exception | None = None
+    for attempt in range(1, TRANSIENT_RETRIES + 1):
+        req = urllib.request.Request(API, data=body, method="POST",
+                                     headers=req_headers)
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                if attempt > 1:
+                    print(f"[self-heal] OpenRouter call succeeded on attempt "
+                         f"{attempt}/{TRANSIENT_RETRIES} after "
+                         f"{last_err.__class__.__name__ if last_err else ''} "
+                         f"— healed, continuing", flush=True)
+                return json.loads(r.read())
+        except urllib.error.HTTPError as e:
+            if e.code not in TRANSIENT_HTTP_CODES or attempt == TRANSIENT_RETRIES:
+                raise
+            last_err = e
+        except (TimeoutError, ConnectionError, urllib.error.URLError) as e:
+            if attempt == TRANSIENT_RETRIES:
+                raise
+            last_err = e
+        print(f"[self-heal] OpenRouter attempt {attempt}/{TRANSIENT_RETRIES} "
+             f"failed ({last_err.__class__.__name__}: {last_err}); retrying "
+             f"in {TRANSIENT_BACKOFF_S * attempt:.0f}s — a transient server "
+             f"error is the known, safe, deterministic case this retries",
+             flush=True)
+        time.sleep(TRANSIENT_BACKOFF_S * attempt)
+    raise last_err  # pragma: no cover - loop always returns or raises above
 
 
 def record_spend(slug: str, model: str, usage: dict, cost: float | None,
