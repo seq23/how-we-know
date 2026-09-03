@@ -132,6 +132,18 @@ class Result:
         self.examined = 0
         self.failures: list[str] = []
         self.notes: list[str] = []
+        # NAMED STOPS. A legitimate, self-resolving halt -- "eleven videos are
+        # waiting for tomorrow's quota, their .srt files are ready" -- is not a
+        # failure and must not be reported as one. Before 2026-09-03 those
+        # eleven were `notes`, printed with a dim `·` underneath a red FAIL
+        # header caused by a twelfth, unrelated video; the daily mail read as
+        # "twelve broken videos" and the lane got tuned out.
+        #
+        # A stop is GREEN and LOUD: it never affects `ok`, and it is never
+        # allowed to hide a real failure -- `ok` still falls over on the first
+        # entry in `failures`. That asymmetry is the point. This is a reporting
+        # channel, not a severity dial.
+        self.stops: list[dict] = []
         # Set only by a validator that legitimately governs nothing this week.
         # Never set it to quiet a validator that SHOULD have found items.
         self.exempt = False
@@ -141,6 +153,17 @@ class Result:
 
     def note(self, msg: str):
         self.notes.append(msg)
+
+    def named_stop(self, code: str, msg: str, items: list[str] | None = None):
+        """Record a legitimate, named, GREEN halt.
+
+        Rule 0: this is the opposite of a silent skip. A deferral recorded
+        here is printed in full, with its code and its count, every run --
+        what it does not do is fail the job and page a human about a lane
+        that is working exactly as designed.
+        """
+        self.stops.append({"code": code, "message": msg,
+                           "items": sorted(items or [])})
 
     @property
     def ok(self) -> bool:
@@ -155,12 +178,18 @@ class Result:
     def status(self) -> str:
         if self.examined == 0:
             return "N/A(nothing generated)" if self.exempt else "FAIL(examined 0)"
-        return "PASS" if not self.failures else f"FAIL({len(self.failures)})"
+        if self.failures:
+            return f"FAIL({len(self.failures)})"
+        # Green, and it says so -- but it does not read as an ordinary PASS,
+        # because something really did stop.
+        if self.stops:
+            return f"PASS(STOP:{self.stops[0]['code']})"
+        return "PASS"
 
     def as_dict(self):
         return {"validator": self.name, "examined": self.examined,
                 "status": self.status, "failures": self.failures,
-                "notes": self.notes}
+                "notes": self.notes, "stops": self.stops}
 
 
 # ------------------------------------------------------------------ helpers
@@ -936,6 +965,7 @@ def v16_caption_track() -> Result:
     r = Result("V16 caption-track")
     state = read_json(CAPTIONS_STATE, default={"videos": {}, "blocked": {}})
     have_scope = bool(state.get("token_has_force_ssl"))
+    deferred: list[str] = []
     for row in _live_videos():
         r.examined += 1
         vid, slug = row["video_id"], row["slug"]
@@ -969,8 +999,8 @@ def v16_caption_track() -> Result:
             # an acceptable reason for a permanent one, so the excuse expires.
             days = _days_since(blocked.get("since"))
             if days is not None and days <= DEFER_GRACE_DAYS:
-                r.note(f"{slug}: no track yet — deferred {days:.1f}d ago for "
-                       f"quota, .srt is ready, the daily lane will take it")
+                deferred.append(f"{slug}: deferred {days:.1f}d ago, .srt is "
+                                f"ready ({vid})")
                 continue
             r.fail(f"{slug} ({vid}) has been waiting for a caption track for "
                    f"{days if days is not None else '?'} day(s) on a "
@@ -982,6 +1012,18 @@ def v16_caption_track() -> Result:
                f"YouTube cannot auto-translate its subtitles or audio"
                + (" — and the scope that used to excuse this is now granted"
                   if have_scope and blocked else ""))
+    if deferred:
+        r.named_stop(
+            "CAPTIONS_QUOTA_DEFERRED",
+            f"{len(deferred)} of {r.examined} live video(s) have no English "
+            f"caption track YET because captions.insert costs "
+            f"400 units against a day shared with the upload lane. Every one "
+            f"of them has a checked, timed .srt on disk and a dated deferral "
+            f"receipt, and the daily reach lane takes them in turn. This is "
+            f"the backfill working as designed, not a gap — it stops being "
+            f"acceptable, and this validator goes red on its own, "
+            f"{DEFER_GRACE_DAYS} days after a video is FIRST deferred.",
+            items=deferred)
     if r.examined == 0:
         r.fail("no live video in loop/state/ledger.json — this validator "
                "proved nothing")
@@ -989,19 +1031,62 @@ def v16_caption_track() -> Result:
 
 
 def v17_localizations() -> Result:
-    """Every live video carries all five localizations."""
+    """Every live video carries all five localizations — or a named reason.
+
+    Deliberately the SAME shape as V16, because the bug this fixes was the
+    two being different. V16 has always read loop/state/captions.json's
+    `blocked` map and stayed green on a video the lane had deliberately put
+    off; V17 read only `videos` and had no way to express "put off" at all,
+    so a video the localize lane had correctly deferred for quota was
+    reported in the identical words as a video that had been published and
+    forgotten. One of those needs a human at 10:00 and the other needs
+    nobody, and the daily mail could not tell them apart.
+
+    The excuse is bounded exactly as V16's is: `since` is the FIRST deferral
+    and is never refreshed, so a stalled lane goes red by itself.
+    """
     r = Result("V17 localizations")
-    state = read_json(LOCALIZATIONS_STATE, default={"videos": {}})
+    state = read_json(LOCALIZATIONS_STATE,
+                      default={"videos": {}, "blocked": {}})
+    deferred: list[str] = []
     for row in _live_videos():
         r.examined += 1
         vid, slug = row["video_id"], row["slug"]
         rec = (state.get("videos") or {}).get(vid) or {}
         got = sorted(rec.get("languages") or [])
         missing = [l for l in REACH_LANGUAGES if l not in got]
-        if missing:
-            r.fail(f"{slug} ({vid}) has no localized title/description for "
-                   f"{', '.join(missing)} — it cannot be found by a search in "
-                   f"those languages")
+        if not missing:
+            continue
+        blocked = (state.get("blocked") or {}).get(vid) or {}
+        if blocked.get("reason") == "QUOTA_DEFERRED":
+            days = _days_since(blocked.get("since"))
+            if days is not None and days <= DEFER_GRACE_DAYS:
+                deferred.append(f"{slug}: deferred {days:.1f}d ago, missing "
+                                f"{', '.join(missing)} ({vid})")
+                continue
+            r.fail(f"{slug} ({vid}) has been waiting for localizations for "
+                   f"{days if days is not None else '?'} day(s) on a "
+                   f"QUOTA_DEFERRED excuse that expires at "
+                   f"{DEFER_GRACE_DAYS}. The lane has stalled — check whether "
+                   f"the reach lane is running at all.")
+            continue
+        # No localizations and NO STATED REASON. This is the case that must
+        # stay red: it is exactly what _fQ3-YI63oQ looked like on 2026-09-03,
+        # and it meant a published video nobody could find in five languages.
+        r.fail(f"{slug} ({vid}) has no localized title/description for "
+               f"{', '.join(missing)} and no recorded reason — it cannot be "
+               f"found by a search in those languages")
+    if deferred:
+        r.named_stop(
+            "LOCALIZE_QUOTA_DEFERRED",
+            f"{len(deferred)} of {r.examined} live video(s) are not localized "
+            f"YET because the day's YouTube allowance could not fund a "
+            f"videos.update for them while keeping the upload lane's slot "
+            f"back. Each carries a dated deferral receipt written by "
+            f"loop/localize.py and the daily lane takes them in turn. This "
+            f"validator goes red on its own {DEFER_GRACE_DAYS} days after a "
+            f"video is FIRST deferred.",
+            items=deferred)
     if r.examined == 0:
         r.fail("no live video in loop/state/ledger.json — this validator "
                "proved nothing")
@@ -1619,6 +1704,10 @@ def main() -> int:
               f"examined {row['examined']}")
         for f in row["failures"]:
             print(f"    ✗ {f}")
+        for st_ in row.get("stops") or []:
+            print(f"    ■ NAMED STOP [{st_['code']}] {st_['message']}")
+            for item in st_["items"]:
+                print(f"        - {item}")
         for n in row["notes"]:
             print(f"    · {n}")
     print(json.dumps({"all_passed": ok}, indent=2))
