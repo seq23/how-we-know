@@ -400,10 +400,27 @@ issues such a call.
 
 Neither lane may fail an upload. They live in their own workflow
 (`.github/workflows/loop-reach.yml`), each in a step that survives the other's
-named stop, and validators **V16–V19** run as a separate group
+named stop, and validators **V16–V19** and **V26** run as a separate group
 (`loop/validate.py --reach`) rather than inside the Monday render gate — a
 lagging translation must never be able to halt drafting and, through the
 breaker, publishing.
+
+**A deferral is green, and it is loud.** The caption backfill costs 450 units a
+video and genuinely spans days, so on any given morning some videos have no
+track and no localizations *yet*. Both lanes write a dated `QUOTA_DEFERRED`
+receipt into `loop/state/captions.json` and `loop/state/localizations.json`
+before they stop, and V16/V17 report those as a **NAMED STOP** — exit 0, with
+the code, the count and every affected slug printed. What stays red is a live
+video with no track, no localizations and *no recorded reason*: the receipt is
+what separates a lane working as designed from a video nobody noticed. The
+receipt is written by the lane that deferred, carries the date of the FIRST
+deferral, is never refreshed, and expires after `DEFER_GRACE_DAYS` (7) — so a
+backfill that has actually stalled goes red on its own.
+
+This is why it matters: on 2026-09-03 the daily 10:00 reach run mailed one red
+naming twelve videos. Eleven were correctly deferred with their `.srt` ready;
+exactly one had genuinely been missed. The report could not tell them apart, so
+the signal that mattered was buried under eleven that did not.
 
 Quota, from Google's published table: `captions.insert` 400 and `captions.list`
 50, so 450 a video and 6,750 for the fifteen-video backfill; `videos.list` 1

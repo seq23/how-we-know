@@ -63,14 +63,52 @@ def week_id(when: _dt.date | None = None) -> str:
     return f"{y}-W{w:02d}"
 
 
+# A git conflict marker at the start of a line. loop/state/*.json is derived
+# accounting that several cloud lanes rebase onto main within the same minute,
+# so this is the realistic way one of them becomes unparseable -- write_json
+# below is atomic (tmp + replace), so a half-written file is not.
+CONFLICT_MARKER = ("<" * 7, "=" * 7, ">" * 7)
+
+
+class CorruptState(Exception):
+    """A state file exists but cannot be read as JSON.
+
+    CONFIRMED 2026-09-03, run 33783829147: a rebase conflict on
+    loop/state/quota.json left conflict markers in the working tree, and the
+    NEXT step in the same job -- the localize lane, on unrelated work -- died
+    at `json.loads(STATE.read_text())` with a bare JSONDecodeError reading
+    "Expecting property name enclosed in double quotes: line 6 column 1". That
+    traceback names neither the file nor the cause, and the video it failed to
+    localize was then reported by V17 as a content gap.
+
+    A corrupt state file is a real halt and deserves a real name. The module
+    docstring above has always said corrupt state exits 3 as a named stop;
+    this is what makes that true. Stage.__exit__ converts it.
+    """
+
+    def __init__(self, path, why: str):
+        super().__init__(f"{path}: {why}")
+        self.path = str(path)
+        self.why = why
+
+
 def read_json(path, default=None):
     p = Path(path)
     if not p.exists():
         if default is None:
             raise FileNotFoundError(p)
         return default
-    with p.open() as fh:
-        return json.load(fh)
+    text = p.read_text()
+    for line in text.splitlines():
+        if line.startswith(CONFLICT_MARKER):
+            raise CorruptState(
+                p, "it still contains git conflict markers. A lane rebased "
+                   "onto a concurrent write and the conflict was never "
+                   "resolved, so this file is a diff, not JSON")
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError as e:
+        raise CorruptState(p, f"it is not valid JSON ({e})") from e
 
 
 def write_json(path, obj):
@@ -253,6 +291,22 @@ class Stage:
     def __exit__(self, exc_type, exc, tb):
         if exc_type is NamedStop:
             sys.exit(self._emit_stop(exc))
+        if exc_type is CorruptState:
+            # NOT a crash, and above all not this lane's fault: some other
+            # lane left a state file unreadable and this one is the next to
+            # touch it. Name the file, because "JSONDecodeError line 6" sends
+            # a human to read a traceback and this sends them to `git
+            # checkout` one path.
+            sys.exit(self._emit_stop(NamedStop(
+                "STATE_FILE_CORRUPT",
+                f"{exc.path} could not be read: {exc.why}. This stage did "
+                f"nothing; it refuses to spend quota or write YouTube "
+                f"metadata while the accounting it depends on is unreadable.",
+                detail={"path": exc.path},
+                unblock=f"Restore the file from the last good commit: "
+                        f"git checkout origin/main -- {exc.path} — then "
+                        f"re-run this lane. Nothing is lost; these files are "
+                        f"derived.")))
         if exc_type is not None:
             return False  # a real crash: let it surface as exit 1
         if not self.units:
