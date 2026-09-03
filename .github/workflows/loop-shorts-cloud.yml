@@ -22,24 +22,34 @@ name: loop · daily 18:00 CT · publish a Short from R2
 # go live. The slots themselves are computed in local time and do not drift when
 # the clocks change, even though this cron does.
 on:
-  # DISARMED until this lane has completed one real upload end to end, for the
-  # same reason as loop-upload-cloud.yml — not because a Mac agent competes with
-  # it (none does; com.howweknow.shorts is gone), but because arming a lane that
-  # has never performed the irreversible half of its job means its first real
-  # attempt happens unattended, at 23:00 UTC, against a live channel.
+  # ARMED on 2026-09-03, once this lane had completed one real upload end to end.
   #
-  # Everything up to the upload IS proven: the shelf resolves from a runner, the
-  # evening slots compute, the quota reserves, and the whole lane runs end to end
-  # against the filesystem stub. What has never run is `resumable_upload` through
-  # the repo-secret credential path.
+  # It stayed disarmed until then for the same reason as loop-upload-cloud.yml —
+  # not because a Mac agent competes with it (none does; com.howweknow.shorts is
+  # gone), but because arming a lane that has never performed the irreversible
+  # half of its job means its first real attempt happens unattended, at 23:00
+  # UTC, against a live channel.
   #
-  # Arm it with ONE dispatched run first:
+  # Everything up to the upload was already proven: the shelf resolves from a
+  # runner, the evening slots compute, the quota reserves, and the whole lane
+  # runs end to end against the filesystem stub. The one untested step was
+  # `resumable_upload` through the repo-secret credential path. That step has
+  # now run for real.
+  #
+  # THE RUN THAT ARMED IT. 2026-09-03, dispatched `-f limit=1`: the lane pulled
+  # the verified Short for 10-what-is-the-deepest-part-of-the-ocean from
+  # r2://how-we-know-renders and uploaded it as video HZhm2dXaR9c. Confirmed
+  # afterwards against videos.list on @howweknowdeep — privacyStatus=private,
+  # publishAt=2026-09-04T00:00:00Z, uploadStatus=processed. Private with a
+  # future slot is exactly the contract this lane promises, so the credential
+  # path is proven and not merely un-crashed.
+  #
+  # Re-prove it the same way if the credentials or the upload path ever change:
   #     gh workflow run loop-shorts-cloud.yml -f dry_run=true
   #     gh workflow run loop-shorts-cloud.yml -f limit=1
-  # confirm the Short exists and is private with a publishAt, then uncomment.
-  #
-  #  schedule:
-  #    - cron: '0 23 * * *'
+  # then check the new id is private with a publishAt before trusting the cron.
+  schedule:
+    - cron: '0 23 * * *'
   workflow_dispatch:
     inputs:
       limit:
