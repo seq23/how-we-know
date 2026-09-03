@@ -16,11 +16,20 @@ try:
     import segments_species  # grafts species_image onto `segments`
 except ImportError:
     SX2 = None
+try:
+    import segments_materials as SM   # materials-and-manufacturing's own
+                                       # structural-device renderers; a no-op
+                                       # import for any other domain's plan,
+                                       # since those plans never name one of
+                                       # its segment types
+except ImportError:
+    SM = None
 
 def seg_fn(name):
     if hasattr(S, name):  return getattr(S, name)
     if SX and hasattr(SX, name): return getattr(SX, name)
     if SX2 and hasattr(SX2, name): return getattr(SX2, name)
+    if SM and hasattr(SM, name): return getattr(SM, name)
     raise KeyError(f"unknown segment type: {name}")
 
 def probe(path):

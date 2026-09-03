@@ -102,3 +102,45 @@ directive actually **parses and renders** — a directive the planner cannot par
 is silently ignored, so the beat looks annotated and shows nothing new. The test
 hard-fails if it inspects zero directives, and treats a directive's title as an
 editorial label (numbers still checked) while every later field is a claim.
+
+---
+
+# Contract v3 — a second domain's structural device
+
+Added 2026-09-03 when materials-and-manufacturing became a second published
+domain. v1 and v2's directives are ALL still available to any domain and
+render with that domain's own active palette (`HWK_DOMAIN`,
+`visuals/domains.py`) — `{{steps}}`, `{{chain}}`, `{{contrast}}`,
+`{{magnitude}}`, `{{define}}`, `{{checklist}}`, `{{sources}}`, `{{uncertain}}`,
+`{{text}}` and `{{ambient}}` carry no domain-specific content and are exactly
+as useful for a manufacturing process as for an ocean depth. Two v1
+directives are ocean-only by construction — `{{descent}}` renders metres and
+`{{zones}}` renders the Sunlight-to-Hadal scale; a materials script should not
+use either. It has its own equivalents instead:
+
+| Directive | Arguments | Renders |
+|---|---|---|
+| `{{thermal: TO_C \| LABEL}}` | | continuous rise through the thermal scale with a live °C counter |
+| `{{stages: HIGHLIGHT}}` | band name or blank | five-band thermal-scale cross-section |
+
+Renderers live in `visuals/segments_materials.py` — a separate module from
+`visuals/segments.py`, not a parameterised version of `depth_descent`/
+`zone_column`. Ocean depth's device subtracts colour as its axis increases
+(light dies with depth); materials' device is the physical inverse and adds
+colour as its axis increases (a heated metal actually glows that sequence —
+blackbody incandescence, not a decorative palette swap). Sharing one function
+across an additive and a subtractive colour model would have produced the
+"ocean device recoloured" outcome this domain was explicitly told to avoid.
+
+Every band boundary `{{stages}}` can highlight, and every default in
+`{{thermal}}`, comes from `visuals/domains.py`'s `DEVICES["materials-and-
+manufacturing"]` — ASM Handbook / NIST engineering-temperature convention,
+cited the same way the ocean's NOAA/GEBCO depth zones are: the band EDGES are
+visual-device convention, and any figure actually spoken in a script's own
+narration still traces to that script's own `## Sources`, per rule 1. The
+visual never asserts a number the narration does not also state.
+
+A future third domain adds its OWN structural-device module the same way,
+declares its palette and device in `visuals/domains.py`, and is checked by
+the same domain-abstraction guard (`loop/tests/test_domain_abstraction.py`)
+that materials-and-manufacturing is.
