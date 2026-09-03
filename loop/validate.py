@@ -53,8 +53,12 @@ that only make sense once a week has been selected:
                         (monetisation, watch time, the pinned comment, the
                         production queue) in third person; the transparency
                         stays, addressed to the viewer instead
+  V23 chapters-yt-compliant  every chapter list loop/upload.py would actually
+                        send starts at 0:00, has no gap under 10s and never
+                        contains a bare "Title card" entry — the three ways a
+                        chapter list gets silently discarded by YouTube
 
-V1-V15 and V20-V22 are the RENDER GATE: `run_all(items)`, run by loop/draft.py in front
+V1-V15 and V20-V23 are the RENDER GATE: `run_all(items)`, run by loop/draft.py in front
 of the pipeline. V16-V19 are the REACH group: `run_reach()`, run by
 `loop/validate.py --reach`, and they govern what a video looks like on YouTube
 after it is published. They are deliberately kept out of the render gate — a
@@ -1351,6 +1355,51 @@ def v22_producer_notes_second_person() -> Result:
     return r
 
 
+# ------------------------------------------- V23 chapters-yt-compliant
+
+def v23_chapters_compliant() -> Result:
+    """Every chapter list this repo would actually SEND to YouTube is legal.
+
+    2026-09-02: `loop/upload.py` built its chapter list by regexing `##
+    Chapters` out of the script and sending it as-is. Two defects: the
+    timestamps are the script's ESTIMATE, not the render's real timing (ep08
+    said 7:48 for a chapter the render actually reaches at 8:45), and 11 of 20
+    scripts contained a sub-10-second "Title card" chapter — YouTube discards
+    the ENTIRE list, not just the short entry, the moment one chapter is under
+    10 seconds. `loop/upload.py:build_chapters()` now prefers
+    `captions/<slug>.chapters.txt` (real timing) and falls back to a corrected
+    derivation from the script that drops "Title card" and merges any
+    remaining sub-10s gap. This validator proves the OUTPUT of that function
+    is legal for every script in the repo, not just the code path that
+    produces it.
+
+    Hard-fails when it examines zero scripts.
+    """
+    r = Result("V23 chapters-yt-compliant")
+    sys.path.insert(0, str(ROOT / "loop"))
+    import upload as up                                   # noqa: PLC0415
+    for p in sorted((ROOT / "scripts").glob("*.md")):
+        r.examined += 1
+        text = p.read_text(encoding="utf-8")
+        chapters = up.build_chapters(p.stem, text)
+        if not chapters:
+            r.note(f"{p.name}: no ## Chapters section (nothing to check)")
+            continue
+        times = [up._parse_ts(c.split(" ", 1)[0]) for c in chapters]  # noqa: SLF001
+        if times[0] != 0:
+            r.fail(f"{p.name}: first chapter is not at 0:00 "
+                   f"({chapters[0]!r}) — YouTube requires it")
+        for a, b, label in zip(times, times[1:], (c.split(" ", 1)[1] for c in chapters)):
+            if b - a < up.YT_MIN_CHAPTER_S:
+                r.fail(f"{p.name}: {label!r} is only {b - a}s after the "
+                       f"previous chapter — under the {up.YT_MIN_CHAPTER_S}s "
+                       f"floor that makes YouTube discard the WHOLE list")
+        if any(c.split(" ", 1)[1] == "Title card" for c in chapters):
+            r.fail(f"{p.name}: chapter list still contains a bare 'Title "
+                   f"card' entry")
+    return r
+
+
 # ------------------------------------------------------------------ runner
 
 def run_all(items) -> tuple[bool, list[dict]]:
@@ -1367,7 +1416,7 @@ def run_all(items) -> tuple[bool, list[dict]]:
                v12_footage_scope(), v13_render_not_clipped(),
                v14_shorts_attribution(), v15_shorts_caption_crop(),
                v20_cadence_schedule(), v21_no_boilerplate(),
-               v22_producer_notes_second_person()]
+               v22_producer_notes_second_person(), v23_chapters_compliant()]
     rows = [r.as_dict() for r in results]
     return all(r.ok for r in results), rows
 
