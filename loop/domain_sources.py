@@ -46,7 +46,14 @@ ALLOWLIST: dict[str, list[str]] = {
         "NIST", "ASM International", "USGS", "USGS Minerals",
         "Nature Materials", "MIT", "MIT DMSE",
         "MIT Department of Materials Science and Engineering", "Fraunhofer",
-        "ASTM International", "IEEE", "Nature", "Science",
+        "Fraunhofer Institute", "ASTM International", "IEEE", "Nature",
+        "Science", "SEMI", "SEMI International Standards",
+        # Archaeometallurgy sources: several strong episodes here (old iron,
+        # Damascus steel) trace figures to conservation/archaeology bodies
+        # rather than a materials-standards body, which is the right named
+        # public source for a claim about a historical artefact.
+        "Archaeological Institute of America", "British Museum",
+        "Smithsonian",
     ],
 }
 

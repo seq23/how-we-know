@@ -2,7 +2,7 @@
   "_status": "PRODUCTION",
   "_authority": "AUTHORITATIVE publish source for materials-and-manufacturing, sibling to research/publish_order.json for deep sea. Same gate, same thresholds, imported not reimplemented.",
   "_schema_version": "1.1.0",
-  "generated_at": "2026-09-03T18:17:53.295020+00:00",
+  "generated_at": "2026-09-03T18:44:48.861363+00:00",
   "generator": "research/publish_order_materials.py",
   "domain": "materials-and-manufacturing",
   "rule": "Same rule as deep sea: rank candidates by (search demand / competition), implemented as a hard GATE on both axes (publish_order.gate, imported unchanged) then a geometric combined score among survivors.",
@@ -21,7 +21,7 @@
       "file": "competition_materials.json",
       "source": "YouTube Data API v3 (search.list, videos.list, channels.list)",
       "measured_at": "2026-09-03T18:16:38.741866+00:00",
-      "quota_units_spent": 2448
+      "quota_units_spent": 2550
     },
     "demand": {
       "endpoint": "https://suggestqueries.google.com/complete/search",
@@ -202,7 +202,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-03T18:17:38.898875+00:00"
+          "fetched_utc": "2026-09-03T18:44:34.338903+00:00"
         }
       },
       "competition": {
@@ -279,7 +279,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-03T18:17:51.495681+00:00"
+          "fetched_utc": "2026-09-03T18:44:47.060982+00:00"
         }
       },
       "competition": {
@@ -354,7 +354,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-03T18:17:37.119988+00:00"
+          "fetched_utc": "2026-09-03T18:44:32.556328+00:00"
         }
       },
       "competition": {
@@ -429,7 +429,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-03T18:17:40.701601+00:00"
+          "fetched_utc": "2026-09-03T18:44:36.200897+00:00"
         }
       },
       "competition": {
@@ -503,7 +503,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-03T18:17:47.918815+00:00"
+          "fetched_utc": "2026-09-03T18:44:43.460819+00:00"
         }
       },
       "competition": {
@@ -580,7 +580,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-03T18:17:53.293218+00:00"
+          "fetched_utc": "2026-09-03T18:44:48.861001+00:00"
         }
       },
       "competition": {
@@ -658,7 +658,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-03T18:17:39.801864+00:00"
+          "fetched_utc": "2026-09-03T18:44:35.284421+00:00"
         }
       },
       "competition": {
@@ -736,7 +736,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-03T18:17:33.493605+00:00"
+          "fetched_utc": "2026-09-03T18:44:28.956164+00:00"
         }
       },
       "competition": {
@@ -810,7 +810,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-03T18:17:48.803680+00:00"
+          "fetched_utc": "2026-09-03T18:44:44.356279+00:00"
         }
       },
       "competition": {
@@ -885,7 +885,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-03T18:17:35.322862+00:00"
+          "fetched_utc": "2026-09-03T18:44:30.705501+00:00"
         }
       },
       "competition": {
@@ -942,11 +942,11 @@
       "gate": {
         "verdict": "passed",
         "failed": [],
-        "reason": "demand 0.483 clears the 0.16 floor and title gap 0.75 clears the 0.3 saturation ceiling."
+        "reason": "demand 0.476 clears the 0.16 floor and title gap 0.75 clears the 0.3 saturation ceiling."
       },
       "demand": {
-        "demand_index": 0.4833,
-        "autocomplete_completions": 3,
+        "demand_index": 0.4758,
+        "autocomplete_completions": 2,
         "exact_in_autocomplete": false,
         "corpus_breadth": 0,
         "key_term": "made",
@@ -954,14 +954,13 @@
         "key_term_corpus_breadth": 31,
         "sample_completions": [
           "what is aerogel made out of",
-          "what is aerogel",
-          "where is aerogel in subnautica"
+          "what is aerogel used for"
         ],
         "caveat": "autocomplete presence, NOT search volume",
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-03T18:17:44.324684+00:00"
+          "fetched_utc": "2026-09-03T18:44:39.828667+00:00"
         }
       },
       "competition": {
@@ -999,12 +998,86 @@
       "trend": {
         "status": "not_measured"
       },
-      "combined_score": 0.5094,
+      "combined_score": 0.5055,
       "trend_multiplier": 1.0,
       "trend_note": "no Trends data; neutral",
       "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
       "reason": "Middle of the field: title gap 0.75, demand 0.48, opportunity 0.54.",
       "queue_position": 11,
+      "source": "COMBINED_SCORE",
+      "pinned": false,
+      "overridden_gate_verdict": null,
+      "gate_overridden": false
+    },
+    {
+      "slug": "how-does-quenching-harden-steel",
+      "domain": "materials-and-manufacturing",
+      "title": "How does quenching harden steel?",
+      "query": "how does quenching harden steel",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.348 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.3484,
+        "autocomplete_completions": 1,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "harden",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "how does quenching harden steel"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-03T18:44:41.663352+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.725,
+        "title_gap": 1.0,
+        "title_coverage_mean": 0.25,
+        "strong_match_count": 0,
+        "results_examined": 20,
+        "median_views": 187840.0,
+        "p90_views": 1745872,
+        "median_subscribers": 143000.0,
+        "channels_under_100k_subs": 8,
+        "median_age_days": 1232,
+        "published_last_365d": 2,
+        "interpretation": "nobody has made the definitive video on this query",
+        "components": {
+          "title_gap": 1.0,
+          "incumbent_subs": 0.264,
+          "view_ceiling": 0.247,
+          "staleness": 0.9
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-03T18:44:10.988381+00:00"
+        }
+      },
+      "trend": {
+        "status": "not_measured"
+      },
+      "combined_score": 0.5026,
+      "trend_multiplier": 1.0,
+      "trend_note": "no Trends data; neutral",
+      "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
+      "reason": "Open field (100% of top-20 titles miss the question) but thin demand (0.35) -- uncontested because few ask it.",
+      "queue_position": 12,
       "source": "COMBINED_SCORE",
       "pinned": false,
       "overridden_gate_verdict": null,
@@ -1035,7 +1108,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-03T18:17:49.705481+00:00"
+          "fetched_utc": "2026-09-03T18:44:45.250742+00:00"
         }
       },
       "competition": {
@@ -1078,7 +1151,7 @@
       "trend_note": "no Trends data; neutral",
       "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
       "reason": "Middle of the field: title gap 0.85, demand 0.38, opportunity 0.65.",
-      "queue_position": 12,
+      "queue_position": 13,
       "source": "COMBINED_SCORE",
       "pinned": false,
       "overridden_gate_verdict": null,
@@ -1109,7 +1182,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-03T18:17:37.999212+00:00"
+          "fetched_utc": "2026-09-03T18:44:33.452318+00:00"
         }
       },
       "competition": {
@@ -1152,7 +1225,7 @@
       "trend_note": "no Trends data; neutral",
       "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
       "reason": "Middle of the field: title gap 0.80, demand 0.41, opportunity 0.60.",
-      "queue_position": 13,
+      "queue_position": 14,
       "source": "COMBINED_SCORE",
       "pinned": false,
       "overridden_gate_verdict": null,
@@ -1185,7 +1258,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-03T18:17:52.396052+00:00"
+          "fetched_utc": "2026-09-03T18:44:47.960939+00:00"
         }
       },
       "competition": {
@@ -1228,80 +1301,6 @@
       "trend_note": "no Trends data; neutral",
       "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
       "reason": "Open field (95% of top-20 titles miss the question) but thin demand (0.35) -- uncontested because few ask it.",
-      "queue_position": 14,
-      "source": "COMBINED_SCORE",
-      "pinned": false,
-      "overridden_gate_verdict": null,
-      "gate_overridden": false
-    },
-    {
-      "slug": "how-does-heat-treating-steel-work",
-      "domain": "materials-and-manufacturing",
-      "title": "How does heat treating steel work?",
-      "query": "how does heat treating steel work",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.392 clears the 0.16 floor and title gap 0.75 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.3921,
-        "autocomplete_completions": 1,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 1,
-        "key_term": "work",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 7,
-        "sample_completions": [
-          "how does heat treating steel work"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-03T18:17:46.129368+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.598,
-        "title_gap": 0.75,
-        "title_coverage_mean": 0.425,
-        "strong_match_count": 5,
-        "results_examined": 20,
-        "median_views": 186000.5,
-        "p90_views": 1707361,
-        "median_subscribers": 160500.0,
-        "channels_under_100k_subs": 8,
-        "median_age_days": 1036,
-        "published_last_365d": 2,
-        "interpretation": "5 of 20 ranking titles squarely answer the query",
-        "components": {
-          "title_gap": 0.75,
-          "incumbent_subs": 0.256,
-          "view_ceiling": 0.247,
-          "staleness": 0.9
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-09-03T18:16:25.854094+00:00"
-        }
-      },
-      "trend": {
-        "status": "not_measured"
-      },
-      "combined_score": 0.4842,
-      "trend_multiplier": 1.0,
-      "trend_note": "no Trends data; neutral",
-      "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
-      "reason": "Middle of the field: title gap 0.75, demand 0.39, opportunity 0.60.",
       "queue_position": 15,
       "source": "COMBINED_SCORE",
       "pinned": false,
@@ -1334,7 +1333,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-03T18:17:34.403865+00:00"
+          "fetched_utc": "2026-09-03T18:44:29.835798+00:00"
         }
       },
       "competition": {
@@ -1410,7 +1409,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-03T18:17:50.568263+00:00"
+          "fetched_utc": "2026-09-03T18:44:46.138933+00:00"
         }
       },
       "competition": {
@@ -1485,7 +1484,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-03T18:17:42.451712+00:00"
+          "fetched_utc": "2026-09-03T18:44:38.033397+00:00"
         }
       },
       "competition": {
