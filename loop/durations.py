@@ -111,11 +111,36 @@ def _save(path: Path, data: dict) -> None:
     path.write_text(json.dumps(data, indent=2, sort_keys=True) + "\n")
 
 
-def record(slug: str, seconds: float, source: str) -> float:
+def record(slug: str, seconds: float, source: str,
+           narration_words_at_measurement: int | None = None) -> float:
     """Persist a measured duration. Called by the upload lane at upload time,
-    which is the last moment the bytes and the repo are in the same place."""
+    which is the last moment the bytes and the repo are in the same place.
+
+    `narration_words_at_measurement`, once set, is NEVER overwritten by a
+    later call for the same slug (see below) — it freezes the word count that
+    was actually spoken in THIS render, at the moment the render was measured.
+    """
     d = load()
-    d["episodes"][slug] = {"seconds": round(float(seconds), 3), "source": source}
+    existing = d["episodes"].get(slug, {})
+    rec = {"seconds": round(float(seconds), 3), "source": source}
+    # Freeze once, keep forever. A script's ## Narration text can be edited
+    # after an episode is already rendered (captions/voice fixes, the
+    # 2026-09-03 boilerplate-and-second-person rewrite) without the audio
+    # being re-recorded - confirmed 2026-09-03: that rewrite alone moved
+    # ep01's word count from 1149 (what the render actually says) to 1118
+    # (what scripts/01....md now says), and a bare `--refresh` after it
+    # silently recomputed the model's wpm from the WRONG, edited-down count
+    # against the unchanged old audio (144.58 -> 142.38, one episode's wpm
+    # dropping to 129.18 - a wrong number nothing would have checked, the
+    # exact defect class this module exists to delete). The fix is that the
+    # word count a render's wpm is measured against must be captured once,
+    # at measurement time, and never re-derived from whatever text happens
+    # to be in scripts/*.md later.
+    if existing.get("narration_words_at_measurement"):
+        rec["narration_words_at_measurement"] = existing["narration_words_at_measurement"]
+    elif narration_words_at_measurement:
+        rec["narration_words_at_measurement"] = int(narration_words_at_measurement)
+    d["episodes"][slug] = rec
     from common import now                                  # noqa: PLC0415
     d["updated"] = now()
     _save(DURATIONS, d)
@@ -136,7 +161,13 @@ def duration_s(slug: str, probe: bool = True) -> float | None:
         if p:
             s = ffprobe_duration(p)
             if s:
-                return record(slug, s, f"ffprobe {p.name}")
+                # Capture the narration word count THIS MOMENT, alongside the
+                # duration it actually produced - see record()'s docstring.
+                # A slug probed here for the first time has never had a
+                # chance to drift from its own audio yet, so "whatever
+                # scripts/<slug>.md says right now" is still ground truth.
+                return record(slug, s, f"ffprobe {p.name}",
+                             narration_words_at_measurement=narration_words(slug))
     return None
 
 
@@ -175,7 +206,15 @@ def total_words_of(text: str) -> int:
 
 def measure_model() -> dict:
     """Derive the voice's words-per-minute from every episode that has BOTH a
-    narration word count and a measured render. Nothing here is assumed."""
+    narration word count and a measured render. Nothing here is assumed.
+
+    The word count paired with each render's duration comes from
+    `loop/state/durations.json`'s FROZEN `narration_words_at_measurement`
+    when one exists - never from re-reading scripts/*.md, which can (and on
+    2026-09-03, did) drift after the render was made. A slug measured for the
+    first time here freezes its current word count via `record()` so it
+    cannot drift out from under its own already-recorded audio later either.
+    """
     rows, words, secs, tot = [], 0, 0.0, 0
     for p in sorted(SCRIPTS.glob("*.md")):
         slug = p.stem
@@ -183,7 +222,17 @@ def measure_model() -> dict:
         if not d:
             continue
         text = p.read_text(encoding="utf-8")
-        w = narration_words_of(text)
+        stored = load()["episodes"].get(slug, {})
+        frozen_w = stored.get("narration_words_at_measurement")
+        if frozen_w:
+            w = int(frozen_w)
+        else:
+            w = narration_words_of(text)
+            if w:
+                # First time this slug is entering the model - freeze it now,
+                # against the source string used for the recorded seconds.
+                record(slug, d, stored.get("source", "unrefreshed"),
+                      narration_words_at_measurement=w)
         if not w:
             continue
         rows.append({"slug": slug, "narration_words": w,
