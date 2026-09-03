@@ -524,6 +524,38 @@ def runway(per_week: int | None = None) -> dict:
         level = "critical"
     elif weeks <= warn:
         level = "warn"
+
+    # 2026-09-03: a single global number cannot say WHICH domain is short.
+    # Deep sea and materials are projected to exhaust within a week of each
+    # other; the aggregate figure above would still read "ok" right up until
+    # both hit zero in the same week, having never named either one.
+    by_domain, worst_domain_level = {}, "ok"
+    try:
+        import domains as D                                   # noqa: PLC0415
+        by_domain = D.domain_runway(cfg, n)
+        order = {"ok": 0, "warn": 1, "critical": 2, "not_active": -1}
+        worst_domain_level = max(
+            (v["level"] for v in by_domain.values()), key=lambda l: order[l],
+            default="ok")
+        if worst_domain_level == "not_active":
+            worst_domain_level = "ok"
+    except Exception:                       # noqa: BLE001 - never break the guard
+        by_domain = {}
+
+    # The reported level is the WORSE of the aggregate and any single active
+    # domain's level - an aggregate that reads "ok" while one domain is
+    # already critical is exactly the number this per-domain check exists to
+    # stop hiding behind.
+    order = {"ok": 0, "warn": 1, "critical": 2}
+    if order.get(worst_domain_level, 0) > order.get(level, 0):
+        level = worst_domain_level
+    short_domains = [n_ for n_, v in by_domain.items()
+                     if v["level"] in ("warn", "critical")]
+
+    domain_clause = (
+        f" By domain: {'; '.join(v['message'] for k, v in by_domain.items() if v['level'] != 'not_active')}."
+        if by_domain else "")
+
     return {
         "unpublished_scripts": len(inv),
         "publishable": publishable,
@@ -534,17 +566,22 @@ def runway(per_week: int | None = None) -> dict:
         "warn_below_weeks": warn,
         "critical_below_weeks": crit,
         "level": level,
+        "by_domain": by_domain,
+        "short_domains": short_domains,
         "never_go_dark": True,
         "message": {
             "ok": (f"{weeks} weeks of queue at {n}/week "
-                   f"({publishable} publishable of {len(inv)} on disk)."),
+                   f"({publishable} publishable of {len(inv)} on disk)."
+                   f"{domain_clause}"),
             "warn": (f"RUNWAY WARNING: only {weeks} weeks of queue left at "
                      f"{n}/week - {publishable} publishable episode(s) of "
                      f"{len(inv)} on disk. Act now, not later: the authoring "
-                     f"lane needs lead time and its human fallback needs more."),
+                     f"lane needs lead time and its human fallback needs "
+                     f"more.{domain_clause}"),
             "critical": (f"RUNWAY CRITICAL: {weeks} weeks left at {n}/week - "
                          f"{publishable} publishable episode(s). The channel "
-                         f"goes dark within the month unless topics are added."),
+                         f"goes dark within the month unless topics are "
+                         f"added.{domain_clause}"),
         }[level],
     }
 
