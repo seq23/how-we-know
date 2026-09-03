@@ -74,8 +74,19 @@ def two_lane_race(register_driver: bool) -> tuple[bool, str]:
         seed = os.path.join(td, "seed")
         a = os.path.join(td, "workerA")
         b = os.path.join(td, "workerB")
-        sh("git", "init", "-q", "--bare", bare, cwd=td)
-        sh("git", "clone", "-q", bare, seed, cwd=td)
+        # Force the branch name explicitly rather than trusting the runner's
+        # init.defaultBranch: it is "main" on a dev machine with the Xcode
+        # command line tools' system gitconfig, but unset (-> "master") on a
+        # bare GitHub Actions runner - the branch this test committed to
+        # locally, "main" was never created on the runner, `git push origin
+        # main` failed silently (its return code is not checked - it does
+        # not need to be, once the branch name cannot be wrong), and every
+        # worker clone below came back empty. CONFIRMED: this passed locally
+        # and failed in CI for exactly this reason.
+        sh("git", "-c", "init.defaultBranch=main", "init", "-q", "--bare",
+           bare, cwd=td)
+        sh("git", "-c", "init.defaultBranch=main", "clone", "-q", bare, seed,
+           cwd=td)
         sh("git", "config", "user.email", "t@t.com", cwd=seed)
         sh("git", "config", "user.name", "t", cwd=seed)
         os.makedirs(os.path.join(seed, "loop", "state"))
@@ -96,7 +107,10 @@ def two_lane_race(register_driver: bool) -> tuple[bool, str]:
                      '1400}}\n')
         sh("git", "add", "-A", cwd=seed)
         sh("git", "commit", "-q", "-m", "base", cwd=seed)
-        sh("git", "push", "-q", "origin", "main", cwd=seed)
+        r0 = sh("git", "push", "-q", "origin", "main", cwd=seed)
+        assert r0.returncode == 0, (
+            f"setup: seed push failed, so every worker clone below would "
+            f"come back empty: {r0.stderr}")
 
         sh("git", "clone", "-q", bare, a, cwd=td)
         sh("git", "clone", "-q", bare, b, cwd=td)
