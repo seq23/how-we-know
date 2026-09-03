@@ -357,6 +357,8 @@ def run(limit: int = 15, dry_run: bool = False, verify: int = 3) -> int:
                 f"the upload lane. They are recorded as QUOTA_DEFERRED and "
                 f"tomorrow's run takes them. "
                 f"{quota.report()}",
+                detail={"deferred": len(pending),
+                        "resets_at": quota.next_reset()},
                 unblock="Nothing to do. The allowance resets at midnight "
                         "Pacific and this lane runs daily; the backfill "
                         "finishes over a few days by design.")

@@ -402,6 +402,8 @@ def run(limit: int = 15, dry_run: bool = False,
                 f"allowance cannot fund one at {quota.PER_LOCALIZE} units "
                 f"while keeping {quota.PER_VIDEO} back for the upload lane. "
                 f"{quota.report()}",
+                detail={"deferred": len(pending),
+                        "resets_at": quota.next_reset()},
                 unblock="Nothing to do; the allowance resets at midnight "
                         "Pacific and this lane runs daily.")
         if afford < len(pending):

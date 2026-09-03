@@ -1,0 +1,29 @@
+{
+  "_why": [
+    "A NAMED STOP is a legitimate halt, but not every legitimate halt needs a",
+    "human. On 2026-09-01 the daily cloud-upload lane found the day's YouTube",
+    "allowance already spent, printed a stop whose own unblock text read",
+    "'Nothing to do; the allowance resets at midnight Pacific and this lane",
+    "runs daily' - and then exited 3, failing the job and opening an issue. A",
+    "daily lane that exhausts a daily quota does that EVERY day, so the one",
+    "notification channel the loop has was spent on the outcome that needs",
+    "nobody. This file is the taxonomy that separates the two.",
+    "",
+    "DEFAULT IS needs_human. A code absent from self_resolving stays exit 3.",
+    "That is deliberate: forgetting to classify a stop leaves it loud, never",
+    "silent.",
+    "",
+    "A self-resolving stop still writes loop/state/stops/, still prints the",
+    "full NAMED STOP banner, and still appends to the Actions job summary. The",
+    "only thing it does not do is fail the job and page the owner."
+  ],
+  "default_disposition": "needs_human",
+  "self_resolving": {
+    "QUOTA_EXHAUSTED": {
+      "why": "The YouTube allowance resets at midnight Pacific and every lane that raises this runs at least daily, so the work is deferred by a few hours, not lost.",
+      "requires_detail": ["resets_at"],
+      "max_consecutive": 3,
+      "escalation": "Three runs in a row means the day's allowance is structurally short, not momentarily spent - the lanes are asking for more units than a day holds. That needs a human: reduce a lane's per-run limit, or spread the caption backfill wider."
+    }
+  }
+}

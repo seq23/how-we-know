@@ -626,6 +626,24 @@ dated keep airing regardless: YouTube publishes them, not this machine.**
 ### How the owner is told to come back
 
 `sun-rank` runs in the cloud every Sunday and takes a NAMED STOP when the runway
-falls below four weeks. A named stop exits 3, the workflow fails, and **GitHub
-emails on a failed run** — which is the only thing that leaves the machine. It
+falls below four weeks. A named stop that needs a human exits 3, the workflow
+fails, and **GitHub emails on a failed run** — which is the only thing that leaves the machine. It
 used to be a `st.note(...)`, written into a report and read by nobody.
+
+
+### The stops that do NOT email her
+
+Not every named stop is hers to fix. A daily lane that finds the day's YouTube
+allowance already spent has nothing for anyone to do: the allowance comes back
+at midnight Pacific and the same lane runs again tomorrow. `loop/stop_policy.json`
+classifies those as **self-resolving** — the banner, the stop record and the job
+summary are identical, but the job stays green and no issue is opened.
+
+Everything else still pages: a missing credential, a failed validator, corrupt
+state, `ZERO_WORK`, and any code the policy does not list. And a self-resolving
+stop that repeats past its limit (three runs, for the quota) escalates back to a
+red job, because at that point it is not resolving itself.
+
+Where to look when a lane is quiet: `loop/state/stops/<week>-<stage>.json` names
+the disposition and why, and `loop/state/stops/_streaks.json` says how many runs
+in a row it has been like that.

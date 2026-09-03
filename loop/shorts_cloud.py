@@ -118,6 +118,7 @@ def run(limit: int = 2, dry_run: bool = False) -> int:
         if afford == 0:
             st.named_stop("QUOTA_EXHAUSTED",
                           f"no quota left today for a Short. {quota.report()}",
+                          detail={"resets_at": quota.next_reset()},
                           unblock="Nothing to do; the allowance resets at "
                                   "midnight Pacific and this lane runs daily.")
         if afford < limit:
