@@ -77,12 +77,77 @@ else
     *) MSG="loop($WEEK): $STAGE — failed (rc=$RC)" ;;
   esac
   git commit -q -m "$MSG"
-  # Another stage, or the Mac, may have pushed while this ran. Rebase, never force.
+
+  # loop/state/quota.json can be written by two lanes within the same minute
+  # (confirmed 2026-09-03: loop-upload-cloud and loop-reach both spent quota
+  # and both rebased onto main seconds apart). It is derived accounting, so a
+  # textual conflict on it is a false positive - the merge driver sums both
+  # sides' real spends instead of picking one. Registered here, not only in
+  # .gitattributes, because git will not run a merge driver COMMAND from a
+  # committed file - only local config can supply that.
+  git config merge.quota-union.driver \
+    "python3 $ROOT/loop/tools/merge_quota_json.py %O %A %B"
+
+  # Another stage, or the Mac, may have pushed while this ran. Rebase, never
+  # force. PUSHED tracks whether a push actually landed - it is not safe to
+  # infer that from "the loop exited" the way this used to: on 2026-09-03 a
+  # conflict on quota.json left a rebase stuck mid-way, all three attempts
+  # failed, and the loop fell through silently. Because $RC (the STAGE's own
+  # exit code) is what decided the job's final exit status, a stage that had
+  # itself succeeded would have gone green with its commit never pushed -
+  # work silently lost the moment the runner was torn down. It also left the
+  # working tree mid-rebase for whatever step runs next in the same job: the
+  # captions step hitting this is what made the LOCALIZE step fail with
+  # "Please specify which branch you want to rebase against" a few seconds
+  # later, on an unrelated piece of work.
+  PUSHED=0
   for i in 1 2 3; do
-    git pull --rebase -q && git push -q && { echo "pushed"; break; }
+    if git pull --rebase -q && git push -q; then
+      echo "pushed"
+      PUSHED=1
+      break
+    fi
     echo "push attempt $i failed; retrying"
+    # A failed `git pull --rebase` can leave a rebase in progress (a real
+    # conflict the merge driver above did not or could not resolve). The NEXT
+    # `git pull --rebase` in this same loop then fails for a completely
+    # different, confusing reason ("Please specify which branch you want to
+    # rebase against") because git refuses to start a new rebase on top of an
+    # unfinished one - so every attempt after the first was guaranteed to
+    # fail regardless of whether the conflict itself was resolvable. Clear it
+    # before retrying.
+    if [ -d .git/rebase-merge ] || [ -d .git/rebase-apply ]; then
+      CONFLICTED="$(git diff --name-only --diff-filter=U 2>/dev/null | tr '\n' ' ')"
+      echo "aborting an unresolved rebase before retrying (conflicted: ${CONFLICTED:-unknown})"
+      git rebase --abort 2>/dev/null || git merge --abort 2>/dev/null || true
+    fi
     sleep 5
   done
+
+  if [ "$PUSHED" -ne 1 ]; then
+    # Leave the working tree clean for whatever runs next in this job, and
+    # fail loudly and specifically - "push failed" alone is what a human
+    # learns to ignore; naming the file is what lets them act on it without
+    # reading a log.
+    if [ -d .git/rebase-merge ] || [ -d .git/rebase-apply ]; then
+      git rebase --abort 2>/dev/null || true
+    fi
+    echo "FAIL: could not push loop($WEEK): $STAGE after 3 attempts." >&2
+    echo "  The commit exists locally on this runner and nowhere else - it" >&2
+    echo "  will be lost when the job ends." >&2
+    if [ "$RC" -eq 0 ]; then
+      # The silent case: the stage itself succeeded, so nothing else would
+      # have failed this job and the lost commit would never have been seen.
+      # $STOP_CODE/$DISPOSITION describe the STAGE's own outcome (rc=0), which
+      # no longer matches reality once the push failed - do not let the issue
+      # below claim a clean run.
+      echo "  The stage itself (rc=0) would otherwise have gone green with" >&2
+      echo "  this work never reaching origin. Failing the job on that" >&2
+      echo "  basis alone." >&2
+      RC=1
+      DISPOSITION=""
+    fi
+  fi
 fi
 
 # ---------------------------------------------------------------- surface

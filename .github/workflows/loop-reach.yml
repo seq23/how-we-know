@@ -82,6 +82,18 @@ jobs:
       - name: Install loop dependencies
         run: pip install -r requirements-loop.txt
 
+      # CONFIRMED 2026-09-03: this lane failed with CAPTIONS_SCOPE_MISSING
+      # because YT_OAUTH_REFRESH_TOKEN was minted a day before force-ssl was
+      # added to auth/tokens.py:T.SCOPES, and nothing checked the CI
+      # credential against the current scope list before spending quota on
+      # it. This runs before any lane below spends anything, and fails fast
+      # and by name if it recurs. See auth/check_ci_scopes.py.
+      - name: Verify the CI YouTube credential's scopes
+        env:
+          YT_OAUTH_CLIENT_JSON: ${{ secrets.YT_OAUTH_CLIENT_JSON }}
+          YT_OAUTH_REFRESH_TOKEN: ${{ secrets.YT_OAUTH_REFRESH_TOKEN }}
+        run: python3 auth/check_ci_scopes.py
+
       - name: Upload the English caption tracks
         if: ${{ github.event.inputs.lane != 'localize' }}
         env:
