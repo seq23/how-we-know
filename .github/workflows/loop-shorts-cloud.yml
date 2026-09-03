@@ -22,13 +22,32 @@ name: loop · daily 18:00 CT · publish a Short from R2
 # go live. The slots themselves are computed in local time and do not drift when
 # the clocks change, even though this cron does.
 on:
-  # ARMED. The schedule fires; loop/arming.py decides whether this run
-  # may act. Until the shorts-cloud lane has completed one real end-to-end run
-  # it takes the NAMED STOP LANE_NOT_ARMED_SHORTS_CLOUD,
-  # which is visible in the issue tracker - unlike the commented-out cron
-  # this replaces, which could never be satisfied because the lane it
-  # gated could never run. A workflow_dispatch run always passes through
-  # and is what arms it.
+  # ARMED. The schedule fires; loop/arming.py now decides on every run
+  # whether a SCHEDULED trigger may act (a workflow_dispatch always may) —
+  # see loop/state/lane_evidence.json. Before loop/arming.py existed, this
+  # lane was armed by hand, by uncommenting the cron below once real evidence
+  # existed. That evidence is preserved here rather than deleted, and the
+  # merge that introduced loop/arming.py seeded lane_evidence.json from it
+  # directly (see that commit) so this real, already-proven success is not
+  # forgotten and re-demanded from a live channel a second time.
+  #
+  # THE RUN THAT FIRST ARMED IT. 2026-09-03, dispatched `-f limit=1`: the lane
+  # pulled the verified Short for 10-what-is-the-deepest-part-of-the-ocean
+  # from r2://how-we-know-renders and uploaded it as video HZhm2dXaR9c.
+  # Confirmed afterwards against videos.list on @howweknowdeep —
+  # privacyStatus=private, publishAt=2026-09-04T00:00:00Z,
+  # uploadStatus=processed. Private with a future slot is exactly the
+  # contract this lane promises, so the credential path was proven and not
+  # merely un-crashed.
+  #
+  # If the credentials or the upload path ever change enough to doubt that
+  # proof, re-prove it the same way:
+  #     gh workflow run loop-shorts-cloud.yml -f dry_run=true
+  #     gh workflow run loop-shorts-cloud.yml -f limit=1
+  # then check the new id is private with a publishAt before trusting the
+  # cron — a fresh dispatch always passes the gate regardless of what
+  # lane_evidence.json says, and a fresh loop/arming.py record_success() call
+  # from it updates lane_evidence.json to the new proof.
   schedule:
     - cron: '0 23 * * *'
   workflow_dispatch:
