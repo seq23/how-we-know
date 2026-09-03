@@ -107,6 +107,12 @@ def run(body: str, env_extra: dict, tmp: Path) -> subprocess.CompletedProcess:
     env.pop("LOOP_DRY_RUN", None)
     env["TEST_TMP"] = str(tmp)
     env["LOOP_NO_DOTENV"] = "1"
+    # loop/arming.py gates a SCHEDULED run of an unarmed lane behind a named
+    # stop. This harness is testing the lane's own upload/quota/ledger logic,
+    # which is exactly what a workflow_dispatch run (the one that proves a
+    # lane and arms it) is for — so every scenario here simulates one, the
+    # same as a human running `gh workflow run ... ` once by hand.
+    env["GITHUB_EVENT_NAME"] = "workflow_dispatch"
     env.update(env_extra)
     with tempfile.NamedTemporaryFile("w", suffix=".py", delete=False,
                                      dir=tmp) as fh:
@@ -480,6 +486,10 @@ def shorts_run(body: str, env_extra: dict, tmp: Path):
     env.pop("LOOP_DRY_RUN", None)
     env["TEST_TMP"] = str(tmp)
     env["LOOP_NO_DOTENV"] = "1"
+    # See the matching comment in run() above — this harness exercises the
+    # lane's own logic, which needs a simulated workflow_dispatch to get past
+    # loop/arming.py's gate on an unarmed lane.
+    env["GITHUB_EVENT_NAME"] = "workflow_dispatch"
     env.update(env_extra)
     with tempfile.NamedTemporaryFile("w", suffix=".py", delete=False,
                                      dir=tmp) as fh:
