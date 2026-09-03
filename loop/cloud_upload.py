@@ -143,7 +143,11 @@ def run(limit: int = 4, dry_run: bool = False) -> int:
                           f"no quota left today for a whole video "
                           f"({quota.PER_VIDEO} units). Already spent today by: "
                           f"{others}. {quota.report()}",
-                          detail={"pending": [s for s, _, _ in pending]},
+                          detail={"pending": [s for s, _, _ in pending],
+                                  # WHEN it resolves, not just that it does.
+                                  # loop/stop_policy.json will not treat a
+                                  # quota stop as self-resolving without this.
+                                  "resets_at": quota.next_reset()},
                           unblock="Usually nothing to do — the allowance "
                                   "resets at midnight Pacific and this lane "
                                   "runs daily, so tomorrow's run picks up "
