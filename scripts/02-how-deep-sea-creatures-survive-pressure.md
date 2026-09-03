@@ -1,6 +1,7 @@
 # How deep sea creatures survive the pressure?
 
-**Status:** HUMANIZED EDITORIAL PASS COMPLETE — OWNER CONFIRMATION AND MASTER WATCH REQUIRED  
+**Status:** HUMANIZED EDITORIAL PASS COMPLETE — OWNER CONFIRMATION AND MASTER WATCH REQUIRED    
+**Domain:** deep-sea-ocean-science  
 **Article:** /questions/how-deep-sea-creatures-survive-pressure  
 **Word count:** 1153  
 **Estimated narration:** 7m 57s at 145 WPM
@@ -24,7 +25,7 @@ How deep sea creatures survive the pressure?
 ### The right way to see it
 
 {{contrast: A DEEP-SEA ANIMAL | is=Water-rich, with few large gas spaces | is=Internal conditions close to the surrounding water | not=An air-filled object being squeezed from the outside}}
-The mistake is imagining a deep-sea animal as an air-filled object being squeezed from the outside. Most permanent deep residents are water-rich, have few large gas spaces, and maintain internal conditions close to the surrounding water. The rest of this video follows that question through the actual environmental constraints described by NOAA, MBARI, Smithsonian, and Woods Hole sources in the companion article.
+The mistake is imagining a deep-sea animal as an air-filled object being squeezed from the outside. Most permanent deep residents are water-rich, have few large gas spaces, and maintain internal conditions close to the surrounding water.
 
 ### Producer POV
 
@@ -96,7 +97,7 @@ The final answer should land in three parts. Mechanically, reduce vulnerable gas
 ### What to notice in the edit
 
 {{pressure: 2000}}
-The edit should alternate between the pressure scale and examples of body design: a human lung, a gas bladder, a water-rich gelatinous animal, and a rigid submersible pressure sphere. That contrast keeps the explanation physical. It also prevents the common mistake of using a dramatic implosion animation as if every deep animal were an air-filled machine.
+Watch for the alternation between the pressure scale and the body designs it is testing: a human lung, a gas bladder, a water-rich gelatinous animal, a rigid submersible pressure sphere. Keeping that contrast physical is what stops you from walking away thinking every deep animal is an air-filled machine waiting to implode, which it is not.
 
 ### Evidence limit
 

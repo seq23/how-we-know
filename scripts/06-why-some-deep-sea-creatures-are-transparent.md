@@ -1,6 +1,7 @@
 # Why some deep sea creatures are transparent?
 
-**Status:** HUMANIZED EDITORIAL PASS COMPLETE — OWNER CONFIRMATION AND MASTER WATCH REQUIRED  
+**Status:** HUMANIZED EDITORIAL PASS COMPLETE — OWNER CONFIRMATION AND MASTER WATCH REQUIRED    
+**Domain:** deep-sea-ocean-science  
 **Article:** /questions/why-some-deep-sea-creatures-are-transparent  
 **Word count:** 1173  
 **Estimated narration:** 8m 05s at 145 WPM
@@ -24,7 +25,7 @@ Why some deep sea creatures are transparent?
 ### The right way to see it
 
 {{contrast: TRANSPARENCY | is=Reducing the visible outline enough to improve survival | not=Magic invisibility | not=A way to hide eyes, digestive organs, pigments and reflective tissues}}
-Transparency is not magic invisibility. Eyes, digestive organs, pigments, and reflective tissues remain difficult to hide. The adaptation works by reducing the visible outline enough to improve survival. The rest of this video follows that question through the actual environmental constraints described by NOAA, MBARI, Smithsonian, and Woods Hole sources in the companion article.
+Transparency is not magic invisibility. Eyes, digestive organs, pigments, and reflective tissues remain difficult to hide. The adaptation works by reducing the visible outline enough to improve survival.
 
 ### Producer POV
 
@@ -107,12 +108,12 @@ Place a transparent animal over three backgrounds: open blue water, black water 
 ### Final editorial note
 
 {{text}}
-The difference between our sensor and the predator's eye belongs in the explanation, not in a footnote. The difference between our sensor and the predator's eye belongs in the explanation, not in a footnote.
+The difference between the camera's sensor and a predator's actual eye is part of the explanation you're getting, not a footnote to skip. The difference between the camera's sensor and a predator's actual eye is part of the explanation you're getting, not a footnote to skip.
 
 ### What to notice in the edit
 
 {{anatomy: BEGIN WITH A SILHOUETTE | transparent tissue@0.26,0.28 | structures that scatter light@0.46,0.58}}
-Use an anatomy case study rather than a general list. Begin with a silhouette, reveal the transparent tissue, then isolate the structures that still scatter or absorb light. For the barreleye, rely on an original diagram unless a licensed clip is admitted; MBARI's reporting supports the facts, but the site's copyright notice means its images and footage are not automatically commercial-use assets.
+Watch for one anatomy case study instead of a general list: a silhouette first, then the transparent tissue, then the structures that still scatter or absorb light. If the barreleye appears as an original diagram rather than an MBARI photo, that's deliberate — MBARI's reporting supports the facts here, but its images are not automatically cleared for a video that runs ads.
 
 ### Evidence limit
 

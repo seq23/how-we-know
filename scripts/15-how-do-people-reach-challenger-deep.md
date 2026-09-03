@@ -1,6 +1,7 @@
 # How do people reach Challenger Deep?
 
-**Status:** HUMANIZED EDITORIAL PASS COMPLETE — OWNER CONFIRMATION AND MASTER WATCH REQUIRED  
+**Status:** HUMANIZED EDITORIAL PASS COMPLETE — OWNER CONFIRMATION AND MASTER WATCH REQUIRED    
+**Domain:** deep-sea-ocean-science  
 **Article:** /questions/how-do-people-reach-challenger-deep  
 **Word count:** 1151  
 **Estimated narration:** 7m 56s at 145 WPM
@@ -104,7 +105,7 @@ The protected pressure sphere and the return journey are dramatic enough. We do 
 ### What to notice in the edit
 
 {{descent: 10935 | SURFACE TO TRENCH FLOOR}}
-Use an engineering cutaway rather than a celebrity count. Start with the pressure sphere, expand outward to the vehicle, then show the descent timeline from surface to trench floor. The viewer should understand why the cabin is small, why buoyancy material matters, and why a return trip depends on systems that cannot be casually repaired at depth.
+Watch for an engineering cutaway instead of a list of who's been down there — the pressure sphere first, then outward to the vehicle, then the descent timeline from surface to trench floor. By the end you should understand why the cabin is small, why the buoyancy material matters, and why a return trip depends on systems nobody can casually repair at depth.
 
 ### Evidence limit
 

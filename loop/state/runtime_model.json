@@ -1,0 +1,118 @@
+{
+  "episodes": 17,
+  "mean_runtime_s": 487.1,
+  "measured_at": "2026-09-03T13:14:38+00:00",
+  "measured_seconds_total": 8280.67,
+  "narration_words_total": 19953,
+  "note": "Derived, never hardcoded. wpm = spoken narration words / measured render minutes across every episode that has both. script_ratio is whole-script words : narration words, which is what a whole-script budget has to be divided by before it means anything about runtime.",
+  "per_episode": [
+    {
+      "duration_s": 463.546,
+      "narration_words": 1149,
+      "slug": "01-why-deep-sea-creatures-look-so-weird",
+      "wpm": 148.72
+    },
+    {
+      "duration_s": 452.658,
+      "narration_words": 1150,
+      "slug": "02-how-deep-sea-creatures-survive-pressure",
+      "wpm": 152.43
+    },
+    {
+      "duration_s": 493.189,
+      "narration_words": 1198,
+      "slug": "03-why-deep-sea-creatures-are-surfacing",
+      "wpm": 145.75
+    },
+    {
+      "duration_s": 455.666,
+      "narration_words": 1171,
+      "slug": "04-why-deep-sea-creatures-are-so-scary",
+      "wpm": 154.19
+    },
+    {
+      "duration_s": 478.688,
+      "narration_words": 1181,
+      "slug": "05-why-many-deep-sea-creatures-are-red",
+      "wpm": 148.03
+    },
+    {
+      "duration_s": 488.637,
+      "narration_words": 1172,
+      "slug": "06-why-some-deep-sea-creatures-are-transparent",
+      "wpm": 143.91
+    },
+    {
+      "duration_s": 534.944,
+      "narration_words": 1293,
+      "slug": "07-why-deep-sea-creatures-get-creepier-deeper",
+      "wpm": 145.02
+    },
+    {
+      "duration_s": 525.765,
+      "narration_words": 1170,
+      "slug": "08-what-creatures-live-in-the-deep-sea",
+      "wpm": 133.52
+    },
+    {
+      "duration_s": 507.33,
+      "narration_words": 1253,
+      "slug": "09-what-is-the-scariest-deep-sea-creature",
+      "wpm": 148.19
+    },
+    {
+      "duration_s": 485.362,
+      "narration_words": 1160,
+      "slug": "10-what-is-the-deepest-part-of-the-ocean",
+      "wpm": 143.4
+    },
+    {
+      "duration_s": 485.229,
+      "narration_words": 1152,
+      "slug": "13-how-does-bioluminescence-work-in-the-deep-sea",
+      "wpm": 142.45
+    },
+    {
+      "duration_s": 472.28,
+      "narration_words": 1152,
+      "slug": "14-how-big-is-a-colossal-squid",
+      "wpm": 146.35
+    },
+    {
+      "duration_s": 480.858,
+      "narration_words": 1143,
+      "slug": "15-how-do-people-reach-challenger-deep",
+      "wpm": 142.62
+    },
+    {
+      "duration_s": 476.389,
+      "narration_words": 1165,
+      "slug": "16-what-happens-when-a-whale-dies-in-the-deep-ocean",
+      "wpm": 146.73
+    },
+    {
+      "duration_s": 498.688,
+      "narration_words": 1177,
+      "slug": "18-why-does-black-smoker-water-not-boil",
+      "wpm": 141.61
+    },
+    {
+      "duration_s": 496.213,
+      "narration_words": 1131,
+      "slug": "19-what-is-the-deepest-fish-ever-recorded",
+      "wpm": 136.76
+    },
+    {
+      "duration_s": 485.232,
+      "narration_words": 1136,
+      "slug": "20-what-is-the-midnight-zone",
+      "wpm": 140.47
+    }
+  ],
+  "script_ratio": 1.806,
+  "wpm": 144.58,
+  "wpm_range": [
+    133.52,
+    154.19
+  ]
+}

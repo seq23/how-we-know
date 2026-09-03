@@ -1,6 +1,7 @@
 # What is the deepest part of the ocean?
 
-**Status:** HUMANIZED EDITORIAL PASS COMPLETE — OWNER CONFIRMATION AND MASTER WATCH REQUIRED  
+**Status:** HUMANIZED EDITORIAL PASS COMPLETE — OWNER CONFIRMATION AND MASTER WATCH REQUIRED    
+**Domain:** deep-sea-ocean-science  
 **Article:** /questions/what-is-the-deepest-part-of-the-ocean  
 **Word count:** 1169  
 **Estimated narration:** 8m 04s at 145 WPM
@@ -24,7 +25,7 @@ What is the deepest part of the ocean?
 ### The right way to see it
 
 {{chain: WHAT THE DEPTH ACTUALLY IS | An instrument | A survey path | Corrections | Uncertainty | >Not one eternal number carved into the seafloor}}
-The exact depth is not one eternal number carved into the seafloor. It is a measurement with an instrument, a survey path, corrections, and uncertainty. The rest of this video follows that question through the actual environmental constraints described by NOAA, MBARI, Smithsonian, and Woods Hole sources in the companion article.
+The exact depth is not one eternal number carved into the seafloor. It is a measurement with an instrument, a survey path, corrections, and uncertainty.
 
 ### Producer POV
 
@@ -107,12 +108,12 @@ That is the final rule.
 ### Final editorial note
 
 {{text}}
-It is also the safer title language for future updates. It is also the safer title language for future updates.
+That phrasing also holds up if a future measurement revises the number. That phrasing also holds up if a future measurement revises the number.
 
 ### What to notice in the edit
 
 {{ladder: Challenger Deep=10935 | Average ocean depth=3682}}
-Build the episode as a measurement detective story. Start with the famous number, then peel back sonar, pressure sensors, gravity, and seafloor shape. Compare the average ocean depth of 3,682 meters with Challenger Deep, but avoid the usual 'Everest fits' line unless the mountain and trench reference levels are explained carefully.
+This runs like a measurement detective story: the famous number first, then sonar, pressure sensors, gravity, and seafloor shape peeled back one at a time. Watch for the average ocean depth of 3,682 meters set beside Challenger Deep — and if you hear the usual 'Everest would fit inside it' line, it only counts once the mountain's and trench's reference levels have actually been explained.
 
 ### Evidence limit
 

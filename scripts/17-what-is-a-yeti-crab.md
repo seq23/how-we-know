@@ -1,6 +1,7 @@
 # What is a yeti crab?
 
-**Status:** HUMANIZED EDITORIAL PASS COMPLETE — OWNER CONFIRMATION AND MASTER WATCH REQUIRED  
+**Status:** HUMANIZED EDITORIAL PASS COMPLETE — OWNER CONFIRMATION AND MASTER WATCH REQUIRED    
+**Domain:** deep-sea-ocean-science  
 **Article:** /questions/what-is-a-yeti-crab  
 **Word count:** 1166  
 **Estimated narration:** 8m 02s at 145 WPM
@@ -65,7 +66,7 @@ Not every Kiwa species has been studied with the same methods. Antarctic species
 Other species have long setose claws. Temperature creates a narrow usable zone near vents: too close can be lethal, too far may reduce chemical supply. Population density and body orientation can therefore become part of the farming system. A strong video should keep the specific claim attached to Kiwa puravida when discussing the detailed arm-waving evidence, then explain the broader family carefully.
 
 {{define: The discovery date | A record of human knowledge | Not the crab's origin, because deep habitats existed long before researchers saw the animals}}
-The family is young in the scientific record, not newly evolved. Deep habitats existed long before researchers saw the animals. The discovery date records human knowledge, not the crab's origin. That distinction is a recurring theme in deep-sea work. We discover a lineage and immediately write as though it appeared. The correct story is that a hidden ecosystem became observable. Next, the channel moves to black smokers, where water can exceed 340 degrees Celsius without boiling into steam.
+The family is young in the scientific record, not newly evolved. Deep habitats existed long before researchers saw the animals. The discovery date records human knowledge, not the crab's origin. That distinction is a recurring theme in deep-sea work. We discover a lineage and immediately write as though it appeared. The correct story is that a hidden ecosystem became observable. From here, we move to black smokers, where water can exceed 340 degrees Celsius without boiling into steam.
 
 ### From strange dance to tested diet
 
@@ -108,13 +109,13 @@ Show the waving, the bacterial growth, and the feeding motion as separate eviden
 ### Final editorial note
 
 {{ambient}}
-That sequence keeps the metaphor attached to evidence. That sequence keeps the metaphor attached to evidence.
+Notice that the metaphor never drifts away from the evidence behind it. Notice that the metaphor never drifts away from the evidence behind it.
 
 ### What to notice in the edit
 
 {{steps: A RESEARCH-PAPER DETECTIVE STORY | Behavior first | Then anatomy | Then chemical evidence | >Label each evidence layer}}
 {{text}}
-Structure the episode like a research-paper detective story: behavior first, then anatomy, then chemical evidence. Label each evidence layer. An original animation can show boundary-layer flow over the claws and the harvesting motion. The PLOS paper is CC BY and its figures may be reusable with attribution, but any figure chosen still needs an asset record and exact credit.
+Watch this run like a research-paper detective story: behavior first, then anatomy, then chemical evidence, each layer labeled as it arrives. An original animation shows the boundary-layer flow over the claws and the harvesting motion. Even where the PLOS paper it draws on is CC BY, any figure taken from it still gets its own credit and record — attribution is not optional just because the license is generous.
 
 ### Evidence limit
 
