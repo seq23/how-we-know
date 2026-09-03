@@ -1,0 +1,1538 @@
+{
+  "_status": "PRODUCTION",
+  "_authority": "AUTHORITATIVE publish source for materials-and-manufacturing, sibling to research/publish_order.json for deep sea. Same gate, same thresholds, imported not reimplemented.",
+  "_schema_version": "1.1.0",
+  "generated_at": "2026-09-03T18:17:53.295020+00:00",
+  "generator": "research/publish_order_materials.py",
+  "domain": "materials-and-manufacturing",
+  "rule": "Same rule as deep sea: rank candidates by (search demand / competition), implemented as a hard GATE on both axes (publish_order.gate, imported unchanged) then a geometric combined score among survivors.",
+  "gate": {
+    "principle": "High demand AND low competition. Failing either axis kills the topic; it is not ranked low.",
+    "demand_floor": 0.16,
+    "demand_firm_below": 0.1,
+    "saturation_gap_ceiling": 0.3,
+    "saturation_firm_at_or_below": 0.1,
+    "thresholds_source": "Unchanged from research/publish_order.py, imported not recomputed -- the 20-episode deep-sea distribution that set them is not re-derived for a second domain; the same bar applies to both.",
+    "excluded": 6,
+    "passed": 18
+  },
+  "derived_from": {
+    "competition": {
+      "file": "competition_materials.json",
+      "source": "YouTube Data API v3 (search.list, videos.list, channels.list)",
+      "measured_at": "2026-09-03T18:16:38.741866+00:00",
+      "quota_units_spent": 2448
+    },
+    "demand": {
+      "endpoint": "https://suggestqueries.google.com/complete/search",
+      "surface": "youtube_autocomplete",
+      "corpus": "research/mined_queries_materials.json"
+    },
+    "candidates": "24 real autocomplete-confirmed materials questions, hand-selected for topical spread across the domain (not hand-picked for their score) from mined_queries_materials.json and research/broad_mined.json's materials-and-manufacturing.top_questions."
+  },
+  "caveats": [
+    "demand_index is built from autocomplete presence and the materials-specific mined-corpus breadth. It is a demand SHAPE signal, not search volume.",
+    "opportunity_score and title_gap are measured from the live top 20 on a single day (2026-09-03), US/English. Rankings move.",
+    "No Trends series was pulled for these candidates; trend_multiplier is neutral (1.0) throughout, same as any deep-sea episode with an unusable Trends series."
+  ],
+  "episodes_examined": 24,
+  "queue_length": 18,
+  "killed": [
+    {
+      "slug": "what-is-graphene",
+      "domain": "materials-and-manufacturing",
+      "query": "what is graphene",
+      "verdict": "killed",
+      "failed_axes": [
+        "saturation"
+      ],
+      "reason": "title gap 0.05 is at or below the 0.3 saturation ceiling: 19 of the top 20 titles already answer this question squarely.",
+      "measurement": {
+        "demand_index": 0.707,
+        "demand_floor": 0.16,
+        "title_gap": 0.05,
+        "saturation_ceiling": 0.3,
+        "autocomplete_completions": 10,
+        "corpus_breadth": 247
+      },
+      "what_would_settle_it": null,
+      "demand_index": 0.707,
+      "opportunity_score": 0.257,
+      "title_gap": 0.05
+    },
+    {
+      "slug": "how-does-metal-fatigue-cause-failure",
+      "domain": "materials-and-manufacturing",
+      "query": "how does metal fatigue cause failure",
+      "verdict": "killed",
+      "failed_axes": [
+        "demand"
+      ],
+      "reason": "demand_index 0.030 is below the 0.16 floor (audience-led: top-20 median views and query-family breadth, not autocomplete completions).",
+      "measurement": {
+        "demand_index": 0.03,
+        "demand_floor": 0.16,
+        "title_gap": 0.95,
+        "saturation_ceiling": 0.3,
+        "autocomplete_completions": 4,
+        "corpus_breadth": 0
+      },
+      "what_would_settle_it": null,
+      "demand_index": 0.03,
+      "opportunity_score": 0.776,
+      "title_gap": 0.95
+    },
+    {
+      "slug": "what-is-a-shape-memory-alloy",
+      "domain": "materials-and-manufacturing",
+      "query": "what is a shape memory alloy",
+      "verdict": "killed_provisional",
+      "failed_axes": [
+        "saturation"
+      ],
+      "reason": "title gap 0.15 is at or below the 0.3 saturation ceiling: 17 of the top 20 titles already answer this question squarely.",
+      "measurement": {
+        "demand_index": 0.5123,
+        "demand_floor": 0.16,
+        "title_gap": 0.15,
+        "saturation_ceiling": 0.3,
+        "autocomplete_completions": 2,
+        "corpus_breadth": 63
+      },
+      "what_would_settle_it": "Re-measure with a larger result set and on a different day; 20 results at one moment is thin evidence to end a topic on.",
+      "demand_index": 0.5123,
+      "opportunity_score": 0.352,
+      "title_gap": 0.15
+    },
+    {
+      "slug": "why-is-glass-transparent",
+      "domain": "materials-and-manufacturing",
+      "query": "why is glass transparent",
+      "verdict": "killed_provisional",
+      "failed_axes": [
+        "saturation"
+      ],
+      "reason": "title gap 0.25 is at or below the 0.3 saturation ceiling: 15 of the top 20 titles already answer this question squarely.",
+      "measurement": {
+        "demand_index": 0.3432,
+        "demand_floor": 0.16,
+        "title_gap": 0.25,
+        "saturation_ceiling": 0.3,
+        "autocomplete_completions": 3,
+        "corpus_breadth": 4
+      },
+      "what_would_settle_it": "Re-measure with a larger result set and on a different day; 20 results at one moment is thin evidence to end a topic on.",
+      "demand_index": 0.3432,
+      "opportunity_score": 0.37,
+      "title_gap": 0.25
+    },
+    {
+      "slug": "what-is-a-superalloy",
+      "domain": "materials-and-manufacturing",
+      "query": "what is a superalloy",
+      "verdict": "killed_provisional",
+      "failed_axes": [
+        "saturation"
+      ],
+      "reason": "title gap 0.30 is at or below the 0.3 saturation ceiling: 14 of the top 20 titles already answer this question squarely.",
+      "measurement": {
+        "demand_index": 0.3154,
+        "demand_floor": 0.16,
+        "title_gap": 0.3,
+        "saturation_ceiling": 0.3,
+        "autocomplete_completions": 2,
+        "corpus_breadth": 57
+      },
+      "what_would_settle_it": "Re-measure with a larger result set and on a different day; 20 results at one moment is thin evidence to end a topic on.",
+      "demand_index": 0.3154,
+      "opportunity_score": 0.435,
+      "title_gap": 0.3
+    },
+    {
+      "slug": "why-does-stainless-steel-not-rust",
+      "domain": "materials-and-manufacturing",
+      "query": "why does stainless steel not rust",
+      "verdict": "killed_provisional",
+      "failed_axes": [
+        "demand",
+        "saturation"
+      ],
+      "reason": "demand_index 0.139 is below the 0.16 floor (audience-led: top-20 median views and query-family breadth, not autocomplete completions); title gap 0.20 is at or below the 0.3 saturation ceiling: 16 of the top 20 titles already answer this question squarely.",
+      "measurement": {
+        "demand_index": 0.1391,
+        "demand_floor": 0.16,
+        "title_gap": 0.2,
+        "saturation_ceiling": 0.3,
+        "autocomplete_completions": 2,
+        "corpus_breadth": 1
+      },
+      "what_would_settle_it": "Re-measure the audience signal on another day; a demand kill this close to the floor should not stand on its own. Re-measure with a larger result set and on a different day; 20 results at one moment is thin evidence to end a topic on.",
+      "demand_index": 0.1391,
+      "opportunity_score": 0.364,
+      "title_gap": 0.2
+    }
+  ],
+  "unmeasured": [],
+  "queue": [
+    {
+      "slug": "how-does-tempered-glass-shatter",
+      "domain": "materials-and-manufacturing",
+      "title": "How does tempered glass shatter?",
+      "query": "how does tempered glass shatter",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.585 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.5846,
+        "autocomplete_completions": 4,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "shatter",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "how does tempered glass shatter",
+          "how does tempered glass break",
+          "how does toughened glass break",
+          "why does tempered glass explode"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-03T18:17:38.898875+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.712,
+        "title_gap": 1.0,
+        "title_coverage_mean": 0.633,
+        "strong_match_count": 0,
+        "results_examined": 20,
+        "median_views": 1714237.5,
+        "p90_views": 39788920,
+        "median_subscribers": 256000.0,
+        "channels_under_100k_subs": 8,
+        "median_age_days": 1047,
+        "published_last_365d": 0,
+        "interpretation": "nobody has made the definitive video on this query",
+        "components": {
+          "title_gap": 1.0,
+          "incumbent_subs": 0.227,
+          "view_ceiling": 0.109,
+          "staleness": 1.0
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-03T18:16:13.661349+00:00"
+        }
+      },
+      "trend": {
+        "status": "not_measured"
+      },
+      "combined_score": 0.6452,
+      "trend_multiplier": 1.0,
+      "trend_note": "no Trends data; neutral",
+      "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
+      "reason": "CONTESTED DESPITE THE GAP: 100% lexical title gap, but median 1,714,238 views and 256,000 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated.",
+      "queue_position": 1,
+      "source": "COMBINED_SCORE",
+      "pinned": false,
+      "overridden_gate_verdict": null,
+      "gate_overridden": false
+    },
+    {
+      "slug": "why-does-old-iron-not-rust",
+      "domain": "materials-and-manufacturing",
+      "title": "Why does old iron not rust?",
+      "query": "why does old iron not rust",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.552 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.5519,
+        "autocomplete_completions": 4,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 1,
+        "key_term": "old",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 2,
+        "sample_completions": [
+          "why does old iron not rust",
+          "how to remove rust from old iron",
+          "how iron get rusted",
+          "how to fix a rusty cast iron"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-03T18:17:51.495681+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.714,
+        "title_gap": 1.0,
+        "title_coverage_mean": 0.25,
+        "strong_match_count": 0,
+        "results_examined": 20,
+        "median_views": 1159280.0,
+        "p90_views": 9281004,
+        "median_subscribers": 155500.0,
+        "channels_under_100k_subs": 8,
+        "median_age_days": 1139,
+        "published_last_365d": 1,
+        "interpretation": "nobody has made the definitive video on this query",
+        "components": {
+          "title_gap": 1.0,
+          "incumbent_subs": 0.258,
+          "view_ceiling": 0.134,
+          "staleness": 0.95
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-03T18:16:35.507447+00:00"
+        }
+      },
+      "trend": {
+        "status": "not_measured"
+      },
+      "combined_score": 0.6277,
+      "trend_multiplier": 1.0,
+      "trend_note": "no Trends data; neutral",
+      "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
+      "reason": "CONTESTED DESPITE THE GAP: 100% lexical title gap, but median 1,159,280 views and 155,500 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated.",
+      "queue_position": 2,
+      "source": "COMBINED_SCORE",
+      "pinned": false,
+      "overridden_gate_verdict": null,
+      "gate_overridden": false
+    },
+    {
+      "slug": "how-strong-is-titanium",
+      "domain": "materials-and-manufacturing",
+      "title": "How strong is titanium?",
+      "query": "how strong is titanium",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.504 clears the 0.16 floor and title gap 0.90 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.5039,
+        "autocomplete_completions": 2,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "strong",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 1,
+        "sample_completions": [
+          "how strong is titanium",
+          "how strong is titanium iphone"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-03T18:17:37.119988+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.657,
+        "title_gap": 0.9,
+        "title_coverage_mean": 0.55,
+        "strong_match_count": 2,
+        "results_examined": 20,
+        "median_views": 805884.5,
+        "p90_views": 16137376,
+        "median_subscribers": 61350.0,
+        "channels_under_100k_subs": 11,
+        "median_age_days": 498,
+        "published_last_365d": 4,
+        "interpretation": "2 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.9,
+          "incumbent_subs": 0.316,
+          "view_ceiling": 0.156,
+          "staleness": 0.8
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-03T18:16:10.368434+00:00"
+        }
+      },
+      "trend": {
+        "status": "not_measured"
+      },
+      "combined_score": 0.5754,
+      "trend_multiplier": 1.0,
+      "trend_note": "no Trends data; neutral",
+      "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
+      "reason": "Open field with real demand: 90% of top-20 titles do NOT answer the question, and demand index 0.50. Nobody has made this one.",
+      "queue_position": 3,
+      "source": "COMBINED_SCORE",
+      "pinned": false,
+      "overridden_gate_verdict": null,
+      "gate_overridden": false
+    },
+    {
+      "slug": "how-is-damascus-steel-made",
+      "domain": "materials-and-manufacturing",
+      "title": "How is damascus steel made?",
+      "query": "how is damascus steel made",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.506 clears the 0.16 floor and title gap 0.90 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.5059,
+        "autocomplete_completions": 2,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 3,
+        "key_term": "made",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 31,
+        "sample_completions": [
+          "how is damascus steel made",
+          "how are damascus knives made"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-03T18:17:40.701601+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.651,
+        "title_gap": 0.9,
+        "title_coverage_mean": 0.617,
+        "strong_match_count": 2,
+        "results_examined": 20,
+        "median_views": 327114.0,
+        "p90_views": 4410818,
+        "median_subscribers": 361500.0,
+        "channels_under_100k_subs": 7,
+        "median_age_days": 838,
+        "published_last_365d": 3,
+        "interpretation": "2 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.9,
+          "incumbent_subs": 0.206,
+          "view_ceiling": 0.212,
+          "staleness": 0.85
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-03T18:16:16.672816+00:00"
+        }
+      },
+      "trend": {
+        "status": "not_measured"
+      },
+      "combined_score": 0.5739,
+      "trend_multiplier": 1.0,
+      "trend_note": "no Trends data; neutral",
+      "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
+      "reason": "Open field with real demand: 90% of top-20 titles do NOT answer the question, and demand index 0.51. Nobody has made this one.",
+      "queue_position": 4,
+      "source": "COMBINED_SCORE",
+      "pinned": false,
+      "overridden_gate_verdict": null,
+      "gate_overridden": false
+    },
+    {
+      "slug": "how-is-a-silicon-wafer-made",
+      "domain": "materials-and-manufacturing",
+      "title": "How is a silicon wafer made?",
+      "query": "how is a silicon wafer made",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.510 clears the 0.16 floor and title gap 0.85 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.5097,
+        "autocomplete_completions": 1,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 2,
+        "key_term": "made",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 31,
+        "sample_completions": [
+          "how is a silicon wafer made"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-03T18:17:47.918815+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.633,
+        "title_gap": 0.85,
+        "title_coverage_mean": 0.45,
+        "strong_match_count": 3,
+        "results_examined": 20,
+        "median_views": 433605.0,
+        "p90_views": 6998573,
+        "median_subscribers": 155500.0,
+        "channels_under_100k_subs": 9,
+        "median_age_days": 980,
+        "published_last_365d": 3,
+        "interpretation": "3 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.85,
+          "incumbent_subs": 0.258,
+          "view_ceiling": 0.195,
+          "staleness": 0.85
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-03T18:16:28.928892+00:00"
+        }
+      },
+      "trend": {
+        "status": "not_measured"
+      },
+      "combined_score": 0.568,
+      "trend_multiplier": 1.0,
+      "trend_note": "no Trends data; neutral",
+      "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
+      "reason": "Middle of the field: title gap 0.85, demand 0.51, opportunity 0.63.",
+      "queue_position": 5,
+      "source": "COMBINED_SCORE",
+      "pinned": false,
+      "overridden_gate_verdict": null,
+      "gate_overridden": false
+    },
+    {
+      "slug": "what-is-a-semiconductor-made-of",
+      "domain": "materials-and-manufacturing",
+      "title": "What is a semiconductor made of?",
+      "query": "what is a semiconductor made of",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.428 clears the 0.16 floor and title gap 0.95 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.4282,
+        "autocomplete_completions": 4,
+        "exact_in_autocomplete": false,
+        "corpus_breadth": 1,
+        "key_term": "made",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 31,
+        "sample_completions": [
+          "how is a semiconductor made",
+          "what is a semiconductor chip",
+          "how is a semiconductor chip made",
+          "how does a semiconductor chip work"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-03T18:17:53.293218+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.671,
+        "title_gap": 0.95,
+        "title_coverage_mean": 0.425,
+        "strong_match_count": 1,
+        "results_examined": 20,
+        "median_views": 712141.5,
+        "p90_views": 4489716,
+        "median_subscribers": 280000.0,
+        "channels_under_100k_subs": 3,
+        "median_age_days": 723,
+        "published_last_365d": 3,
+        "interpretation": "1 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.95,
+          "incumbent_subs": 0.222,
+          "view_ceiling": 0.164,
+          "staleness": 0.85
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-03T18:16:38.741293+00:00"
+        }
+      },
+      "trend": {
+        "status": "not_measured"
+      },
+      "combined_score": 0.536,
+      "trend_multiplier": 1.0,
+      "trend_note": "no Trends data; neutral",
+      "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
+      "reason": "Open field (95% of top-20 titles miss the question) but thin demand (0.43) -- uncontested because few ask it.",
+      "queue_position": 6,
+      "source": "COMBINED_SCORE",
+      "pinned": false,
+      "overridden_gate_verdict": null,
+      "gate_overridden": false
+    },
+    {
+      "slug": "how-is-3d-printed-metal-made",
+      "domain": "materials-and-manufacturing",
+      "title": "How is 3d printed metal made?",
+      "query": "how is 3d printed metal made",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.400 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.3998,
+        "autocomplete_completions": 5,
+        "exact_in_autocomplete": false,
+        "corpus_breadth": 0,
+        "key_term": "made",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 31,
+        "sample_completions": [
+          "how metal 3d printing works",
+          "how is metal 3d printed",
+          "how does metal 3d printing work",
+          "how a metal 3d printer works",
+          "3d printed metal mold"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-03T18:17:39.801864+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.697,
+        "title_gap": 1.0,
+        "title_coverage_mean": 0.367,
+        "strong_match_count": 0,
+        "results_examined": 20,
+        "median_views": 1084791.5,
+        "p90_views": 3992418,
+        "median_subscribers": 351450.0,
+        "channels_under_100k_subs": 10,
+        "median_age_days": 1175,
+        "published_last_365d": 2,
+        "interpretation": "nobody has made the definitive video on this query",
+        "components": {
+          "title_gap": 1.0,
+          "incumbent_subs": 0.208,
+          "view_ceiling": 0.138,
+          "staleness": 0.9
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-03T18:16:15.141492+00:00"
+        }
+      },
+      "trend": {
+        "status": "not_measured"
+      },
+      "combined_score": 0.5279,
+      "trend_multiplier": 1.0,
+      "trend_note": "no Trends data; neutral",
+      "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
+      "reason": "CONTESTED DESPITE THE GAP: 100% lexical title gap, but median 1,084,792 views and 351,450 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated.",
+      "queue_position": 7,
+      "source": "COMBINED_SCORE",
+      "pinned": false,
+      "overridden_gate_verdict": null,
+      "gate_overridden": false
+    },
+    {
+      "slug": "how-are-microchips-made",
+      "domain": "materials-and-manufacturing",
+      "title": "How are microchips made?",
+      "query": "how are microchips made",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.709 clears the 0.16 floor and title gap 0.35 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.7094,
+        "autocomplete_completions": 10,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 18,
+        "key_term": "microchip",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 20,
+        "sample_completions": [
+          "how are microchips made",
+          "how are microchips made cpu manufacturing process steps",
+          "how are microchips made so small",
+          "how are microchips made in hindi",
+          "how microchips are made animation"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-03T18:17:33.493605+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.383,
+        "title_gap": 0.35,
+        "title_coverage_mean": 0.775,
+        "strong_match_count": 13,
+        "results_examined": 20,
+        "median_views": 619652.5,
+        "p90_views": 6998573,
+        "median_subscribers": 118300.0,
+        "channels_under_100k_subs": 10,
+        "median_age_days": 921,
+        "published_last_365d": 3,
+        "interpretation": "13 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.35,
+          "incumbent_subs": 0.275,
+          "view_ceiling": 0.173,
+          "staleness": 0.85
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-03T18:16:04.357575+00:00"
+        }
+      },
+      "trend": {
+        "status": "not_measured"
+      },
+      "combined_score": 0.5212,
+      "trend_multiplier": 1.0,
+      "trend_note": "no Trends data; neutral",
+      "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
+      "reason": "Strong demand (0.71) against partial coverage (35% title gap); winnable but contested.",
+      "queue_position": 8,
+      "source": "COMBINED_SCORE",
+      "pinned": false,
+      "overridden_gate_verdict": null,
+      "gate_overridden": false
+    },
+    {
+      "slug": "why-is-carbon-fiber-so-strong",
+      "domain": "materials-and-manufacturing",
+      "title": "Why is carbon fiber so strong?",
+      "query": "why is carbon fiber so strong",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.400 clears the 0.16 floor and title gap 0.90 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.4004,
+        "autocomplete_completions": 1,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "strong",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 1,
+        "sample_completions": [
+          "why is carbon fiber so strong"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-03T18:17:48.803680+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.665,
+        "title_gap": 0.9,
+        "title_coverage_mean": 0.7,
+        "strong_match_count": 2,
+        "results_examined": 20,
+        "median_views": 268833.5,
+        "p90_views": 4297218,
+        "median_subscribers": 130000.0,
+        "channels_under_100k_subs": 9,
+        "median_age_days": 592,
+        "published_last_365d": 3,
+        "interpretation": "2 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.9,
+          "incumbent_subs": 0.269,
+          "view_ceiling": 0.224,
+          "staleness": 0.85
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-03T18:16:30.526313+00:00"
+        }
+      },
+      "trend": {
+        "status": "not_measured"
+      },
+      "combined_score": 0.516,
+      "trend_multiplier": 1.0,
+      "trend_note": "no Trends data; neutral",
+      "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
+      "reason": "Open field (90% of top-20 titles miss the question) but thin demand (0.40) -- uncontested because few ask it.",
+      "queue_position": 9,
+      "source": "COMBINED_SCORE",
+      "pinned": false,
+      "overridden_gate_verdict": null,
+      "gate_overridden": false
+    },
+    {
+      "slug": "why-is-steel-so-strong",
+      "domain": "materials-and-manufacturing",
+      "title": "Why is steel so strong?",
+      "query": "why is steel so strong",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.412 clears the 0.16 floor and title gap 0.90 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.4125,
+        "autocomplete_completions": 2,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "strong",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 1,
+        "sample_completions": [
+          "why is steel so strong",
+          "why is atom so strong in real steel"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-03T18:17:35.322862+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.641,
+        "title_gap": 0.9,
+        "title_coverage_mean": 0.55,
+        "strong_match_count": 2,
+        "results_examined": 20,
+        "median_views": 283555.0,
+        "p90_views": 4567378,
+        "median_subscribers": 249500.0,
+        "channels_under_100k_subs": 7,
+        "median_age_days": 588,
+        "published_last_365d": 5,
+        "interpretation": "2 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.9,
+          "incumbent_subs": 0.229,
+          "view_ceiling": 0.221,
+          "staleness": 0.75
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-03T18:16:07.358943+00:00"
+        }
+      },
+      "trend": {
+        "status": "not_measured"
+      },
+      "combined_score": 0.5142,
+      "trend_multiplier": 1.0,
+      "trend_note": "no Trends data; neutral",
+      "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
+      "reason": "Open field (90% of top-20 titles miss the question) but thin demand (0.41) -- uncontested because few ask it.",
+      "queue_position": 10,
+      "source": "COMBINED_SCORE",
+      "pinned": false,
+      "overridden_gate_verdict": null,
+      "gate_overridden": false
+    },
+    {
+      "slug": "what-is-aerogel-made-of",
+      "domain": "materials-and-manufacturing",
+      "title": "What is aerogel made of?",
+      "query": "what is aerogel made of",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.483 clears the 0.16 floor and title gap 0.75 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.4833,
+        "autocomplete_completions": 3,
+        "exact_in_autocomplete": false,
+        "corpus_breadth": 0,
+        "key_term": "made",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 31,
+        "sample_completions": [
+          "what is aerogel made out of",
+          "what is aerogel",
+          "where is aerogel in subnautica"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-03T18:17:44.324684+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.537,
+        "title_gap": 0.75,
+        "title_coverage_mean": 0.55,
+        "strong_match_count": 5,
+        "results_examined": 20,
+        "median_views": 994837.5,
+        "p90_views": 39609785,
+        "median_subscribers": 1870000.0,
+        "channels_under_100k_subs": 8,
+        "median_age_days": 592,
+        "published_last_365d": 4,
+        "interpretation": "5 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.75,
+          "incumbent_subs": 0.104,
+          "view_ceiling": 0.143,
+          "staleness": 0.8
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-03T18:16:22.770433+00:00"
+        }
+      },
+      "trend": {
+        "status": "not_measured"
+      },
+      "combined_score": 0.5094,
+      "trend_multiplier": 1.0,
+      "trend_note": "no Trends data; neutral",
+      "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
+      "reason": "Middle of the field: title gap 0.75, demand 0.48, opportunity 0.54.",
+      "queue_position": 11,
+      "source": "COMBINED_SCORE",
+      "pinned": false,
+      "overridden_gate_verdict": null,
+      "gate_overridden": false
+    },
+    {
+      "slug": "how-strong-is-graphene",
+      "domain": "materials-and-manufacturing",
+      "title": "How strong is graphene?",
+      "query": "how strong is graphene",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.378 clears the 0.16 floor and title gap 0.85 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.378,
+        "autocomplete_completions": 1,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "strong",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 1,
+        "sample_completions": [
+          "how strong is graphene"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-03T18:17:49.705481+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.652,
+        "title_gap": 0.85,
+        "title_coverage_mean": 0.55,
+        "strong_match_count": 3,
+        "results_examined": 20,
+        "median_views": 142400.5,
+        "p90_views": 4224864,
+        "median_subscribers": 43600.0,
+        "channels_under_100k_subs": 13,
+        "median_age_days": 795,
+        "published_last_365d": 4,
+        "interpretation": "3 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.85,
+          "incumbent_subs": 0.337,
+          "view_ceiling": 0.264,
+          "staleness": 0.8
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-03T18:16:32.316871+00:00"
+        }
+      },
+      "trend": {
+        "status": "not_measured"
+      },
+      "combined_score": 0.4964,
+      "trend_multiplier": 1.0,
+      "trend_note": "no Trends data; neutral",
+      "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
+      "reason": "Middle of the field: title gap 0.85, demand 0.38, opportunity 0.65.",
+      "queue_position": 12,
+      "source": "COMBINED_SCORE",
+      "pinned": false,
+      "overridden_gate_verdict": null,
+      "gate_overridden": false
+    },
+    {
+      "slug": "what-is-kevlar-made-of",
+      "domain": "materials-and-manufacturing",
+      "title": "What is kevlar made of?",
+      "query": "what is kevlar made of",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.408 clears the 0.16 floor and title gap 0.80 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.4079,
+        "autocomplete_completions": 1,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 1,
+        "key_term": "made",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 31,
+        "sample_completions": [
+          "what is kevlar made of"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-03T18:17:37.999212+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.599,
+        "title_gap": 0.8,
+        "title_coverage_mean": 0.575,
+        "strong_match_count": 4,
+        "results_examined": 20,
+        "median_views": 37545.0,
+        "p90_views": 8379037,
+        "median_subscribers": 341000.0,
+        "channels_under_100k_subs": 9,
+        "median_age_days": 822,
+        "published_last_365d": 6,
+        "interpretation": "4 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.8,
+          "incumbent_subs": 0.21,
+          "view_ceiling": 0.346,
+          "staleness": 0.7
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-03T18:16:12.103256+00:00"
+        }
+      },
+      "trend": {
+        "status": "not_measured"
+      },
+      "combined_score": 0.4943,
+      "trend_multiplier": 1.0,
+      "trend_note": "no Trends data; neutral",
+      "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
+      "reason": "Middle of the field: title gap 0.80, demand 0.41, opportunity 0.60.",
+      "queue_position": 13,
+      "source": "COMBINED_SCORE",
+      "pinned": false,
+      "overridden_gate_verdict": null,
+      "gate_overridden": false
+    },
+    {
+      "slug": "how-hot-does-a-welding-arc-get",
+      "domain": "materials-and-manufacturing",
+      "title": "How hot does a welding arc get?",
+      "query": "how hot does a welding arc get",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.350 clears the 0.16 floor and title gap 0.95 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.3499,
+        "autocomplete_completions": 3,
+        "exact_in_autocomplete": false,
+        "corpus_breadth": 0,
+        "key_term": "arc",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "what a welder sees when welding",
+          "arc welding thick steel",
+          "what is arc in welding"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-03T18:17:52.396052+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.685,
+        "title_gap": 0.95,
+        "title_coverage_mean": 0.35,
+        "strong_match_count": 1,
+        "results_examined": 20,
+        "median_views": 451652.5,
+        "p90_views": 3565972,
+        "median_subscribers": 455000.0,
+        "channels_under_100k_subs": 6,
+        "median_age_days": 1269,
+        "published_last_365d": 1,
+        "interpretation": "1 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.95,
+          "incumbent_subs": 0.192,
+          "view_ceiling": 0.192,
+          "staleness": 0.95
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-03T18:16:37.152649+00:00"
+        }
+      },
+      "trend": {
+        "status": "not_measured"
+      },
+      "combined_score": 0.4896,
+      "trend_multiplier": 1.0,
+      "trend_note": "no Trends data; neutral",
+      "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
+      "reason": "Open field (95% of top-20 titles miss the question) but thin demand (0.35) -- uncontested because few ask it.",
+      "queue_position": 14,
+      "source": "COMBINED_SCORE",
+      "pinned": false,
+      "overridden_gate_verdict": null,
+      "gate_overridden": false
+    },
+    {
+      "slug": "how-does-heat-treating-steel-work",
+      "domain": "materials-and-manufacturing",
+      "title": "How does heat treating steel work?",
+      "query": "how does heat treating steel work",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.392 clears the 0.16 floor and title gap 0.75 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.3921,
+        "autocomplete_completions": 1,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 1,
+        "key_term": "work",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 7,
+        "sample_completions": [
+          "how does heat treating steel work"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-03T18:17:46.129368+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.598,
+        "title_gap": 0.75,
+        "title_coverage_mean": 0.425,
+        "strong_match_count": 5,
+        "results_examined": 20,
+        "median_views": 186000.5,
+        "p90_views": 1707361,
+        "median_subscribers": 160500.0,
+        "channels_under_100k_subs": 8,
+        "median_age_days": 1036,
+        "published_last_365d": 2,
+        "interpretation": "5 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.75,
+          "incumbent_subs": 0.256,
+          "view_ceiling": 0.247,
+          "staleness": 0.9
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-03T18:16:25.854094+00:00"
+        }
+      },
+      "trend": {
+        "status": "not_measured"
+      },
+      "combined_score": 0.4842,
+      "trend_multiplier": 1.0,
+      "trend_note": "no Trends data; neutral",
+      "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
+      "reason": "Middle of the field: title gap 0.75, demand 0.39, opportunity 0.60.",
+      "queue_position": 15,
+      "source": "COMBINED_SCORE",
+      "pinned": false,
+      "overridden_gate_verdict": null,
+      "gate_overridden": false
+    },
+    {
+      "slug": "what-is-carbon-fiber-made-of",
+      "domain": "materials-and-manufacturing",
+      "title": "What is carbon fiber made of?",
+      "query": "what is carbon fiber made of",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.332 clears the 0.16 floor and title gap 0.95 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.3316,
+        "autocomplete_completions": 2,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 1,
+        "key_term": "made",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 31,
+        "sample_completions": [
+          "what is carbon fiber made of",
+          "what is carbon fiber made out of"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-03T18:17:34.403865+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.692,
+        "title_gap": 0.95,
+        "title_coverage_mean": 0.517,
+        "strong_match_count": 1,
+        "results_examined": 20,
+        "median_views": 55409.5,
+        "p90_views": 933536,
+        "median_subscribers": 9410.0,
+        "channels_under_100k_subs": 15,
+        "median_age_days": 458,
+        "published_last_365d": 9,
+        "interpretation": "1 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.95,
+          "incumbent_subs": 0.432,
+          "view_ceiling": 0.322,
+          "staleness": 0.55
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-03T18:16:05.826020+00:00"
+        }
+      },
+      "trend": {
+        "status": "not_measured"
+      },
+      "combined_score": 0.479,
+      "trend_multiplier": 1.0,
+      "trend_note": "no Trends data; neutral",
+      "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
+      "reason": "Open field (95% of top-20 titles miss the question) but thin demand (0.33) -- uncontested because few ask it.",
+      "queue_position": 16,
+      "source": "COMBINED_SCORE",
+      "pinned": false,
+      "overridden_gate_verdict": null,
+      "gate_overridden": false
+    },
+    {
+      "slug": "what-is-concrete-made-of",
+      "domain": "materials-and-manufacturing",
+      "title": "What is concrete made of?",
+      "query": "what is concrete made of",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.398 clears the 0.16 floor and title gap 0.65 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.3975,
+        "autocomplete_completions": 3,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "made",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 31,
+        "sample_completions": [
+          "what is concrete made of",
+          "what is cement made of",
+          "what is cement made up of"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-03T18:17:50.568263+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.545,
+        "title_gap": 0.65,
+        "title_coverage_mean": 0.675,
+        "strong_match_count": 7,
+        "results_examined": 20,
+        "median_views": 296202.5,
+        "p90_views": 2654860,
+        "median_subscribers": 149500.0,
+        "channels_under_100k_subs": 9,
+        "median_age_days": 1073,
+        "published_last_365d": 2,
+        "interpretation": "7 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.65,
+          "incumbent_subs": 0.261,
+          "view_ceiling": 0.218,
+          "staleness": 0.9
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-03T18:16:33.842784+00:00"
+        }
+      },
+      "trend": {
+        "status": "not_measured"
+      },
+      "combined_score": 0.4654,
+      "trend_multiplier": 1.0,
+      "trend_note": "no Trends data; neutral",
+      "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
+      "reason": "Middle of the field: title gap 0.65, demand 0.40, opportunity 0.55.",
+      "queue_position": 17,
+      "source": "COMBINED_SCORE",
+      "pinned": false,
+      "overridden_gate_verdict": null,
+      "gate_overridden": false
+    },
+    {
+      "slug": "how-do-self-healing-materials-work",
+      "domain": "materials-and-manufacturing",
+      "title": "How do self-healing materials work?",
+      "query": "how do self-healing materials work",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.168 clears the 0.16 floor and title gap 0.40 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.1678,
+        "autocomplete_completions": 2,
+        "exact_in_autocomplete": false,
+        "corpus_breadth": 0,
+        "key_term": "work",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 7,
+        "sample_completions": [
+          "how to make self healing polymer",
+          "self healing materials"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-03T18:17:42.451712+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.483,
+        "title_gap": 0.4,
+        "title_coverage_mean": 0.688,
+        "strong_match_count": 12,
+        "results_examined": 20,
+        "median_views": 24792.0,
+        "p90_views": 645788,
+        "median_subscribers": 1845.0,
+        "channels_under_100k_subs": 15,
+        "median_age_days": 846,
+        "published_last_365d": 4,
+        "interpretation": "12 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.4,
+          "incumbent_subs": 0.533,
+          "view_ceiling": 0.372,
+          "staleness": 0.8
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-03T18:16:19.771621+00:00"
+        }
+      },
+      "trend": {
+        "status": "not_measured"
+      },
+      "combined_score": 0.2847,
+      "trend_multiplier": 1.0,
+      "trend_note": "no Trends data; neutral",
+      "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
+      "reason": "Middle of the field: title gap 0.40, demand 0.17, opportunity 0.48.",
+      "queue_position": 18,
+      "source": "COMBINED_SCORE",
+      "pinned": false,
+      "overridden_gate_verdict": null,
+      "gate_overridden": false
+    }
+  ]
+}
