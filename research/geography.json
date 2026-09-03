@@ -1,0 +1,1719 @@
+{
+ "_status": "PROPOSAL / measurement. pov/topic-taxonomy.json is unchanged.",
+ "generated_at": "2026-09-03T12:31:35.061083+00:00",
+ "generator": "research/geography.py",
+ "source": {
+  "explore": "https://trends.google.com/trends/api/explore",
+  "comparedgeo": "https://trends.google.com/trends/api/widgetdata/comparedgeo",
+  "window": "today 12-m",
+  "geo": "worldwide",
+  "resolution": "COUNTRY"
+ },
+ "what_this_measures": "PER-SEARCHER PROPENSITY by country, not audience share. Google Trends normalises each country's interest against that country's own total search volume. This file therefore CANNOT say what fraction of an audience is Tier 1; it can only say which domains lean more Tier-1 than which others, measured identically.",
+ "why_it_is_a_proxy_for_money": "Audience geography is one of the two real inputs to RPM. It is NOT RPM. The gap between this and realised revenue includes advertiser bid density, ad load, seasonality, video length and watch time -- none of which are measured here.",
+ "not_measured_here": "Advertiser bid density (CPC). No keyword-cost source exists on this machine; see research/commercial-axis.md. It is left unmeasured rather than estimated.",
+ "fairness": "Every domain probed with exactly the 8 seeds that produced its record in research/broad_mined.json -- same seeds, same window, same resolution, no substitutions.",
+ "baskets": {
+  "tier1": {
+   "US": "United States",
+   "CA": "Canada",
+   "GB": "United Kingdom",
+   "AU": "Australia",
+   "NZ": "New Zealand",
+   "IE": "Ireland",
+   "DE": "Germany",
+   "NL": "Netherlands",
+   "SE": "Sweden",
+   "NO": "Norway",
+   "DK": "Denmark",
+   "FI": "Finland",
+   "CH": "Switzerland",
+   "AT": "Austria",
+   "BE": "Belgium",
+   "JP": "Japan",
+   "KR": "South Korea",
+   "SG": "Singapore"
+  },
+  "tier3": {
+   "IN": "India",
+   "PK": "Pakistan",
+   "BD": "Bangladesh",
+   "ID": "Indonesia",
+   "PH": "Philippines",
+   "VN": "Vietnam",
+   "NG": "Nigeria",
+   "EG": "Egypt",
+   "KE": "Kenya",
+   "MA": "Morocco",
+   "DZ": "Algeria",
+   "LK": "Sri Lanka",
+   "NP": "Nepal",
+   "MM": "Myanmar",
+   "TZ": "Tanzania",
+   "UG": "Uganda"
+  },
+  "note": "Basket membership is a stated convention encoding the widely-reported ordering of YouTube ad rates by market. It is NOT measured here and a reader may disagree with it; the per-country indices are retained in full so the ratio can be recomputed against a different basket."
+ },
+ "thresholds": {
+  "min_usable_seeds": 3,
+  "min_countries_per_seed": 8,
+  "min_countries_per_basket": 4
+ },
+ "requests_made": 0,
+ "throttle_events": 0,
+ "domains_measured": 18,
+ "domains_unmeasured": 2,
+ "results": [
+  {
+   "domain": "ocean-technology",
+   "measured": true,
+   "seeds_usable": 3,
+   "seeds_undefined_max_tier1": 1,
+   "seeds_total": 8,
+   "tier1_skew_median": 4.338,
+   "tier1_skew_mean": 3.126,
+   "tier1_skew_min": 0.597,
+   "tier1_skew_max": 4.444,
+   "spread_max_over_min": 7.44,
+   "verdict": "strongly Tier-1 weighted -- searched far more per head in high-ad-rate markets",
+   "seeds": [
+    {
+     "seed": "submersible",
+     "usable": true,
+     "tier1_mean": 14.29,
+     "tier3_mean": 23.92,
+     "tier1_skew": 0.597,
+     "tier1_countries": 14,
+     "tier3_countries": 12,
+     "top_country": "ZW",
+     "countries_with_data": 52
+    },
+    {
+     "seed": "underwater robot",
+     "usable": true,
+     "tier1_mean": 22.86,
+     "tier3_mean": 5.14,
+     "tier1_skew": 4.444,
+     "tier1_countries": 14,
+     "tier3_countries": 7,
+     "top_country": "SG",
+     "countries_with_data": 45
+    },
+    {
+     "seed": "why do submarines implode",
+     "usable": false,
+     "reason": "only 0 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "how does sonar work",
+     "usable": false,
+     "reason": "basket coverage too thin: 4 Tier-1 and 3 Tier-3 countries returned data (minimum 4 each)",
+     "tier1_countries": 4,
+     "tier3_countries": 3,
+     "countries_with_data": 8
+    },
+    {
+     "seed": "what is an rov",
+     "usable": false,
+     "reason": "only 4 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "deep sea submersible alvin",
+     "usable": false,
+     "reason": "only 1 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "sonar mapping",
+     "usable": true,
+     "tier1_mean": 25,
+     "tier3_mean": 0.0,
+     "tier1_skew": null,
+     "note": "Tier-3 basket mean is 0; ratio undefined but the term is maximally Tier-1 weighted",
+     "tier1_countries": 8,
+     "tier3_countries": 4,
+     "top_country": "KR",
+     "countries_with_data": 16
+    },
+    {
+     "seed": "underwater drone",
+     "usable": true,
+     "tier1_mean": 35.94,
+     "tier3_mean": 8.29,
+     "tier1_skew": 4.338,
+     "tier1_countries": 18,
+     "tier3_countries": 7,
+     "top_country": "SG",
+     "countries_with_data": 53
+    }
+   ]
+  },
+  {
+   "domain": "incident-analysis",
+   "measured": true,
+   "seeds_usable": 3,
+   "seeds_undefined_max_tier1": 2,
+   "seeds_total": 8,
+   "tier1_skew_median": 4.2,
+   "tier1_skew_mean": 5.522,
+   "tier1_skew_min": 2.75,
+   "tier1_skew_max": 9.616,
+   "spread_max_over_min": 3.5,
+   "verdict": "strongly Tier-1 weighted -- searched far more per head in high-ad-rate markets",
+   "seeds": [
+    {
+     "seed": "air crash investigation",
+     "usable": true,
+     "tier1_mean": 0.33,
+     "tier3_mean": 0.0,
+     "tier1_skew": null,
+     "note": "Tier-3 basket mean is 0; ratio undefined but the term is maximally Tier-1 weighted",
+     "tier1_countries": 18,
+     "tier3_countries": 13,
+     "top_country": "WS",
+     "countries_with_data": 73
+    },
+    {
+     "seed": "maritime accident",
+     "usable": true,
+     "tier1_mean": 22,
+     "tier3_mean": 8,
+     "tier1_skew": 2.75,
+     "tier1_countries": 10,
+     "tier3_countries": 5,
+     "top_country": "FR",
+     "countries_with_data": 30
+    },
+    {
+     "seed": "why did the plane crash",
+     "usable": true,
+     "tier1_mean": 42,
+     "tier3_mean": 10,
+     "tier1_skew": 4.2,
+     "tier1_countries": 10,
+     "tier3_countries": 4,
+     "top_country": "US",
+     "countries_with_data": 17
+    },
+    {
+     "seed": "how do investigators find the cause",
+     "usable": false,
+     "reason": "only 1 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "what does the black box record",
+     "usable": false,
+     "reason": "only 2 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "titanic sinking cause",
+     "usable": false,
+     "reason": "only 2 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "ntsb investigation",
+     "usable": true,
+     "tier1_mean": 47.89,
+     "tier3_mean": 0.0,
+     "tier1_skew": null,
+     "note": "Tier-3 basket mean is 0; ratio undefined but the term is maximally Tier-1 weighted",
+     "tier1_countries": 9,
+     "tier3_countries": 4,
+     "top_country": "KR",
+     "countries_with_data": 22
+    },
+    {
+     "seed": "costa concordia",
+     "usable": true,
+     "tier1_mean": 26.44,
+     "tier3_mean": 2.75,
+     "tier1_skew": 9.616,
+     "tier1_countries": 18,
+     "tier3_countries": 4,
+     "top_country": "MT",
+     "countries_with_data": 53
+    }
+   ]
+  },
+  {
+   "domain": "polar-extreme-environments",
+   "measured": true,
+   "seeds_usable": 4,
+   "seeds_undefined_max_tier1": 0,
+   "seeds_total": 8,
+   "tier1_skew_median": 2.825,
+   "tier1_skew_mean": 2.893,
+   "tier1_skew_min": 1.669,
+   "tier1_skew_max": 4.25,
+   "spread_max_over_min": 2.55,
+   "verdict": "strongly Tier-1 weighted -- searched far more per head in high-ad-rate markets",
+   "seeds": [
+    {
+     "seed": "antarctica",
+     "usable": true,
+     "tier1_mean": 31.72,
+     "tier3_mean": 15.2,
+     "tier1_skew": 2.087,
+     "tier1_countries": 18,
+     "tier3_countries": 10,
+     "top_country": "NZ",
+     "countries_with_data": 56
+    },
+    {
+     "seed": "arctic ice",
+     "usable": true,
+     "tier1_mean": 18.61,
+     "tier3_mean": 5.22,
+     "tier1_skew": 3.564,
+     "tier1_countries": 18,
+     "tier3_countries": 9,
+     "top_country": "IS",
+     "countries_with_data": 63
+    },
+    {
+     "seed": "why is antarctica so cold",
+     "usable": false,
+     "reason": "only 4 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "how do people survive antarctica",
+     "usable": false,
+     "reason": "only 1 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "what is under the antarctic ice",
+     "usable": false,
+     "reason": "only 3 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "lake vostok",
+     "usable": true,
+     "tier1_mean": 55.07,
+     "tier3_mean": 33,
+     "tier1_skew": 1.669,
+     "tier1_countries": 15,
+     "tier3_countries": 5,
+     "top_country": "NO",
+     "countries_with_data": 30
+    },
+    {
+     "seed": "ice sheet melting",
+     "usable": false,
+     "reason": "basket coverage too thin: 6 Tier-1 and 2 Tier-3 countries returned data (minimum 4 each)",
+     "tier1_countries": 6,
+     "tier3_countries": 2,
+     "countries_with_data": 9
+    },
+    {
+     "seed": "permafrost thaw",
+     "usable": true,
+     "tier1_mean": 34,
+     "tier3_mean": 8,
+     "tier1_skew": 4.25,
+     "tier1_countries": 10,
+     "tier3_countries": 5,
+     "top_country": "CN",
+     "countries_with_data": 24
+    }
+   ]
+  },
+  {
+   "domain": "expedition-history",
+   "measured": true,
+   "seeds_usable": 4,
+   "seeds_undefined_max_tier1": 0,
+   "seeds_total": 8,
+   "tier1_skew_median": 2.347,
+   "tier1_skew_mean": 3.307,
+   "tier1_skew_min": 0.875,
+   "tier1_skew_max": 7.66,
+   "spread_max_over_min": 8.75,
+   "verdict": "strongly Tier-1 weighted -- searched far more per head in high-ad-rate markets",
+   "seeds": [
+    {
+     "seed": "expedition",
+     "usable": true,
+     "tier1_mean": 45.61,
+     "tier3_mean": 15.5,
+     "tier1_skew": 2.943,
+     "tier1_countries": 18,
+     "tier3_countries": 8,
+     "top_country": "US",
+     "countries_with_data": 60
+    },
+    {
+     "seed": "exploration history",
+     "usable": true,
+     "tier1_mean": 40.59,
+     "tier3_mean": 23.18,
+     "tier1_skew": 1.751,
+     "tier1_countries": 17,
+     "tier3_countries": 11,
+     "top_country": "KR",
+     "countries_with_data": 60
+    },
+    {
+     "seed": "why did the expedition fail",
+     "usable": false,
+     "reason": "only 1 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "how did explorers navigate",
+     "usable": false,
+     "reason": "only 1 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "what happened to the expedition",
+     "usable": false,
+     "reason": "basket coverage too thin: 6 Tier-1 and 2 Tier-3 countries returned data (minimum 4 each)",
+     "tier1_countries": 6,
+     "tier3_countries": 2,
+     "countries_with_data": 10
+    },
+    {
+     "seed": "shackleton endurance",
+     "usable": false,
+     "reason": "basket coverage too thin: 14 Tier-1 and 1 Tier-3 countries returned data (minimum 4 each)",
+     "tier1_countries": 14,
+     "tier3_countries": 1,
+     "countries_with_data": 26
+    },
+    {
+     "seed": "franklin expedition",
+     "usable": true,
+     "tier1_mean": 33.71,
+     "tier3_mean": 4.4,
+     "tier1_skew": 7.66,
+     "tier1_countries": 17,
+     "tier3_countries": 5,
+     "top_country": "CA",
+     "countries_with_data": 38
+    },
+    {
+     "seed": "everest expedition",
+     "usable": true,
+     "tier1_mean": 13.89,
+     "tier3_mean": 15.88,
+     "tier1_skew": 0.875,
+     "tier1_countries": 18,
+     "tier3_countries": 8,
+     "top_country": "NP",
+     "countries_with_data": 54
+    }
+   ]
+  },
+  {
+   "domain": "engineering-failure",
+   "measured": true,
+   "seeds_usable": 3,
+   "seeds_undefined_max_tier1": 0,
+   "seeds_total": 8,
+   "tier1_skew_median": 2.317,
+   "tier1_skew_mean": 5.386,
+   "tier1_skew_min": 1.711,
+   "tier1_skew_max": 12.129,
+   "spread_max_over_min": 7.09,
+   "verdict": "strongly Tier-1 weighted -- searched far more per head in high-ad-rate markets",
+   "seeds": [
+    {
+     "seed": "engineering failure",
+     "usable": true,
+     "tier1_mean": 26.94,
+     "tier3_mean": 15.75,
+     "tier1_skew": 1.711,
+     "tier1_countries": 18,
+     "tier3_countries": 12,
+     "top_country": "SG",
+     "countries_with_data": 60
+    },
+    {
+     "seed": "structural collapse",
+     "usable": true,
+     "tier1_mean": 36.5,
+     "tier3_mean": 15.75,
+     "tier1_skew": 2.317,
+     "tier1_countries": 12,
+     "tier3_countries": 8,
+     "top_country": "SG",
+     "countries_with_data": 40
+    },
+    {
+     "seed": "why do bridges collapse",
+     "usable": false,
+     "reason": "only 1 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "how do buildings fall down",
+     "usable": false,
+     "reason": "only 1 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "what caused the dam to break",
+     "usable": false,
+     "reason": "only 1 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "tacoma narrows bridge",
+     "usable": true,
+     "tier1_mean": 28.3,
+     "tier3_mean": 2.33,
+     "tier1_skew": 12.129,
+     "tier1_countries": 10,
+     "tier3_countries": 6,
+     "top_country": "US",
+     "countries_with_data": 25
+    },
+    {
+     "seed": "hyatt regency walkway",
+     "usable": false,
+     "reason": "basket coverage too thin: 6 Tier-1 and 1 Tier-3 countries returned data (minimum 4 each)",
+     "tier1_countries": 6,
+     "tier3_countries": 1,
+     "countries_with_data": 8
+    },
+    {
+     "seed": "challenger o ring",
+     "usable": false,
+     "reason": "only 5 countries returned data (minimum 8); term too thin to locate"
+    }
+   ]
+  },
+  {
+   "domain": "energy-and-power",
+   "measured": true,
+   "seeds_usable": 3,
+   "seeds_undefined_max_tier1": 0,
+   "seeds_total": 8,
+   "tier1_skew_median": 2.094,
+   "tier1_skew_mean": 2.175,
+   "tier1_skew_min": 1.751,
+   "tier1_skew_max": 2.679,
+   "spread_max_over_min": 1.53,
+   "verdict": "strongly Tier-1 weighted -- searched far more per head in high-ad-rate markets",
+   "seeds": [
+    {
+     "seed": "nuclear reactor",
+     "usable": true,
+     "tier1_mean": 32.67,
+     "tier3_mean": 15.6,
+     "tier1_skew": 2.094,
+     "tier1_countries": 18,
+     "tier3_countries": 10,
+     "top_country": "CN",
+     "countries_with_data": 64
+    },
+    {
+     "seed": "power grid",
+     "usable": true,
+     "tier1_mean": 36.78,
+     "tier3_mean": 21,
+     "tier1_skew": 1.751,
+     "tier1_countries": 18,
+     "tier3_countries": 9,
+     "top_country": "SG",
+     "countries_with_data": 57
+    },
+    {
+     "seed": "why did chernobyl explode",
+     "usable": false,
+     "reason": "only 7 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "how does a nuclear reactor work",
+     "usable": false,
+     "reason": "only 6 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "what happens in a blackout",
+     "usable": false,
+     "reason": "only 4 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "fukushima meltdown",
+     "usable": false,
+     "reason": "only 5 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "fusion reactor iter",
+     "usable": false,
+     "reason": "basket coverage too thin: 6 Tier-1 and 1 Tier-3 countries returned data (minimum 4 each)",
+     "tier1_countries": 6,
+     "tier3_countries": 1,
+     "countries_with_data": 9
+    },
+    {
+     "seed": "grid frequency",
+     "usable": true,
+     "tier1_mean": 33.22,
+     "tier3_mean": 12.4,
+     "tier1_skew": 2.679,
+     "tier1_countries": 18,
+     "tier3_countries": 10,
+     "top_country": "SG",
+     "countries_with_data": 60
+    }
+   ]
+  },
+  {
+   "domain": "archaeology-ancient-tech",
+   "measured": true,
+   "seeds_usable": 4,
+   "seeds_undefined_max_tier1": 0,
+   "seeds_total": 8,
+   "tier1_skew_median": 2.091,
+   "tier1_skew_mean": 2.614,
+   "tier1_skew_min": 1.055,
+   "tier1_skew_max": 5.218,
+   "spread_max_over_min": 4.95,
+   "verdict": "strongly Tier-1 weighted -- searched far more per head in high-ad-rate markets",
+   "seeds": [
+    {
+     "seed": "archaeology",
+     "usable": true,
+     "tier1_mean": 30.61,
+     "tier3_mean": 14.91,
+     "tier1_skew": 2.053,
+     "tier1_countries": 18,
+     "tier3_countries": 11,
+     "top_country": "CN",
+     "countries_with_data": 58
+    },
+    {
+     "seed": "ancient technology",
+     "usable": true,
+     "tier1_mean": 35.94,
+     "tier3_mean": 34.08,
+     "tier1_skew": 1.055,
+     "tier1_countries": 18,
+     "tier3_countries": 13,
+     "top_country": "US",
+     "countries_with_data": 66
+    },
+    {
+     "seed": "why was the pyramid built",
+     "usable": false,
+     "reason": "only 6 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "how did they build the pyramids",
+     "usable": false,
+     "reason": "only 5 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "what is roman concrete",
+     "usable": false,
+     "reason": "basket coverage too thin: 6 Tier-1 and 3 Tier-3 countries returned data (minimum 4 each)",
+     "tier1_countries": 6,
+     "tier3_countries": 3,
+     "countries_with_data": 11
+    },
+    {
+     "seed": "antikythera mechanism",
+     "usable": true,
+     "tier1_mean": 22.61,
+     "tier3_mean": 10.62,
+     "tier1_skew": 2.128,
+     "tier1_countries": 18,
+     "tier3_countries": 8,
+     "top_country": "GR",
+     "countries_with_data": 56
+    },
+    {
+     "seed": "gobekli tepe",
+     "usable": true,
+     "tier1_mean": 52.18,
+     "tier3_mean": 10,
+     "tier1_skew": 5.218,
+     "tier1_countries": 17,
+     "tier3_countries": 7,
+     "top_country": "HR",
+     "countries_with_data": 60
+    },
+    {
+     "seed": "stonehenge construction",
+     "usable": false,
+     "reason": "basket coverage too thin: 8 Tier-1 and 3 Tier-3 countries returned data (minimum 4 each)",
+     "tier1_countries": 8,
+     "tier3_countries": 3,
+     "countries_with_data": 13
+    }
+   ]
+  },
+  {
+   "domain": "weather-and-storms",
+   "measured": true,
+   "seeds_usable": 4,
+   "seeds_undefined_max_tier1": 0,
+   "seeds_total": 8,
+   "tier1_skew_median": 2.008,
+   "tier1_skew_mean": 3.63,
+   "tier1_skew_min": 1.562,
+   "tier1_skew_max": 8.944,
+   "spread_max_over_min": 5.73,
+   "verdict": "strongly Tier-1 weighted -- searched far more per head in high-ad-rate markets",
+   "seeds": [
+    {
+     "seed": "hurricane",
+     "usable": true,
+     "tier1_mean": 2.56,
+     "tier3_mean": 0.29,
+     "tier1_skew": 8.944,
+     "tier1_countries": 18,
+     "tier3_countries": 7,
+     "top_country": "JM",
+     "countries_with_data": 48
+    },
+    {
+     "seed": "tornado",
+     "usable": true,
+     "tier1_mean": 23.11,
+     "tier3_mean": 9.75,
+     "tier1_skew": 2.37,
+     "tier1_countries": 18,
+     "tier3_countries": 8,
+     "top_country": "US",
+     "countries_with_data": 53
+    },
+    {
+     "seed": "why do hurricanes form",
+     "usable": false,
+     "reason": "only 3 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "how do tornadoes form",
+     "usable": false,
+     "reason": "only 5 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "what is a derecho",
+     "usable": true,
+     "tier1_mean": 37.17,
+     "tier3_mean": 23.8,
+     "tier1_skew": 1.562,
+     "tier1_countries": 18,
+     "tier3_countries": 10,
+     "top_country": "US",
+     "countries_with_data": 70
+    },
+    {
+     "seed": "hurricane eye wall",
+     "usable": false,
+     "reason": "only 3 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "storm chasing",
+     "usable": true,
+     "tier1_mean": 12.92,
+     "tier3_mean": 7.86,
+     "tier1_skew": 1.645,
+     "tier1_countries": 13,
+     "tier3_countries": 7,
+     "top_country": "AU",
+     "countries_with_data": 48
+    },
+    {
+     "seed": "lightning strike science",
+     "usable": false,
+     "reason": "only 2 countries returned data (minimum 8); term too thin to locate"
+    }
+   ]
+  },
+  {
+   "domain": "paleontology-extinction",
+   "measured": true,
+   "seeds_usable": 5,
+   "seeds_undefined_max_tier1": 0,
+   "seeds_total": 8,
+   "tier1_skew_median": 1.845,
+   "tier1_skew_mean": 1.921,
+   "tier1_skew_min": 1.072,
+   "tier1_skew_max": 2.691,
+   "spread_max_over_min": 2.51,
+   "verdict": "Tier-1 leaning",
+   "seeds": [
+    {
+     "seed": "paleontology",
+     "usable": true,
+     "tier1_mean": 23.8,
+     "tier3_mean": 14.3,
+     "tier1_skew": 1.664,
+     "tier1_countries": 15,
+     "tier3_countries": 10,
+     "top_country": "CN",
+     "countries_with_data": 50
+    },
+    {
+     "seed": "mass extinction",
+     "usable": true,
+     "tier1_mean": 29,
+     "tier3_mean": 15.71,
+     "tier1_skew": 1.845,
+     "tier1_countries": 18,
+     "tier3_countries": 7,
+     "top_country": "US",
+     "countries_with_data": 51
+    },
+    {
+     "seed": "why did the dinosaurs die",
+     "usable": false,
+     "reason": "only 5 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "how are fossils formed",
+     "usable": false,
+     "reason": "basket coverage too thin: 4 Tier-1 and 3 Tier-3 countries returned data (minimum 4 each)",
+     "tier1_countries": 4,
+     "tier3_countries": 3,
+     "countries_with_data": 10
+    },
+    {
+     "seed": "what killed the dinosaurs",
+     "usable": true,
+     "tier1_mean": 49.78,
+     "tier3_mean": 18.5,
+     "tier1_skew": 2.691,
+     "tier1_countries": 9,
+     "tier3_countries": 4,
+     "top_country": "US",
+     "countries_with_data": 19
+    },
+    {
+     "seed": "chicxulub crater",
+     "usable": true,
+     "tier1_mean": 10.72,
+     "tier3_mean": 10,
+     "tier1_skew": 1.072,
+     "tier1_countries": 18,
+     "tier3_countries": 9,
+     "top_country": "KH",
+     "countries_with_data": 69
+    },
+    {
+     "seed": "permian extinction",
+     "usable": true,
+     "tier1_mean": 35,
+     "tier3_mean": 15,
+     "tier1_skew": 2.333,
+     "tier1_countries": 12,
+     "tier3_countries": 4,
+     "top_country": "US",
+     "countries_with_data": 24
+    },
+    {
+     "seed": "trilobite fossil",
+     "usable": false,
+     "reason": "basket coverage too thin: 9 Tier-1 and 3 Tier-3 countries returned data (minimum 4 each)",
+     "tier1_countries": 9,
+     "tier3_countries": 3,
+     "countries_with_data": 17
+    }
+   ]
+  },
+  {
+   "domain": "space-astronomy",
+   "measured": true,
+   "seeds_usable": 7,
+   "seeds_undefined_max_tier1": 0,
+   "seeds_total": 8,
+   "tier1_skew_median": 1.796,
+   "tier1_skew_mean": 2.369,
+   "tier1_skew_min": 1.241,
+   "tier1_skew_max": 6.377,
+   "spread_max_over_min": 5.14,
+   "verdict": "Tier-1 leaning",
+   "seeds": [
+    {
+     "seed": "astronomy",
+     "usable": true,
+     "tier1_mean": 40.61,
+     "tier3_mean": 28.31,
+     "tier1_skew": 1.435,
+     "tier1_countries": 18,
+     "tier3_countries": 13,
+     "top_country": "CN",
+     "countries_with_data": 62
+    },
+    {
+     "seed": "outer space",
+     "usable": true,
+     "tier1_mean": 28.56,
+     "tier3_mean": 15.9,
+     "tier1_skew": 1.796,
+     "tier1_countries": 18,
+     "tier3_countries": 10,
+     "top_country": "US",
+     "countries_with_data": 56
+    },
+    {
+     "seed": "why is space dark",
+     "usable": true,
+     "tier1_mean": 33.33,
+     "tier3_mean": 22.22,
+     "tier1_skew": 1.5,
+     "tier1_countries": 9,
+     "tier3_countries": 9,
+     "top_country": "US",
+     "countries_with_data": 29
+    },
+    {
+     "seed": "how do telescopes work",
+     "usable": false,
+     "reason": "only 5 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "what is a black hole",
+     "usable": true,
+     "tier1_mean": 29.06,
+     "tier3_mean": 23.42,
+     "tier1_skew": 1.241,
+     "tier1_countries": 18,
+     "tier3_countries": 12,
+     "top_country": "US",
+     "countries_with_data": 57
+    },
+    {
+     "seed": "james webb telescope",
+     "usable": true,
+     "tier1_mean": 42.44,
+     "tier3_mean": 23.18,
+     "tier1_skew": 1.831,
+     "tier1_countries": 18,
+     "tier3_countries": 11,
+     "top_country": "CA",
+     "countries_with_data": 63
+    },
+    {
+     "seed": "voyager probe",
+     "usable": true,
+     "tier1_mean": 42.09,
+     "tier3_mean": 6.6,
+     "tier1_skew": 6.377,
+     "tier1_countries": 11,
+     "tier3_countries": 5,
+     "top_country": "US",
+     "countries_with_data": 20
+    },
+    {
+     "seed": "solar eclipse",
+     "usable": true,
+     "tier1_mean": 17.5,
+     "tier3_mean": 7.27,
+     "tier1_skew": 2.406,
+     "tier1_countries": 18,
+     "tier3_countries": 11,
+     "top_country": "PT",
+     "countries_with_data": 65
+    }
+   ]
+  },
+  {
+   "domain": "animal-senses-cognition",
+   "measured": true,
+   "seeds_usable": 3,
+   "seeds_undefined_max_tier1": 1,
+   "seeds_total": 8,
+   "tier1_skew_median": 1.741,
+   "tier1_skew_mean": 1.618,
+   "tier1_skew_min": 1.069,
+   "tier1_skew_max": 2.043,
+   "spread_max_over_min": 1.91,
+   "verdict": "Tier-1 leaning",
+   "seeds": [
+    {
+     "seed": "animal senses",
+     "usable": true,
+     "tier1_mean": 28.43,
+     "tier3_mean": 26.6,
+     "tier1_skew": 1.069,
+     "tier1_countries": 7,
+     "tier3_countries": 5,
+     "top_country": "LK",
+     "countries_with_data": 16
+    },
+    {
+     "seed": "animal intelligence",
+     "usable": true,
+     "tier1_mean": 39,
+     "tier3_mean": 22.4,
+     "tier1_skew": 1.741,
+     "tier1_countries": 18,
+     "tier3_countries": 10,
+     "top_country": "KR",
+     "countries_with_data": 58
+    },
+    {
+     "seed": "why can dogs smell so well",
+     "usable": false,
+     "reason": "only 1 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "how do bats echolocate",
+     "usable": false,
+     "reason": "only 1 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "what colors can animals see",
+     "usable": false,
+     "reason": "only 2 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "octopus intelligence",
+     "usable": true,
+     "tier1_mean": 50,
+     "tier3_mean": 0.0,
+     "tier1_skew": null,
+     "note": "Tier-3 basket mean is 0; ratio undefined but the term is maximally Tier-1 weighted",
+     "tier1_countries": 13,
+     "tier3_countries": 5,
+     "top_country": "GB",
+     "countries_with_data": 29
+    },
+    {
+     "seed": "bird navigation magnetic",
+     "usable": false,
+     "reason": "only 1 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "elephant communication",
+     "usable": true,
+     "tier1_mean": 40.44,
+     "tier3_mean": 19.8,
+     "tier1_skew": 2.043,
+     "tier1_countries": 9,
+     "tier3_countries": 5,
+     "top_country": "UZ",
+     "countries_with_data": 27
+    }
+   ]
+  },
+  {
+   "domain": "deep-sea-ocean-science",
+   "measured": true,
+   "seeds_usable": 6,
+   "seeds_undefined_max_tier1": 0,
+   "seeds_total": 8,
+   "tier1_skew_median": 1.684,
+   "tier1_skew_mean": 1.595,
+   "tier1_skew_min": 0.809,
+   "tier1_skew_max": 2.358,
+   "spread_max_over_min": 2.91,
+   "verdict": "Tier-1 leaning",
+   "seeds": [
+    {
+     "seed": "deep sea",
+     "usable": true,
+     "tier1_mean": 50.44,
+     "tier3_mean": 29.77,
+     "tier1_skew": 1.695,
+     "tier1_countries": 18,
+     "tier3_countries": 13,
+     "top_country": "US",
+     "countries_with_data": 62
+    },
+    {
+     "seed": "ocean science",
+     "usable": true,
+     "tier1_mean": 28.24,
+     "tier3_mean": 14.82,
+     "tier1_skew": 1.905,
+     "tier1_countries": 17,
+     "tier3_countries": 11,
+     "top_country": "SG",
+     "countries_with_data": 55
+    },
+    {
+     "seed": "why deep sea creatures",
+     "usable": false,
+     "reason": "only 7 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "how deep is the ocean",
+     "usable": true,
+     "tier1_mean": 23.67,
+     "tier3_mean": 14.14,
+     "tier1_skew": 1.673,
+     "tier1_countries": 15,
+     "tier3_countries": 7,
+     "top_country": "US",
+     "countries_with_data": 39
+    },
+    {
+     "seed": "what lives in the deep sea",
+     "usable": false,
+     "reason": "only 6 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "mariana trench",
+     "usable": true,
+     "tier1_mean": 37.56,
+     "tier3_mean": 33.18,
+     "tier1_skew": 1.132,
+     "tier1_countries": 18,
+     "tier3_countries": 11,
+     "top_country": "PH",
+     "countries_with_data": 61
+    },
+    {
+     "seed": "anglerfish",
+     "usable": true,
+     "tier1_mean": 55.56,
+     "tier3_mean": 23.56,
+     "tier1_skew": 2.358,
+     "tier1_countries": 18,
+     "tier3_countries": 9,
+     "top_country": "NZ",
+     "countries_with_data": 62
+    },
+    {
+     "seed": "bioluminescence",
+     "usable": true,
+     "tier1_mean": 1.29,
+     "tier3_mean": 1.6,
+     "tier1_skew": 0.809,
+     "tier1_countries": 17,
+     "tier3_countries": 10,
+     "top_country": "KY",
+     "countries_with_data": 66
+    }
+   ]
+  },
+  {
+   "domain": "marine-geology",
+   "measured": true,
+   "seeds_usable": 3,
+   "seeds_undefined_max_tier1": 1,
+   "seeds_total": 8,
+   "tier1_skew_median": 1.65,
+   "tier1_skew_mean": 1.705,
+   "tier1_skew_min": 1.628,
+   "tier1_skew_max": 1.838,
+   "spread_max_over_min": 1.13,
+   "verdict": "Tier-1 leaning",
+   "seeds": [
+    {
+     "seed": "seafloor",
+     "usable": true,
+     "tier1_mean": 26.19,
+     "tier3_mean": 15.88,
+     "tier1_skew": 1.65,
+     "tier1_countries": 16,
+     "tier3_countries": 8,
+     "top_country": "US",
+     "countries_with_data": 46
+    },
+    {
+     "seed": "ocean trench",
+     "usable": true,
+     "tier1_mean": 0.14,
+     "tier3_mean": 0.0,
+     "tier1_skew": null,
+     "note": "Tier-3 basket mean is 0; ratio undefined but the term is maximally Tier-1 weighted",
+     "tier1_countries": 14,
+     "tier3_countries": 9,
+     "top_country": "WS",
+     "countries_with_data": 42
+    },
+    {
+     "seed": "why is the ocean floor spreading",
+     "usable": false,
+     "reason": "only 2 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "how is the seafloor mapped",
+     "usable": false,
+     "reason": "only 1 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "what is a hydrothermal vent",
+     "usable": false,
+     "reason": "only 1 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "mid ocean ridge",
+     "usable": true,
+     "tier1_mean": 30.33,
+     "tier3_mean": 16.5,
+     "tier1_skew": 1.838,
+     "tier1_countries": 9,
+     "tier3_countries": 4,
+     "top_country": "US",
+     "countries_with_data": 17
+    },
+    {
+     "seed": "black smoker vent",
+     "usable": false,
+     "reason": "only 1 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "subduction zone",
+     "usable": true,
+     "tier1_mean": 29.31,
+     "tier3_mean": 18,
+     "tier1_skew": 1.628,
+     "tier1_countries": 13,
+     "tier3_countries": 8,
+     "top_country": "NZ",
+     "countries_with_data": 41
+    }
+   ]
+  },
+  {
+   "domain": "earth-science-geology-volcano",
+   "measured": true,
+   "seeds_usable": 4,
+   "seeds_undefined_max_tier1": 0,
+   "seeds_total": 8,
+   "tier1_skew_median": 1.57,
+   "tier1_skew_mean": 1.663,
+   "tier1_skew_min": 1.2,
+   "tier1_skew_max": 2.312,
+   "spread_max_over_min": 1.93,
+   "verdict": "Tier-1 leaning",
+   "seeds": [
+    {
+     "seed": "volcano",
+     "usable": true,
+     "tier1_mean": 1.33,
+     "tier3_mean": 1.11,
+     "tier1_skew": 1.2,
+     "tier1_countries": 18,
+     "tier3_countries": 9,
+     "top_country": "ME",
+     "countries_with_data": 63
+    },
+    {
+     "seed": "plate tectonics",
+     "usable": true,
+     "tier1_mean": 11.46,
+     "tier3_mean": 9,
+     "tier1_skew": 1.274,
+     "tier1_countries": 13,
+     "tier3_countries": 10,
+     "top_country": "PG",
+     "countries_with_data": 46
+    },
+    {
+     "seed": "why do volcanoes erupt",
+     "usable": false,
+     "reason": "basket coverage too thin: 6 Tier-1 and 2 Tier-3 countries returned data (minimum 4 each)",
+     "tier1_countries": 6,
+     "tier3_countries": 2,
+     "countries_with_data": 9
+    },
+    {
+     "seed": "how do earthquakes happen",
+     "usable": false,
+     "reason": "basket coverage too thin: 7 Tier-1 and 3 Tier-3 countries returned data (minimum 4 each)",
+     "tier1_countries": 7,
+     "tier3_countries": 3,
+     "countries_with_data": 11
+    },
+    {
+     "seed": "what causes tsunamis",
+     "usable": false,
+     "reason": "basket coverage too thin: 5 Tier-1 and 2 Tier-3 countries returned data (minimum 4 each)",
+     "tier1_countries": 5,
+     "tier3_countries": 2,
+     "countries_with_data": 9
+    },
+    {
+     "seed": "yellowstone supervolcano",
+     "usable": false,
+     "reason": "basket coverage too thin: 10 Tier-1 and 3 Tier-3 countries returned data (minimum 4 each)",
+     "tier1_countries": 10,
+     "tier3_countries": 3,
+     "countries_with_data": 19
+    },
+    {
+     "seed": "san andreas fault",
+     "usable": true,
+     "tier1_mean": 22.38,
+     "tier3_mean": 12,
+     "tier1_skew": 1.865,
+     "tier1_countries": 13,
+     "tier3_countries": 7,
+     "top_country": "US",
+     "countries_with_data": 36
+    },
+    {
+     "seed": "krakatoa eruption",
+     "usable": true,
+     "tier1_mean": 43.53,
+     "tier3_mean": 18.83,
+     "tier1_skew": 2.312,
+     "tier1_countries": 15,
+     "tier3_countries": 6,
+     "top_country": "AU",
+     "countries_with_data": 36
+    }
+   ]
+  },
+  {
+   "domain": "materials-and-manufacturing",
+   "measured": true,
+   "seeds_usable": 5,
+   "seeds_undefined_max_tier1": 0,
+   "seeds_total": 8,
+   "tier1_skew_median": 1.401,
+   "tier1_skew_mean": 2.264,
+   "tier1_skew_min": 1.071,
+   "tier1_skew_max": 3.748,
+   "spread_max_over_min": 3.5,
+   "verdict": "Tier-1 leaning",
+   "seeds": [
+    {
+     "seed": "how it's made",
+     "usable": true,
+     "tier1_mean": 22.25,
+     "tier3_mean": 20.77,
+     "tier1_skew": 1.071,
+     "tier1_countries": 16,
+     "tier3_countries": 13,
+     "top_country": "US",
+     "countries_with_data": 59
+    },
+    {
+     "seed": "materials science",
+     "usable": true,
+     "tier1_mean": 23.94,
+     "tier3_mean": 17.09,
+     "tier1_skew": 1.401,
+     "tier1_countries": 18,
+     "tier3_countries": 11,
+     "top_country": "KR",
+     "countries_with_data": 62
+    },
+    {
+     "seed": "why is steel stronger",
+     "usable": false,
+     "reason": "only 7 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "how are microchips made",
+     "usable": false,
+     "reason": "only 2 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "what is carbon fiber made of",
+     "usable": false,
+     "reason": "only 6 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "semiconductor fabrication",
+     "usable": true,
+     "tier1_mean": 25,
+     "tier3_mean": 6.75,
+     "tier1_skew": 3.704,
+     "tier1_countries": 14,
+     "tier3_countries": 8,
+     "top_country": "KR",
+     "countries_with_data": 47
+    },
+    {
+     "seed": "glass manufacturing",
+     "usable": true,
+     "tier1_mean": 32.35,
+     "tier3_mean": 23.18,
+     "tier1_skew": 1.396,
+     "tier1_countries": 17,
+     "tier3_countries": 11,
+     "top_country": "KR",
+     "countries_with_data": 56
+    },
+    {
+     "seed": "damascus steel",
+     "usable": true,
+     "tier1_mean": 25.17,
+     "tier3_mean": 6.71,
+     "tier1_skew": 3.748,
+     "tier1_countries": 18,
+     "tier3_countries": 7,
+     "top_country": "MN",
+     "countries_with_data": 59
+    }
+   ]
+  },
+  {
+   "domain": "logistics-how-things-move",
+   "measured": true,
+   "seeds_usable": 3,
+   "seeds_undefined_max_tier1": 1,
+   "seeds_total": 8,
+   "tier1_skew_median": 1.375,
+   "tier1_skew_mean": 1.431,
+   "tier1_skew_min": 1.374,
+   "tier1_skew_max": 1.544,
+   "spread_max_over_min": 1.12,
+   "verdict": "Tier-1 leaning",
+   "seeds": [
+    {
+     "seed": "container ship",
+     "usable": true,
+     "tier1_mean": 33.72,
+     "tier3_mean": 24.54,
+     "tier1_skew": 1.374,
+     "tier1_countries": 18,
+     "tier3_countries": 13,
+     "top_country": "SG",
+     "countries_with_data": 65
+    },
+    {
+     "seed": "supply chain",
+     "usable": true,
+     "tier1_mean": 23.83,
+     "tier3_mean": 17.33,
+     "tier1_skew": 1.375,
+     "tier1_countries": 18,
+     "tier3_countries": 12,
+     "top_country": "SH",
+     "countries_with_data": 60
+    },
+    {
+     "seed": "why are ports congested",
+     "usable": false,
+     "reason": "only 0 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "how does air traffic control work",
+     "usable": false,
+     "reason": "only 2 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "what happens to lost cargo",
+     "usable": false,
+     "reason": "only 1 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "ever given suez",
+     "usable": true,
+     "tier1_mean": 33.08,
+     "tier3_mean": 0.0,
+     "tier1_skew": null,
+     "note": "Tier-3 basket mean is 0; ratio undefined but the term is maximally Tier-1 weighted",
+     "tier1_countries": 12,
+     "tier3_countries": 4,
+     "top_country": "SG",
+     "countries_with_data": 23
+    },
+    {
+     "seed": "shipping container logistics",
+     "usable": true,
+     "tier1_mean": 25.36,
+     "tier3_mean": 16.43,
+     "tier1_skew": 1.544,
+     "tier1_countries": 11,
+     "tier3_countries": 7,
+     "top_country": "AE",
+     "countries_with_data": 36
+    },
+    {
+     "seed": "cargo plane loading",
+     "usable": false,
+     "reason": "only 1 countries returned data (minimum 8); term too thin to locate"
+    }
+   ]
+  },
+  {
+   "domain": "physics-fundamentals",
+   "measured": true,
+   "seeds_usable": 8,
+   "seeds_undefined_max_tier1": 0,
+   "seeds_total": 8,
+   "tier1_skew_median": 1.161,
+   "tier1_skew_mean": 1.387,
+   "tier1_skew_min": 0.684,
+   "tier1_skew_max": 2.603,
+   "spread_max_over_min": 3.81,
+   "verdict": "globally diffuse -- no meaningful Tier-1 premium from the topic itself",
+   "seeds": [
+    {
+     "seed": "physics explained",
+     "usable": true,
+     "tier1_mean": 25.88,
+     "tier3_mean": 28.18,
+     "tier1_skew": 0.918,
+     "tier1_countries": 17,
+     "tier3_countries": 11,
+     "top_country": "UG",
+     "countries_with_data": 54
+    },
+    {
+     "seed": "speed of light",
+     "usable": true,
+     "tier1_mean": 39.11,
+     "tier3_mean": 37,
+     "tier1_skew": 1.057,
+     "tier1_countries": 18,
+     "tier3_countries": 11,
+     "top_country": "US",
+     "countries_with_data": 57
+    },
+    {
+     "seed": "why is the sky blue",
+     "usable": true,
+     "tier1_mean": 39.14,
+     "tier3_mean": 30.91,
+     "tier1_skew": 1.266,
+     "tier1_countries": 14,
+     "tier3_countries": 11,
+     "top_country": "JM",
+     "countries_with_data": 48
+    },
+    {
+     "seed": "how does gravity work",
+     "usable": true,
+     "tier1_mean": 40.09,
+     "tier3_mean": 15.4,
+     "tier1_skew": 2.603,
+     "tier1_countries": 11,
+     "tier3_countries": 10,
+     "top_country": "US",
+     "countries_with_data": 35
+    },
+    {
+     "seed": "what is quantum entanglement",
+     "usable": true,
+     "tier1_mean": 43.64,
+     "tier3_mean": 22.22,
+     "tier1_skew": 1.964,
+     "tier1_countries": 11,
+     "tier3_countries": 9,
+     "top_country": "US",
+     "countries_with_data": 40
+    },
+    {
+     "seed": "double slit experiment",
+     "usable": true,
+     "tier1_mean": 20.28,
+     "tier3_mean": 29.64,
+     "tier1_skew": 0.684,
+     "tier1_countries": 18,
+     "tier3_countries": 11,
+     "top_country": "IN",
+     "countries_with_data": 56
+    },
+    {
+     "seed": "time dilation",
+     "usable": true,
+     "tier1_mean": 41.28,
+     "tier3_mean": 26.6,
+     "tier1_skew": 1.552,
+     "tier1_countries": 18,
+     "tier3_countries": 10,
+     "top_country": "CN",
+     "countries_with_data": 58
+    },
+    {
+     "seed": "absolute zero",
+     "usable": true,
+     "tier1_mean": 2.39,
+     "tier3_mean": 2.27,
+     "tier1_skew": 1.051,
+     "tier1_countries": 18,
+     "tier3_countries": 11,
+     "top_country": "AL",
+     "countries_with_data": 63
+    }
+   ]
+  },
+  {
+   "domain": "natural-history-adaptation",
+   "measured": true,
+   "seeds_usable": 3,
+   "seeds_undefined_max_tier1": 0,
+   "seeds_total": 8,
+   "tier1_skew_median": 1.014,
+   "tier1_skew_mean": 2.824,
+   "tier1_skew_min": 0.791,
+   "tier1_skew_max": 6.667,
+   "spread_max_over_min": 8.43,
+   "verdict": "globally diffuse -- no meaningful Tier-1 premium from the topic itself",
+   "seeds": [
+    {
+     "seed": "animal adaptation",
+     "usable": true,
+     "tier1_mean": 7.19,
+     "tier3_mean": 9.09,
+     "tier1_skew": 0.791,
+     "tier1_countries": 16,
+     "tier3_countries": 11,
+     "top_country": "PG",
+     "countries_with_data": 53
+    },
+    {
+     "seed": "evolution of animals",
+     "usable": true,
+     "tier1_mean": 22.5,
+     "tier3_mean": 22.2,
+     "tier1_skew": 1.014,
+     "tier1_countries": 14,
+     "tier3_countries": 10,
+     "top_country": "US",
+     "countries_with_data": 42
+    },
+    {
+     "seed": "why do animals camouflage",
+     "usable": false,
+     "reason": "only 3 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "how do animals survive extreme",
+     "usable": false,
+     "reason": "only 2 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "what is convergent evolution",
+     "usable": true,
+     "tier1_mean": 33.33,
+     "tier3_mean": 5,
+     "tier1_skew": 6.667,
+     "tier1_countries": 6,
+     "tier3_countries": 4,
+     "top_country": "US",
+     "countries_with_data": 10
+    },
+    {
+     "seed": "tardigrade survival",
+     "usable": false,
+     "reason": "only 2 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "octopus camouflage",
+     "usable": false,
+     "reason": "basket coverage too thin: 8 Tier-1 and 3 Tier-3 countries returned data (minimum 4 each)",
+     "tier1_countries": 8,
+     "tier3_countries": 3,
+     "countries_with_data": 16
+    },
+    {
+     "seed": "arctic fox adaptation",
+     "usable": false,
+     "reason": "only 4 countries returned data (minimum 8); term too thin to locate"
+    }
+   ]
+  },
+  {
+   "domain": "measurement-and-dating",
+   "measured": false,
+   "reason": "only 2 of 8 seeds returned usable region data (minimum 3); cell left empty rather than extrapolated",
+   "seeds": [
+    {
+     "seed": "carbon dating",
+     "usable": true,
+     "tier1_mean": 44.17,
+     "tier3_mean": 37.69,
+     "tier1_skew": 1.172,
+     "tier1_countries": 18,
+     "tier3_countries": 13,
+     "top_country": "US",
+     "countries_with_data": 60
+    },
+    {
+     "seed": "scientific measurement",
+     "usable": true,
+     "tier1_mean": 16.61,
+     "tier3_mean": 20.67,
+     "tier1_skew": 0.804,
+     "tier1_countries": 18,
+     "tier3_countries": 12,
+     "top_country": "NP",
+     "countries_with_data": 65
+    },
+    {
+     "seed": "why is carbon dating accurate",
+     "usable": false,
+     "reason": "only 2 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "how do scientists know how old",
+     "usable": false,
+     "reason": "only 4 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "what is radiometric dating",
+     "usable": false,
+     "reason": "only 6 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "ice core dating",
+     "usable": false,
+     "reason": "only 6 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "tree ring dating",
+     "usable": false,
+     "reason": "only 6 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "atomic clock accuracy",
+     "usable": false,
+     "reason": "only 4 countries returned data (minimum 8); term too thin to locate"
+    }
+   ]
+  },
+  {
+   "domain": "infrastructure-megaprojects",
+   "measured": false,
+   "reason": "only 2 of 8 seeds returned usable region data (minimum 3); cell left empty rather than extrapolated",
+   "seeds": [
+    {
+     "seed": "megaproject",
+     "usable": false,
+     "reason": "basket coverage too thin: 15 Tier-1 and 3 Tier-3 countries returned data (minimum 4 each)",
+     "tier1_countries": 15,
+     "tier3_countries": 3,
+     "countries_with_data": 39
+    },
+    {
+     "seed": "tunnel construction",
+     "usable": true,
+     "tier1_mean": 34.67,
+     "tier3_mean": 22.92,
+     "tier1_skew": 1.512,
+     "tier1_countries": 18,
+     "tier3_countries": 13,
+     "top_country": "SG",
+     "countries_with_data": 64
+    },
+    {
+     "seed": "why do tunnels not flood",
+     "usable": false,
+     "reason": "only 0 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "how are tunnels built underwater",
+     "usable": false,
+     "reason": "only 2 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "what holds up a suspension bridge",
+     "usable": false,
+     "reason": "only 0 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "channel tunnel",
+     "usable": true,
+     "tier1_mean": 14.94,
+     "tier3_mean": 2.1,
+     "tier1_skew": 7.116,
+     "tier1_countries": 18,
+     "tier3_countries": 10,
+     "top_country": "GB",
+     "countries_with_data": 53
+    },
+    {
+     "seed": "hoover dam construction",
+     "usable": false,
+     "reason": "only 7 countries returned data (minimum 8); term too thin to locate"
+    },
+    {
+     "seed": "panama canal locks",
+     "usable": false,
+     "reason": "basket coverage too thin: 8 Tier-1 and 2 Tier-3 countries returned data (minimum 4 each)",
+     "tier1_countries": 8,
+     "tier3_countries": 2,
+     "countries_with_data": 16
+    }
+   ]
+  }
+ ]
+}
