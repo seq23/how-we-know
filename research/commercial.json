@@ -1,0 +1,1348 @@
+{
+ "_status": "PROPOSAL / measurement. pov/topic-taxonomy.json is unchanged.",
+ "generated_at": "2026-09-03T12:28:36.876599+00:00",
+ "generator": "research/commercial.py",
+ "derived_from": "research/broad_mined.json (no new network requests)",
+ "THIS_IS_NOT_RPM": "This file contains no RPM, no CPC and no revenue figure. RPM per niche is not publicly measurable at this granularity and CPC could not be measured on this machine at all -- see research/commercial-axis.md. What is here is the share of a domain's mined queries that carry commercial-intent language: the SURFACE an advertiser could want, not evidence that any advertiser wants it.",
+ "known_gaps": [
+  "Intent language is not a bid. No bid is observed anywhere in this file.",
+  "The corpus is YouTube autocomplete, where commercial intent is systematically under-represented relative to Google web search. Absolute rates are therefore low across the board; only the ordering between domains carries information.",
+  "The explainer viewer and the commercial searcher are linked by inference, not observation."
+ ],
+ "fairness": "All 20 domains contributed an identical 8 seeds and 216 autocomplete requests to broad_mined.json, and all 20 are read here with the identical modifier list over the identical denominator (clean queries: noise and policy exclusions removed).",
+ "modifier_list_is_a_convention": "Not measured, not learned. Recorded in full below so a reader may disagree and recount.",
+ "categories": {
+  "purchase": {
+   "advertiser": "retailers, marketplaces, consumer brands",
+   "terms": [
+    "buy",
+    "price",
+    "prices",
+    "cost of",
+    "how much does",
+    "how much is",
+    "for sale",
+    "cheap",
+    "cheapest",
+    "discount",
+    "deal on",
+    "worth it",
+    "worth buying",
+    "amazon",
+    "ebay",
+    "order online",
+    "unboxing",
+    "review of"
+   ]
+  },
+  "career": {
+   "advertiser": "employers, recruiters, trade bodies, licensing boards",
+   "terms": [
+    "job",
+    "jobs",
+    "salary",
+    "salaries",
+    "career",
+    "careers",
+    "hiring",
+    "apprenticeship",
+    "internship",
+    "how to become",
+    "become a",
+    "requirements to become",
+    "licence",
+    "license exam",
+    "certification",
+    "certified",
+    "qualification",
+    "resume",
+    "cv for",
+    "interview questions"
+   ]
+  },
+  "education": {
+   "advertiser": "course platforms, universities, publishers, ed-tech",
+   "terms": [
+    "course",
+    "courses",
+    "tutorial",
+    "training",
+    "degree",
+    "masters",
+    "phd",
+    "university",
+    "college",
+    "syllabus",
+    "curriculum",
+    "textbook",
+    "book on",
+    "study guide",
+    "revision",
+    "exam",
+    "gcse",
+    "a level",
+    "learn",
+    "for beginners",
+    "crash course",
+    "lecture",
+    "lectures"
+   ]
+  },
+  "tooling": {
+   "advertiser": "software vendors, instrument makers, equipment suppliers",
+   "terms": [
+    "software",
+    "app",
+    "apps",
+    "simulation software",
+    "calculator",
+    "toolkit",
+    "equipment",
+    "camera for",
+    "telescope for",
+    "microscope for",
+    "kit for",
+    "plugin",
+    "cad"
+   ]
+  },
+  "local_service": {
+   "advertiser": "contractors, installers, insurers, local suppliers",
+   "terms": [
+    "near me",
+    "contractor",
+    "repair",
+    "installation",
+    "rental",
+    "rent a",
+    "insurance",
+    "quote for",
+    "supplier",
+    "manufacturer",
+    "consultant"
+   ]
+  }
+ },
+ "deliberately_excluded_terms": {
+  "best": "dominates curiosity queries ('best deep sea documentary'); would manufacture a signal in every domain",
+  "top": "same -- 'top 10' is the commonest explainer title on YouTube",
+  "how to": "instructional, not commercial; 'how to' is the base grammar of the whole explainer category",
+  "free": "signals the ABSENCE of a purchase as often as the presence of a market"
+ },
+ "removed_after_inspecting_their_matches": {
+  "vs / versus / comparison": "the commonest explainer format on YouTube, not a purchase comparison. Observed: 'angler fish vs shark', 'damascus steel vs bullet', 'container ship vs pirates'. Was 20 of deep sea's 42 hits.",
+  "company / companies / service / services": "brand and institution collisions, not local demand. Observed: 'anglerfish in animal company' (a VR game), and 'service' collides with 'national weather service' and 'postal service'.",
+  "class / classes": "the biological rank. Observed risk across paleontology and natural history ('what class is a shark'), not enrolment intent.",
+  "simulator": "games, not professional software. Observed: 'goat simulator 3', 'animal simulator underwater robot octopus parts'.",
+  "kit (bare) / gear / store / shop / download / sensor / microscope (bare)": "each matched curiosity or unrelated senses. Observed: \"how it's made kit kat\", 'material science gear institute', 'how does radar sensor work', 'bioluminescence under microscope'. Retained only in phrase forms that carry intent ('kit for', 'microscope for').",
+  "school": "'old school', 'school of fish'. The genuine enrolment signal is already carried by course / degree / university / exam."
+ },
+ "queries_examined": 13365,
+ "domains_measured": 20,
+ "results": [
+  {
+   "domain": "logistics-how-things-move",
+   "measured": true,
+   "clean_queries": 554,
+   "commercial_queries": 51,
+   "commercial_rate": 0.0921,
+   "zero_commercial_share": 0.9079,
+   "by_category": {
+    "purchase": {
+     "queries": 1,
+     "rate": 0.0018,
+     "advertiser": "retailers, marketplaces, consumer brands",
+     "examples": [
+      "ship container unboxing"
+     ]
+    },
+    "career": {
+     "queries": 39,
+     "rate": 0.0704,
+     "advertiser": "employers, recruiters, trade bodies, licensing boards",
+     "examples": [
+      "cargo ship job in pakistan",
+      "cargo ship job vacancy",
+      "cargo ship jobs in india",
+      "cargo ship jobs salary",
+      "container ship interview questions",
+      "container ship job apply"
+     ]
+    },
+    "education": {
+     "queries": 10,
+     "rate": 0.0181,
+     "advertiser": "course platforms, universities, publishers, ed-tech",
+     "examples": [
+      "supply chain basics for beginners",
+      "supply chain crash course",
+      "supply chain degree",
+      "supply chain for beginners",
+      "supply chain lecture",
+      "supply chain logistics training"
+     ]
+    },
+    "tooling": {
+     "queries": 1,
+     "rate": 0.0018,
+     "advertiser": "software vendors, instrument makers, equipment suppliers",
+     "examples": [
+      "supply chain software"
+     ]
+    },
+    "local_service": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "contractors, installers, insurers, local suppliers",
+     "examples": []
+    }
+   },
+   "named_advertiser_categories": [
+    "career",
+    "education"
+   ],
+   "top_terms": {
+    "jobs": 14,
+    "job": 9,
+    "interview questions": 8,
+    "career": 3,
+    "for beginners": 2,
+    "internship": 2,
+    "lecture": 2,
+    "training": 2,
+    "unboxing": 1,
+    "course": 1,
+    "degree": 1,
+    "careers": 1
+   }
+  },
+  {
+   "domain": "materials-and-manufacturing",
+   "measured": true,
+   "clean_queries": 992,
+   "commercial_queries": 47,
+   "commercial_rate": 0.0474,
+   "zero_commercial_share": 0.9526,
+   "by_category": {
+    "purchase": {
+     "queries": 4,
+     "rate": 0.004,
+     "advertiser": "retailers, marketplaces, consumer brands",
+     "examples": [
+      "glass making machine price",
+      "glass manufacturing machine price",
+      "is damascus steel worth it",
+      "tissot prx damascus steel unboxing"
+     ]
+    },
+    "career": {
+     "queries": 6,
+     "rate": 0.006,
+     "advertiser": "employers, recruiters, trade bodies, licensing boards",
+     "examples": [
+      "glass factory job",
+      "material science interview questions for mechanical engineering",
+      "material science jobs",
+      "materials science and engineering jobs",
+      "materials science interview questions",
+      "semiconductor manufacturing jobs"
+     ]
+    },
+    "education": {
+     "queries": 34,
+     "rate": 0.0343,
+     "advertiser": "course platforms, universities, publishers, ed-tech",
+     "examples": [
+      "damascus steel for beginners",
+      "ic fabrication course",
+      "ic fabrication lecture",
+      "material science engineering course",
+      "material science engineering lecture",
+      "material science ese lectures"
+     ]
+    },
+    "tooling": {
+     "queries": 2,
+     "rate": 0.002,
+     "advertiser": "software vendors, instrument makers, equipment suppliers",
+     "examples": [
+      "semiconductor manufacturing equipment",
+      "wafer fabrication equipment"
+     ]
+    },
+    "local_service": {
+     "queries": 1,
+     "rate": 0.001,
+     "advertiser": "contractors, installers, insurers, local suppliers",
+     "examples": [
+      "glass manufacturer vision"
+     ]
+    }
+   },
+   "named_advertiser_categories": [
+    "education"
+   ],
+   "top_terms": {
+    "lecture": 10,
+    "course": 8,
+    "revision": 6,
+    "lectures": 3,
+    "exam": 3,
+    "jobs": 3,
+    "price": 2,
+    "interview questions": 2,
+    "equipment": 2,
+    "for beginners": 1,
+    "job": 1,
+    "manufacturer": 1
+   }
+  },
+  {
+   "domain": "paleontology-extinction",
+   "measured": true,
+   "clean_queries": 504,
+   "commercial_queries": 21,
+   "commercial_rate": 0.0417,
+   "zero_commercial_share": 0.9583,
+   "by_category": {
+    "purchase": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "retailers, marketplaces, consumer brands",
+     "examples": []
+    },
+    "career": {
+     "queries": 3,
+     "rate": 0.006,
+     "advertiser": "employers, recruiters, trade bodies, licensing boards",
+     "examples": [
+      "is paleontology a good career",
+      "paleontology career",
+      "paleontology jobs"
+     ]
+    },
+    "education": {
+     "queries": 18,
+     "rate": 0.0357,
+     "advertiser": "course platforms, universities, publishers, ed-tech",
+     "examples": [
+      "flinders university paleontology",
+      "how are fossils formed gcse",
+      "how are fossils formed gcse biology",
+      "learn paleontology",
+      "mass extinction lecture",
+      "paleontology course"
+     ]
+    },
+    "tooling": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "software vendors, instrument makers, equipment suppliers",
+     "examples": []
+    },
+    "local_service": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "contractors, installers, insurers, local suppliers",
+     "examples": []
+    }
+   },
+   "named_advertiser_categories": [
+    "education"
+   ],
+   "top_terms": {
+    "lecture": 5,
+    "course": 3,
+    "university": 2,
+    "gcse": 2,
+    "career": 2,
+    "learn": 2,
+    "courses": 1,
+    "degree": 1,
+    "for beginners": 1,
+    "college": 1,
+    "jobs": 1
+   }
+  },
+  {
+   "domain": "archaeology-ancient-tech",
+   "measured": true,
+   "clean_queries": 693,
+   "commercial_queries": 27,
+   "commercial_rate": 0.039,
+   "zero_commercial_share": 0.961,
+   "by_category": {
+    "purchase": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "retailers, marketplaces, consumer brands",
+     "examples": []
+    },
+    "career": {
+     "queries": 7,
+     "rate": 0.0101,
+     "advertiser": "employers, recruiters, trade bodies, licensing boards",
+     "examples": [
+      "archaeologist qualification",
+      "archaeology as a career",
+      "archaeology career",
+      "archaeology job opportunities",
+      "archaeology jobs",
+      "archaeology jobs in india"
+     ]
+    },
+    "education": {
+     "queries": 19,
+     "rate": 0.0274,
+     "advertiser": "course platforms, universities, publishers, ed-tech",
+     "examples": [
+      "antikythera mechanism lecture",
+      "archaeology books for beginners",
+      "archaeology college",
+      "archaeology course",
+      "archaeology crash course",
+      "archaeology degree"
+     ]
+    },
+    "tooling": {
+     "queries": 1,
+     "rate": 0.0014,
+     "advertiser": "software vendors, instrument makers, equipment suppliers",
+     "examples": [
+      "archaeology equipment"
+     ]
+    },
+    "local_service": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "contractors, installers, insurers, local suppliers",
+     "examples": []
+    }
+   },
+   "named_advertiser_categories": [
+    "education"
+   ],
+   "top_terms": {
+    "lecture": 5,
+    "for beginners": 4,
+    "jobs": 3,
+    "career": 2,
+    "course": 2,
+    "tutorial": 2,
+    "university": 2,
+    "qualification": 1,
+    "college": 1,
+    "degree": 1,
+    "equipment": 1,
+    "job": 1
+   }
+  },
+  {
+   "domain": "energy-and-power",
+   "measured": true,
+   "clean_queries": 625,
+   "commercial_queries": 23,
+   "commercial_rate": 0.0368,
+   "zero_commercial_share": 0.9632,
+   "by_category": {
+    "purchase": {
+     "queries": 2,
+     "rate": 0.0032,
+     "advertiser": "retailers, marketplaces, consumer brands",
+     "examples": [
+      "power grid recharged unboxing",
+      "power grid unboxing"
+     ]
+    },
+    "career": {
+     "queries": 11,
+     "rate": 0.0176,
+     "advertiser": "employers, recruiters, trade bodies, licensing boards",
+     "examples": [
+      "nuclear power plant job",
+      "nuclear power plant job apply online",
+      "nuclear power plant job circular",
+      "nuclear reactor job",
+      "power grid apprenticeship",
+      "power grid hr salary"
+     ]
+    },
+    "education": {
+     "queries": 9,
+     "rate": 0.0144,
+     "advertiser": "course platforms, universities, publishers, ed-tech",
+     "examples": [
+      "how does a nuclear reactor work gcse physics",
+      "nuclear reactor lecture",
+      "nuclear reactor operator training",
+      "nuclear reactor training",
+      "nuclear reactor tutorial",
+      "power grid je syllabus"
+     ]
+    },
+    "tooling": {
+     "queries": 1,
+     "rate": 0.0016,
+     "advertiser": "software vendors, instrument makers, equipment suppliers",
+     "examples": [
+      "power grid equipment"
+     ]
+    },
+    "local_service": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "contractors, installers, insurers, local suppliers",
+     "examples": []
+    }
+   },
+   "named_advertiser_categories": [
+    "career"
+   ],
+   "top_terms": {
+    "job": 6,
+    "training": 3,
+    "salary": 3,
+    "tutorial": 2,
+    "syllabus": 2,
+    "unboxing": 2,
+    "gcse": 1,
+    "lecture": 1,
+    "apprenticeship": 1,
+    "equipment": 1,
+    "jobs": 1
+   }
+  },
+  {
+   "domain": "ocean-technology",
+   "measured": true,
+   "clean_queries": 507,
+   "commercial_queries": 16,
+   "commercial_rate": 0.0316,
+   "zero_commercial_share": 0.9684,
+   "by_category": {
+    "purchase": {
+     "queries": 5,
+     "rate": 0.0099,
+     "advertiser": "retailers, marketplaces, consumer brands",
+     "examples": [
+      "mr indian hacker underwater robot unboxing",
+      "underwater drone cheap",
+      "underwater drone price",
+      "underwater drone unboxing mr indian hacker",
+      "xpart submersible pump price in bangladesh"
+     ]
+    },
+    "career": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "employers, recruiters, trade bodies, licensing boards",
+     "examples": []
+    },
+    "education": {
+     "queries": 1,
+     "rate": 0.002,
+     "advertiser": "course platforms, universities, publishers, ed-tech",
+     "examples": [
+      "underwater robotics course"
+     ]
+    },
+    "tooling": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "software vendors, instrument makers, equipment suppliers",
+     "examples": []
+    },
+    "local_service": {
+     "queries": 10,
+     "rate": 0.0197,
+     "advertiser": "contractors, installers, insurers, local suppliers",
+     "examples": [
+      "submersible installation",
+      "submersible motor repair",
+      "submersible oil pump repair",
+      "submersible pump installation",
+      "submersible pump repair",
+      "submersible sump pump installation"
+     ]
+    }
+   },
+   "named_advertiser_categories": [
+    "local_service"
+   ],
+   "top_terms": {
+    "installation": 6,
+    "repair": 4,
+    "unboxing": 2,
+    "price": 2,
+    "cheap": 1,
+    "course": 1
+   }
+  },
+  {
+   "domain": "engineering-failure",
+   "measured": true,
+   "clean_queries": 294,
+   "commercial_queries": 8,
+   "commercial_rate": 0.0272,
+   "zero_commercial_share": 0.9728,
+   "by_category": {
+    "purchase": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "retailers, marketplaces, consumer brands",
+     "examples": []
+    },
+    "career": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "employers, recruiters, trade bodies, licensing boards",
+     "examples": []
+    },
+    "education": {
+     "queries": 7,
+     "rate": 0.0238,
+     "advertiser": "course platforms, universities, publishers, ed-tech",
+     "examples": [
+      "building collapse after effects tutorial",
+      "building collapse blender tutorial",
+      "building collapse rescue training",
+      "engineering failure university of toronto",
+      "structural collapse of course",
+      "structural collapse rescue training"
+     ]
+    },
+    "tooling": {
+     "queries": 1,
+     "rate": 0.0034,
+     "advertiser": "software vendors, instrument makers, equipment suppliers",
+     "examples": [
+      "software engineering failure"
+     ]
+    },
+    "local_service": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "contractors, installers, insurers, local suppliers",
+     "examples": []
+    }
+   },
+   "named_advertiser_categories": [],
+   "top_terms": {
+    "training": 3,
+    "tutorial": 2,
+    "university": 1,
+    "software": 1,
+    "course": 1
+   }
+  },
+  {
+   "domain": "space-astronomy",
+   "measured": true,
+   "clean_queries": 1323,
+   "commercial_queries": 21,
+   "commercial_rate": 0.0159,
+   "zero_commercial_share": 0.9841,
+   "by_category": {
+    "purchase": {
+     "queries": 1,
+     "rate": 0.0008,
+     "advertiser": "retailers, marketplaces, consumer brands",
+     "examples": [
+      "solar eclipse beyblade x unboxing"
+     ]
+    },
+    "career": {
+     "queries": 2,
+     "rate": 0.0015,
+     "advertiser": "employers, recruiters, trade bodies, licensing boards",
+     "examples": [
+      "astronomy jobs",
+      "how to do the telescope job in wobbly life"
+     ]
+    },
+    "education": {
+     "queries": 15,
+     "rate": 0.0113,
+     "advertiser": "course platforms, universities, publishers, ed-tech",
+     "examples": [
+      "astronomy conan gray guitar tutorial",
+      "astronomy course",
+      "astronomy crash course",
+      "astronomy degree",
+      "astronomy final exam review",
+      "astronomy for beginners"
+     ]
+    },
+    "tooling": {
+     "queries": 3,
+     "rate": 0.0023,
+     "advertiser": "software vendors, instrument makers, equipment suppliers",
+     "examples": [
+      "astronomy app",
+      "astronomy app iphone",
+      "what is the black hole app"
+     ]
+    },
+    "local_service": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "contractors, installers, insurers, local suppliers",
+     "examples": []
+    }
+   },
+   "named_advertiser_categories": [
+    "education"
+   ],
+   "top_terms": {
+    "app": 3,
+    "tutorial": 3,
+    "course": 2,
+    "lecture": 2,
+    "university": 2,
+    "training": 2,
+    "degree": 1,
+    "exam": 1,
+    "for beginners": 1,
+    "jobs": 1,
+    "job": 1,
+    "unboxing": 1
+   }
+  },
+  {
+   "domain": "measurement-and-dating",
+   "measured": true,
+   "clean_queries": 288,
+   "commercial_queries": 4,
+   "commercial_rate": 0.0139,
+   "zero_commercial_share": 0.9861,
+   "by_category": {
+    "purchase": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "retailers, marketplaces, consumer brands",
+     "examples": []
+    },
+    "career": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "employers, recruiters, trade bodies, licensing boards",
+     "examples": []
+    },
+    "education": {
+     "queries": 3,
+     "rate": 0.0104,
+     "advertiser": "course platforms, universities, publishers, ed-tech",
+     "examples": [
+      "carbon dating a level physics",
+      "carbon dating crash course",
+      "carbon dating gcse"
+     ]
+    },
+    "tooling": {
+     "queries": 1,
+     "rate": 0.0035,
+     "advertiser": "software vendors, instrument makers, equipment suppliers",
+     "examples": [
+      "carbon dating apps"
+     ]
+    },
+    "local_service": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "contractors, installers, insurers, local suppliers",
+     "examples": []
+    }
+   },
+   "named_advertiser_categories": [],
+   "top_terms": {
+    "a level": 1,
+    "apps": 1,
+    "course": 1,
+    "gcse": 1
+   }
+  },
+  {
+   "domain": "earth-science-geology-volcano",
+   "measured": true,
+   "clean_queries": 799,
+   "commercial_queries": 10,
+   "commercial_rate": 0.0125,
+   "zero_commercial_share": 0.9875,
+   "by_category": {
+    "purchase": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "retailers, marketplaces, consumer brands",
+     "examples": []
+    },
+    "career": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "employers, recruiters, trade bodies, licensing boards",
+     "examples": []
+    },
+    "education": {
+     "queries": 9,
+     "rate": 0.0113,
+     "advertiser": "course platforms, universities, publishers, ed-tech",
+     "examples": [
+      "how do earthquakes happen gcse",
+      "plate tectonics a level geography",
+      "plate tectonics college",
+      "plate tectonics crash course",
+      "plate tectonics learn bright",
+      "plate tectonics lecture"
+     ]
+    },
+    "tooling": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "software vendors, instrument makers, equipment suppliers",
+     "examples": []
+    },
+    "local_service": {
+     "queries": 1,
+     "rate": 0.0013,
+     "advertiser": "contractors, installers, insurers, local suppliers",
+     "examples": [
+      "volcano insurance"
+     ]
+    }
+   },
+   "named_advertiser_categories": [],
+   "top_terms": {
+    "tutorial": 3,
+    "gcse": 1,
+    "a level": 1,
+    "college": 1,
+    "course": 1,
+    "learn": 1,
+    "lecture": 1,
+    "insurance": 1
+   }
+  },
+  {
+   "domain": "natural-history-adaptation",
+   "measured": true,
+   "clean_queries": 319,
+   "commercial_queries": 4,
+   "commercial_rate": 0.0125,
+   "zero_commercial_share": 0.9875,
+   "by_category": {
+    "purchase": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "retailers, marketplaces, consumer brands",
+     "examples": []
+    },
+    "career": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "employers, recruiters, trade bodies, licensing boards",
+     "examples": []
+    },
+    "education": {
+     "queries": 4,
+     "rate": 0.0125,
+     "advertiser": "course platforms, universities, publishers, ed-tech",
+     "examples": [
+      "animal adaptations crash course",
+      "animal adaptations gcse",
+      "animal adaptations gcse biology",
+      "animal adaptations learn bright"
+     ]
+    },
+    "tooling": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "software vendors, instrument makers, equipment suppliers",
+     "examples": []
+    },
+    "local_service": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "contractors, installers, insurers, local suppliers",
+     "examples": []
+    }
+   },
+   "named_advertiser_categories": [],
+   "top_terms": {
+    "gcse": 2,
+    "course": 1,
+    "learn": 1
+   }
+  },
+  {
+   "domain": "physics-fundamentals",
+   "measured": true,
+   "clean_queries": 1280,
+   "commercial_queries": 15,
+   "commercial_rate": 0.0117,
+   "zero_commercial_share": 0.9883,
+   "by_category": {
+    "purchase": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "retailers, marketplaces, consumer brands",
+     "examples": []
+    },
+    "career": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "employers, recruiters, trade bodies, licensing boards",
+     "examples": []
+    },
+    "education": {
+     "queries": 15,
+     "rate": 0.0117,
+     "advertiser": "course platforms, universities, publishers, ed-tech",
+     "examples": [
+      "absolute zero degree celsius",
+      "double slit experiment a level physics",
+      "double slit experiment lecture",
+      "double slit interference lecture",
+      "physics degree explained",
+      "physics explained for beginners"
+     ]
+    },
+    "tooling": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "software vendors, instrument makers, equipment suppliers",
+     "examples": []
+    },
+    "local_service": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "contractors, installers, insurers, local suppliers",
+     "examples": []
+    }
+   },
+   "named_advertiser_categories": [
+    "education"
+   ],
+   "top_terms": {
+    "lecture": 5,
+    "degree": 2,
+    "for beginners": 2,
+    "gcse": 2,
+    "a level": 1,
+    "syllabus": 1,
+    "tutorial": 1,
+    "training": 1
+   }
+  },
+  {
+   "domain": "deep-sea-ocean-science",
+   "measured": true,
+   "clean_queries": 1358,
+   "commercial_queries": 15,
+   "commercial_rate": 0.011,
+   "zero_commercial_share": 0.989,
+   "by_category": {
+    "purchase": {
+     "queries": 2,
+     "rate": 0.0015,
+     "advertiser": "retailers, marketplaces, consumer brands",
+     "examples": [
+      "deep sea creatures unboxing",
+      "unboxing angler fish"
+     ]
+    },
+    "career": {
+     "queries": 4,
+     "rate": 0.0029,
+     "advertiser": "employers, recruiters, trade bodies, licensing boards",
+     "examples": [
+      "deep sea jobs",
+      "marine science careers",
+      "marine science job sector in bangladesh",
+      "marine science jobs"
+     ]
+    },
+    "education": {
+     "queries": 9,
+     "rate": 0.0066,
+     "advertiser": "course platforms, universities, publishers, ed-tech",
+     "examples": [
+      "bioluminescence lecture",
+      "how deep is the ocean piano tutorial",
+      "marine science a level",
+      "marine science chittagong university",
+      "marine science chittagong university subject review",
+      "marine science course"
+     ]
+    },
+    "tooling": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "software vendors, instrument makers, equipment suppliers",
+     "examples": []
+    },
+    "local_service": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "contractors, installers, insurers, local suppliers",
+     "examples": []
+    }
+   },
+   "named_advertiser_categories": [],
+   "top_terms": {
+    "lecture": 2,
+    "unboxing": 2,
+    "jobs": 2,
+    "university": 2,
+    "course": 2,
+    "tutorial": 1,
+    "a level": 1,
+    "careers": 1,
+    "degree": 1,
+    "job": 1
+   }
+  },
+  {
+   "domain": "animal-senses-cognition",
+   "measured": true,
+   "clean_queries": 192,
+   "commercial_queries": 2,
+   "commercial_rate": 0.0104,
+   "zero_commercial_share": 0.9896,
+   "by_category": {
+    "purchase": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "retailers, marketplaces, consumer brands",
+     "examples": []
+    },
+    "career": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "employers, recruiters, trade bodies, licensing boards",
+     "examples": []
+    },
+    "education": {
+     "queries": 1,
+     "rate": 0.0052,
+     "advertiser": "course platforms, universities, publishers, ed-tech",
+     "examples": [
+      "animal cognition lecture"
+     ]
+    },
+    "tooling": {
+     "queries": 1,
+     "rate": 0.0052,
+     "advertiser": "software vendors, instrument makers, equipment suppliers",
+     "examples": [
+      "octopus intelligent go app"
+     ]
+    },
+    "local_service": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "contractors, installers, insurers, local suppliers",
+     "examples": []
+    }
+   },
+   "named_advertiser_categories": [],
+   "top_terms": {
+    "lecture": 1,
+    "app": 1
+   }
+  },
+  {
+   "domain": "polar-extreme-environments",
+   "measured": true,
+   "clean_queries": 488,
+   "commercial_queries": 4,
+   "commercial_rate": 0.0082,
+   "zero_commercial_share": 0.9918,
+   "by_category": {
+    "purchase": {
+     "queries": 3,
+     "rate": 0.0061,
+     "advertiser": "retailers, marketplaces, consumer brands",
+     "examples": [
+      "polar doi ice cream price",
+      "polar kheer ice cream price",
+      "polar robusto ice cream price"
+     ]
+    },
+    "career": {
+     "queries": 1,
+     "rate": 0.002,
+     "advertiser": "employers, recruiters, trade bodies, licensing boards",
+     "examples": [
+      "antarctica jobs"
+     ]
+    },
+    "education": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "course platforms, universities, publishers, ed-tech",
+     "examples": []
+    },
+    "tooling": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "software vendors, instrument makers, equipment suppliers",
+     "examples": []
+    },
+    "local_service": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "contractors, installers, insurers, local suppliers",
+     "examples": []
+    }
+   },
+   "named_advertiser_categories": [],
+   "top_terms": {
+    "price": 3,
+    "jobs": 1
+   }
+  },
+  {
+   "domain": "marine-geology",
+   "measured": true,
+   "clean_queries": 487,
+   "commercial_queries": 3,
+   "commercial_rate": 0.0062,
+   "zero_commercial_share": 0.9938,
+   "by_category": {
+    "purchase": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "retailers, marketplaces, consumer brands",
+     "examples": []
+    },
+    "career": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "employers, recruiters, trade bodies, licensing boards",
+     "examples": []
+    },
+    "education": {
+     "queries": 3,
+     "rate": 0.0062,
+     "advertiser": "course platforms, universities, publishers, ed-tech",
+     "examples": [
+      "seafloor spreading a level geography",
+      "seafloor spreading geography a level",
+      "subduction zone lecture"
+     ]
+    },
+    "tooling": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "software vendors, instrument makers, equipment suppliers",
+     "examples": []
+    },
+    "local_service": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "contractors, installers, insurers, local suppliers",
+     "examples": []
+    }
+   },
+   "named_advertiser_categories": [],
+   "top_terms": {
+    "a level": 2,
+    "lecture": 1
+   }
+  },
+  {
+   "domain": "weather-and-storms",
+   "measured": true,
+   "clean_queries": 820,
+   "commercial_queries": 5,
+   "commercial_rate": 0.0061,
+   "zero_commercial_share": 0.9939,
+   "by_category": {
+    "purchase": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "retailers, marketplaces, consumer brands",
+     "examples": []
+    },
+    "career": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "employers, recruiters, trade bodies, licensing boards",
+     "examples": []
+    },
+    "education": {
+     "queries": 3,
+     "rate": 0.0037,
+     "advertiser": "course platforms, universities, publishers, ed-tech",
+     "examples": [
+      "storm chasing for beginners",
+      "storm chasing tutorial",
+      "tornado kick tutorial"
+     ]
+    },
+    "tooling": {
+     "queries": 2,
+     "rate": 0.0024,
+     "advertiser": "software vendors, instrument makers, equipment suppliers",
+     "examples": [
+      "storm chasing apps",
+      "storm chasing equipment"
+     ]
+    },
+    "local_service": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "contractors, installers, insurers, local suppliers",
+     "examples": []
+    }
+   },
+   "named_advertiser_categories": [],
+   "top_terms": {
+    "tutorial": 2,
+    "apps": 1,
+    "equipment": 1,
+    "for beginners": 1
+   }
+  },
+  {
+   "domain": "expedition-history",
+   "measured": true,
+   "clean_queries": 567,
+   "commercial_queries": 2,
+   "commercial_rate": 0.0035,
+   "zero_commercial_share": 0.9965,
+   "by_category": {
+    "purchase": {
+     "queries": 1,
+     "rate": 0.0018,
+     "advertiser": "retailers, marketplaces, consumer brands",
+     "examples": [
+      "expedition worth it arc raiders"
+     ]
+    },
+    "career": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "employers, recruiters, trade bodies, licensing boards",
+     "examples": []
+    },
+    "education": {
+     "queries": 1,
+     "rate": 0.0018,
+     "advertiser": "course platforms, universities, publishers, ed-tech",
+     "examples": [
+      "franklin expedition lecture"
+     ]
+    },
+    "tooling": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "software vendors, instrument makers, equipment suppliers",
+     "examples": []
+    },
+    "local_service": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "contractors, installers, insurers, local suppliers",
+     "examples": []
+    }
+   },
+   "named_advertiser_categories": [],
+   "top_terms": {
+    "worth it": 1,
+    "lecture": 1
+   }
+  },
+  {
+   "domain": "infrastructure-megaprojects",
+   "measured": true,
+   "clean_queries": 562,
+   "commercial_queries": 1,
+   "commercial_rate": 0.0018,
+   "zero_commercial_share": 0.9982,
+   "by_category": {
+    "purchase": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "retailers, marketplaces, consumer brands",
+     "examples": []
+    },
+    "career": {
+     "queries": 1,
+     "rate": 0.0018,
+     "advertiser": "employers, recruiters, trade bodies, licensing boards",
+     "examples": [
+      "tunnel project interview questions"
+     ]
+    },
+    "education": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "course platforms, universities, publishers, ed-tech",
+     "examples": []
+    },
+    "tooling": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "software vendors, instrument makers, equipment suppliers",
+     "examples": []
+    },
+    "local_service": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "contractors, installers, insurers, local suppliers",
+     "examples": []
+    }
+   },
+   "named_advertiser_categories": [],
+   "top_terms": {
+    "interview questions": 1
+   }
+  },
+  {
+   "domain": "incident-analysis",
+   "measured": true,
+   "clean_queries": 713,
+   "commercial_queries": 1,
+   "commercial_rate": 0.0014,
+   "zero_commercial_share": 0.9986,
+   "by_category": {
+    "purchase": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "retailers, marketplaces, consumer brands",
+     "examples": []
+    },
+    "career": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "employers, recruiters, trade bodies, licensing boards",
+     "examples": []
+    },
+    "education": {
+     "queries": 1,
+     "rate": 0.0014,
+     "advertiser": "course platforms, universities, publishers, ed-tech",
+     "examples": [
+      "maritime training line handling accident prevention"
+     ]
+    },
+    "tooling": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "software vendors, instrument makers, equipment suppliers",
+     "examples": []
+    },
+    "local_service": {
+     "queries": 0,
+     "rate": 0.0,
+     "advertiser": "contractors, installers, insurers, local suppliers",
+     "examples": []
+    }
+   },
+   "named_advertiser_categories": [],
+   "top_terms": {
+    "training": 1
+   }
+  }
+ ]
+}
