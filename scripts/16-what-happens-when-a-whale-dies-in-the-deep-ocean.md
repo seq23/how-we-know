@@ -1,6 +1,7 @@
 # What happens when a whale dies in the deep ocean?
 
-**Status:** HUMANIZED EDITORIAL PASS COMPLETE — OWNER CONFIRMATION AND MASTER WATCH REQUIRED  
+**Status:** HUMANIZED EDITORIAL PASS COMPLETE — OWNER CONFIRMATION AND MASTER WATCH REQUIRED    
+**Domain:** deep-sea-ocean-science  
 **Article:** /questions/what-happens-when-a-whale-dies-in-the-deep-ocean  
 **Word count:** 1168  
 **Estimated narration:** 8m 03s at 145 WPM
@@ -90,7 +91,7 @@ A dramatic ROV pass can overrepresent large scavengers and underrepresent the pr
 ### What to notice in the edit
 
 {{anatomy: THE SAME WHALE SILHOUETTE | skeleton@0.56,0.50 | bone@0.66,0.54}}
-Use a time-lapse structure with the same whale silhouette changing across years. Keep the phases on screen and avoid pretending that every whale fall follows the same exact clock. Original diagrams can show the succession without using copyrighted documentary footage. If real whale-fall footage is added, its license must be admitted clip by clip.
+Watch the same whale silhouette change across years in a time-lapse, with each phase labeled on screen — not every whale fall runs on the same exact clock, and this doesn't pretend it does. The succession is shown through original diagrams rather than documentary footage; any real whale-fall clip that does appear has its own license cleared and credited.
 
 ### Evidence limit
 

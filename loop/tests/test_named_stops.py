@@ -57,6 +57,13 @@ def check() -> list[str]:
     # (MAV4PF056RA) the moment upload.py gained a library fallback. Every lane
     # that can write to YouTube must honour this flag.
     env["LOOP_DRY_RUN"] = "1"
+    # loop/arming.py gates a SCHEDULED run of upload-cloud/shorts-cloud/reach
+    # behind a named LANE_NOT_ARMED_* stop before the lane even reaches its
+    # credential check. Simulating workflow_dispatch is what a human proving
+    # the lane by hand would do, and it is the meaningful test here too: even
+    # a deliberate dispatched run must name ITS credential stop correctly
+    # rather than crash, which is what this test actually verifies.
+    env["GITHUB_EVENT_NAME"] = "workflow_dispatch"
 
     for fname, acceptable in LANES:
         examined += 1

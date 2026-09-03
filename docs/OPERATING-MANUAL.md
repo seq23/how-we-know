@@ -104,9 +104,13 @@ long-form past what its quality can sustain.
 ### Why the raise, honestly
 
 **Watch hours are not what blocks monetisation. Subscribers are, by roughly 12×.**
-On the measured trajectory this channel clears 4,000 hours with under 100
-subscribers against a 1,000 floor. Two things follow, and the second matters more
-than the first:
+On the measured trajectory this channel clears 4,000 hours (the Standard tier's
+bar — 8,000 after 2027-02-01 for a channel not yet admitted) with under 100
+subscribers against a 1,000 floor. The nearer gate, Expanded YPP (500
+subscribers, 3,000 hours, fan funding without ads), clears its hours target
+sooner still and is bound by the same subscriber shortfall. See `loop/ypp.py`
+and RUNBOOK.md's "Monetisation, both gates". Two things follow, and the second
+matters more than the first:
 
 - **More long-form buys hours she would clear anyway.** It is still worth doing —
   an authored script costs about **$0.06** at the median, so the marginal episode
@@ -176,10 +180,14 @@ UTC stamp moves (15:00 → 16:00) and the local hour stays put.
 
 ### The fact that decides the Shorts ratio
 
-**Shorts watch time does not count toward the YouTube Partner Programme.** YPP
-requires 1,000 subscribers *and* 4,000 watch hours, and only long-form watch time
-counts toward the hours. Shorts get roughly 10× the views and contribute nothing
-to that half.
+**Shorts watch time does not count toward the long-form watch-hours gate.** Standard
+YPP requires 1,000 subscribers *and* 4,000 long-form watch hours (Expanded needs
+only 500 and 3,000 — see RUNBOOK.md's "Monetisation, both gates"), and only
+long-form watch time counts toward either hours figure. Shorts get roughly 10×
+the views and contribute nothing to that half. **3,000,000 Shorts views in 90
+days IS a separate, alternative route to either tier** — but it is a SEPARATE
+path, never a contribution added into the long-form hours total, and
+`loop/ypp.py` reports it as such rather than pooling the two.
 
 So Shorts are not a faster route to monetisation — they are the discovery engine
 that feeds one. The signal YouTube weights most heavily in 2026 is a viewer
@@ -404,6 +412,38 @@ spend through `loop/quota.py` behind `quota.upload_reserve()`, which holds a
 whole video's allowance back while the day's upload is still to come and
 releases it once an uploading lane has booked units. The caption backfill
 therefore spreads over several daily runs by design rather than eating the day.
+
+---
+
+## 3a. A script's sections, and where each one actually goes
+
+Added 2026-09-03, because it was previously true but undocumented — the
+script markdown has more structure than "narration" and each section has a
+different, single destination:
+
+| Section | Goes to | Never |
+|---|---|---|
+| `## Direct-answer lock` | The description's first line, the thumbnail brief, and the Shorts scorer | **Never spoken.** `voice/script_text.py` narrates only `## Narration`. |
+| `## Narration` (including `### Producer POV` and `### What to notice in the edit`) | The rendered audio, verbatim minus `{{directives}}` and headings | — |
+| `### Producer POV` `[HUMAN]` line | Spoken, first-person, the owner's own words from the POV bank | Never paraphrased by a model — `loop/author.py`'s prompt requires it verbatim. |
+| `### What to notice in the edit` / `### Final editorial note` | Spoken, addressed to the VIEWER in second person (corrected 2026-09-03; used to describe production strategy in third person — "the channel gains engagement", "the pinned comment can" — which is the "narrator reading channel strategy aloud" defect `loop/validate.py` V22 now guards against) | Never third-person meta-commentary about the channel's own business |
+| `## Chapters` | A DRAFT for the description; the real timestamps sent to YouTube come from `captions/<slug>.chapters.txt` (real caption timing) when it exists — see `loop/upload.py:build_chapters()` | The script's own estimated timestamps are never sent as-is; they drift from the real render by up to a minute |
+| `## Sources` | The description's Sources block, verbatim URLs, fetched and verified by V8 | Never translated or reformatted (see `loop/localize.py`) |
+
+## 3b. The retention breaker is domain-aware
+
+Added 2026-09-03. With a second domain live, "three consecutive videos below
+the retention floor" stopped being a single question. `loop/measure.py`
+computes a duration streak PER DOMAIN (`domains.split_rows()`,
+`domain_streaks()`) and decides the trip cause from the pattern:
+
+- every judgeable domain breaching together → the FORMAT is wrong, runtime
+  shortens
+- one domain breaching while others hold → that DOMAIN is wrong, its
+  allocation moves — the format is untouched
+
+Before this, the breaker had no notion of a domain at all and would have
+shortened every episode on the channel because one niche had a bad quarter.
 
 ---
 

@@ -192,7 +192,8 @@ Trip causes:
 | Cause | Set by |
 |---|---|
 | `strike` | a copyright or community strike, detected by `measure.py`, or by hand |
-| `retention` | average view percentage below **30%** for **3 consecutive** videos |
+| `retention` | average view DURATION below `retention.floor_avd_seconds` for **3 consecutive** videos, in EVERY judgeable domain (corrected 2026-09-03 — this was a percentage against a hardcoded runtime constant; see `loop/durations.py`) |
+| `domain` | the same duration streak, but in only ONE domain while others hold — allocation moves, runtime does not |
 | `validator` | any validator failure in `draft.py`, or any build failure on Tuesday |
 | `manual` | the owner |
 

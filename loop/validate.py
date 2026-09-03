@@ -46,9 +46,24 @@ that only make sense once a week has been selected:
                         one, and never land on a measured-weak day. Also proves
                         both weekday ladders are long enough for the cadence and
                         that the queue-depth guard actually bounds the raise
+  V21 no-boilerplate    no narrated sentence (8+ words) is byte-identical
+                        across two different scripts — the guard against the
+                        "generic template" signal a verbatim repeat produces
+  V22 producer-notes-2p narration never talks ABOUT the channel's strategy
+                        (monetisation, watch time, the pinned comment, the
+                        production queue) in third person; the transparency
+                        stays, addressed to the viewer instead
+  V23 chapters-yt-compliant  every chapter list loop/upload.py would actually
+                        send starts at 0:00, has no gap under 10s and never
+                        contains a bare "Title card" entry — the three ways a
+                        chapter list gets silently discarded by YouTube
+  V24 render-duration-floor  no render outside
+                        retention.runtime_floor_grandfathered is under the
+                        owner's 10-minute hard floor, checked against the
+                        RENDERED file, not the word count that predicts it
 
-V1-V15 and V20 are the RENDER GATE: `run_all(items)`, run by loop/draft.py in front of
-the pipeline. V16-V19 are the REACH group: `run_reach()`, run by
+V1-V15 and V20-V24 are the RENDER GATE: `run_all(items)`, run by loop/draft.py in front
+of the pipeline. V16-V19 are the REACH group: `run_reach()`, run by
 `loop/validate.py --reach`, and they govern what a video looks like on YouTube
 after it is published. They are deliberately kept out of the render gate — a
 lagging translation lane must never be able to halt drafting and, through the
@@ -156,6 +171,25 @@ def narration(path) -> str:
         body = body.split(stop, 1)[0]
     return "\n".join(l for l in body.split("\n")
                      if not l.strip().startswith("{{"))
+
+
+def spoken(path) -> str:
+    """The words a viewer actually hears - narration() with headings, list
+    bullets and the [HUMAN] marker itself stripped, matching
+    voice/script_text.py's own rules. narration() alone over-reports:
+    "### The audience gets to disagree" is a heading, dropped before TTS ever
+    sees it, and a validator that scans it anyway invents a defect that was
+    never spoken.
+    """
+    out = []
+    for line in narration(path).split("\n"):
+        s = line.strip()
+        if not s or s.startswith("#") or s.startswith(("-", "*", "+")):
+            continue
+        if re.match(r"^\*\*[^*]+:\*\*", s):
+            continue
+        out.append(s.replace("[HUMAN]", " "))
+    return " ".join(out)
 
 
 def sources_block(path) -> str:
@@ -1242,6 +1276,182 @@ def probe(url: str, timeout: int = 20) -> tuple[int, str]:
     return 0, "unreachable"
 
 
+# --------------------------------------------------- V21 no-boilerplate
+
+_SENT_SPLIT = re.compile(r"(?<=[.!?])\s+")
+
+
+def v21_no_boilerplate() -> Result:
+    """No narration sentence may be a VERBATIM repeat across two scripts.
+
+    2026-09-03: ten of twenty scripts carried the identical sentence "The rest
+    of this video follows that question through the actual environmental
+    constraints described by NOAA, MBARI, Smithsonian, and Woods Hole sources
+    in the companion article" - the only verbatim repeat in a 179-heading
+    corpus where 169 headings are unique. It pointed at an off-platform
+    article the viewer cannot click, and in five episodes it was not even
+    true. That is exactly the "generic template / mass production" signal
+    YouTube's 15 July 2025 inauthentic-content policy names.
+
+    There was no single generator to patch - `author.py` does not emit this
+    text, so the durable fix is this guard, not a template edit. Any sentence
+    of 8+ words that is byte-identical across two different scripts' narration
+    fails, before it ever reaches a render.
+
+    Hard-fails when it examines zero scripts.
+    """
+    r = Result("V21 no-boilerplate")
+    seen: dict[str, str] = {}
+    for p in sorted((ROOT / "scripts").glob("*.md")):
+        r.examined += 1
+        text = re.sub(r"\s+", " ", spoken(p)).strip()
+        for sent in _SENT_SPLIT.split(text):
+            sent = sent.strip()
+            words = sent.split()
+            if len(words) < 8:
+                continue
+            if sent in seen and seen[sent] != p.name:
+                r.fail(f"{p.name} and {seen[sent]} share a verbatim narrated "
+                       f"sentence ({len(words)} words): {sent[:100]!r}")
+            else:
+                seen.setdefault(sent, p.name)
+    return r
+
+
+# ------------------------------------------------ V22 producer-notes-2p
+
+_META_PHRASES = [
+    "the channel", "monetiz", "watch time", "topic intelligence",
+    "editorial reason", "pinned comment can", "engagement while",
+    "production queue", "follow-up episodes with a real editorial",
+    "the audience gets", "the audience helps", "for a channel trying",
+    "algorithm", "click-through", "subscriber count",
+]
+
+
+def v22_producer_notes_second_person() -> Result:
+    """Narration never talks ABOUT the channel's strategy in third person.
+
+    2026-09-02: ep09 alone spoke nine sentences of producer-facing channel
+    strategy to the viewer - "That is the kind of monetization-minded choice
+    worth keeping", "The channel gains engagement while reinforcing the
+    scientific boundary." A narrator reading channel strategy aloud is a
+    different defect from an unsourced number, but it is still something no
+    viewer should be hearing.
+
+    The fix keeps the transparency (it is the channel's voice) but requires it
+    stay addressed to the viewer, not the production. This guard cannot verify
+    grammatical person, but it can hard-ban the specific vocabulary that marks
+    prose as being ABOUT the channel's business rather than FOR the person
+    watching, and it is exactly the vocabulary the 2026-09-02 audit found.
+
+    Hard-fails when it examines zero scripts.
+    """
+    r = Result("V22 producer-notes-second-person")
+    for p in sorted((ROOT / "scripts").glob("*.md")):
+        r.examined += 1
+        text = spoken(p).lower()
+        for phrase in _META_PHRASES:
+            if phrase in text:
+                r.fail(f"{p.name}: narration contains channel-strategy "
+                       f"language {phrase!r} — rewrite it addressed to the "
+                       f"viewer, not the production")
+    return r
+
+
+# ------------------------------------------- V23 chapters-yt-compliant
+
+def v23_chapters_compliant() -> Result:
+    """Every chapter list this repo would actually SEND to YouTube is legal.
+
+    2026-09-02: `loop/upload.py` built its chapter list by regexing `##
+    Chapters` out of the script and sending it as-is. Two defects: the
+    timestamps are the script's ESTIMATE, not the render's real timing (ep08
+    said 7:48 for a chapter the render actually reaches at 8:45), and 11 of 20
+    scripts contained a sub-10-second "Title card" chapter — YouTube discards
+    the ENTIRE list, not just the short entry, the moment one chapter is under
+    10 seconds. `loop/upload.py:build_chapters()` now prefers
+    `captions/<slug>.chapters.txt` (real timing) and falls back to a corrected
+    derivation from the script that drops "Title card" and merges any
+    remaining sub-10s gap. This validator proves the OUTPUT of that function
+    is legal for every script in the repo, not just the code path that
+    produces it.
+
+    Hard-fails when it examines zero scripts.
+    """
+    r = Result("V23 chapters-yt-compliant")
+    sys.path.insert(0, str(ROOT / "loop"))
+    import upload as up                                   # noqa: PLC0415
+    for p in sorted((ROOT / "scripts").glob("*.md")):
+        r.examined += 1
+        text = p.read_text(encoding="utf-8")
+        chapters = up.build_chapters(p.stem, text)
+        if not chapters:
+            r.note(f"{p.name}: no ## Chapters section (nothing to check)")
+            continue
+        times = [up._parse_ts(c.split(" ", 1)[0]) for c in chapters]  # noqa: SLF001
+        if times[0] != 0:
+            r.fail(f"{p.name}: first chapter is not at 0:00 "
+                   f"({chapters[0]!r}) — YouTube requires it")
+        for a, b, label in zip(times, times[1:], (c.split(" ", 1)[1] for c in chapters)):
+            if b - a < up.YT_MIN_CHAPTER_S:
+                r.fail(f"{p.name}: {label!r} is only {b - a}s after the "
+                       f"previous chapter — under the {up.YT_MIN_CHAPTER_S}s "
+                       f"floor that makes YouTube discard the WHOLE list")
+        if any(c.split(" ", 1)[1] == "Title card" for c in chapters):
+            r.fail(f"{p.name}: chapter list still contains a bare 'Title "
+                   f"card' entry")
+    return r
+
+
+# ------------------------------------------------- V24 render-duration-floor
+
+def v24_render_duration_floor() -> Result:
+    """No NEW render is under the owner's hard 10-minute floor.
+
+    2026-09-03 decision: every episode from here exceeds 10 minutes, on
+    RENDERED DURATION as well as narration word count — a word-count floor
+    alone would not have caught the original defect, which was that a word
+    count and a render can disagree once the wpm assumption feeding the word
+    count is wrong. The existing 20 episodes (7.5-8.9 minutes, rendered
+    2026-08-30, before this rule existed) are NOT re-rendered — that is the
+    owner's decision, recorded in loop/config.json
+    retention.runtime_floor_grandfathered by name, which is what lets this
+    validator hold the line going forward without re-litigating the past.
+
+    Exempt (examines zero, does not fail) when every render on disk is
+    grandfathered — that is the honest state of a channel with no new
+    long-form render yet, not a validator that cannot reach what it governs.
+    Shorts are exempt outright: they never had a floor to begin with.
+    """
+    r = Result("V24 render-duration-floor")
+    sys.path.insert(0, str(ROOT / "loop"))
+    import durations as D                                 # noqa: PLC0415
+    cfg = config()
+    floor_min = float(cfg["retention"]["runtime_floor_minutes"])
+    grandfathered = set(cfg["retention"]["runtime_floor_grandfathered"])
+    any_new = False
+    for p in sorted((ROOT / "renders").glob("*-final.mp4")) \
+            if (ROOT / "renders").exists() else []:
+        slug = p.name[:-len("-final.mp4")]
+        if slug in grandfathered:
+            continue
+        any_new = True
+        r.examined += 1
+        secs = D.ffprobe_duration(p)
+        if secs is None:
+            r.fail(f"{slug}: could not read a duration from {p.name}")
+            continue
+        if secs < floor_min * 60:
+            r.fail(f"{slug}: rendered {secs / 60:.2f} min, under the "
+                   f"{floor_min}-minute hard floor")
+    r.exempt = not any_new
+    if r.exempt:
+        r.note("every render on disk is grandfathered (predates the "
+               "2026-09-03 floor) — nothing new to check yet")
+    return r
+
+
 # ------------------------------------------------------------------ runner
 
 def run_all(items) -> tuple[bool, list[dict]]:
@@ -1257,7 +1467,9 @@ def run_all(items) -> tuple[bool, list[dict]]:
                v9_footage_window(), v10_footage_crop(), v11_footage_hash(),
                v12_footage_scope(), v13_render_not_clipped(),
                v14_shorts_attribution(), v15_shorts_caption_crop(),
-               v20_cadence_schedule()]
+               v20_cadence_schedule(), v21_no_boilerplate(),
+               v22_producer_notes_second_person(), v23_chapters_compliant(),
+               v24_render_duration_floor()]
     rows = [r.as_dict() for r in results]
     return all(r.ok for r in results), rows
 

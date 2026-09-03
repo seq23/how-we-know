@@ -1,6 +1,7 @@
 # What is a frilled shark?
 
-**Status:** HUMANIZED EDITORIAL PASS COMPLETE — OWNER CONFIRMATION AND MASTER WATCH REQUIRED  
+**Status:** HUMANIZED EDITORIAL PASS COMPLETE — OWNER CONFIRMATION AND MASTER WATCH REQUIRED    
+**Domain:** deep-sea-ocean-science  
 **Article:** /questions/what-is-a-frilled-shark  
 **Word count:** 1163  
 **Estimated narration:** 8m 01s at 145 WPM
@@ -83,7 +84,7 @@ Use 'ancient-looking' only as a description of our reaction, never as evidence t
 ### What to notice in the edit
 
 {{anatomy: SILHOUETTE COMPARISON | mouth at the end of the head@0.10,0.50 | six gill pairs@0.34,0.54 | frilled collar@0.30,0.44}}
-Use anatomy labels and a silhouette comparison with a typical shark. Do not animate a speculative lunge as if it were filmed behavior. If a reconstruction is shown, label it clearly. This episode's structural variation is to correct the viral claim first, then earn back the viewer's interest with what the evidence genuinely supports.
+Watch for the anatomy labels and the silhouette next to a typical shark, and notice that a speculative lunge is never animated as if it were filmed behavior — a reconstruction gets labeled as one. This one corrects the viral claim first, then earns your interest back with what the evidence actually supports.
 
 ### Evidence limit
 
