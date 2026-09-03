@@ -19,14 +19,35 @@ This file is the only place the costs are written down:
     videos.list        1      captions.list     50
     captions.insert  400      captions.update  450
 
+THE ARITHMETIC AT THE RAISED CADENCE (4 long-form + 9 Shorts a week, owner
+decision 2026-09-02). One episode end to end is 2,201 units — upload 1,600,
+thumbnail 50, the scheduling flip 50, its caption track 450 (list 50 + insert
+400) and its localizations 51 (list 1 + update 50). One Short is 1,700: upload,
+thumbnail, flip, and no reach lane. So a week is 4 x 2,201 + 9 x 1,700 = 24,104
+units against 70,000 available — 34%, comfortably inside.
+
+THE WEEK IS NOT WHAT BREAKS. The day is. On 2026-09-02 the day reached 9,600 of
+10,000 and the Shorts lane deferred. Four reserves keep the peak day bounded
+from either running order:
+
+    episode lane   videos_affordable(limit, reserve=shorts_reserve())
+    Shorts lane    videos_affordable(limit, reserve=upload_reserve())
+    reach lanes    units_affordable(cost, want, reserve=deferrable_reserve())
+
+Worst case either way round is 3 episodes + 2 Shorts + one video's reach =
+5 x 1,700 + 501 = 9,001 of the 9,600 usable. The day's episode upload can no
+longer be starved by Shorts or by a backfill, and the evening Shorts can no
+longer be starved by a four-episode morning.
+
 The two REACH lanes (captions, localizations) added 2026-09-02 spend from the
 same account. They are cheap per video but the caption backfill is not: 15 live
 videos x (captions.list 50 + captions.insert 400) = 6,750 units, which alone is
 most of a day. So neither reach lane may take the last of the allowance — the
 publish lane's flip and the daily upload come first. `units_affordable()`
 enforces that with an explicit reserve; the reach lanes pass
-`reserve=PER_VIDEO`, so at least one whole video upload always survives them,
-and the backfill simply spreads over several daily runs.
+`reserve=deferrable_reserve()`, so a whole episode upload AND the evening's
+Shorts always survive them, and the backfill simply spreads over several daily
+runs.
 """
 from __future__ import annotations
 
@@ -77,20 +98,41 @@ def remaining() -> int:
     return max(0, DAILY - HEADROOM - _load()["spent"])
 
 
-def videos_affordable(want: int) -> int:
-    """How many whole videos can still be uploaded today, at most `want`."""
-    return max(0, min(want, remaining() // PER_VIDEO))
+def videos_affordable(want: int, reserve: int = 0) -> int:
+    """How many whole videos can still be uploaded today, at most `want`.
+
+    `reserve` is units this caller must NOT touch — the other irreversible
+    lane's slot. The episode lane passes `shorts_reserve()`; the Shorts lane
+    passes `upload_reserve()`. Both defaulted to 0 before the cadence rose,
+    which was survivable at 2 episodes and 4 Shorts a week and is not at 4
+    and 9: 4 x 1,700 + 2 x 1,700 is 10,200 units against a 9,600 usable day.
+    """
+    return max(0, min(want, (remaining() - max(0, reserve)) // PER_VIDEO))
 
 
-# Every lane that spends the 1,600-unit videos.insert. If one of these has
-# already booked units today, its upload has HAPPENED and there is nothing left
-# to hold quota back for.
-UPLOADING_LANES = ("backfill", "cloud-upload", "thu-upload", "shorts",
-                   "shorts-cloud")
+# Every lane that spends the 1,600-unit videos.insert, split by WHAT it uploads.
+#
+# The split matters and used to be missing. One tuple held both, so a Shorts run
+# cleared `upload_reserve()` to zero — and the reserve exists precisely to stop
+# a Short from being the reason that day's episode upload fails. A Shorts spend
+# is evidence a Short happened; it is no evidence at all that the episode did.
+#
+# The two reserves are symmetric and each stands down once its own lane has
+# spent, so they bound the day from either running order without deadlocking:
+# whichever lane runs first sees the other's reserve, and whichever runs second
+# sees the first's actual spend.
+LONGFORM_LANES = ("backfill", "cloud-upload", "thu-upload")
+SHORTS_LANES = ("shorts", "shorts-cloud")
+UPLOADING_LANES = LONGFORM_LANES + SHORTS_LANES
+
+# How many Shorts an evening may cost the day. At 9 Shorts a week the lane takes
+# one or two a night; two is the peak, and two whole video uploads (3,400 units)
+# is what the episode lane must leave room for.
+SHORTS_PER_DAY_PEAK = 2
 
 
 def upload_reserve() -> int:
-    """How much to keep back for an upload that has not happened yet today.
+    """How much to keep back for the day's EPISODE upload, if it has not run.
 
     A flat reserve is the safe default and the wrong answer late in the day: it
     tells the caption backfill to protect an allowance the 09:00 upload already
@@ -98,12 +140,42 @@ def upload_reserve() -> int:
     stop a cheap deferrable lane from being the reason a publish slot fails —
     once the day's upload is in the ledger, that risk is over.
 
-    Returns PER_VIDEO while no uploading lane has spent today, 0 after one has.
+    Returns PER_VIDEO while no LONG-FORM lane has spent today, 0 after one has.
+    Shorts spending deliberately does not clear it: the long-form upload is the
+    one lane that cannot be deferred, and at 4 episodes and 9 Shorts a week the
+    Shorts lane runs more often than the episode lane does.
     """
     spent_by = _load().get("by_lane") or {}
-    if any(spent_by.get(lane) for lane in UPLOADING_LANES):
+    if any(spent_by.get(lane) for lane in LONGFORM_LANES):
         return 0
     return PER_VIDEO
+
+
+def shorts_reserve() -> int:
+    """How much to keep back for the evening's Shorts, if they have not run.
+
+    The mirror of `upload_reserve()`, and the other half of what makes the
+    higher cadence fit inside one day. Without it the episode lane's `--limit 4`
+    could take 6,800 units at 09:00 and leave the 19:00 Shorts lane nothing —
+    and Shorts are the only cheap lever on the subscriber half of the Partner
+    Programme threshold, so starving them is not the harmless direction.
+
+    Returns two whole video uploads while no Shorts lane has spent today, 0
+    after one has.
+    """
+    spent_by = _load().get("by_lane") or {}
+    if any(spent_by.get(lane) for lane in SHORTS_LANES):
+        return 0
+    return SHORTS_PER_DAY_PEAK * PER_VIDEO
+
+
+def deferrable_reserve() -> int:
+    """What a cheap, deferrable lane must leave alone: both irreversible lanes.
+
+    Captions and localizations can always wait a day. An episode publish slot
+    and an evening Shorts slot cannot, so a reach lane reserves for BOTH.
+    """
+    return upload_reserve() + shorts_reserve()
 
 
 def units_affordable(unit_cost: int, want: int, reserve: int = 0) -> int:

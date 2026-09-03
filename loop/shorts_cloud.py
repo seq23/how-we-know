@@ -112,7 +112,9 @@ def run(limit: int = 2, dry_run: bool = False) -> int:
         # The same 10,000-unit daily allowance the episode lane spends from. A
         # Short costs exactly what an episode costs (1,600 insert + 50 thumb +
         # 50 flip); YouTube does not discount the short one.
-        afford = limit if dry_run else quota.videos_affordable(limit)
+        afford = (limit if dry_run else
+                  quota.videos_affordable(limit,
+                                          reserve=quota.upload_reserve()))
         if afford == 0:
             st.named_stop("QUOTA_EXHAUSTED",
                           f"no quota left today for a Short. {quota.report()}",

@@ -47,6 +47,7 @@ LOOP = Path(__file__).resolve().parent
 ROOT = LOOP.parent
 sys.path.insert(0, str(LOOP))
 
+import cadence                               # noqa: E402
 import backfill                                  # noqa: E402
 import ledger                                    # noqa: E402
 import quota                                     # noqa: E402
@@ -95,7 +96,10 @@ def fetch(shelf, key: str, dest: Path) -> Path:
 
 def run(limit: int = 4, dry_run: bool = False) -> int:
     cfg = config()
-    per_week = cfg["cadence"]["videos_per_week"]
+    # THROUGH cadence.effective(). See the note in loop/backfill.py:library():
+    # this lane assigns the publish slot, so it must see the same cadence the
+    # drafting and ranking stages do.
+    per_week = cadence.effective()
     order = json.loads((ROOT / "research" / "publish_order.json").read_text())
     questions = {q["slug"]: q["query"] for q in order["queue"]}
 
@@ -120,7 +124,10 @@ def run(limit: int = 4, dry_run: bool = False) -> int:
                 unblock="On the Mac: bin/push-to-r2.sh")
 
         # -- the shared allowance ---------------------------------------
-        afford = limit if dry_run else quota.videos_affordable(limit)
+        # Reserve the evening's Shorts - see loop/quota.shorts_reserve().
+        afford = (limit if dry_run else
+                  quota.videos_affordable(limit,
+                                          reserve=quota.shorts_reserve()))
         if afford == 0:
             # NAME WHO SPENT IT. This stop fired on 2026-09-01 (run
             # 33521586490) and the message said only "no quota left", so it

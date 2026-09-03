@@ -49,6 +49,7 @@ ROOT = LOOP.parent
 sys.path.insert(0, str(LOOP))
 
 import backfill as B                              # noqa: E402
+import cadence                                    # noqa: E402
 import ledger                                     # noqa: E402
 import publish as P                               # noqa: E402
 import quota                                      # noqa: E402
@@ -58,11 +59,48 @@ from common import Stage, config, now, week_id     # noqa: E402
 SHORTS_DIR = ROOT / "shorts"
 SHORTS_HOUR_LOCAL = 19          # 19:00, the middle of the 18:00-21:00 peak
 SHORTS_TZ = ZoneInfo("America/Chicago")
-SHORTS_WEEKDAYS = (0, 2, 4, 5)  # Mon, Wed, Fri, Sat - off the episode days
-SHORTS_PER_WEEK = 4
+
+# THE EVENING LADDER, IN ORDER OF USE, AND THE CADENCE TAKES THE FIRST N.
+#
+# Each rung is (weekday, local hour), Monday=0. Every hour on it is inside the
+# 18:00-21:00 evening peak, and none of them is the 10:00 episode slot - a
+# Short posted on the long-form schedule lands in the worst part of its own day,
+# which is the reason this lane owns its own scheduler at all.
+#
+#   rungs 1-4  Mon, Wed, Fri, Sat at 19:00   - exactly the 4/week schedule that
+#                                              was already running, unchanged
+#   rungs 5-7  Sun, Tue, Thu at 19:00        - fills the week out to daily
+#   rungs 8-9  Sat, Sun at 21:00             - the second slot goes on the two
+#                                              weekend evenings, where short-form
+#                                              consumption is highest and a
+#                                              21:00 post is still inside the
+#                                              stated peak
+#
+# 9/week is the middle of the owner's 8-10 band. Raising the number in
+# loop/config.json moves it; going past rung 9 is a NAMED refusal, not a
+# wrap-around, because doubling up an evening is not a cadence increase.
+SHORTS_SLOT_LADDER = ((0, 19), (2, 19), (4, 19), (5, 19),
+                      (6, 19), (1, 19), (3, 19),
+                      (5, 21), (6, 21))
+SHORTS_WEEKDAYS = tuple(sorted({wd for wd, _ in SHORTS_SLOT_LADDER[:4]}))
 UPLOAD_UNITS, THUMB_UNITS, FLIP_UNITS = 1600, 50, 50
 DAILY_UNITS = 10000
 LEDGER = LOOP / "state" / "shorts_ledger.json"
+
+
+class ShortsCadenceExceedsLadder(Exception):
+    """More evening slots a week were asked for than the ladder defines."""
+
+
+def slot_ladder(per_week: int) -> tuple[tuple[int, int], ...]:
+    """The (weekday, hour) rungs a Shorts cadence of `per_week` uses."""
+    n = max(1, int(per_week))
+    if n > len(SHORTS_SLOT_LADDER):
+        raise ShortsCadenceExceedsLadder(
+            f"{n} Shorts a week were asked for but the evening ladder defines "
+            f"{len(SHORTS_SLOT_LADDER)} rungs. Add a rung with the evidence "
+            f"for it - do not stack two Shorts on one evening slot.")
+    return SHORTS_SLOT_LADDER[:n]
 
 
 def load_ledger() -> dict:
@@ -76,20 +114,42 @@ def save_ledger(d: dict) -> None:
     LEDGER.write_text(json.dumps(d, indent=2) + "\n")
 
 
-def slots(start: datetime, n: int) -> list[datetime]:
-    """`n` Short slots on the configured evenings, pinned in LOCAL time.
+def slots(start: datetime, n: int, per_week: int | None = None) -> list[datetime]:
+    """`n` Short slots on the cadence's evenings, pinned in LOCAL time.
 
     Local, not UTC, for the same reason the episode slots are: a fixed UTC hour
     is correct only until the clocks change.
+
+    Every slot is STRICTLY AFTER `start`, and `schedule_for` passes the last
+    Short already on the calendar - so raising the Shorts cadence hands out new
+    evenings past the end of the existing run and never re-dates one.
     """
-    days = sorted(SHORTS_WEEKDAYS)
-    out = []
-    cur = start.astimezone(SHORTS_TZ).replace(hour=SHORTS_HOUR_LOCAL, minute=0,
-                                              second=0, microsecond=0)
+    if per_week is None:
+        per_week = cadence.shorts_effective()
+    rungs = slot_ladder(per_week)
+    by_day: dict[int, list[int]] = {}
+    for wd, hour in rungs:
+        by_day.setdefault(wd, []).append(hour)
+    for hours in by_day.values():
+        hours.sort()
+
+    out: list[datetime] = []
+    day = start.astimezone(SHORTS_TZ).replace(hour=0, minute=0, second=0,
+                                              microsecond=0)
+    guard = 0
     while len(out) < n:
-        if cur.weekday() in days and cur.astimezone(timezone.utc) > start:
-            out.append(cur.astimezone(timezone.utc))
-        cur += timedelta(days=1)
+        guard += 1
+        if guard > 400:                     # ~57 weeks; never spin forever
+            raise ShortsCadenceExceedsLadder(
+                f"could not place {n} Short slot(s) from a {len(rungs)}-rung "
+                f"ladder - the ladder is empty or unreachable")
+        for hour in by_day.get(day.weekday(), ()):
+            when = day.replace(hour=hour)
+            if when.astimezone(timezone.utc) > start:
+                out.append(when.astimezone(timezone.utc))
+                if len(out) == n:
+                    break
+        day += timedelta(days=1)
     return out
 
 
@@ -209,14 +269,41 @@ def build_payload(slug: str, question: str) -> dict:
 
 def run(limit: int = 2, dry_run: bool = False) -> int:
     cfg = config()
+    per_week, cadence_why = cadence.shorts_effective(explain=True)
     todo = pending()
     if not todo:
-        print("nothing to cut: every finished episode already has a Short.")
+        # RULE 0. This used to print a sentence and exit 0, which is exactly the
+        # "runs but inert" shape: a channel that has published its last cut
+        # Short would look green here forever. At 4/week the 51 cut Shorts were
+        # twelve weeks away from that; at 9/week they are under six, so the
+        # difference between a print and a stop is now weeks, not months.
+        #
+        # It is a STOP, not a transition. What to do when the cut inventory runs
+        # out - native vertical or more chapters off the existing masters - is
+        # the owner's decision to make deliberately, and this stop is what puts
+        # it in front of her rather than a mechanism that fires on its own.
+        with Stage("shorts", week_id()) as st:
+            st.named_stop(
+                "SHORTS_INVENTORY_EXHAUSTED",
+                "no cut Short is waiting to publish: every finished episode "
+                f"already has one on the calendar, at {per_week}/week.",
+                unblock="Nothing is broken and nothing has stopped - the "
+                        "Shorts already scheduled keep airing. This is the "
+                        "decision point: either cut more chapters from the "
+                        "existing masters (bin/make-shorts.sh --count 3), or "
+                        "decide whether Shorts move to a native vertical "
+                        "format. That is deliberately NOT automatic.")
         return 0
 
-    afford = quota.videos_affordable(limit)
+    # The day's long-form upload comes first. `videos_affordable` used to be
+    # called with no reserve here, so a Shorts run early in the day could take
+    # the allowance the episode upload needed and the episode - the one lane
+    # that cannot be deferred - would fail partway through. See loop/quota.py.
+    afford = quota.videos_affordable(limit, reserve=quota.upload_reserve())
     if afford == 0:
-        print(f"no quota left today for a Short. {quota.report()}")
+        print(f"no quota left today for a Short after reserving "
+              f"{quota.upload_reserve()} units for the day's episode upload. "
+              f"{quota.report()}")
         return 0
     take = todo[:afford]
     cost = len(take) * (UPLOAD_UNITS + THUMB_UNITS + FLIP_UNITS)
@@ -225,7 +312,7 @@ def run(limit: int = 2, dry_run: bool = False) -> int:
     when = schedule_for(led, len(take))
 
     print(f"\n{len(todo)} episode(s) without a Short; taking {len(take)} "
-          f"({cost} of {DAILY_UNITS} units), {SHORTS_PER_WEEK}/week\n")
+          f"({cost} of {DAILY_UNITS} units). {cadence_why}\n")
     for slug, t in zip(take, when):
         print(f"  {t.astimezone(SHORTS_TZ):%a %d %b %H:%M %Z}  {slug}")
     if dry_run:

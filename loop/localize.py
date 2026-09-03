@@ -390,7 +390,8 @@ def run(limit: int = 15, dry_run: bool = False,
                    f"{auth.EXPECTED_HANDLE}" if ch["ok"] else ch["detail"]),
                 unblock="Run: .venv/bin/python auth/check_auth.py")
 
-        reserve = quota.upload_reserve()
+        # BOTH irreversible lanes - see loop/quota.deferrable_reserve().
+        reserve = quota.deferrable_reserve()
         afford = quota.units_affordable(quota.PER_LOCALIZE,
                                         min(limit, len(pending)),
                                         reserve=reserve)

@@ -28,6 +28,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
+import cadence  # noqa: E402
 from common import ROOT, config  # noqa: E402
 
 PAGE = ROOT / "docs" / "approve" / "index.html"
@@ -220,7 +221,7 @@ def build(queue: dict, topics: dict | None = None) -> Path:
             .replace("__WEEK__", queue["week"])
             .replace("__COUNT__", str(len(items)))
             .replace("__PLURAL__", "" if len(items) == 1 else "s")
-            .replace("__CEILING__", str(cfg["cadence"]["videos_per_week"]))
+            .replace("__CEILING__", str(cadence.effective()))
             .replace("__BRK__", brk)
             .replace("__BRK_CLASS__", "ok" if brk == "closed" else "bad")
             .replace("__VAL__", val)
