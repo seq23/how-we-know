@@ -96,6 +96,7 @@ import author                                     # noqa: E402
 import quota                                      # noqa: E402
 import upload as up                               # noqa: E402
 import ytmeta                                     # noqa: E402
+import arming  # noqa: E402
 from common import (STATE, Stage, config, now, read_json,  # noqa: E402
                     week_id, write_json)
 
@@ -334,6 +335,10 @@ def run(limit: int = 15, dry_run: bool = False,
                zero_work_hint="Every live video already carries all five "
                               "localizations and its defaultLanguage, so "
                               "there was nothing to translate or write.") as st:
+        # The schedule fires every day; this decides whether a
+        # SCHEDULED run may act. Unarmed, it says so where a human
+        # sees it instead of the lane being silently absent.
+        arming.gate(st, 'reach')
         live = ytmeta.live_videos()
         if not live:
             st.named_stop("NOTHING_PUBLISHED",
@@ -519,6 +524,14 @@ def run(limit: int = 15, dry_run: bool = False,
             st.note(f"spent {spent} quota units. {quota.report()}")
         if cost:
             st.note(f"translation cost ${cost:.4f} at OpenRouter ({model})")
+
+        # A real set of localizations just went onto a real, live video.
+        # That is the localization half of the evidence loop/arming.py is
+        # waiting for; record it so a scheduled run tomorrow no longer has
+        # to stop and ask.
+        if written and not dry_run:
+            arming.record_success(
+                'reach', detail=f"localized {written} video(s)")
 
         if written == 0 and not dry_run:
             st.named_stop(
