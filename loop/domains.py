@@ -48,6 +48,16 @@ TAXONOMY = ROOT / "research" / "proposed-taxonomy.json"
 PUBLISH_ORDER = ROOT / "research" / "publish_order.json"
 SCRIPTS = ROOT / "scripts"
 
+# Every domain's gated queue lives in its OWN research/publish_order*.json --
+# research/publish_order.json for deep sea (the original, unsuffixed file,
+# kept as the stable name so nothing that already reads it breaks),
+# research/publish_order_materials.json for materials-and-manufacturing, and
+# so on for whatever comes after. queue_depth() below merges all of them
+# rather than reading PUBLISH_ORDER alone, which is exactly the defect this
+# module's docstring names: "two components each keeping their own list with
+# nothing linking them." One glob, not one hardcoded filename.
+PUBLISH_ORDER_GLOB = "publish_order*.json"
+
 DOMAIN_LINE = re.compile(r"^\*\*Domain:\*\*\s*([a-z0-9-]+)\s*$", re.M)
 
 
@@ -251,22 +261,36 @@ def queue_exhausted_below(cfg: dict) -> int:
     return int(config_domains(cfg)["queue_exhausted_below"])
 
 
-def queue_depth() -> dict[str, int]:
-    """Surviving, gated topics per domain, from the ranking that already exists.
+def _publish_order_files() -> list[Path]:
+    return sorted(ROOT.glob(f"research/{PUBLISH_ORDER_GLOB}"))
 
-    `research/publish_order.json` is READ ONLY from the loop. Its `queue` holds
-    the topics that passed the demand and saturation gates; the domain comes off
-    each entry's own script, so a topic and its domain cannot disagree.
+
+def queue_depth() -> dict[str, int]:
+    """Surviving, gated topics per domain, from EVERY publish-order file.
+
+    research/publish_order*.json files are READ ONLY from the loop. Each
+    domain scores its own candidates against the same gate
+    (`research/publish_order.py`'s, imported not reimplemented — see
+    research/publish_order_materials.py) and writes its own file; a slug
+    counted here that is not from a QUEUE entry never happened, and a slug
+    whose script disagrees with the file it came from is caught by
+    `domain_of_slug`, not silently trusted. Merging across files, rather than
+    reading `research/publish_order.json` alone, is what lets a second
+    domain's queue become visible at all.
     """
-    q = _read(PUBLISH_ORDER).get("queue") or []
     out: dict[str, int] = {}
-    for row in q:
-        slug = row.get("slug")
-        if not slug:
-            continue
-        d = domain_of_slug(slug)
-        if d:
-            out[d] = out.get(d, 0) + 1
+    seen_slugs: set[str] = set()
+    for path in _publish_order_files():
+        q = _read(path).get("queue") or []
+        for row in q:
+            slug = row.get("slug")
+            if not slug or slug in seen_slugs:
+                continue                      # a slug counts once, however
+                                               # many files mention it
+            seen_slugs.add(slug)
+            d = domain_of_slug(slug)
+            if d:
+                out[d] = out.get(d, 0) + 1
     return out
 
 
