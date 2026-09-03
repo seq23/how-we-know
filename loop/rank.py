@@ -270,6 +270,47 @@ def main() -> None:
         st.work(f"wrote {OUT.relative_to(ROOT)} - {len(selection)} picked, "
                 f"{doc['to_author']} to author")
 
+        # THE QUEUE-DEPTH GUARD, surfaced. The owner raised the target to
+        # 4/week on 2026-09-02; the loop raises itself only when the queue can
+        # carry it. When the raise is armed - the authoring lane has proved
+        # itself - but the queue cannot, that refusal must reach a human. The
+        # alternative is a channel that quietly publishes at the old rate while
+        # everyone believes it scaled, which is this repo's "runs but inert"
+        # failure class wearing a cadence label.
+        #
+        # Like the runway stop below, it is raised AFTER the week is written,
+        # so it costs the week nothing. Publishing continues at the lower
+        # cadence; nothing goes dark.
+        scale = cfg["cadence"].get("scale", {})
+        want = int(scale.get("to", per_week))
+        if (scale.get("automatic") and cadence.authoring_evidence()
+                and want > per_week and rw["level"] == "ok"):
+            ok_to_scale, why_not = cadence.queue_supports(want)
+            if not ok_to_scale:
+                st.named_stop(
+                    "CADENCE_SCALE_WITHHELD",
+                    f"the cadence target is {want}/week but the loop is "
+                    f"holding at {per_week}/week: {why_not}",
+                    detail={"target": want, "holding_at": per_week,
+                            "runway_at_target": cadence.runway(want)},
+                    unblock=(
+                        "Nothing is broken and nothing has stopped - the "
+                        f"channel keeps publishing at {per_week}/week and "
+                        "every episode already scheduled airs on its own "
+                        "date.\n\n"
+                        "The raise arms ITSELF the moment the queue can carry "
+                        "it. To bring that forward, add runway: let the "
+                        "authoring lane run (it writes "
+                        f"{per_week} script(s) a week now, {want} once it "
+                        "scales), then narrate and render them on the Mac with "
+                        "bin/batch-session.sh. Scripts alone are not runway - "
+                        "a rendered episode is.\n\n"
+                        "If you would rather scale on a thinner queue, lower "
+                        "cadence.scale.requires_runway_weeks in "
+                        "loop/config.json. That is a real trade: it buys "
+                        "episodes now against the risk of a gap later, and a "
+                        "gap costs more than the extra episodes earn."))
+
         # Surfaced LAST and deliberately: the week is already written, so this
         # warns without costing the week. It is a named stop, which means an
         # issue and an email - weeks ahead of running out, not on the week it

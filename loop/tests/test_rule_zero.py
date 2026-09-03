@@ -34,7 +34,13 @@ STAGE_FILES = ["rank.py", "draft.py", "override.py", "prepare.py",
                # lane and neither is allowed to fail it, which makes them
                # exactly the kind of stage that could sit inert for months
                # looking green. Registering them here is what stops that.
-               "captions_lane.py", "localize.py"]
+               "captions_lane.py", "localize.py",
+               # The footage harvest, added 2026-09-02 with the cadence raise.
+               # It runs weekly and unattended against a pool that degrades
+               # GRACEFULLY - a missing clip becomes an illustrated episode,
+               # not an error - so it is exactly the lane that could harvest
+               # nothing for months and look fine.
+               "footage_lane.py"]
 
 
 def run_snippet(code: str):

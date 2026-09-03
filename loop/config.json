@@ -7,14 +7,26 @@
     "escalated": 3,
     "ceiling": 4,
     "deliberate": true,
-    "note": "Operating cadence is 2. The taxonomy's 4 is the CEILING, never the target. Escalation to 3 is evidence-gated (see below) and is never raised to clear a backlog. Change videos_per_week here; no logic reads a hardcoded number.",
+    "note": "Operating cadence starts at 2 and RAISES ITSELF in two evidence-gated steps: to 3 once the authoring lane has produced a validated script, and to the owner's 4/week target once the queue can sustain it. 4 is the taxonomy ceiling and is never exceeded. Change the numbers here; no logic reads a hardcoded cadence.",
     "escalation": {
       "to": 3,
       "automatic": true,
       "condition": "at least one OpenRouter-authored script has passed full validation - a validated artifact, not merely a working lane",
       "evidence_file": "loop/state/authoring_evidence.json",
       "why": "3/week only makes sense once the loop can replace what it spends. Until the authoring lane has demonstrably produced a publishable script, spending inventory faster shortens the runway with nothing refilling it."
-    }
+    },
+    "scale": {
+      "to": 4,
+      "automatic": true,
+      "owner_decision": "2026-09-02 - Sequoia. Told 2/week was the safe choice and chose to scale anyway.",
+      "condition": "authoring evidence exists AND runway() at 4/week is still level 'ok' - strictly more than requires_runway_weeks of queue, counting the publish queue plus every episode uploaded and dated but not yet aired",
+      "requires_runway_weeks": 4,
+      "why": "Raising cadence SHORTENS runway. Raising into a runway that would immediately warn is how a channel goes dark, and breaking cadence reliability costs more than the extra episodes earn. Gating on the runway AT THE RAISED RATE makes the raise self-arming and self-reversing: it cannot fire while the current queue is thin, and it stands down on its own if the queue thins again.",
+      "why_not_a_date": "A flag flipped by hand on 20 October is a promise someone has to keep. The 14 episodes already uploaded and dated through 2026-10-20 are protected by a different mechanism entirely - backfill.schedule_for anchors every new slot AFTER the last date already on the calendar, so a cadence change cannot re-date, re-order or re-upload anything already scheduled. See V20."
+    },
+    "shorts_per_week": 9,
+    "shorts_note": "8-10/week, set at 9. Shorts keep their OWN scheduler and their own evening ladder (loop/shorts_lane.py): they peak 18:00-21:00 local while long-form peaks 08:00-11:00, so a Short posted on the episode slot lands in the worst part of its own day. Shorts consume no episode inventory and do not count toward the 4,000 watch hours - they are the only cheap lever on the SUBSCRIBER half of the threshold, which research put at roughly 12x more binding than hours. 51 are already cut; at 9/week that is ~5.7 weeks.",
+    "shorts_floor": 4
   },
   "retention": {
     "floor_pct": 30.0,

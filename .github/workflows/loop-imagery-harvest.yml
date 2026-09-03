@@ -1,0 +1,66 @@
+name: loop · Sat 04:00 UTC · grow the rights-cleared footage pool
+
+# FOOTAGE IS THE REAL SCARCITY, and this is the lane that makes the cleared pool
+# grow AHEAD of demand rather than behind it.
+#
+# At 2 episodes a week the pool could be topped up whenever somebody remembered.
+# At 4 it cannot: the shortfall would be permanent and invisible, because the
+# pipeline degrades gracefully into an illustrated episode rather than breaking.
+# Illustrated is a legitimate outcome and stays one — three episodes have no
+# public-domain footage and never will — so this lane never halts the channel
+# over a thin pool. What it does is harvest weekly, and say what it found.
+#
+# THE RIGHTS CHECK IS NEVER RELAXED TO INCREASE SUPPLY. loop/footage_lane.py
+# refuses to run a harvester whose NOAA-only allowlist has gone missing, and
+# takes a RIGHTS_GATE_MISSING named stop instead. A clip whose provenance does
+# not resolve to NOAA alone does not get used.
+#
+# It commits channel/imagery — see the imagery-harvest case in
+# bin/loop-stage.sh. Without that the harvest would happen on the runner and be
+# thrown away, which is a green tick over nothing.
+#
+# Saturday 04:00 UTC sits clear of every other cron in this repo and a full day
+# ahead of the Sunday ranking lane, so a week's new material is already cleared
+# and committed by the time topics are picked.
+on:
+  schedule:
+    - cron: '0 4 * * 6'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Check the gates and report the pool; harvest nothing'
+        type: boolean
+        required: false
+        default: false
+
+permissions:
+  contents: write
+  issues: write
+
+# Shared with every other loop stage that commits repo state.
+concurrency:
+  group: loop-state
+  cancel-in-progress: false
+
+jobs:
+  harvest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install loop dependencies
+        run: pip install -r requirements-loop.txt
+      - name: Harvest, rights-checked, and report the pool against demand
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          ARGS=""
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            ARGS="--dry-run"
+          fi
+          bin/loop-stage.sh imagery-harvest loop/footage_lane.py $ARGS

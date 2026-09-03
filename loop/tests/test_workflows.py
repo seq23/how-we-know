@@ -38,6 +38,11 @@ REQUIRED_STAGES = {
     # search. Nothing else would report it; the channel would simply grow more
     # slowly for no visible reason.
     "loop-reach.yml": "loop/captions_lane.py",
+    # Footage is the real scarcity at 4 episodes a week. If this stops being
+    # invoked the cleared pool stops growing, and NOTHING breaks - every
+    # episode past the existing pool is simply illustrated. A shortage that
+    # produces no error is exactly the kind this table exists to keep visible.
+    "loop-imagery-harvest.yml": "loop/footage_lane.py",
 }
 
 

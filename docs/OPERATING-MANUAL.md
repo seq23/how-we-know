@@ -92,14 +92,73 @@ even though the launch hour was not.
 
 | Decision | Answer | Evidence |
 |---|---|---|
-| **Long-form frequency** | **2 per week** | Channels posting 1–3×/week get better per-video views and stronger retention than daily uploaders. |
-| **Shorts frequency** | **4 per week** (~70/30 toward Shorts) | Creators running both formats grow subscribers ~3× faster than single-format channels. |
-| **Long-form time** | **Sunday & Tuesday, 10:00 America/Chicago** | Long-form peaks 08:00–11:00 local. Sunday is the strongest day, then Tuesday and Monday; Wednesday and Thursday underperform. |
-| **Shorts time** | **18:00–21:00 local** | Shorts peak in the evening — very nearly the inverse of long-form. |
+| **Long-form frequency** | **4 per week** (raised from 2, owner decision 2026-09-02) | Channels posting 1–3×/week get better per-video views than daily uploaders, so this is deliberately at the top of the band and capped there by the taxonomy ceiling. |
+| **Shorts frequency** | **9 per week** (raised from 4; the owner's band is 8–10) | Creators running both formats grow subscribers ~3× faster than single-format channels — and subscribers are the binding constraint, see below. |
+| **Long-form time** | **Sunday, Monday, Tuesday & Friday, 10:00 America/Chicago** | Long-form peaks 08:00–11:00 local. Sunday is the strongest day, then Tuesday and Monday; Wednesday and Thursday underperform and the ladder never reaches them. |
+| **Shorts time** | **18:00–21:00 local**, 19:00 daily plus a second 21:00 slot on Saturday and Sunday | Shorts peak in the evening — very nearly the inverse of long-form. A Short posted on the episode slot lands in the worst part of its own day. |
 
-Together that is roughly **26 pieces a month**, inside the 12+/month tier that
-grows views ~8× faster — reached by *combining formats*, not by pushing long-form
-past what its quality can sustain.
+Together that is roughly **56 pieces a month**, well inside the 12+/month tier
+that grows views ~8× faster — reached by *combining formats*, not by pushing
+long-form past what its quality can sustain.
+
+### Why the raise, honestly
+
+**Watch hours are not what blocks monetisation. Subscribers are, by roughly 12×.**
+On the measured trajectory this channel clears 4,000 hours with under 100
+subscribers against a 1,000 floor. Two things follow, and the second matters more
+than the first:
+
+- **More long-form buys hours she would clear anyway.** It is still worth doing —
+  an authored script costs about **$0.06** at the median, so the marginal episode
+  is close to free, and runtime multiplies watch hours directly. But it is **not
+  the binding lever**, and nothing here should imply otherwise.
+- **Shorts are the only cheap lever on subscribers**, and 51 are already cut and
+  unpublished — inventory already paid for. **The Shorts half of this decision is
+  the half that moves the constraint that actually binds.**
+
+### The activation gate: no date, and nobody has to remember it
+
+Fourteen episodes are uploaded, private and dated, running gaplessly to
+**2026-10-20**. They publish exactly as scheduled, and the higher cadence cannot
+reach them — not because someone waits until 20 October to flip a flag, but
+because of two mechanisms that make it structurally impossible:
+
+1. **The slot allocator only ever hands out dates after the end of the existing
+   run.** `backfill.schedule_for` anchors on the last date already on the
+   calendar and `slots()` returns only times strictly after it. No lane rewrites
+   a row that already carries a `scheduled_publish_at`. At 4/week the first new
+   slot is **Friday 23 October 2026** — the day after the existing run ends, so
+   the change is gapless as well as harmless.
+2. **The 2/week ladder is Sunday and Tuesday and the 4/week ladder starts with
+   the same two days.** The days a cadence uses are the first N rungs of an
+   evidence-ordered ladder (Sunday, Tuesday, Monday, Friday), so raising the
+   cadence adds days rather than moving any.
+
+`validate.v20_cadence_schedule` re-derives the schedule against the live ledger
+on every render-gate run and fails if a single date it hands out collides with,
+precedes, or duplicates one already scheduled.
+
+### The queue-depth guard: what makes this reversible
+
+**The loop refuses to raise its own cadence when the queue cannot carry it.**
+`cadence.queue_supports(n)` measures runway *at the raised rate* — the publish
+queue plus everything uploaded and dated but not yet aired — and the raise only
+happens when that is still clear of `cadence.scale.requires_runway_weeks`
+(4 weeks, the same threshold the runway email uses). Raising cadence shortens
+runway; raising into a runway that would immediately warn is how a channel goes
+dark, and **breaking cadence reliability costs more than the extra episodes
+earn.**
+
+The refusal is not silent. `loop/rank.py` raises a **`CADENCE_SCALE_WITHHELD`**
+named stop — an issue and an email — saying the target is 4/week, what the loop
+is holding at, and why. Publishing continues at the lower cadence throughout;
+nothing goes dark, and the raise re-arms itself the moment the queue can carry
+it. It also stands down on its own if the queue thins again, which is what makes
+this reversible rather than a one-way risk.
+
+Both halves of the gate must hold: the authoring lane must have produced a
+validated script (the existing evidence gate), **and** the queue must be deep
+enough. Neither is a date and neither is a flag.
 
 ### Why 10:00 Central specifically
 
@@ -108,7 +167,7 @@ hour that sits inside the 08:00–11:00 long-form window in all three mainland U
 zones at once.
 
 **The slot is pinned in LOCAL time, not UTC**, in `loop/backfill.py`
-(`PUBLISH_HOUR_LOCAL`, `PUBLISH_TZ`, `PUBLISH_WEEKDAYS`). A fixed UTC hour is
+(`PUBLISH_HOUR_LOCAL`, `PUBLISH_TZ`, `PUBLISH_WEEKDAY_LADDER`). A fixed UTC hour is
 only correct until the clocks change: 15:00 UTC is 10:00 Central during CDT and
 09:00 during CST, so from **1 November 2026** every slot would have slid an hour
 earlier and put the Pacific coast at 07:00, outside the window the schedule
@@ -283,7 +342,13 @@ be blocked names its stop and says how to clear it.
 ### The advisory fence
 
 The model decides *what*; the loop decides *what is allowed*. It may move
-`retention.runtime_minutes` inside 4–12 minutes, once a month, with a cooldown.
+`retention.runtime_minutes` inside **10.0–12.0 minutes**, once a month, with a
+cooldown. **The floor was 4.0 until 2026-09-01 and that was a real hole:** the
+owner's instruction is that every batch is 10–11 minutes, and a fence whose floor
+sat at 4.0 meant one automated monthly review could have walked that instruction
+back — by 1.5 minutes a month, in a JSON field, with nobody seeing it. The floor
+is an owner decision, not a tuning parameter; `loop/monthly.py` enforces 10.0 and
+a test asserts the fence can never dip below it.
 It may **not** change cadence, abandon deep sea, or publish anything — those are
 reported to the owner and never applied automatically.
 
@@ -454,16 +519,32 @@ chapters whose heading is production apparatus, and narration that talks about
 the video rather than the subject. **That is the guard that matters; rank is
 not.**
 
-| Ranks published | Shorts | Runway at 4/week |
-|---|---|---|
-| 1 only | 16 | 4.0 weeks |
-| 1-2 | 32 | 8.0 weeks |
-| **1-3 (current)** | **48** | **12.0 weeks** |
-| *episode runway for comparison* | *16* | *7.5 weeks at 2/week* |
+| Ranks published | Shorts | Runway at 4/week | Runway at 9/week |
+|---|---|---|---|
+| 1 only | 16 | 4.0 weeks | 1.8 weeks |
+| 1-2 | 32 | 8.0 weeks | 3.6 weeks |
+| **1-3 (current)** | **51 cut** | **12.8 weeks** | **5.7 weeks** |
 
-Ranks 1-2 would exactly match the episode runway; **1-3 gives a 12-week margin,
-and Shorts consume no episode inventory** — they are cut from finished renders,
-so more Shorts costs nothing but quota.
+**Shorts consume no episode inventory** — they are cut from finished renders, so
+more Shorts costs nothing but quota. At the raised 9/week the 51 already cut last
+roughly **five to six weeks** rather than twelve, which is the real cost of the
+raise and the reason exhaustion is now a named stop rather than a printed line
+(`SHORTS_INVENTORY_EXHAUSTED`).
+
+### The vertical Shorts library is deliberately deferred
+
+Shorts currently render as a **608px band inside a 1920px frame** rather than
+filling a phone screen. Native vertical would be a real quality improvement and
+it is on the roadmap. It is **not** being built now, and that is a decision
+rather than an oversight: **51 Shorts are already cut in the current format**,
+and re-cutting them would discard work already paid for. The owner's call
+(2026-09-02) is to publish the existing 51 first and build the vertical library
+only once that inventory is exhausted.
+
+Nothing in the loop transitions to a vertical format on its own when they run
+out — that would make a deliberate decision automatic. What happens instead is
+the `SHORTS_INVENTORY_EXHAUSTED` named stop, which puts the choice in front of
+her with the two options named.
 
 **No approval step.** The owner declined per-Short review (2026-09-01): ranks
 1-3 publish automatically. `loop/shorts_approval.py` remains as a VETO only —

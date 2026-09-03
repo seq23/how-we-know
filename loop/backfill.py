@@ -45,6 +45,7 @@ LOOP = Path(__file__).resolve().parent
 ROOT = LOOP.parent
 sys.path.insert(0, str(LOOP))
 
+import cadence                                   # noqa: E402
 import ledger                                    # noqa: E402
 import quota                                     # noqa: E402
 import publish as P                              # noqa: E402
@@ -92,19 +93,65 @@ def set_thumbnail(token: str, video_id: str, img: Path) -> dict:
 PUBLISH_HOUR_LOCAL = 10        # 10:00 America/Chicago, DST or not
 PUBLISH_TZ = ZoneInfo("America/Chicago")
 PUBLISH_HOUR_UTC = 15          # what that is during CDT; see slots()
-PUBLISH_WEEKDAYS = (6, 1)      # Monday=0 ... Sunday=6, so Sunday and Tuesday
 
+# THE DAYS, IN ORDER OF EVIDENCE, AND THE CADENCE TAKES THE FIRST N.
+#
+# The same benchmark data that fixed the hour also ranks the days: Sunday is
+# strongest, then Tuesday, then Monday; Wednesday and Thursday underperform.
+# So the ladder is Sunday, Tuesday, Monday, Friday - and a cadence of N uses
+# the first N rungs. That has three properties worth stating:
+#
+#   * At 2/week it is EXACTLY Sunday and Tuesday, the days the fourteen already
+#     scheduled episodes use. Raising cadence therefore changes no existing
+#     slot, and the run stays gapless across the change.
+#   * It never reaches Wednesday or Thursday, the two measured-weak days, at
+#     any cadence the ceiling allows.
+#   * Friday, not Saturday, is the fourth rung. Saturday would make Sat-Sun-Mon-
+#     Tue four consecutive days and then four silent ones; Friday spaces the
+#     week 1-1-3-2, and publish.py's whole argument for spacing is that a burst
+#     followed by silence is not a cadence.
+#
+# Like the hour, this is a benchmark and not a promise: once YouTube Studio's
+# "when your viewers are on YouTube" report has real data behind it, the
+# channel's own heatmap replaces the ladder.
+PUBLISH_WEEKDAY_LADDER = (6, 1, 0, 4)   # Sunday, Tuesday, Monday, Friday
+PUBLISH_WEEKDAYS = tuple(PUBLISH_WEEKDAY_LADDER[:2])   # cadence 2: Sun and Tue
+
+
+class CadenceExceedsLadder(Exception):
+    """More slots a week were asked for than there are evidenced days."""
+
+
+def weekdays_for(per_week: int) -> tuple[int, ...]:
+    """The weekdays a cadence of `per_week` publishes on.
+
+    Raises rather than wrapping round. Silently reusing a day would put two
+    episodes on one morning and call it a cadence increase, and reaching past
+    the ladder would put one on a day the evidence says is weak - both are
+    failures that look exactly like success from the outside.
+    """
+    n = max(1, int(per_week))
+    if n > len(PUBLISH_WEEKDAY_LADDER):
+        raise CadenceExceedsLadder(
+            f"cadence is {n}/week but only {len(PUBLISH_WEEKDAY_LADDER)} "
+            f"evidenced publish days exist. Add a day to "
+            f"PUBLISH_WEEKDAY_LADDER with the evidence for it - do not let the "
+            f"allocator double up a morning or wander onto Wednesday.")
+    return tuple(sorted(PUBLISH_WEEKDAY_LADDER[:n]))
 
 
 def slots(start: datetime, n: int, per_week: int) -> list[datetime]:
-    """`n` publish datetimes on the configured weekdays, at the fixed hour.
+    """`n` publish datetimes on the cadence's weekdays, at the fixed hour.
 
-    Cadence comes from loop/config.json; this only decides WHICH days those
-    slots land on. If the cadence ever exceeds the number of named weekdays the
-    extra slots fall on the following week's same days rather than silently
-    inventing a weaker day.
+    Cadence comes from loop/config.json through `cadence.effective()`; this
+    only decides WHICH days those slots land on, via `weekdays_for`.
+
+    Every slot returned is STRICTLY AFTER `start`, and `schedule_for` passes
+    the last date already on the calendar as `start`. That is the whole reason
+    a cadence change cannot disturb anything already scheduled: the allocator
+    can only ever hand out dates past the end of the existing run.
     """
-    days = sorted(PUBLISH_WEEKDAYS)
+    days = list(weekdays_for(per_week))
     # Pin the hour in LOCAL time and convert, rather than pinning UTC. A fixed
     # UTC hour is only correct until the clocks change: 15:00 UTC is 10:00
     # Central during CDT and 09:00 during CST, so from 1 November 2026 every
@@ -278,7 +325,11 @@ def run(limit: int = 4, dry_run: bool = False, stage=None) -> int:
     a = _A(); a.limit = limit; a.dry_run = dry_run
 
     cfg = config()
-    per_week = cfg["cadence"]["videos_per_week"]
+    # THROUGH cadence.effective(), never the raw config number. This lane
+    # assigns publish slots, so reading the floor directly would have kept
+    # uploading on the 2/week ladder while every other stage had scaled -
+    # two components each keeping their own list, with no link.
+    per_week = cadence.effective()
     order = json.loads((ROOT / "research" / "publish_order.json").read_text())
     queue = [q["slug"] for q in order["queue"]]
 
@@ -299,7 +350,11 @@ def run(limit: int = 4, dry_run: bool = False, stage=None) -> int:
     # A dry run makes no API calls, so it must not be gated on quota - being
     # unable to PREVIEW tomorrow's schedule because today's uploads are done is
     # a guard blocking the wrong thing.
-    afford = a.limit if a.dry_run else quota.videos_affordable(a.limit)
+    # Leave the evening's Shorts their slot. At 4 episodes a week this lane
+    # can want 6,800 units in one morning, which is the whole usable day once
+    # two Shorts and one video's reach lanes are counted.
+    afford = (a.limit if a.dry_run else
+              quota.videos_affordable(a.limit, reserve=quota.shorts_reserve()))
     if afford == 0:
         print(f"no quota left today for a full video. {quota.report()}")
         return 0

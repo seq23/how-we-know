@@ -315,7 +315,10 @@ def run(limit: int = 15, dry_run: bool = False, verify: int = 3) -> int:
                 unblock="Run: .venv/bin/python auth/check_auth.py")
 
         # ---- the allowance -------------------------------------------------
-        reserve = quota.upload_reserve()
+        # BOTH irreversible lanes, not just the episode. Captions can wait
+        # a day; a 19:00 Shorts slot cannot, and at 9 Shorts a week the
+        # evening lane is now the more frequent of the two.
+        reserve = quota.deferrable_reserve()
         afford = quota.units_affordable(quota.PER_CAPTION,
                                         min(limit, len(pending)),
                                         reserve=reserve)
@@ -477,7 +480,7 @@ def run(limit: int = 15, dry_run: bool = False, verify: int = 3) -> int:
         if not dry_run:
             budget = quota.units_affordable(
                 quota.CAPTION_LIST, verify,
-                reserve=quota.PER_VIDEO + max(0, spent))
+                reserve=quota.deferrable_reserve() + max(0, spent))
             stale = sorted(shipped,
                            key=lambda p: state["videos"].get(
                                p["video_id"], {}).get("verified_at") or "")

@@ -32,16 +32,38 @@ required. No business cross-links, ever.
 
 ## Cadence
 
-**2 videos per week.** Set in `loop/config.json`, not hardcoded.
+**Target: 4 long-form videos per week and 9 Shorts per week.** Owner decision,
+2026-09-02, raised from 2 and 4. Set in `loop/config.json`, never hardcoded. 4 is also
+the taxonomy ceiling and is never exceeded.
 
-**Escalates to 3/week automatically** on one condition: the OpenRouter authoring lane
-has produced at least one script that passes full validation. Not "the lane exists" — a
-validated artifact. The loop flips itself; the owner does not decide it.
+**The loop raises itself in two evidence-gated steps, and neither is a date.**
 
-**Why 2 and not 3:** 17 scripts at 2/week is ~8.5 weeks, which is enough runway for the
-authoring lane to prove itself. At 3/week the backlog burns in under 6 weeks, and if
-authoring is not ready the channel goes dark. **Going dark is worse than going slower** —
-the algorithm reads inconsistency as abandonment.
+1. **2 → 3** once the OpenRouter authoring lane has produced at least one script that
+   passes full validation. Not "the lane exists" — a validated artifact.
+2. **3 → 4** once, additionally, the **queue can carry it**: runway measured at 4/week
+   must still be clear of `cadence.scale.requires_runway_weeks`.
+
+**Why the Shorts half matters more.** Watch hours are not the binding constraint —
+subscribers are, by roughly **12×**. This channel clears 4,000 hours with under 100
+subscribers against a 1,000 floor. So the long-form raise buys hours that were coming
+anyway (worth doing: an authored script is ~$0.06 and runtime multiplies hours
+directly), while **Shorts are the only cheap lever on subscribers**, and 51 are already
+cut and paid for.
+
+**Why it does not start now.** Fourteen episodes are uploaded, private and dated,
+publishing gaplessly to 2026-10-20. The slot allocator only ever issues dates *after*
+the last one already on the calendar, and no lane rewrites a scheduled row — so the new
+cadence can only govern episodes that do not exist yet. The first 4/week slot is Friday
+23 October 2026. `validate.v20_cadence-schedule` proves this continuously rather than
+asserting it.
+
+**Why the queue-depth guard exists.** Raising cadence shortens runway. If the queue
+cannot sustain 4/week the loop **refuses the raise** and says so as a
+`CADENCE_SCALE_WITHHELD` named stop, rather than publishing at the old rate while
+everyone believes it scaled. Publishing never halts — **going dark is worse than going
+slower**, and the algorithm reads inconsistency as abandonment. The guard stands down on
+its own when the queue refills, and re-engages if it thins, which is what makes the
+scale reversible rather than a one-way bet.
 
 **Why not 1:** frequency does not create demand, but it does buy more shots on goal.
 Twenty videos nobody watches is zero watch hours; the value of frequency is that one
@@ -198,13 +220,19 @@ the drawn treatment stands and the script says what is and is not known.
 
 ## The measurement that could invalidate all of this
 
-After the first four have data: **average view duration against the ~7.5 minute
+After the first four have data: **average view duration against the ~10.5 minute
 runtime.** If viewers consistently leave in the first two minutes, the format is wrong
 and everything above is built on a bad assumption. This must surface prominently, not as
 a number buried in JSON.
 
-**YPP is a real climb:** 4,000 watch hours = 240,000 minutes. At 7.5 minutes and a
-realistic 40% retention, roughly **80,000 views.** Frequency does not create demand.
+The runtime floor is 10.5 minutes and three places must agree on it —
+`loop/config.json` `retention.runtime_minutes`, `loop/author.py` `TARGET_WORDS = 2750`,
+and the measured 150 words/minute between them. `loop/tests/test_runtime_coherence.py`
+asserts they do, and **a cadence increase may not quietly shorten episodes to hit it.**
+
+**YPP is a real climb:** 4,000 watch hours = 240,000 minutes. At 10.5 minutes and a
+realistic 40% retention, roughly **57,000 views.** Frequency does not create demand —
+and hours are not the binding half anyway; see Cadence above.
 
 ---
 
@@ -257,7 +285,7 @@ guard that re-hashes every asset before use. CC-BY is not a public-domain dedica
 
 Listed so that changing it is a decision, not a drift:
 
-- **Retention data showing the 7.5-minute format fails.** Changes runtime and structure.
+- **Retention data showing the 10.5-minute format fails.** Changes runtime and structure.
 - **The compliance audit being granted or refused.** Changes whether publishing is
   hands-off or drag-and-drop.
 - **Deep-sea demand actually declining** across several weekly measurements — not one.

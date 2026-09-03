@@ -536,14 +536,23 @@ print("QUOTA", json.dumps(json.loads(quota.STATE.read_text())))
             t = datetime.fromisoformat(
                 row["scheduled_publish_at"].replace("Z", "+00:00")
             ).astimezone(ZoneInfo("America/Chicago"))
-            if t.hour != 19:
+            # The rung set is cadence-derived (loop/shorts_lane.slot_ladder),
+            # so assert against the ladder rather than a frozen day list -
+            # otherwise raising the Shorts cadence breaks a test that is
+            # supposed to be protecting the EVENING WINDOW, not the day count.
+            import shorts_lane as _sl                        # noqa: PLC0415
+            import cadence as _cad                           # noqa: PLC0415
+            rungs = set(_sl.slot_ladder(_cad.shorts_effective()))
+            if not 18 <= t.hour <= 21:
                 fails.append(f"THE IMPORTANT ONE: the Short is scheduled for "
-                             f"{t.hour}:00 Central, not 19:00. Shorts peak "
-                             f"18:00-21:00; the episode slot is the worst part "
-                             f"of a Short's day.")
-            if t.weekday() not in (0, 2, 4, 5):
-                fails.append(f"the Short landed on weekday {t.weekday()}, "
-                             f"which is not one of Mon/Wed/Fri/Sat")
+                             f"{t.hour}:00 Central, outside the 18:00-21:00 "
+                             f"evening peak. The episode slot is the worst "
+                             f"part of a Short's day.")
+            if (t.weekday(), t.hour) not in rungs:
+                fails.append(f"the Short landed on weekday {t.weekday()} at "
+                             f"{t.hour}:00, which is not a rung of the "
+                             f"{_cad.shorts_effective()}/week evening ladder "
+                             f"{sorted(rungs)}")
         try:
             q = json.loads(out.split("QUOTA ", 1)[1].split("\n")[0])
         except (IndexError, json.JSONDecodeError):

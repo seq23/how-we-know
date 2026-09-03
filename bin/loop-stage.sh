@@ -35,6 +35,10 @@ git config user.email "loop@users.noreply.github.com"
 # publish_order.json. Committing the result is how the ranking reaches the Mac.
 git add loop docs 2>/dev/null
 if [ "$STAGE" = "weekly-score" ]; then git add research/publish_order.json 2>/dev/null; fi
+# The footage/imagery harvest writes the cleared manifests and the assets they
+# describe. Without this line the lane would run every week, harvest correctly,
+# and throw the result away on the runner - "runs but inert" with a green tick.
+if [ "$STAGE" = "imagery-harvest" ]; then git add channel/imagery 2>/dev/null; fi
 if git diff --cached --quiet; then
   echo "no repo changes to commit"
 else

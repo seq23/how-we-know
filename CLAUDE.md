@@ -46,7 +46,7 @@ and say what you chose and why.
 ## Run tests with
 
 ```bash
-python3 loop/tests/run_all.py     # 14 files; launches each test from .venv
+python3 loop/tests/run_all.py     # 15 files; launches each test from .venv
 ```
 
 ## Traps that have already cost hours — each one reported as something else
@@ -68,6 +68,13 @@ python3 loop/tests/run_all.py     # 14 files; launches each test from .venv
   analytics fails the WHOLE call with a misleading 401.
 - **`-t` as an ffmpeg INPUT option is broken on 8.1.1** — it returns the wrong
   frame count. Cut with `-frames:v <exact>` and assert afterwards.
+- **A negative proof can "fail to restore" when nothing is wrong.** Break a
+  module, run the test, restore it and run again inside the same second and
+  Python reuses the stale `__pycache__`: source mtime and size both match what
+  the `.pyc` recorded, so it never recompiles and the failure appears to
+  persist through a correct restore. It cost twenty minutes on 2026-09-02.
+  `find . -name __pycache__ -not -path './.venv/*' -exec rm -rf {} +`, or sleep
+  a second between the break and the restore.
 - **Tests can write to the real channel.** `LOOP_DRY_RUN=1` suppresses network
   writes AND refuses to load credentials; every test that runs a lane must set
   it. One did not, and uploaded a real video.
