@@ -57,8 +57,12 @@ that only make sense once a week has been selected:
                         send starts at 0:00, has no gap under 10s and never
                         contains a bare "Title card" entry — the three ways a
                         chapter list gets silently discarded by YouTube
+  V24 render-duration-floor  no render outside
+                        retention.runtime_floor_grandfathered is under the
+                        owner's 10-minute hard floor, checked against the
+                        RENDERED file, not the word count that predicts it
 
-V1-V15 and V20-V23 are the RENDER GATE: `run_all(items)`, run by loop/draft.py in front
+V1-V15 and V20-V24 are the RENDER GATE: `run_all(items)`, run by loop/draft.py in front
 of the pipeline. V16-V19 are the REACH group: `run_reach()`, run by
 `loop/validate.py --reach`, and they govern what a video looks like on YouTube
 after it is published. They are deliberately kept out of the render gate — a
@@ -1400,6 +1404,54 @@ def v23_chapters_compliant() -> Result:
     return r
 
 
+# ------------------------------------------------- V24 render-duration-floor
+
+def v24_render_duration_floor() -> Result:
+    """No NEW render is under the owner's hard 10-minute floor.
+
+    2026-09-03 decision: every episode from here exceeds 10 minutes, on
+    RENDERED DURATION as well as narration word count — a word-count floor
+    alone would not have caught the original defect, which was that a word
+    count and a render can disagree once the wpm assumption feeding the word
+    count is wrong. The existing 20 episodes (7.5-8.9 minutes, rendered
+    2026-08-30, before this rule existed) are NOT re-rendered — that is the
+    owner's decision, recorded in loop/config.json
+    retention.runtime_floor_grandfathered by name, which is what lets this
+    validator hold the line going forward without re-litigating the past.
+
+    Exempt (examines zero, does not fail) when every render on disk is
+    grandfathered — that is the honest state of a channel with no new
+    long-form render yet, not a validator that cannot reach what it governs.
+    Shorts are exempt outright: they never had a floor to begin with.
+    """
+    r = Result("V24 render-duration-floor")
+    sys.path.insert(0, str(ROOT / "loop"))
+    import durations as D                                 # noqa: PLC0415
+    cfg = config()
+    floor_min = float(cfg["retention"]["runtime_floor_minutes"])
+    grandfathered = set(cfg["retention"]["runtime_floor_grandfathered"])
+    any_new = False
+    for p in sorted((ROOT / "renders").glob("*-final.mp4")) \
+            if (ROOT / "renders").exists() else []:
+        slug = p.name[:-len("-final.mp4")]
+        if slug in grandfathered:
+            continue
+        any_new = True
+        r.examined += 1
+        secs = D.ffprobe_duration(p)
+        if secs is None:
+            r.fail(f"{slug}: could not read a duration from {p.name}")
+            continue
+        if secs < floor_min * 60:
+            r.fail(f"{slug}: rendered {secs / 60:.2f} min, under the "
+                   f"{floor_min}-minute hard floor")
+    r.exempt = not any_new
+    if r.exempt:
+        r.note("every render on disk is grandfathered (predates the "
+               "2026-09-03 floor) — nothing new to check yet")
+    return r
+
+
 # ------------------------------------------------------------------ runner
 
 def run_all(items) -> tuple[bool, list[dict]]:
@@ -1416,7 +1468,8 @@ def run_all(items) -> tuple[bool, list[dict]]:
                v12_footage_scope(), v13_render_not_clipped(),
                v14_shorts_attribution(), v15_shorts_caption_crop(),
                v20_cadence_schedule(), v21_no_boilerplate(),
-               v22_producer_notes_second_person(), v23_chapters_compliant()]
+               v22_producer_notes_second_person(), v23_chapters_compliant(),
+               v24_render_duration_floor()]
     rows = [r.as_dict() for r in results]
     return all(r.ok for r in results), rows
 
