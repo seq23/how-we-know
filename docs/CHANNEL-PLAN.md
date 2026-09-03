@@ -220,21 +220,62 @@ the drawn treatment stands and the script says what is and is not known.
 
 ## The measurement that could invalidate all of this
 
-After the first four have data: **average view duration against the ~10.5 minute
-runtime.** If viewers consistently leave in the first two minutes, the format is wrong
-and everything above is built on a bad assumption. This must surface prominently, not as
-a number buried in JSON.
+After the first four have data: **average view DURATION, in seconds, against each
+video's own measured runtime** — never a configured constant. (Corrected 2026-09-03:
+this used to divide by a hardcoded `retention.runtime_minutes`, which read 77% of true
+retention once real renders diverged from that guess — see `loop/durations.py`.) If
+viewers consistently leave in the first two minutes, the format is wrong and everything
+above is built on a bad assumption. This must surface prominently, not as a number
+buried in JSON.
 
-The runtime floor is 10.5 minutes and three places must agree on it —
-`loop/config.json` `retention.runtime_minutes`, `loop/author.py` `TARGET_WORDS = 2750`,
-and the measured 150 words/minute between them. `loop/tests/test_runtime_coherence.py`
-asserts they do, and **a cadence increase may not quietly shorten episodes to hit it.**
+The runtime TARGET is 10.5 minutes, with a **hard 10-minute floor** enforced on the
+rendered file itself (owner decision, 2026-09-03) for every episode after the first 20.
+Three places must agree on the speaking rate that turns a word budget into that many
+minutes — `loop/config.json` `retention.runtime_minutes`/`runtime_floor_minutes`,
+`loop/author.py` `NARRATION_TARGET_WORDS`/`NARRATION_FLOOR_WORDS`, and the MEASURED
+speaking rate from `loop/durations.py` (144.58 wpm, range 133.5–154.2, derived from real
+renders — never hardcoded) between them. `loop/tests/test_runtime_coherence.py` asserts
+they do — by importing the real modules and checking the derivation, not by regexing a
+literal number out of source, which is what let 150 wpm survive twenty episodes in the
+first place. **A cadence increase may not quietly shorten episodes to hit it.**
 
-**YPP is a real climb:** 4,000 watch hours = 240,000 minutes. At 10.5 minutes and a
-realistic 40% retention, roughly **57,000 views.** Frequency does not create demand —
-and hours are not the binding half anyway; see Cadence above.
+**YPP is a real climb, and it now has two gates.** Standard YPP: 4,000 watch hours =
+240,000 minutes. At 10.5 minutes and a realistic 40% retention, roughly **57,000
+views.** Frequency does not create demand — and hours are not the binding half anyway;
+see Cadence above. Expanded YPP (fan funding, no ads) needs only 500 subscribers and
+3,000 hours and is materially nearer; see `loop/ypp.py` and RUNBOOK.md's "Monetisation,
+both gates". The standard tier's 4,000-hour bar doubles to 8,000 on **2027-02-01** for
+any channel not yet admitted — every hour banked before that date is worth two after it.
 
 ---
+
+## A second domain: materials-and-manufacturing (added 2026-09-03)
+
+**Runs ON TOP of deep sea, not instead of it, once the 4/week ceiling is reached** — deep
+sea keeps Sunday and Tuesday, materials takes Monday and Friday. This is not "when deep
+sea ends"; deep sea shows no sign of ending (see below) and keeps its own slots.
+
+- **Why materials, and the honest trade.** It ranks lower than deep sea on demand but
+  roughly **4x higher on commercial-intent share** (`research/commercial.json`) — an
+  advertiser category deep sea barely touches. The trade, stated plainly: **materials
+  converts subscribers roughly 3x slower than deep sea** (10.41 views/subscriber for deep
+  sea vs. its own weaker ratio), so it is a revenue lever, not a growth lever.
+- **Each domain owns its own source allowlist and visual identity.** Deep sea's approved
+  organisations (`ORG_NAMES` in `loop/validate.py`) publish nothing about materials
+  science; a new domain must name its own before it can cite anything, and needs its own
+  palette and directive mix so a materials episode is visually distinguishable from a
+  deep-sea one.
+- **`loop/domains.py` is the only place a domain name may come from** —
+  `research/proposed-taxonomy.json`'s `ranked_domains`, never invented ad hoc.
+  `loop/monthly.py` allocates weekly slots between domains monthly, within the same
+  `CHANGE_BOUNDS` fence every other knob respects, and requires **8 published episodes
+  with analytics before a domain can be judged at all** — below that, allocation HOLDS,
+  it does not average toward an even split.
+- **A domain retires on its own scored queue decaying**, not a fixed episode count, and
+  rotates to the next-ranked domain in the taxonomy automatically.
+- **The format-is-wrong breaker is domain-aware.** Three bad months in ONE domain means
+  that domain is wrong, not the format — see "The measurement that could invalidate all
+  of this" above.
 
 ## When deep sea ends
 
@@ -285,7 +326,10 @@ guard that re-hashes every asset before use. CC-BY is not a public-domain dedica
 
 Listed so that changing it is a decision, not a drift:
 
-- **Retention data showing the 10.5-minute format fails.** Changes runtime and structure.
+- **Retention data (average view DURATION, not percentage) showing the format fails in
+  EVERY judgeable domain.** Changes runtime and structure. A duration streak in ONE
+  domain, with others holding, changes that domain's allocation instead — see "A second
+  domain" below.
 - **The compliance audit being granted or refused.** Changes whether publishing is
   hands-off or drag-and-drop.
 - **Deep-sea demand actually declining** across several weekly measurements — not one.
@@ -293,3 +337,6 @@ Listed so that changing it is a decision, not a drift:
   at 2 and the runway problem becomes real.
 - **A test upload landing public.** Would mean the private-lock concern is moot and
   publishing is fully automatic today.
+- **Materials-and-manufacturing's scored queue decaying** below
+  `domains.queue_exhausted_below` after it starts. It retires and the next-ranked domain
+  in `research/proposed-taxonomy.json` takes its slots — never a fixed episode count.

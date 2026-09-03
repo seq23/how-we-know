@@ -64,6 +64,7 @@ import quota                                      # noqa: E402
 import r2                                         # noqa: E402
 import shorts_lane as SL                          # noqa: E402
 import upload as up                               # noqa: E402
+import arming  # noqa: E402
 from common import Stage, config, week_id         # noqa: E402
 
 LANE = "shorts-cloud"
@@ -93,6 +94,10 @@ def run(limit: int = 2, dry_run: bool = False) -> int:
                               "already in loop/state/shorts_ledger.json. On "
                               "the Mac: bin/make-shorts.sh --all && "
                               "bin/push-to-r2.sh") as st:
+        # The schedule fires every day; this decides whether a
+        # SCHEDULED run may act. Unarmed, it says so where a human
+        # sees it instead of the lane being silently absent.
+        arming.gate(st, 'shorts-cloud')
         try:
             shelf = r2.require()
         except r2.R2Unavailable as e:
@@ -163,6 +168,13 @@ def run(limit: int = 2, dry_run: bool = False) -> int:
                 SL.upload_short(st, token, slug, B.question_for(slug), path, t,
                                 lane=LANE)
                 path.unlink(missing_ok=True)
+
+        # A real Short just published for real. That is the exact evidence
+        # loop/arming.py is waiting for; record it so a scheduled run
+        # tomorrow no longer has to stop and ask.
+        arming.record_success(
+            'shorts-cloud',
+            detail=f"published {len(take)} Short(s): {take}")
     return 0
 
 

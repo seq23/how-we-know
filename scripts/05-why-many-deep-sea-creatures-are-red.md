@@ -1,6 +1,7 @@
 # Why many deep sea creatures are red?
 
-**Status:** HUMANIZED EDITORIAL PASS COMPLETE — OWNER CONFIRMATION AND MASTER WATCH REQUIRED  
+**Status:** HUMANIZED EDITORIAL PASS COMPLETE — OWNER CONFIRMATION AND MASTER WATCH REQUIRED    
+**Domain:** deep-sea-ocean-science  
 **Article:** /questions/why-many-deep-sea-creatures-are-red  
 **Word count:** 1182  
 **Estimated narration:** 8m 09s at 145 WPM
@@ -24,7 +25,7 @@ Why many deep sea creatures are red?
 ### The right way to see it
 
 {{chain: WHY RED GOES DARK | Seawater removes red wavelengths early | A red body sits in deep blue light | It reflects very little visible light back to an observer | >Color only works when matching light reaches it}}
-Color only works when matching light reaches it. Seawater removes red wavelengths early, so a red body in deep blue light reflects very little visible light back to an observer. The rest of this video follows that question through the actual environmental constraints described by NOAA, MBARI, Smithsonian, and Woods Hole sources in the companion article.
+Color only works when matching light reaches it. Seawater removes red wavelengths early, so a red body in deep blue light reflects very little visible light back to an observer.
 
 ### Producer POV
 
@@ -98,12 +99,12 @@ Pause every time the narrator says red, black, or invisible and ask whether the 
 ### Final editorial note
 
 {{text}}
-This check also prevents a beautiful deck photograph from being treated as a faithful view of the animal's normal visual world. This check also prevents a beautiful deck photograph from being treated as a faithful view of the animal's normal visual world.
+That check is also why a beautiful photo taken on deck is never treated here as a faithful view of the animal's normal, lightless world. That check is also why a beautiful photo taken on deck is never treated here as a faithful view of the animal's normal, lightless world.
 
 ### What to notice in the edit
 
 {{light}}
-Treat the episode like a lighting experiment. Show the same original illustration under full-spectrum light, then remove red wavelengths and let the body darken. Follow with an ROV-light reveal. Do not use unlicensed expedition footage simply because it demonstrates the effect well; the original diagram and admitted media must carry the explanation unless an external clip passes the rights manifest.
+Watch this like a lighting experiment: the same original illustration under full-spectrum light, then red wavelengths removed as the body darkens, then an ROV-light reveal. If a shot ever looks like unlicensed expedition footage, it isn't — only the original diagram and cleared media carry this explanation.
 
 ### Evidence limit
 

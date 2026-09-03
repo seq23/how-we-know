@@ -1,0 +1,20 @@
+{
+  "lanes": {
+    "upload-cloud": {
+      "proven_at": "2026-09-03T17:19:58+00:00",
+      "proves": "uploaded and scheduled at least one real episode from R2",
+      "detail": "workflow_dispatch run 33783826056: pulled 02-how-deep-sea-creatures-survive-pressure from R2 and uploaded it as _fQ3-YI63oQ, private, publishAt 2026-10-25T15:00:00Z (loop/state/ledger.json, commit 85b61e3). Seeded here on merge, not recorded live by loop/arming.py, because this run predates loop/arming.py existing on main -- see the merge commit that added this file for why."
+    },
+    "shorts-cloud": {
+      "proven_at": "2026-09-03T16:13:01+00:00",
+      "proves": "published at least one real Short from R2",
+      "detail": "dispatched `-f limit=1`: pulled the verified Short for 10-what-is-the-deepest-part-of-the-ocean from r2://how-we-know-renders and uploaded it as HZhm2dXaR9c, private, publishAt 2026-09-04T00:00:00Z (loop/state/shorts_ledger.json, commit 1ba6e2c). Confirmed against videos.list on @howweknowdeep per commit dc100d2, which armed this lane by hand-editing the workflow cron before loop/arming.py existed. Seeded here on merge so that real, already-verified proof is not forgotten and re-demanded from the live channel a second time."
+    },
+    "reach": {
+      "proven_at": "2026-09-03T17:29:09+00:00",
+      "proves": "uploaded one caption track and one set of localizations",
+      "detail": "workflow_dispatch run 33784690518: uploaded caption track(s) (5550 quota units) and wrote localization(s) (51 quota units) for real, both in the same run (loop/state/quota.json, commit 2ec37df). An earlier dispatch the same day (run 33783829147) failed on the captions half only, with the correct named stop CAPTIONS_SCOPE_MISSING -- the credential lacked youtube.force-ssl at that moment; the owner re-consented and this run is the real, both-halves-succeeded proof. Seeded here on merge because this run predates loop/arming.py existing on main."
+    }
+  },
+  "updated": "2026-09-03T17:29:09+00:00"
+}
