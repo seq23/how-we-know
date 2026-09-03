@@ -4,7 +4,7 @@
   "source": "YouTube Data API v3 (search.list, videos.list, channels.list)",
   "key_source": ".secrets/youtube_api_key.txt",
   "key_handling": "The API key is never printed, logged, or written here.",
-  "quota_units_spent": 2448,
+  "quota_units_spent": 2550,
   "quota_budget": 3000,
   "allocation_plan": null,
   "candidates_scored": 24,
@@ -4856,6 +4856,208 @@
           "subs": 801000,
           "published_at": "2025-03-03T20:18:05Z",
           "coverage": 0.0
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "how does quenching harden steel",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.25,
+        "max_coverage": 0.667,
+        "strong_match_count": 0,
+        "strong_match_rate": 0.0,
+        "loose_match_rate": 0.8,
+        "gap_signal": 1.0,
+        "interpretation": "nobody has made the definitive video on this query"
+      },
+      "view_profile": {
+        "median": 187840.0,
+        "p90": 1745872,
+        "max": 5200500,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 143000.0,
+        "max_subscribers": 5110000,
+        "under_100k_subs": 8,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 1232,
+        "published_last_365d": 2,
+        "n": 20
+      },
+      "opportunity_score": 0.725,
+      "opportunity_components": {
+        "title_gap": 1.0,
+        "incumbent_subs": 0.264,
+        "view_ceiling": 0.247,
+        "staleness": 0.9
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-03T18:44:10.988381+00:00"
+      },
+      "top_results": [
+        {
+          "title": "Blacksmith..  Annealing, Hardening, Tempering, Explained Easy. let&#39;s Go  #Blacksmithing #shorts",
+          "views": 6517,
+          "subs": 4660,
+          "published_at": "2025-06-19T23:42:47Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How To Heat Treat A Knife | The 4 Steps You NEED To Know",
+          "views": 1318345,
+          "subs": 491000,
+          "published_at": "2018-05-04T21:00:02Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Heat Treatment -The Science of Forging (feat. Alec Steele)",
+          "views": 3537366,
+          "subs": 5110000,
+          "published_at": "2018-01-29T16:01:00Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Blacksmithing Basics: How Heat Treating Actually Works",
+          "views": 13915,
+          "subs": 883,
+          "published_at": "2024-08-10T01:11:16Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Mesmerizing Red-Hot Steel Tempering Process | So Satisfying Heat Treatment",
+          "views": 63730,
+          "subs": 1990000,
+          "published_at": "2025-04-26T17:11:47Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Introduction to Heat Treatment - Types (Annealing, Quenching,Tempering, Harding) and Applications",
+          "views": 95209,
+          "subs": 19500,
+          "published_at": "2023-07-07T16:00:55Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "How to Harden Steel in Easy Way at Home #diy #youtubeshorts #tutorial #shorts",
+          "views": 302539,
+          "subs": 170000,
+          "published_at": "2023-09-20T17:40:59Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "What are tempering colors?  #metal #temperature #tools #knowledge #axe #maker #diy #blade",
+          "views": 1745872,
+          "subs": 135000,
+          "published_at": "2025-10-09T14:00:45Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Hardening Steel Breastplate armour - Medieval Armour Hardened Steel Quenching Technique",
+          "views": 13763,
+          "subs": 417,
+          "published_at": "2011-10-30T13:16:22Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "The way that heat treat a knife(quench in oil) @letsshareexperience#64 #shorts",
+          "views": 114476,
+          "subs": 7710,
+          "published_at": "2022-11-27T12:30:05Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "You\u2019re Probably Using The Wrong Oil....",
+          "views": 59137,
+          "subs": 135000,
+          "published_at": "2025-01-06T05:00:47Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "10 Misconceptions About Heat Treating Steel",
+          "views": 139799,
+          "subs": 151000,
+          "published_at": "2025-03-29T19:04:50Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Quenching a Knife in Liquid Nitrogen!  Will it survive?",
+          "views": 5200500,
+          "subs": 1070000,
+          "published_at": "2023-01-05T23:00:05Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Heat Treating Steel",
+          "views": 230643,
+          "subs": 274000,
+          "published_at": "2019-02-20T11:00:05Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "What Happens If You Quench a Blade in ________?!",
+          "views": 891756,
+          "subs": 3240000,
+          "published_at": "2023-02-01T21:15:00Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Quenching oil that increases the hardness of steel   #process #factory #quenching #daily",
+          "views": 57744,
+          "subs": 10500,
+          "published_at": "2023-10-12T15:45:01Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Heat treatment quenching technology, good machinery and good tools to save time and effort",
+          "views": 172009,
+          "subs": 886000,
+          "published_at": "2022-08-29T00:15:01Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "How to Harden Mild Steel? (Impossible!)",
+          "views": 418983,
+          "subs": 74900,
+          "published_at": "2018-01-16T02:51:09Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "knife Edge hardening heat treatment process #shorts",
+          "views": 203671,
+          "subs": 10100,
+          "published_at": "2022-08-30T00:15:18Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Understanding Steels and Heat Treatment",
+          "views": 639650,
+          "subs": 1490000,
+          "published_at": "2025-10-07T14:00:53Z",
+          "coverage": 0.333
         }
       ],
       "domain": null

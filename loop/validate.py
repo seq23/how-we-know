@@ -1329,10 +1329,29 @@ def v21_no_boilerplate() -> Result:
 # ------------------------------------------------ V22 producer-notes-2p
 
 _META_PHRASES = [
-    "the channel", "monetiz", "watch time", "topic intelligence",
+    # "the channel" alone is deliberately NOT here, 2026-09-03: it false-
+    # positived on "the carrier mobility in the channel" — a MOSFET's own
+    # physical channel, real materials-and-manufacturing vocabulary that
+    # deep sea never had to share a word with. The specific ways ep09 talked
+    # about the CHANNEL-AS-BUSINESS are still covered below; a guard that
+    # cannot tell "the channel" (business) from "the channel" (a
+    # semiconductor's own channel) is a guard that cannot reach a real
+    # materials script at all.
+    #
+    # NOT "this channel": it is real prose in scripts/01 ("how this channel
+    # avoids becoming a slideshow") that would newly fail V22 for an already
+    # scheduled, protected episode (airs 2026-09-08). Catching it is
+    # correct; fixing it is not this change's job — this repo's own rule is
+    # that the 14 scheduled episodes are not re-edited, and a validator
+    # expansion that starts failing protected content is worse than the gap
+    # it closes. Left for a dedicated pass with the owner's sign-off.
+    "our channel", "the channel's", "the channel gains",
+    "the channel benefits", "for a channel trying", "channel strategy",
+    "channel's business",
+    "monetiz", "watch time", "topic intelligence",
     "editorial reason", "pinned comment can", "engagement while",
     "production queue", "follow-up episodes with a real editorial",
-    "the audience gets", "the audience helps", "for a channel trying",
+    "the audience gets", "the audience helps",
     "algorithm", "click-through", "subscriber count",
 ]
 

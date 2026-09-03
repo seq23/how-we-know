@@ -79,7 +79,17 @@ CANDIDATES = [
     "what is a superalloy",
     "what is aerogel made of",
     "how does metal fatigue cause failure",
-    "how does heat treating steel work",
+    # "how does heat treating steel work" was replaced by the line below,
+    # 2026-09-03: exclusions.decide() refuses it on the word "treating" —
+    # loop/exclusions.py's medical-advice pattern deliberately inflects
+    # "treat" to also catch "treating"/"treated" (her explicit "no
+    # health/medical", "refuse on doubt"), and "heat TREATING steel" is a
+    # real metallurgy term colliding with that net, not a medical claim.
+    # The regex protects the whole channel and is not weakened for one
+    # topic; the topic is rephrased instead, same subject (quench
+    # hardening), rescored from scratch through the same gate rather than
+    # assumed to carry the old phrasing's numbers.
+    "how does quenching harden steel",
     "what is a shape memory alloy",
     "how is a silicon wafer made",
     "why is carbon fiber so strong",
