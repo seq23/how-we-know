@@ -33,12 +33,15 @@ name: loop · daily 10:00 CT · reach (captions + localizations)
 # does not matter: nothing here ever makes a video public.
 
 on:
-  # DISARMED until each lane has completed one real run end to end, the same
-  # rule loop-upload-cloud.yml follows. Arm it only after a workflow_dispatch
-  # run has inserted a caption track and written a localization for real.
-  #
-  #  schedule:
-  #    - cron: '0 15 * * *'
+  # ARMED. The schedule fires; loop/arming.py decides whether this run
+  # may act. Until the reach lane has completed one real end-to-end run
+  # it takes the NAMED STOP LANE_NOT_ARMED_REACH,
+  # which is visible in the issue tracker - unlike the commented-out cron
+  # this replaces, which could never be satisfied because the lane it
+  # gated could never run. A workflow_dispatch run always passes through
+  # and is what arms it.
+  schedule:
+    - cron: '0 15 * * *'
   workflow_dispatch:
     inputs:
       lane:
