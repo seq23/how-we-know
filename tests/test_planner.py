@@ -41,10 +41,19 @@ INFO = {"stat_card","depth_descent","comparison","zone_column","pressure_gauge",
         "light_attenuation","world_map","timeline","anatomy_callout","size_ladder",
         # extended pack (segments_ext2)
         "evidence_chain","uncertainty_bar","source_compare","process_steps",
-        "contrast_pair","magnitude_bar","definition_card","checklist_reveal"}
+        "contrast_pair","magnitude_bar","definition_card","checklist_reveal",
+        # materials-and-manufacturing's own structural device
+        # (visuals/segments_materials.py) -- a second domain's segment
+        # types are exactly as legitimate as deep sea's, 2026-09-03
+        "thermal_ascent","process_column"}
 KNOWN = INFO | {"text_beat","quote_card","ambient_drift"}
 scripts = sorted(glob.glob(os.path.join(os.path.dirname(__file__), "..", "scripts", "*.md")))
-check("found 20 scripts", len(scripts) == 20, str(len(scripts)))
+# A floor, not an exact count, 2026-09-03: this hardcoded == 20 broke the
+# moment materials-and-manufacturing's own scripts landed, which is exactly
+# the "assumed one domain forever" defect this whole refactor targets. The
+# count may only grow -- scripts/ is append-only in practice -- so a floor
+# still catches a real loss of coverage.
+check("found at least 20 scripts", len(scripts) >= 20, str(len(scripts)))
 if not scripts: sys.exit(1)
 
 worst, empty, unknown, dangle = 0, 0, set(), 0

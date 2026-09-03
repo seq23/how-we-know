@@ -36,10 +36,46 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
+import domain_sources  # noqa: E402
 import durations  # noqa: E402
 import exclusions  # noqa: E402
 import pov_match  # noqa: E402
 from common import LOOP, ROOT, now, read_json, write_json  # noqa: E402
+
+DEFAULT_DOMAIN = "deep-sea-ocean-science"
+
+# The channel-identity half of the prompt, per domain. Everything else in
+# HOUSE_RULES (the one-rule-that-overrides-everything, tone, the never-list)
+# is domain-agnostic house style; only the subject line and the source
+# allowlist actually name deep sea. This dict, plus
+# `loop/domain_sources.py`'s allowlist, is the whole of what used to be
+# hardcoded here.
+DOMAIN_BRIEF: dict[str, dict[str, str]] = {
+    "deep-sea-ocean-science": {
+        "subject": "deep sea and ocean science",
+        "example_urls": (
+            "https://oceanexplorer.noaa.gov/facts/ or "
+            "https://ocean.si.edu/ecosystems/deep-sea/deep-sea"),
+    },
+    "materials-and-manufacturing": {
+        "subject": "materials science and manufacturing — how something is "
+                   "made, why a material behaves the way it does, and how "
+                   "either is actually known",
+        "example_urls": (
+            "https://www.nist.gov/ or "
+            "https://www.asminternational.org/"),
+    },
+}
+
+
+def domain_brief(domain: str) -> dict[str, str]:
+    b = DOMAIN_BRIEF.get(domain)
+    if not b:
+        raise KeyError(
+            f"{domain!r} has no entry in loop/author.py DOMAIN_BRIEF. Every "
+            f"domain that can be authored needs one; {len(DOMAIN_BRIEF)} "
+            f"declared: {sorted(DOMAIN_BRIEF)}.")
+    return b
 
 DRAFTS = LOOP / "drafts"
 SPEND = LOOP / "state" / "spend.json"
@@ -133,8 +169,8 @@ def redact_key(k: str | None) -> str:
 # -------------------------------------------------------------------- prompt
 
 HOUSE_RULES = """You are drafting a narration script for the YouTube channel
-"How We Know" (@howweknowdeep) — an evidence-first explainer channel about deep
-sea and ocean science.
+"How We Know" (@howweknowdeep) — an evidence-first explainer channel. This
+script is for its {subject} coverage.
 
 THE ONE RULE THAT OVERRIDES EVERYTHING:
 Never state a number, date, measurement or proper name you are not certain of,
@@ -151,14 +187,14 @@ a weakness.
 
 SOURCES:
 Every digit-bearing sentence must trace to a named public body that genuinely
-publishes on this topic — NOAA, NOAA Ocean Exploration, MBARI, Woods Hole
-Oceanographic Institution, Smithsonian Ocean, USGS, NASA, Schmidt Ocean
-Institute. List them under ## Sources with REAL, working URLs on those domains.
-Every URL is fetched by an automated validator; a URL that 404s fails the
-script. Prefer a small number of stable landing pages you are certain exist
-(for example https://oceanexplorer.noaa.gov/facts/ or
-https://ocean.si.edu/ecosystems/deep-sea/deep-sea) over deep links you are
-guessing at. If you name a body in the narration, it must appear in ## Sources.
+publishes on this topic — {source_list}. List them under ## Sources with REAL,
+working URLs on those bodies' own domains. Every URL is fetched by an
+automated validator; a URL that 404s fails the script. Prefer a small number
+of stable landing pages you are certain exist (for example {example_urls})
+over deep links you are guessing at. If you name a body in the narration, it
+must appear in ## Sources. Do not cite a body from this channel's OTHER
+coverage areas — a source that publishes nothing about this script's subject
+is not a real citation even if the channel has used it elsewhere.
 
 NEVER include: medical, health, dietary or supplement advice; financial,
 investment or legal advice; adult content; conspiracy, cryptid or paranormal
@@ -172,7 +208,17 @@ words - that is the ONLY count that becomes runtime; directives, headings,
 chapter lists and sources are not narration and do not count toward it. At
 the measured {wpm} words per minute that is about {target_minutes} minutes;
 never draft under {narration_floor} narration words, the owner's hard
-{floor_minutes}-minute floor."""
+{floor_minutes}-minute floor.
+
+OPENING SHAPE: state the answer's load-bearing figure in the cold open, with
+its source, and then immediately open the epistemic loop — what that figure
+does NOT settle, or the assumption it overturns. Do not spend the cold open
+reframing the question instead of answering it; answer first, complicate
+second. Example shape (a different subject, quoted for the SHAPE only —
+do not reuse its content): "Hydrothermal vent fluid can exceed 340 degrees
+Celsius and remain liquid. The boiling point you learned at sea level is not
+a universal switch. Pressure moves it." Figure, source, real question — in
+well under fifty words."""
 
 
 FORMAT = """OUTPUT FORMAT — reproduce this structure exactly. It is the format of
@@ -181,6 +227,7 @@ the twenty existing scripts and the pipeline parses it.
 # <the question, as a title, ending in ?>
 
 **Status:** DRAFT — OWNER CONFIRMATION AND MASTER WATCH REQUIRED
+**Domain:** {domain}
 **Word count:** <approximate>
 **Estimated narration:** <m>m <s>s at {wpm} WPM (measured, loop/durations.py)
 
@@ -248,22 +295,11 @@ the twenty existing scripts and the pipeline parses it.
 - <at least four, all reachable>"""
 
 
-DIRECTIVES = """VISUAL DIRECTIVES — one on its own line immediately BEFORE the
-paragraph it governs. They are stripped before narration is synthesised.
-
-Rule: every number, name, stage, bound, step, boundary and criterion inside a
-directive MUST appear verbatim in that same script's narration. The directive
-labels what the prose says; it never adds a fact.
-
-{{stat: VALUE | UNIT | CAPTION | SOURCE}}      one held number
-{{descent: TO_M | LABEL}}                      a fall with a live counter
-{{compare: NAME=M | NAME=M}}                   exactly two, above/below sea level
-{{zones: HIGHLIGHT}}                           five-zone cross-section
-{{pressure: DEPTH_M}}                          dial, atm = 1 + m/10
-{{light}}                                      wavelength attenuation
+# The domain-agnostic v2 directives — no ocean or materials content, usable
+# by any domain's structural device. Kept as one block so a domain cannot
+# quietly drift onto a different epistemic-visual vocabulary from another.
+DIRECTIVES_SHARED = """{{stat: VALUE | UNIT | CAPTION | SOURCE}}      one held number
 {{timeline: YEAR=LABEL | YEAR=LABEL}}          2-6 dated events
-{{anatomy: TITLE | LABEL@X,Y | LABEL@X,Y}}     x,y are 0-1 fractions
-{{ladder: NAME=M | NAME=M}}                    2-6 item size comparison
 {{chain: TITLE | STAGE | STAGE | >CONCLUSION}} instrument to conclusion
 {{uncertain: VALUE | UNIT | RANGE | CONFIDENCE | CAPTION}}  needs a STATED range
 {{sources: TITLE | NAME=CLAIM | NAME=CLAIM}}   2-4 bodies named in the prose
@@ -273,24 +309,65 @@ labels what the prose says; it never adds a fact.
 {{define: TERM | MEANING | BOUNDARY | SOURCE}} a term and its edge
 {{checklist: TITLE | +MET | -UNMET | ?OPEN}}   states asserted by the prose
 {{text}}                                       a typographic beat
-{{ambient}}                                    breathing room
+{{ambient}}                                    breathing room"""
 
-Use {{contrast}}, {{checklist}}, {{chain}}, {{steps}} and {{define}} freely —
-they carry epistemic prose, which is most of this channel. Use {{stat}} and
-{{uncertain}} ONLY where the narration states that exact figure. Alternate
-directive types between adjacent paragraphs; never repeat one more than twice
-in a row. If a paragraph has nothing concrete, {{text}} or {{ambient}} is the
-correct and honest answer."""
+# The structural-device directives — ocean depth for deep sea, the thermal
+# scale for materials-and-manufacturing. A domain's own device only; do not
+# offer another domain's device directives here, or a draft can reference a
+# visual its own render pipeline never built for it (visuals/CONTRACT.md
+# Contract v3, visuals/domains.py).
+DEVICE_DIRECTIVES: dict[str, str] = {
+    "deep-sea-ocean-science": """{{descent: TO_M | LABEL}}                      a fall with a live counter
+{{compare: NAME=M | NAME=M}}                   exactly two, above/below sea level
+{{zones: HIGHLIGHT}}                           five-zone cross-section
+{{pressure: DEPTH_M}}                          dial, atm = 1 + m/10
+{{light}}                                      wavelength attenuation
+{{anatomy: TITLE | LABEL@X,Y | LABEL@X,Y}}     x,y are 0-1 fractions
+{{ladder: NAME=M | NAME=M}}                    2-6 item size comparison""",
+    "materials-and-manufacturing": """{{thermal: TO_C | LABEL}}                      a rise through the thermal scale, live °C counter
+{{stages: HIGHLIGHT}}                          five-band thermal-scale cross-section (AMBIENT/TEMPER/FORGE/MELT/PLASMA)
+{{magnitude: TITLE | UNIT | NAME=VALUE | ...}} strong for comparing two materials' properties directly""",
+}
 
 
-def build_prompt(question: str, pov: dict) -> list[dict]:
+def directives_for(domain: str) -> str:
+    device = DEVICE_DIRECTIVES.get(domain)
+    if device is None:
+        raise KeyError(
+            f"{domain!r} has no directive menu in loop/author.py "
+            f"DEVICE_DIRECTIVES; {sorted(DEVICE_DIRECTIVES)} declared.")
+    return f"""VISUAL DIRECTIVES — one on its own line immediately BEFORE the
+paragraph it governs. They are stripped before narration is synthesised.
+
+Rule: every number, name, stage, bound, step, boundary and criterion inside a
+directive MUST appear verbatim in that same script's narration. The directive
+labels what the prose says; it never adds a fact.
+
+{device}
+{DIRECTIVES_SHARED}
+
+Use {{{{contrast}}}}, {{{{checklist}}}}, {{{{chain}}}}, {{{{steps}}}} and
+{{{{define}}}} freely — they carry epistemic prose, which is most of this
+channel. Use {{{{stat}}}} and {{{{uncertain}}}} ONLY where the narration
+states that exact figure. Alternate directive types between adjacent
+paragraphs; never repeat one more than twice in a row. If a paragraph has
+nothing concrete, {{{{text}}}} or {{{{ambient}}}} is the correct and honest
+answer."""
+
+
+def build_prompt(question: str, pov: dict, domain: str = DEFAULT_DOMAIN) -> list[dict]:
+    brief = domain_brief(domain)
     system = (HOUSE_RULES.format(
+                  subject=brief["subject"],
+                  source_list=", ".join(domain_sources.for_domain(domain)),
+                  example_urls=brief["example_urls"],
                   narration_target=NARRATION_TARGET_WORDS, wpm=WPM,
                   target_minutes=RUNTIME_TARGET_MINUTES,
                   narration_floor=NARRATION_FLOOR_WORDS,
                   floor_minutes=RUNTIME_FLOOR_MINUTES) + "\n\n" +
-              DIRECTIVES + "\n\n" +
-              FORMAT.format(pov_line=pov["line"], pov_id=pov["pov_id"], wpm=WPM))
+              directives_for(domain) + "\n\n" +
+              FORMAT.format(pov_line=pov["line"], pov_id=pov["pov_id"],
+                           domain=domain, wpm=WPM))
     user = (
         f"Draft the full script for this question:\n\n"
         f"    {question}\n\n"
@@ -556,7 +633,7 @@ def dead_urls(text: str) -> list[str]:
 # ------------------------------------------------------------------- public
 
 def draft(question: str, slug: str, pov: dict, model: str | None = None,
-          key: str | None = None) -> dict:
+          key: str | None = None, domain: str = DEFAULT_DOMAIN) -> dict:
     """Draft one script. Raises AuthorStop for every expected failure."""
     key = key or api_key()
     if not key:
@@ -566,7 +643,7 @@ def draft(question: str, slug: str, pov: dict, model: str | None = None,
             f"Put the key in {KEY_FILE} (gitignored) or set "
             f"$OPENROUTER_API_KEY.")
     model = model or os.environ.get("OPENROUTER_MODEL", DEFAULT_MODEL)
-    messages = build_prompt(question, pov)
+    messages = build_prompt(question, pov, domain)
     DRAFTS.mkdir(parents=True, exist_ok=True)
 
     last: list[str] = []
@@ -646,8 +723,33 @@ def draft(question: str, slug: str, pov: dict, model: str | None = None,
 
 
 def draft_topic(topic: dict, used_pov: list[str] | None = None) -> dict:
-    """Draft from a ranked topic row, matching a POV line automatically."""
+    """Draft from a ranked topic row, matching a POV line automatically.
+
+    Two different vocabularies both happen to be called "domain" in this
+    repo, and `topic` may carry either or both:
+
+      * `topic["domain"]`, an `loop/exclusions.py` ADMITTED_BUCKETS name
+        (e.g. "deep-sea-biology", "method-evidence") — `research/filter.py`'s
+        bucket taxonomy, older than and unrelated to the scored content
+        taxonomy. Passed to `exclusions.decide` unchanged, exactly as
+        before; `None` skips that particular check rather than failing it,
+        which is correct for a domain (like materials) that predates the
+        bucket taxonomy and fits none of its buckets.
+      * `topic["content_domain"]`, a `research/proposed-taxonomy.json`
+        `ranked_domains` name (e.g. "materials-and-manufacturing") — what
+        `DOMAIN_BRIEF`/`domain_sources` need to write the right prompt and
+        cite the right sources. Falls back to `DEFAULT_DOMAIN`
+        (deep-sea-ocean-science) so every existing caller that has never
+        heard of `content_domain` keeps authoring exactly as before.
+
+    Conflating them (an earlier version of this function read
+    `topic["domain"]` for both) passed bucket names like "deep-sea-biology"
+    into the content-domain lookup, which would have raised for every real
+    deep-sea topic loop/rank.py hands this function, not just an
+    out-of-taxonomy smoke test.
+    """
     question = topic["query"] if "query" in topic else topic["question"]
+    content_domain = topic.get("content_domain") or DEFAULT_DOMAIN
     d = exclusions.decide(question, topic.get("domain"))
     if not d.admitted:
         raise AuthorStop("TOPIC_EXCLUDED",
@@ -656,9 +758,9 @@ def draft_topic(topic: dict, used_pov: list[str] | None = None) -> dict:
                          "this is correct behaviour, not a bug.")
     slug = re.sub(r"[^a-z0-9]+", "-", question.lower()).strip("-")[:60]
     pov = pov_match.select(slug, question, used_pov or [])
-    out = draft(question, slug, pov)
+    out = draft(question, slug, pov, domain=content_domain)
     out.update({"slug": slug, "question": question, "pov_id": pov["pov_id"],
-                "pov_line": pov["line"]})
+                "pov_line": pov["line"], "domain": content_domain})
     return out
 
 

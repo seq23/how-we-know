@@ -91,6 +91,15 @@ def parse_directive(line):
             return ("pressure_gauge", {"depth_m": int(float(parts[0].replace(",","")))})
         if kind == "light":
             return ("light_attenuation", {})
+        if kind == "thermal":
+            # materials-and-manufacturing's structural device — the thermal-
+            # scale analogue of {{descent}}. visuals/segments_materials.py.
+            if not parts or not parts[0]: return None
+            return ("thermal_ascent", {"to_temp": int(float(parts[0].replace(",",""))),
+                                       "label": parts[1] if len(parts) > 1 else ""})
+        if kind == "stages":
+            # materials' analogue of {{zones}}.
+            return ("process_column", {"highlight": parts[0].upper() if parts and parts[0] else None})
         if kind == "map":
             pts=[]
             for p in parts:
@@ -359,7 +368,8 @@ def destagnate(plan):
     """No visual treatment may persist past MAX_RUN consecutive beats. Prefer the
     nearest informational visual in the same section; otherwise breathe."""
     INFO = {"stat_card","depth_descent","comparison","zone_column","pressure_gauge",
-            "light_attenuation","world_map","timeline","anatomy_callout","size_ladder"}
+            "light_attenuation","world_map","timeline","anatomy_callout","size_ladder",
+            "thermal_ascent","process_column"}
     # nearest informational beat per section, to reuse as relief
     hero = {}
     for b in plan:
