@@ -56,6 +56,8 @@ from datetime import datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
+from common import read_json                              # noqa: E402
+
 STATE = Path(__file__).resolve().parent / "state" / "quota.json"
 RESET_TZ = ZoneInfo("America/Los_Angeles")   # YouTube resets at midnight PT
 
@@ -103,7 +105,12 @@ def next_reset() -> str:
 def _load() -> dict:
     if not STATE.exists():
         return {"day": _today(), "spent": 0, "by_lane": {}}
-    d = json.loads(STATE.read_text())
+    # Through common.read_json, NOT json.loads, so that an unreadable
+    # quota.json raises CorruptState and Stage turns it into a named stop that
+    # says WHICH FILE. This bare json.loads is the line that crashed the
+    # localize lane on 2026-09-03 (run 33783829147) with a traceback naming
+    # neither the file nor the git conflict that caused it.
+    d = read_json(STATE, default={"day": _today(), "spent": 0, "by_lane": {}})
     if d.get("day") != _today():                  # a new quota day
         return {"day": _today(), "spent": 0, "by_lane": {}}
     return d
