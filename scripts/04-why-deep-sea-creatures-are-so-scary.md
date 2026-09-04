@@ -1,6 +1,7 @@
 # Why deep sea creatures are so scary?
 
-**Status:** HUMANIZED EDITORIAL PASS COMPLETE — OWNER CONFIRMATION AND MASTER WATCH REQUIRED  
+**Status:** HUMANIZED EDITORIAL PASS COMPLETE — OWNER CONFIRMATION AND MASTER WATCH REQUIRED    
+**Domain:** deep-sea-ocean-science  
 **Article:** /questions/why-deep-sea-creatures-are-so-scary  
 **Word count:** 1172  
 **Estimated narration:** 8m 05s at 145 WPM
@@ -24,7 +25,7 @@ Why deep sea creatures are so scary?
 ### The right way to see it
 
 {{chain: HOW THE FEAR ARRIVES | Teeth, staring eyes, darkness, unfamiliar movement | The brain reacts | Before we know size, behavior, or actual risk | >Fear comes from anatomy plus context}}
-Fear comes from anatomy plus context. Our brains react to teeth, staring eyes, darkness, and unfamiliar movement before we know the animal’s size, behavior, or actual risk. The rest of this video follows that question through the actual environmental constraints described by NOAA, MBARI, Smithsonian, and Woods Hole sources in the companion article.
+Fear comes from anatomy plus context. Our brains react to teeth, staring eyes, darkness, and unfamiliar movement before we know the animal’s size, behavior, or actual risk.
 
 ### Producer POV
 
@@ -80,12 +81,12 @@ The human fear response then does the rest. Forward-facing eyes suggest attentio
 ### The fear reveal
 
 {{contrast: ENVIRONMENTAL DANGER BESIDE ANIMAL DANGER | is=Pressure | is=Cold | is=Darkness | is=Distance | not=The creatures, which are rarely the main hazard to humans}}
-Near the end, the edit should reveal the actual size and normal distance of each animal that appeared frightening in close-up. That reveal is not a debunk. It is the episode's central contrast. The audience gets the image that earned the click, then receives the context that keeps the channel from becoming a fear factory. The anglerfish can remain visually disturbing while also being a small, remote specialist. A dragonfish can keep its impossible-looking teeth while the narration explains why losing prey is costly. The final comparison should place environmental danger beside animal danger. Pressure, cold, darkness, and distance win by a wide margin. The creatures are the memorable faces of the deep; they are rarely the main hazard to humans.
+Near the end, watch the actual size and normal distance of each animal that looked frightening in close-up get revealed. That is not a debunk. It is the central contrast here. You get the frightening image first, then the context that keeps this from being fear for its own sake. The anglerfish can remain visually disturbing while also being a small, remote specialist. A dragonfish can keep its impossible-looking teeth while the narration explains why losing prey is costly. The final comparison should place environmental danger beside animal danger. Pressure, cold, darkness, and distance win by a wide margin. The creatures are the memorable faces of the deep; they are rarely the main hazard to humans.
 
 ### The thumbnail bargain
 
 {{checklist: THE THUMBNAIL BARGAIN | +The thumbnail can use the frightening face | ?The first minute has to repay that choice with scale and context | ?If the creature is tiny, say so | ?If the shot was made inches from the animal under artificial light, show that | -Letting the image carry a false threat claim}}
-The thumbnail can use the frightening face, but the first minute has to repay that choice with scale and context. That is the bargain. We are not pretending the image is boring; we are refusing to let the image carry a false threat claim. If the creature is tiny, say so. If the shot was made inches from the animal under artificial light, show that. The audience can enjoy the fear and still leave with a more accurate model.
+You saw the frightening face before you clicked; watch for whether the first minute repays that with scale and context. Nobody here is pretending the image is boring — only refusing to let it carry a false threat claim. If the creature is tiny, that gets said outright. If the shot was made inches away under artificial light, that gets shown. You can enjoy the fear and still leave with a more accurate model.
 
 ### The line I will keep
 
@@ -95,12 +96,12 @@ I can say the animal scares me. I cannot say it is hunting people, predicting di
 ### Final editorial note
 
 {{text}}
-That context is what turns a strong thumbnail into a trustworthy documentary opening. That context is what turns a strong thumbnail into a trustworthy documentary opening.
+That context is what turns the striking image that got you here into something you can trust for the next ten minutes. That context is what turns the striking image that got you here into something you can trust for the next ten minutes.
 
 ### What to notice in the edit
 
 {{anatomy: TEETH, EYES, LURES | teeth@0.19,0.64 | eyes@0.24,0.34 | bioluminescent lure@0.36,0.18}}
-Open with a tight crop, then pull back to reveal scale. Repeat the technique with teeth, eyes, and bioluminescent lures. This structure lets the viewer feel the fear before the episode explains it. The final reveal should be a submersible or pressure diagram, shifting the threat from the creature to the environment without pretending the animal is harmless to its own prey.
+Notice the tight crop pulling back to reveal scale, repeated with teeth, eyes, and bioluminescent lures — you're meant to feel the fear before the explanation catches up to it. Watch for the final image landing on a submersible or a pressure diagram instead of the animal: the threat shifts to the environment, without pretending the animal is harmless to its own prey.
 
 ### Evidence limit
 

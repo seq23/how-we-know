@@ -107,8 +107,13 @@ def check_parses():
 if __name__ == "__main__":
     flags, seen, nscripts = check()
     print(f"inspected {seen} v2 directives across {nscripts} scripts")
-    if nscripts != 20:
-        print(f"FAIL  expected 20 scripts, found {nscripts}")
+    # A floor, not an exact count, 2026-09-03: this used to require EXACTLY
+    # 20, which broke the moment materials-and-manufacturing's own scripts
+    # landed in scripts/ alongside deep sea's. scripts/ only grows, so a
+    # floor still catches the real failure mode (a script silently missing
+    # from this test's view) without assuming there is only ever one domain.
+    if nscripts < 20:
+        print(f"FAIL  expected at least 20 scripts, found {nscripts}")
         sys.exit(1)
     if seen == 0:                       # Rule 0: never pass on an empty loop
         print("FAIL  inspected zero directives - the guard cannot see its subject")

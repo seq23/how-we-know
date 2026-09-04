@@ -1,6 +1,7 @@
 # What is the deepest fish ever recorded?
 
-**Status:** HUMANIZED EDITORIAL PASS COMPLETE — OWNER CONFIRMATION AND MASTER WATCH REQUIRED  
+**Status:** HUMANIZED EDITORIAL PASS COMPLETE — OWNER CONFIRMATION AND MASTER WATCH REQUIRED    
+**Domain:** deep-sea-ocean-science  
 **Article:** /questions/what-is-the-deepest-fish-ever-recorded  
 **Word count:** 1154  
 **Estimated narration:** 7m 58s at 145 WPM
@@ -102,10 +103,10 @@ The evidence framework would still hold: identify the depth method, distinguish 
 ### What to notice in the edit
 
 {{text}}
-Split the screen into FILMED and CAUGHT.
+Watch the screen split into FILMED and CAUGHT.
 
 {{checklist: KEEP VISIBLE | ?The depth | ?The trench | ?The evidence type | >Show the proposed boundary as a shaded range, not a brick wall}}
-Keep the depth, trench, and evidence type visible. Then show the proposed physiological boundary around 8,200–8,400 meters as a shaded range, not a brick wall. This turns the episode into a record audit rather than a simple countdown.
+The depth, the trench, and the evidence type all stay visible throughout, and the proposed physiological boundary around 8,200-8,400 meters shows up as a shaded range, not a brick wall. Read it as a record audit, not a countdown.
 
 ### Evidence limit
 

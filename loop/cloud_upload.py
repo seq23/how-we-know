@@ -53,6 +53,7 @@ import ledger                                    # noqa: E402
 import quota                                     # noqa: E402
 import r2                                        # noqa: E402
 import upload as up                              # noqa: E402
+import arming  # noqa: E402
 from common import Stage, config, week_id        # noqa: E402
 
 LANE = "cloud-upload"
@@ -107,6 +108,10 @@ def run(limit: int = 4, dry_run: bool = False) -> int:
                zero_work_hint="Nothing was shelved in R2 that is not already "
                               "in loop/state/ledger.json. Run bin/push-to-r2.sh "
                               "on the Mac once a render finishes.") as st:
+        # The schedule fires every day; this decides whether a
+        # SCHEDULED run may act. Unarmed, it says so where a human
+        # sees it instead of the lane being silently absent.
+        arming.gate(st, 'upload-cloud')
         # -- the shelf --------------------------------------------------
         try:
             shelf = r2.require()
@@ -203,6 +208,14 @@ def run(limit: int = 4, dry_run: bool = False) -> int:
                 # runner has ~14 GB and four 40 MB renders is fine, but this
                 # lane should not become the reason a bigger one is not.
                 render.unlink(missing_ok=True)
+
+        # A real upload just happened for real, against the live channel.
+        # That is exactly the evidence loop/arming.py is waiting for; record
+        # it so a scheduled run tomorrow no longer has to stop and ask.
+        arming.record_success(
+            'upload-cloud',
+            detail=f"uploaded and scheduled {len(take)} episode(s): "
+                   f"{[s for s, _, _ in take]}")
     return 0
 
 
