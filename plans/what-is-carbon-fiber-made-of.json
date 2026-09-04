@@ -1,0 +1,1018 @@
+[
+  {
+    "segment": "thermal_ascent",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "Polyacrylonitrile enters an oxygen-free furnace at around 1500 degrees Celsius and emerges as carbon fiber containing over ninety percent carbon by mass.",
+    "args": {
+      "to_temp": 1500,
+      "label": "Carbonization"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "material_image",
+    "seconds": 5.38,
+    "heading": "Cold open",
+    "narration": "That figure comes from ASTM International's standard test methods for carbon fiber composition.",
+    "args": {
+      "subject": "carbon-fiber",
+      "label": "CARBON FIBER",
+      "pick": 0
+    },
+    "from": "directive-rhythm+material"
+  },
+  {
+    "segment": "thermal_ascent",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "The transformation is not a coating or an infusion. It is the controlled removal of hydrogen, nitrogen and oxygen until only a carbon skeleton remains, and the precision required to keep that skeleton aligned is what makes the material expensive.",
+    "args": {
+      "to_temp": 1500,
+      "label": "Carbonization"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 3.5,
+    "heading": "Title card",
+    "narration": "What is carbon fiber made of?",
+    "args": {
+      "lines": [
+        "What is carbon fiber",
+        "made of?"
+      ]
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 7.86,
+    "heading": "The precursor is a polymer most people have never heard of",
+    "narration": "Polyacrylonitrile, abbreviated PAN, is a synthetic polymer. Each repeat unit contains a carbon-nitrogen triple bond projecting from the backbone.",
+    "args": {
+      "term": "Polyacrylonitrile",
+      "meaning": "Synthetic polymer with carbon-nitrogen triple bonds in every repeat unit",
+      "boundary": "Used in ninety percent of commercial carbon fiber",
+      "source": "ASTM International"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The precursor is a polymer most people have never heard of",
+    "narration": "That bond is the reason PAN works as a precursor. When heated in air, those triple bonds react with oxygen and link adjacent polymer chains together without breaking the main chain.",
+    "args": {
+      "lines": [
+        "That bond is the",
+        "reason PAN works as",
+        "a precursor."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "The precursor is a polymer most people have never heard of",
+    "narration": "The result is a stabilized structure that will not melt or drip when you remove the oxygen and raise the temperature further.",
+    "args": {
+      "term": "Polyacrylonitrile",
+      "meaning": "Synthetic polymer with carbon-nitrogen triple bonds in every repeat unit",
+      "boundary": "Used in ninety percent of commercial carbon fiber",
+      "source": "ASTM International"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "The precursor is a polymer most people have never heard of",
+    "narration": "About ninety percent of commercial carbon fiber starts as PAN, according to ASTM International's published standards.",
+    "args": {
+      "lines": [
+        "About ninety percent of",
+        "commercial carbon fiber starts",
+        "as PAN"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 8.69,
+    "heading": "The precursor is a polymer most people have never heard of",
+    "narration": "The remaining ten percent comes from petroleum pitch or rayon, but those routes produce different fiber grades and are not interchangeable.",
+    "args": {
+      "term": "Polyacrylonitrile",
+      "meaning": "Synthetic polymer with carbon-nitrogen triple bonds in every repeat unit",
+      "boundary": "Used in ninety percent of commercial carbon fiber",
+      "source": "ASTM International"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "material_image",
+    "seconds": 9.0,
+    "heading": "The precursor is a polymer most people have never heard of",
+    "narration": "PAN was first synthesized in the 1930s, but its use as a carbon fiber precursor was not developed until the 1960s when researchers at multiple institutions discovered that controlled oxidation could stabilize the polymer before carbonization.",
+    "args": {
+      "subject": "carbon-fiber",
+      "label": "CARBON FIBER",
+      "pick": 1
+    },
+    "from": "directive-rhythm+material"
+  },
+  {
+    "segment": "process_column",
+    "seconds": 6.21,
+    "heading": "Stabilization happens in air at a temperature that does not melt the polymer",
+    "narration": "The PAN fiber enters an oxidizing oven at temperatures between 200 and 300 degrees Celsius.",
+    "args": {
+      "highlight": "STABILIZATION"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Stabilization happens in air at a temperature that does not melt the polymer",
+    "narration": "Oxygen diffuses into the fiber and triggers a cascade of reactions. The nitrile groups on adjacent chains link up, forming ladder-like structures that lock the polymer in place.",
+    "args": {
+      "lines": [
+        "Oxygen diffuses into the",
+        "fiber and triggers a",
+        "cascade"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_column",
+    "seconds": 7.03,
+    "heading": "Stabilization happens in air at a temperature that does not melt the polymer",
+    "narration": "The process takes one to two hours and turns the white PAN fiber dark brown or black.",
+    "args": {
+      "highlight": "STABILIZATION"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Stabilization happens in air at a temperature that does not melt the polymer",
+    "narration": "If you skip this step and go straight to high heat, the polymer melts and the fiber collapses.",
+    "args": {
+      "lines": [
+        "If you skip this",
+        "step and go straight",
+        "to high"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_column",
+    "seconds": 9.0,
+    "heading": "Stabilization happens in air at a temperature that does not melt the polymer",
+    "narration": "The stabilization step is slow because the reactions release heat, and if the fiber heats too quickly it degrades instead of cross-linking.",
+    "args": {
+      "highlight": "STABILIZATION"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "Stabilization happens in air at a temperature that does not melt the polymer",
+    "narration": "Manufacturers control the oven atmosphere, tension on the fiber and heating rate to keep the process stable.",
+    "args": {
+      "lines": [
+        "Manufacturers control the oven",
+        "atmosphere, tension on the",
+        "fiber"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_column",
+    "seconds": 8.69,
+    "heading": "Stabilization happens in air at a temperature that does not melt the polymer",
+    "narration": "The tension is critical because it prevents the fiber from shrinking unevenly, which would create weak spots in the final product.",
+    "args": {
+      "highlight": "STABILIZATION"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "thermal_ascent",
+    "seconds": 7.03,
+    "heading": "Carbonization removes everything that is not carbon",
+    "narration": "The stabilized fiber moves into an inert atmosphere furnace at temperatures between 1000 and 1500 degrees Celsius.",
+    "args": {
+      "to_temp": 1500,
+      "label": "Carbonization"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Carbonization removes everything that is not carbon",
+    "narration": "Nitrogen gas or argon prevents oxidation. At these temperatures, hydrogen and nitrogen atoms leave the structure as small gas molecules.",
+    "args": {
+      "lines": [
+        "Nitrogen gas or argon",
+        "prevents oxidation. At these",
+        "temperatures, hydrogen"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "thermal_ascent",
+    "seconds": 9.0,
+    "heading": "Carbonization removes everything that is not carbon",
+    "narration": "Oxygen, already reduced during stabilization, continues to depart. What remains is a structure where carbon atoms have rearranged into sheets resembling graphite.",
+    "args": {
+      "to_temp": 1500,
+      "label": "Carbonization"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "Carbonization removes everything that is not carbon",
+    "narration": "The sheets align roughly parallel to the fiber axis because the original polymer backbone constrained their formation.",
+    "args": {
+      "lines": [
+        "The sheets align roughly",
+        "parallel to the fiber",
+        "axis because"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "thermal_ascent",
+    "seconds": 5.79,
+    "heading": "Carbonization removes everything that is not carbon",
+    "narration": "The fiber shrinks as atoms leave, and tension applied during carbonization helps maintain alignment.",
+    "args": {
+      "to_temp": 1500,
+      "label": "Carbonization"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "Carbonization removes everything that is not carbon",
+    "narration": "The higher the carbonization temperature, the more complete the conversion and the higher the final carbon content.",
+    "args": {
+      "lines": [
+        "The higher the carbonization",
+        "temperature, the more complete",
+        "the conversion"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "thermal_ascent",
+    "seconds": 9.0,
+    "heading": "Carbonization removes everything that is not carbon",
+    "narration": "A fiber carbonized at 1000 degrees Celsius might contain ninety-three percent carbon, while one treated at 1500 degrees Celsius can reach ninety-five percent or higher.",
+    "args": {
+      "to_temp": 1500,
+      "label": "Carbonization"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Graphitization is optional and pushes carbon content even higher",
+    "narration": "Some applications require graphitization, a further heat treatment at temperatures between 2000 and 3000 degrees Celsius.",
+    "args": {
+      "lines": [
+        "Some applications require graphitization,",
+        "a further heat treatment",
+        "at temperatures"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Graphitization is optional and pushes carbon content even higher",
+    "narration": "At this stage, the graphite-like sheets grow larger and more ordered. Carbon content rises above ninety-five percent, sometimes reaching ninety-nine percent.",
+    "args": {
+      "lines": [
+        "At this stage, the",
+        "graphite-like sheets grow larger"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 4.97,
+    "heading": "Graphitization is optional and pushes carbon content even higher",
+    "narration": "The fiber becomes stiffer and more thermally conductive, but also more brittle.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Graphitization is optional and pushes carbon content even higher",
+    "narration": "Graphitization is expensive because of the energy required and the specialized furnaces that can sustain those temperatures without contaminating the fiber.",
+    "args": {
+      "lines": [
+        "Graphitization is expensive because",
+        "of the energy required"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "Graphitization is optional and pushes carbon content even higher",
+    "narration": "The furnaces must use graphite heating elements and inert atmospheres maintained at high purity.",
+    "args": {
+      "lines": [
+        "The furnaces must use",
+        "graphite heating elements and",
+        "inert atmospheres"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Graphitization is optional and pushes carbon content even higher",
+    "narration": "Aerospace applications sometimes justify the cost. Most structural carbon fiber stops at carbonization because the property gains from graphitization do not offset the expense for typical uses.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 7.03,
+    "heading": "The fiber diameter is set at the beginning and does not change much",
+    "narration": "A single carbon fiber filament is about seven micrometers in diameter, according to ASTM International's measurement standards.",
+    "args": {
+      "value": "7",
+      "unit": "micrometers",
+      "caption": "Typical carbon fiber diameter",
+      "source": "ASTM International"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "The fiber diameter is set at the beginning and does not change much",
+    "narration": "That dimension is determined when the PAN fiber is extruded, before any heat treatment.",
+    "args": {
+      "lines": [
+        "That dimension is determined",
+        "when the PAN fiber",
+        "is extruded"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 7.86,
+    "heading": "The fiber diameter is set at the beginning and does not change much",
+    "narration": "The fiber shrinks slightly during stabilization and carbonization, but the diameter remains in the five to ten micrometer range.",
+    "args": {
+      "value": "7",
+      "unit": "micrometers",
+      "caption": "Typical carbon fiber diameter",
+      "source": "ASTM International"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The fiber diameter is set at the beginning and does not change much",
+    "narration": "Thousands of filaments are bundled into a tow, and tows are woven or laid up into the shapes you see in finished parts.",
+    "args": {
+      "lines": [
+        "Thousands of filaments are",
+        "bundled into a tow,",
+        "and tows"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 9.0,
+    "heading": "The fiber diameter is set at the beginning and does not change much",
+    "narration": "The small diameter gives the fiber a high surface area relative to its volume, which matters for resin adhesion in composite structures.",
+    "args": {
+      "value": "7",
+      "unit": "micrometers",
+      "caption": "Typical carbon fiber diameter",
+      "source": "ASTM International"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "The fiber diameter is set at the beginning and does not change much",
+    "narration": "A typical tow might contain three thousand, twelve thousand or twenty-four thousand individual filaments, depending on the application.",
+    "args": {
+      "lines": [
+        "A typical tow might",
+        "contain three thousand, twelve",
+        "thousand"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 8.28,
+    "heading": "Surface treatment makes the fiber stick to resin",
+    "narration": "Carbon fiber straight from carbonization has a smooth, inert surface. Epoxy and other resins do not bond well to it.",
+    "args": {
+      "title": "Surface oxidation",
+      "steps": [
+        [
+          "Fiber passes through electrolytic bath or plasma",
+          ""
+        ],
+        [
+          "Surface roughness increases",
+          ""
+        ],
+        [
+          "Oxygen-containing groups form",
+          ""
+        ]
+      ],
+      "note": "Resin wets and bonds"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "Surface treatment makes the fiber stick to resin",
+    "narration": "Manufacturers treat the surface by passing the fiber through an electrolytic bath or exposing it to plasma.",
+    "args": {
+      "lines": [
+        "Manufacturers treat the surface",
+        "by passing the fiber",
+        "through"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "Surface treatment makes the fiber stick to resin",
+    "narration": "The treatment etches the surface and adds oxygen-containing functional groups. The roughness and the chemical groups together allow resin to wet the fiber and form a mechanical and chemical bond.",
+    "args": {
+      "title": "Surface oxidation",
+      "steps": [
+        [
+          "Fiber passes through electrolytic bath or plasma",
+          ""
+        ],
+        [
+          "Surface roughness increases",
+          ""
+        ],
+        [
+          "Oxygen-containing groups form",
+          ""
+        ]
+      ],
+      "note": "Resin wets and bonds"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Surface treatment makes the fiber stick to resin",
+    "narration": "Without surface treatment, a composite part can delaminate under load because the fiber simply pulls out of the resin.",
+    "args": {
+      "lines": [
+        "Without surface treatment, a",
+        "composite part can delaminate",
+        "under load"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "Surface treatment makes the fiber stick to resin",
+    "narration": "The treatment is a standard step in commercial production. Some manufacturers also apply a sizing, a thin polymer coating that protects the fiber during handling and further improves resin compatibility.",
+    "args": {
+      "title": "Surface oxidation",
+      "steps": [
+        [
+          "Fiber passes through electrolytic bath or plasma",
+          ""
+        ],
+        [
+          "Surface roughness increases",
+          ""
+        ],
+        [
+          "Oxygen-containing groups form",
+          ""
+        ]
+      ],
+      "note": "Resin wets and bonds"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 5.79,
+    "heading": "Producer POV",
+    "narration": "I quoted 286 megajoules per kilogram for production energy as if it were settled.",
+    "args": {
+      "text": "I quoted 286 megajoules per kilogram for production energy as if it were settled.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 9.0,
+    "heading": "Producer POV",
+    "narration": "Published estimates actually run from 200 to over 400 depending on the process, so I picked the mid-range and said so instead of stating one number as fact.",
+    "args": {
+      "text": "Published estimates actually run from 200 to over 400 depending on the process, so I picked the mid-range and said so instead of stating one number as fact.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.03,
+    "heading": "The aligned carbon sheets are why the fiber is strong along its length",
+    "narration": "The carbon atoms in the fiber are arranged in sheets that run parallel to the fiber axis.",
+    "args": {
+      "term": "Carbon fiber strength",
+      "includes": [
+        "Tensile strength along fiber axis exceeds three gigapascals"
+      ],
+      "excludes": [
+        "Transverse and compressive strength much lower"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The aligned carbon sheets are why the fiber is strong along its length",
+    "narration": "When you pull on the fiber, you are pulling against carbon-carbon bonds within those sheets, which are among the strongest bonds in chemistry.",
+    "args": {
+      "lines": [
+        "When you pull on",
+        "the fiber, you are",
+        "pulling against"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 8.28,
+    "heading": "The aligned carbon sheets are why the fiber is strong along its length",
+    "narration": "Tensile strength along the fiber axis can exceed three gigapascals for high-performance grades, according to data published by ASTM International.",
+    "args": {
+      "term": "Carbon fiber strength",
+      "includes": [
+        "Tensile strength along fiber axis exceeds three gigapascals"
+      ],
+      "excludes": [
+        "Transverse and compressive strength much lower"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The aligned carbon sheets are why the fiber is strong along its length",
+    "narration": "Strength perpendicular to the fiber axis is much lower because you are relying on weaker forces between the sheets, not the bonds within them.",
+    "args": {
+      "lines": [
+        "Strength perpendicular to the",
+        "fiber axis is much",
+        "lower because"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "The aligned carbon sheets are why the fiber is strong along its length",
+    "narration": "Compressive strength is also lower because the sheets can buckle. This anisotropy means carbon fiber composites must be designed with fiber orientation in mind.",
+    "args": {
+      "term": "Carbon fiber strength",
+      "includes": [
+        "Tensile strength along fiber axis exceeds three gigapascals"
+      ],
+      "excludes": [
+        "Transverse and compressive strength much lower"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "The aligned carbon sheets are why the fiber is strong along its length",
+    "narration": "A part loaded in tension along the fiber direction performs very differently from one loaded in compression or shear.",
+    "args": {
+      "lines": [
+        "A part loaded in",
+        "tension along the fiber",
+        "direction performs"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "magnitude_bar",
+    "seconds": 8.28,
+    "heading": "The process is energy-intensive and that drives cost",
+    "narration": "Producing one kilogram of carbon fiber requires about 286 megajoules of energy, according to estimates published in materials science literature.",
+    "args": {
+      "title": "Energy intensity",
+      "unit": "megajoules per kilogram",
+      "items": [
+        [
+          "Aluminum",
+          "170"
+        ],
+        [
+          "Steel",
+          "35"
+        ],
+        [
+          "Carbon fiber",
+          "286"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The process is energy-intensive and that drives cost",
+    "narration": "That is higher than aluminum at roughly 170 megajoules per kilogram, and much higher than steel at around 35 megajoules per kilogram for recycled content.",
+    "args": {
+      "lines": [
+        "That is higher than",
+        "aluminum at roughly 170",
+        "megajoules per"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "magnitude_bar",
+    "seconds": 5.79,
+    "heading": "The process is energy-intensive and that drives cost",
+    "narration": "The energy goes into heating the fiber through multiple stages and maintaining controlled atmospheres.",
+    "args": {
+      "title": "Energy intensity",
+      "unit": "megajoules per kilogram",
+      "items": [
+        [
+          "Aluminum",
+          "170"
+        ],
+        [
+          "Steel",
+          "35"
+        ],
+        [
+          "Carbon fiber",
+          "286"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "The process is energy-intensive and that drives cost",
+    "narration": "The PAN precursor itself is also expensive because it must be high purity and the polymerization process is specialized.",
+    "args": {
+      "lines": [
+        "The PAN precursor itself",
+        "is also expensive because",
+        "it"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "magnitude_bar",
+    "seconds": 7.45,
+    "heading": "The process is energy-intensive and that drives cost",
+    "narration": "These costs are why carbon fiber remains a premium material used where its strength-to-weight ratio justifies the price.",
+    "args": {
+      "title": "Energy intensity",
+      "unit": "megajoules per kilogram",
+      "items": [
+        [
+          "Aluminum",
+          "170"
+        ],
+        [
+          "Steel",
+          "35"
+        ],
+        [
+          "Carbon fiber",
+          "286"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "The process is energy-intensive and that drives cost",
+    "narration": "The aerospace and automotive industries are the largest consumers, followed by sporting goods and wind turbine blades.",
+    "args": {
+      "lines": [
+        "The aerospace and automotive",
+        "industries are the largest",
+        "consumers, followed"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 7.03,
+    "heading": "Recycling carbon fiber is possible but degrades properties",
+    "narration": "Carbon fiber composites are difficult to recycle because the fiber is locked in a cured resin matrix.",
+    "args": {
+      "title": "Recycling challenges",
+      "items": [
+        "+Fiber can be recovered from composite scrap",
+        "+Pyrolysis removes resin",
+        "-Recovered fiber is shorter and weaker",
+        "-Alignment is lost"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Recycling carbon fiber is possible but degrades properties",
+    "narration": "Pyrolysis, heating the composite in an oxygen-free environment, burns off the resin and recovers the fiber.",
+    "args": {
+      "lines": [
+        "Pyrolysis, heating the composite",
+        "in an oxygen-free environment,",
+        "burns off"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "Recycling carbon fiber is possible but degrades properties",
+    "narration": "The recovered fiber is shorter because it fractures during handling, and it has lost the alignment and surface treatment that gave it full properties.",
+    "args": {
+      "title": "Recycling challenges",
+      "items": [
+        "+Fiber can be recovered from composite scrap",
+        "+Pyrolysis removes resin",
+        "-Recovered fiber is shorter and weaker",
+        "-Alignment is lost"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Recycling carbon fiber is possible but degrades properties",
+    "narration": "Mechanical properties of parts made from recycled fiber are lower than those made from virgin fiber.",
+    "args": {
+      "lines": [
+        "Mechanical properties of parts",
+        "made from recycled fiber",
+        "are lower"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "Recycling carbon fiber is possible but degrades properties",
+    "narration": "Research continues on methods to preserve fiber length and alignment, but as of now, most carbon fiber composite waste is landfilled or incinerated for energy recovery.",
+    "args": {
+      "title": "Recycling challenges",
+      "items": [
+        "+Fiber can be recovered from composite scrap",
+        "+Pyrolysis removes resin",
+        "-Recovered fiber is shorter and weaker",
+        "-Alignment is lost"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Recycling carbon fiber is possible but degrades properties",
+    "narration": "Some companies are exploring chemical recycling methods that dissolve the resin without damaging the fiber, but these processes are not yet economical at scale.",
+    "args": {
+      "lines": [
+        "Some companies are exploring",
+        "chemical recycling methods that",
+        "dissolve"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 8.28,
+    "heading": "What to notice in the edit",
+    "narration": "The link between composition and properties is direct. ASTM International publishes test methods that measure carbon content by combustion analysis.",
+    "args": {
+      "title": "Evidence path",
+      "stages": [
+        "ASTM test method for carbon content",
+        "Controlled carbonization temperature",
+        "Measured tensile strength"
+      ],
+      "conclusion": "Composition determines properties"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "What to notice in the edit",
+    "narration": "The same standards specify carbonization temperatures and measure tensile strength on the resulting fiber.",
+    "args": {
+      "lines": [
+        "The same standards specify",
+        "carbonization temperatures and measure",
+        "tensile strength"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "When a manufacturer reports a fiber with ninety-five percent carbon content and a tensile strength of four gigapascals, both numbers trace to these standardized tests.",
+    "args": {
+      "title": "Evidence path",
+      "stages": [
+        "ASTM test method for carbon content",
+        "Controlled carbonization temperature",
+        "Measured tensile strength"
+      ],
+      "conclusion": "Composition determines properties"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "The process control required to hit those numbers consistently is part of why carbon fiber production remains concentrated in a few companies with decades of experience.",
+    "args": {
+      "lines": [
+        "The process control required",
+        "to hit those numbers",
+        "consistently"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 7.45,
+    "heading": "What to notice in the edit",
+    "narration": "Small variations in temperature, tension or atmosphere during any stage can produce fiber that fails to meet specifications.",
+    "args": {
+      "title": "Evidence path",
+      "stages": [
+        "ASTM test method for carbon content",
+        "Controlled carbonization temperature",
+        "Measured tensile strength"
+      ],
+      "conclusion": "Composition determines properties"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "The energy intensity figure for carbon fiber production varies widely in published literature, from around 200 to over 400 megajoules per kilogram depending on the production route, the efficiency of the equipment and the energy source.",
+    "args": {
+      "lines": [
+        "The energy intensity figure",
+        "for carbon fiber production",
+        "varies widely"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "The 286 megajoules per kilogram cited here is a mid-range estimate. Precise figures are often proprietary because they reveal details of a manufacturer's process.",
+    "args": {
+      "lines": [
+        "The 286 megajoules per",
+        "kilogram cited here is",
+        "a mid-range"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.69,
+    "heading": "Evidence limit",
+    "narration": "The comparison to aluminum and steel is useful for understanding relative magnitude, but the absolute numbers should be understood as approximate.",
+    "args": {
+      "variant": 2
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "Carbon fiber is not a coating on something else. It is the product of removing everything from a polymer except the carbon, and arranging what remains into aligned sheets.",
+    "args": {
+      "lines": [
+        "Carbon fiber is not",
+        "a coating on something",
+        "else. It"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "Closing",
+    "narration": "The strength comes from the arrangement, and the cost comes from the precision required to create it.",
+    "args": {
+      "lines": [
+        "The strength comes from",
+        "the arrangement, and the",
+        "cost comes"
+      ]
+    },
+    "from": "directive"
+  }
+]

@@ -1,0 +1,1037 @@
+[
+  {
+    "segment": "stat_card",
+    "seconds": 7.03,
+    "heading": "Cold open",
+    "narration": "Silicon accounts for more than ninety percent of semiconductor production by volume, according to SEMI International Standards.",
+    "args": {
+      "value": "90+",
+      "unit": "percent",
+      "caption": "commercial semiconductor production by volume",
+      "source": "SEMI"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Cold open",
+    "narration": "That figure tells you the industry's choice, not the physical requirement. A semiconductor is not defined by being silicon.",
+    "args": {
+      "lines": [
+        "That figure tells you",
+        "the industry's choice, not",
+        "the physical"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 7.03,
+    "heading": "Cold open",
+    "narration": "It is defined by having an electrical conductivity you can control through temperature, light, or deliberate contamination.",
+    "args": {
+      "value": "90+",
+      "unit": "percent",
+      "caption": "commercial semiconductor production by volume",
+      "source": "SEMI"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "Cold open",
+    "narration": "The material itself sits between conductor and insulator, and that middle ground is where the engineering happens.",
+    "args": {
+      "lines": [
+        "The material itself sits",
+        "between conductor and insulator"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 3.5,
+    "heading": "Title card",
+    "narration": "What is a semiconductor made of?",
+    "args": {
+      "lines": [
+        "What is a semiconductor",
+        "made of?"
+      ]
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 8.69,
+    "heading": "Pure silicon conducts poorly until you break its symmetry",
+    "narration": "Pure silicon at room temperature is a poor conductor. Every silicon atom bonds to four neighbors in a diamond cubic lattice.",
+    "args": {
+      "term": "intrinsic silicon",
+      "includes": [
+        "symmetric crystal, low conductivity"
+      ],
+      "excludes": [
+        "useful device material"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Pure silicon conducts poorly until you break its symmetry",
+    "narration": "Those bonds lock electrons in place. Intrinsic silicon \u2014 the term for material with no intentional impurities \u2014 has a conductivity millions of times lower than copper.",
+    "args": {
+      "lines": [
+        "Those bonds lock electrons",
+        "in place. Intrinsic silicon"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Pure silicon conducts poorly until you break its symmetry",
+    "narration": "The crystal is symmetric. Charge carriers exist only when thermal energy breaks a bond, creating an electron and a hole in matched pairs.",
+    "args": {
+      "term": "intrinsic silicon",
+      "includes": [
+        "symmetric crystal, low conductivity"
+      ],
+      "excludes": [
+        "useful device material"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Pure silicon conducts poorly until you break its symmetry",
+    "narration": "That symmetry is the starting point, not the goal. The engineering begins when you break it.",
+    "args": {
+      "lines": [
+        "That symmetry is the",
+        "starting point, not the",
+        "goal."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 5.79,
+    "heading": "Doping introduces the asymmetry devices require",
+    "narration": "You make silicon useful by adding impurities at parts-per-million concentrations. This is called doping.",
+    "args": {
+      "title": "CONTROLLED DOPING",
+      "steps": [
+        [
+          "grow ultra-pure silicon",
+          ""
+        ],
+        [
+          "introduce group-III or group-V atoms at ppm levels",
+          ""
+        ],
+        [
+          "diffuse or implant dopants into crystal",
+          ""
+        ]
+      ],
+      "note": "carrier type and density now engineered"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Doping introduces the asymmetry devices require",
+    "narration": "If you introduce phosphorus or arsenic \u2014 elements from group fifteen of the periodic table \u2014 each atom brings five valence electrons into a lattice that expects four.",
+    "args": {
+      "lines": [
+        "If you introduce phosphorus",
+        "or arsenic"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 5.79,
+    "heading": "Doping introduces the asymmetry devices require",
+    "narration": "The extra electron becomes a mobile negative charge carrier. The material is now n-type.",
+    "args": {
+      "title": "CONTROLLED DOPING",
+      "steps": [
+        [
+          "grow ultra-pure silicon",
+          ""
+        ],
+        [
+          "introduce group-III or group-V atoms at ppm levels",
+          ""
+        ],
+        [
+          "diffuse or implant dopants into crystal",
+          ""
+        ]
+      ],
+      "note": "carrier type and density now engineered"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Doping introduces the asymmetry devices require",
+    "narration": "If you introduce boron or gallium from group thirteen, each atom accepts an electron to complete its bonds, leaving a mobile positive hole.",
+    "args": {
+      "lines": [
+        "If you introduce boron",
+        "or gallium from group",
+        "thirteen"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "Doping introduces the asymmetry devices require",
+    "narration": "The material is p-type. The conductivity is no longer symmetric. You have engineered an imbalance, and that imbalance is what transistors and diodes exploit.",
+    "args": {
+      "title": "CONTROLLED DOPING",
+      "steps": [
+        [
+          "grow ultra-pure silicon",
+          ""
+        ],
+        [
+          "introduce group-III or group-V atoms at ppm levels",
+          ""
+        ],
+        [
+          "diffuse or implant dopants into crystal",
+          ""
+        ]
+      ],
+      "note": "carrier type and density now engineered"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Doping introduces the asymmetry devices require",
+    "narration": "The ratio matters. One dopant atom per million silicon atoms changes resistivity by orders of magnitude.",
+    "args": {
+      "lines": [
+        "The ratio matters. One",
+        "dopant atom per million",
+        "silicon atoms"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 7.45,
+    "heading": "The purity requirement is extreme and measurable",
+    "narration": "Semiconductor-grade silicon begins with purity near one part per billion for electrically active impurities, according to SEMI standards.",
+    "args": {
+      "value": "1",
+      "unit": "part per billion",
+      "caption": "background impurity target",
+      "source": "SEMI"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "The purity requirement is extreme and measurable",
+    "narration": "That level is measured by resistivity mapping and secondary ion mass spectrometry.",
+    "args": {
+      "lines": [
+        "That level is measured",
+        "by resistivity mapping and",
+        "secondary ion"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 6.62,
+    "heading": "The purity requirement is extreme and measurable",
+    "narration": "The Czochralski process grows single crystals from molten silicon in a quartz crucible under inert atmosphere.",
+    "args": {
+      "value": "1",
+      "unit": "part per billion",
+      "caption": "background impurity target",
+      "source": "SEMI"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The purity requirement is extreme and measurable",
+    "narration": "Oxygen from the crucible dissolves into the melt at parts-per-million levels. Carbon, metals, and dopants from previous runs are removed by zone refining or controlled segregation during solidification.",
+    "args": {
+      "lines": [
+        "Oxygen from the crucible",
+        "dissolves into the melt",
+        "at parts-per-million"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 9.0,
+    "heading": "The purity requirement is extreme and measurable",
+    "narration": "The purity target is not arbitrary. A single unintended atom per billion can shift carrier concentration enough to ruin a transistor's threshold voltage.",
+    "args": {
+      "value": "1",
+      "unit": "part per billion",
+      "caption": "background impurity target",
+      "source": "SEMI"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The purity requirement is extreme and measurable",
+    "narration": "The measurement techniques have detection limits in the parts-per-trillion range for some elements, but production monitoring operates at parts-per-billion sensitivity because that is where electrical properties become reproducible.",
+    "args": {
+      "lines": [
+        "The measurement techniques have",
+        "detection limits in the",
+        "parts-per-trillion range"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Compound semiconductors use two or more elements in fixed ratios",
+    "narration": "Silicon is an elemental semiconductor. Gallium arsenide, gallium nitride, indium phosphide, and silicon carbide are compound semiconductors \u2014 crystals built from two elements in stoichiometric ratios.",
+    "args": {
+      "lines": [
+        "Silicon is an elemental",
+        "semiconductor. Gallium arsenide, gallium",
+        "nitride, indium"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.28,
+    "heading": "Compound semiconductors use two or more elements in fixed ratios",
+    "narration": "Gallium arsenide has a bandgap near one point four electronvolts compared to silicon's one point one, according to NIST data.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "Compound semiconductors use two or more elements in fixed ratios",
+    "narration": "Gallium nitride reaches three point four electronvolts. Silicon carbide sits near three point three.",
+    "args": {
+      "lines": [
+        "Gallium nitride reaches three",
+        "point four electronvolts. Silicon",
+        "carbide sits"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Compound semiconductors use two or more elements in fixed ratios",
+    "narration": "A wider bandgap allows operation at higher voltages and temperatures. Gallium nitride transistors survive junction temperatures above two hundred degrees Celsius.",
+    "args": {
+      "lines": [
+        "A wider bandgap allows",
+        "operation at higher voltages",
+        "and temperatures."
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Compound semiconductors use two or more elements in fixed ratios",
+    "narration": "Silicon carbide is used in power electronics for electric vehicles because it switches faster and wastes less energy as heat than silicon at equivalent ratings.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "Compound semiconductors use two or more elements in fixed ratios",
+    "narration": "The bandgap is not adjustable after growth. You choose the compound for the application.",
+    "args": {
+      "lines": [
+        "The bandgap is not",
+        "adjustable after growth. You",
+        "choose"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "The bandgap determines which photons the material absorbs",
+    "narration": "The bandgap is the energy difference between the valence band, where electrons are bound, and the conduction band, where they move freely.",
+    "args": {
+      "title": "PHOTON ABSORPTION",
+      "stages": [
+        "photon energy exceeds bandgap",
+        "electron promoted to conduction band",
+        "hole left in valence band"
+      ],
+      "conclusion": "measurable photocurrent"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "The bandgap determines which photons the material absorbs",
+    "narration": "A photon with energy greater than the bandgap can promote an electron across that gap.",
+    "args": {
+      "lines": [
+        "A photon with energy",
+        "greater than the bandgap",
+        "can promote"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 6.21,
+    "heading": "The bandgap determines which photons the material absorbs",
+    "narration": "Silicon's one point one electronvolt bandgap corresponds to infrared light near one thousand nanometers wavelength.",
+    "args": {
+      "title": "PHOTON ABSORPTION",
+      "stages": [
+        "photon energy exceeds bandgap",
+        "electron promoted to conduction band",
+        "hole left in valence band"
+      ],
+      "conclusion": "measurable photocurrent"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The bandgap determines which photons the material absorbs",
+    "narration": "Gallium arsenide absorbs visible red. Gallium nitride absorbs blue and ultraviolet. This is why blue LEDs require gallium nitride or indium gallium nitride \u2014 silicon's bandgap is too narrow to emit blue photons efficiently.",
+    "args": {
+      "lines": [
+        "Gallium arsenide absorbs visible",
+        "red. Gallium nitride absorbs",
+        "blue"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 5.38,
+    "heading": "The bandgap determines which photons the material absorbs",
+    "narration": "The material's composition sets the bandgap, and the bandgap sets the optical response.",
+    "args": {
+      "title": "PHOTON ABSORPTION",
+      "stages": [
+        "photon energy exceeds bandgap",
+        "electron promoted to conduction band",
+        "hole left in valence band"
+      ],
+      "conclusion": "measurable photocurrent"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "The bandgap determines which photons the material absorbs",
+    "narration": "You cannot tune a silicon photodetector to see blue light. The physics forbids it.",
+    "args": {
+      "lines": [
+        "You cannot tune a",
+        "silicon photodetector to see",
+        "blue light."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "Crystal structure and defect density matter as much as composition",
+    "narration": "A semiconductor is not just a chemical formula. It is a crystal with long-range order.",
+    "args": {
+      "lines": [
+        "A semiconductor is not",
+        "just a chemical formula.",
+        "It"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.03,
+    "heading": "Crystal structure and defect density matter as much as composition",
+    "narration": "Dislocations \u2014 line defects where the lattice is misaligned \u2014 trap charge carriers and create leakage paths.",
+    "args": {
+      "variant": 2
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Crystal structure and defect density matter as much as composition",
+    "narration": "High-performance devices require dislocation densities below ten thousand per square centimeter, measured by etch-pit counting or X-ray topography.",
+    "args": {
+      "lines": [
+        "High-performance devices require dislocation",
+        "densities below ten thousand",
+        "per square"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Crystal structure and defect density matter as much as composition",
+    "narration": "Grain boundaries between misoriented crystals are worse. Polycrystalline silicon is used in solar cells where cost matters more than efficiency, but microprocessors demand single-crystal wafers with controlled orientation.",
+    "args": {
+      "lines": [
+        "Grain boundaries between misoriented",
+        "crystals are worse. Polycrystalline",
+        "silicon"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Crystal structure and defect density matter as much as composition",
+    "narration": "The crystal is grown, sliced, polished, and mapped for defects before any doping or patterning begins. A chemically perfect composition in a defective crystal is electrically useless.",
+    "args": {
+      "variant": 3
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 9.0,
+    "heading": "Producer POV",
+    "narration": "'What is it made of' sounds like it wants one element. Silicon is over ninety percent of production, but the defining property is the impurity deliberately added to it, not the base material. I answered the question underneath the question.",
+    "args": {
+      "text": "'What is it made of' sounds like it wants one element. Silicon is over ninety percent of production, but the defining property is the impurity deliberately added to it, not the base material. I answered the question underneath the question.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "Alloys let you tune properties continuously between endpoints",
+    "narration": "You are not limited to binary compounds. Indium gallium arsenide is a ternary alloy.",
+    "args": {
+      "lines": [
+        "You are not limited",
+        "to binary compounds. Indium",
+        "gallium arsenide"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "Alloys let you tune properties continuously between endpoints",
+    "narration": "The composition is written as indium-x gallium-one-minus-x arsenide, where x ranges from zero to one.",
+    "args": {
+      "lines": [
+        "The composition is written",
+        "as indium-x gallium-one-minus-x arsenide,",
+        "where x"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.62,
+    "heading": "Alloys let you tune properties continuously between endpoints",
+    "narration": "At x equals zero you have gallium arsenide. At x equals one you have indium arsenide.",
+    "args": {
+      "variant": 4
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Alloys let you tune properties continuously between endpoints",
+    "narration": "At intermediate values the bandgap varies smoothly between zero point four and one point four electronvolts.",
+    "args": {
+      "lines": [
+        "At intermediate values the",
+        "bandgap varies smoothly between",
+        "zero point"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Alloys let you tune properties continuously between endpoints",
+    "narration": "This lets you design a photodetector for a specific infrared wavelength by adjusting the indium fraction during growth.",
+    "args": {
+      "lines": [
+        "This lets you design",
+        "a photodetector for a",
+        "specific infrared"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Alloys let you tune properties continuously between endpoints",
+    "narration": "Aluminum gallium nitride works the same way for ultraviolet. The lattice constant also changes with composition, which matters when you grow one alloy on top of another.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Alloys let you tune properties continuously between endpoints",
+    "narration": "Lattice mismatch creates strain and defects unless the layers are thin or the mismatch is small. You are trading one parameter against another.",
+    "args": {
+      "lines": [
+        "Lattice mismatch creates strain",
+        "and defects unless the",
+        "layers"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "process_column",
+    "seconds": 6.62,
+    "heading": "Interfaces between materials create the active device structures",
+    "narration": "A transistor is not a bulk material. It is a stack of layers with engineered interfaces.",
+    "args": {
+      "highlight": null
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Interfaces between materials create the active device structures",
+    "narration": "A silicon MOSFET has a p-type or n-type channel, a silicon dioxide gate insulator, and heavily doped source and drain regions.",
+    "args": {
+      "lines": [
+        "A silicon MOSFET has",
+        "a p-type or n-type",
+        "channel"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_column",
+    "seconds": 7.86,
+    "heading": "Interfaces between materials create the active device structures",
+    "narration": "The oxide is grown by thermal oxidation at nine hundred to eleven hundred degrees Celsius in oxygen or steam.",
+    "args": {
+      "highlight": null
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Interfaces between materials create the active device structures",
+    "narration": "The thickness is controlled to nanometers by time and temperature. The interface between silicon and silicon dioxide has trap states \u2014 energy levels in the bandgap caused by dangling bonds and impurities \u2014 that are reduced by hydrogen annealing.",
+    "args": {
+      "lines": [
+        "The thickness is controlled",
+        "to nanometers by time",
+        "and temperature."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_column",
+    "seconds": 4.97,
+    "heading": "Interfaces between materials create the active device structures",
+    "narration": "The carrier mobility in the channel depends on interface roughness and charge.",
+    "args": {
+      "highlight": null
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "Interfaces between materials create the active device structures",
+    "narration": "You are engineering boundaries, not bulk. The device physics happens where one material meets another.",
+    "args": {
+      "lines": [
+        "You are engineering boundaries,",
+        "not bulk. The device",
+        "physics happens"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "thermal_ascent",
+    "seconds": 9.0,
+    "heading": "Thermal budgets constrain which processes can follow which",
+    "narration": "Every high-temperature step risks redistributing dopants you placed earlier. Phosphorus and boron diffuse through silicon at rates that double every ten degrees Celsius near one thousand degrees.",
+    "args": {
+      "to_temp": 1100,
+      "label": "OXIDATION"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Thermal budgets constrain which processes can follow which",
+    "narration": "If you implant boron to form a shallow junction and then oxidize at eleven hundred degrees, the boron profile spreads.",
+    "args": {
+      "lines": [
+        "If you implant boron",
+        "to form a shallow",
+        "junction"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "thermal_ascent",
+    "seconds": 9.0,
+    "heading": "Thermal budgets constrain which processes can follow which",
+    "narration": "Process sequences are ordered by decreasing temperature to minimize this redistribution. The highest-temperature steps \u2014 oxidation, annealing, epitaxial growth \u2014 come first.",
+    "args": {
+      "to_temp": 1100,
+      "label": "OXIDATION"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "material_image",
+    "seconds": 7.45,
+    "heading": "Thermal budgets constrain which processes can follow which",
+    "narration": "Lower-temperature metallization and passivation come last. The thermal budget is the cumulative time at temperature the wafer experiences.",
+    "args": {
+      "subject": "silicon-wafer",
+      "label": "WAFER",
+      "pick": 0
+    },
+    "from": "directive-rhythm+material"
+  },
+  {
+    "segment": "thermal_ascent",
+    "seconds": 9.0,
+    "heading": "Thermal budgets constrain which processes can follow which",
+    "narration": "Exceeding it blurs the doping profiles you designed. The composition you engineer is not static. It evolves with every subsequent process step.",
+    "args": {
+      "to_temp": 1100,
+      "label": "OXIDATION"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 5.79,
+    "heading": "Gettering removes mobile contaminants before they reach active regions",
+    "narration": "Metal impurities \u2014 iron, copper, nickel \u2014 diffuse through silicon at device processing temperatures.",
+    "args": {
+      "title": "GETTERING",
+      "stages": [
+        "introduce defects or impurities at wafer backside",
+        "mobile metals diffuse toward gettering sites",
+        "trap contaminants away from device layers"
+      ],
+      "conclusion": "reduced leakage current"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "material_image",
+    "seconds": 5.79,
+    "heading": "Gettering removes mobile contaminants before they reach active regions",
+    "narration": "Even parts-per-trillion concentrations degrade transistor performance by creating mid-gap states that increase leakage current.",
+    "args": {
+      "subject": "microchip-die",
+      "label": "TRANSISTOR",
+      "pick": 0
+    },
+    "from": "directive-rhythm+material"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 8.69,
+    "heading": "Gettering removes mobile contaminants before they reach active regions",
+    "narration": "Gettering is the deliberate introduction of defects or impurity sinks far from the active device region, usually at the wafer backside.",
+    "args": {
+      "title": "GETTERING",
+      "stages": [
+        "introduce defects or impurities at wafer backside",
+        "mobile metals diffuse toward gettering sites",
+        "trap contaminants away from device layers"
+      ],
+      "conclusion": "reduced leakage current"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Gettering removes mobile contaminants before they reach active regions",
+    "narration": "Phosphorus-doped backside layers or mechanical damage create sites where mobile metals preferentially segregate.",
+    "args": {
+      "lines": [
+        "Phosphorus-doped backside layers or",
+        "mechanical damage create sites",
+        "where mobile"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 5.38,
+    "heading": "Gettering removes mobile contaminants before they reach active regions",
+    "narration": "During high-temperature anneals, contaminants diffuse toward these gettering sites and are trapped there.",
+    "args": {
+      "title": "GETTERING",
+      "stages": [
+        "introduce defects or impurities at wafer backside",
+        "mobile metals diffuse toward gettering sites",
+        "trap contaminants away from device layers"
+      ],
+      "conclusion": "reduced leakage current"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "material_image",
+    "seconds": 8.28,
+    "heading": "Gettering removes mobile contaminants before they reach active regions",
+    "narration": "The technique does not remove impurities from the wafer. It moves them to a location where they do not matter.",
+    "args": {
+      "subject": "silicon-wafer",
+      "label": "WAFER",
+      "pick": 1
+    },
+    "from": "directive-rhythm+material"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 6.62,
+    "heading": "Gettering removes mobile contaminants before they reach active regions",
+    "narration": "The composition of the active region is protected by engineering the composition of the sacrificial region.",
+    "args": {
+      "title": "GETTERING",
+      "stages": [
+        "introduce defects or impurities at wafer backside",
+        "mobile metals diffuse toward gettering sites",
+        "trap contaminants away from device layers"
+      ],
+      "conclusion": "reduced leakage current"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "The numbers in this script trace to measurement standards, not marketing. SEMI International Standards publish semiconductor material specifications including purity and resistivity.",
+    "args": {
+      "title": "COMPOSITION AND PROPERTIES",
+      "sources": [
+        [
+          "SEMI",
+          "production volume and purity standards"
+        ],
+        [
+          "NIST",
+          "bandgap and lattice data"
+        ],
+        [
+          "ASM-International",
+          "crystal defects and growth"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "What to notice in the edit",
+    "narration": "NIST provides bandgap and lattice constant data for elemental and compound semiconductors.",
+    "args": {
+      "lines": [
+        "NIST provides bandgap and",
+        "lattice constant data for",
+        "elemental"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "ASM International documents crystal growth and defect characterization methods. When you see a figure for dislocation density or dopant concentration, it reflects a measurement technique with known precision and known limits.",
+    "args": {
+      "title": "COMPOSITION AND PROPERTIES",
+      "sources": [
+        [
+          "SEMI",
+          "production volume and purity standards"
+        ],
+        [
+          "NIST",
+          "bandgap and lattice data"
+        ],
+        [
+          "ASM-International",
+          "crystal defects and growth"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "The composition of a semiconductor is not a single answer. It is a controlled recipe with tolerances in the parts-per-million range, verified by multiple independent methods.",
+    "args": {
+      "lines": [
+        "The composition of a",
+        "semiconductor is not a",
+        "single answer."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Evidence limit",
+    "narration": "The purity figures in this script represent production targets, not thermodynamic limits.",
+    "args": {
+      "lines": [
+        "The purity figures in",
+        "this script represent production",
+        "targets"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.03,
+    "heading": "Evidence limit",
+    "narration": "Published ranges for background oxygen in Czochralski silicon span an order of magnitude depending on growth conditions.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "Evidence limit",
+    "narration": "The exact impurity profile in a finished device is proprietary and varies by manufacturer.",
+    "args": {
+      "lines": [
+        "The exact impurity profile",
+        "in a finished device",
+        "is proprietary"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "What is certain is the requirement: electrical properties must be reproducible lot to lot, and that requires composition control far tighter than any other bulk material industry. The measurement exists. The universal profile does not.",
+    "args": {
+      "lines": [
+        "What is certain is",
+        "the requirement: electrical properties"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "A semiconductor is made of elements chosen for their bandgap, doped with impurities at parts-per-million levels to control carrier type, grown as a single crystal to minimize defects, and stacked in layers to form interfaces where the device physics happens.",
+    "args": {
+      "variant": 2
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Closing",
+    "narration": "The material is not the silicon. It is the controlled asymmetry inside it.",
+    "args": {
+      "lines": [
+        "The material is not",
+        "the silicon. It is",
+        "the controlled"
+      ]
+    },
+    "from": "directive"
+  }
+]

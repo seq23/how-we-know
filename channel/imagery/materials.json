@@ -1,0 +1,708 @@
+{
+  "generated": "2026-09-04T02:30:15.059658+00:00",
+  "domain": "materials-and-manufacturing",
+  "policy": "Public domain or CC0 only, verified live at the Commons item page. CC-BY is not a public-domain dedication and this channel is monetised. Licence gate is research/imagery.pd_licence_ok, imported not reimplemented; the copyright-assertion screen is this module's own and differs from imagery.THIRD_PARTY on purpose - see the module docstring.",
+  "rights_fields_required": [
+    "depicts",
+    "subject_basis",
+    "credit_line",
+    "item_url",
+    "licence",
+    "sha256"
+  ],
+  "asset_count": 12,
+  "subjects_total": 18,
+  "subjects_covered": [
+    "3d-printed-metal",
+    "aerogel",
+    "blast-furnace",
+    "carbon-fiber",
+    "cleanroom",
+    "concrete",
+    "graphene-lattice",
+    "microchip-die",
+    "micrograph-steel",
+    "molten-steel",
+    "silicon-wafer",
+    "welding-arc"
+  ],
+  "subjects_unillustratable": {
+    "self-healing-polymer": {
+      "why": "Published micrographs of healed crack faces are overwhelmingly figures from copyrighted journal articles. A generic photograph of epoxy would show nothing the narration is describing, and a healed crack that is not the one being discussed is a picture that asserts a result. The drawn treatment stands."
+    }
+  },
+  "rejected": [
+    {
+      "subject": "carbon-fiber",
+      "title": "File:CSIRO ScienceImage 988 Carbon nanotubes spun to form a yarn.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:CSIRO_ScienceImage_988_Carbon_nanotubes_spun_to_form_a_yarn.jpg",
+      "reason": "item page marks the work as copyrighted (cc by 3.0)"
+    },
+    {
+      "subject": "carbon-fiber",
+      "title": "File:CSIRO ScienceImage 990 Carbon nanotubes being spun to form a yarn.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:CSIRO_ScienceImage_990_Carbon_nanotubes_being_spun_to_form_a_yarn.jpg",
+      "reason": "item page marks the work as copyrighted (cc by 3.0)"
+    },
+    {
+      "subject": "carbon-fiber",
+      "title": "File:CSIRO ScienceImage 1087 Carbon nanotubes being spun to form a yarn.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:CSIRO_ScienceImage_1087_Carbon_nanotubes_being_spun_to_form_a_yarn.jpg",
+      "reason": "item page marks the work as copyrighted (cc by 3.0)"
+    },
+    {
+      "subject": "damascus-blade",
+      "title": "File:Front and back of blades of hair-cutting shears made from Damascus steel.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Front_and_back_of_blades_of_hair-cutting_shears_made_from_Damascus_steel.jpg",
+      "reason": "item page marks the work as copyrighted (cc by-sa 4.0)"
+    },
+    {
+      "subject": "damascus-blade",
+      "title": "File:Figure 4 - Damascus steel blade.PNG",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Figure_4_-_Damascus_steel_blade.PNG",
+      "reason": "item page marks the work as copyrighted (cc by-sa 4.0)"
+    },
+    {
+      "subject": "damascus-blade",
+      "title": "File:A masterpiece of blacksmith craftsmanship - Damascus knife in a very modern Bowie knife design forged from cannon steel from the Leopard I main battle tank. Length of the knife blade 26 centimeters. Picture one.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:A_masterpiece_of_blacksmith_craftsmanship_-_Damascus_knife_in_a_very_modern_Bowie_knife_design_forged_from_cannon_steel_from_the_Leopard_I_main_battle_tank._Length_of_the_knife_blade_26_centimeters._Picture_one.jpg",
+      "reason": "item page marks the work as copyrighted (cc by-sa 4.0)"
+    },
+    {
+      "subject": "damascus-blade",
+      "title": "File:A masterpiece of blacksmith craftsmanship - Damascus knife in a very modern Bowie knife design forged from cannon steel from the Leopard I main battle tank. Length of the knife blade 26 centimeters. Picture two.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:A_masterpiece_of_blacksmith_craftsmanship_-_Damascus_knife_in_a_very_modern_Bowie_knife_design_forged_from_cannon_steel_from_the_Leopard_I_main_battle_tank._Length_of_the_knife_blade_26_centimeters._Picture_two.jpg",
+      "reason": "item page marks the work as copyrighted (cc by-sa 4.0)"
+    },
+    {
+      "subject": "damascus-blade",
+      "title": "File:Modern moulding and pattern-making , a practical treatise upon pattern-shop and foundry work, embracing the moulding of pulleys, spur gears, worm gears, balance-wheels (IA modernmouldingpa00mull).pdf",
+      "reason": "imageinfo failed: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "subject": "damascus-blade",
+      "title": "File:Pattern Welded Sword Blade by Ejvind N\u00f8rg\u00e5rd.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Pattern_Welded_Sword_Blade_by_Ejvind_N%C3%B8rg%C3%A5rd.jpg",
+      "reason": "item page marks the work as copyrighted (cc by-sa 4.0)"
+    },
+    {
+      "subject": "damascus-blade",
+      "title": "File:Knife blade 600dpi spine 1200dpi.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Knife_blade_600dpi_spine_1200dpi.jpg",
+      "reason": "item page marks the work as copyrighted (cc0)"
+    },
+    {
+      "subject": "damascus-blade",
+      "title": "File:NCL-7EF795, Early Medieval pattern-welded sword (FindID 557262).jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:NCL-7EF795,_Early_Medieval_pattern-welded_sword_(FindID_557262).jpg",
+      "reason": "item page marks the work as copyrighted (cc by-sa 2.0)"
+    },
+    {
+      "subject": "damascus-blade",
+      "title": "File:Front and back of blades of hair-cutting shears made from Damascus steel.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Front_and_back_of_blades_of_hair-cutting_shears_made_from_Damascus_steel.jpg",
+      "reason": "item page marks the work as copyrighted (cc by-sa 4.0)"
+    },
+    {
+      "subject": "damascus-blade",
+      "title": "File:NCL-7EF795, Early Medieval pattern-welded sword drawing (FindID 557262).jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:NCL-7EF795,_Early_Medieval_pattern-welded_sword_drawing_(FindID_557262).jpg",
+      "reason": "item page marks the work as copyrighted (cc by-sa 2.0)"
+    },
+    {
+      "subject": "damascus-blade",
+      "title": "File:Damascus steel hunting knife (4121912077).jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Damascus_steel_hunting_knife_(4121912077).jpg",
+      "reason": "item page marks the work as copyrighted (cc by 2.0)"
+    },
+    {
+      "subject": "damascus-blade",
+      "title": "File:Damascus steel hunting knife (4121913369).jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Damascus_steel_hunting_knife_(4121913369).jpg",
+      "reason": "item page marks the work as copyrighted (cc by 2.0)"
+    },
+    {
+      "subject": "damascus-blade",
+      "title": "File:A masterpiece of blacksmith craftsmanship - Damascus knife in a very modern Bowie knife design forged from cannon steel from the Leopard I main battle tank. Length of the knife blade 26 centimeters. Picture two.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:A_masterpiece_of_blacksmith_craftsmanship_-_Damascus_knife_in_a_very_modern_Bowie_knife_design_forged_from_cannon_steel_from_the_Leopard_I_main_battle_tank._Length_of_the_knife_blade_26_centimeters._Picture_two.jpg",
+      "reason": "item page marks the work as copyrighted (cc by-sa 4.0)"
+    },
+    {
+      "subject": "damascus-blade",
+      "title": "File:Damascus steel hunting knife (4121912845).jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Damascus_steel_hunting_knife_(4121912845).jpg",
+      "reason": "item page marks the work as copyrighted (cc by 2.0)"
+    },
+    {
+      "subject": "damascus-blade",
+      "title": "File:Damascus steel hunting knife (4121913093).jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Damascus_steel_hunting_knife_(4121913093).jpg",
+      "reason": "item page marks the work as copyrighted (cc by 2.0)"
+    },
+    {
+      "subject": "damascus-blade",
+      "title": "File:Damascus steel hunting knife (4122685428).jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Damascus_steel_hunting_knife_(4122685428).jpg",
+      "reason": "item page marks the work as copyrighted (cc by 2.0)"
+    },
+    {
+      "subject": "damascus-blade",
+      "title": null,
+      "reason": "no candidate passed both gates"
+    },
+    {
+      "subject": "rust",
+      "title": "File:The iron woman (IA ironwomennovel00delarich).pdf",
+      "reason": "imageinfo failed: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "subject": "rust",
+      "title": "File:Post Medieval iron hammer (FindID 506192).jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Post_Medieval_iron_hammer_(FindID_506192).jpg",
+      "reason": "item page marks the work as copyrighted (cc by-sa 4.0)"
+    },
+    {
+      "subject": "rust",
+      "title": "File:Iron (Virginia, USA) (16718063283).jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Iron_(Virginia,_USA)_(16718063283).jpg",
+      "reason": "item page marks the work as copyrighted (cc by 2.0)"
+    },
+    {
+      "subject": "rust",
+      "title": "File:Iron tannage (IA irontannage00hout).pdf",
+      "reason": "imageinfo failed: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "subject": "rust",
+      "title": "File:Buckle with corroded iron or steel plate (FindID 204105).jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Buckle_with_corroded_iron_or_steel_plate_(FindID_204105).jpg",
+      "reason": "item page marks the work as copyrighted (cc by-sa 2.0)"
+    },
+    {
+      "subject": "rust",
+      "title": "File:Post-Medieval, Buckle with Iron plate (FindID 840564).jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Post-Medieval,_Buckle_with_Iron_plate_(FindID_840564).jpg",
+      "reason": "item page marks the work as copyrighted (cc by 2.0)"
+    },
+    {
+      "subject": "rust",
+      "title": "File:Treasure case 2012T351, Early Medieval silver, iron and gold buckle plate from Alkham, Kent (FindID 522561).jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Treasure_case_2012T351,_Early_Medieval_silver,_iron_and_gold_buckle_plate_from_Alkham,_Kent_(FindID_522561).jpg",
+      "reason": "item page marks the work as copyrighted (cc by-sa 2.0)"
+    },
+    {
+      "subject": "rust",
+      "title": "File:Undated iron plate fragment, reported with a hoard (FindID 1011719-1117651).jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Undated_iron_plate_fragment,_reported_with_a_hoard_(FindID_1011719-1117651).jpg",
+      "reason": "item page marks the work as copyrighted (cc by 2.0)"
+    },
+    {
+      "subject": "rust",
+      "title": "File:Treasure case 2012T351, Early Medieval silver, iron and gold buckle plate from Alkham, Kent (FindID 522561-417469).jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Treasure_case_2012T351,_Early_Medieval_silver,_iron_and_gold_buckle_plate_from_Alkham,_Kent_(FindID_522561-417469).jpg",
+      "reason": "item page marks the work as copyrighted (cc by-sa 4.0)"
+    },
+    {
+      "subject": "rust",
+      "title": "File:Iron Age Coin unknown (FindID 568113).jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Iron_Age_Coin_unknown_(FindID_568113).jpg",
+      "reason": "item page marks the work as copyrighted (cc by-sa 2.0)"
+    },
+    {
+      "subject": "rust",
+      "title": "File:Acid-corrosion-in-a-flue-gas-duct-01.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Acid-corrosion-in-a-flue-gas-duct-01.jpg",
+      "reason": "item page marks the work as copyrighted (cc by-sa 3.0)"
+    },
+    {
+      "subject": "rust",
+      "title": "File:Rusted corroded metal 1578.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Rusted_corroded_metal_1578.jpg",
+      "reason": "item page marks the work as copyrighted (cc by-sa 4.0)"
+    },
+    {
+      "subject": "rust",
+      "title": "File:Vinylite and corrosion applied in a horse hoof.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Vinylite_and_corrosion_applied_in_a_horse_hoof.jpg",
+      "reason": "item page marks the work as copyrighted (cc by-sa 4.0)"
+    },
+    {
+      "subject": "rust",
+      "title": "File:Corroded Bolt.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Corroded_Bolt.jpg",
+      "reason": "item page marks the work as copyrighted (cc by-sa 4.0)"
+    },
+    {
+      "subject": "rust",
+      "title": "File:Corrosion activa.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Corrosion_activa.jpg",
+      "reason": "item page marks the work as copyrighted (cc0)"
+    },
+    {
+      "subject": "rust",
+      "title": "File:Corrosion of a car at the seaside.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Corrosion_of_a_car_at_the_seaside.jpg",
+      "reason": "item page marks the work as copyrighted (cc by-sa 4.0)"
+    },
+    {
+      "subject": "rust",
+      "title": null,
+      "reason": "no candidate passed both gates"
+    },
+    {
+      "subject": "graphene-lattice",
+      "title": "File:In situ Raman Spectroscopy Study of the Formation of Graphene from Urea and Graphite Oxide (IA insituramspectro1094517424).pdf",
+      "reason": "imageinfo failed: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "subject": "graphene-lattice",
+      "title": "File:Synthesis and Characterization of Nitrogen-Doped Graphene (IA synthesisndchara1094517433).pdf",
+      "reason": "imageinfo failed: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "subject": "titanium",
+      "title": "File:Titanium crystals.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Titanium_crystals.jpg",
+      "reason": "item page marks the work as copyrighted (cc by 3.0)"
+    },
+    {
+      "subject": "titanium",
+      "title": "File:Titanium.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Titanium.jpg",
+      "reason": "item page marks the work as copyrighted (cc by 3.0)"
+    },
+    {
+      "subject": "titanium",
+      "title": "File:Rutile-rich sand (titanium ore concentrate) (Holocene; Tin Can Bay, Queensland, Australia).jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Rutile-rich_sand_(titanium_ore_concentrate)_(Holocene;_Tin_Can_Bay,_Queensland,_Australia).jpg",
+      "reason": "item page marks the work as copyrighted (cc by 2.0)"
+    },
+    {
+      "subject": "titanium",
+      "title": "File:Determination of niobium and tantalum in titanium-base alloys (IA jresv62n2p53).pdf",
+      "reason": "imageinfo failed: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "subject": "titanium",
+      "title": "File:Titanium crystal-bars.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Titanium_crystal-bars.jpg",
+      "reason": "item page marks the work as copyrighted (fal)"
+    },
+    {
+      "subject": "titanium",
+      "title": "File:Titan-crystal bar.JPG",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Titan-crystal_bar.JPG",
+      "reason": "item page marks the work as copyrighted (cc by-sa 3.0)"
+    },
+    {
+      "subject": "titanium",
+      "title": "File:Titanium crystal bar.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Titanium_crystal_bar.jpg",
+      "reason": "item page marks the work as copyrighted (cc by-sa 3.0)"
+    },
+    {
+      "subject": "titanium",
+      "title": "File:Viertel unze Titanium Buffalo 59.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Viertel_unze_Titanium_Buffalo_59.jpg",
+      "reason": "item page marks the work as copyrighted (cc by-sa 3.0)"
+    },
+    {
+      "subject": "titanium",
+      "title": "File:Viertel unze Titanium Buffalo 63.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Viertel_unze_Titanium_Buffalo_63.jpg",
+      "reason": "item page marks the work as copyrighted (cc by-sa 3.0)"
+    },
+    {
+      "subject": "titanium",
+      "title": "File:Shemsh eli titanumi.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Shemsh_eli_titanumi.jpg",
+      "reason": "item page marks the work as copyrighted (cc by-sa 4.0)"
+    },
+    {
+      "subject": "titanium",
+      "title": "File:Titanium standards for hydrogen content (IA jresv66An6p483).pdf",
+      "reason": "imageinfo failed: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "subject": "titanium",
+      "title": null,
+      "reason": "no candidate passed both gates"
+    },
+    {
+      "subject": "tempered-glass",
+      "title": "File:Polymer film applied to glass- effectiveness at mitigating damage from flying glass due to explosions (IA polymerfilmappli5779gilm).pdf",
+      "reason": "imageinfo failed: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "subject": "tempered-glass",
+      "title": "File:Chips, fragments and vestiges (IA cu31924021989359).pdf",
+      "reason": "imageinfo failed: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "subject": "tempered-glass",
+      "title": "File:Shattered laminated glass in broken window in railway tram train carriage Cracks fragments visual effects patterns NORWAY Knust vindu i togvogn med laminert sikkerhetsglass sprekker sm\u00e5biter lyseffekter 2019-02-11 DSC03342.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Shattered_laminated_glass_in_broken_window_in_railway_tram_train_carriage_Cracks_fragments_visual_effects_patterns_NORWAY_Knust_vindu_i_togvogn_med_laminert_sikkerhetsglass_sprekker_sm%C3%A5biter_lyseffekter_2019-02-11_DSC03342.jpg",
+      "reason": "item page marks the work as copyrighted (cc by-sa 4.0)"
+    },
+    {
+      "subject": "tempered-glass",
+      "title": "File:Shattered laminated glass in broken window in railway tram train carriage Cracks fragments visual effects patterns NORWAY Knust vindu i togvogn med laminert sikkerhetsglass sprekker sm\u00e5biter lyseffekter 2019-02-11 DSC03352.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Shattered_laminated_glass_in_broken_window_in_railway_tram_train_carriage_Cracks_fragments_visual_effects_patterns_NORWAY_Knust_vindu_i_togvogn_med_laminert_sikkerhetsglass_sprekker_sm%C3%A5biter_lyseffekter_2019-02-11_DSC03352.jpg",
+      "reason": "item page marks the work as copyrighted (cc by-sa 4.0)"
+    },
+    {
+      "subject": "tempered-glass",
+      "title": "File:Shattered laminated glass in broken window in railway tram train carriage Cracks fragments pieces create visual effects patterns NORWAY Knust vindu i togvogn med laminert sikkerhetsglass sprekker sm\u00e5biter lyseffekter 2019 DSC03375.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Shattered_laminated_glass_in_broken_window_in_railway_tram_train_carriage_Cracks_fragments_pieces_create_visual_effects_patterns_NORWAY_Knust_vindu_i_togvogn_med_laminert_sikkerhetsglass_sprekker_sm%C3%A5biter_lyseffekter_2019_DSC03375.jpg",
+      "reason": "item page marks the work as copyrighted (cc by-sa 4.0)"
+    },
+    {
+      "subject": "tempered-glass",
+      "title": "File:Shattered laminated glass in broken window in railway tram train carriage Cracks fragments visual effects patterns NORWAY Knust vindu i togvogn med laminert sikkerhetsglass sprekker sm\u00e5biter lyseffekter 2019-02-11 DSC03344.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Shattered_laminated_glass_in_broken_window_in_railway_tram_train_carriage_Cracks_fragments_visual_effects_patterns_NORWAY_Knust_vindu_i_togvogn_med_laminert_sikkerhetsglass_sprekker_sm%C3%A5biter_lyseffekter_2019-02-11_DSC03344.jpg",
+      "reason": "item page marks the work as copyrighted (cc by-sa 4.0)"
+    },
+    {
+      "subject": "tempered-glass",
+      "title": "File:Shattered laminated glass in broken window in railway tram train carriage Cracks fragments visual effects patterns NORWAY Knust vindu i togvogn med laminert sikkerhetsglass sprekker sm\u00e5biter lyseffekter 2019-02-11 DSC03351.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Shattered_laminated_glass_in_broken_window_in_railway_tram_train_carriage_Cracks_fragments_visual_effects_patterns_NORWAY_Knust_vindu_i_togvogn_med_laminert_sikkerhetsglass_sprekker_sm%C3%A5biter_lyseffekter_2019-02-11_DSC03351.jpg",
+      "reason": "item page marks the work as copyrighted (cc by-sa 4.0)"
+    },
+    {
+      "subject": "tempered-glass",
+      "title": "File:Shattered laminated glass in broken window in railway tram train carriage Cracks fragments pieces create visual effects patterns NORWAY Knust vindu i togvogn med laminert sikkerhetsglass sprekker sm\u00e5biter lyseffekter 2019 DSC03372.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Shattered_laminated_glass_in_broken_window_in_railway_tram_train_carriage_Cracks_fragments_pieces_create_visual_effects_patterns_NORWAY_Knust_vindu_i_togvogn_med_laminert_sikkerhetsglass_sprekker_sm%C3%A5biter_lyseffekter_2019_DSC03372.jpg",
+      "reason": "item page marks the work as copyrighted (cc by-sa 4.0)"
+    },
+    {
+      "subject": "tempered-glass",
+      "title": "File:Glass manufacture (IA glassmanufacture00rose 0).pdf",
+      "reason": "imageinfo failed: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "subject": "tempered-glass",
+      "title": "File:Tempered Glass 2.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Tempered_Glass_2.jpg",
+      "reason": "item page marks the work as copyrighted (cc by-sa 3.0)"
+    },
+    {
+      "subject": "tempered-glass",
+      "title": "File:Nickel sulfide inclusion glass breakage.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Nickel_sulfide_inclusion_glass_breakage.jpg",
+      "reason": "item page marks the work as copyrighted (cc by-sa 4.0)"
+    },
+    {
+      "subject": "tempered-glass",
+      "title": null,
+      "reason": "no candidate passed both gates"
+    },
+    {
+      "subject": "crystal-structure",
+      "title": "File:Aspects of simulating interstitial diffusion in a face-centered-cubic lattice. (IA aspectsofsimulat00poln).pdf",
+      "reason": "imageinfo failed: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "subject": "crystal-structure",
+      "title": "File:Inside a body-centered cubic lattice 1.png",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Inside_a_body-centered_cubic_lattice_1.png",
+      "reason": "item page marks the work as copyrighted (cc by-sa 4.0)"
+    },
+    {
+      "subject": "crystal-structure",
+      "title": "File:Body centered cubic BZ.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Body_centered_cubic_BZ.jpg",
+      "reason": "item page marks the work as copyrighted (cc by-sa 4.0)"
+    },
+    {
+      "subject": "crystal-structure",
+      "title": "File:Lattice body centered cubic.svg",
+      "reason": "imageinfo failed: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "subject": "crystal-structure",
+      "title": null,
+      "reason": "no candidate passed both gates"
+    },
+    {
+      "subject": "micrograph-steel",
+      "title": "File:The effect of welding process on the microstructure of HY-130 steel weldments. (IA effectofweldingp00mcnu).pdf",
+      "reason": "imageinfo failed: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "subject": "micrograph-steel",
+      "title": "File:Microstructure of 2707 Hyper Duplex Stainless Steel.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Microstructure_of_2707_Hyper_Duplex_Stainless_Steel.jpg",
+      "reason": "item page marks the work as copyrighted (cc by 4.0)"
+    },
+    {
+      "subject": "micrograph-steel",
+      "title": "File:Microstructure of pre-strained 304L.png",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Microstructure_of_pre-strained_304L.png",
+      "reason": "item page marks the work as copyrighted (cc by 4.0)"
+    },
+    {
+      "subject": "3d-printed-metal",
+      "title": "File:SLM HG 4-4 701.jpg",
+      "reason": "imageinfo failed: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "subject": "kevlar-aramid",
+      "title": "File:ATV shielding after impact test ESA313132.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:ATV_shielding_after_impact_test_ESA313132.jpg",
+      "reason": "item page marks the work as copyrighted (cc by-sa 3.0 igo)"
+    },
+    {
+      "subject": "kevlar-aramid",
+      "title": "File:Gondola, Breitling Orbiter 3 - DPLA - 163f1f735fcc13ecd31e1dd3773102a6 (page 3).jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Gondola,_Breitling_Orbiter_3_-_DPLA_-_163f1f735fcc13ecd31e1dd3773102a6_(page_3).jpg",
+      "reason": "item page marks the work as copyrighted (cc0)"
+    },
+    {
+      "subject": "kevlar-aramid",
+      "title": "File:Gondola, Breitling Orbiter 3 - DPLA - 163f1f735fcc13ecd31e1dd3773102a6 (page 5).jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Gondola,_Breitling_Orbiter_3_-_DPLA_-_163f1f735fcc13ecd31e1dd3773102a6_(page_5).jpg",
+      "reason": "item page marks the work as copyrighted (cc0)"
+    },
+    {
+      "subject": "kevlar-aramid",
+      "title": "File:Gondola, Breitling Orbiter 3 - DPLA - 163f1f735fcc13ecd31e1dd3773102a6 (page 1).jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Gondola,_Breitling_Orbiter_3_-_DPLA_-_163f1f735fcc13ecd31e1dd3773102a6_(page_1).jpg",
+      "reason": "item page marks the work as copyrighted (cc0)"
+    },
+    {
+      "subject": "kevlar-aramid",
+      "title": null,
+      "reason": "no candidate passed both gates"
+    }
+  ],
+  "index": [
+    {
+      "subject": "3d-printed-metal",
+      "label": "METAL 3D PRINTING",
+      "title": "DHP Czz1' SLM 1893.jpg",
+      "depicts": "photograph",
+      "subject_basis": "Powder-bed metal additive manufacturing, or a part produced by it.",
+      "credit_line": "METAL 3D PRINTING \u2014 PHOTOGRAPH, UNKNOWN AUTHOR UNKNOWN AUTHOR (PUBLIC DOMAIN)",
+      "treatment": "photo",
+      "source_org": "Unknown author Unknown author",
+      "licence": "Public domain",
+      "matched_query": "selective laser melting metal powder",
+      "item_url": "https://commons.wikimedia.org/wiki/File:DHP_Czz1%27_SLM_1893.jpg",
+      "direct_url": "https://upload.wikimedia.org/wikipedia/commons/a/a8/DHP_Czz1%27_SLM_1893.jpg",
+      "local_file": "assets/mat__3d-printed-metal__dhp-czz1-slm-1893-jpg.jpg",
+      "sha256": "f0ab586e41d0aeba2c4dabca0040fc40084a28aa3a4df57a62931e1c1de450dd",
+      "width": 3386,
+      "height": 2428,
+      "licence_basis": "Commons item page asserts Public domain (Copyrighted=False)"
+    },
+    {
+      "subject": "aerogel",
+      "label": "SILICA AEROGEL",
+      "title": "Early Testing of Aerogel and Silicon Detectors for TIGERISS (SVS14979 - -Aerogel-4).jpg",
+      "depicts": "photograph",
+      "subject_basis": "A monolith of silica aerogel.",
+      "credit_line": "SILICA AEROGEL \u2014 PHOTOGRAPH, NASA'S SCIENTIFIC VISUALIZATION STUDIO - EMITS/S (PUBLIC DOMAIN)",
+      "treatment": "photo",
+      "source_org": "NASA's Scientific Visualization Studio - eMITS/Sophia Roberts, eMITS/Scott Wiessinger, University of Maryland College Park/Jeanette Kazmierczak",
+      "licence": "Public domain",
+      "matched_query": "silica aerogel block",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Early_Testing_of_Aerogel_and_Silicon_Detectors_for_TIGERISS_(SVS14979_-_-Aerogel-4).jpg",
+      "direct_url": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Early_Testing_of_Aerogel_and_Silicon_Detectors_for_TIGERISS_%28SVS14979_-_-Aerogel-4%29.jpg",
+      "local_file": "assets/mat__aerogel__early-testing-of-aerogel-and-silicon-detectors-for-tigeriss-.jpg",
+      "sha256": "c11da515d57f81991fa4a2aae578e7cfdf8baf25158272ac1018e0993d3a9e39",
+      "width": 5279,
+      "height": 7914,
+      "licence_basis": "Commons item page asserts Public domain (Copyrighted=False)"
+    },
+    {
+      "subject": "blast-furnace",
+      "label": "BLAST FURNACE",
+      "title": "George Childs Dowlais Ironworks 1840.jpg",
+      "depicts": "photograph",
+      "subject_basis": "Primary ironmaking or steelmaking plant. Used for narration about industrial-scale production, never about a laboratory process.",
+      "credit_line": "BLAST FURNACE \u2014 PHOTOGRAPH, GEORGE CHILDS (PUBLIC DOMAIN)",
+      "treatment": "photo",
+      "source_org": "George Childs",
+      "licence": "Public domain",
+      "matched_query": "blast furnace ironworks",
+      "item_url": "https://commons.wikimedia.org/wiki/File:George_Childs_Dowlais_Ironworks_1840.jpg",
+      "direct_url": "https://upload.wikimedia.org/wikipedia/commons/1/1a/George_Childs_Dowlais_Ironworks_1840.jpg",
+      "local_file": "assets/mat__blast-furnace__george-childs-dowlais-ironworks-1840-jpg.jpg",
+      "sha256": "4123c4942b94c688d9b087014d298651b53b76d5ccfb3def5715437210c04664",
+      "width": 1070,
+      "height": 732,
+      "licence_basis": "Commons item page asserts Public domain (Copyrighted=False)"
+    },
+    {
+      "subject": "carbon-fiber",
+      "label": "CARBON FIBRE",
+      "title": "Carbon Fiber Technology Facility Open House Oak Ridge Tennessee (8594217383).jpg",
+      "depicts": "photograph",
+      "subject_basis": "Woven carbon-fibre fabric or a cured laminate.",
+      "credit_line": "CARBON FIBRE \u2014 PHOTOGRAPH, DOE-OAKRIDGE (PUBLIC DOMAIN)",
+      "treatment": "photo",
+      "source_org": "doe-oakridge",
+      "licence": "Public domain",
+      "matched_query": "carbon fiber composite",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Carbon_Fiber_Technology_Facility_Open_House_Oak_Ridge_Tennessee_(8594217383).jpg",
+      "direct_url": "https://upload.wikimedia.org/wikipedia/commons/5/50/Carbon_Fiber_Technology_Facility_Open_House_Oak_Ridge_Tennessee_%288594217383%29.jpg",
+      "local_file": "assets/mat__carbon-fiber__carbon-fiber-technology-facility-open-house-oak-ridge-tennes.jpg",
+      "sha256": "3584a0643d1209dbe5dde5267d3a00570630a4b1b78b18611b847e6e88055d2a",
+      "width": 4288,
+      "height": 2848,
+      "licence_basis": "Commons item page asserts Public domain (Copyrighted=False)"
+    },
+    {
+      "subject": "cleanroom",
+      "label": "SEMICONDUCTOR CLEANROOM",
+      "title": "Clean room.jpg",
+      "depicts": "photograph",
+      "subject_basis": "A semiconductor fabrication cleanroom.",
+      "credit_line": "SEMICONDUCTOR CLEANROOM \u2014 PHOTOGRAPH, UPLOADED BY DUK 08:45, 16 FEB 2005 (UTC) (PUBLIC DOMAIN)",
+      "treatment": "photo",
+      "source_org": "Uploaded by Duk 08:45, 16 Feb 2005 (UTC)",
+      "licence": "Public domain",
+      "matched_query": "photolithography cleanroom",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Clean_room.jpg",
+      "direct_url": "https://upload.wikimedia.org/wikipedia/commons/5/50/Clean_room.jpg",
+      "local_file": "assets/mat__cleanroom__clean-room-jpg.jpg",
+      "sha256": "df03be14959ff199b6b94223abab720a42791094549592c53f5ed823398bd298",
+      "width": 2247,
+      "height": 1742,
+      "licence_basis": "Commons item page asserts Public domain (Copyrighted=False)"
+    },
+    {
+      "subject": "concrete",
+      "label": "CONCRETE",
+      "title": "As a cement mixer pours it on, construction workers shovel cement for a new section of the flight line - DPLA - 8295713f04f1b76f51f743b9cd7d54a1.jpeg",
+      "depicts": "photograph",
+      "subject_basis": "Concrete being placed, or reinforcement before a pour.",
+      "credit_line": "CONCRETE \u2014 PHOTOGRAPH, DEPARTMENT OF DEFENSE. AMERICAN FORCES INFORMATI (PUBLIC DOMAIN)",
+      "treatment": "photo",
+      "source_org": "Department of Defense. American Forces Information Service. Defense Visual Information Center. 1994",
+      "licence": "Public domain",
+      "matched_query": "concrete cement mixer construction",
+      "item_url": "https://commons.wikimedia.org/wiki/File:As_a_cement_mixer_pours_it_on,_construction_workers_shovel_cement_for_a_new_section_of_the_flight_line_-_DPLA_-_8295713f04f1b76f51f743b9cd7d54a1.jpeg",
+      "direct_url": "https://upload.wikimedia.org/wikipedia/commons/e/e9/As_a_cement_mixer_pours_it_on%2C_construction_workers_shovel_cement_for_a_new_section_of_the_flight_line_-_DPLA_-_8295713f04f1b76f51f743b9cd7d54a1.jpeg",
+      "local_file": "assets/mat__concrete__as-a-cement-mixer-pours-it-on-construction-workers-shovel-ce.jpeg",
+      "sha256": "f2ad04f93caf9468c5fb2be60f0dc2f6f5e93cb644f21c06ae3de89481173a20",
+      "width": 3000,
+      "height": 2400,
+      "licence_basis": "Commons item page asserts Public domain (Copyrighted=False)"
+    },
+    {
+      "subject": "graphene-lattice",
+      "label": "GRAPHENE LATTICE",
+      "title": "U.S. Department of Energy - Science - 389 012 009 (13784554485).jpg",
+      "depicts": "diagram",
+      "subject_basis": "The hexagonal carbon lattice. A structural diagram, credited as a diagram - graphene is not photographable at this scale.",
+      "credit_line": "GRAPHENE LATTICE \u2014 DIAGRAM, U.S. DEPARTMENT OF ENERGY FROM UNITED STATES (PUBLIC DOMAIN)",
+      "treatment": "plate",
+      "source_org": "U.S. Department of Energy from United States",
+      "licence": "Public domain",
+      "matched_query": "graphene honeycomb lattice",
+      "item_url": "https://commons.wikimedia.org/wiki/File:U.S._Department_of_Energy_-_Science_-_389_012_009_(13784554485).jpg",
+      "direct_url": "https://upload.wikimedia.org/wikipedia/commons/d/d6/U.S._Department_of_Energy_-_Science_-_389_012_009_%2813784554485%29.jpg",
+      "local_file": "assets/mat__graphene-lattice__u-s-department-of-energy-science-389-012-009-13784554485-jpg.jpg",
+      "sha256": "344f12e38a3a2fb99e58556c99d48ac723187c84bafb2524a8e8c1e3bf94d691",
+      "width": 3200,
+      "height": 2400,
+      "licence_basis": "Commons item page asserts Public domain (Copyrighted=False)"
+    },
+    {
+      "subject": "microchip-die",
+      "label": "SILICON DIE",
+      "title": "HP PA-8700 die shot - etched (42799937502).jpg",
+      "depicts": "micrograph",
+      "subject_basis": "A decapped integrated-circuit die. Credited as a micrograph, never as a photograph of a packaged chip.",
+      "credit_line": "SILICON DIE \u2014 MICROGRAPH, MARTIJN BOER FROM NETHERLANDS (PUBLIC DOMAIN)",
+      "treatment": "photo",
+      "source_org": "Martijn Boer from Netherlands",
+      "licence": "Public domain",
+      "matched_query": "integrated circuit die photograph",
+      "item_url": "https://commons.wikimedia.org/wiki/File:HP_PA-8700_die_shot_-_etched_(42799937502).jpg",
+      "direct_url": "https://upload.wikimedia.org/wikipedia/commons/e/eb/HP_PA-8700_die_shot_-_etched_%2842799937502%29.jpg",
+      "local_file": "assets/mat__microchip-die__hp-pa-8700-die-shot-etched-42799937502-jpg.jpg",
+      "sha256": "ea66ba65d30ffae6633b7654be28e3209533a434956777f8d42c64d90c5c2454",
+      "width": 4972,
+      "height": 3735,
+      "licence_basis": "Commons item page asserts Public domain (Copyrighted=False)"
+    },
+    {
+      "subject": "micrograph-steel",
+      "label": "STEEL MICROSTRUCTURE",
+      "title": "Ferrite-perlite-steel-A285.jpeg",
+      "depicts": "micrograph",
+      "subject_basis": "An etched and polished section of steel under a microscope. The grain structure narration about phases and quenching is describing.",
+      "credit_line": "STEEL MICROSTRUCTURE \u2014 MICROGRAPH, A. J. DUNCAN, K. H. SUBRAMANIAN, R. L. SINDELAR, (PUBLIC DOMAIN)",
+      "treatment": "photo",
+      "source_org": "A. J. Duncan, K. H. Subramanian, R. L. Sindelar, K. Miller, A. P. Reynolds, and Y. J. Chao",
+      "licence": "Public domain",
+      "matched_query": "pearlite microstructure steel",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Ferrite-perlite-steel-A285.jpeg",
+      "direct_url": "https://upload.wikimedia.org/wikipedia/commons/3/36/Ferrite-perlite-steel-A285.jpeg",
+      "local_file": "assets/mat__micrograph-steel__ferrite-perlite-steel-a285-jpeg.jpeg",
+      "sha256": "c6a508e7157e65ca0e4cb30369dfbe16c6a7fa4f5c583352ae62621a5fabe44d",
+      "width": 1271,
+      "height": 965,
+      "licence_basis": "Commons item page asserts Public domain (Copyrighted=False)"
+    },
+    {
+      "subject": "molten-steel",
+      "label": "MOLTEN STEEL",
+      "title": "Front view of ladle emptying molten iron into moulds, pig iron machine, Pittsburg, Pa., U.S.A, from Robert N. Dennis collection of stereoscopic views.jpg",
+      "depicts": "photograph",
+      "subject_basis": "Liquid steel being poured. Used only under narration about melting, casting or the forge range of the thermal scale.",
+      "credit_line": "MOLTEN STEEL \u2014 PHOTOGRAPH, UNKNOWN ARTIST UNKNOWN ARTIST (PUBLIC DOMAIN)",
+      "treatment": "photo",
+      "source_org": "Unknown artist Unknown artist",
+      "licence": "Public domain",
+      "matched_query": "molten iron casting",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Front_view_of_ladle_emptying_molten_iron_into_moulds,_pig_iron_machine,_Pittsburg,_Pa.,_U.S.A,_from_Robert_N._Dennis_collection_of_stereoscopic_views.jpg",
+      "direct_url": "https://upload.wikimedia.org/wikipedia/commons/1/19/Front_view_of_ladle_emptying_molten_iron_into_moulds%2C_pig_iron_machine%2C_Pittsburg%2C_Pa.%2C_U.S.A%2C_from_Robert_N._Dennis_collection_of_stereoscopic_views.jpg",
+      "local_file": "assets/mat__molten-steel__front-view-of-ladle-emptying-molten-iron-into-moulds-pig-iro.jpg",
+      "sha256": "1c0a28934ca7fca5a07725a5d44627c704c12d7996e25685f8173560ca4f61c0",
+      "width": 2737,
+      "height": 1420,
+      "licence_basis": "Commons item page asserts Public domain (Copyrighted=False)"
+    },
+    {
+      "subject": "silicon-wafer",
+      "label": "SILICON WAFER",
+      "title": "Silicon wafer researcher.jpg",
+      "depicts": "photograph",
+      "subject_basis": "A polished monocrystalline silicon wafer or the boule it is cut from.",
+      "credit_line": "SILICON WAFER \u2014 PHOTOGRAPH, U.S. DEPARTMENT OF ENERGY (PUBLIC DOMAIN)",
+      "treatment": "photo",
+      "source_org": "U.S. Department of Energy",
+      "licence": "Public domain",
+      "matched_query": "silicon wafer",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Silicon_wafer_researcher.jpg",
+      "direct_url": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Silicon_wafer_researcher.jpg",
+      "local_file": "assets/mat__silicon-wafer__silicon-wafer-researcher-jpg.jpg",
+      "sha256": "88741e28a10f10c3780cb5ba2d3c893fa2090abb0f4500066d20138184485a4c",
+      "width": 5760,
+      "height": 3840,
+      "licence_basis": "Commons item page asserts Public domain (Copyrighted=False)"
+    },
+    {
+      "subject": "welding-arc",
+      "label": "WELDING ARC",
+      "title": "US Army soldier welding two metal pieces, Fort Gregg-Adams, Virginia, March 2025.jpg",
+      "depicts": "photograph",
+      "subject_basis": "An electric welding arc in operation. Used under narration about arc temperature or plasma.",
+      "credit_line": "WELDING ARC \u2014 PHOTOGRAPH, JUAN F. JIMENEZ, ARMY (PUBLIC DOMAIN)",
+      "treatment": "photo",
+      "source_org": "Juan F. Jimenez, Army",
+      "licence": "Public domain",
+      "matched_query": "welder arc welding",
+      "item_url": "https://commons.wikimedia.org/wiki/File:US_Army_soldier_welding_two_metal_pieces,_Fort_Gregg-Adams,_Virginia,_March_2025.jpg",
+      "direct_url": "https://upload.wikimedia.org/wikipedia/commons/8/8e/US_Army_soldier_welding_two_metal_pieces%2C_Fort_Gregg-Adams%2C_Virginia%2C_March_2025.jpg",
+      "local_file": "assets/mat__welding-arc__us-army-soldier-welding-two-metal-pieces-fort-gregg-adams-vi.jpg",
+      "sha256": "7c923374ed0b2343385815c61c7c967a9144b3ade848cd6aff6648969607ad06",
+      "width": 5641,
+      "height": 3870,
+      "licence_basis": "Commons item page asserts Public domain (Copyrighted=False)"
+    }
+  ]
+}

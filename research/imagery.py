@@ -68,6 +68,15 @@ CREDIT_OK = re.compile(
 # party has a stake in the work. Drop it. This list is deliberately broad; a
 # false negative costs us one image, a false positive costs us a rights claim
 # we cannot defend.
+#
+# NOTE on `courtesy of [a-z]+ [a-z]+`: this clause is for a credit that names a
+# person or a body MID-STRING ("..., courtesy of Jane Smith"). It must never be
+# allowed to see the LEADING boilerplate, because "Image courtesy of NOAA
+# Ocean" matches it and the item is thrown away for saying "courtesy of" in
+# front of NOAA's own name. See strip_courtesy() below: the boilerplate that
+# CREDIT_OK's comment promises is stripped is now genuinely stripped BEFORE
+# this pattern runs. Measured cost of the bug: 32 of 388 NOAA video posts and
+# 8 of 63 rejected still candidates.
 THIRD_PARTY = re.compile(
     r"(?i)\b("
     r"copyright|\(c\)|&copy;|"
@@ -88,6 +97,33 @@ THIRD_PARTY = re.compile(
 # short trailing phrase of words/digits and reject anything with a slash (the
 # marker of a joint credit like "UW/NSF-OOI/WHOI").
 EXPEDITION_OK = re.compile(r"^[\w\s‘’'&+.:\-]*$")
+
+
+# The leading "Image courtesy of" / "Video courtesy of" / "Courtesy of"
+# boilerplate NOAA puts in front of its own credits. Stripping it is what
+# CREDIT_OK's own comment has always claimed to do. Only the LEADING occurrence
+# is removed, so a second, mid-string "courtesy of <someone>" still trips
+# THIRD_PARTY.
+#
+# This is the single implementation. research/imagery_video.py imports it
+# rather than keeping a second copy.
+COURTESY_BOILERPLATE = re.compile(
+    r"^\s*(?:videos?|images?|photos?|footage|images\s+and\s+sounds)?"
+    r"\s*courtesy\s+of\s+",
+    re.I,
+)
+
+
+def strip_courtesy(credit: str | None) -> tuple[str, bool]:
+    """Remove the leading 'courtesy of' boilerplate. Returns (credit, stripped).
+
+    Nothing is loosened: the string that comes back still has to name NOAA and
+    nobody else. All this does is stop the boilerplate itself being read as a
+    third-party credit.
+    """
+    raw = (credit or "").strip()
+    n = COURTESY_BOILERPLATE.sub("", raw).strip()
+    return n, n != raw
 
 
 def _get(url: str, binary: bool = False, tries: int = 3):
@@ -125,17 +161,28 @@ def scrape_credit(item_url: str) -> str | None:
 
 
 def credit_is_noaa_only(credit: str | None) -> tuple[bool, str]:
-    """The whole rights decision, in one auditable place."""
+    """The whole rights decision, in one auditable place.
+
+    The raw credit is what we DISPLAY; only the string handed to the gate is
+    normalised, and the reason string always quotes the raw credit so the
+    decision stays auditable.
+    """
     if not credit:
         return False, "no credit line on item page"
-    if THIRD_PARTY.search(credit):
-        return False, f"third-party or copyrighted credit: {credit!r}"
-    m = CREDIT_OK.match(credit)
+    raw = credit
+    gated, stripped = strip_courtesy(credit)
+    if THIRD_PARTY.search(gated):
+        return False, f"third-party or copyrighted credit: {raw!r}"
+    m = CREDIT_OK.match(gated)
     if not m:
-        return False, f"credit does not resolve to NOAA alone: {credit!r}"
+        return False, f"credit does not resolve to NOAA alone: {raw!r}"
     rest = m.group("rest").strip().rstrip(".")
     if rest and (not EXPEDITION_OK.match(rest) or "/" in rest):
-        return False, f"credit carries a co-author: {credit!r}"
+        return False, f"credit carries a co-author: {raw!r}"
+    if stripped:
+        return True, ("NOAA-only credit, no copyright notice (after stripping "
+                      f"the leading 'courtesy of' boilerplate; raw credit was "
+                      f"{raw!r})")
     return True, "NOAA-only credit, no copyright notice"
 
 

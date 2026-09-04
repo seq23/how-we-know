@@ -59,7 +59,10 @@ git config user.email "loop@users.noreply.github.com"
 # weekly scoring stage RUNS that agent's entrypoint, which rewrites
 # publish_order.json. Committing the result is how the ranking reaches the Mac.
 git add loop docs 2>/dev/null
-if [ "$STAGE" = "weekly-score" ]; then git add research/publish_order.json 2>/dev/null; fi
+# EVERY domain's queue file, not just deep sea's. Naming publish_order.json
+# alone left research/publish_order_materials.json uncommitted after a
+# weekly score, so the Mac scored a queue the repo never recorded.
+if [ "$STAGE" = "weekly-score" ]; then git add research/publish_order*.json 2>/dev/null; fi
 # The footage/imagery harvest writes the cleared manifests and the assets they
 # describe. Without this line the lane would run every week, harvest correctly,
 # and throw the result away on the runner - "runs but inert" with a green tick.
