@@ -53,6 +53,7 @@ import cadence                                    # noqa: E402
 import ledger                                     # noqa: E402
 import publish as P                               # noqa: E402
 import quota                                      # noqa: E402
+import shorts_approval                            # noqa: E402
 import upload as up                               # noqa: E402
 from common import Stage, config, now, week_id     # noqa: E402
 
@@ -269,8 +270,61 @@ def build_payload(slug: str, question: str) -> dict:
 
 def run(limit: int = 2, dry_run: bool = False) -> int:
     cfg = config()
+    # KEPT FROM UPSTREAM, and not optional: `per_week` and `cadence_why` are
+    # both read further down (the SHORTS_INVENTORY_EXHAUSTED stop quotes the
+    # cadence, and the take line prints the explanation). The stashed side
+    # replaced this line entirely, which would have raised NameError on the
+    # first run that reached either.
     per_week, cadence_why = cadence.shorts_effective(explain=True)
-    todo = pending()
+
+    # ALL THREE RANKS PUBLISH AUTOMATICALLY. Owner's call, 2026-09-01: she does
+    # not want to approve Shorts one at a time.
+    #
+    # Rank measures RELEVANCE TO THE EPISODE'S CORE QUESTION, not how good a
+    # Short it makes, and those are different things. Episode 01's rank 3 is
+    # "Scarce food favors oversized feeding equipment" - a large mouth, long
+    # teeth, hinged jaws, the anglerfish's lure - which is plainly stronger
+    # short-form material than its rank 2 on soft bodies under pressure. Cutting
+    # rank 3 off would have thrown that away for a reason that does not survive
+    # looking at the output.
+    #
+    # The genuinely unpublishable category is filtered at SOURCE regardless of
+    # rank: visuals/shorts.py drops chapters whose heading is production
+    # apparatus and whose narration talks about the video rather than the
+    # subject. That is the guard that matters; rank is not.
+    #
+    # Supply: 16 episodes x 3 ranks = 48 Shorts = 12 weeks at 4/week, against a
+    # 7.5-week episode runway. Comfortably ahead, and Shorts consume no episode
+    # inventory.
+    #
+    # loop/shorts_approval.py is still honoured as a VETO: anything explicitly
+    # rejected there is skipped. Nothing has to be approved for it to publish.
+    MAX_RANK = 3
+
+    def _rank(path):
+        stem = path.stem
+        return 1 if stem.endswith("-short") else int(stem.rsplit("-short", 1)[1])
+
+    todo = []
+    for t in pending():
+        for f in sorted(SHORTS_DIR.glob(f"{t}-short*.mp4")):
+            try:
+                r = _rank(f)
+            except ValueError:
+                continue
+            if r <= MAX_RANK and not shorts_approval.is_rejected(f.name):
+                todo.append(t)
+                break
+
+    # The stashed side also carried its own `if not todo:` here, printing a
+    # sentence and returning 0. It is DROPPED rather than merged, for three
+    # reasons: the Rule 0 named stop immediately below already handles the
+    # same condition and handles it better (a print that exits 0 is the exact
+    # "runs but inert" shape that stop was written to replace); it was written
+    # before the cadence raise and quoted no cadence; and its message said
+    # "rank 3 is kept on disk and never published", contradicting the comment
+    # directly above it in the same hunk. Keeping it would have restored a
+    # claim the owner reversed on 2026-09-01.
     if not todo:
         # RULE 0. This used to print a sentence and exit 0, which is exactly the
         # "runs but inert" shape: a channel that has published its last cut
