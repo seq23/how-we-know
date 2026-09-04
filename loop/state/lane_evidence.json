@@ -1,8 +1,8 @@
 {
   "lanes": {
     "reach": {
-      "detail": "workflow_dispatch run 33784690518: uploaded caption track(s) (5550 quota units) and wrote localization(s) (51 quota units) for real, both in the same run (loop/state/quota.json, commit 2ec37df). An earlier dispatch the same day (run 33783829147) failed on the captions half only, with the correct named stop CAPTIONS_SCOPE_MISSING -- the credential lacked youtube.force-ssl at that moment; the owner re-consented and this run is the real, both-halves-succeeded proof. Seeded here on merge because this run predates loop/arming.py existing on main.",
-      "proven_at": "2026-09-03T17:29:09+00:00",
+      "detail": "uploaded 1 caption track(s)",
+      "proven_at": "2026-09-04T19:46:12+00:00",
       "proves": "uploaded one caption track and one set of localizations"
     },
     "shorts-cloud": {
@@ -16,5 +16,5 @@
       "proves": "uploaded and scheduled at least one real episode from R2"
     }
   },
-  "updated": "2026-09-04T16:13:13+00:00"
+  "updated": "2026-09-04T19:46:12+00:00"
 }
