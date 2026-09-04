@@ -1336,6 +1336,81 @@ def v21_batch_sees_every_domain() -> Result:
     return r
 
 
+def v22_lane_interpreters() -> Result:
+    """Each lane is invoked with the interpreter that lane's packages live in.
+
+    THE FAILURE THIS EXISTS TO CATCH READS AS A BROKEN NARRATOR. Voice has had
+    its own environment since the lane was built - bin/run-batch.sh calls
+    .venv-tts/bin/python, because torch, chatterbox-tts and soundfile are ~1.3
+    GB and have no business in the render venv. bin/batch-session.sh called
+    `$PY voice/narrate_all.py`, i.e. the RENDER venv, and narration died on
+    `ModuleNotFoundError: No module named 'soundfile'`. CLAUDE.md's first named
+    trap is exactly this: "a missing package reads as a failing validator", and
+    it has now cost PIL twice, numpy once and soundfile once.
+
+    Asserted from the SCRIPT TEXT, not from the filesystem, deliberately: this
+    validator also runs in GitHub Actions, where no .venv-tts exists and never
+    should. Checking that the directory is present would fail every cloud run
+    for a Mac-only lane. What is machine-independent, and what actually broke,
+    is which interpreter each lane is invoked with.
+
+      * A voice/ entrypoint is never launched by the render venv.
+      * A visuals/ entrypoint is never launched by the voice venv - the
+        reverse mistake, which would fail on PIL instead.
+      * Any script that runs voice/ declares a TTS interpreter variable at
+        all, so the coupling is visible where someone editing it will see it.
+
+    Hard-fails when it examines zero items.
+    """
+    r = Result("V22 lane-interpreters")
+    import re as _re                                     # noqa: PLC0415
+
+    RENDER_VENV = ".venv/bin/python"
+    TTS_VENV = ".venv-tts/bin/python"
+
+    for sh in sorted((ROOT / "bin").glob("*.sh")):
+        body = sh.read_text()
+        lines = [ln for ln in body.splitlines() if not ln.lstrip().startswith("#")]
+        r.examined += 1
+
+        # Resolve the shell variables each script assigns to an interpreter,
+        # so `$PY voice/x.py` is judged by what PY was actually set to.
+        varmap = {}
+        for ln in lines:
+            m = _re.match(r"\s*([A-Z_][A-Z0-9_]*)=(\S*/bin/python\S*)\s*$", ln)
+            if m:
+                varmap[m.group(1)] = m.group(2)
+
+        def interp(ln):
+            m = _re.search(r"(?:\$\{?([A-Z_][A-Z0-9_]*)\}?|(\S*/bin/python\S*))\s+"
+                           r"(\S+\.py)", ln)
+            if not m:
+                return None, None
+            name = varmap.get(m.group(1)) if m.group(1) else m.group(2)
+            return name, m.group(3)
+
+        for ln in lines:
+            path, script = interp(ln)
+            if not path or not script:
+                continue
+            if script.startswith("voice/") and path.endswith(RENDER_VENV):
+                r.fail(f"{sh.name} runs {script} with {path}, the RENDER venv. "
+                       f"Voice needs torch/chatterbox-tts/soundfile, which live "
+                       f"in {TTS_VENV}; this fails as ModuleNotFoundError and "
+                       f"reads as a broken narrator.")
+            if script.startswith("visuals/") and TTS_VENV in path:
+                r.fail(f"{sh.name} runs {script} with {path}, the VOICE venv. "
+                       f"Rendering needs PIL and numpy from {RENDER_VENV}.")
+
+        if any(ln for ln in lines if "voice/" in ln and ".py" in ln):
+            if not any(TTS_VENV in v for v in varmap.values()) and TTS_VENV not in body:
+                r.fail(f"{sh.name} runs a voice/ entrypoint but never names "
+                       f"{TTS_VENV}. The two environments are separate and the "
+                       f"script that drives voice must say so.")
+
+    return r
+
+
 # ------------------------------------------------------------------ runner
 
 def run_all(items) -> tuple[bool, list[dict]]:
@@ -1352,7 +1427,8 @@ def run_all(items) -> tuple[bool, list[dict]]:
                v12_footage_scope(), v13_render_not_clipped(),
                v14_shorts_attribution(), v15_shorts_caption_crop(),
                v20_cadence_schedule(),
-               v21_batch_sees_every_domain()]
+               v21_batch_sees_every_domain(),
+               v22_lane_interpreters()]
     rows = [r.as_dict() for r in results]
     return all(r.ok for r in results), rows
 

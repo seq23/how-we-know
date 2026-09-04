@@ -49,6 +49,14 @@ set -uo pipefail
 cd "$(dirname "${BASH_SOURCE[0]}")/.."
 ROOT="$(pwd)"
 PY=.venv/bin/python
+# VOICE HAS ITS OWN ENVIRONMENT and always did - bin/run-batch.sh has used
+# .venv-tts since the voice lane was built. This script called
+# `$PY voice/narrate_all.py`, i.e. the RENDER venv, which has no torch and no
+# soundfile: narration died on `ModuleNotFoundError: No module named
+# 'soundfile'` and read as a broken narrator rather than a missing package -
+# the trap CLAUDE.md names first. Rendering keeps .venv (PIL, numpy, ffmpeg);
+# only narration uses .venv-tts (torch, chatterbox-tts, soundfile).
+PY_TTS=.venv-tts/bin/python
 DRY=""
 OVERLAP=1
 MAX_EPISODES=0            # 0 = no bound
@@ -182,12 +190,27 @@ import domains; print(domains.domain_of_slug('$slug') or 'deep-sea-ocean-science
   return 0
 }
 
+if [ -n "${pending_audio// }" ] && [ ! -x "$PY_TTS" ]; then
+  echo
+  echo "NAMED STOP: $PY_TTS does not exist, so nothing can be narrated."
+  echo "The voice environment is separate from the render one and holds torch,"
+  echo "chatterbox-tts and soundfile (~1.3 GB). Rebuild it with:"
+  echo "    /opt/homebrew/bin/python3.12 -m venv .venv-tts"
+  echo "    .venv-tts/bin/pip install chatterbox-tts==0.1.7 soundfile 'setuptools<81'"
+  echo "The 'setuptools<81' pin is required: resemble-perth imports pkg_resources,"
+  echo "which setuptools 84 removed, and chatterbox then fails at model init with"
+  echo "TypeError: 'NoneType' object is not callable - not an obvious missing dep."
+  echo "Model weights (~3 GB) are cached in ~/.cache/huggingface and are not"
+  echo "re-downloaded."
+  exit 3
+fi
+
 if [ -n "${pending_audio// }" ]; then
   echo; echo "--- narration (~1.2 h per episode) ---"
   if [ -n "$OVERLAP" ]; then
     echo "  rendering overlaps narration: each episode is assembled as soon as"
     echo "  its audio is COMPLETE, while the voice model moves to the next."
-    $PY voice/narrate_all.py &
+    $PY_TTS voice/narrate_all.py &
     NARRATE_PID=$!
     while kill -0 "$NARRATE_PID" 2>/dev/null; do
       for slug in $(renderable); do
@@ -199,7 +222,7 @@ if [ -n "${pending_audio// }" ]; then
     done
     wait "$NARRATE_PID" || echo "  narration exited $? - rendering covers what completed"
   else
-    $PY voice/narrate_all.py || echo "  narration exited $? - rendering covers what completed"
+    $PY_TTS voice/narrate_all.py || echo "  narration exited $? - rendering covers what completed"
   fi
 fi
 
