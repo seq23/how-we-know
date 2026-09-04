@@ -139,7 +139,22 @@ def a_exit_codes() -> tuple[list[str], int]:
 def b_escalation() -> tuple[list[str], int]:
     """A stop that never resolves is not self-resolving."""
     fails, examined = [], 0
-    cap = int(POLICY["self_resolving"]["QUOTA_EXHAUSTED"]["max_consecutive"])
+    # Read the cap DEFENSIVELY. This section used to subscript the policy
+    # directly, so deleting QUOTA_EXHAUSTED from loop/stop_policy.json - the
+    # exact regression this file exists to catch - aborted the run with a
+    # KeyError traceback before sections C and D could report anything. The
+    # process still exited non-zero, so the guard was never inert, but it
+    # reported a crash in the test instead of the defect in the policy, and a
+    # guard that misnames what broke is how a five-minute fix becomes an hour.
+    # A missing rule is a FINDING here, not an exception.
+    rule = (POLICY.get("self_resolving") or {}).get("QUOTA_EXHAUSTED")
+    if not rule:
+        return ([("loop/stop_policy.json no longer classifies "
+                  "QUOTA_EXHAUSTED, so the daily quota stop has reverted to "
+                  "exit 3 and pages the owner every day it fires - the defect "
+                  "of run 33521586490. Escalation cannot be checked at all "
+                  "while the rule is absent.")], 0)
+    cap = int(rule["max_consecutive"])
     with tempfile.TemporaryDirectory() as td:
         harness = os.path.join(td, "harness.py")
         open(harness, "w").write(HARNESS)
