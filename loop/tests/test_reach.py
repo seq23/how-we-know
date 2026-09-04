@@ -563,15 +563,29 @@ def check() -> list[str]:
         r = subprocess.run([sys.executable, os.path.join(LOOP, lane)],
                            capture_output=True, text=True, cwd=ROOT, env=env)
         out = r.stdout + r.stderr
-        if r.returncode == 0:
-            fails.append(f"loop/{lane} exited 0 under LOOP_DRY_RUN=1 — a "
-                         f"silent skip, the exact defect this loop forbids")
-        elif r.returncode != 3:
+        # EXIT 0 IS ALLOWED ONLY FOR A SELF-RESOLVING NAMED STOP.
+        #
+        # This treated any zero exit as a silent skip, which was right when
+        # every named stop exited 3 and became wrong when
+        # loop/stop_policy.json introduced the self-resolving disposition. A
+        # localize lane that correctly reports "every live video already
+        # carries its five localizations" prints the full banner, writes
+        # loop/state/stops/, and exits 0 precisely so it does not page a human
+        # daily for the outcome that needs nobody. What must never happen is a
+        # lane exiting 0 having said NOTHING - so the banner is demanded in
+        # both cases, and a zero exit must additionally declare itself
+        # self-resolving. A quiet pass still fails here.
+        if r.returncode not in (0, 3):
             fails.append(f"loop/{lane} exited {r.returncode} (a crash) under "
-                         f"LOOP_DRY_RUN=1 rather than 3:\n{out[-400:]}")
+                         f"LOOP_DRY_RUN=1 rather than a named stop:\n{out[-400:]}")
         if "NAMED STOP" not in out:
             fails.append(f"loop/{lane} stopped under LOOP_DRY_RUN=1 without "
                          f"printing a NAMED STOP banner")
+        elif r.returncode == 0 and "SELF-RESOLVING" not in out.upper():
+            fails.append(f"loop/{lane} exited 0 under LOOP_DRY_RUN=1 without "
+                         f"declaring the stop self-resolving — a zero exit is "
+                         f"only legitimate for a stop loop/stop_policy.json "
+                         f"classifies")
         if "Traceback" in out:
             fails.append(f"loop/{lane} raised under LOOP_DRY_RUN=1:\n"
                          f"{out[-400:]}")
