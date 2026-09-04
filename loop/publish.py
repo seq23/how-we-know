@@ -77,6 +77,78 @@ def set_privacy(token: str, video_id: str, privacy: str,
     urllib.request.urlopen(req, timeout=60).read()
 
 
+def verify_scheduled_flips(st, cfg) -> None:
+    """Every video whose publishAt has passed must actually be public.
+
+    The counterpart to uploading private-with-a-date: YouTube owns the flip, so
+    something has to check that it performed it. Reads the ledger, asks YouTube
+    for the live status of every row whose scheduled time is in the past, and
+    fails loudly on any that is still private.
+
+    Rule 0: this examines rows and says how many. If the ledger holds no past
+    due row at all it takes a NAMED STOP rather than exiting 0 quietly - a
+    verifier that checked nothing has proved nothing.
+    """
+    import ledger as _led                                  # noqa: PLC0415
+    import datetime as _d                                  # noqa: PLC0415
+
+    rows = _led.load()["published"]
+    now_utc = _d.datetime.now(_d.timezone.utc)
+    due = []
+    for r in rows:
+        stamp = r.get("scheduled_publish_at")
+        if not stamp:
+            continue
+        when = _d.datetime.fromisoformat(stamp.replace("Z", "+00:00"))
+        if when <= now_utc:
+            due.append((r, when))
+
+    if not due:
+        st.named_stop(
+            "NO_FLIP_DUE_YET",
+            f"{len(rows)} episode(s) are on the calendar and none has reached "
+            f"its publishAt yet, so there is no flip to verify.",
+            detail={"next": min((r.get("scheduled_publish_at") for r in rows
+                                 if r.get("scheduled_publish_at")), default="")},
+            unblock="Nothing is wrong. This lane verifies flips AFTER they are "
+                    "due; the first one is at the timestamp above.")
+
+    creds = up.load_credentials(cfg)
+    if not creds or creds.get("unusable"):
+        st.named_stop(
+            "OAUTH_MISSING",
+            f"{len(due)} scheduled flip(s) are due and cannot be verified "
+            f"without OAuth.",
+            unblock="Run .venv/bin/python auth/youtube_auth.py on the Mac, or "
+                    "set the repo secrets.")
+    token = up.access_token(creds)
+
+    bad = []
+    for r, when in due:
+        vid = r.get("video_id")
+        if not vid:
+            continue
+        got = read_status(token, vid)
+        st.work(f"{r['slug']}: due {when:%Y-%m-%d %H:%M}Z, YouTube reports "
+                f"{got.get('privacy')}")
+        if got.get("privacy") != "public":
+            bad.append(f"{r['slug']} ({vid}) was due at "
+                       f"{when:%Y-%m-%dT%H:%M:%SZ} but YouTube still reports "
+                       f"{got.get('privacy')!r}")
+
+    if bad:
+        st.named_stop(
+            "SCHEDULED_FLIP_DID_NOT_HAPPEN",
+            f"{len(bad)} of {len(due)} scheduled video(s) passed their publish "
+            f"time and are still not public: " + "; ".join(bad),
+            detail={"videos": bad},
+            unblock="Check the credential's scopes first - videos.update needs "
+                    "the full `youtube` scope and 403s silently without it. "
+                    "Then flip by hand in YouTube Studio; the calendar already "
+                    "says these aired.")
+    st.note(f"verified {len(due)} scheduled flip(s); all public")
+
+
 def main() -> None:
     cfg = config()
     week = week_id()
@@ -126,13 +198,33 @@ def main() -> None:
             st.note(f"{slug}: not flipped — {why}")
 
         if not eligible:
-            st.named_stop(
-                "NOTHING_PUBLISHABLE",
-                "no video has a receipt proving it uploaded correctly, so "
-                "nothing is being made public",
-                detail=blocked,
-                unblock="Run bin/loop-thursday.sh once OAuth exists. Until "
-                        "then this stop is the correct outcome, not a failure.")
+            # NOT A STOP ANY MORE, because there is real work here and this
+            # lane had stopped doing any.
+            #
+            # This branch used to raise NOTHING_PUBLISHABLE, and by 2026-09-04
+            # it did so every single Friday. The reason is structural, not
+            # transient: every episode is now uploaded PRIVATE with a
+            # `publishAt` stamp and YouTube makes it public itself at that
+            # moment, so nothing is ever left for a Friday flip to flip. The
+            # ledger proves it - zero rows carry neither a schedule nor an air
+            # date. A weekly lane that can never have anything to do is the
+            # "runs but inert" defect, and its unblock text had already gone
+            # stale ("once OAuth exists"; OAuth has existed since 2026-09-01).
+            #
+            # Adding the code to loop/stop_policy.json would have made it
+            # silently green forever - an inert lane wearing a reassuring
+            # label, which is the one thing that file's own header warns
+            # against. So the lane is given the job the new model actually
+            # needs doing: PROVE THE SCHEDULED FLIPS HAPPENED.
+            #
+            # That is not busywork. This repo has already been bitten by a
+            # flip that failed silently - videos.update needs the full
+            # `youtube` scope and 403s without it, and it stayed invisible for
+            # weeks because the first video had been uploaded public directly.
+            # A video whose publishAt passed and which is still private is
+            # invisible in exactly the same way: the calendar says it aired,
+            # the channel says nothing.
+            return verify_scheduled_flips(st, cfg)
 
         creds = up.load_credentials(cfg)
         if creds and creds.get("unusable"):
