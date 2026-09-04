@@ -38,24 +38,40 @@ def publish_order_files() -> list[Path]:
     return sorted(ROOT.glob(f"research/{PUBLISH_ORDER_GLOB}"))
 
 
-def queued_slugs() -> list[str]:
-    """Every gated, surviving topic slug, best first, deduplicated."""
+def queued_entries() -> list[dict]:
+    """Every gated, surviving topic ROW, best first, deduplicated.
+
+    The row, not just the slug, because the schedulers need what the ranking
+    recorded alongside it - `query` is the episode's question and becomes its
+    title. `loop/backfill.py` read the deep-sea file directly for exactly that
+    and so could not schedule a materials episode at all.
+
+    Each row carries `_domain_file`, the publish-order file it came from, so a
+    caller can say which domain queued a topic without keeping a second map.
+    """
     files = publish_order_files()
     if not files:
         raise NoPublishOrder(
             f"no research/{PUBLISH_ORDER_GLOB} found under {ROOT} - refusing to "
             "report an empty queue, which is indistinguishable from a finished one"
         )
-    out: list[str] = []
+    out: list[dict] = []
     seen: set[str] = set()
     for path in files:
         for row in json.loads(path.read_text()).get("queue") or []:
-            slug = row.get("slug") if isinstance(row, dict) else row
+            row = dict(row) if isinstance(row, dict) else {"slug": row}
+            slug = row.get("slug")
             if not slug or slug in seen:
                 continue
             seen.add(slug)
-            out.append(slug)
+            row["_domain_file"] = path.name
+            out.append(row)
     return out
+
+
+def queued_slugs() -> list[str]:
+    """Every gated, surviving topic slug, best first, deduplicated."""
+    return [r["slug"] for r in queued_entries()]
 
 
 if __name__ == "__main__":

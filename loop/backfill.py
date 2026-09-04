@@ -205,10 +205,16 @@ def library_pending(verbose: bool = False,
     is swapped for an R2 lookup by loop/cloud_upload.py.
     """
     assets = assets or local_assets
-    order = json.loads((ROOT / "research" / "publish_order.json").read_text())
+    # EVERY domain's queue. Reading research/publish_order.json by name meant
+    # this lane could not see a materials episode at all: eighteen were scored,
+    # scripted and planned and three were rendered, and none of them could be
+    # assigned a publish slot because the scheduler was looking in one file.
+    # loop/batch_queue.py is the one definition, the same one bin/ and
+    # cadence.publish_order() use.
+    import batch_queue                                     # noqa: PLC0415
     done = {r["slug"] for r in ledger.load()["published"]}
     out = []
-    for q in order["queue"]:
+    for q in batch_queue.queued_entries():
         slug = q["slug"]
         if slug in done:
             continue
@@ -305,12 +311,17 @@ def upload_one(st, token: str, slug: str, question: str, render: Path,
 
 
 def question_for(slug: str) -> str:
-    """The episode's question, from the ranked queue that named it."""
-    order = json.loads((ROOT / "research" / "publish_order.json").read_text())
-    for q in order["queue"]:
+    """The episode's question, from the ranked queue that named it.
+
+    Across every domain's queue: this raised KeyError for any materials slug
+    while it read one file, and the question becomes the video's title, so the
+    upload would have failed at titling after the render was paid for.
+    """
+    import batch_queue                                     # noqa: PLC0415
+    for q in batch_queue.queued_entries():
         if q["slug"] == slug:
             return q["query"]
-    raise KeyError(f"{slug} is not in research/publish_order.json")
+    raise KeyError(f"{slug} is in no research/publish_order*.json queue")
 
 
 def run(limit: int = 4, dry_run: bool = False, stage=None) -> int:
@@ -330,8 +341,8 @@ def run(limit: int = 4, dry_run: bool = False, stage=None) -> int:
     # uploading on the 2/week ladder while every other stage had scaled -
     # two components each keeping their own list, with no link.
     per_week = cadence.effective()
-    order = json.loads((ROOT / "research" / "publish_order.json").read_text())
-    queue = [q["slug"] for q in order["queue"]]
+    import batch_queue                                     # noqa: PLC0415
+    queue = batch_queue.queued_slugs()
 
     led = ledger.load()
     done = {r["slug"] for r in led["published"]}
@@ -393,8 +404,11 @@ def run(limit: int = 4, dry_run: bool = False, stage=None) -> int:
                           unblock=unblock)
         token = up.access_token(creds)
         for (slug, render, thumb), t in zip(take, when):
-            question = next(q["query"] for q in order["queue"]
-                            if q["slug"] == slug)
+            # question_for() is the one lookup, and it spans every domain's
+            # queue. This site had its own inline `order["queue"]` scan - a
+            # fourth copy of the same read in one file - which is why it kept
+            # working for deep sea and raised for materials.
+            question = question_for(slug)
             upload_one(st, token, slug, question, render, thumb, t,
                        lane="backfill")
     return 0
