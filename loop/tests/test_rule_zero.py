@@ -69,8 +69,15 @@ def check() -> list[str]:
                      f"expected 3 (NAMED STOP)")
     if "ZERO_WORK" not in (r.stdout + r.stderr):
         fails.append("a Stage that did nothing did not name ZERO_WORK")
-    stopfile = os.path.join(LOOP, "state", "stops",
-                            "0000-W00-rule-zero-probe.json")
+    # WHERE the loop actually writes stop records, not where it used to.
+    # loop/common._stops_dir() honours LOOP_STOPS_DIR, and the suite now sets
+    # it to a temp directory so a test run cannot dirty the repo's tracked
+    # state (see loop/tests/run_all.py). Hardcoding the default path here made
+    # this probe look for the record in a directory the stage had deliberately
+    # not written to.
+    stopdir = os.environ.get("LOOP_STOPS_DIR") or os.path.join(LOOP, "state",
+                                                               "stops")
+    stopfile = os.path.join(stopdir, "0000-W00-rule-zero-probe.json")
     if not os.path.exists(stopfile):
         fails.append("no stop record was written for the zero-work stage")
 
