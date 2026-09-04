@@ -22,24 +22,34 @@ name: loop · daily 18:00 CT · publish a Short from R2
 # go live. The slots themselves are computed in local time and do not drift when
 # the clocks change, even though this cron does.
 on:
-  # DISARMED until this lane has completed one real upload end to end, for the
-  # same reason as loop-upload-cloud.yml — not because a Mac agent competes with
-  # it (none does; com.howweknow.shorts is gone), but because arming a lane that
-  # has never performed the irreversible half of its job means its first real
-  # attempt happens unattended, at 23:00 UTC, against a live channel.
+  # ARMED. The schedule fires; loop/arming.py now decides on every run
+  # whether a SCHEDULED trigger may act (a workflow_dispatch always may) —
+  # see loop/state/lane_evidence.json. Before loop/arming.py existed, this
+  # lane was armed by hand, by uncommenting the cron below once real evidence
+  # existed. That evidence is preserved here rather than deleted, and the
+  # merge that introduced loop/arming.py seeded lane_evidence.json from it
+  # directly (see that commit) so this real, already-proven success is not
+  # forgotten and re-demanded from a live channel a second time.
   #
-  # Everything up to the upload IS proven: the shelf resolves from a runner, the
-  # evening slots compute, the quota reserves, and the whole lane runs end to end
-  # against the filesystem stub. What has never run is `resumable_upload` through
-  # the repo-secret credential path.
+  # THE RUN THAT FIRST ARMED IT. 2026-09-03, dispatched `-f limit=1`: the lane
+  # pulled the verified Short for 10-what-is-the-deepest-part-of-the-ocean
+  # from r2://how-we-know-renders and uploaded it as video HZhm2dXaR9c.
+  # Confirmed afterwards against videos.list on @howweknowdeep —
+  # privacyStatus=private, publishAt=2026-09-04T00:00:00Z,
+  # uploadStatus=processed. Private with a future slot is exactly the
+  # contract this lane promises, so the credential path was proven and not
+  # merely un-crashed.
   #
-  # Arm it with ONE dispatched run first:
+  # If the credentials or the upload path ever change enough to doubt that
+  # proof, re-prove it the same way:
   #     gh workflow run loop-shorts-cloud.yml -f dry_run=true
   #     gh workflow run loop-shorts-cloud.yml -f limit=1
-  # confirm the Short exists and is private with a publishAt, then uncomment.
-  #
-  #  schedule:
-  #    - cron: '0 23 * * *'
+  # then check the new id is private with a publishAt before trusting the
+  # cron — a fresh dispatch always passes the gate regardless of what
+  # lane_evidence.json says, and a fresh loop/arming.py record_success() call
+  # from it updates lane_evidence.json to the new proof.
+  schedule:
+    - cron: '0 23 * * *'
   workflow_dispatch:
     inputs:
       limit:
@@ -81,6 +91,15 @@ jobs:
         run: npm install -g wrangler@4
       - name: Install loop dependencies
         run: pip install -r requirements-loop.txt
+      # See loop-reach.yml for why this exists: a scope missing from
+      # YT_OAUTH_REFRESH_TOKEN must fail here, by name, before any quota is
+      # spent - not surface as a 403 mid-upload. auth/check_ci_scopes.py
+      # checks against auth/tokens.py:T.SCOPES, never a copy of it.
+      - name: Verify the CI YouTube credential's scopes
+        env:
+          YT_OAUTH_CLIENT_JSON: ${{ secrets.YT_OAUTH_CLIENT_JSON }}
+          YT_OAUTH_REFRESH_TOKEN: ${{ secrets.YT_OAUTH_REFRESH_TOKEN }}
+        run: python3 auth/check_ci_scopes.py
       - name: Pull a verified Short from R2 and schedule it
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -30,24 +30,7 @@ def find_places(s):
     return [k for k in known if k.lower() in s.lower()]
 
 # ---------- signals ----------
-# The segment types that CARRY CONTENT, as opposed to the fillers (text_beat,
-# ambient_drift). destagnate() reuses one of these as relief and the filler
-# pass must never displace one. Module-level, not a local inside destagnate(),
-# so a domain pack can add its own device renderers to the set — as a local it
-# silently ignored every extension.
-INFO = {"stat_card", "depth_descent", "comparison", "zone_column",
-        "pressure_gauge", "light_attenuation", "world_map", "timeline",
-        "anatomy_callout", "size_ladder"}
-
-# The hero visual a cold open reaches for. Deep sea opens on a descent; a
-# domain pack overrides this with its own structural device (materials opens
-# on a thermal ascent). Hardcoding "depth_descent" here is what put two
-# depth_descent beats and four light_attenuation beats into a plan for a
-# script about welding arcs.
-COLD_OPEN_SEGMENT = "depth_descent"
-
-# ---------- signals ----------
-SIGNALS = [
+DEEP_SEA_SIGNALS = [
     ("pressure_gauge",   r"\bpressure\b|\batmospher|\bcrush|\bpsi\b|\bbar\b"),
     ("light_attenuation",r"\bwavelength|\bred light|\bcolou?r .*absorb|\bsunlight (?:is )?absent|\blight (?:dies|fades|disappears)|\bphotic\b"),
     ("zone_column",      r"\bzone\b|\bmidnight\b|\btwilight\b|\bhadal\b|\babyssal\b|\bbathypelagic\b|\bwater column\b"),
@@ -59,6 +42,53 @@ SIGNALS = [
     ("depth_descent",    r"\bdescend|\bdive\b|\bdeeper\b|\bbelow (?:mean )?sea level\b|\bdown to\b"),
     ("stat_card",        rf"\b{NUM}\s*(?:meters?|metres?|feet|kilometers?|percent|%|times)"),
 ]
+
+# THE SAME LIST IS WRONG FOR A DOMAIN THAT IS NOT THE OCEAN. The directives
+# {{thermal}} and {{stages}} were already parsed, so a materials script got its
+# device cards wherever it asked for them explicitly - but the HEURISTICS above
+# still ran on every other beat, and they are deep sea's. "how-hot-does-a-
+# welding-arc-get" planned two `depth_descent` beats and four
+# `light_attenuation` beats off the words "deeper" and "down to": the ocean's
+# "light dies with depth" card, in an episode whose whole device is the
+# physical inverse. Ranking materials higher would not have fixed it; the
+# ocean entries have to be ABSENT, or they win any sentence that happens not
+# to mention heat.
+#
+# Kept because they are already domain-agnostic: stat_card, comparison,
+# size_ladder, timeline. Dropped: light_attenuation, depth_descent,
+# pressure_gauge (its args are a depth in metres), zone_column (this domain's
+# counterpart is process_column), world_map (find_places is a hardcoded list
+# of ocean trenches), anatomy_callout (species anatomy).
+MATERIALS_SIGNALS = [
+    ("thermal_ascent",  r"\bdegrees?\b|\bcelsius\b|\bkelvin\b|\bmelt|\bmolten\b"
+                        r"|\bforge|\banneal|\btemper(?:ing|ed)?\b|\bquench"
+                        r"|\bfurnace\b|\bkiln\b|\bplasma\b|\barc\b|\bheat(?:ed|ing)?\b"
+                        r"|\bincandescen|\bthermal\b|\bsinter"),
+    ("process_column",  r"\bstage\b|\bstages\b|\bstep\b|\bprocess\b|\bproduction line\b"
+                        r"|\bmanufactur|\bfabricat|\bthe sequence\b"),
+    ("size_ladder",     r"\bstrength\b|\bstrong(?:er|est)?\b|\bmodulus\b|\bstiff"
+                        r"|\bgigapascal|\bmegapascal|\btensile\b|\bhardness\b"),
+    ("comparison",      r"\bcompared? (?:to|with)\b|\bversus\b|\bstronger than\b"
+                        r"|\bhotter than\b|\btimes (?:the|as)\b"),
+    ("timeline",        r"\b(?:1[5-9]\d\d|20[0-2]\d)\b.*\b(?:1[5-9]\d\d|20[0-2]\d)\b"
+                        r"|\bhistory\b|\bfirst (?:produced|made|synthesi)"),
+    ("stat_card",       rf"\b{NUM}\s*(?:degrees?|percent|%|times|gigapascals?|megapascals?"
+                        rf"|GPa|MPa|nanometres?|nanometers?|microns?|micrometres?)"),
+]
+
+# The ACTIVE domain decides, at import, exactly as visuals/design.py does - not
+# the presence of a word in a script. A deep-sea episode that says "thermal"
+# must not start getting materials cards.
+_SIGNALS_BY_DOMAIN = {
+    "deep-sea-ocean-science": (DEEP_SEA_SIGNALS, "depth_descent"),
+    "materials-and-manufacturing": (MATERIALS_SIGNALS, "thermal_ascent"),
+}
+try:
+    import design as _design
+    SIGNALS, COLD_OPEN_SEGMENT = _SIGNALS_BY_DOMAIN.get(
+        _design.DOMAIN, (DEEP_SEA_SIGNALS, "depth_descent"))
+except Exception:
+    SIGNALS, COLD_OPEN_SEGMENT = DEEP_SEA_SIGNALS, "depth_descent"
 
 def classify(text, heading):
     """Ranked candidates, best first. Ranking is by signal strength, not order."""
@@ -108,6 +138,15 @@ def parse_directive(line):
             return ("pressure_gauge", {"depth_m": int(float(parts[0].replace(",","")))})
         if kind == "light":
             return ("light_attenuation", {})
+        if kind == "thermal":
+            # materials-and-manufacturing's structural device — the thermal-
+            # scale analogue of {{descent}}. visuals/segments_materials.py.
+            if not parts or not parts[0]: return None
+            return ("thermal_ascent", {"to_temp": int(float(parts[0].replace(",",""))),
+                                       "label": parts[1] if len(parts) > 1 else ""})
+        if kind == "stages":
+            # materials' analogue of {{zones}}.
+            return ("process_column", {"highlight": parts[0].upper() if parts and parts[0] else None})
         if kind == "map":
             pts=[]
             for p in parts:
@@ -154,17 +193,6 @@ try:
 except Exception:
     _ext2 = None
 
-# The ACTIVE domain's own directive pack, if it has one. Grafted by domain,
-# never by the presence of a word: a deep-sea script writing {{thermal}} must
-# not get a materials card, so design.DOMAIN decides and nothing else does.
-try:
-    import design as _design
-    if _design.DOMAIN == "materials-and-manufacturing":
-        import segments_materials as _mat
-        _mat.install(sys.modules[__name__])
-except Exception:
-    pass
-
 # ---------- parsing ----------
 def parse(md):
     body = md.split("## Narration",1)[-1].split("\n## ",1)[0]
@@ -206,6 +234,15 @@ def dur(text):
 # ---------- planning ----------
 def build_args(seg, beat):
     t = beat["text"]
+    if seg == "thermal_ascent":
+        # Only with a cited figure. A thermal card with an invented temperature
+        # would be exactly the "no invented figures" rule broken by a heuristic.
+        m = re.search(rf"({NUM})\s*degrees?", t, re.I)
+        if not m:
+            return None
+        return {"to_temp": int(float(m.group(1).replace(",", ""))), "label": None}
+    if seg == "process_column":
+        return {"highlight": None}
     if seg == "stat_card":
         ms = find_measures(t)
         if not ms: return None
@@ -282,6 +319,15 @@ def dur(text):
 # ---------- planning ----------
 def build_args(seg, beat):
     t = beat["text"]
+    if seg == "thermal_ascent":
+        # Only with a cited figure. A thermal card with an invented temperature
+        # would be exactly the "no invented figures" rule broken by a heuristic.
+        m = re.search(rf"({NUM})\s*degrees?", t, re.I)
+        if not m:
+            return None
+        return {"to_temp": int(float(m.group(1).replace(",", ""))), "label": None}
+    if seg == "process_column":
+        return {"highlight": None}
     if seg == "stat_card":
         ms = find_measures(t)
         if not ms: return None
@@ -386,7 +432,9 @@ MAX_RUN = 2   # never show the same segment type more than twice in a row
 def destagnate(plan):
     """No visual treatment may persist past MAX_RUN consecutive beats. Prefer the
     nearest informational visual in the same section; otherwise breathe."""
-    global INFO
+    INFO = {"stat_card","depth_descent","comparison","zone_column","pressure_gauge",
+            "light_attenuation","world_map","timeline","anatomy_callout","size_ladder",
+            "thermal_ascent","process_column"}
     # nearest informational beat per section, to reuse as relief
     hero = {}
     for b in plan:

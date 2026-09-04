@@ -157,6 +157,93 @@ def access_token(creds: dict) -> str:
 DRY_RUN = os.environ.get("LOOP_DRY_RUN") == "1"
 
 
+# YouTube silently discards the ENTIRE chapter list if any one chapter is
+# under 10 seconds. Matches visuals/captions.py's own YT_MIN_CHAPTER_S, which
+# is the actual source of truth once captions/<slug>.chapters.txt exists.
+YT_MIN_CHAPTER_S = 10.0
+
+
+def _parse_ts(ts: str) -> int:
+    parts = [int(p) for p in ts.split(":")]
+    while len(parts) < 3:
+        parts.insert(0, 0)
+    h, m, s = parts
+    return h * 3600 + m * 60 + s
+
+
+def _fmt_ts(secs: int) -> str:
+    h, rem = divmod(secs, 3600)
+    m, s = divmod(rem, 60)
+    return f"{h}:{m:02d}:{s:02d}" if h else f"{m}:{s:02d}"
+
+
+def _enforce_min_gap(rows: list[tuple[int, str]]) -> list[tuple[int, str]]:
+    """Drop any chapter whose gap to the NEXT one is under YT_MIN_CHAPTER_S.
+
+    Merging forward (dropping the short chapter rather than its neighbour)
+    keeps the first chapter at 0:00, which YouTube also requires, and keeps
+    every surviving label attached to real content rather than shifting a
+    later label's start time.
+    """
+    if not rows:
+        return rows
+    out = [rows[0]]
+    for secs, label in rows[1:]:
+        if secs - out[-1][0] < YT_MIN_CHAPTER_S:
+            continue          # too close to the previous chapter — drop it
+        out.append((secs, label))
+    # A dropped final chapter can leave the second-to-last one under the
+    # floor against nothing after it; that is fine — nothing follows it to
+    # collide with, so its own duration is however long the video runs.
+    return out
+
+
+def build_chapters(slug: str, script_text: str) -> list[str]:
+    """The chapter list actually sent to YouTube, timing-correct.
+
+    PREFERRED: `captions/<slug>.chapters.txt`, which visuals/captions.py
+    derives from the real caption timing (not the script's ESTIMATED
+    timestamps) and already enforces YT_MIN_CHAPTER_S. That is "the computed
+    file" — loop/upload.py used to regex `## Chapters` out of the script
+    instead and ignore it, which is how ep08 says 7:48 in the script for a
+    render that actually lands the chapter at 8:45, and how 11 of 20 scripts
+    ship a sub-10-second chapter that makes YouTube discard the WHOLE list.
+
+    FALLBACK, only when that file does not exist yet: the script's own
+    `## Chapters` section, with the same two defects corrected in place —
+    the "Title card" chapter is dropped (it exists to mark a beat in the
+    script, not something a viewer would ever seek to) and any chapter under
+    YT_MIN_CHAPTER_S from its neighbour is merged away rather than shipped.
+    This keeps upload correct even before a caption file has been generated
+    for a given episode.
+    """
+    computed = ROOT / "captions" / f"{slug}.chapters.txt"
+    rows: list[tuple[int, str]] = []
+    if computed.exists():
+        for line in computed.read_text(encoding="utf-8").splitlines():
+            line = line.strip()
+            if not line:
+                continue
+            mm = re.match(r"(\d{1,2}(?::\d{2}){1,2})\s+(.*)", line)
+            if mm:
+                rows.append((_parse_ts(mm.group(1)), mm.group(2).strip()))
+    else:
+        ch = re.search(r"## Chapters\s*\n(.*?)(\n## |\Z)", script_text, re.S)
+        if ch:
+            for line in ch.group(1).splitlines():
+                mm = re.match(r"\s*-\s*(\d{1,2}:\d{2}(?::\d{2})?)\s+(.*)", line)
+                if not mm:
+                    continue
+                label = mm.group(2).strip()
+                if label == "Title card":
+                    continue
+                rows.append((_parse_ts(mm.group(1)), label))
+        rows = _enforce_min_gap(rows)
+    if rows and rows[0][0] != 0:
+        rows[0] = (0, rows[0][1])          # YouTube requires the first at 0:00
+    return [f"{_fmt_ts(secs)} {label}" for secs, label in rows]
+
+
 def build_payload(item: dict) -> dict:
     """Compose the video's YouTube metadata from the script itself.
 
@@ -200,13 +287,7 @@ def build_payload(item: dict) -> dict:
     if m:
         answer = re.sub(r"\s+", " ", m.group(1)).strip()
 
-    chapters = []
-    ch = re.search(r"## Chapters\s*\n(.*?)(\n## |\Z)", text, re.S)
-    if ch:
-        for line in ch.group(1).splitlines():
-            mm = re.match(r"\s*-\s*(\d{1,2}:\d{2}(?::\d{2})?)\s+(.*)", line)
-            if mm:
-                chapters.append(f"{mm.group(1)} {mm.group(2).strip()}")
+    chapters = build_chapters(item.get("slug") or path.stem, text)
 
     sources = []
     sb = re.search(r"## Sources\s*\n(.*?)(\n## |\Z)", text, re.S)

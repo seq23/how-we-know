@@ -299,14 +299,31 @@ def check() -> list[str]:
                      "read-only there")
 
     # ------------------------------------------------ retention checkpoint
+    #
+    # 2026-09-03: retention_checkpoint() no longer divides by a configured
+    # runtime_minutes constant — that was the exact defect item 1 fixed (a
+    # real 39% reported as 30%, straight into the breaker, because the
+    # constant it was divided by was wrong). It now computes a percentage
+    # ONLY against each video's own measured duration, passed in as `pub`
+    # (ledger rows) and resolved through loop/durations.py. With no `pub`
+    # given at all — as below — no runtime can be resolved, and the checkpoint
+    # must say so explicitly rather than silently falling back to a constant;
+    # that fallback-refusal is itself the behaviour under test.
     examined += 1
     bad = [{"video_id": f"v{i}", "average_view_duration_s": 100} for i in range(4)]
     cp = measure.retention_checkpoint(bad, cfg)
     if cp["format_verdict"] != "FORMAT PROBLEM":
-        fails.append("viewers leaving at 1m40s of a 7.5 minute video was not "
-                     "reported as a format problem")
-    if cp["mean_pct_of_runtime"] > 30:
-        fails.append("the checkpoint miscomputed percentage of runtime")
+        fails.append("viewers leaving at 1m40s of a video was not reported as "
+                     "a format problem")
+    if cp["mean_view_duration_s"] != 100.0:
+        fails.append("the checkpoint miscomputed mean view duration")
+    if cp["mean_pct_of_actual_runtime"] is not None:
+        fails.append("a percentage was reported with no video runtime "
+                     "resolvable — that is exactly the 'divide by a constant' "
+                     "defect item 1 removed")
+    if "no percentage is reported" not in cp["pct_basis"].lower():
+        fails.append("the checkpoint did not explain WHY no percentage was "
+                     "reported")
 
     examined += 1
     good = [{"video_id": f"v{i}", "average_view_duration_s": 260} for i in range(4)]

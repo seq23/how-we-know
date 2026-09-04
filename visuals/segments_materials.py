@@ -133,144 +133,17 @@ def process_column(t, highlight=None):
 
 
 # ---------------------------------------------------------------------------
-# Planner graft. The materials directive pack lives WITH the materials
-# renderers, the way segments_ext2 keeps its own `install()` beside the
-# functions it parses for. Two scripts already emit `{{thermal}}` and
-# `{{stages}}`; before this existed neither directive was parsed by anything,
-# so both fell through to the heuristics and were drawn as plain typography —
-# the renderers above were unreachable from a script.
-#
-# Grafted only when the ACTIVE domain declares this device. A deep-sea script
-# that happened to write `{{thermal: 900}}` must not silently get a materials
-# card: the domain is what decides, not the presence of the word.
-# ---------------------------------------------------------------------------
-
-_installed = False
-
-
-def parse_directive_materials(kind, raw):
-    """`{{thermal: <celsius> | <label>}}` and `{{stages: <BAND>}}`."""
-    parts = [p.strip() for p in raw.split("|")] if raw else []
-    try:
-        if kind == "thermal":
-            if not parts or not parts[0]:
-                return ("thermal_ascent", {})
-            return ("thermal_ascent",
-                    {"to_temp": int(float(parts[0].replace(",", "").rstrip("Cc° "))),
-                     "label": parts[1] if len(parts) > 1 else None})
-        if kind == "stages":
-            return ("process_column",
-                    {"highlight": parts[0].upper() if parts and parts[0] else None})
-    except Exception:
-        return None            # malformed -> ignore, fall back to heuristics
-    return None
-
-
-def install(planner=None):
-    """Teach the planner `{{thermal}}` and `{{stages}}`. Idempotent."""
-    global _installed
-    if planner is None:
-        try:
-            import planner as planner                  # noqa: PLW0127
-        except ImportError:
-            return False
-    if getattr(planner, "_materials_installed", False):
-        _installed = True
-        return True
-
-    base = planner.parse_directive
-    rx = planner.DIRECTIVE
-
-    def parse_directive(line):
-        got = base(line)
-        if got is not None:
-            return got
-        m = rx.match(line.strip())
-        if not m:
-            return None
-        return parse_directive_materials(m.group(1).lower(), m.group(2))
-
-    parse_directive.__doc__ = base.__doc__
-    planner.parse_directive = parse_directive
-    planner._materials_installed = True
-
-    # ---- the heuristic signal set, replaced rather than extended --------
-    # planner.SIGNALS is deep sea's: it fires zone_column on "zone", and
-    # depth_descent on "deeper" or "down to". A script about a welding arc
-    # says "deeper into the weld pool" and got two depth_descent beats and
-    # four light_attenuation beats - the ocean's "light dies with depth"
-    # card - for a domain whose whole device is the physical inverse. So the
-    # ocean-only entries are REPLACED, not appended to: keeping them and
-    # merely ranking materials higher would still let them win a sentence
-    # that happened not to mention heat.
-    #
-    # Kept, because they are domain-agnostic already: stat_card, comparison,
-    # size_ladder, timeline. Dropped: light_attenuation, depth_descent,
-    # pressure_gauge (its args are a depth in metres), zone_column (this
-    # domain's counterpart is process_column), world_map (find_places is a
-    # hardcoded list of ocean trenches), anatomy_callout (species anatomy).
-    NUM = planner.NUM
-    planner.SIGNALS = [
-        ("thermal_ascent",  r"\bdegrees?\b|\bcelsius\b|\bkelvin\b|\bmelt|\bmolten\b"
-                            r"|\bforge|\banneal|\btemper(?:ing|ed)?\b|\bquench"
-                            r"|\bfurnace\b|\bkiln\b|\bplasma\b|\barc\b|\bheat(?:ed|ing)?\b"
-                            r"|\bincandescen|\bthermal\b|\bsinter"),
-        ("process_column",  r"\bstage\b|\bstages\b|\bstep\b|\bprocess\b|\bproduction line\b"
-                            r"|\bmanufactur|\bfabricat|\bthe sequence\b"),
-        ("size_ladder",     r"\bstrength\b|\bstrong(?:er|est)?\b|\bmodulus\b|\bstiff"
-                            r"|\bgigapascal|\bmegapascal|\btensile\b|\bhardness\b"),
-        ("comparison",      r"\bcompared? (?:to|with)\b|\bversus\b|\bstronger than\b"
-                            r"|\bhotter than\b|\btimes (?:the|as)\b"),
-        ("timeline",        r"\b(?:1[5-9]\d\d|20[0-2]\d)\b.*\b(?:1[5-9]\d\d|20[0-2]\d)\b"
-                            r"|\bhistory\b|\bfirst (?:produced|made|synthesi)"),
-        ("stat_card",       rf"\b{NUM}\s*(?:degrees?|percent|%|times|gigapascals?|megapascals?"
-                            rf"|GPa|MPa|nanometres?|nanometers?|microns?|micrometres?)"),
-    ]
-    planner.COLD_OPEN_SEGMENT = "thermal_ascent"
-
-    # ---- args for the two device renderers, when chosen heuristically ---
-    # planner.build_args is defined TWICE in that module (the second shadows
-    # the first); wrapping whichever one is live avoids editing either copy.
-    _base_args = planner.build_args
-
-    def build_args(seg, beat):
-        t = beat["text"]
-        if seg == "thermal_ascent":
-            import re as _re
-            m = _re.search(r"([\d][\d,]*(?:\.\d+)?)\s*degrees?", t, _re.I)
-            if not m:
-                return None                 # no cited figure -> no thermal card
-            return {"to_temp": int(float(m.group(1).replace(",", ""))),
-                    "label": None}
-        if seg == "process_column":
-            return {"highlight": None}
-        return _base_args(seg, beat)
-
-    planner.build_args = build_args
-
-    # thermal_ascent and process_column CARRY CONTENT — a temperature with a
-    # cited figure, a named process stage. They are informational, exactly as
-    # depth_descent and zone_column are for deep sea, so the filler pass must
-    # never displace them (visuals/plan_species.py's rule, same reason).
-    for attr in ("INFO", "INFORMATIONAL"):
-        cur = getattr(planner, attr, None)
-        if isinstance(cur, set):
-            cur |= {"thermal_ascent", "process_column"}
-    _installed = True
-    return True
-
-
-# ---------------------------------------------------------------------------
 # Verified public-domain photographs, micrographs and diagrams.
 #
-# The DRAWING is segments_species.draw_image_beat — one implementation, shared,
-# because the credit line and the medium stamp are the part that may not drift
-# between domains. What is materials-specific is only the index it resolves
-# against: research/imagery_materials.py's channel/imagery/materials.json,
-# whose licence gate is imagery.pd_licence_ok (imported, not reimplemented) and
-# whose copyright-assertion screen is deliberately NOT imagery.THIRD_PARTY —
-# that list rejects "nasa", "usgs" and "university", which for this domain are
-# the reason a work is free rather than evidence that it is not.
+# The DRAWING is segments_species.draw_image_beat — one implementation, shared
+# between the domains, because the credit line and the medium stamp are the
+# part that may not drift. What is materials-specific is only the index it
+# resolves against: research/imagery_materials.py's
+# channel/imagery/materials.json, whose licence gate is imagery.pd_licence_ok
+# (imported, not reimplemented) and whose copyright-assertion screen is
+# deliberately NOT imagery.THIRD_PARTY — that list rejects "nasa", "usgs" and
+# "university", which for this domain are the reason a work is free rather
+# than evidence that it is not.
 # ---------------------------------------------------------------------------
 
 import json as _json

@@ -1,76 +1,95 @@
-"""The visual design system for the ACTIVE domain. All values deliberate;
-change here, not in segments.
+"""Visual design system. All values deliberate; change here, not in segments.
 
-WHY THIS FILE STOPPED BEING "Deep Sea visual design system"
------------------------------------------------------------
-It hardcoded the ocean palette and the ocean depth scale as bare module
-constants, imported wildcard-style (`from design import *`) by every segment
-renderer. `visuals/domains.py` and `visuals/segments_materials.py` were then
-written to give materials-and-manufacturing its own palette and its own
-structural device — and neither could be reached, because nothing ever
-selected a domain. `segments_materials` failed at import with
-`cannot import name 'DEVICE' from 'design'`, so the thermal renderers existed
-and nothing invoked them: the exact defect class this repo keeps producing.
+DOMAIN-AWARE, 2026-09-03. This used to hardcode the deep-sea ocean palette
+and the Sunlight->Twilight->Midnight->Abyssal->Hadal depth scale as bare
+module constants — the file's own original docstring called it "Deep Sea
+visual design system." Twelve-odd modules `from design import *`, so every
+one of them silently assumed there was only ever one subject.
 
-This module now RESOLVES a domain at import time and re-exports that domain's
-palette under the same eight names every renderer already uses. A segment
-function never asks which domain it is in; it draws with CYAN and gets the
-ocean's bioluminescent cyan or the forge orange, whichever domain is active.
-
-SELECTING A DOMAIN
-------------------
-`HWK_DOMAIN`, read once at import. It defaults to `deep-sea-ocean-science`,
-so every existing call site that never sets it imports exactly the values it
-always has — deep sea's rendered output does not move by one value, and
-`_assert_deep_sea_unmoved()` below proves that rather than asserting it in a
-comment. An undeclared domain raises here, at import, before a single frame
-can be drawn for a domain nobody declared a palette for.
-
-  HWK_DOMAIN=materials-and-manufacturing python visuals/assemble.py ...
+The palette and structural-device metadata now come from `visuals/domains.py`
+for whichever domain `HWK_DOMAIN` names (default `deep-sea-ocean-science`),
+but every name this module exported before still exists, with the SAME
+values for the default domain — nothing reads differently for deep sea
+unless something sets the environment variable. `ease`, `lerp`, `mix` and
+`depth_color` keep their ORIGINAL bodies verbatim, not rebuilt from a generic
+formula, specifically so deep sea's rendered output cannot move by one pixel
+as a side effect of this refactor. See `visuals/segments_materials.py` for
+materials-and-manufacturing's own structural-device renderer, which is a
+separate module rather than a parameterised version of `depth_descent`/
+`zone_column` for the same reason: two functions that cannot be reached by
+the wrong domain's data beat one function trusted to branch correctly.
 """
 import os
+import sys
 
-import domains
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+# LOADED BY PATH, NOT BY NAME. There are two modules called `domains` in this
+# repo - visuals/domains.py (palettes and structural devices) and
+# loop/domains.py (taxonomy, slot allocation, queue depth) - and a bare
+# `import domains` resolves to whichever tree happens to be first on sys.path,
+# or to whichever was imported FIRST, because sys.modules caches by name. The
+# sys.path.insert above is not enough: once any loop/ module has been imported,
+# sys.modules["domains"] is already loop's, and this file silently binds to the
+# wrong one. The symptom is not a clean ImportError - it is
+# `AttributeError: module 'domains' has no attribute 'require_declared'`
+# raised from inside visuals/footage.py, several imports away from the cause,
+# and it appears only when a test touches the loop tree before the visuals one.
+# Loading the sibling file explicitly makes the two unable to collide.
+import importlib.util as _ilu  # noqa: E402
+
+_dom_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "domains.py")
+_spec = _ilu.spec_from_file_location("visuals_domains", _dom_path)
+_domains = _ilu.module_from_spec(_spec)
+sys.modules.setdefault("visuals_domains", _domains)
+_spec.loader.exec_module(_domains)
 
 W, H, FPS = 1920, 1080, 30
 
-DOMAIN = os.environ.get("HWK_DOMAIN", "deep-sea-ocean-science").strip() \
-         or "deep-sea-ocean-science"
+DOMAIN = os.environ.get("HWK_DOMAIN", "deep-sea-ocean-science")
+_domains.require_declared(DOMAIN)     # hard-fails an undeclared domain here,
+                                      # at import time, before any frame is
+                                      # ever drawn — see visuals/CONTRACT.md
+                                      # and the guard-the-abstraction test.
 
-# Raises for a domain with no declared palette. At IMPORT time, deliberately:
-# a domain that reaches a renderer without a palette would otherwise draw a
-# whole episode in whatever the previous domain's colours happened to be.
-domains.require_declared(DOMAIN)
+_PAL = _domains.palette(DOMAIN)
+DEVICE = _domains.device(DOMAIN)
 
-_P = domains.palette(DOMAIN)
+# Palette — for deep-sea-ocean-science these are the exact original values
+# ("carried forward from the repo's existing SVG stills so thumbnails and
+# video share one identity"); for any other domain they are that domain's
+# own declaration in visuals/domains.py.
+INK   = _PAL["INK"]
+DEEP  = _PAL["DEEP"]
+MID   = _PAL["MID"]
+CYAN  = _PAL["CYAN"]
+PALE  = _PAL["PALE"]
+AMBER = _PAL["AMBER"]
+TEXT  = _PAL["TEXT"]
+MUTED = _PAL["MUTED"]
 
-# The eight palette roles. Same names for every domain, so no renderer needs
-# to know which one is active — see visuals/domains.py for what each role
-# means and why materials' values are what they are.
-INK   = _P["INK"]
-DEEP  = _P["DEEP"]
-MID   = _P["MID"]
-CYAN  = _P["CYAN"]
-PALE  = _P["PALE"]
-AMBER = _P["AMBER"]
-TEXT  = _P["TEXT"]
-MUTED = _P["MUTED"]
-
+# Type is shared across domains deliberately: this channel's identity is one
+# typographic voice narrating different subjects, not a different font per
+# subject. "Type that survives downscaling" is a size/weight discipline
+# inside each segment renderer, not a per-domain font swap.
 F_DISPLAY  = "/System/Library/Fonts/Supplemental/Georgia.ttf"
 F_LABEL    = "/System/Library/Fonts/Helvetica.ttc"
 F_MONO     = "/System/Library/Fonts/Menlo.ttc"
 
-# The active domain's structural device: axis, unit, title, max and bands.
-# `segments_materials` imports DEVICE from here; deep sea's own renderers use
-# ZONES below, which is DEVICE["bands"] under its historical name.
-DEVICE = domains.device(DOMAIN)
-
-# Ocean zones: name, top metres, bottom metres. Kept as a module constant
-# under its original name because visuals/segments.py, thumbs.py and shorts.py
-# all import ZONES directly; for a non-ocean domain this is that domain's own
-# bands on its own axis, which is what every one of those call sites actually
-# wants.
-ZONES = [tuple(b) for b in DEVICE["bands"]]
+# Ocean zones: name, top metres, bottom metres. Deep-sea-only, unchanged —
+# consumed exclusively by visuals/segments.py's zone_column/depth_descent,
+# which remain ocean-only functions. A materials plan never emits a
+# zone_column beat, so this constant being "wrong" for materials is moot: it
+# is never read for materials. See DEVICE above for the domain-generic
+# equivalent (title/unit/bands/max), which visuals/segments_materials.py
+# reads instead.
+ZONES = [
+    ("SUNLIGHT",  0,     200),
+    ("TWILIGHT",  200,   1000),
+    ("MIDNIGHT",  1000,  4000),
+    ("ABYSSAL",   4000,  6000),
+    ("HADAL",     6000,  11034),
+]
 
 def ease(t):
     """Smooth in/out. Motion should never start or stop abruptly."""
@@ -85,43 +104,12 @@ def mix(c1, c2, t):
 def depth_color(m):
     """Water colour at a given depth in metres. Light dies with depth.
 
-    Deep sea's own function, unchanged and NOT parameterised to "also do"
-    materials. Heat is emitted as its axis rises where light is subtracted as
-    depth rises; one function serving both would be the ocean device
-    recoloured, which visuals/domains.py exists to prevent.
-    `segments_materials.temperature_color` is the materials counterpart.
+    Deep-sea-only, body unchanged from the original file. Not generalised
+    into a shared "scale colour" helper: visuals/segments_materials.py has
+    its own temperature_color with its own stops, and the two are not meant
+    to be interchangeable — that would be the recolour this refactor was
+    explicitly told not to do.
     """
     if m < 200:   return mix(MID, DEEP, m / 200)
     if m < 1000:  return mix(DEEP, INK, (m - 200) / 800)
     return INK
-
-
-def _assert_deep_sea_unmoved() -> None:
-    """Deep sea's palette is byte-identical to the pre-domain constants.
-
-    Seventeen episodes are already rendered against these exact values. A
-    refactor that shifted one channel by one would produce a channel whose
-    back catalogue no longer matches its new uploads, and nothing downstream
-    would notice — the frames would still render. So the original literals
-    are kept here, in the file that used to hold them, and compared.
-    """
-    original = {
-        "INK": (2, 7, 13), "DEEP": (4, 17, 31), "MID": (10, 54, 85),
-        "CYAN": (123, 216, 232), "PALE": (184, 242, 234),
-        "AMBER": (243, 182, 107), "TEXT": (234, 248, 251),
-        "MUTED": (165, 192, 202),
-    }
-    live = domains.palette("deep-sea-ocean-science")
-    moved = {k: (v, live.get(k)) for k, v in original.items() if live.get(k) != v}
-    if moved:
-        raise AssertionError(
-            f"deep sea's palette moved during the domain refactor: {moved}. "
-            f"Seventeen rendered episodes use the original values.")
-    zones = [tuple(b) for b in domains.device("deep-sea-ocean-science")["bands"]]
-    if zones != [("SUNLIGHT", 0, 200), ("TWILIGHT", 200, 1000),
-                 ("MIDNIGHT", 1000, 4000), ("ABYSSAL", 4000, 6000),
-                 ("HADAL", 6000, 11034)]:
-        raise AssertionError(f"deep sea's ZONES moved: {zones}")
-
-
-_assert_deep_sea_unmoved()

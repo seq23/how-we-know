@@ -1,0 +1,20 @@
+{
+  "lanes": {
+    "reach": {
+      "detail": "workflow_dispatch run 33784690518: uploaded caption track(s) (5550 quota units) and wrote localization(s) (51 quota units) for real, both in the same run (loop/state/quota.json, commit 2ec37df). An earlier dispatch the same day (run 33783829147) failed on the captions half only, with the correct named stop CAPTIONS_SCOPE_MISSING -- the credential lacked youtube.force-ssl at that moment; the owner re-consented and this run is the real, both-halves-succeeded proof. Seeded here on merge because this run predates loop/arming.py existing on main.",
+      "proven_at": "2026-09-03T17:29:09+00:00",
+      "proves": "uploaded one caption track and one set of localizations"
+    },
+    "shorts-cloud": {
+      "detail": "published 1 Short(s): ['05-why-many-deep-sea-creatures-are-red']",
+      "proven_at": "2026-09-04T16:13:13+00:00",
+      "proves": "published at least one real Short from R2"
+    },
+    "upload-cloud": {
+      "detail": "workflow_dispatch run 33783826056: pulled 02-how-deep-sea-creatures-survive-pressure from R2 and uploaded it as _fQ3-YI63oQ, private, publishAt 2026-10-25T15:00:00Z (loop/state/ledger.json, commit 85b61e3). Seeded here on merge, not recorded live by loop/arming.py, because this run predates loop/arming.py existing on main -- see the merge commit that added this file for why.",
+      "proven_at": "2026-09-03T17:19:58+00:00",
+      "proves": "uploaded and scheduled at least one real episode from R2"
+    }
+  },
+  "updated": "2026-09-04T16:13:13+00:00"
+}

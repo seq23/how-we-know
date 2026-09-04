@@ -41,6 +41,10 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "loop"))
 
 import advise  # noqa: E402
+import domains  # noqa: E402
+import durations  # noqa: E402
+import ledger  # noqa: E402
+import ypp  # noqa: E402
 from common import Stage, config, read_json, write_json  # noqa: E402
 
 MEASURE = ROOT / "loop/state/measurement.json"
@@ -71,6 +75,12 @@ CHANGE_BOUNDS = {
     "retention.runtime_minutes": {"min": 10.0, "max": 12.0,
                                   "shorten": -0.5, "lengthen": 0.5},
 }
+
+# The allocation of weekly slots between domains is bounded too, but not by a
+# numeric fence - by loop/domains.py: at most one slot a month, never below the
+# minimum sample, never to zero. It is listed here so nobody adds a second,
+# unbounded path to the same decision.
+DOMAIN_CHANGE_KEY = "domains.allocation"
 COOLDOWN_MONTHS = 1
 
 
@@ -155,26 +165,77 @@ def apply_absolute(key: str, current: float, target: float, mid: str,
     return out
 
 
+def per_domain(rows: list[dict], cfg: dict) -> dict:
+    """Retention, AVD and views for EVERY domain that has an allocation.
+
+    Every allocated domain appears, including one with no data, because a
+    report that silently omits a domain is how a domain stops being reviewed.
+    """
+    pub = ledger.load()["published"]
+    split = domains.split_rows(rows, pub)
+    out = {}
+    for name in domains.allocation(cfg):
+        out[name] = domains.evidence(split.get(name, []), cfg)
+    for name, group in split.items():
+        if name not in out:
+            out[name] = domains.evidence(group, cfg)
+    return out
+
+
+def apply_allocation(cfg: dict, decision: dict, mid: str) -> dict:
+    """Write a reallocation through the same cooldown fence as every other knob."""
+    if not decision.get("applied"):
+        return {"key": DOMAIN_CHANGE_KEY, "applied": False,
+                "from": decision.get("allocation"),
+                "to": decision.get("allocation"),
+                "why": decision.get("why", ""),
+                "blocked_by": decision.get("stop") or decision.get("why", "")}
+    if changed_recently(DOMAIN_CHANGE_KEY, mid):
+        return {"key": DOMAIN_CHANGE_KEY, "applied": False,
+                "from": decision["from"], "to": decision["from"],
+                "why": decision["why"],
+                "blocked_by": "cooldown: the allocation moved last month, and "
+                              "the effect cannot be measured yet"}
+    live = json.loads(CONFIG.read_text())
+    live["domains"]["allocation"] = decision["allocation"]
+    CONFIG.write_text(json.dumps(live, indent=2) + "\n")
+    return {"key": DOMAIN_CHANGE_KEY, "applied": True,
+            "from": decision["from"], "to": decision["allocation"],
+            "why": decision["why"]}
+
+
 def review(rows: list[dict], cfg: dict, mid: str) -> dict:
     runtime_min = float(cfg["retention"].get("runtime_minutes", 10.5))
-    floor_pct = float(cfg["retention"].get("floor_pct", 35))
+    floor_avd = float(cfg["retention"]["floor_avd_seconds"])
     early_min = float(cfg["retention"].get("early_exit_minutes", 2.0))
 
     measured = [r for r in rows if r.get("average_view_duration_s")]
     views = sum(r.get("views") or 0 for r in rows)
+
+    # Per-domain evidence is computed EVERY month, including a thin one. A
+    # report that omits the breakdown when data is thin is a report that never
+    # shows it, because thin is the normal condition of a young channel.
+    domains_ev = per_domain(rows, cfg)
+    alloc_decision = domains.reallocate(cfg, domains_ev)
+    gates = ypp.progress(cfg)
 
     if len(measured) < MIN_VIDEOS or views < MIN_VIEWS:
         # NOT a stop. A young channel is thin by definition, and halting here
         # would halt for months.
         return {"sufficient": False, "videos_measured": len(measured),
                 "views": views, "findings": [], "changes": [],
+                "domains": domains_ev, "allocation": alloc_decision,
+                "live_slots": domains.live_slots(cfg), "ypp": gates,
                 "note": (f"{len(measured)} measured video(s), {views} view(s) - below "
                          f"{MIN_VIDEOS}/{MIN_VIEWS}. No change made this month. "
                          f"Publishing continues; this is a young channel, not a fault.")}
 
     avd = sum(r["average_view_duration_s"] for r in measured) / len(measured)
     avp = sum((r.get("average_view_percentage") or 0) for r in measured) / len(measured)
-    below = [r for r in measured if (r.get("average_view_percentage") or 0) < floor_pct]
+    # Below the DURATION floor. A percentage floor across a catalogue holding
+    # both ~8 minute and >=10 minute episodes compares two different things.
+    below = [r for r in measured
+             if float(r["average_view_duration_s"]) < floor_avd]
     early = [r for r in measured if r["average_view_duration_s"] < early_min * 60]
 
     findings, changes = [], []
@@ -184,10 +245,30 @@ def review(rows: list[dict], cfg: dict, mid: str) -> dict:
     # not dislike the ending; they never reached it.
     if len(early) >= max(2, len(measured) // 2):
         ev = (f"{len(early)} of {len(measured)} videos hold viewers under "
-              f"{early_min:.0f} min against a {runtime_min:.1f} min runtime; "
-              f"month average {avd/60:.1f} min ({avp:.0f}%).")
-        findings.append({"id": "FORMAT_TOO_LONG", "severity": "high", "evidence": ev})
-        changes.append(apply_change("retention.runtime_minutes", runtime_min, mid, ev))
+              f"{early_min:.0f} min; month average {avd/60:.1f} min "
+              f"({avp:.0f}% as YouTube reports it).")
+        # Format, or one bad niche? With two domains live this is no longer the
+        # same question, and answering it wrongly shortens every episode on the
+        # channel because one niche had a bad month.
+        judgeable = {d: e for d, e in domains_ev.items() if e.get("judgeable")}
+        failing = {d: e for d, e in judgeable.items()
+                   if e["avd_s"] is not None and e["avd_s"] < floor_avd}
+        if len(judgeable) > 1 and 0 < len(failing) < len(judgeable):
+            bad = sorted(failing)[0]
+            findings.append({
+                "id": "DOMAIN_NOT_WORKING", "severity": "high",
+                "evidence": (f"{ev} But {bad} is the only judgeable domain below "
+                             f"the {floor_avd:.0f}s floor; "
+                             f"{', '.join(sorted(set(judgeable) - set(failing)))} "
+                             f"is holding."),
+                "no_change": ("The niche is wrong, not the format. Runtime is "
+                              "NOT shortened; the allocation decision below is "
+                              "the correct lever.")})
+        else:
+            findings.append({"id": "FORMAT_TOO_LONG", "severity": "high",
+                             "evidence": ev})
+            changes.append(apply_change("retention.runtime_minutes", runtime_min,
+                                        mid, ev))
     elif avp >= 50 and not early:
         # Lengthen. Watch HOURS are the YPP constraint, not views: 4,000 hours
         # arrives sooner from longer videos that hold than short ones that do
@@ -203,15 +284,17 @@ def review(rows: list[dict], cfg: dict, mid: str) -> dict:
     elif below and len(below) >= len(measured) // 2:
         findings.append({
             "id": "RETENTION_BELOW_FLOOR", "severity": "medium",
-            "evidence": (f"{len(below)} of {len(measured)} under the {floor_pct:.0f}% "
-                         f"floor; month average {avp:.0f}%."),
+            "evidence": (f"{len(below)} of {len(measured)} under the "
+                         f"{floor_avd:.0f}s average-view-duration floor; month "
+                         f"average {avd:.0f}s."),
             "no_change": ("One month below floor is a signal, two is a pattern. "
                           "Changing the format on one month would be acting on noise.")})
     else:
         findings.append({
             "id": "RETENTION_OK", "severity": "info",
-            "evidence": (f"month average {avp:.0f}%, {avd/60:.1f} min of "
-                         f"{runtime_min:.1f}; {len(below)}/{len(measured)} below floor."),
+            "evidence": (f"month average {avd:.0f}s view duration "
+                         f"({avd/60:.1f} min); {len(below)}/{len(measured)} "
+                         f"below the {floor_avd:.0f}s floor."),
             "no_change": "Nothing indicated."})
 
     ranked = sorted(measured, key=lambda r: r.get("views") or 0, reverse=True)
@@ -225,16 +308,71 @@ def review(rows: list[dict], cfg: dict, mid: str) -> dict:
 
     return {"sufficient": True, "videos_measured": len(measured), "views": views,
             "avg_view_duration_s": round(avd, 1), "avg_view_percentage": round(avp, 1),
+            "floor_avd_seconds": floor_avd,
+            "domains": domains_ev, "allocation": alloc_decision,
+            "live_slots": domains.live_slots(cfg),
+            "exhausted_domains": domains.exhausted(cfg),
+            "next_domain": domains.next_unused(list(domains.allocation(cfg))),
+            "ypp": gates,
             "findings": findings, "changes": changes}
+
+
+def _domain_section(r: dict) -> list[str]:
+    """Per-domain retention, ALWAYS. A channel-wide number with two domains
+    running is an average of two different things."""
+    ev = r.get("domains") or {}
+    if not ev:
+        return ["## Domains", "",
+                "_No domain breakdown was computed — that is a defect, not a "
+                "quiet month. Every review reports per domain._", ""]
+    live = r.get("live_slots") or {}
+    out = ["## By domain", "",
+           "| domain | slots this week | measured | avg view duration | "
+           "judgeable |", "|---|---|---|---|---|"]
+    for name in sorted(ev):
+        e = ev[name]
+        avd = f"{e['avd_s']:.0f}s" if e.get("avd_s") is not None else "—"
+        out.append(f"| {name} | {live.get(name, 0)} | {e['measured']} | {avd} | "
+                   f"{'yes' if e.get('judgeable') else 'no'} |")
+    out.append("")
+    for name in sorted(ev):
+        if ev[name].get("why"):
+            out.append(f"- **{name}.** {ev[name]['why']}")
+    out.append("")
+
+    a = r.get("allocation") or {}
+    if a.get("applied"):
+        out += [f"### CHANGED the weekly allocation", "",
+                f"`{a['from']}` → `{a['allocation']}`", "",
+                f"**Decided by** the rules. {a['why']}", ""]
+    else:
+        stop = a.get("stop")
+        out += [f"### Allocation held at `{a.get('allocation')}`", "",
+                (f"**NAMED STOP {stop}.** " if stop else "") + a.get("why", ""), ""]
+    ex = r.get("exhausted_domains")
+    if ex:
+        out += [f"### Domain queue exhausted: {', '.join(ex)}", "",
+                f"Their scored topic queue has decayed below the threshold "
+                f"`research/publish_order.json` gates on. The next-ranked "
+                f"domain in the taxonomy is **{r.get('next_domain')}**.", ""]
+    return out
 
 
 def to_prose(mid: str, r: dict) -> str:
     out = [f"# Monthly review — {mid}", ""]
     if not r["sufficient"]:
         out += [r["note"], "", "Nothing was changed. Nothing was stopped.", ""]
+        out += _domain_section(r)
+        out += ypp.prose(r["ypp"]) if r.get("ypp") else []
         return "\n".join(out)
-    out += [f"{r['videos_measured']} videos, {r['views']} views, average retention "
-            f"{r['avg_view_percentage']}% ({r['avg_view_duration_s']/60:.1f} min).", ""]
+    out += [f"{r['videos_measured']} videos, {r['views']} views, "
+            f"**{r['avg_view_duration_s']:.0f}s average view duration** "
+            f"({r['avg_view_duration_s']/60:.1f} min) against a "
+            f"{r.get('floor_avd_seconds', 0):.0f}s floor. YouTube reports "
+            f"{r['avg_view_percentage']}% average view percentage; that figure "
+            f"is not comparable across a catalogue holding both ~8 minute and "
+            f">=10 minute episodes, which is why the floor is a duration.", ""]
+    out += _domain_section(r)
     for c in r.get("changes", []):
         if c["applied"]:
             who = "the model" if c.get("source") == "model" else "the rules"
@@ -253,6 +391,8 @@ def to_prose(mid: str, r: dict) -> str:
                 f"**Evidence.** {f['evidence']}", ""]
         if f.get("no_change"):
             out += [f"**No change.** {f['no_change']}", ""]
+    if r.get("ypp"):
+        out += ypp.prose(r["ypp"])
     out += _advice_section(r)
     return "\n".join(out)
 
@@ -296,6 +436,29 @@ def main() -> int:
         st.note(f"{len(rows)} measurement row(s) in {mid}")
         r = review(rows, cfg, mid)
         r["month"] = mid
+
+        # The allocation goes through the same decision log, cooldown and
+        # report as runtime. It is a change to loop/config.json like any other.
+        alloc_change = apply_allocation(cfg, r.get("allocation") or {}, mid)
+        r.setdefault("changes", []).append(alloc_change)
+        if alloc_change["applied"]:
+            st.work(f"CHANGED the weekly domain allocation: "
+                    f"{alloc_change['from']} -> {alloc_change['to']}")
+        else:
+            st.work(f"domain allocation held: "
+                    f"{alloc_change.get('blocked_by', '')[:120]}")
+        stop = (r.get("allocation") or {}).get("stop")
+        if stop:
+            st.note(f"{stop}: the allocation is held, not averaged")
+
+        g = r.get("ypp") or {}
+        if g.get("gates"):
+            near = g["gates"][0]
+            st.work(f"monetisation: nearest gate is {near['name']} — "
+                    f"{g['long_form_watch_hours']}h of "
+                    f"{near['long_form_hours_required_now']}h long-form, "
+                    f"{g['deadline']['days_remaining']} days to "
+                    f"{g['deadline']['date']}")
 
         # The model reads the same month and may overrule the rules - the owner's
         # instruction is to follow its advice by default. It goes through the SAME

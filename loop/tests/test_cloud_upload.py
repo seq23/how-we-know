@@ -67,7 +67,7 @@ LOOP = Path(%(loop)r); ROOT = LOOP.parent
 sys.path.insert(0, str(LOOP))
 TMP = Path(os.environ["TEST_TMP"])
 
-import ledger, quota, r2, upload as up, publish as P, backfill, common
+import ledger, quota, r2, upload as up, publish as P, backfill, common, arming
 
 # ---- redirect every piece of persistent state into the sandbox -------------
 (TMP / "state" / "stops").mkdir(parents=True, exist_ok=True)
@@ -77,6 +77,10 @@ ledger.LEDGER.write_text(json.dumps({"published": [], "queued": [],
 quota.STATE = TMP / "state" / "quota.json"
 backfill.LOOP = TMP
 common.STOPS = TMP / "state" / "stops"
+# loop/arming.py's own EVIDENCE file, or a "good run" scenario here would
+# write PROOF of a real upload into the actual repo state — exactly the kind
+# of test writing to production this file's own docstring warns about.
+arming.EVIDENCE = TMP / "state" / "lane_evidence.json"
 
 # ---- every irreversible YouTube call, replaced by a recorder ---------------
 CALLS = []
@@ -107,6 +111,12 @@ def run(body: str, env_extra: dict, tmp: Path) -> subprocess.CompletedProcess:
     env.pop("LOOP_DRY_RUN", None)
     env["TEST_TMP"] = str(tmp)
     env["LOOP_NO_DOTENV"] = "1"
+    # loop/arming.py gates a SCHEDULED run of an unarmed lane behind a named
+    # stop. This harness is testing the lane's own upload/quota/ledger logic,
+    # which is exactly what a workflow_dispatch run (the one that proves a
+    # lane and arms it) is for — so every scenario here simulates one, the
+    # same as a human running `gh workflow run ... ` once by hand.
+    env["GITHUB_EVENT_NAME"] = "workflow_dispatch"
     env.update(env_extra)
     with tempfile.NamedTemporaryFile("w", suffix=".py", delete=False,
                                      dir=tmp) as fh:
@@ -464,7 +474,7 @@ LOOP = Path(%(loop)r); ROOT = LOOP.parent
 sys.path.insert(0, str(LOOP))
 TMP = Path(os.environ["TEST_TMP"])
 
-import quota, r2, upload as up, publish as P, shorts_lane as SL, common
+import quota, r2, upload as up, publish as P, shorts_lane as SL, common, arming
 
 (TMP / "state" / "stops").mkdir(parents=True, exist_ok=True)
 SL.LEDGER = TMP / "state" / "shorts_ledger.json"
@@ -474,6 +484,8 @@ SL.LEDGER = TMP / "state" / "shorts_ledger.json"
 SL.LEDGER.write_text(json.dumps({"published": [], "updated": None}))
 quota.STATE = TMP / "state" / "quota.json"
 common.STOPS = TMP / "state" / "stops"
+# See the matching comment in the episode HARNESS above.
+arming.EVIDENCE = TMP / "state" / "lane_evidence.json"
 
 CALLS = []
 up.load_credentials = lambda cfg: {"access_token": "fake", "source": "test"}
@@ -496,6 +508,10 @@ def shorts_run(body: str, env_extra: dict, tmp: Path):
     env.pop("LOOP_DRY_RUN", None)
     env["TEST_TMP"] = str(tmp)
     env["LOOP_NO_DOTENV"] = "1"
+    # See the matching comment in run() above — this harness exercises the
+    # lane's own logic, which needs a simulated workflow_dispatch to get past
+    # loop/arming.py's gate on an unarmed lane.
+    env["GITHUB_EVENT_NAME"] = "workflow_dispatch"
     env.update(env_extra)
     with tempfile.NamedTemporaryFile("w", suffix=".py", delete=False,
                                      dir=tmp) as fh:

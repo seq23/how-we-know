@@ -96,6 +96,7 @@ import author                                     # noqa: E402
 import quota                                      # noqa: E402
 import upload as up                               # noqa: E402
 import ytmeta                                     # noqa: E402
+import arming  # noqa: E402
 from common import (STATE, Stage, config, now, read_json,  # noqa: E402
                     week_id, write_json)
 
@@ -134,8 +135,16 @@ CHAPTER = re.compile(r"^(\s*\d{1,2}:\d{2}(?::\d{2})?\s+)(.+)$")
 # ------------------------------------------------------------------- state
 
 def load_state() -> dict:
-    d = read_json(STATE_FILE, default={"videos": {}, "updated": None})
+    d = read_json(STATE_FILE, default={"videos": {}, "blocked": {},
+                                       "updated": None})
     d.setdefault("videos", {})
+    # SYMMETRY WITH loop/captions_lane.py. Until 2026-09-03 this lane recorded
+    # WHICH videos it had localized and never WHY the rest were still bare, so
+    # V17 could not tell "deferred for quota, the daily lane will take it"
+    # apart from "published with nothing and no reason given" and hard-failed
+    # both. Eleven correctly-deferred videos read as a failure every morning.
+    # `blocked` is that missing half.
+    d.setdefault("blocked", {})
     return d
 
 
@@ -334,6 +343,10 @@ def run(limit: int = 15, dry_run: bool = False,
                zero_work_hint="Every live video already carries all five "
                               "localizations and its defaultLanguage, so "
                               "there was nothing to translate or write.") as st:
+        # The schedule fires every day; this decides whether a
+        # SCHEDULED run may act. Unarmed, it says so where a human
+        # sees it instead of the lane being silently absent.
+        arming.gate(st, 'reach')
         live = ytmeta.live_videos()
         if not live:
             st.named_stop("NOTHING_PUBLISHED",
@@ -395,20 +408,49 @@ def run(limit: int = 15, dry_run: bool = False,
         afford = quota.units_affordable(quota.PER_LOCALIZE,
                                         min(limit, len(pending)),
                                         reserve=reserve)
+        # RECORD EVERY DEFERRAL, INCLUDING WHEN afford IS ZERO, AND DO IT
+        # BEFORE THE QUOTA_EXHAUSTED STOP BELOW.
+        #
+        # This ordering is the whole fix. loop/captions_lane.py learned it and
+        # says so in its own comment; this lane never did, and raised its stop
+        # FIRST -- so on the day the allowance was entirely gone, which is
+        # exactly the day every remaining video is deferred, `st.named_stop`
+        # unwound the stack and not one deferral was ever written down. V17
+        # then read a video with no localizations and no recorded reason and
+        # reported it as a genuine content gap, because from the state file
+        # that is precisely what it looked like.
+        #
+        # The excuse is BOUNDED, same as V16's: `since` records the FIRST
+        # deferral and is never refreshed, so a lane that has actually stalled
+        # goes red on its own after DEFER_GRACE_DAYS without anyone
+        # remembering to check. A deferral is a receipt, not an amnesty.
+        for row in pending[afford:]:
+            prior = state["blocked"].get(row["video_id"]) or {}
+            state["blocked"][row["video_id"]] = {
+                "slug": row["slug"], "reason": "QUOTA_DEFERRED",
+                "since": (prior.get("since")
+                          if prior.get("reason") == "QUOTA_DEFERRED"
+                          else now()),          # first deferral wins
+                "missing": sorted(row.get("missing") or langs)}
+        if pending[afford:]:
+            save(STATE_FILE, state)
+
         if afford == 0:
             st.named_stop(
                 "QUOTA_EXHAUSTED",
                 f"{len(pending)} video(s) need localizing but today's "
                 f"allowance cannot fund one at {quota.PER_LOCALIZE} units "
                 f"while keeping {quota.PER_VIDEO} back for the upload lane. "
-                f"{quota.report()}",
+                f"They are recorded as QUOTA_DEFERRED and tomorrow's run "
+                f"takes them. {quota.report()}",
                 detail={"deferred": len(pending),
                         "resets_at": quota.next_reset()},
                 unblock="Nothing to do; the allowance resets at midnight "
                         "Pacific and this lane runs daily.")
         if afford < len(pending):
             st.note(f"quota funds {afford} of {len(pending)} today "
-                    f"({quota.PER_LOCALIZE} units each)")
+                    f"({quota.PER_LOCALIZE} units each); "
+                    f"{len(pending) - afford} recorded as QUOTA_DEFERRED")
 
         written, spent, cost = 0, 0, 0.0
 
@@ -503,6 +545,11 @@ def run(limit: int = 15, dry_run: bool = False,
                 .split(":", 1)[1],
                 "applied_at": now(),
             }
+            # The receipt dies with the gap it excused. A QUOTA_DEFERRED entry
+            # left behind after the video was localized would keep V17 quiet
+            # about that video forever -- an excuse outliving its cause is how
+            # a guard silently stops guarding.
+            state["blocked"].pop(vid, None)
             written += 1
             st.work(f"{slug}: wrote {len(merged_loc)} localization(s) and "
                     f"defaultLanguage={body['snippet']['defaultLanguage']}, "
@@ -519,6 +566,14 @@ def run(limit: int = 15, dry_run: bool = False,
             st.note(f"spent {spent} quota units. {quota.report()}")
         if cost:
             st.note(f"translation cost ${cost:.4f} at OpenRouter ({model})")
+
+        # A real set of localizations just went onto a real, live video.
+        # That is the localization half of the evidence loop/arming.py is
+        # waiting for; record it so a scheduled run tomorrow no longer has
+        # to stop and ask.
+        if written and not dry_run:
+            arming.record_success(
+                'reach', detail=f"localized {written} video(s)")
 
         if written == 0 and not dry_run:
             st.named_stop(
