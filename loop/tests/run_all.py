@@ -24,6 +24,25 @@ def main() -> int:
         print("FAIL: no loop tests found — this runner examined zero tests")
         return 1
 
+    # THE SUITE MUST NOT WRITE THE LOOP'S OWN STATE.
+    #
+    # Several tests launch real lanes so they can watch a real stage take a
+    # real named stop. Those lanes write loop/state/stops/ and bump
+    # _streaks.json - which are TRACKED and are also written by the cloud
+    # lanes. On 2026-09-04 a local suite run left `captions: OAUTH_MISSING,
+    # count 4` in the committed streaks; the next cloud-upload run then could
+    # not rebase its own state commit onto main and the workflow failed on
+    # `error: could not apply ... cloud-upload — self-resolving stop`, three
+    # retries deep, with nothing actually wrong with the lane.
+    #
+    # loop/common._stops_dir() already reads LOOP_STOPS_DIR for exactly this
+    # reason; nothing was setting it. One temp directory per suite run, thrown
+    # away afterwards, so a test can still assert on stop records while the
+    # repo's own state is untouched.
+    import tempfile                                        # noqa: PLC0415
+    stops = tempfile.mkdtemp(prefix="loop-test-stops-")
+    env = dict(os.environ, LOOP_STOPS_DIR=stops)
+
     failed = []
     for f in files:
         name = os.path.basename(f)
@@ -35,7 +54,7 @@ def main() -> int:
         # failing validator - which happened twice, once for PIL and once for
         # numpy, each time sending someone after a content bug that did not
         # exist. An unrun validator is not a failing one.
-        r = subprocess.run([PY, f], cwd=ROOT)
+        r = subprocess.run([PY, f], cwd=ROOT, env=env)
         if r.returncode != 0:
             failed.append(name)
 
