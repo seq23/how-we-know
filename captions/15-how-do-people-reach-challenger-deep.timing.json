@@ -1,0 +1,139 @@
+{
+  "episode": "15-how-do-people-reach-challenger-deep",
+  "beats": 62,
+  "plan_source": "plans/15-how-do-people-reach-challenger-deep.json",
+  "timing": "audio",
+  "beats_measured": 62,
+  "duration_s": 480.859,
+  "cues": 130,
+  "chapters_real": 15,
+  "chapters_published": 12,
+  "chapter_notes": [
+    "merged 3 chapter(s) under 10s: Title card (2.1s), Producer POV (9.0s), The reliable hook (6.7s)"
+  ],
+  "drift": {
+    "mean_abs_s": 4.5,
+    "worst_abs_s": 13.3,
+    "rows": [
+      {
+        "title": "Cold open",
+        "hand": "00:00",
+        "real": "0:00",
+        "drift_s": 0.0
+      },
+      {
+        "title": "Title card",
+        "hand": "00:11",
+        "real": "0:10",
+        "drift_s": -0.9
+      },
+      {
+        "title": "A vehicle built around one protected bubble",
+        "hand": "00:13",
+        "real": "0:12",
+        "drift_s": -0.8
+      },
+      {
+        "title": "Producer POV",
+        "hand": "01:15",
+        "real": "1:15",
+        "drift_s": 0.1
+      },
+      {
+        "title": "Trieste reached the bottom before precision caught up",
+        "hand": "01:29",
+        "real": "1:24",
+        "drift_s": -4.9
+      },
+      {
+        "title": "Repeatability changes exploration into measurement",
+        "hand": "02:34",
+        "real": "2:31",
+        "drift_s": -2.1
+      },
+      {
+        "title": "Depth is a calculation with an uncertainty budget",
+        "hand": "03:36",
+        "real": "3:34",
+        "drift_s": -1.6
+      },
+      {
+        "title": "A descent built around one protected bubble",
+        "hand": "04:44",
+        "real": "4:42",
+        "drift_s": -1.3
+      },
+      {
+        "title": "Why repeat dives matter more than a guest list",
+        "hand": "05:10",
+        "real": "5:15",
+        "drift_s": 5.2
+      },
+      {
+        "title": "The publication-day recheck",
+        "hand": "06:05",
+        "real": "6:18",
+        "drift_s": 13.3
+      },
+      {
+        "title": "The release gate",
+        "hand": "06:28",
+        "real": "6:38",
+        "drift_s": 10.5
+      },
+      {
+        "title": "The reliable hook",
+        "hand": "06:46",
+        "real": "6:54",
+        "drift_s": 8.2
+      },
+      {
+        "title": "What to notice in the edit",
+        "hand": "06:53",
+        "real": "7:00",
+        "drift_s": 7.9
+      },
+      {
+        "title": "Evidence limit",
+        "hand": "07:17",
+        "real": "7:21",
+        "drift_s": 4.9
+      },
+      {
+        "title": "Closing",
+        "hand": "07:41",
+        "real": "7:46",
+        "drift_s": 5.6
+      }
+    ]
+  },
+  "ffprobe": {
+    "file": "renders/15-how-do-people-reach-challenger-deep.mp4",
+    "video_s": 438.865,
+    "last_cue_end_s": 480.859,
+    "delta_s": 41.993,
+    "ok": null,
+    "render_timing": "estimate (predates narration - re-render)"
+  },
+  "text_checks": {
+    "beats_json": {
+      "checked": 62,
+      "mismatched": []
+    },
+    "script_text": {
+      "checked": 62,
+      "absent_from_narration": []
+    }
+  },
+  "script_chapters": {
+    "written": false,
+    "changed": false,
+    "removed_lines": [],
+    "chapters_not_in_script": []
+  },
+  "artifacts": [
+    "captions/15-how-do-people-reach-challenger-deep.vtt",
+    "captions/15-how-do-people-reach-challenger-deep.srt",
+    "captions/15-how-do-people-reach-challenger-deep.chapters.txt"
+  ]
+}

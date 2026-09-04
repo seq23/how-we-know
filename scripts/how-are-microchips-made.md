@@ -85,18 +85,17 @@ Microchips are made by repeating four steps — deposit, pattern, etch, measure 
 
 ## Chapters
 
-- 00:00 Cold open
-- 00:27 Title card
-- 00:30 The substrate is crystalline silicon grown as a single unbroken lattice
-- 01:42 Photolithography transfers a pattern from a mask to the wafer surface
-- 03:18 Extreme ultraviolet light enables features smaller than the wavelength of visible light
-- 04:48 Etching removes material in patterns defined by the resist
-- 06:00 Deposition adds thin films of conductors, insulators, and semiconductors
-- 07:12 Doping introduces impurities that control electrical conductivity
-- 08:24 Chemical mechanical polishing flattens each layer before the next is built
-- 09:24 What to notice in the edit
-- 10:00 Evidence limit
-- 10:18 Closing
+- 0:00 Cold open
+- 0:27 The substrate is crystalline silicon grown as a single unbroken lattice
+- 1:34 Photolithography transfers a pattern from a mask to the wafer surface
+- 2:48 Extreme ultraviolet light enables features smaller than the wavelength of visible light
+- 4:02 Etching removes material in patterns defined by the resist
+- 5:13 Deposition adds thin films of conductors, insulators, and semiconductors
+- 6:21 Doping introduces impurities that control electrical conductivity
+- 7:42 Chemical mechanical polishing flattens each layer before the next is built
+- 8:44 What to notice in the edit
+- 9:37 Evidence limit
+- 10:15 Closing
 
 ## Sources
 

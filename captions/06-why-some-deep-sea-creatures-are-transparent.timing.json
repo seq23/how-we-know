@@ -1,0 +1,157 @@
+{
+  "episode": "06-why-some-deep-sea-creatures-are-transparent",
+  "beats": 61,
+  "plan_source": "plans/06-why-some-deep-sea-creatures-are-transparent.json",
+  "timing": "audio",
+  "beats_measured": 61,
+  "duration_s": 488.637,
+  "cues": 122,
+  "chapters_real": 18,
+  "chapters_published": 17,
+  "chapter_notes": [
+    "merged 1 chapter(s) under 10s: Title card (2.5s)"
+  ],
+  "drift": {
+    "mean_abs_s": 3.2,
+    "worst_abs_s": 6.8,
+    "rows": [
+      {
+        "title": "Cold open",
+        "hand": "00:00",
+        "real": "0:00",
+        "drift_s": 0.0
+      },
+      {
+        "title": "Title card",
+        "hand": "00:17",
+        "real": "0:14",
+        "drift_s": -2.2
+      },
+      {
+        "title": "The right way to see it",
+        "hand": "00:20",
+        "real": "0:17",
+        "drift_s": -2.7
+      },
+      {
+        "title": "Producer POV",
+        "hand": "00:42",
+        "real": "0:41",
+        "drift_s": -0.7
+      },
+      {
+        "title": "Open water has nowhere to hide",
+        "hand": "00:55",
+        "real": "0:52",
+        "drift_s": -2.7
+      },
+      {
+        "title": "Transparency is easier for some tissues than others",
+        "hand": "01:12",
+        "real": "1:09",
+        "drift_s": -2.9
+      },
+      {
+        "title": "The barreleye uses transparency as a window, not whole-body camouflage",
+        "hand": "01:31",
+        "real": "1:30",
+        "drift_s": -0.5
+      },
+      {
+        "title": "Transparency has limits",
+        "hand": "01:50",
+        "real": "1:48",
+        "drift_s": -1.3
+      },
+      {
+        "title": "Common myths and questions",
+        "hand": "02:08",
+        "real": "2:07",
+        "drift_s": -0.3
+      },
+      {
+        "title": "What can be transparent\u2014and what cannot",
+        "hand": "02:48",
+        "real": "2:50",
+        "drift_s": 2.0
+      },
+      {
+        "title": "Why becoming invisible is incomplete",
+        "hand": "03:24",
+        "real": "3:26",
+        "drift_s": 2.3
+      },
+      {
+        "title": "The organ problem",
+        "hand": "04:47",
+        "real": "4:53",
+        "drift_s": 6.8
+      },
+      {
+        "title": "A predator does not see like our camera",
+        "hand": "05:43",
+        "real": "5:49",
+        "drift_s": 6.7
+      },
+      {
+        "title": "The final visual test",
+        "hand": "06:13",
+        "real": "6:19",
+        "drift_s": 6.7
+      },
+      {
+        "title": "Final editorial note",
+        "hand": "06:42",
+        "real": "6:48",
+        "drift_s": 6.8
+      },
+      {
+        "title": "What to notice in the edit",
+        "hand": "06:56",
+        "real": "7:00",
+        "drift_s": 4.4
+      },
+      {
+        "title": "Evidence limit",
+        "hand": "07:22",
+        "real": "7:26",
+        "drift_s": 4.3
+      },
+      {
+        "title": "Closing",
+        "hand": "07:48",
+        "real": "7:53",
+        "drift_s": 5.2
+      }
+    ]
+  },
+  "ffprobe": {
+    "file": "renders/06-why-some-deep-sea-creatures-are-transparent.mp4",
+    "video_s": 447.031,
+    "last_cue_end_s": 488.637,
+    "delta_s": 41.607,
+    "ok": null,
+    "render_timing": "estimate (predates narration - re-render)"
+  },
+  "text_checks": {
+    "beats_json": {
+      "checked": 61,
+      "mismatched": []
+    },
+    "script_text": {
+      "checked": 61,
+      "absent_from_narration": []
+    }
+  },
+  "script_chapters": {
+    "written": false,
+    "changed": false,
+    "removed_lines": [],
+    "chapters_not_in_script": []
+  },
+  "artifacts": [
+    "captions/06-why-some-deep-sea-creatures-are-transparent.vtt",
+    "captions/06-why-some-deep-sea-creatures-are-transparent.srt",
+    "captions/06-why-some-deep-sea-creatures-are-transparent.chapters.txt"
+  ]
+}
