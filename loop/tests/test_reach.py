@@ -26,6 +26,7 @@ from __future__ import annotations
 
 import json
 import os
+import pathlib
 import shutil
 import subprocess
 import sys
@@ -198,6 +199,122 @@ def check() -> list[str]:
         if validate.v17_localizations().ok:
             fails.append("V17 passed a published video with NO localizations — "
                          "it cannot be found by any non-English search")
+
+        # --------- V17: "deferred for quota" and "nobody noticed" are NOT
+        #                the same fact, and must not read the same way.
+        #
+        # THE 2026-09-03 DEFECT, in one block. That morning the reach lane
+        # mailed a FAIL naming twelve videos. Eleven were deferred for quota
+        # with their .srt ready -- a lane working exactly as designed -- and
+        # exactly one (_fQ3-YI63oQ) was a real gap. The daily red made the
+        # eleven and the one indistinguishable, so the mail stopped being
+        # read. V16 could already tell them apart; V17 could not, because
+        # loop/localize.py never wrote the receipt V16's counterpart relies on.
+        #
+        # Each assertion below is a direction the fix must NOT be allowed to
+        # drift in: green on a fresh deferral, RED on a bare gap, RED when the
+        # excuse expires, RED when the excuse has no date to expire from.
+        examined += 1
+        r = validate.v17_localizations()
+        if not r.failures:
+            fails.append("V17 did not fail a published video with no "
+                         "localizations and NO recorded reason — this is the "
+                         "_fQ3-YI63oQ case and it must stay red")
+        if r.stops:
+            fails.append("V17 raised a NAMED STOP for a video with no "
+                         "recorded reason; a stop must name a REAL cause, "
+                         "never launder a gap nobody explained")
+
+        examined += 1
+        validate.LOCALIZATIONS_STATE = write(
+            tmp, "loc-defer-fresh.json",
+            {"videos": {}, "blocked": {VID: {"slug": SLUG,
+                                             "reason": "QUOTA_DEFERRED",
+                                             "since": fresh}}})
+        r = validate.v17_localizations()
+        if not r.ok:
+            fails.append("V17 failed a video the localize lane deliberately "
+                         "deferred for quota today — a legitimate stop must "
+                         "be GREEN, not red")
+        # Rule 0: green is not permission to go quiet. The deferral has to be
+        # ON SCREEN, with its code and its count, or this is a silent skip
+        # wearing a validator's name.
+        if not r.stops:
+            fails.append("V17 went green on a deferral without emitting a "
+                         "NAMED STOP — a stage may not exit 0 having silently "
+                         "said nothing about what stopped")
+        elif (r.stops[0]["code"] != "LOCALIZE_QUOTA_DEFERRED"
+                or not r.stops[0]["items"]
+                or "1 of 1" not in r.stops[0]["message"]):
+            fails.append("V17's NAMED STOP does not name the code, the count "
+                         "and the affected videos; an unnamed stop is a skip")
+        if "STOP" not in r.status:
+            fails.append("V17's status hides the named stop behind a plain "
+                         "PASS — the whole point is that it stays visible")
+
+        examined += 1
+        validate.LOCALIZATIONS_STATE = write(
+            tmp, "loc-defer-stale.json",
+            {"videos": {}, "blocked": {VID: {"slug": SLUG,
+                                             "reason": "QUOTA_DEFERRED",
+                                             "since": stale}}})
+        if validate.v17_localizations().ok:
+            fails.append(f"V17 still excused missing localizations "
+                         f"{validate.DEFER_GRACE_DAYS + 1} days after they "
+                         f"were deferred — an excuse that never expires is a "
+                         f"permanent gap with a label on it")
+
+        examined += 1
+        validate.LOCALIZATIONS_STATE = write(
+            tmp, "loc-defer-nodate.json",
+            {"videos": {}, "blocked": {VID: {"slug": SLUG,
+                                             "reason": "QUOTA_DEFERRED"}}})
+        if validate.v17_localizations().ok:
+            fails.append("V17 excused a deferral with no date on it, which "
+                         "can never expire")
+
+        # A deferral receipt must not outlive the gap it excused. If the lane
+        # localizes the video but leaves `blocked` behind, V17 would stay
+        # quiet about that video forever.
+        examined += 1
+        validate.LOCALIZATIONS_STATE = write(
+            tmp, "loc-defer-done.json",
+            {"videos": {VID: {"slug": SLUG,
+                              "languages": validate.REACH_LANGUAGES}},
+             "blocked": {VID: {"slug": SLUG, "reason": "QUOTA_DEFERRED",
+                               "since": stale}}})
+        r = validate.v17_localizations()
+        if not r.ok:
+            fails.append("V17 failed a fully localized video because a stale "
+                         "deferral receipt was left behind")
+        if r.stops:
+            fails.append("V17 reported a video as deferred when it is "
+                         "actually finished — the receipt outlived the gap")
+
+        # ------- THE SOURCE OF THAT RECEIPT. A validator that honours
+        # `blocked` is worthless if the lane never writes it, which is exactly
+        # the state loop/localize.py shipped in. Two components each keeping
+        # their own list with no link between them is how this defect hid.
+        examined += 1
+        src = open(os.path.join(LOOP, "localize.py")).read()
+        marker = 'state["blocked"][row["video_id"]] = {'
+        if marker not in src:
+            fails.append("loop/localize.py does not record a per-video "
+                         "QUOTA_DEFERRED receipt, so V17 can never tell a "
+                         "deferral from a gap no matter what it checks")
+        else:
+            # ORDER IS THE BUG. Recording after the stop records nothing:
+            # st.named_stop raises. Prove the write precedes the raise.
+            if src.index(marker) > src.index('"QUOTA_EXHAUSTED"'):
+                fails.append("loop/localize.py records its deferrals AFTER "
+                             "raising QUOTA_EXHAUSTED — named_stop raises, so "
+                             "on the day every video is deferred not one "
+                             "receipt is ever written. This is the original "
+                             "defect, restored.")
+        examined += 1
+        if 'state["blocked"].pop(vid, None)' not in src:
+            fails.append("loop/localize.py never clears a deferral receipt "
+                         "when the video is actually localized")
 
         examined += 1
         validate.LOCALIZATIONS_STATE = write(
@@ -460,6 +577,100 @@ def check() -> list[str]:
                          f"{out[-400:]}")
 
     shutil.rmtree(tmp, ignore_errors=True)
+
+    # ------- V26 + CorruptState: the 2026-09-03 crash, in both directions
+    #
+    # A rebase conflict wrote git markers into loop/state/quota.json; the next
+    # step in the same job read it, died with a bare JSONDecodeError, and the
+    # video it therefore failed to localize was reported as a content gap. Two
+    # things had to be true for that to hurt, and both are checked here: the
+    # corrupt file was invisible until something crashed on it, and the crash
+    # named neither the file nor the cause.
+    import common                                          # noqa: PLC0415
+
+    examined += 1
+    with tempfile.TemporaryDirectory() as td:
+        bad = os.path.join(td, "quota.json")
+        with open(bad, "w") as fh:
+            fh.write('{\n  "day": "2026-09-03",\n' + "<" * 7
+                     + ' HEAD\n  "spent": 9500\n' + "=" * 7 + "\n"
+                     '  "spent": 600\n' + ">" * 7 + " origin/main\n}\n")
+        try:
+            common.read_json(bad)
+            fails.append("common.read_json parsed a file full of git conflict "
+                         "markers without complaint")
+        except common.CorruptState as e:
+            if "conflict" not in str(e).lower() or "quota.json" not in str(e):
+                fails.append("CorruptState does not name the file and the "
+                             "conflict — a stop nobody can act on")
+        except Exception as e:                              # noqa: BLE001
+            fails.append(f"a conflicted state file raised {type(e).__name__} "
+                         f"instead of CorruptState — this is the bare "
+                         f"JSONDecodeError that named nothing: {e}")
+
+    examined += 1
+    try:
+        common.read_json.__call__   # noqa: B018
+        if not hasattr(common, "CorruptState"):
+            raise AttributeError
+    except AttributeError:
+        fails.append("common has no CorruptState, so a corrupt state file "
+                     "cannot become a named stop")
+
+    # Stage must convert it into a NAMED STOP, not let it surface as a crash.
+    examined += 1
+    src = open(os.path.join(LOOP, "common.py")).read()
+    if "STATE_FILE_CORRUPT" not in src:
+        fails.append("loop/common.py Stage does not convert CorruptState into "
+                     "a STATE_FILE_CORRUPT named stop; the module docstring "
+                     "has always claimed corrupt state exits 3 as a named "
+                     "stop, and that would be prose, not behaviour")
+
+    # loop/quota.py must go through the guarded reader, not bare json.loads.
+    examined += 1
+    qsrc = open(os.path.join(LOOP, "quota.py")).read()
+    if "json.loads(STATE.read_text())" in qsrc:
+        fails.append("loop/quota.py:_load still calls json.loads directly — "
+                     "this is the exact line that crashed the localize lane "
+                     "on 2026-09-03 with a traceback naming no file")
+
+    # V26 must SEE the corruption rather than wait for a lane to crash on it.
+    examined += 1
+    if not validate.v26_state_files_readable().ok:
+        fails.append("V26 reports the repo's own loop/state/ as unreadable")
+
+    examined += 1
+    real_root = validate.ROOT
+    with tempfile.TemporaryDirectory() as td:
+        os.makedirs(os.path.join(td, "loop", "state"))
+        with open(os.path.join(td, "loop", "state", "quota.json"), "w") as fh:
+            fh.write('{\n' + "<" * 7 + ' HEAD\n  "spent": 1\n' + "=" * 7
+                     + '\n  "spent": 2\n' + ">" * 7 + " x\n}\n")
+        validate.ROOT = pathlib.Path(td)
+        try:
+            if validate.v26_state_files_readable().ok:
+                fails.append("V26 passed a loop/state/ containing a git "
+                             "conflict marker — the defect that took the "
+                             "reach lane down would ship again unseen")
+            # Rule 0: it must HARD-FAIL on an empty loop/state/, never pass
+            # an empty loop.
+            os.remove(os.path.join(td, "loop", "state", "quota.json"))
+            empty = validate.v26_state_files_readable()
+            # Not just `not empty.ok`: Result.ok already returns False on
+            # examined==0, so leaning on it proves nothing about V26 and
+            # silently keeps passing if someone sets r.exempt. Demand the
+            # EXPLICIT, named hard-fail, which says what was missing.
+            if empty.examined != 0:
+                fails.append("V26 counted state files that do not exist")
+            if not empty.failures:
+                fails.append("V26 examined zero state files without raising "
+                             "its own hard-failure — it leaned on Result.ok "
+                             "alone, which one `r.exempt = True` would undo. "
+                             "A guard that governs nothing must say so.")
+            if empty.ok:
+                fails.append("V26 passed while examining zero state files")
+        finally:
+            validate.ROOT = real_root
 
     if examined == 0:
         fails.append("examined ZERO reach behaviours")
