@@ -46,9 +46,24 @@ that only make sense once a week has been selected:
                         one, and never land on a measured-weak day. Also proves
                         both weekday ladders are long enough for the cadence and
                         that the queue-depth guard actually bounds the raise
+  V21 no-boilerplate    no narrated sentence (8+ words) is byte-identical
+                        across two different scripts — the guard against the
+                        "generic template" signal a verbatim repeat produces
+  V22 producer-notes-2p narration never talks ABOUT the channel's strategy
+                        (monetisation, watch time, the pinned comment, the
+                        production queue) in third person; the transparency
+                        stays, addressed to the viewer instead
+  V23 chapters-yt-compliant  every chapter list loop/upload.py would actually
+                        send starts at 0:00, has no gap under 10s and never
+                        contains a bare "Title card" entry — the three ways a
+                        chapter list gets silently discarded by YouTube
+  V24 render-duration-floor  no render outside
+                        retention.runtime_floor_grandfathered is under the
+                        owner's 10-minute hard floor, checked against the
+                        RENDERED file, not the word count that predicts it
 
-V1-V15 and V20 are the RENDER GATE: `run_all(items)`, run by loop/draft.py in front of
-the pipeline. V16-V19 are the REACH group: `run_reach()`, run by
+V1-V15 and V20-V24 are the RENDER GATE: `run_all(items)`, run by loop/draft.py in front
+of the pipeline. V16-V19 and V26 are the REACH group: `run_reach()`, run by
 `loop/validate.py --reach`, and they govern what a video looks like on YouTube
 after it is published. They are deliberately kept out of the render gate — a
 lagging translation lane must never be able to halt drafting and, through the
@@ -70,6 +85,21 @@ breaker, publishing.
   V19 snippet-merge    no lane sends a PARTIAL snippet to videos.update, which
                        replaces rather than patches and would erase the title,
                        description, tags and categoryId of every live video
+  V26 state-readable   every committed loop/state/*.json parses and carries no
+                       git conflict marker. Several cloud lanes rebase onto
+                       main within the same minute; on 2026-09-03 one left a
+                       conflicted quota.json on disk and the next lane in the
+                       same job died on it several steps later, with a
+                       traceback naming neither the file nor git
+
+V16 and V17 may report a QUOTA_DEFERRED video as a GREEN NAMED STOP rather
+than a failure. That is not a softened assertion: the deferral must be
+RECORDED, with the date it was FIRST made, by the lane that made it, and the
+excuse expires after DEFER_GRACE_DAYS whether or not anyone is watching. A
+video with no track and NO recorded reason stays a hard failure. The
+distinction is the whole point — before 2026-09-03 eleven correctly-deferred
+videos and one genuinely-forgotten one produced one indistinguishable red, so
+the daily mail stopped being read.
 
 Every validator **hard-fails when it examined zero items.** A validator that
 passes an empty loop is the defect it is supposed to catch.
@@ -79,6 +109,7 @@ Any failure here is a `validator` trip cause for the circuit breaker.
 from __future__ import annotations
 
 import json
+import os
 import re
 import socket
 import subprocess
@@ -91,20 +122,23 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import ledger  # noqa: E402
 from common import ROOT, config, now, read_json, write_json  # noqa: E402
+import domain_sources  # noqa: E402
+import domains  # noqa: E402
 import exclusions  # noqa: E402
 
 PY = sys.executable
 
-# Source-shaped names the narration in this niche actually cites. A name that
-# appears in the prose but not in ## Sources is an unbacked attribution.
-ORG_NAMES = [
-    "NOAA", "MBARI", "WHOI", "NASA", "USGS", "NSF", "IHO", "GEBCO",
-    "Woods Hole Oceanographic Institution", "Woods Hole", "Smithsonian",
-    "Monterey Bay Aquarium Research Institute", "Schmidt Ocean Institute",
-    "National Geographic", "Guinness World Records", "Ocean Census",
-    "Census of Marine Life", "Scripps", "JAMSTEC", "NIWA", "Nature",
-    "Science", "Royal Society", "British Antarctic Survey",
-]
+# Source-shaped names the narration cites, PER DOMAIN — loop/domain_sources.py
+# is now the one allowlist, shared with loop/author.py's prompt so a domain
+# cannot be told to cite a body its own validator would not recognise. This
+# used to be a single flat ORG_NAMES list here, which meant a materials
+# script naming NIST or ASM International was invisible to v6_attribution —
+# not a false failure, a false PASS: the guard could not reach what it was
+# meant to govern. ORG_NAMES/ALIAS stay as names for backward compatibility
+# (deep sea's own list, unchanged) but v6_attribution below looks up each
+# item's OWN domain instead of reading these two names directly.
+ORG_NAMES = domain_sources.for_domain("deep-sea-ocean-science")
+ALIAS = domain_sources.alias_for("deep-sea-ocean-science")
 
 
 class Result:
@@ -113,6 +147,18 @@ class Result:
         self.examined = 0
         self.failures: list[str] = []
         self.notes: list[str] = []
+        # NAMED STOPS. A legitimate, self-resolving halt -- "eleven videos are
+        # waiting for tomorrow's quota, their .srt files are ready" -- is not a
+        # failure and must not be reported as one. Before 2026-09-03 those
+        # eleven were `notes`, printed with a dim `·` underneath a red FAIL
+        # header caused by a twelfth, unrelated video; the daily mail read as
+        # "twelve broken videos" and the lane got tuned out.
+        #
+        # A stop is GREEN and LOUD: it never affects `ok`, and it is never
+        # allowed to hide a real failure -- `ok` still falls over on the first
+        # entry in `failures`. That asymmetry is the point. This is a reporting
+        # channel, not a severity dial.
+        self.stops: list[dict] = []
         # Set only by a validator that legitimately governs nothing this week.
         # Never set it to quiet a validator that SHOULD have found items.
         self.exempt = False
@@ -122,6 +168,17 @@ class Result:
 
     def note(self, msg: str):
         self.notes.append(msg)
+
+    def named_stop(self, code: str, msg: str, items: list[str] | None = None):
+        """Record a legitimate, named, GREEN halt.
+
+        Rule 0: this is the opposite of a silent skip. A deferral recorded
+        here is printed in full, with its code and its count, every run --
+        what it does not do is fail the job and page a human about a lane
+        that is working exactly as designed.
+        """
+        self.stops.append({"code": code, "message": msg,
+                           "items": sorted(items or [])})
 
     @property
     def ok(self) -> bool:
@@ -136,12 +193,18 @@ class Result:
     def status(self) -> str:
         if self.examined == 0:
             return "N/A(nothing generated)" if self.exempt else "FAIL(examined 0)"
-        return "PASS" if not self.failures else f"FAIL({len(self.failures)})"
+        if self.failures:
+            return f"FAIL({len(self.failures)})"
+        # Green, and it says so -- but it does not read as an ordinary PASS,
+        # because something really did stop.
+        if self.stops:
+            return f"PASS(STOP:{self.stops[0]['code']})"
+        return "PASS"
 
     def as_dict(self):
         return {"validator": self.name, "examined": self.examined,
                 "status": self.status, "failures": self.failures,
-                "notes": self.notes}
+                "notes": self.notes, "stops": self.stops}
 
 
 # ------------------------------------------------------------------ helpers
@@ -156,6 +219,25 @@ def narration(path) -> str:
         body = body.split(stop, 1)[0]
     return "\n".join(l for l in body.split("\n")
                      if not l.strip().startswith("{{"))
+
+
+def spoken(path) -> str:
+    """The words a viewer actually hears - narration() with headings, list
+    bullets and the [HUMAN] marker itself stripped, matching
+    voice/script_text.py's own rules. narration() alone over-reports:
+    "### The audience gets to disagree" is a heading, dropped before TTS ever
+    sees it, and a validator that scans it anyway invents a defect that was
+    never spoken.
+    """
+    out = []
+    for line in narration(path).split("\n"):
+        s = line.strip()
+        if not s or s.startswith("#") or s.startswith(("-", "*", "+")):
+            continue
+        if re.match(r"^\*\*[^*]+:\*\*", s):
+            continue
+        out.append(s.replace("[HUMAN]", " "))
+    return " ".join(out)
 
 
 def sources_block(path) -> str:
@@ -287,12 +369,6 @@ def v4_pov(items) -> Result:
     return r
 
 
-ALIAS = {"WHOI": "Woods Hole", "Woods Hole": "WHOI",
-         "MBARI": "Monterey Bay Aquarium Research Institute",
-         "Monterey Bay Aquarium Research Institute": "MBARI",
-         "Smithsonian": "ocean.si.edu", "NOAA": "noaa.gov", "NASA": "nasa.gov"}
-
-
 def v5_sources_present(items) -> Result:
     """HARD. A script that speaks numbers must carry a real source list.
 
@@ -335,12 +411,22 @@ def v6_attribution(items) -> Result:
         r.examined += 1
         path = ROOT / it["script"]
         prose, srcs = narration(path), sources_block(path)
-        named = [n for n in ORG_NAMES if re.search(rf"\b{re.escape(n)}\b", prose)]
+        # Per-item domain, not the flat deep-sea-only ORG_NAMES: a materials
+        # script naming NIST or ASM International must be checked against
+        # ITS OWN allowlist, or the check silently never fires for it.
+        item_domain = it.get("domain") or domains.domain_of_slug(it["slug"]) \
+            or "deep-sea-ocean-science"
+        try:
+            org_names = domain_sources.for_domain(item_domain)
+            alias = domain_sources.alias_for(item_domain)
+        except KeyError:
+            org_names, alias = ORG_NAMES, ALIAS
+        named = [n for n in org_names if re.search(rf"\b{re.escape(n)}\b", prose)]
         missing = []
         for n in named:
             if re.search(rf"\b{re.escape(n)}\b", srcs, re.I):
                 continue
-            alt = ALIAS.get(n)
+            alt = alias.get(n)
             if alt and re.search(re.escape(alt), srcs, re.I):
                 continue
             missing.append(n)
@@ -894,6 +980,7 @@ def v16_caption_track() -> Result:
     r = Result("V16 caption-track")
     state = read_json(CAPTIONS_STATE, default={"videos": {}, "blocked": {}})
     have_scope = bool(state.get("token_has_force_ssl"))
+    deferred: list[str] = []
     for row in _live_videos():
         r.examined += 1
         vid, slug = row["video_id"], row["slug"]
@@ -927,8 +1014,8 @@ def v16_caption_track() -> Result:
             # an acceptable reason for a permanent one, so the excuse expires.
             days = _days_since(blocked.get("since"))
             if days is not None and days <= DEFER_GRACE_DAYS:
-                r.note(f"{slug}: no track yet — deferred {days:.1f}d ago for "
-                       f"quota, .srt is ready, the daily lane will take it")
+                deferred.append(f"{slug}: deferred {days:.1f}d ago, .srt is "
+                                f"ready ({vid})")
                 continue
             r.fail(f"{slug} ({vid}) has been waiting for a caption track for "
                    f"{days if days is not None else '?'} day(s) on a "
@@ -940,6 +1027,18 @@ def v16_caption_track() -> Result:
                f"YouTube cannot auto-translate its subtitles or audio"
                + (" — and the scope that used to excuse this is now granted"
                   if have_scope and blocked else ""))
+    if deferred:
+        r.named_stop(
+            "CAPTIONS_QUOTA_DEFERRED",
+            f"{len(deferred)} of {r.examined} live video(s) have no English "
+            f"caption track YET because captions.insert costs "
+            f"400 units against a day shared with the upload lane. Every one "
+            f"of them has a checked, timed .srt on disk and a dated deferral "
+            f"receipt, and the daily reach lane takes them in turn. This is "
+            f"the backfill working as designed, not a gap — it stops being "
+            f"acceptable, and this validator goes red on its own, "
+            f"{DEFER_GRACE_DAYS} days after a video is FIRST deferred.",
+            items=deferred)
     if r.examined == 0:
         r.fail("no live video in loop/state/ledger.json — this validator "
                "proved nothing")
@@ -947,19 +1046,62 @@ def v16_caption_track() -> Result:
 
 
 def v17_localizations() -> Result:
-    """Every live video carries all five localizations."""
+    """Every live video carries all five localizations — or a named reason.
+
+    Deliberately the SAME shape as V16, because the bug this fixes was the
+    two being different. V16 has always read loop/state/captions.json's
+    `blocked` map and stayed green on a video the lane had deliberately put
+    off; V17 read only `videos` and had no way to express "put off" at all,
+    so a video the localize lane had correctly deferred for quota was
+    reported in the identical words as a video that had been published and
+    forgotten. One of those needs a human at 10:00 and the other needs
+    nobody, and the daily mail could not tell them apart.
+
+    The excuse is bounded exactly as V16's is: `since` is the FIRST deferral
+    and is never refreshed, so a stalled lane goes red by itself.
+    """
     r = Result("V17 localizations")
-    state = read_json(LOCALIZATIONS_STATE, default={"videos": {}})
+    state = read_json(LOCALIZATIONS_STATE,
+                      default={"videos": {}, "blocked": {}})
+    deferred: list[str] = []
     for row in _live_videos():
         r.examined += 1
         vid, slug = row["video_id"], row["slug"]
         rec = (state.get("videos") or {}).get(vid) or {}
         got = sorted(rec.get("languages") or [])
         missing = [l for l in REACH_LANGUAGES if l not in got]
-        if missing:
-            r.fail(f"{slug} ({vid}) has no localized title/description for "
-                   f"{', '.join(missing)} — it cannot be found by a search in "
-                   f"those languages")
+        if not missing:
+            continue
+        blocked = (state.get("blocked") or {}).get(vid) or {}
+        if blocked.get("reason") == "QUOTA_DEFERRED":
+            days = _days_since(blocked.get("since"))
+            if days is not None and days <= DEFER_GRACE_DAYS:
+                deferred.append(f"{slug}: deferred {days:.1f}d ago, missing "
+                                f"{', '.join(missing)} ({vid})")
+                continue
+            r.fail(f"{slug} ({vid}) has been waiting for localizations for "
+                   f"{days if days is not None else '?'} day(s) on a "
+                   f"QUOTA_DEFERRED excuse that expires at "
+                   f"{DEFER_GRACE_DAYS}. The lane has stalled — check whether "
+                   f"the reach lane is running at all.")
+            continue
+        # No localizations and NO STATED REASON. This is the case that must
+        # stay red: it is exactly what _fQ3-YI63oQ looked like on 2026-09-03,
+        # and it meant a published video nobody could find in five languages.
+        r.fail(f"{slug} ({vid}) has no localized title/description for "
+               f"{', '.join(missing)} and no recorded reason — it cannot be "
+               f"found by a search in those languages")
+    if deferred:
+        r.named_stop(
+            "LOCALIZE_QUOTA_DEFERRED",
+            f"{len(deferred)} of {r.examined} live video(s) are not localized "
+            f"YET because the day's YouTube allowance could not fund a "
+            f"videos.update for them while keeping the upload lane's slot "
+            f"back. Each carries a dated deferral receipt written by "
+            f"loop/localize.py and the daily lane takes them in turn. This "
+            f"validator goes red on its own {DEFER_GRACE_DAYS} days after a "
+            f"video is FIRST deferred.",
+            items=deferred)
     if r.examined == 0:
         r.fail("no live video in loop/state/ledger.json — this validator "
                "proved nothing")
@@ -1149,21 +1291,20 @@ def v20_cadence_schedule() -> Result:
     led = L.load()
     if tail:
         last = tail[-1]["when"]
-        # ONE SLOT PER DOMAIN'S OWN DAYS. This block used to allocate from the
-        # whole ladder and require every new slot to fall after the LAST dated
-        # episode. That was right while one domain held every publish day and
-        # became wrong the moment a second domain was woven in on days the
-        # first never used: a materials Monday in September legitimately falls
-        # before the last deep-sea Sunday in October, and the old rule read
-        # that as the run being reopened.
+        # ONE ALLOCATION PER DOMAIN, ON ITS OWN DAYS. This block used to draw
+        # from the whole ladder and require every new slot to fall after the
+        # LAST dated episode. That was right while one domain held every
+        # publish day and became wrong the moment a second was woven in on days
+        # the first never uses: a materials Monday in September legitimately
+        # precedes the last deep-sea Sunday in October, and the old rule read
+        # the weave as the run being reopened.
         #
-        # The protection it was really providing is kept and made STRONGER: no
-        # allocated slot may collide with a dated one, no allocated slot may
-        # land on another domain's day, the domains' day sets must be disjoint,
-        # and every slot must respect the minimum lead time. Those hold whether
-        # one domain publishes or four, and they are what actually stops an
-        # episode being re-dated or double-booked.
-        import domains as _dom                             # noqa: PLC0415
+        # The protection it was really giving is kept and made STRONGER: no
+        # allocated slot may collide with a dated one, no slot may go to two
+        # domains, each domain's slots must land on its OWN days, the day-sets
+        # must be disjoint, nothing may reach Wednesday or Thursday, and the
+        # minimum lead time must hold so the owner can still watch an episode
+        # through before it airs.
         cfg_now = config()
         try:
             split = backfill.domain_weekdays(cfg_now, per_week)
@@ -1258,10 +1399,57 @@ def v20_cadence_schedule() -> Result:
     return r
 
 
+def v26_state_files_readable() -> Result:
+    """Every committed loop/state/*.json parses, and carries no conflict marker.
+
+    THE GAP THIS CLOSES. On 2026-09-03 (run 33783829147) a rebase conflict on
+    loop/state/quota.json was committed to the working tree as a DIFF -- three
+    lines of `<<<<<<<`, `=======`, `>>>>>>>` inside what every lane reads as
+    JSON. Nothing in the repo looked at those files as a class, so the defect
+    was found by the next lane crashing on it, several steps later, with a
+    traceback that named neither the file nor git.
+
+    bin/loop-stage.sh now aborts an unresolved rebase before it can leave that
+    behind, which is the fix; this is the guard that proves the fix held. The
+    two are deliberately different components -- a lane that stops producing
+    corrupt state and a check that no corrupt state exists are not the same
+    claim, and only the second one keeps being true after someone edits the
+    first.
+    """
+    r = Result("V26 state-readable")
+    state_dir = ROOT / "loop" / "state"
+    for path in sorted(state_dir.rglob("*.json")):
+        r.examined += 1
+        try:
+            text = path.read_text()
+        except OSError as e:
+            r.fail(f"loop/state/{path.relative_to(state_dir)} cannot be read: {e}")
+            continue
+        rel = path.relative_to(state_dir)
+        marker = next((ln for ln in text.splitlines()
+                       if ln.startswith(("<" * 7, "=" * 7, ">" * 7))), None)
+        if marker is not None:
+            r.fail(f"loop/state/{rel} contains a git conflict marker "
+                   f"({marker[:12]!r}) — it is a diff, not JSON. Every lane "
+                   f"that reads it will crash, and the lane that wrote it "
+                   f"pushed a broken file to main.")
+            continue
+        try:
+            json.loads(text)
+        except json.JSONDecodeError as e:
+            r.fail(f"loop/state/{rel} is not valid JSON: {e}")
+    if r.examined == 0:
+        r.fail("found no JSON under loop/state/ — this validator proved "
+               "nothing, and loop/state/ is never legitimately empty in this "
+               "repo")
+    return r
+
+
 def run_reach() -> tuple[bool, list[dict]]:
     """The post-publish reach validators. Separate from the render gate."""
     results = [v16_caption_track(), v17_localizations(),
-               v18_default_language(), v19_snippet_merge()]
+               v18_default_language(), v19_snippet_merge(),
+               v26_state_files_readable()]
     return all(r.ok for r in results), [r.as_dict() for r in results]
 
 
@@ -1291,65 +1479,336 @@ def probe(url: str, timeout: int = 20) -> tuple[int, str]:
     return 0, "unreachable"
 
 
-def v21_batch_sees_every_domain() -> Result:
-    """The Mac's batch must see EVERY domain's queue, not just deep sea.
+# --------------------------------------------------- V21 no-boilerplate
 
-    THE FAILURE THIS EXISTS TO CATCH LOOKS EXACTLY LIKE SUCCESS. On 2026-09-03
-    `bin/batch-session.sh` opened `research/publish_order.json` by name, so the
-    eighteen gated materials-and-manufacturing topics in
-    `research/publish_order_materials.json` did not exist as far as the Mac was
-    concerned. It printed its "everything is narrated, nothing to do" named stop
-    over a queue that was not empty, and the only symptom was an operator asking
-    what the output meant. `loop/domains.py` had already globbed
-    `publish_order*.json` for the monthly review; the batch had not — two
-    components each keeping their own list with nothing linking them.
+_SENT_SPLIT = re.compile(r"(?<=[.!?])\s+")
 
-    Three things are asserted:
 
-      * **One source of the queue.** No shell script under `bin/` may name a
-        publish-order file directly; they go through `loop/batch_queue.py`,
-        which globs. A second hardcoded filename is how the next domain becomes
-        invisible.
-      * **The merged queue really is a superset.** Every slug in every
-        `research/publish_order*.json` file — globbed HERE, not asked of
-        `batch_queue`, which would be circular — is returned by
-        `batch_queue.queued_slugs()`, so a file that exists but is skipped
-        fails here rather than going quiet.
-      * **An empty glob hard-fails.** `queued_slugs()` raises rather than
-        returning `[]`, because an empty queue and a missing research directory
-        produce identical output otherwise.
+def v21_no_boilerplate() -> Result:
+    """No narration sentence may be a VERBATIM repeat across two scripts.
+
+    2026-09-03: ten of twenty scripts carried the identical sentence "The rest
+    of this video follows that question through the actual environmental
+    constraints described by NOAA, MBARI, Smithsonian, and Woods Hole sources
+    in the companion article" - the only verbatim repeat in a 179-heading
+    corpus where 169 headings are unique. It pointed at an off-platform
+    article the viewer cannot click, and in five episodes it was not even
+    true. That is exactly the "generic template / mass production" signal
+    YouTube's 15 July 2025 inauthentic-content policy names.
+
+    There was no single generator to patch - `author.py` does not emit this
+    text, so the durable fix is this guard, not a template edit. Any sentence
+    of 8+ words that is byte-identical across two different scripts' narration
+    fails, before it ever reaches a render.
+
+    Hard-fails when it examines zero scripts.
+    """
+    r = Result("V21 no-boilerplate")
+    seen: dict[str, str] = {}
+    for p in sorted((ROOT / "scripts").glob("*.md")):
+        r.examined += 1
+        text = re.sub(r"\s+", " ", spoken(p)).strip()
+        for sent in _SENT_SPLIT.split(text):
+            sent = sent.strip()
+            words = sent.split()
+            if len(words) < 8:
+                continue
+            if sent in seen and seen[sent] != p.name:
+                r.fail(f"{p.name} and {seen[sent]} share a verbatim narrated "
+                       f"sentence ({len(words)} words): {sent[:100]!r}")
+            else:
+                seen.setdefault(sent, p.name)
+    return r
+
+
+# ------------------------------------------------ V22 producer-notes-2p
+
+_META_PHRASES = [
+    # "the channel" alone is deliberately NOT here, 2026-09-03: it false-
+    # positived on "the carrier mobility in the channel" — a MOSFET's own
+    # physical channel, real materials-and-manufacturing vocabulary that
+    # deep sea never had to share a word with. The specific ways ep09 talked
+    # about the CHANNEL-AS-BUSINESS are still covered below; a guard that
+    # cannot tell "the channel" (business) from "the channel" (a
+    # semiconductor's own channel) is a guard that cannot reach a real
+    # materials script at all.
+    #
+    # NOT "this channel": it is real prose in scripts/01 ("how this channel
+    # avoids becoming a slideshow") that would newly fail V22 for an already
+    # scheduled, protected episode (airs 2026-09-08). Catching it is
+    # correct; fixing it is not this change's job — this repo's own rule is
+    # that the 14 scheduled episodes are not re-edited, and a validator
+    # expansion that starts failing protected content is worse than the gap
+    # it closes. Left for a dedicated pass with the owner's sign-off.
+    "our channel", "the channel's", "the channel gains",
+    "the channel benefits", "for a channel trying", "channel strategy",
+    "channel's business",
+    "monetiz", "watch time", "topic intelligence",
+    "editorial reason", "pinned comment can", "engagement while",
+    "production queue", "follow-up episodes with a real editorial",
+    "the audience gets", "the audience helps",
+    "algorithm", "click-through", "subscriber count",
+]
+
+
+def v22_producer_notes_second_person() -> Result:
+    """Narration never talks ABOUT the channel's strategy in third person.
+
+    2026-09-02: ep09 alone spoke nine sentences of producer-facing channel
+    strategy to the viewer - "That is the kind of monetization-minded choice
+    worth keeping", "The channel gains engagement while reinforcing the
+    scientific boundary." A narrator reading channel strategy aloud is a
+    different defect from an unsourced number, but it is still something no
+    viewer should be hearing.
+
+    The fix keeps the transparency (it is the channel's voice) but requires it
+    stay addressed to the viewer, not the production. This guard cannot verify
+    grammatical person, but it can hard-ban the specific vocabulary that marks
+    prose as being ABOUT the channel's business rather than FOR the person
+    watching, and it is exactly the vocabulary the 2026-09-02 audit found.
+
+    Hard-fails when it examines zero scripts.
+    """
+    r = Result("V22 producer-notes-second-person")
+    for p in sorted((ROOT / "scripts").glob("*.md")):
+        r.examined += 1
+        text = spoken(p).lower()
+        for phrase in _META_PHRASES:
+            if phrase in text:
+                r.fail(f"{p.name}: narration contains channel-strategy "
+                       f"language {phrase!r} — rewrite it addressed to the "
+                       f"viewer, not the production")
+    return r
+
+
+# ------------------------------------------- V23 chapters-yt-compliant
+
+def v23_chapters_compliant() -> Result:
+    """Every chapter list this repo would actually SEND to YouTube is legal.
+
+    2026-09-02: `loop/upload.py` built its chapter list by regexing `##
+    Chapters` out of the script and sending it as-is. Two defects: the
+    timestamps are the script's ESTIMATE, not the render's real timing (ep08
+    said 7:48 for a chapter the render actually reaches at 8:45), and 11 of 20
+    scripts contained a sub-10-second "Title card" chapter — YouTube discards
+    the ENTIRE list, not just the short entry, the moment one chapter is under
+    10 seconds. `loop/upload.py:build_chapters()` now prefers
+    `captions/<slug>.chapters.txt` (real timing) and falls back to a corrected
+    derivation from the script that drops "Title card" and merges any
+    remaining sub-10s gap. This validator proves the OUTPUT of that function
+    is legal for every script in the repo, not just the code path that
+    produces it.
+
+    Hard-fails when it examines zero scripts.
+    """
+    r = Result("V23 chapters-yt-compliant")
+    sys.path.insert(0, str(ROOT / "loop"))
+    import upload as up                                   # noqa: PLC0415
+    for p in sorted((ROOT / "scripts").glob("*.md")):
+        r.examined += 1
+        text = p.read_text(encoding="utf-8")
+        chapters = up.build_chapters(p.stem, text)
+        if not chapters:
+            r.note(f"{p.name}: no ## Chapters section (nothing to check)")
+            continue
+        times = [up._parse_ts(c.split(" ", 1)[0]) for c in chapters]  # noqa: SLF001
+        if times[0] != 0:
+            r.fail(f"{p.name}: first chapter is not at 0:00 "
+                   f"({chapters[0]!r}) — YouTube requires it")
+        for a, b, label in zip(times, times[1:], (c.split(" ", 1)[1] for c in chapters)):
+            if b - a < up.YT_MIN_CHAPTER_S:
+                r.fail(f"{p.name}: {label!r} is only {b - a}s after the "
+                       f"previous chapter — under the {up.YT_MIN_CHAPTER_S}s "
+                       f"floor that makes YouTube discard the WHOLE list")
+        if any(c.split(" ", 1)[1] == "Title card" for c in chapters):
+            r.fail(f"{p.name}: chapter list still contains a bare 'Title "
+                   f"card' entry")
+    return r
+
+
+# ------------------------------------------------- V24 render-duration-floor
+
+def v24_render_duration_floor() -> Result:
+    """No NEW render is under the owner's hard 10-minute floor.
+
+    2026-09-03 decision: every episode from here exceeds 10 minutes, on
+    RENDERED DURATION as well as narration word count — a word-count floor
+    alone would not have caught the original defect, which was that a word
+    count and a render can disagree once the wpm assumption feeding the word
+    count is wrong. The existing 20 episodes (7.5-8.9 minutes, rendered
+    2026-08-30, before this rule existed) are NOT re-rendered — that is the
+    owner's decision, recorded in loop/config.json
+    retention.runtime_floor_grandfathered by name, which is what lets this
+    validator hold the line going forward without re-litigating the past.
+
+    Exempt (examines zero, does not fail) when every render on disk is
+    grandfathered — that is the honest state of a channel with no new
+    long-form render yet, not a validator that cannot reach what it governs.
+    Shorts are exempt outright: they never had a floor to begin with.
+    """
+    r = Result("V24 render-duration-floor")
+    sys.path.insert(0, str(ROOT / "loop"))
+    import durations as D                                 # noqa: PLC0415
+    cfg = config()
+    floor_min = float(cfg["retention"]["runtime_floor_minutes"])
+    grandfathered = set(cfg["retention"]["runtime_floor_grandfathered"])
+    any_new = False
+    for p in sorted((ROOT / "renders").glob("*-final.mp4")) \
+            if (ROOT / "renders").exists() else []:
+        slug = p.name[:-len("-final.mp4")]
+        if slug in grandfathered:
+            continue
+        any_new = True
+        r.examined += 1
+        secs = D.ffprobe_duration(p)
+        if secs is None:
+            r.fail(f"{slug}: could not read a duration from {p.name}")
+            continue
+        if secs < floor_min * 60:
+            r.fail(f"{slug}: rendered {secs / 60:.2f} min, under the "
+                   f"{floor_min}-minute hard floor")
+    r.exempt = not any_new
+    if r.exempt:
+        r.note("every render on disk is grandfathered (predates the "
+               "2026-09-03 floor) — nothing new to check yet")
+    return r
+
+
+def v25_domain_abstraction() -> Result:
+    """HARD. No rendering path may reach a domain without a declared
+    palette, structural device and source allowlist.
+
+    2026-09-03, added when materials-and-manufacturing became a second
+    published domain. Before this, `visuals/design.py` hardcoded the ocean
+    palette as bare module constants and `loop/author.py` hardcoded the
+    NOAA/MBARI source list — there was no domain concept for a validator to
+    even check. This examines every domain the CHANNEL actually runs
+    (`loop/config.json` `domains.allocation` — not the full 20-domain scored
+    taxonomy, which includes niches nobody has decided to publish) and
+    confirms three things hold for EACH one:
+
+      1. `visuals/domains.py` declares a palette AND a structural device.
+      2. `visuals/design.py`, imported as a subprocess with `HWK_DOMAIN` set
+         to this domain, actually resolves to THAT domain's palette — not a
+         silent fallback to deep sea's. This is the "no rendering path can
+         reach a domain without..." half of the guard: it does not just read
+         the registry, it proves the registry is actually wired to what
+         renders a frame.
+      3. `loop/domain_sources.py` declares a non-empty source allowlist.
+
+    Hard-fails on zero domains examined — an empty `domains.allocation`
+    would make this validator vacuously green, which is worse than not
+    running it, per this repo's own Rule 0.
+    """
+    r = Result("V25 domain-abstraction")
+    cfg = config()
+    sys.path.insert(0, str(ROOT / "loop"))
+    sys.path.insert(0, str(ROOT / "visuals"))
+    import domains as loop_domains                        # noqa: PLC0415
+    import domain_sources                                  # noqa: PLC0415
+    active = list(loop_domains.config_domains(cfg)["allocation"])
+    if not active:
+        r.fail("loop/config.json domains.allocation is empty — no domain "
+               "examined. This validator refuses to pass vacuously.")
+        return r
+    for name in active:
+        r.examined += 1
+        # 1. visuals/domains.py: palette + device declared.
+        vis = subprocess.run(
+            [PY, "-c",
+             "import sys; sys.path.insert(0, 'visuals'); import domains as d; "
+             f"d.require_declared({name!r})"],
+            cwd=ROOT, capture_output=True, text=True)
+        if vis.returncode != 0:
+            r.fail(f"{name}: visuals/domains.py has no declared palette+device "
+                   f"— {vis.stderr.strip().splitlines()[-1] if vis.stderr else 'error'}")
+            continue
+        # 2. visuals/design.py, imported for THIS domain via HWK_DOMAIN,
+        #    resolves to this domain's own palette — proves the wiring, not
+        #    just the registry.
+        probe = subprocess.run(
+            [PY, "-c",
+             "import design; print(design.DOMAIN); print(design.INK)"],
+            cwd=str(ROOT / "visuals"),
+            env={**os.environ, "HWK_DOMAIN": name},
+            capture_output=True, text=True)
+        if probe.returncode != 0:
+            r.fail(f"{name}: visuals/design.py failed to import under "
+                   f"HWK_DOMAIN={name} — {probe.stderr.strip().splitlines()[-1] if probe.stderr else 'error'}")
+            continue
+        lines = probe.stdout.strip().splitlines()
+        if not lines or lines[0] != name:
+            r.fail(f"{name}: visuals/design.py resolved DOMAIN={lines[0] if lines else '?'} "
+                   f"instead of {name} — a render for this domain would silently "
+                   f"use the wrong palette")
+            continue
+        try:
+            ink_seen = eval(lines[1])  # noqa: S307 -- our own stdout, a tuple literal
+        except Exception:
+            ink_seen = None
+        # A fresh subprocess again, not an in-process import: `loop/domains.py`
+        # is already cached in sys.modules under the name "domains" (imported
+        # at the top of this file), and `visuals/domains.py` happens to share
+        # that filename — an in-process `import domains` here would silently
+        # return the WRONG module rather than raise, which is exactly the
+        # kind of drift this validator exists to catch, not commit itself.
+        expect = subprocess.run(
+            [PY, "-c",
+             f"import domains as d; print(tuple(d.palette({name!r})['INK']))"],
+            cwd=str(ROOT / "visuals"), capture_output=True, text=True)
+        expected_ink = None
+        if expect.returncode == 0 and expect.stdout.strip():
+            try:
+                expected_ink = eval(expect.stdout.strip())  # noqa: S307
+            except Exception:
+                expected_ink = None
+        if expected_ink is not None and ink_seen != expected_ink:
+            r.fail(f"{name}: rendered INK {ink_seen} does not match the "
+                   f"declared palette {expected_ink} — the registry and the "
+                   f"renderer have drifted apart")
+            continue
+        # 3. loop/domain_sources.py: non-empty source allowlist.
+        try:
+            names = domain_sources.for_domain(name)
+        except KeyError as e:
+            r.fail(f"{name}: {e}")
+            continue
+        if not names:
+            r.fail(f"{name}: loop/domain_sources.py allowlist is empty")
+    return r
+
+
+def v27_lanes_see_every_domain() -> Result:
+    """Every lane that schedules or narrates must see EVERY domain's queue.
+
+    RENUMBERED from V21 on 2026-09-04: main had already taken 21-26. The
+    defect it guards is this repo's most persistent - a component reading
+    `research/publish_order.json` by name, so a second domain's whole queue is
+    invisible to it. It has now been found in six places: bin/batch-session.sh,
+    bin/loop-stage.sh, cadence.publish_order() and three sites in
+    loop/backfill.py, one of which only surfaced at runtime after a dry run
+    had passed. The visible symptom was a runway reading "0 publishable
+    episode(s) of 22 on disk" while eighteen scored, scripted and planned
+    materials episodes sat on the shelf.
+
+    Asserted BEHAVIOURALLY, not by grepping for the filename: a first attempt
+    did grep loop/*.py and produced nine failures that were almost all
+    docstring prose, and it would still have flagged cadence.PUBLISH_ORDER,
+    which is legitimate - cadence reads the primary file for its staleness and
+    shape checks and merges the rest on top. "Does this module name the file"
+    is not the invariant. "Can it see a second domain" is.
 
     Hard-fails when it examines zero items.
     """
-    r = Result("V21 batch-sees-domains")
-    sys.path.insert(0, str(ROOT / "loop"))
-    import batch_queue                                   # noqa: PLC0415
-    import json as _json                                 # noqa: PLC0415
+    r = Result("V27 lanes-see-domains")
+    import json as _json                                   # noqa: PLC0415
+    import importlib                                       # noqa: PLC0415
 
-    # Globbed HERE, independently. Asking batch_queue which files count and
-    # then checking its queue against them is circular: narrowing its own glob
-    # would shrink both sides together and the validator would pass while a
-    # whole domain went missing. That is exactly what the first negative proof
-    # of this validator did.
     files = sorted((ROOT / "research").glob("publish_order*.json"))
     r.examined += 1
     if not files:
         r.fail("no research/publish_order*.json files at all")
         return r
-
-    # ---- the SCHEDULING modules must SEE every domain --------------------
-    # Asserted behaviourally, not by grepping for the filename. A first
-    # attempt did grep loop/*.py and produced nine failures, almost all of
-    # them docstring prose that merely mentions the file - and it would still
-    # have flagged cadence.PUBLISH_ORDER, which is legitimate: cadence reads
-    # the primary file for its staleness and shape checks and merges the rest
-    # on top. "Does this module name the file" is not the invariant. "Can this
-    # module see a second domain's episodes" is, and it is the thing that was
-    # actually broken: cadence.publish_order() returned 16 deep-sea slugs and
-    # backfill.question_for() raised KeyError for every materials slug, so the
-    # runway read "0 publishable episode(s) of 22 on disk" while eighteen
-    # episodes sat scored, scripted and planned.
-    import importlib                                      # noqa: PLC0415
 
     per_file = {}
     for path in files:
@@ -1357,24 +1816,68 @@ def v21_batch_sees_every_domain() -> Result:
                                (_json.loads(path.read_text()).get("queue") or [])
                                if row.get("slug")}
 
+    # ---- no bin/ script names a single publish-order file ----------------
+    for sh in sorted((ROOT / "bin").glob("*.sh")):
+        r.examined += 1
+        bad = [n for n, line in enumerate(sh.read_text().splitlines(), 1)
+               if "research/publish_order" in line
+               and not line.lstrip().startswith("#")
+               and "publish_order*" not in line]
+        if bad:
+            r.fail(f"{sh.name} line(s) {bad} name a single publish-order file; "
+                   f"use loop/batch_queue.py or a publish_order*.json glob.")
+
+    # ---- the merged queue is a superset of every file --------------------
     r.examined += 1
     try:
-        import cadence as _cad                            # noqa: PLC0415
+        import batch_queue                                 # noqa: PLC0415
+        merged = set(batch_queue.queued_slugs())
+        for fname, slugs in per_file.items():
+            missing = slugs - merged
+            if missing:
+                r.fail(f"{fname}: {len(missing)} slug(s) absent from the merged "
+                       f"queue, e.g. {sorted(missing)[:3]}")
+    except Exception as e:                                 # noqa: BLE001
+        r.fail(f"loop/batch_queue.py could not produce a merged queue: {e}")
+
+    # ---- an empty glob must raise, not report an empty queue -------------
+    r.examined += 1
+    try:
+        import batch_queue as _bq                          # noqa: PLC0415
+        real = _bq.ROOT
+        try:
+            _bq.ROOT = ROOT / "loop" / "__no_such_root__"
+            try:
+                _bq.queued_slugs()
+                r.fail("queued_slugs() returned normally with no publish-order "
+                       "files; an empty queue must be distinguishable from a "
+                       "missing one")
+            except _bq.NoPublishOrder:
+                pass
+        finally:
+            _bq.ROOT = real
+    except Exception as e:                                 # noqa: BLE001
+        r.fail(f"could not exercise the empty-glob guard: {e}")
+
+    # ---- the SCHEDULING modules can actually see a second domain ---------
+    r.examined += 1
+    try:
+        import cadence as _cad                             # noqa: PLC0415
         importlib.reload(_cad)
         seen = set(_cad.publish_order())
         for fname, slugs in per_file.items():
             missing = slugs - seen
             if missing:
-                r.fail(f"cadence.publish_order() cannot see {len(missing)} slug(s) "
-                       f"from {fname}, e.g. {sorted(missing)[:3]}. Every runway "
-                       f"and cadence decision would be made as though that "
-                       f"domain's queue did not exist.")
-    except Exception as e:                                # noqa: BLE001
+                r.fail(f"cadence.publish_order() cannot see {len(missing)} "
+                       f"slug(s) from {fname}, e.g. {sorted(missing)[:3]}. "
+                       f"Every runway and cadence decision would be made as "
+                       f"though that domain's queue did not exist.")
+    except Exception as e:                                 # noqa: BLE001
         r.fail(f"cadence.publish_order() raised: {e}")
 
     r.examined += 1
     try:
-        import backfill as _bf                            # noqa: PLC0415
+        import backfill as _bf                             # noqa: PLC0415
         importlib.reload(_bf)
         for fname, slugs in per_file.items():
             if not slugs:
@@ -1382,90 +1885,34 @@ def v21_batch_sees_every_domain() -> Result:
             probe = sorted(slugs)[0]
             try:
                 _bf.question_for(probe)
-            except Exception:                             # noqa: BLE001
+            except Exception:                              # noqa: BLE001
                 r.fail(f"backfill.question_for({probe!r}) fails for a slug from "
-                       f"{fname}. The question becomes the video title, so the "
-                       f"upload would fail at titling after the render was paid "
-                       f"for.")
-    except Exception as e:                                # noqa: BLE001
+                       f"{fname}. That question becomes the video title, so the "
+                       f"upload would fail after the render was paid for.")
+    except Exception as e:                                 # noqa: BLE001
         r.fail(f"backfill could not be exercised: {e}")
-
-    # ---- no bin/ script names a publish-order file directly --------------
-    for sh in sorted((ROOT / "bin").glob("*.sh")):
-        r.examined += 1
-        # Comments may name a file while explaining it; a GLOB is the fix,
-        # not the defect. Only executable lines naming ONE publish-order file
-        # are wrong, because those are the ones that hide the next domain.
-        bad = [n for n, line in enumerate(sh.read_text().splitlines(), 1)
-               if "research/publish_order" in line
-               and not line.lstrip().startswith("#")
-               and "publish_order*" not in line]
-        if bad:
-            r.fail(f"{sh.name} line(s) {bad} name a single publish-order file; "
-                   f"use loop/batch_queue.py or a publish_order*.json glob. A "
-                   f"hardcoded filename hides the next domain.")
-
-    # ---- the merged queue is a superset of every file --------------------
-    merged = set(batch_queue.queued_slugs())
-    for path in files:
-        rows = _json.loads(path.read_text()).get("queue") or []
-        r.examined += 1
-        if not rows:
-            r.fail(f"{path.name} has an empty queue")
-            continue
-        missing = [row.get("slug") for row in rows
-                   if row.get("slug") and row.get("slug") not in merged]
-        if missing:
-            r.fail(f"{path.name}: {len(missing)} slug(s) absent from the merged "
-                   f"batch queue, e.g. {missing[:3]} - that domain is invisible "
-                   f"to bin/batch-session.sh")
-
-    # ---- an empty glob raises rather than reporting an empty queue -------
-    r.examined += 1
-    real = batch_queue.ROOT
-    try:
-        batch_queue.ROOT = ROOT / "loop" / "__no_such_root__"
-        try:
-            batch_queue.queued_slugs()
-            r.fail("queued_slugs() returned normally with no publish-order "
-                   "files; an empty queue must be distinguishable from a "
-                   "missing one")
-        except batch_queue.NoPublishOrder:
-            pass
-    finally:
-        batch_queue.ROOT = real
-
     return r
 
 
-def v22_lane_interpreters() -> Result:
+def v28_lane_interpreters() -> Result:
     """Each lane is invoked with the interpreter that lane's packages live in.
 
-    THE FAILURE THIS EXISTS TO CATCH READS AS A BROKEN NARRATOR. Voice has had
-    its own environment since the lane was built - bin/run-batch.sh calls
+    THE FAILURE THIS CATCHES READS AS A BROKEN NARRATOR. Voice has had its own
+    environment since the lane was built - bin/run-batch.sh calls
     .venv-tts/bin/python, because torch, chatterbox-tts and soundfile are ~1.3
     GB and have no business in the render venv. bin/batch-session.sh called
     `$PY voice/narrate_all.py`, i.e. the RENDER venv, and narration died on
     `ModuleNotFoundError: No module named 'soundfile'`. CLAUDE.md's first named
-    trap is exactly this: "a missing package reads as a failing validator", and
-    it has now cost PIL twice, numpy once and soundfile once.
+    trap is exactly this; it has now cost PIL twice, numpy once and soundfile
+    once.
 
-    Asserted from the SCRIPT TEXT, not from the filesystem, deliberately: this
-    validator also runs in GitHub Actions, where no .venv-tts exists and never
-    should. Checking that the directory is present would fail every cloud run
-    for a Mac-only lane. What is machine-independent, and what actually broke,
-    is which interpreter each lane is invoked with.
-
-      * A voice/ entrypoint is never launched by the render venv.
-      * A visuals/ entrypoint is never launched by the voice venv - the
-        reverse mistake, which would fail on PIL instead.
-      * Any script that runs voice/ declares a TTS interpreter variable at
-        all, so the coupling is visible where someone editing it will see it.
+    Asserted from the SCRIPT TEXT, not the filesystem: this also runs in
+    Actions, where no .venv-tts exists and never should.
 
     Hard-fails when it examines zero items.
     """
-    r = Result("V22 lane-interpreters")
-    import re as _re                                     # noqa: PLC0415
+    r = Result("V28 lane-interpreters")
+    import re as _re                                       # noqa: PLC0415
 
     RENDER_VENV = ".venv/bin/python"
     TTS_VENV = ".venv-tts/bin/python"
@@ -1475,8 +1922,6 @@ def v22_lane_interpreters() -> Result:
         lines = [ln for ln in body.splitlines() if not ln.lstrip().startswith("#")]
         r.examined += 1
 
-        # Resolve the shell variables each script assigns to an interpreter,
-        # so `$PY voice/x.py` is judged by what PY was actually set to.
         varmap = {}
         for ln in lines:
             m = _re.match(r"\s*([A-Z_][A-Z0-9_]*)=(\S*/bin/python\S*)\s*$", ln)
@@ -1497,8 +1942,8 @@ def v22_lane_interpreters() -> Result:
                 continue
             if script.startswith("voice/") and path.endswith(RENDER_VENV):
                 r.fail(f"{sh.name} runs {script} with {path}, the RENDER venv. "
-                       f"Voice needs torch/chatterbox-tts/soundfile, which live "
-                       f"in {TTS_VENV}; this fails as ModuleNotFoundError and "
+                       f"Voice needs torch/chatterbox-tts/soundfile from "
+                       f"{TTS_VENV}; this fails as ModuleNotFoundError and "
                        f"reads as a broken narrator.")
             if script.startswith("visuals/") and TTS_VENV in path:
                 r.fail(f"{sh.name} runs {script} with {path}, the VOICE venv. "
@@ -1509,11 +1954,10 @@ def v22_lane_interpreters() -> Result:
                 r.fail(f"{sh.name} runs a voice/ entrypoint but never names "
                        f"{TTS_VENV}. The two environments are separate and the "
                        f"script that drives voice must say so.")
-
     return r
 
 
-def v23_material_image_rights() -> Result:
+def v29_material_image_rights() -> Result:
     """No picture reaches a frame without a verified public-domain record.
 
     HARD, unlike V6. V6 is soft because a missing bibliography line is a
@@ -1521,35 +1965,25 @@ def v23_material_image_rights() -> Result:
     not given. This is different in kind: a `material_image` beat puts somebody
     else's photograph on a monetised channel, and CLAUDE.md's one absolute
     imagery rule is that stripping or omitting attribution is the thing this
-    pipeline may not do. A plan can reference an image; only the manifest can
-    prove the right to show it.
+    pipeline may not do.
 
-    For every `material_image` beat in every plan:
+    Every material_image beat must resolve to a record with a non-empty
+    credit_line, item_url, licence and sha256; the licence must be a
+    public-domain or CC0 tag (CC-BY is NOT a public-domain dedication and this
+    channel is monetised); the file must still hash to what was rights-checked;
+    and the on-screen label must be non-empty, because CONTRACT.md rule 1 is
+    that the picture is captioned with a word the viewer is hearing.
 
-      * the subject resolves to a record in channel/imagery/materials.json;
-      * that record carries a non-empty credit_line, item_url, licence and
-        sha256 - credit_line is what draw_image_beat() actually prints, so an
-        empty one is a picture shown with no credit at all;
-      * the licence is a public-domain or CC0 tag. CC-BY is NOT a public-domain
-        dedication and this channel is monetised;
-      * the file is on disk and its sha256 still matches what was rights-
-        checked, so an asset swapped after verification fails here rather than
-        shipping;
-      * the drawn label is not empty, because CONTRACT.md rule 1 is that the
-        picture is captioned with a word the viewer is hearing.
-
-    Hard-fails when it examines zero items - an episode set with no images and
-    an episode set whose manifest vanished look identical otherwise.
+    Hard-fails when it examines zero items.
     """
-    r = Result("V23 material-image rights")
+    r = Result("V29 material-image rights")
     import hashlib as _h                                   # noqa: PLC0415
 
-    plans = sorted((ROOT / "plans").glob("*.json"))
     beats = []
-    for path in plans:
+    for path in sorted((ROOT / "plans").glob("*.json")):
         try:
             plan = read_json(path)
-        except Exception as e:
+        except Exception as e:                             # noqa: BLE001
             r.examined += 1
             r.fail(f"{path.name}: unreadable ({e})")
             continue
@@ -1569,8 +2003,8 @@ def v23_material_image_rights() -> Result:
     if not man_path.exists():
         r.examined += 1
         r.fail(f"{len(beats)} material_image beat(s) reference a manifest that "
-               f"does not exist: {man_path}. Every one would raise at render, "
-               f"after narration was paid for.")
+               f"does not exist: {man_path}. Every one raises at render, after "
+               f"narration was paid for.")
         return r
     man = read_json(man_path)
     by_subject = {}
@@ -1578,8 +2012,7 @@ def v23_material_image_rights() -> Result:
         by_subject.setdefault(rec["subject"], []).append(rec)
 
     PD_OK = ("public domain", "pd-", "cc0", "no restrictions")
-    checked_files = set()
-
+    checked = set()
     for name, i, b in beats:
         r.examined += 1
         args = b.get("args") or {}
@@ -1590,28 +2023,26 @@ def v23_material_image_rights() -> Result:
                    f"in materials.json; this raises at render.")
             continue
         rec = recs[(args.get("pick") or 0) % len(recs)]
-
         if not (args.get("label") or "").strip():
             r.fail(f"{name} beat {i}: no on-screen label. The picture must be "
                    f"captioned with a word the narration uses.")
         for field in ("credit_line", "item_url", "licence", "sha256", "local_file"):
             if not rec.get(field):
-                r.fail(f"{name} beat {i} [{subj}]: record is missing "
-                       f"{field!r} - it may not be shown.")
+                r.fail(f"{name} beat {i} [{subj}]: record is missing {field!r} "
+                       f"- it may not be shown.")
         lic = (rec.get("licence") or "").lower()
         if lic and not any(k in lic for k in PD_OK):
             r.fail(f"{name} beat {i} [{subj}]: licence is {rec['licence']!r}, "
                    f"which is not a public-domain dedication. This channel is "
                    f"monetised and CC-BY does not qualify.")
         lf = rec.get("local_file")
-        if lf and lf not in checked_files:
-            checked_files.add(lf)
+        if lf and lf not in checked:
+            checked.add(lf)
             fp = ROOT / "channel" / "imagery" / lf
             if not fp.exists():
                 r.fail(f"[{subj}] {lf} is not on disk")
             elif rec.get("sha256"):
-                got = _h.sha256(fp.read_bytes()).hexdigest()
-                if got != rec["sha256"]:
+                if _h.sha256(fp.read_bytes()).hexdigest() != rec["sha256"]:
                     r.fail(f"[{subj}] {lf} changed since it was rights-checked "
                            f"(sha256 differs); it may not be shown.")
     return r
@@ -1632,10 +2063,11 @@ def run_all(items) -> tuple[bool, list[dict]]:
                v9_footage_window(), v10_footage_crop(), v11_footage_hash(),
                v12_footage_scope(), v13_render_not_clipped(),
                v14_shorts_attribution(), v15_shorts_caption_crop(),
-               v20_cadence_schedule(),
-               v21_batch_sees_every_domain(),
-               v22_lane_interpreters(),
-               v23_material_image_rights()]
+               v20_cadence_schedule(), v21_no_boilerplate(),
+               v22_producer_notes_second_person(), v23_chapters_compliant(),
+               v24_render_duration_floor(), v25_domain_abstraction(),
+               v27_lanes_see_every_domain(), v28_lane_interpreters(),
+               v29_material_image_rights()]
     rows = [r.as_dict() for r in results]
     return all(r.ok for r in results), rows
 
@@ -1654,6 +2086,10 @@ def main() -> int:
               f"examined {row['examined']}")
         for f in row["failures"]:
             print(f"    ✗ {f}")
+        for st_ in row.get("stops") or []:
+            print(f"    ■ NAMED STOP [{st_['code']}] {st_['message']}")
+            for item in st_["items"]:
+                print(f"        - {item}")
         for n in row["notes"]:
             print(f"    · {n}")
     print(json.dumps({"all_passed": ok}, indent=2))

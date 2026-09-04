@@ -22,21 +22,15 @@ name: loop · daily 09:00 CT · upload from R2
 # slots(), so they do not drift when the clocks change even though this cron
 # does.
 on:
-  # DISARMED until this lane has completed a real upload end to end.
-  #
-  # 09:00 America/Chicago IS 14:00 UTC, so this cron fired at the exact moment
-  # the Mac's com.howweknow.backfill agent did. Each reads its own copy of
-  # loop/state/ledger.json - the Mac's local file, this one's committed copy -
-  # so both would have seen the same episode as unpublished and uploaded it
-  # twice. Two schedulers, two records, no link: the same failure the Thursday
-  # lane already had.
-  #
-  # Arm this ONLY after: (1) the renders are in R2, (2) a workflow_dispatch run
-  # has uploaded and scheduled a real episode, and (3) the Mac agent has been
-  # unloaded in the same change. Not before, and never both at once.
-  #
-  #  schedule:
-  #    - cron: '0 14 * * *'
+  # ARMED. The schedule fires; loop/arming.py decides whether this run
+  # may act. Until the upload-cloud lane has completed one real end-to-end run
+  # it takes the NAMED STOP LANE_NOT_ARMED_UPLOAD_CLOUD,
+  # which is visible in the issue tracker - unlike the commented-out cron
+  # this replaces, which could never be satisfied because the lane it
+  # gated could never run. A workflow_dispatch run always passes through
+  # and is what arms it.
+  schedule:
+    - cron: '0 14 * * *'
   workflow_dispatch:
     inputs:
       limit:
@@ -79,6 +73,15 @@ jobs:
         run: npm install -g wrangler@4
       - name: Install loop dependencies
         run: pip install -r requirements-loop.txt
+      # See loop-reach.yml for why this exists: a scope missing from
+      # YT_OAUTH_REFRESH_TOKEN must fail here, by name, before any quota is
+      # spent - not surface as a 403 mid-upload. auth/check_ci_scopes.py
+      # checks against auth/tokens.py:T.SCOPES, never a copy of it.
+      - name: Verify the CI YouTube credential's scopes
+        env:
+          YT_OAUTH_CLIENT_JSON: ${{ secrets.YT_OAUTH_CLIENT_JSON }}
+          YT_OAUTH_REFRESH_TOKEN: ${{ secrets.YT_OAUTH_REFRESH_TOKEN }}
+        run: python3 auth/check_ci_scopes.py
       - name: Pull from R2 and upload to YouTube, private and dated
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

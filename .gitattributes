@@ -1,0 +1,11 @@
+# loop/state/quota.json is derived accounting that two cloud lanes can write
+# within the same minute (loop-upload-cloud, loop-reach, loop-shorts-cloud all
+# spend from one daily YouTube quota). A textual git conflict here is a false
+# positive -- the fix is not "pick a side", it's "sum both real spends" -- so
+# this file gets a custom merge driver instead of the default one.
+#
+# The driver COMMAND is not defined here (git will not execute a command from
+# a committed file); bin/loop-stage.sh sets `merge.quota-union.driver` in local
+# git config before every pull --rebase that can touch this file. See
+# loop/tools/merge_quota_json.py for the merge logic itself.
+loop/state/quota.json merge=quota-union
