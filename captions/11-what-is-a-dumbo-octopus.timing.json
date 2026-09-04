@@ -1,0 +1,124 @@
+{
+  "episode": "11-what-is-a-dumbo-octopus",
+  "beats": 56,
+  "plan_source": "plans/11-what-is-a-dumbo-octopus.json",
+  "timing": "estimate",
+  "beats_measured": 0,
+  "duration_s": 429.12,
+  "cues": 122,
+  "chapters_real": 13,
+  "chapters_published": 12,
+  "chapter_notes": [
+    "merged 1 chapter(s) under 10s: Title card (3.5s)"
+  ],
+  "drift": {
+    "mean_abs_s": 31.2,
+    "worst_abs_s": 64.9,
+    "rows": [
+      {
+        "title": "Cold open",
+        "hand": "00:00",
+        "real": "0:00",
+        "drift_s": 0.0
+      },
+      {
+        "title": "Title card",
+        "hand": "00:14",
+        "real": "0:09",
+        "drift_s": -5.0
+      },
+      {
+        "title": "A name that hides a whole group",
+        "hand": "00:16",
+        "real": "0:12",
+        "drift_s": -3.5
+      },
+      {
+        "title": "Producer POV",
+        "hand": "01:26",
+        "real": "1:16",
+        "drift_s": -9.2
+      },
+      {
+        "title": "The observation at 6,957 meters",
+        "hand": "01:38",
+        "real": "1:28",
+        "drift_s": -9.7
+      },
+      {
+        "title": "A body built around water, not air",
+        "hand": "02:46",
+        "real": "2:26",
+        "drift_s": -19.1
+      },
+      {
+        "title": "What the camera still cannot tell us",
+        "hand": "03:57",
+        "real": "3:26",
+        "drift_s": -30.6
+      },
+      {
+        "title": "The record changes the map",
+        "hand": "05:06",
+        "real": "4:24",
+        "drift_s": -41.7
+      },
+      {
+        "title": "What the record changes",
+        "hand": "05:40",
+        "real": "4:54",
+        "drift_s": -46.0
+      },
+      {
+        "title": "The owner check",
+        "hand": "06:45",
+        "real": "5:46",
+        "drift_s": -58.2
+      },
+      {
+        "title": "What to notice in the edit",
+        "hand": "07:11",
+        "real": "6:11",
+        "drift_s": -59.1
+      },
+      {
+        "title": "Evidence limit",
+        "hand": "07:36",
+        "real": "6:37",
+        "drift_s": -58.9
+      },
+      {
+        "title": "Closing",
+        "hand": "08:00",
+        "real": "6:55",
+        "drift_s": -64.9
+      }
+    ]
+  },
+  "ffprobe": {
+    "file": "renders/11-what-is-a-dumbo-octopus.mp4",
+    "video_s": 429.132,
+    "last_cue_end_s": 429.12,
+    "delta_s": -0.012,
+    "ok": true
+  },
+  "text_checks": {
+    "beats_json": {
+      "checked": 56,
+      "mismatched": []
+    },
+    "script_text": {
+      "checked": 56,
+      "absent_from_narration": []
+    }
+  },
+  "script_chapters": {
+    "written": false,
+    "reason": "timing source is 'estimate'; stamps are only written from fully measured audio"
+  },
+  "artifacts": [
+    "captions/11-what-is-a-dumbo-octopus.vtt",
+    "captions/11-what-is-a-dumbo-octopus.srt",
+    "captions/11-what-is-a-dumbo-octopus.chapters.txt"
+  ]
+}

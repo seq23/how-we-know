@@ -1,0 +1,142 @@
+{
+  "episode": "17-what-is-a-yeti-crab",
+  "beats": 60,
+  "plan_source": "plans/17-what-is-a-yeti-crab.json",
+  "timing": "estimate",
+  "beats_measured": 0,
+  "duration_s": 448.67,
+  "cues": 125,
+  "chapters_real": 16,
+  "chapters_published": 12,
+  "chapter_notes": [
+    "merged 4 chapter(s) under 10s: Title card (3.5s), Producer POV (8.7s), The final edit check (7.9s), Final editorial note (6.6s)"
+  ],
+  "drift": {
+    "mean_abs_s": 16.5,
+    "worst_abs_s": 30.7,
+    "rows": [
+      {
+        "title": "Cold open",
+        "hand": "00:00",
+        "real": "0:00",
+        "drift_s": 0.0
+      },
+      {
+        "title": "Title card",
+        "hand": "00:12",
+        "real": "0:09",
+        "drift_s": -3.0
+      },
+      {
+        "title": "A family science met only recently",
+        "hand": "00:14",
+        "real": "0:12",
+        "drift_s": -1.5
+      },
+      {
+        "title": "Producer POV",
+        "hand": "01:14",
+        "real": "1:09",
+        "drift_s": -4.2
+      },
+      {
+        "title": "The dancing behavior that suggested cultivation",
+        "hand": "01:24",
+        "real": "1:18",
+        "drift_s": -5.5
+      },
+      {
+        "title": "Chemistry, anatomy, and behavior point to the same meal",
+        "hand": "02:26",
+        "real": "2:14",
+        "drift_s": -11.2
+      },
+      {
+        "title": "One family, several microbial arrangements",
+        "hand": "03:23",
+        "real": "3:08",
+        "drift_s": -14.6
+      },
+      {
+        "title": "From strange dance to tested diet",
+        "hand": "04:31",
+        "real": "4:13",
+        "drift_s": -18.0
+      },
+      {
+        "title": "What makes farming the cautious word",
+        "hand": "05:01",
+        "real": "4:39",
+        "drift_s": -21.3
+      },
+      {
+        "title": "The word on screen",
+        "hand": "05:59",
+        "real": "5:36",
+        "drift_s": -22.7
+      },
+      {
+        "title": "The source hierarchy",
+        "hand": "06:23",
+        "real": "5:58",
+        "drift_s": -24.4
+      },
+      {
+        "title": "The final edit check",
+        "hand": "06:41",
+        "real": "6:14",
+        "drift_s": -26.8
+      },
+      {
+        "title": "Final editorial note",
+        "hand": "06:48",
+        "real": "6:22",
+        "drift_s": -26.0
+      },
+      {
+        "title": "What to notice in the edit",
+        "hand": "06:55",
+        "real": "6:28",
+        "drift_s": -26.3
+      },
+      {
+        "title": "Evidence limit",
+        "hand": "07:19",
+        "real": "6:51",
+        "drift_s": -27.7
+      },
+      {
+        "title": "Closing",
+        "hand": "07:45",
+        "real": "7:14",
+        "drift_s": -30.7
+      }
+    ]
+  },
+  "ffprobe": {
+    "file": "renders/17-what-is-a-yeti-crab.mp4",
+    "video_s": 448.696,
+    "last_cue_end_s": 448.67,
+    "delta_s": -0.026,
+    "ok": true
+  },
+  "text_checks": {
+    "beats_json": {
+      "checked": 60,
+      "mismatched": []
+    },
+    "script_text": {
+      "checked": 60,
+      "absent_from_narration": []
+    }
+  },
+  "script_chapters": {
+    "written": false,
+    "reason": "timing source is 'estimate'; stamps are only written from fully measured audio"
+  },
+  "artifacts": [
+    "captions/17-what-is-a-yeti-crab.vtt",
+    "captions/17-what-is-a-yeti-crab.srt",
+    "captions/17-what-is-a-yeti-crab.chapters.txt"
+  ]
+}

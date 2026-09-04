@@ -1,0 +1,145 @@
+{
+  "episode": "18-why-does-black-smoker-water-not-boil",
+  "beats": 59,
+  "plan_source": "plans/18-why-does-black-smoker-water-not-boil.json",
+  "timing": "audio",
+  "beats_measured": 59,
+  "duration_s": 498.688,
+  "cues": 128,
+  "chapters_real": 16,
+  "chapters_published": 14,
+  "chapter_notes": [
+    "merged 2 chapter(s) under 10s: Title card (2.9s), Producer POV (7.3s)"
+  ],
+  "drift": {
+    "mean_abs_s": 3.2,
+    "worst_abs_s": 8.5,
+    "rows": [
+      {
+        "title": "Cold open",
+        "hand": "00:00",
+        "real": "0:00",
+        "drift_s": 0.0
+      },
+      {
+        "title": "Title card",
+        "hand": "00:11",
+        "real": "0:12",
+        "drift_s": 1.1
+      },
+      {
+        "title": "One hundred degrees is not a universal boiling point",
+        "hand": "00:14",
+        "real": "0:15",
+        "drift_s": 1.0
+      },
+      {
+        "title": "Producer POV",
+        "hand": "01:10",
+        "real": "1:09",
+        "drift_s": -0.7
+      },
+      {
+        "title": "A circulation system inside the crust",
+        "hand": "01:20",
+        "real": "1:16",
+        "drift_s": -3.4
+      },
+      {
+        "title": "The smoke is a mineral cloud",
+        "hand": "02:14",
+        "real": "2:11",
+        "drift_s": -2.5
+      },
+      {
+        "title": "Life occupies the boundary, not the furnace",
+        "hand": "03:10",
+        "real": "3:10",
+        "drift_s": 0.2
+      },
+      {
+        "title": "Boiling is a pressure question",
+        "hand": "04:09",
+        "real": "4:12",
+        "drift_s": 3.8
+      },
+      {
+        "title": "Where the usable energy appears",
+        "hand": "04:36",
+        "real": "4:41",
+        "drift_s": 5.6
+      },
+      {
+        "title": "The temperature card",
+        "hand": "05:34",
+        "real": "5:37",
+        "drift_s": 3.6
+      },
+      {
+        "title": "The word smoke",
+        "hand": "05:59",
+        "real": "6:02",
+        "drift_s": 3.7
+      },
+      {
+        "title": "The closing correction",
+        "hand": "06:21",
+        "real": "6:24",
+        "drift_s": 3.2
+      },
+      {
+        "title": "Final editorial note",
+        "hand": "06:46",
+        "real": "6:48",
+        "drift_s": 2.6
+      },
+      {
+        "title": "What to notice in the edit",
+        "hand": "07:07",
+        "real": "7:11",
+        "drift_s": 4.7
+      },
+      {
+        "title": "Evidence limit",
+        "hand": "07:29",
+        "real": "7:36",
+        "drift_s": 7.2
+      },
+      {
+        "title": "Closing",
+        "hand": "07:57",
+        "real": "8:05",
+        "drift_s": 8.5
+      }
+    ]
+  },
+  "ffprobe": {
+    "file": "renders/18-why-does-black-smoker-water-not-boil.mp4",
+    "video_s": 454.833,
+    "last_cue_end_s": 498.688,
+    "delta_s": 43.855,
+    "ok": null,
+    "render_timing": "estimate (predates narration - re-render)"
+  },
+  "text_checks": {
+    "beats_json": {
+      "checked": 59,
+      "mismatched": []
+    },
+    "script_text": {
+      "checked": 59,
+      "absent_from_narration": []
+    }
+  },
+  "script_chapters": {
+    "written": false,
+    "changed": false,
+    "removed_lines": [],
+    "chapters_not_in_script": []
+  },
+  "artifacts": [
+    "captions/18-why-does-black-smoker-water-not-boil.vtt",
+    "captions/18-why-does-black-smoker-water-not-boil.srt",
+    "captions/18-why-does-black-smoker-water-not-boil.chapters.txt"
+  ]
+}

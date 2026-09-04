@@ -1,0 +1,266 @@
+{
+  "generated_for": [
+    "how-are-microchips-made",
+    "how-does-quenching-harden-steel",
+    "how-do-self-healing-materials-work"
+  ],
+  "episodes": [
+    {
+      "episode": "how-are-microchips-made",
+      "beats": 72,
+      "plan_source": "plans/how-are-microchips-made.json",
+      "timing": "audio",
+      "beats_measured": 72,
+      "duration_s": 634.832,
+      "cues": 166,
+      "chapters_real": 12,
+      "chapters_published": 12,
+      "chapter_notes": [],
+      "drift": {
+        "mean_abs_s": 26.1,
+        "worst_abs_s": 50.3,
+        "rows": [
+          {
+            "title": "Cold open",
+            "hand": "00:00",
+            "real": "0:00",
+            "drift_s": 0.0
+          },
+          {
+            "title": "The substrate is crystalline silicon grown as a single unbroken lattice",
+            "hand": "00:30",
+            "real": "0:27",
+            "drift_s": -2.0
+          },
+          {
+            "title": "Photolithography transfers a pattern from a mask to the wafer surface",
+            "hand": "01:42",
+            "real": "1:34",
+            "drift_s": -7.6
+          },
+          {
+            "title": "Extreme ultraviolet light enables features smaller than the wavelength of visible light",
+            "hand": "03:18",
+            "real": "2:48",
+            "drift_s": -29.5
+          },
+          {
+            "title": "Etching removes material in patterns defined by the resist",
+            "hand": "04:48",
+            "real": "4:02",
+            "drift_s": -45.1
+          },
+          {
+            "title": "Deposition adds thin films of conductors, insulators, and semiconductors",
+            "hand": "06:00",
+            "real": "5:13",
+            "drift_s": -46.6
+          },
+          {
+            "title": "Doping introduces impurities that control electrical conductivity",
+            "hand": "07:12",
+            "real": "6:21",
+            "drift_s": -50.3
+          },
+          {
+            "title": "Chemical mechanical polishing flattens each layer before the next is built",
+            "hand": "08:24",
+            "real": "7:42",
+            "drift_s": -41.1
+          },
+          {
+            "title": "What to notice in the edit",
+            "hand": "09:24",
+            "real": "8:44",
+            "drift_s": -39.7
+          },
+          {
+            "title": "Evidence limit",
+            "hand": "10:00",
+            "real": "9:37",
+            "drift_s": -23.0
+          },
+          {
+            "title": "Closing",
+            "hand": "10:18",
+            "real": "10:15",
+            "drift_s": -2.3
+          }
+        ]
+      },
+      "ffprobe": {
+        "file": "renders/how-are-microchips-made-final.mp4",
+        "video_s": 634.832,
+        "last_cue_end_s": 634.832,
+        "delta_s": 0.0,
+        "ok": true
+      },
+      "text_checks": {
+        "beats_json": {
+          "checked": 72,
+          "mismatched": []
+        },
+        "script_text": {
+          "checked": 72,
+          "absent_from_narration": []
+        }
+      },
+      "script_chapters": {
+        "written": true,
+        "changed": true,
+        "removed_lines": [
+          "Title card"
+        ],
+        "chapters_not_in_script": [
+          "Producer POV"
+        ]
+      },
+      "artifacts": [
+        "captions/how-are-microchips-made.vtt",
+        "captions/how-are-microchips-made.srt",
+        "captions/how-are-microchips-made.chapters.txt"
+      ]
+    },
+    {
+      "episode": "how-does-quenching-harden-steel",
+      "beats": 86,
+      "plan_source": "plans/how-does-quenching-harden-steel.json",
+      "timing": "audio",
+      "beats_measured": 86,
+      "duration_s": 679.517,
+      "cues": 172,
+      "chapters_real": 13,
+      "chapters_published": 12,
+      "chapter_notes": [
+        "merged 1 chapter(s) under 10s: Title card (2.2s)"
+      ],
+      "drift": {
+        "mean_abs_s": 19.5,
+        "worst_abs_s": 36.3,
+        "rows": [
+          {
+            "title": "Cold open",
+            "hand": "00:00",
+            "real": "0:00",
+            "drift_s": 0.0
+          },
+          {
+            "title": "Title card",
+            "hand": "00:35",
+            "real": "0:35",
+            "drift_s": 0.4
+          },
+          {
+            "title": "What to notice in the edit",
+            "hand": "10:18",
+            "real": "9:45",
+            "drift_s": -32.1
+          },
+          {
+            "title": "Evidence limit",
+            "hand": "10:56",
+            "real": "10:19",
+            "drift_s": -36.3
+          },
+          {
+            "title": "Closing",
+            "hand": "11:30",
+            "real": "11:01",
+            "drift_s": -28.9
+          }
+        ]
+      },
+      "ffprobe": {
+        "file": "renders/how-does-quenching-harden-steel-final.mp4",
+        "video_s": 679.517,
+        "last_cue_end_s": 679.517,
+        "delta_s": 0.0,
+        "ok": true
+      },
+      "text_checks": {
+        "beats_json": {
+          "checked": 86,
+          "mismatched": []
+        },
+        "script_text": {
+          "checked": 86,
+          "absent_from_narration": []
+        }
+      },
+      "script_chapters": {
+        "written": true,
+        "changed": true,
+        "removed_lines": [
+          "Title card",
+          "Austenite is the starting structure",
+          "Martensite forms when carbon is trapped",
+          "The quench medium controls cooling rate",
+          "Critical cooling rate threshold",
+          "Hardness depends on carbon content",
+          "Tempering reduces brittleness",
+          "Alloy steels allow slower quenches"
+        ],
+        "chapters_not_in_script": [
+          "Austenite is the starting structure, not the ending one",
+          "Martensite forms when carbon is trapped by speed",
+          "The quench medium controls the cooling rate",
+          "The critical cooling rate is the threshold for martensite",
+          "Hardness depends on carbon content, not just martensite formation",
+          "Tempering follows quenching to reduce brittleness",
+          "Producer POV",
+          "Alloy steels allow slower quenches and thicker sections"
+        ]
+      },
+      "artifacts": [
+        "captions/how-does-quenching-harden-steel.vtt",
+        "captions/how-does-quenching-harden-steel.srt",
+        "captions/how-does-quenching-harden-steel.chapters.txt"
+      ]
+    },
+    {
+      "episode": "how-do-self-healing-materials-work",
+      "beats": 62,
+      "plan_source": "plans/how-do-self-healing-materials-work.json",
+      "timing": "audio",
+      "beats_measured": 62,
+      "duration_s": 516.627,
+      "cues": 133,
+      "chapters_real": 11,
+      "chapters_published": 10,
+      "chapter_notes": [
+        "merged 1 chapter(s) under 10s: Title card (2.4s)"
+      ],
+      "drift": {
+        "mean_abs_s": 0.0,
+        "worst_abs_s": 0.0,
+        "rows": []
+      },
+      "ffprobe": {
+        "file": "renders/how-do-self-healing-materials-work-final.mp4",
+        "video_s": 516.626,
+        "last_cue_end_s": 516.627,
+        "delta_s": 0.001,
+        "ok": true
+      },
+      "text_checks": {
+        "beats_json": {
+          "checked": 62,
+          "mismatched": []
+        },
+        "script_text": {
+          "checked": 62,
+          "absent_from_narration": []
+        }
+      },
+      "script_chapters": {
+        "written": false,
+        "reason": "script has no ## Chapters block"
+      },
+      "artifacts": [
+        "captions/how-do-self-healing-materials-work.vtt",
+        "captions/how-do-self-healing-materials-work.srt",
+        "captions/how-do-self-healing-materials-work.chapters.txt"
+      ]
+    }
+  ]
+}
