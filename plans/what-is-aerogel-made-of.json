@@ -125,18 +125,16 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "material_image",
     "seconds": 5.38,
     "heading": "The gel precursor is silica in a liquid scaffold",
     "narration": "Aerogel exists only if you remove the liquid without crossing a liquid-vapor interface.",
     "args": {
-      "lines": [
-        "Aerogel exists only if",
-        "you remove the liquid",
-        "without crossing"
-      ]
+      "subject": "aerogel",
+      "label": "AEROGEL",
+      "pick": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+material"
   },
   {
     "segment": "thermal_ascent",
@@ -353,18 +351,16 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "material_image",
     "seconds": 5.38,
     "heading": "Density and porosity are controlled by precursor concentration",
     "narration": "A concentrated solution yields a denser aerogel with smaller pores and thicker strands.",
     "args": {
-      "lines": [
-        "A concentrated solution yields",
-        "a denser aerogel with",
-        "smaller pores"
-      ]
+      "subject": "aerogel",
+      "label": "AEROGEL",
+      "pick": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+material"
   },
   {
     "segment": "stat_card",

@@ -8,18 +8,16 @@
     "from": "heuristic"
   },
   {
-    "segment": "text_beat",
+    "segment": "material_image",
     "seconds": 6.21,
     "heading": "Cold open",
     "narration": "That factor alone does not explain why aerospace engineers specify carbon fiber for primary structure.",
     "args": {
-      "lines": [
-        "That factor alone does",
-        "not explain why aerospace",
-        "engineers specify"
-      ]
+      "subject": "carbon-fiber",
+      "label": "CARBON FIBER",
+      "pick": 0
     },
-    "from": "heuristic"
+    "from": "heuristic+material"
   },
   {
     "segment": "size_ladder",
@@ -196,14 +194,16 @@
     "from": "heuristic"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "material_image",
     "seconds": 9.0,
     "heading": "The graphite plane is a two-dimensional crystal with in-plane isotropy",
     "narration": "Real carbon fiber never reaches that number. Defects, misalignments and surface flaws reduce the realized strength by more than an order of magnitude. The gap between theory and practice is where manufacturing matters.",
     "args": {
-      "variant": 1
+      "subject": "carbon-fiber",
+      "label": "CARBON FIBER",
+      "pick": 1
     },
-    "from": "heuristic"
+    "from": "heuristic+material"
   },
   {
     "segment": "thermal_ascent",

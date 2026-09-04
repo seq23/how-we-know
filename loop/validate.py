@@ -1411,6 +1411,110 @@ def v22_lane_interpreters() -> Result:
     return r
 
 
+def v23_material_image_rights() -> Result:
+    """No picture reaches a frame without a verified public-domain record.
+
+    HARD, unlike V6. V6 is soft because a missing bibliography line is a
+    provenance-record gap and the pipeline still cannot speak a number it was
+    not given. This is different in kind: a `material_image` beat puts somebody
+    else's photograph on a monetised channel, and CLAUDE.md's one absolute
+    imagery rule is that stripping or omitting attribution is the thing this
+    pipeline may not do. A plan can reference an image; only the manifest can
+    prove the right to show it.
+
+    For every `material_image` beat in every plan:
+
+      * the subject resolves to a record in channel/imagery/materials.json;
+      * that record carries a non-empty credit_line, item_url, licence and
+        sha256 - credit_line is what draw_image_beat() actually prints, so an
+        empty one is a picture shown with no credit at all;
+      * the licence is a public-domain or CC0 tag. CC-BY is NOT a public-domain
+        dedication and this channel is monetised;
+      * the file is on disk and its sha256 still matches what was rights-
+        checked, so an asset swapped after verification fails here rather than
+        shipping;
+      * the drawn label is not empty, because CONTRACT.md rule 1 is that the
+        picture is captioned with a word the viewer is hearing.
+
+    Hard-fails when it examines zero items - an episode set with no images and
+    an episode set whose manifest vanished look identical otherwise.
+    """
+    r = Result("V23 material-image rights")
+    import hashlib as _h                                   # noqa: PLC0415
+
+    plans = sorted((ROOT / "plans").glob("*.json"))
+    beats = []
+    for path in plans:
+        try:
+            plan = read_json(path)
+        except Exception as e:
+            r.examined += 1
+            r.fail(f"{path.name}: unreadable ({e})")
+            continue
+        for i, b in enumerate(plan):
+            if b.get("segment") == "material_image":
+                beats.append((path.name, i, b))
+
+    if not beats:
+        r.examined += 1
+        r.fail("no material_image beat in any plan, so this validator proved "
+               "nothing. Either the materials image lane never ran "
+               "(visuals/plan_materials_images.py --all --apply) or the plans "
+               "were regenerated over it; an empty loop must not pass.")
+        return r
+
+    man_path = ROOT / "channel" / "imagery" / "materials.json"
+    if not man_path.exists():
+        r.examined += 1
+        r.fail(f"{len(beats)} material_image beat(s) reference a manifest that "
+               f"does not exist: {man_path}. Every one would raise at render, "
+               f"after narration was paid for.")
+        return r
+    man = read_json(man_path)
+    by_subject = {}
+    for rec in man.get("index", []):
+        by_subject.setdefault(rec["subject"], []).append(rec)
+
+    PD_OK = ("public domain", "pd-", "cc0", "no restrictions")
+    checked_files = set()
+
+    for name, i, b in beats:
+        r.examined += 1
+        args = b.get("args") or {}
+        subj = args.get("subject")
+        recs = by_subject.get(subj)
+        if not recs:
+            r.fail(f"{name} beat {i}: subject {subj!r} has no verified record "
+                   f"in materials.json; this raises at render.")
+            continue
+        rec = recs[(args.get("pick") or 0) % len(recs)]
+
+        if not (args.get("label") or "").strip():
+            r.fail(f"{name} beat {i}: no on-screen label. The picture must be "
+                   f"captioned with a word the narration uses.")
+        for field in ("credit_line", "item_url", "licence", "sha256", "local_file"):
+            if not rec.get(field):
+                r.fail(f"{name} beat {i} [{subj}]: record is missing "
+                       f"{field!r} - it may not be shown.")
+        lic = (rec.get("licence") or "").lower()
+        if lic and not any(k in lic for k in PD_OK):
+            r.fail(f"{name} beat {i} [{subj}]: licence is {rec['licence']!r}, "
+                   f"which is not a public-domain dedication. This channel is "
+                   f"monetised and CC-BY does not qualify.")
+        lf = rec.get("local_file")
+        if lf and lf not in checked_files:
+            checked_files.add(lf)
+            fp = ROOT / "channel" / "imagery" / lf
+            if not fp.exists():
+                r.fail(f"[{subj}] {lf} is not on disk")
+            elif rec.get("sha256"):
+                got = _h.sha256(fp.read_bytes()).hexdigest()
+                if got != rec["sha256"]:
+                    r.fail(f"[{subj}] {lf} changed since it was rights-checked "
+                           f"(sha256 differs); it may not be shown.")
+    return r
+
+
 # ------------------------------------------------------------------ runner
 
 def run_all(items) -> tuple[bool, list[dict]]:
@@ -1428,7 +1532,8 @@ def run_all(items) -> tuple[bool, list[dict]]:
                v14_shorts_attribution(), v15_shorts_caption_crop(),
                v20_cadence_schedule(),
                v21_batch_sees_every_domain(),
-               v22_lane_interpreters()]
+               v22_lane_interpreters(),
+               v23_material_image_rights()]
     rows = [r.as_dict() for r in results]
     return all(r.ok for r in results), rows
 

@@ -40,18 +40,16 @@
     "from": "heuristic"
   },
   {
-    "segment": "text_beat",
+    "segment": "material_image",
     "seconds": 4.97,
     "heading": "The measurement that established the 130 gigapascal figure used suspended sheets and a diamond tip",
     "narration": "They suspended graphene sheets over circular wells etched into silicon dioxide substrates.",
     "args": {
-      "lines": [
-        "They suspended graphene sheets",
-        "over circular wells etched",
-        "into silicon"
-      ]
+      "subject": "graphene-lattice",
+      "label": "GRAPHENE",
+      "pick": 0
     },
-    "from": "heuristic"
+    "from": "heuristic+material"
   },
   {
     "segment": "ambient_drift",
@@ -176,18 +174,16 @@
     "from": "heuristic"
   },
   {
-    "segment": "text_beat",
+    "segment": "material_image",
     "seconds": 5.38,
     "heading": "Strength depends on the definition of strength and the direction of the force",
     "narration": "Graphene's 130 gigapascals applies to in-plane tension, meaning force applied along the sheet.",
     "args": {
-      "lines": [
-        "Graphene's 130 gigapascals applies",
-        "to in-plane tension, meaning",
-        "force applied"
-      ]
+      "subject": "graphene-lattice",
+      "label": "GRAPHENE",
+      "pick": 1
     },
-    "from": "heuristic"
+    "from": "heuristic+material"
   },
   {
     "segment": "ambient_drift",

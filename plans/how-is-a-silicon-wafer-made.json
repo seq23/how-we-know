@@ -10,18 +10,16 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "material_image",
     "seconds": 9.0,
     "heading": "Cold open",
     "narration": "But nine-nines silicon does not exist in nature. Every wafer starts as quartzite sand, which is only about ninety-eight percent silicon dioxide.",
     "args": {
-      "lines": [
-        "But nine-nines silicon does",
-        "not exist in nature.",
-        "Every wafer"
-      ]
+      "subject": "silicon-wafer",
+      "label": "WAFER",
+      "pick": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+material"
   },
   {
     "segment": "process_column",
@@ -96,18 +94,16 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "material_image",
     "seconds": 9.0,
     "heading": "Quartzite becomes metallurgical-grade silicon in an arc furnace at 2000 degrees Celsius",
     "narration": "The arc furnace step removes oxygen but leaves metallic impurities \u2014 iron, aluminum, calcium \u2014 at levels measured in thousands of parts per million.",
     "args": {
-      "lines": [
-        "The arc furnace step",
-        "removes oxygen but leaves",
-        "metallic impurities"
-      ]
+      "subject": "welding-arc",
+      "label": "THE ARC",
+      "pick": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+material"
   },
   {
     "segment": "thermal_ascent",
@@ -560,18 +556,16 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "material_image",
     "seconds": 7.45,
     "heading": "Dopants enter the melt to control electrical properties",
     "narration": "The dopant concentration determines the wafer's resistivity, measured in ohm-centimeters. SEMI standards specify resistivity ranges for different applications.",
     "args": {
-      "lines": [
-        "The dopant concentration determines",
-        "the wafer's resistivity, measured",
-        "in ohm-centimeters."
-      ]
+      "subject": "silicon-wafer",
+      "label": "WAFER",
+      "pick": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+material"
   },
   {
     "segment": "definition_card",

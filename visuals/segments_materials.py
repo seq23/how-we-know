@@ -258,3 +258,78 @@ def install(planner=None):
             cur |= {"thermal_ascent", "process_column"}
     _installed = True
     return True
+
+
+# ---------------------------------------------------------------------------
+# Verified public-domain photographs, micrographs and diagrams.
+#
+# The DRAWING is segments_species.draw_image_beat — one implementation, shared,
+# because the credit line and the medium stamp are the part that may not drift
+# between domains. What is materials-specific is only the index it resolves
+# against: research/imagery_materials.py's channel/imagery/materials.json,
+# whose licence gate is imagery.pd_licence_ok (imported, not reimplemented) and
+# whose copyright-assertion screen is deliberately NOT imagery.THIRD_PARTY —
+# that list rejects "nasa", "usgs" and "university", which for this domain are
+# the reason a work is free rather than evidence that it is not.
+# ---------------------------------------------------------------------------
+
+import json as _json
+import os as _os
+
+_MAT_INDEX = None
+
+
+class NoMaterialImage(KeyError):
+    """No verified public-domain image for this subject. Never substituted."""
+
+
+def material_index():
+    """Load and index the rights-verified materials manifest. Cached."""
+    global _MAT_INDEX
+    if _MAT_INDEX is not None:
+        return _MAT_INDEX
+    here = _os.path.dirname(_os.path.abspath(__file__))
+    path = _os.path.join(here, "..", "channel", "imagery", "materials.json")
+    man = _json.load(open(path))
+    by_subject, by_file = {}, {}
+    for rec in man["index"]:
+        by_subject.setdefault(rec["subject"], []).append(rec)
+        by_file[rec["local_file"]] = rec
+    _MAT_INDEX = {"_by_subject": by_subject, "_by_file": by_file,
+                  "_unillustratable": man.get("subjects_unillustratable", {})}
+    return _MAT_INDEX
+
+
+def material_image(t, subject=None, asset=None, label="", credit="", pick=0,
+                   note="", zoom=1.0):
+    """One verified public-domain image of the material the narration named.
+
+    Refuses rather than substitutes. A photograph of a blast furnace shown
+    while the narration describes a semiconductor cleanroom is a lie told in
+    pictures, and it is the failure the whole imagery gate exists to prevent —
+    so a subject with no verified image raises here and the drawn treatment
+    stands instead.
+    """
+    import segments_species as _SS                         # noqa: PLC0415
+
+    man = material_index()
+    if asset:
+        rec = man["_by_file"].get(asset)
+        if rec is None:
+            raise NoMaterialImage(
+                f"materials asset {asset!r} is not in the verified index")
+    else:
+        if not subject:
+            raise NoMaterialImage("material_image needs a subject or an asset")
+        if subject in man["_unillustratable"]:
+            raise NoMaterialImage(
+                f"subject {subject!r} is declared unillustratable: "
+                f"{man['_unillustratable'][subject]['why'][:200]}... "
+                f"Do not substitute; the drawn treatment stands.")
+        cands = man["_by_subject"].get(subject)
+        if not cands:
+            raise NoMaterialImage(
+                f"no verified public-domain image for subject {subject!r}")
+        rec = cands[pick % len(cands)]
+    return _SS.draw_image_beat(t, rec, label=label or rec.get("label", ""),
+                               credit=credit, note=note, zoom=zoom)

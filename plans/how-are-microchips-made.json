@@ -47,18 +47,16 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "material_image",
     "seconds": 4.97,
     "heading": "The substrate is crystalline silicon grown as a single unbroken lattice",
     "narration": "The wafer is not cut from a natural crystal. It is grown.",
     "args": {
-      "lines": [
-        "The wafer is not",
-        "cut from a natural",
-        "crystal. It"
-      ]
+      "subject": "silicon-wafer",
+      "label": "WAFER",
+      "pick": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+material"
   },
   {
     "segment": "definition_card",
@@ -170,18 +168,16 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "material_image",
     "seconds": 9.0,
     "heading": "Photolithography transfers a pattern from a mask to the wafer surface",
     "narration": "The wafer is soft-baked to evaporate solvents. A photomask \u2014 a quartz plate with opaque chrome patterns \u2014 is aligned above the wafer, and ultraviolet light shines through the mask.",
     "args": {
-      "lines": [
-        "The wafer is soft-baked",
-        "to evaporate solvents. A",
-        "photomask"
-      ]
+      "subject": "silicon-wafer",
+      "label": "WAFER",
+      "pick": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+material"
   },
   {
     "segment": "process_steps",
@@ -939,18 +935,16 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "material_image",
     "seconds": 7.86,
     "heading": "Chemical mechanical polishing flattens each layer before the next is built",
     "narration": "SEMI standards specify the post-CMP flatness and defect density. Without CMP, photolithography could not focus on the next layer.",
     "args": {
-      "lines": [
-        "SEMI standards specify the",
-        "post-CMP flatness and defect",
-        "density. Without"
-      ]
+      "subject": "cleanroom",
+      "label": "PHOTOLITHOGRAPH",
+      "pick": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+material"
   },
   {
     "segment": "source_compare",
@@ -1023,18 +1017,16 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "material_image",
     "seconds": 9.0,
     "heading": "What to notice in the edit",
     "narration": "Transmission electron microscopy images the final transistor structure at atomic resolution, confirming that the layers are where the process intended them to be.",
     "args": {
-      "lines": [
-        "Transmission electron microscopy images",
-        "the final transistor structure",
-        "at atomic"
-      ]
+      "subject": "microchip-die",
+      "label": "TRANSISTOR",
+      "pick": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+material"
   },
   {
     "segment": "text_beat",
