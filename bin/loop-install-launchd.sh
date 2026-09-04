@@ -1,10 +1,15 @@
 #!/usr/bin/env bash
 # Install (or show) the launchd agents that make the Mac the muscle half.
 #
-#   DAILY 01:00    bin/batch-session.sh  narrate what has no audio, render what
+#   DAILY 23:00    bin/batch-session.sh  narrate what has no audio, render what
 #                                        has audio, push, then NAMED STOP
 #   Tuesday 02:00  bin/loop-tuesday.sh   pull, synthesise, render, receipts, push
 #   Thursday 02:00 bin/loop-thursday.sh  upload PRIVATE, receipts, push
+#
+# 23:00 is the owner's choice (2026-09-04): start the night's narration when
+# she has stopped using the Mac, so the ~4 cores the voice model takes are not
+# competing with her. The job holds the machine awake for its own duration with
+# caffeinate -dimsu and releases it when it stops.
 #
 # WHY THE BATCH AGENT IS DAILY AND WHY THAT IS NOT WASTEFUL. Narration measures
 # at ~0.8 beats a minute on this M2, so the 18-episode materials queue is ~27
@@ -67,7 +72,7 @@ XML
 case "${1:-}" in
   --install)
     mkdir -p "$AGENTS" "$LOGDIR"
-    plist batch    batch-session.sh - 1 > "$AGENTS/com.howweknow.batch.plist"
+    plist batch    batch-session.sh - 23 > "$AGENTS/com.howweknow.batch.plist"
     plist tuesday  loop-tuesday.sh  2 2 > "$AGENTS/com.howweknow.tuesday.plist"
     plist thursday loop-thursday.sh 4 2 > "$AGENTS/com.howweknow.thursday.plist"
     # VERIFY THE XML, never launchctl's own word. A plist launchd cannot parse
@@ -95,7 +100,7 @@ case "${1:-}" in
     echo "logs: $LOGDIR"
     ;;
   *)
-    echo "# Daily 01:00"; plist batch batch-session.sh - 1
+    echo "# Daily 23:00"; plist batch batch-session.sh - 23
     echo; echo "# Tuesday 02:00"; plist tuesday loop-tuesday.sh 2 2
     echo; echo "# Thursday 02:00"; plist thursday loop-thursday.sh 4 2
     echo; echo "Nothing was written. Re-run with --install to load these."

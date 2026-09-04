@@ -1288,6 +1288,59 @@ def v21_batch_sees_every_domain() -> Result:
         r.fail("no research/publish_order*.json files at all")
         return r
 
+    # ---- the SCHEDULING modules must SEE every domain --------------------
+    # Asserted behaviourally, not by grepping for the filename. A first
+    # attempt did grep loop/*.py and produced nine failures, almost all of
+    # them docstring prose that merely mentions the file - and it would still
+    # have flagged cadence.PUBLISH_ORDER, which is legitimate: cadence reads
+    # the primary file for its staleness and shape checks and merges the rest
+    # on top. "Does this module name the file" is not the invariant. "Can this
+    # module see a second domain's episodes" is, and it is the thing that was
+    # actually broken: cadence.publish_order() returned 16 deep-sea slugs and
+    # backfill.question_for() raised KeyError for every materials slug, so the
+    # runway read "0 publishable episode(s) of 22 on disk" while eighteen
+    # episodes sat scored, scripted and planned.
+    import importlib                                      # noqa: PLC0415
+
+    per_file = {}
+    for path in files:
+        per_file[path.name] = {row.get("slug") for row in
+                               (_json.loads(path.read_text()).get("queue") or [])
+                               if row.get("slug")}
+
+    r.examined += 1
+    try:
+        import cadence as _cad                            # noqa: PLC0415
+        importlib.reload(_cad)
+        seen = set(_cad.publish_order())
+        for fname, slugs in per_file.items():
+            missing = slugs - seen
+            if missing:
+                r.fail(f"cadence.publish_order() cannot see {len(missing)} slug(s) "
+                       f"from {fname}, e.g. {sorted(missing)[:3]}. Every runway "
+                       f"and cadence decision would be made as though that "
+                       f"domain's queue did not exist.")
+    except Exception as e:                                # noqa: BLE001
+        r.fail(f"cadence.publish_order() raised: {e}")
+
+    r.examined += 1
+    try:
+        import backfill as _bf                            # noqa: PLC0415
+        importlib.reload(_bf)
+        for fname, slugs in per_file.items():
+            if not slugs:
+                continue
+            probe = sorted(slugs)[0]
+            try:
+                _bf.question_for(probe)
+            except Exception:                             # noqa: BLE001
+                r.fail(f"backfill.question_for({probe!r}) fails for a slug from "
+                       f"{fname}. The question becomes the video title, so the "
+                       f"upload would fail at titling after the render was paid "
+                       f"for.")
+    except Exception as e:                                # noqa: BLE001
+        r.fail(f"backfill could not be exercised: {e}")
+
     # ---- no bin/ script names a publish-order file directly --------------
     for sh in sorted((ROOT / "bin").glob("*.sh")):
         r.examined += 1
