@@ -107,7 +107,8 @@
       "cues": 135,
       "track_kind": "standard",
       "source": "inserted",
-      "recorded_at": "2026-09-03T17:28:07+00:00"
+      "recorded_at": "2026-09-03T17:28:07+00:00",
+      "verified_at": "2026-09-04T20:34:36+00:00"
     },
     "OdYunlbB73g": {
       "slug": "19-what-is-the-deepest-fish-ever-recorded",
@@ -117,7 +118,8 @@
       "cues": 123,
       "track_kind": "standard",
       "source": "inserted",
-      "recorded_at": "2026-09-03T17:28:08+00:00"
+      "recorded_at": "2026-09-03T17:28:08+00:00",
+      "verified_at": "2026-09-04T20:34:36+00:00"
     },
     "IbrSPKUK1IM": {
       "slug": "18-why-does-black-smoker-water-not-boil",
@@ -127,7 +129,8 @@
       "cues": 128,
       "track_kind": "standard",
       "source": "inserted",
-      "recorded_at": "2026-09-03T17:28:09+00:00"
+      "recorded_at": "2026-09-03T17:28:09+00:00",
+      "verified_at": "2026-09-04T20:34:36+00:00"
     },
     "xyZ9xs7OF3g": {
       "slug": "04-why-deep-sea-creatures-are-so-scary",
@@ -178,10 +181,40 @@
       "track_kind": "standard",
       "source": "inserted",
       "recorded_at": "2026-09-04T19:46:12+00:00"
+    },
+    "YuZxDiNUw4w": {
+      "slug": "how-are-microchips-made",
+      "caption_id": "AUieDaYE1KA7QKn73Ge6yXAfmyqC0UBCHyS6CmmkMdhSaVxTYM9sR_Fz",
+      "language": "en",
+      "srt_sha256": "132995a474f0491cbacfe9ee915cec8f3aa233b9b7185b809b93aeac78367df8",
+      "cues": 166,
+      "track_kind": "standard",
+      "source": "inserted",
+      "recorded_at": "2026-09-04T20:34:34+00:00"
+    },
+    "aKyOg7xbxC0": {
+      "slug": "how-does-quenching-harden-steel",
+      "caption_id": "AUieDaa6R142LvVw_S_ojAvTz8p4-jNt4mo47dOr8g2DFSk0jo4_501S",
+      "language": "en",
+      "srt_sha256": "b96566e3db4469fee6cf8f19801b55dd3466545707d2125f1b125faef33dd8db",
+      "cues": 172,
+      "track_kind": "standard",
+      "source": "inserted",
+      "recorded_at": "2026-09-04T20:34:35+00:00"
+    },
+    "eJSCm5sk5AA": {
+      "slug": "how-do-self-healing-materials-work",
+      "caption_id": "AUieDaYTAaQaQhWUkKWov3iibNkg5xH1czLziu0PFxDgneXjbz4E4ovu",
+      "language": "en",
+      "srt_sha256": "c1a3f1c14feda581000f08a45957984e379129657b99ee6b1a8bd63e5b9baaec",
+      "cues": 133,
+      "track_kind": "standard",
+      "source": "inserted",
+      "recorded_at": "2026-09-04T20:34:35+00:00"
     }
   },
   "blocked": {},
-  "updated": "2026-09-04T19:46:12+00:00",
+  "updated": "2026-09-04T20:34:36+00:00",
   "token_scopes": [
     "https://www.googleapis.com/auth/youtube",
     "https://www.googleapis.com/auth/youtube.force-ssl",
