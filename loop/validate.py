@@ -1242,6 +1242,100 @@ def probe(url: str, timeout: int = 20) -> tuple[int, str]:
     return 0, "unreachable"
 
 
+def v21_batch_sees_every_domain() -> Result:
+    """The Mac's batch must see EVERY domain's queue, not just deep sea.
+
+    THE FAILURE THIS EXISTS TO CATCH LOOKS EXACTLY LIKE SUCCESS. On 2026-09-03
+    `bin/batch-session.sh` opened `research/publish_order.json` by name, so the
+    eighteen gated materials-and-manufacturing topics in
+    `research/publish_order_materials.json` did not exist as far as the Mac was
+    concerned. It printed its "everything is narrated, nothing to do" named stop
+    over a queue that was not empty, and the only symptom was an operator asking
+    what the output meant. `loop/domains.py` had already globbed
+    `publish_order*.json` for the monthly review; the batch had not — two
+    components each keeping their own list with nothing linking them.
+
+    Three things are asserted:
+
+      * **One source of the queue.** No shell script under `bin/` may name a
+        publish-order file directly; they go through `loop/batch_queue.py`,
+        which globs. A second hardcoded filename is how the next domain becomes
+        invisible.
+      * **The merged queue really is a superset.** Every slug in every
+        `research/publish_order*.json` file — globbed HERE, not asked of
+        `batch_queue`, which would be circular — is returned by
+        `batch_queue.queued_slugs()`, so a file that exists but is skipped
+        fails here rather than going quiet.
+      * **An empty glob hard-fails.** `queued_slugs()` raises rather than
+        returning `[]`, because an empty queue and a missing research directory
+        produce identical output otherwise.
+
+    Hard-fails when it examines zero items.
+    """
+    r = Result("V21 batch-sees-domains")
+    sys.path.insert(0, str(ROOT / "loop"))
+    import batch_queue                                   # noqa: PLC0415
+    import json as _json                                 # noqa: PLC0415
+
+    # Globbed HERE, independently. Asking batch_queue which files count and
+    # then checking its queue against them is circular: narrowing its own glob
+    # would shrink both sides together and the validator would pass while a
+    # whole domain went missing. That is exactly what the first negative proof
+    # of this validator did.
+    files = sorted((ROOT / "research").glob("publish_order*.json"))
+    r.examined += 1
+    if not files:
+        r.fail("no research/publish_order*.json files at all")
+        return r
+
+    # ---- no bin/ script names a publish-order file directly --------------
+    for sh in sorted((ROOT / "bin").glob("*.sh")):
+        r.examined += 1
+        # Comments may name a file while explaining it; a GLOB is the fix,
+        # not the defect. Only executable lines naming ONE publish-order file
+        # are wrong, because those are the ones that hide the next domain.
+        bad = [n for n, line in enumerate(sh.read_text().splitlines(), 1)
+               if "research/publish_order" in line
+               and not line.lstrip().startswith("#")
+               and "publish_order*" not in line]
+        if bad:
+            r.fail(f"{sh.name} line(s) {bad} name a single publish-order file; "
+                   f"use loop/batch_queue.py or a publish_order*.json glob. A "
+                   f"hardcoded filename hides the next domain.")
+
+    # ---- the merged queue is a superset of every file --------------------
+    merged = set(batch_queue.queued_slugs())
+    for path in files:
+        rows = _json.loads(path.read_text()).get("queue") or []
+        r.examined += 1
+        if not rows:
+            r.fail(f"{path.name} has an empty queue")
+            continue
+        missing = [row.get("slug") for row in rows
+                   if row.get("slug") and row.get("slug") not in merged]
+        if missing:
+            r.fail(f"{path.name}: {len(missing)} slug(s) absent from the merged "
+                   f"batch queue, e.g. {missing[:3]} - that domain is invisible "
+                   f"to bin/batch-session.sh")
+
+    # ---- an empty glob raises rather than reporting an empty queue -------
+    r.examined += 1
+    real = batch_queue.ROOT
+    try:
+        batch_queue.ROOT = ROOT / "loop" / "__no_such_root__"
+        try:
+            batch_queue.queued_slugs()
+            r.fail("queued_slugs() returned normally with no publish-order "
+                   "files; an empty queue must be distinguishable from a "
+                   "missing one")
+        except batch_queue.NoPublishOrder:
+            pass
+    finally:
+        batch_queue.ROOT = real
+
+    return r
+
+
 # ------------------------------------------------------------------ runner
 
 def run_all(items) -> tuple[bool, list[dict]]:
@@ -1257,7 +1351,8 @@ def run_all(items) -> tuple[bool, list[dict]]:
                v9_footage_window(), v10_footage_crop(), v11_footage_hash(),
                v12_footage_scope(), v13_render_not_clipped(),
                v14_shorts_attribution(), v15_shorts_caption_crop(),
-               v20_cadence_schedule()]
+               v20_cadence_schedule(),
+               v21_batch_sees_every_domain()]
     rows = [r.as_dict() for r in results]
     return all(r.ok for r in results), rows
 

@@ -1,0 +1,1225 @@
+[
+  {
+    "segment": "stat_card",
+    "seconds": 7.45,
+    "heading": "Cold open",
+    "narration": "Titanium alloy Ti-6Al-4V reaches 900 to 1400 megapascals tensile strength, documented by ASTM International across different heat treatments.",
+    "args": {
+      "value": "900-1400",
+      "unit": "MPa",
+      "caption": "Ti-6Al-4V tensile strength range",
+      "source": "ASTM International"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Cold open",
+    "narration": "That exceeds many structural steels in absolute terms. But the question assumes strength is one number, and it is not.",
+    "args": {
+      "lines": [
+        "That exceeds many structural",
+        "steels in absolute terms."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "Titanium's reputation comes from strength per unit mass, not raw load capacity, and from holding strength in environments where steel corrodes away.",
+    "args": {
+      "value": "900-1400",
+      "unit": "MPa",
+      "caption": "Ti-6Al-4V tensile strength range",
+      "source": "ASTM International"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "The number you find in a handbook is the answer to a specific test under controlled conditions, not a universal property that applies in every situation.",
+    "args": {
+      "lines": [
+        "The number you find",
+        "in a handbook is",
+        "the answer"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.86,
+    "heading": "Strength is not a single measurement",
+    "narration": "When you ask how strong titanium is, you are asking for a number that does not exist in isolation.",
+    "args": {
+      "term": "strength",
+      "includes": [
+        "load per area at failure under defined conditions"
+      ],
+      "excludes": [
+        "a material constant independent of test method"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "Strength is not a single measurement",
+    "narration": "Strength is load per unit area at a defined failure point, measured under controlled conditions.",
+    "args": {
+      "lines": [
+        "Strength is load per",
+        "unit area at a",
+        "defined failure"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.45,
+    "heading": "Strength is not a single measurement",
+    "narration": "Tensile strength measures resistance to being pulled apart. Yield strength is the stress at which permanent deformation begins.",
+    "args": {
+      "term": "strength",
+      "includes": [
+        "load per area at failure under defined conditions"
+      ],
+      "excludes": [
+        "a material constant independent of test method"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Strength is not a single measurement",
+    "narration": "Compressive strength, shear strength, and fatigue strength are separate values. ASTM International publishes standards for each test because the same material gives different numbers depending on what you are measuring.",
+    "args": {
+      "lines": [
+        "Compressive strength, shear strength,",
+        "and fatigue strength are",
+        "separate values."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 5.38,
+    "heading": "Strength is not a single measurement",
+    "narration": "The test method, specimen geometry, loading rate, and temperature all affect the result.",
+    "args": {
+      "term": "strength",
+      "includes": [
+        "load per area at failure under defined conditions"
+      ],
+      "excludes": [
+        "a material constant independent of test method"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Strength is not a single measurement",
+    "narration": "Commercially pure titanium, unalloyed, has tensile strength between 240 and 550 megapascals depending on oxygen content and processing.",
+    "args": {
+      "lines": [
+        "Commercially pure titanium, unalloyed,",
+        "has tensile strength between",
+        "240"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Strength is not a single measurement",
+    "narration": "The workhorse alloy Ti-6Al-4V, six percent aluminum and four percent vanadium, reaches 900 to 1400 megapascals depending on heat treatment.",
+    "args": {
+      "lines": [
+        "The workhorse alloy Ti-6Al-4V,",
+        "six percent aluminum and",
+        "four percent"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 6.62,
+    "heading": "Strength is not a single measurement",
+    "narration": "Mild steel sits around 400 to 550 megapascals. High-strength steel alloys reach 760 to 1400 megapascals.",
+    "args": {
+      "term": "strength",
+      "includes": [
+        "load per area at failure under defined conditions"
+      ],
+      "excludes": [
+        "a material constant independent of test method"
+      ]
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "Strength is not a single measurement",
+    "narration": "In absolute tensile strength, titanium alloys overlap with steel alloys. The difference is density.",
+    "args": {
+      "lines": [
+        "In absolute tensile strength,",
+        "titanium alloys overlap with",
+        "steel alloys."
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Strength is not a single measurement",
+    "narration": "A titanium bar and a steel bar of equal cross-section can carry similar loads, but the titanium bar weighs substantially less.",
+    "args": {
+      "lines": [
+        "A titanium bar and",
+        "a steel bar of",
+        "equal cross-section"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.38,
+    "heading": "The strength-to-weight advantage is the real story",
+    "narration": "Titanium has a density of 4.5 grams per cubic centimeter. Steel is 7.85.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The strength-to-weight advantage is the real story",
+    "narration": "When you divide tensile strength by density, you get specific strength, the load a material can carry per unit of its own weight.",
+    "args": {
+      "lines": [
+        "When you divide tensile",
+        "strength by density, you",
+        "get specific"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "The strength-to-weight advantage is the real story",
+    "narration": "Ti-6Al-4V delivers 204 to 317 kilonewton-meters per kilogram. High-strength steel delivers 97 to 179.",
+    "args": {
+      "lines": [
+        "Ti-6Al-4V delivers 204 to",
+        "317 kilonewton-meters per kilogram.",
+        "High-strength steel"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "The strength-to-weight advantage is the real story",
+    "narration": "Aluminum alloy 7075, another aerospace material, reaches 193. Titanium alloys carry more load per kilogram than steel or aluminum, which is why they appear in aircraft frames and turbine blades where every gram matters.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "The strength-to-weight advantage is the real story",
+    "narration": "The advantage is not that titanium is stronger in absolute terms, but that it delivers comparable strength at much lower weight.",
+    "args": {
+      "lines": [
+        "The advantage is not",
+        "that titanium is stronger",
+        "in absolute"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The strength-to-weight advantage is the real story",
+    "narration": "This is not theoretical. The Lockheed SR-71, which flew at Mach 3 and endured skin temperatures above 300 degrees Celsius, used titanium alloy for 85 percent of its structural weight.",
+    "args": {
+      "lines": [
+        "This is not theoretical.",
+        "The Lockheed SR-71, which",
+        "flew"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.69,
+    "heading": "The strength-to-weight advantage is the real story",
+    "narration": "Steel would have been too heavy. Aluminum would have softened. The choice was made on specific strength and thermal stability together.",
+    "args": {
+      "variant": 2
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "The strength-to-weight advantage is the real story",
+    "narration": "Boeing 787 and Airbus A350 airframes use titanium in landing gear and engine mounts for the same reason.",
+    "args": {
+      "lines": [
+        "Boeing 787 and Airbus",
+        "A350 airframes use titanium",
+        "in landing"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "The strength-to-weight advantage is the real story",
+    "narration": "The parts must carry high loads without adding unnecessary mass to the aircraft.",
+    "args": {
+      "lines": [
+        "The parts must carry",
+        "high loads without adding",
+        "unnecessary mass"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "How tensile strength is actually measured",
+    "narration": "ASTM standard E8 defines the tensile test. A machined specimen, usually cylindrical or flat with a reduced gauge section, is gripped at both ends in a testing machine.",
+    "args": {
+      "title": "ASTM E8 tensile test",
+      "steps": [
+        [
+          "Machine grips specimen at both ends",
+          ""
+        ],
+        [
+          "Load increases at controlled rate",
+          ""
+        ],
+        [
+          "Strain gauge records elongation",
+          ""
+        ],
+        [
+          "Specimen necks and fractures",
+          ""
+        ]
+      ],
+      "note": "Stress-strain curve yields yield and ultimate tensile strength"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "How tensile strength is actually measured",
+    "narration": "The machine pulls at a controlled rate while a strain gauge or extensometer records elongation.",
+    "args": {
+      "lines": [
+        "The machine pulls at",
+        "a controlled rate while",
+        "a strain"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 6.21,
+    "heading": "How tensile strength is actually measured",
+    "narration": "Stress is load divided by original cross-sectional area. Strain is elongation divided by original length.",
+    "args": {
+      "title": "ASTM E8 tensile test",
+      "steps": [
+        [
+          "Machine grips specimen at both ends",
+          ""
+        ],
+        [
+          "Load increases at controlled rate",
+          ""
+        ],
+        [
+          "Strain gauge records elongation",
+          ""
+        ],
+        [
+          "Specimen necks and fractures",
+          ""
+        ]
+      ],
+      "note": "Stress-strain curve yields yield and ultimate tensile strength"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "How tensile strength is actually measured",
+    "narration": "The specimen stretches elastically, then plastically, then necks down and fractures. The peak stress before fracture is the ultimate tensile strength.",
+    "args": {
+      "lines": [
+        "The specimen stretches elastically,",
+        "then plastically, then necks",
+        "down"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 4.97,
+    "heading": "How tensile strength is actually measured",
+    "narration": "The stress at the onset of plastic deformation is the yield strength.",
+    "args": {
+      "title": "ASTM E8 tensile test",
+      "steps": [
+        [
+          "Machine grips specimen at both ends",
+          ""
+        ],
+        [
+          "Load increases at controlled rate",
+          ""
+        ],
+        [
+          "Strain gauge records elongation",
+          ""
+        ],
+        [
+          "Specimen necks and fractures",
+          ""
+        ]
+      ],
+      "note": "Stress-strain curve yields yield and ultimate tensile strength"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "How tensile strength is actually measured",
+    "narration": "Every published titanium strength value traces to a test like this, performed on a specimen with documented composition, heat treatment, and grain structure.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.38,
+    "heading": "How tensile strength is actually measured",
+    "narration": "The range in published values reflects real variation in processing, not measurement error.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "How tensile strength is actually measured",
+    "narration": "A specimen annealed at 700 degrees Celsius will have different grain size and dislocation density than one annealed at 900 degrees Celsius, and the strength will differ accordingly.",
+    "args": {
+      "title": "ASTM E8 tensile test",
+      "steps": [
+        [
+          "Machine grips specimen at both ends",
+          ""
+        ],
+        [
+          "Load increases at controlled rate",
+          ""
+        ],
+        [
+          "Strain gauge records elongation",
+          ""
+        ],
+        [
+          "Specimen necks and fractures",
+          ""
+        ]
+      ],
+      "note": "Stress-strain curve yields yield and ultimate tensile strength"
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 4.97,
+    "heading": "How tensile strength is actually measured",
+    "narration": "The test is repeatable, but the material itself varies with processing history.",
+    "args": {
+      "variant": 3
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 7.03,
+    "heading": "Producer POV",
+    "narration": "I kept trying to land on one number for 'how strong,' because that's what the title promises.",
+    "args": {
+      "text": "I kept trying to land on one number for 'how strong,' because that's what the title promises.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 7.86,
+    "heading": "Producer POV",
+    "narration": "There isn't one. Tensile, yield, specific and fatigue strength are four different answers, and I wrote them as four.",
+    "args": {
+      "text": "There isn't one. Tensile, yield, specific and fatigue strength are four different answers, and I wrote them as four.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 5.38,
+    "heading": "Yield strength matters more than ultimate strength in design",
+    "narration": "Yield strength is the stress at which a material begins to deform permanently.",
+    "args": {
+      "term": "yield strength",
+      "meaning": "stress at which permanent deformation begins",
+      "boundary": "separates elastic from plastic regime",
+      "source": "ASTM E8"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "Yield strength matters more than ultimate strength in design",
+    "narration": "Below yield, the material returns to its original shape when the load is removed.",
+    "args": {
+      "lines": [
+        "Below yield, the material",
+        "returns to its original",
+        "shape"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "Yield strength matters more than ultimate strength in design",
+    "narration": "Above yield, it stays bent. Engineers design most structures to stay below yield strength under normal loads, not below ultimate tensile strength.",
+    "args": {
+      "term": "yield strength",
+      "meaning": "stress at which permanent deformation begins",
+      "boundary": "separates elastic from plastic regime",
+      "source": "ASTM E8"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "Yield strength matters more than ultimate strength in design",
+    "narration": "Ti-6Al-4V has a yield strength of 830 to 1100 megapascals depending on heat treatment.",
+    "args": {
+      "lines": [
+        "Ti-6Al-4V has a yield",
+        "strength of 830 to",
+        "1100 megapascals"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 6.21,
+    "heading": "Yield strength matters more than ultimate strength in design",
+    "narration": "That is the number that governs whether a part will hold its shape in service.",
+    "args": {
+      "term": "yield strength",
+      "meaning": "stress at which permanent deformation begins",
+      "boundary": "separates elastic from plastic regime",
+      "source": "ASTM E8"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Yield strength matters more than ultimate strength in design",
+    "narration": "Ultimate tensile strength tells you the breaking point, but yield strength tells you the limit of elastic, recoverable behavior.",
+    "args": {
+      "lines": [
+        "Ultimate tensile strength tells",
+        "you the breaking point,",
+        "but yield"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Yield strength matters more than ultimate strength in design",
+    "narration": "Ultimate tensile strength tells you when the material will fracture. Yield strength tells you when it stops being useful.",
+    "args": {
+      "lines": [
+        "Ultimate tensile strength tells",
+        "you when the material",
+        "will fracture."
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 4.97,
+    "heading": "Yield strength matters more than ultimate strength in design",
+    "narration": "The gap between them is ductility, the ability to deform before breaking.",
+    "args": {
+      "term": "yield strength",
+      "meaning": "stress at which permanent deformation begins",
+      "boundary": "separates elastic from plastic regime",
+      "source": "ASTM E8"
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Yield strength matters more than ultimate strength in design",
+    "narration": "Titanium alloys are moderately ductile, with elongation at fracture between 10 and 15 percent for Ti-6Al-4V.",
+    "args": {
+      "lines": [
+        "Titanium alloys are moderately",
+        "ductile, with elongation at",
+        "fracture between"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Yield strength matters more than ultimate strength in design",
+    "narration": "That is less than mild steel, which can exceed 25 percent, but enough to prevent sudden brittle failure.",
+    "args": {
+      "lines": [
+        "That is less than",
+        "mild steel, which can",
+        "exceed 25"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 5.38,
+    "heading": "Yield strength matters more than ultimate strength in design",
+    "narration": "A ductile material gives warning before it breaks. A brittle material does not.",
+    "args": {
+      "term": "yield strength",
+      "meaning": "stress at which permanent deformation begins",
+      "boundary": "separates elastic from plastic regime",
+      "source": "ASTM E8"
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Yield strength matters more than ultimate strength in design",
+    "narration": "Titanium sits in the middle, offering reasonable ductility without the excessive deformation that would make a part unusable before it actually fractures.",
+    "args": {
+      "lines": [
+        "Titanium sits in the",
+        "middle, offering reasonable ductility",
+        "without"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 6.21,
+    "heading": "Fatigue strength is the limit for cyclic loading",
+    "narration": "Fatigue is failure under repeated loading, even when each individual load is below yield strength.",
+    "args": {
+      "title": "Fatigue testing",
+      "stages": [
+        "Apply cyclic stress below yield",
+        "Count cycles to failure",
+        "Plot S-N curve"
+      ],
+      "conclusion": "Endurance limit or finite life prediction"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Fatigue strength is the limit for cyclic loading",
+    "narration": "A titanium component in a jet engine experiences millions of stress cycles.",
+    "args": {
+      "lines": [
+        "A titanium component in",
+        "a jet engine experiences",
+        "millions"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "Fatigue strength is the limit for cyclic loading",
+    "narration": "ASTM E466 defines the rotating-beam fatigue test. A specimen is subjected to cyclic stress, and the number of cycles to failure is recorded.",
+    "args": {
+      "title": "Fatigue testing",
+      "stages": [
+        "Apply cyclic stress below yield",
+        "Count cycles to failure",
+        "Plot S-N curve"
+      ],
+      "conclusion": "Endurance limit or finite life prediction"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Fatigue strength is the limit for cyclic loading",
+    "narration": "The result is an S-N curve, stress versus number of cycles. For titanium alloys, there is no true endurance limit.",
+    "args": {
+      "lines": [
+        "The result is an",
+        "S-N curve, stress versus",
+        "number"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 6.21,
+    "heading": "Fatigue strength is the limit for cyclic loading",
+    "narration": "Fatigue cracks can initiate even at low stress if the cycle count is high enough.",
+    "args": {
+      "title": "Fatigue testing",
+      "stages": [
+        "Apply cyclic stress below yield",
+        "Count cycles to failure",
+        "Plot S-N curve"
+      ],
+      "conclusion": "Endurance limit or finite life prediction"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Fatigue strength is the limit for cyclic loading",
+    "narration": "Steel sometimes shows an endurance limit below which fatigue cracks do not propagate. Titanium does not. Every stress cycle contributes to eventual failure.",
+    "args": {
+      "lines": [
+        "Steel sometimes shows an",
+        "endurance limit below which",
+        "fatigue cracks"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Fatigue strength is the limit for cyclic loading",
+    "narration": "Ti-6Al-4V shows fatigue strength around 240 to 500 megapascals at ten million cycles, but the range is wide because surface finish, residual stress, and environment all matter.",
+    "args": {
+      "lines": [
+        "Ti-6Al-4V shows fatigue strength",
+        "around 240 to 500",
+        "megapascals"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 4.97,
+    "heading": "Fatigue strength is the limit for cyclic loading",
+    "narration": "A machined surface with tool marks concentrates stress and lowers fatigue life.",
+    "args": {
+      "title": "Fatigue testing",
+      "stages": [
+        "Apply cyclic stress below yield",
+        "Count cycles to failure",
+        "Plot S-N curve"
+      ],
+      "conclusion": "Endurance limit or finite life prediction"
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Fatigue strength is the limit for cyclic loading",
+    "narration": "A polished or shot-peened surface raises it. Saltwater or high temperature lowers it.",
+    "args": {
+      "lines": [
+        "A polished or shot-peened",
+        "surface raises it. Saltwater",
+        "or high"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Fatigue strength is the limit for cyclic loading",
+    "narration": "The published range reflects this sensitivity. Fatigue is not a material property in the same sense as tensile strength.",
+    "args": {
+      "lines": [
+        "The published range reflects",
+        "this sensitivity. Fatigue"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 8.28,
+    "heading": "Fatigue strength is the limit for cyclic loading",
+    "narration": "It is a system property that depends on geometry, loading history, and environment as much as on the material itself.",
+    "args": {
+      "title": "Fatigue testing",
+      "stages": [
+        "Apply cyclic stress below yield",
+        "Count cycles to failure",
+        "Plot S-N curve"
+      ],
+      "conclusion": "Endurance limit or finite life prediction"
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.03,
+    "heading": "Corrosion resistance changes the effective strength over time",
+    "narration": "Titanium forms a tenacious oxide layer, primarily titanium dioxide, within milliseconds of exposure to air or water.",
+    "args": {
+      "term": "corrosion resistance",
+      "includes": [
+        "formation of stable passive oxide layer"
+      ],
+      "excludes": [
+        "inertness or immunity to all environments"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "Corrosion resistance changes the effective strength over time",
+    "narration": "This layer is self-healing and protects the underlying metal from further oxidation in most environments.",
+    "args": {
+      "lines": [
+        "This layer is self-healing",
+        "and protects the underlying",
+        "metal"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 5.38,
+    "heading": "Corrosion resistance changes the effective strength over time",
+    "narration": "Steel corrodes in seawater and loses load-bearing cross-section over time. Titanium does not.",
+    "args": {
+      "term": "corrosion resistance",
+      "includes": [
+        "formation of stable passive oxide layer"
+      ],
+      "excludes": [
+        "inertness or immunity to all environments"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Corrosion resistance changes the effective strength over time",
+    "narration": "The effective strength of a titanium part in a marine environment remains near its initial value for decades.",
+    "args": {
+      "lines": [
+        "The effective strength of",
+        "a titanium part in",
+        "a marine"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Corrosion resistance changes the effective strength over time",
+    "narration": "The effective strength of a steel part drops as corrosion progresses. The initial strength of steel may be higher, but the strength after ten years of seawater exposure is lower. Titanium maintains its strength because it maintains its cross-section.",
+    "args": {
+      "term": "corrosion resistance",
+      "includes": [
+        "formation of stable passive oxide layer"
+      ],
+      "excludes": [
+        "inertness or immunity to all environments"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.86,
+    "heading": "Corrosion resistance changes the effective strength over time",
+    "narration": "This is why titanium is used in chemical processing, desalination plants, and offshore structures despite its higher initial cost.",
+    "args": {
+      "variant": 4
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Corrosion resistance changes the effective strength over time",
+    "narration": "The strength you measure in a lab persists in service. For steel, you must either accept strength loss or add corrosion protection, which adds weight and maintenance.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 5.38,
+    "heading": "Corrosion resistance changes the effective strength over time",
+    "narration": "Titanium's corrosion resistance is not absolute. Hydrochloric acid and hydrofluoric acid attack it.",
+    "args": {
+      "term": "corrosion resistance",
+      "includes": [
+        "formation of stable passive oxide layer"
+      ],
+      "excludes": [
+        "inertness or immunity to all environments"
+      ]
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Corrosion resistance changes the effective strength over time",
+    "narration": "Dry chlorine gas at elevated temperature attacks it. But in the environments where most engineering structures operate, seawater, freshwater, and atmospheric exposure, titanium remains stable.",
+    "args": {
+      "variant": 2
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "thermal_ascent",
+    "seconds": 9.0,
+    "heading": "Temperature stability extends the usable strength range",
+    "narration": "Ti-6Al-4V retains useful strength up to about 600 degrees Celsius. Above that, oxidation accelerates and the alloy begins to absorb oxygen, which embrittles it.",
+    "args": {
+      "to_temp": 600,
+      "label": "\u00b0C upper service limit for Ti-6Al-4V"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Temperature stability extends the usable strength range",
+    "narration": "Aluminum alloys soften above 150 degrees Celsius. Steel retains strength to higher temperatures than titanium, but at much higher weight.",
+    "args": {
+      "lines": [
+        "Aluminum alloys soften above",
+        "150 degrees Celsius. Steel",
+        "retains strength"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "thermal_ascent",
+    "seconds": 7.86,
+    "heading": "Temperature stability extends the usable strength range",
+    "narration": "The SR-71 example is real because titanium occupies a thermal niche where aluminum fails and steel is too heavy.",
+    "args": {
+      "to_temp": 600,
+      "label": "\u00b0C upper service limit for Ti-6Al-4V"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Temperature stability extends the usable strength range",
+    "narration": "The airframe skin reached temperatures where aluminum would have lost structural integrity, but titanium maintained both strength and stiffness.",
+    "args": {
+      "lines": [
+        "The airframe skin reached",
+        "temperatures where aluminum would",
+        "have lost"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "Temperature stability extends the usable strength range",
+    "narration": "Newer titanium aluminides, intermetallic compounds rather than solid-solution alloys, push the temperature limit to 750 degrees Celsius.",
+    "args": {
+      "lines": [
+        "Newer titanium aluminides, intermetallic",
+        "compounds rather than solid-solution",
+        "alloys, push"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.28,
+    "heading": "Temperature stability extends the usable strength range",
+    "narration": "These are used in the last stages of jet engine compressors, where titanium alloys would oxidize and aluminum would melt.",
+    "args": {
+      "variant": 3
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Temperature stability extends the usable strength range",
+    "narration": "The trade-off is brittleness. Titanium aluminides are less ductile than Ti-6Al-4V, which limits their use to components that do not experience impact or bending loads. The temperature capability comes at the cost of toughness.",
+    "args": {
+      "lines": [
+        "The trade-off is brittleness.",
+        "Titanium aluminides are less",
+        "ductile"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "Watch for the absence of a single answer. The script states tensile strength, yield strength, specific strength, and fatigue strength as separate values with separate meanings.",
+    "args": {
+      "title": "Strength claims",
+      "items": [
+        "+Tensile strength stated with source and range",
+        "+Yield strength distinguished from ultimate strength",
+        "+Specific strength compared across materials",
+        "+Fatigue and corrosion addressed as time-dependent factors",
+        "-No single \"strength of titanium\" number"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "Each is tied to a test standard and a documented range. The magnitude comparisons use real published figures for titanium, steel, and aluminum.",
+    "args": {
+      "lines": [
+        "Each is tied to",
+        "a test standard and",
+        "a documented"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "The SR-71 example is historical fact, not anecdote. The Boeing 787 and Airbus A350 references are current production aircraft with documented titanium use. Every number in a directive appears in the narration first.",
+    "args": {
+      "title": "Strength claims",
+      "items": [
+        "+Tensile strength stated with source and range",
+        "+Yield strength distinguished from ultimate strength",
+        "+Specific strength compared across materials",
+        "+Fatigue and corrosion addressed as time-dependent factors",
+        "-No single \"strength of titanium\" number"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 6.21,
+    "heading": "Evidence limit",
+    "narration": "The published strength ranges come from standardized tests on specimens with controlled composition and processing.",
+    "args": {
+      "title": "Strength data sources",
+      "sources": [
+        [
+          "ASTM",
+          "test standards E8 and E466"
+        ],
+        [
+          "ASM International",
+          "alloy property databases"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Evidence limit",
+    "narration": "They do not account for defects, contamination, or non-standard heat treatment in a given production batch.",
+    "args": {
+      "lines": [
+        "They do not account",
+        "for defects, contamination, or",
+        "non-standard heat"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "Real parts can fall outside the published range if processing deviates. The numbers are design values, not guarantees for every piece of titanium ever made.",
+    "args": {
+      "title": "Strength data sources",
+      "sources": [
+        [
+          "ASTM",
+          "test standards E8 and E466"
+        ],
+        [
+          "ASM International",
+          "alloy property databases"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Evidence limit",
+    "narration": "ASTM and ASM International publish the standards and databases, but they document what is typical, not what is universal.",
+    "args": {
+      "lines": [
+        "ASTM and ASM International",
+        "publish the standards and",
+        "databases"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "A casting with porosity will be weaker than a wrought bar. A part with surface cracks will fail in fatigue sooner than a polished specimen.",
+    "args": {
+      "title": "Strength data sources",
+      "sources": [
+        [
+          "ASTM",
+          "test standards E8 and E466"
+        ],
+        [
+          "ASM International",
+          "alloy property databases"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Evidence limit",
+    "narration": "The test data represent ideal conditions, and real service conditions are not ideal.",
+    "args": {
+      "lines": [
+        "The test data represent",
+        "ideal conditions, and real",
+        "service conditions"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "Titanium is strong in the sense that matters for aerospace and marine engineering: high strength per unit weight, stable over time in corrosive environments, and usable at temperatures where aluminum softens.",
+    "args": {
+      "lines": [
+        "Titanium is strong in",
+        "the sense that matters",
+        "for aerospace"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "The absolute tensile strength overlaps with steel. The advantage is carrying that strength at nearly half the weight, and keeping it when steel would rust away.",
+    "args": {
+      "variant": 4
+    },
+    "from": "directive+destagnate"
+  }
+]

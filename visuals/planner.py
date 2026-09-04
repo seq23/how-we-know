@@ -30,6 +30,23 @@ def find_places(s):
     return [k for k in known if k.lower() in s.lower()]
 
 # ---------- signals ----------
+# The segment types that CARRY CONTENT, as opposed to the fillers (text_beat,
+# ambient_drift). destagnate() reuses one of these as relief and the filler
+# pass must never displace one. Module-level, not a local inside destagnate(),
+# so a domain pack can add its own device renderers to the set — as a local it
+# silently ignored every extension.
+INFO = {"stat_card", "depth_descent", "comparison", "zone_column",
+        "pressure_gauge", "light_attenuation", "world_map", "timeline",
+        "anatomy_callout", "size_ladder"}
+
+# The hero visual a cold open reaches for. Deep sea opens on a descent; a
+# domain pack overrides this with its own structural device (materials opens
+# on a thermal ascent). Hardcoding "depth_descent" here is what put two
+# depth_descent beats and four light_attenuation beats into a plan for a
+# script about welding arcs.
+COLD_OPEN_SEGMENT = "depth_descent"
+
+# ---------- signals ----------
 SIGNALS = [
     ("pressure_gauge",   r"\bpressure\b|\batmospher|\bcrush|\bpsi\b|\bbar\b"),
     ("light_attenuation",r"\bwavelength|\bred light|\bcolou?r .*absorb|\bsunlight (?:is )?absent|\blight (?:dies|fades|disappears)|\bphotic\b"),
@@ -54,7 +71,7 @@ def classify(text, heading):
         if hits: scored.append((hits, name))
     # a concrete measurement is a strong stat_card signal regardless of other matches
     if find_measures(text): scored.append((2, "stat_card"))
-    if "cold open" in h:   scored.append((3, "depth_descent"))
+    if "cold open" in h:   scored.append((3, COLD_OPEN_SEGMENT))
     scored.sort(key=lambda x: -x[0])
     ranked = []
     for _, n in scored:
@@ -136,6 +153,17 @@ try:
     _sp.install(sys.modules[__name__])
 except Exception:
     _ext2 = None
+
+# The ACTIVE domain's own directive pack, if it has one. Grafted by domain,
+# never by the presence of a word: a deep-sea script writing {{thermal}} must
+# not get a materials card, so design.DOMAIN decides and nothing else does.
+try:
+    import design as _design
+    if _design.DOMAIN == "materials-and-manufacturing":
+        import segments_materials as _mat
+        _mat.install(sys.modules[__name__])
+except Exception:
+    pass
 
 # ---------- parsing ----------
 def parse(md):
@@ -358,8 +386,7 @@ MAX_RUN = 2   # never show the same segment type more than twice in a row
 def destagnate(plan):
     """No visual treatment may persist past MAX_RUN consecutive beats. Prefer the
     nearest informational visual in the same section; otherwise breathe."""
-    INFO = {"stat_card","depth_descent","comparison","zone_column","pressure_gauge",
-            "light_attenuation","world_map","timeline","anatomy_callout","size_ladder"}
+    global INFO
     # nearest informational beat per section, to reuse as relief
     hero = {}
     for b in plan:

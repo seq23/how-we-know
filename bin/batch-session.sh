@@ -68,11 +68,12 @@ done
 # one route while being correctly skipped by the other.
 renderable() {
   $PY - <<'READYEOF'
-import json, glob, os
-order = json.load(open("research/publish_order.json"))
+import json, glob, os, sys
+sys.path.insert(0, "loop")
+import batch_queue
 out = []
-for q in order["queue"]:
-    slug = q["slug"]; plan = f"plans/{slug}.json"
+for slug in batch_queue.queued_slugs():
+    plan = f"plans/{slug}.json"
     if not os.path.exists(plan):
         continue
     if len(json.load(open(plan))) == len(glob.glob(f"audio/{slug}/*.wav")) \
@@ -83,14 +84,16 @@ READYEOF
 }
 
 pending_audio=$($PY - <<'PYEOF'
-import json, glob, os
-# THE PUBLISH QUEUE, not plans/*.json. The demand gate kills saturated topics -
+import json, glob, os, sys
+sys.path.insert(0, "loop")
+# THE PUBLISH QUEUES, not plans/*.json. The demand gate kills saturated topics -
 # four so far - and their plan files stay on disk. Scanning the directory asked
 # for 3.5 hours of narration for three episodes that can never publish.
-order = json.load(open("research/publish_order.json"))
-queue = [q["slug"] for q in order["queue"]]
+# EVERY domain's queue, not just deep sea: loop/batch_queue.py globs
+# research/publish_order*.json the way loop/domains.py already does.
+import batch_queue
 out = []
-for slug in queue:
+for slug in batch_queue.queued_slugs():
     plan = f"plans/{slug}.json"
     if not os.path.exists(plan):
         continue
@@ -101,6 +104,19 @@ for slug in queue:
 print(" ".join(out))
 PYEOF
 )
+
+# A queued slug with no plan file is SILENTLY SKIPPED by both loops above - it
+# is neither narratable nor renderable, so the preview said "none" and the
+# reason never reached the operator. Name it instead. Rule 0: this stage does
+# not get to exit 0 having done nothing without saying why.
+pending_plan=$($PY - <<'PLANEOF'
+import os, sys
+sys.path.insert(0, "loop")
+import batch_queue
+print(" ".join(s for s in batch_queue.queued_slugs()
+                if not os.path.exists(f"plans/{s}.json")))
+PLANEOF
+)
 # ONE definition of readiness, used by the preview, the overlap poll and the
 # final sweep alike. Two copies of "ready to render" is how a component ends up
 # skipping an episode by one route while assembling it short by the other.
@@ -109,12 +125,22 @@ pending_render=$(renderable)
 echo "=== batch session $(date '+%Y-%m-%d %H:%M') ==="
 echo "  to narrate : ${pending_audio:-none}"
 echo "  to render  : ${pending_render:-none}"
+echo "  no plan yet: ${pending_plan:-none}"
 
 if [ -z "${pending_audio// }" ] && [ -z "${pending_render// }" ]; then
   echo
-  echo "NAMED STOP: nothing to do. Every script is narrated and every narrated"
-  echo "episode is rendered. If the runway is still low the shortfall is SCRIPTS,"
-  echo "not audio - the authoring lane writes those in the cloud on Mondays."
+  if [ -n "${pending_plan// }" ]; then
+    echo "NAMED STOP: nothing THIS MAC can do. Every script that has a shot plan is"
+    echo "narrated and rendered. The queued topics listed above as 'no plan yet' are"
+    echo "blocked one stage earlier: they have no plans/<slug>.json, so there is"
+    echo "nothing for the voice model to read. Build those plans first"
+    echo "(visuals/plan_species.py), then re-run this."
+    echo "  blocked: $(echo $pending_plan | wc -w | tr -d ' ') queued topic(s)"
+  else
+    echo "NAMED STOP: nothing to do. Every script is narrated and every narrated"
+    echo "episode is rendered. If the runway is still low the shortfall is SCRIPTS,"
+    echo "not audio - the authoring lane writes those in the cloud on Mondays."
+  fi
   exit 0
 fi
 
@@ -133,9 +159,22 @@ render_one() {
     return 1
   fi
   echo "  === $slug $(date +%H:%M:%S)"
+  # THE EPISODE'S OWN DOMAIN decides the palette and the structural device.
+  # visuals/design.py resolves HWK_DOMAIN at import; unset, it defaults to
+  # deep sea, which would have rendered every materials episode in ocean blue
+  # and raised "unknown segment type: thermal_ascent" on the first thermal
+  # beat - after the narration for it had already been paid for. The domain
+  # comes from the script's own **Domain:** line via loop/domains.py, so
+  # there is no second list of which slug is which domain.
+  local dom
+  dom=$($PY -c "
+import sys; sys.path.insert(0,'loop')
+import domains; print(domains.domain_of_slug('$slug') or 'deep-sea-ocean-science')" 2>/dev/null) \
+    || dom=deep-sea-ocean-science
+  echo "      domain: $dom"
   # EXACTLY the call the two-phase version made. No duration, no frame count,
   # no timing override: the audio is the authority and assemble.py owns that.
-  $PY visuals/assemble.py "plans/$slug.json" "renders/${slug}-final.mp4" \
+  HWK_DOMAIN="$dom" $PY visuals/assemble.py "plans/$slug.json" "renders/${slug}-final.mp4" \
       --audio-dir "audio/$slug" --burn-captions \
       > "/tmp/asm-$slug.log" 2>&1 \
     && { echo "    ok"; RENDERED=$((RENDERED+1)); } \

@@ -1,0 +1,766 @@
+[
+  {
+    "segment": "thermal_ascent",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "The term Damascus steel refers to two separate materials made by two separate processes separated by more than a century of lost knowledge.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "Historical Damascus steel, also called wootz steel, was a crucible steel from South Asia containing between 1.0 and 1.8 percent carbon by weight, with trace amounts of vanadium, chromium and other elements.",
+    "args": {
+      "lines": [
+        "Historical Damascus steel, also",
+        "called wootz steel, was",
+        "a crucible"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "thermal_ascent",
+    "seconds": 5.79,
+    "heading": "Cold open",
+    "narration": "Modern Damascus steel is pattern-welded steel, made by forge-welding layers of different steels together.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "They look similar. They are not the same thing. The confusion is not just semantic \u2014 it reflects a genuine break in the historical record.",
+    "args": {
+      "variant": 0
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 3.5,
+    "heading": "Title card",
+    "narration": "How is Damascus steel made?",
+    "args": {
+      "lines": [
+        "How is Damascus steel",
+        "made?"
+      ]
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 9.0,
+    "heading": "Historical Damascus steel was a crucible process, not a forge-welding process",
+    "narration": "Historical Damascus steel began as wootz steel, produced primarily in South India and parts of Central Asia from approximately 300 BCE to the mid-1800s.",
+    "args": {
+      "value": "1400",
+      "unit": "DEGREES",
+      "caption": "",
+      "source": ""
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "Historical Damascus steel was a crucible process, not a forge-welding process",
+    "narration": "The process started with iron ore, charcoal and specific plant materials placed in small sealed clay crucibles.",
+    "args": {
+      "lines": [
+        "The process started with",
+        "iron ore, charcoal and",
+        "specific plant"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 7.45,
+    "heading": "Historical Damascus steel was a crucible process, not a forge-welding process",
+    "narration": "These crucibles were heated to temperatures between 1200 and 1400 degrees Celsius and held there for several hours.",
+    "args": {
+      "value": "1400",
+      "unit": "DEGREES",
+      "caption": "",
+      "source": ""
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.03,
+    "heading": "Historical Damascus steel was a crucible process, not a forge-welding process",
+    "narration": "The iron absorbed carbon from the charcoal, producing a high-carbon steel ingot weighing one to two kilograms.",
+    "args": {
+      "variant": 1
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Historical Damascus steel was a crucible process, not a forge-welding process",
+    "narration": "The crucibles were then allowed to cool slowly over several days. This slow cooling was essential \u2014 it allowed carbides to precipitate out of the iron matrix in bands, creating the internal structure that would later become visible as surface patterns.",
+    "args": {
+      "lines": [
+        "The crucibles were then",
+        "allowed to cool slowly",
+        "over"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 9.0,
+    "heading": "Historical Damascus steel was a crucible process, not a forge-welding process",
+    "narration": "The resulting ingots contained between 1.0 and 1.8 percent carbon by weight, with typical examples around 1.4 percent, placing them in the high-carbon steel range.",
+    "args": {
+      "value": "1400",
+      "unit": "DEGREES",
+      "caption": "",
+      "source": ""
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Historical Damascus steel was a crucible process, not a forge-welding process",
+    "narration": "For comparison, mild structural steel contains around 0.2 percent carbon, while cast iron exceeds 2.0 percent and can reach 3.0 percent or higher.",
+    "args": {
+      "variant": 2
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Historical Damascus steel was a crucible process, not a forge-welding process",
+    "narration": "The wootz ingots also contained trace amounts of vanadium, typically between 0.01 and 0.03 percent, along with smaller quantities of chromium, molybdenum and other elements.",
+    "args": {
+      "lines": [
+        "The wootz ingots also",
+        "contained trace amounts of",
+        "vanadium, typically"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 7.03,
+    "heading": "Historical Damascus steel was a crucible process, not a forge-welding process",
+    "narration": "These trace elements came from the specific ores used and played a critical role in carbide formation.",
+    "args": {
+      "value": "1400",
+      "unit": "DEGREES",
+      "caption": "",
+      "source": ""
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.62,
+    "heading": "Historical Damascus steel was a crucible process, not a forge-welding process",
+    "narration": "Vanadium forms vanadium carbide, which nucleates in bands during slow cooling, creating the characteristic internal structure.",
+    "args": {
+      "variant": 3
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "process_column",
+    "seconds": 7.86,
+    "heading": "The visible pattern came from forging, not from the crucible",
+    "narration": "The ingots themselves did not display visible patterns. The patterns appeared only after the ingots were forged into blades.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "The visible pattern came from forging, not from the crucible",
+    "narration": "Blacksmiths in Damascus, Persia and other regions imported these ingots and forged them at temperatures between 800 and 1100 degrees Celsius.",
+    "args": {
+      "lines": [
+        "Blacksmiths in Damascus, Persia",
+        "and other regions imported",
+        "these ingots"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "process_column",
+    "seconds": 6.21,
+    "heading": "The visible pattern came from forging, not from the crucible",
+    "narration": "Forging stretched and thinned the carbide bands, aligning them along the length of the blade.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.62,
+    "heading": "The visible pattern came from forging, not from the crucible",
+    "narration": "After forging and grinding, the blade surface was etched with acidic solutions \u2014 often plant-based acids.",
+    "args": {
+      "variant": 4
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "The visible pattern came from forging, not from the crucible",
+    "narration": "The acid attacked the iron matrix and the carbide bands at different rates, creating contrast.",
+    "args": {
+      "lines": [
+        "The acid attacked the",
+        "iron matrix and the",
+        "carbide bands"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "process_column",
+    "seconds": 9.0,
+    "heading": "The visible pattern came from forging, not from the crucible",
+    "narration": "The carbide-rich regions appeared lighter, the iron-rich regions darker. The resulting patterns \u2014 wavy lines, ladders, roses \u2014 were byproducts of the internal structure, not deliberate designs.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.21,
+    "heading": "The visible pattern came from forging, not from the crucible",
+    "narration": "Production of true wootz steel declined sharply in the late 18th and early 19th centuries.",
+    "args": {
+      "variant": 0
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The visible pattern came from forging, not from the crucible",
+    "narration": "Estimates for the cessation of traditional production vary widely, with most sources placing the final production somewhere between 1700 and 1850, with 1800 as a common midpoint estimate.",
+    "args": {
+      "lines": [
+        "Estimates for the cessation",
+        "of traditional production vary",
+        "widely"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "process_column",
+    "seconds": 9.0,
+    "heading": "The visible pattern came from forging, not from the crucible",
+    "narration": "The decline is attributed to multiple factors: depletion of specific ore sources, loss of knowledge as trade routes shifted, and competition from European steelmaking.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.28,
+    "heading": "The visible pattern came from forging, not from the crucible",
+    "narration": "By the mid-1800s, the process was no longer practiced, and the specific combination of ore chemistry and technique was lost.",
+    "args": {
+      "variant": 1
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "thermal_ascent",
+    "seconds": 7.45,
+    "heading": "Modern Damascus steel is pattern-welded, not crucible steel",
+    "narration": "Modern Damascus steel, produced from the late 19th century onward, uses a completely different method called pattern welding.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Modern Damascus steel is pattern-welded, not crucible steel",
+    "narration": "This technique has older roots \u2014 pattern-welded swords were made in Europe and Asia for centuries before wootz steel \u2014 but it was revived and marketed as Damascus steel after the original process was lost.",
+    "args": {
+      "lines": [
+        "This technique has older",
+        "roots"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "thermal_ascent",
+    "seconds": 9.0,
+    "heading": "Modern Damascus steel is pattern-welded, not crucible steel",
+    "narration": "Pattern welding begins with stacking alternating layers of two or more different steels, typically one high-carbon steel and one low-carbon or nickel-bearing steel.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Modern Damascus steel is pattern-welded, not crucible steel",
+    "narration": "The stack is heated to forging temperature, usually between 1100 and 1200 degrees Celsius, and forge-welded by hammering. The layers bond at the interface but remain chemically distinct.",
+    "args": {
+      "variant": 2
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Modern Damascus steel is pattern-welded, not crucible steel",
+    "narration": "The billet is then manipulated \u2014 folded, twisted, cut and restacked \u2014 to multiply the number of layers and create patterns.",
+    "args": {
+      "lines": [
+        "The billet is then",
+        "manipulated"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "thermal_ascent",
+    "seconds": 4.97,
+    "heading": "Modern Damascus steel is pattern-welded, not crucible steel",
+    "narration": "A single fold doubles the layer count. Seven folds produce 128 layers.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Modern Damascus steel is pattern-welded, not crucible steel",
+    "narration": "Ten folds produce over 1000 layers. Some modern smiths produce billets with 300 layers for moderate complexity, while others push to 1000 layers or beyond for extremely fine patterns.",
+    "args": {
+      "variant": 3
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Modern Damascus steel is pattern-welded, not crucible steel",
+    "narration": "After forging to final shape, the blade is ground smooth and etched.",
+    "args": {
+      "lines": [
+        "After forging to final",
+        "shape, the blade is",
+        "ground smooth"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "thermal_ascent",
+    "seconds": 6.21,
+    "heading": "Modern Damascus steel is pattern-welded, not crucible steel",
+    "narration": "The different steels etch at different rates, revealing the layered structure as a surface pattern.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Modern Damascus steel is pattern-welded, not crucible steel",
+    "narration": "The patterns can be controlled by the type of manipulation \u2014 twisting produces a spiral, cutting and restacking produces a ladder, radial forging produces a rose.",
+    "args": {
+      "variant": 4
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 5.79,
+    "heading": "Producer POV",
+    "narration": "I nearly treated historical and modern Damascus steel as one material made two ways.",
+    "args": {
+      "text": "I nearly treated historical and modern Damascus steel as one material made two ways.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 9.0,
+    "heading": "Producer POV",
+    "narration": "They're not \u2014 they're two different materials separated by a lost century of technique. Conflating them was the actual error to avoid here.",
+    "args": {
+      "text": "They're not \u2014 they're two different materials separated by a lost century of technique. Conflating them was the actual error to avoid here.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "size_ladder",
+    "seconds": 5.79,
+    "heading": "The two materials have different properties and different failure modes",
+    "narration": "The mechanical properties of wootz steel and pattern-welded steel differ because their structures differ.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "The two materials have different properties and different failure modes",
+    "narration": "Wootz steel is a single material with carbide bands distributed through a continuous iron matrix.",
+    "args": {
+      "lines": [
+        "Wootz steel is a",
+        "single material with carbide",
+        "bands distributed"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "size_ladder",
+    "seconds": 9.0,
+    "heading": "The two materials have different properties and different failure modes",
+    "narration": "The carbides increase hardness and wear resistance but also introduce planes of weakness if the bands are coarse or if forging temperature is too low.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "The two materials have different properties and different failure modes",
+    "narration": "Historical accounts describe wootz blades as capable of holding a sharp edge and cutting softer materials, but also as brittle under impact if improperly forged.",
+    "args": {
+      "variant": 0
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The two materials have different properties and different failure modes",
+    "narration": "Pattern-welded steel consists of distinct layers with different hardness and toughness. The high-carbon layers provide edge retention, the low-carbon layers provide flexibility.",
+    "args": {
+      "lines": [
+        "Pattern-welded steel consists of",
+        "distinct layers with different",
+        "hardness"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "size_ladder",
+    "seconds": 7.03,
+    "heading": "The two materials have different properties and different failure modes",
+    "narration": "However, if the weld between layers is incomplete or contaminated, the blade can delaminate along the interface.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 4.97,
+    "heading": "The two materials have different properties and different failure modes",
+    "narration": "Distinguishing historical wootz from modern pattern-welded steel requires microscopy and chemical analysis.",
+    "args": {
+      "variant": 1
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "The two materials have different properties and different failure modes",
+    "narration": "Wootz shows carbide bands within a single continuous matrix, with trace vanadium or chromium detectable by spectroscopy.",
+    "args": {
+      "lines": [
+        "Wootz shows carbide bands",
+        "within a single continuous",
+        "matrix"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "size_ladder",
+    "seconds": 6.62,
+    "heading": "The two materials have different properties and different failure modes",
+    "narration": "Pattern-welded steel shows distinct layers with abrupt composition changes and visible weld lines at high magnification.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.21,
+    "heading": "The two materials have different properties and different failure modes",
+    "narration": "Surface appearance alone is not diagnostic \u2014 both materials can produce similar patterns after etching.",
+    "args": {
+      "variant": 2
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The two materials have different properties and different failure modes",
+    "narration": "Museums and collectors have occasionally misidentified pattern-welded blades as historical wootz based on surface appearance, a mistake that metallographic analysis later corrected.",
+    "args": {
+      "lines": [
+        "Museums and collectors have",
+        "occasionally misidentified pattern-welded blades",
+        "as historical"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "process_column",
+    "seconds": 4.97,
+    "heading": "Attempts to recreate wootz steel have succeeded only partially",
+    "narration": "Efforts to recreate historical wootz steel began in earnest in the 1980s.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Attempts to recreate wootz steel have succeeded only partially",
+    "narration": "J. D. Verhoeven at Iowa State University, working with bladesmith Alfred Pendray, reproduced the banded carbide structure by carefully controlling carbon content, trace elements and cooling rates.",
+    "args": {
+      "lines": [
+        "J. D. Verhoeven at",
+        "Iowa State University, working",
+        "with bladesmith"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "process_column",
+    "seconds": 8.28,
+    "heading": "Attempts to recreate wootz steel have succeeded only partially",
+    "narration": "Their work, published in 1998, demonstrated that vanadium was essential for forming the fine carbide bands characteristic of high-quality wootz.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Attempts to recreate wootz steel have succeeded only partially",
+    "narration": "In 2006, Peter Paufler and colleagues at Dresden reported finding carbon nanotubes and cementite nanowires in a historical wootz sample, suggesting that nanostructures might contribute to the material's properties.",
+    "args": {
+      "variant": 3
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Attempts to recreate wootz steel have succeeded only partially",
+    "narration": "However, the role of these nanostructures remains debated, and their presence has not been consistently replicated in modern attempts.",
+    "args": {
+      "lines": [
+        "However, the role of",
+        "these nanostructures remains debated,",
+        "and their"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "process_column",
+    "seconds": 5.79,
+    "heading": "Attempts to recreate wootz steel have succeeded only partially",
+    "narration": "The difficulty in recreating wootz steel exactly reflects the complexity of the original process.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.38,
+    "heading": "Attempts to recreate wootz steel have succeeded only partially",
+    "narration": "The trace element composition depended on specific ore sources, now depleted or unidentified.",
+    "args": {
+      "variant": 4
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Attempts to recreate wootz steel have succeeded only partially",
+    "narration": "The cooling rate, crucible atmosphere and forging temperature all affected the final structure, and historical sources provide only incomplete descriptions.",
+    "args": {
+      "lines": [
+        "The cooling rate, crucible",
+        "atmosphere and forging temperature",
+        "all affected"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "process_column",
+    "seconds": 9.0,
+    "heading": "Attempts to recreate wootz steel have succeeded only partially",
+    "narration": "Modern recreations produce steel with similar appearance and some similar properties, but whether they match the best historical examples in all respects remains uncertain.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Attempts to recreate wootz steel have succeeded only partially",
+    "narration": "The published attempts have successfully reproduced the banded structure and achieved high hardness, but direct mechanical comparison with authenticated historical blades is limited by the scarcity of samples available for destructive testing.",
+    "args": {
+      "variant": 0
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.45,
+    "heading": "What to notice in the edit",
+    "narration": "The term carbide refers to a compound of iron and carbon, specifically cementite, with the chemical formula Fe\u2083C.",
+    "args": {
+      "variant": 1
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "What to notice in the edit",
+    "narration": "Carbides form when the carbon content exceeds the solubility limit of carbon in iron at a given temperature.",
+    "args": {
+      "lines": [
+        "Carbides form when the",
+        "carbon content exceeds the",
+        "solubility limit"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "They are harder and more brittle than the surrounding iron matrix. In wootz steel, carbides precipitate in bands during slow cooling because trace elements like vanadium provide nucleation sites.",
+    "args": {
+      "variant": 2
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.69,
+    "heading": "What to notice in the edit",
+    "narration": "In pattern-welded steel, carbides are distributed within each layer according to that layer's carbon content, but the layers themselves remain distinct.",
+    "args": {
+      "variant": 3
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "The distinction matters because the carbide distribution determines how the blade takes and holds an edge, and how it responds to impact.",
+    "args": {
+      "lines": [
+        "The distinction matters because",
+        "the carbide distribution determines",
+        "how"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "The evidence establishes how wootz steel was made in general terms \u2014 crucible process, high carbon, slow cooling, trace elements \u2014 but does not identify the specific ore sources or plant materials used.",
+    "args": {
+      "variant": 4
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Evidence limit",
+    "narration": "Historical texts describe the process but do not name the mines or specify the botanical sources of carbon.",
+    "args": {
+      "lines": [
+        "Historical texts describe the",
+        "process but do not",
+        "name"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "Modern attempts rely on adding known vanadium sources to approximate the chemistry, but whether this matches the original inputs is not confirmed.",
+    "args": {
+      "variant": 0
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "The surface patterns can be reproduced, but whether the mechanical properties of the best historical blades have been fully matched remains an open question.",
+    "args": {
+      "variant": 1
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Evidence limit",
+    "narration": "The gap is not trivial \u2014 small differences in trace element ratios can significantly affect carbide morphology and distribution.",
+    "args": {
+      "lines": [
+        "The gap is not",
+        "trivial"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "thermal_ascent",
+    "seconds": 6.62,
+    "heading": "Closing",
+    "narration": "Damascus steel is two answers, not one. The historical material was crucible steel with carbide bands.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "The modern material is forge-welded layers. Both produce patterns. Neither process is simple, and the historical process is still not fully recovered.",
+    "args": {
+      "lines": [
+        "The modern material is",
+        "forge-welded layers. Both produce",
+        "patterns. Neither"
+      ]
+    },
+    "from": "heuristic"
+  }
+]
