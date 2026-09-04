@@ -43,7 +43,8 @@ PLAN = ROOT / "docs" / "CHANNEL-PLAN.md"
 
 # The plan's own numbers, restated here as code. Changing the plan does NOT
 # change these - that is the point.
-PLAN_CADENCE = 2
+PLAN_CADENCE = 4        # owner set it live 2026-09-04; see
+                        # cadence.owner_set in loop/config.json
 PLAN_ESCALATED = 3
 PLAN_SCALE = 4        # owner decision 2026-09-02; also the taxonomy ceiling
 PLAN_SHORTS = 9       # the middle of the owner's 8-10 Shorts/week band

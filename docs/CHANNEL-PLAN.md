@@ -1,5 +1,8 @@
 # How We Know — the original plan
 
+
+> **Schedule, cadence evidence and the loop's stage map live in [`docs/OPERATING-MANUAL.md`](OPERATING-MANUAL.md).** This file holds the guarded strategy; that one holds the operating detail and the studies behind the publish times.
+
 **Locked 2026-08-30.** This is the reference document. When something in the pipeline
 disagrees with this file, that is drift, and the pipeline is wrong until this file is
 deliberately changed.
@@ -32,11 +35,22 @@ required. No business cross-links, ever.
 
 ## Cadence
 
-**Target: 4 long-form videos per week and 9 Shorts per week.** Owner decision,
-2026-09-02, raised from 2 and 4. Set in `loop/config.json`, never hardcoded. 4 is also
-the taxonomy ceiling and is never exceeded.
+**Live: 4 long-form videos per week and 9 Shorts per week.** Owner decision,
+2026-09-02, raised from 2 and 4; **set live on 2026-09-04** by the owner directly.
+Set in `loop/config.json`, never hardcoded. 4 is also the taxonomy ceiling and is
+never exceeded.
 
-**The loop raises itself in two evidence-gated steps, and neither is a date.**
+**Set by hand, not by the gates — and the difference is recorded.** The two
+evidence-gated steps below are the AUTOMATIC path and they remain armed. Neither had
+fired: both require `authoring_evidence()`, a script the OpenRouter authoring lane
+itself produced and validated, and no such script exists yet. Manufacturing that
+evidence to open the gate would have been a lie told to a guard, so the number was
+set directly instead and `cadence.owner_set` in `loop/config.json` records who chose
+it and when. An owner setting a number is a different act from the loop deciding it
+has earned it; the config says which one happened. At 4 the automatic steps are
+correct no-ops — 4 is also the ceiling, so if they ever fire they can only agree.
+
+**The loop also raises itself in two evidence-gated steps, and neither is a date.**
 
 1. **2 → 3** once the OpenRouter authoring lane has produced at least one script that
    passes full validation. Not "the lane exists" — a validated artifact.
@@ -50,12 +64,27 @@ anyway (worth doing: an authored script is ~$0.06 and runtime multiplies hours
 directly), while **Shorts are the only cheap lever on subscribers**, and 51 are already
 cut and paid for.
 
-**Why it does not start now.** Fourteen episodes are uploaded, private and dated,
-publishing gaplessly to 2026-10-20. The slot allocator only ever issues dates *after*
-the last one already on the calendar, and no lane rewrites a scheduled row — so the new
-cadence can only govern episodes that do not exist yet. The first 4/week slot is Friday
-23 October 2026. `validate.v20_cadence-schedule` proves this continuously rather than
-asserting it.
+**How the raise reaches the calendar: each domain gets its own days.** The ladder is
+ranked by evidence — Sunday, Tuesday, Monday, Friday — and a cadence takes the first N
+rungs, so raising 2 → 4 **adds** Monday and Friday and leaves Sunday and Tuesday exactly
+where they were. `loop/domains.live_slots()` splits the week deep sea 2 / materials 2,
+and `backfill.domain_weekdays()` hands deep sea its existing **Sunday and Tuesday** and
+materials the two added days, **Monday and Friday**.
+
+Because the two day-sets are disjoint, the second domain is **woven into the weeks the
+first has already filled** rather than queued behind them: materials episodes air on
+Mondays and Fridays from 7 September alongside a deep-sea run that continues on Sundays
+and Tuesdays to 25 October. This replaced the older rule that every new slot must fall
+after the last date on the calendar — correct while one domain held every publish day,
+and the reason the first three materials episodes were initially dated 27 October to 3
+November, a week *after* the last deep-sea episode instead of beside it.
+
+**No dated row moves.** The allocator skips any datetime already spoken for rather than
+anchoring past the whole calendar, so an episode already scheduled cannot be re-dated or
+double-booked, and no domain can be handed another domain's day.
+`validate.v20_cadence_schedule` proves all of that continuously — collision-freedom,
+disjoint day-sets, correct weekday per domain, and a 24-hour minimum lead so the owner
+can still watch an episode through before it airs — rather than asserting it.
 
 **Why the queue-depth guard exists.** Raising cadence shortens runway. If the queue
 cannot sustain 4/week the loop **refuses the raise** and says so as a

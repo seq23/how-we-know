@@ -1,6 +1,7 @@
 # Why deep sea creatures get creepier the deeper you go?
 
-**Status:** HUMANIZED EDITORIAL PASS COMPLETE — OWNER CONFIRMATION AND MASTER WATCH REQUIRED  
+**Status:** HUMANIZED EDITORIAL PASS COMPLETE — OWNER CONFIRMATION AND MASTER WATCH REQUIRED    
+**Domain:** deep-sea-ocean-science  
 **Article:** /questions/why-deep-sea-creatures-get-creepier-deeper  
 **Word count:** 1297  
 **Estimated narration:** 8m 57s at 145 WPM
@@ -24,7 +25,7 @@ Why deep sea creatures get creepier the deeper you go?
 ### The right way to see it
 
 {{chain: WHAT DEPTH ACTUALLY CHANGES | Light | Pressure | Temperature | Food supply | >Which traits are useful — not a ladder from normal to monstrous}}
-Depth changes light, pressure, temperature, and food supply. Those gradients change which traits are useful, but they do not create a universal ladder from normal to monstrous. The rest of this video follows that question through the actual environmental constraints described by NOAA, MBARI, Smithsonian, and Woods Hole sources in the companion article.
+Depth changes light, pressure, temperature, and food supply. Those gradients change which traits are useful, but they do not create a universal ladder from normal to monstrous.
 
 ### Producer POV
 
@@ -95,7 +96,7 @@ It is that different body plans reach different limits. The episode should use t
 ### A depth chart without villains
 
 {{steps: A DEPTH CHART WITHOUT VILLAINS | Twilight zone=put a migrator beside a predator | Midnight zone=put a gelatinous drifter beside an anglerfish | Abyssal=put a sea cucumber, scavenging crustacean and microbe beside the dramatic fish | Hadal=show the snailfish record, then animals that live deeper than confirmed fish}}
-The final depth chart should replace the usual monster lineup with ecological roles. Put a migrator beside a predator in the twilight zone. Put a gelatinous drifter beside an anglerfish in the midnight zone. Put a sea cucumber, scavenging crustacean, and microbe beside the dramatic abyssal fish. In the hadal section, show the snailfish record and then continue the chart with animals that live deeper than confirmed fish. The visual message becomes diversity under constraint rather than escalating evil. That change is structural, not cosmetic. It keeps this episode from repeating the ranked-list format and gives the viewer a reason to stay to the bottom of the chart: the expected final monster never arrives. The payoff is a softer animal and a harder biological limit.
+The final depth chart should replace the usual monster lineup with ecological roles. Put a migrator beside a predator in the twilight zone. Put a gelatinous drifter beside an anglerfish in the midnight zone. Put a sea cucumber, scavenging crustacean, and microbe beside the dramatic abyssal fish. In the hadal section, show the snailfish record and then continue the chart with animals that live deeper than confirmed fish. The visual message becomes diversity under constraint rather than escalating evil. That change is structural, not cosmetic. Notice it break from the usual ranked-list format: the expected final monster never arrives at the bottom of the chart. What you get instead is a softer animal and a harder biological limit.
 
 ### The deeper-is-worse illusion
 
@@ -108,7 +109,7 @@ Editors choose the sharpest teeth. Soft, slow, common organisms receive less att
 ### The retention payoff
 
 {{contrast: WHAT BELONGS AT THE DEEPEST POINT | is=The limit of confirmed fish | is=A transition to other forms of life | not=The ugliest creature}}
-The deepest point on the chart should not contain the ugliest creature. It should contain the limit of confirmed fish and a transition to other forms of life. That reversal gives the viewer a genuine surprise while correcting the premise.
+The deepest point on the chart does not hold the ugliest creature. It holds the limit of confirmed fish and a transition to other forms of life — a real reversal of what the premise led you to expect.
 
 {{steps: WHERE THE EPISODE ENDS UP | Energy budgets | Sampling bias | Physiological boundaries | >Which body plans keep functioning as pressure rises and food becomes less predictable}}
 The episode begins as a horror ladder and ends as a lesson in energy budgets, sampling bias, and physiological boundaries. The chart becomes more interesting when the expected monster is replaced by a question: which body plans can keep functioning as pressure rises and food becomes less predictable?
@@ -116,15 +117,15 @@ The episode begins as a horror ladder and ends as a lesson in energy budgets, sa
 ### Final editorial note
 
 {{text}}
-A second correction belongs here too. Deeper water does not always mean larger teeth, larger eyes, or a more active predator. Some lineages reduce eyes, rely more on chemical or mechanical sensing, or conserve energy through stillness. Others occupy the seafloor and feed on material that arrives from above. The farther the chart descends, the more important it becomes to show the whole community rather than one selected face. That broader view is the real payoff: depth changes the available strategies, but it does not write a single direction of evolution. A second correction belongs here too. Deeper water does not always mean larger teeth, larger eyes, or a more active predator. Some lineages reduce eyes, rely more on chemical or mechanical sensing, or conserve energy through stillness. Others occupy the seafloor and feed on material that arrives from above. The farther the chart descends, the more important it becomes to show the whole community rather than one selected face. That broader view is the real payoff: depth changes the available strategies, but it does not write a single direction of evolution.
+One more correction is worth holding onto: deeper water does not always mean larger teeth, larger eyes, or a more active predator. Some lineages reduce their eyes, lean on chemical or mechanical sensing, or conserve energy through stillness. Others sit on the seafloor and feed on whatever arrives from above. The farther the chart descends, the more it is worth watching for the whole community rather than one selected face — depth changes which strategies work, it does not write a single direction of evolution. One more correction is worth holding onto: deeper water does not always mean larger teeth, larger eyes, or a more active predator. Some lineages reduce their eyes, lean on chemical or mechanical sensing, or conserve energy through stillness. Others sit on the seafloor and feed on whatever arrives from above. The farther the chart descends, the more it is worth watching for the whole community rather than one selected face — depth changes which strategies work, it does not write a single direction of evolution.
 
 ### What to notice in the edit
 
 {{zones:}}
-Make this a descending counterexample. At each zone, show the trait the viewer expects and then the trait the habitat actually rewards.
+Watch this as a descending counterexample: at each zone, first the trait you'd expect, then the trait the habitat actually rewards.
 
 {{contrast: WHAT TO END ON | is=The deepest confirmed fish | not=A dramatic predator | not=A horror-game finale}}
-End on the deepest confirmed fish rather than a dramatic predator. The visual rhythm should slow as the depth increases, matching the shift toward lower-energy life instead of accelerating into a horror-game finale.
+Notice that it ends on the deepest confirmed fish, not a dramatic predator, and that the pace slows as the depth increases — the opposite of a horror-game finale.
 
 ### Evidence limit
 

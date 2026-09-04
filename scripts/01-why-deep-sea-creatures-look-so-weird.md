@@ -1,6 +1,7 @@
 # Why deep sea creatures look so weird?
 
-**Status:** HUMANIZED EDITORIAL PASS COMPLETE — OWNER CONFIRMATION AND MASTER WATCH REQUIRED  
+**Status:** HUMANIZED EDITORIAL PASS COMPLETE — OWNER CONFIRMATION AND MASTER WATCH REQUIRED    
+**Domain:** deep-sea-ocean-science  
 **Article:** /questions/why-deep-sea-creatures-look-so-weird  
 **Word count:** 1152  
 **Estimated narration:** 7m 57s at 145 WPM
@@ -27,7 +28,7 @@ Why deep sea creatures look so weird?
 The useful question is not “Why is this creature weird?” It is “What problem does this feature solve?”
 
 {{checklist: WHAT STOPS LOOKING RANDOM | +The huge mouth | +The transparent head | +The glowing lure | +The soft tissue | +The needle-like teeth}}
-Once you ask that, the huge mouth, transparent head, glowing lure, soft tissue, and needle-like teeth stop looking random. The rest of this video follows that question through the actual environmental constraints described by NOAA, MBARI, Smithsonian, and Woods Hole sources in the companion article.
+Once you ask that, the huge mouth, transparent head, glowing lure, soft tissue, and needle-like teeth stop looking random.
 
 ### Producer POV
 
@@ -81,7 +82,7 @@ First, darkness rewards eyes that collect faint light, bodies that erase their o
 The fastest way to stop treating a deep-sea animal as a monster is to rebuild the scene around it. Start with the water, not the face. Ask whether the animal is drifting in open water, moving over mud, sitting near a vent, or crossing a trench wall. Then ask what light is available. A reflective side, a transparent tissue, a red body, and a light organ can all be forms of concealment, but they work in different light fields. Next ask how often food arrives. A large mouth can look excessive in a photograph while functioning as insurance in a habitat where the next meal is unpredictable. Finally, ask whether the image shows a living animal at depth or a specimen after capture. Delicate tissue can collapse, eyes can change position, and colors can look dramatically different under deck lights.
 
 {{anatomy: RESTORE THE CONTEXT | transparent shield@0.28,0.26 | lure@0.36,0.18 | giant mouth@0.15,0.58}}
-That sequence changes the emotional meaning of the image without making it less compelling. The animal still looks unfamiliar. It simply stops looking arbitrary. The barreleye's transparent shield becomes a protected viewing window. The anglerfish's lure becomes a way to shorten a costly chase. A gelatinous animal's softness becomes compatible with a body that contains little compressible gas. A giant mouth becomes a response to scarcity rather than proof of aggression. This is the channel's editorial rule for every creature episode: restore depth, scale, condition, and function before using the close-up.
+That sequence changes the emotional meaning of the image without making it less compelling. The animal still looks unfamiliar. It simply stops looking arbitrary. The barreleye's transparent shield becomes a protected viewing window. The anglerfish's lure becomes a way to shorten a costly chase. A gelatinous animal's softness becomes compatible with a body that contains little compressible gas. A giant mouth becomes a response to scarcity rather than proof of aggression. You'll see that pattern every time a creature gets a close-up here: depth, scale, condition, and function restored first.
 
 {{checklist: RESTORE BEFORE THE CLOSE-UP | +Depth | +Scale | +Condition | +Function | >If those four pieces are missing, the image is weak evidence}}
 If those four pieces are missing, the image may be excellent entertainment, but it is weak evidence about how the animal normally looks or lives.
@@ -94,7 +95,7 @@ When the next bizarre animal appears, pause before naming it. Restore the habita
 ### What to notice in the edit
 
 {{checklist: THE VISUAL TEST | -A close-up without restored context | +Put the depth on screen | +Show the animal's approximate size when the source provides it | +Distinguish a live ROV observation from a specimen damaged by nets or decompression}}
-The visual test for this episode is simple: never show a close-up without restoring context. Put the depth on screen. Show the animal's approximate size when the source provides it. Distinguish a live ROV observation from a specimen damaged by nets or decompression. The goal is not to make the creature less interesting. It is to stop the camera from manufacturing the weirdness we then pretend to explain.
+Watch for whether the shot restores context before it moves on: the depth on screen, the animal's approximate size when the source gives it, and whether you can tell a live ROV observation from a specimen damaged by nets or decompression. None of that makes the creature less interesting — it stops the camera from manufacturing a weirdness you'd otherwise have to un-see later.
 
 ### Evidence limit
 
