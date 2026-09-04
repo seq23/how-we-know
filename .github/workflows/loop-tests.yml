@@ -3,7 +3,8 @@ name: loop · tests
 on:
   push:
     paths: ['loop/**', 'auth/**', 'bin/loop-*.sh', '.github/workflows/**',
-            'scripts/**', 'pov/**', 'docs/CHANNEL-PLAN.md', 'research/publish_order.json']
+            'scripts/**', 'pov/**', 'docs/CHANNEL-PLAN.md', 'research/publish_order.json',
+            '.gitattributes']
   pull_request:
   workflow_dispatch:
 

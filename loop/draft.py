@@ -29,8 +29,10 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import breaker  # noqa: E402
 import author  # noqa: E402
 import cadence  # noqa: E402
+import domains  # noqa: E402
 import gate  # noqa: E402
 import ledger  # noqa: E402
+import pov_match  # noqa: E402
 import validate  # noqa: E402
 from common import (BRIEFS, LOOP, ROOT, Stage, config, now,  # noqa: E402
                     read_json, week_id, write_json)
@@ -85,6 +87,127 @@ def brief_for(topic: dict, week: str) -> Path:
     p = BRIEFS / f"{week}-{topic.get('slug') or topic['question'][:40]}.json"
     write_json(p, doc)
     return p
+
+
+def rebuild_runway_if_short(st, cfg: dict, per_week: int, used_slugs: list[str],
+                            skip_slugs: set[str]) -> None:
+    """A runway warning that only ever LOGGED is a warning nobody has to act
+    on until it is nearly too late. 2026-09-03: `runway.warn_weeks`/
+    `critical_weeks` existed only as a number in a report; nothing ran the
+    authoring lane because of it. This does.
+
+    Runs AFTER the week's own selection has already been authored, validated
+    and queued — this never competes with or blocks that work, it is purely
+    additive. It authors extra inventory for whichever domain(s)
+    `cadence.runway()` names as short (or, with no domain data, for the
+    aggregate), validates each at full strength, and — only if it clears
+    validation — PROMOTES it into `scripts/`, which is the one directory
+    `ledger.inventory()` and next week's runway figure actually count.
+    `loop/drafts/` alone does not rebuild runway; nothing counts it.
+
+    Bounded at `runway.rebuild_max_extra` (default 3) so a bad week cannot
+    spend the whole OpenRouter budget chasing a number. If authoring cannot
+    produce even one extra script — no key, an exhausted domain queue, every
+    attempt failing validation — that is the fallback-to-human this item asks
+    for: a NAMED STOP naming which domain is short, how many weeks remain,
+    and the calendar date the channel goes dark for that domain if nothing
+    changes. It never trips the circuit breaker and never blocks the week
+    already queued above; `never_go_dark` still means nothing here ever halts
+    publishing to protect the backlog.
+    """
+    rw = cadence.runway(per_week)
+    short = rw.get("short_domains") or ([] if rw["level"] == "ok" else ["any"])
+    if not short:
+        st.note(f"runway rebuild: not needed - {rw['message']}")
+        return
+
+    order = read_json(ROOT / "research" / "publish_order.json", default={})
+    queue = order.get("queue") or []
+    by_dom = domains.by_slug()
+    candidates = []
+    for row in queue:
+        slug = row.get("slug")
+        if not slug or slug in skip_slugs:
+            continue
+        if (ROOT / "scripts" / f"{slug}.md").exists():
+            continue
+        dom = by_dom.get(slug)
+        if "any" in short or dom in short:
+            candidates.append((row, dom))
+
+    cap = int(cfg.get("runway", {}).get("rebuild_max_extra", 3))
+    authored, failed = [], []
+    for row, dom in candidates[:cap]:
+        slug, question = row["slug"], row.get("query", row.get("question", ""))
+        try:
+            pov = pov_match.select(slug, question, used_slugs)
+        except pov_match.NoPovMatch as e:
+            failed.append(f"{slug}: no POV line available ({e})")
+            continue
+        try:
+            res = author.draft(question, slug,
+                               {"pov_id": pov["pov_id"], "line": pov["line"]})
+        except author.AuthorStop as e:
+            failed.append(f"{slug}: [{e.code}] {e.message}")
+            continue
+        draft_path = ROOT / res["path"]
+        text = draft_path.read_text(encoding="utf-8")
+        item = {"slug": slug, "question": question, "script": res["path"],
+                "generated": True}
+        passed, report = validate.run_all([item])
+        if passed:
+            # Evidence is recorded ONLY inside this passed-validators branch —
+            # loop/validate_plan.py check 2 enforces exactly this shape (the
+            # same one loop/draft.py's own main() flow uses) so an unvalidated
+            # script can never unlock the cadence escalation.
+            dest = ROOT / "scripts" / f"{slug}.md"
+            dest.write_text(text, encoding="utf-8")
+            ev = cadence.record_authoring_evidence(
+                slug, str(dest.relative_to(ROOT)), report)
+            authored.append(slug)
+            used_slugs.append(pov["pov_id"])
+        else:
+            failed.append(
+                f"{slug}: failed validation "
+                f"({'; '.join(r['validator'] for r in report if 'FAIL' in r['status'])})")
+            continue
+        st.work(f"runway rebuild ({dom or 'unattributed'}): authored and "
+                f"promoted {slug} to scripts/ — {len(ev['scripts'])} "
+                f"validated generated script(s) on record")
+
+    for f in failed:
+        st.note(f"runway rebuild: {f}")
+
+    if authored:
+        st.note(f"runway rebuild: added {len(authored)} script(s) to "
+                f"inventory for {', '.join(short)}")
+        return
+
+    # Nothing could be authored. This is the fallback-to-human, named and
+    # dated — never a silent "tried and gave up".
+    import datetime as _dt                                   # noqa: PLC0415
+    dark_by = {}
+    for name in short:
+        d = rw.get("by_domain", {}).get(name)
+        weeks = d["weeks"] if d and d.get("weeks") is not None else \
+            rw["weeks_remaining"]
+        dark_by[name] = (_dt.date.today() +
+                         _dt.timedelta(weeks=weeks)).isoformat()
+    st.named_stop(
+        "RUNWAY_AUTHORING_FALLBACK",
+        f"runway is {rw['level']} for {', '.join(short)} and the authoring "
+        f"lane could not add a single script to cover it. "
+        f"{'; '.join(failed) or 'no candidate topics were queued for the '
+                                'short domain(s) in research/publish_order.json'}",
+        detail={"short_domains": short, "by_domain": rw.get("by_domain"),
+                "goes_dark_by": dark_by, "failures": failed},
+        unblock=(
+            "This week's own queue already shipped and is unaffected. "
+            + "; ".join(f"{n} needs more scored topics in "
+                       f"research/publish_order.json (or a working "
+                       f"OPENROUTER_API_KEY if authoring itself is what "
+                       f"failed) before {d} or it goes dark"
+                       for n, d in dark_by.items())))
 
 
 def main() -> None:
@@ -262,6 +385,15 @@ def main() -> None:
                         "put the key in .secrets/openrouter_key.txt. If "
                         "DRAFT_FAILED_VALIDATION, the brief in loop/briefs/ is "
                         "ready for a human.")
+
+        # ---- 4. rebuild runway, if it is short --------------------------
+        # Only reached once the week's own selection has fully shipped above
+        # (either return already happened via NamedStop, or every slot in
+        # `items` is queued). Purely additive from here.
+        skip_slugs = {i["slug"] for i in items} | {t.get("slug") for t in unauthored}
+        used_ids = [r.get("pov_id") for r in ledger.load()["published"]
+                   if r.get("pov_id")]
+        rebuild_runway_if_short(st, cfg, per_week, used_ids, skip_slugs)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,5066 @@
+{
+  "measured_at": "2026-09-03T18:16:38.741866+00:00",
+  "generator": "research/competition.py",
+  "source": "YouTube Data API v3 (search.list, videos.list, channels.list)",
+  "key_source": ".secrets/youtube_api_key.txt",
+  "key_handling": "The API key is never printed, logged, or written here.",
+  "quota_units_spent": 2550,
+  "quota_budget": 3000,
+  "allocation_plan": null,
+  "candidates_scored": 24,
+  "candidates_unmeasured": [],
+  "unmeasured_note": "Anything listed here has NO competition value. It is not scored as zero and must not be ranked as if it were measured.",
+  "domain_summary": {},
+  "results": [
+    {
+      "query": "how does metal fatigue cause failure",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.425,
+        "max_coverage": 0.75,
+        "strong_match_count": 1,
+        "strong_match_rate": 0.05,
+        "loose_match_rate": 0.35,
+        "gap_signal": 0.95,
+        "interpretation": "1 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 1876.5,
+        "p90": 86966,
+        "max": 754660,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 2870.0,
+        "max_subscribers": 1490000,
+        "under_100k_subs": 14,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 992,
+        "published_last_365d": 4,
+        "n": 20
+      },
+      "opportunity_score": 0.776,
+      "opportunity_components": {
+        "title_gap": 0.95,
+        "incumbent_subs": 0.506,
+        "view_ceiling": 0.532,
+        "staleness": 0.8
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-03T18:16:24.343316+00:00"
+      },
+      "top_results": [
+        {
+          "title": "How and When Metals Fail",
+          "views": 86966,
+          "subs": 93700,
+          "published_at": "2013-06-19T18:21:22Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Understanding Fatigue Failure and S-N Curves",
+          "views": 754660,
+          "subs": 1490000,
+          "published_at": "2019-06-24T13:49:32Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "What Causes Metal Fatigue And How To Stop It? - How Things Break",
+          "views": 32,
+          "subs": 117,
+          "published_at": "2025-08-23T10:35:07Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "What\u00b4s metal fatigue of an abutment screw &amp; how to managed this? | DENTIST AND IMPLANTOLOGIST ONLY",
+          "views": 47,
+          "subs": 111,
+          "published_at": "2024-02-02T04:00:09Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Solving for Why: Metal Fatigue Failures",
+          "views": 2818,
+          "subs": 2830,
+          "published_at": "2021-12-09T18:40:20Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Chronic fatigue syndrome is NOT ...",
+          "views": 206460,
+          "subs": 606000,
+          "published_at": "2025-03-17T17:42:10Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "What is Fatigue in Metals? How does Fatigue Impact Steel and Metal?",
+          "views": 965,
+          "subs": 4710,
+          "published_at": "2024-01-18T16:00:08Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "29 Metal Fatigue",
+          "views": 54,
+          "subs": 2900,
+          "published_at": "2026-06-18T05:28:14Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "What Causes Fatigue Stress?\ud83d\udca5",
+          "views": 2902,
+          "subs": 1190,
+          "published_at": "2024-11-16T13:23:14Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Engineering Failures: Metal Fatigue, The Comet Disaster",
+          "views": 24,
+          "subs": 27,
+          "published_at": "2026-03-18T16:36:16Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How Does Endurance Limit Prevent Metal Fatigue Cracks? - How Things Break",
+          "views": 5,
+          "subs": 117,
+          "published_at": "2025-09-26T13:35:44Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "NTSB: Metal fatigue caused fan blade inside airplane engine to fail",
+          "views": 1981,
+          "subs": 155000,
+          "published_at": "2018-05-05T00:28:39Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Metal Fatigue: How Planes Break Without Warning",
+          "views": 5583,
+          "subs": 1020000,
+          "published_at": "2025-10-09T11:01:40Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "fatigue failure of metals",
+          "views": 11756,
+          "subs": 4490,
+          "published_at": "2017-11-18T18:10:14Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Mechanics of Materials: Lesson 16 - Fatigue and Creep Failures with S-N Diagram",
+          "views": 58678,
+          "subs": 384000,
+          "published_at": "2023-03-18T06:05:43Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "How Do Small Flaws Lead To Massive Fatigue Cracks? - How Things Break",
+          "views": 11,
+          "subs": 117,
+          "published_at": "2025-08-06T17:46:01Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "08 - Corrosion failures: fatigue",
+          "views": 1772,
+          "subs": 383,
+          "published_at": "2021-09-30T12:32:42Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "What causes fatigue and why does fatigue happen?",
+          "views": 588,
+          "subs": 2840,
+          "published_at": "2018-02-07T16:06:55Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "What is abutment screw metal fatigue?| FOR DENTIST AND IMPLANTOLOGIST  VIEWING ONLY",
+          "views": 27,
+          "subs": 111,
+          "published_at": "2023-11-13T03:00:28Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "NTSB: Metal fatigue found in engine blade",
+          "views": 4138,
+          "subs": 340000,
+          "published_at": "2021-02-23T05:19:31Z",
+          "coverage": 0.5
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "why does old iron not rust",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.25,
+        "max_coverage": 0.5,
+        "strong_match_count": 0,
+        "strong_match_rate": 0.0,
+        "loose_match_rate": 0.9,
+        "gap_signal": 1.0,
+        "interpretation": "nobody has made the definitive video on this query"
+      },
+      "view_profile": {
+        "median": 1159280.0,
+        "p90": 9281004,
+        "max": 18883186,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 155500.0,
+        "max_subscribers": 23100000,
+        "under_100k_subs": 8,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 1139,
+        "published_last_365d": 1,
+        "n": 20
+      },
+      "opportunity_score": 0.714,
+      "opportunity_components": {
+        "title_gap": 1.0,
+        "incumbent_subs": 0.258,
+        "view_ceiling": 0.134,
+        "staleness": 0.95
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-03T18:16:35.507447+00:00"
+      },
+      "top_results": [
+        {
+          "title": "How to Restore Your Cast Iron Skillet II Kalejunkie",
+          "views": 405228,
+          "subs": 161000,
+          "published_at": "2022-09-16T02:41:54Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Why Medieval IRON Never Rusted While Yours Dies in 2 Years",
+          "views": 1172817,
+          "subs": 150000,
+          "published_at": "2025-10-26T14:55:13Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Restore the rust and teach yo beautiful mama a lesson. #castironcooking",
+          "views": 18883186,
+          "subs": 5150000,
+          "published_at": "2024-09-27T04:42:23Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "The ONLY Way To Clean Cast Iron!",
+          "views": 3268145,
+          "subs": 57100,
+          "published_at": "2023-06-06T21:58:21Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Remove Rust | Simple DIY Rust Removal",
+          "views": 842133,
+          "subs": 25000,
+          "published_at": "2024-07-29T01:09:27Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "How to Season a Rusty Cast Iron Skillet | How to Fix,  Clean and Restore Cast Iron",
+          "views": 2178637,
+          "subs": 13900,
+          "published_at": "2020-07-20T01:55:45Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Don&#39;t throw away a rusty wok!",
+          "views": 202803,
+          "subs": 297000,
+          "published_at": "2024-02-26T17:09:06Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "HOW TO STOP RUST ON BARE METAL",
+          "views": 25973,
+          "subs": 30000,
+          "published_at": "2023-03-03T17:40:59Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "The Easy Guide On Seasoning and Restoring Cast Iron",
+          "views": 9052586,
+          "subs": 10700000,
+          "published_at": "2019-05-28T19:00:00Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Can Vinegar REALLY Remove Rust From A Sword?",
+          "views": 10022870,
+          "subs": 23100000,
+          "published_at": "2023-04-13T15:00:01Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "How to Remove Rust Easy",
+          "views": 336959,
+          "subs": 142000,
+          "published_at": "2024-07-10T22:35:31Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "How to easily restore your rusted cast iron pan #shorts",
+          "views": 3431621,
+          "subs": 213000,
+          "published_at": "2021-11-22T17:11:14Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Rust Removal Magic: Electrolysis in Action #viralvideo",
+          "views": 1145743,
+          "subs": 2010,
+          "published_at": "2024-09-15T19:10:10Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Preventing Rust With Camphor",
+          "views": 9281004,
+          "subs": 1110000,
+          "published_at": "2024-12-24T05:25:41Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Rust Removal : Coke Vs Vinegar , A Side By Side Comparison",
+          "views": 1427196,
+          "subs": 294000,
+          "published_at": "2024-09-16T16:14:01Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Why do metals Rust? \ud83d\ude33",
+          "views": 103876,
+          "subs": 1190,
+          "published_at": "2023-09-02T23:00:03Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "It&#39;s not ruined, trust the process! (Rust Bluing)",
+          "views": 2164705,
+          "subs": 2230000,
+          "published_at": "2025-01-18T21:18:34Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Cast Iron Rust Removal [Simple]",
+          "views": 572297,
+          "subs": 1980,
+          "published_at": "2023-05-26T10:19:01Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How to cut cast iron pipes. #shorts #youtubeshorts #construction",
+          "views": 471580,
+          "subs": 1270000,
+          "published_at": "2022-08-27T22:50:30Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "How To Paint Rusty Metal Fence: Tips and Tricks \ud83d\udc4d #shorts",
+          "views": 122946,
+          "subs": 4870,
+          "published_at": "2023-06-10T21:56:53Z",
+          "coverage": 0.0
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "how does tempered glass shatter",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.633,
+        "max_coverage": 0.667,
+        "strong_match_count": 0,
+        "strong_match_rate": 0.0,
+        "loose_match_rate": 0.1,
+        "gap_signal": 1.0,
+        "interpretation": "nobody has made the definitive video on this query"
+      },
+      "view_profile": {
+        "median": 1714237.5,
+        "p90": 39788920,
+        "max": 128809923,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 256000.0,
+        "max_subscribers": 30200000,
+        "under_100k_subs": 8,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 1047,
+        "published_last_365d": 0,
+        "n": 20
+      },
+      "opportunity_score": 0.712,
+      "opportunity_components": {
+        "title_gap": 1.0,
+        "incumbent_subs": 0.227,
+        "view_ceiling": 0.109,
+        "staleness": 1.0
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-03T18:16:13.661349+00:00"
+      },
+      "top_results": [
+        {
+          "title": "What Is Tempered Glass? How Does It Break?",
+          "views": 8618,
+          "subs": 31900,
+          "published_at": "2023-02-03T12:40:00Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Why Does Tempered Glass Break So Easily?",
+          "views": 18486,
+          "subs": 125000,
+          "published_at": "2024-12-24T10:00:42Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Breaking Tempered Glass for Remodeling Job",
+          "views": 870303,
+          "subs": 1670,
+          "published_at": "2023-02-28T17:00:40Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Tempered Safety Glass Explodes - Slow Motion - This is What Happens!",
+          "views": 399812,
+          "subs": 52200,
+          "published_at": "2022-09-15T10:00:10Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Why tempered glass randomly explodes",
+          "views": 801605,
+          "subs": 152000,
+          "published_at": "2015-02-02T23:34:58Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Why does tempered glass break near ceramic tiles?",
+          "views": 83638,
+          "subs": 62100,
+          "published_at": "2025-08-29T00:35:28Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Lesson 8  Smashing Tempered Glass",
+          "views": 10834,
+          "subs": 4980,
+          "published_at": "2022-11-04T18:18:21Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Tempered Glass Explained",
+          "views": 39788920,
+          "subs": 858000,
+          "published_at": "2025-04-24T20:00:29Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Tempered glass explained",
+          "views": 33316625,
+          "subs": 407000,
+          "published_at": "2024-10-01T13:58:58Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "how to shatter your PC&#39;s glass side panel #shorts",
+          "views": 15069922,
+          "subs": 2120000,
+          "published_at": "2023-10-20T18:26:20Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Exploding shower glass: Why is this happening?",
+          "views": 28363,
+          "subs": 360000,
+          "published_at": "2024-06-19T02:32:48Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "How fast does glass crack? - The Slow Mo Guys",
+          "views": 15959613,
+          "subs": 15000000,
+          "published_at": "2018-12-13T18:17:19Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Unveiling the Mystery: The Truth Behind Tempered Glass Breakage!",
+          "views": 501,
+          "subs": 67,
+          "published_at": "2025-01-09T09:00:25Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Breaking Tempered Glass . How to breaking #broken #breaking #tuffan #glass",
+          "views": 179994,
+          "subs": 24300,
+          "published_at": "2023-10-24T19:43:23Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Breaking Tempered Glass Funny or Terrifying?",
+          "views": 128809923,
+          "subs": 842000,
+          "published_at": "2024-05-17T10:00:04Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Glass Shower Door Shatters During Installation || ViralHog",
+          "views": 2558172,
+          "subs": 30200000,
+          "published_at": "2024-11-13T16:41:23Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Tempered Glass Testing: How Strong Is It? #shorts",
+          "views": 5248688,
+          "subs": 842000,
+          "published_at": "2023-05-06T08:45:00Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Why tempered glass sometimes break, sometimes not?",
+          "views": 62617928,
+          "subs": 1070000,
+          "published_at": "2024-05-17T11:19:40Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Tempered glass vs regular glass and unique staircase #shorts",
+          "views": 2619703,
+          "subs": 842000,
+          "published_at": "2022-11-12T21:12:34Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Breaking tempered glass shower wall door.",
+          "views": 16490815,
+          "subs": 8680,
+          "published_at": "2015-10-11T15:46:02Z",
+          "coverage": 0.667
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "how is 3d printed metal made",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.367,
+        "max_coverage": 0.667,
+        "strong_match_count": 0,
+        "strong_match_rate": 0.0,
+        "loose_match_rate": 0.85,
+        "gap_signal": 1.0,
+        "interpretation": "nobody has made the definitive video on this query"
+      },
+      "view_profile": {
+        "median": 1084791.5,
+        "p90": 3992418,
+        "max": 12559475,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 351450.0,
+        "max_subscribers": 15300000,
+        "under_100k_subs": 10,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 1175,
+        "published_last_365d": 2,
+        "n": 20
+      },
+      "opportunity_score": 0.697,
+      "opportunity_components": {
+        "title_gap": 1.0,
+        "incumbent_subs": 0.208,
+        "view_ceiling": 0.138,
+        "staleness": 0.9
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-03T18:16:15.141492+00:00"
+      },
+      "top_results": [
+        {
+          "title": "METAL 3D PRINTING | What is it and how does it work ?",
+          "views": 74599,
+          "subs": 11300,
+          "published_at": "2023-03-21T14:45:00Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "How I 3D Printed a Metal Aerospike Rocket at Home",
+          "views": 1560697,
+          "subs": 1850000,
+          "published_at": "2021-07-30T15:09:59Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "YOU CAN PRINT METAL NOW?! \ud83d\ude31 #meltio #engineering #3dprinting",
+          "views": 3992418,
+          "subs": 15300000,
+          "published_at": "2025-03-21T15:36:23Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "How much does 3D printed titanium cost?",
+          "views": 4612663,
+          "subs": 46300,
+          "published_at": "2024-11-07T10:00:32Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "This 3d printer makes metal!",
+          "views": 300951,
+          "subs": 16700,
+          "published_at": "2025-01-18T22:09:55Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "How Strong is 3D Printed Metal?",
+          "views": 438607,
+          "subs": 64900,
+          "published_at": "2022-05-02T11:56:46Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Metal 3D Printing | The Future of Manufacturing?",
+          "views": 1147858,
+          "subs": 1150000,
+          "published_at": "2023-07-11T11:00:13Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "The Material Science of Metal 3D Printing",
+          "views": 2732753,
+          "subs": 5110000,
+          "published_at": "2019-10-26T14:00:08Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "How 3D Printers Turn Metal Powder Into Fabric",
+          "views": 12559475,
+          "subs": 1400000,
+          "published_at": "2025-04-26T07:00:22Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "It&#39;s Time To Start 3D Printing Metal",
+          "views": 1021725,
+          "subs": 668000,
+          "published_at": "2026-04-09T18:01:28Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Amazing 3D Printed Metal Parts!",
+          "views": 3400023,
+          "subs": 29000,
+          "published_at": "2023-05-22T17:00:34Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "$150,000 Metal 3D Printer \ud83e\udd2f #3dprinter #3dprinting #shorts",
+          "views": 2425866,
+          "subs": 42600,
+          "published_at": "2023-05-13T00:45:16Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Basic rules of Metal 3D Printing | Metal Additive Manufacturing",
+          "views": 27838,
+          "subs": 853,
+          "published_at": "2022-09-23T10:25:27Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Metal 3D Printing Walkthrough | Markforged Metal X",
+          "views": 511309,
+          "subs": 30500,
+          "published_at": "2020-01-16T11:00:04Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Turbo Manifold 3D Printed from Inconel Powder",
+          "views": 1245639,
+          "subs": 638000,
+          "published_at": "2020-12-04T02:48:42Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Metal 3D Printing \u2013 The Future of Manufacturing",
+          "views": 85577,
+          "subs": 367,
+          "published_at": "2025-08-21T16:53:29Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "3D Printing METAL AT HOME!",
+          "views": 247739,
+          "subs": 702000,
+          "published_at": "2025-05-30T13:01:17Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "3D Printing an INSANE Steel Part that&#39;s IMPOSSIBLE to Make on a CNC Machine",
+          "views": 1400655,
+          "subs": 1150000,
+          "published_at": "2021-12-01T11:00:22Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "3D Printing METAL at HOME - FINALLY!",
+          "views": 137504,
+          "subs": 702000,
+          "published_at": "2026-05-01T13:01:35Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "99.9% 3D Printed Titanium",
+          "views": 79235,
+          "subs": 46300,
+          "published_at": "2024-10-13T19:44:03Z",
+          "coverage": 0.333
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "what is carbon fiber made of",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.517,
+        "max_coverage": 1.0,
+        "strong_match_count": 1,
+        "strong_match_rate": 0.05,
+        "loose_match_rate": 0.4,
+        "gap_signal": 0.95,
+        "interpretation": "1 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 55409.5,
+        "p90": 933536,
+        "max": 3115554,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 9410.0,
+        "max_subscribers": 498000,
+        "under_100k_subs": 15,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 458,
+        "published_last_365d": 9,
+        "n": 20
+      },
+      "opportunity_score": 0.692,
+      "opportunity_components": {
+        "title_gap": 0.95,
+        "incumbent_subs": 0.432,
+        "view_ceiling": 0.322,
+        "staleness": 0.55
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-03T18:16:05.826020+00:00"
+      },
+      "top_results": [
+        {
+          "title": "Make Forged Carbon Fibre Parts Using Compression Moulding",
+          "views": 3115554,
+          "subs": 498000,
+          "published_at": "2021-12-09T17:54:57Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Ultimate G82 M4 Widebody: The Prepreg Carbon Fiber Widebody! Full Review",
+          "views": 29,
+          "subs": 409,
+          "published_at": "2026-09-01T13:00:28Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How Is Carbon Fiber Made \u2013 Carbon Fiber Manufacturing Process, PAN Carbonization, Graphite Structure",
+          "views": 903,
+          "subs": 1570,
+          "published_at": "2026-03-09T22:00:44Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "What Are Fighter Jets REALLY Made Of? \ud83e\udd2f\u2708\ufe0f #militarytechnology #youtubeshorts #stealthfighter #jet",
+          "views": 1382,
+          "subs": 40,
+          "published_at": "2026-09-01T12:00:11Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Lamborghini Revuelto SV \u2013 How This 1,000+ HP Monster Is Made #Lamborghini #RevueltoSV",
+          "views": 10,
+          "subs": 57,
+          "published_at": "2026-09-02T13:30:12Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Carbon Fiber Front Fender Build - Time-Lapse",
+          "views": 195505,
+          "subs": 23200,
+          "published_at": "2025-05-18T18:07:48Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How a Modern Aircraft Wing Is Built From Thousands of Parts \u2708\ufe0f",
+          "views": 18543,
+          "subs": 5720,
+          "published_at": "2026-08-31T07:38:01Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Making Complex Carbon Fibre Tubes Using a Split-Mould",
+          "views": 2915529,
+          "subs": 498000,
+          "published_at": "2020-04-21T15:40:26Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "DIY Carbon Fiber Skinning: Make Custom Motorcycle Parts for less!",
+          "views": 59468,
+          "subs": 2880,
+          "published_at": "2023-05-14T12:00:47Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Making Forged Carbon Fiber Parts",
+          "views": 933536,
+          "subs": 136000,
+          "published_at": "2023-08-21T02:01:42Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "The TRUTH About Carbon Fiber Bike Frames",
+          "views": 16970,
+          "subs": 28100,
+          "published_at": "2026-09-03T00:11:08Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Making a Mold of a Plastic Part to Turn Into Carbon Fiber- step by step",
+          "views": 185924,
+          "subs": 39100,
+          "published_at": "2023-05-25T02:07:15Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Tom Curren Surfing P Pass Micronesia 2006",
+          "views": 2690,
+          "subs": 222,
+          "published_at": "2026-09-02T03:29:32Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How carbon fibre is made #shorts #cycling #cyclingshorts",
+          "views": 23936,
+          "subs": 229000,
+          "published_at": "2024-03-04T09:47:52Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "\ud83d\udd25 Real Carbon Fiber Hood #carbonfiber  #forgedcarbon  #hood #performancemods  #carupgrades",
+          "views": 229272,
+          "subs": 13100,
+          "published_at": "2025-06-18T01:39:07Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Forged Carbon + Rose Gold Gold Inner Bezel Is Pure Luxury!",
+          "views": 102472,
+          "subs": 444,
+          "published_at": "2026-08-25T14:45:01Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Carbon Fiber Barrels Explained",
+          "views": 51351,
+          "subs": 398000,
+          "published_at": "2024-08-27T12:44:13Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "3m Carbon Fiber Extended Invisible Selfie Stick for Insta360 X6 X5 X4 X3 X2",
+          "views": 25,
+          "subs": 1590,
+          "published_at": "2026-09-02T11:47:39Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Why Forged Carbon? Gold Flakes for Extra Flair \ud83d\udca5#carbonfiber #autoparts  #CarMods #carenthusiast",
+          "views": 428815,
+          "subs": 13100,
+          "published_at": "2024-09-12T08:36:59Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "DIY Carbon Fiber Skinning #shorts #carbonfiber",
+          "views": 371304,
+          "subs": 3270,
+          "published_at": "2024-01-24T04:00:00Z",
+          "coverage": 0.667
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "how hot does a welding arc get",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.35,
+        "max_coverage": 0.75,
+        "strong_match_count": 1,
+        "strong_match_rate": 0.05,
+        "loose_match_rate": 0.55,
+        "gap_signal": 0.95,
+        "interpretation": "1 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 451652.5,
+        "p90": 3565972,
+        "max": 10813514,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 455000.0,
+        "max_subscribers": 28300000,
+        "under_100k_subs": 6,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 1269,
+        "published_last_365d": 1,
+        "n": 20
+      },
+      "opportunity_score": 0.685,
+      "opportunity_components": {
+        "title_gap": 0.95,
+        "incumbent_subs": 0.192,
+        "view_ceiling": 0.192,
+        "staleness": 0.95
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-03T18:16:37.152649+00:00"
+      },
+      "top_results": [
+        {
+          "title": "How Arc Welding Works",
+          "views": 1439678,
+          "subs": 88500,
+          "published_at": "2010-02-21T20:09:23Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How HOT is a Welding Arc? \ud83d\udd25 (Over 11,000\u00b0F!)",
+          "views": 25468,
+          "subs": 22800,
+          "published_at": "2025-04-23T21:30:09Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "How Does Welding Work?",
+          "views": 391257,
+          "subs": 237000,
+          "published_at": "2019-04-10T16:00:03Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Stick Welding Basics: Full Tutorial",
+          "views": 922919,
+          "subs": 501000,
+          "published_at": "2023-04-08T12:00:08Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Stick Welding: How to Strike an Arc",
+          "views": 309829,
+          "subs": 501000,
+          "published_at": "2021-08-28T14:50:24Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Stick WELDING Basics: How to ARC Weld 101",
+          "views": 338285,
+          "subs": 89500,
+          "published_at": "2023-02-17T18:00:15Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Setting your Welder | Find your High end and Low end | 6010",
+          "views": 45321,
+          "subs": 74900,
+          "published_at": "2023-09-06T02:00:08Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How to Strike an Arc When Stick Welding",
+          "views": 1399805,
+          "subs": 6420,
+          "published_at": "2024-01-29T20:15:48Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Can You Get Electrocuted While Welding? Watch This...Don&#39;t Get Shocked!",
+          "views": 380842,
+          "subs": 501000,
+          "published_at": "2021-07-03T15:57:33Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "This Is Why You SUCK At Stick Welding",
+          "views": 319368,
+          "subs": 1150000,
+          "published_at": "2025-10-10T19:30:09Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Welding Basics for Beginners",
+          "views": 3565972,
+          "subs": 188000,
+          "published_at": "2017-11-14T22:05:00Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Why Welders Need Eye Protection \ud83d\ude2e",
+          "views": 4945075,
+          "subs": 28300000,
+          "published_at": "2025-02-12T13:30:01Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How to Strike an Arc: Stick Welding Basics for Beginners",
+          "views": 1388059,
+          "subs": 501000,
+          "published_at": "2020-08-22T19:08:23Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Submerged Arc Welding Explained",
+          "views": 10813514,
+          "subs": 1460000,
+          "published_at": "2025-04-20T03:28:18Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "What Does Arc Force Do? Harnessing The Power Of The Force",
+          "views": 30670,
+          "subs": 1150000,
+          "published_at": "2023-10-10T19:30:00Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "MIG Welding Basics For BEGINNERS!! How To Set Up Your Welder + Tips, Tricks &amp; Techniques!!",
+          "views": 2104819,
+          "subs": 409000,
+          "published_at": "2021-10-04T04:19:19Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Stick Welding Amperage",
+          "views": 512048,
+          "subs": 501000,
+          "published_at": "2022-04-02T18:39:05Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Stick Welding Secrets for Newbies",
+          "views": 2891570,
+          "subs": 356000,
+          "published_at": "2024-07-30T18:00:10Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Keep Yourself Safe: 6 Welding Safety Hazards &amp; How To Avoid Them",
+          "views": 42015,
+          "subs": 1150000,
+          "published_at": "2025-01-23T20:30:00Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Arc Welding Principle",
+          "views": 108781,
+          "subs": 40100,
+          "published_at": "2018-07-05T14:23:15Z",
+          "coverage": 0.5
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "what is a semiconductor made of",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.425,
+        "max_coverage": 1.0,
+        "strong_match_count": 1,
+        "strong_match_rate": 0.05,
+        "loose_match_rate": 0.2,
+        "gap_signal": 0.95,
+        "interpretation": "1 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 712141.5,
+        "p90": 4489716,
+        "max": 11465601,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 280000.0,
+        "max_subscribers": 22900000,
+        "under_100k_subs": 3,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 723,
+        "published_last_365d": 3,
+        "n": 20
+      },
+      "opportunity_score": 0.671,
+      "opportunity_components": {
+        "title_gap": 0.95,
+        "incumbent_subs": 0.222,
+        "view_ceiling": 0.164,
+        "staleness": 0.85
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-03T18:16:38.741293+00:00"
+      },
+      "top_results": [
+        {
+          "title": "\u2018Semiconductor Manufacturing Process\u2019 Explained | &#39;All About Semiconductor&#39; by Samsung Semiconductor",
+          "views": 1140953,
+          "subs": 139000,
+          "published_at": "2022-10-09T00:49:27Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "What Is A Semiconductor?",
+          "views": 1706927,
+          "subs": 229000,
+          "published_at": "2015-05-12T14:47:22Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "The Semiconductor Production Process Explained Clearly",
+          "views": 570875,
+          "subs": 67300,
+          "published_at": "2021-06-08T12:59:32Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "What Exactly is a Semiconductor?",
+          "views": 201482,
+          "subs": 139000,
+          "published_at": "2025-04-16T00:00:33Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "What is a Semiconductor? | Band Gap, Doping &amp; How Semiconductors work",
+          "views": 151757,
+          "subs": 70200,
+          "published_at": "2025-02-25T10:42:59Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Semiconductors explained in 16 mins | Chris Miller",
+          "views": 347480,
+          "subs": 285000,
+          "published_at": "2026-02-18T14:01:17Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How are BILLIONS of MICROCHIPS made from SAND? | How are SILICON WAFERS made?",
+          "views": 1443268,
+          "subs": 194000,
+          "published_at": "2023-11-18T13:30:01Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How are microchips made? - George Zaidan and Sajan Saini",
+          "views": 1011302,
+          "subs": 22900000,
+          "published_at": "2025-02-25T16:01:15Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "What are semiconductors \ud83d\ude31|UPSC Interview..#shorts",
+          "views": 3058407,
+          "subs": 260000,
+          "published_at": "2024-07-25T13:30:21Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "What Goes On Inside a Semiconductor Wafer Fab",
+          "views": 250812,
+          "subs": 960000,
+          "published_at": "2023-08-20T22:36:13Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Semiconductor chip making process! \ud83d\udc46 #makeinindia #chip #making #process #india #semiconductor",
+          "views": 593680,
+          "subs": 229000,
+          "published_at": "2025-09-05T15:40:46Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How Does a Transistor Work?",
+          "views": 4489716,
+          "subs": 21200000,
+          "published_at": "2013-07-09T20:13:12Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How Are Semiconductor Chips Made?",
+          "views": 47334,
+          "subs": 1020000,
+          "published_at": "2025-03-12T20:29:42Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How microchips are made",
+          "views": 2596897,
+          "subs": 48100,
+          "published_at": "2024-11-03T00:08:23Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How are Microchips Made? \ud83d\udda5\ufe0f\ud83d\udee0\ufe0f CPU Manufacturing Process Steps",
+          "views": 11465601,
+          "subs": 2750000,
+          "published_at": "2024-05-17T03:20:58Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "\ud83d\udcbb How Are Microchips Made?",
+          "views": 6998573,
+          "subs": 1680000,
+          "published_at": "2022-01-04T15:00:33Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "From Sand to Silicon Chip!",
+          "views": 830603,
+          "subs": 275000,
+          "published_at": "2025-09-08T10:28:51Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "The Battle Over Semiconductor Manufacturing, Explained",
+          "views": 124292,
+          "subs": 2850000,
+          "published_at": "2024-10-27T18:00:15Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How Microchips Work and Why They Power Everything Today",
+          "views": 177281,
+          "subs": 1020000,
+          "published_at": "2025-08-01T12:02:00Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How Chips That Power AI Work | WSJ Tech Behind",
+          "views": 492358,
+          "subs": 6680000,
+          "published_at": "2023-12-27T15:06:27Z",
+          "coverage": 0.0
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "why is carbon fiber so strong",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.7,
+        "max_coverage": 1.0,
+        "strong_match_count": 2,
+        "strong_match_rate": 0.1,
+        "loose_match_rate": 0.0,
+        "gap_signal": 0.9,
+        "interpretation": "2 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 268833.5,
+        "p90": 4297218,
+        "max": 25201290,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 130000.0,
+        "max_subscribers": 5110000,
+        "under_100k_subs": 9,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 592,
+        "published_last_365d": 3,
+        "n": 20
+      },
+      "opportunity_score": 0.665,
+      "opportunity_components": {
+        "title_gap": 0.9,
+        "incumbent_subs": 0.269,
+        "view_ceiling": 0.224,
+        "staleness": 0.85
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-03T18:16:30.526313+00:00"
+      },
+      "top_results": [
+        {
+          "title": "What Is Carbon Fiber Really Made Of? (Is It Stronger Than Steel?)",
+          "views": 42590,
+          "subs": 1020000,
+          "published_at": "2026-04-16T18:00:50Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "The Truth About Carbon Fiber: Myths vs. Reality",
+          "views": 107310,
+          "subs": 130000,
+          "published_at": "2023-08-25T14:27:13Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Carbon Fiber has one major flaw!",
+          "views": 13112410,
+          "subs": 300000,
+          "published_at": "2025-03-19T20:01:18Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How Strong is Carbon Fiber?",
+          "views": 4224864,
+          "subs": 74400,
+          "published_at": "2025-02-07T16:03:00Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "WHAT EXACTLY IS CARBON FIBER? \ud83d\ude33 #cars #carbonfiber",
+          "views": 1280896,
+          "subs": 88900,
+          "published_at": "2024-11-05T22:59:47Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Carbon Fiber vs Tungsten Cube!",
+          "views": 25201290,
+          "subs": 1410000,
+          "published_at": "2025-01-01T01:02:04Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "What makes carbon fiber so tough #knowledge #foryou #usa #carbonfiber #science",
+          "views": 28784,
+          "subs": 50600,
+          "published_at": "2025-10-02T01:58:10Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "This is why Carbon Fiber is so Special",
+          "views": 2102608,
+          "subs": 1310000,
+          "published_at": "2024-10-18T23:31:46Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "HYDRAULIC PRESS vs TITANIUM AND CARBON FIBER, BENDING TEST",
+          "views": 4297218,
+          "subs": 1350000,
+          "published_at": "2024-01-27T17:00:42Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Carbon Fiber: Everything You Wanted to Know",
+          "views": 184362,
+          "subs": 1660,
+          "published_at": "2019-04-01T15:30:03Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Carbon Fiber - 5 things you (probably) didn\u2019t know",
+          "views": 287000,
+          "subs": 130000,
+          "published_at": "2021-02-12T12:00:33Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How Strong Is Carbon Fibre?",
+          "views": 12083,
+          "subs": 174000,
+          "published_at": "2025-08-04T18:28:17Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "What Is Carbon Fiber \ud83e\udd37",
+          "views": 61617,
+          "subs": 3630000,
+          "published_at": "2023-08-09T10:00:25Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Why Carbon Fiber Makes Sports Gear Unstoppable!",
+          "views": 3427661,
+          "subs": 497000,
+          "published_at": "2025-02-19T17:30:13Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Carbon Fiber-Strength Test",
+          "views": 434650,
+          "subs": 10500,
+          "published_at": "2024-02-21T02:04:01Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "What Is Carbon Fiber and Why Is It Stronger Than Steel?",
+          "views": 20,
+          "subs": 1820,
+          "published_at": "2026-04-20T15:48:10Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Carbon Fiber 101: A Beginners Introduction",
+          "views": 6793,
+          "subs": 2020,
+          "published_at": "2025-02-28T19:30:00Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Carbon Fiber - The Material Of The Future?",
+          "views": 1460410,
+          "subs": 5110000,
+          "published_at": "2017-02-27T14:03:45Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Why Is Carbon Fiber So Strong Yet So Light? Power Without the Pounds",
+          "views": 410,
+          "subs": 92800,
+          "published_at": "2025-06-28T07:47:14Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Why is CARBON FIBER So EXPENSIVE and Used in SUPERCARS? \ud83d\ude33 #cars #carbonfiber",
+          "views": 250667,
+          "subs": 88900,
+          "published_at": "2025-04-29T04:30:36Z",
+          "coverage": 0.667
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "how strong is titanium",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.55,
+        "max_coverage": 1.0,
+        "strong_match_count": 2,
+        "strong_match_rate": 0.1,
+        "loose_match_rate": 0.0,
+        "gap_signal": 0.9,
+        "interpretation": "2 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 805884.5,
+        "p90": 16137376,
+        "max": 56228210,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 61350.0,
+        "max_subscribers": 11700000,
+        "under_100k_subs": 11,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 498,
+        "published_last_365d": 4,
+        "n": 20
+      },
+      "opportunity_score": 0.657,
+      "opportunity_components": {
+        "title_gap": 0.9,
+        "incumbent_subs": 0.316,
+        "view_ceiling": 0.156,
+        "staleness": 0.8
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-03T18:16:10.368434+00:00"
+      },
+      "top_results": [
+        {
+          "title": "\ud83d\udd29 Tungsten vs Stainless Steel vs Titanium \u2013 The Ultimate Metal Showdown! \u2699\ufe0f",
+          "views": 221163,
+          "subs": 17500,
+          "published_at": "2025-04-03T05:30:04Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "HYDRAULIC PRESS VS TITANIUM AND STEEL BOLT, WHICH IS STRONGER",
+          "views": 3493604,
+          "subs": 1350000,
+          "published_at": "2022-01-23T11:00:08Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Can Titanium Stop a 50 Cal Sniper Rifle?",
+          "views": 56228210,
+          "subs": 8800000,
+          "published_at": "2025-10-14T15:01:09Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How Bulletproof is Titanium?",
+          "views": 2834131,
+          "subs": 8800000,
+          "published_at": "2025-10-11T15:00:48Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Titanium has a dirty secret",
+          "views": 16137376,
+          "subs": 6170000,
+          "published_at": "2023-01-11T19:46:56Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "The Problem with Titanium",
+          "views": 552839,
+          "subs": 1490000,
+          "published_at": "2026-04-07T13:02:00Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Why Is Titanium So Strong and Cool?",
+          "views": 662,
+          "subs": 1810,
+          "published_at": "2025-05-19T12:32:36Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Is Titanium Bulletproof?",
+          "views": 23266212,
+          "subs": 11700000,
+          "published_at": "2016-01-25T18:21:22Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Why is Titanium Common But So Expensive?",
+          "views": 263465,
+          "subs": 41300,
+          "published_at": "2022-09-20T08:00:10Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How much does 3D printed titanium cost?",
+          "views": 4612663,
+          "subs": 46300,
+          "published_at": "2024-11-07T10:00:32Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "What is TITANIUM? Why is it used for jewelry?",
+          "views": 3906,
+          "subs": 11900,
+          "published_at": "2025-09-09T07:00:10Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How Is Titanium Made?",
+          "views": 3116335,
+          "subs": 1020000,
+          "published_at": "2024-12-26T08:59:46Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Damascus Steel vs Titanium Cutting Test!",
+          "views": 62410,
+          "subs": 9490,
+          "published_at": "2025-09-01T15:00:14Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Carbon Fiber vs Titanium \u2013 Which Is Stronger? #hidraulicpress",
+          "views": 57765,
+          "subs": 2040,
+          "published_at": "2025-05-08T15:30:31Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Why Gun Manufacturers Hate Titanium!",
+          "views": 435599,
+          "subs": 71500,
+          "published_at": "2025-07-08T13:21:34Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Can you make a sword out of titanium??",
+          "views": 1058930,
+          "subs": 431000,
+          "published_at": "2021-11-23T15:10:46Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Why Titanium Exhausts Are a Con",
+          "views": 11478246,
+          "subs": 51200,
+          "published_at": "2025-04-07T23:30:31Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How Strong is Titanium? Hydraulic Press Test!",
+          "views": 12606705,
+          "subs": 10300000,
+          "published_at": "2020-04-04T13:20:38Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Titanium: The Key to Jet Engine Strength",
+          "views": 18317,
+          "subs": 2690,
+          "published_at": "2025-08-06T16:00:54Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Grade 2 vs Grade 5 Titanium",
+          "views": 4949,
+          "subs": 1370,
+          "published_at": "2025-05-20T17:54:59Z",
+          "coverage": 0.5
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "how strong is graphene",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.55,
+        "max_coverage": 1.0,
+        "strong_match_count": 3,
+        "strong_match_rate": 0.15,
+        "loose_match_rate": 0.05,
+        "gap_signal": 0.85,
+        "interpretation": "3 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 142400.5,
+        "p90": 4224864,
+        "max": 18444699,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 43600.0,
+        "max_subscribers": 16900000,
+        "under_100k_subs": 13,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 795,
+        "published_last_365d": 4,
+        "n": 20
+      },
+      "opportunity_score": 0.652,
+      "opportunity_components": {
+        "title_gap": 0.85,
+        "incumbent_subs": 0.337,
+        "view_ceiling": 0.264,
+        "staleness": 0.8
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-03T18:16:32.316871+00:00"
+      },
+      "top_results": [
+        {
+          "title": "Stronger Than Steel, Harder Than Diamond | Graphene #graphene #sciencefacts #futuretech",
+          "views": 65206,
+          "subs": 23600,
+          "published_at": "2025-05-12T16:16:41Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Why graphene hasn\u2019t taken over the world...yet",
+          "views": 18444699,
+          "subs": 1120000,
+          "published_at": "2018-07-10T14:00:01Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How strong is graphene?",
+          "views": 84322,
+          "subs": 7490,
+          "published_at": "2015-07-17T13:00:47Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How You Can Make the Strongest Material We Know of!",
+          "views": 13215208,
+          "subs": 801000,
+          "published_at": "2025-03-03T20:18:05Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Graphene: The Strongest Material Ever Made Is Still Waiting for a Job | Catalyst",
+          "views": 48,
+          "subs": 51,
+          "published_at": "2026-05-19T13:33:50Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "The strongest material in the world\ud83d\ude31. Stronger than titanium.#shorts#shortsfeed #strongest #graphene",
+          "views": 124394,
+          "subs": 817,
+          "published_at": "2024-06-22T13:37:51Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Graphene - Graphene Strongest Material in the World - Why it&#39;s SO STRONG",
+          "views": 10449,
+          "subs": 6340,
+          "published_at": "2014-10-23T09:18:49Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How to Make the Strongest Material in the World\u2014Graphene!",
+          "views": 1050609,
+          "subs": 5160000,
+          "published_at": "2020-02-08T17:00:06Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Graphene: The Next Big (But Thin) Thing",
+          "views": 1098926,
+          "subs": 8410000,
+          "published_at": "2014-07-15T03:03:43Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "&quot;The Incredible Power of Graphene: 1000 Times Stronger Than Steel!&quot;",
+          "views": 5309,
+          "subs": 977,
+          "published_at": "2024-07-25T12:24:47Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How Strong is Carbon Fiber?",
+          "views": 4224864,
+          "subs": 74400,
+          "published_at": "2025-02-07T16:03:00Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "What Is the True Potential of Graphene?",
+          "views": 937,
+          "subs": 428,
+          "published_at": "2025-11-04T21:00:22Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Ultra Strong Body Armor\ud83d\udee0\ufe0f",
+          "views": 168213,
+          "subs": 193,
+          "published_at": "2025-05-29T06:05:50Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Making Graphene could KILL you... but we did it anyway?!",
+          "views": 2492536,
+          "subs": 1200000,
+          "published_at": "2023-03-25T14:00:01Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Maybe This Phone ISN\u2019T Just for Criminals - Trying Graphene OS for a Month.",
+          "views": 2097077,
+          "subs": 16900000,
+          "published_at": "2025-11-04T18:15:47Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Graphene is not particularly strong",
+          "views": 1432,
+          "subs": 21600,
+          "published_at": "2019-07-06T14:39:04Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Graphene, the thinnest material ever and also the most resistant in the world!",
+          "views": 131426,
+          "subs": 63900,
+          "published_at": "2022-09-29T12:00:11Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Unbelievable power of graphene \ud83d\udcaa\ud83c\udffb\u2620\ufe0f",
+          "views": 166886,
+          "subs": 48300,
+          "published_at": "2025-10-23T12:23:42Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Whatever happened to graphene?",
+          "views": 153375,
+          "subs": 38900,
+          "published_at": "2024-07-09T15:59:10Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Strongest Material Known \ud83c\udfcb\ufe0f\u200d\u2642\ufe0f Michio Kaku on Graphene #physics #shorts #science #material",
+          "views": 7834,
+          "subs": 117000,
+          "published_at": "2023-05-28T01:30:06Z",
+          "coverage": 0.5
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "how is damascus steel made",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.617,
+        "max_coverage": 1.0,
+        "strong_match_count": 2,
+        "strong_match_rate": 0.1,
+        "loose_match_rate": 0.25,
+        "gap_signal": 0.9,
+        "interpretation": "2 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 327114.0,
+        "p90": 4410818,
+        "max": 6458850,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 361500.0,
+        "max_subscribers": 10600000,
+        "under_100k_subs": 7,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 838,
+        "published_last_365d": 3,
+        "n": 20
+      },
+      "opportunity_score": 0.651,
+      "opportunity_components": {
+        "title_gap": 0.9,
+        "incumbent_subs": 0.206,
+        "view_ceiling": 0.212,
+        "staleness": 0.85
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-03T18:16:16.672816+00:00"
+      },
+      "top_results": [
+        {
+          "title": "What Is Damascus Steel? (And Everything You Need to Know about It)",
+          "views": 67337,
+          "subs": 450000,
+          "published_at": "2023-06-12T15:00:31Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "FORGING DAMASCUS STEEL: Step by Step and showing different Patterns",
+          "views": 61824,
+          "subs": 27300,
+          "published_at": "2024-08-09T15:00:35Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "What Makes Damascus Steel So Special? A History and How It\u2019s Made",
+          "views": 51283,
+          "subs": 292000,
+          "published_at": "2025-02-17T23:47:25Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "&quot;True Damascus Steel&quot;: History, Metallurgy, Production",
+          "views": 431235,
+          "subs": 16000,
+          "published_at": "2019-08-08T16:34:26Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Why Damascus Knives Are So Expensive | So Expensive | Business Insider",
+          "views": 6458850,
+          "subs": 10600000,
+          "published_at": "2023-03-18T14:00:26Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "How Stainless Damascus is Made",
+          "views": 544048,
+          "subs": 3240000,
+          "published_at": "2026-02-22T20:08:44Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Was True Damascus Steel Lost To Time? #history #sword #weapon #martialarts #tech #technology",
+          "views": 198734,
+          "subs": 431000,
+          "published_at": "2023-08-17T18:11:34Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Forging a Damascus Steel Knife from Ball Bearings",
+          "views": 4410818,
+          "subs": 503000,
+          "published_at": "2024-06-21T18:45:27Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Damascus Steel From Milling Chips!",
+          "views": 4887659,
+          "subs": 3240000,
+          "published_at": "2024-07-21T16:51:16Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Forging a Damascus Steel Axe from Scratch",
+          "views": 222993,
+          "subs": 503000,
+          "published_at": "2025-10-30T13:15:07Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "The Secrets of Damascus Steel: Unveiling the Mystery",
+          "views": 5659,
+          "subs": 1810,
+          "published_at": "2025-05-22T07:10:04Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Hand Forged Damascus Knife | Knife Making",
+          "views": 126020,
+          "subs": 120000,
+          "published_at": "2020-08-08T18:32:06Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "How To Forge Pattern Welded Damascus Steel For Beginners ~ Step By Step Blacksmithing Lesson",
+          "views": 78701,
+          "subs": 126000,
+          "published_at": "2020-05-07T15:32:40Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Razor Blade Damascus",
+          "views": 2799053,
+          "subs": 3240000,
+          "published_at": "2025-09-28T17:55:08Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "HOW TO FORGE: Basic Mosaic Damascus Steel",
+          "views": 467282,
+          "subs": 3240000,
+          "published_at": "2017-01-16T01:17:30Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Damascus Knife Making Process by Korean Handmade Knife Master #allprocessofworld",
+          "views": 923308,
+          "subs": 3250000,
+          "published_at": "2024-04-15T05:26:11Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Forging Damascus By Hand (No Press or Powerhammer)",
+          "views": 24918,
+          "subs": 11600,
+          "published_at": "2020-04-16T00:37:19Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Forging Blade Spirit of Fire! || Damascus steel",
+          "views": 2691055,
+          "subs": 26200,
+          "published_at": "2025-02-10T09:25:38Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How Damascus Steel is Made: Traditional Forging &amp; Pattern-Welding&quot;",
+          "views": 3472561,
+          "subs": 2410,
+          "published_at": "2024-11-25T08:05:41Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "MYSTERY SOLVED (Damascus Steel)",
+          "views": 12194,
+          "subs": 22300,
+          "published_at": "2023-07-09T01:05:01Z",
+          "coverage": 0.667
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "why is steel so strong",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.55,
+        "max_coverage": 1.0,
+        "strong_match_count": 2,
+        "strong_match_rate": 0.1,
+        "loose_match_rate": 0.0,
+        "gap_signal": 0.9,
+        "interpretation": "2 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 283555.0,
+        "p90": 4567378,
+        "max": 27188720,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 249500.0,
+        "max_subscribers": 21200000,
+        "under_100k_subs": 7,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 588,
+        "published_last_365d": 5,
+        "n": 20
+      },
+      "opportunity_score": 0.641,
+      "opportunity_components": {
+        "title_gap": 0.9,
+        "incumbent_subs": 0.229,
+        "view_ceiling": 0.221,
+        "staleness": 0.75
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-03T18:16:07.358943+00:00"
+      },
+      "top_results": [
+        {
+          "title": "What Makes Iron and Steel So Useful?",
+          "views": 1348,
+          "subs": 2270,
+          "published_at": "2022-05-27T19:00:13Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Is spider web really stronger than steel?",
+          "views": 8285080,
+          "subs": 21200000,
+          "published_at": "2026-08-02T13:21:11Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "What is the difference between iron and steel?#shorts",
+          "views": 37412,
+          "subs": 121,
+          "published_at": "2025-05-30T01:09:08Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "What actually is Valyrian Steel?",
+          "views": 274063,
+          "subs": 1000000,
+          "published_at": "2025-01-10T21:00:37Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "STEEL vs IRON \u2013 What\u2019s the REAL Difference?",
+          "views": 172884,
+          "subs": 1810,
+          "published_at": "2025-05-17T21:20:34Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "What Exactly Is Carbon Steel? The Metal That Built the Modern World",
+          "views": 20991,
+          "subs": 1020000,
+          "published_at": "2025-12-06T12:01:26Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How STEEL is Made - From Dirt to Molten Metal",
+          "views": 846706,
+          "subs": 10100,
+          "published_at": "2024-03-08T22:58:10Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "The Science behind Sword Steel Types",
+          "views": 124180,
+          "subs": 5180,
+          "published_at": "2025-06-07T15:45:06Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "New Material: As Strong As Steel, As Light As Styrofoam!",
+          "views": 301275,
+          "subs": 111000,
+          "published_at": "2025-05-23T21:01:01Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Why Is Spider Silk Stronger than Steel? #shorts",
+          "views": 562754,
+          "subs": 1610000,
+          "published_at": "2023-06-10T14:00:19Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Was True Damascus Steel Lost To Time? #history #sword #weapon #martialarts #tech #technology",
+          "views": 198734,
+          "subs": 431000,
+          "published_at": "2023-08-17T18:11:34Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "HYDRAULIC PRESS VS TITANIUM AND STEEL BOLT, WHICH IS STRONGER",
+          "views": 3493600,
+          "subs": 1350000,
+          "published_at": "2022-01-23T11:00:08Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "few people know how to weld very strong concrete steel joints by welding",
+          "views": 27188720,
+          "subs": 4640000,
+          "published_at": "2024-11-19T14:59:31Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Why do we add steel bars to concrete #fyp #knowledge",
+          "views": 2911635,
+          "subs": 29500,
+          "published_at": "2025-10-01T00:49:32Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How steel is made!",
+          "views": 293047,
+          "subs": 306000,
+          "published_at": "2024-11-05T22:00:31Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Why Spider Silk is Stronger Than Steel",
+          "views": 4567378,
+          "subs": 2090000,
+          "published_at": "2022-01-15T16:15:01Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How It&#39;s Made: Bridge Steel Cable",
+          "views": 56578,
+          "subs": 109000,
+          "published_at": "2026-08-08T08:36:08Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "What If Your Bones Were Made of Steel?",
+          "views": 80456,
+          "subs": 1620,
+          "published_at": "2025-10-05T09:45:02Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "N52 Magnet Testing Steel, Brass, Copper, and Silver",
+          "views": 1550348,
+          "subs": 193000,
+          "published_at": "2025-02-04T19:57:31Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Why Are Steel Beams I-Shaped?",
+          "views": 225166,
+          "subs": 4060000,
+          "published_at": "2022-11-22T13:27:40Z",
+          "coverage": 0.5
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "how is a silicon wafer made",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.45,
+        "max_coverage": 1.0,
+        "strong_match_count": 3,
+        "strong_match_rate": 0.15,
+        "loose_match_rate": 0.55,
+        "gap_signal": 0.85,
+        "interpretation": "3 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 433605.0,
+        "p90": 6998573,
+        "max": 24039965,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 155500.0,
+        "max_subscribers": 22900000,
+        "under_100k_subs": 9,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 980,
+        "published_last_365d": 3,
+        "n": 20
+      },
+      "opportunity_score": 0.633,
+      "opportunity_components": {
+        "title_gap": 0.85,
+        "incumbent_subs": 0.258,
+        "view_ceiling": 0.195,
+        "staleness": 0.85
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-03T18:16:28.928892+00:00"
+      },
+      "top_results": [
+        {
+          "title": "How are BILLIONS of MICROCHIPS made from SAND? | How are SILICON WAFERS made?",
+          "views": 1443268,
+          "subs": 194000,
+          "published_at": "2023-11-18T13:30:01Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How Silicon Wafers Are Made: \ud83d\udd2cFrom Sand to Smartphone Power\ud83d\udcf1#siliconwafers #semiconductor #wafer",
+          "views": 26092,
+          "subs": 14200,
+          "published_at": "2024-12-09T19:24:48Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "\u2018Semiconductor Manufacturing Process\u2019 Explained | &#39;All About Semiconductor&#39; by Samsung Semiconductor",
+          "views": 1140953,
+          "subs": 139000,
+          "published_at": "2022-10-09T00:49:27Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How Silicon Wafers Are Made for use in microprocessor chips and integrated circuits",
+          "views": 19175,
+          "subs": 2790,
+          "published_at": "2024-06-23T18:44:17Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "The Semiconductor Production Process Explained Clearly",
+          "views": 570875,
+          "subs": 67300,
+          "published_at": "2021-06-08T12:59:32Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "The 300mm Silicon Wafer Transition",
+          "views": 296335,
+          "subs": 960000,
+          "published_at": "2022-08-04T23:00:00Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Inside Wafer Front-End | Where Chips Are Born",
+          "views": 12601,
+          "subs": 236,
+          "published_at": "2025-10-04T22:00:41Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "How are microchips made? - George Zaidan and Sajan Saini",
+          "views": 1011302,
+          "subs": 22900000,
+          "published_at": "2025-02-25T16:01:15Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "How do they Make Silicon Wafers and Computer Chips",
+          "views": 28092,
+          "subs": 630,
+          "published_at": "2010-08-25T16:38:45Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How are Microchips Made? \ud83d\udda5\ufe0f\ud83d\udee0\ufe0f CPU Manufacturing Process Steps",
+          "views": 11465601,
+          "subs": 2750000,
+          "published_at": "2024-05-17T03:20:58Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "\ud83d\udcbb How Are Microchips Made?",
+          "views": 6998573,
+          "subs": 1680000,
+          "published_at": "2022-01-04T15:00:33Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "#300mm Silicon  #Wafer Manufacturing Process",
+          "views": 90214,
+          "subs": 3970,
+          "published_at": "2022-07-14T12:48:02Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "300mm wafer fab virtual tour",
+          "views": 143434,
+          "subs": 199000,
+          "published_at": "2025-04-09T20:38:32Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Creating A Silicon Wafer - How Sand Becomes Computers (1 of 6)",
+          "views": 81850,
+          "subs": 172000,
+          "published_at": "2023-09-21T14:00:28Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Inside Micron Taiwan\u2019s Semiconductor Factory | Taiwan\u2019s Mega Factories EP1",
+          "views": 4786934,
+          "subs": 97300,
+          "published_at": "2024-02-06T02:00:11Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Silicon Wafer Manufacturing Explained in Tamil | Semiconductor Series EP 9 Part 2",
+          "views": 1066,
+          "subs": 939,
+          "published_at": "2026-01-23T08:47:12Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How To Make A CPU",
+          "views": 24039965,
+          "subs": 174000,
+          "published_at": "2021-11-04T14:00:18Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How To Make A Chip",
+          "views": 64055,
+          "subs": 15400,
+          "published_at": "2023-10-19T21:13:05Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "From Sand to Silicon Chip!",
+          "views": 830603,
+          "subs": 275000,
+          "published_at": "2025-09-08T10:28:51Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "An interesting #AMD silicon wafer",
+          "views": 615007,
+          "subs": 193000,
+          "published_at": "2024-04-06T04:00:10Z",
+          "coverage": 0.667
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "what is kevlar made of",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.575,
+        "max_coverage": 1.0,
+        "strong_match_count": 4,
+        "strong_match_rate": 0.2,
+        "loose_match_rate": 0.05,
+        "gap_signal": 0.8,
+        "interpretation": "4 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 37545.0,
+        "p90": 8379037,
+        "max": 72393358,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 341000.0,
+        "max_subscribers": 28300000,
+        "under_100k_subs": 9,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 822,
+        "published_last_365d": 6,
+        "n": 20
+      },
+      "opportunity_score": 0.599,
+      "opportunity_components": {
+        "title_gap": 0.8,
+        "incumbent_subs": 0.21,
+        "view_ceiling": 0.346,
+        "staleness": 0.7
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-03T18:16:12.103256+00:00"
+      },
+      "top_results": [
+        {
+          "title": "What is kevlar, and why is it so strong? - Max G. Levy",
+          "views": 375335,
+          "subs": 22900000,
+          "published_at": "2024-08-15T15:00:59Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "What is Kevlar made of? \ud83e\udd14",
+          "views": 28313,
+          "subs": 5690,
+          "published_at": "2023-09-19T21:30:01Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Watch In Slow-Motion As Kevlar Fibers Are Put To The Test",
+          "views": 207055,
+          "subs": 5370000,
+          "published_at": "2017-06-08T16:00:05Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Kevlar: Where did it come from? | Stuff of Genius",
+          "views": 39623,
+          "subs": 717000,
+          "published_at": "2015-10-17T21:30:00Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How KEVLAR was first created #sciencepodcast #womeninstem #kevlar",
+          "views": 3268,
+          "subs": 328,
+          "published_at": "2025-06-30T21:00:32Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Carbon vs Kevlar vs Fiberglass in 30 Seconds!",
+          "views": 75097,
+          "subs": 251000,
+          "published_at": "2016-08-24T23:00:03Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How Kevlar Works \ud83e\udd14",
+          "views": 11232090,
+          "subs": 28300000,
+          "published_at": "2025-11-11T13:30:08Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Who Invented Kevlar?",
+          "views": 35467,
+          "subs": 1020000,
+          "published_at": "2024-09-05T18:38:10Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Inside the Kevlar Factory \u2013 How Ultra-Strong Fiber Becomes Bulletproof Armor (Full Process)",
+          "views": 133,
+          "subs": 0,
+          "published_at": "2025-12-02T19:55:38Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How A Bulletproof Vest Works \ud83d\ude31",
+          "views": 72393358,
+          "subs": 28300000,
+          "published_at": "2024-03-18T14:30:03Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Kevlar: The Tougher-Than-Steel Fabric Used in Bulletproof Vests",
+          "views": 49338,
+          "subs": 1020000,
+          "published_at": "2025-07-27T16:00:51Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "$30 Kevlar vs Blades #weapons #nerd #history #test  #tech #armor",
+          "views": 3018219,
+          "subs": 431000,
+          "published_at": "2024-03-23T17:00:36Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How Kevlar Stops Bullets",
+          "views": 14751,
+          "subs": 1680000,
+          "published_at": "2025-09-24T18:31:22Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "What is Kevlar??? #bodyarmor #kevlar  #predatorarmor #softarmor",
+          "views": 3249,
+          "subs": 5690,
+          "published_at": "2023-09-16T19:00:32Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How Is Kevlar Made? THE SOFT FABRIC THAT CAN STOP A BULLET",
+          "views": 61342,
+          "subs": 24200,
+          "published_at": "2026-06-11T15:00:14Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How Is Kevlar Made? (It Stops Bullets But Weighs Nothing)",
+          "views": 17,
+          "subs": 0,
+          "published_at": "2026-07-12T16:00:06Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Products made from Kevlar",
+          "views": 208,
+          "subs": 3620,
+          "published_at": "2021-12-20T18:39:53Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "What is Kevlar Used For? \ud83e\udd14#shorts #kevlar #bodyarmor #shooting",
+          "views": 1499,
+          "subs": 5690,
+          "published_at": "2023-04-19T21:30:02Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Why Medieval Armor Beats Kevlar \ud83d\ude2e",
+          "views": 8379037,
+          "subs": 28300000,
+          "published_at": "2025-11-17T13:30:36Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "We tore apart our Kevlar Body Armor!!! \ud83e\udd2f#bodyarmor #predatorarmor #kevlar #trendingshorts",
+          "views": 2335,
+          "subs": 5690,
+          "published_at": "2023-04-03T21:30:05Z",
+          "coverage": 0.5
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "how does heat treating steel work",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.425,
+        "max_coverage": 0.75,
+        "strong_match_count": 5,
+        "strong_match_rate": 0.25,
+        "loose_match_rate": 0.5,
+        "gap_signal": 0.75,
+        "interpretation": "5 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 186000.5,
+        "p90": 1707361,
+        "max": 3537366,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 160500.0,
+        "max_subscribers": 14600000,
+        "under_100k_subs": 8,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 1036,
+        "published_last_365d": 2,
+        "n": 20
+      },
+      "opportunity_score": 0.598,
+      "opportunity_components": {
+        "title_gap": 0.75,
+        "incumbent_subs": 0.256,
+        "view_ceiling": 0.247,
+        "staleness": 0.9
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-03T18:16:25.854094+00:00"
+      },
+      "top_results": [
+        {
+          "title": "Heat Treating Steel",
+          "views": 230644,
+          "subs": 274000,
+          "published_at": "2019-02-20T11:00:05Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Understanding Steels and Heat Treatment",
+          "views": 639562,
+          "subs": 1490000,
+          "published_at": "2025-10-07T14:00:53Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Intro to heat treatment of steel (hardening and tempering)",
+          "views": 449780,
+          "subs": 888000,
+          "published_at": "2013-10-15T06:30:13Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How To Heat Treat A Knife | The 4 Steps You NEED To Know",
+          "views": 1318346,
+          "subs": 491000,
+          "published_at": "2018-05-04T21:00:02Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Introduction to Heat Treatment - Types (Annealing, Quenching,Tempering, Harding) and Applications",
+          "views": 95209,
+          "subs": 19500,
+          "published_at": "2023-07-07T16:00:55Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Blacksmithing Basics: How Heat Treating Actually Works",
+          "views": 13921,
+          "subs": 884,
+          "published_at": "2024-08-10T01:11:16Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Heat Treatment -The Science of Forging (feat. Alec Steele)",
+          "views": 3537366,
+          "subs": 5110000,
+          "published_at": "2018-01-29T16:01:00Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "10 Misconceptions About Heat Treating Steel",
+          "views": 139799,
+          "subs": 151000,
+          "published_at": "2025-03-29T19:04:50Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Heat Treating For Beginners",
+          "views": 199996,
+          "subs": 279000,
+          "published_at": "2023-12-16T17:00:49Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Heat Treating Basics",
+          "views": 4644,
+          "subs": 10500,
+          "published_at": "2025-03-26T21:57:49Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How to Harden Steel in Easy Way at Home #diy #youtubeshorts #tutorial #shorts",
+          "views": 302432,
+          "subs": 170000,
+          "published_at": "2023-09-20T17:40:59Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Heat Treat Spring Steel. How to Soften the metal to work on it. How to Harden to revive the spring.",
+          "views": 65125,
+          "subs": 4130,
+          "published_at": "2024-02-27T15:18:23Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Heat treatment quenching technology, good machinery and good tools to save time and effort",
+          "views": 172005,
+          "subs": 886000,
+          "published_at": "2022-08-29T00:15:01Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Hardening process of threaded steel bar- Good tools and machinery make work easy",
+          "views": 1707361,
+          "subs": 14600000,
+          "published_at": "2023-04-17T10:10:00Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Why Heat Treat Matters",
+          "views": 129239,
+          "subs": 861000,
+          "published_at": "2023-09-19T19:00:15Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Blacksmithing for beginners:  Forging and Heat Treating Carbon Steel - 3",
+          "views": 338045,
+          "subs": 58000,
+          "published_at": "2016-04-28T03:02:35Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "How I Heat Treat And Temper My Knife Blades",
+          "views": 18045,
+          "subs": 9660,
+          "published_at": "2024-11-22T22:14:02Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "What are tempering colors?  #metal #temperature #tools #knowledge #axe #maker #diy #blade",
+          "views": 1745872,
+          "subs": 135000,
+          "published_at": "2025-10-09T14:00:45Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "What is Tempering of Steel?",
+          "views": 4727,
+          "subs": 45500,
+          "published_at": "2025-05-28T16:40:31Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Steel hardening techniques that are not taught in schools",
+          "views": 43721,
+          "subs": 18200,
+          "published_at": "2024-10-23T22:09:50Z",
+          "coverage": 0.25
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "what is concrete made of",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.675,
+        "max_coverage": 1.0,
+        "strong_match_count": 7,
+        "strong_match_rate": 0.35,
+        "loose_match_rate": 0.0,
+        "gap_signal": 0.65,
+        "interpretation": "7 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 296202.5,
+        "p90": 2654860,
+        "max": 347814602,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 149500.0,
+        "max_subscribers": 28300000,
+        "under_100k_subs": 9,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 1073,
+        "published_last_365d": 2,
+        "n": 20
+      },
+      "opportunity_score": 0.545,
+      "opportunity_components": {
+        "title_gap": 0.65,
+        "incumbent_subs": 0.261,
+        "view_ceiling": 0.218,
+        "staleness": 0.9
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-03T18:16:33.842784+00:00"
+      },
+      "top_results": [
+        {
+          "title": "How CEMENT is Made",
+          "views": 2654860,
+          "subs": 196000,
+          "published_at": "2023-08-24T14:30:02Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "What is Concrete?",
+          "views": 2520679,
+          "subs": 4820000,
+          "published_at": "2018-03-27T11:00:04Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How is Concrete made? \ud83d\udee3 Maddie&#39;s Do You Know \ud83d\udc69",
+          "views": 45808,
+          "subs": 103000,
+          "published_at": "2023-10-29T16:00:03Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How to Make Your Own Concrete | Ask This Old House",
+          "views": 484533,
+          "subs": 2330000,
+          "published_at": "2018-10-14T23:00:03Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Concrete - Everything You Need To Know (and how to make it)",
+          "views": 21637,
+          "subs": 39100,
+          "published_at": "2025-05-24T14:46:54Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How Concrete is Made!",
+          "views": 258849,
+          "subs": 645000,
+          "published_at": "2026-05-30T12:00:22Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Concrete vs Cement | The Difference Between Concrete &amp; Cement | The Home Depot",
+          "views": 333556,
+          "subs": 663000,
+          "published_at": "2018-12-16T22:35:48Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Why Concrete Doesn\u2019t Harden In A Concrete Drum Truck \ud83d\ude2e",
+          "views": 13262679,
+          "subs": 28300000,
+          "published_at": "2024-10-07T14:30:23Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Moe Explores Concrete | How is Concrete Made?",
+          "views": 111168,
+          "subs": 23300,
+          "published_at": "2023-01-27T16:00:17Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "What is Concrete - More Science on the Learning Videos Channel",
+          "views": 10212,
+          "subs": 64300,
+          "published_at": "2019-10-23T00:56:56Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "What\u2019s the Difference Between Cement and Concrete? (Most People Get It Wrong!",
+          "views": 1768749,
+          "subs": 1020000,
+          "published_at": "2025-03-02T03:31:13Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Understanding Concrete, Cement, and Mortar | Ask This Old House",
+          "views": 744269,
+          "subs": 2330000,
+          "published_at": "2016-06-10T02:00:00Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Scientists Finally Know How Roman Concrete Was Made",
+          "views": 424841,
+          "subs": 15500000,
+          "published_at": "2023-02-17T15:00:15Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How Concrete Is Made \u2013 The World\u2019s Hidden Foundation",
+          "views": 5626,
+          "subs": 75300,
+          "published_at": "2025-11-14T14:03:40Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How Concrete is Made",
+          "views": 25243,
+          "subs": 3770,
+          "published_at": "2023-05-31T21:10:22Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "making concrete in class",
+          "views": 347814602,
+          "subs": 65000,
+          "published_at": "2025-05-06T19:21:22Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How Cement Is Made \u2013 A Fun Explanation for Kids",
+          "views": 5671,
+          "subs": 75300,
+          "published_at": "2025-06-12T23:16:41Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How to Make Concrete Ratio",
+          "views": 140394,
+          "subs": 32500,
+          "published_at": "2024-02-09T15:00:47Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "&quot;Cement Production Process: Step-by-Step Guide \ud83c\udfd7\ufe0f Learn How Cement is Made!&quot;",
+          "views": 70762,
+          "subs": 530,
+          "published_at": "2025-01-11T09:22:00Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Pre-Cast Concrete Walls | How It&#39;s Made",
+          "views": 881140,
+          "subs": 5370000,
+          "published_at": "2015-05-14T15:00:01Z",
+          "coverage": 1.0
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "what is aerogel made of",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.55,
+        "max_coverage": 1.0,
+        "strong_match_count": 5,
+        "strong_match_rate": 0.25,
+        "loose_match_rate": 0.15,
+        "gap_signal": 0.75,
+        "interpretation": "5 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 994837.5,
+        "p90": 39609785,
+        "max": 63028246,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 1870000.0,
+        "max_subscribers": 21200000,
+        "under_100k_subs": 8,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 592,
+        "published_last_365d": 4,
+        "n": 20
+      },
+      "opportunity_score": 0.537,
+      "opportunity_components": {
+        "title_gap": 0.75,
+        "incumbent_subs": 0.104,
+        "view_ceiling": 0.143,
+        "staleness": 0.8
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-03T18:16:22.770433+00:00"
+      },
+      "top_results": [
+        {
+          "title": "Making aerogel",
+          "views": 39609785,
+          "subs": 10900000,
+          "published_at": "2020-03-30T21:45:08Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "This is how aerogel is made #scientificwonders #scientificjourney #aerogel #facts",
+          "views": 10936,
+          "subs": 344,
+          "published_at": "2025-08-05T01:45:45Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "World&#39;s Lightest Solid!",
+          "views": 62954813,
+          "subs": 21200000,
+          "published_at": "2019-05-31T16:40:50Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "The World&#39;s Lightest Material: How Aerogel is Made",
+          "views": 167,
+          "subs": 2,
+          "published_at": "2026-01-29T12:19:20Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "NASA Uses This Material | How Aerogel Is Created?",
+          "views": 235,
+          "subs": 23,
+          "published_at": "2026-01-09T19:45:37Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Aerogel is Amazing! \ud83e\udd2f",
+          "views": 204916,
+          "subs": 1590,
+          "published_at": "2024-09-29T16:00:50Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "The Lightest Handbag Ever Made #physics #science #aerogel",
+          "views": 14489653,
+          "subs": 1400000,
+          "published_at": "2024-05-17T06:00:31Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Have You Ever Heard Of Aerogel? #neildegrassetyson #startalk",
+          "views": 1271542,
+          "subs": 5880000,
+          "published_at": "2023-12-22T23:00:39Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "This solid is over 99% air",
+          "views": 10800295,
+          "subs": 10900000,
+          "published_at": "2021-04-28T20:01:17Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Big aerogel reveal",
+          "views": 4860727,
+          "subs": 640000,
+          "published_at": "2023-08-15T16:00:27Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How aerogel can make the ocean drinkable",
+          "views": 4919392,
+          "subs": 21200000,
+          "published_at": "2025-08-28T13:01:05Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Aerogel is cool.",
+          "views": 162896,
+          "subs": 2340000,
+          "published_at": "2022-02-01T04:26:26Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "The Lightest Solid on Earth? \u2014 Aerogel",
+          "views": 258298,
+          "subs": 1640,
+          "published_at": "2025-05-10T14:33:40Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "I can\u2019t believe I\u2019m holding the world\u2019s lightest solid #aerogel #science #engineering #rare",
+          "views": 265712,
+          "subs": 249,
+          "published_at": "2024-10-26T15:49:18Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "I waterproofed myself with aerogel!",
+          "views": 63028246,
+          "subs": 21200000,
+          "published_at": "2024-02-01T14:58:13Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How Is Aerogel Made? - Home Investing Experts",
+          "views": 32,
+          "subs": 425,
+          "published_at": "2025-07-22T10:05:22Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Do You Know What is the Lightest Solid in the World\u2753Do You Know How Amazing \u201cNano-aerogel\u201d is\ud83d\udd25\ud83d\udd25\ud83d\udd25\u2753",
+          "views": 4145436,
+          "subs": 5980000,
+          "published_at": "2025-04-15T10:30:09Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "The Lightest Solid In The World",
+          "views": 11083706,
+          "subs": 12000000,
+          "published_at": "2025-06-08T17:15:00Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "DIY Potato Aerogel: Free Cooling from Your Kitchen?",
+          "views": 718133,
+          "subs": 2500000,
+          "published_at": "2025-10-17T16:55:10Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How Is Aerogel Made? THE LIGHTEST SOLID IN THE WORLD!",
+          "views": 1577,
+          "subs": 24200,
+          "published_at": "2026-05-28T15:00:07Z",
+          "coverage": 1.0
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "how do self-healing materials work",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.688,
+        "max_coverage": 1.0,
+        "strong_match_count": 12,
+        "strong_match_rate": 0.6,
+        "loose_match_rate": 0.05,
+        "gap_signal": 0.4,
+        "interpretation": "12 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 24792.0,
+        "p90": 645788,
+        "max": 17148377,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 1845.0,
+        "max_subscribers": 8410000,
+        "under_100k_subs": 15,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 846,
+        "published_last_365d": 4,
+        "n": 20
+      },
+      "opportunity_score": 0.483,
+      "opportunity_components": {
+        "title_gap": 0.4,
+        "incumbent_subs": 0.533,
+        "view_ceiling": 0.372,
+        "staleness": 0.8
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-03T18:16:19.771621+00:00"
+      },
+      "top_results": [
+        {
+          "title": "Self-Healing Material",
+          "views": 17148377,
+          "subs": 3610000,
+          "published_at": "2022-06-17T15:00:09Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Self Healing Materials I Materials that repair themselves",
+          "views": 10369,
+          "subs": 9740,
+          "published_at": "2022-12-18T13:58:38Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "How Does Self-Healing Material Work? #shorts",
+          "views": 6320484,
+          "subs": 3610000,
+          "published_at": "2023-10-13T11:30:03Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Self Healing Polymer The Future of Repair!",
+          "views": 27069,
+          "subs": 1540,
+          "published_at": "2024-07-21T13:30:15Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "The Engineering Behind Self-Healing Materials \u2013 The Future of Repair",
+          "views": 1393,
+          "subs": 273,
+          "published_at": "2025-10-25T17:00:45Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "How Do Self-Healing Materials Work? Science Behind the Future!",
+          "views": 1003,
+          "subs": 1270,
+          "published_at": "2025-02-06T00:00:15Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Can Materials Actually Heal Themselves? SELF HEALING ROBOTICS!",
+          "views": 333,
+          "subs": 217,
+          "published_at": "2024-07-30T18:00:25Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Making Materials That Heal Themselves",
+          "views": 273020,
+          "subs": 8410000,
+          "published_at": "2017-05-29T21:00:02Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "The Future of Repair: Self-Healing Materials Explained",
+          "views": 59,
+          "subs": 256,
+          "published_at": "2024-02-28T14:05:47Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Self-Healing Skin like Hydrogel Repairs Wounds in Hours! #short #hydrogel - Creativelearning3d",
+          "views": 645788,
+          "subs": 1230000,
+          "published_at": "2025-03-13T04:00:26Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Self-Healing Tech Of the Future",
+          "views": 42583,
+          "subs": 4990000,
+          "published_at": "2013-06-04T13:11:52Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How do self-healing materials work? #facts #science #nanomaterials",
+          "views": 358,
+          "subs": 57,
+          "published_at": "2025-09-05T13:00:39Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "self healing fabric",
+          "views": 57304,
+          "subs": 130,
+          "published_at": "2017-12-06T08:41:34Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "\ud83e\uddf1Self-Healing Concrete!",
+          "views": 53716,
+          "subs": 29900,
+          "published_at": "2025-07-09T18:09:23Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How Self-Healing Polymers Work | Materials That Heal Themselves? | Amazing Future Technology",
+          "views": 51,
+          "subs": 421,
+          "published_at": "2026-07-02T20:46:10Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Self-healing polymer fixes scratches",
+          "views": 307193,
+          "subs": 36400,
+          "published_at": "2011-04-18T18:37:13Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Self Healing Fabric Explained! #shorts #facts",
+          "views": 22515,
+          "subs": 1830,
+          "published_at": "2024-10-06T04:02:05Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "What If Cars Could Heal Themselves? The Science of Self-Healing Materials",
+          "views": 23,
+          "subs": 78,
+          "published_at": "2026-08-05T17:44:41Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Self-healing materials for robotics made from \u2018jelly\u2019 and salt",
+          "views": 467,
+          "subs": 1860,
+          "published_at": "2022-02-20T04:25:19Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "How Self Healing Cutting Mats Work (In 30sec!)",
+          "views": 31316,
+          "subs": 10500,
+          "published_at": "2022-07-02T10:15:03Z",
+          "coverage": 0.75
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "what is a superalloy",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.7,
+        "max_coverage": 1.0,
+        "strong_match_count": 14,
+        "strong_match_rate": 0.7,
+        "loose_match_rate": 0.3,
+        "gap_signal": 0.3,
+        "interpretation": "14 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 4622.5,
+        "p90": 170123,
+        "max": 244240,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 5140.0,
+        "max_subscribers": 15300000,
+        "under_100k_subs": 14,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 952,
+        "published_last_365d": 4,
+        "n": 20
+      },
+      "opportunity_score": 0.435,
+      "opportunity_components": {
+        "title_gap": 0.3,
+        "incumbent_subs": 0.47,
+        "view_ceiling": 0.476,
+        "staleness": 0.8
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-03T18:16:21.258318+00:00"
+      },
+      "top_results": [
+        {
+          "title": "The Insane Properties of Superalloys",
+          "views": 241823,
+          "subs": 1490000,
+          "published_at": "2025-05-27T12:00:48Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "What is a Superalloy?",
+          "views": 182,
+          "subs": 174,
+          "published_at": "2021-10-18T14:30:08Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Quick Rundown of Alloys and Superalloys",
+          "views": 3510,
+          "subs": 2270,
+          "published_at": "2023-07-07T19:00:31Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "What Are Super Alloys? \ud83d\ude80\ud83d\udd25",
+          "views": 1872,
+          "subs": 10700,
+          "published_at": "2025-03-09T11:45:03Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "The Story of Nickel Superalloys: Saving the World in a Different Way",
+          "views": 78880,
+          "subs": 6830,
+          "published_at": "2018-12-26T11:09:16Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Superalloy - A Material That SHOULDN&#39;T HAVE BEEN CREATED!",
+          "views": 244240,
+          "subs": 961000,
+          "published_at": "2022-10-01T15:19:40Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "2 NASA Glenn engineers invent new superalloy worth billions | Growing STEM",
+          "views": 170123,
+          "subs": 567000,
+          "published_at": "2024-06-19T21:49:14Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "What is an Alloy? #shorts #science #alloy #podcast",
+          "views": 1577,
+          "subs": 188000,
+          "published_at": "2025-05-20T20:00:09Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "What is this SUPER ALLOY?",
+          "views": 33383,
+          "subs": 15300000,
+          "published_at": "2026-08-29T16:00:07Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Lecture 31: Superalloys",
+          "views": 18081,
+          "subs": 372000,
+          "published_at": "2018-09-06T07:04:37Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Inconel: The Superalloy That Laughs at Fire \ud83d\udd25 | Decoding Everything",
+          "views": 3258,
+          "subs": 1100,
+          "published_at": "2025-10-08T10:29:26Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Superalloy From A Jet Engine",
+          "views": 8532,
+          "subs": 69,
+          "published_at": "2023-09-02T01:30:08Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "The Mystery of Mondaloy: The Rocket Superalloy",
+          "views": 466,
+          "subs": 70000,
+          "published_at": "2026-04-08T17:30:06Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "MSE 5441 - 11/29/2017 Nickel Superalloys Part 2",
+          "views": 1577,
+          "subs": 2400,
+          "published_at": "2017-12-02T03:30:08Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "From atoms to turbine blades \u2013 a scale bridging journey into the nanocosmos of a Ni-base superalloy",
+          "views": 24944,
+          "subs": 146,
+          "published_at": "2015-10-22T08:20:34Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Inside the 1,600\u00b0C Turbine: The Single Crystal Superalloy Secret",
+          "views": 565,
+          "subs": 438,
+          "published_at": "2026-04-12T01:15:00Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Double the Performance of Super Alloys? | Rapid Research Reviews Ep 1",
+          "views": 2872,
+          "subs": 3450,
+          "published_at": "2022-09-30T16:27:47Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Crystallography: the crystal structure of gamma prime, nickel based superalloys",
+          "views": 5735,
+          "subs": 21600,
+          "published_at": "2011-04-24T06:25:23Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Have You Heard Super Alloys &amp; Single Crystal Casting?  #engineering#alloys#materialscience#metal",
+          "views": 9275,
+          "subs": 246,
+          "published_at": "2024-11-04T19:33:29Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "9 - What is an alloy",
+          "views": 906,
+          "subs": 186,
+          "published_at": "2025-07-21T10:43:14Z",
+          "coverage": 0.0
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "how are microchips made",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.775,
+        "max_coverage": 1.0,
+        "strong_match_count": 13,
+        "strong_match_rate": 0.65,
+        "loose_match_rate": 0.1,
+        "gap_signal": 0.35,
+        "interpretation": "13 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 619652.5,
+        "p90": 6998573,
+        "max": 24039965,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 118300.0,
+        "max_subscribers": 22900000,
+        "under_100k_subs": 10,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 921,
+        "published_last_365d": 3,
+        "n": 20
+      },
+      "opportunity_score": 0.383,
+      "opportunity_components": {
+        "title_gap": 0.35,
+        "incumbent_subs": 0.275,
+        "view_ceiling": 0.173,
+        "staleness": 0.85
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-03T18:16:04.357575+00:00"
+      },
+      "top_results": [
+        {
+          "title": "\ud83d\udcbb How Are Microchips Made?",
+          "views": 6998573,
+          "subs": 1680000,
+          "published_at": "2022-01-04T15:00:33Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How are microchips made? - George Zaidan and Sajan Saini",
+          "views": 1011302,
+          "subs": 22900000,
+          "published_at": "2025-02-25T16:01:15Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How are Microchips Made? \ud83d\udda5\ufe0f\ud83d\udee0\ufe0f CPU Manufacturing Process Steps",
+          "views": 11465601,
+          "subs": 2750000,
+          "published_at": "2024-05-17T03:20:58Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "HOW IT&#39;S MADE: Microchips",
+          "views": 1573789,
+          "subs": 165000,
+          "published_at": "2021-08-31T19:15:01Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How microchips are made",
+          "views": 2596897,
+          "subs": 48100,
+          "published_at": "2024-11-03T00:08:23Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How Microchips Are Actually Made (It&#39;s Insane)",
+          "views": 635671,
+          "subs": 5740,
+          "published_at": "2025-12-07T03:35:16Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Chip Manufacturing - How are Microchips made? | Infineon",
+          "views": 3177591,
+          "subs": 50600,
+          "published_at": "2019-07-17T15:02:06Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How are BILLIONS of MICROCHIPS made from SAND? | How are SILICON WAFERS made?",
+          "views": 1443268,
+          "subs": 194000,
+          "published_at": "2023-11-18T13:30:01Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How Are Microchips Made? The Most Advanced Manufacturing Process on Earth",
+          "views": 15590,
+          "subs": 46700,
+          "published_at": "2026-06-06T16:30:08Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "The manufacturing process of chips #knowledge #science",
+          "views": 603634,
+          "subs": 71600,
+          "published_at": "2025-09-07T14:45:00Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Lithography \u0995\u09bf? Microchip Manufacturing Process Part I",
+          "views": 52928,
+          "subs": 65900,
+          "published_at": "2025-04-30T10:45:29Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How To Make A CPU",
+          "views": 24039965,
+          "subs": 174000,
+          "published_at": "2021-11-04T14:00:18Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How Microchips are made",
+          "views": 1095493,
+          "subs": 6780,
+          "published_at": "2010-10-13T16:14:44Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How Microchips Work and Why They Power Everything Today",
+          "views": 177283,
+          "subs": 1020000,
+          "published_at": "2025-08-01T12:02:00Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How Microchips are made ?| Microchips  \u0915\u0948\u0938\u0947 \u092c\u0928\u0924\u0947 \u0939\u0947 ? | Tech Baba",
+          "views": 9755,
+          "subs": 28300,
+          "published_at": "2021-12-28T04:45:01Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "History of Microchips",
+          "views": 22645,
+          "subs": 38200,
+          "published_at": "2023-03-30T11:00:36Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How Are Computer Chips Made?",
+          "views": 196682,
+          "subs": 291000,
+          "published_at": "2024-11-23T03:35:46Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "From Sand to Silicon: How are Microchips Made?",
+          "views": 5304,
+          "subs": 1330,
+          "published_at": "2022-07-01T14:00:18Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How Microchips are Made",
+          "views": 13867,
+          "subs": 196000,
+          "published_at": "2023-12-07T01:06:42Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How Are Semiconductor Chips Made?",
+          "views": 47333,
+          "subs": 1020000,
+          "published_at": "2025-03-12T20:29:42Z",
+          "coverage": 0.5
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "why is glass transparent",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.85,
+        "max_coverage": 1.0,
+        "strong_match_count": 15,
+        "strong_match_rate": 0.75,
+        "loose_match_rate": 0.05,
+        "gap_signal": 0.25,
+        "interpretation": "15 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 5772.0,
+        "p90": 1525192,
+        "max": 5016631,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 5405.0,
+        "max_subscribers": 22900000,
+        "under_100k_subs": 11,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 532,
+        "published_last_365d": 9,
+        "n": 20
+      },
+      "opportunity_score": 0.37,
+      "opportunity_components": {
+        "title_gap": 0.25,
+        "incumbent_subs": 0.467,
+        "view_ceiling": 0.463,
+        "staleness": 0.55
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-03T18:16:02.525941+00:00"
+      },
+      "top_results": [
+        {
+          "title": "Why is glass transparent? - Mark Miodownik",
+          "views": 5016631,
+          "subs": 22900000,
+          "published_at": "2014-02-04T17:03:28Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Glass is Solid\u2026\u00a0So Why Is It Clear?",
+          "views": 1675216,
+          "subs": 5870000,
+          "published_at": "2020-12-23T21:38:48Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Why Is Glass Transparent? A Profound Scientific Mystery",
+          "views": 740,
+          "subs": 27,
+          "published_at": "2025-11-04T16:12:02Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Why Is Glass Transparent?",
+          "views": 7002,
+          "subs": 1020000,
+          "published_at": "2026-08-09T00:00:19Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Why is glass transparent?",
+          "views": 1525192,
+          "subs": 888000,
+          "published_at": "2011-02-01T14:33:03Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "What Makes Something See-Through? | Neil deGrasse Tyson Explains...",
+          "views": 282501,
+          "subs": 5880000,
+          "published_at": "2023-04-25T20:36:11Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Why Is GLASS Transparent? | Glass Transparency | Dr Binocs Show | Peekaboo Kidz",
+          "views": 598071,
+          "subs": 7760000,
+          "published_at": "2020-10-30T12:34:39Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Why Are Some Things Transparent?",
+          "views": 103599,
+          "subs": 731000,
+          "published_at": "2015-08-04T16:31:49Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Why Is Glass Transparent? The Surprising Science Behind It!",
+          "views": 1646,
+          "subs": 164,
+          "published_at": "2024-09-27T13:10:20Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "[Why is Glass Transparent?] Explained! in [3 minutes]",
+          "views": 242,
+          "subs": 891,
+          "published_at": "2023-05-29T01:30:26Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Why Is Glass Transparent?",
+          "views": 7,
+          "subs": 1,
+          "published_at": "2026-08-09T09:49:33Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Why Is Glass Transparent?",
+          "views": 5191,
+          "subs": 25,
+          "published_at": "2025-04-03T14:00:25Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "The Science Behind Transparent Glass: Why Glass is Clear and How it Works!",
+          "views": 6353,
+          "subs": 2150,
+          "published_at": "2025-03-06T19:34:49Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Why Is Glass Transparent, and Metal Isn&#39;t",
+          "views": 82,
+          "subs": 84,
+          "published_at": "2026-08-07T14:00:04Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Why Can You See Through Glass... But NOT Through Brick?",
+          "views": 62641,
+          "subs": 1830000,
+          "published_at": "2026-02-17T14:30:04Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Why is glass transparent? | #aumsum #kids #science #education #children",
+          "views": 224015,
+          "subs": 4740000,
+          "published_at": "2018-03-15T06:39:17Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Why Glass Is Transparent: Richard Feynman Explains How Light Really Passes Through Solid Matter",
+          "views": 469,
+          "subs": 583,
+          "published_at": "2026-02-15T13:01:41Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Why Is Glass Transparent",
+          "views": 14,
+          "subs": 0,
+          "published_at": "2026-03-16T14:35:26Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How Do Photons Pass Through Glass? | The Quantum Secret of Transparency",
+          "views": 349,
+          "subs": 8660,
+          "published_at": "2025-11-05T18:32:27Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "The Strange Physics of Why Glass Is Transparent - Richard Feynman",
+          "views": 233,
+          "subs": 911,
+          "published_at": "2026-07-21T19:56:46Z",
+          "coverage": 1.0
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "why does stainless steel not rust",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.738,
+        "max_coverage": 1.0,
+        "strong_match_count": 16,
+        "strong_match_rate": 0.8,
+        "loose_match_rate": 0.05,
+        "gap_signal": 0.2,
+        "interpretation": "16 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 3562.0,
+        "p90": 71588,
+        "max": 1819948,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 1700.0,
+        "max_subscribers": 1490000,
+        "under_100k_subs": 15,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 488,
+        "published_last_365d": 9,
+        "n": 20
+      },
+      "opportunity_score": 0.364,
+      "opportunity_components": {
+        "title_gap": 0.2,
+        "incumbent_subs": 0.539,
+        "view_ceiling": 0.493,
+        "staleness": 0.55
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-03T18:16:08.857691+00:00"
+      },
+      "top_results": [
+        {
+          "title": "The reason stainless steel doesn&#39;t rust I Explained in a minute I Chemniverse",
+          "views": 1937,
+          "subs": 1130,
+          "published_at": "2021-04-20T12:05:27Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Why Doesn\u2019t Stainless Steel Rust?",
+          "views": 88324,
+          "subs": 1020000,
+          "published_at": "2026-01-31T03:00:29Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Why does stainless steel rust?",
+          "views": 4138,
+          "subs": 1700,
+          "published_at": "2024-10-28T17:12:59Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Why Stainless Steel Does Not Rust? \u2013 The Chemistry Explained  #rust #Stainless #Steel #science",
+          "views": 4806,
+          "subs": 205,
+          "published_at": "2025-05-03T03:35:02Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "The Problem with Stainless Steel",
+          "views": 1819948,
+          "subs": 1490000,
+          "published_at": "2026-02-10T15:00:40Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Did You Know Why Stainless Steel Doesn\u2019t Rust?",
+          "views": 4793,
+          "subs": 1020000,
+          "published_at": "2026-05-20T04:00:22Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Why Does Stainless Steel NOT Rust? \ud83e\uddea The Science Behind It! #Shorts",
+          "views": 47,
+          "subs": 95,
+          "published_at": "2026-08-30T18:06:48Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Why Stainless Steel Doesn\u2019t Rust\u2014But Sometimes Does #ScienceFacts #MetalHacks #dailylearning",
+          "views": 3295,
+          "subs": 72,
+          "published_at": "2025-05-03T17:08:39Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Why does stainless steel not rust?#shorts",
+          "views": 642,
+          "subs": 846,
+          "published_at": "2023-02-23T06:11:29Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Why Doesn&#39;t Stainless Steel Rust?",
+          "views": 8458,
+          "subs": 26100,
+          "published_at": "2021-02-23T15:12:32Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Why Doesn\u2019t Stainless Steel Rust? What Makes It So Special?",
+          "views": 11773,
+          "subs": 1700,
+          "published_at": "2025-09-17T18:00:48Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "What can cause stainless steel to rust?",
+          "views": 629,
+          "subs": 81100,
+          "published_at": "2021-06-19T17:59:41Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "What metal does not rust?",
+          "views": 3829,
+          "subs": 48300,
+          "published_at": "2021-03-10T01:19:53Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Why do stainless steel appliances rust?",
+          "views": 7295,
+          "subs": 360000,
+          "published_at": "2013-10-29T18:55:12Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Why Doesn&#39;t Stainless Steel Rust?",
+          "views": 1041,
+          "subs": 77,
+          "published_at": "2026-07-28T18:17:59Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Why Does Stainless Steel Still Rust? The Metal Name That Misleads Everyone",
+          "views": 2394,
+          "subs": 3840,
+          "published_at": "2026-06-29T02:00:30Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Why does stainless steel not rust? #letslearn",
+          "views": 208,
+          "subs": 412,
+          "published_at": "2023-04-03T04:27:29Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Rust vs Corrosion: The Science of Metal Decay",
+          "views": 71588,
+          "subs": 1020000,
+          "published_at": "2025-09-16T11:00:22Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Why Stainelss steel doesn&#39;t get rust? 1/100 #shorts #howthingswork #howitsmade #sciencefacts",
+          "views": 223,
+          "subs": 84,
+          "published_at": "2026-08-08T01:12:26Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Why does stainless steel rust?",
+          "views": 1246,
+          "subs": 1700,
+          "published_at": "2024-10-15T19:59:53Z",
+          "coverage": 0.75
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "what is a shape memory alloy",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.95,
+        "max_coverage": 1.0,
+        "strong_match_count": 17,
+        "strong_match_rate": 0.85,
+        "loose_match_rate": 0.0,
+        "gap_signal": 0.15,
+        "interpretation": "17 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 15077.5,
+        "p90": 5073481,
+        "max": 17841553,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 45350.0,
+        "max_subscribers": 22900000,
+        "under_100k_subs": 11,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 1945,
+        "published_last_365d": 0,
+        "n": 20
+      },
+      "opportunity_score": 0.352,
+      "opportunity_components": {
+        "title_gap": 0.15,
+        "incumbent_subs": 0.335,
+        "view_ceiling": 0.403,
+        "staleness": 1.0
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-03T18:16:27.390269+00:00"
+      },
+      "top_results": [
+        {
+          "title": "Magical metals, how shape memory alloys work - Ainissa Ramirez",
+          "views": 173420,
+          "subs": 22900000,
+          "published_at": "2012-09-18T14:59:27Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Shape Memory Materials",
+          "views": 7887109,
+          "subs": 283000,
+          "published_at": "2025-06-26T04:15:28Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Shape Memory Alloys SMA   Chapter 1  Introduction",
+          "views": 727,
+          "subs": 145,
+          "published_at": "2025-02-20T10:50:45Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Nitinol: The Shape Memory Effect and Superelasticity",
+          "views": 883075,
+          "subs": 1560000,
+          "published_at": "2018-10-25T12:00:06Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How NASA Reinvented The Wheel - Shape Memory Alloys",
+          "views": 5073481,
+          "subs": 5110000,
+          "published_at": "2018-09-22T11:48:36Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Shape Memory Alloys | Skill-Lync",
+          "views": 46218,
+          "subs": 195000,
+          "published_at": "2020-07-21T14:30:11Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Nitinol Amazing Shape Memory Alloy",
+          "views": 76921,
+          "subs": 4490000,
+          "published_at": "2016-10-26T03:54:54Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Smart Metals Explained: Shape Memory Alloys in Action",
+          "views": 1444,
+          "subs": 60,
+          "published_at": "2025-05-05T18:53:10Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Mini Lesson 5: What is a Shape Memory Alloy?",
+          "views": 12087,
+          "subs": 391,
+          "published_at": "2022-03-31T18:42:56Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Shape Memory Alloys Can Lift Rocks",
+          "views": 17841553,
+          "subs": 4490000,
+          "published_at": "2023-01-24T20:30:03Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How a metal with a memory will shape our future on Mars",
+          "views": 2697229,
+          "subs": 1120000,
+          "published_at": "2021-03-17T13:00:15Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Shape Memory Alloys: Materials that Remember and Revert #dailysciencefacts #science #materialscience",
+          "views": 15648,
+          "subs": 871,
+          "published_at": "2024-02-01T14:52:05Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Shape Memory Alloy !! Working ! Detailed Explanation.",
+          "views": 4470,
+          "subs": 121000,
+          "published_at": "2021-07-22T17:09:09Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Othmane Shape Memory Alloy Demo",
+          "views": 14507,
+          "subs": 69000,
+          "published_at": "2016-10-25T18:32:04Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "SHAPE MEMORY ALLOYS",
+          "views": 13690,
+          "subs": 171,
+          "published_at": "2021-06-27T08:31:06Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Shape Memory Alloy Driven Whole Skin Locomotion",
+          "views": 14006,
+          "subs": 2250,
+          "published_at": "2018-09-06T23:17:40Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "&quot;Shape Memory Alloy: The Metal That Remembers! #ShapeMemoryAlloy #SmartMaterials #FutureTechnology",
+          "views": 3622,
+          "subs": 21700,
+          "published_at": "2025-04-26T15:00:07Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Shape Memory Alloy - opensoftmachines",
+          "views": 2885,
+          "subs": 1470,
+          "published_at": "2018-05-02T02:33:22Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Armored Core Original Best Track #03: Shape Memory Alloys",
+          "views": 203759,
+          "subs": 17300,
+          "published_at": "2012-01-07T04:09:47Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Shape memory alloy  nitinol paper clip #nitinol",
+          "views": 2957,
+          "subs": 23,
+          "published_at": "2025-08-21T08:35:57Z",
+          "coverage": 1.0
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "what is graphene",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.95,
+        "max_coverage": 1.0,
+        "strong_match_count": 19,
+        "strong_match_rate": 0.95,
+        "loose_match_rate": 0.05,
+        "gap_signal": 0.05,
+        "interpretation": "19 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 82257.0,
+        "p90": 2699583,
+        "max": 18444699,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 83400.0,
+        "max_subscribers": 21200000,
+        "under_100k_subs": 10,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 1910,
+        "published_last_365d": 3,
+        "n": 20
+      },
+      "opportunity_score": 0.257,
+      "opportunity_components": {
+        "title_gap": 0.05,
+        "incumbent_subs": 0.297,
+        "view_ceiling": 0.298,
+        "staleness": 0.85
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-03T18:16:18.174941+00:00"
+      },
+      "top_results": [
+        {
+          "title": "What is Graphene?",
+          "views": 68458,
+          "subs": 26200,
+          "published_at": "2014-08-07T18:34:36Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "What is graphene?",
+          "views": 112465,
+          "subs": 7490,
+          "published_at": "2015-06-11T10:06:03Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "What is graphene?",
+          "views": 18867,
+          "subs": 49800,
+          "published_at": "2022-10-18T09:00:31Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Why graphene hasn\u2019t taken over the world...yet",
+          "views": 18444699,
+          "subs": 1120000,
+          "published_at": "2018-07-10T14:00:01Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "What exactly is Graphene?",
+          "views": 37780,
+          "subs": 38900,
+          "published_at": "2024-07-11T12:18:25Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "What is Graphene",
+          "views": 17190,
+          "subs": 10000,
+          "published_at": "2017-04-02T19:58:11Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How Graphene is Changing the World \u2026 Right Now",
+          "views": 1576672,
+          "subs": 1810000,
+          "published_at": "2026-01-06T13:16:51Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "What is Graphene? The Latest in Ceramic Coating Technology.",
+          "views": 57140,
+          "subs": 117000,
+          "published_at": "2021-01-28T15:05:54Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "What is graphene? Five cool uses for the wonder material",
+          "views": 96056,
+          "subs": 4090000,
+          "published_at": "2018-03-15T03:34:06Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "What is Graphene?",
+          "views": 63,
+          "subs": 8,
+          "published_at": "2026-02-10T00:24:03Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Graphene: The Next Big (But Thin) Thing",
+          "views": 1098926,
+          "subs": 8410000,
+          "published_at": "2014-07-15T03:03:43Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "What is graphene oxide and why is it harmful to the body?",
+          "views": 6458,
+          "subs": 30500,
+          "published_at": "2023-07-13T01:08:29Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Maybe This Phone ISN\u2019T Just for Criminals - Trying Graphene OS for a Month.",
+          "views": 2097077,
+          "subs": 16900000,
+          "published_at": "2025-11-04T18:15:47Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Graphene - What is it?",
+          "views": 7167,
+          "subs": 131,
+          "published_at": "2019-09-17T07:18:36Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Difference Between Graphite and Graphene",
+          "views": 64530,
+          "subs": 3980,
+          "published_at": "2018-05-29T11:45:44Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "What is Graphene #carbon #allotropes #graphene #currentaffairs #news",
+          "views": 16877,
+          "subs": 800000,
+          "published_at": "2024-01-08T14:43:48Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Is graphene starting to live up to its hype?",
+          "views": 731126,
+          "subs": 38900,
+          "published_at": "2024-06-27T11:00:07Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "What If You Were Injected With Graphene?",
+          "views": 511376,
+          "subs": 8960000,
+          "published_at": "2021-10-24T15:00:19Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How To Make Graphene",
+          "views": 2699583,
+          "subs": 21200000,
+          "published_at": "2011-12-19T10:35:12Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How You Can Make the Strongest Material We Know of!",
+          "views": 13215208,
+          "subs": 801000,
+          "published_at": "2025-03-03T20:18:05Z",
+          "coverage": 0.0
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "how does quenching harden steel",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.25,
+        "max_coverage": 0.667,
+        "strong_match_count": 0,
+        "strong_match_rate": 0.0,
+        "loose_match_rate": 0.8,
+        "gap_signal": 1.0,
+        "interpretation": "nobody has made the definitive video on this query"
+      },
+      "view_profile": {
+        "median": 187840.0,
+        "p90": 1745872,
+        "max": 5200500,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 143000.0,
+        "max_subscribers": 5110000,
+        "under_100k_subs": 8,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 1232,
+        "published_last_365d": 2,
+        "n": 20
+      },
+      "opportunity_score": 0.725,
+      "opportunity_components": {
+        "title_gap": 1.0,
+        "incumbent_subs": 0.264,
+        "view_ceiling": 0.247,
+        "staleness": 0.9
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-03T18:44:10.988381+00:00"
+      },
+      "top_results": [
+        {
+          "title": "Blacksmith..  Annealing, Hardening, Tempering, Explained Easy. let&#39;s Go  #Blacksmithing #shorts",
+          "views": 6517,
+          "subs": 4660,
+          "published_at": "2025-06-19T23:42:47Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How To Heat Treat A Knife | The 4 Steps You NEED To Know",
+          "views": 1318345,
+          "subs": 491000,
+          "published_at": "2018-05-04T21:00:02Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Heat Treatment -The Science of Forging (feat. Alec Steele)",
+          "views": 3537366,
+          "subs": 5110000,
+          "published_at": "2018-01-29T16:01:00Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Blacksmithing Basics: How Heat Treating Actually Works",
+          "views": 13915,
+          "subs": 883,
+          "published_at": "2024-08-10T01:11:16Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Mesmerizing Red-Hot Steel Tempering Process | So Satisfying Heat Treatment",
+          "views": 63730,
+          "subs": 1990000,
+          "published_at": "2025-04-26T17:11:47Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Introduction to Heat Treatment - Types (Annealing, Quenching,Tempering, Harding) and Applications",
+          "views": 95209,
+          "subs": 19500,
+          "published_at": "2023-07-07T16:00:55Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "How to Harden Steel in Easy Way at Home #diy #youtubeshorts #tutorial #shorts",
+          "views": 302539,
+          "subs": 170000,
+          "published_at": "2023-09-20T17:40:59Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "What are tempering colors?  #metal #temperature #tools #knowledge #axe #maker #diy #blade",
+          "views": 1745872,
+          "subs": 135000,
+          "published_at": "2025-10-09T14:00:45Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Hardening Steel Breastplate armour - Medieval Armour Hardened Steel Quenching Technique",
+          "views": 13763,
+          "subs": 417,
+          "published_at": "2011-10-30T13:16:22Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "The way that heat treat a knife(quench in oil) @letsshareexperience#64 #shorts",
+          "views": 114476,
+          "subs": 7710,
+          "published_at": "2022-11-27T12:30:05Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "You\u2019re Probably Using The Wrong Oil....",
+          "views": 59137,
+          "subs": 135000,
+          "published_at": "2025-01-06T05:00:47Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "10 Misconceptions About Heat Treating Steel",
+          "views": 139799,
+          "subs": 151000,
+          "published_at": "2025-03-29T19:04:50Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Quenching a Knife in Liquid Nitrogen!  Will it survive?",
+          "views": 5200500,
+          "subs": 1070000,
+          "published_at": "2023-01-05T23:00:05Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Heat Treating Steel",
+          "views": 230643,
+          "subs": 274000,
+          "published_at": "2019-02-20T11:00:05Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "What Happens If You Quench a Blade in ________?!",
+          "views": 891756,
+          "subs": 3240000,
+          "published_at": "2023-02-01T21:15:00Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Quenching oil that increases the hardness of steel   #process #factory #quenching #daily",
+          "views": 57744,
+          "subs": 10500,
+          "published_at": "2023-10-12T15:45:01Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Heat treatment quenching technology, good machinery and good tools to save time and effort",
+          "views": 172009,
+          "subs": 886000,
+          "published_at": "2022-08-29T00:15:01Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "How to Harden Mild Steel? (Impossible!)",
+          "views": 418983,
+          "subs": 74900,
+          "published_at": "2018-01-16T02:51:09Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "knife Edge hardening heat treatment process #shorts",
+          "views": 203671,
+          "subs": 10100,
+          "published_at": "2022-08-30T00:15:18Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Understanding Steels and Heat Treatment",
+          "views": 639650,
+          "subs": 1490000,
+          "published_at": "2025-10-07T14:00:53Z",
+          "coverage": 0.333
+        }
+      ],
+      "domain": null
+    }
+  ]
+}

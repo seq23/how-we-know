@@ -1,6 +1,7 @@
 # What is a dumbo octopus?
 
-**Status:** HUMANIZED EDITORIAL PASS COMPLETE — OWNER CONFIRMATION AND MASTER WATCH REQUIRED  
+**Status:** HUMANIZED EDITORIAL PASS COMPLETE — OWNER CONFIRMATION AND MASTER WATCH REQUIRED    
+**Domain:** deep-sea-ocean-science  
 **Article:** /questions/what-is-a-dumbo-octopus  
 **Word count:** 1200  
 **Estimated narration:** 8m 17s at 145 WPM
@@ -93,7 +94,7 @@ Before approval, I need to listen for how the narrator says the genus name and t
 ### What to notice in the edit
 
 {{descent: 6957 | THE DEPTH RECORD}}
-Open with the depth record, then move backward into anatomy: fins, webbed arms, soft tissue, and the absence of lungs. This reverses the usual creature-profile order. Use an original silhouette and depth track unless a specific external clip is commercially admitted. The source paper itself is CC BY, but that does not automatically license every image or video appearing elsewhere online.
+Notice the order run backwards from the usual creature profile: the depth record first, then the anatomy behind it — fins, webbed arms, soft tissue, no lungs. If the silhouette and depth track look like original artwork rather than a stock clip, that's deliberate: the source paper is CC BY, but that does not license every image or video of this animal floating around online.
 
 ### Evidence limit
 

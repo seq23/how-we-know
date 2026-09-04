@@ -36,9 +36,46 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
+import domain_sources  # noqa: E402
+import durations  # noqa: E402
 import exclusions  # noqa: E402
 import pov_match  # noqa: E402
 from common import LOOP, ROOT, now, read_json, write_json  # noqa: E402
+
+DEFAULT_DOMAIN = "deep-sea-ocean-science"
+
+# The channel-identity half of the prompt, per domain. Everything else in
+# HOUSE_RULES (the one-rule-that-overrides-everything, tone, the never-list)
+# is domain-agnostic house style; only the subject line and the source
+# allowlist actually name deep sea. This dict, plus
+# `loop/domain_sources.py`'s allowlist, is the whole of what used to be
+# hardcoded here.
+DOMAIN_BRIEF: dict[str, dict[str, str]] = {
+    "deep-sea-ocean-science": {
+        "subject": "deep sea and ocean science",
+        "example_urls": (
+            "https://oceanexplorer.noaa.gov/facts/ or "
+            "https://ocean.si.edu/ecosystems/deep-sea/deep-sea"),
+    },
+    "materials-and-manufacturing": {
+        "subject": "materials science and manufacturing — how something is "
+                   "made, why a material behaves the way it does, and how "
+                   "either is actually known",
+        "example_urls": (
+            "https://www.nist.gov/ or "
+            "https://www.asminternational.org/"),
+    },
+}
+
+
+def domain_brief(domain: str) -> dict[str, str]:
+    b = DOMAIN_BRIEF.get(domain)
+    if not b:
+        raise KeyError(
+            f"{domain!r} has no entry in loop/author.py DOMAIN_BRIEF. Every "
+            f"domain that can be authored needs one; {len(DOMAIN_BRIEF)} "
+            f"declared: {sorted(DOMAIN_BRIEF)}.")
+    return b
 
 DRAFTS = LOOP / "drafts"
 SPEND = LOOP / "state" / "spend.json"
@@ -50,18 +87,54 @@ API = "https://openrouter.ai/api/v1/chat/completions"
 # plausible NOAA URL costs far more than six cents to catch.
 DEFAULT_MODEL = "anthropic/claude-sonnet-4.5"
 
-# Owner decision, 2026-09-01: every batch from here is 10-11 minutes.
-# Long-form is where YouTube rewards a channel, and the Partner Programme
-# threshold is 4,000 watch HOURS from long-form only - so runtime is a direct
-# multiplier on the metric that gates monetisation.
+# Owner decision, 2026-09-01 (runtime target) and 2026-09-03 (hard floor):
+# every batch from here is >=10 minutes, 10-11 targeted. Long-form is where
+# YouTube rewards a channel, and the Partner Programme threshold is 4,000
+# watch HOURS from long-form only - so runtime is a direct multiplier on the
+# metric that gates monetisation.
 #
-# The number is derived, not guessed. Measured across all 16 finished episodes:
-# ~1,200 narration words renders to 8.1 minutes, an effective 150 words/minute
-# once beat pacing and pauses are counted. A 10.5-minute target therefore needs
-# ~1,575 narration words. TARGET_WORDS counts the WHOLE script - directives,
-# headings, chapters and sources - which historically ran ~1.75x the narration,
-# so 1,575 narration words is ~2,750 total.
-TARGET_WORDS = 2750          # ~1,575 narration words -> ~10.5 minutes at 150 wpm
+# 2026-09-03 CORRECTION. This used to say "measured across all 16 finished
+# episodes: ~1,200 narration words renders to 8.1 minutes, an effective 150
+# words/minute" and set TARGET_WORDS=2750 as a WHOLE-SCRIPT count while the
+# prompt below said "words of narration" - two different quantities called
+# the same name. Neither 150 wpm nor 2750 was ever measured against a real
+# render; it was copied from the same guess three call sites agreed on
+# (loop/config.json retention.runtime_minutes, this constant, and the FORMAT
+# template's "at 145 WPM"), which is a different failure mode from being
+# wrong once. `loop/durations.py` is now the one place a speaking rate is
+# measured, from real renders via ffprobe: **144.58 wpm**, range 133.5-154.2,
+# across the 17 finished episodes with both a narration word count and a
+# measured render. Budgets below are DERIVED from that, every run, not typed
+# in twice.
+#
+# NARRATION_TARGET_WORDS is what the prompt tells the model to aim for, and it
+# names itself correctly: narration words, the only count that becomes
+# runtime. WHOLE_SCRIPT_TARGET_WORDS (directives, headings, chapters, sources
+# included) is derived from the measured script_ratio (whole-script words :
+# narration words, currently ~1.81) purely for the word-count metadata line
+# in FORMAT; nothing enforces against it, because enforcing against a
+# whole-script count is how a narration budget silently became a different
+# number in the first place.
+try:
+    _MODEL = durations.model()
+    WPM = _MODEL["wpm"]
+    SCRIPT_RATIO = _MODEL["script_ratio"]
+except durations.NotMeasured:
+    # No cached loop/state/runtime_model.json and nothing to derive it from
+    # on this machine. There is no safe constant to fall back to - that is
+    # the exact defect this module exists to delete - so drafting refuses
+    # rather than guessing.
+    raise RuntimeError(
+        "loop/author.py cannot draft without a measured speaking rate. Run "
+        "`.venv/bin/python loop/durations.py --refresh` on a machine that "
+        "has renders/*-final.mp4, commit loop/state/runtime_model.json, and "
+        "retry.") from None
+
+RUNTIME_TARGET_MINUTES = 10.5
+RUNTIME_FLOOR_MINUTES = 10.0        # owner's hard floor, 2026-09-03
+NARRATION_TARGET_WORDS = durations.narration_words_for(RUNTIME_TARGET_MINUTES)
+NARRATION_FLOOR_WORDS = durations.narration_words_for(RUNTIME_FLOOR_MINUTES)
+WHOLE_SCRIPT_TARGET_WORDS = round(NARRATION_TARGET_WORDS * SCRIPT_RATIO)
 MAX_ATTEMPTS = 2
 
 
@@ -96,8 +169,8 @@ def redact_key(k: str | None) -> str:
 # -------------------------------------------------------------------- prompt
 
 HOUSE_RULES = """You are drafting a narration script for the YouTube channel
-"How We Know" (@howweknowdeep) — an evidence-first explainer channel about deep
-sea and ocean science.
+"How We Know" (@howweknowdeep) — an evidence-first explainer channel. This
+script is for its {subject} coverage.
 
 THE ONE RULE THAT OVERRIDES EVERYTHING:
 Never state a number, date, measurement or proper name you are not certain of,
@@ -114,14 +187,14 @@ a weakness.
 
 SOURCES:
 Every digit-bearing sentence must trace to a named public body that genuinely
-publishes on this topic — NOAA, NOAA Ocean Exploration, MBARI, Woods Hole
-Oceanographic Institution, Smithsonian Ocean, USGS, NASA, Schmidt Ocean
-Institute. List them under ## Sources with REAL, working URLs on those domains.
-Every URL is fetched by an automated validator; a URL that 404s fails the
-script. Prefer a small number of stable landing pages you are certain exist
-(for example https://oceanexplorer.noaa.gov/facts/ or
-https://ocean.si.edu/ecosystems/deep-sea/deep-sea) over deep links you are
-guessing at. If you name a body in the narration, it must appear in ## Sources.
+publishes on this topic — {source_list}. List them under ## Sources with REAL,
+working URLs on those bodies' own domains. Every URL is fetched by an
+automated validator; a URL that 404s fails the script. Prefer a small number
+of stable landing pages you are certain exist (for example {example_urls})
+over deep links you are guessing at. If you name a body in the narration, it
+must appear in ## Sources. Do not cite a body from this channel's OTHER
+coverage areas — a source that publishes nothing about this script's subject
+is not a real citation even if the channel has used it elsewhere.
 
 NEVER include: medical, health, dietary or supplement advice; financial,
 investment or legal advice; adult content; conspiracy, cryptid or paranormal
@@ -130,7 +203,22 @@ controversy; religion framed as true or false; anything morally grey.
 
 TONE: calm, precise, second person occasionally, no hype, no "mind-blowing",
 no rhetorical questions stacked up. Explain how a thing is known, not just what
-is known. Roughly {target} words of narration."""
+is known. The narration under ## Narration must be roughly {narration_target}
+words - that is the ONLY count that becomes runtime; directives, headings,
+chapter lists and sources are not narration and do not count toward it. At
+the measured {wpm} words per minute that is about {target_minutes} minutes;
+never draft under {narration_floor} narration words, the owner's hard
+{floor_minutes}-minute floor.
+
+OPENING SHAPE: state the answer's load-bearing figure in the cold open, with
+its source, and then immediately open the epistemic loop — what that figure
+does NOT settle, or the assumption it overturns. Do not spend the cold open
+reframing the question instead of answering it; answer first, complicate
+second. Example shape (a different subject, quoted for the SHAPE only —
+do not reuse its content): "Hydrothermal vent fluid can exceed 340 degrees
+Celsius and remain liquid. The boiling point you learned at sea level is not
+a universal switch. Pressure moves it." Figure, source, real question — in
+well under fifty words."""
 
 
 FORMAT = """OUTPUT FORMAT — reproduce this structure exactly. It is the format of
@@ -139,8 +227,9 @@ the twenty existing scripts and the pipeline parses it.
 # <the question, as a title, ending in ?>
 
 **Status:** DRAFT — OWNER CONFIRMATION AND MASTER WATCH REQUIRED
+**Domain:** {domain}
 **Word count:** <approximate>
-**Estimated narration:** <m>m <s>s at 145 WPM
+**Estimated narration:** <m>m <s>s at {wpm} WPM (measured, loop/durations.py)
 
 ## Direct-answer lock
 
@@ -206,22 +295,11 @@ the twenty existing scripts and the pipeline parses it.
 - <at least four, all reachable>"""
 
 
-DIRECTIVES = """VISUAL DIRECTIVES — one on its own line immediately BEFORE the
-paragraph it governs. They are stripped before narration is synthesised.
-
-Rule: every number, name, stage, bound, step, boundary and criterion inside a
-directive MUST appear verbatim in that same script's narration. The directive
-labels what the prose says; it never adds a fact.
-
-{{stat: VALUE | UNIT | CAPTION | SOURCE}}      one held number
-{{descent: TO_M | LABEL}}                      a fall with a live counter
-{{compare: NAME=M | NAME=M}}                   exactly two, above/below sea level
-{{zones: HIGHLIGHT}}                           five-zone cross-section
-{{pressure: DEPTH_M}}                          dial, atm = 1 + m/10
-{{light}}                                      wavelength attenuation
+# The domain-agnostic v2 directives — no ocean or materials content, usable
+# by any domain's structural device. Kept as one block so a domain cannot
+# quietly drift onto a different epistemic-visual vocabulary from another.
+DIRECTIVES_SHARED = """{{stat: VALUE | UNIT | CAPTION | SOURCE}}      one held number
 {{timeline: YEAR=LABEL | YEAR=LABEL}}          2-6 dated events
-{{anatomy: TITLE | LABEL@X,Y | LABEL@X,Y}}     x,y are 0-1 fractions
-{{ladder: NAME=M | NAME=M}}                    2-6 item size comparison
 {{chain: TITLE | STAGE | STAGE | >CONCLUSION}} instrument to conclusion
 {{uncertain: VALUE | UNIT | RANGE | CONFIDENCE | CAPTION}}  needs a STATED range
 {{sources: TITLE | NAME=CLAIM | NAME=CLAIM}}   2-4 bodies named in the prose
@@ -231,20 +309,65 @@ labels what the prose says; it never adds a fact.
 {{define: TERM | MEANING | BOUNDARY | SOURCE}} a term and its edge
 {{checklist: TITLE | +MET | -UNMET | ?OPEN}}   states asserted by the prose
 {{text}}                                       a typographic beat
-{{ambient}}                                    breathing room
+{{ambient}}                                    breathing room"""
 
-Use {{contrast}}, {{checklist}}, {{chain}}, {{steps}} and {{define}} freely —
-they carry epistemic prose, which is most of this channel. Use {{stat}} and
-{{uncertain}} ONLY where the narration states that exact figure. Alternate
-directive types between adjacent paragraphs; never repeat one more than twice
-in a row. If a paragraph has nothing concrete, {{text}} or {{ambient}} is the
-correct and honest answer."""
+# The structural-device directives — ocean depth for deep sea, the thermal
+# scale for materials-and-manufacturing. A domain's own device only; do not
+# offer another domain's device directives here, or a draft can reference a
+# visual its own render pipeline never built for it (visuals/CONTRACT.md
+# Contract v3, visuals/domains.py).
+DEVICE_DIRECTIVES: dict[str, str] = {
+    "deep-sea-ocean-science": """{{descent: TO_M | LABEL}}                      a fall with a live counter
+{{compare: NAME=M | NAME=M}}                   exactly two, above/below sea level
+{{zones: HIGHLIGHT}}                           five-zone cross-section
+{{pressure: DEPTH_M}}                          dial, atm = 1 + m/10
+{{light}}                                      wavelength attenuation
+{{anatomy: TITLE | LABEL@X,Y | LABEL@X,Y}}     x,y are 0-1 fractions
+{{ladder: NAME=M | NAME=M}}                    2-6 item size comparison""",
+    "materials-and-manufacturing": """{{thermal: TO_C | LABEL}}                      a rise through the thermal scale, live °C counter
+{{stages: HIGHLIGHT}}                          five-band thermal-scale cross-section (AMBIENT/TEMPER/FORGE/MELT/PLASMA)
+{{magnitude: TITLE | UNIT | NAME=VALUE | ...}} strong for comparing two materials' properties directly""",
+}
 
 
-def build_prompt(question: str, pov: dict) -> list[dict]:
-    system = (HOUSE_RULES.format(target=TARGET_WORDS) + "\n\n" +
-              DIRECTIVES + "\n\n" +
-              FORMAT.format(pov_line=pov["line"], pov_id=pov["pov_id"]))
+def directives_for(domain: str) -> str:
+    device = DEVICE_DIRECTIVES.get(domain)
+    if device is None:
+        raise KeyError(
+            f"{domain!r} has no directive menu in loop/author.py "
+            f"DEVICE_DIRECTIVES; {sorted(DEVICE_DIRECTIVES)} declared.")
+    return f"""VISUAL DIRECTIVES — one on its own line immediately BEFORE the
+paragraph it governs. They are stripped before narration is synthesised.
+
+Rule: every number, name, stage, bound, step, boundary and criterion inside a
+directive MUST appear verbatim in that same script's narration. The directive
+labels what the prose says; it never adds a fact.
+
+{device}
+{DIRECTIVES_SHARED}
+
+Use {{{{contrast}}}}, {{{{checklist}}}}, {{{{chain}}}}, {{{{steps}}}} and
+{{{{define}}}} freely — they carry epistemic prose, which is most of this
+channel. Use {{{{stat}}}} and {{{{uncertain}}}} ONLY where the narration
+states that exact figure. Alternate directive types between adjacent
+paragraphs; never repeat one more than twice in a row. If a paragraph has
+nothing concrete, {{{{text}}}} or {{{{ambient}}}} is the correct and honest
+answer."""
+
+
+def build_prompt(question: str, pov: dict, domain: str = DEFAULT_DOMAIN) -> list[dict]:
+    brief = domain_brief(domain)
+    system = (HOUSE_RULES.format(
+                  subject=brief["subject"],
+                  source_list=", ".join(domain_sources.for_domain(domain)),
+                  example_urls=brief["example_urls"],
+                  narration_target=NARRATION_TARGET_WORDS, wpm=WPM,
+                  target_minutes=RUNTIME_TARGET_MINUTES,
+                  narration_floor=NARRATION_FLOOR_WORDS,
+                  floor_minutes=RUNTIME_FLOOR_MINUTES) + "\n\n" +
+              directives_for(domain) + "\n\n" +
+              FORMAT.format(pov_line=pov["line"], pov_id=pov["pov_id"],
+                           domain=domain, wpm=WPM))
     user = (
         f"Draft the full script for this question:\n\n"
         f"    {question}\n\n"
@@ -260,6 +383,16 @@ def build_prompt(question: str, pov: dict) -> list[dict]:
 
 # ---------------------------------------------------------------- the call
 
+# A transient API 500 is item 13a's textbook case: known, safe, deterministic
+# remedy (wait briefly, retry the exact same request), never masking a real
+# defect because it only fires for the specific server-side codes that mean
+# "try again", never for anything this lane's own request caused (401, 402,
+# 403, 404, 429 all skip straight past this and reach the caller unchanged).
+TRANSIENT_HTTP_CODES = (500, 502, 503, 504)
+TRANSIENT_RETRIES = 3
+TRANSIENT_BACKOFF_S = 2.0
+
+
 def call_openrouter(messages: list[dict], model: str, key: str,
                     timeout: int = 300, temperature: float = 0.4) -> dict:
     """The one HTTP client for OpenRouter. Every lane uses this; none forks it.
@@ -267,6 +400,17 @@ def call_openrouter(messages: list[dict], model: str, key: str,
     `temperature` defaults to 0.4 — factual work, not creative writing. The
     localisation lane passes 0.0: there is exactly one right way to say
     "deepest" in Indonesian and any sampling at all is a chance to miss it.
+
+    SELF-HEALS a transient server error or a dropped connection: up to
+    TRANSIENT_RETRIES attempts, `TRANSIENT_BACKOFF_S * attempt` between them.
+    Every attempt after the first prints `[self-heal]` so it shows up in
+    whichever lane's log called this — draft.py, advise.py and localize.py
+    all go through here, so the fix is shared once rather than three times.
+    A retry that still fails after the budget is exhausted raises normally;
+    it never swallows the error; the caller's existing NAMED STOP path is the
+    escalation, unchanged. A heal that keeps firing on every call is visible
+    in the log by construction — the same log a human already reads for
+    st.note() lines — rather than being silently absorbed forever.
     """
     body = json.dumps({
         "model": model,
@@ -275,14 +419,39 @@ def call_openrouter(messages: list[dict], model: str, key: str,
         "temperature": temperature,
         "usage": {"include": True},  # ask OpenRouter to report real cost
     }).encode()
-    req = urllib.request.Request(API, data=body, method="POST", headers={
+    req_headers = {
         "Authorization": f"Bearer {key}",
         "Content-Type": "application/json",
         "HTTP-Referer": "https://github.com/seq23/how-we-know",
         "X-Title": "How We Know - authoring lane",
-    })
-    with urllib.request.urlopen(req, timeout=timeout) as r:
-        return json.loads(r.read())
+    }
+    last_err: Exception | None = None
+    for attempt in range(1, TRANSIENT_RETRIES + 1):
+        req = urllib.request.Request(API, data=body, method="POST",
+                                     headers=req_headers)
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                if attempt > 1:
+                    print(f"[self-heal] OpenRouter call succeeded on attempt "
+                         f"{attempt}/{TRANSIENT_RETRIES} after "
+                         f"{last_err.__class__.__name__ if last_err else ''} "
+                         f"— healed, continuing", flush=True)
+                return json.loads(r.read())
+        except urllib.error.HTTPError as e:
+            if e.code not in TRANSIENT_HTTP_CODES or attempt == TRANSIENT_RETRIES:
+                raise
+            last_err = e
+        except (TimeoutError, ConnectionError, urllib.error.URLError) as e:
+            if attempt == TRANSIENT_RETRIES:
+                raise
+            last_err = e
+        print(f"[self-heal] OpenRouter attempt {attempt}/{TRANSIENT_RETRIES} "
+             f"failed ({last_err.__class__.__name__}: {last_err}); retrying "
+             f"in {TRANSIENT_BACKOFF_S * attempt:.0f}s — a transient server "
+             f"error is the known, safe, deterministic case this retries",
+             flush=True)
+        time.sleep(TRANSIENT_BACKOFF_S * attempt)
+    raise last_err  # pragma: no cover - loop always returns or raises above
 
 
 def record_spend(slug: str, model: str, usage: dict, cost: float | None,
@@ -312,6 +481,71 @@ def record_spend(slug: str, model: str, usage: dict, cost: float | None,
 
 REQUIRED_SECTIONS = ["## Direct-answer lock", "## Narration",
                      "## Human fingerprint gate", "## Chapters", "## Sources"]
+
+
+# Same rule as tests/test_directive_truth.py's V1 check ("a directive may not
+# put a value on screen its own script does not speak"), reapplied HERE, one
+# generation attempt earlier, so the model's own retry loop can fix it before
+# the draft is ever written to disk. This is the self-heal item 13a asks for:
+# extending the retry loop already in draft() rather than only catching the
+# defect after the fact in the full validate.run_all() batch gate, where
+# nothing retries and the draft is simply rejected wholesale.
+_DIRECTIVE_KINDS = ("chain", "uncertain", "sources", "steps", "contrast",
+                   "magnitude", "define", "checklist")
+_PUNC = str.maketrans("", "", "“”\"'’‘()[]{},.;:!?")
+_STRUCT = set("IS NOT AND OR OF TO IN ON AT FOR WITH FROM A AN THE".split())
+
+
+def _stem(w: str) -> str:
+    w = w.lower()
+    for suf in ("ations", "ation", "ings", "ing", "edly", "ed", "es", "s",
+               "ly", "d"):
+        if len(w) > len(suf) + 3 and w.endswith(suf):
+            return w[:-len(suf)]
+    return w
+
+
+def directive_truth_problems(text: str) -> list[str]:
+    """Every number and proper noun a v2 directive draws must already be in
+    this script's own narration prose. Mirrors tests/test_directive_truth.py's
+    check() exactly, against one in-memory draft rather than every file on
+    disk, so it can run inside the retry loop before anything is written."""
+    if "## Narration" not in text:
+        return []
+    body = text.split("## Narration", 1)[1].split("## Human fingerprint", 1)[0]
+    prose = " ".join(l for l in body.split("\n") if not l.strip().startswith("{{"))
+    plow = prose.lower()
+    flags = []
+    for line in body.split("\n"):
+        line = line.strip()
+        m = re.match(r"^\{\{\s*(\w+)\s*:?\s*(.*?)\s*\}\}$", line)
+        if not (m and m.group(1).lower() in _DIRECTIVE_KINDS):
+            continue
+        fields = m.group(2).split("|")
+        for num in re.findall(r"\d[\d,\.]*", fields[0]):
+            if num.lower() not in plow:
+                flags.append(f"directive draws number {num!r} the narration "
+                            f"never speaks: {line[:74]!r}")
+        parts = re.split(r"[|=]", "|".join(fields[1:]))
+        for part in parts:
+            for num in re.findall(r"\d[\d,\.]*", part):
+                if num.lower() not in plow:
+                    flags.append(f"directive draws number {num!r} the "
+                                f"narration never speaks: {line[:74]!r}")
+            toks = part.split()
+            for i, tok in enumerate(toks):
+                t = tok.translate(_PUNC).lstrip("+-?>")
+                if not t or not t[0].isupper() or i == 0:
+                    continue
+                if t.upper() in _STRUCT or t.lower() in plow:
+                    continue
+                if _stem(t) and _stem(t) in plow:
+                    continue
+                if t.endswith("s") and t[:-1].lower() + "'s" in plow:
+                    continue
+                flags.append(f"directive draws name {t!r} the narration "
+                            f"never speaks: {line[:74]!r}")
+    return flags
 
 
 def shape_problems(text: str, pov: dict) -> list[str]:
@@ -345,12 +579,17 @@ def shape_problems(text: str, pov: dict) -> list[str]:
                      f"looks truncated: {last.strip()[:80]!r}")
     nar = text.split("## Narration", 1)[-1].split("## Human fingerprint", 1)[0]
     words = len([w for w in re.sub(r"\{\{[^}]*\}\}", " ", nar).split()])
-    # Floor raised with the 10-11 minute target. 1,400 narration words is ~9.3
-    # minutes at the measured 150 wpm - under the target but not catastrophically
-    # short, which is the right place for a hard floor. It is a floor, not the aim.
-    if words < 1400:
-        p.append(f"narration is only {words} words; at the measured 150 wpm that "
-                 f"is ~{words/150:.1f} minutes, under the 10-11 minute target")
+    # 2026-09-03: this used to reject under 1,400 words and call it "9.3
+    # minutes" at an assumed 150 wpm. At the MEASURED rate (144.58 wpm, see
+    # loop/durations.py) 1,400 words is 9.68 minutes, not 9.3 - close, but
+    # the point of measuring is that no one has to eyeball "close enough"
+    # again. NARRATION_FLOOR_WORDS is the owner's hard 10-minute floor,
+    # derived from the same measurement every other call site now reads.
+    if words < NARRATION_FLOOR_WORDS:
+        p.append(f"narration is only {words} words; at the measured {WPM} wpm "
+                 f"that is ~{words / WPM:.1f} minutes, under the "
+                 f"{RUNTIME_FLOOR_MINUTES}-minute hard floor "
+                 f"({NARRATION_FLOOR_WORDS} words minimum)")
     # The gate that carries the owner's judgement applies to generated text
     # too - in narration mode, which targets advice-giving and false framing
     # rather than vocabulary. The topic itself was already gated by decide().
@@ -358,6 +597,15 @@ def shape_problems(text: str, pov: dict) -> list[str]:
     if not d.admitted:
         p.append(f"generated text touches a hard exclusion: {d.rule} "
                  f"(matched {d.matched!r})")
+    # 2026-08-31: the one real authoring run failed the FULL validate.run_all()
+    # gate on "V1 directive-truth FAIL(1)" — a directive drawing a number or
+    # name its own narration never spoke. Nothing in the retry loop above
+    # could have caught it, because it is the SAME rule loop/validate.py V1
+    # enforces, checked one stage later where nothing retries. Checking it
+    # here means a model that draws an inert directive gets the chance to fix
+    # it inside its own two attempts, the same as every other structural
+    # problem in this function.
+    p += directive_truth_problems(text)
     return p
 
 
@@ -385,7 +633,7 @@ def dead_urls(text: str) -> list[str]:
 # ------------------------------------------------------------------- public
 
 def draft(question: str, slug: str, pov: dict, model: str | None = None,
-          key: str | None = None) -> dict:
+          key: str | None = None, domain: str = DEFAULT_DOMAIN) -> dict:
     """Draft one script. Raises AuthorStop for every expected failure."""
     key = key or api_key()
     if not key:
@@ -395,7 +643,7 @@ def draft(question: str, slug: str, pov: dict, model: str | None = None,
             f"Put the key in {KEY_FILE} (gitignored) or set "
             f"$OPENROUTER_API_KEY.")
     model = model or os.environ.get("OPENROUTER_MODEL", DEFAULT_MODEL)
-    messages = build_prompt(question, pov)
+    messages = build_prompt(question, pov, domain)
     DRAFTS.mkdir(parents=True, exist_ok=True)
 
     last: list[str] = []
@@ -475,8 +723,33 @@ def draft(question: str, slug: str, pov: dict, model: str | None = None,
 
 
 def draft_topic(topic: dict, used_pov: list[str] | None = None) -> dict:
-    """Draft from a ranked topic row, matching a POV line automatically."""
+    """Draft from a ranked topic row, matching a POV line automatically.
+
+    Two different vocabularies both happen to be called "domain" in this
+    repo, and `topic` may carry either or both:
+
+      * `topic["domain"]`, an `loop/exclusions.py` ADMITTED_BUCKETS name
+        (e.g. "deep-sea-biology", "method-evidence") — `research/filter.py`'s
+        bucket taxonomy, older than and unrelated to the scored content
+        taxonomy. Passed to `exclusions.decide` unchanged, exactly as
+        before; `None` skips that particular check rather than failing it,
+        which is correct for a domain (like materials) that predates the
+        bucket taxonomy and fits none of its buckets.
+      * `topic["content_domain"]`, a `research/proposed-taxonomy.json`
+        `ranked_domains` name (e.g. "materials-and-manufacturing") — what
+        `DOMAIN_BRIEF`/`domain_sources` need to write the right prompt and
+        cite the right sources. Falls back to `DEFAULT_DOMAIN`
+        (deep-sea-ocean-science) so every existing caller that has never
+        heard of `content_domain` keeps authoring exactly as before.
+
+    Conflating them (an earlier version of this function read
+    `topic["domain"]` for both) passed bucket names like "deep-sea-biology"
+    into the content-domain lookup, which would have raised for every real
+    deep-sea topic loop/rank.py hands this function, not just an
+    out-of-taxonomy smoke test.
+    """
     question = topic["query"] if "query" in topic else topic["question"]
+    content_domain = topic.get("content_domain") or DEFAULT_DOMAIN
     d = exclusions.decide(question, topic.get("domain"))
     if not d.admitted:
         raise AuthorStop("TOPIC_EXCLUDED",
@@ -485,9 +758,9 @@ def draft_topic(topic: dict, used_pov: list[str] | None = None) -> dict:
                          "this is correct behaviour, not a bug.")
     slug = re.sub(r"[^a-z0-9]+", "-", question.lower()).strip("-")[:60]
     pov = pov_match.select(slug, question, used_pov or [])
-    out = draft(question, slug, pov)
+    out = draft(question, slug, pov, domain=content_domain)
     out.update({"slug": slug, "question": question, "pov_id": pov["pov_id"],
-                "pov_line": pov["line"]})
+                "pov_line": pov["line"], "domain": content_domain})
     return out
 
 

@@ -8,7 +8,8 @@
       "cues": 127,
       "track_kind": "standard",
       "source": "inserted",
-      "recorded_at": "2026-09-02T15:29:29+00:00"
+      "recorded_at": "2026-09-02T15:29:29+00:00",
+      "verified_at": "2026-09-03T17:28:13+00:00"
     },
     "mOP33elEfpU": {
       "slug": "05-why-many-deep-sea-creatures-are-red",
@@ -18,7 +19,8 @@
       "cues": 129,
       "track_kind": "standard",
       "source": "inserted",
-      "recorded_at": "2026-09-02T15:29:30+00:00"
+      "recorded_at": "2026-09-02T15:29:30+00:00",
+      "verified_at": "2026-09-03T17:28:13+00:00"
     },
     "EY__zREBIUk": {
       "slug": "01-why-deep-sea-creatures-look-so-weird",
@@ -28,7 +30,8 @@
       "cues": 121,
       "track_kind": "standard",
       "source": "inserted",
-      "recorded_at": "2026-09-02T15:29:32+00:00"
+      "recorded_at": "2026-09-02T15:29:32+00:00",
+      "verified_at": "2026-09-03T17:28:13+00:00"
     },
     "9FcDJniofMM": {
       "slug": "14-how-big-is-a-colossal-squid",
@@ -38,78 +41,134 @@
       "cues": 124,
       "track_kind": "standard",
       "source": "inserted",
-      "recorded_at": "2026-09-02T15:29:34+00:00"
-    }
-  },
-  "blocked": {
+      "recorded_at": "2026-09-02T15:29:34+00:00",
+      "verified_at": "2026-09-04T15:10:30+00:00"
+    },
     "izdEaeOQBvI": {
       "slug": "20-what-is-the-midnight-zone",
-      "reason": "QUOTA_DEFERRED",
-      "since": "2026-09-02T15:45:08+00:00",
-      "sha256": "6bfca129e03f9cd2b747f1aca57a0897d679e9e848d4e013d5879bb69a9626f9"
+      "caption_id": "AUieDaZDGBhpDHO_U-KwRGeoA7EmjSBW2B-_LdDop2LN75NBvIlqmx3y",
+      "language": "en",
+      "srt_sha256": "6bfca129e03f9cd2b747f1aca57a0897d679e9e848d4e013d5879bb69a9626f9",
+      "cues": 124,
+      "track_kind": "standard",
+      "source": "inserted",
+      "recorded_at": "2026-09-03T17:28:03+00:00",
+      "verified_at": "2026-09-04T15:10:30+00:00"
     },
     "MAV4PF056RA": {
       "slug": "07-why-deep-sea-creatures-get-creepier-deeper",
-      "reason": "QUOTA_DEFERRED",
-      "since": "2026-09-02T15:45:08+00:00",
-      "sha256": "eaa3524f0b85824526e23c0edf000eed5c97ca1a1271783c93edc6c81b84b3d9"
+      "caption_id": "AUieDabp19xhi0pSE1USurfJlEDTXsSf4Dj2Xh_8_2VeuOQLtraQw2EH",
+      "language": "en",
+      "srt_sha256": "eaa3524f0b85824526e23c0edf000eed5c97ca1a1271783c93edc6c81b84b3d9",
+      "cues": 143,
+      "track_kind": "standard",
+      "source": "inserted",
+      "recorded_at": "2026-09-03T17:28:04+00:00",
+      "verified_at": "2026-09-04T15:10:30+00:00"
     },
     "MozJZ-ChEZU": {
       "slug": "06-why-some-deep-sea-creatures-are-transparent",
-      "reason": "QUOTA_DEFERRED",
-      "since": "2026-09-02T15:45:08+00:00",
-      "sha256": "cb4cbf633889dd4d68c0ca0da05fe51d748c920a3e8f601843ecdf66dc69e001"
+      "caption_id": "AUieDabJ4KPpL48fo-WK_ECu0A4S1D3idgqiSK9nHlHiM6z5XJQqaha3",
+      "language": "en",
+      "srt_sha256": "cb4cbf633889dd4d68c0ca0da05fe51d748c920a3e8f601843ecdf66dc69e001",
+      "cues": 122,
+      "track_kind": "standard",
+      "source": "inserted",
+      "recorded_at": "2026-09-03T17:28:05+00:00"
     },
     "MWOUa3UEXSk": {
       "slug": "15-how-do-people-reach-challenger-deep",
-      "reason": "QUOTA_DEFERRED",
-      "since": "2026-09-02T15:45:08+00:00",
-      "sha256": "58ddbb7f57f3f5af953cd7e36d56e51c8455e296fa4ed4cd43dc615e5de4286f"
+      "caption_id": "AUieDaaPuHZFKu0X6aOJiMPWshg17KT6BTzaraLRdHmq6fArvtwytA_A",
+      "language": "en",
+      "srt_sha256": "58ddbb7f57f3f5af953cd7e36d56e51c8455e296fa4ed4cd43dc615e5de4286f",
+      "cues": 130,
+      "track_kind": "standard",
+      "source": "inserted",
+      "recorded_at": "2026-09-03T17:28:06+00:00"
     },
     "jec80gk8rM0": {
       "slug": "08-what-creatures-live-in-the-deep-sea",
-      "reason": "QUOTA_DEFERRED",
-      "since": "2026-09-02T15:45:08+00:00",
-      "sha256": "5c19503cf6bc5dff45bd5fbb865f9e2b9bb55a09d59e892cd1b27b478c4d6ac0"
+      "caption_id": "AUieDaZiiDh5e-IR11svzPVPWEg21mm8Gw4irGx5Zc6DPVRHsYpkq-dJ",
+      "language": "en",
+      "srt_sha256": "5c19503cf6bc5dff45bd5fbb865f9e2b9bb55a09d59e892cd1b27b478c4d6ac0",
+      "cues": 127,
+      "track_kind": "standard",
+      "source": "inserted",
+      "recorded_at": "2026-09-03T17:28:06+00:00"
     },
     "G1TqXmf36Qo": {
       "slug": "09-what-is-the-scariest-deep-sea-creature",
-      "reason": "QUOTA_DEFERRED",
-      "since": "2026-09-02T15:45:08+00:00",
-      "sha256": "e22d53306e0fcd72a6393bb601f13774731665f5e2c0a90b95879eaadfeb51d5"
+      "caption_id": "AUieDabpl4kElzsAISTxZ3TBA31w9XHhOy51A3pL4QCvy4OuBr53PRH7",
+      "language": "en",
+      "srt_sha256": "e22d53306e0fcd72a6393bb601f13774731665f5e2c0a90b95879eaadfeb51d5",
+      "cues": 135,
+      "track_kind": "standard",
+      "source": "inserted",
+      "recorded_at": "2026-09-03T17:28:07+00:00"
     },
     "OdYunlbB73g": {
       "slug": "19-what-is-the-deepest-fish-ever-recorded",
-      "reason": "QUOTA_DEFERRED",
-      "since": "2026-09-02T15:45:08+00:00",
-      "sha256": "8f7889586bd4dd3e39aaab7b68fd5ae0fba09dc3f93e046eea6b51f835fd86c3"
+      "caption_id": "AUieDaZfHBRo2uls3LKBnA00y1spMDTzG4dMAK6YbopYVxy2WNRMarHD",
+      "language": "en",
+      "srt_sha256": "8f7889586bd4dd3e39aaab7b68fd5ae0fba09dc3f93e046eea6b51f835fd86c3",
+      "cues": 123,
+      "track_kind": "standard",
+      "source": "inserted",
+      "recorded_at": "2026-09-03T17:28:08+00:00"
     },
     "IbrSPKUK1IM": {
       "slug": "18-why-does-black-smoker-water-not-boil",
-      "reason": "QUOTA_DEFERRED",
-      "since": "2026-09-02T15:45:08+00:00",
-      "sha256": "054115f5899bb72befd097f782d0f59c9d6e0cfafb6735108f6189876c8bba11"
+      "caption_id": "AUieDabEdoptSv686XEyscVp2LiMw1AdsUYECVO-IVuNJM-FZ0zXWi54",
+      "language": "en",
+      "srt_sha256": "054115f5899bb72befd097f782d0f59c9d6e0cfafb6735108f6189876c8bba11",
+      "cues": 128,
+      "track_kind": "standard",
+      "source": "inserted",
+      "recorded_at": "2026-09-03T17:28:09+00:00"
     },
     "xyZ9xs7OF3g": {
       "slug": "04-why-deep-sea-creatures-are-so-scary",
-      "reason": "QUOTA_DEFERRED",
-      "since": "2026-09-02T15:45:08+00:00",
-      "sha256": "142460e104e3473ed69f0beaeff9daea0748bf6bd00d5e53f77bceb8828786b9"
+      "caption_id": "AUieDaZKwoys8OFgPNPnX5Gz0lvZ85s-s0Bkj3kgEWO9vMPLMZujb20b",
+      "language": "en",
+      "srt_sha256": "142460e104e3473ed69f0beaeff9daea0748bf6bd00d5e53f77bceb8828786b9",
+      "cues": 123,
+      "track_kind": "standard",
+      "source": "inserted",
+      "recorded_at": "2026-09-03T17:28:10+00:00"
     },
     "l6HwRYGo-Nw": {
       "slug": "16-what-happens-when-a-whale-dies-in-the-deep-ocean",
-      "reason": "QUOTA_DEFERRED",
-      "since": "2026-09-02T15:45:08+00:00",
-      "sha256": "8d2bbd0bb99250232e90378802f62421c3114643ff403c0238ce9c4c2a0738c8"
+      "caption_id": "AUieDaZjlDBHRu0StPxI6XO0t0E2Stbjx-hEw7nAUwqVIMHlbG7FamZa",
+      "language": "en",
+      "srt_sha256": "8d2bbd0bb99250232e90378802f62421c3114643ff403c0238ce9c4c2a0738c8",
+      "cues": 124,
+      "track_kind": "standard",
+      "source": "inserted",
+      "recorded_at": "2026-09-03T17:28:11+00:00"
     },
     "EFimztjj_j8": {
       "slug": "13-how-does-bioluminescence-work-in-the-deep-sea",
-      "reason": "QUOTA_DEFERRED",
-      "since": "2026-09-02T15:45:08+00:00",
-      "sha256": "571e72c87813524aad52e1e09bf83cf845624f6b429cda8a3dc356bf3bed463d"
+      "caption_id": "AUieDaZTCT88wtD_ABLRnobwNFDKzNj5ej4KHf04F2NsjKjLndWQhD8g",
+      "language": "en",
+      "srt_sha256": "571e72c87813524aad52e1e09bf83cf845624f6b429cda8a3dc356bf3bed463d",
+      "cues": 125,
+      "track_kind": "standard",
+      "source": "inserted",
+      "recorded_at": "2026-09-03T17:28:12+00:00"
+    },
+    "_fQ3-YI63oQ": {
+      "slug": "02-how-deep-sea-creatures-survive-pressure",
+      "caption_id": "AUieDabCKlJCLZrBNvKXXdZp9DSrp0wHV3RXtIs045KehSqxBjzzpUEh",
+      "language": "en",
+      "srt_sha256": "b1740a9e213c48222c36de9125f83c0d0bc98718b0d1ad1b1cc05e1097247439",
+      "cues": 121,
+      "track_kind": "standard",
+      "source": "inserted",
+      "recorded_at": "2026-09-03T17:28:13+00:00"
     }
   },
-  "updated": "2026-09-02T15:45:08+00:00",
+  "blocked": {},
+  "updated": "2026-09-04T15:10:30+00:00",
   "token_scopes": [
     "https://www.googleapis.com/auth/youtube",
     "https://www.googleapis.com/auth/youtube.force-ssl",

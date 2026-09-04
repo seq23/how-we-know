@@ -1,6 +1,7 @@
 # Why deep sea creatures are surfacing?
 
-**Status:** HUMANIZED EDITORIAL PASS COMPLETE — OWNER CONFIRMATION AND MASTER WATCH REQUIRED  
+**Status:** HUMANIZED EDITORIAL PASS COMPLETE — OWNER CONFIRMATION AND MASTER WATCH REQUIRED    
+**Domain:** deep-sea-ocean-science  
 **Article:** /questions/why-deep-sea-creatures-are-surfacing  
 **Word count:** 1199  
 **Estimated narration:** 8m 16s at 145 WPM
@@ -24,7 +25,7 @@ Why deep sea creatures are surfacing?
 ### The right way to see it
 
 {{sources: TWO DIFFERENT QUESTIONS | Normal nightly migration=by midwater animals | An unusual appearance=by a permanent deep resident}}
-There are two different questions hidden inside the headline. Are we seeing normal nightly migration by midwater animals, or an unusual appearance by a permanent deep resident? Those are not the same event. The rest of this video follows that question through the actual environmental constraints described by NOAA, MBARI, Smithsonian, and Woods Hole sources in the companion article.
+There are two different questions hidden inside the headline. Are we seeing normal nightly migration by midwater animals, or an unusual appearance by a permanent deep resident? Those are not the same event.
 
 ### Producer POV
 
@@ -84,12 +85,12 @@ More ROV dives, fishing effort, phones, social media accounts, beach patrols, an
 Researchers would want comparable observation effort, consistent identification, location, season, time of day, depth, and animal condition. Without that structure, a collection of viral clips is a collection of anecdotes.
 
 {{ambient}}
-That does not mean every sighting should be dismissed. A stranded or injured deep resident can reveal local currents, temperature stress, disease, capture effects, or an unusual oceanographic event. The responsible move is to narrow the claim. Instead of saying 'deep-sea creatures are surfacing,' say exactly what was observed: one oarfish was found at a location on a date; one deepwater shark was caught above its common range; one mass stranding occurred after a storm. Specific language preserves the evidence and prevents the story from outrunning it. For this episode, the retention payoff is the audit itself. The viewer sees a frightening headline become a set of testable questions. Sometimes the final answer is normal migration. Sometimes it is injury. Sometimes it remains unknown. Unknown is not a weak ending when the alternative is a fabricated trend.
+That does not mean every sighting should be dismissed. A stranded or injured deep resident can reveal local currents, temperature stress, disease, capture effects, or an unusual oceanographic event. The responsible move is to narrow the claim. Instead of saying 'deep-sea creatures are surfacing,' say exactly what was observed: one oarfish was found at a location on a date; one deepwater shark was caught above its common range; one mass stranding occurred after a storm. Specific language preserves the evidence and prevents the story from outrunning it. Watch a frightening headline turn into a set of testable questions right in front of you. Sometimes the final answer is normal migration. Sometimes it is injury. Sometimes it remains unknown. Unknown is not a weak ending when the alternative is a fabricated trend.
 
 ### The headline I would trust
 
 {{checklist: A TRUSTWORTHY HEADLINE | +Names the animal | +Names the observation | -Turns one body into a message from the planet | ?If a species is unknown, say that | ?If the capture method could explain the ascent, include it | ?If the animal was dead or injured, include that too}}
-A trustworthy headline names the animal and the observation. It does not turn one body into a message from the planet. If a species is unknown, say that. If the capture method could explain the ascent, include it. If the animal was dead or injured, include that too. The difference may feel less dramatic, but it gives the audience something they can verify. For a channel trying to build watch time over months, that credibility compounds. A viewer who catches one exaggerated claim may not trust the next nineteen accurate ones. The human decision here is to leave the uncertainty in the story and make the investigation itself entertaining.
+A trustworthy headline names the animal and the observation. It does not turn one body into a message from the planet. If a species is unknown, say that. If the capture method could explain the ascent, include it. If the animal was dead or injured, include that too. The difference may feel less dramatic, but it gives you something you can verify. If you caught one exaggerated claim here, you would have less reason to trust the next nineteen accurate ones — so that is not a risk worth taking. The human decision here is to leave the uncertainty in the story and make the investigation itself entertaining.
 
 ### What would change my mind
 
@@ -104,12 +105,12 @@ If the species, condition, time, location, and observation effort are not availa
 ### Final editorial note
 
 {{ambient}}
-The final description should also link the exact observation to the canonical article so viewers can inspect the source trail rather than depend on the headline alone. The final description should also link the exact observation to the canonical article so viewers can inspect the source trail rather than depend on the headline alone.
+The description below links the exact observation to the full article, so you can check the source trail yourself instead of taking the headline's word for it. The description below links the exact observation to the full article, so you can check the source trail yourself instead of taking the headline's word for it.
 
 ### What to notice in the edit
 
 {{zones:}}
-This episode should look like an evidence audit, not a monster reveal. Freeze the viral-style frame, then add one layer at a time: species name, normal depth, time, condition, location, and comparison data. The open loop is whether the animal is a normal migrant, an injured deep resident, or a genuinely unusual observation. The answer may remain uncertain, and that is acceptable.
+Watch this like an evidence audit, not a monster reveal: the viral-style frame freezes, then one layer gets added at a time — species name, normal depth, time, condition, location, comparison data. The open question you're left holding is whether the animal is a normal migrant, an injured deep resident, or a genuinely unusual observation. It is fine if the answer stays uncertain.
 
 ### Evidence limit
 

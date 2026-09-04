@@ -132,16 +132,28 @@ nothing would tell you nothing.
 
 ---
 
-## The one thing left: arm the two crons
+## The one thing left: prove each lane once (2026-09-03: no manual uncomment needed)
 
-**Both workflows are disarmed.** `workflow_dispatch` works; the `schedule:`
-blocks are commented out in both files. Everything up to the irreversible call
-is proven — a real GitHub runner authenticated to R2, resolved the shelf,
-computed the same publish slots the Mac computes, and reserved quota — but
-**neither lane has yet performed a real upload**, and an unproven lane that
-first tries at 14:00 UTC unattended is the wrong way to find out.
+**All three crons (`loop-upload-cloud.yml`, `loop-shorts-cloud.yml`,
+`loop-reach.yml`) are now live in the YAML.** The old procedure here was to
+leave `schedule:` commented out until proven, then hand-edit and commit the
+uncomment — a condition that could never be satisfied, since the lane it
+gated could never run to prove itself. `loop/arming.py` replaces that: the
+cron fires on schedule, but before a lane does anything it checks whether it
+has ever completed a real run. Unarmed, it takes a NAMED STOP
+(`LANE_NOT_ARMED_<LANE>`) naming exactly which workflow to dispatch and which
+secrets it needs — visible in the issue tracker, unlike a commented-out cron
+nothing reports on. A `workflow_dispatch` run always passes the gate, and the
+moment it completes real, non-dry-run work it calls `arming.record_success()`
+itself — no code change, no commit, no manual uncomment. The next scheduled
+run finds itself armed.
 
-### Step 1 — one real episode, watched
+**shorts-cloud is already proven** — dispatched for real on 2026-09-03
+(`-f limit=1`), uploaded the Short for `10-what-is-the-deepest-part-of-the-ocean`
+as `HZhm2dXaR9c`, confirmed private with a future `publishAt` against
+`videos.list`. upload-cloud and reach still need their own first proving run.
+
+### Prove upload-cloud
 
 ```bash
 gh workflow run loop-upload-cloud.yml -f limit=1
@@ -155,32 +167,30 @@ attached. Then confirm the workflow committed the ledger:
 git pull && python3 -c "import json;d=json.load(open('loop/state/ledger.json'));print(len(d['published']),'published')"
 ```
 
-### Step 2 — arm the episode cron AND unload the Mac agent, in ONE change
-
-Never both armed, never neither. **09:00 America/Chicago IS 14:00 UTC**, so the
-Mac's `com.howweknow.backfill` and the workflow's cron fire at the same instant,
-each reading its own copy of the ledger — the Mac's local file and the
-workflow's committed copy. Both would see the same episode as unpublished and
-upload it twice.
+**Unload the Mac agent in the same change.** Never both armed, never neither.
+**09:00 America/Chicago IS 14:00 UTC**, so the Mac's `com.howweknow.backfill`
+and the workflow's cron fire at the same instant, each reading its own copy
+of the ledger — the Mac's local file and the workflow's committed copy. Both
+would see the same episode as unpublished and upload it twice.
 
 ```bash
 launchctl unload ~/Library/LaunchAgents/com.howweknow.backfill.plist
 rm ~/Library/LaunchAgents/com.howweknow.backfill.plist
-# then uncomment the `schedule:` block in .github/workflows/loop-upload-cloud.yml
-# and commit both in one go
 ```
 
-### Step 3 — the same for Shorts
+Nothing to uncomment or commit — the dispatched run above already armed it.
 
-There is no competing Mac agent for Shorts, so this one only needs its own first
-run:
+### Prove reach
 
 ```bash
-gh workflow run loop-shorts-cloud.yml -f dry_run=true
-gh workflow run loop-shorts-cloud.yml -f limit=1
-# confirm the Short is private with a publishAt, then uncomment the
-# `schedule:` block in .github/workflows/loop-shorts-cloud.yml
+gh workflow run loop-reach.yml -f lane=both -f limit=1
+gh run watch
 ```
+
+Needs `OPENROUTER_API_KEY` for the localization half (`captions_lane.py`
+alone does not need it). `gh secret list` on this repo shows it is not yet
+set — the owner's one OpenRouter key, the one with money; never create a
+second.
 
 ---
 

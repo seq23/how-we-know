@@ -1,6 +1,7 @@
 # How does bioluminescence work in the deep sea?
 
-**Status:** HUMANIZED EDITORIAL PASS COMPLETE — OWNER CONFIRMATION AND MASTER WATCH REQUIRED  
+**Status:** HUMANIZED EDITORIAL PASS COMPLETE — OWNER CONFIRMATION AND MASTER WATCH REQUIRED    
+**Domain:** deep-sea-ocean-science  
 **Article:** /questions/how-does-bioluminescence-work-in-the-deep-sea  
 **Word count:** 1155  
 **Estimated narration:** 7m 58s at 145 WPM
@@ -87,7 +88,7 @@ When the percentage appears on screen, the label should read 'animals observed i
 ### What to notice in the edit
 
 {{ambient}}
-This episode should feel like a mechanism demonstration. Begin with darkness, add the chemical reaction as a clean original animation, then reuse the same burst of light in four contexts: lure, camouflage, warning, and communication. That structural repetition has meaning; the surrounding behavior changes the function. Do not use MBARI footage unless the individual asset has commercial rights clearance.
+This is built like a mechanism demonstration: darkness first, then the chemical reaction as a clean original animation, then the same burst of light reused in four contexts — lure, camouflage, warning, communication. Watch how the repetition itself carries meaning: the light doesn't change, the surrounding behavior does. If it looks like an original animation rather than an MBARI clip, that's because MBARI's footage is not cleared for a video that runs ads.
 
 ### Evidence limit
 
