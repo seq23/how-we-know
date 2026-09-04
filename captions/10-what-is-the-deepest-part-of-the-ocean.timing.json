@@ -1,0 +1,156 @@
+{
+  "episode": "10-what-is-the-deepest-part-of-the-ocean",
+  "beats": 57,
+  "plan_source": "plans/10-what-is-the-deepest-part-of-the-ocean.json",
+  "timing": "audio",
+  "beats_measured": 57,
+  "duration_s": 485.363,
+  "cues": 127,
+  "chapters_real": 18,
+  "chapters_published": 15,
+  "chapter_notes": [
+    "merged 3 chapter(s) under 10s: Title card (2.3s), Measurement beats myth (1.6s), Final editorial note (6.8s)"
+  ],
+  "drift": {
+    "mean_abs_s": 4.5,
+    "worst_abs_s": 10.6,
+    "rows": [
+      {
+        "title": "Cold open",
+        "hand": "00:00",
+        "real": "0:00",
+        "drift_s": 0.0
+      },
+      {
+        "title": "Title card",
+        "hand": "00:13",
+        "real": "0:13",
+        "drift_s": 0.1
+      },
+      {
+        "title": "The right way to see it",
+        "hand": "00:16",
+        "real": "0:15",
+        "drift_s": -0.6
+      },
+      {
+        "title": "Producer POV",
+        "hand": "00:37",
+        "real": "0:35",
+        "drift_s": -1.8
+      },
+      {
+        "title": "Challenger Deep lies inside the Mariana Trench",
+        "hand": "00:52",
+        "real": "0:48",
+        "drift_s": -3.2
+      },
+      {
+        "title": "The best current estimate is about 10.9 kilometers",
+        "hand": "01:23",
+        "real": "1:19",
+        "drift_s": -3.7
+      },
+      {
+        "title": "The bottom is dark, cold, and under extreme pressure",
+        "hand": "01:56",
+        "real": "1:58",
+        "drift_s": 2.4
+      },
+      {
+        "title": "Exploration requires full-ocean-depth engineering",
+        "hand": "02:27",
+        "real": "2:30",
+        "drift_s": 3.3
+      },
+      {
+        "title": "Common myths and questions",
+        "hand": "02:58",
+        "real": "3:06",
+        "drift_s": 8.7
+      },
+      {
+        "title": "How a depth becomes a number",
+        "hand": "03:58",
+        "real": "4:08",
+        "drift_s": 10.6
+      },
+      {
+        "title": "What a depth number leaves out",
+        "hand": "04:38",
+        "real": "4:46",
+        "drift_s": 9.0
+      },
+      {
+        "title": "The scale check",
+        "hand": "05:48",
+        "real": "5:57",
+        "drift_s": 9.7
+      },
+      {
+        "title": "Why deepest known is the correct phrase",
+        "hand": "06:26",
+        "real": "6:33",
+        "drift_s": 7.6
+      },
+      {
+        "title": "Measurement beats myth",
+        "hand": "06:52",
+        "real": "6:56",
+        "drift_s": 4.9
+      },
+      {
+        "title": "Final editorial note",
+        "hand": "06:54",
+        "real": "6:58",
+        "drift_s": 4.5
+      },
+      {
+        "title": "What to notice in the edit",
+        "hand": "07:02",
+        "real": "7:05",
+        "drift_s": 3.3
+      },
+      {
+        "title": "Evidence limit",
+        "hand": "07:24",
+        "real": "7:27",
+        "drift_s": 3.7
+      },
+      {
+        "title": "Closing",
+        "hand": "07:48",
+        "real": "7:51",
+        "drift_s": 3.8
+      }
+    ]
+  },
+  "ffprobe": {
+    "file": "renders/10-what-is-the-deepest-part-of-the-ocean-final.mp4",
+    "video_s": 485.265,
+    "last_cue_end_s": 485.363,
+    "delta_s": 0.098,
+    "ok": true
+  },
+  "text_checks": {
+    "beats_json": {
+      "checked": 57,
+      "mismatched": []
+    },
+    "script_text": {
+      "checked": 57,
+      "absent_from_narration": []
+    }
+  },
+  "script_chapters": {
+    "written": false,
+    "changed": false,
+    "removed_lines": [],
+    "chapters_not_in_script": []
+  },
+  "artifacts": [
+    "captions/10-what-is-the-deepest-part-of-the-ocean.vtt",
+    "captions/10-what-is-the-deepest-part-of-the-ocean.srt",
+    "captions/10-what-is-the-deepest-part-of-the-ocean.chapters.txt"
+  ]
+}

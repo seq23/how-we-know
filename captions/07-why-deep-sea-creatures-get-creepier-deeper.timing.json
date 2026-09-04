@@ -1,0 +1,154 @@
+{
+  "episode": "07-why-deep-sea-creatures-get-creepier-deeper",
+  "beats": 67,
+  "plan_source": "plans/07-why-deep-sea-creatures-get-creepier-deeper.json",
+  "timing": "estimate",
+  "beats_measured": 0,
+  "duration_s": 491.95,
+  "cues": 143,
+  "chapters_real": 18,
+  "chapters_published": 16,
+  "chapter_notes": [
+    "merged 2 chapter(s) under 10s: Title card (4.1s), Producer POV (9.0s)"
+  ],
+  "drift": {
+    "mean_abs_s": 18.6,
+    "worst_abs_s": 42.3,
+    "rows": [
+      {
+        "title": "Cold open",
+        "hand": "00:00",
+        "real": "0:00",
+        "drift_s": 0.0
+      },
+      {
+        "title": "Title card",
+        "hand": "00:14",
+        "real": "0:13",
+        "drift_s": -0.3
+      },
+      {
+        "title": "The right way to see it",
+        "hand": "00:18",
+        "real": "0:17",
+        "drift_s": -0.2
+      },
+      {
+        "title": "Producer POV",
+        "hand": "00:40",
+        "real": "0:35",
+        "drift_s": -4.2
+      },
+      {
+        "title": "Depth changes the design constraints",
+        "hand": "00:53",
+        "real": "0:44",
+        "drift_s": -8.2
+      },
+      {
+        "title": "The twilight zone still rewards visual camouflage",
+        "hand": "01:10",
+        "real": "1:02",
+        "drift_s": -7.8
+      },
+      {
+        "title": "The midnight and abyss favor low-energy survival",
+        "hand": "01:26",
+        "real": "1:17",
+        "drift_s": -8.9
+      },
+      {
+        "title": "Some of the deepest animals look less monstrous, not more",
+        "hand": "01:46",
+        "real": "1:37",
+        "drift_s": -8.6
+      },
+      {
+        "title": "Common myths and questions",
+        "hand": "02:04",
+        "real": "1:52",
+        "drift_s": -11.4
+      },
+      {
+        "title": "Descend until the horror story fails",
+        "hand": "02:47",
+        "real": "2:30",
+        "drift_s": -16.2
+      },
+      {
+        "title": "Why the horror ladder is backwards",
+        "hand": "03:17",
+        "real": "2:59",
+        "drift_s": -17.8
+      },
+      {
+        "title": "A depth chart without villains",
+        "hand": "04:37",
+        "real": "4:11",
+        "drift_s": -25.5
+      },
+      {
+        "title": "The deeper-is-worse illusion",
+        "hand": "05:29",
+        "real": "4:55",
+        "drift_s": -33.3
+      },
+      {
+        "title": "The retention payoff",
+        "hand": "05:58",
+        "real": "5:23",
+        "drift_s": -34.3
+      },
+      {
+        "title": "Final editorial note",
+        "hand": "06:35",
+        "real": "5:57",
+        "drift_s": -37.5
+      },
+      {
+        "title": "What to notice in the edit",
+        "hand": "07:50",
+        "real": "7:12",
+        "drift_s": -37.3
+      },
+      {
+        "title": "Evidence limit",
+        "hand": "08:13",
+        "real": "7:30",
+        "drift_s": -42.3
+      },
+      {
+        "title": "Closing",
+        "hand": "08:39",
+        "real": "7:57",
+        "drift_s": -41.8
+      }
+    ]
+  },
+  "ffprobe": {
+    "file": "renders/07-why-deep-sea-creatures-get-creepier-deeper.mp4",
+    "video_s": 491.93,
+    "last_cue_end_s": 491.95,
+    "delta_s": 0.02,
+    "ok": true
+  },
+  "text_checks": {
+    "beats_json": {
+      "checked": 67,
+      "mismatched": []
+    },
+    "script_text": {
+      "checked": 67,
+      "absent_from_narration": []
+    }
+  },
+  "script_chapters": {
+    "written": false,
+    "reason": "timing source is 'estimate'; stamps are only written from fully measured audio"
+  },
+  "artifacts": [
+    "captions/07-why-deep-sea-creatures-get-creepier-deeper.vtt",
+    "captions/07-why-deep-sea-creatures-get-creepier-deeper.srt",
+    "captions/07-why-deep-sea-creatures-get-creepier-deeper.chapters.txt"
+  ]
+}
