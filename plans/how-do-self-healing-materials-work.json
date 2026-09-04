@@ -669,18 +669,16 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "material_image",
     "seconds": 6.62,
     "heading": "Concrete heals itself in two different ways",
     "narration": "Bacterial concrete depends on biological metabolism, which slows in cold and stops when water is unavailable.",
     "args": {
-      "lines": [
-        "Bacterial concrete depends on",
-        "biological metabolism, which slows",
-        "in cold"
-      ]
+      "subject": "concrete",
+      "label": "CONCRETE",
+      "pick": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+material"
   },
   {
     "segment": "thermal_ascent",
@@ -900,14 +898,16 @@
     "from": "directive"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "material_image",
     "seconds": 9.0,
     "heading": "Evidence limit",
     "narration": "Long-term field data is thin: most published results are laboratory measurements over weeks or months, and the durability claims that matter for concrete infrastructure are on the scale of decades.",
     "args": {
-      "variant": 0
+      "subject": "concrete",
+      "label": "CONCRETE",
+      "pick": 1
     },
-    "from": "directive+destagnate"
+    "from": "directive+destagnate+material"
   },
   {
     "segment": "text_beat",

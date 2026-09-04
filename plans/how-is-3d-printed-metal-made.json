@@ -204,18 +204,16 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "material_image",
     "seconds": 9.0,
     "heading": "A laser or electron beam melts the powder in a controlled atmosphere",
     "narration": "A laser beam, typically 50 to 100 watts for small machines and up to 400 watts for production systems, scans across the powder bed following a programmed path.",
     "args": {
-      "lines": [
-        "A laser beam, typically",
-        "50 to 100 watts",
-        "for small"
-      ]
+      "subject": "3d-printed-metal",
+      "label": "POWDER BED",
+      "pick": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+material"
   },
   {
     "segment": "evidence_chain",
@@ -377,18 +375,16 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "material_image",
     "seconds": 8.69,
     "heading": "The scan pattern and the thermal history determine the microstructure",
     "narration": "The local thermal gradient and cooling rate determine the microstructure. In titanium alloys, rapid cooling produces a fine acicular alpha structure.",
     "args": {
-      "lines": [
-        "The local thermal gradient",
-        "and cooling rate determine",
-        "the microstructure."
-      ]
+      "subject": "micrograph-steel",
+      "label": "MICROSTRUCTURE",
+      "pick": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+material"
   },
   {
     "segment": "process_steps",
@@ -843,18 +839,16 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "material_image",
     "seconds": 9.0,
     "heading": "Wire arc additive manufacturing builds larger parts faster with less precision",
     "narration": "It is much faster than powder bed methods \u2014 deposition rates can exceed 10 kilograms per hour compared to 50 to 100 grams per hour for laser powder bed fusion.",
     "args": {
-      "lines": [
-        "deposition rates can exceed",
-        "10 kilograms per hour",
-        "compared"
-      ]
+      "subject": "3d-printed-metal",
+      "label": "POWDER BED",
+      "pick": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+material"
   },
   {
     "segment": "contrast_pair",
@@ -1031,14 +1025,16 @@
     "from": "directive"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "material_image",
     "seconds": 8.69,
     "heading": "Evidence limit",
     "narration": "The process is controllable, but it is not yet as repeatable as casting or forging, and every production program involves iteration.",
     "args": {
-      "variant": 0
+      "subject": "molten-steel",
+      "label": "CASTING",
+      "pick": 0
     },
-    "from": "directive+destagnate"
+    "from": "directive+destagnate+material"
   },
   {
     "segment": "text_beat",

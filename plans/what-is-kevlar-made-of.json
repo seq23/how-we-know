@@ -1064,18 +1064,16 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "material_image",
     "seconds": 9.0,
     "heading": "The fiber is woven or laminated into structures",
     "narration": "Carbon fiber has a different structure. The graphite planes are stacked and bonded by van der Waals forces, but the in-plane covalent bonds give it high compressive modulus.",
     "args": {
-      "lines": [
-        "Carbon fiber has a",
-        "different structure. The graphite",
-        "planes"
-      ]
+      "subject": "carbon-fiber",
+      "label": "CARBON FIBER",
+      "pick": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+material"
   },
   {
     "segment": "contrast_pair",

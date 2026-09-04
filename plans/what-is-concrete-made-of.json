@@ -46,18 +46,16 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "material_image",
     "seconds": 5.38,
     "heading": "Cold open",
     "narration": "Ask what concrete is made of and the honest answer has two halves.",
     "args": {
-      "lines": [
-        "Ask what concrete is",
-        "made of and the",
-        "honest answer"
-      ]
+      "subject": "concrete",
+      "label": "CONCRETE",
+      "pick": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+material"
   },
   {
     "segment": "evidence_chain",
@@ -315,18 +313,16 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "material_image",
     "seconds": 9.0,
     "heading": "Water does not dry out of concrete, it is consumed",
     "narration": "It is a reagent that stays. This is why curing means keeping concrete moist rather than keeping it dry, and why a slab covered and kept damp for a week is stronger than an identical slab left uncovered.",
     "args": {
-      "lines": [
-        "It is a reagent",
-        "that stays. This is",
-        "why curing"
-      ]
+      "subject": "concrete",
+      "label": "CONCRETE",
+      "pick": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+material"
   },
   {
     "segment": "definition_card",

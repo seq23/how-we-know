@@ -73,18 +73,16 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "material_image",
     "seconds": 7.86,
     "heading": "Austenite is the starting structure, not the ending one",
     "narration": "Add carbon and heat the mixture above roughly 727 degrees Celsius, and the iron switches to face-centered cubic austenite.",
     "args": {
-      "lines": [
-        "Add carbon and heat",
-        "the mixture above roughly",
-        "727 degrees"
-      ]
+      "subject": "micrograph-steel",
+      "label": "AUSTENITE",
+      "pick": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+material"
   },
   {
     "segment": "process_column",
@@ -222,18 +220,16 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "material_image",
     "seconds": 8.28,
     "heading": "Martensite forms when carbon is trapped by speed",
     "narration": "The iron lattice tries to shift back to body-centered cubic, but the trapped carbon distorts it into body-centered tetragonal martensite.",
     "args": {
-      "lines": [
-        "The iron lattice tries",
-        "to shift back to",
-        "body-centered cubic"
-      ]
+      "subject": "micrograph-steel",
+      "label": "MARTENSITE",
+      "pick": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+material"
   },
   {
     "segment": "evidence_chain",

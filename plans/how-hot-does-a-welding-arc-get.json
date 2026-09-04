@@ -30,14 +30,16 @@
     "from": "heuristic"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "material_image",
     "seconds": 6.21,
     "heading": "Cold open",
     "narration": "The question is not settled by one number because the arc is not one thing.",
     "args": {
-      "variant": 0
+      "subject": "welding-arc",
+      "label": "THE ARC",
+      "pick": 0
     },
-    "from": "heuristic"
+    "from": "heuristic+material"
   },
   {
     "segment": "text_beat",
@@ -125,18 +127,16 @@
     "from": "heuristic"
   },
   {
-    "segment": "text_beat",
+    "segment": "material_image",
     "seconds": 7.86,
     "heading": "The arc is a plasma column, and plasma temperature depends on ionization energy",
     "narration": "This method samples the plasma optically without disturbing it, and it produces a temperature profile across the arc's cross-section.",
     "args": {
-      "lines": [
-        "This method samples the",
-        "plasma optically without disturbing",
-        "it"
-      ]
+      "subject": "welding-arc",
+      "label": "THE ARC",
+      "pick": 1
     },
-    "from": "heuristic"
+    "from": "heuristic+material"
   },
   {
     "segment": "size_ladder",
@@ -431,14 +431,16 @@
     "from": "heuristic"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "material_image",
     "seconds": 9.0,
     "heading": "Measurement methods have spatial and temporal resolution limits",
     "narration": "High-speed pyrometry measures surface temperature by thermal radiation intensity, but it requires knowing the emissivity of the molten metal, which changes with surface oxidation and temperature itself.",
     "args": {
-      "variant": 2
+      "subject": "molten-steel",
+      "label": "MOLTEN METAL",
+      "pick": 0
     },
-    "from": "heuristic"
+    "from": "heuristic+material"
   },
   {
     "segment": "text_beat",

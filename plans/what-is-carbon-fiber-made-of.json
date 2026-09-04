@@ -11,18 +11,16 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "material_image",
     "seconds": 5.38,
     "heading": "Cold open",
     "narration": "That figure comes from ASTM International's standard test methods for carbon fiber composition.",
     "args": {
-      "lines": [
-        "That figure comes from",
-        "ASTM International's standard test",
-        "methods"
-      ]
+      "subject": "carbon-fiber",
+      "label": "CARBON FIBER",
+      "pick": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+material"
   },
   {
     "segment": "thermal_ascent",
@@ -116,18 +114,16 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "material_image",
     "seconds": 9.0,
     "heading": "The precursor is a polymer most people have never heard of",
     "narration": "PAN was first synthesized in the 1930s, but its use as a carbon fiber precursor was not developed until the 1960s when researchers at multiple institutions discovered that controlled oxidation could stabilize the polymer before carbonization.",
     "args": {
-      "lines": [
-        "PAN was first synthesized",
-        "in the 1930s, but",
-        "its use"
-      ]
+      "subject": "carbon-fiber",
+      "label": "CARBON FIBER",
+      "pick": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+material"
   },
   {
     "segment": "process_column",

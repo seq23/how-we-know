@@ -759,18 +759,16 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "material_image",
     "seconds": 7.45,
     "heading": "Thermal budgets constrain which processes can follow which",
     "narration": "Lower-temperature metallization and passivation come last. The thermal budget is the cumulative time at temperature the wafer experiences.",
     "args": {
-      "lines": [
-        "Lower-temperature metallization and passivation",
-        "come last. The thermal",
-        "budget"
-      ]
+      "subject": "silicon-wafer",
+      "label": "WAFER",
+      "pick": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+material"
   },
   {
     "segment": "thermal_ascent",
@@ -800,18 +798,16 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "material_image",
     "seconds": 5.79,
     "heading": "Gettering removes mobile contaminants before they reach active regions",
     "narration": "Even parts-per-trillion concentrations degrade transistor performance by creating mid-gap states that increase leakage current.",
     "args": {
-      "lines": [
-        "Even parts-per-trillion concentrations degrade",
-        "transistor performance by creating",
-        "mid-gap states"
-      ]
+      "subject": "microchip-die",
+      "label": "TRANSISTOR",
+      "pick": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+material"
   },
   {
     "segment": "evidence_chain",
@@ -860,18 +856,16 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "material_image",
     "seconds": 8.28,
     "heading": "Gettering removes mobile contaminants before they reach active regions",
     "narration": "The technique does not remove impurities from the wafer. It moves them to a location where they do not matter.",
     "args": {
-      "lines": [
-        "The technique does not",
-        "remove impurities from the",
-        "wafer. It"
-      ]
+      "subject": "silicon-wafer",
+      "label": "WAFER",
+      "pick": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+material"
   },
   {
     "segment": "evidence_chain",
