@@ -1149,24 +1149,73 @@ def v20_cadence_schedule() -> Result:
     led = L.load()
     if tail:
         last = tail[-1]["when"]
-        fresh = backfill.schedule_for(led, max(4, per_week * 2), per_week)
-        for when in fresh:
+        # ONE SLOT PER DOMAIN'S OWN DAYS. This block used to allocate from the
+        # whole ladder and require every new slot to fall after the LAST dated
+        # episode. That was right while one domain held every publish day and
+        # became wrong the moment a second domain was woven in on days the
+        # first never used: a materials Monday in September legitimately falls
+        # before the last deep-sea Sunday in October, and the old rule read
+        # that as the run being reopened.
+        #
+        # The protection it was really providing is kept and made STRONGER: no
+        # allocated slot may collide with a dated one, no allocated slot may
+        # land on another domain's day, the domains' day sets must be disjoint,
+        # and every slot must respect the minimum lead time. Those hold whether
+        # one domain publishes or four, and they are what actually stops an
+        # episode being re-dated or double-booked.
+        import domains as _dom                             # noqa: PLC0415
+        cfg_now = config()
+        try:
+            split = backfill.domain_weekdays(cfg_now, per_week)
+        except Exception as e:                             # noqa: BLE001
+            split = {}
             r.examined += 1
-            stamp = when.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-            if stamp in taken:
-                r.fail(f"the slot allocator handed out {stamp}, which episode "
-                       f"{[t['slug'] for t in tail if t['scheduled_publish_at'] == stamp]} "
-                       f"already holds — raising cadence must never re-date or "
-                       f"double-book a scheduled episode")
-            if when <= last:
-                r.fail(f"the allocator handed out {stamp}, at or before the "
-                       f"last scheduled episode ({last:%Y-%m-%dT%H:%M:%SZ}). "
-                       f"New slots must CONTINUE the run, not reopen it")
-            if when.astimezone(backfill.PUBLISH_TZ).weekday() in {2, 3}:
-                r.fail(f"{stamp} falls on a Wednesday or Thursday")
-        r.note(f"{len(tail)} episode(s) dated through "
-               f"{last:%Y-%m-%d}; the next {len(fresh)} slot(s) all fall after "
-               f"it at {per_week}/week")
+            r.fail(f"domain_weekdays failed at {per_week}/week: {e}")
+
+        live = {d: days for d, days in split.items() if days}
+        r.examined += 1
+        if not live:
+            r.fail(f"no domain holds a publish day at {per_week}/week")
+        seen_days: dict[int, str] = {}
+        for d, days in live.items():
+            for wd in days:
+                r.examined += 1
+                if wd in seen_days and seen_days[wd] != d:
+                    r.fail(f"weekday {wd} is assigned to both {seen_days[wd]} "
+                           f"and {d}; two domains sharing a publish day is how "
+                           f"they double-book each other")
+                seen_days[wd] = d
+                if wd in {2, 3}:
+                    r.fail(f"{d} is assigned weekday {wd} (Wednesday/Thursday), "
+                           f"the two measured-weak days")
+
+        allocated: set[str] = set()
+        for d, days in live.items():
+            fresh = backfill.schedule_for(led, max(2, per_week), per_week,
+                                          domain=d)
+            for when in fresh:
+                r.examined += 1
+                stamp = when.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+                if stamp in taken:
+                    r.fail(f"the allocator handed {d} the slot {stamp}, which "
+                           f"{[t['slug'] for t in tail if t['scheduled_publish_at'] == stamp]} "
+                           f"already holds — a cadence change must never "
+                           f"re-date or double-book a scheduled episode")
+                if stamp in allocated:
+                    r.fail(f"{stamp} was handed to two domains in one pass")
+                allocated.add(stamp)
+                wd = when.astimezone(backfill.PUBLISH_TZ).weekday()
+                if wd not in days:
+                    r.fail(f"{d} was given {stamp}, a weekday ({wd}) outside "
+                           f"its own allocation {tuple(days)}")
+                lead = (when - datetime.now(timezone.utc)).total_seconds() / 3600
+                if lead < backfill.MIN_LEAD_HOURS - 1:
+                    r.fail(f"{stamp} is only {lead:.1f}h away, inside the "
+                           f"{backfill.MIN_LEAD_HOURS}h minimum lead — the "
+                           f"owner cannot watch it through before it airs")
+        r.note(f"{len(tail)} episode(s) dated through {last:%Y-%m-%d}; "
+               f"{len(live)} domain(s) allocating on disjoint days "
+               f"{ {d: tuple(v) for d, v in live.items()} } at {per_week}/week")
     else:
         # No dated tail is legitimate only when the channel has none. Do NOT
         # let that pass silently as zero examined.

@@ -1,6 +1,7 @@
 # Why does black-smoker water not boil?
 
-**Status:** HUMANIZED EDITORIAL PASS COMPLETE — OWNER CONFIRMATION AND MASTER WATCH REQUIRED  
+**Status:** HUMANIZED EDITORIAL PASS COMPLETE — OWNER CONFIRMATION AND MASTER WATCH REQUIRED    
+**Domain:** deep-sea-ocean-science  
 **Article:** /questions/why-does-black-smoker-water-not-boil  
 **Word count:** 1184  
 **Estimated narration:** 8m 10s at 145 WPM
@@ -132,15 +133,15 @@ Do not use stock footage of smoke, fire, or lava to illustrate the plume. Those 
 
 {{steps: THE CLEAN MENTAL MODEL | Pressure changes boiling conditions | Chemistry changes the water | Cooling reveals the minerals | Gradients make life possible}}
 {{text}}
-It also gives the viewer a clean mental model: pressure changes boiling conditions, chemistry changes the water, cooling reveals the minerals, and gradients make life possible. It also gives the viewer a clean mental model: pressure changes boiling conditions, chemistry changes the water, cooling reveals the minerals, and gradients make life possible.
+Walk away with a clean mental model: pressure changes boiling conditions, chemistry changes the water, cooling reveals the minerals, and gradients make life possible. Walk away with a clean mental model: pressure changes boiling conditions, chemistry changes the water, cooling reveals the minerals, and gradients make life possible.
 
 ### What to notice in the edit
 
 {{pressure: 3000}}
-Use a pressure-versus-boiling diagram and a cutaway through ocean crust. Do not depict the vent as a hollow underwater volcano.
+Watch for the pressure-versus-boiling diagram and the cutaway through ocean crust — this is not a hollow underwater volcano, whatever it might look like at a glance.
 
 {{steps: WHAT THE CUTAWAY SHOULD SHOW | Seawater circulation | Heating | Chemical reaction | Mineral precipitation | >The black plume is a particle cloud, not smoke from combustion}}
-Show seawater circulation, heating, chemical reaction, and mineral precipitation. The black plume is a particle cloud, not smoke from combustion. This physics-first structure should look completely different from the preceding animal episode.
+Follow seawater circulation, heating, chemical reaction, and mineral precipitation. The black plume you see is a particle cloud, not smoke from combustion. Expect this one to feel like physics, not the animal episodes that came before it.
 
 ### Evidence limit
 

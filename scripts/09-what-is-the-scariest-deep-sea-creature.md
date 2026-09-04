@@ -1,6 +1,7 @@
 # What is the scariest deep sea creature?
 
-**Status:** HUMANIZED EDITORIAL PASS COMPLETE — OWNER CONFIRMATION AND MASTER WATCH REQUIRED  
+**Status:** HUMANIZED EDITORIAL PASS COMPLETE — OWNER CONFIRMATION AND MASTER WATCH REQUIRED    
+**Domain:** deep-sea-ocean-science  
 **Article:** /questions/what-is-the-scariest-deep-sea-creature  
 **Word count:** 1262  
 **Estimated narration:** 8m 42s at 145 WPM
@@ -24,7 +25,7 @@ What is the scariest deep sea creature?
 ### The right way to see it
 
 {{contrast: WHAT THIS EPISODE DOES | is=Compares the animals people nominate most often | is=Separates appearance from actual danger | not=Pretends there is an objective winner}}
-Instead of pretending there is an objective winner, we can compare the animals people nominate most often and separate appearance from actual danger. The rest of this video follows that question through the actual environmental constraints described by NOAA, MBARI, Smithsonian, and Woods Hole sources in the companion article.
+Instead of pretending there is an objective winner, we can compare the animals people nominate most often and separate appearance from actual danger.
 
 ### Producer POV
 
@@ -86,17 +87,17 @@ Vampire squid win on name but lose on behavior; they are detritus feeders, not b
 The anglerfish remains my personal answer because the face combines an exposed mouth, needlelike teeth, a lure, and an extreme reproductive story. That is a statement about my reaction, not a scientific score. Someone else may choose a giant squid because scale and rarity leave more room for imagination. Another viewer may choose a giant isopod because it resembles a familiar animal enlarged beyond comfort. The point is to make the subjectivity visible instead of disguising it as fact.
 
 {{sources: TWO SCOREBOARDS IN PARALLEL | Visual fear=playful and first-person | Realistic human danger=must remain evidence-based}}
-A danger ranking would produce a very different result. Most iconic deep-sea animals live far from unprotected human contact. The environmental hazards of depth—pressure, cold, darkness, distance, and equipment failure—matter more to a diver or submersible crew. Even the dramatic teeth usually solve a feeding problem in a food-poor habitat. They help retain prey; they are not evidence of an animal searching for people. The video should therefore run two scoreboards in parallel: visual fear and realistic human danger. The fear score can be playful and first-person. The danger score must remain evidence-based. When those scores diverge, the audience gets the payoff: the creature that looks worst is often not the thing a human expedition should fear most.
+A danger ranking would produce a very different result. Most iconic deep-sea animals live far from unprotected human contact. The environmental hazards of depth—pressure, cold, darkness, distance, and equipment failure—matter more to a diver or submersible crew. Even the dramatic teeth usually solve a feeding problem in a food-poor habitat. They help retain prey; they are not evidence of an animal searching for people. So two scoreboards run in parallel here: visual fear and realistic human danger. The fear score can be playful and first-person. The danger score stays evidence-based. Watch for where they diverge — the creature that looks worst is often not the thing a real expedition should fear most.
 
 ### The audience gets to disagree
 
 {{checklist: NAME THE FEATURE THAT TRIGGERS YOUR FEAR | ?Teeth | ?Eyes | ?Size | ?Movement | ?Parasitism | ?Resemblance to something familiar}}
-The closing should invite viewers to name the feature that triggers their fear—teeth, eyes, size, movement, parasitism, or resemblance to something familiar. That response gives the channel useful topic intelligence without pretending there is one objective winner. It also creates follow-up episodes with a real editorial reason: not 'another scary animal,' but a closer look at why a specific adaptation reads as threatening to humans. The pinned comment can separate personal fear from actual danger and link to the broader explainer about why deep-sea creatures look strange. The channel gains engagement while reinforcing the scientific boundary. That is the kind of monetization-minded choice worth keeping: a prompt that produces comments and sequels without manufacturing a false fact.
+So name the feature that triggers your fear—teeth, eyes, size, movement, parasitism, or resemblance to something familiar. There is no single objective winner here; what you pick says something real about which adaptations read as threatening to a human, without pretending the ranking is a fact about the animal. If you want to separate the fear you feel from the actual danger, that is what the pinned comment on this video is for.
 
 ### The honest winner
 
 {{anatomy: A PERSONAL ANSWER | lure@0.36,0.18 | teeth@0.19,0.64}}
-My answer can remain the anglerfish as long as the script clearly labels it personal. The scientific section then explains the features that produced the reaction. That combination is more human than pretending neutrality and more accurate than declaring a universal champion. It also gives the viewer permission to disagree, which is exactly what the comments should be used for: preference and curiosity, not correction of a fake objective ranking.
+My answer can remain the anglerfish as long as the script clearly labels it personal. The scientific section then explains the features that produced the reaction. That combination is more honest than pretending neutrality and more accurate than declaring a universal champion — and it means you're free to disagree. Use the comments for that: preference and curiosity, not correcting a ranking that was never meant to be objective.
 
 ### The final invitation
 
@@ -104,17 +105,17 @@ My answer can remain the anglerfish as long as the script clearly labels it pers
 Ask viewers for the creature that unsettles them and the exact feature responsible. That produces more useful responses than asking for the 'scariest' name alone.
 
 {{sources: WHERE EACH COMMENT LEADS | A comment about teeth=feeding mechanics | A comment about size=measurement | A comment about transparent tissue=camouflage}}
-A comment about teeth leads to feeding mechanics. A comment about size leads to measurement. A comment about transparent tissue leads to camouflage. The audience helps choose sequels while the channel keeps the conversation grounded in biology.
+A comment about teeth leads to feeding mechanics. A comment about size leads to measurement. A comment about transparent tissue leads to camouflage. Whatever you bring up is what steers where this goes next, kept grounded in biology rather than speculation.
 
 ### Final editorial note
 
 {{ambient}}
-The answer can also change with context. A still photograph may make teeth dominant; video may make movement more unsettling; a life-history fact may create more discomfort than appearance. The episode should let those categories compete rather than forcing every animal onto one visual scale. That produces more varied sequels and avoids twenty versions of the same close-up-jaw story. It also keeps the first-person answer honest: my choice reflects what I react to, while the evidence explains what the animal actually does. The answer can also change with context. A still photograph may make teeth dominant; video may make movement more unsettling; a life-history fact may create more discomfort than appearance. The episode should let those categories compete rather than forcing every animal onto one visual scale. That produces more varied sequels and avoids twenty versions of the same close-up-jaw story. It also keeps the first-person answer honest: my choice reflects what I react to, while the evidence explains what the animal actually does.
+The answer can change with context, too — a still photograph makes teeth dominant, video makes movement more unsettling, and a life-history fact can be more disturbing than appearance ever was. Watch those categories compete rather than every animal getting forced onto one visual scale. And the personal pick stays honest either way: it reflects what gets a reaction, while the evidence explains what the animal actually does. The answer can change with context, too — a still photograph makes teeth dominant, video makes movement more unsettling, and a life-history fact can be more disturbing than appearance ever was. Watch those categories compete rather than every animal getting forced onto one visual scale. And the personal pick stays honest either way: it reflects what gets a reaction, while the evidence explains what the animal actually does.
 
 ### What to notice in the edit
 
 {{anatomy: PUT THE CRITERIA ON SCREEN | teeth@0.19,0.64 | eyes@0.24,0.34 | scale@0.58,0.50}}
-Put the criteria on screen and let the ranking change as context returns. A tight anglerfish face can lead, then scale information can reduce the perceived threat. A giant squid silhouette can raise it again. The final shot should be the environment itself—black water and a submersible light cone—because uncertainty is doing as much work as the animals.
+Watch the criteria stay on screen as the ranking shifts with context: a tight anglerfish face leads, then scale information pulls the perceived threat back down, then a giant squid silhouette raises it again. The final shot is the environment itself — black water and a submersible light cone — because uncertainty is doing as much work here as the animals are.
 
 ### Evidence limit
 

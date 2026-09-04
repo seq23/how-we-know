@@ -211,6 +211,15 @@ def disposition(stage: str, code: str, detail, streak: int) -> tuple[str, str]:
 
 # ---------------------------------------------------------------- the stage
 
+
+def _same_stream(a, b) -> bool:
+    """True when two streams are the same open file (e.g. under `2>&1`)."""
+    try:
+        sa, sb = os.fstat(a.fileno()), os.fstat(b.fileno())
+        return (sa.st_dev, sa.st_ino) == (sb.st_dev, sb.st_ino)
+    except Exception:                       # noqa: BLE001 - never break a stop
+        return False
+
 class Stage:
     """Context manager wrapping one loop stage.
 
@@ -316,8 +325,14 @@ class Stage:
             + f"  because: {why}\n"
             + "================================================================"
         )
+        # Both streams, so the stop is visible whether a reader is watching
+        # stdout or only the error pane. But the cron wrapper captures with
+        # `2>&1`, which merges them and printed every banner TWICE - alarm noise
+        # on the one message that has to stay readable. If the two descriptors
+        # are literally the same file, write once.
         print(banner, flush=True)
-        print(banner, file=sys.stderr, flush=True)
+        if not _same_stream(sys.stdout, sys.stderr):
+            print(banner, file=sys.stderr, flush=True)
         summary(
             f"### 🛑 NAMED STOP — `{s.code}`\n"
             f"**stage** `{self.name}` · **week** `{self.week}` · "

@@ -1,6 +1,7 @@
 # How big is a colossal squid?
 
-**Status:** HUMANIZED EDITORIAL PASS COMPLETE — OWNER CONFIRMATION AND MASTER WATCH REQUIRED  
+**Status:** HUMANIZED EDITORIAL PASS COMPLETE — OWNER CONFIRMATION AND MASTER WATCH REQUIRED    
+**Domain:** deep-sea-ocean-science  
 **Article:** /questions/how-big-is-a-colossal-squid  
 **Word count:** 1157  
 **Estimated narration:** 7m 59s at 145 WPM
@@ -92,7 +93,7 @@ Use 'measured specimen' whenever the 495-kilogram value appears.
 ### What to notice in the edit
 
 {{stat: 4.2 | METRES | Measured, not estimated and not projected | Te Papa}}
-Build the episode around a measurement table rather than a sea-monster silhouette. Mark which values are directly measured, which come from a specimen, and which are inferred. Use original diagrams. Te Papa's pages are excellent factual references, but at least one displayed specimen image is marked CC BY-NC-ND, which is not acceptable for a monetized modified video.
+Watch for a measurement table in place of a sea-monster silhouette, with each value marked as directly measured, taken from a specimen, or inferred. The diagrams are original rather than pulled from Te Papa's pages — their facts are excellent references, but at least one of their specimen images is marked CC BY-NC-ND, which a video that runs ads and reworks the image cannot use.
 
 ### Evidence limit
 

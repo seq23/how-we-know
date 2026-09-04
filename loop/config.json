@@ -2,12 +2,12 @@
   "repo": "seq23/how-we-know",
   "channel_handle": "@howweknowdeep",
   "cadence": {
-    "videos_per_week": 2,
+    "videos_per_week": 4,
     "default": 2,
     "escalated": 3,
     "ceiling": 4,
     "deliberate": true,
-    "note": "Operating cadence starts at 2 and RAISES ITSELF in two evidence-gated steps: to 3 once the authoring lane has produced a validated script, and to the owner's 4/week target once the queue can sustain it. 4 is the taxonomy ceiling and is never exceeded. Change the numbers here; no logic reads a hardcoded cadence.",
+    "note": "Operating cadence is 4/week, set by the owner on 2026-09-04 (see owner_set). 4 is the taxonomy ceiling and is never exceeded. The two evidence-gated automatic steps below remain armed and are now no-ops at this rate. Change the number here; no logic reads a hardcoded cadence. At 4/week loop/domains.live_slots() splits the week deep sea 2, materials 2, and backfill.domain_weekdays() puts deep sea on its existing Sun/Tue and materials on the two ADDED days, Mon/Fri - so raising the cadence moves no episode already on the calendar.",
     "escalation": {
       "to": 3,
       "automatic": true,
@@ -22,18 +22,50 @@
       "condition": "authoring evidence exists AND runway() at 4/week is still level 'ok' - strictly more than requires_runway_weeks of queue, counting the publish queue plus every episode uploaded and dated but not yet aired",
       "requires_runway_weeks": 4,
       "why": "Raising cadence SHORTENS runway. Raising into a runway that would immediately warn is how a channel goes dark, and breaking cadence reliability costs more than the extra episodes earn. Gating on the runway AT THE RAISED RATE makes the raise self-arming and self-reversing: it cannot fire while the current queue is thin, and it stands down on its own if the queue thins again.",
+      "domain_gate_note": "2026-09-03. The aggregate runway check above answers 'is there enough inventory in total', which stopped being the honest question once materials-and-manufacturing started supplying its own inventory: a materials queue that decayed to zero would be invisible to the aggregate check as long as deep sea alone still covered the total. loop/cadence.py's scale step therefore also calls domains.domains_support(), which checks EVERY domain that would carry a slot at the raised rate against its OWN queue depth, not the total. Both domains at the 4/week ceiling means 2 each; materials has zero topics scored yet, so the scale to 4 is correctly held even though the aggregate deep-sea-only queue alone would clear the runway floor.",
       "why_not_a_date": "A flag flipped by hand on 20 October is a promise someone has to keep. The 14 episodes already uploaded and dated through 2026-10-20 are protected by a different mechanism entirely - backfill.schedule_for anchors every new slot AFTER the last date already on the calendar, so a cadence change cannot re-date, re-order or re-upload anything already scheduled. See V20."
     },
     "shorts_per_week": 9,
     "shorts_note": "8-10/week, set at 9. Shorts keep their OWN scheduler and their own evening ladder (loop/shorts_lane.py): they peak 18:00-21:00 local while long-form peaks 08:00-11:00, so a Short posted on the episode slot lands in the worst part of its own day. Shorts consume no episode inventory and do not count toward the 4,000 watch hours - they are the only cheap lever on the SUBSCRIBER half of the threshold, which research put at roughly 12x more binding than hours. 51 are already cut; at 9/week that is ~5.7 weeks.",
-    "shorts_floor": 4
+    "shorts_floor": 4,
+    "owner_set": "2026-09-04 - Sequoia, explicitly: 'i want you to raise the cadence'. Set DIRECTLY here rather than through cadence.scale, which is the AUTOMATIC self-arming path and still requires authoring_evidence() - a script the authoring lane itself produced and validated - which does not exist yet. Manufacturing that evidence to open an automatic gate would have been a lie told to a guard. An owner setting the number by hand is a different act from the loop deciding it has earned it, and this field records which one happened. The scale gate is left armed and untouched; if it ever fires it can only agree, because 4 is also the ceiling."
   },
   "retention": {
+    "breaker_metric": "average_view_duration",
+    "floor_avd_seconds": 146,
+    "floor_avd_note": "THE TRIP CAUSE. Average view DURATION, in seconds, not percentage. Derived, not chosen: 30% of the measured mean runtime of the catalogue the 30% floor was set against (486.9s across 17 finished episodes) is 146.1s, and the floor is the integer below it so it can never fire above break-even. Why duration and not percentage: the owner is moving from ~8.1 to >=10 minute episodes, which mechanically LOWERS average view percentage while RAISING watch hours - 30% of 10.5 min is 525 hours per 10k views against 405 at 8.1 min. A 30% percentage floor would have tripped the 'the format is wrong' breaker on a format that had just got better. Watch HOURS are what count toward YPP; average view duration is what multiplies into them.",
     "floor_pct": 30.0,
+    "floor_pct_note": "DISPLAY AND DERIVATION ONLY - never an independent trip cause. Percentage across a catalogue that is about to hold both ~8 minute and >=10 minute episodes is not a comparable number. Kept because it is the figure YouTube Studio shows, and because floor_avd_seconds is derived from it against baseline_runtime_s.",
+    "baseline_runtime_s": 486.9,
+    "baseline_runtime_note": "Mean measured duration of renders/*-final.mp4 across the 17 finished episodes, from loop/state/runtime_model.json. The number floor_avd_seconds is derived against. It is history, not a target.",
     "breach_streak_to_trip": 3,
-    "note": "Average view percentage AND average view duration against the ~10.5 minute runtime. Viewers leaving inside the first 2 minutes invalidates the format, not just the topic - it is reported as a prominent finding, never a number buried in JSON. Raised from 7.5 on 2026-09-01 by owner decision: every batch from here is 10-11 minutes, because YPP counts 4,000 watch HOURS from long-form only and runtime multiplies that directly.",
+    "early_exit_minutes": 2.0,
     "runtime_minutes": 10.5,
-    "early_exit_minutes": 2.0
+    "runtime_floor_minutes": 10.0,
+    "runtime_floor_note": "Owner decision 2026-09-03: every video from here exceeds 10 minutes. Shorts are exempt. The 20 episodes rendered on 2026-08-30 predate the rule, run 7.5-8.9 minutes, and are deliberately NOT re-rendered - they are already made and remaking them buys nothing. They are listed in runtime_floor_grandfathered so the guard names them rather than being loosened for them.",
+    "runtime_floor_grandfathered": [
+      "01-why-deep-sea-creatures-look-so-weird",
+      "02-how-deep-sea-creatures-survive-pressure",
+      "03-why-deep-sea-creatures-are-surfacing",
+      "04-why-deep-sea-creatures-are-so-scary",
+      "05-why-many-deep-sea-creatures-are-red",
+      "06-why-some-deep-sea-creatures-are-transparent",
+      "07-why-deep-sea-creatures-get-creepier-deeper",
+      "08-what-creatures-live-in-the-deep-sea",
+      "09-what-is-the-scariest-deep-sea-creature",
+      "10-what-is-the-deepest-part-of-the-ocean",
+      "11-what-is-a-dumbo-octopus",
+      "12-what-is-a-frilled-shark",
+      "13-how-does-bioluminescence-work-in-the-deep-sea",
+      "14-how-big-is-a-colossal-squid",
+      "15-how-do-people-reach-challenger-deep",
+      "16-what-happens-when-a-whale-dies-in-the-deep-ocean",
+      "17-what-is-a-yeti-crab",
+      "18-why-does-black-smoker-water-not-boil",
+      "19-what-is-the-deepest-fish-ever-recorded",
+      "20-what-is-the-midnight-zone"
+    ],
+    "note": "Retention is measured against each video's OWN measured duration (loop/durations.py), never against runtime_minutes. runtime_minutes is what scripts are AUTHORED to; it is not, and must never be used as, what retention is divided by."
   },
   "pov": {
     "rotation_window": 12
@@ -73,6 +105,70 @@
     "warn_weeks": 4,
     "critical_weeks": 2,
     "never_go_dark": true,
-    "why": "At 2/week, 20 scripts is 10 weeks. Warning at 4 weeks leaves ~8 unpublished videos in hand: enough time to notice the stop, run the authoring lane, and fall back to a human if generation fails. Warning at 2 weeks would be a scramble. The runway guard NEVER trips the circuit breaker - halting publishing to protect the backlog is the definition of going dark."
+    "rebuild_max_extra": 3,
+    "why": "At 2/week, 20 scripts is 10 weeks. Warning at 4 weeks leaves ~8 unpublished videos in hand: enough time to notice the stop, run the authoring lane, and fall back to a human if generation fails. Warning at 2 weeks would be a scramble. The runway guard NEVER trips the circuit breaker - halting publishing to protect the backlog is the definition of going dark.",
+    "rebuild_note": "Owner decision 2026-09-03: a runway warning that only ever logged a number meant nothing ran the authoring lane because of it. loop/draft.py:rebuild_runway_if_short() now actually authors up to rebuild_max_extra scripts per short domain when cadence.runway() reports warn/critical, promoting each into scripts/ only if it clears full validation. It never blocks the week already queued and never trips the breaker. If it cannot add even one script, RUNWAY_AUTHORING_FALLBACK names the exact short domain(s) and the calendar date each goes dark. Domain-aware because a single aggregate number cannot say WHICH domain is short \u2014 see domains.domain_runway().",
+    "domain_awareness_note": "cadence.runway() reports by_domain (each domain's own queue depth / its own live slot count) and short_domains (domains at warn or critical). The overall level escalates to the worse of the aggregate figure and any single active domain's level, so a domain going critical can never hide behind a healthy aggregate the way materials-and-manufacturing (0 queued topics today) would behind deep sea's 16."
+  },
+  "ypp": {
+    "note": "All the monetisation gates, in one place, because every stage that mentions one used to carry its own copy and only ever carried the furthest away.",
+    "long_form_bar_doubles_on": "2027-02-01",
+    "deadline_note": "The standard tier's long-form watch-hour requirement doubles from 4,000 to 8,000 on this date. Channels admitted before it stay on the old bar, so every hour banked before the date is worth two after it.",
+    "tiers": [
+      {
+        "id": "expanded",
+        "name": "Expanded YPP",
+        "subscribers": 500,
+        "long_form_hours": 3000,
+        "unlocks": "fan funding - memberships, Super Thanks, Shopping. No ad revenue.",
+        "note": "The NEARER gate: half the subscribers and three quarters of the hours of the standard tier, and it is not affected by the 2027-02-01 change."
+      },
+      {
+        "id": "standard",
+        "name": "Standard YPP",
+        "subscribers": 1000,
+        "long_form_hours": 4000,
+        "long_form_hours_after_deadline": 8000,
+        "unlocks": "ad revenue, plus everything Expanded unlocks.",
+        "note": "The only tier whose hours bar moves on long_form_bar_doubles_on."
+      }
+    ],
+    "shorts_route": {
+      "views": 3000000,
+      "window_days": 90,
+      "counts_toward_long_form_hours": false,
+      "note": "A SEPARATE PATH to the same tiers, never a contribution to the long-form total. Shorts views do not accumulate into the 3,000 or 4,000 hour figures; modelling them as one number would report the channel as closer than it is."
+    }
+  },
+  "domains": {
+    "taxonomy_file": "research/proposed-taxonomy.json",
+    "taxonomy_note": "The ONLY source of domain names. Nothing in this repo may name a domain absent from ranked_domains; loop/domains.py refuses one.",
+    "allocation": {
+      "deep-sea-ocean-science": 2,
+      "materials-and-manufacturing": 2
+    },
+    "allocation_note": "Weekly long-form slots per domain AT THE CADENCE CEILING (cadence.ceiling). The live weekly split is derived from cadence.videos_per_week by loop/domains.py live_slots(), largest share first, so there is ONE list and the split cannot drift from the cadence. At today's 2/week that is deep sea 2, materials 0; at the owner's 4/week target it is 2 and 2. The monthly review may move at most ONE ceiling slot a month, from measured evidence, and never to zero - a domain is retired on queue decay, not on one bad month.",
+    "min_episodes_to_judge": 8,
+    "min_episodes_note": "Published episodes WITH analytics before a domain's allocation may be changed at all. Below this the monthly review takes the named stop INSUFFICIENT_DOMAIN_EVIDENCE and HOLDS the allocation exactly as it is. It does not fall back to an even split, which would be a decision disguised as a default. Eight, because the review moves one slot of four - a 25% swing - and below eight episodes a single unlucky topic moves a domain's mean by more than the difference being acted on.",
+    "reallocate_avd_spread_s": 30,
+    "reallocate_spread_note": "Seconds of average view duration by which the leading domain must beat the trailing one before a slot moves. Under this, the difference is not larger than the month-to-month noise it would be answering.",
+    "queue_exhausted_below": 4,
+    "queue_exhausted_note": "A domain is exhausted when its surviving, gated topic queue in research/publish_order.json falls below this - two weeks of inventory at 2/week. Retirement is decided by queue decay, never by an episode count: a domain with demand left is not finished, and a domain whose scored queue has decayed is, however many episodes it has had.",
+    "publish_days": {
+      "deep-sea-ocean-science": [
+        "Sunday",
+        "Tuesday"
+      ],
+      "materials-and-manufacturing": [
+        "Monday",
+        "Friday"
+      ]
+    },
+    "publish_days_note": "Owner decision 2026-09-03. Materials runs ON TOP of deep sea, not instead of it, on the two days deep sea does not use. Long-form stays 10:00 Central; Shorts keep the evening window.",
+    "per_domain_requirements": {
+      "source_allowlist": "Each domain names its own public bodies. Deep sea's list is ORG_NAMES in loop/validate.py; a new domain adds its own and must not inherit NOAA/MBARI, which publish nothing about its subject.",
+      "visual_identity": "Each domain has its own palette and directive mix in visuals/. A materials episode drawn in the deep-sea palette reads as the wrong channel.",
+      "pov_top_up": "research/proposed-taxonomy.json new_niche_requirement: entering a domain outside deep sea requires a ~20 minute POV top-up interview before first publish, because tier:specific POV lines do not transfer."
+    }
   }
 }

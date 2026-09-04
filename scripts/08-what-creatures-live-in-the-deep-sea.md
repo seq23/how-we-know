@@ -1,6 +1,7 @@
 # What creatures live in the deep sea?
 
-**Status:** HUMANIZED EDITORIAL PASS COMPLETE — OWNER CONFIRMATION AND MASTER WATCH REQUIRED  
+**Status:** HUMANIZED EDITORIAL PASS COMPLETE — OWNER CONFIRMATION AND MASTER WATCH REQUIRED    
+**Domain:** deep-sea-ocean-science  
 **Article:** /questions/what-creatures-live-in-the-deep-sea  
 **Word count:** 1174  
 **Estimated narration:** 8m 06s at 145 WPM
@@ -24,7 +25,7 @@ What creatures live in the deep sea?
 ### The right way to see it
 
 {{checklist: HABITATS THAT SUPPORT DIFFERENT COMMUNITIES | +Open midwater | +Continental slopes | +Abyssal plains | +Seamounts | +Vents and seeps | +Whale falls and trenches}}
-The answer changes with depth and terrain. Open midwater, continental slopes, abyssal plains, seamounts, vents, seeps, whale falls, and trenches support different communities. The rest of this video follows that question through the actual environmental constraints described by NOAA, MBARI, Smithsonian, and Woods Hole sources in the companion article.
+The answer changes with depth and terrain. Open midwater, continental slopes, abyssal plains, seamounts, vents, seeps, whale falls, and trenches support different communities.
 
 ### Producer POV
 
@@ -81,7 +82,7 @@ A useful inventory of deep-sea life starts by separating the water column from t
 Depth zones are useful labels, not sealed rooms. Animals migrate across boundaries. Food falls through them. Currents transport particles and larvae. A whale carcass can connect surface productivity to the abyss. Hydrothermal vents can support food webs based on chemical energy, while most of the deep ocean still depends ultimately on material produced above. Trench communities occupy steep, isolated basins rather than one continuous hadal plain. This is why a single creature list always feels incomplete. The correct mental model is a network of habitats connected vertically and horizontally.
 
 {{chain: FOLLOW ONE UNIT OF ENERGY | Surface production | A particle sinks | A migrator carries carbon downward | A predator takes the migrator | Remains reach the bottom | >Scavengers and microbes use what is left}}
-For retention, the episode should follow one unit of energy. Begin with surface production, let a particle sink, let a migrator carry carbon downward, let a predator take the migrator, let remains reach the bottom, and then show scavengers and microbes using what is left. The audience meets creatures along a pathway instead of hearing a catalog. That pathway also creates natural links to the whale-fall, midnight-zone, vent, and deep-fish episodes.
+Follow one unit of energy: surface production, a particle sinking, a migrator carrying carbon downward, a predator taking the migrator, remains reaching the bottom, then scavengers and microbes using what is left. You meet each creature along that pathway instead of off a list, and the same pathway is what connects to the whale-fall, midnight-zone, vent, and deep-fish episodes.
 
 ### The missing majority
 
@@ -94,7 +95,7 @@ One short sequence can compare methods: a net catches sturdy bodies, an ROV reco
 ### How this becomes a series
 
 {{steps: WHERE EACH HABITAT LEADS | Twilight migration=lanternfish and bioluminescence | The midnight zone=anglerfish and transparent animals | The seafloor=whale falls | Vents=black smokers and yeti crabs | Trenches=snailfish, dumbo octopuses and Challenger Deep}}
-Each habitat in this episode should open a route into the catalog. Twilight migration leads to lanternfish and bioluminescence. The midnight zone leads to anglerfish and transparent animals. The seafloor leads to whale falls. Vents lead to black smokers and yeti crabs. Trenches lead to snailfish, dumbo octopuses, and Challenger Deep. The broad episode earns watch time by answering the big question, then distributes attention to the specific videos instead of ending as an isolated list.
+Each habitat here opens a route you can follow further. Twilight migration leads to lanternfish and bioluminescence. The midnight zone leads to anglerfish and transparent animals. The seafloor leads to whale falls. Vents lead to black smokers and yeti crabs. Trenches lead to snailfish, dumbo octopuses, and Challenger Deep. Answer the big question first, and this stops being an isolated list and becomes a map of where to go next.
 
 ### The editorial rule for future additions
 
@@ -104,7 +105,7 @@ A new creature enters this catalog only when it adds a habitat, ecological role,
 ### Final editorial note
 
 {{text}}
-The production queue should use that rule when it chooses the next subjects. The production queue should use that rule when it chooses the next subjects.
+That is the rule future episodes on this channel get held to as well. That is the rule future episodes on this channel get held to as well.
 
 ### Final catalog rule
 
@@ -114,7 +115,7 @@ Three more words are not enough; every new subject must earn its place.
 ### What to notice in the edit
 
 {{zones:}}
-Use a map-like journey with a persistent depth and habitat label. Avoid rapid-fire stock montages that imply every animal shares the same water. A siphonophore in open midwater, a coral on a seamount, and a snailfish in a trench belong to different scenes. The viewer should leave with a mental map, not just twenty disconnected names.
+Watch for the persistent depth and habitat label as this moves like a map, not a rapid-fire montage that implies every animal shares the same water. A siphonophore in open midwater, a coral on a seamount, and a snailfish in a trench get separate scenes on purpose, so you leave with a mental map — not just twenty disconnected names.
 
 ### Evidence limit
 

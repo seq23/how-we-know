@@ -40,10 +40,23 @@ def check() -> list[str]:
     cfg = config()
 
     # ------------------------------------------------ cadence is configuration
+    # The LIVE number is the owner's to set and is not pinned by this test.
+    # It was pinned to 2 while 2 was the starting point the evidence gates
+    # raised from; on 2026-09-04 the owner set 4 directly, so pinning it here
+    # would make the test assert last week's decision. What is still asserted
+    # is that the number is sane, that it never exceeds the ceiling, and - in
+    # the block below - that the AUTOMATIC path is still evidence-gated, which
+    # is the part a test protects the owner from rather than the other way
+    # round. cfg["cadence"]["owner_set"] records who chose it and when.
     examined += 1
     c = cfg["cadence"]
-    if c["videos_per_week"] != 2:
-        fails.append(f"default cadence is {c['videos_per_week']}, owner set 2")
+    live = int(c["videos_per_week"])
+    if not 1 <= live <= int(c["ceiling"]):
+        fails.append(f"live cadence {live} is outside 1..{c['ceiling']}")
+    if live != int(c.get("default", live)) and not c.get("owner_set"):
+        fails.append(f"live cadence {live} differs from the default "
+                     f"{c.get('default')} but cadence.owner_set does not say "
+                     f"who changed it or when")
     if c["escalated"] != 3:
         fails.append(f"escalated cadence is {c['escalated']}, owner set 3")
     if int(c.get("scale", {}).get("to", 0)) != 4:
@@ -78,11 +91,21 @@ def check() -> list[str]:
     try:
         if ev_file.exists():
             ev_file.unlink()
+        # With no authoring evidence, the AUTOMATIC steps must not fire: the
+        # cadence must be exactly the configured number and its explanation
+        # must say so. It must not say "escalated" or "scaled", which are the
+        # two evidence-gated paths. This is the assertion that matters - that
+        # a gate cannot open itself - and it holds at any configured value.
         examined += 1
         n, why = cadence.effective(explain=True)
-        if n != 2:
+        if n != live:
             fails.append(f"with no authoring evidence the cadence is {n}, "
-                         f"expected 2")
+                         f"expected the configured {live} - an automatic step "
+                         f"fired without evidence")
+        if "escalated" in why or "scaled" in why:
+            fails.append(f"with no authoring evidence the cadence explained "
+                         f"itself as {why!r}, which claims an evidence-gated "
+                         f"raise that has no evidence")
 
         # A validated generated script unlocks 3 - automatically. It unlocks 4
         # too, but only if the queue can carry it, so the assertion is "at
@@ -93,13 +116,20 @@ def check() -> list[str]:
             "test-generated-script", "loop/drafts/test.md",
             [{"validator": "V8 source-urls", "status": "PASS"}])
         n2, why2 = cadence.effective(explain=True)
-        if n2 < 3:
+        if n2 < min(3, live):
             fails.append(f"a validated generated script did not escalate the "
-                         f"cadence: got {n2}, expected at least 3 ({why2})")
+                         f"cadence: got {n2}, expected at least "
+                         f"{min(3, live)} ({why2})")
         if n2 > int(cfg["cadence"]["ceiling"]):
             fails.append(f"the cadence escalated past the ceiling: {n2}")
-        if "escalated" not in why2 and "scaled" not in why2:
-            fails.append("the escalation did not explain itself")
+        # The escalation only has something to explain when it actually MOVED
+        # the number. Once the owner has set the cadence to the ceiling the
+        # automatic steps are correct no-ops, and demanding they still announce
+        # a raise would be demanding they claim work they did not do - Rule 0
+        # in reverse.
+        if n2 > live and "escalated" not in why2 and "scaled" not in why2:
+            fails.append(f"the escalation raised {live} -> {n2} without "
+                         f"explaining itself: {why2!r}")
 
         # And with the evidence in hand, the 4/week scale must have made a
         # decision either way and SAID SO - a silent hold at 3 is the failure.
@@ -375,21 +405,51 @@ def check() -> list[str]:
         taken = {t["scheduled_publish_at"] for t in tail}
         last = tail[-1]["when"]
         led_now = _led.load()
+        # PER DOMAIN. This loop used to allocate from the whole ladder and
+        # require every slot to fall after the END of the existing run. That
+        # was the right test while one domain held every publish day; it became
+        # wrong when a second domain was woven onto days the first never uses.
+        # A materials Monday in September legitimately precedes the last
+        # deep-sea Sunday in October - that is the weave working, not the run
+        # reopening. What must still hold, and is asserted below, is that no
+        # slot COLLIDES with a dated one and that no domain is handed another
+        # domain's day.
+        import domains as _dom                               # noqa: PLC0415
         for pw in range(1, int(cfg["cadence"]["ceiling"]) + 1):
-            for when in _bf.schedule_for(led_now, 8, pw):
-                examined += 1
-                stamp = when.strftime("%Y-%m-%dT%H:%M:%SZ")
-                if stamp in taken:
-                    fails.append(f"at {pw}/week the allocator re-issued "
-                                 f"{stamp}, a slot a scheduled episode already "
-                                 f"holds")
-                if when <= last:
-                    fails.append(f"at {pw}/week the allocator issued {stamp}, "
-                                 f"at or before the end of the existing run "
-                                 f"({last:%Y-%m-%dT%H:%M:%SZ})")
-                if when.astimezone(_bf.PUBLISH_TZ).weekday() in (2, 3):
-                    fails.append(f"at {pw}/week a slot landed on a Wednesday "
-                                 f"or Thursday, the two measured-weak days")
+            split = {d: days for d, days in
+                     _bf.domain_weekdays(cfg, pw).items() if days}
+            examined += 1
+            if not split:
+                fails.append(f"at {pw}/week no domain holds a publish day")
+            seen = {}
+            for dom, days in split.items():
+                for wd in days:
+                    examined += 1
+                    if wd in seen and seen[wd] != dom:
+                        fails.append(f"at {pw}/week weekday {wd} is assigned to "
+                                     f"both {seen[wd]} and {dom}")
+                    seen[wd] = dom
+            issued = set()
+            for dom, days in split.items():
+                for when in _bf.schedule_for(led_now, 8, pw, domain=dom):
+                    examined += 1
+                    stamp = when.strftime("%Y-%m-%dT%H:%M:%SZ")
+                    if stamp in taken:
+                        fails.append(f"at {pw}/week the allocator re-issued "
+                                     f"{stamp}, a slot a scheduled episode "
+                                     f"already holds")
+                    if stamp in issued:
+                        fails.append(f"at {pw}/week {stamp} was handed to two "
+                                     f"domains")
+                    issued.add(stamp)
+                    wd = when.astimezone(_bf.PUBLISH_TZ).weekday()
+                    if wd not in days:
+                        fails.append(f"at {pw}/week {dom} was given {stamp}, "
+                                     f"outside its own days {tuple(days)}")
+                    if wd in (2, 3):
+                        fails.append(f"at {pw}/week a slot landed on a "
+                                     f"Wednesday or Thursday, the two "
+                                     f"measured-weak days")
         # And the ledger itself is untouched by asking.
         examined += 1
         if _led.load()["published"] != led_now["published"]:
