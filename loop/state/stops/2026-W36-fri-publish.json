@@ -1,0 +1,21 @@
+{
+  "stage": "fri-publish",
+  "week": "2026-W36",
+  "at": "2026-09-04T13:01:51+00:00",
+  "code": "NOTHING_PUBLISHABLE",
+  "message": "no video has a receipt proving it uploaded correctly, so nothing is being made public",
+  "detail": {
+    "14-how-big-is-a-colossal-squid": "no upload receipt",
+    "15-how-do-people-reach-challenger-deep": "no upload receipt"
+  },
+  "unblock": "Run bin/loop-thursday.sh once OAuth exists. Until then this stop is the correct outcome, not a failure.",
+  "disposition": "needs_human",
+  "disposition_why": "'NOTHING_PUBLISHABLE' is not in loop/stop_policy.json, so it is treated as needing a human. That is the default on purpose.",
+  "consecutive": 1,
+  "exit_code": 3,
+  "work_done_before_stop": [],
+  "notes": [
+    "14-how-big-is-a-colossal-squid: not flipped \u2014 no upload receipt",
+    "15-how-do-people-reach-challenger-deep: not flipped \u2014 no upload receipt"
+  ]
+}
