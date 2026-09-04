@@ -1,0 +1,21 @@
+{
+  "stage": "thu-upload",
+  "week": "2026-W36",
+  "at": "2026-09-04T18:46:03+00:00",
+  "code": "NOTHING_RENDERED",
+  "message": "no queue row has a healthy render receipt. The finished library holds nothing unpublished either.",
+  "detail": {
+    "statuses": {
+      "14-how-big-is-a-colossal-squid": "queued",
+      "15-how-do-people-reach-challenger-deep": "queued"
+    },
+    "library_pending": []
+  },
+  "unblock": "Run bin/loop-tuesday.sh to render this week's episode. For the back catalogue: push it with bin/push-to-r2.sh and let the daily loop-upload-cloud workflow take it \u2014 never run loop/backfill.py alongside that workflow.",
+  "disposition": "needs_human",
+  "disposition_why": "'NOTHING_RENDERED' is not in loop/stop_policy.json, so it is treated as needing a human. That is the default on purpose.",
+  "consecutive": 1,
+  "exit_code": 3,
+  "work_done_before_stop": [],
+  "notes": []
+}
