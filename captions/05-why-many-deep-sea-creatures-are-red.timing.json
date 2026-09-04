@@ -1,0 +1,156 @@
+{
+  "episode": "05-why-many-deep-sea-creatures-are-red",
+  "beats": 59,
+  "plan_source": "plans/05-why-many-deep-sea-creatures-are-red.json",
+  "timing": "audio",
+  "beats_measured": 59,
+  "duration_s": 478.688,
+  "cues": 129,
+  "chapters_real": 18,
+  "chapters_published": 16,
+  "chapter_notes": [
+    "merged 2 chapter(s) under 10s: Title card (2.2s), Producer POV (9.3s)"
+  ],
+  "drift": {
+    "mean_abs_s": 5.8,
+    "worst_abs_s": 10.8,
+    "rows": [
+      {
+        "title": "Cold open",
+        "hand": "00:00",
+        "real": "0:00",
+        "drift_s": 0.0
+      },
+      {
+        "title": "Title card",
+        "hand": "00:14",
+        "real": "0:11",
+        "drift_s": -2.4
+      },
+      {
+        "title": "The right way to see it",
+        "hand": "00:17",
+        "real": "0:13",
+        "drift_s": -3.2
+      },
+      {
+        "title": "Producer POV",
+        "hand": "00:41",
+        "real": "0:36",
+        "drift_s": -4.7
+      },
+      {
+        "title": "Color depends on the light that reaches an object",
+        "hand": "00:53",
+        "real": "0:45",
+        "drift_s": -7.4
+      },
+      {
+        "title": "Darkness can be camouflage",
+        "hand": "01:12",
+        "real": "1:02",
+        "drift_s": -9.6
+      },
+      {
+        "title": "Not every red animal lives at the same depth",
+        "hand": "01:33",
+        "real": "1:25",
+        "drift_s": -7.5
+      },
+      {
+        "title": "ROV lights reveal colors the animal does not normally display",
+        "hand": "01:50",
+        "real": "1:46",
+        "drift_s": -3.4
+      },
+      {
+        "title": "Common myths and questions",
+        "hand": "02:10",
+        "real": "2:06",
+        "drift_s": -3.6
+      },
+      {
+        "title": "Turn off the red light",
+        "hand": "02:48",
+        "real": "2:54",
+        "drift_s": 6.6
+      },
+      {
+        "title": "The color experiment the ocean performs",
+        "hand": "03:20",
+        "real": "3:25",
+        "drift_s": 5.5
+      },
+      {
+        "title": "A camera-light warning",
+        "hand": "04:48",
+        "real": "4:50",
+        "drift_s": 2.9
+      },
+      {
+        "title": "The claim I will not make",
+        "hand": "05:45",
+        "real": "5:39",
+        "drift_s": -5.2
+      },
+      {
+        "title": "A simple edit check",
+        "hand": "06:13",
+        "real": "6:07",
+        "drift_s": -5.2
+      },
+      {
+        "title": "Final editorial note",
+        "hand": "06:45",
+        "real": "6:36",
+        "drift_s": -8.8
+      },
+      {
+        "title": "What to notice in the edit",
+        "hand": "07:02",
+        "real": "6:51",
+        "drift_s": -10.8
+      },
+      {
+        "title": "Evidence limit",
+        "hand": "07:27",
+        "real": "7:16",
+        "drift_s": -10.4
+      },
+      {
+        "title": "Closing",
+        "hand": "07:53",
+        "real": "7:45",
+        "drift_s": -7.2
+      }
+    ]
+  },
+  "ffprobe": {
+    "file": "renders/05-why-many-deep-sea-creatures-are-red-final.mp4",
+    "video_s": 478.688,
+    "last_cue_end_s": 478.688,
+    "delta_s": 0.0,
+    "ok": true
+  },
+  "text_checks": {
+    "beats_json": {
+      "checked": 59,
+      "mismatched": []
+    },
+    "script_text": {
+      "checked": 59,
+      "absent_from_narration": []
+    }
+  },
+  "script_chapters": {
+    "written": false,
+    "changed": false,
+    "removed_lines": [],
+    "chapters_not_in_script": []
+  },
+  "artifacts": [
+    "captions/05-why-many-deep-sea-creatures-are-red.vtt",
+    "captions/05-why-many-deep-sea-creatures-are-red.srt",
+    "captions/05-why-many-deep-sea-creatures-are-red.chapters.txt"
+  ]
+}

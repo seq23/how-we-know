@@ -1,0 +1,160 @@
+{
+  "episode": "09-what-is-the-scariest-deep-sea-creature",
+  "beats": 65,
+  "plan_source": "plans/09-what-is-the-scariest-deep-sea-creature.json",
+  "timing": "estimate",
+  "beats_measured": 0,
+  "duration_s": 473.15,
+  "cues": 135,
+  "chapters_real": 19,
+  "chapters_published": 17,
+  "chapter_notes": [
+    "merged 2 chapter(s) under 10s: Title card (3.5s), Producer POV (9.0s)"
+  ],
+  "drift": {
+    "mean_abs_s": 17.8,
+    "worst_abs_s": 47.9,
+    "rows": [
+      {
+        "title": "Cold open",
+        "hand": "00:00",
+        "real": "0:00",
+        "drift_s": 0.0
+      },
+      {
+        "title": "Title card",
+        "hand": "00:15",
+        "real": "0:13",
+        "drift_s": -1.0
+      },
+      {
+        "title": "The right way to see it",
+        "hand": "00:18",
+        "real": "0:17",
+        "drift_s": -0.5
+      },
+      {
+        "title": "Producer POV",
+        "hand": "00:38",
+        "real": "0:35",
+        "drift_s": -2.5
+      },
+      {
+        "title": "'Scariest' is a human category",
+        "hand": "00:52",
+        "real": "0:44",
+        "drift_s": -7.5
+      },
+      {
+        "title": "Anglerfish: the iconic horror face",
+        "hand": "01:09",
+        "real": "0:58",
+        "drift_s": -10.6
+      },
+      {
+        "title": "Dragonfish and viperfish: teeth that secure prey",
+        "hand": "01:24",
+        "real": "1:14",
+        "drift_s": -9.8
+      },
+      {
+        "title": "Giant squid: fear created by scale and rarity",
+        "hand": "01:41",
+        "real": "1:28",
+        "drift_s": -12.0
+      },
+      {
+        "title": "Giant isopods: familiar anatomy at unfamiliar scale",
+        "hand": "01:58",
+        "real": "1:43",
+        "drift_s": -14.3
+      },
+      {
+        "title": "Common myths and questions",
+        "hand": "02:11",
+        "real": "1:57",
+        "drift_s": -13.6
+      },
+      {
+        "title": "Build the fear ranking honestly",
+        "hand": "02:54",
+        "real": "2:38",
+        "drift_s": -15.3
+      },
+      {
+        "title": "My fear ranking is not a danger ranking",
+        "hand": "03:23",
+        "real": "3:08",
+        "drift_s": -14.7
+      },
+      {
+        "title": "The audience gets to disagree",
+        "hand": "04:46",
+        "real": "4:26",
+        "drift_s": -19.8
+      },
+      {
+        "title": "The honest winner",
+        "hand": "05:34",
+        "real": "5:08",
+        "drift_s": -25.6
+      },
+      {
+        "title": "The final invitation",
+        "hand": "06:03",
+        "real": "5:32",
+        "drift_s": -30.4
+      },
+      {
+        "title": "Final editorial note",
+        "hand": "06:29",
+        "real": "5:58",
+        "drift_s": -30.9
+      },
+      {
+        "title": "What to notice in the edit",
+        "hand": "07:37",
+        "real": "6:58",
+        "drift_s": -38.0
+      },
+      {
+        "title": "Evidence limit",
+        "hand": "08:02",
+        "real": "7:19",
+        "drift_s": -42.9
+      },
+      {
+        "title": "Closing",
+        "hand": "08:25",
+        "real": "7:37",
+        "drift_s": -47.9
+      }
+    ]
+  },
+  "ffprobe": {
+    "file": "renders/09-what-is-the-scariest-deep-sea-creature.mp4",
+    "video_s": 473.197,
+    "last_cue_end_s": 473.15,
+    "delta_s": -0.047,
+    "ok": true
+  },
+  "text_checks": {
+    "beats_json": {
+      "checked": 65,
+      "mismatched": []
+    },
+    "script_text": {
+      "checked": 65,
+      "absent_from_narration": []
+    }
+  },
+  "script_chapters": {
+    "written": false,
+    "reason": "timing source is 'estimate'; stamps are only written from fully measured audio"
+  },
+  "artifacts": [
+    "captions/09-what-is-the-scariest-deep-sea-creature.vtt",
+    "captions/09-what-is-the-scariest-deep-sea-creature.srt",
+    "captions/09-what-is-the-scariest-deep-sea-creature.chapters.txt"
+  ]
+}

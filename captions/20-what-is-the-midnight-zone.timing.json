@@ -1,0 +1,136 @@
+{
+  "episode": "20-what-is-the-midnight-zone",
+  "beats": 58,
+  "plan_source": "plans/20-what-is-the-midnight-zone.json",
+  "timing": "estimate",
+  "beats_measured": 0,
+  "duration_s": 429.07,
+  "cues": 124,
+  "chapters_real": 15,
+  "chapters_published": 11,
+  "chapter_notes": [
+    "merged 4 chapter(s) under 10s: Title card (3.5s), Producer POV (9.0s), Dark is not empty (3.5s), Closing (9.0s)"
+  ],
+  "drift": {
+    "mean_abs_s": 21.6,
+    "worst_abs_s": 39.9,
+    "rows": [
+      {
+        "title": "Cold open",
+        "hand": "00:00",
+        "real": "0:00",
+        "drift_s": 0.0
+      },
+      {
+        "title": "Title card",
+        "hand": "00:12",
+        "real": "0:09",
+        "drift_s": -3.0
+      },
+      {
+        "title": "A zone defined by depth and the end of sunlight",
+        "hand": "00:14",
+        "real": "0:12",
+        "drift_s": -1.5
+      },
+      {
+        "title": "Producer POV",
+        "hand": "01:14",
+        "real": "1:10",
+        "drift_s": -4.0
+      },
+      {
+        "title": "Most energy falls or swims down from above",
+        "hand": "01:26",
+        "real": "1:19",
+        "drift_s": -7.0
+      },
+      {
+        "title": "Bioluminescence becomes the visual language",
+        "hand": "02:26",
+        "real": "2:14",
+        "drift_s": -11.4
+      },
+      {
+        "title": "One name covers a wide physical gradient",
+        "hand": "03:26",
+        "real": "3:08",
+        "drift_s": -17.8
+      },
+      {
+        "title": "One imagined hour in permanent night",
+        "hand": "04:33",
+        "real": "4:06",
+        "drift_s": -26.7
+      },
+      {
+        "title": "How the zone connects the surface and abyss",
+        "hand": "05:02",
+        "real": "4:32",
+        "drift_s": -29.8
+      },
+      {
+        "title": "The observation window",
+        "hand": "05:59",
+        "real": "5:23",
+        "drift_s": -35.5
+      },
+      {
+        "title": "The scale of one dive",
+        "hand": "06:24",
+        "real": "5:48",
+        "drift_s": -35.7
+      },
+      {
+        "title": "Dark is not empty",
+        "hand": "06:48",
+        "real": "6:11",
+        "drift_s": -36.7
+      },
+      {
+        "title": "What to notice in the edit",
+        "hand": "06:51",
+        "real": "6:14",
+        "drift_s": -36.2
+      },
+      {
+        "title": "Evidence limit",
+        "hand": "07:16",
+        "real": "6:37",
+        "drift_s": -38.6
+      },
+      {
+        "title": "Closing",
+        "hand": "07:40",
+        "real": "7:00",
+        "drift_s": -39.9
+      }
+    ]
+  },
+  "ffprobe": {
+    "file": "renders/20-what-is-the-midnight-zone.mp4",
+    "video_s": 429.199,
+    "last_cue_end_s": 429.07,
+    "delta_s": -0.129,
+    "ok": true
+  },
+  "text_checks": {
+    "beats_json": {
+      "checked": 58,
+      "mismatched": []
+    },
+    "script_text": {
+      "checked": 58,
+      "absent_from_narration": []
+    }
+  },
+  "script_chapters": {
+    "written": false,
+    "reason": "timing source is 'estimate'; stamps are only written from fully measured audio"
+  },
+  "artifacts": [
+    "captions/20-what-is-the-midnight-zone.vtt",
+    "captions/20-what-is-the-midnight-zone.srt",
+    "captions/20-what-is-the-midnight-zone.chapters.txt"
+  ]
+}
