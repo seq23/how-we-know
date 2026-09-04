@@ -1,6 +1,6 @@
 {
   "week": "2026-W36",
-  "at": "2026-09-04T19:46:11+00:00",
+  "at": "2026-09-04T20:34:33+00:00",
   "plan": [
     {
       "slug": "10-what-is-the-deepest-part-of-the-ocean",
@@ -136,12 +136,32 @@
       "srt": "/home/runner/work/how-we-know/how-we-know/captions/02-how-deep-sea-creatures-survive-pressure.srt",
       "cues": 121,
       "sha256": "b1740a9e213c48222c36de9125f83c0d0bc98718b0d1ad1b1cc05e1097247439",
+      "already": true
+    },
+    {
+      "slug": "how-are-microchips-made",
+      "video_id": "YuZxDiNUw4w",
+      "srt": "/home/runner/work/how-we-know/how-we-know/captions/how-are-microchips-made.srt",
+      "cues": 166,
+      "sha256": "132995a474f0491cbacfe9ee915cec8f3aa233b9b7185b809b93aeac78367df8",
+      "already": false
+    },
+    {
+      "slug": "how-does-quenching-harden-steel",
+      "video_id": "aKyOg7xbxC0",
+      "srt": "/home/runner/work/how-we-know/how-we-know/captions/how-does-quenching-harden-steel.srt",
+      "cues": 172,
+      "sha256": "b96566e3db4469fee6cf8f19801b55dd3466545707d2125f1b125faef33dd8db",
+      "already": false
+    },
+    {
+      "slug": "how-do-self-healing-materials-work",
+      "video_id": "eJSCm5sk5AA",
+      "srt": "/home/runner/work/how-we-know/how-we-know/captions/how-do-self-healing-materials-work.srt",
+      "cues": 133,
+      "sha256": "c1a3f1c14feda581000f08a45957984e379129657b99ee6b1a8bd63e5b9baaec",
       "already": false
     }
   ],
-  "gaps": [
-    "how-are-microchips-made: captions/how-are-microchips-made.srt does not exist",
-    "how-does-quenching-harden-steel: captions/how-does-quenching-harden-steel.srt does not exist",
-    "how-do-self-healing-materials-work: captions/how-do-self-healing-materials-work.srt does not exist"
-  ]
+  "gaps": []
 }
