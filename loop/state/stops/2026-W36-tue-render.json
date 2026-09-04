@@ -1,0 +1,70 @@
+{
+  "stage": "tue-render",
+  "week": "2026-W36",
+  "at": "2026-09-04T18:42:22+00:00",
+  "code": "BREAKER_TRIPPED",
+  "message": "publishing is halted: strike \u2014 TEST: simulated copyright strike",
+  "detail": {
+    "state": "tripped",
+    "tripped_at": "2026-09-04T18:42:22+00:00",
+    "cause": "strike",
+    "detail": "TEST: simulated copyright strike",
+    "history": [
+      {
+        "event": "trip",
+        "at": "2026-08-30T20:36:12+00:00",
+        "cause": "validator",
+        "detail": "V5 sources-present=FAIL(24)"
+      },
+      {
+        "event": "reset",
+        "at": "2026-08-30T20:37:07+00:00",
+        "cleared_cause": "validator",
+        "note": "V5 sources_block bug fixed"
+      },
+      {
+        "event": "reset",
+        "at": "2026-08-30T20:49:00+00:00",
+        "cleared_cause": null,
+        "note": "clean state after rework"
+      },
+      {
+        "event": "reset",
+        "at": "2026-08-30T21:13:28+00:00",
+        "cleared_cause": null,
+        "note": "clean state"
+      },
+      {
+        "event": "trip",
+        "at": "2026-08-31T16:34:03+00:00",
+        "cause": "manual",
+        "detail": "MANUAL LAUNCH IN PROGRESS. The owner is publishing the first four videos by hand (2026-08-31). The loop must not publish while she does: YouTube cannot replace a video file, so an autonomous publish landing mid-session creates a video that can only be deleted and re-uploaded, losing its URL and any watch time. Reset only when she says the manual session is finished. Deliberate hold, not a fault."
+      },
+      {
+        "event": "reset",
+        "at": "2026-08-31T19:48:53+00:00",
+        "cleared_cause": "manual",
+        "note": "Manual launch is not happening. The 2026-08-31 API test upload landed PUBLIC and read back public - the unaudited-project private lock does not fire on this project, so there is no manual Studio session for an autonomous publish to collide with. Video 1 (qBeLl0z4s54) is live and recorded in the ledger. Handing publishing to the loop."
+      },
+      {
+        "event": "reset",
+        "at": "2026-09-04T18:42:22+00:00",
+        "cleared_cause": null,
+        "note": "test baseline"
+      },
+      {
+        "event": "trip",
+        "at": "2026-09-04T18:42:22+00:00",
+        "cause": "strike",
+        "detail": "TEST: simulated copyright strike"
+      }
+    ]
+  },
+  "unblock": "Fix the underlying cause, then: python loop/breaker.py reset --note \"<what you fixed>\"",
+  "disposition": "needs_human",
+  "disposition_why": "'BREAKER_TRIPPED' is not in loop/stop_policy.json, so it is treated as needing a human. That is the default on purpose.",
+  "consecutive": 11,
+  "exit_code": 3,
+  "work_done_before_stop": [],
+  "notes": []
+}

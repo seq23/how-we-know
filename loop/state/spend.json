@@ -879,10 +879,175 @@
       "completion_tokens": 4772,
       "total_tokens": 11355,
       "cost_usd": 0.091329
+    },
+    {
+      "at": "2026-09-04T00:55:25+00:00",
+      "slug": "a-test-topic",
+      "model": "anthropic/claude-sonnet-4.5",
+      "attempt": 1,
+      "accepted": true,
+      "prompt_tokens": 1670,
+      "completion_tokens": 3773,
+      "total_tokens": 5443,
+      "cost_usd": 0.061605
+    },
+    {
+      "at": "2026-09-04T00:59:17+00:00",
+      "slug": "a-test-topic",
+      "model": "anthropic/claude-sonnet-4.5",
+      "attempt": 1,
+      "accepted": true,
+      "prompt_tokens": 1670,
+      "completion_tokens": 3243,
+      "total_tokens": 4913,
+      "cost_usd": 0.053655
+    },
+    {
+      "at": "2026-09-04T01:03:14+00:00",
+      "slug": "a-test-topic",
+      "model": "anthropic/claude-sonnet-4.5",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 1670,
+      "completion_tokens": 3668,
+      "total_tokens": 5338,
+      "cost_usd": 0.06003
+    },
+    {
+      "at": "2026-09-04T01:03:45+00:00",
+      "slug": "a-test-topic",
+      "model": "anthropic/claude-sonnet-4.5",
+      "attempt": 2,
+      "accepted": false,
+      "prompt_tokens": 5509,
+      "completion_tokens": 3650,
+      "total_tokens": 9159,
+      "cost_usd": 0.071277
+    },
+    {
+      "at": "2026-09-04T11:17:11+00:00",
+      "slug": "a-test-topic",
+      "model": "anthropic/claude-sonnet-4.5",
+      "attempt": 1,
+      "accepted": true,
+      "prompt_tokens": 1670,
+      "completion_tokens": 3198,
+      "total_tokens": 4868,
+      "cost_usd": 0.05298
+    },
+    {
+      "at": "2026-09-04T12:44:08+00:00",
+      "slug": "a-test-topic",
+      "model": "anthropic/claude-sonnet-4.5",
+      "attempt": 1,
+      "accepted": true,
+      "prompt_tokens": 1670,
+      "completion_tokens": 3260,
+      "total_tokens": 4930,
+      "cost_usd": 0.05391
+    },
+    {
+      "at": "2026-09-04T12:57:05+00:00",
+      "slug": "a-test-topic",
+      "model": "anthropic/claude-sonnet-4.5",
+      "attempt": 1,
+      "accepted": true,
+      "prompt_tokens": 1670,
+      "completion_tokens": 3564,
+      "total_tokens": 5234,
+      "cost_usd": 0.05847
+    },
+    {
+      "at": "2026-09-04T13:07:13+00:00",
+      "slug": "a-test-topic",
+      "model": "anthropic/claude-sonnet-4.5",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 1670,
+      "completion_tokens": 2907,
+      "total_tokens": 4577,
+      "cost_usd": 0.048615
+    },
+    {
+      "at": "2026-09-04T13:07:35+00:00",
+      "slug": "a-test-topic",
+      "model": "anthropic/claude-sonnet-4.5",
+      "attempt": 2,
+      "accepted": true,
+      "prompt_tokens": 4654,
+      "completion_tokens": 2906,
+      "total_tokens": 7560,
+      "cost_usd": 0.057552
+    },
+    {
+      "at": "2026-09-04T13:25:54+00:00",
+      "slug": "a-test-topic",
+      "model": "anthropic/claude-sonnet-4.5",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 1670,
+      "completion_tokens": 3821,
+      "total_tokens": 5491,
+      "cost_usd": 0.062325
+    },
+    {
+      "at": "2026-09-04T13:26:23+00:00",
+      "slug": "a-test-topic",
+      "model": "anthropic/claude-sonnet-4.5",
+      "attempt": 2,
+      "accepted": true,
+      "prompt_tokens": 5560,
+      "completion_tokens": 3793,
+      "total_tokens": 9353,
+      "cost_usd": 0.073575
+    },
+    {
+      "at": "2026-09-04T13:37:22+00:00",
+      "slug": "a-test-topic",
+      "model": "anthropic/claude-sonnet-4.5",
+      "attempt": 1,
+      "accepted": true,
+      "prompt_tokens": 1670,
+      "completion_tokens": 3326,
+      "total_tokens": 4996,
+      "cost_usd": 0.0549
+    },
+    {
+      "at": "2026-09-04T18:24:44+00:00",
+      "slug": "a-test-topic",
+      "model": "anthropic/claude-sonnet-4.5",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 1670,
+      "completion_tokens": 3325,
+      "total_tokens": 4995,
+      "cost_usd": 0.054885
+    },
+    {
+      "at": "2026-09-04T18:25:08+00:00",
+      "slug": "a-test-topic",
+      "model": "anthropic/claude-sonnet-4.5",
+      "attempt": 2,
+      "accepted": true,
+      "prompt_tokens": 5060,
+      "completion_tokens": 3263,
+      "total_tokens": 8323,
+      "cost_usd": 0.064125
+    },
+    {
+      "at": "2026-09-04T18:42:21+00:00",
+      "slug": "a-test-topic",
+      "model": "anthropic/claude-sonnet-4.5",
+      "attempt": 1,
+      "accepted": true,
+      "prompt_tokens": 1670,
+      "completion_tokens": 3208,
+      "total_tokens": 4878,
+      "cost_usd": 0.05313
     }
   ],
-  "total_usd": 4.773342,
-  "drafts_written": 46,
-  "average_usd_per_accepted_draft": 0.103768,
-  "updated": "2026-09-03T03:09:52+00:00"
+  "total_usd": 5.654376,
+  "drafts_written": 56,
+  "average_usd_per_accepted_draft": 0.100971,
+  "updated": "2026-09-04T18:42:21+00:00"
 }

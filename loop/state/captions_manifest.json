@@ -1,6 +1,6 @@
 {
   "week": "2026-W36",
-  "at": "2026-09-03T03:11:51+00:00",
+  "at": "2026-09-04T18:46:04+00:00",
   "plan": [
     {
       "slug": "10-what-is-the-deepest-part-of-the-ocean",
@@ -121,7 +121,19 @@
       "cues": 125,
       "sha256": "571e72c87813524aad52e1e09bf83cf845624f6b429cda8a3dc356bf3bed463d",
       "already": false
+    },
+    {
+      "slug": "02-how-deep-sea-creatures-survive-pressure",
+      "video_id": "nv-M6q8h-Lk",
+      "srt": "/Users/sequoiataylor/GitHub/how-we-know/captions/02-how-deep-sea-creatures-survive-pressure.srt",
+      "cues": 121,
+      "sha256": "b1740a9e213c48222c36de9125f83c0d0bc98718b0d1ad1b1cc05e1097247439",
+      "already": false
     }
   ],
-  "gaps": []
+  "gaps": [
+    "how-are-microchips-made: captions/how-are-microchips-made.srt does not exist",
+    "how-does-quenching-harden-steel: captions/how-does-quenching-harden-steel.srt does not exist",
+    "how-do-self-healing-materials-work: captions/how-do-self-healing-materials-work.srt does not exist"
+  ]
 }
