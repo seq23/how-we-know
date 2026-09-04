@@ -1,0 +1,157 @@
+{
+  "episode": "03-why-deep-sea-creatures-are-surfacing",
+  "beats": 56,
+  "plan_source": "planner.plan() (no frozen plan on disk)",
+  "timing": "audio",
+  "beats_measured": 56,
+  "duration_s": 493.189,
+  "cues": 125,
+  "chapters_real": 18,
+  "chapters_published": 17,
+  "chapter_notes": [
+    "merged 1 chapter(s) under 10s: Title card (2.2s)"
+  ],
+  "drift": {
+    "mean_abs_s": 3.0,
+    "worst_abs_s": 7.1,
+    "rows": [
+      {
+        "title": "Cold open",
+        "hand": "00:00",
+        "real": "0:00",
+        "drift_s": 0.0
+      },
+      {
+        "title": "Title card",
+        "hand": "00:17",
+        "real": "0:13",
+        "drift_s": -3.2
+      },
+      {
+        "title": "The right way to see it",
+        "hand": "00:19",
+        "real": "0:15",
+        "drift_s": -3.0
+      },
+      {
+        "title": "Producer POV",
+        "hand": "00:44",
+        "real": "0:39",
+        "drift_s": -4.6
+      },
+      {
+        "title": "Most upward movement is normal",
+        "hand": "01:00",
+        "real": "0:53",
+        "drift_s": -6.6
+      },
+      {
+        "title": "A viral surface sighting may be a different phenomenon",
+        "hand": "01:22",
+        "real": "1:16",
+        "drift_s": -5.2
+      },
+      {
+        "title": "One observation does not establish a global trend",
+        "hand": "01:43",
+        "real": "1:39",
+        "drift_s": -3.1
+      },
+      {
+        "title": "What researchers would check",
+        "hand": "02:03",
+        "real": "2:03",
+        "drift_s": 0.3
+      },
+      {
+        "title": "Common myths and questions",
+        "hand": "02:23",
+        "real": "2:26",
+        "drift_s": 3.4
+      },
+      {
+        "title": "How I would audit the viral clip",
+        "hand": "03:10",
+        "real": "3:11",
+        "drift_s": 1.8
+      },
+      {
+        "title": "From one sighting to a real trend",
+        "hand": "03:46",
+        "real": "3:50",
+        "drift_s": 4.1
+      },
+      {
+        "title": "The headline I would trust",
+        "hand": "05:17",
+        "real": "5:24",
+        "drift_s": 7.1
+      },
+      {
+        "title": "What would change my mind",
+        "hand": "06:02",
+        "real": "6:05",
+        "drift_s": 3.0
+      },
+      {
+        "title": "The final test",
+        "hand": "06:32",
+        "real": "6:34",
+        "drift_s": 2.3
+      },
+      {
+        "title": "Final editorial note",
+        "hand": "06:43",
+        "real": "6:45",
+        "drift_s": 2.8
+      },
+      {
+        "title": "What to notice in the edit",
+        "hand": "07:05",
+        "real": "7:05",
+        "drift_s": 0.7
+      },
+      {
+        "title": "Evidence limit",
+        "hand": "07:31",
+        "real": "7:30",
+        "drift_s": -0.5
+      },
+      {
+        "title": "Closing",
+        "hand": "07:56",
+        "real": "7:54",
+        "drift_s": -1.6
+      }
+    ]
+  },
+  "ffprobe": {
+    "file": "renders/03-why-deep-sea-creatures-are-surfacing.mp4",
+    "video_s": 426.998,
+    "last_cue_end_s": 493.189,
+    "delta_s": 66.192,
+    "ok": null,
+    "render_timing": "estimate (predates narration - re-render)"
+  },
+  "text_checks": {
+    "beats_json": {
+      "checked": 56,
+      "mismatched": []
+    },
+    "script_text": {
+      "checked": 56,
+      "absent_from_narration": []
+    }
+  },
+  "script_chapters": {
+    "written": false,
+    "changed": false,
+    "removed_lines": [],
+    "chapters_not_in_script": []
+  },
+  "artifacts": [
+    "captions/03-why-deep-sea-creatures-are-surfacing.vtt",
+    "captions/03-why-deep-sea-creatures-are-surfacing.srt",
+    "captions/03-why-deep-sea-creatures-are-surfacing.chapters.txt"
+  ]
+}

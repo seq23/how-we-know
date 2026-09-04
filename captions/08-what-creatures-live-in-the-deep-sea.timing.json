@@ -1,0 +1,160 @@
+{
+  "episode": "08-what-creatures-live-in-the-deep-sea",
+  "beats": 62,
+  "plan_source": "plans/08-what-creatures-live-in-the-deep-sea.json",
+  "timing": "estimate",
+  "beats_measured": 0,
+  "duration_s": 442.77,
+  "cues": 127,
+  "chapters_real": 19,
+  "chapters_published": 16,
+  "chapter_notes": [
+    "merged 3 chapter(s) under 10s: Title card (3.5s), Producer POV (9.0s), Final catalog rule (5.4s)"
+  ],
+  "drift": {
+    "mean_abs_s": 19.2,
+    "worst_abs_s": 43.0,
+    "rows": [
+      {
+        "title": "Cold open",
+        "hand": "00:00",
+        "real": "0:00",
+        "drift_s": 0.0
+      },
+      {
+        "title": "Title card",
+        "hand": "00:14",
+        "real": "0:13",
+        "drift_s": -0.8
+      },
+      {
+        "title": "The right way to see it",
+        "hand": "00:17",
+        "real": "0:16",
+        "drift_s": -0.3
+      },
+      {
+        "title": "Producer POV",
+        "hand": "00:37",
+        "real": "0:34",
+        "drift_s": -2.3
+      },
+      {
+        "title": "The deep sea is many habitats, not one empty place",
+        "hand": "00:50",
+        "real": "0:43",
+        "drift_s": -6.3
+      },
+      {
+        "title": "Twilight-zone animals",
+        "hand": "01:07",
+        "real": "1:01",
+        "drift_s": -5.9
+      },
+      {
+        "title": "Midnight and abyssal animals",
+        "hand": "01:19",
+        "real": "1:13",
+        "drift_s": -5.9
+      },
+      {
+        "title": "Hadal trench animals",
+        "hand": "01:32",
+        "real": "1:25",
+        "drift_s": -6.1
+      },
+      {
+        "title": "Common myths and questions",
+        "hand": "01:48",
+        "real": "1:40",
+        "drift_s": -7.2
+      },
+      {
+        "title": "A habitat tour instead of a creature list",
+        "hand": "02:33",
+        "real": "2:19",
+        "drift_s": -13.6
+      },
+      {
+        "title": "A tour organized by habitat, not celebrity",
+        "hand": "03:02",
+        "real": "2:47",
+        "drift_s": -14.2
+      },
+      {
+        "title": "The missing majority",
+        "hand": "04:43",
+        "real": "4:18",
+        "drift_s": -24.5
+      },
+      {
+        "title": "How this becomes a series",
+        "hand": "05:43",
+        "real": "5:11",
+        "drift_s": -31.7
+      },
+      {
+        "title": "The editorial rule for future additions",
+        "hand": "06:14",
+        "real": "5:37",
+        "drift_s": -36.3
+      },
+      {
+        "title": "Final editorial note",
+        "hand": "06:45",
+        "real": "6:03",
+        "drift_s": -41.9
+      },
+      {
+        "title": "Final catalog rule",
+        "hand": "06:55",
+        "real": "6:13",
+        "drift_s": -41.1
+      },
+      {
+        "title": "What to notice in the edit",
+        "hand": "07:01",
+        "real": "6:19",
+        "drift_s": -41.7
+      },
+      {
+        "title": "Evidence limit",
+        "hand": "07:24",
+        "real": "6:41",
+        "drift_s": -42.1
+      },
+      {
+        "title": "Closing",
+        "hand": "07:48",
+        "real": "7:04",
+        "drift_s": -43.0
+      }
+    ]
+  },
+  "ffprobe": {
+    "file": "renders/08-what-creatures-live-in-the-deep-sea.mp4",
+    "video_s": 442.863,
+    "last_cue_end_s": 442.77,
+    "delta_s": -0.093,
+    "ok": true
+  },
+  "text_checks": {
+    "beats_json": {
+      "checked": 62,
+      "mismatched": []
+    },
+    "script_text": {
+      "checked": 62,
+      "absent_from_narration": []
+    }
+  },
+  "script_chapters": {
+    "written": false,
+    "reason": "timing source is 'estimate'; stamps are only written from fully measured audio"
+  },
+  "artifacts": [
+    "captions/08-what-creatures-live-in-the-deep-sea.vtt",
+    "captions/08-what-creatures-live-in-the-deep-sea.srt",
+    "captions/08-what-creatures-live-in-the-deep-sea.chapters.txt"
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "episode": "13-how-does-bioluminescence-work-in-the-deep-sea",
+  "beats": 61,
+  "plan_source": "plans/13-how-does-bioluminescence-work-in-the-deep-sea.json",
+  "timing": "estimate",
+  "beats_measured": 0,
+  "duration_s": 434.72,
+  "cues": 125,
+  "chapters_real": 13,
+  "chapters_published": 11,
+  "chapter_notes": [
+    "merged 2 chapter(s) under 10s: Title card (3.5s), Producer POV (9.0s)"
+  ],
+  "drift": {
+    "mean_abs_s": 18.5,
+    "worst_abs_s": 42.8,
+    "rows": [
+      {
+        "title": "Cold open",
+        "hand": "00:00",
+        "real": "0:00",
+        "drift_s": 0.0
+      },
+      {
+        "title": "Title card",
+        "hand": "00:15",
+        "real": "0:15",
+        "drift_s": 0.2
+      },
+      {
+        "title": "The ocean's darkness is not actually dark",
+        "hand": "00:19",
+        "real": "0:18",
+        "drift_s": -0.3
+      },
+      {
+        "title": "Producer POV",
+        "hand": "01:24",
+        "real": "1:19",
+        "drift_s": -4.5
+      },
+      {
+        "title": "Water selects the color palette",
+        "hand": "01:39",
+        "real": "1:28",
+        "drift_s": -10.5
+      },
+      {
+        "title": "The same chemistry can hide, hunt, warn, or lie",
+        "hand": "02:43",
+        "real": "2:26",
+        "drift_s": -16.3
+      },
+      {
+        "title": "A percentage is not a census",
+        "hand": "03:48",
+        "real": "3:29",
+        "drift_s": -18.3
+      },
+      {
+        "title": "One chemistry, many jobs",
+        "hand": "05:00",
+        "real": "4:39",
+        "drift_s": -21.0
+      },
+      {
+        "title": "Why one flash can mean opposite things",
+        "hand": "05:32",
+        "real": "5:05",
+        "drift_s": -26.3
+      },
+      {
+        "title": "The disclosure in the percentage",
+        "hand": "06:32",
+        "real": "6:04",
+        "drift_s": -27.2
+      },
+      {
+        "title": "What to notice in the edit",
+        "hand": "06:53",
+        "real": "6:19",
+        "drift_s": -33.4
+      },
+      {
+        "title": "Evidence limit",
+        "hand": "07:17",
+        "real": "6:37",
+        "drift_s": -39.4
+      },
+      {
+        "title": "Closing",
+        "hand": "07:43",
+        "real": "7:00",
+        "drift_s": -42.8
+      }
+    ]
+  },
+  "ffprobe": {
+    "file": "renders/13-how-does-bioluminescence-work-in-the-deep-sea.mp4",
+    "video_s": 434.699,
+    "last_cue_end_s": 434.72,
+    "delta_s": 0.021,
+    "ok": true
+  },
+  "text_checks": {
+    "beats_json": {
+      "checked": 61,
+      "mismatched": []
+    },
+    "script_text": {
+      "checked": 61,
+      "absent_from_narration": []
+    }
+  },
+  "script_chapters": {
+    "written": false,
+    "reason": "timing source is 'estimate'; stamps are only written from fully measured audio"
+  },
+  "artifacts": [
+    "captions/13-how-does-bioluminescence-work-in-the-deep-sea.vtt",
+    "captions/13-how-does-bioluminescence-work-in-the-deep-sea.srt",
+    "captions/13-how-does-bioluminescence-work-in-the-deep-sea.chapters.txt"
+  ]
+}
