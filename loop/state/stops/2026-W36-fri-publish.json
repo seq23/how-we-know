@@ -1,7 +1,7 @@
 {
   "stage": "fri-publish",
   "week": "2026-W36",
-  "at": "2026-09-04T19:45:55+00:00",
+  "at": "2026-09-04T20:32:35+00:00",
   "code": "NO_FLIP_DUE_YET",
   "message": "21 episode(s) are on the calendar and none has reached its publishAt yet, so there is no flip to verify.",
   "detail": {
@@ -9,8 +9,8 @@
   },
   "unblock": "Nothing is wrong. This lane verifies flips AFTER they are due; the first one is at the timestamp above.",
   "disposition": "self_resolving",
-  "disposition_why": "Episodes are on the calendar but none has reached its publishAt yet, so there is no completed flip to verify. This resolves itself the moment the first scheduled video is due - it is the state of a channel whose queue is entirely ahead of it. (run 1 of at most 3 before this escalates to a human.)",
-  "consecutive": 1,
+  "disposition_why": "Episodes are on the calendar but none has reached its publishAt yet, so there is no completed flip to verify. This resolves itself the moment the first scheduled video is due - it is the state of a channel whose queue is entirely ahead of it. (run 2 of at most 3 before this escalates to a human.)",
+  "consecutive": 2,
   "exit_code": 0,
   "work_done_before_stop": [],
   "notes": [
