@@ -1,0 +1,1269 @@
+[
+  {
+    "segment": "thermal_ascent",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "Steel at 850 degrees Celsius holds carbon in solution. The crystal structure is face-centered cubic austenite, and carbon atoms sit in the spaces between iron atoms.",
+    "args": {
+      "to_temp": 850,
+      "label": "austenitizing"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "Cold open",
+    "narration": "Plunge that steel into water, and it cools through 500 degrees in under five seconds.",
+    "args": {
+      "lines": [
+        "Plunge that steel into",
+        "water, and it cools",
+        "through 500"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "thermal_ascent",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "The carbon has no time to leave. The iron lattice snaps into a different shape around it, and the result is martensite \u2014 a structure so distorted it resists every attempt to slide.",
+    "args": {
+      "to_temp": 850,
+      "label": "austenitizing"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "That distortion is hardness. But the speed of the quench is not negotiable. Cool too slowly, and you get something else entirely.",
+    "args": {
+      "lines": [
+        "That distortion is hardness.",
+        "But the speed of",
+        "the quench"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 3.5,
+    "heading": "Title card",
+    "narration": "How does quenching harden steel?",
+    "args": {
+      "lines": [
+        "How does quenching harden",
+        "steel?"
+      ]
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "process_column",
+    "seconds": 8.28,
+    "heading": "Austenite is the starting structure, not the ending one",
+    "narration": "Steel is an alloy of iron and carbon. At room temperature, pure iron arranges itself in a body-centered cubic lattice.",
+    "args": {
+      "highlight": "AUSTENITE"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Austenite is the starting structure, not the ending one",
+    "narration": "Add carbon and heat the mixture above roughly 727 degrees Celsius, and the iron switches to face-centered cubic austenite.",
+    "args": {
+      "lines": [
+        "Add carbon and heat",
+        "the mixture above roughly",
+        "727 degrees"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_column",
+    "seconds": 7.03,
+    "heading": "Austenite is the starting structure, not the ending one",
+    "narration": "The carbon atoms, small enough to fit in the gaps between iron atoms, dissolve into the structure.",
+    "args": {
+      "highlight": "AUSTENITE"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Austenite is the starting structure, not the ending one",
+    "narration": "Austenite is soft and ductile. It is not the hard phase. It is the phase you cool FROM.",
+    "args": {
+      "lines": [
+        "Austenite is soft and",
+        "ductile. It is not",
+        "the hard"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 6.62,
+    "heading": "Austenite is the starting structure, not the ending one",
+    "narration": "The eutectoid temperature is the boundary below which austenite becomes thermodynamically unstable in plain carbon steel.",
+    "args": {
+      "value": "727",
+      "unit": "\u00b0C",
+      "caption": "Eutectoid temperature for iron-carbon",
+      "source": "ASM International"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Austenite is the starting structure, not the ending one",
+    "narration": "Hold steel above that line, and austenite persists. Cool it slowly, and austenite transforms into ferrite and cementite \u2014 a mixture of soft iron and hard iron carbide that forms visible layers called pearlite.",
+    "args": {
+      "lines": [
+        "Hold steel above that",
+        "line, and austenite persists.",
+        "Cool it"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 8.69,
+    "heading": "Austenite is the starting structure, not the ending one",
+    "narration": "That transformation takes time because carbon atoms must diffuse through the lattice to gather into cementite. Quenching denies them that time.",
+    "args": {
+      "value": "727",
+      "unit": "\u00b0C",
+      "caption": "Eutectoid temperature for iron-carbon",
+      "source": "ASM International"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Austenite is the starting structure, not the ending one",
+    "narration": "The diffusion coefficient of carbon in austenite drops rapidly as temperature falls.",
+    "args": {
+      "lines": [
+        "The diffusion coefficient of",
+        "carbon in austenite drops",
+        "rapidly"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Austenite is the starting structure, not the ending one",
+    "narration": "At 700 degrees Celsius, carbon atoms can move micrometers in seconds. At 400 degrees, they barely move nanometers.",
+    "args": {
+      "lines": [
+        "At 700 degrees Celsius,",
+        "carbon atoms can move",
+        "micrometers"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 8.28,
+    "heading": "Austenite is the starting structure, not the ending one",
+    "narration": "The transformation to pearlite requires carbon to travel distances comparable to the spacing between cementite layers, typically hundreds of nanometers.",
+    "args": {
+      "value": "727",
+      "unit": "\u00b0C",
+      "caption": "Eutectoid temperature for iron-carbon",
+      "source": "ASM International"
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Austenite is the starting structure, not the ending one",
+    "narration": "If the steel cools through the transformation range in less than a second, diffusion cannot keep pace. The austenite must do something else.",
+    "args": {
+      "lines": [
+        "If the steel cools",
+        "through the transformation range"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 8.69,
+    "heading": "Martensite forms when carbon is trapped by speed",
+    "narration": "Cool austenite faster than about 100 degrees Celsius per second, and the carbon atoms cannot move far enough to form cementite.",
+    "args": {
+      "title": "QUENCH",
+      "stages": [
+        "austenite cooled fast",
+        "carbon cannot diffuse",
+        "lattice distorts around carbon",
+        "martensite"
+      ],
+      "conclusion": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Martensite forms when carbon is trapped by speed",
+    "narration": "The iron lattice tries to shift back to body-centered cubic, but the trapped carbon distorts it into body-centered tetragonal martensite.",
+    "args": {
+      "lines": [
+        "The iron lattice tries",
+        "to shift back to",
+        "body-centered cubic"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 5.38,
+    "heading": "Martensite forms when carbon is trapped by speed",
+    "narration": "The c-axis of the unit cell stretches. The lattice is under internal stress.",
+    "args": {
+      "title": "QUENCH",
+      "stages": [
+        "austenite cooled fast",
+        "carbon cannot diffuse",
+        "lattice distorts around carbon",
+        "martensite"
+      ],
+      "conclusion": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Martensite forms when carbon is trapped by speed",
+    "narration": "That stress is what stops dislocations from gliding through the crystal. Dislocations are the defects that let metals deform. Martensite blocks them. The result is hardness.",
+    "args": {
+      "lines": [
+        "That stress is what",
+        "stops dislocations from gliding",
+        "through"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "magnitude_bar",
+    "seconds": 6.62,
+    "heading": "Martensite forms when carbon is trapped by speed",
+    "narration": "Rockwell C hardness measures resistance to indentation. Martensite in a high-carbon steel can reach 65 HRC.",
+    "args": {
+      "title": "HARDNESS COMPARISON",
+      "unit": "HRC",
+      "items": [
+        [
+          "martensite",
+          "65"
+        ],
+        [
+          "pearlite",
+          "25"
+        ],
+        [
+          "ferrite",
+          "10"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Martensite forms when carbon is trapped by speed",
+    "narration": "Pearlite, formed by slow cooling, reaches about 25 HRC. Ferrite, pure iron with almost no carbon, sits near 10 HRC.",
+    "args": {
+      "lines": [
+        "Pearlite, formed by slow",
+        "cooling, reaches about 25",
+        "HRC. Ferrite"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "magnitude_bar",
+    "seconds": 5.38,
+    "heading": "Martensite forms when carbon is trapped by speed",
+    "narration": "The difference is not subtle. Martensite is hard enough to cut other steels.",
+    "args": {
+      "title": "HARDNESS COMPARISON",
+      "unit": "HRC",
+      "items": [
+        [
+          "martensite",
+          "65"
+        ],
+        [
+          "pearlite",
+          "25"
+        ],
+        [
+          "ferrite",
+          "10"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.79,
+    "heading": "Martensite forms when carbon is trapped by speed",
+    "narration": "The transformation from austenite to martensite is not diffusional. It is a shear transformation.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 4.97,
+    "heading": "Martensite forms when carbon is trapped by speed",
+    "narration": "The atoms move cooperatively, shifting positions by less than one atomic spacing.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 4.97,
+    "heading": "Martensite forms when carbon is trapped by speed",
+    "narration": "The transformation happens at nearly the speed of sound in the material.",
+    "args": {
+      "title": "QUENCH",
+      "stages": [
+        "austenite cooled fast",
+        "carbon cannot diffuse",
+        "lattice distorts around carbon",
+        "martensite"
+      ],
+      "conclusion": ""
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Martensite forms when carbon is trapped by speed",
+    "narration": "X-ray diffraction shows the tetragonal distortion directly. The ratio of the c-axis to the a-axis increases with carbon content, confirming that carbon is the cause of the distortion.",
+    "args": {
+      "variant": 3
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "The quench medium controls the cooling rate",
+    "narration": "Water, oil, brine and air all remove heat at different rates. Water at 20 degrees Celsius cools steel faster than oil at the same temperature because water has higher thermal conductivity and higher heat capacity.",
+    "args": {
+      "term": "QUENCH MEDIUM",
+      "includes": [
+        "cooling rate and vapor behavior"
+      ],
+      "excludes": [
+        "temperature alone"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The quench medium controls the cooling rate",
+    "narration": "Brine, water with dissolved salt, cools faster still because salt disrupts the vapor blanket that forms on the steel's surface. That vapor blanket insulates. Break it, and heat leaves faster.",
+    "args": {
+      "lines": [
+        "Brine, water with dissolved",
+        "salt, cools faster still",
+        "because salt"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 7.03,
+    "heading": "The quench medium controls the cooling rate",
+    "narration": "When hot steel enters water, a vapor layer forms immediately. Heat transfer is slow during film boiling.",
+    "args": {
+      "title": "QUENCH STAGES",
+      "steps": [
+        [
+          "vapor blanket forms",
+          ""
+        ],
+        [
+          "film boiling slows cooling",
+          ""
+        ],
+        [
+          "nucleate boiling accelerates cooling",
+          ""
+        ],
+        [
+          "convection finishes",
+          ""
+        ]
+      ],
+      "note": "rate varies through the process"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "The quench medium controls the cooling rate",
+    "narration": "As the surface cools below the Leidenfrost point, the vapor collapses and nucleate boiling begins.",
+    "args": {
+      "lines": [
+        "As the surface cools",
+        "below the Leidenfrost point,",
+        "the vapor"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 7.03,
+    "heading": "The quench medium controls the cooling rate",
+    "narration": "Cooling accelerates. Finally, below 100 degrees Celsius, convection takes over. The fastest cooling happens during nucleate boiling.",
+    "args": {
+      "title": "QUENCH STAGES",
+      "steps": [
+        [
+          "vapor blanket forms",
+          ""
+        ],
+        [
+          "film boiling slows cooling",
+          ""
+        ],
+        [
+          "nucleate boiling accelerates cooling",
+          ""
+        ],
+        [
+          "convection finishes",
+          ""
+        ]
+      ],
+      "note": "rate varies through the process"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "The quench medium controls the cooling rate",
+    "narration": "Oil quenches avoid the vapor stage but cool more slowly overall. The choice of medium is a choice of cooling curve.",
+    "args": {
+      "lines": [
+        "Oil quenches avoid the",
+        "vapor stage but cool",
+        "more slowly"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The quench medium controls the cooling rate",
+    "narration": "Agitation matters. Stirring the quench bath or moving the part through the fluid breaks up the vapor layer and increases the cooling rate.",
+    "args": {
+      "lines": [
+        "Agitation matters. Stirring the",
+        "quench bath or moving",
+        "the part"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 5.79,
+    "heading": "The quench medium controls the cooling rate",
+    "narration": "Still water cools more slowly than agitated water. Quench tank design accounts for this.",
+    "args": {
+      "term": "QUENCH MEDIUM",
+      "includes": [
+        "cooling rate and vapor behavior"
+      ],
+      "excludes": [
+        "temperature alone"
+      ]
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The quench medium controls the cooling rate",
+    "narration": "Polymer quenchants, water-based solutions with added polymers, allow tuning of the cooling rate by adjusting polymer concentration. They sit between water and oil in cooling speed.",
+    "args": {
+      "lines": [
+        "Polymer quenchants, water-based solutions",
+        "with added polymers, allow",
+        "tuning"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "uncertainty_bar",
+    "seconds": 6.21,
+    "heading": "The critical cooling rate is the threshold for martensite",
+    "narration": "The critical cooling rate is the minimum speed required to suppress pearlite and form martensite.",
+    "args": {
+      "value": "100",
+      "unit": "\u00b0C/s",
+      "plus": "50 to 200",
+      "minus": null,
+      "confidence": "depends on carbon content and alloy",
+      "caption": "critical cooling rate for martensite"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "The critical cooling rate is the threshold for martensite",
+    "narration": "For plain carbon steels, estimates range from 50 to 200 degrees Celsius per second, depending on carbon content.",
+    "args": {
+      "lines": [
+        "For plain carbon steels,",
+        "estimates range from 50",
+        "to 200"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "uncertainty_bar",
+    "seconds": 9.0,
+    "heading": "The critical cooling rate is the threshold for martensite",
+    "narration": "Higher carbon lowers the critical rate because carbon stabilizes austenite. Alloy additions like chromium, molybdenum and manganese also lower it by slowing diffusion.",
+    "args": {
+      "value": "100",
+      "unit": "\u00b0C/s",
+      "plus": "50 to 200",
+      "minus": null,
+      "confidence": "depends on carbon content and alloy",
+      "caption": "critical cooling rate for martensite"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "The critical cooling rate is the threshold for martensite",
+    "narration": "Measure the cooling rate at the center of the part, not the surface. The surface always cools faster.",
+    "args": {
+      "lines": [
+        "Measure the cooling rate",
+        "at the center of",
+        "the part"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 5.79,
+    "heading": "The critical cooling rate is the threshold for martensite",
+    "narration": "The TTT diagram maps what happens when austenite is held at a fixed temperature.",
+    "args": {
+      "term": "TTT DIAGRAM",
+      "meaning": "time-temperature-transformation plot showing when phases form during isothermal holds",
+      "boundary": "separates martensite from pearlite and bainite",
+      "source": "ASM International"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "The critical cooling rate is the threshold for martensite",
+    "narration": "The nose of the curve shows where pearlite forms fastest. Cool fast enough to miss the nose, and you get martensite.",
+    "args": {
+      "lines": [
+        "The nose of the",
+        "curve shows where pearlite",
+        "forms fastest."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 8.69,
+    "heading": "The critical cooling rate is the threshold for martensite",
+    "narration": "The diagram is specific to composition. A 1080 steel, with 0.80 percent carbon, has a different curve than a 1040 steel.",
+    "args": {
+      "term": "TTT DIAGRAM",
+      "meaning": "time-temperature-transformation plot showing when phases form during isothermal holds",
+      "boundary": "separates martensite from pearlite and bainite",
+      "source": "ASM International"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The critical cooling rate is the threshold for martensite",
+    "narration": "The diagram does not predict continuous cooling directly, but CCT diagrams, continuous cooling transformation diagrams, do. Both are empirical. They come from controlled experiments, not theory alone.",
+    "args": {
+      "lines": [
+        "The diagram does not",
+        "predict continuous cooling directly,",
+        "but CCT"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.38,
+    "heading": "The critical cooling rate is the threshold for martensite",
+    "narration": "Jominy end-quench tests measure hardenability, the ease with which a steel forms martensite.",
+    "args": {
+      "variant": 4
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.21,
+    "heading": "The critical cooling rate is the threshold for martensite",
+    "narration": "A heated bar is quenched from one end only. Hardness is measured along the length.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "uncertainty_bar",
+    "seconds": 7.03,
+    "heading": "The critical cooling rate is the threshold for martensite",
+    "narration": "The distance over which hardness remains high indicates hardenability. High-hardenability steels form martensite even with slow cooling.",
+    "args": {
+      "value": "100",
+      "unit": "\u00b0C/s",
+      "plus": "50 to 200",
+      "minus": null,
+      "confidence": "depends on carbon content and alloy",
+      "caption": "critical cooling rate for martensite"
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.21,
+    "heading": "The critical cooling rate is the threshold for martensite",
+    "narration": "Low-hardenability steels require fast quenches. The test is standardized and widely used to compare alloys.",
+    "args": {
+      "variant": 2
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "magnitude_bar",
+    "seconds": 5.38,
+    "heading": "Hardness depends on carbon content, not just martensite formation",
+    "narration": "Martensite hardness increases with carbon content up to about 0.6 percent by weight.",
+    "args": {
+      "title": "CARBON EFFECT",
+      "unit": "HRC",
+      "items": [
+        [
+          "0.2% carbon",
+          "40"
+        ],
+        [
+          "0.6% carbon",
+          "60"
+        ],
+        [
+          "1.0% carbon",
+          "65"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Hardness depends on carbon content, not just martensite formation",
+    "narration": "Beyond that, hardness rises more slowly. At 0.2 percent carbon, quenched martensite reaches roughly 40 HRC.",
+    "args": {
+      "lines": [
+        "Beyond that, hardness rises",
+        "more slowly. At 0.2",
+        "percent carbon"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "magnitude_bar",
+    "seconds": 5.38,
+    "heading": "Hardness depends on carbon content, not just martensite formation",
+    "narration": "At 0.6 percent, it reaches 60 HRC. At 1.0 percent, near 65 HRC.",
+    "args": {
+      "title": "CARBON EFFECT",
+      "unit": "HRC",
+      "items": [
+        [
+          "0.2% carbon",
+          "40"
+        ],
+        [
+          "0.6% carbon",
+          "60"
+        ],
+        [
+          "1.0% carbon",
+          "65"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Hardness depends on carbon content, not just martensite formation",
+    "narration": "The carbon distorts the lattice more severely as its concentration rises. But above 0.6 percent, retained austenite begins to appear.",
+    "args": {
+      "lines": [
+        "The carbon distorts the",
+        "lattice more severely as",
+        "its concentration"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "magnitude_bar",
+    "seconds": 7.45,
+    "heading": "Hardness depends on carbon content, not just martensite formation",
+    "narration": "Some austenite does not transform even during a fast quench. Retained austenite is soft. It dilutes the hardness.",
+    "args": {
+      "title": "CARBON EFFECT",
+      "unit": "HRC",
+      "items": [
+        [
+          "0.2% carbon",
+          "40"
+        ],
+        [
+          "0.6% carbon",
+          "60"
+        ],
+        [
+          "1.0% carbon",
+          "65"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Hardness depends on carbon content, not just martensite formation",
+    "narration": "This is why tool steels, which need maximum hardness, are often held near 0.6 to 0.8 percent carbon.",
+    "args": {
+      "lines": [
+        "This is why tool",
+        "steels, which need maximum",
+        "hardness"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Hardness depends on carbon content, not just martensite formation",
+    "narration": "Higher carbon gives diminishing returns and risks retained austenite. Lower carbon gives martensite that is not hard enough for cutting tools.",
+    "args": {
+      "lines": [
+        "Higher carbon gives diminishing",
+        "returns and risks retained",
+        "austenite. Lower"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "magnitude_bar",
+    "seconds": 8.69,
+    "heading": "Hardness depends on carbon content, not just martensite formation",
+    "narration": "The carbon content is chosen for the application, and the quench is designed to achieve full transformation at that carbon level.",
+    "args": {
+      "title": "CARBON EFFECT",
+      "unit": "HRC",
+      "items": [
+        [
+          "0.2% carbon",
+          "40"
+        ],
+        [
+          "0.6% carbon",
+          "60"
+        ],
+        [
+          "1.0% carbon",
+          "65"
+        ]
+      ]
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "process_column",
+    "seconds": 5.38,
+    "heading": "Tempering follows quenching to reduce brittleness",
+    "narration": "As-quenched martensite is hard but brittle. Internal stresses make it prone to cracking.",
+    "args": {
+      "highlight": "TEMPER"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Tempering follows quenching to reduce brittleness",
+    "narration": "Tempering is a controlled reheating, usually between 150 and 650 degrees Celsius, that allows some carbon to diffuse out of the martensite lattice.",
+    "args": {
+      "lines": [
+        "Tempering is a controlled",
+        "reheating, usually between 150",
+        "and 650"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_column",
+    "seconds": 6.62,
+    "heading": "Tempering follows quenching to reduce brittleness",
+    "narration": "The structure remains martensitic, but the distortion relaxes. Hardness decreases. Toughness increases. The trade-off is deliberate.",
+    "args": {
+      "highlight": "TEMPER"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "thermal_ascent",
+    "seconds": 6.62,
+    "heading": "Tempering follows quenching to reduce brittleness",
+    "narration": "Temper at 200 degrees Celsius, and you retain most of the hardness while relieving some stress.",
+    "args": {
+      "to_temp": 200,
+      "label": "tempering"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "Tempering follows quenching to reduce brittleness",
+    "narration": "Temper at 600 degrees, and you get much tougher steel at the cost of significant hardness loss.",
+    "args": {
+      "lines": [
+        "Temper at 600 degrees,",
+        "and you get much",
+        "tougher steel"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "thermal_ascent",
+    "seconds": 4.97,
+    "heading": "Tempering follows quenching to reduce brittleness",
+    "narration": "The tempering temperature is chosen for the application. A chisel needs hardness.",
+    "args": {
+      "to_temp": 200,
+      "label": "tempering"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Tempering follows quenching to reduce brittleness",
+    "narration": "A spring needs toughness. Both start with a quench. Both are tempered differently.",
+    "args": {
+      "lines": [
+        "A spring needs toughness.",
+        "Both start with a",
+        "quench."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Tempering follows quenching to reduce brittleness",
+    "narration": "During tempering, carbon precipitates as fine carbides. The martensite loses its tetragonal distortion and becomes body-centered cubic ferrite with dispersed carbide particles.",
+    "args": {
+      "lines": [
+        "During tempering, carbon precipitates",
+        "as fine carbides. The",
+        "martensite loses"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Tempering follows quenching to reduce brittleness",
+    "narration": "The carbides are much smaller than the cementite layers in pearlite, so the steel remains harder than slowly cooled steel even after tempering.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Tempering follows quenching to reduce brittleness",
+    "narration": "The size and distribution of the carbides depend on tempering temperature and time.",
+    "args": {
+      "lines": [
+        "The size and distribution",
+        "of the carbides depend",
+        "on tempering"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 9.0,
+    "heading": "Producer POV",
+    "narration": "I wanted one clean cooling-rate number for 'fast enough to harden steel.' It doesn't exist as a constant \u2014 the threshold moves with the alloy's own composition.",
+    "args": {
+      "text": "I wanted one clean cooling-rate number for 'fast enough to harden steel.' It doesn't exist as a constant \u2014 the threshold moves with the alloy's own composition.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 6.62,
+    "heading": "Producer POV",
+    "narration": "I published the range and said the exact number has to be measured, not looked up.",
+    "args": {
+      "text": "I published the range and said the exact number has to be measured, not looked up.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 4.97,
+    "heading": "Alloy steels allow slower quenches and thicker sections",
+    "narration": "Chromium, molybdenum, manganese, nickel and silicon all slow the diffusion of carbon.",
+    "args": {
+      "title": "ALLOY EFFECTS",
+      "items": [
+        "+lowers critical cooling rate",
+        "+allows oil or air quench",
+        "+reduces cracking risk",
+        "+permits larger parts to harden through"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Alloy steels allow slower quenches and thicker sections",
+    "narration": "This lowers the critical cooling rate. An alloy steel can be oil-quenched or even air-quenched and still form martensite.",
+    "args": {
+      "lines": [
+        "This lowers the critical",
+        "cooling rate. An alloy",
+        "steel"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 8.69,
+    "heading": "Alloy steels allow slower quenches and thicker sections",
+    "narration": "This matters for large parts. A thick section cannot cool at 100 degrees per second at its core, even in water.",
+    "args": {
+      "title": "ALLOY EFFECTS",
+      "items": [
+        "+lowers critical cooling rate",
+        "+allows oil or air quench",
+        "+reduces cracking risk",
+        "+permits larger parts to harden through"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "Alloy steels allow slower quenches and thicker sections",
+    "narration": "Plain carbon steel would form pearlite in the center. Alloy steel forms martensite throughout.",
+    "args": {
+      "lines": [
+        "Plain carbon steel would",
+        "form pearlite in the",
+        "center. Alloy"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.21,
+    "heading": "Alloy steels allow slower quenches and thicker sections",
+    "narration": "This is why aircraft landing gear and large forging dies are made from alloy steels.",
+    "args": {
+      "variant": 3
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Alloy steels allow slower quenches and thicker sections",
+    "narration": "The section size demands it. A water quench on a large plain carbon steel part would crack from thermal shock before it hardened all the way through.",
+    "args": {
+      "variant": 4
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "Alloy steels allow slower quenches and thicker sections",
+    "narration": "Alloy additions buy time. They let the core cool slowly enough to avoid cracking while still cooling fast enough to form martensite.",
+    "args": {
+      "title": "ALLOY EFFECTS",
+      "items": [
+        "+lowers critical cooling rate",
+        "+allows oil or air quench",
+        "+reduces cracking risk",
+        "+permits larger parts to harden through"
+      ],
+      "note": ""
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "The numbers in this script trace to ASM International's published phase diagrams and transformation kinetics, NIST's thermodynamic databases for the iron-carbon system, and ASTM International's standards for hardness measurement.",
+    "args": {
+      "title": "EVIDENCE BODIES",
+      "sources": [
+        [
+          "ASM International",
+          "phase diagrams and TTT curves"
+        ],
+        [
+          "NIST",
+          "thermodynamic data for iron-carbon system"
+        ],
+        [
+          "ASTM International",
+          "hardness testing standards"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "What to notice in the edit",
+    "narration": "The critical cooling rate is stated as a range because it depends on composition, and the literature reflects that variation.",
+    "args": {
+      "lines": [
+        "The critical cooling rate",
+        "is stated as a",
+        "range because"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "The Rockwell C values are from controlled tests on known alloys, not theoretical predictions. The Jominy test is an ASTM standard method for measuring hardenability.",
+    "args": {
+      "title": "EVIDENCE BODIES",
+      "sources": [
+        [
+          "ASM International",
+          "phase diagrams and TTT curves"
+        ],
+        [
+          "NIST",
+          "thermodynamic data for iron-carbon system"
+        ],
+        [
+          "ASTM International",
+          "hardness testing standards"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "uncertainty_bar",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "The critical cooling rate is not a single number. It varies with carbon content, alloy composition, austenite grain size and prior thermal history.",
+    "args": {
+      "value": "100",
+      "unit": "\u00b0C/s",
+      "plus": "50 to 200",
+      "minus": null,
+      "confidence": "composition-dependent",
+      "caption": "critical cooling rate"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Evidence limit",
+    "narration": "The range given here, 50 to 200 degrees Celsius per second, reflects published measurements on plain carbon and low-alloy steels.",
+    "args": {
+      "lines": [
+        "The range given here,",
+        "50 to 200 degrees",
+        "Celsius per"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "uncertainty_bar",
+    "seconds": 6.62,
+    "heading": "Evidence limit",
+    "narration": "Specific compositions require specific testing. The TTT and CCT diagrams are empirical maps, not universal laws.",
+    "args": {
+      "value": "100",
+      "unit": "\u00b0C/s",
+      "plus": "50 to 200",
+      "minus": null,
+      "confidence": "composition-dependent",
+      "caption": "critical cooling rate"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Evidence limit",
+    "narration": "They must be measured for each alloy. The mechanism \u2014 carbon trapping and lattice distortion \u2014 is well understood.",
+    "args": {
+      "lines": [
+        "They must be measured",
+        "for each alloy. The",
+        "mechanism"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "uncertainty_bar",
+    "seconds": 6.62,
+    "heading": "Evidence limit",
+    "narration": "The exact threshold for a given steel is not predicted from first principles. It is measured.",
+    "args": {
+      "value": "100",
+      "unit": "\u00b0C/s",
+      "plus": "50 to 200",
+      "minus": null,
+      "confidence": "composition-dependent",
+      "caption": "critical cooling rate"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Closing",
+    "narration": "Quenching hardens steel by moving faster than diffusion. The carbon that would separate into layers is frozen in place.",
+    "args": {
+      "lines": [
+        "Quenching hardens steel by",
+        "moving faster than diffusion.",
+        "The carbon"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Closing",
+    "narration": "The lattice that would relax into soft ferrite is locked into strained martensite.",
+    "args": {
+      "lines": [
+        "The lattice that would",
+        "relax into soft ferrite",
+        "is locked"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.03,
+    "heading": "Closing",
+    "narration": "Speed is the tool. The distortion is the result. And the hardness is the distortion made useful.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+destagnate"
+  }
+]
