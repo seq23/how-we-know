@@ -15,15 +15,48 @@
     "",
     "A self-resolving stop still writes loop/state/stops/, still prints the",
     "full NAMED STOP banner, and still appends to the Actions job summary. The",
-    "only thing it does not do is fail the job and page the owner."
+    "only thing it does not do is fail the job and page the owner.",
+    "",
+    "2026-09-04. Three scheduled lanes were red on main every day, and all",
+    "three were NAMED STOPS doing exactly what they should: the localize lane",
+    "reporting it was up to date, the cloud-upload lane reporting an empty",
+    "shelf, and the Friday flip lane reporting nothing to flip. Two of them",
+    "are classified here. The third was NOT: fri-publish had become",
+    "structurally inert - every episode now uploads private with a publishAt",
+    "stamp and YouTube flips it itself, so nothing would ever be left for that",
+    "lane to flip and it would have been red every Friday forever. Labelling",
+    "that self-resolving would have been the exact failure this file warns",
+    "about - an inert lane wearing a reassuring label - so the lane was given",
+    "real work instead: it now VERIFIES that every video whose publishAt has",
+    "passed actually went public. See loop/publish.py."
   ],
   "default_disposition": "needs_human",
   "self_resolving": {
     "QUOTA_EXHAUSTED": {
       "why": "The YouTube allowance resets at midnight Pacific and every lane that raises this runs at least daily, so the work is deferred by a few hours, not lost.",
-      "requires_detail": ["resets_at"],
+      "requires_detail": [
+        "resets_at"
+      ],
       "max_consecutive": 3,
       "escalation": "Three runs in a row means the day's allowance is structurally short, not momentarily spent - the lanes are asking for more units than a day holds. That needs a human: reduce a lane's per-run limit, or spread the caption backfill wider."
+    },
+    "LOCALIZATIONS_UP_TO_DATE": {
+      "why": "Every live video already carries its localizations and defaultLanguage=en. The lane is FINISHED, not blocked: it does real work again the moment a new episode goes public or an English title changes. Nothing was written and a re-run costs nothing, which is the design.",
+      "max_consecutive": 8,
+      "escalation": "Eight consecutive days with nothing to localize is longer than the publish cadence can explain. At 4/week a new episode goes public at least every ~3 days and each one needs localizing, so an eight-day streak means either publishing has stopped or - the dangerous case - this lane can no longer SEE new videos and is reporting 'up to date' about a list that stopped growing. Check that the live-video count in the run's own note is rising."
+    },
+    "NOTHING_SHELVED": {
+      "why": "Every queued episode is already in the ledger or has not been pushed to R2 yet. The Mac's nightly batch pushes what it renders, so an empty shelf resolves itself on the next batch; and when the whole queue is uploaded, an empty shelf is the finished state.",
+      "max_consecutive": 7,
+      "escalation": "Seven consecutive days of an empty shelf while episodes remain unuploaded means the Mac is not pushing - bin/push-to-r2.sh is failing, or the nightly com.howweknow.batch agent is not firing at all. Compare the count of renders/*-final.mp4 on the Mac with the ledger; if the Mac has more, the push is the broken half, not this lane."
+    },
+    "NO_FLIP_DUE_YET": {
+      "why": "Episodes are on the calendar but none has reached its publishAt yet, so there is no completed flip to verify. This resolves itself the moment the first scheduled video is due - it is the state of a channel whose queue is entirely ahead of it.",
+      "requires_detail": [
+        "next"
+      ],
+      "max_consecutive": 3,
+      "escalation": "Three consecutive weekly runs with no flip ever falling due means the calendar is drifting ahead faster than the channel airs - or every row lost its scheduled_publish_at. Check that the earliest scheduled_publish_at in loop/state/ledger.json is actually in the near future and that videos are still going public on their dates."
     }
   }
 }

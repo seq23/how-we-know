@@ -411,7 +411,15 @@ print("NAMES", "YT_OAUTH_CLIENT_JSON" in unblock,
             fails.append("the OAUTH_MISSING stop does not name both repo "
                          "secrets the workflow needs")
 
-        # -- 7. nothing shelved is a named stop, not a green no-op ---------
+        # -- 7. nothing shelved is a NAMED stop, not a silent no-op --------
+        # It exits 0, not 3, since 2026-09-04: NOTHING_SHELVED is classified
+        # self-resolving in loop/stop_policy.json, because the Mac's nightly
+        # batch pushes what it renders and an empty shelf is also the finished
+        # state once the whole queue is uploaded. Paging a human daily for
+        # that spends the one notification channel the loop has on the outcome
+        # that needs nobody. What this test still guarantees - and what
+        # actually matters - is that the stop is NAMED and reaches the log;
+        # a green no-op that said nothing would still fail below.
         examined += 1
         r = run("""
 rc = 0
@@ -421,10 +429,18 @@ except SystemExit as e:
     rc = e.code
 print("RC", rc)
 """, dict(base, R2_LOCAL_DIR=str(tmp / "empty-shelf")), tmp)
-        if "RC 3" not in r.stdout:
-            fails.append("an empty shelf did not produce a NAMED STOP "
-                         f"(exit 3): {r.stdout.strip()[-300:]}")
-        if "NOTHING_SHELVED" not in (r.stdout + r.stderr):
+        out = r.stdout + r.stderr
+        if "RC 0" not in r.stdout:
+            fails.append("an empty shelf did not exit 0 as a self-resolving "
+                         f"stop: {r.stdout.strip()[-300:]}")
+        if "NAMED STOP" not in out:
+            fails.append("the empty-shelf run printed no NAMED STOP banner — "
+                         "a zero exit with no banner is the silent no-op this "
+                         "scenario exists to forbid")
+        if "SELF-RESOLVING" not in out.upper():
+            fails.append("the empty-shelf stop did not declare itself "
+                         "self-resolving, so its zero exit is unexplained")
+        if "NOTHING_SHELVED" not in out:
             fails.append("the empty-shelf stop is not named NOTHING_SHELVED")
 
     if examined == 0:
