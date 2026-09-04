@@ -23,7 +23,26 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import domains as _domains  # noqa: E402
+
+# LOADED BY PATH, NOT BY NAME. There are two modules called `domains` in this
+# repo - visuals/domains.py (palettes and structural devices) and
+# loop/domains.py (taxonomy, slot allocation, queue depth) - and a bare
+# `import domains` resolves to whichever tree happens to be first on sys.path,
+# or to whichever was imported FIRST, because sys.modules caches by name. The
+# sys.path.insert above is not enough: once any loop/ module has been imported,
+# sys.modules["domains"] is already loop's, and this file silently binds to the
+# wrong one. The symptom is not a clean ImportError - it is
+# `AttributeError: module 'domains' has no attribute 'require_declared'`
+# raised from inside visuals/footage.py, several imports away from the cause,
+# and it appears only when a test touches the loop tree before the visuals one.
+# Loading the sibling file explicitly makes the two unable to collide.
+import importlib.util as _ilu  # noqa: E402
+
+_dom_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "domains.py")
+_spec = _ilu.spec_from_file_location("visuals_domains", _dom_path)
+_domains = _ilu.module_from_spec(_spec)
+sys.modules.setdefault("visuals_domains", _domains)
+_spec.loader.exec_module(_domains)
 
 W, H, FPS = 1920, 1080, 30
 

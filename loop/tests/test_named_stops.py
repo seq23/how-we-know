@@ -26,7 +26,14 @@ PY = sys.executable
 # halt rather than degrading into a crash or a pass.
 LANES = [
     ("upload.py", ("OAUTH_MISSING", "NOTHING_RENDERED")),
-    ("publish.py", ("OAUTH_MISSING", "NOTHING_PUBLISHABLE", "BREAKER_TRIPPED")),
+    # NOTHING_PUBLISHABLE is gone: every episode now uploads private with a
+    # publishAt and YouTube performs the flip, so that branch became
+    # structurally unreachable and the lane was given verification work
+    # instead (see loop/publish.py). NO_FLIP_DUE_YET is the halt when no
+    # scheduled video has come due yet; SCHEDULED_FLIP_DID_NOT_HAPPEN is the
+    # loud one, when a video passed its date and is still private.
+    ("publish.py", ("OAUTH_MISSING", "NO_FLIP_DUE_YET", "BREAKER_TRIPPED",
+                    "SCHEDULED_FLIP_DID_NOT_HAPPEN")),
     # OAUTH_REJECTED covers a token Google actively refuses (401/403) as
     # distinct from OAUTH_MISSING (no token on disk at all). The two need
     # different remedies: re-consent vs. first-time grant.
@@ -71,17 +78,30 @@ def check() -> list[str]:
                            capture_output=True, text=True, cwd=ROOT, env=env)
         out = r.stdout + r.stderr
 
-        if r.returncode == 0:
-            fails.append(f"loop/{fname} exited 0 with no credentials — that is "
-                         f"a silent skip, the exact defect this loop forbids")
-            continue
-        if r.returncode != 3:
+        # EXIT 0 IS ALLOWED ONLY FOR A SELF-RESOLVING NAMED STOP.
+        #
+        # This block used to treat exit 0 as proof of a silent skip. That was
+        # right when every named stop exited 3, and became wrong when
+        # loop/stop_policy.json introduced the self-resolving disposition: a
+        # lane that correctly reports "there is nothing due yet" prints the
+        # full banner, writes loop/state/stops/, and exits 0 so it does not
+        # page a human every day. What must never happen is a lane exiting 0
+        # having said NOTHING - so the test now demands the banner in both
+        # cases, and demands that a zero exit explicitly declare itself
+        # self-resolving. A quiet pass still fails here, which is the property
+        # that mattered.
+        if r.returncode not in (0, 3):
             fails.append(f"loop/{fname} exited {r.returncode} (a crash) rather "
-                         f"than 3 (a named stop):\n{out[-600:]}")
+                         f"than a named stop:\n{out[-600:]}")
             continue
         if "NAMED STOP" not in out:
-            fails.append(f"loop/{fname} exited 3 without printing a NAMED STOP "
-                         f"banner — nobody would see it")
+            fails.append(f"loop/{fname} exited {r.returncode} without printing "
+                         f"a NAMED STOP banner — nobody would see it")
+            continue
+        if r.returncode == 0 and "SELF-RESOLVING" not in out.upper():
+            fails.append(f"loop/{fname} exited 0 without declaring the stop "
+                         f"self-resolving — a zero exit is only legitimate for "
+                         f"a stop loop/stop_policy.json classifies")
         if not any(code in out for code in acceptable):
             fails.append(f"loop/{fname} named a stop, but not one of "
                          f"{acceptable}:\n{out[-400:]}")

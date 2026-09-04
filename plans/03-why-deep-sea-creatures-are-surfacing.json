@@ -1,0 +1,823 @@
+[
+  {
+    "segment": "zone_column",
+    "seconds": 7.03,
+    "heading": "Cold open",
+    "narration": "A strange fish near the surface is not proof that the deep sea is sending a warning.",
+    "args": {
+      "highlight": null
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "Before the story becomes climate collapse, earthquake prediction, or an omen, there is a more basic question: was this animal actually out of place?",
+    "args": {
+      "lines": [
+        "Before the story becomes",
+        "climate collapse, earthquake prediction"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 3.5,
+    "heading": "Title card",
+    "narration": "Why deep sea creatures are surfacing?",
+    "args": {
+      "lines": [
+        "Why deep sea creatures",
+        "are surfacing?"
+      ]
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 9.0,
+    "heading": "The right way to see it",
+    "narration": "There are two different questions hidden inside the headline. Are we seeing normal nightly migration by midwater animals, or an unusual appearance by a permanent deep resident?",
+    "args": {
+      "title": "TWO DIFFERENT QUESTIONS",
+      "sources": [
+        [
+          "Normal nightly migration",
+          "by midwater animals"
+        ],
+        [
+          "An unusual appearance",
+          "by a permanent deep resident"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The right way to see it",
+    "narration": "Those are not the same event. The rest of this video follows that question through the actual environmental constraints described by NOAA, MBARI, Smithsonian, and Woods Hole sources in the companion article.",
+    "args": {
+      "lines": [
+        "Those are not the",
+        "same event. The rest"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 9.0,
+    "heading": "Producer POV",
+    "narration": "I understand why one unusual animal feels like a signal. I also know how quickly I can turn one image into a trend when I have not checked the species, time of day, current, condition, or previous records.",
+    "args": {
+      "text": "I understand why one unusual animal feels like a signal. I also know how quickly I can turn one image into a trend when I have not checked the species, time of day, current, condition, or previous records.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "zone_column",
+    "seconds": 7.86,
+    "heading": "Most upward movement is normal",
+    "narration": "The ocean's deep scattering layer contains fishes, squid, crustaceans and zooplankton that hide in darker water during the day.",
+    "args": {
+      "highlight": "TWILIGHT"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Most upward movement is normal",
+    "narration": "After sunset, many move upward to feed where surface production has concentrated food.",
+    "args": {
+      "lines": [
+        "After sunset, many move",
+        "upward to feed where",
+        "surface production"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "zone_column",
+    "seconds": 8.69,
+    "heading": "Most upward movement is normal",
+    "narration": "Before dawn, they descend again. This diel vertical migration is one of the largest organized movements of animal biomass on Earth.",
+    "args": {
+      "highlight": "TWILIGHT"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 6.21,
+    "heading": "A viral surface sighting may be a different phenomenon",
+    "narration": "News posts often group any unusual-looking fish under 'deep-sea creature.' That can blur important distinctions.",
+    "args": {
+      "title": "WHAT 'DEEP-SEA CREATURE' BLURS",
+      "items": [
+        "?Some species routinely use a wide depth range",
+        "?Others are permanent deep residents",
+        "?Some photographed animals were caught, stranded, injured or already dead"
+      ],
+      "note": "Identify the species and observation method before assigning a cause"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "A viral surface sighting may be a different phenomenon",
+    "narration": "Some species routinely use a wide depth range; others are permanent deep residents; and some photographed animals were caught, stranded, injured or already dead.",
+    "args": {
+      "lines": [
+        "Some species routinely use",
+        "a wide depth range"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 5.38,
+    "heading": "A viral surface sighting may be a different phenomenon",
+    "narration": "Identifying the species and the exact observation method matters before assigning a cause.",
+    "args": {
+      "title": "WHAT 'DEEP-SEA CREATURE' BLURS",
+      "items": [
+        "?Some species routinely use a wide depth range",
+        "?Others are permanent deep residents",
+        "?Some photographed animals were caught, stranded, injured or already dead"
+      ],
+      "note": "Identify the species and observation method before assigning a cause"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "One observation does not establish a global trend",
+    "narration": "A scientifically meaningful trend requires repeated observations collected with comparable methods. A single oarfish, anglerfish, squid or unfamiliar larval form at the surface can be notable without proving that deep-sea animals as a group are abandoning depth. Responsible interpretation separates a documented event from a proposed explanation.",
+    "args": {
+      "term": "A SCIENTIFICALLY MEANINGFUL TREND",
+      "includes": [
+        "Repeated observations",
+        "Comparable methods"
+      ],
+      "excludes": [
+        "A single oarfish, anglerfish, squid or unfamiliar larval form at the surface"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "What researchers would check",
+    "narration": "Scientists would examine the animal's normal depth range, time of day, condition, location, currents, water temperature, oxygen, storms, capture history and whether similar records exist.",
+    "args": {
+      "title": "WHAT RESEARCHERS WOULD EXAMINE",
+      "items": [
+        "?Normal depth range",
+        "?Time of day and condition",
+        "?Location and currents",
+        "?Water temperature and oxygen",
+        "?Storms and capture history",
+        "?Whether similar records exist"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "zone_column",
+    "seconds": 9.0,
+    "heading": "What researchers would check",
+    "narration": "Until that evidence is available, the most accurate answer is often that several causes are possible and the event is not yet diagnostic.",
+    "args": {
+      "highlight": null
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Common myths and questions",
+    "narration": "A common question is: Do deep-sea animals come to the surface every night? Many twilight-zone animals do; many permanent deep residents do not.",
+    "args": {
+      "term": "WHO COMES UP EVERY NIGHT",
+      "includes": [
+        "Many twilight-zone animals"
+      ],
+      "excludes": [
+        "Many permanent deep residents"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 4.97,
+    "heading": "Common myths and questions",
+    "narration": "A common question is: Does a stranded deep-sea fish predict an earthquake?",
+    "args": {
+      "term": "A STRANDED DEEP-SEA FISH",
+      "includes": [
+        "A clue"
+      ],
+      "excludes": [
+        "A reliable scientific basis for an earthquake prediction"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "Common myths and questions",
+    "narration": "There is no reliable scientific basis for treating a single stranding as an earthquake prediction.",
+    "args": {
+      "lines": [
+        "There is no reliable",
+        "scientific basis for treating",
+        "a single"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Common myths and questions",
+    "narration": "A common question is: Can storms move deep-sea animals? Storms and currents can affect water masses and strand organisms, but the cause of a specific sighting must be investigated rather than assumed.",
+    "args": {
+      "term": "STORMS AND CURRENTS",
+      "includes": [
+        "Can affect water masses",
+        "Can strand organisms"
+      ],
+      "excludes": [
+        "An assumed cause for a specific sighting"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 4.97,
+    "heading": "Common myths and questions",
+    "narration": "A common question is: Are warming oceans forcing all deep animals upward?",
+    "args": {
+      "term": "OCEAN WARMING AND OXYGEN CHANGE",
+      "includes": [
+        "Can alter distributions"
+      ],
+      "excludes": [
+        "A broad claim about all deep-sea animals, which requires long-term species-specific evidence"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Common myths and questions",
+    "narration": "Ocean warming and oxygen change can alter distributions, but a broad claim about all deep-sea animals requires long-term species-specific evidence.",
+    "args": {
+      "lines": [
+        "Ocean warming and oxygen",
+        "change can alter distributions"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "How I would audit the viral clip",
+    "narration": "Start with identity. 'Deep-sea creature' is too broad to be useful. Then check the animal's known depth range and whether it was alive, injured, caught, stranded, or simply photographed during normal movement.",
+    "args": {
+      "title": "HOW TO AUDIT THE CLIP",
+      "steps": [
+        [
+          "Start with identity",
+          ""
+        ],
+        [
+          "Check the known depth range and the animal's condition",
+          ""
+        ],
+        [
+          "Check the clock",
+          ""
+        ],
+        [
+          "Check location, currents, storms, temperature, oxygen, and capture method",
+          ""
+        ],
+        [
+          "Ask whether similar observations were collected with comparable effort",
+          ""
+        ]
+      ],
+      "note": "A single event can be real and important without proving a global trend"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "How I would audit the viral clip",
+    "narration": "Next check the clock. Billions of animals participate in diel vertical migration, moving upward in darkness to feed and returning before daylight.",
+    "args": {
+      "lines": [
+        "Next check the clock.",
+        "Billions of animals participate",
+        "in diel"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 8.28,
+    "heading": "How I would audit the viral clip",
+    "narration": "Then check location, currents, storms, temperature, oxygen, and capture method. Finally, ask whether similar observations were collected with comparable effort.",
+    "args": {
+      "title": "HOW TO AUDIT THE CLIP",
+      "steps": [
+        [
+          "Start with identity",
+          ""
+        ],
+        [
+          "Check the known depth range and the animal's condition",
+          ""
+        ],
+        [
+          "Check the clock",
+          ""
+        ],
+        [
+          "Check location, currents, storms, temperature, oxygen, and capture method",
+          ""
+        ],
+        [
+          "Ask whether similar observations were collected with comparable effort",
+          ""
+        ]
+      ],
+      "note": "A single event can be real and important without proving a global trend"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "How I would audit the viral clip",
+    "narration": "A single event can be real and important without proving a global trend.",
+    "args": {
+      "lines": [
+        "A single event can",
+        "be real and important",
+        "without proving"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "From one sighting to a real trend",
+    "narration": "A trend needs a denominator. Ten unusual sightings can mean very different things if ten cameras were operating before and ten thousand are operating now.",
+    "args": {
+      "term": "A trend",
+      "meaning": "Needs a denominator",
+      "boundary": "Ten unusual sightings mean different things if ten cameras were operating before and ten thousand are operating now",
+      "source": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "From one sighting to a real trend",
+    "narration": "More ROV dives, fishing effort, phones, social media accounts, beach patrols, and reporting networks can increase the number of recorded events even when animal behavior has not changed.",
+    "args": {
+      "title": "WHAT CAN RAISE THE COUNT WITHOUT ANY CHANGE IN BEHAVIOR",
+      "items": [
+        "?More ROV dives",
+        "?More fishing effort",
+        "?More phones",
+        "?More social media accounts",
+        "?More beach patrols",
+        "?More reporting networks"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.03,
+    "heading": "From one sighting to a real trend",
+    "narration": "Researchers would want comparable observation effort, consistent identification, location, season, time of day, depth, and animal condition.",
+    "args": {
+      "term": "WHAT RESEARCHERS WOULD WANT",
+      "includes": [
+        "Comparable observation effort",
+        "Consistent identification, location and season",
+        "Time of day, depth, and animal condition"
+      ],
+      "excludes": [
+        "A collection of viral clips"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "From one sighting to a real trend",
+    "narration": "Without that structure, a collection of viral clips is a collection of anecdotes.",
+    "args": {
+      "lines": [
+        "Without that structure, a",
+        "collection of viral clips"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "From one sighting to a real trend",
+    "narration": "That does not mean every sighting should be dismissed. A stranded or injured deep resident can reveal local currents, temperature stress, disease, capture effects, or an unusual oceanographic event.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "From one sighting to a real trend",
+    "narration": "The responsible move is to narrow the claim. Instead of saying 'deep-sea creatures are surfacing,' say exactly what was observed: one oarfish was found at a location on a date; one deepwater shark was caught above its common range; one mass stranding occurred after a storm.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "From one sighting to a real trend",
+    "narration": "Specific language preserves the evidence and prevents the story from outrunning it.",
+    "args": {
+      "lines": [
+        "Specific language preserves the",
+        "evidence and prevents the",
+        "story"
+      ]
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "From one sighting to a real trend",
+    "narration": "For this episode, the retention payoff is the audit itself. The viewer sees a frightening headline become a set of testable questions.",
+    "args": {
+      "variant": 3
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.21,
+    "heading": "From one sighting to a real trend",
+    "narration": "Sometimes the final answer is normal migration. Sometimes it is injury. Sometimes it remains unknown.",
+    "args": {
+      "variant": 4
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "From one sighting to a real trend",
+    "narration": "Unknown is not a weak ending when the alternative is a fabricated trend.",
+    "args": {
+      "lines": [
+        "Unknown is not a",
+        "weak ending when the",
+        "alternative"
+      ]
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 8.69,
+    "heading": "The headline I would trust",
+    "narration": "A trustworthy headline names the animal and the observation. It does not turn one body into a message from the planet.",
+    "args": {
+      "title": "A TRUSTWORTHY HEADLINE",
+      "items": [
+        "+Names the animal",
+        "+Names the observation",
+        "-Turns one body into a message from the planet",
+        "?If a species is unknown, say that",
+        "?If the capture method could explain the ascent, include it",
+        "?If the animal was dead or injured, include that too"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "The headline I would trust",
+    "narration": "If a species is unknown, say that. If the capture method could explain the ascent, include it.",
+    "args": {
+      "lines": [
+        "If a species is",
+        "unknown, say that. If",
+        "the capture"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "The headline I would trust",
+    "narration": "If the animal was dead or injured, include that too. The difference may feel less dramatic, but it gives the audience something they can verify.",
+    "args": {
+      "title": "A TRUSTWORTHY HEADLINE",
+      "items": [
+        "+Names the animal",
+        "+Names the observation",
+        "-Turns one body into a message from the planet",
+        "?If a species is unknown, say that",
+        "?If the capture method could explain the ascent, include it",
+        "?If the animal was dead or injured, include that too"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "The headline I would trust",
+    "narration": "For a channel trying to build watch time over months, that credibility compounds.",
+    "args": {
+      "lines": [
+        "For a channel trying",
+        "to build watch time",
+        "over months"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 6.21,
+    "heading": "The headline I would trust",
+    "narration": "A viewer who catches one exaggerated claim may not trust the next nineteen accurate ones.",
+    "args": {
+      "title": "A TRUSTWORTHY HEADLINE",
+      "items": [
+        "+Names the animal",
+        "+Names the observation",
+        "-Turns one body into a message from the planet",
+        "?If a species is unknown, say that",
+        "?If the capture method could explain the ascent, include it",
+        "?If the animal was dead or injured, include that too"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "The headline I would trust",
+    "narration": "The human decision here is to leave the uncertainty in the story and make the investigation itself entertaining.",
+    "args": {
+      "lines": [
+        "The human decision here",
+        "is to leave the",
+        "uncertainty"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "What would change my mind",
+    "narration": "I would treat the surfacing claim as stronger if standardized surveys showed the same identified species appearing shallower across multiple years and locations, while observation effort stayed comparable.",
+    "args": {
+      "title": "WHAT WOULD CHANGE MY MIND",
+      "items": [
+        "?Standardized surveys showing the same identified species appearing shallower",
+        "?Across multiple years and locations",
+        "?With observation effort staying comparable",
+        "?Matching temperature, oxygen, prey, or current changes"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "What would change my mind",
+    "narration": "I would also look for matching temperature, oxygen, prey, or current changes.",
+    "args": {
+      "lines": [
+        "I would also look",
+        "for matching temperature, oxygen,",
+        "prey"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 5.79,
+    "heading": "What would change my mind",
+    "narration": "Until that evidence exists, the script should resist turning scattered events into one cause.",
+    "args": {
+      "title": "WHAT WOULD CHANGE MY MIND",
+      "items": [
+        "?Standardized surveys showing the same identified species appearing shallower",
+        "?Across multiple years and locations",
+        "?With observation effort staying comparable",
+        "?Matching temperature, oxygen, prey, or current changes"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "What would change my mind",
+    "narration": "This is not refusing the climate question. It is defining the evidence that would let us answer it.",
+    "args": {
+      "lines": [
+        "This is not refusing",
+        "the climate question. It",
+        "is defining"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The final test",
+    "narration": "If the species, condition, time, location, and observation effort are not available, the video must keep the conclusion narrow. Curiosity survives that restraint; credibility depends on it.",
+    "args": {
+      "lines": [
+        "If the species, condition,",
+        "time, location, and observation",
+        "effort"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Final editorial note",
+    "narration": "The final description should also link the exact observation to the canonical article so viewers can inspect the source trail rather than depend on the headline alone.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Final editorial note",
+    "narration": "The final description should also link the exact observation to the canonical article so viewers can inspect the source trail rather than depend on the headline alone.",
+    "args": {
+      "variant": 2
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "zone_column",
+    "seconds": 4.97,
+    "heading": "What to notice in the edit",
+    "narration": "This episode should look like an evidence audit, not a monster reveal.",
+    "args": {
+      "highlight": null
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "What to notice in the edit",
+    "narration": "Freeze the viral-style frame, then add one layer at a time: species name, normal depth, time, condition, location, and comparison data.",
+    "args": {
+      "lines": [
+        "Freeze the viral-style frame,",
+        "then add one layer"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "zone_column",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "The open loop is whether the animal is a normal migrant, an injured deep resident, or a genuinely unusual observation. The answer may remain uncertain, and that is acceptable.",
+    "args": {
+      "highlight": null
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "Diel vertical migration explains enormous routine movement in the water column, but it does not explain every deep animal found at the surface.",
+    "args": {
+      "term": "DIEL VERTICAL MIGRATION",
+      "includes": [
+        "Enormous routine movement in the water column"
+      ],
+      "excludes": [
+        "An explanation for every deep animal found at the surface"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 6.62,
+    "heading": "Evidence limit",
+    "narration": "A permanent deep resident may arrive because of injury, currents, capture, disease, or another local event.",
+    "args": {
+      "title": "WHY A PERMANENT DEEP RESIDENT MAY ARRIVE",
+      "items": [
+        "?Injury",
+        "?Currents",
+        "?Capture",
+        "?Disease",
+        "?Another local event"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "One observation cannot establish that deep-sea creatures as a group are surfacing more often. That claim requires repeated, standardized observations over time.",
+    "args": {
+      "lines": [
+        "One observation cannot establish",
+        "that deep-sea creatures as",
+        "a group"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "zone_column",
+    "seconds": 8.69,
+    "heading": "Closing",
+    "narration": "One strange sighting is a clue, not a diagnosis. The responsible story begins with species, condition, time, place, and previous records.",
+    "args": {
+      "highlight": null
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "If those pieces are missing, the honest headline is not 'the deep sea is changing.' It is 'we do not yet know why this animal was here.'",
+    "args": {
+      "lines": [
+        "If those pieces are",
+        "missing, the honest headline"
+      ]
+    },
+    "from": "directive-rhythm"
+  }
+]

@@ -1,0 +1,807 @@
+[
+  {
+    "segment": "size_ladder",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "Graphene can withstand 130 gigapascals of tensile stress before breaking. That measurement comes from atomic force microscopy tests on suspended single-layer samples published in Science.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "Steel fails around 0.4 gigapascals. But that 130 figure applies only to perfect sheets with no defects, no grain boundaries, and exactly one atomic layer.",
+    "args": {
+      "lines": [
+        "Steel fails around 0.4",
+        "gigapascals. But that 130",
+        "figure applies"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "size_ladder",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "The question is not whether graphene is strong in principle. The question is how that strength was measured, what it actually means, and why the number changes the moment you try to make something larger than a laboratory sample.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.28,
+    "heading": "The measurement that established the 130 gigapascal figure used suspended sheets and a diamond tip",
+    "narration": "The 130 gigapascal tensile strength comes from a 2008 study by Lee and colleagues at Columbia University, published in Science.",
+    "args": {
+      "variant": 0
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "material_image",
+    "seconds": 4.97,
+    "heading": "The measurement that established the 130 gigapascal figure used suspended sheets and a diamond tip",
+    "narration": "They suspended graphene sheets over circular wells etched into silicon dioxide substrates.",
+    "args": {
+      "subject": "graphene-lattice",
+      "label": "GRAPHENE",
+      "pick": 0
+    },
+    "from": "heuristic+material"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "The measurement that established the 130 gigapascal figure used suspended sheets and a diamond tip",
+    "narration": "The wells were one micrometer across. An atomic force microscope pressed a diamond tip into the center of each suspended sheet until it broke.",
+    "args": {
+      "variant": 1
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.21,
+    "heading": "The measurement that established the 130 gigapascal figure used suspended sheets and a diamond tip",
+    "narration": "The force at rupture, combined with the geometry of the deflection, gave the tensile strength.",
+    "args": {
+      "variant": 2
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The measurement that established the 130 gigapascal figure used suspended sheets and a diamond tip",
+    "narration": "The samples were mechanically exfoliated from graphite, meaning they were peeled off with adhesive tape, a method that produces high-quality single-layer sheets.",
+    "args": {
+      "lines": [
+        "The samples were mechanically",
+        "exfoliated from graphite, meaning",
+        "they"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "The measurement that established the 130 gigapascal figure used suspended sheets and a diamond tip",
+    "narration": "The measurement required the graphene to be free-standing, not supported by a substrate, because a substrate would carry part of the load and obscure the intrinsic strength.",
+    "args": {
+      "variant": 3
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.03,
+    "heading": "The measurement that established the 130 gigapascal figure used suspended sheets and a diamond tip",
+    "narration": "The 130 gigapascal figure is an intrinsic property of the carbon-carbon bonds in a perfect hexagonal lattice.",
+    "args": {
+      "variant": 4
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "The measurement that established the 130 gigapascal figure used suspended sheets and a diamond tip",
+    "narration": "Each carbon atom forms three covalent bonds with its neighbors, and those bonds are among the strongest in chemistry.",
+    "args": {
+      "lines": [
+        "Each carbon atom forms",
+        "three covalent bonds with",
+        "its neighbors"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.69,
+    "heading": "The measurement that established the 130 gigapascal figure used suspended sheets and a diamond tip",
+    "narration": "The measurement confirmed what density functional theory calculations had predicted. But the measurement also revealed that strength drops rapidly with defects.",
+    "args": {
+      "variant": 0
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 4.97,
+    "heading": "The measurement that established the 130 gigapascal figure used suspended sheets and a diamond tip",
+    "narration": "Samples with even small tears or vacancies broke at much lower stress.",
+    "args": {
+      "variant": 1
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The measurement that established the 130 gigapascal figure used suspended sheets and a diamond tip",
+    "narration": "The diamond tip itself was a source of uncertainty. Its radius was approximately twenty nanometers, and the exact contact geometry affected the stress calculation.",
+    "args": {
+      "lines": [
+        "The diamond tip itself",
+        "was a source of",
+        "uncertainty."
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 4.97,
+    "heading": "The measurement that established the 130 gigapascal figure used suspended sheets and a diamond tip",
+    "narration": "The published figure carries an uncertainty of plus or minus ten gigapascals.",
+    "args": {
+      "variant": 2
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.21,
+    "heading": "Strength depends on the definition of strength and the direction of the force",
+    "narration": "Tensile strength is how much a material resists being stretched to the point of separating.",
+    "args": {
+      "variant": 3
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "material_image",
+    "seconds": 5.38,
+    "heading": "Strength depends on the definition of strength and the direction of the force",
+    "narration": "Graphene's 130 gigapascals applies to in-plane tension, meaning force applied along the sheet.",
+    "args": {
+      "subject": "graphene-lattice",
+      "label": "GRAPHENE",
+      "pick": 1
+    },
+    "from": "heuristic+material"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Strength depends on the definition of strength and the direction of the force",
+    "narration": "Out-of-plane strength, the resistance to pulling layers apart, is much lower. Graphene layers are held together by van der Waals forces, not covalent bonds.",
+    "args": {
+      "variant": 4
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.79,
+    "heading": "Strength depends on the definition of strength and the direction of the force",
+    "narration": "Those forces are weak. Graphite, which is stacked graphene, cleaves easily along the layers.",
+    "args": {
+      "variant": 0
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Strength depends on the definition of strength and the direction of the force",
+    "narration": "That is why pencils work. The term \"strength\" without qualification can mean tensile strength, compressive strength, shear strength, or tear resistance.",
+    "args": {
+      "lines": [
+        "That is why pencils",
+        "work. The term \"strength\"",
+        "without qualification"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 4.97,
+    "heading": "Strength depends on the definition of strength and the direction of the force",
+    "narration": "Graphene excels at tensile strength but not at all the others equally.",
+    "args": {
+      "variant": 1
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.79,
+    "heading": "Strength depends on the definition of strength and the direction of the force",
+    "narration": "The 130 gigapascal figure does not describe how graphene behaves under compression or bending.",
+    "args": {
+      "variant": 2
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Strength depends on the definition of strength and the direction of the force",
+    "narration": "Young's modulus, a measure of stiffness, is a separate property. Graphene's Young's modulus is approximately one terapascal, meaning it resists stretching even under small loads.",
+    "args": {
+      "lines": [
+        "Young's modulus, a measure",
+        "of stiffness, is a",
+        "separate property."
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.21,
+    "heading": "Strength depends on the definition of strength and the direction of the force",
+    "narration": "High tensile strength and high stiffness together make graphene exceptional. But stiffness is not strength.",
+    "args": {
+      "variant": 3
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Strength depends on the definition of strength and the direction of the force",
+    "narration": "A material can be stiff and brittle, or strong and flexible. Graphene is both stiff and strong in its plane, but only one atom thick, so any out-of-plane force can wrinkle or fold it.",
+    "args": {
+      "variant": 4
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "Strength depends on the definition of strength and the direction of the force",
+    "narration": "The mechanical behavior depends on the geometry of the sample and the direction of the applied force.",
+    "args": {
+      "lines": [
+        "The mechanical behavior depends",
+        "on the geometry of",
+        "the sample"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.62,
+    "heading": "Defects reduce strength by orders of magnitude",
+    "narration": "A single vacancy, where one carbon atom is missing, reduces local strength by more than half.",
+    "args": {
+      "variant": 0
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "Defects reduce strength by orders of magnitude",
+    "narration": "Grain boundaries, where two graphene crystals meet at an angle, create lines of weakness.",
+    "args": {
+      "lines": [
+        "Grain boundaries, where two",
+        "graphene crystals meet at",
+        "an angle"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.21,
+    "heading": "Defects reduce strength by orders of magnitude",
+    "narration": "Polycrystalline graphene, which is what chemical vapor deposition produces at scale, contains many grain boundaries.",
+    "args": {
+      "variant": 1
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Defects reduce strength by orders of magnitude",
+    "narration": "Measured tensile strength in polycrystalline samples ranges from ten to fifty gigapascals, still high compared to conventional materials, but far below the defect-free limit.",
+    "args": {
+      "variant": 2
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Defects reduce strength by orders of magnitude",
+    "narration": "The 130 gigapascal figure applies only to samples with no measurable defects over the area tested.",
+    "args": {
+      "lines": [
+        "The 130 gigapascal figure",
+        "applies only to samples"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.86,
+    "heading": "Defects reduce strength by orders of magnitude",
+    "narration": "Those samples are small, typically a few micrometers across, and produced by mechanical exfoliation. Larger samples inevitably contain defects.",
+    "args": {
+      "variant": 3
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.45,
+    "heading": "Defects reduce strength by orders of magnitude",
+    "narration": "The presence of defects makes strength a statistical property. A large sheet will break at its weakest point.",
+    "args": {
+      "variant": 4
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Defects reduce strength by orders of magnitude",
+    "narration": "The probability of a defect-free region decreases with area. This is why the strongest measured samples are the smallest.",
+    "args": {
+      "lines": [
+        "The probability of a",
+        "defect-free region decreases with",
+        "area."
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Defects reduce strength by orders of magnitude",
+    "narration": "Scaling up production means accepting lower average strength. Chemical vapor deposition can grow graphene sheets meters across, but those sheets are polycrystalline and contain wrinkles, tears, and contamination.",
+    "args": {
+      "variant": 0
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Defects reduce strength by orders of magnitude",
+    "narration": "The trade-off between size and quality is fundamental. No one has measured 130 gigapascals in a sample large enough to use in a structural application.",
+    "args": {
+      "variant": 1
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 9.0,
+    "heading": "Producer POV",
+    "narration": "The 130 gigapascal figure is real, and I kept wanting to drop the qualifier and just call graphene 'the strongest material.' It's the strongest material tested, on a defect-free micrometer sample \u2014 not yet a material you could build anything from.",
+    "args": {
+      "text": "The 130 gigapascal figure is real, and I kept wanting to drop the qualifier and just call graphene 'the strongest material.' It's the strongest material tested, on a defect-free micrometer sample \u2014 not yet a material you could build anything from.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.21,
+    "heading": "The measurement method itself limits what can be tested",
+    "narration": "Atomic force microscopy nanoindentation works only on samples that can be suspended over a well.",
+    "args": {
+      "variant": 2
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The measurement method itself limits what can be tested",
+    "narration": "The well must be small enough that the graphene does not sag under its own weight, but large enough that the deflection is measurable.",
+    "args": {
+      "lines": [
+        "The well must be",
+        "small enough that the",
+        "graphene does"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.69,
+    "heading": "The measurement method itself limits what can be tested",
+    "narration": "Wells in the Columbia study were one micrometer across. Larger wells require thicker membranes or additional support, which changes the measurement.",
+    "args": {
+      "variant": 3
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "The measurement method itself limits what can be tested",
+    "narration": "The diamond tip must be sharp enough to concentrate force, but not so sharp that it punctures the graphene before tensile failure occurs.",
+    "args": {
+      "variant": 4
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The measurement method itself limits what can be tested",
+    "narration": "The method is destructive. Each measurement breaks the sample. Statistical confidence requires many measurements on many samples, and each sample must be prepared individually. This is why the published data set is small.",
+    "args": {
+      "lines": [
+        "The method is destructive.",
+        "Each measurement breaks the",
+        "sample. Statistical"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.45,
+    "heading": "The measurement method itself limits what can be tested",
+    "narration": "Other methods exist. Raman spectroscopy can measure strain in graphene non-destructively, but it does not directly measure strength.",
+    "args": {
+      "variant": 0
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.62,
+    "heading": "The measurement method itself limits what can be tested",
+    "narration": "Tensile testing machines can pull on macroscopic samples, but gripping graphene without damaging it is difficult.",
+    "args": {
+      "variant": 1
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The measurement method itself limits what can be tested",
+    "narration": "The AFM nanoindentation method remains the standard for measuring intrinsic strength because it isolates a small, defect-free region and applies a well-defined load.",
+    "args": {
+      "lines": [
+        "The AFM nanoindentation method",
+        "remains the standard for",
+        "measuring intrinsic"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "The measurement method itself limits what can be tested",
+    "narration": "But it cannot test bulk material. The 130 gigapascal figure is the strength of an ideal sample under ideal conditions, not the strength of graphene as you would encounter it in a composite or coating.",
+    "args": {
+      "variant": 2
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.86,
+    "heading": "Comparisons to other materials depend on how you normalize the measurement",
+    "narration": "Graphene's density is approximately 2200 kilograms per cubic meter, much lower than steel at 7850 kilograms per cubic meter.",
+    "args": {
+      "variant": 3
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Comparisons to other materials depend on how you normalize the measurement",
+    "narration": "Specific strength, which is tensile strength divided by density, accounts for weight.",
+    "args": {
+      "lines": [
+        "Specific strength, which is",
+        "tensile strength divided by",
+        "density, accounts"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.62,
+    "heading": "Comparisons to other materials depend on how you normalize the measurement",
+    "narration": "Graphene's specific strength is roughly 59 megapascal-meters cubed per kilogram, far higher than any other material.",
+    "args": {
+      "variant": 4
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.62,
+    "heading": "Comparisons to other materials depend on how you normalize the measurement",
+    "narration": "But specific strength is meaningful only if you can make a structure out of the material.",
+    "args": {
+      "variant": 0
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Comparisons to other materials depend on how you normalize the measurement",
+    "narration": "A single atomic layer cannot be a beam or a cable. Graphene composites, where graphene flakes are embedded in a polymer or metal matrix, have lower specific strength than pure graphene because the matrix carries most of the load.",
+    "args": {
+      "lines": [
+        "A single atomic layer",
+        "cannot be a beam"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 4.97,
+    "heading": "Comparisons to other materials depend on how you normalize the measurement",
+    "narration": "The record-breaking figure applies to the material in isolation, not in use.",
+    "args": {
+      "variant": 1
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.86,
+    "heading": "Comparisons to other materials depend on how you normalize the measurement",
+    "narration": "The distinction between intrinsic and practical strength matters. Intrinsic strength is what the material can do under perfect conditions.",
+    "args": {
+      "variant": 2
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Comparisons to other materials depend on how you normalize the measurement",
+    "narration": "Practical strength is what it does in an application. Carbon fiber composites, for example, have practical tensile strengths around seven gigapascals, far below graphene's intrinsic limit but far above what graphene composites achieve today.",
+    "args": {
+      "lines": [
+        "Practical strength is what",
+        "it does in an",
+        "application. Carbon"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.86,
+    "heading": "Comparisons to other materials depend on how you normalize the measurement",
+    "narration": "The challenge is translating atomic-scale perfection into macroscopic performance. Load transfer between graphene flakes in a composite is inefficient.",
+    "args": {
+      "variant": 3
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.69,
+    "heading": "Comparisons to other materials depend on how you normalize the measurement",
+    "narration": "The matrix-flake interface is weak. The flakes themselves contain defects. Current graphene composites improve stiffness and electrical conductivity more than strength.",
+    "args": {
+      "variant": 4
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "thermal_ascent",
+    "seconds": 5.38,
+    "heading": "What to notice in the edit",
+    "narration": "The 130 gigapascal measurement has been replicated by other groups using similar methods.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "What to notice in the edit",
+    "narration": "A 2012 study at Rice University measured comparable values on chemical vapor deposition graphene with low defect density.",
+    "args": {
+      "lines": [
+        "A 2012 study at",
+        "Rice University measured comparable",
+        "values"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "thermal_ascent",
+    "seconds": 4.97,
+    "heading": "What to notice in the edit",
+    "narration": "A 2015 study at MIT confirmed that grain boundaries reduce strength predictably.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.62,
+    "heading": "What to notice in the edit",
+    "narration": "The consistency across methods and institutions supports the figure. But all measurements share the same limitation.",
+    "args": {
+      "variant": 0
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "They test small, carefully prepared samples. No one has demonstrated 130 gigapascals in a sample you could use to build something. The figure is real, but its applicability is narrow.",
+    "args": {
+      "lines": [
+        "They test small, carefully",
+        "prepared samples. No one",
+        "has demonstrated"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "thermal_ascent",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "The measurement also depends on temperature and loading rate. Graphene tested at cryogenic temperatures shows slightly higher strength because thermal vibrations are reduced.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.21,
+    "heading": "What to notice in the edit",
+    "narration": "Faster loading rates can give higher apparent strength because defects have less time to propagate.",
+    "args": {
+      "variant": 1
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "What to notice in the edit",
+    "narration": "The published 130 gigapascal figure is for room temperature and a loading rate typical of atomic force microscopy.",
+    "args": {
+      "lines": [
+        "The published 130 gigapascal",
+        "figure is for room",
+        "temperature"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "thermal_ascent",
+    "seconds": 7.03,
+    "heading": "What to notice in the edit",
+    "narration": "Different conditions would yield different numbers, though the variation is small compared to the effect of defects.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "size_ladder",
+    "seconds": 8.28,
+    "heading": "Evidence limit",
+    "narration": "The 130 gigapascal tensile strength is the upper limit for defect-free, single-layer graphene under in-plane tension, measured on micrometer-scale samples.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Evidence limit",
+    "narration": "It does not describe the strength of graphene in composites, coatings, or any form larger than a laboratory sample.",
+    "args": {
+      "lines": [
+        "It does not describe",
+        "the strength of graphene",
+        "in composites"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "size_ladder",
+    "seconds": 8.28,
+    "heading": "Evidence limit",
+    "narration": "It does not account for out-of-plane forces, shear, or long-term loading. The measurement is precise, but the conditions are specific.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "Extrapolating from a one-micrometer suspended sheet to a meter-scale structure requires assumptions about defect density, grain boundaries, and load distribution that the measurement does not validate.",
+    "args": {
+      "variant": 2
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "Evidence limit",
+    "narration": "The evidence tells you what graphene can do in principle, not what it will do in practice.",
+    "args": {
+      "lines": [
+        "The evidence tells you",
+        "what graphene can do",
+        "in principle"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "Graphene is the strongest material ever tested under controlled conditions. That strength is a property of its atomic structure, measured with precision and confirmed by theory.",
+    "args": {
+      "variant": 3
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "But the measurement applies to an ideal case. The moment you scale up, introduce defects, or change the geometry, the number changes.",
+    "args": {
+      "lines": [
+        "But the measurement applies",
+        "to an ideal case.",
+        "The moment"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.62,
+    "heading": "Closing",
+    "narration": "Knowing the limit tells you what is possible. Knowing the conditions tells you what is likely.",
+    "args": {
+      "variant": 4
+    },
+    "from": "heuristic"
+  }
+]

@@ -1,0 +1,1161 @@
+[
+  {
+    "segment": "process_column",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "Tempered glass shatters into hundreds of small pieces because its surface is under permanent compression, typically 69 to 103 megapascals according to ASTM C1048, while its core is under tension.",
+    "args": {
+      "highlight": null
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "Once a crack reaches the interior, the stored elastic energy drives branching at speeds approaching 1500 meters per second in soda-lime glass, as documented by fracture mechanics studies at MIT.",
+    "args": {
+      "lines": [
+        "Once a crack reaches",
+        "the interior, the stored",
+        "elastic energy"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_column",
+    "seconds": 7.45,
+    "heading": "Cold open",
+    "narration": "The pattern you see is not random. It is the release of a stress field engineered during cooling.",
+    "args": {
+      "highlight": null
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 3.5,
+    "heading": "Title card",
+    "narration": "How does tempered glass shatter?",
+    "args": {
+      "lines": [
+        "How does tempered glass",
+        "shatter?"
+      ]
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "The stress is built in before the glass ever leaves the factory",
+    "narration": "The tempering process begins with annealed glass heated to between 620 and 650 degrees Celsius, above its glass transition temperature but below its melting point.",
+    "args": {
+      "title": "TEMPERING",
+      "stages": [
+        "Heat to 620\u2013650\u00b0C",
+        "Rapid air quench",
+        "Surface solidifies first",
+        "Core contracts against solid shell"
+      ],
+      "conclusion": "Permanent stress field"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "The stress is built in before the glass ever leaves the factory",
+    "narration": "High-pressure air jets then cool the surfaces rapidly while the interior remains hot and expanded.",
+    "args": {
+      "lines": [
+        "High-pressure air jets then",
+        "cool the surfaces rapidly",
+        "while"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 5.38,
+    "heading": "The stress is built in before the glass ever leaves the factory",
+    "narration": "When the core finally cools, it contracts, but the surfaces have already solidified.",
+    "args": {
+      "title": "TEMPERING",
+      "stages": [
+        "Heat to 620\u2013650\u00b0C",
+        "Rapid air quench",
+        "Surface solidifies first",
+        "Core contracts against solid shell"
+      ],
+      "conclusion": "Permanent stress field"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "The stress is built in before the glass ever leaves the factory",
+    "narration": "The result is a permanent state where the surfaces are squeezed inward and the core is stretched outward.",
+    "args": {
+      "lines": [
+        "The result is a",
+        "permanent state where the",
+        "surfaces"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 8.69,
+    "heading": "The stress is built in before the glass ever leaves the factory",
+    "narration": "This is not a coating or a treatment that wears off. It is a frozen stress distribution throughout the entire thickness.",
+    "args": {
+      "title": "TEMPERING",
+      "stages": [
+        "Heat to 620\u2013650\u00b0C",
+        "Rapid air quench",
+        "Surface solidifies first",
+        "Core contracts against solid shell"
+      ],
+      "conclusion": "Permanent stress field"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 9.0,
+    "heading": "The stress is built in before the glass ever leaves the factory",
+    "narration": "ASTM International specifies that the surface compression in tempered glass must reach at least 69 megapascals, with typical values extending to 103 megapascals.",
+    "args": {
+      "value": "69\u2013103",
+      "unit": "MPa",
+      "caption": "Surface compression range, ASTM C1048",
+      "source": "ASTM International"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "The stress is built in before the glass ever leaves the factory",
+    "narration": "The interior tension is lower in magnitude but distributed through a greater volume.",
+    "args": {
+      "lines": [
+        "The interior tension is",
+        "lower in magnitude but",
+        "distributed through"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 7.03,
+    "heading": "The stress is built in before the glass ever leaves the factory",
+    "narration": "The two zones balance exactly. If they did not, the glass would curve or warp during cooling.",
+    "args": {
+      "value": "69\u2013103",
+      "unit": "MPa",
+      "caption": "Surface compression range, ASTM C1048",
+      "source": "ASTM International"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "The stress is built in before the glass ever leaves the factory",
+    "narration": "The stress field is in equilibrium, but it is not stable against penetration.",
+    "args": {
+      "lines": [
+        "The stress field is",
+        "in equilibrium, but it"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 9.0,
+    "heading": "The stress is built in before the glass ever leaves the factory",
+    "narration": "The compression layer typically extends about one millimeter from each surface in a six-millimeter panel, leaving the central four millimeters under tension.",
+    "args": {
+      "value": "69\u2013103",
+      "unit": "MPa",
+      "caption": "Surface compression range, ASTM C1048",
+      "source": "ASTM International"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "A surface crack alone does not trigger the cascade",
+    "narration": "You can scratch the surface of tempered glass without shattering it, as long as the scratch does not penetrate through the compression layer.",
+    "args": {
+      "term": "Surface damage",
+      "includes": [
+        "Arrested by compression"
+      ],
+      "excludes": [
+        "Immediate failure"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "A surface crack alone does not trigger the cascade",
+    "narration": "The compressive stress actively closes surface cracks, preventing them from propagating. This is why tempered glass is stronger than annealed glass under bending or impact.",
+    "args": {
+      "lines": [
+        "The compressive stress actively",
+        "closes surface cracks, preventing",
+        "them"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 6.21,
+    "heading": "A surface crack alone does not trigger the cascade",
+    "narration": "The surface, where tensile stress would normally initiate failure, is pre-loaded in the opposite direction.",
+    "args": {
+      "term": "Surface damage",
+      "includes": [
+        "Arrested by compression"
+      ],
+      "excludes": [
+        "Immediate failure"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "A surface crack alone does not trigger the cascade",
+    "narration": "A crack must reach the tensile core before the stored energy becomes available for fracture.",
+    "args": {
+      "lines": [
+        "A crack must reach",
+        "the tensile core before",
+        "the stored"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "A surface crack alone does not trigger the cascade",
+    "narration": "The transition from compression to tension is not abrupt at the atomic scale, but it is functionally sharp in engineering terms.",
+    "args": {
+      "lines": [
+        "The transition from compression",
+        "to tension is not",
+        "abrupt"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "A surface crack alone does not trigger the cascade",
+    "narration": "The stress gradient is steep. Once a flaw breaches the compression zone and enters the tension zone, the crack tip experiences a sudden increase in driving force.",
+    "args": {
+      "term": "Surface damage",
+      "includes": [
+        "Arrested by compression"
+      ],
+      "excludes": [
+        "Immediate failure"
+      ]
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "A surface crack alone does not trigger the cascade",
+    "narration": "The glass does not gradually weaken. It switches states. The crack that was stable in compression becomes unstable in tension, and the propagation begins.",
+    "args": {
+      "lines": [
+        "The glass does not",
+        "gradually weaken. It switches",
+        "states."
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "thermal_ascent",
+    "seconds": 8.69,
+    "heading": "The fracture propagates faster than sound in air",
+    "narration": "Crack propagation in soda-lime glass, the material used in most architectural and automotive tempered glass, can reach 1500 meters per second.",
+    "args": {
+      "to_temp": 1500,
+      "label": "m/s crack velocity in soda-lime glass"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "The fracture propagates faster than sound in air",
+    "narration": "That is faster than the speed of sound in air and roughly half the speed of sound in the glass itself.",
+    "args": {
+      "lines": [
+        "That is faster than",
+        "the speed of sound",
+        "in air"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "thermal_ascent",
+    "seconds": 6.62,
+    "heading": "The fracture propagates faster than sound in air",
+    "narration": "At these velocities, the crack does not have time to find the path of least resistance.",
+    "args": {
+      "to_temp": 1500,
+      "label": "m/s crack velocity in soda-lime glass"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "The fracture propagates faster than sound in air",
+    "narration": "It moves nearly straight until it encounters another crack or a boundary.",
+    "args": {
+      "lines": [
+        "It moves nearly straight",
+        "until it encounters another",
+        "crack"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "thermal_ascent",
+    "seconds": 9.0,
+    "heading": "The fracture propagates faster than sound in air",
+    "narration": "The branching you see is not the crack choosing directions. It is the crack splitting because it is moving too fast to remain singular.",
+    "args": {
+      "to_temp": 1500,
+      "label": "m/s crack velocity in soda-lime glass"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 4.97,
+    "heading": "The fracture propagates faster than sound in air",
+    "narration": "The sequence begins when a sharp, hard object penetrates the compression layer.",
+    "args": {
+      "title": "Fracture sequence",
+      "steps": [
+        [
+          "Penetration to core",
+          ""
+        ],
+        [
+          "Tension release begins",
+          ""
+        ],
+        [
+          "Primary crack accelerates",
+          ""
+        ],
+        [
+          "Branching initiates",
+          ""
+        ],
+        [
+          "Secondary cracks intersect",
+          ""
+        ]
+      ],
+      "note": "Fragment size set by stress magnitude"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "The fracture propagates faster than sound in air",
+    "narration": "A pointed impact, such as a ceramic chip or a metal corner, concentrates force into a small area.",
+    "args": {
+      "lines": [
+        "A pointed impact, such",
+        "as a ceramic chip"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 6.21,
+    "heading": "The fracture propagates faster than sound in air",
+    "narration": "Once the core is reached, the stored tension drives the crack outward in all directions.",
+    "args": {
+      "title": "Fracture sequence",
+      "steps": [
+        [
+          "Penetration to core",
+          ""
+        ],
+        [
+          "Tension release begins",
+          ""
+        ],
+        [
+          "Primary crack accelerates",
+          ""
+        ],
+        [
+          "Branching initiates",
+          ""
+        ],
+        [
+          "Secondary cracks intersect",
+          ""
+        ]
+      ],
+      "note": "Fragment size set by stress magnitude"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "The fracture propagates faster than sound in air",
+    "narration": "The crack velocity is high enough that the glass cannot dissipate energy smoothly.",
+    "args": {
+      "lines": [
+        "The crack velocity is",
+        "high enough that the",
+        "glass cannot"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 5.38,
+    "heading": "The fracture propagates faster than sound in air",
+    "narration": "Instead, the crack front becomes unstable and splits. Each branch can split again.",
+    "args": {
+      "title": "Fracture sequence",
+      "steps": [
+        [
+          "Penetration to core",
+          ""
+        ],
+        [
+          "Tension release begins",
+          ""
+        ],
+        [
+          "Primary crack accelerates",
+          ""
+        ],
+        [
+          "Branching initiates",
+          ""
+        ],
+        [
+          "Secondary cracks intersect",
+          ""
+        ]
+      ],
+      "note": "Fragment size set by stress magnitude"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "The fracture propagates faster than sound in air",
+    "narration": "The process continues until the stress field is exhausted or the fragments are too small to support further branching.",
+    "args": {
+      "lines": [
+        "The process continues until",
+        "the stress field is",
+        "exhausted"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.38,
+    "heading": "The fracture propagates faster than sound in air",
+    "narration": "The branching is not chaotic. It follows the principles of dynamic fracture mechanics.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "The fracture propagates faster than sound in air",
+    "narration": "A crack moving at high speed in a brittle material becomes unstable above a critical velocity, typically around 40 percent of the material's Rayleigh wave speed.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 6.21,
+    "heading": "The fracture propagates faster than sound in air",
+    "narration": "For soda-lime glass, that threshold is crossed almost immediately once the core tension is tapped.",
+    "args": {
+      "title": "Fracture sequence",
+      "steps": [
+        [
+          "Penetration to core",
+          ""
+        ],
+        [
+          "Tension release begins",
+          ""
+        ],
+        [
+          "Primary crack accelerates",
+          ""
+        ],
+        [
+          "Branching initiates",
+          ""
+        ],
+        [
+          "Secondary cracks intersect",
+          ""
+        ]
+      ],
+      "note": "Fragment size set by stress magnitude"
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.79,
+    "heading": "The fracture propagates faster than sound in air",
+    "narration": "The crack does not accelerate smoothly to branching. It starts fast and branches early.",
+    "args": {
+      "variant": 3
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Fragment size is determined by the magnitude of the residual stress",
+    "narration": "The higher the residual stress, the smaller the fragments. ASTM C1048 does not specify an exact fragment size but provides a particle count test to verify that the glass has been adequately tempered.",
+    "args": {
+      "lines": [
+        "The higher the residual",
+        "stress, the smaller the",
+        "fragments. ASTM"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Fragment size is determined by the magnitude of the residual stress",
+    "narration": "In practice, fragments range from a few millimeters to about ten millimeters on a side, though the distribution is wide and the published range extends from roughly 2 to 15 millimeters depending on the study.",
+    "args": {
+      "lines": [
+        "In practice, fragments range",
+        "from a few millimeters",
+        "to about"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 9.0,
+    "heading": "Fragment size is determined by the magnitude of the residual stress",
+    "narration": "The stress field determines how much energy is available per unit volume. More energy means more branching events before the cracks lose momentum.",
+    "args": {
+      "title": "Fragment size",
+      "sources": [
+        [
+          "ASTM",
+          "Particle count test"
+        ],
+        [
+          "NIST",
+          "Fracture energy data"
+        ]
+      ]
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 9.0,
+    "heading": "Fragment size is determined by the magnitude of the residual stress",
+    "narration": "The relationship between stress and fragment size is empirical. NIST fracture mechanics data show that the energy release rate scales with the square of the stress intensity.",
+    "args": {
+      "title": "Fragment size",
+      "sources": [
+        [
+          "ASTM",
+          "Particle count test"
+        ],
+        [
+          "NIST",
+          "Fracture energy data"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Fragment size is determined by the magnitude of the residual stress",
+    "narration": "Higher surface compression implies higher core tension, which implies more stored elastic energy.",
+    "args": {
+      "lines": [
+        "Higher surface compression implies",
+        "higher core tension, which",
+        "implies"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 6.62,
+    "heading": "Fragment size is determined by the magnitude of the residual stress",
+    "narration": "When that energy is released, it must go somewhere. It goes into creating new crack surfaces.",
+    "args": {
+      "title": "Fragment size",
+      "sources": [
+        [
+          "ASTM",
+          "Particle count test"
+        ],
+        [
+          "NIST",
+          "Fracture energy data"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Fragment size is determined by the magnitude of the residual stress",
+    "narration": "The more surfaces created, the smaller the pieces. The correlation is strong but not precise enough to predict individual fragment dimensions.",
+    "args": {
+      "lines": [
+        "The more surfaces created,",
+        "the smaller the pieces.",
+        "The correlation"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "The pattern is not entirely uniform",
+    "narration": "If you examine the fracture pattern closely, you will see radial cracks emanating from the point of impact and circumferential cracks forming rings around it.",
+    "args": {
+      "title": "Fracture characteristics",
+      "items": [
+        "+Radial cracks from impact point",
+        "+Circumferential cracks in compression zone",
+        "+Dice pattern in core",
+        "-Predictable individual fragment shape"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The pattern is not entirely uniform",
+    "narration": "The radial cracks form first, driven by the local stress concentration. The circumferential cracks form as the surface compression tries to contain the expanding fracture.",
+    "args": {
+      "lines": [
+        "The radial cracks form",
+        "first, driven by the",
+        "local stress"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 7.03,
+    "heading": "The pattern is not entirely uniform",
+    "narration": "In the core, where tension dominates, the pattern becomes more uniform, often described as a dice pattern.",
+    "args": {
+      "title": "Fracture characteristics",
+      "items": [
+        "+Radial cracks from impact point",
+        "+Circumferential cracks in compression zone",
+        "+Dice pattern in core",
+        "-Predictable individual fragment shape"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "The pattern is not entirely uniform",
+    "narration": "Individual fragment shapes are irregular because crack paths interact in complex ways, but the overall scale is consistent across the panel.",
+    "args": {
+      "lines": [
+        "Individual fragment shapes are",
+        "irregular because crack paths",
+        "interact"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The pattern is not entirely uniform",
+    "narration": "The dice pattern is a signature of high residual tension. Annealed glass, which has no residual stress, fractures into a small number of large, irregular shards.",
+    "args": {
+      "lines": [
+        "The dice pattern is",
+        "a signature of high",
+        "residual tension."
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 8.69,
+    "heading": "The pattern is not entirely uniform",
+    "narration": "Heat-strengthened glass, which has lower residual stress than fully tempered glass, produces larger fragments than tempered glass but smaller than annealed.",
+    "args": {
+      "title": "Fracture characteristics",
+      "items": [
+        "+Radial cracks from impact point",
+        "+Circumferential cracks in compression zone",
+        "+Dice pattern in core",
+        "-Predictable individual fragment shape"
+      ],
+      "note": ""
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The pattern is not entirely uniform",
+    "narration": "The fragment size is a direct readout of the stress state. You can estimate how much energy was stored by counting how many pieces result.",
+    "args": {
+      "lines": [
+        "The fragment size is",
+        "a direct readout of",
+        "the stress"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Why tempered glass is used despite this behavior",
+    "narration": "The reason tempered glass is required in car windows, shower doors, and building facades is not that it is harder to break.",
+    "args": {
+      "term": "Failure mode",
+      "includes": [
+        "Many small blunt pieces"
+      ],
+      "excludes": [
+        "Large sharp shards"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "Why tempered glass is used despite this behavior",
+    "narration": "It is that when it does break, it produces fragments with relatively low injury potential.",
+    "args": {
+      "lines": [
+        "It is that when",
+        "it does break, it",
+        "produces fragments"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 4.97,
+    "heading": "Why tempered glass is used despite this behavior",
+    "narration": "Annealed glass fractures into long, sharp shards that can cause deep lacerations.",
+    "args": {
+      "term": "Failure mode",
+      "includes": [
+        "Many small blunt pieces"
+      ],
+      "excludes": [
+        "Large sharp shards"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Why tempered glass is used despite this behavior",
+    "narration": "Tempered glass fractures into small, blocky pieces with edges that are less likely to cut deeply. The failure is more dramatic, but the consequences are less severe.",
+    "args": {
+      "lines": [
+        "Tempered glass fractures into",
+        "small, blocky pieces with",
+        "edges"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 9.0,
+    "heading": "Why tempered glass is used despite this behavior",
+    "narration": "Tempered glass is also four to five times stronger than annealed glass of the same thickness under bending loads, according to ASTM standards.",
+    "args": {
+      "value": "4\u20135",
+      "unit": "\u00d7",
+      "caption": "Strength multiplier over annealed glass",
+      "source": "ASTM International"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Why tempered glass is used despite this behavior",
+    "narration": "The surface compression must be overcome before tensile stress can develop at the surface, where cracks normally initiate.",
+    "args": {
+      "lines": [
+        "The surface compression must",
+        "be overcome before tensile",
+        "stress"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 4.97,
+    "heading": "Why tempered glass is used despite this behavior",
+    "narration": "This makes tempered glass suitable for applications where impact resistance is required.",
+    "args": {
+      "value": "4\u20135",
+      "unit": "\u00d7",
+      "caption": "Strength multiplier over annealed glass",
+      "source": "ASTM International"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Why tempered glass is used despite this behavior",
+    "narration": "The trade-off is that once the compression layer is breached, the entire panel fails at once.",
+    "args": {
+      "lines": [
+        "The trade-off is that",
+        "once the compression layer",
+        "is breached"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 4.97,
+    "heading": "Why tempered glass is used despite this behavior",
+    "narration": "There is no partial failure. The glass is either intact or shattered.",
+    "args": {
+      "value": "4\u20135",
+      "unit": "\u00d7",
+      "caption": "Strength multiplier over annealed glass",
+      "source": "ASTM International"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 5.38,
+    "heading": "Producer POV",
+    "narration": "I almost opened on the moment of impact, because that's the dramatic beat.",
+    "args": {
+      "text": "I almost opened on the moment of impact, because that's the dramatic beat.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 9.0,
+    "heading": "Producer POV",
+    "narration": "But impact doesn't decide the fracture pattern \u2014 the cooling process already did, weeks earlier. I moved the real event to where it actually happens.",
+    "args": {
+      "text": "But impact doesn't decide the fracture pattern \u2014 the cooling process already did, weeks earlier. I moved the real event to where it actually happens.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "The edge is the weakest point",
+    "narration": "The edges of a tempered glass panel are more vulnerable than the faces because the core tension is exposed at the cut boundary.",
+    "args": {
+      "term": "Edge strength",
+      "meaning": "Resistance to impact at cut boundary",
+      "boundary": "Lower than face strength due to exposed core",
+      "source": "ASTM C1048"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The edge is the weakest point",
+    "narration": "During manufacturing, the edges are often ground or polished to remove flaws, but they cannot be placed under the same compressive stress as the faces.",
+    "args": {
+      "lines": [
+        "During manufacturing, the edges",
+        "are often ground or",
+        "polished"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 6.62,
+    "heading": "The edge is the weakest point",
+    "narration": "A sharp impact to the edge can initiate a crack that immediately enters the tension zone.",
+    "args": {
+      "term": "Edge strength",
+      "meaning": "Resistance to impact at cut boundary",
+      "boundary": "Lower than face strength due to exposed core",
+      "source": "ASTM C1048"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "The edge is the weakest point",
+    "narration": "This is why tempered glass panels are often framed or protected at the edges in architectural applications.",
+    "args": {
+      "lines": [
+        "This is why tempered",
+        "glass panels are often",
+        "framed"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The edge is the weakest point",
+    "narration": "Edge protection is not cosmetic. It is structural. A small chip at the edge can propagate into the core with minimal force because there is no compression layer to arrest it.",
+    "args": {
+      "lines": [
+        "Edge protection is not",
+        "cosmetic. It is structural.",
+        "A small"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 5.38,
+    "heading": "The edge is the weakest point",
+    "narration": "The same chip on the face would likely be harmless. The geometry matters.",
+    "args": {
+      "term": "Edge strength",
+      "meaning": "Resistance to impact at cut boundary",
+      "boundary": "Lower than face strength due to exposed core",
+      "source": "ASTM C1048"
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "The edge is the weakest point",
+    "narration": "The stress distribution is three-dimensional, and the edge is where that distribution is interrupted. The interruption is a vulnerability.",
+    "args": {
+      "lines": [
+        "The stress distribution is",
+        "three-dimensional, and the edge"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "Watch for the moment the stress field becomes visible. In high-speed footage of tempered glass fracture, you can see the crack front branching in real time, though it requires frame rates in the tens of thousands per second.",
+    "args": {
+      "variant": 4
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.03,
+    "heading": "What to notice in the edit",
+    "narration": "The pattern does not emerge gradually. It appears almost instantaneously because the crack velocity is so high.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "What to notice in the edit",
+    "narration": "The glass goes from intact to fully fragmented in a few milliseconds.",
+    "args": {
+      "lines": [
+        "The glass goes from",
+        "intact to fully fragmented"
+      ]
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "What you are seeing is not the glass deciding how to break. You are seeing a pre-existing stress field announcing itself through fracture.",
+    "args": {
+      "variant": 2
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Evidence limit",
+    "narration": "The exact depth of the compression layer and the precise stress magnitudes vary with the tempering process, glass composition, and thickness.",
+    "args": {
+      "lines": [
+        "The exact depth of",
+        "the compression layer and",
+        "the precise"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "Published values are representative, not universal, and the range extends from about 0.5 to 3 millimeters depending on panel thickness and cooling rate.",
+    "args": {
+      "lines": [
+        "Published values are representative,",
+        "not universal, and the",
+        "range extends"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.69,
+    "heading": "Evidence limit",
+    "narration": "The fracture pattern also depends on factors like the location and geometry of the initiating flaw, which are not fully predictable.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Evidence limit",
+    "narration": "What is well established is the mechanism: residual stress drives rapid crack branching.",
+    "args": {
+      "lines": [
+        "What is well established",
+        "is the mechanism: residual",
+        "stress drives"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "The specific numbers for a given panel require measurement, typically using polarimetry or surface stress meters. The general principle is consistent across all thermally tempered glass.",
+    "args": {
+      "lines": [
+        "The specific numbers for",
+        "a given panel require",
+        "measurement, typically"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.38,
+    "heading": "Closing",
+    "narration": "The shatter pattern of tempered glass is not a failure of the material.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "It is the material performing exactly as designed. The stress field that makes it strong is the same stress field that makes it shatter completely. The engineering is in choosing which failure mode you prefer.",
+    "args": {
+      "lines": [
+        "It is the material",
+        "performing exactly as designed.",
+        "The stress"
+      ]
+    },
+    "from": "directive"
+  }
+]

@@ -287,6 +287,21 @@ def publish_order() -> list[str]:
     a list of objects, or an object wrapping either - because that file is
     another agent's to design. Intolerant of absence.
     """
+    # EVERY domain's queue, merged. This function read research/publish_order.json
+    # alone, so on 2026-09-04 it returned 16 deep-sea slugs and `publishable`
+    # came out ZERO while eighteen scored, scripted and planned materials
+    # episodes sat on disk - three of them already rendered. The runway warning
+    # then read "0 publishable episode(s) of 22 on disk", which is a channel
+    # reporting that it is out of inventory while holding eight weeks of it.
+    # The merge is loop/batch_queue.py, the same one definition bin/ uses; the
+    # staleness and shape checks below still run against the primary file,
+    # which is the one the ranking agent regenerates weekly.
+    try:
+        import batch_queue                                 # noqa: PLC0415
+        merged = batch_queue.queued_slugs()
+    except Exception:
+        merged = None
+
     if not PUBLISH_ORDER.exists():
         raise PublishOrderMissing(
             f"{PUBLISH_ORDER.relative_to(ROOT)} does not exist. The loop will "
@@ -359,7 +374,7 @@ def publish_order() -> list[str]:
     slugs = list(dict.fromkeys(slugs))  # preserve rank, drop duplicates
 
     if not isinstance(raw, dict):
-        return slugs
+        return _with_other_domains(slugs, merged)
 
     # ---- honour the pinned head. An owner override is never re-sorted. ----
     pinned = []
@@ -383,7 +398,31 @@ def publish_order() -> list[str]:
     head = [p for p in pinned if p in slugs]
     tail = [s for s in saturated if s in slugs and s not in head]
     middle = [s for s in slugs if s not in head and s not in tail]
-    return head + middle + tail
+    return _with_other_domains(head + middle + tail, merged)
+
+
+def _with_other_domains(ranked: list[str], merged: list[str] | None) -> list[str]:
+    """Append every OTHER domain's gated queue after the primary ranking.
+
+    Appended, not interleaved, and deliberately: the two files' scores are not
+    comparable. `research/publish_order.py`'s gate thresholds were set by the
+    20-episode deep-sea distribution and materials imports them unchanged, so a
+    materials combined_score and a deep-sea combined_score are on the same
+    SCALE but were not ranked against each other, and pretending otherwise
+    would silently re-order a deep-sea queue the owner has been publishing
+    from. Appending keeps every existing rank exactly where it was and puts a
+    second domain's topics next in line - which, with deep sea's queue fully
+    published or scheduled, is the whole difference between eighteen episodes
+    being publishable and being invisible.
+
+    The pinned head and the saturated tail still come from the primary file
+    only; another domain has no pin, and its own gate already dropped its
+    saturated topics before they reached its queue.
+    """
+    if not merged:
+        return ranked
+    seen = set(ranked)
+    return ranked + [s for s in merged if s not in seen]
 
 
 def _slug_of(entry) -> str | None:

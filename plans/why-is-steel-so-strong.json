@@ -1,0 +1,1030 @@
+[
+  {
+    "segment": "thermal_ascent",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "Pure iron changes crystal structure at nine hundred twelve degrees Celsius. That transition, measured by NIST and confirmed across metallurgy labs worldwide, is the foundation of steel's strength.",
+    "args": {
+      "to_temp": 912,
+      "label": "austenitization threshold"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "Below that temperature, iron atoms pack into a body-centered cubic lattice. Carbon atoms, small enough to fit into the gaps between iron atoms, lock the structure in place.",
+    "args": {
+      "lines": [
+        "Below that temperature, iron",
+        "atoms pack into a",
+        "body-centered cubic"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "thermal_ascent",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "The strength does not come from the carbon being hard. It comes from the carbon being trapped in exactly the right positions to prevent the iron lattice from shearing.",
+    "args": {
+      "to_temp": 912,
+      "label": "austenitization threshold"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 3.5,
+    "heading": "Title card",
+    "narration": "Why is steel so strong?",
+    "args": {
+      "lines": [
+        "Why is steel so",
+        "strong?"
+      ]
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 6.62,
+    "heading": "The lattice does the work, not the carbon's hardness",
+    "narration": "Carbon in steel is not acting as a reinforcing fiber. It is acting as a wedge.",
+    "args": {
+      "term": "mechanism",
+      "includes": [
+        "geometric interference"
+      ],
+      "excludes": [
+        "carbon hardness"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "The lattice does the work, not the carbon's hardness",
+    "narration": "Iron atoms in the body-centered cubic structure are separated by specific distances, measured in angstroms.",
+    "args": {
+      "lines": [
+        "Iron atoms in the",
+        "body-centered cubic structure are",
+        "separated"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 8.69,
+    "heading": "The lattice does the work, not the carbon's hardness",
+    "narration": "Carbon atoms are small enough to occupy interstitial sites, the spaces between iron atoms, but large enough to distort the lattice.",
+    "args": {
+      "term": "mechanism",
+      "includes": [
+        "geometric interference"
+      ],
+      "excludes": [
+        "carbon hardness"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "The lattice does the work, not the carbon's hardness",
+    "narration": "When stress tries to move one plane of iron atoms past another, the carbon atoms block the motion.",
+    "args": {
+      "lines": [
+        "When stress tries to",
+        "move one plane of",
+        "iron atoms"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.86,
+    "heading": "The lattice does the work, not the carbon's hardness",
+    "narration": "This is dislocation pinning. The term appears in every undergraduate materials science text because it is the load-bearing mechanism.",
+    "args": {
+      "term": "mechanism",
+      "includes": [
+        "geometric interference"
+      ],
+      "excludes": [
+        "carbon hardness"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 5.79,
+    "heading": "The lattice does the work, not the carbon's hardness",
+    "narration": "A dislocation is a boundary where the regular stacking of atomic planes breaks down.",
+    "args": {
+      "term": "dislocation",
+      "meaning": "a line defect where atomic planes do not align",
+      "boundary": "measured by transmission electron microscopy",
+      "source": "NIST"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "The lattice does the work, not the carbon's hardness",
+    "narration": "In pure iron, dislocations move easily under stress. The metal deforms. Adding carbon creates obstacles.",
+    "args": {
+      "lines": [
+        "In pure iron, dislocations",
+        "move easily under stress.",
+        "The metal"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "The lattice does the work, not the carbon's hardness",
+    "narration": "Each carbon atom distorts the lattice around it. When a dislocation tries to move through that distorted region, it requires more energy.",
+    "args": {
+      "term": "dislocation",
+      "meaning": "a line defect where atomic planes do not align",
+      "boundary": "measured by transmission electron microscopy",
+      "source": "NIST"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "The lattice does the work, not the carbon's hardness",
+    "narration": "The steel resists deformation. The effect scales with carbon content up to a limit.",
+    "args": {
+      "lines": [
+        "The steel resists deformation.",
+        "The effect scales with",
+        "carbon content"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "The carbon percentage sets the ceiling",
+    "narration": "Mild steel contains roughly zero point two percent carbon by mass. High-carbon steel approaches zero point nine percent.",
+    "args": {
+      "lines": [
+        "Mild steel contains roughly",
+        "zero point two percent",
+        "carbon"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "The carbon percentage sets the ceiling",
+    "narration": "Beyond one point two percent, the material is classified as cast iron, and the excess carbon forms graphite flakes or carbide networks that make the material brittle.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "The carbon percentage sets the ceiling",
+    "narration": "The range between zero point two and zero point nine percent is where strength and toughness overlap.",
+    "args": {
+      "lines": [
+        "The range between zero",
+        "point two and zero",
+        "point nine"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "The carbon percentage sets the ceiling",
+    "narration": "Those figures come from ASTM standards and are reproduced in ASM International's handbook.",
+    "args": {
+      "lines": [
+        "Those figures come from",
+        "ASTM standards and are",
+        "reproduced"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.62,
+    "heading": "The carbon percentage sets the ceiling",
+    "narration": "They are not theoretical limits. They are the boundaries that working metallurgists use to specify alloys.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "The carbon percentage sets the ceiling",
+    "narration": "Carbon content is measured by combustion analysis. A sample of steel is dissolved, the carbon is burned to carbon dioxide, and the concentration is measured by infrared absorption.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The carbon percentage sets the ceiling",
+    "narration": "The method resolves to zero point zero one percent. That precision matters because a shift of zero point one percent carbon changes yield strength by tens of megapascals.",
+    "args": {
+      "lines": [
+        "The method resolves to",
+        "zero point zero one",
+        "percent."
+      ]
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "The carbon percentage sets the ceiling",
+    "narration": "The measurement is not a formality. It is quality control. The difference between zero point two percent and zero point three percent carbon is the difference between a structural beam and a spring.",
+    "args": {
+      "variant": 2
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "process_column",
+    "seconds": 5.38,
+    "heading": "The crystal structure changes with temperature",
+    "narration": "At room temperature, iron with dissolved carbon forms ferrite, the body-centered cubic phase.",
+    "args": {
+      "highlight": "FERRITE"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "The crystal structure changes with temperature",
+    "narration": "The lattice has gaps, but they are small. Carbon atoms fit, but only just.",
+    "args": {
+      "lines": [
+        "The lattice has gaps,",
+        "but they are small.",
+        "Carbon atoms"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_column",
+    "seconds": 9.0,
+    "heading": "The crystal structure changes with temperature",
+    "narration": "The distortion they cause is what pins dislocations. Heat the steel above nine hundred twelve degrees Celsius, and the iron transforms into austenite, a face-centered cubic structure.",
+    "args": {
+      "highlight": "FERRITE"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "material_image",
+    "seconds": 7.03,
+    "heading": "The crystal structure changes with temperature",
+    "narration": "The gaps in austenite are larger. Carbon dissolves more easily. Dislocations move more freely. The steel softens.",
+    "args": {
+      "subject": "micrograph-steel",
+      "label": "AUSTENITE",
+      "pick": 0
+    },
+    "from": "directive-rhythm+material"
+  },
+  {
+    "segment": "thermal_ascent",
+    "seconds": 8.28,
+    "heading": "The crystal structure changes with temperature",
+    "narration": "Austenite is stable from nine hundred twelve degrees Celsius up to roughly fourteen hundred degrees Celsius, depending on carbon content.",
+    "args": {
+      "to_temp": 1400,
+      "label": "austenite stability range"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The crystal structure changes with temperature",
+    "narration": "In that range, the steel can be shaped. Blacksmiths and rolling mills work steel in the austenite phase because it deforms without cracking.",
+    "args": {
+      "lines": [
+        "In that range, the",
+        "steel can be shaped.",
+        "Blacksmiths"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "thermal_ascent",
+    "seconds": 8.28,
+    "heading": "The crystal structure changes with temperature",
+    "narration": "When the steel cools, the crystal structure reverts to ferrite. If cooled slowly, the carbon precipitates out as carbide particles.",
+    "args": {
+      "to_temp": 1400,
+      "label": "austenite stability range"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The crystal structure changes with temperature",
+    "narration": "If cooled rapidly, the carbon is trapped in the ferrite lattice, creating a distorted structure called martensite. Martensite is harder than ferrite but more brittle.",
+    "args": {
+      "lines": [
+        "If cooled rapidly, the",
+        "carbon is trapped in",
+        "the ferrite"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 4.97,
+    "heading": "Quenching and tempering control the trade-off",
+    "narration": "Quenching means cooling steel fast enough to trap carbon in the lattice.",
+    "args": {
+      "title": "heat treatment",
+      "stages": [
+        "austenite formation",
+        "rapid quench",
+        "martensite",
+        "temper at lower temperature"
+      ],
+      "conclusion": "controlled toughness"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "Quenching and tempering control the trade-off",
+    "narration": "Water, oil, or forced air removes heat faster than the carbon can diffuse out.",
+    "args": {
+      "lines": [
+        "Water, oil, or forced",
+        "air removes heat faster"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 6.21,
+    "heading": "Quenching and tempering control the trade-off",
+    "narration": "The result is martensite, a body-centered tetragonal structure that is a distorted version of ferrite.",
+    "args": {
+      "title": "heat treatment",
+      "stages": [
+        "austenite formation",
+        "rapid quench",
+        "martensite",
+        "temper at lower temperature"
+      ],
+      "conclusion": "controlled toughness"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "material_image",
+    "seconds": 9.0,
+    "heading": "Quenching and tempering control the trade-off",
+    "narration": "Martensite is strong but brittle. To recover toughness, the steel is tempered: reheated to a temperature below the austenite transition, typically between two hundred and six hundred degrees Celsius, and held there.",
+    "args": {
+      "subject": "micrograph-steel",
+      "label": "MARTENSITE",
+      "pick": 1
+    },
+    "from": "directive-rhythm+material"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 6.62,
+    "heading": "Quenching and tempering control the trade-off",
+    "narration": "Tempering allows some carbon to precipitate as fine carbides. Strength decreases slightly, but toughness increases significantly.",
+    "args": {
+      "title": "heat treatment",
+      "stages": [
+        "austenite formation",
+        "rapid quench",
+        "martensite",
+        "temper at lower temperature"
+      ],
+      "conclusion": "controlled toughness"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Quenching and tempering control the trade-off",
+    "narration": "The exact tempering temperature depends on the application. Cutting tools are tempered at the low end of the range, around two hundred degrees Celsius, to retain hardness.",
+    "args": {
+      "lines": [
+        "The exact tempering temperature",
+        "depends on the application.",
+        "Cutting tools"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "Quenching and tempering control the trade-off",
+    "narration": "Structural steel is tempered higher, closer to six hundred degrees Celsius, to maximize toughness.",
+    "args": {
+      "lines": [
+        "Structural steel is tempered",
+        "higher, closer to six",
+        "hundred degrees"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 6.21,
+    "heading": "Quenching and tempering control the trade-off",
+    "narration": "The range is wide because the trade-off is continuous. There is no single correct answer.",
+    "args": {
+      "title": "heat treatment",
+      "stages": [
+        "austenite formation",
+        "rapid quench",
+        "martensite",
+        "temper at lower temperature"
+      ],
+      "conclusion": "controlled toughness"
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Quenching and tempering control the trade-off",
+    "narration": "Metallurgists choose a point on the curve based on whether the steel will cut, bear load, or absorb impact.",
+    "args": {
+      "lines": [
+        "Metallurgists choose a point",
+        "on the curve based",
+        "on whether"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 7.45,
+    "heading": "Producer POV",
+    "narration": "I wrote the dislocation-pinning explanation like it covered every steel everywhere. It covers carbon steel at room temperature.",
+    "args": {
+      "text": "I wrote the dislocation-pinning explanation like it covered every steel everywhere. It covers carbon steel at room temperature.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 7.45,
+    "heading": "Producer POV",
+    "narration": "High heat and high-carbon steels behave differently, and generalizing past that would have been the easy, wrong move.",
+    "args": {
+      "text": "High heat and high-carbon steels behave differently, and generalizing past that would have been the easy, wrong move.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Alloying elements shift the curve but not the mechanism",
+    "narration": "Steel is rarely just iron and carbon. Chromium, molybdenum, nickel, and vanadium are added in small percentages to shift the transformation temperatures, slow the diffusion of carbon, or form additional carbides.",
+    "args": {
+      "lines": [
+        "Steel is rarely just",
+        "iron and carbon. Chromium,",
+        "molybdenum, nickel"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Alloying elements shift the curve but not the mechanism",
+    "narration": "Chromium above ten percent creates stainless steel by forming a passive oxide layer.",
+    "args": {
+      "lines": [
+        "Chromium above ten percent",
+        "creates stainless steel by",
+        "forming"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 8.69,
+    "heading": "Alloying elements shift the curve but not the mechanism",
+    "narration": "Molybdenum at around zero point five percent raises the tempering temperature, allowing the steel to retain strength at higher service temperatures.",
+    "args": {
+      "title": "alloying effects",
+      "sources": [
+        [
+          "ASM",
+          "carbide formation"
+        ],
+        [
+          "NIST",
+          "transformation kinetics"
+        ]
+      ]
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Alloying elements shift the curve but not the mechanism",
+    "narration": "Vanadium at zero point two percent forms fine carbides that further pin dislocations.",
+    "args": {
+      "lines": [
+        "Vanadium at zero point",
+        "two percent forms fine",
+        "carbides"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "Alloying elements shift the curve but not the mechanism",
+    "narration": "Chromium is often added at one point five percent in tool steels to improve hardenability.",
+    "args": {
+      "lines": [
+        "Chromium is often added",
+        "at one point five",
+        "percent"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 8.69,
+    "heading": "Alloying elements shift the curve but not the mechanism",
+    "narration": "These elements modify the behavior, but they do not replace the core mechanism. The strength still comes from preventing dislocation motion.",
+    "args": {
+      "title": "alloying effects",
+      "sources": [
+        [
+          "ASM",
+          "carbide formation"
+        ],
+        [
+          "NIST",
+          "transformation kinetics"
+        ]
+      ]
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 6.62,
+    "heading": "Alloying elements shift the curve but not the mechanism",
+    "narration": "ASM International's alloy database lists the effect of each element on phase stability and carbide formation.",
+    "args": {
+      "title": "alloying effects",
+      "sources": [
+        [
+          "ASM",
+          "carbide formation"
+        ],
+        [
+          "NIST",
+          "transformation kinetics"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "Alloying elements shift the curve but not the mechanism",
+    "narration": "NIST's phase diagram database provides transformation temperatures for hundreds of compositions. The data are public and cross-referenced.",
+    "args": {
+      "lines": [
+        "NIST's phase diagram database",
+        "provides transformation temperatures for",
+        "hundreds"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 9.0,
+    "heading": "Alloying elements shift the curve but not the mechanism",
+    "narration": "When a steel grade is specified by a four-digit AISI number, that number maps to a defined composition range. The properties are not guessed. They are measured and tabulated.",
+    "args": {
+      "title": "alloying effects",
+      "sources": [
+        [
+          "ASM",
+          "carbide formation"
+        ],
+        [
+          "NIST",
+          "transformation kinetics"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 7.03,
+    "heading": "Grain boundaries add another layer of resistance",
+    "narration": "Steel is polycrystalline. It is made of many small crystals, called grains, each with its own orientation.",
+    "args": {
+      "term": "grain boundary",
+      "meaning": "interface between crystal domains",
+      "boundary": "visible after etching",
+      "source": "measured by optical microscopy"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Grain boundaries add another layer of resistance",
+    "narration": "The boundaries between grains are defects where atoms do not line up.",
+    "args": {
+      "lines": [
+        "The boundaries between grains",
+        "are defects where atoms",
+        "do"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "Grain boundaries add another layer of resistance",
+    "narration": "Dislocations have difficulty crossing grain boundaries because the lattice orientation changes. Smaller grains mean more boundaries per unit volume, which means more obstacles to dislocation motion.",
+    "args": {
+      "term": "grain boundary",
+      "meaning": "interface between crystal domains",
+      "boundary": "visible after etching",
+      "source": "measured by optical microscopy"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Grain boundaries add another layer of resistance",
+    "narration": "This is the Hall-Petch relationship: yield strength increases with the inverse square root of grain size.",
+    "args": {
+      "lines": [
+        "This is the Hall-Petch",
+        "relationship: yield strength increases"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.62,
+    "heading": "Grain boundaries add another layer of resistance",
+    "narration": "Grain boundaries are revealed by polishing a steel sample and etching it with a weak acid.",
+    "args": {
+      "variant": 3
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.69,
+    "heading": "Grain boundaries add another layer of resistance",
+    "narration": "The boundaries corrode slightly faster than the grain interiors. Under a microscope, the grains appear as polygons separated by dark lines.",
+    "args": {
+      "variant": 4
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 8.28,
+    "heading": "Grain boundaries add another layer of resistance",
+    "narration": "Typical grain sizes range from ten to one hundred microns. Finer grains are achieved by controlled cooling or mechanical working.",
+    "args": {
+      "term": "grain boundary",
+      "meaning": "interface between crystal domains",
+      "boundary": "visible after etching",
+      "source": "measured by optical microscopy"
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Grain boundaries add another layer of resistance",
+    "narration": "The effect on strength is measurable and predictable. A steel with ten-micron grains is stronger than the same composition with fifty-micron grains.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 6.21,
+    "heading": "The role of carbides in high-carbon steels",
+    "narration": "In steels with carbon content above zero point eight percent, carbides become a dominant feature.",
+    "args": {
+      "term": "carbide distribution",
+      "includes": [
+        "fine precipitates in tempered steel"
+      ],
+      "excludes": [
+        "coarse networks in cast iron"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "The role of carbides in high-carbon steels",
+    "narration": "During tempering, carbon precipitates as iron carbide, also called cementite, with the chemical formula Fe\u2083C.",
+    "args": {
+      "lines": [
+        "During tempering, carbon precipitates",
+        "as iron carbide, also",
+        "called cementite"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 6.21,
+    "heading": "The role of carbides in high-carbon steels",
+    "narration": "If the carbides are fine and evenly distributed, they strengthen the steel by pinning dislocations.",
+    "args": {
+      "term": "carbide distribution",
+      "includes": [
+        "fine precipitates in tempered steel"
+      ],
+      "excludes": [
+        "coarse networks in cast iron"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "The role of carbides in high-carbon steels",
+    "narration": "If they form coarse networks, as in cast iron with three percent carbon, they create brittle paths through the material.",
+    "args": {
+      "lines": [
+        "If they form coarse",
+        "networks, as in cast",
+        "iron"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "The role of carbides in high-carbon steels",
+    "narration": "The difference is not just the amount of carbon. It is how the carbon is distributed, which is controlled by cooling rate and tempering time.",
+    "args": {
+      "term": "carbide distribution",
+      "includes": [
+        "fine precipitates in tempered steel"
+      ],
+      "excludes": [
+        "coarse networks in cast iron"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The role of carbides in high-carbon steels",
+    "narration": "Cementite itself is hard but brittle. It does not deform. In a tempered steel, cementite particles are surrounded by ferrite, which is tougher.",
+    "args": {
+      "lines": [
+        "Cementite itself is hard",
+        "but brittle. It does",
+        "not deform."
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "The role of carbides in high-carbon steels",
+    "narration": "The ferrite absorbs energy, and the carbides block dislocation motion. The combination is stronger than either phase alone.",
+    "args": {
+      "lines": [
+        "The ferrite absorbs energy,",
+        "and the carbides block",
+        "dislocation motion."
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "The role of carbides in high-carbon steels",
+    "narration": "This is the principle behind all two-phase alloys: a hard phase for strength, a ductile phase for toughness, and a fine mixture of the two.",
+    "args": {
+      "term": "carbide distribution",
+      "includes": [
+        "fine precipitates in tempered steel"
+      ],
+      "excludes": [
+        "coarse networks in cast iron"
+      ]
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "The strength of steel is not a single effect. It is the sum of carbon atoms blocking dislocation motion, grain boundaries interrupting slip planes, and heat treatment controlling the distribution of carbides.",
+    "args": {
+      "title": "strength mechanisms",
+      "items": [
+        "+carbon in interstitial sites",
+        "+dislocation pinning",
+        "+grain boundary resistance",
+        "+controlled heat treatment"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "What to notice in the edit",
+    "narration": "Each mechanism is independently measurable. X-ray diffraction maps the lattice distortion around carbon atoms.",
+    "args": {
+      "lines": [
+        "Each mechanism is independently",
+        "measurable. X-ray diffraction maps",
+        "the lattice"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 5.38,
+    "heading": "What to notice in the edit",
+    "narration": "Transmission electron microscopy images dislocations pinned at carbides. Hardness testing quantifies the result.",
+    "args": {
+      "title": "strength mechanisms",
+      "items": [
+        "+carbon in interstitial sites",
+        "+dislocation pinning",
+        "+grain boundary resistance",
+        "+controlled heat treatment"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "What to notice in the edit",
+    "narration": "The mechanisms are not inferred from the outcome. They are observed directly.",
+    "args": {
+      "lines": [
+        "The mechanisms are not",
+        "inferred from the outcome.",
+        "They"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.45,
+    "heading": "Evidence limit",
+    "narration": "The mechanisms described here apply to carbon steels and low-alloy steels at room temperature and moderate stress rates.",
+    "args": {
+      "variant": 2
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.28,
+    "heading": "Evidence limit",
+    "narration": "At very high temperatures, creep mechanisms dominate. At very high strain rates, adiabatic heating and phase transformations change the behavior.",
+    "args": {
+      "variant": 3
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Evidence limit",
+    "narration": "Steels with more than two percent carbon behave differently because the excess carbon forms networks rather than isolated particles.",
+    "args": {
+      "lines": [
+        "Steels with more than",
+        "two percent carbon behave",
+        "differently because"
+      ]
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "The evidence for dislocation pinning by interstitial carbon is strong and direct, but it does not explain every steel in every condition.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "Steel's strength is not a material property in isolation. It is the result of atomic-scale geometry, controlled phase transformations, and deliberate microstructure design.",
+    "args": {
+      "lines": [
+        "Steel's strength is not",
+        "a material property in",
+        "isolation. It"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "Closing",
+    "narration": "The carbon does not make the iron hard. It makes the iron unable to slide.",
+    "args": {
+      "lines": [
+        "The carbon does not",
+        "make the iron hard.",
+        "It makes"
+      ]
+    },
+    "from": "directive"
+  }
+]

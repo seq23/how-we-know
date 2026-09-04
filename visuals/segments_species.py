@@ -292,8 +292,26 @@ def species_image(t, subject=None, asset=None, label="", credit="", pick=0,
     pick     which of the subject's images, when there are several.
     note     one short line under the credit, e.g. a stated caveat.
     zoom     extra push-in for a frame whose subject is small.
+
+    Resolution is species-specific; the DRAWING is not, and lives in
+    draw_image_beat() so a second domain can put a verified picture on screen
+    without a second copy of the layout, the credit line and the medium
+    stamp. A copy is how one of them ends up crediting differently from the
+    other, and the credit is the part that may not drift.
     """
-    rec = resolve(subject, asset, pick)
+    return draw_image_beat(t, resolve(subject, asset, pick),
+                           label=label, credit=credit, note=note, zoom=zoom)
+
+
+def draw_image_beat(t, rec, label="", credit="", note="", zoom=1.0):
+    """Draw ONE verified rights-checked image record as a full beat.
+
+    Domain-agnostic by construction: everything below is driven by the record
+    and by the ACTIVE domain's palette (design.py resolves that from
+    HWK_DOMAIN), so the same function draws a Challenger Report plate in ocean
+    cyan and a micrograph of martensite in forge orange. `rec` must carry
+    `credit_line` and `depicts`; both are drawn, and neither is invented here.
+    """
     src = treated(rec)
     img = _bg(t).convert("RGBA")
 

@@ -42,8 +42,13 @@ not mean an AI agent.
 
 This is the single most confusable thing in the schedule.
 
-- **Publish days are Sunday and Tuesday, 10:00 Central.** That is when a video
-  becomes visible.
+- **Publish days are Sunday, Monday, Tuesday and Friday, 10:00 Central.** That
+  is when a video becomes visible. **Deep sea publishes Sunday and Tuesday;
+  materials-and-manufacturing publishes Monday and Friday.** Each domain has
+  its own days and they never overlap, which is what lets a second domain be
+  woven into weeks the first has already filled without moving anything: at
+  2/week the ladder was exactly Sunday and Tuesday, and raising to 4/week
+  ADDED Monday and Friday rather than redistributing the existing days.
 - **Upload happens daily and is not a publish day.** The finished video is
   pushed to YouTube **private**, with a `publishAt` stamp and its thumbnail
   attached, and then sits there.
@@ -238,23 +243,41 @@ is scheduled any more.
 | Sun 10:00 | `sun-rank` | Actions | Re-order the publish queue by combined score. |
 | 1st monthly | `monthly-review` | Actions | Decide from thresholds, ask an LLM for a second opinion, apply within a fence, email the report. |
 
-### No launchd agents. None.
+### launchd agents on this Mac
 
-**All four were removed on 2026-09-01.** `tuesday` (weekly render), `thursday`
-(weekly upload) and `shorts` (daily cut) went at the owner's direction:
-rendering is no longer a weekly job — it happens in a batch every ~7.5 weeks
-alongside narration, which is the one stage that cannot leave this machine.
+Four are installed. This section was previously headed "No launchd agents.
+None." and said the laptop could be shut; that was true from 2026-09-01 until
+2026-09-04, when a second domain gave the Mac ~27 hours of narration to get
+through and nothing was scheduled to do it.
 
-`com.howweknow.backfill` (daily 09:00) went with it, and its plist was deleted,
-because the daily upload moved to `loop-upload-cloud.yml`. It had to go *before*
-that workflow's first run, not after: both draw the next episode from
-`research/publish_order.json` in the same order, and the Mac's copy of
+| Agent | When | What it does |
+|---|---|---|
+| `com.howweknow.batch` | **daily 23:00** | `bin/batch-session.sh` — narrate every script with no audio, render every episode whose audio is complete, push to R2, then take a NAMED STOP. |
+| `com.howweknow.backfill` | daily 09:00 | Upload the next finished episode and date it. |
+| `com.howweknow.tuesday` | Tue 02:00 | `bin/loop-tuesday.sh` — the weekly render lane. |
+| `com.howweknow.thursday` | Thu 02:00 | `bin/loop-thursday.sh` — the weekly upload lane. |
+
+**Why `batch` is daily and why that is not wasteful.** Narration measures at
+**0.8 beats a minute** on this M2, so eighteen materials episodes are ~27 hours
+of voice — it cannot finish in one night and it will be interrupted.
+`bin/batch-session.sh` is resumable by construction: every beat already on disk
+is skipped, and an episode is rendered only when its wav count equals its
+plan's beat count. A nightly run therefore continues until the queue empties
+and then costs about a second. 23:00 is the owner's choice — the voice model
+takes roughly four cores, so it starts when she has stopped using the machine.
+
+**Nothing here runs a language model.** Narration and rendering are
+deterministic local programs. The only stage that needs one is *authoring* a
+new script, and that runs in Actions on Mondays. When the script queue empties,
+the batch's own named stop says so in those words — "the shortfall is SCRIPTS,
+not audio".
+
+**The duplicate-upload hazard that removed `backfill` in the first place is
+still real** and is worth restating: `backfill` and `loop-upload-cloud.yml`
+both draw the next episode from the same ranked queue, and the Mac's copy of
 `loop/state/ledger.json` only updates when somebody pulls. A launchd job at
-09:00 cannot see what a workflow uploaded at 14:00 UTC the day before, so it
-would upload it a second time — and the duplicate is public on its own schedule
-before anyone looks.
-
-**Nothing on this Mac is now scheduled.** The laptop can be shut.
+09:00 cannot see what a workflow uploaded at 14:00 UTC the day before. If both
+are ever live at once, that is the failure to look for first.
 
 Installed with `bin/loop-install-launchd.sh --install`, verified with `--status`.
 A plist is XML, so a bare `&&` in the command makes it unparseable — and

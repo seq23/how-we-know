@@ -2,12 +2,12 @@
   "repo": "seq23/how-we-know",
   "channel_handle": "@howweknowdeep",
   "cadence": {
-    "videos_per_week": 2,
+    "videos_per_week": 4,
     "default": 2,
     "escalated": 3,
     "ceiling": 4,
     "deliberate": true,
-    "note": "Operating cadence starts at 2 and RAISES ITSELF in two evidence-gated steps: to 3 once the authoring lane has produced a validated script, and to the owner's 4/week target once the queue can sustain it. 4 is the taxonomy ceiling and is never exceeded. Change the numbers here; no logic reads a hardcoded cadence.",
+    "note": "Operating cadence is 4/week, set by the owner on 2026-09-04 (see owner_set). 4 is the taxonomy ceiling and is never exceeded. The two evidence-gated automatic steps below remain armed and are now no-ops at this rate. Change the number here; no logic reads a hardcoded cadence. At 4/week loop/domains.live_slots() splits the week deep sea 2, materials 2, and backfill.domain_weekdays() puts deep sea on its existing Sun/Tue and materials on the two ADDED days, Mon/Fri - so raising the cadence moves no episode already on the calendar.",
     "escalation": {
       "to": 3,
       "automatic": true,
@@ -27,7 +27,8 @@
     },
     "shorts_per_week": 9,
     "shorts_note": "8-10/week, set at 9. Shorts keep their OWN scheduler and their own evening ladder (loop/shorts_lane.py): they peak 18:00-21:00 local while long-form peaks 08:00-11:00, so a Short posted on the episode slot lands in the worst part of its own day. Shorts consume no episode inventory and do not count toward the 4,000 watch hours - they are the only cheap lever on the SUBSCRIBER half of the threshold, which research put at roughly 12x more binding than hours. 51 are already cut; at 9/week that is ~5.7 weeks.",
-    "shorts_floor": 4
+    "shorts_floor": 4,
+    "owner_set": "2026-09-04 - Sequoia, explicitly: 'i want you to raise the cadence'. Set DIRECTLY here rather than through cadence.scale, which is the AUTOMATIC self-arming path and still requires authoring_evidence() - a script the authoring lane itself produced and validated - which does not exist yet. Manufacturing that evidence to open an automatic gate would have been a lie told to a guard. An owner setting the number by hand is a different act from the loop deciding it has earned it, and this field records which one happened. The scale gate is left armed and untouched; if it ever fires it can only agree, because 4 is also the ceiling."
   },
   "retention": {
     "breaker_metric": "average_view_duration",

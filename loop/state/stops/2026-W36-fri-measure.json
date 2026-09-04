@@ -1,0 +1,18 @@
+{
+  "stage": "fri-measure",
+  "week": "2026-W36",
+  "at": "2026-09-04T18:46:03+00:00",
+  "code": "OAUTH_MISSING",
+  "message": "20 published video(s) cannot be measured without OAuth. Retention and RPM are unavailable, so Sunday's ranking runs on demand evidence and the retention breaker cannot fire.",
+  "detail": null,
+  "unblock": "Same credentials as the upload lane, plus the yt-analytics.readonly scope. See docs/loop.md \u00a7 OAuth.",
+  "disposition": "needs_human",
+  "disposition_why": "'OAUTH_MISSING' is not in loop/stop_policy.json, so it is treated as needing a human. That is the default on purpose.",
+  "consecutive": 13,
+  "exit_code": 3,
+  "work_done_before_stop": [
+    "recomputed retention streak from 0 measured video(s): 0 consecutive below 30.0%",
+    "recorded an unmeasured week in loop/state/measurement.json"
+  ],
+  "notes": []
+}

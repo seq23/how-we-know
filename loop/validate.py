@@ -1291,24 +1291,72 @@ def v20_cadence_schedule() -> Result:
     led = L.load()
     if tail:
         last = tail[-1]["when"]
-        fresh = backfill.schedule_for(led, max(4, per_week * 2), per_week)
-        for when in fresh:
+        # ONE ALLOCATION PER DOMAIN, ON ITS OWN DAYS. This block used to draw
+        # from the whole ladder and require every new slot to fall after the
+        # LAST dated episode. That was right while one domain held every
+        # publish day and became wrong the moment a second was woven in on days
+        # the first never uses: a materials Monday in September legitimately
+        # precedes the last deep-sea Sunday in October, and the old rule read
+        # the weave as the run being reopened.
+        #
+        # The protection it was really giving is kept and made STRONGER: no
+        # allocated slot may collide with a dated one, no slot may go to two
+        # domains, each domain's slots must land on its OWN days, the day-sets
+        # must be disjoint, nothing may reach Wednesday or Thursday, and the
+        # minimum lead time must hold so the owner can still watch an episode
+        # through before it airs.
+        cfg_now = config()
+        try:
+            split = backfill.domain_weekdays(cfg_now, per_week)
+        except Exception as e:                             # noqa: BLE001
+            split = {}
             r.examined += 1
-            stamp = when.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-            if stamp in taken:
-                r.fail(f"the slot allocator handed out {stamp}, which episode "
-                       f"{[t['slug'] for t in tail if t['scheduled_publish_at'] == stamp]} "
-                       f"already holds — raising cadence must never re-date or "
-                       f"double-book a scheduled episode")
-            if when <= last:
-                r.fail(f"the allocator handed out {stamp}, at or before the "
-                       f"last scheduled episode ({last:%Y-%m-%dT%H:%M:%SZ}). "
-                       f"New slots must CONTINUE the run, not reopen it")
-            if when.astimezone(backfill.PUBLISH_TZ).weekday() in {2, 3}:
-                r.fail(f"{stamp} falls on a Wednesday or Thursday")
-        r.note(f"{len(tail)} episode(s) dated through "
-               f"{last:%Y-%m-%d}; the next {len(fresh)} slot(s) all fall after "
-               f"it at {per_week}/week")
+            r.fail(f"domain_weekdays failed at {per_week}/week: {e}")
+
+        live = {d: days for d, days in split.items() if days}
+        r.examined += 1
+        if not live:
+            r.fail(f"no domain holds a publish day at {per_week}/week")
+        seen_days: dict[int, str] = {}
+        for d, days in live.items():
+            for wd in days:
+                r.examined += 1
+                if wd in seen_days and seen_days[wd] != d:
+                    r.fail(f"weekday {wd} is assigned to both {seen_days[wd]} "
+                           f"and {d}; two domains sharing a publish day is how "
+                           f"they double-book each other")
+                seen_days[wd] = d
+                if wd in {2, 3}:
+                    r.fail(f"{d} is assigned weekday {wd} (Wednesday/Thursday), "
+                           f"the two measured-weak days")
+
+        allocated: set[str] = set()
+        for d, days in live.items():
+            fresh = backfill.schedule_for(led, max(2, per_week), per_week,
+                                          domain=d)
+            for when in fresh:
+                r.examined += 1
+                stamp = when.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+                if stamp in taken:
+                    r.fail(f"the allocator handed {d} the slot {stamp}, which "
+                           f"{[t['slug'] for t in tail if t['scheduled_publish_at'] == stamp]} "
+                           f"already holds — a cadence change must never "
+                           f"re-date or double-book a scheduled episode")
+                if stamp in allocated:
+                    r.fail(f"{stamp} was handed to two domains in one pass")
+                allocated.add(stamp)
+                wd = when.astimezone(backfill.PUBLISH_TZ).weekday()
+                if wd not in days:
+                    r.fail(f"{d} was given {stamp}, a weekday ({wd}) outside "
+                           f"its own allocation {tuple(days)}")
+                lead = (when - datetime.now(timezone.utc)).total_seconds() / 3600
+                if lead < backfill.MIN_LEAD_HOURS - 1:
+                    r.fail(f"{stamp} is only {lead:.1f}h away, inside the "
+                           f"{backfill.MIN_LEAD_HOURS}h minimum lead — the "
+                           f"owner cannot watch it through before it airs")
+        r.note(f"{len(tail)} episode(s) dated through {last:%Y-%m-%d}; "
+               f"{len(live)} domain(s) allocating on disjoint days "
+               f"{ {d: tuple(v) for d, v in live.items()} } at {per_week}/week")
     else:
         # No dated tail is legitimate only when the channel has none. Do NOT
         # let that pass silently as zero examined.
@@ -1730,6 +1778,276 @@ def v25_domain_abstraction() -> Result:
     return r
 
 
+def v27_lanes_see_every_domain() -> Result:
+    """Every lane that schedules or narrates must see EVERY domain's queue.
+
+    RENUMBERED from V21 on 2026-09-04: main had already taken 21-26. The
+    defect it guards is this repo's most persistent - a component reading
+    `research/publish_order.json` by name, so a second domain's whole queue is
+    invisible to it. It has now been found in six places: bin/batch-session.sh,
+    bin/loop-stage.sh, cadence.publish_order() and three sites in
+    loop/backfill.py, one of which only surfaced at runtime after a dry run
+    had passed. The visible symptom was a runway reading "0 publishable
+    episode(s) of 22 on disk" while eighteen scored, scripted and planned
+    materials episodes sat on the shelf.
+
+    Asserted BEHAVIOURALLY, not by grepping for the filename: a first attempt
+    did grep loop/*.py and produced nine failures that were almost all
+    docstring prose, and it would still have flagged cadence.PUBLISH_ORDER,
+    which is legitimate - cadence reads the primary file for its staleness and
+    shape checks and merges the rest on top. "Does this module name the file"
+    is not the invariant. "Can it see a second domain" is.
+
+    Hard-fails when it examines zero items.
+    """
+    r = Result("V27 lanes-see-domains")
+    import json as _json                                   # noqa: PLC0415
+    import importlib                                       # noqa: PLC0415
+
+    files = sorted((ROOT / "research").glob("publish_order*.json"))
+    r.examined += 1
+    if not files:
+        r.fail("no research/publish_order*.json files at all")
+        return r
+
+    per_file = {}
+    for path in files:
+        per_file[path.name] = {row.get("slug") for row in
+                               (_json.loads(path.read_text()).get("queue") or [])
+                               if row.get("slug")}
+
+    # ---- no bin/ script names a single publish-order file ----------------
+    for sh in sorted((ROOT / "bin").glob("*.sh")):
+        r.examined += 1
+        bad = [n for n, line in enumerate(sh.read_text().splitlines(), 1)
+               if "research/publish_order" in line
+               and not line.lstrip().startswith("#")
+               and "publish_order*" not in line]
+        if bad:
+            r.fail(f"{sh.name} line(s) {bad} name a single publish-order file; "
+                   f"use loop/batch_queue.py or a publish_order*.json glob.")
+
+    # ---- the merged queue is a superset of every file --------------------
+    r.examined += 1
+    try:
+        import batch_queue                                 # noqa: PLC0415
+        merged = set(batch_queue.queued_slugs())
+        for fname, slugs in per_file.items():
+            missing = slugs - merged
+            if missing:
+                r.fail(f"{fname}: {len(missing)} slug(s) absent from the merged "
+                       f"queue, e.g. {sorted(missing)[:3]}")
+    except Exception as e:                                 # noqa: BLE001
+        r.fail(f"loop/batch_queue.py could not produce a merged queue: {e}")
+
+    # ---- an empty glob must raise, not report an empty queue -------------
+    r.examined += 1
+    try:
+        import batch_queue as _bq                          # noqa: PLC0415
+        real = _bq.ROOT
+        try:
+            _bq.ROOT = ROOT / "loop" / "__no_such_root__"
+            try:
+                _bq.queued_slugs()
+                r.fail("queued_slugs() returned normally with no publish-order "
+                       "files; an empty queue must be distinguishable from a "
+                       "missing one")
+            except _bq.NoPublishOrder:
+                pass
+        finally:
+            _bq.ROOT = real
+    except Exception as e:                                 # noqa: BLE001
+        r.fail(f"could not exercise the empty-glob guard: {e}")
+
+    # ---- the SCHEDULING modules can actually see a second domain ---------
+    r.examined += 1
+    try:
+        import cadence as _cad                             # noqa: PLC0415
+        importlib.reload(_cad)
+        seen = set(_cad.publish_order())
+        for fname, slugs in per_file.items():
+            missing = slugs - seen
+            if missing:
+                r.fail(f"cadence.publish_order() cannot see {len(missing)} "
+                       f"slug(s) from {fname}, e.g. {sorted(missing)[:3]}. "
+                       f"Every runway and cadence decision would be made as "
+                       f"though that domain's queue did not exist.")
+    except Exception as e:                                 # noqa: BLE001
+        r.fail(f"cadence.publish_order() raised: {e}")
+
+    r.examined += 1
+    try:
+        import backfill as _bf                             # noqa: PLC0415
+        importlib.reload(_bf)
+        for fname, slugs in per_file.items():
+            if not slugs:
+                continue
+            probe = sorted(slugs)[0]
+            try:
+                _bf.question_for(probe)
+            except Exception:                              # noqa: BLE001
+                r.fail(f"backfill.question_for({probe!r}) fails for a slug from "
+                       f"{fname}. That question becomes the video title, so the "
+                       f"upload would fail after the render was paid for.")
+    except Exception as e:                                 # noqa: BLE001
+        r.fail(f"backfill could not be exercised: {e}")
+    return r
+
+
+def v28_lane_interpreters() -> Result:
+    """Each lane is invoked with the interpreter that lane's packages live in.
+
+    THE FAILURE THIS CATCHES READS AS A BROKEN NARRATOR. Voice has had its own
+    environment since the lane was built - bin/run-batch.sh calls
+    .venv-tts/bin/python, because torch, chatterbox-tts and soundfile are ~1.3
+    GB and have no business in the render venv. bin/batch-session.sh called
+    `$PY voice/narrate_all.py`, i.e. the RENDER venv, and narration died on
+    `ModuleNotFoundError: No module named 'soundfile'`. CLAUDE.md's first named
+    trap is exactly this; it has now cost PIL twice, numpy once and soundfile
+    once.
+
+    Asserted from the SCRIPT TEXT, not the filesystem: this also runs in
+    Actions, where no .venv-tts exists and never should.
+
+    Hard-fails when it examines zero items.
+    """
+    r = Result("V28 lane-interpreters")
+    import re as _re                                       # noqa: PLC0415
+
+    RENDER_VENV = ".venv/bin/python"
+    TTS_VENV = ".venv-tts/bin/python"
+
+    for sh in sorted((ROOT / "bin").glob("*.sh")):
+        body = sh.read_text()
+        lines = [ln for ln in body.splitlines() if not ln.lstrip().startswith("#")]
+        r.examined += 1
+
+        varmap = {}
+        for ln in lines:
+            m = _re.match(r"\s*([A-Z_][A-Z0-9_]*)=(\S*/bin/python\S*)\s*$", ln)
+            if m:
+                varmap[m.group(1)] = m.group(2)
+
+        def interp(ln):
+            m = _re.search(r"(?:\$\{?([A-Z_][A-Z0-9_]*)\}?|(\S*/bin/python\S*))\s+"
+                           r"(\S+\.py)", ln)
+            if not m:
+                return None, None
+            name = varmap.get(m.group(1)) if m.group(1) else m.group(2)
+            return name, m.group(3)
+
+        for ln in lines:
+            path, script = interp(ln)
+            if not path or not script:
+                continue
+            if script.startswith("voice/") and path.endswith(RENDER_VENV):
+                r.fail(f"{sh.name} runs {script} with {path}, the RENDER venv. "
+                       f"Voice needs torch/chatterbox-tts/soundfile from "
+                       f"{TTS_VENV}; this fails as ModuleNotFoundError and "
+                       f"reads as a broken narrator.")
+            if script.startswith("visuals/") and TTS_VENV in path:
+                r.fail(f"{sh.name} runs {script} with {path}, the VOICE venv. "
+                       f"Rendering needs PIL and numpy from {RENDER_VENV}.")
+
+        if any(ln for ln in lines if "voice/" in ln and ".py" in ln):
+            if not any(TTS_VENV in v for v in varmap.values()) and TTS_VENV not in body:
+                r.fail(f"{sh.name} runs a voice/ entrypoint but never names "
+                       f"{TTS_VENV}. The two environments are separate and the "
+                       f"script that drives voice must say so.")
+    return r
+
+
+def v29_material_image_rights() -> Result:
+    """No picture reaches a frame without a verified public-domain record.
+
+    HARD, unlike V6. V6 is soft because a missing bibliography line is a
+    provenance-record gap and the pipeline still cannot speak a number it was
+    not given. This is different in kind: a `material_image` beat puts somebody
+    else's photograph on a monetised channel, and CLAUDE.md's one absolute
+    imagery rule is that stripping or omitting attribution is the thing this
+    pipeline may not do.
+
+    Every material_image beat must resolve to a record with a non-empty
+    credit_line, item_url, licence and sha256; the licence must be a
+    public-domain or CC0 tag (CC-BY is NOT a public-domain dedication and this
+    channel is monetised); the file must still hash to what was rights-checked;
+    and the on-screen label must be non-empty, because CONTRACT.md rule 1 is
+    that the picture is captioned with a word the viewer is hearing.
+
+    Hard-fails when it examines zero items.
+    """
+    r = Result("V29 material-image rights")
+    import hashlib as _h                                   # noqa: PLC0415
+
+    beats = []
+    for path in sorted((ROOT / "plans").glob("*.json")):
+        try:
+            plan = read_json(path)
+        except Exception as e:                             # noqa: BLE001
+            r.examined += 1
+            r.fail(f"{path.name}: unreadable ({e})")
+            continue
+        for i, b in enumerate(plan):
+            if b.get("segment") == "material_image":
+                beats.append((path.name, i, b))
+
+    if not beats:
+        r.examined += 1
+        r.fail("no material_image beat in any plan, so this validator proved "
+               "nothing. Either the materials image lane never ran "
+               "(visuals/plan_materials_images.py --all --apply) or the plans "
+               "were regenerated over it; an empty loop must not pass.")
+        return r
+
+    man_path = ROOT / "channel" / "imagery" / "materials.json"
+    if not man_path.exists():
+        r.examined += 1
+        r.fail(f"{len(beats)} material_image beat(s) reference a manifest that "
+               f"does not exist: {man_path}. Every one raises at render, after "
+               f"narration was paid for.")
+        return r
+    man = read_json(man_path)
+    by_subject = {}
+    for rec in man.get("index", []):
+        by_subject.setdefault(rec["subject"], []).append(rec)
+
+    PD_OK = ("public domain", "pd-", "cc0", "no restrictions")
+    checked = set()
+    for name, i, b in beats:
+        r.examined += 1
+        args = b.get("args") or {}
+        subj = args.get("subject")
+        recs = by_subject.get(subj)
+        if not recs:
+            r.fail(f"{name} beat {i}: subject {subj!r} has no verified record "
+                   f"in materials.json; this raises at render.")
+            continue
+        rec = recs[(args.get("pick") or 0) % len(recs)]
+        if not (args.get("label") or "").strip():
+            r.fail(f"{name} beat {i}: no on-screen label. The picture must be "
+                   f"captioned with a word the narration uses.")
+        for field in ("credit_line", "item_url", "licence", "sha256", "local_file"):
+            if not rec.get(field):
+                r.fail(f"{name} beat {i} [{subj}]: record is missing {field!r} "
+                       f"- it may not be shown.")
+        lic = (rec.get("licence") or "").lower()
+        if lic and not any(k in lic for k in PD_OK):
+            r.fail(f"{name} beat {i} [{subj}]: licence is {rec['licence']!r}, "
+                   f"which is not a public-domain dedication. This channel is "
+                   f"monetised and CC-BY does not qualify.")
+        lf = rec.get("local_file")
+        if lf and lf not in checked:
+            checked.add(lf)
+            fp = ROOT / "channel" / "imagery" / lf
+            if not fp.exists():
+                r.fail(f"[{subj}] {lf} is not on disk")
+            elif rec.get("sha256"):
+                if _h.sha256(fp.read_bytes()).hexdigest() != rec["sha256"]:
+                    r.fail(f"[{subj}] {lf} changed since it was rights-checked "
+                           f"(sha256 differs); it may not be shown.")
+    return r
+
+
 # ------------------------------------------------------------------ runner
 
 def run_all(items) -> tuple[bool, list[dict]]:
@@ -1747,7 +2065,9 @@ def run_all(items) -> tuple[bool, list[dict]]:
                v14_shorts_attribution(), v15_shorts_caption_crop(),
                v20_cadence_schedule(), v21_no_boilerplate(),
                v22_producer_notes_second_person(), v23_chapters_compliant(),
-               v24_render_duration_floor(), v25_domain_abstraction()]
+               v24_render_duration_floor(), v25_domain_abstraction(),
+               v27_lanes_see_every_domain(), v28_lane_interpreters(),
+               v29_material_image_rights()]
     rows = [r.as_dict() for r in results]
     return all(r.ok for r in results), rows
 
