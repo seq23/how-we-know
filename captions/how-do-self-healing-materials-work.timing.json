@@ -1,0 +1,45 @@
+{
+  "episode": "how-do-self-healing-materials-work",
+  "beats": 62,
+  "plan_source": "plans/how-do-self-healing-materials-work.json",
+  "timing": "audio",
+  "beats_measured": 62,
+  "duration_s": 516.627,
+  "cues": 133,
+  "chapters_real": 11,
+  "chapters_published": 10,
+  "chapter_notes": [
+    "merged 1 chapter(s) under 10s: Title card (2.4s)"
+  ],
+  "drift": {
+    "mean_abs_s": 0.0,
+    "worst_abs_s": 0.0,
+    "rows": []
+  },
+  "ffprobe": {
+    "file": "renders/how-do-self-healing-materials-work-final.mp4",
+    "video_s": 516.626,
+    "last_cue_end_s": 516.627,
+    "delta_s": 0.001,
+    "ok": true
+  },
+  "text_checks": {
+    "beats_json": {
+      "checked": 62,
+      "mismatched": []
+    },
+    "script_text": {
+      "checked": 62,
+      "absent_from_narration": []
+    }
+  },
+  "script_chapters": {
+    "written": false,
+    "reason": "script has no ## Chapters block"
+  },
+  "artifacts": [
+    "captions/how-do-self-healing-materials-work.vtt",
+    "captions/how-do-self-healing-materials-work.srt",
+    "captions/how-do-self-healing-materials-work.chapters.txt"
+  ]
+}

@@ -1,0 +1,154 @@
+{
+  "episode": "04-why-deep-sea-creatures-are-so-scary",
+  "beats": 62,
+  "plan_source": "plans/04-why-deep-sea-creatures-are-so-scary.json",
+  "timing": "partial",
+  "beats_measured": 5,
+  "duration_s": 456.186,
+  "cues": 123,
+  "chapters_real": 18,
+  "chapters_published": 15,
+  "chapter_notes": [
+    "merged 3 chapter(s) under 10s: Title card (2.4s), Producer POV (9.0s), The line I will keep (9.0s)"
+  ],
+  "drift": {
+    "mean_abs_s": 12.5,
+    "worst_abs_s": 28.8,
+    "rows": [
+      {
+        "title": "Cold open",
+        "hand": "00:00",
+        "real": "0:00",
+        "drift_s": 0.0
+      },
+      {
+        "title": "Title card",
+        "hand": "00:17",
+        "real": "0:14",
+        "drift_s": -2.0
+      },
+      {
+        "title": "The right way to see it",
+        "hand": "00:19",
+        "real": "0:17",
+        "drift_s": -1.7
+      },
+      {
+        "title": "Producer POV",
+        "hand": "00:41",
+        "real": "0:40",
+        "drift_s": -0.5
+      },
+      {
+        "title": "Our brains treat unfamiliar anatomy as a threat",
+        "hand": "00:56",
+        "real": "0:49",
+        "drift_s": -6.5
+      },
+      {
+        "title": "The teeth are often about not losing one meal",
+        "hand": "01:14",
+        "real": "1:04",
+        "drift_s": -9.3
+      },
+      {
+        "title": "Bioluminescence looks supernatural because we rarely see it",
+        "hand": "01:40",
+        "real": "1:29",
+        "drift_s": -10.2
+      },
+      {
+        "title": "The deep sea is genuinely hazardous, but not mainly because of animals",
+        "hand": "02:01",
+        "real": "1:50",
+        "drift_s": -10.1
+      },
+      {
+        "title": "Common myths and questions",
+        "hand": "02:21",
+        "real": "2:10",
+        "drift_s": -10.2
+      },
+      {
+        "title": "The fear test",
+        "hand": "03:03",
+        "real": "2:51",
+        "drift_s": -11.9
+      },
+      {
+        "title": "How the camera manufactures a predator",
+        "hand": "03:36",
+        "real": "3:22",
+        "drift_s": -13.3
+      },
+      {
+        "title": "The fear reveal",
+        "hand": "05:08",
+        "real": "4:51",
+        "drift_s": -16.7
+      },
+      {
+        "title": "The thumbnail bargain",
+        "hand": "05:58",
+        "real": "5:41",
+        "drift_s": -16.8
+      },
+      {
+        "title": "The line I will keep",
+        "hand": "06:31",
+        "real": "6:13",
+        "drift_s": -18.0
+      },
+      {
+        "title": "Final editorial note",
+        "hand": "06:44",
+        "real": "6:22",
+        "drift_s": -22.0
+      },
+      {
+        "title": "What to notice in the edit",
+        "hand": "06:55",
+        "real": "6:32",
+        "drift_s": -22.2
+      },
+      {
+        "title": "Evidence limit",
+        "hand": "07:20",
+        "real": "6:55",
+        "drift_s": -24.6
+      },
+      {
+        "title": "Closing",
+        "hand": "07:48",
+        "real": "7:19",
+        "drift_s": -28.8
+      }
+    ]
+  },
+  "ffprobe": {
+    "file": "renders/04-why-deep-sea-creatures-are-so-scary.mp4",
+    "video_s": 452.766,
+    "last_cue_end_s": 456.186,
+    "delta_s": 3.42,
+    "ok": false
+  },
+  "text_checks": {
+    "beats_json": {
+      "checked": 62,
+      "mismatched": []
+    },
+    "script_text": {
+      "checked": 62,
+      "absent_from_narration": []
+    }
+  },
+  "script_chapters": {
+    "written": false,
+    "reason": "timing source is 'partial'; stamps are only written from fully measured audio"
+  },
+  "artifacts": [
+    "captions/04-why-deep-sea-creatures-are-so-scary.vtt",
+    "captions/04-why-deep-sea-creatures-are-so-scary.srt",
+    "captions/04-why-deep-sea-creatures-are-so-scary.chapters.txt"
+  ]
+}

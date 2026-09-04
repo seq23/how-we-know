@@ -1,0 +1,144 @@
+{
+  "episode": "02-how-deep-sea-creatures-survive-pressure",
+  "beats": 56,
+  "plan_source": "plans/02-how-deep-sea-creatures-survive-pressure.json",
+  "timing": "audio",
+  "beats_measured": 56,
+  "duration_s": 452.659,
+  "cues": 121,
+  "chapters_real": 16,
+  "chapters_published": 15,
+  "chapter_notes": [
+    "merged 1 chapter(s) under 10s: Title card (2.8s)"
+  ],
+  "drift": {
+    "mean_abs_s": 9.9,
+    "worst_abs_s": 21.6,
+    "rows": [
+      {
+        "title": "Cold open",
+        "hand": "00:00",
+        "real": "0:00",
+        "drift_s": 0.0
+      },
+      {
+        "title": "Title card",
+        "hand": "00:17",
+        "real": "0:14",
+        "drift_s": -2.9
+      },
+      {
+        "title": "The right way to see it",
+        "hand": "00:19",
+        "real": "0:16",
+        "drift_s": -2.1
+      },
+      {
+        "title": "Producer POV",
+        "hand": "00:45",
+        "real": "0:43",
+        "drift_s": -1.8
+      },
+      {
+        "title": "Pressure acts most dramatically on gas",
+        "hand": "01:03",
+        "real": "0:55",
+        "drift_s": -7.1
+      },
+      {
+        "title": "They are built for one pressure regime",
+        "hand": "01:25",
+        "real": "1:17",
+        "drift_s": -7.7
+      },
+      {
+        "title": "Vertical migrants tolerate large daily changes",
+        "hand": "01:51",
+        "real": "1:43",
+        "drift_s": -7.7
+      },
+      {
+        "title": "Why humans and submersibles need protection",
+        "hand": "02:12",
+        "real": "2:05",
+        "drift_s": -6.6
+      },
+      {
+        "title": "Common myths and questions",
+        "hand": "02:29",
+        "real": "2:24",
+        "drift_s": -4.8
+      },
+      {
+        "title": "The balloon test",
+        "hand": "03:20",
+        "real": "3:13",
+        "drift_s": -6.4
+      },
+      {
+        "title": "What pressure actually changes",
+        "hand": "04:01",
+        "real": "3:50",
+        "drift_s": -10.7
+      },
+      {
+        "title": "What a surface demonstration cannot reproduce",
+        "hand": "05:36",
+        "real": "5:18",
+        "drift_s": -17.8
+      },
+      {
+        "title": "The three-part answer",
+        "hand": "06:21",
+        "real": "6:01",
+        "drift_s": -19.9
+      },
+      {
+        "title": "What to notice in the edit",
+        "hand": "06:50",
+        "real": "6:29",
+        "drift_s": -20.7
+      },
+      {
+        "title": "Evidence limit",
+        "hand": "07:13",
+        "real": "6:51",
+        "drift_s": -21.3
+      },
+      {
+        "title": "Closing",
+        "hand": "07:40",
+        "real": "7:18",
+        "drift_s": -21.6
+      }
+    ]
+  },
+  "ffprobe": {
+    "file": "renders/02-how-deep-sea-creatures-survive-pressure-final.mp4",
+    "video_s": 452.658,
+    "last_cue_end_s": 452.659,
+    "delta_s": 0.001,
+    "ok": true
+  },
+  "text_checks": {
+    "beats_json": {
+      "checked": 56,
+      "mismatched": []
+    },
+    "script_text": {
+      "checked": 56,
+      "absent_from_narration": []
+    }
+  },
+  "script_chapters": {
+    "written": false,
+    "changed": false,
+    "removed_lines": [],
+    "chapters_not_in_script": []
+  },
+  "artifacts": [
+    "captions/02-how-deep-sea-creatures-survive-pressure.vtt",
+    "captions/02-how-deep-sea-creatures-survive-pressure.srt",
+    "captions/02-how-deep-sea-creatures-survive-pressure.chapters.txt"
+  ]
+}

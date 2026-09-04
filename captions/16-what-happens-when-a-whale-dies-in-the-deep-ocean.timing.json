@@ -1,0 +1,130 @@
+{
+  "episode": "16-what-happens-when-a-whale-dies-in-the-deep-ocean",
+  "beats": 60,
+  "plan_source": "plans/16-what-happens-when-a-whale-dies-in-the-deep-ocean.json",
+  "timing": "estimate",
+  "beats_measured": 0,
+  "duration_s": 440.93,
+  "cues": 124,
+  "chapters_real": 14,
+  "chapters_published": 12,
+  "chapter_notes": [
+    "merged 2 chapter(s) under 10s: Title card (4.1s), Producer POV (9.0s)"
+  ],
+  "drift": {
+    "mean_abs_s": 20.0,
+    "worst_abs_s": 41.5,
+    "rows": [
+      {
+        "title": "Cold open",
+        "hand": "00:00",
+        "real": "0:00",
+        "drift_s": 0.0
+      },
+      {
+        "title": "Title card",
+        "hand": "00:12",
+        "real": "0:11",
+        "drift_s": -0.4
+      },
+      {
+        "title": "A single body changes a food-poor landscape",
+        "hand": "00:16",
+        "real": "0:15",
+        "drift_s": -0.3
+      },
+      {
+        "title": "Producer POV",
+        "hand": "01:20",
+        "real": "1:15",
+        "drift_s": -4.3
+      },
+      {
+        "title": "The first stage is large and fast",
+        "hand": "01:36",
+        "real": "1:24",
+        "drift_s": -11.3
+      },
+      {
+        "title": "Bones store an energy reserve",
+        "hand": "02:35",
+        "real": "2:17",
+        "drift_s": -17.1
+      },
+      {
+        "title": "From food island to hard substrate",
+        "hand": "03:32",
+        "real": "3:10",
+        "drift_s": -21.8
+      },
+      {
+        "title": "One body, three ecological chapters",
+        "hand": "04:38",
+        "real": "4:15",
+        "drift_s": -23.0
+      },
+      {
+        "title": "Why the phases overlap",
+        "hand": "05:08",
+        "real": "4:41",
+        "drift_s": -26.7
+      },
+      {
+        "title": "The continuity shot",
+        "hand": "06:10",
+        "real": "5:37",
+        "drift_s": -32.3
+      },
+      {
+        "title": "What the camera may miss",
+        "hand": "06:34",
+        "real": "6:00",
+        "drift_s": -33.2
+      },
+      {
+        "title": "What to notice in the edit",
+        "hand": "06:59",
+        "real": "6:25",
+        "drift_s": -33.8
+      },
+      {
+        "title": "Evidence limit",
+        "hand": "07:21",
+        "real": "6:46",
+        "drift_s": -34.8
+      },
+      {
+        "title": "Closing",
+        "hand": "07:46",
+        "real": "7:04",
+        "drift_s": -41.5
+      }
+    ]
+  },
+  "ffprobe": {
+    "file": "renders/16-what-happens-when-a-whale-dies-in-the-deep-ocean.mp4",
+    "video_s": 440.831,
+    "last_cue_end_s": 440.93,
+    "delta_s": 0.099,
+    "ok": true
+  },
+  "text_checks": {
+    "beats_json": {
+      "checked": 60,
+      "mismatched": []
+    },
+    "script_text": {
+      "checked": 60,
+      "absent_from_narration": []
+    }
+  },
+  "script_chapters": {
+    "written": false,
+    "reason": "timing source is 'estimate'; stamps are only written from fully measured audio"
+  },
+  "artifacts": [
+    "captions/16-what-happens-when-a-whale-dies-in-the-deep-ocean.vtt",
+    "captions/16-what-happens-when-a-whale-dies-in-the-deep-ocean.srt",
+    "captions/16-what-happens-when-a-whale-dies-in-the-deep-ocean.chapters.txt"
+  ]
+}
