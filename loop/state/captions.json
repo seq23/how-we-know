@@ -74,7 +74,8 @@
       "cues": 122,
       "track_kind": "standard",
       "source": "inserted",
-      "recorded_at": "2026-09-03T17:28:05+00:00"
+      "recorded_at": "2026-09-03T17:28:05+00:00",
+      "verified_at": "2026-09-04T19:46:12+00:00"
     },
     "MWOUa3UEXSk": {
       "slug": "15-how-do-people-reach-challenger-deep",
@@ -84,7 +85,8 @@
       "cues": 130,
       "track_kind": "standard",
       "source": "inserted",
-      "recorded_at": "2026-09-03T17:28:06+00:00"
+      "recorded_at": "2026-09-03T17:28:06+00:00",
+      "verified_at": "2026-09-04T19:46:12+00:00"
     },
     "jec80gk8rM0": {
       "slug": "08-what-creatures-live-in-the-deep-sea",
@@ -94,7 +96,8 @@
       "cues": 127,
       "track_kind": "standard",
       "source": "inserted",
-      "recorded_at": "2026-09-03T17:28:06+00:00"
+      "recorded_at": "2026-09-03T17:28:06+00:00",
+      "verified_at": "2026-09-04T19:46:12+00:00"
     },
     "G1TqXmf36Qo": {
       "slug": "09-what-is-the-scariest-deep-sea-creature",
@@ -165,10 +168,20 @@
       "track_kind": "standard",
       "source": "inserted",
       "recorded_at": "2026-09-03T17:28:13+00:00"
+    },
+    "nv-M6q8h-Lk": {
+      "slug": "02-how-deep-sea-creatures-survive-pressure",
+      "caption_id": "AUieDaabqR3aMB5Zo9n57Ew9npxvkHGPJV5F3GMAmyRb8cPDBiZixvZ1",
+      "language": "en",
+      "srt_sha256": "b1740a9e213c48222c36de9125f83c0d0bc98718b0d1ad1b1cc05e1097247439",
+      "cues": 121,
+      "track_kind": "standard",
+      "source": "inserted",
+      "recorded_at": "2026-09-04T19:46:12+00:00"
     }
   },
   "blocked": {},
-  "updated": "2026-09-04T15:10:30+00:00",
+  "updated": "2026-09-04T19:46:12+00:00",
   "token_scopes": [
     "https://www.googleapis.com/auth/youtube",
     "https://www.googleapis.com/auth/youtube.force-ssl",
