@@ -1,15 +1,15 @@
 {
   "stage": "cloud-upload",
   "week": "2026-W36",
-  "at": "2026-09-04T14:11:47+00:00",
+  "at": "2026-09-04T20:32:17+00:00",
   "code": "NOTHING_SHELVED",
   "message": "every queued episode is either already in the ledger or not yet pushed to R2",
   "detail": null,
   "unblock": "On the Mac: bin/push-to-r2.sh",
-  "disposition": "needs_human",
-  "disposition_why": "'NOTHING_SHELVED' is not in loop/stop_policy.json, so it is treated as needing a human. That is the default on purpose.",
-  "consecutive": 1,
-  "exit_code": 3,
+  "disposition": "self_resolving",
+  "disposition_why": "Every queued episode is already in the ledger or has not been pushed to R2 yet. The Mac's nightly batch pushes what it renders, so an empty shelf resolves itself on the next batch; and when the whole queue is uploaded, an empty shelf is the finished state. (run 2 of at most 7 before this escalates to a human.)",
+  "consecutive": 2,
+  "exit_code": 0,
   "work_done_before_stop": [],
   "notes": [
     "shelf: r2://how-we-know-renders"
