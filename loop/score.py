@@ -26,6 +26,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "research"))
 
 import cadence  # noqa: E402
 from common import ROOT, Stage, config, now, read_json, week_id  # noqa: E402
@@ -62,12 +63,76 @@ def entrypoint() -> Path:
     return ROOT / str(cfg.get("entrypoint", "research/publish_order.py"))
 
 
+def missing_queues() -> dict:
+    """Allocated domains with no scored publish-order file of their own.
+
+    Keyed by domain, valued by the file the gate would write. Derived from the
+    allocation and the files on disk - NOT from a list of domains that need
+    scoring, which is the second list this repo keeps discovering it kept.
+    """
+    import domains as dom                                   # noqa: PLC0415
+    import publish_order_domain as pod                      # noqa: PLC0415
+
+    out = {}
+    for name in dom.allocation(config()):
+        if dom.queue_depth().get(name, 0) > 0:
+            continue
+        out[name] = Path(pod.out_path(name))
+    return out
+
+
 def main() -> None:
     week = week_id()
     with Stage("weekly-score", week,
                zero_work_hint="The scoring entrypoint produced no ranked "
                               "candidate. A scoring pass that ranks nothing "
                               "has done nothing.") as st:
+
+        # A DOMAIN THE MONTHLY REVIEW PROMOTED ARRIVES WITH NO QUEUE. It holds
+        # weekly slots from the moment loop/domains.lifecycle() retires the
+        # domain it replaced, and nothing else in the loop will score its
+        # topics: research/publish_order.py gates deep sea and
+        # publish_order_materials.py gates materials from a hand-written
+        # candidate list. Scoring it here, on the schedule, is what makes the
+        # promotion real rather than an entry in a report.
+        #
+        # Same gate, imported unchanged - a new domain's topics are not waved
+        # through for being new. A quota or key stop is named, not a failure,
+        # and leaves the domain queueless until the next Saturday.
+        for dom, path in missing_queues().items():
+            st.note(f"{dom} holds weekly slots and has no scored queue; "
+                    f"running the gate for it")
+            g = subprocess.run(
+                [PY, str(ROOT / "research" / "publish_order_domain.py"),
+                 "--domain", dom], cwd=ROOT, capture_output=True, text=True,
+                timeout=TIMEOUT_S)
+            gout = (g.stdout or "") + (g.stderr or "")
+            for line in gout.strip().splitlines()[-4:]:
+                st.note(f"  {dom}: {line[:150]}")
+            if g.returncode == 0 and path.exists():
+                st.work(f"scored a first queue for {dom} -> "
+                        f"{path.relative_to(ROOT)}")
+            elif QUOTA_MARKERS.search(gout):
+                st.named_stop(
+                    "NEW_DOMAIN_QUOTA",
+                    f"{dom} holds weekly slots and its first topic gate "
+                    f"stopped on YouTube Data API quota. It has no queue until "
+                    f"this runs, and the drafting lane has nothing to draw "
+                    f"from for it.",
+                    detail={"domain": dom, "tail": gout.strip().splitlines()[-4:]},
+                    unblock="The next Saturday run retries. If it recurs, the "
+                            "candidate set is larger than one day's quota - "
+                            "lower --budget and let it fill over two weeks.")
+            else:
+                st.named_stop(
+                    "NEW_DOMAIN_UNSCORED",
+                    f"{dom} holds weekly slots and its first topic gate exited "
+                    f"{g.returncode} without writing a queue.",
+                    detail={"domain": dom, "tail": gout.strip().splitlines()[-6:]},
+                    unblock="Run research/publish_order_domain.py --domain "
+                            f"{dom} --candidates-only to see what it found. A "
+                            "domain with no queue cannot fill the slots the "
+                            "monthly review gave it.")
 
         ep = entrypoint()
         if not ep.exists():

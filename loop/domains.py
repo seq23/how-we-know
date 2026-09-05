@@ -288,7 +288,25 @@ def queue_depth() -> dict[str, int]:
                 continue                      # a slug counts once, however
                                                # many files mention it
             seen_slugs.add(slug)
+            # THE SCRIPT IS THE AUTHORITY, THE FILE IS THE FALLBACK. A queued
+            # topic has no script yet by definition, and until 2026-09-05 that
+            # did not matter: the two live domains had scripts on disk for
+            # every queued slug, so `domain_of_slug` always answered. A domain
+            # the monthly review PROMOTES has a scored queue and not one
+            # script, so every row would map to None and the domain would read
+            # as depth 0 - out of runway on the day it started, and (because
+            # loop/score.py gates on exactly this number) re-running its whole
+            # topic gate every Saturday for ever.
+            #
+            # The file's own `domain` field answers instead, checked against
+            # the taxonomy so a typo cannot invent a domain. Where a script
+            # exists it still wins, and `domain_of_slug` is what catches a
+            # script that disagrees with the file it came from.
             d = domain_of_slug(slug)
+            if not d:
+                claimed = row.get("domain") or _read(path).get("domain")
+                if claimed in known():
+                    d = claimed
             if d:
                 out[d] = out.get(d, 0) + 1
     return out
@@ -406,6 +424,97 @@ def reallocate(cfg: dict, per_domain: dict[str, dict]) -> dict:
                 f"{worst} across {judgeable[best]['measured']} and "
                 f"{judgeable[worst]['measured']} measured episodes. One weekly "
                 f"slot moves; the rest of the allocation stands."),
+    }
+
+
+# ----------------------------------------------------------- niche lifecycle
+
+def lifecycle(cfg: dict, per_domain: dict[str, dict],
+              published_slugs: list[str] | None = None) -> dict:
+    """RETIRE a decayed domain and PROMOTE the next-ranked one into its slots.
+
+    `reallocate()` moves at most one slot between domains that are already
+    running. It deliberately cannot end a domain — it refuses to take a
+    domain's last slot, and says so. That left the lifecycle open at both ends:
+    `exhausted()` and `next_unused()` were computed every month, written into
+    the report as prose, and acted on by nobody. A niche could decay to nothing
+    and the allocation would still be feeding it, month after month, in a report
+    that said out loud which domain was finished.
+
+    This closes it. The decision is the same shape `reallocate()` returns, and
+    it goes through the SAME cooldown fence in monthly.apply_allocation(), so a
+    wrong retirement is bounded exactly like a wrong slot move.
+
+    What it will not do, and why:
+
+      * **Retire on an empty queue alone.** `exhausted()` already requires that
+        the domain actually published something. This adds a second floor: the
+        domain must have `min_episodes_to_judge` MEASURED episodes. A queue that
+        is thin after three episodes is a scoring backlog, and the honest fix is
+        to score more topics, not to end the niche.
+      * **Retire the last domain.** Retirement is only ever a SWAP. With no
+        replacement in the taxonomy the allocation is held and the stop is
+        named, because a channel with no domain publishes nothing.
+      * **Retire more than one domain a month.** One swap, so a wrong call costs
+        one domain's slots and is visible before the next one.
+      * **Change the slot total.** The promoted domain inherits exactly the
+        retired domain's slots, so the allocation still sums to `cadence.ceiling`
+        and `slots_at()` does not raise.
+    """
+    alloc = allocation(cfg)
+    ex = exhausted(cfg, published_slugs)
+    if not ex:
+        return {"applied": False, "allocation": alloc,
+                "why": (f"no allocated domain has decayed below the "
+                        f"{queue_exhausted_below(cfg)}-topic queue floor.")}
+
+    need = min_episodes_to_judge(cfg)
+    ready = [d for d in ex if (per_domain.get(d) or {}).get("measured", 0) >= need]
+    if not ready:
+        thin = {d: (per_domain.get(d) or {}).get("measured", 0) for d in ex}
+        return {
+            "applied": False, "allocation": alloc,
+            "stop": "QUEUE_DECAYED_BUT_UNMEASURED",
+            "why": (f"{', '.join(ex)} has a queue below the "
+                    f"{queue_exhausted_below(cfg)}-topic floor but only "
+                    f"{thin} measured episode(s), under the {need} this domain "
+                    f"must clear before it may be ended. A thin queue this "
+                    f"early is a scoring backlog, not a finished niche — the "
+                    f"answer is to score more topics for it, not to retire it."),
+            "retire_candidates": ex,
+        }
+
+    # Deterministic: the weakest holder of viewers among the decayed domains,
+    # ties broken by name so two runs of the same month agree.
+    retire = min(ready, key=lambda d: ((per_domain[d].get("avd_s") or 0.0), d))
+    promote = next_unused(list(alloc))
+    if not promote:
+        return {
+            "applied": False, "allocation": alloc,
+            "stop": "NO_REPLACEMENT_DOMAIN",
+            "why": (f"{retire} has decayed past the queue floor with "
+                    f"{per_domain[retire]['measured']} measured episode(s), but "
+                    f"every domain in research/proposed-taxonomy.json is "
+                    f"already running. Retirement here is a SWAP, never a "
+                    f"subtraction — a channel with fewer domains than slots "
+                    f"publishes nothing — so the allocation is held."),
+            "retire_candidates": ready,
+        }
+
+    new = {d: n for d, n in alloc.items() if d != retire}
+    new[promote] = new.get(promote, 0) + alloc[retire]
+    return {
+        "applied": True, "allocation": new, "from": alloc,
+        "retired": retire, "promoted": promote,
+        "moved": {"from": retire, "to": promote, "slots": alloc[retire]},
+        "why": (f"{retire}'s scored queue has decayed to "
+                f"{queue_depth().get(retire, 0)} topic(s), below the "
+                f"{queue_exhausted_below(cfg)} floor, after "
+                f"{per_domain[retire]['measured']} measured episode(s). Its "
+                f"{alloc[retire]} weekly slot(s) pass to {promote}, the "
+                f"next-ranked domain in research/proposed-taxonomy.json "
+                f"(demand {score(promote)['demand_side_score']}). Retirement "
+                f"is decided by queue decay, never by one month of retention."),
     }
 
 
