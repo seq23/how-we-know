@@ -58,7 +58,7 @@ Temperature governs almost every one of these systems, which is why laboratory r
 
 ### The width of the crack decides everything
 
-{{magnitude: CRACK WIDTH | millimetres | autogenous-concrete-healing-practical-limit=0.2 | reported-bacterial-healing-range=0.8 | structural-crack-requiring-repair=1.0}}
+{{contrast: crack width | is=the gatekeeper on every mechanism here | not=a limit any system in practical use has beaten}}
 Crack width is the practical gatekeeper. Autogenous healing in ordinary concrete is generally effective only on very narrow cracks, on the order of a couple of tenths of a millimetre. Bacterial systems have been reported to close wider cracks, into the region approaching a millimetre, because the precipitated carbonate can bridge a larger gap than continued hydration can fill. Beyond that, no self-healing mechanism yet in practical use is closing a structurally significant crack. This is the honest scope of the technology today: it is a durability measure that keeps water and chloride out of small cracks and so delays the corrosion of reinforcement. It is not a repair for a damaged structural member.
 
 ### What to notice in the edit
