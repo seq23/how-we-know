@@ -1,8 +1,8 @@
 {
-  "state": "closed",
-  "tripped_at": null,
-  "cause": null,
-  "detail": null,
+  "state": "tripped",
+  "tripped_at": "2026-09-05T01:58:07+00:00",
+  "cause": "validator",
+  "detail": "V1 directive-truth=FAIL(1); V9 footage-window=FAIL(examined 0); V10 footage-crop=FAIL(examined 0); V11 footage-hash=FAIL(examined 0); V12 footage-scope=FAIL(examined 0); V13 render-not-clipped=FAIL(examined 0); V14 shorts-attribution=FAIL(examined 0); V15 shorts-caption-crop=FAIL(examined 0); V29 material-image rights=FAIL(11)",
   "history": [
     {
       "event": "trip",
@@ -39,6 +39,12 @@
       "at": "2026-08-31T19:48:53+00:00",
       "cleared_cause": "manual",
       "note": "Manual launch is not happening. The 2026-08-31 API test upload landed PUBLIC and read back public - the unaudited-project private lock does not fire on this project, so there is no manual Studio session for an autonomous publish to collide with. Video 1 (qBeLl0z4s54) is live and recorded in the ledger. Handing publishing to the loop."
+    },
+    {
+      "event": "trip",
+      "at": "2026-09-05T01:58:07+00:00",
+      "cause": "validator",
+      "detail": "V1 directive-truth=FAIL(1); V9 footage-window=FAIL(examined 0); V10 footage-crop=FAIL(examined 0); V11 footage-hash=FAIL(examined 0); V12 footage-scope=FAIL(examined 0); V13 render-not-clipped=FAIL(examined 0); V14 shorts-attribution=FAIL(examined 0); V15 shorts-caption-crop=FAIL(examined 0); V29 material-image rights=FAIL(11)"
     }
   ]
 }
