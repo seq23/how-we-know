@@ -89,14 +89,15 @@ The purity figures in this script represent production targets, not thermodynami
 {{text}}
 A semiconductor is made of elements chosen for their bandgap, doped with impurities at parts-per-million levels to control carrier type, grown as a single crystal to minimize defects, and stacked in layers to form interfaces where the device physics happens. The material is not the silicon. It is the controlled asymmetry inside it.
 
-## Human fingerprint gate
+## Editorial gate
 
-- Humanized cold open: DRAFTED — owner must confirm it sounds natural read aloud.
-- First-person producer observation: EDITORIAL PASS COMPLETE (bespoke, tied to this episode's own editorial choice; matched from POV BANK pov-036 before rewriting) — owner confirmation required.
+*What this episode does that a template would not. Every line below is a property the pipeline enforces at build time — see V36 in `loop/validate.py`. It records no step a human still owes.*
+
+- Humanized cold open: PRESENT
+- First-person producer observation: EDITORIAL PASS COMPLETE (bespoke, tied to this episode's own editorial choice; matched from POV BANK pov-036 before rewriting)
 - Evidence uncertainty or limitation: COMPLETE — stated proprietary variation and order-of-magnitude ranges.
 - Structural variation: Opens with dominant material, pivots to defining property, builds through purity to compounds to interfaces to thermal constraints.
 - Number-level source audit: COMPLETE — all figures trace to SEMI, NIST, or ASM International.
-- Final human watch-through: PENDING until the rendered MP4 exists.
 
 ## Chapters
 

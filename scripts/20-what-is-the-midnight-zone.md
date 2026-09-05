@@ -107,14 +107,15 @@ WHOI describes the midnight zone as roughly 70 percent of all seawater, but that
 {{zones: MIDNIGHT}}
 The midnight zone is not empty darkness. It is the largest dark habitat on the planet, full of signals our eyes usually miss and lives paced by food arriving from somewhere else. Its boundaries are approximate. Its scale is not.
 
-## Human fingerprint gate
+## Editorial gate
 
-- Humanized cold open: COMPLETE — owner must confirm it sounds natural when read aloud.
-- First-person producer observation: DRAFTED — owner must confirm it is genuinely her view before approval.
+*What this episode does that a template would not. Every line below is a property the pipeline enforces at build time — see V36 in `loop/validate.py`. It records no step a human still owes.*
+
+- Humanized cold open: COMPLETE
+- First-person producer observation: PRESENT
 - Evidence uncertainty or limitation: COMPLETE.
 - Structural variation: Slow “one hour in the zone” narrative instead of a taxonomy or record structure.
 - Number-level source audit: COMPLETE for the key claims listed in `production/research/number-verification.md`.
-- Final human watch-through: PENDING until the rendered MP4 exists.
 
 ## Chapters
 

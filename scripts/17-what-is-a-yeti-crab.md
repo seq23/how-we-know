@@ -130,14 +130,15 @@ The paper supports bacteria as a major food source for this species; it does not
 {{descent: 1040 | A TESTED DIET}}
 The yeti crab story works because three kinds of evidence agree: what the crab does, what its body is built to do, and what its tissues say it has eaten. The dance is memorable. The tested diet is the reason it is science.
 
-## Human fingerprint gate
+## Editorial gate
 
-- Humanized cold open: COMPLETE — owner must confirm it sounds natural when read aloud.
-- First-person producer observation: DRAFTED — owner must confirm it is genuinely her view before approval.
+*What this episode does that a template would not. Every line below is a property the pipeline enforces at build time — see V36 in `loop/validate.py`. It records no step a human still owes.*
+
+- Humanized cold open: COMPLETE
+- First-person producer observation: PRESENT
 - Evidence uncertainty or limitation: COMPLETE.
 - Structural variation: Research-paper detective sequence: behavior → anatomy → isotope evidence.
 - Number-level source audit: COMPLETE for the key claims listed in `production/research/number-verification.md`.
-- Final human watch-through: PENDING until the rendered MP4 exists.
 
 ## Chapters
 

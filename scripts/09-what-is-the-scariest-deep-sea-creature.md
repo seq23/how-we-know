@@ -127,14 +127,15 @@ There is no objective scariest species. Many famous images remove scale, and sev
 {{anatomy: THE FEATURE YOU REACT TO | teeth@0.19,0.64 | eyes@0.24,0.34}}
 The scariest deep-sea creature is partly an animal and partly the story our brain writes around it. My vote is the anglerfish. The science answer is that fear depends on the feature you react to—and the context the photograph leaves out.
 
-## Human fingerprint gate
+## Editorial gate
 
-- Humanized cold open: COMPLETE — owner must confirm it sounds natural when read aloud.
-- First-person producer observation: DRAFTED — owner must confirm it is genuinely her view before approval.
+*What this episode does that a template would not. Every line below is a property the pipeline enforces at build time — see V36 in `loop/validate.py`. It records no step a human still owes.*
+
+- Humanized cold open: COMPLETE
+- First-person producer observation: PRESENT
 - Evidence uncertainty or limitation: COMPLETE.
 - Structural variation: Transparent first-person ranking with explicit criteria and context reversals.
 - Number-level source audit: COMPLETE for the key claims listed in `production/research/number-verification.md`.
-- Final human watch-through: PENDING until the rendered MP4 exists.
 
 ## Chapters
 

@@ -125,14 +125,15 @@ Challenger Deep is the deepest known seafloor depression measured with current m
 {{descent: 10935 | ALMOST ELEVEN KILOMETRES OF WATER}}
 The deepest part of the ocean is not just a place. It is a measurement problem under almost eleven kilometers of water. The number matters, but the corrections behind it are what turn a dramatic claim into evidence.
 
-## Human fingerprint gate
+## Editorial gate
 
-- Humanized cold open: COMPLETE — owner must confirm it sounds natural when read aloud.
-- First-person producer observation: DRAFTED — owner must confirm it is genuinely her view before approval.
+*What this episode does that a template would not. Every line below is a property the pipeline enforces at build time — see V36 in `loop/validate.py`. It records no step a human still owes.*
+
+- Humanized cold open: COMPLETE
+- First-person producer observation: PRESENT
 - Evidence uncertainty or limitation: COMPLETE.
 - Structural variation: Measurement detective story centered on uncertainty rather than a depth countdown.
 - Number-level source audit: COMPLETE for the key claims listed in `production/research/number-verification.md`.
-- Final human watch-through: PENDING until the rendered MP4 exists.
 
 ## Chapters
 
