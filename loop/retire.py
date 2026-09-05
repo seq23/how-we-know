@@ -80,6 +80,24 @@ def main() -> int:
 
         P.set_privacy(token, vid, "private")
 
+        # A PENDING publishAt SURVIVES BEING MADE PRIVATE. Without this the
+        # video goes public on its scheduled date anyway -- retirement undone
+        # by a timer, weeks later, with nothing watching. Found on 2026-09-05
+        # on a duplicate upload dated 2026-10-25.
+        try:
+            cleared = P.cancel_schedule(token, vid)
+        except RuntimeError as e:
+            st.named_stop(
+                "RETIRE_SCHEDULE_NOT_CLEARED", str(e),
+                unblock="The video is private but still scheduled. Clear the "
+                        "publish date in YouTube Studio, or it will make "
+                        "itself public on that date.")
+        if cleared:
+            row["schedule_cancelled_at"] = now()
+            row["schedule_was"] = cleared
+            st.work(f"cancelled the pending publish at {cleared} - a retired "
+                    f"video with a publishAt un-retires itself")
+
         # Verify against YouTube rather than trusting the call: a 200 that did
         # not change anything is exactly the "runs but inert" failure.
         after = P.read_status(token, vid)
