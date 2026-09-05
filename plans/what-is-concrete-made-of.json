@@ -378,9 +378,9 @@
   },
   {
     "segment": "magnitude_bar",
-    "seconds": 5.79,
+    "seconds": 9.0,
     "heading": "The mix ratio decides the strength",
-    "narration": "Lower ratios, near 0.35, give higher strength. Ratios approaching 0.70 give markedly lower strength.",
+    "narration": "Lower ratios, near 0.35, give higher strength; a workable structural mix commonly sits near 0.45; and ratios approaching 0.70 give markedly lower strength.",
     "args": {
       "title": "WATER-CEMENT RATIO",
       "unit": "ratio by mass",
@@ -644,9 +644,9 @@
   },
   {
     "segment": "magnitude_bar",
-    "seconds": 8.28,
+    "seconds": 9.0,
     "heading": "It is strong in compression and weak in tension",
-    "narration": "Ordinary structural concrete carries compression well and tension badly. Its tensile strength is roughly a tenth of its compressive strength.",
+    "narration": "Ordinary structural concrete carries compression well and tension badly. A typical structural mix reaches about 30 megapascals in compression and about 3 in tension, roughly a tenth as much, while the Grade 60 reinforcing bar placed inside it yields at 420 megapascals under ASTM A615.",
     "args": {
       "title": "STRENGTH",
       "unit": "megapascals",

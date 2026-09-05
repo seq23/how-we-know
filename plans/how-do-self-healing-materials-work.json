@@ -692,26 +692,17 @@
     "from": "directive"
   },
   {
-    "segment": "magnitude_bar",
+    "segment": "contrast_pair",
     "seconds": 9.0,
     "heading": "The width of the crack decides everything",
     "narration": "Crack width is the practical gatekeeper. Autogenous healing in ordinary concrete is generally effective only on very narrow cracks, on the order of a couple of tenths of a millimetre.",
     "args": {
-      "title": "CRACK WIDTH",
-      "unit": "millimetres",
-      "items": [
-        [
-          "autogenous-concrete-healing-practical-limit",
-          "0.2"
-        ],
-        [
-          "reported-bacterial-healing-range",
-          "0.8"
-        ],
-        [
-          "structural-crack-requiring-repair",
-          "1.0"
-        ]
+      "term": "crack width",
+      "includes": [
+        "the gatekeeper on every mechanism here"
+      ],
+      "excludes": [
+        "a limit any system in practical use has beaten"
       ]
     },
     "from": "directive"
@@ -731,26 +722,17 @@
     "from": "directive-rhythm"
   },
   {
-    "segment": "magnitude_bar",
+    "segment": "contrast_pair",
     "seconds": 6.21,
     "heading": "The width of the crack decides everything",
     "narration": "Beyond that, no self-healing mechanism yet in practical use is closing a structurally significant crack.",
     "args": {
-      "title": "CRACK WIDTH",
-      "unit": "millimetres",
-      "items": [
-        [
-          "autogenous-concrete-healing-practical-limit",
-          "0.2"
-        ],
-        [
-          "reported-bacterial-healing-range",
-          "0.8"
-        ],
-        [
-          "structural-crack-requiring-repair",
-          "1.0"
-        ]
+      "term": "crack width",
+      "includes": [
+        "the gatekeeper on every mechanism here"
+      ],
+      "excludes": [
+        "a limit any system in practical use has beaten"
       ]
     },
     "from": "directive"
