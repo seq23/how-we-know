@@ -245,7 +245,7 @@ is scheduled any more.
 
 ### launchd agents on this Mac
 
-Four are installed. This section was previously headed "No launchd agents.
+Two are installed, and only ONE of them narrates. This section was previously headed "No launchd agents.
 None." and said the laptop could be shut; that was true from 2026-09-01 until
 2026-09-04, when a second domain gave the Mac ~27 hours of narration to get
 through and nothing was scheduled to do it.
@@ -253,9 +253,9 @@ through and nothing was scheduled to do it.
 | Agent | When | What it does |
 |---|---|---|
 | `com.howweknow.batch` | **daily 23:00** | `bin/batch-session.sh` — narrate every script with no audio, render every episode whose audio is complete, push to R2, then take a NAMED STOP. |
-| `com.howweknow.backfill` | daily 09:00 | Upload the next finished episode and date it. |
-| `com.howweknow.tuesday` | Tue 02:00 | `bin/loop-tuesday.sh` — the weekly render lane. |
-| `com.howweknow.thursday` | Thu 02:00 | `bin/loop-thursday.sh` — the weekly upload lane. |
+| `com.howweknow.backfill` | daily 09:00 | Upload the next finished episode and date it. Does not narrate. |
+
+**`tuesday` and `thursday` are deliberately NOT installed.** `bin/loop-tuesday.sh` narrates — it calls `bin/run-batch.sh voice` — so installing it puts a second narrator on the machine against a batch that already narrates nightly. Narration cannot be parallelised here: the voice model wants about four cores, so two narrators run at half speed each and race for the same `audio/<slug>/NNNN.wav`. `bin/loop-install-launchd.sh --install` installs the batch and nothing else.
 
 **Why `batch` is daily and why that is not wasteful.** Narration measures at
 **0.8 beats a minute** on this M2, so eighteen materials episodes are ~27 hours
