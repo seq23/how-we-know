@@ -1,40 +1,153 @@
 {
   "stage": "mon-draft",
   "week": "2026-W36",
-  "at": "2026-08-31T10:10:50+00:00",
+  "at": "2026-09-05T01:58:07+00:00",
   "code": "VALIDATOR_FAILED",
   "message": "a validator failed; the circuit breaker is now tripped and publishing is halted. Drafting and rendering are untouched.",
   "detail": [
     {
       "validator": "V1 directive-truth",
-      "examined": 279,
+      "examined": 419,
       "status": "FAIL(1)",
       "failures": [
-        "tests/test_directive_truth.py exited 1\ninspected 279 v2 directives across 20 scripts\nTraceback (most recent call last):\n  File \"/home/runner/work/how-we-know/how-we-know/tests/test_directive_truth.py\", line 118, in <module>\n    dead, total = check_parses()\n                  ^^^^^^^^^^^^^^\n  File \"/home/runner/work/how-we-know/how-we-know/tests/test_directive_truth.py\", line 92, in check_parses\n    import planner, segments_ext2                     # noqa: F401  (installs parser)\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/how-we-know/how-we-know/visuals/segments_ext2.py\", line 36, in <module>\n    from PIL import Image, ImageDraw\nModuleNotFoundError: No module named 'PIL'\n"
+        "tests/test_directive_truth.py exited 1\ninspected 419 v2 directives across 38 scripts\nTraceback (most recent call last):\n  File \"/home/runner/work/how-we-know/how-we-know/tests/test_directive_truth.py\", line 123, in <module>\n    dead, total = check_parses()\n                  ^^^^^^^^^^^^^^\n  File \"/home/runner/work/how-we-know/how-we-know/tests/test_directive_truth.py\", line 103, in check_parses\n    getattr(segments_ext2, seg)(0.7, **kw)     # must also RENDER\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/how-we-know/how-we-know/visuals/segments_ext2.py\", line 457, in contrast_pair\n    ft = _cfit(d, str(term), F_DISPLAY, 66, W * 0.72, minsize=34)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/how-we-know/how-we-know/visuals/segments_ext2.py\", line 69, in _cfit\n    _fitc[k] = _fit(d, str(text), path, size, maxw, minsize)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/how-we-know/how-we-know/visuals/segments_ext.py\", line 81, in _fit\n    w = d.textlength(text, font=font(path, s))\n                                ^^^^^^^^^^^^^\n  File \"/home/runner/work/how-we-know/how-we-know/visuals/segments_ext.py\", line 23, in font\n    _fc[k] = ImageFont.truetype(path, int(size))\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/PIL/ImageFont.py\", line 885, in truetype\n    return freetype(font)\n           ^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/PIL/ImageFont.py\", line 882, in freetype\n    return FreeTypeFont(font, size, index, encoding, layout_engine)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/PIL/ImageFont.py\", line 298, in __init__\n    self.font = core.getfont(\n                ^^^^^^^^^^^^^\nOSError: cannot open resource\n"
       ],
       "notes": [
-        "ModuleNotFoundError: No module named 'PIL'"
-      ]
+        "OSError: cannot open resource"
+      ],
+      "stops": []
+    },
+    {
+      "validator": "V9 footage-window",
+      "examined": 0,
+      "status": "FAIL(examined 0)",
+      "failures": [
+        "visuals/footage.py could not be loaded: No module named 'footage'"
+      ],
+      "notes": [],
+      "stops": []
+    },
+    {
+      "validator": "V10 footage-crop",
+      "examined": 0,
+      "status": "FAIL(examined 0)",
+      "failures": [
+        "visuals/footage.py could not be loaded: No module named 'footage'"
+      ],
+      "notes": [],
+      "stops": []
+    },
+    {
+      "validator": "V11 footage-hash",
+      "examined": 0,
+      "status": "FAIL(examined 0)",
+      "failures": [
+        "visuals/footage.py could not be loaded: No module named 'footage'"
+      ],
+      "notes": [],
+      "stops": []
+    },
+    {
+      "validator": "V12 footage-scope",
+      "examined": 0,
+      "status": "FAIL(examined 0)",
+      "failures": [
+        "visuals/footage.py could not be loaded: No module named 'footage'"
+      ],
+      "notes": [],
+      "stops": []
+    },
+    {
+      "validator": "V13 render-not-clipped",
+      "examined": 0,
+      "status": "FAIL(examined 0)",
+      "failures": [
+        "examined 0 fully-narrated renders - this validator cannot see what it is meant to govern"
+      ],
+      "notes": [
+        "0 fully-narrated render(s)"
+      ],
+      "stops": []
+    },
+    {
+      "validator": "V14 shorts-attribution",
+      "examined": 0,
+      "status": "FAIL(examined 0)",
+      "failures": [
+        "visuals/shorts.py or the OCR helper could not be loaded: No module named 'shorts'"
+      ],
+      "notes": [],
+      "stops": []
+    },
+    {
+      "validator": "V15 shorts-caption-crop",
+      "examined": 0,
+      "status": "FAIL(examined 0)",
+      "failures": [
+        "visuals/shorts.py or the OCR helper could not be loaded: No module named 'shorts'"
+      ],
+      "notes": [],
+      "stops": []
+    },
+    {
+      "validator": "V29 material-image rights",
+      "examined": 34,
+      "status": "FAIL(11)",
+      "failures": [
+        "[silicon-wafer] assets/mat__silicon-wafer__silicon-wafer-researcher-jpg.jpg is not on disk",
+        "[cleanroom] assets/mat__cleanroom__clean-room-jpg.jpg is not on disk",
+        "[microchip-die] assets/mat__microchip-die__hp-pa-8700-die-shot-etched-42799937502-jpg.jpg is not on disk",
+        "[concrete] assets/mat__concrete__as-a-cement-mixer-pours-it-on-construction-workers-shovel-ce.jpeg is not on disk",
+        "[micrograph-steel] assets/mat__micrograph-steel__ferrite-perlite-steel-a285-jpeg.jpeg is not on disk",
+        "[welding-arc] assets/mat__welding-arc__us-army-soldier-welding-two-metal-pieces-fort-gregg-adams-vi.jpg is not on disk",
+        "[molten-steel] assets/mat__molten-steel__front-view-of-ladle-emptying-molten-iron-into-moulds-pig-iro.jpg is not on disk",
+        "[3d-printed-metal] assets/mat__3d-printed-metal__dhp-czz1-slm-1893-jpg.jpg is not on disk",
+        "[graphene-lattice] assets/mat__graphene-lattice__u-s-department-of-energy-science-389-012-009-13784554485-jpg.jpg is not on disk",
+        "[aerogel] assets/mat__aerogel__early-testing-of-aerogel-and-silicon-detectors-for-tigeriss-.jpg is not on disk",
+        "[carbon-fiber] assets/mat__carbon-fiber__carbon-fiber-technology-facility-open-house-oak-ridge-tennes.jpg is not on disk"
+      ],
+      "notes": [],
+      "stops": []
     }
   ],
   "unblock": "Fix the failure, re-run python loop/draft.py, then python loop/breaker.py reset --note \"\u2026\"",
+  "disposition": "needs_human",
+  "disposition_why": "'VALIDATOR_FAILED' is not in loop/stop_policy.json, so it is treated as needing a human. That is the default on purpose.",
+  "consecutive": 1,
+  "exit_code": 3,
   "work_done_before_stop": [
     "assembled 14-how-big-is-a-colossal-squid",
     "assembled 15-how-do-people-reach-challenger-deep",
-    "ran 8 validators over 2 item(s)",
+    "ran 24 validators over 2 item(s)",
     "wrote loop/render_queue.json with 2 item(s)",
     "rebuilt approval page docs/approve/index.html"
   ],
   "notes": [
     "next_topics.json is for 2026-W35, today is 2026-W36 \u2014 using it anyway (a re-run inside the same cycle)",
-    "cadence: configured default (2/week)",
-    "FAIL(1)          V1 directive-truth (examined 279)",
+    "cadence: configured default (4/week)",
+    "FAIL(1)          V1 directive-truth (examined 419)",
     "PASS             V2 planner (examined 1)",
     "PASS             V3 taxonomy (examined 2)",
     "PASS             V4 pov (examined 2)",
     "PASS             V5 sources-present (examined 2)",
     "PASS             V6 attribution (soft) (examined 2)",
     "PASS             V7 plans (examined 2)",
-    "N/A(nothing generated) V8 source-urls (examined 0)"
+    "N/A(nothing generated) V8 source-urls (examined 0)",
+    "FAIL(examined 0) V9 footage-window (examined 0)",
+    "FAIL(examined 0) V10 footage-crop (examined 0)",
+    "FAIL(examined 0) V11 footage-hash (examined 0)",
+    "FAIL(examined 0) V12 footage-scope (examined 0)",
+    "FAIL(examined 0) V13 render-not-clipped (examined 0)",
+    "FAIL(examined 0) V14 shorts-attribution (examined 0)",
+    "FAIL(examined 0) V15 shorts-caption-crop (examined 0)",
+    "PASS             V20 cadence-schedule (examined 26)",
+    "PASS             V21 no-boilerplate (examined 38)",
+    "PASS             V22 producer-notes-second-person (examined 38)",
+    "PASS             V23 chapters-yt-compliant (examined 38)",
+    "N/A(nothing generated) V24 render-duration-floor (examined 0)",
+    "PASS             V25 domain-abstraction (examined 2)",
+    "PASS             V27 lanes-see-domains (examined 17)",
+    "PASS             V28 lane-interpreters (examined 12)",
+    "FAIL(11)         V29 material-image rights (examined 34)"
   ]
 }
