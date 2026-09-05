@@ -49,6 +49,7 @@ ROOT = LOOP.parent
 sys.path.insert(0, str(LOOP))
 
 import backfill as B                              # noqa: E402
+import batch_queue                                # noqa: E402
 import cadence                                    # noqa: E402
 import ledger                                     # noqa: E402
 import publish as P                               # noqa: E402
@@ -215,10 +216,16 @@ def pending(have=None) -> list[str]:
     swapped for an R2 lookup by loop/shorts_cloud.py.
     """
     have = have or local_short
-    order = json.loads((ROOT / "research" / "publish_order.json").read_text())
+    # EVERY DOMAIN'S QUEUE, NOT JUST DEEP SEA'S. This read
+    # `research/publish_order.json` by name, so materials-and-manufacturing was
+    # invisible to the Shorts lane from the day it went live: on 2026-09-05 the
+    # library held 51 Shorts, every one of them deep sea, while eleven rendered
+    # materials episodes had no Short cut at all. loop/batch_queue.py is the one
+    # definition of the publish queue across domains, and V27 exists to stop
+    # exactly this -- it simply had not been pointed at this module.
     done = {r["slug"] for r in load_ledger()["published"]}
     out = []
-    for q in order["queue"]:
+    for q in batch_queue.queued_entries():
         slug = q["slug"]
         if slug in done:
             continue

@@ -712,6 +712,43 @@ loads at login, so log in rather than leaving the machine at the login window.
 
 ---
 
+## 3j. Three lanes, three versions of the same defect
+
+Found 2026-09-05, all in one sitting, all the same shape: **a component that
+reads one domain's file, or fails silently, or both.**
+
+**The Shorts library was 51 Shorts, every one deep sea.** `loop/shorts_lane.py`
+read `research/publish_order.json` **by name**, so materials-and-manufacturing
+was invisible to it from the day the niche went live. Eleven rendered materials
+episodes had no Short cut at all, while the lane published nine deep-sea Shorts
+a week from a library that could only shrink. It now reads
+`loop/batch_queue.py` like everything else.
+
+**V27 existed to catch exactly this and had a hole.** It asserted that
+`cadence.publish_order()` and `backfill.question_for()` see every domain, and
+that no `bin/*.sh` names a single publish-order file — and never looked at the
+Shorts lane. It now asks the lane itself which domains it can see, with `have`
+stubbed so the answer is about visibility rather than about what happens to be
+cut on one machine. A guard that governs three call sites out of four is not a
+guard.
+
+**The daily backfill had been failing silently since 09-03.** `git pull
+--rebase` conflicted, left `.git/rebase-merge` behind, and every subsequent run
+failed the same way — three finished episodes went un-uploaded and the only
+symptom was a bare `3` in `launchctl list`. Two fixes: a stale rebase older than
+30 minutes with HEAD attached and no unmerged files is now cleared with
+`git rebase --quit` (**not** `--abort`, which would check out whatever branch
+the dead rebase named and move HEAD off main); and the stop is written to
+`loop/state/stops/`, so **the Sunday digest reports it** like every other lane's.
+
+**And that lane had no pre-upload gate.** `bin/batch-session.sh` checks V13 and
+V24 before pushing to R2; `bin/loop-backfill-daily.sh` is the *other* upload path
+out of this Mac and checked nothing, so a clipped or under-length render could
+go straight to YouTube from here while the R2 path carefully refused it. It runs
+the same two validators now.
+
+---
+
 ## 4. Incidents worth remembering
 
 Recorded because each was invisible until something specifically looked for it.
