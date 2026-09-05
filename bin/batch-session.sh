@@ -185,9 +185,35 @@ import domains; print(domains.domain_of_slug('$slug') or 'deep-sea-ocean-science
   HWK_DOMAIN="$dom" $PY visuals/assemble.py "plans/$slug.json" "renders/${slug}-final.mp4" \
       --audio-dir "audio/$slug" --burn-captions \
       > "/tmp/asm-$slug.log" 2>&1 \
-    && { echo "    ok"; RENDERED=$((RENDERED+1)); } \
+    && { echo "    ok"; RENDERED=$((RENDERED+1)); thumb_one "$slug" "$dom"; } \
     || { echo "    FAILED"; tail -8 "/tmp/asm-$slug.log"; }
   return 0
+}
+
+# A RENDER WITHOUT A THUMBNAIL CANNOT BE UPLOADED, so build it here, in the
+# same step that produced the MP4.
+#
+# backfill.local_assets() requires BOTH renders/<slug>-final.mp4 and
+# channel/thumbnails/<slug>.jpg before an episode counts as pending. Nothing
+# built the second one. On 2026-09-05 that left nine finished episodes sitting
+# un-uploadable while com.howweknow.backfill reported "0 pending" every morning
+# at 09:00 - technically true, and useless, because the reason was a missing
+# 200 KB JPEG. Rendering and thumbnailing are one unit of work; splitting them
+# across a human is what created the stall.
+thumb_one() {
+  local slug="$1" dom="$2" out="channel/thumbnails/$slug.jpg"
+  [ -f "$out" ] && return 0
+  case "$dom" in
+    materials-and-manufacturing) builder="visuals/thumbs_materials.py" ;;
+    *) echo "      thumbnail: $dom has no builder wired here; skipping"; return 0 ;;
+  esac
+  if HWK_DOMAIN="$dom" $PY "$builder" "$slug" >"/tmp/thumb-$slug.log" 2>&1 && [ -f "$out" ]; then
+    echo "      thumbnail ok ($(du -h "$out" | cut -f1))"
+  else
+    # Loud, and specific about the two things that actually cause it.
+    echo "      THUMBNAIL NOT BUILT — this episode cannot be uploaded until it is."
+    tail -3 "/tmp/thumb-$slug.log" | sed 's/^/        /'
+  fi
 }
 
 if [ -n "${pending_audio// }" ] && [ ! -x "$PY_TTS" ]; then
