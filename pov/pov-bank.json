@@ -1,695 +1,728 @@
 {
-  "owner": "Sequoia",
-  "source": "answers.txt",
-  "interview_date": "2026-08-30",
-  "rotation_window": 12,
-  "lines": [
-    {
-      "id": "pov-001",
-      "tag": "scale",
-      "tier": "specific",
-      "source_answer": 1,
-      "line": "When I picture the deep ocean I don't see blue water or fish. I see black. A massive amount of black space where you can't tell what's beside you or beneath you."
-    },
-    {
-      "id": "pov-002",
-      "tag": "scale",
-      "tier": "specific",
-      "source_answer": 1,
-      "line": "It feels quiet, but not peaceful quiet. More like being somewhere you were never designed to be."
-    },
-    {
-      "id": "pov-003",
-      "tag": "scale",
-      "tier": "specific",
-      "source_answer": 2,
-      "line": "Thirty-six thousand feet is just a number to me. Everest fitting inside it and still being underwater — that's what makes it land."
-    },
-    {
-      "id": "pov-004",
-      "tag": "scale",
-      "tier": "specific",
-      "source_answer": 2,
-      "line": "What gets me is the amount of water above you, and how completely unreachable the surface becomes from down there."
-    },
-    {
-      "id": "pov-005",
-      "tag": "disorientation",
-      "tier": "specific",
-      "source_answer": 3,
-      "line": "The ocean being large isn't the unsettling part. Space is large too. It's that you can be inside it with no orientation at all — no horizon, no light, no way to tell up from down."
-    },
-    {
-      "id": "pov-006",
-      "tag": "disorientation",
-      "tier": "specific",
-      "source_answer": 3,
-      "line": "Something enormous could be relatively close to you and you would never know. I don't like that."
-    },
-    {
-      "id": "pov-007",
-      "tag": "fear",
-      "tier": "specific",
-      "source_answer": 4,
-      "line": "Both, honestly. Some of them look completely wrong by every standard we have for what an animal should look like — and I'm still fascinated, because none of it is random."
-    },
-    {
-      "id": "pov-008",
-      "tag": "fear",
-      "tier": "specific",
-      "source_answer": 5,
-      "line": "The giant squid is the one that gets me. Not because I think it's coming for anyone. It's the size, the intelligence, and the fact that it exists around us without us regularly seeing it."
-    },
-    {
-      "id": "pov-009",
-      "tag": "fear",
-      "tier": "specific",
-      "source_answer": 5,
-      "line": "Anything with huge eyes and that many arms already has a psychological advantage. I don't need to meet one in person."
-    },
-    {
-      "id": "pov-010",
-      "tag": "fear",
-      "tier": "specific",
-      "source_answer": 6,
-      "line": "The monster part is mostly imagination. Most of these animals want nothing to do with us."
-    },
-    {
-      "id": "pov-011",
-      "tag": "fear",
-      "tier": "specific",
-      "source_answer": 6,
-      "line": "But being afraid of the deep itself is completely rational. It's freezing, dark, hard to navigate, it crushes equipment, and you cannot breathe. The environment is far more dangerous than whatever creature people are picturing."
-    },
-    {
-      "id": "pov-012",
-      "tag": "adaptation",
-      "tier": "specific",
-      "source_answer": 7,
-      "line": "My first thought is never that it's ugly. Ugly is a surface-level judgment. If something survived an environment that extreme for millions of years, the weirdness has a function."
-    },
-    {
-      "id": "pov-013",
-      "tag": "adaptation",
-      "tier": "specific",
-      "source_answer": 7,
-      "line": "I want to know what problem that body is solving."
-    },
-    {
-      "id": "pov-014",
-      "tag": "bioluminescence",
-      "tier": "specific",
-      "source_answer": 8,
-      "line": "Bioluminescence is the one that impresses me most, because they use it for everything — hunting, hiding, communicating, attracting mates, confusing predators."
-    },
-    {
-      "id": "pov-015",
-      "tag": "bioluminescence",
-      "tier": "specific",
-      "source_answer": 8,
-      "line": "Some of them light their own undersides to erase their silhouette. That isn't just survival. That's manipulating the information available to everything around them."
-    },
-    {
-      "id": "pov-016",
-      "tag": "systems",
-      "tier": "transferable",
-      "source_answer": 9,
-      "line": "It reminds me of companies and systems. Something looks completely irrational when you judge it outside the environment it was built for."
-    },
-    {
-      "id": "pov-017",
-      "tag": "systems",
-      "tier": "transferable",
-      "source_answer": 9,
-      "line": "Once you understand the pressure something had to survive, every strange feature starts making sense. People judge the visible result without understanding the conditions that created it."
-    },
-    {
-      "id": "pov-018",
-      "tag": "systems",
-      "tier": "specific",
-      "source_answer": 17,
-      "line": "People misunderstand this as a collection of monsters. The creatures get attention because they look strange, but the real story is the system — pressure, darkness, scarcity, temperature, chemistry, time."
-    },
-    {
-      "id": "pov-019",
-      "tag": "systems",
-      "tier": "specific",
-      "source_answer": 17,
-      "line": "A lot of these animals are smaller and more fragile than the footage suggests. The environment is the giant, not the animal."
-    },
-    {
-      "id": "pov-020",
-      "tag": "unknown",
-      "tier": "specific",
-      "source_answer": 10,
-      "line": "It excites me more than it bothers me — but it does bother the evidence-driven part of me."
-    },
-    {
-      "id": "pov-021",
-      "tag": "unknown",
-      "tier": "transferable",
-      "source_answer": 10,
-      "line": "We talk about the ocean like it's a known thing because it's on every map. Most of what's under the surface is barely documented. We're living on a planet we haven't finished looking at."
-    },
-    {
-      "id": "pov-022",
-      "tag": "unknown",
-      "tier": "specific",
-      "source_answer": 11,
-      "line": "How did we map another planet better than our own seafloor? Mars can be read from orbit. The ocean blocks light and signal. So it's less ridiculous than it sounds — and still humbling."
-    },
-    {
-      "id": "pov-023",
-      "tag": "unknown",
-      "tier": "specific",
-      "source_answer": 11,
-      "line": "Our own planet is withholding an entire world from us."
-    },
-    {
-      "id": "pov-024",
-      "tag": "unknown",
-      "tier": "specific",
-      "source_answer": 16,
-      "line": "I used to think the deep ocean was mostly empty. A huge dark floor with a few strange fish scattered around."
-    },
-    {
-      "id": "pov-025",
-      "tag": "unknown",
-      "tier": "specific",
-      "source_answer": 16,
-      "line": "It's far more structurally and biologically complicated than that. Trenches, mountains, vents, currents, entire ecosystems running under conditions that should make life seem impossible."
-    },
-    {
-      "id": "pov-026",
-      "tag": "policy",
-      "tier": "transferable",
-      "source_answer": 12,
-      "line": "I think we should spend more on it — but I mean serious science. Mapping, robotics, sensors, long-term data collection."
-    },
-    {
-      "id": "pov-027",
-      "tag": "policy",
-      "tier": "transferable",
-      "source_answer": 12,
-      "line": "Not wealthy people doing dangerous stunts so they can say they went somewhere."
-    },
-    {
-      "id": "pov-028",
-      "tag": "policy",
-      "tier": "specific",
-      "source_answer": 12,
-      "line": "The ocean drives climate, weather, food systems, the basic functioning of the planet. Exploring it isn't a luxury."
-    },
-    {
-      "id": "pov-029",
-      "tag": "risk",
-      "tier": "transferable",
-      "source_answer": 13,
-      "line": "Would I go down in a small experimental submersible, trusting one person's confidence? No. I'd want independent testing, certification, redundancy, and an operating history."
-    },
-    {
-      "id": "pov-030",
-      "tag": "risk",
-      "tier": "transferable",
-      "source_answer": 13,
-      "line": "I like discovery. I don't need to physically place myself inside every dangerous environment to respect it."
-    },
-    {
-      "id": "pov-031",
-      "tag": "risk",
-      "tier": "transferable",
-      "source_answer": 14,
-      "line": "The people who do this seriously have a different relationship with risk — technical discipline, patience, the ability to function knowing how little room there is for error."
-    },
-    {
-      "id": "pov-032",
-      "tag": "risk",
-      "tier": "transferable",
-      "source_answer": 14,
-      "line": "What I want to know is whether someone respects the environment, or thinks courage makes them exempt from reality. Those are not the same person."
-    },
-    {
-      "id": "pov-033",
-      "tag": "risk",
-      "tier": "transferable",
-      "source_answer": 15,
-      "line": "Vision does not cancel engineering. Confidence does not replace testing."
-    },
-    {
-      "id": "pov-034",
-      "tag": "risk",
-      "tier": "transferable",
-      "source_answer": 15,
-      "line": "Being willing to take a risk doesn't mean everyone else involved understood that risk."
-    },
-    {
-      "id": "pov-035",
-      "tag": "risk",
-      "tier": "transferable",
-      "source_answer": 15,
-      "line": "What bothers me is treating basic warnings and controls as obstacles to innovation. Sometimes the rule exists because physics does not care how disruptive you think you are."
-    },
-    {
-      "id": "pov-036",
-      "tag": "media",
-      "tier": "transferable",
-      "source_answer": 18,
-      "line": "The footage is real. The documentary around it is constructed — lights, music, editing, narration all telling you what to feel."
-    },
-    {
-      "id": "pov-037",
-      "tag": "media",
-      "tier": "transferable",
-      "source_answer": 18,
-      "line": "We're shown the most dramatic thirty seconds out of what may have been hundreds of hours underwater. That doesn't make it fake. It means I want to separate what the camera captured from the story built around it."
-    },
-    {
-      "id": "pov-038",
-      "tag": "evidence",
-      "tier": "transferable",
-      "source_answer": 19,
-      "line": "How do we know an animal behaves a certain way when we've seen it three times?"
-    },
-    {
-      "id": "pov-039",
-      "tag": "evidence",
-      "tier": "specific",
-      "source_answer": 19,
-      "line": "How much does an ROV's own light change the behaviour it's there to record?"
-    },
-    {
-      "id": "pov-040",
-      "tag": "evidence",
-      "tier": "specific",
-      "source_answer": 19,
-      "line": "What happens to a specimen dragged up through thousands of feet of pressure change? Are we looking at the animal as it exists, or at what's left after retrieval?"
-    },
-    {
-      "id": "pov-041",
-      "tag": "evidence",
-      "tier": "transferable",
-      "source_answer": 19,
-      "line": "Deep-sea science builds conclusions from incomplete observations, damaged specimens, sonar, water samples and tiny windows of footage."
-    },
-    {
-      "id": "pov-042",
-      "tag": "evidence",
-      "tier": "transferable",
-      "source_answer": 19,
-      "line": "I'm interested in the evidence chain, not just the final fact somebody puts on screen."
-    },
-    {
-      "id": "pov-043",
-      "tag": "thesis",
-      "tier": "specific",
-      "source_answer": 20,
-      "line": "The deep ocean isn't one subject. It's an entire world sitting underneath the one we think we understand."
-    },
-    {
-      "id": "pov-044",
-      "tag": "thesis",
-      "tier": "specific",
-      "source_answer": 20,
-      "line": "Every creature is a different survival problem. Every expedition is a technology story, a science story, and a human-risk story."
-    },
-    {
-      "id": "pov-045",
-      "tag": "thesis",
-      "tier": "specific",
-      "source_answer": 20,
-      "line": "There's mystery down there, but there's also evidence. Things we've recorded once, things we know only from fragments, and probably things we've never encountered at all."
-    },
-    {
-      "id": "pov-046",
-      "tag": "thesis",
-      "tier": "transferable",
-      "source_answer": 20,
-      "line": "What keeps me interested is how it exposes the limits of our idea of normal. Every time we think we know what life requires, something down there shows us another way."
-    },
-    {
-      "id": "pov-047",
-      "tag": "numbers",
-      "tier": "transferable",
-      "source_answer": "B1",
-      "line": "When someone gives me a fact with a number in it, my first instinct is: where did the number come from? Not because I assume they're lying. Numbers can make almost anything sound authoritative."
-    },
-    {
-      "id": "pov-048",
-      "tag": "numbers",
-      "tier": "transferable",
-      "source_answer": "B1",
-      "line": "What was actually measured? By whom? Over what period? How big was the sample?"
-    },
-    {
-      "id": "pov-049",
-      "tag": "numbers",
-      "tier": "transferable",
-      "source_answer": "B1",
-      "line": "Is this the original number, or has it been repeated through fifty articles that all trace back to the same study?"
-    },
-    {
-      "id": "pov-050",
-      "tag": "numbers",
-      "tier": "transferable",
-      "source_answer": "B1",
-      "line": "An increase of 300% sounds dramatic until you find out it went from one case to four. A precise number is not automatically a reliable number."
-    },
-    {
-      "id": "pov-051",
-      "tag": "trust",
-      "tier": "transferable",
-      "source_answer": "B2",
-      "line": "I trust sources that show me how they know what they claim to know. The data, the method, the limitations, and preferably the original."
-    },
-    {
-      "id": "pov-052",
-      "tag": "trust",
-      "tier": "transferable",
-      "source_answer": "B2",
-      "line": "I trust somebody more when they tell me what the evidence cannot prove."
-    },
-    {
-      "id": "pov-053",
-      "tag": "trust",
-      "tier": "transferable",
-      "source_answer": "B2",
-      "line": "I trust documentation over reputation. A respected institution can still publish weak work, and someone with no name at all can uncover something real if they document it properly."
-    },
-    {
-      "id": "pov-054",
-      "tag": "trust",
-      "tier": "transferable",
-      "source_answer": "B2",
-      "line": "I look for whether independent sources reached the same conclusion, or whether everybody is just citing each other in a circle."
-    },
-    {
-      "id": "pov-055",
-      "tag": "confidence",
-      "tier": "transferable",
-      "source_answer": "B3",
-      "line": "Absolute confidence about something complicated makes me trust someone less."
-    },
-    {
-      "id": "pov-056",
-      "tag": "confidence",
-      "tier": "transferable",
-      "source_answer": "B3",
-      "line": "Real expertise usually sounds more precise than confident. An expert can tell you what is known, what is likely, what is disputed, and where the evidence stops."
-    },
-    {
-      "id": "pov-057",
-      "tag": "confidence",
-      "tier": "transferable",
-      "source_answer": "B3",
-      "line": "Someone performing expertise just sounds certain about everything."
-    },
-    {
-      "id": "pov-058",
-      "tag": "authority",
-      "tier": "transferable",
-      "source_answer": "B4",
-      "line": "'Scientists say' is almost meaningless on its own. Which scientists? How many? Was it one paper? Was it replicated?"
-    },
-    {
-      "id": "pov-059",
-      "tag": "authority",
-      "tier": "transferable",
-      "source_answer": "B4",
-      "line": "I'm not anti-science. I'm against using science as a magic authority word that means nobody has to show their work."
-    },
-    {
-      "id": "pov-060",
-      "tag": "authority",
-      "tier": "transferable",
-      "source_answer": "B4",
-      "line": "Science is a process. It is not a person behind a curtain handing down permanent answers."
-    },
-    {
-      "id": "pov-061",
-      "tag": "uncertainty",
-      "tier": "transferable",
-      "source_answer": "B5",
-      "line": "'We don't know yet' is a good answer when someone can tell you what we do know, what's missing, and what evidence would settle it."
-    },
-    {
-      "id": "pov-062",
-      "tag": "uncertainty",
-      "tier": "transferable",
-      "source_answer": "B5",
-      "line": "It becomes a cop-out when uncertainty is used selectively — enough evidence to make a dramatic claim, and suddenly not enough when someone asks them to defend it."
-    },
-    {
-      "id": "pov-063",
-      "tag": "uncertainty",
-      "tier": "transferable",
-      "source_answer": "B5",
-      "line": "I'd rather hear an honest 'we don't know' than a polished fake answer. But I still want to know why we don't know."
-    },
-    {
-      "id": "pov-064",
-      "tag": "failure",
-      "tier": "transferable",
-      "source_answer": "B6",
-      "line": "Most big engineering disasters look like bad luck in the moment. Go backward and you find a chain of decisions."
-    },
-    {
-      "id": "pov-065",
-      "tag": "failure",
-      "tier": "transferable",
-      "source_answer": "B6",
-      "line": "A warning was dismissed. Maintenance was delayed. Somebody normalised a problem because nothing terrible happened the first ten times."
-    },
-    {
-      "id": "pov-066",
-      "tag": "failure",
-      "tier": "transferable",
-      "source_answer": "B6",
-      "line": "A deadline mattered more than a test. Nobody had the authority to stop it, or the person who did had an incentive not to."
-    },
-    {
-      "id": "pov-067",
-      "tag": "failure",
-      "tier": "transferable",
-      "source_answer": "B6",
-      "line": "The final failure might take seconds. The system usually spent years creating the conditions for it."
-    },
-    {
-      "id": "pov-068",
-      "tag": "failure",
-      "tier": "transferable",
-      "source_answer": "B9",
-      "line": "I'm more interested in the years before it broke. The break itself is the most dramatic part and the least surprising once you know the history."
-    },
-    {
-      "id": "pov-069",
-      "tag": "failure",
-      "tier": "transferable",
-      "source_answer": "B9",
-      "line": "How many times did the system almost fail and get called a success because it survived?"
-    },
-    {
-      "id": "pov-070",
-      "tag": "failure",
-      "tier": "transferable",
-      "source_answer": "B9",
-      "line": "Failure is rarely one bad moment. It is usually a long series of small permissions."
-    },
-    {
-      "id": "pov-071",
-      "tag": "risk",
-      "tier": "transferable",
-      "source_answer": "B7",
-      "line": "You can call yourself an innovator all day. The materials still have limits. Physics does not care about your vision, your money, or how many successful trips you already completed."
-    },
-    {
-      "id": "pov-072",
-      "tag": "risk",
-      "tier": "transferable",
-      "source_answer": "B7",
-      "line": "There were warnings. That changes the story from unpredictable tragedy to a question about why the system kept moving anyway."
-    },
-    {
-      "id": "pov-073",
-      "tag": "risk",
-      "tier": "transferable",
-      "source_answer": "B8",
-      "line": "'Move fast and break things' makes sense when the thing you might break is a website button. Not when it's a person, an aircraft, a bridge."
-    },
-    {
-      "id": "pov-074",
-      "tag": "risk",
-      "tier": "transferable",
-      "source_answer": "B8",
-      "line": "Speed is not automatically innovation. Sometimes speed just means you skipped the part where reality gets a vote."
-    },
-    {
-      "id": "pov-075",
-      "tag": "risk",
-      "tier": "transferable",
-      "source_answer": "B8",
-      "line": "You can test aggressively without pretending consequences don't exist."
-    },
-    {
-      "id": "pov-076",
-      "tag": "deeptime",
-      "tier": "transferable",
-      "source_answer": "B10",
-      "line": "Millions of years is mostly abstract to me. I understand the number, I can't feel it. At a certain scale, numbers stop being time and just become language."
-    },
-    {
-      "id": "pov-077",
-      "tag": "earth",
-      "tier": "transferable",
-      "source_answer": "B11",
-      "line": "Space is fascinating, but Earth bothers me more. We're already here and still don't understand huge parts of it."
-    },
-    {
-      "id": "pov-078",
-      "tag": "earth",
-      "tier": "transferable",
-      "source_answer": "B11",
-      "line": "The ocean, the interior of the planet, underground ecosystems, even parts of our own bodies. We live inside systems we cannot fully explain."
-    },
-    {
-      "id": "pov-079",
-      "tag": "ancient",
-      "tier": "transferable",
-      "source_answer": "B12",
-      "line": "Ancient people built things that still stand, while we build things expected to be replaced in thirty years."
-    },
-    {
-      "id": "pov-080",
-      "tag": "ancient",
-      "tier": "transferable",
-      "source_answer": "B12",
-      "line": "What did they know that was never written down? How much human capability disappears when a civilisation does?"
-    },
-    {
-      "id": "pov-081",
-      "tag": "adaptation",
-      "tier": "transferable",
-      "source_answer": "B13",
-      "line": "Octopuses impress me. So much of their nervous system runs through their arms. They aren't just unusual — they look like a completely different solution to intelligence."
-    },
-    {
-      "id": "pov-082",
-      "tag": "adaptation",
-      "tier": "transferable",
-      "source_answer": "B13",
-      "line": "Trees look passive and are constantly responding, communicating, reallocating, surviving across timescales we barely register."
-    },
-    {
-      "id": "pov-083",
-      "tag": "adaptation",
-      "tier": "transferable",
-      "source_answer": "B14",
-      "line": "I think of evolution as whatever survived. 'Designed' makes it sound like there was a plan and a final objective. There wasn't."
-    },
-    {
-      "id": "pov-084",
-      "tag": "adaptation",
-      "tier": "transferable",
-      "source_answer": "B14",
-      "line": "Evolution doesn't start over with a clean blueprint. It keeps modifying what's already there. That's why nature is full of strange compromises."
-    },
-    {
-      "id": "pov-085",
-      "tag": "instruments",
-      "tier": "transferable",
-      "source_answer": "B15",
-      "line": "It doesn't bother me that instruments extend what we can know. Human senses are extremely limited. That's the point of technology."
-    },
-    {
-      "id": "pov-086",
-      "tag": "instruments",
-      "tier": "transferable",
-      "source_answer": "B15",
-      "line": "What interests me is the translation layer. An instrument doesn't hand us reality. It produces a signal, and then humans calibrate it, process it, interpret it."
-    },
-    {
-      "id": "pov-087",
-      "tag": "instruments",
-      "tier": "transferable",
-      "source_answer": "B15",
-      "line": "I want to understand that chain before treating the final image or number as direct truth."
-    },
-    {
-      "id": "pov-088",
-      "tag": "instruments",
-      "tier": "transferable",
-      "source_answer": "B16",
-      "line": "Measurements are made by people, using tools built by people, inside systems with assumptions."
-    },
-    {
-      "id": "pov-089",
-      "tag": "instruments",
-      "tier": "transferable",
-      "source_answer": "B16",
-      "line": "The disturbing part isn't that mistakes happen. It's how resistant institutions become once careers, textbooks and reputations depend on the old answer staying true."
-    },
-    {
-      "id": "pov-090",
-      "tag": "media",
-      "tier": "transferable",
-      "source_answer": "B17",
-      "line": "An honest documentary shows you where the evidence came from and separates fact from reconstruction."
-    },
-    {
-      "id": "pov-091",
-      "tag": "media",
-      "tier": "transferable",
-      "source_answer": "B17",
-      "line": "Dramatic music is not proof. A confident narrator is not proof. Reenactment is fine — just say that's what it is."
-    },
-    {
-      "id": "pov-092",
-      "tag": "media",
-      "tier": "transferable",
-      "source_answer": "B18",
-      "line": "Explaining something means making the idea understandable without removing what makes it true."
-    },
-    {
-      "id": "pov-093",
-      "tag": "media",
-      "tier": "transferable",
-      "source_answer": "B18",
-      "line": "Dumbing it down means removing the complications until the explanation is easy and no longer accurate."
-    },
-    {
-      "id": "pov-094",
-      "tag": "thesis",
-      "tier": "transferable",
-      "source_answer": "B19",
-      "line": "The questions worth chasing are the ones where the answer changes how you understand a system."
-    },
-    {
-      "id": "pov-095",
-      "tag": "thesis",
-      "tier": "transferable",
-      "source_answer": "B19",
-      "line": "What are people repeating without checking? What's hidden by the way the story is usually told?"
-    },
-    {
-      "id": "pov-096",
-      "tag": "thesis",
-      "tier": "transferable",
-      "source_answer": "B19",
-      "line": "I like questions where the obvious answer starts falling apart once you look closely."
-    },
-    {
-      "id": "pov-097",
-      "tag": "thesis",
-      "tier": "transferable",
-      "source_answer": "B20",
-      "line": "It feels like the subject gets larger instead of smaller. One answer rearranges everything around it."
-    },
-    {
-      "id": "pov-098",
-      "tag": "thesis",
-      "tier": "transferable",
-      "source_answer": "B20",
-      "line": "That's the feeling I'm chasing. Not collecting another fact — realising the model in my head was incomplete, and now I have a better one."
-    }
-  ],
-  "interview_2": "interveiw_2_broad.txt"
+ "owner": "Sequoia",
+ "source": "answers.txt",
+ "interview_date": "2026-08-30",
+ "rotation_window": 12,
+ "lines": [
+  {
+   "id": "pov-001",
+   "tag": "scale",
+   "tier": "specific",
+   "source_answer": 1,
+   "line": "When I picture the deep ocean I don't see blue water or fish. I see black. A massive amount of black space where you can't tell what's beside you or beneath you."
+  },
+  {
+   "id": "pov-002",
+   "tag": "scale",
+   "tier": "specific",
+   "source_answer": 1,
+   "line": "It feels quiet, but not peaceful quiet. More like being somewhere you were never designed to be."
+  },
+  {
+   "id": "pov-003",
+   "tag": "scale",
+   "tier": "specific",
+   "source_answer": 2,
+   "line": "Thirty-six thousand feet is just a number to me. Everest fitting inside it and still being underwater — that's what makes it land."
+  },
+  {
+   "id": "pov-004",
+   "tag": "scale",
+   "tier": "specific",
+   "source_answer": 2,
+   "line": "What gets me is the amount of water above you, and how completely unreachable the surface becomes from down there."
+  },
+  {
+   "id": "pov-005",
+   "tag": "disorientation",
+   "tier": "specific",
+   "source_answer": 3,
+   "line": "The ocean being large isn't the unsettling part. Space is large too. It's that you can be inside it with no orientation at all — no horizon, no light, no way to tell up from down."
+  },
+  {
+   "id": "pov-006",
+   "tag": "disorientation",
+   "tier": "specific",
+   "source_answer": 3,
+   "line": "Something enormous could be relatively close to you and you would never know. I don't like that."
+  },
+  {
+   "id": "pov-007",
+   "tag": "fear",
+   "tier": "specific",
+   "source_answer": 4,
+   "line": "Both, honestly. Some of them look completely wrong by every standard we have for what an animal should look like — and I'm still fascinated, because none of it is random."
+  },
+  {
+   "id": "pov-008",
+   "tag": "fear",
+   "tier": "specific",
+   "source_answer": 5,
+   "line": "The giant squid is the one that gets me. Not because I think it's coming for anyone. It's the size, the intelligence, and the fact that it exists around us without us regularly seeing it."
+  },
+  {
+   "id": "pov-009",
+   "tag": "fear",
+   "tier": "specific",
+   "source_answer": 5,
+   "line": "Anything with huge eyes and that many arms already has a psychological advantage. I don't need to meet one in person."
+  },
+  {
+   "id": "pov-010",
+   "tag": "fear",
+   "tier": "specific",
+   "source_answer": 6,
+   "line": "The monster part is mostly imagination. Most of these animals want nothing to do with us."
+  },
+  {
+   "id": "pov-011",
+   "tag": "fear",
+   "tier": "specific",
+   "source_answer": 6,
+   "line": "But being afraid of the deep itself is completely rational. It's freezing, dark, hard to navigate, it crushes equipment, and you cannot breathe. The environment is far more dangerous than whatever creature people are picturing."
+  },
+  {
+   "id": "pov-012",
+   "tag": "adaptation",
+   "tier": "specific",
+   "source_answer": 7,
+   "line": "My first thought is never that it's ugly. Ugly is a surface-level judgment. If something survived an environment that extreme for millions of years, the weirdness has a function."
+  },
+  {
+   "id": "pov-013",
+   "tag": "adaptation",
+   "tier": "specific",
+   "source_answer": 7,
+   "line": "I want to know what problem that body is solving."
+  },
+  {
+   "id": "pov-014",
+   "tag": "bioluminescence",
+   "tier": "specific",
+   "source_answer": 8,
+   "line": "Bioluminescence is the one that impresses me most, because they use it for everything — hunting, hiding, communicating, attracting mates, confusing predators."
+  },
+  {
+   "id": "pov-015",
+   "tag": "bioluminescence",
+   "tier": "specific",
+   "source_answer": 8,
+   "line": "Some of them light their own undersides to erase their silhouette. That isn't just survival. That's manipulating the information available to everything around them."
+  },
+  {
+   "id": "pov-016",
+   "tag": "systems",
+   "tier": "transferable",
+   "source_answer": 9,
+   "line": "It reminds me of companies and systems. Something looks completely irrational when you judge it outside the environment it was built for."
+  },
+  {
+   "id": "pov-017",
+   "tag": "systems",
+   "tier": "transferable",
+   "source_answer": 9,
+   "line": "Once you understand the pressure something had to survive, every strange feature starts making sense. People judge the visible result without understanding the conditions that created it."
+  },
+  {
+   "id": "pov-018",
+   "tag": "systems",
+   "tier": "specific",
+   "source_answer": 17,
+   "line": "People misunderstand this as a collection of monsters. The creatures get attention because they look strange, but the real story is the system — pressure, darkness, scarcity, temperature, chemistry, time."
+  },
+  {
+   "id": "pov-019",
+   "tag": "systems",
+   "tier": "specific",
+   "source_answer": 17,
+   "line": "A lot of these animals are smaller and more fragile than the footage suggests. The environment is the giant, not the animal."
+  },
+  {
+   "id": "pov-020",
+   "tag": "unknown",
+   "tier": "specific",
+   "source_answer": 10,
+   "line": "It excites me more than it bothers me — but it does bother the evidence-driven part of me."
+  },
+  {
+   "id": "pov-021",
+   "tag": "unknown",
+   "tier": "transferable",
+   "source_answer": 10,
+   "line": "We talk about the ocean like it's a known thing because it's on every map. Most of what's under the surface is barely documented. We're living on a planet we haven't finished looking at."
+  },
+  {
+   "id": "pov-022",
+   "tag": "unknown",
+   "tier": "specific",
+   "source_answer": 11,
+   "line": "How did we map another planet better than our own seafloor? Mars can be read from orbit. The ocean blocks light and signal. So it's less ridiculous than it sounds — and still humbling."
+  },
+  {
+   "id": "pov-023",
+   "tag": "unknown",
+   "tier": "specific",
+   "source_answer": 11,
+   "line": "Our own planet is withholding an entire world from us."
+  },
+  {
+   "id": "pov-024",
+   "tag": "unknown",
+   "tier": "specific",
+   "source_answer": 16,
+   "line": "I used to think the deep ocean was mostly empty. A huge dark floor with a few strange fish scattered around."
+  },
+  {
+   "id": "pov-025",
+   "tag": "unknown",
+   "tier": "specific",
+   "source_answer": 16,
+   "line": "It's far more structurally and biologically complicated than that. Trenches, mountains, vents, currents, entire ecosystems running under conditions that should make life seem impossible."
+  },
+  {
+   "id": "pov-026",
+   "tag": "policy",
+   "tier": "transferable",
+   "source_answer": 12,
+   "line": "I think we should spend more on it — but I mean serious science. Mapping, robotics, sensors, long-term data collection."
+  },
+  {
+   "id": "pov-027",
+   "tag": "policy",
+   "tier": "transferable",
+   "source_answer": 12,
+   "line": "Not wealthy people doing dangerous stunts so they can say they went somewhere."
+  },
+  {
+   "id": "pov-028",
+   "tag": "policy",
+   "tier": "specific",
+   "source_answer": 12,
+   "line": "The ocean drives climate, weather, food systems, the basic functioning of the planet. Exploring it isn't a luxury."
+  },
+  {
+   "id": "pov-029",
+   "tag": "risk",
+   "tier": "transferable",
+   "source_answer": 13,
+   "line": "Would I go down in a small experimental submersible, trusting one person's confidence? No. I'd want independent testing, certification, redundancy, and an operating history."
+  },
+  {
+   "id": "pov-030",
+   "tag": "risk",
+   "tier": "transferable",
+   "source_answer": 13,
+   "line": "I like discovery. I don't need to physically place myself inside every dangerous environment to respect it."
+  },
+  {
+   "id": "pov-031",
+   "tag": "risk",
+   "tier": "transferable",
+   "source_answer": 14,
+   "line": "The people who do this seriously have a different relationship with risk — technical discipline, patience, the ability to function knowing how little room there is for error."
+  },
+  {
+   "id": "pov-032",
+   "tag": "risk",
+   "tier": "transferable",
+   "source_answer": 14,
+   "line": "What I want to know is whether someone respects the environment, or thinks courage makes them exempt from reality. Those are not the same person."
+  },
+  {
+   "id": "pov-033",
+   "tag": "risk",
+   "tier": "transferable",
+   "source_answer": 15,
+   "line": "Vision does not cancel engineering. Confidence does not replace testing."
+  },
+  {
+   "id": "pov-034",
+   "tag": "risk",
+   "tier": "transferable",
+   "source_answer": 15,
+   "line": "Being willing to take a risk doesn't mean everyone else involved understood that risk."
+  },
+  {
+   "id": "pov-035",
+   "tag": "risk",
+   "tier": "transferable",
+   "source_answer": 15,
+   "line": "What bothers me is treating basic warnings and controls as obstacles to innovation. Sometimes the rule exists because physics does not care how disruptive you think you are."
+  },
+  {
+   "id": "pov-036",
+   "tag": "media",
+   "tier": "transferable",
+   "source_answer": 18,
+   "line": "The footage is real. The documentary around it is constructed — lights, music, editing, narration all telling you what to feel."
+  },
+  {
+   "id": "pov-037",
+   "tag": "media",
+   "tier": "transferable",
+   "source_answer": 18,
+   "line": "We're shown the most dramatic thirty seconds out of what may have been hundreds of hours underwater. That doesn't make it fake. It means I want to separate what the camera captured from the story built around it."
+  },
+  {
+   "id": "pov-038",
+   "tag": "evidence",
+   "tier": "transferable",
+   "source_answer": 19,
+   "line": "How do we know an animal behaves a certain way when we've seen it three times?"
+  },
+  {
+   "id": "pov-039",
+   "tag": "evidence",
+   "tier": "specific",
+   "source_answer": 19,
+   "line": "How much does an ROV's own light change the behaviour it's there to record?"
+  },
+  {
+   "id": "pov-040",
+   "tag": "evidence",
+   "tier": "specific",
+   "source_answer": 19,
+   "line": "What happens to a specimen dragged up through thousands of feet of pressure change? Are we looking at the animal as it exists, or at what's left after retrieval?"
+  },
+  {
+   "id": "pov-041",
+   "tag": "evidence",
+   "tier": "transferable",
+   "source_answer": 19,
+   "line": "Deep-sea science builds conclusions from incomplete observations, damaged specimens, sonar, water samples and tiny windows of footage."
+  },
+  {
+   "id": "pov-042",
+   "tag": "evidence",
+   "tier": "transferable",
+   "source_answer": 19,
+   "line": "I'm interested in the evidence chain, not just the final fact somebody puts on screen."
+  },
+  {
+   "id": "pov-043",
+   "tag": "thesis",
+   "tier": "specific",
+   "source_answer": 20,
+   "line": "The deep ocean isn't one subject. It's an entire world sitting underneath the one we think we understand."
+  },
+  {
+   "id": "pov-044",
+   "tag": "thesis",
+   "tier": "specific",
+   "source_answer": 20,
+   "line": "Every creature is a different survival problem. Every expedition is a technology story, a science story, and a human-risk story."
+  },
+  {
+   "id": "pov-045",
+   "tag": "thesis",
+   "tier": "specific",
+   "source_answer": 20,
+   "line": "There's mystery down there, but there's also evidence. Things we've recorded once, things we know only from fragments, and probably things we've never encountered at all."
+  },
+  {
+   "id": "pov-046",
+   "tag": "thesis",
+   "tier": "transferable",
+   "source_answer": 20,
+   "line": "What keeps me interested is how it exposes the limits of our idea of normal. Every time we think we know what life requires, something down there shows us another way."
+  },
+  {
+   "id": "pov-047",
+   "tag": "numbers",
+   "tier": "transferable",
+   "source_answer": "B1",
+   "line": "When someone gives me a fact with a number in it, my first instinct is: where did the number come from? Not because I assume they're lying. Numbers can make almost anything sound authoritative."
+  },
+  {
+   "id": "pov-048",
+   "tag": "numbers",
+   "tier": "transferable",
+   "source_answer": "B1",
+   "line": "What was actually measured? By whom? Over what period? How big was the sample?"
+  },
+  {
+   "id": "pov-049",
+   "tag": "numbers",
+   "tier": "transferable",
+   "source_answer": "B1",
+   "line": "Is this the original number, or has it been repeated through fifty articles that all trace back to the same study?"
+  },
+  {
+   "id": "pov-050",
+   "tag": "numbers",
+   "tier": "transferable",
+   "source_answer": "B1",
+   "line": "An increase of 300% sounds dramatic until you find out it went from one case to four. A precise number is not automatically a reliable number."
+  },
+  {
+   "id": "pov-051",
+   "tag": "trust",
+   "tier": "transferable",
+   "source_answer": "B2",
+   "line": "I trust sources that show me how they know what they claim to know. The data, the method, the limitations, and preferably the original."
+  },
+  {
+   "id": "pov-052",
+   "tag": "trust",
+   "tier": "transferable",
+   "source_answer": "B2",
+   "line": "I trust somebody more when they tell me what the evidence cannot prove."
+  },
+  {
+   "id": "pov-053",
+   "tag": "trust",
+   "tier": "transferable",
+   "source_answer": "B2",
+   "line": "I trust documentation over reputation. A respected institution can still publish weak work, and someone with no name at all can uncover something real if they document it properly."
+  },
+  {
+   "id": "pov-054",
+   "tag": "trust",
+   "tier": "transferable",
+   "source_answer": "B2",
+   "line": "I look for whether independent sources reached the same conclusion, or whether everybody is just citing each other in a circle."
+  },
+  {
+   "id": "pov-055",
+   "tag": "confidence",
+   "tier": "transferable",
+   "source_answer": "B3",
+   "line": "Absolute confidence about something complicated makes me trust someone less."
+  },
+  {
+   "id": "pov-056",
+   "tag": "confidence",
+   "tier": "transferable",
+   "source_answer": "B3",
+   "line": "Real expertise usually sounds more precise than confident. An expert can tell you what is known, what is likely, what is disputed, and where the evidence stops."
+  },
+  {
+   "id": "pov-057",
+   "tag": "confidence",
+   "tier": "transferable",
+   "source_answer": "B3",
+   "line": "Someone performing expertise just sounds certain about everything."
+  },
+  {
+   "id": "pov-058",
+   "tag": "authority",
+   "tier": "transferable",
+   "source_answer": "B4",
+   "line": "'Scientists say' is almost meaningless on its own. Which scientists? How many? Was it one paper? Was it replicated?"
+  },
+  {
+   "id": "pov-059",
+   "tag": "authority",
+   "tier": "transferable",
+   "source_answer": "B4",
+   "line": "I'm not anti-science. I'm against using science as a magic authority word that means nobody has to show their work."
+  },
+  {
+   "id": "pov-060",
+   "tag": "authority",
+   "tier": "transferable",
+   "source_answer": "B4",
+   "line": "Science is a process. It is not a person behind a curtain handing down permanent answers."
+  },
+  {
+   "id": "pov-061",
+   "tag": "uncertainty",
+   "tier": "transferable",
+   "source_answer": "B5",
+   "line": "'We don't know yet' is a good answer when someone can tell you what we do know, what's missing, and what evidence would settle it."
+  },
+  {
+   "id": "pov-062",
+   "tag": "uncertainty",
+   "tier": "transferable",
+   "source_answer": "B5",
+   "line": "It becomes a cop-out when uncertainty is used selectively — enough evidence to make a dramatic claim, and suddenly not enough when someone asks them to defend it."
+  },
+  {
+   "id": "pov-063",
+   "tag": "uncertainty",
+   "tier": "transferable",
+   "source_answer": "B5",
+   "line": "I'd rather hear an honest 'we don't know' than a polished fake answer. But I still want to know why we don't know."
+  },
+  {
+   "id": "pov-064",
+   "tag": "failure",
+   "tier": "transferable",
+   "source_answer": "B6",
+   "line": "Most big engineering disasters look like bad luck in the moment. Go backward and you find a chain of decisions."
+  },
+  {
+   "id": "pov-065",
+   "tag": "failure",
+   "tier": "transferable",
+   "source_answer": "B6",
+   "line": "A warning was dismissed. Maintenance was delayed. Somebody normalised a problem because nothing terrible happened the first ten times."
+  },
+  {
+   "id": "pov-066",
+   "tag": "failure",
+   "tier": "transferable",
+   "source_answer": "B6",
+   "line": "A deadline mattered more than a test. Nobody had the authority to stop it, or the person who did had an incentive not to."
+  },
+  {
+   "id": "pov-067",
+   "tag": "failure",
+   "tier": "transferable",
+   "source_answer": "B6",
+   "line": "The final failure might take seconds. The system usually spent years creating the conditions for it."
+  },
+  {
+   "id": "pov-068",
+   "tag": "failure",
+   "tier": "transferable",
+   "source_answer": "B9",
+   "line": "I'm more interested in the years before it broke. The break itself is the most dramatic part and the least surprising once you know the history."
+  },
+  {
+   "id": "pov-069",
+   "tag": "failure",
+   "tier": "transferable",
+   "source_answer": "B9",
+   "line": "How many times did the system almost fail and get called a success because it survived?"
+  },
+  {
+   "id": "pov-070",
+   "tag": "failure",
+   "tier": "transferable",
+   "source_answer": "B9",
+   "line": "Failure is rarely one bad moment. It is usually a long series of small permissions."
+  },
+  {
+   "id": "pov-071",
+   "tag": "risk",
+   "tier": "transferable",
+   "source_answer": "B7",
+   "line": "You can call yourself an innovator all day. The materials still have limits. Physics does not care about your vision, your money, or how many successful trips you already completed."
+  },
+  {
+   "id": "pov-072",
+   "tag": "risk",
+   "tier": "transferable",
+   "source_answer": "B7",
+   "line": "There were warnings. That changes the story from unpredictable tragedy to a question about why the system kept moving anyway."
+  },
+  {
+   "id": "pov-073",
+   "tag": "risk",
+   "tier": "transferable",
+   "source_answer": "B8",
+   "line": "'Move fast and break things' makes sense when the thing you might break is a website button. Not when it's a person, an aircraft, a bridge."
+  },
+  {
+   "id": "pov-074",
+   "tag": "risk",
+   "tier": "transferable",
+   "source_answer": "B8",
+   "line": "Speed is not automatically innovation. Sometimes speed just means you skipped the part where reality gets a vote."
+  },
+  {
+   "id": "pov-075",
+   "tag": "risk",
+   "tier": "transferable",
+   "source_answer": "B8",
+   "line": "You can test aggressively without pretending consequences don't exist."
+  },
+  {
+   "id": "pov-076",
+   "tag": "deeptime",
+   "tier": "transferable",
+   "source_answer": "B10",
+   "line": "Millions of years is mostly abstract to me. I understand the number, I can't feel it. At a certain scale, numbers stop being time and just become language."
+  },
+  {
+   "id": "pov-077",
+   "tag": "earth",
+   "tier": "transferable",
+   "source_answer": "B11",
+   "line": "Space is fascinating, but Earth bothers me more. We're already here and still don't understand huge parts of it."
+  },
+  {
+   "id": "pov-078",
+   "tag": "earth",
+   "tier": "transferable",
+   "source_answer": "B11",
+   "line": "The ocean, the interior of the planet, underground ecosystems, even parts of our own bodies. We live inside systems we cannot fully explain."
+  },
+  {
+   "id": "pov-079",
+   "tag": "ancient",
+   "tier": "transferable",
+   "source_answer": "B12",
+   "line": "Ancient people built things that still stand, while we build things expected to be replaced in thirty years."
+  },
+  {
+   "id": "pov-080",
+   "tag": "ancient",
+   "tier": "transferable",
+   "source_answer": "B12",
+   "line": "What did they know that was never written down? How much human capability disappears when a civilisation does?"
+  },
+  {
+   "id": "pov-081",
+   "tag": "adaptation",
+   "tier": "transferable",
+   "source_answer": "B13",
+   "line": "Octopuses impress me. So much of their nervous system runs through their arms. They aren't just unusual — they look like a completely different solution to intelligence."
+  },
+  {
+   "id": "pov-082",
+   "tag": "adaptation",
+   "tier": "transferable",
+   "source_answer": "B13",
+   "line": "Trees look passive and are constantly responding, communicating, reallocating, surviving across timescales we barely register."
+  },
+  {
+   "id": "pov-083",
+   "tag": "adaptation",
+   "tier": "transferable",
+   "source_answer": "B14",
+   "line": "I think of evolution as whatever survived. 'Designed' makes it sound like there was a plan and a final objective. There wasn't."
+  },
+  {
+   "id": "pov-084",
+   "tag": "adaptation",
+   "tier": "transferable",
+   "source_answer": "B14",
+   "line": "Evolution doesn't start over with a clean blueprint. It keeps modifying what's already there. That's why nature is full of strange compromises."
+  },
+  {
+   "id": "pov-085",
+   "tag": "instruments",
+   "tier": "transferable",
+   "source_answer": "B15",
+   "line": "It doesn't bother me that instruments extend what we can know. Human senses are extremely limited. That's the point of technology."
+  },
+  {
+   "id": "pov-086",
+   "tag": "instruments",
+   "tier": "transferable",
+   "source_answer": "B15",
+   "line": "What interests me is the translation layer. An instrument doesn't hand us reality. It produces a signal, and then humans calibrate it, process it, interpret it."
+  },
+  {
+   "id": "pov-087",
+   "tag": "instruments",
+   "tier": "transferable",
+   "source_answer": "B15",
+   "line": "I want to understand that chain before treating the final image or number as direct truth."
+  },
+  {
+   "id": "pov-088",
+   "tag": "instruments",
+   "tier": "transferable",
+   "source_answer": "B16",
+   "line": "Measurements are made by people, using tools built by people, inside systems with assumptions."
+  },
+  {
+   "id": "pov-089",
+   "tag": "instruments",
+   "tier": "transferable",
+   "source_answer": "B16",
+   "line": "The disturbing part isn't that mistakes happen. It's how resistant institutions become once careers, textbooks and reputations depend on the old answer staying true."
+  },
+  {
+   "id": "pov-090",
+   "tag": "media",
+   "tier": "transferable",
+   "source_answer": "B17",
+   "line": "An honest documentary shows you where the evidence came from and separates fact from reconstruction."
+  },
+  {
+   "id": "pov-091",
+   "tag": "media",
+   "tier": "transferable",
+   "source_answer": "B17",
+   "line": "Dramatic music is not proof. A confident narrator is not proof. Reenactment is fine — just say that's what it is."
+  },
+  {
+   "id": "pov-092",
+   "tag": "media",
+   "tier": "transferable",
+   "source_answer": "B18",
+   "line": "Explaining something means making the idea understandable without removing what makes it true."
+  },
+  {
+   "id": "pov-093",
+   "tag": "media",
+   "tier": "transferable",
+   "source_answer": "B18",
+   "line": "Dumbing it down means removing the complications until the explanation is easy and no longer accurate."
+  },
+  {
+   "id": "pov-094",
+   "tag": "thesis",
+   "tier": "transferable",
+   "source_answer": "B19",
+   "line": "The questions worth chasing are the ones where the answer changes how you understand a system."
+  },
+  {
+   "id": "pov-095",
+   "tag": "thesis",
+   "tier": "transferable",
+   "source_answer": "B19",
+   "line": "What are people repeating without checking? What's hidden by the way the story is usually told?"
+  },
+  {
+   "id": "pov-096",
+   "tag": "thesis",
+   "tier": "transferable",
+   "source_answer": "B19",
+   "line": "I like questions where the obvious answer starts falling apart once you look closely."
+  },
+  {
+   "id": "pov-097",
+   "tag": "thesis",
+   "tier": "transferable",
+   "source_answer": "B20",
+   "line": "It feels like the subject gets larger instead of smaller. One answer rearranges everything around it."
+  },
+  {
+   "id": "pov-098",
+   "tag": "thesis",
+   "tier": "transferable",
+   "source_answer": "B20",
+   "line": "That's the feeling I'm chasing. Not collecting another fact — realising the model in my head was incomplete, and now I have a better one."
+  },
+  {
+   "id": "pov-099",
+   "tag": "evidence-limit",
+   "tier": "specific",
+   "domain": "materials-and-manufacturing",
+   "source": "owner-approved 2026-09-05",
+   "line": "I went looking for the actual yield rate — what fraction of chips on a wafer work — and manufacturers don't publish it. I could describe the process in exact steps and still not answer that adjacent question."
+  },
+  {
+   "id": "pov-100",
+   "tag": "evidence-limit",
+   "tier": "specific",
+   "domain": "materials-and-manufacturing",
+   "source": "owner-approved 2026-09-05",
+   "line": "I wanted one clean cooling-rate number for 'fast enough to harden steel.' It doesn't exist as a constant — the threshold moves with the alloy's own composition. I published the range and said the exact number has to be measured, not looked up."
+  },
+  {
+   "id": "pov-101",
+   "tag": "evidence-limit",
+   "tier": "specific",
+   "domain": "materials-and-manufacturing",
+   "source": "owner-approved 2026-09-05",
+   "line": "What convinced me these were real was that the papers report how much strength came back, not that the crack closed. A crack you can no longer see and a crack that can carry load again are different claims, and the honest work says which one it is making."
+  }
+ ],
+ "interview_2": "interveiw_2_broad.txt",
+ "owner_approved": {
+  "date": "2026-09-05",
+  "note": "Lines written for the materials-and-manufacturing episodes and then READ AND APPROVED by the owner as her own voice, rather than matched from an interview. Recorded separately from interview lines so the provenance of each is never in doubt. The materials POV top-up interview is still to be done; when it lands, both it and the deep-sea interview feed future lines.",
+  "ids": [
+   "pov-099",
+   "pov-100",
+   "pov-101"
+  ]
+ }
 }
