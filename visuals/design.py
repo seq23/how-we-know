@@ -72,9 +72,45 @@ MUTED = _PAL["MUTED"]
 # typographic voice narrating different subjects, not a different font per
 # subject. "Type that survives downscaling" is a size/weight discipline
 # inside each segment renderer, not a per-domain font swap.
-F_DISPLAY  = "/System/Library/Fonts/Supplemental/Georgia.ttf"
-F_LABEL    = "/System/Library/Fonts/Helvetica.ttc"
-F_MONO     = "/System/Library/Fonts/Menlo.ttc"
+# FONT PATHS ARE RESOLVED, NOT HARDCODED, and the reason is that this repo
+# renders on two machines. These were three absolute macOS paths, which is
+# correct on the Mac that produces every master and wrong everywhere else:
+# on the Ubuntu runner `ImageFont.truetype` raises "cannot open resource", and
+# because tests/test_directive_truth.py RENDERS one frame per directive to
+# prove it is not inert, V1 directive-truth could only ever pass on a Mac.
+# That is the "a guard that cannot reach what it governs" defect, and it is
+# what kept `loop · Mon 06:00` red.
+#
+# The macOS path stays FIRST in every list, so on the Mac each of these
+# resolves to exactly the file it always did and no rendered frame moves by a
+# pixel. The Linux entries only matter where the macOS one is absent.
+def _first_font(*candidates: str) -> str:
+    for path in candidates:
+        if os.path.exists(path):
+            return path
+    raise FileNotFoundError(
+        "none of these font files exist on this machine: "
+        + ", ".join(candidates)
+        + ". A renderer with no font does not degrade quietly - PIL's default "
+          "bitmap face ignores the requested size, so every fitted line would "
+          "silently come out the wrong length.")
+
+
+F_DISPLAY = _first_font(
+    "/System/Library/Fonts/Supplemental/Georgia.ttf",            # macOS
+    "/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf",          # Debian/Ubuntu
+    "/usr/share/fonts/truetype/liberation/LiberationSerif-Regular.ttf",
+)
+F_LABEL = _first_font(
+    "/System/Library/Fonts/Helvetica.ttc",
+    "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+    "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf",
+)
+F_MONO = _first_font(
+    "/System/Library/Fonts/Menlo.ttc",
+    "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf",
+    "/usr/share/fonts/truetype/liberation/LiberationMono-Regular.ttf",
+)
 
 # Ocean zones: name, top metres, bottom metres. Deep-sea-only, unchanged —
 # consumed exclusively by visuals/segments.py's zone_column/depth_descent,
