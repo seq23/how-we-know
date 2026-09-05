@@ -77,6 +77,15 @@ MAX_CANDIDATES = 24        # what materials was gated with; enough for ~12 weeks
 MIN_WORDS, MAX_WORDS = 3, 9
 MIN_CANDIDATES = 12        # ~12 weeks at one slot; below this, mine deeper
 
+# Deep sea's dedicated deep mine predates the mined_queries_<domain>.json
+# convention -- it is simply research/mined_queries.json, the file
+# research/publish_order.py reads as its corpus. Naming it here means the
+# generic runner uses the RICH corpus for deep sea rather than re-mining it,
+# and the exception is written down rather than being a silent miss.
+DEEP_MINE_OVERRIDE = {
+    "deep-sea-ocean-science": "mined_queries.json",
+}
+
 # AUTOCOMPLETE TAILS THAT ARE NOT TOPICS. Autocomplete answers "what is quantum
 # physics" with the language someone wants it in, the explainer channel they
 # watched, the school year they are in, or the video game the word appears in.
@@ -99,7 +108,12 @@ QUALIFIER_NOISE = re.compile(
     r"good\s+career|salary|jobs?\b|degree|course|"
     r"minecraft|roblox|fortnite|wobbly\s+life|jurassic\s+world|"
     r"isla\s+sorna|movie|film|episode\s*\d+|season\s*\d+|"
-    r"how\s+it'?s\s+made|discovery\s+uk|huggbees"
+    r"how\s+it'?s\s+made|discovery\s+uk|huggbees|"
+    # 2026-09-05, from the deep-sea pass: craft tutorials, media requests and
+    # place-name collisions are not episodes.
+    r"how\s+to\s+draw|drawing|colou?ring|papercraft|origami|"
+    r"\bvideo\b|\bsong\b|\bgame\b|gold\s+city|minecraft|"
+    r"where\s+moses|dead\s+sea|north\s+sea|red\s+sea"
     r")\b", re.I)
 
 
@@ -232,8 +246,36 @@ def deep_mine(domain: str, seeds: list, out_path: str) -> list:
         return _rows_of(json.load(fh))
 
 
+# A seed token this common in the domain's own corpus cannot, on its own,
+# prove a candidate belongs to the domain.
+GENERIC_DF = 0.25
+
+
+def generic_tokens(rows: list, seed_tokens: set) -> set:
+    """Seed tokens too common in this corpus to discriminate.
+
+    "deep" is deep sea's core word and appears in a quarter of everything the
+    miner returned for it -- including "how deep are septic tanks buried",
+    "how deep is your love" and "how deep bee gees", all of which shared a
+    token with the seeds and were admitted as deep-sea episodes. A token that
+    frequent is evidence of the mining query, not of the topic.
+
+    Such a token still counts; it just cannot be the ONLY match.
+    """
+    if not rows:
+        return set()
+    df = {t: 0 for t in seed_tokens}
+    for r in rows:
+        toks = {_stem(t) for t in content_tokens(r["query"])}
+        for t in seed_tokens & toks:
+            df[t] += 1
+    n = len(rows)
+    return {t for t, c in df.items() if c / n > GENERIC_DF}
+
+
 def _screen(rows: list, seed_tokens: set, limit: int,
-            seen: list, picked: list) -> tuple[list, list]:
+            seen: list, picked: list, made: set | None = None,
+            generic: set | None = None) -> tuple[list, list]:
     """Screen mined rows into `picked`/`seen` in place. Returns (added, killed).
 
     One screening implementation for both the broad pass and the deep one, so
@@ -247,6 +289,11 @@ def _screen(rows: list, seed_tokens: set, limit: int,
         q = r["query"].strip()
         if not q or not r["question"] or r["noise"] or r["excluded"]:
             continue
+        if made and slug_of(q) in made:
+            killed.append({"query": q, "killed_by": "ALREADY_PUBLISHED",
+                           "rule": "this episode already exists",
+                           "matched": slug_of(q)})
+            continue
         if not (MIN_WORDS <= len(q.split()) <= MAX_WORDS):
             continue
         if QUALIFIER_NOISE.search(q):
@@ -255,10 +302,17 @@ def _screen(rows: list, seed_tokens: set, limit: int,
                            "matched": QUALIFIER_NOISE.search(q).group(0)})
             continue
         toks = {_stem(t) for t in content_tokens(q)} - FRAME
-        if not (toks & seed_tokens):
+        hits = toks & seed_tokens
+        if not hits:
             killed.append({"query": q, "killed_by": "OFF_DOMAIN",
                            "rule": "shares no vocabulary with the domain seeds",
                            "matched": " ".join(sorted(toks))})
+            continue
+        if generic and not (hits - generic):
+            killed.append({"query": q, "killed_by": "GENERIC_MATCH_ONLY",
+                           "rule": "its only domain word is one that matches a "
+                                   "quarter of everything the miner returned",
+                           "matched": " ".join(sorted(hits))})
             continue
         # TEXT ONLY, NO DOMAIN ARGUMENT. exclusions.decide()'s second parameter
         # is a research/filter.py BUCKET name ("space", "deep-sea-biology"),
@@ -327,13 +381,28 @@ def candidates(domain: str, limit: int = MAX_CANDIDATES,
     seed_tokens |= {_stem(t) for t in domain.replace("-", " ").split()}
     seed_tokens -= FRAME
 
+    # AN EPISODE ALREADY MADE IS NOT A CANDIDATE. The publish-order files keep
+    # a slug after its episode is published -- that is where its score and gate
+    # verdict live -- so without this the runner cheerfully proposes topics the
+    # channel has already aired. The deep-sea pass returned four of them.
+    made: set = set()
+    try:
+        sys.path.insert(0, os.path.join(ROOT, "loop"))
+        import ledger as _led                              # noqa: PLC0415
+        made = {r["slug"] for r in _led.load()["published"]}
+    except Exception:                                      # never break a run
+        made = set()
+
+    generic = generic_tokens(rows, seed_tokens)
+
     seen: list = []
     picked: list = []
-    _, killed = _screen(rows, seed_tokens, limit, seen, picked)
+    _, killed = _screen(rows, seed_tokens, limit, seen, picked, made, generic)
 
     if deep and len(picked) < MIN_CANDIDATES:
-        deep_path = os.path.join(HERE,
-                                 f"mined_queries_{slug_of_domain(domain)}.json")
+        deep_path = os.path.join(
+            HERE, DEEP_MINE_OVERRIDE.get(
+                domain, f"mined_queries_{slug_of_domain(domain)}.json"))
         if os.path.exists(deep_path):
             with open(deep_path, encoding="utf-8") as fh:
                 extra = _rows_of(json.load(fh))
@@ -341,7 +410,9 @@ def candidates(domain: str, limit: int = MAX_CANDIDATES,
             extra = deep_mine(domain, seeds + picked, deep_path)
         if extra:
             before = len(picked)
-            _, more_killed = _screen(extra, seed_tokens, limit, seen, picked)
+            _, more_killed = _screen(extra, seed_tokens, limit, seen,
+                                     picked, made,
+                                     generic | generic_tokens(extra, seed_tokens))
             killed += more_killed
             print(f"deep mine: {before} -> {len(picked)} candidate(s)")
 

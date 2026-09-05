@@ -2907,6 +2907,75 @@ def v38_no_duplicate_or_zombie_schedule() -> Result:
     return r
 
 
+def v39_queue_depth_is_remaining_not_scored() -> Result:
+    """Queue depth must count what is LEFT, not everything ever scored.
+
+    research/publish_order*.json is the SCORED list, not the remaining list --
+    a slug stays in it after its episode is made, because that is where its
+    score and its gate verdict live. Counting those as inventory double-counted
+    the entire catalogue: on 2026-09-05 deep sea reported 16 queued topics and
+    8.0 weeks of runway while every one of those 16 was already uploaded and
+    dated. Its true remaining queue was ZERO.
+
+    That is the worst possible direction for this particular number to be wrong
+    in. `runway.warn_weeks` exists to say "you are running out" before it
+    happens, and it could not see the end coming -- the guard would have stayed
+    green until the last scheduled episode aired and the queue was simply
+    empty. The same number feeds `domains.exhausted()`, so a decayed niche
+    could never be detected either.
+
+    Asserted behaviourally against the ledger: no slug that has been uploaded
+    may be counted as remaining inventory.
+
+    Hard-fails when it examines zero items.
+    """
+    r = Result("V39 queue-depth-remaining")
+    import domains as _dom                                 # noqa: PLC0415
+    import ledger as _led                                  # noqa: PLC0415
+
+    published = {x["slug"] for x in _led.load()["published"]}
+    r.examined += 1
+    if not published:
+        r.fail("the ledger holds no uploaded slugs, so this examined nothing.")
+        return r
+
+    remaining = _dom.queue_depth()
+    scored = _dom.queue_depth(include_published=True)
+    r.examined += 1
+    if sum(remaining.values()) > sum(scored.values()):
+        r.fail(f"remaining queue ({sum(remaining.values())}) exceeds the total "
+               f"ever scored ({sum(scored.values())}), which is arithmetically "
+               f"impossible.")
+
+    # The real check: walk the files and confirm no published slug survives.
+    counted = []
+    for path in _dom._publish_order_files():
+        for row in (_dom._read(path).get("queue") or []):
+            slug = row.get("slug")
+            if slug and slug in published:
+                counted.append(slug)
+    r.examined += 1
+    if not counted:
+        r.note("no published slug appears in any publish-order file, so the "
+               "double-count cannot occur here")
+    else:
+        # Those slugs exist in the files; they must NOT be in the depth.
+        by_dom = {}
+        for slug in counted:
+            d = _dom.domain_of_slug(slug)
+            if d:
+                by_dom[d] = by_dom.get(d, 0) + 1
+        for d, n in by_dom.items():
+            r.examined += 1
+            if remaining.get(d, 0) + n != scored.get(d, 0):
+                r.fail(f"{d}: {scored.get(d, 0)} scored minus {n} already "
+                       f"uploaded should leave {scored.get(d, 0) - n} "
+                       f"remaining, but queue_depth() reports "
+                       f"{remaining.get(d, 0)}. A published episode is being "
+                       f"counted as inventory it no longer is.")
+    return r
+
+
 # ------------------------------------------------------------------ runner
 
 def run_all(items) -> tuple[bool, list[dict]]:
@@ -2934,7 +3003,8 @@ def run_all(items) -> tuple[bool, list[dict]]:
                v35_digest_reaches_her(),
                v36_editorial_gate_is_enforced(),
                v37_runtime_target_and_self_heal(),
-               v38_no_duplicate_or_zombie_schedule()]
+               v38_no_duplicate_or_zombie_schedule(),
+               v39_queue_depth_is_remaining_not_scored()]
     rows = [r.as_dict() for r in results]
     return all(r.ok for r in results), rows
 

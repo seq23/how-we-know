@@ -612,6 +612,45 @@ counter-intuitive enough to be "simplified" away by someone later.
 
 ---
 
+## 3g. The runway counted episodes that had already aired
+
+Found 2026-09-05, from the question "when does the last video go out".
+
+`research/publish_order*.json` is the **scored** list, not the **remaining**
+list — a slug stays in it after its episode is made, because that is where its
+score and gate verdict live. `domains.queue_depth()` counted every row, so the
+whole catalogue was counted twice: deep sea reported **16 queued topics and 8.0
+weeks of runway** while all 16 were already uploaded and dated. Its real
+remaining queue was **zero**.
+
+That is the worst direction for this number to be wrong in. `runway.warn_weeks`
+exists to say *you are running out* before it happens, and it could not see the
+end coming: it would have stayed green until the last scheduled episode aired
+and the queue was simply empty. The same figure feeds `domains.exhausted()`, so
+a decayed niche could never have been detected either.
+
+`queue_depth()` now subtracts anything in the ledger. The immediate reading:
+
+| Domain | Scored | Already made | Remaining | Runway |
+|---|---|---|---|---|
+| Deep sea | 16 | 16 | **0** | **0.0 wks — critical** |
+| Materials | 18 | 3 | 15 | 7.5 wks |
+
+Two things then worked exactly as designed. `lifecycle()` refused to retire deep
+sea, naming `QUEUE_DECAYED_BUT_UNMEASURED` — a thin queue with no analytics yet
+is a scoring backlog, not a finished niche. And `score.missing_queues()` now
+lists deep sea, so the **Saturday lane runs the topic gate for it automatically**;
+`publish_order_domain.py` reads deep sea's own deep mine
+(`research/mined_queries.json`, named in `DEEP_MINE_OVERRIDE` because it predates
+the naming convention) rather than the shallow broad pass.
+
+Guarded by **V39**. Also fixed there: the generic gate was proposing episodes
+that already exist, and admitting anything sharing a single over-common seed
+word — "deep" matched a quarter of the corpus, which let in *how deep are septic
+tanks buried* and *how deep is your love*.
+
+---
+
 ## 4. Incidents worth remembering
 
 Recorded because each was invisible until something specifically looked for it.
