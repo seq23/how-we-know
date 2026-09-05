@@ -37,8 +37,14 @@ def probe(path):
                           "-of","default=nw=1:nk=1",path], capture_output=True, text=True)
     return float(out.stdout.strip())
 
-def render_beat(beat, idx, workdir, seconds):
-    """Render one beat to a silent clip of exactly `seconds`."""
+def render_beat(beat, idx, workdir, seconds, burner=None, t0=0.0):
+    """Render one beat to a silent clip of exactly `seconds`.
+
+    `burner` (visuals/captions.Burner) draws the caption live at global time
+    t0 + i/FPS, so the words on screen come from the same measured audio the
+    beat is cut to. It caches one pre-rendered panel per cue, so the per-frame
+    cost is a bounding-box paste rather than a full-frame composite.
+    """
     fn = seg_fn(beat["segment"])
     n = max(1, int(round(seconds * FPS)))
     fdir = os.path.join(workdir, f"f{idx:04d}")
@@ -49,6 +55,8 @@ def render_beat(beat, idx, workdir, seconds):
             img = fn(i / max(n - 1, 1), **args)
         except TypeError:                       # arg mismatch -> never crash a batch
             img = seg_fn("ambient_drift")(i / max(n - 1, 1), variant=idx % 5)
+        if burner is not None:
+            burner.draw(img, t0 + i / FPS)
         img.save(f"{fdir}/{i:05d}.png")
     clip = os.path.join(workdir, f"c{idx:04d}.mp4")
     subprocess.run(["ffmpeg","-hide_banner","-loglevel","error","-y","-framerate",str(FPS),
@@ -79,7 +87,7 @@ def mix_bed(narration, out, duck_db=-32.0, seed=7):
 
 
 def assemble(plan_path, out_path, audio_dir=None, master_audio=None, workdir=None,
-             music=True):
+             music=True, burn_captions=False):
     plan = json.load(open(plan_path))
     workdir = workdir or out_path + ".work"
     os.makedirs(workdir, exist_ok=True)
@@ -94,9 +102,19 @@ def assemble(plan_path, out_path, audio_dir=None, master_audio=None, workdir=Non
             d = float(b["seconds"])                     # estimate only if no audio
         durations.append(max(0.4, d))
 
-    clips = []
+    # CAPTIONS ARE BURNED FROM THE SAME MEASURED DURATIONS the beats are cut
+    # to, never from the plan's word-count estimate, so the words cannot drift
+    # away from the voice over an eight-minute video.
+    burner = None
+    if burn_captions:
+        import captions as CAP                            # noqa: PLC0415
+        burner = CAP.Burner(CAP.build_cues(plan, durations))
+        print(f"  burning {len(burner.cues)} caption cues", flush=True)
+
+    clips, t0 = [], 0.0
     for i, b in enumerate(plan):
-        clips.append(render_beat(b, i, workdir, durations[i]))
+        clips.append(render_beat(b, i, workdir, durations[i], burner, t0))
+        t0 += durations[i]
         if (i+1) % 10 == 0 or i == len(plan)-1:
             print(f"  rendered {i+1}/{len(plan)}", flush=True)
 
@@ -145,6 +163,9 @@ if __name__ == "__main__":
     ap.add_argument("plan"); ap.add_argument("out")
     ap.add_argument("--audio-dir"); ap.add_argument("--master-audio")
     ap.add_argument("--no-music", action="store_true")
+    ap.add_argument("--burn-captions", action="store_true",
+                    help="draw the measured caption track into the frames")
     a = ap.parse_args()
-    r = assemble(a.plan, a.out, a.audio_dir, a.master_audio, music=not a.no_music)
+    r = assemble(a.plan, a.out, a.audio_dir, a.master_audio,
+                 music=not a.no_music, burn_captions=a.burn_captions)
     print(json.dumps(r, indent=2))
