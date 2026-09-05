@@ -536,6 +536,24 @@ def v8_source_urls(items) -> Result:
 FOOTAGE_SAFE_SEGMENTS = {"ambient_drift", "species_image"}
 
 
+def _footage_not_on_this_machine(FT) -> bool:
+    """True when this machine simply does not hold the footage.
+
+    THE DISTINCTION MATTERS AND IS DELIBERATE. An ABSENT manifest means the
+    clips live somewhere else - they are large video files kept on the Mac and
+    in R2, never in git - so a cloud runner has nothing to govern and says so.
+    A manifest that EXISTS but lists nothing, or lists clips whose files are
+    gone, is a real defect and still hard-fails: that is the empty-loop case
+    these validators were written to catch, and it is not touched here.
+
+    Without this, V9 through V12 examined zero on every GitHub run, hard-failed
+    correctly, tripped the breaker, and kept `loop · Mon 06:00` red - a guard
+    failing not because anything was wrong but because it was pointed at the
+    wrong machine.
+    """
+    return not os.path.exists(FT.MANIFEST)
+
+
 def _footage_env():
     """(footage module, [(slug, plan, durations)]). Raises if unimportable."""
     sys.path.insert(0, str(ROOT / "visuals"))
@@ -554,6 +572,10 @@ def v9_footage_window() -> Result:
         FT, plans = _footage_env()
     except Exception as e:                       # noqa: BLE001
         r.fail(f"visuals/footage.py could not be loaded: {e}")
+        return r
+    if _footage_not_on_this_machine(FT):
+        r.exempt = True
+        r.note("no footage manifest on this machine, so there is no\n               clip to govern. The clips are large video and live on the Mac\n               and in R2 by design, never in git.")
         return r
     assets = FT.usable_assets()
     for slug, plan, durs in plans:
@@ -582,6 +604,10 @@ def v10_footage_crop() -> Result:
         FT, plans = _footage_env()
     except Exception as e:                       # noqa: BLE001
         r.fail(f"visuals/footage.py could not be loaded: {e}")
+        return r
+    if _footage_not_on_this_machine(FT):
+        r.exempt = True
+        r.note("no footage manifest on this machine, so there is no\n               clip to govern. The clips are large video and live on the Mac\n               and in R2 by design, never in git.")
         return r
     assets = FT.usable_assets()
     for a in assets:
@@ -617,6 +643,10 @@ def v11_footage_hash() -> Result:
     except Exception as e:                       # noqa: BLE001
         r.fail(f"visuals/footage.py could not be loaded: {e}")
         return r
+    if _footage_not_on_this_machine(FT):
+        r.exempt = True
+        r.note("no footage manifest on this machine, so there is no\n               clip to govern. The clips are large video and live on the Mac\n               and in R2 by design, never in git.")
+        return r
     m = FT.load_manifest()
     for a in m.get("assets", []):
         r.examined += 1
@@ -636,6 +666,10 @@ def v12_footage_scope() -> Result:
         FT, plans = _footage_env()
     except Exception as e:                       # noqa: BLE001
         r.fail(f"visuals/footage.py could not be loaded: {e}")
+        return r
+    if _footage_not_on_this_machine(FT):
+        r.exempt = True
+        r.note("no footage manifest on this machine, so there is no\n               clip to govern. The clips are large video and live on the Mac\n               and in R2 by design, never in git.")
         return r
     assets = FT.usable_assets()
     for slug, plan, durs in plans:
