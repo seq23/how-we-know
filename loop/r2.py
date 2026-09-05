@@ -549,8 +549,21 @@ def inventory(backend: _Backend, slugs) -> list[dict]:
 # ---------------------------------------------------------------------- CLI
 
 def _publish_slugs() -> list[str]:
-    p = ROOT / "research" / "publish_order.json"
-    return [q["slug"] for q in json.loads(p.read_text())["queue"]]
+    """Every domain's queue, not just deep sea's.
+
+    This read research/publish_order.json BY NAME and drives BOTH push() and
+    push_shorts(), so nothing from materials-and-manufacturing had ever been
+    shelved -- not one render, not one Short. The cloud upload lane and the
+    cloud Shorts lane both read from R2, so both were structurally incapable of
+    publishing a materials episode; the three that are scheduled got there
+    because the Mac's own backfill lane uploads directly.
+
+    Third instance of this exact defect found on 2026-09-05, after
+    loop/shorts_lane.py and before this one. loop/batch_queue.py exists to be
+    the single definition; V27 now asks this module too.
+    """
+    import batch_queue                                     # noqa: PLC0415
+    return batch_queue.queued_slugs()
 
 
 def push(backend: _Backend, slugs=None, force: bool = False) -> dict:

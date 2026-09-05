@@ -1896,6 +1896,26 @@ def v27_lanes_see_every_domain() -> Result:
     except Exception as e:                                 # never mask the rest
         r.fail(f"could not ask loop/shorts_lane.py which domains it sees: {e}")
 
+    # AND THE R2 SHELF. loop/r2.py:_publish_slugs() drives BOTH the render push
+    # and the Shorts push, and read one file by name too -- so nothing from
+    # materials had ever been shelved, and the two cloud lanes that publish
+    # from R2 were structurally incapable of ever seeing that niche. Third
+    # instance of this defect in one afternoon, which is why the check is now
+    # per-module rather than per-symptom.
+    r.examined += 1
+    try:
+        import r2 as _r2                                   # noqa: PLC0415
+        import domains as _dom2                            # noqa: PLC0415
+        seen2 = {_dom2.domain_of_slug(s) for s in _r2._publish_slugs()}
+        seen2.discard(None)
+        gap = set(_dom2.allocation(config())) - seen2
+        if gap:
+            r.fail(f"loop/r2.py cannot shelve anything in "
+                   f"{', '.join(sorted(gap))}. Both cloud lanes publish from "
+                   f"R2, so that niche can never reach YouTube through them.")
+    except Exception as e:
+        r.fail(f"could not ask loop/r2.py which domains it shelves: {e}")
+
     per_file = {}
     for path in files:
         per_file[path.name] = {row.get("slug") for row in
