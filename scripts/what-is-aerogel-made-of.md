@@ -74,6 +74,21 @@ The material is not exotic in composition — it is silicon dioxide, the second 
 {{text}}
 The lowest reported densities for aerogel vary slightly depending on measurement method and sample preparation. Some sources cite zero point zero zero one grams per cubic centimeter, others zero point zero zero three, and some report values as high as zero point zero zero five grams per cubic centimeter for the lightest samples. The variation reflects differences in how density is measured — whether by geometric volume or by helium pycnometry, which accounts for closed pores. The structural details at the nanometer scale also depend on imaging technique. Transmission electron microscopy requires thin sections and can introduce artifacts. Small-angle X-ray scattering provides statistical information about pore size distribution but not direct images. The overall picture is consistent, but precise values for the lowest density or smallest pore size should be understood as representative rather than absolute.
 
+### Optical properties derive from nanoscale scattering centers
+
+{{contrast: TERM=Transparency | is=Aerogel transmits visible light with scattering | not=Window glass transmits without scattering}}
+Aerogel appears translucent or milky rather than transparent, even though silica itself is optically clear. The difference is scattering. Light passing through aerogel encounters density fluctuations at the nanometer scale — the boundaries between silica strands and air-filled pores. When the characteristic size of these features is comparable to the wavelength of visible light, Rayleigh scattering dominates. Shorter wavelengths scatter more strongly than longer ones, following an inverse fourth-power law. This is why thin aerogel samples appear blue in transmitted light and yellowish in reflected light. Thicker samples scatter so much light that they appear opaque white. The effect is quantified by the extinction coefficient, which for silica aerogel ranges from ten to one hundred inverse centimeters depending on density. For comparison, window glass has an extinction coefficient below zero point one inverse centimeters. The scattering is not a defect — it is a direct consequence of the porous structure. Some applications exploit it: aerogel panels in skylights diffuse sunlight without the heat gain of clear glazing.
+
+### Acoustic properties reflect the tortuous pore network
+
+{{stat: VALUE=100 | UNIT=meters per second | CAPTION=Speed of sound in low-density aerogel | SOURCE=NIST}}
+Sound propagates slowly through aerogel. The speed of sound in low-density silica aerogel can be as low as one hundred meters per second, compared to three hundred forty-three meters per second in air and five thousand nine hundred meters per second in solid silica glass. The reduction occurs because sound waves must travel through both the solid skeleton and the air in the pores, and the two phases are poorly coupled. The silica network is sparse and the pores are not aligned, so the path length for mechanical waves is much longer than the straight-line distance. This tortuous geometry also gives aerogel a high acoustic impedance mismatch with air, making it an effective sound barrier despite its low mass. Measurements by NIST show that aerogel panels can achieve sound transmission loss values comparable to much heavier materials. The acoustic behavior is another emergent property of the nanoporous architecture — the same structure that blocks heat also impedes sound.
+
+### Synthesis parameters control pore size distribution
+
+{{text}}
+The pore size distribution in aerogel is not fixed. It can be tuned by changing synthesis conditions. A higher precursor concentration produces smaller pores and a denser network. The choice of catalyst also matters: acid catalysis tends to yield finer, more uniform structures, while base catalysis produces coarser networks with larger pores. Gelation time and temperature affect how much the silica particles aggregate before the network solidifies. Longer gelation times allow more particle growth and coarsening, resulting in larger pores. The range already stated — twenty to one hundred nanometers — reflects typical outcomes across these parameter variations. Small-angle X-ray scattering and nitrogen adsorption isotherms are the standard methods for characterizing pore size. ASTM International provides test standards for measuring surface area and pore volume in aerogels. The ability to control pore size is important for applications: smaller pores improve thermal insulation by further restricting gas-phase conduction, while larger pores reduce optical scattering and increase transparency. The synthesis is not a single recipe — it is a parameter space where structure follows from processing choices.
+
 ### Closing
 
 {{ambient}}
@@ -107,6 +122,8 @@ Aerogel is made of silicon dioxide arranged as a skeletal network, with air occu
 - 11:02 Closing
 
 ## Sources
+- https://www.nist.gov/
+- https://www.astm.org/
 
 - NIST: Material Measurement Laboratory — https://www.nist.gov/mml
 - Lawrence Livermore National Laboratory: Materials Science — https://www.llnl.gov/
