@@ -40,7 +40,7 @@ import domain_sources  # noqa: E402
 import durations  # noqa: E402
 import exclusions  # noqa: E402
 import pov_match  # noqa: E402
-from common import LOOP, ROOT, now, read_json, write_json  # noqa: E402
+from common import LOOP, ROOT, config, now, read_json, write_json  # noqa: E402
 
 DEFAULT_DOMAIN = "deep-sea-ocean-science"
 
@@ -130,8 +130,23 @@ except durations.NotMeasured:
         "has renders/*-final.mp4, commit loop/state/runtime_model.json, and "
         "retry.") from None
 
-RUNTIME_TARGET_MINUTES = 10.5
-RUNTIME_FLOOR_MINUTES = 10.0        # owner's hard floor, 2026-09-03
+# ONE COPY OF THE NUMBER, AND IT LIVES IN loop/config.json. These were typed
+# here as 10.5 and 10.0 while the config said the same thing, which is the
+# duplicated-constant failure the comment above describes -- three call sites
+# agreeing on a guess is not the same as one measured value. When the owner
+# raised the target to 12 minutes on 2026-09-05 this file would have gone on
+# drafting to 10.5 and every new episode would have landed a minute and a half
+# short of the new target while the config said otherwise.
+_RET = config()["retention"]
+RUNTIME_TARGET_MINUTES = float(_RET["runtime_minutes"])
+RUNTIME_FLOOR_MINUTES = float(_RET["runtime_floor_minutes"])
+RUNTIME_TOLERANCE_PCT = float(_RET.get("runtime_tolerance_pct", 15.0))
+
+# The band an episode is allowed to land in. Its LOWER edge sits above the hard
+# floor by construction, so "inside the band" and "over the floor" can never
+# disagree.
+RUNTIME_BAND_MIN = RUNTIME_TARGET_MINUTES * (1 - RUNTIME_TOLERANCE_PCT / 100)
+RUNTIME_BAND_MAX = RUNTIME_TARGET_MINUTES * (1 + RUNTIME_TOLERANCE_PCT / 100)
 NARRATION_TARGET_WORDS = durations.narration_words_for(RUNTIME_TARGET_MINUTES)
 NARRATION_FLOOR_WORDS = durations.narration_words_for(RUNTIME_FLOOR_MINUTES)
 WHOLE_SCRIPT_TARGET_WORDS = round(NARRATION_TARGET_WORDS * SCRIPT_RATIO)

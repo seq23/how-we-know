@@ -147,6 +147,26 @@ def record(slug: str, seconds: float, source: str,
     return round(float(seconds), 3)
 
 
+def forget(slug: str) -> bool:
+    """Drop a recorded duration whose render no longer exists.
+
+    A recorded duration OUTLIVES the render it measured. That was harmless
+    while renders only ever accumulated; it stopped being harmless on
+    2026-09-05, when loop/extend.py began superseding a short render after
+    extending its script -- `duration_s` went on reporting 8.61 minutes for an
+    episode whose script was now 13.2, so the self-heal saw the same four
+    episodes as still short and would have extended them again every night.
+
+    Only ever called for a slug whose render has actually been moved aside.
+    """
+    data = load()
+    if slug in data["episodes"]:
+        del data["episodes"][slug]
+        _save(DURATIONS, data)
+        return True
+    return False
+
+
 def duration_s(slug: str, probe: bool = True) -> float | None:
     """Actual seconds for one episode, or None if it has never been measured.
 

@@ -7,6 +7,12 @@ __pycache__/
 # Rendered video and intermediate frames — regenerable in ~10 min per video,
 # and too large to belong in git history.
 renders/*.mp4
+# ...and one level deeper. `renders/*.mp4` does not match
+# `renders/superseded-*/foo.mp4`, so moving four superseded renders into a
+# subdirectory on 2026-09-05 staged 183 MB of video that the pattern above
+# exists to keep out. The READMEs in those directories ARE committed - the
+# record of what was superseded and why is the part worth keeping.
+renders/**/*.mp4
 renders/*.work/
 renders/*.png
 visuals/sample/
