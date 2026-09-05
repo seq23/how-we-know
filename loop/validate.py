@@ -2317,6 +2317,78 @@ def v31_render_has_thumbnail() -> Result:
     return r
 
 
+def v32_scheduled_pov_is_hers() -> Result:
+    """Every SCHEDULED episode's Producer POV must trace to a line she said.
+
+    V4 already checks POV - against `loop/render_queue.json`, which holds the
+    two episodes THIS WEEK drafted. Nineteen are scheduled to air. The other
+    seventeen were never examined, so V4 stayed green while three materials
+    episodes sat on the calendar whose POV traces to nothing.
+
+    WHAT THE RULE ACTUALLY IS, because a first attempt at this got it wrong and
+    failed the entire catalogue. The bank is not the finished text. A POV line
+    is MATCHED from `pov/pov-bank.json` and then given an editorial pass for
+    the episode it sits in - the scripts say so themselves ("matched from POV
+    BANK pov-046 before rewriting"). So the check is not whether the final
+    sentence appears verbatim in the bank; it is whether the episode has an
+    entry in `pov/pov-assignments.json` tracing it to a bank line at all.
+    Sixteen scheduled episodes do. Three do not.
+
+    loop/config.json states the reason those three cannot borrow one: entering
+    a domain outside deep sea "requires a ~20 minute POV top-up interview
+    before first publish, because tier:specific POV lines do not transfer."
+    The `[HUMAN]` paragraph is the one beat where a person speaks as
+    themselves. An unassigned line there is the channel asserting she said
+    something she did not, in a domain she was never asked about.
+
+    Two honest ways to clear it, neither of which a validator may do for her:
+    she reads the line and it is recorded as hers, or the episode is re-cut
+    without the beat.
+
+    Hard-fails when it examines zero items.
+    """
+    r = Result("V32 scheduled-pov")
+    import datetime as _dt                                 # noqa: PLC0415
+    import ledger as _led                                  # noqa: PLC0415
+
+    path = ROOT / "pov" / "pov-assignments.json"
+    r.examined += 1
+    if not path.exists():
+        r.fail("pov/pov-assignments.json is missing, so no scheduled episode's "
+               "POV can be traced to the owner's interview.")
+        return r
+    assigned = {a["video"] for a in read_json(path)["assignments"]}
+
+    now = _dt.datetime.now(_dt.timezone.utc)
+    pending = []
+    for row in _led.load()["published"]:
+        stamp = row.get("scheduled_publish_at")
+        if not stamp or row.get("retired_at"):
+            continue
+        when = _dt.datetime.fromisoformat(stamp.replace("Z", "+00:00"))
+        if when > now:
+            pending.append((row["slug"], row.get("video_id"), when))
+
+    r.examined += 1
+    if not pending:
+        r.fail("no episode is scheduled ahead, so this examined nothing - "
+               "either an empty calendar or a ledger it cannot read.")
+        return r
+
+    for slug, vid, when in sorted(pending, key=lambda x: x[2]):
+        script = ROOT / "scripts" / f"{slug}.md"
+        if not script.exists() or "[HUMAN]" not in script.read_text():
+            continue                      # no POV beat is a different rule
+        r.examined += 1
+        if slug not in assigned and (vid or "") not in assigned:
+            r.fail(f"{slug} airs {when:%Y-%m-%d} with a first-person Producer "
+                   f"POV that traces to no line in pov/pov-bank.json - there "
+                   f"is no entry for it in pov/pov-assignments.json. Its "
+                   f"domain has had no POV interview, and config says "
+                   f"tier-specific lines do not transfer.")
+    return r
+
+
 # ------------------------------------------------------------------ runner
 
 def run_all(items) -> tuple[bool, list[dict]]:
@@ -2337,7 +2409,8 @@ def run_all(items) -> tuple[bool, list[dict]]:
                v24_render_duration_floor(), v25_domain_abstraction(),
                v27_lanes_see_every_domain(), v28_lane_interpreters(),
                v29_material_image_rights(), v30_cloud_visibility(),
-               v31_render_has_thumbnail()]
+               v31_render_has_thumbnail(),
+               v32_scheduled_pov_is_hers()]
     rows = [r.as_dict() for r in results]
     return all(r.ok for r in results), rows
 
