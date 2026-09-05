@@ -1,6 +1,6 @@
 {
   "week": "2026-W36",
-  "generated": "2026-09-05T02:40:06+00:00",
+  "generated": "2026-09-05T03:00:45+00:00",
   "videos_per_week": 4,
   "breaker": "closed",
   "validators": [
@@ -120,33 +120,31 @@
     {
       "validator": "V13 render-not-clipped",
       "examined": 0,
-      "status": "FAIL(examined 0)",
-      "failures": [
-        "examined 0 fully-narrated renders - this validator cannot see what it is meant to govern"
-      ],
+      "status": "N/A(nothing generated)",
+      "failures": [],
       "notes": [
-        "0 fully-narrated render(s)"
+        "no rendered MP4 on this machine; renders live on the Mac and in R2 by design. The Mac run covers this."
       ],
       "stops": []
     },
     {
       "validator": "V14 shorts-attribution",
       "examined": 0,
-      "status": "FAIL(examined 0)",
-      "failures": [
-        "no Short receipts in /home/runner/work/how-we-know/how-we-know/shorts/*.mp4.short.json - this validator cannot see what it is meant to govern"
+      "status": "N/A(nothing generated)",
+      "failures": [],
+      "notes": [
+        "no shorts/ directory on this machine; cut Shorts and their receipts live on the Mac and in R2 by design. The Mac run covers this."
       ],
-      "notes": [],
       "stops": []
     },
     {
       "validator": "V15 shorts-caption-crop",
       "examined": 0,
-      "status": "FAIL(examined 0)",
-      "failures": [
-        "no Short receipts in /home/runner/work/how-we-know/how-we-know/shorts/*.mp4.short.json - this validator cannot see what it is meant to govern"
+      "status": "N/A(nothing generated)",
+      "failures": [],
+      "notes": [
+        "no shorts/ directory on this machine; cut Shorts and their receipts live on the Mac and in R2 by design. The Mac run covers this."
       ],
-      "notes": [],
       "stops": []
     },
     {
@@ -228,7 +226,7 @@
       "stops": []
     }
   ],
-  "validators_passed": false,
+  "validators_passed": true,
   "approval": {
     "required": false,
     "mode": "notified, not asked",
