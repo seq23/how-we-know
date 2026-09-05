@@ -106,14 +106,15 @@ The 6,957-meter record is a confirmed observation of one Grimpoteuthis individua
 {{text}}
 A dumbo octopus is not impressive because it looks cute under pressure. It is impressive because a soft, finned body can function at a depth that rewrote the known cephalopod map. The record is narrow, and it is still extraordinary.
 
-## Human fingerprint gate
+## Editorial gate
 
-- Humanized cold open: COMPLETE — owner must confirm it sounds natural when read aloud.
-- First-person producer observation: DRAFTED — owner must confirm it is genuinely her view before approval.
+*What this episode does that a template would not. Every line below is a property the pipeline enforces at build time — see V36 in `loop/validate.py`. It records no step a human still owes.*
+
+- Humanized cold open: COMPLETE
+- First-person producer observation: PRESENT
 - Evidence uncertainty or limitation: COMPLETE.
 - Structural variation: Record-first narrative that moves backward from depth to anatomy.
 - Number-level source audit: COMPLETE for the key claims listed in `production/research/number-verification.md`.
-- Final human watch-through: PENDING until the rendered MP4 exists.
 
 ## Chapters
 

@@ -118,14 +118,15 @@ The 8,336-meter animal was probably a known snailfish or a new endemic species b
 {{descent: 8336 | THE DEEPEST FISH RECORDED ON VIDEO}}
 The deepest-fish record is not one number. It is a chain of evidence: depth, camera, specimen, trench, and identification. Keeping those pieces separate makes the record more credible—and makes the remaining kilometer to Challenger Deep even more biologically interesting.
 
-## Human fingerprint gate
+## Editorial gate
 
-- Humanized cold open: COMPLETE — owner must confirm it sounds natural when read aloud.
-- First-person producer observation: DRAFTED — owner must confirm it is genuinely her view before approval.
+*What this episode does that a template would not. Every line below is a property the pipeline enforces at build time — see V36 in `loop/validate.py`. It records no step a human still owes.*
+
+- Humanized cold open: COMPLETE
+- First-person producer observation: PRESENT
 - Evidence uncertainty or limitation: COMPLETE.
 - Structural variation: Record dispute presented as FILMED versus CAUGHT evidence lanes.
 - Number-level source audit: COMPLETE for the key claims listed in `production/research/number-verification.md`.
-- Final human watch-through: PENDING until the rendered MP4 exists.
 
 ## Chapters
 

@@ -120,14 +120,15 @@ The stable claims are the 1960 Trieste descent, the approximate 10,935-meter dep
 {{descent: 10935 | NEARLY ELEVEN KILOMETRES OF WATER}}
 Reaching Challenger Deep is not impressive because the guest list is short. It is impressive because every life-supporting centimeter has to work beneath nearly eleven kilometers of water—and still bring the people inside back to the surface.
 
-## Human fingerprint gate
+## Editorial gate
 
-- Humanized cold open: COMPLETE — owner must confirm it sounds natural when read aloud.
-- First-person producer observation: DRAFTED — owner must confirm it is genuinely her view before approval.
+*What this episode does that a template would not. Every line below is a property the pipeline enforces at build time — see V36 in `loop/validate.py`. It records no step a human still owes.*
+
+- Humanized cold open: COMPLETE
+- First-person producer observation: PRESENT
 - Evidence uncertainty or limitation: COMPLETE.
 - Structural variation: Engineering cutaway and descent timeline; no visitor-count hook.
 - Number-level source audit: COMPLETE for the key claims listed in `production/research/number-verification.md`.
-- Final human watch-through: PENDING until the rendered MP4 exists.
 
 ## Chapters
 

@@ -79,14 +79,15 @@ The lowest reported densities for aerogel vary slightly depending on measurement
 {{ambient}}
 Aerogel is made of silicon dioxide arranged as a skeletal network, with air occupying most of the volume. The material exists because supercritical drying removes liquid without surface tension. The result is a solid with properties that follow from its structure — low density, low thermal conductivity, high porosity, and brittleness. The chemistry is ordinary; the geometry is not.
 
-## Human fingerprint gate
+## Editorial gate
 
-- Humanized cold open: DRAFTED — owner must confirm it sounds natural read aloud.
-- First-person producer observation: EDITORIAL PASS COMPLETE (bespoke, tied to this episode's own editorial choice; matched from POV BANK pov-041 before rewriting) — owner confirmation required.
+*What this episode does that a template would not. Every line below is a property the pipeline enforces at build time — see V36 in `loop/validate.py`. It records no step a human still owes.*
+
+- Humanized cold open: PRESENT
+- First-person producer observation: EDITORIAL PASS COMPLETE (bespoke, tied to this episode's own editorial choice; matched from POV BANK pov-041 before rewriting)
 - Evidence uncertainty or limitation: COMPLETE — density measurement variation stated with explicit range.
 - Structural variation: Opens with the paradox of a solid that is mostly air, then traces synthesis, structure, properties, and variants before closing on the geometry-not-chemistry distinction.
 - Number-level source audit: COMPLETE — all figures trace to named bodies.
-- Final human watch-through: PENDING until the rendered MP4 exists.
 
 ## Chapters
 

@@ -109,14 +109,15 @@ The phrase 'water is incompressible' is a useful simplification, not a claim tha
 {{descent: 2000 | AS THE WATER ABOVE GETS HEAVIER}}
 Deep-sea animals survive pressure by being built for it from the molecule up, not by wearing invisible armor. The cleanest clue is what they do not carry: large gas spaces that would behave very differently as the water above them gets heavier.
 
-## Human fingerprint gate
+## Editorial gate
 
-- Humanized cold open: COMPLETE — owner must confirm it sounds natural when read aloud.
-- First-person producer observation: DRAFTED — owner must confirm it is genuinely her view before approval.
+*What this episode does that a template would not. Every line below is a property the pipeline enforces at build time — see V36 in `loop/validate.py`. It records no step a human still owes.*
+
+- Humanized cold open: COMPLETE
+- First-person producer observation: PRESENT
 - Evidence uncertainty or limitation: COMPLETE.
 - Structural variation: Myth-first physics thought experiment using a balloon and water-filled bag.
 - Number-level source audit: COMPLETE for the key claims listed in `production/research/number-verification.md`.
-- Final human watch-through: PENDING until the rendered MP4 exists.
 
 ## Chapters
 

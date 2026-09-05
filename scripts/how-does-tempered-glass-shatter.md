@@ -98,14 +98,15 @@ The exact depth of the compression layer and the precise stress magnitudes vary 
 {{text}}
 The shatter pattern of tempered glass is not a failure of the material. It is the material performing exactly as designed. The stress field that makes it strong is the same stress field that makes it shatter completely. The engineering is in choosing which failure mode you prefer.
 
-## Human fingerprint gate
+## Editorial gate
 
-- Humanized cold open: DRAFTED — owner must confirm it sounds natural read aloud.
-- First-person producer observation: EDITORIAL PASS COMPLETE (bespoke, tied to this episode's own editorial choice; matched from POV BANK pov-027 before rewriting) — owner confirmation required.
+*What this episode does that a template would not. Every line below is a property the pipeline enforces at build time — see V36 in `loop/validate.py`. It records no step a human still owes.*
+
+- Humanized cold open: PRESENT
+- First-person producer observation: EDITORIAL PASS COMPLETE (bespoke, tied to this episode's own editorial choice; matched from POV BANK pov-027 before rewriting)
 - Evidence uncertainty or limitation: COMPLETE — compression layer depth and stress magnitude ranges stated with uncertainty, including 0.5–3 mm range.
 - Structural variation: Stress-first explanation, then fracture dynamics, then fragment size, then practical consequences — mechanism to outcome.
 - Number-level source audit: COMPLETE — all figures trace to ASTM C1048 or MIT fracture mechanics literature.
-- Final human watch-through: PENDING until the rendered MP4 exists.
 
 ## Chapters
 

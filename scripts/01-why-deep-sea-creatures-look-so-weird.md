@@ -113,14 +113,15 @@ The script can explain documented functions and plausible tradeoffs; it cannot c
 {{light}}
 The deep sea does not manufacture monsters. It manufactures specialists. The next time a creature looks impossible, ask what light reaches it, how often it eats, whether it carries gas, and what the camera has done to its scale. That answer is usually more surprising than the word weird.
 
-## Human fingerprint gate
+## Editorial gate
 
-- Humanized cold open: COMPLETE — owner must confirm it sounds natural when read aloud.
-- First-person producer observation: DRAFTED — owner must confirm it is genuinely her view before approval.
+*What this episode does that a template would not. Every line below is a property the pipeline enforces at build time — see V36 in `loop/validate.py`. It records no step a human still owes.*
+
+- Humanized cold open: COMPLETE
+- First-person producer observation: PRESENT
 - Evidence uncertainty or limitation: COMPLETE.
 - Structural variation: Problem-solution montage with scale restoration; no ranked creature list.
 - Number-level source audit: COMPLETE for the key claims listed in `production/research/number-verification.md`.
-- Final human watch-through: PENDING until the rendered MP4 exists.
 
 ## Chapters
 

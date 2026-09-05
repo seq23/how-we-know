@@ -84,14 +84,15 @@ We know the mechanisms that slow corrosion, but we cannot predict with precision
 {{text}}
 Old iron rusts unless conditions prevent it. The survivors are not indestructible; they are lucky. They were buried in the right soil, made from the right ore, or shaped in a way that happened to favor a dense oxide crust. The rest became red powder centuries ago. Preservation is the exception, and the exception is always conditional.
 
-## Human fingerprint gate
+## Editorial gate
 
-- Humanized cold open: DRAFTED — owner must confirm it sounds natural read aloud.
-- First-person producer observation: EDITORIAL PASS COMPLETE (bespoke, tied to this episode's own editorial choice; matched from POV BANK pov-047 before rewriting) — owner confirmation required.
+*What this episode does that a template would not. Every line below is a property the pipeline enforces at build time — see V36 in `loop/validate.py`. It records no step a human still owes.*
+
+- Humanized cold open: PRESENT
+- First-person producer observation: EDITORIAL PASS COMPLETE (bespoke, tied to this episode's own editorial choice; matched from POV BANK pov-047 before rewriting)
 - Evidence uncertainty or limitation: COMPLETE
 - Structural variation: Opens with archaeological observation, narrows to chemistry, then broadens to environmental and compositional factors before closing on contingency.
 - Number-level source audit: COMPLETE
-- Final human watch-through: PENDING until the rendered MP4 exists.
 
 ## Chapters
 

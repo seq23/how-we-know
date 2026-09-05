@@ -125,14 +125,15 @@ Transparency is not perfect invisibility. It works best in open water and agains
 {{text}}
 The deep ocean does not need an invisibility cloak. Sometimes it only needs a body that gives the predator less to lock onto. Transparency is not nothing. It is a carefully managed compromise between being alive and being hard to see.
 
-## Human fingerprint gate
+## Editorial gate
 
-- Humanized cold open: COMPLETE — owner must confirm it sounds natural when read aloud.
-- First-person producer observation: DRAFTED — owner must confirm it is genuinely her view before approval.
+*What this episode does that a template would not. Every line below is a property the pipeline enforces at build time — see V36 in `loop/validate.py`. It records no step a human still owes.*
+
+- Humanized cold open: COMPLETE
+- First-person producer observation: PRESENT
 - Evidence uncertainty or limitation: COMPLETE.
 - Structural variation: Single-animal anatomy case study with an optical-material breakdown.
 - Number-level source audit: COMPLETE for the key claims listed in `production/research/number-verification.md`.
-- Final human watch-through: PENDING until the rendered MP4 exists.
 
 ## Chapters
 

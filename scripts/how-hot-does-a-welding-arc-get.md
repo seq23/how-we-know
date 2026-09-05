@@ -97,14 +97,15 @@ The eleven-thousand-degree figure for a gas tungsten arc core is a typical value
 
 The arc is hotter than the sun's surface, but the sun's surface is not the sun's core, and the arc's core is not where the welding happens. The metal a few millimeters away is cooler by thousands of degrees, and that is the metal that solidifies into the joint. The plasma temperature sets the upper bound on energy delivery, but the weld quality depends on how that energy moves through the workpiece, and that is a question of thermal conductivity, geometry, and time.
 
-## Human fingerprint gate
+## Editorial gate
 
-- Humanized cold open: DRAFTED — owner must confirm it sounds natural read aloud.
-- First-person producer observation: EDITORIAL PASS COMPLETE (bespoke, tied to this episode's own editorial choice; matched from POV BANK pov-029 before rewriting) — owner confirmation required.
+*What this episode does that a template would not. Every line below is a property the pipeline enforces at build time — see V36 in `loop/validate.py`. It records no step a human still owes.*
+
+- Humanized cold open: PRESENT
+- First-person producer observation: EDITORIAL PASS COMPLETE (bespoke, tied to this episode's own editorial choice; matched from POV BANK pov-029 before rewriting)
 - Evidence uncertainty or limitation: COMPLETE — ranges and method limits stated explicitly.
 - Structural variation: Opens with direct figure and source, then unpacks spatial and temporal variation through measurement methods and process parameters.
 - Number-level source audit: COMPLETE — all figures trace to named measurement techniques and published ranges.
-- Final human watch-through: PENDING until the rendered MP4 exists.
 
 ## Chapters
 

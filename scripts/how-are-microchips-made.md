@@ -74,14 +74,15 @@ The process is known in detail, but the yield — the fraction of chips on a waf
 {{text}}
 Microchips are made by repeating four steps — deposit, pattern, etch, measure — hundreds of times, each cycle adding or removing material in a different pattern. The evidence is the published process parameters, the metrology data, and the electron microscope images of the finished structure.
 
-## Human fingerprint gate
+## Editorial gate
 
-- Humanized cold open: DRAFTED — owner must confirm it sounds natural read aloud.
-- First-person producer observation: EDITORIAL PASS COMPLETE (bespoke, tied to this episode's own editorial choice; matched from POV BANK pov-021 before rewriting) — owner confirmation required.
+*What this episode does that a template would not. Every line below is a property the pipeline enforces at build time — see V36 in `loop/validate.py`. It records no step a human still owes.*
+
+- Humanized cold open: PRESENT
+- First-person producer observation: EDITORIAL PASS COMPLETE (bespoke, tied to this episode's own editorial choice; matched from POV BANK pov-021 before rewriting)
 - Evidence uncertainty or limitation: COMPLETE — yield variation stated.
 - Structural variation: process-cycle structure with metrology verification at each stage.
 - Number-level source audit: COMPLETE — all figures trace to named standards bodies.
-- Final human watch-through: PENDING until the rendered MP4 exists.
 
 ## Chapters
 

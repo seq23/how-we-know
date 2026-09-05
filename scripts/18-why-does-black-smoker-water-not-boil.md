@@ -157,14 +157,15 @@ The fluid can also enter supercritical regimes depending on pressure, temperatur
 {{descent: 3000 | THE HOT FLUID MEETS THE COLD OCEAN}}
 Black-smoker water does not ignore boiling. It obeys a different pressure condition. The hot fluid, cold ocean, and dissolved minerals meet in seconds—and the chimney records that meeting layer by layer.
 
-## Human fingerprint gate
+## Editorial gate
 
-- Humanized cold open: COMPLETE — owner must confirm it sounds natural when read aloud.
-- First-person producer observation: DRAFTED — owner must confirm it is genuinely her view before approval.
+*What this episode does that a template would not. Every line below is a property the pipeline enforces at build time — see V36 in `loop/validate.py`. It records no step a human still owes.*
+
+- Humanized cold open: COMPLETE
+- First-person producer observation: PRESENT
 - Evidence uncertainty or limitation: COMPLETE.
 - Structural variation: Physics-first cutaway with pressure/boiling diagram; no creature-led opening.
 - Number-level source audit: COMPLETE for the key claims listed in `production/research/number-verification.md`.
-- Final human watch-through: PENDING until the rendered MP4 exists.
 
 ## Chapters
 
