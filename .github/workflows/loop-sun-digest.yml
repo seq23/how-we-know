@@ -1,0 +1,96 @@
+name: loop · Sun 12:00 · weekly digest
+
+# THE ONE EMAIL A WEEK THAT ARRIVES WHEN NOTHING IS WRONG.
+#
+# Everything the loop decides is already recorded - the ledger, the breaker, the
+# stop files, the monthly review. None of it reached the owner. The only things
+# that email her are a NAMED STOP and the monthly review, so in a healthy week
+# the channel is completely silent. Her instruction is that the system decides
+# and she is TOLD at intervals; a system that only speaks when it is in trouble
+# satisfies the first half and not the second.
+#
+# It carries no decisions and asks for none. Every number in it was already
+# decided and applied by the lane that owns it, so if this stage stopped running
+# nothing about the channel would change - which is exactly the property that
+# lets it be read in thirty seconds and skipped in a busy week.
+#
+# 16:00 UTC is 12:00 America/New_York during EDT - after Sunday's ranking lane
+# (10:00 UTC) and after the 15:00 UTC long-form flip, so the digest reports the
+# week that just closed and the episode that just went out, not a week still in
+# progress.
+on:
+  schedule:
+    - cron: '0 16 * * 0'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: loop-state
+  cancel-in-progress: false
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install loop dependencies
+        run: pip install -r requirements-loop.txt
+
+      - name: Render the week
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: bin/loop-stage.sh weekly-digest loop/digest.py
+
+      # The digest sitting in a file nobody opens is the exact failure the
+      # monthly review already had to solve. Same delivery: a NEW issue each
+      # week, which is a fresh email, rather than a comment on a thread that
+      # stops notifying. `if: always()` because a week the stage itself failed
+      # is the week she most needs to hear from it.
+      - name: Deliver it
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          WEEK="$(date -u +%G-W%V)"
+          FILE="loop/state/digest/${WEEK}.md"
+          if [ ! -s "$FILE" ]; then
+            echo "no digest at $FILE — the stage did not produce one"
+            exit 1
+          fi
+          BODY="$(mktemp)"
+          # @-mention: GitHub's default notification setting for your own repos
+          # is "Participating and @mentions", and an issue opened by Actions is
+          # neither. Without this line the digest appears silently in the repo
+          # and no email is ever sent.
+          {
+            echo "@seq23"
+            echo
+            cat "$FILE"
+            echo
+            echo "Run: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          } > "$BODY"
+
+          gh issue create \
+            --title "Weekly digest — ${WEEK}" \
+            --body-file "$BODY" \
+            --label weekly-digest >/dev/null 2>&1 \
+            || gh issue create --title "Weekly digest — ${WEEK}" --body-file "$BODY" >/dev/null
+          echo "delivered the ${WEEK} digest"
+
+          # Close last week's, so the issue list stays a signal and not a pile.
+          PREV="$(date -u -d 'last week' +%G-W%V 2>/dev/null || date -u -v-1w +%G-W%V)"
+          OLD="$(gh issue list --state open --search "Weekly digest — ${PREV} in:title" \
+                 --json number --jq '.[0].number' 2>/dev/null)"
+          if [ -n "$OLD" ] && [ "$OLD" != "null" ]; then
+            gh issue close "$OLD" --comment "Superseded by the ${WEEK} digest." >/dev/null 2>&1 \
+              && echo "closed #$OLD"
+          fi

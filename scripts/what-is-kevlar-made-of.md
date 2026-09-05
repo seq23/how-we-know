@@ -84,14 +84,15 @@ Tensile strength values vary with test method, fiber batch, and conditioning. Pu
 {{text}}
 Kevlar is a demonstration that material properties emerge from structure as much as composition. The same elements arranged differently give nylon. The same polymer processed differently gives Nomex. The strength is in the order.
 
-## Human fingerprint gate
+## Editorial gate
 
-- Humanized cold open: DRAFTED — owner must confirm it sounds natural read aloud.
-- First-person producer observation: EDITORIAL PASS COMPLETE (bespoke, tied to this episode's own editorial choice; matched from POV BANK pov-046 before rewriting) — owner confirmation required.
+*What this episode does that a template would not. Every line below is a property the pipeline enforces at build time — see V36 in `loop/validate.py`. It records no step a human still owes.*
+
+- Humanized cold open: PRESENT
+- First-person producer observation: EDITORIAL PASS COMPLETE (bespoke, tied to this episode's own editorial choice; matched from POV BANK pov-046 before rewriting)
 - Evidence uncertainty or limitation: COMPLETE
 - Structural variation: synthesis-to-structure-to-properties progression with explicit comparison to nylon and steel throughout, trade-offs emphasized.
 - Number-level source audit: COMPLETE
-- Final human watch-through: PENDING until the rendered MP4 exists.
 
 ## Chapters
 

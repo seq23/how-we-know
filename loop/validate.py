@@ -2551,6 +2551,171 @@ def v34_niche_lifecycle_is_acted_on() -> Result:
     return r
 
 
+def v35_digest_reaches_her() -> Result:
+    """The weekly digest must render, and its delivery must be able to email.
+
+    The owner's instruction is that the system decides and she is told at
+    intervals. Before 2026-09-05 the only things that reached her were a NAMED
+    STOP and the monthly review, so a healthy week was completely silent - the
+    channel could run for a month without saying so.
+
+    Two ways a weekly email quietly stops being one, and both are checked:
+
+      * the digest renders EMPTY, or fails to render at all, and the workflow's
+        `if: always()` delivery step posts a file that says nothing;
+      * the issue body has no `@` mention. GitHub's default notification
+        setting for your own repositories is "Participating and @mentions", and
+        an issue opened by Actions is neither, so an un-mentioned issue appears
+        in the repo and no email is ever sent. bin/loop-stage.sh carries a long
+        comment about this because it has already happened once.
+
+    Renders the digest for real rather than checking that the file exists,
+    because a digest that raises is exactly the case the delivery step's
+    `if: always()` would paper over.
+
+    Hard-fails when it examines zero items.
+    """
+    r = Result("V35 weekly-digest")
+    import datetime as _dt                                 # noqa: PLC0415
+    import digest as _dig                                  # noqa: PLC0415
+
+    wf = ROOT / ".github" / "workflows" / "loop-sun-digest.yml"
+    r.examined += 1
+    if not wf.exists():
+        r.fail("there is no .github/workflows/loop-sun-digest.yml, so nothing "
+               "delivers a weekly digest and a healthy week is silent.")
+        return r
+    src = wf.read_text(encoding="utf-8")
+
+    r.examined += 1
+    if "loop/digest.py" not in src:
+        r.fail("the Sunday digest workflow does not run loop/digest.py.")
+
+    r.examined += 1
+    if "@seq23" not in src:
+        r.fail("the digest issue body contains no @-mention. GitHub's default "
+               "notification setting is 'Participating and @mentions'; an "
+               "issue opened by Actions is neither, so the digest would appear "
+               "in the repo and email nobody.")
+
+    r.examined += 1
+    if "schedule:" not in src or "* * 0" not in src:
+        r.fail("the digest workflow has no weekly Sunday cron, so it only ever "
+               "runs when someone remembers to dispatch it.")
+
+    body, counts = _dig.render("V35-probe",
+                               _dt.datetime.now(_dt.timezone.utc))
+    r.examined += 1
+    if len(body.splitlines()) < 12:
+        r.fail(f"the digest rendered {len(body.splitlines())} line(s) - it is "
+               f"not reporting anything.")
+    for heading in ("## Aired this week", "## Next up", "## Runway",
+                    "## Named stops"):
+        r.examined += 1
+        if heading not in body:
+            r.fail(f"the digest is missing its {heading!r} section.")
+    r.examined += 1
+    if not (counts["aired"] or counts["scheduled"] or counts["queued"]):
+        r.fail("the digest read no episode, no schedule and no queue. Every "
+               "source it reads would have to be empty at once for that to be "
+               "true, so this is a read failure, not a quiet week.")
+    return r
+
+
+# The four properties the editorial gate claims, and nothing else. Each is
+# checkable, which is the whole reason the other two were removed.
+GATE_BULLETS = ("Humanized cold open:", "First-person producer observation:",
+                "Evidence uncertainty or limitation:", "Structural variation:",
+                "Number-level source audit:")
+
+# Claims of a human step that nobody performs. A hands-off channel that records
+# "owner must confirm" on every script is not recording a gate, it is recording
+# a debt to a person who was never going to be asked.
+GATE_DEBT = re.compile(
+    r"owner (must )?confirm|owner confirmation required|"
+    r"final human watch-through|pending until", re.I)
+
+
+def v36_editorial_gate_is_enforced() -> Result:
+    """Every script's editorial gate must claim only what the build enforces.
+
+    THE DECISION THIS ENCODES, taken deliberately on 2026-09-05 rather than
+    left to decay. All 38 scripts carried a "Human fingerprint gate" section
+    whose six bullets nothing read. Three of them asserted a human step - "owner
+    must confirm it sounds natural read aloud", "owner confirmation required",
+    "Final human watch-through: PENDING until the rendered MP4 exists" - on a
+    channel explicitly designed to run without its owner. Those episodes aired.
+    The confirmations never happened and were never going to.
+
+    Two honest ways to resolve that. Start performing the review, which is the
+    one thing the channel exists not to require; or stop claiming it. The claims
+    are gone, and what is left is the four properties that ARE enforced:
+
+      * the first-person observation traces to her voice        (V4, V32)
+      * every number traces to a named public source            (V5, V6)
+      * the episode states its own uncertainty                  (asserted here)
+      * the structure is not the previous episode's             (asserted here)
+
+    "Structural variation" is checkable in the strongest available sense: all 38
+    labels are distinct, so a duplicate is a template reasserting itself.
+
+    Hard-fails when it examines zero items.
+    """
+    r = Result("V36 editorial-gate")
+    scripts = sorted((ROOT / "scripts").glob("*.md"))
+    r.examined += 1
+    if not scripts:
+        r.fail("no scripts at all, so this examined nothing.")
+        return r
+
+    structures: dict[str, str] = {}
+    for path in scripts:
+        text = path.read_text(encoding="utf-8")
+        r.examined += 1
+        if "## Editorial gate" not in text:
+            if "## Human fingerprint gate" in text:
+                r.fail(f"{path.name} still carries the old 'Human fingerprint "
+                       f"gate' heading, whose bullets claim a human review "
+                       f"this channel does not perform.")
+            else:
+                r.fail(f"{path.name} has no editorial gate section at all.")
+            continue
+
+        i = text.index("## Editorial gate")
+        j = text.find("\n## ", i + 1)
+        block = text[i:j if j > 0 else len(text)]
+
+        m = GATE_DEBT.search(block)
+        r.examined += 1
+        if m:
+            r.fail(f"{path.name}'s editorial gate claims a human step nobody "
+                   f"performs ({m.group(0)!r}). Either the review happens or "
+                   f"the claim goes; a hands-off channel cannot record a debt "
+                   f"to a person who is never asked.")
+
+        for bullet in GATE_BULLETS:
+            r.examined += 1
+            if bullet not in block:
+                r.fail(f"{path.name}'s editorial gate is missing "
+                       f"{bullet.rstrip(':')!r}.")
+
+        for line in block.splitlines():
+            if line.startswith("- Structural variation:"):
+                label = line.split(":", 1)[1].strip().rstrip(".").lower()
+                r.examined += 1
+                if not label:
+                    r.fail(f"{path.name} names no structure.")
+                elif label in structures:
+                    r.fail(f"{path.name} and {structures[label]} declare the "
+                           f"SAME structure ({label[:60]!r}). Structural "
+                           f"variation is the one claim in this gate that a "
+                           f"template would break first.")
+                else:
+                    structures[label] = path.name
+                break
+    return r
+
+
 # ------------------------------------------------------------------ runner
 
 def run_all(items) -> tuple[bool, list[dict]]:
@@ -2574,7 +2739,9 @@ def run_all(items) -> tuple[bool, list[dict]]:
                v31_render_has_thumbnail(),
                v32_scheduled_pov_is_hers(),
                v33_every_domain_is_harvested(),
-               v34_niche_lifecycle_is_acted_on()]
+               v34_niche_lifecycle_is_acted_on(),
+               v35_digest_reaches_her(),
+               v36_editorial_gate_is_enforced()]
     rows = [r.as_dict() for r in results]
     return all(r.ok for r in results), rows
 

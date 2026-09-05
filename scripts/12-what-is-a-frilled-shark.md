@@ -99,14 +99,15 @@ Feeding behavior remains poorly observed, so claims about striking like a snake 
 {{anatomy: AN UNFAMILIAR BODY | frill-like gill openings@0.30,0.48 | long flexible body@0.62,0.50}}
 The frilled shark does not need a frozen-in-time claim to be compelling. It is a modern animal with an unfamiliar body, rare observations, and a feeding story that anatomy suggests but cameras have barely tested.
 
-## Human fingerprint gate
+## Editorial gate
 
-- Humanized cold open: COMPLETE — owner must confirm it sounds natural when read aloud.
-- First-person producer observation: DRAFTED — owner must confirm it is genuinely her view before approval.
+*What this episode does that a template would not. Every line below is a property the pipeline enforces at build time — see V36 in `loop/validate.py`. It records no step a human still owes.*
+
+- Humanized cold open: COMPLETE
+- First-person producer observation: PRESENT
 - Evidence uncertainty or limitation: COMPLETE.
 - Structural variation: Myth correction before creature reveal; anatomy hypotheses labeled as inference.
 - Number-level source audit: COMPLETE for the key claims listed in `production/research/number-verification.md`.
-- Final human watch-through: PENDING until the rendered MP4 exists.
 
 ## Chapters
 

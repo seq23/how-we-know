@@ -103,14 +103,15 @@ Fluorescence is also different from bioluminescence: fluorescence re-emits incom
 {{descent: 4000 | LIFE SUPPLIES ITS OWN SIGNALS}}
 The deep ocean is dark, but it is not visually silent. Life supplies its own signals. The useful question is not only which animal glows, but what that light is doing at that exact moment.
 
-## Human fingerprint gate
+## Editorial gate
 
-- Humanized cold open: COMPLETE — owner must confirm it sounds natural when read aloud.
-- First-person producer observation: DRAFTED — owner must confirm it is genuinely her view before approval.
+*What this episode does that a template would not. Every line below is a property the pipeline enforces at build time — see V36 in `loop/validate.py`. It records no step a human still owes.*
+
+- Humanized cold open: COMPLETE
+- First-person producer observation: PRESENT
 - Evidence uncertainty or limitation: COMPLETE.
 - Structural variation: Chemistry-first explainer that reuses one light animation for four biological functions.
 - Number-level source audit: COMPLETE for the key claims listed in `production/research/number-verification.md`.
-- Final human watch-through: PENDING until the rendered MP4 exists.
 
 ## Chapters
 

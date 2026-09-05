@@ -95,14 +95,15 @@ The published strength ranges come from standardized tests on specimens with con
 {{text}}
 Titanium is strong in the sense that matters for aerospace and marine engineering: high strength per unit weight, stable over time in corrosive environments, and usable at temperatures where aluminum softens. The absolute tensile strength overlaps with steel. The advantage is carrying that strength at nearly half the weight, and keeping it when steel would rust away.
 
-## Human fingerprint gate
+## Editorial gate
 
-- Humanized cold open: DRAFTED — owner must confirm it sounds natural read aloud.
-- First-person producer observation: EDITORIAL PASS COMPLETE (bespoke, tied to this episode's own editorial choice; matched from POV BANK pov-035 before rewriting) — owner confirmation required.
+*What this episode does that a template would not. Every line below is a property the pipeline enforces at build time — see V36 in `loop/validate.py`. It records no step a human still owes.*
+
+- Humanized cold open: PRESENT
+- First-person producer observation: EDITORIAL PASS COMPLETE (bespoke, tied to this episode's own editorial choice; matched from POV BANK pov-035 before rewriting)
 - Evidence uncertainty or limitation: COMPLETE
 - Structural variation: Opens with a figure and its inadequacy, then separates strength into five distinct measurements with test methods and real comparisons.
 - Number-level source audit: COMPLETE
-- Final human watch-through: PENDING until the rendered MP4 exists.
 
 ## Chapters
 

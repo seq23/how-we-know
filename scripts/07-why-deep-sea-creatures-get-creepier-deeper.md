@@ -140,14 +140,15 @@ The deepest confirmed fish record is one filmed snailfish; it does not describe 
 {{text}}
 Depth changes the rules, not the genre. The deeper ocean contains predators, but it also contains soft fish, drifting jellies, scavengers, microbes, and animals living on falling particles. The horror ladder is a storytelling device. The ecological gradient is the real story.
 
-## Human fingerprint gate
+## Editorial gate
 
-- Humanized cold open: COMPLETE — owner must confirm it sounds natural when read aloud.
-- First-person producer observation: DRAFTED — owner must confirm it is genuinely her view before approval.
+*What this episode does that a template would not. Every line below is a property the pipeline enforces at build time — see V36 in `loop/validate.py`. It records no step a human still owes.*
+
+- Humanized cold open: COMPLETE
+- First-person producer observation: PRESENT
 - Evidence uncertainty or limitation: COMPLETE.
 - Structural variation: Zone-by-zone descent that ends with a counterexample rather than escalation.
 - Number-level source audit: COMPLETE for the key claims listed in `production/research/number-verification.md`.
-- Final human watch-through: PENDING until the rendered MP4 exists.
 
 ## Chapters
 

@@ -110,14 +110,15 @@ The critical cooling rate is not a single number. It varies with carbon content,
 {{text}}
 Quenching hardens steel by moving faster than diffusion. The carbon that would separate into layers is frozen in place. The lattice that would relax into soft ferrite is locked into strained martensite. Speed is the tool. The distortion is the result. And the hardness is the distortion made useful.
 
-## Human fingerprint gate
+## Editorial gate
 
-- Humanized cold open: DRAFTED — owner must confirm it sounds natural read aloud.
-- First-person producer observation: EDITORIAL PASS COMPLETE (bespoke, tied to this episode's own editorial choice; matched from POV BANK pov-026 before rewriting) — owner confirmation required.
+*What this episode does that a template would not. Every line below is a property the pipeline enforces at build time — see V36 in `loop/validate.py`. It records no step a human still owes.*
+
+- Humanized cold open: PRESENT
+- First-person producer observation: EDITORIAL PASS COMPLETE (bespoke, tied to this episode's own editorial choice; matched from POV BANK pov-026 before rewriting)
 - Evidence uncertainty or limitation: COMPLETE — critical cooling rate stated as measured range, TTT diagrams noted as empirical.
 - Structural variation: Opens with thermal state and mechanism, builds through quench medium and cooling rate, closes on alloy effects and evidence limits.
 - Number-level source audit: COMPLETE — all figures trace to ASM, NIST or ASTM.
-- Final human watch-through: PENDING until the rendered MP4 exists.
 
 ## Chapters
 

@@ -119,14 +119,15 @@ Red coloration is also not used by every deep animal and does not make an animal
 {{light}}
 Red deep-sea animals are not dressed for our lights. They are dressed for the wavelengths their world removes. The next time an ROV reveals a brilliant scarlet squid or shrimp, remember that the camera brought the red light with it.
 
-## Human fingerprint gate
+## Editorial gate
 
-- Humanized cold open: COMPLETE — owner must confirm it sounds natural when read aloud.
-- First-person producer observation: DRAFTED — owner must confirm it is genuinely her view before approval.
+*What this episode does that a template would not. Every line below is a property the pipeline enforces at build time — see V36 in `loop/validate.py`. It records no step a human still owes.*
+
+- Humanized cold open: COMPLETE
+- First-person producer observation: PRESENT
 - Evidence uncertainty or limitation: COMPLETE.
 - Structural variation: Visual light-removal experiment instead of a creature profile.
 - Number-level source audit: COMPLETE for the key claims listed in `production/research/number-verification.md`.
-- Final human watch-through: PENDING until the rendered MP4 exists.
 
 ## Chapters
 

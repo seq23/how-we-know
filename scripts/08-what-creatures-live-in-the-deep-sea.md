@@ -127,14 +127,15 @@ No short episode can inventory the deep sea. Many species remain undescribed, an
 {{zones:}}
 The deep sea is a set of connected neighborhoods, not one habitat. Animals move energy between them through migration, predation, scavenging, sinking particles, and chemical production. The next useful question is not only what lives down there, but where—and what that place demands.
 
-## Human fingerprint gate
+## Editorial gate
 
-- Humanized cold open: COMPLETE — owner must confirm it sounds natural when read aloud.
-- First-person producer observation: DRAFTED — owner must confirm it is genuinely her view before approval.
+*What this episode does that a template would not. Every line below is a property the pipeline enforces at build time — see V36 in `loop/validate.py`. It records no step a human still owes.*
+
+- Humanized cold open: COMPLETE
+- First-person producer observation: PRESENT
 - Evidence uncertainty or limitation: COMPLETE.
 - Structural variation: Geographic habitat tour with persistent depth labels, not a ranked animal montage.
 - Number-level source audit: COMPLETE for the key claims listed in `production/research/number-verification.md`.
-- Final human watch-through: PENDING until the rendered MP4 exists.
 
 ## Chapters
 

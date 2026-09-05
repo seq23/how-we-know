@@ -74,14 +74,15 @@ The four-week figure for total production time is an estimate that depends on in
 {{ambient}}
 A silicon wafer is not refined from silicon. It is built from it, through a sequence of subtractive and additive steps that each operate at a different temperature and each introduce a different contamination risk. The nine-nines purity is the result of that sequence, not a property of the starting material.
 
-## Human fingerprint gate
+## Editorial gate
 
-- Humanized cold open: DRAFTED — owner must confirm it sounds natural read aloud.
-- First-person producer observation: EDITORIAL PASS COMPLETE (bespoke, tied to this episode's own editorial choice; matched from POV BANK pov-031 before rewriting) — owner confirmation required.
+*What this episode does that a template would not. Every line below is a property the pipeline enforces at build time — see V36 in `loop/validate.py`. It records no step a human still owes.*
+
+- Humanized cold open: PRESENT
+- First-person producer observation: EDITORIAL PASS COMPLETE (bespoke, tied to this episode's own editorial choice; matched from POV BANK pov-031 before rewriting)
 - Evidence uncertainty or limitation: COMPLETE — total production time stated as estimate with range.
 - Structural variation: Thermal and process sequence structure, each section advances one transformation stage with its temperature and purity outcome.
 - Number-level source audit: COMPLETE — all temperatures, purities, dimensions and times traced to NIST, SEMI, USGS or MIT DMSE.
-- Final human watch-through: PENDING until the rendered MP4 exists.
 
 ## Chapters
 

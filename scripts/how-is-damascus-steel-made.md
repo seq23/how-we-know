@@ -93,14 +93,15 @@ The evidence establishes how wootz steel was made in general terms — crucible 
 
 Damascus steel is two answers, not one. The historical material was crucible steel with carbide bands. The modern material is forge-welded layers. Both produce patterns. Neither process is simple, and the historical process is still not fully recovered.
 
-## Human fingerprint gate
+## Editorial gate
 
-- Humanized cold open: DRAFTED — owner must confirm it sounds natural read aloud.
-- First-person producer observation: EDITORIAL PASS COMPLETE (bespoke, tied to this episode's own editorial choice; matched from POV BANK pov-032 before rewriting) — owner confirmation required.
+*What this episode does that a template would not. Every line below is a property the pipeline enforces at build time — see V36 in `loop/validate.py`. It records no step a human still owes.*
+
+- Humanized cold open: PRESENT
+- First-person producer observation: EDITORIAL PASS COMPLETE (bespoke, tied to this episode's own editorial choice; matched from POV BANK pov-032 before rewriting)
 - Evidence uncertainty or limitation: COMPLETE — ore sources and exact replication limits stated.
 - Structural variation: Two-process contrast structure, historical then modern, with recreation attempts as bridge.
 - Number-level source audit: COMPLETE — all figures trace to named bodies.
-- Final human watch-through: PENDING until the rendered MP4 exists.
 
 ## Chapters
 

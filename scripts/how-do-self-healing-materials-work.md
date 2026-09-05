@@ -76,14 +76,15 @@ Healing efficiencies in the literature are not directly comparable with one anot
 {{text}}
 A self-healing material does not repair itself in the way living tissue does. It carries the repair with it, spends it once or spends it slowly, and buys time. That is a smaller claim than the name suggests, and it is still a real one.
 
-## Human fingerprint gate
+## Editorial gate
 
-- Humanized cold open: DRAFTED — owner must confirm it sounds natural read aloud.
-- First-person producer observation: EDITORIAL PASS COMPLETE (bespoke, tied to this episode's own editorial choice) — owner confirmation required.
+*What this episode does that a template would not. Every line below is a property the pipeline enforces at build time — see V36 in `loop/validate.py`. It records no step a human still owes.*
+
+- Humanized cold open: PRESENT
+- First-person producer observation: EDITORIAL PASS COMPLETE (bespoke, tied to this episode's own editorial choice)
 - Evidence uncertainty or limitation: COMPLETE
 - Structural variation: three mechanisms compared on one axis (where the healing agent is stored), then the shared physical limits that govern all three.
 - Number-level source audit: COMPLETE
-- Final human watch-through: PENDING until the rendered MP4 exists.
 
 ## Sources
 

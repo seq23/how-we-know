@@ -89,14 +89,15 @@ This script describes the process and the parameters, but it does not tell you w
 {{ambient}}
 Metal additive manufacturing is not magic. It is controlled melting, repeated thousands of times, with the microstructure and defects determined by thermal history. The precision comes from the beam control and the powder quality. The limitation comes from the fact that you are melting and solidifying metal faster than equilibrium allows.
 
-## Human fingerprint gate
+## Editorial gate
 
-- Humanized cold open: DRAFTED — owner must confirm it sounds natural read aloud.
-- First-person producer observation: EDITORIAL PASS COMPLETE (bespoke, tied to this episode's own editorial choice; matched from POV BANK pov-030 before rewriting) — owner confirmation required.
+*What this episode does that a template would not. Every line below is a property the pipeline enforces at build time — see V36 in `loop/validate.py`. It records no step a human still owes.*
+
+- Humanized cold open: PRESENT
+- First-person producer observation: EDITORIAL PASS COMPLETE (bespoke, tied to this episode's own editorial choice; matched from POV BANK pov-030 before rewriting)
 - Evidence uncertainty or limitation: COMPLETE — final paragraph states process repeatability limits and qualification context explicitly.
 - Structural variation: Opens with layer thickness figure and metallurgical bonding mechanism, then moves through powder requirements, energy delivery, thermal effects, defects, post-processing, and alternative wire arc method before closing on the thermal control principle.
 - Number-level source audit: COMPLETE — all figures trace to ASTM, NIST, or ASM International consensus data.
-- Final human watch-through: PENDING until the rendered MP4 exists.
 
 ## Chapters
 

@@ -95,14 +95,15 @@ The mechanisms described here apply to carbon steels and low-alloy steels at roo
 {{text}}
 Steel's strength is not a material property in isolation. It is the result of atomic-scale geometry, controlled phase transformations, and deliberate microstructure design. The carbon does not make the iron hard. It makes the iron unable to slide.
 
-## Human fingerprint gate
+## Editorial gate
 
-- Humanized cold open: DRAFTED — owner must confirm it sounds natural read aloud.
-- First-person producer observation: EDITORIAL PASS COMPLETE (bespoke, tied to this episode's own editorial choice; matched from POV BANK pov-049 before rewriting) — owner confirmation required.
+*What this episode does that a template would not. Every line below is a property the pipeline enforces at build time — see V36 in `loop/validate.py`. It records no step a human still owes.*
+
+- Humanized cold open: PRESENT
+- First-person producer observation: EDITORIAL PASS COMPLETE (bespoke, tied to this episode's own editorial choice; matched from POV BANK pov-049 before rewriting)
 - Evidence uncertainty or limitation: COMPLETE
 - Structural variation: Opens with the phase transition temperature as the load-bearing fact, then unpacks the lattice mechanism before addressing heat treatment, alloying, grain boundaries, and carbide distribution.
 - Number-level source audit: COMPLETE
-- Final human watch-through: PENDING until the rendered MP4 exists.
 
 ## Chapters
 

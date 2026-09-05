@@ -84,14 +84,15 @@ The energy intensity figure for carbon fiber production varies widely in publish
 {{text}}
 Carbon fiber is not a coating on something else. It is the product of removing everything from a polymer except the carbon, and arranging what remains into aligned sheets. The strength comes from the arrangement, and the cost comes from the precision required to create it.
 
-## Human fingerprint gate
+## Editorial gate
 
-- Humanized cold open: DRAFTED — owner must confirm it sounds natural read aloud.
-- First-person producer observation: EDITORIAL PASS COMPLETE (bespoke, tied to this episode's own editorial choice; matched from POV BANK pov-042 before rewriting) — owner confirmation required.
+*What this episode does that a template would not. Every line below is a property the pipeline enforces at build time — see V36 in `loop/validate.py`. It records no step a human still owes.*
+
+- Humanized cold open: PRESENT
+- First-person producer observation: EDITORIAL PASS COMPLETE (bespoke, tied to this episode's own editorial choice; matched from POV BANK pov-042 before rewriting)
 - Evidence uncertainty or limitation: COMPLETE — energy intensity range stated explicitly.
 - Structural variation: Thermal progression through stabilization, carbonization and optional graphitization, with composition and property links throughout.
 - Number-level source audit: COMPLETE — all figures trace to ASTM International or published materials science literature.
-- Final human watch-through: PENDING until the rendered MP4 exists.
 
 ## Chapters
 

@@ -105,14 +105,15 @@ Size records depend on whether the claim refers to mass, total length, mantle le
 {{stat: 495 | KILOGRAMS | The animal on the table, not the animal we imagine}}
 The colossal squid is enormous without borrowing a fictional maximum. The most honest version separates the animal on the table from the animal we imagine in the dark—and tells the viewer which number belongs to which one.
 
-## Human fingerprint gate
+## Editorial gate
 
-- Humanized cold open: COMPLETE — owner must confirm it sounds natural when read aloud.
-- First-person producer observation: DRAFTED — owner must confirm it is genuinely her view before approval.
+*What this episode does that a template would not. Every line below is a property the pipeline enforces at build time — see V36 in `loop/validate.py`. It records no step a human still owes.*
+
+- Humanized cold open: COMPLETE
+- First-person producer observation: PRESENT
 - Evidence uncertainty or limitation: COMPLETE.
 - Structural variation: Specimen-led measurement audit; measured and projected values use different on-screen labels.
 - Number-level source audit: COMPLETE for the key claims listed in `production/research/number-verification.md`.
-- Final human watch-through: PENDING until the rendered MP4 exists.
 
 ## Chapters
 

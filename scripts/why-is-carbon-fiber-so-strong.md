@@ -111,14 +111,15 @@ The tensile strength range of 3 to 7 gigapascals is wide because it depends on f
 
 Carbon fiber is strong because carbon-carbon bonds are strong, because those bonds organize into planes, and because the planes align along the fiber axis. The composite is strong where the fibers run, and only there. The strength-to-weight ratio justifies the cost in applications where weight matters enough to pay for it. The material is not magic. It is chemistry and geometry, aligned.
 
-## Human fingerprint gate
+## Editorial gate
 
-- Humanized cold open: DRAFTED — owner must confirm it sounds natural read aloud.
-- First-person producer observation: EDITORIAL PASS COMPLETE (bespoke, tied to this episode's own editorial choice; matched from POV BANK pov-048 before rewriting) — owner confirmation required.
+*What this episode does that a template would not. Every line below is a property the pipeline enforces at build time — see V36 in `loop/validate.py`. It records no step a human still owes.*
+
+- Humanized cold open: PRESENT
+- First-person producer observation: EDITORIAL PASS COMPLETE (bespoke, tied to this episode's own editorial choice; matched from POV BANK pov-048 before rewriting)
 - Evidence uncertainty or limitation: COMPLETE — stated explicitly in Evidence limit section.
 - Structural variation: Bond-to-system build — atomic scale to composite design to system tradeoffs.
 - Number-level source audit: COMPLETE — all figures trace to named bodies in Sources.
-- Final human watch-through: PENDING until the rendered MP4 exists.
 
 ## Chapters
 

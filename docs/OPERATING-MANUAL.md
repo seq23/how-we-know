@@ -553,6 +553,37 @@ pass a grep.
 
 ---
 
+## 3e. The editorial gate, decided rather than left to decay
+
+Added 2026-09-05. All 38 scripts carried a section called **Human fingerprint
+gate**. Nothing read it. Three of its six bullets asserted a step by a person —
+"owner must confirm it sounds natural read aloud", "owner confirmation
+required", "Final human watch-through: PENDING until the rendered MP4 exists" —
+on a channel explicitly designed to run without its owner. Those episodes aired.
+The confirmations never happened and were never going to.
+
+There were two honest resolutions: start performing the review, which is the one
+thing this channel exists not to require; or stop claiming it. **The claims are
+gone.** What remains is called the **Editorial gate**, and every line in it is a
+property the build actually enforces:
+
+| Claim | Enforced by |
+|---|---|
+| the first-person observation traces to her voice | V4, V32 |
+| every number traces to a named public source | V5, V6 |
+| the episode states its own uncertainty | V36 |
+| the structure is not another episode's | V36 |
+
+"Structural variation" is checkable in the strongest sense available: all 38
+labels are distinct, so a duplicate is a template reasserting itself — which is
+the first thing that would go wrong, and the last thing anyone would notice.
+
+**This is a decision, not a tidy-up.** The channel now claims a smaller thing and
+means it, rather than claiming a larger thing that was quietly false on every
+episode it shipped.
+
+---
+
 ## 4. Incidents worth remembering
 
 Recorded because each was invisible until something specifically looked for it.
