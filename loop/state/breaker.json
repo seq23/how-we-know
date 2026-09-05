@@ -1,8 +1,8 @@
 {
-  "state": "closed",
-  "tripped_at": null,
-  "cause": null,
-  "detail": null,
+  "state": "tripped",
+  "tripped_at": "2026-09-05T02:40:06+00:00",
+  "cause": "validator",
+  "detail": "V13 render-not-clipped=FAIL(examined 0); V14 shorts-attribution=FAIL(examined 0); V15 shorts-caption-crop=FAIL(examined 0)",
   "history": [
     {
       "event": "trip",
@@ -51,6 +51,12 @@
       "at": "2026-09-05T02:12:45+00:00",
       "cleared_cause": "validator",
       "note": "V1 directive-truth: the two scripts now speak their on-screen figures (#25). V9-V15: visuals/footage.py, shorts.py and captions.py were never committed and are now in the repo (#27). V29: the twelve materials images were never committed and are now in the repo (#28). Fonts resolve per machine, so the render check works off a Mac too."
+    },
+    {
+      "event": "trip",
+      "at": "2026-09-05T02:40:06+00:00",
+      "cause": "validator",
+      "detail": "V13 render-not-clipped=FAIL(examined 0); V14 shorts-attribution=FAIL(examined 0); V15 shorts-caption-crop=FAIL(examined 0)"
     }
   ]
 }
