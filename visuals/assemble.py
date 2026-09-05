@@ -37,8 +37,12 @@ def probe(path):
                           "-of","default=nw=1:nk=1",path], capture_output=True, text=True)
     return float(out.stdout.strip())
 
-def render_beat(beat, idx, workdir, seconds, burner=None, t0=0.0):
-    """Render one beat to a silent clip of exactly `seconds`.
+def render_beat(beat, idx, workdir, seconds, burner=None, t0=0.0, frames=None):
+    """Render one beat to a silent clip of exactly `frames` frames.
+
+    `frames` is passed by the caller, which allocates them across the whole
+    episode so per-beat rounding cannot accumulate (see `assemble`). Falls back
+    to rounding `seconds` when called directly.
 
     `burner` (visuals/captions.Burner) draws the caption live at global time
     t0 + i/FPS, so the words on screen come from the same measured audio the
@@ -46,7 +50,7 @@ def render_beat(beat, idx, workdir, seconds, burner=None, t0=0.0):
     cost is a bounding-box paste rather than a full-frame composite.
     """
     fn = seg_fn(beat["segment"])
-    n = max(1, int(round(seconds * FPS)))
+    n = max(1, int(frames if frames is not None else round(seconds * FPS)))
     fdir = os.path.join(workdir, f"f{idx:04d}")
     os.makedirs(fdir, exist_ok=True)
     args = beat.get("args") or {}
@@ -111,10 +115,36 @@ def assemble(plan_path, out_path, audio_dir=None, master_audio=None, workdir=Non
         burner = CAP.Burner(CAP.build_cues(plan, durations))
         print(f"  burning {len(burner.cues)} caption cues", flush=True)
 
+    # FRAMES ARE ALLOCATED ACROSS THE WHOLE EPISODE, NOT PER BEAT. Rounding
+    # each beat independently to a whole frame drops up to half a frame per
+    # beat, and over sixty-odd beats that summed to a video 50-90 ms SHORTER
+    # than its narration -- so the final `-shortest` mux clipped the tail of
+    # the last spoken beat. V13 caught it on four materials renders.
+    #
+    # Each beat's count is the difference between the frames due by the END of
+    # that beat and the frames already emitted, so an error is corrected by the
+    # next beat instead of accumulating. The LAST beat rounds UP, which is what
+    # guarantees the video is never shorter than the audio: `-shortest` then
+    # trims at most one frame of picture rather than any narration.
+    total_s = sum(durations)
+    frames, emitted = [], 0
+    for i, d in enumerate(durations):
+        due = sum(durations[:i + 1])
+        want = (math.ceil(due * FPS) if i == len(durations) - 1
+                else int(round(due * FPS)))
+        frames.append(max(1, want - emitted))
+        emitted += frames[-1]
+    assert emitted / FPS >= total_s - 1e-9, (
+        f"allocated {emitted} frame(s) = {emitted / FPS:.3f}s for {total_s:.3f}s "
+        f"of narration; the mux would clip the last beat")
+
     clips, t0 = [], 0.0
     for i, b in enumerate(plan):
-        clips.append(render_beat(b, i, workdir, durations[i], burner, t0))
-        t0 += durations[i]
+        clips.append(render_beat(b, i, workdir, durations[i], burner, t0,
+                                 frames=frames[i]))
+        # Captions are drawn at the frame times actually emitted, so the words
+        # cannot drift from the picture the drift correction just adjusted.
+        t0 += frames[i] / FPS
         if (i+1) % 10 == 0 or i == len(plan)-1:
             print(f"  rendered {i+1}/{len(plan)}", flush=True)
 
