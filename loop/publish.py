@@ -77,6 +77,55 @@ def set_privacy(token: str, video_id: str, privacy: str,
     urllib.request.urlopen(req, timeout=60).read()
 
 
+def cancel_schedule(token: str, video_id: str) -> str | None:
+    """Remove a pending publishAt. Returns the stamp it cleared, or None.
+
+    A `publishAt` CANNOT BE CLEARED BY OMISSION, and this cost a real
+    near-miss on 2026-09-05. A duplicate upload was retired -- set private,
+    verified private -- and it kept its 2026-10-25 publishAt, so YouTube would
+    have made it public on that date anyway, beside the copy that was supposed
+    to air. "Retired" would have un-retired itself seven weeks later.
+
+    Neither omitting the field nor sending it as an explicit `null` clears it:
+    both return HTTP 200 and leave the stored value exactly as it was. The only
+    thing that works is moving the video OFF private and back, which is what
+    this does. Verified against the live API on both duplicates.
+    """
+    st = read_status_full(token, video_id)
+    if not st.get("publishAt"):
+        return None
+    stamp = st["publishAt"]
+    # Off private, then back. Each call is verified; a 200 that changed
+    # nothing is exactly the failure this exists to catch.
+    set_privacy(token, video_id, "unlisted")
+    set_privacy(token, video_id, "private")
+    after = read_status_full(token, video_id)
+    if after.get("publishAt"):
+        raise RuntimeError(
+            f"{video_id} still carries publishAt={after['publishAt']} after "
+            f"the unlisted round-trip. It would go public on that date.")
+    return stamp
+
+
+def read_status_full(token: str, video_id: str) -> dict:
+    """read_status() plus publishAt, which it does not return.
+
+    Kept separate rather than widening read_status(), whose shape several
+    stages already destructure.
+    """
+    q = urllib.parse.urlencode({"part": "status", "id": video_id})
+    req = urllib.request.Request(f"{READ}?{q}",
+                                 headers={"Authorization": f"Bearer {token}"})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        data = json.loads(r.read())
+    items = data.get("items") or []
+    if not items:
+        return {"found": False}
+    st = items[0].get("status", {})
+    return {"found": True, "privacy": st.get("privacyStatus"),
+            "publishAt": st.get("publishAt")}
+
+
 def verify_scheduled_flips(st, cfg) -> None:
     """Every video whose publishAt has passed must actually be public.
 

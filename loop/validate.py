@@ -2829,6 +2829,84 @@ def v37_runtime_target_and_self_heal() -> Result:
     return r
 
 
+def v38_no_duplicate_or_zombie_schedule() -> Result:
+    """One live row per slug, and a retired video must hold no publish date.
+
+    TWO WAYS THE SAME EPISODE AIRS TWICE, both found live on 2026-09-05 while
+    answering the question "when does the last video go out".
+
+    ONE. Two upload lanes write one ledger -- backfill on the Mac at 09:00 and
+    cloud-upload at 09:00 CT. On 2026-09-03 both uploaded
+    02-how-deep-sea-creatures-survive-pressure, three hours apart, and gave the
+    two different video ids the SAME 2026-10-25 15:00 slot. Two identical
+    videos would have gone public in the same minute. This had happened once
+    before (the ledger counting 16 videos) and the arbitration did not hold.
+
+    TWO. Retiring the duplicate did not fix it. `retire.py` set the video
+    private and verified private -- and its publishAt survived untouched, so
+    YouTube would have made it public on 25 October anyway. A retired video
+    with a live publish date un-retires itself, seven weeks later, with nothing
+    watching. Neither omitting publishAt nor sending an explicit null clears
+    it; both return 200 and change nothing.
+
+    Checked against the LEDGER, which is cheap and offline. The live API is
+    where the second condition was proven, but a validator that needs OAuth
+    cannot run in the cloud lane that matters.
+
+    Hard-fails when it examines zero items.
+    """
+    r = Result("V38 no-duplicate-airing")
+    import ledger as _led                                  # noqa: PLC0415
+
+    rows = _led.load()["published"]
+    r.examined += 1
+    if not rows:
+        r.fail("the ledger holds no published rows, so this examined nothing.")
+        return r
+
+    live = [x for x in rows if not x.get("retired_at")]
+    by_slug: dict = {}
+    for x in live:
+        by_slug.setdefault(x["slug"], []).append(x)
+    for slug, group in sorted(by_slug.items()):
+        r.examined += 1
+        if len(group) > 1:
+            ids = ", ".join(str(g.get("video_id")) for g in group)
+            when = {g.get("scheduled_publish_at") for g in group}
+            r.fail(f"{slug} has {len(group)} live ledger rows ({ids}). Two "
+                   f"upload lanes share this ledger; if they also share a "
+                   f"slot ({', '.join(sorted(str(w) for w in when))}) the same "
+                   f"episode airs twice in the same minute.")
+
+    # A retired row must not still be holding a future slot.
+    import datetime as _dt                                 # noqa: PLC0415
+    now = _dt.datetime.now(_dt.timezone.utc)
+    for x in rows:
+        if not x.get("retired_at"):
+            continue
+        stamp = x.get("scheduled_publish_at")
+        if not stamp:
+            continue
+        r.examined += 1
+        when = _dt.datetime.fromisoformat(stamp.replace("Z", "+00:00"))
+        if when > now and not x.get("schedule_cancelled_at"):
+            r.fail(f"{x['slug']} ({x.get('video_id')}) is retired and still "
+                   f"records a publish date of {when:%Y-%m-%d %H:%M}Z. If that "
+                   f"date is still set on YouTube the video makes itself "
+                   f"public then, undoing the retirement. loop/retire.py now "
+                   f"cancels the schedule; this row predates that or the "
+                   f"cancellation failed.")
+
+    # And the fix itself must still be in the module, since the API's behaviour
+    # here is counter-intuitive enough to be "simplified" away later.
+    r.examined += 1
+    if "cancel_schedule" not in (ROOT / "loop" / "retire.py").read_text():
+        r.fail("loop/retire.py no longer cancels a pending publishAt. Setting "
+               "a video private does NOT clear its publish date - it goes "
+               "public on that date anyway.")
+    return r
+
+
 # ------------------------------------------------------------------ runner
 
 def run_all(items) -> tuple[bool, list[dict]]:
@@ -2855,7 +2933,8 @@ def run_all(items) -> tuple[bool, list[dict]]:
                v34_niche_lifecycle_is_acted_on(),
                v35_digest_reaches_her(),
                v36_editorial_gate_is_enforced(),
-               v37_runtime_target_and_self_heal()]
+               v37_runtime_target_and_self_heal(),
+               v38_no_duplicate_or_zombie_schedule()]
     rows = [r.as_dict() for r in results]
     return all(r.ok for r in results), rows
 
