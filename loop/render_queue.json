@@ -1,6 +1,6 @@
 {
   "week": "2026-W36",
-  "generated": "2026-09-05T03:00:45+00:00",
+  "generated": "2026-09-05T12:53:22+00:00",
   "videos_per_week": 4,
   "breaker": "closed",
   "validators": [
@@ -220,6 +220,14 @@
     {
       "validator": "V29 material-image rights",
       "examined": 34,
+      "status": "PASS",
+      "failures": [],
+      "notes": [],
+      "stops": []
+    },
+    {
+      "validator": "V30 cloud-visibility",
+      "examined": 177,
       "status": "PASS",
       "failures": [],
       "notes": [],
