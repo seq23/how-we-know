@@ -216,7 +216,14 @@ def review(rows: list[dict], cfg: dict, mid: str) -> dict:
     # report that omits the breakdown when data is thin is a report that never
     # shows it, because thin is the normal condition of a young channel.
     domains_ev = per_domain(rows, cfg)
-    alloc_decision = domains.reallocate(cfg, domains_ev)
+    # THE LIFECYCLE OUTRANKS THE SLOT MOVE, and the order is the point. Moving a
+    # slot between two domains is meaningless if one of them is finished; a
+    # retirement re-cuts the whole allocation, and a reallocation computed
+    # against the pre-retirement split would then be applied on top of it. Only
+    # one of the two is ever applied in a month.
+    life_decision = domains.lifecycle(cfg, domains_ev)
+    alloc_decision = (life_decision if life_decision.get("applied")
+                      else domains.reallocate(cfg, domains_ev))
     gates = ypp.progress(cfg)
 
     if len(measured) < MIN_VIDEOS or views < MIN_VIEWS:
@@ -225,6 +232,7 @@ def review(rows: list[dict], cfg: dict, mid: str) -> dict:
         return {"sufficient": False, "videos_measured": len(measured),
                 "views": views, "findings": [], "changes": [],
                 "domains": domains_ev, "allocation": alloc_decision,
+                "lifecycle": life_decision,
                 "live_slots": domains.live_slots(cfg), "ypp": gates,
                 "note": (f"{len(measured)} measured video(s), {views} view(s) - below "
                          f"{MIN_VIDEOS}/{MIN_VIEWS}. No change made this month. "
@@ -310,6 +318,7 @@ def review(rows: list[dict], cfg: dict, mid: str) -> dict:
             "avg_view_duration_s": round(avd, 1), "avg_view_percentage": round(avp, 1),
             "floor_avd_seconds": floor_avd,
             "domains": domains_ev, "allocation": alloc_decision,
+            "lifecycle": life_decision,
             "live_slots": domains.live_slots(cfg),
             "exhausted_domains": domains.exhausted(cfg),
             "next_domain": domains.next_unused(list(domains.allocation(cfg))),
@@ -349,8 +358,25 @@ def _domain_section(r: dict) -> list[str]:
         stop = a.get("stop")
         out += [f"### Allocation held at `{a.get('allocation')}`", "",
                 (f"**NAMED STOP {stop}.** " if stop else "") + a.get("why", ""), ""]
+    life = r.get("lifecycle") or {}
+    if life.get("applied"):
+        out += [f"### RETIRED {life['retired']}, promoted {life['promoted']}", "",
+                f"`{life['from']}` → `{life['allocation']}`", "",
+                f"**Decided by** queue decay. {life['why']}", "",
+                f"{life['promoted']} has no scored queue yet. The Saturday "
+                f"scoring lane runs `research/publish_order_domain.py "
+                f"--domain {life['promoted']}` for any allocated domain "
+                f"missing one, so its topics are gated on the same gate every "
+                f"other domain's were — nothing is waved through for being "
+                f"new. Its first episode also needs a POV top-up "
+                f"(`pov/pov-assignments.json`); V32 refuses to let one air "
+                f"without it.", ""]
+    elif life.get("stop"):
+        out += [f"### Niche lifecycle: NAMED STOP {life['stop']}", "",
+                life.get("why", ""), ""]
+
     ex = r.get("exhausted_domains")
-    if ex:
+    if ex and not life.get("applied"):
         out += [f"### Domain queue exhausted: {', '.join(ex)}", "",
                 f"Their scored topic queue has decayed below the threshold "
                 f"`research/publish_order.json` gates on. The next-ranked "
@@ -441,6 +467,13 @@ def main() -> int:
         # report as runtime. It is a change to loop/config.json like any other.
         alloc_change = apply_allocation(cfg, r.get("allocation") or {}, mid)
         r.setdefault("changes", []).append(alloc_change)
+        life = r.get("lifecycle") or {}
+        if life.get("applied"):
+            st.note(f"niche lifecycle: RETIRE {life['retired']} "
+                    f"({life['moved']['slots']} slot(s)) -> PROMOTE "
+                    f"{life['promoted']}")
+        elif life.get("stop"):
+            st.note(f"niche lifecycle {life['stop']}: {life['why'][:140]}")
         if alloc_change["applied"]:
             st.work(f"CHANGED the weekly domain allocation: "
                     f"{alloc_change['from']} -> {alloc_change['to']}")

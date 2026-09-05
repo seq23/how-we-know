@@ -71,6 +71,27 @@ OUT = os.path.join(ROOT, "channel", "imagery")
 ASSETS = os.path.join(OUT, "assets")
 MATERIALS_MANIFEST = os.path.join(OUT, "materials.json")
 
+# --------------------------------------------------------------------------
+# THE WEEKLY LANE FINDS THIS FILE THROUGH THIS DECLARATION, not through a list
+# kept somewhere else. loop/footage_lane.py globs research/imagery*.py, reads
+# this literal without importing the module, and runs the ones whose `domain`
+# currently holds a slot in loop/config.json's allocation. Two components each
+# keeping their own list, with no link between them, is exactly how
+# research/imagery_materials.py came to be wired to no lane at all.
+#
+# `gate` is the rights function this file MUST still contain. The lane refuses
+# to run a harvester whose gate has gone missing, so "relax the check to get
+# more material" fails loudly instead of quietly succeeding.
+HARVESTER = {
+    "domain": "materials-and-manufacturing",
+    "gate": "pd_licence_ok",
+    "manifest": "channel/imagery/materials.json",
+    "args": ["--missing"],
+    "scheduled": True,
+    "what": "materials stills - Wikimedia Commons, public-domain gate only",
+}
+
+
 COMMONS_API = "https://commons.wikimedia.org/w/api.php"
 
 # Wikidata Q19652 is "public domain". Restricting the SEARCH itself to items

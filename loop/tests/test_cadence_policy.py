@@ -554,14 +554,17 @@ def check() -> list[str]:
     # --------------- the footage harvest never widens the rights gate
     import footage_lane as _fl                              # noqa: PLC0415
     examined += 1
-    for rel, gate, _what in _fl.HARVESTERS:
-        if not (ROOT / rel).exists():
+    # HARVESTERS was a hardcoded tuple of two deep-sea harvesters; it is now
+    # discovered from each module's own HARVESTER declaration, so this walks
+    # every declared harvester rather than the two that used to be listed.
+    for h in _fl.declared_harvesters():
+        if not h["path"].exists() or not h.get("gate"):
             continue
         examined += 1
         try:
-            _fl.assert_rights_gate(rel, gate)
+            _fl.assert_rights_gate(h["rel"], h["gate"])
         except _fl.RightsGateMissing as e:
-            fails.append(f"{rel} has lost its provenance gate: {e}")
+            fails.append(f"{h['rel']} has lost its provenance gate: {e}")
     # NEGATIVE: a harvester without the gate must be refused.
     examined += 1
     import tempfile as _tf, os as _os                       # noqa: PLC0415

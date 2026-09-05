@@ -487,6 +487,72 @@ shortened every episode on the channel because one niche had a bad quarter.
 
 ---
 
+## 3c. The niche lifecycle closes itself
+
+Added 2026-09-05. The monthly review had computed `exhausted_domains` and
+`next_domain` since 2026-08 and written both into prose that nothing read. A
+niche could decay to an empty queue and keep its weekly slots indefinitely, in
+a report that named it as finished. Deciding correctly and then discarding the
+decision is the "runs but inert" defect one level up.
+
+`loop/domains.lifecycle()` now acts on it, and **outranks** the one-slot
+reallocation in the same month — moving a slot between two domains is
+meaningless if one of them is finished, and a move computed against the
+pre-retirement split would land on a split that no longer exists.
+
+| It retires when | It refuses when |
+|---|---|
+| the domain's scored queue is below `queue_exhausted_below` (4) | the domain has fewer than `min_episodes_to_judge` (8) measured episodes — a thin queue that early is a scoring backlog, and the answer is to score more topics |
+| **and** it has published and been measured | there is no unused domain left in the taxonomy — retirement is a **swap**, never a subtraction, because a channel with fewer domains than slots publishes nothing |
+
+The promoted domain inherits exactly the retired one's slots, so the allocation
+still sums to `cadence.ceiling` and `slots_at()` cannot raise on the split it
+produced. Everything goes through the same monthly cooldown fence as runtime, so
+a wrong retirement is bounded exactly like a wrong slot move.
+
+**A promoted domain arrives with no queue**, and `research/publish_order.py`
+gates deep sea while `publish_order_materials.py` gates materials from a list
+someone wrote by hand. `research/publish_order_domain.py --domain <name>` closes
+that: candidates come from `research/broad_mined.json` — real, autocomplete-
+confirmed questions already mined for all 20 domains — screened for the channel's
+hard exclusions and for autocomplete tails that are not topics ("…in hindi",
+"…dr binocs", "…wobbly life"), then scored through **the same gate**, imported
+unchanged. The Saturday scoring lane runs it for any allocated domain with no
+queue, so the promotion becomes real on a schedule rather than in a report. Where
+the broad 8-seed mine is too thin — space-astronomy yields six candidates from it
+— it runs the deeper single-domain mine first, which is free autocomplete and
+needs no quota.
+
+Guarded by **V34**, which constructs the month rather than waiting years for one.
+
+## 3d. The Saturday harvest takes its domain list from the allocation
+
+Added 2026-09-05. The harvest lane kept a hardcoded tuple of two harvesters,
+both deep sea. `materials-and-manufacturing` went live on 2026-09-03 with half
+the weekly slots and the lane never learned it existed:
+`research/imagery_materials.py` was invoked by **nothing at all**, and neither
+was `research/imagery_species.py`. Two components each keeping their own list,
+with no link between them.
+
+The second list is gone. A harvester declares its own contract at module scope —
+domain, rights gate, manifest, arguments — and `loop/footage_lane.py` discovers
+`research/imagery*.py` by reading that declaration with `ast` (never importing
+it; several reach the network at import). It then runs the ones whose domain
+holds a slot in `loop/config.json`. **A domain in the allocation with no
+harvester is a named stop, not a skip** — skipping quietly is exactly how this
+went unnoticed.
+
+The same pass found `imagery_video.py` being run with no arguments, so it
+screened the NOAA index and downloaded nothing, every Saturday, while the lane
+reported that it had harvested "video clips — the scarce pool". Its declaration
+carries `args: ["--harvest"]`.
+
+Guarded by **V33**, asserted behaviourally over the live allocation rather than
+by grepping for filenames — a lane that finds the file and never runs it would
+pass a grep.
+
+---
+
 ## 4. Incidents worth remembering
 
 Recorded because each was invisible until something specifically looked for it.
