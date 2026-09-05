@@ -682,6 +682,36 @@ default in `bin/batch-session.sh`.
 
 ---
 
+## 3i. Restarting the Mac is safe, and one thing made it unsafe
+
+Found 2026-09-05 when the owner asked what happens if she reboots for updates.
+
+**Narration itself is safe to interrupt.** Each beat is written to
+`NNNN.part.wav` and renamed on completion, so a kill loses at most the beat in
+flight, never a finished one; the next run skips every beat that already has a
+wav. Rebooting costs minutes, not work.
+
+**The lock was not safe.** `audio/.narrate.lock/pid` holds the narrator's pid,
+and the stale-lock check asked only whether that pid was alive. After a reboot
+the file still names a process that died with the machine, and macOS hands that
+number out again — to Spotlight, to a helper, to anything. The check would then
+pass, narration would refuse to start, and it would refuse **again every night**
+until a human deleted the directory: a dead lock wearing the face of a correct
+named stop. It now also asks `ps` whether the holder is actually a
+`narrate_all.py` process, and reclaims when it is not.
+
+**And a partial file must not read as a finished beat.** `loop/extend.py`
+globbed `*.wav` when deciding whether an episode's narration was complete, which
+matches `0079.part.wav`. An episode the narrator was killed halfway through
+would have measured as complete, been judged short, and been extended for no
+reason. It now globs `[0-9]*.wav`.
+
+**The procedure, if it matters:** nothing special. Reboot. The 23:00 LaunchAgent
+loads at login, so log in rather than leaving the machine at the login window.
+`bin/batch-session.sh` picks up where the last run stopped.
+
+---
+
 ## 4. Incidents worth remembering
 
 Recorded because each was invisible until something specifically looked for it.

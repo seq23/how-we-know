@@ -88,7 +88,11 @@ def measured_minutes(slug: str) -> tuple[float | None, str]:
             beats = len(json.loads(plan.read_text()))
         except (json.JSONDecodeError, TypeError):
             beats = 0
-        wavs = sorted(adir.glob("*.wav"))
+        # `[0-9]*.wav` NOT `*.wav`. An interrupted beat leaves `0079.part.wav`
+        # beside the finished files, and a bare glob counts it as narrated --
+        # so an episode the narrator was killed halfway through would measure
+        # as complete, be judged short, and be extended for no reason.
+        wavs = sorted(adir.glob("[0-9]*.wav"))
         if beats and len(wavs) >= beats:
             total = sum(durations.ffprobe_duration(w) or 0.0 for w in wavs)
             if total:
