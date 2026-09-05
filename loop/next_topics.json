@@ -1,87 +1,123 @@
 {
-  "week": "2026-W35",
-  "generated": "2026-08-30T21:13:28+00:00",
-  "videos_per_week": 2,
+  "week": "2026-W36",
+  "generated": "2026-09-05T15:19:06+00:00",
+  "videos_per_week": 4,
   "cadence_ceiling_note": "Deliberate. Never raised to clear a backlog.",
   "selection_mode": "automatic",
   "owner_involvement": "notified, not asked",
   "selected": [
     {
-      "slug": "14-how-big-is-a-colossal-squid",
-      "question": "How big is a colossal squid?",
-      "script": "scripts/14-how-big-is-a-colossal-squid.md",
+      "slug": "how-does-tempered-glass-shatter",
+      "question": "How does tempered glass shatter?",
+      "script": "scripts/how-does-tempered-glass-shatter.md",
       "source": "authored-inventory",
-      "publish_rank": 1,
-      "front_loaded": true,
+      "publish_rank": 17,
+      "front_loaded": false,
       "needs_authoring": false,
-      "pov_id": "pov-008",
-      "pov_line": "The giant squid is the one that gets me. Not because I think it's coming for anyone. It's the size, the intelligence, and the fact that it exists around us without us regularly seeing it.",
-      "pov_tag": "fear",
-      "pov_tier": "specific",
-      "pov_matched_by": "hand assignment in pov/pov-assignments.json"
+      "pov_id": "pov-081",
+      "pov_line": "Octopuses impress me. So much of their nervous system runs through their arms. They aren't just unusual \u2014 they look like a completely different solution to intelligence.",
+      "pov_tag": "adaptation",
+      "pov_tier": "transferable",
+      "pov_matched_by": "tag:adaptation score 2.0"
     },
     {
-      "slug": "15-how-do-people-reach-challenger-deep",
-      "question": "How do people reach Challenger Deep?",
-      "script": "scripts/15-how-do-people-reach-challenger-deep.md",
+      "slug": "why-does-old-iron-not-rust",
+      "question": "Why does old iron not rust?",
+      "script": "scripts/why-does-old-iron-not-rust.md",
       "source": "authored-inventory",
-      "publish_rank": 2,
-      "front_loaded": true,
+      "publish_rank": 18,
+      "front_loaded": false,
       "needs_authoring": false,
-      "pov_id": "pov-034",
-      "pov_line": "Being willing to take a risk doesn't mean everyone else involved understood that risk.",
-      "pov_tag": "risk",
+      "pov_id": "pov-046",
+      "pov_line": "What keeps me interested is how it exposes the limits of our idea of normal. Every time we think we know what life requires, something down there shows us another way.",
+      "pov_tag": "thesis",
       "pov_tier": "transferable",
-      "pov_matched_by": "hand assignment in pov/pov-assignments.json"
+      "pov_matched_by": "tag:thesis score 2.0"
+    },
+    {
+      "slug": "how-strong-is-titanium",
+      "question": "How strong is titanium?",
+      "script": "scripts/how-strong-is-titanium.md",
+      "source": "authored-inventory",
+      "publish_rank": 19,
+      "front_loaded": false,
+      "needs_authoring": false,
+      "pov_id": "pov-038",
+      "pov_line": "How do we know an animal behaves a certain way when we've seen it three times?",
+      "pov_tag": "evidence",
+      "pov_tier": "transferable",
+      "pov_matched_by": "transferable fallback (tag:evidence); no tag signal fired for this subject"
+    },
+    {
+      "slug": "how-is-damascus-steel-made",
+      "question": "How is Damascus steel made?",
+      "script": "scripts/how-is-damascus-steel-made.md",
+      "source": "authored-inventory",
+      "publish_rank": 20,
+      "front_loaded": false,
+      "needs_authoring": false,
+      "pov_id": "pov-041",
+      "pov_line": "Deep-sea science builds conclusions from incomplete observations, damaged specimens, sonar, water samples and tiny windows of footage.",
+      "pov_tag": "evidence",
+      "pov_tier": "transferable",
+      "pov_matched_by": "transferable fallback (tag:evidence); no tag signal fired for this subject"
     }
   ],
   "to_author": 0,
-  "inventory_remaining": 8,
+  "inventory_remaining": 11,
   "cadence": {
-    "videos_per_week": 2,
-    "why": "configured default (2/week)"
+    "videos_per_week": 4,
+    "why": "configured default (4/week)"
   },
   "publish_order": {
-    "ranked": 10,
+    "ranked": 15,
     "unranked": 0,
     "unranked_slugs": [],
     "killed_not_queued": [
-      "02-how-deep-sea-creatures-survive-pressure",
       "03-why-deep-sea-creatures-are-surfacing",
-      "05-why-many-deep-sea-creatures-are-red",
-      "09-what-is-the-scariest-deep-sea-creature",
       "11-what-is-a-dumbo-octopus",
       "12-what-is-a-frilled-shark",
-      "13-how-does-bioluminescence-work-in-the-deep-sea",
-      "16-what-happens-when-a-whale-dies-in-the-deep-ocean",
-      "17-what-is-a-yeti-crab",
-      "19-what-is-the-deepest-fish-ever-recorded"
+      "17-what-is-a-yeti-crab"
     ],
-    "queued_despite_kill": [
-      "06-why-some-deep-sea-creatures-are-transparent",
-      "15-how-do-people-reach-challenger-deep",
-      "18-why-does-black-smoker-water-not-boil"
-    ],
-    "order_entries": 10,
+    "queued_despite_kill": [],
+    "order_entries": 34,
     "source": "research/publish_order.json",
-    "generated_at": "2026-08-30T21:01:41.768334+00:00",
+    "generated_at": "2026-09-01T00:14:48.681943+00:00",
     "generator": "research/publish_order.py",
-    "status": "PROPOSAL plus an OWNER OVERRIDE. No script file was modified.",
+    "status": "PRODUCTION",
     "episodes_ranked": null,
     "pinned_head": [],
     "saturated_tail": []
   },
   "runway": {
-    "unpublished_scripts": 20,
-    "publishable": 10,
+    "unpublished_scripts": 19,
+    "publishable": 15,
+    "scheduled_not_yet_aired": 19,
     "basis": "publish queue",
-    "videos_per_week": 2,
-    "weeks_remaining": 5.0,
+    "videos_per_week": 4,
+    "weeks_remaining": 8.5,
     "warn_below_weeks": 4.0,
     "critical_below_weeks": 2.0,
     "level": "ok",
+    "by_domain": {
+      "deep-sea-ocean-science": {
+        "slots_per_week": 2,
+        "queued": 16,
+        "weeks": 8.0,
+        "level": "ok",
+        "message": "deep-sea-ocean-science: 8.0 week(s) at 2/week (16 queued)"
+      },
+      "materials-and-manufacturing": {
+        "slots_per_week": 2,
+        "queued": 18,
+        "weeks": 9.0,
+        "level": "ok",
+        "message": "materials-and-manufacturing: 9.0 week(s) at 2/week (18 queued)"
+      }
+    },
+    "short_domains": [],
     "never_go_dark": true,
-    "message": "5.0 weeks of queue at 2/week (10 publishable of 20 on disk)."
+    "message": "8.5 weeks of queue at 4/week (15 publishable of 19 on disk). By domain: deep-sea-ocean-science: 8.0 week(s) at 2/week (16 queued); materials-and-manufacturing: 9.0 week(s) at 2/week (18 queued)."
   },
   "gate": {
     "authority": "pov/topic-taxonomy.json",
@@ -612,8 +648,8 @@
     }
   ],
   "candidate_skips": {
-    "already_published": 0,
-    "already_authored": 2,
+    "already_published": 2,
+    "already_authored": 0,
     "excluded": 15
   },
   "override": {
