@@ -65,6 +65,19 @@ class swap_manifest:
 def check() -> list[str]:
     fails, examined = [], 0
 
+    # THIS TEST IS FOR THE MACHINE THAT HOLDS THE FOOTAGE. Every assertion below
+    # drives V9-V12 against real clips, and the clips are large video kept on
+    # the Mac and in R2 - never in git. On a runner with no manifest there is
+    # nothing to exercise, so the honest answer is to say which machine can run
+    # it rather than report failures about an absence nobody intends to fix.
+    # The validators themselves make the same distinction: absent manifest is
+    # N/A, a manifest whose clips are gone is still a hard failure.
+    if not os.path.exists(FT.MANIFEST):
+        print("footage validators: SKIPPED - no footage manifest on this "
+              "machine. The clips live on the Mac and in R2 by design; run "
+              "this there to cover V9-V12.")
+        return fails
+
     def want(cond, msg):
         nonlocal examined
         examined += 1
