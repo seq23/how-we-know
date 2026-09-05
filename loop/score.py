@@ -30,7 +30,17 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import cadence  # noqa: E402
 from common import ROOT, Stage, config, now, read_json, week_id  # noqa: E402
 
-PY = str(ROOT / ".venv" / "bin" / "python")
+# THE INTERPRETER IS RESOLVED, NOT ASSUMED. This was hardcoded to
+# .venv/bin/python, which exists on the Mac and nowhere else, so
+# `loop · Sat 06:00 · score` died every Saturday on the Ubuntu runner with
+# FileNotFoundError: .venv/bin/python - a scheduled lane failing not because
+# the ranking was wrong but because it was told to run a binary that is not
+# there. loop/tests/run_all.py already had this pattern; score.py did not. The
+# venv still wins where it exists, because on the Mac it carries numpy and
+# Pillow the system python may not.
+PY = (str(ROOT / ".venv" / "bin" / "python")
+      if (ROOT / ".venv" / "bin" / "python").exists()
+      else sys.executable)
 TIMEOUT_S = 1800          # the mining pass sleeps between autocomplete calls
 
 QUOTA_MARKERS = re.compile(
