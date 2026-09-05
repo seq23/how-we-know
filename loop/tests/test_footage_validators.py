@@ -105,6 +105,18 @@ def check() -> list[str]:
 
     # ...and the renderer's own last-line check refuses it too.
     assets = FT.usable_assets()
+    # NAME THE ABSENCE, do not crash on it. This indexed [0] unguarded, so on a
+    # machine with no footage manifest - every GitHub runner, since the clips
+    # live on the Mac and in R2 - the suite died with a bare
+    # `IndexError: list index out of range` several frames from the cause. A
+    # test that cannot reach its subject has to say so; that is the same rule
+    # the validators themselves follow.
+    if not assets:
+        fails.append("no usable footage asset is present, so the renderer's "
+                     "own last-line refusal could not be exercised. The clips "
+                     "are not in the repository; run this where "
+                     "channel/footage is populated.")
+        return fails
     a = assets[0]
     w = FT.windows(a)[0]
     bad = {"asset": a, "start": w["end"] - 1.0, "end": w["end"] + 3.0,
