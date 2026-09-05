@@ -110,6 +110,7 @@ from __future__ import annotations
 
 import json
 import os
+import pathlib
 import re
 import socket
 import subprocess
@@ -2104,6 +2105,141 @@ def v29_material_image_rights() -> Result:
     return r
 
 
+def v30_cloud_visibility() -> Result:
+    """Every file a lane runs must be TRACKED BY GIT, and so must its imports.
+
+    THE DEFECT THIS EXISTS TO CATCH COST A WHOLE DAY on 2026-09-04, and it never
+    once presented as itself. `visuals/footage.py`, `visuals/shorts.py` and
+    `visuals/captions.py` existed only on the Mac. Nothing said so. What the
+    cloud reported instead was five validators hard-failing on zero items, a
+    tripped breaker, a Monday lane that had been red since 31 August, a CI suite
+    quietly running nineteen files while the Mac ran twenty-one, and - once
+    `assemble.py` was resolved against a copy that never had the local edits -
+    a nightly render that would have died on an unrecognised argument after
+    paying for narration. Six symptoms, one cause: a file the cloud could not
+    see.
+
+    "Check `git status` now and then" is not a fix. It is a habit, it is
+    advisory, and it competes with everything else a person could look at. This
+    is the deterministic form of the same intent - it derives what the cloud
+    NEEDS from what the lanes actually invoke, and asserts git can see all of
+    it.
+
+    Two rules, both mechanical:
+
+      A. **The import closure of every entrypoint is tracked.** An entrypoint is
+         any `.py` named in `.github/workflows/*.yml` or `bin/*.sh` - the things
+         a lane genuinely runs. From each, local imports are resolved against
+         this repo's own directories and walked transitively. Every file
+         reached must appear in `git ls-files`. Third-party and stdlib imports
+         resolve to no local file and are ignored, so the rule needs no
+         allowlist to stay quiet.
+
+      B. **A tracked manifest's assets are tracked.** If a rights manifest is in
+         git, the files it names must be too - that is exactly how
+         `channel/imagery/materials.json` shipped while its twelve images did
+         not, leaving V29 to report eleven beats whose file "is not on disk".
+         The converse is deliberately NOT asserted: an UNTRACKED manifest means
+         the whole subject is machine-local by design - the footage clips are
+         hundreds of megabytes and belong on the Mac and in R2 - and V9-V15
+         already handle that by going N/A.
+
+    Hard-fails when it examines zero items.
+    """
+    r = Result("V30 cloud-visibility")
+    import ast as _ast                                     # noqa: PLC0415
+    import subprocess as _sp                               # noqa: PLC0415
+
+    tracked = set(_sp.run(["git", "ls-files"], cwd=ROOT, capture_output=True,
+                          text=True).stdout.split())
+    r.examined += 1
+    if not tracked:
+        r.fail("`git ls-files` returned nothing, so this validator cannot tell "
+               "tracked from untracked and proves nothing here.")
+        return r
+
+    # ---- collect entrypoints from what the lanes actually invoke ---------
+    ref = re.compile(r"([a-z_][a-z_0-9]*/[a-z_0-9]+\.py)")
+    entry: set[str] = set()
+    for d, pat in ((ROOT / ".github" / "workflows", "*.yml"), (ROOT / "bin", "*.sh")):
+        for f in sorted(d.glob(pat)) if d.exists() else []:
+            entry |= set(ref.findall(f.read_text()))
+    entry = {e for e in entry if (ROOT / e).exists()}
+
+    r.examined += 1
+    if not entry:
+        r.fail("no entrypoint .py was found in .github/workflows or bin/, so "
+               "the import closure covers nothing. A guard that examined "
+               "nothing has failed, not passed.")
+        return r
+
+    # ---- walk local imports transitively --------------------------------
+    search = ["loop", "visuals", "research", "auth", "voice", "tests", ""]
+
+    def resolve(name: str) -> str | None:
+        head = name.split(".")[0]
+        for d in search:
+            rel = f"{d}/{head}.py" if d else f"{head}.py"
+            if (ROOT / rel).exists():
+                return rel
+        return None
+
+    seen: set[str] = set()
+    queue = list(entry)
+    while queue:
+        rel = queue.pop()
+        if rel in seen:
+            continue
+        seen.add(rel)
+        try:
+            tree = _ast.parse((ROOT / rel).read_text())
+        except Exception:                                  # noqa: BLE001
+            continue                     # syntax is another validator's job
+        for node in _ast.walk(tree):
+            names = []
+            if isinstance(node, _ast.Import):
+                names = [a.name for a in node.names]
+            elif isinstance(node, _ast.ImportFrom) and node.module and not node.level:
+                names = [node.module]
+            for n in names:
+                got = resolve(n)
+                if got and got not in seen:
+                    queue.append(got)
+
+    for rel in sorted(seen):
+        r.examined += 1
+        if rel not in tracked:
+            r.fail(f"{rel} is reachable from a lane this repo runs but is NOT "
+                   f"tracked by git, so it does not exist for any cloud runner. "
+                   f"Add it, or stop the lane depending on it.")
+
+    # ---- a tracked manifest's assets must be tracked --------------------
+    for rel in sorted(t for t in tracked if t.startswith("channel/")
+                      and t.endswith(".json")):
+        try:
+            data = json.loads((ROOT / rel).read_text())
+        except Exception:                                  # noqa: BLE001
+            continue
+        rows = []
+        for key in ("index", "assets"):
+            v = data.get(key) if isinstance(data, dict) else None
+            if isinstance(v, list):
+                rows += [x for x in v if isinstance(x, dict)]
+        base = str(pathlib.PurePosixPath(rel).parent)
+        for row in rows:
+            lf = row.get("local_file")
+            if not lf:
+                continue
+            r.examined += 1
+            asset = f"{base}/{lf}"
+            if asset not in tracked:
+                r.fail(f"{rel} is tracked and names {lf}, which is not. A "
+                       f"rights manifest in git whose asset is not in git is "
+                       f"how eleven material_image beats reached the cloud "
+                       f"with no file behind them.")
+    return r
+
+
 # ------------------------------------------------------------------ runner
 
 def run_all(items) -> tuple[bool, list[dict]]:
@@ -2123,7 +2259,7 @@ def run_all(items) -> tuple[bool, list[dict]]:
                v22_producer_notes_second_person(), v23_chapters_compliant(),
                v24_render_duration_floor(), v25_domain_abstraction(),
                v27_lanes_see_every_domain(), v28_lane_interpreters(),
-               v29_material_image_rights()]
+               v29_material_image_rights(), v30_cloud_visibility()]
     rows = [r.as_dict() for r in results]
     return all(r.ok for r in results), rows
 
