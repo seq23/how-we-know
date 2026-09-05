@@ -40,6 +40,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import datetime as _dt
 import os
 import re
 import sys
@@ -225,6 +226,11 @@ def verify(plans, quiet=False):
 # ---------------------------------------------------------------------------
 def main() -> int:
     ap = argparse.ArgumentParser()
+    ap.add_argument("--until", default=None, metavar="HH:MM",
+                    help="stop cleanly at this local time, BETWEEN beats. The "
+                         "run hands the Mac back in the morning and the next "
+                         "night resumes exactly where it stopped, because a "
+                         "beat whose wav already exists is skipped.")
     ap.add_argument("--reference", default=str(HERE / "reference_A_clean_cond10.wav"))
     ap.add_argument("--only", nargs="*", default=None,
                     help="episode number/slug prefixes, e.g. --only 18 19")
@@ -307,7 +313,32 @@ def run(args, plans, total_beats) -> int:
     failures, truncated = [], []
     t_start = time.time()
 
+    # THE DEADLINE IS CHECKED BETWEEN BEATS, NEVER DURING ONE. A beat takes a
+    # couple of minutes; stopping inside it would leave a .part.wav to clean up
+    # and waste the work. Stopping between them costs nothing at all, because
+    # the next run skips every beat whose wav already exists.
+    deadline = None
+    if args.until:
+        hh, mm = (int(x) for x in args.until.split(":"))
+        now = _dt.datetime.now()
+        deadline = now.replace(hour=hh, minute=mm, second=0, microsecond=0)
+        if deadline <= now:                 # already past today -> tomorrow
+            deadline += _dt.timedelta(days=1)
+        print(f"will stop cleanly at {deadline:%a %H:%M} "
+              f"({(deadline - now).total_seconds() / 3600:.1f} h from now)",
+              flush=True)
+
+    stopped_early = False
     for k, (slug, idx, text) in enumerate(todo, 1):
+        if deadline and _dt.datetime.now() >= deadline:
+            done = k - 1
+            print(f"\nDEADLINE {deadline:%H:%M} reached. Stopping cleanly after "
+                  f"{done} beat(s) this run; {len(todo) - done} still to do.",
+                  flush=True)
+            print("Nothing is lost - the next run skips every beat that already "
+                  "has a wav and continues from here.", flush=True)
+            stopped_early = True
+            break
         out = AUDIO / slug / f"{idx:04d}.wav"
         tmp = out.with_suffix(".part.wav")
         chunks = chunk_paragraph(text, args.max_words) or [text]
@@ -365,6 +396,7 @@ def run(args, plans, total_beats) -> int:
 
     rows, complete = verify(plans)
     report = {
+        "stopped_at_deadline": stopped_early,
         "engine": "chatterbox-tts 0.1.7 (ResembleAI/chatterbox, MIT weights)",
         "reference": args.reference,
         "target_rms_dbfs": args.target_db,
