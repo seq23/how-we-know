@@ -2006,6 +2006,41 @@ def v28_lane_interpreters() -> Result:
                 r.fail(f"{sh.name} runs {script} with {path}, the VOICE venv. "
                        f"Rendering needs PIL and numpy from {RENDER_VENV}.")
 
+        pass
+
+    # ---- no cloud lane may hardcode a venv interpreter -------------------
+    # loop/score.py bound `PY = ROOT/".venv"/"bin"/"python"` and ran in
+    # Actions, so `loop · Sat 06:00 · score` died every Saturday on
+    # FileNotFoundError: .venv/bin/python - a scheduled lane failing not
+    # because the ranking was wrong but because it was told to use a binary
+    # that only exists on the Mac. The rule is narrow on purpose: a venv path
+    # ASSIGNED TO A NAME and handed to subprocess is a bug; the same string
+    # inside an unblock message is correct, because that instruction really is
+    # for the Mac (see captions_lane.RECONSENT).
+    for py in sorted((ROOT / "loop").glob("*.py")):
+        if py.name == "validate.py":
+            continue
+        pybody = py.read_text()
+        if "subprocess" not in pybody:
+            continue
+        r.examined += 1
+        if _re.search(r"^\s*[A-Za-z_]+\s*=\s*[^#\n]*\.venv[/\"']", pybody, _re.M) \
+           and "sys.executable" not in pybody:
+            r.fail(f"loop/{py.name} binds a .venv interpreter and runs "
+                   f"subprocess without any sys.executable fallback. That path "
+                   f"exists on the Mac and nowhere else, so a scheduled run "
+                   f"dies on FileNotFoundError. Resolve it the way "
+                   f"loop/tests/run_all.py does.")
+
+    for sh in sorted((ROOT / "bin").glob("*.sh")):
+        lines = [ln for ln in sh.read_text().splitlines()
+                 if not ln.lstrip().startswith("#")]
+        body = sh.read_text()
+        varmap = {}
+        for ln in lines:
+            m = _re.match(r"\s*([A-Z_][A-Z0-9_]*)=(\S*/bin/python\S*)\s*$", ln)
+            if m:
+                varmap[m.group(1)] = m.group(2)
         if any(ln for ln in lines if "voice/" in ln and ".py" in ln):
             if not any(TTS_VENV in v for v in varmap.values()) and TTS_VENV not in body:
                 r.fail(f"{sh.name} runs a voice/ entrypoint but never names "
