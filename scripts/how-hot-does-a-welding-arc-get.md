@@ -91,6 +91,26 @@ The core temperature of eleven thousand degrees Celsius appears in multiple inde
 
 The eleven-thousand-degree figure for a gas tungsten arc core is a typical value under standard conditions — argon shielding, one hundred fifty amperes, two-millimeter arc length, pointed tungsten electrode. Change any of those and the temperature shifts. Published measurements span nine thousand to thirteen thousand degrees Celsius across the range of common welding parameters. The workpiece surface temperature, the heat-affected zone temperature, and the cooling rate after the arc passes are separate questions with separate measurements. Knowing the plasma temperature does not tell you whether the weld will be sound; it tells you the energy available to melt and fuse the metal.
 
+### Electrode material and geometry affect the arc attachment and thermal distribution
+
+{{text}}
+
+Gas tungsten arc welding uses tungsten electrodes because tungsten's melting point of three thousand six hundred ninety-five Kelvin — three thousand four hundred twenty-two degrees Celsius — exceeds the arc attachment temperature. Copper melts at one thousand three hundred fifty-eight Kelvin, and steel at one thousand eight hundred eleven Kelvin, both far below the arc core temperature. The electrode tip erodes slowly through evaporation rather than melting. Electrode geometry matters because a sharp point concentrates current into a smaller attachment area, increasing current density and local temperature. A two-degree included angle produces a narrower, hotter arc than a thirty-degree angle at the same current. The American Welding Society publishes electrode preparation standards that specify tip geometry by current range precisely because the thermal concentration affects penetration depth and bead width.
+
+{{contrast: electrode tip geometry | is=current density control | not=cosmetic preference}}
+
+Consumable electrodes in gas metal arc welding melt continuously, and the wire feed rate must match the melt rate to maintain stable arc length. The wire tip temperature during transfer depends on the transfer mode. Spray transfer, which occurs above a threshold current, produces a stream of small droplets at approximately nineteen thousand degrees Celsius. Short-circuit transfer, used at lower currents, allows the molten tip to contact the workpiece, briefly extinguishing the arc. Globular transfer, an intermediate mode, forms large droplets that detach irregularly. Each mode has a different thermal signature measured by high-speed pyrometry. The transfer mode is not chosen for temperature but for penetration and spatter control, yet the temperature difference between modes is measurable and repeatable.
+
+### Workpiece material and thickness change how heat dissipates from the arc attachment zone
+
+{{steps: Heat flow path | Arc attaches to surface | Heat conducts into base metal | Thermal conductivity and thickness govern spreading | Thin material heats faster | >Burn-through risk on thin gauge}}
+
+Aluminum conducts heat roughly four times faster than steel. An arc on aluminum spreads heat into a wider pool than the same arc on steel, reducing peak temperature at the attachment point but requiring higher travel speed to avoid excessive penetration. Copper conducts even faster, making it difficult to weld without preheating because the base metal draws heat away from the weld pool faster than the arc can sustain melting. The workpiece acts as a heat sink, and its thermal mass determines how quickly the attachment zone cools after the arc passes. Thin sheet metal reaches higher temperatures faster than thick plate under the same arc because there is less material to absorb the energy. Welding procedure specifications adjust current, travel speed, and sometimes preheat temperature based on material thickness for this reason.
+
+{{text}}
+
+The steel anode spot temperature measurement of twenty-eight hundred degrees Celsius, stated earlier, comes from thermocouples embedded just below the surface and sampled at millisecond intervals. The published range across studies is twenty-six hundred to three thousand degrees Celsius depending on current and arc length. This measurement captures the peak temperature, not the sustained temperature, because the arc moves and the metal cools by conduction into the surrounding material. Infrared thermography shows the temperature dropping to below one thousand degrees Celsius within ten millimeters behind the arc in a single-pass weld on quarter-inch plate. The cooling rate affects grain structure in the heat-affected zone and residual stress in the finished joint.
+
 ### Closing
 
 {{ambient}}
@@ -124,6 +144,8 @@ The arc is hotter than the sun's surface, but the sun's surface is not the sun's
 - 10:08 Closing
 
 ## Sources
+- https://www.aws.org/
+- https://www.asminternational.org/
 
 - American Welding Society: Welding Handbook — https://www.aws.org/
 - NIST: Plasma properties and measurement — https://www.nist.gov/

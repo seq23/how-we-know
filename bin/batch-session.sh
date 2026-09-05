@@ -302,6 +302,17 @@ if fs:
     print('  cloud lanes will fail on Monday for reasons that will not name them.')
 "
 
+# ---------------------------------------------------------------------------
+# SELF-HEAL ANYTHING UNDER THE RUNTIME FLOOR, BEFORE IT IS RENDERED.
+#
+# Owner decision 2026-09-05: aim for 12 minutes, tolerate 15% either side, and
+# anything under 10 minutes heals itself. This runs BEFORE the render sweep so
+# an episode that needs more narration gets it, is re-planned and re-narrated
+# for only the beats that moved, and is rendered once - rather than being
+# rendered short and discovered afterwards.
+echo; echo "--- self-heal anything under the runtime floor ---"
+$PY loop/extend.py || echo "  (extension refused for at least one episode; those scripts are unchanged)"
+
 echo; echo "--- verify nothing is clipped ---"
 $PY -c "
 import sys; sys.path.insert(0,'loop')
@@ -310,6 +321,30 @@ d = validate.v13_render_not_clipped().as_dict()
 fs = d.get('failures') or d.get('fails') or []
 print('  V13 examined', d.get('examined'), '- CLEAN' if not fs else '- FAILING:')
 [print('   ',f) for f in fs]"
+
+# THE GATE THAT WAS MISSING. V24 governs the runtime floor and runs where the
+# renders are, which is this Mac. The cloud drafting lane that trips the breaker
+# on a validator failure cannot see renders/ at all, so V24 exempts itself there
+# and passes. The result was a hard floor that nothing on the upload path ever
+# consulted: four episodes at 8.6-9.7 minutes were rendered, receipted and
+# waiting to ship, and the only thing that had noticed was a validator running
+# on a machine with no upload step. Asked here, the answer arrives before the
+# push to R2 rather than after YouTube has it.
+echo; echo "--- verify nothing is under the runtime floor ---"
+$PY -c "
+import sys; sys.path.insert(0,'loop')
+import validate
+d = validate.v24_render_duration_floor().as_dict()
+fs = d.get('failures') or d.get('fails') or []
+print('  V24 examined', d.get('examined'), '- CLEAN' if not fs else '- FAILING:')
+[print('   ',f) for f in fs]
+if fs:
+    print()
+    print('  These renders are under the owner hard floor and must NOT be pushed.')
+    print('  loop/extend.py heals a short script; a short RENDER of a healed')
+    print('  script just needs re-rendering.')
+    sys.exit(1)
+" || { echo; echo "  REFUSING to push to R2 while a render is under the floor."; exit 1; }
 
 echo; echo "--- push to R2 for the cloud upload lane ---"
 if [ -x bin/push-to-r2.sh ]; then

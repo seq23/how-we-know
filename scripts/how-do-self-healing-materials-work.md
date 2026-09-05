@@ -71,6 +71,24 @@ The pattern to hold onto is that healing is transport plus solidification, and e
 {{text}}
 Healing efficiencies in the literature are not directly comparable with one another. Groups use different specimen geometries, different damage modes, different healing times and different temperatures, and a figure quoted for one system under one protocol says little about another. Long-term field data is thin: most published results are laboratory measurements over weeks or months, and the durability claims that matter for concrete infrastructure are on the scale of decades. The 2001 epoxy result and the bacterial concrete work are both well established as demonstrations. What remains genuinely open is how these systems behave after years of real weather, real loading, and real neglect.
 
+### The measurement problem is harder than the mechanism
+
+{{contrast: healing efficiency | is=a property measured under stated conditions | not=an intrinsic material constant}}
+When different laboratories test the same capsule formulation, reported healing efficiencies can vary by ten percentage points or more, even when the chemistry is nominally identical. Part of that scatter is real differences in how capsules are made and dispersed. Part of it is measurement. There is no single standard for what counts as healed. Some groups measure recovered fracture toughness, some measure recovered tensile strength, some measure stiffness, and these properties do not recover at the same rate or to the same degree. A crack can regain most of its stiffness while recovering far less of its strength, because stiffness depends on the crack being closed and strength depends on the bond across it being as strong as the original matrix. The number reported depends on which question was asked.
+
+{{steps: MEASURING RECOVERY | crack a specimen under controlled load | allow healing under stated conditions | re-crack along the same path | >compare second fracture load to first}}
+The standard approach is to fracture a specimen, let it heal, then fracture it again and compare the loads. But that protocol has variables at every stage. How fast was the first crack opened? How long was healing allowed? Was the specimen held closed, or did the crack faces separate slightly? Was it heated, and if so to what temperature? All of these affect the result, and papers do not always report them in enough detail for another group to reproduce the test exactly. This is not misconduct; it is the ordinary difficulty of specifying a physical process completely. But it means that a healing efficiency of seventy-five percent in one paper and sixty percent in another may not be a real difference in the material.
+
+### Shape memory confuses the picture
+
+{{contrast: shape memory | is=a material that returns to a trained shape when triggered | not=repair of a crack or recovery of strength}}
+A related technology that is often grouped with self-healing is shape memory, and the two are not the same thing. A shape-memory polymer can be deformed, then returned to its original shape by heating or some other trigger, but that does not mean a crack has been repaired. The crack may close because the bulk shape has been restored, but unless the crack faces have bonded, the material has not regained its strength. Shape recovery and strength recovery are independent properties. Some intrinsic self-healing polymers also have shape memory, which makes for compelling demonstrations: a cut specimen is heated, the cut closes, and the piece looks whole. But whether it can carry the load it carried before the cut is a separate measurement, and it is that measurement that decides whether healing has occurred in the structural sense.
+
+### The catalyst has to be everywhere and nowhere
+
+{{checklist: CATALYST REQUIREMENTS | +dispersed finely enough to meet every crack path | +stable in the matrix for the material's service life | -must not catalyse the agent prematurely | -must not degrade the matrix}}
+In capsule systems, the catalyst is as critical as the agent, and its placement is a constrained optimization problem. It has to be distributed finely enough that a crack of any orientation will encounter it within the distance the agent can wick. But it also has to remain inert until the agent is released, which means it cannot catalyse any agent that leaks from a capsule during mixing or curing of the bulk material. And it has to be chemically compatible with the matrix for the entire service life, which for a polymer composite might be decades. Ruthenium-based Grubbs catalysts meet these requirements for dicyclopentadiene in epoxy, but they are expensive and sensitive to moisture. Finding a catalyst that is cheap, stable, finely dispersible, and inactive until needed is as hard as finding the agent itself, and many otherwise promising agent chemistries have no suitable catalyst.
+
 ### Closing
 
 {{text}}
@@ -87,6 +105,9 @@ A self-healing material does not repair itself in the way living tissue does. It
 - Number-level source audit: COMPLETE
 
 ## Sources
+- https://www.astm.org/
+- https://www.nature.com/nmat/
+- https://www.fraunhofer.de/
 
 - Nature: Autonomic healing of polymer composites, White et al., 2001 — https://www.nature.com/
 - ASM International: Engineered Materials Handbook, polymers and composites — https://www.asminternational.org/

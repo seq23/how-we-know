@@ -40,9 +40,9 @@
     "baseline_runtime_note": "Mean measured duration of renders/*-final.mp4 across the 17 finished episodes, from loop/state/runtime_model.json. The number floor_avd_seconds is derived against. It is history, not a target.",
     "breach_streak_to_trip": 3,
     "early_exit_minutes": 2.0,
-    "runtime_minutes": 10.5,
+    "runtime_minutes": 12.0,
     "runtime_floor_minutes": 10.0,
-    "runtime_floor_note": "Owner decision 2026-09-03: every video from here exceeds 10 minutes. Shorts are exempt. The 20 episodes rendered on 2026-08-30 predate the rule, run 7.5-8.9 minutes, and are deliberately NOT re-rendered - they are already made and remaking them buys nothing. They are listed in runtime_floor_grandfathered so the guard names them rather than being loosened for them.",
+    "runtime_floor_note": "Owner decision 2026-09-03: every video from here exceeds 10 minutes. Shorts are exempt. The 20 episodes rendered on 2026-08-30 predate the rule, run 7.5-8.9 minutes, and are deliberately NOT re-rendered - they are already made and remaking them buys nothing. They are listed in runtime_floor_grandfathered so the guard names them rather than being loosened for them. 2026-09-05: an episode under this floor now SELF-HEALS -- loop/extend.py authors additional sourced narration to bring it into the band, and only the beats after the insertion point are re-narrated. It is no longer a stop that waits for a person.",
     "runtime_floor_grandfathered": [
       "01-why-deep-sea-creatures-look-so-weird",
       "02-how-deep-sea-creatures-survive-pressure",
@@ -65,7 +65,10 @@
       "19-what-is-the-deepest-fish-ever-recorded",
       "20-what-is-the-midnight-zone"
     ],
-    "note": "Retention is measured against each video's OWN measured duration (loop/durations.py), never against runtime_minutes. runtime_minutes is what scripts are AUTHORED to; it is not, and must never be used as, what retention is divided by."
+    "note": "Retention is measured against each video's OWN measured duration (loop/durations.py), never against runtime_minutes. runtime_minutes is what scripts are AUTHORED to; it is not, and must never be used as, what retention is divided by.",
+    "runtime_tolerance_pct": 15.0,
+    "runtime_target_note": "Owner decision 2026-09-05: AIM FOR 12 MINUTES with a 15% margin of error, so the acceptable band is 10.2-13.8 minutes. Raised from 10.5 because four materials episodes landed at 8.6-9.7 minutes -- under the hard floor -- while being authored to a 10.5 target: a target set AT the floor leaves nowhere to land when the draft comes in short, and the model's word count and the measured render disagree by more than the gap between them. Twelve puts the whole tolerance band above the floor. loop/author.py reads this value; it no longer carries its own copy of the number.",
+    "runtime_tolerance_note": "Percent either side of runtime_minutes that is a normal outcome rather than a defect. 15% of 12 is 1.8 minutes: 10.2 to 13.8. The band's LOWER edge is deliberately above runtime_floor_minutes -- an episode inside the band can never be under the floor, so the two rules cannot disagree."
   },
   "pov": {
     "rotation_window": 12
@@ -107,7 +110,7 @@
     "never_go_dark": true,
     "rebuild_max_extra": 3,
     "why": "At 2/week, 20 scripts is 10 weeks. Warning at 4 weeks leaves ~8 unpublished videos in hand: enough time to notice the stop, run the authoring lane, and fall back to a human if generation fails. Warning at 2 weeks would be a scramble. The runway guard NEVER trips the circuit breaker - halting publishing to protect the backlog is the definition of going dark.",
-    "rebuild_note": "Owner decision 2026-09-03: a runway warning that only ever logged a number meant nothing ran the authoring lane because of it. loop/draft.py:rebuild_runway_if_short() now actually authors up to rebuild_max_extra scripts per short domain when cadence.runway() reports warn/critical, promoting each into scripts/ only if it clears full validation. It never blocks the week already queued and never trips the breaker. If it cannot add even one script, RUNWAY_AUTHORING_FALLBACK names the exact short domain(s) and the calendar date each goes dark. Domain-aware because a single aggregate number cannot say WHICH domain is short — see domains.domain_runway().",
+    "rebuild_note": "Owner decision 2026-09-03: a runway warning that only ever logged a number meant nothing ran the authoring lane because of it. loop/draft.py:rebuild_runway_if_short() now actually authors up to rebuild_max_extra scripts per short domain when cadence.runway() reports warn/critical, promoting each into scripts/ only if it clears full validation. It never blocks the week already queued and never trips the breaker. If it cannot add even one script, RUNWAY_AUTHORING_FALLBACK names the exact short domain(s) and the calendar date each goes dark. Domain-aware because a single aggregate number cannot say WHICH domain is short \u2014 see domains.domain_runway().",
     "domain_awareness_note": "cadence.runway() reports by_domain (each domain's own queue depth / its own live slot count) and short_domains (domains at warn or critical). The overall level escalates to the worse of the aggregate figure and any single active domain's level, so a domain going critical can never hide behind a healthy aggregate the way materials-and-manufacturing (0 queued topics today) would behind deep sea's 16."
   },
   "ypp": {

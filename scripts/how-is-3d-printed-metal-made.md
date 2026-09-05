@@ -84,6 +84,22 @@ The numbers in this script — layer thickness, particle size, laser power, poro
 {{text}}
 This script describes the process and the parameters, but it does not tell you whether a given part design is suitable for additive manufacturing, or whether the properties will meet your requirements. That depends on the alloy, the geometry, the thermal history, the post-processing, and the inspection methods. The process is controllable, but it is not yet as repeatable as casting or forging, and every production program involves iteration. The published porosity limits are for qualification, not for every part that comes off a machine.
 
+### Residual stress accumulates during the build and can cause warping or cracking
+
+{{define: RESIDUAL STRESS | stress locked into a part without external load | caused by non-uniform cooling and thermal expansion mismatch | NIST}}
+Residual stress is stress that remains in a part after the external forces are removed. In metal additive manufacturing, it builds up because each new layer heats the layers below it, causing expansion, and then contracts as it cools. The layers below resist this contraction, and tensile stress accumulates. Residual stresses in as-built laser powder bed fusion parts can reach 200 to 400 megapascals in titanium alloys and 400 to 800 megapascals in nickel superalloys. These values approach the yield strength of the material, which is why parts sometimes crack during the build or warp when removed from the substrate.
+
+{{magnitude: RESIDUAL STRESS | megapascals | TITANIUM_ALLOY=300 | NICKEL_SUPERALLOY=600}}
+The magnitude depends on the alloy, the part geometry, and the scan strategy. A typical measured value is 300 megapascals for titanium alloy and 600 megapascals for nickel superalloy. Long, thin walls accumulate more stress than compact geometries. Scanning the same region repeatedly without allowing it to cool increases the local stress. Some machines preheat the build platform to 200 degrees Celsius or higher to reduce the thermal gradient between the melt pool and the substrate. Preheating reduces residual stress but does not eliminate it. Stress relief heat treatment after the build is mandatory for most structural applications.
+
+### Measurement of powder reuse and degradation is required for process control
+
+{{chain: POWDER LIFECYCLE | virgin powder loaded | unused powder recovered after build | sieved to remove spatter and agglomerates | blended with virgin powder | monitoring and reuse}}
+Powder is expensive, so it is reused. After a build, the unused powder is recovered from the build chamber, sieved to remove spatter — small solidified droplets ejected from the melt pool — and agglomerates. The recovered powder is blended with virgin powder for the next build, with monitoring at each cycle. But powder degrades with each cycle. Oxygen and nitrogen content increase from exposure to the atmosphere during handling. Particle size distribution shifts as fine particles are preferentially consumed and spatter adds coarse irregular particles. ASTM standards require tracking the number of reuse cycles and testing powder chemistry and particle size distribution periodically.
+
+{{uncertain: 12 | cycles | 5 to 20 | depends on alloy and handling protocol | typical maximum reuse}}
+The number of times powder can be reused varies. For titanium alloys, 12 cycles is a common industry limit, though some programs allow up to 20 if the powder passes chemistry and flowability tests. For aluminum alloys, the limit is lower — around 5 to 8 cycles — because aluminum oxidizes more readily. Powder that fails specification is either discarded or sent back to the supplier for reprocessing. The cost of powder and the cost of testing it are both significant fractions of the total part cost, which is why powder management is a process control issue, not just a material issue.
+
 ### Closing
 
 {{ambient}}
@@ -116,6 +132,8 @@ Metal additive manufacturing is not magic. It is controlled melting, repeated th
 - 10:28 Closing
 
 ## Sources
+- https://www.nist.gov/
+- https://www.astm.org/
 
 - ASTM International: Additive Manufacturing Standards — https://www.astm.org/
 - NIST: Additive Manufacturing Program — https://www.nist.gov/

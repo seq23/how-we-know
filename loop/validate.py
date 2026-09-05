@@ -2716,6 +2716,119 @@ def v36_editorial_gate_is_enforced() -> Result:
     return r
 
 
+def v37_runtime_target_and_self_heal() -> Result:
+    """The runtime target, its tolerance band, and the self-heal that enforces it.
+
+    Owner decision 2026-09-05: aim for 12 minutes, tolerate 15% either side,
+    and anything under 10 minutes SELF-HEALS. Four things have to stay true for
+    that to be a rule rather than a sentence in a config file, and each one was
+    false before it was written:
+
+      * **The band's lower edge must sit above the hard floor.** 15% under 12 is
+        10.2, above the 10-minute floor, so "inside the band" and "over the
+        floor" cannot disagree. A target set AT the floor is what produced four
+        episodes at 8.6-9.7 minutes: authored to 10.5 with a floor of 10, every
+        one of them missed low and there was nowhere to land.
+      * **One copy of the number.** loop/author.py carried
+        RUNTIME_TARGET_MINUTES = 10.5 as a literal while loop/config.json said
+        the same thing. Raising the config alone would have left drafting at
+        10.5 for ever, which is the duplicated-constant defect that module's own
+        docstring describes at length.
+      * **Something must run the self-heal.** A stage nothing invokes is the
+        "exists but nothing invokes it" class - which is exactly what
+        research/imagery_materials.py was.
+      * **Something must refuse to ship a short render.** V24 runs where the
+        renders are, which is the Mac; the cloud drafting lane that trips the
+        breaker cannot see renders/ and exempts itself. Before 2026-09-05 the
+        floor was consulted by nothing on the upload path at all.
+
+    Hard-fails when it examines zero items.
+    """
+    r = Result("V37 runtime-target")
+    cfg = config()["retention"]
+
+    r.examined += 1
+    target = float(cfg.get("runtime_minutes", 0))
+    if target <= 0:
+        r.fail("loop/config.json retention.runtime_minutes is missing or zero.")
+        return r
+
+    r.examined += 1
+    tol = float(cfg.get("runtime_tolerance_pct", 0))
+    if tol <= 0:
+        r.fail("retention.runtime_tolerance_pct is missing. Without a stated "
+               "tolerance, 'about 12 minutes' has no edges and every episode "
+               "is either exactly right or a defect.")
+        return r
+
+    floor = float(cfg["runtime_floor_minutes"])
+    band_min = target * (1 - tol / 100)
+    r.examined += 1
+    if band_min < floor:
+        r.fail(f"the tolerance band starts at {band_min:.2f} min, BELOW the "
+               f"{floor} min hard floor. An episode could sit inside the "
+               f"allowed band and under the floor at the same time, which "
+               f"makes the two rules contradict each other. Raise "
+               f"runtime_minutes or narrow runtime_tolerance_pct.")
+
+    import author as _a                                    # noqa: PLC0415
+    r.examined += 1
+    if abs(_a.RUNTIME_TARGET_MINUTES - target) > 1e-6:
+        r.fail(f"loop/author.py drafts to {_a.RUNTIME_TARGET_MINUTES} min while "
+               f"loop/config.json says {target}. Scripts would be written to "
+               f"the old number indefinitely and nothing would say so.")
+    r.examined += 1
+    if "RUNTIME_TARGET_MINUTES = 10" in (ROOT / "loop" / "author.py").read_text():
+        r.fail("loop/author.py hardcodes a runtime target again. The number "
+               "lives in loop/config.json; a second copy is how three call "
+               "sites came to agree on a guess.")
+
+    heal = ROOT / "loop" / "extend.py"
+    r.examined += 1
+    if not heal.exists():
+        r.fail("loop/extend.py is missing, so nothing heals a short episode "
+               "and the floor is a stop that waits for a person.")
+        return r
+
+    # AN INVOCATION, NOT A MENTION. A first version of this searched the raw
+    # file for "loop/extend.py". Removing the actual call left the explanatory
+    # comment above it AND a print() inside a heredoc that names the file, and
+    # the check still passed - so it would have gone on asserting the self-heal
+    # was wired long after it had been unwired. It now requires a line that
+    # RUNS it.
+    batch = (ROOT / "bin" / "batch-session.sh").read_text()
+    r.examined += 1
+    if not re.search(r"^\s*(\$PY|python3?|\S*/python)\s+loop/extend\.py",
+                     batch, re.M):
+        r.fail("no lane runs loop/extend.py. A self-heal nothing invokes is "
+               "the 'exists but nothing invokes it' defect, and the floor goes "
+               "back to being a stop.")
+    r.examined += 1
+    if "v24_render_duration_floor" not in batch:
+        r.fail("bin/batch-session.sh does not check V24 before pushing to R2. "
+               "V24 runs only where renders exist - this Mac - and the cloud "
+               "lane exempts itself, so without this check nothing on the "
+               "upload path consults the runtime floor at all.")
+
+    # And the heal must be able to tell a short episode from one the narrator
+    # is halfway through, which is the difference between healing and padding.
+    import extend as _e                                    # noqa: PLC0415
+    r.examined += 1
+    src = heal.read_text()
+    if "narration incomplete" not in src:
+        r.fail("loop/extend.py does not distinguish an episode that is SHORT "
+               "from one the narrator has not finished. Partial audio measures "
+               "as a short episode - what-is-concrete-made-of read as 5.09 min "
+               "on 1,678 words - and would be padded for no reason.")
+    r.examined += 1
+    t, bmin, f = _e.band()
+    if (t, round(bmin, 2), f) != (target, round(band_min, 2), floor):
+        r.fail(f"loop/extend.py computes a different band ({t}, {bmin:.2f}, "
+               f"{f}) than loop/config.json states ({target}, "
+               f"{band_min:.2f}, {floor}).")
+    return r
+
+
 # ------------------------------------------------------------------ runner
 
 def run_all(items) -> tuple[bool, list[dict]]:
@@ -2741,7 +2854,8 @@ def run_all(items) -> tuple[bool, list[dict]]:
                v33_every_domain_is_harvested(),
                v34_niche_lifecycle_is_acted_on(),
                v35_digest_reaches_her(),
-               v36_editorial_gate_is_enforced()]
+               v36_editorial_gate_is_enforced(),
+               v37_runtime_target_and_self_heal()]
     rows = [r.as_dict() for r in results]
     return all(r.ok for r in results), rows
 
