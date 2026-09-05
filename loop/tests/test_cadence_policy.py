@@ -252,8 +252,28 @@ def check() -> list[str]:
     warn = float(cfg["runway"]["warn_weeks"])
     crit = float(cfg["runway"]["critical_weeks"])
     ok = cadence.runway(2)
+    # THIS USED TO ASSERT THE LIVE CHANNEL WAS HEALTHY -- "full inventory
+    # reported runway level ok" -- which is a fact about today, not about the
+    # calculation. It broke on 2026-09-05 for the right reason: deep sea's
+    # remaining queue really had gone to zero (every scored topic was already
+    # made), the aggregate still read 17 weeks, and the level correctly went
+    # critical off the per-domain view. A test that fails when the channel is
+    # in trouble is an alarm, not a test.
+    #
+    # The invariant is the one domain_runway() exists for: an aggregate that
+    # looks fine may hide a domain with nothing left, so a bad level must
+    # always NAME the domain that caused it.
     if ok["level"] != "ok":
-        fails.append(f"full inventory reported runway level {ok['level']!r}")
+        short = ok.get("short_domains") or []
+        if not short:
+            fails.append(f"runway reported {ok['level']!r} at {ok['weeks_remaining']} "
+                         f"weeks and named no short domain, so nothing says "
+                         f"WHICH niche is out of topics")
+        for d in short:
+            per_dom = (ok.get("by_domain") or {}).get(d, {})
+            if per_dom.get("level") not in ("warn", "critical"):
+                fails.append(f"{d} is listed as short but its own level is "
+                             f"{per_dom.get('level')!r}")
 
     # Force the threshold by asking at an absurd cadence: same arithmetic.
     #
