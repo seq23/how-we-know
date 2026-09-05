@@ -713,6 +713,323 @@
    "domain": "materials-and-manufacturing",
    "source": "owner-approved 2026-09-05",
    "line": "What convinced me these were real was that the papers report how much strength came back, not that the crack closed. A crack you can no longer see and a crack that can carry load again are different claims, and the honest work says which one it is making."
+  },
+  {
+   "id": "pov-102",
+   "tag": "confidence",
+   "tier": "transferable",
+   "source_answer": "01",
+   "line": "My first reaction to being wrong is irritation — not because reality contradicted me, but because I let a bad model get far enough into my thinking to become a belief. I don't feel loyalty to being wrong just because I was confidently wrong yesterday.",
+   "source": "interview-3 2026-09-05"
+  },
+  {
+   "id": "pov-103",
+   "tag": "evidence",
+   "tier": "transferable",
+   "source_answer": "01",
+   "line": "Once I can locate the failure — bad source, lazy assumption, missing context, evidence I ignored because it was inconvenient — I can let the belief go.",
+   "source": "interview-3 2026-09-05"
+  },
+  {
+   "id": "pov-104",
+   "tag": "trust",
+   "tier": "transferable",
+   "source_answer": "02",
+   "line": "I stop trusting an explanation when it uses complexity to hide the fact that the speaker can't show their work. If every direct question produces more jargon and more certainty, but never a source or a mechanism, the explanation is protecting the person, not describing reality.",
+   "source": "interview-3 2026-09-05"
+  },
+  {
+   "id": "pov-105",
+   "tag": "uncertainty",
+   "tier": "transferable",
+   "source_answer": "02",
+   "line": "Honest expertise has edges. It can tell you what is known, what is inferred, and what is still unproven.",
+   "source": "interview-3 2026-09-05"
+  },
+  {
+   "id": "pov-106",
+   "tag": "numbers",
+   "tier": "transferable",
+   "source_answer": "03",
+   "line": "Numbers acquire authority faster than they acquire meaning. A precise figure can pass through ten articles, a slide deck and an AI answer until nobody knows who measured it or what they actually measured.",
+   "source": "interview-3 2026-09-05"
+  },
+  {
+   "id": "pov-107",
+   "tag": "evidence",
+   "tier": "transferable",
+   "source_answer": "03",
+   "line": "Naming a public source doesn't guarantee a number is right. It makes the number inspectable — and therefore correctable.",
+   "source": "interview-3 2026-09-05"
+  },
+  {
+   "id": "pov-108",
+   "tag": "authority",
+   "tier": "transferable",
+   "source_answer": "04",
+   "line": "People describe systems as if a clean interface proves the machinery underneath. Automated, when a human is rescuing it offstage. Secure, because there's a login page. Validated, because a check turned green.",
+   "source": "interview-3 2026-09-05"
+  },
+  {
+   "id": "pov-109",
+   "tag": "confidence",
+   "tier": "transferable",
+   "source_answer": "04",
+   "line": "The confidence usually rises as contact with the thing falls.",
+   "source": "interview-3 2026-09-05"
+  },
+  {
+   "id": "pov-110",
+   "tag": "systems",
+   "tier": "transferable",
+   "source_answer": "05",
+   "line": "I find a clean audit trail beautiful. A file named correctly. A number you can follow to its source. A system whose failures leave evidence instead of excuses. Most people see administrative debris; I see order made visible.",
+   "source": "interview-3 2026-09-05"
+  },
+  {
+   "id": "pov-111",
+   "tag": "risk",
+   "tier": "transferable",
+   "source_answer": "06",
+   "line": "What I wonder about anything engineered is where the hidden dependencies are. What assumption is carrying more load than it looks like it's carrying? What fails first? What can degrade without anyone noticing?",
+   "source": "interview-3 2026-09-05"
+  },
+  {
+   "id": "pov-112",
+   "tag": "systems",
+   "tier": "transferable",
+   "source_answer": "06",
+   "line": "The finished object is impressive, but I'm usually more interested in the chain of decisions and tolerances that keeps it from becoming a disaster.",
+   "source": "interview-3 2026-09-05"
+  },
+  {
+   "id": "pov-113",
+   "tag": "systems",
+   "tier": "transferable",
+   "source_answer": "07",
+   "line": "Complicated means there are many parts. Hard means the important constraint cannot be avoided. Hundreds of files is complicated — tools can map it. Proving something is actually correct is hard, because a green check can still be stale, incomplete, or aimed at the wrong thing.",
+   "source": "interview-3 2026-09-05"
+  },
+  {
+   "id": "pov-114",
+   "tag": "thesis",
+   "tier": "transferable",
+   "source_answer": "08",
+   "line": "Reality is usually available. People keep choosing the version that's easier to sell.",
+   "source": "interview-3 2026-09-05"
+  },
+  {
+   "id": "pov-115",
+   "tag": "scale",
+   "tier": "specific",
+   "source_answer": "09a",
+   "line": "Four light-years slides off at first — the words are too neat for the distance they contain. Light, the fastest thing we know, travels for four full years, and that is merely the distance to a nearby star.",
+   "source": "interview-3 2026-09-05",
+   "domain": "space-astronomy"
+  },
+  {
+   "id": "pov-116",
+   "tag": "unknown",
+   "tier": "specific",
+   "source_answer": "09b",
+   "line": "What unsettles me about space isn't that it's large. It's that almost all of it is permanently beyond reach, and the light we see is already history. We can know something is there and still be structurally unable to see what it is now.",
+   "source": "interview-3 2026-09-05",
+   "domain": "space-astronomy"
+  },
+  {
+   "id": "pov-117",
+   "tag": "systems",
+   "tier": "specific",
+   "source_answer": "10a",
+   "line": "I'd defend inertia. School reduces it to a sentence about objects staying at rest or in motion. In real systems it is almost a governing law: motion continues, bad processes persist, and changing direction costs force.",
+   "source": "interview-3 2026-09-05",
+   "domain": "physics-fundamentals"
+  },
+  {
+   "id": "pov-118",
+   "tag": "confidence",
+   "tier": "specific",
+   "source_answer": "10b",
+   "line": "Time behaving differently depending on speed and gravity still feels wrong to me. My intuition was trained at human scale and has no veto over evidence — but I like that tension. Something can be demonstrably true and still refuse to feel natural.",
+   "source": "interview-3 2026-09-05",
+   "domain": "physics-fundamentals"
+  },
+  {
+   "id": "pov-119",
+   "tag": "systems",
+   "tier": "specific",
+   "source_answer": "11a",
+   "line": "Watching something be made, I think about how many things had to become controllable first — temperature, pressure, purity, timing, tolerances, sequence, inspection. What looks smooth at the end is usually violent forces being controlled very precisely.",
+   "source": "interview-3 2026-09-05",
+   "domain": "materials-and-manufacturing"
+  },
+  {
+   "id": "pov-120",
+   "tag": "failure",
+   "tier": "specific",
+   "source_answer": "11b",
+   "line": "Failure isn't an insult to engineering; pretending failure has been eliminated is. Every material has conditions, limits and a life. The question is whether those limits were understood and monitored, or ignored until the failure became somebody else's emergency.",
+   "source": "interview-3 2026-09-05",
+   "domain": "materials-and-manufacturing"
+  },
+  {
+   "id": "pov-121",
+   "tag": "confidence",
+   "tier": "specific",
+   "source_answer": "11c",
+   "line": "I get skeptical the moment a material is discussed without a use case. There is no magic material, only a bundle of properties and tradeoffs. Strong in what direction? At what temperature? At what cost?",
+   "source": "interview-3 2026-09-05",
+   "domain": "materials-and-manufacturing"
+  },
+  {
+   "id": "pov-122",
+   "tag": "numbers",
+   "tier": "specific",
+   "source_answer": "11c",
+   "line": "A remarkable laboratory property is not the same thing as a reliable system.",
+   "source": "interview-3 2026-09-05",
+   "domain": "materials-and-manufacturing"
+  },
+  {
+   "id": "pov-123",
+   "tag": "deeptime",
+   "tier": "specific",
+   "source_answer": "12a",
+   "line": "I can't hold hundreds of millions of years as lived time, and I don't think anyone honestly can. I can hold it through layers, extinction boundaries and comparisons. Without those anchors, 'millions of years' is a sound rather than an idea.",
+   "source": "interview-3 2026-09-05",
+   "domain": "paleontology-extinction"
+  },
+  {
+   "id": "pov-124",
+   "tag": "evidence-limit",
+   "tier": "specific",
+   "source_answer": "12b",
+   "line": "A species can be successful for longer than our minds can represent and still leave almost nothing we happen to find. Absence of evidence is sometimes a statement about preservation, exposure and luck — not about whether a species flourished.",
+   "source": "interview-3 2026-09-05",
+   "domain": "paleontology-extinction"
+  },
+  {
+   "id": "pov-125",
+   "tag": "failure",
+   "tier": "specific",
+   "source_answer": "13a",
+   "line": "When something fails badly I look first at the system that made the failure possible. What was supposed to stop this? Did the control exist only on paper? Could one ordinary mistake travel all the way to catastrophe?",
+   "source": "interview-3 2026-09-05",
+   "domain": "incident-analysis"
+  },
+  {
+   "id": "pov-126",
+   "tag": "risk",
+   "tier": "specific",
+   "source_answer": "13b",
+   "line": "Blaming the person at the controls is emotionally efficient and analytically weak. If one predictable human error can destroy the system, the system was already carrying the failure.",
+   "source": "interview-3 2026-09-05",
+   "domain": "incident-analysis"
+  },
+  {
+   "id": "pov-127",
+   "tag": "systems",
+   "tier": "specific",
+   "source_answer": "14a",
+   "line": "The routineness impresses me more than the scale. A megaproject photographed at completion is spectacle; thousands of people repeatedly making correct decisions is the achievement. Civilization depends on extraordinary coordination becoming boring enough to repeat.",
+   "source": "interview-3 2026-09-05",
+   "domain": "infrastructure-megaprojects"
+  },
+  {
+   "id": "pov-128",
+   "tag": "unknown",
+   "tier": "specific",
+   "source_answer": "14b",
+   "line": "The electrical grid is the thing I rely on continuously and understand least. The wall socket hides an enormous coordination problem.",
+   "source": "interview-3 2026-09-05",
+   "domain": "infrastructure-megaprojects"
+  },
+  {
+   "id": "pov-129",
+   "tag": "systems",
+   "tier": "specific",
+   "source_answer": "15a",
+   "line": "A container arriving on time is impressive precisely because it becomes invisible — ports, cranes, manifests, customs, weather routing, labour and financing aligned closely enough that you experience none of them. Reliability is often the successful removal of drama.",
+   "source": "interview-3 2026-09-05",
+   "domain": "logistics-how-things-move"
+  },
+  {
+   "id": "pov-130",
+   "tag": "earth",
+   "tier": "specific",
+   "source_answer": "16a",
+   "line": "It's a useful correction to the fantasy that the ground means permanence. We build property lines, cities and institutions on a surface that folds, slips, rises, erodes and recycles itself. Human stability is real, but it is local and temporary.",
+   "source": "interview-3 2026-09-05",
+   "domain": "earth-science-geology-volcano"
+  },
+  {
+   "id": "pov-131",
+   "tag": "instruments",
+   "tier": "specific",
+   "source_answer": "17a",
+   "line": "A distant date becomes credible when independent methods converge and their assumptions are exposed. The number is not real because it is precise. It is real to the degree that the method survives attempts to break it.",
+   "source": "interview-3 2026-09-05",
+   "domain": "measurement-and-dating"
+  },
+  {
+   "id": "pov-132",
+   "tag": "numbers",
+   "tier": "specific",
+   "source_answer": "17b",
+   "line": "Measurement gets oversold when a proxy quietly becomes the thing itself. Dashboards are especially dangerous, because visual precision makes selection bias and bad definitions look settled. Counting is not the same as understanding.",
+   "source": "interview-3 2026-09-05",
+   "domain": "measurement-and-dating"
+  },
+  {
+   "id": "pov-133",
+   "tag": "uncertainty",
+   "tier": "specific",
+   "source_answer": "18b",
+   "line": "Probability is the honest form of the answer, not a defect in it. A forecast is a calibrated statement about possible outcomes, not a promise. I'd rather have an honest range that can update than false confidence designed to sound decisive.",
+   "source": "interview-3 2026-09-05",
+   "domain": "weather-and-storms"
+  },
+  {
+   "id": "pov-134",
+   "tag": "unknown",
+   "tier": "specific",
+   "source_answer": "19a",
+   "line": "I know the consumer end of electricity far better than the system that makes it possible. 'The power is on' compresses markets, physics, maintenance, fuel, weather and operators into one invisible result. That gap between dependence and understanding deserves more respect.",
+   "source": "interview-3 2026-09-05",
+   "domain": "energy-and-power"
+  },
+  {
+   "id": "pov-135",
+   "tag": "policy",
+   "tier": "specific",
+   "source_answer": "19b",
+   "line": "The dishonest energy argument is the one pretending there is a source with benefits but no system costs. Selecting one attractive metric and hiding the rest is advocacy wearing a lab coat.",
+   "source": "interview-3 2026-09-05",
+   "domain": "energy-and-power"
+  },
+  {
+   "id": "pov-136",
+   "tag": "thesis",
+   "tier": "transferable",
+   "source_answer": "20",
+   "line": "Knowledge is made, not announced. It comes from observation, measurement, argument, failed attempts, correction, replication — and people willing to separate what they know from what they merely suspect.",
+   "source": "interview-3 2026-09-05"
+  },
+  {
+   "id": "pov-137",
+   "tag": "trust",
+   "tier": "transferable",
+   "source_answer": "20",
+   "line": "The goal isn't to distrust everything. It's to understand what deserves trust, why, and under what conditions that trust should change.",
+   "source": "interview-3 2026-09-05"
+  },
+  {
+   "id": "pov-138",
+   "tag": "trust",
+   "tier": "transferable",
+   "source_answer": "21",
+   "line": "I'd want to stop if this channel began rewarding certainty more than truth — selecting evidence to protect the brand, repeating numbers because they performed well, turning unresolved questions into clean stories. The moment it can't correct itself without treating correction as humiliation, it has become the thing it was built to expose.",
+   "source": "interview-3 2026-09-05"
   }
  ],
  "interview_2": "interveiw_2_broad.txt",
@@ -723,6 +1040,51 @@
    "pov-099",
    "pov-100",
    "pov-101"
+  ]
+ },
+ "interview_3": {
+  "date": "2026-09-05",
+  "questions": "pov/interview-3-broad-domains.md",
+  "answers": "pov/answers-3.txt",
+  "note": "Eleven domains in the order loop/domains.lifecycle() would promote them, so a niche has a voice before it is promoted rather than after. Part one produced tier:transferable lines usable in any evidence-based niche; part two produced tier:specific lines that each carry the domain they belong to. Questions 15b, 16b and 18a were skipped, which the interview explicitly allows -- six domains answered well beats eleven answered thinly.",
+  "ids": [
+   "pov-102",
+   "pov-103",
+   "pov-104",
+   "pov-105",
+   "pov-106",
+   "pov-107",
+   "pov-108",
+   "pov-109",
+   "pov-110",
+   "pov-111",
+   "pov-112",
+   "pov-113",
+   "pov-114",
+   "pov-115",
+   "pov-116",
+   "pov-117",
+   "pov-118",
+   "pov-119",
+   "pov-120",
+   "pov-121",
+   "pov-122",
+   "pov-123",
+   "pov-124",
+   "pov-125",
+   "pov-126",
+   "pov-127",
+   "pov-128",
+   "pov-129",
+   "pov-130",
+   "pov-131",
+   "pov-132",
+   "pov-133",
+   "pov-134",
+   "pov-135",
+   "pov-136",
+   "pov-137",
+   "pov-138"
   ]
  }
 }
