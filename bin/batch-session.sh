@@ -231,6 +231,29 @@ for slug in $(renderable); do
   render_one "$slug" || { echo "  --max-episodes $MAX_EPISODES reached; stopping"; break; }
 done
 
+echo; echo "--- can the cloud see everything this batch just used? ---"
+# THE MAC IS WHERE UNTRACKED FILES ARE BORN, so this is where the question is
+# cheapest to answer. V30 walks every lane entrypoint's import closure and every
+# tracked rights manifest, and names anything git cannot see. On 2026-09-04
+# three modules that existed only here cost a day: five validators hard-failing
+# on zero items, a tripped breaker, a Monday lane red since 31 August, a CI
+# suite silently one file short, and a render that died on an argument the
+# committed assemble.py had never heard of. Every one of those was this, wearing
+# a different face. Asking here means the answer arrives before the push, not
+# after the cloud has spent a Monday on it.
+$PY -c "
+import sys; sys.path.insert(0,'loop')
+import validate
+d = validate.v30_cloud_visibility().as_dict()
+fs = d.get('failures') or d.get('fails') or []
+print('  V30 examined', d.get('examined'), '- CLEAN' if not fs else '- FAILING:')
+[print('   ', f) for f in fs]
+if fs:
+    print()
+    print('  These files exist on this Mac and nowhere else. Commit them, or the')
+    print('  cloud lanes will fail on Monday for reasons that will not name them.')
+"
+
 echo; echo "--- verify nothing is clipped ---"
 $PY -c "
 import sys; sys.path.insert(0,'loop')
