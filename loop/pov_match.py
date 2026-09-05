@@ -1,7 +1,8 @@
 """Automatic POV selection. Matching, not approving.
 
-`pov/pov-bank.json` holds 98 lines drawn from the owner's own interview and
-`answers.txt`. **That bank is her approved voice.** There is no per-script
+`pov/pov-bank.json` holds the lines drawn from the owner's own interviews --
+`answers.txt` (2026-08-30, deep sea) and `answers-3.txt` (2026-09-05, eleven
+domains). **That bank is her approved voice.** There is no per-script
 question about whether a line is really hers — every line in the bank already
 is. So this is a matching problem, and it runs unattended.
 
@@ -9,7 +10,8 @@ Selection, in order:
   1. an existing entry in `pov/pov-assignments.json` wins — a human already
      matched that script by hand
   2. otherwise the best tag match against the script's subject
-  3. `tier: specific` lines are deep-sea only, per the bank's own rules
+  3. a `tier: specific` line fits only ITS OWN domain -- deep sea's, materials'
+     or whichever domain the interview it came from was about
   4. never reuse a line inside the rotation window (12 videos)
   5. **if nothing matches, take a NAMED STOP — never invent a line.** That rule
      is the bank's, and it is the one place this module refuses to guess.
@@ -32,10 +34,19 @@ ASSIGNMENTS = ROOT / "pov" / "pov-assignments.json"
 # bank does not use ("wonder", "exploration") and left real ones like
 # "instruments" and "uncertainty" unreachable, so vent and instrument topics
 # matched nothing at all. The words below are subject matter, never her phrasing.
+# THE VOCABULARY IS PER TAG, AND IT HAD ONLY EVER SEEN ONE NICHE. Every
+# pattern below was written against deep-sea subjects, so a materials, space or
+# energy subject fired NOTHING and every such episode fell through to the
+# transferable fallback -- silently, because the fallback always answers. The
+# 2026-09-05 additions are marked, and every added word is taken from a real
+# queued slug in research/publish_order*.json or research/broad_mined.json.
 TAG_SIGNALS = {
     "scale": r"deep|depth|trench|challenger|mariana|hadal|kilometre|kilometer|"
              r"metre|meter|how (?:deep|big|far|large)|size|vast|enormous|huge|"
-             r"colossal|giant",
+             r"colossal|giant|"
+             # 2026-09-05:
+             r"light[- ]year|universe|galaxy|nanometre|nanometer|micron|"
+             r"atom|molecul|megaproject|tunnel|dam\b|span",
     "disorientation": r"dark|darkness|black|midnight|zone|navigat|orient|lost|"
                       r"blind|no light|pitch",
     "fear": r"scary|scared|fear|terrif|monster|creepy|nightmare|danger|shark|"
@@ -47,41 +58,88 @@ TAG_SIGNALS = {
                        r"light organ|photophore",
     "evidence": r"how do (?:we|they|scientists) know|evidence|proof|prove|"
                 r"study|studies|research|discover|record|data|observ|sample",
+    # NEW TAG SIGNAL, not a new tag: "evidence-limit" was already in the bank
+    # on three lines and had no entry here at all, so score() returned 0.0 for
+    # every one of them. A tag with no vocabulary is a line that can never be
+    # selected.
+    "evidence-limit": r"unknown|unclear|not known|no one knows|nobody knows|"
+                      r"estimat|uncertain|limit|incomplete|missing|"
+                      r"how (?:do|did) (?:we|they|scientists) know|"
+                      r"fossil|preserv|record|sample|measured|inferred",
     "instruments": r"sonar|measure|measured|measurement|instrument|sensor|"
                    r"camera|rov\b|submersible|submarine|dive|expedition|"
                    r"explor|map|mapping|survey|probe|vehicle|trieste|"
-                   r"echo ?sound|multibeam",
+                   r"echo ?sound|multibeam|"
+                   # 2026-09-05:
+                   r"telescope|microscope|spectro|x-?ray|scan|calibrat|"
+                   r"radiometric|carbon dating|dating|detector|assay|"
+                   r"metrolog|test method",
     "uncertainty": r"uncertain|estimate|approximat|about|roughly|margin|"
-                   r"error|range|confiden|precise|accuracy|disput",
+                   r"error|range|confiden|precise|accuracy|disput|"
+                   # 2026-09-05:
+                   r"forecast|probabilit|likelihood|error bar|scatter|variance",
     "numbers": r"how many|how much|number|count|percent|figure|statistic|"
-               r"\d",
+               r"\d|"
+               # 2026-09-05:
+               r"how (?:hot|strong|fast|thin|thick|heavy)|degrees|celsius|"
+               r"fahrenheit|kelvin|psi\b|pascal|gpa\b|mpa\b|watt|volt|"
+               r"tonne|ton\b",
     "unknown": r"unknown|unexplored|never seen|undiscovered|mystery|"
-               r"how little|unmapped|rare|first ever|only.*times",
+               r"how little|unmapped|rare|first ever|only.*times|"
+               # 2026-09-05:
+               r"hidden|invisible|underneath|behind the|inside a|"
+               r"takes for granted",
     "systems": r"system|ecosystem|food web|cycle|chain|network|"
-               r"whale fall|vent|seep|community|interact",
+               r"whale fall|vent|seep|community|interact|"
+               # 2026-09-05:
+               r"manufactur|fabricat|factory|foundry|refin|assembly|process|"
+               r"supply chain|logistic|container|port\b|freight|grid\b|"
+               r"infrastructure|bridge|canal|pipeline|reactor|plant\b|"
+               r"production|made\b|built|construct",
     "earth": r"volcan|tectonic|plate|geolog|seafloor|crust|mineral|"
              r"hydrothermal|vent|smoker|earthquake|ridge|magma|"
-             r"ocean floor|planet|climate|current",
+             r"ocean floor|planet|climate|current|"
+             # 2026-09-05:
+             r"erup|lava|sediment|strata|fault line|glacier|storm|"
+             r"hurricane|tornado|weather",
     "deeptime": r"million years|billion years|ancient|prehistor|fossil|"
-                r"evolution|era|epoch|deep time",
+                r"evolution|era|epoch|deep time|"
+                # 2026-09-05:
+                r"dinosaur|permian|cretaceous|triassic|jurassic|"
+                r"mass extinction|geologic time",
     "ancient": r"ancient|prehistor|fossil|extinct|primitive|living fossil|"
                r"survived from",
     "failure": r"fail|failure|implod|collapse|accident|disaster|wreck|"
-               r"sank|sink|lost at sea|malfunction|went wrong",
+               r"sank|sink|lost at sea|malfunction|went wrong|"
+               # 2026-09-05:
+               r"fractur|shatter|crack|fatigue|rust|corro|brittle|defect|"
+               r"wear\b|explod|melt|buckl|creep|delaminat|weld",
     "risk": r"risk|danger|safe|safety|hazard|pressure|survive|deadly|"
-            r"fatal|threat|what happens if",
+            r"fatal|threat|what happens if|"
+            # 2026-09-05:
+            r"blackout|outage|failure mode|tolerance|margin of safety|"
+            r"catastroph|incident",
     "media": r"documentar|footage|video|photo|image|viral|headline|"
              r"news|reported|clickbait|shown|film",
     "authority": r"expert|scientist|researcher|noaa|mbari|institute|"
-                 r"official|agency|according to|who decides|authority",
+                 r"official|agency|according to|who decides|authority|"
+                 # 2026-09-05:
+                 r"nist|iso\b|astm|standards body|nasa|usgs|esa\b|"
+                 r"national laborator",
     "trust": r"trust|believ|reliable|credib|honest|misleading|"
              r"true|fake|myth|misconception",
     "confidence": r"sure|certain|know for sure|confiden|how sure|"
-                  r"definit|best guess",
+                  r"definit|best guess|"
+                  # 2026-09-05:
+                  r"how strong|strength|stronger|strongest|toughest|hardest|"
+                  r"record|claim|magic|miracle|breakthrough",
     "thesis": r"why|what is|what are|how does|how do|explain|"
               r"the point|matters|meaning",
     "policy": r"protect|conservation|regulat|law|treaty|mining|"
-              r"fishing|manage|govern|manage",
+              r"fishing|manage|govern|"
+              # 2026-09-05:
+              r"energy|power grid|nuclear|renewable|fossil fuel|emission|"
+              r"subsid|tariff",
 }
 _COMPILED = {t: re.compile(p, re.I) for t, p in TAG_SIGNALS.items()}
 
@@ -117,8 +175,34 @@ def hand_assignments() -> dict:
         return {a["video"]: a for a in json.load(fh)["assignments"]}
 
 
-def score(line: dict, subject: str) -> float:
-    """How well a bank line's tag fits this subject. Zero means no fit."""
+# A tier:specific line with no `domain` came from the first interview, which
+# was entirely about deep sea. It is not "domain-less" -- it is deep sea's, and
+# saying so here is what lets the rule below be about domains rather than about
+# one hardcoded niche.
+LEGACY_SPECIFIC_DOMAIN = "deep-sea-ocean-science"
+
+
+def line_domain(line: dict) -> str:
+    return line.get("domain") or LEGACY_SPECIFIC_DOMAIN
+
+
+def score(line: dict, subject: str, domain: str | None = None) -> float:
+    """How well a bank line fits this subject. Zero means no fit.
+
+    THE SPECIFIC RULE IS ABOUT DOMAINS, NOT ABOUT DEEP SEA. This multiplied
+    every `tier: specific` line by zero unless the subject text matched a
+    deep-sea vocabulary -- correct while the bank held one interview about one
+    niche, and wrong the moment a second domain's lines existed. Three
+    materials lines and twenty-one from the eleven-domain interview would every
+    one of them have scored 0.0 for their own subject: present in the bank,
+    impossible to select, and invisible, because the transferable fallback
+    always answers.
+
+    `domain` is the episode's domain, resolved from its slug by select(). A
+    specific line fits when it is the SAME domain. Where no domain can be
+    resolved the deep-sea text signal is still honoured, so an unattributed
+    script behaves exactly as it did before.
+    """
     pat = _COMPILED.get(line["tag"])
     if pat is None:
         return 0.0
@@ -126,14 +210,17 @@ def score(line: dict, subject: str) -> float:
     if not hits:
         return 0.0
     s = float(hits)
-    # A transferable line fits any evidence-based subject; a specific line is
-    # deep-sea only, so it scores higher when the subject IS deep sea.
     if line["tier"] == "specific":
-        s *= 1.4 if DEEP_SEA.search(subject) else 0.0
+        if domain:
+            s *= 1.4 if line_domain(line) == domain else 0.0
+        else:
+            s *= (1.4 if (line_domain(line) == LEGACY_SPECIFIC_DOMAIN
+                          and DEEP_SEA.search(subject)) else 0.0)
     return s
 
 
-def select(slug: str, subject: str, used_ids: list[str] | None = None) -> dict:
+def select(slug: str, subject: str, used_ids: list[str] | None = None,
+           domain: str | None = None) -> dict:
     """Pick one POV line. Raises NoPovMatch rather than inventing one.
 
     `used_ids` is the recent history, most recent last.
@@ -141,6 +228,16 @@ def select(slug: str, subject: str, used_ids: list[str] | None = None) -> dict:
     used = list(used_ids or [])
     window = rotation_window()
     recent = set(used[-window:])
+
+    # The episode's domain comes from its script -- the one join this repo uses
+    # everywhere else. An unresolvable slug leaves it None, and score() falls
+    # back to the deep-sea text signal exactly as before.
+    if domain is None:
+        try:
+            import domains as _dom                          # noqa: PLC0415
+            domain = _dom.domain_of_slug(slug)
+        except Exception:                                   # never break a match
+            domain = None
 
     hand = hand_assignments().get(slug)
     lines = {l["id"]: l for l in bank()}
@@ -155,7 +252,7 @@ def select(slug: str, subject: str, used_ids: list[str] | None = None) -> dict:
     for l in bank():
         if l["id"] in recent:
             continue
-        s = score(l, subject)
+        s = score(l, subject, domain)
         if s > 0:
             ranked.append((s, l))
     if not ranked:
