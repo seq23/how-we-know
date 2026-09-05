@@ -1867,6 +1867,35 @@ def v27_lanes_see_every_domain() -> Result:
         r.fail("no research/publish_order*.json files at all")
         return r
 
+    # THE SHORTS LANE WAS THE HOLE. V27 asserted that cadence and backfill see
+    # every domain and that no bin/*.sh names a single publish-order file, and
+    # it never looked at loop/shorts_lane.py -- which read
+    # research/publish_order.json by name. The result was a Shorts library of 51
+    # on 2026-09-05, every one deep sea, while eleven rendered materials
+    # episodes had none. A guard that governs three call sites out of four is
+    # not a guard, so this checks the LANE'S OWN OUTPUT rather than its source.
+    r.examined += 1
+    try:
+        import shorts_lane as _sl                          # noqa: PLC0415
+        import domains as _dom                             # noqa: PLC0415
+        # `have` is stubbed to True so this measures which slugs the lane can
+        # SEE, not which have material cut on this particular machine.
+        seen = {_dom.domain_of_slug(s)
+                for s in _sl.pending(have=lambda _s: True)}
+        seen.discard(None)
+        alloc = set(_dom.allocation(config()))
+        missing = alloc - seen
+        # A domain with nothing published yet legitimately contributes nothing.
+        started = {_dom.domain_of_slug(s) for s in _dom.by_slug()}
+        missing &= started
+        if missing:
+            r.fail(f"loop/shorts_lane.py cannot see any episode in "
+                   f"{', '.join(sorted(missing))}. It is reading one domain's "
+                   f"publish order rather than every domain's, so that niche "
+                   f"gets no Shorts at all.")
+    except Exception as e:                                 # never mask the rest
+        r.fail(f"could not ask loop/shorts_lane.py which domains it sees: {e}")
+
     per_file = {}
     for path in files:
         per_file[path.name] = {row.get("slug") for row in
@@ -2196,10 +2225,28 @@ def v30_cloud_visibility() -> Result:
     # ---- collect entrypoints from what the lanes actually invoke ---------
     ref = re.compile(r"([a-z_][a-z_0-9]*/[a-z_0-9]+\.py)")
     entry: set[str] = set()
+    # THE ROOT ITSELF MUST BE TRACKED, not only what it imports. This walked
+    # bin/*.sh to find their Python entrypoints and never asked whether the
+    # shell script was in git at all -- so it dutifully verified the import
+    # closure of two scripts that existed on one Mac and nowhere else.
+    # bin/loop-backfill-daily.sh is the lane that uploads finished videos to
+    # YouTube every morning; it had never been committed, and a disk failure
+    # would have taken it with no trace of what it did.
+    roots: list[pathlib.Path] = []
     for d, pat in ((ROOT / ".github" / "workflows", "*.yml"), (ROOT / "bin", "*.sh")):
         for f in sorted(d.glob(pat)) if d.exists() else []:
+            roots.append(f)
             entry |= set(ref.findall(f.read_text()))
     entry = {e for e in entry if (ROOT / e).exists()}
+
+    for f in roots:
+        rel = str(f.relative_to(ROOT))
+        r.examined += 1
+        if rel not in tracked:
+            r.fail(f"{rel} is a lane entrypoint and is NOT tracked by git, so "
+                   f"it exists on this machine and nowhere else. Whatever it "
+                   f"does is unbacked-up, unreviewable, and invisible to every "
+                   f"cloud runner.")
 
     r.examined += 1
     if not entry:
