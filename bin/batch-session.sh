@@ -205,6 +205,28 @@ if [ -n "${pending_audio// }" ] && [ ! -x "$PY_TTS" ]; then
   exit 3
 fi
 
+# ONE NARRATOR, ENFORCED HERE TOO, not only by the lockfile.
+#
+# narrate_all.py takes an exclusive lock at audio/.narrate.lock. That lock is a
+# file inside audio/, which means any git operation touching that path can
+# delete it - `git stash -u -- audio` did exactly that on 2026-09-05, and the
+# 23:00 batch then started a SECOND narrator alongside one that had been
+# running for 35 hours. Both survived, both wrote to the same
+# audio/<slug>/NNNN.wav, and throughput halved: the voice model wants about
+# four cores, so two of them do not go twice as fast.
+#
+# A process check cannot be deleted by a git command, so it holds where the
+# lockfile does not.
+if pgrep -f "voice/narrate_all.py" >/dev/null 2>&1; then
+  echo
+  echo "NAMED STOP: a narrator is already running (pid(s) $(pgrep -f 'voice/narrate_all.py' | tr '\n' ' '))."
+  echo "Narration is single-threaded here by design - the voice model takes"
+  echo "roughly four cores, so a second one halves both. Not starting another."
+  echo "Rendering below still runs against whatever audio is already complete."
+  echo
+  pending_audio=""
+fi
+
 if [ -n "${pending_audio// }" ]; then
   echo; echo "--- narration (~1.2 h per episode) ---"
   if [ -n "$OVERLAP" ]; then

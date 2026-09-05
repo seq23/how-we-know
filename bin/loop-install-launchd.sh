@@ -3,8 +3,9 @@
 #
 #   DAILY 23:00    bin/batch-session.sh  narrate what has no audio, render what
 #                                        has audio, push, then NAMED STOP
-#   Tuesday 02:00  bin/loop-tuesday.sh   pull, synthesise, render, receipts, push
-#   Thursday 02:00 bin/loop-thursday.sh  upload PRIVATE, receipts, push
+#
+# ONE AGENT, and only one, because only one thing here narrates. tuesday and
+# thursday are deliberately NOT installed - see the --install block.
 #
 # 23:00 is the owner's choice (2026-09-04): start the night's narration when
 # she has stopped using the Mac, so the ~4 cores the voice model takes are not
@@ -72,17 +73,31 @@ XML
 case "${1:-}" in
   --install)
     mkdir -p "$AGENTS" "$LOGDIR"
+    # ONLY THE BATCH. tuesday and thursday are NOT installed, and that is the
+    # whole point of this comment.
+    #
+    # On 2026-09-05 this script installed all three, and bin/loop-tuesday.sh
+    # narrates - it calls bin/run-batch.sh voice. That put a SECOND narrator on
+    # the machine, on Tuesdays at 02:00, against a batch that already narrates
+    # nightly at 23:00. Narration is the one stage that cannot be parallelised
+    # here: the voice model wants roughly four cores, so two of them do not go
+    # twice as fast, they go half as fast each. Two narrators also race for the
+    # same audio/<slug>/NNNN.wav.
+    #
+    # docs/OPERATING-MANUAL.md had already recorded that these lanes were
+    # deliberately removed on 2026-09-01 and their work moved to the cloud and
+    # to the nightly batch. Re-adding them undid a decision the manual had
+    # written down. If either is ever wanted again, the question to answer
+    # first is which single agent owns narration.
     plist batch    batch-session.sh - 23 > "$AGENTS/com.howweknow.batch.plist"
-    plist tuesday  loop-tuesday.sh  2 2 > "$AGENTS/com.howweknow.tuesday.plist"
-    plist thursday loop-thursday.sh 4 2 > "$AGENTS/com.howweknow.thursday.plist"
     # VERIFY THE XML, never launchctl's own word. A plist launchd cannot parse
     # is still reported "loaded" and simply never fires; that is how two agents
     # sat installed and dead. plutil is the only thing that actually knows.
-    for n in batch tuesday thursday; do
+    for n in batch; do
       plutil -lint "$AGENTS/com.howweknow.$n.plist" >/dev/null \
         || { echo "NAMED STOP: com.howweknow.$n.plist is not valid XML; not loading it." >&2; exit 4; }
     done
-    for n in batch tuesday thursday; do
+    for n in batch; do
       launchctl unload "$AGENTS/com.howweknow.$n.plist" 2>/dev/null || true
       launchctl load  "$AGENTS/com.howweknow.$n.plist"
       echo "loaded com.howweknow.$n  (logs: $LOGDIR/$n.log)"
@@ -100,9 +115,7 @@ case "${1:-}" in
     echo "logs: $LOGDIR"
     ;;
   *)
-    echo "# Daily 23:00"; plist batch batch-session.sh - 23
-    echo; echo "# Tuesday 02:00"; plist tuesday loop-tuesday.sh 2 2
-    echo; echo "# Thursday 02:00"; plist thursday loop-thursday.sh 4 2
+    echo "# Daily 23:00 - the only agent installed"; plist batch batch-session.sh - 23
     echo; echo "Nothing was written. Re-run with --install to load these."
     ;;
 esac
