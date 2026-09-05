@@ -2240,6 +2240,48 @@ def v30_cloud_visibility() -> Result:
     return r
 
 
+def v31_render_has_thumbnail() -> Result:
+    """A finished render must carry the thumbnail that lets it be uploaded.
+
+    backfill.local_assets() counts an episode as uploadable only when BOTH
+    renders/<slug>-final.mp4 and channel/thumbnails/<slug>.jpg exist. Nothing
+    asserted the second, and nothing built it. On 2026-09-05 that left NINE
+    fully rendered episodes stuck: com.howweknow.backfill ran at 09:00 every
+    morning, found "0 pending", and exited clean. Correct, silent, and useless
+    - the whole backlog was waiting on a 200 KB JPEG nobody knew was missing.
+
+    An episode that took ~1.2 hours of narration and a full render is the most
+    expensive thing this pipeline makes. Letting one sit invisible behind a
+    missing thumbnail is the costliest possible way to be quiet, so this makes
+    it loud the same day rather than whenever someone next looks at the upload
+    queue.
+
+    Exempt when there are no renders at all - the MP4s live on the Mac and in
+    R2, never in git, so a cloud runner has nothing to check. A renders/
+    directory that HAS files and is missing a thumbnail still fails.
+    """
+    r = Result("V31 render-has-thumbnail")
+    renders = sorted((ROOT / "renders").glob("*-final.mp4"))
+    r.examined += 1
+    if not renders:
+        r.exempt = True
+        r.note("no rendered MP4 on this machine; renders live on the Mac and "
+               "in R2 by design. The Mac run covers this.")
+        return r
+
+    thumbs = ROOT / "channel" / "thumbnails"
+    for mp4 in renders:
+        slug = mp4.name[: -len("-final.mp4")]
+        r.examined += 1
+        if not (thumbs / f"{slug}.jpg").exists():
+            r.fail(f"{slug} is rendered but has no "
+                   f"channel/thumbnails/{slug}.jpg, so backfill will never "
+                   f"count it as pending and it cannot be uploaded. Build it "
+                   f"with visuals/thumbs_materials.py, or give its subject a "
+                   f"verified public-domain image.")
+    return r
+
+
 # ------------------------------------------------------------------ runner
 
 def run_all(items) -> tuple[bool, list[dict]]:
@@ -2259,7 +2301,8 @@ def run_all(items) -> tuple[bool, list[dict]]:
                v22_producer_notes_second_person(), v23_chapters_compliant(),
                v24_render_duration_floor(), v25_domain_abstraction(),
                v27_lanes_see_every_domain(), v28_lane_interpreters(),
-               v29_material_image_rights(), v30_cloud_visibility()]
+               v29_material_image_rights(), v30_cloud_visibility(),
+               v31_render_has_thumbnail()]
     rows = [r.as_dict() for r in results]
     return all(r.ok for r in results), rows
 
