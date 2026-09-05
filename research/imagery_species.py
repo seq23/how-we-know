@@ -68,6 +68,28 @@ import imagery as I  # noqa: E402  (the two existing gates and their helpers)
 OUT = I.OUT
 ASSETS = os.path.join(OUT, "assets")
 SPECIES_MANIFEST = os.path.join(OUT, "species.json")
+
+# --------------------------------------------------------------------------
+# THE WEEKLY LANE FINDS THIS FILE THROUGH THIS DECLARATION, not through a list
+# kept somewhere else. loop/footage_lane.py globs research/imagery*.py, reads
+# this literal without importing the module, and runs the ones whose `domain`
+# currently holds a slot in loop/config.json's allocation. Two components each
+# keeping their own list, with no link between them, is exactly how
+# research/imagery_materials.py came to be wired to no lane at all.
+#
+# `gate` is the rights function this file MUST still contain. The lane refuses
+# to run a harvester whose gate has gone missing, so "relax the check to get
+# more material" fails loudly instead of quietly succeeding.
+HARVESTER = {
+    "domain": "deep-sea-ocean-science",
+    "gate": "pd_licence_ok",
+    "manifest": "channel/imagery/species.json",
+    "args": [],
+    "scheduled": True,
+    "what": "species stills - the per-creature index every deep-sea episode "
+            "draws its subject shots from",
+}
+
 RIGHTS_MANIFEST = I.MANIFEST
 
 

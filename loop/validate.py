@@ -2389,6 +2389,168 @@ def v32_scheduled_pov_is_hers() -> Result:
     return r
 
 
+def v33_every_domain_is_harvested() -> Result:
+    """Every domain holding a weekly slot must have something harvesting for it.
+
+    The Saturday harvest lane kept its own hardcoded tuple of two harvesters,
+    both deep sea. materials-and-manufacturing went live on 2026-09-03 with
+    two of the four weekly slots, and the lane that grows the cleared imagery
+    pool never learned the domain existed: research/imagery_materials.py was
+    invoked by nothing at all, and neither was research/imagery_species.py.
+    That is this repo's named defect "two components each keeping their own
+    list with no link between them", and the symptom is silent - the pipeline
+    degrades gracefully into an illustrated episode, so a domain publishing on
+    an un-topped-up pool looks exactly like one publishing on a full one.
+
+    The fix removed the second list: a harvester declares its own domain in a
+    module-level HARVESTER dict, and the lane asks loop/config.json which
+    domains are running. This asserts the join BEHAVIOURALLY - it runs the
+    lane's own selection over the live allocation - rather than grepping for a
+    filename, which would pass on a lane that finds the file and never runs it.
+
+    Also asserts each selected harvester still contains the rights gate it
+    declares, because the cheapest way to grow a thin pool is to widen the gate
+    and that is the one change this pipeline may not make.
+
+    Hard-fails when it examines zero items.
+    """
+    r = Result("V33 domain-harvesters")
+    import footage_lane as _fl                             # noqa: PLC0415
+
+    cfg = config()
+    alloc = _fl.domains.allocation(cfg)
+    r.examined += 1
+    if not alloc:
+        r.fail("loop/config.json has an empty domain allocation, so this "
+               "examined nothing.")
+        return r
+
+    picked, uncovered = _fl.harvesters_for(cfg)
+    for d in uncovered:
+        r.examined += 1
+        r.fail(f"{d} holds {alloc[d]} weekly slot(s) and no research/"
+               f"imagery*.py declares a scheduled HARVESTER for it. Its "
+               f"cleared imagery pool cannot grow, so every episode it "
+               f"publishes beyond the existing pool is illustrated by default "
+               f"rather than by decision.")
+
+    for h in picked:
+        r.examined += 1
+        if not h.get("gate"):
+            r.fail(f"{h['rel']} declares no rights gate. A harvester with no "
+                   f"named gate cannot be checked for having lost it.")
+            continue
+        src = (ROOT / h["rel"]).read_text(encoding="utf-8")
+        if h["gate"] not in src:
+            r.fail(f"{h['rel']} declares gate {h['gate']}() and no longer "
+                   f"contains it. Nothing harvested through it may be used.")
+    return r
+
+
+def v34_niche_lifecycle_is_acted_on() -> Result:
+    """A retired niche must change the allocation, not just the report.
+
+    loop/monthly.py computed `exhausted_domains` and `next_domain` every month
+    from 2026-08 and wrote them into prose. Nothing read them. A domain could
+    decay to an empty queue and keep its weekly slots indefinitely, in a report
+    that named it as finished - the "runs but inert" class, one level up: the
+    decision was made, correctly, and then discarded.
+
+    Asserted BEHAVIOURALLY on a constructed month, because the live channel has
+    no decayed domain and a validator that only checks the healthy case proves
+    nothing. It builds evidence in which one allocated domain is measured past
+    the floor and its queue is empty, and requires that:
+
+      * domains.lifecycle() returns applied, retiring that domain;
+      * the promoted domain is the next-ranked unused one in the taxonomy;
+      * the new allocation still sums to cadence.ceiling, so slots_at() cannot
+        raise on the split it produced;
+      * monthly.review()'s allocation decision IS the lifecycle decision when
+        one applies - a retirement outranks a one-slot move, because moving a
+        slot between two domains is meaningless if one of them is finished.
+
+    Hard-fails when it examines zero items.
+    """
+    r = Result("V34 niche-lifecycle")
+    import domains as _dom                                 # noqa: PLC0415
+    import monthly as _mon                                 # noqa: PLC0415
+
+    cfg = config()
+    alloc = _dom.allocation(cfg)
+    r.examined += 1
+    if len(alloc) < 1:
+        r.fail("no allocated domain, so this examined nothing.")
+        return r
+
+    victim = sorted(alloc)[0]
+    need = _dom.min_episodes_to_judge(cfg)
+    ev = {d: {"measured": need, "views": 100, "avd_s": 200.0, "avp": 30.0,
+              "judgeable": True} for d in alloc}
+    ev[victim]["avd_s"] = 10.0
+
+    # A queue empty for `victim`, full for everyone else.
+    real_depth = _dom.queue_depth
+    real_ex = _dom.exhausted
+    _dom.exhausted = lambda cfg, published=None: [victim]    # noqa: ARG005
+    _dom.queue_depth = lambda: {d: (0 if d == victim else 20) for d in alloc}
+    try:
+        d = _dom.lifecycle(cfg, ev)
+        r.examined += 1
+        if not d.get("applied"):
+            r.fail(f"a domain measured past the {need}-episode floor with an "
+                   f"empty queue did NOT produce a retirement: "
+                   f"{d.get('stop') or d.get('why', '')[:160]}")
+            return r
+        r.examined += 1
+        if d["retired"] != victim:
+            r.fail(f"retired {d['retired']}, expected the decayed domain "
+                   f"{victim}")
+        r.examined += 1
+        expected = _dom.next_unused(list(alloc))
+        if d["promoted"] != expected:
+            r.fail(f"promoted {d['promoted']}, expected the next-ranked unused "
+                   f"domain {expected}")
+        r.examined += 1
+        ceiling = int(cfg["cadence"]["ceiling"])
+        if sum(d["allocation"].values()) != ceiling:
+            r.fail(f"the post-retirement allocation sums to "
+                   f"{sum(d['allocation'].values())}, not cadence.ceiling "
+                   f"{ceiling}. domains.slots_at() raises on that, which would "
+                   f"take the whole publishing lane down.")
+        r.examined += 1
+        if victim in d["allocation"]:
+            r.fail(f"{victim} was retired and still holds slots in the new "
+                   f"allocation.")
+
+        # And the review must USE it rather than compute it beside the
+        # reallocation and then apply the reallocation.
+        real_re = _dom.reallocate
+        real_pd = _mon.per_domain
+        _dom.reallocate = lambda cfg, per: {                # noqa: ARG005
+            "applied": False, "allocation": alloc,
+            "why": "SENTINEL: reallocate was used instead of the lifecycle"}
+        _mon.per_domain = lambda rows, cfg: ev              # noqa: ARG005
+        try:
+            rev = _mon.review([], cfg, _mon.month_id())
+        finally:
+            _dom.reallocate = real_re
+            _mon.per_domain = real_pd
+        r.examined += 1
+        if "SENTINEL" in str((rev.get("allocation") or {}).get("why", "")):
+            r.fail("monthly.review() applied the reallocation while a "
+                   "retirement was available. A slot move computed against "
+                   "the pre-retirement split would be applied on top of a "
+                   "split that no longer exists.")
+        r.examined += 1
+        if not (rev.get("lifecycle") or {}).get("applied"):
+            r.fail("monthly.review() did not carry the lifecycle decision, so "
+                   "the monthly report cannot say a domain was retired.")
+    finally:
+        _dom.queue_depth = real_depth
+        _dom.exhausted = real_ex
+    return r
+
+
 # ------------------------------------------------------------------ runner
 
 def run_all(items) -> tuple[bool, list[dict]]:
@@ -2410,7 +2572,9 @@ def run_all(items) -> tuple[bool, list[dict]]:
                v27_lanes_see_every_domain(), v28_lane_interpreters(),
                v29_material_image_rights(), v30_cloud_visibility(),
                v31_render_has_thumbnail(),
-               v32_scheduled_pov_is_hers()]
+               v32_scheduled_pov_is_hers(),
+               v33_every_domain_is_harvested(),
+               v34_niche_lifecycle_is_acted_on()]
     rows = [r.as_dict() for r in results]
     return all(r.ok for r in results), rows
 

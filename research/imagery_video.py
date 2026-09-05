@@ -107,6 +107,32 @@ import imagery  # noqa: E402  -- the rights vocabulary lives there, not here
 OUT = os.path.abspath(os.path.join(HERE, "..", "channel", "imagery"))
 CLIPS = os.path.join(OUT, "clips")
 MANIFEST = os.path.join(OUT, "video_rights.json")
+
+# --------------------------------------------------------------------------
+# THE WEEKLY LANE FINDS THIS FILE THROUGH THIS DECLARATION, not through a list
+# kept somewhere else. loop/footage_lane.py globs research/imagery*.py, reads
+# this literal without importing the module, and runs the ones whose `domain`
+# currently holds a slot in loop/config.json's allocation. Two components each
+# keeping their own list, with no link between them, is exactly how
+# research/imagery_materials.py came to be wired to no lane at all.
+#
+# `gate` is the rights function this file MUST still contain. The lane refuses
+# to run a harvester whose gate has gone missing, so "relax the check to get
+# more material" fails loudly instead of quietly succeeding.
+#
+# `args` is ["--harvest"] and that is not cosmetic. Run bare, this module
+# screens the NOAA index and downloads NOTHING - which is what the weekly lane
+# did to it from the day the lane was written, while reporting that it had
+# harvested "video clips - the scarce pool".
+HARVESTER = {
+    "domain": "deep-sea-ocean-science",
+    "gate": "credit_is_noaa_only",
+    "manifest": "channel/imagery/video_rights.json",
+    "args": ["--harvest"],
+    "scheduled": True,
+    "what": "video clips - the scarce pool",
+}
+
 CACHE = os.path.join(HERE, ".video_cache")
 
 API = "https://oceanexplorer.noaa.gov/wp-json/wp/v2"
