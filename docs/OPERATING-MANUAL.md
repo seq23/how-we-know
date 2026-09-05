@@ -584,6 +584,34 @@ episode it shipped.
 
 ---
 
+## 3f. A retired video with a publish date un-retires itself
+
+Found 2026-09-05 while answering "when does the last video go out".
+
+**Two upload lanes wrote one episode twice.** `backfill` on the Mac and
+`cloud-upload` in the cloud both uploaded
+`02-how-deep-sea-creatures-survive-pressure` on 3 September, three hours apart,
+and gave two different video ids **the same 25 October 15:00 slot**. Two
+identical videos would have gone public in the same minute. This is the second
+time the two lanes have collided.
+
+**Retiring the duplicate did not fix it.** `retire.py` set the video private and
+verified private — and its `publishAt` survived untouched. YouTube would have
+made it public on 25 October anyway, seven weeks later, with nothing watching.
+
+**A `publishAt` cannot be cleared by omission.** Neither leaving the field out
+nor sending an explicit `null` clears it: both return HTTP 200 and leave the
+stored value exactly as it was. The only thing that works is moving the video
+**off** private and back — `unlisted`, then `private` — which is what
+`publish.cancel_schedule()` now does, verified by read-back.
+
+Guarded by **V38**: one live ledger row per slug, and a retired row may not hold
+a future publish date without a recorded cancellation. It also asserts the
+cancellation is still in `retire.py`, because the API's behaviour here is
+counter-intuitive enough to be "simplified" away by someone later.
+
+---
+
 ## 4. Incidents worth remembering
 
 Recorded because each was invisible until something specifically looked for it.

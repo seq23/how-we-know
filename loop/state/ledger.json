@@ -153,7 +153,11 @@
       "uploaded_at": "2026-09-03T17:19:58+00:00",
       "privacy": "private",
       "scheduled_publish_at": "2026-10-25T15:00:00Z",
-      "note": "cloud-upload: scheduled, not yet public"
+      "note": "duplicate of nv-M6q8h-Lk; retired and its pending publishAt cancelled on the live API, verified read-back publishAt=None",
+      "retired_at": "2026-09-05T18:45:08+00:00",
+      "retired_reason": "duplicate upload: nv-M6q8h-Lk is the same episode in the same 2026-10-25 15:00Z slot; both lanes uploaded it on 2026-09-03",
+      "schedule_cancelled_at": "2026-09-05T18:50:00+00:00",
+      "schedule_was": "2026-10-25T15:00:00Z"
     },
     {
       "slug": "02-how-deep-sea-creatures-survive-pressure",
@@ -193,5 +197,5 @@
     }
   ],
   "queued": [],
-  "updated": "2026-09-04T13:21:25+00:00"
+  "updated": "2026-09-05T18:45:08+00:00"
 }
