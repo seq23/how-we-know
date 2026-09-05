@@ -43,6 +43,7 @@ import json
 import datetime as _dt
 import os
 import re
+import subprocess
 import sys
 import time
 import traceback
@@ -90,6 +91,20 @@ def acquire_lock() -> None:
             try:
                 pid = int(pidf.read_text().strip())
                 os.kill(pid, 0)          # raises if the holder is gone
+                # AND IT MUST STILL BE A NARRATOR. `os.kill(pid, 0)` only says
+                # SOMETHING owns that pid. After a reboot the lock file still
+                # names the pid of a process that died with the machine, and
+                # macOS hands that number out again -- to Spotlight, to a
+                # helper, to anything. The check then passes, narration refuses
+                # to start, and it refuses again every night until a human
+                # deletes the directory by hand: a dead lock wearing the face
+                # of a correct named stop.
+                cmd = subprocess.run(["ps", "-p", str(pid), "-o", "command="],
+                                     capture_output=True, text=True).stdout
+                if "narrate_all.py" not in cmd:
+                    raise ProcessLookupError(
+                        f"pid {pid} is alive but is not a narrator: "
+                        f"{cmd.strip()[:60]}")
             except (OSError, ValueError):
                 print(f"reclaiming stale lock {LOCK}", file=sys.stderr)
                 try:
