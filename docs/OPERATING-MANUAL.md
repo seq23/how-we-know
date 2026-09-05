@@ -651,6 +651,37 @@ tanks buried* and *how deep is your love*.
 
 ---
 
+## 3h. Narration hands the Mac back at 07:00
+
+Owner decision 2026-09-05. The nightly batch started at 23:00 and had **no stop
+time at all** — not in `bin/batch-session.sh`, not in the launchd plist. It ran
+until the backlog was finished, which on 5 September meant it was still
+generating audio at four in the afternoon on a Saturday, seventeen hours in,
+with fifteen hours left to go.
+
+The owner had asked for "22 hrs at 11pm every night until finished" and reasonably
+understood that as an overnight window. The start time was implemented; the end
+was not.
+
+`narrate_all.py --until HH:MM` now stops the run cleanly, and
+`batch-session.sh` passes `07:00`.
+
+**Stopping costs nothing.** The deadline is checked **between** beats, never
+during one — a beat takes a couple of minutes and stopping inside it would leave
+a `.part.wav` and waste the work. A beat whose wav already exists is skipped, so
+the next night resumes exactly where the last one stopped. What it costs is
+calendar time; what it buys is a machine that is hers during the working day.
+
+A past time resolves to *tomorrow*, so a run starting at 23:00 stops eight hours
+later and one starting at 02:00 stops five hours later — never immediately.
+`stopped_at_deadline` is recorded in the narration report, so a morning stop is
+visible rather than looking like a crash.
+
+Change the hour with `NARRATION_UNTIL=08:00` in the environment, or edit the
+default in `bin/batch-session.sh`.
+
+---
+
 ## 4. Incidents worth remembering
 
 Recorded because each was invisible until something specifically looked for it.

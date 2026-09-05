@@ -57,6 +57,17 @@ PY=.venv/bin/python
 # the trap CLAUDE.md names first. Rendering keeps .venv (PIL, numpy, ffmpeg);
 # only narration uses .venv-tts (torch, chatterbox-tts, soundfile).
 PY_TTS=.venv-tts/bin/python
+
+# NARRATION HANDS THE MAC BACK IN THE MORNING. Owner decision 2026-09-05: the
+# job starts at 23:00 and stops at 07:00, rather than running until the backlog
+# is finished -- which on 2026-09-05 meant it was still generating audio at
+# four in the afternoon on a Saturday.
+#
+# Stopping costs nothing. narrate_all.py checks this BETWEEN beats, never
+# during one, and a beat whose wav already exists is skipped on the next run,
+# so the following night resumes exactly where this one stopped. What it costs
+# is calendar time, and what it buys is a Mac that is hers during the day.
+NARRATION_UNTIL="${NARRATION_UNTIL:-07:00}"
 DRY=""
 OVERLAP=1
 MAX_EPISODES=0            # 0 = no bound
@@ -258,7 +269,7 @@ if [ -n "${pending_audio// }" ]; then
   if [ -n "$OVERLAP" ]; then
     echo "  rendering overlaps narration: each episode is assembled as soon as"
     echo "  its audio is COMPLETE, while the voice model moves to the next."
-    $PY_TTS voice/narrate_all.py &
+    $PY_TTS voice/narrate_all.py --until "$NARRATION_UNTIL" &
     NARRATE_PID=$!
     while kill -0 "$NARRATE_PID" 2>/dev/null; do
       for slug in $(renderable); do
@@ -270,7 +281,7 @@ if [ -n "${pending_audio// }" ]; then
     done
     wait "$NARRATE_PID" || echo "  narration exited $? - rendering covers what completed"
   else
-    $PY_TTS voice/narrate_all.py || echo "  narration exited $? - rendering covers what completed"
+    $PY_TTS voice/narrate_all.py --until "$NARRATION_UNTIL" || echo "  narration exited $? - rendering covers what completed"
   fi
 fi
 
