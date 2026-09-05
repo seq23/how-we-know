@@ -265,7 +265,7 @@ def _publish_order_files() -> list[Path]:
     return sorted(ROOT.glob(f"research/{PUBLISH_ORDER_GLOB}"))
 
 
-def queue_depth() -> dict[str, int]:
+def queue_depth(include_published: bool = False) -> dict[str, int]:
     """Surviving, gated topics per domain, from EVERY publish-order file.
 
     research/publish_order*.json files are READ ONLY from the loop. Each
@@ -280,6 +280,23 @@ def queue_depth() -> dict[str, int]:
     """
     out: dict[str, int] = {}
     seen_slugs: set[str] = set()
+
+    # A TOPIC ALREADY UPLOADED IS NOT INVENTORY. The publish-order files are
+    # the SCORED list, not the remaining list -- a slug stays in them after its
+    # episode is made, because that is where the score and the gate verdict
+    # live. Counting them as queue depth double-counted the entire catalogue:
+    # on 2026-09-05 deep sea read 16 topics and 8.0 weeks of runway while every
+    # one of those 16 was already uploaded and dated. Its true remaining queue
+    # was ZERO, and `runway.warn_weeks` would never have fired -- the guard
+    # that exists to say "you are running out" could not see the end coming.
+    published: set[str] = set()
+    if not include_published:
+        try:
+            import ledger                                  # noqa: PLC0415
+            published = {r["slug"] for r in ledger.load()["published"]}
+        except Exception:                                  # never break a count
+            published = set()
+
     for path in _publish_order_files():
         q = _read(path).get("queue") or []
         for row in q:
@@ -288,6 +305,8 @@ def queue_depth() -> dict[str, int]:
                 continue                      # a slug counts once, however
                                                # many files mention it
             seen_slugs.add(slug)
+            if slug in published:
+                continue                      # already made; not inventory
             # THE SCRIPT IS THE AUTHORITY, THE FILE IS THE FALLBACK. A queued
             # topic has no script yet by definition, and until 2026-09-05 that
             # did not matter: the two live domains had scripts on disk for
