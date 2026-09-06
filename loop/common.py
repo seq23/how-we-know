@@ -251,7 +251,23 @@ def disposition(stage: str, code: str, detail, streak: int) -> tuple[str, str]:
 
 
 def _same_stream(a, b) -> bool:
-    """True when two streams are the same open file (e.g. under `2>&1`)."""
+    """True when stdout and stderr land in the SAME place for a reader.
+
+    Two cases, not one:
+
+    * the Mac cron wrapper redirects with `2>&1`, so the two descriptors are
+      literally the same open file and `st_dev`/`st_ino` match;
+    * GitHub Actions gives a step SEPARATE pipes that it then merges into one
+      log. The inodes differ, so the check above said "not the same" and every
+      NAMED STOP banner was printed twice - confirmed in run 34035963724, where
+      the two copies interleave line by line, which is what two writers to one
+      log looks like. Alarm noise on the one message that has to stay readable.
+
+    There is no third stream to preserve on Actions: the job log IS the error
+    pane, so writing once is not hiding anything.
+    """
+    if os.environ.get("GITHUB_ACTIONS"):
+        return True
     try:
         sa, sb = os.fstat(a.fileno()), os.fstat(b.fileno())
         return (sa.st_dev, sa.st_ino) == (sb.st_dev, sb.st_ino)

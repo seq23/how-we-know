@@ -50,6 +50,7 @@ import cadence                               # noqa: E402
 import backfill                                  # noqa: E402
 import batch_queue                               # noqa: E402
 import ledger                                    # noqa: E402
+import pov_match                                 # noqa: E402
 import quota                                     # noqa: E402
 import r2                                        # noqa: E402
 import upload as up                              # noqa: E402
@@ -221,6 +222,57 @@ def run(limit: int = 4, dry_run: bool = False) -> int:
                         "is the episode's question and becomes its title. If a "
                         "slug should not be published at all, remove its row "
                         "from the queue file rather than leaving it untitled.")
+
+        # -- the POV gate, BEFORE the upload ----------------------------
+        # `[HUMAN]` is the one beat where the owner speaks as herself. V32
+        # checks that every SCHEDULED episode's beat traces to
+        # pov/pov-assignments.json, but it reads the ledger, and an episode
+        # only reaches the ledger by being uploaded - so V32 can report the
+        # harm and cannot prevent it. Three episodes went up before it spoke
+        # (run 34035963724); fifteen more in the queue carry the same untraced
+        # beat today. This asks V32's question one step earlier, where refusing
+        # is still free.
+        #
+        # REFUSE THE EPISODE, NOT THE LANE. An untraced episode must not go to
+        # YouTube; the twenty that are properly traced must still ship. Each
+        # refusal is printed by name - this is not a silent `continue` - and if
+        # refusing empties the run entirely it becomes a NAMED STOP rather than
+        # an exit 0 that did nothing (Rule 0).
+        untraced = set(pov_match.untraced_pov([s_ for s_, _, _ in take]))
+        if untraced:
+            for slug in sorted(untraced):
+                print(f"  REFUSE {slug}: its [HUMAN] Producer POV has no entry "
+                      f"in pov/pov-assignments.json")
+            st.note(f"refused {len(untraced)} episode(s) with an untraced "
+                    f"first-person POV: {', '.join(sorted(untraced))}. They "
+                    f"stay on the shelf; nothing is deleted.")
+            take = [t for t in take if t[0] not in untraced]
+        if untraced and not take:
+            st.named_stop(
+                "POV_UNTRACED",
+                f"every episode ready to upload today carries a first-person "
+                f"[HUMAN] Producer POV with no entry in "
+                f"pov/pov-assignments.json: {', '.join(sorted(untraced))}. "
+                f"Uploading one would be the channel asserting she said "
+                f"something no interview records her saying.",
+                detail={"untraced": sorted(untraced),
+                        "assignments": str(pov_match.ASSIGNMENTS
+                                           .relative_to(ROOT)),
+                        "bank": str(pov_match.BANK.relative_to(ROOT))},
+                unblock="Two honest ways, and a validator may not do either "
+                        "for her.\n\n"
+                        "1. She reads the [HUMAN] line in scripts/<slug>.md, "
+                        "and if it is hers it is recorded in "
+                        "pov/pov-bank.json with `source: owner-approved "
+                        "<date>` and given an entry in "
+                        "pov/pov-assignments.json - the precedent set on "
+                        "2026-09-05 for how-are-microchips-made, "
+                        "how-does-quenching-harden-steel and "
+                        "how-do-self-healing-materials-work (pov-099..101).\n\n"
+                        "2. The episode is re-cut without the beat.\n\n"
+                        "Nothing is deleted either way: the renders stay on "
+                        "the shelf and this lane picks them up the run after "
+                        "the assignment lands.")
 
         led = ledger.load()
         when = backfill.schedule_for(led, len(take), per_week)
