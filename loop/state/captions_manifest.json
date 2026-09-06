@@ -1,6 +1,6 @@
 {
   "week": "2026-W36",
-  "at": "2026-09-05T15:08:11+00:00",
+  "at": "2026-09-06T15:08:25+00:00",
   "plan": [
     {
       "slug": "10-what-is-the-deepest-part-of-the-ocean",
@@ -124,14 +124,6 @@
     },
     {
       "slug": "02-how-deep-sea-creatures-survive-pressure",
-      "video_id": "_fQ3-YI63oQ",
-      "srt": "/home/runner/work/how-we-know/how-we-know/captions/02-how-deep-sea-creatures-survive-pressure.srt",
-      "cues": 121,
-      "sha256": "b1740a9e213c48222c36de9125f83c0d0bc98718b0d1ad1b1cc05e1097247439",
-      "already": true
-    },
-    {
-      "slug": "02-how-deep-sea-creatures-survive-pressure",
       "video_id": "nv-M6q8h-Lk",
       "srt": "/home/runner/work/how-we-know/how-we-know/captions/02-how-deep-sea-creatures-survive-pressure.srt",
       "cues": 121,
@@ -163,5 +155,9 @@
       "already": true
     }
   ],
-  "gaps": []
+  "gaps": [
+    "how-does-tempered-glass-shatter: captions/how-does-tempered-glass-shatter.srt does not exist",
+    "how-strong-is-titanium: captions/how-strong-is-titanium.srt does not exist",
+    "how-is-damascus-steel-made: captions/how-is-damascus-steel-made.srt does not exist"
+  ]
 }
