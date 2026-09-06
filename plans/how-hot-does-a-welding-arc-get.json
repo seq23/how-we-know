@@ -1,0 +1,940 @@
+[
+  {
+    "segment": "depth_descent",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "A gas tungsten arc welding plasma reaches approximately eleven thousand degrees Celsius at its core, according to spectroscopic measurements published by welding research institutes.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "That is hotter than the surface of the sun. But that figure describes the ionized gas column between the electrode and the workpiece, not the metal being joined, and it holds only under specific conditions \u2014 argon shielding, controlled current, fixed arc length.",
+    "args": {
+      "lines": [
+        "That is hotter than",
+        "the surface of the",
+        "sun."
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "depth_descent",
+    "seconds": 8.28,
+    "heading": "Cold open",
+    "narration": "Change the gas to helium or increase the current by fifty amperes and the temperature shifts by hundreds of degrees.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "material_image",
+    "seconds": 6.21,
+    "heading": "Cold open",
+    "narration": "The question is not settled by one number because the arc is not one thing.",
+    "args": {
+      "subject": "welding-arc",
+      "label": "THE ARC",
+      "pick": 0
+    },
+    "from": "heuristic+material"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 3.5,
+    "heading": "Title card",
+    "narration": "How hot does a welding arc get?",
+    "args": {
+      "lines": [
+        "How hot does a",
+        "welding arc get?"
+      ]
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "light_attenuation",
+    "seconds": 9.0,
+    "heading": "The arc is a plasma column, and plasma temperature depends on ionization energy",
+    "narration": "An arc is a sustained electrical discharge through gas. When voltage across a gap exceeds the gas's dielectric strength, current flows and heats the gas until atoms ionize \u2014 electrons separate from nuclei and move independently.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "The arc is a plasma column, and plasma temperature depends on ionization energy",
+    "narration": "That ionized state is plasma. The temperature required to maintain ionization depends on which gas is present.",
+    "args": {
+      "lines": [
+        "That ionized state is",
+        "plasma. The temperature required",
+        "to maintain"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "light_attenuation",
+    "seconds": 9.0,
+    "heading": "The arc is a plasma column, and plasma temperature depends on ionization energy",
+    "narration": "Argon ionizes at a lower energy than helium, so an argon-shielded arc at a given current runs cooler than a helium arc at the same current.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.21,
+    "heading": "The arc is a plasma column, and plasma temperature depends on ionization energy",
+    "narration": "The plasma does not have a single temperature because it is not in thermal equilibrium.",
+    "args": {
+      "variant": 1
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "The arc is a plasma column, and plasma temperature depends on ionization energy",
+    "narration": "The core, where current density is highest, is hotter than the periphery.",
+    "args": {
+      "lines": [
+        "The core, where current",
+        "density is highest, is",
+        "hotter"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "light_attenuation",
+    "seconds": 6.62,
+    "heading": "The arc is a plasma column, and plasma temperature depends on ionization energy",
+    "narration": "Spectroscopic measurement resolves this by analyzing emission lines. Each ionized element emits light at characteristic wavelengths.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.38,
+    "heading": "The arc is a plasma column, and plasma temperature depends on ionization energy",
+    "narration": "The intensity ratio between lines corresponds to a temperature through the Boltzmann distribution.",
+    "args": {
+      "variant": 2
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "material_image",
+    "seconds": 7.86,
+    "heading": "The arc is a plasma column, and plasma temperature depends on ionization energy",
+    "narration": "This method samples the plasma optically without disturbing it, and it produces a temperature profile across the arc's cross-section.",
+    "args": {
+      "subject": "welding-arc",
+      "label": "THE ARC",
+      "pick": 1
+    },
+    "from": "heuristic+material"
+  },
+  {
+    "segment": "light_attenuation",
+    "seconds": 9.0,
+    "heading": "The arc is a plasma column, and plasma temperature depends on ionization energy",
+    "narration": "Published profiles from the American Welding Society show the core of a gas tungsten arc at eleven thousand degrees Celsius, the fringe at seven thousand, and the shielding gas boundary below three thousand.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.86,
+    "heading": "Current density and electrode geometry concentrate heat in a small volume",
+    "narration": "Gas tungsten arc welding uses a non-consumable tungsten electrode. The arc attaches to a small tip area, concentrating current.",
+    "args": {
+      "variant": 3
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Current density and electrode geometry concentrate heat in a small volume",
+    "narration": "Gas metal arc welding feeds a consumable wire electrode through the arc.",
+    "args": {
+      "lines": [
+        "Gas metal arc welding",
+        "feeds a consumable wire",
+        "electrode through"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.69,
+    "heading": "Current density and electrode geometry concentrate heat in a small volume",
+    "narration": "During metal transfer, the wire tip momentarily reaches nineteen thousand degrees Celsius, measured by high-speed pyrometry at the droplet detachment point.",
+    "args": {
+      "variant": 4
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.79,
+    "heading": "Current density and electrode geometry concentrate heat in a small volume",
+    "narration": "That temperature exists for milliseconds in a volume smaller than a grain of rice.",
+    "args": {
+      "variant": 0
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Current density and electrode geometry concentrate heat in a small volume",
+    "narration": "Shielded metal arc welding, which uses a flux-coated consumable rod, produces a cooler arc because the vaporizing flux absorbs energy.",
+    "args": {
+      "lines": [
+        "Shielded metal arc welding,",
+        "which uses a flux-coated",
+        "consumable rod"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.86,
+    "heading": "Current density and electrode geometry concentrate heat in a small volume",
+    "narration": "The coating decomposes at approximately six thousand five hundred degrees Celsius, and the gas it releases dilutes the plasma.",
+    "args": {
+      "variant": 1
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Current density and electrode geometry concentrate heat in a small volume",
+    "narration": "The workpiece surface does not reach the plasma core temperature. Heat transfers from the plasma by radiation, convection in the shielding gas, and conduction where the arc attaches.",
+    "args": {
+      "variant": 2
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Current density and electrode geometry concentrate heat in a small volume",
+    "narration": "The attachment point, called the anode spot in direct current electrode positive mode, concentrates current in an area a few millimeters across.",
+    "args": {
+      "lines": [
+        "The attachment point, called",
+        "the anode spot in",
+        "direct current"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Current density and electrode geometry concentrate heat in a small volume",
+    "narration": "Thermocouple measurements on steel plate during gas tungsten arc welding show the anode spot reaching twenty-eight hundred degrees Celsius, well below the plasma core but above steel's melting point of fifteen hundred degrees Celsius.",
+    "args": {
+      "variant": 3
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.69,
+    "heading": "Current density and electrode geometry concentrate heat in a small volume",
+    "narration": "The difference matters because the weld pool's fluidity, penetration depth, and solidification rate depend on the metal's temperature, not the plasma's.",
+    "args": {
+      "variant": 4
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Shielding gas composition shifts the temperature by changing thermal conductivity",
+    "narration": "Argon and helium are the two common inert shielding gases. Argon is denser and ionizes more easily, producing a stable arc at lower voltage.",
+    "args": {
+      "lines": [
+        "Argon and helium are",
+        "the two common inert",
+        "shielding gases."
+      ]
+    },
+    "from": "heuristic+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Shielding gas composition shifts the temperature by changing thermal conductivity",
+    "narration": "Helium has higher thermal conductivity, so a helium plasma transfers more heat to the workpiece for a given arc temperature.",
+    "args": {
+      "lines": [
+        "Helium has higher thermal",
+        "conductivity, so a helium",
+        "plasma transfers"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Shielding gas composition shifts the temperature by changing thermal conductivity",
+    "narration": "In practice, a seventy-five percent helium, twenty-five percent argon mixture increases weld penetration compared to pure argon at the same current, even though the measured plasma temperature rises only moderately.",
+    "args": {
+      "variant": 1
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Shielding gas composition shifts the temperature by changing thermal conductivity",
+    "narration": "The thermal conductivity difference moves more energy into the base metal. This is how welders adjust heat input without changing current \u2014 they change the gas.",
+    "args": {
+      "variant": 2
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "size_ladder",
+    "seconds": 5.38,
+    "heading": "Arc length changes voltage, which changes power, which changes temperature",
+    "narration": "Arc voltage rises with arc length because the plasma column has electrical resistance.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Arc length changes voltage, which changes power, which changes temperature",
+    "narration": "Longer arc, higher voltage, higher power for a given current. Power is current times voltage, and power becomes heat in the plasma.",
+    "args": {
+      "lines": [
+        "Longer arc, higher voltage,",
+        "higher power for a",
+        "given current."
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "size_ladder",
+    "seconds": 9.0,
+    "heading": "Arc length changes voltage, which changes power, which changes temperature",
+    "narration": "Extending a gas tungsten arc from two millimeters to four millimeters increases voltage by several volts, raising the plasma core temperature by hundreds of degrees Celsius.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Arc length changes voltage, which changes power, which changes temperature",
+    "narration": "The published range for this temperature increase is wide because the effect depends on current level, electrode taper, and shielding gas flow rate.",
+    "args": {
+      "variant": 3
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "Arc length changes voltage, which changes power, which changes temperature",
+    "narration": "Welding procedure specifications control arc length precisely because this thermal sensitivity affects weld quality.",
+    "args": {
+      "lines": [
+        "Welding procedure specifications control",
+        "arc length precisely because",
+        "this thermal"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "size_ladder",
+    "seconds": 8.28,
+    "heading": "Arc length changes voltage, which changes power, which changes temperature",
+    "narration": "A longer arc spreads heat over a wider area, reducing penetration and increasing the risk of porosity from atmospheric contamination.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 7.45,
+    "heading": "Producer POV",
+    "narration": "I had three arc temperatures from three welding processes and almost picked the highest one as the answer.",
+    "args": {
+      "text": "I had three arc temperatures from three welding processes and almost picked the highest one as the answer.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 6.62,
+    "heading": "Producer POV",
+    "narration": "They aren't competing claims, they're different processes measured differently. Picking a winner would have erased that.",
+    "args": {
+      "text": "They aren't competing claims, they're different processes measured differently. Picking a winner would have erased that.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "zone_column",
+    "seconds": 9.0,
+    "heading": "Measurement methods have spatial and temporal resolution limits",
+    "narration": "Spectroscopic temperature measurement assumes the plasma is in local thermodynamic equilibrium \u2014 that the distribution of electron energies matches a thermal distribution at a single temperature.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Measurement methods have spatial and temporal resolution limits",
+    "narration": "This holds in the arc core but breaks down in the fringe, where the plasma is cooling and recombining.",
+    "args": {
+      "lines": [
+        "This holds in the",
+        "arc core but breaks",
+        "down"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "zone_column",
+    "seconds": 9.0,
+    "heading": "Measurement methods have spatial and temporal resolution limits",
+    "narration": "Emission spectroscopy also integrates light along the line of sight, so it averages temperature through the plasma depth unless tomographic reconstruction is used.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "material_image",
+    "seconds": 9.0,
+    "heading": "Measurement methods have spatial and temporal resolution limits",
+    "narration": "High-speed pyrometry measures surface temperature by thermal radiation intensity, but it requires knowing the emissivity of the molten metal, which changes with surface oxidation and temperature itself.",
+    "args": {
+      "subject": "molten-steel",
+      "label": "MOLTEN METAL",
+      "pick": 0
+    },
+    "from": "heuristic+material"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Measurement methods have spatial and temporal resolution limits",
+    "narration": "These are not flaws; they are the resolution limits of the methods.",
+    "args": {
+      "lines": [
+        "These are not flaws"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "zone_column",
+    "seconds": 8.28,
+    "heading": "Measurement methods have spatial and temporal resolution limits",
+    "narration": "Thermocouples cannot measure the plasma directly because they would vaporize, but they measure the workpiece away from the arc attachment.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.45,
+    "heading": "Measurement methods have spatial and temporal resolution limits",
+    "narration": "Infrared thermography maps the temperature field around the weld pool, with millisecond time resolution and sub-millimeter spatial resolution.",
+    "args": {
+      "variant": 0
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Measurement methods have spatial and temporal resolution limits",
+    "narration": "Each method sees a different part of the thermal system. The plasma core temperature from spectroscopy, the droplet transfer temperature from pyrometry, and the heat-affected zone temperature from thermocouples are all real, all different, and all necessary to describe what happens during welding.",
+    "args": {
+      "lines": [
+        "Each method sees a",
+        "different part of the",
+        "thermal system."
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 4.97,
+    "heading": "Alternating current reverses the thermal load between electrode and workpiece",
+    "narration": "Direct current maintains a constant polarity, so the thermal load is steady.",
+    "args": {
+      "variant": 1
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "Alternating current reverses the thermal load between electrode and workpiece",
+    "narration": "Alternating current reverses polarity every half-cycle, typically sixty or one hundred twenty times per second.",
+    "args": {
+      "lines": [
+        "Alternating current reverses polarity",
+        "every half-cycle, typically sixty",
+        "or one"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.21,
+    "heading": "Alternating current reverses the thermal load between electrode and workpiece",
+    "narration": "During the electrode-negative half-cycle, electrons leave the electrode and bombard the workpiece, heating it intensely.",
+    "args": {
+      "variant": 2
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Alternating current reverses the thermal load between electrode and workpiece",
+    "narration": "During the electrode-positive half-cycle, electrons strike the electrode, heating it instead. Tungsten electrodes in AC gas tungsten arc welding require larger diameters than in DC to handle the thermal cycling.",
+    "args": {
+      "variant": 3
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Alternating current reverses the thermal load between electrode and workpiece",
+    "narration": "The arc temperature itself fluctuates with the current waveform, dropping near the zero crossing when current is low and rising again as current peaks. High-speed spectroscopy shows these oscillations clearly.",
+    "args": {
+      "lines": [
+        "The arc temperature itself",
+        "fluctuates with the current",
+        "waveform, dropping"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "size_ladder",
+    "seconds": 8.28,
+    "heading": "The measurement history tracks improvements in spatial and temporal resolution",
+    "narration": "The progression of measurement techniques tracks the technology available. Early spectroscopy in the nineteen twenties could measure only time-averaged temperatures.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "The measurement history tracks improvements in spatial and temporal resolution",
+    "narration": "High-speed photography in the nineteen sixties resolved metal transfer events but not temperature directly.",
+    "args": {
+      "lines": [
+        "High-speed photography in the",
+        "nineteen sixties resolved metal",
+        "transfer events"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "size_ladder",
+    "seconds": 9.0,
+    "heading": "The measurement history tracks improvements in spatial and temporal resolution",
+    "narration": "Infrared cameras in the nineteen eighties added thermal mapping. Tomographic reconstruction in the twenty-tens built three-dimensional temperature fields from multiple spectroscopic views.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.21,
+    "heading": "The measurement history tracks improvements in spatial and temporal resolution",
+    "narration": "Each advance refined the spatial or temporal resolution, revealing structure the previous method averaged over.",
+    "args": {
+      "variant": 4
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "The measurement history tracks improvements in spatial and temporal resolution",
+    "narration": "The eleven-thousand-degree figure is not new, but the certainty about where that temperature exists and for how long has improved substantially.",
+    "args": {
+      "lines": [
+        "The eleven-thousand-degree figure is",
+        "not new, but the",
+        "certainty about"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "The core temperature of eleven thousand degrees Celsius appears in multiple independent studies using different spectroscopic methods and different welding parameters within the gas tungsten arc welding envelope.",
+    "args": {
+      "variant": 0
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "The consistency across methods strengthens confidence in the figure. The nineteen-thousand-degree measurement for gas metal arc transfer comes from high-speed pyrometry, a different technique sampling a different location \u2014 the consumable wire tip during droplet detachment.",
+    "args": {
+      "lines": [
+        "The consistency across methods",
+        "strengthens confidence in the",
+        "figure."
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "The six-thousand-five-hundred-degree figure for shielded metal arc welding reflects the cooling effect of flux decomposition, measured by comparing emission spectra with and without flux coatings. These are not competing claims; they describe different processes.",
+    "args": {
+      "variant": 1
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "The eleven-thousand-degree figure for a gas tungsten arc core is a typical value under standard conditions \u2014 argon shielding, one hundred fifty amperes, two-millimeter arc length, pointed tungsten electrode.",
+    "args": {
+      "variant": 2
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "Change any of those and the temperature shifts. Published measurements span nine thousand to thirteen thousand degrees Celsius across the range of common welding parameters.",
+    "args": {
+      "lines": [
+        "Change any of those",
+        "and the temperature shifts.",
+        "Published measurements"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "The workpiece surface temperature, the heat-affected zone temperature, and the cooling rate after the arc passes are separate questions with separate measurements.",
+    "args": {
+      "variant": 3
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "Knowing the plasma temperature does not tell you whether the weld will be sound; it tells you the energy available to melt and fuse the metal.",
+    "args": {
+      "variant": 4
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Electrode material and geometry affect the arc attachment and thermal distribution",
+    "narration": "Gas tungsten arc welding uses tungsten electrodes because tungsten's melting point of three thousand six hundred ninety-five Kelvin \u2014 three thousand four hundred twenty-two degrees Celsius \u2014 exceeds the arc attachment temperature.",
+    "args": {
+      "lines": [
+        "Gas tungsten arc welding",
+        "uses tungsten electrodes because",
+        "tungsten's melting"
+      ]
+    },
+    "from": "heuristic+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Electrode material and geometry affect the arc attachment and thermal distribution",
+    "narration": "Copper melts at one thousand three hundred fifty-eight Kelvin, and steel at one thousand eight hundred eleven Kelvin, both far below the arc core temperature.",
+    "args": {
+      "lines": [
+        "Copper melts at one",
+        "thousand three hundred fifty-eight",
+        "Kelvin"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Electrode material and geometry affect the arc attachment and thermal distribution",
+    "narration": "The electrode tip erodes slowly through evaporation rather than melting. Electrode geometry matters because a sharp point concentrates current into a smaller attachment area, increasing current density and local temperature.",
+    "args": {
+      "variant": 1
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.03,
+    "heading": "Electrode material and geometry affect the arc attachment and thermal distribution",
+    "narration": "A two-degree included angle produces a narrower, hotter arc than a thirty-degree angle at the same current.",
+    "args": {
+      "variant": 2
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Electrode material and geometry affect the arc attachment and thermal distribution",
+    "narration": "The American Welding Society publishes electrode preparation standards that specify tip geometry by current range precisely because the thermal concentration affects penetration depth and bead width.",
+    "args": {
+      "lines": [
+        "The American Welding Society",
+        "publishes electrode preparation standards",
+        "that specify"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Electrode material and geometry affect the arc attachment and thermal distribution",
+    "narration": "Consumable electrodes in gas metal arc welding melt continuously, and the wire feed rate must match the melt rate to maintain stable arc length.",
+    "args": {
+      "variant": 3
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Electrode material and geometry affect the arc attachment and thermal distribution",
+    "narration": "The wire tip temperature during transfer depends on the transfer mode. Spray transfer, which occurs above a threshold current, produces a stream of small droplets at approximately nineteen thousand degrees Celsius.",
+    "args": {
+      "variant": 4
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Electrode material and geometry affect the arc attachment and thermal distribution",
+    "narration": "Short-circuit transfer, used at lower currents, allows the molten tip to contact the workpiece, briefly extinguishing the arc.",
+    "args": {
+      "lines": [
+        "Short-circuit transfer, used at",
+        "lower currents, allows the",
+        "molten tip"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Electrode material and geometry affect the arc attachment and thermal distribution",
+    "narration": "Globular transfer, an intermediate mode, forms large droplets that detach irregularly. Each mode has a different thermal signature measured by high-speed pyrometry.",
+    "args": {
+      "variant": 0
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Electrode material and geometry affect the arc attachment and thermal distribution",
+    "narration": "The transfer mode is not chosen for temperature but for penetration and spatter control, yet the temperature difference between modes is measurable and repeatable.",
+    "args": {
+      "variant": 1
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Workpiece material and thickness change how heat dissipates from the arc attachment zone",
+    "narration": "Aluminum conducts heat roughly four times faster than steel. An arc on aluminum spreads heat into a wider pool than the same arc on steel, reducing peak temperature at the attachment point but requiring higher travel speed to avoid excessive penetration.",
+    "args": {
+      "lines": [
+        "Aluminum conducts heat roughly",
+        "four times faster than",
+        "steel."
+      ]
+    },
+    "from": "heuristic+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Workpiece material and thickness change how heat dissipates from the arc attachment zone",
+    "narration": "Copper conducts even faster, making it difficult to weld without preheating because the base metal draws heat away from the weld pool faster than the arc can sustain melting.",
+    "args": {
+      "lines": [
+        "Copper conducts even faster,",
+        "making it difficult to",
+        "weld without"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Workpiece material and thickness change how heat dissipates from the arc attachment zone",
+    "narration": "The workpiece acts as a heat sink, and its thermal mass determines how quickly the attachment zone cools after the arc passes.",
+    "args": {
+      "variant": 3
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Workpiece material and thickness change how heat dissipates from the arc attachment zone",
+    "narration": "Thin sheet metal reaches higher temperatures faster than thick plate under the same arc because there is less material to absorb the energy.",
+    "args": {
+      "variant": 4
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Workpiece material and thickness change how heat dissipates from the arc attachment zone",
+    "narration": "Welding procedure specifications adjust current, travel speed, and sometimes preheat temperature based on material thickness for this reason.",
+    "args": {
+      "lines": [
+        "Welding procedure specifications adjust",
+        "current, travel speed, and",
+        "sometimes preheat"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Workpiece material and thickness change how heat dissipates from the arc attachment zone",
+    "narration": "The steel anode spot temperature measurement of twenty-eight hundred degrees Celsius, stated earlier, comes from thermocouples embedded just below the surface and sampled at millisecond intervals.",
+    "args": {
+      "variant": 0
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.86,
+    "heading": "Workpiece material and thickness change how heat dissipates from the arc attachment zone",
+    "narration": "The published range across studies is twenty-six hundred to three thousand degrees Celsius depending on current and arc length.",
+    "args": {
+      "variant": 1
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Workpiece material and thickness change how heat dissipates from the arc attachment zone",
+    "narration": "This measurement captures the peak temperature, not the sustained temperature, because the arc moves and the metal cools by conduction into the surrounding material.",
+    "args": {
+      "lines": [
+        "This measurement captures the",
+        "peak temperature, not the",
+        "sustained temperature"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Workpiece material and thickness change how heat dissipates from the arc attachment zone",
+    "narration": "Infrared thermography shows the temperature dropping to below one thousand degrees Celsius within ten millimeters behind the arc in a single-pass weld on quarter-inch plate.",
+    "args": {
+      "variant": 2
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "material_image",
+    "seconds": 7.03,
+    "heading": "Workpiece material and thickness change how heat dissipates from the arc attachment zone",
+    "narration": "The cooling rate affects grain structure in the heat-affected zone and residual stress in the finished joint.",
+    "args": {
+      "subject": "micrograph-steel",
+      "label": "GRAIN STRUCTURE",
+      "pick": 0
+    },
+    "from": "heuristic+material"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "The arc is hotter than the sun's surface, but the sun's surface is not the sun's core, and the arc's core is not where the welding happens.",
+    "args": {
+      "lines": [
+        "The arc is hotter",
+        "than the sun's surface"
+      ]
+    },
+    "from": "heuristic+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "The metal a few millimeters away is cooler by thousands of degrees, and that is the metal that solidifies into the joint.",
+    "args": {
+      "lines": [
+        "The metal a few",
+        "millimeters away is cooler",
+        "by thousands"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "The plasma temperature sets the upper bound on energy delivery, but the weld quality depends on how that energy moves through the workpiece, and that is a question of thermal conductivity, geometry, and time.",
+    "args": {
+      "variant": 0
+    },
+    "from": "heuristic"
+  }
+]

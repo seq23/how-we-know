@@ -124,6 +124,16 @@ print(" ".join(out))
 PYEOF
 )
 
+# THE HINT ABOVE NAMED THE WRONG TOOL. It said "visuals/plan_species.py", which is
+# the deep-sea image pass, not a plan builder - and every topic that has hit this
+# stop since materials went live on 2026-09-03 has been a materials topic, where
+# plan_species.py is the wrong lane entirely. Following it produces nothing.
+#
+# The two real steps are: planner.plan() writes plans/<slug>.json from the script,
+# and plan_materials_images.py then places the photographs. Both need .venv, not
+# .venv-tts - PIL lives in the render venv, and running the image pass under the
+# system python fails on "No module named 'PIL'".
+#
 # A queued slug with no plan file is SILENTLY SKIPPED by both loops above - it
 # is neither narratable nor renderable, so the preview said "none" and the
 # reason never reached the operator. Name it instead. Rule 0: this stage does
@@ -152,8 +162,12 @@ if [ -z "${pending_audio// }" ] && [ -z "${pending_render// }" ]; then
     echo "NAMED STOP: nothing THIS MAC can do. Every script that has a shot plan is"
     echo "narrated and rendered. The queued topics listed above as 'no plan yet' are"
     echo "blocked one stage earlier: they have no plans/<slug>.json, so there is"
-    echo "nothing for the voice model to read. Build those plans first"
-    echo "(visuals/plan_species.py), then re-run this."
+    echo "nothing for the voice model to read. Build those plans first:"
+    echo "  .venv/bin/python -c \"import sys;sys.path.insert(0,'visuals');import planner,json;\\"
+    echo "    json.dump(planner.plan('scripts/<slug>.md'),open('plans/<slug>.json','w'),indent=2)\""
+    echo "  then, for a materials topic, the image pass:"
+    echo "    .venv/bin/python visuals/plan_materials_images.py --apply plans/<slug>.json"
+    echo "then re-run this."
     echo "  blocked: $(echo $pending_plan | wc -w | tr -d ' ') queued topic(s)"
   else
     echo "NAMED STOP: nothing to do. Every script is narrated and every narrated"
