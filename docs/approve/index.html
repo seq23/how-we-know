@@ -41,7 +41,7 @@ border-radius:9px;font-size:12px;color:var(--dim)}
 </style></head><body><div class="wrap">
 
 <h1>Week 2026-W36</h1>
-<div class="sub">2 videos picked automatically ·
+<div class="sub">4 videos picked automatically ·
 ceiling 4/week (deliberate)</div>
 
 <div class="note"><b>Nothing here is waiting on you.</b> Topics were picked from
@@ -51,7 +51,7 @@ the override window closes Tuesday 02:00, when rendering starts.</div>
 
 <div class="bar">
   <span>breaker <b class="ok">closed</b></span>
-  <span>validators <b class="ok">passed</b></span>
+  <span>validators <b class="bad">FAILED</b></span>
   <span>gate refused <b>15</b> candidates</span>
   <span>authored <b>0</b></span>
   <span>cost <b>$0.000</b></span>
@@ -61,26 +61,50 @@ the override window closes Tuesday 02:00, when rendering starts.</div>
 
 <form id="f">
 <div class="card">
-  <p class="q">1. How big is a colossal squid?</p>
+  <p class="q">1. Why does old iron not rust?</p>
   <div class="meta">
     <span class="tag ">human-authored</span>
-    14-how-big-is-a-colossal-squid · 4 sources · 56 beats
+    why-does-old-iron-not-rust · 8 sources · 66 beats
   </div>
-  <div class="pov"><b>POV pov-008</b> — The giant squid is the one that gets me. Not because I think it&#x27;s coming for anyone. It&#x27;s the size, the intelligence, and the fact that it exists around us without us regularly seeing it.<br>
-    <span style="font-size:11px;opacity:.7">matched: hand assignment in pov/pov-assignments.json</span></div>
-  <button class="drop" data-slug="14-how-big-is-a-colossal-squid">Drop</button>
+  <div class="pov"><b>POV pov-120</b> — Failure isn&#x27;t an insult to engineering; pretending failure has been eliminated is. Every material has conditions, limits and a life. The question is whether those limits were understood and monitored, or ignored until the failure became somebody else&#x27;s emergency.<br>
+    <span style="font-size:11px;opacity:.7">matched: tag:failure score 2.8</span></div>
+  <button class="drop" data-slug="why-does-old-iron-not-rust">Drop</button>
 </div>
 
 
 <div class="card">
-  <p class="q">2. How do people reach Challenger Deep?</p>
+  <p class="q">2. How is a silicon wafer made?</p>
   <div class="meta">
     <span class="tag ">human-authored</span>
-    15-how-do-people-reach-challenger-deep · 5 sources · 62 beats
+    how-is-a-silicon-wafer-made · 5 sources · 78 beats
   </div>
-  <div class="pov"><b>POV pov-034</b> — Being willing to take a risk doesn&#x27;t mean everyone else involved understood that risk.<br>
-    <span style="font-size:11px;opacity:.7">matched: hand assignment in pov/pov-assignments.json</span></div>
-  <button class="drop" data-slug="15-how-do-people-reach-challenger-deep">Drop</button>
+  <div class="pov"><b>POV pov-119</b> — Watching something be made, I think about how many things had to become controllable first — temperature, pressure, purity, timing, tolerances, sequence, inspection. What looks smooth at the end is usually violent forces being controlled very precisely.<br>
+    <span style="font-size:11px;opacity:.7">matched: tag:systems score 2.8</span></div>
+  <button class="drop" data-slug="how-is-a-silicon-wafer-made">Drop</button>
+</div>
+
+
+<div class="card">
+  <p class="q">3. What is a semiconductor made of?</p>
+  <div class="meta">
+    <span class="tag ">human-authored</span>
+    what-is-a-semiconductor-made-of · 4 sources · 74 beats
+  </div>
+  <div class="pov"><b>POV pov-016</b> — It reminds me of companies and systems. Something looks completely irrational when you judge it outside the environment it was built for.<br>
+    <span style="font-size:11px;opacity:.7">matched: tag:systems score 2.0</span></div>
+  <button class="drop" data-slug="what-is-a-semiconductor-made-of">Drop</button>
+</div>
+
+
+<div class="card">
+  <p class="q">4. How is 3D printed metal made?</p>
+  <div class="meta">
+    <span class="tag ">human-authored</span>
+    how-is-3d-printed-metal-made · 6 sources · 87 beats
+  </div>
+  <div class="pov"><b>POV pov-122</b> — A remarkable laboratory property is not the same thing as a reliable system.<br>
+    <span style="font-size:11px;opacity:.7">matched: tag:numbers score 2.8</span></div>
+  <button class="drop" data-slug="how-is-3d-printed-metal-made">Drop</button>
 </div>
 </form>
 
@@ -98,7 +122,7 @@ the override window closes Tuesday 02:00, when rendering starts.</div>
 
 </div>
 <script>
-const DATA = {"week": "2026-W36", "generated": "2026-09-05T12:53:22+00:00", "items": [{"slug": "14-how-big-is-a-colossal-squid"}, {"slug": "15-how-do-people-reach-challenger-deep"}]};
+const DATA = {"week": "2026-W36", "generated": "2026-09-06T13:24:08+00:00", "items": [{"slug": "why-does-old-iron-not-rust"}, {"slug": "how-is-a-silicon-wafer-made"}, {"slug": "what-is-a-semiconductor-made-of"}, {"slug": "how-is-3d-printed-metal-made"}]};
 const REPO = "seq23/how-we-know";
 function selected(){
   return [...document.querySelectorAll("button.drop.on")].map(b => b.dataset.slug);

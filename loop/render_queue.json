@@ -1,12 +1,12 @@
 {
   "week": "2026-W36",
-  "generated": "2026-09-05T12:53:22+00:00",
+  "generated": "2026-09-06T13:24:08+00:00",
   "videos_per_week": 4,
   "breaker": "closed",
   "validators": [
     {
       "validator": "V1 directive-truth",
-      "examined": 419,
+      "examined": 430,
       "status": "PASS",
       "failures": [],
       "notes": [
@@ -26,7 +26,7 @@
     },
     {
       "validator": "V3 taxonomy",
-      "examined": 2,
+      "examined": 4,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -34,18 +34,20 @@
     },
     {
       "validator": "V4 pov",
-      "examined": 2,
+      "examined": 4,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "14-how-big-is-a-colossal-squid: script POV is an editorial paraphrase, not a bank line \u2014 owner confirmation required (this is the Monday 15-minute step, not a defect)",
-        "15-how-do-people-reach-challenger-deep: script POV is an editorial paraphrase, not a bank line \u2014 owner confirmation required (this is the Monday 15-minute step, not a defect)"
+        "why-does-old-iron-not-rust: script POV is an editorial paraphrase, not a bank line \u2014 owner confirmation required (this is the Monday 15-minute step, not a defect)",
+        "how-is-a-silicon-wafer-made: script POV is an editorial paraphrase, not a bank line \u2014 owner confirmation required (this is the Monday 15-minute step, not a defect)",
+        "what-is-a-semiconductor-made-of: script POV is an editorial paraphrase, not a bank line \u2014 owner confirmation required (this is the Monday 15-minute step, not a defect)",
+        "how-is-3d-printed-metal-made: script POV is an editorial paraphrase, not a bank line \u2014 owner confirmation required (this is the Monday 15-minute step, not a defect)"
       ],
       "stops": []
     },
     {
       "validator": "V5 sources-present",
-      "examined": 2,
+      "examined": 4,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -53,7 +55,7 @@
     },
     {
       "validator": "V6 attribution (soft)",
-      "examined": 2,
+      "examined": 4,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -61,7 +63,7 @@
     },
     {
       "validator": "V7 plans",
-      "examined": 2,
+      "examined": 4,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -153,7 +155,7 @@
       "status": "PASS",
       "failures": [],
       "notes": [
-        "19 episode(s) dated through 2026-10-25; 2 domain(s) allocating on disjoint days {'deep-sea-ocean-science': (1, 6), 'materials-and-manufacturing': (0, 4)} at 4/week"
+        "22 episode(s) dated through 2026-10-25; 2 domain(s) allocating on disjoint days {'deep-sea-ocean-science': (1, 6), 'materials-and-manufacturing': (0, 4)} at 4/week"
       ],
       "stops": []
     },
@@ -203,7 +205,7 @@
     },
     {
       "validator": "V27 lanes-see-domains",
-      "examined": 17,
+      "examined": 25,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -211,7 +213,7 @@
     },
     {
       "validator": "V28 lane-interpreters",
-      "examined": 12,
+      "examined": 25,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -219,7 +221,7 @@
     },
     {
       "validator": "V29 material-image rights",
-      "examined": 34,
+      "examined": 23,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -227,14 +229,92 @@
     },
     {
       "validator": "V30 cloud-visibility",
-      "examined": 177,
+      "examined": 218,
+      "status": "PASS",
+      "failures": [],
+      "notes": [],
+      "stops": []
+    },
+    {
+      "validator": "V31 render-has-thumbnail",
+      "examined": 1,
+      "status": "PASS",
+      "failures": [],
+      "notes": [
+        "no rendered MP4 on this machine; renders live on the Mac and in R2 by design. The Mac run covers this."
+      ],
+      "stops": []
+    },
+    {
+      "validator": "V32 scheduled-pov",
+      "examined": 23,
+      "status": "FAIL(3)",
+      "failures": [
+        "how-does-tempered-glass-shatter airs 2026-09-18 with a first-person Producer POV that traces to no line in pov/pov-bank.json - there is no entry for it in pov/pov-assignments.json. Its domain has had no POV interview, and config says tier-specific lines do not transfer.",
+        "how-strong-is-titanium airs 2026-09-21 with a first-person Producer POV that traces to no line in pov/pov-bank.json - there is no entry for it in pov/pov-assignments.json. Its domain has had no POV interview, and config says tier-specific lines do not transfer.",
+        "how-is-damascus-steel-made airs 2026-09-25 with a first-person Producer POV that traces to no line in pov/pov-bank.json - there is no entry for it in pov/pov-assignments.json. Its domain has had no POV interview, and config says tier-specific lines do not transfer."
+      ],
+      "notes": [],
+      "stops": []
+    },
+    {
+      "validator": "V33 domain-harvesters",
+      "examined": 5,
+      "status": "PASS",
+      "failures": [],
+      "notes": [],
+      "stops": []
+    },
+    {
+      "validator": "V34 niche-lifecycle",
+      "examined": 8,
+      "status": "PASS",
+      "failures": [],
+      "notes": [],
+      "stops": []
+    },
+    {
+      "validator": "V35 weekly-digest",
+      "examined": 10,
+      "status": "PASS",
+      "failures": [],
+      "notes": [],
+      "stops": []
+    },
+    {
+      "validator": "V36 editorial-gate",
+      "examined": 305,
+      "status": "PASS",
+      "failures": [],
+      "notes": [],
+      "stops": []
+    },
+    {
+      "validator": "V37 runtime-target",
+      "examined": 10,
+      "status": "PASS",
+      "failures": [],
+      "notes": [],
+      "stops": []
+    },
+    {
+      "validator": "V38 no-duplicate-airing",
+      "examined": 25,
+      "status": "PASS",
+      "failures": [],
+      "notes": [],
+      "stops": []
+    },
+    {
+      "validator": "V39 queue-depth-remaining",
+      "examined": 5,
       "status": "PASS",
       "failures": [],
       "notes": [],
       "stops": []
     }
   ],
-  "validators_passed": true,
+  "validators_passed": false,
   "approval": {
     "required": false,
     "mode": "notified, not asked",
@@ -247,34 +327,36 @@
     "why": "configured default (4/week)"
   },
   "runway": {
-    "unpublished_scripts": 19,
-    "publishable": 15,
-    "scheduled_not_yet_aired": 19,
+    "unpublished_scripts": 16,
+    "publishable": 12,
+    "scheduled_not_yet_aired": 22,
     "basis": "publish queue",
     "videos_per_week": 4,
     "weeks_remaining": 8.5,
     "warn_below_weeks": 4.0,
     "critical_below_weeks": 2.0,
-    "level": "ok",
+    "level": "critical",
     "by_domain": {
       "deep-sea-ocean-science": {
         "slots_per_week": 2,
-        "queued": 16,
-        "weeks": 8.0,
-        "level": "ok",
-        "message": "deep-sea-ocean-science: 8.0 week(s) at 2/week (16 queued)"
+        "queued": 0,
+        "weeks": 0.0,
+        "level": "critical",
+        "message": "deep-sea-ocean-science: 0.0 week(s) at 2/week (0 queued)"
       },
       "materials-and-manufacturing": {
         "slots_per_week": 2,
-        "queued": 18,
-        "weeks": 9.0,
+        "queued": 12,
+        "weeks": 6.0,
         "level": "ok",
-        "message": "materials-and-manufacturing: 9.0 week(s) at 2/week (18 queued)"
+        "message": "materials-and-manufacturing: 6.0 week(s) at 2/week (12 queued)"
       }
     },
-    "short_domains": [],
+    "short_domains": [
+      "deep-sea-ocean-science"
+    ],
     "never_go_dark": true,
-    "message": "8.5 weeks of queue at 4/week (15 publishable of 19 on disk). By domain: deep-sea-ocean-science: 8.0 week(s) at 2/week (16 queued); materials-and-manufacturing: 9.0 week(s) at 2/week (18 queued)."
+    "message": "RUNWAY CRITICAL: 8.5 weeks left at 4/week - 12 publishable episode(s). The channel goes dark within the month unless topics are added. By domain: deep-sea-ocean-science: 0.0 week(s) at 2/week (0 queued); materials-and-manufacturing: 6.0 week(s) at 2/week (12 queued)."
   },
   "authoring": {
     "generated_this_week": 0,
@@ -283,52 +365,130 @@
   },
   "items": [
     {
-      "slug": "14-how-big-is-a-colossal-squid",
-      "question": "How big is a colossal squid?",
-      "script": "scripts/14-how-big-is-a-colossal-squid.md",
+      "slug": "why-does-old-iron-not-rust",
+      "question": "Why does old iron not rust?",
+      "script": "scripts/why-does-old-iron-not-rust.md",
       "generated": false,
       "author_cost_usd": null,
       "author_model": null,
-      "pov_id": "pov-008",
-      "pov_line": "The giant squid is the one that gets me. Not because I think it's coming for anyone. It's the size, the intelligence, and the fact that it exists around us without us regularly seeing it.",
-      "pov_matched_by": "hand assignment in pov/pov-assignments.json",
-      "work_copy": "loop/work/14-how-big-is-a-colossal-squid.md",
-      "audio_dir": "audio/14-how-big-is-a-colossal-squid",
-      "plan": "loop/plans/14-how-big-is-a-colossal-squid.json",
-      "render": "renders/14-how-big-is-a-colossal-squid.mp4",
+      "pov_id": "pov-120",
+      "pov_line": "Failure isn't an insult to engineering; pretending failure has been eliminated is. Every material has conditions, limits and a life. The question is whether those limits were understood and monitored, or ignored until the failure became somebody else's emergency.",
+      "pov_matched_by": "tag:failure score 2.8",
+      "work_copy": "loop/work/why-does-old-iron-not-rust.md",
+      "audio_dir": "audio/why-does-old-iron-not-rust",
+      "plan": "loop/plans/why-does-old-iron-not-rust.json",
+      "render": "renders/why-does-old-iron-not-rust.mp4",
       "source": "authored-inventory",
       "status": "queued",
       "pov_needs_confirmation": true,
-      "pov_bank_line": "The giant squid is the one that gets me. Not because I think it's coming for anyone. It's the size, the intelligence, and the fact that it exists around us without us regularly seeing it.",
-      "pov_script_line": "The hardest part of this script was refusing the biggest number on the internet. A measured specimen and a projected maximum are not the same thing.",
-      "source_count": 4,
-      "sources_cited": [],
+      "pov_bank_line": "Failure isn't an insult to engineering; pretending failure has been eliminated is. Every material has conditions, limits and a life. The question is whether those limits were understood and monitored, or ignored until the failure became somebody else's emergency.",
+      "pov_script_line": "I wanted a clean number for how long a protective layer takes to form. The published corrosion rates span two orders of magnitude, so a single figure would have sounded more certain than the evidence actually is.",
+      "source_count": 8,
+      "sources_cited": [
+        "NIST",
+        "ASM International",
+        "USGS",
+        "MIT",
+        "Fraunhofer",
+        "Fraunhofer Institute",
+        "ASTM International",
+        "Science",
+        "Archaeological Institute of America",
+        "British Museum"
+      ],
       "attribution_gaps": [],
-      "planned_beats": 56
+      "planned_beats": 66
     },
     {
-      "slug": "15-how-do-people-reach-challenger-deep",
-      "question": "How do people reach Challenger Deep?",
-      "script": "scripts/15-how-do-people-reach-challenger-deep.md",
+      "slug": "how-is-a-silicon-wafer-made",
+      "question": "How is a silicon wafer made?",
+      "script": "scripts/how-is-a-silicon-wafer-made.md",
       "generated": false,
       "author_cost_usd": null,
       "author_model": null,
-      "pov_id": "pov-034",
-      "pov_line": "Being willing to take a risk doesn't mean everyone else involved understood that risk.",
-      "pov_matched_by": "hand assignment in pov/pov-assignments.json",
-      "work_copy": "loop/work/15-how-do-people-reach-challenger-deep.md",
-      "audio_dir": "audio/15-how-do-people-reach-challenger-deep",
-      "plan": "loop/plans/15-how-do-people-reach-challenger-deep.json",
-      "render": "renders/15-how-do-people-reach-challenger-deep.mp4",
+      "pov_id": "pov-119",
+      "pov_line": "Watching something be made, I think about how many things had to become controllable first \u2014 temperature, pressure, purity, timing, tolerances, sequence, inspection. What looks smooth at the end is usually violent forces being controlled very precisely.",
+      "pov_matched_by": "tag:systems score 2.8",
+      "work_copy": "loop/work/how-is-a-silicon-wafer-made.md",
+      "audio_dir": "audio/how-is-a-silicon-wafer-made",
+      "plan": "loop/plans/how-is-a-silicon-wafer-made.json",
+      "render": "renders/how-is-a-silicon-wafer-made.mp4",
       "source": "authored-inventory",
       "status": "queued",
       "pov_needs_confirmation": true,
-      "pov_bank_line": "Being willing to take a risk doesn't mean everyone else involved understood that risk.",
-      "pov_script_line": "I had to delete a cleaner title because it stopped being true. That is exactly the kind of correction this channel needs to make before the audience makes it for us.",
+      "pov_bank_line": "Watching something be made, I think about how many things had to become controllable first \u2014 temperature, pressure, purity, timing, tolerances, sequence, inspection. What looks smooth at the end is usually violent forces being controlled very precisely.",
+      "pov_script_line": "I wrote 'nine-nines pure' like purity was a certificate stamped once. It isn't. Every step after purification can reintroduce contamination, so I rewrote it as a chain of measurements instead of an achieved state.",
       "source_count": 5,
-      "sources_cited": [],
+      "sources_cited": [
+        "NIST",
+        "ASM International",
+        "USGS",
+        "USGS Minerals",
+        "MIT",
+        "MIT DMSE",
+        "MIT Department of Materials Science and Engineering",
+        "Science",
+        "SEMI",
+        "SEMI International Standards"
+      ],
       "attribution_gaps": [],
-      "planned_beats": 62
+      "planned_beats": 78
+    },
+    {
+      "slug": "what-is-a-semiconductor-made-of",
+      "question": "What is a semiconductor made of?",
+      "script": "scripts/what-is-a-semiconductor-made-of.md",
+      "generated": false,
+      "author_cost_usd": null,
+      "author_model": null,
+      "pov_id": "pov-016",
+      "pov_line": "It reminds me of companies and systems. Something looks completely irrational when you judge it outside the environment it was built for.",
+      "pov_matched_by": "tag:systems score 2.0",
+      "work_copy": "loop/work/what-is-a-semiconductor-made-of.md",
+      "audio_dir": "audio/what-is-a-semiconductor-made-of",
+      "plan": "loop/plans/what-is-a-semiconductor-made-of.json",
+      "render": "renders/what-is-a-semiconductor-made-of.mp4",
+      "source": "authored-inventory",
+      "status": "queued",
+      "pov_needs_confirmation": true,
+      "pov_bank_line": "It reminds me of companies and systems. Something looks completely irrational when you judge it outside the environment it was built for.",
+      "pov_script_line": "'What is it made of' sounds like it wants one element. Silicon is over ninety percent of production, but the defining property is the impurity deliberately added to it, not the base material. I answered the question underneath the question.",
+      "source_count": 4,
+      "sources_cited": [
+        "NIST",
+        "ASM International",
+        "SEMI",
+        "SEMI International Standards"
+      ],
+      "attribution_gaps": [],
+      "planned_beats": 74
+    },
+    {
+      "slug": "how-is-3d-printed-metal-made",
+      "question": "How is 3D printed metal made?",
+      "script": "scripts/how-is-3d-printed-metal-made.md",
+      "generated": false,
+      "author_cost_usd": null,
+      "author_model": null,
+      "pov_id": "pov-122",
+      "pov_line": "A remarkable laboratory property is not the same thing as a reliable system.",
+      "pov_matched_by": "tag:numbers score 2.8",
+      "work_copy": "loop/work/how-is-3d-printed-metal-made.md",
+      "audio_dir": "audio/how-is-3d-printed-metal-made",
+      "plan": "loop/plans/how-is-3d-printed-metal-made.json",
+      "render": "renders/how-is-3d-printed-metal-made.mp4",
+      "source": "authored-inventory",
+      "status": "queued",
+      "pov_needs_confirmation": true,
+      "pov_bank_line": "A remarkable laboratory property is not the same thing as a reliable system.",
+      "pov_script_line": "I wanted to say the layers get welded together, because that's the intuitive word. They don't weld, they fuse metallurgically \u2014 the atoms interdiffuse across the boundary. Wrong verb, wrong physics, so I cut it.",
+      "source_count": 6,
+      "sources_cited": [
+        "NIST",
+        "ASM International"
+      ],
+      "attribution_gaps": [],
+      "planned_beats": 87
     }
   ],
   "unauthored": []

@@ -1,8 +1,8 @@
 {
-  "state": "closed",
-  "tripped_at": null,
-  "cause": null,
-  "detail": null,
+  "state": "tripped",
+  "tripped_at": "2026-09-06T13:24:08+00:00",
+  "cause": "validator",
+  "detail": "V32 scheduled-pov=FAIL(3)",
   "history": [
     {
       "event": "trip",
@@ -63,6 +63,12 @@
       "at": "2026-09-05T02:58:39+00:00",
       "cleared_cause": "validator",
       "note": "V13/V14/V15 exempt when renders and Shorts are absent, as they always are in the cloud (#30). With V1 (#25), the seven missing modules (#27) and the twelve materials images (#28), every cause in the 02:39 trip detail is now closed."
+    },
+    {
+      "event": "trip",
+      "at": "2026-09-06T13:24:08+00:00",
+      "cause": "validator",
+      "detail": "V32 scheduled-pov=FAIL(3)"
     }
   ]
 }
