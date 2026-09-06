@@ -1,0 +1,57 @@
+{
+  "stage": "sun-rank",
+  "week": "2026-W36",
+  "at": "2026-09-06T10:03:57+00:00",
+  "code": "RUNWAY_CRITICAL",
+  "message": "RUNWAY CRITICAL: 8.5 weeks left at 4/week - 12 publishable episode(s). The channel goes dark within the month unless topics are added. By domain: deep-sea-ocean-science: 0.0 week(s) at 2/week (0 queued); materials-and-manufacturing: 6.0 week(s) at 2/week (12 queued).",
+  "detail": {
+    "unpublished_scripts": 16,
+    "publishable": 12,
+    "scheduled_not_yet_aired": 22,
+    "basis": "publish queue",
+    "videos_per_week": 4,
+    "weeks_remaining": 8.5,
+    "warn_below_weeks": 4.0,
+    "critical_below_weeks": 2.0,
+    "level": "critical",
+    "by_domain": {
+      "deep-sea-ocean-science": {
+        "slots_per_week": 2,
+        "queued": 0,
+        "weeks": 0.0,
+        "level": "critical",
+        "message": "deep-sea-ocean-science: 0.0 week(s) at 2/week (0 queued)"
+      },
+      "materials-and-manufacturing": {
+        "slots_per_week": 2,
+        "queued": 12,
+        "weeks": 6.0,
+        "level": "ok",
+        "message": "materials-and-manufacturing: 6.0 week(s) at 2/week (12 queued)"
+      }
+    },
+    "short_domains": [
+      "deep-sea-ocean-science"
+    ],
+    "never_go_dark": true,
+    "message": "RUNWAY CRITICAL: 8.5 weeks left at 4/week - 12 publishable episode(s). The channel goes dark within the month unless topics are added. By domain: deep-sea-ocean-science: 0.0 week(s) at 2/week (0 queued); materials-and-manufacturing: 6.0 week(s) at 2/week (12 queued)."
+  },
+  "unblock": "TWO things, and the second is easy to miss.\n\n1. Refill scripts: the authoring lane (loop/author.py) writes them, or add them by hand.\n\n2. BATCH THE VOICE ON THE MAC. Narration is the one stage that genuinely cannot move to GitHub Actions: the voice model is local, and measured at ~1.2 hours per episode (67 beats in 71 minutes) it would consume most of the free Actions allowance and sit near the 6-hour job limit. Rendering and uploading CAN run elsewhere. A script existing does NOT mean a video exists.\n\nONE COMMAND. It narrates everything unvoiced, renders everything unrendered, verifies nothing is clipped, and holds the Mac awake by itself. Roughly 1.2 h narration + 12 min render per episode, so a full batch is about a day, unattended:\n\n    cd ~/GitHub/how-we-know\n    bin/batch-session.sh\n\nPreview with `bin/batch-session.sh --dry-run`. The full operator page is RUNBOOK.md - say \"runbook howweknow\" to Claude and it will open it.\n\n(The Mac-side launchd agents WERE installed on 2026-09-01 with the owner's approval - tuesday, thursday, backfill and shorts - so routine weeks no longer need a manual pass. This stop is about refilling INVENTORY.)\n\nThe week above still ships - publishing is never halted to protect the backlog, because that IS going dark.",
+  "disposition": "needs_human",
+  "disposition_why": "'RUNWAY_CRITICAL' is not in loop/stop_policy.json, so it is treated as needing a human. That is the default on purpose.",
+  "consecutive": 1,
+  "exit_code": 3,
+  "work_done_before_stop": [
+    "ranked 40 admitted candidates by demand; the exclusion gate refused 15",
+    "picked why-does-old-iron-not-rust (authored-inventory, pov pov-120)",
+    "picked how-is-a-silicon-wafer-made (authored-inventory, pov pov-119)",
+    "picked what-is-a-semiconductor-made-of (authored-inventory, pov pov-016)",
+    "picked how-is-3d-printed-metal-made (authored-inventory, pov pov-122)",
+    "wrote loop/next_topics.json - 4 picked, 0 to author"
+  ],
+  "notes": [
+    "cadence: configured default (4/week)",
+    "publish order: 12 ranked, 0 unranked, from research/publish_order.json",
+    "runway: RUNWAY CRITICAL: 8.5 weeks left at 4/week - 12 publishable episode(s). The channel goes dark within the month unless topics are added. By domain: deep-sea-ocean-science: 0.0 week(s) at 2/week (0 queued); materials-and-manufacturing: 6.0 week(s) at 2/week (12 queued)."
+  ]
+}

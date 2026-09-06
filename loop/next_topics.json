@@ -1,25 +1,11 @@
 {
   "week": "2026-W36",
-  "generated": "2026-09-05T15:19:06+00:00",
+  "generated": "2026-09-06T10:03:57+00:00",
   "videos_per_week": 4,
   "cadence_ceiling_note": "Deliberate. Never raised to clear a backlog.",
   "selection_mode": "automatic",
   "owner_involvement": "notified, not asked",
   "selected": [
-    {
-      "slug": "how-does-tempered-glass-shatter",
-      "question": "How does tempered glass shatter?",
-      "script": "scripts/how-does-tempered-glass-shatter.md",
-      "source": "authored-inventory",
-      "publish_rank": 17,
-      "front_loaded": false,
-      "needs_authoring": false,
-      "pov_id": "pov-081",
-      "pov_line": "Octopuses impress me. So much of their nervous system runs through their arms. They aren't just unusual \u2014 they look like a completely different solution to intelligence.",
-      "pov_tag": "adaptation",
-      "pov_tier": "transferable",
-      "pov_matched_by": "tag:adaptation score 2.0"
-    },
     {
       "slug": "why-does-old-iron-not-rust",
       "question": "Why does old iron not rust?",
@@ -28,49 +14,63 @@
       "publish_rank": 18,
       "front_loaded": false,
       "needs_authoring": false,
-      "pov_id": "pov-046",
-      "pov_line": "What keeps me interested is how it exposes the limits of our idea of normal. Every time we think we know what life requires, something down there shows us another way.",
-      "pov_tag": "thesis",
-      "pov_tier": "transferable",
-      "pov_matched_by": "tag:thesis score 2.0"
+      "pov_id": "pov-120",
+      "pov_line": "Failure isn't an insult to engineering; pretending failure has been eliminated is. Every material has conditions, limits and a life. The question is whether those limits were understood and monitored, or ignored until the failure became somebody else's emergency.",
+      "pov_tag": "failure",
+      "pov_tier": "specific",
+      "pov_matched_by": "tag:failure score 2.8"
     },
     {
-      "slug": "how-strong-is-titanium",
-      "question": "How strong is titanium?",
-      "script": "scripts/how-strong-is-titanium.md",
+      "slug": "how-is-a-silicon-wafer-made",
+      "question": "How is a silicon wafer made?",
+      "script": "scripts/how-is-a-silicon-wafer-made.md",
       "source": "authored-inventory",
-      "publish_rank": 19,
+      "publish_rank": 21,
       "front_loaded": false,
       "needs_authoring": false,
-      "pov_id": "pov-038",
-      "pov_line": "How do we know an animal behaves a certain way when we've seen it three times?",
-      "pov_tag": "evidence",
-      "pov_tier": "transferable",
-      "pov_matched_by": "transferable fallback (tag:evidence); no tag signal fired for this subject"
+      "pov_id": "pov-119",
+      "pov_line": "Watching something be made, I think about how many things had to become controllable first \u2014 temperature, pressure, purity, timing, tolerances, sequence, inspection. What looks smooth at the end is usually violent forces being controlled very precisely.",
+      "pov_tag": "systems",
+      "pov_tier": "specific",
+      "pov_matched_by": "tag:systems score 2.8"
     },
     {
-      "slug": "how-is-damascus-steel-made",
-      "question": "How is Damascus steel made?",
-      "script": "scripts/how-is-damascus-steel-made.md",
+      "slug": "what-is-a-semiconductor-made-of",
+      "question": "What is a semiconductor made of?",
+      "script": "scripts/what-is-a-semiconductor-made-of.md",
       "source": "authored-inventory",
-      "publish_rank": 20,
+      "publish_rank": 22,
       "front_loaded": false,
       "needs_authoring": false,
-      "pov_id": "pov-041",
-      "pov_line": "Deep-sea science builds conclusions from incomplete observations, damaged specimens, sonar, water samples and tiny windows of footage.",
-      "pov_tag": "evidence",
+      "pov_id": "pov-016",
+      "pov_line": "It reminds me of companies and systems. Something looks completely irrational when you judge it outside the environment it was built for.",
+      "pov_tag": "systems",
       "pov_tier": "transferable",
-      "pov_matched_by": "transferable fallback (tag:evidence); no tag signal fired for this subject"
+      "pov_matched_by": "tag:systems score 2.0"
+    },
+    {
+      "slug": "how-is-3d-printed-metal-made",
+      "question": "How is 3D printed metal made?",
+      "script": "scripts/how-is-3d-printed-metal-made.md",
+      "source": "authored-inventory",
+      "publish_rank": 23,
+      "front_loaded": false,
+      "needs_authoring": false,
+      "pov_id": "pov-122",
+      "pov_line": "A remarkable laboratory property is not the same thing as a reliable system.",
+      "pov_tag": "numbers",
+      "pov_tier": "specific",
+      "pov_matched_by": "tag:numbers score 2.8"
     }
   ],
   "to_author": 0,
-  "inventory_remaining": 11,
+  "inventory_remaining": 8,
   "cadence": {
     "videos_per_week": 4,
     "why": "configured default (4/week)"
   },
   "publish_order": {
-    "ranked": 15,
+    "ranked": 12,
     "unranked": 0,
     "unranked_slugs": [],
     "killed_not_queued": [
@@ -82,7 +82,7 @@
     "queued_despite_kill": [],
     "order_entries": 34,
     "source": "research/publish_order.json",
-    "generated_at": "2026-09-01T00:14:48.681943+00:00",
+    "generated_at": "2026-09-05T15:36:38.680351+00:00",
     "generator": "research/publish_order.py",
     "status": "PRODUCTION",
     "episodes_ranked": null,
@@ -90,34 +90,36 @@
     "saturated_tail": []
   },
   "runway": {
-    "unpublished_scripts": 19,
-    "publishable": 15,
-    "scheduled_not_yet_aired": 19,
+    "unpublished_scripts": 16,
+    "publishable": 12,
+    "scheduled_not_yet_aired": 22,
     "basis": "publish queue",
     "videos_per_week": 4,
     "weeks_remaining": 8.5,
     "warn_below_weeks": 4.0,
     "critical_below_weeks": 2.0,
-    "level": "ok",
+    "level": "critical",
     "by_domain": {
       "deep-sea-ocean-science": {
         "slots_per_week": 2,
-        "queued": 16,
-        "weeks": 8.0,
-        "level": "ok",
-        "message": "deep-sea-ocean-science: 8.0 week(s) at 2/week (16 queued)"
+        "queued": 0,
+        "weeks": 0.0,
+        "level": "critical",
+        "message": "deep-sea-ocean-science: 0.0 week(s) at 2/week (0 queued)"
       },
       "materials-and-manufacturing": {
         "slots_per_week": 2,
-        "queued": 18,
-        "weeks": 9.0,
+        "queued": 12,
+        "weeks": 6.0,
         "level": "ok",
-        "message": "materials-and-manufacturing: 9.0 week(s) at 2/week (18 queued)"
+        "message": "materials-and-manufacturing: 6.0 week(s) at 2/week (12 queued)"
       }
     },
-    "short_domains": [],
+    "short_domains": [
+      "deep-sea-ocean-science"
+    ],
     "never_go_dark": true,
-    "message": "8.5 weeks of queue at 4/week (15 publishable of 19 on disk). By domain: deep-sea-ocean-science: 8.0 week(s) at 2/week (16 queued); materials-and-manufacturing: 9.0 week(s) at 2/week (18 queued)."
+    "message": "RUNWAY CRITICAL: 8.5 weeks left at 4/week - 12 publishable episode(s). The channel goes dark within the month unless topics are added. By domain: deep-sea-ocean-science: 0.0 week(s) at 2/week (0 queued); materials-and-manufacturing: 6.0 week(s) at 2/week (12 queued)."
   },
   "gate": {
     "authority": "pov/topic-taxonomy.json",
