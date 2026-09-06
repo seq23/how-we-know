@@ -38,7 +38,6 @@ one lane, not cleverer arithmetic.
 from __future__ import annotations
 
 import argparse
-import json
 import sys
 import tempfile
 from pathlib import Path
@@ -49,6 +48,7 @@ sys.path.insert(0, str(LOOP))
 
 import cadence                               # noqa: E402
 import backfill                                  # noqa: E402
+import batch_queue                               # noqa: E402
 import ledger                                    # noqa: E402
 import quota                                     # noqa: E402
 import r2                                        # noqa: E402
@@ -95,14 +95,36 @@ def fetch(shelf, key: str, dest: Path) -> Path:
     return dest
 
 
+def questions_map() -> dict[str, str]:
+    """slug -> the episode's question, for EVERY domain's queue.
+
+    Module level and named so a test can assert the join this lane depends on
+    without standing up the whole lane: the set of slugs
+    `backfill.library_pending` may select must be a subset of the keys here.
+    See loop/tests/test_upload_queue_sources_agree.py.
+    """
+    return {q["slug"]: q.get("query") for q in batch_queue.queued_entries()}
+
+
 def run(limit: int = 4, dry_run: bool = False) -> int:
     cfg = config()
     # THROUGH cadence.effective(). See the note in loop/backfill.py:library():
     # this lane assigns the publish slot, so it must see the same cadence the
     # drafting and ranking stages do.
     per_week = cadence.effective()
-    order = json.loads((ROOT / "research" / "publish_order.json").read_text())
-    questions = {q["slug"]: q["query"] for q in order["queue"]}
+    # THE SAME LIST THE PLANNER SELECTS FROM, not a second one. This read
+    # `research/publish_order.json` by name while `backfill.library_pending`
+    # (below) selects from `batch_queue.queued_entries()`, which globs
+    # `research/publish_order*.json`. The moment a second domain got its own
+    # queue file the two diverged: the planner could pick any of 34 slugs and
+    # this map held 16, so run 34038288267 pulled 50,982,483 verified bytes of
+    # `how-is-a-silicon-wafer-made` out of R2 and then died on
+    # `questions[slug]` with a bare KeyError - AFTER the download, BEFORE the
+    # upload. Every materials episode was unreachable by this lane.
+    #
+    # `queued_entries()` already carries `query` on the row for exactly this
+    # reason (see its docstring), so there is nothing to look up elsewhere.
+    questions = questions_map()
 
     with Stage(LANE, week_id(),
                zero_work_hint="Nothing was shelved in R2 that is not already "
@@ -168,6 +190,38 @@ def run(limit: int = 4, dry_run: bool = False) -> int:
             st.note(f"quota allows {afford} of {limit} today. {quota.report()}")
 
         take = pending[:afford]
+
+        # BELT AND BRACES, AND IT NAMES THE SLUG. The two lists above are now
+        # one list, so this cannot fire from the divergence that produced run
+        # 34038288267. It exists because the FAILURE MODE was the problem, not
+        # only the divergence: a slug the planner selected but the title map
+        # could not answer for died as a bare `KeyError` from the middle of a
+        # loop, after a 50 MB download, with nothing in the log naming what was
+        # wrong. Any future reason a queue row loses its `query` - a hand-edited
+        # publish-order file, a new domain file written by a different agent -
+        # stops here instead, named, before a single byte is fetched.
+        #
+        # This is a REFUSAL, not a skip: it does not drop the offending slug and
+        # upload the rest, because a queued, rendered, shelved episode that
+        # cannot state its own title is a broken queue, not a finished one.
+        untitled = [s_ for s_, _, _ in take if not questions.get(s_)]
+        if untitled:
+            st.named_stop(
+                "QUEUE_ROW_HAS_NO_QUESTION",
+                f"{len(untitled)} episode(s) are shelved and selected for "
+                f"upload but carry no `query` in any research/publish_order*"
+                f".json: {', '.join(untitled)}. The title of a video comes from "
+                f"that field, so this lane will not upload them.",
+                detail={"untitled": untitled,
+                        "queue_files": [p_.name for p_ in
+                                        batch_queue.publish_order_files()],
+                        "queue_size": len(questions)},
+                unblock="Add a `query` to each slug's row in the "
+                        "research/publish_order*.json file that queues it - it "
+                        "is the episode's question and becomes its title. If a "
+                        "slug should not be published at all, remove its row "
+                        "from the queue file rather than leaving it untitled.")
+
         led = ledger.load()
         when = backfill.schedule_for(led, len(take), per_week)
 
