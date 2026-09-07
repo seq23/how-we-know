@@ -2456,6 +2456,16 @@ def v32_scheduled_pov_is_hers() -> Result:
                "POV can be traced to the owner's interview.")
         return r
     assigned = {a["video"] for a in read_json(path)["assignments"]}
+    # AN ENTRY THAT IS WRONG IS NOT AN ENTRY. This validator asked only
+    # whether a row EXISTS, so commit 581feec - three rows whose recorded tier
+    # and line text both contradicted the bank - was "traced" as far as V32
+    # could tell. The predicate lives in loop/pov_match.py so that this, the
+    # pre-upload gate and select() itself all ask the identical question;
+    # V40 below reports the same defects across the WHOLE file, including
+    # episodes that have already aired and are past this one's horizon.
+    import pov_match as _pov                                # noqa: PLC0415
+    defective = _pov.defective_assignments()
+    assigned -= set(defective)
 
     now = _dt.datetime.now(_dt.timezone.utc)
     pending = []
@@ -2478,6 +2488,17 @@ def v32_scheduled_pov_is_hers() -> Result:
         if not script.exists() or "[HUMAN]" not in script.read_text():
             continue                      # no POV beat is a different rule
         r.examined += 1
+        if slug in defective:
+            # AN ENTRY THAT IS WRONG IS NOT AN ENTRY - but it is also not a
+            # MISSING one, and this validator's own rule is to say only what
+            # it checked. "No entry" would send the reader to add a row that
+            # is already there; the fix here is to correct the row.
+            r.fail(f"{slug} airs {when:%Y-%m-%d} with an entry in "
+                   f"pov/pov-assignments.json that this repo cannot honour, "
+                   f"so its first-person beat still traces to nothing: "
+                   + "; ".join(f"[{d['code']}] {d['why']}"
+                               for d in defective[slug]))
+            continue
         if slug not in assigned and (vid or "") not in assigned:
             # SAY WHY IT IS UNTRACED, AND DO NOT GUESS AT THE REASON. This
             # used to end "its domain has had no POV interview" - true when it
@@ -2507,6 +2528,63 @@ def v32_scheduled_pov_is_hers() -> Result:
                       if have else
                       "no POV lines of its own, and config says tier-specific "
                       "lines do not transfer."))
+    return r
+
+
+
+def v40_pov_assignment_integrity() -> Result:
+    """pov/pov-assignments.json must say only things pov/pov-bank.json agrees with.
+
+    THE HOLE V32 LEFT. V32 asks whether a scheduled episode HAS an assignment.
+    It never asked whether the assignment is right, and the file is otherwise
+    trusted absolutely: `select()` returns a hand assignment without applying
+    the domain rule `score()` applies to every other line, `untraced_pov()`
+    counted mere presence as a trace, and `record_assignment()` appends to it
+    unchecked.
+
+    CONFIRMED, commit 581feec (2026-09-07): the owner's three approved
+    materials lines were recorded under pov-102/103/104, ids that in the bank
+    are tier:transferable lines with COMPLETELY DIFFERENT TEXT. Each row was
+    wrong twice - a tier the bank contradicts, and a line the bank does not
+    hold under that id - so the words that reached YouTube traced to nothing.
+    Every presence check called those episodes traced. The one thing that
+    caught it was a single hardcoded end-to-end case in
+    loop/tests/test_pov_domains.py naming one slug; the same mistake on any of
+    the other twenty-eight rows would have passed in silence.
+
+    THE SCOPE IS THE FILE, NOT THE CALENDAR. V32 can only see episodes
+    scheduled ahead, which is how three of these reached YouTube before
+    anything noticed. This examines every row, including videos already
+    public, because a wrong row is wrong whether or not the episode has aired.
+
+    Hard-fails when it examines zero assignments: an empty or unreadable file
+    is not a clean one.
+    """
+    r = Result("V40 pov-assignment-integrity")
+    import pov_match as _pov                                # noqa: PLC0415
+
+    path = ROOT / "pov" / "pov-assignments.json"
+    if not path.exists():
+        r.fail("pov/pov-assignments.json is missing, so nothing traces any "
+               "episode's first-person beat to a line the owner said.")
+        return r
+    rows = read_json(path).get("assignments") or []
+    r.examined = len(rows)
+
+    by_video = {}
+    for d in _pov.assignment_defects(rows=rows):
+        by_video.setdefault(d["video"], []).append(d)
+    for video in sorted(by_video):
+        for d in by_video[video]:
+            r.fail(f"[{d['code']}] {d['why']}")
+
+    if r.examined == 0:
+        r.fail("pov/pov-assignments.json lists ZERO assignments \u2014 this "
+               "validator examined nothing, which is not the same as finding "
+               "nothing wrong.")
+        return r
+    r.note(f"{r.examined} assignment(s) agree with pov/pov-bank.json on the "
+           f"line, its tier and its domain, and no line is used twice")
     return r
 
 
@@ -3119,6 +3197,7 @@ def run_all(items) -> tuple[bool, list[dict]]:
                v29_material_image_rights(), v30_cloud_visibility(),
                v31_render_has_thumbnail(),
                v32_scheduled_pov_is_hers(),
+               v40_pov_assignment_integrity(),
                v33_every_domain_is_harvested(),
                v34_niche_lifecycle_is_acted_on(),
                v35_digest_reaches_her(),

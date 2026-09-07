@@ -239,11 +239,18 @@ def run(limit: int = 4, dry_run: bool = False) -> int:
         # refusal is printed by name - this is not a silent `continue` - and if
         # refusing empties the run entirely it becomes a NAMED STOP rather than
         # an exit 0 that did nothing (Rule 0).
-        untraced = set(pov_match.untraced_pov([s_ for s_, _, _ in take]))
+        # WHY, not just WHICH. `untraced_reasons()` distinguishes "no entry"
+        # from "an entry that names a line this repo cannot honour" (a
+        # tier:specific line from another domain, a pov_id the bank does not
+        # have, text that has drifted from the bank's). Both refuse the
+        # episode; they need opposite fixes, and a refusal that misnames its
+        # cause sends someone to add a row that is already there.
+        slugs_ = [s_ for s_, _, _ in take]
+        untraced = set(pov_match.untraced_pov(slugs_))
+        why_untraced = pov_match.untraced_reasons(slugs_)
         if untraced:
             for slug in sorted(untraced):
-                print(f"  REFUSE {slug}: its [HUMAN] Producer POV has no entry "
-                      f"in pov/pov-assignments.json")
+                print(f"  REFUSE {slug}: {why_untraced[slug]}")
             st.note(f"refused {len(untraced)} episode(s) with an untraced "
                     f"first-person POV: {', '.join(sorted(untraced))}. They "
                     f"stay on the shelf; nothing is deleted.")
@@ -253,7 +260,10 @@ def run(limit: int = 4, dry_run: bool = False) -> int:
                 "POV_UNTRACED",
                 f"every episode ready to upload today carries a first-person "
                 f"[HUMAN] Producer POV with no entry in "
-                f"pov/pov-assignments.json: {', '.join(sorted(untraced))}. "
+                f"pov/pov-assignments.json, or one this repo cannot "
+                f"honour: "
+                + "; ".join(f"{s} — {why_untraced[s]}"
+                            for s in sorted(untraced)) + ". "
                 f"Uploading one would be the channel asserting she said "
                 f"something no interview records her saying.",
                 detail={"untraced": sorted(untraced),
