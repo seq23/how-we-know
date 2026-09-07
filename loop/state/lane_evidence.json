@@ -11,10 +11,10 @@
       "proves": "published at least one real Short from R2"
     },
     "upload-cloud": {
-      "detail": "workflow_dispatch run 33783826056: pulled 02-how-deep-sea-creatures-survive-pressure from R2 and uploaded it as _fQ3-YI63oQ, private, publishAt 2026-10-25T15:00:00Z (loop/state/ledger.json, commit 85b61e3). Seeded here on merge, not recorded live by loop/arming.py, because this run predates loop/arming.py existing on main -- see the merge commit that added this file for why.",
-      "proven_at": "2026-09-03T17:19:58+00:00",
+      "detail": "uploaded and scheduled 2 episode(s): ['how-is-a-silicon-wafer-made', 'what-is-a-semiconductor-made-of']",
+      "proven_at": "2026-09-07T15:11:00+00:00",
       "proves": "uploaded and scheduled at least one real episode from R2"
     }
   },
-  "updated": "2026-09-07T14:43:51+00:00"
+  "updated": "2026-09-07T15:11:00+00:00"
 }
