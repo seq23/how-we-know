@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-07T14:31:56Z",
+  "generated": "2026-09-07T14:48:51Z",
   "rule": "one POV per video, no reuse, owner's own words only",
   "assignments": [
     {
@@ -229,6 +229,27 @@
       "tier": "specific",
       "source": "owner-approved 2026-09-07",
       "line": "I nearly treated historical and modern Damascus steel as one material made two ways. They're not \u2014 they're two different materials separated by a lost century of technique. Conflating them was the actual error to avoid here."
+    },
+    {
+      "video": "how-is-a-silicon-wafer-made",
+      "pov_id": "pov-142",
+      "tier": "specific",
+      "source": "owner-approved 2026-09-07",
+      "line": "I wrote 'nine-nines pure' like purity was a certificate stamped once. It isn't. Every step after purification can reintroduce contamination, so I rewrote it as a chain of measurements instead of an achieved state."
+    },
+    {
+      "video": "how-strong-is-graphene",
+      "pov_id": "pov-143",
+      "tier": "specific",
+      "source": "owner-approved 2026-09-07",
+      "line": "The 130 gigapascal figure is real, and I kept wanting to drop the qualifier and just call graphene 'the strongest material.' It's the strongest material tested, on a defect-free micrometer sample \u2014 not yet a material you could build anything from."
+    },
+    {
+      "video": "what-is-a-semiconductor-made-of",
+      "pov_id": "pov-144",
+      "tier": "specific",
+      "source": "owner-approved 2026-09-07",
+      "line": "'What is it made of' sounds like it wants one element. Silicon is over ninety percent of production, but the defining property is the impurity deliberately added to it, not the base material. I answered the question underneath the question."
     }
   ]
 }
