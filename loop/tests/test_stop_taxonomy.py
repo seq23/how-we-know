@@ -196,6 +196,11 @@ def c_workflow_wrapper() -> tuple[list[str], int]:
         os.makedirs(os.path.join(work, "docs"))
         for src, dst in (("bin/loop-stage.sh", "bin/loop-stage.sh"),
                          ("loop/common.py", "loop/common.py"),
+                         # The third disposition lives here. Without it the
+                         # scratch repo's common.py cannot import, and this
+                         # section reports "exited 1" for every case instead
+                         # of the contract it is meant to be checking.
+                         ("loop/held.py", "loop/held.py"),
                          ("loop/stop_policy.json", "loop/stop_policy.json")):
             data = open(os.path.join(ROOT, src)).read()
             open(os.path.join(work, dst), "w").write(data)
