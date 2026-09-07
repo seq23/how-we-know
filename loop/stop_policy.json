@@ -31,6 +31,46 @@
     "passed actually went public. See loop/publish.py."
   ],
   "default_disposition": "needs_human",
+
+  "_why_held": [
+    "SELF-RESOLVING answers 'does anyone need to act?'. It has nothing to say",
+    "about the other daily red: a halt that only the OWNER can clear, which",
+    "she has already been told about, re-reported to her every morning.",
+    "",
+    "2026-09-07. The 09:00 lane refused to schedule two episodes with no",
+    "captions/<slug>.srt - correctly, because the .srt is derived from",
+    "narration audio that exists only on her Mac and no cloud run can ever",
+    "make one. CAPTIONS_NOT_READY is NOT self-resolving and must not be",
+    "listed above: time does not fix it. But the second, third and fourth",
+    "runs told her a fact she already knew, in an issue already open, with",
+    "nothing new in it. Same lesson as run 33521586490, different cause.",
+    "",
+    "HELD is the third disposition, and it is NOT a list of codes. It is",
+    "earned by any stop in any lane that can do two things: NAME EXACTLY WHAT",
+    "IT IS WAITING ON (held_items=) and SAY HOW TO CLEAR IT (unblock=). That",
+    "is deliberate. Four times in eight days this repo shipped a fix shaped as",
+    "'exempt V13, V14, V15' and the next validator hit the identical wall, so",
+    "there is no per-code allowlist here to add the next one to. A stop that",
+    "does not name its items stays exit 3 - forgetting leaves you LOUD.",
+    "",
+    "Silence is bounded four ways, all in loop/held.py: the first report is",
+    "always loud; any NEW identifier pages; closing the tracking issue makes",
+    "the next run page; and reminder_days re-reports a hold that has not",
+    "changed at all. A held run still prints the full HELD STOP banner with",
+    "the item list, the date it was first reported and the issue number, and",
+    "still writes loop/state/stops/. The only thing it does not do is fail",
+    "the job a second time for the same news."
+  ],
+  "held": {
+    "reminder_days": 7,
+    "codes": {
+      "CAPTIONS_NOT_READY": {
+        "reminder_days": 7,
+        "why": "The .srt comes from `python visuals/captions.py <slug>` on the Mac that voiced the episode; audio/**/*.wav is gitignored, so no runner can produce one. A week is long enough that she is not chased daily and short enough that a forgotten episode cannot sit on the shelf unnoticed."
+      }
+    }
+  },
+
   "self_resolving": {
     "QUOTA_EXHAUSTED": {
       "why": "The YouTube allowance resets at midnight Pacific and every lane that raises this runs at least daily, so the work is deferred by a few hours, not lost.",

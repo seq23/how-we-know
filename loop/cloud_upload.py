@@ -260,6 +260,10 @@ def run(limit: int = 4, dry_run: bool = False) -> int:
                         "assignments": str(pov_match.ASSIGNMENTS
                                            .relative_to(ROOT)),
                         "bank": str(pov_match.BANK.relative_to(ROOT))},
+                # Same shape as CAPTIONS_NOT_READY above, and deliberately so:
+                # only she can approve a POV line, so this halt is hers to
+                # clear and the second morning's identical report is noise.
+                held_items=sorted(untraced),
                 unblock="Two honest ways, and a validator may not do either "
                         "for her.\n\n"
                         "1. She reads the [HUMAN] line in scripts/<slug>.md, "
@@ -319,6 +323,12 @@ def run(limit: int = 4, dry_run: bool = False) -> int:
                                         for s, w in uncaptioned],
                         "captions_dir": str(captions_lane.CAPTIONS_DIR
                                             .relative_to(ROOT))},
+                # WHAT THIS STOP IS WAITING ON, by name. Only the owner can
+                # clear it - the .srt comes off her Mac - so once she has been
+                # told, telling her again tomorrow about the same slugs is
+                # noise. Naming them is what lets loop/held.py tell "the same
+                # two episodes, still" from "a third one just joined them".
+                held_items=sorted(s for s, _ in uncaptioned),
                 unblock="The .srt is derived from the narration audio, which "
                         "only exists on the Mac that voiced the episode:\n\n"
                         "  python visuals/captions.py <slug>\n\n"
