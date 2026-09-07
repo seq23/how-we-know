@@ -107,19 +107,18 @@ Titanium is strong in the sense that matters for aerospace and marine engineerin
 
 ## Chapters
 
-- 00:00 Cold open
-- 00:29 Title card
-- 00:31 Strength is not a single measurement
-- 01:32 The strength-to-weight advantage is the real story
-- 02:52 How tensile strength is actually measured
-- 04:08 Producer POV
-- 04:16 Yield strength matters more than ultimate strength in design
-- 05:28 Fatigue strength is the limit for cyclic loading
-- 06:52 Corrosion resistance changes the effective strength over time
-- 08:08 Temperature stability extends the usable strength range
-- 09:16 What to notice in the edit
-- 10:04 Evidence limit
-- 10:36 Closing
+- 0:00 Cold open
+- 0:37 Strength is not a single measurement
+- 2:03 The strength-to-weight advantage is the real story
+- 3:26 How tensile strength is actually measured
+- 4:36 Producer POV
+- 4:49 Yield strength matters more than ultimate strength in design
+- 6:08 Fatigue strength is the limit for cyclic loading
+- 7:30 Corrosion resistance changes the effective strength over time
+- 8:50 Temperature stability extends the usable strength range
+- 9:58 What to notice in the edit
+- 10:34 Evidence limit
+- 11:20 Closing
 
 ## Sources
 

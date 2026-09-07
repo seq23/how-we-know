@@ -105,17 +105,16 @@ Damascus steel is two answers, not one. The historical material was crucible ste
 
 ## Chapters
 
-- 00:00 Cold open
-- 00:24 Title card
-- 00:26 Historical Damascus steel was a crucible process, not a forge-welding process
-- 01:48 The visible pattern came from forging, not from the crucible
-- 03:10 Modern Damascus steel is pattern-welded, not crucible steel
-- 04:42 Producer POV
-- 04:54 The two materials have different properties and different failure modes
-- 06:18 Attempts to recreate wootz steel have succeeded only partially
-- 07:52 What to notice in the edit
-- 08:42 Evidence limit
-- 09:32 Closing
+- 0:00 Cold open
+- 0:37 Historical Damascus steel was a crucible process, not a forge-welding process
+- 2:12 The visible pattern came from forging, not from the crucible
+- 3:36 Modern Damascus steel is pattern-welded, not crucible steel
+- 5:06 Producer POV
+- 5:21 The two materials have different properties and different failure modes
+- 6:51 Attempts to recreate wootz steel have succeeded only partially
+- 8:25 What to notice in the edit
+- 9:10 Evidence limit
+- 9:56 Closing
 
 ## Sources
 
