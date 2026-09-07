@@ -175,6 +175,44 @@ def hand_assignments() -> dict:
         return {a["video"]: a for a in json.load(fh)["assignments"]}
 
 
+def untraced_pov(slugs) -> list[str]:
+    """Of `slugs`, those whose script has a [HUMAN] beat with no assignment.
+
+    THE SAME QUESTION V32 ASKS, ASKED BEFORE THE UPLOAD INSTEAD OF AFTER IT.
+
+    `[HUMAN]` marks the one beat where the owner speaks as herself. V32
+    (loop/validate.py) checks that every SCHEDULED episode's beat traces to an
+    entry in pov/pov-assignments.json - correctly, and it caught three. But it
+    runs on the ledger, and an episode only reaches the ledger by being
+    uploaded, so by the time V32 can see a problem the video is already on
+    YouTube, private, with a publishAt. That is a guard standing downstream of
+    the thing it governs: it can report the harm, it cannot prevent it.
+
+    `pov/pov-assignments.json` is hand-curated (its own header says "generated
+    2026-08-30", "owner's own words only") and NOTHING in this repo writes it.
+    `hand_assignments()` above reads it; `select()` below picks a bank line for
+    a new script and the choice is never recorded back. So every episode
+    authored after 2026-08-30 arrives with an untraced first-person beat by
+    default, and the only thing standing between that and the channel was a
+    validator that fires one step too late. Three episodes got through:
+    how-does-tempered-glass-shatter (airs 2026-09-18), how-strong-is-titanium
+    (2026-09-21) and how-is-damascus-steel-made (2026-09-25).
+
+    This is the same check, one step earlier, where refusing is still free.
+    """
+    assigned = set(hand_assignments())
+    out = []
+    for slug in slugs:
+        script = ROOT / "scripts" / f"{slug}.md"
+        if not script.exists():
+            continue
+        if "[HUMAN]" not in script.read_text():
+            continue                      # no POV beat is a different rule
+        if slug not in assigned:
+            out.append(slug)
+    return out
+
+
 # A tier:specific line with no `domain` came from the first interview, which
 # was entirely about deep sea. It is not "domain-less" -- it is deep sea's, and
 # saying so here is what lets the rule below be about domains rather than about

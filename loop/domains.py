@@ -539,6 +539,48 @@ def lifecycle(cfg: dict, per_domain: dict[str, dict],
 
 # --------------------------------------------------------- per-domain runway
 
+def scheduled_ahead_by_domain() -> dict[str, int]:
+    """Episodes UPLOADED, dated and not yet aired, per domain.
+
+    THIS IS INVENTORY. It is the most finished inventory the channel has: the
+    video exists, it is on YouTube, it is private with a publishAt, and it will
+    air on its own without anyone doing anything. `cadence.runway()` has
+    counted it in aggregate since 2026-09-05, with a comment saying an alarm
+    that is wrong in the ALARMING direction is one people learn to ignore.
+
+    `domain_runway()` below never got that fix, and the result was exactly the
+    predicted failure. On 2026-09-06 (run 34026361219) deep-sea-ocean-science
+    had 15 episodes uploaded and dated across the next 7.5 weeks and a
+    publish-order queue of 0, because a slug leaves the queue the moment it is
+    made. Per-domain runway read `queued: 0` -> `0.0 weeks` -> `critical`; the
+    "worse of aggregate and any domain" rule promoted that to the channel; and
+    the Sunday lane raised RUNWAY_CRITICAL and exited 3 EVERY WEEK over a
+    channel with 8.2 weeks of finished, scheduled video in hand.
+
+    One function, used by both callers, so the aggregate and the per-domain
+    figure cannot disagree about what inventory is again.
+    """
+    import datetime as _dt                                  # noqa: PLC0415
+    out: dict[str, int] = {}
+    try:
+        import ledger as _led                               # noqa: PLC0415
+        now_utc = _dt.datetime.now(_dt.timezone.utc)
+        slug_domain = by_slug()
+        for r in _led.load()["published"]:
+            stamp = r.get("scheduled_publish_at")
+            if not stamp or r.get("retired_at"):
+                continue
+            when = _dt.datetime.fromisoformat(stamp.replace("Z", "+00:00"))
+            if when <= now_utc or r.get("privacy") == "public":
+                continue                    # already aired; not inventory
+            d = slug_domain.get(r.get("slug", ""))
+            if d:
+                out[d] = out.get(d, 0) + 1
+    except Exception:                       # noqa: BLE001 - never break a guard
+        return {}
+    return out
+
+
 def domain_runway(cfg: dict, per_week: int | None = None) -> dict[str, dict]:
     """Weeks of queue remaining, PER DOMAIN — a single global number is not
     enough once two domains draw down independently.
@@ -556,24 +598,30 @@ def domain_runway(cfg: dict, per_week: int | None = None) -> dict[str, dict]:
     """
     slots = live_slots(cfg) if per_week is None else slots_at(cfg, per_week)
     depth = queue_depth()
+    ahead = scheduled_ahead_by_domain()
     warn = float(cfg["runway"]["warn_weeks"])
     crit = float(cfg["runway"]["critical_weeks"])
     out = {}
     for name, n in slots.items():
         d = depth.get(name, 0)
+        a = ahead.get(name, 0)
         if n <= 0:
-            out[name] = {"slots_per_week": 0, "queued": d, "weeks": None,
-                        "level": "not_active",
-                        "message": f"{name}: 0 slots/week this week, not "
-                                   f"drawing from its queue"}
+            out[name] = {"slots_per_week": 0, "queued": d,
+                         "scheduled_ahead": a, "weeks": None,
+                         "level": "not_active",
+                         "message": f"{name}: 0 slots/week this week, not "
+                                    f"drawing from its queue"}
             continue
-        weeks = round(d / n, 1)
+        # QUEUED PLUS ALREADY-DATED. See scheduled_ahead_by_domain(): a domain
+        # whose whole queue has been made, uploaded and dated is the most
+        # finished a domain gets, not the emptiest.
+        weeks = round((d + a) / n, 1)
         level = ("critical" if weeks <= crit else
                  "warn" if weeks <= warn else "ok")
-        out[name] = {"slots_per_week": n, "queued": d, "weeks": weeks,
-                    "level": level,
-                    "message": f"{name}: {weeks} week(s) at {n}/week "
-                               f"({d} queued)"}
+        out[name] = {"slots_per_week": n, "queued": d, "scheduled_ahead": a,
+                     "weeks": weeks, "level": level,
+                     "message": f"{name}: {weeks} week(s) at {n}/week "
+                                f"({d} queued, {a} already dated)"}
     return out
 
 
