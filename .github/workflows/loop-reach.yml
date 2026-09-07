@@ -82,6 +82,34 @@ jobs:
       - name: Install loop dependencies
         run: pip install -r requirements-loop.txt
 
+      # ACT ON THE STATE THIS JOB WILL BE JUDGED AGAINST.
+      #
+      # A run's SHA is pinned when it is QUEUED, not when it starts. This lane
+      # shares the `loop-state` concurrency group with upload-cloud, so it
+      # routinely waits behind an upload that pushes a new ledger while it sits
+      # in the queue — and then checks out the older commit it was pinned to.
+      #
+      # `bin/loop-stage.sh` pulls at the END of each stage, so the ledger moves
+      # forward mid-job. On 2026-09-07 that produced a failure that looked like
+      # a caption bug and was not: the captions stage ran against a ledger with
+      # 13 videos, the pull after it brought in the two the upload lane had just
+      # added, and V16 then failed for two videos the captions stage never had a
+      # chance to see (run 34136862505). Nothing was wrong with either stage.
+      #
+      # Pulling here means every stage in this job, and the validators that
+      # judge them, read the same ledger.
+      - name: Refresh to the current main before any stage acts
+        run: |
+          git fetch --quiet origin ${{ github.ref_name }}
+          before="$(git rev-parse --short HEAD)"
+          git reset --hard --quiet "origin/${{ github.ref_name }}"
+          after="$(git rev-parse --short HEAD)"
+          if [ "$before" = "$after" ]; then
+            echo "already current at $after"
+          else
+            echo "advanced $before -> $after (queued behind another lane's push)"
+          fi
+
       # CONFIRMED 2026-09-03: this lane failed with CAPTIONS_SCOPE_MISSING
       # because YT_OAUTH_REFRESH_TOKEN was minted a day before force-ssl was
       # added to auth/tokens.py:T.SCOPES, and nothing checked the CI

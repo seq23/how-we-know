@@ -27,6 +27,34 @@ jobs:
           python-version: '3.12'
       - name: Install loop dependencies
         run: pip install -r requirements-loop.txt
+
+      # ACT ON THE STATE THIS JOB WILL BE JUDGED AGAINST.
+      #
+      # A run's SHA is pinned when it is QUEUED, not when it starts. Every lane
+      # in the `loop-state` concurrency group waits behind the others, so a lane
+      # routinely sits in the queue while another pushes a new ledger — then
+      # checks out the older commit it was pinned to.
+      #
+      # `bin/loop-stage.sh` pulls at the END of each stage, so state moves
+      # forward mid-job. On 2026-09-07 that produced a failure that looked like a
+      # caption bug and was not: reach's captions stage ran against a ledger with
+      # 13 videos, the pull after it brought in two the upload lane had just
+      # added, and V16 then failed for two videos the captions stage never had a
+      # chance to see (run 34136862505). Neither stage was wrong.
+      #
+      # Pulling here means every stage in the job, and the validators that judge
+      # them, read the same state.
+      - name: Refresh to the current main before any stage acts
+        run: |
+          git fetch --quiet origin ${{ github.ref_name }}
+          before="$(git rev-parse --short HEAD)"
+          git reset --hard --quiet "origin/${{ github.ref_name }}"
+          after="$(git rev-parse --short HEAD)"
+          if [ "$before" = "$after" ]; then
+            echo "already current at $after"
+          else
+            echo "advanced $before -> $after (queued behind another lane's push)"
+          fi
       - name: Flip to public and feed the site
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
