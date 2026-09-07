@@ -1,24 +1,26 @@
 {
   "generated_for": [
-    "how-are-microchips-made",
-    "how-does-quenching-harden-steel",
-    "how-do-self-healing-materials-work"
+    "how-does-tempered-glass-shatter",
+    "how-strong-is-titanium",
+    "how-is-damascus-steel-made"
   ],
   "episodes": [
     {
-      "episode": "how-are-microchips-made",
-      "beats": 72,
-      "plan_source": "plans/how-are-microchips-made.json",
+      "episode": "how-does-tempered-glass-shatter",
+      "beats": 79,
+      "plan_source": "plans/how-does-tempered-glass-shatter.json",
       "timing": "audio",
-      "beats_measured": 72,
-      "duration_s": 634.832,
-      "cues": 166,
-      "chapters_real": 12,
+      "beats_measured": 79,
+      "duration_s": 603.283,
+      "cues": 164,
+      "chapters_real": 13,
       "chapters_published": 12,
-      "chapter_notes": [],
+      "chapter_notes": [
+        "merged 1 chapter(s) under 10s: Title card (2.4s)"
+      ],
       "drift": {
-        "mean_abs_s": 26.1,
-        "worst_abs_s": 50.3,
+        "mean_abs_s": 31.5,
+        "worst_abs_s": 74.6,
         "rows": [
           {
             "title": "Cold open",
@@ -27,81 +29,87 @@
             "drift_s": 0.0
           },
           {
-            "title": "The substrate is crystalline silicon grown as a single unbroken lattice",
-            "hand": "00:30",
-            "real": "0:27",
-            "drift_s": -2.0
+            "title": "Title card",
+            "hand": "00:28",
+            "real": "0:31",
+            "drift_s": 3.4
           },
           {
-            "title": "Photolithography transfers a pattern from a mask to the wafer surface",
+            "title": "The stress is built in before the glass ever leaves the factory",
+            "hand": "00:31",
+            "real": "0:33",
+            "drift_s": 2.9
+          },
+          {
+            "title": "A surface crack alone does not trigger the cascade",
             "hand": "01:42",
-            "real": "1:34",
-            "drift_s": -7.6
+            "real": "1:45",
+            "drift_s": 3.8
           },
           {
-            "title": "Extreme ultraviolet light enables features smaller than the wavelength of visible light",
-            "hand": "03:18",
-            "real": "2:48",
-            "drift_s": -29.5
+            "title": "The fracture propagates faster than sound in air",
+            "hand": "03:01",
+            "real": "2:42",
+            "drift_s": -18.4
           },
           {
-            "title": "Etching removes material in patterns defined by the resist",
-            "hand": "04:48",
-            "real": "4:02",
-            "drift_s": -45.1
+            "title": "Fragment size is determined by the magnitude of the residual stress",
+            "hand": "04:42",
+            "real": "4:18",
+            "drift_s": -23.9
           },
           {
-            "title": "Deposition adds thin films of conductors, insulators, and semiconductors",
-            "hand": "06:00",
-            "real": "5:13",
-            "drift_s": -46.6
+            "title": "The pattern is not entirely uniform",
+            "hand": "06:01",
+            "real": "5:22",
+            "drift_s": -38.1
           },
           {
-            "title": "Doping introduces impurities that control electrical conductivity",
-            "hand": "07:12",
-            "real": "6:21",
-            "drift_s": -50.3
+            "title": "Why tempered glass is used despite this behavior",
+            "hand": "07:11",
+            "real": "6:25",
+            "drift_s": -45.8
           },
           {
-            "title": "Chemical mechanical polishing flattens each layer before the next is built",
-            "hand": "08:24",
-            "real": "7:42",
-            "drift_s": -41.1
+            "title": "The edge is the weakest point",
+            "hand": "08:25",
+            "real": "7:39",
+            "drift_s": -45.5
           },
           {
             "title": "What to notice in the edit",
-            "hand": "09:24",
-            "real": "8:44",
-            "drift_s": -39.7
+            "hand": "09:22",
+            "real": "8:31",
+            "drift_s": -50.3
           },
           {
             "title": "Evidence limit",
-            "hand": "10:00",
-            "real": "9:37",
-            "drift_s": -23.0
+            "hand": "10:18",
+            "real": "9:03",
+            "drift_s": -74.6
           },
           {
             "title": "Closing",
-            "hand": "10:18",
-            "real": "10:15",
-            "drift_s": -2.3
+            "hand": "10:58",
+            "real": "9:47",
+            "drift_s": -70.8
           }
         ]
       },
       "ffprobe": {
-        "file": "renders/how-are-microchips-made-final.mp4",
-        "video_s": 634.832,
-        "last_cue_end_s": 634.832,
-        "delta_s": 0.0,
+        "file": "renders/how-does-tempered-glass-shatter-final.mp4",
+        "video_s": 603.282,
+        "last_cue_end_s": 603.283,
+        "delta_s": 0.001,
         "ok": true
       },
       "text_checks": {
         "beats_json": {
-          "checked": 72,
+          "checked": 79,
           "mismatched": []
         },
         "script_text": {
-          "checked": 72,
+          "checked": 79,
           "absent_from_narration": []
         }
       },
@@ -116,27 +124,147 @@
         ]
       },
       "artifacts": [
-        "captions/how-are-microchips-made.vtt",
-        "captions/how-are-microchips-made.srt",
-        "captions/how-are-microchips-made.chapters.txt"
+        "captions/how-does-tempered-glass-shatter.vtt",
+        "captions/how-does-tempered-glass-shatter.srt",
+        "captions/how-does-tempered-glass-shatter.chapters.txt"
       ]
     },
     {
-      "episode": "how-does-quenching-harden-steel",
-      "beats": 86,
-      "plan_source": "plans/how-does-quenching-harden-steel.json",
+      "episode": "how-strong-is-titanium",
+      "beats": 84,
+      "plan_source": "plans/how-strong-is-titanium.json",
       "timing": "audio",
-      "beats_measured": 86,
-      "duration_s": 679.517,
-      "cues": 172,
-      "chapters_real": 13,
+      "beats_measured": 84,
+      "duration_s": 701.808,
+      "cues": 177,
+      "chapters_real": 12,
       "chapters_published": 12,
+      "chapter_notes": [],
+      "drift": {
+        "mean_abs_s": 31.0,
+        "worst_abs_s": 44.2,
+        "rows": [
+          {
+            "title": "Cold open",
+            "hand": "00:00",
+            "real": "0:00",
+            "drift_s": 0.0
+          },
+          {
+            "title": "Strength is not a single measurement",
+            "hand": "00:31",
+            "real": "0:37",
+            "drift_s": 6.1
+          },
+          {
+            "title": "The strength-to-weight advantage is the real story",
+            "hand": "01:32",
+            "real": "2:03",
+            "drift_s": 31.8
+          },
+          {
+            "title": "How tensile strength is actually measured",
+            "hand": "02:52",
+            "real": "3:26",
+            "drift_s": 34.7
+          },
+          {
+            "title": "Producer POV",
+            "hand": "04:08",
+            "real": "4:36",
+            "drift_s": 28.1
+          },
+          {
+            "title": "Yield strength matters more than ultimate strength in design",
+            "hand": "04:16",
+            "real": "4:49",
+            "drift_s": 33.5
+          },
+          {
+            "title": "Fatigue strength is the limit for cyclic loading",
+            "hand": "05:28",
+            "real": "6:08",
+            "drift_s": 40.2
+          },
+          {
+            "title": "Corrosion resistance changes the effective strength over time",
+            "hand": "06:52",
+            "real": "7:30",
+            "drift_s": 38.5
+          },
+          {
+            "title": "Temperature stability extends the usable strength range",
+            "hand": "08:08",
+            "real": "8:50",
+            "drift_s": 42.2
+          },
+          {
+            "title": "What to notice in the edit",
+            "hand": "09:16",
+            "real": "9:58",
+            "drift_s": 42.3
+          },
+          {
+            "title": "Evidence limit",
+            "hand": "10:04",
+            "real": "10:34",
+            "drift_s": 30.9
+          },
+          {
+            "title": "Closing",
+            "hand": "10:36",
+            "real": "11:20",
+            "drift_s": 44.2
+          }
+        ]
+      },
+      "ffprobe": {
+        "file": "renders/how-strong-is-titanium-final.mp4",
+        "video_s": 701.808,
+        "last_cue_end_s": 701.808,
+        "delta_s": 0.0,
+        "ok": true
+      },
+      "text_checks": {
+        "beats_json": {
+          "checked": 84,
+          "mismatched": []
+        },
+        "script_text": {
+          "checked": 84,
+          "absent_from_narration": []
+        }
+      },
+      "script_chapters": {
+        "written": true,
+        "changed": true,
+        "removed_lines": [
+          "Title card"
+        ],
+        "chapters_not_in_script": []
+      },
+      "artifacts": [
+        "captions/how-strong-is-titanium.vtt",
+        "captions/how-strong-is-titanium.srt",
+        "captions/how-strong-is-titanium.chapters.txt"
+      ]
+    },
+    {
+      "episode": "how-is-damascus-steel-made",
+      "beats": 70,
+      "plan_source": "plans/how-is-damascus-steel-made.json",
+      "timing": "audio",
+      "beats_measured": 70,
+      "duration_s": 613.317,
+      "cues": 159,
+      "chapters_real": 11,
+      "chapters_published": 10,
       "chapter_notes": [
-        "merged 1 chapter(s) under 10s: Title card (2.2s)"
+        "merged 1 chapter(s) under 10s: Title card (2.1s)"
       ],
       "drift": {
-        "mean_abs_s": 19.5,
-        "worst_abs_s": 36.3,
+        "mean_abs_s": 22.4,
+        "worst_abs_s": 33.7,
         "rows": [
           {
             "title": "Cold open",
@@ -146,120 +274,97 @@
           },
           {
             "title": "Title card",
-            "hand": "00:35",
+            "hand": "00:24",
             "real": "0:35",
-            "drift_s": 0.4
+            "drift_s": 11.5
+          },
+          {
+            "title": "Historical Damascus steel was a crucible process, not a forge-welding process",
+            "hand": "00:26",
+            "real": "0:37",
+            "drift_s": 11.6
+          },
+          {
+            "title": "The visible pattern came from forging, not from the crucible",
+            "hand": "01:48",
+            "real": "2:12",
+            "drift_s": 24.8
+          },
+          {
+            "title": "Modern Damascus steel is pattern-welded, not crucible steel",
+            "hand": "03:10",
+            "real": "3:36",
+            "drift_s": 26.6
+          },
+          {
+            "title": "Producer POV",
+            "hand": "04:42",
+            "real": "5:06",
+            "drift_s": 24.6
+          },
+          {
+            "title": "The two materials have different properties and different failure modes",
+            "hand": "04:54",
+            "real": "5:21",
+            "drift_s": 28.0
+          },
+          {
+            "title": "Attempts to recreate wootz steel have succeeded only partially",
+            "hand": "06:18",
+            "real": "6:51",
+            "drift_s": 33.5
           },
           {
             "title": "What to notice in the edit",
-            "hand": "10:18",
-            "real": "9:45",
-            "drift_s": -32.1
+            "hand": "07:52",
+            "real": "8:25",
+            "drift_s": 33.7
           },
           {
             "title": "Evidence limit",
-            "hand": "10:56",
-            "real": "10:19",
-            "drift_s": -36.3
+            "hand": "08:42",
+            "real": "9:10",
+            "drift_s": 28.2
           },
           {
             "title": "Closing",
-            "hand": "11:30",
-            "real": "11:01",
-            "drift_s": -28.9
+            "hand": "09:32",
+            "real": "9:56",
+            "drift_s": 24.1
           }
         ]
       },
       "ffprobe": {
-        "file": "renders/how-does-quenching-harden-steel-final.mp4",
-        "video_s": 679.517,
-        "last_cue_end_s": 679.517,
+        "file": "renders/how-is-damascus-steel-made-final.mp4",
+        "video_s": 613.317,
+        "last_cue_end_s": 613.317,
         "delta_s": 0.0,
         "ok": true
       },
       "text_checks": {
         "beats_json": {
-          "checked": 86,
+          "checked": 70,
           "mismatched": []
         },
         "script_text": {
-          "checked": 86,
-          "absent_from_narration": []
+          "checked": 70,
+          "absent_from_narration": [
+            58
+          ]
         }
       },
       "script_chapters": {
         "written": true,
         "changed": true,
         "removed_lines": [
-          "Title card",
-          "Austenite is the starting structure",
-          "Martensite forms when carbon is trapped",
-          "The quench medium controls cooling rate",
-          "Critical cooling rate threshold",
-          "Hardness depends on carbon content",
-          "Tempering reduces brittleness",
-          "Alloy steels allow slower quenches"
+          "Title card"
         ],
-        "chapters_not_in_script": [
-          "Austenite is the starting structure, not the ending one",
-          "Martensite forms when carbon is trapped by speed",
-          "The quench medium controls the cooling rate",
-          "The critical cooling rate is the threshold for martensite",
-          "Hardness depends on carbon content, not just martensite formation",
-          "Tempering follows quenching to reduce brittleness",
-          "Producer POV",
-          "Alloy steels allow slower quenches and thicker sections"
-        ]
+        "chapters_not_in_script": []
       },
       "artifacts": [
-        "captions/how-does-quenching-harden-steel.vtt",
-        "captions/how-does-quenching-harden-steel.srt",
-        "captions/how-does-quenching-harden-steel.chapters.txt"
-      ]
-    },
-    {
-      "episode": "how-do-self-healing-materials-work",
-      "beats": 62,
-      "plan_source": "plans/how-do-self-healing-materials-work.json",
-      "timing": "audio",
-      "beats_measured": 62,
-      "duration_s": 516.627,
-      "cues": 133,
-      "chapters_real": 11,
-      "chapters_published": 10,
-      "chapter_notes": [
-        "merged 1 chapter(s) under 10s: Title card (2.4s)"
-      ],
-      "drift": {
-        "mean_abs_s": 0.0,
-        "worst_abs_s": 0.0,
-        "rows": []
-      },
-      "ffprobe": {
-        "file": "renders/how-do-self-healing-materials-work-final.mp4",
-        "video_s": 516.626,
-        "last_cue_end_s": 516.627,
-        "delta_s": 0.001,
-        "ok": true
-      },
-      "text_checks": {
-        "beats_json": {
-          "checked": 62,
-          "mismatched": []
-        },
-        "script_text": {
-          "checked": 62,
-          "absent_from_narration": []
-        }
-      },
-      "script_chapters": {
-        "written": false,
-        "reason": "script has no ## Chapters block"
-      },
-      "artifacts": [
-        "captions/how-do-self-healing-materials-work.vtt",
-        "captions/how-do-self-healing-materials-work.srt",
-        "captions/how-do-self-healing-materials-work.chapters.txt"
+        "captions/how-is-damascus-steel-made.vtt",
+        "captions/how-is-damascus-steel-made.srt",
+        "captions/how-is-damascus-steel-made.chapters.txt"
       ]
     }
   ]

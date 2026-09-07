@@ -110,18 +110,17 @@ The shatter pattern of tempered glass is not a failure of the material. It is th
 
 ## Chapters
 
-- 00:00 Cold open
-- 00:28 Title card
-- 00:31 The stress is built in before the glass ever leaves the factory
-- 01:42 A surface crack alone does not trigger the cascade
-- 03:01 The fracture propagates faster than sound in air
-- 04:42 Fragment size is determined by the magnitude of the residual stress
-- 06:01 The pattern is not entirely uniform
-- 07:11 Why tempered glass is used despite this behavior
-- 08:25 The edge is the weakest point
-- 09:22 What to notice in the edit
-- 10:18 Evidence limit
-- 10:58 Closing
+- 0:00 Cold open
+- 0:33 The stress is built in before the glass ever leaves the factory
+- 1:45 A surface crack alone does not trigger the cascade
+- 2:42 The fracture propagates faster than sound in air
+- 4:18 Fragment size is determined by the magnitude of the residual stress
+- 5:22 The pattern is not entirely uniform
+- 6:25 Why tempered glass is used despite this behavior
+- 7:39 The edge is the weakest point
+- 8:31 What to notice in the edit
+- 9:03 Evidence limit
+- 9:47 Closing
 
 ## Sources
 
