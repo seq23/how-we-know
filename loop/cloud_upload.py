@@ -49,6 +49,7 @@ sys.path.insert(0, str(LOOP))
 import cadence                               # noqa: E402
 import backfill                                  # noqa: E402
 import batch_queue                               # noqa: E402
+import captions_lane                             # noqa: E402
 import ledger                                    # noqa: E402
 import pov_match                                 # noqa: E402
 import quota                                     # noqa: E402
@@ -273,6 +274,59 @@ def run(limit: int = 4, dry_run: bool = False) -> int:
                         "Nothing is deleted either way: the renders stay on "
                         "the shelf and this lane picks them up the run after "
                         "the assignment lands.")
+
+        # -- the CAPTIONS gate, BEFORE the upload -----------------------
+        # Exactly the POV gate's shape, for exactly the POV gate's reason, on
+        # the other artifact an episode cannot air without.
+        #
+        # V16 caption-track reads the LEDGER too, so it also speaks only after
+        # the video is on YouTube. CONFIRMED on run 34041348292: V16 went
+        # PASS(examined 20) on 09-05 and FAIL(3)(examined 22) on 09-06 with no
+        # commit between them. Nothing regressed — the upload lane put
+        # how-does-tempered-glass-shatter, how-strong-is-titanium and
+        # how-is-damascus-steel-made on the calendar at 2026-09-05T21:36Z with
+        # no captions/<slug>.srt in the repo, and the lane went red the day
+        # they counted. A lane that only fails once the video is live can
+        # report the gap; it cannot prevent it.
+        #
+        # The .srt is not optional and not recoverable in the cloud: it is
+        # derived from the narration WAVs by visuals/captions.py, and
+        # audio/**/*.wav is gitignored, so it can only be made on the machine
+        # that voiced the episode. If it is not committed before the upload, no
+        # track can ever be inserted for that video and V16 is red forever.
+        # Refusing here is the last moment refusing is free.
+        #
+        # REFUSE THE EPISODE, NOT THE LANE — same contract as the POV gate.
+        uncaptioned = captions_lane.uncaptioned([s_ for s_, _, _ in take])
+        if uncaptioned:
+            for slug_, why in uncaptioned:
+                print(f"  REFUSE {slug_}: {why}")
+            st.note(f"refused {len(uncaptioned)} episode(s) with no usable "
+                    f"English .srt: "
+                    f"{', '.join(s for s, _ in uncaptioned)}. They stay on the "
+                    f"shelf; nothing is deleted.")
+            blocked = {s for s, _ in uncaptioned}
+            take = [t for t in take if t[0] not in blocked]
+        if uncaptioned and not take:
+            st.named_stop(
+                "CAPTIONS_NOT_READY",
+                f"every episode ready to upload today would air with no "
+                f"English caption track, because no usable captions/<slug>.srt "
+                f"is committed for it: "
+                f"{', '.join(s for s, _ in uncaptioned)}. Uploading one would "
+                f"schedule a video this repo can never caption.",
+                detail={"uncaptioned": [{"slug": s, "why": w}
+                                        for s, w in uncaptioned],
+                        "captions_dir": str(captions_lane.CAPTIONS_DIR
+                                            .relative_to(ROOT))},
+                unblock="The .srt is derived from the narration audio, which "
+                        "only exists on the Mac that voiced the episode:\n\n"
+                        "  python visuals/captions.py <slug>\n\n"
+                        "then commit captions/<slug>.srt (and the .vtt, "
+                        ".chapters.txt and .timing.json it writes beside it). "
+                        "This lane picks the episode up on the run after they "
+                        "land. Nothing is deleted meanwhile: the render stays "
+                        "on the R2 shelf.")
 
         led = ledger.load()
         when = backfill.schedule_for(led, len(take), per_week)
