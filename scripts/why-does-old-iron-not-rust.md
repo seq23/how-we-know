@@ -79,6 +79,21 @@ Watch for the distinction between rust as a category of oxide and the specific c
 {{checklist: WHAT WE DO NOT KNOW | -exact passivation time for a given artifact | -threshold oxide thickness for full protection | -long-term stability of magnetite in changing climate | +general mechanisms of passivation}}
 We know the mechanisms that slow corrosion, but we cannot predict with precision how long a given piece of iron will last in a given environment. Passivation depends on too many variables: local groundwater chemistry, microbial activity, temperature fluctuations, and the iron's internal structure. Published corrosion rates span two orders of magnitude even within a single soil type. The evidence establishes that stable oxide layers form and that they protect, but it does not provide a universal timeline or a guaranteed outcome. The uncertainty is not a gap in the science. It is a feature of the system. Too many factors interact.
 
+### Microstructure matters: grain boundaries and crystal defects influence where corrosion starts
+
+{{text}}
+Iron is not a uniform solid. Under a microscope, it reveals a polycrystalline structure: millions of tiny grains, each a single crystal, separated by grain boundaries where atoms are less orderly. These boundaries are more reactive than the grain interiors. Corrosion preferentially attacks grain boundaries because the atomic disorder there makes it easier for oxygen and water to break metallic bonds. NIST metallography studies show that fine-grained iron, with more boundary area per unit volume, can corrode faster than coarse-grained iron under identical conditions. Ancient bloomery iron often has large, irregular grains because it was worked at lower temperatures than modern steel. Fewer grain boundaries mean fewer initiation sites for rust. The effect is measurable but not dominant. A fine-grained iron object in a protective environment will still outlast a coarse-grained one in aggressive soil.
+
+### Chloride contamination is the most common cause of post-excavation corrosion
+
+{{stat: 100 | ppm | chloride threshold for active corrosion in humid air | NIST}}
+Iron artifacts excavated from marine sites or salt-rich desert soils often contain chloride ions absorbed into corrosion products during burial. Even after the surface appears dry, chloride remains trapped in pores and cracks. In humid air, these ions draw moisture and form concentrated brine droplets that corrode the metal far faster than pure water would. NIST corrosion data identifies one hundred parts per million chloride as the threshold above which iron in humid air will corrode actively. Removing chloride requires prolonged soaking in deionized water or electrolytic reduction, processes that can take months. The British Museum's conservation protocols specify repeated rinses until chloride concentration in the rinse water drops below ten parts per million. Without this treatment, an artifact stable for centuries underground can disintegrate within a decade of display.
+
+### Some iron artifacts survive because they were never fully metallic iron to begin with
+
+{{contrast: BLOOMERY IRON | is=composite of metal and slag | not=pure refined metal}}
+Bloomery smelting, the dominant iron production method until the fourteenth century in Europe, produces a spongy mass called a bloom. The bloom is a mixture of metallic iron, iron oxide, and silicate slag. Repeated heating and hammering consolidates the metal and expels some slag, but significant inclusions remain. These slag stringers are glassy, chemically stable, and do not corrode. In heavily corroded artifacts, the slag network can preserve the object's shape even after the iron has oxidized completely. Archaeological reports describe "pseudomorphs" where the original iron is gone but the slag skeleton remains, sometimes still holding the form of a blade or tool. The artifact has not survived; its scaffolding has.
+
 ### Closing
 
 {{text}}
@@ -113,6 +128,8 @@ Old iron rusts unless conditions prevent it. The survivors are not indestructibl
 - 10:48 Closing
 
 ## Sources
+- https://www.nist.gov/mml
+- https://www.britishmuseum.org/
 
 - NIST: Materials Science and Engineering — https://www.nist.gov/mml
 - ASM International: Corrosion and Materials — https://www.asminternational.org/
