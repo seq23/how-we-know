@@ -1,0 +1,134 @@
+{
+  "episode": "what-is-a-semiconductor-made-of",
+  "beats": 74,
+  "plan_source": "plans/what-is-a-semiconductor-made-of.json",
+  "timing": "audio",
+  "beats_measured": 74,
+  "duration_s": 637.923,
+  "cues": 172,
+  "chapters_real": 16,
+  "chapters_published": 15,
+  "chapter_notes": [
+    "merged 1 chapter(s) under 10s: Title card (1.9s)"
+  ],
+  "drift": {
+    "mean_abs_s": 61.1,
+    "worst_abs_s": 113.1,
+    "rows": [
+      {
+        "title": "Cold open",
+        "hand": "00:00",
+        "real": "0:00",
+        "drift_s": 0.0
+      },
+      {
+        "title": "Pure silicon conducts poorly until you break its symmetry",
+        "hand": "00:24",
+        "real": "0:31",
+        "drift_s": 7.5
+      },
+      {
+        "title": "Doping introduces the asymmetry devices require",
+        "hand": "01:12",
+        "real": "1:03",
+        "drift_s": -8.1
+      },
+      {
+        "title": "The purity requirement is extreme and measurable",
+        "hand": "02:24",
+        "real": "1:55",
+        "drift_s": -28.3
+      },
+      {
+        "title": "Compound semiconductors use two or more elements in fixed ratios",
+        "hand": "03:42",
+        "real": "2:53",
+        "drift_s": -48.8
+      },
+      {
+        "title": "The bandgap determines which photons the material absorbs",
+        "hand": "04:54",
+        "real": "3:47",
+        "drift_s": -66.6
+      },
+      {
+        "title": "Crystal structure and defect density matter as much as composition",
+        "hand": "06:00",
+        "real": "4:32",
+        "drift_s": -87.0
+      },
+      {
+        "title": "Alloys let you tune properties continuously between endpoints",
+        "hand": "07:06",
+        "real": "5:35",
+        "drift_s": -90.4
+      },
+      {
+        "title": "Interfaces between materials create the active device structures",
+        "hand": "08:12",
+        "real": "6:28",
+        "drift_s": -103.9
+      },
+      {
+        "title": "Thermal budgets constrain which processes can follow which",
+        "hand": "09:12",
+        "real": "7:18",
+        "drift_s": -113.1
+      },
+      {
+        "title": "Gettering removes mobile contaminants before they reach active regions",
+        "hand": "09:54",
+        "real": "8:08",
+        "drift_s": -105.4
+      },
+      {
+        "title": "What to notice in the edit",
+        "hand": "10:18",
+        "real": "8:58",
+        "drift_s": -79.3
+      },
+      {
+        "title": "Evidence limit",
+        "hand": "10:48",
+        "real": "9:41",
+        "drift_s": -66.8
+      },
+      {
+        "title": "Closing",
+        "hand": "11:06",
+        "real": "10:16",
+        "drift_s": -49.6
+      }
+    ]
+  },
+  "ffprobe": {
+    "file": "renders/what-is-a-semiconductor-made-of-final.mp4",
+    "video_s": 637.922,
+    "last_cue_end_s": 637.923,
+    "delta_s": 0.001,
+    "ok": true
+  },
+  "text_checks": {
+    "beats_json": {
+      "checked": 74,
+      "mismatched": []
+    },
+    "script_text": {
+      "checked": 74,
+      "absent_from_narration": []
+    }
+  },
+  "script_chapters": {
+    "written": true,
+    "changed": true,
+    "removed_lines": [],
+    "chapters_not_in_script": [
+      "Producer POV"
+    ]
+  },
+  "artifacts": [
+    "captions/what-is-a-semiconductor-made-of.vtt",
+    "captions/what-is-a-semiconductor-made-of.srt",
+    "captions/what-is-a-semiconductor-made-of.chapters.txt"
+  ]
+}

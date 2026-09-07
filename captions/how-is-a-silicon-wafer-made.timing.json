@@ -1,0 +1,128 @@
+{
+  "episode": "how-is-a-silicon-wafer-made",
+  "beats": 78,
+  "plan_source": "plans/how-is-a-silicon-wafer-made.json",
+  "timing": "audio",
+  "beats_measured": 78,
+  "duration_s": 653.584,
+  "cues": 169,
+  "chapters_real": 13,
+  "chapters_published": 12,
+  "chapter_notes": [
+    "merged 1 chapter(s) under 10s: Title card (2.1s)"
+  ],
+  "drift": {
+    "mean_abs_s": 43.7,
+    "worst_abs_s": 95.5,
+    "rows": [
+      {
+        "title": "Cold open",
+        "hand": "00:00",
+        "real": "0:00",
+        "drift_s": 0.0
+      },
+      {
+        "title": "Title card",
+        "hand": "00:31",
+        "real": "0:31",
+        "drift_s": 0.9
+      },
+      {
+        "title": "Quartzite becomes metallurgical-grade silicon in an arc furnace at 2000 degrees Celsius",
+        "hand": "00:34",
+        "real": "0:34",
+        "drift_s": 0.0
+      },
+      {
+        "title": "Metallurgical-grade silicon becomes trichlorosilane through the Siemens process",
+        "hand": "01:34",
+        "real": "1:30",
+        "drift_s": -3.1
+      },
+      {
+        "title": "Polysilicon becomes a single crystal through Czochralski pulling",
+        "hand": "03:10",
+        "real": "2:45",
+        "drift_s": -24.0
+      },
+      {
+        "title": "Producer POV",
+        "hand": "04:58",
+        "real": "4:14",
+        "drift_s": -43.8
+      },
+      {
+        "title": "Dopants enter the melt to control electrical properties",
+        "hand": "05:06",
+        "real": "4:28",
+        "drift_s": -37.3
+      },
+      {
+        "title": "The ingot is sliced into wafers with wire saws",
+        "hand": "06:32",
+        "real": "5:41",
+        "drift_s": -50.1
+      },
+      {
+        "title": "Wafers are lapped, etched and polished to atomic flatness",
+        "hand": "08:04",
+        "real": "6:53",
+        "drift_s": -70.1
+      },
+      {
+        "title": "Crystal orientation determines how the wafer cleaves and how devices are built",
+        "hand": "09:42",
+        "real": "8:06",
+        "drift_s": -95.5
+      },
+      {
+        "title": "What to notice in the edit",
+        "hand": "10:28",
+        "real": "9:06",
+        "drift_s": -81.8
+      },
+      {
+        "title": "Evidence limit",
+        "hand": "11:22",
+        "real": "9:56",
+        "drift_s": -85.4
+      },
+      {
+        "title": "Closing",
+        "hand": "11:52",
+        "real": "10:36",
+        "drift_s": -75.6
+      }
+    ]
+  },
+  "ffprobe": {
+    "file": "renders/how-is-a-silicon-wafer-made-final.mp4",
+    "video_s": 653.584,
+    "last_cue_end_s": 653.584,
+    "delta_s": 0.0,
+    "ok": true
+  },
+  "text_checks": {
+    "beats_json": {
+      "checked": 78,
+      "mismatched": []
+    },
+    "script_text": {
+      "checked": 78,
+      "absent_from_narration": []
+    }
+  },
+  "script_chapters": {
+    "written": true,
+    "changed": true,
+    "removed_lines": [
+      "Title card"
+    ],
+    "chapters_not_in_script": []
+  },
+  "artifacts": [
+    "captions/how-is-a-silicon-wafer-made.vtt",
+    "captions/how-is-a-silicon-wafer-made.srt",
+    "captions/how-is-a-silicon-wafer-made.chapters.txt"
+  ]
+}

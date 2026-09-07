@@ -86,19 +86,18 @@ A silicon wafer is not refined from silicon. It is built from it, through a sequ
 
 ## Chapters
 
-- 00:00 Cold open
-- 00:31 Title card
-- 00:34 Quartzite becomes metallurgical-grade silicon in an arc furnace at 2000 degrees Celsius
-- 01:34 Metallurgical-grade silicon becomes trichlorosilane through the Siemens process
-- 03:10 Polysilicon becomes a single crystal through Czochralski pulling
-- 04:58 Producer POV
-- 05:06 Dopants enter the melt to control electrical properties
-- 06:32 The ingot is sliced into wafers with wire saws
-- 08:04 Wafers are lapped, etched and polished to atomic flatness
-- 09:42 Crystal orientation determines how the wafer cleaves and how devices are built
-- 10:28 What to notice in the edit
-- 11:22 Evidence limit
-- 11:52 Closing
+- 0:00 Cold open
+- 0:34 Quartzite becomes metallurgical-grade silicon in an arc furnace at 2000 degrees Celsius
+- 1:30 Metallurgical-grade silicon becomes trichlorosilane through the Siemens process
+- 2:45 Polysilicon becomes a single crystal through Czochralski pulling
+- 4:14 Producer POV
+- 4:28 Dopants enter the melt to control electrical properties
+- 5:41 The ingot is sliced into wafers with wire saws
+- 6:53 Wafers are lapped, etched and polished to atomic flatness
+- 8:06 Crystal orientation determines how the wafer cleaves and how devices are built
+- 9:06 What to notice in the edit
+- 9:56 Evidence limit
+- 10:36 Closing
 
 ## Sources
 
