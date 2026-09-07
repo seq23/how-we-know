@@ -166,6 +166,14 @@ def rebuild_runway_if_short(st, cfg: dict, per_week: int, used_slugs: list[str],
                 slug, str(dest.relative_to(ROOT)), report)
             authored.append(slug)
             used_slugs.append(pov["pov_id"])
+            # RECORD WHICH BANK LINE THIS EPISODE BORROWED, inside the branch
+            # that already promoted the script — so a draft that failed
+            # validation never leaves an assignment behind for a script that
+            # does not exist. Without this the loop selected a line, cited it
+            # in the script, and wrote nothing down; V32 then refused the
+            # episode weeks later and asked the owner to approve a line she had
+            # already given in an interview.
+            pov_match.record_assignment(slug, pov)
         else:
             failed.append(
                 f"{slug}: failed validation "
