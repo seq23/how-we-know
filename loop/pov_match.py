@@ -18,6 +18,7 @@ Selection, in order:
 """
 from __future__ import annotations
 
+import datetime as _dt
 import json
 import re
 import sys
@@ -347,3 +348,55 @@ if __name__ == "__main__":
         print(f"{r['slug'][:44]:<44} {r['pov_id']}  [{r['pov_tag']}] "
               f"{r['pov_matched_by']}")
         print(f"    {r['pov_line'][:96]}")
+
+
+def read_json(p) -> dict:
+    return json.loads(Path(p).read_text(encoding="utf-8"))
+
+
+def write_json(p, doc) -> None:
+    Path(p).write_text(json.dumps(doc, indent=2) + "\n", encoding="utf-8")
+
+
+def record_assignment(slug: str, pov: dict, *, source: str = "matched by author") -> bool:
+    """Write down which bank line an authored episode borrowed.
+
+    THE MISSING HALF OF A LOOP THAT WAS OTHERWISE COMPLETE. `select()` picks a
+    line from the owner's approved bank and the author writes it into the
+    script — citing it, "matched from POV BANK pov-027 before rewriting". Then
+    nothing recorded the choice, and every reference to
+    `pov/pov-assignments.json` in this repo was a READ.
+
+    So V32 later asked which bank line the episode's [HUMAN] beat traces to,
+    found no entry, and correctly refused to let it air. The remedy it offers is
+    that the owner reads the line and approves it — which happened six times on
+    2026-09-07 for six episodes whose lines had ALREADY been selected from her
+    own interviews. Her bank had 115 unused lines at the time. The gap was never
+    a missing line or a missing interview; it was a missing write.
+
+    RECORDING IS BOOKKEEPING, NOT CONSENT. This does not approve anything: the
+    line came from her interview bank, and this only writes down which one. A
+    hand assignment already present is never overwritten — `select()` treats one
+    as authoritative, and a run that silently replaced it would be deciding
+    something she decided.
+
+    Returns True when a row was added.
+    """
+    doc = read_json(ASSIGNMENTS)
+    rows = doc["assignments"]
+    if any(a["video"] == slug for a in rows):
+        return False
+
+    rows.append({
+        "video": slug,
+        "pov_id": pov["pov_id"],
+        "tier": pov.get("tier", "transferable"),
+        # Distinguishable at a glance from `owner-approved <date>`, which is a
+        # line she read and claimed. This one she said in an interview and the
+        # author borrowed; both are hers, and they are not the same act.
+        "source": source,
+        "line": pov["line"],
+    })
+    doc["generated"] = _dt.datetime.now(_dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    write_json(ASSIGNMENTS, doc)
+    return True
