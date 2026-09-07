@@ -1,0 +1,27 @@
+{
+  "stage": "cloud-upload",
+  "week": "2026-W37",
+  "at": "2026-09-07T14:36:48+00:00",
+  "code": "POV_UNTRACED",
+  "message": "every episode ready to upload today carries a first-person [HUMAN] Producer POV with no entry in pov/pov-assignments.json: how-is-a-silicon-wafer-made, how-strong-is-graphene, what-is-a-semiconductor-made-of. Uploading one would be the channel asserting she said something no interview records her saying.",
+  "detail": {
+    "untraced": [
+      "how-is-a-silicon-wafer-made",
+      "how-strong-is-graphene",
+      "what-is-a-semiconductor-made-of"
+    ],
+    "assignments": "pov/pov-assignments.json",
+    "bank": "pov/pov-bank.json"
+  },
+  "unblock": "Two honest ways, and a validator may not do either for her.\n\n1. She reads the [HUMAN] line in scripts/<slug>.md, and if it is hers it is recorded in pov/pov-bank.json with `source: owner-approved <date>` and given an entry in pov/pov-assignments.json - the precedent set on 2026-09-05 for how-are-microchips-made, how-does-quenching-harden-steel and how-do-self-healing-materials-work (pov-099..101).\n\n2. The episode is re-cut without the beat.\n\nNothing is deleted either way: the renders stay on the shelf and this lane picks them up the run after the assignment lands.",
+  "disposition": "needs_human",
+  "disposition_why": "'POV_UNTRACED' is not in loop/stop_policy.json, so it is treated as needing a human. That is the default on purpose.",
+  "consecutive": 1,
+  "exit_code": 3,
+  "work_done_before_stop": [],
+  "notes": [
+    "shelf: r2://how-we-know-renders",
+    "quota allows 3 of 4 today. quota day 2026-09-07 (PT): spent 0 of 10000, 9600 usable after 400 headroom; lanes: none",
+    "refused 3 episode(s) with an untraced first-person POV: how-is-a-silicon-wafer-made, how-strong-is-graphene, what-is-a-semiconductor-made-of. They stay on the shelf; nothing is deleted."
+  ]
+}
