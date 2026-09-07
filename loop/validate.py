@@ -2384,6 +2384,37 @@ def v31_render_has_thumbnail() -> Result:
     return r
 
 
+def _bank_lines() -> list[dict]:
+    try:
+        return read_json(ROOT / "pov" / "pov-bank.json")["lines"]
+    except Exception:                       # noqa: BLE001 - never break V32
+        return []
+
+
+def _dom_of(slug: str):
+    try:
+        import domains as _D                                # noqa: PLC0415
+        return _D.domain_of_slug(slug, None)
+    except Exception:                       # noqa: BLE001
+        return None
+
+
+def _human_beat(slug: str) -> str:
+    """The [HUMAN] sentence as narrated, so the message names the actual claim.
+
+    A validator that says "an untraced POV" and does not quote it makes the
+    reader open the file to find out what is being asserted in her name.
+    """
+    try:
+        import re as _re                                    # noqa: PLC0415
+        t = (ROOT / "scripts" / f"{slug}.md").read_text()
+        m = _re.search(r"\[HUMAN\]\s*(.+)", t)
+        line = m.group(1).strip() if m else ""
+        return (line[:160] + "...") if len(line) > 160 else line
+    except Exception:                       # noqa: BLE001
+        return ""
+
+
 def v32_scheduled_pov_is_hers() -> Result:
     """Every SCHEDULED episode's Producer POV must trace to a line she said.
 
@@ -2448,11 +2479,34 @@ def v32_scheduled_pov_is_hers() -> Result:
             continue                      # no POV beat is a different rule
         r.examined += 1
         if slug not in assigned and (vid or "") not in assigned:
+            # SAY WHY IT IS UNTRACED, AND DO NOT GUESS AT THE REASON. This
+            # used to end "its domain has had no POV interview" - true when it
+            # was written and STALE the next day: interview 3 landed on
+            # 2026-09-05 (pov/answers-3.txt, Q11a-c) and put four
+            # materials-and-manufacturing tier:specific lines in the bank
+            # (pov-119..122). A failure message that asserts a reason it did
+            # not check sends the reader after the wrong fix - here, after an
+            # interview that already exists.
+            #
+            # The real and only claim this validator can make is the one it
+            # actually tested: there is no entry. So it says that, names the
+            # line, and reports whether the domain has bank lines to draw on.
+            dom = _dom_of(slug)
+            have = [l["id"] for l in _bank_lines()
+                    if l.get("domain") == dom] if dom else []
             r.fail(f"{slug} airs {when:%Y-%m-%d} with a first-person Producer "
-                   f"POV that traces to no line in pov/pov-bank.json - there "
-                   f"is no entry for it in pov/pov-assignments.json. Its "
-                   f"domain has had no POV interview, and config says "
-                   f"tier-specific lines do not transfer.")
+                   f"POV that has no entry in pov/pov-assignments.json, so "
+                   f"nothing traces it to a line the owner said. Its [HUMAN] "
+                   f"beat reads: {_human_beat(slug)!r}. Its domain "
+                   f"({dom or 'unknown'}) has "
+                   + (f"{len(have)} bank line(s) of its own ({', '.join(have)}) "
+                      f"- but a bank line is not an assignment, and this "
+                      f"episode is already rendered and uploaded, so the "
+                      f"narrated words are the ones that need tracing, not a "
+                      f"line that could have been chosen."
+                      if have else
+                      "no POV lines of its own, and config says tier-specific "
+                      "lines do not transfer."))
     return r
 
 

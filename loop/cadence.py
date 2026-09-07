@@ -540,20 +540,26 @@ def runway(per_week: int | None = None) -> dict:
     # it would have read 0.0 once the backfill finished, with eight weeks of
     # video queued and airing. An alarm that is wrong in the alarming direction
     # is one people learn to ignore, which is worse than no alarm.
-    scheduled_ahead = 0
+    #
+    # ONE COUNTER, SHARED WITH THE PER-DOMAIN FIGURE BELOW. This loop used to
+    # live here and a second, subtly different one lived in
+    # domains.domain_runway() - which counted only the un-uploaded queue and so
+    # reported deep sea at 0.0 weeks/critical while 14 of its episodes were
+    # uploaded and dated across the next 7 weeks. That false critical is what
+    # RUNWAY_CRITICAL fired on every Sunday (run 34026361219).
+    #
+    # Merging them also fixed a second, quieter error in THIS copy: it had no
+    # `retired_at` check, so 02-how-deep-sea-creatures-survive-pressure - a
+    # duplicate upload retired on 2026-09-05 with its publishAt cancelled on
+    # the live API - was still counted as a week of inventory. That is an alarm
+    # wrong in the REASSURING direction, which is the worse half.
+    ahead_by_domain = {}
     try:
-        import ledger as _led
-        from datetime import datetime, timezone
-        now_utc = datetime.now(timezone.utc)
-        for r in _led.load()["published"]:
-            stamp = r.get("scheduled_publish_at")
-            if not stamp:
-                continue
-            when = datetime.fromisoformat(stamp.replace("Z", "+00:00"))
-            if when > now_utc and r.get("privacy") != "public":
-                scheduled_ahead += 1
+        import domains as _D                                # noqa: PLC0415
+        ahead_by_domain = _D.scheduled_ahead_by_domain()
     except Exception:                       # noqa: BLE001 - never break the guard
-        scheduled_ahead = 0
+        ahead_by_domain = {}
+    scheduled_ahead = sum(ahead_by_domain.values())
 
     weeks = round((publishable + scheduled_ahead) / n, 1) if n else 0.0
     warn = float(cfg["runway"]["warn_weeks"])
