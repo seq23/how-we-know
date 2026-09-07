@@ -161,6 +161,28 @@ def cue_count(path: Path) -> int:
                if "-->" in line)
 
 
+def uncaptioned(slugs) -> list[tuple[str, str]]:
+    """Which of `slugs` have no usable English .srt, and why — ONE rule.
+
+    The pre-upload gate in loop/cloud_upload.py and this lane must not each
+    keep their own idea of "usable", because two components keeping separate
+    lists is precisely how the three materials episodes reached YouTube with
+    no caption track: V16 read the ledger, the lane read the disk, and nothing
+    joined them before the upload. Both callers ask this function.
+
+    Returns [] for an empty selection — an empty list is a clean selection, and
+    callers that must not act on nothing say so with their own named stop.
+    """
+    out: list[tuple[str, str]] = []
+    for slug in slugs:
+        srt = srt_for(slug)
+        if not srt.exists():
+            out.append((slug, f"captions/{slug}.srt does not exist"))
+        elif cue_count(srt) == 0:
+            out.append((slug, f"captions/{slug}.srt has zero timed cues"))
+    return out
+
+
 # --------------------------------------------------------------- the API
 
 def list_tracks(token: str, video_id: str, timeout: int = 30) -> list[dict]:
