@@ -1,6 +1,6 @@
 {
   "week": "2026-W37",
-  "at": "2026-09-07T15:11:23+00:00",
+  "at": "2026-09-07T15:18:08+00:00",
   "plan": [
     {
       "slug": "10-what-is-the-deepest-part-of-the-ocean",
@@ -177,6 +177,22 @@
       "cues": 159,
       "sha256": "249c838d9d105a4c7bbaf459f0ce06e42a631cc20354d51ed66ac293848589cb",
       "already": true
+    },
+    {
+      "slug": "how-is-a-silicon-wafer-made",
+      "video_id": "xbmIX6n2OI8",
+      "srt": "/home/runner/work/how-we-know/how-we-know/captions/how-is-a-silicon-wafer-made.srt",
+      "cues": 169,
+      "sha256": "0da4c877ff9e2efe987d242c38a19a12f8c56a8d2050d05842549b25d57d8798",
+      "already": false
+    },
+    {
+      "slug": "what-is-a-semiconductor-made-of",
+      "video_id": "kTBlLeWdi4g",
+      "srt": "/home/runner/work/how-we-know/how-we-know/captions/what-is-a-semiconductor-made-of.srt",
+      "cues": 172,
+      "sha256": "94d50660b07ad2a487ce70e22a229c0309ccb9f15536292e59c5a25a315bf4b9",
+      "already": false
     }
   ],
   "gaps": []

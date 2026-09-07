@@ -64,7 +64,7 @@
       "track_kind": "standard",
       "source": "inserted",
       "recorded_at": "2026-09-03T17:28:04+00:00",
-      "verified_at": "2026-09-04T15:10:30+00:00"
+      "verified_at": "2026-09-07T15:18:09+00:00"
     },
     "MozJZ-ChEZU": {
       "slug": "06-why-some-deep-sea-creatures-are-transparent",
@@ -75,7 +75,7 @@
       "track_kind": "standard",
       "source": "inserted",
       "recorded_at": "2026-09-03T17:28:05+00:00",
-      "verified_at": "2026-09-04T19:46:12+00:00"
+      "verified_at": "2026-09-07T15:18:10+00:00"
     },
     "MWOUa3UEXSk": {
       "slug": "15-how-do-people-reach-challenger-deep",
@@ -86,7 +86,7 @@
       "track_kind": "standard",
       "source": "inserted",
       "recorded_at": "2026-09-03T17:28:06+00:00",
-      "verified_at": "2026-09-04T19:46:12+00:00"
+      "verified_at": "2026-09-07T15:18:10+00:00"
     },
     "jec80gk8rM0": {
       "slug": "08-what-creatures-live-in-the-deep-sea",
@@ -251,16 +251,27 @@
       "source": "inserted",
       "recorded_at": "2026-09-07T14:43:50+00:00",
       "verified_at": "2026-09-07T15:11:24+00:00"
+    },
+    "xbmIX6n2OI8": {
+      "slug": "how-is-a-silicon-wafer-made",
+      "caption_id": "AUieDabHgS4VNTzum4tZl-ZRcahtKt1h90fqyN6VYa19dlnqDt1-P1wO",
+      "language": "en",
+      "srt_sha256": "0da4c877ff9e2efe987d242c38a19a12f8c56a8d2050d05842549b25d57d8798",
+      "cues": 169,
+      "track_kind": "standard",
+      "source": "inserted",
+      "recorded_at": "2026-09-07T15:18:09+00:00"
     }
   },
-  "blocked": {},
-  "updated": "2026-09-07T15:11:24+00:00",
-  "token_scopes": [
-    "https://www.googleapis.com/auth/youtube",
-    "https://www.googleapis.com/auth/youtube.force-ssl",
-    "https://www.googleapis.com/auth/youtube.readonly",
-    "https://www.googleapis.com/auth/youtube.upload",
-    "https://www.googleapis.com/auth/yt-analytics.readonly"
-  ],
+  "blocked": {
+    "kTBlLeWdi4g": {
+      "slug": "what-is-a-semiconductor-made-of",
+      "reason": "QUOTA_DEFERRED",
+      "since": "2026-09-07T15:18:08+00:00",
+      "sha256": "94d50660b07ad2a487ce70e22a229c0309ccb9f15536292e59c5a25a315bf4b9"
+    }
+  },
+  "updated": "2026-09-07T15:18:10+00:00",
+  "token_scopes": [],
   "token_has_force_ssl": true
 }
