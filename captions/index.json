@@ -1,26 +1,25 @@
 {
   "generated_for": [
-    "how-does-tempered-glass-shatter",
-    "how-strong-is-titanium",
-    "how-is-damascus-steel-made"
+    "how-is-a-silicon-wafer-made",
+    "what-is-a-semiconductor-made-of"
   ],
   "episodes": [
     {
-      "episode": "how-does-tempered-glass-shatter",
-      "beats": 79,
-      "plan_source": "plans/how-does-tempered-glass-shatter.json",
+      "episode": "how-is-a-silicon-wafer-made",
+      "beats": 78,
+      "plan_source": "plans/how-is-a-silicon-wafer-made.json",
       "timing": "audio",
-      "beats_measured": 79,
-      "duration_s": 603.283,
-      "cues": 164,
+      "beats_measured": 78,
+      "duration_s": 653.584,
+      "cues": 169,
       "chapters_real": 13,
       "chapters_published": 12,
       "chapter_notes": [
-        "merged 1 chapter(s) under 10s: Title card (2.4s)"
+        "merged 1 chapter(s) under 10s: Title card (2.1s)"
       ],
       "drift": {
-        "mean_abs_s": 31.5,
-        "worst_abs_s": 74.6,
+        "mean_abs_s": 43.7,
+        "worst_abs_s": 95.5,
         "rows": [
           {
             "title": "Cold open",
@@ -30,341 +29,241 @@
           },
           {
             "title": "Title card",
-            "hand": "00:28",
-            "real": "0:31",
-            "drift_s": 3.4
-          },
-          {
-            "title": "The stress is built in before the glass ever leaves the factory",
             "hand": "00:31",
-            "real": "0:33",
-            "drift_s": 2.9
+            "real": "0:31",
+            "drift_s": 0.9
           },
           {
-            "title": "A surface crack alone does not trigger the cascade",
-            "hand": "01:42",
-            "real": "1:45",
-            "drift_s": 3.8
+            "title": "Quartzite becomes metallurgical-grade silicon in an arc furnace at 2000 degrees Celsius",
+            "hand": "00:34",
+            "real": "0:34",
+            "drift_s": 0.0
           },
           {
-            "title": "The fracture propagates faster than sound in air",
-            "hand": "03:01",
-            "real": "2:42",
-            "drift_s": -18.4
+            "title": "Metallurgical-grade silicon becomes trichlorosilane through the Siemens process",
+            "hand": "01:34",
+            "real": "1:30",
+            "drift_s": -3.1
           },
           {
-            "title": "Fragment size is determined by the magnitude of the residual stress",
-            "hand": "04:42",
-            "real": "4:18",
-            "drift_s": -23.9
+            "title": "Polysilicon becomes a single crystal through Czochralski pulling",
+            "hand": "03:10",
+            "real": "2:45",
+            "drift_s": -24.0
           },
           {
-            "title": "The pattern is not entirely uniform",
-            "hand": "06:01",
-            "real": "5:22",
-            "drift_s": -38.1
+            "title": "Producer POV",
+            "hand": "04:58",
+            "real": "4:14",
+            "drift_s": -43.8
           },
           {
-            "title": "Why tempered glass is used despite this behavior",
-            "hand": "07:11",
-            "real": "6:25",
-            "drift_s": -45.8
+            "title": "Dopants enter the melt to control electrical properties",
+            "hand": "05:06",
+            "real": "4:28",
+            "drift_s": -37.3
           },
           {
-            "title": "The edge is the weakest point",
-            "hand": "08:25",
-            "real": "7:39",
-            "drift_s": -45.5
+            "title": "The ingot is sliced into wafers with wire saws",
+            "hand": "06:32",
+            "real": "5:41",
+            "drift_s": -50.1
+          },
+          {
+            "title": "Wafers are lapped, etched and polished to atomic flatness",
+            "hand": "08:04",
+            "real": "6:53",
+            "drift_s": -70.1
+          },
+          {
+            "title": "Crystal orientation determines how the wafer cleaves and how devices are built",
+            "hand": "09:42",
+            "real": "8:06",
+            "drift_s": -95.5
           },
           {
             "title": "What to notice in the edit",
-            "hand": "09:22",
-            "real": "8:31",
-            "drift_s": -50.3
+            "hand": "10:28",
+            "real": "9:06",
+            "drift_s": -81.8
           },
           {
             "title": "Evidence limit",
-            "hand": "10:18",
-            "real": "9:03",
-            "drift_s": -74.6
+            "hand": "11:22",
+            "real": "9:56",
+            "drift_s": -85.4
           },
           {
             "title": "Closing",
-            "hand": "10:58",
-            "real": "9:47",
-            "drift_s": -70.8
+            "hand": "11:52",
+            "real": "10:36",
+            "drift_s": -75.6
           }
         ]
       },
       "ffprobe": {
-        "file": "renders/how-does-tempered-glass-shatter-final.mp4",
-        "video_s": 603.282,
-        "last_cue_end_s": 603.283,
+        "file": "renders/how-is-a-silicon-wafer-made-final.mp4",
+        "video_s": 653.584,
+        "last_cue_end_s": 653.584,
+        "delta_s": 0.0,
+        "ok": true
+      },
+      "text_checks": {
+        "beats_json": {
+          "checked": 78,
+          "mismatched": []
+        },
+        "script_text": {
+          "checked": 78,
+          "absent_from_narration": []
+        }
+      },
+      "script_chapters": {
+        "written": true,
+        "changed": true,
+        "removed_lines": [
+          "Title card"
+        ],
+        "chapters_not_in_script": []
+      },
+      "artifacts": [
+        "captions/how-is-a-silicon-wafer-made.vtt",
+        "captions/how-is-a-silicon-wafer-made.srt",
+        "captions/how-is-a-silicon-wafer-made.chapters.txt"
+      ]
+    },
+    {
+      "episode": "what-is-a-semiconductor-made-of",
+      "beats": 74,
+      "plan_source": "plans/what-is-a-semiconductor-made-of.json",
+      "timing": "audio",
+      "beats_measured": 74,
+      "duration_s": 637.923,
+      "cues": 172,
+      "chapters_real": 16,
+      "chapters_published": 15,
+      "chapter_notes": [
+        "merged 1 chapter(s) under 10s: Title card (1.9s)"
+      ],
+      "drift": {
+        "mean_abs_s": 61.1,
+        "worst_abs_s": 113.1,
+        "rows": [
+          {
+            "title": "Cold open",
+            "hand": "00:00",
+            "real": "0:00",
+            "drift_s": 0.0
+          },
+          {
+            "title": "Pure silicon conducts poorly until you break its symmetry",
+            "hand": "00:24",
+            "real": "0:31",
+            "drift_s": 7.5
+          },
+          {
+            "title": "Doping introduces the asymmetry devices require",
+            "hand": "01:12",
+            "real": "1:03",
+            "drift_s": -8.1
+          },
+          {
+            "title": "The purity requirement is extreme and measurable",
+            "hand": "02:24",
+            "real": "1:55",
+            "drift_s": -28.3
+          },
+          {
+            "title": "Compound semiconductors use two or more elements in fixed ratios",
+            "hand": "03:42",
+            "real": "2:53",
+            "drift_s": -48.8
+          },
+          {
+            "title": "The bandgap determines which photons the material absorbs",
+            "hand": "04:54",
+            "real": "3:47",
+            "drift_s": -66.6
+          },
+          {
+            "title": "Crystal structure and defect density matter as much as composition",
+            "hand": "06:00",
+            "real": "4:32",
+            "drift_s": -87.0
+          },
+          {
+            "title": "Alloys let you tune properties continuously between endpoints",
+            "hand": "07:06",
+            "real": "5:35",
+            "drift_s": -90.4
+          },
+          {
+            "title": "Interfaces between materials create the active device structures",
+            "hand": "08:12",
+            "real": "6:28",
+            "drift_s": -103.9
+          },
+          {
+            "title": "Thermal budgets constrain which processes can follow which",
+            "hand": "09:12",
+            "real": "7:18",
+            "drift_s": -113.1
+          },
+          {
+            "title": "Gettering removes mobile contaminants before they reach active regions",
+            "hand": "09:54",
+            "real": "8:08",
+            "drift_s": -105.4
+          },
+          {
+            "title": "What to notice in the edit",
+            "hand": "10:18",
+            "real": "8:58",
+            "drift_s": -79.3
+          },
+          {
+            "title": "Evidence limit",
+            "hand": "10:48",
+            "real": "9:41",
+            "drift_s": -66.8
+          },
+          {
+            "title": "Closing",
+            "hand": "11:06",
+            "real": "10:16",
+            "drift_s": -49.6
+          }
+        ]
+      },
+      "ffprobe": {
+        "file": "renders/what-is-a-semiconductor-made-of-final.mp4",
+        "video_s": 637.922,
+        "last_cue_end_s": 637.923,
         "delta_s": 0.001,
         "ok": true
       },
       "text_checks": {
         "beats_json": {
-          "checked": 79,
+          "checked": 74,
           "mismatched": []
         },
         "script_text": {
-          "checked": 79,
+          "checked": 74,
           "absent_from_narration": []
         }
       },
       "script_chapters": {
         "written": true,
         "changed": true,
-        "removed_lines": [
-          "Title card"
-        ],
+        "removed_lines": [],
         "chapters_not_in_script": [
           "Producer POV"
         ]
       },
       "artifacts": [
-        "captions/how-does-tempered-glass-shatter.vtt",
-        "captions/how-does-tempered-glass-shatter.srt",
-        "captions/how-does-tempered-glass-shatter.chapters.txt"
-      ]
-    },
-    {
-      "episode": "how-strong-is-titanium",
-      "beats": 84,
-      "plan_source": "plans/how-strong-is-titanium.json",
-      "timing": "audio",
-      "beats_measured": 84,
-      "duration_s": 701.808,
-      "cues": 177,
-      "chapters_real": 12,
-      "chapters_published": 12,
-      "chapter_notes": [],
-      "drift": {
-        "mean_abs_s": 31.0,
-        "worst_abs_s": 44.2,
-        "rows": [
-          {
-            "title": "Cold open",
-            "hand": "00:00",
-            "real": "0:00",
-            "drift_s": 0.0
-          },
-          {
-            "title": "Strength is not a single measurement",
-            "hand": "00:31",
-            "real": "0:37",
-            "drift_s": 6.1
-          },
-          {
-            "title": "The strength-to-weight advantage is the real story",
-            "hand": "01:32",
-            "real": "2:03",
-            "drift_s": 31.8
-          },
-          {
-            "title": "How tensile strength is actually measured",
-            "hand": "02:52",
-            "real": "3:26",
-            "drift_s": 34.7
-          },
-          {
-            "title": "Producer POV",
-            "hand": "04:08",
-            "real": "4:36",
-            "drift_s": 28.1
-          },
-          {
-            "title": "Yield strength matters more than ultimate strength in design",
-            "hand": "04:16",
-            "real": "4:49",
-            "drift_s": 33.5
-          },
-          {
-            "title": "Fatigue strength is the limit for cyclic loading",
-            "hand": "05:28",
-            "real": "6:08",
-            "drift_s": 40.2
-          },
-          {
-            "title": "Corrosion resistance changes the effective strength over time",
-            "hand": "06:52",
-            "real": "7:30",
-            "drift_s": 38.5
-          },
-          {
-            "title": "Temperature stability extends the usable strength range",
-            "hand": "08:08",
-            "real": "8:50",
-            "drift_s": 42.2
-          },
-          {
-            "title": "What to notice in the edit",
-            "hand": "09:16",
-            "real": "9:58",
-            "drift_s": 42.3
-          },
-          {
-            "title": "Evidence limit",
-            "hand": "10:04",
-            "real": "10:34",
-            "drift_s": 30.9
-          },
-          {
-            "title": "Closing",
-            "hand": "10:36",
-            "real": "11:20",
-            "drift_s": 44.2
-          }
-        ]
-      },
-      "ffprobe": {
-        "file": "renders/how-strong-is-titanium-final.mp4",
-        "video_s": 701.808,
-        "last_cue_end_s": 701.808,
-        "delta_s": 0.0,
-        "ok": true
-      },
-      "text_checks": {
-        "beats_json": {
-          "checked": 84,
-          "mismatched": []
-        },
-        "script_text": {
-          "checked": 84,
-          "absent_from_narration": []
-        }
-      },
-      "script_chapters": {
-        "written": true,
-        "changed": true,
-        "removed_lines": [
-          "Title card"
-        ],
-        "chapters_not_in_script": []
-      },
-      "artifacts": [
-        "captions/how-strong-is-titanium.vtt",
-        "captions/how-strong-is-titanium.srt",
-        "captions/how-strong-is-titanium.chapters.txt"
-      ]
-    },
-    {
-      "episode": "how-is-damascus-steel-made",
-      "beats": 70,
-      "plan_source": "plans/how-is-damascus-steel-made.json",
-      "timing": "audio",
-      "beats_measured": 70,
-      "duration_s": 613.317,
-      "cues": 159,
-      "chapters_real": 11,
-      "chapters_published": 10,
-      "chapter_notes": [
-        "merged 1 chapter(s) under 10s: Title card (2.1s)"
-      ],
-      "drift": {
-        "mean_abs_s": 22.4,
-        "worst_abs_s": 33.7,
-        "rows": [
-          {
-            "title": "Cold open",
-            "hand": "00:00",
-            "real": "0:00",
-            "drift_s": 0.0
-          },
-          {
-            "title": "Title card",
-            "hand": "00:24",
-            "real": "0:35",
-            "drift_s": 11.5
-          },
-          {
-            "title": "Historical Damascus steel was a crucible process, not a forge-welding process",
-            "hand": "00:26",
-            "real": "0:37",
-            "drift_s": 11.6
-          },
-          {
-            "title": "The visible pattern came from forging, not from the crucible",
-            "hand": "01:48",
-            "real": "2:12",
-            "drift_s": 24.8
-          },
-          {
-            "title": "Modern Damascus steel is pattern-welded, not crucible steel",
-            "hand": "03:10",
-            "real": "3:36",
-            "drift_s": 26.6
-          },
-          {
-            "title": "Producer POV",
-            "hand": "04:42",
-            "real": "5:06",
-            "drift_s": 24.6
-          },
-          {
-            "title": "The two materials have different properties and different failure modes",
-            "hand": "04:54",
-            "real": "5:21",
-            "drift_s": 28.0
-          },
-          {
-            "title": "Attempts to recreate wootz steel have succeeded only partially",
-            "hand": "06:18",
-            "real": "6:51",
-            "drift_s": 33.5
-          },
-          {
-            "title": "What to notice in the edit",
-            "hand": "07:52",
-            "real": "8:25",
-            "drift_s": 33.7
-          },
-          {
-            "title": "Evidence limit",
-            "hand": "08:42",
-            "real": "9:10",
-            "drift_s": 28.2
-          },
-          {
-            "title": "Closing",
-            "hand": "09:32",
-            "real": "9:56",
-            "drift_s": 24.1
-          }
-        ]
-      },
-      "ffprobe": {
-        "file": "renders/how-is-damascus-steel-made-final.mp4",
-        "video_s": 613.317,
-        "last_cue_end_s": 613.317,
-        "delta_s": 0.0,
-        "ok": true
-      },
-      "text_checks": {
-        "beats_json": {
-          "checked": 70,
-          "mismatched": []
-        },
-        "script_text": {
-          "checked": 70,
-          "absent_from_narration": [
-            58
-          ]
-        }
-      },
-      "script_chapters": {
-        "written": true,
-        "changed": true,
-        "removed_lines": [
-          "Title card"
-        ],
-        "chapters_not_in_script": []
-      },
-      "artifacts": [
-        "captions/how-is-damascus-steel-made.vtt",
-        "captions/how-is-damascus-steel-made.srt",
-        "captions/how-is-damascus-steel-made.chapters.txt"
+        "captions/what-is-a-semiconductor-made-of.vtt",
+        "captions/what-is-a-semiconductor-made-of.srt",
+        "captions/what-is-a-semiconductor-made-of.chapters.txt"
       ]
     }
   ]
