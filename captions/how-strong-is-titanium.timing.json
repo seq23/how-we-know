@@ -1,0 +1,120 @@
+{
+  "episode": "how-strong-is-titanium",
+  "beats": 84,
+  "plan_source": "plans/how-strong-is-titanium.json",
+  "timing": "audio",
+  "beats_measured": 84,
+  "duration_s": 701.808,
+  "cues": 177,
+  "chapters_real": 12,
+  "chapters_published": 12,
+  "chapter_notes": [],
+  "drift": {
+    "mean_abs_s": 31.0,
+    "worst_abs_s": 44.2,
+    "rows": [
+      {
+        "title": "Cold open",
+        "hand": "00:00",
+        "real": "0:00",
+        "drift_s": 0.0
+      },
+      {
+        "title": "Strength is not a single measurement",
+        "hand": "00:31",
+        "real": "0:37",
+        "drift_s": 6.1
+      },
+      {
+        "title": "The strength-to-weight advantage is the real story",
+        "hand": "01:32",
+        "real": "2:03",
+        "drift_s": 31.8
+      },
+      {
+        "title": "How tensile strength is actually measured",
+        "hand": "02:52",
+        "real": "3:26",
+        "drift_s": 34.7
+      },
+      {
+        "title": "Producer POV",
+        "hand": "04:08",
+        "real": "4:36",
+        "drift_s": 28.1
+      },
+      {
+        "title": "Yield strength matters more than ultimate strength in design",
+        "hand": "04:16",
+        "real": "4:49",
+        "drift_s": 33.5
+      },
+      {
+        "title": "Fatigue strength is the limit for cyclic loading",
+        "hand": "05:28",
+        "real": "6:08",
+        "drift_s": 40.2
+      },
+      {
+        "title": "Corrosion resistance changes the effective strength over time",
+        "hand": "06:52",
+        "real": "7:30",
+        "drift_s": 38.5
+      },
+      {
+        "title": "Temperature stability extends the usable strength range",
+        "hand": "08:08",
+        "real": "8:50",
+        "drift_s": 42.2
+      },
+      {
+        "title": "What to notice in the edit",
+        "hand": "09:16",
+        "real": "9:58",
+        "drift_s": 42.3
+      },
+      {
+        "title": "Evidence limit",
+        "hand": "10:04",
+        "real": "10:34",
+        "drift_s": 30.9
+      },
+      {
+        "title": "Closing",
+        "hand": "10:36",
+        "real": "11:20",
+        "drift_s": 44.2
+      }
+    ]
+  },
+  "ffprobe": {
+    "file": "renders/how-strong-is-titanium-final.mp4",
+    "video_s": 701.808,
+    "last_cue_end_s": 701.808,
+    "delta_s": 0.0,
+    "ok": true
+  },
+  "text_checks": {
+    "beats_json": {
+      "checked": 84,
+      "mismatched": []
+    },
+    "script_text": {
+      "checked": 84,
+      "absent_from_narration": []
+    }
+  },
+  "script_chapters": {
+    "written": true,
+    "changed": true,
+    "removed_lines": [
+      "Title card"
+    ],
+    "chapters_not_in_script": []
+  },
+  "artifacts": [
+    "captions/how-strong-is-titanium.vtt",
+    "captions/how-strong-is-titanium.srt",
+    "captions/how-strong-is-titanium.chapters.txt"
+  ]
+}
