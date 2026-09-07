@@ -1,0 +1,811 @@
+1
+00:00:00,000 --> 00:00:04,616
+Silicon accounts for more than ninety
+percent of semiconductor production by
+
+2
+00:00:04,616 --> 00:00:07,653
+volume, according to SEMI International
+Standards.
+
+3
+00:00:07,653 --> 00:00:12,134
+That figure tells you the industry's
+choice, not the physical requirement.
+
+4
+00:00:12,134 --> 00:00:15,040
+A semiconductor is not defined by being
+silicon.
+
+5
+00:00:15,040 --> 00:00:19,844
+It is defined by having an electrical
+conductivity you can control through
+
+6
+00:00:19,844 --> 00:00:22,960
+temperature, light, or deliberate
+contamination.
+
+7
+00:00:22,960 --> 00:00:27,798
+The material itself sits between conductor
+and insulator, and that middle ground is
+
+8
+00:00:27,798 --> 00:00:29,547
+where the engineering happens.
+
+9
+00:00:29,547 --> 00:00:31,451
+What is a semiconductor made of?
+
+10
+00:00:31,451 --> 00:00:34,721
+Pure silicon at room temperature is a poor
+conductor.
+
+11
+00:00:34,721 --> 00:00:39,040
+Every silicon atom bonds to four neighbors
+in a diamond cubic lattice.
+
+12
+00:00:39,040 --> 00:00:41,420
+Those bonds lock electrons in place.
+
+13
+00:00:41,420 --> 00:00:46,710
+Intrinsic silicon — the term for material
+with no intentional impurities — has a
+
+14
+00:00:46,710 --> 00:00:49,949
+conductivity millions of times lower than
+copper.
+
+15
+00:00:49,949 --> 00:00:51,578
+The crystal is symmetric.
+
+16
+00:00:51,578 --> 00:00:56,920
+Charge carriers exist only when thermal
+energy breaks a bond, creating an electron
+
+17
+00:00:56,920 --> 00:00:58,744
+and a hole in matched pairs.
+
+18
+00:00:58,744 --> 00:01:01,560
+That symmetry is the starting point, not
+the goal.
+
+19
+00:01:01,560 --> 00:01:03,869
+The engineering begins when you break it.
+
+20
+00:01:03,869 --> 00:01:09,292
+You make silicon useful by adding
+impurities at parts-per-million
+
+21
+00:01:09,292 --> 00:01:10,765
+This is called doping.
+
+22
+00:01:10,765 --> 00:01:15,734
+If you introduce phosphorus or arsenic —
+elements from group fifteen of the
+
+23
+00:01:15,734 --> 00:01:20,768
+periodic table — each atom brings five
+valence electrons into a lattice that
+
+24
+00:01:20,768 --> 00:01:21,629
+expects four.
+
+25
+00:01:21,629 --> 00:01:26,415
+The extra electron becomes a mobile
+negative charge carrier.
+
+26
+00:01:26,415 --> 00:01:28,568
+The material is now n-type.
+
+27
+00:01:28,568 --> 00:01:33,517
+If you introduce boron or gallium from
+group thirteen, each atom accepts an
+
+28
+00:01:33,517 --> 00:01:37,675
+electron to complete its bonds, leaving a
+mobile positive hole.
+
+29
+00:01:37,675 --> 00:01:41,897
+The material is p-type. The conductivity
+is no longer symmetric.
+
+30
+00:01:41,897 --> 00:01:47,374
+You have engineered an imbalance, and that
+imbalance is what transistors and diodes
+
+31
+00:01:47,374 --> 00:01:47,901
+exploit.
+
+32
+00:01:47,901 --> 00:01:49,271
+The ratio matters.
+
+33
+00:01:49,271 --> 00:01:54,901
+One dopant atom per million silicon atoms
+changes resistivity by orders of
+
+34
+00:01:54,901 --> 00:01:55,661
+magnitude.
+
+35
+00:01:55,661 --> 00:02:00,314
+Semiconductor-grade silicon begins with
+purity near one part per billion for
+
+36
+00:02:00,314 --> 00:02:03,987
+electrically active impurities, according
+to SEMI standards.
+
+37
+00:02:03,987 --> 00:02:09,155
+That level is measured by resistivity
+mapping and secondary ion mass
+
+38
+00:02:09,155 --> 00:02:14,290
+The Czochralski process grows single
+crystals from molten silicon in a quartz
+
+39
+00:02:14,290 --> 00:02:16,424
+crucible under inert atmosphere.
+
+40
+00:02:16,424 --> 00:02:21,350
+Oxygen from the crucible dissolves into
+the melt at parts-per-million levels.
+
+41
+00:02:21,350 --> 00:02:26,340
+Carbon, metals, and dopants from previous
+runs are removed by zone refining or
+
+42
+00:02:26,340 --> 00:02:29,219
+controlled segregation during
+solidification.
+
+43
+00:02:29,219 --> 00:02:31,655
+The purity target is not arbitrary.
+
+44
+00:02:31,655 --> 00:02:37,433
+A single unintended atom per billion can
+shift carrier concentration enough to ruin
+
+45
+00:02:37,433 --> 00:02:39,731
+a transistor's threshold voltage.
+
+46
+00:02:39,731 --> 00:02:44,661
+The measurement techniques have detection
+limits in the parts-per-trillion range for
+
+47
+00:02:44,661 --> 00:02:49,473
+some elements, but production monitoring
+operates at parts-per-billion sensitivity
+
+48
+00:02:49,473 --> 00:02:53,229
+because that is where electrical
+properties become reproducible.
+
+49
+00:02:53,229 --> 00:02:55,963
+Silicon is an elemental semiconductor.
+
+50
+00:02:55,963 --> 00:03:01,430
+Gallium arsenide, gallium nitride, indium
+phosphide, and silicon carbide are
+
+51
+00:03:01,430 --> 00:03:06,896
+compound semiconductors — crystals built
+from two elements in stoichiometric
+
+52
+00:03:06,896 --> 00:03:07,400
+ratios.
+
+53
+00:03:07,400 --> 00:03:12,333
+Gallium arsenide has a bandgap near one
+point four electronvolts compared to
+
+54
+00:03:12,333 --> 00:03:15,448
+silicon's one point one, according to NIST
+data.
+
+55
+00:03:15,448 --> 00:03:19,125
+Gallium nitride reaches three point four
+electronvolts.
+
+56
+00:03:19,125 --> 00:03:22,067
+Silicon carbide sits near three point
+three.
+
+57
+00:03:22,067 --> 00:03:26,683
+A wider bandgap allows operation at higher
+voltages and temperatures.
+
+58
+00:03:26,683 --> 00:03:31,700
+Gallium nitride transistors survive
+junction temperatures above two hundred
+
+59
+00:03:31,700 --> 00:03:32,771
+degrees Celsius.
+
+60
+00:03:32,771 --> 00:03:37,374
+Silicon carbide is used in power
+electronics for electric vehicles because
+
+61
+00:03:37,374 --> 00:03:42,102
+it switches faster and wastes less energy
+as heat than silicon at equivalent
+
+62
+00:03:42,102 --> 00:03:42,600
+ratings.
+
+63
+00:03:42,600 --> 00:03:44,986
+The bandgap is not adjustable after
+growth.
+
+64
+00:03:44,986 --> 00:03:47,427
+You choose the compound for the
+application.
+
+65
+00:03:47,427 --> 00:03:51,936
+The bandgap is the energy difference
+between the valence band, where electrons
+
+66
+00:03:51,936 --> 00:03:55,347
+are bound, and the conduction band, where
+they move freely.
+
+67
+00:03:55,347 --> 00:04:00,015
+A photon with energy greater than the
+bandgap can promote an electron across
+
+68
+00:04:00,015 --> 00:04:00,568
+that gap.
+
+69
+00:04:00,568 --> 00:04:05,362
+Silicon's one point one electronvolt
+bandgap corresponds to infrared light near
+
+70
+00:04:05,362 --> 00:04:07,485
+one thousand nanometers wavelength.
+
+71
+00:04:07,485 --> 00:04:13,148
+Gallium arsenide absorbs visible red.
+Gallium nitride absorbs blue and
+
+72
+00:04:13,148 --> 00:04:18,128
+This is why blue LEDs require gallium
+nitride or indium gallium nitride —
+
+73
+00:04:18,128 --> 00:04:22,563
+silicon's bandgap is too narrow to emit
+blue photons efficiently.
+
+74
+00:04:22,563 --> 00:04:27,505
+The material's composition sets the
+bandgap, and the bandgap sets the optical
+
+75
+00:04:27,505 --> 00:04:28,083
+response.
+
+76
+00:04:28,083 --> 00:04:32,963
+You cannot tune a silicon photodetector to
+see blue light. The physics forbids it.
+
+77
+00:04:32,963 --> 00:04:35,991
+A semiconductor is not just a chemical
+formula.
+
+78
+00:04:35,991 --> 00:04:38,440
+It is a crystal with long-range order.
+
+79
+00:04:38,440 --> 00:04:43,480
+Dislocations — line defects where the
+lattice is misaligned — trap charge
+
+80
+00:04:43,480 --> 00:04:45,827
+carriers and create leakage paths.
+
+81
+00:04:45,827 --> 00:04:50,341
+High-performance devices require
+dislocation densities below ten thousand
+
+82
+00:04:50,341 --> 00:04:54,856
+per square centimeter, measured by
+etch-pit counting or X-ray topography.
+
+83
+00:04:54,856 --> 00:04:58,280
+Grain boundaries between misoriented
+crystals are worse.
+
+84
+00:04:58,280 --> 00:05:02,867
+Polycrystalline silicon is used in solar
+cells where cost matters more than
+
+85
+00:05:02,867 --> 00:05:07,514
+efficiency, but microprocessors demand
+single-crystal wafers with controlled
+
+86
+00:05:07,514 --> 00:05:08,248
+orientation.
+
+87
+00:05:08,248 --> 00:05:13,597
+The crystal is grown, sliced, polished,
+and mapped for defects before any doping
+
+88
+00:05:13,597 --> 00:05:15,001
+or patterning begins.
+
+89
+00:05:15,001 --> 00:05:20,349
+A chemically perfect composition in a
+defective crystal is electrically useless.
+
+90
+00:05:20,349 --> 00:05:23,829
+'What is it made of' sounds like it wants
+one element.
+
+91
+00:05:23,829 --> 00:05:28,598
+Silicon is over ninety percent of
+production, but the defining property is
+
+92
+00:05:28,598 --> 00:05:32,528
+the impurity deliberately added to it, not
+the base material.
+
+93
+00:05:32,528 --> 00:05:35,621
+I answered the question underneath the
+question.
+
+94
+00:05:35,621 --> 00:05:41,387
+You are not limited to binary compounds.
+Indium gallium arsenide is a ternary
+
+95
+00:05:41,387 --> 00:05:47,219
+The composition is written as indium-x
+gallium-one-minus-x arsenide, where x
+
+96
+00:05:47,219 --> 00:05:49,061
+ranges from zero to one.
+
+97
+00:05:49,061 --> 00:05:52,406
+At x equals zero you have gallium
+arsenide.
+
+98
+00:05:52,406 --> 00:05:55,595
+At x equals one you have indium arsenide.
+
+99
+00:05:55,595 --> 00:06:01,117
+At intermediate values the bandgap varies
+smoothly between zero point four and one
+
+100
+00:06:01,117 --> 00:06:02,800
+point four electronvolts.
+
+101
+00:06:02,800 --> 00:06:07,420
+This lets you design a photodetector for a
+specific infrared wavelength by adjusting
+
+102
+00:06:07,420 --> 00:06:09,291
+the indium fraction during growth.
+
+103
+00:06:09,291 --> 00:06:12,857
+Aluminum gallium nitride works the same
+way for ultraviolet.
+
+104
+00:06:12,857 --> 00:06:17,552
+The lattice constant also changes with
+composition, which matters when you grow
+
+105
+00:06:17,552 --> 00:06:19,216
+one alloy on top of another.
+
+106
+00:06:19,216 --> 00:06:24,043
+Lattice mismatch creates strain and
+defects unless the layers are thin or the
+
+107
+00:06:24,043 --> 00:06:28,117
+mismatch is small. You are trading one
+parameter against another.
+
+108
+00:06:28,117 --> 00:06:30,525
+A transistor is not a bulk material.
+
+109
+00:06:30,525 --> 00:06:33,936
+It is a stack of layers with engineered
+interfaces.
+
+110
+00:06:33,936 --> 00:06:40,272
+A silicon MOSFET has a p-type or n-type
+channel, a silicon dioxide gate insulator,
+
+111
+00:06:40,272 --> 00:06:43,595
+and heavily doped source and drain
+regions.
+
+112
+00:06:43,595 --> 00:06:49,743
+The oxide is grown by thermal oxidation at
+nine hundred to eleven hundred degrees
+
+113
+00:06:49,743 --> 00:06:51,792
+Celsius in oxygen or steam.
+
+114
+00:06:51,792 --> 00:06:56,081
+The thickness is controlled to nanometers
+by time and temperature.
+
+115
+00:06:56,081 --> 00:07:01,541
+The interface between silicon and silicon
+dioxide has trap states — energy levels in
+
+116
+00:07:01,541 --> 00:07:06,870
+the bandgap caused by dangling bonds and
+impurities — that are reduced by hydrogen
+
+117
+00:07:06,870 --> 00:07:07,520
+annealing.
+
+118
+00:07:07,520 --> 00:07:12,261
+The carrier mobility in the channel
+depends on interface roughness and charge.
+
+119
+00:07:12,261 --> 00:07:14,974
+You are engineering boundaries, not bulk.
+
+120
+00:07:14,974 --> 00:07:18,944
+The device physics happens where one
+material meets another.
+
+121
+00:07:18,944 --> 00:07:23,604
+Every high-temperature step risks
+redistributing dopants you placed earlier.
+
+122
+00:07:23,604 --> 00:07:28,203
+Phosphorus and boron diffuse through
+silicon at rates that double every ten
+
+123
+00:07:28,203 --> 00:07:30,779
+degrees Celsius near one thousand degrees.
+
+124
+00:07:30,779 --> 00:07:35,903
+If you implant boron to form a shallow
+junction and then oxidize at eleven
+
+125
+00:07:35,903 --> 00:07:38,880
+hundred degrees, the boron profile
+spreads.
+
+126
+00:07:38,880 --> 00:07:43,863
+Process sequences are ordered by
+decreasing temperature to minimize this
+
+127
+00:07:43,863 --> 00:07:44,901
+redistribution.
+
+128
+00:07:44,901 --> 00:07:50,715
+The highest-temperature steps — oxidation,
+annealing, epitaxial growth — come first.
+
+129
+00:07:50,715 --> 00:07:54,248
+Lower-temperature metallization and
+passivation come last.
+
+130
+00:07:54,248 --> 00:07:59,061
+The thermal budget is the cumulative time
+at temperature the wafer experiences.
+
+131
+00:07:59,061 --> 00:08:02,564
+Exceeding it blurs the doping profiles you
+designed.
+
+132
+00:08:02,564 --> 00:08:05,461
+The composition you engineer is not
+static.
+
+133
+00:08:05,461 --> 00:08:08,560
+It evolves with every subsequent process
+step.
+
+134
+00:08:08,560 --> 00:08:13,938
+Metal impurities — iron, copper, nickel —
+diffuse through silicon at device
+
+135
+00:08:13,938 --> 00:08:15,659
+processing temperatures.
+
+136
+00:08:15,659 --> 00:08:21,120
+Even parts-per-trillion concentrations
+degrade transistor performance by creating
+
+137
+00:08:21,120 --> 00:08:24,155
+mid-gap states that increase leakage
+current.
+
+138
+00:08:24,155 --> 00:08:29,275
+Gettering is the deliberate introduction
+of defects or impurity sinks far from the
+
+139
+00:08:29,275 --> 00:08:32,523
+active device region, usually at the wafer
+backside.
+
+140
+00:08:32,523 --> 00:08:37,210
+Phosphorus-doped backside layers or
+mechanical damage create sites where
+
+141
+00:08:37,210 --> 00:08:39,749
+mobile metals preferentially segregate.
+
+142
+00:08:39,749 --> 00:08:43,611
+During high-temperature anneals,
+contaminants diffuse toward these
+
+143
+00:08:43,611 --> 00:08:45,835
+gettering sites and are trapped there.
+
+144
+00:08:45,835 --> 00:08:49,027
+The technique does not remove impurities
+from the wafer.
+
+145
+00:08:49,027 --> 00:08:52,048
+It moves them to a location where they do
+not matter.
+
+146
+00:08:52,048 --> 00:08:57,043
+The composition of the active region is
+protected by engineering the composition
+
+147
+00:08:57,043 --> 00:08:58,667
+of the sacrificial region.
+
+148
+00:08:58,667 --> 00:09:03,362
+The numbers in this script trace to
+measurement standards, not marketing.
+
+149
+00:09:03,362 --> 00:09:08,123
+SEMI International Standards publish
+semiconductor material specifications
+
+150
+00:09:08,123 --> 00:09:10,245
+including purity and resistivity.
+
+151
+00:09:10,245 --> 00:09:15,385
+NIST provides bandgap and lattice constant
+data for elemental and compound
+
+152
+00:09:15,385 --> 00:09:16,427
+semiconductors.
+
+153
+00:09:16,427 --> 00:09:21,122
+ASM International documents crystal growth
+and defect characterization methods.
+
+154
+00:09:21,122 --> 00:09:25,460
+When you see a figure for dislocation
+density or dopant concentration, it
+
+155
+00:09:25,460 --> 00:09:29,680
+reflects a measurement technique with
+known precision and known limits.
+
+156
+00:09:29,680 --> 00:09:33,570
+The composition of a semiconductor is not
+a single answer.
+
+157
+00:09:33,570 --> 00:09:39,070
+It is a controlled recipe with tolerances
+in the parts-per-million range, verified
+
+158
+00:09:39,070 --> 00:09:41,216
+by multiple independent methods.
+
+159
+00:09:41,216 --> 00:09:45,841
+The purity figures in this script
+represent production targets, not
+
+160
+00:09:45,841 --> 00:09:47,291
+thermodynamic limits.
+
+161
+00:09:47,291 --> 00:09:52,391
+Published ranges for background oxygen in
+Czochralski silicon span an order of
+
+162
+00:09:52,391 --> 00:09:55,072
+magnitude depending on growth conditions.
+
+163
+00:09:55,072 --> 00:10:00,687
+The exact impurity profile in a finished
+device is proprietary and varies by
+
+164
+00:10:00,687 --> 00:10:01,648
+manufacturer.
+
+165
+00:10:01,648 --> 00:10:06,593
+What is certain is the requirement:
+electrical properties must be reproducible
+
+166
+00:10:06,593 --> 00:10:11,728
+lot to lot, and that requires composition
+control far tighter than any other bulk
+
+167
+00:10:11,728 --> 00:10:16,419
+material industry. The measurement exists.
+The universal profile does not.
+
+168
+00:10:16,419 --> 00:10:21,757
+A semiconductor is made of elements chosen
+for their bandgap, doped with impurities
+
+169
+00:10:21,757 --> 00:10:26,966
+at parts-per-million levels to control
+carrier type, grown as a single crystal to
+
+170
+00:10:26,966 --> 00:10:32,304
+minimize defects, and stacked in layers to
+form interfaces where the device physics
+
+171
+00:10:32,304 --> 00:10:32,819
+happens.
+
+172
+00:10:32,819 --> 00:10:37,923
+The material is not the silicon. It is the
+controlled asymmetry inside it.
