@@ -1,0 +1,22 @@
+{
+  "stage": "cloud-upload",
+  "week": "2026-W37",
+  "at": "2026-09-07T15:27:00+00:00",
+  "code": "QUOTA_EXHAUSTED",
+  "message": "no quota left today for a whole video (1700 units). Already spent today by: captions 2400, localize 102. quota day 2026-09-07 (PT): spent 5902 of 10000, 3698 usable after 400 headroom; lanes: captions 2400, cloud-upload 3400, localize 102",
+  "detail": {
+    "pending": [
+      "how-strong-is-graphene"
+    ],
+    "resets_at": "2026-09-08T00:00:00-07:00"
+  },
+  "unblock": "Usually nothing to do \u2014 the allowance resets at midnight Pacific and this lane runs daily, so tomorrow's run picks up exactly where this one stopped. If the spending lane above is 'backfill', the Mac's launchd agent com.howweknow.backfill is still uploading the same library from the other side. Two lanes on one 10,000-unit allowance is the documented transition state, not a fault: unload the Mac agent once this lane has uploaded once, watched.",
+  "disposition": "self_resolving",
+  "disposition_why": "The YouTube allowance resets at midnight Pacific and every lane that raises this runs at least daily, so the work is deferred by a few hours, not lost. (run 1 of at most 3 before this escalates to a human.)",
+  "consecutive": 1,
+  "exit_code": 0,
+  "work_done_before_stop": [],
+  "notes": [
+    "shelf: r2://how-we-know-renders"
+  ]
+}
