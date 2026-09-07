@@ -1,8 +1,8 @@
 {
-  "state": "tripped",
-  "tripped_at": "2026-09-06T13:24:08+00:00",
-  "cause": "validator",
-  "detail": "V32 scheduled-pov=FAIL(3)",
+  "state": "closed",
+  "tripped_at": null,
+  "cause": null,
+  "detail": null,
   "history": [
     {
       "event": "trip",
@@ -69,6 +69,12 @@
       "at": "2026-09-06T13:24:08+00:00",
       "cause": "validator",
       "detail": "V32 scheduled-pov=FAIL(3)"
+    },
+    {
+      "event": "reset",
+      "at": "2026-09-07T14:28:34+00:00",
+      "cleared_cause": "validator",
+      "note": "V32 scheduled-pov: the owner read the three [HUMAN] lines for tempered-glass, titanium and damascus-steel on 2026-09-07 and approved them; they are recorded in pov/pov-assignments.json as hers. Cleared through breaker.reset() so the history entry is written the same way every other reset was."
     }
   ]
 }
