@@ -101,20 +101,20 @@ A semiconductor is made of elements chosen for their bandgap, doped with impurit
 
 ## Chapters
 
-- 00:00 Cold open
-- 00:24 Pure silicon conducts poorly until you break its symmetry
-- 01:12 Doping introduces the asymmetry devices require
-- 02:24 The purity requirement is extreme and measurable
-- 03:42 Compound semiconductors use two or more elements in fixed ratios
-- 04:54 The bandgap determines which photons the material absorbs
-- 06:00 Crystal structure and defect density matter as much as composition
-- 07:06 Alloys let you tune properties continuously between endpoints
-- 08:12 Interfaces between materials create the active device structures
-- 09:12 Thermal budgets constrain which processes can follow which
-- 09:54 Gettering removes mobile contaminants before they reach active regions
-- 10:18 What to notice in the edit
-- 10:48 Evidence limit
-- 11:06 Closing
+- 0:00 Cold open
+- 0:31 Pure silicon conducts poorly until you break its symmetry
+- 1:03 Doping introduces the asymmetry devices require
+- 1:55 The purity requirement is extreme and measurable
+- 2:53 Compound semiconductors use two or more elements in fixed ratios
+- 3:47 The bandgap determines which photons the material absorbs
+- 4:32 Crystal structure and defect density matter as much as composition
+- 5:35 Alloys let you tune properties continuously between endpoints
+- 6:28 Interfaces between materials create the active device structures
+- 7:18 Thermal budgets constrain which processes can follow which
+- 8:08 Gettering removes mobile contaminants before they reach active regions
+- 8:58 What to notice in the edit
+- 9:41 Evidence limit
+- 10:16 Closing
 
 ## Sources
 
