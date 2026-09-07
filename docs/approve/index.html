@@ -50,14 +50,14 @@ bank. This page is a notification. Drop a row only if you actively want it gone 
 the override window closes Tuesday 02:00, when rendering starts.</div>
 
 <div class="bar">
-  <span>breaker <b class="bad">tripped</b></span>
-  <span>validators <b class="bad">FAILED</b></span>
+  <span>breaker <b class="ok">closed</b></span>
+  <span>validators <b class="ok">passed</b></span>
   <span>gate refused <b>15</b> candidates</span>
   <span>authored <b>0</b></span>
   <span>cost <b>$0.000</b></span>
 </div>
 
-<div class="stop"><b>Circuit breaker tripped.</b> Publishing is halted. Drafting and rendering continue; nothing goes public until it is reset.</div>
+
 
 <form id="f">
 <div class="card">
@@ -122,7 +122,7 @@ the override window closes Tuesday 02:00, when rendering starts.</div>
 
 </div>
 <script>
-const DATA = {"week": "2026-W37", "generated": "2026-09-07T10:10:38+00:00", "items": [{"slug": "why-does-old-iron-not-rust"}, {"slug": "how-is-a-silicon-wafer-made"}, {"slug": "what-is-a-semiconductor-made-of"}, {"slug": "how-is-3d-printed-metal-made"}]};
+const DATA = {"week": "2026-W37", "generated": "2026-09-07T14:35:53+00:00", "items": [{"slug": "why-does-old-iron-not-rust"}, {"slug": "how-is-a-silicon-wafer-made"}, {"slug": "what-is-a-semiconductor-made-of"}, {"slug": "how-is-3d-printed-metal-made"}]};
 const REPO = "seq23/how-we-know";
 function selected(){
   return [...document.querySelectorAll("button.drop.on")].map(b => b.dataset.slug);

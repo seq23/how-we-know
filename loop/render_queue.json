@@ -1,8 +1,8 @@
 {
   "week": "2026-W37",
-  "generated": "2026-09-07T10:10:38+00:00",
+  "generated": "2026-09-07T14:35:53+00:00",
   "videos_per_week": 4,
-  "breaker": "tripped",
+  "breaker": "closed",
   "validators": [
     {
       "validator": "V1 directive-truth",
@@ -248,12 +248,8 @@
     {
       "validator": "V32 scheduled-pov",
       "examined": 22,
-      "status": "FAIL(3)",
-      "failures": [
-        "how-does-tempered-glass-shatter airs 2026-09-18 with a first-person Producer POV that traces to no line in pov/pov-bank.json - there is no entry for it in pov/pov-assignments.json. Its domain has had no POV interview, and config says tier-specific lines do not transfer.",
-        "how-strong-is-titanium airs 2026-09-21 with a first-person Producer POV that traces to no line in pov/pov-bank.json - there is no entry for it in pov/pov-assignments.json. Its domain has had no POV interview, and config says tier-specific lines do not transfer.",
-        "how-is-damascus-steel-made airs 2026-09-25 with a first-person Producer POV that traces to no line in pov/pov-bank.json - there is no entry for it in pov/pov-assignments.json. Its domain has had no POV interview, and config says tier-specific lines do not transfer."
-      ],
+      "status": "PASS",
+      "failures": [],
       "notes": [],
       "stops": []
     },
@@ -314,7 +310,7 @@
       "stops": []
     }
   ],
-  "validators_passed": false,
+  "validators_passed": true,
   "approval": {
     "required": false,
     "mode": "notified, not asked",
@@ -329,34 +325,34 @@
   "runway": {
     "unpublished_scripts": 16,
     "publishable": 12,
-    "scheduled_not_yet_aired": 21,
+    "scheduled_not_yet_aired": 20,
     "basis": "publish queue",
     "videos_per_week": 4,
-    "weeks_remaining": 8.2,
+    "weeks_remaining": 8.0,
     "warn_below_weeks": 4.0,
     "critical_below_weeks": 2.0,
-    "level": "critical",
+    "level": "ok",
     "by_domain": {
       "deep-sea-ocean-science": {
         "slots_per_week": 2,
         "queued": 0,
-        "weeks": 0.0,
-        "level": "critical",
-        "message": "deep-sea-ocean-science: 0.0 week(s) at 2/week (0 queued)"
+        "scheduled_ahead": 14,
+        "weeks": 7.0,
+        "level": "ok",
+        "message": "deep-sea-ocean-science: 7.0 week(s) at 2/week (0 queued, 14 already dated)"
       },
       "materials-and-manufacturing": {
         "slots_per_week": 2,
         "queued": 12,
-        "weeks": 6.0,
+        "scheduled_ahead": 6,
+        "weeks": 9.0,
         "level": "ok",
-        "message": "materials-and-manufacturing: 6.0 week(s) at 2/week (12 queued)"
+        "message": "materials-and-manufacturing: 9.0 week(s) at 2/week (12 queued, 6 already dated)"
       }
     },
-    "short_domains": [
-      "deep-sea-ocean-science"
-    ],
+    "short_domains": [],
     "never_go_dark": true,
-    "message": "RUNWAY CRITICAL: 8.2 weeks left at 4/week - 12 publishable episode(s). The channel goes dark within the month unless topics are added. By domain: deep-sea-ocean-science: 0.0 week(s) at 2/week (0 queued); materials-and-manufacturing: 6.0 week(s) at 2/week (12 queued)."
+    "message": "8.0 weeks of queue at 4/week (12 publishable of 16 on disk). By domain: deep-sea-ocean-science: 7.0 week(s) at 2/week (0 queued, 14 already dated); materials-and-manufacturing: 9.0 week(s) at 2/week (12 queued, 6 already dated)."
   },
   "authoring": {
     "generated_this_week": 0,
