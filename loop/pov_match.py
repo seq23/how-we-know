@@ -176,6 +176,163 @@ def hand_assignments() -> dict:
         return {a["video"]: a for a in json.load(fh)["assignments"]}
 
 
+# ------------------------------------------------- assignment integrity
+#
+# WHY THIS EXISTS. `select()` treats a hand assignment as authoritative and
+# returns it WITHOUT applying any of the rules it applies to every other line.
+# `score()` refuses to let a `tier: specific` line cross domains - that rule is
+# the whole reason the materials interview was needed - and a hand assignment
+# skipped it entirely, because it is checked before scoring rather than by it.
+#
+# CONFIRMED, commit 581feec (2026-09-07). The owner's three approved MATERIALS
+# lines were written into pov/pov-assignments.json under pov-102, pov-103 and
+# pov-104 — ids that in the bank are `tier: transferable` lines about being
+# wrong and about distrusting complexity, with COMPLETELY DIFFERENT TEXT. So
+# each row was wrong twice over:
+#
+#   tier: "specific"   the bank says transferable
+#   line: <her real materials words>   the bank's text for that id is other
+#                                      words entirely
+#
+# The second is the serious one. The words that went into the script and onto
+# YouTube traced to NOTHING: the id named one line and the row carried another,
+# which is the channel asserting she said something her bank does not record —
+# the exact thing pov/pov-assignments.json's "owner's own words only" exists to
+# prevent. Every presence check in the pipeline called those episodes traced.
+#
+# The single thing that caught it was one hardcoded end-to-end case in
+# loop/tests/test_pov_domains.py naming ONE slug (`how-strong-is-titanium`),
+# which noticed only because `select()` returns the BANK's tier and the case
+# asserted `tier == "specific"`. Had the same mistake been made on any of the
+# other twenty-eight rows, nothing anywhere would have said a word. The
+# follow-up commit re-pointed them at pov-139/140/141, so the instance is
+# closed and the hole is not.
+#
+# The cross-domain rule below is the same hole's other half: `score()` refuses
+# to let a tier:specific line cross domains, and a hand assignment skipped
+# scoring entirely, so nothing enforced it on the one path a human writes.
+#
+# THE HOLE IS NOT V32'S. It is that `pov/pov-assignments.json` is the one input
+# in this pipeline that is trusted absolutely and validated for nothing, while
+# four separate code paths read or write it:
+#
+#   select()            honours it, unchecked
+#   untraced_pov()      counts its mere presence as a trace
+#   record_assignment() appends to it
+#   validate.py V32     counts its mere presence as a trace
+#
+# So the rule lives HERE, once, and all four consult it. Fixing V32 alone is
+# the per-validator patch that has left this repo hitting the same wall four
+# times in eight days.
+
+# Each defect is a (code, human sentence) pair. The codes are stable so a stop
+# can name one; the sentences are what a person actually reads.
+DEFECT_CODES = (
+    "POV_ID_NOT_IN_BANK",
+    "TIER_DISAGREES_WITH_BANK",
+    "LINE_TEXT_DISAGREES_WITH_BANK",
+    "SPECIFIC_LINE_WRONG_DOMAIN",
+    "POV_ID_REUSED",
+)
+
+
+def _domain_of(slug: str):
+    try:
+        import domains as _dom                              # noqa: PLC0415
+        return _dom.domain_of_slug(slug)
+    except Exception:                       # noqa: BLE001 - never break a match
+        return None
+
+
+def assignment_defects(rows=None, slugs=None) -> list[dict]:
+    """Every way an entry in pov/pov-assignments.json can be wrong.
+
+    Returns a list of {video, pov_id, code, why}. Empty means the file says
+    only things the bank agrees with.
+
+    `rows` lets a guard hand in a doctored file without writing one to disk.
+    `slugs`, when given, narrows the report to those videos - the reuse check
+    still looks at the WHOLE file, because reuse is a property of the file and
+    not of any one row.
+
+    NOT A STYLE CHECK. Every rule here is one the automatic path already
+    enforces on itself, or one the file states in its own `rule` field:
+
+      * the line must EXIST in the bank. `select()` silently ignores a hand
+        assignment naming an unknown id and matches automatically instead, so
+        the file claims one line and the script carries another.
+      * the recorded `tier` and `line` must be the bank's. The file duplicates
+        both, and two copies of a fact with nothing joining them is this
+        repo's named recurring defect. A drifted `line` is the channel
+        asserting she said words her bank does not record.
+      * a `tier: specific` line fits only its own domain. This is `score()`'s
+        rule, applied to the path that skips `score()`.
+      * `pov/pov-assignments.json` states its own rule in its own header:
+        "one POV per video, no reuse".
+    """
+    if rows is None:
+        rows = read_json(ASSIGNMENTS)["assignments"] if ASSIGNMENTS.exists() \
+            else []
+    lines = {l["id"]: l for l in bank()}
+    seen: dict = {}
+    out = []
+    for a in rows:
+        video, pid = a.get("video"), a.get("pov_id")
+        seen.setdefault(pid, []).append(video)
+    for a in rows:
+        video, pid = a.get("video"), a.get("pov_id")
+        if slugs is not None and video not in set(slugs):
+            continue
+
+        def add(code, why):
+            out.append({"video": video, "pov_id": pid,
+                        "code": code, "why": why})
+
+        line = lines.get(pid)
+        if line is None:
+            add("POV_ID_NOT_IN_BANK",
+                f"{video} is assigned {pid!r}, which is not in "
+                f"pov/pov-bank.json. select() cannot honour it, so it "
+                f"silently matches a DIFFERENT line automatically and the "
+                f"script carries words this file does not name.")
+            continue
+        if a.get("tier") and a["tier"] != line["tier"]:
+            add("TIER_DISAGREES_WITH_BANK",
+                f"{video} records {pid} as tier {a['tier']!r}; the bank says "
+                f"{line['tier']!r}. Two copies of one fact, and the domain "
+                f"rule below is decided by the tier.")
+        if a.get("line") and a["line"].strip() != line["line"].strip():
+            add("LINE_TEXT_DISAGREES_WITH_BANK",
+                f"{video} records text for {pid} that is not the bank's text "
+                f"for {pid}. The bank is her approved voice; a copy that has "
+                f"drifted is the channel asserting she said something no "
+                f"interview records.")
+        if line["tier"] == "specific":
+            dom = _domain_of(video)
+            if dom and line_domain(line) != dom:
+                add("SPECIFIC_LINE_WRONG_DOMAIN",
+                    f"{video} is a {dom} episode assigned {pid}, a "
+                    f"tier:specific line from {line_domain(line)}. "
+                    f"score() gives that pairing 0.0 and would never make "
+                    f"it; a hand assignment skips score(), so it is the only "
+                    f"way this can happen.")
+        others = [v for v in seen.get(pid, []) if v != video]
+        if others:
+            add("POV_ID_REUSED",
+                f"{pid} is assigned to {video} and also to "
+                f"{', '.join(sorted(others))}. pov/pov-assignments.json's own "
+                f"header states the rule: \"one POV per video, no reuse\".")
+    return out
+
+
+def defective_assignments(slugs=None) -> dict:
+    """video -> the defects against it. The form the callers actually want."""
+    out: dict = {}
+    for d in assignment_defects(slugs=slugs):
+        out.setdefault(d["video"], []).append(d)
+    return out
+
+
 def untraced_pov(slugs) -> list[str]:
     """Of `slugs`, those whose script has a [HUMAN] beat with no assignment.
 
@@ -201,8 +358,24 @@ def untraced_pov(slugs) -> list[str]:
 
     This is the same check, one step earlier, where refusing is still free.
     """
-    assigned = set(hand_assignments())
-    out = []
+    return sorted(untraced_reasons(slugs))
+
+
+def untraced_reasons(slugs) -> dict:
+    """slug -> WHY its [HUMAN] beat does not trace to the owner's bank.
+
+    Split out from `untraced_pov()` so the upload lane can print the actual
+    reason. "No entry in pov/pov-assignments.json" was the only reason there
+    was until an entry could be WRONG as well as absent, and a refusal that
+    misnames its cause sends someone to add a row that is already there.
+    """
+    assigned = hand_assignments()
+    # AN ENTRY THAT IS WRONG IS NOT AN ENTRY. Presence used to be the whole
+    # test, so a row naming a deep-sea line for a titanium episode counted as
+    # a trace - commit 581feec. The gate and V32 now ask the same, stronger
+    # question, from the same predicate, so they cannot drift apart again.
+    defective = defective_assignments(slugs)
+    out = {}
     for slug in slugs:
         script = ROOT / "scripts" / f"{slug}.md"
         if not script.exists():
@@ -210,7 +383,11 @@ def untraced_pov(slugs) -> list[str]:
         if "[HUMAN]" not in script.read_text():
             continue                      # no POV beat is a different rule
         if slug not in assigned:
-            out.append(slug)
+            out[slug] = ("its [HUMAN] Producer POV has no entry in "
+                         "pov/pov-assignments.json")
+        elif slug in defective:
+            out[slug] = "; ".join(f"[{d['code']}] {d['why']}"
+                                  for d in defective[slug])
     return out
 
 
@@ -280,6 +457,20 @@ def select(slug: str, subject: str, used_ids: list[str] | None = None,
 
     hand = hand_assignments().get(slug)
     lines = {l["id"]: l for l in bank()}
+
+    # A HAND ASSIGNMENT IS AUTHORITATIVE, NOT EXEMPT. It skips score(), which
+    # is where the domain rule lives, so the same rule is applied here instead.
+    # Raising is the bank's own rule ("never invent a line") applied to the
+    # honest alternative: silently ignoring her recorded choice and matching a
+    # different line, while pov/pov-assignments.json goes on naming the first.
+    # loop/draft.py and loop/rank.py both turn this into a NAMED STOP.
+    if hand:
+        bad = assignment_defects(rows=[hand])
+        if bad:
+            raise NoPovMatch(
+                f"pov/pov-assignments.json assigns {slug!r} a line this repo "
+                f"cannot honour: "
+                + "; ".join(f"[{d['code']}] {d['why']}" for d in bad))
 
     if hand and hand["pov_id"] in lines and hand["pov_id"] not in recent:
         l = lines[hand["pov_id"]]
@@ -387,7 +578,7 @@ def record_assignment(slug: str, pov: dict, *, source: str = "matched by author"
     if any(a["video"] == slug for a in rows):
         return False
 
-    rows.append({
+    row = {
         "video": slug,
         "pov_id": pov["pov_id"],
         "tier": pov.get("tier", "transferable"),
@@ -396,7 +587,17 @@ def record_assignment(slug: str, pov: dict, *, source: str = "matched by author"
         # author borrowed; both are hers, and they are not the same act.
         "source": source,
         "line": pov["line"],
-    })
+    }
+    # REFUSE TO WRITE THE DEFECT IN THE FIRST PLACE. This is the only
+    # automatic writer of the file, so a rule enforced only on READ would let
+    # the loop manufacture the very row every reader then has to reject. The
+    # reuse check needs the rows already on file, hence rows + [row].
+    bad = assignment_defects(rows=rows + [row], slugs=[slug])
+    if bad:
+        print(f"  REFUSE to record {slug}: "
+              + "; ".join(f"[{d['code']}] {d['why']}" for d in bad))
+        return False
+    rows.append(row)
     doc["generated"] = _dt.datetime.now(_dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     write_json(ASSIGNMENTS, doc)
     return True
