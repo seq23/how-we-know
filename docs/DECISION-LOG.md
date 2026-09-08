@@ -290,3 +290,93 @@ each. Summarized here for the log: the one item this branch could not close
 in code is `OPENROUTER_API_KEY` as a repo secret (confirmed absent via `gh
 secret list`) — the owner holds the one key with money and a second must
 never be created.
+
+---
+
+## 2026-09-08 — a named stop may no longer arrive as a red build
+
+**What happened.** Run 34236877023 (`loop · daily 09:00 CT · upload from R2`)
+exited 3 at 09:13 CT with `CAPTIONS_NOT_READY`, refusing `how-strong-is-graphene`
+and instructing the owner to open a laptop and run `python
+visuals/captions.py <slug>`. Her instruction in response: *"you need to fix the
+how-we-know repo — I should never get a named stop — everything should be
+automated. it should self heal."*
+
+**The refusal was correct and was kept.** An episode uploaded with no `.srt` can
+never be captioned afterwards — `captions.insert` needs a file — so V16 would be
+red for that video forever. Nothing here was fixed by uploading uncaptioned
+video or by listing the code in `loop/stop_policy.json` so it goes quiet.
+
+**Root cause, CONFIRMED, and it was not a missing capability.**
+`bin/batch-session.sh` narrates, renders, thumbnails, validates and pushes to
+R2, and never runs `visuals/captions.py` — that lived in a separate manual
+command, `bin/make-captions.sh`. Every episode after the original sixteen
+reached the R2 shelf uncaptioned, and the upload gate refused it forever. A
+missing wire between two stages that both already existed.
+
+**The route not taken, and why.** The shelved render does carry the narration
+(`ffprobe` on `renders/how-strong-is-graphene-final.mp4`: one aac mono 48 kHz
+stream), so transcribing it in CI was possible. It was rejected: the cue TEXT
+is not unknown — it is `plan[i]["narration"]`, committed and cross-checked
+against the script's own `## Narration` block — and ASR would replace
+known-exact text with a guess on a channel whose first rule is that nothing on
+screen is unsourced. The only datum that ever lived exclusively on the voicing
+Mac was per-beat TIMING: a few dozen floats.
+
+**What was built instead.** `visuals/captions.py` records each measured wav
+duration into `audio/<slug>/beats.json`, which git already tracks
+(`.gitignore` excludes `audio/**/*.wav` and nothing else). The caption track is
+now a pure function of the repository, and `loop/captions_build.py` rebuilds it
+anywhere. Measured: all 33 narrated episodes rebuild **byte-identically** with
+no wav present.
+
+One correction during the work, recorded because it would otherwise look like a
+rounding nicety: the durations were first stored to six decimal places, and
+`what-is-carbon-fiber-made-of` then rebuilt DIFFERENTLY from the wav-built
+track. An SRT timestamp is rounded to the millisecond, and a beat boundary
+sitting on a millisecond edge moved across it. Full precision, not rounded.
+
+**The third disposition.** Walking all 97 stop codes the repo can raise gave
+three answers, not two. `self_resolving` (nobody acts) and `needs_human` (a
+defect) already existed; `owner_action` is new. A revoked consent or a
+YouTube-side account flag cannot self-heal and cannot be retried away, and
+failing the job every day until she gets to it pages her for something she
+cannot clear any faster for having been paged. Those exit 0, are written to the
+owner-action file, and print at the TOP of the Sunday digest — and escalate to
+red if they outlive their cap, which is what stops "green" from meaning
+"ignored".
+
+**Verified:** `loop/tests/test_every_stop_is_classified.py` reports
+`examined 97 stop codes: 23 self-resolving, 16 owner-action, 62 needs-a-human`
+and hard-fails when a code raised in the source appears in none of them.
+
+**Also found by walking the stops, each a live defect:**
+
+* the circuit breaker had a trip path and **no reset path**. It now re-tests its
+  own cause at the top of every guarded lane; `loop/measure.py` clears a
+  retention or domain trip the moment its own `breaker_cause()` stops returning
+  one. A strike and a manual trip never auto-reset, and a check that cannot run
+  fails closed.
+* one tripped breaker guarded four lanes and produced four red jobs a day. The
+  first stage to stop owns the alarm; the rest name it and stay green. All four
+  still halt.
+* `breaker.trip("domain", …)` raised `SystemExit: unknown cause 'domain'` —
+  "domain" was never in `CAUSES`. A live crash on the path that protects the
+  channel from a failing niche, unreachable until materials went live.
+* a rendered episode with no thumbnail was **invisible** to the upload lane, not
+  blocked by it; five materials episodes were in that state.
+* `visuals/thumbs_materials.py` refused to produce anything when it could not
+  resolve exactly one verified public-domain image, even though its own
+  typographic route B needs no image at all.
+* nothing in the repo ever wrote `pov/pov-assignments.json`, so **every episode
+  authored after 2026-08-30 arrived with an untraced `[HUMAN]` beat by
+  construction** and could never be uploaded. `loop/pov_repair.py` swaps the
+  model-written sentence for a real line from her bank (matching, which the POV
+  module already does unattended) and records it. It never adds a line TO the
+  bank: that is an approval and approvals are hers.
+
+**What still cannot self-heal, and is now green rather than red:** an expired or
+revoked YouTube consent, a missing `youtube.force-ssl` scope, a
+channel-level `UPLOADS_LOCKED_PRIVATE` flag, an absent or unfunded model or R2
+credential, and the one-off `gh workflow run` that arms a new lane. Sixteen
+codes in total, all listed under `owner_action` in `loop/stop_policy.json`.

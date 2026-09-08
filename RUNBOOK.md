@@ -5,7 +5,7 @@ How We Know, and nothing else. Reference detail lives in
 [`docs/OPERATING-MANUAL.md`](docs/OPERATING-MANUAL.md); the locked strategy lives
 in [`docs/CHANNEL-PLAN.md`](docs/CHANNEL-PLAN.md).
 
-Last true: 2026-09-03.
+Last true: 2026-09-08.
 
 ---
 
@@ -75,6 +75,52 @@ If you ever spot a bad one, that is the only manual lever:
 
 That keeps it off the channel permanently. Nothing needs approving for Shorts to
 publish — the veto is the exception, not the workflow.
+
+---
+
+## You should never get a "named stop" email again
+
+Changed 2026-09-08, on your instruction. A named stop used to arrive as a **red
+build in your inbox**, whatever it was about. Some of those were worth sending
+and most were not — the worst one asked you to open the laptop and type a
+command to produce a file the server was already holding every ingredient for.
+
+Every halt this system can take has now been walked and given one of three
+answers.
+
+| | What happens | You see |
+|---|---|---|
+| **It can fix itself** | It does, and the lane carries on | nothing |
+| **Only you can fix it** | The run stays **green** | one line at the top of the Sunday email, under **⚠️ Waiting on you** |
+| **Something is actually broken** | The run goes red | an email, as before |
+
+Two things follow from that and both are deliberate:
+
+- **A green run is not a silent run.** Anything waiting on you is written down
+  and repeated in every Sunday digest until it is cleared.
+- **It goes red eventually anyway.** If a "waiting on you" item is still there
+  after a few runs — five days for a credential, three for a locked channel —
+  it stops being an errand and becomes a stall, and then it does email you.
+
+**What is genuinely yours, and nothing else is:** a YouTube consent that has
+expired or been revoked, a channel-level flag from YouTube itself, an API key
+with no credit, and the one-off `gh workflow run` that arms a brand-new lane.
+That is the whole list.
+
+### What now fixes itself, that did not before
+
+- **Captions.** Every episode's subtitle file is built automatically, in the
+  cloud, from what is already in the repository — no laptop involved. The
+  batch you run also builds them for anything it narrates, in the same pass.
+- **Thumbnails.** A finished episode without one used to be invisible to the
+  uploader forever. Any render missing a thumbnail now gets one.
+- **The producer POV beat.** Where a script's first-person line was written by
+  the model rather than taken from your own interviews, it is swapped for a
+  real line from your bank and the episode is rebuilt. Nothing is ever added to
+  that bank without you — matching is automatic, approving is not.
+- **The circuit breaker.** It re-tests its own cause and closes as soon as the
+  cause has passed. It also stops reporting one problem four times.
+- **A corrupted internal file.** Restored from the last good copy, silently.
 
 ---
 
