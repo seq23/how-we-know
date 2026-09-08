@@ -80,6 +80,9 @@ SUPERSEDED_INDEX = STATE / "superseded_renders.json"
 
 HUMAN = "[HUMAN]"
 
+# See ranked_lines(): below this a match is one incidental word, not a subject.
+SCORE_FLOOR = 2.0
+
 
 def human_beat(slug: str) -> tuple[str, str] | None:
     """(the whole paragraph, the sentence after the marker), or None."""
@@ -144,8 +147,42 @@ def ranked_lines(slug: str, subject: str, domain, used):
         if l["id"] in recent:
             continue
         sc = pov_match.score(l, subject, domain)
-        if sc > 0:
-            ranked.append((sc, l))
+        # A FLOOR, not just "greater than zero".
+        #
+        # score() returns a weak positive for a single incidental vocabulary
+        # hit, and a weak positive is how "Octopuses impress me. So much of
+        # their nervous system runs through their arms" scored 1.0 for
+        # why-does-old-iron-not-rust -- on the word "adapt" -- and was picked.
+        # It is a real line of hers and it is `tier: transferable`, so nothing
+        # below this point would have rejected it; the episode would simply
+        # have aired a deep-sea aside in the middle of a rust explanation.
+        #
+        # 2.0 is the level every other repair on 2026-09-08 reached
+        # unassisted, so it is the observed floor for a match that is about
+        # the subject rather than about one word in it. Below it, the bank's
+        # own transferable fallback answers instead, and if that cannot, the
+        # episode keeps its named stop. Refusing is the correct outcome for an
+        # episode no line fits.
+        if sc < SCORE_FLOOR:
+            continue
+        # AND IT MUST BE ENTITLED TO SPEAK FOR THIS DOMAIN.
+        #
+        # score() already zeroes a `tier: specific` line outside its own
+        # domain, so anything specific that survives belongs here. A
+        # `transferable` line is a different case: the bank's tiering makes it
+        # domain-free, but only the tags in pov_match.FALLBACK_TAGS -- evidence,
+        # uncertainty, instruments, thesis, numbers, trust, confidence,
+        # unknown -- are actually about METHOD. The rest are subject tags, and
+        # a subject-tagged transferable line carries its subject with it:
+        # "Octopuses impress me. So much of their nervous system runs through
+        # their arms" is tagged `adaptation`, scored 2.0 for
+        # why-does-old-iron-not-rust on the word "adapt", and would have aired
+        # a deep-sea aside in the middle of a rust explanation. Nothing else
+        # would have caught it, because the line is genuinely hers and
+        # genuinely transferable by tier.
+        if l["tier"] == "transferable" and l["tag"] not in pov_match.FALLBACK_TAGS:
+            continue
+        ranked.append((sc, l))
     ranked.sort(key=lambda t: (-t[0], t[1]["id"]))
     out = [{"pov_id": l["id"], "line": l["line"], "tag": l["tag"],
             "tier": l["tier"], "source_answer": l.get("source_answer"),
