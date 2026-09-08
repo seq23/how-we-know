@@ -54,7 +54,7 @@ The exact tempering temperature depends on the application. Cutting tools are te
 
 ### Producer POV
 
-[HUMAN] I wrote the dislocation-pinning explanation like it covered every steel everywhere. It covers carbon steel at room temperature. High heat and high-carbon steels behave differently, and generalizing past that would have been the easy, wrong move.
+[HUMAN] I almost opened on the moment of impact, because that's the dramatic beat. But impact doesn't decide the fracture pattern — the cooling process already did, weeks earlier. I moved the real event to where it actually happens.
 
 ### Alloying elements shift the curve but not the mechanism
 

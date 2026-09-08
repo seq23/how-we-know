@@ -298,9 +298,38 @@ def run(args, plans, total_beats) -> int:
         # is deterministic (verified byte-identical to plans/*.json apart from
         # JSON tuple->list), but assembly indexes audio by plan position, so the
         # plan that produced the audio is worth keeping next to it.
-        (AUDIO / slug / "beats.json").write_text(json.dumps(
-            [{"i": i, "segment": b["segment"], "narration": b["narration"]}
-             for i, b in enumerate(plan)], indent=1))
+        # PRESERVE THE MEASURED DURATIONS. This wrote the manifest fresh from
+        # the plan every run, which silently deleted the `seconds` field that
+        # visuals/captions.py records and loop/captions_build.py depends on --
+        # CONFIRMED 2026-09-08: one batch stripped the timings from all 35
+        # episodes at once, and nothing would have reported it, because a
+        # caption track is only missed at the moment an episode is uploaded,
+        # weeks later. audio/<slug>/beats.json is the ONE file in audio/ that
+        # git tracks and it is now load-bearing for the cloud: without those
+        # numbers the caption track can only be built on this Mac again.
+        #
+        # A duration is kept only when the wav it measured is still on disk and
+        # the words are unchanged. A rewritten beat (loop/pov_repair.py does
+        # exactly that) drops its duration, because the old measurement belongs
+        # to words nobody will say again.
+        mf = AUDIO / slug / "beats.json"
+        keep = {}
+        if mf.exists():
+            try:
+                for r in json.loads(mf.read_text()):
+                    if isinstance(r, dict) and "seconds" in r:
+                        keep[int(r["i"])] = (r.get("narration"), r["seconds"])
+            except (ValueError, KeyError, TypeError):
+                keep = {}
+        rows = []
+        for i, b in enumerate(plan):
+            row = {"i": i, "segment": b["segment"], "narration": b["narration"]}
+            was = keep.get(i)
+            if (was and was[0] == b["narration"]
+                    and (AUDIO / slug / f"{i:04d}.wav").exists()):
+                row["seconds"] = was[1]
+            rows.append(row)
+        mf.write_text(json.dumps(rows, indent=1))
         for i, b in enumerate(plan):
             if not inspect(AUDIO / slug / f"{i:04d}.wav")[0]:
                 todo.append((slug, i, b["narration"]))

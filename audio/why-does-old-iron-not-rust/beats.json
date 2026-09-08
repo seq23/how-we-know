@@ -380,19 +380,119 @@
   {
     "i": 63,
     "segment": "text_beat",
-    "narration": "Old iron rusts unless conditions prevent it. The survivors are not indestructible; they are lucky.",
+    "narration": "Iron is not a uniform solid. Under a microscope, it reveals a polycrystalline structure: millions of tiny grains, each a single crystal, separated by grain boundaries where atoms are less orderly.",
     "seconds": 6.736
   },
   {
     "i": 64,
     "segment": "text_beat",
-    "narration": "They were buried in the right soil, made from the right ore, or shaped in a way that happened to favor a dense oxide crust.",
+    "narration": "These boundaries are more reactive than the grain interiors. Corrosion preferentially attacks grain boundaries because the atomic disorder there makes it easier for oxygen and water to break metallic bonds.",
     "seconds": 7.365333333333333
   },
   {
     "i": 65,
     "segment": "ambient_drift",
-    "narration": "The rest became red powder centuries ago. Preservation is the exception, and the exception is always conditional.",
+    "narration": "NIST metallography studies show that fine-grained iron, with more boundary area per unit volume, can corrode faster than coarse-grained iron under identical conditions.",
     "seconds": 8.082666666666666
+  },
+  {
+    "i": 66,
+    "segment": "text_beat",
+    "narration": "Ancient bloomery iron often has large, irregular grains because it was worked at lower temperatures than modern steel.",
+    "seconds": 6.96
+  },
+  {
+    "i": 67,
+    "segment": "text_beat",
+    "narration": "Fewer grain boundaries mean fewer initiation sites for rust. The effect is measurable but not dominant.",
+    "seconds": 6.512
+  },
+  {
+    "i": 68,
+    "segment": "ambient_drift",
+    "narration": "A fine-grained iron object in a protective environment will still outlast a coarse-grained one in aggressive soil.",
+    "seconds": 6.981333333333334
+  },
+  {
+    "i": 69,
+    "segment": "stat_card",
+    "narration": "Iron artifacts excavated from marine sites or salt-rich desert soils often contain chloride ions absorbed into corrosion products during burial.",
+    "seconds": 9.605333333333334
+  },
+  {
+    "i": 70,
+    "segment": "text_beat",
+    "narration": "Even after the surface appears dry, chloride remains trapped in pores and cracks.",
+    "seconds": 5.1466666666666665
+  },
+  {
+    "i": 71,
+    "segment": "stat_card",
+    "narration": "In humid air, these ions draw moisture and form concentrated brine droplets that corrode the metal far faster than pure water would.",
+    "seconds": 9.061333333333334
+  },
+  {
+    "i": 72,
+    "segment": "text_beat",
+    "narration": "NIST corrosion data identifies one hundred parts per million chloride as the threshold above which iron in humid air will corrode actively.",
+    "seconds": 8.517333333333333
+  },
+  {
+    "i": 73,
+    "segment": "stat_card",
+    "narration": "Removing chloride requires prolonged soaking in deionized water or electrolytic reduction, processes that can take months.",
+    "seconds": 7.354666666666667
+  },
+  {
+    "i": 74,
+    "segment": "text_beat",
+    "narration": "The British Museum's conservation protocols specify repeated rinses until chloride concentration in the rinse water drops below ten parts per million.",
+    "seconds": 9.52
+  },
+  {
+    "i": 75,
+    "segment": "stat_card",
+    "narration": "Without this treatment, an artifact stable for centuries underground can disintegrate within a decade of display.",
+    "seconds": 7.024
+  },
+  {
+    "i": 76,
+    "segment": "contrast_pair",
+    "narration": "Bloomery smelting, the dominant iron production method until the fourteenth century in Europe, produces a spongy mass called a bloom."
+  },
+  {
+    "i": 77,
+    "segment": "text_beat",
+    "narration": "The bloom is a mixture of metallic iron, iron oxide, and silicate slag."
+  },
+  {
+    "i": 78,
+    "segment": "contrast_pair",
+    "narration": "Repeated heating and hammering consolidates the metal and expels some slag, but significant inclusions remain."
+  },
+  {
+    "i": 79,
+    "segment": "text_beat",
+    "narration": "These slag stringers are glassy, chemically stable, and do not corrode. In heavily corroded artifacts, the slag network can preserve the object's shape even after the iron has oxidized completely."
+  },
+  {
+    "i": 80,
+    "segment": "contrast_pair",
+    "narration": "Archaeological reports describe \"pseudomorphs\" where the original iron is gone but the slag skeleton remains, sometimes still holding the form of a blade or tool. The artifact has not survived; its scaffolding has."
+  },
+  {
+    "i": 81,
+    "segment": "text_beat",
+    "narration": "Old iron rusts unless conditions prevent it. The survivors are not indestructible; they are lucky."
+  },
+  {
+    "i": 82,
+    "segment": "text_beat",
+    "narration": "They were buried in the right soil, made from the right ore, or shaped in a way that happened to favor a dense oxide crust."
+  },
+  {
+    "i": 83,
+    "segment": "ambient_drift",
+    "narration": "The rest became red powder centuries ago. Preservation is the exception, and the exception is always conditional."
   }
 ]

@@ -308,49 +308,43 @@
   {
     "i": 51,
     "segment": "text_beat",
-    "narration": "Split the screen into FILMED and CAUGHT.",
+    "narration": "Watch the screen split into FILMED and CAUGHT.",
     "seconds": 2.48
   },
   {
     "i": 52,
     "segment": "checklist_reveal",
-    "narration": "Keep the depth, trench, and evidence type visible. Then show the proposed physiological boundary around 8,200\u20138,400 meters as a shaded range, not a brick wall.",
+    "narration": "The depth, the trench, and the evidence type all stay visible throughout, and the proposed physiological boundary around 8,200-8,400 meters shows up as a shaded range, not a brick wall. Read it as a record audit, not a countdown.",
     "seconds": 11.728
   },
   {
     "i": 53,
-    "segment": "text_beat",
-    "narration": "This turns the episode into a record audit rather than a simple countdown.",
+    "segment": "timeline",
+    "narration": "The 8,336-meter animal was probably a known snailfish or a new endemic species because no physical specimen was taken.",
     "seconds": 4.378666666666667
   },
   {
     "i": 54,
-    "segment": "timeline",
-    "narration": "The 8,336-meter animal was probably a known snailfish or a new endemic species because no physical specimen was taken.",
+    "segment": "text_beat",
+    "narration": "A 1970 cusk-eel trawl reached deeper, but NOAA notes uncertainty about where in the trawl path the fish was caught.",
     "seconds": 9.264
   },
   {
     "i": 55,
-    "segment": "text_beat",
-    "narration": "A 1970 cusk-eel trawl reached deeper, but NOAA notes uncertainty about where in the trawl path the fish was caught.",
+    "segment": "timeline",
+    "narration": "Research suggests a fish depth boundary around 8,200\u20138,400 meters, but a future observation could refine the range.",
     "seconds": 7.642666666666667
   },
   {
     "i": 56,
-    "segment": "timeline",
-    "narration": "Research suggests a fish depth boundary around 8,200\u20138,400 meters, but a future observation could refine the range.",
+    "segment": "depth_descent",
+    "narration": "The deepest-fish record is not one number. It is a chain of evidence: depth, camera, specimen, trench, and identification.",
     "seconds": 7.930666666666666
   },
   {
     "i": 57,
-    "segment": "depth_descent",
-    "narration": "The deepest-fish record is not one number. It is a chain of evidence: depth, camera, specimen, trench, and identification.",
-    "seconds": 8.4
-  },
-  {
-    "i": 58,
     "segment": "text_beat",
     "narration": "Keeping those pieces separate makes the record more credible\u2014and makes the remaining kilometer to Challenger Deep even more biologically interesting.",
-    "seconds": 8.037333333333333
+    "seconds": 8.4
   }
 ]
