@@ -63,7 +63,8 @@ import batch_queue                                  # noqa: E402
 import domains                                      # noqa: E402
 import ledger                                       # noqa: E402
 import pov_match                                    # noqa: E402
-from common import Stage, week_id                   # noqa: E402
+from common import (STATE, Stage, now as _now, read_json,  # noqa: E402
+                    week_id, write_json)
 
 LANE = "pov-repair"
 SCRIPTS = ROOT / "scripts"
@@ -72,6 +73,7 @@ AUDIO = ROOT / "audio"
 RENDERS = ROOT / "renders"
 CAPTIONS = ROOT / "captions"
 SUPERSEDED = RENDERS / "superseded-pov"
+SUPERSEDED_INDEX = STATE / "superseded_renders.json"
 
 HUMAN = "[HUMAN]"
 
@@ -192,6 +194,27 @@ def repair_one(slug: str, dry_run: bool = False,
     cut = RENDERS / f"{slug}-final.mp4"
     if cut.exists():
         SUPERSEDED.mkdir(parents=True, exist_ok=True)
+        # RECORD ITS FINGERPRINT BEFORE MOVING IT, and commit that.
+        #
+        # THE HAZARD THIS CLOSES, which is the one thing about this repair that
+        # could have made things worse. Moving the local render aside does not
+        # touch the R2 shelf, and the cloud upload lane reads the SHELF. So the
+        # moment the assignment is recorded, the POV gate stops refusing the
+        # episode -- and the object the cloud would then pull is the OLD cut,
+        # still speaking the sentence she never said. The gate would have been
+        # satisfied by a repair the published bytes never received.
+        #
+        # sha256 is exact and it clears itself: once bin/push-to-r2.sh shelves
+        # the re-rendered cut the hash differs and the refusal stops. Nothing
+        # is deleted from R2 -- the object is replaced by content, which is how
+        # push-to-r2.sh has always worked.
+        import r2 as _r2                              # noqa: PLC0415
+        sup = read_json(SUPERSEDED_INDEX, default={})
+        sup[slug] = {"sha256": _r2.sha256_file(cut),
+                     "bytes": cut.stat().st_size,
+                     "superseded_at": _now(),
+                     "why": "producer POV beat replaced by loop/pov_repair.py"}
+        write_json(SUPERSEDED_INDEX, sup)
         cut.replace(SUPERSEDED / cut.name)
         rec["render_superseded"] = f"renders/superseded-pov/{cut.name}"
     side = RENDERS / f"{slug}-final.mp4.render.json"

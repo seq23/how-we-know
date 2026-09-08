@@ -57,7 +57,7 @@ import quota                                     # noqa: E402
 import r2                                        # noqa: E402
 import upload as up                              # noqa: E402
 import arming  # noqa: E402
-from common import Stage, config, week_id        # noqa: E402
+from common import Stage, config, read_json, week_id  # noqa: E402
 
 LANE = "cloud-upload"
 
@@ -70,10 +70,31 @@ def shelf_lookup(shelf):
     downloading a 40 MB render to decide whether we want it is not. The bytes
     are fetched later, only for the episodes actually taken.
     """
+    superseded = read_json(ROOT / "loop" / "state" / "superseded_renders.json",
+                           default={})
+
     def look(slug: str):
         rk, tk = r2.render_key(slug), r2.thumb_key(slug)
-        if shelf.head(rk) is None:
+        meta = shelf.head(rk)
+        if meta is None:
             return "not shelved in R2 (no render) — run bin/push-to-r2.sh"
+        # THE SHELF CAN HOLD A CUT THIS REPO HAS ALREADY REPLACED.
+        #
+        # loop/pov_repair.py rewrites a script's [HUMAN] beat, records the
+        # assignment, and moves the local render aside for rebuilding. It
+        # cannot touch R2. So between the repair and the Mac's next push, the
+        # POV gate is satisfied — the assignment exists — while the bytes on
+        # the shelf are the OLD cut, still speaking the sentence she never
+        # said. Refusing on the recorded sha256 is exact, and it clears itself:
+        # the re-rendered cut hashes differently, so the refusal ends the
+        # moment the real repair reaches the shelf. Nothing is deleted; the
+        # object is replaced by content, as push-to-r2.sh has always done.
+        old = (superseded.get(slug) or {}).get("sha256")
+        if old and meta.get("sha256") == old:
+            return (f"the shelved render is the cut that was superseded on "
+                    f"{superseded[slug].get('superseded_at', '?')[:10]} "
+                    f"({superseded[slug].get('why', 'replaced')}). The Mac has "
+                    f"not pushed the rebuilt cut yet — bin/push-to-r2.sh")
         if shelf.head(tk) is None:
             return "render is shelved but its thumbnail is not"
         return (rk, tk)
