@@ -42,7 +42,7 @@ Aerogel density ranges from about zero point zero zero three grams per cubic cen
 
 ### Producer POV
 
-[HUMAN] Once you understand the pressure something had to survive, every strange feature starts making sense. People judge the visible result without understanding the conditions that created it.
+[HUMAN] What keeps me interested is how it exposes the limits of our idea of normal. Every time we think we know what life requires, something down there shows us another way.
 
 ### Thermal conductivity is limited by the mean free path of air
 

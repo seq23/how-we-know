@@ -46,7 +46,7 @@ Full hydration of the cement requires roughly 0.42 units of water per unit of ce
 
 ### Producer POV
 
-[HUMAN] It reminds me of companies and systems. Something looks completely irrational when you judge it outside the environment it was built for.
+[HUMAN] The questions worth chasing are the ones where the answer changes how you understand a system.
 
 ### Aggregate is most of it, and it is not filler
 
