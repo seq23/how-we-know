@@ -87,15 +87,39 @@ done
 # one route while being correctly skipped by the other.
 renderable() {
   $PY - <<'READYEOF'
-import json, glob, os, sys
+import json, glob, os, shutil, sys
 sys.path.insert(0, "loop")
 import batch_queue
+# EVERY BEAT HAS A WAV -- not "the counts are equal".
+#
+# Counting conflated two different facts, and the difference is a permanent
+# stall. what-is-concrete-made-of held 70 wavs (0000..0069) against a 69-beat
+# plan: an orphan left behind when the plan shrank. 70 != 69, so this predicate
+# said "not ready" and would have said it forever -- the episode could never be
+# re-rendered by any route, and nothing anywhere named the reason. Asking
+# whether beat i has a wav, for every i the plan actually has, cannot be fooled
+# by a file the plan no longer indexes.
+#
+# The orphan is MOVED, never deleted: assemble.py ignores it, but leaving it
+# in place means the next reader of this directory is misled the same way.
 out = []
 for slug in batch_queue.queued_slugs():
     plan = f"plans/{slug}.json"
     if not os.path.exists(plan):
         continue
-    if len(json.load(open(plan))) == len(glob.glob(f"audio/{slug}/*.wav")) \
+    n = len(json.load(open(plan)))
+    have = {os.path.basename(w) for w in glob.glob(f"audio/{slug}/*.wav")}
+    orphans = sorted(w for w in have
+                     if not w[:-4].isdigit() or int(w[:-4]) >= n)
+    if orphans:
+        d = f"audio/{slug}/superseded"
+        os.makedirs(d, exist_ok=True)
+        for w in orphans:
+            shutil.move(f"audio/{slug}/{w}", f"{d}/{w}")
+            print(f"# moved orphan audio/{slug}/{w} aside (plan has {n} beats)",
+                  file=sys.stderr)
+        have -= set(orphans)
+    if all(f"{i:04d}.wav" in have for i in range(n)) \
        and not os.path.exists(f"renders/{slug}-final.mp4"):
         out.append(slug)
 print(" ".join(out))
@@ -117,7 +141,11 @@ for slug in batch_queue.queued_slugs():
     if not os.path.exists(plan):
         continue
     want = len(json.load(open(plan)))
-    have = len(glob.glob(f"audio/{slug}/*.wav"))
+    # Per-index, for the reason renderable() explains: an orphan wav from a
+    # shrunken plan must not make an unvoiced beat look voiced, and a count
+    # cannot tell the difference.
+    names = {os.path.basename(w) for w in glob.glob(f"audio/{slug}/*.wav")}
+    have = sum(1 for i in range(want) if f"{i:04d}.wav" in names)
     if have < want:
         out.append(f"{slug}:{have}/{want}")
 print(" ".join(out))
@@ -187,7 +215,11 @@ for slug in batch_queue.queued_slugs():
     if not os.path.exists(plan):
         continue
     want = len(json.load(open(plan)))
-    have = len(glob.glob(f"audio/{slug}/*.wav"))
+    # Per-index, for the reason renderable() explains: an orphan wav from a
+    # shrunken plan must not make an unvoiced beat look voiced, and a count
+    # cannot tell the difference.
+    names = {os.path.basename(w) for w in glob.glob(f"audio/{slug}/*.wav")}
+    have = sum(1 for i in range(want) if f"{i:04d}.wav" in names)
     if have < want:
         out.append(f"{slug}:{have}/{want}")
 print(" ".join(out))
