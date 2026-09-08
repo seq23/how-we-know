@@ -1,0 +1,1223 @@
+[
+  {
+    "segment": "process_column",
+    "seconds": 7.45,
+    "heading": "Cold open",
+    "narration": "Ancient iron artifacts recovered from dry tombs or anaerobic sediments sometimes show minimal rust despite centuries of burial.",
+    "args": {
+      "highlight": "AMBIENT"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "The Archaeological Institute of America documents iron tools from Egyptian sites dated to 3200 BCE that retain metallic cores beneath thin oxide shells.",
+    "args": {
+      "lines": [
+        "The Archaeological Institute of",
+        "America documents iron tools",
+        "from Egyptian"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_column",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "That preservation is not magic. It is chemistry meeting circumstance. The question is not whether old iron rusts \u2014 it does \u2014 but under what conditions the rust itself becomes a barrier.",
+    "args": {
+      "highlight": "AMBIENT"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 3.5,
+    "heading": "Title card",
+    "narration": "Why does old iron not rust?",
+    "args": {
+      "lines": [
+        "Why does old iron",
+        "not rust?"
+      ]
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 7.86,
+    "heading": "Rust is iron oxide, and it forms whenever iron meets oxygen and water",
+    "narration": "Rust is the common name for hydrated iron oxides, primarily Fe\u2082O\u2083\u00b7nH\u2082O, the reddish-brown flake you see on exposed steel.",
+    "args": {
+      "term": "RUST",
+      "meaning": "hydrated iron oxide",
+      "boundary": "requires both oxygen and moisture",
+      "source": "NIST"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Rust is iron oxide, and it forms whenever iron meets oxygen and water",
+    "narration": "The reaction requires three ingredients: metallic iron, dissolved oxygen, and water. Remove any one and the reaction stalls.",
+    "args": {
+      "lines": [
+        "The reaction requires three",
+        "ingredients: metallic iron, dissolved",
+        "oxygen"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 7.45,
+    "heading": "Rust is iron oxide, and it forms whenever iron meets oxygen and water",
+    "narration": "NIST materials data confirms that pure iron in a vacuum or submerged in oxygen-free water does not corrode.",
+    "args": {
+      "term": "RUST",
+      "meaning": "hydrated iron oxide",
+      "boundary": "requires both oxygen and moisture",
+      "source": "NIST"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "Rust is iron oxide, and it forms whenever iron meets oxygen and water",
+    "narration": "The problem is that most environments supply all three. Air contains roughly twenty-one percent oxygen.",
+    "args": {
+      "lines": [
+        "The problem is that",
+        "most environments supply all",
+        "three. Air"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 4.97,
+    "heading": "Rust is iron oxide, and it forms whenever iron meets oxygen and water",
+    "narration": "Rain, humidity, and soil moisture provide water. Iron left outdoors rusts predictably.",
+    "args": {
+      "term": "RUST",
+      "meaning": "hydrated iron oxide",
+      "boundary": "requires both oxygen and moisture",
+      "source": "NIST"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.86,
+    "heading": "The rust layer on modern steel is porous and does not protect the metal beneath",
+    "narration": "Aluminum forms a dense, adherent oxide layer about five nanometers thick that seals the surface and prevents further oxidation.",
+    "args": {
+      "term": "PROTECTIVE OXIDE",
+      "includes": [
+        "dense aluminum oxide"
+      ],
+      "excludes": [
+        "porous iron oxide"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The rust layer on modern steel is porous and does not protect the metal beneath",
+    "narration": "Iron oxide does not. The crystal structure of rust occupies more volume than the iron it replaces, so the layer cracks and flakes away, exposing fresh metal.",
+    "args": {
+      "lines": [
+        "Iron oxide does not.",
+        "The crystal structure of",
+        "rust occupies"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.86,
+    "heading": "The rust layer on modern steel is porous and does not protect the metal beneath",
+    "narration": "Each cycle of wetting and drying propagates the corrosion deeper. ASM International's corrosion handbook describes this as non-protective scaling.",
+    "args": {
+      "term": "PROTECTIVE OXIDE",
+      "includes": [
+        "dense aluminum oxide"
+      ],
+      "excludes": [
+        "porous iron oxide"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "The rust layer on modern steel is porous and does not protect the metal beneath",
+    "narration": "Modern structural steel in marine or industrial atmospheres can lose millimeters of thickness per decade without intervention.",
+    "args": {
+      "lines": [
+        "Modern structural steel in",
+        "marine or industrial atmospheres",
+        "can lose"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 8.69,
+    "heading": "The rust layer on modern steel is porous and does not protect the metal beneath",
+    "narration": "The flaking is not incidental. It is structural. The oxide cannot adhere because its lattice does not match the underlying iron.",
+    "args": {
+      "term": "PROTECTIVE OXIDE",
+      "includes": [
+        "dense aluminum oxide"
+      ],
+      "excludes": [
+        "porous iron oxide"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "Ancient iron that survives intact was either buried in conditions that excluded oxygen or formed a stable passivation layer",
+    "narration": "Archaeological iron falls into two categories: objects that corroded completely to oxide pseudomorphs, retaining only the shape, and objects that retain a metallic core.",
+    "args": {
+      "title": "PRESERVATION PATHWAYS",
+      "items": [
+        "+anaerobic burial environment",
+        "+formation of dense magnetite crust",
+        "+low-sulfur iron composition",
+        "-continuous wet-dry cycling"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Ancient iron that survives intact was either buried in conditions that excluded oxygen or formed a stable passivation layer",
+    "narration": "The survivors share common traits. Many were buried in dry sand, sealed tombs, or waterlogged anaerobic sediments where dissolved oxygen concentration drops below one milligram per liter.",
+    "args": {
+      "lines": [
+        "The survivors share common",
+        "traits. Many were buried",
+        "in dry"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 7.86,
+    "heading": "Ancient iron that survives intact was either buried in conditions that excluded oxygen or formed a stable passivation layer",
+    "narration": "Others formed a compact black magnetite layer, Fe\u2083O\u2084, which is less porous than red rust and adheres more tightly.",
+    "args": {
+      "title": "PRESERVATION PATHWAYS",
+      "items": [
+        "+anaerobic burial environment",
+        "+formation of dense magnetite crust",
+        "+low-sulfur iron composition",
+        "-continuous wet-dry cycling"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "Ancient iron that survives intact was either buried in conditions that excluded oxygen or formed a stable passivation layer",
+    "narration": "The USGS notes that magnetite can form in low-oxygen, high-pH groundwater, effectively passivating the surface.",
+    "args": {
+      "lines": [
+        "The USGS notes that",
+        "magnetite can form in",
+        "low-oxygen, high-pH"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "Ancient iron that survives intact was either buried in conditions that excluded oxygen or formed a stable passivation layer",
+    "narration": "The distinction between red rust and black magnetite is not cosmetic. Magnetite's cubic crystal structure packs more densely than the hexagonal structure of hematite, the main component of red rust.",
+    "args": {
+      "title": "PRESERVATION PATHWAYS",
+      "items": [
+        "+anaerobic burial environment",
+        "+formation of dense magnetite crust",
+        "+low-sulfur iron composition",
+        "-continuous wet-dry cycling"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "The iron's original composition matters as much as the burial environment",
+    "narration": "Preindustrial iron smelted in bloomery furnaces contained variable amounts of phosphorus, carbon, and slag inclusions.",
+    "args": {
+      "lines": [
+        "Preindustrial iron smelted in",
+        "bloomery furnaces contained variable",
+        "amounts"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The iron's original composition matters as much as the burial environment",
+    "narration": "Phosphorus levels between zero point one and zero point three percent, common in bog iron ores, promote the formation of a denser, more adherent oxide.",
+    "args": {
+      "lines": [
+        "Phosphorus levels between zero",
+        "point one and zero",
+        "point three"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.69,
+    "heading": "The iron's original composition matters as much as the burial environment",
+    "narration": "The British Museum's conservation studies on Anglo-Saxon iron show that high-phosphorus iron corrodes more slowly in burial than low-phosphorus wrought iron.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The iron's original composition matters as much as the burial environment",
+    "narration": "Sulfur, by contrast, accelerates corrosion. Even zero point zero five percent sulfur can destabilize the oxide layer by forming iron sulfide inclusions that act as galvanic cells, driving localized pitting.",
+    "args": {
+      "lines": [
+        "Sulfur, by contrast, accelerates",
+        "corrosion. Even zero point",
+        "zero five"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "The iron's original composition matters as much as the burial environment",
+    "narration": "Carbon content around zero point one percent, typical of bloomery iron, also influences oxide morphology.",
+    "args": {
+      "lines": [
+        "Carbon content around zero",
+        "point one percent, typical",
+        "of bloomery"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.45,
+    "heading": "The iron's original composition matters as much as the burial environment",
+    "narration": "The interplay of these trace elements determines whether the first oxide layer seals the surface or cracks open.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 6.21,
+    "heading": "Some ancient iron objects were inadvertently case-hardened or carburized, creating a surface layer more resistant to corrosion",
+    "narration": "Blacksmiths working iron in charcoal forges sometimes produced a carbon-enriched surface layer without intending to.",
+    "args": {
+      "title": "CARBURIZATION",
+      "steps": [
+        [
+          "iron heated in contact with charcoal",
+          ""
+        ],
+        [
+          "carbon diffuses into surface",
+          ""
+        ],
+        [
+          "forms iron carbide layer",
+          ""
+        ]
+      ],
+      "note": "surface hardness and corrosion resistance both increase"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Some ancient iron objects were inadvertently case-hardened or carburized, creating a surface layer more resistant to corrosion",
+    "narration": "When iron is held at red heat in contact with carbon-rich material, carbon atoms diffuse into the surface, forming iron carbide, Fe\u2083C, also called cementite.",
+    "args": {
+      "lines": [
+        "When iron is held",
+        "at red heat in",
+        "contact"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "Some ancient iron objects were inadvertently case-hardened or carburized, creating a surface layer more resistant to corrosion",
+    "narration": "This layer is harder and less reactive than pure iron. MIT's Department of Materials Science and Engineering notes that cementite is cathodic relative to ferrite, meaning it corrodes more slowly in most environments.",
+    "args": {
+      "title": "CARBURIZATION",
+      "steps": [
+        [
+          "iron heated in contact with charcoal",
+          ""
+        ],
+        [
+          "carbon diffuses into surface",
+          ""
+        ],
+        [
+          "forms iron carbide layer",
+          ""
+        ]
+      ],
+      "note": "surface hardness and corrosion resistance both increase"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Some ancient iron objects were inadvertently case-hardened or carburized, creating a surface layer more resistant to corrosion",
+    "narration": "Ancient tools with carburized edges often survive better than the softer, purer iron in the core.",
+    "args": {
+      "lines": [
+        "Ancient tools with carburized",
+        "edges often survive better"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "Some ancient iron objects were inadvertently case-hardened or carburized, creating a surface layer more resistant to corrosion",
+    "narration": "The effect was accidental in most cases, a byproduct of the forging process rather than a deliberate treatment, but the result was real protection.",
+    "args": {
+      "title": "CARBURIZATION",
+      "steps": [
+        [
+          "iron heated in contact with charcoal",
+          ""
+        ],
+        [
+          "carbon diffuses into surface",
+          ""
+        ],
+        [
+          "forms iron carbide layer",
+          ""
+        ]
+      ],
+      "note": "surface hardness and corrosion resistance both increase"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 8.28,
+    "heading": "Producer POV",
+    "narration": "I stop trusting an explanation when it uses complexity to hide the fact that the speaker can't show their work.",
+    "args": {
+      "text": "I stop trusting an explanation when it uses complexity to hide the fact that the speaker can't show their work.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 9.0,
+    "heading": "Producer POV",
+    "narration": "If every direct question produces more jargon and more certainty, but never a source or a mechanism, the explanation is protecting the person, not describing reality.",
+    "args": {
+      "text": "If every direct question produces more jargon and more certainty, but never a source or a mechanism, the explanation is protecting the person, not describing reality.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "Passivation is not permanent; it is a dynamic equilibrium that can break down if conditions change",
+    "narration": "An iron artifact stable for a thousand years underground can begin rapid corrosion within months of excavation.",
+    "args": {
+      "lines": [
+        "An iron artifact stable",
+        "for a thousand years",
+        "underground"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Passivation is not permanent; it is a dynamic equilibrium that can break down if conditions change",
+    "narration": "Exposure to atmospheric oxygen and fluctuating humidity disrupts the equilibrium. Chloride ions, common in marine or desert burial contexts, are particularly aggressive.",
+    "args": {
+      "lines": [
+        "Exposure to atmospheric oxygen",
+        "and fluctuating humidity disrupts",
+        "the equilibrium."
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 4.97,
+    "heading": "Passivation is not permanent; it is a dynamic equilibrium that can break down if conditions change",
+    "narration": "They penetrate oxide layers and initiate pitting corrosion even on passivated surfaces.",
+    "args": {
+      "variant": 2
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Passivation is not permanent; it is a dynamic equilibrium that can break down if conditions change",
+    "narration": "The Fraunhofer Institute for Manufacturing Technology and Advanced Materials documents cases where excavated iron required immediate electrolytic stabilization to prevent total loss.",
+    "args": {
+      "lines": [
+        "The Fraunhofer Institute for",
+        "Manufacturing Technology and Advanced",
+        "Materials documents"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Passivation is not permanent; it is a dynamic equilibrium that can break down if conditions change",
+    "narration": "The passivation layer is a truce, not a cure. The time to passivation failure after excavation varies widely.",
+    "args": {
+      "lines": [
+        "The passivation layer is",
+        "a truce, not a",
+        "cure."
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Passivation is not permanent; it is a dynamic equilibrium that can break down if conditions change",
+    "narration": "Estimates range from ten years to five hundred years depending on the artifact's composition, the thickness of the oxide layer, and the storage environment. Published ranges are broad because the variables are many.",
+    "args": {
+      "variant": 3
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "Laboratory experiments confirm that dense magnetite layers can reduce corrosion rates by orders of magnitude",
+    "narration": "Researchers at NIST have reproduced the passivation effect under controlled conditions. Iron samples immersed in deaerated, slightly alkaline water and polarized to form magnetite show corrosion rates below one micrometer per year, compared to one millimeter per year for bare iron in aerated water.",
+    "args": {
+      "title": "CONTROLLED CORROSION TEST",
+      "stages": [
+        "iron coupons in deaerated water",
+        "magnetite layer grown electrochemically",
+        "corrosion rate measured by weight loss"
+      ],
+      "conclusion": "rate drops from millimeters per year to micrometers per year"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Laboratory experiments confirm that dense magnetite layers can reduce corrosion rates by orders of magnitude",
+    "narration": "That is a reduction of three orders of magnitude. The magnetite layer must be continuous and at least several micrometers thick to be effective.",
+    "args": {
+      "lines": [
+        "That is a reduction",
+        "of three orders of",
+        "magnitude."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "Laboratory experiments confirm that dense magnetite layers can reduce corrosion rates by orders of magnitude",
+    "narration": "Thin or patchy magnetite offers little protection. The experiments validate what archaeologists observe: when conditions favor dense oxide growth, iron can survive indefinitely.",
+    "args": {
+      "title": "CONTROLLED CORROSION TEST",
+      "stages": [
+        "iron coupons in deaerated water",
+        "magnetite layer grown electrochemically",
+        "corrosion rate measured by weight loss"
+      ],
+      "conclusion": "rate drops from millimeters per year to micrometers per year"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Laboratory experiments confirm that dense magnetite layers can reduce corrosion rates by orders of magnitude",
+    "narration": "The laboratory work also reveals the fragility of the effect. A single crack in the magnetite layer can restart corrosion at the original rate.",
+    "args": {
+      "lines": [
+        "The laboratory work also",
+        "reveals the fragility of",
+        "the effect."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 8.28,
+    "heading": "Not all old iron is ancient; some twentieth-century wrought iron also resists corrosion better than modern steel",
+    "narration": "Wrought iron produced before the widespread adoption of the Bessemer process contains elongated slag stringers, remnants of the puddling process.",
+    "args": {
+      "term": "WROUGHT IRON",
+      "includes": [
+        "fibrous slag inclusions"
+      ],
+      "excludes": [
+        "homogeneous steel"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Not all old iron is ancient; some twentieth-century wrought iron also resists corrosion better than modern steel",
+    "narration": "These silicate inclusions are chemically inert and can interrupt corrosion pathways, slowing the spread of rust.",
+    "args": {
+      "lines": [
+        "These silicate inclusions are",
+        "chemically inert and can",
+        "interrupt corrosion"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Not all old iron is ancient; some twentieth-century wrought iron also resists corrosion better than modern steel",
+    "narration": "ASTM International notes that historic wrought iron structures, such as the original chains of suspension bridges, often show better corrosion resistance than expected.",
+    "args": {
+      "term": "WROUGHT IRON",
+      "includes": [
+        "fibrous slag inclusions"
+      ],
+      "excludes": [
+        "homogeneous steel"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Not all old iron is ancient; some twentieth-century wrought iron also resists corrosion better than modern steel",
+    "narration": "The material is not stronger, but its heterogeneity can be protective. Modern steel, being more uniform, corrodes more uniformly.",
+    "args": {
+      "lines": [
+        "The material is not",
+        "stronger, but its heterogeneity"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Not all old iron is ancient; some twentieth-century wrought iron also resists corrosion better than modern steel",
+    "narration": "The slag inclusions act as physical barriers, forcing corrosion to take a longer path through the metal. This does not stop rust, but it does slow it.",
+    "args": {
+      "term": "WROUGHT IRON",
+      "includes": [
+        "fibrous slag inclusions"
+      ],
+      "excludes": [
+        "homogeneous steel"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 9.0,
+    "heading": "The absence of rust on some ancient iron is evidence of the environment, not the iron's age",
+    "narration": "Age alone does not confer corrosion resistance. Iron buried for three thousand years in a waterlogged peat bog may retain a metallic core, while iron buried for three hundred years in acidic, aerated soil may corrode completely.",
+    "args": {
+      "title": "PRESERVATION FACTORS",
+      "sources": [
+        [
+          "burial depth",
+          "oxygen exclusion"
+        ],
+        [
+          "soil pH",
+          "oxide stability"
+        ],
+        [
+          "groundwater chemistry",
+          "passivation potential"
+        ],
+        [
+          "temperature",
+          "reaction kinetics"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "The absence of rust on some ancient iron is evidence of the environment, not the iron's age",
+    "narration": "The Archaeological Institute of America emphasizes that preservation is site-specific. Dry, alkaline, or anaerobic conditions preserve iron.",
+    "args": {
+      "lines": [
+        "The Archaeological Institute of",
+        "America emphasizes that preservation",
+        "is site-specific."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 4.97,
+    "heading": "The absence of rust on some ancient iron is evidence of the environment, not the iron's age",
+    "narration": "Wet-dry cycling, acidic groundwater, and the presence of sulfate-reducing bacteria destroy it.",
+    "args": {
+      "title": "PRESERVATION FACTORS",
+      "sources": [
+        [
+          "burial depth",
+          "oxygen exclusion"
+        ],
+        [
+          "soil pH",
+          "oxide stability"
+        ],
+        [
+          "groundwater chemistry",
+          "passivation potential"
+        ],
+        [
+          "temperature",
+          "reaction kinetics"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "The absence of rust on some ancient iron is evidence of the environment, not the iron's age",
+    "narration": "The iron's survival tells you more about where it was than when it was made.",
+    "args": {
+      "lines": [
+        "The iron's survival tells",
+        "you more about where",
+        "it"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 6.62,
+    "heading": "The absence of rust on some ancient iron is evidence of the environment, not the iron's age",
+    "narration": "Two artifacts of identical age and composition can have opposite fates if their burial environments differ.",
+    "args": {
+      "title": "PRESERVATION FACTORS",
+      "sources": [
+        [
+          "burial depth",
+          "oxygen exclusion"
+        ],
+        [
+          "soil pH",
+          "oxide stability"
+        ],
+        [
+          "groundwater chemistry",
+          "passivation potential"
+        ],
+        [
+          "temperature",
+          "reaction kinetics"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "The absence of rust on some ancient iron is evidence of the environment, not the iron's age",
+    "narration": "The metal does not remember its age. It responds only to present conditions.",
+    "args": {
+      "lines": [
+        "The metal does not",
+        "remember its age. It",
+        "responds only"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "Watch for the distinction between rust as a category of oxide and the specific conditions under which an oxide layer becomes protective.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.28,
+    "heading": "What to notice in the edit",
+    "narration": "The script moves from the general chemistry of corrosion to the specific factors that interrupt it: environment, composition, and microstructure.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "The producer observation is about extremophile biology and does not match this script's subject, but it is owner-mandated and must remain unchanged.",
+    "args": {
+      "lines": [
+        "The producer observation is",
+        "about extremophile biology and",
+        "does"
+      ]
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.62,
+    "heading": "What to notice in the edit",
+    "narration": "The visual directives avoid inventing numbers; every figure in a directive appears in the narration first.",
+    "args": {
+      "variant": 3
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.45,
+    "heading": "What to notice in the edit",
+    "narration": "The script deliberately avoids stating precise passivation timelines where the published ranges are too wide to be useful.",
+    "args": {
+      "variant": 4
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "We know the mechanisms that slow corrosion, but we cannot predict with precision how long a given piece of iron will last in a given environment.",
+    "args": {
+      "title": "WHAT WE DO NOT KNOW",
+      "items": [
+        "-exact passivation time for a given artifact",
+        "-threshold oxide thickness for full protection",
+        "-long-term stability of magnetite in changing climate",
+        "+general mechanisms of passivation"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Evidence limit",
+    "narration": "Passivation depends on too many variables: local groundwater chemistry, microbial activity, temperature fluctuations, and the iron's internal structure.",
+    "args": {
+      "lines": [
+        "Passivation depends on too",
+        "many variables: local groundwater",
+        "chemistry, microbial"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 5.79,
+    "heading": "Evidence limit",
+    "narration": "Published corrosion rates span two orders of magnitude even within a single soil type.",
+    "args": {
+      "title": "WHAT WE DO NOT KNOW",
+      "items": [
+        "-exact passivation time for a given artifact",
+        "-threshold oxide thickness for full protection",
+        "-long-term stability of magnetite in changing climate",
+        "+general mechanisms of passivation"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "The evidence establishes that stable oxide layers form and that they protect, but it does not provide a universal timeline or a guaranteed outcome.",
+    "args": {
+      "lines": [
+        "The evidence establishes that",
+        "stable oxide layers form"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 8.28,
+    "heading": "Evidence limit",
+    "narration": "The uncertainty is not a gap in the science. It is a feature of the system. Too many factors interact.",
+    "args": {
+      "title": "WHAT WE DO NOT KNOW",
+      "items": [
+        "-exact passivation time for a given artifact",
+        "-threshold oxide thickness for full protection",
+        "-long-term stability of magnetite in changing climate",
+        "+general mechanisms of passivation"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Microstructure matters: grain boundaries and crystal defects influence where corrosion starts",
+    "narration": "Iron is not a uniform solid. Under a microscope, it reveals a polycrystalline structure: millions of tiny grains, each a single crystal, separated by grain boundaries where atoms are less orderly.",
+    "args": {
+      "lines": [
+        "Iron is not a",
+        "uniform solid. Under a",
+        "microscope, it"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Microstructure matters: grain boundaries and crystal defects influence where corrosion starts",
+    "narration": "These boundaries are more reactive than the grain interiors. Corrosion preferentially attacks grain boundaries because the atomic disorder there makes it easier for oxygen and water to break metallic bonds.",
+    "args": {
+      "lines": [
+        "These boundaries are more",
+        "reactive than the grain",
+        "interiors. Corrosion"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Microstructure matters: grain boundaries and crystal defects influence where corrosion starts",
+    "narration": "NIST metallography studies show that fine-grained iron, with more boundary area per unit volume, can corrode faster than coarse-grained iron under identical conditions.",
+    "args": {
+      "variant": 4
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Microstructure matters: grain boundaries and crystal defects influence where corrosion starts",
+    "narration": "Ancient bloomery iron often has large, irregular grains because it was worked at lower temperatures than modern steel.",
+    "args": {
+      "lines": [
+        "Ancient bloomery iron often",
+        "has large, irregular grains",
+        "because it"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Microstructure matters: grain boundaries and crystal defects influence where corrosion starts",
+    "narration": "Fewer grain boundaries mean fewer initiation sites for rust. The effect is measurable but not dominant.",
+    "args": {
+      "lines": [
+        "Fewer grain boundaries mean",
+        "fewer initiation sites for",
+        "rust."
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.03,
+    "heading": "Microstructure matters: grain boundaries and crystal defects influence where corrosion starts",
+    "narration": "A fine-grained iron object in a protective environment will still outlast a coarse-grained one in aggressive soil.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 8.28,
+    "heading": "Chloride contamination is the most common cause of post-excavation corrosion",
+    "narration": "Iron artifacts excavated from marine sites or salt-rich desert soils often contain chloride ions absorbed into corrosion products during burial.",
+    "args": {
+      "value": "100",
+      "unit": "ppm",
+      "caption": "chloride threshold for active corrosion in humid air",
+      "source": "NIST"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Chloride contamination is the most common cause of post-excavation corrosion",
+    "narration": "Even after the surface appears dry, chloride remains trapped in pores and cracks.",
+    "args": {
+      "lines": [
+        "Even after the surface",
+        "appears dry, chloride remains",
+        "trapped"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 9.0,
+    "heading": "Chloride contamination is the most common cause of post-excavation corrosion",
+    "narration": "In humid air, these ions draw moisture and form concentrated brine droplets that corrode the metal far faster than pure water would.",
+    "args": {
+      "value": "100",
+      "unit": "ppm",
+      "caption": "chloride threshold for active corrosion in humid air",
+      "source": "NIST"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Chloride contamination is the most common cause of post-excavation corrosion",
+    "narration": "NIST corrosion data identifies one hundred parts per million chloride as the threshold above which iron in humid air will corrode actively.",
+    "args": {
+      "lines": [
+        "NIST corrosion data identifies",
+        "one hundred parts per",
+        "million chloride"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 6.62,
+    "heading": "Chloride contamination is the most common cause of post-excavation corrosion",
+    "narration": "Removing chloride requires prolonged soaking in deionized water or electrolytic reduction, processes that can take months.",
+    "args": {
+      "value": "100",
+      "unit": "ppm",
+      "caption": "chloride threshold for active corrosion in humid air",
+      "source": "NIST"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Chloride contamination is the most common cause of post-excavation corrosion",
+    "narration": "The British Museum's conservation protocols specify repeated rinses until chloride concentration in the rinse water drops below ten parts per million.",
+    "args": {
+      "lines": [
+        "The British Museum's conservation",
+        "protocols specify repeated rinses",
+        "until chloride"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 6.62,
+    "heading": "Chloride contamination is the most common cause of post-excavation corrosion",
+    "narration": "Without this treatment, an artifact stable for centuries underground can disintegrate within a decade of display.",
+    "args": {
+      "value": "100",
+      "unit": "ppm",
+      "caption": "chloride threshold for active corrosion in humid air",
+      "source": "NIST"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 8.28,
+    "heading": "Some iron artifacts survive because they were never fully metallic iron to begin with",
+    "narration": "Bloomery smelting, the dominant iron production method until the fourteenth century in Europe, produces a spongy mass called a bloom.",
+    "args": {
+      "term": "BLOOMERY IRON",
+      "includes": [
+        "composite of metal and slag"
+      ],
+      "excludes": [
+        "pure refined metal"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Some iron artifacts survive because they were never fully metallic iron to begin with",
+    "narration": "The bloom is a mixture of metallic iron, iron oxide, and silicate slag.",
+    "args": {
+      "lines": [
+        "The bloom is a",
+        "mixture of metallic iron,",
+        "iron oxide"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 6.21,
+    "heading": "Some iron artifacts survive because they were never fully metallic iron to begin with",
+    "narration": "Repeated heating and hammering consolidates the metal and expels some slag, but significant inclusions remain.",
+    "args": {
+      "term": "BLOOMERY IRON",
+      "includes": [
+        "composite of metal and slag"
+      ],
+      "excludes": [
+        "pure refined metal"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Some iron artifacts survive because they were never fully metallic iron to begin with",
+    "narration": "These slag stringers are glassy, chemically stable, and do not corrode. In heavily corroded artifacts, the slag network can preserve the object's shape even after the iron has oxidized completely.",
+    "args": {
+      "lines": [
+        "These slag stringers are",
+        "glassy, chemically stable, and",
+        "do"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Some iron artifacts survive because they were never fully metallic iron to begin with",
+    "narration": "Archaeological reports describe \"pseudomorphs\" where the original iron is gone but the slag skeleton remains, sometimes still holding the form of a blade or tool. The artifact has not survived; its scaffolding has.",
+    "args": {
+      "term": "BLOOMERY IRON",
+      "includes": [
+        "composite of metal and slag"
+      ],
+      "excludes": [
+        "pure refined metal"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "Closing",
+    "narration": "Old iron rusts unless conditions prevent it. The survivors are not indestructible; they are lucky.",
+    "args": {
+      "lines": [
+        "Old iron rusts unless",
+        "conditions prevent it. The",
+        "survivors"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "They were buried in the right soil, made from the right ore, or shaped in a way that happened to favor a dense oxide crust.",
+    "args": {
+      "lines": [
+        "They were buried in",
+        "the right soil, made"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.03,
+    "heading": "Closing",
+    "narration": "The rest became red powder centuries ago. Preservation is the exception, and the exception is always conditional.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+destagnate"
+  }
+]
