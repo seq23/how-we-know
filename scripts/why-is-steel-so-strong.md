@@ -107,18 +107,17 @@ Steel's strength is not a material property in isolation. It is the result of at
 
 ## Chapters
 
-- 00:00 Cold open
-- 00:31 Title card
-- 00:33 The lattice does the work, not the carbon's hardness
-- 01:48 The carbon percentage sets the ceiling
-- 03:22 The crystal structure changes with temperature
-- 04:45 Quenching and tempering control the trade-off
-- 06:18 Alloying elements shift the curve but not the mechanism
-- 07:41 Grain boundaries add another layer of resistance
-- 08:54 The role of carbides in high-carbon steels
-- 09:47 What to notice in the edit
-- 10:07 Evidence limit
-- 10:18 Closing
+- 0:00 Cold open
+- 0:33 The lattice does the work, not the carbon's hardness
+- 1:36 The carbon percentage sets the ceiling
+- 2:47 The crystal structure changes with temperature
+- 3:54 Quenching and tempering control the trade-off
+- 5:16 Alloying elements shift the curve but not the mechanism
+- 6:32 Grain boundaries add another layer of resistance
+- 7:32 The role of carbides in high-carbon steels
+- 8:32 What to notice in the edit
+- 9:05 Evidence limit
+- 9:40 Closing
 
 ## Sources
 

@@ -38,6 +38,7 @@ import domains                                             # noqa: E402
 import ledger                                              # noqa: E402
 import ypp                                                 # noqa: E402
 from common import Stage, config, week_id                  # noqa: E402
+from common import owner_actions as common_owner_actions  # noqa: E402
 
 OUT_DIR = ROOT / "loop" / "state" / "digest"
 STOPS = ROOT / "loop" / "state" / "stops"
@@ -102,6 +103,8 @@ def stops_in(week: str) -> list[dict]:
             "code": blob.get("code") or "?",
             "message": blob.get("message") or "",
             "why": blob.get("disposition_why") or "",
+            "unblock": blob.get("unblock") or "",
+            "disposition": blob.get("disposition") or "needs_human",
             "self_resolving": blob.get("disposition") == "self_resolving",
         })
     return out
@@ -128,6 +131,31 @@ def render(week: str, now: dt.datetime) -> tuple[str, dict]:
         return by_slug.get(slug, "—")
 
     L = [f"# How We Know — week of {week}", ""]
+
+    # --- THE ONLY THING IN THIS EMAIL THAT IS ADDRESSED TO HER --------------
+    #
+    # Added 2026-09-08 with the `owner_action` disposition. Her instruction was
+    # that a named stop must never arrive as a red CI run; the trade is that
+    # something must still carry the handful of conditions only she can clear -
+    # a revoked consent, a locked channel - or "green" would just mean
+    # "invisible". This block is that something, and it is deliberately the
+    # first thing in the digest, above the week's numbers.
+    waiting = common_owner_actions()
+    if waiting:
+        L += ["## ⚠️ Waiting on you", "",
+              "These are the only things in this system that a machine cannot "
+              "do. Everything else healed itself or is not blocking. No run "
+              "went red for any of them — that is on purpose.", "",
+              "| Stage | What is blocked | What clears it |", "|---|---|---|"]
+        for stage, rec in sorted(waiting.items()):
+            L.append(f"| {stage} | `{rec.get('code')}` — "
+                     f"{(rec.get('message') or '')[:140]} "
+                     f"| {(rec.get('unblock') or '')[:220]} |")
+        L += ["", "Each has been in this state for "
+              + ", ".join(f"{rec.get('consecutive', 1)} run(s) ({stage})"
+                          for stage, rec in sorted(waiting.items()))
+              + ". They go red on their own if they outlive the limit in "
+                "loop/stop_policy.json.", ""]
 
     # --- the one line that matters first
     tripped = br.get("state") != "closed"
@@ -174,8 +202,9 @@ def render(week: str, now: dt.datetime) -> tuple[str, dict]:
                  f"| {'—' if weeks is None else f'{weeks:.1f}'} | {mark} |")
     L.append("")
 
-    loud = [s for s in stops if not s["self_resolving"]]
-    quiet = [s for s in stops if s["self_resolving"]]
+    loud = [s for s in stops if s["disposition"] == "needs_human"]
+    quiet = [s for s in stops if s["disposition"] == "self_resolving"]
+    waited = [s for s in stops if s["disposition"] == "owner_action"]
     L += ["## Named stops", ""]
     if not stops:
         L += ["None. Every lane that ran, ran to completion.", ""]
@@ -188,6 +217,11 @@ def render(week: str, now: dt.datetime) -> tuple[str, dict]:
                 L.append(f"| {s['stage']} | `{s['code']}` "
                          f"| {s['message'][:110]} |")
             L.append("")
+        if waited:
+            L += [f"{len(waited)} stop(s) are waiting on YOU and are listed at "
+                  f"the top of this email: "
+                  + ", ".join(f"`{s['code']}` ({s['stage']})" for s in waited)
+                  + ". None of them failed a run.", ""]
         if quiet:
             L += [f"{len(quiet)} self-resolving stop(s) — a lane halting "
                   f"deliberately in a state that clears itself. These are "

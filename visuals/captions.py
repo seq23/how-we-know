@@ -130,26 +130,143 @@ def load_plan(slug: str) -> list[dict]:
     return plan, src
 
 
+def beats_manifest_path(slug: str) -> Path:
+    """`audio/<slug>/beats.json` — the audio-to-plan contract, and the ONE file
+    in `audio/` that git tracks (`.gitignore` excludes `audio/**/*.wav` and
+    nothing else)."""
+    return AUDIO / slug / "beats.json"
+
+
+def read_beats_manifest(slug: str) -> dict[int, dict]:
+    p = beats_manifest_path(slug)
+    if not p.exists():
+        return {}
+    try:
+        rows = json.loads(p.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return {}
+    if not isinstance(rows, list):
+        return {}
+    return {int(r["i"]): r for r in rows if isinstance(r, dict) and "i" in r}
+
+
+def recorded_durations(slug: str) -> dict[int, float]:
+    """Beat index -> the wav duration MEASURED when the audio was generated.
+
+    THIS IS THE WHOLE REASON CAPTIONS CAN BE BUILT IN THE CLOUD. Cue text has
+    always been committed (`plans/<slug>.json`); the only input that lived
+    exclusively on the voicing Mac was a list of per-beat wav durations — a few
+    dozen floats. Persisting them beside the text they belong to turns the
+    caption track from "derivable only where the audio is" into "derivable from
+    the repository", which is what lets loop/captions_build.py heal an episode
+    without the laptop.
+
+    A recorded value is exact, not an estimate: it is `wav_duration()` of the
+    very file assemble.py mounted the beat to.
+    """
+    out = {}
+    for i, row in read_beats_manifest(slug).items():
+        d = row.get("seconds")
+        if isinstance(d, (int, float)) and d > 0:
+            out[i] = float(d)
+    return out
+
+
+def record_durations(slug: str, durs: list[float], measured_idx: set[int]) -> int:
+    """Write measured wav durations into `audio/<slug>/beats.json`. Returns the
+    number of beats whose recorded value changed.
+
+    Only beats whose duration came from a REAL wav on this machine are written:
+    a recorded estimate would be a fabricated measurement, and every downstream
+    consumer treats `seconds` as measured truth.
+    """
+    p = beats_manifest_path(slug)
+    if not p.exists():
+        return 0
+    try:
+        rows = json.loads(p.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return 0
+    if not isinstance(rows, list):
+        return 0
+    changed = 0
+    for r in rows:
+        if not isinstance(r, dict) or "i" not in r:
+            continue
+        i = int(r["i"])
+        if i not in measured_idx or i >= len(durs):
+            continue
+        # FULL PRECISION, NOT ROUNDED. A wav duration is frames/rate — an
+        # exact rational that float holds exactly — and rounding it to six
+        # decimals moves it by up to 5e-7 s. That is inaudible and it is not
+        # harmless: an SRT timestamp is rounded to the millisecond, so a beat
+        # boundary sitting exactly on a millisecond edge lands on the other
+        # side of it and the rebuilt file differs from the one built off the
+        # wavs. It happened to what-is-carbon-fiber-made-of on the first pass.
+        # The whole promise of this file is that the cloud rebuilds the SAME
+        # track, so the stored number is the measured number.
+        val = float(durs[i])
+        if r.get("seconds") != val:
+            r["seconds"] = val
+            changed += 1
+    if changed:
+        tmp = p.with_suffix(".json.tmp")
+        tmp.write_text(json.dumps(rows, indent=2) + "\n", encoding="utf-8")
+        os.replace(tmp, p)
+    return changed
+
+
+# Timing sources whose numbers were MEASURED off real narration audio, as
+# opposed to the planner's word-count estimate. Anything in this set may be
+# used to write a caption track, burn one in, or correct a chapter stamp.
+MEASURED_TIMINGS = ("audio", "recorded")
+
+
 def beat_durations(slug: str, plan: list[dict]):
-    """(durations, source). Mirrors assemble.py exactly: measured audio when the
-    wav exists, the plan's estimate only when it does not."""
+    """(durations, source, measured). Mirrors assemble.py exactly: measured
+    audio when the wav exists, the duration RECORDED from that wav when the wav
+    itself is absent (the cloud case — see recorded_durations), the plan's
+    estimate only when neither exists.
+
+    `source` is one of:
+        audio     every beat measured off a wav present on this machine
+        recorded  every beat measured, at least one from the committed manifest
+        partial   some beats measured, some estimated
+        estimate  nothing measured
+    """
     adir = AUDIO / slug
-    durs, measured = [], 0
+    rec = recorded_durations(slug)
+    durs, from_wav, from_record = [], set(), set()
     for i, b in enumerate(plan):
         wav = adir / f"{i:04d}.wav"
         if wav.exists():
             d = wav_duration(wav)
-            measured += 1
+            from_wav.add(i)
+        elif i in rec:
+            d = rec[i]
+            from_record.add(i)
         else:
             d = float(b["seconds"])
         durs.append(max(MIN_BEAT_S, d))
+    measured = len(from_wav) + len(from_record)
     if measured == 0:
         source = "estimate"
-    elif measured == len(plan):
-        source = "audio"
-    else:
+    elif measured < len(plan):
         source = "partial"
+    elif from_record:
+        source = "recorded"
+    else:
+        source = "audio"
     return durs, source, measured
+
+
+def wav_indices(slug: str, plan: list[dict]) -> set[int]:
+    """Beats whose wav is on THIS machine — the only ones whose duration this
+    machine is entitled to record. Deliberately a second, cheap pass rather
+    than a fourth return value: four call sites unpack beat_durations()'s
+    3-tuple and a widened signature would break them silently."""
+    adir = AUDIO / slug
+    return {i for i in range(len(plan)) if (adir / f"{i:04d}.wav").exists()}
 
 
 # --------------------------------------------------------------------------
@@ -450,6 +567,12 @@ def find_render(slug: str):
 def process(slug: str, write_script=True, check=None, verbose=True) -> dict:
     plan, plan_src = load_plan(slug)
     durs, timing, measured = beat_durations(slug, plan)
+    # PERSIST WHAT ONLY THIS MACHINE CAN MEASURE, in the same pass that uses it.
+    # audio/<slug>/*.wav is gitignored and audio/<slug>/beats.json is not, so
+    # writing the measured durations into the manifest is the whole difference
+    # between "this episode can only ever be captioned here" and "any lane can
+    # rebuild this caption track from the repository".
+    recorded_now = record_durations(slug, durs, wav_indices(slug, plan))
     checks = verify_text(slug, plan)
     cues = build_cues(plan, durs)
     total = sum(durs)
@@ -495,7 +618,7 @@ def process(slug: str, write_script=True, check=None, verbose=True) -> dict:
             probe["render_timing"] = "estimate (predates narration - re-render)"
 
     script_edit = {"written": False, "reason": "skipped"}
-    if write_script and timing == "audio":
+    if write_script and timing in MEASURED_TIMINGS:
         script_edit = rewrite_script_chapters(slug, chs)
     elif write_script:
         script_edit = {"written": False,
@@ -505,6 +628,7 @@ def process(slug: str, write_script=True, check=None, verbose=True) -> dict:
     rec = {
         "episode": slug, "beats": len(plan), "plan_source": plan_src,
         "timing": timing, "beats_measured": measured,
+        "durations_recorded": recorded_now,
         "duration_s": round(total, 3), "cues": len(cues),
         "chapters_real": len(real), "chapters_published": len(chs),
         "chapter_notes": notes,
@@ -555,7 +679,7 @@ def main() -> int:
             except SystemExit:
                 continue
             _, timing, _ = beat_durations(s, plan)
-            if timing == "audio" or a.include_estimated:
+            if timing in MEASURED_TIMINGS or a.include_estimated:
                 slugs.append(s)
     else:
         slugs = [resolve(p) for p in a.episodes]
@@ -666,7 +790,7 @@ def burner_for(slug: str):
     an empty overlay - a silent no-op burn is the 'runs but inert' defect."""
     plan, _ = load_plan(slug)
     durs, timing, _ = beat_durations(slug, plan)
-    if timing != "audio":
+    if timing not in MEASURED_TIMINGS:
         raise SystemExit(f"error: {slug} narration is {timing!r}; refusing to burn "
                          f"captions whose timing is not measured.")
     return Burner(build_cues(plan, durs)), [sum(durs[:i]) for i in range(len(plan))]

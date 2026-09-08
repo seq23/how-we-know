@@ -109,17 +109,16 @@ Graphene is the strongest material ever tested under controlled conditions. That
 
 ## Chapters
 
-- 00:00 Cold open
-- 00:35 Title card
-- 00:37 The measurement that established the 130 gigapascal figure used suspended sheets and a diamond tip
-- 02:20 Strength depends on the definition of strength and the direction of the force
-- 03:50 Defects reduce strength by orders of magnitude
-- 05:30 Producer POV
-- 05:40 The measurement method itself limits what can be tested
-- 07:20 Comparisons to other materials depend on how you normalize the measurement
-- 08:45 What to notice in the edit
-- 09:50 Evidence limit
-- 10:25 Closing
+- 0:00 Cold open
+- 0:34 The measurement that established the 130 gigapascal figure used suspended sheets and a diamond tip
+- 2:05 Strength depends on the definition of strength and the direction of the force
+- 3:31 Defects reduce strength by orders of magnitude
+- 4:55 Producer POV
+- 5:11 The measurement method itself limits what can be tested
+- 6:32 Comparisons to other materials depend on how you normalize the measurement
+- 8:03 What to notice in the edit
+- 9:12 Evidence limit
+- 9:54 Closing
 
 ## Sources
 

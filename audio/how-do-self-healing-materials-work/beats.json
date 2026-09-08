@@ -1,0 +1,506 @@
+[
+  {
+    "i": 0,
+    "segment": "evidence_chain",
+    "narration": "A crack is not a thing. It is an absence, and nothing about it invites repair.",
+    "seconds": 5.253333333333333
+  },
+  {
+    "i": 1,
+    "segment": "text_beat",
+    "narration": "So a self-healing material has to solve three problems in order: detect the damage, get material to it, and turn that material into a solid that bonds to both faces.",
+    "seconds": 10.725333333333333
+  },
+  {
+    "i": 2,
+    "segment": "evidence_chain",
+    "narration": "The elegant trick in the best-known designs is that the crack itself performs the detection.",
+    "seconds": 5.210666666666667
+  },
+  {
+    "i": 3,
+    "segment": "text_beat",
+    "narration": "The healing agent is stored inside the material in containers that are deliberately weaker than the material around them, so a crack that propagates cannot avoid breaking them open.",
+    "seconds": 10.789333333333333
+  },
+  {
+    "i": 4,
+    "segment": "evidence_chain",
+    "narration": "Damage triggers its own repair, and no sensor, no power and no decision are involved.",
+    "seconds": 5.968
+  },
+  {
+    "i": 5,
+    "segment": "text_beat",
+    "narration": "How do self-healing materials work?",
+    "seconds": 2.4053333333333335
+  },
+  {
+    "i": 6,
+    "segment": "process_steps",
+    "narration": "The capsule approach embeds tiny spheres of liquid healing agent throughout a polymer.",
+    "seconds": 4.818666666666667
+  },
+  {
+    "i": 7,
+    "segment": "text_beat",
+    "narration": "A separate catalyst is dispersed in the surrounding material. When a crack travels through, it breaks the capsules in its path and the liquid is drawn into the crack by capillary action.",
+    "seconds": 10.565333333333333
+  },
+  {
+    "i": 8,
+    "segment": "process_steps",
+    "narration": "When it meets a particle of catalyst, it polymerises and hardens, bonding the two crack faces.",
+    "seconds": 6.149333333333334
+  },
+  {
+    "i": 9,
+    "segment": "text_beat",
+    "narration": "The best-known demonstration, published in Nature in 2001 by White and colleagues at the University of Illinois, used capsules of dicyclopentadiene in an epoxy with a ruthenium-based Grubbs catalyst.",
+    "seconds": 12.325333333333333
+  },
+  {
+    "i": 10,
+    "segment": "process_steps",
+    "narration": "It worked, and it established the pattern nearly every later capsule system follows.",
+    "seconds": 5.232
+  },
+  {
+    "i": 11,
+    "segment": "stat_card",
+    "narration": "That first system recovered about seventy-five percent of the original fracture toughness in tested specimens.",
+    "seconds": 6.362666666666667
+  },
+  {
+    "i": 12,
+    "segment": "text_beat",
+    "narration": "Recovery is measured, not assumed: a specimen is cracked under controlled conditions, allowed to heal, then cracked again, and the second result is compared with the first.",
+    "seconds": 10.384
+  },
+  {
+    "i": 13,
+    "segment": "stat_card",
+    "narration": "Seventy-five percent is a strong result for a first demonstration and it is also a plain statement of the limit.",
+    "seconds": 6.8533333333333335
+  },
+  {
+    "i": 14,
+    "segment": "text_beat",
+    "narration": "The healed material was not as good as the original. The published figure has been reproduced and varied by many groups since, with results depending heavily on capsule size, capsule loading, catalyst distribution and how long healing is allowed to proceed.",
+    "seconds": 15.994666666666667
+  },
+  {
+    "i": 15,
+    "segment": "contrast_pair",
+    "narration": "The fundamental limitation of the capsule approach is that it is single-use in any given location.",
+    "seconds": 6.032
+  },
+  {
+    "i": 16,
+    "segment": "text_beat",
+    "narration": "Once the capsules along a crack path are broken and spent, a crack that reopens along the same path finds nothing left to release.",
+    "seconds": 7.749333333333333
+  },
+  {
+    "i": 17,
+    "segment": "contrast_pair",
+    "narration": "Loading the material with more capsules extends the supply but weakens the bulk material, because every capsule is a soft inclusion where the matrix is not.",
+    "seconds": 9.68
+  },
+  {
+    "i": 18,
+    "segment": "text_beat",
+    "narration": "This is the central trade in the whole field: the healing capacity is stored inside the material, and storage displaces the structure it is meant to protect.",
+    "seconds": 9.061333333333334
+  },
+  {
+    "i": 19,
+    "segment": "contrast_pair",
+    "narration": "The second approach replaces isolated capsules with a connected network of hollow channels, closer to the way a circulatory system distributes fluid.",
+    "seconds": 9.306666666666667
+  },
+  {
+    "i": 20,
+    "segment": "text_beat",
+    "narration": "A crack that opens a channel releases agent, and because the channels connect, agent can flow from elsewhere in the network or be resupplied from an external reservoir.",
+    "seconds": 9.168
+  },
+  {
+    "i": 21,
+    "segment": "contrast_pair",
+    "narration": "This makes repeated healing at the same site possible, which the capsule approach cannot do.",
+    "seconds": 5.317333333333333
+  },
+  {
+    "i": 22,
+    "segment": "text_beat",
+    "narration": "The cost is manufacturing complexity: the network has to be formed inside the material, kept clear, and connected, and every channel is a void that reduces stiffness and strength.",
+    "seconds": 11.944
+  },
+  {
+    "i": 23,
+    "segment": "contrast_pair",
+    "narration": "Vascular systems generally heal more times and cost far more to build.",
+    "seconds": 4.528
+  },
+  {
+    "i": 24,
+    "segment": "definition_card",
+    "narration": "The third approach stores nothing. Instead the polymer is built from bonds that can break and reform reversibly.",
+    "seconds": 7.674666666666667
+  },
+  {
+    "i": 25,
+    "segment": "text_beat",
+    "narration": "Some use hydrogen bonding, some use ionic clusters, some use covalent chemistry that is genuinely reversible, such as Diels-Alder adducts that dissociate on heating and re-form on cooling.",
+    "seconds": 12.965333333333334
+  },
+  {
+    "i": 26,
+    "segment": "definition_card",
+    "narration": "When the material cracks, these bonds are broken rather than destroyed, and if the two faces are brought back into contact with enough molecular mobility, they reconnect.",
+    "seconds": 9.797333333333333
+  },
+  {
+    "i": 27,
+    "segment": "text_beat",
+    "narration": "There is no finite reservoir, so healing can repeat indefinitely at the same site.",
+    "seconds": 4.912
+  },
+  {
+    "i": 28,
+    "segment": "definition_card",
+    "narration": "What intrinsic systems require instead is mobility and contact, which usually means heat, pressure, or both, and often means a material that is softer than a structural engineer would like.",
+    "seconds": 11.482666666666667
+  },
+  {
+    "i": 29,
+    "segment": "checklist_reveal",
+    "narration": "Whatever the mechanism, the same four conditions must be met, and a system fails if any one of them is missed.",
+    "seconds": 6.938666666666666
+  },
+  {
+    "i": 30,
+    "segment": "text_beat",
+    "narration": "A crack too narrow to wick agent into will not heal. An agent that cures before it spans the gap will not bond both faces.",
+    "seconds": 8.669333333333332
+  },
+  {
+    "i": 31,
+    "segment": "checklist_reveal",
+    "narration": "A bond that forms but cannot carry load restores appearance and not strength, which is why recovery is reported as a fraction of a measured mechanical property rather than as a photograph of a closed crack.",
+    "seconds": 13.488
+  },
+  {
+    "i": 32,
+    "segment": "quote_card",
+    "narration": "What convinced me these were real was that the papers report how much strength came back, not that the crack closed.",
+    "seconds": 7.429333333333333
+  },
+  {
+    "i": 33,
+    "segment": "quote_card",
+    "narration": "A crack you can no longer see and a crack that can carry load again are different claims, and the honest work says which one it is making.",
+    "seconds": 8.048
+  },
+  {
+    "i": 34,
+    "segment": "process_steps",
+    "narration": "Concrete is the material where self-healing has come closest to ordinary use, and it heals by two distinct routes.",
+    "seconds": 7.013333333333334
+  },
+  {
+    "i": 35,
+    "segment": "text_beat",
+    "narration": "The first is autogenous and has always happened: unhydrated cement remains scattered through the material for years, and when a crack lets water reach it, it hydrates and the new solid partially fills the crack.",
+    "seconds": 12.666666666666666
+  },
+  {
+    "i": 36,
+    "segment": "process_steps",
+    "narration": "This works only for narrow cracks and only where unreacted cement remains.",
+    "seconds": 4.762666666666667
+  },
+  {
+    "i": 37,
+    "segment": "text_beat",
+    "narration": "The second route is engineered. Dormant bacterial spores and a calcium-based nutrient are cast into the mix.",
+    "seconds": 6.789333333333333
+  },
+  {
+    "i": 38,
+    "segment": "process_steps",
+    "narration": "The spores survive the highly alkaline environment, and when a crack admits water and oxygen they germinate, metabolise the nutrient, and precipitate calcium carbonate, which fills the crack.",
+    "seconds": 11.877333333333333
+  },
+  {
+    "i": 39,
+    "segment": "text_beat",
+    "narration": "This work is associated with Hendrik Jonkers and colleagues at Delft University of Technology.",
+    "seconds": 5.082666666666666
+  },
+  {
+    "i": 40,
+    "segment": "thermal_ascent",
+    "narration": "Temperature governs almost every one of these systems, which is why laboratory results and field results diverge.",
+    "seconds": 6.992
+  },
+  {
+    "i": 41,
+    "segment": "text_beat",
+    "narration": "Intrinsic polymers depend on chains being mobile enough to reconnect, and mobility falls sharply as temperature drops, so a material that heals within hours on a warm bench may not heal at all outdoors in winter.",
+    "seconds": 13.52
+  },
+  {
+    "i": 42,
+    "segment": "thermal_ascent",
+    "narration": "Capsule agents become more viscous when cold and wick more slowly into a crack.",
+    "seconds": 5.722666666666667
+  },
+  {
+    "i": 43,
+    "segment": "text_beat",
+    "narration": "Bacterial concrete depends on biological metabolism, which slows in cold and stops when water is unavailable.",
+    "seconds": 6.597333333333333
+  },
+  {
+    "i": 44,
+    "segment": "thermal_ascent",
+    "narration": "A stated healing efficiency almost always carries an unstated set of conditions, and the conditions are as much a part of the result as the number is.",
+    "seconds": 8.858666666666666
+  },
+  {
+    "i": 45,
+    "segment": "contrast_pair",
+    "narration": "Crack width is the practical gatekeeper. Autogenous healing in ordinary concrete is generally effective only on very narrow cracks, on the order of a couple of tenths of a millimetre.",
+    "seconds": 10.768
+  },
+  {
+    "i": 46,
+    "segment": "text_beat",
+    "narration": "Bacterial systems have been reported to close wider cracks, into the region approaching a millimetre, because the precipitated carbonate can bridge a larger gap than continued hydration can fill.",
+    "seconds": 11.408
+  },
+  {
+    "i": 47,
+    "segment": "contrast_pair",
+    "narration": "Beyond that, no self-healing mechanism yet in practical use is closing a structurally significant crack.",
+    "seconds": 7.152
+  },
+  {
+    "i": 48,
+    "segment": "text_beat",
+    "narration": "This is the honest scope of the technology today: it is a durability measure that keeps water and chloride out of small cracks and so delays the corrosion of reinforcement. It is not a repair for a damaged structural member.",
+    "seconds": 13.456
+  },
+  {
+    "i": 49,
+    "segment": "source_compare",
+    "narration": "The pattern to hold onto is that healing is transport plus solidification, and every design differs only in where the material comes from.",
+    "seconds": 8.410666666666666
+  },
+  {
+    "i": 50,
+    "segment": "text_beat",
+    "narration": "Capsules store it and spend it. Vascular networks store it and can be refilled.",
+    "seconds": 4.8373333333333335
+  },
+  {
+    "i": 51,
+    "segment": "source_compare",
+    "narration": "Intrinsic systems do not store it because the material's own bonds are the agent.",
+    "seconds": 5.274666666666667
+  },
+  {
+    "i": 52,
+    "segment": "text_beat",
+    "narration": "Each choice buys one property and pays with another: capsules are simple and finite, vascular systems are repeatable and hard to make, intrinsic systems are unlimited and need conditions that structural materials rarely have.",
+    "seconds": 14.757333333333333
+  },
+  {
+    "i": 53,
+    "segment": "source_compare",
+    "narration": "And in every case the reported result is a fraction of a mechanical property recovered, under stated conditions, on a crack of a stated size.",
+    "seconds": 8.122666666666667
+  },
+  {
+    "i": 54,
+    "segment": "text_beat",
+    "narration": "Healing efficiencies in the literature are not directly comparable with one another.",
+    "seconds": 4.592
+  },
+  {
+    "i": 55,
+    "segment": "text_beat",
+    "narration": "Groups use different specimen geometries, different damage modes, different healing times and different temperatures, and a figure quoted for one system under one protocol says little about another.",
+    "seconds": 11.696
+  },
+  {
+    "i": 56,
+    "segment": "ambient_drift",
+    "narration": "Long-term field data is thin: most published results are laboratory measurements over weeks or months, and the durability claims that matter for concrete infrastructure are on the scale of decades.",
+    "seconds": 13.125333333333334
+  },
+  {
+    "i": 57,
+    "segment": "text_beat",
+    "narration": "The 2001 epoxy result and the bacterial concrete work are both well established as demonstrations.",
+    "seconds": 7.8453333333333335
+  },
+  {
+    "i": 58,
+    "segment": "text_beat",
+    "narration": "What remains genuinely open is how these systems behave after years of real weather, real loading, and real neglect.",
+    "seconds": 8.336
+  },
+  {
+    "i": 59,
+    "segment": "contrast_pair",
+    "narration": "When different laboratories test the same capsule formulation, reported healing efficiencies can vary by ten percentage points or more, even when the chemistry is nominally identical.",
+    "seconds": 4.0906666666666665
+  },
+  {
+    "i": 60,
+    "segment": "text_beat",
+    "narration": "Part of that scatter is real differences in how capsules are made and dispersed.",
+    "seconds": 5.434666666666667
+  },
+  {
+    "i": 61,
+    "segment": "contrast_pair",
+    "narration": "Part of it is measurement. There is no single standard for what counts as healed.",
+    "seconds": 4.208
+  },
+  {
+    "i": 62,
+    "segment": "text_beat",
+    "narration": "Some groups measure recovered fracture toughness, some measure recovered tensile strength, some measure stiffness, and these properties do not recover at the same rate or to the same degree.",
+    "seconds": 11.450666666666667
+  },
+  {
+    "i": 63,
+    "segment": "contrast_pair",
+    "narration": "A crack can regain most of its stiffness while recovering far less of its strength, because stiffness depends on the crack being closed and strength depends on the bond across it being as strong as the original matrix. The number reported depends on which question was asked.",
+    "seconds": 17.354666666666667
+  },
+  {
+    "i": 64,
+    "segment": "process_steps",
+    "narration": "The standard approach is to fracture a specimen, let it heal, then fracture it again and compare the loads.",
+    "seconds": 7.408
+  },
+  {
+    "i": 65,
+    "segment": "text_beat",
+    "narration": "But that protocol has variables at every stage. How fast was the first crack opened?",
+    "seconds": 6.544
+  },
+  {
+    "i": 66,
+    "segment": "process_steps",
+    "narration": "How long was healing allowed? Was the specimen held closed, or did the crack faces separate slightly?",
+    "seconds": 5.754666666666667
+  },
+  {
+    "i": 67,
+    "segment": "text_beat",
+    "narration": "Was it heated, and if so to what temperature? All of these affect the result, and papers do not always report them in enough detail for another group to reproduce the test exactly.",
+    "seconds": 11.024
+  },
+  {
+    "i": 68,
+    "segment": "process_steps",
+    "narration": "This is not misconduct; it is the ordinary difficulty of specifying a physical process completely.",
+    "seconds": 6.618666666666667
+  },
+  {
+    "i": 69,
+    "segment": "text_beat",
+    "narration": "But it means that a healing efficiency of seventy-five percent in one paper and sixty percent in another may not be a real difference in the material.",
+    "seconds": 7.941333333333334
+  },
+  {
+    "i": 70,
+    "segment": "contrast_pair",
+    "narration": "A related technology that is often grouped with self-healing is shape memory, and the two are not the same thing.",
+    "seconds": 6.736
+  },
+  {
+    "i": 71,
+    "segment": "text_beat",
+    "narration": "A shape-memory polymer can be deformed, then returned to its original shape by heating or some other trigger, but that does not mean a crack has been repaired.",
+    "seconds": 9.437333333333333
+  },
+  {
+    "i": 72,
+    "segment": "contrast_pair",
+    "narration": "The crack may close because the bulk shape has been restored, but unless the crack faces have bonded, the material has not regained its strength.",
+    "seconds": 8.133333333333333
+  },
+  {
+    "i": 73,
+    "segment": "text_beat",
+    "narration": "Shape recovery and strength recovery are independent properties. Some intrinsic self-healing polymers also have shape memory, which makes for compelling demonstrations: a cut specimen is heated, the cut closes, and the piece looks whole.",
+    "seconds": 14.448
+  },
+  {
+    "i": 74,
+    "segment": "contrast_pair",
+    "narration": "But whether it can carry the load it carried before the cut is a separate measurement, and it is that measurement that decides whether healing has occurred in the structural sense.",
+    "seconds": 8.752
+  },
+  {
+    "i": 75,
+    "segment": "checklist_reveal",
+    "narration": "In capsule systems, the catalyst is as critical as the agent, and its placement is a constrained optimization problem.",
+    "seconds": 7.461333333333333
+  },
+  {
+    "i": 76,
+    "segment": "text_beat",
+    "narration": "It has to be distributed finely enough that a crack of any orientation will encounter it within the distance the agent can wick.",
+    "seconds": 6.938666666666666
+  },
+  {
+    "i": 77,
+    "segment": "checklist_reveal",
+    "narration": "But it also has to remain inert until the agent is released, which means it cannot catalyse any agent that leaks from a capsule during mixing or curing of the bulk material.",
+    "seconds": 10.192
+  },
+  {
+    "i": 78,
+    "segment": "text_beat",
+    "narration": "And it has to be chemically compatible with the matrix for the entire service life, which for a polymer composite might be decades.",
+    "seconds": 8.165333333333333
+  },
+  {
+    "i": 79,
+    "segment": "checklist_reveal",
+    "narration": "Ruthenium-based Grubbs catalysts meet these requirements for dicyclopentadiene in epoxy, but they are expensive and sensitive to moisture.",
+    "seconds": 8.581333333333333
+  },
+  {
+    "i": 80,
+    "segment": "text_beat",
+    "narration": "Finding a catalyst that is cheap, stable, finely dispersible, and inactive until needed is as hard as finding the agent itself, and many otherwise promising agent chemistries have no suitable catalyst.",
+    "seconds": 14.832
+  },
+  {
+    "i": 81,
+    "segment": "text_beat",
+    "narration": "A self-healing material does not repair itself in the way living tissue does.",
+    "seconds": 4.954666666666666
+  },
+  {
+    "i": 82,
+    "segment": "ambient_drift",
+    "narration": "It carries the repair with it, spends it once or spends it slowly, and buys time.",
+    "seconds": 5.477333333333333
+  },
+  {
+    "i": 83,
+    "segment": "text_beat",
+    "narration": "That is a smaller claim than the name suggests, and it is still a real one.",
+    "seconds": 3.8666666666666667
+  }
+]

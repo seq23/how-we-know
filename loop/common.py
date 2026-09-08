@@ -70,6 +70,18 @@ EXIT_OK = 0
 EXIT_FAIL = 1
 EXIT_STOP = 3
 
+# How each disposition heads its Actions job summary. Named once: three of them
+# now exit 0, and a reader who sees "NAMED STOP" over a green job learns to
+# distrust the banner rather than the state.
+_SUMMARY_HEAD = {"self_resolving": "🛑 NAMED STOP",
+                 "held": "⏸️ HELD STOP",
+                 "owner_action": "⚠️ WAITING ON YOU"}
+
+# Dispositions that do NOT fail the job. Named once: three places used to test
+# `disp == "self_resolving"` and a fourth disposition would have failed jobs in
+# whichever of them was missed.
+GREEN_DISPOSITIONS = ("self_resolving", "held", "owner_action")
+
 
 # ---------------------------------------------------------------- primitives
 
@@ -113,6 +125,59 @@ class CorruptState(Exception):
         self.why = why
 
 
+def restore_from_origin(path) -> str | None:
+    """Put one tracked, DERIVED state file back the way origin/main has it.
+
+    THE SELF-HEAL FOR CorruptState. The stop this replaces already knew the
+    answer — its own unblock text was `git checkout origin/main -- <path>` —
+    and it made a human type it. These files are derived accounting (the
+    ledger, the quota, the streaks); the committed copy is authoritative and
+    losing an unpushed local edit to a file that is a diff rather than JSON
+    loses nothing that was readable anyway.
+
+    Deliberately narrow, and it is the narrowness that makes it safe:
+      * only paths under loop/state/, so a corrupt script or plan is untouched;
+      * only files git already TRACKS, so a file that exists solely on this
+        machine is never silently deleted;
+      * `git fetch` first, so "origin/main" is not a stale ref;
+      * and it VERIFIES the restored bytes parse as JSON before claiming to
+        have healed anything. A restore that restores garbage is worse than
+        the stop.
+
+    Returns a note describing what it did, or None if it could not heal.
+    """
+    p = Path(path).resolve()
+    try:
+        rel = p.relative_to(ROOT)
+    except ValueError:
+        return None
+    if not str(rel).startswith("loop/state/"):
+        return None
+    try:
+        tracked = subprocess.run(
+            ["git", "ls-files", "--error-unmatch", "--", str(rel)],
+            cwd=ROOT, capture_output=True, text=True, timeout=30)
+        if tracked.returncode != 0:
+            return None
+        branch = os.environ.get("GITHUB_REF_NAME") or "main"
+        subprocess.run(["git", "fetch", "--quiet", "origin", branch],
+                       cwd=ROOT, capture_output=True, text=True, timeout=120)
+        for ref in (f"origin/{branch}", "HEAD"):
+            r = subprocess.run(["git", "checkout", ref, "--", str(rel)],
+                               cwd=ROOT, capture_output=True, text=True,
+                               timeout=60)
+            if r.returncode != 0:
+                continue
+            try:
+                json.loads(p.read_text())
+            except (json.JSONDecodeError, OSError):
+                continue          # the committed copy is bad too: do not lie
+            return f"restored {rel} from {ref}"
+    except (subprocess.SubprocessError, OSError):
+        return None
+    return None
+
+
 def read_json(path, default=None):
     p = Path(path)
     if not p.exists():
@@ -120,16 +185,28 @@ def read_json(path, default=None):
             raise FileNotFoundError(p)
         return default
     text = p.read_text()
+    why = None
     for line in text.splitlines():
         if line.startswith(CONFLICT_MARKER):
-            raise CorruptState(
-                p, "it still contains git conflict markers. A lane rebased "
+            why = ("it still contains git conflict markers. A lane rebased "
                    "onto a concurrent write and the conflict was never "
                    "resolved, so this file is a diff, not JSON")
-    try:
-        return json.loads(text)
-    except json.JSONDecodeError as e:
-        raise CorruptState(p, f"it is not valid JSON ({e})") from e
+            break
+    if why is None:
+        try:
+            return json.loads(text)
+        except json.JSONDecodeError as e:
+            why = f"it is not valid JSON ({e})"
+
+    # HEAL BEFORE STOPPING. Every previous version of this raised immediately
+    # and printed the one-line fix for a person to run; the file is derived and
+    # committed, so the machine can run it. Only if the restore fails — or
+    # restores something equally unreadable — is this still a named stop.
+    healed = restore_from_origin(p)
+    if healed:
+        print(f"  [heal] {p.name} was unreadable ({why}); {healed}", flush=True)
+        return json.loads(p.read_text())
+    raise CorruptState(p, why)
 
 
 def write_json(path, obj):
@@ -247,6 +324,76 @@ def streak_clear(stage: str) -> None:
         write_json(_streaks_path(), d)
 
 
+# THE THIRD DISPOSITION, added 2026-09-08 on the owner's instruction: "I should
+# never get a named stop -- everything should be automated. It should self heal."
+#
+# Taken literally that would mean deleting the taxonomy, and it must not: some
+# halts are correct and some conditions genuinely cannot be healed by a machine
+# (a revoked consent, a platform-side account flag). What she is actually
+# describing is the failure mode where a CORRECT halt is delivered as a RED CI
+# run in her inbox. Two answers, and they are different:
+#
+#   self_resolving  nobody need do anything. Green, silent, capped.
+#   owner_action    only she can clear it, and no amount of retrying will.
+#                   ALSO GREEN -- a red run every day for a thing she will fix
+#                   when she next sits down is the worst of both -- but it is
+#                   written into loop/state/owner_action.json and printed at the
+#                   TOP of the Sunday digest, so the fact reaches her as
+#                   information rather than as a failed build.
+#   needs_human     a defect. Red, as before, and still the default.
+#
+# The escalation cap is what keeps owner_action honest: an external block that
+# is still there after `max_consecutive` runs is no longer "she will get to it",
+# it is a stall, and it goes red.
+def _owner_action_path() -> Path:
+    """Where the owner-action record lives.
+
+    Inside `_stops_dir()` deliberately, so `LOOP_STOPS_DIR` redirects it the
+    same way it redirects stop records. The test suite runs real stages that
+    take real stops; without this, a local `run_all.py` would write a live
+    "waiting on you" row into the committed state and it would appear at the
+    top of her next digest. That exact class of leak already cost a day once,
+    through _streaks.json.
+    """
+    return _stops_dir() / "owner_action.json"
+
+
+def _match_rule(section, code: str):
+    """One section's rule for `code`, exact first, then a `PREFIX*` wildcard.
+
+    Wildcards exist for the two code FAMILIES the loop generates rather than
+    writes: `LANE_NOT_ARMED_<LANE>` from loop/arming.py and
+    `ANALYTICS_HTTP_<status>` from loop/measure.py. Without them a new lane or
+    a new HTTP status would silently take the needs-a-human default and page
+    her — the failure this taxonomy exists to prevent, arriving through the one
+    door the taxonomy could not name in advance. Exact keys always win, so
+    `ANALYTICS_HTTP_5*` can be transient while `ANALYTICS_HTTP_403` is not.
+    """
+    if not section:
+        return None
+    if code in section:
+        return section[code]
+    best = None
+    for key, rule in section.items():
+        if key.endswith("*") and code.startswith(key[:-1]):
+            if best is None or len(key) > len(best[0]):
+                best = (key, rule)
+    return best[1] if best else None
+
+
+# BOTH ANSWERS TO "DO NOT PAGE HER AGAIN", AND THEY ARE NOT THE SAME ANSWER.
+#
+# `held` (loop/held.py, landed on main the same day) is the GENERIC one: any
+# stop in any lane earns it by naming exactly what it waits on and how to clear
+# it, and it pages ONCE and then stays quiet until the hold grows or goes
+# stale. `owner_action` is the CLASSIFIED one: a short list of codes that only
+# she can clear -- a revoked consent, a locked channel, an unfunded key -- which
+# never page at all, because a red build tells her nothing she cannot read in
+# Sunday's digest and she cannot act on it any faster for having been woken.
+#
+# They compose rather than compete. owner_action is consulted first for the
+# sixteen codes it names; every other human-clearable stop falls through to the
+# hold, which is open to all of them. Nothing is classified in both.
 def disposition(stage: str, code: str, detail, streak: int,
                 held_items=None, unblock: str = "") -> tuple[str, str]:
     """Classify one stop: ("self_resolving" | "held" | "needs_human", why).
@@ -265,7 +412,9 @@ def disposition(stage: str, code: str, detail, streak: int,
     would otherwise have paged.
     """
     policy = stop_policy()
-    rule = (policy.get("self_resolving") or {}).get(code)
+    kind, rule = "self_resolving", _match_rule(policy.get("self_resolving"), code)
+    if not rule:
+        kind, rule = "owner_action", _match_rule(policy.get("owner_action"), code)
     if not rule:
         # THE HOLD. Not an exemption for this code — an offer open to every
         # code in every lane, on one condition: the stop must name exactly
@@ -290,9 +439,44 @@ def disposition(stage: str, code: str, detail, streak: int,
                 f"'{code}' has now stopped {stage} on {streak} consecutive runs "
                 f"(limit {cap}), so it is not resolving itself. "
                 + str(rule.get("escalation", "")))
+    if kind == "owner_action":
+        return ("owner_action",
+                f"{rule.get('why', '')} Only she can clear this, and retrying "
+                f"cannot, so the run stays GREEN and the fact is carried to the "
+                f"top of the Sunday digest instead of into her inbox as a failed "
+                f"build. (run {streak} of at most {cap} before this escalates.)")
     return ("self_resolving",
             f"{rule.get('why', '')} (run {streak} of at most {cap} before this "
             f"escalates to a human.)")
+
+
+def owner_action_record(rec: dict) -> None:
+    """Persist one owner_action stop so something other than a job log carries it.
+
+    Keyed by stage, because a stage has at most one live blocking condition and
+    the newest is the true one. Committed by bin/loop-stage.sh with the rest of
+    loop/, so the digest reads it from the repository rather than from a runner
+    that no longer exists.
+    """
+    p = _owner_action_path()
+    d = read_json(p, default={})
+    d[rec["stage"]] = {k: rec.get(k) for k in
+                       ("code", "message", "unblock", "at", "week",
+                        "consecutive")}
+    write_json(p, d)
+
+
+def owner_action_clear(stage: str) -> None:
+    """The stage worked. Whatever was blocking it is gone; stop reporting it."""
+    p = _owner_action_path()
+    d = read_json(p, default={})
+    if d.pop(stage, None) is not None:
+        write_json(p, d)
+
+
+def owner_actions() -> dict:
+    """Everything currently waiting on the owner. Read by loop/digest.py."""
+    return read_json(_owner_action_path(), default={})
 
 
 # ---------------------------------------------------------------- the stage
@@ -401,6 +585,7 @@ class Stage:
     def _emit_ok(self):
         self._clear_stop()
         streak_clear(self.name)
+        owner_action_clear(self.name)
         # A stage that did real work is holding on nothing. Dropping its rows
         # is what makes a RECURRENCE loud: the next time this stage holds, it
         # has never been reported, so it pages. Symmetrical with the streak.
@@ -432,21 +617,33 @@ class Stage:
             "disposition_why": why,
             "consecutive": streak,
             "held_items": sorted(s.held_items),
-            "exit_code": EXIT_OK if disp in ("self_resolving", "held")
-                         else EXIT_STOP,
+            "exit_code": EXIT_OK if disp in GREEN_DISPOSITIONS else EXIT_STOP,
             "work_done_before_stop": self.units,
             "notes": self.notes,
         }
         write_json(_stops_dir() / f"{self.week}-{self.name}.json", rec)
+        if disp == "owner_action":
+            owner_action_record(rec)
+        else:
+            owner_action_clear(self.name)
         verdict = {
             "self_resolving": "SELF-RESOLVING — this run exits 0 and pages nobody",
             "held": "HELD — already reported and unchanged, so this run exits 0 "
                     "and pages nobody. It is NOT resolved.",
+            "owner_action":
+                "WAITING ON THE OWNER — this run exits 0 and does NOT page her; "
+                "it is recorded in the owner-action file and appears at the TOP "
+                "of the Sunday digest. It is NOT resolved.",
         }.get(disp, "NEEDS A HUMAN — this run exits 3 and opens an issue")
         # A HELD stop is exit 0, so the banner is the ONLY thing standing
         # between it and a silent skip. It says HELD STOP, not NAMED STOP, so
         # nobody reading a log can mistake "she has been told" for "it is
         # fixed", and it lists every item it is waiting on by name.
+        # `held` renames the banner because "NAMED STOP" over a green job
+        # reads as a contradiction. `owner_action` does NOT: it is still a
+        # named stop in every sense, it simply never pages, and two test
+        # suites plus every runbook grep for that exact token. The verdict and
+        # label lines below carry the difference.
         head = "HELD STOP " if disp == "held" else "NAMED STOP"
         holding = ""
         if disp == "held" and s.held_items:
@@ -481,10 +678,12 @@ class Stage:
         if not _same_stream(sys.stdout, sys.stderr):
             print(banner, file=sys.stderr, flush=True)
         label = {"self_resolving": "self-resolving",
-                 "held": "HELD — reported, awaiting the owner"}.get(
+                 "held": "HELD — reported, awaiting the owner",
+                 "owner_action": "waiting on you (green, never paged)"
+                 }.get(
                      disp, "needs a human")
         summary(
-            f"### {'⏸️ HELD STOP' if disp == 'held' else '🛑 NAMED STOP'} — "
+            f"### {_SUMMARY_HEAD.get(disp, '🛑 NAMED STOP')} — "
             f"`{s.code}`\n"
             f"**stage** `{self.name}` · **week** `{self.week}` · "
             f"**{label}**"
@@ -506,7 +705,7 @@ class Stage:
                 fh.write(f"stop_week={self.week}\n")
                 fh.write(f"stop_message={s.message}\n")
                 fh.write(f"stop_disposition={disp}\n")
-        return EXIT_OK if disp in ("self_resolving", "held") else EXIT_STOP
+        return EXIT_OK if disp in GREEN_DISPOSITIONS else EXIT_STOP
 
     def _clear_stop(self):
         f = _stops_dir() / f"{self.week}-{self.name}.json"

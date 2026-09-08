@@ -1,0 +1,123 @@
+{
+  "episode": "what-is-kevlar-made-of",
+  "beats": 84,
+  "plan_source": "plans/what-is-kevlar-made-of.json",
+  "timing": "audio",
+  "beats_measured": 84,
+  "durations_recorded": 84,
+  "duration_s": 685.397,
+  "cues": 184,
+  "chapters_real": 12,
+  "chapters_published": 11,
+  "chapter_notes": [
+    "merged 1 chapter(s) under 10s: Title card (1.9s)"
+  ],
+  "drift": {
+    "mean_abs_s": 13.9,
+    "worst_abs_s": 25.7,
+    "rows": [
+      {
+        "title": "Cold open",
+        "hand": "00:00",
+        "real": "0:00",
+        "drift_s": 0.0
+      },
+      {
+        "title": "Title card",
+        "hand": "00:38",
+        "real": "0:43",
+        "drift_s": 5.2
+      },
+      {
+        "title": "The polymer forms in solution at room temperature",
+        "hand": "00:41",
+        "real": "0:45",
+        "drift_s": 4.1
+      },
+      {
+        "title": "Spinning aligns the chains further",
+        "hand": "02:31",
+        "real": "2:21",
+        "drift_s": -9.3
+      },
+      {
+        "title": "The fiber is aromatic and resistant to most solvents",
+        "hand": "04:18",
+        "real": "4:01",
+        "drift_s": -16.9
+      },
+      {
+        "title": "Ultraviolet light degrades the surface",
+        "hand": "05:42",
+        "real": "5:36",
+        "drift_s": -5.8
+      },
+      {
+        "title": "Producer POV",
+        "hand": "06:52",
+        "real": "6:30",
+        "drift_s": -22.0
+      },
+      {
+        "title": "Different grades optimize for different properties",
+        "hand": "07:09",
+        "real": "6:44",
+        "drift_s": -24.8
+      },
+      {
+        "title": "The fiber is woven or laminated into structures",
+        "hand": "08:35",
+        "real": "8:09",
+        "drift_s": -25.6
+      },
+      {
+        "title": "What to notice in the edit",
+        "hand": "10:02",
+        "real": "9:36",
+        "drift_s": -25.7
+      },
+      {
+        "title": "Evidence limit",
+        "hand": "10:50",
+        "real": "10:31",
+        "drift_s": -18.8
+      },
+      {
+        "title": "Closing",
+        "hand": "11:20",
+        "real": "11:11",
+        "drift_s": -9.0
+      }
+    ]
+  },
+  "ffprobe": {
+    "file": "renders/what-is-kevlar-made-of-final.mp4",
+    "video_s": 685.397,
+    "last_cue_end_s": 685.397,
+    "delta_s": 0.0,
+    "ok": true
+  },
+  "text_checks": {
+    "beats_json": {
+      "checked": 84,
+      "mismatched": []
+    },
+    "script_text": {
+      "checked": 84,
+      "absent_from_narration": []
+    }
+  },
+  "script_chapters": {
+    "written": true,
+    "changed": true,
+    "removed_lines": [
+      "Title card"
+    ],
+    "chapters_not_in_script": []
+  },
+  "artifacts": [
+    "captions/what-is-kevlar-made-of.vtt",
+    "captions/what-is-kevlar-made-of.srt",
+    "captions/what-is-kevlar-made-of.chapters.txt"
+  ]
+}

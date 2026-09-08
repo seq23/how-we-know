@@ -1,297 +1,356 @@
 [
- {
-  "i": 0,
-  "segment": "stat_card",
-  "narration": "Hydrothermal vent fluid can exceed 340 degrees Celsius and remain liquid. The boiling point you learned at sea level is not a universal switch. Pressure moves it."
- },
- {
-  "i": 1,
-  "segment": "text_beat",
-  "narration": "Why does black-smoker water not boil?"
- },
- {
-  "i": 2,
-  "segment": "pressure_gauge",
-  "narration": "The familiar boiling point of water, one hundred degrees Celsius, belongs to a specific pressure: roughly one atmosphere at sea level."
- },
- {
-  "i": 3,
-  "segment": "evidence_chain",
-  "narration": "Boiling begins when vapor bubbles can exist against the surrounding pressure. Increase that pressure and the temperature required for stable vapor rises."
- },
- {
-  "i": 4,
-  "segment": "evidence_chain",
-  "narration": "Hydrothermal vents lie beneath kilometers of seawater. At two or three thousand meters, the surrounding pressure is hundreds of atmospheres."
- },
- {
-  "i": 5,
-  "segment": "text_beat",
-  "narration": "NOAA reports vent fluid above 340 degrees Celsius, and some measured systems are hotter."
- },
- {
-  "i": 6,
-  "segment": "evidence_chain",
-  "narration": "Under that pressure the fluid can remain dense and liquid-like instead of flashing into steam the way it would in an open pot."
- },
- {
-  "i": 7,
-  "segment": "checklist_reveal",
-  "narration": "Salts and dissolved chemicals alter the phase behavior further. The first open loop is origin: the vent is not a pipe connected to magma. The fluid usually begins as ordinary seawater entering fractured ocean crust."
- },
- {
-  "i": 8,
-  "segment": "quote_card",
-  "narration": "I used to hear 'water hotter than boiling that does not boil' as a magic trick. The pressure explanation makes it more impressive, not less."
- },
- {
-  "i": 9,
-  "segment": "text_beat",
-  "narration": "Seawater percolates down through cracks near spreading centers and volcanic regions. As it travels through hot rock, it warms and reacts chemically."
- },
- {
-  "i": 10,
-  "segment": "checklist_reveal",
-  "narration": "Magnesium can be removed. Metals and sulfur-bearing compounds enter solution. The heated fluid becomes buoyant and rises through fractures until it exits the seafloor."
- },
- {
-  "i": 11,
-  "segment": "contrast_pair",
-  "narration": "The route can extend through a complex subsurface network, so temperature and chemistry differ from vent to vent. The chimney is built by the fluid it channels."
- },
- {
-  "i": 12,
-  "segment": "contrast_pair",
-  "narration": "This is why a black smoker is not a miniature underwater volcano ejecting ash."
- },
- {
-  "i": 13,
-  "segment": "text_beat",
-  "narration": "It is a hydrothermal circulation outlet. The pressure keeps the fluid from ordinary boiling, while the rock-water reactions load it with dissolved material."
- },
- {
-  "i": 14,
-  "segment": "contrast_pair",
-  "narration": "The next loop begins the instant that clear, hot, mineral-rich fluid meets near-freezing seawater and appears to turn black."
- },
- {
-  "i": 15,
-  "segment": "ambient_drift",
-  "narration": "The dark plume consists largely of tiny metal-sulfide particles. When the hot fluid mixes with cold, oxygenated seawater, dissolved metals precipitate."
- },
- {
-  "i": 16,
-  "segment": "ambient_drift",
-  "narration": "The particles scatter light like smoke and settle onto chimney surfaces, building structures that can grow, branch, collapse, and reform."
- },
- {
-  "i": 17,
-  "segment": "contrast_pair",
-  "narration": "Black smokers are commonly rich in iron sulfides; white smokers carry different mineral mixtures that produce a lighter appearance."
- },
- {
-  "i": 18,
-  "segment": "definition_card",
-  "narration": "There is no combustion. Nothing needs oxygen to burn. The word smoker is visual shorthand. Chemistry also changes rapidly across centimeters."
- },
- {
-  "i": 19,
-  "segment": "contrast_pair",
-  "narration": "Fluid near the outlet may be lethal to most animals, while a short distance away mixing lowers temperature and supplies both reduced chemicals and oxygen."
- },
- {
-  "i": 20,
-  "segment": "evidence_chain",
-  "narration": "That sharp gradient creates the energy opportunity for microbes. The unresolved question is how an ecosystem can flourish around a source that is simultaneously hot, toxic, and completely separated from sunlight."
- },
- {
-  "i": 21,
-  "segment": "text_beat",
-  "narration": "Chemosynthetic microbes oxidize compounds such as hydrogen sulfide and use the released energy to fix carbon."
- },
- {
-  "i": 22,
-  "segment": "checklist_reveal",
-  "narration": "Some live freely in microbial mats. Others live inside tubeworms, mussels, clams, or on the bodies of crustaceans."
- },
- {
-  "i": 23,
-  "segment": "text_beat",
-  "narration": "The visible animals position themselves in mixing zones where chemicals are available but temperature and toxicity remain tolerable."
- },
- {
-  "i": 24,
-  "segment": "contrast_pair",
-  "narration": "A camera may frame a tubeworm beside a black plume, making it look as though the animal is bathing in 340-degree water."
- },
- {
-  "i": 25,
-  "segment": "text_beat",
-  "narration": "It is not. Temperature can fall dramatically over a short distance as vent fluid mixes with seawater. The most accurate story therefore joins physics, geology, chemistry, and biology."
- },
- {
-  "i": 26,
-  "segment": "process_steps",
-  "narration": "Pressure raises the boiling point. Crustal circulation heats and alters seawater. Cooling precipitates the mineral smoke."
- },
- {
-  "i": 27,
-  "segment": "text_beat",
-  "narration": "Microbial metabolism captures chemical energy. Next comes an animal living far deeper than most vent communities: a snailfish recorded at 8,336 meters."
- },
- {
-  "i": 28,
-  "segment": "magnitude_bar",
-  "narration": "At sea level, water boils near 100 degrees Celsius because its vapor pressure can match the surrounding atmosphere."
- },
- {
-  "i": 29,
-  "segment": "text_beat",
-  "narration": "Deep underwater, the surrounding pressure is much greater, so liquid water can remain stable at far higher temperatures."
- },
- {
-  "i": 30,
-  "segment": "magnitude_bar",
-  "narration": "Seawater moves through cracks, is heated near magma, reacts with rock, and rises."
- },
- {
-  "i": 31,
-  "segment": "text_beat",
-  "narration": "When the hot fluid meets near-freezing seawater, dissolved minerals precipitate into dark particles and build black-smoker chimneys."
- },
- {
-  "i": 32,
-  "segment": "ambient_drift",
-  "narration": "The hottest fluid is not the habitat most animals occupy. Life clusters where vent fluid mixes with cold seawater and creates gradients in temperature and chemistry."
- },
- {
-  "i": 33,
-  "segment": "ambient_drift",
-  "narration": "Microbes use reduced chemicals from the vent system to build organic matter."
- },
- {
-  "i": 34,
-  "segment": "evidence_chain",
-  "narration": "Larger organisms depend directly or indirectly on that microbial production. The energy story therefore sits at the boundary, not inside the hottest jet."
- },
- {
-  "i": 35,
-  "segment": "checklist_reveal",
-  "narration": "Black smokers also change with time. Flow paths clog or shift. Chimneys grow, break, and become inactive."
- },
- {
-  "i": 36,
-  "segment": "checklist_reveal",
-  "narration": "A vent field can contain hot focused flow, diffuse seepage, and older mineral structures at once."
- },
- {
-  "i": 37,
-  "segment": "text_beat",
-  "narration": "The video should avoid one perfect chimney standing in for every vent."
- },
- {
-  "i": 38,
-  "segment": "checklist_reveal",
-  "narration": "Use the cutaway to show circulation through cracks, then return to the seafloor and show multiple mixing zones."
- },
- {
-  "i": 39,
-  "segment": "text_beat",
-  "narration": "This makes the non-boiling water part of a larger system rather than a single physics trick."
- },
- {
-  "i": 40,
-  "segment": "stat_card",
-  "narration": "Use 'can exceed 340 degrees Celsius' rather than turning one value into the temperature of every black smoker."
- },
- {
-  "i": 41,
-  "segment": "text_beat",
-  "narration": "Pair it with the pressure explanation and a visible mixing gradient. The animals belong around the gradient, not inside the hottest fluid."
- },
- {
-  "i": 42,
-  "segment": "stat_card",
-  "narration": "That correction should survive into the thumbnail, description, and chapters so the packaging does not overstate what the script carefully explains."
- },
- {
-  "i": 43,
-  "segment": "text_beat",
-  "narration": "The plume looks like smoke because minerals precipitate when hot fluid meets cold seawater."
- },
- {
-  "i": 44,
-  "segment": "text_beat",
-  "narration": "It is not combustion. That distinction belongs in the first explanation, not buried at the end."
- },
- {
-  "i": 45,
-  "segment": "evidence_chain",
-  "narration": "The same visual can then show chimney growth: dissolved material becomes particles, particles settle, and layers of mineral structure accumulate around the flow."
- },
- {
-  "i": 46,
-  "segment": "ambient_drift",
-  "narration": "Do not use stock footage of smoke, fire, or lava to illustrate the plume."
- },
- {
-  "i": 47,
-  "segment": "ambient_drift",
-  "narration": "Those images teach combustion and open-air boiling, which are exactly the wrong mechanisms."
- },
- {
-  "i": 48,
-  "segment": "text_beat",
-  "narration": "Original mineral-particle animation is both safer for copyright and better science. The final shot should move from the hot jet into the cooler biological zone, making the boundary between geology and life visible."
- },
- {
-  "i": 49,
-  "segment": "text_beat",
-  "narration": "It also gives the viewer a clean mental model: pressure changes boiling conditions, chemistry changes the water, cooling reveals the minerals, and gradients make life possible."
- },
- {
-  "i": 50,
-  "segment": "ambient_drift",
-  "narration": "It also gives the viewer a clean mental model: pressure changes boiling conditions, chemistry changes the water, cooling reveals the minerals, and gradients make life possible."
- },
- {
-  "i": 51,
-  "segment": "pressure_gauge",
-  "narration": "Use a pressure-versus-boiling diagram and a cutaway through ocean crust. Do not depict the vent as a hollow underwater volcano."
- },
- {
-  "i": 52,
-  "segment": "process_steps",
-  "narration": "Show seawater circulation, heating, chemical reaction, and mineral precipitation. The black plume is a particle cloud, not smoke from combustion."
- },
- {
-  "i": 53,
-  "segment": "text_beat",
-  "narration": "This physics-first structure should look completely different from the preceding animal episode."
- },
- {
-  "i": 54,
-  "segment": "contrast_pair",
-  "narration": "Vent temperatures vary, and NOAA's current public fact page says seawater may exceed 340\u00b0C\u2014not that every black smoker is exactly 340\u00b0C or 400\u00b0C."
- },
- {
-  "i": 55,
-  "segment": "checklist_reveal",
-  "narration": "The fluid can also enter supercritical regimes depending on pressure, temperature, and salinity; this short script does not model that full phase chemistry."
- },
- {
-  "i": 56,
-  "segment": "text_beat",
-  "narration": "Animals do not live inside the hottest jet. They occupy gradients and mixing zones around the vent."
- },
- {
-  "i": 57,
-  "segment": "depth_descent",
-  "narration": "Black-smoker water does not ignore boiling. It obeys a different pressure condition."
- },
- {
-  "i": 58,
-  "segment": "text_beat",
-  "narration": "The hot fluid, cold ocean, and dissolved minerals meet in seconds\u2014and the chimney records that meeting layer by layer."
- }
+  {
+    "i": 0,
+    "segment": "stat_card",
+    "narration": "Hydrothermal vent fluid can exceed 340 degrees Celsius and remain liquid. The boiling point you learned at sea level is not a universal switch. Pressure moves it.",
+    "seconds": 12.112
+  },
+  {
+    "i": 1,
+    "segment": "text_beat",
+    "narration": "Why does black-smoker water not boil?",
+    "seconds": 2.9066666666666667
+  },
+  {
+    "i": 2,
+    "segment": "pressure_gauge",
+    "narration": "The familiar boiling point of water, one hundred degrees Celsius, belongs to a specific pressure: roughly one atmosphere at sea level.",
+    "seconds": 7.717333333333333
+  },
+  {
+    "i": 3,
+    "segment": "evidence_chain",
+    "narration": "Boiling begins when vapor bubbles can exist against the surrounding pressure. Increase that pressure and the temperature required for stable vapor rises.",
+    "seconds": 8.069333333333333
+  },
+  {
+    "i": 4,
+    "segment": "evidence_chain",
+    "narration": "Hydrothermal vents lie beneath kilometers of seawater. At two or three thousand meters, the surrounding pressure is hundreds of atmospheres.",
+    "seconds": 8.773333333333333
+  },
+  {
+    "i": 5,
+    "segment": "text_beat",
+    "narration": "NOAA reports vent fluid above 340 degrees Celsius, and some measured systems are hotter.",
+    "seconds": 6.778666666666667
+  },
+  {
+    "i": 6,
+    "segment": "evidence_chain",
+    "narration": "Under that pressure the fluid can remain dense and liquid-like instead of flashing into steam the way it would in an open pot.",
+    "seconds": 7.389333333333333
+  },
+  {
+    "i": 7,
+    "segment": "checklist_reveal",
+    "narration": "Salts and dissolved chemicals alter the phase behavior further. The first open loop is origin: the vent is not a pipe connected to magma. The fluid usually begins as ordinary seawater entering fractured ocean crust.",
+    "seconds": 15.536
+  },
+  {
+    "i": 8,
+    "segment": "quote_card",
+    "narration": "I used to hear 'water hotter than boiling that does not boil' as a magic trick. The pressure explanation makes it more impressive, not less.",
+    "seconds": 7.28
+  },
+  {
+    "i": 9,
+    "segment": "text_beat",
+    "narration": "Seawater percolates down through cracks near spreading centers and volcanic regions. As it travels through hot rock, it warms and reacts chemically.",
+    "seconds": 9.178666666666667
+  },
+  {
+    "i": 10,
+    "segment": "checklist_reveal",
+    "narration": "Magnesium can be removed. Metals and sulfur-bearing compounds enter solution. The heated fluid becomes buoyant and rises through fractures until it exits the seafloor.",
+    "seconds": 10.96
+  },
+  {
+    "i": 11,
+    "segment": "contrast_pair",
+    "narration": "The route can extend through a complex subsurface network, so temperature and chemistry differ from vent to vent. The chimney is built by the fluid it channels.",
+    "seconds": 9.68
+  },
+  {
+    "i": 12,
+    "segment": "contrast_pair",
+    "narration": "This is why a black smoker is not a miniature underwater volcano ejecting ash.",
+    "seconds": 5.413333333333333
+  },
+  {
+    "i": 13,
+    "segment": "text_beat",
+    "narration": "It is a hydrothermal circulation outlet. The pressure keeps the fluid from ordinary boiling, while the rock-water reactions load it with dissolved material.",
+    "seconds": 10.949333333333334
+  },
+  {
+    "i": 14,
+    "segment": "contrast_pair",
+    "narration": "The next loop begins the instant that clear, hot, mineral-rich fluid meets near-freezing seawater and appears to turn black.",
+    "seconds": 8.805333333333333
+  },
+  {
+    "i": 15,
+    "segment": "ambient_drift",
+    "narration": "The dark plume consists largely of tiny metal-sulfide particles. When the hot fluid mixes with cold, oxygenated seawater, dissolved metals precipitate.",
+    "seconds": 10.117333333333333
+  },
+  {
+    "i": 16,
+    "segment": "ambient_drift",
+    "narration": "The particles scatter light like smoke and settle onto chimney surfaces, building structures that can grow, branch, collapse, and reform.",
+    "seconds": 8.805333333333333
+  },
+  {
+    "i": 17,
+    "segment": "contrast_pair",
+    "narration": "Black smokers are commonly rich in iron sulfides; white smokers carry different mineral mixtures that produce a lighter appearance.",
+    "seconds": 6.704
+  },
+  {
+    "i": 18,
+    "segment": "definition_card",
+    "narration": "There is no combustion. Nothing needs oxygen to burn. The word smoker is visual shorthand. Chemistry also changes rapidly across centimeters.",
+    "seconds": 9.68
+  },
+  {
+    "i": 19,
+    "segment": "contrast_pair",
+    "narration": "Fluid near the outlet may be lethal to most animals, while a short distance away mixing lowers temperature and supplies both reduced chemicals and oxygen.",
+    "seconds": 10.256
+  },
+  {
+    "i": 20,
+    "segment": "evidence_chain",
+    "narration": "That sharp gradient creates the energy opportunity for microbes. The unresolved question is how an ecosystem can flourish around a source that is simultaneously hot, toxic, and completely separated from sunlight.",
+    "seconds": 13.114666666666666
+  },
+  {
+    "i": 21,
+    "segment": "text_beat",
+    "narration": "Chemosynthetic microbes oxidize compounds such as hydrogen sulfide and use the released energy to fix carbon.",
+    "seconds": 8.389333333333333
+  },
+  {
+    "i": 22,
+    "segment": "checklist_reveal",
+    "narration": "Some live freely in microbial mats. Others live inside tubeworms, mussels, clams, or on the bodies of crustaceans.",
+    "seconds": 8.272
+  },
+  {
+    "i": 23,
+    "segment": "text_beat",
+    "narration": "The visible animals position themselves in mixing zones where chemicals are available but temperature and toxicity remain tolerable.",
+    "seconds": 7.205333333333333
+  },
+  {
+    "i": 24,
+    "segment": "contrast_pair",
+    "narration": "A camera may frame a tubeworm beside a black plume, making it look as though the animal is bathing in 340-degree water.",
+    "seconds": 8.432
+  },
+  {
+    "i": 25,
+    "segment": "text_beat",
+    "narration": "It is not. Temperature can fall dramatically over a short distance as vent fluid mixes with seawater. The most accurate story therefore joins physics, geology, chemistry, and biology.",
+    "seconds": 11.269333333333334
+  },
+  {
+    "i": 26,
+    "segment": "process_steps",
+    "narration": "Pressure raises the boiling point. Crustal circulation heats and alters seawater. Cooling precipitates the mineral smoke.",
+    "seconds": 7.76
+  },
+  {
+    "i": 27,
+    "segment": "text_beat",
+    "narration": "Microbial metabolism captures chemical energy. Next comes an animal living far deeper than most vent communities: a snailfish recorded at 8,336 meters.",
+    "seconds": 11.205333333333334
+  },
+  {
+    "i": 28,
+    "segment": "magnitude_bar",
+    "narration": "At sea level, water boils near 100 degrees Celsius because its vapor pressure can match the surrounding atmosphere.",
+    "seconds": 6.981333333333334
+  },
+  {
+    "i": 29,
+    "segment": "text_beat",
+    "narration": "Deep underwater, the surrounding pressure is much greater, so liquid water can remain stable at far higher temperatures.",
+    "seconds": 7.685333333333333
+  },
+  {
+    "i": 30,
+    "segment": "magnitude_bar",
+    "narration": "Seawater moves through cracks, is heated near magma, reacts with rock, and rises.",
+    "seconds": 6.0
+  },
+  {
+    "i": 31,
+    "segment": "text_beat",
+    "narration": "When the hot fluid meets near-freezing seawater, dissolved minerals precipitate into dark particles and build black-smoker chimneys.",
+    "seconds": 8.186666666666667
+  },
+  {
+    "i": 32,
+    "segment": "ambient_drift",
+    "narration": "The hottest fluid is not the habitat most animals occupy. Life clusters where vent fluid mixes with cold seawater and creates gradients in temperature and chemistry.",
+    "seconds": 11.258666666666667
+  },
+  {
+    "i": 33,
+    "segment": "ambient_drift",
+    "narration": "Microbes use reduced chemicals from the vent system to build organic matter.",
+    "seconds": 4.442666666666667
+  },
+  {
+    "i": 34,
+    "segment": "evidence_chain",
+    "narration": "Larger organisms depend directly or indirectly on that microbial production. The energy story therefore sits at the boundary, not inside the hottest jet.",
+    "seconds": 9.584
+  },
+  {
+    "i": 35,
+    "segment": "checklist_reveal",
+    "narration": "Black smokers also change with time. Flow paths clog or shift. Chimneys grow, break, and become inactive.",
+    "seconds": 7.528
+  },
+  {
+    "i": 36,
+    "segment": "checklist_reveal",
+    "narration": "A vent field can contain hot focused flow, diffuse seepage, and older mineral structures at once.",
+    "seconds": 6.949333333333334
+  },
+  {
+    "i": 37,
+    "segment": "text_beat",
+    "narration": "The video should avoid one perfect chimney standing in for every vent.",
+    "seconds": 4.037333333333334
+  },
+  {
+    "i": 38,
+    "segment": "checklist_reveal",
+    "narration": "Use the cutaway to show circulation through cracks, then return to the seafloor and show multiple mixing zones.",
+    "seconds": 6.557333333333333
+  },
+  {
+    "i": 39,
+    "segment": "text_beat",
+    "narration": "This makes the non-boiling water part of a larger system rather than a single physics trick.",
+    "seconds": 5.669333333333333
+  },
+  {
+    "i": 40,
+    "segment": "stat_card",
+    "narration": "Use 'can exceed 340 degrees Celsius' rather than turning one value into the temperature of every black smoker.",
+    "seconds": 8.048
+  },
+  {
+    "i": 41,
+    "segment": "text_beat",
+    "narration": "Pair it with the pressure explanation and a visible mixing gradient. The animals belong around the gradient, not inside the hottest fluid.",
+    "seconds": 8.101333333333333
+  },
+  {
+    "i": 42,
+    "segment": "stat_card",
+    "narration": "That correction should survive into the thumbnail, description, and chapters so the packaging does not overstate what the script carefully explains.",
+    "seconds": 8.954666666666666
+  },
+  {
+    "i": 43,
+    "segment": "text_beat",
+    "narration": "The plume looks like smoke because minerals precipitate when hot fluid meets cold seawater.",
+    "seconds": 5.274666666666667
+  },
+  {
+    "i": 44,
+    "segment": "text_beat",
+    "narration": "It is not combustion. That distinction belongs in the first explanation, not buried at the end.",
+    "seconds": 5.381333333333333
+  },
+  {
+    "i": 45,
+    "segment": "evidence_chain",
+    "narration": "The same visual can then show chimney growth: dissolved material becomes particles, particles settle, and layers of mineral structure accumulate around the flow.",
+    "seconds": 10.789333333333333
+  },
+  {
+    "i": 46,
+    "segment": "ambient_drift",
+    "narration": "Do not use stock footage of smoke, fire, or lava to illustrate the plume.",
+    "seconds": 5.005333333333334
+  },
+  {
+    "i": 47,
+    "segment": "ambient_drift",
+    "narration": "Those images teach combustion and open-air boiling, which are exactly the wrong mechanisms.",
+    "seconds": 5.84
+  },
+  {
+    "i": 48,
+    "segment": "text_beat",
+    "narration": "Original mineral-particle animation is both safer for copyright and better science. The final shot should move from the hot jet into the cooler biological zone, making the boundary between geology and life visible.",
+    "seconds": 13.52
+  },
+  {
+    "i": 49,
+    "segment": "text_beat",
+    "narration": "It also gives the viewer a clean mental model: pressure changes boiling conditions, chemistry changes the water, cooling reveals the minerals, and gradients make life possible.",
+    "seconds": 11.525333333333334
+  },
+  {
+    "i": 50,
+    "segment": "ambient_drift",
+    "narration": "It also gives the viewer a clean mental model: pressure changes boiling conditions, chemistry changes the water, cooling reveals the minerals, and gradients make life possible.",
+    "seconds": 11.632
+  },
+  {
+    "i": 51,
+    "segment": "pressure_gauge",
+    "narration": "Use a pressure-versus-boiling diagram and a cutaway through ocean crust. Do not depict the vent as a hollow underwater volcano.",
+    "seconds": 7.8453333333333335
+  },
+  {
+    "i": 52,
+    "segment": "process_steps",
+    "narration": "Show seawater circulation, heating, chemical reaction, and mineral precipitation. The black plume is a particle cloud, not smoke from combustion.",
+    "seconds": 10.768
+  },
+  {
+    "i": 53,
+    "segment": "text_beat",
+    "narration": "This physics-first structure should look completely different from the preceding animal episode.",
+    "seconds": 5.914666666666666
+  },
+  {
+    "i": 54,
+    "segment": "contrast_pair",
+    "narration": "Vent temperatures vary, and NOAA's current public fact page says seawater may exceed 340\u00b0C\u2014not that every black smoker is exactly 340\u00b0C or 400\u00b0C.",
+    "seconds": 12.752
+  },
+  {
+    "i": 55,
+    "segment": "checklist_reveal",
+    "narration": "The fluid can also enter supercritical regimes depending on pressure, temperature, and salinity; this short script does not model that full phase chemistry.",
+    "seconds": 9.808
+  },
+  {
+    "i": 56,
+    "segment": "text_beat",
+    "narration": "Animals do not live inside the hottest jet. They occupy gradients and mixing zones around the vent.",
+    "seconds": 6.672
+  },
+  {
+    "i": 57,
+    "segment": "depth_descent",
+    "narration": "Black-smoker water does not ignore boiling. It obeys a different pressure condition.",
+    "seconds": 5.477333333333333
+  },
+  {
+    "i": 58,
+    "segment": "text_beat",
+    "narration": "The hot fluid, cold ocean, and dissolved minerals meet in seconds\u2014and the chimney records that meeting layer by layer.",
+    "seconds": 7.738666666666667
+  }
 ]
