@@ -261,11 +261,18 @@ def run(limit: int = 4, dry_run: bool = False) -> int:
         # refusal is printed by name - this is not a silent `continue` - and if
         # refusing empties the run entirely it becomes a NAMED STOP rather than
         # an exit 0 that did nothing (Rule 0).
-        untraced = set(pov_match.untraced_pov([s_ for s_, _, _ in take]))
+        # WHY, not just WHICH. `untraced_reasons()` distinguishes "no entry"
+        # from "an entry that names a line this repo cannot honour" (a
+        # tier:specific line from another domain, a pov_id the bank does not
+        # have, text that has drifted from the bank's). Both refuse the
+        # episode; they need opposite fixes, and a refusal that misnames its
+        # cause sends someone to add a row that is already there.
+        slugs_ = [s_ for s_, _, _ in take]
+        untraced = set(pov_match.untraced_pov(slugs_))
+        why_untraced = pov_match.untraced_reasons(slugs_)
         if untraced:
             for slug in sorted(untraced):
-                print(f"  REFUSE {slug}: its [HUMAN] Producer POV has no entry "
-                      f"in pov/pov-assignments.json")
+                print(f"  REFUSE {slug}: {why_untraced[slug]}")
             st.note(f"refused {len(untraced)} episode(s) with an untraced "
                     f"first-person POV: {', '.join(sorted(untraced))}. They "
                     f"stay on the shelf; nothing is deleted.")
@@ -275,13 +282,20 @@ def run(limit: int = 4, dry_run: bool = False) -> int:
                 "POV_UNTRACED",
                 f"every episode ready to upload today carries a first-person "
                 f"[HUMAN] Producer POV with no entry in "
-                f"pov/pov-assignments.json: {', '.join(sorted(untraced))}. "
+                f"pov/pov-assignments.json, or one this repo cannot "
+                f"honour: "
+                + "; ".join(f"{s} — {why_untraced[s]}"
+                            for s in sorted(untraced)) + ". "
                 f"Uploading one would be the channel asserting she said "
                 f"something no interview records her saying.",
                 detail={"untraced": sorted(untraced),
                         "assignments": str(pov_match.ASSIGNMENTS
                                            .relative_to(ROOT)),
                         "bank": str(pov_match.BANK.relative_to(ROOT))},
+                # Same shape as CAPTIONS_NOT_READY above, and deliberately so:
+                # only she can approve a POV line, so this halt is hers to
+                # clear and the second morning's identical report is noise.
+                held_items=sorted(untraced),
                 unblock="Two honest ways, and a validator may not do either "
                         "for her.\n\n"
                         "1. She reads the [HUMAN] line in scripts/<slug>.md, "
@@ -363,18 +377,25 @@ def run(limit: int = 4, dry_run: bool = False) -> int:
                                         for s, w in uncaptioned],
                         "captions_dir": str(captions_lane.CAPTIONS_DIR
                                             .relative_to(ROOT))},
+                # WHAT THIS STOP IS WAITING ON, by name. Naming the slugs is
+                # what lets loop/held.py tell "the same two episodes, still"
+                # from "a third one just joined them", so a hold can never go
+                # quiet about a problem that grew.
+                held_items=sorted(s for s, _ in uncaptioned),
                 unblock="NOTHING TO TYPE, and this is no longer the common "
-                        "case. This lane now BUILDS a missing caption track "
-                        "itself (loop/captions_build.py) from the beat timings "
+                        "case. The premise this stop was written on - that the "
+                        "caption track exists only on the Mac that voiced the "
+                        "episode - stopped being true on 2026-09-08. This lane "
+                        "now BUILDS a missing track itself "
+                        "(loop/captions_build.py) from the beat timings "
                         "committed in audio/<slug>/beats.json, so the only way "
                         "to reach this stop is an episode whose narration was "
-                        "never measured at all - it has no beats.json, or only "
-                        "part of one, which means it was never fully voiced. "
-                        "The next bin/batch-session.sh on the Mac narrates it, "
-                        "records the durations and commits them, after which "
-                        "this lane captions and uploads it unattended. Nothing "
-                        "is deleted meanwhile: the render stays on the R2 "
-                        "shelf.")
+                        "never measured at all: no beats.json, or only part of "
+                        "one, which means it was never fully voiced. The next "
+                        "bin/batch-session.sh on the Mac narrates it, records "
+                        "the durations and commits them, after which this lane "
+                        "captions and uploads it unattended. Nothing is "
+                        "deleted meanwhile: the render stays on the R2 shelf.")
 
         led = ledger.load()
         when = backfill.schedule_for(led, len(take), per_week)
