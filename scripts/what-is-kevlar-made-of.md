@@ -51,7 +51,7 @@ Kevlar degrades under prolonged ultraviolet exposure. UV photons have enough ene
 
 ### Producer POV
 
-[HUMAN] I find a clean audit trail beautiful. A file named correctly. A number you can follow to its source. A system whose failures leave evidence instead of excuses. Most people see administrative debris; I see order made visible.
+[HUMAN] Complicated means there are many parts. Hard means the important constraint cannot be avoided. Hundreds of files is complicated — tools can map it. Proving something is actually correct is hard, because a green check can still be stale, incomplete, or aimed at the wrong thing.
 
 ### Different grades optimize for different properties
 

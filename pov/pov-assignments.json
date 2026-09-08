@@ -271,15 +271,6 @@
     },
     {
       "video": "what-is-aerogel-made-of",
-      "pov_id": "pov-017",
-      "tier": "transferable",
-      "source_answer": 9,
-      "line": "Once you understand the pressure something had to survive, every strange feature starts making sense. People judge the visible result without understanding the conditions that created it.",
-      "matched_by": "tag:systems score 2.0",
-      "recorded_by": "loop/pov_repair.py"
-    },
-    {
-      "video": "what-is-carbon-fiber-made-of",
       "pov_id": "pov-046",
       "tier": "transferable",
       "source_answer": 20,
@@ -288,20 +279,29 @@
       "recorded_by": "loop/pov_repair.py"
     },
     {
-      "video": "what-is-concrete-made-of",
-      "pov_id": "pov-016",
-      "tier": "transferable",
-      "source_answer": 9,
-      "line": "It reminds me of companies and systems. Something looks completely irrational when you judge it outside the environment it was built for.",
-      "matched_by": "tag:systems score 2.0",
-      "recorded_by": "loop/pov_repair.py"
-    },
-    {
-      "video": "what-is-kevlar-made-of",
+      "video": "what-is-carbon-fiber-made-of",
       "pov_id": "pov-110",
       "tier": "transferable",
       "source_answer": "05",
       "line": "I find a clean audit trail beautiful. A file named correctly. A number you can follow to its source. A system whose failures leave evidence instead of excuses. Most people see administrative debris; I see order made visible.",
+      "matched_by": "tag:systems score 2.0",
+      "recorded_by": "loop/pov_repair.py"
+    },
+    {
+      "video": "what-is-concrete-made-of",
+      "pov_id": "pov-094",
+      "tier": "transferable",
+      "source_answer": "B19",
+      "line": "The questions worth chasing are the ones where the answer changes how you understand a system.",
+      "matched_by": "tag:thesis score 2.0",
+      "recorded_by": "loop/pov_repair.py"
+    },
+    {
+      "video": "what-is-kevlar-made-of",
+      "pov_id": "pov-113",
+      "tier": "transferable",
+      "source_answer": "07",
+      "line": "Complicated means there are many parts. Hard means the important constraint cannot be avoided. Hundreds of files is complicated \u2014 tools can map it. Proving something is actually correct is hard, because a green check can still be stale, incomplete, or aimed at the wrong thing.",
       "matched_by": "tag:systems score 2.0",
       "recorded_by": "loop/pov_repair.py"
     },
@@ -316,11 +316,11 @@
     },
     {
       "video": "why-is-steel-so-strong",
-      "pov_id": "pov-139",
-      "tier": "specific",
-      "source_answer": null,
-      "line": "I almost opened on the moment of impact, because that's the dramatic beat. But impact doesn't decide the fracture pattern \u2014 the cooling process already did, weeks earlier. I moved the real event to where it actually happens.",
-      "matched_by": "tag:thesis score 2.8",
+      "pov_id": "pov-047",
+      "tier": "transferable",
+      "source_answer": "B1",
+      "line": "When someone gives me a fact with a number in it, my first instinct is: where did the number come from? Not because I assume they're lying. Numbers can make almost anything sound authoritative.",
+      "matched_by": "transferable tag:numbers (the bank permits any evidence-based niche)",
       "recorded_by": "loop/pov_repair.py"
     }
   ]

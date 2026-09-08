@@ -128,8 +128,17 @@ def ranked_lines(slug: str, subject: str, domain, used):
     needs the next candidate rather than a stop. Same scorer, same rotation
     window, same refusal to invent -- an empty list is a refusal, not a guess.
     """
-    window = pov_match.rotation_window()
-    recent = set(used[-window:])
+    # EVERY ID ALREADY ASSIGNED, not just the rotation window.
+    #
+    # pov/pov-assignments.json's own header states "one POV per video, no
+    # reuse", and V40 (loop/validate.py) enforces it across the whole file.
+    # The rotation window is a weaker rule for a different purpose - it stops a
+    # line recurring inside twelve consecutive videos - and honouring only that
+    # handed three lines to a second episode each, all three already spoken by
+    # a published deep-sea one. The strictest applicable rule wins; a bank of
+    # 144 lines against 34 episodes has room for it.
+    recent = set(used) | {a["pov_id"] for a in
+                          pov_match.hand_assignments().values()}
     ranked = []
     for l in pov_match.bank():
         if l["id"] in recent:

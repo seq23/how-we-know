@@ -52,7 +52,7 @@ Carbon fiber straight from carbonization has a smooth, inert surface. Epoxy and 
 
 ### Producer POV
 
-[HUMAN] What keeps me interested is how it exposes the limits of our idea of normal. Every time we think we know what life requires, something down there shows us another way.
+[HUMAN] I find a clean audit trail beautiful. A file named correctly. A number you can follow to its source. A system whose failures leave evidence instead of excuses. Most people see administrative debris; I see order made visible.
 
 ### The aligned carbon sheets are why the fiber is strong along its length
 
