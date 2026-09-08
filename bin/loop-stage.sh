@@ -5,13 +5,30 @@
 # handled identically, once:
 #
 #   exit 0  real work happened, OR a    → commit, push, green
-#           SELF-RESOLVING named stop
+#           SELF-RESOLVING named stop,
+#           OR a HELD one
 #   exit 3  NAMED STOP that needs a     → commit, push, open/update an issue,
 #           human                         then FAIL the job so the owner is
 #                                         emailed. A stop nobody sees is a
 #                                         silent no-op wearing a label.
 #   other   genuine failure             → commit anything salvageable, open an
 #                                         issue, fail.
+#
+# THE HELD CASE. A halt only the OWNER can clear is exit 3 the first time and
+# must not be exit 3 every morning after, on an unchanged fact, in an issue that
+# is already open. loop/held.py decides that; the stage writes "held" into the
+# same `disposition` field, so this wrapper treats it exactly like the
+# self-resolving case: commit, push, green, no second issue. The difference is
+# entirely in the banner, which says HELD STOP and lists what is held.
+#
+# Two things below exist only for it:
+#   * the `loop-stop` LABEL is created if it does not exist. It never did, so
+#     `gh issue list --label loop-stop` matched nothing and every single stop
+#     opened a BRAND NEW issue instead of commenting on the open one - issues
+#     #17 and #20 (cloud-upload) and #26 and #29 (mon-draft) are the same stop
+#     twice, hours apart. "Already reported" is meaningless while that is true.
+#   * the issue number is written back into the hold, because a held run has to
+#     be able to say WHERE it is tracked; a hold with no issue pages instead.
 #
 # THE SELF-RESOLVING CASE. `loop/stop_policy.json` decides; the stage writes the
 # verdict into loop/state/stops/<week>-<stage>.json as "disposition". A daily
@@ -40,17 +57,69 @@ WEEK="$("$PY" -c "import sys;sys.path.insert(0,'loop');from common import week_i
 # Exit 0 now has two meanings, and the commit message and the issue policy have
 # to tell them apart. The stage already wrote the verdict down; read it rather
 # than re-deriving it here, so there is exactly one classifier.
-STOPFILE="loop/state/stops/$WEEK-$STAGE.json"
+# LOOP_STOPS_DIR is how loop/common.py lets a test watch a real stage take a
+# real stop without writing the loop's own state. This has to honour it too, or
+# the wrapper reads an empty disposition under test and the two halves of the
+# contract can never be exercised together.
+STOPS_DIR="${LOOP_STOPS_DIR:-loop/state/stops}"
+STOPFILE="$STOPS_DIR/$WEEK-$STAGE.json"
 DISPOSITION=""
 STOP_CODE=""
-if [ "$RC" -eq 0 ] && [ -f "$STOPFILE" ]; then
+ISSUE_NUMBER=""
+# Read the code on EVERY stop, not only the green ones. It used to be read only
+# when RC was 0, because nothing downstream needed it otherwise; the issue-number
+# write-back below needs it precisely when the stop PAGED (RC=3).
+if [ -f "$STOPFILE" ]; then
   DISPOSITION="$("$PY" -c "import json,sys;d=json.load(open(sys.argv[1]));print(d.get('disposition',''))" "$STOPFILE" 2>/dev/null || echo "")"
   STOP_CODE="$("$PY" -c "import json,sys;d=json.load(open(sys.argv[1]));print(d.get('code',''))" "$STOPFILE" 2>/dev/null || echo "")"
   if [ "$DISPOSITION" = "self_resolving" ]; then
     echo "self-resolving named stop [$STOP_CODE] — recorded, committed, and NOT"
     echo "escalated. It is in the job summary above. Exiting 0 on purpose."
   fi
+  if [ "$DISPOSITION" = "held" ]; then
+    echo "HELD named stop [$STOP_CODE] — this is NOT resolved. It is waiting on"
+    echo "the owner, she has already been told, and the item list has not"
+    echo "changed since, so this run does not report it a second time. The full"
+    echo "HELD STOP banner above names every item and the issue tracking it."
+  fi
 fi
+
+
+# ------------------------------------------------------- push, with retries
+# A FUNCTION because it is now needed twice: once for the stage's own work,
+# and once more to write the issue number back into a held stop (see THE HELD
+# CASE at the top). Duplicating a retry loop whose every line encodes a
+# separately-learned lesson is how one copy silently loses them.
+#
+# Sets PUSHED=1 only when a push actually LANDED. Never infers it.
+push_with_retries() {
+  PUSHED=0
+  for i in 1 2 3; do
+    if git pull --rebase -q && git push -q; then
+      echo "pushed"
+      PUSHED=1
+      return 0
+    fi
+    echo "push attempt $i failed; retrying"
+    # A failed `git pull --rebase` can leave a rebase in progress (a real
+    # conflict the merge driver did not or could not resolve). The NEXT
+    # `git pull --rebase` in this same loop then fails for a completely
+    # different, confusing reason ("Please specify which branch you want to
+    # rebase against") because git refuses to start a new rebase on top of an
+    # unfinished one - so every attempt after the first was guaranteed to
+    # fail regardless of whether the conflict itself was resolvable. Clear it
+    # before retrying.
+    if [ -d .git/rebase-merge ] || [ -d .git/rebase-apply ]; then
+      CONFLICTED="$(git diff --name-only --diff-filter=U 2>/dev/null | tr '\n' ' ')"
+      echo "aborting an unresolved rebase before retrying (conflicted: ${CONFLICTED:-unknown})"
+      if ! git rebase --abort 2>/dev/null; then
+        git merge --abort 2>/dev/null
+      fi
+    fi
+    sleep 5
+  done
+  return 1
+}
 
 # ---------------------------------------------------------------- commit
 git config user.name  "how-we-know loop"
@@ -73,6 +142,8 @@ else
   case $RC in
     0) if [ "$DISPOSITION" = "self_resolving" ]; then
          MSG="loop($WEEK): $STAGE — self-resolving stop ($STOP_CODE)"
+       elif [ "$DISPOSITION" = "held" ]; then
+         MSG="loop($WEEK): $STAGE — held stop ($STOP_CODE), already reported"
        else
          MSG="loop($WEEK): $STAGE"
        fi ;;
@@ -104,28 +175,7 @@ else
   # "Please specify which branch you want to rebase against" a few seconds
   # later, on an unrelated piece of work.
   PUSHED=0
-  for i in 1 2 3; do
-    if git pull --rebase -q && git push -q; then
-      echo "pushed"
-      PUSHED=1
-      break
-    fi
-    echo "push attempt $i failed; retrying"
-    # A failed `git pull --rebase` can leave a rebase in progress (a real
-    # conflict the merge driver above did not or could not resolve). The NEXT
-    # `git pull --rebase` in this same loop then fails for a completely
-    # different, confusing reason ("Please specify which branch you want to
-    # rebase against") because git refuses to start a new rebase on top of an
-    # unfinished one - so every attempt after the first was guaranteed to
-    # fail regardless of whether the conflict itself was resolvable. Clear it
-    # before retrying.
-    if [ -d .git/rebase-merge ] || [ -d .git/rebase-apply ]; then
-      CONFLICTED="$(git diff --name-only --diff-filter=U 2>/dev/null | tr '\n' ' ')"
-      echo "aborting an unresolved rebase before retrying (conflicted: ${CONFLICTED:-unknown})"
-      git rebase --abort 2>/dev/null || git merge --abort 2>/dev/null || true
-    fi
-    sleep 5
-  done
+  push_with_retries
 
   if [ "$PUSHED" -ne 1 ]; then
     # Leave the working tree clean for whatever runs next in this job, and
@@ -181,16 +231,61 @@ if [ "$RC" -ne 0 ] && command -v gh >/dev/null 2>&1 && [ -n "${GITHUB_TOKEN:-}" 
     echo "Run: <${GITHUB_SERVER_URL:-https://github.com}/${GITHUB_REPOSITORY:-}/actions/runs/${GITHUB_RUN_ID:-}>"
   } > "$BODY_FILE"
 
-  EXISTING="$(gh issue list --state open --label loop-stop \
-      --search "$TITLE in:title" --json number --jq '.[0].number' 2>/dev/null)"
+  # THE LABEL HAS TO EXIST BEFORE IT CAN DEDUPE.
+  # CONFIRMED 2026-09-07: `gh label list` on this repo returned only the ten
+  # GitHub defaults. `loop-stop` was never created, so `gh issue create
+  # --label loop-stop` failed every time and fell through to the unlabelled
+  # fallback below - and the lookup that decides "have I already reported
+  # this?" filtered on that same absent label, so it matched NOTHING and every
+  # stop opened a brand new issue. #17 and #20 are one cloud-upload stop
+  # reported twice in six hours; #26 and #29 are one mon-draft stop. Creating
+  # the label is what makes "already reported" answerable at all.
+  if ! gh label list --limit 200 --json name --jq '.[].name' \
+       | grep -qx "loop-stop"; then
+    echo "creating the loop-stop label (it did not exist)"
+    gh label create loop-stop --color d73a4a \
+      --description "A loop stage took a named stop and needs the owner"
+  fi
+
+  # DEDUPE ON THE TITLE, NOT THE LABEL. The title is the stop's identity
+  # (stage + week); the label is only how a human filters the list. Matching
+  # exactly, through jq's `env`, rather than GitHub's fuzzy `in:title` search:
+  # the title contains a colon and an em dash, and a search that tokenises
+  # them is a search that can miss its own issue and open a duplicate.
+  EXISTING="$(TITLE="$TITLE" gh issue list --state open --limit 200 \
+      --json number,title --jq '.[] | select(.title == env.TITLE) | .number' \
+      2>/dev/null | head -1)"
   if [ -n "$EXISTING" ] && [ "$EXISTING" != "null" ]; then
+    ISSUE_NUMBER="$EXISTING"
     gh issue comment "$EXISTING" --body-file "$BODY_FILE" >/dev/null \
       && echo "commented on issue #$EXISTING"
   else
-    gh issue create --title "$TITLE" --body-file "$BODY_FILE" \
-      --label loop-stop >/dev/null 2>&1 \
-      || gh issue create --title "$TITLE" --body-file "$BODY_FILE" >/dev/null
-    echo "opened a stop issue"
+    ISSUE_URL="$(gh issue create --title "$TITLE" --body-file "$BODY_FILE" \
+      --label loop-stop 2>/dev/null)"
+    if [ -z "$ISSUE_URL" ]; then
+      ISSUE_URL="$(gh issue create --title "$TITLE" --body-file "$BODY_FILE")"
+    fi
+    ISSUE_NUMBER="${ISSUE_URL##*/}"
+    echo "opened a stop issue: ${ISSUE_URL:-unknown}"
+  fi
+
+  # WRITE THE ISSUE NUMBER BACK INTO THE HOLD.
+  # A held stop exits 0 and prints "tracked by issue #N". It can only do that
+  # if it knows N, and only this wrapper ever learns it. A hold with no issue
+  # number recorded deliberately PAGES on the next run rather than claim a
+  # tracker it cannot name - so failing to write this is loud, not silent.
+  if [ "$RC" -eq 3 ] && [ -n "$STOP_CODE" ] \
+     && printf '%s' "$ISSUE_NUMBER" | grep -qE '^[0-9]+$'; then
+    if "$PY" loop/held.py --record-issue "$STAGE" "$STOP_CODE" "$ISSUE_NUMBER"; then
+      # Always the REPO path: when LOOP_STOPS_DIR points a test somewhere
+      # else there is nothing here to add, `git diff --cached` stays clean,
+      # and no commit is attempted. That is the intended no-op.
+      git add loop/state/stops 2>/dev/null
+      if ! git diff --cached --quiet; then
+        git commit -q -m "loop($WEEK): $STAGE — hold tracked by #$ISSUE_NUMBER"
+        push_with_retries
+      fi
+    fi
   fi
 fi
 

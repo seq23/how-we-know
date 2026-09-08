@@ -122,7 +122,9 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import ledger  # noqa: E402
+import held as _held  # noqa: E402
 from common import ROOT, config, now, read_json, write_json  # noqa: E402
+from common import _stops_dir  # noqa: E402
 import domain_sources  # noqa: E402
 import domains  # noqa: E402
 import exclusions  # noqa: E402
@@ -1014,6 +1016,33 @@ def _days_since(stamp: str | None) -> float | None:
                  / 86400, 1)
 
 
+# A caption track must be on the video a full daily-lane cycle before it airs.
+# 24h is that cycle plus margin: the reach lane runs once a day, so anything
+# tighter cannot be met by the machinery that is supposed to meet it, and
+# anything looser lets a video reach the public with no track and no warning.
+_TRACK_DUE_HOURS = 24
+
+
+def _airs_within(row: dict, hours: int) -> bool | None:
+    """True if this row airs within `hours`, False if later, None if unknown.
+
+    None means the ledger row carries no readable `scheduled_publish_at`, and
+    an unreadable airdate is never an excuse: the caller treats it as due.
+    """
+    import datetime as _dt                                  # noqa: PLC0415
+    stamp = row.get("scheduled_publish_at")
+    if not stamp:
+        return None
+    try:
+        when = _dt.datetime.fromisoformat(str(stamp).replace("Z", "+00:00"))
+    except ValueError:
+        return None
+    if when.tzinfo is None:
+        when = when.replace(tzinfo=_dt.timezone.utc)
+    now = _dt.datetime.now(_dt.timezone.utc)
+    return when <= now + _dt.timedelta(hours=hours)
+
+
 def _live_videos() -> list[dict]:
     sys.path.insert(0, str(ROOT / "loop"))
     import ytmeta                                        # noqa: PLC0415
@@ -1038,11 +1067,33 @@ def v16_caption_track() -> Result:
     state = read_json(CAPTIONS_STATE, default={"videos": {}, "blocked": {}})
     have_scope = bool(state.get("token_has_force_ssl"))
     deferred: list[str] = []
+    escalated: list[str] = []
+    before_air: list[str] = []
+    # Identifiers another lane has ALREADY escalated to the owner, with an
+    # issue number to prove it. See loop/held.py: this is not an exemption
+    # list, it is yesterday's alarm, and it only ever contains things a human
+    # has genuinely been told about.
+    covered = _held.covering_hold(_stops_dir())
     for row in _live_videos():
         r.examined += 1
         vid, slug = row["video_id"], row["slug"]
         srt = Path(REACH_CAPTIONS_DIR) / f"{slug}.srt"
         if not srt.exists():
+            hold = covered.get(slug)
+            if hold:
+                # The missing .srt is real and this validator is right about
+                # it - but the upload lane already refused this episode, named
+                # it, and opened issue #N about it hours ago. Failing here as
+                # well is the same news in a second red mail. It goes red again
+                # the moment that hold stops covering the slug, which happens
+                # if the issue is closed or the lane stops raising it.
+                escalated.append(
+                    f"{slug}: captions/{slug}.srt does not exist — already "
+                    f"escalated by the {hold.get('stage')} lane as "
+                    f"[{hold.get('code')}] on "
+                    f"{hold.get('first_reported_at')}, tracked by issue "
+                    f"#{hold.get('issue')}")
+                continue
             r.fail(f"{slug}: captions/{slug}.srt does not exist, so no track "
                    f"can ever be uploaded for it")
             continue
@@ -1080,10 +1131,53 @@ def v16_caption_track() -> Result:
                    f"{DEFER_GRACE_DAYS}. The backfill has stalled — check "
                    f"whether the reach lane is running at all.")
             continue
+        # NOT YET AIRED. `ytmeta.live_videos()` returns every row in the
+        # ledger's `published` list, which since the cloud-upload lane began
+        # scheduling includes videos uploaded PRIVATE with a publishAt weeks
+        # away. Calling those "published with NO caption track" made this
+        # validator red on the afternoon of every upload - CONFIRMED run
+        # 34136862505, where xbmIX6n2OI8 was flagged four minutes after it was
+        # uploaded private for 2026-09-28, an hour before the daily lane that
+        # inserts the track next runs. Nothing was wrong.
+        #
+        # This is a DEADLINE, not a grace period, and it is stricter than what
+        # it replaces: the track must be on the video a full lane cycle before
+        # it airs. The moment `scheduled_publish_at` is inside 24 hours - and
+        # of course the moment the video is actually public - a missing track
+        # is a hard failure again, while there is still a day to fix it.
+        due = _airs_within(row, hours=_TRACK_DUE_HOURS)
+        if row.get("privacy") == "private" and due is False:
+            before_air.append(
+                f"{slug} ({vid}): no track yet, .srt is ready, and it does "
+                f"not air until {row.get('scheduled_publish_at')} — the daily "
+                f"reach lane inserts it before then, and this goes red if it "
+                f"has not {_TRACK_DUE_HOURS}h before air")
+            continue
         r.fail(f"{slug} ({vid}) is published with NO English caption track, so "
                f"YouTube cannot auto-translate its subtitles or audio"
                + (" — and the scope that used to excuse this is now granted"
                   if have_scope and blocked else ""))
+    if escalated:
+        r.named_stop(
+            "CAPTION_SOURCE_HELD",
+            f"{len(escalated)} of {r.examined} live video(s) have no "
+            f"captions/<slug>.srt at all — a real gap, and one that only the "
+            f"owner can close, because the .srt is derived from narration "
+            f"audio that exists on her Mac and nowhere else. Every one of "
+            f"them has ALREADY been named by the lane that found it first and "
+            f"is tracked by an open issue, so this validator reports them "
+            f"rather than raising a second alarm for the same fact. It fails "
+            f"outright for any episode NOT covered by an open, issued hold.",
+            items=escalated)
+    if before_air:
+        r.named_stop(
+            "CAPTIONS_BEFORE_AIRDATE",
+            f"{len(before_air)} of {r.examined} video(s) are uploaded PRIVATE "
+            f"with a future airdate and have no caption track yet. Their .srt "
+            f"files are ready and the daily reach lane inserts tracks in turn; "
+            f"this stops being acceptable, and this validator goes red on its "
+            f"own, {_TRACK_DUE_HOURS} hours before each one airs.",
+            items=before_air)
     if deferred:
         r.named_stop(
             "CAPTIONS_QUOTA_DEFERRED",
@@ -1116,11 +1210,20 @@ def v17_localizations() -> Result:
 
     The excuse is bounded exactly as V16's is: `since` is the FIRST deferral
     and is never refreshed, so a stalled lane goes red by itself.
+
+    And the airdate deadline is V16's, for the same reason and in the same
+    words: a video uploaded PRIVATE for a date three weeks out is in the
+    ledger's `published` list but is not published, and demanding five
+    localizations on it within minutes of upload made this red on the
+    afternoon of every upload. It is due 24 hours before it airs. Keeping the
+    two validators the same shape is the entire point of this one's docstring
+    and is not something to fix on one side only.
     """
     r = Result("V17 localizations")
     state = read_json(LOCALIZATIONS_STATE,
                       default={"videos": {}, "blocked": {}})
     deferred: list[str] = []
+    before_air: list[str] = []
     for row in _live_videos():
         r.examined += 1
         vid, slug = row["video_id"], row["slug"]
@@ -1142,12 +1245,27 @@ def v17_localizations() -> Result:
                    f"{DEFER_GRACE_DAYS}. The lane has stalled — check whether "
                    f"the reach lane is running at all.")
             continue
+        if (row.get("privacy") == "private"
+                and _airs_within(row, hours=_TRACK_DUE_HOURS) is False):
+            before_air.append(
+                f"{slug} ({vid}): missing {', '.join(missing)}, and it does "
+                f"not air until {row.get('scheduled_publish_at')}")
+            continue
         # No localizations and NO STATED REASON. This is the case that must
         # stay red: it is exactly what _fQ3-YI63oQ looked like on 2026-09-03,
         # and it meant a published video nobody could find in five languages.
         r.fail(f"{slug} ({vid}) has no localized title/description for "
                f"{', '.join(missing)} and no recorded reason — it cannot be "
                f"found by a search in those languages")
+    if before_air:
+        r.named_stop(
+            "LOCALIZE_BEFORE_AIRDATE",
+            f"{len(before_air)} of {r.examined} video(s) are uploaded PRIVATE "
+            f"with a future airdate and are not localized yet. The daily "
+            f"localize lane takes them in turn; this validator goes red on "
+            f"its own {_TRACK_DUE_HOURS} hours before each one airs, while "
+            f"there is still a lane cycle left to fix it.",
+            items=before_air)
     if deferred:
         r.named_stop(
             "LOCALIZE_QUOTA_DEFERRED",
