@@ -126,6 +126,10 @@ def run(limit: int = 2, dry_run: bool = False) -> int:
                 f"tomorrow.",
                 detail={"unverified": [{"slug": s_, "why": w}
                                        for s_, w in look.unverified]},
+                # Name the cuts, so loop/held.py can tell "the same two, still"
+                # from "a third one just joined them" and this can go quiet
+                # after the first report without going blind.
+                held_items=sorted(s_ for s_, _ in look.unverified),
                 unblock="The receipt is the only record of which beats a Short "
                         "used and who is credited for them, so it is not "
                         "optional. On the Mac: bin/push-to-r2.sh — its "

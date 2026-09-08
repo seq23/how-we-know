@@ -578,14 +578,24 @@ def check() -> list[str]:
         if r.returncode not in (0, 3):
             fails.append(f"loop/{lane} exited {r.returncode} (a crash) under "
                          f"LOOP_DRY_RUN=1 rather than a named stop:\n{out[-400:]}")
-        if "NAMED STOP" not in out:
+        # THREE DISPOSITIONS EXIT 0 NOW, not one, and each announces itself:
+        # SELF-RESOLVING (time fixes it), HELD (she has already been told, see
+        # loop/held.py) and WAITING ON THE OWNER (only she can, and a red build
+        # tells her nothing the Sunday digest will not). A held stop heads its
+        # banner "HELD STOP" rather than "NAMED STOP" on purpose, so demanding
+        # the latter would fail a correct lane. The property this has always
+        # protected is unchanged: a zero exit must SAY which it is, and a
+        # silent pass still fails.
+        if not ("NAMED STOP" in out or "HELD STOP" in out):
             fails.append(f"loop/{lane} stopped under LOOP_DRY_RUN=1 without "
-                         f"printing a NAMED STOP banner")
-        elif r.returncode == 0 and "SELF-RESOLVING" not in out.upper():
+                         f"printing a stop banner")
+        elif r.returncode == 0 and not any(
+                m in out.upper() for m in ("SELF-RESOLVING", "HELD",
+                                           "WAITING ON THE OWNER")):
             fails.append(f"loop/{lane} exited 0 under LOOP_DRY_RUN=1 without "
-                         f"declaring the stop self-resolving — a zero exit is "
-                         f"only legitimate for a stop loop/stop_policy.json "
-                         f"classifies")
+                         f"declaring which disposition made it green — a zero "
+                         f"exit is only legitimate for a stop "
+                         f"loop/stop_policy.json classifies")
         if "Traceback" in out:
             fails.append(f"loop/{lane} raised under LOOP_DRY_RUN=1:\n"
                          f"{out[-400:]}")

@@ -37,12 +37,21 @@ ASSEMBLE = os.path.join(ROOT, "visuals", "assemble.py")
 def readiness_guard(text: str) -> bool:
     """Does this batch script gate rendering on COMPLETE audio?
 
-    The test of completeness in this repo is "the plan's beat count equals the
-    wav count". Written as a predicate so the negative proof can feed it a
-    script that does not have one.
+    The test of completeness used to be "the plan's beat count equals the wav
+    count", and that is what this looked for. It was WEAKER than it read, and
+    on 2026-09-08 the weakness bit: what-is-concrete-made-of held 70 wavs
+    (0000..0069) against a 69-beat plan -- an orphan left when the plan shrank
+    -- so the counts differed forever and the episode could never be rendered
+    by any route. Counting also fails the other way: 69 wavs numbered 0..67
+    plus one orphan would COUNT as complete while beat 68 was never voiced,
+    which is exactly the short render this guard exists to prevent.
+
+    The predicate is now per-beat -- `f"{i:04d}.wav" in have` across
+    `range(n)` -- which is strictly stronger in both directions. Written as a
+    predicate so the negative proof can feed it a script that has no gate.
     """
-    return bool(re.search(r"len\(json\.load\(open\(plan\)\)\)\s*==\s*"
-                          r"len\(glob\.glob", text))
+    return bool(re.search(r'f"\{i:04d\}\.wav"\s+in\s+have', text)
+                and re.search(r"for\s+i\s+in\s+range\(n\)", text))
 
 
 def check() -> list[str]:
@@ -87,7 +96,9 @@ def check() -> list[str]:
 
     # -- 4. one definition of readiness, used by both paths --------------
     examined += 1
-    if batch.count("renderable()") != 1:
+    # The DEFINITION, not every mention of the name: prose referring to
+    # `renderable()` is not a second copy of it.
+    if len(re.findall(r"^renderable\(\)\s*\{", batch, re.M)) != 1:
         fails.append("bin/batch-session.sh does not define `renderable` "
                      "exactly once; two definitions of 'ready to render' is "
                      "the two-components-each-keeping-their-own-list failure")
@@ -97,11 +108,20 @@ def check() -> list[str]:
                      "all three call `renderable`, so they could disagree "
                      "about what is finished")
     examined += 1
-    if len(re.findall(r"len\(json\.load\(open\(plan\)\)\)\s*==\s*"
-                      r"len\(glob\.glob", batch)) != 1:
+    # ONE readiness expression in the whole file. The pending-audio queries ask
+    # a different question (how many beats are still unvoiced) and ask it the
+    # same per-beat way, so this counts the render gate specifically.
+    if len(re.findall(r'all\(f"\{i:04d\}\.wav"\s+in\s+have', batch)) != 1:
         fails.append("bin/batch-session.sh contains more than one definition "
                      "of 'ready to render'; a second copy is how one path "
                      "skips an episode while another assembles it short")
+    # NEGATIVE PROOF for the strengthened predicate: the OLD count-equality
+    # gate must no longer satisfy it, or this file would still be asserting
+    # the weaker property under a new name.
+    examined += 1
+    if readiness_guard("if len(json.load(open(plan))) == len(glob.glob(x)):"):
+        fails.append("the readiness guard still accepts a count-equality gate, "
+                     "which an orphan wav defeats in both directions")
 
     # -- 5. the overlap is on by default, and reversible ------------------
     # A throughput improvement nothing invokes is inert; a throughput change
