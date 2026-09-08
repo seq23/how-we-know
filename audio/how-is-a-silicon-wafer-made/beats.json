@@ -1,0 +1,470 @@
+[
+  {
+    "i": 0,
+    "segment": "process_column",
+    "narration": "Semiconductor-grade silicon reaches 99.9999999 percent purity \u2014 nine nines. That figure comes from SEMI standards and represents fewer than one foreign atom per billion silicon atoms.",
+    "seconds": 13.957333333333333
+  },
+  {
+    "i": 1,
+    "segment": "text_beat",
+    "narration": "But nine-nines silicon does not exist in nature. Every wafer starts as quartzite sand, which is only about ninety-eight percent silicon dioxide.",
+    "seconds": 9.093333333333334
+  },
+  {
+    "i": 2,
+    "segment": "process_column",
+    "narration": "The gap between ninety-eight and nine nines is not a simple filter.",
+    "seconds": 3.856
+  },
+  {
+    "i": 3,
+    "segment": "text_beat",
+    "narration": "It is a sequence of transformations, each with its own thermal budget and contamination limit.",
+    "seconds": 5.008
+  },
+  {
+    "i": 4,
+    "segment": "text_beat",
+    "narration": "How is a silicon wafer made?",
+    "seconds": 2.096
+  },
+  {
+    "i": 5,
+    "segment": "thermal_ascent",
+    "narration": "The first stage is carbothermic reduction. Quartzite \u2014 high-purity quartz sand \u2014 is loaded into a submerged arc furnace with carbon sources like coal or wood chips.",
+    "seconds": 9.349333333333334
+  },
+  {
+    "i": 6,
+    "segment": "text_beat",
+    "narration": "The furnace reaches 2000 degrees Celsius. At that temperature, carbon strips oxygen from silicon dioxide, leaving elemental silicon and carbon monoxide gas.",
+    "seconds": 11.898666666666667
+  },
+  {
+    "i": 7,
+    "segment": "thermal_ascent",
+    "narration": "The product is metallurgical-grade silicon, about ninety-eight to ninety-nine percent pure. USGS Minerals Yearbook documents this process as the standard route for all industrial silicon.",
+    "seconds": 12.378666666666666
+  },
+  {
+    "i": 8,
+    "segment": "text_beat",
+    "narration": "The arc furnace step removes oxygen but leaves metallic impurities \u2014 iron, aluminum, calcium \u2014 at levels measured in thousands of parts per million.",
+    "seconds": 10.064
+  },
+  {
+    "i": 9,
+    "segment": "thermal_ascent",
+    "narration": "The molten silicon is tapped from the furnace and cast into blocks that cool to a gray, metallic solid.",
+    "seconds": 6.469333333333333
+  },
+  {
+    "i": 10,
+    "segment": "text_beat",
+    "narration": "This material is conductive enough for aluminum alloys and solar cells, but not for semiconductor devices.",
+    "seconds": 6.682666666666667
+  },
+  {
+    "i": 11,
+    "segment": "evidence_chain",
+    "narration": "Purification to semiconductor grade uses the Siemens process, named after the company that commercialized it in the nineteen-fifties.",
+    "seconds": 8.005333333333333
+  },
+  {
+    "i": 12,
+    "segment": "text_beat",
+    "narration": "Metallurgical-grade silicon reacts with hydrogen chloride gas at 300 degrees Celsius, forming trichlorosilane, a liquid that boils at thirty-two degrees Celsius.",
+    "seconds": 10.490666666666666
+  },
+  {
+    "i": 13,
+    "segment": "evidence_chain",
+    "narration": "Trichlorosilane is distilled repeatedly. Distillation separates molecules by boiling point, and impurities have different boiling points than trichlorosilane itself.",
+    "seconds": 10.024
+  },
+  {
+    "i": 14,
+    "segment": "text_beat",
+    "narration": "After multiple distillation cycles, the trichlorosilane reaches high purity. It is then fed into a reactor where it contacts electrically heated silicon rods at 1100 degrees Celsius.",
+    "seconds": 12.018666666666666
+  },
+  {
+    "i": 15,
+    "segment": "evidence_chain",
+    "narration": "Hydrogen gas reduces the trichlorosilane back to elemental silicon, which deposits on the rods as polycrystalline silicon.",
+    "seconds": 7.8453333333333335
+  },
+  {
+    "i": 16,
+    "segment": "text_beat",
+    "narration": "The Siemens process is documented in detail by SEMI International Standards, which defines the purity specifications for semiconductor manufacturing.",
+    "seconds": 9.573333333333334
+  },
+  {
+    "i": 17,
+    "segment": "evidence_chain",
+    "narration": "The polysilicon that emerges measures nine-nines purity or better. Each reactor cycle deposits tens to hundreds of kilograms of polysilicon over several days. The rods grow from pencil thickness to diameters exceeding ten centimeters.",
+    "seconds": 17.14666666666667
+  },
+  {
+    "i": 18,
+    "segment": "process_steps",
+    "narration": "Polysilicon is polycrystalline \u2014 it contains millions of randomly oriented crystal grains.",
+    "seconds": 6.352
+  },
+  {
+    "i": 19,
+    "segment": "text_beat",
+    "narration": "Semiconductor devices require single-crystal material, where every atom sits in one continuous lattice.",
+    "seconds": 6.810666666666667
+  },
+  {
+    "i": 20,
+    "segment": "process_steps",
+    "narration": "The Czochralski method, developed in 1916 and adapted for silicon in 1950, produces that single crystal.",
+    "seconds": 7.749333333333333
+  },
+  {
+    "i": 21,
+    "segment": "text_beat",
+    "narration": "Polysilicon chunks are melted in a quartz crucible at 1414 degrees Celsius, silicon's melting point.",
+    "seconds": 7.056
+  },
+  {
+    "i": 22,
+    "segment": "process_steps",
+    "narration": "A seed crystal \u2014 a small rod of single-crystal silicon with a specific orientation \u2014 is lowered until it just contacts the melt surface.",
+    "seconds": 9.498666666666667
+  },
+  {
+    "i": 23,
+    "segment": "text_beat",
+    "narration": "The seed rotates slowly and is pulled upward at a rate of millimeters per minute.",
+    "seconds": 5.2
+  },
+  {
+    "i": 24,
+    "segment": "process_steps",
+    "narration": "Silicon atoms from the melt attach to the seed and adopt its crystal orientation.",
+    "seconds": 5.84
+  },
+  {
+    "i": 25,
+    "segment": "text_beat",
+    "narration": "The ingot grows as a cylinder. Diameter is controlled by pull rate and temperature.",
+    "seconds": 5.274666666666667
+  },
+  {
+    "i": 26,
+    "segment": "process_steps",
+    "narration": "Modern Czochralski pullers produce ingots 200 millimeters or 300 millimeters in diameter and one to two meters long.",
+    "seconds": 8.453333333333333
+  },
+  {
+    "i": 27,
+    "segment": "text_beat",
+    "narration": "NIST and MIT Department of Materials Science and Engineering both describe Czochralski growth as the dominant production method for silicon ingots.",
+    "seconds": 9.104
+  },
+  {
+    "i": 28,
+    "segment": "process_steps",
+    "narration": "The entire pull takes twenty to thirty hours. The process occurs in an inert atmosphere, typically argon, to prevent oxidation and contamination.",
+    "seconds": 9.456
+  },
+  {
+    "i": 29,
+    "segment": "text_beat",
+    "narration": "Operators monitor diameter optically in real time and adjust heater power and pull speed to maintain the target.",
+    "seconds": 7.44
+  },
+  {
+    "i": 30,
+    "segment": "quote_card",
+    "narration": "I wrote 'nine-nines pure' like purity was a certificate stamped once. It isn't.",
+    "seconds": 6.088
+  },
+  {
+    "i": 31,
+    "segment": "quote_card",
+    "narration": "Every step after purification can reintroduce contamination, so I rewrote it as a chain of measurements instead of an achieved state.",
+    "seconds": 8.432
+  },
+  {
+    "i": 32,
+    "segment": "definition_card",
+    "narration": "Pure silicon is a poor conductor. Controlled impurities \u2014 dopants \u2014 make it useful.",
+    "seconds": 5.8613333333333335
+  },
+  {
+    "i": 33,
+    "segment": "text_beat",
+    "narration": "Boron creates p-type silicon, with positive charge carriers. Phosphorus or arsenic creates n-type silicon, with negative charge carriers.",
+    "seconds": 9.8
+  },
+  {
+    "i": 34,
+    "segment": "definition_card",
+    "narration": "Dopants are added to the Czochralski melt in precise amounts, typically parts per million or parts per billion.",
+    "seconds": 6.789333333333333
+  },
+  {
+    "i": 35,
+    "segment": "text_beat",
+    "narration": "The dopant concentration determines the wafer's resistivity, measured in ohm-centimeters. SEMI standards specify resistivity ranges for different applications.",
+    "seconds": 10.384
+  },
+  {
+    "i": 36,
+    "segment": "definition_card",
+    "narration": "The dopant distributes unevenly along the ingot because its solubility differs between solid and liquid silicon.",
+    "seconds": 7.728
+  },
+  {
+    "i": 37,
+    "segment": "text_beat",
+    "narration": "This is called segregation, and it is quantified by the segregation coefficient.",
+    "seconds": 4.784
+  },
+  {
+    "i": 38,
+    "segment": "definition_card",
+    "narration": "For boron in silicon, the coefficient is about 0.8, meaning boron concentrates slightly in the solid.",
+    "seconds": 6.642666666666667
+  },
+  {
+    "i": 39,
+    "segment": "text_beat",
+    "narration": "For phosphorus, it is about 0.35, meaning phosphorus stays in the melt.",
+    "seconds": 4.944
+  },
+  {
+    "i": 40,
+    "segment": "definition_card",
+    "narration": "Ingot producers measure resistivity at multiple points and cut the ingot into zones of acceptable uniformity.",
+    "seconds": 6.341333333333333
+  },
+  {
+    "i": 41,
+    "segment": "text_beat",
+    "narration": "The first-to-freeze material has lower dopant concentration than the last-to-freeze material. This variation is predictable and accounted for in production planning.",
+    "seconds": 9.957333333333333
+  },
+  {
+    "i": 42,
+    "segment": "process_steps",
+    "narration": "The cylindrical ingot is ground to a precise diameter \u2014 200.0 millimeters or 300.0 millimeters, within tens of microns.",
+    "seconds": 10.106666666666667
+  },
+  {
+    "i": 43,
+    "segment": "text_beat",
+    "narration": "A flat or notch is ground along one side to mark crystal orientation.",
+    "seconds": 4.4
+  },
+  {
+    "i": 44,
+    "segment": "process_steps",
+    "narration": "The ingot is then sliced. Multi-wire saws use hundreds of parallel steel wires under tension, moving at ten to twenty meters per second.",
+    "seconds": 9.370666666666667
+  },
+  {
+    "i": 45,
+    "segment": "text_beat",
+    "narration": "An abrasive slurry \u2014 typically silicon carbide or diamond particles suspended in oil or glycol \u2014 flows over the wires.",
+    "seconds": 7.013333333333334
+  },
+  {
+    "i": 46,
+    "segment": "process_steps",
+    "narration": "The abrasive does the cutting; the wire is the vehicle. A single pass through a 300-millimeter ingot can yield several hundred wafers simultaneously.",
+    "seconds": 10.437333333333333
+  },
+  {
+    "i": 47,
+    "segment": "text_beat",
+    "narration": "Finished wafer thickness is 775 microns for 200-millimeter wafers and 925 microns for 300-millimeter wafers, per SEMI standards.",
+    "seconds": 11.888
+  },
+  {
+    "i": 48,
+    "segment": "process_steps",
+    "narration": "The sawing step removes about half the ingot as kerf loss \u2014 the material turned to slurry between cuts.",
+    "seconds": 6.416
+  },
+  {
+    "i": 49,
+    "segment": "text_beat",
+    "narration": "Wire tension, speed and slurry composition are tuned to minimize subsurface damage while maintaining throughput.",
+    "seconds": 6.768
+  },
+  {
+    "i": 50,
+    "segment": "process_steps",
+    "narration": "Each wafer emerges with saw marks and a damaged surface layer several microns deep.",
+    "seconds": 5.541333333333333
+  },
+  {
+    "i": 51,
+    "segment": "magnitude_bar",
+    "narration": "As-sawn wafers are rough. Lapping uses a rotating plate with loose abrasive to remove saw damage and flatten the wafer.",
+    "seconds": 7.8453333333333335
+  },
+  {
+    "i": 52,
+    "segment": "text_beat",
+    "narration": "The lapped surface has a roughness around 800 nanometers RMS. Chemical etching removes the damaged subsurface layer left by lapping, reducing roughness to about fifty nanometers.",
+    "seconds": 12.421333333333333
+  },
+  {
+    "i": 53,
+    "segment": "magnitude_bar",
+    "narration": "The final step is chemical-mechanical polishing, or CMP. The wafer is pressed against a rotating pad while a slurry containing nanoscale abrasive particles and reactive chemicals flows between them.",
+    "seconds": 12.101333333333333
+  },
+  {
+    "i": 54,
+    "segment": "text_beat",
+    "narration": "The chemical component weakens silicon bonds; the mechanical component removes the weakened material.",
+    "seconds": 5.584
+  },
+  {
+    "i": 55,
+    "segment": "magnitude_bar",
+    "narration": "Polishing continues until the surface reaches a roughness below 0.1 nanometers RMS \u2014 effectively atomic-scale flatness.",
+    "seconds": 8.741333333333333
+  },
+  {
+    "i": 56,
+    "segment": "text_beat",
+    "narration": "NIST and SEMI both publish metrology standards for wafer surface finish. The polished wafer is cleaned in ultrapure water and packaged in a cleanroom environment.",
+    "seconds": 10.96
+  },
+  {
+    "i": 57,
+    "segment": "magnitude_bar",
+    "narration": "Surface inspection uses laser scattering and atomic force microscopy to detect particles and defects down to tens of nanometers.",
+    "seconds": 8.197333333333333
+  },
+  {
+    "i": 58,
+    "segment": "text_beat",
+    "narration": "Only wafers meeting flatness, roughness and defect specifications ship to device fabricators.",
+    "seconds": 6.714666666666667
+  },
+  {
+    "i": 59,
+    "segment": "contrast_pair",
+    "narration": "The seed crystal used in Czochralski pulling has a specific crystallographic orientation, typically 100 or 111, described by Miller indices.",
+    "seconds": 9.498666666666667
+  },
+  {
+    "i": 60,
+    "segment": "text_beat",
+    "narration": "These indices describe which atomic plane is parallel to the wafer surface.",
+    "seconds": 4.858666666666666
+  },
+  {
+    "i": 61,
+    "segment": "contrast_pair",
+    "narration": "Orientation affects mechanical properties \u2014 silicon cleaves more easily along certain planes \u2014 and electrical properties, because carrier mobility varies with direction.",
+    "seconds": 10.117333333333333
+  },
+  {
+    "i": 62,
+    "segment": "text_beat",
+    "narration": "The 100 orientation is standard for most logic and memory devices. The 111 orientation is sometimes used for power devices.",
+    "seconds": 9.221333333333334
+  },
+  {
+    "i": 63,
+    "segment": "contrast_pair",
+    "narration": "The flat or notch ground onto the ingot marks the orientation so that device fabricators can align their lithography and etch steps to the crystal lattice.",
+    "seconds": 10.256
+  },
+  {
+    "i": 64,
+    "segment": "text_beat",
+    "narration": "ASM International and MIT Department of Materials Science and Engineering both document the relationship between crystal orientation and device performance.",
+    "seconds": 9.936
+  },
+  {
+    "i": 65,
+    "segment": "contrast_pair",
+    "narration": "Orientation is not adjusted after the seed is chosen; it propagates through the entire ingot.",
+    "seconds": 5.872
+  },
+  {
+    "i": 66,
+    "segment": "contrast_pair",
+    "narration": "Purity is not a single number frozen at the Siemens step. Every thermal process after purification risks contamination.",
+    "seconds": 8.517333333333333
+  },
+  {
+    "i": 67,
+    "segment": "text_beat",
+    "narration": "The quartz crucible in Czochralski growth dissolves slightly, adding oxygen to the melt at levels around ten to twenty parts per million.",
+    "seconds": 8.410666666666666
+  },
+  {
+    "i": 68,
+    "segment": "contrast_pair",
+    "narration": "Oxygen is sometimes intentional \u2014 it improves mechanical strength \u2014 but it is still an impurity.",
+    "seconds": 6.906666666666666
+  },
+  {
+    "i": 69,
+    "segment": "text_beat",
+    "narration": "Carbon enters from graphite furnace components. Metals can diffuse from tooling during slicing and polishing.",
+    "seconds": 6.768
+  },
+  {
+    "i": 70,
+    "segment": "contrast_pair",
+    "narration": "Each wafer is tested for resistivity, which reflects dopant concentration, and for minority carrier lifetime, which reflects deep-level impurities.",
+    "seconds": 9.2
+  },
+  {
+    "i": 71,
+    "segment": "text_beat",
+    "narration": "These are electrical measurements, not direct chemical assays, but they correlate with device performance. The published specifications are limits, not guarantees of uniformity.",
+    "seconds": 10.621333333333334
+  },
+  {
+    "i": 72,
+    "segment": "uncertainty_bar",
+    "narration": "The four-week figure for total production time is an estimate that depends on ingot diameter, facility scheduling and whether all steps occur at one site or multiple sites.",
+    "seconds": 10.8
+  },
+  {
+    "i": 73,
+    "segment": "text_beat",
+    "narration": "Czochralski pulling alone takes one to two days per ingot. Slicing, lapping, etching and polishing add several days.",
+    "seconds": 8.101333333333333
+  },
+  {
+    "i": 74,
+    "segment": "uncertainty_bar",
+    "narration": "The Siemens process operates continuously but polysilicon accumulates over days to weeks before a reactor is harvested.",
+    "seconds": 7.557333333333333
+  },
+  {
+    "i": 75,
+    "segment": "text_beat",
+    "narration": "No single public source tracks end-to-end cycle time across all producers. The figure represents typical industry practice as described in SEMI and ASM International references, not a measured universal.",
+    "seconds": 13.317333333333334
+  },
+  {
+    "i": 76,
+    "segment": "ambient_drift",
+    "narration": "A silicon wafer is not refined from silicon. It is built from it, through a sequence of subtractive and additive steps that each operate at a different temperature and each introduce a different contamination risk.",
+    "seconds": 11.866666666666667
+  },
+  {
+    "i": 77,
+    "segment": "ambient_drift",
+    "narration": "The nine-nines purity is the result of that sequence, not a property of the starting material.",
+    "seconds": 5.306666666666667
+  }
+]

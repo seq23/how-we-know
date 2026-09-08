@@ -1,0 +1,524 @@
+[
+  {
+    "i": 0,
+    "segment": "process_column",
+    "narration": "Laser powder bed fusion can melt metal powder in layers as thin as 20 microns.",
+    "seconds": 5.189333333333333
+  },
+  {
+    "i": 1,
+    "segment": "text_beat",
+    "narration": "That is thinner than a human hair. But the thinness is not what makes the process work.",
+    "seconds": 5.765333333333333
+  },
+  {
+    "i": 2,
+    "segment": "process_column",
+    "narration": "What makes it work is that each layer bonds metallurgically to the layer below it \u2014 meaning the atoms interdiffuse across the boundary.",
+    "seconds": 7.333333333333333
+  },
+  {
+    "i": 3,
+    "segment": "text_beat",
+    "narration": "You are not gluing layers together. You are creating a continuous solid from repeated, controlled melting.",
+    "seconds": 6.117333333333334
+  },
+  {
+    "i": 4,
+    "segment": "text_beat",
+    "narration": "How is 3D printed metal made?",
+    "seconds": 2.256
+  },
+  {
+    "i": 5,
+    "segment": "definition_card",
+    "narration": "Metal powder for additive manufacturing is not the same as powder for pressing or sintering.",
+    "seconds": 5.232
+  },
+  {
+    "i": 6,
+    "segment": "text_beat",
+    "narration": "It must be spherical, because spherical particles flow predictably and pack uniformly.",
+    "seconds": 6.010666666666666
+  },
+  {
+    "i": 7,
+    "segment": "definition_card",
+    "narration": "Most powder is made by gas atomization \u2014 molten metal is broken into droplets by high-pressure inert gas, and the droplets solidify in flight.",
+    "seconds": 9.754666666666667
+  },
+  {
+    "i": 8,
+    "segment": "text_beat",
+    "narration": "The size distribution matters. If the range is too wide, fine particles fill the voids between large ones, and the powder does not spread evenly.",
+    "seconds": 8.592
+  },
+  {
+    "i": 9,
+    "segment": "definition_card",
+    "narration": "A typical specification for titanium alloy powder is 15 to 45 microns, with less than 10 percent outside that range.",
+    "seconds": 8.357333333333333
+  },
+  {
+    "i": 10,
+    "segment": "uncertainty_bar",
+    "narration": "The median particle size for aerospace-grade titanium alloy powder is around 25 microns, though the acceptable range is 15 to 60 microns depending on the machine and the part geometry.",
+    "seconds": 11.237333333333334
+  },
+  {
+    "i": 11,
+    "segment": "text_beat",
+    "narration": "Finer powder gives better surface finish but is harder to handle safely \u2014 it can be pyrophoric in air.",
+    "seconds": 6.896
+  },
+  {
+    "i": 12,
+    "segment": "uncertainty_bar",
+    "narration": "Coarser powder flows more reliably but limits the minimum feature size you can print.",
+    "seconds": 5.349333333333333
+  },
+  {
+    "i": 13,
+    "segment": "text_beat",
+    "narration": "The powder must also have low oxygen content, typically below 1300 parts per million for titanium, because oxygen embrittles the final part.",
+    "seconds": 10.034666666666666
+  },
+  {
+    "i": 14,
+    "segment": "evidence_chain",
+    "narration": "In laser powder bed fusion, a thin layer of powder is spread across the build platform by a recoating blade or roller.",
+    "seconds": 6.650666666666667
+  },
+  {
+    "i": 15,
+    "segment": "text_beat",
+    "narration": "A laser beam, typically 50 to 100 watts for small machines and up to 400 watts for production systems, scans across the powder bed following a programmed path.",
+    "seconds": 10.042666666666667
+  },
+  {
+    "i": 16,
+    "segment": "evidence_chain",
+    "narration": "Where the beam hits, the powder melts and forms a melt pool.",
+    "seconds": 3.472
+  },
+  {
+    "i": 17,
+    "segment": "text_beat",
+    "narration": "The melt pool is typically 100 to 200 microns wide and lasts only milliseconds.",
+    "seconds": 5.882666666666666
+  },
+  {
+    "i": 18,
+    "segment": "evidence_chain",
+    "narration": "When the beam moves on, the metal solidifies. The platform drops by one layer thickness, a new layer of powder is spread, and the process repeats.",
+    "seconds": 9.797333333333333
+  },
+  {
+    "i": 19,
+    "segment": "contrast_pair",
+    "narration": "Laser systems operate in an inert gas atmosphere \u2014 argon or nitrogen \u2014 to prevent oxidation.",
+    "seconds": 7.002666666666666
+  },
+  {
+    "i": 20,
+    "segment": "text_beat",
+    "narration": "Electron beam systems operate in vacuum, which eliminates oxidation entirely but requires the powder to be conductive.",
+    "seconds": 7.546666666666667
+  },
+  {
+    "i": 21,
+    "segment": "contrast_pair",
+    "narration": "Electron beam melting is faster because the beam can be deflected electromagnetically with no moving parts, but it is limited to metals that conduct electricity in powder form.",
+    "seconds": 10.597333333333333
+  },
+  {
+    "i": 22,
+    "segment": "process_steps",
+    "narration": "The scan pattern is not arbitrary. Within each layer, the laser traces parallel lines called hatch lines, spaced to ensure overlap between adjacent melt tracks.",
+    "seconds": 10.512
+  },
+  {
+    "i": 23,
+    "segment": "text_beat",
+    "narration": "Between layers, the hatch direction is rotated \u2014 commonly by 67 or 90 degrees \u2014 to avoid building up columnar grains in one direction.",
+    "seconds": 9.904
+  },
+  {
+    "i": 24,
+    "segment": "process_steps",
+    "narration": "A contour pass around the edge of each layer improves surface finish.",
+    "seconds": 4.4
+  },
+  {
+    "i": 25,
+    "segment": "text_beat",
+    "narration": "The local thermal gradient and cooling rate determine the microstructure. In titanium alloys, rapid cooling produces a fine acicular alpha structure.",
+    "seconds": 9.018666666666666
+  },
+  {
+    "i": 26,
+    "segment": "process_steps",
+    "narration": "In nickel superalloys, it can produce columnar grains aligned with the build direction.",
+    "seconds": 5.712
+  },
+  {
+    "i": 27,
+    "segment": "text_beat",
+    "narration": "The thermal history is not uniform across the part. Regions near the substrate cool faster because heat conducts into the build platform.",
+    "seconds": 8.176
+  },
+  {
+    "i": 28,
+    "segment": "text_beat",
+    "narration": "Regions in the center of a large cross-section cool more slowly because they are surrounded by hot material.",
+    "seconds": 6.266666666666667
+  },
+  {
+    "i": 29,
+    "segment": "ambient_drift",
+    "narration": "This means microstructure varies with position, and post-process heat treatment is almost always required to homogenize it.",
+    "seconds": 7.493333333333333
+  },
+  {
+    "i": 30,
+    "segment": "text_beat",
+    "narration": "Cooling rates in laser powder bed fusion can reach 1000 to 10000 degrees Celsius per second, which is far faster than conventional casting.",
+    "seconds": 9.317333333333334
+  },
+  {
+    "i": 31,
+    "segment": "quote_card",
+    "narration": "I wanted to say the layers get welded together, because that's the intuitive word.",
+    "seconds": 5.232
+  },
+  {
+    "i": 32,
+    "segment": "quote_card",
+    "narration": "They don't weld, they fuse metallurgically \u2014 the atoms interdiffuse across the boundary. Wrong verb, wrong physics, so I cut it.",
+    "seconds": 8.837333333333333
+  },
+  {
+    "i": 33,
+    "segment": "checklist_reveal",
+    "narration": "Porosity is the most common defect in metal additive manufacturing. It comes from insufficient energy density \u2014 if the laser power is too low or the scan speed too high, the powder does not fully melt and voids remain.",
+    "seconds": 13.338666666666667
+  },
+  {
+    "i": 34,
+    "segment": "text_beat",
+    "narration": "It comes from gas trapped in the powder particles during atomization. It comes from keyhole collapse \u2014 at very high energy density, the melt pool vaporizes and creates a deep narrow cavity that can collapse and trap vapor.",
+    "seconds": 14.224
+  },
+  {
+    "i": 35,
+    "segment": "checklist_reveal",
+    "narration": "Porosity above 0.5 percent by volume typically disqualifies a part for structural aerospace applications.",
+    "seconds": 7.802666666666667
+  },
+  {
+    "i": 36,
+    "segment": "magnitude_bar",
+    "narration": "The acceptable porosity depends on the application. Aerospace structural parts require less than 0.2 percent.",
+    "seconds": 7.397333333333333
+  },
+  {
+    "i": 37,
+    "segment": "text_beat",
+    "narration": "Medical implants can tolerate around 1.0 percent if the pores are small and well-distributed.",
+    "seconds": 6.714666666666667
+  },
+  {
+    "i": 38,
+    "segment": "magnitude_bar",
+    "narration": "Tooling and non-critical components can tolerate 2.0 percent. Porosity is measured by X-ray computed tomography or by metallographic sectioning and image analysis.",
+    "seconds": 11.261333333333333
+  },
+  {
+    "i": 39,
+    "segment": "text_beat",
+    "narration": "The measurement method matters \u2014 CT can detect pores as small as 10 microns, while sectioning only samples a small fraction of the part volume.",
+    "seconds": 9.072
+  },
+  {
+    "i": 40,
+    "segment": "ambient_drift",
+    "narration": "Any surface tilted more than about 45 degrees from vertical requires support structures.",
+    "seconds": 5.754666666666667
+  },
+  {
+    "i": 41,
+    "segment": "ambient_drift",
+    "narration": "This is because the powder below an unsupported overhang cannot conduct heat away fast enough, and the melt pool sags or distorts.",
+    "seconds": 9.008
+  },
+  {
+    "i": 42,
+    "segment": "text_beat",
+    "narration": "Supports are printed from the same material as the part, using the same process, and they must be mechanically removed after the build.",
+    "seconds": 8.688
+  },
+  {
+    "i": 43,
+    "segment": "ambient_drift",
+    "narration": "Removal is done by machining, wire EDM, or manual grinding. Support removal adds cost and limits the geometric freedom that additive manufacturing is supposed to provide.",
+    "seconds": 11.386666666666667
+  },
+  {
+    "i": 44,
+    "segment": "ambient_drift",
+    "narration": "Part orientation during the build is a design decision that trades support volume against surface finish and residual stress.",
+    "seconds": 7.44
+  },
+  {
+    "i": 45,
+    "segment": "process_steps",
+    "narration": "After printing, the part is removed from the build platform \u2014 usually by wire EDM or bandsaw.",
+    "seconds": 6.416
+  },
+  {
+    "i": 46,
+    "segment": "text_beat",
+    "narration": "It is then stress-relieved to reduce residual stresses from the thermal cycling during the build.",
+    "seconds": 5.925333333333334
+  },
+  {
+    "i": 47,
+    "segment": "process_steps",
+    "narration": "Stress relief for titanium alloys is typically 650 to 800 degrees Celsius for two to four hours.",
+    "seconds": 6.810666666666667
+  },
+  {
+    "i": 48,
+    "segment": "text_beat",
+    "narration": "For critical applications, hot isostatic pressing is used to close internal porosity.",
+    "seconds": 5.872
+  },
+  {
+    "i": 49,
+    "segment": "process_steps",
+    "narration": "HIP applies high temperature and high pressure \u2014 typically 900 degrees Celsius and 100 megapascals for titanium \u2014 which collapses voids and improves fatigue properties. Final machining brings critical dimensions to tolerance.",
+    "seconds": 14.917333333333334
+  },
+  {
+    "i": 50,
+    "segment": "thermal_ascent",
+    "narration": "Hot isostatic pressing for titanium alloys is typically conducted at 900 degrees Celsius under 100 megapascals of argon pressure for two to four hours.",
+    "seconds": 11.098666666666666
+  },
+  {
+    "i": 51,
+    "segment": "text_beat",
+    "narration": "This closes porosity below the detection limit of most inspection methods and brings tensile and fatigue properties close to those of wrought material.",
+    "seconds": 8.666666666666666
+  },
+  {
+    "i": 52,
+    "segment": "thermal_ascent",
+    "narration": "The improvement in fatigue life can be a factor of two or more, which is why HIP is standard for aerospace components.",
+    "seconds": 7.653333333333333
+  },
+  {
+    "i": 53,
+    "segment": "contrast_pair",
+    "narration": "Wire arc additive manufacturing uses a welding arc to melt metal wire, which is deposited layer by layer.",
+    "seconds": 7.301333333333333
+  },
+  {
+    "i": 54,
+    "segment": "text_beat",
+    "narration": "It is much faster than powder bed methods \u2014 deposition rates can exceed 10 kilograms per hour compared to 50 to 100 grams per hour for laser powder bed fusion.",
+    "seconds": 10.682666666666666
+  },
+  {
+    "i": 55,
+    "segment": "contrast_pair",
+    "narration": "It is used for large structural parts in aerospace and shipbuilding. The trade-off is precision.",
+    "seconds": 6.117333333333334
+  },
+  {
+    "i": 56,
+    "segment": "text_beat",
+    "narration": "Layer thickness is typically 1 to 3 millimeters, and surface finish is rough.",
+    "seconds": 4.8693333333333335
+  },
+  {
+    "i": 57,
+    "segment": "contrast_pair",
+    "narration": "Wire arc parts almost always require extensive machining. The process is essentially robotic welding applied to additive manufacturing.",
+    "seconds": 8.464
+  },
+  {
+    "i": 58,
+    "segment": "source_compare",
+    "narration": "The numbers in this script \u2014 layer thickness, particle size, laser power, porosity limits, HIP conditions \u2014 come from ASTM standards, NIST measurement programs, and ASM International handbooks.",
+    "seconds": 13.178666666666667
+  },
+  {
+    "i": 59,
+    "segment": "text_beat",
+    "narration": "These are the bodies that publish consensus data for industrial metal additive manufacturing.",
+    "seconds": 5.786666666666667
+  },
+  {
+    "i": 60,
+    "segment": "source_compare",
+    "narration": "When a range is given, it reflects real variation across alloys, machines, and applications.",
+    "seconds": 5.968
+  },
+  {
+    "i": 61,
+    "segment": "text_beat",
+    "narration": "When a single figure is stated, it is a typical midpoint, not a universal constant.",
+    "seconds": 5.8293333333333335
+  },
+  {
+    "i": 62,
+    "segment": "source_compare",
+    "narration": "The cooling rate range of 1000 to 10000 degrees Celsius per second is measured by high-speed pyrometry during the build.",
+    "seconds": 8.336
+  },
+  {
+    "i": 63,
+    "segment": "text_beat",
+    "narration": "This script describes the process and the parameters, but it does not tell you whether a given part design is suitable for additive manufacturing, or whether the properties will meet your requirements.",
+    "seconds": 10.832
+  },
+  {
+    "i": 64,
+    "segment": "text_beat",
+    "narration": "That depends on the alloy, the geometry, the thermal history, the post-processing, and the inspection methods.",
+    "seconds": 6.256
+  },
+  {
+    "i": 65,
+    "segment": "ambient_drift",
+    "narration": "The process is controllable, but it is not yet as repeatable as casting or forging, and every production program involves iteration.",
+    "seconds": 9.008
+  },
+  {
+    "i": 66,
+    "segment": "text_beat",
+    "narration": "The published porosity limits are for qualification, not for every part that comes off a machine.",
+    "seconds": 5.68
+  },
+  {
+    "i": 67,
+    "segment": "definition_card",
+    "narration": "Residual stress is stress that remains in a part after the external forces are removed.",
+    "seconds": 10.586666666666666
+  },
+  {
+    "i": 68,
+    "segment": "text_beat",
+    "narration": "In metal additive manufacturing, it builds up because each new layer heats the layers below it, causing expansion, and then contracts as it cools.",
+    "seconds": 9.530666666666667
+  },
+  {
+    "i": 69,
+    "segment": "definition_card",
+    "narration": "The layers below resist this contraction, and tensile stress accumulates. Residual stresses in as-built laser powder bed fusion parts can reach 200 to 400 megapascals in titanium alloys and 400 to 800 megapascals in nickel superalloys.",
+    "seconds": 16.688
+  },
+  {
+    "i": 70,
+    "segment": "text_beat",
+    "narration": "These values approach the yield strength of the material, which is why parts sometimes crack during the build or warp when removed from the substrate.",
+    "seconds": 8.08
+  },
+  {
+    "i": 71,
+    "segment": "magnitude_bar",
+    "narration": "The magnitude depends on the alloy, the part geometry, and the scan strategy.",
+    "seconds": 5.458666666666667
+  },
+  {
+    "i": 72,
+    "segment": "text_beat",
+    "narration": "A typical measured value is 300 megapascals for titanium alloy and 600 megapascals for nickel superalloy.",
+    "seconds": 7.941333333333334
+  },
+  {
+    "i": 73,
+    "segment": "magnitude_bar",
+    "narration": "Long, thin walls accumulate more stress than compact geometries. Scanning the same region repeatedly without allowing it to cool increases the local stress.",
+    "seconds": 10.149333333333333
+  },
+  {
+    "i": 74,
+    "segment": "text_beat",
+    "narration": "Some machines preheat the build platform to 200 degrees Celsius or higher to reduce the thermal gradient between the melt pool and the substrate.",
+    "seconds": 8.496
+  },
+  {
+    "i": 75,
+    "segment": "magnitude_bar",
+    "narration": "Preheating reduces residual stress but does not eliminate it. Stress relief heat treatment after the build is mandatory for most structural applications.",
+    "seconds": 9.018666666666666
+  },
+  {
+    "i": 76,
+    "segment": "evidence_chain",
+    "narration": "Powder is expensive, so it is reused. After a build, the unused powder is recovered from the build chamber, sieved to remove spatter \u2014 small solidified droplets ejected from the melt pool \u2014 and agglomerates.",
+    "seconds": 13.552
+  },
+  {
+    "i": 77,
+    "segment": "text_beat",
+    "narration": "The recovered powder is blended with virgin powder for the next build, with monitoring at each cycle.",
+    "seconds": 5.658666666666667
+  },
+  {
+    "i": 78,
+    "segment": "evidence_chain",
+    "narration": "But powder degrades with each cycle. Oxygen and nitrogen content increase from exposure to the atmosphere during handling.",
+    "seconds": 7.632
+  },
+  {
+    "i": 79,
+    "segment": "text_beat",
+    "narration": "Particle size distribution shifts as fine particles are preferentially consumed and spatter adds coarse irregular particles.",
+    "seconds": 7.258666666666667
+  },
+  {
+    "i": 80,
+    "segment": "evidence_chain",
+    "narration": "ASTM standards require tracking the number of reuse cycles and testing powder chemistry and particle size distribution periodically.",
+    "seconds": 8.314666666666668
+  },
+  {
+    "i": 81,
+    "segment": "uncertainty_bar",
+    "narration": "The number of times powder can be reused varies. For titanium alloys, 12 cycles is a common industry limit, though some programs allow up to 20 if the powder passes chemistry and flowability tests.",
+    "seconds": 12.368
+  },
+  {
+    "i": 82,
+    "segment": "text_beat",
+    "narration": "For aluminum alloys, the limit is lower \u2014 around 5 to 8 cycles \u2014 because aluminum oxidizes more readily.",
+    "seconds": 7.898666666666666
+  },
+  {
+    "i": 83,
+    "segment": "uncertainty_bar",
+    "narration": "Powder that fails specification is either discarded or sent back to the supplier for reprocessing.",
+    "seconds": 5.8293333333333335
+  },
+  {
+    "i": 84,
+    "segment": "text_beat",
+    "narration": "The cost of powder and the cost of testing it are both significant fractions of the total part cost, which is why powder management is a process control issue, not just a material issue.",
+    "seconds": 12.058666666666667
+  },
+  {
+    "i": 85,
+    "segment": "ambient_drift",
+    "narration": "Metal additive manufacturing is not magic. It is controlled melting, repeated thousands of times, with the microstructure and defects determined by thermal history.",
+    "seconds": 10.256
+  },
+  {
+    "i": 86,
+    "segment": "ambient_drift",
+    "narration": "The precision comes from the beam control and the powder quality. The limitation comes from the fact that you are melting and solidifying metal faster than equilibrium allows.",
+    "seconds": 9.562666666666667
+  }
+]

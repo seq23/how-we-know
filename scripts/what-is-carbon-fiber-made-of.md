@@ -96,20 +96,19 @@ Carbon fiber is not a coating on something else. It is the product of removing e
 
 ## Chapters
 
-- 00:00 Cold open
-- 00:24 Title card
-- 00:26 The precursor is a polymer most people have never heard of
-- 01:28 Stabilization happens in air at a temperature that does not melt the polymer
-- 02:38 Carbonization removes everything that is not carbon
-- 03:52 Graphitization is optional and pushes carbon content even higher
-- 05:00 The fiber diameter is set at the beginning and does not change much
-- 06:00 Surface treatment makes the fiber stick to resin
-- 07:00 The aligned carbon sheets are why the fiber is strong along its length
-- 08:08 The process is energy-intensive and that drives cost
-- 09:16 Recycling carbon fiber is possible but degrades properties
-- 10:16 What to notice in the edit
-- 10:40 Evidence limit
-- 11:00 Closing
+- 0:00 Cold open
+- 0:35 The precursor is a polymer most people have never heard of
+- 1:38 Stabilization happens in air at a temperature that does not melt the polymer
+- 2:30 Carbonization removes everything that is not carbon
+- 3:29 Graphitization is optional and pushes carbon content even higher
+- 4:19 The fiber diameter is set at the beginning and does not change much
+- 5:04 Surface treatment makes the fiber stick to resin
+- 6:04 The aligned carbon sheets are why the fiber is strong along its length
+- 6:52 The process is energy-intensive and that drives cost
+- 7:41 Recycling carbon fiber is possible but degrades properties
+- 8:28 What to notice in the edit
+- 9:12 Evidence limit
+- 9:46 Closing
 
 ## Sources
 

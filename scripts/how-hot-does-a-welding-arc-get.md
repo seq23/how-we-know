@@ -129,19 +129,18 @@ The arc is hotter than the sun's surface, but the sun's surface is not the sun's
 
 ## Chapters
 
-- 00:00 Cold open
-- 00:24 Title card
-- 00:26 The arc is a plasma column, and plasma temperature depends on ionization energy
-- 01:32 Current density and electrode geometry concentrate heat in a small volume
-- 02:48 Shielding gas composition shifts the temperature by changing thermal conductivity
-- 03:52 Arc length changes voltage, which changes power, which changes temperature
-- 04:50 Producer POV
-- 05:00 Measurement methods have spatial and temporal resolution limits
-- 06:28 Alternating current reverses the thermal load between electrode and workpiece
-- 07:32 The measurement history tracks improvements in spatial and temporal resolution
-- 08:30 What to notice in the edit
-- 09:20 Evidence limit
-- 10:08 Closing
+- 0:00 Cold open
+- 0:40 The arc is a plasma column, and plasma temperature depends on ionization energy
+- 1:56 Current density and electrode geometry concentrate heat in a small volume
+- 3:24 Shielding gas composition shifts the temperature by changing thermal conductivity
+- 4:04 Arc length changes voltage, which changes power, which changes temperature
+- 4:53 Producer POV
+- 5:05 Measurement methods have spatial and temporal resolution limits
+- 6:21 Alternating current reverses the thermal load between electrode and workpiece
+- 7:05 The measurement history tracks improvements in spatial and temporal resolution
+- 7:47 What to notice in the edit
+- 8:33 Evidence limit
+- 12:24 Closing
 
 ## Sources
 - https://www.aws.org/

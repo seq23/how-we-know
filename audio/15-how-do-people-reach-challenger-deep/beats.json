@@ -1,312 +1,374 @@
 [
- {
-  "i": 0,
-  "segment": "depth_descent",
-  "narration": "The famous 'only four people have reached Challenger Deep' line is outdated."
- },
- {
-  "i": 1,
-  "segment": "text_beat",
-  "narration": "The engineering is still rare. The visitor count is not a stable fact anymore."
- },
- {
-  "i": 2,
-  "segment": "text_beat",
-  "narration": "How do people reach Challenger Deep?"
- },
- {
-  "i": 3,
-  "segment": "pressure_gauge",
-  "narration": "A full-ocean-depth submersible does not make every component resist pressure in the same way."
- },
- {
-  "i": 4,
-  "segment": "text_beat",
-  "narration": "The crew sits inside a compact metal sphere engineered to keep one atmosphere of pressure."
- },
- {
-  "i": 5,
-  "segment": "checklist_reveal",
-  "narration": "Batteries, cameras, thrusters, and electronics may use oil filling, pressure-tolerant housings, or separate vessels."
- },
- {
-  "i": 6,
-  "segment": "text_beat",
-  "narration": "Syntactic foam supplies buoyancy through microscopic hollow spheres embedded in resin. Ballast makes the vehicle descend; releasing it allows the vehicle to rise even if electrical power is lost."
- },
- {
-  "i": 7,
-  "segment": "contrast_pair",
-  "narration": "The geometry matters. A sphere distributes external load more evenly than a box, which is why the human compartment is small and curved."
- },
- {
-  "i": 8,
-  "segment": "text_beat",
-  "narration": "Viewports, penetrations, and seals are critical because a local weakness can control the whole design."
- },
- {
-  "i": 9,
-  "segment": "contrast_pair",
-  "narration": "The descent is slow, giving the support ship time to track the vehicle acoustically."
- },
- {
-  "i": 10,
-  "segment": "text_beat",
-  "narration": "The first open loop is historical: the basic idea worked in 1960, but the number reported by the vehicle was not the final depth scientists accepted."
- },
- {
-  "i": 11,
-  "segment": "quote_card",
-  "narration": "I had to delete a cleaner title because it stopped being true."
- },
- {
-  "i": 12,
-  "segment": "quote_card",
-  "narration": "That is exactly the kind of correction this channel needs to make before the audience makes it for us."
- },
- {
-  "i": 13,
-  "segment": "timeline",
-  "narration": "On January 23, 1960, Jacques Piccard and U.S. Navy Lieutenant Don Walsh descended in the bathyscaphe Trieste."
- },
- {
-  "i": 14,
-  "segment": "text_beat",
-  "narration": "The vehicle used a gasoline-filled float for buoyancy and an attached pressure sphere for the crew."
- },
- {
-  "i": 15,
-  "segment": "timeline",
-  "narration": "They reached the floor of Challenger Deep and remained there briefly before returning."
- },
- {
-  "i": 16,
-  "segment": "text_beat",
-  "narration": "The onboard depth indicator produced a value that was later corrected through additional calculations."
- },
- {
-  "i": 17,
-  "segment": "source_compare",
-  "narration": "This is not a flaw in the achievement. It shows that reaching the place and measuring the place are different engineering problems."
- },
- {
-  "i": 18,
-  "segment": "checklist_reveal",
-  "narration": "Water density changes with temperature and salinity. Gravity varies slightly with location."
- },
- {
-  "i": 19,
-  "segment": "text_beat",
-  "narration": "Pressure instruments have calibration uncertainty. The seafloor is not one level basin; Challenger Deep contains separate depressions and uneven terrain."
- },
- {
-  "i": 20,
-  "segment": "checklist_reveal",
-  "narration": "The historic dive proved humans could survive the journey. Modern work asks for repeatable routes, calibrated sensors, and transects that make the depth estimate defensible."
- },
- {
-  "i": 21,
-  "segment": "text_beat",
-  "narration": "The next loop is how modern vehicles turned a once-in-history descent into a platform that could dive repeatedly."
- },
- {
-  "i": 22,
-  "segment": "checklist_reveal",
-  "narration": "Modern full-ocean-depth vehicles use stronger materials, syntactic foam, digital control, acoustic communications, and improved navigation."
- },
- {
-  "i": 23,
-  "segment": "text_beat",
-  "narration": "A repeatable submersible can cross the same depression more than once, approach different landing points, and compare pressure-derived depth with acoustic altitude above the bottom."
- },
- {
-  "i": 24,
-  "segment": "checklist_reveal",
-  "narration": "This matters because the deepest observed point can be missed if a vehicle lands on a nearby rise."
- },
- {
-  "i": 25,
-  "segment": "text_beat",
-  "narration": "It also changes safety. Systems can be inspected after each dive, maintenance records accumulate, and the vehicle's real behavior becomes better known."
- },
- {
-  "i": 26,
-  "segment": "checklist_reveal",
-  "narration": "Repeat dives have also made old viral counts of people at Challenger Deep obsolete."
- },
- {
-  "i": 27,
-  "segment": "contrast_pair",
-  "narration": "A title such as only four people have gone deeper than Everest may have been true at one moment and false later."
- },
- {
-  "i": 28,
-  "segment": "text_beat",
-  "narration": "The stable story is the engineering and method, not a frozen headcount."
- },
- {
-  "i": 29,
-  "segment": "contrast_pair",
-  "narration": "The unresolved question becomes surprisingly technical: when a sensor reports pressure, how does that number become meters below mean sea level?"
- },
- {
-  "i": 30,
-  "segment": "uncertainty_bar",
-  "narration": "A 2021 peer-reviewed analysis used submersible transects and pressure observations to revise the maximum depth of Challenger Deep."
- },
- {
-  "i": 31,
-  "segment": "text_beat",
-  "narration": "The deepest observed seafloor value was 10,935 meters, with an uncertainty of plus or minus six meters at 95 percent confidence."
- },
- {
-  "i": 32,
-  "segment": "checklist_reveal",
-  "narration": "The team corrected for water-column properties, atmospheric pressure, gravity, gravity gradients, and water-level effects."
- },
- {
-  "i": 33,
-  "segment": "text_beat",
-  "narration": "An acoustic altimeter measured the vehicle's height above the seafloor as it crossed the terrain."
- },
- {
-  "i": 34,
-  "segment": "checklist_reveal",
-  "narration": "That combination is stronger than reading one gauge at one landing point."
- },
- {
-  "i": 35,
-  "segment": "definition_card",
-  "narration": "The uncertainty is not an embarrassment to hide after the number. It is part of the measurement."
- },
- {
-  "i": 36,
-  "segment": "text_beat",
-  "narration": "Challenger Deep may still be described as roughly eleven kilometers, but a sourced article should preserve the method and range."
- },
- {
-  "i": 37,
-  "segment": "definition_card",
-  "narration": "Human exploration at full ocean depth is therefore two stories at once: a pressure vessel protecting a few people, and an instrument system turning an extreme journey into usable evidence."
- },
- {
-  "i": 38,
-  "segment": "text_beat",
-  "narration": "Next, the series follows a very different descent\u2014a whale carcass carrying years of food to the seafloor."
- },
- {
-  "i": 39,
-  "segment": "pressure_gauge",
-  "narration": "A crewed full-ocean-depth submersible keeps its occupants near surface pressure inside a small, rigid sphere."
- },
- {
-  "i": 40,
-  "segment": "text_beat",
-  "narration": "Everything outside that sphere\u2014batteries, cameras, lights, syntactic foam, thrusters, cables, and viewports\u2014must tolerate or isolate extreme pressure."
- },
- {
-  "i": 41,
-  "segment": "pressure_gauge",
-  "narration": "Trieste reached the bottom in 1960. Modern vehicles add repeatability, better navigation, higher-resolution imaging, sampling, and pressure-derived depth measurements. Repeated dives turn a singular stunt into a survey platform."
- },
- {
-  "i": 42,
-  "segment": "contrast_pair",
-  "narration": "A first descent proves that a vehicle can reach the target and return."
- },
- {
-  "i": 43,
-  "segment": "text_beat",
-  "narration": "Repeated descents allow mapping, sampling, comparison, calibration, and repair based on actual performance."
- },
- {
-  "i": 44,
-  "segment": "contrast_pair",
-  "narration": "They also expose the variability of the trench floor. One landing cannot describe an entire depression, much less the full Mariana Trench. A repeatable vehicle turns a historic event into a scientific program."
- },
- {
-  "i": 45,
-  "segment": "ambient_drift",
-  "narration": "The cabin is only one part of that program. Navigation must work without GPS underwater."
- },
- {
-  "i": 46,
-  "segment": "checklist_reveal",
-  "narration": "Acoustic systems, inertial instruments, pressure sensors, cameras, lights, batteries, thrusters, ballast, and communications each have failure modes."
- },
- {
-  "i": 47,
-  "segment": "text_beat",
-  "narration": "The depth estimate itself is calculated from measured pressure and environmental assumptions."
- },
- {
-  "i": 48,
-  "segment": "checklist_reveal",
-  "narration": "The human story is not merely who sat in the sphere. It is the network of engineers, pilots, scientists, ship crew, and analysts required to make the observation defensible."
- },
- {
-  "i": 49,
-  "segment": "checklist_reveal",
-  "narration": "Any visitor count must be removed or rechecked on the day of publication because additional descents can make it obsolete."
- },
- {
-  "i": 50,
-  "segment": "text_beat",
-  "narration": "The script deliberately avoids building the title around that count. The stable story is engineering, repeatability, and measured depth."
- },
- {
-  "i": 51,
-  "segment": "checklist_reveal",
-  "narration": "That choice makes the episode durable instead of accurate only on the day it was drafted."
- },
- {
-  "i": 52,
-  "segment": "checklist_reveal",
-  "narration": "Before publication, recheck the depth value, the source date, and any wording that implies a current record."
- },
- {
-  "i": 53,
-  "segment": "text_beat",
-  "narration": "Do not add a visitor total simply because it makes the title cleaner."
- },
- {
-  "i": 54,
-  "segment": "checklist_reveal",
-  "narration": "The engineering narrative remains strong without it, and the episode will age better."
- },
- {
-  "i": 55,
-  "segment": "text_beat",
-  "narration": "The protected pressure sphere and the return journey are dramatic enough. We do not need an unstable headcount."
- },
- {
-  "i": 56,
-  "segment": "depth_descent",
-  "narration": "Use an engineering cutaway rather than a celebrity count. Start with the pressure sphere, expand outward to the vehicle, then show the descent timeline from surface to trench floor."
- },
- {
-  "i": 57,
-  "segment": "text_beat",
-  "narration": "The viewer should understand why the cabin is small, why buoyancy material matters, and why a return trip depends on systems that cannot be casually repaired at depth."
- },
- {
-  "i": 58,
-  "segment": "stat_card",
-  "narration": "Do not publish a total number of people who have reached Challenger Deep unless it is checked immediately before release against a current, authoritative log. The count changes. Depth values also depend on method and uncertainty."
- },
- {
-  "i": 59,
-  "segment": "checklist_reveal",
-  "narration": "The stable claims are the 1960 Trieste descent, the approximate 10,935-meter depth estimate, and the engineering requirement for full-ocean-depth pressure protection."
- },
- {
-  "i": 60,
-  "segment": "depth_descent",
-  "narration": "Reaching Challenger Deep is not impressive because the guest list is short."
- },
- {
-  "i": 61,
-  "segment": "text_beat",
-  "narration": "It is impressive because every life-supporting centimeter has to work beneath nearly eleven kilometers of water\u2014and still bring the people inside back to the surface."
- }
+  {
+    "i": 0,
+    "segment": "depth_descent",
+    "narration": "The famous 'only four people have reached Challenger Deep' line is outdated.",
+    "seconds": 4.912
+  },
+  {
+    "i": 1,
+    "segment": "text_beat",
+    "narration": "The engineering is still rare. The visitor count is not a stable fact anymore.",
+    "seconds": 5.168
+  },
+  {
+    "i": 2,
+    "segment": "text_beat",
+    "narration": "How do people reach Challenger Deep?",
+    "seconds": 2.128
+  },
+  {
+    "i": 3,
+    "segment": "pressure_gauge",
+    "narration": "A full-ocean-depth submersible does not make every component resist pressure in the same way.",
+    "seconds": 5.818666666666667
+  },
+  {
+    "i": 4,
+    "segment": "text_beat",
+    "narration": "The crew sits inside a compact metal sphere engineered to keep one atmosphere of pressure.",
+    "seconds": 5.594666666666667
+  },
+  {
+    "i": 5,
+    "segment": "checklist_reveal",
+    "narration": "Batteries, cameras, thrusters, and electronics may use oil filling, pressure-tolerant housings, or separate vessels.",
+    "seconds": 7.8453333333333335
+  },
+  {
+    "i": 6,
+    "segment": "text_beat",
+    "narration": "Syntactic foam supplies buoyancy through microscopic hollow spheres embedded in resin. Ballast makes the vehicle descend; releasing it allows the vehicle to rise even if electrical power is lost.",
+    "seconds": 13.530666666666667
+  },
+  {
+    "i": 7,
+    "segment": "contrast_pair",
+    "narration": "The geometry matters. A sphere distributes external load more evenly than a box, which is why the human compartment is small and curved.",
+    "seconds": 9.125333333333334
+  },
+  {
+    "i": 8,
+    "segment": "text_beat",
+    "narration": "Viewports, penetrations, and seals are critical because a local weakness can control the whole design.",
+    "seconds": 6.384
+  },
+  {
+    "i": 9,
+    "segment": "contrast_pair",
+    "narration": "The descent is slow, giving the support ship time to track the vehicle acoustically.",
+    "seconds": 5.189333333333333
+  },
+  {
+    "i": 10,
+    "segment": "text_beat",
+    "narration": "The first open loop is historical: the basic idea worked in 1960, but the number reported by the vehicle was not the final depth scientists accepted.",
+    "seconds": 9.434666666666667
+  },
+  {
+    "i": 11,
+    "segment": "quote_card",
+    "narration": "I had to delete a cleaner title because it stopped being true.",
+    "seconds": 3.2693333333333334
+  },
+  {
+    "i": 12,
+    "segment": "quote_card",
+    "narration": "That is exactly the kind of correction this channel needs to make before the audience makes it for us.",
+    "seconds": 5.746666666666667
+  },
+  {
+    "i": 13,
+    "segment": "timeline",
+    "narration": "On January 23, 1960, Jacques Piccard and U.S. Navy Lieutenant Don Walsh descended in the bathyscaphe Trieste.",
+    "seconds": 9.690666666666667
+  },
+  {
+    "i": 14,
+    "segment": "text_beat",
+    "narration": "The vehicle used a gasoline-filled float for buoyancy and an attached pressure sphere for the crew.",
+    "seconds": 6.789333333333333
+  },
+  {
+    "i": 15,
+    "segment": "timeline",
+    "narration": "They reached the floor of Challenger Deep and remained there briefly before returning.",
+    "seconds": 4.613333333333333
+  },
+  {
+    "i": 16,
+    "segment": "text_beat",
+    "narration": "The onboard depth indicator produced a value that was later corrected through additional calculations.",
+    "seconds": 5.573333333333333
+  },
+  {
+    "i": 17,
+    "segment": "source_compare",
+    "narration": "This is not a flaw in the achievement. It shows that reaching the place and measuring the place are different engineering problems.",
+    "seconds": 6.661333333333333
+  },
+  {
+    "i": 18,
+    "segment": "checklist_reveal",
+    "narration": "Water density changes with temperature and salinity. Gravity varies slightly with location.",
+    "seconds": 5.914666666666666
+  },
+  {
+    "i": 19,
+    "segment": "text_beat",
+    "narration": "Pressure instruments have calibration uncertainty. The seafloor is not one level basin; Challenger Deep contains separate depressions and uneven terrain.",
+    "seconds": 9.733333333333333
+  },
+  {
+    "i": 20,
+    "segment": "checklist_reveal",
+    "narration": "The historic dive proved humans could survive the journey. Modern work asks for repeatable routes, calibrated sensors, and transects that make the depth estimate defensible.",
+    "seconds": 11.504
+  },
+  {
+    "i": 21,
+    "segment": "text_beat",
+    "narration": "The next loop is how modern vehicles turned a once-in-history descent into a platform that could dive repeatedly.",
+    "seconds": 7.237333333333333
+  },
+  {
+    "i": 22,
+    "segment": "checklist_reveal",
+    "narration": "Modern full-ocean-depth vehicles use stronger materials, syntactic foam, digital control, acoustic communications, and improved navigation.",
+    "seconds": 11.162666666666667
+  },
+  {
+    "i": 23,
+    "segment": "text_beat",
+    "narration": "A repeatable submersible can cross the same depression more than once, approach different landing points, and compare pressure-derived depth with acoustic altitude above the bottom.",
+    "seconds": 9.84
+  },
+  {
+    "i": 24,
+    "segment": "checklist_reveal",
+    "narration": "This matters because the deepest observed point can be missed if a vehicle lands on a nearby rise.",
+    "seconds": 6.117333333333334
+  },
+  {
+    "i": 25,
+    "segment": "text_beat",
+    "narration": "It also changes safety. Systems can be inspected after each dive, maintenance records accumulate, and the vehicle's real behavior becomes better known.",
+    "seconds": 9.104
+  },
+  {
+    "i": 26,
+    "segment": "checklist_reveal",
+    "narration": "Repeat dives have also made old viral counts of people at Challenger Deep obsolete.",
+    "seconds": 5.232
+  },
+  {
+    "i": 27,
+    "segment": "contrast_pair",
+    "narration": "A title such as only four people have gone deeper than Everest may have been true at one moment and false later.",
+    "seconds": 7.952
+  },
+  {
+    "i": 28,
+    "segment": "text_beat",
+    "narration": "The stable story is the engineering and method, not a frozen headcount.",
+    "seconds": 4.730666666666667
+  },
+  {
+    "i": 29,
+    "segment": "contrast_pair",
+    "narration": "The unresolved question becomes surprisingly technical: when a sensor reports pressure, how does that number become meters below mean sea level?",
+    "seconds": 8.421333333333333
+  },
+  {
+    "i": 30,
+    "segment": "uncertainty_bar",
+    "narration": "A 2021 peer-reviewed analysis used submersible transects and pressure observations to revise the maximum depth of Challenger Deep.",
+    "seconds": 8.890666666666666
+  },
+  {
+    "i": 31,
+    "segment": "text_beat",
+    "narration": "The deepest observed seafloor value was 10,935 meters, with an uncertainty of plus or minus six meters at 95 percent confidence.",
+    "seconds": 10.042666666666667
+  },
+  {
+    "i": 32,
+    "segment": "checklist_reveal",
+    "narration": "The team corrected for water-column properties, atmospheric pressure, gravity, gravity gradients, and water-level effects.",
+    "seconds": 7.642666666666667
+  },
+  {
+    "i": 33,
+    "segment": "text_beat",
+    "narration": "An acoustic altimeter measured the vehicle's height above the seafloor as it crossed the terrain.",
+    "seconds": 5.413333333333333
+  },
+  {
+    "i": 34,
+    "segment": "checklist_reveal",
+    "narration": "That combination is stronger than reading one gauge at one landing point.",
+    "seconds": 3.92
+  },
+  {
+    "i": 35,
+    "segment": "definition_card",
+    "narration": "The uncertainty is not an embarrassment to hide after the number. It is part of the measurement.",
+    "seconds": 5.690666666666667
+  },
+  {
+    "i": 36,
+    "segment": "text_beat",
+    "narration": "Challenger Deep may still be described as roughly eleven kilometers, but a sourced article should preserve the method and range.",
+    "seconds": 8.176
+  },
+  {
+    "i": 37,
+    "segment": "definition_card",
+    "narration": "Human exploration at full ocean depth is therefore two stories at once: a pressure vessel protecting a few people, and an instrument system turning an extreme journey into usable evidence.",
+    "seconds": 11.653333333333334
+  },
+  {
+    "i": 38,
+    "segment": "text_beat",
+    "narration": "Next, the series follows a very different descent\u2014a whale carcass carrying years of food to the seafloor.",
+    "seconds": 6.8853333333333335
+  },
+  {
+    "i": 39,
+    "segment": "pressure_gauge",
+    "narration": "A crewed full-ocean-depth submersible keeps its occupants near surface pressure inside a small, rigid sphere.",
+    "seconds": 6.736
+  },
+  {
+    "i": 40,
+    "segment": "text_beat",
+    "narration": "Everything outside that sphere\u2014batteries, cameras, lights, syntactic foam, thrusters, cables, and viewports\u2014must tolerate or isolate extreme pressure.",
+    "seconds": 10.938666666666666
+  },
+  {
+    "i": 41,
+    "segment": "pressure_gauge",
+    "narration": "Trieste reached the bottom in 1960. Modern vehicles add repeatability, better navigation, higher-resolution imaging, sampling, and pressure-derived depth measurements. Repeated dives turn a singular stunt into a survey platform.",
+    "seconds": 14.832
+  },
+  {
+    "i": 42,
+    "segment": "contrast_pair",
+    "narration": "A first descent proves that a vehicle can reach the target and return.",
+    "seconds": 5.104
+  },
+  {
+    "i": 43,
+    "segment": "text_beat",
+    "narration": "Repeated descents allow mapping, sampling, comparison, calibration, and repair based on actual performance.",
+    "seconds": 6.8213333333333335
+  },
+  {
+    "i": 44,
+    "segment": "contrast_pair",
+    "narration": "They also expose the variability of the trench floor. One landing cannot describe an entire depression, much less the full Mariana Trench. A repeatable vehicle turns a historic event into a scientific program.",
+    "seconds": 15.56
+  },
+  {
+    "i": 45,
+    "segment": "ambient_drift",
+    "narration": "The cabin is only one part of that program. Navigation must work without GPS underwater.",
+    "seconds": 6.8853333333333335
+  },
+  {
+    "i": 46,
+    "segment": "checklist_reveal",
+    "narration": "Acoustic systems, inertial instruments, pressure sensors, cameras, lights, batteries, thrusters, ballast, and communications each have failure modes.",
+    "seconds": 10.245333333333333
+  },
+  {
+    "i": 47,
+    "segment": "text_beat",
+    "narration": "The depth estimate itself is calculated from measured pressure and environmental assumptions.",
+    "seconds": 6.021333333333334
+  },
+  {
+    "i": 48,
+    "segment": "checklist_reveal",
+    "narration": "The human story is not merely who sat in the sphere. It is the network of engineers, pilots, scientists, ship crew, and analysts required to make the observation defensible.",
+    "seconds": 12.368
+  },
+  {
+    "i": 49,
+    "segment": "checklist_reveal",
+    "narration": "Any visitor count must be removed or rechecked on the day of publication because additional descents can make it obsolete.",
+    "seconds": 7.002666666666666
+  },
+  {
+    "i": 50,
+    "segment": "text_beat",
+    "narration": "The script deliberately avoids building the title around that count. The stable story is engineering, repeatability, and measured depth.",
+    "seconds": 8.165333333333333
+  },
+  {
+    "i": 51,
+    "segment": "checklist_reveal",
+    "narration": "That choice makes the episode durable instead of accurate only on the day it was drafted.",
+    "seconds": 5.1146666666666665
+  },
+  {
+    "i": 52,
+    "segment": "checklist_reveal",
+    "narration": "Before publication, recheck the depth value, the source date, and any wording that implies a current record.",
+    "seconds": 6.906666666666666
+  },
+  {
+    "i": 53,
+    "segment": "text_beat",
+    "narration": "Do not add a visitor total simply because it makes the title cleaner.",
+    "seconds": 3.7386666666666666
+  },
+  {
+    "i": 54,
+    "segment": "checklist_reveal",
+    "narration": "The engineering narrative remains strong without it, and the episode will age better.",
+    "seconds": 5.04
+  },
+  {
+    "i": 55,
+    "segment": "text_beat",
+    "narration": "The protected pressure sphere and the return journey are dramatic enough. We do not need an unstable headcount.",
+    "seconds": 6.704
+  },
+  {
+    "i": 56,
+    "segment": "depth_descent",
+    "narration": "Use an engineering cutaway rather than a celebrity count. Start with the pressure sphere, expand outward to the vehicle, then show the descent timeline from surface to trench floor.",
+    "seconds": 10.533333333333333
+  },
+  {
+    "i": 57,
+    "segment": "text_beat",
+    "narration": "The viewer should understand why the cabin is small, why buoyancy material matters, and why a return trip depends on systems that cannot be casually repaired at depth.",
+    "seconds": 10.416
+  },
+  {
+    "i": 58,
+    "segment": "stat_card",
+    "narration": "Do not publish a total number of people who have reached Challenger Deep unless it is checked immediately before release against a current, authoritative log. The count changes. Depth values also depend on method and uncertainty.",
+    "seconds": 13.637333333333334
+  },
+  {
+    "i": 59,
+    "segment": "checklist_reveal",
+    "narration": "The stable claims are the 1960 Trieste descent, the approximate 10,935-meter depth estimate, and the engineering requirement for full-ocean-depth pressure protection.",
+    "seconds": 11.12
+  },
+  {
+    "i": 60,
+    "segment": "depth_descent",
+    "narration": "Reaching Challenger Deep is not impressive because the guest list is short.",
+    "seconds": 4.496
+  },
+  {
+    "i": 61,
+    "segment": "text_beat",
+    "narration": "It is impressive because every life-supporting centimeter has to work beneath nearly eleven kilometers of water\u2014and still bring the people inside back to the surface.",
+    "seconds": 9.733333333333333
+  }
 ]

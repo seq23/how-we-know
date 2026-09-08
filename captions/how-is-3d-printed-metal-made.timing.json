@@ -1,0 +1,104 @@
+{
+  "episode": "how-is-3d-printed-metal-made",
+  "beats": 87,
+  "plan_source": "plans/how-is-3d-printed-metal-made.json",
+  "timing": "audio",
+  "beats_measured": 87,
+  "durations_recorded": 87,
+  "duration_s": 718.083,
+  "cues": 188,
+  "chapters_real": 15,
+  "chapters_published": 14,
+  "chapter_notes": [
+    "merged 1 chapter(s) under 10s: Title card (2.3s)"
+  ],
+  "drift": {
+    "mean_abs_s": 39.9,
+    "worst_abs_s": 94.0,
+    "rows": [
+      {
+        "title": "Cold open",
+        "hand": "00:00",
+        "real": "0:00",
+        "drift_s": 0.0
+      },
+      {
+        "title": "Title card",
+        "hand": "00:24",
+        "real": "0:24",
+        "drift_s": 0.4
+      },
+      {
+        "title": "Producer POV",
+        "hand": "03:48",
+        "real": "3:49",
+        "drift_s": 1.9
+      },
+      {
+        "title": "What to notice in the edit",
+        "hand": "08:54",
+        "real": "7:40",
+        "drift_s": -73.1
+      },
+      {
+        "title": "Evidence limit",
+        "hand": "09:54",
+        "real": "8:19",
+        "drift_s": -94.0
+      },
+      {
+        "title": "Closing",
+        "hand": "10:28",
+        "real": "11:38",
+        "drift_s": 70.3
+      }
+    ]
+  },
+  "ffprobe": {
+    "file": "renders/how-is-3d-printed-metal-made-final.mp4",
+    "video_s": 718.082,
+    "last_cue_end_s": 718.083,
+    "delta_s": 0.001,
+    "ok": true
+  },
+  "text_checks": {
+    "beats_json": {
+      "checked": 87,
+      "mismatched": []
+    },
+    "script_text": {
+      "checked": 87,
+      "absent_from_narration": []
+    }
+  },
+  "script_chapters": {
+    "written": true,
+    "changed": true,
+    "removed_lines": [
+      "Title card",
+      "Powder requirements",
+      "Energy delivery and atmosphere",
+      "Scan strategy and microstructure",
+      "Porosity sources and limits",
+      "Support structures",
+      "Post-process heat treatment",
+      "Wire arc additive manufacturing"
+    ],
+    "chapters_not_in_script": [
+      "The powder must be spherical and the size distribution must be narrow",
+      "A laser or electron beam melts the powder in a controlled atmosphere",
+      "The scan pattern and the thermal history determine the microstructure",
+      "Porosity is the primary defect and it comes from several sources",
+      "Support structures are required for overhangs and must be removed",
+      "The part is stress-relieved or hot isostatically pressed after printing",
+      "Wire arc additive manufacturing builds larger parts faster with less precision",
+      "Residual stress accumulates during the build and can cause warping or cracking",
+      "Measurement of powder reuse and degradation is required for process control"
+    ]
+  },
+  "artifacts": [
+    "captions/how-is-3d-printed-metal-made.vtt",
+    "captions/how-is-3d-printed-metal-made.srt",
+    "captions/how-is-3d-printed-metal-made.chapters.txt"
+  ]
+}

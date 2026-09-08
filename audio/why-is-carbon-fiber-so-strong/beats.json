@@ -1,0 +1,458 @@
+[
+  {
+    "i": 0,
+    "segment": "depth_descent",
+    "narration": "Carbon fiber composites reach tensile strengths between 3 and 7 gigapascals. Steel tops out around half a gigapascal.",
+    "seconds": 8.229333333333333
+  },
+  {
+    "i": 1,
+    "segment": "text_beat",
+    "narration": "That factor alone does not explain why aerospace engineers specify carbon fiber for primary structure.",
+    "seconds": 6.192
+  },
+  {
+    "i": 2,
+    "segment": "depth_descent",
+    "narration": "The strength-to-weight ratio does. Carbon fiber composites deliver that strength at one fifth the density of steel, and the reason traces to a bond length of 0.142 nanometers and the way those bonds organize into planes.",
+    "seconds": 14.768
+  },
+  {
+    "i": 3,
+    "segment": "text_beat",
+    "narration": "Why is carbon fiber so strong?",
+    "seconds": 2.074666666666667
+  },
+  {
+    "i": 4,
+    "segment": "size_ladder",
+    "narration": "A single covalent carbon-carbon bond in a graphite plane sustains roughly 5.9 gigapascals of stress before breaking.",
+    "seconds": 7.984
+  },
+  {
+    "i": 5,
+    "segment": "text_beat",
+    "narration": "An iron-iron metallic bond in steel sustains about 2.8 gigapascals. The carbon bond is more than twice as strong, and it is also shorter.",
+    "seconds": 8.976
+  },
+  {
+    "i": 6,
+    "segment": "size_ladder",
+    "narration": "The bond length in graphite is 0.142 nanometers. In steel the iron-iron spacing is 0.248 nanometers.",
+    "seconds": 9.352
+  },
+  {
+    "i": 7,
+    "segment": "ambient_drift",
+    "narration": "Shorter bonds mean more bonds per unit length, and more bonds mean more load-bearing paths across the same distance. The strength advantage begins at the atomic scale.",
+    "seconds": 10.554666666666666
+  },
+  {
+    "i": 8,
+    "segment": "text_beat",
+    "narration": "Metallic bonds distribute electrons across a lattice. Covalent bonds localize electron pairs between two nuclei.",
+    "seconds": 7.152
+  },
+  {
+    "i": 9,
+    "segment": "size_ladder",
+    "narration": "That localization concentrates the electrostatic attraction, and the bond resists being pulled apart.",
+    "seconds": 6.2026666666666666
+  },
+  {
+    "i": 10,
+    "segment": "ambient_drift",
+    "narration": "Steel's metallic lattice allows atoms to slide past one another under shear stress, which is why steel deforms plastically before it fractures.",
+    "seconds": 8.602666666666666
+  },
+  {
+    "i": 11,
+    "segment": "text_beat",
+    "narration": "Carbon in a graphite plane does not slide. The bonds break, or they hold.",
+    "seconds": 5.210666666666667
+  },
+  {
+    "i": 12,
+    "segment": "ambient_drift",
+    "narration": "Carbon atoms in a graphite plane adopt sp2 hybridization. Three of the four valence electrons form sigma bonds in a flat hexagonal lattice.",
+    "seconds": 10.352
+  },
+  {
+    "i": 13,
+    "segment": "text_beat",
+    "narration": "The fourth electron occupies a pi orbital perpendicular to the plane. Those pi electrons delocalize across the sheet, but they do not contribute to tensile strength.",
+    "seconds": 11.378666666666666
+  },
+  {
+    "i": 14,
+    "segment": "ambient_drift",
+    "narration": "The sigma bonds do. Within the plane, strength is isotropic\u2014pull in any direction parallel to the sheet and you are pulling against the same bond network.",
+    "seconds": 9.232
+  },
+  {
+    "i": 15,
+    "segment": "ambient_drift",
+    "narration": "Between planes, only weak van der Waals forces hold the sheets together.",
+    "seconds": 4.218666666666667
+  },
+  {
+    "i": 16,
+    "segment": "text_beat",
+    "narration": "Graphite flakes apart easily because those interplanar forces are three orders of magnitude weaker than the in-plane bonds.",
+    "seconds": 7.824
+  },
+  {
+    "i": 17,
+    "segment": "ambient_drift",
+    "narration": "The theoretical strength of a perfect graphite plane exceeds 100 gigapascals. That figure comes from calculations of the force required to break every carbon-carbon bond across a cross-section simultaneously.",
+    "seconds": 13.114666666666666
+  },
+  {
+    "i": 18,
+    "segment": "ambient_drift",
+    "narration": "Real carbon fiber never reaches that number. Defects, misalignments and surface flaws reduce the realized strength by more than an order of magnitude. The gap between theory and practice is where manufacturing matters.",
+    "seconds": 12.986666666666666
+  },
+  {
+    "i": 19,
+    "segment": "stat_card",
+    "narration": "Carbon fiber is made by heating a polymer precursor, usually polyacrylonitrile, through a series of thermal stages.",
+    "seconds": 7.418666666666667
+  },
+  {
+    "i": 20,
+    "segment": "text_beat",
+    "narration": "Oxidation at 200 to 300 degrees Celsius stabilizes the polymer chain. Carbonization at 1000 to 1500 degrees Celsius drives off hydrogen, nitrogen and oxygen, leaving mostly carbon.",
+    "seconds": 14.298666666666668
+  },
+  {
+    "i": 21,
+    "segment": "stat_card",
+    "narration": "Graphitization at temperatures above 2000 degrees Celsius encourages the carbon atoms to reorganize into stacked graphite planes aligned along the fiber axis.",
+    "seconds": 10.832
+  },
+  {
+    "i": 22,
+    "segment": "ambient_drift",
+    "narration": "The alignment is not perfect. Defects remain, and those defects limit the fiber's realized strength.",
+    "seconds": 5.808
+  },
+  {
+    "i": 23,
+    "segment": "text_beat",
+    "narration": "A perfect graphite whisker can exceed 100 gigapascals in laboratory conditions. Commercial carbon fiber reaches 3 to 7 gigapascals in a composite because the fiber contains misaligned regions, voids and surface flaws.",
+    "seconds": 13.424
+  },
+  {
+    "i": 24,
+    "segment": "stat_card",
+    "narration": "The processing temperature determines the degree of graphitization. Higher temperatures produce better alignment and higher modulus, but they also cost more and require longer processing times.",
+    "seconds": 11.728
+  },
+  {
+    "i": 25,
+    "segment": "ambient_drift",
+    "narration": "Aerospace-grade fiber is typically processed above 2000 degrees Celsius. Industrial-grade fiber may stop at 1500 degrees Celsius.",
+    "seconds": 8.816
+  },
+  {
+    "i": 26,
+    "segment": "text_beat",
+    "narration": "The trade-off is between performance and cost, and the choice depends on the application.",
+    "seconds": 5.637333333333333
+  },
+  {
+    "i": 27,
+    "segment": "stat_card",
+    "narration": "A pressure vessel for a rocket needs the highest grade. A sporting goods application may not.",
+    "seconds": 6.533333333333333
+  },
+  {
+    "i": 28,
+    "segment": "ambient_drift",
+    "narration": "Carbon fiber by itself is brittle. It fractures under bending or impact without warning.",
+    "seconds": 5.370666666666667
+  },
+  {
+    "i": 29,
+    "segment": "text_beat",
+    "narration": "The composite combines fiber with a polymer resin matrix, usually epoxy. The resin transfers load between fibers, fills voids and protects the fiber surface from damage.",
+    "seconds": 12.24
+  },
+  {
+    "i": 30,
+    "segment": "ambient_drift",
+    "narration": "The resin also limits the composite's temperature ceiling. Epoxy softens above 120 degrees Celsius.",
+    "seconds": 6.512
+  },
+  {
+    "i": 31,
+    "segment": "ambient_drift",
+    "narration": "The fiber itself remains stable to 600 degrees Celsius in an inert atmosphere, but the matrix fails first.",
+    "seconds": 7.621333333333333
+  },
+  {
+    "i": 32,
+    "segment": "text_beat",
+    "narration": "High-temperature composites use polyimide or ceramic matrices, and those systems require different processing and cost more.",
+    "seconds": 8.368
+  },
+  {
+    "i": 33,
+    "segment": "ambient_drift",
+    "narration": "When you pull on a carbon fiber composite, the matrix distributes the load to individual fibers.",
+    "seconds": 6.1306666666666665
+  },
+  {
+    "i": 34,
+    "segment": "ambient_drift",
+    "narration": "Each fiber carries the load along its axis, where the graphite planes are aligned.",
+    "seconds": 5.232
+  },
+  {
+    "i": 35,
+    "segment": "text_beat",
+    "narration": "If a fiber breaks, the matrix redistributes that fiber's load to its neighbors.",
+    "seconds": 5.456
+  },
+  {
+    "i": 36,
+    "segment": "ambient_drift",
+    "narration": "The composite's tensile strength depends on fiber volume fraction, fiber alignment, matrix properties and the bond between fiber and matrix.",
+    "seconds": 9.050666666666666
+  },
+  {
+    "i": 37,
+    "segment": "ambient_drift",
+    "narration": "Aerospace-grade prepreg typically contains 60 percent fiber by volume. Higher fiber content increases strength but makes the material harder to form and more prone to voids.",
+    "seconds": 11.632
+  },
+  {
+    "i": 38,
+    "segment": "quote_card",
+    "narration": "The 5.9 gigapascal bond strength is the number for a perfect, defect-free graphite plane.",
+    "seconds": 6.290666666666667
+  },
+  {
+    "i": 39,
+    "segment": "quote_card",
+    "narration": "Real fiber is weaker than that because real fiber has flaws. I almost let the ideal number stand in for the material.",
+    "seconds": 7.824
+  },
+  {
+    "i": 40,
+    "segment": "ambient_drift",
+    "narration": "Steel is isotropic. Its strength is the same in every direction. Carbon fiber composites are anisotropic.",
+    "seconds": 7.634666666666667
+  },
+  {
+    "i": 41,
+    "segment": "text_beat",
+    "narration": "Strength is highest along the fiber direction and much lower perpendicular to it.",
+    "seconds": 4.912
+  },
+  {
+    "i": 42,
+    "segment": "ambient_drift",
+    "narration": "A unidirectional laminate might have 1500 megapascals tensile strength along the fibers and 50 megapascals across them.",
+    "seconds": 8.912
+  },
+  {
+    "i": 43,
+    "segment": "ambient_drift",
+    "narration": "That thirty-to-one ratio means the designer must know the load paths and orient the fibers accordingly.",
+    "seconds": 6.032
+  },
+  {
+    "i": 44,
+    "segment": "text_beat",
+    "narration": "Aerospace laminates stack plies at different angles\u2014zero, plus and minus 45, and 90 degrees\u2014to balance in-plane loads. The stacking sequence is part of the design, not an afterthought.",
+    "seconds": 13.082666666666666
+  },
+  {
+    "i": 45,
+    "segment": "ambient_drift",
+    "narration": "You cannot design a carbon fiber part the way you design a steel part.",
+    "seconds": 5.36
+  },
+  {
+    "i": 46,
+    "segment": "ambient_drift",
+    "narration": "The material is not a drop-in replacement. You must account for anisotropy, for the resin's temperature limit, for the fact that the composite does not yield before it breaks.",
+    "seconds": 9.509333333333334
+  },
+  {
+    "i": 47,
+    "segment": "text_beat",
+    "narration": "You also must account for moisture absorption, ultraviolet degradation and galvanic corrosion if the composite contacts metal.",
+    "seconds": 8.154666666666667
+  },
+  {
+    "i": 48,
+    "segment": "ambient_drift",
+    "narration": "These are not minor details. They are the difference between a part that works and one that fails in service.",
+    "seconds": 6.522666666666667
+  },
+  {
+    "i": 49,
+    "segment": "ambient_drift",
+    "narration": "The fiber-matrix interface is critical. If the bond between fiber and resin is weak, the matrix cannot transfer load effectively, and the composite underperforms.",
+    "seconds": 9.456
+  },
+  {
+    "i": 50,
+    "segment": "text_beat",
+    "narration": "Surface treatments\u2014oxidation, sizing, plasma treatment\u2014improve adhesion. The treatments add cost and complexity, but without them the composite's strength drops by 20 to 40 percent.",
+    "seconds": 11.962666666666667
+  },
+  {
+    "i": 51,
+    "segment": "ambient_drift",
+    "narration": "The interface is invisible in the finished part, but it determines whether the part meets its design load.",
+    "seconds": 6.1066666666666665
+  },
+  {
+    "i": 52,
+    "segment": "ambient_drift",
+    "narration": "Carbon fiber composites deliver specific tensile strengths around 1800 megapascals per kilogram per cubic meter.",
+    "seconds": 7.184
+  },
+  {
+    "i": 53,
+    "segment": "text_beat",
+    "narration": "Steel delivers 130. Aluminum delivers 260. The composite is seven times better than aluminum and fourteen times better than steel.",
+    "seconds": 9.509333333333334
+  },
+  {
+    "i": 54,
+    "segment": "ambient_drift",
+    "narration": "That advantage compounds in structures where weight savings reduce the load on other components.",
+    "seconds": 6.424
+  },
+  {
+    "i": 55,
+    "segment": "ambient_drift",
+    "narration": "An aircraft wing made from carbon fiber weighs less, so the fuselage can be lighter, so the engines can be smaller, so fuel burn drops. The system-level benefit exceeds the material-level benefit.",
+    "seconds": 11.621333333333334
+  },
+  {
+    "i": 56,
+    "segment": "text_beat",
+    "narration": "The cost is high. Carbon fiber prepreg costs 30 to 150 dollars per kilogram depending on grade.",
+    "seconds": 7.173333333333333
+  },
+  {
+    "i": 57,
+    "segment": "ambient_drift",
+    "narration": "Steel costs less than 1 dollar per kilogram. Aluminum costs 2 to 5 dollars per kilogram.",
+    "seconds": 6.490666666666667
+  },
+  {
+    "i": 58,
+    "segment": "ambient_drift",
+    "narration": "The composite also requires controlled curing\u2014autoclaves, vacuum bagging, precise temperature ramps. A steel part can be welded in the field.",
+    "seconds": 9.424
+  },
+  {
+    "i": 59,
+    "segment": "text_beat",
+    "narration": "A carbon fiber part cannot. Damage tolerance is lower. A dent in aluminum might be cosmetic.",
+    "seconds": 7.184
+  },
+  {
+    "i": 60,
+    "segment": "ambient_drift",
+    "narration": "A crack in a composite laminate can propagate between plies without visible surface damage. Inspection requires ultrasound or thermography, not just a visual check.",
+    "seconds": 10.085333333333333
+  },
+  {
+    "i": 61,
+    "segment": "ambient_drift",
+    "narration": "The economic case for carbon fiber depends on the application. In aerospace, where fuel savings over the life of the aircraft can reach millions of dollars, the material cost is justified.",
+    "seconds": 10.8
+  },
+  {
+    "i": 62,
+    "segment": "text_beat",
+    "narration": "In automotive applications, where production volumes are higher and cost sensitivity is greater, carbon fiber remains niche.",
+    "seconds": 7.216
+  },
+  {
+    "i": 63,
+    "segment": "ambient_drift",
+    "narration": "The material is not universally better. It is better where weight matters more than cost, and where the design can accommodate anisotropy.",
+    "seconds": 7.92
+  },
+  {
+    "i": 64,
+    "segment": "timeline",
+    "narration": "The numbers in this script trace to NIST for bond-level data, ASM International for composite properties and MIT's Department of Materials Science and Engineering for processing.",
+    "seconds": 11.92
+  },
+  {
+    "i": 65,
+    "segment": "text_beat",
+    "narration": "The bond strength of 5.9 gigapascals for carbon-carbon in graphite comes from NIST's materials database.",
+    "seconds": 7.12
+  },
+  {
+    "i": 66,
+    "segment": "timeline",
+    "narration": "The composite tensile range of 3 to 7 gigapascals comes from ASM International's handbook on composites.",
+    "seconds": 7.184
+  },
+  {
+    "i": 67,
+    "segment": "ambient_drift",
+    "narration": "The specific strength comparison comes from published density and strength tables available from both bodies.",
+    "seconds": 6.512
+  },
+  {
+    "i": 68,
+    "segment": "text_beat",
+    "narration": "The processing temperatures of 200 to 300 degrees Celsius for oxidation, 1000 to 1500 degrees Celsius for carbonization, and above 2000 degrees Celsius for graphitization come from MIT DMSE's open courseware on polymer composites.",
+    "seconds": 17.296
+  },
+  {
+    "i": 69,
+    "segment": "ambient_drift",
+    "narration": "The tensile strength range of 3 to 7 gigapascals is wide because it depends on fiber grade, resin properties, fiber volume fraction, void content and cure quality.",
+    "seconds": 12.517333333333333
+  },
+  {
+    "i": 70,
+    "segment": "text_beat",
+    "narration": "A research-grade prepreg cured in an autoclave reaches the high end. An industrial-grade wet layup reaches the low end.",
+    "seconds": 7.749333333333333
+  },
+  {
+    "i": 71,
+    "segment": "ambient_drift",
+    "narration": "The published range is honest. Tighter bounds require specifying the system in detail, and even then, batch-to-batch variation exists.",
+    "seconds": 8.914666666666667
+  },
+  {
+    "i": 72,
+    "segment": "ambient_drift",
+    "narration": "The bond strength of 5.9 gigapascals is a calculated value for an ideal graphite plane.",
+    "seconds": 6.586666666666667
+  },
+  {
+    "i": 73,
+    "segment": "text_beat",
+    "narration": "Real fibers contain defects, so real strength is lower. The evidence tells you what is possible and what limits the possible.",
+    "seconds": 8.389333333333333
+  },
+  {
+    "i": 74,
+    "segment": "anatomy_callout",
+    "narration": "Carbon fiber is strong because carbon-carbon bonds are strong, because those bonds organize into planes, and because the planes align along the fiber axis.",
+    "seconds": 10.448
+  },
+  {
+    "i": 75,
+    "segment": "text_beat",
+    "narration": "The composite is strong where the fibers run, and only there. The strength-to-weight ratio justifies the cost in applications where weight matters enough to pay for it. The material is not magic. It is chemistry and geometry, aligned.",
+    "seconds": 15.664
+  }
+]

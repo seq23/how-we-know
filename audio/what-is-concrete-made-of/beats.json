@@ -1,0 +1,416 @@
+[
+  {
+    "i": 0,
+    "segment": "evidence_chain",
+    "narration": "Concrete is not a single substance. It is a mixture in which one component is chemically active and the rest are held.",
+    "seconds": 7.8133333333333335
+  },
+  {
+    "i": 1,
+    "segment": "text_beat",
+    "narration": "The active part is Portland cement, a powder made by burning limestone and clay together.",
+    "seconds": 5.925333333333334
+  },
+  {
+    "i": 2,
+    "segment": "evidence_chain",
+    "narration": "Add water and the powder reacts, growing a gel that fills the spaces between particles of sand and stone and hardens around them.",
+    "seconds": 8.08
+  },
+  {
+    "i": 3,
+    "segment": "text_beat",
+    "narration": "Ask what concrete is made of and the honest answer has two halves.",
+    "seconds": 4.336
+  },
+  {
+    "i": 4,
+    "segment": "evidence_chain",
+    "narration": "By volume it is mostly rock that was already hard before anyone touched it.",
+    "seconds": 4.602666666666667
+  },
+  {
+    "i": 5,
+    "segment": "text_beat",
+    "narration": "By behaviour it is the thin layer of chemistry wrapped around that rock, because the rock is not what sets and the rock is not what fails.",
+    "seconds": 8.477333333333334
+  },
+  {
+    "i": 6,
+    "segment": "text_beat",
+    "narration": "What is concrete made of?",
+    "seconds": 1.7226666666666666
+  },
+  {
+    "i": 7,
+    "segment": "thermal_ascent",
+    "narration": "Portland cement starts as limestone and clay, ground together and fed into a rotating kiln.",
+    "seconds": 5.68
+  },
+  {
+    "i": 8,
+    "segment": "text_beat",
+    "narration": "The kiln heats the mixture to roughly 1,450 degrees Celsius. At that temperature the limestone decomposes, releasing carbon dioxide and leaving calcium oxide, which then reacts with silica and alumina from the clay.",
+    "seconds": 13.968
+  },
+  {
+    "i": 9,
+    "segment": "thermal_ascent",
+    "narration": "The material partly melts and fuses into nodules called clinker. The clinker is cooled, ground to a fine powder, and mixed with a few percent of gypsum to control how fast it will later react with water.",
+    "seconds": 11.642666666666667
+  },
+  {
+    "i": 10,
+    "segment": "text_beat",
+    "narration": "What comes out of that kiln is not a mineral that exists in nature in this form.",
+    "seconds": 5.253333333333333
+  },
+  {
+    "i": 11,
+    "segment": "thermal_ascent",
+    "narration": "It is a manufactured set of calcium silicates held in an unstable state by rapid cooling, and its whole usefulness is that it wants to react.",
+    "seconds": 8.741333333333333
+  },
+  {
+    "i": 12,
+    "segment": "process_steps",
+    "narration": "The rapid cooling matters. If the clinker cooled slowly the calcium silicates would relax toward more stable arrangements and lose much of their reactivity.",
+    "seconds": 10.234666666666667
+  },
+  {
+    "i": 13,
+    "segment": "text_beat",
+    "narration": "Quenching traps them in the reactive form. This is the same principle used in hardening steel, applied to a completely different chemistry: the useful state is not the stable one, so the material is frozen on the way to stability rather than allowed to arrive.",
+    "seconds": 14.92
+  },
+  {
+    "i": 14,
+    "segment": "process_steps",
+    "narration": "The gypsum added at grinding is a brake. Without it, one of the clinker compounds reacts with water almost instantly and the mix stiffens before it can be placed.",
+    "seconds": 10.202666666666667
+  },
+  {
+    "i": 15,
+    "segment": "contrast_pair",
+    "narration": "The most common misunderstanding about concrete is that it dries. It does not.",
+    "seconds": 5.008
+  },
+  {
+    "i": 16,
+    "segment": "text_beat",
+    "narration": "It hydrates. The water becomes part of new solid compounds rather than leaving.",
+    "seconds": 5.328
+  },
+  {
+    "i": 17,
+    "segment": "contrast_pair",
+    "narration": "The main reaction is between water and the calcium silicates, and it produces two things: calcium silicate hydrate, a gel with no fixed crystal structure, and calcium hydroxide, which does form crystals.",
+    "seconds": 13.317333333333334
+  },
+  {
+    "i": 18,
+    "segment": "text_beat",
+    "narration": "The gel is the binder. It grows outward from each cement grain, meets the gel growing from neighbouring grains, and interlocks.",
+    "seconds": 8.112
+  },
+  {
+    "i": 19,
+    "segment": "contrast_pair",
+    "narration": "Because this is a reaction and not an evaporation, concrete sets underwater, and concrete left to dry too fast in the sun is weaker than concrete kept wet, which is the opposite of what the word drying would predict.",
+    "seconds": 12.656
+  },
+  {
+    "i": 20,
+    "segment": "definition_card",
+    "narration": "Hydration is the chemical incorporation of water into a compound. In cement chemistry the water is not a solvent that leaves.",
+    "seconds": 7.802666666666667
+  },
+  {
+    "i": 21,
+    "segment": "text_beat",
+    "narration": "It is a reagent that stays. This is why curing means keeping concrete moist rather than keeping it dry, and why a slab covered and kept damp for a week is stronger than an identical slab left uncovered.",
+    "seconds": 12.56
+  },
+  {
+    "i": 22,
+    "segment": "definition_card",
+    "narration": "The reaction does not finish quickly. Most strength arrives in the first month, but the interior of a large pour continues to hydrate for years wherever unreacted cement and water remain in contact.",
+    "seconds": 12.754666666666667
+  },
+  {
+    "i": 23,
+    "segment": "magnitude_bar",
+    "narration": "The single strongest predictor of concrete strength is the ratio of water to cement by mass.",
+    "seconds": 6.128
+  },
+  {
+    "i": 24,
+    "segment": "text_beat",
+    "narration": "More water makes the mix easier to place and weaker once set.",
+    "seconds": 3.578666666666667
+  },
+  {
+    "i": 25,
+    "segment": "magnitude_bar",
+    "narration": "Lower ratios, near 0.35, give higher strength; a workable structural mix commonly sits near 0.45; and ratios approaching 0.70 give markedly lower strength.",
+    "seconds": 12.954666666666666
+  },
+  {
+    "i": 26,
+    "segment": "text_beat",
+    "narration": "The reason is space. Only part of the mix water is consumed by hydration; the rest occupies volume, and when it eventually leaves it leaves behind pores.",
+    "seconds": 9.84
+  },
+  {
+    "i": 27,
+    "segment": "magnitude_bar",
+    "narration": "Every pore is a place where the gel is not. Strength falls as porosity rises, so the water that made the mix easy to pour is the same water that leaves the holes the concrete later fails through.",
+    "seconds": 11.354666666666667
+  },
+  {
+    "i": 28,
+    "segment": "stat_card",
+    "narration": "Full hydration of the cement requires roughly 0.42 units of water per unit of cement by mass, counting both the water chemically bound and the water held in the gel's own pores.",
+    "seconds": 10.768
+  },
+  {
+    "i": 29,
+    "segment": "text_beat",
+    "narration": "Mixes are often batched wetter than that for workability, and the surplus is what forms capillary pores.",
+    "seconds": 6.298666666666667
+  },
+  {
+    "i": 30,
+    "segment": "stat_card",
+    "narration": "Mixes batched drier than that cannot fully hydrate on their own, which is why very low-ratio concretes depend on careful curing and on admixtures that keep them placeable without extra water.",
+    "seconds": 12.154666666666667
+  },
+  {
+    "i": 31,
+    "segment": "text_beat",
+    "narration": "The number is not a target to hit exactly. It is the line that explains why adding water on site, to make a stiff load easier to handle, quietly lowers the strength of the finished structure.",
+    "seconds": 11.312
+  },
+  {
+    "i": 32,
+    "segment": "quote_card",
+    "narration": "I kept looking for the clever ingredient and there isn't one. The interesting decision in concrete is how much water you add, and that decision is usually made by whoever is holding the hose.",
+    "seconds": 11.834666666666667
+  },
+  {
+    "i": 33,
+    "segment": "checklist_reveal",
+    "narration": "By volume, aggregate is the majority of ordinary concrete: coarse stone and sand together typically occupy far more of the mix than the cement paste does.",
+    "seconds": 10.096
+  },
+  {
+    "i": 34,
+    "segment": "text_beat",
+    "narration": "It is tempting to call aggregate filler, as though it were there to make the cement go further.",
+    "seconds": 5.093333333333334
+  },
+  {
+    "i": 35,
+    "segment": "checklist_reveal",
+    "narration": "That is backwards. Aggregate is usually stronger and stiffer than the paste around it, and it is far more dimensionally stable.",
+    "seconds": 7.728
+  },
+  {
+    "i": 36,
+    "segment": "text_beat",
+    "narration": "Cement paste shrinks as it hydrates and dries; aggregate does not. A concrete that was all paste would crack from its own shrinkage.",
+    "seconds": 8.602666666666666
+  },
+  {
+    "i": 37,
+    "segment": "checklist_reveal",
+    "narration": "The stone restrains that movement. Cost is a real reason to use aggregate, but it is not the structural reason.",
+    "seconds": 7.024
+  },
+  {
+    "i": 38,
+    "segment": "contrast_pair",
+    "narration": "Where the paste meets each stone there is a thin region with a different structure from the bulk paste, more porous and richer in calcium hydroxide crystals.",
+    "seconds": 9.16
+  },
+  {
+    "i": 39,
+    "segment": "text_beat",
+    "narration": "This interfacial zone is generally the weakest part of ordinary concrete, and cracks tend to run through it rather than through the stone.",
+    "seconds": 7.386666666666667
+  },
+  {
+    "i": 40,
+    "segment": "contrast_pair",
+    "narration": "So the strength of concrete is often limited not by the stone and not by the bulk gel but by the boundary between them.",
+    "seconds": 7.890666666666666
+  },
+  {
+    "i": 41,
+    "segment": "text_beat",
+    "narration": "Improving that boundary, rather than adding more cement, is where a great deal of concrete technology has gone.",
+    "seconds": 6.48
+  },
+  {
+    "i": 42,
+    "segment": "magnitude_bar",
+    "narration": "Ordinary structural concrete carries compression well and tension badly. A typical structural mix reaches about 30 megapascals in compression and about 3 in tension, roughly a tenth as much, while the Grade 60 reinforcing bar placed inside it yields at 420 megapascals under ASTM A615.",
+    "seconds": 21.456
+  },
+  {
+    "i": 43,
+    "segment": "text_beat",
+    "narration": "Under compression, cracks are pressed closed and load transfers through the aggregate skeleton.",
+    "seconds": 5.413333333333333
+  },
+  {
+    "i": 44,
+    "segment": "magnitude_bar",
+    "narration": "Under tension, cracks open, and a material full of pores and interfacial weaknesses has no shortage of places for a crack to start.",
+    "seconds": 8.666666666666666
+  },
+  {
+    "i": 45,
+    "segment": "text_beat",
+    "narration": "This asymmetry is why concrete is almost always reinforced. Steel bars are placed where the engineer expects tension, and the concrete and steel work as one member: concrete takes the compression, steel takes the tension.",
+    "seconds": 15.248
+  },
+  {
+    "i": 46,
+    "segment": "magnitude_bar",
+    "narration": "The bond between them depends on the steel staying passivated by the highly alkaline pore water, which is why cracks that let in chloride or carbon dioxide are treated as structural problems and not cosmetic ones.",
+    "seconds": 12.005333333333333
+  },
+  {
+    "i": 47,
+    "segment": "process_steps",
+    "narration": "The alkalinity is a consequence of the calcium hydroxide produced during hydration.",
+    "seconds": 5.541333333333333
+  },
+  {
+    "i": 48,
+    "segment": "text_beat",
+    "narration": "It keeps a passive oxide film on the steel. Carbon dioxide from the air slowly reacts with that calcium hydroxide and lowers the pH, a process called carbonation, which advances inward from the surface over decades.",
+    "seconds": 14.48
+  },
+  {
+    "i": 49,
+    "segment": "process_steps",
+    "narration": "When it reaches the steel, the passive film is no longer maintained and corrosion can begin.",
+    "seconds": 5.914666666666666
+  },
+  {
+    "i": 50,
+    "segment": "text_beat",
+    "narration": "Rust occupies more volume than the steel it replaced, so it splits the concrete from inside.",
+    "seconds": 6.437333333333333
+  },
+  {
+    "i": 51,
+    "segment": "process_steps",
+    "narration": "Most reinforced concrete that fails with age fails this way, or through chlorides reaching the steel, rather than by the concrete being overloaded.",
+    "seconds": 8.912
+  },
+  {
+    "i": 52,
+    "segment": "size_ladder",
+    "narration": "Roman concrete used lime and volcanic ash rather than Portland cement, and some Roman marine structures have stood in seawater for two thousand years.",
+    "seconds": 9.178666666666667
+  },
+  {
+    "i": 53,
+    "segment": "text_beat",
+    "narration": "Published analyses of samples from Roman harbour concrete have reported the growth of aluminous tobermorite and a related mineral within the material, associated with seawater reacting with the volcanic ash over long periods.",
+    "seconds": 13.52
+  },
+  {
+    "i": 54,
+    "segment": "size_ladder",
+    "narration": "That is close to the opposite of modern behaviour, where seawater is a durability problem.",
+    "seconds": 5.765333333333333
+  },
+  {
+    "i": 55,
+    "segment": "ambient_drift",
+    "narration": "It is worth being careful about what this does and does not show.",
+    "seconds": 3.7706666666666666
+  },
+  {
+    "i": 56,
+    "segment": "text_beat",
+    "narration": "Roman marine concrete is not stronger than modern structural concrete, and it was not reinforced with steel, so it never faced the failure mode that ends most modern reinforced structures.",
+    "seconds": 10.778666666666666
+  },
+  {
+    "i": 57,
+    "segment": "size_ladder",
+    "narration": "What it demonstrates is that a slower chemistry, given centuries, can keep changing in a direction that helps.",
+    "seconds": 7.013333333333334
+  },
+  {
+    "i": 58,
+    "segment": "source_compare",
+    "narration": "The through-line is that concrete's properties are set by the paste and limited by its pores, while its volume is mostly aggregate.",
+    "seconds": 7.621333333333333
+  },
+  {
+    "i": 59,
+    "segment": "text_beat",
+    "narration": "Water is the variable that connects them: enough to complete hydration, and every extra unit becomes a pore.",
+    "seconds": 7.013333333333334
+  },
+  {
+    "i": 60,
+    "segment": "source_compare",
+    "narration": "Setting is a reaction, not a drying, which is why curing is wet.",
+    "seconds": 4.0906666666666665
+  },
+  {
+    "i": 61,
+    "segment": "text_beat",
+    "narration": "Strength in compression comes from an aggregate skeleton bound by gel; weakness in tension comes from the same pores and interfacial zones that the water left behind.",
+    "seconds": 9.029333333333334
+  },
+  {
+    "i": 62,
+    "segment": "source_compare",
+    "narration": "Steel covers the tension, and the alkalinity that protects the steel is itself a by-product of the hydration reaction, which is why the chemistry that makes concrete work is also the chemistry that determines how long it lasts.",
+    "seconds": 13.146666666666667
+  },
+  {
+    "i": 63,
+    "segment": "text_beat",
+    "narration": "The numbers here are ranges, not constants. Compressive strength depends on mix design, aggregate, admixtures, curing and age, and structural concretes are specified across a wide band rather than at a single value.",
+    "seconds": 15.290666666666667
+  },
+  {
+    "i": 64,
+    "segment": "text_beat",
+    "narration": "The water-cement figure for full hydration is a calculated quantity that varies with how the gel's own pore water is counted, and different textbooks state it slightly differently.",
+    "seconds": 10.202666666666667
+  },
+  {
+    "i": 65,
+    "segment": "ambient_drift",
+    "narration": "Carbonation rates depend on exposure, cover depth and concrete quality and are estimated statistically rather than measured on every structure.",
+    "seconds": 9.221333333333334
+  },
+  {
+    "i": 66,
+    "segment": "text_beat",
+    "narration": "The Roman marine concrete work is based on a limited number of sampled sites.",
+    "seconds": 4.592
+  },
+  {
+    "i": 67,
+    "segment": "text_beat",
+    "narration": "What is not in doubt is the identity of the reaction, the role of the water-cement ratio, and the tension-compression asymmetry.",
+    "seconds": 8.602666666666666
+  },
+  {
+    "i": 68,
+    "segment": "ambient_drift",
+    "narration": "Concrete is mostly stone that was already strong, held together by a gel that grows in water and leaves holes where the water was. Almost everything about how it performs follows from that one sentence.",
+    "seconds": 13.061333333333334
+  }
+]

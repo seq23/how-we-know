@@ -1,0 +1,139 @@
+{
+  "episode": "what-is-aerogel-made-of",
+  "beats": 92,
+  "plan_source": "plans/what-is-aerogel-made-of.json",
+  "timing": "audio",
+  "beats_measured": 92,
+  "durations_recorded": 92,
+  "duration_s": 784.051,
+  "cues": 206,
+  "chapters_real": 17,
+  "chapters_published": 16,
+  "chapter_notes": [
+    "merged 1 chapter(s) under 10s: Title card (1.6s)"
+  ],
+  "drift": {
+    "mean_abs_s": 66.6,
+    "worst_abs_s": 133.2,
+    "rows": [
+      {
+        "title": "Cold open",
+        "hand": "00:00",
+        "real": "0:00",
+        "drift_s": 0.0
+      },
+      {
+        "title": "Title card",
+        "hand": "00:22",
+        "real": "0:23",
+        "drift_s": 1.6
+      },
+      {
+        "title": "The gel precursor is silica in a liquid scaffold",
+        "hand": "00:24",
+        "real": "0:25",
+        "drift_s": 1.2
+      },
+      {
+        "title": "Supercritical drying preserves the nanoscale skeleton",
+        "hand": "01:18",
+        "real": "1:05",
+        "drift_s": -12.7
+      },
+      {
+        "title": "The silica network is a fractal assembly of primary particles",
+        "hand": "02:32",
+        "real": "1:54",
+        "drift_s": -37.2
+      },
+      {
+        "title": "Density and porosity are controlled by precursor concentration",
+        "hand": "03:50",
+        "real": "2:53",
+        "drift_s": -56.2
+      },
+      {
+        "title": "Producer POV",
+        "hand": "04:54",
+        "real": "3:43",
+        "drift_s": -70.3
+      },
+      {
+        "title": "Thermal conductivity is limited by the mean free path of air",
+        "hand": "05:10",
+        "real": "3:56",
+        "drift_s": -73.4
+      },
+      {
+        "title": "Mechanical properties reflect the open skeletal structure",
+        "hand": "06:22",
+        "real": "4:54",
+        "drift_s": -87.6
+      },
+      {
+        "title": "Variants replace silica with other oxides or organic polymers",
+        "hand": "07:38",
+        "real": "5:51",
+        "drift_s": -106.1
+      },
+      {
+        "title": "Hydrophobic treatment prevents moisture absorption",
+        "hand": "08:48",
+        "real": "6:44",
+        "drift_s": -123.3
+      },
+      {
+        "title": "What to notice in the edit",
+        "hand": "09:50",
+        "real": "7:36",
+        "drift_s": -133.2
+      },
+      {
+        "title": "Evidence limit",
+        "hand": "10:26",
+        "real": "8:14",
+        "drift_s": -131.9
+      },
+      {
+        "title": "Closing",
+        "hand": "11:02",
+        "real": "12:40",
+        "drift_s": 98.3
+      }
+    ]
+  },
+  "ffprobe": {
+    "file": "renders/what-is-aerogel-made-of-final.mp4",
+    "video_s": 784.05,
+    "last_cue_end_s": 784.051,
+    "delta_s": 0.001,
+    "ok": true
+  },
+  "text_checks": {
+    "beats_json": {
+      "checked": 92,
+      "mismatched": []
+    },
+    "script_text": {
+      "checked": 92,
+      "absent_from_narration": []
+    }
+  },
+  "script_chapters": {
+    "written": true,
+    "changed": true,
+    "removed_lines": [
+      "Title card"
+    ],
+    "chapters_not_in_script": [
+      "Optical properties derive from nanoscale scattering centers",
+      "Acoustic properties reflect the tortuous pore network",
+      "Synthesis parameters control pore size distribution"
+    ]
+  },
+  "artifacts": [
+    "captions/what-is-aerogel-made-of.vtt",
+    "captions/what-is-aerogel-made-of.srt",
+    "captions/what-is-aerogel-made-of.chapters.txt"
+  ]
+}

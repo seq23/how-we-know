@@ -1,0 +1,107 @@
+{
+  "episode": "how-strong-is-graphene",
+  "beats": 73,
+  "plan_source": "plans/how-strong-is-graphene.json",
+  "timing": "audio",
+  "beats_measured": 73,
+  "durations_recorded": 0,
+  "duration_s": 619.76,
+  "cues": 170,
+  "chapters_real": 10,
+  "chapters_published": 10,
+  "chapter_notes": [],
+  "drift": {
+    "mean_abs_s": 25.5,
+    "worst_abs_s": 47.3,
+    "rows": [
+      {
+        "title": "Cold open",
+        "hand": "00:00",
+        "real": "0:00",
+        "drift_s": 0.0
+      },
+      {
+        "title": "The measurement that established the 130 gigapascal figure used suspended sheets and a diamond tip",
+        "hand": "00:37",
+        "real": "0:34",
+        "drift_s": -2.0
+      },
+      {
+        "title": "Strength depends on the definition of strength and the direction of the force",
+        "hand": "02:20",
+        "real": "2:05",
+        "drift_s": -14.9
+      },
+      {
+        "title": "Defects reduce strength by orders of magnitude",
+        "hand": "03:50",
+        "real": "3:31",
+        "drift_s": -18.6
+      },
+      {
+        "title": "Producer POV",
+        "hand": "05:30",
+        "real": "4:55",
+        "drift_s": -34.2
+      },
+      {
+        "title": "The measurement method itself limits what can be tested",
+        "hand": "05:40",
+        "real": "5:11",
+        "drift_s": -28.5
+      },
+      {
+        "title": "Comparisons to other materials depend on how you normalize the measurement",
+        "hand": "07:20",
+        "real": "6:32",
+        "drift_s": -47.3
+      },
+      {
+        "title": "What to notice in the edit",
+        "hand": "08:45",
+        "real": "8:03",
+        "drift_s": -41.6
+      },
+      {
+        "title": "Evidence limit",
+        "hand": "09:50",
+        "real": "9:12",
+        "drift_s": -37.7
+      },
+      {
+        "title": "Closing",
+        "hand": "10:25",
+        "real": "9:54",
+        "drift_s": -30.2
+      }
+    ]
+  },
+  "ffprobe": {
+    "file": "renders/how-strong-is-graphene-final.mp4",
+    "video_s": 619.76,
+    "last_cue_end_s": 619.76,
+    "delta_s": 0.0,
+    "ok": true
+  },
+  "text_checks": {
+    "beats_json": {
+      "checked": 73,
+      "mismatched": []
+    },
+    "script_text": {
+      "checked": 73,
+      "absent_from_narration": []
+    }
+  },
+  "script_chapters": {
+    "written": false,
+    "changed": false,
+    "removed_lines": [],
+    "chapters_not_in_script": []
+  },
+  "artifacts": [
+    "captions/how-strong-is-graphene.vtt",
+    "captions/how-strong-is-graphene.srt",
+    "captions/how-strong-is-graphene.chapters.txt"
+  ]
+}

@@ -81,8 +81,18 @@ def shelf_lookup(shelf):
         if shelf.head(r2.short_key(slug)) is None:
             return "not shelved in R2 — run bin/push-to-r2.sh on the Mac"
         if shelf.head(r2.short_receipt_key(slug)) is None:
+            # RECORDED, not just refused. An empty selection has two very
+            # different causes and one of them is a defect: "nothing has been
+            # cut yet" resolves itself on the Mac's next push, while "a cut IS
+            # on the shelf and cannot be proved credited" is a broken push that
+            # will look identical every single day. Classifying the first as
+            # self-resolving without separating the second is exactly the
+            # 'inert lane wearing a reassuring label' this repo warns about.
+            look.unverified.append(
+                (slug, "the cut is shelved but its .short.json receipt is not"))
             return "the cut is shelved but its .short.json receipt is not"
         return True
+    look.unverified = []
     return look
 
 
@@ -104,7 +114,24 @@ def run(limit: int = 2, dry_run: bool = False) -> int:
             st.named_stop(e.code, e.message, detail=e.detail, unblock=e.unblock)
         st.note(f"shelf: {shelf.label}")
 
-        todo = SL.pending(have=shelf_lookup(shelf))
+        look = shelf_lookup(shelf)
+        todo = SL.pending(have=look)
+        if not todo and look.unverified:
+            st.named_stop(
+                "SHORTS_SHELVED_BUT_UNVERIFIED",
+                f"{len(look.unverified)} Short(s) are on the R2 shelf and "
+                f"cannot be published because their .short.json receipt is "
+                f"not: {', '.join(s_ for s_, _ in look.unverified)}. That is a "
+                f"broken push, not an empty shelf, and it will look the same "
+                f"tomorrow.",
+                detail={"unverified": [{"slug": s_, "why": w}
+                                       for s_, w in look.unverified]},
+                unblock="The receipt is the only record of which beats a Short "
+                        "used and who is credited for them, so it is not "
+                        "optional. On the Mac: bin/push-to-r2.sh — its "
+                        "push-shorts half writes both objects and refuses to "
+                        "shelve a cut that fails V14 attribution or V15 "
+                        "caption crop.")
         if not todo:
             st.named_stop(
                 "NO_SHORTS_SHELVED",

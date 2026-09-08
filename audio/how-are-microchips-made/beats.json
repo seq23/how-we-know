@@ -1,0 +1,434 @@
+[
+  {
+    "i": 0,
+    "segment": "process_column",
+    "narration": "A modern microchip contains over one hundred billion transistors, each smaller than a virus, arranged in three-dimensional layers.",
+    "seconds": 8.378666666666666
+  },
+  {
+    "i": 1,
+    "segment": "text_beat",
+    "narration": "You cannot see them with an optical microscope because they are smaller than the wavelengths of visible light.",
+    "seconds": 5.925333333333334
+  },
+  {
+    "i": 2,
+    "segment": "process_column",
+    "narration": "The manufacturing process that creates them uses ultraviolet light with a wavelength of thirteen point five nanometers \u2014 forty times shorter than violet \u2014 and every structure is built by repeating the same four steps hundreds of times.",
+    "seconds": 13.648
+  },
+  {
+    "i": 3,
+    "segment": "definition_card",
+    "narration": "The starting material is a silicon wafer. Silicon is element fourteen, a semiconductor \u2014 it conducts electricity only when you add specific impurities or apply voltage.",
+    "seconds": 10.874666666666666
+  },
+  {
+    "i": 4,
+    "segment": "text_beat",
+    "narration": "The wafer is not cut from a natural crystal. It is grown.",
+    "seconds": 3.546666666666667
+  },
+  {
+    "i": 5,
+    "segment": "definition_card",
+    "narration": "A seed crystal of silicon touches molten silicon in a crucible, and as the seed is slowly pulled upward and rotated, atoms lock into the seed's lattice pattern.",
+    "seconds": 10.085333333333333
+  },
+  {
+    "i": 6,
+    "segment": "text_beat",
+    "narration": "The result is a cylindrical ingot of single-crystal silicon, meaning the atomic arrangement is continuous and unbroken across the entire structure.",
+    "seconds": 9.597333333333333
+  },
+  {
+    "i": 7,
+    "segment": "definition_card",
+    "narration": "The Czochralski process, developed in nineteen fifty, produces ingots up to two meters long and three hundred millimeters in diameter.",
+    "seconds": 8.250666666666667
+  },
+  {
+    "i": 8,
+    "segment": "text_beat",
+    "narration": "The ingot is sliced into wafers less than one millimeter thick, polished until the surface roughness is under one nanometer, and cleaned to remove particles and organic residues.",
+    "seconds": 10.213333333333333
+  },
+  {
+    "i": 9,
+    "segment": "definition_card",
+    "narration": "SEMI International Standards specify the crystallographic orientation, dopant concentration, and surface flatness.",
+    "seconds": 8.634666666666666
+  },
+  {
+    "i": 10,
+    "segment": "text_beat",
+    "narration": "The wafer is the foundation \u2014 every transistor will be built on this surface.",
+    "seconds": 5.221333333333333
+  },
+  {
+    "i": 11,
+    "segment": "process_steps",
+    "narration": "Photolithography is the core patterning method. A liquid polymer called photoresist is spin-coated onto the wafer, forming a uniform film a few hundred nanometers thick.",
+    "seconds": 10.682666666666666
+  },
+  {
+    "i": 12,
+    "segment": "text_beat",
+    "narration": "The wafer is soft-baked to evaporate solvents. A photomask \u2014 a quartz plate with opaque chrome patterns \u2014 is aligned above the wafer, and ultraviolet light shines through the mask.",
+    "seconds": 12.666666666666666
+  },
+  {
+    "i": 13,
+    "segment": "process_steps",
+    "narration": "Where light hits the resist, chemical bonds break or form, depending on whether the resist is positive or negative tone.",
+    "seconds": 7.56
+  },
+  {
+    "i": 14,
+    "segment": "text_beat",
+    "narration": "The wafer is developed in a solvent that removes either the exposed or unexposed resist, leaving a patterned polymer layer.",
+    "seconds": 7.962666666666666
+  },
+  {
+    "i": 15,
+    "segment": "process_steps",
+    "narration": "This pattern is a stencil. Material underneath the open areas can now be etched away, or new material can be deposited into those areas.",
+    "seconds": 9.018666666666666
+  },
+  {
+    "i": 16,
+    "segment": "text_beat",
+    "narration": "After etching or deposition, the remaining resist is stripped with plasma or solvents.",
+    "seconds": 5.317333333333333
+  },
+  {
+    "i": 17,
+    "segment": "process_steps",
+    "narration": "The cycle repeats. A modern processor requires three hundred to five hundred photolithography cycles, each adding or removing material in a different pattern.",
+    "seconds": 9.84
+  },
+  {
+    "i": 18,
+    "segment": "text_beat",
+    "narration": "ASMINTERNATIONAL and IEEE publish the process parameters \u2014 exposure dose, focus depth, overlay accuracy \u2014 that determine whether the pattern transfers correctly.",
+    "seconds": 11.12
+  },
+  {
+    "i": 19,
+    "segment": "text_beat",
+    "narration": "The smallest feature you can print with light is roughly proportional to the wavelength.",
+    "seconds": 4.826666666666667
+  },
+  {
+    "i": 20,
+    "segment": "ambient_drift",
+    "narration": "Visible light ranges from four hundred nanometers for violet to seven hundred nanometers for red.",
+    "seconds": 7.109333333333334
+  },
+  {
+    "i": 21,
+    "segment": "text_beat",
+    "narration": "Early photolithography used mercury lamps emitting at three hundred sixty-five nanometers and could pattern features a few hundred nanometers wide.",
+    "seconds": 8.666666666666666
+  },
+  {
+    "i": 22,
+    "segment": "text_beat",
+    "narration": "As transistors shrank, the industry moved to deep ultraviolet at one hundred ninety-three nanometers, using excimer lasers.",
+    "seconds": 7.717333333333333
+  },
+  {
+    "i": 23,
+    "segment": "ambient_drift",
+    "narration": "Current leading-edge chips use extreme ultraviolet lithography at thirteen point five nanometers.",
+    "seconds": 6.1066666666666665
+  },
+  {
+    "i": 24,
+    "segment": "text_beat",
+    "narration": "EUV light is generated by firing a high-power laser at molten tin droplets, vaporizing them into plasma that emits EUV photons.",
+    "seconds": 9.029333333333334
+  },
+  {
+    "i": 25,
+    "segment": "text_beat",
+    "narration": "The light is so strongly absorbed by air and most materials that the entire optical path must be in vacuum, and the mirrors are multilayer coatings of molybdenum and silicon, each layer a few nanometers thick, designed to reflect EUV by constructive interference.",
+    "seconds": 16.368
+  },
+  {
+    "i": 26,
+    "segment": "ambient_drift",
+    "narration": "ASML in the Netherlands is the only manufacturer of EUV lithography systems.",
+    "seconds": 5.573333333333333
+  },
+  {
+    "i": 27,
+    "segment": "text_beat",
+    "narration": "Each machine costs over one hundred fifty million dollars. The wavelength is measured by spectrometry and published by NIST and SEMI standards bodies.",
+    "seconds": 8.986666666666666
+  },
+  {
+    "i": 28,
+    "segment": "contrast_pair",
+    "narration": "After the resist is patterned, the exposed material must be removed. Wet etching uses liquid chemicals \u2014 hydrofluoric acid for silicon dioxide, phosphoric acid for aluminum.",
+    "seconds": 12.154666666666667
+  },
+  {
+    "i": 29,
+    "segment": "text_beat",
+    "narration": "The etch is isotropic, meaning it removes material equally in all directions, which limits how small and vertical the features can be.",
+    "seconds": 8.56
+  },
+  {
+    "i": 30,
+    "segment": "contrast_pair",
+    "narration": "Dry etching uses plasma \u2014 ionized gas \u2014 in a vacuum chamber.",
+    "seconds": 4.9013333333333335
+  },
+  {
+    "i": 31,
+    "segment": "text_beat",
+    "narration": "Reactive ions are accelerated toward the wafer, and they chemically react with and physically sputter away the exposed material.",
+    "seconds": 7.432
+  },
+  {
+    "i": 32,
+    "segment": "contrast_pair",
+    "narration": "Plasma etching can be anisotropic, removing material primarily in the vertical direction, which allows deep narrow trenches.",
+    "seconds": 8.208
+  },
+  {
+    "i": 33,
+    "segment": "text_beat",
+    "narration": "The etch rate, selectivity between materials, and sidewall angle are controlled by gas chemistry, pressure, radio frequency power, and temperature.",
+    "seconds": 9.946666666666667
+  },
+  {
+    "i": 34,
+    "segment": "contrast_pair",
+    "narration": "NIST and Fraunhofer Institute publish etch rate data for silicon, silicon dioxide, and silicon nitride under different plasma conditions.",
+    "seconds": 8.645333333333333
+  },
+  {
+    "i": 35,
+    "segment": "text_beat",
+    "narration": "The etch must stop on an underlying layer without removing it \u2014 this is called etch selectivity, and it is verified by cross-sectional electron microscopy after the process.",
+    "seconds": 10.618666666666666
+  },
+  {
+    "i": 36,
+    "segment": "evidence_chain",
+    "narration": "Between etch steps, new materials are deposited. Chemical vapor deposition flows reactive gases over a heated wafer, and the gases decompose or react on the surface, leaving a solid film.",
+    "seconds": 12.912
+  },
+  {
+    "i": 37,
+    "segment": "text_beat",
+    "narration": "Silane gas decomposes to deposit silicon. Oxygen and silane together deposit silicon dioxide.",
+    "seconds": 7.344
+  },
+  {
+    "i": 38,
+    "segment": "evidence_chain",
+    "narration": "Tungsten hexafluoride and hydrogen deposit tungsten metal. Physical vapor deposition uses a sputtering target \u2014 a block of the material you want to deposit \u2014 in a vacuum chamber.",
+    "seconds": 10.6
+  },
+  {
+    "i": 39,
+    "segment": "text_beat",
+    "narration": "Argon ions bombard the target, knocking atoms off, and those atoms travel across the chamber and condense on the wafer.",
+    "seconds": 6.8533333333333335
+  },
+  {
+    "i": 40,
+    "segment": "evidence_chain",
+    "narration": "Copper interconnects are deposited by sputtering a copper seed layer, then electroplating thicker copper.",
+    "seconds": 5.818666666666667
+  },
+  {
+    "i": 41,
+    "segment": "text_beat",
+    "narration": "Film thickness is measured by ellipsometry, which analyzes how polarized light reflects off the film.",
+    "seconds": 6.970666666666666
+  },
+  {
+    "i": 42,
+    "segment": "evidence_chain",
+    "narration": "Uniformity across the wafer must be within two percent. SEMI standards specify thickness, composition, and stress for deposited films.",
+    "seconds": 10.437333333333333
+  },
+  {
+    "i": 43,
+    "segment": "text_beat",
+    "narration": "The film's crystal structure and impurity levels are measured by X-ray diffraction and secondary ion mass spectrometry.",
+    "seconds": 7.365333333333333
+  },
+  {
+    "i": 44,
+    "segment": "definition_card",
+    "narration": "Pure silicon is a poor conductor. Doping adds atoms of other elements to change its electrical properties.",
+    "seconds": 6.802666666666667
+  },
+  {
+    "i": 45,
+    "segment": "text_beat",
+    "narration": "Boron, with three valence electrons, creates positive charge carriers called holes. Phosphorus or arsenic, with five valence electrons, creates negative charge carriers called electrons.",
+    "seconds": 11.557333333333334
+  },
+  {
+    "i": 46,
+    "segment": "definition_card",
+    "narration": "Doping is done by ion implantation \u2014 ions are accelerated to high energy and shot into the wafer, embedding themselves at a controlled depth.",
+    "seconds": 9.722666666666667
+  },
+  {
+    "i": 47,
+    "segment": "text_beat",
+    "narration": "The dose and energy determine the concentration and depth profile. After implantation, the wafer is annealed at high temperature to repair crystal damage and move the dopant atoms into electrically active positions in the lattice.",
+    "seconds": 13.712
+  },
+  {
+    "i": 48,
+    "segment": "definition_card",
+    "narration": "Doping concentrations range from one times ten to the fifteenth atoms per cubic centimeter for lightly doped regions to one times ten to the twentieth for heavily doped contacts.",
+    "seconds": 9.722666666666667
+  },
+  {
+    "i": 49,
+    "segment": "text_beat",
+    "narration": "These concentrations are measured by secondary ion mass spectrometry and spreading resistance profiling.",
+    "seconds": 5.882666666666666
+  },
+  {
+    "i": 50,
+    "segment": "definition_card",
+    "narration": "NIST provides reference materials with certified dopant concentrations. The junction depth and abruptness are measured by cross-sectional transmission electron microscopy.",
+    "seconds": 11.045333333333334
+  },
+  {
+    "i": 51,
+    "segment": "quote_card",
+    "narration": "I went looking for the actual yield rate \u2014 what fraction of chips on a wafer work \u2014 and manufacturers don't publish it.",
+    "seconds": 7.418666666666667
+  },
+  {
+    "i": 52,
+    "segment": "quote_card",
+    "narration": "I could describe the process in exact steps and still not answer that adjacent question.",
+    "seconds": 5.349333333333333
+  },
+  {
+    "i": 53,
+    "segment": "process_steps",
+    "narration": "After depositing and etching multiple layers, the wafer surface becomes rough and uneven.",
+    "seconds": 5.509333333333333
+  },
+  {
+    "i": 54,
+    "segment": "text_beat",
+    "narration": "Chemical mechanical polishing flattens it. The wafer is pressed face-down against a rotating pad while a slurry flows between them.",
+    "seconds": 8.570666666666666
+  },
+  {
+    "i": 55,
+    "segment": "process_steps",
+    "narration": "The slurry contains abrasive particles \u2014 silica or ceria \u2014 and chemicals that react with the material being polished.",
+    "seconds": 7.354666666666667
+  },
+  {
+    "i": 56,
+    "segment": "text_beat",
+    "narration": "The combination of mechanical abrasion and chemical reaction removes material faster from high spots than low spots, flattening the surface.",
+    "seconds": 8.837333333333333
+  },
+  {
+    "i": 57,
+    "segment": "process_steps",
+    "narration": "Copper CMP uses an acidic slurry with hydrogen peroxide. Oxide CMP uses a basic slurry.",
+    "seconds": 7.333333333333333
+  },
+  {
+    "i": 58,
+    "segment": "text_beat",
+    "narration": "The polishing rate, selectivity, and surface finish depend on slurry chemistry, pad material, pressure, and rotation speed.",
+    "seconds": 8.08
+  },
+  {
+    "i": 59,
+    "segment": "process_steps",
+    "narration": "The process is monitored by measuring the wafer thickness and surface roughness with atomic force microscopy.",
+    "seconds": 6.874666666666666
+  },
+  {
+    "i": 60,
+    "segment": "text_beat",
+    "narration": "SEMI standards specify the post-CMP flatness and defect density. Without CMP, photolithography could not focus on the next layer.",
+    "seconds": 8.869333333333334
+  },
+  {
+    "i": 61,
+    "segment": "source_compare",
+    "narration": "The evidence for how microchips are made comes from the process specifications published by standards bodies, the metrology data collected at every step, and the cross-sectional imaging of finished devices.",
+    "seconds": 11.408
+  },
+  {
+    "i": 62,
+    "segment": "text_beat",
+    "narration": "NIST provides measurement standards for wavelengths, film thickness, and dopant concentration. SEMI publishes specifications for wafer dimensions, film properties, and process tolerances.",
+    "seconds": 13.2
+  },
+  {
+    "i": 63,
+    "segment": "source_compare",
+    "narration": "IEEE and ASMINTERNATIONAL document lithography parameters and material behavior. Every fabrication facility measures every wafer at dozens of points in the process \u2014 film thickness, etch depth, dopant profile, defect density \u2014 and the data are compared to specifications.",
+    "seconds": 18.490666666666666
+  },
+  {
+    "i": 64,
+    "segment": "text_beat",
+    "narration": "Transmission electron microscopy images the final transistor structure at atomic resolution, confirming that the layers are where the process intended them to be.",
+    "seconds": 9.562666666666667
+  },
+  {
+    "i": 65,
+    "segment": "text_beat",
+    "narration": "The process is known in detail, but the yield \u2014 the fraction of chips on a wafer that function correctly \u2014 varies and is not published by manufacturers.",
+    "seconds": 9.266666666666667
+  },
+  {
+    "i": 66,
+    "segment": "ambient_drift",
+    "narration": "Estimates range from seventy to ninety-five percent for mature processes, lower for new nodes.",
+    "seconds": 6.021333333333334
+  },
+  {
+    "i": 67,
+    "segment": "text_beat",
+    "narration": "A single defect can disable a chip. Particles, contamination, misalignment, and process variation all reduce yield.",
+    "seconds": 9.306666666666667
+  },
+  {
+    "i": 68,
+    "segment": "text_beat",
+    "narration": "The relationship between defect density and yield is modeled statistically, but the actual yield for a given product is proprietary.",
+    "seconds": 7.856
+  },
+  {
+    "i": 69,
+    "segment": "ambient_drift",
+    "narration": "The evidence tells us how the process works and how it is measured, not how often it succeeds in production.",
+    "seconds": 6.277333333333333
+  },
+  {
+    "i": 70,
+    "segment": "text_beat",
+    "narration": "Microchips are made by repeating four steps \u2014 deposit, pattern, etch, measure \u2014 hundreds of times, each cycle adding or removing material in a different pattern.",
+    "seconds": 10.810666666666666
+  },
+  {
+    "i": 71,
+    "segment": "text_beat",
+    "narration": "The evidence is the published process parameters, the metrology data, and the electron microscope images of the finished structure.",
+    "seconds": 8.293333333333333
+  }
+]
