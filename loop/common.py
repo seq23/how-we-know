@@ -13,7 +13,7 @@ Three ideas live here and nothing else should re-implement them.
    owner's inbox for $0.
 
 3. **Exit codes are the contract.**
-       0  real work happened, OR a SELF-RESOLVING named stop (see below)
+       0  real work happened, OR a SELF-RESOLVING named stop, OR a HELD one
        1  genuine failure (a bug, a crash, a validator that found a defect)
        3  NAMED STOP that needs a human — surfaced as a failed job and an issue
 
@@ -25,6 +25,16 @@ Three ideas live here and nothing else should re-implement them.
    other code — a missing credential, a failed validator, corrupt state, and
    ZERO_WORK — stays exit 3. The default is needs-a-human: a code nobody
    classified stays loud.
+
+5. **Not every stop that needs a human needs her TWICE.** Some halts only a
+   person can clear — an episode whose caption file can only be made on her
+   Mac. Those are correctly exit 3 the first time and correctly NOT exit 3 the
+   fifth morning in a row, on an unchanged fact, in an issue that is already
+   open. A stop that names exactly what it waits on (`held_items=`) and how to
+   clear it (`unblock=`) becomes *held* once it has been reported: exit 0, and
+   a HELD STOP banner naming what is held, since when and which issue tracks
+   it. It goes loud again the instant the list grows, if the issue is closed,
+   or after the policy's reminder window. See `loop/held.py`.
 """
 from __future__ import annotations
 
@@ -35,6 +45,17 @@ import os
 import subprocess
 import sys
 from pathlib import Path
+
+# Every loop entrypoint already runs with loop/ on sys.path, so the plain
+# import is the normal path. The fallback is for an importer that reached
+# common.py some other way: a bare ImportError here would turn the stop
+# machinery itself into a crash, which is the one failure mode this file
+# exists to prevent.
+try:
+    import held
+except ImportError:                                        # pragma: no cover
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    import held
 
 ROOT = Path(__file__).resolve().parent.parent
 LOOP = ROOT / "loop"
@@ -49,10 +70,17 @@ EXIT_OK = 0
 EXIT_FAIL = 1
 EXIT_STOP = 3
 
+# How each disposition heads its Actions job summary. Named once: three of them
+# now exit 0, and a reader who sees "NAMED STOP" over a green job learns to
+# distrust the banner rather than the state.
+_SUMMARY_HEAD = {"self_resolving": "🛑 NAMED STOP",
+                 "held": "⏸️ HELD STOP",
+                 "owner_action": "⚠️ WAITING ON YOU"}
+
 # Dispositions that do NOT fail the job. Named once: three places used to test
 # `disp == "self_resolving"` and a fourth disposition would have failed jobs in
 # whichever of them was missed.
-GREEN_DISPOSITIONS = ("self_resolving", "owner_action")
+GREEN_DISPOSITIONS = ("self_resolving", "held", "owner_action")
 
 
 # ---------------------------------------------------------------- primitives
@@ -219,14 +247,23 @@ class NamedStop(Exception):
 
     Raising this is always better than returning quietly. Never catch it to
     make a workflow green.
+
+    `held_items` is how a stop that only a HUMAN can clear earns the right to
+    stop paging her daily once she has been told. It is a list of stable
+    identifiers — slugs, video ids, paths — naming exactly what the stop is
+    waiting on. Supplying it is what makes "already reported, unchanged" a
+    decidable question; a stop that does not supply it stays loud on every
+    run. See loop/held.py for the whole rule.
     """
 
-    def __init__(self, code: str, message: str, detail=None, unblock: str = ""):
+    def __init__(self, code: str, message: str, detail=None, unblock: str = "",
+                 held_items=None):
         super().__init__(f"{code}: {message}")
         self.code = code
         self.message = message
         self.detail = detail
         self.unblock = unblock
+        self.held_items = list(held_items) if held_items else []
 
 
 # ------------------------------------------------------------ stop taxonomy
@@ -344,22 +381,52 @@ def _match_rule(section, code: str):
     return best[1] if best else None
 
 
-def disposition(stage: str, code: str, detail, streak: int) -> tuple[str, str]:
-    """Classify one stop: ("self_resolving"|"owner_action"|"needs_human", why).
+# BOTH ANSWERS TO "DO NOT PAGE HER AGAIN", AND THEY ARE NOT THE SAME ANSWER.
+#
+# `held` (loop/held.py, landed on main the same day) is the GENERIC one: any
+# stop in any lane earns it by naming exactly what it waits on and how to clear
+# it, and it pages ONCE and then stays quiet until the hold grows or goes
+# stale. `owner_action` is the CLASSIFIED one: a short list of codes that only
+# she can clear -- a revoked consent, a locked channel, an unfunded key -- which
+# never page at all, because a red build tells her nothing she cannot read in
+# Sunday's digest and she cannot act on it any faster for having been woken.
+#
+# They compose rather than compete. owner_action is consulted first for the
+# sixteen codes it names; every other human-clearable stop falls through to the
+# hold, which is open to all of them. Nothing is classified in both.
+def disposition(stage: str, code: str, detail, streak: int,
+                held_items=None, unblock: str = "") -> tuple[str, str]:
+    """Classify one stop: ("self_resolving" | "held" | "needs_human", why).
 
-    Data-driven, and fail-loud in all three directions:
-      * a code the policy does not list           -> needs a human
+    Data-driven, and fail-loud in every direction:
+      * a code the policy does not list           -> needs a human, UNLESS it
+                                                     is an already-reported,
+                                                     unchanged HOLD
       * a code that cannot say WHEN it resolves   -> needs a human
       * a code that has repeated past its limit   -> needs a human
+      * a hold that is new, has grown, has lost   -> needs a human
+        its issue, or is past its reminder
+
+    ORDER MATTERS. `self_resolving` is checked first because time fixing a
+    thing beats a person fixing it; `held` is only ever reached by a stop that
+    would otherwise have paged.
     """
     policy = stop_policy()
     kind, rule = "self_resolving", _match_rule(policy.get("self_resolving"), code)
     if not rule:
         kind, rule = "owner_action", _match_rule(policy.get("owner_action"), code)
     if not rule:
+        # THE HOLD. Not an exemption for this code — an offer open to every
+        # code in every lane, on one condition: the stop must name exactly
+        # what it waits on and how to clear it. See loop/held.py.
+        verdict, why, entry = held.classify(
+            _stops_dir(), policy, stage, code, held_items, unblock)
+        held.record(_stops_dir(), entry)
+        if verdict == "held":
+            return ("held", why)
         return ("needs_human",
                 f"'{code}' is not in loop/stop_policy.json, so it is treated as "
-                f"needing a human. That is the default on purpose.")
+                f"needing a human. That is the default on purpose. " + why)
     missing = [k for k in rule.get("requires_detail", [])
                if not (isinstance(detail, dict) and detail.get(k))]
     if missing:
@@ -469,8 +536,9 @@ class Stage:
         self.notes.append(what)
         print(f"  [note] {what}", flush=True)
 
-    def named_stop(self, code, message, detail=None, unblock="") -> None:
-        raise NamedStop(code, message, detail, unblock)
+    def named_stop(self, code, message, detail=None, unblock="",
+                   held_items=None) -> None:
+        raise NamedStop(code, message, detail, unblock, held_items)
 
     # -- lifecycle ---------------------------------------------------------
     def __enter__(self):
@@ -518,6 +586,10 @@ class Stage:
         self._clear_stop()
         streak_clear(self.name)
         owner_action_clear(self.name)
+        # A stage that did real work is holding on nothing. Dropping its rows
+        # is what makes a RECURRENCE loud: the next time this stage holds, it
+        # has never been reported, so it pages. Symmetrical with the streak.
+        held.clear(_stops_dir(), self.name)
         print(f"--- {self.name}: OK, {len(self.units)} unit(s) of work",
               flush=True)
         lines = "\n".join(f"- {u}" for u in self.units)
@@ -526,12 +598,13 @@ class Stage:
     def _emit_stop(self, s: NamedStop) -> int:
         """Record, print and classify one named stop. Returns the exit code.
 
-        SELF-RESOLVING stops exit 0. Everything else exits 3. The record, the
-        banner and the job summary are identical either way — this decides who
-        gets woken up, never whether the stop is visible.
+        SELF-RESOLVING and HELD stops exit 0. Everything else exits 3. The
+        record, the banner and the job summary are identical either way — this
+        decides who gets woken up, never whether the stop is visible.
         """
         streak = streak_bump(self.name, s.code)
-        disp, why = disposition(self.name, s.code, s.detail, streak)
+        disp, why = disposition(self.name, s.code, s.detail, streak,
+                                held_items=s.held_items, unblock=s.unblock)
         rec = {
             "stage": self.name,
             "week": self.week,
@@ -543,6 +616,7 @@ class Stage:
             "disposition": disp,
             "disposition_why": why,
             "consecutive": streak,
+            "held_items": sorted(s.held_items),
             "exit_code": EXIT_OK if disp in GREEN_DISPOSITIONS else EXIT_STOP,
             "work_done_before_stop": self.units,
             "notes": self.notes,
@@ -553,18 +627,39 @@ class Stage:
         else:
             owner_action_clear(self.name)
         verdict = {
-            "self_resolving":
-                "SELF-RESOLVING — this run exits 0 and pages nobody",
+            "self_resolving": "SELF-RESOLVING — this run exits 0 and pages nobody",
+            "held": "HELD — already reported and unchanged, so this run exits 0 "
+                    "and pages nobody. It is NOT resolved.",
             "owner_action":
-                "WAITING ON THE OWNER — this run exits 0 and does NOT page "
-                "her; it is recorded in loop/state/owner_action.json and "
-                "appears at the top of the Sunday digest",
+                "WAITING ON YOU — this run exits 0 and does NOT page her; it "
+                "is recorded in the owner-action file and appears at the TOP "
+                "of the Sunday digest. It is NOT resolved.",
         }.get(disp, "NEEDS A HUMAN — this run exits 3 and opens an issue")
+        # A HELD stop is exit 0, so the banner is the ONLY thing standing
+        # between it and a silent skip. It says HELD STOP, not NAMED STOP, so
+        # nobody reading a log can mistake "she has been told" for "it is
+        # fixed", and it lists every item it is waiting on by name.
+        head = {"held": "HELD STOP ",
+                "owner_action": "WAITING ON YOU"}.get(disp, "NAMED STOP")
+        holding = ""
+        if disp == "held" and s.held_items:
+            hold_rec = held.open_holds(_stops_dir()).get(
+                held.key(self.name, s.code)) or {}
+            since = hold_rec.get("first_reported_at")
+            age = held.days_since(since)
+            holding = (
+                f"  HELD SINCE {since}"
+                + (f" ({age:.1f} day(s))\n" if age is not None else "\n")
+                + (f"  TRACKED BY issue #{hold_rec['issue']}\n"
+                   if hold_rec.get("issue") else "")
+                + f"  WAITING ON {len(s.held_items)} item(s):\n"
+                + "".join(f"    - {i}\n" for i in sorted(s.held_items)))
         banner = (
             "\n"
             "================================================================\n"
-            f"  NAMED STOP  [{s.code}]  stage={self.name}  week={self.week}\n"
+            f"  {head}  [{s.code}]  stage={self.name}  week={self.week}\n"
             f"  {s.message}\n"
+            + holding
             + (f"  unblock: {s.unblock}\n" if s.unblock else "")
             + f"  disposition: {verdict}\n"
             + f"  because: {why}\n"
@@ -579,13 +674,19 @@ class Stage:
         if not _same_stream(sys.stdout, sys.stderr):
             print(banner, file=sys.stderr, flush=True)
         label = {"self_resolving": "self-resolving",
-                 "owner_action": "waiting on the owner (green)"}.get(
+                 "held": "HELD — reported, awaiting the owner",
+                 "owner_action": "waiting on you (green, never paged)"
+                 }.get(
                      disp, "needs a human")
         summary(
-            f"### 🛑 NAMED STOP — `{s.code}`\n"
+            f"### {_SUMMARY_HEAD.get(disp, '🛑 NAMED STOP')} — "
+            f"`{s.code}`\n"
             f"**stage** `{self.name}` · **week** `{self.week}` · "
             f"**{label}**"
             f"\n\n{s.message}\n\n"
+            + (("**Waiting on:**\n"
+                + "".join(f"- `{i}`\n" for i in sorted(s.held_items))
+                + "\n") if disp == "held" and s.held_items else "")
             + (f"**To unblock:** {s.unblock}\n" if s.unblock else "")
             + f"\n_{why}_\n"
             + (f"\nWork completed before the stop: {len(self.units)}\n"

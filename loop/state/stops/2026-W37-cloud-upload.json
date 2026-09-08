@@ -1,0 +1,27 @@
+{
+  "stage": "cloud-upload",
+  "week": "2026-W37",
+  "at": "2026-09-08T14:14:19+00:00",
+  "code": "CAPTIONS_NOT_READY",
+  "message": "every episode ready to upload today would air with no English caption track, because no usable captions/<slug>.srt is committed for it: how-strong-is-graphene. Uploading one would schedule a video this repo can never caption.",
+  "detail": {
+    "uncaptioned": [
+      {
+        "slug": "how-strong-is-graphene",
+        "why": "captions/how-strong-is-graphene.srt does not exist"
+      }
+    ],
+    "captions_dir": "captions"
+  },
+  "unblock": "The .srt is derived from the narration audio, which only exists on the Mac that voiced the episode:\n\n  python visuals/captions.py <slug>\n\nthen commit captions/<slug>.srt (and the .vtt, .chapters.txt and .timing.json it writes beside it). This lane picks the episode up on the run after they land. Nothing is deleted meanwhile: the render stays on the R2 shelf.",
+  "disposition": "needs_human",
+  "disposition_why": "'CAPTIONS_NOT_READY' is not in loop/stop_policy.json, so it is treated as needing a human. That is the default on purpose.",
+  "consecutive": 1,
+  "exit_code": 3,
+  "work_done_before_stop": [],
+  "notes": [
+    "shelf: r2://how-we-know-renders",
+    "quota allows 3 of 4 today. quota day 2026-09-08 (PT): spent 0 of 10000, 9600 usable after 400 headroom; lanes: none",
+    "refused 1 episode(s) with no usable English .srt: how-strong-is-graphene. They stay on the shelf; nothing is deleted."
+  ]
+}
