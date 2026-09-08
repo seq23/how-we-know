@@ -200,6 +200,37 @@ if [ -n "$DRY" ]; then echo; echo "DRY RUN - nothing done."; exit 0; fi
 # approving) and invalidates the audio beat, the caption track and the render
 # so the rest of this script rebuilds them. It runs HERE because everything it
 # invalidates is rebuilt below, in this same unattended pass.
+# ---------------------------------------------------------------------------
+# BUILD ANY MISSING SHOT PLAN, rather than printing the command for a human.
+#
+# A queued slug with no plans/<slug>.json is neither narratable nor renderable,
+# so both loops above skip it silently and this script printed a NAMED STOP
+# with the two commands to type. why-does-old-iron-not-rust sat in exactly that
+# state while being FULLY NARRATED -- voice/narrate_all.py plans from the
+# script directly, so it voiced 84 beats for an episode nothing downstream
+# could see. The commands were already written out here; running them is not a
+# judgement call.
+echo; echo "--- build any missing shot plan ---"
+for slug in ${pending_plan:-}; do
+  echo "  planning $slug"
+  dom=$($PY -c "
+import sys; sys.path.insert(0,'loop')
+import domains; print(domains.domain_of_slug('$slug') or 'deep-sea-ocean-science')" 2>/dev/null) \
+    || dom=deep-sea-ocean-science
+  $PY -c "
+import sys, json; sys.path.insert(0,'visuals')
+import planner
+p = planner.plan('scripts/$slug.md')
+json.dump(p, open('plans/$slug.json','w'), indent=2)
+print(f'    {len(p)} beat(s)')" || { echo "    FAILED to plan $slug"; continue; }
+  case "$dom" in
+    materials-and-manufacturing)
+      HWK_DOMAIN="$dom" $PY visuals/plan_materials_images.py --apply "plans/$slug.json" \
+        >/tmp/plan-img-$slug.log 2>&1 || echo "    (image pass declined; the plan stands)" ;;
+  esac
+done
+pending_plan=""
+
 echo; echo "--- self-heal any untraced producer POV ---"
 $PY loop/pov_repair.py || echo "  (see the banner above; nothing was changed for any episode it refused)"
 

@@ -47,7 +47,7 @@ Blacksmiths working iron in charcoal forges sometimes produced a carbon-enriched
 
 ### Producer POV
 
-[HUMAN] I wanted a clean number for how long a protective layer takes to form. The published corrosion rates span two orders of magnitude, so a single figure would have sounded more certain than the evidence actually is.
+[HUMAN] I stop trusting an explanation when it uses complexity to hide the fact that the speaker can't show their work. If every direct question produces more jargon and more certainty, but never a source or a mechanism, the explanation is protecting the person, not describing reality.
 
 ### Passivation is not permanent; it is a dynamic equilibrium that can break down if conditions change
 

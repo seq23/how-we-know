@@ -35,6 +35,7 @@ govern proves nothing.
 from __future__ import annotations
 
 import os
+import pathlib
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -87,9 +88,31 @@ def check() -> list[str]:
     if not traced:
         fails.append("no script is traced at all - this guard cannot prove "
                      "the gate lets a GOOD episode through")
-    if not untraced:
-        fails.append("no script is untraced - this guard cannot prove the "
-                     "gate refuses a BAD one")
+    # A SYNTHETIC BAD ONE, not a real defect left lying around.
+    #
+    # This demanded that some real script still be untraced, which was true
+    # while fifteen of them were and became a FAILURE the moment the last one
+    # was repaired: the guard punished the repo for being correct, and the only
+    # way to make it pass again would have been to leave an episode broken.
+    # A negative case must be constructed, never borrowed from the state under
+    # test. `untraced_pov()` reads scripts/ and pov-assignments.json, so a
+    # temporary script with a [HUMAN] beat and no assignment is exactly the bad
+    # input, and it is removed again whatever happens.
+    probe = pathlib.Path(ROOT) / "scripts" / "_pov-gate-probe.md"
+    probe.write_text("# probe\n\n## Narration\n\n[HUMAN] A line no "
+                     "assignment file has ever heard of.\n", encoding="utf-8")
+    try:
+        if probe.stem not in pov_match.untraced_pov([probe.stem]):
+            fails.append("the gate did NOT refuse a script with a [HUMAN] beat "
+                         "and no entry in pov/pov-assignments.json - it is "
+                         "inert, and every real episode passing it proves "
+                         "nothing")
+        if pov_match.untraced_pov(traced) != []:
+            fails.append("the gate refused a traced episode when asked "
+                         "alongside nothing else")
+    finally:
+        probe.unlink(missing_ok=True)
+
     if traced and untraced:
         refused = set(pov_match.untraced_pov(traced + untraced))
         wrongly_refused = sorted(refused & set(traced))
