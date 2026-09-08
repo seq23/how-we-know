@@ -51,7 +51,7 @@ Kevlar degrades under prolonged ultraviolet exposure. UV photons have enough ene
 
 ### Producer POV
 
-[HUMAN] Every strength in this fiber comes with its exact opposite built in. The same rigid, aligned chains that make Kevlar strong under tension are what make it weak under compression. I couldn't state the strength without stating the trade-off beside it.
+[HUMAN] I find a clean audit trail beautiful. A file named correctly. A number you can follow to its source. A system whose failures leave evidence instead of excuses. Most people see administrative debris; I see order made visible.
 
 ### Different grades optimize for different properties
 

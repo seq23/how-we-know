@@ -46,16 +46,18 @@
     "from": "directive"
   },
   {
-    "segment": "material_image",
+    "segment": "text_beat",
     "seconds": 5.38,
     "heading": "Cold open",
     "narration": "Ask what concrete is made of and the honest answer has two halves.",
     "args": {
-      "subject": "concrete",
-      "label": "CONCRETE",
-      "pick": 0
+      "lines": [
+        "Ask what concrete is",
+        "made of and the",
+        "honest answer"
+      ]
     },
-    "from": "directive-rhythm+material"
+    "from": "directive-rhythm"
   },
   {
     "segment": "evidence_chain",
@@ -313,16 +315,18 @@
     "from": "directive"
   },
   {
-    "segment": "material_image",
+    "segment": "text_beat",
     "seconds": 9.0,
     "heading": "Water does not dry out of concrete, it is consumed",
     "narration": "It is a reagent that stays. This is why curing means keeping concrete moist rather than keeping it dry, and why a slab covered and kept damp for a week is stronger than an identical slab left uncovered.",
     "args": {
-      "subject": "concrete",
-      "label": "CONCRETE",
-      "pick": 1
+      "lines": [
+        "It is a reagent",
+        "that stays. This is",
+        "why curing"
+      ]
     },
-    "from": "directive-rhythm+material"
+    "from": "directive-rhythm"
   },
   {
     "segment": "definition_card",
@@ -498,9 +502,9 @@
     "segment": "quote_card",
     "seconds": 9.0,
     "heading": "Producer POV",
-    "narration": "I kept looking for the clever ingredient and there isn't one. The interesting decision in concrete is how much water you add, and that decision is usually made by whoever is holding the hose.",
+    "narration": "It reminds me of companies and systems. Something looks completely irrational when you judge it outside the environment it was built for.",
     "args": {
-      "text": "I kept looking for the clever ingredient and there isn't one. The interesting decision in concrete is how much water you add, and that decision is usually made by whoever is holding the hose.",
+      "text": "It reminds me of companies and systems. Something looks completely irrational when you judge it outside the environment it was built for.",
       "attrib": ""
     },
     "from": "heading"

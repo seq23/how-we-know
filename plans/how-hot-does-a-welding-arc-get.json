@@ -30,16 +30,14 @@
     "from": "heuristic"
   },
   {
-    "segment": "material_image",
+    "segment": "ambient_drift",
     "seconds": 6.21,
     "heading": "Cold open",
     "narration": "The question is not settled by one number because the arc is not one thing.",
     "args": {
-      "subject": "welding-arc",
-      "label": "THE ARC",
-      "pick": 0
+      "variant": 0
     },
-    "from": "heuristic+material"
+    "from": "heuristic"
   },
   {
     "segment": "text_beat",
@@ -127,16 +125,18 @@
     "from": "heuristic"
   },
   {
-    "segment": "material_image",
+    "segment": "text_beat",
     "seconds": 7.86,
     "heading": "The arc is a plasma column, and plasma temperature depends on ionization energy",
     "narration": "This method samples the plasma optically without disturbing it, and it produces a temperature profile across the arc's cross-section.",
     "args": {
-      "subject": "welding-arc",
-      "label": "THE ARC",
-      "pick": 1
+      "lines": [
+        "This method samples the",
+        "plasma optically without disturbing",
+        "it"
+      ]
     },
-    "from": "heuristic+material"
+    "from": "heuristic"
   },
   {
     "segment": "light_attenuation",
@@ -370,22 +370,22 @@
   },
   {
     "segment": "quote_card",
-    "seconds": 7.45,
+    "seconds": 4.97,
     "heading": "Producer POV",
-    "narration": "I had three arc temperatures from three welding processes and almost picked the highest one as the answer.",
+    "narration": "Failure isn't an insult to engineering; pretending failure has been eliminated is.",
     "args": {
-      "text": "I had three arc temperatures from three welding processes and almost picked the highest one as the answer.",
+      "text": "Failure isn't an insult to engineering; pretending failure has been eliminated is.",
       "attrib": ""
     },
     "from": "heading"
   },
   {
     "segment": "quote_card",
-    "seconds": 6.62,
+    "seconds": 9.0,
     "heading": "Producer POV",
-    "narration": "They aren't competing claims, they're different processes measured differently. Picking a winner would have erased that.",
+    "narration": "Every material has conditions, limits and a life. The question is whether those limits were understood and monitored, or ignored until the failure became somebody else's emergency.",
     "args": {
-      "text": "They aren't competing claims, they're different processes measured differently. Picking a winner would have erased that.",
+      "text": "Every material has conditions, limits and a life. The question is whether those limits were understood and monitored, or ignored until the failure became somebody else's emergency.",
       "attrib": ""
     },
     "from": "heading"
@@ -421,16 +421,14 @@
     "from": "heuristic"
   },
   {
-    "segment": "material_image",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Measurement methods have spatial and temporal resolution limits",
     "narration": "High-speed pyrometry measures surface temperature by thermal radiation intensity, but it requires knowing the emissivity of the molten metal, which changes with surface oxidation and temperature itself.",
     "args": {
-      "subject": "molten-steel",
-      "label": "MOLTEN METAL",
-      "pick": 0
+      "variant": 4
     },
-    "from": "heuristic+material"
+    "from": "heuristic"
   },
   {
     "segment": "text_beat",
@@ -889,16 +887,14 @@
     "from": "heuristic"
   },
   {
-    "segment": "material_image",
+    "segment": "ambient_drift",
     "seconds": 7.03,
     "heading": "Workpiece material and thickness change how heat dissipates from the arc attachment zone",
     "narration": "The cooling rate affects grain structure in the heat-affected zone and residual stress in the finished joint.",
     "args": {
-      "subject": "micrograph-steel",
-      "label": "GRAIN STRUCTURE",
-      "pick": 0
+      "variant": 3
     },
-    "from": "heuristic+material"
+    "from": "heuristic"
   },
   {
     "segment": "text_beat",

@@ -46,7 +46,7 @@ The thermal history is not uniform across the part. Regions near the substrate c
 
 ### Producer POV
 
-[HUMAN] I wanted to say the layers get welded together, because that's the intuitive word. They don't weld, they fuse metallurgically — the atoms interdiffuse across the boundary. Wrong verb, wrong physics, so I cut it.
+[HUMAN] Watching something be made, I think about how many things had to become controllable first — temperature, pressure, purity, timing, tolerances, sequence, inspection. What looks smooth at the end is usually violent forces being controlled very precisely.
 
 ### Porosity is the primary defect and it comes from several sources
 

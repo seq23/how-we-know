@@ -302,43 +302,37 @@
   {
     "i": 50,
     "segment": "stat_card",
-    "narration": "Build the episode around a measurement table rather than a sea-monster silhouette.",
+    "narration": "Watch for a measurement table in place of a sea-monster silhouette, with each value marked as directly measured, taken from a specimen, or inferred.",
     "seconds": 5.328
   },
   {
     "i": 51,
     "segment": "text_beat",
-    "narration": "Mark which values are directly measured, which come from a specimen, and which are inferred.",
+    "narration": "The diagrams are original rather than pulled from Te Papa's pages \u2014 their facts are excellent references, but at least one of their specimen images is marked CC BY-NC-ND, which a video that runs ads and reworks the image cannot use.",
     "seconds": 5.872
   },
   {
     "i": 52,
-    "segment": "stat_card",
-    "narration": "Use original diagrams. Te Papa's pages are excellent factual references, but at least one displayed specimen image is marked CC BY-NC-ND, which is not acceptable for a monetized modified video.",
+    "segment": "contrast_pair",
+    "narration": "Size records depend on whether the claim refers to mass, total length, mantle length, or eye diameter.",
     "seconds": 13.786666666666667
   },
   {
     "i": 53,
-    "segment": "contrast_pair",
-    "narration": "Size records depend on whether the claim refers to mass, total length, mantle length, or eye diameter.",
+    "segment": "text_beat",
+    "narration": "Damaged and contracted specimens complicate length. The 495-kilogram, roughly 4.2-meter animal is a measured specimen associated with Te Papa; it does not prove a species maximum.",
     "seconds": 6.618666666666667
   },
   {
     "i": 54,
-    "segment": "text_beat",
-    "narration": "Damaged and contracted specimens complicate length. The 495-kilogram, roughly 4.2-meter animal is a measured specimen associated with Te Papa; it does not prove a species maximum.",
+    "segment": "contrast_pair",
+    "narration": "Claims that colossal squid have the largest eyes should remain tied to measured or documented specimens and not become a universal exact record without a current source.",
     "seconds": 13.797333333333333
   },
   {
     "i": 55,
-    "segment": "contrast_pair",
-    "narration": "Claims that colossal squid have the largest eyes should remain tied to measured or documented specimens and not become a universal exact record without a current source.",
-    "seconds": 10.533333333333333
-  },
-  {
-    "i": 56,
     "segment": "stat_card",
     "narration": "The colossal squid is enormous without borrowing a fictional maximum. The most honest version separates the animal on the table from the animal we imagine in the dark\u2014and tells the viewer which number belongs to which one.",
-    "seconds": 13.04
+    "seconds": 10.533333333333333
   }
 ]

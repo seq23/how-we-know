@@ -42,7 +42,7 @@ Aerogel density ranges from about zero point zero zero three grams per cubic cen
 
 ### Producer POV
 
-[HUMAN] I wanted the lowest-density record to be one clean number — 'the lightest solid ever made.' It isn't. Different measurement methods give different lowest values, so I kept the range instead of quoting the most dramatic figure.
+[HUMAN] Once you understand the pressure something had to survive, every strange feature starts making sense. People judge the visible result without understanding the conditions that created it.
 
 ### Thermal conductivity is limited by the mean free path of air
 

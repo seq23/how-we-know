@@ -11,16 +11,18 @@
     "from": "directive"
   },
   {
-    "segment": "material_image",
+    "segment": "text_beat",
     "seconds": 5.38,
     "heading": "Cold open",
     "narration": "That figure comes from ASTM International's standard test methods for carbon fiber composition.",
     "args": {
-      "subject": "carbon-fiber",
-      "label": "CARBON FIBER",
-      "pick": 0
+      "lines": [
+        "That figure comes from",
+        "ASTM International's standard test",
+        "methods"
+      ]
     },
-    "from": "directive-rhythm+material"
+    "from": "directive-rhythm"
   },
   {
     "segment": "thermal_ascent",
@@ -114,16 +116,18 @@
     "from": "directive"
   },
   {
-    "segment": "material_image",
+    "segment": "text_beat",
     "seconds": 9.0,
     "heading": "The precursor is a polymer most people have never heard of",
     "narration": "PAN was first synthesized in the 1930s, but its use as a carbon fiber precursor was not developed until the 1960s when researchers at multiple institutions discovered that controlled oxidation could stabilize the polymer before carbonization.",
     "args": {
-      "subject": "carbon-fiber",
-      "label": "CARBON FIBER",
-      "pick": 1
+      "lines": [
+        "PAN was first synthesized",
+        "in the 1930s, but",
+        "its use"
+      ]
     },
-    "from": "directive-rhythm+material"
+    "from": "directive-rhythm"
   },
   {
     "segment": "process_column",
@@ -553,22 +557,22 @@
   },
   {
     "segment": "quote_card",
-    "seconds": 5.79,
+    "seconds": 6.21,
     "heading": "Producer POV",
-    "narration": "I quoted 286 megajoules per kilogram for production energy as if it were settled.",
+    "narration": "What keeps me interested is how it exposes the limits of our idea of normal.",
     "args": {
-      "text": "I quoted 286 megajoules per kilogram for production energy as if it were settled.",
+      "text": "What keeps me interested is how it exposes the limits of our idea of normal.",
       "attrib": ""
     },
     "from": "heading"
   },
   {
     "segment": "quote_card",
-    "seconds": 9.0,
+    "seconds": 6.62,
     "heading": "Producer POV",
-    "narration": "Published estimates actually run from 200 to over 400 depending on the process, so I picked the mid-range and said so instead of stating one number as fact.",
+    "narration": "Every time we think we know what life requires, something down there shows us another way.",
     "args": {
-      "text": "Published estimates actually run from 200 to over 400 depending on the process, so I picked the mid-range and said so instead of stating one number as fact.",
+      "text": "Every time we think we know what life requires, something down there shows us another way.",
       "attrib": ""
     },
     "from": "heading"

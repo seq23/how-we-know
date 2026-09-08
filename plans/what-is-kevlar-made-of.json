@@ -579,15 +579,12 @@
     "from": "directive"
   },
   {
-    "segment": "definition_card",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "The fiber is aromatic and resistant to most solvents",
     "narration": "Thermogravimetric analysis shows mass loss starting at these temperatures, corresponding to bond cleavage.",
     "args": {
-      "term": "aromatic",
-      "meaning": "benzene-ring backbone",
-      "boundary": "not aliphatic chains",
-      "source": "ASTM"
+      "variant": 0
     },
     "from": "directive+destagnate"
   },
@@ -620,15 +617,12 @@
     "from": "directive"
   },
   {
-    "segment": "definition_card",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "The fiber is aromatic and resistant to most solvents",
     "narration": "It means the fiber retains its structure at high temperatures, but it also means Kevlar cannot be melt-processed like thermoplastics. Once the fiber is made, it cannot be reshaped by heating.",
     "args": {
-      "term": "aromatic",
-      "meaning": "benzene-ring backbone",
-      "boundary": "not aliphatic chains",
-      "source": "ASTM"
+      "variant": 1
     },
     "from": "directive+destagnate"
   },
@@ -738,22 +732,22 @@
   },
   {
     "segment": "quote_card",
-    "seconds": 4.97,
+    "seconds": 7.86,
     "heading": "Producer POV",
-    "narration": "Every strength in this fiber comes with its exact opposite built in.",
+    "narration": "I find a clean audit trail beautiful. A file named correctly. A number you can follow to its source.",
     "args": {
-      "text": "Every strength in this fiber comes with its exact opposite built in.",
+      "text": "I find a clean audit trail beautiful. A file named correctly. A number you can follow to its source.",
       "attrib": ""
     },
     "from": "heading"
   },
   {
     "segment": "quote_card",
-    "seconds": 9.0,
+    "seconds": 7.86,
     "heading": "Producer POV",
-    "narration": "The same rigid, aligned chains that make Kevlar strong under tension are what make it weak under compression. I couldn't state the strength without stating the trade-off beside it.",
+    "narration": "A system whose failures leave evidence instead of excuses. Most people see administrative debris; I see order made visible.",
     "args": {
-      "text": "The same rigid, aligned chains that make Kevlar strong under tension are what make it weak under compression. I couldn't state the strength without stating the trade-off beside it.",
+      "text": "A system whose failures leave evidence instead of excuses. Most people see administrative debris; I see order made visible.",
       "attrib": ""
     },
     "from": "heading"
@@ -1064,16 +1058,18 @@
     "from": "directive"
   },
   {
-    "segment": "material_image",
+    "segment": "text_beat",
     "seconds": 9.0,
     "heading": "The fiber is woven or laminated into structures",
     "narration": "Carbon fiber has a different structure. The graphite planes are stacked and bonded by van der Waals forces, but the in-plane covalent bonds give it high compressive modulus.",
     "args": {
-      "subject": "carbon-fiber",
-      "label": "CARBON FIBER",
-      "pick": 0
+      "lines": [
+        "Carbon fiber has a",
+        "different structure. The graphite",
+        "planes"
+      ]
     },
-    "from": "directive-rhythm+material"
+    "from": "directive-rhythm"
   },
   {
     "segment": "contrast_pair",
@@ -1262,7 +1258,7 @@
     "heading": "Evidence limit",
     "narration": "What is certain is the polymer identity, the liquid crystalline processing, and the alignment-driven strength.",
     "args": {
-      "variant": 0
+      "variant": 2
     },
     "from": "directive+destagnate"
   },
@@ -1300,7 +1296,7 @@
     "heading": "Closing",
     "narration": "The same elements arranged differently give nylon. The same polymer processed differently gives Nomex. The strength is in the order.",
     "args": {
-      "variant": 1
+      "variant": 3
     },
     "from": "directive+destagnate"
   }
