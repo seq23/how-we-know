@@ -631,16 +631,20 @@ class Stage:
             "held": "HELD — already reported and unchanged, so this run exits 0 "
                     "and pages nobody. It is NOT resolved.",
             "owner_action":
-                "WAITING ON YOU — this run exits 0 and does NOT page her; it "
-                "is recorded in the owner-action file and appears at the TOP "
+                "WAITING ON THE OWNER — this run exits 0 and does NOT page her; "
+                "it is recorded in the owner-action file and appears at the TOP "
                 "of the Sunday digest. It is NOT resolved.",
         }.get(disp, "NEEDS A HUMAN — this run exits 3 and opens an issue")
         # A HELD stop is exit 0, so the banner is the ONLY thing standing
         # between it and a silent skip. It says HELD STOP, not NAMED STOP, so
         # nobody reading a log can mistake "she has been told" for "it is
         # fixed", and it lists every item it is waiting on by name.
-        head = {"held": "HELD STOP ",
-                "owner_action": "WAITING ON YOU"}.get(disp, "NAMED STOP")
+        # `held` renames the banner because "NAMED STOP" over a green job
+        # reads as a contradiction. `owner_action` does NOT: it is still a
+        # named stop in every sense, it simply never pages, and two test
+        # suites plus every runbook grep for that exact token. The verdict and
+        # label lines below carry the difference.
+        head = "HELD STOP " if disp == "held" else "NAMED STOP"
         holding = ""
         if disp == "held" and s.held_items:
             hold_rec = held.open_holds(_stops_dir()).get(
