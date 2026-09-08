@@ -1,0 +1,518 @@
+[
+  {
+    "i": 0,
+    "segment": "thermal_ascent",
+    "narration": "Steel at 850 degrees Celsius holds carbon in solution. The crystal structure is face-centered cubic austenite, and carbon atoms sit in the spaces between iron atoms.",
+    "seconds": 11.930666666666667
+  },
+  {
+    "i": 1,
+    "segment": "text_beat",
+    "narration": "Plunge that steel into water, and it cools through 500 degrees in under five seconds.",
+    "seconds": 5.253333333333333
+  },
+  {
+    "i": 2,
+    "segment": "thermal_ascent",
+    "narration": "The carbon has no time to leave. The iron lattice snaps into a different shape around it, and the result is martensite \u2014 a structure so distorted it resists every attempt to slide.",
+    "seconds": 10.074666666666667
+  },
+  {
+    "i": 3,
+    "segment": "text_beat",
+    "narration": "That distortion is hardness. But the speed of the quench is not negotiable. Cool too slowly, and you get something else entirely.",
+    "seconds": 8.154666666666667
+  },
+  {
+    "i": 4,
+    "segment": "text_beat",
+    "narration": "How does quenching harden steel?",
+    "seconds": 2.1706666666666665
+  },
+  {
+    "i": 5,
+    "segment": "process_column",
+    "narration": "Steel is an alloy of iron and carbon. At room temperature, pure iron arranges itself in a body-centered cubic lattice.",
+    "seconds": 8.506666666666666
+  },
+  {
+    "i": 6,
+    "segment": "text_beat",
+    "narration": "Add carbon and heat the mixture above roughly 727 degrees Celsius, and the iron switches to face-centered cubic austenite.",
+    "seconds": 9.029333333333334
+  },
+  {
+    "i": 7,
+    "segment": "process_column",
+    "narration": "The carbon atoms, small enough to fit in the gaps between iron atoms, dissolve into the structure.",
+    "seconds": 6.277333333333333
+  },
+  {
+    "i": 8,
+    "segment": "text_beat",
+    "narration": "Austenite is soft and ductile. It is not the hard phase. It is the phase you cool FROM.",
+    "seconds": 6.778666666666667
+  },
+  {
+    "i": 9,
+    "segment": "stat_card",
+    "narration": "The eutectoid temperature is the boundary below which austenite becomes thermodynamically unstable in plain carbon steel.",
+    "seconds": 7.429333333333333
+  },
+  {
+    "i": 10,
+    "segment": "text_beat",
+    "narration": "Hold steel above that line, and austenite persists. Cool it slowly, and austenite transforms into ferrite and cementite \u2014 a mixture of soft iron and hard iron carbide that forms visible layers called pearlite.",
+    "seconds": 14.309333333333333
+  },
+  {
+    "i": 11,
+    "segment": "stat_card",
+    "narration": "That transformation takes time because carbon atoms must diffuse through the lattice to gather into cementite. Quenching denies them that time.",
+    "seconds": 9.445333333333334
+  },
+  {
+    "i": 12,
+    "segment": "text_beat",
+    "narration": "The diffusion coefficient of carbon in austenite drops rapidly as temperature falls.",
+    "seconds": 4.965333333333334
+  },
+  {
+    "i": 13,
+    "segment": "text_beat",
+    "narration": "At 700 degrees Celsius, carbon atoms can move micrometers in seconds. At 400 degrees, they barely move nanometers.",
+    "seconds": 9.093333333333334
+  },
+  {
+    "i": 14,
+    "segment": "process_column",
+    "narration": "The transformation to pearlite requires carbon to travel distances comparable to the spacing between cementite layers, typically hundreds of nanometers.",
+    "seconds": 8.613333333333333
+  },
+  {
+    "i": 15,
+    "segment": "text_beat",
+    "narration": "If the steel cools through the transformation range in less than a second, diffusion cannot keep pace. The austenite must do something else.",
+    "seconds": 8.464
+  },
+  {
+    "i": 16,
+    "segment": "evidence_chain",
+    "narration": "Cool austenite faster than about 100 degrees Celsius per second, and the carbon atoms cannot move far enough to form cementite.",
+    "seconds": 8.698666666666666
+  },
+  {
+    "i": 17,
+    "segment": "text_beat",
+    "narration": "The iron lattice tries to shift back to body-centered cubic, but the trapped carbon distorts it into body-centered tetragonal martensite.",
+    "seconds": 8.189333333333334
+  },
+  {
+    "i": 18,
+    "segment": "evidence_chain",
+    "narration": "The c-axis of the unit cell stretches. The lattice is under internal stress.",
+    "seconds": 5.690666666666667
+  },
+  {
+    "i": 19,
+    "segment": "text_beat",
+    "narration": "That stress is what stops dislocations from gliding through the crystal. Dislocations are the defects that let metals deform. Martensite blocks them. The result is hardness.",
+    "seconds": 12.005333333333333
+  },
+  {
+    "i": 20,
+    "segment": "magnitude_bar",
+    "narration": "Rockwell C hardness measures resistance to indentation. Martensite in a high-carbon steel can reach 65 HRC.",
+    "seconds": 8.602666666666666
+  },
+  {
+    "i": 21,
+    "segment": "text_beat",
+    "narration": "Pearlite, formed by slow cooling, reaches about 25 HRC. Ferrite, pure iron with almost no carbon, sits near 10 HRC.",
+    "seconds": 9.338666666666667
+  },
+  {
+    "i": 22,
+    "segment": "magnitude_bar",
+    "narration": "The difference is not subtle. Martensite is hard enough to cut other steels.",
+    "seconds": 4.72
+  },
+  {
+    "i": 23,
+    "segment": "ambient_drift",
+    "narration": "The transformation from austenite to martensite is not diffusional. It is a shear transformation.",
+    "seconds": 5.882666666666666
+  },
+  {
+    "i": 24,
+    "segment": "ambient_drift",
+    "narration": "The atoms move cooperatively, shifting positions by less than one atomic spacing.",
+    "seconds": 5.242666666666667
+  },
+  {
+    "i": 25,
+    "segment": "text_beat",
+    "narration": "The transformation happens at nearly the speed of sound in the material.",
+    "seconds": 4.410666666666667
+  },
+  {
+    "i": 26,
+    "segment": "ambient_drift",
+    "narration": "X-ray diffraction shows the tetragonal distortion directly. The ratio of the c-axis to the a-axis increases with carbon content, confirming that carbon is the cause of the distortion.",
+    "seconds": 11.098666666666666
+  },
+  {
+    "i": 27,
+    "segment": "contrast_pair",
+    "narration": "Water, oil, brine and air all remove heat at different rates. Water at 20 degrees Celsius cools steel faster than oil at the same temperature because water has higher thermal conductivity and higher heat capacity.",
+    "seconds": 14.170666666666667
+  },
+  {
+    "i": 28,
+    "segment": "text_beat",
+    "narration": "Brine, water with dissolved salt, cools faster still because salt disrupts the vapor blanket that forms on the steel's surface. That vapor blanket insulates. Break it, and heat leaves faster.",
+    "seconds": 12.538666666666666
+  },
+  {
+    "i": 29,
+    "segment": "process_steps",
+    "narration": "When hot steel enters water, a vapor layer forms immediately. Heat transfer is slow during film boiling.",
+    "seconds": 7.504
+  },
+  {
+    "i": 30,
+    "segment": "text_beat",
+    "narration": "As the surface cools below the Leidenfrost point, the vapor collapses and nucleate boiling begins.",
+    "seconds": 6.245333333333333
+  },
+  {
+    "i": 31,
+    "segment": "process_steps",
+    "narration": "Cooling accelerates. Finally, below 100 degrees Celsius, convection takes over. The fastest cooling happens during nucleate boiling.",
+    "seconds": 9.232
+  },
+  {
+    "i": 32,
+    "segment": "text_beat",
+    "narration": "Oil quenches avoid the vapor stage but cool more slowly overall. The choice of medium is a choice of cooling curve.",
+    "seconds": 7.717333333333333
+  },
+  {
+    "i": 33,
+    "segment": "text_beat",
+    "narration": "Agitation matters. Stirring the quench bath or moving the part through the fluid breaks up the vapor layer and increases the cooling rate.",
+    "seconds": 8.197333333333333
+  },
+  {
+    "i": 34,
+    "segment": "ambient_drift",
+    "narration": "Still water cools more slowly than agitated water. Quench tank design accounts for this.",
+    "seconds": 5.776
+  },
+  {
+    "i": 35,
+    "segment": "text_beat",
+    "narration": "Polymer quenchants, water-based solutions with added polymers, allow tuning of the cooling rate by adjusting polymer concentration. They sit between water and oil in cooling speed.",
+    "seconds": 11.077333333333334
+  },
+  {
+    "i": 36,
+    "segment": "uncertainty_bar",
+    "narration": "The critical cooling rate is the minimum speed required to suppress pearlite and form martensite.",
+    "seconds": 5.882666666666666
+  },
+  {
+    "i": 37,
+    "segment": "text_beat",
+    "narration": "For plain carbon steels, estimates range from 50 to 200 degrees Celsius per second, depending on carbon content.",
+    "seconds": 7.994666666666666
+  },
+  {
+    "i": 38,
+    "segment": "uncertainty_bar",
+    "narration": "Higher carbon lowers the critical rate because carbon stabilizes austenite. Alloy additions like chromium, molybdenum and manganese also lower it by slowing diffusion.",
+    "seconds": 10.098666666666666
+  },
+  {
+    "i": 39,
+    "segment": "text_beat",
+    "narration": "Measure the cooling rate at the center of the part, not the surface. The surface always cools faster.",
+    "seconds": 6.490666666666667
+  },
+  {
+    "i": 40,
+    "segment": "definition_card",
+    "narration": "The TTT diagram maps what happens when austenite is held at a fixed temperature.",
+    "seconds": 5.68
+  },
+  {
+    "i": 41,
+    "segment": "text_beat",
+    "narration": "The nose of the curve shows where pearlite forms fastest. Cool fast enough to miss the nose, and you get martensite.",
+    "seconds": 6.725333333333333
+  },
+  {
+    "i": 42,
+    "segment": "definition_card",
+    "narration": "The diagram is specific to composition. A 1080 steel, with 0.80 percent carbon, has a different curve than a 1040 steel.",
+    "seconds": 9.210666666666667
+  },
+  {
+    "i": 43,
+    "segment": "text_beat",
+    "narration": "The diagram does not predict continuous cooling directly, but CCT diagrams, continuous cooling transformation diagrams, do. Both are empirical. They come from controlled experiments, not theory alone.",
+    "seconds": 13.456
+  },
+  {
+    "i": 44,
+    "segment": "ambient_drift",
+    "narration": "Jominy end-quench tests measure hardenability, the ease with which a steel forms martensite.",
+    "seconds": 6.021333333333334
+  },
+  {
+    "i": 45,
+    "segment": "ambient_drift",
+    "narration": "A heated bar is quenched from one end only. Hardness is measured along the length.",
+    "seconds": 5.1146666666666665
+  },
+  {
+    "i": 46,
+    "segment": "text_beat",
+    "narration": "The distance over which hardness remains high indicates hardenability. High-hardenability steels form martensite even with slow cooling.",
+    "seconds": 8.901333333333334
+  },
+  {
+    "i": 47,
+    "segment": "ambient_drift",
+    "narration": "Low-hardenability steels require fast quenches. The test is standardized and widely used to compare alloys.",
+    "seconds": 6.917333333333334
+  },
+  {
+    "i": 48,
+    "segment": "magnitude_bar",
+    "narration": "Martensite hardness increases with carbon content up to about 0.6 percent by weight.",
+    "seconds": 6.458666666666667
+  },
+  {
+    "i": 49,
+    "segment": "text_beat",
+    "narration": "Beyond that, hardness rises more slowly. At 0.2 percent carbon, quenched martensite reaches roughly 40 HRC.",
+    "seconds": 8.773333333333333
+  },
+  {
+    "i": 50,
+    "segment": "magnitude_bar",
+    "narration": "At 0.6 percent, it reaches 60 HRC. At 1.0 percent, near 65 HRC.",
+    "seconds": 6.842666666666666
+  },
+  {
+    "i": 51,
+    "segment": "text_beat",
+    "narration": "The carbon distorts the lattice more severely as its concentration rises. But above 0.6 percent, retained austenite begins to appear.",
+    "seconds": 8.037333333333333
+  },
+  {
+    "i": 52,
+    "segment": "magnitude_bar",
+    "narration": "Some austenite does not transform even during a fast quench. Retained austenite is soft. It dilutes the hardness.",
+    "seconds": 7.621333333333333
+  },
+  {
+    "i": 53,
+    "segment": "text_beat",
+    "narration": "This is why tool steels, which need maximum hardness, are often held near 0.6 to 0.8 percent carbon.",
+    "seconds": 7.621333333333333
+  },
+  {
+    "i": 54,
+    "segment": "text_beat",
+    "narration": "Higher carbon gives diminishing returns and risks retained austenite. Lower carbon gives martensite that is not hard enough for cutting tools.",
+    "seconds": 9.082666666666666
+  },
+  {
+    "i": 55,
+    "segment": "ambient_drift",
+    "narration": "The carbon content is chosen for the application, and the quench is designed to achieve full transformation at that carbon level.",
+    "seconds": 7.088
+  },
+  {
+    "i": 56,
+    "segment": "process_column",
+    "narration": "As-quenched martensite is hard but brittle. Internal stresses make it prone to cracking.",
+    "seconds": 5.456
+  },
+  {
+    "i": 57,
+    "segment": "text_beat",
+    "narration": "Tempering is a controlled reheating, usually between 150 and 650 degrees Celsius, that allows some carbon to diffuse out of the martensite lattice.",
+    "seconds": 9.872
+  },
+  {
+    "i": 58,
+    "segment": "process_column",
+    "narration": "The structure remains martensitic, but the distortion relaxes. Hardness decreases. Toughness increases. The trade-off is deliberate.",
+    "seconds": 9.541333333333334
+  },
+  {
+    "i": 59,
+    "segment": "thermal_ascent",
+    "narration": "Temper at 200 degrees Celsius, and you retain most of the hardness while relieving some stress.",
+    "seconds": 6.064
+  },
+  {
+    "i": 60,
+    "segment": "text_beat",
+    "narration": "Temper at 600 degrees, and you get much tougher steel at the cost of significant hardness loss.",
+    "seconds": 6.117333333333334
+  },
+  {
+    "i": 61,
+    "segment": "thermal_ascent",
+    "narration": "The tempering temperature is chosen for the application. A chisel needs hardness.",
+    "seconds": 5.232
+  },
+  {
+    "i": 62,
+    "segment": "text_beat",
+    "narration": "A spring needs toughness. Both start with a quench. Both are tempered differently.",
+    "seconds": 5.082666666666666
+  },
+  {
+    "i": 63,
+    "segment": "text_beat",
+    "narration": "During tempering, carbon precipitates as fine carbides. The martensite loses its tetragonal distortion and becomes body-centered cubic ferrite with dispersed carbide particles.",
+    "seconds": 11.152
+  },
+  {
+    "i": 64,
+    "segment": "process_column",
+    "narration": "The carbides are much smaller than the cementite layers in pearlite, so the steel remains harder than slowly cooled steel even after tempering.",
+    "seconds": 8.016
+  },
+  {
+    "i": 65,
+    "segment": "text_beat",
+    "narration": "The size and distribution of the carbides depend on tempering temperature and time.",
+    "seconds": 5.008
+  },
+  {
+    "i": 66,
+    "segment": "quote_card",
+    "narration": "I wanted one clean cooling-rate number for 'fast enough to harden steel.' It doesn't exist as a constant \u2014 the threshold moves with the alloy's own composition.",
+    "seconds": 9.808
+  },
+  {
+    "i": 67,
+    "segment": "quote_card",
+    "narration": "I published the range and said the exact number has to be measured, not looked up.",
+    "seconds": 4.677333333333333
+  },
+  {
+    "i": 68,
+    "segment": "checklist_reveal",
+    "narration": "Chromium, molybdenum, manganese, nickel and silicon all slow the diffusion of carbon.",
+    "seconds": 6.042666666666666
+  },
+  {
+    "i": 69,
+    "segment": "text_beat",
+    "narration": "This lowers the critical cooling rate. An alloy steel can be oil-quenched or even air-quenched and still form martensite.",
+    "seconds": 7.472
+  },
+  {
+    "i": 70,
+    "segment": "checklist_reveal",
+    "narration": "This matters for large parts. A thick section cannot cool at 100 degrees per second at its core, even in water.",
+    "seconds": 7.738666666666667
+  },
+  {
+    "i": 71,
+    "segment": "text_beat",
+    "narration": "Plain carbon steel would form pearlite in the center. Alloy steel forms martensite throughout.",
+    "seconds": 6.066666666666666
+  },
+  {
+    "i": 72,
+    "segment": "ambient_drift",
+    "narration": "This is why aircraft landing gear and large forging dies are made from alloy steels.",
+    "seconds": 5.349333333333333
+  },
+  {
+    "i": 73,
+    "segment": "ambient_drift",
+    "narration": "The section size demands it. A water quench on a large plain carbon steel part would crack from thermal shock before it hardened all the way through.",
+    "seconds": 8.666666666666666
+  },
+  {
+    "i": 74,
+    "segment": "text_beat",
+    "narration": "Alloy additions buy time. They let the core cool slowly enough to avoid cracking while still cooling fast enough to form martensite.",
+    "seconds": 7.674666666666667
+  },
+  {
+    "i": 75,
+    "segment": "source_compare",
+    "narration": "The numbers in this script trace to ASM International's published phase diagrams and transformation kinetics, NIST's thermodynamic databases for the iron-carbon system, and ASTM International's standards for hardness measurement.",
+    "seconds": 15.386666666666667
+  },
+  {
+    "i": 76,
+    "segment": "text_beat",
+    "narration": "The critical cooling rate is stated as a range because it depends on composition, and the literature reflects that variation.",
+    "seconds": 7.1946666666666665
+  },
+  {
+    "i": 77,
+    "segment": "source_compare",
+    "narration": "The Rockwell C values are from controlled tests on known alloys, not theoretical predictions. The Jominy test is an ASTM standard method for measuring hardenability.",
+    "seconds": 11.248
+  },
+  {
+    "i": 78,
+    "segment": "uncertainty_bar",
+    "narration": "The critical cooling rate is not a single number. It varies with carbon content, alloy composition, austenite grain size and prior thermal history.",
+    "seconds": 10.085333333333333
+  },
+  {
+    "i": 79,
+    "segment": "text_beat",
+    "narration": "The range given here, 50 to 200 degrees Celsius per second, reflects published measurements on plain carbon and low-alloy steels.",
+    "seconds": 8.442666666666666
+  },
+  {
+    "i": 80,
+    "segment": "uncertainty_bar",
+    "narration": "Specific compositions require specific testing. The TTT and CCT diagrams are empirical maps, not universal laws.",
+    "seconds": 9.146666666666667
+  },
+  {
+    "i": 81,
+    "segment": "text_beat",
+    "narration": "They must be measured for each alloy. The mechanism \u2014 carbon trapping and lattice distortion \u2014 is well understood.",
+    "seconds": 7.653333333333333
+  },
+  {
+    "i": 82,
+    "segment": "uncertainty_bar",
+    "narration": "The exact threshold for a given steel is not predicted from first principles. It is measured.",
+    "seconds": 6.042666666666666
+  },
+  {
+    "i": 83,
+    "segment": "text_beat",
+    "narration": "Quenching hardens steel by moving faster than diffusion. The carbon that would separate into layers is frozen in place.",
+    "seconds": 7.045333333333334
+  },
+  {
+    "i": 84,
+    "segment": "text_beat",
+    "narration": "The lattice that would relax into soft ferrite is locked into strained martensite.",
+    "seconds": 4.997333333333334
+  },
+  {
+    "i": 85,
+    "segment": "ambient_drift",
+    "narration": "Speed is the tool. The distortion is the result. And the hardness is the distortion made useful.",
+    "seconds": 6.384
+  }
+]

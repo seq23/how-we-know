@@ -1,0 +1,132 @@
+{
+  "episode": "how-hot-does-a-welding-arc-get",
+  "beats": 84,
+  "plan_source": "plans/how-hot-does-a-welding-arc-get.json",
+  "timing": "audio",
+  "beats_measured": 84,
+  "durations_recorded": 84,
+  "duration_s": 771.277,
+  "cues": 204,
+  "chapters_real": 15,
+  "chapters_published": 14,
+  "chapter_notes": [
+    "merged 1 chapter(s) under 10s: Title card (2.0s)"
+  ],
+  "drift": {
+    "mean_abs_s": 28.5,
+    "worst_abs_s": 136.2,
+    "rows": [
+      {
+        "title": "Cold open",
+        "hand": "00:00",
+        "real": "0:00",
+        "drift_s": 0.0
+      },
+      {
+        "title": "Title card",
+        "hand": "00:24",
+        "real": "0:38",
+        "drift_s": 14.7
+      },
+      {
+        "title": "The arc is a plasma column, and plasma temperature depends on ionization energy",
+        "hand": "00:26",
+        "real": "0:40",
+        "drift_s": 14.7
+      },
+      {
+        "title": "Current density and electrode geometry concentrate heat in a small volume",
+        "hand": "01:32",
+        "real": "1:56",
+        "drift_s": 24.1
+      },
+      {
+        "title": "Shielding gas composition shifts the temperature by changing thermal conductivity",
+        "hand": "02:48",
+        "real": "3:24",
+        "drift_s": 36.6
+      },
+      {
+        "title": "Arc length changes voltage, which changes power, which changes temperature",
+        "hand": "03:52",
+        "real": "4:04",
+        "drift_s": 12.9
+      },
+      {
+        "title": "Producer POV",
+        "hand": "04:50",
+        "real": "4:53",
+        "drift_s": 3.7
+      },
+      {
+        "title": "Measurement methods have spatial and temporal resolution limits",
+        "hand": "05:00",
+        "real": "5:05",
+        "drift_s": 5.9
+      },
+      {
+        "title": "Alternating current reverses the thermal load between electrode and workpiece",
+        "hand": "06:28",
+        "real": "6:21",
+        "drift_s": -6.3
+      },
+      {
+        "title": "The measurement history tracks improvements in spatial and temporal resolution",
+        "hand": "07:32",
+        "real": "7:05",
+        "drift_s": -26.1
+      },
+      {
+        "title": "What to notice in the edit",
+        "hand": "08:30",
+        "real": "7:47",
+        "drift_s": -42.3
+      },
+      {
+        "title": "Evidence limit",
+        "hand": "09:20",
+        "real": "8:33",
+        "drift_s": -46.6
+      },
+      {
+        "title": "Closing",
+        "hand": "10:08",
+        "real": "12:24",
+        "drift_s": 136.2
+      }
+    ]
+  },
+  "ffprobe": {
+    "file": "renders/how-hot-does-a-welding-arc-get-final.mp4",
+    "video_s": 771.277,
+    "last_cue_end_s": 771.277,
+    "delta_s": 0.0,
+    "ok": true
+  },
+  "text_checks": {
+    "beats_json": {
+      "checked": 84,
+      "mismatched": []
+    },
+    "script_text": {
+      "checked": 84,
+      "absent_from_narration": []
+    }
+  },
+  "script_chapters": {
+    "written": true,
+    "changed": true,
+    "removed_lines": [
+      "Title card"
+    ],
+    "chapters_not_in_script": [
+      "Electrode material and geometry affect the arc attachment and thermal distribution",
+      "Workpiece material and thickness change how heat dissipates from the arc attachment zone"
+    ]
+  },
+  "artifacts": [
+    "captions/how-hot-does-a-welding-arc-get.vtt",
+    "captions/how-hot-does-a-welding-arc-get.srt",
+    "captions/how-hot-does-a-welding-arc-get.chapters.txt"
+  ]
+}

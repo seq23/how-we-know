@@ -1,307 +1,368 @@
 [
- {
-  "i": 0,
-  "segment": "depth_descent",
-  "narration": "Below the reach of sunlight, much of the light you see is made by life."
- },
- {
-  "i": 1,
-  "segment": "text_beat",
-  "narration": "It can hide a silhouette, lure prey, warn a predator, find a mate, or send a signal we still do not understand."
- },
- {
-  "i": 2,
-  "segment": "text_beat",
-  "narration": "How does bioluminescence work in the deep sea?"
- },
- {
-  "i": 3,
-  "segment": "definition_card",
-  "narration": "Below the reach of sunlight, a camera with its lamps off can still record flashes, pulses, and glowing clouds."
- },
- {
-  "i": 4,
-  "segment": "text_beat",
-  "narration": "Bioluminescence is light produced by a chemical reaction inside or on an organism."
- },
- {
-  "i": 5,
-  "segment": "definition_card",
-  "narration": "A light-emitting molecule releases energy as photons when the reaction is triggered."
- },
- {
-  "i": 6,
-  "segment": "checklist_reveal",
-  "narration": "The exact molecules and control systems vary. Some animals manufacture the components."
- },
- {
-  "i": 7,
-  "segment": "text_beat",
-  "narration": "Some host luminous bacteria. Some can release glowing material into the water."
- },
- {
-  "i": 8,
-  "segment": "contrast_pair",
-  "narration": "This is not fluorescence. Fluorescent tissue needs an outside light source to excite it; bioluminescence can produce light in complete darkness."
- },
- {
-  "i": 9,
-  "segment": "magnitude_bar",
-  "narration": "MBARI researchers have spent decades using sensitive cameras and ROV observations to measure how common the ability is."
- },
- {
-  "i": 10,
-  "segment": "text_beat",
-  "narration": "Their reported numbers are striking: about 76 percent of animals observed in the water column and 45 percent of animals observed on the bottom, from the surface to 4,000 meters, could produce light."
- },
- {
-  "i": 11,
-  "segment": "magnitude_bar",
-  "narration": "The first open loop is not why animals glow. It is why the color is so often blue-green."
- },
- {
-  "i": 12,
-  "segment": "quote_card",
-  "narration": "I kept wanting to say 'three quarters of deep-sea animals glow.' The MBARI figure is powerful, but it comes from animals their ROV surveys could observe, not a census of every species in the ocean."
- },
- {
-  "i": 13,
-  "segment": "light_attenuation",
-  "narration": "Seawater filters wavelengths unevenly. Red light disappears quickly, while blue-green light travels farther."
- },
- {
-  "i": 14,
-  "segment": "text_beat",
-  "narration": "That makes blue-green emission efficient for signals, camouflage, and illumination in much of the ocean."
- },
- {
-  "i": 15,
-  "segment": "light_attenuation",
-  "narration": "Eyes evolve in the same optical environment, so many deep-sea animals are especially sensitive to those wavelengths."
- },
- {
-  "i": 16,
-  "segment": "text_beat",
-  "narration": "The result is a shared channel: light that can travel, and eyes prepared to receive it. But evolution exploits blind spots."
- },
- {
-  "i": 17,
-  "segment": "contrast_pair",
-  "narration": "Some deep-sea dragonfishes produce red bioluminescence and possess visual pigments that detect it."
- },
- {
-  "i": 18,
-  "segment": "text_beat",
-  "narration": "Many potential prey cannot. The fish gains something close to a private flashlight."
- },
- {
-  "i": 19,
-  "segment": "contrast_pair",
-  "narration": "This is why a statement like deep-sea light is blue is useful but incomplete."
- },
- {
-  "i": 20,
-  "segment": "text_beat",
-  "narration": "It describes a dominant pattern, not a law. The next loop is function."
- },
- {
-  "i": 21,
-  "segment": "contrast_pair",
-  "narration": "A glowing organ under the belly and a glowing lure above the mouth may use similar chemistry, but they are solving opposite problems: one tries not to be seen, and the other tries to be noticed."
- },
- {
-  "i": 22,
-  "segment": "source_compare",
-  "narration": "Counter-illumination is one of the most elegant uses. In the twilight zone, a predator looking upward sees the faint surface glow behind an animal."
- },
- {
-  "i": 23,
-  "segment": "text_beat",
-  "narration": "Photophores on the animal's underside can match that background and reduce the silhouette."
- },
- {
-  "i": 24,
-  "segment": "source_compare",
-  "narration": "An anglerfish uses light differently, placing a lure where prey can approach the mouth."
- },
- {
-  "i": 25,
-  "segment": "text_beat",
-  "narration": "Some shrimp release luminous clouds, creating a bright distraction while they escape."
- },
- {
-  "i": 26,
-  "segment": "source_compare",
-  "narration": "Jellies can send waves of light across the body. Other animals use light organs as searchlights or as patterns that may help identify mates."
- },
- {
-  "i": 27,
-  "segment": "checklist_reveal",
-  "narration": "Function cannot be assigned from color alone. Researchers examine organ position, timing, behavior, and the response of nearby animals."
- },
- {
-  "i": 28,
-  "segment": "text_beat",
-  "narration": "A flash after contact suggests a different role from a steady ventral glow."
- },
- {
-  "i": 29,
-  "segment": "checklist_reveal",
-  "narration": "Laboratory chemistry explains how photons are produced, while ROV video shows when the system is used."
- },
- {
-  "i": 30,
-  "segment": "text_beat",
-  "narration": "The open question is scale: how do scientists estimate prevalence when cameras can see only a tiny sample of an enormous habitat?"
- },
- {
-  "i": 31,
-  "segment": "checklist_reveal",
-  "narration": "The 76-percent figure is valuable because it came from systematic review of animals MBARI could observe in the water column, not from a collection of dramatic clips."
- },
- {
-  "i": 32,
-  "segment": "text_beat",
-  "narration": "It still has boundaries. Gelatinous animals can be difficult to sample. Small organisms may escape detection."
- },
- {
-  "i": 33,
-  "segment": "checklist_reveal",
-  "narration": "An ROV's presence and lights can alter behavior. Some species may possess light organs without emitting during a brief encounter."
- },
- {
-  "i": 34,
-  "segment": "text_beat",
-  "narration": "Others may be mistaken for reflected light unless the camera design and observation are controlled."
- },
- {
-  "i": 35,
-  "segment": "contrast_pair",
-  "narration": "Good science states the sampling frame. The result is not every animal in every ocean."
- },
- {
-  "i": 36,
-  "segment": "text_beat",
-  "narration": "It is strong evidence that bioluminescence is one of the dominant ecological tools in the largest dark habitat on Earth."
- },
- {
-  "i": 37,
-  "segment": "contrast_pair",
-  "narration": "That conclusion is bigger than a montage of glowing creatures because it links optics, chemistry, behavior, and evolution."
- },
- {
-  "i": 38,
-  "segment": "text_beat",
-  "narration": "When the next blue flash crosses the screen, ask where the organ sits and what happened immediately before it fired."
- },
- {
-  "i": 39,
-  "segment": "contrast_pair",
-  "narration": "Those two details often reveal more than the brightness. Next comes a squid whose eyes are so large that the measurement sounds invented."
- },
- {
-  "i": 40,
-  "segment": "text_beat",
-  "narration": "Bioluminescence is light produced by a chemical reaction, often involving a light-emitting molecule called a luciferin and an enzyme or photoprotein."
- },
- {
-  "i": 41,
-  "segment": "text_beat",
-  "narration": "The exact chemistry varies among organisms. In blue-dominated seawater, blue-green light often travels efficiently, which helps explain the color of many marine signals."
- },
- {
-  "i": 42,
-  "segment": "checklist_reveal",
-  "narration": "The same ability can serve opposing roles: an anglerfish lure attracts, counter-illumination hides, a flash can startle, and a glowing cloud can distract. A single animal may use more than one function."
- },
- {
-  "i": 43,
-  "segment": "source_compare",
-  "narration": "A light signal has no meaning outside behavior and context. A predator can use light to attract prey."
- },
- {
-  "i": 44,
-  "segment": "text_beat",
-  "narration": "Prey can use a flash to startle a predator or illuminate it for a larger hunter."
- },
- {
-  "i": 45,
-  "segment": "source_compare",
-  "narration": "An animal can match dim light from above to erase its silhouette."
- },
- {
-  "i": 46,
-  "segment": "text_beat",
-  "narration": "Members of the same species can use patterned signals to find one another."
- },
- {
-  "i": 47,
-  "segment": "source_compare",
-  "narration": "The chemical mechanism may be similar while the ecological function is completely different."
- },
- {
-  "i": 48,
-  "segment": "contrast_pair",
-  "narration": "That is why the MBARI percentages need careful narration. They demonstrate how common light production was among animals observed in a large ROV dataset."
- },
- {
-  "i": 49,
-  "segment": "text_beat",
-  "narration": "They do not tell us that every animal glows, that every species was equally detectable, or that one function dominates."
- },
- {
-  "i": 50,
-  "segment": "contrast_pair",
-  "narration": "The humanized edit should return to the same original light animation and change only the surrounding scene."
- },
- {
-  "i": 51,
-  "segment": "text_beat",
-  "narration": "The audience sees that chemistry is the tool; behavior supplies the meaning."
- },
- {
-  "i": 52,
-  "segment": "stat_card",
-  "narration": "When the percentage appears on screen, the label should read 'animals observed in MBARI's ROV dataset,' not 'all deep-sea animals.' That extra line is small, but it separates a real study result from an invented universal census."
- },
- {
-  "i": 53,
-  "segment": "text_beat",
-  "narration": "The narration should also distinguish generated light from fluorescence before showing any glowing image."
- },
- {
-  "i": 54,
-  "segment": "ambient_drift",
-  "narration": "This episode should feel like a mechanism demonstration. Begin with darkness, add the chemical reaction as a clean original animation, then reuse the same burst of light in four contexts: lure, camouflage, warning, and communication."
- },
- {
-  "i": 55,
-  "segment": "ambient_drift",
-  "narration": "That structural repetition has meaning; the surrounding behavior changes the function. Do not use MBARI footage unless the individual asset has commercial rights clearance."
- },
- {
-  "i": 56,
-  "segment": "stat_card",
-  "narration": "MBARI reports that 76 percent of observed water-column creatures and 45 percent of observed bottom-dwelling creatures in its ROV work could produce light, from the surface to 4,000 meters."
- },
- {
-  "i": 57,
-  "segment": "text_beat",
-  "narration": "Those percentages describe the surveyed animals researchers could see and classify. They are not a universal species census."
- },
- {
-  "i": 58,
-  "segment": "contrast_pair",
-  "narration": "Fluorescence is also different from bioluminescence: fluorescence re-emits incoming light, while bioluminescence generates light chemically."
- },
- {
-  "i": 59,
-  "segment": "depth_descent",
-  "narration": "The deep ocean is dark, but it is not visually silent. Life supplies its own signals."
- },
- {
-  "i": 60,
-  "segment": "text_beat",
-  "narration": "The useful question is not only which animal glows, but what that light is doing at that exact moment."
- }
+  {
+    "i": 0,
+    "segment": "depth_descent",
+    "narration": "Below the reach of sunlight, much of the light you see is made by life.",
+    "seconds": 4.133333333333334
+  },
+  {
+    "i": 1,
+    "segment": "text_beat",
+    "narration": "It can hide a silhouette, lure prey, warn a predator, find a mate, or send a signal we still do not understand.",
+    "seconds": 8.165333333333333
+  },
+  {
+    "i": 2,
+    "segment": "text_beat",
+    "narration": "How does bioluminescence work in the deep sea?",
+    "seconds": 4.890666666666666
+  },
+  {
+    "i": 3,
+    "segment": "definition_card",
+    "narration": "Below the reach of sunlight, a camera with its lamps off can still record flashes, pulses, and glowing clouds.",
+    "seconds": 6.672
+  },
+  {
+    "i": 4,
+    "segment": "text_beat",
+    "narration": "Bioluminescence is light produced by a chemical reaction inside or on an organism.",
+    "seconds": 7.749333333333333
+  },
+  {
+    "i": 5,
+    "segment": "definition_card",
+    "narration": "A light-emitting molecule releases energy as photons when the reaction is triggered.",
+    "seconds": 5.392
+  },
+  {
+    "i": 6,
+    "segment": "checklist_reveal",
+    "narration": "The exact molecules and control systems vary. Some animals manufacture the components.",
+    "seconds": 5.84
+  },
+  {
+    "i": 7,
+    "segment": "text_beat",
+    "narration": "Some host luminous bacteria. Some can release glowing material into the water.",
+    "seconds": 5.562666666666667
+  },
+  {
+    "i": 8,
+    "segment": "contrast_pair",
+    "narration": "This is not fluorescence. Fluorescent tissue needs an outside light source to excite it; bioluminescence can produce light in complete darkness.",
+    "seconds": 10.256
+  },
+  {
+    "i": 9,
+    "segment": "magnitude_bar",
+    "narration": "MBARI researchers have spent decades using sensitive cameras and ROV observations to measure how common the ability is.",
+    "seconds": 8.805333333333333
+  },
+  {
+    "i": 10,
+    "segment": "text_beat",
+    "narration": "Their reported numbers are striking: about 76 percent of animals observed in the water column and 45 percent of animals observed on the bottom, from the surface to 4,000 meters, could produce light.",
+    "seconds": 12.026666666666667
+  },
+  {
+    "i": 11,
+    "segment": "magnitude_bar",
+    "narration": "The first open loop is not why animals glow. It is why the color is so often blue-green.",
+    "seconds": 5.328
+  },
+  {
+    "i": 12,
+    "segment": "quote_card",
+    "narration": "I kept wanting to say 'three quarters of deep-sea animals glow.' The MBARI figure is powerful, but it comes from animals their ROV surveys could observe, not a census of every species in the ocean.",
+    "seconds": 13.341333333333333
+  },
+  {
+    "i": 13,
+    "segment": "light_attenuation",
+    "narration": "Seawater filters wavelengths unevenly. Red light disappears quickly, while blue-green light travels farther.",
+    "seconds": 6.984
+  },
+  {
+    "i": 14,
+    "segment": "text_beat",
+    "narration": "That makes blue-green emission efficient for signals, camouflage, and illumination in much of the ocean.",
+    "seconds": 6.394666666666667
+  },
+  {
+    "i": 15,
+    "segment": "light_attenuation",
+    "narration": "Eyes evolve in the same optical environment, so many deep-sea animals are especially sensitive to those wavelengths.",
+    "seconds": 6.736
+  },
+  {
+    "i": 16,
+    "segment": "text_beat",
+    "narration": "The result is a shared channel: light that can travel, and eyes prepared to receive it. But evolution exploits blind spots.",
+    "seconds": 7.973333333333334
+  },
+  {
+    "i": 17,
+    "segment": "contrast_pair",
+    "narration": "Some deep-sea dragonfishes produce red bioluminescence and possess visual pigments that detect it.",
+    "seconds": 9.381333333333334
+  },
+  {
+    "i": 18,
+    "segment": "text_beat",
+    "narration": "Many potential prey cannot. The fish gains something close to a private flashlight.",
+    "seconds": 5.264
+  },
+  {
+    "i": 19,
+    "segment": "contrast_pair",
+    "narration": "This is why a statement like deep-sea light is blue is useful but incomplete.",
+    "seconds": 5.36
+  },
+  {
+    "i": 20,
+    "segment": "text_beat",
+    "narration": "It describes a dominant pattern, not a law. The next loop is function.",
+    "seconds": 5.402666666666667
+  },
+  {
+    "i": 21,
+    "segment": "contrast_pair",
+    "narration": "A glowing organ under the belly and a glowing lure above the mouth may use similar chemistry, but they are solving opposite problems: one tries not to be seen, and the other tries to be noticed.",
+    "seconds": 12.581333333333333
+  },
+  {
+    "i": 22,
+    "segment": "source_compare",
+    "narration": "Counter-illumination is one of the most elegant uses. In the twilight zone, a predator looking upward sees the faint surface glow behind an animal.",
+    "seconds": 9.637333333333334
+  },
+  {
+    "i": 23,
+    "segment": "text_beat",
+    "narration": "Photophores on the animal's underside can match that background and reduce the silhouette.",
+    "seconds": 5.498666666666667
+  },
+  {
+    "i": 24,
+    "segment": "source_compare",
+    "narration": "An anglerfish uses light differently, placing a lure where prey can approach the mouth.",
+    "seconds": 5.1146666666666665
+  },
+  {
+    "i": 25,
+    "segment": "text_beat",
+    "narration": "Some shrimp release luminous clouds, creating a bright distraction while they escape.",
+    "seconds": 4.613333333333333
+  },
+  {
+    "i": 26,
+    "segment": "source_compare",
+    "narration": "Jellies can send waves of light across the body. Other animals use light organs as searchlights or as patterns that may help identify mates.",
+    "seconds": 8.570666666666666
+  },
+  {
+    "i": 27,
+    "segment": "checklist_reveal",
+    "narration": "Function cannot be assigned from color alone. Researchers examine organ position, timing, behavior, and the response of nearby animals.",
+    "seconds": 8.901333333333334
+  },
+  {
+    "i": 28,
+    "segment": "text_beat",
+    "narration": "A flash after contact suggests a different role from a steady ventral glow.",
+    "seconds": 4.453333333333333
+  },
+  {
+    "i": 29,
+    "segment": "checklist_reveal",
+    "narration": "Laboratory chemistry explains how photons are produced, while ROV video shows when the system is used.",
+    "seconds": 7.077333333333334
+  },
+  {
+    "i": 30,
+    "segment": "text_beat",
+    "narration": "The open question is scale: how do scientists estimate prevalence when cameras can see only a tiny sample of an enormous habitat?",
+    "seconds": 8.474666666666666
+  },
+  {
+    "i": 31,
+    "segment": "checklist_reveal",
+    "narration": "The 76-percent figure is valuable because it came from systematic review of animals MBARI could observe in the water column, not from a collection of dramatic clips.",
+    "seconds": 10.970666666666666
+  },
+  {
+    "i": 32,
+    "segment": "text_beat",
+    "narration": "It still has boundaries. Gelatinous animals can be difficult to sample. Small organisms may escape detection.",
+    "seconds": 7.653333333333333
+  },
+  {
+    "i": 33,
+    "segment": "checklist_reveal",
+    "narration": "An ROV's presence and lights can alter behavior. Some species may possess light organs without emitting during a brief encounter.",
+    "seconds": 8.005333333333333
+  },
+  {
+    "i": 34,
+    "segment": "text_beat",
+    "narration": "Others may be mistaken for reflected light unless the camera design and observation are controlled.",
+    "seconds": 6.650666666666667
+  },
+  {
+    "i": 35,
+    "segment": "contrast_pair",
+    "narration": "Good science states the sampling frame. The result is not every animal in every ocean.",
+    "seconds": 6.234666666666667
+  },
+  {
+    "i": 36,
+    "segment": "text_beat",
+    "narration": "It is strong evidence that bioluminescence is one of the dominant ecological tools in the largest dark habitat on Earth.",
+    "seconds": 9.541333333333334
+  },
+  {
+    "i": 37,
+    "segment": "contrast_pair",
+    "narration": "That conclusion is bigger than a montage of glowing creatures because it links optics, chemistry, behavior, and evolution.",
+    "seconds": 7.685333333333333
+  },
+  {
+    "i": 38,
+    "segment": "text_beat",
+    "narration": "When the next blue flash crosses the screen, ask where the organ sits and what happened immediately before it fired.",
+    "seconds": 7.293333333333333
+  },
+  {
+    "i": 39,
+    "segment": "contrast_pair",
+    "narration": "Those two details often reveal more than the brightness. Next comes a squid whose eyes are so large that the measurement sounds invented.",
+    "seconds": 8.656
+  },
+  {
+    "i": 40,
+    "segment": "text_beat",
+    "narration": "Bioluminescence is light produced by a chemical reaction, often involving a light-emitting molecule called a luciferin and an enzyme or photoprotein.",
+    "seconds": 10.661333333333333
+  },
+  {
+    "i": 41,
+    "segment": "text_beat",
+    "narration": "The exact chemistry varies among organisms. In blue-dominated seawater, blue-green light often travels efficiently, which helps explain the color of many marine signals.",
+    "seconds": 10.32
+  },
+  {
+    "i": 42,
+    "segment": "checklist_reveal",
+    "narration": "The same ability can serve opposing roles: an anglerfish lure attracts, counter-illumination hides, a flash can startle, and a glowing cloud can distract. A single animal may use more than one function.",
+    "seconds": 13.050666666666666
+  },
+  {
+    "i": 43,
+    "segment": "source_compare",
+    "narration": "A light signal has no meaning outside behavior and context. A predator can use light to attract prey.",
+    "seconds": 6.736
+  },
+  {
+    "i": 44,
+    "segment": "text_beat",
+    "narration": "Prey can use a flash to startle a predator or illuminate it for a larger hunter.",
+    "seconds": 4.549333333333333
+  },
+  {
+    "i": 45,
+    "segment": "source_compare",
+    "narration": "An animal can match dim light from above to erase its silhouette.",
+    "seconds": 4.165333333333334
+  },
+  {
+    "i": 46,
+    "segment": "text_beat",
+    "narration": "Members of the same species can use patterned signals to find one another.",
+    "seconds": 4.410666666666667
+  },
+  {
+    "i": 47,
+    "segment": "source_compare",
+    "narration": "The chemical mechanism may be similar while the ecological function is completely different.",
+    "seconds": 5.456
+  },
+  {
+    "i": 48,
+    "segment": "contrast_pair",
+    "narration": "That is why the MBARI percentages need careful narration. They demonstrate how common light production was among animals observed in a large ROV dataset.",
+    "seconds": 9.989333333333333
+  },
+  {
+    "i": 49,
+    "segment": "text_beat",
+    "narration": "They do not tell us that every animal glows, that every species was equally detectable, or that one function dominates.",
+    "seconds": 7.92
+  },
+  {
+    "i": 50,
+    "segment": "contrast_pair",
+    "narration": "The humanized edit should return to the same original light animation and change only the surrounding scene.",
+    "seconds": 6.778666666666667
+  },
+  {
+    "i": 51,
+    "segment": "text_beat",
+    "narration": "The audience sees that chemistry is the tool; behavior supplies the meaning.",
+    "seconds": 4.709333333333333
+  },
+  {
+    "i": 52,
+    "segment": "stat_card",
+    "narration": "When the percentage appears on screen, the label should read 'animals observed in MBARI's ROV dataset,' not 'all deep-sea animals.' That extra line is small, but it separates a real study result from an invented universal census.",
+    "seconds": 16.624
+  },
+  {
+    "i": 53,
+    "segment": "text_beat",
+    "narration": "The narration should also distinguish generated light from fluorescence before showing any glowing image.",
+    "seconds": 6.1386666666666665
+  },
+  {
+    "i": 54,
+    "segment": "ambient_drift",
+    "narration": "This episode should feel like a mechanism demonstration. Begin with darkness, add the chemical reaction as a clean original animation, then reuse the same burst of light in four contexts: lure, camouflage, warning, and communication.",
+    "seconds": 17.17866666666667
+  },
+  {
+    "i": 55,
+    "segment": "ambient_drift",
+    "narration": "That structural repetition has meaning; the surrounding behavior changes the function. Do not use MBARI footage unless the individual asset has commercial rights clearance.",
+    "seconds": 12.197333333333333
+  },
+  {
+    "i": 56,
+    "segment": "stat_card",
+    "narration": "MBARI reports that 76 percent of observed water-column creatures and 45 percent of observed bottom-dwelling creatures in its ROV work could produce light, from the surface to 4,000 meters.",
+    "seconds": 12.784
+  },
+  {
+    "i": 57,
+    "segment": "text_beat",
+    "narration": "Those percentages describe the surveyed animals researchers could see and classify. They are not a universal species census.",
+    "seconds": 7.546666666666667
+  },
+  {
+    "i": 58,
+    "segment": "contrast_pair",
+    "narration": "Fluorescence is also different from bioluminescence: fluorescence re-emits incoming light, while bioluminescence generates light chemically.",
+    "seconds": 12.901333333333334
+  },
+  {
+    "i": 59,
+    "segment": "depth_descent",
+    "narration": "The deep ocean is dark, but it is not visually silent. Life supplies its own signals.",
+    "seconds": 5.744
+  },
+  {
+    "i": 60,
+    "segment": "text_beat",
+    "narration": "The useful question is not only which animal glows, but what that light is doing at that exact moment.",
+    "seconds": 6.096
+  }
 ]

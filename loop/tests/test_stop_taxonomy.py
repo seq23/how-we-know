@@ -85,8 +85,18 @@ def a_exit_codes() -> tuple[list[str], int]:
          "a quota stop that says when it resets is self-resolving"),
         ("quota_no_reset", 3, True,
          "a quota stop that cannot say when it resets must stay loud"),
-        ("oauth", 3, True,
-         "a missing credential always needs a human"),
+        # CHANGED 2026-09-08 with the owner_action disposition, and the change
+        # is the point rather than an accommodation. A missing credential
+        # ALWAYS needed a human and still does — nothing in code can mint one —
+        # but the owner's instruction is that such a stop must not arrive as a
+        # red build she cannot clear any faster for having been paged. It now
+        # exits 0, records itself in the owner-action file, and is printed at
+        # the top of the Sunday digest; loop/stop_policy.json escalates it to
+        # exit 3 after five consecutive runs, which is asserted in
+        # b_escalation() and is what stops "green" from meaning "ignored".
+        ("oauth", 0, True,
+         "a missing credential is hers alone to fix, so it is green and "
+         "surfaced rather than red and paging"),
         ("validator", 3, True,
          "a failed validator always needs a human"),
         ("zero_work", 3, True,
@@ -123,16 +133,18 @@ def a_exit_codes() -> tuple[list[str], int]:
                 fails.append(f"[{mode}] wrote no stop record to disk")
                 continue
             rec = json.load(open(rec_path))
-            want_disp = "self_resolving" if want_rc == 0 else "needs_human"
+            want_disp = {"quota_with_reset": "self_resolving",
+                         "oauth": "owner_action"}.get(mode, "needs_human")
             if rec.get("disposition") != want_disp:
                 fails.append(f"[{mode}] recorded disposition "
                              f"{rec.get('disposition')!r}, expected {want_disp!r}")
             if rec.get("exit_code") != want_rc:
                 fails.append(f"[{mode}] record claims exit {rec.get('exit_code')} "
                              f"but the process exited {rc}")
-            if want_rc == 0 and "SELF-RESOLVING" not in out:
-                fails.append(f"[{mode}] exited 0 without saying it was "
-                             f"self-resolving — that reads as a silent skip")
+            if want_rc == 0 and not ("SELF-RESOLVING" in out
+                                     or "WAITING ON THE OWNER" in out):
+                fails.append(f"[{mode}] exited 0 without saying WHY it was "
+                             f"green — that reads as a silent skip")
     return fails, examined
 
 
@@ -247,11 +259,26 @@ def c_workflow_wrapper() -> tuple[list[str], int]:
 def d_policy_reaches_its_lanes() -> tuple[list[str], int]:
     """Every classified code is really raised, with the detail it promises."""
     fails, examined = [], 0
-    rules = POLICY.get("self_resolving") or {}
+    # BOTH green sections. `owner_action` joined `self_resolving` on
+    # 2026-09-08 and a reachability guard that only walks one of them would go
+    # quietly blind to the other.
+    rules = {k: v for k, v in ((POLICY.get("self_resolving") or {})
+                               | (POLICY.get("owner_action") or {})).items()
+             if not k.startswith("_")}
     if not rules:
         fails.append("loop/stop_policy.json classifies ZERO codes — the "
                      "taxonomy exists but governs nothing")
-    seen = {code: 0 for code in rules}
+    # Codes the loop BUILDS rather than writes as a literal, and wildcards that
+    # match a family. This AST walk sees only literal first arguments, so
+    # without this it would report every one of them as unreachable. The
+    # authority for what is generated is
+    # loop/tests/test_every_stop_is_classified.py, which checks each against the
+    # expression that still builds it — one list, not two.
+    sys.path.insert(0, HERE)
+    import test_every_stop_is_classified as AUDIT     # noqa: PLC0415
+    generated = set(AUDIT.GENERATED)
+    seen = {code: 0 for code in rules
+            if code not in generated and not code.endswith("*")}
     for path in sorted(glob.glob(os.path.join(LOOP, "*.py"))):
         tree = ast.parse(open(path).read(), path)
         for node in ast.walk(tree):
@@ -266,7 +293,8 @@ def d_policy_reaches_its_lanes() -> tuple[list[str], int]:
             if rule is None:
                 continue
             examined += 1
-            seen[code] += 1
+            if code in seen:
+                seen[code] += 1
             detail = next((k.value for k in node.keywords
                            if k.arg == "detail"), None)
             keys = set()

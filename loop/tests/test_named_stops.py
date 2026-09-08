@@ -98,10 +98,22 @@ def check() -> list[str]:
             fails.append(f"loop/{fname} exited {r.returncode} without printing "
                          f"a NAMED STOP banner — nobody would see it")
             continue
-        if r.returncode == 0 and "SELF-RESOLVING" not in out.upper():
+        # Two dispositions may exit 0 now, not one. `owner_action` joined
+        # `self_resolving` on 2026-09-08: a credential only the owner can renew
+        # cannot self-heal and cannot be retried away, and failing this job
+        # every day until she gets to it pages her for something she cannot
+        # clear any faster for having been paged. It is green, it is recorded
+        # in the owner-action file, and it is printed at the top of the Sunday
+        # digest -- and loop/stop_policy.json escalates it to exit 3 if it
+        # outlives its cap. The property this line has always protected is
+        # unchanged: a zero exit must SAY which of the two it is. A silent
+        # pass still fails.
+        if r.returncode == 0 and not ("SELF-RESOLVING" in out.upper()
+                                      or "WAITING ON THE OWNER" in out.upper()):
             fails.append(f"loop/{fname} exited 0 without declaring the stop "
-                         f"self-resolving — a zero exit is only legitimate for "
-                         f"a stop loop/stop_policy.json classifies")
+                         f"self-resolving or waiting on the owner — a zero "
+                         f"exit is only legitimate for a stop "
+                         f"loop/stop_policy.json classifies")
         if not any(code in out for code in acceptable):
             fails.append(f"loop/{fname} named a stop, but not one of "
                          f"{acceptable}:\n{out[-400:]}")

@@ -49,6 +49,7 @@ sys.path.insert(0, str(LOOP))
 import cadence                               # noqa: E402
 import backfill                                  # noqa: E402
 import batch_queue                               # noqa: E402
+import captions_build                            # noqa: E402
 import captions_lane                             # noqa: E402
 import ledger                                    # noqa: E402
 import pov_match                                 # noqa: E402
@@ -297,6 +298,28 @@ def run(limit: int = 4, dry_run: bool = False) -> int:
         # Refusing here is the last moment refusing is free.
         #
         # REFUSE THE EPISODE, NOT THE LANE — same contract as the POV gate.
+        #
+        # SELF-HEAL FIRST. Everything above this line was written when the .srt
+        # could only be made on the Mac that voiced the episode. It no longer
+        # can: `visuals/captions.py` records each measured wav duration into
+        # `audio/<slug>/beats.json`, which git tracks, so the caption track is
+        # now a pure function of the repository and this runner can build it in
+        # about a second. On 2026-09-08 run 34236877023 refused
+        # how-strong-is-graphene, exited 3 and asked the owner to open a laptop
+        # and type a command — for an artifact the runner was holding every
+        # input to. Build it, then judge what is left.
+        #
+        # The gate below is UNCHANGED and still the last word. Healing can only
+        # ever remove a reason to refuse; nothing here can pass an episode the
+        # gate would have blocked, because the gate re-asks
+        # `captions_lane.uncaptioned()` afterwards against the files on disk.
+        healed = captions_build.heal([s_ for s_, _, _ in take], note=st.note)
+        for slug_ in healed["built"]:
+            st.work(f"built the missing caption track for {slug_} in the cloud "
+                    f"from committed beat timings — no Mac involved")
+        for slug_, why_ in healed["unhealable"]:
+            print(f"  CANNOT HEAL {slug_}: {why_}")
+
         uncaptioned = captions_lane.uncaptioned([s_ for s_, _, _ in take])
         if uncaptioned:
             for slug_, why in uncaptioned:
@@ -319,14 +342,18 @@ def run(limit: int = 4, dry_run: bool = False) -> int:
                                         for s, w in uncaptioned],
                         "captions_dir": str(captions_lane.CAPTIONS_DIR
                                             .relative_to(ROOT))},
-                unblock="The .srt is derived from the narration audio, which "
-                        "only exists on the Mac that voiced the episode:\n\n"
-                        "  python visuals/captions.py <slug>\n\n"
-                        "then commit captions/<slug>.srt (and the .vtt, "
-                        ".chapters.txt and .timing.json it writes beside it). "
-                        "This lane picks the episode up on the run after they "
-                        "land. Nothing is deleted meanwhile: the render stays "
-                        "on the R2 shelf.")
+                unblock="NOTHING TO TYPE, and this is no longer the common "
+                        "case. This lane now BUILDS a missing caption track "
+                        "itself (loop/captions_build.py) from the beat timings "
+                        "committed in audio/<slug>/beats.json, so the only way "
+                        "to reach this stop is an episode whose narration was "
+                        "never measured at all - it has no beats.json, or only "
+                        "part of one, which means it was never fully voiced. "
+                        "The next bin/batch-session.sh on the Mac narrates it, "
+                        "records the durations and commits them, after which "
+                        "this lane captions and uploads it unattended. Nothing "
+                        "is deleted meanwhile: the render stays on the R2 "
+                        "shelf.")
 
         led = ledger.load()
         when = backfill.schedule_for(led, len(take), per_week)

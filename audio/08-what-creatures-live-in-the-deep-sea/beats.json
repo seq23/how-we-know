@@ -1,312 +1,374 @@
 [
- {
-  "i": 0,
-  "segment": "zone_column",
-  "narration": "The deep sea is not an empty black room with one anglerfish in it."
- },
- {
-  "i": 1,
-  "segment": "text_beat",
-  "narration": "It is open water, canyon walls, abyssal mud, seamounts, vents, whale falls, and trenches\u2014each with a different community."
- },
- {
-  "i": 2,
-  "segment": "text_beat",
-  "narration": "What creatures live in the deep sea?"
- },
- {
-  "i": 3,
-  "segment": "checklist_reveal",
-  "narration": "The answer changes with depth and terrain. Open midwater, continental slopes, abyssal plains, seamounts, vents, seeps, whale falls, and trenches support different communities."
- },
- {
-  "i": 4,
-  "segment": "text_beat",
-  "narration": "The rest of this video follows that question through the actual environmental constraints described by NOAA, MBARI, Smithsonian, and Woods Hole sources in the companion article."
- },
- {
-  "i": 5,
-  "segment": "quote_card",
-  "narration": "Once I stopped building the list around thumbnail-friendly predators, the deep sea became much stranger: colonies, jellies, worms, microbes, scavengers, and animals that barely fit the categories we use on land."
- },
- {
-  "i": 6,
-  "segment": "stat_card",
-  "narration": "Open water below 200 meters covers an enormous volume, while the seafloor includes continental slopes, canyons, abyssal plains, seamounts and trenches."
- },
- {
-  "i": 7,
-  "segment": "text_beat",
-  "narration": "Hydrothermal vents, cold seeps and whale falls create concentrated islands of food and chemical energy within the broader food-poor deep ocean."
- },
- {
-  "i": 8,
-  "segment": "zone_column",
-  "narration": "Lanternfishes, bristlemouths, dragonfishes, squid, krill, siphonophores, jellies and zooplankton are common members of the mesopelagic community."
- },
- {
-  "i": 9,
-  "segment": "text_beat",
-  "narration": "Many rise toward the surface at night and return to depth before daylight."
- },
- {
-  "i": 10,
-  "segment": "anatomy_callout",
-  "narration": "Anglerfishes, rattails, deep-sea squid, octopuses, sea cucumbers, amphipods, sponges, corals and gelatinous animals occupy the dark water column and seafloor."
- },
- {
-  "i": 11,
-  "segment": "checklist_reveal",
-  "narration": "Many depend on marine snow, scavenging, predation or chemosynthetic food webs."
- },
- {
-  "i": 12,
-  "segment": "stat_card",
-  "narration": "Trench communities include amphipods, sea cucumbers, worms, microbes and specialized snailfishes in the shallower portion of the hadal zone."
- },
- {
-  "i": 13,
-  "segment": "text_beat",
-  "narration": "Fish appear to have a physiological depth limit near 8,400 meters, while invertebrates and microbes continue deeper."
- },
- {
-  "i": 14,
-  "segment": "contrast_pair",
-  "narration": "A common question is: Do sharks live in the deep sea? Yes."
- },
- {
-  "i": 15,
-  "segment": "text_beat",
-  "narration": "Several shark species use deep water, although sharks are not present at the greatest trench depths."
- },
- {
-  "i": 16,
-  "segment": "contrast_pair",
-  "narration": "A common question is: Are there plants in the deep sea? Photosynthetic plants cannot grow where sunlight is absent. Deep ecosystems rely on food sinking from above or on chemosynthesis."
- },
- {
-  "i": 17,
-  "segment": "definition_card",
-  "narration": "A common question is: What is the most common deep-sea fish? Bristlemouths are often described as extraordinarily abundant and may be the most numerous vertebrates on Earth."
- },
- {
-  "i": 18,
-  "segment": "checklist_reveal",
-  "narration": "A common question is: How many deep-sea species are undiscovered? No reliable exact count exists. New species and previously unseen behaviors continue to be documented."
- },
- {
-  "i": 19,
-  "segment": "process_steps",
-  "narration": "Begin in midwater with lanternfishes, bristlemouths, squid, krill, siphonophores, and jellies. Move to slopes and canyons with corals, sponges, rattails, octopuses, and crustaceans."
- },
- {
-  "i": 20,
-  "segment": "text_beat",
-  "narration": "Cross abyssal plains with sea cucumbers, brittle stars, worms, microbes, and scavengers."
- },
- {
-  "i": 21,
-  "segment": "process_steps",
-  "narration": "Visit vents and seeps where chemosynthetic microbes support tubeworms, mussels, crabs, and snails."
- },
- {
-  "i": 22,
-  "segment": "text_beat",
-  "narration": "End in trenches with amphipods, sea cucumbers, specialized snailfish, and microbial communities. The list changes because habitat matters as much as depth."
- },
- {
-  "i": 23,
-  "segment": "source_compare",
-  "narration": "A useful inventory of deep-sea life starts by separating the water column from the seafloor."
- },
- {
-  "i": 24,
-  "segment": "text_beat",
-  "narration": "In open water, animals must manage a three-dimensional world with few places to hide."
- },
- {
-  "i": 25,
-  "segment": "source_compare",
-  "narration": "Lanternfish, jellies, siphonophores, squid, crustaceans, and many small migrators move through layers of light and darkness."
- },
- {
-  "i": 26,
-  "segment": "text_beat",
-  "narration": "On the bottom, the habitat changes again. Mud, rock, coral, vents, seeps, carcasses, and trench walls support different communities."
- },
- {
-  "i": 27,
-  "segment": "source_compare",
-  "narration": "A sea cucumber processing sediment and a dragonfish hunting in midwater are both deep-sea animals, but they solve almost unrelated problems."
- },
- {
-  "i": 28,
-  "segment": "zone_column",
-  "narration": "Depth zones are useful labels, not sealed rooms. Animals migrate across boundaries."
- },
- {
-  "i": 29,
-  "segment": "text_beat",
-  "narration": "Food falls through them. Currents transport particles and larvae. A whale carcass can connect surface productivity to the abyss."
- },
- {
-  "i": 30,
-  "segment": "zone_column",
-  "narration": "Hydrothermal vents can support food webs based on chemical energy, while most of the deep ocean still depends ultimately on material produced above."
- },
- {
-  "i": 31,
-  "segment": "text_beat",
-  "narration": "Trench communities occupy steep, isolated basins rather than one continuous hadal plain."
- },
- {
-  "i": 32,
-  "segment": "zone_column",
-  "narration": "This is why a single creature list always feels incomplete. The correct mental model is a network of habitats connected vertically and horizontally."
- },
- {
-  "i": 33,
-  "segment": "evidence_chain",
-  "narration": "For retention, the episode should follow one unit of energy. Begin with surface production, let a particle sink, let a migrator carry carbon downward, let a predator take the migrator, let remains reach the bottom, and then show scavengers and microbes using what is left."
- },
- {
-  "i": 34,
-  "segment": "text_beat",
-  "narration": "The audience meets creatures along a pathway instead of hearing a catalog."
- },
- {
-  "i": 35,
-  "segment": "evidence_chain",
-  "narration": "That pathway also creates natural links to the whale-fall, midnight-zone, vent, and deep-fish episodes."
- },
- {
-  "i": 36,
-  "segment": "checklist_reveal",
-  "narration": "Any twenty-creature list will still leave out most of the deep ocean."
- },
- {
-  "i": 37,
-  "segment": "text_beat",
-  "narration": "Microbes drive chemical transformations. Tiny crustaceans dominate many samples. Delicate gelatinous animals are underrepresented when nets destroy them."
- },
- {
-  "i": 38,
-  "segment": "checklist_reveal",
-  "narration": "Burrowing animals can remain invisible to cameras. Parasites and symbionts add relationships that a species list misses entirely."
- },
- {
-  "i": 39,
-  "segment": "text_beat",
-  "narration": "The video should acknowledge that bias instead of using a handful of charismatic animals as the whole ecosystem."
- },
- {
-  "i": 40,
-  "segment": "source_compare",
-  "narration": "One short sequence can compare methods: a net catches sturdy bodies, an ROV records behavior in a narrow lighted field, acoustics reveal movement at scale, and environmental DNA detects traces without showing the animal itself."
- },
- {
-  "i": 41,
-  "segment": "text_beat",
-  "narration": "Each method sees a different ocean. The list is therefore an invitation into the habitats, not a census."
- },
- {
-  "i": 42,
-  "segment": "source_compare",
-  "narration": "That distinction matters for future automation too: new episodes should expand underrepresented roles and methods, not just repeat the creatures with the strongest thumbnails."
- },
- {
-  "i": 43,
-  "segment": "process_steps",
-  "narration": "Each habitat in this episode should open a route into the catalog."
- },
- {
-  "i": 44,
-  "segment": "text_beat",
-  "narration": "Twilight migration leads to lanternfish and bioluminescence. The midnight zone leads to anglerfish and transparent animals."
- },
- {
-  "i": 45,
-  "segment": "process_steps",
-  "narration": "The seafloor leads to whale falls. Vents lead to black smokers and yeti crabs."
- },
- {
-  "i": 46,
-  "segment": "text_beat",
-  "narration": "Trenches lead to snailfish, dumbo octopuses, and Challenger Deep. The broad episode earns watch time by answering the big question, then distributes attention to the specific videos instead of ending as an isolated list."
- },
- {
-  "i": 47,
-  "segment": "checklist_reveal",
-  "narration": "A new creature enters this catalog only when it adds a habitat, ecological role, adaptation, or evidence method that the current set does not already explain."
- },
- {
-  "i": 48,
-  "segment": "text_beat",
-  "narration": "That rule prevents automation from producing twenty near-identical predator profiles. It also means microbes, scavengers, filter feeders, migrators, symbionts, and gelatinous animals must receive space beside the familiar thumbnail species."
- },
- {
-  "i": 49,
-  "segment": "checklist_reveal",
-  "narration": "The catalog should become a better map of the ecosystem as it grows, not merely a longer list."
- },
- {
-  "i": 50,
-  "segment": "text_beat",
-  "narration": "The production queue should use that rule when it chooses the next subjects."
- },
- {
-  "i": 51,
-  "segment": "text_beat",
-  "narration": "The production queue should use that rule when it chooses the next subjects."
- },
- {
-  "i": 52,
-  "segment": "ambient_drift",
-  "narration": "Three more words are not enough; every new subject must earn its place."
- },
- {
-  "i": 53,
-  "segment": "zone_column",
-  "narration": "Use a map-like journey with a persistent depth and habitat label. Avoid rapid-fire stock montages that imply every animal shares the same water."
- },
- {
-  "i": 54,
-  "segment": "text_beat",
-  "narration": "A siphonophore in open midwater, a coral on a seamount, and a snailfish in a trench belong to different scenes."
- },
- {
-  "i": 55,
-  "segment": "zone_column",
-  "narration": "The viewer should leave with a mental map, not just twenty disconnected names."
- },
- {
-  "i": 56,
-  "segment": "definition_card",
-  "narration": "No short episode can inventory the deep sea. Many species remain undescribed, and sampling is uneven across oceans and habitats."
- },
- {
-  "i": 57,
-  "segment": "text_beat",
-  "narration": "'Lives in the deep sea' can mean a permanent resident, a daily migrant, a life stage, or an animal that ranges across zones."
- },
- {
-  "i": 58,
-  "segment": "definition_card",
-  "narration": "The script should use examples, not imply a complete census or fixed universal community."
- },
- {
-  "i": 59,
-  "segment": "zone_column",
-  "narration": "The deep sea is a set of connected neighborhoods, not one habitat."
- },
- {
-  "i": 60,
-  "segment": "text_beat",
-  "narration": "Animals move energy between them through migration, predation, scavenging, sinking particles, and chemical production."
- },
- {
-  "i": 61,
-  "segment": "zone_column",
-  "narration": "The next useful question is not only what lives down there, but where\u2014and what that place demands."
- }
+  {
+    "i": 0,
+    "segment": "zone_column",
+    "narration": "The deep sea is not an empty black room with one anglerfish in it.",
+    "seconds": 3.952
+  },
+  {
+    "i": 1,
+    "segment": "text_beat",
+    "narration": "It is open water, canyon walls, abyssal mud, seamounts, vents, whale falls, and trenches\u2014each with a different community.",
+    "seconds": 10.938666666666666
+  },
+  {
+    "i": 2,
+    "segment": "text_beat",
+    "narration": "What creatures live in the deep sea?",
+    "seconds": 2.32
+  },
+  {
+    "i": 3,
+    "segment": "checklist_reveal",
+    "narration": "The answer changes with depth and terrain. Open midwater, continental slopes, abyssal plains, seamounts, vents, seeps, whale falls, and trenches support different communities.",
+    "seconds": 13.413333333333334
+  },
+  {
+    "i": 4,
+    "segment": "text_beat",
+    "narration": "The rest of this video follows that question through the actual environmental constraints described by NOAA, MBARI, Smithsonian, and Woods Hole sources in the companion article.",
+    "seconds": 10.48
+  },
+  {
+    "i": 5,
+    "segment": "quote_card",
+    "narration": "Once I stopped building the list around thumbnail-friendly predators, the deep sea became much stranger: colonies, jellies, worms, microbes, scavengers, and animals that barely fit the categories we use on land.",
+    "seconds": 12.304
+  },
+  {
+    "i": 6,
+    "segment": "stat_card",
+    "narration": "Open water below 200 meters covers an enormous volume, while the seafloor includes continental slopes, canyons, abyssal plains, seamounts and trenches.",
+    "seconds": 12.165333333333333
+  },
+  {
+    "i": 7,
+    "segment": "text_beat",
+    "narration": "Hydrothermal vents, cold seeps and whale falls create concentrated islands of food and chemical energy within the broader food-poor deep ocean.",
+    "seconds": 9.328
+  },
+  {
+    "i": 8,
+    "segment": "zone_column",
+    "narration": "Lanternfishes, bristlemouths, dragonfishes, squid, krill, siphonophores, jellies and zooplankton are common members of the mesopelagic community.",
+    "seconds": 12.709333333333333
+  },
+  {
+    "i": 9,
+    "segment": "text_beat",
+    "narration": "Many rise toward the surface at night and return to depth before daylight.",
+    "seconds": 4.464
+  },
+  {
+    "i": 10,
+    "segment": "anatomy_callout",
+    "narration": "Anglerfishes, rattails, deep-sea squid, octopuses, sea cucumbers, amphipods, sponges, corals and gelatinous animals occupy the dark water column and seafloor.",
+    "seconds": 13.306666666666667
+  },
+  {
+    "i": 11,
+    "segment": "checklist_reveal",
+    "narration": "Many depend on marine snow, scavenging, predation or chemosynthetic food webs.",
+    "seconds": 7.216
+  },
+  {
+    "i": 12,
+    "segment": "stat_card",
+    "narration": "Trench communities include amphipods, sea cucumbers, worms, microbes and specialized snailfishes in the shallower portion of the hadal zone.",
+    "seconds": 11.269333333333334
+  },
+  {
+    "i": 13,
+    "segment": "text_beat",
+    "narration": "Fish appear to have a physiological depth limit near 8,400 meters, while invertebrates and microbes continue deeper.",
+    "seconds": 8.168
+  },
+  {
+    "i": 14,
+    "segment": "contrast_pair",
+    "narration": "A common question is: Do sharks live in the deep sea? Yes.",
+    "seconds": 4.197333333333333
+  },
+  {
+    "i": 15,
+    "segment": "text_beat",
+    "narration": "Several shark species use deep water, although sharks are not present at the greatest trench depths.",
+    "seconds": 5.872
+  },
+  {
+    "i": 16,
+    "segment": "contrast_pair",
+    "narration": "A common question is: Are there plants in the deep sea? Photosynthetic plants cannot grow where sunlight is absent. Deep ecosystems rely on food sinking from above or on chemosynthesis.",
+    "seconds": 13.296
+  },
+  {
+    "i": 17,
+    "segment": "definition_card",
+    "narration": "A common question is: What is the most common deep-sea fish? Bristlemouths are often described as extraordinarily abundant and may be the most numerous vertebrates on Earth.",
+    "seconds": 11.024
+  },
+  {
+    "i": 18,
+    "segment": "checklist_reveal",
+    "narration": "A common question is: How many deep-sea species are undiscovered? No reliable exact count exists. New species and previously unseen behaviors continue to be documented.",
+    "seconds": 11.898666666666667
+  },
+  {
+    "i": 19,
+    "segment": "process_steps",
+    "narration": "Begin in midwater with lanternfishes, bristlemouths, squid, krill, siphonophores, and jellies. Move to slopes and canyons with corals, sponges, rattails, octopuses, and crustaceans.",
+    "seconds": 11.728
+  },
+  {
+    "i": 20,
+    "segment": "text_beat",
+    "narration": "Cross abyssal plains with sea cucumbers, brittle stars, worms, microbes, and scavengers.",
+    "seconds": 8.997333333333334
+  },
+  {
+    "i": 21,
+    "segment": "process_steps",
+    "narration": "Visit vents and seeps where chemosynthetic microbes support tubeworms, mussels, crabs, and snails.",
+    "seconds": 7.866666666666666
+  },
+  {
+    "i": 22,
+    "segment": "text_beat",
+    "narration": "End in trenches with amphipods, sea cucumbers, specialized snailfish, and microbial communities. The list changes because habitat matters as much as depth.",
+    "seconds": 11.056
+  },
+  {
+    "i": 23,
+    "segment": "source_compare",
+    "narration": "A useful inventory of deep-sea life starts by separating the water column from the seafloor.",
+    "seconds": 5.562666666666667
+  },
+  {
+    "i": 24,
+    "segment": "text_beat",
+    "narration": "In open water, animals must manage a three-dimensional world with few places to hide.",
+    "seconds": 5.264
+  },
+  {
+    "i": 25,
+    "segment": "source_compare",
+    "narration": "Lanternfish, jellies, siphonophores, squid, crustaceans, and many small migrators move through layers of light and darkness.",
+    "seconds": 9.050666666666666
+  },
+  {
+    "i": 26,
+    "segment": "text_beat",
+    "narration": "On the bottom, the habitat changes again. Mud, rock, coral, vents, seeps, carcasses, and trench walls support different communities.",
+    "seconds": 8.314666666666668
+  },
+  {
+    "i": 27,
+    "segment": "source_compare",
+    "narration": "A sea cucumber processing sediment and a dragonfish hunting in midwater are both deep-sea animals, but they solve almost unrelated problems.",
+    "seconds": 8.869333333333334
+  },
+  {
+    "i": 28,
+    "segment": "zone_column",
+    "narration": "Depth zones are useful labels, not sealed rooms. Animals migrate across boundaries.",
+    "seconds": 6.010666666666666
+  },
+  {
+    "i": 29,
+    "segment": "text_beat",
+    "narration": "Food falls through them. Currents transport particles and larvae. A whale carcass can connect surface productivity to the abyss.",
+    "seconds": 8.528
+  },
+  {
+    "i": 30,
+    "segment": "zone_column",
+    "narration": "Hydrothermal vents can support food webs based on chemical energy, while most of the deep ocean still depends ultimately on material produced above.",
+    "seconds": 10.405333333333333
+  },
+  {
+    "i": 31,
+    "segment": "text_beat",
+    "narration": "Trench communities occupy steep, isolated basins rather than one continuous hadal plain.",
+    "seconds": 6.352
+  },
+  {
+    "i": 32,
+    "segment": "zone_column",
+    "narration": "This is why a single creature list always feels incomplete. The correct mental model is a network of habitats connected vertically and horizontally.",
+    "seconds": 9.146666666666667
+  },
+  {
+    "i": 33,
+    "segment": "evidence_chain",
+    "narration": "For retention, the episode should follow one unit of energy. Begin with surface production, let a particle sink, let a migrator carry carbon downward, let a predator take the migrator, let remains reach the bottom, and then show scavengers and microbes using what is left.",
+    "seconds": 17.061333333333334
+  },
+  {
+    "i": 34,
+    "segment": "text_beat",
+    "narration": "The audience meets creatures along a pathway instead of hearing a catalog.",
+    "seconds": 4.24
+  },
+  {
+    "i": 35,
+    "segment": "evidence_chain",
+    "narration": "That pathway also creates natural links to the whale-fall, midnight-zone, vent, and deep-fish episodes.",
+    "seconds": 6.949333333333334
+  },
+  {
+    "i": 36,
+    "segment": "checklist_reveal",
+    "narration": "Any twenty-creature list will still leave out most of the deep ocean.",
+    "seconds": 4.026666666666666
+  },
+  {
+    "i": 37,
+    "segment": "text_beat",
+    "narration": "Microbes drive chemical transformations. Tiny crustaceans dominate many samples. Delicate gelatinous animals are underrepresented when nets destroy them.",
+    "seconds": 10.96
+  },
+  {
+    "i": 38,
+    "segment": "checklist_reveal",
+    "narration": "Burrowing animals can remain invisible to cameras. Parasites and symbionts add relationships that a species list misses entirely.",
+    "seconds": 8.328
+  },
+  {
+    "i": 39,
+    "segment": "text_beat",
+    "narration": "The video should acknowledge that bias instead of using a handful of charismatic animals as the whole ecosystem.",
+    "seconds": 7.28
+  },
+  {
+    "i": 40,
+    "segment": "source_compare",
+    "narration": "One short sequence can compare methods: a net catches sturdy bodies, an ROV records behavior in a narrow lighted field, acoustics reveal movement at scale, and environmental DNA detects traces without showing the animal itself.",
+    "seconds": 16.496
+  },
+  {
+    "i": 41,
+    "segment": "text_beat",
+    "narration": "Each method sees a different ocean. The list is therefore an invitation into the habitats, not a census.",
+    "seconds": 7.152
+  },
+  {
+    "i": 42,
+    "segment": "source_compare",
+    "narration": "That distinction matters for future automation too: new episodes should expand underrepresented roles and methods, not just repeat the creatures with the strongest thumbnails.",
+    "seconds": 10.704
+  },
+  {
+    "i": 43,
+    "segment": "process_steps",
+    "narration": "Each habitat in this episode should open a route into the catalog.",
+    "seconds": 3.952
+  },
+  {
+    "i": 44,
+    "segment": "text_beat",
+    "narration": "Twilight migration leads to lanternfish and bioluminescence. The midnight zone leads to anglerfish and transparent animals.",
+    "seconds": 11.002666666666666
+  },
+  {
+    "i": 45,
+    "segment": "process_steps",
+    "narration": "The seafloor leads to whale falls. Vents lead to black smokers and yeti crabs.",
+    "seconds": 5.658666666666667
+  },
+  {
+    "i": 46,
+    "segment": "text_beat",
+    "narration": "Trenches lead to snailfish, dumbo octopuses, and Challenger Deep. The broad episode earns watch time by answering the big question, then distributes attention to the specific videos instead of ending as an isolated list.",
+    "seconds": 13.712
+  },
+  {
+    "i": 47,
+    "segment": "checklist_reveal",
+    "narration": "A new creature enters this catalog only when it adds a habitat, ecological role, adaptation, or evidence method that the current set does not already explain.",
+    "seconds": 9.882666666666667
+  },
+  {
+    "i": 48,
+    "segment": "text_beat",
+    "narration": "That rule prevents automation from producing twenty near-identical predator profiles. It also means microbes, scavengers, filter feeders, migrators, symbionts, and gelatinous animals must receive space beside the familiar thumbnail species.",
+    "seconds": 15.184
+  },
+  {
+    "i": 49,
+    "segment": "checklist_reveal",
+    "narration": "The catalog should become a better map of the ecosystem as it grows, not merely a longer list.",
+    "seconds": 5.52
+  },
+  {
+    "i": 50,
+    "segment": "text_beat",
+    "narration": "The production queue should use that rule when it chooses the next subjects.",
+    "seconds": 3.952
+  },
+  {
+    "i": 51,
+    "segment": "text_beat",
+    "narration": "The production queue should use that rule when it chooses the next subjects.",
+    "seconds": 4.048
+  },
+  {
+    "i": 52,
+    "segment": "ambient_drift",
+    "narration": "Three more words are not enough; every new subject must earn its place.",
+    "seconds": 4.549333333333333
+  },
+  {
+    "i": 53,
+    "segment": "zone_column",
+    "narration": "Use a map-like journey with a persistent depth and habitat label. Avoid rapid-fire stock montages that imply every animal shares the same water.",
+    "seconds": 8.432
+  },
+  {
+    "i": 54,
+    "segment": "text_beat",
+    "narration": "A siphonophore in open midwater, a coral on a seamount, and a snailfish in a trench belong to different scenes.",
+    "seconds": 7.397333333333333
+  },
+  {
+    "i": 55,
+    "segment": "zone_column",
+    "narration": "The viewer should leave with a mental map, not just twenty disconnected names.",
+    "seconds": 3.962666666666667
+  },
+  {
+    "i": 56,
+    "segment": "definition_card",
+    "narration": "No short episode can inventory the deep sea. Many species remain undescribed, and sampling is uneven across oceans and habitats.",
+    "seconds": 8.634666666666666
+  },
+  {
+    "i": 57,
+    "segment": "text_beat",
+    "narration": "'Lives in the deep sea' can mean a permanent resident, a daily migrant, a life stage, or an animal that ranges across zones.",
+    "seconds": 7.8133333333333335
+  },
+  {
+    "i": 58,
+    "segment": "definition_card",
+    "narration": "The script should use examples, not imply a complete census or fixed universal community.",
+    "seconds": 6.010666666666666
+  },
+  {
+    "i": 59,
+    "segment": "zone_column",
+    "narration": "The deep sea is a set of connected neighborhoods, not one habitat.",
+    "seconds": 4.208
+  },
+  {
+    "i": 60,
+    "segment": "text_beat",
+    "narration": "Animals move energy between them through migration, predation, scavenging, sinking particles, and chemical production.",
+    "seconds": 7.258666666666667
+  },
+  {
+    "i": 61,
+    "segment": "zone_column",
+    "narration": "The next useful question is not only what lives down there, but where\u2014and what that place demands.",
+    "seconds": 5.914666666666666
+  }
 ]
