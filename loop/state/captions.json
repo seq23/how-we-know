@@ -97,7 +97,7 @@
       "track_kind": "standard",
       "source": "inserted",
       "recorded_at": "2026-09-03T17:28:06+00:00",
-      "verified_at": "2026-09-04T19:46:12+00:00"
+      "verified_at": "2026-09-08T15:10:51+00:00"
     },
     "G1TqXmf36Qo": {
       "slug": "09-what-is-the-scariest-deep-sea-creature",
@@ -108,7 +108,7 @@
       "track_kind": "standard",
       "source": "inserted",
       "recorded_at": "2026-09-03T17:28:07+00:00",
-      "verified_at": "2026-09-04T20:34:36+00:00"
+      "verified_at": "2026-09-08T15:10:52+00:00"
     },
     "OdYunlbB73g": {
       "slug": "19-what-is-the-deepest-fish-ever-recorded",
@@ -260,18 +260,22 @@
       "cues": 169,
       "track_kind": "standard",
       "source": "inserted",
-      "recorded_at": "2026-09-07T15:18:09+00:00"
-    }
-  },
-  "blocked": {
+      "recorded_at": "2026-09-07T15:18:09+00:00",
+      "verified_at": "2026-09-08T15:10:51+00:00"
+    },
     "kTBlLeWdi4g": {
       "slug": "what-is-a-semiconductor-made-of",
-      "reason": "QUOTA_DEFERRED",
-      "since": "2026-09-07T15:18:08+00:00",
-      "sha256": "94d50660b07ad2a487ce70e22a229c0309ccb9f15536292e59c5a25a315bf4b9"
+      "caption_id": "AUieDaaWEHPFfUnKBfL-tClMUN4jIapZMqRokTpP-HfwpeMQTpcWB9-0",
+      "language": "en",
+      "srt_sha256": "94d50660b07ad2a487ce70e22a229c0309ccb9f15536292e59c5a25a315bf4b9",
+      "cues": 172,
+      "track_kind": "standard",
+      "source": "inserted",
+      "recorded_at": "2026-09-08T15:10:51+00:00"
     }
   },
-  "updated": "2026-09-07T15:27:21+00:00",
+  "blocked": {},
+  "updated": "2026-09-08T15:10:52+00:00",
   "token_scopes": [],
   "token_has_force_ssl": true
 }
