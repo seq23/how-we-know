@@ -223,6 +223,16 @@
       "why": "Every queued episode either carries no [HUMAN] beat or already traces to pov/pov-assignments.json. The lane is FINISHED, not blocked: it acts again the moment an episode is authored with an untraced first-person beat.",
       "max_consecutive": 10,
       "escalation": "Ten runs with nothing to trace while new episodes are being authored means this lane can no longer see them - check its 'examined N queued episode(s)' note against the real queue size."
+    },
+    "CAPTIONS_BEFORE_AIRDATE": {
+      "why": "The videos are uploaded PRIVATE with a future airdate, their .srt files are ready, and the daily reach lane inserts tracks in turn. Nothing is missing and nothing is late; the validator turns red on its own a fixed number of hours before each one airs, which is the real deadline. This is the state of a queue that is ahead of itself.",
+      "max_consecutive": 7,
+      "escalation": "Seven days of the same videos waiting for a track they already have the source for means the reach lane is not inserting - check its quota reserve, and that youtube.force-ssl is still on the credential."
+    },
+    "LOCALIZE_BEFORE_AIRDATE": {
+      "why": "Same shape, for translated titles and descriptions: private, dated in the future, and taken in turn by the daily localize lane. The validator goes red on its own hours before air, while a lane cycle is still left to fix it.",
+      "max_consecutive": 7,
+      "escalation": "Seven days of the same videos unlocalized means the localize lane is not acting - check OPENROUTER credit and the daily quota reserve."
     }
   },
   "owner_action": {
@@ -391,6 +401,7 @@
     "ANALYTICS_HTTP_4*": "A 4xx is this repo's request, not Google's server - a bad metric combination or a scope. Retrying an identical bad request forever is the definition of an inert lane.",
     "SHORTS_SHELVED_BUT_UNVERIFIED": "A Short is on the R2 shelf whose .short.json receipt is not. The receipt is the only record of which beats it used and who is credited for them, and public-domain attribution is the one thing this pipeline may not drop. An empty shelf is self-resolving; this is a broken push wearing the same shape.",
     "POV_UNREPAIRABLE": "An untraced [HUMAN] beat whose sentence matches no beat in plans/<slug>.json. The script and the frozen plan have diverged, so the audio the words belong to cannot be identified and editing one without the other would make the captions state words the voice never said.",
-    "POV_REPAIR_EXAMINED_NOTHING": "The POV repair lane could not read the publish queue, so it examined zero episodes. A guard that examines nothing must hard-fail."
+    "POV_REPAIR_EXAMINED_NOTHING": "The POV repair lane could not read the publish queue, so it examined zero episodes. A guard that examines nothing must hard-fail.",
+    "CAPTION_SOURCE_HELD": "Live videos with no captions/<slug>.srt at all. Reaching here means an episode that is ALREADY PUBLIC has no caption source, which is past the point where any lane can prevent harm - loop/captions_build.py builds a track for anything with committed beat timings, so this is an episode whose narration was never finished. It is deliberately reported rather than double-alarmed for holds that are already issued, and it fails outright for anything not covered by one."
   }
 }
