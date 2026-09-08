@@ -195,8 +195,32 @@ def derive_spec(slug: str) -> dict | None:
     hits = [subj for subj in have
             if any(t.rstrip("*").lower() in topic
                    for t in PMI.TERMS.get(subj, []))]
-    if len(hits) != 1 or not hook:
+    if not hook:
+        # Nothing to say. This is the one honest None: route B below is a
+        # typographic card and it has no words to set.
         return None
+    if len(hits) != 1:
+        # NO PICTURE, RATHER THAN NO THUMBNAIL.
+        #
+        # Ambiguity here used to return None, and None means build_one raises
+        # and the episode has no thumbnail — which means backfill.local_assets()
+        # never counts it as pending and it sits rendered and un-uploadable
+        # forever. what-is-kevlar-made-of was exactly that on 2026-09-08: a
+        # finished, captioned, shelved episode blocked by a 200 KB JPEG that
+        # nothing was ever going to build.
+        #
+        # Route B already exists for "no verified image matches" and needs no
+        # picture at all — only the episode's own claim and its own name. It
+        # asserts nothing, which is the whole point of it, so it is available
+        # here too. What must NEVER happen is picking one of several ambiguous
+        # images: a welding arc on an episode about Damascus steel is the
+        # lie-told-in-pictures this gate exists to prevent, and that refusal is
+        # unchanged. `subject: None` is what routes build_one to the type.
+        return {"kicker": slug.replace("-", " ").title(),
+                "hook": hook, "subject": None, "derived": True,
+                "why_no_image": (f"{len(hits)} verified public-domain image(s) "
+                                 f"match this episode's declared topic; a "
+                                 f"thumbnail needs exactly one")}
     best = hits[0]
     return {"kicker": have[best].get("label", best.replace("-", " ")).title(),
             "hook": hook, "subject": best, "derived": True}
@@ -255,6 +279,11 @@ def build_one(slug: str) -> str:
             f"says. Add an image for its subject, or a SPECS entry. Refusing "
             f"to ship a thumbnail whose picture is unrelated to the episode.")
     try:
+        if not spec.get("subject"):
+            # Declared imageless by derive_spec. Raising here is how it reaches
+            # the typographic route below, which is the same path a missing
+            # image already took.
+            raise KeyError(spec.get("why_no_image", "no subject resolved"))
         assets, mid = _assets_for(spec["subject"])
         thumbs.chosen.clear()
         thumbs.used.clear()

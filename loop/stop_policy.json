@@ -180,6 +180,11 @@
       "why": "A second (or third, or fourth) guarded lane stopping on the SAME breaker trip another lane has already raised. It is just as halted - nothing publishes - but one flag is one problem, and four red jobs a day for it is how a real alarm gets tuned out. The breaker is re-tested at the top of every guarded lane and closes itself the moment the cause has passed, so this also disappears on its own.",
       "max_consecutive": 14,
       "escalation": "Two weeks of guarded lanes stopping on one trip means the breaker is not being cleared by anything - the validators are still failing, or the cause is a strike or a manual trip that only she can clear. The lane that OWNS the alarm has been red that whole time; go and read that one."
+    },
+    "POV_ALL_TRACED": {
+      "why": "Every queued episode either carries no [HUMAN] beat or already traces to pov/pov-assignments.json. The lane is FINISHED, not blocked: it acts again the moment an episode is authored with an untraced first-person beat.",
+      "max_consecutive": 10,
+      "escalation": "Ten runs with nothing to trace while new episodes are being authored means this lane can no longer see them - check its 'examined N queued episode(s)' note against the real queue size."
     }
   },
   "owner_action": {
@@ -346,6 +351,8 @@
     "OPENROUTER_ERROR": "An unclassified model-provider error. Unclassified means unexamined; it must be seen once so it can be classified.",
     "OPENROUTER_MODEL_UNKNOWN": "The configured model does not exist at the provider. A configuration defect.",
     "ANALYTICS_HTTP_4*": "A 4xx is this repo's request, not Google's server - a bad metric combination or a scope. Retrying an identical bad request forever is the definition of an inert lane.",
-    "SHORTS_SHELVED_BUT_UNVERIFIED": "A Short is on the R2 shelf whose .short.json receipt is not. The receipt is the only record of which beats it used and who is credited for them, and public-domain attribution is the one thing this pipeline may not drop. An empty shelf is self-resolving; this is a broken push wearing the same shape."
+    "SHORTS_SHELVED_BUT_UNVERIFIED": "A Short is on the R2 shelf whose .short.json receipt is not. The receipt is the only record of which beats it used and who is credited for them, and public-domain attribution is the one thing this pipeline may not drop. An empty shelf is self-resolving; this is a broken push wearing the same shape.",
+    "POV_UNREPAIRABLE": "An untraced [HUMAN] beat whose sentence matches no beat in plans/<slug>.json. The script and the frozen plan have diverged, so the audio the words belong to cannot be identified and editing one without the other would make the captions state words the voice never said.",
+    "POV_REPAIR_EXAMINED_NOTHING": "The POV repair lane could not read the publish queue, so it examined zero episodes. A guard that examines nothing must hard-fail."
   }
 }
