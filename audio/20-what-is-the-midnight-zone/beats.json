@@ -1,292 +1,350 @@
 [
- {
-  "i": 0,
-  "segment": "depth_descent",
-  "narration": "At about 1,000 meters, the last sunlight is gone. The midnight zone continues to roughly 4,000 meters, holding around 70 percent of the ocean's water in permanent darkness."
- },
- {
-  "i": 1,
-  "segment": "text_beat",
-  "narration": "What is the midnight zone?"
- },
- {
-  "i": 2,
-  "segment": "zone_column",
-  "narration": "Ocean zones are useful boundaries, not physical walls. NOAA places the midnight, or bathypelagic, zone between roughly 1,000 and 4,000 meters."
- },
- {
-  "i": 3,
-  "segment": "text_beat",
-  "narration": "Above it, the twilight zone retains faint surface light. Below about 1,000 meters, sunlight is effectively absent."
- },
- {
-  "i": 4,
-  "segment": "zone_column",
-  "narration": "Below 4,000 meters, the abyssal zone begins in the common five-zone scheme."
- },
- {
-  "i": 5,
-  "segment": "text_beat",
-  "narration": "The seafloor may intersect any of these depth bands depending on local topography, so midnight zone does not automatically mean bottom."
- },
- {
-  "i": 6,
-  "segment": "zone_column",
-  "narration": "Over a trench, it is open water far above the floor. Along a continental slope, it may include benthic habitat."
- },
- {
-  "i": 7,
-  "segment": "text_beat",
-  "narration": "The zone is cold, under high pressure, and disconnected from direct photosynthesis."
- },
- {
-  "i": 8,
-  "segment": "zone_column",
-  "narration": "Yet it is not empty. Fishes, squids, jellies, crustaceans, microbes, and drifting gelatinous animals occupy the water."
- },
- {
-  "i": 9,
-  "segment": "text_beat",
-  "narration": "The first open loop is energy: if sunlight cannot support local plant growth, what keeps the food web running?"
- },
- {
-  "i": 10,
-  "segment": "quote_card",
-  "narration": "The name 'midnight zone' sounds like a clean border. The sources use approximate depths, and the real water column changes continuously rather than flipping a switch at exactly one kilometer."
- },
- {
-  "i": 11,
-  "segment": "text_beat",
-  "narration": "The surface ocean captures solar energy through photosynthesis. Some of that production sinks as marine snow: fragments of organisms, mucus, fecal pellets, and mineral particles."
- },
- {
-  "i": 12,
-  "segment": "text_beat",
-  "narration": "Larger packages arrive as carcasses. Animals also transport energy through vertical migration."
- },
- {
-  "i": 13,
-  "segment": "ambient_drift",
-  "narration": "Many organisms feed closer to the surface at night and descend during the day, where midnight-zone predators can intercept them or consume their waste."
- },
- {
-  "i": 14,
-  "segment": "text_beat",
-  "narration": "The transfer is inefficient. NOAA notes that only a small fraction of primary production reaches the deep bottom, and food availability generally declines with depth."
- },
- {
-  "i": 15,
-  "segment": "checklist_reveal",
-  "narration": "That scarcity favors slow metabolism, patient ambush, expandable stomachs, and the ability to exploit meals of unusual size."
- },
- {
-  "i": 16,
-  "segment": "text_beat",
-  "narration": "It does not mean every animal is starving at every moment. Currents, slopes, migrations, and falls create patches."
- },
- {
-  "i": 17,
-  "segment": "checklist_reveal",
-  "narration": "The next loop is vision: the sun is gone, yet the zone may contain more biological flashes than any daylight habitat."
- },
- {
-  "i": 18,
-  "segment": "light_attenuation",
-  "narration": "MBARI's surveys found that light production is widespread in the water column, including the depth range of the midnight zone."
- },
- {
-  "i": 19,
-  "segment": "text_beat",
-  "narration": "Photophores beneath a fish can erase its silhouette against faint bioluminescent background or downwelling remnants at the upper boundary."
- },
- {
-  "i": 20,
-  "segment": "light_attenuation",
-  "narration": "A lure can bring prey within striking distance. A shrimp can eject luminous material."
- },
- {
-  "i": 21,
-  "segment": "text_beat",
-  "narration": "A dragonfish can use red light invisible to many prey. Large eyes are useful for detecting faint flashes, while some animals reduce vision and depend more on touch or chemical cues."
- },
- {
-  "i": 22,
-  "segment": "light_attenuation",
-  "narration": "The zone is therefore dark from a human sunlight perspective but active with controlled light."
- },
- {
-  "i": 23,
-  "segment": "text_beat",
-  "narration": "A submersible's lamps can overwhelm that natural scene, causing animals to flee or altering what the camera records."
- },
- {
-  "i": 24,
-  "segment": "light_attenuation",
-  "narration": "Low-light systems and brief dark observations help reveal the real signals. The unresolved question is pressure: from top to bottom of the zone, the external load roughly quadruples."
- },
- {
-  "i": 25,
-  "segment": "magnitude_bar",
-  "narration": "At 1,000 meters, pressure is roughly one hundred atmospheres. Near 4,000 meters, it approaches four hundred."
- },
- {
-  "i": 26,
-  "segment": "text_beat",
-  "narration": "Temperature is usually cold, but oxygen and currents vary among ocean basins."
- },
- {
-  "i": 27,
-  "segment": "magnitude_bar",
-  "narration": "Animals do not experience the midnight zone as a uniform room. Many move vertically."
- },
- {
-  "i": 28,
-  "segment": "text_beat",
-  "narration": "Species have narrower preferred ranges. Seamounts and slopes interrupt open water. Hydrothermal vents can add local chemical energy on the seafloor."
- },
- {
-  "i": 29,
-  "segment": "magnitude_bar",
-  "narration": "This is why statements such as the largest habitat on Earth need careful definitions: the deep ocean is unquestionably vast, but zone area, volume, and seafloor habitat are different measurements."
- },
- {
-  "i": 30,
-  "segment": "definition_card",
-  "narration": "The stable definition is depth and light. The bathypelagic zone spans about 1,000 to 4,000 meters and receives no sunlight."
- },
- {
-  "i": 31,
-  "segment": "text_beat",
-  "narration": "Its food webs depend on imported organic matter, predation, migration, and local chemosynthetic sources."
- },
- {
-  "i": 32,
-  "segment": "definition_card",
-  "narration": "Its animals turn darkness into information through bioluminescence. This episode closes the first twenty-video foundation with a map rather than a monster, giving every creature episode a place in the water column."
- },
- {
-  "i": 33,
-  "segment": "stat_card",
-  "narration": "There is no sunrise in the bathypelagic zone. Food arrives as sinking particles, falling carcasses, migrating animals, and prey."
- },
- {
-  "i": 34,
-  "segment": "text_beat",
-  "narration": "Light comes from organisms. Pressure ranges roughly from 100 to 400 atmospheres across the common 1,000-to-4,000-meter definition, while temperature is often near 4\u00b0C."
- },
- {
-  "i": 35,
-  "segment": "stat_card",
-  "narration": "Animals still need to find food, avoid predators, and reproduce. They use bioluminescence, sensitive eyes, sound, smell, patience, and low-energy movement in different combinations."
- },
- {
-  "i": 36,
-  "segment": "text_beat",
-  "narration": "The midnight zone is not isolated from the sunlit ocean even though sunlight does not reach it."
- },
- {
-  "i": 37,
-  "segment": "text_beat",
-  "narration": "Sinking particles carry carbon downward. Migrating animals feed near the surface and return to depth."
- },
- {
-  "i": 38,
-  "segment": "ambient_drift",
-  "narration": "Predators intercept that movement. Carcasses and waste continue toward the bottom. The zone is therefore dark but energetically connected to processes above."
- },
- {
-  "i": 39,
-  "segment": "ambient_drift",
-  "narration": "Its enormous volume also makes observation deceptive."
- },
- {
-  "i": 40,
-  "segment": "source_compare",
-  "narration": "An ROV or submersible illuminates a tiny moving window. Animals can avoid the light, approach it, or remain beyond camera range."
- },
- {
-  "i": 41,
-  "segment": "text_beat",
-  "narration": "Nets sample different organisms and can damage delicate bodies. Acoustic instruments detect broader patterns but cannot always identify species."
- },
- {
-  "i": 42,
-  "segment": "source_compare",
-  "narration": "A complete picture requires those methods together. The humanized episode should make the machinery visible for a moment so the viewer understands why a habitat containing so much water can still be described from relatively narrow observations."
- },
- {
-  "i": 43,
-  "segment": "text_beat",
-  "narration": "The final master should show the ROV lights briefly and explain that the camera changes the scene it records."
- },
- {
-  "i": 44,
-  "segment": "text_beat",
-  "narration": "That makes the footage feel more honest and gives context to animal behavior near the vehicle."
- },
- {
-  "i": 45,
-  "segment": "ambient_drift",
-  "narration": "The zone boundaries should remain approximate labels, while the depth gauge moves continuously."
- },
- {
-  "i": 46,
-  "segment": "text_beat",
-  "narration": "The viewer leaves with a habitat, not a set of artificial boxes."
- },
- {
-  "i": 47,
-  "segment": "ambient_drift",
-  "narration": "A single dive crosses only a narrow path through a zone spanning thousands of meters. Conditions can change horizontally as well as vertically."
- },
- {
-  "i": 48,
-  "segment": "checklist_reveal",
-  "narration": "Oxygen, currents, particles, and animal density vary. The episode should not let one beautiful expedition clip become the visual definition of the entire midnight zone."
- },
- {
-  "i": 49,
-  "segment": "text_beat",
-  "narration": "Use multiple documented settings or clearly label the footage as one observation."
- },
- {
-  "i": 50,
-  "segment": "text_beat",
-  "narration": "That is the image to leave behind."
- },
- {
-  "i": 51,
-  "segment": "depth_descent",
-  "narration": "Give the viewer a slow hour rather than a fast zone list."
- },
- {
-  "i": 52,
-  "segment": "text_beat",
-  "narration": "Follow a particle of marine snow, a migrating animal passing through, a flash of bioluminescence, and a predator waiting in darkness."
- },
- {
-  "i": 53,
-  "segment": "depth_descent",
-  "narration": "The pace should be quieter than the previous record video. Keep the depth gauge moving slowly to reinforce that the zone itself spans three vertical kilometers."
- },
- {
-  "i": 54,
-  "segment": "stat_card",
-  "narration": "The 1,000- and 4,000-meter boundaries are conventional approximations. Local light, temperature, oxygen, currents, and seafloor depth vary."
- },
- {
-  "i": 55,
-  "segment": "contrast_pair",
-  "narration": "WHOI describes the midnight zone as roughly 70 percent of all seawater, but that does not mean 70 percent of ocean species live there."
- },
- {
-  "i": 56,
-  "segment": "text_beat",
-  "narration": "ROV lights can also alter behavior, so what cameras observe is not a perfectly neutral window."
- },
- {
-  "i": 57,
-  "segment": "zone_column",
-  "narration": "The midnight zone is not empty darkness. It is the largest dark habitat on the planet, full of signals our eyes usually miss and lives paced by food arriving from somewhere else. Its boundaries are approximate. Its scale is not."
- }
+  {
+    "i": 0,
+    "segment": "depth_descent",
+    "narration": "At about 1,000 meters, the last sunlight is gone. The midnight zone continues to roughly 4,000 meters, holding around 70 percent of the ocean's water in permanent darkness.",
+    "seconds": 11.685333333333332
+  },
+  {
+    "i": 1,
+    "segment": "text_beat",
+    "narration": "What is the midnight zone?",
+    "seconds": 2.2346666666666666
+  },
+  {
+    "i": 2,
+    "segment": "zone_column",
+    "narration": "Ocean zones are useful boundaries, not physical walls. NOAA places the midnight, or bathypelagic, zone between roughly 1,000 and 4,000 meters.",
+    "seconds": 11.226666666666667
+  },
+  {
+    "i": 3,
+    "segment": "text_beat",
+    "narration": "Above it, the twilight zone retains faint surface light. Below about 1,000 meters, sunlight is effectively absent.",
+    "seconds": 8.176
+  },
+  {
+    "i": 4,
+    "segment": "zone_column",
+    "narration": "Below 4,000 meters, the abyssal zone begins in the common five-zone scheme.",
+    "seconds": 6.373333333333333
+  },
+  {
+    "i": 5,
+    "segment": "text_beat",
+    "narration": "The seafloor may intersect any of these depth bands depending on local topography, so midnight zone does not automatically mean bottom.",
+    "seconds": 8.325333333333333
+  },
+  {
+    "i": 6,
+    "segment": "zone_column",
+    "narration": "Over a trench, it is open water far above the floor. Along a continental slope, it may include benthic habitat.",
+    "seconds": 8.104
+  },
+  {
+    "i": 7,
+    "segment": "text_beat",
+    "narration": "The zone is cold, under high pressure, and disconnected from direct photosynthesis.",
+    "seconds": 5.082666666666666
+  },
+  {
+    "i": 8,
+    "segment": "zone_column",
+    "narration": "Yet it is not empty. Fishes, squids, jellies, crustaceans, microbes, and drifting gelatinous animals occupy the water.",
+    "seconds": 8.24
+  },
+  {
+    "i": 9,
+    "segment": "text_beat",
+    "narration": "The first open loop is energy: if sunlight cannot support local plant growth, what keeps the food web running?",
+    "seconds": 6.874666666666666
+  },
+  {
+    "i": 10,
+    "segment": "quote_card",
+    "narration": "The name 'midnight zone' sounds like a clean border. The sources use approximate depths, and the real water column changes continuously rather than flipping a switch at exactly one kilometer.",
+    "seconds": 11.76
+  },
+  {
+    "i": 11,
+    "segment": "text_beat",
+    "narration": "The surface ocean captures solar energy through photosynthesis. Some of that production sinks as marine snow: fragments of organisms, mucus, fecal pellets, and mineral particles.",
+    "seconds": 11.653333333333334
+  },
+  {
+    "i": 12,
+    "segment": "text_beat",
+    "narration": "Larger packages arrive as carcasses. Animals also transport energy through vertical migration.",
+    "seconds": 6.2026666666666666
+  },
+  {
+    "i": 13,
+    "segment": "ambient_drift",
+    "narration": "Many organisms feed closer to the surface at night and descend during the day, where midnight-zone predators can intercept them or consume their waste.",
+    "seconds": 9.106666666666667
+  },
+  {
+    "i": 14,
+    "segment": "text_beat",
+    "narration": "The transfer is inefficient. NOAA notes that only a small fraction of primary production reaches the deep bottom, and food availability generally declines with depth.",
+    "seconds": 11.834666666666667
+  },
+  {
+    "i": 15,
+    "segment": "checklist_reveal",
+    "narration": "That scarcity favors slow metabolism, patient ambush, expandable stomachs, and the ability to exploit meals of unusual size.",
+    "seconds": 8.506666666666666
+  },
+  {
+    "i": 16,
+    "segment": "text_beat",
+    "narration": "It does not mean every animal is starving at every moment. Currents, slopes, migrations, and falls create patches.",
+    "seconds": 7.546666666666667
+  },
+  {
+    "i": 17,
+    "segment": "checklist_reveal",
+    "narration": "The next loop is vision: the sun is gone, yet the zone may contain more biological flashes than any daylight habitat.",
+    "seconds": 7.653333333333333
+  },
+  {
+    "i": 18,
+    "segment": "light_attenuation",
+    "narration": "MBARI's surveys found that light production is widespread in the water column, including the depth range of the midnight zone.",
+    "seconds": 6.8213333333333335
+  },
+  {
+    "i": 19,
+    "segment": "text_beat",
+    "narration": "Photophores beneath a fish can erase its silhouette against faint bioluminescent background or downwelling remnants at the upper boundary.",
+    "seconds": 9.509333333333334
+  },
+  {
+    "i": 20,
+    "segment": "light_attenuation",
+    "narration": "A lure can bring prey within striking distance. A shrimp can eject luminous material.",
+    "seconds": 6.0
+  },
+  {
+    "i": 21,
+    "segment": "text_beat",
+    "narration": "A dragonfish can use red light invisible to many prey. Large eyes are useful for detecting faint flashes, while some animals reduce vision and depend more on touch or chemical cues.",
+    "seconds": 11.962666666666667
+  },
+  {
+    "i": 22,
+    "segment": "light_attenuation",
+    "narration": "The zone is therefore dark from a human sunlight perspective but active with controlled light.",
+    "seconds": 5.466666666666667
+  },
+  {
+    "i": 23,
+    "segment": "text_beat",
+    "narration": "A submersible's lamps can overwhelm that natural scene, causing animals to flee or altering what the camera records.",
+    "seconds": 7.0986666666666665
+  },
+  {
+    "i": 24,
+    "segment": "light_attenuation",
+    "narration": "Low-light systems and brief dark observations help reveal the real signals. The unresolved question is pressure: from top to bottom of the zone, the external load roughly quadruples.",
+    "seconds": 10.416
+  },
+  {
+    "i": 25,
+    "segment": "magnitude_bar",
+    "narration": "At 1,000 meters, pressure is roughly one hundred atmospheres. Near 4,000 meters, it approaches four hundred.",
+    "seconds": 8.261333333333333
+  },
+  {
+    "i": 26,
+    "segment": "text_beat",
+    "narration": "Temperature is usually cold, but oxygen and currents vary among ocean basins.",
+    "seconds": 4.933333333333334
+  },
+  {
+    "i": 27,
+    "segment": "magnitude_bar",
+    "narration": "Animals do not experience the midnight zone as a uniform room. Many move vertically.",
+    "seconds": 5.722666666666667
+  },
+  {
+    "i": 28,
+    "segment": "text_beat",
+    "narration": "Species have narrower preferred ranges. Seamounts and slopes interrupt open water. Hydrothermal vents can add local chemical energy on the seafloor.",
+    "seconds": 10.458666666666666
+  },
+  {
+    "i": 29,
+    "segment": "magnitude_bar",
+    "narration": "This is why statements such as the largest habitat on Earth need careful definitions: the deep ocean is unquestionably vast, but zone area, volume, and seafloor habitat are different measurements.",
+    "seconds": 11.525333333333334
+  },
+  {
+    "i": 30,
+    "segment": "definition_card",
+    "narration": "The stable definition is depth and light. The bathypelagic zone spans about 1,000 to 4,000 meters and receives no sunlight.",
+    "seconds": 9.594666666666667
+  },
+  {
+    "i": 31,
+    "segment": "text_beat",
+    "narration": "Its food webs depend on imported organic matter, predation, migration, and local chemosynthetic sources.",
+    "seconds": 7.706666666666667
+  },
+  {
+    "i": 32,
+    "segment": "definition_card",
+    "narration": "Its animals turn darkness into information through bioluminescence. This episode closes the first twenty-video foundation with a map rather than a monster, giving every creature episode a place in the water column.",
+    "seconds": 15.184
+  },
+  {
+    "i": 33,
+    "segment": "stat_card",
+    "narration": "There is no sunrise in the bathypelagic zone. Food arrives as sinking particles, falling carcasses, migrating animals, and prey.",
+    "seconds": 9.424
+  },
+  {
+    "i": 34,
+    "segment": "text_beat",
+    "narration": "Light comes from organisms. Pressure ranges roughly from 100 to 400 atmospheres across the common 1,000-to-4,000-meter definition, while temperature is often near 4\u00b0C.",
+    "seconds": 12.837333333333333
+  },
+  {
+    "i": 35,
+    "segment": "stat_card",
+    "narration": "Animals still need to find food, avoid predators, and reproduce. They use bioluminescence, sensitive eyes, sound, smell, patience, and low-energy movement in different combinations.",
+    "seconds": 12.698666666666666
+  },
+  {
+    "i": 36,
+    "segment": "text_beat",
+    "narration": "The midnight zone is not isolated from the sunlit ocean even though sunlight does not reach it.",
+    "seconds": 4.602666666666667
+  },
+  {
+    "i": 37,
+    "segment": "text_beat",
+    "narration": "Sinking particles carry carbon downward. Migrating animals feed near the surface and return to depth.",
+    "seconds": 6.896
+  },
+  {
+    "i": 38,
+    "segment": "ambient_drift",
+    "narration": "Predators intercept that movement. Carcasses and waste continue toward the bottom. The zone is therefore dark but energetically connected to processes above.",
+    "seconds": 9.690666666666667
+  },
+  {
+    "i": 39,
+    "segment": "ambient_drift",
+    "narration": "Its enormous volume also makes observation deceptive.",
+    "seconds": 3.376
+  },
+  {
+    "i": 40,
+    "segment": "source_compare",
+    "narration": "An ROV or submersible illuminates a tiny moving window. Animals can avoid the light, approach it, or remain beyond camera range.",
+    "seconds": 8.069333333333333
+  },
+  {
+    "i": 41,
+    "segment": "text_beat",
+    "narration": "Nets sample different organisms and can damage delicate bodies. Acoustic instruments detect broader patterns but cannot always identify species.",
+    "seconds": 8.922666666666666
+  },
+  {
+    "i": 42,
+    "segment": "source_compare",
+    "narration": "A complete picture requires those methods together. The humanized episode should make the machinery visible for a moment so the viewer understands why a habitat containing so much water can still be described from relatively narrow observations.",
+    "seconds": 14.032
+  },
+  {
+    "i": 43,
+    "segment": "text_beat",
+    "narration": "The final master should show the ROV lights briefly and explain that the camera changes the scene it records.",
+    "seconds": 6.682666666666667
+  },
+  {
+    "i": 44,
+    "segment": "text_beat",
+    "narration": "That makes the footage feel more honest and gives context to animal behavior near the vehicle.",
+    "seconds": 5.370666666666667
+  },
+  {
+    "i": 45,
+    "segment": "ambient_drift",
+    "narration": "The zone boundaries should remain approximate labels, while the depth gauge moves continuously.",
+    "seconds": 5.776
+  },
+  {
+    "i": 46,
+    "segment": "text_beat",
+    "narration": "The viewer leaves with a habitat, not a set of artificial boxes.",
+    "seconds": 3.984
+  },
+  {
+    "i": 47,
+    "segment": "ambient_drift",
+    "narration": "A single dive crosses only a narrow path through a zone spanning thousands of meters. Conditions can change horizontally as well as vertically.",
+    "seconds": 8.805333333333333
+  },
+  {
+    "i": 48,
+    "segment": "checklist_reveal",
+    "narration": "Oxygen, currents, particles, and animal density vary. The episode should not let one beautiful expedition clip become the visual definition of the entire midnight zone.",
+    "seconds": 10.448
+  },
+  {
+    "i": 49,
+    "segment": "text_beat",
+    "narration": "Use multiple documented settings or clearly label the footage as one observation.",
+    "seconds": 5.36
+  },
+  {
+    "i": 50,
+    "segment": "text_beat",
+    "narration": "That is the image to leave behind.",
+    "seconds": 2.16
+  },
+  {
+    "i": 51,
+    "segment": "depth_descent",
+    "narration": "Give the viewer a slow hour rather than a fast zone list.",
+    "seconds": 3.7813333333333334
+  },
+  {
+    "i": 52,
+    "segment": "text_beat",
+    "narration": "Follow a particle of marine snow, a migrating animal passing through, a flash of bioluminescence, and a predator waiting in darkness.",
+    "seconds": 10.693333333333333
+  },
+  {
+    "i": 53,
+    "segment": "depth_descent",
+    "narration": "The pace should be quieter than the previous record video. Keep the depth gauge moving slowly to reinforce that the zone itself spans three vertical kilometers.",
+    "seconds": 9.733333333333333
+  },
+  {
+    "i": 54,
+    "segment": "stat_card",
+    "narration": "The 1,000- and 4,000-meter boundaries are conventional approximations. Local light, temperature, oxygen, currents, and seafloor depth vary.",
+    "seconds": 10.906666666666666
+  },
+  {
+    "i": 55,
+    "segment": "contrast_pair",
+    "narration": "WHOI describes the midnight zone as roughly 70 percent of all seawater, but that does not mean 70 percent of ocean species live there.",
+    "seconds": 9.136
+  },
+  {
+    "i": 56,
+    "segment": "text_beat",
+    "narration": "ROV lights can also alter behavior, so what cameras observe is not a perfectly neutral window.",
+    "seconds": 6.565333333333333
+  },
+  {
+    "i": 57,
+    "segment": "zone_column",
+    "narration": "The midnight zone is not empty darkness. It is the largest dark habitat on the planet, full of signals our eyes usually miss and lives paced by food arriving from somewhere else. Its boundaries are approximate. Its scale is not.",
+    "seconds": 14.032
+  }
 ]

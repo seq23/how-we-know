@@ -76,6 +76,21 @@ if [ -f "$STOPFILE" ]; then
     echo "self-resolving named stop [$STOP_CODE] — recorded, committed, and NOT"
     echo "escalated. It is in the job summary above. Exiting 0 on purpose."
   fi
+  # THE THIRD DISPOSITION. Owner instruction, 2026-09-08: a named stop must
+  # never arrive as a red build. A condition only she can clear (a revoked
+  # consent, a platform-side account flag) cannot self-heal and cannot be
+  # retried away -- but failing this job every day until she gets to it is the
+  # alarm nobody reads. It stays GREEN here and is carried in
+  # loop/state/owner_action.json, which the Sunday digest prints at the top.
+  # loop/common.py escalates it to exit 3 if it outlives its max_consecutive,
+  # so a forgotten block still becomes loud eventually.
+  if [ "$DISPOSITION" = "owner_action" ]; then
+    echo "named stop [$STOP_CODE] is WAITING ON THE OWNER — recorded in"
+    echo "loop/state/owner_action.json and surfaced in the Sunday digest."
+    echo "Green on purpose: she cannot act on a failed build any faster than"
+    echo "she can act on the digest, and a daily red run is how a real alarm"
+    echo "gets tuned out."
+  fi
   if [ "$DISPOSITION" = "held" ]; then
     echo "HELD named stop [$STOP_CODE] — this is NOT resolved. It is waiting on"
     echo "the owner, she has already been told, and the item list has not"
@@ -142,6 +157,8 @@ else
   case $RC in
     0) if [ "$DISPOSITION" = "self_resolving" ]; then
          MSG="loop($WEEK): $STAGE — self-resolving stop ($STOP_CODE)"
+       elif [ "$DISPOSITION" = "owner_action" ]; then
+         MSG="loop($WEEK): $STAGE — waiting on the owner ($STOP_CODE)"
        elif [ "$DISPOSITION" = "held" ]; then
          MSG="loop($WEEK): $STAGE — held stop ($STOP_CODE), already reported"
        else

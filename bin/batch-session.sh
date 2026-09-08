@@ -87,15 +87,39 @@ done
 # one route while being correctly skipped by the other.
 renderable() {
   $PY - <<'READYEOF'
-import json, glob, os, sys
+import json, glob, os, shutil, sys
 sys.path.insert(0, "loop")
 import batch_queue
+# EVERY BEAT HAS A WAV -- not "the counts are equal".
+#
+# Counting conflated two different facts, and the difference is a permanent
+# stall. what-is-concrete-made-of held 70 wavs (0000..0069) against a 69-beat
+# plan: an orphan left behind when the plan shrank. 70 != 69, so this predicate
+# said "not ready" and would have said it forever -- the episode could never be
+# re-rendered by any route, and nothing anywhere named the reason. Asking
+# whether beat i has a wav, for every i the plan actually has, cannot be fooled
+# by a file the plan no longer indexes.
+#
+# The orphan is MOVED, never deleted: assemble.py ignores it, but leaving it
+# in place means the next reader of this directory is misled the same way.
 out = []
 for slug in batch_queue.queued_slugs():
     plan = f"plans/{slug}.json"
     if not os.path.exists(plan):
         continue
-    if len(json.load(open(plan))) == len(glob.glob(f"audio/{slug}/*.wav")) \
+    n = len(json.load(open(plan)))
+    have = {os.path.basename(w) for w in glob.glob(f"audio/{slug}/*.wav")}
+    orphans = sorted(w for w in have
+                     if not w[:-4].isdigit() or int(w[:-4]) >= n)
+    if orphans:
+        d = f"audio/{slug}/superseded"
+        os.makedirs(d, exist_ok=True)
+        for w in orphans:
+            shutil.move(f"audio/{slug}/{w}", f"{d}/{w}")
+            print(f"# moved orphan audio/{slug}/{w} aside (plan has {n} beats)",
+                  file=sys.stderr)
+        have -= set(orphans)
+    if all(f"{i:04d}.wav" in have for i in range(n)) \
        and not os.path.exists(f"renders/{slug}-final.mp4"):
         out.append(slug)
 print(" ".join(out))
@@ -117,7 +141,11 @@ for slug in batch_queue.queued_slugs():
     if not os.path.exists(plan):
         continue
     want = len(json.load(open(plan)))
-    have = len(glob.glob(f"audio/{slug}/*.wav"))
+    # Per-index, for the reason renderable() explains: an orphan wav from a
+    # shrunken plan must not make an unvoiced beat look voiced, and a count
+    # cannot tell the difference.
+    names = {os.path.basename(w) for w in glob.glob(f"audio/{slug}/*.wav")}
+    have = sum(1 for i in range(want) if f"{i:04d}.wav" in names)
     if have < want:
         out.append(f"{slug}:{have}/{want}")
 print(" ".join(out))
@@ -156,6 +184,56 @@ echo "  to narrate : ${pending_audio:-none}"
 echo "  to render  : ${pending_render:-none}"
 echo "  no plan yet: ${pending_plan:-none}"
 
+if [ -n "$DRY" ]; then echo; echo "DRY RUN - nothing done."; exit 0; fi
+
+# ---------------------------------------------------------------------------
+# SELF-HEAL AN UNTRACED PRODUCER POV, BEFORE ANYTHING IS VOICED.
+#
+# loop/cloud_upload.py refuses to upload an episode whose [HUMAN] beat has no
+# entry in pov/pov-assignments.json, and that refusal is right: the authoring
+# model composes those beats, and she did not write them. On 2026-09-08 eight
+# rendered, captioned, shelved materials episodes were stranded on exactly that
+# - a permanent stall, because nothing in the repo ever wrote an assignment.
+#
+# loop/pov_repair.py swaps the invented sentence for a real line from
+# pov/pov-bank.json (her own interviews, her approved voice - matching, not
+# approving) and invalidates the audio beat, the caption track and the render
+# so the rest of this script rebuilds them. It runs HERE because everything it
+# invalidates is rebuilt below, in this same unattended pass.
+echo; echo "--- self-heal any untraced producer POV ---"
+$PY loop/pov_repair.py || echo "  (see the banner above; nothing was changed for any episode it refused)"
+
+# The repair may have superseded a render, so re-ask what is narratable and
+# renderable. Recomputing is the point: the lists above were taken before it ran.
+pending_audio=$($PY - <<'PYEOF2'
+import json, glob, os, sys
+sys.path.insert(0, "loop")
+import batch_queue
+out = []
+for slug in batch_queue.queued_slugs():
+    plan = f"plans/{slug}.json"
+    if not os.path.exists(plan):
+        continue
+    want = len(json.load(open(plan)))
+    # Per-index, for the reason renderable() explains: an orphan wav from a
+    # shrunken plan must not make an unvoiced beat look voiced, and a count
+    # cannot tell the difference.
+    names = {os.path.basename(w) for w in glob.glob(f"audio/{slug}/*.wav")}
+    have = sum(1 for i in range(want) if f"{i:04d}.wav" in names)
+    if have < want:
+        out.append(f"{slug}:{have}/{want}")
+print(" ".join(out))
+PYEOF2
+)
+echo "  to narrate now: ${pending_audio:-none}"
+pending_render=$(renderable)
+echo "  to render now : ${pending_render:-none}"
+
+# THE "NOTHING TO DO" GATE LIVES HERE, AFTER THE POV REPAIR, NOT BEFORE IT.
+# It used to sit above and exit first, which meant a shelf whose ONLY
+# problem was an untraced producer POV reported "nothing to do" and left
+# eight episodes stranded -- the repair below could never run, because the
+# script had already decided there was nothing to repair.
 if [ -z "${pending_audio// }" ] && [ -z "${pending_render// }" ]; then
   echo
   if [ -n "${pending_plan// }" ]; then
@@ -177,7 +255,7 @@ if [ -z "${pending_audio// }" ] && [ -z "${pending_render// }" ]; then
   exit 0
 fi
 
-if [ -n "$DRY" ]; then echo; echo "DRY RUN - nothing done."; exit 0; fi
+
 
 # Hold the machine awake for the whole batch. -dimsu covers display, idle, disk,
 # system and user-idle sleep; without it a long narration run dies on lid close.
@@ -370,6 +448,81 @@ if fs:
     print('  script just needs re-rendering.')
     sys.exit(1)
 " || { echo; echo "  REFUSING to push to R2 while a render is under the floor."; exit 1; }
+
+# ---------------------------------------------------------------------------
+# CAPTIONS, IN THE SAME PASS THAT MADE THE AUDIO THEY ARE TIMED FROM.
+#
+# This wire is what was missing on 2026-09-08. The batch narrated, rendered,
+# thumbnailed and pushed to R2 - and never ran visuals/captions.py, which lived
+# in a SEPARATE manual command (bin/make-captions.sh) nobody was going to type.
+# So every episode after the original sixteen reached the shelf with no caption
+# track, and the cloud upload lane refused it and paged the owner
+# (CAPTIONS_NOT_READY, run 34236877023) to ask her to run that command.
+#
+# It runs BEFORE the push for the same reason the runtime floor does: the
+# question is cheapest to answer on the machine that holds the inputs, and the
+# answer has to exist before the cloud is asked to act on the render.
+#
+# It also writes each measured wav duration into audio/<slug>/beats.json, which
+# git tracks. That is the artifact that lets the CLOUD rebuild a caption track
+# with no laptop at all - so even a batch that is interrupted before the commit
+# below leaves the loop able to heal itself on the next push.
+# A RENDER WITHOUT A THUMBNAIL IS INVISIBLE TO THE UPLOAD LANE.
+# backfill.local_assets() requires both, and thumb_one() above only fires for
+# an episode this run rendered. Anything rendered by an earlier run, or whose
+# thumbnail build failed once, stays un-uploadable forever - five materials
+# episodes were in exactly that state on 2026-09-08. Sweep every rendered
+# episode, not only this run's.
+echo; echo "--- thumbnails for anything rendered without one ---"
+for slug in $($PY -c "
+import sys, os; sys.path.insert(0,'loop')
+import batch_queue
+print(' '.join(s for s in batch_queue.queued_slugs()
+                if os.path.exists(f'renders/{s}-final.mp4')
+                and not os.path.exists(f'channel/thumbnails/{s}.jpg')))"); do
+  dom=$($PY -c "
+import sys; sys.path.insert(0,'loop')
+import domains; print(domains.domain_of_slug('$slug') or 'deep-sea-ocean-science')" 2>/dev/null) \
+    || dom=deep-sea-ocean-science
+  thumb_one "$slug" "$dom"
+done
+
+echo; echo "--- captions (and the measured beat timings the cloud needs) ---"
+$PY loop/captions_build.py
+CAPRC=$?
+case $CAPRC in
+  0) ;;
+  3) echo "  named stop above - see the banner. The push continues: an episode"
+     echo "  that cannot be captioned is refused at the upload gate, not here." ;;
+  *) echo "  captions_build FAILED (rc=$CAPRC). Not pushing renders whose caption"
+     echo "  tracks are unknown."; exit "$CAPRC" ;;
+esac
+
+# COMMIT WHAT ONLY THIS MAC CAN PRODUCE, with explicit pathspecs.
+#
+# loop/captions_build.py has already `git add`ed exactly the files it wrote.
+# Nothing else is staged here: `git add -A` on this machine would sweep in
+# renders, work directories and half-written audio.
+git add -- pov/pov-assignments.json scripts plans channel/thumbnails 2>/dev/null
+if ! git diff --cached --quiet; then
+  git commit -q -m "captions: tracks and measured beat timings from the batch
+
+Generated by bin/batch-session.sh in the same pass that produced the narration
+they are timed from. audio/<slug>/beats.json now carries each beat's measured
+wav duration, which is what lets the cloud upload lane build a missing caption
+track without this Mac."
+  if git pull --rebase -q && git push -q; then
+    echo "  committed and pushed the caption artifacts"
+  else
+    git rebase --abort 2>/dev/null || true
+    echo "  COULD NOT PUSH the caption commit. It exists on this Mac only."
+    echo "  The cloud lane will heal what it can from what is already on origin;"
+    echo "  re-run this script (or just 'git push') to send the rest."
+  fi
+else
+  echo "  nothing new to commit - every narrated episode already has its track"
+  echo "  and its measured timings on origin."
+fi
 
 echo; echo "--- push to R2 for the cloud upload lane ---"
 if [ -x bin/push-to-r2.sh ]; then

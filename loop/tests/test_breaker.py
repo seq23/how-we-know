@@ -30,9 +30,22 @@ PY = sys.executable
 PUBLISHING = ["tue-render", "thu-upload", "fri-publish"]
 
 
+# THE SUITE MUST NOT WRITE THE LOOP'S OWN STATE. `breaker.py guard` takes a
+# real named stop, and a named stop writes loop/state/stops/ and bumps
+# _streaks.json - both tracked, both written by the cloud lanes. A local run of
+# this file used to leave stop records for tue-render, thu-upload and
+# fri-publish in the committed state; the same leak through _streaks.json cost
+# a day on 2026-09-04 when a cloud lane could not rebase its own state commit.
+# run_all.py already exports LOOP_STOPS_DIR; this honours it when the file is
+# run on its own too.
+_STOPS = os.environ.get("LOOP_STOPS_DIR") or tempfile.mkdtemp(
+    prefix="breaker-test-stops-")
+
+
 def run(*args):
     return subprocess.run([PY, os.path.join(LOOP, "breaker.py"), *args],
-                          capture_output=True, text=True, cwd=ROOT)
+                          capture_output=True, text=True, cwd=ROOT,
+                          env=dict(os.environ, LOOP_STOPS_DIR=_STOPS))
 
 
 def check() -> list[str]:
@@ -60,18 +73,46 @@ def check() -> list[str]:
         if state.get("state") != "tripped":
             fails.append(f"after trip the flag says {state.get('state')!r}")
 
-        # -- publishing must halt ---------------------------------------
-        for stage in PUBLISHING:
+        # -- publishing must halt, and page exactly ONCE -----------------
+        #
+        # EVERY guarded stage still halts. What changed on 2026-09-08 is who
+        # wakes the owner: one flag guards four lanes, so a tripped breaker
+        # used to produce four red jobs and four issue comments a day and read
+        # as four separate problems. The FIRST stage to stop on a given trip
+        # owns the alarm and exits 3; the rest name the stage that already
+        # raised it and exit 0. The halt is asserted independently of the exit
+        # code below - `breaker.py guard` prints "may proceed" only when it
+        # lets a lane through, and that string must appear for none of them.
+        for i, stage in enumerate(PUBLISHING):
             examined += 1
             r = run("guard", "--stage", stage)
             out = r.stdout + r.stderr
-            if r.returncode != 3:
-                fails.append(f"tripped breaker let {stage} through "
-                             f"(rc={r.returncode}) — publishing did NOT halt")
-            if "BREAKER_TRIPPED" not in out:
-                fails.append(f"{stage} halted without naming BREAKER_TRIPPED")
+            if "may proceed" in out:
+                fails.append(f"tripped breaker let {stage} through — "
+                             f"publishing did NOT halt")
             if "NAMED STOP" not in out:
                 fails.append(f"{stage} halted as a crash rather than a named stop")
+            if "BREAKER_TRIPPED" not in out:
+                fails.append(f"{stage} halted without naming BREAKER_TRIPPED")
+            if i == 0:
+                if r.returncode != 3:
+                    fails.append(
+                        f"the FIRST stage to hit the tripped breaker "
+                        f"({stage}) exited {r.returncode}; it owns the alarm "
+                        f"and must be the one red job")
+                if "ALREADY_REPORTED" in out:
+                    fails.append(f"{stage} deferred to an earlier report that "
+                                 f"does not exist")
+            else:
+                if r.returncode != 0:
+                    fails.append(
+                        f"{stage} exited {r.returncode} for the SAME trip "
+                        f"{PUBLISHING[0]} already raised — one flag is one "
+                        f"problem, and four red jobs for it is how a real "
+                        f"alarm gets tuned out")
+                if "BREAKER_TRIPPED_ALREADY_REPORTED" not in out:
+                    fails.append(f"{stage} exited 0 without saying the trip was "
+                                 f"already reported by another lane")
 
         # -- the pipeline must NOT be torn down --------------------------
         # Ranking and drafting read the breaker but are not gated on it: the

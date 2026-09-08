@@ -400,6 +400,25 @@ def main() -> None:
                          else "domain", cause["why"])
             st.work(f"tripped the circuit breaker on {cause['cause']}: "
                     f"{cause['why'][:120]}")
+        else:
+            # THE OTHER HALF, which never existed. This lane is the only thing
+            # in the repo entitled to say retention recovered - it holds the
+            # measurement - and it tripped the breaker without ever being able
+            # to untrip it. A breaker with a trip path and no reset path halts
+            # publishing until a human types a command, which on this channel
+            # meant four red lanes a day for a condition that had already
+            # passed.
+            cleared = breaker.clear_if(
+                "retention", f"retention recovered: breaker_cause() sees no "
+                             f"breach across {len(per_domain)} measured "
+                             f"domain(s) at a {floor_avd}s floor")
+            cleared = cleared or breaker.clear_if(
+                "domain", f"the breaching domain recovered: breaker_cause() "
+                          f"sees no breach across {len(per_domain)} measured "
+                          f"domain(s) at a {floor_avd}s floor")
+            if cleared:
+                st.work("reset the circuit breaker: the retention breach that "
+                        "tripped it is no longer present in the measurement")
 
         if not pub:
             st.named_stop(
@@ -532,6 +551,15 @@ def main() -> None:
             breaker.trip("retention" if cause["cause"] == "format"
                          else "domain", cause["why"])
             st.work(f"tripped the circuit breaker on {cause['cause']}")
+        else:
+            # See the note at the other call site: trip and reset belong to the
+            # same lane, because this is where the evidence is.
+            if (breaker.clear_if("retention", "retention recovered in this "
+                                 "week's measurement")
+                    or breaker.clear_if("domain", "the breaching domain "
+                                        "recovered in this week's measurement")):
+                st.work("reset the circuit breaker: the retention breach that "
+                        "tripped it is no longer present in the measurement")
 
         # ---- the retention checkpoint, reported prominently ---------------
         cp = retention_checkpoint(m["videos"], cfg, pub)

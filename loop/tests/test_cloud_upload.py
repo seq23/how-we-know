@@ -651,9 +651,21 @@ except SystemExit as e:
     rc = e.code
 print("RC", rc)
 """, dict(base, R2_LOCAL_DIR=str(naked)), tmp)
-        if "RC 3" not in r.stdout or "NO_SHORTS_SHELVED" not in (r.stdout + r.stderr):
+        # THE CODE CHANGED, AND THAT IS THE POINT. This used to expect
+        # NO_SHORTS_SHELVED, which conflated two states that look identical
+        # from an empty selection and are not: "nothing has been cut yet",
+        # which the Mac's next push resolves and which is now classified
+        # self-resolving, and "a cut IS on the shelf and cannot be proved
+        # credited", which is a broken push that will look the same tomorrow.
+        # Only the second may be loud, and only the second is asserted here.
+        out = r.stdout + r.stderr
+        if "RC 3" not in r.stdout or "SHORTS_SHELVED_BUT_UNVERIFIED" not in out:
             fails.append("a Short shelved WITHOUT its .short.json receipt was "
                          f"treated as publishable: {r.stdout.strip()[-300:]}")
+        if "NO_SHORTS_SHELVED" in out:
+            fails.append("an unverified cut on the shelf reported an EMPTY "
+                         "shelf — the self-resolving label would then be worn "
+                         "by a broken push, which is the inert-lane defect")
 
         # -- the attribution gate refuses to shelve on a V14 failure -------
         # Broken on purpose: V14 is replaced with a failing result and the push

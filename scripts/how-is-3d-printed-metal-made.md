@@ -117,19 +117,11 @@ Metal additive manufacturing is not magic. It is controlled melting, repeated th
 
 ## Chapters
 
-- 00:00 Cold open
-- 00:24 Title card
-- 00:26 Powder requirements
-- 01:18 Energy delivery and atmosphere
-- 02:24 Scan strategy and microstructure
-- 03:48 Producer POV
-- 04:04 Porosity sources and limits
-- 05:28 Support structures
-- 06:24 Post-process heat treatment
-- 07:48 Wire arc additive manufacturing
-- 08:54 What to notice in the edit
-- 09:54 Evidence limit
-- 10:28 Closing
+- 0:00 Cold open
+- 3:49 Producer POV
+- 7:40 What to notice in the edit
+- 8:19 Evidence limit
+- 11:38 Closing
 
 ## Sources
 - https://www.nist.gov/

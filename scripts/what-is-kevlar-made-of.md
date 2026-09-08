@@ -96,18 +96,17 @@ Kevlar is a demonstration that material properties emerge from structure as much
 
 ## Chapters
 
-- 00:00 Cold open
-- 00:38 Title card
-- 00:41 The polymer forms in solution at room temperature
-- 02:31 Spinning aligns the chains further
-- 04:18 The fiber is aromatic and resistant to most solvents
-- 05:42 Ultraviolet light degrades the surface
-- 06:52 Producer POV
-- 07:09 Different grades optimize for different properties
-- 08:35 The fiber is woven or laminated into structures
-- 10:02 What to notice in the edit
-- 10:50 Evidence limit
-- 11:20 Closing
+- 0:00 Cold open
+- 0:45 The polymer forms in solution at room temperature
+- 2:21 Spinning aligns the chains further
+- 4:01 The fiber is aromatic and resistant to most solvents
+- 5:36 Ultraviolet light degrades the surface
+- 6:30 Producer POV
+- 6:44 Different grades optimize for different properties
+- 8:09 The fiber is woven or laminated into structures
+- 9:36 What to notice in the edit
+- 10:31 Evidence limit
+- 11:11 Closing
 
 ## Sources
 
