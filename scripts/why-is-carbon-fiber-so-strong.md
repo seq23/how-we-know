@@ -63,7 +63,7 @@ When you pull on a carbon fiber composite, the matrix distributes the load to in
 
 ### Producer POV
 
-[HUMAN] The 5.9 gigapascal bond strength is the number for a perfect, defect-free graphite plane. Real fiber is weaker than that because real fiber has flaws. I almost let the ideal number stand in for the material.
+[HUMAN] What interests me is the translation layer. An instrument doesn't hand us reality. It produces a signal, and then humans calibrate it, process it, interpret it.
 
 ### Anisotropy means the composite is strong only where you place the fibers
 

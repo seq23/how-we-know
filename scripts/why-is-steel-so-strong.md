@@ -54,7 +54,7 @@ The exact tempering temperature depends on the application. Cutting tools are te
 
 ### Producer POV
 
-[HUMAN] I wrote the dislocation-pinning explanation like it covered every steel everywhere. It covers carbon steel at room temperature. High heat and high-carbon steels behave differently, and generalizing past that would have been the easy, wrong move.
+[HUMAN] When someone gives me a fact with a number in it, my first instinct is: where did the number come from? Not because I assume they're lying. Numbers can make almost anything sound authoritative.
 
 ### Alloying elements shift the curve but not the mechanism
 

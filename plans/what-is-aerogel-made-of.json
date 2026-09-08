@@ -47,14 +47,21 @@
     "from": "heading"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "evidence_chain",
     "seconds": 9.0,
     "heading": "The gel precursor is silica in a liquid scaffold",
     "narration": "You start with a solution of silicon alkoxide in alcohol. When water is added with an acid or base catalyst, hydrolysis and condensation reactions link silicon atoms through oxygen bridges.",
     "args": {
-      "variant": 0
+      "title": "TITLE=Aerogel synthesis",
+      "stages": [
+        "STAGE=Liquid precursor",
+        "STAGE=Gelation",
+        "STAGE=Solvent exchange",
+        "STAGE=Supercritical drying"
+      ],
+      "conclusion": "Solid network retained"
     },
-    "from": "heuristic"
+    "from": "directive"
   },
   {
     "segment": "text_beat",
@@ -67,53 +74,69 @@
         "a gel"
       ]
     },
-    "from": "heuristic"
+    "from": "directive-rhythm"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "evidence_chain",
     "seconds": 4.97,
     "heading": "The gel precursor is silica in a liquid scaffold",
     "narration": "At this stage the material is called a wet gel or alcogel.",
     "args": {
-      "variant": 1
+      "title": "TITLE=Aerogel synthesis",
+      "stages": [
+        "STAGE=Liquid precursor",
+        "STAGE=Gelation",
+        "STAGE=Solvent exchange",
+        "STAGE=Supercritical drying"
+      ],
+      "conclusion": "Solid network retained"
     },
-    "from": "heuristic"
+    "from": "directive"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "text_beat",
     "seconds": 5.38,
     "heading": "The gel precursor is silica in a liquid scaffold",
     "narration": "The silica skeleton is already formed, but the pores are full of solvent.",
     "args": {
-      "variant": 2
+      "lines": [
+        "The silica skeleton is",
+        "already formed, but the",
+        "pores"
+      ]
     },
-    "from": "heuristic"
+    "from": "directive-rhythm"
   },
   {
-    "segment": "text_beat",
+    "segment": "evidence_chain",
     "seconds": 8.28,
     "heading": "The gel precursor is silica in a liquid scaffold",
     "narration": "If you simply evaporate that solvent, capillary forces pull the strands together and the structure collapses into a dense solid.",
     "args": {
-      "lines": [
-        "If you simply evaporate",
-        "that solvent, capillary forces",
-        "pull"
-      ]
+      "title": "TITLE=Aerogel synthesis",
+      "stages": [
+        "STAGE=Liquid precursor",
+        "STAGE=Gelation",
+        "STAGE=Solvent exchange",
+        "STAGE=Supercritical drying"
+      ],
+      "conclusion": "Solid network retained"
     },
-    "from": "heuristic"
+    "from": "directive"
   },
   {
-    "segment": "material_image",
+    "segment": "text_beat",
     "seconds": 5.38,
     "heading": "The gel precursor is silica in a liquid scaffold",
     "narration": "Aerogel exists only if you remove the liquid without crossing a liquid-vapor interface.",
     "args": {
-      "subject": "aerogel",
-      "label": "AEROGEL",
-      "pick": 0
+      "lines": [
+        "Aerogel exists only if",
+        "you remove the liquid",
+        "without crossing"
+      ]
     },
-    "from": "heuristic+material"
+    "from": "directive-rhythm"
   },
   {
     "segment": "thermal_ascent",
@@ -330,16 +353,18 @@
     "from": "directive"
   },
   {
-    "segment": "material_image",
+    "segment": "text_beat",
     "seconds": 5.38,
     "heading": "Density and porosity are controlled by precursor concentration",
     "narration": "A concentrated solution yields a denser aerogel with smaller pores and thicker strands.",
     "args": {
-      "subject": "aerogel",
-      "label": "AEROGEL",
-      "pick": 1
+      "lines": [
+        "A concentrated solution yields",
+        "a denser aerogel with",
+        "smaller pores"
+      ]
     },
-    "from": "directive-rhythm+material"
+    "from": "directive-rhythm"
   },
   {
     "segment": "stat_card",
@@ -370,35 +395,41 @@
   },
   {
     "segment": "quote_card",
-    "seconds": 7.45,
+    "seconds": 6.21,
     "heading": "Producer POV",
-    "narration": "I wanted the lowest-density record to be one clean number \u2014 'the lightest solid ever made.' It isn't.",
+    "narration": "What keeps me interested is how it exposes the limits of our idea of normal.",
     "args": {
-      "text": "I wanted the lowest-density record to be one clean number \u2014 'the lightest solid ever made.' It isn't.",
+      "text": "What keeps me interested is how it exposes the limits of our idea of normal.",
       "attrib": ""
     },
     "from": "heading"
   },
   {
     "segment": "quote_card",
-    "seconds": 7.86,
+    "seconds": 6.62,
     "heading": "Producer POV",
-    "narration": "Different measurement methods give different lowest values, so I kept the range instead of quoting the most dramatic figure.",
+    "narration": "Every time we think we know what life requires, something down there shows us another way.",
     "args": {
-      "text": "Different measurement methods give different lowest values, so I kept the range instead of quoting the most dramatic figure.",
+      "text": "Every time we think we know what life requires, something down there shows us another way.",
       "attrib": ""
     },
     "from": "heading"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "contrast_pair",
     "seconds": 9.0,
     "heading": "Thermal conductivity is limited by the mean free path of air",
     "narration": "Aerogel is one of the best thermal insulators among solids. Its thermal conductivity can be as low as zero point zero one three watts per meter-kelvin in air at room temperature, compared to zero point zero two four for still air and zero point zero four for polyurethane foam.",
     "args": {
-      "variant": 4
+      "term": "TERM=Thermal insulation",
+      "includes": [
+        "Aerogel blocks conduction and convection"
+      ],
+      "excludes": [
+        "Vacuum blocks only conduction"
+      ]
     },
-    "from": "heuristic"
+    "from": "directive"
   },
   {
     "segment": "text_beat",
@@ -412,51 +443,66 @@
         "sparse"
       ]
     },
-    "from": "heuristic"
+    "from": "directive-rhythm"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "contrast_pair",
     "seconds": 8.69,
     "heading": "Thermal conductivity is limited by the mean free path of air",
     "narration": "Second, the pores are smaller than the mean free path of air molecules at atmospheric pressure, which is about sixty nanometers.",
     "args": {
-      "variant": 0
+      "term": "TERM=Thermal insulation",
+      "includes": [
+        "Aerogel blocks conduction and convection"
+      ],
+      "excludes": [
+        "Vacuum blocks only conduction"
+      ]
     },
-    "from": "heuristic"
+    "from": "directive"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "text_beat",
     "seconds": 7.45,
     "heading": "Thermal conductivity is limited by the mean free path of air",
     "narration": "Gas molecules collide with pore walls more often than with each other, suppressing convection and reducing gaseous conduction.",
     "args": {
-      "variant": 1
+      "lines": [
+        "Gas molecules collide with",
+        "pore walls more often"
+      ]
     },
-    "from": "heuristic"
+    "from": "directive-rhythm"
   },
   {
-    "segment": "text_beat",
+    "segment": "contrast_pair",
     "seconds": 8.28,
     "heading": "Thermal conductivity is limited by the mean free path of air",
     "narration": "Third, the material is mostly transparent to infrared at short path lengths, though radiative transfer becomes significant at high temperatures.",
     "args": {
-      "lines": [
-        "Third, the material is",
-        "mostly transparent to infrared",
-        "at short"
+      "term": "TERM=Thermal insulation",
+      "includes": [
+        "Aerogel blocks conduction and convection"
+      ],
+      "excludes": [
+        "Vacuum blocks only conduction"
       ]
     },
-    "from": "heuristic"
+    "from": "directive"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "text_beat",
     "seconds": 6.21,
     "heading": "Thermal conductivity is limited by the mean free path of air",
     "narration": "This combination makes aerogel useful in applications from Mars rover insulation to deep-sea instrument housings.",
     "args": {
-      "variant": 2
+      "lines": [
+        "This combination makes aerogel",
+        "useful in applications from",
+        "Mars rover"
+      ]
     },
-    "from": "heuristic"
+    "from": "directive-rhythm"
   },
   {
     "segment": "text_beat",
@@ -473,28 +519,28 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Mechanical properties reflect the open skeletal structure",
     "narration": "Tensile strength is lower, often below zero point one megapascals. The material fractures rather than deforms plastically because the silica network is held together by covalent bonds in a sparse, rigid framework.",
     "args": {
-      "lines": [
-        "Tensile strength is lower,",
-        "often below zero point",
-        "one megapascals."
-      ]
+      "variant": 3
     },
-    "from": "directive"
+    "from": "directive+destagnate"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "text_beat",
     "seconds": 9.0,
     "heading": "Mechanical properties reflect the open skeletal structure",
     "narration": "There is no ductile phase to absorb energy. Despite this fragility, aerogel can support thousands of times its own weight if the load is distributed.",
     "args": {
-      "variant": 3
+      "lines": [
+        "There is no ductile",
+        "phase to absorb energy.",
+        "Despite"
+      ]
     },
-    "from": "directive+destagnate"
+    "from": "directive"
   },
   {
     "segment": "text_beat",
@@ -511,26 +557,38 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Mechanical properties reflect the open skeletal structure",
     "narration": "The brittleness is a direct consequence of the open architecture \u2014 the same geometry that gives aerogel its low density and low thermal conductivity also makes it mechanically weak.",
     "args": {
-      "lines": [
-        "The brittleness is a",
-        "direct consequence of the",
-        "open architecture"
-      ]
+      "variant": 4
     },
-    "from": "directive"
+    "from": "directive+destagnate"
   },
   {
-    "segment": "anatomy_callout",
+    "segment": "source_compare",
     "seconds": 6.21,
     "heading": "Variants replace silica with other oxides or organic polymers",
     "narration": "Silica aerogel is the most studied, but the supercritical drying method applies to other materials.",
-    "args": {},
-    "from": "heuristic"
+    "args": {
+      "title": "TITLE=Aerogel material families",
+      "sources": [
+        [
+          "NIST",
+          "Silica and alumina aerogels"
+        ],
+        [
+          "Fraunhofer",
+          "Carbon aerogels from resorcinol-formaldehyde"
+        ],
+        [
+          "NASA",
+          "Polymer aerogel development"
+        ]
+      ]
+    },
+    "from": "directive"
   },
   {
     "segment": "text_beat",
@@ -543,57 +601,108 @@
         "from aluminum alkoxide precursors"
       ]
     },
-    "from": "heuristic"
+    "from": "directive-rhythm"
   },
   {
-    "segment": "anatomy_callout",
+    "segment": "source_compare",
     "seconds": 8.69,
     "heading": "Variants replace silica with other oxides or organic polymers",
     "narration": "Carbon aerogels are synthesized from organic gels, such as resorcinol-formaldehyde, followed by pyrolysis to convert the polymer network to graphitic carbon.",
-    "args": {},
-    "from": "heuristic"
+    "args": {
+      "title": "TITLE=Aerogel material families",
+      "sources": [
+        [
+          "NIST",
+          "Silica and alumina aerogels"
+        ],
+        [
+          "Fraunhofer",
+          "Carbon aerogels from resorcinol-formaldehyde"
+        ],
+        [
+          "NASA",
+          "Polymer aerogel development"
+        ]
+      ]
+    },
+    "from": "directive"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "text_beat",
     "seconds": 4.97,
     "heading": "Variants replace silica with other oxides or organic polymers",
     "narration": "These have electrical conductivity and are used in supercapacitors and fuel cells.",
     "args": {
-      "variant": 3
+      "lines": [
+        "These have electrical conductivity",
+        "and are used in",
+        "supercapacitors"
+      ]
     },
-    "from": "heuristic"
+    "from": "directive-rhythm"
   },
   {
-    "segment": "text_beat",
+    "segment": "source_compare",
     "seconds": 6.62,
     "heading": "Variants replace silica with other oxides or organic polymers",
     "narration": "Polymer aerogels, including polyimide and polyurethane variants, offer flexibility and can be cast into thin films.",
     "args": {
-      "lines": [
-        "Polymer aerogels, including polyimide",
-        "and polyurethane variants, offer",
-        "flexibility"
+      "title": "TITLE=Aerogel material families",
+      "sources": [
+        [
+          "NIST",
+          "Silica and alumina aerogels"
+        ],
+        [
+          "Fraunhofer",
+          "Carbon aerogels from resorcinol-formaldehyde"
+        ],
+        [
+          "NASA",
+          "Polymer aerogel development"
+        ]
       ]
     },
-    "from": "heuristic"
+    "from": "directive"
   },
   {
-    "segment": "anatomy_callout",
+    "segment": "text_beat",
     "seconds": 9.0,
     "heading": "Variants replace silica with other oxides or organic polymers",
     "narration": "NASA has developed polymer aerogels for inflatable structures and dust capture. Each variant shares the defining trait: a nanoporous solid network with porosity above ninety percent, produced by removing the liquid phase without collapse.",
-    "args": {},
-    "from": "heuristic"
+    "args": {
+      "lines": [
+        "NASA has developed polymer",
+        "aerogels for inflatable structures",
+        "and dust"
+      ]
+    },
+    "from": "directive-rhythm"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "process_steps",
     "seconds": 9.0,
     "heading": "Hydrophobic treatment prevents moisture absorption",
     "narration": "Unmodified silica aerogel is hydrophilic. Surface hydroxyl groups bond with water molecules, and absorbed moisture degrades thermal insulation and can cause structural collapse if liquid water condenses in the pores.",
     "args": {
-      "variant": 4
+      "title": "TITLE=Hydrophobic modification",
+      "steps": [
+        [
+          "STEP",
+          "Expose wet gel to silane vapor"
+        ],
+        [
+          "STEP",
+          "Silane reacts with surface hydroxyl groups"
+        ],
+        [
+          "STEP",
+          "Methyl groups replace hydroxyl groups"
+        ]
+      ],
+      "note": "Surface becomes water-repellent"
     },
-    "from": "heuristic"
+    "from": "directive"
   },
   {
     "segment": "text_beat",
@@ -607,61 +716,102 @@
         "a silane"
       ]
     },
-    "from": "heuristic"
+    "from": "directive-rhythm"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "process_steps",
     "seconds": 6.62,
     "heading": "Hydrophobic treatment prevents moisture absorption",
     "narration": "The silane reacts with hydroxyl groups on the silica surface, replacing them with nonpolar methyl groups.",
     "args": {
-      "variant": 0
+      "title": "TITLE=Hydrophobic modification",
+      "steps": [
+        [
+          "STEP",
+          "Expose wet gel to silane vapor"
+        ],
+        [
+          "STEP",
+          "Silane reacts with surface hydroxyl groups"
+        ],
+        [
+          "STEP",
+          "Methyl groups replace hydroxyl groups"
+        ]
+      ],
+      "note": "Surface becomes water-repellent"
     },
-    "from": "heuristic"
+    "from": "directive"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "text_beat",
     "seconds": 6.21,
     "heading": "Hydrophobic treatment prevents moisture absorption",
     "narration": "The treated aerogel becomes hydrophobic \u2014 water beads on its surface rather than wetting it.",
     "args": {
-      "variant": 1
+      "lines": [
+        "The treated aerogel becomes",
+        "hydrophobic"
+      ]
     },
-    "from": "heuristic"
+    "from": "directive-rhythm"
   },
   {
-    "segment": "text_beat",
+    "segment": "process_steps",
     "seconds": 5.79,
     "heading": "Hydrophobic treatment prevents moisture absorption",
     "narration": "This modification is essential for outdoor applications and for aerogels used in humid environments.",
     "args": {
-      "lines": [
-        "This modification is essential",
-        "for outdoor applications and",
-        "for aerogels"
-      ]
+      "title": "TITLE=Hydrophobic modification",
+      "steps": [
+        [
+          "STEP",
+          "Expose wet gel to silane vapor"
+        ],
+        [
+          "STEP",
+          "Silane reacts with surface hydroxyl groups"
+        ],
+        [
+          "STEP",
+          "Methyl groups replace hydroxyl groups"
+        ]
+      ],
+      "note": "Surface becomes water-repellent"
     },
-    "from": "heuristic"
+    "from": "directive"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "text_beat",
     "seconds": 9.0,
     "heading": "Hydrophobic treatment prevents moisture absorption",
     "narration": "The treatment does not significantly alter the pore structure or thermal properties, but it extends the material's useful lifetime in real-world conditions.",
     "args": {
-      "variant": 2
+      "lines": [
+        "The treatment does not",
+        "significantly alter the pore",
+        "structure"
+      ]
     },
-    "from": "heuristic"
+    "from": "directive-rhythm"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "checklist_reveal",
     "seconds": 8.28,
     "heading": "What to notice in the edit",
     "narration": "The material is not exotic in composition \u2014 it is silicon dioxide, the second most abundant compound in Earth's crust.",
     "args": {
-      "variant": 3
+      "title": "TITLE=Aerogel defining features",
+      "items": [
+        "+Silica network with nanometer-scale strands",
+        "+Porosity ninety to ninety-nine percent",
+        "+Supercritical drying required",
+        "-Not a foam with closed cells",
+        "-Not produced by freeze-drying"
+      ],
+      "note": ""
     },
-    "from": "heuristic"
+    "from": "directive"
   },
   {
     "segment": "text_beat",
@@ -675,41 +825,57 @@
         "a gel's"
       ]
     },
-    "from": "heuristic"
+    "from": "directive-rhythm"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "checklist_reveal",
     "seconds": 7.03,
     "heading": "What to notice in the edit",
     "narration": "The method is reproducible and well documented, but it requires equipment capable of reaching supercritical conditions safely.",
     "args": {
-      "variant": 4
+      "title": "TITLE=Aerogel defining features",
+      "items": [
+        "+Silica network with nanometer-scale strands",
+        "+Porosity ninety to ninety-nine percent",
+        "+Supercritical drying required",
+        "-Not a foam with closed cells",
+        "-Not produced by freeze-drying"
+      ],
+      "note": ""
     },
-    "from": "heuristic"
+    "from": "directive"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "text_beat",
     "seconds": 9.0,
     "heading": "What to notice in the edit",
     "narration": "The resulting material is counterintuitive: a solid that is mostly empty space, an insulator that looks like frozen smoke, a brittle ceramic that can be translucent.",
     "args": {
-      "variant": 0
+      "lines": [
+        "The resulting material is",
+        "counterintuitive: a solid that",
+        "is mostly"
+      ]
     },
-    "from": "heuristic"
+    "from": "directive-rhythm"
   },
   {
-    "segment": "text_beat",
+    "segment": "checklist_reveal",
     "seconds": 5.79,
     "heading": "What to notice in the edit",
     "narration": "The properties follow directly from the structure, and the structure follows from the process.",
     "args": {
-      "lines": [
-        "The properties follow directly",
-        "from the structure, and",
-        "the structure"
-      ]
+      "title": "TITLE=Aerogel defining features",
+      "items": [
+        "+Silica network with nanometer-scale strands",
+        "+Porosity ninety to ninety-nine percent",
+        "+Supercritical drying required",
+        "-Not a foam with closed cells",
+        "-Not produced by freeze-drying"
+      ],
+      "note": ""
     },
-    "from": "heuristic"
+    "from": "directive"
   },
   {
     "segment": "text_beat",
@@ -726,28 +892,28 @@
     "from": "directive"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "text_beat",
     "seconds": 9.0,
     "heading": "Evidence limit",
     "narration": "Some sources cite zero point zero zero one grams per cubic centimeter, others zero point zero zero three, and some report values as high as zero point zero zero five grams per cubic centimeter for the lightest samples.",
     "args": {
-      "variant": 4
+      "lines": [
+        "Some sources cite zero",
+        "point zero zero one",
+        "grams per"
+      ]
     },
-    "from": "directive+destagnate"
+    "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Evidence limit",
     "narration": "The variation reflects differences in how density is measured \u2014 whether by geometric volume or by helium pycnometry, which accounts for closed pores.",
     "args": {
-      "lines": [
-        "The variation reflects differences",
-        "in how density is",
-        "measured"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+destagnate"
   },
   {
     "segment": "text_beat",
@@ -764,35 +930,44 @@
     "from": "directive"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "text_beat",
     "seconds": 9.0,
     "heading": "Evidence limit",
     "narration": "Transmission electron microscopy requires thin sections and can introduce artifacts. Small-angle X-ray scattering provides statistical information about pore size distribution but not direct images.",
     "args": {
-      "variant": 0
-    },
-    "from": "directive+destagnate"
-  },
-  {
-    "segment": "text_beat",
-    "seconds": 9.0,
-    "heading": "Evidence limit",
-    "narration": "The overall picture is consistent, but precise values for the lowest density or smallest pore size should be understood as representative rather than absolute.",
-    "args": {
       "lines": [
-        "The overall picture is",
-        "consistent, but precise values"
+        "Transmission electron microscopy requires",
+        "thin sections and can",
+        "introduce artifacts."
       ]
     },
     "from": "directive"
   },
   {
-    "segment": "light_attenuation",
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "The overall picture is consistent, but precise values for the lowest density or smallest pore size should be understood as representative rather than absolute.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "contrast_pair",
     "seconds": 6.21,
     "heading": "Optical properties derive from nanoscale scattering centers",
     "narration": "Aerogel appears translucent or milky rather than transparent, even though silica itself is optically clear.",
-    "args": {},
-    "from": "heuristic"
+    "args": {
+      "term": "TERM=Transparency",
+      "includes": [
+        "Aerogel transmits visible light with scattering"
+      ],
+      "excludes": [
+        "Window glass transmits without scattering"
+      ]
+    },
+    "from": "directive"
   },
   {
     "segment": "text_beat",
@@ -806,57 +981,83 @@
         "encounters density"
       ]
     },
-    "from": "heuristic"
+    "from": "directive-rhythm"
   },
   {
-    "segment": "light_attenuation",
+    "segment": "contrast_pair",
     "seconds": 7.45,
     "heading": "Optical properties derive from nanoscale scattering centers",
     "narration": "When the characteristic size of these features is comparable to the wavelength of visible light, Rayleigh scattering dominates.",
-    "args": {},
-    "from": "heuristic"
+    "args": {
+      "term": "TERM=Transparency",
+      "includes": [
+        "Aerogel transmits visible light with scattering"
+      ],
+      "excludes": [
+        "Window glass transmits without scattering"
+      ]
+    },
+    "from": "directive"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "text_beat",
     "seconds": 5.38,
     "heading": "Optical properties derive from nanoscale scattering centers",
     "narration": "Shorter wavelengths scatter more strongly than longer ones, following an inverse fourth-power law.",
     "args": {
-      "variant": 1
+      "lines": [
+        "Shorter wavelengths scatter more",
+        "strongly than longer ones,",
+        "following"
+      ]
     },
-    "from": "heuristic"
+    "from": "directive-rhythm"
   },
   {
-    "segment": "text_beat",
+    "segment": "contrast_pair",
     "seconds": 6.62,
     "heading": "Optical properties derive from nanoscale scattering centers",
     "narration": "This is why thin aerogel samples appear blue in transmitted light and yellowish in reflected light.",
     "args": {
-      "lines": [
-        "This is why thin",
-        "aerogel samples appear blue",
-        "in transmitted"
+      "term": "TERM=Transparency",
+      "includes": [
+        "Aerogel transmits visible light with scattering"
+      ],
+      "excludes": [
+        "Window glass transmits without scattering"
       ]
     },
-    "from": "heuristic"
+    "from": "directive"
   },
   {
-    "segment": "light_attenuation",
+    "segment": "text_beat",
     "seconds": 9.0,
     "heading": "Optical properties derive from nanoscale scattering centers",
     "narration": "Thicker samples scatter so much light that they appear opaque white. The effect is quantified by the extinction coefficient, which for silica aerogel ranges from ten to one hundred inverse centimeters depending on density.",
-    "args": {},
-    "from": "heuristic"
+    "args": {
+      "lines": [
+        "Thicker samples scatter so",
+        "much light that they",
+        "appear opaque"
+      ]
+    },
+    "from": "directive-rhythm"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "contrast_pair",
     "seconds": 5.79,
     "heading": "Optical properties derive from nanoscale scattering centers",
     "narration": "For comparison, window glass has an extinction coefficient below zero point one inverse centimeters.",
     "args": {
-      "variant": 2
+      "term": "TERM=Transparency",
+      "includes": [
+        "Aerogel transmits visible light with scattering"
+      ],
+      "excludes": [
+        "Window glass transmits without scattering"
+      ]
     },
-    "from": "heuristic"
+    "from": "directive"
   },
   {
     "segment": "text_beat",
@@ -869,15 +1070,23 @@
         "a defect"
       ]
     },
-    "from": "heuristic"
+    "from": "directive-rhythm"
   },
   {
-    "segment": "light_attenuation",
+    "segment": "contrast_pair",
     "seconds": 7.03,
     "heading": "Optical properties derive from nanoscale scattering centers",
     "narration": "Some applications exploit it: aerogel panels in skylights diffuse sunlight without the heat gain of clear glazing.",
-    "args": {},
-    "from": "heuristic"
+    "args": {
+      "term": "TERM=Transparency",
+      "includes": [
+        "Aerogel transmits visible light with scattering"
+      ],
+      "excludes": [
+        "Window glass transmits without scattering"
+      ]
+    },
+    "from": "directive"
   },
   {
     "segment": "stat_card",
@@ -980,7 +1189,7 @@
     "heading": "Synthesis parameters control pore size distribution",
     "narration": "A higher precursor concentration produces smaller pores and a denser network. The choice of catalyst also matters: acid catalysis tends to yield finer, more uniform structures, while base catalysis produces coarser networks with larger pores.",
     "args": {
-      "variant": 1
+      "variant": 2
     },
     "from": "directive+destagnate"
   },
@@ -1018,7 +1227,7 @@
     "heading": "Synthesis parameters control pore size distribution",
     "narration": "The range already stated \u2014 twenty to one hundred nanometers \u2014 reflects typical outcomes across these parameter variations.",
     "args": {
-      "variant": 2
+      "variant": 3
     },
     "from": "directive+destagnate"
   },
@@ -1056,7 +1265,7 @@
     "heading": "Synthesis parameters control pore size distribution",
     "narration": "The ability to control pore size is important for applications: smaller pores improve thermal insulation by further restricting gas-phase conduction, while larger pores reduce optical scattering and increase transparency.",
     "args": {
-      "variant": 3
+      "variant": 4
     },
     "from": "directive+destagnate"
   },
@@ -1079,7 +1288,7 @@
     "heading": "Closing",
     "narration": "Aerogel is made of silicon dioxide arranged as a skeletal network, with air occupying most of the volume.",
     "args": {
-      "variant": 3
+      "variant": 0
     },
     "from": "directive"
   },
@@ -1089,7 +1298,7 @@
     "heading": "Closing",
     "narration": "The material exists because supercritical drying removes liquid without surface tension. The result is a solid with properties that follow from its structure \u2014 low density, low thermal conductivity, high porosity, and brittleness. The chemistry is ordinary; the geometry is not.",
     "args": {
-      "variant": 4
+      "variant": 1
     },
     "from": "directive"
   }

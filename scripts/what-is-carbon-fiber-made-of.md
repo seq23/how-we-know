@@ -52,7 +52,7 @@ Carbon fiber straight from carbonization has a smooth, inert surface. Epoxy and 
 
 ### Producer POV
 
-[HUMAN] I quoted 286 megajoules per kilogram for production energy as if it were settled. Published estimates actually run from 200 to over 400 depending on the process, so I picked the mid-range and said so instead of stating one number as fact.
+[HUMAN] I find a clean audit trail beautiful. A file named correctly. A number you can follow to its source. A system whose failures leave evidence instead of excuses. Most people see administrative debris; I see order made visible.
 
 ### The aligned carbon sheets are why the fiber is strong along its length
 

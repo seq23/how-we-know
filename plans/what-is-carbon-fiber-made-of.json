@@ -11,16 +11,18 @@
     "from": "directive"
   },
   {
-    "segment": "material_image",
+    "segment": "text_beat",
     "seconds": 5.38,
     "heading": "Cold open",
     "narration": "That figure comes from ASTM International's standard test methods for carbon fiber composition.",
     "args": {
-      "subject": "carbon-fiber",
-      "label": "CARBON FIBER",
-      "pick": 0
+      "lines": [
+        "That figure comes from",
+        "ASTM International's standard test",
+        "methods"
+      ]
     },
-    "from": "directive-rhythm+material"
+    "from": "directive-rhythm"
   },
   {
     "segment": "thermal_ascent",
@@ -114,16 +116,18 @@
     "from": "directive"
   },
   {
-    "segment": "material_image",
+    "segment": "text_beat",
     "seconds": 9.0,
     "heading": "The precursor is a polymer most people have never heard of",
     "narration": "PAN was first synthesized in the 1930s, but its use as a carbon fiber precursor was not developed until the 1960s when researchers at multiple institutions discovered that controlled oxidation could stabilize the polymer before carbonization.",
     "args": {
-      "subject": "carbon-fiber",
-      "label": "CARBON FIBER",
-      "pick": 1
+      "lines": [
+        "PAN was first synthesized",
+        "in the 1930s, but",
+        "its use"
+      ]
     },
-    "from": "directive-rhythm+material"
+    "from": "directive-rhythm"
   },
   {
     "segment": "process_column",
@@ -553,22 +557,22 @@
   },
   {
     "segment": "quote_card",
-    "seconds": 5.79,
+    "seconds": 7.86,
     "heading": "Producer POV",
-    "narration": "I quoted 286 megajoules per kilogram for production energy as if it were settled.",
+    "narration": "I find a clean audit trail beautiful. A file named correctly. A number you can follow to its source.",
     "args": {
-      "text": "I quoted 286 megajoules per kilogram for production energy as if it were settled.",
+      "text": "I find a clean audit trail beautiful. A file named correctly. A number you can follow to its source.",
       "attrib": ""
     },
     "from": "heading"
   },
   {
     "segment": "quote_card",
-    "seconds": 9.0,
+    "seconds": 7.86,
     "heading": "Producer POV",
-    "narration": "Published estimates actually run from 200 to over 400 depending on the process, so I picked the mid-range and said so instead of stating one number as fact.",
+    "narration": "A system whose failures leave evidence instead of excuses. Most people see administrative debris; I see order made visible.",
     "args": {
-      "text": "Published estimates actually run from 200 to over 400 depending on the process, so I picked the mid-range and said so instead of stating one number as fact.",
+      "text": "A system whose failures leave evidence instead of excuses. Most people see administrative debris; I see order made visible.",
       "attrib": ""
     },
     "from": "heading"
