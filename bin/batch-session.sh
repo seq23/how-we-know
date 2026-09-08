@@ -156,6 +156,52 @@ echo "  to narrate : ${pending_audio:-none}"
 echo "  to render  : ${pending_render:-none}"
 echo "  no plan yet: ${pending_plan:-none}"
 
+if [ -n "$DRY" ]; then echo; echo "DRY RUN - nothing done."; exit 0; fi
+
+# ---------------------------------------------------------------------------
+# SELF-HEAL AN UNTRACED PRODUCER POV, BEFORE ANYTHING IS VOICED.
+#
+# loop/cloud_upload.py refuses to upload an episode whose [HUMAN] beat has no
+# entry in pov/pov-assignments.json, and that refusal is right: the authoring
+# model composes those beats, and she did not write them. On 2026-09-08 eight
+# rendered, captioned, shelved materials episodes were stranded on exactly that
+# - a permanent stall, because nothing in the repo ever wrote an assignment.
+#
+# loop/pov_repair.py swaps the invented sentence for a real line from
+# pov/pov-bank.json (her own interviews, her approved voice - matching, not
+# approving) and invalidates the audio beat, the caption track and the render
+# so the rest of this script rebuilds them. It runs HERE because everything it
+# invalidates is rebuilt below, in this same unattended pass.
+echo; echo "--- self-heal any untraced producer POV ---"
+$PY loop/pov_repair.py || echo "  (see the banner above; nothing was changed for any episode it refused)"
+
+# The repair may have superseded a render, so re-ask what is narratable and
+# renderable. Recomputing is the point: the lists above were taken before it ran.
+pending_audio=$($PY - <<'PYEOF2'
+import json, glob, os, sys
+sys.path.insert(0, "loop")
+import batch_queue
+out = []
+for slug in batch_queue.queued_slugs():
+    plan = f"plans/{slug}.json"
+    if not os.path.exists(plan):
+        continue
+    want = len(json.load(open(plan)))
+    have = len(glob.glob(f"audio/{slug}/*.wav"))
+    if have < want:
+        out.append(f"{slug}:{have}/{want}")
+print(" ".join(out))
+PYEOF2
+)
+echo "  to narrate now: ${pending_audio:-none}"
+pending_render=$(renderable)
+echo "  to render now : ${pending_render:-none}"
+
+# THE "NOTHING TO DO" GATE LIVES HERE, AFTER THE POV REPAIR, NOT BEFORE IT.
+# It used to sit above and exit first, which meant a shelf whose ONLY
+# problem was an untraced producer POV reported "nothing to do" and left
+# eight episodes stranded -- the repair below could never run, because the
+# script had already decided there was nothing to repair.
 if [ -z "${pending_audio// }" ] && [ -z "${pending_render// }" ]; then
   echo
   if [ -n "${pending_plan// }" ]; then
@@ -177,7 +223,7 @@ if [ -z "${pending_audio// }" ] && [ -z "${pending_render// }" ]; then
   exit 0
 fi
 
-if [ -n "$DRY" ]; then echo; echo "DRY RUN - nothing done."; exit 0; fi
+
 
 # Hold the machine awake for the whole batch. -dimsu covers display, idle, disk,
 # system and user-idle sleep; without it a long narration run dies on lid close.
@@ -389,6 +435,26 @@ if fs:
 # git tracks. That is the artifact that lets the CLOUD rebuild a caption track
 # with no laptop at all - so even a batch that is interrupted before the commit
 # below leaves the loop able to heal itself on the next push.
+# A RENDER WITHOUT A THUMBNAIL IS INVISIBLE TO THE UPLOAD LANE.
+# backfill.local_assets() requires both, and thumb_one() above only fires for
+# an episode this run rendered. Anything rendered by an earlier run, or whose
+# thumbnail build failed once, stays un-uploadable forever - five materials
+# episodes were in exactly that state on 2026-09-08. Sweep every rendered
+# episode, not only this run's.
+echo; echo "--- thumbnails for anything rendered without one ---"
+for slug in $($PY -c "
+import sys, os; sys.path.insert(0,'loop')
+import batch_queue
+print(' '.join(s for s in batch_queue.queued_slugs()
+                if os.path.exists(f'renders/{s}-final.mp4')
+                and not os.path.exists(f'channel/thumbnails/{s}.jpg')))"); do
+  dom=$($PY -c "
+import sys; sys.path.insert(0,'loop')
+import domains; print(domains.domain_of_slug('$slug') or 'deep-sea-ocean-science')" 2>/dev/null) \
+    || dom=deep-sea-ocean-science
+  thumb_one "$slug" "$dom"
+done
+
 echo; echo "--- captions (and the measured beat timings the cloud needs) ---"
 $PY loop/captions_build.py
 CAPRC=$?
@@ -405,6 +471,7 @@ esac
 # loop/captions_build.py has already `git add`ed exactly the files it wrote.
 # Nothing else is staged here: `git add -A` on this machine would sweep in
 # renders, work directories and half-written audio.
+git add -- pov/pov-assignments.json scripts plans channel/thumbnails 2>/dev/null
 if ! git diff --cached --quiet; then
   git commit -q -m "captions: tracks and measured beat timings from the batch
 
