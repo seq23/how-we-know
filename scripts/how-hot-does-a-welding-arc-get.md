@@ -55,7 +55,7 @@ Arc voltage rises with arc length because the plasma column has electrical resis
 
 ### Producer POV
 
-[HUMAN] I had three arc temperatures from three welding processes and almost picked the highest one as the answer. They aren't competing claims, they're different processes measured differently. Picking a winner would have erased that.
+[HUMAN] Failure isn't an insult to engineering; pretending failure has been eliminated is. Every material has conditions, limits and a life. The question is whether those limits were understood and monitored, or ignored until the failure became somebody else's emergency.
 
 ### Measurement methods have spatial and temporal resolution limits
 

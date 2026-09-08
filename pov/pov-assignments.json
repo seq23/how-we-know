@@ -192,21 +192,21 @@
       "tag": "evidence-limit"
     },
     {
-      "video": "how-does-quenching-harden-steel",
-      "pov_id": "pov-100",
-      "tier": "specific",
-      "source": "owner-approved 2026-09-05",
-      "line": "I wanted one clean cooling-rate number for 'fast enough to harden steel.' It doesn't exist as a constant \u2014 the threshold moves with the alloy's own composition. I published the range and said the exact number has to be measured, not looked up.",
-      "why": "cooling rate: wanted one clean threshold, found a range that depends on the steel",
-      "tag": "evidence-limit"
-    },
-    {
       "video": "how-do-self-healing-materials-work",
       "pov_id": "pov-101",
       "tier": "specific",
       "source": "owner-approved 2026-09-05",
       "line": "What convinced me these were real was that the papers report how much strength came back, not that the crack closed. A crack you can no longer see and a crack that can carry load again are different claims, and the honest work says which one it is making.",
       "why": "healing: the papers report recovered strength, not a closed crack",
+      "tag": "evidence-limit"
+    },
+    {
+      "video": "how-does-quenching-harden-steel",
+      "pov_id": "pov-100",
+      "tier": "specific",
+      "source": "owner-approved 2026-09-05",
+      "line": "I wanted one clean cooling-rate number for 'fast enough to harden steel.' It doesn't exist as a constant \u2014 the threshold moves with the alloy's own composition. I published the range and said the exact number has to be measured, not looked up.",
+      "why": "cooling rate: wanted one clean threshold, found a range that depends on the steel",
       "tag": "evidence-limit"
     },
     {
@@ -217,18 +217,22 @@
       "line": "I almost opened on the moment of impact, because that's the dramatic beat. But impact doesn't decide the fracture pattern \u2014 the cooling process already did, weeks earlier. I moved the real event to where it actually happens."
     },
     {
-      "video": "how-strong-is-titanium",
-      "pov_id": "pov-140",
+      "video": "how-hot-does-a-welding-arc-get",
+      "pov_id": "pov-120",
       "tier": "specific",
-      "source": "owner-approved 2026-09-07",
-      "line": "I kept trying to land on one number for 'how strong,' because that's what the title promises. There isn't one. Tensile, yield, specific and fatigue strength are four different answers, and I wrote them as four."
+      "source_answer": "11b",
+      "line": "Failure isn't an insult to engineering; pretending failure has been eliminated is. Every material has conditions, limits and a life. The question is whether those limits were understood and monitored, or ignored until the failure became somebody else's emergency.",
+      "matched_by": "tag:failure score 2.8",
+      "recorded_by": "loop/pov_repair.py"
     },
     {
-      "video": "how-is-damascus-steel-made",
-      "pov_id": "pov-141",
+      "video": "how-is-3d-printed-metal-made",
+      "pov_id": "pov-119",
       "tier": "specific",
-      "source": "owner-approved 2026-09-07",
-      "line": "I nearly treated historical and modern Damascus steel as one material made two ways. They're not \u2014 they're two different materials separated by a lost century of technique. Conflating them was the actual error to avoid here."
+      "source_answer": "11a",
+      "line": "Watching something be made, I think about how many things had to become controllable first \u2014 temperature, pressure, purity, timing, tolerances, sequence, inspection. What looks smooth at the end is usually violent forces being controlled very precisely.",
+      "matched_by": "tag:systems score 2.8",
+      "recorded_by": "loop/pov_repair.py"
     },
     {
       "video": "how-is-a-silicon-wafer-made",
@@ -238,6 +242,13 @@
       "line": "I wrote 'nine-nines pure' like purity was a certificate stamped once. It isn't. Every step after purification can reintroduce contamination, so I rewrote it as a chain of measurements instead of an achieved state."
     },
     {
+      "video": "how-is-damascus-steel-made",
+      "pov_id": "pov-141",
+      "tier": "specific",
+      "source": "owner-approved 2026-09-07",
+      "line": "I nearly treated historical and modern Damascus steel as one material made two ways. They're not \u2014 they're two different materials separated by a lost century of technique. Conflating them was the actual error to avoid here."
+    },
+    {
       "video": "how-strong-is-graphene",
       "pov_id": "pov-143",
       "tier": "specific",
@@ -245,11 +256,72 @@
       "line": "The 130 gigapascal figure is real, and I kept wanting to drop the qualifier and just call graphene 'the strongest material.' It's the strongest material tested, on a defect-free micrometer sample \u2014 not yet a material you could build anything from."
     },
     {
+      "video": "how-strong-is-titanium",
+      "pov_id": "pov-140",
+      "tier": "specific",
+      "source": "owner-approved 2026-09-07",
+      "line": "I kept trying to land on one number for 'how strong,' because that's what the title promises. There isn't one. Tensile, yield, specific and fatigue strength are four different answers, and I wrote them as four."
+    },
+    {
       "video": "what-is-a-semiconductor-made-of",
       "pov_id": "pov-144",
       "tier": "specific",
       "source": "owner-approved 2026-09-07",
       "line": "'What is it made of' sounds like it wants one element. Silicon is over ninety percent of production, but the defining property is the impurity deliberately added to it, not the base material. I answered the question underneath the question."
+    },
+    {
+      "video": "what-is-aerogel-made-of",
+      "pov_id": "pov-046",
+      "tier": "transferable",
+      "source_answer": 20,
+      "line": "What keeps me interested is how it exposes the limits of our idea of normal. Every time we think we know what life requires, something down there shows us another way.",
+      "matched_by": "tag:thesis score 2.0",
+      "recorded_by": "loop/pov_repair.py"
+    },
+    {
+      "video": "what-is-carbon-fiber-made-of",
+      "pov_id": "pov-110",
+      "tier": "transferable",
+      "source_answer": "05",
+      "line": "I find a clean audit trail beautiful. A file named correctly. A number you can follow to its source. A system whose failures leave evidence instead of excuses. Most people see administrative debris; I see order made visible.",
+      "matched_by": "tag:systems score 2.0",
+      "recorded_by": "loop/pov_repair.py"
+    },
+    {
+      "video": "what-is-concrete-made-of",
+      "pov_id": "pov-094",
+      "tier": "transferable",
+      "source_answer": "B19",
+      "line": "The questions worth chasing are the ones where the answer changes how you understand a system.",
+      "matched_by": "tag:thesis score 2.0",
+      "recorded_by": "loop/pov_repair.py"
+    },
+    {
+      "video": "what-is-kevlar-made-of",
+      "pov_id": "pov-113",
+      "tier": "transferable",
+      "source_answer": "07",
+      "line": "Complicated means there are many parts. Hard means the important constraint cannot be avoided. Hundreds of files is complicated \u2014 tools can map it. Proving something is actually correct is hard, because a green check can still be stale, incomplete, or aimed at the wrong thing.",
+      "matched_by": "tag:systems score 2.0",
+      "recorded_by": "loop/pov_repair.py"
+    },
+    {
+      "video": "why-is-carbon-fiber-so-strong",
+      "pov_id": "pov-086",
+      "tier": "transferable",
+      "source_answer": "B15",
+      "line": "What interests me is the translation layer. An instrument doesn't hand us reality. It produces a signal, and then humans calibrate it, process it, interpret it.",
+      "matched_by": "transferable tag:instruments (the bank permits any evidence-based niche)",
+      "recorded_by": "loop/pov_repair.py"
+    },
+    {
+      "video": "why-is-steel-so-strong",
+      "pov_id": "pov-047",
+      "tier": "transferable",
+      "source_answer": "B1",
+      "line": "When someone gives me a fact with a number in it, my first instinct is: where did the number come from? Not because I assume they're lying. Numbers can make almost anything sound authoritative.",
+      "matched_by": "transferable tag:numbers (the bank permits any evidence-based niche)",
+      "recorded_by": "loop/pov_repair.py"
     }
   ]
 }

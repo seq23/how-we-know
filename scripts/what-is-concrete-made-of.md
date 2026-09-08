@@ -46,7 +46,7 @@ Full hydration of the cement requires roughly 0.42 units of water per unit of ce
 
 ### Producer POV
 
-[HUMAN] I kept looking for the clever ingredient and there isn't one. The interesting decision in concrete is how much water you add, and that decision is usually made by whoever is holding the hose.
+[HUMAN] The questions worth chasing are the ones where the answer changes how you understand a system.
 
 ### Aggregate is most of it, and it is not filler
 

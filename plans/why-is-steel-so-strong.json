@@ -309,16 +309,18 @@
     "from": "directive"
   },
   {
-    "segment": "material_image",
+    "segment": "text_beat",
     "seconds": 7.03,
     "heading": "The crystal structure changes with temperature",
     "narration": "The gaps in austenite are larger. Carbon dissolves more easily. Dislocations move more freely. The steel softens.",
     "args": {
-      "subject": "micrograph-steel",
-      "label": "AUSTENITE",
-      "pick": 0
+      "lines": [
+        "The gaps in austenite",
+        "are larger. Carbon dissolves",
+        "more easily."
+      ]
     },
-    "from": "directive-rhythm+material"
+    "from": "directive-rhythm"
   },
   {
     "segment": "thermal_ascent",
@@ -418,16 +420,18 @@
     "from": "directive"
   },
   {
-    "segment": "material_image",
+    "segment": "text_beat",
     "seconds": 9.0,
     "heading": "Quenching and tempering control the trade-off",
     "narration": "Martensite is strong but brittle. To recover toughness, the steel is tempered: reheated to a temperature below the austenite transition, typically between two hundred and six hundred degrees Celsius, and held there.",
     "args": {
-      "subject": "micrograph-steel",
-      "label": "MARTENSITE",
-      "pick": 1
+      "lines": [
+        "Martensite is strong but",
+        "brittle. To recover toughness,",
+        "the steel"
+      ]
     },
-    "from": "directive-rhythm+material"
+    "from": "directive-rhythm"
   },
   {
     "segment": "evidence_chain",
@@ -475,19 +479,12 @@
     "from": "directive"
   },
   {
-    "segment": "evidence_chain",
+    "segment": "ambient_drift",
     "seconds": 6.21,
     "heading": "Quenching and tempering control the trade-off",
     "narration": "The range is wide because the trade-off is continuous. There is no single correct answer.",
     "args": {
-      "title": "heat treatment",
-      "stages": [
-        "austenite formation",
-        "rapid quench",
-        "martensite",
-        "temper at lower temperature"
-      ],
-      "conclusion": "controlled toughness"
+      "variant": 2
     },
     "from": "directive+destagnate"
   },
@@ -507,22 +504,22 @@
   },
   {
     "segment": "quote_card",
-    "seconds": 7.45,
+    "seconds": 8.69,
     "heading": "Producer POV",
-    "narration": "I wrote the dislocation-pinning explanation like it covered every steel everywhere. It covers carbon steel at room temperature.",
+    "narration": "When someone gives me a fact with a number in it, my first instinct is: where did the number come from?",
     "args": {
-      "text": "I wrote the dislocation-pinning explanation like it covered every steel everywhere. It covers carbon steel at room temperature.",
+      "text": "When someone gives me a fact with a number in it, my first instinct is: where did the number come from?",
       "attrib": ""
     },
     "from": "heading"
   },
   {
     "segment": "quote_card",
-    "seconds": 7.45,
+    "seconds": 5.38,
     "heading": "Producer POV",
-    "narration": "High heat and high-carbon steels behave differently, and generalizing past that would have been the easy, wrong move.",
+    "narration": "Not because I assume they're lying. Numbers can make almost anything sound authoritative.",
     "args": {
-      "text": "High heat and high-carbon steels behave differently, and generalizing past that would have been the easy, wrong move.",
+      "text": "Not because I assume they're lying. Numbers can make almost anything sound authoritative.",
       "attrib": ""
     },
     "from": "heading"
@@ -556,22 +553,12 @@
     "from": "directive"
   },
   {
-    "segment": "source_compare",
+    "segment": "ambient_drift",
     "seconds": 8.69,
     "heading": "Alloying elements shift the curve but not the mechanism",
     "narration": "Molybdenum at around zero point five percent raises the tempering temperature, allowing the steel to retain strength at higher service temperatures.",
     "args": {
-      "title": "alloying effects",
-      "sources": [
-        [
-          "ASM",
-          "carbide formation"
-        ],
-        [
-          "NIST",
-          "transformation kinetics"
-        ]
-      ]
+      "variant": 3
     },
     "from": "directive+destagnate"
   },
@@ -604,22 +591,12 @@
     "from": "directive"
   },
   {
-    "segment": "source_compare",
+    "segment": "ambient_drift",
     "seconds": 8.69,
     "heading": "Alloying elements shift the curve but not the mechanism",
     "narration": "These elements modify the behavior, but they do not replace the core mechanism. The strength still comes from preventing dislocation motion.",
     "args": {
-      "title": "alloying effects",
-      "sources": [
-        [
-          "ASM",
-          "carbide formation"
-        ],
-        [
-          "NIST",
-          "transformation kinetics"
-        ]
-      ]
+      "variant": 4
     },
     "from": "directive+destagnate"
   },
@@ -751,15 +728,16 @@
     "from": "directive"
   },
   {
-    "segment": "definition_card",
+    "segment": "text_beat",
     "seconds": 8.28,
     "heading": "Grain boundaries add another layer of resistance",
     "narration": "Typical grain sizes range from ten to one hundred microns. Finer grains are achieved by controlled cooling or mechanical working.",
     "args": {
-      "term": "grain boundary",
-      "meaning": "interface between crystal domains",
-      "boundary": "visible after etching",
-      "source": "measured by optical microscopy"
+      "lines": [
+        "Typical grain sizes range",
+        "from ten to one",
+        "hundred microns."
+      ]
     },
     "from": "directive+destagnate"
   },
@@ -878,18 +856,12 @@
     "from": "directive"
   },
   {
-    "segment": "contrast_pair",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "The role of carbides in high-carbon steels",
     "narration": "This is the principle behind all two-phase alloys: a hard phase for strength, a ductile phase for toughness, and a fine mixture of the two.",
     "args": {
-      "term": "carbide distribution",
-      "includes": [
-        "fine precipitates in tempered steel"
-      ],
-      "excludes": [
-        "coarse networks in cast iron"
-      ]
+      "variant": 0
     },
     "from": "directive+destagnate"
   },

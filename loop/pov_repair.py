@@ -58,6 +58,9 @@ from pathlib import Path
 LOOP = Path(__file__).resolve().parent
 ROOT = LOOP.parent
 sys.path.insert(0, str(LOOP))
+# APPENDED, not inserted at 0: visuals/ has its own `domains` module and putting
+# it first shadowed loop/domains.py, so domain_of_slug() vanished at runtime.
+sys.path.append(str(ROOT / "visuals"))
 
 import batch_queue                                  # noqa: E402
 import domains                                      # noqa: E402
@@ -116,6 +119,79 @@ def _norm(s: str) -> str:
     return re.sub(r"[^a-z0-9]+", " ", s.lower()).strip()
 
 
+def ranked_lines(slug: str, subject: str, domain, used):
+    """Bank lines that could speak for this episode, best fit first.
+
+    `pov_match.select()` returns ONE line and raises when nothing fits. That is
+    the right contract for authoring a new script and the wrong one here: the
+    best-scoring line may reshape the episode (see repair_one), and the repair
+    needs the next candidate rather than a stop. Same scorer, same rotation
+    window, same refusal to invent -- an empty list is a refusal, not a guess.
+    """
+    # EVERY ID ALREADY ASSIGNED, not just the rotation window.
+    #
+    # pov/pov-assignments.json's own header states "one POV per video, no
+    # reuse", and V40 (loop/validate.py) enforces it across the whole file.
+    # The rotation window is a weaker rule for a different purpose - it stops a
+    # line recurring inside twelve consecutive videos - and honouring only that
+    # handed three lines to a second episode each, all three already spoken by
+    # a published deep-sea one. The strictest applicable rule wins; a bank of
+    # 144 lines against 34 episodes has room for it.
+    recent = set(used) | {a["pov_id"] for a in
+                          pov_match.hand_assignments().values()}
+    ranked = []
+    for l in pov_match.bank():
+        if l["id"] in recent:
+            continue
+        sc = pov_match.score(l, subject, domain)
+        if sc > 0:
+            ranked.append((sc, l))
+    ranked.sort(key=lambda t: (-t[0], t[1]["id"]))
+    out = [{"pov_id": l["id"], "line": l["line"], "tag": l["tag"],
+            "tier": l["tier"], "source_answer": l.get("source_answer"),
+            "matched_by": f"tag:{l['tag']} score {sc:.1f}"}
+           for sc, l in ranked]
+    # THEN the transferable pool, on the bank's own terms. pov_match.select()
+    # already falls back to it -- "transferable lines may be used in any
+    # evidence-based niche, and every video in this channel is evidence-based
+    # by construction" -- and it matters more here than there: a repair also
+    # has to find a line that does not reshape the episode, so a seven-line
+    # shortlist runs out. Two episodes refused for exactly that before this
+    # was added. Ordered after the scored lines, so a real subject match always
+    # wins; never before them, which would trade fit for convenience.
+    seen = {r["pov_id"] for r in out}
+    for tag in pov_match.FALLBACK_TAGS:
+        for l in sorted(pov_match.bank(), key=lambda x: x["id"]):
+            if (l["tier"] == "transferable" and l["tag"] == tag
+                    and l["id"] not in recent and l["id"] not in seen):
+                seen.add(l["id"])
+                out.append({"pov_id": l["id"], "line": l["line"],
+                            "tag": l["tag"], "tier": l["tier"],
+                            "source_answer": l.get("source_answer"),
+                            "matched_by": f"transferable tag:{l['tag']} "
+                                          f"(the bank permits any "
+                                          f"evidence-based niche)"})
+    return out
+
+
+def _confined(original: list, trial: list, idx: int) -> bool:
+    """Did the replacement change ONLY the beats around the one it replaced?
+
+    Same beat count, and every differing index in one contiguous run that
+    contains `idx`. A run that reaches the end of the episode is a reshape
+    wearing a contiguous shape, so it is rejected too.
+    """
+    if len(trial) != len(original):
+        return False
+    diff = [i for i in range(len(trial))
+            if original[i]["narration"] != trial[i]["narration"]]
+    if not diff or idx not in diff:
+        return False
+    if diff != list(range(diff[0], diff[-1] + 1)):
+        return False
+    return diff[-1] - diff[0] <= 3
+
+
 def repair_one(slug: str, dry_run: bool = False,
                used_ids: list[str] | None = None) -> dict:
     """Swap one episode's invented POV beat for a bank line. Returns a record."""
@@ -140,46 +216,89 @@ def repair_one(slug: str, dry_run: bool = False,
     # assignments already on disk gave five of the eight episodes the SAME
     # line (pov-119), because each call was the first as far as select() could
     # tell. Five videos in one niche saying one identical sentence is worse
-    # than the untraced beat it replaced: it reads as a tic, and the whole
-    # point of a 144-line bank is that it does not repeat inside twelve videos.
+    # than the untraced beat it replaced.
     used = list(used_ids) if used_ids is not None else \
         [a["pov_id"] for a in pov_match.hand_assignments().values()]
-    pick = pov_match.select(slug, f"{q.get(slug, '')} {slug.replace('-', ' ')}",
-                            used_ids=used,
-                            domain=domains.domain_of_slug(slug))
+
+    # THE REPLACEMENT MUST NOT RESHAPE THE REST OF THE EPISODE.
+    #
+    # CONFIRMED THE HARD WAY, 2026-09-08. The first version of this file wrote
+    # the new sentence into the script AND patched plans/<slug>.json in place.
+    # Those are two different plans. voice/narrate_all.py narrates from
+    # planner.plan(script), not from the frozen file, and the planner re-splits
+    # the paragraph it just rewrote: a bank line one sentence shorter than the
+    # invented one merged two beats into one, every index after it shifted by
+    # one, and every wav after that point silently belonged to different words.
+    # Four of eight episodes did that -- 167 beats, about twenty hours of
+    # narration, to repair one sentence -- and nothing would have reported it
+    # except captions.py refusing to write, hours later, for two episodes.
+    #
+    # So the plan is never patched. The script is edited, the plan is RE-FROZEN
+    # from the planner, and a candidate line is accepted only if the re-planned
+    # episode has the same beat count and differs from the original ONLY in the
+    # beats the [HUMAN] paragraph occupies. Anything else is rejected and the
+    # next-best line is tried. That keeps the repair to the two or three beats
+    # it should cost, and it is a property of the RESULT rather than a guess
+    # about line lengths, so it cannot be defeated by a future planner change.
+    import planner                                     # noqa: PLC0415
+    sp = SCRIPTS / f"{slug}.md"
+    original_text = sp.read_text(encoding="utf-8")
+    original_plan = json.loads((PLANS / f"{slug}.json").read_text())
+
+    subject = f"{q.get(slug, '')} {slug.replace('-', ' ')}"
+    domain = domains.domain_of_slug(slug)
+    pick = fresh = None
+    rejected = []
+    for cand in ranked_lines(slug, subject, domain, used):
+        sp.write_text(original_text.replace(para, f"{HUMAN} {cand['line']}", 1),
+                      encoding="utf-8")
+        try:
+            trial = planner.plan(str(sp))
+        except Exception:                              # noqa: BLE001
+            trial = None
+        if trial and _confined(original_plan, trial, idx):
+            pick, fresh = cand, trial
+            break
+        rejected.append(cand["pov_id"])
+    if pick is None:
+        sp.write_text(original_text, encoding="utf-8")
+        return {"slug": slug,
+                "refused": (f"no line in the bank can replace this beat without "
+                            f"reshaping the rest of the episode (tried "
+                            f"{len(rejected)}). Replacing it anyway would "
+                            f"invalidate the narration of every beat after it.")}
+
     rec = {"slug": slug, "beat": idx, "pov_id": pick["pov_id"],
            "matched_by": pick["matched_by"],
-           "was": said[:160], "now": pick["line"][:160]}
+           "was": said[:160], "now": pick["line"][:160],
+           "rejected_for_reshaping": rejected}
     if dry_run:
+        sp.write_text(original_text, encoding="utf-8")
         rec["dry_run"] = True
         return rec
 
-    # 1. the script
-    sp = SCRIPTS / f"{slug}.md"
-    text = sp.read_text(encoding="utf-8")
-    text = text.replace(para, f"{HUMAN} {pick['line']}", 1)
-    tmp = sp.with_suffix(".md.pov.tmp")
-    tmp.write_text(text, encoding="utf-8")
-    tmp.replace(sp)
-
-    # 2. the plan the audio is indexed against
-    pj = PLANS / f"{slug}.json"
-    plan = json.loads(pj.read_text())
-    plan[idx]["narration"] = pick["line"]
-    pj.write_text(json.dumps(plan, indent=2) + "\n", encoding="utf-8")
+    # 1 + 2. the script is already written; freeze the plan the planner really
+    # produces from it, so the file the assembler reads and the plan the
+    # narrator voices are the same object.
+    (PLANS / f"{slug}.json").write_text(json.dumps(fresh, indent=2) + "\n",
+                                        encoding="utf-8")
+    changed = [i for i in range(len(fresh))
+               if original_plan[i]["narration"] != fresh[i]["narration"]]
+    rec["beats_revoiced"] = changed
 
     # 3. the audio for that beat, and the manifest entry that describes it
-    wav = AUDIO / slug / f"{idx:04d}.wav"
-    if wav.exists():
-        wav.unlink()
-        rec["wav_regenerated"] = str(wav.relative_to(ROOT))
+    for i in changed:
+        wav = AUDIO / slug / f"{i:04d}.wav"
+        if wav.exists():
+            wav.unlink()
     bj = AUDIO / slug / "beats.json"
     if bj.exists():
         rows = json.loads(bj.read_text())
-        for r in rows:
-            if int(r.get("i", -1)) == idx:
-                r["narration"] = pick["line"]
-                r.pop("seconds", None)      # no longer measured: it is unvoiced
+        by = {int(r["i"]): r for r in rows if "i" in r}
+        for i in changed:
+            if i in by:
+                by[i]["narration"] = fresh[i]["narration"]
+                by[i].pop("seconds", None)   # unvoiced now: not a measurement
         bj.write_text(json.dumps(rows, indent=2) + "\n", encoding="utf-8")
 
     # 4. the caption track, which is now timed against words that changed

@@ -61,12 +61,17 @@
     "from": "heading"
   },
   {
-    "segment": "size_ladder",
+    "segment": "definition_card",
     "seconds": 6.21,
     "heading": "The powder must be spherical and the size distribution must be narrow",
     "narration": "Metal powder for additive manufacturing is not the same as powder for pressing or sintering.",
-    "args": {},
-    "from": "heuristic"
+    "args": {
+      "term": "SPHERICAL POWDER",
+      "meaning": "particles with minimal satellites and high flowability",
+      "boundary": "diameter variation typically 15 to 45 microns for most alloys",
+      "source": "ASTM International"
+    },
+    "from": "directive"
   },
   {
     "segment": "text_beat",
@@ -80,91 +85,123 @@
         "predictably"
       ]
     },
-    "from": "heuristic"
+    "from": "directive-rhythm"
   },
   {
-    "segment": "size_ladder",
+    "segment": "definition_card",
     "seconds": 9.0,
     "heading": "The powder must be spherical and the size distribution must be narrow",
     "narration": "Most powder is made by gas atomization \u2014 molten metal is broken into droplets by high-pressure inert gas, and the droplets solidify in flight.",
-    "args": {},
-    "from": "heuristic"
+    "args": {
+      "term": "SPHERICAL POWDER",
+      "meaning": "particles with minimal satellites and high flowability",
+      "boundary": "diameter variation typically 15 to 45 microns for most alloys",
+      "source": "ASTM International"
+    },
+    "from": "directive"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "text_beat",
     "seconds": 9.0,
     "heading": "The powder must be spherical and the size distribution must be narrow",
     "narration": "The size distribution matters. If the range is too wide, fine particles fill the voids between large ones, and the powder does not spread evenly.",
     "args": {
-      "variant": 0
+      "lines": [
+        "The size distribution matters.",
+        "If the range is",
+        "too wide"
+      ]
     },
-    "from": "heuristic"
+    "from": "directive-rhythm"
   },
   {
-    "segment": "text_beat",
+    "segment": "definition_card",
     "seconds": 8.28,
     "heading": "The powder must be spherical and the size distribution must be narrow",
     "narration": "A typical specification for titanium alloy powder is 15 to 45 microns, with less than 10 percent outside that range.",
     "args": {
-      "lines": [
-        "A typical specification for",
-        "titanium alloy powder is",
-        "15"
-      ]
+      "term": "SPHERICAL POWDER",
+      "meaning": "particles with minimal satellites and high flowability",
+      "boundary": "diameter variation typically 15 to 45 microns for most alloys",
+      "source": "ASTM International"
     },
-    "from": "heuristic"
+    "from": "directive"
   },
   {
-    "segment": "size_ladder",
+    "segment": "uncertainty_bar",
     "seconds": 9.0,
     "heading": "The powder must be spherical and the size distribution must be narrow",
     "narration": "The median particle size for aerospace-grade titanium alloy powder is around 25 microns, though the acceptable range is 15 to 60 microns depending on the machine and the part geometry.",
-    "args": {},
-    "from": "heuristic"
+    "args": {
+      "value": "25",
+      "unit": "microns",
+      "plus": "15 to 60",
+      "minus": null,
+      "confidence": "typical for aerospace-grade titanium alloy",
+      "caption": "median particle size"
+    },
+    "from": "directive"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "text_beat",
     "seconds": 7.86,
     "heading": "The powder must be spherical and the size distribution must be narrow",
     "narration": "Finer powder gives better surface finish but is harder to handle safely \u2014 it can be pyrophoric in air.",
     "args": {
-      "variant": 1
+      "lines": [
+        "Finer powder gives better",
+        "surface finish but is",
+        "harder"
+      ]
     },
-    "from": "heuristic"
+    "from": "directive-rhythm"
   },
   {
-    "segment": "text_beat",
+    "segment": "uncertainty_bar",
     "seconds": 5.79,
     "heading": "The powder must be spherical and the size distribution must be narrow",
     "narration": "Coarser powder flows more reliably but limits the minimum feature size you can print.",
     "args": {
-      "lines": [
-        "Coarser powder flows more",
-        "reliably but limits the",
-        "minimum feature"
-      ]
+      "value": "25",
+      "unit": "microns",
+      "plus": "15 to 60",
+      "minus": null,
+      "confidence": "typical for aerospace-grade titanium alloy",
+      "caption": "median particle size"
     },
-    "from": "heuristic"
+    "from": "directive"
   },
   {
-    "segment": "size_ladder",
+    "segment": "text_beat",
     "seconds": 9.0,
     "heading": "The powder must be spherical and the size distribution must be narrow",
     "narration": "The powder must also have low oxygen content, typically below 1300 parts per million for titanium, because oxygen embrittles the final part.",
-    "args": {},
-    "from": "heuristic"
+    "args": {
+      "lines": [
+        "The powder must also",
+        "have low oxygen content,",
+        "typically below"
+      ]
+    },
+    "from": "directive-rhythm"
   },
   {
-    "segment": "material_image",
+    "segment": "evidence_chain",
     "seconds": 9.0,
     "heading": "A laser or electron beam melts the powder in a controlled atmosphere",
     "narration": "In laser powder bed fusion, a thin layer of powder is spread across the build platform by a recoating blade or roller.",
     "args": {
-      "subject": "3d-printed-metal",
-      "label": "POWDER BED",
-      "pick": 0
+      "title": "ENERGY DELIVERY",
+      "stages": [
+        "powder layer spread",
+        "beam scans programmed path",
+        "melt pool forms",
+        "solidification",
+        "REPEAT"
+      ],
+      "conclusion": ""
     },
-    "from": "heuristic+material"
+    "from": "directive"
   },
   {
     "segment": "text_beat",
@@ -178,87 +215,128 @@
         "for small"
       ]
     },
-    "from": "heuristic"
+    "from": "directive-rhythm"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "evidence_chain",
     "seconds": 4.97,
     "heading": "A laser or electron beam melts the powder in a controlled atmosphere",
     "narration": "Where the beam hits, the powder melts and forms a melt pool.",
     "args": {
-      "variant": 3
+      "title": "ENERGY DELIVERY",
+      "stages": [
+        "powder layer spread",
+        "beam scans programmed path",
+        "melt pool forms",
+        "solidification",
+        "REPEAT"
+      ],
+      "conclusion": ""
     },
-    "from": "heuristic"
+    "from": "directive"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "text_beat",
     "seconds": 5.79,
     "heading": "A laser or electron beam melts the powder in a controlled atmosphere",
     "narration": "The melt pool is typically 100 to 200 microns wide and lasts only milliseconds.",
     "args": {
-      "variant": 4
+      "lines": [
+        "The melt pool is",
+        "typically 100 to 200",
+        "microns wide"
+      ]
     },
-    "from": "heuristic"
+    "from": "directive-rhythm"
   },
   {
-    "segment": "text_beat",
+    "segment": "evidence_chain",
     "seconds": 9.0,
     "heading": "A laser or electron beam melts the powder in a controlled atmosphere",
     "narration": "When the beam moves on, the metal solidifies. The platform drops by one layer thickness, a new layer of powder is spread, and the process repeats.",
     "args": {
-      "lines": [
-        "When the beam moves",
-        "on, the metal solidifies.",
-        "The platform"
-      ]
+      "title": "ENERGY DELIVERY",
+      "stages": [
+        "powder layer spread",
+        "beam scans programmed path",
+        "melt pool forms",
+        "solidification",
+        "REPEAT"
+      ],
+      "conclusion": ""
     },
-    "from": "heuristic"
+    "from": "directive"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "contrast_pair",
     "seconds": 6.62,
     "heading": "A laser or electron beam melts the powder in a controlled atmosphere",
     "narration": "Laser systems operate in an inert gas atmosphere \u2014 argon or nitrogen \u2014 to prevent oxidation.",
     "args": {
-      "variant": 0
+      "term": "LASER POWDER BED FUSION",
+      "includes": [
+        "inert gas atmosphere, slower, wider material range"
+      ],
+      "excludes": [
+        "electron beam in vacuum, faster, conductive materials only"
+      ]
     },
-    "from": "heuristic"
+    "from": "directive"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "text_beat",
     "seconds": 7.03,
     "heading": "A laser or electron beam melts the powder in a controlled atmosphere",
     "narration": "Electron beam systems operate in vacuum, which eliminates oxidation entirely but requires the powder to be conductive.",
     "args": {
-      "variant": 1
+      "lines": [
+        "Electron beam systems operate",
+        "in vacuum, which eliminates",
+        "oxidation entirely"
+      ]
     },
-    "from": "heuristic"
+    "from": "directive-rhythm"
   },
   {
-    "segment": "text_beat",
+    "segment": "contrast_pair",
     "seconds": 9.0,
     "heading": "A laser or electron beam melts the powder in a controlled atmosphere",
     "narration": "Electron beam melting is faster because the beam can be deflected electromagnetically with no moving parts, but it is limited to metals that conduct electricity in powder form.",
     "args": {
-      "lines": [
-        "Electron beam melting is",
-        "faster because the beam"
+      "term": "LASER POWDER BED FUSION",
+      "includes": [
+        "inert gas atmosphere, slower, wider material range"
+      ],
+      "excludes": [
+        "electron beam in vacuum, faster, conductive materials only"
       ]
     },
-    "from": "heuristic"
+    "from": "directive"
   },
   {
-    "segment": "stat_card",
+    "segment": "process_steps",
     "seconds": 9.0,
     "heading": "The scan pattern and the thermal history determine the microstructure",
     "narration": "The scan pattern is not arbitrary. Within each layer, the laser traces parallel lines called hatch lines, spaced to ensure overlap between adjacent melt tracks.",
     "args": {
-      "value": "90",
-      "unit": "DEGREES",
-      "caption": "",
-      "source": ""
+      "title": "SCAN STRATEGY",
+      "steps": [
+        [
+          "hatch lines within a layer",
+          ""
+        ],
+        [
+          "rotation between layers",
+          ""
+        ],
+        [
+          "contour pass on edges",
+          ""
+        ]
+      ],
+      "note": "microstructure depends on local thermal gradient"
     },
-    "from": "heuristic"
+    "from": "directive"
   },
   {
     "segment": "text_beat",
@@ -271,46 +349,71 @@
         "90 degrees"
       ]
     },
-    "from": "heuristic"
+    "from": "directive-rhythm"
   },
   {
-    "segment": "stat_card",
+    "segment": "process_steps",
     "seconds": 4.97,
     "heading": "The scan pattern and the thermal history determine the microstructure",
     "narration": "A contour pass around the edge of each layer improves surface finish.",
     "args": {
-      "value": "90",
-      "unit": "DEGREES",
-      "caption": "",
-      "source": ""
+      "title": "SCAN STRATEGY",
+      "steps": [
+        [
+          "hatch lines within a layer",
+          ""
+        ],
+        [
+          "rotation between layers",
+          ""
+        ],
+        [
+          "contour pass on edges",
+          ""
+        ]
+      ],
+      "note": "microstructure depends on local thermal gradient"
     },
-    "from": "heuristic"
+    "from": "directive"
   },
   {
-    "segment": "material_image",
+    "segment": "text_beat",
     "seconds": 8.69,
     "heading": "The scan pattern and the thermal history determine the microstructure",
     "narration": "The local thermal gradient and cooling rate determine the microstructure. In titanium alloys, rapid cooling produces a fine acicular alpha structure.",
     "args": {
-      "subject": "micrograph-steel",
-      "label": "MICROSTRUCTURE",
-      "pick": 0
+      "lines": [
+        "The local thermal gradient",
+        "and cooling rate determine",
+        "the microstructure."
+      ]
     },
-    "from": "heuristic+material"
+    "from": "directive-rhythm"
   },
   {
-    "segment": "text_beat",
+    "segment": "process_steps",
     "seconds": 5.38,
     "heading": "The scan pattern and the thermal history determine the microstructure",
     "narration": "In nickel superalloys, it can produce columnar grains aligned with the build direction.",
     "args": {
-      "lines": [
-        "In nickel superalloys, it",
-        "can produce columnar grains",
-        "aligned"
-      ]
+      "title": "SCAN STRATEGY",
+      "steps": [
+        [
+          "hatch lines within a layer",
+          ""
+        ],
+        [
+          "rotation between layers",
+          ""
+        ],
+        [
+          "contour pass on edges",
+          ""
+        ]
+      ],
+      "note": "microstructure depends on local thermal gradient"
     },
-    "from": "heuristic"
+    "from": "directive"
   },
   {
     "segment": "text_beat",
@@ -327,31 +430,28 @@
     "from": "directive"
   },
   {
-    "segment": "stat_card",
+    "segment": "text_beat",
     "seconds": 7.45,
     "heading": "The scan pattern and the thermal history determine the microstructure",
     "narration": "Regions in the center of a large cross-section cool more slowly because they are surrounded by hot material.",
     "args": {
-      "value": "90",
-      "unit": "DEGREES",
-      "caption": "",
-      "source": ""
+      "lines": [
+        "Regions in the center",
+        "of a large cross-section",
+        "cool"
+      ]
     },
-    "from": "directive+destagnate"
+    "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.03,
     "heading": "The scan pattern and the thermal history determine the microstructure",
     "narration": "This means microstructure varies with position, and post-process heat treatment is almost always required to homogenize it.",
     "args": {
-      "lines": [
-        "This means microstructure varies",
-        "with position, and post-process",
-        "heat treatment"
-      ]
+      "variant": 0
     },
-    "from": "directive"
+    "from": "directive+destagnate"
   },
   {
     "segment": "text_beat",
@@ -369,37 +469,42 @@
   },
   {
     "segment": "quote_card",
-    "seconds": 5.79,
+    "seconds": 9.0,
     "heading": "Producer POV",
-    "narration": "I wanted to say the layers get welded together, because that's the intuitive word.",
+    "narration": "Watching something be made, I think about how many things had to become controllable first \u2014 temperature, pressure, purity, timing, tolerances, sequence, inspection.",
     "args": {
-      "text": "I wanted to say the layers get welded together, because that's the intuitive word.",
+      "text": "Watching something be made, I think about how many things had to become controllable first \u2014 temperature, pressure, purity, timing, tolerances, sequence, inspection.",
       "attrib": ""
     },
     "from": "heading"
   },
   {
     "segment": "quote_card",
-    "seconds": 8.69,
+    "seconds": 5.79,
     "heading": "Producer POV",
-    "narration": "They don't weld, they fuse metallurgically \u2014 the atoms interdiffuse across the boundary. Wrong verb, wrong physics, so I cut it.",
+    "narration": "What looks smooth at the end is usually violent forces being controlled very precisely.",
     "args": {
-      "text": "They don't weld, they fuse metallurgically \u2014 the atoms interdiffuse across the boundary. Wrong verb, wrong physics, so I cut it.",
+      "text": "What looks smooth at the end is usually violent forces being controlled very precisely.",
       "attrib": ""
     },
     "from": "heading"
   },
   {
-    "segment": "material_image",
+    "segment": "checklist_reveal",
     "seconds": 9.0,
     "heading": "Porosity is the primary defect and it comes from several sources",
     "narration": "Porosity is the most common defect in metal additive manufacturing. It comes from insufficient energy density \u2014 if the laser power is too low or the scan speed too high, the powder does not fully melt and voids remain.",
     "args": {
-      "subject": "3d-printed-metal",
-      "label": "ADDITIVE MANUFACTUR",
-      "pick": 1
+      "title": "POROSITY SOURCES",
+      "items": [
+        "+insufficient energy density",
+        "+trapped gas in powder",
+        "+keyhole collapse",
+        "-contamination if atmosphere controlled"
+      ],
+      "note": ""
     },
-    "from": "heuristic+material"
+    "from": "directive"
   },
   {
     "segment": "text_beat",
@@ -413,27 +518,45 @@
         "particles during"
       ]
     },
-    "from": "heuristic"
+    "from": "directive-rhythm"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "checklist_reveal",
     "seconds": 5.79,
     "heading": "Porosity is the primary defect and it comes from several sources",
     "narration": "Porosity above 0.5 percent by volume typically disqualifies a part for structural aerospace applications.",
     "args": {
-      "variant": 4
+      "title": "POROSITY SOURCES",
+      "items": [
+        "+insufficient energy density",
+        "+trapped gas in powder",
+        "+keyhole collapse",
+        "-contamination if atmosphere controlled"
+      ],
+      "note": ""
     },
-    "from": "heuristic"
+    "from": "directive"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "magnitude_bar",
     "seconds": 6.21,
     "heading": "Porosity is the primary defect and it comes from several sources",
     "narration": "The acceptable porosity depends on the application. Aerospace structural parts require less than 0.2 percent.",
     "args": {
-      "variant": 0
+      "title": "POROSITY TOLERANCE",
+      "unit": "percent",
+      "items": [
+        [
+          "AEROSPACE",
+          "0.2"
+        ],
+        [
+          "TOOLING",
+          "2.0"
+        ]
+      ]
     },
-    "from": "heuristic"
+    "from": "directive"
   },
   {
     "segment": "text_beat",
@@ -447,41 +570,52 @@
         "the pores"
       ]
     },
-    "from": "heuristic"
+    "from": "directive-rhythm"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "magnitude_bar",
     "seconds": 9.0,
     "heading": "Porosity is the primary defect and it comes from several sources",
     "narration": "Tooling and non-critical components can tolerate 2.0 percent. Porosity is measured by X-ray computed tomography or by metallographic sectioning and image analysis.",
     "args": {
-      "variant": 1
+      "title": "POROSITY TOLERANCE",
+      "unit": "percent",
+      "items": [
+        [
+          "AEROSPACE",
+          "0.2"
+        ],
+        [
+          "TOOLING",
+          "2.0"
+        ]
+      ]
     },
-    "from": "heuristic"
+    "from": "directive"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "text_beat",
     "seconds": 9.0,
     "heading": "Porosity is the primary defect and it comes from several sources",
     "narration": "The measurement method matters \u2014 CT can detect pores as small as 10 microns, while sectioning only samples a small fraction of the part volume.",
     "args": {
-      "variant": 2
+      "lines": [
+        "CT can detect pores",
+        "as small as 10",
+        "microns, while"
+      ]
     },
-    "from": "heuristic"
+    "from": "directive-rhythm"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 5.38,
     "heading": "Support structures are required for overhangs and must be removed",
     "narration": "Any surface tilted more than about 45 degrees from vertical requires support structures.",
     "args": {
-      "lines": [
-        "Any surface tilted more",
-        "than about 45 degrees",
-        "from vertical"
-      ]
+      "variant": 0
     },
-    "from": "directive+destagnate"
+    "from": "directive"
   },
   {
     "segment": "ambient_drift",
@@ -489,17 +623,7 @@
     "heading": "Support structures are required for overhangs and must be removed",
     "narration": "This is because the powder below an unsupported overhang cannot conduct heat away fast enough, and the melt pool sags or distorts.",
     "args": {
-      "variant": 4
-    },
-    "from": "directive"
-  },
-  {
-    "segment": "ambient_drift",
-    "seconds": 9.0,
-    "heading": "Support structures are required for overhangs and must be removed",
-    "narration": "Supports are printed from the same material as the part, using the same process, and they must be mechanically removed after the build.",
-    "args": {
-      "variant": 0
+      "variant": 1
     },
     "from": "directive"
   },
@@ -507,15 +631,25 @@
     "segment": "text_beat",
     "seconds": 9.0,
     "heading": "Support structures are required for overhangs and must be removed",
-    "narration": "Removal is done by machining, wire EDM, or manual grinding. Support removal adds cost and limits the geometric freedom that additive manufacturing is supposed to provide.",
+    "narration": "Supports are printed from the same material as the part, using the same process, and they must be mechanically removed after the build.",
     "args": {
       "lines": [
-        "Removal is done by",
-        "machining, wire EDM, or",
-        "manual grinding."
+        "Supports are printed from",
+        "the same material as",
+        "the part"
       ]
     },
     "from": "directive+destagnate"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Support structures are required for overhangs and must be removed",
+    "narration": "Removal is done by machining, wire EDM, or manual grinding. Support removal adds cost and limits the geometric freedom that additive manufacturing is supposed to provide.",
+    "args": {
+      "variant": 3
+    },
+    "from": "directive"
   },
   {
     "segment": "ambient_drift",
@@ -523,19 +657,38 @@
     "heading": "Support structures are required for overhangs and must be removed",
     "narration": "Part orientation during the build is a design decision that trades support volume against surface finish and residual stress.",
     "args": {
-      "variant": 2
+      "variant": 4
     },
     "from": "directive"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "process_steps",
     "seconds": 7.03,
     "heading": "The part is stress-relieved or hot isostatically pressed after printing",
     "narration": "After printing, the part is removed from the build platform \u2014 usually by wire EDM or bandsaw.",
     "args": {
-      "variant": 3
+      "title": "POST-PROCESS",
+      "steps": [
+        [
+          "remove from build platform",
+          ""
+        ],
+        [
+          "stress relief heat treatment",
+          ""
+        ],
+        [
+          "hot isostatic pressing optional",
+          ""
+        ],
+        [
+          "final machining",
+          ""
+        ]
+      ],
+      "note": "properties approach wrought material"
     },
-    "from": "heuristic"
+    "from": "directive"
   },
   {
     "segment": "text_beat",
@@ -548,41 +701,79 @@
         "to reduce residual stresses"
       ]
     },
-    "from": "heuristic"
+    "from": "directive-rhythm"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "process_steps",
     "seconds": 7.03,
     "heading": "The part is stress-relieved or hot isostatically pressed after printing",
     "narration": "Stress relief for titanium alloys is typically 650 to 800 degrees Celsius for two to four hours.",
     "args": {
-      "variant": 4
+      "title": "POST-PROCESS",
+      "steps": [
+        [
+          "remove from build platform",
+          ""
+        ],
+        [
+          "stress relief heat treatment",
+          ""
+        ],
+        [
+          "hot isostatic pressing optional",
+          ""
+        ],
+        [
+          "final machining",
+          ""
+        ]
+      ],
+      "note": "properties approach wrought material"
     },
-    "from": "heuristic"
+    "from": "directive"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "text_beat",
     "seconds": 4.97,
     "heading": "The part is stress-relieved or hot isostatically pressed after printing",
     "narration": "For critical applications, hot isostatic pressing is used to close internal porosity.",
     "args": {
-      "variant": 0
+      "lines": [
+        "For critical applications, hot",
+        "isostatic pressing is used",
+        "to close"
+      ]
     },
-    "from": "heuristic"
+    "from": "directive-rhythm"
   },
   {
-    "segment": "text_beat",
+    "segment": "process_steps",
     "seconds": 9.0,
     "heading": "The part is stress-relieved or hot isostatically pressed after printing",
     "narration": "HIP applies high temperature and high pressure \u2014 typically 900 degrees Celsius and 100 megapascals for titanium \u2014 which collapses voids and improves fatigue properties. Final machining brings critical dimensions to tolerance.",
     "args": {
-      "lines": [
-        "typically 900 degrees Celsius",
-        "and 100 megapascals for",
-        "titanium"
-      ]
+      "title": "POST-PROCESS",
+      "steps": [
+        [
+          "remove from build platform",
+          ""
+        ],
+        [
+          "stress relief heat treatment",
+          ""
+        ],
+        [
+          "hot isostatic pressing optional",
+          ""
+        ],
+        [
+          "final machining",
+          ""
+        ]
+      ],
+      "note": "properties approach wrought material"
     },
-    "from": "heuristic"
+    "from": "directive"
   },
   {
     "segment": "thermal_ascent",
@@ -621,14 +812,20 @@
     "from": "directive"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "contrast_pair",
     "seconds": 7.45,
     "heading": "Wire arc additive manufacturing builds larger parts faster with less precision",
     "narration": "Wire arc additive manufacturing uses a welding arc to melt metal wire, which is deposited layer by layer.",
     "args": {
-      "variant": 1
+      "term": "WIRE ARC",
+      "includes": [
+        "high deposition rate, large parts, lower precision"
+      ],
+      "excludes": [
+        "powder bed, fine features, tight tolerances"
+      ]
     },
-    "from": "heuristic"
+    "from": "directive"
   },
   {
     "segment": "text_beat",
@@ -642,49 +839,77 @@
         "compared"
       ]
     },
-    "from": "heuristic"
+    "from": "directive-rhythm"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "contrast_pair",
     "seconds": 6.21,
     "heading": "Wire arc additive manufacturing builds larger parts faster with less precision",
     "narration": "It is used for large structural parts in aerospace and shipbuilding. The trade-off is precision.",
     "args": {
-      "variant": 2
+      "term": "WIRE ARC",
+      "includes": [
+        "high deposition rate, large parts, lower precision"
+      ],
+      "excludes": [
+        "powder bed, fine features, tight tolerances"
+      ]
     },
-    "from": "heuristic"
+    "from": "directive"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "text_beat",
     "seconds": 5.38,
     "heading": "Wire arc additive manufacturing builds larger parts faster with less precision",
     "narration": "Layer thickness is typically 1 to 3 millimeters, and surface finish is rough.",
     "args": {
-      "variant": 3
+      "lines": [
+        "Layer thickness is typically",
+        "1 to 3 millimeters,",
+        "and surface"
+      ]
     },
-    "from": "heuristic"
+    "from": "directive-rhythm"
   },
   {
-    "segment": "text_beat",
+    "segment": "contrast_pair",
     "seconds": 7.45,
     "heading": "Wire arc additive manufacturing builds larger parts faster with less precision",
     "narration": "Wire arc parts almost always require extensive machining. The process is essentially robotic welding applied to additive manufacturing.",
     "args": {
-      "lines": [
-        "Wire arc parts almost",
-        "always require extensive machining.",
-        "The process"
+      "term": "WIRE ARC",
+      "includes": [
+        "high deposition rate, large parts, lower precision"
+      ],
+      "excludes": [
+        "powder bed, fine features, tight tolerances"
       ]
     },
-    "from": "heuristic"
+    "from": "directive"
   },
   {
-    "segment": "size_ladder",
+    "segment": "source_compare",
     "seconds": 9.0,
     "heading": "What to notice in the edit",
     "narration": "The numbers in this script \u2014 layer thickness, particle size, laser power, porosity limits, HIP conditions \u2014 come from ASTM standards, NIST measurement programs, and ASM International handbooks.",
-    "args": {},
-    "from": "heuristic"
+    "args": {
+      "title": "EVIDENCE BODIES",
+      "sources": [
+        [
+          "ASTM",
+          "powder specifications and test methods"
+        ],
+        [
+          "NIST",
+          "measurement standards for additive manufacturing"
+        ],
+        [
+          "ASM International",
+          "microstructure and properties data"
+        ]
+      ]
+    },
+    "from": "directive"
   },
   {
     "segment": "text_beat",
@@ -698,39 +923,69 @@
         "for industrial"
       ]
     },
-    "from": "heuristic"
+    "from": "directive-rhythm"
   },
   {
-    "segment": "size_ladder",
+    "segment": "source_compare",
     "seconds": 5.79,
     "heading": "What to notice in the edit",
     "narration": "When a range is given, it reflects real variation across alloys, machines, and applications.",
-    "args": {},
-    "from": "heuristic"
+    "args": {
+      "title": "EVIDENCE BODIES",
+      "sources": [
+        [
+          "ASTM",
+          "powder specifications and test methods"
+        ],
+        [
+          "NIST",
+          "measurement standards for additive manufacturing"
+        ],
+        [
+          "ASM International",
+          "microstructure and properties data"
+        ]
+      ]
+    },
+    "from": "directive"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "text_beat",
     "seconds": 6.21,
     "heading": "What to notice in the edit",
     "narration": "When a single figure is stated, it is a typical midpoint, not a universal constant.",
     "args": {
-      "variant": 4
+      "lines": [
+        "When a single figure",
+        "is stated, it is",
+        "a typical"
+      ]
     },
-    "from": "heuristic"
+    "from": "directive-rhythm"
   },
   {
-    "segment": "text_beat",
+    "segment": "source_compare",
     "seconds": 8.28,
     "heading": "What to notice in the edit",
     "narration": "The cooling rate range of 1000 to 10000 degrees Celsius per second is measured by high-speed pyrometry during the build.",
     "args": {
-      "lines": [
-        "The cooling rate range",
-        "of 1000 to 10000",
-        "degrees Celsius"
+      "title": "EVIDENCE BODIES",
+      "sources": [
+        [
+          "ASTM",
+          "powder specifications and test methods"
+        ],
+        [
+          "NIST",
+          "measurement standards for additive manufacturing"
+        ],
+        [
+          "ASM International",
+          "microstructure and properties data"
+        ]
       ]
     },
-    "from": "heuristic"
+    "from": "directive"
   },
   {
     "segment": "text_beat",
@@ -747,28 +1002,28 @@
     "from": "directive"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "text_beat",
     "seconds": 6.62,
     "heading": "Evidence limit",
     "narration": "That depends on the alloy, the geometry, the thermal history, the post-processing, and the inspection methods.",
     "args": {
-      "variant": 0
+      "lines": [
+        "That depends on the",
+        "alloy, the geometry, the",
+        "thermal history"
+      ]
     },
-    "from": "directive+destagnate"
+    "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 8.69,
     "heading": "Evidence limit",
     "narration": "The process is controllable, but it is not yet as repeatable as casting or forging, and every production program involves iteration.",
     "args": {
-      "lines": [
-        "The process is controllable,",
-        "but it is not",
-        "yet"
-      ]
+      "variant": 1
     },
-    "from": "directive"
+    "from": "directive+destagnate"
   },
   {
     "segment": "text_beat",
@@ -784,17 +1039,17 @@
     "from": "directive"
   },
   {
-    "segment": "stat_card",
+    "segment": "definition_card",
     "seconds": 6.21,
     "heading": "Residual stress accumulates during the build and can cause warping or cracking",
     "narration": "Residual stress is stress that remains in a part after the external forces are removed.",
     "args": {
-      "value": "200",
-      "unit": "DEGREES",
-      "caption": "",
-      "source": ""
+      "term": "RESIDUAL STRESS",
+      "meaning": "stress locked into a part without external load",
+      "boundary": "caused by non-uniform cooling and thermal expansion mismatch",
+      "source": "NIST"
     },
-    "from": "heuristic"
+    "from": "directive"
   },
   {
     "segment": "text_beat",
@@ -808,67 +1063,90 @@
         "each new"
       ]
     },
-    "from": "heuristic"
+    "from": "directive-rhythm"
   },
   {
-    "segment": "stat_card",
+    "segment": "definition_card",
     "seconds": 9.0,
     "heading": "Residual stress accumulates during the build and can cause warping or cracking",
     "narration": "The layers below resist this contraction, and tensile stress accumulates. Residual stresses in as-built laser powder bed fusion parts can reach 200 to 400 megapascals in titanium alloys and 400 to 800 megapascals in nickel superalloys.",
     "args": {
-      "value": "200",
-      "unit": "DEGREES",
-      "caption": "",
-      "source": ""
+      "term": "RESIDUAL STRESS",
+      "meaning": "stress locked into a part without external load",
+      "boundary": "caused by non-uniform cooling and thermal expansion mismatch",
+      "source": "NIST"
     },
-    "from": "heuristic"
+    "from": "directive"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "text_beat",
     "seconds": 9.0,
     "heading": "Residual stress accumulates during the build and can cause warping or cracking",
     "narration": "These values approach the yield strength of the material, which is why parts sometimes crack during the build or warp when removed from the substrate.",
     "args": {
-      "variant": 0
+      "lines": [
+        "These values approach the",
+        "yield strength of the",
+        "material"
+      ]
     },
-    "from": "heuristic"
+    "from": "directive-rhythm"
   },
   {
-    "segment": "text_beat",
+    "segment": "magnitude_bar",
     "seconds": 5.38,
     "heading": "Residual stress accumulates during the build and can cause warping or cracking",
     "narration": "The magnitude depends on the alloy, the part geometry, and the scan strategy.",
     "args": {
-      "lines": [
-        "The magnitude depends on",
-        "the alloy, the part",
-        "geometry"
+      "title": "RESIDUAL STRESS",
+      "unit": "megapascals",
+      "items": [
+        [
+          "TITANIUM_ALLOY",
+          "300"
+        ],
+        [
+          "NICKEL_SUPERALLOY",
+          "600"
+        ]
       ]
     },
-    "from": "heuristic"
+    "from": "directive"
   },
   {
-    "segment": "stat_card",
+    "segment": "text_beat",
     "seconds": 6.62,
     "heading": "Residual stress accumulates during the build and can cause warping or cracking",
     "narration": "A typical measured value is 300 megapascals for titanium alloy and 600 megapascals for nickel superalloy.",
     "args": {
-      "value": "200",
-      "unit": "DEGREES",
-      "caption": "",
-      "source": ""
+      "lines": [
+        "A typical measured value",
+        "is 300 megapascals for",
+        "titanium alloy"
+      ]
     },
-    "from": "heuristic"
+    "from": "directive-rhythm"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "magnitude_bar",
     "seconds": 9.0,
     "heading": "Residual stress accumulates during the build and can cause warping or cracking",
     "narration": "Long, thin walls accumulate more stress than compact geometries. Scanning the same region repeatedly without allowing it to cool increases the local stress.",
     "args": {
-      "variant": 1
+      "title": "RESIDUAL STRESS",
+      "unit": "megapascals",
+      "items": [
+        [
+          "TITANIUM_ALLOY",
+          "300"
+        ],
+        [
+          "NICKEL_SUPERALLOY",
+          "600"
+        ]
+      ]
     },
-    "from": "heuristic"
+    "from": "directive"
   },
   {
     "segment": "text_beat",
@@ -882,30 +1160,46 @@
         "degrees Celsius"
       ]
     },
-    "from": "heuristic"
+    "from": "directive-rhythm"
   },
   {
-    "segment": "stat_card",
+    "segment": "magnitude_bar",
     "seconds": 9.0,
     "heading": "Residual stress accumulates during the build and can cause warping or cracking",
     "narration": "Preheating reduces residual stress but does not eliminate it. Stress relief heat treatment after the build is mandatory for most structural applications.",
     "args": {
-      "value": "200",
-      "unit": "DEGREES",
-      "caption": "",
-      "source": ""
+      "title": "RESIDUAL STRESS",
+      "unit": "megapascals",
+      "items": [
+        [
+          "TITANIUM_ALLOY",
+          "300"
+        ],
+        [
+          "NICKEL_SUPERALLOY",
+          "600"
+        ]
+      ]
     },
-    "from": "heuristic"
+    "from": "directive"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "evidence_chain",
     "seconds": 9.0,
     "heading": "Measurement of powder reuse and degradation is required for process control",
     "narration": "Powder is expensive, so it is reused. After a build, the unused powder is recovered from the build chamber, sieved to remove spatter \u2014 small solidified droplets ejected from the melt pool \u2014 and agglomerates.",
     "args": {
-      "variant": 2
+      "title": "POWDER LIFECYCLE",
+      "stages": [
+        "virgin powder loaded",
+        "unused powder recovered after build",
+        "sieved to remove spatter and agglomerates",
+        "blended with virgin powder",
+        "monitoring and reuse"
+      ],
+      "conclusion": ""
     },
-    "from": "heuristic"
+    "from": "directive"
   },
   {
     "segment": "text_beat",
@@ -918,85 +1212,114 @@
         "blended with virgin powder"
       ]
     },
-    "from": "heuristic"
+    "from": "directive-rhythm"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "evidence_chain",
     "seconds": 7.45,
     "heading": "Measurement of powder reuse and degradation is required for process control",
     "narration": "But powder degrades with each cycle. Oxygen and nitrogen content increase from exposure to the atmosphere during handling.",
     "args": {
-      "variant": 3
+      "title": "POWDER LIFECYCLE",
+      "stages": [
+        "virgin powder loaded",
+        "unused powder recovered after build",
+        "sieved to remove spatter and agglomerates",
+        "blended with virgin powder",
+        "monitoring and reuse"
+      ],
+      "conclusion": ""
     },
-    "from": "heuristic"
+    "from": "directive"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "text_beat",
     "seconds": 6.62,
     "heading": "Measurement of powder reuse and degradation is required for process control",
     "narration": "Particle size distribution shifts as fine particles are preferentially consumed and spatter adds coarse irregular particles.",
     "args": {
-      "variant": 4
+      "lines": [
+        "Particle size distribution shifts",
+        "as fine particles are",
+        "preferentially consumed"
+      ]
     },
-    "from": "heuristic"
+    "from": "directive-rhythm"
   },
   {
-    "segment": "text_beat",
+    "segment": "evidence_chain",
     "seconds": 7.45,
     "heading": "Measurement of powder reuse and degradation is required for process control",
     "narration": "ASTM standards require tracking the number of reuse cycles and testing powder chemistry and particle size distribution periodically.",
     "args": {
-      "lines": [
-        "ASTM standards require tracking",
-        "the number of reuse",
-        "cycles"
-      ]
+      "title": "POWDER LIFECYCLE",
+      "stages": [
+        "virgin powder loaded",
+        "unused powder recovered after build",
+        "sieved to remove spatter and agglomerates",
+        "blended with virgin powder",
+        "monitoring and reuse"
+      ],
+      "conclusion": ""
     },
-    "from": "heuristic"
+    "from": "directive"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "uncertainty_bar",
     "seconds": 9.0,
     "heading": "Measurement of powder reuse and degradation is required for process control",
     "narration": "The number of times powder can be reused varies. For titanium alloys, 12 cycles is a common industry limit, though some programs allow up to 20 if the powder passes chemistry and flowability tests.",
     "args": {
-      "variant": 0
+      "value": "12",
+      "unit": "cycles",
+      "plus": "5 to 20",
+      "minus": null,
+      "confidence": "depends on alloy and handling protocol",
+      "caption": "typical maximum reuse"
     },
-    "from": "heuristic"
+    "from": "directive"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "text_beat",
     "seconds": 7.86,
     "heading": "Measurement of powder reuse and degradation is required for process control",
     "narration": "For aluminum alloys, the limit is lower \u2014 around 5 to 8 cycles \u2014 because aluminum oxidizes more readily.",
     "args": {
-      "variant": 1
+      "lines": [
+        "around 5 to 8",
+        "cycles"
+      ]
     },
-    "from": "heuristic"
+    "from": "directive-rhythm"
   },
   {
-    "segment": "text_beat",
+    "segment": "uncertainty_bar",
     "seconds": 6.21,
     "heading": "Measurement of powder reuse and degradation is required for process control",
     "narration": "Powder that fails specification is either discarded or sent back to the supplier for reprocessing.",
     "args": {
-      "lines": [
-        "Powder that fails specification",
-        "is either discarded or",
-        "sent back"
-      ]
+      "value": "12",
+      "unit": "cycles",
+      "plus": "5 to 20",
+      "minus": null,
+      "confidence": "depends on alloy and handling protocol",
+      "caption": "typical maximum reuse"
     },
-    "from": "heuristic"
+    "from": "directive"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "text_beat",
     "seconds": 9.0,
     "heading": "Measurement of powder reuse and degradation is required for process control",
     "narration": "The cost of powder and the cost of testing it are both significant fractions of the total part cost, which is why powder management is a process control issue, not just a material issue.",
     "args": {
-      "variant": 2
+      "lines": [
+        "The cost of powder",
+        "and the cost of",
+        "testing it"
+      ]
     },
-    "from": "heuristic"
+    "from": "directive-rhythm"
   },
   {
     "segment": "ambient_drift",
@@ -1004,22 +1327,18 @@
     "heading": "Closing",
     "narration": "Metal additive manufacturing is not magic. It is controlled melting, repeated thousands of times, with the microstructure and defects determined by thermal history.",
     "args": {
-      "variant": 3
+      "variant": 0
     },
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Closing",
     "narration": "The precision comes from the beam control and the powder quality. The limitation comes from the fact that you are melting and solidifying metal faster than equilibrium allows.",
     "args": {
-      "lines": [
-        "The precision comes from",
-        "the beam control and",
-        "the powder"
-      ]
+      "variant": 1
     },
-    "from": "directive+destagnate"
+    "from": "directive"
   }
 ]

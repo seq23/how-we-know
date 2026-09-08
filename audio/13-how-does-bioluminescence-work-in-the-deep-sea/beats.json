@@ -326,43 +326,48 @@
   {
     "i": 54,
     "segment": "ambient_drift",
-    "narration": "This episode should feel like a mechanism demonstration. Begin with darkness, add the chemical reaction as a clean original animation, then reuse the same burst of light in four contexts: lure, camouflage, warning, and communication.",
+    "narration": "This is built like a mechanism demonstration: darkness first, then the chemical reaction as a clean original animation, then the same burst of light reused in four contexts \u2014 lure, camouflage, warning, communication.",
     "seconds": 17.17866666666667
   },
   {
     "i": 55,
     "segment": "ambient_drift",
-    "narration": "That structural repetition has meaning; the surrounding behavior changes the function. Do not use MBARI footage unless the individual asset has commercial rights clearance.",
+    "narration": "Watch how the repetition itself carries meaning: the light doesn't change, the surrounding behavior does.",
     "seconds": 12.197333333333333
   },
   {
     "i": 56,
-    "segment": "stat_card",
-    "narration": "MBARI reports that 76 percent of observed water-column creatures and 45 percent of observed bottom-dwelling creatures in its ROV work could produce light, from the surface to 4,000 meters.",
+    "segment": "text_beat",
+    "narration": "If it looks like an original animation rather than an MBARI clip, that's because MBARI's footage is not cleared for a video that runs ads.",
     "seconds": 12.784
   },
   {
     "i": 57,
-    "segment": "text_beat",
-    "narration": "Those percentages describe the surveyed animals researchers could see and classify. They are not a universal species census.",
+    "segment": "stat_card",
+    "narration": "MBARI reports that 76 percent of observed water-column creatures and 45 percent of observed bottom-dwelling creatures in its ROV work could produce light, from the surface to 4,000 meters.",
     "seconds": 7.546666666666667
   },
   {
     "i": 58,
-    "segment": "contrast_pair",
-    "narration": "Fluorescence is also different from bioluminescence: fluorescence re-emits incoming light, while bioluminescence generates light chemically.",
+    "segment": "text_beat",
+    "narration": "Those percentages describe the surveyed animals researchers could see and classify. They are not a universal species census.",
     "seconds": 12.901333333333334
   },
   {
     "i": 59,
-    "segment": "depth_descent",
-    "narration": "The deep ocean is dark, but it is not visually silent. Life supplies its own signals.",
+    "segment": "contrast_pair",
+    "narration": "Fluorescence is also different from bioluminescence: fluorescence re-emits incoming light, while bioluminescence generates light chemically.",
     "seconds": 5.744
   },
   {
     "i": 60,
-    "segment": "text_beat",
-    "narration": "The useful question is not only which animal glows, but what that light is doing at that exact moment.",
+    "segment": "depth_descent",
+    "narration": "The deep ocean is dark, but it is not visually silent. Life supplies its own signals.",
     "seconds": 6.096
+  },
+  {
+    "i": 61,
+    "segment": "text_beat",
+    "narration": "The useful question is not only which animal glows, but what that light is doing at that exact moment."
   }
 ]
