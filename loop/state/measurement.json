@@ -1,5 +1,42 @@
 {
-  "videos": [],
+  "videos": [
+    {
+      "video_id": "YuZxDiNUw4w",
+      "week_measured": "2026-W37",
+      "at": "2026-09-11T21:24:20+00:00",
+      "views": 4,
+      "average_view_percentage": 0,
+      "estimated_minutes_watched": 0,
+      "average_view_duration_s": 0,
+      "runtime_s": 634.832,
+      "estimated_revenue": null,
+      "rpm": null
+    },
+    {
+      "video_id": "EY__zREBIUk",
+      "week_measured": "2026-W37",
+      "at": "2026-09-11T21:24:20+00:00",
+      "views": 1,
+      "average_view_percentage": 0,
+      "estimated_minutes_watched": 0,
+      "average_view_duration_s": 0,
+      "runtime_s": 463.546,
+      "estimated_revenue": null,
+      "rpm": null
+    },
+    {
+      "video_id": "sfveDF88ZHo",
+      "week_measured": "2026-W37",
+      "at": "2026-09-11T21:24:20+00:00",
+      "views": 2,
+      "average_view_percentage": 2.69,
+      "estimated_minutes_watched": 0,
+      "average_view_duration_s": 13,
+      "runtime_s": 485.362,
+      "estimated_revenue": null,
+      "rpm": null
+    }
+  ],
   "weeks": [
     {
       "week": "2026-W36",
@@ -12,12 +49,41 @@
         "measured": 0,
         "floor_avd_seconds": 146.0
       }
+    },
+    {
+      "week": "2026-W37",
+      "at": "2026-09-11T21:24:20+00:00",
+      "measured": true,
+      "videos": 3,
+      "revenue_measured": false,
+      "retention_streak_below_floor": 3,
+      "retention_checkpoint": {
+        "status": "measured",
+        "measured": 1,
+        "floor_avd_seconds": 146.0,
+        "early_exit_threshold_minutes": 2.0,
+        "mean_view_duration_s": 13.0,
+        "mean_view_duration_mm_ss": "0m13s",
+        "videos_losing_viewers_in_first_2min": 1,
+        "videos_without_a_measured_runtime": [],
+        "format_verdict": "acceptable",
+        "mean_pct_of_actual_runtime": 2.7,
+        "pct_basis": "each video's own measured duration (1 of 1 measured)"
+      }
     }
   ],
-  "updated": "2026-09-04T21:13:51+00:00",
+  "updated": "2026-09-11T21:24:20+00:00",
   "retention_checkpoint": {
-    "status": "no_data",
-    "measured": 0,
-    "floor_avd_seconds": 146.0
+    "status": "measured",
+    "measured": 1,
+    "floor_avd_seconds": 146.0,
+    "early_exit_threshold_minutes": 2.0,
+    "mean_view_duration_s": 13.0,
+    "mean_view_duration_mm_ss": "0m13s",
+    "videos_losing_viewers_in_first_2min": 1,
+    "videos_without_a_measured_runtime": [],
+    "format_verdict": "acceptable",
+    "mean_pct_of_actual_runtime": 2.7,
+    "pct_basis": "each video's own measured duration (1 of 1 measured)"
   }
 }
