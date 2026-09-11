@@ -328,6 +328,58 @@ def fetch_analytics(token: str, video_ids: list[str]) -> dict:
     return data
 
 
+def rpm(d: dict) -> float | None:
+    """Revenue per thousand views, or None when it cannot be derived.
+
+    None means NOT MEASURED, which every reader must keep distinct from 0.0.
+    Both inputs are optional: `views` is absent for a video with no analytics
+    row yet, and `estimatedRevenue` is absent whenever fetch_analytics() could
+    not get the monetary report (no monetary scope, pre-YPP channel), in which
+    case the column is simply not in the response. 2026-09-11 (run
+    34648295527): the first Friday with analytics rows on a channel whose
+    revenue call is rejected hard-indexed `d["estimatedRevenue"]` on a row
+    that had every retention metric and no revenue column, and the whole lane
+    died on a KeyError after recording nothing.
+    """
+    revenue = d.get("estimatedRevenue")
+    views = d.get("views")
+    if revenue is None or not views:
+        return None
+    return round(float(revenue) / float(views) * 1000, 2)
+
+
+def video_records(data: dict, pub: list[dict], week: str) -> list[dict]:
+    """One measurement record per analytics row, tolerant of missing columns.
+
+    Every field is `.get()`: the Analytics API returns exactly the metrics it
+    was able to serve, and which columns appear is a property of the channel's
+    state (monetised or not), not of this code. A column that is absent is
+    recorded as None, never guessed.
+    """
+    cols = [h["name"] for h in data.get("columnHeaders", [])]
+    out = []
+    for row in data.get("rows", []):
+        d = dict(zip(cols, row))
+        out.append({
+            "video_id": d.get("video"),
+            "week_measured": week,
+            "at": now(),
+            "views": d.get("views"),
+            "average_view_percentage": d.get("averageViewPercentage"),
+            "estimated_minutes_watched": d.get("estimatedMinutesWatched"),
+            "average_view_duration_s": d.get("averageViewDuration"),
+            # The video's OWN duration, stored beside its own retention, so
+            # no later reader has to find a runtime to divide by and none of
+            # them can pick a different one.
+            "runtime_s": durations.duration_s(
+                next((x["slug"] for x in pub
+                      if x.get("video_id") == d.get("video")), "") or ""),
+            "estimated_revenue": d.get("estimatedRevenue"),
+            "rpm": rpm(d),
+        })
+    return out
+
+
 def fetch_channel_stats(token: str) -> dict | None:
     """Subscribers, for the monetisation gates. One quota unit.
 
@@ -518,27 +570,13 @@ def main() -> None:
                 f"could not reach the YouTube API ({e.reason}). This week is "
                 f"unmeasured; the next run re-reads the same window.",
                 unblock="Transient. No action unless it repeats.")
-        cols = [h["name"] for h in data.get("columnHeaders", [])]
-        for row in data.get("rows", []):
-            d = dict(zip(cols, row))
-            rec = {
-                "video_id": d.get("video"),
-                "week_measured": week,
-                "at": now(),
-                "views": d.get("views"),
-                "average_view_percentage": d.get("averageViewPercentage"),
-                "estimated_minutes_watched": d.get("estimatedMinutesWatched"),
-                "average_view_duration_s": d.get("averageViewDuration"),
-                # The video's OWN duration, stored beside its own retention, so
-                # no later reader has to find a runtime to divide by and none of
-                # them can pick a different one.
-                "runtime_s": durations.duration_s(
-                    next((x["slug"] for x in pub
-                          if x.get("video_id") == d.get("video")), "") or ""),
-                "estimated_revenue": d.get("estimatedRevenue"),
-                "rpm": (round(d["estimatedRevenue"] / d["views"] * 1000, 2)
-                        if d.get("views") else None),
-            }
+        if data.get("revenue_unavailable"):
+            # A state, not a fault: the token carries no monetary scope and
+            # the channel is pre-YPP. The rows below still carry every
+            # retention metric; only revenue/RPM are recorded as None.
+            st.note(f"revenue not measured this week: "
+                    f"{data['revenue_unavailable']}")
+        for rec in video_records(data, pub, week):
             m["videos"] = [v for v in m["videos"]
                            if v["video_id"] != rec["video_id"]] + [rec]
             st.work(f"measured {rec['video_id']}: "
@@ -584,6 +622,7 @@ def main() -> None:
 
         m["weeks"].append({"week": week, "at": now(), "measured": True,
                            "videos": len(m["videos"]),
+                           "revenue_measured": not data.get("revenue_unavailable"),
                            "retention_streak_below_floor": streak,
                            "retention_checkpoint": cp})
         m["updated"] = now()
