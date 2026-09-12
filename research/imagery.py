@@ -345,11 +345,63 @@ def _load_manifest_assets() -> list[dict]:
 
 
 def _merge_assets(existing: list[dict], fresh: list[dict], keep_source: str) -> list[dict]:
-    """Fresh records replace same-file old ones; records from OTHER sources survive."""
+    """Fresh records replace same-file old ones. Everything else that still
+    verifies survives -- including this gate's own earlier records.
+
+    THIS USED TO DROP `keep_source`'s OWN HISTORY, and that is what broke the
+    species index. The old rule was `a.get("source_org") != keep_source`, which
+    kept only records from OTHER gates: every NOAA Ocean Exploration record that
+    did not happen to come back in THIS week's API page was evicted, so
+    rights.json was a rolling window over the last harvest rather than the
+    accumulating manifest channel/imagery/species.json's own policy states it
+    is ("Records only ever accumulate here - neither gate may delete the
+    other's").
+
+    CONFIRMED by bisecting the manifest: at f82650c (2026-08-31) rights.json
+    held 68 records including media 12013, 15248, 16065 and 28649. The first
+    automated harvest, 22629d4 (2026-09-05), rewrote it to 70 and all four were
+    gone. research/imagery_species.py points at those media ids BY NUMBER
+    (NOAA_SUBJECTS) and refuses to invent a rights record for one it cannot
+    find, so from that day the species index failed four records every run, and
+    on 2026-09-12 that surfaced as the CLEARED_POOL_SHRANK named stop (run
+    34672456430, issue #77) with species.json down from 33 records to 29.
+
+    Keeping a record is NOT a relaxation of the gate. It already passed the gate
+    when it was harvested, and it is kept only while the bytes it was judged on
+    are still on disk unchanged - the sha256 in the record is re-checked here
+    against the file. A record whose file has vanished or whose bytes no longer
+    hash to what was approved is dropped, because its provenance no longer
+    resolves and a clip nobody can vouch for must not be silently re-accepted.
+    """
     fresh_files = {a["local_file"] for a in fresh}
-    kept = [a for a in existing
-            if a["local_file"] not in fresh_files and a.get("source_org") != keep_source]
+    kept = []
+    for a in existing:
+        if a["local_file"] in fresh_files:
+            continue                      # this run re-derived it; fresh wins
+        if _record_still_verifies(a):
+            kept.append(a)
     return kept + fresh
+
+
+def _record_still_verifies(rec: dict) -> bool:
+    """Do the bytes this record was approved on still exist, unchanged?
+
+    The sha256 is the whole point of the field: it is what lets an old record be
+    trusted without re-fetching it. No hash, no file, or a hash that no longer
+    matches means the provenance does not resolve, and the record goes.
+    """
+    want = rec.get("sha256")
+    local = rec.get("local_file")
+    if not want or not local:
+        return False
+    path = os.path.join(OUT, local)
+    if not os.path.exists(path):
+        return False
+    h = hashlib.sha256()
+    with open(path, "rb") as fh:
+        for chunk in iter(lambda: fh.read(1 << 20), b""):
+            h.update(chunk)
+    return h.hexdigest() == want
 
 
 def _write_manifest(assets: list[dict], rejected: list[dict], gate: str) -> None:
