@@ -1,0 +1,30 @@
+{
+  "stage": "weekly-score",
+  "week": "2026-W37",
+  "at": "2026-09-12T16:28:39+00:00",
+  "code": "NEW_DOMAIN_QUOTA",
+  "message": "deep-sea-ocean-science holds weekly slots and its first topic gate stopped on YouTube Data API quota. It has no queue until this runs, and the drafting lane has nothing to draw from for it.",
+  "detail": {
+    "domain": "deep-sea-ocean-science",
+    "tail": [
+      "  - Whether high-demand domains are high-demand because they are already saturated with good videos.",
+      "",
+      "Stop recorded at /home/runner/work/how-we-know/how-we-know/research/competition_stop.json. No score was written, because no score was measured.",
+      "Exit 0: this is a declared stop, not a failure."
+    ]
+  },
+  "unblock": "The next Saturday run retries. If it recurs, the candidate set is larger than one day's quota - lower --budget and let it fill over two weeks.",
+  "disposition": "self_resolving",
+  "disposition_why": "A newly admitted domain's first scoring pass exceeded the weekly budget. Its remaining candidates are scored next week; nothing is lost and no unscored topic can be queued. (run 1 of at most 3 before this escalates to a human.)",
+  "consecutive": 1,
+  "held_items": [],
+  "exit_code": 0,
+  "work_done_before_stop": [],
+  "notes": [
+    "deep-sea-ocean-science holds weekly slots and has no scored queue; running the gate for it",
+    "  deep-sea-ocean-science:   - Whether high-demand domains are high-demand because they are already saturated with good videos.",
+    "  deep-sea-ocean-science: ",
+    "  deep-sea-ocean-science: Stop recorded at /home/runner/work/how-we-know/how-we-know/research/competition_stop.json. No score was written, because no score was measured.",
+    "  deep-sea-ocean-science: Exit 0: this is a declared stop, not a failure."
+  ]
+}
