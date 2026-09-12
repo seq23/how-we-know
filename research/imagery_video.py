@@ -124,6 +124,21 @@ MANIFEST = os.path.join(OUT, "video_rights.json")
 # screens the NOAA index and downloads NOTHING - which is what the weekly lane
 # did to it from the day the lane was written, while reporting that it had
 # harvested "video clips - the scarce pool".
+# `requires` names the HOST TOOLING gates B and C cannot run without, and the
+# lane checks it BEFORE spawning this file. Gate B/C read burned-in text with
+# Apple's Vision framework (compiled with swiftc, macOS only) off frames that
+# ffmpeg range-requests from the clip. ubuntu-latest has neither: CONFIRMED on
+# runs 33943991250 (2026-09-05, 387/387 rejected) and 34672456430 (2026-09-12,
+# 379/379 rejected). Every clip that PASSED gate A then raised
+# FileNotFoundError('ffmpeg') inside screen(), and screen() reported that
+# exception as "gate A-credit" -- so a missing binary read as a rights outcome
+# for a year's worth of weekly runs, and the video pool stayed at zero with a
+# note saying "the pool is unchanged". The rights gate was never the problem.
+#
+# The lane does not substitute another OCR engine (loop/r2.py:verify_shorts
+# records why: unproven against these fonts, guarding the one check that may
+# not be wrong) and does not accept clips unverified. A host without these
+# tools takes a NAMED, HELD stop that names them, and harvests nothing.
 HARVESTER = {
     "domain": "deep-sea-ocean-science",
     "gate": "credit_is_noaa_only",
@@ -131,7 +146,36 @@ HARVESTER = {
     "args": ["--harvest"],
     "scheduled": True,
     "what": "video clips - the scarce pool",
+    "requires": ["ffmpeg", "vision-ocr"],
 }
+
+# The probes for those names live in loop/host_tools.py, which the lane uses
+# too -- one table, two readers. A name this module requires that the table
+# cannot probe for is a loud error there, never a quiet pass.
+sys.path.insert(0, os.path.join(HERE, "..", "loop"))
+import host_tools  # noqa: E402
+
+
+def missing_tooling(requires=None) -> list[str]:
+    """Names of the required tools this host does NOT have. Empty means go."""
+    return host_tools.missing(HARVESTER["requires"] if requires is None
+                              else requires)
+
+
+def require_tooling() -> None:
+    """Refuse to screen on a host that cannot finish screening.
+
+    A rights decision this module cannot complete is not a rejection, and
+    must never be reported as one. Exit code 78 (EX_CONFIG) so a caller can
+    tell 'this host cannot run me' from 'the gate rejected everything'.
+    """
+    missing = missing_tooling()
+    if missing:
+        sys.stderr.write("HARVESTER_TOOLING_ABSENT: this host cannot run gates B "
+                         "and C, so no clip can be screened to the end and none "
+                         "may be accepted:\n"
+                         + "".join(f"  - {m}\n" for m in missing))
+        sys.exit(78)
 
 CACHE = os.path.join(HERE, ".video_cache")
 
@@ -499,6 +543,11 @@ def discover(refresh: bool = False) -> list[dict]:
 
 # --------------------------------------------------------------------- gates
 
+# The label a rejection carries when the SCREENER failed rather than the clip.
+# Not a gate: nothing about the clip's rights was decided.
+SCREENING_ERROR = "E-screening-error"
+
+
 def gate_a(row: dict, live: bool = True) -> tuple[bool, str, str | None]:
     """Metadata credit, read twice off two surfaces."""
     acf = row["acf_credit"]
@@ -549,7 +598,8 @@ def screen(rows: list[dict], workers: int = 8, live: bool = True,
     def one(row):
         f = row["files"][0]
         if (f["width"] or 0) < MIN_WIDTH:
-            return None, {"reason": f"best file is {f['width']}px, below {MIN_WIDTH}"}
+            return None, {"reason": f"best file is {f['width']}px, below {MIN_WIDTH}",
+                          "gate": "0-size"}
         ok, why, credit = gate_a(row, live=live)
         if not ok:
             return None, {"reason": why, "gate": "A-credit"}
@@ -594,7 +644,15 @@ def screen(rows: list[dict], workers: int = 8, live: bool = True,
         try:
             a, r = one(row)
         except Exception as exc:
-            return None, {"reason": f"screening error: {exc}"}
+            # NOT a gate. An exception here is the screener failing, not the
+            # clip failing the screen -- a missing ffmpeg, a helper that would
+            # not compile, a network error mid-scan. It used to fall through
+            # to the "A-credit" default below, which is how 379 environment
+            # errors were reported as 379 rights rejections on run
+            # 34672456430. Named for what it is, so RULE 0 in harvest() can
+            # tell the two apart.
+            return None, {"reason": f"screening error: {exc}",
+                          "gate": SCREENING_ERROR}
         return a, r
 
     with ThreadPoolExecutor(workers) as ex:
@@ -604,7 +662,12 @@ def screen(rows: list[dict], workers: int = 8, live: bool = True,
             else:
                 r.update({"post_id": row["post_id"], "item_url": row["item_url"],
                           "title": row["title"], "acf_credit": row["acf_credit"]})
-                r.setdefault("gate", "A-credit")
+                # Every rejection path in one() names its gate. There is no
+                # default: a rejection that cannot say which gate refused it
+                # is a screener defect, and labelling it a rights outcome is
+                # exactly the mislabel this module carried.
+                if "gate" not in r:
+                    raise RuntimeError(f"screen(): rejection without a gate: {r}")
                 rejected.append(r)
     return accepted, rejected
 
@@ -643,6 +706,18 @@ POLICY = (
 
 def harvest(accepted: list[dict], rejected: list[dict]) -> list[dict]:
     if not accepted:
+        errors = [r for r in rejected if r.get("gate") == SCREENING_ERROR]
+        if errors:
+            # Say which. "The gate accepted nothing" sent a reader to the
+            # rights allowlist; the truth was a binary missing from PATH.
+            sample = errors[0]["reason"]
+            raise SystemExit(
+                f"RULE 0: nothing was accepted and {len(errors)} of "
+                f"{len(rejected)} rejections are SCREENING ERRORS, not gate "
+                f"decisions (first: {sample}). The screener could not finish on "
+                f"this host. Refusing to write an empty manifest; nothing about "
+                f"these clips' rights was decided."
+            )
         raise SystemExit(
             "RULE 0: the video gate accepted nothing. Refusing to write an empty "
             "manifest -- an empty set here means the gate or the source broke, not "
@@ -1014,6 +1089,10 @@ def main() -> None:
                 print(f"        {', '.join(r['examples'])}")
         return
 
+    # Before a single request: a host that cannot run gates B and C cannot
+    # screen a clip to the end, so screening it at all only produces
+    # rejections that look like rights decisions and are not.
+    require_tooling()
     rows = discover(refresh=a.refresh)
     print(f"NOAA Ocean Exploration multimedia posts of type video: {len(rows)}")
     if a.episode:
