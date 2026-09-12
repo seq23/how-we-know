@@ -949,13 +949,34 @@ def harvest() -> dict:
         "rejected_on_purpose": REJECTED_ON_PURPOSE,
         "failures": failures,
     }
-    os.makedirs(OUT, exist_ok=True)
-    with open(SPECIES_MANIFEST, "w") as f:
-        json.dump(manifest, f, indent=2)
+    # HARD-FAIL BEFORE WRITING, not after. This used to json.dump() first and
+    # raise second, which is the opposite of what this function's own docstring
+    # promises ("hard-fails rather than half-writing") and the opposite of what
+    # loop/footage_lane.py then reports: it prints "research/imagery_species.py
+    # exited 1; the pool is unchanged", and the pool had in fact just been
+    # overwritten with the shrunken set.
+    #
+    # CONFIRMED on run 34672456430 (2026-09-12). Four media ids had gone missing
+    # from channel/imagery/rights.json, so four records failed; the manifest was
+    # written anyway, minus them, taking channel/imagery/species.json from 33
+    # records to 29 -- and THAT, not the harvest itself, is what tripped the
+    # CLEARED_POOL_SHRANK stop and opened issue #77. The lane's guard was right;
+    # what it caught was this write.
+    #
+    # A partial index is worse than a stale one. A subject that silently loses
+    # its imagery renders an episode without it, and nothing downstream can tell
+    # "not surveyed yet" from "lost its provenance this morning". Keeping the
+    # last known-good manifest leaves the pool exactly where the previous good
+    # run left it, which is what "the pool is unchanged" has always claimed.
     if failures:
         raise SystemExit("species index FAILED for: " +
                          "; ".join(f"{f.get('commons_title', f.get('media_id'))}: {f['reason']}"
-                                   for f in failures))
+                                   for f in failures)
+                         + f". {SPECIES_MANIFEST} was NOT rewritten; the pool is "
+                           "unchanged and still holds the last verified set.")
+    os.makedirs(OUT, exist_ok=True)
+    with open(SPECIES_MANIFEST, "w") as f:
+        json.dump(manifest, f, indent=2)
     return manifest
 
 
