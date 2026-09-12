@@ -9,5 +9,19 @@
     "reported_run": null,
     "reports": 1,
     "stage": "imagery-harvest"
+  },
+  "imagery-harvest::HARVESTER_TOOLING_ABSENT": {
+    "code": "HARVESTER_TOOLING_ABSENT",
+    "first_reported_at": "2026-09-12T04:39:30+00:00",
+    "issue": 77,
+    "items": [
+      "research/imagery_video.py needs ffmpeg",
+      "research/imagery_video.py needs vision-ocr"
+    ],
+    "last_reported_at": "2026-09-12T04:39:30+00:00",
+    "last_seen_at": "2026-09-12T04:39:30+00:00",
+    "reported_run": 34672456430,
+    "reports": 1,
+    "stage": "imagery-harvest"
   }
 }
