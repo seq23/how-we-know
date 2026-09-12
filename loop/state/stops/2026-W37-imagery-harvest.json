@@ -1,67 +1,53 @@
 {
   "stage": "imagery-harvest",
   "week": "2026-W37",
-  "at": "2026-09-12T04:39:30+00:00",
-  "code": "CLEARED_POOL_SHRANK",
-  "message": "channel/imagery/species.json went from 33 record(s) to 29. Records only ever accumulate here \u2014 neither gate may delete the other's \u2014 so this is provenance being lost, not a harvest result.",
+  "at": "2026-09-12T16:28:17+00:00",
+  "code": "HARVESTER_TOOLING_ABSENT",
+  "message": "1 scheduled harvester(s) cannot run on this host: research/imagery_video.py requires ffmpeg, vision-ocr. Its manifest cannot grow from here, and every clip it would have screened was neither accepted nor rejected. The other 3 harvester(s) ran and their pools are committed.",
   "detail": {
-    "before": {
-      "channel/imagery/rights.json": 70,
+    "unrunnable": {
+      "research/imagery_video.py": [
+        "ffmpeg: ffmpeg on PATH, to range-request one frame per probe time straight off the remote clip",
+        "vision-ocr: macOS with swiftc, to compile the Apple Vision OCR helper that reads the burned-in credit (gates B and C)"
+      ]
+    },
+    "platform": "linux",
+    "pool": {
+      "channel/imagery/rights.json": 88,
       "channel/imagery/materials.json": 12,
       "channel/imagery/species.json": 33,
       "channel/imagery/video_rights.json": null
-    },
-    "after": {
-      "channel/imagery/rights.json": 70,
-      "channel/imagery/materials.json": 12,
-      "channel/imagery/species.json": 29,
-      "channel/imagery/video_rights.json": null
     }
   },
-  "unblock": "Restore the manifest from git and find what removed the records before harvesting again. A clip whose provenance no longer resolves must not be used, and must not be silently re-accepted.",
-  "disposition": "needs_human",
-  "disposition_why": "'CLEARED_POOL_SHRANK' is not in loop/stop_policy.json, so it is treated as needing a human. That is the default on purpose. 'CLEARED_POOL_SHRANK' did not name what it is waiting on (no held_items), so this run cannot tell a repeat from a new problem. A stop that cannot be identified is never held.",
+  "unblock": "Decide where the Vision-dependent harvest runs: (a) give this workflow a `runs-on: macos-latest` job for the video harvester (ffmpeg, swiftc and Vision are on that image; 10x minute multiplier on a private repo), or (b) add `research/imagery_video.py --harvest` to the Mac's nightly batch (bin/batch-session.sh), which already commits and pushes repo state. Do NOT install a different OCR engine on Linux and do NOT accept clips unverified; loop/r2.py:verify_shorts records why both were rejected.",
+  "disposition": "held",
+  "disposition_why": "'HARVESTER_TOOLING_ABSENT' has been held on exactly these 2 item(s) since 2026-09-12T04:39:30+00:00 (0.5 day(s)), it is tracked by issue #77, and nothing about it has changed since it was reported. The owner has already been told. This run exits 0 and pages nobody; it goes loud again the moment the list grows, if #77 is closed, or 13.5 day(s) from now regardless.",
   "consecutive": 1,
-  "held_items": [],
-  "exit_code": 3,
+  "held_items": [
+    "research/imagery_video.py needs ffmpeg",
+    "research/imagery_video.py needs vision-ocr"
+  ],
+  "exit_code": 0,
   "work_done_before_stop": [
-    "harvested still imagery - NOAA Ocean Exploration, plus a hand-verified public-domain set through research/imagery.py",
-    "harvested materials stills - Wikimedia Commons, public-domain gate only through research/imagery_materials.py --missing"
+    "would harvest still imagery - NOAA Ocean Exploration, plus a hand-verified public-domain set through research/imagery.py",
+    "would harvest materials stills - Wikimedia Commons, public-domain gate only through research/imagery_materials.py --missing",
+    "would harvest species stills - the per-creature index every deep-sea episode draws its subject shots from through research/imagery_species.py"
   ],
   "notes": [
     "allocation: deep-sea-ocean-science 2, materials-and-manufacturing 2 -> 4 scheduled harvester(s)",
     "cleared pool before: channel/imagery/materials.json 12 record(s)",
-    "cleared pool before: channel/imagery/rights.json 70 record(s)",
+    "cleared pool before: channel/imagery/rights.json 88 record(s)",
     "cleared pool before: channel/imagery/species.json 33 record(s)",
     "cleared pool before: channel/imagery/video_rights.json absent",
     "demand at the current cadence: 4/week, 32 episode(s) over the next 8 weeks. An episode with no cleared footage is illustrated, which is a legitimate outcome and never a reason to widen the gate.",
     "research/imagery.py: rights gate credit_is_noaa_only() present",
-    "  research/imagery.py: by slot: {'trench': 4, 'frilled_shark': 5, 'vehicle': 6, 'column': 4, 'anglerfish': 3, 'jelly': 2, 'siphonophore': 1, 'octopus': 3, 'squid': 3, 'vent': 3, 'crab': 3, 'sponge': 3, 'coral': 3, 'cucumber': 3, 'star': 3, 'fish': 3, 'seafloor': 3, 'snailfish': 3, 'biolum': 3, 'eyes': 3, 'transparent': 3, 'red_animal': 3}",
-    "  research/imagery.py:   rejected  18  third-party or copyrighted credit",
-    "  research/imagery.py:   rejected  17  too small",
-    "  research/imagery.py:   rejected  13  credit does not resolve to NOAA alone",
-    "  research/imagery.py:   rejected   2  credit carries a co-author",
-    "  research/imagery.py:   rejected   1  no credit line on item page",
     "research/imagery_materials.py: rights gate pd_licence_ok() present",
-    "  research/imagery_materials.py:   DROP tempered-glass     no candidate passed both gates",
-    "  research/imagery_materials.py:   DROP crystal-structure  no candidate passed both gates",
-    "  research/imagery_materials.py:   DROP kevlar-aramid      no candidate passed both gates",
-    "  research/imagery_materials.py: ",
-    "  research/imagery_materials.py: 12/18 subjects covered -> /home/runner/work/how-we-know/how-we-know/channel/imagery/materials.json",
-    "  research/imagery_materials.py: rights verified: 12 assets, sha256 matched on every file",
     "research/imagery_species.py: rights gate pd_licence_ok() present",
-    "  research/imagery_species.py:   PD   anglerfish       Melanocetus johnsonii, NOAA Ship Delaware II (2004)",
-    "  research/imagery_species.py:   FAIL red_shrimp       media 15248: 'media 15248 is not in /home/runner/work/how-we-know/how-we-know/channel/imagery/rights.json; the species index may not invent a rights record'",
-    "  research/imagery_species.py:   FAIL siphonophore     media 28649: 'media 28649 is not in /home/runner/work/how-we-know/how-we-know/channel/imagery/rights.json; the species index may not invent a rights record'",
-    "  research/imagery_species.py:   FAIL black_smoker     media 16065: 'media 16065 is not in /home/runner/work/how-we-know/how-we-know/channel/imagery/rights.json; the species index may not invent a rights record'",
-    "  research/imagery_species.py:   FAIL grenadier        media 12013: 'media 12013 is not in /home/runner/work/how-we-know/how-we-know/channel/imagery/rights.json; the species index may not invent a rights record'",
-    "  research/imagery_species.py: species index FAILED for: 15248: 'media 15248 is not in /home/runner/work/how-we-know/how-we-know/channel/imagery/rights.json; the species index may not invent a rights record'; 28649: 'media 28649 is not in /home/runner/work/how-we-know/how-we-know/channel/imagery/rights.json; the species index may not invent a rights record'; 16065: 'media 16065 is not in /home/runner/work/how-we-know/how-we-know/channel/imagery/rights.json; the species index may not invent a rights record'; 12013: 'media 12013 is not in /home/runner/work/how-we-know/how-we-know/channel/imagery/rights.json; the species index may not invent a rights record'",
-    "research/imagery_species.py exited 1; the pool is unchanged",
-    "research/imagery_video.py: rights gate credit_is_noaa_only() present",
-    "  research/imagery_video.py: NOAA Ocean Exploration multimedia posts of type video: 379",
-    "  research/imagery_video.py: accepted 0 / rejected 379",
-    "  research/imagery_video.py:   rejected  379  gate A-credit",
-    "  research/imagery_video.py: RULE 0: the video gate accepted nothing. Refusing to write an empty manifest -- an empty set here means the gate or the source broke, not that NOAA stopped publishing. Run --audit to see the rejection reasons.",
-    "research/imagery_video.py exited 1; the pool is unchanged"
+    "research/imagery_video.py: this host lacks ffmpeg: ffmpeg on PATH, to range-request one frame per probe time straight off the remote clip",
+    "research/imagery_video.py: this host lacks vision-ocr: macOS with swiftc, to compile the Apple Vision OCR helper that reads the burned-in credit (gates B and C)",
+    "cleared pool after: channel/imagery/materials.json 12 record(s)",
+    "cleared pool after: channel/imagery/rights.json 88 record(s)",
+    "cleared pool after: channel/imagery/species.json 33 record(s)",
+    "cleared pool after: channel/imagery/video_rights.json absent"
   ]
 }
