@@ -146,12 +146,78 @@ git add loop docs 2>/dev/null
 # EVERY domain's queue file, not just deep sea's. Naming publish_order.json
 # alone left research/publish_order_materials.json uncommitted after a
 # weekly score, so the Mac scored a queue the repo never recorded.
-if [ "$STAGE" = "weekly-score" ]; then git add research/publish_order*.json 2>/dev/null; fi
+#
+# AND EVERY competition*.json. The scoring pass does not only rank: when the
+# YouTube Data API quota runs out mid-pass, research/competition.py writes its
+# named stop to research/competition_stop.json (STOP_OUT), and research/
+# propose.py READS that file to explain why a domain has no queue. It is
+# tracked, so leaving it out of this pathspec did not merely lose the
+# explanation - it left a TRACKED FILE MODIFIED AND UNSTAGED, and every
+# `git pull --rebase` in push_with_retries below then refused outright with
+# "cannot pull with rebase: You have unstaged changes". CONFIRMED on run
+# 34687628665 (2026-09-12): the stage itself exited 0 on a self-resolving
+# NEW_DOMAIN_QUOTA stop, all three push attempts failed on that one unstaged
+# file, and the job went red having thrown the week's scoring away.
+#
+# ONE `git add` PER PATTERN, never both in one call. `git add a*.json b*.json`
+# is all-or-nothing: if a* matches nothing, git rejects the whole invocation
+# with "pathspec did not match any files" and b* is not staged either - and
+# 2>/dev/null means that is invisible. A stage must not lose its stop file
+# because an unrelated queue file happened not to exist this week.
+if [ "$STAGE" = "weekly-score" ]; then
+  git add research/publish_order*.json 2>/dev/null
+  git add research/competition*.json 2>/dev/null
+fi
 # The footage/imagery harvest writes the cleared manifests and the assets they
 # describe. Without this line the lane would run every week, harvest correctly,
 # and throw the result away on the runner - "runs but inert" with a green tick.
 if [ "$STAGE" = "imagery-harvest" ]; then git add channel/imagery 2>/dev/null; fi
-if git diff --cached --quiet; then
+
+# ------------------------------------------- RULE 0: NOTHING A STAGE WROTE
+#                                                     MAY BE LEFT BEHIND
+#
+# The pathspecs above are deliberately narrow - the loop must not sweep up a
+# directory it does not own. The cost of that narrowness is that a stage which
+# writes a TRACKED file no pathspec names has its work silently dropped, and
+# the two ways that shows up are both bad and neither says what happened:
+#
+#   * something else was staged too -> `git pull --rebase` refuses on the dirty
+#     file, all three attempts fail, and the job dies claiming "could not
+#     push", naming the COMMIT rather than the file that blocked it. That is
+#     run 34687628665, and it cost a full weekly scoring pass.
+#   * nothing else was staged      -> "no repo changes to commit", exit 0,
+#     green tick, work gone. Strictly worse, because nobody ever looks.
+#
+# A runner checks out clean, so a tracked file that is modified here was
+# written by THIS stage and is by definition its output. Refuse to continue and
+# NAME IT, rather than discovering it three failed rebases later as someone
+# else's problem. The fix is always one line - add the path to a pathspec
+# above - and this message is what makes that findable.
+#
+# Untracked files are NOT covered on purpose: scratch output, downloaded
+# assets and caches are untracked precisely because they are not repo state,
+# and sweeping them in is how the loop would start committing junk.
+STRAY="$(git diff --name-only 2>/dev/null)"
+if [ -n "$STRAY" ]; then
+  echo "FAIL: the $STAGE stage modified tracked file(s) that no pathspec in" >&2
+  echo "  bin/loop-stage.sh stages, so this run would have dropped them:" >&2
+  printf '    %s\n' $STRAY >&2
+  echo "  Add them to the commit pathspecs for stage '$STAGE' in" >&2
+  echo "  bin/loop-stage.sh, or stop the stage writing them. Until then the" >&2
+  echo "  work above never reaches origin and the rebase below cannot run." >&2
+  # Not a named stop: this is a repo-wiring defect, not a condition the loop
+  # can reason about. Fail as a genuine failure so the issue below is opened.
+  RC=1
+  DISPOSITION=""
+fi
+
+# Skipped entirely when a stray tracked file was found: `git pull --rebase`
+# cannot run against a dirty tree, so attempting the push would burn three
+# retries on a guaranteed failure and bury the diagnosis printed above under a
+# generic "could not push". Go straight to opening the issue.
+if [ -n "$STRAY" ]; then
+  :
+elif git diff --cached --quiet; then
   echo "no repo changes to commit"
 else
   case $RC in
