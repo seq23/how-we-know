@@ -167,6 +167,24 @@ git add loop docs 2>/dev/null
 if [ "$STAGE" = "weekly-score" ]; then
   git add research/publish_order*.json 2>/dev/null
   git add research/competition*.json 2>/dev/null
+  # AND the deep-mine output. research/publish_order_domain.py:deep_mine runs
+  # research/mine_domain.py the first time a domain has no
+  # research/mined_queries_<slug>.json and reads it back on every pass after.
+  # Two of those files are tracked; the next admitted domain's would have been
+  # untracked, so the Rule 0 guard below could not see it and the mine was
+  # thrown away on the runner every Saturday. Found by
+  # loop/tools/write_set.py, the static half of that guard.
+  git add research/mined_queries*.json 2>/dev/null
+fi
+# The Monday draft PROMOTES a validated script into scripts/<slug>.md
+# (loop/draft.py) and records which POV bank line it borrowed in
+# pov/pov-assignments.json (loop/pov_match.py). Both are tracked, and neither
+# was named here: the first Monday that authors rather than assembles would
+# have tripped the Rule 0 guard below with the script written and lost. The
+# Mac's batch already commits exactly these two paths (bin/batch-session.sh).
+if [ "$STAGE" = "mon-draft" ]; then
+  git add scripts 2>/dev/null
+  git add pov/pov-assignments.json 2>/dev/null
 fi
 # The footage/imagery harvest writes the cleared manifests and the assets they
 # describe. Without this line the lane would run every week, harvest correctly,
