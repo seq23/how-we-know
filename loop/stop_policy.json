@@ -99,6 +99,10 @@
       "CAPTIONS_NOT_READY": {
         "reminder_days": 7,
         "why": "CORRECTED 2026-09-08, same day it was written. The original reason here was 'the .srt comes from visuals/captions.py on the Mac that voiced the episode; audio/**/*.wav is gitignored, so no runner can produce one'. That premise was true and is not any more: visuals/captions.py now records each measured wav duration into audio/<slug>/beats.json, which git DOES track, and loop/captions_build.py rebuilds the track from it byte-identically with no audio present. The upload lane heals before it judges, so a missing .srt is no longer a reason to hold anything. What is left is the residue: an episode whose narration was never finished, so there is no measurement to build from. That genuinely needs the Mac to narrate it, and a week between reminders is right for it."
+      },
+      "HARVESTER_TOOLING_ABSENT": {
+        "reminder_days": 14,
+        "why": "2026-09-12. research/imagery_video.py's gates B and C read the credit burned into the picture with Apple's Vision framework, off frames ffmpeg pulls from the clip. ubuntu-latest has neither, so on every scheduled run since the footage lane was written the video harvester failed each clip that passed the rights gate with FileNotFoundError('ffmpeg'), the screener labelled that 'gate A-credit' (379/379 on run 34672456430), and the lane wrote 'the pool is unchanged' about a pool that had never held a clip. Not self-resolving: time does not put ffmpeg or Vision on a Linux runner. Not owner_action: automation CAN clear it, but only after a decision that is hers - a macos-latest job at 10x minutes, or the Mac's nightly batch. Held, because the stop names the harvester and each missing tool, the other harvesters keep growing the still pools meanwhile, and a fortnight between reminders matches a weekly lane. The lane never substitutes an OCR engine and never accepts a clip unverified; loop/r2.py:verify_shorts records why."
       }
     }
   },
@@ -388,6 +392,7 @@
     "NO_HARVESTER": "No harvester at all is registered. Zero-item guard.",
     "RIGHTS_GATE_MISSING": "Footage was harvested with no rights manifest. Public-domain-only is not negotiable in this repo.",
     "CLEARED_POOL_SHRANK": "The cleared imagery pool got smaller. Something removed rights-cleared assets and that must never pass quietly.",
+    "HARVESTER_TOOLING_ABSENT": "A scheduled harvester requires host tooling (ffmpeg, Apple Vision) this runner lacks, so its pool cannot grow from here. Earns HELD by naming the harvester and each tool; a new harvester or a new requirement pages.",
     "SHORTS_UNVERIFIED": "A Short failed V14 attribution or V15 caption-crop and was refused the shelf. Nothing unverified reaches YouTube.",
     "WRANGLER_MISSING": "wrangler is not installed in this environment. On a runner that is a broken install step, not a missing credential.",
     "R2_AUTH_FAILED": "wrangler could not authenticate. Almost always CLOUDFLARE_ACCOUNT_ID being unset rather than a token problem - see THE TRAP in loop/r2.py - which is a configuration defect, not something to wait out.",

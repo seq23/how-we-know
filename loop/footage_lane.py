@@ -26,6 +26,19 @@ WHAT IS A NAMED STOP:
   smaller pool means something removed cleared provenance, which is a defect
   and not a harvest result.
 * **The rights gate is missing from a harvester.** See below.
+* **A harvester requires host tooling this runner does not have.** The video
+  harvester's gates B and C read burned-in credits with Apple's Vision
+  framework off frames ffmpeg pulls from the clip; ubuntu-latest has neither.
+  CONFIRMED on runs 33943991250 and 34672456430: every clip that passed the
+  rights gate then failed on a missing `ffmpeg`, the screener labelled the
+  exception "gate A-credit", and the lane wrote "the pool is unchanged" for a
+  pool that had never held a single clip. That is a HELD stop naming the
+  harvester and the tools — `HARVESTER_TOOLING_ABSENT` — not a rights
+  rejection and not a quiet skip. The lane still runs every harvester whose
+  requirements this host meets, so the stills keep accumulating while the
+  owner decides where the Vision work runs (a macOS runner, or the Mac's
+  nightly batch). It never substitutes an OCR engine and never accepts a clip
+  unverified; loop/r2.py:verify_shorts records why.
 
 THE ONE THING THIS LANE MAY NEVER DO IS RELAX THE RIGHTS CHECK TO INCREASE
 SUPPLY. The gate is an allowlist: the credit line on the item page must resolve
@@ -50,6 +63,7 @@ sys.path.insert(0, str(LOOP))
 
 import cadence                                   # noqa: E402
 import domains                                   # noqa: E402
+import host_tools                                # noqa: E402
 from common import Stage, config, week_id        # noqa: E402
 
 RESEARCH = ROOT / "research"
@@ -218,12 +232,29 @@ def run(dry_run: bool = False) -> int:
                         "declaration; it does not keep a list of its own.")
 
         ran = 0
+        # (harvester rel, [missing tool descriptions]) for every scheduled
+        # harvester this host cannot run to completion. Reported as ONE held
+        # stop after the runnable harvesters have done their work, so a Linux
+        # runner keeps growing the still pools while the video harvester's
+        # host question is open.
+        unrunnable: list[tuple[str, list[str]]] = []
         for h in harvesters:
             rel = h["rel"]
             gate, what = h.get("gate"), h.get("what", rel)
             path = h["path"]
             if not path.exists():
                 st.note(f"{rel} is not in this checkout — skipped ({what})")
+                continue
+            # BEFORE the gate check and before spawning: a harvester that
+            # cannot finish screening on this host must not start. Run
+            # anyway, it turns every environment error into a rejection that
+            # reads like a rights decision (run 34672456430: 379/379 "gate
+            # A-credit", all of them FileNotFoundError('ffmpeg')).
+            missing = host_tools.missing(h.get("requires"))
+            if missing:
+                for m in missing:
+                    st.note(f"{rel}: this host lacks {m}")
+                unrunnable.append((rel, missing))
                 continue
             if gate:
                 try:
@@ -257,7 +288,10 @@ def run(dry_run: bool = False) -> int:
             st.work(f"harvested {what} through {shown}")
             ran += 1
 
-        if not ran:
+        if not ran and not unrunnable:
+            # If every harvester was UNRUNNABLE rather than absent, the held
+            # stop below says so by name; NO_HARVESTER is for a checkout with
+            # nothing to run at all.
             st.named_stop(
                 "NO_HARVESTER",
                 "no rights-checked harvester exists in this checkout for any "
@@ -294,6 +328,38 @@ def run(dry_run: bool = False) -> int:
         for key, n in sorted(after.items()):
             st.note(f"cleared pool after: {key} "
                     + ("absent" if n is None else f"{n} record(s)"))
+
+        if unrunnable:
+            # HELD, not self-resolving and not a skip: time does not install
+            # ffmpeg or Apple Vision on ubuntu-latest, and only the owner can
+            # decide where that work runs. held_items name the harvester AND
+            # each missing tool, so a new harvester or a new requirement pages
+            # and an unchanged one does not. Raised last so the work above is
+            # recorded (work_done_before_stop) and the shrink check still ran.
+            items = sorted(f"{rel} needs {m.split(':', 1)[0]}"
+                           for rel, ms in unrunnable for m in ms)
+            st.named_stop(
+                "HARVESTER_TOOLING_ABSENT",
+                f"{len(unrunnable)} scheduled harvester(s) cannot run on this "
+                f"host: " + "; ".join(
+                    f"{rel} requires {', '.join(m.split(':', 1)[0] for m in ms)}"
+                    for rel, ms in unrunnable)
+                + ". Its manifest cannot grow from here, and every clip it would "
+                f"have screened was neither accepted nor rejected. The other "
+                f"{ran} harvester(s) ran and their pools are committed.",
+                detail={"unrunnable": {rel: ms for rel, ms in unrunnable},
+                        "platform": sys.platform, "pool": after},
+                held_items=items,
+                unblock="Decide where the Vision-dependent harvest runs: (a) "
+                        "give this workflow a `runs-on: macos-latest` job for "
+                        "the video harvester (ffmpeg, swiftc and Vision are on "
+                        "that image; 10x minute multiplier on a private repo), "
+                        "or (b) add `research/imagery_video.py --harvest` to "
+                        "the Mac's nightly batch (bin/batch-session.sh), which "
+                        "already commits and pushes repo state. Do NOT install "
+                        "a different OCR engine on Linux and do NOT accept "
+                        "clips unverified; loop/r2.py:verify_shorts records "
+                        "why both were rejected.")
     return 0
 
 
