@@ -5,7 +5,7 @@ How We Know, and nothing else. Reference detail lives in
 [`docs/OPERATING-MANUAL.md`](docs/OPERATING-MANUAL.md); the locked strategy lives
 in [`docs/CHANNEL-PLAN.md`](docs/CHANNEL-PLAN.md).
 
-Last true: 2026-09-08.
+Last true: 2026-09-13.
 
 ---
 
@@ -137,6 +137,19 @@ That is the whole list.
 
 **Videos already uploaded and dated air on their own.** Your laptop can be shut
 for a month and everything scheduled still goes out.
+
+### If the Mac is holding something back
+
+**One bad episode no longer stops the others.** A render that fails its check —
+too short, or clipped — is **held by name** and everything else still uploads.
+The short one heals itself (more sourced narration, re-voiced, re-rendered on
+the next batch). You see it as one line in the Sunday email:
+`RENDER_HELD: why-is-steel-so-strong — 9.90 min, under the floor`. Nothing for
+you to do unless the same line is still there a week later.
+
+**The Mac now reports in.** If it has finished episodes and has not shipped
+any for three days, the Sunday email says `MAC_NOT_SHIPPING` and names why.
+Before 13 September that silence reached nobody.
 
 ### What is on the Mac right now
 
