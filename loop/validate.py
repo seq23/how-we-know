@@ -1998,8 +1998,15 @@ def v27_lanes_see_every_domain() -> Result:
         import domains as _dom                             # noqa: PLC0415
         # `have` is stubbed to True so this measures which slugs the lane can
         # SEE, not which have material cut on this particular machine.
+        # SEEN, NOT PENDING. `pending()` excludes every episode whose Short is
+        # already published, so a domain whose Shorts are all done - deep sea,
+        # from 2026-09-14 - read as a domain the lane could not see, and the
+        # breaker tripped on a finished job. What the lane can SEE is what it
+        # iterates: its pending set plus the slugs its own ledger says are done.
         seen = {_dom.domain_of_slug(s)
                 for s in _sl.pending(have=lambda _s: True)}
+        seen |= {_dom.domain_of_slug(r_["slug"])
+                 for r_ in _sl.load_ledger()["published"]}
         seen.discard(None)
         alloc = set(_dom.allocation(config()))
         missing = alloc - seen
@@ -2926,7 +2933,13 @@ def v35_digest_reaches_her() -> Result:
     if len(body.splitlines()) < 12:
         r.fail(f"the digest rendered {len(body.splitlines())} line(s) - it is "
                f"not reporting anything.")
-    for heading in ("## Aired this week", "## Next up", "## Runway",
+    # "## Next up" became "## The calendar" on 2026-09-14, when the digest
+    # gained the sections she asked for: what went INTO the queue this week,
+    # the pipeline's health, and every empty slot ahead - with the verdict in
+    # the subject line. A digest without those is the old digest, which read
+    # a week of nine unshipped episodes as healthy.
+    for heading in ("## Aired this week", "## Queued this week",
+                    "## Pipeline health", "## The calendar", "## Runway",
                     "## Named stops"):
         r.examined += 1
         if heading not in body:
@@ -3120,12 +3133,33 @@ def v37_runtime_target_and_self_heal() -> Result:
         r.fail("no lane runs loop/extend.py. A self-heal nothing invokes is "
                "the 'exists but nothing invokes it' defect, and the floor goes "
                "back to being a stop.")
+    # THE CHECK LIVES IN loop/render_gate.py NOW (2026-09-13), which runs V24
+    # and HOLDS the failing slug rather than refusing the whole batch. So the
+    # assertion is behavioural in two halves: the batch must go through the
+    # gate, and the gate must really consult V24. Grepping the batch script for
+    # the validator's name - what stood here - tripped the breaker on
+    # 2026-09-14 the morning after the gate moved, for a check that had not
+    # weakened but relocated.
     r.examined += 1
-    if "v24_render_duration_floor" not in batch:
-        r.fail("bin/batch-session.sh does not check V24 before pushing to R2. "
-               "V24 runs only where renders exist - this Mac - and the cloud "
-               "lane exempts itself, so without this check nothing on the "
-               "upload path consults the runtime floor at all.")
+    gate_src = (ROOT / "loop" / "render_gate.py").read_text() \
+        if (ROOT / "loop" / "render_gate.py").exists() else ""
+    if "v24_render_duration_floor" not in gate_src:
+        r.fail("loop/render_gate.py does not run V24. The runtime floor is "
+               "consulted by no gate on the upload path.")
+    r.examined += 1
+    # An INVOCATION, not a mention: a comment naming the gate is not a gate.
+    runs_gate = lambda src: bool(re.search(r"^[^#\n]*loop/render_gate\.py", src, re.M))  # noqa: E731
+    if not runs_gate(batch) and "v24_render_duration_floor" not in batch:
+        r.fail("bin/batch-session.sh does not check V24 before pushing to R2 "
+               "(neither directly nor through loop/render_gate.py). V24 runs "
+               "only where renders exist - this Mac - and the cloud lane "
+               "exempts itself, so without this check nothing on the upload "
+               "path consults the runtime floor at all.")
+    r.examined += 1
+    daily = (ROOT / "bin" / "loop-backfill-daily.sh").read_text()
+    if not runs_gate(daily):
+        r.fail("bin/loop-backfill-daily.sh does not go through loop/render_gate.py, "
+               "so a render that fails V24 can be uploaded from the Mac directly.")
 
     # And the heal must be able to tell a short episode from one the narrator
     # is halfway through, which is the difference between healing and padding.

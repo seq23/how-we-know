@@ -82,6 +82,159 @@ def upcoming(led: dict, after: dt.datetime, limit: int = 8) -> list[dict]:
     return sorted(out, key=lambda r: r["_when"])[:limit]
 
 
+# ─── WHAT WENT INTO THE QUEUE, AND WHETHER THE PIPELINE IS HEALTHY ───────────
+#
+# Added 2026-09-14. The digest showed what would AIR and never what had been
+# PUT IN THE QUEUE, so a week in which nine finished episodes shipped nothing
+# (6-13 September) read as a healthy week: "Next up" was full for a month
+# because the deep-sea run was already scheduled. The owner's ask: a Sunday
+# email that says what was placed in the YouTube queue this week, if anything,
+# and whether the pipeline is well - with the verdict in the subject line so
+# the inbox is the dashboard. Every function here is pure over its inputs so
+# loop/tests/test_digest_queue_and_health.py can prove each verdict.
+
+EMPTY_SLOT_RED_DAYS = 14      # her decision, 2026-09-14: an empty slot inside two weeks is red
+CALENDAR_WEEKS = 4
+WAIT_YELLOW_DAYS = 3          # finished work waiting longer than this is yellow...
+WAIT_RED_DAYS = 7             # ...and longer than this is red
+
+
+def queued_this_week(led: dict, since: dt.datetime, until: dt.datetime) -> list[dict]:
+    """Every episode UPLOADED AND DATED inside the window: the thing the old
+    digest never showed. `uploaded_at` is the moment a lane put it on YouTube;
+    the note's prefix ("backfill:", "cloud-upload:") names which lane."""
+    out = []
+    for row in led["published"]:
+        if row.get("retired_at"):
+            continue
+        up = _when(row.get("uploaded_at"))
+        if up and since <= up <= until:
+            lane = (row.get("note") or "").split(":", 1)[0].strip() or "?"
+            out.append({**row, "_uploaded": up, "_lane": lane,
+                        "_airs": _when(row.get("scheduled_publish_at"))})
+    return sorted(out, key=lambda r: r["_uploaded"])
+
+
+def calendar(led: dict, cfg: dict, now: dt.datetime, weeks: int = CALENDAR_WEEKS) -> list[dict]:
+    """Every publish slot in the next `weeks` weeks, filled or EMPTY.
+
+    A slot is a (date, domain) the cadence would publish on - the weekday
+    ladder split between the live domains, the same split loop/backfill.py
+    schedules with - and it is filled when a ledger row is dated that day.
+    Empty slots are the number she cares about; they were invisible before.
+    """
+    import backfill                                        # noqa: PLC0415
+    per_week = int(cfg["cadence"]["videos_per_week"])
+    days_by_domain = backfill.domain_weekdays(cfg, per_week)
+    dated: dict[str, dict] = {}
+    for row in led["published"]:
+        if row.get("retired_at"):
+            continue
+        w = _when(row.get("scheduled_publish_at"))
+        if w:
+            dated[w.date().isoformat()] = row
+    out = []
+    start = now.date()
+    for i in range(1, weeks * 7 + 1):
+        d = start + dt.timedelta(days=i)
+        for domain, wds in days_by_domain.items():
+            if d.weekday() in wds:
+                row = dated.get(d.isoformat())
+                out.append({"date": d, "domain": domain, "days_away": i,
+                            "slug": row["slug"] if row else None})
+    return out
+
+
+def pipeline(led: dict, depth: dict, hb: dict, now: dt.datetime) -> dict:
+    """The funnel, one number per stage, from what the cloud can read.
+
+    queued  - topics in the publish orders not yet uploaded
+    scripted / narrated - files in the repository for those topics
+    finished - the Mac's heartbeat: renders on disk that are not yet uploaded
+    scheduled - ledger rows dated in the future
+    waiting_days - how long the oldest finished-but-unshipped work has waited,
+                   from the Mac's last successful ship (None if nothing waits)
+    """
+    done = {r["slug"] for r in led["published"] if not r.get("retired_at")}
+    try:
+        import batch_queue                                 # noqa: PLC0415
+        queued = [q["slug"] for q in batch_queue.queued_entries() if q["slug"] not in done]
+    except Exception:                                      # noqa: BLE001
+        queued = []
+    scripted = [s for s in queued if (ROOT / "scripts" / f"{s}.md").exists()]
+    narrated = []
+    for s_ in scripted:
+        b = ROOT / "audio" / s_ / "beats.json"
+        try:
+            beats = json.loads(b.read_text())
+            if beats and all(x.get("seconds") for x in beats):
+                narrated.append(s_)
+        except (OSError, ValueError):
+            pass
+    lanes = {k: v for k, v in hb.items() if isinstance(v, dict)}
+    pending = max([int(v.get("pending") or 0) for v in lanes.values()] or [0])
+    held = sorted({x for v in lanes.values() for x in (v.get("held") or [])})
+    last_ship = max([_when(v.get("last_success_at")) for v in lanes.values()
+                     if v.get("uploaded") and _when(v.get("last_success_at"))] or [None],
+                    key=lambda d: d or dt.datetime.min.replace(tzinfo=dt.timezone.utc))
+    last_seen = max([_when(v.get("last_run_at")) for v in lanes.values()
+                     if _when(v.get("last_run_at"))] or [None],
+                    key=lambda d: d or dt.datetime.min.replace(tzinfo=dt.timezone.utc))
+    waiting_days = None
+    if pending:
+        waiting_days = (now - last_ship).days if last_ship else (now - last_seen).days if last_seen else None
+    scheduled = [r for r in led["published"] if not r.get("retired_at")
+                 and (_when(r.get("scheduled_publish_at")) or now) > now]
+    return {"queued": len(queued), "scripted": len(scripted), "narrated": len(narrated),
+            "finished_waiting": pending, "held": held, "scheduled": len(scheduled),
+            "waiting_days": waiting_days, "mac_last_seen": last_seen,
+            "mac_silent_days": (now - last_seen).days if last_seen else None}
+
+
+def verdict(queued_rows: list[dict], cal: list[dict], pipe: dict,
+            loud_stops: int) -> tuple[str, str, list[str]]:
+    """(emoji, one-line verdict, reasons). The rules, in words:
+
+    🔴  an empty slot inside EMPTY_SLOT_RED_DAYS; or finished work waiting more
+        than WAIT_RED_DAYS; or the Mac silent that long with work pending; or a
+        stop that needed a human.
+    🟡  an empty slot inside the calendar; or finished work waiting more than
+        WAIT_YELLOW_DAYS; or nothing queued this week while something is finished.
+    🟢  otherwise.
+    """
+    reasons_red, reasons_yellow = [], []
+    empty = [c for c in cal if not c["slug"]]
+    soon = [c for c in empty if c["days_away"] <= EMPTY_SLOT_RED_DAYS]
+    if soon:
+        reasons_red.append(f"{len(soon)} empty slot(s) inside {EMPTY_SLOT_RED_DAYS} days "
+                           f"(first {soon[0]['date']:%a %d %b}, {soon[0]['domain']})")
+    elif empty:
+        reasons_yellow.append(f"{len(empty)} empty slot(s) inside {CALENDAR_WEEKS} weeks "
+                              f"(first {empty[0]['date']:%a %d %b}, {empty[0]['domain']})")
+    wd = pipe.get("waiting_days")
+    if pipe.get("finished_waiting"):
+        if wd is not None and wd > WAIT_RED_DAYS:
+            reasons_red.append(f"{pipe['finished_waiting']} finished episode(s) waiting {wd} days on the Mac")
+        elif wd is not None and wd > WAIT_YELLOW_DAYS:
+            reasons_yellow.append(f"{pipe['finished_waiting']} finished episode(s) waiting {wd} days on the Mac")
+        elif not queued_rows:
+            reasons_yellow.append(f"nothing queued this week while {pipe['finished_waiting']} finished episode(s) wait")
+    ms = pipe.get("mac_silent_days")
+    if pipe.get("finished_waiting") and ms is not None and ms > WAIT_RED_DAYS:
+        reasons_red.append(f"the Mac has not reported for {ms} days with work pending")
+    if loud_stops:
+        reasons_red.append(f"{loud_stops} stop(s) needed a human this week")
+    if pipe.get("held"):
+        reasons_yellow.append(f"held by the render gate: {', '.join(pipe['held'])}")
+
+    n_q, n_s = len(queued_rows), pipe.get("scheduled", 0)
+    if reasons_red:
+        return "🔴", f"Stalled: {n_q} queued this week, {n_s} scheduled — {reasons_red[0]}", reasons_red + reasons_yellow
+    if reasons_yellow:
+        return "🟡", f"Watch: {n_q} queued this week, {n_s} scheduled — {reasons_yellow[0]}", reasons_yellow
+    return "🟢", f"Healthy: {n_q} queued this week, {n_s} scheduled, every slot filled for {CALENDAR_WEEKS} weeks", []
+
+
 def stops_in(week: str) -> list[dict]:
     """Named stops this week, from the files the stages themselves wrote."""
     out = []
@@ -182,11 +335,22 @@ def render(week: str, now: dt.datetime) -> tuple[str, dict]:
     next_rows = upcoming(led, now)
     stops = stops_in(week) + mac_stops(now)
     by_slug = domains.by_slug()
+    hb = json.loads(HEARTBEAT.read_text()) if HEARTBEAT.exists() else {}
+    queued_rows = queued_this_week(led, week_ago, now)
+    cal = calendar(led, cfg, now)
+    pipe = pipeline(led, depth, hb, now)
+    loud_n = len([s for s in stops if s["disposition"] == "needs_human"])
+    mark, headline, reasons = verdict(queued_rows, cal, pipe, loud_n)
 
     def dom(slug: str) -> str:
         return by_slug.get(slug, "—")
 
-    L = [f"# How We Know — week of {week}", ""]
+    L = [f"# How We Know — week of {week}", "",
+         f"## {mark} {headline}", ""]
+    for r in reasons[1:]:
+        L.append(f"- {r}")
+    if len(reasons) > 1:
+        L.append("")
 
     # --- THE ONLY THING IN THIS EMAIL THAT IS ADDRESSED TO HER --------------
     #
@@ -223,6 +387,58 @@ def render(week: str, now: dt.datetime) -> tuple[str, dict]:
               f"— cause `{br.get('cause')}`. Publishing is halted until it is "
               f"reset. {br.get('detail') or ''}", ""]
 
+    L += ["## Queued this week", "",
+          "What a lane put on YouTube in the last seven days, dated and waiting to air.", ""]
+    if queued_rows:
+        L += ["| Uploaded | Episode | Airs | Domain | Lane |", "|---|---|---|---|---|"]
+        for r in queued_rows:
+            airs = f"{r['_airs']:%a %d %b}" if r["_airs"] else "undated"
+            L.append(f"| {r['_uploaded']:%a %d %b} | [{r['slug']}]"
+                     f"(https://youtu.be/{r.get('video_id', '')}) | {airs} "
+                     f"| {dom(r['slug'])} | {r['_lane']} |")
+    elif pipe["finished_waiting"]:
+        L.append(f"**Nothing was queued — and {pipe['finished_waiting']} finished episode(s) "
+                 f"are waiting on the Mac.** That is the pipeline health line below, not a quiet week.")
+    else:
+        L.append("Nothing was queued: nothing new was finished this week. The calendar below says "
+                 "whether that matters yet.")
+    L.append("")
+
+    L += ["## Pipeline health", "",
+          "| Stage | Count | |", "|---|---|---|",
+          f"| Topics queued, not yet uploaded | {pipe['queued']} | |",
+          f"| …of which scripted | {pipe['scripted']} | |",
+          f"| …of which narrated | {pipe['narrated']} | |"]
+    wd = pipe["waiting_days"]
+    wait_mark = ("🔴" if wd is not None and wd > WAIT_RED_DAYS else
+                 "🟡" if wd is not None and wd > WAIT_YELLOW_DAYS else
+                 "🟢" if pipe["finished_waiting"] else "")
+    L.append(f"| Finished on the Mac, waiting to upload | {pipe['finished_waiting']} "
+             f"| {wait_mark}{f' waiting {wd} days' if wd is not None and pipe['finished_waiting'] else ''} |")
+    if pipe["held"]:
+        L.append(f"| …of which held by the render gate | {len(pipe['held'])} | 🟡 {', '.join(pipe['held'])} |")
+    L.append(f"| Uploaded and dated on YouTube | {pipe['scheduled']} | |")
+    seen = pipe["mac_last_seen"]
+    L.append(f"| Mac last reported | {seen:%a %d %b %H:%M} UTC | "
+             f"{'🔴 silent' if (pipe['mac_silent_days'] or 0) > WAIT_RED_DAYS else ''} |"
+             if seen else "| Mac last reported | never | 🟡 no heartbeat yet |")
+    L.append("")
+
+    empties = [c for c in cal if not c["slug"]]
+    L += [f"## The calendar — next {CALENDAR_WEEKS} weeks", ""]
+    if empties:
+        soon = [c for c in empties if c["days_away"] <= EMPTY_SLOT_RED_DAYS]
+        L.append(f"**{len(empties)} empty slot(s)**"
+                 + (f", **{len(soon)} inside {EMPTY_SLOT_RED_DAYS} days**" if soon else "")
+                 + ". Empty means no episode is dated for a day the cadence publishes on.")
+    else:
+        L.append(f"Every slot for the next {CALENDAR_WEEKS} weeks has an episode dated.")
+    L += ["", "| Date | Domain | Episode |", "|---|---|---|"]
+    for c in cal:
+        cell = c["slug"] or ("**— EMPTY —** 🔴" if c["days_away"] <= EMPTY_SLOT_RED_DAYS else "**— empty —** 🟡")
+        L.append(f"| {c['date']:%a %d %b} | {c['domain']} | {cell} |")
+    L.append("")
+
     L += ["## Aired this week", ""]
     if out_rows:
         L += ["| Date | Episode | Domain |", "|---|---|---|"]
@@ -232,17 +448,6 @@ def render(week: str, now: dt.datetime) -> tuple[str, dict]:
                      f"| {dom(r['slug'])} |")
     else:
         L.append("Nothing aired in the last seven days.")
-    L.append("")
-
-    L += ["## Next up", ""]
-    if next_rows:
-        L += ["| Date | Episode | Domain |", "|---|---|---|"]
-        for r in next_rows:
-            L.append(f"| {r['_when']:%a %d %b %H:%M} UTC | {r['slug']} "
-                     f"| {dom(r['slug'])} |")
-    else:
-        L.append("**Nothing is scheduled.** That is the one line in this "
-                 "digest worth acting on — the calendar is empty ahead.")
     L.append("")
 
     L += ["## Runway", "",
@@ -301,7 +506,8 @@ def render(week: str, now: dt.datetime) -> tuple[str, dict]:
 
     counts = {"aired": len(out_rows), "scheduled": len(next_rows),
               "queued": sum(depth.values()), "stops": len(stops),
-              "tripped": tripped}
+              "tripped": tripped, "verdict": f"{mark} {headline}",
+              "queued_this_week": len(queued_rows), "empty_slots": len(empties)}
     return "\n".join(L), counts
 
 
@@ -351,6 +557,11 @@ def main() -> int:
         path = OUT_DIR / f"{week}.md"
         path.write_text(body + "\n", encoding="utf-8")
         st.work(f"wrote {path.relative_to(ROOT)}")
+        # THE SUBJECT LINE. The workflow reads this one line into the issue
+        # title, so the verdict is visible in her inbox without opening it.
+        (OUT_DIR / f"{week}.subject").write_text(
+            f"Weekly digest — {counts['verdict'].split(' — ')[0]} — {week}\n", encoding="utf-8")
+        st.work(f"subject: {counts['verdict']}")
         print(body)
     return 0
 
