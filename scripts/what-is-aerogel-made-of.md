@@ -112,13 +112,13 @@ Aerogel is made of silicon dioxide arranged as a skeletal network, with air occu
 - 1:54 The silica network is a fractal assembly of primary particles
 - 2:53 Density and porosity are controlled by precursor concentration
 - 3:43 Producer POV
-- 3:56 Thermal conductivity is limited by the mean free path of air
-- 4:54 Mechanical properties reflect the open skeletal structure
-- 5:51 Variants replace silica with other oxides or organic polymers
-- 6:44 Hydrophobic treatment prevents moisture absorption
-- 7:36 What to notice in the edit
-- 8:14 Evidence limit
-- 12:40 Closing
+- 3:53 Thermal conductivity is limited by the mean free path of air
+- 4:51 Mechanical properties reflect the open skeletal structure
+- 5:49 Variants replace silica with other oxides or organic polymers
+- 6:41 Hydrophobic treatment prevents moisture absorption
+- 7:33 What to notice in the edit
+- 8:11 Evidence limit
+- 12:37 Closing
 
 ## Sources
 - https://www.nist.gov/

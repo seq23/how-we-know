@@ -119,9 +119,9 @@ Metal additive manufacturing is not magic. It is controlled melting, repeated th
 
 - 0:00 Cold open
 - 3:49 Producer POV
-- 7:40 What to notice in the edit
-- 8:19 Evidence limit
-- 11:38 Closing
+- 7:44 What to notice in the edit
+- 8:23 Evidence limit
+- 11:41 Closing
 
 ## Sources
 - https://www.nist.gov/

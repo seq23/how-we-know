@@ -102,11 +102,11 @@ Kevlar is a demonstration that material properties emerge from structure as much
 - 4:01 The fiber is aromatic and resistant to most solvents
 - 5:36 Ultraviolet light degrades the surface
 - 6:30 Producer POV
-- 6:44 Different grades optimize for different properties
-- 8:09 The fiber is woven or laminated into structures
-- 9:36 What to notice in the edit
-- 10:31 Evidence limit
-- 11:11 Closing
+- 6:47 Different grades optimize for different properties
+- 8:12 The fiber is woven or laminated into structures
+- 9:39 What to notice in the edit
+- 10:33 Evidence limit
+- 11:13 Closing
 
 ## Sources
 

@@ -105,10 +105,10 @@ Carbon fiber is not a coating on something else. It is the product of removing e
 - 5:04 Surface treatment makes the fiber stick to resin
 - 6:04 The aligned carbon sheets are why the fiber is strong along its length
 - 6:52 The process is energy-intensive and that drives cost
-- 7:41 Recycling carbon fiber is possible but degrades properties
-- 8:28 What to notice in the edit
+- 7:40 Recycling carbon fiber is possible but degrades properties
+- 8:27 What to notice in the edit
 - 9:12 Evidence limit
-- 9:46 Closing
+- 9:45 Closing
 
 ## Sources
 

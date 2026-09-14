@@ -1,0 +1,127 @@
+{
+  "episode": "why-is-steel-so-strong",
+  "beats": 93,
+  "plan_source": "plans/why-is-steel-so-strong.json",
+  "timing": "audio",
+  "beats_measured": 93,
+  "durations_recorded": 55,
+  "duration_s": 741.747,
+  "cues": 206,
+  "chapters_real": 15,
+  "chapters_published": 14,
+  "chapter_notes": [
+    "merged 1 chapter(s) under 10s: Title card (1.7s)"
+  ],
+  "drift": {
+    "mean_abs_s": 47.4,
+    "worst_abs_s": 107.7,
+    "rows": [
+      {
+        "title": "Cold open",
+        "hand": "00:00",
+        "real": "0:00",
+        "drift_s": 0.0
+      },
+      {
+        "title": "Title card",
+        "hand": "00:31",
+        "real": "0:31",
+        "drift_s": 0.7
+      },
+      {
+        "title": "The lattice does the work, not the carbon's hardness",
+        "hand": "00:33",
+        "real": "0:33",
+        "drift_s": 0.4
+      },
+      {
+        "title": "The carbon percentage sets the ceiling",
+        "hand": "01:48",
+        "real": "1:36",
+        "drift_s": -11.2
+      },
+      {
+        "title": "The crystal structure changes with temperature",
+        "hand": "03:22",
+        "real": "2:47",
+        "drift_s": -34.1
+      },
+      {
+        "title": "Quenching and tempering control the trade-off",
+        "hand": "04:45",
+        "real": "3:54",
+        "drift_s": -50.6
+      },
+      {
+        "title": "Alloying elements shift the curve but not the mechanism",
+        "hand": "06:18",
+        "real": "5:13",
+        "drift_s": -64.4
+      },
+      {
+        "title": "Grain boundaries add another layer of resistance",
+        "hand": "07:41",
+        "real": "6:29",
+        "drift_s": -71.6
+      },
+      {
+        "title": "The role of carbides in high-carbon steels",
+        "hand": "08:54",
+        "real": "7:29",
+        "drift_s": -85.0
+      },
+      {
+        "title": "What to notice in the edit",
+        "hand": "09:47",
+        "real": "8:28",
+        "drift_s": -78.2
+      },
+      {
+        "title": "Evidence limit",
+        "hand": "10:07",
+        "real": "9:02",
+        "drift_s": -64.8
+      },
+      {
+        "title": "Closing",
+        "hand": "10:18",
+        "real": "12:05",
+        "drift_s": 107.7
+      }
+    ]
+  },
+  "ffprobe": {
+    "file": "renders/why-is-steel-so-strong-final.mp4",
+    "video_s": 741.746,
+    "last_cue_end_s": 741.747,
+    "delta_s": 0.001,
+    "ok": true
+  },
+  "text_checks": {
+    "beats_json": {
+      "checked": 93,
+      "mismatched": []
+    },
+    "script_text": {
+      "checked": 93,
+      "absent_from_narration": [
+        58
+      ]
+    }
+  },
+  "script_chapters": {
+    "written": true,
+    "changed": true,
+    "removed_lines": [],
+    "chapters_not_in_script": [
+      "Producer POV",
+      "Measuring strength directly: the tensile test",
+      "The dislocation density explains work hardening"
+    ]
+  },
+  "artifacts": [
+    "captions/why-is-steel-so-strong.vtt",
+    "captions/why-is-steel-so-strong.srt",
+    "captions/why-is-steel-so-strong.chapters.txt"
+  ]
+}

@@ -230,215 +230,331 @@
   {
     "i": 38,
     "segment": "quote_card",
-    "narration": "I almost opened on the moment of impact, because that's the dramatic beat."
+    "narration": "When someone gives me a fact with a number in it, my first instinct is: where did the number come from?",
+    "seconds": 6.408
   },
   {
     "i": 39,
-    "segment": "text_beat",
-    "narration": "But impact doesn't decide the fracture pattern \u2014 the cooling process already did, weeks earlier. I moved the real event to where it actually happens."
+    "segment": "quote_card",
+    "narration": "Not because I assume they're lying. Numbers can make almost anything sound authoritative.",
+    "seconds": 5.765333333333333
   },
   {
     "i": 40,
     "segment": "text_beat",
-    "narration": "Chromium above ten percent creates stainless steel by forming a passive oxide layer.",
+    "narration": "Steel is rarely just iron and carbon. Chromium, molybdenum, nickel, and vanadium are added in small percentages to shift the transformation temperatures, slow the diffusion of carbon, or form additional carbides.",
     "seconds": 13.872
   },
   {
     "i": 41,
-    "segment": "ambient_drift",
-    "narration": "Molybdenum at around zero point five percent raises the tempering temperature, allowing the steel to retain strength at higher service temperatures.",
+    "segment": "text_beat",
+    "narration": "Chromium above ten percent creates stainless steel by forming a passive oxide layer.",
     "seconds": 5.136
   },
   {
     "i": 42,
-    "segment": "text_beat",
-    "narration": "Vanadium at zero point two percent forms fine carbides that further pin dislocations.",
+    "segment": "ambient_drift",
+    "narration": "Molybdenum at around zero point five percent raises the tempering temperature, allowing the steel to retain strength at higher service temperatures.",
     "seconds": 8.890666666666666
   },
   {
     "i": 43,
     "segment": "text_beat",
-    "narration": "Chromium is often added at one point five percent in tool steels to improve hardenability.",
+    "narration": "Vanadium at zero point two percent forms fine carbides that further pin dislocations.",
     "seconds": 5.957333333333334
   },
   {
     "i": 44,
-    "segment": "ambient_drift",
-    "narration": "These elements modify the behavior, but they do not replace the core mechanism. The strength still comes from preventing dislocation motion.",
+    "segment": "text_beat",
+    "narration": "Chromium is often added at one point five percent in tool steels to improve hardenability.",
     "seconds": 5.914666666666666
   },
   {
     "i": 45,
-    "segment": "source_compare",
-    "narration": "ASM International's alloy database lists the effect of each element on phase stability and carbide formation.",
+    "segment": "ambient_drift",
+    "narration": "These elements modify the behavior, but they do not replace the core mechanism. The strength still comes from preventing dislocation motion.",
     "seconds": 7.8773333333333335
   },
   {
     "i": 46,
-    "segment": "text_beat",
-    "narration": "NIST's phase diagram database provides transformation temperatures for hundreds of compositions. The data are public and cross-referenced.",
+    "segment": "source_compare",
+    "narration": "ASM International's alloy database lists the effect of each element on phase stability and carbide formation.",
     "seconds": 7.493333333333333
   },
   {
     "i": 47,
-    "segment": "source_compare",
-    "narration": "When a steel grade is specified by a four-digit AISI number, that number maps to a defined composition range. The properties are not guessed. They are measured and tabulated.",
+    "segment": "text_beat",
+    "narration": "NIST's phase diagram database provides transformation temperatures for hundreds of compositions. The data are public and cross-referenced.",
     "seconds": 8.624
   },
   {
     "i": 48,
-    "segment": "definition_card",
-    "narration": "Steel is polycrystalline. It is made of many small crystals, called grains, each with its own orientation.",
+    "segment": "source_compare",
+    "narration": "When a steel grade is specified by a four-digit AISI number, that number maps to a defined composition range. The properties are not guessed. They are measured and tabulated.",
     "seconds": 12.122666666666667
   },
   {
     "i": 49,
-    "segment": "text_beat",
-    "narration": "The boundaries between grains are defects where atoms do not line up.",
+    "segment": "definition_card",
+    "narration": "Steel is polycrystalline. It is made of many small crystals, called grains, each with its own orientation.",
     "seconds": 7.237333333333333
   },
   {
     "i": 50,
-    "segment": "definition_card",
-    "narration": "Dislocations have difficulty crossing grain boundaries because the lattice orientation changes. Smaller grains mean more boundaries per unit volume, which means more obstacles to dislocation motion.",
+    "segment": "text_beat",
+    "narration": "The boundaries between grains are defects where atoms do not line up.",
     "seconds": 3.888
   },
   {
     "i": 51,
-    "segment": "text_beat",
-    "narration": "This is the Hall-Petch relationship: yield strength increases with the inverse square root of grain size.",
+    "segment": "definition_card",
+    "narration": "Dislocations have difficulty crossing grain boundaries because the lattice orientation changes. Smaller grains mean more boundaries per unit volume, which means more obstacles to dislocation motion.",
     "seconds": 12.037333333333333
   },
   {
     "i": 52,
-    "segment": "ambient_drift",
-    "narration": "Grain boundaries are revealed by polishing a steel sample and etching it with a weak acid.",
+    "segment": "text_beat",
+    "narration": "This is the Hall-Petch relationship: yield strength increases with the inverse square root of grain size.",
     "seconds": 5.882666666666666
   },
   {
     "i": 53,
     "segment": "ambient_drift",
-    "narration": "The boundaries corrode slightly faster than the grain interiors. Under a microscope, the grains appear as polygons separated by dark lines.",
+    "narration": "Grain boundaries are revealed by polishing a steel sample and etching it with a weak acid.",
     "seconds": 4.965333333333334
   },
   {
     "i": 54,
-    "segment": "text_beat",
-    "narration": "Typical grain sizes range from ten to one hundred microns. Finer grains are achieved by controlled cooling or mechanical working.",
+    "segment": "ambient_drift",
+    "narration": "The boundaries corrode slightly faster than the grain interiors. Under a microscope, the grains appear as polygons separated by dark lines.",
     "seconds": 9.050666666666666
   },
   {
     "i": 55,
-    "segment": "ambient_drift",
-    "narration": "The effect on strength is measurable and predictable. A steel with ten-micron grains is stronger than the same composition with fifty-micron grains.",
+    "segment": "text_beat",
+    "narration": "Typical grain sizes range from ten to one hundred microns. Finer grains are achieved by controlled cooling or mechanical working.",
     "seconds": 8.037333333333333
   },
   {
     "i": 56,
-    "segment": "contrast_pair",
-    "narration": "In steels with carbon content above zero point eight percent, carbides become a dominant feature.",
+    "segment": "ambient_drift",
+    "narration": "The effect on strength is measurable and predictable. A steel with ten-micron grains is stronger than the same composition with fifty-micron grains.",
     "seconds": 8.485333333333333
   },
   {
     "i": 57,
-    "segment": "text_beat",
-    "narration": "During tempering, carbon precipitates as iron carbide, also called cementite, with the chemical formula Fe\u2083C.",
+    "segment": "contrast_pair",
+    "narration": "In steels with carbon content above zero point eight percent, carbides become a dominant feature.",
     "seconds": 6.064
   },
   {
     "i": 58,
-    "segment": "contrast_pair",
-    "narration": "If the carbides are fine and evenly distributed, they strengthen the steel by pinning dislocations.",
+    "segment": "text_beat",
+    "narration": "During tempering, carbon precipitates as iron carbide, also called cementite, with the chemical formula Fe\u2083C.",
     "seconds": 6.96
   },
   {
     "i": 59,
-    "segment": "text_beat",
-    "narration": "If they form coarse networks, as in cast iron with three percent carbon, they create brittle paths through the material.",
+    "segment": "contrast_pair",
+    "narration": "If the carbides are fine and evenly distributed, they strengthen the steel by pinning dislocations.",
     "seconds": 5.701333333333333
   },
   {
     "i": 60,
-    "segment": "contrast_pair",
-    "narration": "The difference is not just the amount of carbon. It is how the carbon is distributed, which is controlled by cooling rate and tempering time.",
+    "segment": "text_beat",
+    "narration": "If they form coarse networks, as in cast iron with three percent carbon, they create brittle paths through the material.",
     "seconds": 7.418666666666667
   },
   {
     "i": 61,
-    "segment": "text_beat",
-    "narration": "Cementite itself is hard but brittle. It does not deform. In a tempered steel, cementite particles are surrounded by ferrite, which is tougher.",
+    "segment": "contrast_pair",
+    "narration": "The difference is not just the amount of carbon. It is how the carbon is distributed, which is controlled by cooling rate and tempering time.",
     "seconds": 8.986666666666666
   },
   {
     "i": 62,
     "segment": "text_beat",
-    "narration": "The ferrite absorbs energy, and the carbides block dislocation motion. The combination is stronger than either phase alone.",
+    "narration": "Cementite itself is hard but brittle. It does not deform. In a tempered steel, cementite particles are surrounded by ferrite, which is tougher.",
     "seconds": 8.88
   },
   {
     "i": 63,
-    "segment": "ambient_drift",
-    "narration": "This is the principle behind all two-phase alloys: a hard phase for strength, a ductile phase for toughness, and a fine mixture of the two.",
+    "segment": "text_beat",
+    "narration": "The ferrite absorbs energy, and the carbides block dislocation motion. The combination is stronger than either phase alone.",
     "seconds": 7.226666666666667
   },
   {
     "i": 64,
-    "segment": "checklist_reveal",
-    "narration": "The strength of steel is not a single effect. It is the sum of carbon atoms blocking dislocation motion, grain boundaries interrupting slip planes, and heat treatment controlling the distribution of carbides.",
+    "segment": "ambient_drift",
+    "narration": "This is the principle behind all two-phase alloys: a hard phase for strength, a ductile phase for toughness, and a fine mixture of the two.",
     "seconds": 8.56
   },
   {
     "i": 65,
-    "segment": "text_beat",
-    "narration": "Each mechanism is independently measurable. X-ray diffraction maps the lattice distortion around carbon atoms.",
+    "segment": "checklist_reveal",
+    "narration": "The strength of steel is not a single effect. It is the sum of carbon atoms blocking dislocation motion, grain boundaries interrupting slip planes, and heat treatment controlling the distribution of carbides.",
     "seconds": 12.602666666666666
   },
   {
     "i": 66,
-    "segment": "checklist_reveal",
-    "narration": "Transmission electron microscopy images dislocations pinned at carbides. Hardness testing quantifies the result.",
+    "segment": "text_beat",
+    "narration": "Each mechanism is independently measurable. X-ray diffraction maps the lattice distortion around carbon atoms.",
     "seconds": 7.696
   },
   {
     "i": 67,
-    "segment": "text_beat",
-    "narration": "The mechanisms are not inferred from the outcome. They are observed directly.",
+    "segment": "checklist_reveal",
+    "narration": "Transmission electron microscopy images dislocations pinned at carbides. Hardness testing quantifies the result.",
     "seconds": 8.090666666666667
   },
   {
     "i": 68,
-    "segment": "ambient_drift",
-    "narration": "The mechanisms described here apply to carbon steels and low-alloy steels at room temperature and moderate stress rates.",
+    "segment": "text_beat",
+    "narration": "The mechanisms are not inferred from the outcome. They are observed directly.",
     "seconds": 4.976
   },
   {
     "i": 69,
     "segment": "ambient_drift",
-    "narration": "At very high temperatures, creep mechanisms dominate. At very high strain rates, adiabatic heating and phase transformations change the behavior.",
+    "narration": "The mechanisms described here apply to carbon steels and low-alloy steels at room temperature and moderate stress rates.",
     "seconds": 8.176
   },
   {
     "i": 70,
-    "segment": "text_beat",
-    "narration": "Steels with more than two percent carbon behave differently because the excess carbon forms networks rather than isolated particles.",
+    "segment": "ambient_drift",
+    "narration": "At very high temperatures, creep mechanisms dominate. At very high strain rates, adiabatic heating and phase transformations change the behavior.",
     "seconds": 9.882666666666667
   },
   {
     "i": 71,
-    "segment": "ambient_drift",
-    "narration": "The evidence for dislocation pinning by interstitial carbon is strong and direct, but it does not explain every steel in every condition.",
+    "segment": "text_beat",
+    "narration": "Steels with more than two percent carbon behave differently because the excess carbon forms networks rather than isolated particles.",
     "seconds": 8.669333333333332
   },
   {
     "i": 72,
-    "segment": "text_beat",
-    "narration": "Steel's strength is not a material property in isolation. It is the result of atomic-scale geometry, controlled phase transformations, and deliberate microstructure design.",
+    "segment": "ambient_drift",
+    "narration": "The evidence for dislocation pinning by interstitial carbon is strong and direct, but it does not explain every steel in every condition.",
     "seconds": 8.698666666666666
   },
   {
     "i": 73,
+    "segment": "process_steps",
+    "narration": "Strength is not a theoretical property. It is measured. The standard method is the tensile test, specified by ASTM E8.",
+    "seconds": 10.96
+  },
+  {
+    "i": 74,
+    "segment": "text_beat",
+    "narration": "A machined sample of steel, typically eight millimeters in diameter, is clamped in a testing machine.",
+    "seconds": 5.317333333333333
+  },
+  {
+    "i": 75,
+    "segment": "process_steps",
+    "narration": "The machine pulls the sample at a controlled rate while measuring the applied force and the elongation.",
+    "seconds": 5.690666666666667
+  },
+  {
+    "i": 76,
+    "segment": "text_beat",
+    "narration": "The result is a stress-strain curve. Yield strength is the stress at which the material begins to deform permanently, typically between two hundred and four hundred megapascals for mild steel.",
+    "seconds": 11.461333333333334
+  },
+  {
+    "i": 77,
+    "segment": "process_steps",
+    "narration": "Ultimate tensile strength is the maximum stress before fracture, typically between four hundred and six hundred megapascals for the same material.",
+    "seconds": 9.434666666666667
+  },
+  {
+    "i": 78,
+    "segment": "text_beat",
+    "narration": "Pure iron yields at roughly fifty megapascals. Mild steel with zero point two percent carbon yields at two hundred fifty megapascals.",
+    "seconds": 8.88
+  },
+  {
+    "i": 79,
+    "segment": "text_beat",
+    "narration": "High-carbon steel with zero point eight percent carbon yields at six hundred megapascals.",
+    "seconds": 5.392
+  },
+  {
+    "i": 80,
+    "segment": "ambient_drift",
+    "narration": "The difference is not subtle. The addition of less than one percent carbon by mass increases yield strength more than tenfold compared to pure iron.",
+    "seconds": 9.2
+  },
+  {
+    "i": 81,
+    "segment": "text_beat",
+    "narration": "That factor is why steel, not iron, is the structural material. The measurement is reproducible across labs.",
+    "seconds": 7.717333333333333
+  },
+  {
+    "i": 82,
+    "segment": "text_beat",
+    "narration": "NIST provides reference materials with certified strength values to calibrate testing machines.",
+    "seconds": 5.989333333333334
+  },
+  {
+    "i": 83,
+    "segment": "contrast_pair",
+    "narration": "Dislocations are not fixed in number. When steel is deformed, dislocations multiply.",
+    "seconds": 6.213333333333333
+  },
+  {
+    "i": 84,
+    "segment": "text_beat",
+    "narration": "They move, intersect, and create new dislocations. The density increases from roughly ten to the eighth dislocations per square centimeter in annealed steel to ten to the twelfth per square centimeter in cold-worked steel.",
+    "seconds": 13.306666666666667
+  },
+  {
+    "i": 85,
+    "segment": "contrast_pair",
+    "narration": "Higher dislocation density means more obstacles to further motion. The steel becomes harder as it deforms.",
+    "seconds": 6.789333333333333
+  },
+  {
+    "i": 86,
+    "segment": "text_beat",
+    "narration": "This is work hardening, and it is why a bent paper clip is harder to bend a second time in the same spot.",
+    "seconds": 6.117333333333334
+  },
+  {
+    "i": 87,
+    "segment": "text_beat",
+    "narration": "Dislocation density is measured by transmission electron microscopy or inferred from X-ray line broadening.",
+    "seconds": 7.152
+  },
+  {
+    "i": 88,
+    "segment": "ambient_drift",
+    "narration": "Both methods are standard. The relationship between dislocation density and strength is quantified by the Taylor equation: strength increases with the square root of dislocation density.",
+    "seconds": 11.525333333333334
+  },
+  {
+    "i": 89,
+    "segment": "text_beat",
+    "narration": "The equation is empirical, derived from measurements on hundreds of alloys, but it holds across metals.",
+    "seconds": 6.618666666666667
+  },
+  {
+    "i": 90,
+    "segment": "text_beat",
+    "narration": "Cold rolling, drawing, or forging increases dislocation density deliberately. Annealing reduces it by allowing dislocations to annihilate at grain boundaries.",
+    "seconds": 10.362666666666666
+  },
+  {
+    "i": 91,
+    "segment": "ambient_drift",
+    "narration": "Steel's strength is not a material property in isolation. It is the result of atomic-scale geometry, controlled phase transformations, and deliberate microstructure design.",
+    "seconds": 11.293333333333333
+  },
+  {
+    "i": 92,
     "segment": "text_beat",
     "narration": "The carbon does not make the iron hard. It makes the iron unable to slide.",
-    "seconds": 10.96
+    "seconds": 4.709333333333333
   }
 ]

@@ -1,0 +1,135 @@
+{
+  "episode": "what-is-carbon-fiber-made-of",
+  "beats": 71,
+  "plan_source": "plans/what-is-carbon-fiber-made-of.json",
+  "timing": "audio",
+  "beats_measured": 71,
+  "durations_recorded": 30,
+  "duration_s": 602.637,
+  "cues": 160,
+  "chapters_real": 15,
+  "chapters_published": 14,
+  "chapter_notes": [
+    "merged 1 chapter(s) under 10s: Title card (1.9s)"
+  ],
+  "drift": {
+    "mean_abs_s": 46.5,
+    "worst_abs_s": 108.4,
+    "rows": [
+      {
+        "title": "Cold open",
+        "hand": "00:00",
+        "real": "0:00",
+        "drift_s": 0.0
+      },
+      {
+        "title": "Title card",
+        "hand": "00:24",
+        "real": "0:33",
+        "drift_s": 9.6
+      },
+      {
+        "title": "The precursor is a polymer most people have never heard of",
+        "hand": "00:26",
+        "real": "0:35",
+        "drift_s": 9.5
+      },
+      {
+        "title": "Stabilization happens in air at a temperature that does not melt the polymer",
+        "hand": "01:28",
+        "real": "1:38",
+        "drift_s": 10.1
+      },
+      {
+        "title": "Carbonization removes everything that is not carbon",
+        "hand": "02:38",
+        "real": "2:30",
+        "drift_s": -7.1
+      },
+      {
+        "title": "Graphitization is optional and pushes carbon content even higher",
+        "hand": "03:52",
+        "real": "3:29",
+        "drift_s": -22.1
+      },
+      {
+        "title": "The fiber diameter is set at the beginning and does not change much",
+        "hand": "05:00",
+        "real": "4:19",
+        "drift_s": -40.1
+      },
+      {
+        "title": "Surface treatment makes the fiber stick to resin",
+        "hand": "06:00",
+        "real": "5:04",
+        "drift_s": -55.0
+      },
+      {
+        "title": "The aligned carbon sheets are why the fiber is strong along its length",
+        "hand": "07:00",
+        "real": "6:04",
+        "drift_s": -55.6
+      },
+      {
+        "title": "The process is energy-intensive and that drives cost",
+        "hand": "08:08",
+        "real": "6:52",
+        "drift_s": -75.8
+      },
+      {
+        "title": "Recycling carbon fiber is possible but degrades properties",
+        "hand": "09:16",
+        "real": "7:40",
+        "drift_s": -95.3
+      },
+      {
+        "title": "What to notice in the edit",
+        "hand": "10:16",
+        "real": "8:27",
+        "drift_s": -108.4
+      },
+      {
+        "title": "Evidence limit",
+        "hand": "10:40",
+        "real": "9:12",
+        "drift_s": -87.7
+      },
+      {
+        "title": "Closing",
+        "hand": "11:00",
+        "real": "9:45",
+        "drift_s": -74.3
+      }
+    ]
+  },
+  "ffprobe": {
+    "file": "renders/what-is-carbon-fiber-made-of-final.mp4",
+    "video_s": 602.637,
+    "last_cue_end_s": 602.637,
+    "delta_s": 0.0,
+    "ok": true
+  },
+  "text_checks": {
+    "beats_json": {
+      "checked": 71,
+      "mismatched": []
+    },
+    "script_text": {
+      "checked": 71,
+      "absent_from_narration": []
+    }
+  },
+  "script_chapters": {
+    "written": true,
+    "changed": true,
+    "removed_lines": [],
+    "chapters_not_in_script": [
+      "Producer POV"
+    ]
+  },
+  "artifacts": [
+    "captions/what-is-carbon-fiber-made-of.vtt",
+    "captions/what-is-carbon-fiber-made-of.srt",
+    "captions/what-is-carbon-fiber-made-of.chapters.txt"
+  ]
+}
