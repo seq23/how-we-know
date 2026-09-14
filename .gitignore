@@ -62,3 +62,6 @@ shorts/
 # wrangler's own logs and state, created in the repo root by any `wrangler r2`
 # command loop/r2.py runs. Never useful in history, and it grows a file per run.
 .wrangler/
+
+# The Mac's copies of loop-state files that upstream overwrote (loop/mac_sync.py)
+loop/state/_local/

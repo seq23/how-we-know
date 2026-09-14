@@ -580,6 +580,14 @@ def push(backend: _Backend, slugs=None, force: bool = False) -> dict:
     renders = ROOT / "renders"
     thumbs = ROOT / "channel" / "thumbnails"
     slugs = list(slugs) if slugs else _publish_slugs()
+    # A render the gate holds is never shelved, by either route: the cloud
+    # upload lane takes whatever is on the shelf, so refusing it here is what
+    # keeps a sub-floor or clipped render off YouTube. See loop/render_gate.py.
+    import render_gate                                     # noqa: PLC0415
+    held = render_gate.held_slugs()
+    for h in [x for x in slugs if x in held]:
+        print(f"  HELD {h}: refused by the render gate, not shelved")
+    slugs = [x for x in slugs if x not in held]
     sent, skipped, absent = [], [], []
 
     for slug in slugs:

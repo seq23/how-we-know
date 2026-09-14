@@ -110,6 +110,62 @@ def stops_in(week: str) -> list[dict]:
     return out
 
 
+HEARTBEAT = ROOT / "loop" / "state" / "mac_heartbeat.json"
+
+
+def mac_stops(now: dt.datetime, hb: dict | None = None, cfg: dict | None = None) -> list[dict]:
+    """The cloud noticing the Mac's silence. Pure over (heartbeat, now).
+
+    WHY. Every stop a cloud lane takes is committed and read back here. The
+    Mac's lanes wrote theirs to loop/state/stops/ ON THE MAC, so from 6 to 13
+    September 2026 nine finished renders shipped nothing and this digest said
+    nothing about it. The Mac now pushes loop/state/mac_heartbeat.json after
+    every lane run (loop/mac_sync.py); this reads it and raises MAC_NOT_SHIPPING
+    when finished work has waited longer than `mac.unshipped_days` - or when the
+    heartbeat itself is that old while work is pending, which is the same
+    silence wearing a different shape.
+    """
+    cfg = cfg or config()
+    hb = hb if hb is not None else json.loads(HEARTBEAT.read_text()) if HEARTBEAT.exists() else {}
+    limit = int((cfg.get("mac") or {}).get("unshipped_days", 3))
+    lanes = {k: v for k, v in hb.items() if isinstance(v, dict)}
+    pending = max([int(v.get("pending") or 0) for v in lanes.values()] or [0])
+    latest = max([_when(v.get("last_run_at")) for v in lanes.values()
+                  if _when(v.get("last_run_at"))] or [None], key=lambda d: d or dt.datetime.min.replace(tzinfo=dt.timezone.utc))
+    last_ship = max([_when(v.get("last_success_at")) for v in lanes.values()
+                     if v.get("uploaded") and _when(v.get("last_success_at"))] or [None],
+                    key=lambda d: d or dt.datetime.min.replace(tzinfo=dt.timezone.utc))
+    out = []
+    if not lanes:
+        if hb.get("renders_finished"):
+            out.append(_mac_stop("no lane has ever reported a heartbeat, yet the "
+                                 f"heartbeat file counts {hb['renders_finished']} finished render(s)"))
+        return out
+    if pending == 0:
+        return out
+    silent_days = (now - latest).days if latest else None
+    shipped_days = (now - last_ship).days if last_ship else None
+    if silent_days is not None and silent_days > limit:
+        out.append(_mac_stop(f"{pending} finished episode(s) are pending on the Mac and "
+                             f"no Mac lane has reported for {silent_days} days"))
+    elif shipped_days is None or shipped_days > limit:
+        held = sorted({s for v in lanes.values() for s in (v.get("held") or [])})
+        out.append(_mac_stop(f"{pending} finished episode(s) are pending on the Mac and "
+                             f"nothing has shipped for "
+                             f"{'ever' if shipped_days is None else f'{shipped_days} days'}"
+                             + (f"; held by the render gate: {', '.join(held)}" if held else "")))
+    return out
+
+
+def _mac_stop(message: str) -> dict:
+    return {"stage": "mac", "code": "MAC_NOT_SHIPPING", "message": message,
+            "why": "The Mac's lanes report through loop/state/mac_heartbeat.json; "
+                   "finished work has waited longer than mac.unshipped_days.",
+            "unblock": "On the Mac: ~/Library/Logs/how-we-know/backfill.log names the "
+                       "stop; bin/loop-backfill-daily.sh re-runs it by hand.",
+            "disposition": "needs_human", "self_resolving": False}
+
+
 def render(week: str, now: dt.datetime) -> tuple[str, dict]:
     """The digest, and the counts it was built from."""
     cfg = config()
@@ -124,7 +180,7 @@ def render(week: str, now: dt.datetime) -> tuple[str, dict]:
     week_ago = now - dt.timedelta(days=7)
     out_rows = aired(led, week_ago, now)
     next_rows = upcoming(led, now)
-    stops = stops_in(week)
+    stops = stops_in(week) + mac_stops(now)
     by_slug = domains.by_slug()
 
     def dom(slug: str) -> str:
