@@ -41,7 +41,7 @@ from common import (LOOP, RECEIPTS, ROOT, Stage, config, now,  # noqa: E402
 QUEUE = LOOP / "render_queue.json"
 TOKEN_URL = "https://oauth2.googleapis.com/token"
 UPLOAD_URL = ("https://www.googleapis.com/upload/youtube/v3/videos"
-              "?uploadType=resumable&part=snippet,status")
+              "?uploadType=resumable&part=snippet,status,paidProductPlacementDetails")
 
 # YouTube's own limits. Exceeding them is a 400 at 3am, so they are enforced here.
 TITLE_MAX, DESC_MAX, TAG_TOTAL_MAX = 100, 5000, 400
@@ -338,7 +338,14 @@ def build_payload(item: dict) -> dict:
         # unverified Google app has uploads FORCED private anyway, and the loop
         # flips to public on Friday only against a receipt.
         "status": {"privacyStatus": "private", "selfDeclaredMadeForKids": False,
-                   "embeddable": True, "license": "youtube"},
+                   "embeddable": True, "license": "youtube",
+                   # OWNER DECISION, 14 Sep 2026: every video allows embedding and answers
+                   # YouTube's "altered or synthetic content" question NO. Set at upload so no
+                   # video ever needs the two fields fixed by hand in Studio again; the same
+                   # two fields are asserted on the whole back catalogue by loop/video_settings.py.
+                   "containsSyntheticMedia": False},
+        # And "paid promotion" answered No, same decision, same day.
+        "paidProductPlacementDetails": {"hasPaidProductPlacement": False},
     }
 
 

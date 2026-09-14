@@ -272,7 +272,13 @@ def build_payload(slug: str, question: str) -> dict:
                         "categoryId": "27"},
             "status": {"privacyStatus": "private",
                        "selfDeclaredMadeForKids": False,
-                       "embeddable": True, "license": "youtube"}}
+                       "embeddable": True, "license": "youtube",
+                   # OWNER DECISION, 14 Sep 2026: every video allows embedding and answers
+                   # YouTube's "altered or synthetic content" question NO. Set at upload so no
+                   # video ever needs the two fields fixed by hand in Studio again; the same
+                   # two fields are asserted on the whole back catalogue by loop/video_settings.py.
+                   "containsSyntheticMedia": False},
+            "paidProductPlacementDetails": {"hasPaidProductPlacement": False}}
 
 
 def run(limit: int = 2, dry_run: bool = False) -> int:
