@@ -1,12 +1,12 @@
 {
-  "week": "2026-W37",
-  "generated": "2026-09-07T14:35:53+00:00",
+  "week": "2026-W38",
+  "generated": "2026-09-14T10:10:00+00:00",
   "videos_per_week": 4,
   "breaker": "closed",
   "validators": [
     {
       "validator": "V1 directive-truth",
-      "examined": 430,
+      "examined": 433,
       "status": "PASS",
       "failures": [],
       "notes": [
@@ -37,12 +37,7 @@
       "examined": 4,
       "status": "PASS",
       "failures": [],
-      "notes": [
-        "why-does-old-iron-not-rust: script POV is an editorial paraphrase, not a bank line \u2014 owner confirmation required (this is the Monday 15-minute step, not a defect)",
-        "how-is-a-silicon-wafer-made: script POV is an editorial paraphrase, not a bank line \u2014 owner confirmation required (this is the Monday 15-minute step, not a defect)",
-        "what-is-a-semiconductor-made-of: script POV is an editorial paraphrase, not a bank line \u2014 owner confirmation required (this is the Monday 15-minute step, not a defect)",
-        "how-is-3d-printed-metal-made: script POV is an editorial paraphrase, not a bank line \u2014 owner confirmation required (this is the Monday 15-minute step, not a defect)"
-      ],
+      "notes": [],
       "stops": []
     },
     {
@@ -155,7 +150,7 @@
       "status": "PASS",
       "failures": [],
       "notes": [
-        "21 episode(s) dated through 2026-10-25; 2 domain(s) allocating on disjoint days {'deep-sea-ocean-science': (1, 6), 'materials-and-manufacturing': (0, 4)} at 4/week"
+        "23 episode(s) dated through 2026-10-25; 2 domain(s) allocating on disjoint days {'deep-sea-ocean-science': (1, 6), 'materials-and-manufacturing': (0, 4)} at 4/week"
       ],
       "stops": []
     },
@@ -180,9 +175,7 @@
       "examined": 38,
       "status": "PASS",
       "failures": [],
-      "notes": [
-        "what-is-concrete-made-of.md: no ## Chapters section (nothing to check)"
-      ],
+      "notes": [],
       "stops": []
     },
     {
@@ -206,14 +199,16 @@
     {
       "validator": "V27 lanes-see-domains",
       "examined": 25,
-      "status": "PASS",
-      "failures": [],
+      "status": "FAIL(1)",
+      "failures": [
+        "loop/shorts_lane.py cannot see any episode in deep-sea-ocean-science. It is reading one domain's publish order rather than every domain's, so that niche gets no Shorts at all."
+      ],
       "notes": [],
       "stops": []
     },
     {
       "validator": "V28 lane-interpreters",
-      "examined": 25,
+      "examined": 29,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -221,7 +216,7 @@
     },
     {
       "validator": "V29 material-image rights",
-      "examined": 34,
+      "examined": 18,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -229,7 +224,7 @@
     },
     {
       "validator": "V30 cloud-visibility",
-      "examined": 218,
+      "examined": 243,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -247,10 +242,20 @@
     },
     {
       "validator": "V32 scheduled-pov",
-      "examined": 22,
+      "examined": 24,
       "status": "PASS",
       "failures": [],
       "notes": [],
+      "stops": []
+    },
+    {
+      "validator": "V40 pov-assignment-integrity",
+      "examined": 38,
+      "status": "PASS",
+      "failures": [],
+      "notes": [
+        "38 assignment(s) agree with pov/pov-bank.json on the line, its tier and its domain, and no line is used twice"
+      ],
       "stops": []
     },
     {
@@ -288,14 +293,16 @@
     {
       "validator": "V37 runtime-target",
       "examined": 10,
-      "status": "PASS",
-      "failures": [],
+      "status": "FAIL(1)",
+      "failures": [
+        "bin/batch-session.sh does not check V24 before pushing to R2. V24 runs only where renders exist - this Mac - and the cloud lane exempts itself, so without this check nothing on the upload path consults the runtime floor at all."
+      ],
       "notes": [],
       "stops": []
     },
     {
       "validator": "V38 no-duplicate-airing",
-      "examined": 25,
+      "examined": 31,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -310,7 +317,7 @@
       "stops": []
     }
   ],
-  "validators_passed": true,
+  "validators_passed": false,
   "approval": {
     "required": false,
     "mode": "notified, not asked",
@@ -323,12 +330,12 @@
     "why": "configured default (4/week)"
   },
   "runway": {
-    "unpublished_scripts": 16,
-    "publishable": 12,
-    "scheduled_not_yet_aired": 20,
+    "unpublished_scripts": 10,
+    "publishable": 6,
+    "scheduled_not_yet_aired": 22,
     "basis": "publish queue",
     "videos_per_week": 4,
-    "weeks_remaining": 8.0,
+    "weeks_remaining": 7.0,
     "warn_below_weeks": 4.0,
     "critical_below_weeks": 2.0,
     "level": "ok",
@@ -336,23 +343,23 @@
       "deep-sea-ocean-science": {
         "slots_per_week": 2,
         "queued": 0,
-        "scheduled_ahead": 14,
-        "weeks": 7.0,
+        "scheduled_ahead": 12,
+        "weeks": 6.0,
         "level": "ok",
-        "message": "deep-sea-ocean-science: 7.0 week(s) at 2/week (0 queued, 14 already dated)"
+        "message": "deep-sea-ocean-science: 6.0 week(s) at 2/week (0 queued, 12 already dated)"
       },
       "materials-and-manufacturing": {
         "slots_per_week": 2,
-        "queued": 12,
-        "scheduled_ahead": 6,
-        "weeks": 9.0,
+        "queued": 6,
+        "scheduled_ahead": 10,
+        "weeks": 8.0,
         "level": "ok",
-        "message": "materials-and-manufacturing: 9.0 week(s) at 2/week (12 queued, 6 already dated)"
+        "message": "materials-and-manufacturing: 8.0 week(s) at 2/week (6 queued, 10 already dated)"
       }
     },
     "short_domains": [],
     "never_go_dark": true,
-    "message": "8.0 weeks of queue at 4/week (12 publishable of 16 on disk). By domain: deep-sea-ocean-science: 7.0 week(s) at 2/week (0 queued, 14 already dated); materials-and-manufacturing: 9.0 week(s) at 2/week (12 queued, 6 already dated)."
+    "message": "7.0 weeks of queue at 4/week (6 publishable of 10 on disk). By domain: deep-sea-ocean-science: 6.0 week(s) at 2/week (0 queued, 12 already dated); materials-and-manufacturing: 8.0 week(s) at 2/week (6 queued, 10 already dated)."
   },
   "authoring": {
     "generated_this_week": 0,
@@ -367,19 +374,18 @@
       "generated": false,
       "author_cost_usd": null,
       "author_model": null,
-      "pov_id": "pov-120",
-      "pov_line": "Failure isn't an insult to engineering; pretending failure has been eliminated is. Every material has conditions, limits and a life. The question is whether those limits were understood and monitored, or ignored until the failure became somebody else's emergency.",
-      "pov_matched_by": "tag:failure score 2.8",
+      "pov_id": "pov-104",
+      "pov_line": "I stop trusting an explanation when it uses complexity to hide the fact that the speaker can't show their work. If every direct question produces more jargon and more certainty, but never a source or a mechanism, the explanation is protecting the person, not describing reality.",
+      "pov_matched_by": "hand assignment in pov/pov-assignments.json",
       "work_copy": "loop/work/why-does-old-iron-not-rust.md",
       "audio_dir": "audio/why-does-old-iron-not-rust",
       "plan": "loop/plans/why-does-old-iron-not-rust.json",
       "render": "renders/why-does-old-iron-not-rust.mp4",
       "source": "authored-inventory",
       "status": "queued",
-      "pov_needs_confirmation": true,
-      "pov_bank_line": "Failure isn't an insult to engineering; pretending failure has been eliminated is. Every material has conditions, limits and a life. The question is whether those limits were understood and monitored, or ignored until the failure became somebody else's emergency.",
-      "pov_script_line": "I wanted a clean number for how long a protective layer takes to form. The published corrosion rates span two orders of magnitude, so a single figure would have sounded more certain than the evidence actually is.",
-      "source_count": 8,
+      "pov_bank_line": "I stop trusting an explanation when it uses complexity to hide the fact that the speaker can't show their work. If every direct question produces more jargon and more certainty, but never a source or a mechanism, the explanation is protecting the person, not describing reality.",
+      "pov_script_line": "I stop trusting an explanation when it uses complexity to hide the fact that the speaker can't show their work. If every direct question produces more jargon and more certainty, but never a source or a mechanism, the explanation is protecting the person, not describing reality.",
+      "source_count": 10,
       "sources_cited": [
         "NIST",
         "ASM International",
@@ -393,71 +399,7 @@
         "British Museum"
       ],
       "attribution_gaps": [],
-      "planned_beats": 66
-    },
-    {
-      "slug": "how-is-a-silicon-wafer-made",
-      "question": "How is a silicon wafer made?",
-      "script": "scripts/how-is-a-silicon-wafer-made.md",
-      "generated": false,
-      "author_cost_usd": null,
-      "author_model": null,
-      "pov_id": "pov-119",
-      "pov_line": "Watching something be made, I think about how many things had to become controllable first \u2014 temperature, pressure, purity, timing, tolerances, sequence, inspection. What looks smooth at the end is usually violent forces being controlled very precisely.",
-      "pov_matched_by": "tag:systems score 2.8",
-      "work_copy": "loop/work/how-is-a-silicon-wafer-made.md",
-      "audio_dir": "audio/how-is-a-silicon-wafer-made",
-      "plan": "loop/plans/how-is-a-silicon-wafer-made.json",
-      "render": "renders/how-is-a-silicon-wafer-made.mp4",
-      "source": "authored-inventory",
-      "status": "queued",
-      "pov_needs_confirmation": true,
-      "pov_bank_line": "Watching something be made, I think about how many things had to become controllable first \u2014 temperature, pressure, purity, timing, tolerances, sequence, inspection. What looks smooth at the end is usually violent forces being controlled very precisely.",
-      "pov_script_line": "I wrote 'nine-nines pure' like purity was a certificate stamped once. It isn't. Every step after purification can reintroduce contamination, so I rewrote it as a chain of measurements instead of an achieved state.",
-      "source_count": 5,
-      "sources_cited": [
-        "NIST",
-        "ASM International",
-        "USGS",
-        "USGS Minerals",
-        "MIT",
-        "MIT DMSE",
-        "MIT Department of Materials Science and Engineering",
-        "Science",
-        "SEMI",
-        "SEMI International Standards"
-      ],
-      "attribution_gaps": [],
-      "planned_beats": 78
-    },
-    {
-      "slug": "what-is-a-semiconductor-made-of",
-      "question": "What is a semiconductor made of?",
-      "script": "scripts/what-is-a-semiconductor-made-of.md",
-      "generated": false,
-      "author_cost_usd": null,
-      "author_model": null,
-      "pov_id": "pov-016",
-      "pov_line": "It reminds me of companies and systems. Something looks completely irrational when you judge it outside the environment it was built for.",
-      "pov_matched_by": "tag:systems score 2.0",
-      "work_copy": "loop/work/what-is-a-semiconductor-made-of.md",
-      "audio_dir": "audio/what-is-a-semiconductor-made-of",
-      "plan": "loop/plans/what-is-a-semiconductor-made-of.json",
-      "render": "renders/what-is-a-semiconductor-made-of.mp4",
-      "source": "authored-inventory",
-      "status": "queued",
-      "pov_needs_confirmation": true,
-      "pov_bank_line": "It reminds me of companies and systems. Something looks completely irrational when you judge it outside the environment it was built for.",
-      "pov_script_line": "'What is it made of' sounds like it wants one element. Silicon is over ninety percent of production, but the defining property is the impurity deliberately added to it, not the base material. I answered the question underneath the question.",
-      "source_count": 4,
-      "sources_cited": [
-        "NIST",
-        "ASM International",
-        "SEMI",
-        "SEMI International Standards"
-      ],
-      "attribution_gaps": [],
-      "planned_beats": 74
+      "planned_beats": 84
     },
     {
       "slug": "how-is-3d-printed-metal-made",
@@ -466,18 +408,17 @@
       "generated": false,
       "author_cost_usd": null,
       "author_model": null,
-      "pov_id": "pov-122",
-      "pov_line": "A remarkable laboratory property is not the same thing as a reliable system.",
-      "pov_matched_by": "tag:numbers score 2.8",
+      "pov_id": "pov-119",
+      "pov_line": "Watching something be made, I think about how many things had to become controllable first \u2014 temperature, pressure, purity, timing, tolerances, sequence, inspection. What looks smooth at the end is usually violent forces being controlled very precisely.",
+      "pov_matched_by": "hand assignment in pov/pov-assignments.json",
       "work_copy": "loop/work/how-is-3d-printed-metal-made.md",
       "audio_dir": "audio/how-is-3d-printed-metal-made",
       "plan": "loop/plans/how-is-3d-printed-metal-made.json",
       "render": "renders/how-is-3d-printed-metal-made.mp4",
       "source": "authored-inventory",
       "status": "queued",
-      "pov_needs_confirmation": true,
-      "pov_bank_line": "A remarkable laboratory property is not the same thing as a reliable system.",
-      "pov_script_line": "I wanted to say the layers get welded together, because that's the intuitive word. They don't weld, they fuse metallurgically \u2014 the atoms interdiffuse across the boundary. Wrong verb, wrong physics, so I cut it.",
+      "pov_bank_line": "Watching something be made, I think about how many things had to become controllable first \u2014 temperature, pressure, purity, timing, tolerances, sequence, inspection. What looks smooth at the end is usually violent forces being controlled very precisely.",
+      "pov_script_line": "Watching something be made, I think about how many things had to become controllable first \u2014 temperature, pressure, purity, timing, tolerances, sequence, inspection. What looks smooth at the end is usually violent forces being controlled very precisely.",
       "source_count": 6,
       "sources_cited": [
         "NIST",
@@ -485,6 +426,61 @@
       ],
       "attribution_gaps": [],
       "planned_beats": 87
+    },
+    {
+      "slug": "why-is-carbon-fiber-so-strong",
+      "question": "Why is carbon fiber so strong?",
+      "script": "scripts/why-is-carbon-fiber-so-strong.md",
+      "generated": false,
+      "author_cost_usd": null,
+      "author_model": null,
+      "pov_id": "pov-086",
+      "pov_line": "What interests me is the translation layer. An instrument doesn't hand us reality. It produces a signal, and then humans calibrate it, process it, interpret it.",
+      "pov_matched_by": "hand assignment in pov/pov-assignments.json",
+      "work_copy": "loop/work/why-is-carbon-fiber-so-strong.md",
+      "audio_dir": "audio/why-is-carbon-fiber-so-strong",
+      "plan": "loop/plans/why-is-carbon-fiber-so-strong.json",
+      "render": "renders/why-is-carbon-fiber-so-strong.mp4",
+      "source": "authored-inventory",
+      "status": "queued",
+      "pov_bank_line": "What interests me is the translation layer. An instrument doesn't hand us reality. It produces a signal, and then humans calibrate it, process it, interpret it.",
+      "pov_script_line": "What interests me is the translation layer. An instrument doesn't hand us reality. It produces a signal, and then humans calibrate it, process it, interpret it.",
+      "source_count": 4,
+      "sources_cited": [
+        "NIST",
+        "ASM International",
+        "MIT",
+        "MIT DMSE",
+        "Science"
+      ],
+      "attribution_gaps": [],
+      "planned_beats": 76
+    },
+    {
+      "slug": "why-is-steel-so-strong",
+      "question": "Why is steel so strong?",
+      "script": "scripts/why-is-steel-so-strong.md",
+      "generated": false,
+      "author_cost_usd": null,
+      "author_model": null,
+      "pov_id": "pov-047",
+      "pov_line": "When someone gives me a fact with a number in it, my first instinct is: where did the number come from? Not because I assume they're lying. Numbers can make almost anything sound authoritative.",
+      "pov_matched_by": "hand assignment in pov/pov-assignments.json",
+      "work_copy": "loop/work/why-is-steel-so-strong.md",
+      "audio_dir": "audio/why-is-steel-so-strong",
+      "plan": "loop/plans/why-is-steel-so-strong.json",
+      "render": "renders/why-is-steel-so-strong.mp4",
+      "source": "authored-inventory",
+      "status": "queued",
+      "pov_bank_line": "When someone gives me a fact with a number in it, my first instinct is: where did the number come from? Not because I assume they're lying. Numbers can make almost anything sound authoritative.",
+      "pov_script_line": "When someone gives me a fact with a number in it, my first instinct is: where did the number come from? Not because I assume they're lying. Numbers can make almost anything sound authoritative.",
+      "source_count": 7,
+      "sources_cited": [
+        "NIST",
+        "ASM International"
+      ],
+      "attribution_gaps": [],
+      "planned_beats": 93
     }
   ],
   "unauthored": []
