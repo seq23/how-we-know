@@ -107,11 +107,17 @@ jobs:
             echo "Run: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
           } > "$BODY"
 
+          # THE VERDICT IS THE SUBJECT. loop/digest.py writes one line per week
+          # ("Weekly digest — 🟢 Healthy: 3 queued this week, 28 scheduled — 2026-W38")
+          # so the inbox is the dashboard. Falls back to the plain title if the
+          # stage did not write one, never to no email.
+          TITLE="$(head -n 1 "loop/state/digest/${WEEK}.subject" 2>/dev/null)"
+          [ -n "$TITLE" ] || TITLE="Weekly digest — ${WEEK}"
           gh issue create \
-            --title "Weekly digest — ${WEEK}" \
+            --title "$TITLE" \
             --body-file "$BODY" \
             --label weekly-digest >/dev/null 2>&1 \
-            || gh issue create --title "Weekly digest — ${WEEK}" --body-file "$BODY" >/dev/null
+            || gh issue create --title "$TITLE" --body-file "$BODY" >/dev/null
           echo "delivered the ${WEEK} digest"
 
           # Close last week's, so the issue list stays a signal and not a pile.
