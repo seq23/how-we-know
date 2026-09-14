@@ -1,6 +1,6 @@
 {
-  "week": "2026-W37",
-  "at": "2026-09-13T15:08:36+00:00",
+  "week": "2026-W38",
+  "at": "2026-09-14T15:11:28+00:00",
   "plan": [
     {
       "slug": "10-what-is-the-deepest-part-of-the-ocean",
@@ -201,6 +201,54 @@
       "cues": 170,
       "sha256": "c0f97d0ea2327727e9426ed4b6fd506db5c79e27b4646b4bbe561df30e81d337",
       "already": true
+    },
+    {
+      "slug": "why-does-old-iron-not-rust",
+      "video_id": "7tdvXATeeng",
+      "srt": "/home/runner/work/how-we-know/how-we-know/captions/why-does-old-iron-not-rust.srt",
+      "cues": 189,
+      "sha256": "c72dc836e6ac2c2f2a26f130585f81a93abd3866932ae765389e4c22fdf288f8",
+      "already": false
+    },
+    {
+      "slug": "how-is-3d-printed-metal-made",
+      "video_id": "VDFFur-xYUU",
+      "srt": "/home/runner/work/how-we-know/how-we-know/captions/how-is-3d-printed-metal-made.srt",
+      "cues": 189,
+      "sha256": "375b729b593d8f5cec217b6395d93158862bb686141704b47c6c86dc67ee933c",
+      "already": false
+    },
+    {
+      "slug": "why-is-carbon-fiber-so-strong",
+      "video_id": "Eueb6oHEbMs",
+      "srt": "/home/runner/work/how-we-know/how-we-know/captions/why-is-carbon-fiber-so-strong.srt",
+      "cues": 172,
+      "sha256": "f749a7081a8d368e1909e2eaba45e68b1b43e320d6cdf149ae38db41ed34c599",
+      "already": false
+    },
+    {
+      "slug": "why-is-steel-so-strong",
+      "video_id": "98ejztJsQNY",
+      "srt": "/home/runner/work/how-we-know/how-we-know/captions/why-is-steel-so-strong.srt",
+      "cues": 206,
+      "sha256": "249fdfb399eb6006b090f657c63cdb80fbf4272a128cbd1b627c0913086012b7",
+      "already": false
+    },
+    {
+      "slug": "what-is-aerogel-made-of",
+      "video_id": "vrb83gWWaYw",
+      "srt": "/home/runner/work/how-we-know/how-we-know/captions/what-is-aerogel-made-of.srt",
+      "cues": 205,
+      "sha256": "c1c96d27093e84abbc63797899dbca4cf03e62d6e8c14c02918a751cefb0a12e",
+      "already": false
+    },
+    {
+      "slug": "what-is-kevlar-made-of",
+      "video_id": "rY7t_VDz9sk",
+      "srt": "/home/runner/work/how-we-know/how-we-know/captions/what-is-kevlar-made-of.srt",
+      "cues": 185,
+      "sha256": "bae309ffbb3db3e80c4da3d32a976ce8d450fc2df3c78d4c627be51fa9596d6d",
+      "already": false
     }
   ],
   "gaps": []
