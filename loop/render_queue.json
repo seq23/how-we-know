@@ -1,6 +1,6 @@
 {
   "week": "2026-W38",
-  "generated": "2026-09-14T10:10:00+00:00",
+  "generated": "2026-09-14T15:13:58+00:00",
   "videos_per_week": 4,
   "breaker": "closed",
   "validators": [
@@ -150,7 +150,7 @@
       "status": "PASS",
       "failures": [],
       "notes": [
-        "23 episode(s) dated through 2026-10-25; 2 domain(s) allocating on disjoint days {'deep-sea-ocean-science': (1, 6), 'materials-and-manufacturing': (0, 4)} at 4/week"
+        "25 episode(s) dated through 2026-10-26; 2 domain(s) allocating on disjoint days {'deep-sea-ocean-science': (1, 6), 'materials-and-manufacturing': (0, 4)} at 4/week"
       ],
       "stops": []
     },
@@ -199,10 +199,8 @@
     {
       "validator": "V27 lanes-see-domains",
       "examined": 25,
-      "status": "FAIL(1)",
-      "failures": [
-        "loop/shorts_lane.py cannot see any episode in deep-sea-ocean-science. It is reading one domain's publish order rather than every domain's, so that niche gets no Shorts at all."
-      ],
+      "status": "PASS",
+      "failures": [],
       "notes": [],
       "stops": []
     },
@@ -242,7 +240,7 @@
     },
     {
       "validator": "V32 scheduled-pov",
-      "examined": 24,
+      "examined": 26,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -276,7 +274,7 @@
     },
     {
       "validator": "V35 weekly-digest",
-      "examined": 10,
+      "examined": 12,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -292,17 +290,15 @@
     },
     {
       "validator": "V37 runtime-target",
-      "examined": 10,
-      "status": "FAIL(1)",
-      "failures": [
-        "bin/batch-session.sh does not check V24 before pushing to R2. V24 runs only where renders exist - this Mac - and the cloud lane exempts itself, so without this check nothing on the upload path consults the runtime floor at all."
-      ],
+      "examined": 12,
+      "status": "PASS",
+      "failures": [],
       "notes": [],
       "stops": []
     },
     {
       "validator": "V38 no-duplicate-airing",
-      "examined": 31,
+      "examined": 34,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -317,7 +313,7 @@
       "stops": []
     }
   ],
-  "validators_passed": false,
+  "validators_passed": true,
   "approval": {
     "required": false,
     "mode": "notified, not asked",
@@ -330,12 +326,12 @@
     "why": "configured default (4/week)"
   },
   "runway": {
-    "unpublished_scripts": 10,
-    "publishable": 6,
-    "scheduled_not_yet_aired": 22,
+    "unpublished_scripts": 7,
+    "publishable": 3,
+    "scheduled_not_yet_aired": 24,
     "basis": "publish queue",
     "videos_per_week": 4,
-    "weeks_remaining": 7.0,
+    "weeks_remaining": 6.8,
     "warn_below_weeks": 4.0,
     "critical_below_weeks": 2.0,
     "level": "ok",
@@ -350,16 +346,16 @@
       },
       "materials-and-manufacturing": {
         "slots_per_week": 2,
-        "queued": 6,
-        "scheduled_ahead": 10,
-        "weeks": 8.0,
+        "queued": 3,
+        "scheduled_ahead": 12,
+        "weeks": 7.5,
         "level": "ok",
-        "message": "materials-and-manufacturing: 8.0 week(s) at 2/week (6 queued, 10 already dated)"
+        "message": "materials-and-manufacturing: 7.5 week(s) at 2/week (3 queued, 12 already dated)"
       }
     },
     "short_domains": [],
     "never_go_dark": true,
-    "message": "7.0 weeks of queue at 4/week (6 publishable of 10 on disk). By domain: deep-sea-ocean-science: 6.0 week(s) at 2/week (0 queued, 12 already dated); materials-and-manufacturing: 8.0 week(s) at 2/week (6 queued, 10 already dated)."
+    "message": "6.8 weeks of queue at 4/week (3 publishable of 7 on disk). By domain: deep-sea-ocean-science: 6.0 week(s) at 2/week (0 queued, 12 already dated); materials-and-manufacturing: 7.5 week(s) at 2/week (3 queued, 12 already dated)."
   },
   "authoring": {
     "generated_this_week": 0,
