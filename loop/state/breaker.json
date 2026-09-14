@@ -1,8 +1,8 @@
 {
-  "state": "tripped",
-  "tripped_at": "2026-09-14T10:10:00+00:00",
-  "cause": "validator",
-  "detail": "V27 lanes-see-domains=FAIL(1); V37 runtime-target=FAIL(1)",
+  "state": "closed",
+  "tripped_at": null,
+  "cause": null,
+  "detail": null,
   "history": [
     {
       "event": "trip",
@@ -81,6 +81,12 @@
       "at": "2026-09-14T10:10:00+00:00",
       "cause": "validator",
       "detail": "V27 lanes-see-domains=FAIL(1); V37 runtime-target=FAIL(1)"
+    },
+    {
+      "event": "reset",
+      "at": "2026-09-14T12:04:53+00:00",
+      "cleared_cause": "validator",
+      "note": "automatic: all 35 validators pass again (cause was validator: V27 lanes-see-domains=FAIL(1); V37 runtime-target=FAIL(1))"
     }
   ]
 }

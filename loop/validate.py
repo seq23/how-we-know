@@ -2933,7 +2933,13 @@ def v35_digest_reaches_her() -> Result:
     if len(body.splitlines()) < 12:
         r.fail(f"the digest rendered {len(body.splitlines())} line(s) - it is "
                f"not reporting anything.")
-    for heading in ("## Aired this week", "## Next up", "## Runway",
+    # "## Next up" became "## The calendar" on 2026-09-14, when the digest
+    # gained the sections she asked for: what went INTO the queue this week,
+    # the pipeline's health, and every empty slot ahead - with the verdict in
+    # the subject line. A digest without those is the old digest, which read
+    # a week of nine unshipped episodes as healthy.
+    for heading in ("## Aired this week", "## Queued this week",
+                    "## Pipeline health", "## The calendar", "## Runway",
                     "## Named stops"):
         r.examined += 1
         if heading not in body:
