@@ -90,6 +90,22 @@ The strength of steel is not a single effect. It is the sum of carbon atoms bloc
 {{ambient}}
 The mechanisms described here apply to carbon steels and low-alloy steels at room temperature and moderate stress rates. At very high temperatures, creep mechanisms dominate. At very high strain rates, adiabatic heating and phase transformations change the behavior. Steels with more than two percent carbon behave differently because the excess carbon forms networks rather than isolated particles. The evidence for dislocation pinning by interstitial carbon is strong and direct, but it does not explain every steel in every condition.
 
+### Measuring strength directly: the tensile test
+
+{{steps: tensile test | machine grips sample | controlled pull | strain gauge records elongation | load cell measures force | >stress-strain curve}}
+Strength is not a theoretical property. It is measured. The standard method is the tensile test, specified by ASTM E8. A machined sample of steel, typically eight millimeters in diameter, is clamped in a testing machine. The machine pulls the sample at a controlled rate while measuring the applied force and the elongation. The result is a stress-strain curve. Yield strength is the stress at which the material begins to deform permanently, typically between two hundred and four hundred megapascals for mild steel. Ultimate tensile strength is the maximum stress before fracture, typically between four hundred and six hundred megapascals for the same material.
+
+{{text}}
+Pure iron yields at roughly fifty megapascals. Mild steel with zero point two percent carbon yields at two hundred fifty megapascals. High-carbon steel with zero point eight percent carbon yields at six hundred megapascals. The difference is not subtle. The addition of less than one percent carbon by mass increases yield strength more than tenfold compared to pure iron. That factor is why steel, not iron, is the structural material. The measurement is reproducible across labs. NIST provides reference materials with certified strength values to calibrate testing machines.
+
+### The dislocation density explains work hardening
+
+{{contrast: dislocation behavior | is=multiplication under stress | not=static population}}
+Dislocations are not fixed in number. When steel is deformed, dislocations multiply. They move, intersect, and create new dislocations. The density increases from roughly ten to the eighth dislocations per square centimeter in annealed steel to ten to the twelfth per square centimeter in cold-worked steel. Higher dislocation density means more obstacles to further motion. The steel becomes harder as it deforms. This is work hardening, and it is why a bent paper clip is harder to bend a second time in the same spot.
+
+{{text}}
+Dislocation density is measured by transmission electron microscopy or inferred from X-ray line broadening. Both methods are standard. The relationship between dislocation density and strength is quantified by the Taylor equation: strength increases with the square root of dislocation density. The equation is empirical, derived from measurements on hundreds of alloys, but it holds across metals. Cold rolling, drawing, or forging increases dislocation density deliberately. Annealing reduces it by allowing dislocations to annihilate at grain boundaries.
+
 ### Closing
 
 {{text}}
@@ -112,14 +128,17 @@ Steel's strength is not a material property in isolation. It is the result of at
 - 1:36 The carbon percentage sets the ceiling
 - 2:47 The crystal structure changes with temperature
 - 3:54 Quenching and tempering control the trade-off
-- 5:16 Alloying elements shift the curve but not the mechanism
-- 6:32 Grain boundaries add another layer of resistance
-- 7:32 The role of carbides in high-carbon steels
-- 8:32 What to notice in the edit
-- 9:05 Evidence limit
-- 9:40 Closing
+- 5:13 Alloying elements shift the curve but not the mechanism
+- 6:29 Grain boundaries add another layer of resistance
+- 7:29 The role of carbides in high-carbon steels
+- 8:28 What to notice in the edit
+- 9:02 Evidence limit
+- 12:05 Closing
 
 ## Sources
+- https://www.astm.org/
+- https://www.nist.gov/
+- https://www.asminternational.org/
 
 - NIST: Materials Science and Engineering — https://www.nist.gov/mml
 - ASM International: Alloy Center Database — https://www.asminternational.org/

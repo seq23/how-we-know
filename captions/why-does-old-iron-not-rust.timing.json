@@ -1,0 +1,149 @@
+{
+  "episode": "why-does-old-iron-not-rust",
+  "beats": 84,
+  "plan_source": "plans/why-does-old-iron-not-rust.json",
+  "timing": "audio",
+  "beats_measured": 84,
+  "durations_recorded": 10,
+  "duration_s": 727.016,
+  "cues": 189,
+  "chapters_real": 18,
+  "chapters_published": 17,
+  "chapter_notes": [
+    "merged 1 chapter(s) under 10s: Title card (2.1s)"
+  ],
+  "drift": {
+    "mean_abs_s": 27.5,
+    "worst_abs_s": 82.4,
+    "rows": [
+      {
+        "title": "Cold open",
+        "hand": "00:00",
+        "real": "0:00",
+        "drift_s": 0.0
+      },
+      {
+        "title": "Title card",
+        "hand": "00:31",
+        "real": "0:31",
+        "drift_s": 0.8
+      },
+      {
+        "title": "Rust is iron oxide, and it forms whenever iron meets oxygen and water",
+        "hand": "00:33",
+        "real": "0:33",
+        "drift_s": 0.9
+      },
+      {
+        "title": "The rust layer on modern steel is porous and does not protect the metal beneath",
+        "hand": "01:11",
+        "real": "1:13",
+        "drift_s": 2.1
+      },
+      {
+        "title": "Ancient iron that survives intact was either buried in conditions that excluded oxygen or formed a stable passivation layer",
+        "hand": "01:59",
+        "real": "1:59",
+        "drift_s": 0.1
+      },
+      {
+        "title": "The iron's original composition matters as much as the burial environment",
+        "hand": "02:58",
+        "real": "2:49",
+        "drift_s": -8.9
+      },
+      {
+        "title": "Some ancient iron objects were inadvertently case-hardened or carburized, creating a surface layer more resistant to corrosion",
+        "hand": "03:57",
+        "real": "3:44",
+        "drift_s": -12.7
+      },
+      {
+        "title": "Producer POV",
+        "hand": "04:56",
+        "real": "4:31",
+        "drift_s": -24.0
+      },
+      {
+        "title": "Passivation is not permanent; it is a dynamic equilibrium that can break down if conditions change",
+        "hand": "05:10",
+        "real": "4:48",
+        "drift_s": -21.2
+      },
+      {
+        "title": "Laboratory experiments confirm that dense magnetite layers can reduce corrosion rates by orders of magnitude",
+        "hand": "06:11",
+        "real": "5:45",
+        "drift_s": -25.8
+      },
+      {
+        "title": "Not all old iron is ancient; some twentieth-century wrought iron also resists corrosion better than modern steel",
+        "hand": "07:15",
+        "real": "6:32",
+        "drift_s": -42.6
+      },
+      {
+        "title": "The absence of rust on some ancient iron is evidence of the environment, not the iron's age",
+        "hand": "08:14",
+        "real": "7:15",
+        "drift_s": -58.2
+      },
+      {
+        "title": "What to notice in the edit",
+        "hand": "09:16",
+        "real": "8:01",
+        "drift_s": -74.3
+      },
+      {
+        "title": "Evidence limit",
+        "hand": "10:04",
+        "real": "8:41",
+        "drift_s": -82.4
+      },
+      {
+        "title": "Closing",
+        "hand": "10:48",
+        "real": "11:46",
+        "drift_s": 58.1
+      }
+    ]
+  },
+  "ffprobe": {
+    "file": "renders/why-does-old-iron-not-rust-final.mp4",
+    "video_s": 727.016,
+    "last_cue_end_s": 727.016,
+    "delta_s": -0.0,
+    "ok": true
+  },
+  "text_checks": {
+    "beats_json": {
+      "checked": 84,
+      "mismatched": []
+    },
+    "script_text": {
+      "checked": 84,
+      "absent_from_narration": [
+        4,
+        16,
+        26
+      ]
+    }
+  },
+  "script_chapters": {
+    "written": true,
+    "changed": true,
+    "removed_lines": [
+      "Title card"
+    ],
+    "chapters_not_in_script": [
+      "Microstructure matters: grain boundaries and crystal defects influence where corrosion starts",
+      "Chloride contamination is the most common cause of post-excavation corrosion",
+      "Some iron artifacts survive because they were never fully metallic iron to begin with"
+    ]
+  },
+  "artifacts": [
+    "captions/why-does-old-iron-not-rust.vtt",
+    "captions/why-does-old-iron-not-rust.srt",
+    "captions/why-does-old-iron-not-rust.chapters.txt"
+  ]
+}

@@ -111,21 +111,20 @@ Old iron rusts unless conditions prevent it. The survivors are not indestructibl
 
 ## Chapters
 
-- 00:00 Cold open
-- 00:31 Title card
-- 00:33 Rust is iron oxide, and it forms whenever iron meets oxygen and water
-- 01:11 The rust layer on modern steel is porous and does not protect the metal beneath
-- 01:59 Ancient iron that survives intact was either buried in conditions that excluded oxygen or formed a stable passivation layer
-- 02:58 The iron's original composition matters as much as the burial environment
-- 03:57 Some ancient iron objects were inadvertently case-hardened or carburized, creating a surface layer more resistant to corrosion
-- 04:56 Producer POV
-- 05:10 Passivation is not permanent; it is a dynamic equilibrium that can break down if conditions change
-- 06:11 Laboratory experiments confirm that dense magnetite layers can reduce corrosion rates by orders of magnitude
-- 07:15 Not all old iron is ancient; some twentieth-century wrought iron also resists corrosion better than modern steel
-- 08:14 The absence of rust on some ancient iron is evidence of the environment, not the iron's age
-- 09:16 What to notice in the edit
-- 10:04 Evidence limit
-- 10:48 Closing
+- 0:00 Cold open
+- 0:33 Rust is iron oxide, and it forms whenever iron meets oxygen and water
+- 1:13 The rust layer on modern steel is porous and does not protect the metal beneath
+- 1:59 Ancient iron that survives intact was either buried in conditions that excluded oxygen or formed a stable passivation layer
+- 2:49 The iron's original composition matters as much as the burial environment
+- 3:44 Some ancient iron objects were inadvertently case-hardened or carburized, creating a surface layer more resistant to corrosion
+- 4:31 Producer POV
+- 4:48 Passivation is not permanent; it is a dynamic equilibrium that can break down if conditions change
+- 5:45 Laboratory experiments confirm that dense magnetite layers can reduce corrosion rates by orders of magnitude
+- 6:32 Not all old iron is ancient; some twentieth-century wrought iron also resists corrosion better than modern steel
+- 7:15 The absence of rust on some ancient iron is evidence of the environment, not the iron's age
+- 8:01 What to notice in the edit
+- 8:41 Evidence limit
+- 11:46 Closing
 
 ## Sources
 - https://www.nist.gov/mml

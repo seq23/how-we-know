@@ -248,173 +248,181 @@
   {
     "i": 41,
     "segment": "quote_card",
-    "narration": "What keeps me interested is how it exposes the limits of our idea of normal."
+    "narration": "I find a clean audit trail beautiful. A file named correctly. A number you can follow to its source.",
+    "seconds": 6.810666666666667
   },
   {
     "i": 42,
-    "segment": "contrast_pair",
-    "narration": "Every time we think we know what life requires, something down there shows us another way."
+    "segment": "quote_card",
+    "narration": "A system whose failures leave evidence instead of excuses. Most people see administrative debris; I see order made visible.",
+    "seconds": 7.834666666666666
   },
   {
     "i": 43,
-    "segment": "text_beat",
-    "narration": "When you pull on the fiber, you are pulling against carbon-carbon bonds within those sheets, which are among the strongest bonds in chemistry.",
+    "segment": "contrast_pair",
+    "narration": "The carbon atoms in the fiber are arranged in sheets that run parallel to the fiber axis.",
     "seconds": 5.488
   },
   {
     "i": 44,
-    "segment": "contrast_pair",
-    "narration": "Tensile strength along the fiber axis can exceed three gigapascals for high-performance grades, according to data published by ASTM International.",
+    "segment": "text_beat",
+    "narration": "When you pull on the fiber, you are pulling against carbon-carbon bonds within those sheets, which are among the strongest bonds in chemistry.",
     "seconds": 7.077333333333334
   },
   {
     "i": 45,
-    "segment": "text_beat",
-    "narration": "Strength perpendicular to the fiber axis is much lower because you are relying on weaker forces between the sheets, not the bonds within them.",
+    "segment": "contrast_pair",
+    "narration": "Tensile strength along the fiber axis can exceed three gigapascals for high-performance grades, according to data published by ASTM International.",
     "seconds": 9.584
   },
   {
     "i": 46,
-    "segment": "contrast_pair",
-    "narration": "Compressive strength is also lower because the sheets can buckle. This anisotropy means carbon fiber composites must be designed with fiber orientation in mind.",
+    "segment": "text_beat",
+    "narration": "Strength perpendicular to the fiber axis is much lower because you are relying on weaker forces between the sheets, not the bonds within them.",
     "seconds": 8.08
   },
   {
     "i": 47,
-    "segment": "text_beat",
-    "narration": "A part loaded in tension along the fiber direction performs very differently from one loaded in compression or shear.",
+    "segment": "contrast_pair",
+    "narration": "Compressive strength is also lower because the sheets can buckle. This anisotropy means carbon fiber composites must be designed with fiber orientation in mind.",
     "seconds": 9.648
   },
   {
     "i": 48,
-    "segment": "magnitude_bar",
-    "narration": "Producing one kilogram of carbon fiber requires about 286 megajoules of energy, according to estimates published in materials science literature.",
+    "segment": "text_beat",
+    "narration": "A part loaded in tension along the fiber direction performs very differently from one loaded in compression or shear.",
     "seconds": 7.930666666666666
   },
   {
     "i": 49,
-    "segment": "text_beat",
-    "narration": "That is higher than aluminum at roughly 170 megajoules per kilogram, and much higher than steel at around 35 megajoules per kilogram for recycled content.",
+    "segment": "magnitude_bar",
+    "narration": "Producing one kilogram of carbon fiber requires about 286 megajoules of energy, according to estimates published in materials science literature.",
     "seconds": 9.136
   },
   {
     "i": 50,
-    "segment": "magnitude_bar",
-    "narration": "The energy goes into heating the fiber through multiple stages and maintaining controlled atmospheres.",
+    "segment": "text_beat",
+    "narration": "That is higher than aluminum at roughly 170 megajoules per kilogram, and much higher than steel at around 35 megajoules per kilogram for recycled content.",
     "seconds": 9.573333333333334
   },
   {
     "i": 51,
-    "segment": "text_beat",
-    "narration": "The PAN precursor itself is also expensive because it must be high purity and the polymerization process is specialized.",
+    "segment": "magnitude_bar",
+    "narration": "The energy goes into heating the fiber through multiple stages and maintaining controlled atmospheres.",
     "seconds": 6.256
   },
   {
     "i": 52,
-    "segment": "magnitude_bar",
-    "narration": "These costs are why carbon fiber remains a premium material used where its strength-to-weight ratio justifies the price.",
+    "segment": "text_beat",
+    "narration": "The PAN precursor itself is also expensive because it must be high purity and the polymerization process is specialized.",
     "seconds": 8.304
   },
   {
     "i": 53,
-    "segment": "text_beat",
-    "narration": "The aerospace and automotive industries are the largest consumers, followed by sporting goods and wind turbine blades.",
+    "segment": "magnitude_bar",
+    "narration": "These costs are why carbon fiber remains a premium material used where its strength-to-weight ratio justifies the price.",
     "seconds": 8.048
   },
   {
     "i": 54,
-    "segment": "checklist_reveal",
-    "narration": "Carbon fiber composites are difficult to recycle because the fiber is locked in a cured resin matrix.",
+    "segment": "text_beat",
+    "narration": "The aerospace and automotive industries are the largest consumers, followed by sporting goods and wind turbine blades.",
     "seconds": 7.205333333333333
   },
   {
     "i": 55,
-    "segment": "text_beat",
-    "narration": "Pyrolysis, heating the composite in an oxygen-free environment, burns off the resin and recovers the fiber.",
+    "segment": "checklist_reveal",
+    "narration": "Carbon fiber composites are difficult to recycle because the fiber is locked in a cured resin matrix.",
     "seconds": 5.765333333333333
   },
   {
     "i": 56,
-    "segment": "checklist_reveal",
-    "narration": "The recovered fiber is shorter because it fractures during handling, and it has lost the alignment and surface treatment that gave it full properties.",
+    "segment": "text_beat",
+    "narration": "Pyrolysis, heating the composite in an oxygen-free environment, burns off the resin and recovers the fiber.",
     "seconds": 6.810666666666667
   },
   {
     "i": 57,
-    "segment": "text_beat",
-    "narration": "Mechanical properties of parts made from recycled fiber are lower than those made from virgin fiber.",
+    "segment": "checklist_reveal",
+    "narration": "The recovered fiber is shorter because it fractures during handling, and it has lost the alignment and surface treatment that gave it full properties.",
     "seconds": 8.08
   },
   {
     "i": 58,
-    "segment": "checklist_reveal",
-    "narration": "Research continues on methods to preserve fiber length and alignment, but as of now, most carbon fiber composite waste is landfilled or incinerated for energy recovery.",
+    "segment": "text_beat",
+    "narration": "Mechanical properties of parts made from recycled fiber are lower than those made from virgin fiber.",
     "seconds": 6.192
   },
   {
     "i": 59,
-    "segment": "text_beat",
-    "narration": "Some companies are exploring chemical recycling methods that dissolve the resin without damaging the fiber, but these processes are not yet economical at scale.",
+    "segment": "checklist_reveal",
+    "narration": "Research continues on methods to preserve fiber length and alignment, but as of now, most carbon fiber composite waste is landfilled or incinerated for energy recovery.",
     "seconds": 10.533333333333333
   },
   {
     "i": 60,
-    "segment": "evidence_chain",
-    "narration": "The link between composition and properties is direct. ASTM International publishes test methods that measure carbon content by combustion analysis.",
+    "segment": "text_beat",
+    "narration": "Some companies are exploring chemical recycling methods that dissolve the resin without damaging the fiber, but these processes are not yet economical at scale.",
     "seconds": 9.477333333333334
   },
   {
     "i": 61,
-    "segment": "text_beat",
-    "narration": "The same standards specify carbonization temperatures and measure tensile strength on the resulting fiber.",
+    "segment": "evidence_chain",
+    "narration": "The link between composition and properties is direct. ASTM International publishes test methods that measure carbon content by combustion analysis.",
     "seconds": 10.928
   },
   {
     "i": 62,
-    "segment": "evidence_chain",
-    "narration": "When a manufacturer reports a fiber with ninety-five percent carbon content and a tensile strength of four gigapascals, both numbers trace to these standardized tests.",
+    "segment": "text_beat",
+    "narration": "The same standards specify carbonization temperatures and measure tensile strength on the resulting fiber.",
     "seconds": 6.1706666666666665
   },
   {
     "i": 63,
-    "segment": "text_beat",
-    "narration": "The process control required to hit those numbers consistently is part of why carbon fiber production remains concentrated in a few companies with decades of experience.",
+    "segment": "evidence_chain",
+    "narration": "When a manufacturer reports a fiber with ninety-five percent carbon content and a tensile strength of four gigapascals, both numbers trace to these standardized tests.",
     "seconds": 9.434666666666667
   },
   {
     "i": 64,
-    "segment": "evidence_chain",
-    "narration": "Small variations in temperature, tension or atmosphere during any stage can produce fiber that fails to meet specifications.",
+    "segment": "text_beat",
+    "narration": "The process control required to hit those numbers consistently is part of why carbon fiber production remains concentrated in a few companies with decades of experience.",
     "seconds": 9.754666666666667
   },
   {
     "i": 65,
-    "segment": "text_beat",
-    "narration": "The energy intensity figure for carbon fiber production varies widely in published literature, from around 200 to over 400 megajoules per kilogram depending on the production route, the efficiency of the equipment and the energy source.",
+    "segment": "evidence_chain",
+    "narration": "Small variations in temperature, tension or atmosphere during any stage can produce fiber that fails to meet specifications.",
     "seconds": 8.474666666666666
   },
   {
     "i": 66,
     "segment": "text_beat",
-    "narration": "The 286 megajoules per kilogram cited here is a mid-range estimate. Precise figures are often proprietary because they reveal details of a manufacturer's process.",
+    "narration": "The energy intensity figure for carbon fiber production varies widely in published literature, from around 200 to over 400 megajoules per kilogram depending on the production route, the efficiency of the equipment and the energy source.",
     "seconds": 14.597333333333333
   },
   {
     "i": 67,
-    "segment": "ambient_drift",
-    "narration": "The comparison to aluminum and steel is useful for understanding relative magnitude, but the absolute numbers should be understood as approximate.",
+    "segment": "text_beat",
+    "narration": "The 286 megajoules per kilogram cited here is a mid-range estimate. Precise figures are often proprietary because they reveal details of a manufacturer's process.",
     "seconds": 10.373333333333333
   },
   {
     "i": 68,
-    "segment": "text_beat",
-    "narration": "Carbon fiber is not a coating on something else. It is the product of removing everything from a polymer except the carbon, and arranging what remains into aligned sheets.",
+    "segment": "ambient_drift",
+    "narration": "The comparison to aluminum and steel is useful for understanding relative magnitude, but the absolute numbers should be understood as approximate.",
     "seconds": 8.389333333333333
   },
   {
     "i": 69,
     "segment": "text_beat",
-    "narration": "The strength comes from the arrangement, and the cost comes from the precision required to create it.",
+    "narration": "Carbon fiber is not a coating on something else. It is the product of removing everything from a polymer except the carbon, and arranging what remains into aligned sheets.",
     "seconds": 11.024
+  },
+  {
+    "i": 70,
+    "segment": "text_beat",
+    "narration": "The strength comes from the arrangement, and the cost comes from the precision required to create it.",
+    "seconds": 5.904
   }
 ]

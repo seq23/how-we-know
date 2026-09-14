@@ -135,12 +135,12 @@ The arc is hotter than the sun's surface, but the sun's surface is not the sun's
 - 3:24 Shielding gas composition shifts the temperature by changing thermal conductivity
 - 4:04 Arc length changes voltage, which changes power, which changes temperature
 - 4:53 Producer POV
-- 5:05 Measurement methods have spatial and temporal resolution limits
-- 6:21 Alternating current reverses the thermal load between electrode and workpiece
-- 7:05 The measurement history tracks improvements in spatial and temporal resolution
-- 7:47 What to notice in the edit
-- 8:33 Evidence limit
-- 12:24 Closing
+- 5:10 Measurement methods have spatial and temporal resolution limits
+- 6:25 Alternating current reverses the thermal load between electrode and workpiece
+- 7:10 The measurement history tracks improvements in spatial and temporal resolution
+- 7:51 What to notice in the edit
+- 8:37 Evidence limit
+- 12:28 Closing
 
 ## Sources
 - https://www.aws.org/

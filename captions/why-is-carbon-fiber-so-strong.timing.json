@@ -1,0 +1,117 @@
+{
+  "episode": "why-is-carbon-fiber-so-strong",
+  "beats": 76,
+  "plan_source": "plans/why-is-carbon-fiber-so-strong.json",
+  "timing": "audio",
+  "beats_measured": 76,
+  "durations_recorded": 2,
+  "duration_s": 656.267,
+  "cues": 172,
+  "chapters_real": 12,
+  "chapters_published": 11,
+  "chapter_notes": [
+    "merged 1 chapter(s) under 10s: Title card (2.1s)"
+  ],
+  "drift": {
+    "mean_abs_s": 20.6,
+    "worst_abs_s": 43.1,
+    "rows": [
+      {
+        "title": "Cold open",
+        "hand": "00:00",
+        "real": "0:00",
+        "drift_s": 0.0
+      },
+      {
+        "title": "Title card",
+        "hand": "00:24",
+        "real": "0:29",
+        "drift_s": 5.2
+      },
+      {
+        "title": "The bond itself carries more load than the metal lattice it replaces",
+        "hand": "00:26",
+        "real": "0:31",
+        "drift_s": 5.3
+      },
+      {
+        "title": "The graphite plane is a two-dimensional crystal with in-plane isotropy",
+        "hand": "01:32",
+        "real": "1:35",
+        "drift_s": 3.3
+      },
+      {
+        "title": "Fiber production aligns the planes but cannot eliminate defects",
+        "hand": "03:08",
+        "real": "2:44",
+        "drift_s": -23.6
+      },
+      {
+        "title": "The fiber alone is not the composite",
+        "hand": "04:42",
+        "real": "4:08",
+        "drift_s": -33.1
+      },
+      {
+        "title": "Anisotropy means the composite is strong only where you place the fibers",
+        "hand": "06:08",
+        "real": "5:37",
+        "drift_s": -30.7
+      },
+      {
+        "title": "Strength-to-weight ratio is the metric that justifies the cost",
+        "hand": "07:58",
+        "real": "7:14",
+        "drift_s": -43.1
+      },
+      {
+        "title": "What to notice in the edit",
+        "hand": "09:36",
+        "real": "8:55",
+        "drift_s": -40.0
+      },
+      {
+        "title": "Evidence limit",
+        "hand": "10:12",
+        "real": "9:45",
+        "drift_s": -26.0
+      },
+      {
+        "title": "Closing",
+        "hand": "10:46",
+        "real": "10:30",
+        "drift_s": -15.8
+      }
+    ]
+  },
+  "ffprobe": {
+    "file": "renders/why-is-carbon-fiber-so-strong-final.mp4",
+    "video_s": 656.266,
+    "last_cue_end_s": 656.267,
+    "delta_s": 0.001,
+    "ok": true
+  },
+  "text_checks": {
+    "beats_json": {
+      "checked": 76,
+      "mismatched": []
+    },
+    "script_text": {
+      "checked": 76,
+      "absent_from_narration": []
+    }
+  },
+  "script_chapters": {
+    "written": true,
+    "changed": true,
+    "removed_lines": [],
+    "chapters_not_in_script": [
+      "Producer POV"
+    ]
+  },
+  "artifacts": [
+    "captions/why-is-carbon-fiber-so-strong.vtt",
+    "captions/why-is-carbon-fiber-so-strong.srt",
+    "captions/why-is-carbon-fiber-so-strong.chapters.txt"
+  ]
+}

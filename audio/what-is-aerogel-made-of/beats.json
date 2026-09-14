@@ -182,365 +182,373 @@
   {
     "i": 30,
     "segment": "quote_card",
-    "narration": "Once you understand the pressure something had to survive, every strange feature starts making sense."
+    "narration": "What keeps me interested is how it exposes the limits of our idea of normal.",
+    "seconds": 4.848
   },
   {
     "i": 31,
-    "segment": "contrast_pair",
-    "narration": "People judge the visible result without understanding the conditions that created it."
+    "segment": "quote_card",
+    "narration": "Every time we think we know what life requires, something down there shows us another way.",
+    "seconds": 5.266666666666667
   },
   {
     "i": 32,
-    "segment": "text_beat",
-    "narration": "Three mechanisms contribute. First, the silica skeleton is sparse and tortuous, so conduction through the solid is minimal.",
+    "segment": "contrast_pair",
+    "narration": "Aerogel is one of the best thermal insulators among solids. Its thermal conductivity can be as low as zero point zero one three watts per meter-kelvin in air at room temperature, compared to zero point zero two four for still air and zero point zero four for polyurethane foam.",
     "seconds": 18.752
   },
   {
     "i": 33,
-    "segment": "contrast_pair",
-    "narration": "Second, the pores are smaller than the mean free path of air molecules at atmospheric pressure, which is about sixty nanometers.",
+    "segment": "text_beat",
+    "narration": "Three mechanisms contribute. First, the silica skeleton is sparse and tortuous, so conduction through the solid is minimal.",
     "seconds": 7.9093333333333335
   },
   {
     "i": 34,
-    "segment": "text_beat",
-    "narration": "Gas molecules collide with pore walls more often than with each other, suppressing convection and reducing gaseous conduction.",
+    "segment": "contrast_pair",
+    "narration": "Second, the pores are smaller than the mean free path of air molecules at atmospheric pressure, which is about sixty nanometers.",
     "seconds": 7.354666666666667
   },
   {
     "i": 35,
-    "segment": "contrast_pair",
-    "narration": "Third, the material is mostly transparent to infrared at short path lengths, though radiative transfer becomes significant at high temperatures.",
+    "segment": "text_beat",
+    "narration": "Gas molecules collide with pore walls more often than with each other, suppressing convection and reducing gaseous conduction.",
     "seconds": 6.984
   },
   {
     "i": 36,
-    "segment": "text_beat",
-    "narration": "This combination makes aerogel useful in applications from Mars rover insulation to deep-sea instrument housings.",
+    "segment": "contrast_pair",
+    "narration": "Third, the material is mostly transparent to infrared at short path lengths, though radiative transfer becomes significant at high temperatures.",
     "seconds": 9.52
   },
   {
     "i": 37,
     "segment": "text_beat",
-    "narration": "Aerogel is brittle. Compressive strength ranges from about zero point zero two megapascals for the lowest-density samples to ten megapascals for denser variants.",
+    "narration": "This combination makes aerogel useful in applications from Mars rover insulation to deep-sea instrument housings.",
     "seconds": 7.28
   },
   {
     "i": 38,
-    "segment": "ambient_drift",
-    "narration": "Tensile strength is lower, often below zero point one megapascals. The material fractures rather than deforms plastically because the silica network is held together by covalent bonds in a sparse, rigid framework.",
+    "segment": "text_beat",
+    "narration": "Aerogel is brittle. Compressive strength ranges from about zero point zero two megapascals for the lowest-density samples to ten megapascals for denser variants.",
     "seconds": 11.176
   },
   {
     "i": 39,
-    "segment": "text_beat",
-    "narration": "There is no ductile phase to absorb energy. Despite this fragility, aerogel can support thousands of times its own weight if the load is distributed.",
+    "segment": "ambient_drift",
+    "narration": "Tensile strength is lower, often below zero point one megapascals. The material fractures rather than deforms plastically because the silica network is held together by covalent bonds in a sparse, rigid framework.",
     "seconds": 13.04
   },
   {
     "i": 40,
     "segment": "text_beat",
-    "narration": "A one-gram aerogel brick can hold a kilogram without visible deformation. The structure fails when local stress exceeds the bond strength of a critical cluster, at which point a crack propagates rapidly.",
+    "narration": "There is no ductile phase to absorb energy. Despite this fragility, aerogel can support thousands of times its own weight if the load is distributed.",
     "seconds": 8.477333333333334
   },
   {
     "i": 41,
-    "segment": "ambient_drift",
-    "narration": "The brittleness is a direct consequence of the open architecture \u2014 the same geometry that gives aerogel its low density and low thermal conductivity also makes it mechanically weak.",
+    "segment": "text_beat",
+    "narration": "A one-gram aerogel brick can hold a kilogram without visible deformation. The structure fails when local stress exceeds the bond strength of a critical cluster, at which point a crack propagates rapidly.",
     "seconds": 13.690666666666667
   },
   {
     "i": 42,
-    "segment": "source_compare",
-    "narration": "Silica aerogel is the most studied, but the supercritical drying method applies to other materials.",
+    "segment": "ambient_drift",
+    "narration": "The brittleness is a direct consequence of the open architecture \u2014 the same geometry that gives aerogel its low density and low thermal conductivity also makes it mechanically weak.",
     "seconds": 11.066666666666666
   },
   {
     "i": 43,
-    "segment": "text_beat",
-    "narration": "Alumina aerogels are made from aluminum alkoxide precursors and can withstand higher temperatures than silica.",
+    "segment": "source_compare",
+    "narration": "Silica aerogel is the most studied, but the supercritical drying method applies to other materials.",
     "seconds": 6.949333333333334
   },
   {
     "i": 44,
-    "segment": "source_compare",
-    "narration": "Carbon aerogels are synthesized from organic gels, such as resorcinol-formaldehyde, followed by pyrolysis to convert the polymer network to graphitic carbon.",
+    "segment": "text_beat",
+    "narration": "Alumina aerogels are made from aluminum alkoxide precursors and can withstand higher temperatures than silica.",
     "seconds": 6.757333333333333
   },
   {
     "i": 45,
-    "segment": "text_beat",
-    "narration": "These have electrical conductivity and are used in supercapacitors and fuel cells.",
+    "segment": "source_compare",
+    "narration": "Carbon aerogels are synthesized from organic gels, such as resorcinol-formaldehyde, followed by pyrolysis to convert the polymer network to graphitic carbon.",
     "seconds": 11.418666666666667
   },
   {
     "i": 46,
-    "segment": "source_compare",
-    "narration": "Polymer aerogels, including polyimide and polyurethane variants, offer flexibility and can be cast into thin films.",
+    "segment": "text_beat",
+    "narration": "These have electrical conductivity and are used in supercapacitors and fuel cells.",
     "seconds": 4.9013333333333335
   },
   {
     "i": 47,
-    "segment": "text_beat",
-    "narration": "NASA has developed polymer aerogels for inflatable structures and dust capture. Each variant shares the defining trait: a nanoporous solid network with porosity above ninety percent, produced by removing the liquid phase without collapse.",
+    "segment": "source_compare",
+    "narration": "Polymer aerogels, including polyimide and polyurethane variants, offer flexibility and can be cast into thin films.",
     "seconds": 7.994666666666666
   },
   {
     "i": 48,
-    "segment": "process_steps",
-    "narration": "Unmodified silica aerogel is hydrophilic. Surface hydroxyl groups bond with water molecules, and absorbed moisture degrades thermal insulation and can cause structural collapse if liquid water condenses in the pores.",
+    "segment": "text_beat",
+    "narration": "NASA has developed polymer aerogels for inflatable structures and dust capture. Each variant shares the defining trait: a nanoporous solid network with porosity above ninety percent, produced by removing the liquid phase without collapse.",
     "seconds": 14.832
   },
   {
     "i": 49,
-    "segment": "text_beat",
-    "narration": "To prevent this, aerogels are often treated with a silane coupling agent, such as trimethylchlorosilane or hexamethyldisilazane, either during solvent exchange or after drying.",
+    "segment": "process_steps",
+    "narration": "Unmodified silica aerogel is hydrophilic. Surface hydroxyl groups bond with water molecules, and absorbed moisture degrades thermal insulation and can cause structural collapse if liquid water condenses in the pores.",
     "seconds": 12.698666666666666
   },
   {
     "i": 50,
-    "segment": "process_steps",
-    "narration": "The silane reacts with hydroxyl groups on the silica surface, replacing them with nonpolar methyl groups.",
+    "segment": "text_beat",
+    "narration": "To prevent this, aerogels are often treated with a silane coupling agent, such as trimethylchlorosilane or hexamethyldisilazane, either during solvent exchange or after drying.",
     "seconds": 11.76
   },
   {
     "i": 51,
-    "segment": "text_beat",
-    "narration": "The treated aerogel becomes hydrophobic \u2014 water beads on its surface rather than wetting it.",
+    "segment": "process_steps",
+    "narration": "The silane reacts with hydroxyl groups on the silica surface, replacing them with nonpolar methyl groups.",
     "seconds": 6.544
   },
   {
     "i": 52,
-    "segment": "process_steps",
-    "narration": "This modification is essential for outdoor applications and for aerogels used in humid environments.",
+    "segment": "text_beat",
+    "narration": "The treated aerogel becomes hydrophobic \u2014 water beads on its surface rather than wetting it.",
     "seconds": 5.445333333333333
   },
   {
     "i": 53,
-    "segment": "text_beat",
-    "narration": "The treatment does not significantly alter the pore structure or thermal properties, but it extends the material's useful lifetime in real-world conditions.",
+    "segment": "process_steps",
+    "narration": "This modification is essential for outdoor applications and for aerogels used in humid environments.",
     "seconds": 6.714666666666667
   },
   {
     "i": 54,
-    "segment": "checklist_reveal",
-    "narration": "The material is not exotic in composition \u2014 it is silicon dioxide, the second most abundant compound in Earth's crust.",
+    "segment": "text_beat",
+    "narration": "The treatment does not significantly alter the pore structure or thermal properties, but it extends the material's useful lifetime in real-world conditions.",
     "seconds": 8.869333333333334
   },
   {
     "i": 55,
-    "segment": "text_beat",
-    "narration": "What makes aerogel unusual is the preservation of a gel's structure in a dry state.",
+    "segment": "checklist_reveal",
+    "narration": "The material is not exotic in composition \u2014 it is silicon dioxide, the second most abundant compound in Earth's crust.",
     "seconds": 8.090666666666667
   },
   {
     "i": 56,
-    "segment": "checklist_reveal",
-    "narration": "The method is reproducible and well documented, but it requires equipment capable of reaching supercritical conditions safely.",
+    "segment": "text_beat",
+    "narration": "What makes aerogel unusual is the preservation of a gel's structure in a dry state.",
     "seconds": 5.712
   },
   {
     "i": 57,
-    "segment": "text_beat",
-    "narration": "The resulting material is counterintuitive: a solid that is mostly empty space, an insulator that looks like frozen smoke, a brittle ceramic that can be translucent.",
+    "segment": "checklist_reveal",
+    "narration": "The method is reproducible and well documented, but it requires equipment capable of reaching supercritical conditions safely.",
     "seconds": 7.866666666666666
   },
   {
     "i": 58,
-    "segment": "checklist_reveal",
-    "narration": "The properties follow directly from the structure, and the structure follows from the process.",
+    "segment": "text_beat",
+    "narration": "The resulting material is counterintuitive: a solid that is mostly empty space, an insulator that looks like frozen smoke, a brittle ceramic that can be translucent.",
     "seconds": 10.608
   },
   {
     "i": 59,
-    "segment": "text_beat",
-    "narration": "The lowest reported densities for aerogel vary slightly depending on measurement method and sample preparation.",
+    "segment": "checklist_reveal",
+    "narration": "The properties follow directly from the structure, and the structure follows from the process.",
     "seconds": 5.04
   },
   {
     "i": 60,
     "segment": "text_beat",
-    "narration": "Some sources cite zero point zero zero one grams per cubic centimeter, others zero point zero zero three, and some report values as high as zero point zero zero five grams per cubic centimeter for the lightest samples.",
+    "narration": "The lowest reported densities for aerogel vary slightly depending on measurement method and sample preparation.",
     "seconds": 5.8293333333333335
   },
   {
     "i": 61,
-    "segment": "ambient_drift",
-    "narration": "The variation reflects differences in how density is measured \u2014 whether by geometric volume or by helium pycnometry, which accounts for closed pores.",
+    "segment": "text_beat",
+    "narration": "Some sources cite zero point zero zero one grams per cubic centimeter, others zero point zero zero three, and some report values as high as zero point zero zero five grams per cubic centimeter for the lightest samples.",
     "seconds": 12.805333333333333
   },
   {
     "i": 62,
-    "segment": "text_beat",
-    "narration": "The structural details at the nanometer scale also depend on imaging technique.",
+    "segment": "ambient_drift",
+    "narration": "The variation reflects differences in how density is measured \u2014 whether by geometric volume or by helium pycnometry, which accounts for closed pores.",
     "seconds": 10.288
   },
   {
     "i": 63,
     "segment": "text_beat",
-    "narration": "Transmission electron microscopy requires thin sections and can introduce artifacts. Small-angle X-ray scattering provides statistical information about pore size distribution but not direct images.",
+    "narration": "The structural details at the nanometer scale also depend on imaging technique.",
     "seconds": 4.432
   },
   {
     "i": 64,
-    "segment": "ambient_drift",
-    "narration": "The overall picture is consistent, but precise values for the lowest density or smallest pore size should be understood as representative rather than absolute.",
+    "segment": "text_beat",
+    "narration": "Transmission electron microscopy requires thin sections and can introduce artifacts. Small-angle X-ray scattering provides statistical information about pore size distribution but not direct images.",
     "seconds": 12.794666666666666
   },
   {
     "i": 65,
-    "segment": "contrast_pair",
-    "narration": "Aerogel appears translucent or milky rather than transparent, even though silica itself is optically clear.",
+    "segment": "ambient_drift",
+    "narration": "The overall picture is consistent, but precise values for the lowest density or smallest pore size should be understood as representative rather than absolute.",
     "seconds": 10.096
   },
   {
     "i": 66,
-    "segment": "text_beat",
-    "narration": "The difference is scattering. Light passing through aerogel encounters density fluctuations at the nanometer scale \u2014 the boundaries between silica strands and air-filled pores.",
+    "segment": "contrast_pair",
+    "narration": "Aerogel appears translucent or milky rather than transparent, even though silica itself is optically clear.",
     "seconds": 6.469333333333333
   },
   {
     "i": 67,
-    "segment": "contrast_pair",
-    "narration": "When the characteristic size of these features is comparable to the wavelength of visible light, Rayleigh scattering dominates.",
+    "segment": "text_beat",
+    "narration": "The difference is scattering. Light passing through aerogel encounters density fluctuations at the nanometer scale \u2014 the boundaries between silica strands and air-filled pores.",
     "seconds": 17.733333333333334
   },
   {
     "i": 68,
-    "segment": "text_beat",
-    "narration": "Shorter wavelengths scatter more strongly than longer ones, following an inverse fourth-power law.",
+    "segment": "contrast_pair",
+    "narration": "When the characteristic size of these features is comparable to the wavelength of visible light, Rayleigh scattering dominates.",
     "seconds": 6.352
   },
   {
     "i": 69,
-    "segment": "contrast_pair",
-    "narration": "This is why thin aerogel samples appear blue in transmitted light and yellowish in reflected light.",
+    "segment": "text_beat",
+    "narration": "Shorter wavelengths scatter more strongly than longer ones, following an inverse fourth-power law.",
     "seconds": 6.458666666666667
   },
   {
     "i": 70,
-    "segment": "text_beat",
-    "narration": "Thicker samples scatter so much light that they appear opaque white. The effect is quantified by the extinction coefficient, which for silica aerogel ranges from ten to one hundred inverse centimeters depending on density.",
+    "segment": "contrast_pair",
+    "narration": "This is why thin aerogel samples appear blue in transmitted light and yellowish in reflected light.",
     "seconds": 6.778666666666667
   },
   {
     "i": 71,
-    "segment": "contrast_pair",
-    "narration": "For comparison, window glass has an extinction coefficient below zero point one inverse centimeters.",
+    "segment": "text_beat",
+    "narration": "Thicker samples scatter so much light that they appear opaque white. The effect is quantified by the extinction coefficient, which for silica aerogel ranges from ten to one hundred inverse centimeters depending on density.",
     "seconds": 12.826666666666666
   },
   {
     "i": 72,
-    "segment": "text_beat",
-    "narration": "The scattering is not a defect \u2014 it is a direct consequence of the porous structure.",
+    "segment": "contrast_pair",
+    "narration": "For comparison, window glass has an extinction coefficient below zero point one inverse centimeters.",
     "seconds": 5.7973333333333334
   },
   {
     "i": 73,
-    "segment": "contrast_pair",
-    "narration": "Some applications exploit it: aerogel panels in skylights diffuse sunlight without the heat gain of clear glazing.",
+    "segment": "text_beat",
+    "narration": "The scattering is not a defect \u2014 it is a direct consequence of the porous structure.",
     "seconds": 5.328
   },
   {
     "i": 74,
-    "segment": "stat_card",
-    "narration": "Sound propagates slowly through aerogel. The speed of sound in low-density silica aerogel can be as low as one hundred meters per second, compared to three hundred forty-three meters per second in air and five thousand nine hundred meters per second in solid silica glass.",
+    "segment": "contrast_pair",
+    "narration": "Some applications exploit it: aerogel panels in skylights diffuse sunlight without the heat gain of clear glazing.",
     "seconds": 7.205333333333333
   },
   {
     "i": 75,
-    "segment": "text_beat",
-    "narration": "The reduction occurs because sound waves must travel through both the solid skeleton and the air in the pores, and the two phases are poorly coupled.",
+    "segment": "stat_card",
+    "narration": "Sound propagates slowly through aerogel. The speed of sound in low-density silica aerogel can be as low as one hundred meters per second, compared to three hundred forty-three meters per second in air and five thousand nine hundred meters per second in solid silica glass.",
     "seconds": 15.845333333333333
   },
   {
     "i": 76,
-    "segment": "stat_card",
-    "narration": "The silica network is sparse and the pores are not aligned, so the path length for mechanical waves is much longer than the straight-line distance.",
+    "segment": "text_beat",
+    "narration": "The reduction occurs because sound waves must travel through both the solid skeleton and the air in the pores, and the two phases are poorly coupled.",
     "seconds": 7.578666666666667
   },
   {
     "i": 77,
-    "segment": "text_beat",
-    "narration": "This tortuous geometry also gives aerogel a high acoustic impedance mismatch with air, making it an effective sound barrier despite its low mass.",
+    "segment": "stat_card",
+    "narration": "The silica network is sparse and the pores are not aligned, so the path length for mechanical waves is much longer than the straight-line distance.",
     "seconds": 7.696
   },
   {
     "i": 78,
-    "segment": "stat_card",
-    "narration": "Measurements by NIST show that aerogel panels can achieve sound transmission loss values comparable to much heavier materials.",
+    "segment": "text_beat",
+    "narration": "This tortuous geometry also gives aerogel a high acoustic impedance mismatch with air, making it an effective sound barrier despite its low mass.",
     "seconds": 8.965333333333334
   },
   {
     "i": 79,
-    "segment": "text_beat",
-    "narration": "The acoustic behavior is another emergent property of the nanoporous architecture \u2014 the same structure that blocks heat also impedes sound.",
+    "segment": "stat_card",
+    "narration": "Measurements by NIST show that aerogel panels can achieve sound transmission loss values comparable to much heavier materials.",
     "seconds": 8.581333333333333
   },
   {
     "i": 80,
     "segment": "text_beat",
-    "narration": "The pore size distribution in aerogel is not fixed. It can be tuned by changing synthesis conditions.",
+    "narration": "The acoustic behavior is another emergent property of the nanoporous architecture \u2014 the same structure that blocks heat also impedes sound.",
     "seconds": 9.104
   },
   {
     "i": 81,
-    "segment": "ambient_drift",
-    "narration": "A higher precursor concentration produces smaller pores and a denser network. The choice of catalyst also matters: acid catalysis tends to yield finer, more uniform structures, while base catalysis produces coarser networks with larger pores.",
+    "segment": "text_beat",
+    "narration": "The pore size distribution in aerogel is not fixed. It can be tuned by changing synthesis conditions.",
     "seconds": 6.682666666666667
   },
   {
     "i": 82,
-    "segment": "text_beat",
-    "narration": "Gelation time and temperature affect how much the silica particles aggregate before the network solidifies.",
+    "segment": "ambient_drift",
+    "narration": "A higher precursor concentration produces smaller pores and a denser network. The choice of catalyst also matters: acid catalysis tends to yield finer, more uniform structures, while base catalysis produces coarser networks with larger pores.",
     "seconds": 15.941333333333333
   },
   {
     "i": 83,
     "segment": "text_beat",
-    "narration": "Longer gelation times allow more particle growth and coarsening, resulting in larger pores.",
+    "narration": "Gelation time and temperature affect how much the silica particles aggregate before the network solidifies.",
     "seconds": 5.68
   },
   {
     "i": 84,
-    "segment": "ambient_drift",
-    "narration": "The range already stated \u2014 twenty to one hundred nanometers \u2014 reflects typical outcomes across these parameter variations.",
+    "segment": "text_beat",
+    "narration": "Longer gelation times allow more particle growth and coarsening, resulting in larger pores.",
     "seconds": 5.936
   },
   {
     "i": 85,
-    "segment": "text_beat",
-    "narration": "Small-angle X-ray scattering and nitrogen adsorption isotherms are the standard methods for characterizing pore size.",
+    "segment": "ambient_drift",
+    "narration": "The range already stated \u2014 twenty to one hundred nanometers \u2014 reflects typical outcomes across these parameter variations.",
     "seconds": 7.632
   },
   {
     "i": 86,
     "segment": "text_beat",
-    "narration": "ASTM International provides test standards for measuring surface area and pore volume in aerogels.",
+    "narration": "Small-angle X-ray scattering and nitrogen adsorption isotherms are the standard methods for characterizing pore size.",
     "seconds": 7.269333333333333
   },
   {
     "i": 87,
-    "segment": "ambient_drift",
-    "narration": "The ability to control pore size is important for applications: smaller pores improve thermal insulation by further restricting gas-phase conduction, while larger pores reduce optical scattering and increase transparency.",
+    "segment": "text_beat",
+    "narration": "ASTM International provides test standards for measuring surface area and pore volume in aerogels.",
     "seconds": 7.568
   },
   {
     "i": 88,
-    "segment": "text_beat",
-    "narration": "The synthesis is not a single recipe \u2014 it is a parameter space where structure follows from processing choices.",
+    "segment": "ambient_drift",
+    "narration": "The ability to control pore size is important for applications: smaller pores improve thermal insulation by further restricting gas-phase conduction, while larger pores reduce optical scattering and increase transparency.",
     "seconds": 13.52
   },
   {
     "i": 89,
-    "segment": "ambient_drift",
-    "narration": "Aerogel is made of silicon dioxide arranged as a skeletal network, with air occupying most of the volume.",
+    "segment": "text_beat",
+    "narration": "The synthesis is not a single recipe \u2014 it is a parameter space where structure follows from processing choices.",
     "seconds": 7.013333333333334
   },
   {
     "i": 90,
     "segment": "ambient_drift",
-    "narration": "The material exists because supercritical drying removes liquid without surface tension. The result is a solid with properties that follow from its structure \u2014 low density, low thermal conductivity, high porosity, and brittleness. The chemistry is ordinary; the geometry is not.",
+    "narration": "Aerogel is made of silicon dioxide arranged as a skeletal network, with air occupying most of the volume.",
     "seconds": 6.629333333333333
+  },
+  {
+    "i": 91,
+    "segment": "ambient_drift",
+    "narration": "The material exists because supercritical drying removes liquid without surface tension. The result is a solid with properties that follow from its structure \u2014 low density, low thermal conductivity, high porosity, and brittleness. The chemistry is ordinary; the geometry is not.",
+    "seconds": 17.138666666666666
   }
 ]

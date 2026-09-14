@@ -128,11 +128,11 @@ Carbon fiber is strong because carbon-carbon bonds are strong, because those bon
 - 1:35 The graphite plane is a two-dimensional crystal with in-plane isotropy
 - 2:44 Fiber production aligns the planes but cannot eliminate defects
 - 4:08 The fiber alone is not the composite
-- 5:40 Anisotropy means the composite is strong only where you place the fibers
-- 7:18 Strength-to-weight ratio is the metric that justifies the cost
-- 8:59 What to notice in the edit
-- 9:49 Evidence limit
-- 10:33 Closing
+- 5:37 Anisotropy means the composite is strong only where you place the fibers
+- 7:14 Strength-to-weight ratio is the metric that justifies the cost
+- 8:55 What to notice in the edit
+- 9:45 Evidence limit
+- 10:30 Closing
 
 ## Sources
 

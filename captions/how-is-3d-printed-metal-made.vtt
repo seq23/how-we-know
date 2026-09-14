@@ -1,0 +1,703 @@
+WEBVTT
+NOTE how-is-3d-printed-metal-made - timed from measured narration audio
+
+00:00:00.000 --> 00:00:05.189
+Laser powder bed fusion can melt metal
+powder in layers as thin as 20 microns.
+
+00:00:05.189 --> 00:00:07.469
+That is thinner than a human hair.
+
+00:00:07.469 --> 00:00:10.955
+But the thinness is not what makes the
+process work.
+
+00:00:10.955 --> 00:00:15.223
+What makes it work is that each layer
+bonds metallurgically to the layer below
+
+00:00:15.223 --> 00:00:18.288
+it — meaning the atoms interdiffuse across
+the boundary.
+
+00:00:18.288 --> 00:00:20.327
+You are not gluing layers together.
+
+00:00:20.327 --> 00:00:24.405
+You are creating a continuous solid from
+repeated, controlled melting.
+
+00:00:24.405 --> 00:00:26.661
+How is 3D printed metal made?
+
+00:00:26.661 --> 00:00:31.318
+Metal powder for additive manufacturing is
+not the same as powder for pressing or
+
+00:00:31.318 --> 00:00:31.893
+sintering.
+
+00:00:31.893 --> 00:00:37.197
+It must be spherical, because spherical
+particles flow predictably and pack
+
+00:00:37.197 --> 00:00:37.904
+uniformly.
+
+00:00:37.904 --> 00:00:43.439
+Most powder is made by gas atomization —
+molten metal is broken into droplets by
+
+00:00:43.439 --> 00:00:47.659
+high-pressure inert gas, and the droplets
+solidify in flight.
+
+00:00:47.659 --> 00:00:49.461
+The size distribution matters.
+
+00:00:49.461 --> 00:00:54.448
+If the range is too wide, fine particles
+fill the voids between large ones, and the
+
+00:00:54.448 --> 00:00:56.251
+powder does not spread evenly.
+
+00:00:56.251 --> 00:01:02.428
+A typical specification for titanium alloy
+powder is 15 to 45 microns, with less than
+
+00:01:02.428 --> 00:01:04.608
+10 percent outside that range.
+
+00:01:04.608 --> 00:01:08.868
+The median particle size for
+aerospace-grade titanium alloy powder is
+
+00:01:08.868 --> 00:01:13.993
+around 25 microns, though the acceptable
+range is 15 to 60 microns depending on the
+
+00:01:13.993 --> 00:01:15.845
+machine and the part geometry.
+
+00:01:15.845 --> 00:01:21.512
+Finer powder gives better surface finish
+but is harder to handle safely — it can be
+
+00:01:21.512 --> 00:01:22.741
+pyrophoric in air.
+
+00:01:22.741 --> 00:01:27.709
+Coarser powder flows more reliably but
+limits the minimum feature size you can
+
+00:01:27.709 --> 00:01:28.091
+print.
+
+00:01:28.091 --> 00:01:33.577
+The powder must also have low oxygen
+content, typically below 1300 parts per
+
+00:01:33.577 --> 00:01:38.125
+million for titanium, because oxygen
+embrittles the final part.
+
+00:01:38.125 --> 00:01:42.502
+In laser powder bed fusion, a thin layer
+of powder is spread across the build
+
+00:01:42.502 --> 00:01:44.776
+platform by a recoating blade or roller.
+
+00:01:44.776 --> 00:01:49.988
+A laser beam, typically 50 to 100 watts
+for small machines and up to 400 watts for
+
+00:01:49.988 --> 00:01:54.819
+production systems, scans across the
+powder bed following a programmed path.
+
+00:01:54.819 --> 00:01:58.291
+Where the beam hits, the powder melts and
+forms a melt pool.
+
+00:01:58.291 --> 00:02:04.173
+The melt pool is typically 100 to 200
+microns wide and lasts only milliseconds.
+
+00:02:04.173 --> 00:02:07.235
+When the beam moves on, the metal
+solidifies.
+
+00:02:07.235 --> 00:02:12.882
+The platform drops by one layer thickness,
+a new layer of powder is spread, and the
+
+00:02:12.882 --> 00:02:13.971
+process repeats.
+
+00:02:13.971 --> 00:02:19.588
+Laser systems operate in an inert gas
+atmosphere — argon or nitrogen — to
+
+00:02:19.588 --> 00:02:20.973
+prevent oxidation.
+
+00:02:20.973 --> 00:02:26.133
+Electron beam systems operate in vacuum,
+which eliminates oxidation entirely but
+
+00:02:26.133 --> 00:02:28.520
+requires the powder to be conductive.
+
+00:02:28.520 --> 00:02:32.479
+Electron beam melting is faster because
+the beam can be deflected
+
+00:02:32.479 --> 00:02:37.473
+electromagnetically with no moving parts,
+but it is limited to metals that conduct
+
+00:02:37.473 --> 00:02:39.117
+electricity in powder form.
+
+00:02:39.117 --> 00:02:41.379
+The scan pattern is not arbitrary.
+
+00:02:41.379 --> 00:02:46.502
+Within each layer, the laser traces
+parallel lines called hatch lines, spaced
+
+00:02:46.502 --> 00:02:49.629
+to ensure overlap between adjacent melt
+tracks.
+
+00:02:49.629 --> 00:02:55.512
+Between layers, the hatch direction is
+rotated — commonly by 67 or 90 degrees —
+
+00:02:55.512 --> 00:02:59.533
+to avoid building up columnar grains in
+one direction.
+
+00:02:59.533 --> 00:03:03.933
+A contour pass around the edge of each
+layer improves surface finish.
+
+00:03:03.933 --> 00:03:08.382
+The local thermal gradient and cooling
+rate determine the microstructure.
+
+00:03:08.382 --> 00:03:12.952
+In titanium alloys, rapid cooling produces
+a fine acicular alpha structure.
+
+00:03:12.952 --> 00:03:18.000
+In nickel superalloys, it can produce
+columnar grains aligned with the build
+
+00:03:18.000 --> 00:03:18.664
+direction.
+
+00:03:18.664 --> 00:03:21.753
+The thermal history is not uniform across
+the part.
+
+00:03:21.753 --> 00:03:26.295
+Regions near the substrate cool faster
+because heat conducts into the build
+
+00:03:26.295 --> 00:03:26.840
+platform.
+
+00:03:26.840 --> 00:03:30.998
+Regions in the center of a large
+cross-section cool more slowly because
+
+00:03:30.998 --> 00:03:33.107
+they are surrounded by hot material.
+
+00:03:33.107 --> 00:03:37.959
+This means microstructure varies with
+position, and post-process heat treatment
+
+00:03:37.959 --> 00:03:40.600
+is almost always required to homogenize
+it.
+
+00:03:40.600 --> 00:03:46.001
+Cooling rates in laser powder bed fusion
+can reach 1000 to 10000 degrees Celsius
+
+00:03:46.001 --> 00:03:49.917
+per second, which is far faster than
+conventional casting.
+
+00:03:49.917 --> 00:03:56.187
+Watching something be made, I think about
+how many things had to become controllable
+
+00:03:56.187 --> 00:04:02.157
+first — temperature, pressure, purity,
+timing, tolerances, sequence, inspection.
+
+00:04:02.157 --> 00:04:06.762
+What looks smooth at the end is usually
+violent forces being controlled very
+
+00:04:06.762 --> 00:04:07.368
+precisely.
+
+00:04:07.368 --> 00:04:11.505
+Porosity is the most common defect in
+metal additive manufacturing.
+
+00:04:11.505 --> 00:04:16.446
+It comes from insufficient energy density
+— if the laser power is too low or the
+
+00:04:16.446 --> 00:04:20.707
+scan speed too high, the powder does not
+fully melt and voids remain.
+
+00:04:20.707 --> 00:04:25.168
+It comes from gas trapped in the powder
+particles during atomization.
+
+00:04:25.168 --> 00:04:30.017
+It comes from keyhole collapse — at very
+high energy density, the melt pool
+
+00:04:30.017 --> 00:04:34.931
+vaporizes and creates a deep narrow cavity
+that can collapse and trap vapor.
+
+00:04:34.931 --> 00:04:40.182
+Porosity above 0.5 percent by volume
+typically disqualifies a part for
+
+00:04:40.182 --> 00:04:42.733
+structural aerospace applications.
+
+00:04:42.733 --> 00:04:46.227
+The acceptable porosity depends on the
+application.
+
+00:04:46.227 --> 00:04:50.131
+Aerospace structural parts require less
+than 0.2 percent.
+
+00:04:50.131 --> 00:04:55.605
+Medical implants can tolerate around 1.0
+percent if the pores are small and
+
+00:04:55.605 --> 00:04:56.845
+well-distributed.
+
+00:04:56.845 --> 00:05:01.112
+Tooling and non-critical components can
+tolerate 2.0 percent.
+
+00:05:01.112 --> 00:05:06.778
+Porosity is measured by X-ray computed
+tomography or by metallographic sectioning
+
+00:05:06.778 --> 00:05:08.107
+and image analysis.
+
+00:05:08.107 --> 00:05:13.345
+The measurement method matters — CT can
+detect pores as small as 10 microns, while
+
+00:05:13.345 --> 00:05:17.179
+sectioning only samples a small fraction
+of the part volume.
+
+00:05:17.179 --> 00:05:22.206
+Any surface tilted more than about 45
+degrees from vertical requires support
+
+00:05:22.206 --> 00:05:22.933
+structures.
+
+00:05:22.933 --> 00:05:28.240
+This is because the powder below an
+unsupported overhang cannot conduct heat
+
+00:05:28.240 --> 00:05:31.941
+away fast enough, and the melt pool sags
+or distorts.
+
+00:05:31.941 --> 00:05:36.545
+Supports are printed from the same
+material as the part, using the same
+
+00:05:36.545 --> 00:05:40.629
+process, and they must be mechanically
+removed after the build.
+
+00:05:40.629 --> 00:05:44.628
+Removal is done by machining, wire EDM, or
+manual grinding.
+
+00:05:44.628 --> 00:05:49.508
+Support removal adds cost and limits the
+geometric freedom that additive
+
+00:05:49.508 --> 00:05:52.016
+manufacturing is supposed to provide.
+
+00:05:52.016 --> 00:05:56.876
+Part orientation during the build is a
+design decision that trades support volume
+
+00:05:56.876 --> 00:05:59.456
+against surface finish and residual
+stress.
+
+00:05:59.456 --> 00:06:05.105
+After printing, the part is removed from
+the build platform — usually by wire EDM
+
+00:06:05.105 --> 00:06:05.872
+or bandsaw.
+
+00:06:05.872 --> 00:06:10.748
+It is then stress-relieved to reduce
+residual stresses from the thermal cycling
+
+00:06:10.748 --> 00:06:11.797
+during the build.
+
+00:06:11.797 --> 00:06:17.318
+Stress relief for titanium alloys is
+typically 650 to 800 degrees Celsius for
+
+00:06:17.318 --> 00:06:18.608
+two to four hours.
+
+00:06:18.608 --> 00:06:23.851
+For critical applications, hot isostatic
+pressing is used to close internal
+
+00:06:23.851 --> 00:06:24.480
+porosity.
+
+00:06:24.480 --> 00:06:29.698
+HIP applies high temperature and high
+pressure — typically 900 degrees Celsius
+
+00:06:29.698 --> 00:06:34.849
+and 100 megapascals for titanium — which
+collapses voids and improves fatigue
+
+00:06:34.849 --> 00:06:39.397
+properties. Final machining brings
+critical dimensions to tolerance.
+
+00:06:39.397 --> 00:06:45.317
+Hot isostatic pressing for titanium alloys
+is typically conducted at 900 degrees
+
+00:06:45.317 --> 00:06:50.496
+Celsius under 100 megapascals of argon
+pressure for two to four hours.
+
+00:06:50.496 --> 00:06:54.945
+This closes porosity below the detection
+limit of most inspection methods and
+
+00:06:54.945 --> 00:06:59.163
+brings tensile and fatigue properties
+close to those of wrought material.
+
+00:06:59.163 --> 00:07:04.592
+The improvement in fatigue life can be a
+factor of two or more, which is why HIP is
+
+00:07:04.592 --> 00:07:06.816
+standard for aerospace components.
+
+00:07:06.816 --> 00:07:12.362
+Wire arc additive manufacturing uses a
+welding arc to melt metal wire, which is
+
+00:07:12.362 --> 00:07:14.117
+deposited layer by layer.
+
+00:07:14.117 --> 00:07:19.797
+It is much faster than powder bed methods
+— deposition rates can exceed 10 kilograms
+
+00:07:19.797 --> 00:07:24.800
+per hour compared to 50 to 100 grams per
+hour for laser powder bed fusion.
+
+00:07:24.800 --> 00:07:29.179
+It is used for large structural parts in
+aerospace and shipbuilding.
+
+00:07:29.179 --> 00:07:30.917
+The trade-off is precision.
+
+00:07:30.917 --> 00:07:35.787
+Layer thickness is typically 1 to 3
+millimeters, and surface finish is rough.
+
+00:07:35.787 --> 00:07:39.387
+Wire arc parts almost always require
+extensive machining.
+
+00:07:39.387 --> 00:07:44.251
+The process is essentially robotic welding
+applied to additive manufacturing.
+
+00:07:44.251 --> 00:07:49.288
+The numbers in this script — layer
+thickness, particle size, laser power,
+
+00:07:49.288 --> 00:07:54.531
+porosity limits, HIP conditions — come
+from ASTM standards, NIST measurement
+
+00:07:54.531 --> 00:07:57.429
+programs, and ASM International handbooks.
+
+00:07:57.429 --> 00:08:01.769
+These are the bodies that publish
+consensus data for industrial metal
+
+00:08:01.769 --> 00:08:03.216
+additive manufacturing.
+
+00:08:03.216 --> 00:08:08.331
+When a range is given, it reflects real
+variation across alloys, machines, and
+
+00:08:08.331 --> 00:08:09.184
+applications.
+
+00:08:09.184 --> 00:08:15.013
+When a single figure is stated, it is a
+typical midpoint, not a universal
+
+00:08:15.013 --> 00:08:20.687
+The cooling rate range of 1000 to 10000
+degrees Celsius per second is measured by
+
+00:08:20.687 --> 00:08:23.349
+high-speed pyrometry during the build.
+
+00:08:23.349 --> 00:08:27.595
+This script describes the process and the
+parameters, but it does not tell you
+
+00:08:27.595 --> 00:08:32.058
+whether a given part design is suitable
+for additive manufacturing, or whether the
+
+00:08:32.058 --> 00:08:34.181
+properties will meet your requirements.
+
+00:08:34.181 --> 00:08:38.888
+That depends on the alloy, the geometry,
+the thermal history, the post-processing,
+
+00:08:38.888 --> 00:08:40.437
+and the inspection methods.
+
+00:08:40.437 --> 00:08:46.145
+The process is controllable, but it is not
+yet as repeatable as casting or forging,
+
+00:08:46.145 --> 00:08:49.445
+and every production program involves
+iteration.
+
+00:08:49.445 --> 00:08:53.942
+The published porosity limits are for
+qualification, not for every part that
+
+00:08:53.942 --> 00:08:55.125
+comes off a machine.
+
+00:08:55.125 --> 00:09:04.727
+Residual stress is stress that remains in
+a part after the external forces are
+
+00:09:04.727 --> 00:09:05.712
+removed.
+
+00:09:05.712 --> 00:09:11.299
+In metal additive manufacturing, it builds
+up because each new layer heats the layers
+
+00:09:11.299 --> 00:09:15.243
+below it, causing expansion, and then
+contracts as it cools.
+
+00:09:15.243 --> 00:09:20.471
+The layers below resist this contraction,
+and tensile stress accumulates.
+
+00:09:20.471 --> 00:09:26.201
+Residual stresses in as-built laser powder
+bed fusion parts can reach 200 to 400
+
+00:09:26.201 --> 00:09:31.931
+megapascals in titanium alloys and 400 to
+800 megapascals in nickel superalloys.
+
+00:09:31.931 --> 00:09:36.052
+These values approach the yield strength
+of the material, which is why parts
+
+00:09:36.052 --> 00:09:40.011
+sometimes crack during the build or warp
+when removed from the substrate.
+
+00:09:40.011 --> 00:09:45.469
+The magnitude depends on the alloy, the
+part geometry, and the scan strategy.
+
+00:09:45.469 --> 00:09:50.814
+A typical measured value is 300
+megapascals for titanium alloy and 600
+
+00:09:50.814 --> 00:09:53.411
+megapascals for nickel superalloy.
+
+00:09:53.411 --> 00:09:57.629
+Long, thin walls accumulate more stress
+than compact geometries.
+
+00:09:57.629 --> 00:10:02.703
+Scanning the same region repeatedly
+without allowing it to cool increases the
+
+00:10:02.703 --> 00:10:03.560
+local stress.
+
+00:10:03.560 --> 00:10:08.457
+Some machines preheat the build platform
+to 200 degrees Celsius or higher to reduce
+
+00:10:08.457 --> 00:10:12.056
+the thermal gradient between the melt pool
+and the substrate.
+
+00:10:12.056 --> 00:10:15.699
+Preheating reduces residual stress but
+does not eliminate it.
+
+00:10:15.699 --> 00:10:20.298
+Stress relief heat treatment after the
+build is mandatory for most structural
+
+00:10:20.298 --> 00:10:21.075
+applications.
+
+00:10:21.075 --> 00:10:23.533
+Powder is expensive, so it is reused.
+
+00:10:23.533 --> 00:10:28.581
+After a build, the unused powder is
+recovered from the build chamber, sieved
+
+00:10:28.581 --> 00:10:33.763
+to remove spatter — small solidified
+droplets ejected from the melt pool — and
+
+00:10:33.763 --> 00:10:34.627
+agglomerates.
+
+00:10:34.627 --> 00:10:38.871
+The recovered powder is blended with
+virgin powder for the next build, with
+
+00:10:38.871 --> 00:10:40.285
+monitoring at each cycle.
+
+00:10:40.285 --> 00:10:42.575
+But powder degrades with each cycle.
+
+00:10:42.575 --> 00:10:47.345
+Oxygen and nitrogen content increase from
+exposure to the atmosphere during
+
+00:10:47.345 --> 00:10:47.917
+handling.
+
+00:10:47.917 --> 00:10:52.815
+Particle size distribution shifts as fine
+particles are preferentially consumed and
+
+00:10:52.815 --> 00:10:55.176
+spatter adds coarse irregular particles.
+
+00:10:55.176 --> 00:11:00.063
+ASTM standards require tracking the number
+of reuse cycles and testing powder
+
+00:11:00.063 --> 00:11:03.491
+chemistry and particle size distribution
+periodically.
+
+00:11:03.491 --> 00:11:06.535
+The number of times powder can be reused
+varies.
+
+00:11:06.535 --> 00:11:11.926
+For titanium alloys, 12 cycles is a common
+industry limit, though some programs allow
+
+00:11:11.926 --> 00:11:15.859
+up to 20 if the powder passes chemistry
+and flowability tests.
+
+00:11:15.859 --> 00:11:22.070
+For aluminum alloys, the limit is lower —
+around 5 to 8 cycles — because aluminum
+
+00:11:22.070 --> 00:11:23.757
+oxidizes more readily.
+
+00:11:23.757 --> 00:11:28.805
+Powder that fails specification is either
+discarded or sent back to the supplier for
+
+00:11:28.805 --> 00:11:29.587
+reprocessing.
+
+00:11:29.587 --> 00:11:35.026
+The cost of powder and the cost of testing
+it are both significant fractions of the
+
+00:11:35.026 --> 00:11:40.204
+total part cost, which is why powder
+management is a process control issue, not
+
+00:11:40.204 --> 00:11:41.645
+just a material issue.
+
+00:11:41.645 --> 00:11:44.304
+Metal additive manufacturing is not magic.
+
+00:11:44.304 --> 00:11:48.293
+It is controlled melting, repeated
+thousands of times, with the
+
+00:11:48.293 --> 00:11:51.901
+microstructure and defects determined by
+thermal history.
+
+00:11:51.901 --> 00:11:55.494
+The precision comes from the beam control
+and the powder quality.
+
+00:11:55.494 --> 00:11:59.750
+The limitation comes from the fact that
+you are melting and solidifying metal
+
+00:11:59.750 --> 00:12:01.464
+faster than equilibrium allows.

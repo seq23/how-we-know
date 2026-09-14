@@ -309,18 +309,16 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "material_image",
     "seconds": 7.03,
     "heading": "The crystal structure changes with temperature",
     "narration": "The gaps in austenite are larger. Carbon dissolves more easily. Dislocations move more freely. The steel softens.",
     "args": {
-      "lines": [
-        "The gaps in austenite",
-        "are larger. Carbon dissolves",
-        "more easily."
-      ]
+      "subject": "micrograph-steel",
+      "label": "AUSTENITE",
+      "pick": 0
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+material"
   },
   {
     "segment": "thermal_ascent",
@@ -420,18 +418,16 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "material_image",
     "seconds": 9.0,
     "heading": "Quenching and tempering control the trade-off",
     "narration": "Martensite is strong but brittle. To recover toughness, the steel is tempered: reheated to a temperature below the austenite transition, typically between two hundred and six hundred degrees Celsius, and held there.",
     "args": {
-      "lines": [
-        "Martensite is strong but",
-        "brittle. To recover toughness,",
-        "the steel"
-      ]
+      "subject": "micrograph-steel",
+      "label": "MARTENSITE",
+      "pick": 1
     },
-    "from": "directive-rhythm"
+    "from": "directive-rhythm+material"
   },
   {
     "segment": "evidence_chain",
@@ -972,18 +968,306 @@
     "from": "directive"
   },
   {
+    "segment": "process_steps",
+    "seconds": 8.28,
+    "heading": "Measuring strength directly: the tensile test",
+    "narration": "Strength is not a theoretical property. It is measured. The standard method is the tensile test, specified by ASTM E8.",
+    "args": {
+      "title": "tensile test",
+      "steps": [
+        [
+          "machine grips sample",
+          ""
+        ],
+        [
+          "controlled pull",
+          ""
+        ],
+        [
+          "strain gauge records elongation",
+          ""
+        ],
+        [
+          "load cell measures force",
+          ""
+        ]
+      ],
+      "note": "stress-strain curve"
+    },
+    "from": "directive"
+  },
+  {
     "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Measuring strength directly: the tensile test",
+    "narration": "A machined sample of steel, typically eight millimeters in diameter, is clamped in a testing machine.",
+    "args": {
+      "lines": [
+        "A machined sample of",
+        "steel, typically eight millimeters",
+        "in diameter"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 7.03,
+    "heading": "Measuring strength directly: the tensile test",
+    "narration": "The machine pulls the sample at a controlled rate while measuring the applied force and the elongation.",
+    "args": {
+      "title": "tensile test",
+      "steps": [
+        [
+          "machine grips sample",
+          ""
+        ],
+        [
+          "controlled pull",
+          ""
+        ],
+        [
+          "strain gauge records elongation",
+          ""
+        ],
+        [
+          "load cell measures force",
+          ""
+        ]
+      ],
+      "note": "stress-strain curve"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Measuring strength directly: the tensile test",
+    "narration": "The result is a stress-strain curve. Yield strength is the stress at which the material begins to deform permanently, typically between two hundred and four hundred megapascals for mild steel.",
+    "args": {
+      "lines": [
+        "The result is a",
+        "stress-strain curve. Yield strength"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 8.69,
+    "heading": "Measuring strength directly: the tensile test",
+    "narration": "Ultimate tensile strength is the maximum stress before fracture, typically between four hundred and six hundred megapascals for the same material.",
+    "args": {
+      "title": "tensile test",
+      "steps": [
+        [
+          "machine grips sample",
+          ""
+        ],
+        [
+          "controlled pull",
+          ""
+        ],
+        [
+          "strain gauge records elongation",
+          ""
+        ],
+        [
+          "load cell measures force",
+          ""
+        ]
+      ],
+      "note": "stress-strain curve"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Measuring strength directly: the tensile test",
+    "narration": "Pure iron yields at roughly fifty megapascals. Mild steel with zero point two percent carbon yields at two hundred fifty megapascals.",
+    "args": {
+      "lines": [
+        "Pure iron yields at",
+        "roughly fifty megapascals. Mild",
+        "steel"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Measuring strength directly: the tensile test",
+    "narration": "High-carbon steel with zero point eight percent carbon yields at six hundred megapascals.",
+    "args": {
+      "lines": [
+        "High-carbon steel with zero",
+        "point eight percent carbon",
+        "yields"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Measuring strength directly: the tensile test",
+    "narration": "The difference is not subtle. The addition of less than one percent carbon by mass increases yield strength more than tenfold compared to pure iron.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "Measuring strength directly: the tensile test",
+    "narration": "That factor is why steel, not iron, is the structural material. The measurement is reproducible across labs.",
+    "args": {
+      "lines": [
+        "That factor is why",
+        "steel, not iron, is",
+        "the structural"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Measuring strength directly: the tensile test",
+    "narration": "NIST provides reference materials with certified strength values to calibrate testing machines.",
+    "args": {
+      "lines": [
+        "NIST provides reference materials",
+        "with certified strength values",
+        "to calibrate"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 4.97,
+    "heading": "The dislocation density explains work hardening",
+    "narration": "Dislocations are not fixed in number. When steel is deformed, dislocations multiply.",
+    "args": {
+      "term": "dislocation behavior",
+      "includes": [
+        "multiplication under stress"
+      ],
+      "excludes": [
+        "static population"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The dislocation density explains work hardening",
+    "narration": "They move, intersect, and create new dislocations. The density increases from roughly ten to the eighth dislocations per square centimeter in annealed steel to ten to the twelfth per square centimeter in cold-worked steel.",
+    "args": {
+      "lines": [
+        "They move, intersect, and",
+        "create new dislocations. The",
+        "density increases"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 6.62,
+    "heading": "The dislocation density explains work hardening",
+    "narration": "Higher dislocation density means more obstacles to further motion. The steel becomes harder as it deforms.",
+    "args": {
+      "term": "dislocation behavior",
+      "includes": [
+        "multiplication under stress"
+      ],
+      "excludes": [
+        "static population"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The dislocation density explains work hardening",
+    "narration": "This is work hardening, and it is why a bent paper clip is harder to bend a second time in the same spot.",
+    "args": {
+      "lines": [
+        "This is work hardening,",
+        "and it is why",
+        "a bent"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "The dislocation density explains work hardening",
+    "narration": "Dislocation density is measured by transmission electron microscopy or inferred from X-ray line broadening.",
+    "args": {
+      "lines": [
+        "Dislocation density is measured",
+        "by transmission electron microscopy",
+        "or inferred"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "The dislocation density explains work hardening",
+    "narration": "Both methods are standard. The relationship between dislocation density and strength is quantified by the Taylor equation: strength increases with the square root of dislocation density.",
+    "args": {
+      "variant": 2
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "The dislocation density explains work hardening",
+    "narration": "The equation is empirical, derived from measurements on hundreds of alloys, but it holds across metals.",
+    "args": {
+      "lines": [
+        "The equation is empirical,",
+        "derived from measurements on",
+        "hundreds"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "The dislocation density explains work hardening",
+    "narration": "Cold rolling, drawing, or forging increases dislocation density deliberately. Annealing reduces it by allowing dislocations to annihilate at grain boundaries.",
+    "args": {
+      "lines": [
+        "Cold rolling, drawing, or",
+        "forging increases dislocation density",
+        "deliberately. Annealing"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
     "seconds": 9.0,
     "heading": "Closing",
     "narration": "Steel's strength is not a material property in isolation. It is the result of atomic-scale geometry, controlled phase transformations, and deliberate microstructure design.",
     "args": {
-      "lines": [
-        "Steel's strength is not",
-        "a material property in",
-        "isolation. It"
-      ]
+      "variant": 3
     },
-    "from": "directive"
+    "from": "directive+destagnate"
   },
   {
     "segment": "text_beat",
