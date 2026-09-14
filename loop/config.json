@@ -173,5 +173,9 @@
       "visual_identity": "Each domain has its own palette and directive mix in visuals/. A materials episode drawn in the deep-sea palette reads as the wrong channel.",
       "pov_top_up": "research/proposed-taxonomy.json new_niche_requirement: entering a domain outside deep sea requires a ~20 minute POV top-up interview before first publish, because tier:specific POV lines do not transfer."
     }
+  },
+  "mac": {
+    "unshipped_days": 3,
+    "_why": "2026-09-13. The Mac's lanes write their stops to loop/state/stops/ on the Mac, where the cloud digest cannot read them. Nine finished episodes shipped nothing for a week and no report anywhere said so. The Mac now pushes loop/state/mac_heartbeat.json after every lane run; the digest raises MAC_NOT_SHIPPING when the heartbeat shows finished renders pending for more than this many days, or when there has been no heartbeat at all for that long while renders are pending. Three days: the daily upload lane gets two chances before the silence is called a fault."
   }
 }

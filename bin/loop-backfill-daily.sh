@@ -13,35 +13,63 @@
 #
 # It ends by itself: when every queued episode is uploaded, backfill.py finds
 # nothing and exits 0 having said so.
+#
+# ─── 2026-09-13: what a week of silence taught this script ─────────────────
+#
+# From 6 September, nine finished materials episodes shipped nothing. Three
+# things conspired, and each is answered below, in the step that answers it:
+#
+#   1. The render gate was ALL-OR-NOTHING. One episode six seconds under the
+#      floor and the script refused every other one. -> loop/render_gate.py
+#      holds the failing slug and lets the rest ship.
+#   2. The short episode's self-heal (loop/extend.py) existed and nothing
+#      invoked it from here. -> the gate runs it (--heal) for each held slug.
+#   3. The pull failed every morning on loop-state files the cloud had started
+#      tracking, PULL_FAILED was not classified, and the stop file never left
+#      this Mac - so the Sunday digest, which runs in the cloud, never saw it.
+#      -> loop/mac_sync.py takes upstream for loop-state, PULL_FAILED is in
+#      loop/stop_policy.json, and every run ends by pushing its stop file and
+#      a heartbeat the digest reads.
 set -uo pipefail
 cd "$(dirname "${BASH_SOURCE[0]}")/.."
 
+PY=.venv/bin/python
 WEEK="$(date -u +%G-W%V)"
 STOPDIR="loop/state/stops"
+LANE=backfill
 
 # A NAMED STOP NOBODY SEES IS NOT A NAMED STOP. This script exited 3 with only
 # an echo, so the failure below repeated silently from 2026-09-03 to 09-05 while
 # `launchctl list` showed a bare "3" and nothing else. loop/digest.py reads
 # loop/state/stops/<week>-<stage>.json, so writing one here puts the failure in
-# the Sunday email like every other lane's.
+# the Sunday email like every other lane's - PROVIDED it reaches the repository,
+# which `report` below guarantees.
 named_stop() {   # named_stop CODE MESSAGE UNBLOCK
   mkdir -p "$STOPDIR"
-  python3 - "$STOPDIR/$WEEK-backfill.json" "$1" "$2" "$3" <<'PYEOF'
+  python3 - "$STOPDIR/$WEEK-$LANE.json" "$1" "$2" "$3" <<'PYEOF'
 import json, sys, datetime
 path, code, message, unblock = sys.argv[1:5]
 json.dump({"stage": "backfill", "week": path.split("/")[-1].split("-backfill")[0],
            "at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
            "code": code, "message": message, "unblock": unblock,
            "disposition": "needs_human",
-           "disposition_why": f"'{code}' is not in loop/stop_policy.json, so it "
-                              f"is treated as needing a human. That is the "
-                              f"default on purpose.",
+           "disposition_why": f"'{code}' is classified needs_human in "
+                              f"loop/stop_policy.json: a defect, not a wait.",
            "exit_code": 3, "work_done_before_stop": [], "notes": []},
           open(path, "w"), indent=2)
 PYEOF
   echo "NAMED STOP [$1]: $2"
   echo "  unblock: $3"
-  echo "  recorded -> $STOPDIR/$WEEK-backfill.json (the Sunday digest reports it)"
+  echo "  recorded -> $STOPDIR/$WEEK-$LANE.json (the Sunday digest reports it)"
+}
+
+# EVERY EXIT REPORTS. Whatever happened above, the heartbeat and this week's
+# stop files are committed and pushed, so a Mac that is stuck says so in the
+# repository the cloud digest reads - never only in a log on this disk.
+report() {   # report OK UPLOADED HELD PENDING
+  $PY loop/mac_sync.py heartbeat --lane $LANE --ok "$1" --uploaded "$2" \
+      --held "$3" --pending "$4" 2>&1 | tail -1
+  $PY loop/mac_sync.py push --lane $LANE loop/state/ledger.json loop/state/quota.json 2>&1 | tail -1
 }
 
 # A LEFT-OVER REBASE BLOCKS EVERY FUTURE RUN, FOR EVER. `git pull --rebase`
@@ -65,46 +93,44 @@ for d in .git/rebase-merge .git/rebase-apply; do
     named_stop "REBASE_IN_PROGRESS" \
       "a rebase is in progress in $d and it is recent or has unmerged files, so this run will not touch it." \
       "Finish or abort it by hand: git rebase --continue, or git rebase --abort."
+    report 0 0 "" ""
     exit 3
   fi
 done
 
-if ! git pull --rebase --autostash origin main 2>&1 | tail -2; then
+# THE PULL TAKES UPSTREAM FOR LOOP-STATE. See loop/mac_sync.py for the week
+# this failed every morning on files the cloud authors and this Mac only reads.
+if ! $PY loop/mac_sync.py pull; then
   named_stop "PULL_FAILED" \
-    "could not pull before uploading. Refusing to act on a possibly stale ledger - a duplicate public video is worse than a skipped day." \
-    "Run 'git pull --rebase origin main' here and resolve what it reports. The next run picks this up unchanged."
+    "could not pull before uploading, even after taking upstream for loop-state. Refusing to act on a possibly stale ledger - a duplicate public video is worse than a skipped day." \
+    "Run 'git pull --rebase origin main' here and resolve what it reports; it is a conflict in something a person edited, not loop state. The next run picks this up unchanged."
+  report 0 0 "" ""
   exit 3
 fi
 
-# THE SAME GATE THE R2 PATH GOT, ON THE PATH THAT ACTUALLY UPLOADS FROM HERE.
-# bin/batch-session.sh checks V13 and V24 before pushing to R2. This script is
-# the OTHER upload lane out of this Mac and had no check at all, so a clipped or
-# under-length render could go straight to YouTube from here while the R2 path
-# was carefully refusing it.
-if ! .venv/bin/python -c "
-import sys; sys.path.insert(0,'loop')
-import validate
-bad = []
-for f in (validate.v13_render_not_clipped, validate.v24_render_duration_floor):
-    d = f().as_dict()
-    bad += d.get('failures') or []
-if bad:
-    print('\n'.join('  ' + b for b in bad[:6]))
-    sys.exit(1)
-"; then
-  named_stop "RENDER_GATE_FAILED" \
-    "a finished render is clipped or under the runtime floor, so nothing was uploaded this run." \
-    "Run loop/extend.py for a short script, or re-render a clipped one. The listed episodes must not reach YouTube."
+# THE GATE HOLDS, IT DOES NOT HALT. loop/render_gate.py runs V13 and V24, writes
+# the failing slugs to loop/state/render_hold.json - which loop/backfill.py
+# skips by name - and asks loop/extend.py to heal each one under the floor.
+# Its exit code is the hold's own reporting (loud on first report, quiet while
+# unchanged) and is deliberately NOT this script's: the passing episodes ship
+# either way. Only RENDER_GATE_EMPTY - the gate looked at nothing - stops here.
+$PY loop/render_gate.py --heal
+gate_rc=$?
+if [ "$gate_rc" -ne 0 ] && grep -q '"code": "RENDER_GATE_EMPTY"' "$STOPDIR/$WEEK-render-gate.json" 2>/dev/null; then
+  report 0 0 "" ""
   exit 3
 fi
+held=$($PY -c "import sys; sys.path.insert(0,'loop'); import render_gate; print(','.join(sorted(render_gate.held_slugs())))")
 
-.venv/bin/python loop/backfill.py --limit 4
+before=$($PY -c "import sys,json; sys.path.insert(0,'loop'); import ledger; print(len([r for r in ledger.load()['published'] if not r.get('retired_at')]))")
+$PY loop/backfill.py --limit 4
 rc=$?
+after=$($PY -c "import sys,json; sys.path.insert(0,'loop'); import ledger; print(len([r for r in ledger.load()['published'] if not r.get('retired_at')]))")
+uploaded=$(( after - before ))
+pending=$($PY -c "import sys; sys.path.insert(0,'loop'); import backfill; print(len(backfill.library_pending()))" 2>/dev/null || echo "")
 
-if ! git diff --quiet -- loop/state/ledger.json loop/state/quota.json 2>/dev/null; then
-  git add loop/state/ledger.json loop/state/quota.json
-  git commit -m "backfill: uploads from the Mac $(date +%Y-%m-%d)" >/dev/null
-  git push origin main 2>&1 | tail -1 || echo "  push failed; next run rebases"
-  echo "  ledger pushed so the cloud lane sees these uploads"
-fi
+ok=1; [ "$rc" -eq 0 ] || ok=0
+[ "$uploaded" -gt 0 ] && echo "  ledger pushed so the cloud lane sees these uploads"
+echo "  $uploaded uploaded, ${held:+held: $held}${held:-nothing held}, $pending still to ship"
+report "$ok" "$uploaded" "$held" "$pending"
 exit $rc
