@@ -287,11 +287,21 @@ def library_pending(verbose: bool = False,
     # loop/batch_queue.py is the one definition, the same one bin/ and
     # cadence.publish_order() use.
     import batch_queue                                     # noqa: PLC0415
+    import render_gate                                     # noqa: PLC0415
     done = {r["slug"] for r in ledger.load()["published"]}
+    # THE HOLD, not a halt. A render V13/V24 refused is skipped HERE, by name,
+    # and everything else stays pending - see loop/render_gate.py for the week
+    # eight finished episodes waited behind one that was six seconds short.
+    held = render_gate.held_slugs()
     out = []
     for q in batch_queue.queued_entries():
         slug = q["slug"]
         if slug in done:
+            continue
+        if slug in held:
+            if verbose:
+                print(f"  HELD {slug}: refused by the render gate; heals or "
+                      f"re-renders before it can ship (loop/state/render_hold.json)")
             continue
         found = assets(slug)
         if not isinstance(found, tuple):

@@ -81,6 +81,20 @@ while [ $# -gt 0 ]; do
   shift
 done
 
+# SELF-HEAL FIRST, IN THE SAME PASS. loop/extend.py used to run near the END of
+# this script, after narration and rendering, so a script it lengthened was
+# not re-voiced until the NEXT night and the short render sat in front of the
+# gate below for a day - and then the gate refused to push anything at all.
+# Run here, before the pending lists are computed, an extension drops the stale
+# plan and the ordinary steps below re-plan, narrate the moved beats and render
+# it once, tonight. --dry-run only says what it would do.
+echo; echo "--- self-heal anything under the runtime floor ---"
+if [ -n "$DRY" ]; then
+  $PY loop/extend.py --dry-run || echo "  (see the banner above)"
+else
+  $PY loop/extend.py || echo "  (extension refused for at least one episode; those scripts are unchanged and the gate below will HOLD them, not the batch)"
+fi
+
 # THE ONE DEFINITION OF "ready to render": every beat in the plan has a wav and
 # there is no finished render yet. Both the overlap poll and the final sweep
 # call this, so a partially-narrated episode can never reach the assembler by
@@ -437,48 +451,19 @@ if fs:
 "
 
 # ---------------------------------------------------------------------------
-# SELF-HEAL ANYTHING UNDER THE RUNTIME FLOOR, BEFORE IT IS RENDERED.
-#
-# Owner decision 2026-09-05: aim for 12 minutes, tolerate 15% either side, and
-# anything under 10 minutes heals itself. This runs BEFORE the render sweep so
-# an episode that needs more narration gets it, is re-planned and re-narrated
-# for only the beats that moved, and is rendered once - rather than being
-# rendered short and discovered afterwards.
-echo; echo "--- self-heal anything under the runtime floor ---"
-$PY loop/extend.py || echo "  (extension refused for at least one episode; those scripts are unchanged)"
-
-echo; echo "--- verify nothing is clipped ---"
-$PY -c "
-import sys; sys.path.insert(0,'loop')
-import validate
-d = validate.v13_render_not_clipped().as_dict()
-fs = d.get('failures') or d.get('fails') or []
-print('  V13 examined', d.get('examined'), '- CLEAN' if not fs else '- FAILING:')
-[print('   ',f) for f in fs]"
-
-# THE GATE THAT WAS MISSING. V24 governs the runtime floor and runs where the
-# renders are, which is this Mac. The cloud drafting lane that trips the breaker
-# on a validator failure cannot see renders/ at all, so V24 exempts itself there
-# and passes. The result was a hard floor that nothing on the upload path ever
-# consulted: four episodes at 8.6-9.7 minutes were rendered, receipted and
-# waiting to ship, and the only thing that had noticed was a validator running
-# on a machine with no upload step. Asked here, the answer arrives before the
-# push to R2 rather than after YouTube has it.
-echo; echo "--- verify nothing is under the runtime floor ---"
-$PY -c "
-import sys; sys.path.insert(0,'loop')
-import validate
-d = validate.v24_render_duration_floor().as_dict()
-fs = d.get('failures') or d.get('fails') or []
-print('  V24 examined', d.get('examined'), '- CLEAN' if not fs else '- FAILING:')
-[print('   ',f) for f in fs]
-if fs:
-    print()
-    print('  These renders are under the owner hard floor and must NOT be pushed.')
-    print('  loop/extend.py heals a short script; a short RENDER of a healed')
-    print('  script just needs re-rendering.')
-    sys.exit(1)
-" || { echo; echo "  REFUSING to push to R2 while a render is under the floor."; exit 1; }
+# THE GATE HOLDS, IT DOES NOT HALT. This used to run V13 and V24 here and
+# `exit 1` on any failure - refusing the whole R2 push while a render was under the
+# floor" - which refused every finished episode on this Mac because ONE was
+# six seconds short (why-is-steel-so-strong, 9.90 min, 6-13 September 2026).
+# loop/render_gate.py writes the failing slugs to loop/state/render_hold.json;
+# bin/push-to-r2.sh (via loop/r2.py:push) refuses to shelve exactly those and
+# shelves the rest. A held render reaches YouTube by no route. The gate's exit
+# code is the hold's own loud-once reporting and is not this script's.
+echo; echo "--- render gate: hold what fails, ship what passes ---"
+$PY loop/render_gate.py
+if grep -q '"code": "RENDER_GATE_EMPTY"' "loop/state/stops/$(date -u +%G-W%V)-render-gate.json" 2>/dev/null; then
+  echo "  the gate examined no renders on a machine that holds them - nothing is pushed"; exit 3
+fi
 
 # ---------------------------------------------------------------------------
 # CAPTIONS, IN THE SAME PASS THAT MADE THE AUDIO THEY ARE TIMED FROM.
@@ -562,5 +547,14 @@ else
   echo "  bin/push-to-r2.sh does not exist yet - the cloud upload lane is still"
   echo "  being built. Until it lands, uploading stays on this Mac."
 fi
+
+# THE MAC REPORTS. The cloud digest reads loop/state/mac_heartbeat.json and this
+# week's stop files from the repository; a Mac that finished renders and shipped
+# none of them now says so where it can be seen. See loop/mac_sync.py.
+echo; echo "--- report to the repository ---"
+held=$($PY -c "import sys; sys.path.insert(0,'loop'); import render_gate; print(','.join(sorted(render_gate.held_slugs())))")
+pending=$($PY -c "import sys; sys.path.insert(0,'loop'); import backfill; print(len(backfill.library_pending()))" 2>/dev/null || echo "")
+$PY loop/mac_sync.py heartbeat --lane batch --ok 1 --held "$held" --pending "$pending" 2>&1 | tail -1
+$PY loop/mac_sync.py push --lane batch 2>&1 | tail -1
 
 echo; echo "=== batch complete $(date '+%H:%M') ==="

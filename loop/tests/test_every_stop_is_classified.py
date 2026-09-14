@@ -101,6 +101,8 @@ GENERATED = {
     "BREAKER_TRIPPED":             ("breaker.py", '"BREAKER_TRIPPED" if first'),
     "BREAKER_TRIPPED_ALREADY_REPORTED":
                                    ("breaker.py", '"BREAKER_TRIPPED_ALREADY_REPORTED"'),
+    # Synthesised by the digest from the Mac's heartbeat, not raised by a lane.
+    "MAC_NOT_SHIPPING":            ("digest.py", '"code": "MAC_NOT_SHIPPING"'),
 }
 
 # Families the loop BUILDS a code for. Each must be matched by a wildcard key.
@@ -110,8 +112,27 @@ FAMILIES = {
 }
 
 
-def literal_codes() -> dict[str, list[str]]:
+def shell_codes() -> dict[str, list[str]]:
+    """Codes the Mac's SHELL lanes raise: `named_stop "CODE" ...` in bin/*.sh.
+
+    THE GAP THIS CLOSES. bin/loop-backfill-daily.sh raised PULL_FAILED,
+    REBASE_IN_PROGRESS and RENDER_GATE_FAILED for a week (6-13 September 2026)
+    and none of them was in the policy, because this audit only read loop/*.py.
+    A Mac lane's stop is a stop; it is scanned like the rest.
+    """
+    import re
     found: dict[str, list[str]] = {}
+    for path in sorted(glob.glob(os.path.join(ROOT, "bin", "*.sh"))):
+        for i, line in enumerate(open(path), 1):
+            m = re.search(r'\bnamed_stop\s+"([A-Z0-9_]+)"', line)
+            if m:
+                found.setdefault(m.group(1), []).append(
+                    f"bin/{os.path.basename(path)}:{i}")
+    return found
+
+
+def literal_codes() -> dict[str, list[str]]:
+    found: dict[str, list[str]] = shell_codes()
     for path in sorted(glob.glob(os.path.join(LOOP, "*.py"))):
         src = open(path).read()
         try:

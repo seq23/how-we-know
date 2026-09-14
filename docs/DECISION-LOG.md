@@ -380,3 +380,56 @@ revoked YouTube consent, a missing `youtube.force-ssl` scope, a
 channel-level `UPLOADS_LOCKED_PRIVATE` flag, an absent or unfunded model or R2
 credential, and the one-off `gh workflow run` that arms a new lane. Sixteen
 codes in total, all listed under `owner_action` in `loop/stop_policy.json`.
+
+## 2026-09-13 — nine finished episodes shipped nothing for a week, and nothing said so
+
+**What happened.** From 6 September the Mac held nine finished materials
+episodes and uploaded none. Five publish slots (9–23 October) stayed empty.
+One episode, `why-is-steel-so-strong`, had rendered at 9.90 minutes against
+the 10.0-minute floor — six seconds short — and both Mac lanes refused their
+*entire* batch on that one failure ("nothing was uploaded this run"). The
+self-heal for a short episode (`loop/extend.py`, 5 Sep) had run once on 8 Sep,
+been rejected by its own validators, and nothing retried it. From 12 Sep the
+daily lane then failed one step earlier, `PULL_FAILED`, on loop-state files
+the cloud had started tracking — a code no policy classified — and every stop
+it wrote stayed on the Mac's disk, where the Sunday digest, which runs in the
+cloud, could not read it. The owner found out by asking.
+
+**Four fixes, each guarded, each proven negatively.**
+
+1. **The gate holds, it does not halt.** `loop/render_gate.py` runs V13/V24,
+   writes the failing slugs to `loop/state/render_hold.json`, and both upload
+   routes (`backfill.library_pending`, `r2.push`) skip exactly those. The rest
+   ship. Its stop is `RENDER_HELD`, a HELD stop naming each slug and why.
+   Zero renders examined is `RENDER_GATE_EMPTY`, exit 3.
+2. **Self-heal is on the unattended path.** `bin/batch-session.sh` runs
+   `extend.py` *first*, so a lengthened script is re-planned, re-voiced and
+   re-rendered in the same pass; the daily lane's gate runs it (`--heal`) for
+   every slug held under the floor. The retry-on-rejection that worked tonight
+   is `extend.py`'s own.
+3. **The pull cannot be blocked by loop state.** `loop/mac_sync.py pull` takes
+   upstream for any `loop/state/` file the Mac touched (the Mac's copy kept in
+   `loop/state/_local/`), and a person's conflicting edit is stashed, named,
+   and the tree left clean for tomorrow. `PULL_FAILED`, `REBASE_IN_PROGRESS`,
+   `RENDER_GATE_EMPTY`, `RENDER_HELD` and `MAC_NOT_SHIPPING` are classified,
+   and the classification audit now scans `bin/*.sh` as well as `loop/*.py`.
+4. **The Mac reports to the repository.** Every Mac lane run ends with
+   `loop/mac_sync.py heartbeat` + `push`: `loop/state/mac_heartbeat.json` and
+   the week's stop files are committed and pushed. `loop/digest.py:mac_stops`
+   raises `MAC_NOT_SHIPPING` when finished work has waited longer than
+   `mac.unshipped_days` (3), or the Mac has been silent that long with work
+   pending.
+
+**Negative proofs, run and recorded in PR #TBD:** the old all-or-nothing
+script restored → `test_render_gate_holds_not_halts` fails on three
+assertions; `PULL_FAILED` removed from the policy →
+`test_every_stop_is_classified` names it; the hold ignored in
+`library_pending` → the held slug reappears in the pending list. A plain
+`git pull --rebase --autostash` against the fixture in
+`test_mac_sync_pull_takes_upstream_state` fails exactly as the Mac's did.
+
+**What was done by hand tonight, once:** `extend.py --slug why-is-steel-so-strong`
+(attempt 1 rejected for a directive number the narration never spoke; attempt 2
+landed at ~12.5 min), then `bin/batch-session.sh` to re-voice and re-render it.
+The remaining eight upload at 4 per day from the next 09:00 run — YouTube's
+daily quota, not a choice.
