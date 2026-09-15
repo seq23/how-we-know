@@ -250,7 +250,7 @@
       "track_kind": "standard",
       "source": "inserted",
       "recorded_at": "2026-09-07T14:43:50+00:00",
-      "verified_at": "2026-09-07T15:11:24+00:00"
+      "verified_at": "2026-09-15T15:10:27+00:00"
     },
     "xbmIX6n2OI8": {
       "slug": "how-is-a-silicon-wafer-made",
@@ -293,7 +293,8 @@
       "cues": 189,
       "track_kind": "standard",
       "source": "inserted",
-      "recorded_at": "2026-09-14T15:11:29+00:00"
+      "recorded_at": "2026-09-14T15:11:29+00:00",
+      "verified_at": "2026-09-15T15:10:27+00:00"
     },
     "VDFFur-xYUU": {
       "slug": "how-is-3d-printed-metal-made",
@@ -303,22 +304,31 @@
       "cues": 189,
       "track_kind": "standard",
       "source": "inserted",
-      "recorded_at": "2026-09-14T15:11:30+00:00"
-    }
-  },
-  "blocked": {
+      "recorded_at": "2026-09-14T15:11:30+00:00",
+      "verified_at": "2026-09-15T15:10:27+00:00"
+    },
     "Eueb6oHEbMs": {
       "slug": "why-is-carbon-fiber-so-strong",
-      "reason": "QUOTA_DEFERRED",
-      "since": "2026-09-14T15:11:28+00:00",
-      "sha256": "f749a7081a8d368e1909e2eaba45e68b1b43e320d6cdf149ae38db41ed34c599"
+      "caption_id": "AUieDaboQjNbNW1_0Vo3iHOXCRzVpF2in5blee4eccn6Sz4OThWfzGBv",
+      "language": "en",
+      "srt_sha256": "f749a7081a8d368e1909e2eaba45e68b1b43e320d6cdf149ae38db41ed34c599",
+      "cues": 172,
+      "track_kind": "standard",
+      "source": "inserted",
+      "recorded_at": "2026-09-15T15:10:26+00:00"
     },
     "98ejztJsQNY": {
       "slug": "why-is-steel-so-strong",
-      "reason": "QUOTA_DEFERRED",
-      "since": "2026-09-14T15:11:28+00:00",
-      "sha256": "249fdfb399eb6006b090f657c63cdb80fbf4272a128cbd1b627c0913086012b7"
-    },
+      "caption_id": "AUieDaaxeDivJHRCo8A5F6xmxHXsZjJNzMjbY99xQ9cgPHXn4nNBLs6x",
+      "language": "en",
+      "srt_sha256": "249fdfb399eb6006b090f657c63cdb80fbf4272a128cbd1b627c0913086012b7",
+      "cues": 206,
+      "track_kind": "standard",
+      "source": "inserted",
+      "recorded_at": "2026-09-15T15:10:26+00:00"
+    }
+  },
+  "blocked": {
     "vrb83gWWaYw": {
       "slug": "what-is-aerogel-made-of",
       "reason": "QUOTA_DEFERRED",
@@ -330,9 +340,27 @@
       "reason": "QUOTA_DEFERRED",
       "since": "2026-09-14T15:11:28+00:00",
       "sha256": "bae309ffbb3db3e80c4da3d32a976ce8d450fc2df3c78d4c627be51fa9596d6d"
+    },
+    "k4OOYUrar30": {
+      "slug": "how-hot-does-a-welding-arc-get",
+      "reason": "QUOTA_DEFERRED",
+      "since": "2026-09-15T15:10:25+00:00",
+      "sha256": "7c08125fa0a9b9b4e230ea2af2d737d71eff4708e618791a00fcbf2814b4d68a"
+    },
+    "X2_UfcYnXwc": {
+      "slug": "what-is-carbon-fiber-made-of",
+      "reason": "QUOTA_DEFERRED",
+      "since": "2026-09-15T15:10:25+00:00",
+      "sha256": "5798182a2e74cf72106bcb405f187e01bfb3ab516e4f93a1cd4f551bfb45980f"
+    },
+    "C-5IQ_E_P9k": {
+      "slug": "what-is-concrete-made-of",
+      "reason": "QUOTA_DEFERRED",
+      "since": "2026-09-15T15:10:25+00:00",
+      "sha256": "a7b8894918a81f7707a70002a78c3376b9ce5a2b68832357fd44c8b7085f73d1"
     }
   },
-  "updated": "2026-09-14T15:11:31+00:00",
+  "updated": "2026-09-15T15:10:27+00:00",
   "token_scopes": [],
   "token_has_force_ssl": true
 }
