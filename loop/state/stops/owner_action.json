@@ -1,0 +1,10 @@
+{
+  "weekly-score": {
+    "code": "NEW_DOMAIN_KEY_ABSENT",
+    "message": "deep-sea-ocean-science holds weekly slots and its first topic gate found no YouTube Data API key in this environment. Competition cannot be measured without one, so the domain has no queue and the drafting lane has nothing to draw from for it. The primary ranking was refreshed before this stop.",
+    "unblock": "Add YOUTUBE_API_KEY as a repository secret (a Data API v3 key on the Google Cloud project that already holds the upload OAuth client; free tier, no card). The next Saturday run scores the domain. No retry without the key can clear this.",
+    "at": "2026-09-17T23:33:25+00:00",
+    "week": "2026-W38",
+    "consecutive": 1
+  }
+}

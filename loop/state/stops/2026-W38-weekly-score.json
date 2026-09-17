@@ -1,0 +1,40 @@
+{
+  "stage": "weekly-score",
+  "week": "2026-W38",
+  "at": "2026-09-17T23:33:25+00:00",
+  "code": "NEW_DOMAIN_KEY_ABSENT",
+  "message": "deep-sea-ocean-science holds weekly slots and its first topic gate found no YouTube Data API key in this environment. Competition cannot be measured without one, so the domain has no queue and the drafting lane has nothing to draw from for it. The primary ranking was refreshed before this stop.",
+  "detail": {
+    "domain": "deep-sea-ocean-science",
+    "tail": [
+      "  - Whether high-demand domains are high-demand because they are already saturated with good videos.",
+      "",
+      "Stop recorded at /home/runner/work/how-we-know/how-we-know/research/competition_stop.json. No score was written, because no score was measured.",
+      "Exit 0: this is a declared stop, not a failure."
+    ]
+  },
+  "unblock": "Add YOUTUBE_API_KEY as a repository secret (a Data API v3 key on the Google Cloud project that already holds the upload OAuth client; free tier, no card). The next Saturday run scores the domain. No retry without the key can clear this.",
+  "disposition": "owner_action",
+  "disposition_why": "YOUTUBE_API_KEY is absent, so a newly promoted domain cannot have its competition measured and gets no queue. Only she can mint the key. The primary ranking is refreshed before this stop, so publishing is not affected by it. Only she can clear this, and retrying cannot, so the run stays GREEN and the fact is carried to the top of the Sunday digest instead of into her inbox as a failed build. (run 1 of at most 4 before this escalates.)",
+  "consecutive": 1,
+  "held_items": [],
+  "exit_code": 0,
+  "work_done_before_stop": [
+    "scored and ranked 34 candidate(s)",
+    "ranking is fresh as of 2026-09-17T23:33:25.495555+00:00"
+  ],
+  "notes": [
+    "running research/publish_order.py (owned by the research agent)",
+    "  scorer: ",
+    "  scorer: KILLED 4:",
+    "  scorer:    killed              12-what-is-a-frilled-shark                    (saturation)",
+    "  scorer:    killed              11-what-is-a-dumbo-octopus                    (saturation)",
+    "  scorer:    killed              17-what-is-a-yeti-crab                        (demand,saturation)",
+    "  scorer:    killed_provisional  03-why-deep-sea-creatures-are-surfacing       (saturation)",
+    "deep-sea-ocean-science holds weekly slots and has no scored queue; running the gate for it",
+    "  deep-sea-ocean-science:   - Whether high-demand domains are high-demand because they are already saturated with good videos.",
+    "  deep-sea-ocean-science: ",
+    "  deep-sea-ocean-science: Stop recorded at /home/runner/work/how-we-know/how-we-know/research/competition_stop.json. No score was written, because no score was measured.",
+    "  deep-sea-ocean-science: Exit 0: this is a declared stop, not a failure."
+  ]
+}
