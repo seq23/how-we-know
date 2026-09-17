@@ -290,6 +290,11 @@
       "max_consecutive": 3,
       "escalation": "Three days with no shelf credential means no episode can be uploaded at all. Go red."
     },
+    "NEW_DOMAIN_KEY_ABSENT": {
+      "why": "YOUTUBE_API_KEY is absent, so a newly promoted domain cannot have its competition measured and gets no queue. Only she can mint the key. The primary ranking is refreshed before this stop, so publishing is not affected by it.",
+      "max_consecutive": 4,
+      "escalation": "Four Saturdays without a key is a promoted domain holding weekly slots for a month with nothing to fill them. Go red."
+    },
     "OPENROUTER_KEY_MISSING": {
       "why": "OPENROUTER_API_KEY is absent. Only she can mint one.",
       "max_consecutive": 3,
