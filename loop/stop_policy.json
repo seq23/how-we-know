@@ -295,6 +295,16 @@
       "max_consecutive": 3,
       "escalation": "Three weeks unable to author is a channel that will run out of scripts. Go red."
     },
+    "SCORER_KEY_ABSENT": {
+      "why": "YOUTUBE_API_KEY is absent, so the weekly scorer could not measure competition. Only she can mint one; retrying without it changes nothing. The previous ranking stands until it goes stale. Was misfiled as SCORER_QUOTA-shaped (self-resolving) until 2026-09-17 because competition.py's key-absent banner contains the word 'quota'.",
+      "max_consecutive": 3,
+      "escalation": "Three Saturdays without a key is a ranking that will hit loop/cadence.py's 10-day staleness gate and halt every lane that reads the queue. Go red."
+    },
+    "NEW_DOMAIN_KEY_ABSENT": {
+      "why": "A newly admitted domain's first scoring pass needs the YouTube Data API and YOUTUBE_API_KEY is absent. Only she can mint one; the next Saturday cannot resolve it. The primary ranking has already been refreshed by the time this fires (loop/score.py runs it first), so nothing else is stale. Was misfiled as NEW_DOMAIN_QUOTA (self-resolving) on 2026-09-12 because competition.py's key-absent banner contains the word 'quota'.",
+      "max_consecutive": 4,
+      "escalation": "A month of Saturdays with a promoted domain holding weekly slots and no queue is a stalled promotion, not a pending errand. Go red."
+    },
     "OPENROUTER_UNAUTHORISED": {
       "why": "The model key was rejected. Only she can replace it.",
       "max_consecutive": 3,
