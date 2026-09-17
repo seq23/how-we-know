@@ -22,7 +22,7 @@
       "pin_errors"
     ]
   },
-  "generated_at": "2026-09-05T15:36:38.680351+00:00",
+  "generated_at": "2026-09-17T23:33:25.495555+00:00",
   "generator": "research/publish_order.py",
   "rule": "pov/topic-taxonomy.json: 'Rank candidates by (search demand / competition).' Implemented as a hard GATE on both axes, then a geometric combined score among survivors.",
   "gate": {
@@ -123,17 +123,17 @@
         "demand",
         "saturation"
       ],
-      "reason": "demand_index 0.126 is below the 0.16 floor (audience-led: top-20 median views and query-family breadth, not autocomplete completions); title gap 0.00 is at or below the 0.3 saturation ceiling: 20 of the top 20 titles already answer this question squarely.",
+      "reason": "demand_index 0.119 is below the 0.16 floor (audience-led: top-20 median views and query-family breadth, not autocomplete completions); title gap 0.00 is at or below the 0.3 saturation ceiling: 20 of the top 20 titles already answer this question squarely.",
       "measurement": {
-        "demand_index": 0.1264,
+        "demand_index": 0.1189,
         "demand_floor": 0.16,
         "title_gap": 0.0,
         "saturation_ceiling": 0.3,
-        "autocomplete_completions": 2,
+        "autocomplete_completions": 1,
         "corpus_breadth": 0
       },
       "what_would_settle_it": "Re-measure the audience signal on another day; a demand kill this close to the floor should not stand on its own.",
-      "demand_index": 0.1264,
+      "demand_index": 0.1189,
       "opportunity_score": 0.289,
       "title_gap": 0.0
     },
@@ -146,15 +146,15 @@
       ],
       "reason": "title gap 0.20 is at or below the 0.3 saturation ceiling: 16 of the top 20 titles already answer this question squarely.",
       "measurement": {
-        "demand_index": 0.3492,
+        "demand_index": 0.3717,
         "demand_floor": 0.16,
         "title_gap": 0.2,
         "saturation_ceiling": 0.3,
-        "autocomplete_completions": 1,
+        "autocomplete_completions": 4,
         "corpus_breadth": 0
       },
       "what_would_settle_it": "Re-measure with a larger result set and on a different day; 20 results at one moment is thin evidence to end a topic on.",
-      "demand_index": 0.3492,
+      "demand_index": 0.3717,
       "opportunity_score": 0.325,
       "title_gap": 0.2
     }
@@ -282,7 +282,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-05T15:36:29.223508+00:00"
+          "fetched_utc": "2026-09-17T23:33:15.003393+00:00"
         }
       },
       "competition": {
@@ -335,6 +335,85 @@
       "gate_overridden": false
     },
     {
+      "slug": "05-why-many-deep-sea-creatures-are-red",
+      "script": "scripts/05-why-many-deep-sea-creatures-are-red.md",
+      "title": "Why many deep sea creatures are red?",
+      "query": "why many deep sea creatures are red",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.481 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.4806,
+        "autocomplete_completions": 3,
+        "exact_in_autocomplete": false,
+        "corpus_breadth": 0,
+        "key_term": "many",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "why deep sea creatures",
+          "why do deep sea creatures",
+          "why deep sea creatures are big"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-17T23:33:09.741956+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.657,
+        "title_gap": 1.0,
+        "title_coverage_mean": 0.49,
+        "strong_match_count": 0,
+        "results_examined": 20,
+        "median_views": 2796229.0,
+        "p90_views": 16780541,
+        "median_subscribers": 387000.0,
+        "channels_under_100k_subs": 6,
+        "median_age_days": 484,
+        "published_last_365d": 6,
+        "interpretation": "nobody has made the definitive video on this query",
+        "components": {
+          "title_gap": 1.0,
+          "incumbent_subs": 0.202,
+          "view_ceiling": 0.079,
+          "staleness": 0.7
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-08-30T20:51:29.727135+00:00"
+        }
+      },
+      "trend": {
+        "direction_12m": "rising",
+        "verdict": "direction NOT QUOTABLE - low_resolution; only the rising/breakout queries are usable here",
+        "breakouts": 0,
+        "status": "ok"
+      },
+      "combined_score": 0.5619,
+      "trend_multiplier": 1.0,
+      "trend_note": "Trends series not quotable; neutral",
+      "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
+      "reason": "CONTESTED DESPITE THE GAP: 100% lexical title gap, but median 2,796,229 views and 387,000 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated.",
+      "queue_position": 2,
+      "source": "COMBINED_SCORE",
+      "pinned": false,
+      "overridden_gate_verdict": null,
+      "gate_overridden": false
+    },
+    {
       "slug": "01-why-deep-sea-creatures-look-so-weird",
       "script": "scripts/01-why-deep-sea-creatures-look-so-weird.md",
       "title": "Why deep sea creatures look so weird?",
@@ -360,7 +439,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-05T15:36:20.464959+00:00"
+          "fetched_utc": "2026-09-17T23:33:05.569870+00:00"
         }
       },
       "competition": {
@@ -406,7 +485,7 @@
       "trend_note": "Trends series not quotable; neutral",
       "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
       "reason": "CONTESTED DESPITE THE GAP: 80% lexical title gap, but median 2,476,624 views and 719,500 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated.",
-      "queue_position": 2,
+      "queue_position": 3,
       "source": "COMBINED_SCORE",
       "pinned": false,
       "overridden_gate_verdict": null,
@@ -438,7 +517,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-05T15:36:33.078510+00:00"
+          "fetched_utc": "2026-09-17T23:33:19.152794+00:00"
         }
       },
       "competition": {
@@ -484,81 +563,6 @@
       "trend_note": "Trends series not quotable; neutral",
       "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
       "reason": "Open field (100% of top-20 titles miss the question) but thin demand (0.46) -- uncontested because few ask it.",
-      "queue_position": 3,
-      "source": "COMBINED_SCORE",
-      "pinned": false,
-      "overridden_gate_verdict": null,
-      "gate_overridden": false
-    },
-    {
-      "slug": "05-why-many-deep-sea-creatures-are-red",
-      "script": "scripts/05-why-many-deep-sea-creatures-are-red.md",
-      "title": "Why many deep sea creatures are red?",
-      "query": "why many deep sea creatures are red",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.458 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.4581,
-        "autocomplete_completions": 0,
-        "exact_in_autocomplete": false,
-        "corpus_breadth": 0,
-        "key_term": "many",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 0,
-        "sample_completions": [],
-        "caveat": "autocomplete presence, NOT search volume",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-05T15:36:24.355569+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.657,
-        "title_gap": 1.0,
-        "title_coverage_mean": 0.49,
-        "strong_match_count": 0,
-        "results_examined": 20,
-        "median_views": 2796229.0,
-        "p90_views": 16780541,
-        "median_subscribers": 387000.0,
-        "channels_under_100k_subs": 6,
-        "median_age_days": 484,
-        "published_last_365d": 6,
-        "interpretation": "nobody has made the definitive video on this query",
-        "components": {
-          "title_gap": 1.0,
-          "incumbent_subs": 0.202,
-          "view_ceiling": 0.079,
-          "staleness": 0.7
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-08-30T20:51:29.727135+00:00"
-        }
-      },
-      "trend": {
-        "direction_12m": "rising",
-        "verdict": "direction NOT QUOTABLE - low_resolution; only the rising/breakout queries are usable here",
-        "breakouts": 0,
-        "status": "ok"
-      },
-      "combined_score": 0.5486,
-      "trend_multiplier": 1.0,
-      "trend_note": "Trends series not quotable; neutral",
-      "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
-      "reason": "CONTESTED DESPITE THE GAP: 100% lexical title gap, but median 2,796,229 views and 387,000 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated.",
       "queue_position": 4,
       "source": "COMBINED_SCORE",
       "pinned": false,
@@ -573,11 +577,11 @@
       "gate": {
         "verdict": "passed",
         "failed": [],
-        "reason": "demand 0.723 clears the 0.16 floor and title gap 0.40 clears the 0.3 saturation ceiling."
+        "reason": "demand 0.731 clears the 0.16 floor and title gap 0.40 clears the 0.3 saturation ceiling."
       },
       "demand": {
-        "demand_index": 0.7232,
-        "autocomplete_completions": 4,
+        "demand_index": 0.7307,
+        "autocomplete_completions": 5,
         "exact_in_autocomplete": true,
         "corpus_breadth": 90,
         "key_term": "midnight",
@@ -587,13 +591,14 @@
           "what is the midnight zone",
           "what does the midnight zone look like",
           "what lurks in the midnight zone",
-          "what lives in the midnight zone"
+          "what lives in the midnight zone",
+          "the midnight zone creatures"
         ],
         "caveat": "autocomplete presence, NOT search volume",
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-05T15:36:38.679758+00:00"
+          "fetched_utc": "2026-09-17T23:33:25.495137+00:00"
         }
       },
       "competition": {
@@ -634,89 +639,12 @@
         "breakouts": 0,
         "status": "ok"
       },
-      "combined_score": 0.5399,
+      "combined_score": 0.5427,
       "trend_multiplier": 1.0,
       "trend_note": "Trends series not quotable; neutral",
       "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
-      "reason": "Strong demand (0.72) against partial coverage (40% title gap); winnable but contested.",
+      "reason": "Strong demand (0.73) against partial coverage (40% title gap); winnable but contested.",
       "queue_position": 5,
-      "source": "COMBINED_SCORE",
-      "pinned": false,
-      "overridden_gate_verdict": null,
-      "gate_overridden": false
-    },
-    {
-      "slug": "07-why-deep-sea-creatures-get-creepier-deeper",
-      "script": "scripts/07-why-deep-sea-creatures-get-creepier-deeper.md",
-      "title": "Why deep sea creatures get creepier the deeper you go?",
-      "query": "why deep sea creatures get creepier the deeper you go",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.517 clears the 0.16 floor and title gap 0.75 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.5167,
-        "autocomplete_completions": 1,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 1,
-        "key_term": "deeper",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 1,
-        "sample_completions": [
-          "why deep sea creatures get creepier the deeper you go"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-05T15:36:26.309394+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.499,
-        "title_gap": 0.75,
-        "title_coverage_mean": 0.583,
-        "strong_match_count": 5,
-        "results_examined": 20,
-        "median_views": 688455.5,
-        "p90_views": 10394078,
-        "median_subscribers": 228000.0,
-        "channels_under_100k_subs": 5,
-        "median_age_days": 303,
-        "published_last_365d": 13,
-        "interpretation": "5 of 20 ranking titles squarely answer the query",
-        "components": {
-          "title_gap": 0.75,
-          "incumbent_subs": 0.235,
-          "view_ceiling": 0.166,
-          "staleness": 0.35
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-08-30T20:51:32.902078+00:00"
-        }
-      },
-      "trend": {
-        "direction_12m": "rising",
-        "verdict": "direction NOT QUOTABLE - low_resolution; only the rising/breakout queries are usable here",
-        "breakouts": 0,
-        "status": "ok"
-      },
-      "combined_score": 0.5078,
-      "trend_multiplier": 1.0,
-      "trend_note": "Trends series not quotable; neutral",
-      "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
-      "reason": "Middle of the field: title gap 0.75, demand 0.52, opportunity 0.50.",
-      "queue_position": 6,
       "source": "COMBINED_SCORE",
       "pinned": false,
       "overridden_gate_verdict": null,
@@ -730,22 +658,27 @@
       "gate": {
         "verdict": "passed",
         "failed": [],
-        "reason": "demand 0.384 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling."
+        "reason": "demand 0.413 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling."
       },
       "demand": {
-        "demand_index": 0.3835,
-        "autocomplete_completions": 0,
+        "demand_index": 0.4135,
+        "autocomplete_completions": 4,
         "exact_in_autocomplete": false,
         "corpus_breadth": 0,
         "key_term": "some",
         "key_term_completions": 10,
         "key_term_corpus_breadth": 0,
-        "sample_completions": [],
+        "sample_completions": [
+          "why deep sea creatures are scary",
+          "why do deep sea creatures",
+          "why deep sea creatures",
+          "what is the deepest sea creature"
+        ],
         "caveat": "autocomplete presence, NOT search volume",
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-05T15:36:25.335111+00:00"
+          "fetched_utc": "2026-09-17T23:33:10.763660+00:00"
         }
       },
       "competition": {
@@ -786,11 +719,91 @@
         "breakouts": 0,
         "status": "unavailable"
       },
-      "combined_score": 0.5069,
+      "combined_score": 0.5264,
       "trend_multiplier": 1.0,
       "trend_note": "no Trends data; neutral",
       "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
       "reason": "CONTESTED DESPITE THE GAP: 100% lexical title gap, but median 1,088,612 views and 156,000 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated.",
+      "queue_position": 6,
+      "source": "COMBINED_SCORE",
+      "pinned": false,
+      "overridden_gate_verdict": null,
+      "gate_overridden": false
+    },
+    {
+      "slug": "07-why-deep-sea-creatures-get-creepier-deeper",
+      "script": "scripts/07-why-deep-sea-creatures-get-creepier-deeper.md",
+      "title": "Why deep sea creatures get creepier the deeper you go?",
+      "query": "why deep sea creatures get creepier the deeper you go",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.539 clears the 0.16 floor and title gap 0.75 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.5392,
+        "autocomplete_completions": 4,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 1,
+        "key_term": "deeper",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 1,
+        "sample_completions": [
+          "why deep sea creatures get creepier the deeper you go",
+          "why deep sea creatures are scary",
+          "creepiest deep sea creatures",
+          "deep sea creatures myths"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-17T23:33:11.830493+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.499,
+        "title_gap": 0.75,
+        "title_coverage_mean": 0.583,
+        "strong_match_count": 5,
+        "results_examined": 20,
+        "median_views": 688455.5,
+        "p90_views": 10394078,
+        "median_subscribers": 228000.0,
+        "channels_under_100k_subs": 5,
+        "median_age_days": 303,
+        "published_last_365d": 13,
+        "interpretation": "5 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.75,
+          "incumbent_subs": 0.235,
+          "view_ceiling": 0.166,
+          "staleness": 0.35
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-08-30T20:51:32.902078+00:00"
+        }
+      },
+      "trend": {
+        "direction_12m": "rising",
+        "verdict": "direction NOT QUOTABLE - low_resolution; only the rising/breakout queries are usable here",
+        "breakouts": 0,
+        "status": "ok"
+      },
+      "combined_score": 0.5187,
+      "trend_multiplier": 1.0,
+      "trend_note": "Trends series not quotable; neutral",
+      "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
+      "reason": "Middle of the field: title gap 0.75, demand 0.54, opportunity 0.50.",
       "queue_position": 7,
       "source": "COMBINED_SCORE",
       "pinned": false,
@@ -805,24 +818,25 @@
       "gate": {
         "verdict": "passed",
         "failed": [],
-        "reason": "demand 0.383 clears the 0.16 floor and title gap 0.95 clears the 0.3 saturation ceiling."
+        "reason": "demand 0.391 clears the 0.16 floor and title gap 0.95 clears the 0.3 saturation ceiling."
       },
       "demand": {
-        "demand_index": 0.3831,
-        "autocomplete_completions": 1,
+        "demand_index": 0.3906,
+        "autocomplete_completions": 2,
         "exact_in_autocomplete": false,
         "corpus_breadth": 0,
         "key_term": "reach",
         "key_term_completions": 10,
         "key_term_corpus_breadth": 0,
         "sample_completions": [
-          "how to reach challenger deep in fisch"
+          "how to reach challenger deep in fisch",
+          "what is in challenger deep"
         ],
         "caveat": "autocomplete presence, NOT search volume",
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-05T15:36:34.054653+00:00"
+          "fetched_utc": "2026-09-17T23:33:20.196056+00:00"
         }
       },
       "competition": {
@@ -863,11 +877,11 @@
         "breakouts": 0,
         "status": "ok"
       },
-      "combined_score": 0.5036,
+      "combined_score": 0.5085,
       "trend_multiplier": 1.0,
       "trend_note": "Trends series not quotable; neutral",
       "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
-      "reason": "Open field (95% of top-20 titles miss the question) but thin demand (0.38) -- uncontested because few ask it.",
+      "reason": "Open field (95% of top-20 titles miss the question) but thin demand (0.39) -- uncontested because few ask it.",
       "queue_position": 8,
       "source": "COMBINED_SCORE",
       "pinned": false,
@@ -882,11 +896,11 @@
       "gate": {
         "verdict": "passed",
         "failed": [],
-        "reason": "demand 0.556 clears the 0.16 floor and title gap 0.60 clears the 0.3 saturation ceiling."
+        "reason": "demand 0.564 clears the 0.16 floor and title gap 0.60 clears the 0.3 saturation ceiling."
       },
       "demand": {
-        "demand_index": 0.556,
-        "autocomplete_completions": 5,
+        "demand_index": 0.5635,
+        "autocomplete_completions": 6,
         "exact_in_autocomplete": false,
         "corpus_breadth": 2,
         "key_term": "live",
@@ -903,7 +917,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-05T15:36:27.285412+00:00"
+          "fetched_utc": "2026-09-17T23:33:12.895805+00:00"
         }
       },
       "competition": {
@@ -944,7 +958,7 @@
         "breakouts": 0,
         "status": "ok"
       },
-      "combined_score": 0.4969,
+      "combined_score": 0.5002,
       "trend_multiplier": 1.0,
       "trend_note": "Trends series not quotable; neutral",
       "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
@@ -963,24 +977,25 @@
       "gate": {
         "verdict": "passed",
         "failed": [],
-        "reason": "demand 0.419 clears the 0.16 floor and title gap 0.90 clears the 0.3 saturation ceiling."
+        "reason": "demand 0.427 clears the 0.16 floor and title gap 0.90 clears the 0.3 saturation ceiling."
       },
       "demand": {
-        "demand_index": 0.4194,
-        "autocomplete_completions": 1,
+        "demand_index": 0.4269,
+        "autocomplete_completions": 2,
         "exact_in_autocomplete": false,
         "corpus_breadth": 0,
         "key_term": "scariest",
         "key_term_completions": 10,
         "key_term_corpus_breadth": 0,
         "sample_completions": [
-          "the scariest deep sea creatures"
+          "the scariest deep sea creatures",
+          "the most scariest deep sea creatures"
         ],
         "caveat": "autocomplete presence, NOT search volume",
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-05T15:36:28.253108+00:00"
+          "fetched_utc": "2026-09-17T23:33:13.960853+00:00"
         }
       },
       "competition": {
@@ -1021,7 +1036,7 @@
         "breakouts": 0,
         "status": "ok"
       },
-      "combined_score": 0.4859,
+      "combined_score": 0.4902,
       "trend_multiplier": 1.0,
       "trend_note": "Trends series not quotable; neutral",
       "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
@@ -1057,7 +1072,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-05T15:36:37.760251+00:00"
+          "fetched_utc": "2026-09-17T23:33:24.430229+00:00"
         }
       },
       "competition": {
@@ -1132,7 +1147,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-05T15:36:36.798799+00:00"
+          "fetched_utc": "2026-09-17T23:33:23.370448+00:00"
         }
       },
       "competition": {
@@ -1192,11 +1207,11 @@
       "gate": {
         "verdict": "passed",
         "failed": [],
-        "reason": "demand 0.551 clears the 0.16 floor and title gap 0.45 clears the 0.3 saturation ceiling."
+        "reason": "demand 0.558 clears the 0.16 floor and title gap 0.45 clears the 0.3 saturation ceiling."
       },
       "demand": {
-        "demand_index": 0.5508,
-        "autocomplete_completions": 2,
+        "demand_index": 0.5583,
+        "autocomplete_completions": 3,
         "exact_in_autocomplete": false,
         "corpus_breadth": 4,
         "key_term": "scary",
@@ -1204,13 +1219,14 @@
         "key_term_corpus_breadth": 9,
         "sample_completions": [
           "why are deep sea creatures so scary",
-          "why deep sea creatures grow so terrifying huge"
+          "why deep sea creatures grow so terrifying huge",
+          "why deep sea creatures are scary"
         ],
         "caveat": "autocomplete presence, NOT search volume",
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-05T15:36:23.375748+00:00"
+          "fetched_utc": "2026-09-17T23:33:08.700273+00:00"
         }
       },
       "competition": {
@@ -1251,11 +1267,11 @@
         "breakouts": 0,
         "status": "ok"
       },
-      "combined_score": 0.4347,
+      "combined_score": 0.4376,
       "trend_multiplier": 1.0,
       "trend_note": "Trends series not quotable; neutral",
       "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
-      "reason": "Middle of the field: title gap 0.45, demand 0.55, opportunity 0.34.",
+      "reason": "Middle of the field: title gap 0.45, demand 0.56, opportunity 0.34.",
       "queue_position": 13,
       "source": "COMBINED_SCORE",
       "pinned": false,
@@ -1288,7 +1304,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-05T15:36:34.965206+00:00"
+          "fetched_utc": "2026-09-17T23:33:21.250046+00:00"
         }
       },
       "competition": {
@@ -1348,22 +1364,24 @@
       "gate": {
         "verdict": "passed",
         "failed": [],
-        "reason": "demand 0.262 clears the 0.16 floor and title gap 0.80 clears the 0.3 saturation ceiling."
+        "reason": "demand 0.269 clears the 0.16 floor and title gap 0.80 clears the 0.3 saturation ceiling."
       },
       "demand": {
-        "demand_index": 0.2615,
-        "autocomplete_completions": 0,
+        "demand_index": 0.269,
+        "autocomplete_completions": 1,
         "exact_in_autocomplete": false,
         "corpus_breadth": 0,
         "key_term": "work",
         "key_term_completions": 10,
         "key_term_corpus_breadth": 17,
-        "sample_completions": [],
+        "sample_completions": [
+          "how does bioluminescence work in the ocean"
+        ],
         "caveat": "autocomplete presence, NOT search volume",
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-05T15:36:32.111915+00:00"
+          "fetched_utc": "2026-09-17T23:33:18.129487+00:00"
         }
       },
       "competition": {
@@ -1404,11 +1422,11 @@
         "breakouts": 0,
         "status": "ok"
       },
-      "combined_score": 0.4004,
+      "combined_score": 0.4061,
       "trend_multiplier": 1.0,
       "trend_note": "Trends series not quotable; neutral",
       "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
-      "reason": "Middle of the field: title gap 0.80, demand 0.26, opportunity 0.61.",
+      "reason": "Middle of the field: title gap 0.80, demand 0.27, opportunity 0.61.",
       "queue_position": 15,
       "source": "COMBINED_SCORE",
       "pinned": false,
@@ -1441,7 +1459,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-05T15:36:21.432121+00:00"
+          "fetched_utc": "2026-09-17T23:33:06.604858+00:00"
         }
       },
       "competition": {
