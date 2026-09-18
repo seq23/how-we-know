@@ -1,8 +1,8 @@
 {
-  "state": "tripped",
-  "tripped_at": "2026-09-18T21:14:15+00:00",
-  "cause": "retention",
-  "detail": "every measured domain (deep-sea-ocean-science, materials-and-manufacturing) is below the duration floor for 3 consecutive videos. A problem in all of them at once is the format.",
+  "state": "closed",
+  "tripped_at": null,
+  "cause": null,
+  "detail": null,
   "history": [
     {
       "event": "trip",
@@ -93,6 +93,12 @@
       "at": "2026-09-18T21:14:15+00:00",
       "cause": "retention",
       "detail": "every measured domain (deep-sea-ocean-science, materials-and-manufacturing) is below the duration floor for 3 consecutive videos. A problem in all of them at once is the format."
+    },
+    {
+      "event": "reset",
+      "at": "2026-09-18T23:50:51+00:00",
+      "cleared_cause": "retention",
+      "note": "2026-09-18 trip was on 8 videos with 2-40 views each; no domain had the 8 measured episodes CHANNEL-PLAN.md requires to be judged. breaker_cause() now honours min_episodes_to_judge (loop/tests/test_breaker_honours_judgeability.py). Reset with the fix, not instead of it."
     }
   ]
 }
