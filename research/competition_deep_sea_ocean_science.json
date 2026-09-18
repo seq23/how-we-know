@@ -1,0 +1,2440 @@
+{
+  "measured_at": "2026-09-18T23:43:58.492996+00:00",
+  "generator": "research/competition.py",
+  "source": "YouTube Data API v3 (search.list, videos.list, channels.list)",
+  "key_source": "environment $YOUTUBE_API_KEY",
+  "key_handling": "The API key is never printed, logged, or written here.",
+  "quota_units_spent": 1224,
+  "quota_budget": 3000,
+  "allocation_plan": null,
+  "candidates_scored": 12,
+  "candidates_unmeasured": [],
+  "unmeasured_note": "Anything listed here has NO competition value. It is not scored as zero and must not be ranked as if it were measured.",
+  "domain_summary": {},
+  "results": [
+    {
+      "query": "what lives in the sea",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.225,
+        "max_coverage": 0.5,
+        "strong_match_count": 0,
+        "strong_match_rate": 0.0,
+        "loose_match_rate": 0.55,
+        "gap_signal": 1.0,
+        "interpretation": "nobody has made the definitive video on this query"
+      },
+      "view_profile": {
+        "median": 3305241.5,
+        "p90": 16970836,
+        "max": 32757306,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 1435000.0,
+        "max_subscribers": 26400000,
+        "under_100k_subs": 4,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 737,
+        "published_last_365d": 2,
+        "n": 20
+      },
+      "opportunity_score": 0.669,
+      "opportunity_components": {
+        "title_gap": 1.0,
+        "incumbent_subs": 0.12,
+        "view_ceiling": 0.069,
+        "staleness": 0.9
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-18T23:43:47.028861+00:00"
+      },
+      "top_results": [
+        {
+          "title": "Ocean Animals for Kids | Learn all about the Animals and Plants that Live in the Ocean",
+          "views": 5332516,
+          "subs": 990000,
+          "published_at": "2020-10-06T19:10:26Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Dive Into the Mesmerizing Underwater Realm\ud83d\udc33Marvel at Sea Animal in The Best 4K ULTRA HD Aquarium #55",
+          "views": 791310,
+          "subs": 37400,
+          "published_at": "2025-05-08T03:45:01Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "THE DEEP OCEAN | 4K TV ULTRA HD / Full Documentary - Beautiful Coral Reef Fish Video - Stress Relief",
+          "views": 1658841,
+          "subs": 50200,
+          "published_at": "2024-10-15T10:31:51Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "What Animals Live in the Ocean? | All About Sea Creatures for Kids",
+          "views": 331470,
+          "subs": 126000,
+          "published_at": "2024-05-28T06:00:07Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Travel to the Depths of Our Mysterious Oceans | 4K UHD | Blue Planet II | BBC Earth",
+          "views": 30674450,
+          "subs": 14600000,
+          "published_at": "2023-09-06T13:00:12Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "New Life Under the Sea (Full Episode) | Incredible Animal Journeys | Nat Geo Animals",
+          "views": 380985,
+          "subs": 6500000,
+          "published_at": "2026-01-28T12:00:49Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Animals In The Ocean Lyric Video - The Kiboomers Preschool Songs &amp; Nursery Rhymes About the Ocean",
+          "views": 4376415,
+          "subs": 4000000,
+          "published_at": "2016-03-18T16:30:00Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "The Strangest Creatures of the Ocean | BBC Earth",
+          "views": 6511980,
+          "subs": 14600000,
+          "published_at": "2025-02-22T14:00:55Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Sea animals",
+          "views": 3757859,
+          "subs": 20100,
+          "published_at": "2022-08-09T12:09:39Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "These Deep Sea Creatures Are Rarely Seen",
+          "views": 2226481,
+          "subs": 2930000,
+          "published_at": "2024-04-30T19:49:50Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "\ud83d\udd34 LIVE: Exploring Underwater Worlds | BBC Earth",
+          "views": 640236,
+          "subs": 14600000,
+          "published_at": "2025-07-04T14:23:37Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Oceans Odysseys: Incredible Animal Journeys (Full Episode) | National Geographic",
+          "views": 2525717,
+          "subs": 26400000,
+          "published_at": "2023-12-28T16:00:24Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Into the Abyss: Creatures of the Midwater (Full Movie)",
+          "views": 11220732,
+          "subs": 1070000,
+          "published_at": "2024-12-06T12:05:24Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "The Mysteries of Earth&#39;s Largest Ocean | Big Pacific | Full Episode 1 | PBS",
+          "views": 2852624,
+          "subs": 1800000,
+          "published_at": "2024-08-09T22:00:31Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Why Deep Sea Creatures Get Creepier the Deeper You Go",
+          "views": 16970836,
+          "subs": 240000,
+          "published_at": "2025-11-02T15:27:57Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "We&#39;ve Barely Seen the Deep Sea \u2620\ufe0f",
+          "views": 5161784,
+          "subs": 965000,
+          "published_at": "2025-01-09T16:12:56Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "15 Massive Sea Creatures Caught on Camera",
+          "views": 1229559,
+          "subs": 546000,
+          "published_at": "2025-07-25T18:31:03Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "WILD DEPTHS | Ocean\u2019s Strangest Crimes",
+          "views": 359339,
+          "subs": 12100,
+          "published_at": "2025-07-25T11:00:54Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Underwater Killers (Full Episode) | World&#39;s Deadliest",
+          "views": 16051886,
+          "subs": 6500000,
+          "published_at": "2022-07-31T12:00:21Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Sea Animals [Kids Vocab] Under the Sea \ud83d\udc2c Shark, Whale &amp; Sea Creatures",
+          "views": 32757306,
+          "subs": 5650000,
+          "published_at": "2019-03-12T00:25:04Z",
+          "coverage": 0.5
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "what the deepest part of the ocean looks like",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.23,
+        "max_coverage": 0.6,
+        "strong_match_count": 0,
+        "strong_match_rate": 0.0,
+        "loose_match_rate": 0.85,
+        "gap_signal": 1.0,
+        "interpretation": "nobody has made the definitive video on this query"
+      },
+      "view_profile": {
+        "median": 9812787.0,
+        "p90": 47472916,
+        "max": 81920497,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 1520000.0,
+        "max_subscribers": 44500000,
+        "under_100k_subs": 2,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 1114,
+        "published_last_365d": 1,
+        "n": 20
+      },
+      "opportunity_score": 0.666,
+      "opportunity_components": {
+        "title_gap": 1.0,
+        "incumbent_subs": 0.117,
+        "view_ceiling": 0.001,
+        "staleness": 0.95
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-18T23:43:56.354518+00:00"
+      },
+      "top_results": [
+        {
+          "title": "What They Found In the Deepest Place on Earth",
+          "views": 13022903,
+          "subs": 472000,
+          "published_at": "2025-08-18T16:00:34Z",
+          "coverage": 0.2
+        },
+        {
+          "title": "This Incredible Animation Shows How Deep The Ocean Really Is",
+          "views": 81920497,
+          "subs": 4220000,
+          "published_at": "2017-04-04T00:00:01Z",
+          "coverage": 0.2
+        },
+        {
+          "title": "Fascinating 3D Journey to the Ocean Depths",
+          "views": 12623052,
+          "subs": 44500000,
+          "published_at": "2020-11-02T11:00:00Z",
+          "coverage": 0.2
+        },
+        {
+          "title": "How Deep The Ocean REALLY Is",
+          "views": 33924162,
+          "subs": 8720000,
+          "published_at": "2023-10-04T13:16:35Z",
+          "coverage": 0.2
+        },
+        {
+          "title": "Just How Deep Is The Ocean? \ud83c\udf0a\ud83e\udd14",
+          "views": 47472916,
+          "subs": 28500000,
+          "published_at": "2024-05-13T14:30:19Z",
+          "coverage": 0.2
+        },
+        {
+          "title": "Real Footage of the Mysterious Mariana Trench",
+          "views": 2971967,
+          "subs": 139000,
+          "published_at": "2025-05-03T22:01:01Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "What Exists in the Deepest Place on Earth?",
+          "views": 2347696,
+          "subs": 215000,
+          "published_at": "2026-04-05T15:30:00Z",
+          "coverage": 0.2
+        },
+        {
+          "title": "Ocean DEPTH Comparison \ud83c\udf0a (3D Animation)",
+          "views": 14673269,
+          "subs": 1970000,
+          "published_at": "2021-10-02T11:57:44Z",
+          "coverage": 0.2
+        },
+        {
+          "title": "The Ocean is Way Deeper Than You Think",
+          "views": 50465524,
+          "subs": 7940000,
+          "published_at": "2016-11-11T14:13:55Z",
+          "coverage": 0.2
+        },
+        {
+          "title": "The Deepest Place on Earth | Extreme Wonder",
+          "views": 2390700,
+          "subs": 15200,
+          "published_at": "2023-06-08T10:22:47Z",
+          "coverage": 0.2
+        },
+        {
+          "title": "How Deep Does The Ocean Go?",
+          "views": 16929354,
+          "subs": 202000,
+          "published_at": "2024-01-11T21:49:04Z",
+          "coverage": 0.2
+        },
+        {
+          "title": "How deep is the ocean",
+          "views": 9625760,
+          "subs": 2070000,
+          "published_at": "2024-06-01T14:00:47Z",
+          "coverage": 0.2
+        },
+        {
+          "title": "THE MOST HORRIFYING PLACES IN THE OCEAN 11,034 m BELOW SEA LEVEL",
+          "views": 8679426,
+          "subs": 796000,
+          "published_at": "2022-06-19T16:29:35Z",
+          "coverage": 0.2
+        },
+        {
+          "title": "World DEEPEST Place Ever!\ud83c\udf0a\ud83d\ude31",
+          "views": 957855,
+          "subs": 2540000,
+          "published_at": "2025-02-11T11:30:30Z",
+          "coverage": 0.2
+        },
+        {
+          "title": "How DEEP is Titanic?",
+          "views": 9999814,
+          "subs": 101000,
+          "published_at": "2023-06-21T12:01:55Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Deep-Sea Discoveries: Exploring the Five Deepest Parts of the Ocean! \ud83c\udf0a\ud83d\ude80",
+          "views": 306289,
+          "subs": 5660,
+          "published_at": "2023-07-28T21:41:09Z",
+          "coverage": 0.6
+        },
+        {
+          "title": "What You&#39;d Feel in the Deepest Ocean Bottom",
+          "views": 746327,
+          "subs": 44500000,
+          "published_at": "2020-11-14T17:00:08Z",
+          "coverage": 0.4
+        },
+        {
+          "title": "What\u2019s in the Deepest Part of the Ocean? | COLOSSAL MYSTERIES",
+          "views": 991134,
+          "subs": 946000,
+          "published_at": "2020-05-03T17:00:09Z",
+          "coverage": 0.6
+        },
+        {
+          "title": "Could You Survive Extreme Ocean Pressure? \ud83d\ude35",
+          "views": 14563203,
+          "subs": 28500000,
+          "published_at": "2025-02-23T13:30:24Z",
+          "coverage": 0.2
+        },
+        {
+          "title": "Into the Midnight Zone: Secrets of the Ocean Void",
+          "views": 6708680,
+          "subs": 1070000,
+          "published_at": "2024-07-05T11:00:53Z",
+          "coverage": 0.2
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "how deep mariana trench",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.45,
+        "max_coverage": 0.667,
+        "strong_match_count": 0,
+        "strong_match_rate": 0.0,
+        "loose_match_rate": 0.4,
+        "gap_signal": 1.0,
+        "interpretation": "nobody has made the definitive video on this query"
+      },
+      "view_profile": {
+        "median": 3025389.0,
+        "p90": 38466694,
+        "max": 81920497,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 3030000.0,
+        "max_subscribers": 44500000,
+        "under_100k_subs": 5,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 891,
+        "published_last_365d": 4,
+        "n": 20
+      },
+      "opportunity_score": 0.646,
+      "opportunity_components": {
+        "title_gap": 1.0,
+        "incumbent_subs": 0.074,
+        "view_ceiling": 0.074,
+        "staleness": 0.8
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-18T23:43:57.432318+00:00"
+      },
+      "top_results": [
+        {
+          "title": "Inside the Marianas Trench: Earth&#39;s Deepest Point | How the Earth Was Made (S1, E2) | Full Episode",
+          "views": 3078811,
+          "subs": 15500000,
+          "published_at": "2024-07-02T00:00:18Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "This Incredible Animation Shows How Deep The Ocean Really Is",
+          "views": 81920497,
+          "subs": 4220000,
+          "published_at": "2017-04-04T00:00:01Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Mariana Trench: What James Cameron&#39;s Cameras Caught That He Didn&#39;t",
+          "views": 26876,
+          "subs": 29500,
+          "published_at": "2026-09-18T17:00:35Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "What They Found In the Deepest Place on Earth",
+          "views": 13022903,
+          "subs": 472000,
+          "published_at": "2025-08-18T16:00:34Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Mariana Trench: Record-breaking journey to the bottom of the ocean - BBC News",
+          "views": 12229413,
+          "subs": 20100000,
+          "published_at": "2019-05-14T14:50:10Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "The Deepest Place on Earth | Extreme Wonder",
+          "views": 2390700,
+          "subs": 15200,
+          "published_at": "2023-06-08T10:22:47Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Mariana Trench: What Victor Vescovo Found in 15 Dives",
+          "views": 1560336,
+          "subs": 29500,
+          "published_at": "2026-08-11T17:00:12Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "The Deepest Dive Humanly Possible: A Trip to the Mariana Trench | How the Earth Was Made (S1)",
+          "views": 2645123,
+          "subs": 15500000,
+          "published_at": "2025-04-23T16:01:35Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "What Exists in the Deepest Place on Earth?",
+          "views": 2347696,
+          "subs": 215000,
+          "published_at": "2026-04-05T15:30:00Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Ocean DEPTH Comparison \ud83c\udf0a (3D Animation)",
+          "views": 14673269,
+          "subs": 1970000,
+          "published_at": "2021-10-02T11:57:44Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "What is Inside Mariana Trench?",
+          "views": 555712,
+          "subs": 283000,
+          "published_at": "2023-04-23T00:58:23Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "What Would a Trip to the Mariana Trench Be Like?",
+          "views": 38466694,
+          "subs": 44500000,
+          "published_at": "2019-09-07T03:00:03Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Just How Deep Is The Ocean? \ud83c\udf0a\ud83e\udd14",
+          "views": 47472916,
+          "subs": 28500000,
+          "published_at": "2024-05-13T14:30:19Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Record-breaking Mariana Trench dive | What the Future",
+          "views": 913590,
+          "subs": 4090000,
+          "published_at": "2019-05-17T19:00:02Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Into the Depths of Our Oceans | How the Earth Was Made | Marathon | History",
+          "views": 1579789,
+          "subs": 15500000,
+          "published_at": "2025-01-20T22:59:52Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Mariana Trench: What They Found In The Deepest Place On Earth",
+          "views": 4007538,
+          "subs": 29500,
+          "published_at": "2026-03-03T20:36:00Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Real Footage of the Mysterious Mariana Trench",
+          "views": 2971967,
+          "subs": 139000,
+          "published_at": "2025-05-03T22:01:01Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How Deep The Ocean REALLY Is",
+          "views": 33924162,
+          "subs": 8720000,
+          "published_at": "2023-10-04T13:16:35Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Exploring the Marianas Trench: Earth&#39;s Deepest Point Revealed",
+          "views": 51534,
+          "subs": 31,
+          "published_at": "2024-03-09T15:56:02Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Long Way Down: Mariana Trench | National Geographic",
+          "views": 4797184,
+          "subs": 26400000,
+          "published_at": "2012-03-08T16:49:50Z",
+          "coverage": 0.667
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "what lives in the depths of the ocean",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.217,
+        "max_coverage": 0.667,
+        "strong_match_count": 0,
+        "strong_match_rate": 0.0,
+        "loose_match_rate": 0.85,
+        "gap_signal": 1.0,
+        "interpretation": "nobody has made the definitive video on this query"
+      },
+      "view_profile": {
+        "median": 9950079.0,
+        "p90": 33924162,
+        "max": 81920497,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 1520000.0,
+        "max_subscribers": 44500000,
+        "under_100k_subs": 0,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 761,
+        "published_last_365d": 4,
+        "n": 20
+      },
+      "opportunity_score": 0.643,
+      "opportunity_components": {
+        "title_gap": 1.0,
+        "incumbent_subs": 0.117,
+        "view_ceiling": 0.0,
+        "staleness": 0.8
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-18T23:43:50.583905+00:00"
+      },
+      "top_results": [
+        {
+          "title": "This Incredible Animation Shows How Deep The Ocean Really Is",
+          "views": 81920497,
+          "subs": 4220000,
+          "published_at": "2017-04-04T00:00:01Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Deep Sea Animals and Where They Thrives",
+          "views": 747820,
+          "subs": 149000,
+          "published_at": "2026-01-31T02:53:36Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Why Deep Sea Creatures Get Creepier the Deeper You Go",
+          "views": 16970836,
+          "subs": 240000,
+          "published_at": "2025-11-02T15:27:57Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Fascinating 3D Journey to the Ocean Depths",
+          "views": 12623052,
+          "subs": 44500000,
+          "published_at": "2020-11-02T11:00:00Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "What They Found In the Deepest Place on Earth",
+          "views": 13022903,
+          "subs": 472000,
+          "published_at": "2025-08-18T16:00:34Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "The Strangest Creatures of the Ocean | BBC Earth",
+          "views": 6511980,
+          "subs": 14600000,
+          "published_at": "2025-02-22T14:00:55Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "The Ocean is Way Deeper Than You Think",
+          "views": 50465524,
+          "subs": 7940000,
+          "published_at": "2016-11-11T14:13:55Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "15 Massive Sea Creatures Caught on Camera",
+          "views": 1229559,
+          "subs": 546000,
+          "published_at": "2025-07-25T18:31:03Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Into the Abyss: Creatures of the Midwater (Full Movie)",
+          "views": 11220732,
+          "subs": 1070000,
+          "published_at": "2024-12-06T12:05:24Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "We&#39;ve Barely Seen the Deep Sea \u2620\ufe0f",
+          "views": 5161784,
+          "subs": 965000,
+          "published_at": "2025-01-09T16:12:56Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Travel to the Depths of Our Mysterious Oceans | 4K UHD | Blue Planet II | BBC Earth",
+          "views": 30674450,
+          "subs": 14600000,
+          "published_at": "2023-09-06T13:00:12Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "What Exists in the Deepest Place on Earth?",
+          "views": 2347696,
+          "subs": 215000,
+          "published_at": "2026-04-05T15:30:00Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "These Deep Sea Creatures Are Rarely Seen",
+          "views": 2226481,
+          "subs": 2930000,
+          "published_at": "2024-04-30T19:49:50Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How Deep The Ocean REALLY Is",
+          "views": 33924162,
+          "subs": 8720000,
+          "published_at": "2023-10-04T13:16:35Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Deep Sea Monsters and Where They Might Live",
+          "views": 2830704,
+          "subs": 124000,
+          "published_at": "2025-09-03T14:10:07Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "The Most Disturbing Creatures in Each Ocean Layer",
+          "views": 1684899,
+          "subs": 1990000,
+          "published_at": "2026-07-06T16:00:39Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Ocean DEPTH Comparison \ud83c\udf0a (3D Animation)",
+          "views": 14673269,
+          "subs": 1970000,
+          "published_at": "2021-10-02T11:57:44Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "What\u2019s Hiding at the Most Solitary Place on Earth? The Deep Sea",
+          "views": 25693272,
+          "subs": 25600000,
+          "published_at": "2019-09-15T12:30:01Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "THE MOST HORRIFYING PLACES IN THE OCEAN 11,034 m BELOW SEA LEVEL",
+          "views": 8679426,
+          "subs": 796000,
+          "published_at": "2022-06-19T16:29:35Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "What\u2019s in the Deepest Part of the Ocean? | COLOSSAL MYSTERIES",
+          "views": 991145,
+          "subs": 946000,
+          "published_at": "2020-05-03T17:00:09Z",
+          "coverage": 0.333
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "what lives in the deep",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.4,
+        "max_coverage": 1.0,
+        "strong_match_count": 1,
+        "strong_match_rate": 0.05,
+        "loose_match_rate": 0.25,
+        "gap_signal": 0.95,
+        "interpretation": "1 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 5094150.5,
+        "p90": 16970836,
+        "max": 30674450,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 629000.0,
+        "max_subscribers": 25600000,
+        "under_100k_subs": 0,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 553,
+        "published_last_365d": 3,
+        "n": 20
+      },
+      "opportunity_score": 0.643,
+      "opportunity_components": {
+        "title_gap": 0.95,
+        "incumbent_subs": 0.172,
+        "view_ceiling": 0.042,
+        "staleness": 0.85
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-18T23:43:51.766871+00:00"
+      },
+      "top_results": [
+        {
+          "title": "What Lives in the Deep? | SCARY STORY | SPINE CHILLING STORIES",
+          "views": 2790184,
+          "subs": 10600000,
+          "published_at": "2021-10-20T16:59:49Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "The Strangest Creatures of the Ocean | BBC Earth",
+          "views": 6511980,
+          "subs": 14600000,
+          "published_at": "2025-02-22T14:00:55Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Into the Abyss: Creatures of the Midwater (Full Movie)",
+          "views": 11220732,
+          "subs": 1070000,
+          "published_at": "2024-12-06T12:05:24Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Why Deep Sea Creatures Get Creepier the Deeper You Go",
+          "views": 16970836,
+          "subs": 240000,
+          "published_at": "2025-11-02T15:27:57Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "These Deep Sea Creatures Are Rarely Seen",
+          "views": 2226481,
+          "subs": 2930000,
+          "published_at": "2024-04-30T19:49:50Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "We&#39;ve Barely Seen the Deep Sea \u2620\ufe0f",
+          "views": 5161784,
+          "subs": 965000,
+          "published_at": "2025-01-09T16:12:56Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Weirdest Deep-Sea Creatures",
+          "views": 5026517,
+          "subs": 175000,
+          "published_at": "2023-12-18T16:32:57Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Deep Sea Monsters and Where They Might Live",
+          "views": 2830704,
+          "subs": 124000,
+          "published_at": "2025-09-03T14:10:07Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "15 Massive Sea Creatures Caught on Camera",
+          "views": 1229559,
+          "subs": 546000,
+          "published_at": "2025-07-25T18:31:03Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Top 5 Unexplained Deep Sea Creatures That Science Can\u2019t Explain",
+          "views": 1405578,
+          "subs": 474000,
+          "published_at": "2025-08-17T16:00:24Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "DEEP OCEAN: Life in the Cold Abyss | Secrets of the Seas Ep. 1 | 4K UHD | OCEAN DOCUMENTARY",
+          "views": 517034,
+          "subs": 140000,
+          "published_at": "2025-04-03T13:01:26Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Deep sea creatures are found | Ocean Sunfish Vs Sea Eater",
+          "views": 8271017,
+          "subs": 712000,
+          "published_at": "2025-05-05T04:53:40Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "What They Found In the Deepest Place on Earth",
+          "views": 13022903,
+          "subs": 472000,
+          "published_at": "2025-08-18T16:00:34Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "DEEP OCEAN | The Journey to the Mysterious Creatures of the Abyss | Nature Animal Documentary",
+          "views": 394577,
+          "subs": 102000,
+          "published_at": "2026-05-22T13:13:22Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Scary Deep Sea Diving Story",
+          "views": 1820234,
+          "subs": 209000,
+          "published_at": "2025-04-14T04:00:20Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "The Unspeakable Horrors of the Deep Sea (ft. LindsayNikole)",
+          "views": 10419308,
+          "subs": 4310000,
+          "published_at": "2023-04-28T19:00:15Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Deep Sea Creatures You Won&#39;t Believe Exist... \ud83d\ude28",
+          "views": 5330900,
+          "subs": 3540000,
+          "published_at": "2023-06-07T19:00:08Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "What\u2019s Hiding at the Most Solitary Place on Earth? The Deep Sea",
+          "views": 25693272,
+          "subs": 25600000,
+          "published_at": "2019-09-15T12:30:01Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Deep Sea Animals and Where They Thrives",
+          "views": 747820,
+          "subs": 149000,
+          "published_at": "2026-01-31T02:53:36Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Travel to the Depths of Our Mysterious Oceans | 4K UHD | Blue Planet II | BBC Earth",
+          "views": 30674450,
+          "subs": 14600000,
+          "published_at": "2023-09-06T13:00:12Z",
+          "coverage": 0.0
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "what is the deepest part of the ocean called",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.325,
+        "max_coverage": 0.75,
+        "strong_match_count": 3,
+        "strong_match_rate": 0.15,
+        "loose_match_rate": 0.75,
+        "gap_signal": 0.85,
+        "interpretation": "3 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 6810072.5,
+        "p90": 46817622,
+        "max": 50465524,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 2070000.0,
+        "max_subscribers": 44500000,
+        "under_100k_subs": 4,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 1236,
+        "published_last_365d": 0,
+        "n": 20
+      },
+      "opportunity_score": 0.598,
+      "opportunity_components": {
+        "title_gap": 0.85,
+        "incumbent_subs": 0.098,
+        "view_ceiling": 0.024,
+        "staleness": 1.0
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-18T23:43:54.075690+00:00"
+      },
+      "top_results": [
+        {
+          "title": "Marianas Trench: The Deepest Part Of The Ocean",
+          "views": 58511,
+          "subs": 2150000,
+          "published_at": "2022-05-22T05:00:00Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "The Deepest Place on Earth | Extreme Wonder",
+          "views": 2390700,
+          "subs": 15200,
+          "published_at": "2023-06-08T10:22:47Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "How Deep Does The Ocean Go?",
+          "views": 16929354,
+          "subs": 202000,
+          "published_at": "2024-01-11T21:49:04Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Fascinating 3D Journey to the Ocean Depths",
+          "views": 12623052,
+          "subs": 44500000,
+          "published_at": "2020-11-02T11:00:00Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Just How Deep Is The Ocean? \ud83c\udf0a\ud83e\udd14",
+          "views": 47472916,
+          "subs": 28500000,
+          "published_at": "2024-05-13T14:30:19Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Ocean DEPTH Comparison \ud83c\udf0a (3D Animation)",
+          "views": 14673269,
+          "subs": 1970000,
+          "published_at": "2021-10-02T11:57:44Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Deep-Sea Discoveries: Exploring the Five Deepest Parts of the Ocean! \ud83c\udf0a\ud83d\ude80",
+          "views": 306289,
+          "subs": 5660,
+          "published_at": "2023-07-28T21:41:09Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "World DEEPEST Place Ever!\ud83c\udf0a\ud83d\ude31",
+          "views": 957855,
+          "subs": 2540000,
+          "published_at": "2025-02-11T11:30:30Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Mariana Trench mystery",
+          "views": 6860252,
+          "subs": 2070000,
+          "published_at": "2023-05-27T12:00:00Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How deep is the ocean",
+          "views": 9625760,
+          "subs": 2070000,
+          "published_at": "2024-06-01T14:00:47Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "The Deepest Part of the Ocean!",
+          "views": 811710,
+          "subs": 1700000,
+          "published_at": "2017-12-07T22:00:00Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "The Ocean is Way Deeper Than You Think",
+          "views": 50465524,
+          "subs": 7940000,
+          "published_at": "2016-11-11T14:13:55Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "What is Inside Mariana Trench?",
+          "views": 555712,
+          "subs": 283000,
+          "published_at": "2023-04-23T00:58:23Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How Deep Is The Ocean? | OCEAN DEPTH | Dr Binocs Show | Peekaboo Kidz",
+          "views": 6759893,
+          "subs": 7800000,
+          "published_at": "2021-04-06T12:30:52Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "The 5 Ocean Layers",
+          "views": 126131,
+          "subs": 33800,
+          "published_at": "2022-05-02T14:41:51Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "What Would Happen To Your Body In The Deep Ocean?",
+          "views": 3000979,
+          "subs": 8720000,
+          "published_at": "2025-05-26T17:47:57Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Mariana Trench: Record-breaking journey to the bottom of the ocean - BBC News",
+          "views": 12229413,
+          "subs": 20100000,
+          "published_at": "2019-05-14T14:50:10Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Which is the deepest Ocean in the world......... #brightIq #GK",
+          "views": 36816,
+          "subs": 7800,
+          "published_at": "2022-04-28T08:45:00Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Pacific Ocean Is Much Bigger Than You Think \ud83c\udf0a The Deepest Place on Earth \u2b07\ufe0f Mariana Trench",
+          "views": 10585309,
+          "subs": 2000000,
+          "published_at": "2025-02-08T16:14:54Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Ocean mysteries",
+          "views": 46817622,
+          "subs": 2070000,
+          "published_at": "2023-05-11T12:00:17Z",
+          "coverage": 0.25
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "what lives in the deepest part of the ocean",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.225,
+        "max_coverage": 0.75,
+        "strong_match_count": 3,
+        "strong_match_rate": 0.15,
+        "loose_match_rate": 0.85,
+        "gap_signal": 0.85,
+        "interpretation": "3 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 4120297.5,
+        "p90": 16970836,
+        "max": 50465524,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 1017500.0,
+        "max_subscribers": 44500000,
+        "under_100k_subs": 0,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 634,
+        "published_last_365d": 3,
+        "n": 20
+      },
+      "opportunity_score": 0.589,
+      "opportunity_components": {
+        "title_gap": 0.85,
+        "incumbent_subs": 0.142,
+        "view_ceiling": 0.055,
+        "staleness": 0.85
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-18T23:43:52.884593+00:00"
+      },
+      "top_results": [
+        {
+          "title": "What They Found In the Deepest Place on Earth",
+          "views": 13022903,
+          "subs": 472000,
+          "published_at": "2025-08-18T16:00:34Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "The Strangest Creatures of the Ocean | BBC Earth",
+          "views": 6511980,
+          "subs": 14600000,
+          "published_at": "2025-02-22T14:00:55Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Why Deep Sea Creatures Get Creepier the Deeper You Go",
+          "views": 16970836,
+          "subs": 240000,
+          "published_at": "2025-11-02T15:27:57Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Into the Abyss: Creatures of the Midwater (Full Movie)",
+          "views": 11220732,
+          "subs": 1070000,
+          "published_at": "2024-12-06T12:05:24Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "What Exists in the Deepest Place on Earth?",
+          "views": 2347696,
+          "subs": 215000,
+          "published_at": "2026-04-05T15:30:00Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Fascinating 3D Journey to the Ocean Depths",
+          "views": 12623052,
+          "subs": 44500000,
+          "published_at": "2020-11-02T11:00:00Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "15 Massive Sea Creatures Caught on Camera",
+          "views": 1229559,
+          "subs": 546000,
+          "published_at": "2025-07-25T18:31:03Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Inside the Marianas Trench: Earth&#39;s Deepest Point | How the Earth Was Made (S1, E2) | Full Episode",
+          "views": 3078811,
+          "subs": 15500000,
+          "published_at": "2024-07-02T00:00:18Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "We&#39;ve Barely Seen the Deep Sea \u2620\ufe0f",
+          "views": 5161784,
+          "subs": 965000,
+          "published_at": "2025-01-09T16:12:56Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Deep Sea Monsters and Where They Might Live",
+          "views": 2830704,
+          "subs": 124000,
+          "published_at": "2025-09-03T14:10:07Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "What\u2019s in the Deepest Part of the Ocean? | COLOSSAL MYSTERIES",
+          "views": 991134,
+          "subs": 946000,
+          "published_at": "2020-05-03T17:00:09Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "These Deep Sea Creatures Are Rarely Seen",
+          "views": 2226481,
+          "subs": 2930000,
+          "published_at": "2024-04-30T19:49:50Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "The Deepest Part of the Ocean!",
+          "views": 811710,
+          "subs": 1700000,
+          "published_at": "2017-12-07T22:00:00Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "The Most Disturbing Creatures in Each Ocean Layer",
+          "views": 1684899,
+          "subs": 1990000,
+          "published_at": "2026-07-06T16:00:39Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "The Giants Found In The Deepest Parts Of Our Oceans",
+          "views": 1266708,
+          "subs": 244000,
+          "published_at": "2025-05-18T19:00:16Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "What\u2019s Hiding at the Most Solitary Place on Earth? The Deep Sea",
+          "views": 25693272,
+          "subs": 25600000,
+          "published_at": "2019-09-15T12:30:01Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "15 MOST DANGEROUS Ocean Creatures In The World",
+          "views": 8107218,
+          "subs": 3160000,
+          "published_at": "2020-07-19T16:00:12Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "The Ocean is Way Deeper Than You Think",
+          "views": 50465524,
+          "subs": 7940000,
+          "published_at": "2016-11-11T14:13:55Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Real Footage of the Mysterious Mariana Trench",
+          "views": 2971967,
+          "subs": 139000,
+          "published_at": "2025-05-03T22:01:01Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "THE MOST HORRIFYING PLACES IN THE OCEAN 11,034 m BELOW SEA LEVEL",
+          "views": 8679426,
+          "subs": 796000,
+          "published_at": "2022-06-19T16:29:35Z",
+          "coverage": 0.25
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "what's at the deepest part of the ocean",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.263,
+        "max_coverage": 0.75,
+        "strong_match_count": 3,
+        "strong_match_rate": 0.15,
+        "loose_match_rate": 0.85,
+        "gap_signal": 0.85,
+        "interpretation": "3 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 4584661.0,
+        "p90": 47472916,
+        "max": 81920497,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 1332500.0,
+        "max_subscribers": 44500000,
+        "under_100k_subs": 3,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 1205,
+        "published_last_365d": 3,
+        "n": 20
+      },
+      "opportunity_score": 0.585,
+      "opportunity_components": {
+        "title_gap": 0.85,
+        "incumbent_subs": 0.125,
+        "view_ceiling": 0.048,
+        "staleness": 0.85
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-18T23:43:58.492704+00:00"
+      },
+      "top_results": [
+        {
+          "title": "What They Found In the Deepest Place on Earth",
+          "views": 13022903,
+          "subs": 472000,
+          "published_at": "2025-08-18T16:00:34Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Inside the Marianas Trench: Earth&#39;s Deepest Point | How the Earth Was Made (S1, E2) | Full Episode",
+          "views": 3078811,
+          "subs": 15500000,
+          "published_at": "2024-07-02T00:00:18Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "This Incredible Animation Shows How Deep The Ocean Really Is",
+          "views": 81920497,
+          "subs": 4220000,
+          "published_at": "2017-04-04T00:00:01Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "What Exists in the Deepest Place on Earth?",
+          "views": 2347696,
+          "subs": 215000,
+          "published_at": "2026-04-05T15:30:00Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Marianas Trench: The Deepest Part Of The Ocean",
+          "views": 58511,
+          "subs": 2150000,
+          "published_at": "2022-05-22T05:00:00Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Fascinating 3D Journey to the Ocean Depths",
+          "views": 12623052,
+          "subs": 44500000,
+          "published_at": "2020-11-02T11:00:00Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "What\u2019s in the Deepest Part of the Ocean? | COLOSSAL MYSTERIES",
+          "views": 991134,
+          "subs": 946000,
+          "published_at": "2020-05-03T17:00:09Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "The Deepest Place on Earth | Extreme Wonder",
+          "views": 2390700,
+          "subs": 15200,
+          "published_at": "2023-06-08T10:22:47Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "How Deep The Ocean REALLY Is",
+          "views": 33924162,
+          "subs": 8720000,
+          "published_at": "2023-10-04T13:16:35Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Mariana Trench: What They Found In The Deepest Place On Earth",
+          "views": 4007538,
+          "subs": 29500,
+          "published_at": "2026-03-03T20:36:00Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "We&#39;ve Barely Seen the Deep Sea \u2620\ufe0f",
+          "views": 5161784,
+          "subs": 965000,
+          "published_at": "2025-01-09T16:12:56Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Real Footage of the Mysterious Mariana Trench",
+          "views": 2971967,
+          "subs": 139000,
+          "published_at": "2025-05-03T22:01:01Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Just How Deep Is The Ocean? \ud83c\udf0a\ud83e\udd14",
+          "views": 47472916,
+          "subs": 28500000,
+          "published_at": "2024-05-13T14:30:19Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "What is Inside Mariana Trench?",
+          "views": 555712,
+          "subs": 283000,
+          "published_at": "2023-04-23T00:58:23Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "The Deepest Part of the Ocean!",
+          "views": 811710,
+          "subs": 1700000,
+          "published_at": "2017-12-07T22:00:00Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Journey to the Deepest Place on Earth",
+          "views": 2704750,
+          "subs": 20500,
+          "published_at": "2026-03-21T14:01:23Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "THE MOST HORRIFYING PLACES IN THE OCEAN 11,034 m BELOW SEA LEVEL",
+          "views": 8679426,
+          "subs": 796000,
+          "published_at": "2022-06-19T16:29:35Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "The Ocean is Way Deeper Than You Think",
+          "views": 50465524,
+          "subs": 7940000,
+          "published_at": "2016-11-11T14:13:55Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Mariana Trench mystery",
+          "views": 6860261,
+          "subs": 2070000,
+          "published_at": "2023-05-27T12:00:00Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "What\u2019s Hiding at the Most Solitary Place on Earth? The Deep Sea",
+          "views": 25693272,
+          "subs": 25600000,
+          "published_at": "2019-09-15T12:30:01Z",
+          "coverage": 0.0
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "what lies in the deepest part of the ocean",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.312,
+        "max_coverage": 1.0,
+        "strong_match_count": 4,
+        "strong_match_rate": 0.2,
+        "loose_match_rate": 0.75,
+        "gap_signal": 0.8,
+        "interpretation": "4 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 2369198.0,
+        "p90": 13022903,
+        "max": 33924162,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 261500.0,
+        "max_subscribers": 44500000,
+        "under_100k_subs": 7,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 812,
+        "published_last_365d": 5,
+        "n": 20
+      },
+      "opportunity_score": 0.571,
+      "opportunity_components": {
+        "title_gap": 0.8,
+        "incumbent_subs": 0.226,
+        "view_ceiling": 0.089,
+        "staleness": 0.75
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-18T23:43:55.234266+00:00"
+      },
+      "top_results": [
+        {
+          "title": "What They Found In the Deepest Place on Earth",
+          "views": 13022903,
+          "subs": 472000,
+          "published_at": "2025-08-18T16:00:34Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "What Exists in the Deepest Place on Earth?",
+          "views": 2347696,
+          "subs": 215000,
+          "published_at": "2026-04-05T15:30:00Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "How Deep The Ocean REALLY Is",
+          "views": 33924162,
+          "subs": 8720000,
+          "published_at": "2023-10-04T13:16:35Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Why Deep Sea Creatures Get Creepier the Deeper You Go",
+          "views": 16970836,
+          "subs": 240000,
+          "published_at": "2025-11-02T15:27:57Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Fascinating 3D Journey to the Ocean Depths",
+          "views": 12623052,
+          "subs": 44500000,
+          "published_at": "2020-11-02T11:00:00Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Into the Midnight Zone: Secrets of the Ocean Void",
+          "views": 6708680,
+          "subs": 1070000,
+          "published_at": "2024-07-05T11:00:53Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Secrets of the Mariana Trench: What Lies Beneath? #deepseamysteries #underwaterexploration  #shorts",
+          "views": 1252,
+          "subs": 83,
+          "published_at": "2024-06-21T20:09:05Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "The Deepest Place on Earth | Extreme Wonder",
+          "views": 2390700,
+          "subs": 15200,
+          "published_at": "2023-06-08T10:22:47Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Mariana Trench mystery",
+          "views": 6860252,
+          "subs": 2070000,
+          "published_at": "2023-05-27T12:00:00Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Mariana Trench: What Really Lies at the Bottom of the Earth?",
+          "views": 2501,
+          "subs": 70600,
+          "published_at": "2026-09-03T15:14:41Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "What is Inside Mariana Trench?",
+          "views": 555712,
+          "subs": 283000,
+          "published_at": "2023-04-23T00:58:23Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "The Most Disturbing Creatures in Each Ocean Layer",
+          "views": 1684899,
+          "subs": 1990000,
+          "published_at": "2026-07-06T16:00:39Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "How DEEP is Titanic?",
+          "views": 9999814,
+          "subs": 101000,
+          "published_at": "2023-06-21T12:01:55Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "What Lies Beneath Earth&#39;s Deepest Point?",
+          "views": 3207,
+          "subs": 730,
+          "published_at": "2025-04-23T16:51:21Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Here&#39;s What Scientists Actually Found At The Bottom Of Marianas Trench #Shorts",
+          "views": 8831436,
+          "subs": 3980000,
+          "published_at": "2022-06-11T21:30:06Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "The Underwater Lakes That Shouldn&#39;t Exist",
+          "views": 4033538,
+          "subs": 472000,
+          "published_at": "2025-06-23T16:00:32Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Mariana Trench Mystery: What Really Lies in the Deepest Part of the Ocean? #animals #science",
+          "views": 20700,
+          "subs": 773000,
+          "published_at": "2024-02-03T11:00:14Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Deep-Sea Discoveries: Exploring the Five Deepest Parts of the Ocean! \ud83c\udf0a\ud83d\ude80",
+          "views": 306289,
+          "subs": 5660,
+          "published_at": "2023-07-28T21:41:09Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "What Lies Hidden in the Darkest Part of the Ocean? | Documentary for Sleep",
+          "views": 4893,
+          "subs": 15800,
+          "published_at": "2025-11-24T02:01:20Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "What Lies in the Deepest Parts of the Ocean? \ud83c\udf0a",
+          "views": 135,
+          "subs": 165,
+          "published_at": "2025-06-13T11:55:03Z",
+          "coverage": 1.0
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "what lives in mariana trench",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.667,
+        "max_coverage": 1.0,
+        "strong_match_count": 4,
+        "strong_match_rate": 0.2,
+        "loose_match_rate": 0.1,
+        "gap_signal": 0.8,
+        "interpretation": "4 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 812554.0,
+        "p90": 8831434,
+        "max": 19844402,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 215000.0,
+        "max_subscribers": 15500000,
+        "under_100k_subs": 7,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 508,
+        "published_last_365d": 8,
+        "n": 20
+      },
+      "opportunity_score": 0.561,
+      "opportunity_components": {
+        "title_gap": 0.8,
+        "incumbent_subs": 0.238,
+        "view_ceiling": 0.156,
+        "staleness": 0.6
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-18T23:43:49.303930+00:00"
+      },
+      "top_results": [
+        {
+          "title": "11 Most Amazing Creatures of the Mariana Trench",
+          "views": 217665,
+          "subs": 849,
+          "published_at": "2019-07-27T22:12:25Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "What They Found In the Deepest Place on Earth",
+          "views": 13022903,
+          "subs": 472000,
+          "published_at": "2025-08-18T16:00:34Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Who Lives At The Bottom Of The Mariana Trench?",
+          "views": 19844402,
+          "subs": 5720000,
+          "published_at": "2017-04-05T16:00:00Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "What Exists in the Deepest Place on Earth?",
+          "views": 2347696,
+          "subs": 215000,
+          "published_at": "2026-04-05T15:30:00Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "100 Strange Creatures from the Mariana Trench (Extreme Deep-Sea Life)",
+          "views": 12606,
+          "subs": 83,
+          "published_at": "2025-12-14T17:00:28Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Nothing About The Mariana Trench Is Normal... Here&#39;s Why",
+          "views": 2598002,
+          "subs": 215000,
+          "published_at": "2025-12-21T20:41:53Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Why the Mariana Trench Gets Weirder the Deeper You Go",
+          "views": 1188217,
+          "subs": 138000,
+          "published_at": "2026-02-18T15:00:06Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "What Scientists Found at the Bottom of the Mariana Trench",
+          "views": 172998,
+          "subs": 3890000,
+          "published_at": "2026-09-04T20:00:36Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Inside the Marianas Trench: Earth&#39;s Deepest Point | How the Earth Was Made (S1, E2) | Full Episode",
+          "views": 3078811,
+          "subs": 15500000,
+          "published_at": "2024-07-02T00:00:18Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "MARIANA TRENCH: Journey to Earth\u2019s Deepest Darkness \u2013 What Lives There?",
+          "views": 436891,
+          "subs": 2690,
+          "published_at": "2026-01-17T11:01:49Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "10 STRANGEST Animals in the Mariana Trench",
+          "views": 2336,
+          "subs": 564,
+          "published_at": "2022-08-26T16:07:15Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Real Footage of the Mysterious Mariana Trench",
+          "views": 2971967,
+          "subs": 139000,
+          "published_at": "2025-05-03T22:01:01Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Here&#39;s What Scientists Actually Found At The Bottom Of Marianas Trench #Shorts",
+          "views": 8831434,
+          "subs": 3980000,
+          "published_at": "2022-06-11T21:30:06Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "What&#39;s Inside The Mariana Trench?",
+          "views": 129309,
+          "subs": 3060000,
+          "published_at": "2020-02-18T22:00:11Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Mariana Trench: What James Cameron&#39;s Cameras Caught That He Didn&#39;t",
+          "views": 26876,
+          "subs": 29500,
+          "published_at": "2026-09-18T17:00:35Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "The Deepest Dive Humanly Possible: A Trip to the Mariana Trench | How the Earth Was Made (S1)",
+          "views": 2645123,
+          "subs": 15500000,
+          "published_at": "2025-04-23T16:01:35Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Mariana Trench mystery",
+          "views": 6860252,
+          "subs": 2070000,
+          "published_at": "2023-05-27T12:00:00Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "What Animals Lives At The Bottom Of The Mariana Trench?",
+          "views": 215958,
+          "subs": 5420000,
+          "published_at": "2020-03-07T21:45:00Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Mariana Trench: The Life Challenges at the Deepest Sea Floor  #natueswildtv #documentary",
+          "views": 121030,
+          "subs": 782,
+          "published_at": "2020-12-04T20:17:57Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Mariana Trench: What Lives in the Deepest Place on Earth ?",
+          "views": 327267,
+          "subs": 24800,
+          "published_at": "2026-08-21T10:44:00Z",
+          "coverage": 1.0
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "how deep is the ocean",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.725,
+        "max_coverage": 1.0,
+        "strong_match_count": 10,
+        "strong_match_rate": 0.5,
+        "loose_match_rate": 0.05,
+        "gap_signal": 0.5,
+        "interpretation": "10 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 12822977.5,
+        "p90": 47472916,
+        "max": 81920497,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 2070000.0,
+        "max_subscribers": 44500000,
+        "under_100k_subs": 3,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 920,
+        "published_last_365d": 3,
+        "n": 20
+      },
+      "opportunity_score": 0.397,
+      "opportunity_components": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.098,
+        "view_ceiling": 0.0,
+        "staleness": 0.85
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-18T23:43:45.841944+00:00"
+      },
+      "top_results": [
+        {
+          "title": "This Incredible Animation Shows How Deep The Ocean Really Is",
+          "views": 81920497,
+          "subs": 4220000,
+          "published_at": "2017-04-04T00:00:01Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Just How Deep Is The Ocean? \ud83c\udf0a\ud83e\udd14",
+          "views": 47472916,
+          "subs": 28500000,
+          "published_at": "2024-05-13T14:30:19Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "The Ocean is Way Deeper Than You Think",
+          "views": 50465524,
+          "subs": 7940000,
+          "published_at": "2016-11-11T14:13:55Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How Deep The Ocean REALLY Is",
+          "views": 33924162,
+          "subs": 8720000,
+          "published_at": "2023-10-04T13:16:35Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Barbra Streisand - How Deep Is the Ocean (Official Video) ft. Jason Gould",
+          "views": 2622907,
+          "subs": 67900,
+          "published_at": "2014-09-11T07:00:45Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "The Ocean Is Much Deeper Than You Think!",
+          "views": 2279517,
+          "subs": 68000,
+          "published_at": "2026-08-14T17:30:01Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How deep is the ocean",
+          "views": 9625760,
+          "subs": 2070000,
+          "published_at": "2024-06-01T14:00:47Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How Deep Does The Ocean Go?",
+          "views": 16929354,
+          "subs": 202000,
+          "published_at": "2024-01-11T21:49:04Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Why We Will NEVER Know What Lived In The Prehistoric Deep Ocean",
+          "views": 113662,
+          "subs": 543000,
+          "published_at": "2026-09-17T20:58:55Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "We&#39;ve Barely Seen the Deep Sea \u2620\ufe0f",
+          "views": 5161784,
+          "subs": 965000,
+          "published_at": "2025-01-09T16:12:56Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Why The Ocean is Way Deeper Than You Think",
+          "views": 3754552,
+          "subs": 13500000,
+          "published_at": "2025-07-18T18:00:03Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "The Ocean Is WAY DEEPER Than You Think",
+          "views": 23732539,
+          "subs": 18200000,
+          "published_at": "2021-08-01T15:00:04Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Fascinating 3D Journey to the Ocean Depths",
+          "views": 12623052,
+          "subs": 44500000,
+          "published_at": "2020-11-02T11:00:00Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How deep is the ocean",
+          "views": 20436649,
+          "subs": 2070000,
+          "published_at": "2026-06-08T12:20:48Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How Deep Is The Ocean? | OCEAN DEPTH | Dr Binocs Show | Peekaboo Kidz",
+          "views": 6759893,
+          "subs": 7800000,
+          "published_at": "2021-04-06T12:30:52Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Ocean DEPTH Comparison \ud83c\udf0a (3D Animation)",
+          "views": 14673269,
+          "subs": 1970000,
+          "published_at": "2021-10-02T11:57:44Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "HOW DEEP IS\ufeff THE OCEAN-Chet Baker &amp; Paul Desmond",
+          "views": 153322,
+          "subs": 860,
+          "published_at": "2009-07-14T03:58:18Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Could You Survive Extreme Ocean Pressure? \ud83d\ude35",
+          "views": 14563203,
+          "subs": 28500000,
+          "published_at": "2025-02-23T13:30:24Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "What They Found In the Deepest Place on Earth",
+          "views": 13022903,
+          "subs": 472000,
+          "published_at": "2025-08-18T16:00:34Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "CaseOh Rects To The Ocean Is Way Deeper Than You Think",
+          "views": 1365934,
+          "subs": 382000,
+          "published_at": "2024-12-08T01:54:10Z",
+          "coverage": 0.5
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "why deep sea creatures",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.75,
+        "max_coverage": 1.0,
+        "strong_match_count": 10,
+        "strong_match_rate": 0.5,
+        "loose_match_rate": 0.2,
+        "gap_signal": 0.5,
+        "interpretation": "10 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 2120780.0,
+        "p90": 11220732,
+        "max": 25693272,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 754000.0,
+        "max_subscribers": 32900000,
+        "under_100k_subs": 3,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 319,
+        "published_last_365d": 13,
+        "n": 20
+      },
+      "opportunity_score": 0.349,
+      "opportunity_components": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.16,
+        "view_ceiling": 0.096,
+        "staleness": 0.35
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-18T23:43:48.210283+00:00"
+      },
+      "top_results": [
+        {
+          "title": "Why Deep Sea Creatures Get Creepier the Deeper You Go",
+          "views": 16970836,
+          "subs": 240000,
+          "published_at": "2025-11-02T15:27:57Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Why Deep Sea Creatures Grow So Terrifyingly Huge?",
+          "views": 758601,
+          "subs": 240000,
+          "published_at": "2025-11-04T19:11:54Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Why We Will NEVER Know What Lived In The Prehistoric Deep Ocean",
+          "views": 113662,
+          "subs": 543000,
+          "published_at": "2026-09-17T20:58:55Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Why Do Deep Sea Creatures Evolve Into Giants?",
+          "views": 9462978,
+          "subs": 2090000,
+          "published_at": "2022-07-16T13:00:38Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "The Craziest Deep Sea Creatures At Every Depth",
+          "views": 709565,
+          "subs": 1390000,
+          "published_at": "2026-04-03T23:59:46Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Why Are Deep Sea Creatures Evolving Into Giants?",
+          "views": 2015079,
+          "subs": 2930000,
+          "published_at": "2026-05-23T16:00:41Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "These Deep Sea Creatures Are Rarely Seen",
+          "views": 2226481,
+          "subs": 2930000,
+          "published_at": "2024-04-30T19:49:50Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Why Deep Sea Camouflage Gets Weirder The Deeper You Go",
+          "views": 1253639,
+          "subs": 138000,
+          "published_at": "2025-10-25T15:00:06Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "We&#39;ve Barely Seen the Deep Sea \u2620\ufe0f",
+          "views": 5161784,
+          "subs": 965000,
+          "published_at": "2025-01-09T16:12:56Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Into the Abyss: Creatures of the Midwater (Full Movie)",
+          "views": 11220732,
+          "subs": 1070000,
+          "published_at": "2024-12-06T12:05:24Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Creepiest Deep Sea Creatures Explained in 9 Minutes",
+          "views": 552513,
+          "subs": 81700,
+          "published_at": "2026-07-31T15:34:31Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Why Do So Many Animals in the Deep Sea Not Die?",
+          "views": 524009,
+          "subs": 215000,
+          "published_at": "2026-06-21T15:15:23Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "What\u2019s Hiding at the Most Solitary Place on Earth? The Deep Sea",
+          "views": 25693272,
+          "subs": 25600000,
+          "published_at": "2019-09-15T12:30:01Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "The Strangest Creatures of the Ocean | BBC Earth",
+          "views": 6511980,
+          "subs": 14600000,
+          "published_at": "2025-02-22T14:00:55Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Why Deep Sea Creatures Get Creepier the Deeper You Go | Documentary for Sleep",
+          "views": 331210,
+          "subs": 60600,
+          "published_at": "2025-12-13T21:15:03Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Deep Sea Mysteries That Science Can&#39;t Explain! | Dhruv Rathee",
+          "views": 3737771,
+          "subs": 32900000,
+          "published_at": "2026-09-18T12:42:13Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Why Deep Sea Creatures Get Creepier the Deeper You Go | Full Documentary",
+          "views": 96699,
+          "subs": 27500,
+          "published_at": "2026-01-21T16:00:06Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Deep Sea Giants Are Everywhere. We&#39;ve Been Searching Wrong",
+          "views": 1186952,
+          "subs": 215000,
+          "published_at": "2026-07-20T16:00:34Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Why DEEP SEA Creatures Look so WEIRD?",
+          "views": 4120990,
+          "subs": 9840000,
+          "published_at": "2023-12-29T15:33:45Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Why Squids get Creepier the Deeper you Go",
+          "views": 2763513,
+          "subs": 215000,
+          "published_at": "2025-10-16T22:29:18Z",
+          "coverage": 0.0
+        }
+      ],
+      "domain": null
+    }
+  ]
+}

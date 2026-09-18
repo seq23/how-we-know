@@ -22,7 +22,7 @@
       "pin_errors"
     ]
   },
-  "generated_at": "2026-09-17T23:33:25.495555+00:00",
+  "generated_at": "2026-09-18T23:43:44.351339+00:00",
   "generator": "research/publish_order.py",
   "rule": "pov/topic-taxonomy.json: 'Rank candidates by (search demand / competition).' Implemented as a hard GATE on both axes, then a geometric combined score among survivors.",
   "gate": {
@@ -282,7 +282,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-17T23:33:15.003393+00:00"
+          "fetched_utc": "2026-09-18T23:43:35.138153+00:00"
         }
       },
       "competition": {
@@ -361,7 +361,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-17T23:33:09.741956+00:00"
+          "fetched_utc": "2026-09-18T23:43:30.472702+00:00"
         }
       },
       "competition": {
@@ -439,7 +439,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-17T23:33:05.569870+00:00"
+          "fetched_utc": "2026-09-18T23:43:26.770986+00:00"
         }
       },
       "competition": {
@@ -517,7 +517,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-17T23:33:19.152794+00:00"
+          "fetched_utc": "2026-09-18T23:43:38.824711+00:00"
         }
       },
       "competition": {
@@ -577,11 +577,11 @@
       "gate": {
         "verdict": "passed",
         "failed": [],
-        "reason": "demand 0.731 clears the 0.16 floor and title gap 0.40 clears the 0.3 saturation ceiling."
+        "reason": "demand 0.723 clears the 0.16 floor and title gap 0.40 clears the 0.3 saturation ceiling."
       },
       "demand": {
-        "demand_index": 0.7307,
-        "autocomplete_completions": 5,
+        "demand_index": 0.7232,
+        "autocomplete_completions": 4,
         "exact_in_autocomplete": true,
         "corpus_breadth": 90,
         "key_term": "midnight",
@@ -591,14 +591,13 @@
           "what is the midnight zone",
           "what does the midnight zone look like",
           "what lurks in the midnight zone",
-          "what lives in the midnight zone",
-          "the midnight zone creatures"
+          "what lives in the midnight zone"
         ],
         "caveat": "autocomplete presence, NOT search volume",
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-17T23:33:25.495137+00:00"
+          "fetched_utc": "2026-09-18T23:43:44.350749+00:00"
         }
       },
       "competition": {
@@ -639,11 +638,11 @@
         "breakouts": 0,
         "status": "ok"
       },
-      "combined_score": 0.5427,
+      "combined_score": 0.5399,
       "trend_multiplier": 1.0,
       "trend_note": "Trends series not quotable; neutral",
       "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
-      "reason": "Strong demand (0.73) against partial coverage (40% title gap); winnable but contested.",
+      "reason": "Strong demand (0.72) against partial coverage (40% title gap); winnable but contested.",
       "queue_position": 5,
       "source": "COMBINED_SCORE",
       "pinned": false,
@@ -678,7 +677,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-17T23:33:10.763660+00:00"
+          "fetched_utc": "2026-09-18T23:43:31.398301+00:00"
         }
       },
       "competition": {
@@ -738,11 +737,11 @@
       "gate": {
         "verdict": "passed",
         "failed": [],
-        "reason": "demand 0.539 clears the 0.16 floor and title gap 0.75 clears the 0.3 saturation ceiling."
+        "reason": "demand 0.547 clears the 0.16 floor and title gap 0.75 clears the 0.3 saturation ceiling."
       },
       "demand": {
-        "demand_index": 0.5392,
-        "autocomplete_completions": 4,
+        "demand_index": 0.5467,
+        "autocomplete_completions": 5,
         "exact_in_autocomplete": true,
         "corpus_breadth": 1,
         "key_term": "deeper",
@@ -752,13 +751,14 @@
           "why deep sea creatures get creepier the deeper you go",
           "why deep sea creatures are scary",
           "creepiest deep sea creatures",
-          "deep sea creatures myths"
+          "deep sea creatures myths",
+          "deep sea creatures weird"
         ],
         "caveat": "autocomplete presence, NOT search volume",
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-17T23:33:11.830493+00:00"
+          "fetched_utc": "2026-09-18T23:43:32.328643+00:00"
         }
       },
       "competition": {
@@ -799,11 +799,11 @@
         "breakouts": 0,
         "status": "ok"
       },
-      "combined_score": 0.5187,
+      "combined_score": 0.5223,
       "trend_multiplier": 1.0,
       "trend_note": "Trends series not quotable; neutral",
       "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
-      "reason": "Middle of the field: title gap 0.75, demand 0.54, opportunity 0.50.",
+      "reason": "Middle of the field: title gap 0.75, demand 0.55, opportunity 0.50.",
       "queue_position": 7,
       "source": "COMBINED_SCORE",
       "pinned": false,
@@ -836,7 +836,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-17T23:33:20.196056+00:00"
+          "fetched_utc": "2026-09-18T23:43:39.750820+00:00"
         }
       },
       "competition": {
@@ -917,7 +917,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-17T23:33:12.895805+00:00"
+          "fetched_utc": "2026-09-18T23:43:33.251043+00:00"
         }
       },
       "competition": {
@@ -995,7 +995,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-17T23:33:13.960853+00:00"
+          "fetched_utc": "2026-09-18T23:43:34.201129+00:00"
         }
       },
       "competition": {
@@ -1072,7 +1072,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-17T23:33:24.430229+00:00"
+          "fetched_utc": "2026-09-18T23:43:43.434010+00:00"
         }
       },
       "competition": {
@@ -1147,7 +1147,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-17T23:33:23.370448+00:00"
+          "fetched_utc": "2026-09-18T23:43:42.510266+00:00"
         }
       },
       "competition": {
@@ -1226,7 +1226,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-17T23:33:08.700273+00:00"
+          "fetched_utc": "2026-09-18T23:43:29.543717+00:00"
         }
       },
       "competition": {
@@ -1304,7 +1304,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-17T23:33:21.250046+00:00"
+          "fetched_utc": "2026-09-18T23:43:40.670755+00:00"
         }
       },
       "competition": {
@@ -1381,7 +1381,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-17T23:33:18.129487+00:00"
+          "fetched_utc": "2026-09-18T23:43:37.902426+00:00"
         }
       },
       "competition": {
@@ -1459,7 +1459,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-17T23:33:06.604858+00:00"
+          "fetched_utc": "2026-09-18T23:43:27.692941+00:00"
         }
       },
       "competition": {
