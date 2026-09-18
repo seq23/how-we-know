@@ -274,6 +274,40 @@ echo "  to narrate now: ${pending_audio:-none}"
 pending_render=$(renderable)
 echo "  to render now : ${pending_render:-none}"
 
+# ---------------------------------------------------------------------------
+# SHORTS ARE CUT AND SHELVED ON EVERY NIGHT, INCLUDING AN IDLE ONE.
+# On 2026-09-18 the cloud Shorts lane stopped NO_SHORTS_SHELVED and called it
+# self-resolving "on the Mac's next push". There was no next push: this script
+# only reached bin/push-to-r2.sh after a narrate-or-render night, and it never
+# ran bin/make-shorts.sh at all -- all 27 published Shorts had been cut by hand.
+# Seven rendered episodes sat uncut while the gate below exited 0 with "nothing
+# to do". The Mac is the only machine that can cut a Short (V14 reads the
+# credit off the pixels; V15 OCRs the crop), so the Mac must cut on its own.
+#
+# make-shorts.sh is given ONLY the uncut slugs (loop/shorts_lane.py:uncut), so
+# an episode is never re-cut. push-to-r2.sh is idempotent and refuses anything
+# V14/V15 reject or the render gate holds, so calling it on an idle night shelves
+# what is new and skips what is already there.
+shelve_shorts() {
+  echo; echo "--- shorts: cut what is rendered and uncut, then shelve ---"
+  local uncut
+  uncut=$($PY -c "import sys; sys.path.insert(0,'loop'); import shorts_lane; print(' '.join(shorts_lane.uncut()))") || {
+    echo "  shorts_lane.uncut() refused - this machine holds no finished render"; return 0; }
+  if [ -n "${uncut// }" ]; then
+    echo "  uncut: $uncut"
+    # shellcheck disable=SC2086
+    bin/make-shorts.sh $uncut || echo "  make-shorts.sh rc=$? - whatever it did cut is shelved below; the rest is retried tomorrow"
+  else
+    echo "  every finished render already has a Short cut"
+  fi
+  if [ -x bin/push-to-r2.sh ]; then
+    bin/push-to-r2.sh
+  else
+    echo "  bin/push-to-r2.sh does not exist yet - the cloud upload lane is still"
+    echo "  being built. Until it lands, uploading stays on this Mac."
+  fi
+}
+
 # THE "NOTHING TO DO" GATE LIVES HERE, AFTER THE POV REPAIR, NOT BEFORE IT.
 # It used to sit above and exit first, which meant a shelf whose ONLY
 # problem was an untraced producer POV reported "nothing to do" and left
@@ -297,6 +331,10 @@ if [ -z "${pending_audio// }" ] && [ -z "${pending_render// }" ]; then
     echo "episode is rendered. If the runway is still low the shortfall is SCRIPTS,"
     echo "not audio - the authoring lane writes those in the cloud on Mondays."
   fi
+  # Idle for narration and render is NOT idle for Shorts. The cut-and-shelve
+  # step runs here too, or an idle week starves the cloud Shorts lane (see
+  # shelve_shorts above).
+  shelve_shorts
   exit 0
 fi
 
@@ -540,13 +578,9 @@ else
   echo "  and its measured timings on origin."
 fi
 
-echo; echo "--- push to R2 for the cloud upload lane ---"
-if [ -x bin/push-to-r2.sh ]; then
-  bin/push-to-r2.sh
-else
-  echo "  bin/push-to-r2.sh does not exist yet - the cloud upload lane is still"
-  echo "  being built. Until it lands, uploading stays on this Mac."
-fi
+# Cut Shorts from tonight's renders, then push everything (renders, captions,
+# Shorts) to R2 for the cloud lanes.
+shelve_shorts
 
 # THE MAC REPORTS. The cloud digest reads loop/state/mac_heartbeat.json and this
 # week's stop files from the repository; a Mac that finished renders and shipped

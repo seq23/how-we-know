@@ -208,6 +208,38 @@ def local_short(slug: str):
     return True
 
 
+def uncut(renders_dir: Path | None = None,
+          shorts_dir: Path | None = None) -> list[str]:
+    """Rendered episodes this Mac has not cut a Short from yet.
+
+    THIS IS THE PRODUCER THE CLOUD LANE WAS WAITING ON. On 2026-09-18 seven
+    materials episodes had a -final.mp4 and no Short, and loop/shorts_cloud.py
+    stopped NO_SHORTS_SHELVED with "self-resolving on the Mac's next push".
+    Nothing on the Mac would ever push: bin/batch-session.sh only ran
+    bin/push-to-r2.sh at the end of a narrate-or-render night, and never ran
+    bin/make-shorts.sh at all -- every Short on the channel had been cut by
+    hand. An idle batch exited 0 at "nothing to do" while the shelf ran dry.
+
+    Returns the slugs in the same order `ls renders/*-final.mp4` gives, so the
+    batch script cuts them deterministically. Raises if `renders_dir` holds no
+    finished render at all: a machine that holds none is not "nothing uncut",
+    it is the wrong machine, and Rule 0 says so out loud.
+    """
+    renders_dir = renders_dir or (ROOT / "renders")
+    shorts_dir = shorts_dir or SHORTS_DIR
+    finals = sorted(renders_dir.glob("*-final.mp4"))
+    if not finals:
+        raise RuntimeError(
+            f"uncut(): {renders_dir} holds no *-final.mp4 -- nothing to "
+            f"examine, which is not the same as nothing uncut")
+    out = []
+    for f in finals:
+        slug = f.name[:-len("-final.mp4")]
+        if not (shorts_dir / f"{slug}-short.mp4").exists():
+            out.append(slug)
+    return out
+
+
 def pending(have=None) -> list[str]:
     """Finished episodes that have no Short published yet.
 
