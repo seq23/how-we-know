@@ -121,6 +121,40 @@ else:
         fails.append("3: bin/push-to-r2.sh is still called outside shelve_shorts, "
                      "so a path can shelve without cutting")
 
+# ---- 4: a cut its own verifier refused is not shelved ----------------------------
+# visuals/shorts.py writes ok:false and the problems into the receipt and
+# exits 1. Until 2026-09-18 nothing downstream read it: a BAD cut would have
+# been shelved and published like a good one (why-is-carbon-fiber-so-strong,
+# 0.039s A/V drift against a 0.033s budget, that night).
+import json  # noqa: E402
+import r2  # noqa: E402
+
+good_rec = tmp / "good.short.json"
+bad_rec = tmp / "bad.short.json"
+broken_rec = tmp / "broken.short.json"
+good_rec.write_text(json.dumps({"ok": True, "problems": []}))
+bad_rec.write_text(json.dumps({"ok": False, "problems": ["video and audio differ by 0.039s"]}))
+broken_rec.write_text("{not json")
+if r2.receipt_refuses(good_rec) is not None:
+    fails.append("4: a receipt with ok:true was refused")
+why = r2.receipt_refuses(bad_rec)
+if not why or "0.039s" not in why:
+    fails.append(f"4: a receipt with ok:false was not refused with its reason, got {why!r}")
+if r2.receipt_refuses(broken_rec) is None:
+    fails.append("4: an unreadable receipt was accepted")
+if r2.receipt_refuses(tmp / "absent.short.json") is None:
+    fails.append("4: a missing receipt was accepted")
+rsrc = open(os.path.join(LOOP, "r2.py")).read()
+ps = rsrc[rsrc.find("def push_shorts("):]
+# A real call that feeds the decision, not the words in a comment.
+m = re.search(r"^\s*why_bad = receipt_refuses\(rec\)\s*$", ps, re.M)
+if not m:
+    fails.append("4: push_shorts() does not ask receipt_refuses() before shelving")
+elif m.start() > ps.find("backend.put("):
+    fails.append("4: push_shorts() consults the receipt after it has already shelved")
+elif not re.search(r"^\s*if why_bad:", ps, re.M):
+    fails.append("4: push_shorts() asks receipt_refuses() and ignores the answer")
+
 # ---- Rule 0 --------------------------------------------------------------------
 if n < 3:
     fails.append("Rule 0: the fixture planted fewer than three renders")
@@ -130,4 +164,5 @@ if fails:
         print(f"FAIL {f}")
     sys.exit(1)
 print(f"OK shorts are cut on idle nights: {len(want)} uncut of {n} planted, "
-      f"empty set refused, both batch paths shelve through shelve_shorts")
+      f"empty set refused, both batch paths shelve through shelve_shorts, "
+      f"a receipt that says ok:false is not shelved")
