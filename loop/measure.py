@@ -238,13 +238,45 @@ def domain_streaks(rows: list[dict], pub: list[dict], floor_avd_s: float) -> dic
     return out
 
 
-def breaker_cause(streaks: dict, need: int) -> dict | None:
+def judgeable_domains(rows: list[dict], pub: list[dict], cfg: dict) -> dict:
+    """Which domains hold enough measured videos to be judged at all.
+
+    docs/CHANNEL-PLAN.md: the format breaker fires only when retention fails
+    in EVERY *judgeable* domain, and a domain is judgeable at
+    `domains.min_episodes_to_judge` measured episodes (8). loop/monthly.py
+    honoured that from the day it was written. breaker_cause() did not: its
+    docstring said "every domain that HAS enough measured videos" and then
+    checked nothing of the kind, so on 2026-09-18 it halted publishing on
+    eight videos with 2, 2, 3, 3, 4, 7, 12 and 40 views each, one of them at
+    0s average view duration on two views. That is noise, and the plan already
+    said so. Returns {domain: measured_count} for the domains that qualify.
+    """
+    need = domains.min_episodes_to_judge(cfg)
+    out = {}
+    for name, group in domains.split_rows(rows, pub).items():
+        if name == "unattributed":
+            continue
+        measured = sum(1 for r in group if r.get("average_view_duration_s") is not None)
+        if measured >= need:
+            out[name] = measured
+    return out
+
+
+def breaker_cause(streaks: dict, need: int, judgeable: dict | None = None) -> dict | None:
     """Format, or niche? Decided from the per-domain streaks, never assumed.
 
-    * every domain that HAS enough measured videos is breaching -> the format
-    * one domain of several is breaching                        -> that niche
-    * nothing is breaching                                      -> no trip
+    * every JUDGEABLE domain is breaching                       -> the format
+    * one judgeable domain of several is breaching              -> that niche
+    * nothing judgeable is breaching, or nothing is judgeable   -> no trip
+
+    `judgeable` is {domain: measured_count} from judgeable_domains(). A domain
+    below the judgeability floor is not "holding" and not "breaching"; it is
+    unmeasured, and absence of evidence is not three consecutive bad videos
+    (the same rule retention_streak applies to a single unmeasured video).
+    None means every domain is judgeable, which only a test should say.
     """
+    if judgeable is not None:
+        streaks = {d: s for d, s in streaks.items() if d in judgeable}
     breaching = {d: s for d, s in streaks.items()
                  if d != "unattributed" and s >= need}
     scored = {d: s for d, s in streaks.items() if d != "unattributed"}
@@ -446,7 +478,11 @@ def main() -> None:
 
         per_domain = domain_streaks(m["videos"], pub, floor_avd)
         st.work(f"per-domain duration streaks: {per_domain or 'none measured'}")
-        cause = breaker_cause(per_domain, need)
+        judgeable = judgeable_domains(m["videos"], pub, cfg)
+        st.work(f"judgeable domains (>= {domains.min_episodes_to_judge(cfg)} "
+                f"measured): {judgeable or 'none yet - no domain can trip the '
+                'breaker until one qualifies'}")
+        cause = breaker_cause(per_domain, need, judgeable)
         if cause:
             breaker.trip("retention" if cause["cause"] == "format"
                          else "domain", cause["why"])
@@ -584,7 +620,9 @@ def main() -> None:
 
         streak = retention_streak(m["videos"], floor_avd)
         per_domain = domain_streaks(m["videos"], pub, floor_avd)
-        cause = breaker_cause(per_domain, need)
+        judgeable = judgeable_domains(m["videos"], pub, cfg)
+        st.work(f"judgeable domains: {judgeable or 'none yet'}")
+        cause = breaker_cause(per_domain, need, judgeable)
         if cause:
             breaker.trip("retention" if cause["cause"] == "format"
                          else "domain", cause["why"])
