@@ -2,37 +2,97 @@
   "videos": [
     {
       "video_id": "YuZxDiNUw4w",
-      "week_measured": "2026-W37",
-      "at": "2026-09-11T21:24:20+00:00",
-      "views": 4,
-      "average_view_percentage": 0,
-      "estimated_minutes_watched": 0,
-      "average_view_duration_s": 0,
+      "week_measured": "2026-W38",
+      "at": "2026-09-18T21:14:15+00:00",
+      "views": 7,
+      "average_view_percentage": 22.87,
+      "estimated_minutes_watched": 4,
+      "average_view_duration_s": 145,
       "runtime_s": 634.832,
       "estimated_revenue": null,
       "rpm": null
     },
     {
       "video_id": "EY__zREBIUk",
-      "week_measured": "2026-W37",
-      "at": "2026-09-11T21:24:20+00:00",
-      "views": 1,
-      "average_view_percentage": 0,
-      "estimated_minutes_watched": 0,
-      "average_view_duration_s": 0,
+      "week_measured": "2026-W38",
+      "at": "2026-09-18T21:14:15+00:00",
+      "views": 3,
+      "average_view_percentage": 99.91,
+      "estimated_minutes_watched": 7,
+      "average_view_duration_s": 463,
       "runtime_s": 463.546,
       "estimated_revenue": null,
       "rpm": null
     },
     {
       "video_id": "sfveDF88ZHo",
-      "week_measured": "2026-W37",
-      "at": "2026-09-11T21:24:20+00:00",
-      "views": 2,
-      "average_view_percentage": 2.69,
-      "estimated_minutes_watched": 0,
-      "average_view_duration_s": 13,
+      "week_measured": "2026-W38",
+      "at": "2026-09-18T21:14:15+00:00",
+      "views": 4,
+      "average_view_percentage": 35.09,
+      "estimated_minutes_watched": 8,
+      "average_view_duration_s": 170,
       "runtime_s": 485.362,
+      "estimated_revenue": null,
+      "rpm": null
+    },
+    {
+      "video_id": "9FcDJniofMM",
+      "week_measured": "2026-W38",
+      "at": "2026-09-18T21:14:15+00:00",
+      "views": 3,
+      "average_view_percentage": 6.45,
+      "estimated_minutes_watched": 0,
+      "average_view_duration_s": 30,
+      "runtime_s": 472.28,
+      "estimated_revenue": null,
+      "rpm": null
+    },
+    {
+      "video_id": "aKyOg7xbxC0",
+      "week_measured": "2026-W38",
+      "at": "2026-09-18T21:14:15+00:00",
+      "views": 40,
+      "average_view_percentage": 7.9,
+      "estimated_minutes_watched": 5,
+      "average_view_duration_s": 53,
+      "runtime_s": 679.517,
+      "estimated_revenue": null,
+      "rpm": null
+    },
+    {
+      "video_id": "izdEaeOQBvI",
+      "week_measured": "2026-W38",
+      "at": "2026-09-18T21:14:15+00:00",
+      "views": 2,
+      "average_view_percentage": 0,
+      "estimated_minutes_watched": 0,
+      "average_view_duration_s": 0,
+      "runtime_s": 485.232,
+      "estimated_revenue": null,
+      "rpm": null
+    },
+    {
+      "video_id": "eJSCm5sk5AA",
+      "week_measured": "2026-W38",
+      "at": "2026-09-18T21:14:15+00:00",
+      "views": 12,
+      "average_view_percentage": 5.98,
+      "estimated_minutes_watched": 2,
+      "average_view_duration_s": 30,
+      "runtime_s": null,
+      "estimated_revenue": null,
+      "rpm": null
+    },
+    {
+      "video_id": "mOP33elEfpU",
+      "week_measured": "2026-W38",
+      "at": "2026-09-18T21:14:15+00:00",
+      "views": 2,
+      "average_view_percentage": 1.91,
+      "estimated_minutes_watched": 0,
+      "average_view_duration_s": 9,
+      "runtime_s": 478.688,
       "estimated_revenue": null,
       "rpm": null
     }
@@ -70,20 +130,45 @@
         "mean_pct_of_actual_runtime": 2.7,
         "pct_basis": "each video's own measured duration (1 of 1 measured)"
       }
+    },
+    {
+      "week": "2026-W38",
+      "at": "2026-09-18T21:14:15+00:00",
+      "measured": true,
+      "videos": 8,
+      "revenue_measured": false,
+      "retention_streak_below_floor": 5,
+      "retention_checkpoint": {
+        "status": "measured",
+        "measured": 7,
+        "floor_avd_seconds": 146.0,
+        "early_exit_threshold_minutes": 2.0,
+        "mean_view_duration_s": 128.6,
+        "mean_view_duration_mm_ss": "2m08s",
+        "videos_losing_viewers_in_first_2min": 4,
+        "videos_without_a_measured_runtime": [
+          "eJSCm5sk5AA"
+        ],
+        "format_verdict": "acceptable",
+        "mean_pct_of_actual_runtime": 29.0,
+        "pct_basis": "each video's own measured duration (6 of 7 measured)"
+      }
     }
   ],
-  "updated": "2026-09-11T21:24:20+00:00",
+  "updated": "2026-09-18T21:14:15+00:00",
   "retention_checkpoint": {
     "status": "measured",
-    "measured": 1,
+    "measured": 7,
     "floor_avd_seconds": 146.0,
     "early_exit_threshold_minutes": 2.0,
-    "mean_view_duration_s": 13.0,
-    "mean_view_duration_mm_ss": "0m13s",
-    "videos_losing_viewers_in_first_2min": 1,
-    "videos_without_a_measured_runtime": [],
+    "mean_view_duration_s": 128.6,
+    "mean_view_duration_mm_ss": "2m08s",
+    "videos_losing_viewers_in_first_2min": 4,
+    "videos_without_a_measured_runtime": [
+      "eJSCm5sk5AA"
+    ],
     "format_verdict": "acceptable",
-    "mean_pct_of_actual_runtime": 2.7,
-    "pct_basis": "each video's own measured duration (1 of 1 measured)"
+    "mean_pct_of_actual_runtime": 29.0,
+    "pct_basis": "each video's own measured duration (6 of 7 measured)"
   }
 }

@@ -1,8 +1,8 @@
 {
-  "state": "closed",
-  "tripped_at": null,
-  "cause": null,
-  "detail": null,
+  "state": "tripped",
+  "tripped_at": "2026-09-18T21:14:15+00:00",
+  "cause": "retention",
+  "detail": "every measured domain (deep-sea-ocean-science, materials-and-manufacturing) is below the duration floor for 3 consecutive videos. A problem in all of them at once is the format.",
   "history": [
     {
       "event": "trip",
@@ -87,6 +87,12 @@
       "at": "2026-09-14T12:04:53+00:00",
       "cleared_cause": "validator",
       "note": "automatic: all 35 validators pass again (cause was validator: V27 lanes-see-domains=FAIL(1); V37 runtime-target=FAIL(1))"
+    },
+    {
+      "event": "trip",
+      "at": "2026-09-18T21:14:15+00:00",
+      "cause": "retention",
+      "detail": "every measured domain (deep-sea-ocean-science, materials-and-manufacturing) is below the duration floor for 3 consecutive videos. A problem in all of them at once is the format."
     }
   ]
 }
