@@ -665,6 +665,24 @@ def verify_shorts() -> tuple[bool, list[str]]:
     return ok, lines
 
 
+def receipt_refuses(rec: Path) -> str | None:
+    """Why a cut's own receipt says it must not ship, or None if it may.
+
+    visuals/shorts.py:verify writes {"ok": bool, "problems": [...]} into
+    <cut>.short.json. A receipt that cannot be read is a refusal too: the
+    receipt is the only record of which beats were used and who is credited,
+    and a Short whose record is unreadable is a Short nobody can vouch for.
+    """
+    try:
+        d = json.loads(Path(rec).read_text())
+    except (OSError, ValueError) as e:
+        return f"receipt unreadable ({e.__class__.__name__})"
+    if d.get("ok") is False:
+        probs = d.get("problems") or ["no reason recorded"]
+        return "ok=false: " + "; ".join(str(p) for p in probs)
+    return None
+
+
 def push_shorts(backend: _Backend, slugs=None, force: bool = False) -> dict:
     """Shelve every cut Short — but only after V14 and V15 pass.
 
@@ -690,13 +708,24 @@ def push_shorts(backend: _Backend, slugs=None, force: bool = False) -> dict:
 
     shorts = ROOT / "shorts"
     slugs = list(slugs) if slugs else _publish_slugs()
-    sent, skipped, absent = [], [], []
+    sent, skipped, absent, refused = [], [], [], []
     for slug in slugs:
         mp4 = shorts / f"{slug}-short.mp4"
         rec = shorts / f"{slug}-short.mp4.short.json"
         if not mp4.exists() or not rec.exists():
             absent.append(f"{slug}: no rank-1 cut with a receipt")
             print(f"  ·  skip {slug} short: not cut yet")
+            continue
+        why_bad = receipt_refuses(rec)
+        if why_bad:
+            # THE CUT'S OWN VERIFIER SAID NO. visuals/shorts.py writes
+            # ok:false and the problems into the receipt, prints BAD, exits 1
+            # -- and until 2026-09-18 nothing downstream read any of it, so a
+            # refused cut would have been shelved and published like a good
+            # one. V14/V15 above prove the credit and the crop; this proves
+            # the cut itself. Loud every night until it is fixed or re-cut.
+            refused.append(f"{slug}: {why_bad}")
+            print(f"  ✗  refuse {slug} short: its own receipt says {why_bad}")
             continue
         for local, key, what in ((mp4, short_key(slug), "short"),
                                  (rec, short_receipt_key(slug), "receipt")):
@@ -712,8 +741,12 @@ def push_shorts(backend: _Backend, slugs=None, force: bool = False) -> dict:
                   f"— {why}", flush=True)
             r = backend.put(local, key)
             sent.append(f"{slug} {what}: {r['size']} bytes")
+    if refused:
+        print(f"  {len(refused)} Short(s) refused by their own receipt; re-cut "
+              f"or fix visuals/shorts.py, they are not shelved and will not "
+              f"publish: " + "; ".join(refused))
     return {"pushed": sent, "skipped": skipped, "absent": absent,
-            "verified": lines}
+            "refused": refused, "verified": lines}
 
 
 def main(argv=None) -> int:
