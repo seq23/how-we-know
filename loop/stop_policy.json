@@ -106,7 +106,7 @@
       },
       "HARVESTER_TOOLING_ABSENT": {
         "reminder_days": 14,
-        "why": "2026-09-12. research/imagery_video.py's gates B and C read the credit burned into the picture with Apple's Vision framework, off frames ffmpeg pulls from the clip. ubuntu-latest has neither, so on every scheduled run since the footage lane was written the video harvester failed each clip that passed the rights gate with FileNotFoundError('ffmpeg'), the screener labelled that 'gate A-credit' (379/379 on run 34672456430), and the lane wrote 'the pool is unchanged' about a pool that had never held a clip. Not self-resolving: time does not put ffmpeg or Vision on a Linux runner. Not owner_action: automation CAN clear it, but only after a decision that is hers - a macos-latest job at 10x minutes, or the Mac's nightly batch. Held, because the stop names the harvester and each missing tool, the other harvesters keep growing the still pools meanwhile, and a fortnight between reminders matches a weekly lane. The lane never substitutes an OCR engine and never accepts a clip unverified; loop/r2.py:verify_shorts records why."
+        "why": "2026-09-12, RESCOPED 2026-09-19. research/imagery_video.py's gates B and C read the credit burned into the picture with Apple's Vision framework, off frames ffmpeg pulls from the clip. ubuntu-latest has neither, so on every scheduled run since the footage lane was written the video harvester failed each clip that passed the rights gate with FileNotFoundError('ffmpeg'), the screener labelled that 'gate A-credit' (379/379 on run 34672456430), and the lane wrote 'the pool is unchanged' about a pool that had never held a clip. This was HELD from 2026-09-12 as a question for the owner - macos-latest at 10x minutes, or the Mac's nightly batch. She closed #77 without the code changing, the hold paged again (#91), and would have every Saturday: a hold on a question only a person can answer never clears. The question is answered in code now: a HARVESTER declares `host`, imagery_video.py runs on the Mac's batch, and the Linux lane verifies it (DELEGATED_HARVEST_STALE / _FAILING). What is LEFT for this code is a harvester whose own declaration names a host that cannot run it - a wrong declaration, a defect, needs_human. It keeps its held_items so an unchanged defect pages on a fortnight's cadence rather than daily, and a NEW harvester or requirement pages at once."
       }
     }
   },
@@ -335,6 +335,11 @@
       "max_consecutive": 6,
       "escalation": "Six weeks of withholding means the batch is never being run and the cadence decision is fiction. Go red."
     },
+    "DELEGATED_HARVEST_STALE": {
+      "why": "A harvester is declared to run on another host (research/imagery_video.py on the Mac's nightly batch - the only machine with ffmpeg and Apple Vision) and loop/state/harvest_runs.json shows that host has not run it inside harvest.delegated_max_age_days. The lane raising this cannot run it and cannot start the Mac; she can, by waking it or running bin/batch-session.sh. The stamp the next run writes clears this on its own. Not needs_human, because a Mac that has been asleep for ten days is not a defect in the pipeline; not self_resolving, because no amount of waiting turns the Mac on.",
+      "max_consecutive": 2,
+      "escalation": "Two consecutive Saturdays with no stamp from the Mac is nearly a month with no video harvest, on a pool the channel's format depends on. Go red - and if the Mac's batch IS running nightly, the harvest step in bin/batch-session.sh is not reaching loop/footage_lane.py --host mac-batch, which is a defect."
+    },
     "LANE_NOT_ARMED_*": {
       "why": "A scheduled lane has never completed one real run, so its schedule is deliberately held. Arming is one command she runs once - `gh workflow run <workflow>` - and a lane that pages her daily until she does is exactly the alarm this taxonomy exists to delete.",
       "max_consecutive": 10,
@@ -401,7 +406,8 @@
     "NO_HARVESTER": "No harvester at all is registered. Zero-item guard.",
     "RIGHTS_GATE_MISSING": "Footage was harvested with no rights manifest. Public-domain-only is not negotiable in this repo.",
     "CLEARED_POOL_SHRANK": "The cleared imagery pool got smaller. Something removed rights-cleared assets and that must never pass quietly.",
-    "HARVESTER_TOOLING_ABSENT": "A scheduled harvester requires host tooling (ffmpeg, Apple Vision) this runner lacks, so its pool cannot grow from here. Earns HELD by naming the harvester and each tool; a new harvester or a new requirement pages.",
+    "HARVESTER_TOOLING_ABSENT": "A harvester's own declaration names THIS host as the one that runs it, and this host lacks the tooling it requires (ffmpeg, Apple Vision). Since 2026-09-19 that is a wrong declaration - a harvester that needs the Mac says host: mac-batch and the Linux lane verifies it instead of holding on it - so what is left is a defect. Earns HELD by naming the harvester and each tool; a new harvester or a new requirement pages.",
+    "DELEGATED_HARVEST_FAILING": "A harvester delegated to another host WAS run there inside harvest.delegated_max_age_days and did not succeed (loop/state/harvest_runs.json: ok=false, exit code and output tail recorded). The host is alive; the harvester is broken on it, or its source is. That is a defect and the stamp says where to look.",
     "SHORTS_UNVERIFIED": "A Short failed V14 attribution or V15 caption-crop and was refused the shelf. Nothing unverified reaches YouTube.",
     "WRANGLER_MISSING": "wrangler is not installed in this environment. On a runner that is a broken install step, not a missing credential.",
     "R2_AUTH_FAILED": "wrangler could not authenticate. Almost always CLOUDFLARE_ACCOUNT_ID being unset rather than a token problem - see THE TRAP in loop/r2.py - which is a configuration defect, not something to wait out.",

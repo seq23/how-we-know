@@ -30,6 +30,12 @@ rights-cleared footage pool`, issue #77), two defects under one red run:
    manifest with a non-empty `failures` list is a partial index, and the lane's
    own docstring says the pool only ever accumulates.
 
+2026-09-19, section 4 rewritten: the tooling stop above was HELD as a
+question for the owner (macOS runner, or the Mac's batch?) and a hold can only
+re-ask - #77 closed, #91 opened. The harvester now declares `host: mac-batch`
+and the Linux lane verifies the Mac's stamp instead of holding. Section 4 pins
+that; loop/tests/test_delegated_harvest_is_verified.py pins the class.
+
 Every check hard-fails on an empty set. Negative proofs restore each defect and
 show the failure return.
 """
@@ -222,6 +228,19 @@ def main() -> int:
           any(h["rel"] == "research/imagery_video.py"
               and {"ffmpeg", "vision-ocr"} <= set(h.get("requires") or [])
               for h in hs))
+    import footage_lane as _fl                             # noqa: PLC0415
+    check("the video harvester declares host mac-batch (the only scheduled "
+          "process with ffmpeg and Vision) and re-fetches NOAA's index",
+          any(h["rel"] == "research/imagery_video.py"
+              and h.get("host") == "mac-batch"
+              and "--refresh" in (h.get("args") or [])
+              for h in hs))
+    for h in hs:
+        check(f"{h['rel']}: its host is one loop/footage_lane.py schedules",
+              not _raises(_fl.UnknownHarvestHost, lambda h=h: _fl.host_of(h)))
+    check("a harvester requiring host tooling names a host that HAS it, or "
+          "the ci lane would take HARVESTER_TOOLING_ABSENT every Saturday",
+          all(_fl.host_of(h) != "ci" for h in hs if h.get("requires")))
 
     # ================================================= 3. screen() labels
     src = open(VIDEO_SRC, encoding="utf-8").read()
@@ -278,62 +297,100 @@ def main() -> int:
               and "multimedia posts" not in r.stdout,
               f"rc={r.returncode} stderr={r.stderr[:200]!r}")
 
-        # ============================================ 4. the lane's stop
+        # ============================================ 4. the lane's verdict
+        # STRENGTHENED 2026-09-19. Until then this section pinned that the
+        # Linux lane took HARVESTER_TOOLING_ABSENT for the video harvester and
+        # earned a HOLD on it. That hold was a question ("where should the
+        # Vision work run?") and a hold can only re-ask: the owner closed #77,
+        # it paged again as #91, and would have every Saturday. The harvester
+        # now DECLARES its host (mac-batch) and the Linux lane VERIFIES it
+        # through loop/state/harvest_runs.json. What this pins now:
+        #   * ffmpeg absent as ci -> the video harvester is not spawned, not
+        #     held, and not a tooling stop; it is reported as delegated;
+        #   * the verdict is the STAMP's: fresh -> green with the harvest
+        #     counted as verified work; absent -> DELEGATED_HARVEST_STALE.
+        # test_delegated_harvest_is_verified.py covers the rest of the class.
         stops = tempfile.mkdtemp(prefix="hwk-footage-stops-")
-        # No gh either: the second run must not depend on the live state of a
-        # real issue. Without gh the hold is trusted, exactly as on a runner
-        # with no token (loop/held.py:_issue_is_open).
+        stamps_p = os.path.join(stops, "harvest_runs.json")
+        # No gh either: nothing here may depend on the live state of a real
+        # issue (loop/held.py:_issue_is_open trusts the hold without gh).
         lane_path = os.pathsep.join(
             d for d in no_ffmpeg.split(os.pathsep)
             if not os.path.exists(os.path.join(d, "gh")))
-        env = dict(os.environ, PATH=lane_path, LOOP_STOPS_DIR=stops)
+        env = dict(os.environ, PATH=lane_path, LOOP_STOPS_DIR=stops,
+                   LOOP_HARVEST_STAMPS=stamps_p)
         env.pop("GITHUB_REPOSITORY", None)     # never ask gh about a real issue
-        r1 = subprocess.run([PY, LANE_SRC, "--dry-run"], capture_output=True,
-                            text=True, cwd=ROOT, env=env, timeout=300)
+        import datetime as _dt                                 # noqa: PLC0415
+        fresh_at = (_dt.datetime.now(_dt.timezone.utc)
+                    - _dt.timedelta(days=1)).isoformat(timespec="seconds")
+        json.dump({"research/imagery_video.py": {
+            "host": "mac-batch", "last_run_at": fresh_at,
+            "last_success_at": fresh_at, "ok": True, "exit": 0,
+            "records": 113, "tail": []}}, open(stamps_p, "w"))
+        r1 = subprocess.run([PY, LANE_SRC, "--dry-run", "--host", "ci"],
+                            capture_output=True, text=True, cwd=ROOT, env=env,
+                            timeout=300)
+        stopfiles = [f for f in os.listdir(stops) if f.endswith("-imagery-harvest.json")]
+        examined += 1
+        check("ci lane with ffmpeg absent and a fresh Mac stamp takes NO stop "
+              "and exits 0", r1.returncode == 0 and not stopfiles,
+              f"rc={r1.returncode} stops={stopfiles} tail={r1.stdout[-400:]!r}")
+        check("the video harvester is reported as delegated to mac-batch",
+              "research/imagery_video.py is delegated to mac-batch" in r1.stdout)
+        check("and never spawned on this host (no gate line, no tooling line)",
+              "research/imagery_video.py: rights gate" not in r1.stdout
+              and "research/imagery_video.py: this host lacks" not in r1.stdout)
+        check("the Mac's harvest is counted as VERIFIED work with its pool size",
+              "[work] verified research/imagery_video.py is harvesting on "
+              "mac-batch (delegated)" in r1.stdout and "113 record(s)" in r1.stdout,
+              r1.stdout[-600:])
+        check("the pool report names the Mac's count beside the local absence",
+              "video_rights.json absent here; 113 record(s) on mac-batch" in r1.stdout)
+        check("the three ci harvesters still ran (dry) first",
+              r1.stdout.count("[work] would harvest") == 3)
+        check("HARVESTER_TOOLING_ABSENT is not raised for a delegated harvester",
+              "HARVESTER_TOOLING_ABSENT" not in r1.stdout)
+
+        # Now take the stamp away: the SAME host, SAME PATH, and the verdict
+        # flips to a named stop about the Mac - not about ffmpeg.
+        json.dump({}, open(stamps_p, "w"))
+        r2 = subprocess.run([PY, LANE_SRC, "--dry-run", "--host", "ci"],
+                            capture_output=True, text=True, cwd=ROOT, env=env,
+                            timeout=300)
         stopfiles = [f for f in os.listdir(stops) if f.endswith("-imagery-harvest.json")]
         rec = json.load(open(os.path.join(stops, stopfiles[0]))) if stopfiles else {}
-        examined += 1
-        check("lane with ffmpeg absent takes HARVESTER_TOOLING_ABSENT",
-              rec.get("code") == "HARVESTER_TOOLING_ABSENT",
-              f"rc={r1.returncode} code={rec.get('code')} tail={r1.stdout[-400:]!r}")
-        check("the stop names the harvester and the tool it lacks",
-              "research/imagery_video.py needs ffmpeg" in (rec.get("held_items") or []),
-              str(rec.get("held_items")))
+        check("with no Mac stamp the ci lane takes DELEGATED_HARVEST_STALE",
+              rec.get("code") == "DELEGATED_HARVEST_STALE",
+              f"rc={r2.returncode} code={rec.get('code')} tail={r2.stdout[-400:]!r}")
+        check("which is owner_action: green, recorded, at the top of the digest",
+              r2.returncode == 0 and rec.get("disposition") == "owner_action"
+              and "WAITING ON THE OWNER" in r2.stdout,
+              f"rc={r2.returncode} disposition={rec.get('disposition')}")
+        check("the stop says how to start the host, not which binary is missing",
+              "bin/batch-session.sh" in (rec.get("unblock") or "")
+              and "ffmpeg" not in (rec.get("unblock") or ""), str(rec.get("unblock")))
         check("the runnable harvesters still ran first (work_done_before_stop)",
               len(rec.get("work_done_before_stop") or []) >= 3,
               str(rec.get("work_done_before_stop")))
-        check("the harvester was never spawned on this host (no gate line for it)",
-              "research/imagery_video.py: rights gate" not in r1.stdout)
-        check("first report is loud (held contract: exit 3, issue opened)",
-              r1.returncode == 3 and rec.get("disposition") == "needs_human",
-              f"rc={r1.returncode} disposition={rec.get('disposition')}")
-        rr = subprocess.run([PY, os.path.join(LOOP, "held.py"), "--record-issue",
-                             "imagery-harvest", "HARVESTER_TOOLING_ABSENT", "77"],
-                            capture_output=True, text=True, cwd=ROOT, env=env)
-        check("the wrapper can record the tracking issue against the hold",
-              rr.returncode == 0, rr.stdout + rr.stderr)
-        r2 = subprocess.run([PY, LANE_SRC, "--dry-run"], capture_output=True,
-                            text=True, cwd=ROOT, env=env, timeout=300)
-        rec2 = json.load(open(os.path.join(stops, stopfiles[0])))
-        check("second run on the unchanged fact is HELD and exits 0 (green, "
-              "tracked, not silent)",
-              r2.returncode == 0 and rec2.get("disposition") == "held"
-              and "HELD STOP" in r2.stdout,
-              f"rc={r2.returncode} disposition={rec2.get('disposition')}")
-        check("the held run still printed the full pool report",
-              "cleared pool after: channel/imagery/species.json" in r2.stdout)
         shutil.rmtree(stops, ignore_errors=True)
 
         # ---- NEGATIVE PROOF for the lane: with every probe answering
-        # "present" the lane runs all four harvesters and takes no stop.
+        # "present" AND the Mac's stamp fresh, the ci lane runs its three
+        # harvesters, verifies the fourth, and takes no stop.
         import footage_lane                                # noqa: PLC0415
         saved_tools = dict(host_tools.HOST_TOOLS)
         for k, (d, _) in saved_tools.items():
             host_tools.HOST_TOOLS[k] = (d, lambda: True)
         stops2 = tempfile.mkdtemp(prefix="hwk-footage-stops2-")
+        stamps2 = os.path.join(stops2, "harvest_runs.json")
+        json.dump({"research/imagery_video.py": {
+            "host": "mac-batch", "last_run_at": fresh_at,
+            "last_success_at": fresh_at, "ok": True, "exit": 0,
+            "records": 113, "tail": []}}, open(stamps2, "w"))
         os.environ["LOOP_STOPS_DIR"] = stops2
+        os.environ["LOOP_HARVEST_STAMPS"] = stamps2
         try:
-            rc = footage_lane.run(dry_run=True)
+            rc = footage_lane.run(dry_run=True, host="ci")
             took_stop = False
         except SystemExit as exc:
             rc, took_stop = exc.code, True
@@ -341,8 +398,10 @@ def main() -> int:
             host_tools.HOST_TOOLS.clear()
             host_tools.HOST_TOOLS.update(saved_tools)
             os.environ.pop("LOOP_STOPS_DIR", None)
-        check("negative proof: with the tooling present the lane takes no stop "
-              "and would run every scheduled harvester", rc == 0 and not took_stop
+            os.environ.pop("LOOP_HARVEST_STAMPS", None)
+        check("negative proof: with the tooling present and the Mac fresh the "
+              "ci lane takes no stop, runs its own three and verifies the "
+              "fourth", rc == 0 and not took_stop
               and not [f for f in os.listdir(stops2) if "imagery-harvest" in f],
               f"rc={rc} stop={took_stop}")
         shutil.rmtree(stops2, ignore_errors=True)
@@ -354,6 +413,19 @@ def main() -> int:
     check("HARVESTER_TOOLING_ABSENT is a held code with a reminder cadence",
           isinstance(policy.get("held", {}).get("codes", {})
                      .get("HARVESTER_TOOLING_ABSENT", {}).get("reminder_days"), int))
+    check("HARVESTER_TOOLING_ABSENT stays needs_human (a wrong host declaration "
+          "is a defect; it may not go quiet)",
+          "HARVESTER_TOOLING_ABSENT" in policy.get("needs_human", {})
+          and "HARVESTER_TOOLING_ABSENT" not in policy.get("self_resolving", {})
+          and "HARVESTER_TOOLING_ABSENT" not in policy.get("owner_action", {}))
+    check("DELEGATED_HARVEST_STALE is owner_action with a cap and an escalation",
+          isinstance(policy.get("owner_action", {}).get("DELEGATED_HARVEST_STALE", {})
+                     .get("max_consecutive"), int)
+          and bool(policy["owner_action"]["DELEGATED_HARVEST_STALE"].get("escalation")))
+    check("DELEGATED_HARVEST_FAILING is needs_human (the host ran it and it broke)",
+          "DELEGATED_HARVEST_FAILING" in policy.get("needs_human", {})
+          and "DELEGATED_HARVEST_FAILING" not in policy.get("owner_action", {})
+          and "DELEGATED_HARVEST_FAILING" not in policy.get("self_resolving", {}))
     check("CLEARED_POOL_SHRANK stays needs_human (a shrink is a defect, never held)",
           "CLEARED_POOL_SHRANK" in policy.get("needs_human", {})
           and "CLEARED_POOL_SHRANK" not in policy.get("held", {}).get("codes", {})
