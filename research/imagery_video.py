@@ -137,16 +137,32 @@ MANIFEST = os.path.join(OUT, "video_rights.json")
 #
 # The lane does not substitute another OCR engine (loop/r2.py:verify_shorts
 # records why: unproven against these fonts, guarding the one check that may
-# not be wrong) and does not accept clips unverified. A host without these
-# tools takes a NAMED, HELD stop that names them, and harvests nothing.
+# not be wrong) and does not accept clips unverified.
+#
+# `host` names WHICH scheduled process runs this file - loop/footage_lane.py
+# HOSTS is the table. "mac-batch" is bin/batch-session.sh, nightly on the
+# Mac, which has all three tools. The Saturday Linux lane treats this
+# harvester as DELEGATED: it does not run it, it verifies through
+# loop/state/harvest_runs.json that the Mac has, and stops by name if the Mac
+# has not. Between 2026-09-12 and 2026-09-19 this was a HELD stop on the
+# Linux lane asking the owner where the work should run (#77, #91); the
+# answer lives here now, where the code can read it.
+#
+# `--refresh` is not cosmetic either. discover() caches NOAA's index under
+# research/.video_cache/ and, without it, a host that ran once would re-screen
+# the same index every week and never see a post NOAA published since.
 HARVESTER = {
     "domain": "deep-sea-ocean-science",
     "gate": "credit_is_noaa_only",
     "manifest": "channel/imagery/video_rights.json",
-    "args": ["--harvest"],
+    "args": ["--harvest", "--refresh"],
     "scheduled": True,
     "what": "video clips - the scarce pool",
     "requires": ["ffmpeg", "vision-ocr"],
+    "host": "mac-batch",
+    # Measured 2026-09-19: 16 clips in 5m44s with 8 OCR workers, so the whole
+    # index is ~2.3 h. Four hours is the budget, not the expectation.
+    "timeout_seconds": 14400,
 }
 
 # The probes for those names live in loop/host_tools.py, which the lane uses

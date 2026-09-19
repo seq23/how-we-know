@@ -174,6 +174,12 @@
       "pov_top_up": "research/proposed-taxonomy.json new_niche_requirement: entering a domain outside deep sea requires a ~20 minute POV top-up interview before first publish, because tier:specific POV lines do not transfer."
     }
   },
+  "harvest": {
+    "delegated_max_age_days": 10,
+    "interval_days": 6,
+    "_why": "2026-09-19. A harvester declares the host that runs it (research/imagery_video.py: the Mac's nightly batch, which has ffmpeg and Apple Vision; ubuntu-latest never will). The host that does NOT run it verifies the one that does through loop/state/harvest_runs.json. delegated_max_age_days: a delegated harvester with no successful stamp inside this many days is DELEGATED_HARVEST_STALE (or DELEGATED_HARVEST_FAILING if it ran and failed). Ten days: the Saturday lane sees at most a week plus a night between Mac harvests at interval_days=6, so a healthy Mac never trips it and a Mac that has been off for a week and a half does. interval_days: a host re-runs a harvester it owns only after this many days since its last success, because the nightly batch must not re-screen NOAA's whole video index every night; six keeps it weekly and lets a missed night catch up the next.",
+    "_stops": "DELEGATED_HARVEST_STALE is owner_action (only she can start a Mac that is off; capped, then red). DELEGATED_HARVEST_FAILING is needs_human (the host ran it and it did not finish - a defect). HARVESTER_TOOLING_ABSENT now means the declared host itself lacks the tooling - a wrong declaration - and stays needs_human."
+  },
   "mac": {
     "unshipped_days": 3,
     "_why": "2026-09-13. The Mac's lanes write their stops to loop/state/stops/ on the Mac, where the cloud digest cannot read them. Nine finished episodes shipped nothing for a week and no report anywhere said so. The Mac now pushes loop/state/mac_heartbeat.json after every lane run; the digest raises MAC_NOT_SHIPPING when the heartbeat shows finished renders pending for more than this many days, or when there has been no heartbeat at all for that long while renders are pending. Three days: the daily upload lane gets two chances before the silence is called a fault."
