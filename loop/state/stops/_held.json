@@ -13,7 +13,7 @@
   "imagery-harvest::HARVESTER_TOOLING_ABSENT": {
     "code": "HARVESTER_TOOLING_ABSENT",
     "first_reported_at": "2026-09-12T04:39:30+00:00",
-    "issue": 77,
+    "issue": 91,
     "items": [
       "research/imagery_video.py needs ffmpeg",
       "research/imagery_video.py needs vision-ocr"
