@@ -1,7 +1,7 @@
 {
   "stage": "weekly-score",
   "week": "2026-W38",
-  "at": "2026-09-18T23:44:09+00:00",
+  "at": "2026-09-19T10:09:12+00:00",
   "code": "NEW_DOMAIN_QUOTA",
   "message": "deep-sea-ocean-science holds weekly slots and its first topic gate stopped on YouTube Data API quota. It has no queue until this runs, and the drafting lane has nothing to draw from for it.",
   "detail": {
@@ -15,13 +15,13 @@
   },
   "unblock": "The next Saturday run retries. If it recurs, the candidate set is larger than one day's quota - lower --budget and let it fill over two weeks.",
   "disposition": "self_resolving",
-  "disposition_why": "A newly admitted domain's first scoring pass exceeded the weekly budget. Its remaining candidates are scored next week; nothing is lost and no unscored topic can be queued. (run 1 of at most 3 before this escalates to a human.)",
-  "consecutive": 1,
+  "disposition_why": "A newly admitted domain's first scoring pass exceeded the weekly budget. Its remaining candidates are scored next week; nothing is lost and no unscored topic can be queued. (run 2 of at most 3 before this escalates to a human.)",
+  "consecutive": 2,
   "held_items": [],
   "exit_code": 0,
   "work_done_before_stop": [
     "scored and ranked 34 candidate(s)",
-    "ranking is fresh as of 2026-09-18T23:43:44.351339+00:00"
+    "ranking is fresh as of 2026-09-19T10:09:01.841907+00:00"
   ],
   "notes": [
     "running research/publish_order.py (owned by the research agent)",
