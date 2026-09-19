@@ -551,6 +551,16 @@ Guarded by **V33**, asserted behaviourally over the live allocation rather than
 by grepping for filenames — a lane that finds the file and never runs it would
 pass a grep.
 
+Added 2026-09-19: a harvester also declares its **`host`** — the scheduled
+process that runs it (`loop/footage_lane.py:HOSTS`). The video harvester needs
+ffmpeg and Apple Vision, so it declares `mac-batch` and runs from the Mac's
+nightly batch; the Saturday Linux lane does not hold on it, it **verifies** it
+through `loop/state/harvest_runs.json` and stops by name
+(`DELEGATED_HARVEST_STALE` / `_FAILING`) if the Mac is not doing the work.
+`harvest.delegated_max_age_days` and `harvest.interval_days` in
+`loop/config.json` are the two numbers. Guarded by
+`loop/tests/test_delegated_harvest_is_verified.py`.
+
 ---
 
 ## 3e. The editorial gate, decided rather than left to decay
