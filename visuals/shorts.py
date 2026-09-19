@@ -44,7 +44,9 @@ Three decisions are encoded here, and each one is a claim that can be checked:
 3. AUDIO IS THE ORIGINAL NARRATION WAVS, NEVER A RE-RENDER.
    The selected beats' wavs are concatenated directly. `verify()` then measures
    the finished file and fails if the mean level is not near the -22.9 dBFS the
-   narration is normalised to, so the silent-video failure mode cannot ship.
+   narration is normalised to, so the silent-video failure mode cannot ship,
+   and measures the picture and the audio stream each against the narration
+   total the cut was built from (budgets derived in `av_verdict`).
 
 Nothing in this module writes to plans/, audio/, renders/ or any other module's
 files. It reads them.
@@ -825,6 +827,7 @@ def make_short(slug: str, outdir: str, max_seconds: float = MAX_SECONDS,
         if want != have:
             last = dict(by_index[picked[-1]])
             last["frames"] = max(1, last["frames"] + (want - have))
+            last["video_s"] = last["frames"] / FPS
             by_index[picked[-1]] = last
             print(f"    timing: {want - have:+d} frame(s) onto the last beat so "
                   f"the cut is {want} frames against {audio_total:.3f}s of audio")
@@ -884,16 +887,29 @@ def make_short(slug: str, outdir: str, max_seconds: float = MAX_SECONDS,
         cur = nxt
     graph.append(f"[{cur}]format=yuv420p[v]")
 
+    # NO `-shortest`. It was here to stop a picture longer than its narration
+    # from leaving a silent tail, but the picture cannot run long: every part is
+    # cut to an asserted frame count and the total is round(narration * FPS),
+    # so the picture is within half a frame of the narration by construction.
+    # What `-shortest` actually did, measured on 2026-09-19 over all 69 cuts in
+    # shorts/: whenever the picture came out a few ms SHORTER than the WAV it
+    # stopped the AAC encoder at a 1024-sample (42.7 ms at 24 kHz) frame
+    # boundary, truncating the narration by 11-64 ms in 23 of 69 cuts, while the
+    # picture itself was at most 16 ms short. The last-beat WAVs carry only
+    # 30-40 ms of trailing silence, so in 7 of those 23 the cut ate into the
+    # last spoken word's decay. Without it the container is max(picture, audio),
+    # which is at most half a frame of held last picture or audio - and the
+    # audio stream comes out sample-exact against the WAV (see av_verdict).
     out = os.path.join(outdir, f"{stem}.mp4")
     cmd += ["-filter_complex", ";".join(graph),
             "-map", "[v]", "-map", f"{len(cues)+2}:a",
             "-c:v", "libx264", "-preset", "medium", "-crf", "20",
-            "-c:a", "aac", "-b:a", "192k", "-shortest",
+            "-c:a", "aac", "-b:a", "192k",
             "-movflags", "+faststart", out]
     _run(cmd)
     shutil.rmtree(work, ignore_errors=True)
 
-    sel.update(verify(out))
+    sel.update(verify(out, narration_s=audio_total if picked else None))
     sel["output"] = out
     sel["captions"] = len(cues)
 
@@ -917,10 +933,92 @@ def make_short(slug: str, outdir: str, max_seconds: float = MAX_SECONDS,
     return sel
 
 
-def verify(path: str) -> dict:
+# ------------------------------------------------------------ A/V budgets
+#
+# MEASURED, NOT CHOSEN. The previous rule refused a cut when |video - audio
+# stream| exceeded one frame (33 ms). That number matched its own comment and
+# nothing else: it sat inside the AAC encoder's own noise, and it compared two
+# things that are BOTH derived from the narration instead of comparing each to
+# the narration. Measured 2026-09-19 over every cut in shorts/ (69 receipts,
+# ffprobe on each mp4, source WAV total re-summed from each receipt's beats;
+# all AAC 24 kHz, all 30 fps, every stream start_time 0.000):
+#
+#   picture - WAV   n=69  min -49.3  max +0.0  mean -17.8  median -18.7 ms
+#     the 31 cuts made after the last-beat correction: within +-16.0 ms, i.e.
+#     inside the half-frame (16.7 ms) that round(narration * FPS) guarantees;
+#     the 38 older cuts: up to -49.3 ms (1.5 frames), the defect that
+#     correction fixed - and which the old rule never saw, because -shortest
+#     truncated the audio to match the short picture.
+#   AAC stream - WAV  n=69  min -64.3  max +0.3  mean -10.8  median -0.3 ms
+#     bimodal: 46 cuts within +-0.3 ms (MP4 edit list trims the encoder
+#     priming, so the container is sample-exact); 23 cuts truncated 11-64 ms
+#     by `-shortest` at the 1024-sample AAC frame (42.7 ms at 24 kHz).
+#   video - audio (the old rule)  n=69  min -31.7  max +39.0 ms
+#     one refusal (why-is-carbon-fiber-so-strong: picture -9.3 ms, audio
+#     -48.3 ms), which was a truncated audio tail, not a picture error.
+#
+# So the two components are measured separately, each against the narration
+# the cut was built from:
+#
+#   picture:  |picture - narration| <= half a frame + probe rounding. The
+#             cutter makes round(narration * FPS) frames, so half a frame is
+#             the construction guarantee, and a one-frame miscount is at
+#             least half a frame away from it - this budget catches every
+#             miscount, where a one-frame budget would miss half of them.
+#   audio:    |audio stream - narration| <= AUDIO_BUDGET_S. Sample-exact is
+#             the expectation (0.3 ms residual measured on 46 untruncated
+#             cuts); the smallest truncation -shortest ever produced was
+#             11 ms. 5 ms sits an order of magnitude above the residual and
+#             below the smallest truncation seen.
+#
+# The video-audio difference is still recorded (`av_drift_s`) as information.
+PROBE_EPS_S = 0.001            # ffprobe prints durations to the microsecond;
+                               # 1 ms is 10x the largest rounding observed
+PICTURE_BUDGET_S = 0.5 / FPS + PROBE_EPS_S
+AUDIO_BUDGET_S = 0.005
+
+
+def av_verdict(video_s: float | None, audio_s: float | None,
+               narration_s: float | None) -> tuple[list[str], dict]:
+    """Judge the finished file's two streams against the narration it was
+    built from. Pure: stream durations in, (problems, measurements) out, so a
+    test can plant durations and assert the verdict.
+
+    `narration_s` None means the caller has no WAV total (a bare re-verify of
+    a file); then only the streams' difference is reported, never refused, as
+    there is nothing honest to refuse it against.
+    """
+    info = {"narration_s": None if narration_s is None else round(narration_s, 4),
+            "picture_vs_narration_s": None, "audio_vs_narration_s": None,
+            "av_drift_s": None}
+    problems = []
+    if video_s is not None and audio_s is not None:
+        info["av_drift_s"] = round(video_s - audio_s, 4)
+    if narration_s is None:
+        return problems, info
+    if video_s is not None:
+        d = video_s - narration_s
+        info["picture_vs_narration_s"] = round(d, 4)
+        if abs(d) > PICTURE_BUDGET_S:
+            problems.append(
+                f"picture is {d:+.3f}s against its narration, more than half "
+                f"a frame ({PICTURE_BUDGET_S:.3f}s): the frame count is wrong")
+    if audio_s is not None:
+        d = audio_s - narration_s
+        info["audio_vs_narration_s"] = round(d, 4)
+        if abs(d) > AUDIO_BUDGET_S:
+            problems.append(
+                f"audio stream is {d:+.3f}s against its narration, more than "
+                f"{AUDIO_BUDGET_S:.3f}s: narration was truncated or padded")
+    return problems, info
+
+
+def verify(path: str, narration_s: float | None = None) -> dict:
     """Measure the finished file. Every one of these is a way a Short silently
-    fails: no audio at all, a mismatch that muted it, over the 60s cutoff, or
-    the wrong frame shape."""
+    fails: no audio at all, a mismatch that muted it, over the 60s cutoff, the
+    wrong frame shape, or a picture or audio stream that is not the length of
+    the narration it was cut for (`narration_s`, the WAV total the frame count
+    was derived from)."""
     info = probe_stream(path)
     dur = probe_duration(path)
     problems = []
@@ -937,23 +1035,14 @@ def verify(path: str) -> dict:
     if (info["width"], info["height"]) != (OUT_W, OUT_H):
         problems.append(f"{info['width']}x{info['height']} is not {OUT_W}x{OUT_H}")
 
-    # A/V drift. `-shortest` hides a picture that is longer than its narration by
-    # truncating it, and hides nothing at all about a picture that started
-    # drifting at the first beat boundary. Measure both streams and refuse more
-    # than one frame of difference.
-    drift = None
-    if info["has_audio"]:
-        v = stream_duration(path, "v")
-        a = stream_duration(path, "a")
-        if v is not None and a is not None:
-            drift = round(v - a, 4)
-            if abs(drift) > 1.0 / FPS:
-                problems.append(f"video and audio differ by {drift:.3f}s, more "
-                                f"than one frame ({1 / FPS:.3f}s)")
+    v = stream_duration(path, "v")
+    a = stream_duration(path, "a") if info["has_audio"] else None
+    av_problems, av = av_verdict(v, a, narration_s)
+    problems += av_problems
     return {"duration_s": round(dur, 2),
             "dimensions": f"{info['width']}x{info['height']}",
             "mean_dbfs": mean_dbfs(path) if info["has_audio"] else None,
-            "av_drift_s": drift,
+            **av,
             "problems": problems, "ok": not problems}
 
 
@@ -1011,7 +1100,9 @@ def main(argv=None):
                 flag = "OK " if r["ok"] else "BAD"
                 print(f"{flag} {r['output']}  {r['duration_s']}s  {r['dimensions']}  "
                       f"{r['mean_dbfs']} dBFS  {r['captions']} captions  "
-                      f"drift {r['av_drift_s']}s  band {r['band_h']}px "
+                      f"picture {r['picture_vs_narration_s']:+}s  "
+                      f"audio {r['audio_vs_narration_s']:+}s vs narration  "
+                      f"band {r['band_h']}px "
                       f"(-{r['band_rows_lost']})  {len(r['credits'])} credit(s)"
                       + (f"  PROBLEMS: {r['problems']}" if r["problems"] else ""))
 
