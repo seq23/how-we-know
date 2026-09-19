@@ -486,3 +486,61 @@ removed from the video harvester's declaration → eleven failures, the first
 being the ci lane back on `HARVESTER_TOOLING_ABSENT` exit 3;
 `DELEGATED_HARVEST_STALE` removed from the policy →
 `test_every_stop_is_classified` names it at its raise site.
+
+## 2026-09-19 — the Shorts A/V budget was a number that matched a comment, and it hid a truncation
+
+**What happened.** `visuals/shorts.py:verify` refused a cut when the video and
+audio streams differed by more than one frame (33 ms).
+`why-is-carbon-fiber-so-strong` measured 0.039 s and was refused on every
+re-cut, so the push path (which correctly reads the receipt) could not shelve
+it. Its picture was exactly right: 1605 frames against 53.509 s of narration.
+
+**Measured, not guessed** — every cut in `shorts/` (69 receipts; ffprobe on each
+mp4; the WAV total re-summed from each receipt's beats; all AAC 24 kHz, 30 fps,
+every stream `start_time` 0.000, so no offset anywhere):
+
+| component | n | min | max | mean | median |
+|---|---|---|---|---|---|
+| picture − WAV | 69 | −49.3 ms | +0.0 | −17.8 | −18.7 |
+| AAC stream − WAV | 69 | −64.3 ms | +0.3 | −10.8 | −0.3 |
+| video − audio (the old rule) | 69 | −31.7 ms | +39.0 | −7.0 | −14.3 |
+
+- **Picture:** the 31 cuts made since the last-beat correction are within
+  ±16.0 ms — inside the half-frame that `round(narration × FPS)` guarantees.
+  The 38 older cuts are up to 1.5 frames short (the defect that correction
+  fixed), and the old rule passed every one of them, because…
+- **Audio:** bimodal. 46 cuts within ±0.3 ms of the WAV (the MP4 edit list
+  trims AAC priming, so the container is sample-exact). 23 cuts truncated
+  11–64 ms: `-shortest` stopped the AAC encoder at a 1024-sample (42.7 ms)
+  boundary whenever the picture was a few ms shorter than the WAV. The
+  last-beat WAVs carry 30–40 ms of trailing silence, so in 7 of the 23 the cut
+  ate into the last spoken word's decay. The old rule refused exactly one of
+  the 23 — carbon fiber — and for the wrong reason.
+
+**Decision (b): fix the mux, then measure each stream against the narration.**
+1. **`-shortest` is gone** from the final mux. It was protecting against a long
+   picture that cannot happen (every part is cut to an asserted frame count).
+   Re-cut, carbon fiber's audio stream is −0.3 ms against its WAV, picture
+   −9.3 ms, 1605 frames.
+2. **`av_verdict(video, audio, narration)`** judges the picture on
+   `PICTURE_BUDGET_S` = half a frame + 1 ms probe rounding (the construction
+   guarantee; a one-frame miscount is at least half a frame away, so this
+   catches every miscount where a one-frame budget missed half of them) and
+   the audio on `AUDIO_BUDGET_S` = 5 ms (an order of magnitude above the
+   0.3 ms residual, below the 11 ms smallest truncation seen). The streams'
+   difference is still written to the receipt as `av_drift_s`, information
+   only. The receipt now also carries `narration_s`,
+   `picture_vs_narration_s` and `audio_vs_narration_s`.
+3. **Not re-cut:** the 22 other truncated cuts and the 38 short-picture cuts.
+   Their receipts say ok:true and most are published; retiring is private-only
+   by rule, and a re-cut is a re-upload. Listed here so the choice is visible,
+   not made by omission: the 7 whose last word was clipped are
+   `04-…-scary-short3`, `09-…-scariest-short`, `10-…-deepest-part-short2`,
+   `15-…-challenger-deep-short`, `16-…-whale-dies-short2`,
+   `what-is-concrete-made-of-short`, and carbon fiber (re-cut).
+
+**Guarded by** `loop/tests/test_shorts_av_budget_is_measured.py` (12 planted
+verdicts, budgets asserted as derived, `-shortest` asserted absent from the
+mux, zero receipts hard-fails). **Negative proof:** old rule and `-shortest`
+restored → 17 failures, among them a +1-frame picture error accepted outright
+and the 48 ms carbon-fiber truncation "refused" as drift; restored → green.

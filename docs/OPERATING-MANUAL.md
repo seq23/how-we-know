@@ -813,6 +813,15 @@ Recorded because each was invisible until something specifically looked for it.
   "A/V drift under one frame, verified" was taken on the already-truncated file:
   a real number measuring the wrong thing. Now cut with `-frames:v <exact>` and
   asserted afterwards.
+- **The one-frame A/V budget was inside the encoder's own noise, and hid a
+  truncation.** `verify` compared the video stream to the audio stream, and
+  `-shortest` had been cutting the AAC stream 11–64 ms short in 23 of 69 cuts
+  whenever the picture was a few ms shorter than the WAV — so short pictures
+  and clipped narration passed together, and the one honest cut it refused
+  (carbon fiber, 0.039 s) was refused for the wrong reason. Measured over every
+  cut, `-shortest` removed, and each stream is now judged against the
+  narration it was built from on a derived budget (`av_verdict`;
+  DECISION-LOG 2026-09-19).
 - **The Short's chrome vanished after the first beat boundary.** x264 tagged some
   segments `bt709` and others `unknown`; `concat -c copy` changed format
   mid-stream, ffmpeg reinitialised the filter graph, and the single-frame chrome
