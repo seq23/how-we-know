@@ -1,69 +1,49 @@
 {
   "stage": "imagery-harvest",
   "week": "2026-W38",
-  "at": "2026-09-19T04:35:12+00:00",
-  "code": "HARVESTER_TOOLING_ABSENT",
-  "message": "1 scheduled harvester(s) cannot run on this host: research/imagery_video.py requires ffmpeg, vision-ocr. Its manifest cannot grow from here, and every clip it would have screened was neither accepted nor rejected. The other 3 harvester(s) ran and their pools are committed.",
+  "at": "2026-09-19T15:50:51+00:00",
+  "code": "DELEGATED_HARVEST_STALE",
+  "message": "1 delegated harvester(s) have not been run by their host inside the 10-day cap: research/imagery_video.py on mac-batch (last run: never; last success: never). This host cannot run it and the host that can has been silent, so the pool it feeds has stopped growing.",
   "detail": {
-    "unrunnable": {
-      "research/imagery_video.py": [
-        "ffmpeg: ffmpeg on PATH, to range-request one frame per probe time straight off the remote clip",
-        "vision-ocr: macOS with swiftc, to compile the Apple Vision OCR helper that reads the burned-in credit (gates B and C)"
-      ]
-    },
-    "platform": "linux",
-    "pool": {
-      "channel/imagery/rights.json": 100,
-      "channel/imagery/materials.json": 12,
-      "channel/imagery/species.json": 33,
-      "channel/imagery/video_rights.json": null
-    }
+    "stale": [
+      {
+        "rel": "research/imagery_video.py",
+        "host": "mac-batch",
+        "state": "stale",
+        "cap_days": 10,
+        "last_success_at": null,
+        "last_run_at": null,
+        "success_age_days": null,
+        "run_age_days": null,
+        "records": null,
+        "exit": null,
+        "tail": []
+      }
+    ],
+    "host": "ci",
+    "stamps": "loop/state/harvest_runs.json"
   },
-  "unblock": "Decide where the Vision-dependent harvest runs: (a) give this workflow a `runs-on: macos-latest` job for the video harvester (ffmpeg, swiftc and Vision are on that image; 10x minute multiplier on a private repo), or (b) add `research/imagery_video.py --harvest` to the Mac's nightly batch (bin/batch-session.sh), which already commits and pushes repo state. Do NOT install a different OCR engine on Linux and do NOT accept clips unverified; loop/r2.py:verify_shorts records why both were rejected.",
-  "disposition": "needs_human",
-  "disposition_why": "'HARVESTER_TOOLING_ABSENT' is not in loop/stop_policy.json, so it is treated as needing a human. That is the default on purpose. issue #77 tracked this hold and has been CLOSED, but 'HARVESTER_TOOLING_ABSENT' is still holding on 2 item(s). A closed issue means handled; this is not handled.",
-  "consecutive": 2,
-  "held_items": [
-    "research/imagery_video.py needs ffmpeg",
-    "research/imagery_video.py needs vision-ocr"
-  ],
-  "exit_code": 3,
-  "work_done_before_stop": [
-    "harvested still imagery - NOAA Ocean Exploration, plus a hand-verified public-domain set through research/imagery.py",
-    "harvested materials stills - Wikimedia Commons, public-domain gate only through research/imagery_materials.py --missing",
-    "harvested species stills - the per-creature index every deep-sea episode draws its subject shots from through research/imagery_species.py",
-    "channel/imagery/rights.json grew 88 -> 100"
-  ],
+  "unblock": "mac-batch: wake the Mac (launchd fires the missed 23:00 batch on wake) or run bin/batch-session.sh on it by hand. The next run there stamps loop/state/harvest_runs.json and this clears on its own.",
+  "disposition": "owner_action",
+  "disposition_why": "A harvester is declared to run on another host (research/imagery_video.py on the Mac's nightly batch - the only machine with ffmpeg and Apple Vision) and loop/state/harvest_runs.json shows that host has not run it inside harvest.delegated_max_age_days. The lane raising this cannot run it and cannot start the Mac; she can, by waking it or running bin/batch-session.sh. The stamp the next run writes clears this on its own. Not needs_human, because a Mac that has been asleep for ten days is not a defect in the pipeline; not self_resolving, because no amount of waiting turns the Mac on. Only she can clear this, and retrying cannot, so the run stays GREEN and the fact is carried to the top of the Sunday digest instead of into her inbox as a failed build. (run 1 of at most 2 before this escalates.)",
+  "consecutive": 1,
+  "held_items": [],
+  "exit_code": 0,
+  "work_done_before_stop": [],
   "notes": [
-    "allocation: deep-sea-ocean-science 2, materials-and-manufacturing 2 -> 4 scheduled harvester(s)",
+    "allocation: deep-sea-ocean-science 2, materials-and-manufacturing 2 -> 4 scheduled harvester(s): 3 run here on ci, 1 delegated",
+    "research/imagery_video.py is delegated to mac-batch (the Mac's nightly batch (bin/batch-session.sh, launchd com.howweknow.batch at 23:00 local; it has ffmpeg, swiftc and Apple Vision)); verified below, not run",
     "cleared pool before: channel/imagery/materials.json 12 record(s)",
-    "cleared pool before: channel/imagery/rights.json 88 record(s)",
+    "cleared pool before: channel/imagery/rights.json 100 record(s)",
     "cleared pool before: channel/imagery/species.json 33 record(s)",
     "cleared pool before: channel/imagery/video_rights.json absent",
     "demand at the current cadence: 4/week, 32 episode(s) over the next 8 weeks. An episode with no cleared footage is illustrated, which is a legitimate outcome and never a reason to widen the gate.",
     "research/imagery.py: rights gate credit_is_noaa_only() present",
-    "  research/imagery.py: by slot: {'trench': 5, 'frilled_shark': 6, 'vehicle': 11, 'column': 5, 'anglerfish': 4, 'jelly': 3, 'sponge': 7, 'coral': 4, 'cucumber': 5, 'star': 6, 'red_animal': 5, 'siphonophore': 2, 'squid': 4, 'vent': 4, 'crab': 5, 'seafloor': 4, 'eyes': 4, 'transparent': 4, 'octopus': 3, 'fish': 3, 'snailfish': 3, 'biolum': 3}",
-    "  research/imagery.py:   rejected  18  third-party or copyrighted credit",
-    "  research/imagery.py:   rejected  15  too small",
-    "  research/imagery.py:   rejected  13  credit does not resolve to NOAA alone",
-    "  research/imagery.py:   rejected   2  credit carries a co-author",
-    "  research/imagery.py:   rejected   1  no credit line on item page",
+    "research/imagery.py: harvested 0.5 day(s) ago on ci; due again after 6 (loop/config.json harvest.interval_days) - not re-run tonight",
     "research/imagery_materials.py: rights gate pd_licence_ok() present",
-    "  research/imagery_materials.py:   DROP tempered-glass     no candidate passed both gates",
-    "  research/imagery_materials.py:   DROP crystal-structure  no candidate passed both gates",
-    "  research/imagery_materials.py:   DROP kevlar-aramid      no candidate passed both gates",
-    "  research/imagery_materials.py: ",
-    "  research/imagery_materials.py: 12/18 subjects covered -> /home/runner/work/how-we-know/how-we-know/channel/imagery/materials.json",
-    "  research/imagery_materials.py: rights verified: 12 assets, sha256 matched on every file",
+    "research/imagery_materials.py: harvested 0.5 day(s) ago on ci; due again after 6 (loop/config.json harvest.interval_days) - not re-run tonight",
     "research/imagery_species.py: rights gate pd_licence_ok() present",
-    "  research/imagery_species.py:   uncovered         0  Lanternfish                ep 08",
-    "  research/imagery_species.py:        no public-domain candidate has been surveyed for this subject yet",
-    "  research/imagery_species.py:   uncovered         0  Vampire squid              ep 09",
-    "  research/imagery_species.py:        no public-domain candidate has been surveyed for this subject yet",
-    "  research/imagery_species.py:   uncovered         0  Viperfish                  ep 09",
-    "  research/imagery_species.py:        no public-domain candidate has been surveyed for this subject yet",
-    "research/imagery_video.py: this host lacks ffmpeg: ffmpeg on PATH, to range-request one frame per probe time straight off the remote clip",
-    "research/imagery_video.py: this host lacks vision-ocr: macOS with swiftc, to compile the Apple Vision OCR helper that reads the burned-in credit (gates B and C)",
+    "research/imagery_species.py: harvested 0.5 day(s) ago on ci; due again after 6 (loop/config.json harvest.interval_days) - not re-run tonight",
     "cleared pool after: channel/imagery/materials.json 12 record(s)",
     "cleared pool after: channel/imagery/rights.json 100 record(s)",
     "cleared pool after: channel/imagery/species.json 33 record(s)",
