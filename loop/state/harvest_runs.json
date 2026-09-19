@@ -1,0 +1,41 @@
+{
+  "_why": "Written by loop/footage_lane.py on every host that runs a harvester, keyed by the harvester's path. A host that does NOT run a harvester reads this to verify the host that does is doing it: a success inside harvest.delegated_max_age_days (loop/config.json) is fresh; a failed run inside the cap is DELEGATED_HARVEST_FAILING; nothing inside the cap is DELEGATED_HARVEST_STALE. The video manifest never enters git (the clips are on the Mac and in R2, and V11 re-hashes every record against the bytes on disk), so `records` here is how the cloud knows the pool size.",
+  "_seeded": "2026-09-19: the three ci-hosted stamps below record run 35420734439 (loop \u00b7 Sat 04:00 UTC, 2026-09-19T04:14Z-04:35Z), in which research/imagery.py, imagery_materials.py and imagery_species.py ran and committed their pools (rights.json 100, materials.json 12, species.json 33). research/imagery_video.py has NO stamp on purpose: no scheduled host has ever run it. Its first stamp is written by the Mac's batch.",
+  "research/imagery.py": {
+    "host": "ci",
+    "last_run_at": "2026-09-19T04:35:22+00:00",
+    "last_success_at": "2026-09-19T04:35:22+00:00",
+    "ok": true,
+    "exit": 0,
+    "week": "2026-W38",
+    "records": 100,
+    "tail": [
+      "rights verified"
+    ]
+  },
+  "research/imagery_materials.py": {
+    "host": "ci",
+    "last_run_at": "2026-09-19T04:35:22+00:00",
+    "last_success_at": "2026-09-19T04:35:22+00:00",
+    "ok": true,
+    "exit": 0,
+    "week": "2026-W38",
+    "records": 12,
+    "tail": [
+      "12/18 subjects covered -> channel/imagery/materials.json",
+      "rights verified: 12 assets, sha256 matched on every file"
+    ]
+  },
+  "research/imagery_species.py": {
+    "host": "ci",
+    "last_run_at": "2026-09-19T04:35:22+00:00",
+    "last_success_at": "2026-09-19T04:35:22+00:00",
+    "ok": true,
+    "exit": 0,
+    "week": "2026-W38",
+    "records": 33,
+    "tail": [
+      "harvested species stills"
+    ]
+  }
+}

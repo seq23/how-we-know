@@ -26,19 +26,47 @@ WHAT IS A NAMED STOP:
   smaller pool means something removed cleared provenance, which is a defect
   and not a harvest result.
 * **The rights gate is missing from a harvester.** See below.
-* **A harvester requires host tooling this runner does not have.** The video
-  harvester's gates B and C read burned-in credits with Apple's Vision
-  framework off frames ffmpeg pulls from the clip; ubuntu-latest has neither.
-  CONFIRMED on runs 33943991250 and 34672456430: every clip that passed the
-  rights gate then failed on a missing `ffmpeg`, the screener labelled the
-  exception "gate A-credit", and the lane wrote "the pool is unchanged" for a
-  pool that had never held a single clip. That is a HELD stop naming the
-  harvester and the tools — `HARVESTER_TOOLING_ABSENT` — not a rights
-  rejection and not a quiet skip. The lane still runs every harvester whose
-  requirements this host meets, so the stills keep accumulating while the
-  owner decides where the Vision work runs (a macOS runner, or the Mac's
-  nightly batch). It never substitutes an OCR engine and never accepts a clip
-  unverified; loop/r2.py:verify_shorts records why.
+* **A harvester requires host tooling THE HOST IT IS DECLARED TO RUN ON does
+  not have.** The video harvester's gates B and C read burned-in credits with
+  Apple's Vision framework off frames ffmpeg pulls from the clip; ubuntu-latest
+  has neither. CONFIRMED on runs 33943991250 and 34672456430: every clip that
+  passed the rights gate then failed on a missing `ffmpeg`, the screener
+  labelled the exception "gate A-credit", and the lane wrote "the pool is
+  unchanged" for a pool that had never held a single clip. That is
+  `HARVESTER_TOOLING_ABSENT`, a defect in the declaration, and it stays red.
+  It never substitutes an OCR engine and never accepts a clip unverified;
+  loop/r2.py:verify_shorts records why.
+* **A harvester DELEGATED to another host has not been run there.** See
+  below.
+
+WHERE A HARVESTER RUNS IS PART OF ITS DECLARATION. From 2026-09-12 to
+2026-09-19 the video harvester was reported as "unrunnable" on the Linux
+runner and HELD on issue #77; the owner closed the issue, the hold paged again
+the next Saturday (#91), and would have every Saturday forever, because a
+hold is a question and nothing in the code could answer it. The answer is in
+the code now: a HARVESTER declares `host` - the scheduled process that runs it
+- and the lane on any host splits the registry into the harvesters it RUNS and
+the harvesters it VERIFIES. `research/imagery_video.py` declares
+`host: "mac-batch"`: bin/batch-session.sh runs this lane nightly on the Mac,
+which has ffmpeg, swiftc and Vision, and pushes the result. The Saturday lane
+on ubuntu-latest sees it as DELEGATED, not unrunnable, and checks that the
+Mac is actually doing the work.
+
+HOW THE LINUX LANE SEES THE MAC'S WORK. The manifest itself
+(channel/imagery/video_rights.json) never enters git - the clips are 5 GB on
+the Mac and in R2, and V11 re-hashes every record against the bytes on disk,
+so a committed manifest with no clips beside it would fail the Monday lane.
+What crosses is loop/state/harvest_runs.json: every host stamps each harvester
+it ran (when, exit code, how many records its manifest now holds, the tail of
+its output) and commits that file - bin/loop-stage.sh's `git add loop` on the
+runner, loop/mac_sync.py push on the Mac. A delegated harvester whose stamp
+shows a success within `harvest.delegated_max_age_days` is VERIFIED and counted
+as a unit of this lane's work, printed in the summary as delegated. One whose
+last run within the cap FAILED is `DELEGATED_HARVEST_FAILING` (a defect; red).
+One with no run inside the cap at all is `DELEGATED_HARVEST_STALE` (the host
+has not run; only the owner can start a Mac that is off - owner_action, green,
+top of the digest, red after its cap). A guard that cannot reach what it
+governs is the defect class this repo names most; this is the reach.
 
 THE ONE THING THIS LANE MAY NEVER DO IS RELAX THE RIGHTS CHECK TO INCREASE
 SUPPLY. The gate is an allowlist: the credit line on the item page must resolve
@@ -52,7 +80,9 @@ from __future__ import annotations
 
 import argparse
 import ast
+import datetime as dt
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -64,7 +94,7 @@ sys.path.insert(0, str(LOOP))
 import cadence                                   # noqa: E402
 import domains                                   # noqa: E402
 import host_tools                                # noqa: E402
-from common import Stage, config, week_id        # noqa: E402
+from common import Stage, config, read_json, week_id, write_json  # noqa: E402
 
 RESEARCH = ROOT / "research"
 IMAGERY = ROOT / "channel" / "imagery"
@@ -72,6 +102,164 @@ RIGHTS = IMAGERY / "rights.json"
 VIDEO_RIGHTS = IMAGERY / "video_rights.json"
 
 HARVESTER_GLOB = "imagery*.py"
+
+# ---------------------------------------------------------------- hosts
+#
+# THE SCHEDULED PROCESSES THAT RUN THIS LANE, by name. A harvester declares
+# which one runs it (`host` in its HARVESTER literal; absent means "ci"). The
+# lane is started with `--host <name>` by each of them, runs the harvesters
+# declared for that host, and VERIFIES the rest through loop/state/
+# harvest_runs.json. One table, so a harvester cannot name a host that nothing
+# schedules: an unknown name is a loud error at discovery, never a quiet
+# "delegated to nowhere" - which would be the exact gap #77 fell into.
+HOSTS = {
+    "ci": {
+        "what": "the Saturday GitHub Actions lane (.github/workflows/"
+                "loop-imagery-harvest.yml, ubuntu-latest, 04:00 UTC)",
+        "stage": "imagery-harvest",
+        "start": "gh workflow run loop-imagery-harvest.yml",
+    },
+    "mac-batch": {
+        "what": "the Mac's nightly batch (bin/batch-session.sh, launchd "
+                "com.howweknow.batch at 23:00 local; it has ffmpeg, swiftc "
+                "and Apple Vision)",
+        "stage": "imagery-harvest-mac",
+        "start": "wake the Mac (launchd fires the missed 23:00 batch on wake) "
+                 "or run bin/batch-session.sh on it by hand",
+    },
+}
+DEFAULT_HOST = "ci"
+
+# Per-harvester run stamps, one file, written by every host and committed by
+# every host: bin/loop-stage.sh `git add loop` on the runner, loop/mac_sync.py
+# push on the Mac. It is the only thing about a delegated harvest that crosses
+# hosts - see the docstring for why the manifest itself does not.
+STAMPS = LOOP / "state" / "harvest_runs.json"
+
+
+def _stamps_path() -> Path:
+    """Overridable the way LOOP_STOPS_DIR is, so a test can run a real lane
+    against planted stamps without writing the loop's own state."""
+    return Path(os.environ.get("LOOP_HARVEST_STAMPS") or STAMPS)
+
+STAMPS_WHY = (
+    "Written by loop/footage_lane.py on every host that runs a harvester, "
+    "keyed by the harvester's path. A host that does NOT run a harvester reads "
+    "this to verify the host that does is doing it: a success inside "
+    "harvest.delegated_max_age_days (loop/config.json) is fresh; a failed run "
+    "inside the cap is DELEGATED_HARVEST_FAILING; nothing inside the cap is "
+    "DELEGATED_HARVEST_STALE. The video manifest never enters git (the clips "
+    "are on the Mac and in R2, and V11 re-hashes every record against the "
+    "bytes on disk), so `records` here is how the cloud knows the pool size.")
+
+
+class UnknownHarvestHost(Exception):
+    """A harvester declared a host this lane has no schedule for."""
+
+
+def host_of(h: dict) -> str:
+    name = h.get("host", DEFAULT_HOST)
+    if name not in HOSTS:
+        raise UnknownHarvestHost(
+            f"{h.get('rel', '?')} declares host {name!r}, which is not a host "
+            f"loop/footage_lane.py knows a schedule for (known: "
+            f"{', '.join(sorted(HOSTS))}). A harvester delegated to a host "
+            f"nothing runs is a harvester nothing runs.")
+    return name
+
+
+def harvest_policy(cfg: dict | None = None) -> dict:
+    """The two numbers this lane reads from loop/config.json, with the reason."""
+    hv = (cfg or config()).get("harvest") or {}
+    return {"delegated_max_age_days": int(hv.get("delegated_max_age_days", 10)),
+            "interval_days": int(hv.get("interval_days", 6))}
+
+
+def _utcnow() -> dt.datetime:
+    return dt.datetime.now(dt.timezone.utc)
+
+
+def _when(iso) -> dt.datetime | None:
+    try:
+        d = dt.datetime.fromisoformat(str(iso))
+    except (TypeError, ValueError):
+        return None
+    return d if d.tzinfo else d.replace(tzinfo=dt.timezone.utc)
+
+
+def stamps(path: Path | None = None) -> dict:
+    """Every harvester's last run, keyed by its rel path. `_why` stripped."""
+    d = read_json(path or _stamps_path(), default={})
+    return {k: v for k, v in d.items() if not k.startswith("_")
+            and isinstance(v, dict)}
+
+
+def stamp(rel: str, host: str, ok: bool, exit_code: int, records: int | None,
+          tail: list[str], path: Path | None = None,
+          when: dt.datetime | None = None) -> dict:
+    """Record one harvester run on this host. Never called on a dry run."""
+    path = path or _stamps_path()
+    d = read_json(path, default={})
+    d.setdefault("_why", STAMPS_WHY)
+    rec = dict(d.get(rel) or {})
+    at = (when or _utcnow()).isoformat(timespec="seconds")
+    rec.update({"host": host, "last_run_at": at, "ok": bool(ok),
+                "exit": int(exit_code), "week": week_id(), "records": records,
+                "tail": list(tail)[-6:]})
+    if ok:
+        rec["last_success_at"] = at
+    d[rel] = rec
+    write_json(path, d)
+    return rec
+
+
+def delegated_status(h: dict, st: dict, now: dt.datetime | None = None,
+                     max_age_days: int | None = None) -> dict:
+    """What THIS host can say about a harvester another host runs.
+
+    Pure over (harvester, stamps, now). `state` is one of:
+      fresh    a success inside the cap - verified, counts as this lane's work
+      failing  the host ran it inside the cap and it did not succeed - a defect
+      stale    no run inside the cap at all - the host has not been running
+    """
+    now = now or _utcnow()
+    cap = max_age_days if max_age_days is not None \
+        else harvest_policy()["delegated_max_age_days"]
+    rec = st.get(h["rel"]) or {}
+    ok_at, run_at = _when(rec.get("last_success_at")), _when(rec.get("last_run_at"))
+    ok_age = (now - ok_at).total_seconds() / 86400 if ok_at else None
+    run_age = (now - run_at).total_seconds() / 86400 if run_at else None
+    if ok_age is not None and ok_age <= cap:
+        state = "fresh"
+    elif run_age is not None and run_age <= cap:
+        state = "failing"
+    else:
+        state = "stale"
+    return {"rel": h["rel"], "host": host_of(h), "state": state, "cap_days": cap,
+            "last_success_at": rec.get("last_success_at"),
+            "last_run_at": rec.get("last_run_at"),
+            "success_age_days": None if ok_age is None else round(ok_age, 1),
+            "run_age_days": None if run_age is None else round(run_age, 1),
+            "records": rec.get("records"), "exit": rec.get("exit"),
+            "tail": rec.get("tail") or []}
+
+
+def due(h: dict, st: dict, now: dt.datetime | None = None,
+        interval_days: int | None = None) -> tuple[bool, float | None]:
+    """(is it time to run this harvester again here?, days since it last did).
+
+    The Mac's batch is nightly and the harvest re-screens NOAA's whole index,
+    so a harvester is re-run only after `harvest.interval_days`. Never run is
+    always due.
+    """
+    now = now or _utcnow()
+    interval = interval_days if interval_days is not None \
+        else harvest_policy()["interval_days"]
+    ok_at = _when((st.get(h["rel"]) or {}).get("last_success_at"))
+    if not ok_at:
+        return True, None
+    age = (now - ok_at).total_seconds() / 86400
+    return age >= interval, round(age, 1)
 
 
 class NoHarvesterForDomain(Exception):
@@ -190,19 +378,34 @@ def demand(weeks: int = 8) -> dict:
             "episodes": per_week * weeks}
 
 
-def run(dry_run: bool = False) -> int:
+def run(dry_run: bool = False, host: str = DEFAULT_HOST) -> int:
+    if host not in HOSTS:
+        raise UnknownHarvestHost(
+            f"--host {host!r} is not a host this lane knows (known: "
+            f"{', '.join(sorted(HOSTS))})")
     cfg = config()
+    policy = harvest_policy(cfg)
     harvesters, uncovered = harvesters_for(cfg)
     before = pool(harvesters)
-    with Stage("imagery-harvest", week_id(),
-               zero_work_hint="No harvester in research/ could be run. This "
+    with Stage(HOSTS[host]["stage"], week_id(),
+               zero_work_hint="No harvester in research/ could be run on this "
+                              "host and none is delegated elsewhere. This "
                               "lane exists to grow the cleared pool ahead of "
                               "demand; a run that harvests nothing has done "
                               "nothing, whatever it exits with.") as st:
         d = demand()
         alloc = domains.allocation(cfg)
+        # Split by declared host BEFORE anything runs. An unknown host name is
+        # a crash, not a stop: it is a defect in a declaration, and it must
+        # not be reported as "delegated" to a process that does not exist.
+        local = [h for h in harvesters if host_of(h) == host]
+        delegated = [h for h in harvesters if host_of(h) != host]
         st.note(f"allocation: " + ", ".join(f"{k} {v}" for k, v in alloc.items())
-                + f" -> {len(harvesters)} scheduled harvester(s)")
+                + f" -> {len(harvesters)} scheduled harvester(s): "
+                f"{len(local)} run here on {host}, {len(delegated)} delegated")
+        for h in delegated:
+            st.note(f"{h['rel']} is delegated to {host_of(h)} "
+                    f"({HOSTS[host_of(h)]['what']}); verified below, not run")
         for path_key, n in sorted(before.items()):
             st.note(f"cleared pool before: {path_key} "
                     + ("absent" if n is None else f"{n} record(s)"))
@@ -232,13 +435,15 @@ def run(dry_run: bool = False) -> int:
                         "declaration; it does not keep a list of its own.")
 
         ran = 0
-        # (harvester rel, [missing tool descriptions]) for every scheduled
-        # harvester this host cannot run to completion. Reported as ONE held
-        # stop after the runnable harvesters have done their work, so a Linux
-        # runner keeps growing the still pools while the video harvester's
-        # host question is open.
+        not_due = 0
+        st_before = stamps()
+        # (harvester rel, [missing tool descriptions]) for every harvester
+        # DECLARED FOR THIS HOST that this host cannot run to completion. That
+        # is a defect in the declaration - the host it names cannot do the
+        # job - and it is reported as one after the runnable harvesters have
+        # done their work.
         unrunnable: list[tuple[str, list[str]]] = []
-        for h in harvesters:
+        for h in local:
             rel = h["rel"]
             gate, what = h.get("gate"), h.get("what", rel)
             path = h["path"]
@@ -272,33 +477,83 @@ def run(dry_run: bool = False) -> int:
                 st.work(f"would harvest {what} through {shown}")
                 ran += 1
                 continue
-            r = subprocess.run([sys.executable, str(path), *args],
-                               capture_output=True, text=True, cwd=ROOT,
-                               timeout=3600)
-            tail = (r.stdout + r.stderr).strip().splitlines()[-6:]
+            is_due, age = due(h, st_before, interval_days=policy["interval_days"])
+            if not is_due:
+                # A nightly host does not re-screen a whole public index
+                # nightly. Said out loud with the date, so "not due" can
+                # never be mistaken for "not wired".
+                st.note(f"{rel}: harvested {age} day(s) ago on {host}; due "
+                        f"again after {policy['interval_days']} (loop/config."
+                        f"json harvest.interval_days) - not re-run tonight")
+                not_due += 1
+                continue
+            # The harvester's own budget. Measured 2026-09-19 on the Mac:
+            # the video screener OCRs 16 clips in 5m44s with 8 workers, so
+            # NOAA's 383-post index is ~2.3 hours - the old flat hour would
+            # have timed the delegated harvest out on every run and reported
+            # DELEGATED_HARVEST_FAILING for a harvester that was working.
+            budget = int(h.get("timeout_seconds") or 3600)
+            try:
+                r = subprocess.run([sys.executable, str(path), *args],
+                                   capture_output=True, text=True, cwd=ROOT,
+                                   timeout=budget)
+                rc, out = r.returncode, r.stdout + r.stderr
+            except subprocess.TimeoutExpired as exc:
+                rc = 124
+                out = (f"{exc.stdout or ''}{exc.stderr or ''}\n"
+                       f"{rel} exceeded its {budget}s harvest budget "
+                       f"(HARVESTER timeout_seconds)")
+            tail = out.strip().splitlines()[-6:]
             for line in tail:
                 st.note(f"  {rel}: {line}")
-            if r.returncode != 0:
+            # THE STAMP IS WRITTEN WHATEVER HAPPENED. A host that only stamps
+            # its successes reads, from the other host, exactly like a host
+            # that never ran - and those are different stops.
+            stamp(rel, host, ok=(rc == 0), exit_code=rc,
+                  records=_count(ROOT / h["manifest"]), tail=tail)
+            if rc != 0:
                 # A harvester that could not reach its source has not failed
                 # the channel - it has failed to add anything this week, and
                 # the pool is unchanged. Note it; the shrink check below is
-                # what would catch real damage.
-                st.note(f"{rel} exited {r.returncode}; the pool is unchanged")
+                # what would catch real damage, and the other host's
+                # verification is what catches a run of these.
+                st.note(f"{rel} exited {rc}; the pool is unchanged")
                 continue
             st.work(f"harvested {what} through {shown}")
             ran += 1
 
-        if not ran and not unrunnable:
-            # If every harvester was UNRUNNABLE rather than absent, the held
-            # stop below says so by name; NO_HARVESTER is for a checkout with
-            # nothing to run at all.
+        # ---- VERIFY WHAT IS DELEGATED. This is the guard reaching what it
+        # governs: the host that does not run a harvester reads the stamp of
+        # the host that does. Fresh is a unit of work; the two ways it can be
+        # wrong are two different stops, raised after the pool report.
+        st_now = stamps()
+        verified: list[dict] = []
+        failing: list[dict] = []
+        stale: list[dict] = []
+        for h in delegated:
+            v = delegated_status(h, st_now,
+                                 max_age_days=policy["delegated_max_age_days"])
+            {"fresh": verified, "failing": failing, "stale": stale}[v["state"]].append(v)
+        for v in verified:
+            st.work(f"verified {v['rel']} is harvesting on {v['host']} "
+                    f"(delegated): last success {v['last_success_at']} "
+                    f"({v['success_age_days']} day(s) ago), "
+                    + ("pool size unknown" if v["records"] is None
+                       else f"{v['records']} record(s)")
+                    + f" - within the {v['cap_days']}-day cap")
+
+        if not ran and not unrunnable and not delegated and not not_due:
+            # If every harvester was UNRUNNABLE rather than absent, the stop
+            # below says so by name, and one that is merely not due yet is
+            # noted above; NO_HARVESTER is for a checkout with nothing to run
+            # at all.
             st.named_stop(
                 "NO_HARVESTER",
                 "no rights-checked harvester exists in this checkout for any "
                 "allocated domain, so the cleared pool cannot grow. At the "
                 "current cadence every episode beyond the existing pool would "
                 "be illustrated by default rather than by decision.",
-                detail={"allocation": alloc,
+                detail={"allocation": alloc, "host": host,
                         "declared": [h["rel"] for h in declared_harvesters()],
                         "pool": before},
                 unblock="A harvester declares itself with a module-level "
@@ -326,40 +581,85 @@ def run(dry_run: bool = False) -> int:
             if a > b:
                 st.work(f"{key} grew {b} -> {a}")
         for key, n in sorted(after.items()):
-            st.note(f"cleared pool after: {key} "
-                    + ("absent" if n is None else f"{n} record(s)"))
+            line = f"cleared pool after: {key} " + (
+                "absent" if n is None else f"{n} record(s)")
+            if n is None:
+                # Absent HERE. If a delegated host stamped a size for this
+                # manifest, that is the pool - say so beside the absence.
+                for v in verified + failing + stale:
+                    h = next((x for x in delegated if x["rel"] == v["rel"]), None)
+                    if h and h.get("manifest") == key and v["records"] is not None:
+                        line += (f" here; {v['records']} record(s) on "
+                                 f"{v['host']} as of {v['last_run_at']}")
+            st.note(line)
 
         if unrunnable:
-            # HELD, not self-resolving and not a skip: time does not install
-            # ffmpeg or Apple Vision on ubuntu-latest, and only the owner can
-            # decide where that work runs. held_items name the harvester AND
-            # each missing tool, so a new harvester or a new requirement pages
-            # and an unchanged one does not. Raised last so the work above is
-            # recorded (work_done_before_stop) and the shrink check still ran.
+            # A DEFECT, not a hold: the harvester's own declaration names THIS
+            # host as the one that runs it, and this host cannot. Time does
+            # not install ffmpeg or Vision, and a hold on a question the code
+            # can now answer (`host`) is how #77 paged every Saturday.
+            # held_items name the harvester AND each missing tool, so a new
+            # harvester or a new requirement pages and an unchanged one does
+            # not. Raised after the work above so it is recorded
+            # (work_done_before_stop) and the shrink check still ran.
             items = sorted(f"{rel} needs {m.split(':', 1)[0]}"
                            for rel, ms in unrunnable for m in ms)
             st.named_stop(
                 "HARVESTER_TOOLING_ABSENT",
-                f"{len(unrunnable)} scheduled harvester(s) cannot run on this "
-                f"host: " + "; ".join(
+                f"{len(unrunnable)} harvester(s) declared for host {host!r} "
+                f"cannot run on it: " + "; ".join(
                     f"{rel} requires {', '.join(m.split(':', 1)[0] for m in ms)}"
                     for rel, ms in unrunnable)
                 + ". Its manifest cannot grow from here, and every clip it would "
                 f"have screened was neither accepted nor rejected. The other "
                 f"{ran} harvester(s) ran and their pools are committed.",
                 detail={"unrunnable": {rel: ms for rel, ms in unrunnable},
-                        "platform": sys.platform, "pool": after},
+                        "host": host, "platform": sys.platform, "pool": after},
                 held_items=items,
-                unblock="Decide where the Vision-dependent harvest runs: (a) "
-                        "give this workflow a `runs-on: macos-latest` job for "
-                        "the video harvester (ffmpeg, swiftc and Vision are on "
-                        "that image; 10x minute multiplier on a private repo), "
-                        "or (b) add `research/imagery_video.py --harvest` to "
-                        "the Mac's nightly batch (bin/batch-session.sh), which "
-                        "already commits and pushes repo state. Do NOT install "
-                        "a different OCR engine on Linux and do NOT accept "
+                unblock="The declaration is wrong about where this can run. "
+                        "Set `host` in its HARVESTER literal to a host that "
+                        "has the tooling (known: "
+                        + ", ".join(f"{k} = {v['what']}" for k, v in HOSTS.items())
+                        + "), or add the tool to that host's image. Do NOT "
+                        "install a different OCR engine and do NOT accept "
                         "clips unverified; loop/r2.py:verify_shorts records "
                         "why both were rejected.")
+
+        if failing:
+            st.named_stop(
+                "DELEGATED_HARVEST_FAILING",
+                f"{len(failing)} delegated harvester(s) ran on their host "
+                f"inside the {policy['delegated_max_age_days']}-day cap and did "
+                f"not succeed: " + "; ".join(
+                    f"{v['rel']} on {v['host']} exited {v['exit']} at "
+                    f"{v['last_run_at']} (last success: "
+                    f"{v['last_success_at'] or 'never'})" for v in failing)
+                + ". The host is running; the harvester is not finishing. "
+                f"Its pool is not growing and the stamp's output tail says why.",
+                detail={"failing": failing, "host": host,
+                        "stamps": str(STAMPS.relative_to(ROOT))},
+                unblock="Read `tail` for that harvester in "
+                        "loop/state/harvest_runs.json and fix the harvester "
+                        "or the host it runs on; then let its next scheduled "
+                        "run stamp a success.")
+
+        if stale:
+            st.named_stop(
+                "DELEGATED_HARVEST_STALE",
+                f"{len(stale)} delegated harvester(s) have not been run by "
+                f"their host inside the {policy['delegated_max_age_days']}-day "
+                f"cap: " + "; ".join(
+                    f"{v['rel']} on {v['host']} (last run: "
+                    f"{v['last_run_at'] or 'never'}; last success: "
+                    f"{v['last_success_at'] or 'never'})" for v in stale)
+                + ". This host cannot run it and the host that can has been "
+                f"silent, so the pool it feeds has stopped growing.",
+                detail={"stale": stale, "host": host,
+                        "stamps": str(STAMPS.relative_to(ROOT))},
+                unblock="; ".join(sorted({
+                    f"{v['host']}: {HOSTS[v['host']]['start']}" for v in stale}))
+                        + ". The next run there stamps loop/state/"
+                          "harvest_runs.json and this clears on its own.")
     return 0
 
 
@@ -367,8 +667,12 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--dry-run", action="store_true",
                     help="check the gates and report the pool; harvest nothing")
+    ap.add_argument("--host", default=DEFAULT_HOST, choices=sorted(HOSTS),
+                    help="which scheduled process this is: it runs the "
+                         "harvesters declared for that host and verifies "
+                         "the rest (default: ci)")
     a = ap.parse_args()
-    return run(dry_run=a.dry_run)
+    return run(dry_run=a.dry_run, host=a.host)
 
 
 if __name__ == "__main__":

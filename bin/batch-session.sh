@@ -308,6 +308,51 @@ shelve_shorts() {
   fi
 }
 
+# ---------------------------------------------------------------------------
+# THE VIDEO HARVEST RUNS ON THIS MAC, ON EVERY NIGHT INCLUDING AN IDLE ONE.
+# research/imagery_video.py reads the credit burned into each clip with Apple
+# Vision off frames ffmpeg pulls - tooling ubuntu-latest does not have and
+# will not get. From 2026-09-12 the Saturday cloud lane held on that fact and
+# asked the owner where the work should run (#77, then #91 the week after she
+# closed it): a question a hold can only re-ask. The declaration answers it
+# now - the harvester says `host: "mac-batch"` - and this is mac-batch.
+#
+# loop/footage_lane.py --host mac-batch runs exactly the harvesters declared
+# for this Mac (re-screening NOAA's index only every harvest.interval_days, so
+# an idle night is cheap), VERIFIES the ones the cloud runs through their
+# stamps, and writes this Mac's own stamp to loop/state/harvest_runs.json.
+# That stamp is the only thing about this harvest that crosses to the cloud:
+# the manifest and the clips stay here and in R2 by design (V11 re-hashes every
+# record against bytes on disk, so a committed manifest with no clips beside it
+# would fail the Monday lane). The push below sends the stamp, the lane's stop
+# record if it took one, and the owner-action file if it recorded one, with
+# explicit paths - never channel/imagery, which holds 5 GB of clips.
+#
+# Called on the nothing-to-do path BEFORE its exit 0 and again on the
+# narrate-or-render path, for the same reason shelve_shorts is: the batch has
+# been idle every night since 2026-09-12, and a step only the busy path
+# reaches is a step that does not run.
+harvest_footage() {
+  echo; echo "--- footage: harvest what is delegated to this Mac, verify the rest ---"
+  # The cloud's stamps are read from THIS checkout, so bring it up to date
+  # first (loop/mac_sync.py pull takes upstream for loop-state files, the way
+  # the 09:00 backfill lane does). A failed pull is said and not fatal: the
+  # harvest is still worth doing against yesterday's stamps.
+  $PY loop/mac_sync.py pull 2>&1 | tail -1
+  # nice: a weekly ~2.3 h OCR pass (measured 2026-09-19: 16 clips in 5m44s,
+  # 8 workers, ~190% CPU) that on a busy night lands after 07:00, when the
+  # Mac is hers. It yields to anything she is doing rather than competing.
+  nice -n 10 $PY loop/footage_lane.py --host mac-batch
+  local rc=$?
+  case $rc in
+    0) ;;
+    3) echo "  named stop above - see the banner; the stamp records tonight's outcome" ;;
+    *) echo "  footage lane FAILED (rc=$rc) - see above; nothing was stamped for it" ;;
+  esac
+  $PY loop/mac_sync.py push --lane imagery-harvest-mac \
+      loop/state/harvest_runs.json loop/state/owner_action.json 2>&1 | tail -1
+}
+
 # THE "NOTHING TO DO" GATE LIVES HERE, AFTER THE POV REPAIR, NOT BEFORE IT.
 # It used to sit above and exit first, which meant a shelf whose ONLY
 # problem was an untraced producer POV reported "nothing to do" and left
@@ -335,6 +380,9 @@ if [ -z "${pending_audio// }" ] && [ -z "${pending_render// }" ]; then
   # step runs here too, or an idle week starves the cloud Shorts lane (see
   # shelve_shorts above).
   shelve_shorts
+  # Nor is it idle for footage: the only host with Vision is this one, and
+  # the cloud lane is verifying that it harvests (see harvest_footage above).
+  harvest_footage
   exit 0
 fi
 
@@ -581,6 +629,10 @@ fi
 # Cut Shorts from tonight's renders, then push everything (renders, captions,
 # Shorts) to R2 for the cloud lanes.
 shelve_shorts
+
+# The video harvest, after the renders are shelved: the cloud lanes need the
+# shelf first, and the harvest can take an hour of NOAA range requests.
+harvest_footage
 
 # THE MAC REPORTS. The cloud digest reads loop/state/mac_heartbeat.json and this
 # week's stop files from the repository; a Mac that finished renders and shipped

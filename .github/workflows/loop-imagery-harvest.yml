@@ -91,4 +91,8 @@ jobs:
           if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
             ARGS="--dry-run"
           fi
-          bin/loop-stage.sh imagery-harvest loop/footage_lane.py $ARGS
+          # --host ci: this runner runs the harvesters declared for it and
+          # VERIFIES the one declared for the Mac's nightly batch
+          # (research/imagery_video.py needs ffmpeg + Apple Vision) through
+          # loop/state/harvest_runs.json. See loop/footage_lane.py:HOSTS.
+          bin/loop-stage.sh imagery-harvest loop/footage_lane.py --host ci $ARGS

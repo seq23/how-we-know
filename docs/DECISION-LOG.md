@@ -433,3 +433,56 @@ assertions; `PULL_FAILED` removed from the policy →
 landed at ~12.5 min), then `bin/batch-session.sh` to re-voice and re-render it.
 The remaining eight upload at 4 per day from the next 09:00 run — YouTube's
 daily quota, not a choice.
+
+## 2026-09-19 — a hold on a question only a person can answer re-asks it forever
+
+**What happened.** From 2026-09-12 the Saturday footage lane could not run
+`research/imagery_video.py` on ubuntu-latest (gates B and C need ffmpeg and
+Apple Vision) and took `HARVESTER_TOOLING_ABSENT` as a HELD stop whose
+unblock text asked the owner to *decide* where the work runs. She closed #77
+on 09-14 with the code unchanged; the hold paged again on 09-19 (run
+35420734439, #91) and would have every Saturday. Meanwhile
+`channel/imagery/video_rights.json` — 113 rights-cleared clips — existed only
+on the Mac, untracked, harvested by hand on 09-01, and nothing scheduled had
+ever grown it.
+
+**Decision (b), taken here, not re-opened.** The video harvester runs on the
+Mac's nightly batch (`bin/batch-session.sh`), which already has the tooling
+and already commits and pushes repo state. (a) — a `runs-on: macos-latest`
+job at a 10x minute multiplier on a private repo — is rejected for work the
+Mac already does nightly.
+
+**The class, not the instance.**
+
+1. **A harvester declares its host.** `HARVESTER["host"]` names the scheduled
+   process that runs it (`loop/footage_lane.py:HOSTS` — `ci`, `mac-batch`).
+   Absent means `ci`; an unknown name is a loud error at discovery.
+2. **Every host verifies what it does not run.** Each host stamps every
+   harvester it ran — ok or not, exit code, output tail, manifest size — into
+   `loop/state/harvest_runs.json` and commits it. A delegated harvester with
+   a success inside `harvest.delegated_max_age_days` (10) is a verified unit
+   of work printed as delegated; a failed run inside the cap is
+   `DELEGATED_HARVEST_FAILING` (needs_human); no run inside the cap is
+   `DELEGATED_HARVEST_STALE` (owner_action: only she can start a Mac that is
+   off; red after 2 Saturdays).
+3. **`HARVESTER_TOOLING_ABSENT` is now a wrong declaration** — the host a
+   harvester names for itself cannot run it — and stays needs_human.
+4. **The manifest never enters git.** V11 re-hashes every record against the
+   bytes on disk, so a committed manifest with no clips beside it would fail
+   the Monday lane. The stamp's `records` is how the cloud knows the pool
+   size.
+5. **The batch harvests on idle nights too**, the way it cuts Shorts
+   (2026-09-18): it has been idle every night since 09-12. It re-screens
+   NOAA's index only every `harvest.interval_days` (6) and passes
+   `--refresh` so a cached index cannot hide new posts. Measured on the Mac:
+   16 clips in 5m44s with 8 OCR workers, so ~2.3 h for 383 posts; the
+   harvester declares a 4 h budget, and the batch runs it under `nice`.
+
+**Guarded by** `loop/tests/test_delegated_harvest_is_verified.py` (39 checks
+against a planted harvester and planted stamps) and the rewritten section 4 of
+`test_footage_harvest_is_honest.py`. **Negative proofs, run before the PR:**
+the idle-path `harvest_footage` call removed → two check-8 failures; `host`
+removed from the video harvester's declaration → eleven failures, the first
+being the ci lane back on `HARVESTER_TOOLING_ABSENT` exit 3;
+`DELEGATED_HARVEST_STALE` removed from the policy →
+`test_every_stop_is_classified` names it at its raise site.
