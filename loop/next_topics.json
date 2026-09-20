@@ -1,76 +1,80 @@
 {
-  "week": "2026-W37",
-  "generated": "2026-09-13T10:11:16+00:00",
+  "week": "2026-W38",
+  "generated": "2026-09-20T10:04:02+00:00",
   "videos_per_week": 4,
   "cadence_ceiling_note": "Deliberate. Never raised to clear a backlog.",
   "selection_mode": "automatic",
   "owner_involvement": "notified, not asked",
   "selected": [
     {
-      "slug": "why-does-old-iron-not-rust",
-      "question": "Why does old iron not rust?",
-      "script": "scripts/why-does-old-iron-not-rust.md",
-      "source": "authored-inventory",
-      "publish_rank": 18,
-      "front_loaded": false,
-      "needs_authoring": false,
-      "pov_id": "pov-104",
-      "pov_line": "I stop trusting an explanation when it uses complexity to hide the fact that the speaker can't show their work. If every direct question produces more jargon and more certainty, but never a source or a mechanism, the explanation is protecting the person, not describing reality.",
-      "pov_tag": "trust",
+      "slug": "how-do-scientists-know-so-much",
+      "question": "how do scientists know so much",
+      "script": "loop/drafts/how-do-scientists-know-so-much.md",
+      "source": "mined-demand",
+      "domain": "method-evidence",
+      "shape_score": 2.5,
+      "seed_hits_provenance_only": 26,
+      "needs_authoring": true,
+      "pov_id": "pov-058",
+      "pov_line": "'Scientists say' is almost meaningless on its own. Which scientists? How many? Was it one paper? Was it replicated?",
+      "pov_tag": "authority",
       "pov_tier": "transferable",
-      "pov_matched_by": "hand assignment in pov/pov-assignments.json"
+      "pov_matched_by": "tag:authority score 2.0"
     },
     {
-      "slug": "how-is-3d-printed-metal-made",
-      "question": "How is 3D printed metal made?",
-      "script": "scripts/how-is-3d-printed-metal-made.md",
-      "source": "authored-inventory",
-      "publish_rank": 23,
-      "front_loaded": false,
-      "needs_authoring": false,
-      "pov_id": "pov-119",
-      "pov_line": "Watching something be made, I think about how many things had to become controllable first \u2014 temperature, pressure, purity, timing, tolerances, sequence, inspection. What looks smooth at the end is usually violent forces being controlled very precisely.",
-      "pov_tag": "systems",
+      "slug": "how-do-scientists-know-how-old-something-is",
+      "question": "how do scientists know how old something is",
+      "script": "loop/drafts/how-do-scientists-know-how-old-something-is.md",
+      "source": "mined-demand",
+      "domain": "method-evidence",
+      "shape_score": 2.5,
+      "seed_hits_provenance_only": 14,
+      "needs_authoring": true,
+      "pov_id": "pov-059",
+      "pov_line": "I'm not anti-science. I'm against using science as a magic authority word that means nobody has to show their work.",
+      "pov_tag": "authority",
+      "pov_tier": "transferable",
+      "pov_matched_by": "tag:authority score 2.0"
+    },
+    {
+      "slug": "why-deep-sea-creatures",
+      "question": "why deep sea creatures",
+      "script": "loop/drafts/why-deep-sea-creatures.md",
+      "source": "mined-demand",
+      "domain": "deep-sea-biology",
+      "shape_score": 2.5,
+      "seed_hits_provenance_only": 14,
+      "needs_authoring": true,
+      "pov_id": "pov-001",
+      "pov_line": "When I picture the deep ocean I don't see blue water or fish. I see black. A massive amount of black space where you can't tell what's beside you or beneath you.",
+      "pov_tag": "scale",
       "pov_tier": "specific",
-      "pov_matched_by": "hand assignment in pov/pov-assignments.json"
+      "pov_matched_by": "tag:scale score 2.8"
     },
     {
-      "slug": "why-is-carbon-fiber-so-strong",
-      "question": "Why is carbon fiber so strong?",
-      "script": "scripts/why-is-carbon-fiber-so-strong.md",
-      "source": "authored-inventory",
-      "publish_rank": 25,
-      "front_loaded": false,
-      "needs_authoring": false,
-      "pov_id": "pov-086",
-      "pov_line": "What interests me is the translation layer. An instrument doesn't hand us reality. It produces a signal, and then humans calibrate it, process it, interpret it.",
-      "pov_tag": "instruments",
+      "slug": "how-do-scientists-know-about-other-galaxies",
+      "question": "how do scientists know about other galaxies",
+      "script": "loop/drafts/how-do-scientists-know-about-other-galaxies.md",
+      "source": "mined-demand",
+      "domain": "space",
+      "shape_score": 2.5,
+      "seed_hits_provenance_only": 11,
+      "needs_authoring": true,
+      "pov_id": "pov-060",
+      "pov_line": "Science is a process. It is not a person behind a curtain handing down permanent answers.",
+      "pov_tag": "authority",
       "pov_tier": "transferable",
-      "pov_matched_by": "hand assignment in pov/pov-assignments.json"
-    },
-    {
-      "slug": "why-is-steel-so-strong",
-      "question": "Why is steel so strong?",
-      "script": "scripts/why-is-steel-so-strong.md",
-      "source": "authored-inventory",
-      "publish_rank": 26,
-      "front_loaded": false,
-      "needs_authoring": false,
-      "pov_id": "pov-047",
-      "pov_line": "When someone gives me a fact with a number in it, my first instinct is: where did the number come from? Not because I assume they're lying. Numbers can make almost anything sound authoritative.",
-      "pov_tag": "numbers",
-      "pov_tier": "transferable",
-      "pov_matched_by": "hand assignment in pov/pov-assignments.json"
+      "pov_matched_by": "tag:authority score 2.0"
     }
   ],
-  "to_author": 0,
-  "inventory_remaining": 5,
+  "to_author": 4,
+  "inventory_remaining": 0,
   "cadence": {
     "videos_per_week": 4,
     "why": "configured default (4/week)"
   },
   "publish_order": {
-    "ranked": 9,
+    "ranked": 0,
     "unranked": 0,
     "unranked_slugs": [],
     "killed_not_queued": [
@@ -82,7 +86,7 @@
     "queued_despite_kill": [],
     "order_entries": 34,
     "source": "research/publish_order.json",
-    "generated_at": "2026-09-05T15:36:38.680351+00:00",
+    "generated_at": "2026-09-19T10:09:01.841907+00:00",
     "generator": "research/publish_order.py",
     "status": "PRODUCTION",
     "episodes_ranked": null,
@@ -90,12 +94,12 @@
     "saturated_tail": []
   },
   "runway": {
-    "unpublished_scripts": 13,
-    "publishable": 9,
-    "scheduled_not_yet_aired": 20,
+    "unpublished_scripts": 4,
+    "publishable": 0,
+    "scheduled_not_yet_aired": 25,
     "basis": "publish queue",
     "videos_per_week": 4,
-    "weeks_remaining": 7.2,
+    "weeks_remaining": 6.2,
     "warn_below_weeks": 4.0,
     "critical_below_weeks": 2.0,
     "level": "ok",
@@ -103,23 +107,23 @@
       "deep-sea-ocean-science": {
         "slots_per_week": 2,
         "queued": 0,
-        "scheduled_ahead": 13,
-        "weeks": 6.5,
+        "scheduled_ahead": 11,
+        "weeks": 5.5,
         "level": "ok",
-        "message": "deep-sea-ocean-science: 6.5 week(s) at 2/week (0 queued, 13 already dated)"
+        "message": "deep-sea-ocean-science: 5.5 week(s) at 2/week (0 queued, 11 already dated)"
       },
       "materials-and-manufacturing": {
         "slots_per_week": 2,
-        "queued": 9,
-        "scheduled_ahead": 7,
-        "weeks": 8.0,
+        "queued": 0,
+        "scheduled_ahead": 14,
+        "weeks": 7.0,
         "level": "ok",
-        "message": "materials-and-manufacturing: 8.0 week(s) at 2/week (9 queued, 7 already dated)"
+        "message": "materials-and-manufacturing: 7.0 week(s) at 2/week (0 queued, 14 already dated)"
       }
     },
     "short_domains": [],
     "never_go_dark": true,
-    "message": "7.2 weeks of queue at 4/week (9 publishable of 13 on disk). By domain: deep-sea-ocean-science: 6.5 week(s) at 2/week (0 queued, 13 already dated); materials-and-manufacturing: 8.0 week(s) at 2/week (9 queued, 7 already dated)."
+    "message": "6.2 weeks of queue at 4/week (0 publishable of 4 on disk). By domain: deep-sea-ocean-science: 5.5 week(s) at 2/week (0 queued, 11 already dated); materials-and-manufacturing: 7.0 week(s) at 2/week (0 queued, 14 already dated)."
   },
   "gate": {
     "authority": "pov/topic-taxonomy.json",
@@ -204,7 +208,7 @@
     ]
   },
   "competition_scoring": {
-    "available": false,
+    "available": true,
     "why": "Needs a YouTube Data API key. Without it the ranking is demand-only - a weaker ranking, not an unsafe one. Safety comes from the exclusion gate, which is absolute either way."
   },
   "advisory_candidates": [
