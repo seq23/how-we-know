@@ -37,5 +37,22 @@
     "tail": [
       "harvested species stills"
     ]
+  },
+  "research/imagery_video.py": {
+    "host": "mac-batch",
+    "last_run_at": "2026-09-20T04:45:26+00:00",
+    "ok": true,
+    "exit": 0,
+    "week": "2026-W38",
+    "records": 147,
+    "tail": [
+      "  rejected   42  gate 0-size",
+      "  rejected    1  gate C-window",
+      "  carried forward 3 previously-accepted clip(s)",
+      "downloaded 144 clips -> /Users/sequoiataylor/GitHub/how-we-know/channel/imagery/clips",
+      "manifest -> /Users/sequoiataylor/GitHub/how-we-know/channel/imagery/video_rights.json",
+      "verified 147 clips: sha256 matches, clean window present, commercial use cleared"
+    ],
+    "last_success_at": "2026-09-20T04:45:26+00:00"
   }
 }
