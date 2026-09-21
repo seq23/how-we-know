@@ -71,15 +71,18 @@ loop/state/_local/
 loop/state/comments/digest.json
 loop/state/comments/last_act.json
 
-# The video rights manifest, per loop/footage_lane.py's own docstring: "the
-# manifest itself never enters git — the clips are 5 GB on the Mac and in R2,
-# and V11 re-hashes every record against the bytes on disk, so a committed
-# manifest with no clips beside it would fail the Monday lane." What crosses
-# to other hosts is loop/state/harvest_runs.json (the stamp), which IS
-# tracked. The 2026-09-21 Mac-state handoff commit (b1cd518) committed this
-# file by accident under a blanket "commit everything so the checkout is
-# clean" — 8,453 lines with no clips beside them — and broke
-# test_footage_harvest_is_honest.py's "video_rights.json has never existed"
-# assumption on every host, including this one. Untracked here; the working
-# copy on the Mac is unaffected.
+# The video footage manifest and its clips stay on the Mac and in R2, never in
+# git: V11 re-hashes every manifest record against the bytes beside it, so a
+# manifest committed without its ~5 GB of clips fails on every host but the
+# one that harvested (it did, 2026-09-21, run 35634217382, when a Mac-state
+# handoff commit b1cd518 swept it up). The Mac's nightly stamp in
+# loop/state/harvest_runs.json is what crosses to the cloud - see
+# loop/footage_lane.py "HOW THE LINUX LANE SEES THE MAC'S WORK". Guarded on
+# every host by loop/tests/test_footage_validators.py.
 channel/imagery/video_rights.json
+channel/imagery/clips/
+
+# V14's scratch OCR crops (loop/validate.py v14_shorts_attribution writes
+# <slug>.credit.png here and re-reads it in the same run). Regenerated every
+# run; the same sweep committed 28 of them.
+loop/state/_v14/
