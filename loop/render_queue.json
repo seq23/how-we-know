@@ -1,6 +1,6 @@
 {
-  "week": "2026-W38",
-  "generated": "2026-09-14T15:13:58+00:00",
+  "week": "2026-W39",
+  "generated": "2026-09-21T13:24:54+00:00",
   "videos_per_week": 4,
   "breaker": "closed",
   "validators": [
@@ -26,7 +26,7 @@
     },
     {
       "validator": "V3 taxonomy",
-      "examined": 4,
+      "examined": 2,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -34,7 +34,7 @@
     },
     {
       "validator": "V4 pov",
-      "examined": 4,
+      "examined": 2,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -42,7 +42,7 @@
     },
     {
       "validator": "V5 sources-present",
-      "examined": 4,
+      "examined": 2,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -50,15 +50,17 @@
     },
     {
       "validator": "V6 attribution (soft)",
-      "examined": 4,
+      "examined": 2,
       "status": "PASS",
       "failures": [],
-      "notes": [],
+      "notes": [
+        "how-do-scientists-know-so-much: narration names Census of Marine Life with no matching ## Sources entry"
+      ],
       "stops": []
     },
     {
       "validator": "V7 plans",
-      "examined": 4,
+      "examined": 2,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -66,12 +68,10 @@
     },
     {
       "validator": "V8 source-urls",
-      "examined": 0,
-      "status": "N/A(nothing generated)",
+      "examined": 10,
+      "status": "PASS",
       "failures": [],
-      "notes": [
-        "no generated scripts this week; nothing to fetch"
-      ],
+      "notes": [],
       "stops": []
     },
     {
@@ -150,7 +150,7 @@
       "status": "PASS",
       "failures": [],
       "notes": [
-        "25 episode(s) dated through 2026-10-26; 2 domain(s) allocating on disjoint days {'deep-sea-ocean-science': (1, 6), 'materials-and-manufacturing': (0, 4)} at 4/week"
+        "25 episode(s) dated through 2026-11-06; 2 domain(s) allocating on disjoint days {'deep-sea-ocean-science': (1, 6), 'materials-and-manufacturing': (0, 4)} at 4/week"
       ],
       "stops": []
     },
@@ -222,7 +222,7 @@
     },
     {
       "validator": "V30 cloud-visibility",
-      "examined": 243,
+      "examined": 255,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -298,7 +298,7 @@
     },
     {
       "validator": "V38 no-duplicate-airing",
-      "examined": 34,
+      "examined": 37,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -326,12 +326,12 @@
     "why": "configured default (4/week)"
   },
   "runway": {
-    "unpublished_scripts": 7,
-    "publishable": 3,
+    "unpublished_scripts": 4,
+    "publishable": 0,
     "scheduled_not_yet_aired": 24,
     "basis": "publish queue",
     "videos_per_week": 4,
-    "weeks_remaining": 6.8,
+    "weeks_remaining": 6.0,
     "warn_below_weeks": 4.0,
     "critical_below_weeks": 2.0,
     "level": "ok",
@@ -339,145 +339,89 @@
       "deep-sea-ocean-science": {
         "slots_per_week": 2,
         "queued": 0,
-        "scheduled_ahead": 12,
-        "weeks": 6.0,
+        "scheduled_ahead": 10,
+        "weeks": 5.0,
         "level": "ok",
-        "message": "deep-sea-ocean-science: 6.0 week(s) at 2/week (0 queued, 12 already dated)"
+        "message": "deep-sea-ocean-science: 5.0 week(s) at 2/week (0 queued, 10 already dated)"
       },
       "materials-and-manufacturing": {
         "slots_per_week": 2,
-        "queued": 3,
-        "scheduled_ahead": 12,
-        "weeks": 7.5,
+        "queued": 0,
+        "scheduled_ahead": 14,
+        "weeks": 7.0,
         "level": "ok",
-        "message": "materials-and-manufacturing: 7.5 week(s) at 2/week (3 queued, 12 already dated)"
+        "message": "materials-and-manufacturing: 7.0 week(s) at 2/week (0 queued, 14 already dated)"
       }
     },
     "short_domains": [],
     "never_go_dark": true,
-    "message": "6.8 weeks of queue at 4/week (3 publishable of 7 on disk). By domain: deep-sea-ocean-science: 6.0 week(s) at 2/week (0 queued, 12 already dated); materials-and-manufacturing: 7.5 week(s) at 2/week (3 queued, 12 already dated)."
+    "message": "6.0 weeks of queue at 4/week (0 publishable of 4 on disk). By domain: deep-sea-ocean-science: 5.0 week(s) at 2/week (0 queued, 10 already dated); materials-and-manufacturing: 7.0 week(s) at 2/week (0 queued, 14 already dated)."
   },
   "authoring": {
-    "generated_this_week": 0,
-    "cost_usd": 0.0,
+    "generated_this_week": 2,
+    "cost_usd": 0.125541,
     "model": "anthropic/claude-sonnet-4.5"
   },
   "items": [
     {
-      "slug": "why-does-old-iron-not-rust",
-      "question": "Why does old iron not rust?",
-      "script": "scripts/why-does-old-iron-not-rust.md",
-      "generated": false,
-      "author_cost_usd": null,
-      "author_model": null,
-      "pov_id": "pov-104",
-      "pov_line": "I stop trusting an explanation when it uses complexity to hide the fact that the speaker can't show their work. If every direct question produces more jargon and more certainty, but never a source or a mechanism, the explanation is protecting the person, not describing reality.",
-      "pov_matched_by": "hand assignment in pov/pov-assignments.json",
-      "work_copy": "loop/work/why-does-old-iron-not-rust.md",
-      "audio_dir": "audio/why-does-old-iron-not-rust",
-      "plan": "loop/plans/why-does-old-iron-not-rust.json",
-      "render": "renders/why-does-old-iron-not-rust.mp4",
-      "source": "authored-inventory",
+      "slug": "how-do-scientists-know-so-much",
+      "question": "how do scientists know so much",
+      "script": "loop/drafts/how-do-scientists-know-so-much.md",
+      "generated": true,
+      "author_cost_usd": 0.06243,
+      "author_model": "anthropic/claude-sonnet-4.5",
+      "pov_id": "pov-058",
+      "pov_line": "'Scientists say' is almost meaningless on its own. Which scientists? How many? Was it one paper? Was it replicated?",
+      "pov_matched_by": "tag:authority score 2.0",
+      "work_copy": "loop/work/how-do-scientists-know-so-much.md",
+      "audio_dir": "audio/how-do-scientists-know-so-much",
+      "plan": "loop/plans/how-do-scientists-know-so-much.json",
+      "render": "renders/how-do-scientists-know-so-much.mp4",
+      "source": "mined-demand",
       "status": "queued",
-      "pov_bank_line": "I stop trusting an explanation when it uses complexity to hide the fact that the speaker can't show their work. If every direct question produces more jargon and more certainty, but never a source or a mechanism, the explanation is protecting the person, not describing reality.",
-      "pov_script_line": "I stop trusting an explanation when it uses complexity to hide the fact that the speaker can't show their work. If every direct question produces more jargon and more certainty, but never a source or a mechanism, the explanation is protecting the person, not describing reality.",
-      "source_count": 10,
+      "pov_bank_line": "'Scientists say' is almost meaningless on its own. Which scientists? How many? Was it one paper? Was it replicated?",
+      "pov_script_line": "'Scientists say' is almost meaningless on its own. Which scientists? How many? Was it one paper? Was it replicated?",
+      "source_count": 5,
       "sources_cited": [
-        "NIST",
-        "ASM International",
-        "USGS",
-        "MIT",
-        "Fraunhofer",
-        "Fraunhofer Institute",
-        "ASTM International",
-        "Science",
-        "Archaeological Institute of America",
-        "British Museum"
+        "NOAA",
+        "NOAA Ocean Exploration",
+        "Ocean Census",
+        "Census of Marine Life"
       ],
-      "attribution_gaps": [],
-      "planned_beats": 84
+      "attribution_gaps": [
+        "Census of Marine Life"
+      ],
+      "planned_beats": 75
     },
     {
-      "slug": "how-is-3d-printed-metal-made",
-      "question": "How is 3D printed metal made?",
-      "script": "scripts/how-is-3d-printed-metal-made.md",
-      "generated": false,
-      "author_cost_usd": null,
-      "author_model": null,
-      "pov_id": "pov-119",
-      "pov_line": "Watching something be made, I think about how many things had to become controllable first \u2014 temperature, pressure, purity, timing, tolerances, sequence, inspection. What looks smooth at the end is usually violent forces being controlled very precisely.",
-      "pov_matched_by": "hand assignment in pov/pov-assignments.json",
-      "work_copy": "loop/work/how-is-3d-printed-metal-made.md",
-      "audio_dir": "audio/how-is-3d-printed-metal-made",
-      "plan": "loop/plans/how-is-3d-printed-metal-made.json",
-      "render": "renders/how-is-3d-printed-metal-made.mp4",
-      "source": "authored-inventory",
+      "slug": "how-do-scientists-know-about-other-galaxies",
+      "question": "how do scientists know about other galaxies",
+      "script": "loop/drafts/how-do-scientists-know-about-other-galaxies.md",
+      "generated": true,
+      "author_cost_usd": 0.063111,
+      "author_model": "anthropic/claude-sonnet-4.5",
+      "pov_id": "pov-060",
+      "pov_line": "Science is a process. It is not a person behind a curtain handing down permanent answers.",
+      "pov_matched_by": "tag:authority score 2.0",
+      "work_copy": "loop/work/how-do-scientists-know-about-other-galaxies.md",
+      "audio_dir": "audio/how-do-scientists-know-about-other-galaxies",
+      "plan": "loop/plans/how-do-scientists-know-about-other-galaxies.json",
+      "render": "renders/how-do-scientists-know-about-other-galaxies.mp4",
+      "source": "mined-demand",
       "status": "queued",
-      "pov_bank_line": "Watching something be made, I think about how many things had to become controllable first \u2014 temperature, pressure, purity, timing, tolerances, sequence, inspection. What looks smooth at the end is usually violent forces being controlled very precisely.",
-      "pov_script_line": "Watching something be made, I think about how many things had to become controllable first \u2014 temperature, pressure, purity, timing, tolerances, sequence, inspection. What looks smooth at the end is usually violent forces being controlled very precisely.",
-      "source_count": 6,
+      "pov_bank_line": "Science is a process. It is not a person behind a curtain handing down permanent answers.",
+      "pov_script_line": "Science is a process. It is not a person behind a curtain handing down permanent answers.",
+      "source_count": 5,
       "sources_cited": [
-        "NIST",
-        "ASM International"
-      ],
-      "attribution_gaps": [],
-      "planned_beats": 87
-    },
-    {
-      "slug": "why-is-carbon-fiber-so-strong",
-      "question": "Why is carbon fiber so strong?",
-      "script": "scripts/why-is-carbon-fiber-so-strong.md",
-      "generated": false,
-      "author_cost_usd": null,
-      "author_model": null,
-      "pov_id": "pov-086",
-      "pov_line": "What interests me is the translation layer. An instrument doesn't hand us reality. It produces a signal, and then humans calibrate it, process it, interpret it.",
-      "pov_matched_by": "hand assignment in pov/pov-assignments.json",
-      "work_copy": "loop/work/why-is-carbon-fiber-so-strong.md",
-      "audio_dir": "audio/why-is-carbon-fiber-so-strong",
-      "plan": "loop/plans/why-is-carbon-fiber-so-strong.json",
-      "render": "renders/why-is-carbon-fiber-so-strong.mp4",
-      "source": "authored-inventory",
-      "status": "queued",
-      "pov_bank_line": "What interests me is the translation layer. An instrument doesn't hand us reality. It produces a signal, and then humans calibrate it, process it, interpret it.",
-      "pov_script_line": "What interests me is the translation layer. An instrument doesn't hand us reality. It produces a signal, and then humans calibrate it, process it, interpret it.",
-      "source_count": 4,
-      "sources_cited": [
-        "NIST",
-        "ASM International",
-        "MIT",
-        "MIT DMSE",
+        "NASA",
         "Science"
       ],
       "attribution_gaps": [],
-      "planned_beats": 76
-    },
-    {
-      "slug": "why-is-steel-so-strong",
-      "question": "Why is steel so strong?",
-      "script": "scripts/why-is-steel-so-strong.md",
-      "generated": false,
-      "author_cost_usd": null,
-      "author_model": null,
-      "pov_id": "pov-047",
-      "pov_line": "When someone gives me a fact with a number in it, my first instinct is: where did the number come from? Not because I assume they're lying. Numbers can make almost anything sound authoritative.",
-      "pov_matched_by": "hand assignment in pov/pov-assignments.json",
-      "work_copy": "loop/work/why-is-steel-so-strong.md",
-      "audio_dir": "audio/why-is-steel-so-strong",
-      "plan": "loop/plans/why-is-steel-so-strong.json",
-      "render": "renders/why-is-steel-so-strong.mp4",
-      "source": "authored-inventory",
-      "status": "queued",
-      "pov_bank_line": "When someone gives me a fact with a number in it, my first instinct is: where did the number come from? Not because I assume they're lying. Numbers can make almost anything sound authoritative.",
-      "pov_script_line": "When someone gives me a fact with a number in it, my first instinct is: where did the number come from? Not because I assume they're lying. Numbers can make almost anything sound authoritative.",
-      "source_count": 7,
-      "sources_cited": [
-        "NIST",
-        "ASM International"
-      ],
-      "attribution_gaps": [],
-      "planned_beats": 93
+      "planned_beats": 74
     }
   ],
-  "unauthored": []
+  "unauthored": [
+    "how do scientists know how old something is",
+    "why deep sea creatures"
+  ]
 }

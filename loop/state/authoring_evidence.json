@@ -1,0 +1,300 @@
+{
+  "scripts": [
+    {
+      "slug": "how-do-scientists-know-so-much",
+      "script": "loop/drafts/how-do-scientists-know-so-much.md",
+      "at": "2026-09-21T13:24:54+00:00",
+      "validators": [
+        {
+          "validator": "V1 directive-truth",
+          "status": "PASS"
+        },
+        {
+          "validator": "V2 planner",
+          "status": "PASS"
+        },
+        {
+          "validator": "V3 taxonomy",
+          "status": "PASS"
+        },
+        {
+          "validator": "V4 pov",
+          "status": "PASS"
+        },
+        {
+          "validator": "V5 sources-present",
+          "status": "PASS"
+        },
+        {
+          "validator": "V6 attribution (soft)",
+          "status": "PASS"
+        },
+        {
+          "validator": "V7 plans",
+          "status": "PASS"
+        },
+        {
+          "validator": "V8 source-urls",
+          "status": "PASS"
+        },
+        {
+          "validator": "V9 footage-window",
+          "status": "N/A(nothing generated)"
+        },
+        {
+          "validator": "V10 footage-crop",
+          "status": "N/A(nothing generated)"
+        },
+        {
+          "validator": "V11 footage-hash",
+          "status": "N/A(nothing generated)"
+        },
+        {
+          "validator": "V12 footage-scope",
+          "status": "N/A(nothing generated)"
+        },
+        {
+          "validator": "V13 render-not-clipped",
+          "status": "N/A(nothing generated)"
+        },
+        {
+          "validator": "V14 shorts-attribution",
+          "status": "N/A(nothing generated)"
+        },
+        {
+          "validator": "V15 shorts-caption-crop",
+          "status": "N/A(nothing generated)"
+        },
+        {
+          "validator": "V20 cadence-schedule",
+          "status": "PASS"
+        },
+        {
+          "validator": "V21 no-boilerplate",
+          "status": "PASS"
+        },
+        {
+          "validator": "V22 producer-notes-second-person",
+          "status": "PASS"
+        },
+        {
+          "validator": "V23 chapters-yt-compliant",
+          "status": "PASS"
+        },
+        {
+          "validator": "V24 render-duration-floor",
+          "status": "N/A(nothing generated)"
+        },
+        {
+          "validator": "V25 domain-abstraction",
+          "status": "PASS"
+        },
+        {
+          "validator": "V27 lanes-see-domains",
+          "status": "PASS"
+        },
+        {
+          "validator": "V28 lane-interpreters",
+          "status": "PASS"
+        },
+        {
+          "validator": "V29 material-image rights",
+          "status": "PASS"
+        },
+        {
+          "validator": "V30 cloud-visibility",
+          "status": "PASS"
+        },
+        {
+          "validator": "V31 render-has-thumbnail",
+          "status": "PASS"
+        },
+        {
+          "validator": "V32 scheduled-pov",
+          "status": "PASS"
+        },
+        {
+          "validator": "V40 pov-assignment-integrity",
+          "status": "PASS"
+        },
+        {
+          "validator": "V33 domain-harvesters",
+          "status": "PASS"
+        },
+        {
+          "validator": "V34 niche-lifecycle",
+          "status": "PASS"
+        },
+        {
+          "validator": "V35 weekly-digest",
+          "status": "PASS"
+        },
+        {
+          "validator": "V36 editorial-gate",
+          "status": "PASS"
+        },
+        {
+          "validator": "V37 runtime-target",
+          "status": "PASS"
+        },
+        {
+          "validator": "V38 no-duplicate-airing",
+          "status": "PASS"
+        },
+        {
+          "validator": "V39 queue-depth-remaining",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "slug": "how-do-scientists-know-about-other-galaxies",
+      "script": "loop/drafts/how-do-scientists-know-about-other-galaxies.md",
+      "at": "2026-09-21T13:24:54+00:00",
+      "validators": [
+        {
+          "validator": "V1 directive-truth",
+          "status": "PASS"
+        },
+        {
+          "validator": "V2 planner",
+          "status": "PASS"
+        },
+        {
+          "validator": "V3 taxonomy",
+          "status": "PASS"
+        },
+        {
+          "validator": "V4 pov",
+          "status": "PASS"
+        },
+        {
+          "validator": "V5 sources-present",
+          "status": "PASS"
+        },
+        {
+          "validator": "V6 attribution (soft)",
+          "status": "PASS"
+        },
+        {
+          "validator": "V7 plans",
+          "status": "PASS"
+        },
+        {
+          "validator": "V8 source-urls",
+          "status": "PASS"
+        },
+        {
+          "validator": "V9 footage-window",
+          "status": "N/A(nothing generated)"
+        },
+        {
+          "validator": "V10 footage-crop",
+          "status": "N/A(nothing generated)"
+        },
+        {
+          "validator": "V11 footage-hash",
+          "status": "N/A(nothing generated)"
+        },
+        {
+          "validator": "V12 footage-scope",
+          "status": "N/A(nothing generated)"
+        },
+        {
+          "validator": "V13 render-not-clipped",
+          "status": "N/A(nothing generated)"
+        },
+        {
+          "validator": "V14 shorts-attribution",
+          "status": "N/A(nothing generated)"
+        },
+        {
+          "validator": "V15 shorts-caption-crop",
+          "status": "N/A(nothing generated)"
+        },
+        {
+          "validator": "V20 cadence-schedule",
+          "status": "PASS"
+        },
+        {
+          "validator": "V21 no-boilerplate",
+          "status": "PASS"
+        },
+        {
+          "validator": "V22 producer-notes-second-person",
+          "status": "PASS"
+        },
+        {
+          "validator": "V23 chapters-yt-compliant",
+          "status": "PASS"
+        },
+        {
+          "validator": "V24 render-duration-floor",
+          "status": "N/A(nothing generated)"
+        },
+        {
+          "validator": "V25 domain-abstraction",
+          "status": "PASS"
+        },
+        {
+          "validator": "V27 lanes-see-domains",
+          "status": "PASS"
+        },
+        {
+          "validator": "V28 lane-interpreters",
+          "status": "PASS"
+        },
+        {
+          "validator": "V29 material-image rights",
+          "status": "PASS"
+        },
+        {
+          "validator": "V30 cloud-visibility",
+          "status": "PASS"
+        },
+        {
+          "validator": "V31 render-has-thumbnail",
+          "status": "PASS"
+        },
+        {
+          "validator": "V32 scheduled-pov",
+          "status": "PASS"
+        },
+        {
+          "validator": "V40 pov-assignment-integrity",
+          "status": "PASS"
+        },
+        {
+          "validator": "V33 domain-harvesters",
+          "status": "PASS"
+        },
+        {
+          "validator": "V34 niche-lifecycle",
+          "status": "PASS"
+        },
+        {
+          "validator": "V35 weekly-digest",
+          "status": "PASS"
+        },
+        {
+          "validator": "V36 editorial-gate",
+          "status": "PASS"
+        },
+        {
+          "validator": "V37 runtime-target",
+          "status": "PASS"
+        },
+        {
+          "validator": "V38 no-duplicate-airing",
+          "status": "PASS"
+        },
+        {
+          "validator": "V39 queue-depth-remaining",
+          "status": "PASS"
+        }
+      ]
+    }
+  ],
+  "first_at": "2026-09-21T13:24:54+00:00",
+  "unlocks": "cadence escalation to 3/week"
+}

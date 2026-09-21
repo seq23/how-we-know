@@ -1,6 +1,13 @@
 {
-  "checked": "2026-09-14T15:13:56+00:00",
-  "scripts_with_gaps": 0,
-  "gaps": [],
+  "checked": "2026-09-21T13:24:50+00:00",
+  "scripts_with_gaps": 1,
+  "gaps": [
+    {
+      "slug": "how-do-scientists-know-so-much",
+      "missing_from_sources": [
+        "Census of Marine Life"
+      ]
+    }
+  ],
   "fix": "Add the named body's own URL to that script's ## Sources list. This validator turns green on its own once it is there."
 }

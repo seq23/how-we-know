@@ -1616,10 +1616,98 @@
       "completion_tokens": 3208,
       "total_tokens": 4878,
       "cost_usd": 0.05313
+    },
+    {
+      "at": "2026-09-21T13:19:22+00:00",
+      "slug": "how-do-scientists-know-so-much",
+      "model": "anthropic/claude-sonnet-4.5",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 2076,
+      "completion_tokens": 2960,
+      "total_tokens": 5036,
+      "cost_usd": 0.050628
+    },
+    {
+      "at": "2026-09-21T13:19:50+00:00",
+      "slug": "how-do-scientists-know-so-much",
+      "model": "anthropic/claude-sonnet-4.5",
+      "attempt": 2,
+      "accepted": true,
+      "prompt_tokens": 5445,
+      "completion_tokens": 3073,
+      "total_tokens": 8518,
+      "cost_usd": 0.06243
+    },
+    {
+      "at": "2026-09-21T13:21:07+00:00",
+      "slug": "how-do-scientists-know-how-old-something-is",
+      "model": "anthropic/claude-sonnet-4.5",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 2073,
+      "completion_tokens": 3265,
+      "total_tokens": 5338,
+      "cost_usd": 0.055194
+    },
+    {
+      "at": "2026-09-21T13:21:33+00:00",
+      "slug": "how-do-scientists-know-how-old-something-is",
+      "model": "anthropic/claude-sonnet-4.5",
+      "attempt": 2,
+      "accepted": false,
+      "prompt_tokens": 5784,
+      "completion_tokens": 3144,
+      "total_tokens": 8928,
+      "cost_usd": 0.064512
+    },
+    {
+      "at": "2026-09-21T13:22:43+00:00",
+      "slug": "why-deep-sea-creatures",
+      "model": "anthropic/claude-sonnet-4.5",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 2093,
+      "completion_tokens": 3072,
+      "total_tokens": 5165,
+      "cost_usd": 0.052359
+    },
+    {
+      "at": "2026-09-21T13:23:14+00:00",
+      "slug": "why-deep-sea-creatures",
+      "model": "anthropic/claude-sonnet-4.5",
+      "attempt": 2,
+      "accepted": false,
+      "prompt_tokens": 5383,
+      "completion_tokens": 3352,
+      "total_tokens": 8735,
+      "cost_usd": 0.066429
+    },
+    {
+      "at": "2026-09-21T13:24:18+00:00",
+      "slug": "how-do-scientists-know-about-other-galaxies",
+      "model": "anthropic/claude-sonnet-4.5",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 2061,
+      "completion_tokens": 3176,
+      "total_tokens": 5237,
+      "cost_usd": 0.053823
+    },
+    {
+      "at": "2026-09-21T13:24:43+00:00",
+      "slug": "how-do-scientists-know-about-other-galaxies",
+      "model": "anthropic/claude-sonnet-4.5",
+      "attempt": 2,
+      "accepted": true,
+      "prompt_tokens": 5472,
+      "completion_tokens": 3113,
+      "total_tokens": 8585,
+      "cost_usd": 0.063111
     }
   ],
-  "total_usd": 8.5712,
-  "drafts_written": 147,
-  "average_usd_per_accepted_draft": 0.1174,
-  "updated": "2026-09-04T18:42:21+00:00"
+  "total_usd": 9.039663,
+  "drafts_written": 75,
+  "average_usd_per_accepted_draft": 0.120529,
+  "updated": "2026-09-21T13:24:43+00:00"
 }
