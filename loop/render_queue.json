@@ -1,6 +1,6 @@
 {
   "week": "2026-W39",
-  "generated": "2026-09-21T13:24:54+00:00",
+  "generated": "2026-09-21T13:52:41+00:00",
   "videos_per_week": 4,
   "breaker": "closed",
   "validators": [
@@ -26,7 +26,7 @@
     },
     {
       "validator": "V3 taxonomy",
-      "examined": 2,
+      "examined": 4,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -34,7 +34,7 @@
     },
     {
       "validator": "V4 pov",
-      "examined": 2,
+      "examined": 4,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -42,7 +42,7 @@
     },
     {
       "validator": "V5 sources-present",
-      "examined": 2,
+      "examined": 4,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -50,17 +50,18 @@
     },
     {
       "validator": "V6 attribution (soft)",
-      "examined": 2,
+      "examined": 4,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "how-do-scientists-know-so-much: narration names Census of Marine Life with no matching ## Sources entry"
+        "how-do-scientists-know-so-much: narration names Census of Marine Life with no matching ## Sources entry",
+        "why-deep-sea-creatures: narration names Census of Marine Life with no matching ## Sources entry"
       ],
       "stops": []
     },
     {
       "validator": "V7 plans",
-      "examined": 2,
+      "examined": 4,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -68,10 +69,13 @@
     },
     {
       "validator": "V8 source-urls",
-      "examined": 10,
+      "examined": 20,
       "status": "PASS",
       "failures": [],
-      "notes": [],
+      "notes": [
+        "how-do-scientists-know-how-old-something-is: https://ocean.si.edu/ecosystems/deep-sea/deep-sea returned 403 (bot-blocked, treated as reachable)",
+        "why-deep-sea-creatures: https://ocean.si.edu/ecosystems/deep-sea/deep-sea returned 403 (bot-blocked, treated as reachable)"
+      ],
       "stops": []
     },
     {
@@ -359,7 +363,7 @@
   },
   "authoring": {
     "generated_this_week": 2,
-    "cost_usd": 0.125541,
+    "cost_usd": 0.127785,
     "model": "anthropic/claude-sonnet-4.5"
   },
   "items": [
@@ -367,9 +371,9 @@
       "slug": "how-do-scientists-know-so-much",
       "question": "how do scientists know so much",
       "script": "loop/drafts/how-do-scientists-know-so-much.md",
-      "generated": true,
-      "author_cost_usd": 0.06243,
-      "author_model": "anthropic/claude-sonnet-4.5",
+      "generated": false,
+      "author_cost_usd": null,
+      "author_model": null,
       "pov_id": "pov-058",
       "pov_line": "'Scientists say' is almost meaningless on its own. Which scientists? How many? Was it one paper? Was it replicated?",
       "pov_matched_by": "tag:authority score 2.0",
@@ -394,12 +398,70 @@
       "planned_beats": 75
     },
     {
+      "slug": "how-do-scientists-know-how-old-something-is",
+      "question": "how do scientists know how old something is",
+      "script": "loop/drafts/how-do-scientists-know-how-old-something-is.md",
+      "generated": true,
+      "author_cost_usd": 0.061632,
+      "author_model": "anthropic/claude-sonnet-4.5",
+      "pov_id": "pov-059",
+      "pov_line": "I'm not anti-science. I'm against using science as a magic authority word that means nobody has to show their work.",
+      "pov_matched_by": "tag:authority score 2.0",
+      "work_copy": "loop/work/how-do-scientists-know-how-old-something-is.md",
+      "audio_dir": "audio/how-do-scientists-know-how-old-something-is",
+      "plan": "loop/plans/how-do-scientists-know-how-old-something-is.json",
+      "render": "renders/how-do-scientists-know-how-old-something-is.mp4",
+      "source": "mined-demand",
+      "status": "queued",
+      "pov_bank_line": "I'm not anti-science. I'm against using science as a magic authority word that means nobody has to show their work.",
+      "pov_script_line": "I'm not anti-science. I'm against using science as a magic authority word that means nobody has to show their work.",
+      "source_count": 4,
+      "sources_cited": [],
+      "attribution_gaps": [],
+      "planned_beats": 80
+    },
+    {
+      "slug": "why-deep-sea-creatures",
+      "question": "why deep sea creatures",
+      "script": "loop/drafts/why-deep-sea-creatures.md",
+      "generated": true,
+      "author_cost_usd": 0.066153,
+      "author_model": "anthropic/claude-sonnet-4.5",
+      "pov_id": "pov-001",
+      "pov_line": "When I picture the deep ocean I don't see blue water or fish. I see black. A massive amount of black space where you can't tell what's beside you or beneath you.",
+      "pov_matched_by": "tag:scale score 2.8",
+      "work_copy": "loop/work/why-deep-sea-creatures.md",
+      "audio_dir": "audio/why-deep-sea-creatures",
+      "plan": "loop/plans/why-deep-sea-creatures.json",
+      "render": "renders/why-deep-sea-creatures.mp4",
+      "source": "mined-demand",
+      "status": "queued",
+      "pov_bank_line": "When I picture the deep ocean I don't see blue water or fish. I see black. A massive amount of black space where you can't tell what's beside you or beneath you.",
+      "pov_script_line": "When I picture the deep ocean I don't see blue water or fish. I see black. A massive amount of black space where you can't tell what's beside you or beneath you.",
+      "source_count": 6,
+      "sources_cited": [
+        "NOAA",
+        "NOAA Ocean Exploration",
+        "MBARI",
+        "Woods Hole Oceanographic Institution",
+        "Woods Hole",
+        "Smithsonian",
+        "Guinness World Records",
+        "Ocean Census",
+        "Census of Marine Life"
+      ],
+      "attribution_gaps": [
+        "Census of Marine Life"
+      ],
+      "planned_beats": 71
+    },
+    {
       "slug": "how-do-scientists-know-about-other-galaxies",
       "question": "how do scientists know about other galaxies",
       "script": "loop/drafts/how-do-scientists-know-about-other-galaxies.md",
-      "generated": true,
-      "author_cost_usd": 0.063111,
-      "author_model": "anthropic/claude-sonnet-4.5",
+      "generated": false,
+      "author_cost_usd": null,
+      "author_model": null,
       "pov_id": "pov-060",
       "pov_line": "Science is a process. It is not a person behind a curtain handing down permanent answers.",
       "pov_matched_by": "tag:authority score 2.0",
@@ -420,8 +482,5 @@
       "planned_beats": 74
     }
   ],
-  "unauthored": [
-    "how do scientists know how old something is",
-    "why deep sea creatures"
-  ]
+  "unauthored": []
 }
