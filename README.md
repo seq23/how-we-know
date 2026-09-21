@@ -2,7 +2,8 @@
 
 Production system for the **How We Know** YouTube channel — `@howweknowdeep`.
 
-An evidence-first explainer channel. Every on-screen figure traces to a named
+An evidence-first explainer channel — deep sea (Sunday, Tuesday) and materials
+and manufacturing (Monday, Friday). Every on-screen figure traces to a named
 public source, and the visual pipeline is built so that it *cannot* display a
 value that is not present in the sourced script.
 
@@ -10,7 +11,7 @@ value that is not present in the sourced script.
 
 | Path | Contents |
 |---|---|
-| `scripts/` | 20 narration scripts, annotated with `{{visual}}` directives |
+| `scripts/` | 38 narration scripts, two domains, annotated with `{{visual}}` directives |
 | `visuals/` | The render engine — see below |
 | `pov/` | Owner POV bank (98 lines), per-video assignments, approved topic taxonomy |
 | `research/` | Topic miner and the mined/filtered backlog |
