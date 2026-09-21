@@ -65,3 +65,8 @@ shorts/
 
 # The Mac's copies of loop-state files that upstream overwrote (loop/mac_sync.py)
 loop/state/_local/
+
+# Comment watch: the ledger is tracked (it is the record of who instructed
+# what); the per-run digest and act receipt are transient.
+loop/state/comments/digest.json
+loop/state/comments/last_act.json
