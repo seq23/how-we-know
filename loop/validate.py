@@ -91,6 +91,13 @@ breaker, publishing.
                        conflicted quota.json on disk and the next lane in the
                        same job died on it several steps later, with a
                        traceback naming neither the file nor git
+  V41 discovery-metadata every allocated domain's tags and hashtags are
+                       DERIVED (loop/discovery.py) rather than one fixed
+                       list — a materials episode's tags carry none of deep
+                       sea's, its description ends with a 1-60 hashtag line
+                       ordered subject/domain/channel, and
+                       loop/shorts_lane.py carries the same tags plus
+                       "shorts". Owner instruction, 2026-09-21
 
 V16 and V17 may report a QUOTA_DEFERRED video as a GREEN NAMED STOP rather
 than a failure. That is not a softened assertion: the deferral must be
@@ -1624,7 +1631,7 @@ def run_reach() -> tuple[bool, list[dict]]:
     """The post-publish reach validators. Separate from the render gate."""
     results = [v16_caption_track(), v17_localizations(),
                v18_default_language(), v19_snippet_merge(),
-               v26_state_files_readable()]
+               v26_state_files_readable(), v41_discovery_metadata()]
     return all(r.ok for r in results), [r.as_dict() for r in results]
 
 
@@ -3324,6 +3331,166 @@ def v39_queue_depth_is_remaining_not_scored() -> Result:
                        f"remaining, but queue_depth() reports "
                        f"{remaining.get(d, 0)}. A published episode is being "
                        f"counted as inventory it no longer is.")
+    return r
+
+
+def v41_discovery_metadata() -> Result:
+    """Every allocated domain's tags and hashtags are DERIVED, not one list.
+
+    Owner instruction, 2026-09-21: every video carried the same seven
+    deep-sea tags and no hashtags — including the 18 materials episodes,
+    tagged "marine biology". `loop/discovery.py` now derives both per
+    episode, from `loop/config.json`'s `discovery` block plus the script's
+    own subject and mined queries actually in its narration.
+
+    Proved for EVERY allocated domain, on a real script of that domain,
+    through the real builders — not by reading source text, the way V18
+    checks `defaultLanguage`:
+
+      * `loop/config.json` declares non-empty tags and hashtags for the
+        domain, and for the channel.
+      * `loop/upload.py:build_payload`'s tags carry at least one of this
+        domain's own tags and NONE of any other allocated domain's — the
+        exact shape of the bug this closes: a materials episode carrying
+        "marine biology".
+      * the description ends with a recognisable hashtag line of 1-60
+        hashtags, whose first three are subject, domain, channel — the three
+        YouTube shows above the title.
+      * `loop/shorts_lane.py:build_payload` for the same episode carries
+        "shorts" plus at least one of the domain's own tags.
+      * the total tag length does not exceed `TAG_TOTAL_MAX`, and
+        `loop/discovery.py` and `loop/upload.py` agree on what that limit is.
+
+    And once, not per domain: `.github/workflows/loop-reach.yml` names
+    `loop/tags_backfill.py`, so a future drift self-heals in the cloud
+    rather than existing with nothing invoking it.
+
+    Hard-fails when it examines zero allocated domains.
+    """
+    r = Result("V41 discovery-metadata")
+    sys.path.insert(0, str(ROOT / "loop"))
+    import discovery as _disc                              # noqa: PLC0415
+    import shorts_lane as _sl                               # noqa: PLC0415
+    import upload as _up                                    # noqa: PLC0415
+
+    cfg = config()
+    alloc = list(domains.allocation(cfg))
+    r.examined += 1
+    if not alloc:
+        r.fail("loop/config.json domains.allocation names no domain — "
+               "examined nothing")
+        return r
+
+    disc_cfg = cfg.get("discovery") or {}
+    if not disc_cfg:
+        r.fail("loop/config.json has no `discovery` block")
+        return r
+
+    r.examined += 1
+    if not (disc_cfg.get("channel") or {}).get("tags"):
+        r.fail("discovery.channel has no `tags`")
+    if not (disc_cfg.get("channel") or {}).get("hashtags"):
+        r.fail("discovery.channel has no `hashtags`")
+
+    if _disc.TAG_TOTAL_MAX != _up.TAG_TOTAL_MAX:
+        r.fail(f"loop/discovery.py TAG_TOTAL_MAX ({_disc.TAG_TOTAL_MAX}) != "
+               f"loop/upload.py TAG_TOTAL_MAX ({_up.TAG_TOTAL_MAX}) — the "
+               f"two must agree on YouTube's own tags-field limit")
+
+    domain_tags = {}
+    for name in alloc:
+        r.examined += 1
+        block = (disc_cfg.get("domains") or {}).get(name) or {}
+        if not block.get("tags"):
+            r.fail(f"{name}: discovery.domains has no `tags`")
+        if not block.get("hashtags"):
+            r.fail(f"{name}: discovery.domains has no `hashtags`")
+        domain_tags[name] = set(block.get("tags") or [])
+
+    # One real script per allocated domain — the first on disk that carries it.
+    script_of: dict[str, Path] = {}
+    for p in sorted((ROOT / "scripts").glob("*.md")):
+        d = domains.domain_of_script(p)
+        if d in alloc and d not in script_of:
+            script_of[d] = p
+
+    for name in alloc:
+        p = script_of.get(name)
+        r.examined += 1
+        if not p:
+            r.fail(f"{name}: no script on disk carries this domain — its "
+                   f"tags cannot be proved against a real payload")
+            continue
+        slug = p.stem
+        question = slug.split("-", 1)[-1].replace("-", " ")
+        item = {"slug": slug, "script": str(p.relative_to(ROOT)),
+               "question": question}
+        payload = _up.build_payload(item)
+        tags = payload["snippet"]["tags"]
+        tagset = set(tags)
+
+        r.examined += 1
+        if not (domain_tags[name] & tagset):
+            r.fail(f"{name}: {slug}'s tags carry none of this domain's own "
+                   f"tags {sorted(domain_tags[name])}")
+        for other, other_tags in domain_tags.items():
+            if other == name:
+                continue
+            leaked = other_tags & tagset
+            if leaked:
+                r.fail(f"{name}: {slug}'s tags carry {sorted(leaked)} from "
+                       f"{other} — the exact shape of the bug this closes")
+
+        r.examined += 1
+        total_len = sum(len(t) + 1 for t in tags)
+        if total_len > _disc.TAG_TOTAL_MAX:
+            r.fail(f"{name}: {slug}'s total tag length {total_len} exceeds "
+                   f"TAG_TOTAL_MAX ({_disc.TAG_TOTAL_MAX})")
+
+        r.examined += 1
+        desc = payload["snippet"]["description"]
+        last_line = desc.split("\n")[-1] if desc else ""
+        if not _disc.is_hashtag_line(last_line):
+            r.fail(f"{name}: {slug}'s description does not end with a "
+                   f"recognisable hashtag line")
+        else:
+            hts = last_line.split()
+            if not (1 <= len(hts) <= 60):
+                r.fail(f"{name}: {slug}'s hashtag line carries {len(hts)} "
+                       f"hashtag(s), outside YouTube's 1-60")
+            script_text = p.read_text(encoding="utf-8")
+            subject_ht = _disc._hashtag_word(
+                _disc.subject_of(_disc._script_title(slug, script_text)))
+            domain_ht = ((disc_cfg.get("domains") or {}).get(name) or {}) \
+                .get("hashtags") or []
+            channel_ht = (disc_cfg.get("channel") or {}).get("hashtags") or []
+            want_first3 = [h for h in [subject_ht, *domain_ht, *channel_ht]
+                           if h][:3]
+            if hts[:len(want_first3)] != want_first3:
+                r.fail(f"{name}: {slug}'s first hashtag(s) are {hts[:3]}, "
+                       f"expected subject/domain/channel order "
+                       f"{want_first3} — those are the ones YouTube shows "
+                       f"above the title")
+
+        r.examined += 1
+        short_payload = _sl.build_payload(slug, question)
+        short_tags = short_payload["snippet"]["tags"]
+        if "shorts" not in short_tags:
+            r.fail(f"{name}: shorts_lane.build_payload({slug!r}, ...) tags "
+                   f"do not include 'shorts'")
+        if not (domain_tags[name] & set(short_tags)):
+            r.fail(f"{name}: shorts_lane.build_payload({slug!r}, ...) tags "
+                   f"carry none of this domain's own tags")
+
+    r.examined += 1
+    workflow = ROOT / ".github" / "workflows" / "loop-reach.yml"
+    if not workflow.exists() or "tags_backfill.py" not in workflow.read_text():
+        r.fail("`.github/workflows/loop-reach.yml` does not name "
+               "loop/tags_backfill.py — a future drift would never "
+               "self-heal in the cloud")
+
+    if r.examined == 0:
+        r.fail("examined nothing")
     return r
 
 

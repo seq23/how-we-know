@@ -635,3 +635,55 @@ widening.
 **Verified:** see the PR for `loop/validate_plan.py` output (10/10 checks,
 including the negative proof of check 10) and the site's own
 `npm run validate && npm test && npm run typecheck` output.
+
+---
+
+## 2026-09-21 — hashtags and tags per episode, both domains, backfilled
+
+**What happened.** Owner instruction: "how-we-know: hashtags and tags per
+episode, both domains, backfill all videos." Every video on the channel
+carried the same seven fixed tags (`deep sea, ocean science, how we know,
+evidence, marine biology, explainer, deep ocean`) and no hashtags at all —
+including all 18 materials-and-manufacturing episodes and their 31 Shorts,
+tagged "marine biology" like everything else. `loop/upload.py:build_payload()`
+and `loop/shorts_lane.py:build_payload()` each hardcoded one list, used by
+every upload path.
+
+**What this change made true.**
+1. `loop/discovery.py` (new) derives tags and hashtags per episode: the
+   episode's own subject (its title, question stem stripped), up to 8
+   autocomplete-mined queries for its domain that actually occur in its own
+   narration (`research/mined_queries.json` / `mined_queries_materials.json`
+   — nothing invented), then its domain's tags, then the channel's — from a
+   new `discovery` block in `loop/config.json`. Hashtags follow the same
+   order, capped at 6, so the three YouTube displays above the title are
+   always the episode's subject, its domain, and the channel.
+2. `loop/upload.py` and `loop/shorts_lane.py` call it instead of a fixed
+   list; a Short inherits its parent episode's tags plus "shorts" /
+   "#Shorts".
+3. `loop/localize.py` treats the hashtag line as VERBATIM — held out of
+   `content_key` and never sent to the model — so backfilling hashtags onto
+   the 34 already-localized videos re-translates nothing.
+4. `loop/tags_backfill.py` (new) rewrites every live episode and Short —
+   metadata only, read-merge-write-whole through `loop/ytmeta.py`, idempotent
+   — and carries the same hashtag line onto each video's existing
+   localizations in the same write. Wired into `.github/workflows/loop-reach.yml`
+   as a third daily lane so a future drift self-heals.
+5. `loop/validate.py` V41 proves, for every allocated domain, on a real
+   script through the real builders: the domain's own tags appear and no
+   other allocated domain's do (the exact shape of the bug this closes); the
+   description ends with a 1–60 hashtag line in subject/domain/channel order;
+   Shorts carry "shorts" plus the domain's tags; the total tag length holds
+   under YouTube's 400-character limit. Proven negatively: blanking
+   materials' tags in `config.json` fails V41 with the expected messages;
+   restoring it passes.
+
+**Deliberately out of scope.** Titles are untouched — the question IS the
+title, and a hashtag in a title suppresses the description's. The site
+(howweknowdeep.com) is not YouTube metadata; nothing there changes.
+
+**Verified:** see the PR for `loop/tests/run_all.py` (52/52), `loop/validate.py`
+and `loop/validate.py --reach` output (V41 included), the negative proof of
+V41, and `loop/tags_backfill.py --dry-run`'s real read-only output against
+all 65 live videos (34 episodes, 31 Shorts) — every materials video's
+computed tags carry no deep-sea term.

@@ -383,10 +383,11 @@ a test asserts the fence can never dip below it.
 It may **not** change cadence, abandon deep sea, or publish anything — those are
 reported to the owner and never applied automatically.
 
-### The reach lanes: captions and localizations
+### The reach lanes: captions, localizations and tags
 
-Added 2026-09-02, after two defects that had been live since launch and that
-nothing in the repo could have reported.
+Added 2026-09-02 (captions, localizations); tags 2026-09-21. Three defects
+that had been live since launch and that nothing in the repo could have
+reported.
 
 **1. Twenty timed caption files existed and none had ever been uploaded.**
 `captions/` has held a `.srt` and a `.vtt` per episode since narration, and
@@ -413,20 +414,40 @@ translation. A second model call back-checks each title for a wrong core noun
 and either corrects it or refuses the language — it caught Sonnet rendering
 "deepest" into Indonesian as *terlaut*, which is not a word.
 
-**The trap both lanes are built around: `videos.update` REPLACES the parts you
-name.** Sending `part=snippet,localizations` with a partial snippet erases the
-title, description, tags and categoryId of a live video, behind a 200 OK. Every
-snippet-bearing write goes through `loop/ytmeta.py`, which reads the live
-snippet, merges, sends it back whole, and *refuses* rather than truncating when
-it cannot. Validator **V19** fails the build if any other module in `loop/`
-issues such a call.
+**3. Every video carried the same seven fixed tags and no hashtags, whatever
+its domain.** `loop/upload.py` and `loop/shorts_lane.py` each hardcoded one
+list (`deep sea, ocean science, how we know, evidence, marine biology,
+explainer, deep ocean`), so all 18 materials-and-manufacturing episodes and
+their 31 Shorts shipped tagged "marine biology". `loop/discovery.py` derives
+tags and hashtags per episode instead: the episode's own subject (its title,
+question stem stripped — "How strong is titanium?" -> "titanium"), up to 8
+autocomplete-mined queries for its domain that actually occur in its own
+narration (`research/mined_queries*.json` — nothing invented), then its
+domain's tags and hashtags, then the channel's, from the `discovery` block in
+`loop/config.json`. Hashtags are capped at 6 and ordered subject, domain,
+channel, because YouTube shows only the first three above the title. A Short
+inherits its parent episode's tags plus "shorts" / "#Shorts".
+**Tags and hashtags are DERIVED, not curated: a hand edit to a video's tags in
+Studio is overwritten the next time `loop/tags_backfill.py` runs** — there is
+one source of truth, never a per-video exception. `loop/localize.py` treats
+the description's trailing hashtag line as VERBATIM, exactly like a bulleted
+source or a chapter timestamp: held out of the model call and out of
+`content_key`, so adding it re-translates nothing.
 
-Neither lane may fail an upload. They live in their own workflow
-(`.github/workflows/loop-reach.yml`), each in a step that survives the other's
-named stop, and validators **V16–V19** and **V26** run as a separate group
-(`loop/validate.py --reach`) rather than inside the Monday render gate — a
-lagging translation must never be able to halt drafting and, through the
-breaker, publishing.
+**The trap all three lanes are built around: `videos.update` REPLACES the
+parts you name.** Sending `part=snippet,localizations` with a partial snippet
+erases the title, description, tags and categoryId of a live video, behind a
+200 OK. Every snippet-bearing write goes through `loop/ytmeta.py`, which reads
+the live snippet, merges, sends it back whole, and *refuses* rather than
+truncating when it cannot. Validator **V19** fails the build if any other
+module in `loop/` issues such a call.
+
+No lane may fail an upload. They live in their own workflow
+(`.github/workflows/loop-reach.yml`), each in a step that survives the others'
+named stops, and validators **V16–V19**, **V26** and **V41** run as a separate
+group (`loop/validate.py --reach`) rather than inside the Monday render gate —
+a lagging translation or a stale tag list must never be able to halt drafting
+and, through the breaker, publishing.
 
 **A deferral is green, and it is loud.** The caption backfill costs 450 units a
 video and genuinely spans days, so on any given morning some videos have no
@@ -447,11 +468,14 @@ the signal that mattered was buried under eleven that did not.
 
 Quota, from Google's published table: `captions.insert` 400 and `captions.list`
 50, so 450 a video and 6,750 for the fifteen-video backfill; `videos.list` 1
-plus `videos.update` 50, so 51 a video and 765 for the same backfill. Both
-spend through `loop/quota.py` behind `quota.upload_reserve()`, which holds a
-whole video's allowance back while the day's upload is still to come and
-releases it once an uploading lane has booked units. The caption backfill
-therefore spreads over several daily runs by design rather than eating the day.
+plus `videos.update` 50, so 51 a video and 765 for the same backfill. The tags
+backfill costs the same 51 a video as localize — `loop/tags_backfill.py`
+covered all 65 live videos (34 episodes, 31 Shorts) for 65 quota units on its
+`--dry-run` read pass, well inside a single day's 10,000. All three spend
+through `loop/quota.py` behind `quota.upload_reserve()`, which holds a whole
+video's allowance back while the day's upload is still to come and releases it
+once an uploading lane has booked units. The caption backfill therefore
+spreads over several daily runs by design rather than eating the day.
 
 ---
 

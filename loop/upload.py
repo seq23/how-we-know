@@ -34,6 +34,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "auth"))
 
 import tokens as auth  # noqa: E402
 import breaker  # noqa: E402
+import discovery  # noqa: E402
+import domains  # noqa: E402
 import receipt as receipts  # noqa: E402
 from common import (LOOP, RECEIPTS, ROOT, Stage, config, now,  # noqa: E402
                     read_json, week_id, write_json)
@@ -287,7 +289,8 @@ def build_payload(item: dict) -> dict:
     if m:
         answer = re.sub(r"\s+", " ", m.group(1)).strip()
 
-    chapters = build_chapters(item.get("slug") or path.stem, text)
+    slug = item.get("slug") or path.stem
+    chapters = build_chapters(slug, text)
 
     sources = []
     sb = re.search(r"## Sources\s*\n(.*?)(\n## |\Z)", text, re.S)
@@ -306,12 +309,14 @@ def build_payload(item: dict) -> dict:
               "named public source stated in the narration."]
     description = "\n".join(parts)[:DESC_MAX]
 
-    tags, total = [], 0
-    for t in ["deep sea", "ocean science", "how we know", "evidence",
-              "marine biology", "explainer", "deep ocean"]:
-        if total + len(t) + 1 <= TAG_TOTAL_MAX:
-            tags.append(t)
-            total += len(t) + 1
+    # Tags and hashtags are DERIVED per episode from its own domain and
+    # subject — owner instruction, 2026-09-21. See loop/discovery.py: no
+    # fixed list here any more, and a materials episode no longer ships
+    # tagged "marine biology".
+    domain = domains.domain_of_slug(slug)
+    tags = discovery.tags_for(slug, text, domain)
+    hashtags = discovery.hashtags_for(slug, text, domain)
+    description = discovery.add_hashtag_line(description, hashtags)[:DESC_MAX]
 
     return {
         # defaultLanguage is NOT cosmetic and NOT optional here.

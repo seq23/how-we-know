@@ -188,15 +188,21 @@ passed and nothing changed, which is itself proof it was a typo, not a real
 deadline.) Channels admitted before that date keep the 4,000-hour bar. See
 "Monetisation, both gates" below for the nearer one.
 
+A third lane, added 2026-09-21, keeps every video's tags and hashtags derived
+from its own domain rather than one fixed list — a materials episode no
+longer carries "marine biology". Nothing for you to do; it runs daily and
+self-heals a future drift on its own.
+
 If you ever want to run them by hand:
 
 ```bash
 .venv/bin/python loop/captions_lane.py     # upload the subtitle files
 .venv/bin/python loop/localize.py          # translated titles + descriptions
+.venv/bin/python loop/tags_backfill.py     # derived tags + hashtags
 ```
 
-Both are safe to re-run: they skip everything already done and cost nothing on
-a second run.
+All three are safe to re-run: they skip everything already done and cost
+nothing on a second run.
 
 ---
 
