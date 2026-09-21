@@ -1,0 +1,21 @@
+{
+  "stage": "fri-publish",
+  "week": "2026-W38",
+  "at": "2026-09-18T23:46:58+00:00",
+  "code": "OAUTH_MISSING",
+  "message": "8 scheduled flip(s) are due and cannot be verified without OAuth.",
+  "detail": null,
+  "unblock": "Run .venv/bin/python auth/youtube_auth.py on the Mac, or set the repo secrets.",
+  "disposition": "owner_action",
+  "disposition_why": "The YouTube credential is absent from this environment. Only she can mint one. Only she can clear this, and retrying cannot, so the run stays GREEN and the fact is carried to the top of the Sunday digest instead of into her inbox as a failed build. (run 1 of at most 5 before this escalates.)",
+  "consecutive": 1,
+  "held_items": [],
+  "exit_code": 0,
+  "work_done_before_stop": [],
+  "notes": [
+    "why-does-old-iron-not-rust: not flipped \u2014 no upload receipt",
+    "how-is-3d-printed-metal-made: not flipped \u2014 no upload receipt",
+    "why-is-carbon-fiber-so-strong: not flipped \u2014 no upload receipt",
+    "why-is-steel-so-strong: not flipped \u2014 no upload receipt"
+  ]
+}
