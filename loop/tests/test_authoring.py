@@ -82,17 +82,77 @@ def check() -> list[str]:
         if code not in src:
             fails.append(f"loop/author.py has no named stop for {code}")
 
-    # Missing key: a named stop, exit 0, never a traceback.
+    key_guard_broken = False
+    # api_key() itself: both env guards win over a key file that exists.
+    # This runs FIRST and gates the subprocess below: if the guard is
+    # broken, launching author.py against a real key file would pay for a
+    # draft to prove it, and the proof must not cost money.
+    import os
+    import tempfile
+    real_keyfile = author.KEY_FILE
+    with tempfile.TemporaryDirectory() as td:
+        fake = Path(td) / "openrouter_key.txt"
+        fake.write_text("sk-or-v1-" + "f" * 64)
+        author.KEY_FILE = fake
+        try:
+            for guard in ("LOOP_NO_KEYFILE", "LOOP_DRY_RUN"):
+                examined += 1
+                os.environ.pop("OPENROUTER_API_KEY", None)
+                os.environ[guard] = "1"
+                try:
+                    got = author.api_key()
+                finally:
+                    del os.environ[guard]
+                if got is not None:
+                    fails.append(f"api_key() read the key file with {guard}=1")
+                    key_guard_broken = True
+            examined += 1
+            saved = {k: os.environ.pop(k) for k in
+                     ("LOOP_NO_KEYFILE", "LOOP_DRY_RUN", "OPENROUTER_API_KEY")
+                     if k in os.environ}
+            try:
+                if author.api_key() != fake.read_text().strip():
+                    fails.append("api_key() ignored the key file with no "
+                                 "guard set — the Mac path is broken")
+            finally:
+                os.environ.update(saved)
+        finally:
+            author.KEY_FILE = real_keyfile
+
+    # Missing key: a named stop, exit 0, never a traceback — AND NO SPEND.
+    # LOOP_NO_KEYFILE was set here from the first version of this test and
+    # nothing in author.py read it, so on a Mac holding
+    # .secrets/openrouter_key.txt this "missing key" case quietly made a real
+    # two-attempt draft (~$0.12) on every local suite run, 2026-09-05 to
+    # 2026-09-21. The spend log and the drafts directory are compared
+    # before and after, so the check fails the moment the key is reachable.
     examined += 1
-    p = subprocess.run([sys.executable, str(LOOP / "author.py"), "a test topic"],
-                       cwd=ROOT, capture_output=True, text=True,
-                       env={"PATH": "/usr/bin:/bin", "HOME": "/tmp",
-                            "OPENROUTER_API_KEY": "",
-                            "LOOP_NO_KEYFILE": "1"})
-    out = p.stdout + p.stderr
+    if key_guard_broken:
+        fails.append("skipping the author.py subprocess: api_key() ignores "
+                     "LOOP_NO_KEYFILE, so running it would spend money")
+    spend_file = LOOP / "state" / "spend.json"
+    drafts_dir = LOOP / "drafts"
+    spend_before = spend_file.read_bytes() if spend_file.exists() else b""
+    drafts_before = set(drafts_dir.glob("*")) if drafts_dir.exists() else set()
+    p = None if key_guard_broken else subprocess.run(
+        [sys.executable, str(LOOP / "author.py"), "a test topic"],
+        cwd=ROOT, capture_output=True, text=True, timeout=60,
+        env={"PATH": "/usr/bin:/bin", "HOME": "/tmp",
+             "OPENROUTER_API_KEY": "", "LOOP_NO_KEYFILE": "1"})
+    out = "" if p is None else p.stdout + p.stderr
     if "Traceback" in out:
         fails.append(f"author.py crashed with no key instead of stopping:\n"
                      f"{out[-400:]}")
+    if p is not None and "OPENROUTER_KEY_MISSING" not in out:
+        fails.append("author.py with LOOP_NO_KEYFILE=1 did not take the "
+                     "OPENROUTER_KEY_MISSING stop — the key file was reachable "
+                     f"and a real draft may have been paid for:\n{out[-300:]}")
+    spend_after = spend_file.read_bytes() if spend_file.exists() else b""
+    drafts_after = set(drafts_dir.glob("*")) if drafts_dir.exists() else set()
+    if spend_after != spend_before or drafts_after != drafts_before:
+        fails.append("the 'missing key' check SPENT MONEY: spend.json or "
+                     "loop/drafts/ changed during a run that must not reach "
+                     "OpenRouter")
 
     # ------------------------------------------------ 3. validators not relaxed
     examined += 1
@@ -157,6 +217,103 @@ def check() -> list[str]:
                     break
     if "record_spend" not in src:
         fails.append("author.py does not log spend")
+
+    # ------------------------------------------------ 6. the model is never ""
+    # GitHub Actions expands an unset repository variable to "" and still sets
+    # the env var, so the cloud lane sent `"model": ""` and OpenRouter answered
+    # HTTP 400 "No models provided" for all four topics (run 35587241167,
+    # 2026-09-21). The Mac never reproduced it: the variable is absent there.
+    import urllib.request
+    for raw, want in (("", author.DEFAULT_MODEL), ("   ", author.DEFAULT_MODEL),
+                      ("vendor/some-model", "vendor/some-model")):
+        examined += 1
+        os.environ["OPENROUTER_MODEL"] = raw
+        try:
+            got = author.configured_model()
+        finally:
+            del os.environ["OPENROUTER_MODEL"]
+        if got != want:
+            fails.append(f"configured_model() with OPENROUTER_MODEL={raw!r} "
+                         f"returned {got!r}, wanted {want!r}")
+
+    # End to end: draft() with the empty variable must hand the resolved
+    # default to the HTTP client, and the client must never open a socket
+    # with an empty model. No network: urlopen is replaced for the check.
+    examined += 1
+    sent: list[str] = []
+
+    class _Reached(Exception):
+        pass
+
+    def _no_network(*a, **k):
+        raise _Reached("urlopen was called")
+
+    real_call, real_open = author.call_openrouter, urllib.request.urlopen
+
+    def _capture(messages, model, key, **kw):
+        sent.append(model)
+        raise _Reached("captured")
+
+    os.environ["OPENROUTER_MODEL"] = ""
+    author.call_openrouter = _capture
+    try:
+        author.draft("a test question", "a-test-topic",
+                     {"pov_id": "t", "line": "I once saw this myself."},
+                     key="sk-or-v1-" + "0" * 64)
+    except author.AuthorStop:
+        pass  # _Reached maps to OPENROUTER_UNREACHABLE: expected
+    finally:
+        author.call_openrouter = real_call
+        del os.environ["OPENROUTER_MODEL"]
+    if sent != [author.DEFAULT_MODEL]:
+        fails.append(f"draft() with OPENROUTER_MODEL='' sent model {sent!r}; "
+                     f"must send {author.DEFAULT_MODEL!r}")
+
+    examined += 1
+    urllib.request.urlopen = _no_network
+    try:
+        author.call_openrouter([{"role": "user", "content": "x"}], "",
+                               "sk-or-v1-" + "0" * 64)
+        fails.append("call_openrouter('') did not refuse an empty model")
+    except ValueError:
+        pass
+    except _Reached:
+        fails.append("call_openrouter('') reached the network with an empty "
+                     "model instead of refusing")
+    finally:
+        urllib.request.urlopen = real_open
+
+    # Siblings: every lane resolves the model through configured_model().
+    # A second `os.environ.get("OPENROUTER_MODEL", ...)` is the same defect
+    # waiting in another file (localize.py had one). AST, not regex, so a
+    # comment or docstring that names the variable is not a reader.
+    import ast
+    examined += 1
+    readers = 0
+    for f in sorted(LOOP.glob("*.py")):
+        tree = ast.parse(f.read_text(), filename=str(f))
+        owners: dict[int, str] = {}
+        for fn in ast.walk(tree):
+            if isinstance(fn, (ast.FunctionDef, ast.AsyncFunctionDef)):
+                for n in ast.walk(fn):
+                    owners.setdefault(id(n), fn.name)
+        for n in ast.walk(tree):
+            names = [c.value for c in ast.walk(n) if isinstance(c, ast.Constant)
+                     and c.value == "OPENROUTER_MODEL"]
+            is_env_read = (
+                (isinstance(n, ast.Call) and isinstance(n.func, ast.Attribute)
+                 and n.func.attr == "get" and names)
+                or (isinstance(n, ast.Subscript) and names))
+            if not is_env_read or "environ" not in ast.dump(n):
+                continue
+            readers += 1
+            if not (f.name == "author.py"
+                    and owners.get(id(n)) == "configured_model"):
+                fails.append(f"loop/{f.name}:{n.lineno} reads $OPENROUTER_MODEL "
+                             f"directly; use author.configured_model()")
+    if readers == 0:
+        fails.append("no code reads $OPENROUTER_MODEL at all — the override "
+                     "is dead and this check examined nothing")
 
     if examined == 0:
         fails.append("examined ZERO authoring cases")
