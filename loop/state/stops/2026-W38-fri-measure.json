@@ -1,0 +1,20 @@
+{
+  "stage": "fri-measure",
+  "week": "2026-W38",
+  "at": "2026-09-18T23:46:58+00:00",
+  "code": "OAUTH_MISSING",
+  "message": "36 published video(s) cannot be measured without OAuth. Retention and RPM are unavailable, so Sunday's ranking runs on demand evidence and the retention breaker cannot fire.",
+  "detail": null,
+  "unblock": "Same credentials as the upload lane, plus the yt-analytics.readonly scope. See docs/loop.md \u00a7 OAuth.",
+  "disposition": "owner_action",
+  "disposition_why": "The YouTube credential is absent from this environment. Only she can mint one. Only she can clear this, and retrying cannot, so the run stays GREEN and the fact is carried to the top of the Sunday digest instead of into her inbox as a failed build. (run 1 of at most 5 before this escalates.)",
+  "consecutive": 1,
+  "held_items": [],
+  "exit_code": 0,
+  "work_done_before_stop": [
+    "recomputed retention streak from 3 measured video(s): 3 consecutive below 146.0s average view duration",
+    "per-domain duration streaks: {'materials-and-manufacturing': 1, 'deep-sea-ocean-science': 2}",
+    "recorded an unmeasured week in loop/state/measurement.json"
+  ],
+  "notes": []
+}

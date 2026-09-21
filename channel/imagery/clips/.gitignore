@@ -1,0 +1,9 @@
+# Video bytes are NOT committed. The stills in ../assets are 80 MB; a full
+# NOAA video harvest is ~9 GB, which does not belong in git history.
+#
+# Nothing is lost: every clip in ../video_rights.json carries its direct_url
+# and the sha256 of the exact bytes, so `imagery_video.py --harvest` refetches
+# them and `--verify` proves the refetch is byte-identical to what was
+# rights-checked. The manifest is the artefact; these files are a cache.
+*
+!.gitignore

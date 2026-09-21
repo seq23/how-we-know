@@ -1,0 +1,13 @@
+{
+  "stage": "backfill",
+  "week": "2026-W36",
+  "at": "2026-09-06T14:01:11.480207+00:00",
+  "code": "RENDER_GATE_FAILED",
+  "message": "a finished render is clipped or under the runtime floor, so nothing was uploaded this run.",
+  "unblock": "Run loop/extend.py for a short script, or re-render a clipped one. The listed episodes must not reach YouTube.",
+  "disposition": "needs_human",
+  "disposition_why": "'RENDER_GATE_FAILED' is not in loop/stop_policy.json, so it is treated as needing a human. That is the default on purpose.",
+  "exit_code": 3,
+  "work_done_before_stop": [],
+  "notes": []
+}

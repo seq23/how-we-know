@@ -1,0 +1,26 @@
+{
+  "stage": "thu-upload",
+  "week": "2026-W37",
+  "at": "2026-09-08T21:25:28+00:00",
+  "code": "NOTHING_RENDERED",
+  "message": "no queue row has a healthy render receipt. 1 finished episode(s) are waiting, but the back catalogue is the CLOUD lane's job now, not this one.",
+  "detail": {
+    "statuses": {
+      "why-does-old-iron-not-rust": "queued",
+      "how-is-a-silicon-wafer-made": "queued",
+      "what-is-a-semiconductor-made-of": "queued",
+      "how-is-3d-printed-metal-made": "queued"
+    },
+    "library_pending": [
+      "how-strong-is-graphene"
+    ]
+  },
+  "unblock": "Run bin/loop-tuesday.sh to render this week's episode. For the back catalogue: push it with bin/push-to-r2.sh and let the daily loop-upload-cloud workflow take it \u2014 never run loop/backfill.py alongside that workflow.",
+  "disposition": "self_resolving",
+  "disposition_why": "Nothing finished on the Mac since the last run. The batch is the producer and it runs when the runway warning fires, so an empty pass is the expected state between batches. (run 3 of at most 7 before this escalates to a human.)",
+  "consecutive": 3,
+  "held_items": [],
+  "exit_code": 0,
+  "work_done_before_stop": [],
+  "notes": []
+}

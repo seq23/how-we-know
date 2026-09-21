@@ -1,0 +1,20 @@
+{
+  "stage": "pov-repair",
+  "week": "2026-W37",
+  "at": "2026-09-14T04:01:11+00:00",
+  "code": "POV_ALL_TRACED",
+  "message": "all 34 queued episode(s) either carry no [HUMAN] beat or already trace to pov/pov-assignments.json",
+  "detail": {
+    "examined": 34
+  },
+  "unblock": "Nothing to do. This lane acts again the moment an episode is authored with an untraced first-person beat.",
+  "disposition": "self_resolving",
+  "disposition_why": "Every queued episode either carries no [HUMAN] beat or already traces to pov/pov-assignments.json. The lane is FINISHED, not blocked: it acts again the moment an episode is authored with an untraced first-person beat. (run 2 of at most 10 before this escalates to a human.)",
+  "consecutive": 2,
+  "held_items": [],
+  "exit_code": 0,
+  "work_done_before_stop": [],
+  "notes": [
+    "examined 34 queued episode(s)"
+  ]
+}
