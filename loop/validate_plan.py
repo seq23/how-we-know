@@ -8,7 +8,7 @@ independently and compares them against live configuration and real artifacts,
 so it fails when the two diverge. A validator that read its expectations out of
 the markdown would agree with any edit to the markdown, which is not a check.
 
-Nine assertions, each traceable to a line in the plan:
+Ten assertions, each traceable to a line in the plan:
 
     1  cadence is 2/week from config, raising itself to 3 then 4, never hardcoded
     2  the 3/week escalation is gated on a validated generated script
@@ -19,6 +19,7 @@ Nine assertions, each traceable to a line in the plan:
     7  seed_hits is dead and stays dead
     8  a locked-private upload surfaces as a named condition
     9  the voice model is MIT-licensed on weights
+    10 every allocated domain is admitted and equipped
 
 Rule 0: hard-fails if it resolves zero checks.
 
@@ -36,7 +37,9 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import cadence  # noqa: E402
+import domain_sources  # noqa: E402
 import exclusions  # noqa: E402
+import pov_match  # noqa: E402
 from common import LOOP, ROOT, config, read_json  # noqa: E402
 
 PLAN = ROOT / "docs" / "CHANNEL-PLAN.md"
@@ -398,11 +401,82 @@ def c9_voice_licence() -> Check:
     return c
 
 
+def c10_domains_admitted() -> Check:
+    """config.json's own per_domain_requirements, turned into a check.
+
+    A domain with a live weekly slot must actually be admitted (named in
+    pov/topic-taxonomy.json), sourced (>=3 allowlisted bodies so authoring and
+    validation have somewhere real to cite), scheduled (publish_days), and
+    POV-equipped (>=1 tier:specific line, the new_niche_requirement top-up) -
+    the config previously only STATED these requirements; nothing checked
+    them, so materials-and-manufacturing ran for two weeks unadmitted.
+    """
+    c = Check(10, "every allocated domain is admitted and equipped")
+    cfg = config()
+    allocation = cfg.get("domains", {}).get("allocation") or {}
+    if not allocation:
+        c.fail("config.json domains.allocation is empty - no domain has a "
+               "live slot, which is itself a defect this check hard-fails on")
+        return c
+
+    tax = read_json(ROOT / "pov" / "topic-taxonomy.json", default={})
+    admitted_names = set(tax.get("admitted_domains") or [])
+    admitted_ids = tax.get("admitted_domain_ids") or {}
+    publish_days = cfg.get("domains", {}).get("publish_days") or {}
+    pov_bank = read_json(ROOT / "pov" / "pov-bank.json", default={})
+    pov_lines = pov_bank.get("lines") or []
+
+    checked = 0
+    for domain_id, slots in allocation.items():
+        if not slots:
+            continue
+        checked += 1
+
+        name = admitted_ids.get(domain_id)
+        if not name:
+            c.fail(f"{domain_id!r} has {slots} live slot(s) but no entry in "
+                   f"pov/topic-taxonomy.json admitted_domain_ids")
+        elif name not in admitted_names:
+            c.fail(f"{domain_id!r} maps to {name!r}, which is not in "
+                   f"pov/topic-taxonomy.json admitted_domains")
+
+        bodies = domain_sources.ALLOWLIST.get(domain_id) or []
+        if len(bodies) < 3:
+            c.fail(f"{domain_id!r} has only {len(bodies)} allowlisted "
+                   f"source(s) in loop/domain_sources.py ALLOWLIST, fewer "
+                   f"than the 3 config.json's per_domain_requirements "
+                   f"requires")
+
+        if not publish_days.get(domain_id):
+            c.fail(f"{domain_id!r} has no publish_days in "
+                   f"config.json domains.publish_days")
+
+        # line_domain() treats a bare `domain: null` line as
+        # LEGACY_SPECIFIC_DOMAIN ("deep-sea-ocean-science") - the first
+        # interview predates the domain field entirely and was about nothing
+        # else. Matching on the raw field would wrongly fail deep sea, which
+        # never needed a top-up because it was never "outside deep sea".
+        specific = [ln for ln in pov_lines
+                    if pov_match.line_domain(ln) == domain_id
+                    and ln.get("tier") == "specific"]
+        if not specific:
+            c.fail(f"{domain_id!r} has zero tier:specific line(s) in "
+                   f"pov/pov-bank.json - new_niche_requirement's POV top-up "
+                   f"was never done for it")
+
+    if checked == 0:
+        c.fail("every allocated domain has zero slots - nothing to check")
+    else:
+        c.note(f"{checked} domain(s) admitted and equipped: "
+               + ", ".join(sorted(d for d, s in allocation.items() if s)))
+    return c
+
+
 # ------------------------------------------------------------------ runner
 
 CHECKS = [c1_cadence, c2_escalation, c3_publish_source, c4_pinned_head,
           c5_gate_active, c6_exclusions, c7_seed_hits_dead, c8_locked_upload,
-          c9_voice_licence]
+          c9_voice_licence, c10_domains_admitted]
 
 
 def run() -> tuple[bool, list[dict]]:

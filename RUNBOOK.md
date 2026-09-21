@@ -5,7 +5,7 @@ How We Know, and nothing else. Reference detail lives in
 [`docs/OPERATING-MANUAL.md`](docs/OPERATING-MANUAL.md); the locked strategy lives
 in [`docs/CHANNEL-PLAN.md`](docs/CHANNEL-PLAN.md).
 
-Last true: 2026-09-13.
+Last true: 2026-09-21.
 
 ---
 
@@ -202,11 +202,10 @@ a second run.
 
 ## The publishing rhythm
 
-- **Long-form: Sunday and Tuesday, 10:00 Central — becoming Sunday, Monday,
-  Tuesday and Friday.** Pinned in local time, so it does not drift when the
-  clocks change. Sunday and Tuesday are deep sea; Monday and Friday, once the
-  second domain is live, are materials-and-manufacturing — see "A second
-  domain" below.
+- **Long-form: Sunday, Monday, Tuesday and Friday, 10:00 Central.** Pinned in
+  local time, so it does not drift when the clocks change. Sunday and Tuesday
+  are deep sea; Monday and Friday are materials-and-manufacturing, live since
+  2026-09-07 — see "A second domain" below.
 - **Shorts: 18:00–21:00 local, 9 a week.** 19:00 every evening, plus a second
   at 21:00 on Saturday and Sunday. Nearly the inverse window — Shorts peak in
   the evening, long-form in the morning.
@@ -245,11 +244,10 @@ bin/batch-session.sh --max-episodes 4
 
 ## A second domain, on top of deep sea
 
-Added 2026-09-03. **Materials-and-manufacturing runs ON TOP of deep sea, not
-instead of it**, once the 4/week ceiling is reached — deep sea keeps Sunday
-and Tuesday, materials takes Monday and Friday. Nothing for you to do; the
-loop decides the split monthly and writes its reasoning to
-`loop/state/monthly/<month>.md`.
+Added 2026-09-03, live since 2026-09-07. **Materials-and-manufacturing runs ON
+TOP of deep sea, not instead of it** — deep sea keeps Sunday and Tuesday,
+materials takes Monday and Friday. Nothing for you to do; the loop decides the
+split monthly and writes its reasoning to `loop/state/monthly/<month>.md`.
 
 - **Why a second domain at all.** `research/proposed-taxonomy.json` scored 20
   candidate domains; materials ranks lower on demand than deep sea but has
