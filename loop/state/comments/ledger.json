@@ -1,0 +1,72 @@
+{
+  "channel_id": "UC5vZFZc15DIM6IrFwFgAECg",
+  "cursors": {
+    "GTvZFHQMMuQ": "2026-09-21T12:28:29Z",
+    "MAV4PF056RA": "2026-09-20T20:01:33Z",
+    "sfveDF88ZHo": "2026-09-14T13:56:55Z"
+  },
+  "seen": {
+    "UgwwhKbVrAMub0De6_d4AaABAg": {
+      "comment_id": "UgwwhKbVrAMub0De6_d4AaABAg",
+      "video_id": "GTvZFHQMMuQ",
+      "author": "@michaelproust7891",
+      "author_channel_id": "UCy8aIgheOTXeYxfMvN6vyeQ",
+      "text": "Ok",
+      "published_at": "2026-09-21T12:28:29Z",
+      "like_count": 1,
+      "reply_count": 0,
+      "video_title": "How does quenching harden steel?",
+      "class": "other",
+      "proposed_action": null,
+      "proposed_reply": null,
+      "product_note": null,
+      "seen_at": "2026-09-21T17:44:43+00:00"
+    },
+    "Ugyk8AQbltLLx1sQsyh4AaABAg": {
+      "comment_id": "Ugyk8AQbltLLx1sQsyh4AaABAg",
+      "video_id": "MAV4PF056RA",
+      "author": "@sequoiataylor5498",
+      "author_channel_id": "UC7O1lQikHSc77s7gNnj9htQ",
+      "text": "Amazing videos ! Very educational",
+      "published_at": "2026-09-20T20:01:33Z",
+      "like_count": 1,
+      "reply_count": 0,
+      "video_title": "Why deep sea creatures get creepier the deeper you go?",
+      "class": "praise",
+      "proposed_action": null,
+      "proposed_reply": null,
+      "product_note": null,
+      "seen_at": "2026-09-21T17:44:43+00:00"
+    },
+    "UgyKfkby3xELUs4Igy14AaABAg": {
+      "comment_id": "UgyKfkby3xELUs4Igy14AaABAg",
+      "video_id": "sfveDF88ZHo",
+      "author": "@sequoiataylor5498",
+      "author_channel_id": "UC7O1lQikHSc77s7gNnj9htQ",
+      "text": "Amazing video!",
+      "published_at": "2026-09-14T13:56:55Z",
+      "like_count": 1,
+      "reply_count": 0,
+      "video_title": "What is the deepest part of the ocean?",
+      "class": "praise",
+      "proposed_action": null,
+      "proposed_reply": null,
+      "product_note": null,
+      "seen_at": "2026-09-21T17:44:43+00:00"
+    }
+  },
+  "instructions": {},
+  "actions": [],
+  "sweeps": [
+    {
+      "at": "2026-09-21T17:44:43+00:00",
+      "videos": 67,
+      "new": 4,
+      "reported": 0,
+      "units": 69,
+      "cost_usd": 0.001953,
+      "model": "anthropic/claude-haiku-4.5"
+    }
+  ],
+  "updated": "2026-09-21T17:44:43+00:00"
+}
