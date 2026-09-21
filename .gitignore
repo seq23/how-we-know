@@ -70,3 +70,16 @@ loop/state/_local/
 # what); the per-run digest and act receipt are transient.
 loop/state/comments/digest.json
 loop/state/comments/last_act.json
+
+# The video rights manifest, per loop/footage_lane.py's own docstring: "the
+# manifest itself never enters git — the clips are 5 GB on the Mac and in R2,
+# and V11 re-hashes every record against the bytes on disk, so a committed
+# manifest with no clips beside it would fail the Monday lane." What crosses
+# to other hosts is loop/state/harvest_runs.json (the stamp), which IS
+# tracked. The 2026-09-21 Mac-state handoff commit (b1cd518) committed this
+# file by accident under a blanket "commit everything so the checkout is
+# clean" — 8,453 lines with no clips beside them — and broke
+# test_footage_harvest_is_honest.py's "video_rights.json has never existed"
+# assumption on every host, including this one. Untracked here; the working
+# copy on the Mac is unaffected.
+channel/imagery/video_rights.json
