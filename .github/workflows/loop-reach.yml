@@ -1,6 +1,7 @@
-name: loop · daily 10:00 CT · reach (captions + localizations)
+name: loop · daily 10:00 CT · reach (captions + localizations + tags)
 
-# NON-ENGLISH REACH. Two lanes that run AFTER a video is already up:
+# NON-ENGLISH REACH, PLUS DISCOVERY METADATA. Three lanes that run AFTER a
+# video is already up:
 #
 #   loop/captions_lane.py   uploads the English .srt that captions/ has held
 #                           since narration. It is not a courtesy to readers:
@@ -15,6 +16,12 @@ name: loop · daily 10:00 CT · reach (captions + localizations)
 #                           defaultLanguage=en — which, unset, makes
 #                           localizations impossible at the API and renders no
 #                           subtitle UI at all in Studio.
+#   loop/tags_backfill.py   rewrites every live video's tags and its
+#                           description's hashtag line, derived per episode
+#                           from its own domain (loop/discovery.py) — so a
+#                           future drift (a new domain, an edited script)
+#                           self-heals here rather than sitting until someone
+#                           notices. Owner instruction, 2026-09-21.
 #
 # WHY ITS OWN WORKFLOW, AND NOT A STEP IN loop-upload-cloud.yml.
 # A reach failure must never be able to fail an upload, or to be READ as one.
@@ -47,7 +54,7 @@ on:
       lane:
         description: 'Which lane to run'
         type: choice
-        options: [both, captions, localize]
+        options: [both, captions, localize, tags]
         default: both
       limit:
         description: 'Max videos per lane this run'
@@ -123,7 +130,7 @@ jobs:
         run: python3 auth/check_ci_scopes.py
 
       - name: Upload the English caption tracks
-        if: ${{ github.event.inputs.lane != 'localize' }}
+        if: ${{ github.event.inputs.lane != 'localize' && github.event.inputs.lane != 'tags' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # There is no .secrets/ on a runner, so the lane falls through to
@@ -144,7 +151,7 @@ jobs:
           bin/loop-stage.sh captions loop/captions_lane.py $ARGS
 
       - name: Localize titles and descriptions
-        if: ${{ always() && github.event.inputs.lane != 'captions' }}
+        if: ${{ always() && github.event.inputs.lane != 'captions' && github.event.inputs.lane != 'tags' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           YT_OAUTH_CLIENT_JSON: ${{ secrets.YT_OAUTH_CLIENT_JSON }}
@@ -157,6 +164,21 @@ jobs:
             ARGS="$ARGS --dry-run"
           fi
           bin/loop-stage.sh localize loop/localize.py $ARGS
+
+      # No OPENROUTER_API_KEY: loop/discovery.py derives tags and hashtags
+      # from the script and loop/config.json alone, no model call.
+      - name: Backfill tags and hashtags
+        if: ${{ always() && github.event.inputs.lane != 'captions' && github.event.inputs.lane != 'localize' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          YT_OAUTH_CLIENT_JSON: ${{ secrets.YT_OAUTH_CLIENT_JSON }}
+          YT_OAUTH_REFRESH_TOKEN: ${{ secrets.YT_OAUTH_REFRESH_TOKEN }}
+        run: |
+          ARGS="--limit ${{ github.event.inputs.limit || 15 }}"
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            ARGS="$ARGS --dry-run"
+          fi
+          bin/loop-stage.sh tags loop/tags_backfill.py $ARGS
 
       - name: Reach validators
         if: always()
