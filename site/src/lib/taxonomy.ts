@@ -22,6 +22,7 @@ export type SubjectId =
   | 'natural-history'
   | 'archaeology'
   | 'incident-analysis'
+  | 'materials'
 
 export type MethodId =
   | 'measured-by-instrument'
@@ -45,6 +46,7 @@ export const subjects: SubjectDefinition[] = [
   { id: 'natural-history', name: 'Natural history', blurb: 'Animal adaptation and the fossil and field record.', accent: 'var(--color-water-300)' },
   { id: 'archaeology', name: 'Archaeology', blurb: 'Ancient technology and what survives of it.', accent: 'var(--color-accent)' },
   { id: 'incident-analysis', name: 'Incident analysis', blurb: 'Aviation and maritime incidents and their evidence trail.', accent: 'var(--color-water-500)' },
+  { id: 'materials', name: 'Materials and manufacturing', blurb: 'How steel is hardened, how a wafer is made, and what makes a material hold.', accent: 'var(--color-accent)' },
 ]
 
 export const methods: MethodDefinition[] = [

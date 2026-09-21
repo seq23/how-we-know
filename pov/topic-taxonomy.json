@@ -18,8 +18,14 @@
     "Engineering failures and forensic analysis",
     "Natural history and animal adaptation",
     "Archaeology and ancient technology",
-    "Aviation and maritime incident analysis"
+    "Aviation and maritime incident analysis",
+    "Materials science and manufacturing"
   ],
+  "admitted_domain_ids": {
+    "deep-sea-ocean-science": "Deep sea and ocean science",
+    "materials-and-manufacturing": "Materials science and manufacturing"
+  },
+  "admitted_domain_ids_note": "Maps loop/domains.py's `research/proposed-taxonomy.json` domain ids to their entry in admitted_domains above, so a validator can check 'is this running domain actually admitted' without guessing a name match. Only allocated domains need an entry here; see loop/config.json domains.allocation for what is actually running.",
   "hard_exclusions": [
     "Adult or sexual content",
     "Drugs, substances, or paraphernalia",
@@ -47,5 +53,14 @@
     "All visuals originally generated or license-cleared with a rights-manifest entry."
   ],
   "escalation": "A candidate that is admitted by domain but touches any exclusion is a NAMED STOP for owner review. It is never auto-published.",
-  "new_niche_requirement": "Entering a domain outside 'Deep sea' requires a ~20 minute POV top-up interview before first publish, because tier:specific lines do not transfer."
+  "new_niche_requirement": "Entering a domain outside 'Deep sea' requires a ~20 minute POV top-up interview before first publish, because tier:specific lines do not transfer.",
+  "amendments": [
+    {
+      "date": "2026-09-21",
+      "by": "Sequoia",
+      "change": "Added 'Materials science and manufacturing' to admitted_domains and admitted_domain_ids['materials-and-manufacturing'].",
+      "why": "Instruction: 'how-we-know: widen the channel from deep sea to deep sea + materials.' The loop had already been publishing materials-and-manufacturing episodes (allocated in loop/config.json domains.allocation, airing Mon/Fri since 2026-09-07) without the domain appearing in this standing admission \u2014 this amendment brings the record into agreement with what the pipeline was already doing.",
+      "new_niche_requirement_satisfied_by": "The 2026-09-05 POV top-up interview (13 tier:specific lines in pov/pov-bank.json with domain materials-and-manufacturing)."
+    }
+  ]
 }
