@@ -57,9 +57,10 @@ def style_problems(term: str, respelling: str) -> list[str]:
     out = []
     if ACRONYM.match(term):
         body = re.sub(r"'?s$", "", respelling) if term.endswith("s") else respelling
-        if not re.fullmatch(r"(?:[A-Z] )*[A-Z]", body) and not re.fullmatch(r"[a-z]+", respelling):
+        if not re.fullmatch(r"(?:[A-Z] )*[A-Z]", body) \
+                and not re.fullmatch(r"[a-z]+(?: [a-z]+)*", respelling):
             out.append(f"{term!r}: an acronym is spaced single capitals "
-                       f"('R O V') or one lowercase pseudo-word ('noah'), "
+                       f"('R O V') or lowercase pseudo-words ('em bar ee'), "
                        f"not {respelling!r}")
         return out
     if "-" in respelling:
