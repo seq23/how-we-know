@@ -241,6 +241,16 @@
       "why": "Same shape, for translated titles and descriptions: private, dated in the future, and taken in turn by the daily localize lane. The validator goes red on its own hours before air, while a lane cycle is still left to fix it.",
       "max_consecutive": 7,
       "escalation": "Seven days of the same videos unlocalized means the localize lane is not acting - check OPENROUTER credit and the daily quota reserve."
+    },
+    "NO_NEW_COMMENTS": {
+      "why": "The weekly comment sweep found nothing newer than its per-video cursors. The lane is FINISHED for the week, not blocked: it classifies again the moment a viewer writes something. The digest file is written empty so the Mac job that emails the owner can record NOTHING_TO_REPORT by name instead of sending nothing.",
+      "max_consecutive": 8,
+      "escalation": "Eight weekly sweeps with no new comment on a channel publishing 4/week is longer than silence explains. Check that list_uploads() still returns the whole uploads playlist and that the cursors in loop/state/comments/ledger.json are not ahead of real time."
+    },
+    "INSTRUCTIONS_ALREADY_APPLIED": {
+      "why": "Every instruction in the file was already applied and recorded on an earlier run; the ledger holds each action. Re-running act with the same file is idempotent by design so a retried tick cannot reply twice.",
+      "max_consecutive": 3,
+      "escalation": "Three runs handed an already-applied file means the caller is not clearing its instruction store after a successful act. Check the boss-os duty task state, not this lane."
     }
   },
   "owner_action": {
@@ -427,6 +437,10 @@
     "RENDER_GATE_EMPTY": "loop/render_gate.py ran V13 and V24 on the Mac and between them they examined zero renders, on a machine whose job is to hold renders. A gate that looked at nothing has passed nothing; Rule 0.",
     "RENDER_HELD": "One or more finished renders failed V13 (clipped) or V24 (under the runtime floor) and are HELD BY NAME while every other finished episode ships - the gate no longer refuses the whole batch for one short episode (6-13 September 2026: eight finished episodes sat a week behind one that was six seconds short). Earns HELD by naming each held slug and its reason; loop/extend.py is invoked for each one under the floor and the next batch re-voices and re-renders it. A new slug entering the hold pages once.",
     "MAC_NOT_SHIPPING": "The cloud digest read loop/state/mac_heartbeat.json and found the Mac holding finished renders it has not shipped for longer than mac.unshipped_days, or no heartbeat at all for that long while renders are pending. The Mac's own stops used to stay on the Mac; this is the cloud noticing the silence.",
-    "CAPTION_SOURCE_HELD": "Live videos with no captions/<slug>.srt at all. Reaching here means an episode that is ALREADY PUBLIC has no caption source, which is past the point where any lane can prevent harm - loop/captions_build.py builds a track for anything with committed beat timings, so this is an episode whose narration was never finished. It is deliberately reported rather than double-alarmed for holds that are already issued, and it fails outright for anything not covered by one."
+    "CAPTION_SOURCE_HELD": "Live videos with no captions/<slug>.srt at all. Reaching here means an episode that is ALREADY PUBLIC has no caption source, which is past the point where any lane can prevent harm - loop/captions_build.py builds a track for anything with committed beat timings, so this is an episode whose narration was never finished. It is deliberately reported rather than double-alarmed for holds that are already issued, and it fails outright for anything not covered by one.",
+    "COMMENT_CLASSIFIER_UNUSABLE": "The classifier answered in a shape parse_classification() refuses - a missing id, an unknown class, or a reported class with no action. Nothing was recorded for that batch, so nothing is lost; but a model that changed shape needs a person to look.",
+    "INSTRUCTIONS_UNREADABLE": "act was handed a file that is not a JSON object of comment_id -> instruction. The caller's parser is broken; nothing was applied.",
+    "INSTRUCTION_UNBACKED": "THE GATE. An instruction reached act without who gave it, when, through what, a legal action, or a swept comment. Nothing was applied - not the good lines either, so a partial reply cannot go out under a bad batch. A write to the channel with no instruction record behind it is exactly what this lane must never do.",
+    "COMMENT_ACTION_REJECTED": "YouTube refused a hide or a reply (HTTP 4xx). Actions before it were applied and recorded; this one and the rest were not. Usually a missing youtube.force-ssl scope or a comment the author already deleted."
   }
 }
