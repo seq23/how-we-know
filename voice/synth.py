@@ -51,54 +51,51 @@ SR = 24000  # Chatterbox S3GEN_SR; also the pipeline's target rate
 # Pronunciation lexicon.
 #
 # Chatterbox has NO phoneme input - the tokenizer is text-level - so the only
-# override mechanism is respelling. These are applied to the synthesis text
-# only; the source script is never modified. Keys are matched case-insensitively
-# on word boundaries. Add niche terms here as they come up.
+# override mechanism is respelling, and the model reads the respelling AS
+# TEXT. That is the whole design constraint, and it was learned the hard way:
+#
+# 2026-09-21. The owner heard "hypothermal" for "hydrothermal" in a published
+# Short. Whisper on that audio heard "Hydro-thermal", "Bath-E-Pell A.J. Ike"
+# (bathypelagic) and "chemo, syn, that, ik" (chemosynthetic). The dictionary
+# style this table used to be written in - "hy-droh-THUR-mal",
+# "bath-ee-pel-AJ-ic" - is spoken as separate words and spelled-out letters.
+# voice/tests/pronunciation_probe.py then synthesised every term WITHOUT its
+# entry: the model already says 31 of the 38 correctly on its own, including
+# all three above. The table was making them worse.
+#
+# Rules, enforced by loop/tests/test_lexicon_respellings.py:
+#   * An entry exists only for a term the probe heard WRONG with no entry.
+#   * A respelling is one lowercase pseudo-word, or a few, spaces only where
+#     a real word boundary helps. No hyphens, no CAPS stress.
+#   * A true acronym that is read letter by letter is spaced capitals
+#     ("R O V"). One that is said as a word gets no entry (NOAA).
+#   * Every entry is PROVEN: the probe writes voice/tests/pronunciation_probe.json
+#     and the test fails if an entry is not in it, or changed since.
+#
+# Applied to the synthesis text only; the source script is never modified.
+# Keys are matched case-insensitively on word boundaries.
 # ---------------------------------------------------------------------------
 LEXICON: dict[str, str] = {
-    # Acronyms that must be spelled out rather than read as words.
-    "NOAA": "Noh-ah",
-    "MBARI": "em-BAR-ee",
+    # Acronyms read letter by letter.
     "ROV": "R O V",
-    "ROVs": "R O Vs",
+    "ROVs": "R O V's",
     "CTD": "C T D",
     "GPS": "G P S",
-    # Terms the base model tends to mangle.
-    "hadal": "hay-dal",
-    "Kaiko": "Kye-koh",
-    "Kaikō": "Kye-koh",
-    "bathypelagic": "bath-ee-pel-AJ-ic",
-    "abyssopelagic": "ab-iss-oh-pel-AJ-ic",
-    "mesopelagic": "mez-oh-pel-AJ-ic",
-    "bioluminescence": "bye-oh-loo-min-ESS-ence",
-    "bioluminescent": "bye-oh-loo-min-ESS-ent",
-    "cephalopod": "SEF-uh-lo-pod",
-    "cephalopods": "SEF-uh-lo-pods",
-    "bathymetric": "bath-ee-MET-ric",
-    "bathymetry": "buh-THIM-uh-tree",
-    "Trieste": "Tree-EST-ay",
-    # Added from voice/audit_narration.py's lexicon-gap scan over the narration
-    # prose of all 20 scripts. Episode 01 contains none of these, so they were
-    # safe to add mid-run: no already-generated beat changes.
-    "abyssal": "uh-BISS-al",
-    "benthic": "BEN-thick",
-    "amphipod": "AM-fih-pod",
-    "amphipods": "AM-fih-pods",
-    "isopod": "EYE-so-pod",
-    "isopods": "EYE-so-pods",
-    "chemosynthesis": "kee-moh-SIN-thuh-sis",
-    "chemosynthetic": "kee-moh-sin-THET-ic",
-    "hydrothermal": "hy-droh-THUR-mal",
-    "Pseudoliparis": "soo-doh-LIP-uh-riss",
-    "Ogasawara": "Oh-gah-sah-WAH-rah",
-    "Grimpoteuthis": "grim-poh-TOO-thiss",
-    "Kiwa": "KEE-wah",
-    "puravida": "poo-rah-VEE-dah",
-    "PLOS": "ploss",
     "DNA": "D N A",
-    "siphonophore": "sy-FON-oh-for",
-    "siphonophores": "sy-FON-oh-fors",
-    "Mariana": "Mah-ree-AH-nuh",
+    # Terms the model mangles when left alone (probe, 2026-09-21).
+    "MBARI": "em bar ee",
+    "Kaikō": "kai ko",
+    "abyssopelagic": "abisso pelagic",
+    "Pseudoliparis": "sudo liparis",
+    "Grimpoteuthis": "grimpo toothis",
+    "Kiwa": "kee wah",
+    "PLOS": "ploss",
+    # Materials-and-manufacturing: 74 candidates from audit_narration.py's
+    # gap scan were screened raw on 2026-09-21; the model said 70 of them
+    # correctly with no entry (austenite, martensite, Leidenfrost, ...).
+    # These are the ones it did not.
+    "Czochralski": "cho kralski",
+    "hexamethyldisilazane": "hexa methyl die sila zane",
 }
 
 
