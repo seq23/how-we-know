@@ -254,7 +254,11 @@ def main() -> None:
                     # whatever inventory covers.
                     unauthored.append({**t, "author_stop": e.code,
                                        "author_message": e.message})
-                    st.note(f"{t['slug']}: NAMED STOP [{e.code}] {e.message}")
+                    # The unblock line carries the provider's own reason
+                    # (already key-redacted). Without it the 2026-09-21 log
+                    # said only "HTTP 400" and hid "No models provided".
+                    st.note(f"{t['slug']}: NAMED STOP [{e.code}] {e.message}"
+                            f" — {e.unblock}")
                     continue
                 authored_cost += res.get("cost_usd") or 0.0
                 script = ROOT / res["path"]

@@ -337,7 +337,7 @@ def run(limit: int = 15, dry_run: bool = False,
     cfg = config()
     langs = languages or list(LANGUAGES)
     state, cache = load_state(), load_cache()
-    model = os.environ.get("OPENROUTER_MODEL", author.DEFAULT_MODEL)
+    model = author.configured_model()
 
     with Stage(LANE, week_id(),
                zero_work_hint="Every live video already carries all five "
