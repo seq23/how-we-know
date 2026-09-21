@@ -180,6 +180,13 @@ def main() -> int:
             species.NOAA_SUBJECTS = [(999999, "anglerfish", "CREDIT", "note")]
             species.PD_REUSE = []
             raised = False
+            # The harvester prints its own "  FAIL anglerfish  media 999999"
+            # line to stdout here. That line is the PROOF, not a failure of
+            # this test - it was read as a second red test on 2026-09-21
+            # (run 35634217382), so say so before it appears.
+            print("  (negative proof: the harvester's own 'FAIL anglerfish "
+                  "media 999999' line below is EXPECTED - the test asserts "
+                  "that it hard-fails)", flush=True)
             try:
                 species.harvest()
             except SystemExit:
