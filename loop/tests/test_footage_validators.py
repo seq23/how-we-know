@@ -19,6 +19,7 @@ from __future__ import annotations
 import copy
 import json
 import os
+import subprocess
 import sys
 import tempfile
 
@@ -72,10 +73,43 @@ def check() -> list[str]:
     # it rather than report failures about an absence nobody intends to fix.
     # The validators themselves make the same distinction: absent manifest is
     # N/A, a manifest whose clips are gone is still a hard failure.
+    #
+    # WHICH IS WHY THE MANIFEST MAY NEVER BE COMMITTED. On 2026-09-21 a
+    # "commit the Mac's state" sweep added channel/imagery/video_rights.json
+    # (8,453 lines) without a byte of the clips it hashes, and this test - on
+    # a runner that had nothing to govern - went red on 'clip file missing'
+    # for every record (run 35634217382). The stamp in
+    # loop/state/harvest_runs.json is the only thing about the video harvest
+    # that crosses to the cloud (loop/footage_lane.py, "HOW THE LINUX LANE
+    # SEES THE MAC'S WORK"); bin/batch-session.sh pushes explicit paths and
+    # never channel/imagery. These three run on EVERY host, before the skip:
+    # a guard that only ran where the clips are could not have caught it.
+    for rel in ("channel/imagery/video_rights.json", "channel/imagery/clips/",
+                "loop/state/_v14/"):
+        tracked = subprocess.run(["git", "ls-files", "--", rel],
+                                 capture_output=True, text=True, cwd=ROOT)
+        examined += 1
+        if tracked.stdout.strip():
+            fails.append(f"{rel} is tracked in git: it lives on the Mac and "
+                         f"in R2 by design and must not enter history "
+                         f"({tracked.stdout.strip().splitlines()[0]} ...)")
+        # check-ignore never reports a tracked path as ignored, so this is
+        # only meaningful once the path is out of the index.
+        ignored = subprocess.run(["git", "check-ignore", "-q", "--", rel],
+                                 capture_output=True, text=True, cwd=ROOT)
+        examined += 1
+        if ignored.returncode != 0 and not tracked.stdout.strip():
+            fails.append(f"{rel} is not gitignored, so the next `git add` of "
+                         f"a Mac checkout commits it again")
+    if fails:
+        print(f"footage validators: {examined} check(s), {len(fails)} failure(s)")
+        return fails
+
     if not os.path.exists(FT.MANIFEST):
-        print("footage validators: SKIPPED - no footage manifest on this "
-              "machine. The clips live on the Mac and in R2 by design; run "
-              "this there to cover V9-V12.")
+        print(f"footage validators: {examined} check(s) that the manifest, "
+              f"clips and V14 scratch stay out of git; V9-V12 SKIPPED - no "
+              f"footage manifest on this machine. The clips live on the Mac "
+              f"and in R2 by design; run this there to cover V9-V12.")
         return fails
 
     def want(cond, msg):
