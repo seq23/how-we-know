@@ -315,6 +315,87 @@ def check() -> list[str]:
         fails.append("no code reads $OPENROUTER_MODEL at all — the override "
                      "is dead and this check examined nothing")
 
+    # ------------------------------------------------ 7. dead citations converge
+    # Run 35604701442 (2026-09-21): attempt 1 cited a plausible dead page,
+    # attempt 2 replaced it with another plausible dead page, and with
+    # MAX_ATTEMPTS=2 the slot fell to AUTHOR_REQUIRED — a red run asking a
+    # human to write a script. Two things fix that and both are pinned here:
+    # the feedback names a page on the same site that exists, and the loop
+    # has enough attempts to use it.
+    import validate
+    fake_live = {"https://www.mbari.org/": 200,
+                 "https://www.whoi.edu/what-we-do/understand/": 200}
+
+    def fake_probe(u, timeout=20):
+        return (fake_live.get(u, 404), "ok" if u in fake_live else "http error")
+
+    examined += 1
+    got = author.nearest_live_ancestor(
+        "https://www.whoi.edu/what-we-do/understand/climate/", fake_probe)
+    if got != "https://www.whoi.edu/what-we-do/understand/":
+        fails.append(f"nearest_live_ancestor stopped at {got!r}, not the "
+                     f"first ancestor that answers 200")
+    examined += 1
+    got = author.nearest_live_ancestor("https://www.mbari.org/research/", fake_probe)
+    if got != "https://www.mbari.org/":
+        fails.append(f"nearest_live_ancestor did not reach the site root: {got!r}")
+    examined += 1
+    if author.nearest_live_ancestor("https://dead.example/a/b/", fake_probe) is not None:
+        fails.append("nearest_live_ancestor invented a live page on a dead site")
+
+    examined += 1
+    real_probe = validate.probe
+    validate.probe = fake_probe
+    try:
+        fb = author.dead_urls("## Sources\n- MBARI: Research — "
+                              "https://www.mbari.org/research/\n")
+    finally:
+        validate.probe = real_probe
+    if len(fb) != 1 or "https://www.mbari.org/ " not in fb[0] + " " \
+            or "does exist" not in fb[0]:
+        fails.append(f"dead_urls() feedback does not hand back the live "
+                     f"ancestor: {fb!r}")
+
+    # Convergence: three dead-citation drafts, a clean fourth, and the slot is
+    # authored. Under the old MAX_ATTEMPTS=2 this raised
+    # DRAFT_FAILED_VALIDATION. No network, no spend, no file outside a tempdir.
+    examined += 1
+    calls = {"n": 0}
+
+    def _fake_call(messages, model, key, **kw):
+        calls["n"] += 1
+        return {"choices": [{"message": {"content": complete},
+                             "finish_reason": "stop"}],
+                "usage": {"cost": 0.0}}
+
+    def _dead_thrice(text):
+        return ([] if calls["n"] >= 4 else
+                ["source URL returns HTTP 404 and does not exist: "
+                 "https://www.mbari.org/research/"])
+
+    real = (author.call_openrouter, author.dead_urls, author.record_spend,
+            author.DRAFTS, author.shape_problems)
+    # draft() reports its path relative to ROOT, so the tempdir lives inside
+    # the (gitignored) drafts directory rather than /tmp.
+    (LOOP / "drafts").mkdir(exist_ok=True)
+    with tempfile.TemporaryDirectory(dir=LOOP / "drafts") as td:
+        author.call_openrouter, author.dead_urls = _fake_call, _dead_thrice
+        author.record_spend = lambda *a, **k: None
+        author.shape_problems = lambda *a, **k: []   # the subject is the budget
+        author.DRAFTS = Path(td)
+        try:
+            res = author.draft("Q?", "converge-test", pov, key="sk-or-v1-" + "0" * 64)
+            if res.get("attempt") != 4 or calls["n"] != 4:
+                fails.append(f"draft() accepted on attempt {res.get('attempt')} "
+                             f"after {calls['n']} call(s); expected the fourth")
+        except author.AuthorStop as e:
+            fails.append(f"draft() gave up before its fourth attempt: {e.code} "
+                         f"— a model that guesses a dead URL twice must still "
+                         f"get a chance to cite the live page it was handed")
+        finally:
+            (author.call_openrouter, author.dead_urls, author.record_spend,
+             author.DRAFTS, author.shape_problems) = real
+
     if examined == 0:
         fails.append("examined ZERO authoring cases")
     print(f"inspected {examined} authoring case(s)")
