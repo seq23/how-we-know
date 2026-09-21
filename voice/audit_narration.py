@@ -72,6 +72,21 @@ TECH = re.compile(
     r"|siphonophore\w*|cephalopod\w*|amphipod\w*|copepod\w*|ctenophore\w*"
     r"|holothurian\w*|isopod\w*|polychaete\w*|foraminifer\w*"
     r"|bathymetr\w+|hydrotherm\w+|megapascal\w*|pascal\w*|atmosphere\w*"
+    # materials-and-manufacturing (added 2026-09-21 with the second domain's
+    # narration): phases, processes, instruments and the chemical names the
+    # scripts actually use. A gap scan that only knows deep-sea words reports
+    # a materials script as clean.
+    r"|martensit\w*|austenit\w*|cementite|pearlite|ferrite|eutectoid|bainit\w*"
+    r"|tempering|quenchant\w*|carburiz\w+|sintering|anneal\w+|nucleat\w+"
+    r"|[a-z]*silane|[a-z]*silazane|polyacrylonitrile|pyrrolidone|terephthal\w+"
+    r"|phenylene\w*|dicyclopentadiene|resorcinol|polyimide|polysilicon|alkoxide"
+    r"|aluminide\w*|intermetallic\w*|interstitial\w*|stoichiometr\w+"
+    r"|anisotrop\w+|adiabatic|autogenous|carbothermic|pyrophoric|pyrolysis"
+    r"|[a-z]+ometry|[a-z]+lithography|ellipsometr\w+|nanoindentation"
+    r"|thermogravimetric|molybdenum|ruthenium|vanadium|chromium|manganese"
+    r"|hematite|magnetite|tobermorite|wootz|czochralski|leidenfrost|fraunhofer"
+    r"|boltzmann|verhoeven|hall-petch|diels-alder|gettering|spinneret"
+    r"|graphene|aerogel|kevlar|damascus"
     r"|[A-Z]{3,6}"                                  # acronyms: NOAA, MBARI, ROV
     r")\b")
 

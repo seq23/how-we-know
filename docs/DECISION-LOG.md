@@ -544,3 +544,47 @@ verdicts, budgets asserted as derived, `-shortest` asserted absent from the
 mux, zero receipts hard-fails). **Negative proof:** old rule and `-shortest`
 restored → 17 failures, among them a +1-frame picture error accepted outright
 and the 48 ms carbon-fiber truncation "refused" as drift; restored → green.
+
+## 2026-09-21 — the pronunciation lexicon was making words worse, and nothing had ever listened to it
+
+**Trigger.** The owner heard "hypothermal" for "hydrothermal" in the Short
+for `20-what-is-the-midnight-zone`. Whisper on that Short's audio track heard
+"Hydro-thermal vents", "The Bath-E-Pell A.J. Ike zone" (bathypelagic) and
+"local chemo, syn, that, ik, sources" (chemosynthetic).
+
+**Root cause.** Chatterbox has no phoneme input; it reads a respelling as
+text. `voice/synth.py`'s LEXICON was written in dictionary style —
+`"hy-droh-THUR-mal"`, `"bath-ee-pel-AJ-ic"` — and the model speaks hyphens as
+word breaks and a CAPS chunk as spelled-out letters. The table's STYLE was the
+defect. `voice/tests/pronunciation_probe.md` was a paragraph to listen to by
+ear, and nobody had.
+
+**What was measured.** `voice/tests/pronunciation_probe.py` (new) synthesises
+each term in two carrier sentences with the production voice and parameters
+and transcribes it with whisper-1. Spoken with NO entry, the model already
+says **31 of the 38** lexicon terms correctly — including all three above. The
+seven it mangles alone: MBARI, Kaikō, abyssopelagic, Pseudoliparis,
+Grimpoteuthis, Kiwa, PLOS.
+
+**Decision.**
+1. **An entry exists only for a term the probe hears wrong with no entry.**
+   The table drops from 38 entries to 12: five letter-acronyms (ROV, ROVs,
+   CTD, GPS, DNA as spaced capitals) and the seven above, each a lowercase
+   pseudo-word ("em bar ee", "kai ko", "abisso pelagic", "sudo liparis",
+   "grimpo toothis", "kee wah", "ploss"), each probed to a pass.
+2. **Every entry is proven, and the proof is code-read.** The probe writes
+   `voice/tests/pronunciation_probe.json`; `loop/tests/test_lexicon_respellings.py`
+   fails the suite if an entry is missing from the pin, changed since it was
+   heard, or was not heard as intended — and, statically, if any respelling
+   carries a hyphen or a CAPS chunk. It reads the lexicon with `ast`, not by
+   importing `synth` (the render venv has no soundfile).
+3. **The gap scan now knows materials.** `voice/audit_narration.py`'s term
+   regex covered deep-sea vocabulary only, so a materials script scanned as
+   clean. Extended with phases, processes, instruments and the chemical names
+   the eighteen materials scripts use; the candidates were screened raw the
+   same way (see the PR for the count).
+4. **Nothing published was re-narrated or re-uploaded.** Sixteen live
+   episodes and their Shorts were narrated under the old table; the ones with
+   a term the probe or the owner heard wrong are listed in the PR for a
+   separate decision. Retiring is private-only by rule and a re-narration is
+   a re-upload.
