@@ -1,0 +1,297 @@
+{
+ "generated": "2026-09-21T12:40:34-0500",
+ "reference": "reference_A_clean_cond10.wav",
+ "params": {
+  "exaggeration": 0.4,
+  "cfg_weight": 0.4,
+  "temperature": 0.7,
+  "seed": 1234
+ },
+ "match_ratio": 0.9,
+ "carriers": [
+  "Scientists have studied {t} for decades.",
+  "The {t} is what the survey measured first."
+ ],
+ "terms": {
+  "ROV": {
+   "respelling": "R O V",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied ROV for decades.",
+     "spoken_text": "Scientists have studied R O V for decades.",
+     "heard": "Scientists have studied ROV for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The ROV is what the survey measured first.",
+     "spoken_text": "The R O V is what the survey measured first.",
+     "heard": "The ROV is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "ROVs": {
+   "respelling": "R O V's",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied ROVs for decades.",
+     "spoken_text": "Scientists have studied R O V's for decades.",
+     "heard": "Scientists have studied ROVs for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The ROVs is what the survey measured first.",
+     "spoken_text": "The R O V's is what the survey measured first.",
+     "heard": "The ROVs is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "CTD": {
+   "respelling": "C T D",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied CTD for decades.",
+     "spoken_text": "Scientists have studied C T D for decades.",
+     "heard": "Scientists have studied CTD for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The CTD is what the survey measured first.",
+     "spoken_text": "The C T D is what the survey measured first.",
+     "heard": "The CTD is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "GPS": {
+   "respelling": "G P S",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied GPS for decades.",
+     "spoken_text": "Scientists have studied G P S for decades.",
+     "heard": "Scientists have studied GPS for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The GPS is what the survey measured first.",
+     "spoken_text": "The G P S is what the survey measured first.",
+     "heard": "The GPS is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "DNA": {
+   "respelling": "D N A",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied DNA for decades.",
+     "spoken_text": "Scientists have studied D N A for decades.",
+     "heard": "Scientists have studied DNA for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The DNA is what the survey measured first.",
+     "spoken_text": "The D N A is what the survey measured first.",
+     "heard": "The DNA is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "MBARI": {
+   "respelling": "em bar ee",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied MBARI for decades.",
+     "spoken_text": "Scientists have studied em bar ee for decades.",
+     "heard": "Scientists have studied m-bar e for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The MBARI is what the survey measured first.",
+     "spoken_text": "The em bar ee is what the survey measured first.",
+     "heard": "The m-bar e is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "Kaikō": {
+   "respelling": "kai ko",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied Kaikō for decades.",
+     "spoken_text": "Scientists have studied kai ko for decades.",
+     "heard": "Scientists have studied kaiko for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The Kaikō is what the survey measured first.",
+     "spoken_text": "The kai ko is what the survey measured first.",
+     "heard": "The KAIKO is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "abyssopelagic": {
+   "respelling": "abisso pelagic",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied abyssopelagic for decades.",
+     "spoken_text": "Scientists have studied abisso pelagic for decades.",
+     "heard": "Scientists have studied abyssopelagic for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The abyssopelagic is what the survey measured first.",
+     "spoken_text": "The abisso pelagic is what the survey measured first.",
+     "heard": "The abyssopelagic is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "Pseudoliparis": {
+   "respelling": "sudo liparis",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied Pseudoliparis for decades.",
+     "spoken_text": "Scientists have studied sudo liparis for decades.",
+     "heard": "Scientists have studied Pseudo-Leparis for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The Pseudoliparis is what the survey measured first.",
+     "spoken_text": "The sudo liparis is what the survey measured first.",
+     "heard": "The pseudoliparis is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "Grimpoteuthis": {
+   "respelling": "grimpo toothis",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied Grimpoteuthis for decades.",
+     "spoken_text": "Scientists have studied grimpo toothis for decades.",
+     "heard": "Scientists have studied Grimpotoothus for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The Grimpoteuthis is what the survey measured first.",
+     "spoken_text": "The grimpo toothis is what the survey measured first.",
+     "heard": "The Grimpo toothus is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "Kiwa": {
+   "respelling": "kee wah",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied Kiwa for decades.",
+     "spoken_text": "Scientists have studied kee wah for decades.",
+     "heard": "Scientists have studied Kiwa for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The Kiwa is what the survey measured first.",
+     "spoken_text": "The kee wah is what the survey measured first.",
+     "heard": "The Kiwa is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "PLOS": {
+   "respelling": "ploss",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied PLOS for decades.",
+     "spoken_text": "Scientists have studied ploss for decades.",
+     "heard": "Scientists have studied PLOS for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The PLOS is what the survey measured first.",
+     "spoken_text": "The ploss is what the survey measured first.",
+     "heard": "The PLOS is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "Czochralski": {
+   "respelling": "cho kralski",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied Czochralski for decades.",
+     "spoken_text": "Scientists have studied cho kralski for decades.",
+     "heard": "Scientists have studied Czochralski for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The Czochralski is what the survey measured first.",
+     "spoken_text": "The cho kralski is what the survey measured first.",
+     "heard": "The Czochralski is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "hexamethyldisilazane": {
+   "respelling": "hexa methyl die sila zane",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied hexamethyldisilazane for decades.",
+     "spoken_text": "Scientists have studied hexa methyl die sila zane for decades.",
+     "heard": "Scientists have studied hexamethyl disylazine for decades.",
+     "ratio": 0.95,
+     "ok": true
+    },
+    {
+     "carrier": "The hexamethyldisilazane is what the survey measured first.",
+     "spoken_text": "The hexa methyl die sila zane is what the survey measured first.",
+     "heard": "The hexamethyldisilazane is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  }
+ }
+}
