@@ -22,6 +22,7 @@ than evidence, it says so.
 | Site | **https://howweknowdeep.com** |
 | Google account | `cryptoclearr@gmail.com` |
 | Cloud project | `how-we-know` (681552889891) |
+| Domains live | deep sea (Sun/Tue) · materials-and-manufacturing (Mon/Fri, first aired 2026-09-07) |
 
 **The premise:** each video answers one question and shows the instrument, the proxy, or
 the observation behind every figure — and says plainly where the evidence stops. The

@@ -588,3 +588,50 @@ Grimpoteuthis, Kiwa, PLOS.
    a term the probe or the owner heard wrong are listed in the PR for a
    separate decision. Retiring is private-only by rule and a re-narration is
    a re-upload.
+
+---
+
+## 2026-09-21 — scope widened to deep sea + materials
+
+**What happened.** Owner instruction: "how-we-know: widen the channel from
+deep sea to deep sea + materials." The pipeline was already running
+materials-and-manufacturing — 18 episodes uploaded and dated Mon/Fri from
+7 September to 6 November, its own source allowlist in
+`loop/domain_sources.py`, its own POV top-up done 2026-09-05 — but
+`pov/topic-taxonomy.json`'s `admitted_domains` (locked 2026-08-30) still named
+deep sea only, and the public About text on YouTube described six domains
+that have never aired and omitted the one airing twice a week. The channel had
+been publishing outside its own standing admission for two weeks.
+
+**What was already true, unchanged by this entry.** The loop's allocation,
+cadence, source allowlist and POV bank needed nothing — this was a scope-record
+and guard change, not a pipeline change.
+
+**What this change made true.**
+1. `pov/topic-taxonomy.json` gains "Materials science and manufacturing" in
+   `admitted_domains`, a new `admitted_domain_ids` map, and this amendment
+   entry, satisfying `new_niche_requirement` retroactively via the 2026-09-05
+   top-up.
+2. `loop/validate_plan.py` gains check 10: every domain in
+   `config.json` `domains.allocation` must be admitted, have >=3 allowlisted
+   source bodies, have `publish_days`, and have >=1 `tier: specific` POV line
+   — `config.json`'s `per_domain_requirements` stated this; nothing read it
+   until now. Proven negatively: removing materials from
+   `admitted_domain_ids` fails check 10; restoring it passes.
+3. `channel/about.md` puts the channel's YouTube About text under version
+   control for the first time, with a widened paragraph naming both tracks
+   and both source sets; `loop/channel_about.py` pushes it idempotently.
+4. `README.md`, `RUNBOOK.md` and `docs/CHANNEL-PLAN.md` updated to state the
+   two-domain schedule as present fact rather than a future step.
+5. `site/src/lib/taxonomy.ts` gains a `materials` subject so the companion
+   site's vocabulary again mirrors the admitted domains, with no navigation
+   change until a page carries it — the site's own design rule.
+
+**Deliberately out of scope.** The companion site's materials question pages
+— a data-model change (every record needs an ocean zone and a creature today)
+plus 18 pages of new sourced copy — are a separate repo-change, not a wording
+widening.
+
+**Verified:** see the PR for `loop/validate_plan.py` output (10/10 checks,
+including the negative proof of check 10) and the site's own
+`npm run validate && npm test && npm run typecheck` output.
