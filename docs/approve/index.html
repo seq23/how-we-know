@@ -41,7 +41,7 @@ border-radius:9px;font-size:12px;color:var(--dim)}
 </style></head><body><div class="wrap">
 
 <h1>Week 2026-W39</h1>
-<div class="sub">2 videos picked automatically ·
+<div class="sub">4 videos picked automatically ·
 ceiling 4/week (deliberate)</div>
 
 <div class="note"><b>Nothing here is waiting on you.</b> Topics were picked from
@@ -54,17 +54,17 @@ the override window closes Tuesday 02:00, when rendering starts.</div>
   <span>validators <b class="ok">passed</b></span>
   <span>gate refused <b>15</b> candidates</span>
   <span>authored <b>2</b></span>
-  <span>cost <b>$0.126</b></span>
+  <span>cost <b>$0.128</b></span>
 </div>
 
-<div class="stop"><b>Attribution gap (does not block):</b> narration names a body that is not in that script's <code>## Sources</code> — how-do-scientists-know-so-much → Census of Marine Life.</div><div class="stop"><b>Named stop:</b> 2 slot(s) could not be authored automatically; briefs are in <code>loop/briefs/</code>. The week still ships 2.</div>
+<div class="stop"><b>Attribution gap (does not block):</b> narration names a body that is not in that script's <code>## Sources</code> — how-do-scientists-know-so-much → Census of Marine Life; why-deep-sea-creatures → Census of Marine Life.</div>
 
 <form id="f">
 <div class="card">
   <p class="q">1. how do scientists know so much</p>
   <div class="meta">
-    <span class="tag gen">drafted by anthropic/claude-sonnet-4.5</span>
-    how-do-scientists-know-so-much · 5 sources (all verified) · 75 beats · $0.06243
+    <span class="tag ">human-authored</span>
+    how-do-scientists-know-so-much · 5 sources · 75 beats
   </div>
   <div class="pov"><b>POV pov-058</b> — &#x27;Scientists say&#x27; is almost meaningless on its own. Which scientists? How many? Was it one paper? Was it replicated?<br>
     <span style="font-size:11px;opacity:.7">matched: tag:authority score 2.0</span></div>
@@ -73,10 +73,34 @@ the override window closes Tuesday 02:00, when rendering starts.</div>
 
 
 <div class="card">
-  <p class="q">2. how do scientists know about other galaxies</p>
+  <p class="q">2. how do scientists know how old something is</p>
   <div class="meta">
     <span class="tag gen">drafted by anthropic/claude-sonnet-4.5</span>
-    how-do-scientists-know-about-other-galaxies · 5 sources (all verified) · 74 beats · $0.063111
+    how-do-scientists-know-how-old-something-is · 4 sources (all verified) · 80 beats · $0.061632
+  </div>
+  <div class="pov"><b>POV pov-059</b> — I&#x27;m not anti-science. I&#x27;m against using science as a magic authority word that means nobody has to show their work.<br>
+    <span style="font-size:11px;opacity:.7">matched: tag:authority score 2.0</span></div>
+  <button class="drop" data-slug="how-do-scientists-know-how-old-something-is">Drop</button>
+</div>
+
+
+<div class="card">
+  <p class="q">3. why deep sea creatures</p>
+  <div class="meta">
+    <span class="tag gen">drafted by anthropic/claude-sonnet-4.5</span>
+    why-deep-sea-creatures · 6 sources (all verified) · 71 beats · $0.066153
+  </div>
+  <div class="pov"><b>POV pov-001</b> — When I picture the deep ocean I don&#x27;t see blue water or fish. I see black. A massive amount of black space where you can&#x27;t tell what&#x27;s beside you or beneath you.<br>
+    <span style="font-size:11px;opacity:.7">matched: tag:scale score 2.8</span></div>
+  <button class="drop" data-slug="why-deep-sea-creatures">Drop</button>
+</div>
+
+
+<div class="card">
+  <p class="q">4. how do scientists know about other galaxies</p>
+  <div class="meta">
+    <span class="tag ">human-authored</span>
+    how-do-scientists-know-about-other-galaxies · 5 sources · 74 beats
   </div>
   <div class="pov"><b>POV pov-060</b> — Science is a process. It is not a person behind a curtain handing down permanent answers.<br>
     <span style="font-size:11px;opacity:.7">matched: tag:authority score 2.0</span></div>
@@ -98,7 +122,7 @@ the override window closes Tuesday 02:00, when rendering starts.</div>
 
 </div>
 <script>
-const DATA = {"week": "2026-W39", "generated": "2026-09-21T13:24:54+00:00", "items": [{"slug": "how-do-scientists-know-so-much"}, {"slug": "how-do-scientists-know-about-other-galaxies"}]};
+const DATA = {"week": "2026-W39", "generated": "2026-09-21T13:52:41+00:00", "items": [{"slug": "how-do-scientists-know-so-much"}, {"slug": "how-do-scientists-know-how-old-something-is"}, {"slug": "why-deep-sea-creatures"}, {"slug": "how-do-scientists-know-about-other-galaxies"}]};
 const REPO = "seq23/how-we-know";
 function selected(){
   return [...document.querySelectorAll("button.drop.on")].map(b => b.dataset.slug);

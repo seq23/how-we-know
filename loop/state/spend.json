@@ -1704,10 +1704,54 @@
       "completion_tokens": 3113,
       "total_tokens": 8585,
       "cost_usd": 0.063111
+    },
+    {
+      "at": "2026-09-21T13:33:51+00:00",
+      "slug": "how-do-scientists-know-how-old-something-is",
+      "model": "anthropic/claude-sonnet-4.5",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 2073,
+      "completion_tokens": 3086,
+      "total_tokens": 5159,
+      "cost_usd": 0.052509
+    },
+    {
+      "at": "2026-09-21T13:34:15+00:00",
+      "slug": "how-do-scientists-know-how-old-something-is",
+      "model": "anthropic/claude-sonnet-4.5",
+      "attempt": 2,
+      "accepted": true,
+      "prompt_tokens": 5639,
+      "completion_tokens": 2981,
+      "total_tokens": 8620,
+      "cost_usd": 0.061632
+    },
+    {
+      "at": "2026-09-21T13:51:56+00:00",
+      "slug": "why-deep-sea-creatures",
+      "model": "anthropic/claude-sonnet-4.5",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 2093,
+      "completion_tokens": 3322,
+      "total_tokens": 5415,
+      "cost_usd": 0.056109
+    },
+    {
+      "at": "2026-09-21T13:52:22+00:00",
+      "slug": "why-deep-sea-creatures",
+      "model": "anthropic/claude-sonnet-4.5",
+      "attempt": 2,
+      "accepted": true,
+      "prompt_tokens": 5651,
+      "completion_tokens": 3280,
+      "total_tokens": 8931,
+      "cost_usd": 0.066153
     }
   ],
-  "total_usd": 9.039663,
-  "drafts_written": 75,
-  "average_usd_per_accepted_draft": 0.120529,
-  "updated": "2026-09-21T13:24:43+00:00"
+  "total_usd": 9.276066,
+  "drafts_written": 77,
+  "average_usd_per_accepted_draft": 0.120468,
+  "updated": "2026-09-21T13:52:22+00:00"
 }

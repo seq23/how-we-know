@@ -1,9 +1,15 @@
 {
-  "checked": "2026-09-21T13:24:50+00:00",
-  "scripts_with_gaps": 1,
+  "checked": "2026-09-21T13:52:29+00:00",
+  "scripts_with_gaps": 2,
   "gaps": [
     {
       "slug": "how-do-scientists-know-so-much",
+      "missing_from_sources": [
+        "Census of Marine Life"
+      ]
+    },
+    {
+      "slug": "why-deep-sea-creatures",
       "missing_from_sources": [
         "Census of Marine Life"
       ]
