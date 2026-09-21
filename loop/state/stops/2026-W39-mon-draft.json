@@ -1,0 +1,40 @@
+{
+  "stage": "mon-draft",
+  "week": "2026-W39",
+  "at": "2026-09-21T10:10:00+00:00",
+  "code": "NO_SCRIPTS",
+  "message": "zero scripts are available for this week - nothing can be voiced on Tuesday",
+  "detail": {
+    "unauthored": [
+      "how do scientists know so much",
+      "how do scientists know how old something is",
+      "why deep sea creatures",
+      "how do scientists know about other galaxies"
+    ],
+    "author_stops": [
+      "OPENROUTER_ERROR",
+      "OPENROUTER_ERROR",
+      "OPENROUTER_ERROR",
+      "OPENROUTER_ERROR"
+    ]
+  },
+  "unblock": "Check loop/state/spend.json and the author stop codes. The cadence ceiling is never raised to compensate.",
+  "disposition": "needs_human",
+  "disposition_why": "'NO_SCRIPTS' is not in loop/stop_policy.json, so it is treated as needing a human. That is the default on purpose. 'NO_SCRIPTS' did not name what it is waiting on (no held_items), so this run cannot tell a repeat from a new problem. A stop that cannot be identified is never held.",
+  "consecutive": 1,
+  "held_items": [],
+  "exit_code": 3,
+  "work_done_before_stop": [
+    "wrote research brief loop/briefs/2026-W39-how-do-scientists-know-so-much.json",
+    "wrote research brief loop/briefs/2026-W39-how-do-scientists-know-how-old-something-is.json",
+    "wrote research brief loop/briefs/2026-W39-why-deep-sea-creatures.json",
+    "wrote research brief loop/briefs/2026-W39-how-do-scientists-know-about-other-galaxies.json"
+  ],
+  "notes": [
+    "next_topics.json is for 2026-W38, today is 2026-W39 \u2014 using it anyway (a re-run inside the same cycle)",
+    "how-do-scientists-know-so-much: NAMED STOP [OPENROUTER_ERROR] OpenRouter returned HTTP 400",
+    "how-do-scientists-know-how-old-something-is: NAMED STOP [OPENROUTER_ERROR] OpenRouter returned HTTP 400",
+    "why-deep-sea-creatures: NAMED STOP [OPENROUTER_ERROR] OpenRouter returned HTTP 400",
+    "how-do-scientists-know-about-other-galaxies: NAMED STOP [OPENROUTER_ERROR] OpenRouter returned HTTP 400"
+  ]
+}

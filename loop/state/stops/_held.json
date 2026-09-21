@@ -23,5 +23,16 @@
     "reported_run": 34672456430,
     "reports": 2,
     "stage": "imagery-harvest"
+  },
+  "mon-draft::NO_SCRIPTS": {
+    "code": "NO_SCRIPTS",
+    "first_reported_at": "2026-09-21T10:10:00+00:00",
+    "issue": null,
+    "items": [],
+    "last_reported_at": "2026-09-21T10:10:00+00:00",
+    "last_seen_at": "2026-09-21T10:10:00+00:00",
+    "reported_run": null,
+    "reports": 1,
+    "stage": "mon-draft"
   }
 }
