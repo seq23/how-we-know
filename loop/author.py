@@ -87,6 +87,21 @@ API = "https://openrouter.ai/api/v1/chat/completions"
 # plausible NOAA URL costs far more than six cents to catch.
 DEFAULT_MODEL = "anthropic/claude-sonnet-4.5"
 
+
+def configured_model() -> str:
+    """The model every lane sends. `$OPENROUTER_MODEL` overrides DEFAULT_MODEL
+    only when it actually names something.
+
+    An EMPTY variable is "not configured", not "the empty model". GitHub
+    Actions expands an unset repository variable to "" rather than leaving
+    the env var out, so `os.environ.get("OPENROUTER_MODEL", DEFAULT_MODEL)`
+    returned "" in the cloud and OpenRouter answered every authoring call
+    with HTTP 400 "No models provided". The Mac never saw it: there the
+    variable is absent and the default applied. Run 35587241167, 2026-09-21
+    — four topics unauthored, NO_SCRIPTS, red Monday.
+    """
+    return os.environ.get("OPENROUTER_MODEL", "").strip() or DEFAULT_MODEL
+
 # Owner decision, 2026-09-01 (runtime target) and 2026-09-03 (hard floor):
 # every batch from here is >=10 minutes, 10-11 targeted. Long-form is where
 # YouTube rewards a channel, and the Partner Programme threshold is 4,000
@@ -168,6 +183,15 @@ def api_key() -> str | None:
     env = os.environ.get("OPENROUTER_API_KEY", "").strip()
     if env:
         return env
+    # LOOP_DRY_RUN: behave exactly as an un-credentialed machine would (the
+    # same contract as upload.py). LOOP_NO_KEYFILE: the test suite's "no key
+    # anywhere" case. test_authoring.py had set LOOP_NO_KEYFILE=1 since it was
+    # written and nothing read it, so on a Mac holding the key file the
+    # "missing key" check made a REAL paid draft — two attempts, ~$0.12 —
+    # on every local suite run (the `a-test-topic` rows in spend.json,
+    # 2026-09-05 to 2026-09-21).
+    if os.environ.get("LOOP_DRY_RUN") == "1" or os.environ.get("LOOP_NO_KEYFILE") == "1":
+        return None
     if KEY_FILE.exists():
         k = KEY_FILE.read_text().strip()
         if k:
@@ -427,6 +451,12 @@ def call_openrouter(messages: list[dict], model: str, key: str,
     in the log by construction — the same log a human already reads for
     st.note() lines — rather than being silently absorbed forever.
     """
+    if not (model or "").strip():
+        # Refuse before the network: OpenRouter's answer to this is a 400
+        # that names nothing useful. Resolve through configured_model().
+        raise ValueError("call_openrouter: model is empty — resolve it with "
+                         "author.configured_model(), never straight from "
+                         "$OPENROUTER_MODEL")
     body = json.dumps({
         "model": model,
         "messages": messages,
@@ -657,7 +687,7 @@ def draft(question: str, slug: str, pov: dict, model: str | None = None,
             "no OpenRouter key, so nothing could be authored",
             f"Put the key in {KEY_FILE} (gitignored) or set "
             f"$OPENROUTER_API_KEY.")
-    model = model or os.environ.get("OPENROUTER_MODEL", DEFAULT_MODEL)
+    model = model or configured_model()
     messages = build_prompt(question, pov, domain)
     DRAFTS.mkdir(parents=True, exist_ok=True)
 
@@ -782,7 +812,7 @@ def draft_topic(topic: dict, used_pov: list[str] | None = None) -> dict:
 if __name__ == "__main__":
     q = " ".join(sys.argv[1:]) or "how do scientists measure the depth of the ocean"
     print(f"key   : {redact_key(api_key())}")
-    print(f"model : {os.environ.get('OPENROUTER_MODEL', DEFAULT_MODEL)}")
+    print(f"model : {configured_model()}")
     print(f"topic : {q}\n")
     t0 = time.time()
     try:
