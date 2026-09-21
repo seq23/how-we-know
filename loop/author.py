@@ -165,7 +165,17 @@ RUNTIME_BAND_MAX = RUNTIME_TARGET_MINUTES * (1 + RUNTIME_TOLERANCE_PCT / 100)
 NARRATION_TARGET_WORDS = durations.narration_words_for(RUNTIME_TARGET_MINUTES)
 NARRATION_FLOOR_WORDS = durations.narration_words_for(RUNTIME_FLOOR_MINUTES)
 WHOLE_SCRIPT_TARGET_WORDS = round(NARRATION_TARGET_WORDS * SCRIPT_RATIO)
-MAX_ATTEMPTS = 2
+# 2026-09-21: was 2. The first cloud run that actually authored (35604701442)
+# lost two of four slots to DRAFT_FAILED_VALIDATION: attempt 1 cited a
+# plausible dead page (whoi.edu/what-we-do/understand/climate/,
+# mbari.org/research/), attempt 2 replaced it with ANOTHER plausible dead
+# page, and the slot fell to AUTHOR_REQUIRED — a red run asking a human to
+# write a script. Guessing a URL is what a language model does; two guesses
+# is not enough chances to stop. Four attempts bound the worst case at
+# ~$0.28 a slot, ~$1.10 a week, inside the $2.50/day cap, and dead_urls()
+# now hands back a page that is KNOWN to exist so the retry converges
+# instead of guessing again.
+MAX_ATTEMPTS = 4
 
 
 class AuthorStop(Exception):
@@ -648,17 +658,40 @@ def shape_problems(text: str, pov: dict) -> list[str]:
     # could have caught it, because it is the SAME rule loop/validate.py V1
     # enforces, checked one stage later where nothing retries. Checking it
     # here means a model that draws an inert directive gets the chance to fix
-    # it inside its own two attempts, the same as every other structural
+    # it inside its own MAX_ATTEMPTS attempts, the same as every other structural
     # problem in this function.
     p += directive_truth_problems(text)
     return p
+
+
+def nearest_live_ancestor(url: str, probe) -> str | None:
+    """Walk a dead URL's path upward and return the first page that exists.
+
+    `https://www.mbari.org/research/` is dead; `https://www.mbari.org/` is
+    not. A model that guessed the deep page is told the shallow one is real,
+    so its next draft can cite a page that exists instead of guessing a
+    second deep page. Returns None when nothing up to the origin answers 200.
+    """
+    from urllib.parse import urlsplit, urlunsplit
+    parts = urlsplit(url)
+    segs = [x for x in parts.path.split("/") if x]
+    while segs:
+        segs.pop()
+        cand = urlunsplit((parts.scheme, parts.netloc,
+                           "/" + "/".join(segs) + ("/" if segs else ""), "", ""))
+        code, _ = probe(cand)
+        if code == 200:
+            return cand
+    return None
 
 
 def dead_urls(text: str) -> list[str]:
     """Return a problem line for every source URL that does not resolve.
 
     Reuses loop/validate.py's probe so the drafting loop and the validator can
-    never disagree about what "reachable" means.
+    never disagree about what "reachable" means. A dead URL's feedback names
+    the nearest page on the same site that DOES exist, so the retry has a
+    verified option and does not have to guess a second time.
     """
     sys.path.insert(0, str(Path(__file__).resolve().parent))
     from validate import probe
@@ -667,9 +700,13 @@ def dead_urls(text: str) -> list[str]:
     for u in re.findall(r"https?://[^\s)>\]]+", src):
         code, why = probe(u)
         if code in (404, 410):
+            live = nearest_live_ancestor(u, probe)
+            hint = (f" The nearest page on that site that does exist is {live} "
+                    f"- cite it ONLY if it genuinely supports the claim."
+                    if live else "")
             out.append(f"source URL returns HTTP {code} and does not exist: {u}"
                        f" - replace it with a page you are certain of, or drop "
-                       f"the claim it supports")
+                       f"the claim it supports.{hint}")
         elif code == 0:
             out.append(f"source URL is unreachable ({why}): {u}")
     return out
