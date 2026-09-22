@@ -30,7 +30,10 @@ script = sorted(glob.glob(os.path.join(LOOP, "..", "scripts", "*.md")))[0]
 slug = os.path.basename(script)[:-3]
 long_form = upload.build_payload({"slug": slug, "question": slug.split("-", 1)[-1].replace("-", " "),
                                   "script": os.path.relpath(script, os.path.join(LOOP, ".."))})
-short = shorts_lane.build_payload("t-slug", "what is a test")
+# A real slug, not a fabricated one: shorts_lane.build_payload now resolves
+# the episode's own domain from scripts/<slug>.md (loop/discovery.py), and a
+# slug with no script on disk has no domain to resolve.
+short = shorts_lane.build_payload(slug, slug.split("-", 1)[-1].replace("-", " "))
 examined = 0
 for name, payload in (("upload.build_payload", long_form), ("shorts_lane.build_payload", short)):
     examined += 1

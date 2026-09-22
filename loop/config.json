@@ -174,6 +174,24 @@
       "pov_top_up": "research/proposed-taxonomy.json new_niche_requirement: entering a domain outside deep sea requires a ~20 minute POV top-up interview before first publish, because tier:specific POV lines do not transfer."
     }
   },
+  "discovery": {
+    "_why": "hashtags and tags per episode, both domains, backfilled onto every video — owner instruction 2026-09-21. One list, keyed by the same domain names domains.py already validates against research/proposed-taxonomy.json; loop/discovery.py derives everything else (subject phrase, mined-query tags) from the script itself, so nothing here is invented.",
+    "domains": {
+      "deep-sea-ocean-science": {
+        "tags": ["deep sea", "ocean science", "marine biology", "deep ocean", "oceanography"],
+        "hashtags": ["#DeepSea", "#OceanScience"]
+      },
+      "materials-and-manufacturing": {
+        "tags": ["materials science", "manufacturing", "metallurgy", "engineering", "how it's made"],
+        "hashtags": ["#MaterialsScience", "#Manufacturing"]
+      }
+    },
+    "channel": {
+      "tags": ["how we know", "evidence", "explainer", "science explained"],
+      "hashtags": ["#HowWeKnow"],
+      "hashtag_note": "Owner decision 2026-09-21 (default A, approved [rc_m32h946mv0eybxhj]): #HowWeKnow over #HowWeKnowDeep — the channel is named How We Know, and a hashtag that says 'deep' would pull against the banner job widening the public identity past deep sea."
+    }
+  },
   "harvest": {
     "delegated_max_age_days": 10,
     "interval_days": 6,
