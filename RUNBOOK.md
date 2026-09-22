@@ -5,19 +5,25 @@ How We Know, and nothing else. Reference detail lives in
 [`docs/OPERATING-MANUAL.md`](docs/OPERATING-MANUAL.md); the locked strategy lives
 in [`docs/CHANNEL-PLAN.md`](docs/CHANNEL-PLAN.md).
 
-Last true: 2026-09-21.
+Last true: 2026-09-22.
 
 ---
 
 ## The whole loop, plainly
 
 ```
+0.  Cloud scores/refills the queue every Saturday          you: nothing
 1.  Cloud writes scripts every Monday                     you: nothing
 2.  Runway drops under 4 weeks -> GitHub emails you       you: read the email
 3.  You open the Mac and run ONE command                  you: 10 seconds
 4.  It narrates and renders, unattended                   you: walk away
 5.  Cloud uploads, schedules and publishes                you: nothing
 ```
+
+Step 1 draws from whatever Saturday's scoring pass (step 0) ranked. If a
+domain's queue ever runs fully dry, step 0 is also what refills it — see "A
+domain's scored queue running completely dry" below; it is why step 3 can
+still be nothing to do even after a domain hits zero.
 
 **Step 3 is one command:**
 
@@ -121,6 +127,47 @@ That is the whole list.
 - **The circuit breaker.** It re-tests its own cause and closes as soon as the
   cause has passed. It also stops reporting one problem four times.
 - **A corrupted internal file.** Restored from the last good copy, silently.
+- **A domain's scored queue running completely dry** — every stage of
+  `research/publish_order*.json` empty for that domain, not just thin. This is
+  worse than the runway warning below (which means "scripts exist, nothing is
+  rendered yet") and worse than `CADENCE_SCALE_WITHHELD` (which means "not
+  enough runway to raise the rate") — total exhaustion means there is nothing
+  queued at any stage for that domain, so `bin/batch-session.sh` has nothing to
+  act on even if you run it. `loop/score.py:score_new_domains()`, added
+  2026-09-17, fixes this on its own every Saturday: it mines real
+  YouTube-autocomplete candidates for any allocated domain with zero queue
+  depth and scores them through the same gate every other topic goes through —
+  no shortcut for being empty. It retries automatically for up to three
+  Saturdays on a quota stop (`NEW_DOMAIN_QUOTA`) before it becomes your
+  problem; see "If a domain's queue can't refill itself" below.
+
+### If a domain's queue can't refill itself
+
+`score_new_domains()` retries a stuck domain for up to **three consecutive
+Saturdays** (`loop/stop_policy.json`, `NEW_DOMAIN_QUOTA.max_consecutive`) —
+green every time, nothing in your inbox, because a YouTube Data API quota stop
+is a normal outcome, not a defect (search costs 100 of the 10,000 free daily
+units, and this pass can legitimately run out). If the **same code** stops it
+a **fourth** week in a row, `loop/common.py:disposition()` escalates it to a
+red build and it finally does reach you: the target is too large to mine
+within one Saturday's quota, and the fix named in that email is to run
+`research/publish_order_domain.py --domain <name>` by hand with a lower
+`--budget`, spreading the mine over two weeks instead of one.
+
+**As of this writing (2026-09-22)** this is mid-cycle, not stuck: the
+`weekly-score` stage stopped on `NEW_DOMAIN_QUOTA` for `deep-sea-ocean-science`
+on 2026-09-12 and again on 2026-09-19 (`loop/state/stops/_streaks.json`, count
+2 of the 3 allowed) and has not run since — the next Saturday run
+(2026-09-26) is attempt 3 of 3, still green either way. **One correction to
+how this looked in the 22 Sep audit:** the 2026-09-19 stop's own recorded
+tail is a Python `KeyError: 'median_subscribers'` in
+`research/publish_order.py`, not an actual 403/quota response from YouTube —
+it was classified as `NEW_DOMAIN_QUOTA` because `loop/score.py`'s
+`QUOTA_MARKERS` regex matched the word "quota" somewhere else in that run's
+combined output, the same false-positive class the code's own comments warn
+about for `KEY_ABSENT_MARKERS`. That means the real cause may not clear on
+its own the way a genuine quota reset would — worth a look if `weekly-score`
+is still stopping on this after 2026-09-26.
 
 ---
 

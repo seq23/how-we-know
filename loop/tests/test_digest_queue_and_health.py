@@ -72,7 +72,7 @@ first_slot_day = cal[0]["days_away"]
 cal_red = digest.calendar(full_ledger(skip=(first_slot_day,)), CFG, NOW)
 pipe_ok = {"queued": 0, "scripted": 0, "narrated": 0, "finished_waiting": 0, "held": [],
            "scheduled": 15, "waiting_days": None, "mac_last_seen": NOW, "mac_silent_days": 0}
-mark, head, _ = digest.verdict([], cal_red, pipe_ok, 0)
+mark, head, _ = digest.verdict([], cal_red, pipe_ok, [])
 examined += 1
 if mark != "🔴" or "empty slot" not in head:
     fails.append(f"verdict: an empty slot inside 14 days must be red; got {mark} {head}")
@@ -80,34 +80,52 @@ if mark != "🔴" or "empty slot" not in head:
 # an empty slot only in week 4 -> yellow
 late_day = cal[-1]["days_away"]
 cal_yel = digest.calendar(full_ledger(skip=(late_day,)), CFG, NOW)
-mark, head, _ = digest.verdict([], cal_yel, pipe_ok, 0)
+mark, head, _ = digest.verdict([], cal_yel, pipe_ok, [])
 examined += 1
 if mark != "🟡":
     fails.append(f"verdict: an empty slot in week four must be yellow; got {mark} {head}")
 
 # everything full, nothing waiting -> green, with the counts in the headline
-mark, head, _ = digest.verdict(q, cal, {**pipe_ok, "scheduled": 28}, 0)
+mark, head, _ = digest.verdict(q, cal, {**pipe_ok, "scheduled": 28}, [])
 examined += 1
 if mark != "🟢" or "2 queued this week" not in head or "28 scheduled" not in head:
     fails.append(f"verdict: full calendar and nothing waiting must be green with counts; got {mark} {head}")
 
 # finished work waiting 8 days on the Mac -> red, even with a full calendar
-mark, head, _ = digest.verdict(q, cal, {**pipe_ok, "finished_waiting": 9, "waiting_days": 8}, 0)
+mark, head, _ = digest.verdict(q, cal, {**pipe_ok, "finished_waiting": 9, "waiting_days": 8}, [])
 examined += 1
 if mark != "🔴" or "waiting 8 days" not in head:
     fails.append(f"verdict: nine finished episodes waiting eight days must be red; got {mark} {head}")
 
 # nothing queued this week while something is finished -> yellow (the 6-13 Sep shape, day 2)
-mark, head, _ = digest.verdict([], cal, {**pipe_ok, "finished_waiting": 9, "waiting_days": 2}, 0)
+mark, head, _ = digest.verdict([], cal, {**pipe_ok, "finished_waiting": 9, "waiting_days": 2}, [])
 examined += 1
 if mark != "🟡" or "nothing queued this week while 9" not in head:
     fails.append(f"verdict: finished work and nothing queued must be yellow; got {mark} {head}")
 
-# a stop that needed a human -> red
-mark, head, _ = digest.verdict(q, cal, pipe_ok, 1)
+# a stop that needed a human -> red, AND the subject names the lane that
+# actually needs her, not just an emoji
+mark, head, _ = digest.verdict(q, cal, pipe_ok, ["cloud-upload"])
 examined += 1
-if mark != "🔴":
-    fails.append(f"verdict: a needs_human stop must be red; got {mark}")
+if mark != "🔴" or "cloud-upload" not in head or "needed a human" not in head:
+    fails.append(f"verdict: a needs_human stop must be red and name its stage in the "
+                 f"headline; got {mark} {head}")
+
+# THE 2026-09-22 BUG, negative proof: a week with BOTH a routine empty-slot
+# reason (red on its own, proven above via cal_red) AND a needs_human stop
+# must lead with the needs_human stop — the one with an actual open GitHub
+# issue behind it — not with the empty slot. Before the fix, this function
+# checked the empty slot first and the subject would have named that instead,
+# exactly the "Shorts lane" subject on a long-form NEEDS YOU incident this
+# guards against.
+mark, head, _ = digest.verdict([], cal_red, pipe_ok, ["cloud-upload"])
+examined += 1
+if mark != "🔴" or "cloud-upload" not in head or "needed a human" not in head:
+    fails.append(f"verdict: a needs_human stop must win the headline over a routine "
+                 f"empty-slot reason from the same week; got {mark} {head}")
+if head.split(" — ", 1)[-1].startswith(("1 empty slot", "empty slot")):
+    fails.append(f"verdict: the empty-slot reason must not lead the headline when a "
+                 f"needs_human stop exists this week; got {head}")
 
 # ---- the subject line reaches the issue title ----------------------------------
 wf = open(os.path.join(ROOT, ".github", "workflows", "loop-sun-digest.yml")).read()

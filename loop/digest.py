@@ -192,17 +192,34 @@ def pipeline(led: dict, depth: dict, hb: dict, now: dt.datetime) -> dict:
 
 
 def verdict(queued_rows: list[dict], cal: list[dict], pipe: dict,
-            loud_stops: int) -> tuple[str, str, list[str]]:
+            loud_stops: list[str]) -> tuple[str, str, list[str]]:
     """(emoji, one-line verdict, reasons). The rules, in words:
 
-    🔴  an empty slot inside EMPTY_SLOT_RED_DAYS; or finished work waiting more
-        than WAIT_RED_DAYS; or the Mac silent that long with work pending; or a
-        stop that needed a human.
+    🔴  a stop that needed a human; or an empty slot inside EMPTY_SLOT_RED_DAYS;
+        or finished work waiting more than WAIT_RED_DAYS; or the Mac silent
+        that long with work pending.
     🟡  an empty slot inside the calendar; or finished work waiting more than
         WAIT_YELLOW_DAYS; or nothing queued this week while something is finished.
     🟢  otherwise.
+
+    `loud_stops` is the STAGE NAME of every stop this week whose disposition
+    was needs_human — the ones that already opened their own GitHub issue.
+    THIS CHECK RUNS FIRST. Before 2026-09-22 it ran last, so the subject line
+    (`reasons_red[0]`, below) named whichever ROUTINE pipeline observation —
+    an empty slot two weeks out, work waiting on the Mac — happened to be
+    checked earlier in this function, even in a week that also had a real
+    named stop with its own open issue. That is exactly backwards: a
+    needs_human stop IS the "NEEDS YOU" content and the other reasons are
+    not, so the subject must name the lane that actually needs her, not
+    whichever lane this function happens to check first. (The 2026-09-22
+    audit: cloud-upload's NOTHING_SHELVED stop — its 8th consecutive day,
+    issue #105 — is exactly the kind of reason this used to be able to
+    bury behind an unrelated calendar note.)
     """
     reasons_red, reasons_yellow = [], []
+    if loud_stops:
+        reasons_red.append(f"{len(loud_stops)} stop(s) needed a human this week "
+                           f"({', '.join(sorted(set(loud_stops)))})")
     empty = [c for c in cal if not c["slug"]]
     soon = [c for c in empty if c["days_away"] <= EMPTY_SLOT_RED_DAYS]
     if soon:
@@ -222,8 +239,6 @@ def verdict(queued_rows: list[dict], cal: list[dict], pipe: dict,
     ms = pipe.get("mac_silent_days")
     if pipe.get("finished_waiting") and ms is not None and ms > WAIT_RED_DAYS:
         reasons_red.append(f"the Mac has not reported for {ms} days with work pending")
-    if loud_stops:
-        reasons_red.append(f"{loud_stops} stop(s) needed a human this week")
     if pipe.get("held"):
         reasons_yellow.append(f"held by the render gate: {', '.join(pipe['held'])}")
 
@@ -339,8 +354,8 @@ def render(week: str, now: dt.datetime) -> tuple[str, dict]:
     queued_rows = queued_this_week(led, week_ago, now)
     cal = calendar(led, cfg, now)
     pipe = pipeline(led, depth, hb, now)
-    loud_n = len([s for s in stops if s["disposition"] == "needs_human"])
-    mark, headline, reasons = verdict(queued_rows, cal, pipe, loud_n)
+    loud_stages = sorted({s["stage"] for s in stops if s["disposition"] == "needs_human"})
+    mark, headline, reasons = verdict(queued_rows, cal, pipe, loud_stages)
 
     def dom(slug: str) -> str:
         return by_slug.get(slug, "—")
