@@ -59,6 +59,16 @@ CHANNELS_URL = "https://www.googleapis.com/youtube/v3/channels"
 MARKER_START = "<!-- ABOUT:START -->"
 MARKER_END = "<!-- ABOUT:END -->"
 
+# YouTube caps brandingSettings.channel.description at 1,000 UTF-16 code
+# units (what the API counts, not bytes or code points — identical for this
+# text today, but an emoji or other astral character counts as 2) and
+# rejects '<' or '>' outright. channels.update answers 400 to either, after
+# the fact, with no detail — this repo's own push hit exactly that on
+# 2026-09-21 at 1,006 units. Refusing here means the failure names the
+# number and the character instead of a bare 400 from Google.
+MAX_DESCRIPTION = 1000
+FORBIDDEN_CHARS = "<>"
+
 DRY_RUN = os.environ.get("LOOP_DRY_RUN") == "1"
 
 # What channels.update REPLACES wholesale if it is not sent back. `title` is
@@ -69,7 +79,26 @@ CARRIED = ("title", "description", "keywords", "unsubscribedTrailer",
 
 
 class MergeRefused(Exception):
-    """A merge that would have written a partial brandingSettings.channel."""
+    """A merge that would have written a partial brandingSettings.channel,
+    or a description YouTube would reject."""
+
+
+def check_description(text: str) -> None:
+    """Refuse BEFORE any request if `text` would 400 against
+    channels.update — over YouTube's 1,000-unit cap, or containing '<'/'>'.
+    Counts UTF-16 code units, matching YouTube's own count."""
+    for lineno, line in enumerate(text.split("\n"), start=1):
+        for col, ch in enumerate(line, start=1):
+            if ch in FORBIDDEN_CHARS:
+                raise MergeRefused(
+                    f"DESCRIPTION_HAS_ANGLE_BRACKET: {ch!r} at line "
+                    f"{lineno}, column {col}")
+    units = len(text.encode("utf-16-le")) // 2
+    if units > MAX_DESCRIPTION:
+        over = units - MAX_DESCRIPTION
+        raise MergeRefused(
+            f"DESCRIPTION_TOO_LONG: {units} characters, limit "
+            f"{MAX_DESCRIPTION} ({over} over)")
 
 
 def read_about() -> str:
@@ -101,6 +130,7 @@ def read_channel(token: str) -> dict:
 def merge_branding(current: dict, description: str) -> dict:
     """Build a COMPLETE brandingSettings.channel from the live one, plus the
     new description. Refuses rather than truncating."""
+    check_description(description)
     if not isinstance(current, dict) or not current.get("title"):
         raise MergeRefused(
             "no brandingSettings.channel with a title was read back; "
@@ -134,6 +164,12 @@ def push(token: str, channel_id: str, current_branding: dict,
 
 def run(dry_run: bool) -> int:
     wanted = read_about()
+    try:
+        check_description(wanted)
+    except MergeRefused as e:
+        print(f"FATAL [{e}]: refusing to push a description YouTube would "
+              f"reject with a 400 — fix {ABOUT_FILE} and re-run.")
+        return 1
     cfg = config()
 
     if DRY_RUN and not dry_run:

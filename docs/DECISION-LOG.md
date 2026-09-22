@@ -687,3 +687,46 @@ and `loop/validate.py --reach` output (V41 included), the negative proof of
 V41, and `loop/tags_backfill.py --dry-run`'s real read-only output against
 all 65 live videos (34 episodes, 31 Shorts) — every materials video's
 computed tags carry no deep-sea term.
+
+## 2026-09-21 — the About push was a 400, and the real cause was length, not the angle brackets
+
+`rc_m32h8ze2a4hk37pc` landed how-we-know as 4a4de65 and its post-land step,
+`loop/channel_about.py`, failed: `HTTP Error 400: Bad Request` from
+`channels.update`. The instruction that opened this fix named the angle
+brackets in `channel/about.md`'s HTML markers as the cause alongside length.
+
+**What was actually true.** `channel_about.py` pushes only the text between
+`<!-- ABOUT:START -->` / `<!-- ABOUT:END -->`, never the markers themselves.
+That pushed body was **1,006 UTF-16 units** — 6 over YouTube's 1,000-unit cap
+on `brandingSettings.channel.description` — and contained no `<` or `>` at
+all. Length alone caused the 400; the brackets were only ever in the markers,
+which are never sent. The guard added below still refuses on both, as
+instructed — YouTube rejects `<`/`>` outright and nothing should reach the
+request carrying one.
+
+**What this change made true.**
+1. `channel/about.md`'s pushed body shortened from 1,006 to **953 UTF-16
+   units**, same meaning, both domains, both day pairs, all seven named
+   source bodies, the uncertainty sentences and "New episodes weekly." kept
+   verbatim. Owner approval: repo-change `rc_m33avf9cd0njg79t`, plan default.
+2. `loop/channel_about.py` gained `check_description()` — refuses BEFORE any
+   request if the body exceeds 1,000 UTF-16 units (YouTube's own count, not
+   bytes or code points) or contains `<`/`>`, naming the exact number or
+   character rather than surfacing Google's bare 400. Called from
+   `merge_branding()` and again at the top of `run()`, right after
+   `read_about()`, so the refusal prints before a credential is even loaded.
+3. `loop/tests/test_channel_about_refuses_before_request.py` (new, 52→53
+   test files) — too-long, exactly-at-cap, `<`, `>`, an astral character
+   pushing the UTF-16 count over by one, and an assertion that the repo's own
+   `channel/about.md` body passes so it cannot regress past the cap.
+
+**Verified:** `loop/tests/run_all.py` — 53/53 files, the same 9 pre-existing
+environment-only failures as an unmodified baseline (missing local
+credentials/packages on this dev machine, none touching `channel_about.py`)
+and zero new ones. Negative proof, both refusals: reintroducing the old
+1,006-unit body fails naming `1013` (the test fixture's own length at the
+time), restore passes; inserting a `<` fails naming `'<' at line 18, column
+14`, restore passes. `__pycache__` cleared between break and restore.
+`LOOP_DRY_RUN=1 .venv/bin/python loop/channel_about.py` still refuses on
+missing credentials, not on the text — confirming the guard passes clean
+text through.
