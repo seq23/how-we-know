@@ -547,6 +547,24 @@ the broad 8-seed mine is too thin — space-astronomy yields six candidates from
 — it runs the deeper single-domain mine first, which is free autocomplete and
 needs no quota.
 
+**A quota stop here is a named outcome, not a failure, and it self-retries.**
+`NEW_DOMAIN_QUOTA` (`loop/stop_policy.json`) is `self_resolving` for up to
+`max_consecutive: 3` weekly runs — the next Saturday tries again, green the
+whole time, nothing in the owner's inbox. A **fourth** consecutive week on the
+same code crosses `loop/common.py:disposition()`'s escalation cap and turns
+`needs_human`: a red build naming the domain, with the unblock "score it in a
+dispatched run instead" — `research/publish_order_domain.py --domain <name>`
+run by hand with a lower `--budget`, spreading the mine over more than one
+day's 10,000-unit allowance. Added 2026-09-22: `loop/score.py`'s
+`QUOTA_MARKERS` regex classifies a stop as quota-related by scanning the
+scorer subprocess's full combined stdout/stderr for the word "quota" anywhere
+in it (not just in a 403 response) — the same shape of false positive its own
+`KEY_ABSENT_MARKERS` comment already documents for a missing API key. A real
+crash elsewhere in that output (an unrelated `KeyError`, for instance) can
+still be recorded as `NEW_DOMAIN_QUOTA` if boilerplate quota text appears
+anywhere else in the same run's log, so a `NEW_DOMAIN_QUOTA` streak that does
+not clear after a quota reset is worth reading past its label.
+
 Guarded by **V34**, which constructs the month rather than waiting years for one.
 
 ## 3d. The Saturday harvest takes its domain list from the allocation
