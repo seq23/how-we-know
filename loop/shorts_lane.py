@@ -51,12 +51,24 @@ sys.path.insert(0, str(LOOP))
 import backfill as B                              # noqa: E402
 import batch_queue                                # noqa: E402
 import cadence                                    # noqa: E402
+import discovery                                  # noqa: E402
+import domains                                    # noqa: E402
 import ledger                                     # noqa: E402
 import publish as P                               # noqa: E402
 import quota                                      # noqa: E402
 import shorts_approval                            # noqa: E402
 import upload as up                               # noqa: E402
 from common import Stage, config, now, week_id     # noqa: E402
+
+# Owner decision 2026-09-21 (default A, [rc_m32h946mv0eybxhj]): the opening
+# line states what the Short is about, one per domain, mirroring the shape of
+# the original deep-sea-only sentence rather than repeating it for every
+# domain.
+DOMAIN_BLURB = {
+    "deep-sea-ocean-science": "Evidence-first answers from the deep sea.",
+    "materials-and-manufacturing":
+        "Evidence-first answers about materials and how they are made.",
+}
 
 SHORTS_DIR = ROOT / "shorts"
 SHORTS_HOUR_LOCAL = 19          # 19:00, the middle of the 18:00-21:00 peak
@@ -290,17 +302,38 @@ def build_payload(slug: str, question: str) -> dict:
     a Short into long-form is the whole reason this lane exists. It does not
     repeat the full source list: the episode holds that, and a Short's
     description is read in a scroll.
+
+    Tags and hashtags are the parent EPISODE's, plus "shorts" / "#Shorts" —
+    owner instruction, 2026-09-21. A Short is one chapter of its episode, so
+    it inherits that episode's domain rather than deriving its own; see
+    loop/discovery.py.
     """
     title = question.strip().rstrip("?")
     title = (title[:1].upper() + title[1:] if title else title) + "?"
-    desc = ("Evidence-first answers from the deep sea. This is one chapter — "
+
+    script_path = ROOT / "scripts" / f"{slug}.md"
+    script_text = script_path.read_text(encoding="utf-8") if script_path.exists() else ""
+    domain = domains.domain_of_slug(slug)
+    blurb = DOMAIN_BLURB.get(domain, DOMAIN_BLURB["deep-sea-ocean-science"])
+
+    tags, total = [], 0
+    for t in ["shorts", *discovery.tags_for(slug, script_text, domain)]:
+        if total + len(t) + 1 > discovery.TAG_TOTAL_MAX:
+            continue
+        tags.append(t)
+        total += len(t) + 1
+    hashtags = ["#Shorts",
+                *discovery.hashtags_for(slug, script_text, domain)
+                ][:discovery.HASHTAG_MAX]
+
+    body = (f"{blurb} This is one chapter — "
             "the full episode shows the instrument, the proxy and the "
             "observation behind every figure.\n\n"
             "Full episodes: https://youtube.com/@howweknowdeep\n"
-            "howweknowdeep.com\n\n#Shorts")
+            "howweknowdeep.com")
+    desc = discovery.add_hashtag_line(body, hashtags)
     return {"snippet": {"title": title[:100], "description": desc,
-                        "tags": ["deep sea", "ocean science", "how we know",
-                                 "shorts", "marine biology"],
+                        "tags": tags,
                         "categoryId": "27"},
             "status": {"privacyStatus": "private",
                        "selfDeclaredMadeForKids": False,

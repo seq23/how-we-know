@@ -93,6 +93,7 @@ sys.path.insert(0, str(ROOT / "auth"))
 
 import tokens as auth                             # noqa: E402
 import author                                     # noqa: E402
+import discovery                                  # noqa: E402
 import quota                                      # noqa: E402
 import upload as up                               # noqa: E402
 import ytmeta                                     # noqa: E402
@@ -159,8 +160,15 @@ def save(path, d) -> None:
 
 def content_key(title: str, description: str, lang: str) -> str:
     """Cache key. Content-addressed, so an edited English title re-translates
-    and an unchanged one never does."""
-    h = hashlib.sha256((title + "\x00" + description).encode("utf-8")).hexdigest()
+    and an unchanged one never does.
+
+    The trailing hashtag line (loop/discovery.py) is VERBATIM — never sent to
+    the model, see `translate()` — and is stripped here too, so backfilling
+    hashtags onto the 34 already-localized videos changes no hash and
+    re-translates nothing. Owner instruction, 2026-09-21.
+    """
+    body = discovery.strip_hashtag_line(description)
+    h = hashlib.sha256((title + "\x00" + body).encode("utf-8")).hexdigest()
     return f"{lang}:{h[:32]}"
 
 
@@ -314,8 +322,17 @@ def check_title(lang: str, en_title: str, localized: str, key: str,
 
 def translate(lang: str, title: str, description: str, key: str,
               model: str) -> dict:
-    """One language for one video. Returns {'title':…, 'description':…}."""
-    prose, keep = split_description(description)
+    """One language for one video. Returns {'title':…, 'description':…}.
+
+    The trailing hashtag line (loop/discovery.py) is held back exactly like a
+    bulleted source or a chapter timestamp: it never reaches the model — a
+    hashtag is not prose to translate — and is re-emitted byte for byte, in
+    English, onto every localized description. Owner instruction, 2026-09-21.
+    """
+    body = discovery.strip_hashtag_line(description)
+    hashtag_line = description[len(body):].strip("\n")
+
+    prose, keep = split_description(body)
     if not prose:
         raise ValueError("the description has no translatable prose line")
     out = author.call_openrouter(prompt_for(lang, title, prose), model, key,
@@ -324,8 +341,12 @@ def translate(lang: str, title: str, description: str, key: str,
     t, lines = parse(raw, len(prose))
     cost = (out.get("usage") or {}).get("cost") or 0.0
     t, note, check_cost = check_title(lang, title, t, key, model)
+    localized_desc = rebuild_description(body, keep, lines)
+    if hashtag_line:
+        localized_desc = discovery.add_hashtag_line(
+            localized_desc, hashtag_line.split(" "))[:DESC_MAX]
     return {"title": t,
-            "description": rebuild_description(description, keep, lines),
+            "description": localized_desc,
             "note": note,
             "cost_usd": cost + check_cost}
 
