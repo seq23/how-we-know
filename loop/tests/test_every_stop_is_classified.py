@@ -39,6 +39,11 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 LOOP = os.path.abspath(os.path.join(HERE, ".."))
 ROOT = os.path.abspath(os.path.join(LOOP, ".."))
 PY = sys.executable
+
+# Section C runs real stages that take real stops. loop/tests/run_all.py
+# points LOOP_STOPS_DIR at scratch; run on its own, this file wrote
+# loop/state/stops/_held.json. Default to scratch here as well.
+os.environ.setdefault("LOOP_STOPS_DIR", tempfile.mkdtemp(prefix="classified-stops-"))
 POLICY = json.load(open(os.path.join(LOOP, "stop_policy.json")))
 
 fails: list[str] = []
