@@ -1,0 +1,22 @@
+{
+  "stage": "comment-watch",
+  "week": "2026-W39",
+  "at": "2026-09-23T19:05:21+00:00",
+  "code": "NO_NEW_COMMENTS",
+  "message": "every comment on 70 upload(s) was already in the ledger",
+  "detail": {
+    "videos": 70,
+    "digest": "/var/folders/_d/tfpq896n7sx2j9m97sfmjdy00000gn/T/comment-sweep-0MPrMO/digest.json"
+  },
+  "unblock": "Nothing to do; the next weekly sweep reads again.",
+  "disposition": "self_resolving",
+  "disposition_why": "The weekly comment sweep found nothing newer than its per-video cursors. The lane is FINISHED for the week, not blocked: it classifies again the moment a viewer writes something. The digest file is written empty so the Mac job that emails the owner can record NOTHING_TO_REPORT by name instead of sending nothing. (run 1 of at most 8 before this escalates to a human.)",
+  "consecutive": 1,
+  "held_items": [],
+  "exit_code": 0,
+  "work_done_before_stop": [],
+  "notes": [
+    "70 upload(s) on the channel",
+    "0 new comment(s); 72 quota unit(s)"
+  ]
+}
