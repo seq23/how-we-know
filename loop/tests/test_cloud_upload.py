@@ -469,6 +469,13 @@ led["published"] = [{"slug": s, "video_id": "V" + str(i), "question": s,
 ledger.LEDGER.write_text(json.dumps(led))
 cloud_upload.RENDER_QUEUE = TMP / "render_queue.json"
 cloud_upload.RENDER_QUEUE.write_text(json.dumps({"items": ROWS}))
+# The promotion-hold register: a fixture unless the scenario sets HOLDS to
+# None, which means "the real loop/promotion_holds.json".
+if HOLDS is not None:
+    batch_queue.PROMOTION_HOLDS = TMP / "promotion_holds.json"
+    batch_queue.PROMOTION_HOLDS.write_text(json.dumps({"holds": HOLDS}))
+if RUNWAY is not None:
+    cloud_upload.cadence.runway = lambda per_week=None: RUNWAY
 rc = 0
 try:
     cloud_upload.run(limit=4)
@@ -479,6 +486,7 @@ print("RC", rc)
         stranded = "a-script-authored-but-never-queued"
         examined += 1
         r = run(f"ROWS = [{{'slug': {stranded!r}, 'status': 'queued'}}]\n"
+                "HOLDS = []\nRUNWAY = None\n"
                 + seed_ledger,
                 dict(base, R2_LOCAL_DIR=str(tmp / "empty-shelf-7b")), tmp)
         out = r.stdout + r.stderr
@@ -501,6 +509,7 @@ print("RC", rc)
 
         examined += 1
         r = run("ROWS = [{'slug': 'gone', 'status': 'dropped'}]\n"
+                "HOLDS = []\nRUNWAY = None\n"
                 + seed_ledger,
                 dict(base, R2_LOCAL_DIR=str(tmp / "empty-shelf-7c")), tmp)
         out = r.stdout + r.stderr
@@ -513,6 +522,62 @@ print("RC", rc)
         if "push-to-r2" in out:
             fails.append("a finished upload queue still tells the owner to "
                          "run bin/push-to-r2.sh")
+
+        # -- 7d. TODAY'S STATE, through the real lane (2026-09-23) --------
+        # Every queued episode uploaded; the four scripts the Monday lane
+        # wrote on 2026-09-21 still in loop/render_queue.json as `queued`;
+        # the REAL loop/promotion_holds.json naming them; runway ok. The
+        # owner decided these wait for her promotion decision, so this must
+        # be a GREEN named stop that names all four - not AUTHORED_NOT_QUEUED
+        # paging her, not NOTHING_SHELVED blaming the Mac, not a silent 0.
+        today = ["how-do-scientists-know-so-much",
+                 "how-do-scientists-know-how-old-something-is",
+                 "why-deep-sea-creatures",
+                 "how-do-scientists-know-about-other-galaxies"]
+        examined += 1
+        r = run(f"ROWS = {[{'slug': s_, 'status': 'queued'} for s_ in today]!r}\n"
+                "HOLDS = None\n"
+                "RUNWAY = {'level': 'ok', 'weeks_remaining': 6.0, "
+                "'message': 'fixture: 6.0 weeks of queue at 4/week'}\n"
+                + seed_ledger,
+                dict(base, R2_LOCAL_DIR=str(tmp / "empty-shelf-7d")), tmp)
+        out = r.stdout + r.stderr
+        if "[SCRIPTS_AWAITING_PROMOTION]" not in out:
+            fails.append("today's state (queue uploaded, four held scripts, "
+                         "runway ok) was not SCRIPTS_AWAITING_PROMOTION: "
+                         f"{out.strip()[-400:]}")
+        if "RC 0" not in r.stdout:
+            fails.append("today's held-for-promotion state did not exit 0 - it "
+                         "would page the owner daily on a decision she has: "
+                         f"{r.stdout.strip()[-200:]}")
+        if "WAITING ON THE OWNER" not in out:
+            fails.append("the held-for-promotion stop did not declare itself "
+                         "owner_action, so its zero exit is unexplained")
+        if "NAMED STOP" not in out:
+            fails.append("the held-for-promotion run printed no NAMED STOP "
+                         "banner - a silent exit 0 is what Rule 0 forbids")
+        for s_ in today:
+            if s_ not in out:
+                fails.append(f"the held-for-promotion stop does not name {s_}")
+        if "[AUTHORED_NOT_QUEUED]" in out or "push-to-r2" in out:
+            fails.append("held scripts were still reported as stranded, or "
+                         "blamed on the Mac's push")
+
+        # Same state, runway critical: the held decision is now what stands
+        # between the channel and going dark, so it must reach her (exit 3).
+        examined += 1
+        r = run(f"ROWS = {[{'slug': s_, 'status': 'queued'} for s_ in today]!r}\n"
+                "HOLDS = None\n"
+                "RUNWAY = {'level': 'critical', 'weeks_remaining': 1.0, "
+                "'message': 'fixture: 1.0 week'}\n"
+                + seed_ledger,
+                dict(base, R2_LOCAL_DIR=str(tmp / "empty-shelf-7e")), tmp)
+        out = r.stdout + r.stderr
+        if ("[SCRIPTS_AWAITING_PROMOTION_RUNWAY_CRITICAL]" not in out
+                or "RC 3" not in r.stdout):
+            fails.append("held scripts with a critical runway did not page "
+                         "(SCRIPTS_AWAITING_PROMOTION_RUNWAY_CRITICAL, exit 3): "
+                         f"{out.strip()[-300:]}")
 
     if examined == 0:
         fails.append("examined ZERO scenarios — this test cannot reach what "

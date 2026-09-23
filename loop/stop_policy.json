@@ -129,6 +129,11 @@
       "max_consecutive": 7,
       "escalation": "Seven consecutive days with the same queued episodes still not shelved means the Mac side is stuck. The slugs are in this stop's detail.awaiting_mac. On the Mac, read the '=== batch session' block in ~/Library/Logs/how-we-know/batch.log: if 'to narrate' or 'to render' lists them, narration or rendering is the stuck part; if both say none and the renders exist, bin/push-to-r2.sh is."
     },
+    "PUBLISH_QUEUE_FULLY_WRITTEN": {
+      "why": "Every topic in research/publish_order*.json already has a script, so the Monday lane (and Sunday's selection) has nothing it is allowed to write. Owner decision 2026-09-23: the Monday lane writes ONLY topics already in the publish queue, never mined demand that has not passed the gate. The queue grows when the Saturday scoring pass or the owner adds a row, and the lane writes it the next Monday. A short runway is NOT this stop: RUNWAY_WARN/RUNWAY_CRITICAL (Sunday) and RUNWAY_AUTHORING_FALLBACK (Monday) are raised first and page.",
+      "max_consecutive": 4,
+      "escalation": "Four consecutive weekly runs with nothing in the publish queue to write means the queue is not growing while episodes keep airing. Check whether the Saturday scoring pass is adding rows to research/publish_order*.json, and whether scripts in loop/promotion_holds.json are waiting on a promotion decision."
+    },
     "PUBLISH_QUEUE_UPLOADED": {
       "why": "Every episode in research/publish_order*.json is already uploaded and dated, and the authoring lane has no script waiting outside the queue. The lane is FINISHED, not blocked. It uploads again as soon as a new episode is queued and the Mac shelves it. The channel keeps airing what is already scheduled in the meantime.",
       "max_consecutive": 8,
@@ -345,6 +350,11 @@
       "max_consecutive": 14,
       "escalation": "Two weeks with no Shorts going out is a discovery surface switched off. Go red."
     },
+    "SCRIPTS_AWAITING_PROMOTION": {
+      "why": "Nothing to upload: every queued episode is uploaded and dated, the runway exists, and the only scripts outside the queue are held on purpose in loop/promotion_holds.json awaiting the owner's promotion decision (decided 2026-09-23 that they wait for her; not queued for the Mac, not deleted). No automation can make that decision, and she already knows, so the run stays green, names the held slugs, and the fact goes to the digest instead of a daily page. A NEW script outside the queue that is not in the hold register is AUTHORED_NOT_QUEUED and still pages; a critical runway is SCRIPTS_AWAITING_PROMOTION_RUNWAY_CRITICAL and still pages.",
+      "max_consecutive": 28,
+      "escalation": "Four weeks of daily runs with the promotion decision still open. The channel has been airing only what was already scheduled for a month; the decision is now a runway question. Go red."
+    },
     "CADENCE_SCALE_WITHHELD": {
       "why": "The loop is holding at the lower publishing rate because the finished-episode queue is too thin to sustain the higher one. Nothing is broken; the fix is a batch on the Mac, which is hers to start.",
       "max_consecutive": 6,
@@ -392,6 +402,7 @@
     "NO_QUEUE": "The publish queue file is missing. A state defect - restore it from origin/main.",
     "PUBLISH_ORDER_MISSING": "The ranked queue this lane must read does not exist.",
     "PUBLISH_ORDER_STALE": "The ranked queue is older than the scoring that should have rewritten it.",
+    "SCRIPTS_AWAITING_PROMOTION_RUNWAY_CRITICAL": "Every queued episode is uploaded, scripts are held in loop/promotion_holds.json awaiting the owner's promotion decision, and the runway is critical (or could not be computed). The held decision is now what stands between the channel and going dark, so it pages. It names the held slugs (held_items), so it pages once and then stays HELD until the list changes or the reminder is due.",
     "AUTHORED_NOT_QUEUED": "Every queued episode is uploaded, and the Monday authoring lane has written scripts to loop/render_queue.json that are in no research/publish_order*.json. bin/batch-session.sh, the only narrator installed on the Mac, reads only the publish_order files, so these scripts can never be narrated. Time does not fix this, so it is not self-resolving. It names the slugs (held_items), so it pages once and then stays HELD until the list changes.",
     "PUBLISH_QUEUE_EMPTY": "research/publish_order*.json exists but holds zero rows. An empty queue looks the same as a deleted one, so it is never read as finished.",
     "QUEUE_ROW_HAS_NO_QUESTION": "A shelved, selected episode carries no title. A broken queue row, refused before any byte is fetched.",

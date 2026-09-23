@@ -74,6 +74,79 @@ def queued_slugs() -> list[str]:
     return [r["slug"] for r in queued_entries()]
 
 
+# ---------------------------------------------------------------- the rule
+#
+# THE MONDAY LANE WRITES ONLY TOPICS ALREADY IN THE PUBLISH QUEUE. Owner
+# decision, 2026-09-23. On 2026-09-21 loop/rank.py picked four mined-demand
+# topics that were in no research/publish_order*.json and loop/draft.py
+# authored them. The Mac's batch reads only the publish queue, so they could
+# never be narrated, and the channel's shelf ran dry while the lane reported
+# work done. The two functions below are the one place that rule lives;
+# rank.py (selection) and draft.py (authoring) both call them, so the two
+# stages cannot disagree about what "in the queue" means.
+
+# Scripts held OUTSIDE the queue on purpose, awaiting the owner's promotion
+# decision. Module level so a test can point it at a fixture.
+PROMOTION_HOLDS = ROOT / "loop" / "promotion_holds.json"
+
+
+def promotion_holds() -> dict[str, dict]:
+    """slug -> hold row, for every script held awaiting promotion.
+
+    A missing file means no holds. A file that exists but does not parse, or a
+    row with no slug, raises: a hold register that silently reads as empty
+    would turn a green, named hold back into a daily page, or worse, let a held
+    slug be selected.
+    """
+    if not PROMOTION_HOLDS.exists():
+        return {}
+    doc = json.loads(PROMOTION_HOLDS.read_text())
+    out: dict[str, dict] = {}
+    for row in doc.get("holds") or []:
+        slug = row.get("slug") if isinstance(row, dict) else None
+        if not slug:
+            raise ValueError(f"{PROMOTION_HOLDS.name}: a hold row has no slug: "
+                             f"{row!r}")
+        out[slug] = row
+    return out
+
+
+def publish_queue_gate(slugs: list[str]) -> tuple[list[str], dict[str, str]]:
+    """Split `slugs` into (allowed, refused{slug: why}) under the rule.
+
+    Allowed means: in research/publish_order*.json AND not held for promotion.
+    Order is preserved. Every refusal carries its reason, so a caller can print
+    it by name - a refused topic is never a silent skip.
+    """
+    queued = set(queued_slugs())
+    holds = promotion_holds()
+    allowed, refused = [], {}
+    for s in slugs:
+        if s in holds:
+            refused[s] = ("held awaiting the owner's promotion decision "
+                          f"(loop/promotion_holds.json: "
+                          f"{holds[s].get('awaiting', 'promotion')})")
+        elif s not in queued:
+            refused[s] = ("not in any research/publish_order*.json - the Monday "
+                          "lane writes only topics already in the publish queue")
+        else:
+            allowed.append(s)
+    return allowed, refused
+
+
+def unwritten_entries() -> list[dict]:
+    """Publish-queue rows that have no script at scripts/<slug>.md yet.
+
+    These are the ONLY topics the Monday lane may author. Best first. An empty
+    list is a real state (every queued topic is written) and callers must name
+    it, never read it as "nothing happened".
+    """
+    holds = promotion_holds()
+    return [r for r in queued_entries()
+            if r["slug"] not in holds
+            and not (ROOT / "scripts" / f"{r['slug']}.md").exists()]
+
+
 if __name__ == "__main__":
     for s in queued_slugs():
         print(s)
