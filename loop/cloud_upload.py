@@ -141,7 +141,9 @@ NOT_YET_BUILT = ("queued", "approved")
 
 
 def diagnose_empty_shelf(queued: list[str], done: set[str], held: set[str],
-                         handoff: list[dict] | None) -> dict:
+                         handoff: list[dict] | None,
+                         promotion_held: dict | None = None,
+                         runway: dict | None = None) -> dict:
     """WHY the shelf holds nothing to upload, worked out from state this lane
     can already read. Returns the named stop to raise.
 
@@ -170,6 +172,20 @@ def diagnose_empty_shelf(queued: list[str], done: set[str], held: set[str],
                             needs_human. It names the slugs (held_items), so it
                             pages once and then waits in HELD until the list
                             changes.
+      SCRIPTS_AWAITING_PROMOTION
+                            every queued episode is uploaded, nothing new is
+                            stranded, the runway still exists, and scripts
+                            are held OUTSIDE the queue on purpose
+                            (loop/promotion_holds.json) until the owner
+                            decides whether to promote them. Her decision,
+                            already known to her: owner_action, GREEN, carried
+                            to the digest, never a daily page. (Owner
+                            decision 2026-09-23.)
+      SCRIPTS_AWAITING_PROMOTION_RUNWAY_CRITICAL
+                            the same, but the runway is critical or could not
+                            be computed, so the held decision is now what
+                            stands between the channel and going dark.
+                            needs_human, with held_items.
       PUBLISH_QUEUE_UPLOADED  every queued episode is uploaded and nothing is
                             stuck upstream. The lane is done until new work
                             arrives. Self-resolving, with a cap.
@@ -223,12 +239,18 @@ def diagnose_empty_shelf(queued: list[str], done: set[str], held: set[str],
                 "unblock": "Restore loop/render_queue.json from origin/main, "
                            "or re-run the Monday lane (loop/draft.py).",
                 "held_items": None}
+    holds = promotion_held or {}
+    # A hold whose slug has since been queued or uploaded is over: promotion
+    # happened. Only the rest are still waiting on her.
+    active_holds = sorted(s for s in holds
+                          if s not in queued_set and s not in done)
     orphans = sorted({
         str(it.get("slug")) for it in handoff
         if it.get("slug") and it.get("status") in NOT_YET_BUILT
-        and it["slug"] not in queued_set and it["slug"] not in done})
+        and it["slug"] not in queued_set and it["slug"] not in done
+        and it["slug"] not in holds})
     base = {"queued": len(queued), "uploaded": len(done & queued_set),
-            "render_gate_held": held_q}
+            "render_gate_held": held_q, "promotion_held": active_holds}
     if orphans:
         return {"code": "AUTHORED_NOT_QUEUED",
                 "message": f"Nothing is on the shelf because every one of the "
@@ -247,12 +269,51 @@ def diagnose_empty_shelf(queued: list[str], done: set[str], held: set[str],
                 "unblock": "A decision for a person: either queue these slugs "
                            "(copy loop/drafts/<slug>.md to scripts/<slug>.md and "
                            "add a row with `slug` and `query` to a "
-                           "research/publish_order*.json), or have "
-                           "loop/draft.py only author topics that are already "
-                           "in the publish queue. Until then the channel airs "
-                           "only what is already scheduled; see the runway in "
-                           "loop/render_queue.json.",
+                           "research/publish_order*.json), or hold them for a "
+                           "promotion decision by adding them to "
+                           "loop/promotion_holds.json. Since 2026-09-23 "
+                           "loop/rank.py and loop/draft.py select only "
+                           "publish-queue topics, so a new script here means "
+                           "something routed around that gate. Until then the "
+                           "channel airs only what is already scheduled; see "
+                           "the runway in loop/render_queue.json.",
                 "held_items": orphans}
+    if active_holds:
+        level = (runway or {}).get("level")
+        runway_msg = (runway or {}).get("message") or "runway could not be computed"
+        hold_detail = dict(base, runway_level=level,
+                           runway_weeks=(runway or {}).get("weeks_remaining"),
+                           holds="loop/promotion_holds.json")
+        how = ("Promote: add a row with `slug` and `query` to a "
+               "research/publish_order*.json and put the script at "
+               "scripts/<slug>.md; the Mac's batch then narrates, renders and "
+               "shelves it and this lane uploads it. Decline: remove its entry "
+               "from loop/promotion_holds.json. Nothing is deleted either way.")
+        if level in ("ok", "warn"):
+            return {"code": "SCRIPTS_AWAITING_PROMOTION",
+                    "message": f"Nothing to upload: every one of the "
+                               f"{len(queued)} episodes in research/"
+                               f"publish_order*.json is already uploaded and "
+                               f"dated, and the runway exists ({runway_msg}). "
+                               f"{len(active_holds)} script(s) are held outside "
+                               f"the queue awaiting the owner's promotion "
+                               f"decision: {', '.join(active_holds)}. They are "
+                               f"not queued for the Mac and not deleted. The "
+                               f"Mac is not the problem.",
+                    "detail": hold_detail,
+                    "unblock": how,
+                    "held_items": active_holds}
+        return {"code": "SCRIPTS_AWAITING_PROMOTION_RUNWAY_CRITICAL",
+                "message": f"Nothing to upload: every queued episode is "
+                           f"already uploaded, and the runway is "
+                           f"{level or 'unknown'} ({runway_msg}). "
+                           f"{len(active_holds)} script(s) held awaiting the "
+                           f"owner's promotion decision "
+                           f"({', '.join(active_holds)}) are now what stands "
+                           f"between the channel and going dark.",
+                "detail": hold_detail,
+                "unblock": how,
+                "held_items": active_holds}
     return {"code": "PUBLISH_QUEUE_UPLOADED",
             "message": f"every one of the {len(queued)} episodes in "
                        f"research/publish_order*.json is already uploaded"
@@ -324,7 +385,9 @@ def run(limit: int = 4, dry_run: bool = False) -> int:
                 batch_queue.queued_slugs(),
                 {r["slug"] for r in ledger.load()["published"]},
                 render_gate.held_slugs(),
-                handoff_rows())
+                handoff_rows(),
+                promotion_held=batch_queue.promotion_holds(),
+                runway=cadence.runway(per_week))
             st.named_stop(why["code"], why["message"], detail=why["detail"],
                           unblock=why["unblock"],
                           held_items=why["held_items"])

@@ -1,0 +1,61 @@
+{
+  "_why": [
+    "Scripts that exist but are NOT in the publish queue, held on purpose until",
+    "the owner decides whether to promote them. Retired by this flag, never by",
+    "deletion: every script named here stays where it is.",
+    "",
+    "2026-09-23. The Monday lane authored four mined-demand topics on 2026-09-21",
+    "into loop/drafts/ and loop/render_queue.json. None is in any",
+    "research/publish_order*.json, none passed the demand gate, and the Mac's",
+    "nightly batch reads only the publish queue, so they could never air. The",
+    "owner decided (06:05 CDT): the Monday lane writes ONLY topics already in",
+    "the publish queue (loop/rank.py and loop/draft.py enforce it); these four",
+    "are not queued for the Mac and not deleted; the subject waits for her",
+    "promotion decision.",
+    "",
+    "WHO READS THIS. loop/batch_queue.py promotion_holds() is the only reader.",
+    "loop/cloud_upload.py uses it so an empty shelf with these scripts waiting",
+    "is the green, named SCRIPTS_AWAITING_PROMOTION stop (owner_action), not a",
+    "daily AUTHORED_NOT_QUEUED page. loop/rank.py and loop/draft.py refuse to",
+    "select or queue a held slug.",
+    "",
+    "HOW A HOLD ENDS. Promote: add a row with `slug` and `query` to a",
+    "research/publish_order*.json and put the script at scripts/<slug>.md; the",
+    "hold stops counting the moment its slug is queued. Or decline: remove the",
+    "entry here. Loop code never edits this file."
+  ],
+  "holds": [
+    {
+      "slug": "how-do-scientists-know-so-much",
+      "script": "loop/drafts/how-do-scientists-know-so-much.md",
+      "subject": "method-evidence",
+      "held_since": "2026-09-23",
+      "authored": "2026-09-21 by the Monday lane (mined demand)",
+      "awaiting": "owner promotion decision for the method-evidence subject"
+    },
+    {
+      "slug": "how-do-scientists-know-how-old-something-is",
+      "script": "loop/drafts/how-do-scientists-know-how-old-something-is.md",
+      "subject": "method-evidence",
+      "held_since": "2026-09-23",
+      "authored": "2026-09-21 by the Monday lane (mined demand)",
+      "awaiting": "owner promotion decision for the method-evidence subject"
+    },
+    {
+      "slug": "how-do-scientists-know-about-other-galaxies",
+      "script": "loop/drafts/how-do-scientists-know-about-other-galaxies.md",
+      "subject": "method-evidence (backlog tagged it space)",
+      "held_since": "2026-09-23",
+      "authored": "2026-09-21 by the Monday lane (mined demand)",
+      "awaiting": "owner promotion decision for the method-evidence subject"
+    },
+    {
+      "slug": "why-deep-sea-creatures",
+      "script": "loop/drafts/why-deep-sea-creatures.md",
+      "subject": "method-evidence batch (backlog tagged it deep-sea-biology; not in the deep-sea publish queue and never passed the demand gate)",
+      "held_since": "2026-09-23",
+      "authored": "2026-09-21 by the Monday lane (mined demand)",
+      "awaiting": "owner promotion decision for the method-evidence subject"
+    }
+  ]
+}
