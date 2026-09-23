@@ -125,9 +125,14 @@
       "escalation": "Eight consecutive days with nothing to localize is longer than the publish cadence can explain. At 4/week a new episode goes public at least every ~3 days and each one needs localizing, so an eight-day streak means either publishing has stopped or - the dangerous case - this lane can no longer SEE new videos and is reporting 'up to date' about a list that stopped growing. Check that the live-video count in the run's own note is rising."
     },
     "NOTHING_SHELVED": {
-      "why": "Every queued episode is already in the ledger or has not been pushed to R2 yet. The Mac's nightly batch pushes what it renders, so an empty shelf resolves itself on the next batch; and when the whole queue is uploaded, an empty shelf is the finished state.",
+      "why": "Queued episodes are not in the ledger and not on the R2 shelf yet: the Mac's nightly batch is still narrating, rendering or pushing them, and it pushes what it renders, so the shelf fills on a later night. Since 2026-09-23 this code is raised ONLY in that state and names the waiting slugs in detail.awaiting_mac. An empty shelf because the whole queue is uploaded is PUBLISH_QUEUE_UPLOADED, and scripts stuck outside the queue are AUTHORED_NOT_QUEUED (see loop/cloud_upload.py diagnose_empty_shelf).",
       "max_consecutive": 7,
-      "escalation": "Seven consecutive days of an empty shelf while episodes remain unuploaded means the Mac is not pushing - bin/push-to-r2.sh is failing, or the nightly com.howweknow.batch agent is not firing at all. Compare the count of renders/*-final.mp4 on the Mac with the ledger; if the Mac has more, the push is the broken half, not this lane."
+      "escalation": "Seven consecutive days with the same queued episodes still not shelved means the Mac side is stuck. The slugs are in this stop's detail.awaiting_mac. On the Mac, read the '=== batch session' block in ~/Library/Logs/how-we-know/batch.log: if 'to narrate' or 'to render' lists them, narration or rendering is the stuck part; if both say none and the renders exist, bin/push-to-r2.sh is."
+    },
+    "PUBLISH_QUEUE_UPLOADED": {
+      "why": "Every episode in research/publish_order*.json is already uploaded and dated, and the authoring lane has no script waiting outside the queue. The lane is FINISHED, not blocked. It uploads again as soon as a new episode is queued and the Mac shelves it. The channel keeps airing what is already scheduled in the meantime.",
+      "max_consecutive": 8,
+      "escalation": "Eight days with every queued episode uploaded and nothing new arriving means nothing has entered the publish queue for over a week, at a cadence that needs new episodes every week. The Monday authoring lane runs every 7 days, so an eighth day means at least one Monday added nothing. Check the last 'loop · Mon 06:00' run and loop/render_queue.json, and compare the runway figure there with the dates in loop/state/ledger.json."
     },
     "NO_FLIP_DUE_YET": {
       "why": "Episodes are on the calendar but none has reached its publishAt yet, so there is no completed flip to verify. This resolves itself the moment the first scheduled video is due - it is the state of a channel whose queue is entirely ahead of it.",
@@ -387,6 +392,8 @@
     "NO_QUEUE": "The publish queue file is missing. A state defect - restore it from origin/main.",
     "PUBLISH_ORDER_MISSING": "The ranked queue this lane must read does not exist.",
     "PUBLISH_ORDER_STALE": "The ranked queue is older than the scoring that should have rewritten it.",
+    "AUTHORED_NOT_QUEUED": "Every queued episode is uploaded, and the Monday authoring lane has written scripts to loop/render_queue.json that are in no research/publish_order*.json. bin/batch-session.sh, the only narrator installed on the Mac, reads only the publish_order files, so these scripts can never be narrated. Time does not fix this, so it is not self-resolving. It names the slugs (held_items), so it pages once and then stays HELD until the list changes.",
+    "PUBLISH_QUEUE_EMPTY": "research/publish_order*.json exists but holds zero rows. An empty queue looks the same as a deleted one, so it is never read as finished.",
     "QUEUE_ROW_HAS_NO_QUESTION": "A shelved, selected episode carries no title. A broken queue row, refused before any byte is fetched.",
     "POV_UNTRACED": "An episode's first-person [HUMAN] beat traces to no approved POV entry. Uploading it would have the channel assert she said something no interview records. A validator may not clear this for her.",
     "CAPTIONS_NOT_READY": "Now reachable only when an episode was never fully narrated, because loop/captions_build.py builds the track for every episode whose beat timings are committed. What is left is a genuine gap in the audio, not a missing derived file.",
