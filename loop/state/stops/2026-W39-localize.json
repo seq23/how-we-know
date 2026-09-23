@@ -1,7 +1,7 @@
 {
   "stage": "localize",
   "week": "2026-W39",
-  "at": "2026-09-22T15:10:44+00:00",
+  "at": "2026-09-23T15:10:29+00:00",
   "code": "LOCALIZATIONS_UP_TO_DATE",
   "message": "all 34 live video(s) already carry 5 localizations and defaultLanguage=en. Nothing was translated and nothing was written \u2014 a re-run costs nothing, which is the design.",
   "detail": {
@@ -44,8 +44,8 @@
   },
   "unblock": "Nothing to do. This stop means the lane is finished, not broken. It will do real work again when a new episode is uploaded or an English title changes.",
   "disposition": "self_resolving",
-  "disposition_why": "Every live video already carries its localizations and defaultLanguage=en. The lane is FINISHED, not blocked: it does real work again the moment a new episode goes public or an English title changes. Nothing was written and a re-run costs nothing, which is the design. (run 6 of at most 8 before this escalates to a human.)",
-  "consecutive": 6,
+  "disposition_why": "Every live video already carries its localizations and defaultLanguage=en. The lane is FINISHED, not blocked: it does real work again the moment a new episode goes public or an English title changes. Nothing was written and a re-run costs nothing, which is the design. (run 7 of at most 8 before this escalates to a human.)",
+  "consecutive": 7,
   "held_items": [],
   "exit_code": 0,
   "work_done_before_stop": [],
