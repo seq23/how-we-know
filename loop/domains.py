@@ -147,6 +147,99 @@ def domain_of_video(video_id: str, ledger_published: list[dict],
     return domain_of_slug(slug, default) if slug else default
 
 
+# The one file with no `domain` field anywhere in it, by convention — see
+# PUBLISH_ORDER above ("the original, unsuffixed file, kept as the stable
+# name"). Every file `research/publish_order_domain.py` writes for a
+# materials-style or later domain carries `domain` at the top level; this is
+# the fallback for the one file that predates that convention.
+UNSUFFIXED_FILE_DOMAIN = "deep-sea-ocean-science"
+
+
+def row_domain(row: dict) -> str:
+    """Best-effort domain for a topic/queue ROW that may have no script yet.
+
+    Callers hand this two different shapes of dict and neither reliably
+    carries a `domain` key:
+
+      * a raw row from `loop/batch_queue.queued_entries()`, keyed
+        `_domain_file` for the `research/publish_order*.json` it came from;
+      * a `loop/next_topics.json` selection (`loop/rank.py`'s output), which
+        renames that same thing to `queue_file`, or — for an already-authored
+        "authored-inventory" pick — carries neither and only a `script` path
+        to an existing file that already has its own `**Domain:**` line.
+
+    `research/publish_order.json` itself has never carried a `domain` field,
+    row or top-level, because it predates materials-and-manufacturing being a
+    second domain. Order of resolution:
+
+      1. the row's own `domain` key,
+      2. the domain file's own top-level `domain` key (`_domain_file` or
+         `queue_file`, whichever is present),
+      3. the domain line of `script`, if that path already exists on disk,
+      4. `UNSUFFIXED_FILE_DOMAIN`, for the one file/path that names none of
+         the above.
+
+    This is what `loop/draft.py` calls BEFORE a script may exist, so it
+    cannot rely on `domain_of_script()` alone — the point is to know the
+    domain in time to refuse authoring it.
+    """
+    if row.get("domain"):
+        return row["domain"]
+    domain_file = row.get("_domain_file") or row.get("queue_file")
+    if domain_file:
+        doc = _read_json_default(ROOT / "research" / domain_file)
+        if doc.get("domain"):
+            return doc["domain"]
+    script = row.get("script")
+    if script:
+        p = ROOT / script
+        if p.exists():
+            d = domain_of_script(p)
+            if d:
+                return d
+    return UNSUFFIXED_FILE_DOMAIN
+
+
+def _read_json_default(path: Path) -> dict:
+    try:
+        return json.loads(path.read_text())
+    except (FileNotFoundError, json.JSONDecodeError):
+        return {}
+
+
+def allocation_gate(rows: list[dict], cfg: dict) -> tuple[list[dict], dict[str, str]]:
+    """Refuse to author any row whose domain holds no weekly slot.
+
+    2026-09-23. Four scripts ('how-do-scientists-know-so-much' and three
+    others, method-evidence and space subjects that were never promoted)
+    were authored on 2026-09-21 by a since-closed mined-demand path and are
+    held in `loop/promotion_holds.json` — but that hold is a publish-queue
+    check (`batch_queue.publish_queue_gate`), not a domain check. A row CAN
+    sit in a real `research/publish_order*.json` file — scored, gated,
+    genuinely queued — for a domain that has since been retired from
+    `loop/config.json` `domains.allocation`, or that was scored by hand
+    before ever being allocated. Authoring it anyway ships a domain with no
+    publish slot, no `loop/domain_sources.py` allowlist and no
+    `visuals/domains.py` palette. This is the second, independent gate: it
+    checks the DOMAIN, not the QUEUE.
+
+    Returns (allowed_rows, {slug: reason}) — same shape as
+    `batch_queue.publish_queue_gate`.
+    """
+    alloc = allocation(cfg)
+    allowed, refused = [], {}
+    for row in rows:
+        dom = row_domain(row)
+        if dom in alloc:
+            allowed.append(row)
+        else:
+            refused[row.get("slug", "<no-slug>")] = (
+                f"domain {dom!r} is not in loop/config.json "
+                f"domains.allocation ({sorted(alloc)}) — no publish slot, "
+                f"no source allowlist and no palette for it yet")
+    return allowed, refused
+
+
 # ------------------------------------------------------------- allocation
 
 def config_domains(cfg: dict) -> dict:

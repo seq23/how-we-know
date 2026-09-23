@@ -142,6 +142,18 @@ def rebuild_runway_if_short(st, cfg: dict, per_week: int, used_slugs: list[str],
         if "any" in short or dom in short:
             candidates.append((row, dom))
 
+    # SAME DOMAIN GUARD AS loop/draft.py main() step 0b, applied here too —
+    # `short` is meant to name only allocated domains (cadence.runway() reads
+    # domains.allocation), but this path also authors and promotes straight
+    # to scripts/, so it re-checks rather than trusting that invariant holds.
+    alloc = domains.allocation(cfg)
+    allocated_candidates = [(row, dom) for row, dom in candidates if dom in alloc]
+    for row, dom in candidates:
+        if dom not in alloc:
+            st.note(f"runway rebuild: {row['slug']} names domain {dom!r}, "
+                    f"not in domains.allocation — refused, not authored")
+    candidates = allocated_candidates
+
     cap = int(cfg.get("runway", {}).get("rebuild_max_extra", 3))
     authored, failed = [], []
     for row, dom in candidates[:cap]:
@@ -153,7 +165,8 @@ def rebuild_runway_if_short(st, cfg: dict, per_week: int, used_slugs: list[str],
             continue
         try:
             res = author.draft(question, slug,
-                               {"pov_id": pov["pov_id"], "line": pov["line"]})
+                               {"pov_id": pov["pov_id"], "line": pov["line"]},
+                               domain=dom or domains.UNSUFFIXED_FILE_DOMAIN)
         except author.AuthorStop as e:
             failed.append(f"{slug}: [{e.code}] {e.message}")
             continue
@@ -289,6 +302,27 @@ def main() -> None:
                     f"authored or queued for them; nothing was deleted.")
         selected = [t for t in selected if t.get("slug") in set(allowed)]
 
+        # ---- 0b. ONLY DOMAINS CURRENTLY IN domains.allocation ---------
+        # Owner decision, 2026-09-23 (corrected scope). The publish-queue
+        # gate above closes the mined-demand path, but it is a QUEUE check,
+        # not a DOMAIN check: a row can be genuinely scored and sitting in a
+        # real research/publish_order*.json file for a domain that has since
+        # been retired from loop/config.json domains.allocation, or that was
+        # scored by hand before ever being allocated. Authoring it anyway is
+        # exactly how the 2026-09-21 method-evidence/space scripts shipped
+        # with no publish slot, no loop/domain_sources.py allowlist and no
+        # visuals/domains.py palette (they are held in
+        # loop/promotion_holds.json, a separate fix). This is the second,
+        # independent gate — see loop/domains.py allocation_gate().
+        selected, dom_refused = domains.allocation_gate(selected, cfg)
+        for slug_, why_ in dom_refused.items():
+            print(f"  REFUSE {slug_}: {why_}", flush=True)
+        if dom_refused:
+            st.note(f"refused {len(dom_refused)} selected topic(s) outside "
+                    f"domains.allocation: {', '.join(dom_refused)}. Nothing "
+                    f"was authored or queued for them; nothing was deleted.")
+        refused = {**refused, **dom_refused}
+
         if not selected:
             # Nothing this lane may write. Rebuild runway first: it authors
             # from the publish queue itself when a domain is short, and names
@@ -326,7 +360,17 @@ def main() -> None:
                     st.note(f"{t['slug']}: no POV line matched; not authored")
                     continue
                 try:
-                    res = author.draft(t["question"], t["slug"], pov)
+                    # domain=, explicitly — without it author.draft() falls
+                    # back to its own DEFAULT_DOMAIN (deep sea) regardless of
+                    # what t actually is, which is why the 2026-09-21
+                    # method-evidence/space drafts carry
+                    # "**Domain:** deep-sea-ocean-science" and were
+                    # mislabelled on top of being unqueueable. By this point
+                    # allocation_gate() above has already refused anything
+                    # outside domains.allocation, so this is always a live
+                    # allocated domain.
+                    res = author.draft(t["question"], t["slug"], pov,
+                                       domain=domains.row_domain(t))
                 except author.AuthorStop as e:
                     # Named, expected, and never a crash. The week continues on
                     # whatever inventory covers.
