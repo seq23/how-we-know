@@ -5,7 +5,7 @@ How We Know, and nothing else. Reference detail lives in
 [`docs/OPERATING-MANUAL.md`](docs/OPERATING-MANUAL.md); the locked strategy lives
 in [`docs/CHANNEL-PLAN.md`](docs/CHANNEL-PLAN.md).
 
-Last true: 2026-09-22.
+Last true: 2026-09-23.
 
 ---
 
@@ -13,50 +13,72 @@ Last true: 2026-09-22.
 
 ```
 0.  Cloud scores/refills the queue every Saturday          you: nothing
-1.  Cloud writes scripts every Monday                     you: nothing
-2.  Runway drops under 4 weeks -> GitHub emails you       you: read the email
-3.  You open the Mac and run ONE command                  you: 10 seconds
-4.  It narrates and renders, unattended                   you: walk away
-5.  Cloud uploads, schedules and publishes                you: nothing
+1.  Cloud writes scripts every Monday                       you: nothing
+2.  The Mac narrates and renders every night, unattended    you: nothing
+3.  Cloud uploads, schedules and publishes                  you: nothing
+```
+
+**Nothing here is a step you take.** `com.howweknow.batch`
+(`~/Library/LaunchAgents/com.howweknow.batch.plist`) fires on this Mac every
+night at **23:00** and runs `bin/batch-session.sh` itself — narrates whatever
+has no audio, renders whatever has audio but no video, and pushes the results
+to R2 for the cloud to upload. This changed on 2026-09-04, when materials
+became a second domain and the batch first needed to run unattended overnight
+rather than whenever she happened to start it; before that date step 2 really
+was a command she ran. As of this writing (2026-09-23) it is loaded, valid
+(`plutil -lint` on both installed plists passes) and running: last night's
+`batch.log` shows it fired at 23:00 and completed its pass.
+
+**All you have to do is leave the Mac open at night, plugged in.** A launchd
+*Agent* (not a daemon) only fires while a user session is logged in — asleep or
+shut down, it does not run. This Mac's `pmset` sleep timer is already set to
+`0` on both AC and battery, so it stays awake as long as the lid is open; a
+*closed* lid still sleeps it regardless of that setting. If the lid is closed
+at 23:00, the batch simply skips that night — nothing breaks, nothing is
+lost, and `bin/batch-session.sh` resumes wherever it left off the next time it
+gets to run, because it is resumable by construction.
+
+You can still run it by hand any time — to catch up after a few closed-lid
+nights, to preview what it would do, or to render a specific week early:
+
+```bash
+cd ~/GitHub/how-we-know
+bin/batch-session.sh                 # same thing the 23:00 timer runs
+bin/batch-session.sh --dry-run       # preview: is there work for me?
+bin/batch-session.sh --max-episodes 4   # just this week, not the whole queue
 ```
 
 Step 1 draws from whatever Saturday's scoring pass (step 0) ranked. If a
 domain's queue ever runs fully dry, step 0 is also what refills it — see "A
-domain's scored queue running completely dry" below; it is why step 3 can
-still be nothing to do even after a domain hits zero.
-
-**Step 3 is one command:**
-
-```bash
-cd ~/GitHub/how-we-know
-bin/batch-session.sh
-```
-
-That is the only step you are in. Steps 1, 2 and 5 happen whether your laptop is
-open, shut, or switched off.
+domain's scored queue running completely dry" below.
 
 ---
 
-## Step 3, in detail
+## The nightly batch, in detail
 
-Start it and walk away. What it does:
+What the 23:00 timer (or a by-hand run) does:
 
 - It narrates every script that has no audio, renders every episode that has
   audio but no video, and pushes the results out for uploading.
 - **~1.2 hours narration + ~12 minutes render per episode.** A full 16-episode
-  batch is about **22 hours** — one overnight plus a morning.
-- It holds the Mac awake itself (`caffeinate -dimsu`). You do not have to sit here.
+  batch is about **22 hours** — spread automatically across as many nights as
+  it takes, since it is resumable and simply picks up where it left off.
+- It holds the Mac awake itself (`caffeinate -dimsu`) for the run, and stops
+  needing it once it is done for the night.
 - It **skips whatever is already done**, so an interrupted run is re-run, not
-  restarted. Closing the lid is survivable; just run it again.
-- Preview first if you want: `bin/batch-session.sh --dry-run`
+  restarted. A closed lid one night is survivable; it just continues the next.
 
 When it finishes it prints `V13 ... CLEAN`. That means no video ends before its
 own narration does. If it prints failures, tell Claude — do not upload.
 
-### When the email arrives you still have ~8 episodes airing
+### If a runway-warning email ever arrives, it means the nightly batch has fallen behind
 
 The warning fires at **four weeks of runway**, not at zero, so the channel keeps
-publishing right through the batch. There is no rush and no gap.
+publishing right through it — there is no rush and no gap. But since rendering
+is automatic every night, this email should be rare: it means several nights
+in a row the Mac was asleep, shut, or the batch is failing. Check
+`launchctl list | grep howweknow` and `tail ~/Library/Logs/how-we-know/batch.err`
+first; running `bin/batch-session.sh` by hand catches it up regardless of cause.
 
 ---
 
@@ -154,14 +176,20 @@ within one Saturday's quota, and the fix named in that email is to run
 `research/publish_order_domain.py --domain <name>` by hand with a lower
 `--budget`, spreading the mine over two weeks instead of one.
 
-**As of this writing (2026-09-22)** this is mid-cycle, not stuck: the
-`weekly-score` stage stopped on `NEW_DOMAIN_QUOTA` for `deep-sea-ocean-science`
-on 2026-09-12 and again on 2026-09-19 (`loop/state/stops/_streaks.json`, count
-2 of the 3 allowed) and has not run since — the next Saturday run
-(2026-09-26) is attempt 3 of 3, still green either way. **One correction to
-how this looked in the 22 Sep audit:** the 2026-09-19 stop's own recorded
-tail is a Python `KeyError: 'median_subscribers'` in
-`research/publish_order.py`, not an actual 403/quota response from YouTube —
+**Re-checked 2026-09-23** — still mid-cycle, not stuck, and unchanged since
+the 22 Sep audit: the current streak (`loop/state/stops/_streaks.json`) is
+`weekly-score` stopping on `NEW_DOMAIN_QUOTA` for `deep-sea-ocean-science`
+twice within ISO week 2026-W38 — a `workflow_dispatch` run on **2026-09-18
+23:44 UTC** and the scheduled run on **2026-09-19 10:09 UTC** (count 2 of the
+3 allowed). An earlier, separate occurrence on 2026-09-12 (`2026-W37`,
+consecutive 1 at the time) does not count toward this streak; something
+between the two — most likely the 2026-09-17 `sweep/score-refresh-before-
+domain-gate` dispatch — ran clean and reset it, which is exactly how a
+self-resolving stop is supposed to behave. Nothing has run since 2026-09-19
+10:09; the next Saturday run (2026-09-26) is attempt 3 of 3, still green
+either way. **One correction to how this looked in the 22 Sep audit:** the
+2026-09-19 stop's own recorded tail is a Python `KeyError: 'median_subscribers'`
+in `research/publish_order.py`, not an actual 403/quota response from YouTube —
 it was classified as `NEW_DOMAIN_QUOTA` because `loop/score.py`'s
 `QUOTA_MARKERS` regex matched the word "quota" somewhere else in that run's
 combined output, the same false-positive class the code's own comments warn
@@ -200,14 +228,19 @@ Before 13 September that silence reached nobody.
 
 ### What is on the Mac right now
 
-One timer: `com.howweknow.backfill`, daily 09:00, uploading the last few of the
-original 16. It **stops by itself** when they are done.
+Two timers, both `launchctl`-loaded and `plutil -lint`-valid as of 2026-09-23:
+
+| Agent | When | What it does |
+|---|---|---|
+| `com.howweknow.batch` | **daily 23:00** | `bin/batch-session.sh` — narrates, renders, shelves to R2. This is step 2 of "The whole loop, plainly" above; see "The nightly batch, in detail". |
+| `com.howweknow.backfill` | daily 09:00 | Uploads the last few of the original 16 pre-cloud-upload episodes. It **stops by itself** when they are done; it does not narrate or render. |
 
 Check any time:
 
 ```bash
 launchctl list | grep howweknow          # what is scheduled on this Mac
 bin/batch-session.sh --dry-run           # is there work for me?
+tail ~/Library/Logs/how-we-know/batch.log    # did last night's run finish?
 ```
 
 ---
@@ -282,18 +315,18 @@ Two things are worth knowing and nothing here needs doing.
   then it keeps publishing at the lower rate and emails you once, saying so.
 
 If you get an email titled **CADENCE_SCALE_WITHHELD**, that is the loop telling
-you it is holding at the lower rate because the queue is thin. Nothing is
-broken and nothing has stopped. The fix is the same as the runway warning: run
-`bin/batch-session.sh` on the Mac so there are finished episodes, not just
-scripts.
-
-**Your one command is unchanged**, and it is faster now: rendering happens while
-narration is still running, so a full batch is about 19 hours instead of 22. If
-you would rather do a week at a time:
+you it is holding at the lower rate because there are not yet enough *finished*
+episodes, only scripts. Nothing is broken and nothing has stopped — the same
+nightly `com.howweknow.batch` run above closes this on its own as soon as it
+renders enough of the backlog. There is nothing to run by hand; if you want to
+speed it up, the same batch command works a week at a time:
 
 ```bash
 bin/batch-session.sh --max-episodes 4
 ```
+
+**Rendering is faster now regardless:** it overlaps with narration rather than
+waiting for it to finish, so a full batch is about 19 hours instead of 22.
 
 ## A second domain, on top of deep sea
 
