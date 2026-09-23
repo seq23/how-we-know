@@ -14,6 +14,13 @@ from __future__ import annotations
 
 import os
 import subprocess
+import tempfile as _tempfile
+
+# The lanes this file runs take real named stops, and a stop record goes to
+# LOOP_STOPS_DIR or else to the committed loop/state/stops/. run_all.py sets
+# it; run on its own, this file wrote stop records into the repo. Default to
+# scratch here as well.
+os.environ.setdefault("LOOP_STOPS_DIR", _tempfile.mkdtemp(prefix="stops-"))
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
