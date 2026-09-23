@@ -26,6 +26,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
+import batch_queue  # noqa: E402 - loop/ is put on sys.path above
 import breaker  # noqa: E402
 import author  # noqa: E402
 import cadence  # noqa: E402
@@ -33,6 +34,7 @@ import domains  # noqa: E402
 import gate  # noqa: E402
 import ledger  # noqa: E402
 import pov_match  # noqa: E402
+import rank  # noqa: E402 - loop/ is put on sys.path above
 import validate  # noqa: E402
 from common import (BRIEFS, LOOP, ROOT, Stage, config, now,  # noqa: E402
                     read_json, week_id, write_json)
@@ -121,17 +123,22 @@ def rebuild_runway_if_short(st, cfg: dict, per_week: int, used_slugs: list[str],
         st.note(f"runway rebuild: not needed - {rw['message']}")
         return
 
-    order = read_json(ROOT / "research" / "publish_order.json", default={})
-    queue = order.get("queue") or []
+    # THE WHOLE PUBLISH QUEUE, every research/publish_order*.json, through
+    # the same helper rank.py selects from. This read the deep-sea file by
+    # name, so a short materials runway could never find a candidate.
     by_dom = domains.by_slug()
     candidates = []
-    for row in queue:
+    for row in batch_queue.unwritten_entries():
         slug = row.get("slug")
         if not slug or slug in skip_slugs:
             continue
-        if (ROOT / "scripts" / f"{slug}.md").exists():
-            continue
-        dom = by_dom.get(slug)
+        # A queued topic with no script has no **Domain:** line yet, so the
+        # row (or its file) names the domain - the same fallback
+        # domains.queue_depth() uses. by_slug() alone mapped every candidate
+        # to None, and a per-domain shortfall could never match one.
+        dom = (by_dom.get(slug) or row.get("domain")
+               or read_json(ROOT / "research" / row["_domain_file"],
+                            default={}).get("domain"))
         if "any" in short or dom in short:
             candidates.append((row, dom))
 
@@ -218,6 +225,33 @@ def rebuild_runway_if_short(st, cfg: dict, per_week: int, used_slugs: list[str],
                        for n, d in dark_by.items())))
 
 
+def promote_to_scripts(st, item: dict) -> None:
+    """A validated, generated script for a PUBLISH-QUEUE topic goes to
+    scripts/<slug>.md, the one path bin/batch-session.sh narrates from.
+
+    Called only inside the passed-validators branch. Before the publish-queue
+    rule a generated script stayed in loop/drafts/, where nothing on the Mac
+    ever reads - it was runway on paper only. Every item that reaches here has
+    already passed batch_queue.publish_queue_gate(), so the queue row exists
+    and the script is now the last thing the batch needs. A hand-written
+    script already at scripts/<slug>.md is never overwritten.
+    """
+    dest = ROOT / "scripts" / f"{item['slug']}.md"
+    if dest.exists():
+        st.note(f"{item['slug']}: scripts/ already holds a script; the draft "
+                f"was not promoted over it")
+        return
+    dest.write_text((ROOT / item["script"]).read_text(encoding="utf-8"),
+                    encoding="utf-8")
+    item["script"] = str(dest.relative_to(ROOT))
+    if item.get("pov_id") and item.get("pov_line"):
+        pov_match.record_assignment(
+            item["slug"], {"pov_id": item["pov_id"], "line": item["pov_line"],
+                           "tier": item.get("pov_tier", "transferable")})
+    st.work(f"promoted {item['slug']} to {item['script']} - queued in the "
+            f"publish order, so the Mac's batch will narrate it")
+
+
 def main() -> None:
     cfg = config()
     week = week_id()
@@ -236,9 +270,53 @@ def main() -> None:
             st.note(f"next_topics.json is for {topics['week']}, today is {week}"
                     " — using it anyway (a re-run inside the same cycle)")
 
+        # ---- 0. ONLY TOPICS ALREADY IN THE PUBLISH QUEUE -------------
+        # Owner decision, 2026-09-23. loop/rank.py already selects only from
+        # research/publish_order*.json; this is the same gate applied again
+        # here, because this is the lane that spends money and writes the
+        # hand-off, and a stale or hand-edited next_topics.json must not be
+        # able to route around it. On 2026-09-21 this loop authored four
+        # mined topics in no publish queue; the Mac's batch reads only that
+        # queue, so they could never air. A refusal is printed by name.
+        selected = list(topics.get("selected") or [])
+        allowed, refused = batch_queue.publish_queue_gate(
+            [t.get("slug") for t in selected])
+        for slug_, why_ in refused.items():
+            print(f"  REFUSE {slug_}: {why_}", flush=True)
+        if refused:
+            st.note(f"refused {len(refused)} selected topic(s) outside the "
+                    f"publish queue: {', '.join(refused)}. Nothing was "
+                    f"authored or queued for them; nothing was deleted.")
+        selected = [t for t in selected if t.get("slug") in set(allowed)]
+
+        if not selected:
+            # Nothing this lane may write. Rebuild runway first: it authors
+            # from the publish queue itself when a domain is short, and names
+            # RUNWAY_AUTHORING_FALLBACK (loud) when it cannot.
+            used_ids = [r.get("pov_id") for r in ledger.load()["published"]
+                        if r.get("pov_id")]
+            rebuild_runway_if_short(st, cfg, per_week, used_ids, set(refused))
+            if st.units:
+                # The rebuild wrote publish-queue scripts: real work, an OK
+                # run. Nothing above this line calls st.work().
+                return
+            if batch_queue.unwritten_entries():
+                st.named_stop(
+                    "NO_SCRIPTS",
+                    "the publish queue has topics with no script, but "
+                    "loop/next_topics.json selected none of them this week, so "
+                    "nothing can be voiced on Tuesday",
+                    detail={"unwritten": [r["slug"] for r in
+                                          batch_queue.unwritten_entries()],
+                            "refused": refused},
+                    unblock="Re-run python loop/rank.py so the week is selected "
+                            "from the publish queue, then python loop/draft.py.")
+            rank.publish_queue_fully_written(st, cadence.runway(per_week),
+                                             len(refused))
+
         # ---- 1. assemble, authoring whatever is missing --------------
         items, unauthored, authored_cost = [], [], 0.0
-        for t in topics["selected"][:per_week]:
+        for t in selected[:per_week]:
             script = ROOT / t["script"] if t.get("script") else None
 
             if t.get("needs_authoring") and (script is None or not script.exists()):
@@ -283,6 +361,7 @@ def main() -> None:
                 "author_model": t.get("author_model"),
                 "pov_id": t.get("pov_id"),
                 "pov_line": t.get("pov_line"),
+                "pov_tier": t.get("pov_tier"),
                 "pov_matched_by": t.get("pov_matched_by"),
                 "work_copy": f"loop/work/{t['slug']}.md",
                 "audio_dir": f"audio/{t['slug']}",
@@ -326,6 +405,7 @@ def main() -> None:
         if passed:
             for it in items:
                 if it.get("generated"):
+                    promote_to_scripts(st, it)
                     ev = cadence.record_authoring_evidence(
                         it["slug"], it["script"], report)
                     st.work(f"authoring evidence recorded for {it['slug']} - "

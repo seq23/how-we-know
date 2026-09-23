@@ -111,6 +111,9 @@ GENERATED = {
     "NOTHING_SHELVED":             ("cloud_upload.py", '"code": "NOTHING_SHELVED"'),
     "PUBLISH_QUEUE_UPLOADED":      ("cloud_upload.py", '"code": "PUBLISH_QUEUE_UPLOADED"'),
     "AUTHORED_NOT_QUEUED":         ("cloud_upload.py", '"code": "AUTHORED_NOT_QUEUED"'),
+    "SCRIPTS_AWAITING_PROMOTION":  ("cloud_upload.py", '"code": "SCRIPTS_AWAITING_PROMOTION"'),
+    "SCRIPTS_AWAITING_PROMOTION_RUNWAY_CRITICAL":
+                                   ("cloud_upload.py", '"code": "SCRIPTS_AWAITING_PROMOTION_RUNWAY_CRITICAL"'),
     "PUBLISH_QUEUE_EMPTY":         ("cloud_upload.py", '"code": "PUBLISH_QUEUE_EMPTY"'),
     "NO_QUEUE":                    ("cloud_upload.py", '"code": "NO_QUEUE"'),
     # Synthesised by the digest from the Mac's heartbeat, not raised by a lane.

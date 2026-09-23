@@ -32,6 +32,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
+import batch_queue  # noqa: E402 - loop/ is put on sys.path above
 import cadence  # noqa: E402
 import exclusions  # noqa: E402
 import ledger  # noqa: E402
@@ -177,6 +178,22 @@ def main() -> None:
                 f"the exclusion gate refused {skipped['excluded']}")
 
         # ---- pick automatically. She is notified, not asked. ----
+        #
+        # ONLY TOPICS ALREADY IN THE PUBLISH QUEUE (owner decision,
+        # 2026-09-23). Until then the shortfall below was filled from MINED
+        # demand - autocomplete strings that had never been through the
+        # demand/saturation gate and were in no research/publish_order*.json.
+        # On 2026-09-21 that picked four such topics, Monday authored them, and
+        # the Mac's batch (which reads only the publish queue) could never
+        # narrate them. Mined candidates are still ranked and written below as
+        # `advisory_candidates` - they are what the scoring pass is fed - but
+        # nothing here may select one. batch_queue.publish_queue_gate() is the
+        # rule; loop/draft.py applies the same gate again on Monday.
+        inv_ok, inv_refused = batch_queue.publish_queue_gate(
+            [s_["slug"] for s_ in inv])
+        for slug_, why_ in inv_refused.items():
+            st.note(f"not selectable: {slug_} - {why_}")
+        inv_q = [s_ for s_ in inv if s_["slug"] in set(inv_ok)]
         selection = [{
             "slug": s_["slug"],
             "question": s_["question"],
@@ -185,27 +202,29 @@ def main() -> None:
             "publish_rank": s_.get("publish_rank"),
             "front_loaded": s_.get("front_loaded", False),
             "needs_authoring": False,
-        } for s_ in inv[:per_week]]
+        } for s_ in inv_q[:per_week]]
 
-        for c in candidates:
+        unwritten = batch_queue.unwritten_entries()
+        for row in unwritten:
             if len(selection) >= per_week:
                 break
-            slug = re.sub(r"[^a-z0-9]+", "-", c["query"].lower()).strip("-")[:60]
+            slug = row["slug"]
             selection.append({
                 "slug": slug,
-                "question": c["query"],
+                "question": row.get("query") or row.get("title") or slug,
                 "script": f"loop/drafts/{slug}.md",
-                "source": "mined-demand",
-                "domain": c.get("domain"),
-                "shape_score": c["shape_score"],
-                "seed_hits_provenance_only": c.get("seed_hits"),
+                "source": "publish-queue",
+                "queue_file": row.get("_domain_file"),
                 "needs_authoring": True,
             })
 
         # Rule 0, and the owner's judgement, both land here: an empty admitted
         # set is a hard failure. It never degrades into publishing nothing
         # quietly, and it never degrades into publishing something ungated.
-        if not selection:
+        # (An admitted set that exists while the publish queue has nothing
+        # left to write is a different, named state: PUBLISH_QUEUE_FULLY_
+        # WRITTEN, raised at the end once the week and the runway are out.)
+        if not selection and not candidates:
             st.named_stop(
                 "NO_ADMITTED_TOPICS",
                 f"zero topics survived selection: {len(inv)} inventory scripts "
@@ -347,6 +366,44 @@ def main() -> None:
                     "manual pass. This stop is about refilling INVENTORY.)\n\n"
                     "The week above still ships - publishing is never halted "
                     "to protect the backlog, because that IS going dark."))
+
+        # NOTHING IN THE PUBLISH QUEUE LEFT TO WRITE. Raised LAST so it can
+        # never mask the runway or cadence stops above, which are the loud
+        # ones. A named state, not a quiet empty week (Rule 0).
+        if not selection:
+            publish_queue_fully_written(st, rw, len(candidates))
+
+
+def publish_queue_fully_written(st, rw: dict, advisory: int) -> None:
+    """Every topic in research/publish_order*.json already has a script, so the
+    Monday lane has nothing it is allowed to write this week.
+
+    Shared by loop/rank.py and loop/draft.py so both stages name the state the
+    same way. Self-resolving in loop/stop_policy.json, capped: the queue grows
+    when the scoring pass or the owner adds a row. If the runway runs short
+    first, the RUNWAY_* stops (Sunday) and RUNWAY_AUTHORING_FALLBACK (Monday)
+    are the loud ones, and they are raised before this.
+    """
+    holds = batch_queue.promotion_holds()
+    st.named_stop(
+        "PUBLISH_QUEUE_FULLY_WRITTEN",
+        f"every topic in research/publish_order*.json already has a script, "
+        f"so there is nothing the Monday lane is allowed to write this week. "
+        f"The lane writes only topics already in the publish queue (owner "
+        f"decision 2026-09-23). Runway: {rw.get('message')}"
+        + (f" {len(holds)} script(s) are held outside the queue awaiting the "
+           f"owner's promotion decision: {', '.join(sorted(holds))}."
+           if holds else ""),
+        detail={"queued": len(batch_queue.queued_slugs()),
+                "unwritten": 0,
+                "runway_level": rw.get("level"),
+                "runway_weeks": rw.get("weeks_remaining"),
+                "promotion_holds": sorted(holds),
+                "advisory_candidates_not_selectable": advisory},
+        unblock="Nothing to do while the runway is ok. New writing starts when "
+                "a topic enters research/publish_order*.json without a script "
+                "(the Saturday scoring pass, or the owner promoting a held "
+                "script from loop/promotion_holds.json).")
 
 
 
