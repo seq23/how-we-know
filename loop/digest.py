@@ -192,14 +192,16 @@ def pipeline(led: dict, depth: dict, hb: dict, now: dt.datetime) -> dict:
 
 
 def verdict(queued_rows: list[dict], cal: list[dict], pipe: dict,
-            loud_stops: list[str]) -> tuple[str, str, list[str]]:
+            loud_stops: list[str],
+            waiting: dict | None = None) -> tuple[str, str, list[str]]:
     """(emoji, one-line verdict, reasons). The rules, in words:
 
     🔴  a stop that needed a human; or an empty slot inside EMPTY_SLOT_RED_DAYS;
         or finished work waiting more than WAIT_RED_DAYS; or the Mac silent
         that long with work pending.
-    🟡  an empty slot inside the calendar; or finished work waiting more than
-        WAIT_YELLOW_DAYS; or nothing queued this week while something is finished.
+    🟡  an item waiting on her (`owner_action`); or an empty slot inside the
+        calendar; or finished work waiting more than WAIT_YELLOW_DAYS; or
+        nothing queued this week while something is finished.
     🟢  otherwise.
 
     `loud_stops` is the STAGE NAME of every stop this week whose disposition
@@ -215,11 +217,31 @@ def verdict(queued_rows: list[dict], cal: list[dict], pipe: dict,
     audit: cloud-upload's NOTHING_SHELVED stop — its 8th consecutive day,
     issue #105 — is exactly the kind of reason this used to be able to
     bury behind an unrelated calendar note.)
+
+    `waiting` is `loop/common.py:owner_actions()` — everything with
+    disposition `owner_action`, the "## ⚠️ Waiting on you" section below,
+    the ONE thing in this whole email actually addressed to her. It was
+    never passed into this function at all: a week with an owner_action
+    item and nothing else red or yellow rendered "🟢 Healthy" as BOTH the
+    headline and the subject line, while the body's very first section said
+    something needed her — the subject named no lane, or whichever
+    unrelated calendar/pipeline note this function happened to check next,
+    instead of the lane actually carrying the NEEDS-YOU content. Checked
+    second, right after `loud_stops` and before any routine reason, for the
+    same priority reason: it out-ranks a calendar note, never a genuine
+    needs_human failure. It stays 🟡, not 🔴 — her own instruction was that
+    an owner_action stop keeps its run green, and this only fixes the
+    SUBJECT, not that disposition.
     """
     reasons_red, reasons_yellow = [], []
     if loud_stops:
         reasons_red.append(f"{len(loud_stops)} stop(s) needed a human this week "
                            f"({', '.join(sorted(set(loud_stops)))})")
+    if waiting:
+        reasons_yellow.append(
+            f"{len(waiting)} item(s) waiting on you: "
+            + ", ".join(f"{rec.get('code')} ({stage})"
+                        for stage, rec in sorted(waiting.items())))
     empty = [c for c in cal if not c["slug"]]
     soon = [c for c in empty if c["days_away"] <= EMPTY_SLOT_RED_DAYS]
     if soon:
@@ -355,7 +377,11 @@ def render(week: str, now: dt.datetime) -> tuple[str, dict]:
     cal = calendar(led, cfg, now)
     pipe = pipeline(led, depth, hb, now)
     loud_stages = sorted({s["stage"] for s in stops if s["disposition"] == "needs_human"})
-    mark, headline, reasons = verdict(queued_rows, cal, pipe, loud_stages)
+    # Computed here, not where it used to be (just below, right before the
+    # "## Waiting on you" section) — verdict() needs it too, so the subject
+    # line can name it. See verdict()'s own docstring for the incident.
+    waiting = common_owner_actions()
+    mark, headline, reasons = verdict(queued_rows, cal, pipe, loud_stages, waiting)
 
     def dom(slug: str) -> str:
         return by_slug.get(slug, "—")
@@ -374,8 +400,8 @@ def render(week: str, now: dt.datetime) -> tuple[str, dict]:
     # something must still carry the handful of conditions only she can clear -
     # a revoked consent, a locked channel - or "green" would just mean
     # "invisible". This block is that something, and it is deliberately the
-    # first thing in the digest, above the week's numbers.
-    waiting = common_owner_actions()
+    # first thing in the digest, above the week's numbers. `waiting` itself
+    # is computed above, before verdict(), which now reads it too.
     if waiting:
         L += ["## ⚠️ Waiting on you", "",
               "These are the only things in this system that a machine cannot "
@@ -575,10 +601,37 @@ def main() -> int:
         # THE SUBJECT LINE. The workflow reads this one line into the issue
         # title, so the verdict is visible in her inbox without opening it.
         (OUT_DIR / f"{week}.subject").write_text(
-            f"Weekly digest — {counts['verdict'].split(' — ')[0]} — {week}\n", encoding="utf-8")
+            digest_subject(counts["verdict"], week) + "\n", encoding="utf-8")
         st.work(f"subject: {counts['verdict']}")
         print(body)
     return 0
+
+
+def digest_subject(verdict_text: str, week: str, max_len: int = 180) -> str:
+    """The one line the workflow puts in the issue title (`loop-sun-digest.yml`).
+
+    `verdict_text` is `counts["verdict"]` — `f"{mark} {headline}"`. Until
+    2026-09-23 this function's whole body was
+    `counts['verdict'].split(' — ')[0]`, which keeps only the mark and the
+    queued/scheduled counts and THROWS AWAY everything after the first
+    " — " — exactly the `reasons_red[0]` / `reasons_yellow[0]` text
+    `verdict()`'s own docstring says the subject names. Every subject read
+    "Weekly digest — 🟡 Watch: N queued this week, N scheduled — 2026-W39"
+    with no reason and no lane at all, whatever the actual cause — a real
+    named stop, an owner_action item waiting on her, or a routine calendar
+    note. `verdict()`'s ordering (`loud_stops`, then `owner_action`, then
+    routine reasons) was therefore invisible in her inbox the whole time;
+    only opening the email ever showed it — the exact "Shorts lane" subject
+    on a long-form NEEDS YOU incident `test_digest_queue_and_health.py`
+    already guards `verdict()`'s own ordering against, one layer up from
+    this bug.
+
+    Fixed by keeping the FULL verdict — mark, counts, AND the reason —
+    capped only so one runaway reason cannot produce an unreadable subject.
+    """
+    if len(verdict_text) > max_len:
+        verdict_text = verdict_text[:max_len - 3] + "..."
+    return f"Weekly digest — {verdict_text} — {week}"
 
 
 if __name__ == "__main__":
