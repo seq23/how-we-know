@@ -453,6 +453,67 @@ print("RC", rc)
         if "NOTHING_SHELVED" not in out:
             fails.append("the empty-shelf stop is not named NOTHING_SHELVED")
 
+        # -- 7b/7c. an empty shelf whose QUEUE is used up is not the Mac's -
+        # Run 35738742706 (2026-09-22) paged "the Mac is not pushing" when
+        # every one of the 34 queued episodes was already in the ledger and
+        # four freshly authored scripts sat in loop/render_queue.json where
+        # the Mac's batch never looks. Both states are reproduced here through
+        # the real lane: every queued slug is written into the ledger, and
+        # the hand-off file is a fixture with or without a stranded row.
+        seed_ledger = """
+import batch_queue
+led = json.loads(ledger.LEDGER.read_text())
+led["published"] = [{"slug": s, "video_id": "V" + str(i), "question": s,
+                     "privacy": "private"}
+                    for i, s in enumerate(batch_queue.queued_slugs())]
+ledger.LEDGER.write_text(json.dumps(led))
+cloud_upload.RENDER_QUEUE = TMP / "render_queue.json"
+cloud_upload.RENDER_QUEUE.write_text(json.dumps({"items": ROWS}))
+rc = 0
+try:
+    cloud_upload.run(limit=4)
+except SystemExit as e:
+    rc = e.code
+print("RC", rc)
+"""
+        stranded = "a-script-authored-but-never-queued"
+        examined += 1
+        r = run(f"ROWS = [{{'slug': {stranded!r}, 'status': 'queued'}}]\n"
+                + seed_ledger,
+                dict(base, R2_LOCAL_DIR=str(tmp / "empty-shelf-7b")), tmp)
+        out = r.stdout + r.stderr
+        if "[AUTHORED_NOT_QUEUED]" not in out:
+            fails.append("a used-up queue with a stranded authored script was "
+                         "not diagnosed as AUTHORED_NOT_QUEUED: "
+                         f"{out.strip()[-400:]}")
+        if stranded not in out:
+            fails.append("the AUTHORED_NOT_QUEUED stop does not NAME the "
+                         "stranded slug")
+        if "[NOTHING_SHELVED]" in out or "push-to-r2" in out:
+            fails.append("with every queued episode already uploaded, the "
+                         "stop still blames the Mac's push (NOTHING_SHELVED "
+                         "/ push-to-r2). That was the false page on run "
+                         "35738742706")
+        if "RC 3" not in r.stdout:
+            fails.append("a stranded authored script did not reach a human "
+                         "(exit 3). Time cannot fix it, so its first report "
+                         f"must page: {r.stdout.strip()[-200:]}")
+
+        examined += 1
+        r = run("ROWS = [{'slug': 'gone', 'status': 'dropped'}]\n"
+                + seed_ledger,
+                dict(base, R2_LOCAL_DIR=str(tmp / "empty-shelf-7c")), tmp)
+        out = r.stdout + r.stderr
+        if "[PUBLISH_QUEUE_UPLOADED]" not in out:
+            fails.append("a fully uploaded queue with nothing stranded was not "
+                         f"named PUBLISH_QUEUE_UPLOADED: {out.strip()[-400:]}")
+        if "RC 0" not in r.stdout or "SELF-RESOLVING" not in out.upper():
+            fails.append("a finished upload queue did not exit 0 as a "
+                         "self-resolving stop")
+        if "push-to-r2" in out:
+            fails.append("a finished upload queue still tells the owner to "
+                         "run bin/push-to-r2.sh")
+
     if examined == 0:
         fails.append("examined ZERO scenarios — this test cannot reach what "
                      "it governs")

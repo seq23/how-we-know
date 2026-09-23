@@ -101,6 +101,13 @@ GENERATED = {
     "BREAKER_TRIPPED":             ("breaker.py", '"BREAKER_TRIPPED" if first'),
     "BREAKER_TRIPPED_ALREADY_REPORTED":
                                    ("breaker.py", '"BREAKER_TRIPPED_ALREADY_REPORTED"'),
+    # The upload lane's empty-shelf diagnosis picks one of these from state
+    # (loop/cloud_upload.py diagnose_empty_shelf) and raises it by variable.
+    "NOTHING_SHELVED":             ("cloud_upload.py", '"code": "NOTHING_SHELVED"'),
+    "PUBLISH_QUEUE_UPLOADED":      ("cloud_upload.py", '"code": "PUBLISH_QUEUE_UPLOADED"'),
+    "AUTHORED_NOT_QUEUED":         ("cloud_upload.py", '"code": "AUTHORED_NOT_QUEUED"'),
+    "PUBLISH_QUEUE_EMPTY":         ("cloud_upload.py", '"code": "PUBLISH_QUEUE_EMPTY"'),
+    "NO_QUEUE":                    ("cloud_upload.py", '"code": "NO_QUEUE"'),
     # Synthesised by the digest from the Mac's heartbeat, not raised by a lane.
     "MAC_NOT_SHIPPING":            ("digest.py", '"code": "MAC_NOT_SHIPPING"'),
 }

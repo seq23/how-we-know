@@ -130,6 +130,156 @@ def questions_map() -> dict[str, str]:
     return {q["slug"]: q.get("query") for q in batch_queue.queued_entries()}
 
 
+# WHAT MONDAY'S AUTHORING LANE HANDED OFF. Module level so a test can point it
+# at a fixture.
+RENDER_QUEUE = LOOP / "render_queue.json"
+
+# Rows loop/draft.py writes that are still waiting to be narrated and rendered.
+# Later statuses (rendered, uploaded-private, scheduled, published, dropped) are
+# past the hand-off or were removed on purpose.
+NOT_YET_BUILT = ("queued", "approved")
+
+
+def diagnose_empty_shelf(queued: list[str], done: set[str], held: set[str],
+                         handoff: list[dict] | None) -> dict:
+    """WHY the shelf holds nothing to upload, worked out from state this lane
+    can already read. Returns the named stop to raise.
+
+    WHY THIS EXISTS. From 2026-09-15 to 2026-09-22 this lane said
+    NOTHING_SHELVED eight days running and then paged (#105) with "the Mac is
+    not pushing - bin/push-to-r2.sh is failing, or com.howweknow.batch is not
+    firing". Both were working. The batch had pushed all 34 renders; its own
+    log said "pushed 0, skipped 68 already identical". All 34 episodes in
+    research/publish_order*.json were already in the ledger, uploaded and
+    dated. The shelf was empty because the PUBLISH QUEUE was used up, and that
+    was visible from here the whole time. One code covered three different
+    states, and the page blamed the only one that was not true.
+
+    There are three states, and each gets its own code:
+
+      NOTHING_SHELVED       queued episodes are not in the ledger and not on
+                            the shelf. They are still waiting on the Mac
+                            (narration, render or push). This is the only
+                            state where the Mac is the one to check.
+      AUTHORED_NOT_QUEUED   every queued episode is uploaded, and the authoring
+                            lane has written scripts that are in no
+                            research/publish_order*.json. bin/batch-session.sh
+                            (the only narrator installed) reads only those
+                            files, so nothing will ever narrate these scripts.
+                            Time does not fix that. A person has to, so it is
+                            needs_human. It names the slugs (held_items), so it
+                            pages once and then waits in HELD until the list
+                            changes.
+      PUBLISH_QUEUE_UPLOADED  every queued episode is uploaded and nothing is
+                            stuck upstream. The lane is done until new work
+                            arrives. Self-resolving, with a cap.
+
+    Episodes held by the render gate are left out of "waiting on the Mac". The
+    gate reports them in its own lane (RENDER_HELD). Counting them here would
+    blame the Mac for a hold the gate put in place on purpose.
+    """
+    if not queued:
+        # Zero rows. batch_queue already raises when no FILE exists; a file
+        # with an empty queue must not read as "finished" either.
+        return {"code": "PUBLISH_QUEUE_EMPTY",
+                "message": "research/publish_order*.json exists but holds zero "
+                           "queued rows, so this lane has nothing to compare "
+                           "the shelf against. An empty queue looks the same "
+                           "as a deleted one.",
+                "detail": {"queued": 0},
+                "unblock": "Restore the queue rows from origin/main, or re-run "
+                           "the research/publish_order*.py that writes them.",
+                "held_items": None}
+
+    queued_set = set(queued)
+    held_q = sorted(s for s in queued if s in held and s not in done)
+    awaiting_mac = [s for s in queued if s not in done and s not in held]
+    if awaiting_mac:
+        return {"code": "NOTHING_SHELVED",
+                "message": f"{len(awaiting_mac)} queued episode(s) are not in "
+                           f"the ledger and not on the R2 shelf, so they are "
+                           f"still waiting on the Mac (narration, render or "
+                           f"push): {', '.join(awaiting_mac[:8])}"
+                           f"{' ...' if len(awaiting_mac) > 8 else ''}",
+                "detail": {"awaiting_mac": awaiting_mac,
+                           "render_gate_held": held_q,
+                           "queued": len(queued), "uploaded": len(done & queued_set)},
+                "unblock": "On the Mac: read the '=== batch session' block in "
+                           "~/Library/Logs/how-we-know/batch.log. 'to narrate' "
+                           "and 'to render' list these slugs until they are "
+                           "built; bin/push-to-r2.sh shelves them afterwards.",
+                "held_items": None}
+
+    # Everything queued is uploaded (or held by the gate). Look upstream.
+    if handoff is None:
+        return {"code": "NO_QUEUE",
+                "message": "every queued episode is uploaded, and "
+                           "loop/render_queue.json (the Monday authoring "
+                           "lane's hand-off) does not exist, so this lane "
+                           "cannot tell whether new scripts are waiting "
+                           "upstream.",
+                "detail": {"queued": len(queued),
+                           "uploaded": len(done & queued_set)},
+                "unblock": "Restore loop/render_queue.json from origin/main, "
+                           "or re-run the Monday lane (loop/draft.py).",
+                "held_items": None}
+    orphans = sorted({
+        str(it.get("slug")) for it in handoff
+        if it.get("slug") and it.get("status") in NOT_YET_BUILT
+        and it["slug"] not in queued_set and it["slug"] not in done})
+    base = {"queued": len(queued), "uploaded": len(done & queued_set),
+            "render_gate_held": held_q}
+    if orphans:
+        return {"code": "AUTHORED_NOT_QUEUED",
+                "message": f"Nothing is on the shelf because every one of the "
+                           f"{len(queued)} episodes in research/publish_order*"
+                           f".json is already uploaded. The Mac is not the "
+                           f"problem. The shortfall is upstream: "
+                           f"{len(orphans)} script(s) the Monday authoring lane "
+                           f"wrote to loop/render_queue.json are in no "
+                           f"publish_order file ({', '.join(orphans)}). "
+                           f"bin/batch-session.sh, the only narrator installed "
+                           f"on the Mac, reads only research/publish_order*.json "
+                           f"and scripts/<slug>.md, so these scripts will never "
+                           f"be narrated, rendered or uploaded.",
+                "detail": dict(base, authored_not_queued=orphans,
+                               handoff="loop/render_queue.json"),
+                "unblock": "A decision for a person: either queue these slugs "
+                           "(copy loop/drafts/<slug>.md to scripts/<slug>.md and "
+                           "add a row with `slug` and `query` to a "
+                           "research/publish_order*.json), or have "
+                           "loop/draft.py only author topics that are already "
+                           "in the publish queue. Until then the channel airs "
+                           "only what is already scheduled; see the runway in "
+                           "loop/render_queue.json.",
+                "held_items": orphans}
+    return {"code": "PUBLISH_QUEUE_UPLOADED",
+            "message": f"every one of the {len(queued)} episodes in "
+                       f"research/publish_order*.json is already uploaded"
+                       + (f" or held by the render gate ({', '.join(held_q)})"
+                          if held_q else "")
+                       + ", and nothing authored is waiting outside the queue. "
+                         "This lane is finished until a new episode is queued "
+                         "and shelved.",
+            "detail": dict(base, authored_not_queued=[]),
+            "unblock": "Nothing to do in this lane. New work arrives when an "
+                       "episode enters research/publish_order*.json and the "
+                       "Mac shelves it.",
+            "held_items": None}
+
+
+def handoff_rows() -> list[dict] | None:
+    """loop/render_queue.json's rows, or None if the file does not exist.
+
+    None and [] mean different things. A missing file is not "nothing is
+    stuck upstream"; it means the upstream check could not be done at all.
+    diagnose_empty_shelf() raises NO_QUEUE for it, so it is never read as
+    finished."""
+    if not RENDER_QUEUE.exists():
+        return None
+    return list((read_json(RENDER_QUEUE, default={}) or {}).get("items") or [])
+
+
 def run(limit: int = 4, dry_run: bool = False) -> int:
     cfg = config()
     # THROUGH cadence.effective(). See the note in loop/backfill.py:library():
@@ -168,11 +318,16 @@ def run(limit: int = 4, dry_run: bool = False) -> int:
         pending = backfill.library_pending(verbose=True,
                                            assets=shelf_lookup(shelf))
         if not pending:
-            st.named_stop(
-                "NOTHING_SHELVED",
-                "every queued episode is either already in the ledger or not "
-                "yet pushed to R2",
-                unblock="On the Mac: bin/push-to-r2.sh")
+            # NAME THE STATE, don't guess it. See diagnose_empty_shelf().
+            import render_gate                             # noqa: PLC0415
+            why = diagnose_empty_shelf(
+                batch_queue.queued_slugs(),
+                {r["slug"] for r in ledger.load()["published"]},
+                render_gate.held_slugs(),
+                handoff_rows())
+            st.named_stop(why["code"], why["message"], detail=why["detail"],
+                          unblock=why["unblock"],
+                          held_items=why["held_items"])
 
         # -- the shared allowance ---------------------------------------
         # Reserve the evening's Shorts - see loop/quota.shorts_reserve().
