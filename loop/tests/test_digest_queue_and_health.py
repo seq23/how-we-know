@@ -127,6 +127,40 @@ if head.split(" — ", 1)[-1].startswith(("1 empty slot", "empty slot")):
     fails.append(f"verdict: the empty-slot reason must not lead the headline when a "
                  f"needs_human stop exists this week; got {head}")
 
+# THE 2026-09-23 GAP: an owner_action ("waiting on you") item was never
+# passed into verdict() at all. A week with nothing else red or yellow and
+# one owner_action item rendered "🟢 Healthy" as both headline and subject,
+# while the digest body's very first section ("## ⚠️ Waiting on you") said
+# something needed her — the subject named no lane, or an unrelated one.
+WAITING_ONE = {"cloud-upload": {"code": "SCRIPTS_AWAITING_PROMOTION",
+                                "message": "four scripts await promotion",
+                                "unblock": "promote or decline",
+                                "consecutive": 2}}
+mark, head, _ = digest.verdict(q, cal, {**pipe_ok, "scheduled": 28}, [], WAITING_ONE)
+examined += 1
+if mark != "🟡" or "waiting on you" not in head or "cloud-upload" not in head:
+    fails.append(f"verdict: an owner_action item with nothing else red/yellow must "
+                 f"be yellow and name the lane waiting on her; got {mark} {head}")
+
+# owner_action must not outrank a real needs_human stop — she said the run
+# STAYS GREEN for owner_action; it must never look more urgent than a
+# genuine failure that already opened its own issue.
+mark, head, _ = digest.verdict(q, cal, pipe_ok, ["cloud-upload"], WAITING_ONE)
+examined += 1
+if mark != "🔴" or "needed a human" not in head:
+    fails.append(f"verdict: a needs_human stop must still win over an owner_action "
+                 f"item in the same week; got {mark} {head}")
+
+# owner_action must outrank a routine reason from an unrelated lane —
+# the actual "Shorts lane subject, cloud-upload content" shape: nothing
+# needed a human, but the calendar happens to be thin (a routine, unrelated
+# reason) in the same week a real owner_action item is open elsewhere.
+mark, head, _ = digest.verdict([], cal_yel, pipe_ok, [], WAITING_ONE)
+examined += 1
+if "waiting on you" not in head or "cloud-upload" not in head:
+    fails.append(f"verdict: an owner_action item must lead the headline over an "
+                 f"unrelated routine calendar reason; got {mark} {head}")
+
 # ---- the subject line reaches the issue title ----------------------------------
 wf = open(os.path.join(ROOT, ".github", "workflows", "loop-sun-digest.yml")).read()
 examined += 1
@@ -135,6 +169,30 @@ if ".subject" not in wf or '--title "$TITLE"' not in wf:
 src = open(os.path.join(LOOP, "digest.py")).read()
 if '.subject").write_text' not in src:
     fails.append("digest.py does not write the .subject file the workflow reads")
+
+# THE 2026-09-23 BUG, negative proof against the subject text itself: not
+# just that a `.subject` file gets written (checked above since before this
+# fix existed), but that it actually CARRIES the reason, not only the mark
+# and the counts. `counts['verdict'].split(' — ')[0]` used to be the whole
+# subject and would have passed every check above while silently dropping
+# every reason computed above — this is the check that would have caught it.
+examined += 1
+full_verdict = "🔴 Stalled: 3 queued this week, 5 scheduled — 2 stop(s) needed a human this week (cloud-upload, weekly-score)"
+subject = digest.digest_subject(full_verdict, "2026-W39")
+if "cloud-upload" not in subject or "weekly-score" not in subject:
+    fails.append(f"digest_subject() drops the reason text - the exact 2026-09-23 "
+                 f"bug (subject named no lane at all): {subject!r}")
+if not subject.startswith("Weekly digest — 🔴 Stalled"):
+    fails.append(f"digest_subject() does not lead with the mark and headline: {subject!r}")
+if not subject.endswith("2026-W39"):
+    fails.append(f"digest_subject() drops the week: {subject!r}")
+
+# a runaway reason must still cap, never produce an unbounded subject
+examined += 1
+huge = "🔴 Stalled: 1 queued this week, 1 scheduled — " + ("x" * 500)
+capped = digest.digest_subject(huge, "2026-W39")
+if len(capped) > 220:
+    fails.append(f"digest_subject() does not cap a runaway reason: {len(capped)} chars")
 
 if examined < 6:
     fails.append("Rule 0: fewer than six verdicts examined")
