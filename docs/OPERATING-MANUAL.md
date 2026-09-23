@@ -6,12 +6,15 @@ Guarded facts (cadence, publish source, the pinned-head rule) live in the plan
 and are enforced by `loop/validate_plan.py`. This document holds the schedule and
 the evidence behind it.
 
-Compiled 2026-09-01. Every figure was read from the repository, the YouTube API,
-or a cited study. None are estimates.
+Compiled 2026-09-01, corrected 2026-09-23 (§0's launchd-agent count, §3, §5 —
+each had drifted after `com.howweknow.batch` and the cloud upload/Shorts
+migrations landed and were never brought back in sync here). Every figure was
+read from the repository, the YouTube API, or a cited study. None are
+estimates.
 
 **If you are sitting down to do work, you want [`RUNBOOK.md`](../RUNBOOK.md),
-not this file.** That page is the one command you run and nothing else. This is
-the reference behind it.
+not this file.** As of 2026-09-23 that page names nothing routine left to run
+by hand. This is the reference behind it.
 
 Rendered version: https://claude.ai/code/artifact/d441bc8d-478d-4305-b002-2ef3925ca934
 
@@ -24,8 +27,8 @@ vocabulary matters because two of them are commonly confused.
 
 | Term | What it is | Where it runs | How many |
 |---|---|---|---|
-| **launchd agent** | a macOS scheduled job, the Mac's equivalent of cron | **this Mac** | **0** |
-| **cloud lane** | a GitHub Actions workflow | **GitHub's servers** | 7 |
+| **launchd agent** | a macOS scheduled job, the Mac's equivalent of cron | **this Mac** | **2** (corrected 2026-09-23 — this row said 0 since 2026-09-01 and was never updated when `com.howweknow.batch` was installed 2026-09-04; see §3, "launchd agents on this Mac") |
+| **cloud lane** | a GitHub Actions workflow | **GitHub's servers** | **11** scheduled (corrected 2026-09-23 — this said 7 since 2026-09-01; `loop-shorts-cloud.yml`, `loop-reach.yml`, `loop-imagery-harvest.yml` and `loop-sun-digest.yml` were added since. `loop-override.yml` and `loop-tests.yml` also live in `.github/workflows/` but are dispatch-only, not scheduled, so are not counted here) |
 | **Claude** | an assistant, run by a person having a conversation | nowhere, unattended | 0 |
 
 **Claude is not part of the running system.** Nothing in the loop calls a model
@@ -57,7 +60,7 @@ A video uploaded today may not appear for another six weeks. YouTube surfaces it
 on its stamped date; no script wakes up to do it.
 
     Mon 10:00   draft the next script            cloud lane
-    by hand     render it, then push-to-r2.sh    Mac, in batches
+    daily 23:00 render it, then push-to-r2.sh    Mac, com.howweknow.batch, unattended
     daily 14:00 upload private + stamp the date  cloud lane, from R2
         |
         +-----> Sun / Tue 10:00 Central: YouTube publishes it, unattended
@@ -227,15 +230,18 @@ argument for 2/week forever over 3/week sometimes.
 
 ## 3. The loop
 
-Every scheduled stage runs in GitHub Actions. Rendering is the only thing left
-on the Mac, and it is a batch the owner starts by hand — nothing on the laptop
-is scheduled any more.
+Every scheduled stage except rendering runs in GitHub Actions. Rendering is the
+only thing left on the Mac — and, since `com.howweknow.batch` was installed on
+2026-09-04 (see "launchd agents on this Mac" below), it is NOT something the
+owner starts by hand. The table below used to say "by hand" for render and
+shelve; that was true only from 2026-09-01 to 2026-09-04, and the launchd
+section that follows it has said otherwise since. Corrected 2026-09-23.
 
 | When | Stage | Where | What it does |
 |---|---|---|---|
 | Mon 10:00 | `mon-draft` | Actions | Author the next script from the ranked queue; every figure cited to a named public source; validated before it may proceed. |
-| by hand | render | Mac | Narrate, assemble, burn in captions, place rights-cleared footage inside its clean windows. `bin/batch-session.sh`, every ~7.5 weeks. |
-| by hand | shelve | Mac | `bin/push-to-r2.sh` — put the finished renders and thumbnails where the cloud can reach them. Idempotent; run it after every batch. |
+| **daily 23:00** | render | Mac, `com.howweknow.batch` | Narrate, assemble, burn in captions, place rights-cleared footage inside its clean windows. `bin/batch-session.sh`. |
+| **daily 23:00** | shelve | Mac, `com.howweknow.batch` | `bin/push-to-r2.sh`, called automatically at the end of the same batch — put the finished renders and thumbnails where the cloud can reach them. Idempotent. |
 | **daily 14:00** | **`cloud-upload`** | **Actions** | **Pull the next ranked episode from R2, upload private with its cadence slot and thumbnail, commit the ledger back.** |
 | Fri 13:00 | `fri-publish` | Actions | Flip what is due; verify YouTube reports it public; feed the site. |
 | Fri 21:00 | `fri-measure` | Actions | Pull retention and watch time; recompute the retention streak; trip the breaker if the floor is breached. |
@@ -293,8 +299,12 @@ verifies nothing is clipped (V13), and pushes the results out. It holds the
 machine awake, skips what is already done, and is re-run rather than restarted
 after an interruption. `--dry-run` answers "is there work for me?".
 
-The owner is told to run it by the RUNWAY named stop from `sun-rank` — a cloud
-lane, so the email actually leaves the building.
+Since 2026-09-04 `com.howweknow.batch` runs it automatically, nightly at
+23:00 — see "launchd agents on this Mac" above. The RUNWAY named stop from
+`sun-rank` still exists, but it is now a rare escalation (several nights of a
+closed lid or asleep Mac, or the batch genuinely failing), not the normal way
+the owner learns to run it; when it fires, `bin/batch-session.sh` run by hand
+catches the backlog up regardless of cause.
 
 ### One account for the quota
 
@@ -972,29 +982,19 @@ run picks it up unchanged.
 
 ## 5. What runs on the Mac, and what does not
 
-```
-1.  Cloud writes scripts every Monday                     owner: nothing
-2.  Runway drops under 4 weeks -> GitHub emails her       owner: read the email
-3.  She opens the Mac and runs ONE command                owner: 10 seconds
-4.  It narrates and renders, unattended                   owner: walks away
-5.  Cloud uploads, schedules and publishes                owner: nothing
-```
-
-Step 3 is `bin/batch-session.sh`. The operator-facing version of this lives in
-[`RUNBOOK.md`](../RUNBOOK.md); everything below is the reasoning behind it.
-
-**Status: 2026-09-01. Uploading is being migrated to GitHub Actions + Cloudflare
-R2; this section describes what is true TODAY and is rewritten when that lands.**
-
-| Stage | Where | Needs the Mac awake? |
-|---|---|---|
-| Score, rank, draft | cloud lane | no |
-| Publish flip, measure, monthly review | cloud lane | no |
-| **Narration (voice)** | **Mac** | **yes — and it always will** |
-| Render | Mac | yes, for now |
-| Upload / schedule / thumbnail | Mac | yes, *migrating to cloud* |
-| Shorts cutting | Mac | yes, *migrating to cloud* |
-| YouTube actually publishing | YouTube | **no** |
+**Status: 2026-09-23, superseding the "Status: 2026-09-01" snapshot this
+section used to carry.** That snapshot's own diagram and table are the exact
+thing §3 above and [`RUNBOOK.md`](../RUNBOOK.md) now correct: uploading and
+Shorts cutting finished migrating to GitHub Actions (`cloud-upload` daily
+14:00, `loop/shorts_cloud.py` — see §3's table), and narration/rendering
+stopped being a command the owner runs the moment `com.howweknow.batch` was
+installed, 2026-09-04. Keeping a second copy of that diagram here — one that
+had already drifted for three weeks before this correction — is exactly the
+"two components each keeping their own list" defect this repo's own
+`loop/domains.py` docstring names; the current, single-source-of-truth
+version is §3's table above ("launchd agents on this Mac" for what fires
+locally) and [`RUNBOOK.md`](../RUNBOOK.md) for the operator-facing summary.
+What is still true, and specific to the Mac, follows below.
 
 ### Narration is the one stage that cannot move
 
@@ -1003,8 +1003,9 @@ hours an episode** on this Mac with MPS. GitHub's CPU runners are several times
 slower, which puts a single episode near the 6-hour job ceiling and two a week
 near the whole free monthly allowance. The voice model is also local.
 
-So the owner returns to the Mac roughly every eight weeks for a narration batch,
-and `sun-rank` emails when that is due (see below). Everything else can leave.
+`com.howweknow.batch` handles this nightly on its own now (§3, "launchd
+agents on this Mac"); the Mac itself is what has to stay reachable — plugged
+in, lid open, at 23:00 — not the owner.
 
 ### Uploading has no business being on this Mac
 
@@ -1026,12 +1027,17 @@ nothing is lost — it runs late. Late is harmless here because the publish
 schedule runs weeks ahead of the render queue. **Videos already uploaded and
 dated keep airing regardless: YouTube publishes them, not this machine.**
 
-### How the owner is told to come back
+### If the nightly batch has genuinely fallen behind
 
 `sun-rank` runs in the cloud every Sunday and takes a NAMED STOP when the runway
-falls below four weeks. A named stop that needs a human exits 3, the workflow
-fails, and **GitHub emails on a failed run** — which is the only thing that leaves the machine. It
-used to be a `st.note(...)`, written into a report and read by nobody.
+falls below four weeks. Before `com.howweknow.batch` existed (pre-2026-09-04)
+this was how the owner was told to come back and run a batch; now the nightly
+batch handles that on its own, so this stop firing means it has NOT been
+running — several nights with the lid closed, the Mac asleep or off, or
+`bin/batch-session.sh` genuinely failing. A named stop that needs a human
+exits 3, the workflow fails, and **GitHub emails on a failed run** — which is
+the only thing that leaves the machine. It used to be a `st.note(...)`,
+written into a report and read by nobody.
 
 
 ### The stops that do NOT email her

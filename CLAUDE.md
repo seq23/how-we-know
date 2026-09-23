@@ -7,16 +7,18 @@ not operate it day to day.
 ## "runbook howweknow" is a trigger phrase
 
 **If she says "runbook howweknow" — or just "runbook" while in this repo — open
-[`RUNBOOK.md`](RUNBOOK.md) and work from it.** That is her operator page: the one
-command she runs and nothing else. She reads it after weeks away, so keep it
-short and operator-facing.
+[`RUNBOOK.md`](RUNBOOK.md) and work from it.** That is her operator page. As of
+2026-09-23 the loop, including rendering (`com.howweknow.batch`, nightly on
+this Mac), is fully automatic — there is no longer a command she has to run,
+only things worth knowing if a nightly run has fallen behind. She reads it
+after weeks away, so keep it short and operator-facing.
 
 The project name is part of the trigger because other repos will have runbooks
 too. The convention is `runbook <project>` -> that repo's `RUNBOOK.md`.
 
 | Document | What it is |
 |---|---|
-| [`RUNBOOK.md`](RUNBOOK.md) | What SHE does. One command. Start here. |
+| [`RUNBOOK.md`](RUNBOOK.md) | What SHE does — as of 2026-09-23, nothing routine. Start here. |
 | [`docs/OPERATING-MANUAL.md`](docs/OPERATING-MANUAL.md) | How it works, and why the numbers are what they are. |
 | [`docs/CHANNEL-PLAN.md`](docs/CHANNEL-PLAN.md) | Locked strategy. Guarded by `loop/validate_plan.py`. Drift means the pipeline is wrong, not the plan. |
 | [`docs/DECISION-LOG.md`](docs/DECISION-LOG.md) | Dated decisions, near misses, research with its evidential quality, and rejected figures. Append-only. |
