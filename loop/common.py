@@ -209,8 +209,40 @@ def read_json(path, default=None):
     raise CorruptState(p, why)
 
 
+def _dry_run_refuses(p: Path) -> bool:
+    """LOOP_DRY_RUN=1 writes nothing into the committed loop/state/.
+
+    WHY. The flag already meant "no writes": no upload, no R2 put, no
+    credential. It did not cover the lane's own state files. The test suite
+    runs real lanes under it (test_named_stops.py, test_reach.py), and each
+    run rewrote the committed loop/state/measurement.json and
+    captions_manifest.json with a test run's view of the channel. A later
+    loop-stage commit would have shipped that as real state.
+
+    Stop records are the one exception. They live under _stops_dir(), which
+    LOOP_STOPS_DIR already points at a scratch directory, and a named stop
+    has to be recorded even in a dry run."""
+    if os.environ.get("LOOP_DRY_RUN") != "1":
+        return False
+    try:
+        rp = p.resolve()
+        rp.relative_to(STATE.resolve())
+    except ValueError:
+        return False
+    try:
+        rp.relative_to(_stops_dir().resolve())
+        return False
+    except ValueError:
+        return True
+
+
 def write_json(path, obj):
     p = Path(path)
+    if _dry_run_refuses(p):
+        print(f"  [dry-run] not writing {p.relative_to(ROOT) if p.is_relative_to(ROOT) else p}"
+              f" (LOOP_DRY_RUN=1 never touches committed loop/state/)",
+              file=sys.stderr)
+        return p
     p.parent.mkdir(parents=True, exist_ok=True)
     tmp = p.with_suffix(p.suffix + ".tmp")
     with tmp.open("w") as fh:
