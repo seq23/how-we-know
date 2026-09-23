@@ -3498,6 +3498,51 @@ def v41_discovery_metadata() -> Result:
     return r
 
 
+def v42_authored_domain_is_allocated(items) -> Result:
+    """HARD. No item this run hands to the Mac names a domain outside
+    `loop/config.json` `domains.allocation`.
+
+    2026-09-23 (domain-allocation gap, corrected scope). `loop/draft.py`'s
+    `domains.allocation_gate()` now refuses to AUTHOR a topic outside
+    `domains.allocation`, and `domains.row_domain()`'s result is threaded
+    into every `author.draft(..., domain=...)` call so a generated script's
+    own `**Domain:**` line can no longer default silently to deep sea
+    (`author.DEFAULT_DOMAIN`) regardless of the topic — which is what
+    happened to the four method-evidence/space scripts authored 2026-09-21
+    (held in `loop/promotion_holds.json`, a separate, queue-shaped fix).
+
+    This is the second half, guarding the OUTPUT rather than the call site:
+    even a hand-authored script promoted straight into `scripts/`, or a
+    future caller that bypasses the gate, cannot reach the Mac's render
+    queue naming a domain with no publish slot, no
+    `loop/domain_sources.py` allowlist and no `visuals/domains.py` palette.
+    Every item must also carry a readable `**Domain:**` line at all — a
+    script this validator cannot attribute to any domain cannot be proved
+    against the allocation either, and is treated as a failure, not a pass.
+
+    Hard-fails on zero items examined — this repo's Rule 0.
+    """
+    r = Result("V42 authored-domain-allocated")
+    cfg = config()
+    alloc = domains.allocation(cfg)
+    for it in items:
+        r.examined += 1
+        script = it.get("script")
+        p = ROOT / script if script else None
+        dom = domains.domain_of_script(p) if p and p.exists() else None
+        if dom is None:
+            r.fail(f"{it['slug']}: {script or '<no script>'} carries no "
+                   f"readable **Domain:** line — cannot be proved against "
+                   f"domains.allocation")
+        elif dom not in alloc:
+            r.fail(f"{it['slug']}: domain {dom!r} is not in "
+                   f"domains.allocation ({sorted(alloc)}) — no publish "
+                   f"slot, no source allowlist and no palette for it")
+    if r.examined == 0:
+        r.fail("examined nothing")
+    return r
+
+
 # ------------------------------------------------------------------ runner
 
 def run_all(items) -> tuple[bool, list[dict]]:
@@ -3527,7 +3572,8 @@ def run_all(items) -> tuple[bool, list[dict]]:
                v36_editorial_gate_is_enforced(),
                v37_runtime_target_and_self_heal(),
                v38_no_duplicate_or_zombie_schedule(),
-               v39_queue_depth_is_remaining_not_scored()]
+               v39_queue_depth_is_remaining_not_scored(),
+               v42_authored_domain_is_allocated(items)]
     rows = [r.as_dict() for r in results]
     return all(r.ok for r in results), rows
 
