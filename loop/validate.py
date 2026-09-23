@@ -131,6 +131,10 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import ledger  # noqa: E402
 import held as _held  # noqa: E402
 from common import ROOT, config, now, read_json, write_json  # noqa: E402
+
+# Module level so a test can point it at a scratch file. The suite must never
+# rewrite committed state (loop/tests/run_all.py checks this after every run).
+ATTRIBUTION_GAPS = ROOT / "loop" / "state" / "attribution_gaps.json"
 from common import _stops_dir  # noqa: E402
 import domain_sources  # noqa: E402
 import domains  # noqa: E402
@@ -446,7 +450,7 @@ def v6_attribution(items) -> Result:
             gaps.append({"slug": it["slug"], "missing_from_sources": missing})
             r.note(f"{it['slug']}: narration names {', '.join(missing)} with no "
                    f"matching ## Sources entry")
-    write_json(ROOT / "loop" / "state" / "attribution_gaps.json",
+    write_json(ATTRIBUTION_GAPS,
                {"checked": now(), "scripts_with_gaps": len(gaps), "gaps": gaps,
                 "fix": "Add the named body's own URL to that script's ## Sources "
                        "list. This validator turns green on its own once it is "

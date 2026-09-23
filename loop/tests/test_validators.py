@@ -22,6 +22,12 @@ ROOT = os.path.abspath(os.path.join(LOOP, ".."))
 sys.path.insert(0, LOOP)
 
 import validate  # noqa: E402
+
+# V6 records its gaps in loop/state/attribution_gaps.json, the committed file
+# the approval page reads. This test feeds it fixtures, so a run here rewrote
+# that file with fixture results. Point it at scratch instead.
+from pathlib import Path as _Path  # noqa: E402
+validate.ATTRIBUTION_GAPS = _Path(tempfile.mkdtemp(prefix="v6-gaps-")) / "attribution_gaps.json"
 from common import read_json  # noqa: E402
 
 REAL = os.path.join(LOOP, "render_queue.json")
