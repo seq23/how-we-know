@@ -6,5 +6,13 @@
     "at": "2026-09-19T15:50:51+00:00",
     "week": "2026-W38",
     "consecutive": 1
+  },
+  "cloud-upload": {
+    "code": "SCRIPTS_AWAITING_PROMOTION",
+    "message": "Nothing to upload: every one of the 34 episodes in research/publish_order*.json is already uploaded and dated, and the runway exists (5.5 weeks of queue at 4/week (0 publishable of 4 on disk). By domain: deep-sea-ocean-science: 4.5 week(s) at 2/week (0 queued, 9 already dated); materials-and-manufacturing: 6.5 week(s) at 2/week (0 queued, 13 already dated).). 4 script(s) are held outside the queue awaiting the owner's promotion decision: how-do-scientists-know-about-other-galaxies, how-do-scientists-know-how-old-something-is, how-do-scientists-know-so-much, why-deep-sea-creatures. They are not queued for the Mac and not deleted. The Mac is not the problem.",
+    "unblock": "Promote: add a row with `slug` and `query` to a research/publish_order*.json and put the script at scripts/<slug>.md; the Mac's batch then narrates, renders and shelves it and this lane uploads it. Decline: remove its entry from loop/promotion_holds.json. Nothing is deleted either way.",
+    "at": "2026-09-23T11:31:17+00:00",
+    "week": "2026-W39",
+    "consecutive": 1
   }
 }
