@@ -125,10 +125,38 @@ def load_manifest(path: str | None = None) -> dict:
     validator can point this module at a fixture manifest. A guard that cannot
     be aimed at a broken state cannot be proven negatively.
     """
+    if path is None and not os.path.exists(MANIFEST) and _clips_here():
+        # Clips on disk and no manifest is LOST provenance, not "no footage".
+        # CONFIRMED 2026-09-23: #101's untrack deleted the Mac's manifest on
+        # pull and left 147 clips beside nothing. The old answer here - an
+        # empty pool - would have rendered the next episode with every
+        # footage beat drawn instead, silently. Refuse; the footage lane
+        # re-harvests a lost manifest the same night
+        # (loop/footage_lane.py:lost_since_stamp).
+        raise ManifestLost(
+            f"{MANIFEST} is missing but {CLIPS_DIR} holds {_clips_here()} "
+            f"clip(s): their provenance is lost, so nothing here may render "
+            f"footage or skip it. Restore the manifest from git history or let "
+            f"tonight's footage lane re-harvest it, then re-run.")
     path = path or MANIFEST
     if not os.path.exists(path):
         return {"assets": []}
     return json.load(open(path))
+
+
+class ManifestLost(RuntimeError):
+    """Clips are on this machine and the manifest that clears them is not."""
+
+
+CLIPS_DIR = os.path.join(ROOT, "channel", "imagery", "clips")
+
+
+def _clips_here() -> int:
+    """Clips on this machine: 0 on a runner, where they are absent by design."""
+    try:
+        return sum(1 for f in os.listdir(CLIPS_DIR) if not f.startswith("."))
+    except FileNotFoundError:
+        return 0
 
 
 def sha256_file(path: str) -> str:

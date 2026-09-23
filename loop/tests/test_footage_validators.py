@@ -11,6 +11,9 @@ rejected anything is not known to work.
   4. V12 footage placed on a beat that draws information must FAIL,
          and footage placed on an UNILLUSTRATABLE subject must FAIL
   5. all four must FAIL - not pass - when they examine zero clips
+  6. clips on disk with NO manifest must REFUSE to render, never render an
+     empty pool (2026-09-23: #101's untrack deleted the Mac's manifest on pull
+     beside 147 clips; the next render would have drawn every footage beat)
 
 Hard-fails if it examines zero checks.
 """
@@ -101,6 +104,43 @@ def check() -> list[str]:
         if ignored.returncode != 0 and not tracked.stdout.strip():
             fails.append(f"{rel} is not gitignored, so the next `git add` of "
                          f"a Mac checkout commits it again")
+    # -- 6. clips here, manifest gone: refuse, on EVERY host -------------
+    # Planted in temp dirs, so it runs on a runner too.
+    saved = FT.MANIFEST, FT.CLIPS_DIR
+    tmp = tempfile.mkdtemp(prefix="hwk-lost-manifest-")
+    try:
+        FT.MANIFEST = os.path.join(tmp, "video_rights.json")     # absent
+        FT.CLIPS_DIR = os.path.join(tmp, "clips")
+        os.makedirs(FT.CLIPS_DIR)
+        examined += 1
+        if FT.load_manifest() != {"assets": []}:
+            fails.append("6: no clips and no manifest (a runner) is no longer "
+                         "an empty pool")
+        open(os.path.join(FT.CLIPS_DIR, "clip.mp4"), "wb").close()
+        for name, call in (("load_manifest()", FT.load_manifest),
+                           ("usable_assets()", FT.usable_assets),
+                           ("assign()", lambda: FT.assign(
+                               [{"segment": "ambient_drift"}], [4.0], "x"))):
+            examined += 1
+            try:
+                call()
+                fails.append(f"6: {name} returned with a clip on disk and no "
+                             f"manifest - the render would draw every footage "
+                             f"beat instead, silently")
+            except FT.ManifestLost as e:
+                if "1 clip(s)" not in str(e):
+                    fails.append(f"6: {name} refused without naming the "
+                                 f"clip count: {e}")
+        examined += 1
+        explicit = os.path.join(tmp, "fixture.json")
+        json.dump({"assets": []}, open(explicit, "w"))
+        if FT.load_manifest(explicit) != {"assets": []}:
+            fails.append("6: an explicit fixture path is no longer honoured")
+    finally:
+        FT.MANIFEST, FT.CLIPS_DIR = saved
+        import shutil
+        shutil.rmtree(tmp, ignore_errors=True)
+
     if fails:
         print(f"footage validators: {examined} check(s), {len(fails)} failure(s)")
         return fails
