@@ -262,6 +262,33 @@ def due(h: dict, st: dict, now: dt.datetime | None = None,
     return age >= interval, round(age, 1)
 
 
+def lost_since_stamp(h: dict, st: dict, host: str) -> tuple[int, int | None] | None:
+    """(records this host stamped, records its manifest holds now) when the
+    manifest LOST records since this host last harvested - else None.
+
+    WHY. The shrink check in run() compares the pool before and after ONE run,
+    so a manifest that vanishes BETWEEN runs is invisible to it, and due()
+    reads only the stamp's date. CONFIRMED 2026-09-23: #101 untracked
+    channel/imagery/video_rights.json, the Mac's next `git pull` deleted the
+    working copy (a pull that removes a tracked file removes it from disk,
+    gitignore or not), and for two nights the lane printed "harvested 3.0
+    day(s) ago ... not re-run tonight" over a manifest that did not exist.
+    Every Short cut from that footage then failed V14 against credits
+    re-resolved without it, and push_shorts shelved nothing.
+
+    Only this host's own stamp is compared: a delegated harvester's manifest
+    is absent here by design.
+    """
+    rec = st.get(h["rel"]) or {}
+    stamped = rec.get("records")
+    if rec.get("host") != host or not isinstance(stamped, int) or stamped <= 0:
+        return None
+    now = _count(ROOT / h["manifest"])
+    if now is not None and now >= stamped:
+        return None
+    return stamped, now
+
+
 class NoHarvesterForDomain(Exception):
     """A domain holds a weekly slot and nothing harvests imagery for it."""
 
@@ -478,6 +505,20 @@ def run(dry_run: bool = False, host: str = DEFAULT_HOST) -> int:
                 ran += 1
                 continue
             is_due, age = due(h, st_before, interval_days=policy["interval_days"])
+            lost = lost_since_stamp(h, st_before, host)
+            if lost:
+                # Self-heal, not a page: re-harvest now, through every gate.
+                # Nothing is re-accepted without screening - the harvester
+                # re-runs gates A, B and C on each clip, and its stamp says
+                # whether that worked for the other host to verify.
+                is_due = True
+                st.work(f"{rel}: {h['manifest']} holds "
+                        + ("nothing (absent)" if lost[1] is None
+                           else f"{lost[1]} record(s)")
+                        + f" but this host stamped {lost[0]} at its last "
+                        f"harvest - provenance was lost between runs; "
+                        f"re-harvesting now instead of waiting for "
+                        f"harvest.interval_days")
             if not is_due:
                 # A nightly host does not re-screen a whole public index
                 # nightly. Said out loud with the date, so "not due" can

@@ -28,6 +28,11 @@ harvester and planted stamps, never the live ones:
   8. bin/batch-session.sh runs the lane as mac-batch on BOTH its paths and
      pushes the stamp with explicit paths - never channel/imagery
   9. every code above is classified where the taxonomy says
+ 10. a manifest that LOST records between runs on the host that owns it is
+     re-harvested that night, not left "not due" (2026-09-23: #101's untrack
+     deleted the Mac's video_rights.json on pull, the lane said "not re-run
+     tonight" twice, and V14 blocked every Short) - and ONLY then: a stamp
+     from another host, or one with no record count, never triggers it
 
 Negative proofs: 2 and 3 are 1 with the stamp changed; 4 is the same lane and
 the same PATH as 1 with only the declaration's host changed. Hard-fails if it
@@ -275,7 +280,14 @@ def main() -> int:
                     for rel in ("research/imagery.py",
                                 "research/imagery_materials.py",
                                 "research/imagery_species.py")}
-        json.dump(dict(VIDEO_FRESH, **ci_fresh), open(stamps_p, "w"))
+        # The owning host now re-harvests a manifest that lost records since
+        # its own stamp (case 10), so a stamp claiming records the disk does
+        # not hold would send the REAL video harvester to NOAA from a test.
+        # Stamp what is actually on disk: absent on a runner, the pool on the Mac.
+        VIDEO_OWNED = {"research/imagery_video.py": dict(
+            VIDEO_FRESH["research/imagery_video.py"],
+            records=FL._count(FL.ROOT / "channel/imagery/video_rights.json"))}
+        json.dump(dict(VIDEO_OWNED, **ci_fresh), open(stamps_p, "w"))
         os.environ["LOOP_STOPS_DIR"] = stops
         os.environ["LOOP_HARVEST_STAMPS"] = stamps_p
         os.environ["LOOP_DRY_RUN"] = "1"
@@ -299,7 +311,7 @@ def main() -> int:
                   == VIDEO_FRESH["research/imagery_video.py"]["last_run_at"])
             # and a FAILING probe is stamped as failing, not skipped
             plant_probe(host=other, requires=["ffmpeg"], exit_code=7)
-            json.dump(dict(VIDEO_FRESH, **ci_fresh), open(stamps_p, "w"))
+            json.dump(dict(VIDEO_OWNED, **ci_fresh), open(stamps_p, "w"))
             try:
                 rc2 = FL.run(dry_run=False, host=other)
             except SystemExit as exc:
@@ -322,6 +334,70 @@ def main() -> int:
             check(f"5: interval_days ({interval}) is below the cap ({cap}): a "
                   f"healthy host can never look stale",
                   0 < interval < cap)
+        finally:
+            host_tools.HOST_TOOLS.clear()
+            host_tools.HOST_TOOLS.update(saved_tools)
+            for k in ("LOOP_STOPS_DIR", "LOOP_HARVEST_STAMPS", "LOOP_DRY_RUN"):
+                os.environ.pop(k, None)
+        shutil.rmtree(stops, ignore_errors=True)
+        unplant()
+
+        # ---------------------------------------------------- 10. lost between runs
+        probe_h = {"rel": PROBE_REL,
+                   "manifest": "channel/imagery/zzprobe-does-not-exist.json"}
+        owned = {PROBE_REL: {"host": other, "last_run_at": iso(1),
+                             "last_success_at": iso(1), "ok": True, "exit": 0,
+                             "records": 5, "tail": []}}
+        check("10: an absent manifest this host stamped with 5 records is LOST",
+              FL.lost_since_stamp(probe_h, owned, other) == (5, None),
+              str(FL.lost_since_stamp(probe_h, owned, other)))
+        check("10: the same stamp read by ANOTHER host is not (absent there "
+              "by design)", FL.lost_since_stamp(probe_h, owned, "ci") is None)
+        no_count = {PROBE_REL: dict(owned[PROBE_REL], records=None)}
+        check("10: a stamp with no record count never triggers it",
+              FL.lost_since_stamp(probe_h, no_count, other) is None)
+        mf = os.path.join(ROOT, probe_h["manifest"])
+        try:
+            json.dump({"assets": [{}] * 5}, open(mf, "w"))
+            check("10: a manifest holding what was stamped is not lost",
+                  FL.lost_since_stamp(probe_h, owned, other) is None)
+            json.dump({"assets": [{}] * 3}, open(mf, "w"))
+            check("10: a manifest holding FEWER than stamped is lost",
+                  FL.lost_since_stamp(probe_h, owned, other) == (5, 3))
+        finally:
+            os.remove(mf)
+        # End to end on the owning host: stamped 1 day ago (NOT due by date),
+        # manifest absent -> the lane re-runs it tonight and says why.
+        plant_probe(host=other, requires=["ffmpeg"], exit_code=0)
+        saved_tools = dict(host_tools.HOST_TOOLS)
+        for k, (d, _) in saved_tools.items():
+            host_tools.HOST_TOOLS[k] = (d, lambda: True)
+        stops = tempfile.mkdtemp(prefix="hwk-deleg-10-")
+        stamps_p = os.path.join(stops, "harvest_runs.json")
+        os.environ["LOOP_STOPS_DIR"] = stops
+        os.environ["LOOP_HARVEST_STAMPS"] = stamps_p
+        os.environ["LOOP_DRY_RUN"] = "1"
+        try:
+            for label, planted, want_rerun in (
+                    ("lost", owned, True), ("no count", no_count, False)):
+                json.dump(dict(VIDEO_OWNED, **ci_fresh, **planted),
+                          open(stamps_p, "w"))
+                import io, contextlib
+                buf = io.StringIO()
+                with contextlib.redirect_stdout(buf):
+                    try:
+                        rc = FL.run(dry_run=False, host=other)
+                    except SystemExit as exc:
+                        rc = exc.code
+                out = buf.getvalue()
+                after = (FL.stamps(stamps_p).get(PROBE_REL) or {})
+                reran = after.get("last_run_at") != planted[PROBE_REL]["last_run_at"]
+                check(f"10 ({label}): re-run={want_rerun} inside interval_days",
+                      reran is want_rerun and rc == 0,
+                      f"rc={rc} reran={reran} tail={out[-400:]!r}")
+                check(f"10 ({label}): the run says why, or says nothing",
+                      ("provenance was lost between runs" in out) is want_rerun,
+                      out[-400:])
         finally:
             host_tools.HOST_TOOLS.clear()
             host_tools.HOST_TOOLS.update(saved_tools)
