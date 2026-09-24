@@ -1,7 +1,7 @@
 {
   "stage": "cloud-upload",
   "week": "2026-W39",
-  "at": "2026-09-23T14:13:33+00:00",
+  "at": "2026-09-24T14:13:47+00:00",
   "code": "SCRIPTS_AWAITING_PROMOTION",
   "message": "Nothing to upload: every one of the 34 episodes in research/publish_order*.json is already uploaded and dated, and the runway exists (5.5 weeks of queue at 4/week (0 publishable of 4 on disk). By domain: deep-sea-ocean-science: 4.5 week(s) at 2/week (0 queued, 9 already dated); materials-and-manufacturing: 6.5 week(s) at 2/week (0 queued, 13 already dated).). 4 script(s) are held outside the queue awaiting the owner's promotion decision: how-do-scientists-know-about-other-galaxies, how-do-scientists-know-how-old-something-is, how-do-scientists-know-so-much, why-deep-sea-creatures. They are not queued for the Mac and not deleted. The Mac is not the problem.",
   "detail": {
@@ -20,8 +20,8 @@
   },
   "unblock": "Promote: add a row with `slug` and `query` to a research/publish_order*.json and put the script at scripts/<slug>.md; the Mac's batch then narrates, renders and shelves it and this lane uploads it. Decline: remove its entry from loop/promotion_holds.json. Nothing is deleted either way.",
   "disposition": "owner_action",
-  "disposition_why": "Nothing to upload: every queued episode is uploaded and dated, the runway exists, and the only scripts outside the queue are held on purpose in loop/promotion_holds.json awaiting the owner's promotion decision (decided 2026-09-23 that they wait for her; not queued for the Mac, not deleted). No automation can make that decision, and she already knows, so the run stays green, names the held slugs, and the fact goes to the digest instead of a daily page. A NEW script outside the queue that is not in the hold register is AUTHORED_NOT_QUEUED and still pages; a critical runway is SCRIPTS_AWAITING_PROMOTION_RUNWAY_CRITICAL and still pages. Only she can clear this, and retrying cannot, so the run stays GREEN and the fact is carried to the top of the Sunday digest instead of into her inbox as a failed build. (run 2 of at most 28 before this escalates.)",
-  "consecutive": 2,
+  "disposition_why": "Nothing to upload: every queued episode is uploaded and dated, the runway exists, and the only scripts outside the queue are held on purpose in loop/promotion_holds.json awaiting the owner's promotion decision (decided 2026-09-23 that they wait for her; not queued for the Mac, not deleted). No automation can make that decision, and she already knows, so the run stays green, names the held slugs, and the fact goes to the digest instead of a daily page. A NEW script outside the queue that is not in the hold register is AUTHORED_NOT_QUEUED and still pages; a critical runway is SCRIPTS_AWAITING_PROMOTION_RUNWAY_CRITICAL and still pages. Only she can clear this, and retrying cannot, so the run stays GREEN and the fact is carried to the top of the Sunday digest instead of into her inbox as a failed build. (run 3 of at most 28 before this escalates.)",
+  "consecutive": 3,
   "held_items": [
     "how-do-scientists-know-about-other-galaxies",
     "how-do-scientists-know-how-old-something-is",
