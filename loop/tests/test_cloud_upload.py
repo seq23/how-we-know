@@ -561,9 +561,14 @@ print("RC", rc)
             fails.append("today's held-for-promotion state did not exit 0 - it "
                          "would page the owner daily on a decision she has: "
                          f"{r.stdout.strip()[-200:]}")
-        if "WAITING ON THE OWNER" not in out:
+        if "SELF-RESOLVING" not in out:
             fails.append("the held-for-promotion stop did not declare itself "
-                         "owner_action, so its zero exit is unexplained")
+                         "self-resolving (the Saturday gate decides every "
+                         "hold since 2026-09-25), so its zero exit is "
+                         "unexplained")
+        if "WAITING ON THE OWNER" in out:
+            fails.append("the held-for-promotion stop still says it waits on "
+                         "the owner; nothing about a hold is hers to decide")
         if "NAMED STOP" not in out:
             fails.append("the held-for-promotion run printed no NAMED STOP "
                          "banner - a silent exit 0 is what Rule 0 forbids")

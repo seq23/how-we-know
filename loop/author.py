@@ -581,6 +581,8 @@ def directive_truth_problems(text: str) -> list[str]:
             if num.lower() not in plow:
                 flags.append(f"directive draws number {num!r} the narration "
                             f"never speaks: {line[:74]!r}")
+        if m.group(1).lower() == "uncertain":
+            flags += _uncertain_range_problems(fields, line)
         parts = re.split(r"[|=]", "|".join(fields[1:]))
         for part in parts:
             for num in re.findall(r"\d[\d,\.]*", part):
@@ -601,6 +603,51 @@ def directive_truth_problems(text: str) -> list[str]:
                 flags.append(f"directive draws name {t!r} the narration "
                             f"never speaks: {line[:74]!r}")
     return flags
+
+
+def _uncertain_range_problems(fields: list[str], line: str) -> list[str]:
+    """`{{uncertain: VALUE | UNIT | RANGE | ...}}`'s RANGE must be a number.
+
+    visuals/segments_ext2.py parses RANGE as the ± half-width (or `PLUS/MINUS`)
+    and returns None - the beat is silently dropped from the render - when it
+    is anything else. Run 36164079633 (2026-09-25) wrote
+    `range 700000 to 2200000`, prose that no parser reads, and nothing before
+    the render would have said so. The contract's rule 7 is the source.
+    """
+    if len(fields) < 3 or not fields[2].strip():
+        return [f"uncertain directive has no RANGE field; visuals/CONTRACT.md "
+                f"rule 7 requires a stated ± half-width: {line[:74]!r}"]
+    rng = fields[2].strip().lstrip("±+")
+    parts = [p.strip().lstrip("+-") for p in rng.partition("/")[::2]] \
+        if "/" in rng else [rng]
+    for p in parts:
+        if not re.fullmatch(r"\d[\d,]*(\.\d+)?", p):
+            return [f"uncertain directive's RANGE {fields[2].strip()!r} is not "
+                    f"a number: write the ± half-width in the same unit as "
+                    f"VALUE (e.g. `750000`, or `200000/1300000` for asymmetric "
+                    f"bounds); the renderer drops a directive it cannot "
+                    f"parse: {line[:74]!r}"]
+    return []
+
+
+# The rejection alone was not enough. On 2026-09-25 (run 36164079633) the
+# model was told four times that `{{uncertain: 2000000 | ...}}` drew a number
+# its prose never spoke, and four times answered with prose that said "2
+# million" - a true statement of the same figure that is not the same string,
+# on a screen that draws the string. The fault was named and the remedy never
+# was; a retry loop that repeats a diagnosis without a fix is four paid
+# attempts at the same mistake. This is the fix, stated once, whenever that
+# class of problem is in the list.
+DIRECTIVE_REMEDY = (
+    "HOW TO FIX A 'directive draws ... the narration never speaks' REJECTION: "
+    "a directive's VALUE, names and bounds are drawn on screen exactly as "
+    "typed, so the narration paragraph it governs must contain the identical "
+    "string - same digits, same separators, same spelling. Either write the "
+    "figure in the prose the way the directive has it (`2,000,000` in both), "
+    "or change the directive to the way the prose says it (`2 million` as the "
+    "VALUE). Do not solve it by deleting the figure from the directive while "
+    "the prose keeps it, and do not solve it by adding a number the sources "
+    "do not support.")
 
 
 def shape_problems(text: str, pov: dict) -> list[str]:
@@ -788,11 +835,16 @@ def draft(question: str, slug: str, pov: dict, model: str | None = None,
                     "usage": usage}
 
         last = problems
+        remedy = ("\n\n" + DIRECTIVE_REMEDY
+                  if any(p.startswith("directive draws") or
+                         p.startswith("uncertain directive") for p in problems)
+                  else "")
         messages = messages + [
             {"role": "assistant", "content": text},
             {"role": "user",
              "content": "That draft was rejected by the automated checks:\n"
                         + "\n".join(f"- {p}" for p in problems)
+                        + remedy
                         + "\n\nOutput the corrected full script and nothing "
                           "else."}]
 

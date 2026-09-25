@@ -310,11 +310,13 @@ def diagnose_empty_shelf(queued: list[str], done: set[str], held: set[str],
         hold_detail = dict(base, runway_level=level,
                            runway_weeks=(runway or {}).get("weeks_remaining"),
                            holds="loop/promotion_holds.json")
-        how = ("Promote: add a row with `slug` and `query` to a "
-               "research/publish_order*.json and put the script at "
-               "scripts/<slug>.md; the Mac's batch then narrates, renders and "
-               "shelves it and this lane uploads it. Decline: remove its entry "
-               "from loop/promotion_holds.json. Nothing is deleted either way.")
+        how = ("Nothing for a person: the next Saturday weekly-score run "
+               "(loop/score.py dispose_promotion_holds) puts each held "
+               "script's question through the same demand-and-competition "
+               "gate every queued topic passed, then promotes it (script into "
+               "scripts/, row into its domain's publish order) or declines it "
+               "(script into loop/drafts/declined/, hold removed, logged in "
+               "docs/DECISION-LOG.md). Nothing is deleted either way.")
         if level in ("ok", "warn"):
             return {"code": "SCRIPTS_AWAITING_PROMOTION",
                     "message": f"Nothing to upload: every one of the "
@@ -322,10 +324,11 @@ def diagnose_empty_shelf(queued: list[str], done: set[str], held: set[str],
                                f"publish_order*.json is already uploaded and "
                                f"dated, and the runway exists ({runway_msg}). "
                                f"{len(active_holds)} script(s) are held outside "
-                               f"the queue awaiting the owner's promotion "
-                               f"decision: {', '.join(active_holds)}. They are "
-                               f"not queued for the Mac and not deleted. The "
-                               f"Mac is not the problem.",
+                               f"the queue awaiting the Saturday gate's "
+                               f"promotion decision: {', '.join(active_holds)}. "
+                               f"They are not queued for the Mac and not "
+                               f"deleted; loop/score.py decides each one on "
+                               f"its next run. The Mac is not the problem.",
                     "detail": hold_detail,
                     "unblock": how,
                     "held_items": active_holds}
@@ -334,7 +337,7 @@ def diagnose_empty_shelf(queued: list[str], done: set[str], held: set[str],
                            f"already uploaded, and the runway is "
                            f"{level or 'unknown'} ({runway_msg}). "
                            f"{len(active_holds)} script(s) held awaiting the "
-                           f"owner's promotion decision "
+                           f"Saturday gate's promotion decision "
                            f"({', '.join(active_holds)}) are now what stands "
                            f"between the channel and going dark.",
                 "detail": hold_detail,

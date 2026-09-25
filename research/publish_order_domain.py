@@ -484,7 +484,51 @@ def build(domain: str, pause: float, budget: int) -> dict:
     print(f"{len(cands)} candidate(s) for {domain} "
           f"({len(killed_early)} refused by exclusions before any quota spend)")
 
-    comp_path = ensure_competition(domain, cands, budget)
+    out_rows, unmeasured = score_queries(domain, cands, pause, budget)
+
+    # combined() (imported from publish_order.py, unchanged) returns a dict
+    # keyed "combined_score", never "score" - confirmed 2026-09-25, live,
+    # immediately after the median_subscribers fix: this line was the NEXT
+    # crash, masked until now because the previous one always fired first.
+    queue = sorted([r for r in out_rows if r["gate"]["verdict"] != "kill"],
+                   key=lambda r: -(r["combined"]["combined_score"] or 0))
+    dead = [r for r in out_rows if r["gate"]["verdict"] == "kill"]
+    return {
+        "generated_utc": datetime.now(timezone.utc).isoformat(),
+        "generator": f"research/publish_order_domain.py --domain {domain}",
+        "domain": domain,
+        "gate_source": "research/publish_order.py, imported unchanged",
+        "thresholds": {
+            "DEMAND_FLOOR": DEMAND_FLOOR,
+            "DEMAND_FIRM_BELOW": DEMAND_FIRM_BELOW,
+            "SATURATION_GAP_CEILING": SATURATION_GAP_CEILING,
+            "SATURATION_FIRM_AT_OR_BELOW": SATURATION_FIRM_AT_OR_BELOW,
+        },
+        "candidate_source": ("research/broad_mined.json domains[%s].queries — "
+                             "question-form, non-noise, admitted by "
+                             "loop/exclusions.decide(), deduplicated by content "
+                             "tokens" % domain),
+        "refused_before_scoring": killed_early,
+        "queue": queue,
+        "killed": dead,
+        "unmeasured": unmeasured,
+    }
+
+
+def score_queries(domain: str, queries: list[str], pause: float,
+                  budget: int) -> tuple[list[dict], list[dict]]:
+    """Put `queries` through the gate and return (scored rows, unmeasured).
+
+    The one gate, whoever asks. build() calls this for a domain's whole
+    candidate list; `--query` calls it for a single held script's question
+    (loop/score.py dispose_promotion_holds, 2026-09-25) so a hold is decided
+    by exactly the measurement every queued topic passed, never a cheaper one.
+    Competition is scored through research/competition.py (a missing key or
+    an exhausted quota is its named stop, re-raised here unchanged), demand
+    through the free autocomplete probe, the verdict through
+    publish_order.gate() imported unchanged.
+    """
+    comp_path = ensure_competition(domain, queries, budget)
     comp = json.load(open(comp_path, encoding="utf-8"))
     by_query = {r["query"]: r for r in comp["results"] if r["status"] == "ok"}
     if not by_query:
@@ -496,7 +540,7 @@ def build(domain: str, pause: float, budget: int) -> dict:
     corpus_tokens = [content_tokens(c) for c in corpus]
 
     rows, unmeasured = [], []
-    for q in cands:
+    for q in queries:
         if q not in by_query:
             unmeasured.append({"query": q, "status": "no_competition_score"})
             continue
@@ -566,34 +610,13 @@ def build(domain: str, pause: float, budget: int) -> dict:
                                    c["opportunity_score"], None)
         rec["reason"] = reason(rec)
         out_rows.append(rec)
+    return out_rows, unmeasured
 
-    # combined() (imported from publish_order.py, unchanged) returns a dict
-    # keyed "combined_score", never "score" - confirmed 2026-09-25, live,
-    # immediately after the median_subscribers fix: this line was the NEXT
-    # crash, masked until now because the previous one always fired first.
-    queue = sorted([r for r in out_rows if r["gate"]["verdict"] != "kill"],
-                   key=lambda r: -(r["combined"]["combined_score"] or 0))
-    dead = [r for r in out_rows if r["gate"]["verdict"] == "kill"]
-    return {
-        "generated_utc": datetime.now(timezone.utc).isoformat(),
-        "generator": f"research/publish_order_domain.py --domain {domain}",
-        "domain": domain,
-        "gate_source": "research/publish_order.py, imported unchanged",
-        "thresholds": {
-            "DEMAND_FLOOR": DEMAND_FLOOR,
-            "DEMAND_FIRM_BELOW": DEMAND_FIRM_BELOW,
-            "SATURATION_GAP_CEILING": SATURATION_GAP_CEILING,
-            "SATURATION_FIRM_AT_OR_BELOW": SATURATION_FIRM_AT_OR_BELOW,
-        },
-        "candidate_source": ("research/broad_mined.json domains[%s].queries — "
-                             "question-form, non-noise, admitted by "
-                             "loop/exclusions.decide(), deduplicated by content "
-                             "tokens" % domain),
-        "refused_before_scoring": killed_early,
-        "queue": queue,
-        "killed": dead,
-        "unmeasured": unmeasured,
-    }
+
+# The single-query mode answers on stdout, on one line, under this marker,
+# so the caller (loop/score.py) needs no file it would then have to commit
+# or clean up. Everything before the marker is ordinary progress text.
+HOLD_GATE_MARKER = "HOLD_GATE_VERDICT "
 
 
 def main() -> int:
@@ -604,6 +627,10 @@ def main() -> int:
                     help="quota units competition.py may plan to spend")
     ap.add_argument("--candidates-only", action="store_true",
                     help="print the candidates and spend no quota")
+    ap.add_argument("--query", action="append", default=[],
+                    help="gate ONE question (repeatable) instead of the "
+                         "domain's candidate list; prints the scored row(s) "
+                         "as JSON after HOLD_GATE_VERDICT and writes no queue")
     a = ap.parse_args()
 
     sys.path.insert(0, os.path.join(ROOT, "loop"))
@@ -611,6 +638,13 @@ def main() -> int:
     D.require_known(a.domain)                                  # refuses a name
                                                                # not in the
                                                                # taxonomy
+
+    if a.query:
+        queries = [q.strip().lower() for q in a.query if q.strip()]
+        rows, unmeasured = score_queries(a.domain, queries, a.pause, a.budget)
+        print(HOLD_GATE_MARKER + json.dumps({"rows": rows,
+                                             "unmeasured": unmeasured}))
+        return 0
 
     if a.candidates_only:
         cands, killed = candidates(a.domain)
