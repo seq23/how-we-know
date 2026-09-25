@@ -159,7 +159,11 @@ That is the whole list.
   2026-09-17, fixes this on its own every Saturday: it mines real
   YouTube-autocomplete candidates for any allocated domain with zero queue
   depth and scores them through the same gate every other topic goes through —
-  no shortcut for being empty. It retries automatically for up to three
+  no shortcut for being empty. Since 2026-09-25 it also refills a domain
+  whose queue is merely THIN — fewer than 4 unwritten topics that are not
+  repeats of episodes already aired — and keeps widening its sources until
+  it clears 4, or names `DOMAIN_QUEUE_THIN` (green, three Saturdays before
+  it goes red). It retries automatically for up to three
   Saturdays on a quota stop (`NEW_DOMAIN_QUOTA`) before it becomes your
   problem; see "If a domain's queue can't refill itself" below.
 

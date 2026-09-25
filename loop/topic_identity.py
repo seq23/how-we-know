@@ -139,6 +139,14 @@ SYNONYMS = {
     "stronger": "strong", "strongest": "strong",
     # "why do deep sea creatures look so strange" is episode 01, "... look
     # so weird" (2026-09-25, the held why-deep-sea-creatures script)
+    # size: "why are deep sea creatures so big / huge / giants" and "what is
+    # deep sea gigantism" are one question
+    "big": "giant", "bigger": "giant", "huge": "giant", "giant": "giant",
+    "gigantic": "giant", "gigantism": "giant", "enormous": "giant",
+    "massive": "giant",
+    "decompression": "decompress", "decompress": "decompress",
+    "frighten": "scary", "frightens": "scary", "frightening": "scary",
+    "scary": "scary",
     "strange": "weird", "weird": "weird", "odd": "weird", "bizarre": "weird",
     "alien": "weird", "unusual": "weird",
 }
@@ -152,6 +160,13 @@ STOPWORDS = {
     "i", "me", "my", "like", "look", "looks", "if", "into", "about", "s",
     "get", "gets", "much", "very", "just", "all", "some", "any", "have", "has",
     "than",
+    # "what is X called" asks what "what is X" asks
+    "called", "named",
+    # autocomplete filler: "how deep is the ocean actually go"
+    "go", "goes", "need", "needs", "us",
+    # "how does X work" asks what "how does X" asks: "how deep sea pressure
+    # works" is episode 02's pressure question
+    "work", "works",
 }
 
 WH = ("how", "why", "what", "which", "where", "when", "who")
@@ -167,7 +182,7 @@ JACCARD_SAME = 0.75
 # the ocean" keys to {how, sea}; that is a strict subset of "how do deep sea
 # creatures survive the pressure" and is not the same question. The subset
 # and cross-interrogative rules need at least one word outside this set.
-GENERIC_WORDS = {"sea", "make", "work", "material"}
+GENERIC_WORDS = {"sea", "make", "material", "challengerdeep"}
 
 _WORD = re.compile(r"[a-z0-9]+")
 
@@ -195,7 +210,55 @@ def _clean(q: str) -> str:
     q = re.sub(r"\bhow's\b", "how is", q)
     q = re.sub(r"\bwho's\b", "who is", q)
     q = re.sub(r"'s\b", "", q)
-    return q
+    q = re.sub(r"\s+", " ", q.replace("-", " "))
+    return _fold_facts(q)
+
+
+# ONE FACT, SEVERAL NAMES (2026-09-25). Episode 10 is "What is the deepest
+# part of the ocean?" - the Challenger Deep, in the Mariana Trench, about
+# 11 km down. "how deep mariana trench" and "how deep is the ocean" share
+# almost no words with it and ask for exactly what it answers: a viewer who
+# saw episode 10 learns nothing from either. So the place folds to ONE token,
+# and "how deep is <that place / the ocean>" folds to the question episode 10
+# already asks. What LIVES there is a different question ("what lives in
+# the mariana trench" keeps its own key), which is why the place token is in
+# GENERIC_WORDS: it alone never makes one question a narrower copy of
+# another.
+DEEPEST_PLACE = (r"(?:the )?(?:marianas? trench|challenger deep|"
+                 r"deepest (?:part|point|place|spot|area) (?:of|in) "
+                 r"(?:the )?(?:ocean|sea|world|earth|planet)|"
+                 r"deepest (?:ocean|sea)s?(?: (?:in|on) (?:the )?"
+                 r"(?:world|earth|planet))?)")
+# "how deep is the ocean" needs its verb or to end there: "how deep sea
+# creatures survive the pressure" is episode 02, not this fact.
+_HOW_DEEP_PLACE = re.compile(
+    r"\bhow deep (?:(?:is |are )?" + DEEPEST_PLACE +
+    r"|(?:is |are )(?:the )?(?:oceans?|seas?)\b"
+    r"|(?:the )?(?:oceans?|seas?)(?: is| are)?$)")
+_PLACE = re.compile(r"\b" + DEEPEST_PLACE + r"\b")
+
+
+# Episode 16, "What happens when a whale dies in the deep ocean?", IS the
+# whale fall; "what is whale fall" asks what it answers.
+_WHALE_FALL = re.compile(
+    r"\b(?:whale (?:falls?|dies|died|death|carcass(?:es)?)|dead whales?|"
+    r"a whale dies)\b")
+
+
+# Episode 03's question, however autocomplete phrases the arrival.
+_SURFACING = re.compile(
+    r"\b(?:surfacing|rising (?:up )?to (?:the )?surface|coming (?:up )?to "
+    r"(?:the )?surface|coming out|washing (?:up|ashore))\b")
+
+
+def _fold_facts(q: str) -> str:
+    # Emphasis words would otherwise split a fact phrase ("how deep is
+    # REALLY the ocean").
+    q = re.sub(r"\b(?:really|actually|exactly|truly)\b ?", "", q)
+    q = _HOW_DEEP_PLACE.sub("what is challengerdeep", q)
+    q = _WHALE_FALL.sub("whalefall", q)
+    q = _SURFACING.sub("surfacing", q)
+    return _PLACE.sub("challengerdeep", q)
 
 
 def names_other_channel(q: str) -> str | None:
@@ -280,6 +343,19 @@ def why_same(a: frozenset, b: frozenset) -> str | None:
     if j >= JACCARD_SAME:
         return f"question keys overlap {j:.2f} >= {JACCARD_SAME}"
     return None
+
+
+# A folded fact ("challengerdeep") IS a subject - episode 10 is about it -
+# even though, as GENERIC_WORDS says, it cannot make a question a narrower
+# copy of another on its own.
+VAGUE_WORDS = GENERIC_WORDS - {"challengerdeep"}
+
+
+def is_vague(key: frozenset) -> bool:
+    """True when a question names nothing beyond its domain's own core
+    words - "why deep sea", "why deep sea creatures". Not an episode: there
+    is no subject to answer about."""
+    return not (_content(key) - VAGUE_WORDS)
 
 
 def same_question(a: str, b: str) -> bool:
