@@ -1,0 +1,3295 @@
+{
+  "generated_utc": "2026-09-25T16:55:42.105580+00:00",
+  "generator": "research/publish_order_domain.py --domain materials-and-manufacturing",
+  "domain": "materials-and-manufacturing",
+  "gate_source": "research/publish_order.py, imported unchanged",
+  "thresholds": {
+    "DEMAND_FLOOR": 0.16,
+    "DEMAND_FIRM_BELOW": 0.1,
+    "SATURATION_GAP_CEILING": 0.3,
+    "SATURATION_FIRM_AT_OR_BELOW": 0.1
+  },
+  "candidate_source": "research/broad_mined.json domains[materials-and-manufacturing].queries \u2014 question-form, non-noise, admitted by loop/exclusions.decide(), deduplicated by content tokens",
+  "refused_before_scoring": [
+    {
+      "query": "how are microchips made",
+      "killed_by": "ALREADY_PUBLISHED",
+      "rule": "this episode already exists",
+      "matched": "how-are-microchips-made"
+    },
+    {
+      "query": "what is carbon fiber made of",
+      "killed_by": "ALREADY_PUBLISHED",
+      "rule": "this episode already exists",
+      "matched": "what-is-carbon-fiber-made-of"
+    },
+    {
+      "query": "why is steel so strong",
+      "killed_by": "ALREADY_PUBLISHED",
+      "rule": "this episode already exists",
+      "matched": "why-is-steel-so-strong"
+    },
+    {
+      "query": "how are microchips made in hindi",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "hindi"
+    },
+    {
+      "query": "how computer chips are made in factory",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "made"
+    },
+    {
+      "query": "how it's made candy",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made crayons",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made discovery uk",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made food",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made full episodes",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made funny",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made hot dogs",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made huggbees",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made parody",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how i'm made xo-iq",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "made"
+    },
+    {
+      "query": "how is an ic made",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "made"
+    },
+    {
+      "query": "how it's made",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made airheads",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made airplanes",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made alcohol",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made almond milk",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made american cheese",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made apple cider",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made apple juice",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made artificial christmas trees",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made asmr",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made avocado oil",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made balloons",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made baseball",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made basketball",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made beef jerky",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made beer",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made bologna",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made bowling balls",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made bread",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made bubble gum",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made butterfinger",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made candy canes",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made candy corn",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made cars",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made cheese",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made chocolate",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made christmas",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made compilation",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made cookies",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made deli meats",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made discovery channel",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made dog food",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made donuts",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made doritos",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made doughnuts",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made dream cars",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made drumsticks",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made dum dums",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made eggnog",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made eggs",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made electric guitar",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made engine",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made english muffins",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made episode 1",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made episodes",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made eraser",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made escalators",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made excavator",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made fireworks",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made football",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made french fries",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made frozen pizza",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made funny moments",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made funyuns",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made gasoline",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made glass bottles",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made glitter",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made goldfish",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made golf balls",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made guitar",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made gum",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made gummy bears",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made gummy worms",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made gushers",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made halloween",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made hard candy",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made hershey kisses",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made honey",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made hot cheetos",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made hot dog buns",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made hot sauce",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made hot wheels",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made ice cream",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made ice cream bars",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made ice sculptures",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made imitation crab",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made ink",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made instant coffee",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made instant ramen",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made instruments",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made intro",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made iphone",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made jawbreakers",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made jeans",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made jello",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made jelly",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made jelly beans",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made jelly belly",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made jerky",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made jet engine",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made jewelry",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made jolly ranchers",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made kayak",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made ketchup",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made ketchup packets",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made ketchup parody",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made kettle chips",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made kfc chicken",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made kimchi",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made kinetic sand",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made kit kat",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made knives",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made lava lamps",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made leather",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made legos",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made licorice",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made light bulbs",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made lipstick",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made little debbie",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made locomotives",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made lollipops",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made lunch meat",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made m&m",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made marathon",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made marbles",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made marshmallow",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made mayonnaise",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made mcdonald's",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made milk",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made money",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made mustard",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made nail polish",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made nails",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made nascar",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made neon signs",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made nerds",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made no ads",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made noodles",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made nutcrackers",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made nutella",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made nutty buddy",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made oat milk",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made oil",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made old episodes",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made olive oil",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made olives",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made opening theme",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made orange juice",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made oreos",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made ornaments",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made out of context",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made peanut butter",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made pencils",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made pickles",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made playlist",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made plumbus",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made popcorn",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made potato chips",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made pretzels",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made pringles",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made q tips",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made quaker oats",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made quarters",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made quartz countertops",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made quavers",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made queso",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made quest goat simulator 3",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made ramen noodles",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made razor blades",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made reaction",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made records",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made reese's cup",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made rice",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made rice krispies",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made root beer",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made rubber",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made rubber bands",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made sandwiches",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made sardines",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made science channel",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made skittles",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made snickers",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made soda",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made soy sauce",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made spam",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made sprinkles",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made stuffed animals",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made takis",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made tequila",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made theme",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made tires",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made toilet paper",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made toothpaste",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made tootsie roll",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made toys",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made tv show",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made uk",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made ukulele",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made umbrella",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made uncrustables",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made underwater tunnels",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made unhinged",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made unwrapped",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made uranium",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made us money",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made usa",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made vaseline",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made vegetable oil",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made veggie straws",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made vehicles",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made video games",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made videos",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made vinyl records",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made violin",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made vodka",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made voice over",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made waffle fries",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made waffles",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made wake up",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made watches",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made water",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made water bottles",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made whiskey",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made white chocolate",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made wine",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made worcestershire sauce",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made xbox",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made xylophone",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made yakult",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made yarn",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made yellow mustard",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made yeti cup",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made yoghurt",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made yogurt",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made yoohoo",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made your mother",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made youtube",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made youtube poop",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made zach hadel",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made zamboni",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made zebra cakes",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made zinc",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made zip lock bags",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made zip ties",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made zippers",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made zippo",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how it's made zippo lighters",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "how it's made"
+    },
+    {
+      "query": "how make xbox home xbox",
+      "killed_by": "OFF_DOMAIN",
+      "rule": "shares no vocabulary with the domain seeds",
+      "matched": "home make xbox"
+    },
+    {
+      "query": "how microchips are made hindi",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "hindi"
+    },
+    {
+      "query": "how quartz made",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "made"
+    },
+    {
+      "query": "how queen made we will rock you",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "made"
+    },
+    {
+      "query": "how are billions of microchips made from sand",
+      "killed_by": "BROADER_ASK",
+      "rule": "same question, narrower phrasing",
+      "matched": "how the microchips are made"
+    },
+    {
+      "query": "how tm88 made xo tour life",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "made"
+    },
+    {
+      "query": "how x made sad",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "made"
+    }
+  ],
+  "queue": [
+    {
+      "slug": "how-microchips-are-made-veritasium",
+      "domain": "materials-and-manufacturing",
+      "title": "How microchips are made veritasium?",
+      "query": "how microchips are made veritasium",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.641 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.6411,
+        "autocomplete_completions": 4,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 1,
+        "key_term": "veritasium",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 1,
+        "sample_completions": [
+          "how microchips are made veritasium",
+          "how microchips are made",
+          "how microchips were invented",
+          "how microchips are programmed"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-25T16:55:34.056651+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.659,
+        "title_gap": 1.0,
+        "title_coverage_mean": 0.233,
+        "strong_match_count": 0,
+        "results_examined": 20,
+        "median_views": 4449603.5,
+        "p90_views": 24674273,
+        "median_subscribers": 2760000.0,
+        "channels_under_100k_subs": 4,
+        "median_age_days": 911,
+        "published_last_365d": 2,
+        "interpretation": "nobody has made the definitive video on this query",
+        "components": {
+          "title_gap": 1.0,
+          "incumbent_subs": 0.08,
+          "view_ceiling": 0.05,
+          "staleness": 0.9
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-25T16:25:02.138444+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.65,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "CONTESTED DESPITE THE GAP: 100% lexical title gap, but median 4,449,604 views and 2,760,000 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated."
+    },
+    {
+      "slug": "how-are-microchips-made-so-small",
+      "domain": "materials-and-manufacturing",
+      "title": "How are microchips made so small?",
+      "query": "how are microchips made so small",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.579 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.5788,
+        "autocomplete_completions": 5,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 1,
+        "key_term": "small",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 1,
+        "sample_completions": [
+          "how are microchips made so small",
+          "how are microchips made",
+          "how are transistors made so small",
+          "how are microchips designed",
+          "how are microchips manufactured"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-25T16:55:31.067574+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.687,
+        "title_gap": 1.0,
+        "title_coverage_mean": 0.333,
+        "strong_match_count": 0,
+        "results_examined": 20,
+        "median_views": 1519687.0,
+        "p90_views": 11678733,
+        "median_subscribers": 185000.0,
+        "channels_under_100k_subs": 8,
+        "median_age_days": 671,
+        "published_last_365d": 4,
+        "interpretation": "nobody has made the definitive video on this query",
+        "components": {
+          "title_gap": 1.0,
+          "incumbent_subs": 0.248,
+          "view_ceiling": 0.117,
+          "staleness": 0.8
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-25T16:24:58.365472+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.6306,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "CONTESTED DESPITE THE GAP: 100% lexical title gap, but median 1,519,687 views and 185,000 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated."
+    },
+    {
+      "slug": "how-are-tiny-microchips-made",
+      "domain": "materials-and-manufacturing",
+      "title": "How are tiny microchips made?",
+      "query": "how are tiny microchips made",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.569 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.5685,
+        "autocomplete_completions": 5,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 1,
+        "key_term": "tiny",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 1,
+        "sample_completions": [
+          "how are tiny microchips made",
+          "how are microchips manufactured",
+          "how it's made microchips",
+          "how it's made computer chips",
+          "how are microchips designed"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-25T16:55:32.044051+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.695,
+        "title_gap": 1.0,
+        "title_coverage_mean": 0.4,
+        "strong_match_count": 0,
+        "results_examined": 20,
+        "median_views": 1123147.5,
+        "p90_views": 11678733,
+        "median_subscribers": 118250.0,
+        "channels_under_100k_subs": 10,
+        "median_age_days": 682,
+        "published_last_365d": 4,
+        "interpretation": "nobody has made the definitive video on this query",
+        "components": {
+          "title_gap": 1.0,
+          "incumbent_subs": 0.275,
+          "view_ceiling": 0.136,
+          "staleness": 0.8
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-25T16:24:59.454776+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.6286,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "CONTESTED DESPITE THE GAP: 100% lexical title gap, but median 1,123,148 views and 118,250 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated."
+    },
+    {
+      "slug": "how-are-microchips-designed",
+      "domain": "materials-and-manufacturing",
+      "title": "How are microchips designed?",
+      "query": "how are microchips designed",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.551 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.5514,
+        "autocomplete_completions": 8,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 1,
+        "key_term": "designed",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 1,
+        "sample_completions": [
+          "how are microchips designed",
+          "how are microchips made",
+          "how are microchips made so small",
+          "how are microchips made in hindi",
+          "how microchips are made animation"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-25T16:55:20.013946+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.71,
+        "title_gap": 1.0,
+        "title_coverage_mean": 0.35,
+        "strong_match_count": 0,
+        "results_examined": 20,
+        "median_views": 680294.5,
+        "p90_views": 7015881,
+        "median_subscribers": 185000.0,
+        "channels_under_100k_subs": 7,
+        "median_age_days": 932,
+        "published_last_365d": 2,
+        "interpretation": "nobody has made the definitive video on this query",
+        "components": {
+          "title_gap": 1.0,
+          "incumbent_subs": 0.248,
+          "view_ceiling": 0.167,
+          "staleness": 0.9
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-25T16:24:45.368319+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.6257,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Open field with real demand: 100% of top-20 titles do NOT answer the question, and demand index 0.55. Nobody has made this one."
+    },
+    {
+      "slug": "how-are-computer-microchips-made",
+      "domain": "materials-and-manufacturing",
+      "title": "How are computer microchips made?",
+      "query": "how are computer microchips made",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.564 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.5638,
+        "autocomplete_completions": 3,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 1,
+        "key_term": "computer",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 4,
+        "sample_completions": [
+          "how are computer microchips made",
+          "how are computer chips made",
+          "how are computer chips manufactured"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-25T16:55:29.039240+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.693,
+        "title_gap": 1.0,
+        "title_coverage_mean": 0.45,
+        "strong_match_count": 0,
+        "results_examined": 20,
+        "median_views": 1519688.5,
+        "p90_views": 11678733,
+        "median_subscribers": 214500.0,
+        "channels_under_100k_subs": 7,
+        "median_age_days": 682,
+        "published_last_365d": 3,
+        "interpretation": "nobody has made the definitive video on this query",
+        "components": {
+          "title_gap": 1.0,
+          "incumbent_subs": 0.238,
+          "view_ceiling": 0.117,
+          "staleness": 0.85
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-25T16:24:55.905142+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.6251,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "CONTESTED DESPITE THE GAP: 100% lexical title gap, but median 1,519,688 views and 214,500 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated."
+    },
+    {
+      "slug": "how-are-microchips-manufactured",
+      "domain": "materials-and-manufacturing",
+      "title": "How are microchips manufactured?",
+      "query": "how are microchips manufactured",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.541 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.5413,
+        "autocomplete_completions": 7,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 1,
+        "key_term": "manufactured",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 1,
+        "sample_completions": [
+          "how are microchips manufactured",
+          "how are computer chips manufactured",
+          "how are microchips made",
+          "how are microchips made in hindi",
+          "how microchips are made animation"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-25T16:55:19.003515+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.704,
+        "title_gap": 1.0,
+        "title_coverage_mean": 0.325,
+        "strong_match_count": 0,
+        "results_examined": 20,
+        "median_views": 1021487.0,
+        "p90_views": 4843527,
+        "median_subscribers": 119250.0,
+        "channels_under_100k_subs": 10,
+        "median_age_days": 679,
+        "published_last_365d": 3,
+        "interpretation": "nobody has made the definitive video on this query",
+        "components": {
+          "title_gap": 1.0,
+          "incumbent_subs": 0.275,
+          "view_ceiling": 0.142,
+          "staleness": 0.85
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-25T16:24:44.106808+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.6173,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "CONTESTED DESPITE THE GAP: 100% lexical title gap, but median 1,021,487 views and 119,250 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated."
+    },
+    {
+      "slug": "how-are-apple-microchips-made",
+      "domain": "materials-and-manufacturing",
+      "title": "How are apple microchips made?",
+      "query": "how are apple microchips made",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.559 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.5595,
+        "autocomplete_completions": 4,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 1,
+        "key_term": "apple",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 3,
+        "sample_completions": [
+          "how are apple microchips made",
+          "how apple processors are made",
+          "how are silicon chips made",
+          "how are computer chips made"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-25T16:55:28.026956+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.678,
+        "title_gap": 1.0,
+        "title_coverage_mean": 0.4,
+        "strong_match_count": 0,
+        "results_examined": 20,
+        "median_views": 2080780.0,
+        "p90_views": 7015881,
+        "median_subscribers": 566500.0,
+        "channels_under_100k_subs": 8,
+        "median_age_days": 718,
+        "published_last_365d": 3,
+        "interpretation": "nobody has made the definitive video on this query",
+        "components": {
+          "title_gap": 1.0,
+          "incumbent_subs": 0.178,
+          "view_ceiling": 0.097,
+          "staleness": 0.85
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-25T16:24:54.694646+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.6159,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "CONTESTED DESPITE THE GAP: 100% lexical title gap, but median 2,080,780 views and 566,500 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated."
+    },
+    {
+      "slug": "how-microchips-are-made-animation",
+      "domain": "materials-and-manufacturing",
+      "title": "How microchips are made animation?",
+      "query": "how microchips are made animation",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.565 clears the 0.16 floor and title gap 0.95 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.5653,
+        "autocomplete_completions": 3,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 1,
+        "key_term": "animation",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 8,
+        "sample_completions": [
+          "how microchips are made animation",
+          "how microchips are made",
+          "how is computer chip made"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-25T16:55:33.045147+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.668,
+        "title_gap": 0.95,
+        "title_coverage_mean": 0.417,
+        "strong_match_count": 1,
+        "results_examined": 20,
+        "median_views": 1588270.0,
+        "p90_views": 11678733,
+        "median_subscribers": 202000.0,
+        "channels_under_100k_subs": 7,
+        "median_age_days": 803,
+        "published_last_365d": 3,
+        "interpretation": "1 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.95,
+          "incumbent_subs": 0.242,
+          "view_ceiling": 0.114,
+          "staleness": 0.85
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-25T16:25:00.532391+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.6145,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "CONTESTED DESPITE THE GAP: 95% lexical title gap, but median 1,588,270 views and 202,000 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated."
+    },
+    {
+      "slug": "how-strong-is-steel",
+      "domain": "materials-and-manufacturing",
+      "title": "How strong is steel?",
+      "query": "how strong is steel",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.552 clears the 0.16 floor and title gap 0.90 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.5523,
+        "autocomplete_completions": 10,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 2,
+        "key_term": "strong",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 3,
+        "sample_completions": [
+          "how strong is steel",
+          "how strong is steel dc",
+          "how strong is steel stick",
+          "how strong is steel epoxy",
+          "how good is steel ball run"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-25T16:55:21.008170+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.682,
+        "title_gap": 0.9,
+        "title_coverage_mean": 0.5,
+        "strong_match_count": 2,
+        "results_examined": 20,
+        "median_views": 146767.0,
+        "p90_views": 9189922,
+        "median_subscribers": 170000.0,
+        "channels_under_100k_subs": 9,
+        "median_age_days": 964,
+        "published_last_365d": 1,
+        "interpretation": "2 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.9,
+          "incumbent_subs": 0.253,
+          "view_ceiling": 0.262,
+          "staleness": 0.95
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-25T16:24:46.562534+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.6137,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Open field with real demand: 90% of top-20 titles do NOT answer the question, and demand index 0.55. Nobody has made this one."
+    },
+    {
+      "slug": "how-are-microchips-made-branch-education",
+      "domain": "materials-and-manufacturing",
+      "title": "How are microchips made branch education?",
+      "query": "how are microchips made branch education",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.569 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.5691,
+        "autocomplete_completions": 3,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 1,
+        "key_term": "branch",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 1,
+        "sample_completions": [
+          "how are microchips made branch education",
+          "how are microchips made",
+          "how are microchips manufactured"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-25T16:55:30.052807+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.659,
+        "title_gap": 1.0,
+        "title_coverage_mean": 0.15,
+        "strong_match_count": 0,
+        "results_examined": 20,
+        "median_views": 1892286.0,
+        "p90_views": 11118865,
+        "median_subscribers": 2760000.0,
+        "channels_under_100k_subs": 4,
+        "median_age_days": 622,
+        "published_last_365d": 3,
+        "interpretation": "nobody has made the definitive video on this query",
+        "components": {
+          "title_gap": 1.0,
+          "incumbent_subs": 0.08,
+          "view_ceiling": 0.103,
+          "staleness": 0.85
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-25T16:24:57.058342+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.6124,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "CONTESTED DESPITE THE GAP: 100% lexical title gap, but median 1,892,286 views and 2,760,000 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated."
+    },
+    {
+      "slug": "how-damascus-steel-is-made",
+      "domain": "materials-and-manufacturing",
+      "title": "How damascus steel is made?",
+      "query": "how damascus steel is made",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.545 clears the 0.16 floor and title gap 0.90 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.5454,
+        "autocomplete_completions": 3,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 3,
+        "key_term": "damascu",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 186,
+        "sample_completions": [
+          "how damascus steel is made",
+          "how damascus steel knives are made",
+          "how damascus knives are made"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-25T16:55:40.093918+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.659,
+        "title_gap": 0.9,
+        "title_coverage_mean": 0.633,
+        "strong_match_count": 2,
+        "results_examined": 20,
+        "median_views": 718562.5,
+        "p90_views": 4958410,
+        "median_subscribers": 349000.0,
+        "channels_under_100k_subs": 7,
+        "median_age_days": 854,
+        "published_last_365d": 1,
+        "interpretation": "2 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.9,
+          "incumbent_subs": 0.208,
+          "view_ceiling": 0.163,
+          "staleness": 0.95
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-25T16:25:09.296449+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.5995,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Open field with real demand: 90% of top-20 titles do NOT answer the question, and demand index 0.55. Nobody has made this one."
+    },
+    {
+      "slug": "is-damascus-steel-better",
+      "domain": "materials-and-manufacturing",
+      "title": "Is damascus steel better?",
+      "query": "is damascus steel better",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.477 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.4773,
+        "autocomplete_completions": 3,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 1,
+        "key_term": "better",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 1,
+        "sample_completions": [
+          "is damascus steel better",
+          "is damascus steel good",
+          "is damascus steel stronger"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-25T16:55:42.105097+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.723,
+        "title_gap": 1.0,
+        "title_coverage_mean": 0.483,
+        "strong_match_count": 0,
+        "results_examined": 20,
+        "median_views": 245955.0,
+        "p90_views": 6732403,
+        "median_subscribers": 432000.0,
+        "channels_under_100k_subs": 6,
+        "median_age_days": 796,
+        "published_last_365d": 0,
+        "interpretation": "nobody has made the definitive video on this query",
+        "components": {
+          "title_gap": 1.0,
+          "incumbent_subs": 0.195,
+          "view_ceiling": 0.23,
+          "staleness": 1.0
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-25T16:25:13.204997+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.5874,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Open field (100% of top-20 titles miss the question) but thin demand (0.48) -- uncontested because few ask it."
+    },
+    {
+      "slug": "how-are-microchips-made-cpu-manufacturing-process-steps",
+      "domain": "materials-and-manufacturing",
+      "title": "How are microchips made cpu manufacturing process steps?",
+      "query": "how are microchips made cpu manufacturing process steps",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.523 clears the 0.16 floor and title gap 0.85 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.5232,
+        "autocomplete_completions": 2,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 1,
+        "key_term": "cpu",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 1,
+        "sample_completions": [
+          "how are microchips made cpu manufacturing process steps",
+          "chip manufacturing how are microchips made"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-25T16:55:24.006120+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.631,
+        "title_gap": 0.85,
+        "title_coverage_mean": 0.358,
+        "strong_match_count": 3,
+        "results_examined": 20,
+        "median_views": 1115574.0,
+        "p90_views": 7015881,
+        "median_subscribers": 170000.0,
+        "channels_under_100k_subs": 8,
+        "median_age_days": 912,
+        "published_last_365d": 2,
+        "interpretation": "3 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.85,
+          "incumbent_subs": 0.253,
+          "view_ceiling": 0.136,
+          "staleness": 0.9
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-25T16:24:50.107386+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.5746,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "CONTESTED DESPITE THE GAP: 85% lexical title gap, but median 1,115,574 views and 170,000 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated."
+    },
+    {
+      "slug": "how-are-microchips-made-ted",
+      "domain": "materials-and-manufacturing",
+      "title": "How are microchips made ted?",
+      "query": "how are microchips made ted",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.508 clears the 0.16 floor and title gap 0.90 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.5078,
+        "autocomplete_completions": 2,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 1,
+        "key_term": "ted",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 1,
+        "sample_completions": [
+          "how are microchips made ted",
+          "how are microchips made"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-25T16:55:39.076808+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.643,
+        "title_gap": 0.9,
+        "title_coverage_mean": 0.317,
+        "strong_match_count": 2,
+        "results_examined": 20,
+        "median_views": 366123.0,
+        "p90_views": 11678733,
+        "median_subscribers": 345500.0,
+        "channels_under_100k_subs": 6,
+        "median_age_days": 634,
+        "published_last_365d": 4,
+        "interpretation": "2 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.9,
+          "incumbent_subs": 0.209,
+          "view_ceiling": 0.205,
+          "staleness": 0.8
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-25T16:25:08.135626+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.5714,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Open field with real demand: 90% of top-20 titles do NOT answer the question, and demand index 0.51. Nobody has made this one."
+    },
+    {
+      "slug": "how-the-microchips-are-made",
+      "domain": "materials-and-manufacturing",
+      "title": "How the microchips are made?",
+      "query": "how the microchips are made",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.715 clears the 0.16 floor and title gap 0.50 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.7151,
+        "autocomplete_completions": 8,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 17,
+        "key_term": "microchip",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 19,
+        "sample_completions": [
+          "how the microchips are made",
+          "how microchips are made animation",
+          "how microchips are made veritasium",
+          "how are microchips made so small",
+          "how computer chips are made"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-25T16:55:22.998547+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.447,
+        "title_gap": 0.5,
+        "title_coverage_mean": 0.625,
+        "strong_match_count": 10,
+        "results_examined": 20,
+        "median_views": 1256638.0,
+        "p90_views": 7015881,
+        "median_subscribers": 170000.0,
+        "channels_under_100k_subs": 9,
+        "median_age_days": 777,
+        "published_last_365d": 3,
+        "interpretation": "10 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.5,
+          "incumbent_subs": 0.253,
+          "view_ceiling": 0.129,
+          "staleness": 0.85
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-25T16:24:48.847562+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.5654,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Strong demand (0.72) against partial coverage (50% title gap); winnable but contested."
+    },
+    {
+      "slug": "how-microchips-are-made-manufacturing-of-a-semiconductor",
+      "domain": "materials-and-manufacturing",
+      "title": "How microchips are made manufacturing of a semiconductor?",
+      "query": "how microchips are made manufacturing of a semiconductor",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.513 clears the 0.16 floor and title gap 0.85 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.5127,
+        "autocomplete_completions": 1,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 1,
+        "key_term": "microchip",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 19,
+        "sample_completions": [
+          "how microchips are made manufacturing of a semiconductor"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-25T16:55:26.053427+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.621,
+        "title_gap": 0.85,
+        "title_coverage_mean": 0.45,
+        "strong_match_count": 3,
+        "results_examined": 20,
+        "median_views": 1021487.0,
+        "p90_views": 7015881,
+        "median_subscribers": 119250.0,
+        "channels_under_100k_subs": 10,
+        "median_age_days": 622,
+        "published_last_365d": 4,
+        "interpretation": "3 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.85,
+          "incumbent_subs": 0.275,
+          "view_ceiling": 0.142,
+          "staleness": 0.8
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-25T16:24:52.479155+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.5643,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "CONTESTED DESPITE THE GAP: 85% lexical title gap, but median 1,021,487 views and 119,250 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated."
+    },
+    {
+      "slug": "how-microchips-are-made-in-factory",
+      "domain": "materials-and-manufacturing",
+      "title": "How microchips are made in factory?",
+      "query": "how microchips are made in factory",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.410 clears the 0.16 floor and title gap 0.95 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.4104,
+        "autocomplete_completions": 2,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 1,
+        "key_term": "microchip",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 19,
+        "sample_completions": [
+          "how microchips are made in factory",
+          "how computer chips are made in factory"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-25T16:55:25.027474+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.698,
+        "title_gap": 0.95,
+        "title_coverage_mean": 0.583,
+        "strong_match_count": 1,
+        "results_examined": 20,
+        "median_views": 113856.5,
+        "p90_views": 3180716,
+        "median_subscribers": 3470.0,
+        "channels_under_100k_subs": 14,
+        "median_age_days": 547,
+        "published_last_365d": 9,
+        "interpretation": "1 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.95,
+          "incumbent_subs": 0.494,
+          "view_ceiling": 0.278,
+          "staleness": 0.55
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-25T16:24:51.362802+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.5352,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Open field (95% of top-20 titles miss the question) but thin demand (0.41) -- uncontested because few ask it."
+    },
+    {
+      "slug": "what-is-carbon-fibre-made-of",
+      "domain": "materials-and-manufacturing",
+      "title": "What is carbon fibre made of?",
+      "query": "what is carbon fibre made of",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.393 clears the 0.16 floor and title gap 0.95 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.3926,
+        "autocomplete_completions": 2,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 1,
+        "key_term": "fibre",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 1,
+        "sample_completions": [
+          "what is carbon fibre made of",
+          "what is carbon fiber made out of"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-25T16:55:37.089777+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.703,
+        "title_gap": 0.95,
+        "title_coverage_mean": 0.483,
+        "strong_match_count": 1,
+        "results_examined": 20,
+        "median_views": 185207.0,
+        "p90_views": 1461706,
+        "median_subscribers": 115000.0,
+        "channels_under_100k_subs": 9,
+        "median_age_days": 1249,
+        "published_last_365d": 2,
+        "interpretation": "1 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.95,
+          "incumbent_subs": 0.277,
+          "view_ceiling": 0.247,
+          "staleness": 0.9
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-25T16:25:05.687868+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.5254,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Open field (95% of top-20 titles miss the question) but thin demand (0.39) -- uncontested because few ask it."
+    },
+    {
+      "slug": "how-to-tell-if-steel-is-hardened",
+      "domain": "materials-and-manufacturing",
+      "title": "How to tell if steel is hardened?",
+      "query": "how to tell if steel is hardened",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.367 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.3668,
+        "autocomplete_completions": 2,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 1,
+        "key_term": "hardened",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 1,
+        "sample_completions": [
+          "how to tell if steel is hardened",
+          "how to tell if steel is high carbon"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-25T16:55:35.060899+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.724,
+        "title_gap": 1.0,
+        "title_coverage_mean": 0.45,
+        "strong_match_count": 0,
+        "results_examined": 20,
+        "median_views": 70901.5,
+        "p90_views": 1711012,
+        "median_subscribers": 91500.0,
+        "channels_under_100k_subs": 10,
+        "median_age_days": 1240,
+        "published_last_365d": 4,
+        "interpretation": "nobody has made the definitive video on this query",
+        "components": {
+          "title_gap": 1.0,
+          "incumbent_subs": 0.291,
+          "view_ceiling": 0.307,
+          "staleness": 0.8
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-25T16:25:03.332733+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.5153,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Open field (100% of top-20 titles miss the question) but thin demand (0.37) -- uncontested because few ask it."
+    },
+    {
+      "slug": "does-damascus-steel-rust",
+      "domain": "materials-and-manufacturing",
+      "title": "Does damascus steel rust?",
+      "query": "does damascus steel rust",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.375 clears the 0.16 floor and title gap 0.80 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.3752,
+        "autocomplete_completions": 1,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 2,
+        "key_term": "rust",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 2,
+        "sample_completions": [
+          "does damascus steel rust"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-25T16:55:38.092847+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.688,
+        "title_gap": 0.8,
+        "title_coverage_mean": 0.633,
+        "strong_match_count": 4,
+        "results_examined": 20,
+        "median_views": 28719.0,
+        "p90_views": 2713386,
+        "median_subscribers": 6590.0,
+        "channels_under_100k_subs": 14,
+        "median_age_days": 1120,
+        "published_last_365d": 1,
+        "interpretation": "4 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.8,
+          "incumbent_subs": 0.454,
+          "view_ceiling": 0.363,
+          "staleness": 0.95
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-25T16:25:06.923182+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.5081,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Middle of the field: title gap 0.80, demand 0.38, opportunity 0.69."
+    },
+    {
+      "slug": "what-is-carbon-fiber-made-out-of",
+      "domain": "materials-and-manufacturing",
+      "title": "What is carbon fiber made out of?",
+      "query": "what is carbon fiber made out of",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.417 clears the 0.16 floor and title gap 0.75 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.4167,
+        "autocomplete_completions": 3,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 1,
+        "key_term": "out",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 2,
+        "sample_completions": [
+          "what is carbon fiber made out of",
+          "what is carbon fiber made of",
+          "what is carbon fibre made of"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-25T16:55:36.074883+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.584,
+        "title_gap": 0.75,
+        "title_coverage_mean": 0.55,
+        "strong_match_count": 5,
+        "results_examined": 20,
+        "median_views": 186243.0,
+        "p90_views": 2119374,
+        "median_subscribers": 151000.0,
+        "channels_under_100k_subs": 7,
+        "median_age_days": 919,
+        "published_last_365d": 4,
+        "interpretation": "5 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.75,
+          "incumbent_subs": 0.26,
+          "view_ceiling": 0.247,
+          "staleness": 0.8
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-25T16:25:04.528693+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.4933,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Middle of the field: title gap 0.75, demand 0.42, opportunity 0.58."
+    },
+    {
+      "slug": "is-aluminum-stronger-than-steel",
+      "domain": "materials-and-manufacturing",
+      "title": "Is aluminum stronger than steel?",
+      "query": "is aluminum stronger than steel",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.217 clears the 0.16 floor and title gap 0.85 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.2166,
+        "autocomplete_completions": 2,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 1,
+        "key_term": "aluminum",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 1,
+        "sample_completions": [
+          "is aluminum stronger than steel",
+          "difference between aluminum and steel"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-25T16:55:27.038028+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.717,
+        "title_gap": 0.85,
+        "title_coverage_mean": 0.475,
+        "strong_match_count": 3,
+        "results_examined": 20,
+        "median_views": 11851.5,
+        "p90_views": 228078,
+        "median_subscribers": 8885.0,
+        "channels_under_100k_subs": 16,
+        "median_age_days": 1206,
+        "published_last_365d": 1,
+        "interpretation": "3 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.85,
+          "incumbent_subs": 0.436,
+          "view_ceiling": 0.418,
+          "staleness": 0.95
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-25T16:24:53.567271+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.3941,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Middle of the field: title gap 0.85, demand 0.22, opportunity 0.72."
+    },
+    {
+      "slug": "how-to-tell-if-steel-is-high-carbon",
+      "domain": "materials-and-manufacturing",
+      "title": "How to tell if steel is high carbon?",
+      "query": "how to tell if steel is high carbon",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.283 clears the 0.16 floor and title gap 0.45 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.2833,
+        "autocomplete_completions": 1,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 1,
+        "key_term": "high",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 2,
+        "sample_completions": [
+          "how to tell if steel is high carbon"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-25T16:55:21.993620+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.475,
+        "title_gap": 0.45,
+        "title_coverage_mean": 0.6,
+        "strong_match_count": 11,
+        "results_examined": 20,
+        "median_views": 49271.0,
+        "p90_views": 406584,
+        "median_subscribers": 49550.0,
+        "channels_under_100k_subs": 12,
+        "median_age_days": 1268,
+        "published_last_365d": 2,
+        "interpretation": "11 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.45,
+          "incumbent_subs": 0.329,
+          "view_ceiling": 0.33,
+          "staleness": 0.9
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-25T16:24:47.665143+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.3668,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Middle of the field: title gap 0.45, demand 0.28, opportunity 0.47."
+    },
+    {
+      "slug": "how-materials-science-could-revolutionize-technology",
+      "domain": "materials-and-manufacturing",
+      "title": "How materials science could revolutionize technology?",
+      "query": "how materials science could revolutionize technology",
+      "gate": {
+        "verdict": "killed_provisional",
+        "failed": [
+          "demand"
+        ],
+        "measurement": {
+          "demand_index": 0.1351,
+          "demand_floor": 0.16,
+          "title_gap": 0.9,
+          "saturation_ceiling": 0.3,
+          "autocomplete_completions": 2,
+          "corpus_breadth": 1
+        },
+        "reason": "demand_index 0.135 is below the 0.16 floor (audience-led: top-20 median views and query-family breadth, not autocomplete completions).",
+        "what_would_settle_it": "Re-measure the audience signal on another day; a demand kill this close to the floor should not stand on its own."
+      },
+      "demand": {
+        "demand_index": 0.1351,
+        "autocomplete_completions": 2,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 1,
+        "key_term": "could",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 1,
+        "sample_completions": [
+          "how materials science could revolutionize technology",
+          "material science and technology"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-25T16:55:41.103627+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.801,
+        "title_gap": 0.9,
+        "title_coverage_mean": 0.44,
+        "strong_match_count": 2,
+        "results_examined": 20,
+        "median_views": 228.5,
+        "p90_views": 1041,
+        "median_subscribers": 838.0,
+        "channels_under_100k_subs": 19,
+        "median_age_days": 583,
+        "published_last_365d": 2,
+        "interpretation": "2 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.9,
+          "incumbent_subs": 0.582,
+          "view_ceiling": 0.663,
+          "staleness": 0.9
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-25T16:25:10.477392+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.329,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Open field (90% of top-20 titles miss the question) but thin demand (0.14) -- uncontested because few ask it."
+    }
+  ],
+  "killed": [],
+  "unmeasured": []
+}
