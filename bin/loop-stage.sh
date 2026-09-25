@@ -190,6 +190,18 @@ fi
 # describe. Without this line the lane would run every week, harvest correctly,
 # and throw the result away on the runner - "runs but inert" with a green tick.
 if [ "$STAGE" = "imagery-harvest" ]; then git add channel/imagery 2>/dev/null; fi
+# The quarterly taxonomy refresh writes exactly the four files
+# loop/taxonomy_refresh.py's own docstring names as its sequence: demand,
+# trends, competition, then the re-derived ranking itself. Same reasoning as
+# weekly-score above - naming only the last file and not the three inputs it
+# was derived from would leave the inputs tracked, modified and unstaged, and
+# every push after would fail exactly the way run 34687628665 did.
+if [ "$STAGE" = "taxonomy-refresh" ]; then
+  git add research/broad_mined.json 2>/dev/null
+  git add research/trends.json 2>/dev/null
+  git add research/competition.json 2>/dev/null
+  git add research/proposed-taxonomy.json 2>/dev/null
+fi
 
 # ------------------------------------------- RULE 0: NOTHING A STAGE WROTE
 #                                                     MAY BE LEFT BEHIND
