@@ -143,7 +143,8 @@ NOT_YET_BUILT = ("queued", "approved")
 def diagnose_empty_shelf(queued: list[str], done: set[str], held: set[str],
                          handoff: list[dict] | None,
                          promotion_held: dict | None = None,
-                         runway: dict | None = None) -> dict:
+                         runway: dict | None = None,
+                         refused: set | None = None) -> dict:
     """WHY the shelf holds nothing to upload, worked out from state this lane
     can already read. Returns the named stop to raise.
 
@@ -270,11 +271,17 @@ def diagnose_empty_shelf(queued: list[str], done: set[str], held: set[str],
         s for s in holds
         if s not in done
         and not (s in queued_set and (ROOT / "scripts" / f"{s}.md").exists()))
+    # A slug loop/batch_queue.py refused on read - the same question as an
+    # episode already made, or another channel's topic (2026-09-25) - is
+    # out of the queue by a DECISION, named in refused_entries(), not
+    # stranded by a lane routing around the gate. Paging a person to
+    # "queue it" would ask them to publish the duplicate.
+    decided = set(refused or ())
     orphans = sorted({
         str(it.get("slug")) for it in handoff
         if it.get("slug") and it.get("status") in NOT_YET_BUILT
         and it["slug"] not in queued_set and it["slug"] not in done
-        and it["slug"] not in holds})
+        and it["slug"] not in holds and it["slug"] not in decided})
     base = {"queued": len(queued), "uploaded": len(done & queued_set),
             "render_gate_held": held_q, "promotion_held": active_holds}
     if orphans:
@@ -416,7 +423,8 @@ def run(limit: int = 4, dry_run: bool = False) -> int:
                 render_gate.held_slugs(),
                 handoff_rows(),
                 promotion_held=batch_queue.promotion_holds(),
-                runway=cadence.runway(per_week))
+                runway=cadence.runway(per_week),
+                refused={r["slug"] for r in batch_queue.refused_entries()})
             st.named_stop(why["code"], why["message"], detail=why["detail"],
                           unblock=why["unblock"],
                           held_items=why["held_items"])

@@ -788,3 +788,37 @@ and `pov/pov-assignments.json`, negative proofs per stage block).
 
 **Verified.** Local suite before the PR; CI on the PR and on `main` after
 merge — see the PR.
+
+## 2026-09-25 — topic selection refuses near-duplicate questions and other-channel topics
+
+**What happened.** A coverage review found week 2026-W39's picks were "how deep
+mariana trench", "what lives in the depths of the ocean", "what lives in the
+deep" and "what lives in the sea" — the last three one question, and all three
+episode 08 ("What creatures live in the deep sea?"). The materials queue held
+ten phrasings of "how are microchips made" (already made), three naming another
+channel ("veritasium", "ted", "branch education").
+
+**Root cause.** `research/publish_order_domain.py _screen()` compared exact token
+sets only; a candidate killed as `ALREADY_PUBLISHED` never entered `seen`, so
+its variants passed; published episodes were matched by slug only, and the
+deep-sea catalogue's numbered slugs can never match a mined one; the queue
+files were read raw, and `loop/score.py` regenerates a queue only when it is
+empty, so duplicates on disk stayed selectable.
+
+**Decision.** `loop/topic_identity.py` is the one definition of "the same
+question" (interrogative + content words; channel, brand and format words
+removed; deep/depths/sea/ocean, made/manufactured, microchip/chip,
+strange/weird folded; subset, same-content and Jaccard ≥ 0.75 rules). A topic
+naming another channel is refused outright. Applied at generation
+(`_screen`), on read (`loop/batch_queue.py queued_entries()`, which every lane
+reads, judging written rows on their script H1 too), in queue depth, in the
+upload lane's orphan check, and in the Saturday hold gate, which now declines
+a held script repeating an episode already made before any shortcut — the
+held `why-deep-sea-creatures` ("Why do deep sea creatures look so strange?")
+is episode 01 and will be declined on 2026-09-26, not promoted.
+
+**Guards.** `loop/tests/test_topic_selection_refuses_near_duplicates.py` (the
+incident's exact strings; fails on the pre-fix code); V43
+`distinct-questions` in `loop/validate.py`, negatively proven; V39 now asserts
+scored = remaining + uploaded + refused; `test_holds_are_decided_by_the_saturday_gate.py`
+case 0.

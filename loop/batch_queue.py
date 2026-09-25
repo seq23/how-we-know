@@ -48,7 +48,126 @@ def queued_entries() -> list[dict]:
 
     Each row carries `_domain_file`, the publish-order file it came from, so a
     caller can say which domain queued a topic without keeping a second map.
+
+    DEDUPLICATED BY QUESTION, NOT ONLY BY SLUG (2026-09-25). A row that asks
+    the same question as an episode already made, or as a row kept ahead of
+    it, or that names another channel, is not in the queue - see
+    `refused_entries()` for each one and why. This is the ONE place the rule
+    is applied on read, so rank.py (Sunday), draft.py (Monday), the Mac's
+    batch and the upload lane cannot disagree about it. The queue FILES are
+    left as written: loop/score.py regenerates a domain's file only when its
+    queue is empty, so a rule applied only at generation would leave every
+    duplicate already on disk selectable for ever.
     """
+    return _screened()[0]
+
+
+def refused_entries() -> list[dict]:
+    """Queue rows `queued_entries()` refused, each with `killed_by`, `matched`
+    and `why`. Never silent: a refused topic is a named decision."""
+    return _screened()[1]
+
+
+def _question_of(row: dict) -> str:
+    return (row.get("query") or row.get("title") or
+            str(row.get("slug") or "").replace("-", " ")).strip()
+
+
+def _script_question(slug: str) -> str | None:
+    """scripts/<slug>.md's H1, lowered, without its '?', or None."""
+    path = ROOT / "scripts" / f"{slug}.md"
+    if not path.exists():
+        return None
+    for line in path.read_text(encoding="utf-8").splitlines():
+        if line.startswith("# "):
+            return line[2:].strip().rstrip("?.!").strip().lower()
+    return None
+
+
+def made_questions(exclude: set | frozenset = frozenset()
+                   ) -> list[tuple[str, frozenset]]:
+    """[(question, question key)] for every episode already made or written:
+    the ledger's published questions and every scripts/*.md H1, minus the
+    slugs in `exclude`. The ONE list of "questions this channel has already
+    answered" - research/publish_order_domain.py (generation) and
+    loop/score.py (the Saturday hold gate) both read it."""
+    import topic_identity as T                             # noqa: PLC0415
+    qs = [q for s, q in _published_questions().items() if s not in exclude]
+    for path in sorted((ROOT / "scripts").glob("*.md")):
+        if path.stem not in exclude:
+            q = _script_question(path.stem)
+            if q:
+                qs.append(q)
+    out, seen = [], set()
+    for q in qs:
+        n = q.strip().rstrip("?").strip().lower()
+        if n and n not in seen:
+            seen.add(n)
+            out.append((n, T.question_key(n)))
+    return out
+
+
+def _published_questions() -> dict[str, str]:
+    """slug -> question for every episode already uploaded (the ledger)."""
+    import ledger                                          # noqa: PLC0415
+    return {r["slug"]: (r.get("question") or r["slug"].replace("-", " "))
+            for r in ledger.load()["published"] if r.get("slug")}
+
+
+def _screened() -> tuple[list[dict], list[dict]]:
+    """(kept rows in queue order, refused rows).
+
+    Precedence, so the thing already made always wins: episodes in the ledger
+    first, then queued rows that already have scripts/<slug>.md, then the
+    unwritten rows, each in queue order. A published row is never refused.
+    """
+    import topic_identity as T                             # noqa: PLC0415
+    rows = _raw_entries()
+    published = _published_questions()
+    kept_keys: list[tuple[str, frozenset]] = [
+        (q, T.question_key(q)) for q in published.values()]
+    refused: dict[str, dict] = {}
+
+    def written(r: dict) -> bool:
+        return (ROOT / "scripts" / f"{r['slug']}.md").exists()
+
+    passes = ([r for r in rows if r["slug"] not in published and written(r)],
+              [r for r in rows if r["slug"] not in published
+               and not written(r)])
+    for group in passes:
+        for r in group:
+            # A written row is judged on its queue question AND on the
+            # question its script actually asks: the held
+            # why-deep-sea-creatures row is queued as "why deep sea
+            # creatures" but its script is "Why do deep sea creatures look
+            # so strange?" - episode 01 again.
+            qs = [_question_of(r)]
+            h1 = _script_question(r["slug"]) if written(r) else None
+            if h1 and h1 != qs[0]:
+                qs.append(h1)
+            ch = next((c for c in map(T.names_other_channel, qs) if c), None)
+            if ch:
+                refused[r["slug"]] = {
+                    **r, "killed_by": "OTHER_CHANNEL", "matched": ch,
+                    "why": f"names another channel ({ch}); the searcher wants "
+                           f"that channel's video, not ours"}
+                continue
+            keys = [(q, T.question_key(q)) for q in qs]
+            hit = next((h for _, k in keys
+                        for h in [T.first_same(k, kept_keys)] if h), None)
+            if hit:
+                refused[r["slug"]] = {
+                    **r, "killed_by": "NEAR_DUPLICATE", "matched": hit[0],
+                    "why": f"same question as {hit[0]!r}: {hit[1]}"}
+                continue
+            kept_keys.extend(keys)
+    kept = [r for r in rows if r["slug"] not in refused]
+    return kept, [refused[r["slug"]] for r in rows if r["slug"] in refused]
+
+
+def _raw_entries() -> list[dict]:
+    """Every row of every publish-order file, one per slug, BEFORE the
+    same-question rule. Only `_screened()` and the V43 validator read this."""
     files = publish_order_files()
     if not files:
         raise NoPublishOrder(
