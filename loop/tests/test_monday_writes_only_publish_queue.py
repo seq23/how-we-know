@@ -159,14 +159,26 @@ print("ADVISORY", 0 if doc is None else len(doc["advisory_candidates"]))
                          f"{r.stdout.strip()[-200:]}")
 
     # --------------------------- 2b. Sunday, a queue row with no script
+    #
+    # Isolated from real production depth in BOTH directions rank.py can be
+    # starved from: rank.py fills weekly slots FIRST from ledger.inventory()
+    # (already-authored, unpublished scripts), THEN from
+    # batch_queue.unwritten_entries() (best-first over the WHOLE real
+    # backlog). A real mon-draft/sun-rank run against this same repo grows
+    # both on any given day - inventory competing for the same `per_week`
+    # slots, and a deeper real backlog simply outranking this fixture within
+    # unwritten_entries() - either one silently starves the fixture's slot.
+    # Neither is a regression; it is live state this case must not depend on.
+    # Zeroing both isolates the ONE thing this case actually tests: that an
+    # unwritten publish-queue row is selected for authoring.
     examined += 1
     r = run("""
-import rank
-real = batch_queue.queued_entries
+import rank, ledger
+ledger.inventory = lambda: []
 fixture = {"slug": "zz-fixture-unwritten-topic", "query":
            "why is the fixture topic unwritten", "_domain_file":
            "publish_order.json"}
-batch_queue.queued_entries = lambda: real() + [fixture]
+batch_queue.unwritten_entries = lambda: [fixture]
 rank.OUT = TMP / "next_topics.json"
 rank.ROOT = TMP   # only used to print OUT relative to it
 try:
@@ -188,17 +200,75 @@ print("SELECTED", json.dumps([[s["slug"], s["source"], s["needs_authoring"]]
         fails.append("PUBLISH_QUEUE_FULLY_WRITTEN fired while the queue had an "
                      "unwritten row")
 
-    # ------------------------------ 3. Monday, today's stale next_topics
+    # ------------------------------ 3. Monday, that week's stale next_topics
+    #
+    # A FROZEN FIXTURE, NOT loop/next_topics.json ITSELF. The first version of
+    # this case read the live file directly - it happened to be exactly the
+    # four 2026-09-21 mined topics on the day this test was written, and nothing
+    # kept it that way. The very next real Sunday-rank run (scheduled weekly,
+    # and confirmed 2026-09-25 to also fire on a manual workflow_dispatch)
+    # legitimately replaces "selected" with that week's real choices - which is
+    # the correct, intended behaviour of loop/rank.py, not a regression. A test
+    # that reads live, weekly-mutating state as though it were fixed evidence
+    # breaks itself on a schedule it does not control. This is the exact
+    # content research/proposed at week 2026-W38 (git show 55e671d), the real
+    # incident this whole file exists to pin - captured once, verbatim, so the
+    # case it tests can never again depend on what real Sunday last wrote.
     examined += 1
-    stale = json.loads((LOOP / "next_topics.json").read_text())
-    stale_sel = [t["slug"] for t in stale["selected"]]
-    if not stale_sel:
-        fails.append("loop/next_topics.json selects nothing - case 3 would "
-                     "examine zero topics")
+    STALE_NEXT_TOPICS = json.dumps({
+        "week": "2026-W38",
+        "selected": [
+            {"slug": "how-do-scientists-know-so-much",
+             "question": "how do scientists know so much",
+             "script": "loop/drafts/how-do-scientists-know-so-much.md",
+             "source": "mined-demand", "needs_authoring": True,
+             "pov_id": "pov-058",
+             "pov_line": "'Scientists say' is almost meaningless on its own. "
+                         "Which scientists? How many? Was it one paper? Was "
+                         "it replicated?"},
+            {"slug": "how-do-scientists-know-how-old-something-is",
+             "question": "how do scientists know how old something is",
+             "script": "loop/drafts/how-do-scientists-know-how-old-something-is.md",
+             "source": "mined-demand", "needs_authoring": True,
+             "pov_id": "pov-059",
+             "pov_line": "I'm not anti-science. I'm against using science "
+                         "as a magic authority word that means nobody has "
+                         "to show their work."},
+            {"slug": "why-deep-sea-creatures",
+             "question": "why deep sea creatures",
+             "script": "loop/drafts/why-deep-sea-creatures.md",
+             "source": "mined-demand", "needs_authoring": True,
+             "pov_id": "pov-001",
+             "pov_line": "When I picture the deep ocean I don't see blue "
+                         "water or fish. I see black. A massive amount of "
+                         "black space where you can't tell what's beside "
+                         "you or beneath you."},
+            {"slug": "how-do-scientists-know-about-other-galaxies",
+             "question": "how do scientists know about other galaxies",
+             "script": "loop/drafts/how-do-scientists-know-about-other-galaxies.md",
+             "source": "mined-demand", "needs_authoring": True,
+             "pov_id": "pov-060",
+             "pov_line": "Science is a process. It is not a person behind "
+                         "a curtain handing down permanent answers."},
+        ],
+    })
+    stale_sel = [t["slug"] for t in json.loads(STALE_NEXT_TOPICS)["selected"]]
+    if sorted(stale_sel) != sorted(HELD):
+        fails.append(f"the frozen stale fixture does not match the four "
+                     f"held slugs: {sorted(stale_sel)}")
     r = run("""
 import draft, author, common
+# Isolated from real backlog depth: with all 4 selected slugs refused (held),
+# draft.py checks batch_queue.unwritten_entries() to tell "queue genuinely
+# fully written" (PUBLISH_QUEUE_FULLY_WRITTEN, green) apart from "topics
+# exist unauthored but next_topics.json picked none of them" (NO_SCRIPTS,
+# needs_human) - see loop/draft.py's own selected-empty branch. This case
+# means to prove the FIRST, exactly the state the real repo was in when the
+# 2026-09-21 incident happened; a real backlog grown since (mon-draft/
+# sun-rank dispatches) must not flip this case into testing the second.
+batch_queue.unwritten_entries = lambda: []
 draft.TOPICS = TMP / "next_topics.json"
-draft.TOPICS.write_text((Path(%r)).read_text())
+draft.TOPICS.write_text(%r)
 draft.QUEUE = TMP / "render_queue.json"
 CALLED = []
 def _no(*a, **k):
@@ -213,7 +283,7 @@ except SystemExit as e:
     rc = e.code
 print("AUTHORED", CALLED)
 print("QUEUE_WRITTEN", draft.QUEUE.exists())
-""" % str(LOOP / "next_topics.json"), tmp / "mon")
+""" % STALE_NEXT_TOPICS, tmp / "mon")
     out = r.stdout + r.stderr
     for s in stale_sel:
         if f"REFUSE {s}:" not in out:
@@ -236,7 +306,16 @@ examined += 1
 done = {r["slug"] for r in ledger.load()["published"]}
 rows = [{"slug": s, "status": "queued"} for s in HELD]
 ok_rw = {"level": "ok", "weeks_remaining": 6.0, "message": "6.0 weeks"}
-why = CU.diagnose_empty_shelf(queued, done | set(queued), set(), rows,
+# Simulate "every queued episode is uploaded" as production would actually
+# reach that state - the real ledger plus every queued slug that is not
+# itself a held name. NOT `done | set(queued)` outright: a held slug can
+# coincidentally collide with a queue candidate's auto-generated slug (real,
+# confirmed 2026-09-25 - see cloud_upload.py's own comment on why-deep-
+# sea-creatures) while never having a real published episode. Unioning the
+# full raw `queued` in would mark that held-and-coincidentally-queued slug
+# "uploaded" by name alone, which production's real ledger read never does.
+simulated_done = done | (set(queued) - set(holds))
+why = CU.diagnose_empty_shelf(queued, simulated_done, set(), rows,
                               promotion_held=holds, runway=ok_rw)
 if why["code"] != "SCRIPTS_AWAITING_PROMOTION":
     fails.append(f"today's held state is {why['code']}, not "
@@ -249,7 +328,7 @@ if d != "owner_action":
     fails.append(f"SCRIPTS_AWAITING_PROMOTION is {d} on its first run, not the "
                  f"green owner_action - it would page her on a decision she has")
 examined += 1
-why = CU.diagnose_empty_shelf(queued, done | set(queued), set(),
+why = CU.diagnose_empty_shelf(queued, simulated_done, set(),
                               rows + [{"slug": "a-new-stray", "status": "queued"}],
                               promotion_held=holds, runway=ok_rw)
 if why["code"] != "AUTHORED_NOT_QUEUED" or why["held_items"] != ["a-new-stray"]:
