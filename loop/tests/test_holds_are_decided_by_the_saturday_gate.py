@@ -7,8 +7,12 @@ that process. This pins every branch of it against a fixture hold register,
 with the gate subprocess stubbed so nothing spends quota or touches the real
 scripts/, publish orders, hold file, POV ledger or decision log:
 
-  1. a hold whose slug is ALREADY a queued row is promoted without a gate call
-     (the gate already passed it - the real why-deep-sea-creatures collision);
+  0. a hold whose script asks a question ALREADY MADE is declined before
+     anything else - even when its slug is a queued row - with no gate call:
+     the real why-deep-sea-creatures script, "Why do deep sea creatures look
+     so strange?", is episode 01 ("... look so weird") (2026-09-25);
+  1. a hold whose slug is ALREADY a queued row, asking a NEW question, is
+     promoted without a gate call (the gate already passed it);
   2. a hold the gate PASSES is promoted: script at scripts/<slug>.md, a gated
      row appended to its domain's publish order under the HOLD's slug (not
      the gate's auto-slug), its POV line recorded, the hold row gone;
@@ -83,7 +87,9 @@ def check() -> list[str]:
     drafts = SCRATCH / "drafts"
     drafts.mkdir()
     holds = {
-        "already-queued": script("Why do deep sea creatures look so strange"),
+        "already-queued": script("How do deep sea creatures see in the dark"),
+        "repeats-made": script("Why do deep sea creatures look so strange",
+                               pov=POV2),
         "gate-passes": script("How do scientists know how deep the ocean is",
                               pov=POV2),
         "gate-kills": script("How do scientists know so much"),
@@ -145,7 +151,9 @@ def check() -> list[str]:
     score.DECLINED_DIR, score.DECISION_LOG = declined_dir, log
     score.RESEARCH_DIR, score.DRAFTS_DIR = SCRATCH, drafts
     batch_queue.queued_entries = lambda: [
-        {"slug": "already-queued", "query": "why deep sea creatures",
+        {"slug": "already-queued", "query": "how deep sea creatures see",
+         "_domain_file": "publish_order_fixture.json"},
+        {"slug": "repeats-made", "query": "why deep sea creatures",
          "_domain_file": "publish_order_fixture.json"}]
     domains.allocation = lambda cfg: {"deep-sea-ocean-science": 2}
     pov_match.bank = lambda: list(BANK)
@@ -173,12 +181,29 @@ def check() -> list[str]:
         recorded = {a["video"]: a for a in
                     json.loads(assignments.read_text())["assignments"]}
 
+        # -- 0. repeats an episode already made: declined, never gated -------
+        examined += 1
+        if "repeats-made" in left:
+            fails.append("a hold repeating episode 01 is still held")
+        if (scripts_dir / "repeats-made.md").exists():
+            fails.append("a hold repeating episode 01 was promoted to "
+                         "scripts/ (its slug is a queued row, which must not "
+                         "shortcut the repeat check)")
+        if not (declined_dir / "repeats-made.md").exists() \
+                or (drafts / "repeats-made.md").exists():
+            fails.append("the repeat was not MOVED to loop/drafts/declined/")
+        if any(c.startswith("why do deep sea") for c in calls):
+            fails.append("a hold repeating an episode already made was sent "
+                         "to the gate; it must be declined before any spend")
+        if "repeats-made" in recorded:
+            fails.append("a declined repeat had its POV line recorded")
+
         # -- 1. already queued: promoted, no gate call ------------------------
         examined += 1
         if "already-queued" in left or not (scripts_dir / "already-queued.md").exists():
             fails.append("a hold whose slug is already a queued row was not "
                          "promoted to scripts/")
-        if any(c.startswith("why do deep sea") for c in calls):
+        if any(c.startswith("how do deep sea") for c in calls):
             fails.append("a hold whose slug is already a queued row was "
                          "re-gated; the gate already passed it")
 
@@ -234,7 +259,8 @@ def check() -> list[str]:
 
         # -- 6. the decision log ---------------------------------------------
         examined += 1
-        for slug, verdict in (("already-queued", "PROMOTED"),
+        for slug, verdict in (("repeats-made", "DECLINED"),
+                              ("already-queued", "PROMOTED"),
                               ("gate-passes", "PROMOTED"),
                               ("gate-kills", "DECLINED"),
                               ("off-plan", "DECLINED")):
