@@ -193,15 +193,35 @@ def refresh_primary_ranking(st: Stage) -> None:
 
 
 def score_new_domains(st: Stage) -> None:
-    """Give a promoted domain its first scored queue.
+    """Give every domain with an empty queue a scored one.
 
-    A DOMAIN THE MONTHLY REVIEW PROMOTED ARRIVES WITH NO QUEUE. It holds
-    weekly slots from the moment loop/domains.lifecycle() retires the
-    domain it replaced, and nothing else in the loop will score its
-    topics: research/publish_order.py gates deep sea and
-    publish_order_materials.py gates materials from a hand-written
-    candidate list. Scoring it here, on the schedule, is what makes the
-    promotion real rather than an entry in a report.
+    A DOMAIN ARRIVES HERE WITH NO QUEUE two ways: the monthly review just
+    promoted it, or an established domain's own scored queue has simply been
+    fully consumed - `missing_queues()` asks `domains.queue_depth()`, which
+    excludes anything already published, so a long-running domain reads
+    exactly like a freshly promoted one the day its last queued topic airs.
+    Nothing else in the loop will score its topics: research/publish_order.py
+    gates deep sea and publish_order_materials.py gates materials from a
+    hand-written candidate list. Scoring it here, on the schedule, is what
+    keeps every allocated domain fed rather than only the first one whose
+    queue happened to run out first.
+
+    ─── EVERY DOMAIN GETS A TURN, EVEN WHEN ONE STOPS ─────────────────────
+    `st.named_stop()` raises and `Stage.__exit__` turns that into `sys.exit`
+    for the WHOLE stage — correct for a stage with one thing to do, wrong
+    here, where `missing_queues()` can return more than one domain. Calling
+    it per domain inside the loop meant the FIRST domain's quota stop ended
+    the run before the second domain was even attempted: confirmed
+    2026-09-25 — deep-sea-ocean-science and materials-and-manufacturing were
+    BOTH fully exhausted (every queued topic already published), the
+    Saturday run reached deep-sea, hit NEW_DOMAIN_QUOTA, and exited — so
+    materials-and-manufacturing, in exactly the same state, was silently
+    never even tried, every week, for as long as deep-sea's own
+    quota-constrained refill took to finish. One domain's bad day is not a
+    reason to skip the other's turn. So every domain in `missing_queues()`
+    is attempted here regardless of an earlier one's outcome, and a stop is
+    raised ONCE at the end, naming every domain that could not be scored —
+    never only the first.
 
     Same gate, imported unchanged - a new domain's topics are not waved
     through for being new. A quota or key stop is named, not a failure,
@@ -209,6 +229,7 @@ def score_new_domains(st: Stage) -> None:
     refresh_primary_ranking() on purpose: its stop must never cost the
     channel the ranking every publishing lane reads.
     """
+    stops: list[dict] = []
     for dom, path in missing_queues().items():
         st.note(f"{dom} holds weekly slots and has no scored queue; "
                 f"running the gate for it")
@@ -223,40 +244,58 @@ def score_new_domains(st: Stage) -> None:
             st.work(f"scored a first queue for {dom} -> "
                     f"{path.relative_to(ROOT)}")
         elif KEY_ABSENT_MARKERS.search(gout):
-            st.named_stop(
-                "NEW_DOMAIN_KEY_ABSENT",
-                f"{dom} holds weekly slots and its first topic gate found no "
-                f"YouTube Data API key in this environment. Competition "
-                f"cannot be measured without one, so the domain has no queue "
-                f"and the drafting lane has nothing to draw from for it. The "
-                f"primary ranking was refreshed before this stop.",
-                detail={"domain": dom, "tail": gout.strip().splitlines()[-4:]},
-                unblock="Add YOUTUBE_API_KEY as a repository secret (a Data "
-                        "API v3 key on the Google Cloud project that already "
-                        "holds the upload OAuth client; free tier, no card). "
-                        "The next Saturday run scores the domain. No retry "
-                        "without the key can clear this.")
+            stops.append({
+                "domain": dom, "code": "NEW_DOMAIN_KEY_ABSENT",
+                "message": f"{dom} holds weekly slots and its first topic "
+                    f"gate found no YouTube Data API key in this "
+                    f"environment. Competition cannot be measured without "
+                    f"one, so the domain has no queue and the drafting lane "
+                    f"has nothing to draw from for it.",
+                "tail": gout.strip().splitlines()[-4:],
+                "unblock": "Add YOUTUBE_API_KEY as a repository secret (a "
+                    "Data API v3 key on the Google Cloud project that "
+                    "already holds the upload OAuth client; free tier, no "
+                    "card). The next Saturday run scores the domain. No "
+                    "retry without the key can clear this."})
         elif QUOTA_MARKERS.search(gout):
-            st.named_stop(
-                "NEW_DOMAIN_QUOTA",
-                f"{dom} holds weekly slots and its first topic gate "
-                f"stopped on YouTube Data API quota. It has no queue until "
-                f"this runs, and the drafting lane has nothing to draw "
-                f"from for it.",
-                detail={"domain": dom, "tail": gout.strip().splitlines()[-4:]},
-                unblock="The next Saturday run retries. If it recurs, the "
-                        "candidate set is larger than one day's quota - "
-                        "lower --budget and let it fill over two weeks.")
+            stops.append({
+                "domain": dom, "code": "NEW_DOMAIN_QUOTA",
+                "message": f"{dom} holds weekly slots and its first topic "
+                    f"gate stopped on YouTube Data API quota. It has no "
+                    f"queue until this runs, and the drafting lane has "
+                    f"nothing to draw from for it.",
+                "tail": gout.strip().splitlines()[-4:],
+                "unblock": "The next Saturday run retries. If it recurs, "
+                    "the candidate set is larger than one day's quota - "
+                    "lower --budget and let it fill over two weeks."})
         else:
-            st.named_stop(
-                "NEW_DOMAIN_UNSCORED",
-                f"{dom} holds weekly slots and its first topic gate exited "
-                f"{g.returncode} without writing a queue.",
-                detail={"domain": dom, "tail": gout.strip().splitlines()[-6:]},
-                unblock="Run research/publish_order_domain.py --domain "
-                        f"{dom} --candidates-only to see what it found. A "
-                        "domain with no queue cannot fill the slots the "
-                        "monthly review gave it.")
+            stops.append({
+                "domain": dom, "code": "NEW_DOMAIN_UNSCORED",
+                "message": f"{dom} holds weekly slots and its first topic "
+                    f"gate exited {g.returncode} without writing a queue.",
+                "tail": gout.strip().splitlines()[-6:],
+                "unblock": "Run research/publish_order_domain.py --domain "
+                    f"{dom} --candidates-only to see what it found. A "
+                    "domain with no queue cannot fill the slots the "
+                    "monthly review gave it."})
+
+    if stops:
+        # THE WORST CODE NAMES THE STOP, EVERY DOMAIN IS IN THE DETAIL. A
+        # mix of an absent key and a quota ceiling is still ONE call to
+        # named_stop() (it can raise only once) — the code picked is the one
+        # that needs the more active fix (a key nobody can wait out beats a
+        # quota that clears on its own), and nothing about any domain's stop
+        # is dropped: the full per-domain detail rides in `detail["stops"]`.
+        rank = {"NEW_DOMAIN_KEY_ABSENT": 0, "NEW_DOMAIN_UNSCORED": 1,
+                "NEW_DOMAIN_QUOTA": 2}
+        worst = min(stops, key=lambda s: rank.get(s["code"], 1))
+        doms = ", ".join(s["domain"] for s in stops)
+        st.named_stop(
+            worst["code"],
+            f"{len(stops)} domain(s) could not be scored this run: {doms}. "
+            f"{worst['message']}",
+            detail={"stops": stops},
+            unblock="; ".join(f"{s['domain']}: {s['unblock']}" for s in stops))
 
 
 def main() -> None:
