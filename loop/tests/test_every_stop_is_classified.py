@@ -118,6 +118,14 @@ GENERATED = {
     "NO_QUEUE":                    ("cloud_upload.py", '"code": "NO_QUEUE"'),
     # Synthesised by the digest from the Mac's heartbeat, not raised by a lane.
     "MAC_NOT_SHIPPING":            ("digest.py", '"code": "MAC_NOT_SHIPPING"'),
+    # score_new_domains() tries every domain missing a queue rather than
+    # aborting on the first one's stop (2026-09-25 — one domain's quota stop
+    # was silently starving every OTHER exhausted domain of its own turn,
+    # every week), so each domain's code is collected in a dict and only the
+    # worst of them reaches a single named_stop() call by variable.
+    "NEW_DOMAIN_KEY_ABSENT":       ("score.py", '"code": "NEW_DOMAIN_KEY_ABSENT"'),
+    "NEW_DOMAIN_QUOTA":            ("score.py", '"code": "NEW_DOMAIN_QUOTA"'),
+    "NEW_DOMAIN_UNSCORED":         ("score.py", '"code": "NEW_DOMAIN_UNSCORED"'),
 }
 
 # Families the loop BUILDS a code for. Each must be matched by a wildcard key.
