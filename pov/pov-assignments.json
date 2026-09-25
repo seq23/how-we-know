@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-07T14:48:51Z",
+  "generated": "2026-09-25T17:07:24Z",
   "rule": "one POV per video, no reuse, owner's own words only",
   "assignments": [
     {
@@ -331,6 +331,20 @@
       "line": "When someone gives me a fact with a number in it, my first instinct is: where did the number come from? Not because I assume they're lying. Numbers can make almost anything sound authoritative.",
       "matched_by": "transferable tag:numbers (the bank permits any evidence-based niche)",
       "recorded_by": "loop/pov_repair.py"
+    },
+    {
+      "video": "how-deep-mariana-trench",
+      "pov_id": "pov-001",
+      "tier": "specific",
+      "source": "matched by author",
+      "line": "When I picture the deep ocean I don't see blue water or fish. I see black. A massive amount of black space where you can't tell what's beside you or beneath you."
+    },
+    {
+      "video": "what-lives-in-the-sea",
+      "pov_id": "pov-042",
+      "tier": "transferable",
+      "source": "matched by author",
+      "line": "I'm interested in the evidence chain, not just the final fact somebody puts on screen."
     }
   ]
 }
