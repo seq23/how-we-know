@@ -116,18 +116,35 @@ def main() -> int:
     # ------------------------------------------------- NEGATIVE PROOFS
     # Each restores ONE defect by deleting its pathspec line from the wrapper
     # text and shows the STRAY come back for exactly that stage.
+    # Since 2026-09-25 weekly-score promotes held scripts too, so `git add
+    # scripts` and the POV pathspec each appear in TWO stage blocks. A
+    # proof removes the line inside ITS stage's `if [ "$STAGE" = ... ]`
+    # block only - deleting every copy would prove the other stage's
+    # defect, not this one's.
+    def in_block(stage: str, line: str) -> str:
+        return (r'(if \[ "\$STAGE" = "' + re.escape(stage) + r'" \]; then\n'
+                r'(?:(?!^fi\n).*\n)*?)^\s*' + line + r'\n')
+
     proofs = [
-        ("weekly-score", r"^\s*git add research/competition\*\.json 2>/dev/null\n",
+        ("weekly-score", in_block("weekly-score",
+                                  r"git add research/competition\*\.json 2>/dev/null"),
          "research/competition_stop.json", "the #78 defect"),
-        ("weekly-score", r"^\s*git add research/mined_queries\*\.json 2>/dev/null\n",
+        ("weekly-score", in_block("weekly-score",
+                                  r"git add research/mined_queries\*\.json 2>/dev/null"),
          "research/mined_queries_*.json", "the deep-mine output"),
-        ("mon-draft", r"^\s*git add scripts 2>/dev/null\n",
+        ("weekly-score", in_block("weekly-score", r"git add scripts 2>/dev/null"),
+         "scripts/*.md", "a promoted hold's script"),
+        ("weekly-score", in_block("weekly-score",
+                                  r"git add pov/pov-assignments\.json 2>/dev/null"),
+         "pov/pov-assignments.json", "a promoted hold's POV record"),
+        ("mon-draft", in_block("mon-draft", r"git add scripts 2>/dev/null"),
          "scripts/*.md", "the promoted script"),
-        ("mon-draft", r"^\s*git add pov/pov-assignments\.json 2>/dev/null\n",
+        ("mon-draft", in_block("mon-draft",
+                               r"git add pov/pov-assignments\.json 2>/dev/null"),
          "pov/pov-assignments.json", "the POV bank record"),
     ]
     for stage, pattern, expect, what in proofs:
-        broken, n = re.subn(pattern, "", script, flags=re.M)
+        broken, n = re.subn(pattern, r"\1", script, flags=re.M)
         check(f"negative proof setup: the '{expect}' pathspec line exists to remove",
               n == 1, f"matched {n}")
         if n != 1:

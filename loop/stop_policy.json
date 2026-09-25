@@ -134,6 +134,19 @@
       "max_consecutive": 4,
       "escalation": "Four consecutive weekly runs with nothing in the publish queue to write means the queue is not growing while episodes keep airing. Check whether the Saturday scoring pass is adding rows to research/publish_order*.json, and whether scripts in loop/promotion_holds.json are waiting on a promotion decision."
     },
+    "AUTHOR_REQUIRED": {
+      "why": "One or more of the week's slots could not be authored automatically (the generator's own retry budget ran out, its key was absent, or a draft failed validation) and a research brief was written to loop/briefs/ for each. The week still ships every slot that WAS authored, and the topic stays in the publish queue unwritten, so next Monday's run selects it again with a fresh retry budget. Owner instruction 2026-09-25: a stop that costs nobody a decision and that the next scheduled run retries is a note, not a red build. It is NOT a silent skip: the briefs are committed, the stop is in the job summary, and the streak cap below is what turns a repeat into a page.",
+      "requires_detail": [
+        "briefs"
+      ],
+      "max_consecutive": 1,
+      "escalation": "The SAME Monday lane fell short two weeks running. One miss is the generator having a bad day on one topic; two in a row means a topic the generator cannot write at all (a validator it cannot satisfy, a figure it cannot source) is being re-selected every week and burning the retry budget each time. Read detail.stops and detail.briefs in the stop record: if DRAFT_FAILED_VALIDATION, the rejection text names the check; fix the prompt or the check, not the script. If OPENROUTER_KEY_MISSING, put the key in .secrets/openrouter_key.txt."
+    },
+    "SCRIPTS_AWAITING_PROMOTION": {
+      "why": "Nothing to upload: every queued episode is uploaded and dated, the runway exists, and the only scripts outside the queue are held in loop/promotion_holds.json. Since 2026-09-25 a hold is not a decision waiting on the owner: the Saturday weekly-score stage runs every held script's question through the same demand-and-competition gate every queued topic passed and either promotes it (script into scripts/, row into its domain's publish order) or declines it (script moved to loop/drafts/declined/, hold removed, logged in docs/DECISION-LOG.md). So this state clears on its own the next Saturday. A NEW script outside the queue that is not in the hold register is AUTHORED_NOT_QUEUED and still pages; a critical runway is SCRIPTS_AWAITING_PROMOTION_RUNWAY_CRITICAL and still pages.",
+      "max_consecutive": 8,
+      "escalation": "Eight consecutive daily runs is a full Saturday-to-Saturday cycle plus one: the weekly-score stage ran and the holds are still there. Either it could not run the gate (its own run's stop record says why - the YouTube key, or quota) or loop/score.py dispose_promotion_holds() is not being reached. Read the most recent weekly-score stop record and the hold rows' gate_deferred counters."
+    },
     "PUBLISH_QUEUE_UPLOADED": {
       "why": "Every episode in research/publish_order*.json is already uploaded and dated, and the authoring lane has no script waiting outside the queue. The lane is FINISHED, not blocked. It uploads again as soon as a new episode is queued and the Mac shelves it. The channel keeps airing what is already scheduled in the meantime.",
       "max_consecutive": 8,
@@ -360,11 +373,6 @@
       "max_consecutive": 14,
       "escalation": "Two weeks with no Shorts going out is a discovery surface switched off. Go red."
     },
-    "SCRIPTS_AWAITING_PROMOTION": {
-      "why": "Nothing to upload: every queued episode is uploaded and dated, the runway exists, and the only scripts outside the queue are held on purpose in loop/promotion_holds.json awaiting the owner's promotion decision (decided 2026-09-23 that they wait for her; not queued for the Mac, not deleted). No automation can make that decision, and she already knows, so the run stays green, names the held slugs, and the fact goes to the digest instead of a daily page. A NEW script outside the queue that is not in the hold register is AUTHORED_NOT_QUEUED and still pages; a critical runway is SCRIPTS_AWAITING_PROMOTION_RUNWAY_CRITICAL and still pages.",
-      "max_consecutive": 28,
-      "escalation": "Four weeks of daily runs with the promotion decision still open. The channel has been airing only what was already scheduled for a month; the decision is now a runway question. Go red."
-    },
     "CADENCE_SCALE_WITHHELD": {
       "why": "The loop is holding at the lower publishing rate because the finished-episode queue is too thin to sustain the higher one. Nothing is broken; the fix is a batch on the Mac, which is hers to start.",
       "max_consecutive": 6,
@@ -397,7 +405,7 @@
     "STATE_FILE_CORRUPT": "Only after loop/common.py has already tried to restore the file from origin/main and failed. A state file that cannot be restored is a real defect.",
     "VALIDATOR_FAILED": "A validator found a defect. That is the whole point of it.",
     "DRAFT_FAILED_VALIDATION": "A generated script did not pass its own validators and was not queued. A defect in the draft or in the prompt.",
-    "AUTHOR_REQUIRED": "The lane needs the authoring path and it is not available. A configuration defect.",
+    "HOLD_GATE_FAILED": "loop/score.py dispose_promotion_holds() could not decide a held script: the single-query gate raised an unhandled exception (a code defect, retrying next Saturday cannot fix it), or it has been deferred on a missing key or quota for four Saturdays running (the hold is now older than any decision should be). Time does not fix either; a person reads the stop's detail.",
     "RUNWAY_AUTHORING_FALLBACK": "The runway warning had to fall back to a degraded authoring path. It must be seen, because the fallback is not the intended pipeline.",
     "TOPIC_EXCLUDED": "A queued topic is on the exclusion list. A queue defect, not a transient.",
     "SCORER_MISSING": "The scoring entrypoint is absent. Nothing can rank without it.",
@@ -412,7 +420,7 @@
     "NO_QUEUE": "The publish queue file is missing. A state defect - restore it from origin/main.",
     "PUBLISH_ORDER_MISSING": "The ranked queue this lane must read does not exist.",
     "PUBLISH_ORDER_STALE": "The ranked queue is older than the scoring that should have rewritten it.",
-    "SCRIPTS_AWAITING_PROMOTION_RUNWAY_CRITICAL": "Every queued episode is uploaded, scripts are held in loop/promotion_holds.json awaiting the owner's promotion decision, and the runway is critical (or could not be computed). The held decision is now what stands between the channel and going dark, so it pages. It names the held slugs (held_items), so it pages once and then stays HELD until the list changes or the reminder is due.",
+    "SCRIPTS_AWAITING_PROMOTION_RUNWAY_CRITICAL": "Every queued episode is uploaded, scripts are held in loop/promotion_holds.json awaiting the Saturday gate's promotion decision, and the runway is critical (or could not be computed). The channel is about to go dark before Saturday can decide, so it pages. It names the held slugs (held_items), so it pages once and then stays HELD until the list changes or the reminder is due.",
     "AUTHORED_NOT_QUEUED": "Every queued episode is uploaded, and the Monday authoring lane has written scripts to loop/render_queue.json that are in no research/publish_order*.json. bin/batch-session.sh, the only narrator installed on the Mac, reads only the publish_order files, so these scripts can never be narrated. Time does not fix this, so it is not self-resolving. It names the slugs (held_items), so it pages once and then stays HELD until the list changes.",
     "PUBLISH_QUEUE_EMPTY": "research/publish_order*.json exists but holds zero rows. An empty queue looks the same as a deleted one, so it is never read as finished.",
     "QUEUE_ROW_HAS_NO_QUESTION": "A shelved, selected episode carries no title. A broken queue row, refused before any byte is fetched.",

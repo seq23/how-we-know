@@ -175,6 +175,15 @@ if [ "$STAGE" = "weekly-score" ]; then
   # thrown away on the runner every Saturday. Found by
   # loop/tools/write_set.py, the static half of that guard.
   git add research/mined_queries*.json 2>/dev/null
+  # AND a promoted hold. loop/score.py dispose_promotion_holds() (2026-09-25)
+  # writes the same two tracked paths the Monday draft does when it promotes
+  # a script - scripts/<slug>.md and the POV row - plus the publish-order
+  # row (covered above), the hold register and a declined draft's new home
+  # (both under loop/, covered by the first add) and docs/DECISION-LOG.md
+  # (docs/, same). Without these two lines the first promoted hold would be
+  # written on the runner and lost, exactly the mon-draft case below.
+  git add scripts 2>/dev/null
+  git add pov/pov-assignments.json 2>/dev/null
 fi
 # The Monday draft PROMOTES a validated script into scripts/<slug>.md
 # (loop/draft.py) and records which POV bank line it borrowed in

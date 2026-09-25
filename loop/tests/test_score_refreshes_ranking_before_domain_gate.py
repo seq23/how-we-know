@@ -87,8 +87,15 @@ def check() -> list[str]:
             return SimpleNamespace(returncode=0, stdout="ranked", stderr="")
         raise AssertionError(f"unexpected subprocess: {cmd}")
 
-    saved = (score.subprocess.run, score.missing_queues, cadence.PUBLISH_ORDER)
+    # An empty hold register: main() also decides promotion holds through
+    # the same subprocess.run (2026-09-25), and this test's subject is the
+    # order of ranking and gate, not the real loop/promotion_holds.json.
+    empty_holds = SCRATCH / "promotion_holds.json"
+    empty_holds.write_text('{"holds": []}')
+    saved = (score.subprocess.run, score.missing_queues, cadence.PUBLISH_ORDER,
+             score.HOLDS_PATH)
     score.subprocess.run = fake_run
+    score.HOLDS_PATH = empty_holds
     score.missing_queues = lambda: {
         "deep-sea-ocean-science": SCRATCH / "publish_order_deep-sea.json"}
     cadence.PUBLISH_ORDER = tmp_order
@@ -99,7 +106,8 @@ def check() -> list[str]:
         except SystemExit as e:
             exit_code = int(e.code or 0)
     finally:
-        score.subprocess.run, score.missing_queues, cadence.PUBLISH_ORDER = saved
+        (score.subprocess.run, score.missing_queues, cadence.PUBLISH_ORDER,
+         score.HOLDS_PATH) = saved
 
     # -- Rule 0 -----------------------------------------------------------
     examined += 1

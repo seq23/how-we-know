@@ -57,6 +57,9 @@ def check() -> list[str]:
 
     def fake_run(cmd, **kw):
         target = Path(str(cmd[1])).name
+        if "--query" in cmd:
+            raise AssertionError(f"a held script was gated with no hold on "
+                                 f"file: {cmd}")
         if target == "publish_order_domain.py":
             dom = cmd[cmd.index("--domain") + 1]
             calls.append(f"publish_order_domain.py:{dom}")
@@ -74,9 +77,21 @@ def check() -> list[str]:
             return SimpleNamespace(returncode=0, stdout="ranked", stderr="")
         raise AssertionError(f"unexpected subprocess: {cmd}")
 
-    saved = (score.subprocess.run, score.missing_queues)
+    # NO HOLDS. main() also runs dispose_promotion_holds() (2026-09-25),
+    # which reads loop/promotion_holds.json and, through the same
+    # subprocess.run, gates every held script. Left at the real register
+    # this test's quota-shaped stub would DEFER every real hold (writing
+    # gate_deferred counters into the real file) and promote any hold whose
+    # slug is already queued (writing a real scripts/<slug>.md) - which is
+    # exactly what happened the first time it ran. An empty scratch register
+    # keeps the subject of this test the domains, and the assertion on
+    # `calls` below now also proves no hold sneaks a gate call in.
+    empty_holds = SCRATCH / "promotion_holds.json"
+    empty_holds.write_text('{"holds": []}')
+    saved = (score.subprocess.run, score.missing_queues, score.HOLDS_PATH)
     score.subprocess.run = fake_run
     score.missing_queues = lambda: dict(dom_paths)
+    score.HOLDS_PATH = empty_holds
     exit_code = None
     try:
         try:
@@ -84,7 +99,7 @@ def check() -> list[str]:
         except SystemExit as e:
             exit_code = int(e.code or 0)
     finally:
-        score.subprocess.run, score.missing_queues = saved
+        score.subprocess.run, score.missing_queues, score.HOLDS_PATH = saved
 
     # -- Rule 0 -------------------------------------------------------------
     examined += 1

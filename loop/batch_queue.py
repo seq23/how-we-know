@@ -123,7 +123,7 @@ def publish_queue_gate(slugs: list[str]) -> tuple[list[str], dict[str, str]]:
     allowed, refused = [], {}
     for s in slugs:
         if s in holds:
-            refused[s] = ("held awaiting the owner's promotion decision "
+            refused[s] = ("held awaiting the Saturday gate's promotion decision "
                           f"(loop/promotion_holds.json: "
                           f"{holds[s].get('awaiting', 'promotion')})")
         elif s not in queued:

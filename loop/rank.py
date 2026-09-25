@@ -392,7 +392,7 @@ def publish_queue_fully_written(st, rw: dict, advisory: int) -> None:
         f"The lane writes only topics already in the publish queue (owner "
         f"decision 2026-09-23). Runway: {rw.get('message')}"
         + (f" {len(holds)} script(s) are held outside the queue awaiting the "
-           f"owner's promotion decision: {', '.join(sorted(holds))}."
+           f"Saturday gate's promotion decision: {', '.join(sorted(holds))}."
            if holds else ""),
         detail={"queued": len(batch_queue.queued_slugs()),
                 "unwritten": 0,
