@@ -567,8 +567,12 @@ def build(domain: str, pause: float, budget: int) -> dict:
         rec["reason"] = reason(rec)
         out_rows.append(rec)
 
+    # combined() (imported from publish_order.py, unchanged) returns a dict
+    # keyed "combined_score", never "score" - confirmed 2026-09-25, live,
+    # immediately after the median_subscribers fix: this line was the NEXT
+    # crash, masked until now because the previous one always fired first.
     queue = sorted([r for r in out_rows if r["gate"]["verdict"] != "kill"],
-                   key=lambda r: -(r["combined"]["score"] or 0))
+                   key=lambda r: -(r["combined"]["combined_score"] or 0))
     dead = [r for r in out_rows if r["gate"]["verdict"] == "kill"]
     return {
         "generated_utc": datetime.now(timezone.utc).isoformat(),

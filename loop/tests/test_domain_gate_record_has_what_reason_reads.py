@@ -22,15 +22,21 @@ never reached a human: `research/publish_order_domain.py` had, as far as
 this investigation could establish, NEVER once produced a queue for either
 allocated domain the day its own queue ran dry.
 
-Static and network-free on purpose: reason()'s bar is not "does this
-domain currently have live data to score" but "does the SHAPE this file
-promises match the shape the shared gate needs" — an AST check that would
-have caught the missing field the day it was written, without needing
+Fixing that surfaced a SECOND, identically-shaped bug the first one had
+always masked: the very next line sorts on `r["combined"]["score"]`, but
+`combined()` (same file, imported unchanged) returns a dict keyed
+`"combined_score"` — never reached until the first crash was fixed,
+because the first one always fired earlier in the same loop.
+
+Static and network-free on purpose: the bar is not "does this domain
+currently have live data to score" but "does the SHAPE this file promises
+match the shape the shared functions actually return" — an AST check that
+would have caught either field the day it was written, without needing
 YouTube quota, a mined corpus, or any of the real inputs this script
 otherwise requires.
 
-Rule 0: hard-fails if either key set comes back empty, because a scan
-that examines nothing has proved nothing.
+Rule 0: hard-fails if any key set comes back empty, because a scan that
+examines nothing has proved nothing.
 """
 from __future__ import annotations
 
@@ -96,6 +102,38 @@ def keys_the_domain_gate_provides() -> set[str]:
     return out
 
 
+def keys_combined_returns() -> set[str]:
+    """Every literal key in combined()'s own return dict."""
+    tree = ast.parse(REASON_FILE.read_text(), str(REASON_FILE))
+    fn = next((n for n in ast.walk(tree)
+               if isinstance(n, ast.FunctionDef) and n.name == "combined"), None)
+    assert fn is not None, "research/publish_order.py no longer defines combined()"
+    out = set()
+    for node in ast.walk(fn):
+        if isinstance(node, ast.Return) and isinstance(node.value, ast.Dict):
+            for k in node.value.keys:
+                if isinstance(k, ast.Constant):
+                    out.add(k.value)
+    return out
+
+
+def combined_key_the_domain_gate_sorts_on() -> str | None:
+    """The literal key `queue = sorted(..., key=lambda r: -(r["combined"][<key>]...`
+    actually reads, in publish_order_domain.py."""
+    tree = ast.parse(GATE_FILE.read_text(), str(GATE_FILE))
+    for node in ast.walk(tree):
+        if not (isinstance(node, ast.Subscript)
+                and isinstance(node.slice, ast.Constant)):
+            continue
+        base = node.value
+        if (isinstance(base, ast.Subscript)
+                and isinstance(base.slice, ast.Constant)
+                and base.slice.value == "combined"
+                and isinstance(base.value, ast.Name)):
+            return node.slice.value
+    return None
+
+
 def check() -> list[str]:
     fails = []
 
@@ -125,6 +163,28 @@ def check() -> list[str]:
 
     print(f"reason() reads {sorted(needs)}; the domain gate provides "
           f"{sorted(have)}.")
+
+    combined_keys = keys_combined_returns()
+    if not combined_keys:
+        fails.append("combined() scan found ZERO literal keys in its own "
+                     "return dict - the AST walk stopped matching")
+        return fails
+    sort_key = combined_key_the_domain_gate_sorts_on()
+    if sort_key is None:
+        fails.append('publish_order_domain.py scan found no r["combined"]'
+                     '[...] read at all - the sort line the 2026-09-25 '
+                     'KeyError happened on is no longer where this test '
+                     'expects it')
+    elif sort_key not in combined_keys:
+        fails.append(
+            f'publish_order_domain.py sorts on r["combined"][{sort_key!r}], '
+            f'but combined() only ever returns {sorted(combined_keys)}. '
+            f'This is the second bug the 2026-09-25 incident found, masked '
+            f'by the first one until it was fixed.')
+    else:
+        print(f"combined() returns {sorted(combined_keys)}; the domain gate "
+              f"sorts on {sort_key!r}.")
+
     return fails
 
 
