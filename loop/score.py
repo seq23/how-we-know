@@ -304,6 +304,34 @@ def dispose_promotion_holds(st: Stage) -> None:
         dest = SCRIPTS_DIR / f"{slug}.md"
         domain = dom.domain_of_script(src)
 
+        # -- the same question as an episode already made ---------------------
+        # Checked FIRST, before the already-queued shortcut: the held
+        # why-deep-sea-creatures script is "Why do deep sea creatures look so
+        # strange?", which is episode 01, "Why deep sea creatures look so
+        # weird", and its slug colliding with a queued row would otherwise
+        # promote it with no question asked (2026-09-25). A repeat is
+        # declined like a gate kill: moved, never deleted, logged.
+        if not dest.exists():
+            import topic_identity as TI                     # noqa: PLC0415
+            try:
+                held_q = question_of(text)
+            except ValueError:
+                held_q = None           # no title: the gate path reports it
+            rep = (TI.first_same(TI.question_key(held_q),
+                                 batch_queue.made_questions(exclude={slug}))
+                   if held_q else None)
+            if rep:
+                DECLINED_DIR.mkdir(parents=True, exist_ok=True)
+                src.replace(DECLINED_DIR / f"{slug}.md")
+                st.work(f"declined held {slug}: {held_q!r} is the same "
+                        f"question as {rep[0]!r}, already made ({rep[1]}); "
+                        f"moved to loop/drafts/declined/")
+                decided.append(f"**DECLINED** `{slug}` — {held_q!r} is the "
+                               f"same question as {rep[0]!r}, already made "
+                               f"({rep[1]}). Moved to "
+                               f"`loop/drafts/declined/`, never deleted.")
+                continue
+
         # -- already promoted by hand, or already a queued row that passed --
         if dest.exists() or slug in queued:
             if not dest.exists():

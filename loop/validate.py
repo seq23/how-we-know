@@ -3310,31 +3310,52 @@ def v39_queue_depth_is_remaining_not_scored() -> Result:
                f"impossible.")
 
     # The real check: walk the files and confirm no published slug survives.
-    counted = []
+    # A slug counts once however many files carry it, exactly as
+    # queue_depth() counts it.
+    counted, seen_slugs = [], set()
     for path in _dom._publish_order_files():
         for row in (_dom._read(path).get("queue") or []):
             slug = row.get("slug")
-            if slug and slug in published:
+            if not slug or slug in seen_slugs:
+                continue
+            seen_slugs.add(slug)
+            if slug in published:
                 counted.append(slug)
+    # Rows loop/batch_queue.py refuses as the same question as one already
+    # made or kept, or as naming another channel (2026-09-25), are not
+    # inventory either: no lane can ever pick them. They leave the remaining
+    # count exactly as a published slug does, and are asserted the same way.
+    import batch_queue as _bq                              # noqa: PLC0415
+    refused_by_dom: dict[str, int] = {}
+    for row in _bq.refused_entries():
+        slug = row["slug"]
+        d = (_dom.domain_of_slug(slug) or row.get("domain")
+             or _dom._read(_bq.ROOT / "research"
+                           / row["_domain_file"]).get("domain"))
+        if d in _dom.known():
+            refused_by_dom[d] = refused_by_dom.get(d, 0) + 1
+    r.note(f"{sum(refused_by_dom.values())} queued row(s) refused as a "
+           f"repeated question or another channel's topic: {refused_by_dom}")
     r.examined += 1
     if not counted:
         r.note("no published slug appears in any publish-order file, so the "
                "double-count cannot occur here")
-    else:
-        # Those slugs exist in the files; they must NOT be in the depth.
-        by_dom = {}
-        for slug in counted:
-            d = _dom.domain_of_slug(slug)
-            if d:
-                by_dom[d] = by_dom.get(d, 0) + 1
-        for d, n in by_dom.items():
-            r.examined += 1
-            if remaining.get(d, 0) + n != scored.get(d, 0):
-                r.fail(f"{d}: {scored.get(d, 0)} scored minus {n} already "
-                       f"uploaded should leave {scored.get(d, 0) - n} "
-                       f"remaining, but queue_depth() reports "
-                       f"{remaining.get(d, 0)}. A published episode is being "
-                       f"counted as inventory it no longer is.")
+    # Those slugs exist in the files; they must NOT be in the depth. Exact
+    # arithmetic per domain: scored = remaining + uploaded + refused.
+    by_dom = {}
+    for slug in counted:
+        d = _dom.domain_of_slug(slug)
+        if d:
+            by_dom[d] = by_dom.get(d, 0) + 1
+    for d in sorted(set(by_dom) | set(refused_by_dom)):
+        n, x = by_dom.get(d, 0), refused_by_dom.get(d, 0)
+        r.examined += 1
+        if remaining.get(d, 0) + n + x != scored.get(d, 0):
+            r.fail(f"{d}: {scored.get(d, 0)} scored minus {n} already "
+                   f"uploaded minus {x} refused as a repeated question should "
+                   f"leave {scored.get(d, 0) - n - x} remaining, but "
+                   f"queue_depth() reports {remaining.get(d, 0)}. Something "
+                   f"no lane can pick is being counted as inventory.")
     return r
 
 
@@ -3498,6 +3519,66 @@ def v41_discovery_metadata() -> Result:
     return r
 
 
+def v43_queue_asks_distinct_questions(items) -> Result:
+    """HARD. The publish queue, and every item this run hands the Mac, asks
+    questions the channel has not already answered, once each, and names no
+    other channel.
+
+    2026-09-25. Week 2026-W39 picked "what lives in the depths of the ocean",
+    "what lives in the deep" and "what lives in the sea" - one question three
+    times, and all three already aired as episode 08, "What creatures live
+    in the deep sea?". The materials queue held ten phrasings of "how are
+    microchips made" (an episode already made), three naming another channel
+    ("veritasium", "ted", "branch education"). loop/topic_identity.py is the
+    rule; loop/batch_queue.py applies it on read. This checks the OUTCOME
+    pairwise rather than re-running the filter, so it fails if the filter is
+    removed, bypassed or reordered - not merely if it raises.
+
+    Hard-fails when it examines zero queue rows.
+    """
+    r = Result("V43 distinct-questions")
+    import batch_queue as _bq                              # noqa: PLC0415
+    import topic_identity as T                             # noqa: PLC0415
+
+    published = _bq._published_questions()
+    anchors = [(q, T.question_key(q)) for q in published.values()]
+    rows = [x for x in _bq.queued_entries() if x["slug"] not in published]
+    subjects = [(f"queued {x['slug']}", x["slug"], _bq._question_of(x))
+                for x in rows]
+    for it in items or []:
+        if it.get("slug") in published:
+            continue
+        subjects.append((f"this week's {it.get('slug')}", it.get("slug"),
+                         it.get("question") or str(it.get("slug", ""))
+                         .replace("-", " ")))
+    r.examined += len(rows)
+    if not rows:
+        r.fail("the publish queue holds no unpublished row, so this examined "
+               "nothing")
+        return r
+    for i, (label, slug, q) in enumerate(subjects):
+        r.examined += 1 if label.startswith("this week") else 0
+        ch = T.names_other_channel(q)
+        if ch:
+            r.fail(f"{label} ({q!r}) names another channel: {ch}")
+        key = T.question_key(q)
+        hit = T.first_same(key, anchors)
+        if hit:
+            r.fail(f"{label} ({q!r}) repeats an episode already made, "
+                   f"{hit[0]!r}: {hit[1]}")
+        for label2, slug2, q2 in subjects[:i]:
+            if slug2 == slug:
+                continue                  # the same slug, queued and picked
+            why = T.why_same(key, T.question_key(q2))
+            if why:
+                r.fail(f"{label} ({q!r}) and {label2} ({q2!r}) are the same "
+                       f"question: {why}")
+    refused = _bq.refused_entries()
+    r.note(f"{len(refused)} queued row(s) refused on read as a repeated "
+           f"question or another channel's topic")
+    return r
+
+
 def v42_authored_domain_is_allocated(items) -> Result:
     """HARD. No item this run hands to the Mac names a domain outside
     `loop/config.json` `domains.allocation`.
@@ -3573,7 +3654,8 @@ def run_all(items) -> tuple[bool, list[dict]]:
                v37_runtime_target_and_self_heal(),
                v38_no_duplicate_or_zombie_schedule(),
                v39_queue_depth_is_remaining_not_scored(),
-               v42_authored_domain_is_allocated(items)]
+               v42_authored_domain_is_allocated(items),
+               v43_queue_asks_distinct_questions(items)]
     rows = [r.as_dict() for r in results]
     return all(r.ok for r in results), rows
 
