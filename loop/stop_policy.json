@@ -177,6 +177,11 @@
       "max_consecutive": 3,
       "escalation": "A new domain that cannot finish scoring in three weeks is too large to bootstrap at this budget - score it in a dispatched run instead."
     },
+    "TAXONOMY_REFRESH_QUOTA": {
+      "why": "The quarterly taxonomy refresh's competition pass ran out of budget. The existing research/proposed-taxonomy.json stands unchanged - stale evidence beats no evidence - and no domain swap decision is affected until the next attempt.",
+      "max_consecutive": 2,
+      "escalation": "Two quarters running out at the same budget means the candidate set genuinely needs more than --budget allows. Dispatch it by hand with a higher --budget on a day with quota to spare."
+    },
     "UPLOAD_QUOTA": {
       "why": "The Mac-side upload path found the day's allowance spent. Identical in kind to QUOTA_EXHAUSTED: it resets at midnight Pacific and the lane runs daily.",
       "max_consecutive": 3,
@@ -315,6 +320,11 @@
       "max_consecutive": 4,
       "escalation": "Four Saturdays without a key is a promoted domain holding weekly slots for a month with nothing to fill them. Go red."
     },
+    "TAXONOMY_REFRESH_KEY_ABSENT": {
+      "why": "YOUTUBE_API_KEY is absent, so the quarterly taxonomy refresh's competition pass cannot run. Only she can mint the key. The existing research/proposed-taxonomy.json stands unchanged; no domain swap decision is affected.",
+      "max_consecutive": 2,
+      "escalation": "Two quarters (six months) without a key means the candidate-niche ranking has gone stale again for as long as it was before this was built. Go red."
+    },
     "OPENROUTER_KEY_MISSING": {
       "why": "OPENROUTER_API_KEY is absent. Only she can mint one.",
       "max_consecutive": 3,
@@ -424,6 +434,8 @@
     "RETIRE_SCHEDULE_NOT_CLEARED": "A retired video kept its publishAt, so YouTube could re-publish it.",
     "UPLOAD_FAILED": "The upload itself failed. A defect or a platform error that has already consumed quota.",
     "CHANNEL_UNREADABLE": "The channel could not be read at all, so no lane can verify it is acting on the right one.",
+    "TAXONOMY_REFRESH_CRASHED": "The quarterly taxonomy refresh raised an unhandled exception in one of its steps. A code defect, not a condition that clears on its own next quarter - the existing research/proposed-taxonomy.json stands unchanged.",
+    "TAXONOMY_REFRESH_FAILED": "The quarterly taxonomy refresh exited non-zero for an unrecognised reason. The existing research/proposed-taxonomy.json stands unchanged.",
     "BREAKER_TRIPPED": "Only after loop/breaker.py has already tried to reset itself against the live cause and found it still true. A breaker that stays tripped is protecting the channel and must be seen.",
     "EXTENSION_REJECTED": "A script extension failed its own validators. The episode stays short rather than being padded with unsourced prose.",
     "FORMAT_PROBLEM": "Measurement found the format itself underperforming its floor. A decision, not a fault, and it is hers to see.",

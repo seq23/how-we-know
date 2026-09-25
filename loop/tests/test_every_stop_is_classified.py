@@ -126,6 +126,12 @@ GENERATED = {
     "NEW_DOMAIN_KEY_ABSENT":       ("score.py", '"code": "NEW_DOMAIN_KEY_ABSENT"'),
     "NEW_DOMAIN_QUOTA":            ("score.py", '"code": "NEW_DOMAIN_QUOTA"'),
     "NEW_DOMAIN_UNSCORED":         ("score.py", '"code": "NEW_DOMAIN_UNSCORED"'),
+    # loop/taxonomy_refresh.py's classify() picks one of these four by
+    # variable, the same shape as score.py's own classify-and-collect above.
+    "TAXONOMY_REFRESH_CRASHED":    ("taxonomy_refresh.py", '"TAXONOMY_REFRESH_CRASHED"'),
+    "TAXONOMY_REFRESH_KEY_ABSENT": ("taxonomy_refresh.py", '"TAXONOMY_REFRESH_KEY_ABSENT"'),
+    "TAXONOMY_REFRESH_QUOTA":      ("taxonomy_refresh.py", '"TAXONOMY_REFRESH_QUOTA"'),
+    "TAXONOMY_REFRESH_FAILED":     ("taxonomy_refresh.py", '"TAXONOMY_REFRESH_FAILED"'),
 }
 
 # Families the loop BUILDS a code for. Each must be matched by a wildcard key.
