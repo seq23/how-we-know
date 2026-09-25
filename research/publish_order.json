@@ -22,7 +22,7 @@
       "pin_errors"
     ]
   },
-  "generated_at": "2026-09-19T10:09:01.841907+00:00",
+  "generated_at": "2026-09-25T16:24:30.853853+00:00",
   "generator": "research/publish_order.py",
   "rule": "pov/topic-taxonomy.json: 'Rank candidates by (search demand / competition).' Implemented as a hard GATE on both axes, then a geometric combined score among survivors.",
   "gate": {
@@ -123,17 +123,17 @@
         "demand",
         "saturation"
       ],
-      "reason": "demand_index 0.126 is below the 0.16 floor (audience-led: top-20 median views and query-family breadth, not autocomplete completions); title gap 0.00 is at or below the 0.3 saturation ceiling: 20 of the top 20 titles already answer this question squarely.",
+      "reason": "demand_index 0.119 is below the 0.16 floor (audience-led: top-20 median views and query-family breadth, not autocomplete completions); title gap 0.00 is at or below the 0.3 saturation ceiling: 20 of the top 20 titles already answer this question squarely.",
       "measurement": {
-        "demand_index": 0.1264,
+        "demand_index": 0.1189,
         "demand_floor": 0.16,
         "title_gap": 0.0,
         "saturation_ceiling": 0.3,
-        "autocomplete_completions": 2,
+        "autocomplete_completions": 1,
         "corpus_breadth": 0
       },
       "what_would_settle_it": "Re-measure the audience signal on another day; a demand kill this close to the floor should not stand on its own.",
-      "demand_index": 0.1264,
+      "demand_index": 0.1189,
       "opportunity_score": 0.289,
       "title_gap": 0.0
     },
@@ -276,13 +276,13 @@
           "what is the deepest part of the ocean called",
           "what is the deepest part of the ocean we've explored",
           "what is the deepest point of the ocean",
-          "what is found in the deepest part of the ocean"
+          "what the deepest part of the ocean looks like"
         ],
         "caveat": "autocomplete presence, NOT search volume",
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-19T10:08:52.955630+00:00"
+          "fetched_utc": "2026-09-25T16:24:21.233415+00:00"
         }
       },
       "competition": {
@@ -361,7 +361,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-19T10:08:48.484362+00:00"
+          "fetched_utc": "2026-09-25T16:24:16.502196+00:00"
         }
       },
       "competition": {
@@ -439,7 +439,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-19T10:08:44.924192+00:00"
+          "fetched_utc": "2026-09-25T16:24:12.669591+00:00"
         }
       },
       "competition": {
@@ -517,7 +517,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-19T10:08:56.506295+00:00"
+          "fetched_utc": "2026-09-25T16:24:25.033406+00:00"
         }
       },
       "competition": {
@@ -597,7 +597,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-19T10:09:01.841336+00:00"
+          "fetched_utc": "2026-09-25T16:24:30.853227+00:00"
         }
       },
       "competition": {
@@ -668,8 +668,8 @@
         "key_term_completions": 10,
         "key_term_corpus_breadth": 0,
         "sample_completions": [
-          "why do deep sea creatures",
           "why deep sea creatures are scary",
+          "why do deep sea creatures",
           "why deep sea creatures",
           "what is the deepest sea creature"
         ],
@@ -677,7 +677,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-19T10:08:49.377040+00:00"
+          "fetched_utc": "2026-09-25T16:24:17.449824+00:00"
         }
       },
       "competition": {
@@ -758,7 +758,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-19T10:08:50.268739+00:00"
+          "fetched_utc": "2026-09-25T16:24:18.398365+00:00"
         }
       },
       "competition": {
@@ -836,7 +836,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-19T10:08:57.396447+00:00"
+          "fetched_utc": "2026-09-25T16:24:25.985128+00:00"
         }
       },
       "competition": {
@@ -917,7 +917,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-19T10:08:51.166673+00:00"
+          "fetched_utc": "2026-09-25T16:24:19.360981+00:00"
         }
       },
       "competition": {
@@ -995,7 +995,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-19T10:08:52.061380+00:00"
+          "fetched_utc": "2026-09-25T16:24:20.300788+00:00"
         }
       },
       "competition": {
@@ -1072,7 +1072,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-19T10:09:00.950483+00:00"
+          "fetched_utc": "2026-09-25T16:24:29.831071+00:00"
         }
       },
       "competition": {
@@ -1147,7 +1147,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-19T10:09:00.062667+00:00"
+          "fetched_utc": "2026-09-25T16:24:28.868401+00:00"
         }
       },
       "competition": {
@@ -1226,7 +1226,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-19T10:08:47.591765+00:00"
+          "fetched_utc": "2026-09-25T16:24:15.485695+00:00"
         }
       },
       "competition": {
@@ -1304,7 +1304,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-19T10:08:58.284076+00:00"
+          "fetched_utc": "2026-09-25T16:24:26.939929+00:00"
         }
       },
       "competition": {
@@ -1381,7 +1381,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-19T10:08:55.619435+00:00"
+          "fetched_utc": "2026-09-25T16:24:24.093242+00:00"
         }
       },
       "competition": {
@@ -1459,7 +1459,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-19T10:08:45.811294+00:00"
+          "fetched_utc": "2026-09-25T16:24:13.604849+00:00"
         }
       },
       "competition": {

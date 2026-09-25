@@ -1,0 +1,4864 @@
+{
+  "measured_at": "2026-09-25T16:25:13.205256+00:00",
+  "generator": "research/competition.py",
+  "source": "YouTube Data API v3 (search.list, videos.list, channels.list)",
+  "key_source": "environment $YOUTUBE_API_KEY",
+  "key_handling": "The API key is never printed, logged, or written here.",
+  "quota_units_spent": 2448,
+  "quota_budget": 3000,
+  "allocation_plan": null,
+  "candidates_scored": 24,
+  "candidates_unmeasured": [],
+  "unmeasured_note": "Anything listed here has NO competition value. It is not scored as zero and must not be ranked as if it were measured.",
+  "domain_summary": {},
+  "results": [
+    {
+      "query": "how materials science could revolutionize technology",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.44,
+        "max_coverage": 0.8,
+        "strong_match_count": 2,
+        "strong_match_rate": 0.1,
+        "loose_match_rate": 0.2,
+        "gap_signal": 0.9,
+        "interpretation": "2 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 228.5,
+        "p90": 1041,
+        "max": 76053,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 838.0,
+        "max_subscribers": 1780000,
+        "under_100k_subs": 19,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 583,
+        "published_last_365d": 2,
+        "n": 20
+      },
+      "opportunity_score": 0.801,
+      "opportunity_components": {
+        "title_gap": 0.9,
+        "incumbent_subs": 0.582,
+        "view_ceiling": 0.663,
+        "staleness": 0.9
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-25T16:25:10.477392+00:00"
+      },
+      "top_results": [
+        {
+          "title": "How materials science could revolutionise technology - with Jess Wade",
+          "views": 76053,
+          "subs": 1780000,
+          "published_at": "2025-07-29T16:30:30Z",
+          "coverage": 0.8
+        },
+        {
+          "title": "The Future is Here: How Advanced Materials Science is Revolutionizing Technology #youtubeshorts",
+          "views": 312,
+          "subs": 44,
+          "published_at": "2023-04-20T23:13:03Z",
+          "coverage": 0.6
+        },
+        {
+          "title": "What breakthroughs can we expect in materials science and engineering? #learning #science #viral",
+          "views": 49,
+          "subs": 947,
+          "published_at": "2023-09-11T11:38:48Z",
+          "coverage": 0.4
+        },
+        {
+          "title": "The Next Frontier: Advances in Material Science",
+          "views": 10,
+          "subs": 19,
+          "published_at": "2025-07-22T00:00:49Z",
+          "coverage": 0.4
+        },
+        {
+          "title": "How AI Is Revolutionizing Materials Science | Bryce Meredig (Citrine Informatics)",
+          "views": 121,
+          "subs": 416,
+          "published_at": "2025-10-18T00:40:22Z",
+          "coverage": 0.4
+        },
+        {
+          "title": "Revolutionizing Material Science with Metamaterials",
+          "views": 326,
+          "subs": 82,
+          "published_at": "2025-05-08T18:00:19Z",
+          "coverage": 0.4
+        },
+        {
+          "title": "The Incredible Science of Color Changing Materials",
+          "views": 33,
+          "subs": 250,
+          "published_at": "2025-08-15T00:00:15Z",
+          "coverage": 0.4
+        },
+        {
+          "title": "The miracle material that could revolutionise technology #graphene #science #factshorts",
+          "views": 591,
+          "subs": 31800,
+          "published_at": "2024-06-01T13:58:58Z",
+          "coverage": 0.8
+        },
+        {
+          "title": "New materials for implants could Revolutionize Medicine | Sci NC",
+          "views": 654,
+          "subs": 38300,
+          "published_at": "2014-06-26T21:10:44Z",
+          "coverage": 0.6
+        },
+        {
+          "title": "Revolutionary Materials! \ud83d\ude80 | How PAMs Will Change the Future!",
+          "views": 60,
+          "subs": 729,
+          "published_at": "2025-02-11T12:00:44Z",
+          "coverage": 0.2
+        },
+        {
+          "title": "How Superconductors Could Revolutionize EVERYTHING #science #shorts #future",
+          "views": 1041,
+          "subs": 89,
+          "published_at": "2025-07-06T22:00:03Z",
+          "coverage": 0.6
+        },
+        {
+          "title": "Google Scientists Discover 380,000 New Materials with AI!",
+          "views": 3889,
+          "subs": 6870,
+          "published_at": "2024-01-21T22:51:02Z",
+          "coverage": 0.2
+        },
+        {
+          "title": "How Materials Science Drives Today&#39;s Tech Breakthroughs",
+          "views": 145,
+          "subs": 149,
+          "published_at": "2026-05-11T16:00:24Z",
+          "coverage": 0.4
+        },
+        {
+          "title": "The Future of Materials Science: MOFTransformer&#39;s Groundbreaking Technology!",
+          "views": 421,
+          "subs": 33400,
+          "published_at": "2023-03-28T05:45:00Z",
+          "coverage": 0.6
+        },
+        {
+          "title": "Self-Healing Materials \u2013 Concrete, plastics, and metals that repair themselves.",
+          "views": 951,
+          "subs": 1100,
+          "published_at": "2025-09-15T03:55:10Z",
+          "coverage": 0.2
+        },
+        {
+          "title": "Nature&#39;s Blueprint for Smart Materials",
+          "views": 26,
+          "subs": 21,
+          "published_at": "2025-08-04T00:00:49Z",
+          "coverage": 0.2
+        },
+        {
+          "title": "NanoTech &amp; Chemistry: Revolutionizing Material Science!  #chemistry #facts #science",
+          "views": 328,
+          "subs": 1780,
+          "published_at": "2024-05-12T22:45:02Z",
+          "coverage": 0.4
+        },
+        {
+          "title": "Unleashing Quantum Machines: Revolutionizing Chemistry &amp; Materials Science!",
+          "views": 11,
+          "subs": 1,
+          "published_at": "2025-02-27T09:23:35Z",
+          "coverage": 0.4
+        },
+        {
+          "title": "Unlocking the Future: AI and Synthetic Biology Revolutionizing Materials Science! \ud83e\uddec\ud83d\udee0\ufe0f #AI  PART 2",
+          "views": 7,
+          "subs": 2270,
+          "published_at": "2024-10-09T20:00:20Z",
+          "coverage": 0.4
+        },
+        {
+          "title": "Unlocking the Future: AI and Synthetic Biology Revolutionizing Materials Science! \ud83e\uddec\ud83d\udee0\ufe0f #AI  PART 1",
+          "views": 22,
+          "subs": 2270,
+          "published_at": "2024-10-09T19:45:02Z",
+          "coverage": 0.4
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "how to tell if steel is hardened",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.45,
+        "max_coverage": 0.667,
+        "strong_match_count": 0,
+        "strong_match_rate": 0.0,
+        "loose_match_rate": 0.5,
+        "gap_signal": 1.0,
+        "interpretation": "nobody has made the definitive video on this query"
+      },
+      "view_profile": {
+        "median": 70901.5,
+        "p90": 1711012,
+        "max": 3542608,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 91500.0,
+        "max_subscribers": 14600000,
+        "under_100k_subs": 10,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 1240,
+        "published_last_365d": 4,
+        "n": 20
+      },
+      "opportunity_score": 0.724,
+      "opportunity_components": {
+        "title_gap": 1.0,
+        "incumbent_subs": 0.291,
+        "view_ceiling": 0.307,
+        "staleness": 0.8
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-25T16:25:03.332733+00:00"
+      },
+      "top_results": [
+        {
+          "title": "How to identify hardened steel",
+          "views": 94820,
+          "subs": 546000,
+          "published_at": "2010-08-29T01:22:53Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Will it harden? How to test mystery steel",
+          "views": 8102,
+          "subs": 20100,
+          "published_at": "2017-03-15T16:21:25Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Identify Bambu Lab Hardened Steal Gear / Hotend Vs Stainless Gear / Hotend on P1P / P1S",
+          "views": 17696,
+          "subs": 45900,
+          "published_at": "2023-12-09T05:24:36Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "How to test hardness of scrap steel for knife making #blacksmithing #bladesmithing #knife",
+          "views": 241605,
+          "subs": 2980,
+          "published_at": "2025-10-17T18:29:06Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "How To Determine Mild or High Carbon Steel with the Spark Test",
+          "views": 26128,
+          "subs": 3920,
+          "published_at": "2022-01-28T15:15:00Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Hardened Steel Nozzle \u2013 Why You Need One!",
+          "views": 14880,
+          "subs": 53,
+          "published_at": "2025-03-25T18:26:39Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "IS IT CAST IRON OR CAST STEEL? 5 Ways To identify Before Welding",
+          "views": 193092,
+          "subs": 126000,
+          "published_at": "2018-12-14T16:30:10Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "How Blacksmiths Harden Steel for Maximum Strength",
+          "views": 29017,
+          "subs": 926000,
+          "published_at": "2025-10-01T12:00:45Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Heat Treatment -The Science of Forging (feat. Alec Steele)",
+          "views": 3542608,
+          "subs": 5110000,
+          "published_at": "2018-01-29T16:01:00Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "What are tempering colors?  #metal #temperature #tools #knowledge #axe #maker #diy #blade",
+          "views": 1763745,
+          "subs": 139000,
+          "published_at": "2025-10-09T14:00:45Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Hardening process of threaded steel bar- Good tools and machinery make work easy",
+          "views": 1711012,
+          "subs": 14600000,
+          "published_at": "2023-04-17T10:10:00Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Stainless Steel vs Hardened Steel Nozzle Which is Which?? #bambulab  #3dprinting #fix #maker",
+          "views": 6311,
+          "subs": 189,
+          "published_at": "2024-05-25T14:51:54Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How to Drill Hardened Steel  - Knifemaking Top Tips",
+          "views": 131568,
+          "subs": 57000,
+          "published_at": "2020-05-25T18:17:49Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Which Drill Bit Is BEST For Hardened Steel Plate Or Stainless? Find Out",
+          "views": 56453,
+          "subs": 643000,
+          "published_at": "2025-10-14T14:30:36Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Making a HARDENED STEEL KNIFE from soft SCRAP METAL | Making High Carbon Steel",
+          "views": 85350,
+          "subs": 781000,
+          "published_at": "2025-01-22T14:49:35Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Drilling Hardened Steel With Masonry Bits - Not A Lifehack",
+          "views": 182294,
+          "subs": 151000,
+          "published_at": "2023-05-21T14:53:49Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Testing Hardened Steel (1/4 inch) - 50 cal and more",
+          "views": 1341,
+          "subs": 18,
+          "published_at": "2010-07-22T20:11:04Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Pre Heat Hardened Steel 200\u00b0C To Remove Hydrogen &amp; Avoid Cracking",
+          "views": 12518,
+          "subs": 54500,
+          "published_at": "2025-08-06T13:00:30Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Induction Hardening Of Gears - Gear Heat Treatment",
+          "views": 139598,
+          "subs": 2540,
+          "published_at": "2022-08-29T06:09:33Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Hardened steel",
+          "views": 25,
+          "subs": 287000,
+          "published_at": "2015-11-24T00:18:52Z",
+          "coverage": 0.667
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "is damascus steel better",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.483,
+        "max_coverage": 0.667,
+        "strong_match_count": 0,
+        "strong_match_rate": 0.0,
+        "loose_match_rate": 0.45,
+        "gap_signal": 1.0,
+        "interpretation": "nobody has made the definitive video on this query"
+      },
+      "view_profile": {
+        "median": 245955.0,
+        "p90": 6732403,
+        "max": 56227845,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 432000.0,
+        "max_subscribers": 10600000,
+        "under_100k_subs": 6,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 796,
+        "published_last_365d": 0,
+        "n": 20
+      },
+      "opportunity_score": 0.723,
+      "opportunity_components": {
+        "title_gap": 1.0,
+        "incumbent_subs": 0.195,
+        "view_ceiling": 0.23,
+        "staleness": 1.0
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-25T16:25:13.204997+00:00"
+      },
+      "top_results": [
+        {
+          "title": "What Is Damascus Steel? (And Everything You Need to Know about It)",
+          "views": 68532,
+          "subs": 472000,
+          "published_at": "2023-06-12T15:00:31Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Was True Damascus Steel Lost To Time? #history #sword #weapon #martialarts #tech #technology",
+          "views": 203731,
+          "subs": 432000,
+          "published_at": "2023-08-17T18:11:34Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "$4 Knife vs. $400 Knife",
+          "views": 6732403,
+          "subs": 1210000,
+          "published_at": "2024-03-29T16:00:37Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "KnifeCenter FAQ #131: Is Damascus Steel Good?",
+          "views": 83590,
+          "subs": 503000,
+          "published_at": "2023-07-01T16:00:47Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Why Damascus Knives Are So Expensive | So Expensive | Business Insider",
+          "views": 6464676,
+          "subs": 10600000,
+          "published_at": "2023-03-18T14:00:26Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Damascus vs. Super Steels - Testing a Dozen Different Damascus Steels!",
+          "views": 108474,
+          "subs": 45100,
+          "published_at": "2023-07-13T14:43:19Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Learn how to identify real &amp; fake damascus steel knives #damascusknives",
+          "views": 102735,
+          "subs": 1590,
+          "published_at": "2025-04-23T02:01:30Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Why Steel is BEST for swords, even compared to Titanium or whatever",
+          "views": 288179,
+          "subs": 432000,
+          "published_at": "2023-05-04T20:06:28Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Debunking 4 Myths About Damascus Steel",
+          "views": 26109,
+          "subs": 1020,
+          "published_at": "2024-11-12T19:20:42Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Why Are True Damascus Swords Impossible to Recreate?",
+          "views": 1652730,
+          "subs": 24500,
+          "published_at": "2025-07-27T16:01:28Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Damascus Steel vs Titanium Cutting Test!",
+          "views": 74813,
+          "subs": 9480,
+          "published_at": "2025-09-01T15:00:14Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How Sharp is Damascus Steel \ud83d\ude33",
+          "views": 52063,
+          "subs": 1750000,
+          "published_at": "2025-03-12T16:07:26Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Damascus knife making from steel powder #blacksmith #forging #metalworking #welding",
+          "views": 9376228,
+          "subs": 191000,
+          "published_at": "2025-08-28T20:24:06Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "&quot;True Damascus Steel&quot;: History, Metallurgy, Production",
+          "views": 432381,
+          "subs": 16000,
+          "published_at": "2019-08-08T16:34:26Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Damascus steel means two different things. #sword#metal#steel#damascus#history#metallurgy #nerd",
+          "views": 658272,
+          "subs": 432000,
+          "published_at": "2021-11-13T00:36:08Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Making a k-tip chef from twisted damascus #handmade #blacksmith #forging #damascussteel #bladesmith",
+          "views": 2770827,
+          "subs": 191000,
+          "published_at": "2024-11-29T14:15:24Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Why Damascus knives are SO expensive \ud83e\udd2f #mysteryknives #unboxing #knife #unboxing",
+          "views": 74756,
+          "subs": 1030000,
+          "published_at": "2025-04-03T02:38:08Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "I Bought Two Cheap Damascus Chefs knives From Amazon And Couldn\u2019t Believe What I Received..",
+          "views": 1062945,
+          "subs": 492000,
+          "published_at": "2025-08-22T20:03:48Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "WORLDS BEST CHEF KNIFE?!?!",
+          "views": 56227845,
+          "subs": 241000,
+          "published_at": "2025-04-27T01:40:46Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Are Damascus Knives Worth Investing In?",
+          "views": 27969,
+          "subs": 2200000,
+          "published_at": "2022-06-18T14:00:08Z",
+          "coverage": 0.333
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "is aluminum stronger than steel",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.475,
+        "max_coverage": 1.0,
+        "strong_match_count": 3,
+        "strong_match_rate": 0.15,
+        "loose_match_rate": 0.35,
+        "gap_signal": 0.85,
+        "interpretation": "3 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 11851.5,
+        "p90": 228078,
+        "max": 31690728,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 8885.0,
+        "max_subscribers": 10900000,
+        "under_100k_subs": 16,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 1206,
+        "published_last_365d": 1,
+        "n": 20
+      },
+      "opportunity_score": 0.717,
+      "opportunity_components": {
+        "title_gap": 0.85,
+        "incumbent_subs": 0.436,
+        "view_ceiling": 0.418,
+        "staleness": 0.95
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-25T16:24:53.567271+00:00"
+      },
+      "top_results": [
+        {
+          "title": "Is Aluminum Actually Stronger Than Steel?",
+          "views": 56077,
+          "subs": 22400,
+          "published_at": "2025-07-14T17:00:06Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Aluminum vs Steel in Manufacturing",
+          "views": 1278,
+          "subs": 392,
+          "published_at": "2022-07-15T13:32:32Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "10 Differences Between Aluminum and Stainless Steel",
+          "views": 228078,
+          "subs": 45600,
+          "published_at": "2016-04-22T17:26:07Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Steel vs Aluminum - Debunking 4 Common Misconceptions",
+          "views": 62442,
+          "subs": 129000,
+          "published_at": "2022-08-14T23:22:32Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Steel vs Aluminum Trailer | It Depends\u2026",
+          "views": 32513,
+          "subs": 22100,
+          "published_at": "2024-02-19T13:54:01Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Aluminum vs. Steel - 9mm penetration test",
+          "views": 208274,
+          "subs": 1850000,
+          "published_at": "2023-06-04T12:11:14Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Aluminium vs Steel - Which is best for bikepacking?",
+          "views": 21109,
+          "subs": 25100,
+          "published_at": "2024-11-17T18:00:01Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "How Strong is Aluminum?",
+          "views": 473,
+          "subs": 2880,
+          "published_at": "2021-04-16T13:48:10Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Steel vs. Aluminum: What Metal Roofing Material Should I Pick?",
+          "views": 6396,
+          "subs": 52100,
+          "published_at": "2018-07-09T11:59:56Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Pros &amp; Cons Of Steel &amp; Aluminum Body Trucks",
+          "views": 15826,
+          "subs": 6070,
+          "published_at": "2022-08-23T18:47:15Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Steel vs Aluminium - Which Metal REALLY Wins for Automotive?",
+          "views": 3747,
+          "subs": 11700,
+          "published_at": "2025-06-20T08:15:03Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "7075 vs 6061 Aluminum Alloy \u2013 Which One Should You Choose?#7075aluminum#6061aluminum# #aluminum",
+          "views": 33934,
+          "subs": 1610,
+          "published_at": "2025-06-06T00:45:12Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "6061 aluminum Is 6061 aluminum stronger than aluminum?",
+          "views": 22,
+          "subs": 40,
+          "published_at": "2023-06-06T14:35:46Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Titanium vs. Aluminum: The Best Industrial Metal Unveiled",
+          "views": 3727,
+          "subs": 4310,
+          "published_at": "2024-03-01T14:00:01Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "6082 Aluminum--Is 6061 T6 aluminum stronger than steel?",
+          "views": 338,
+          "subs": 40,
+          "published_at": "2023-06-09T08:09:58Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "You Auto Know: Aluminum vs Steel",
+          "views": 182,
+          "subs": 3340,
+          "published_at": "2016-02-02T13:31:13Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "This is what gallium does to aluminum",
+          "views": 31690728,
+          "subs": 10900000,
+          "published_at": "2025-06-16T18:20:25Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Motorcycle Metallurgy - Why Steel? Aluminum? Titanium?",
+          "views": 919435,
+          "subs": 2360000,
+          "published_at": "2022-11-01T04:03:13Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Episode 9: Aluminum: 6061 vs 5052 - The Basics",
+          "views": 7877,
+          "subs": 40,
+          "published_at": "2024-11-04T06:00:01Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Steel vs Aluminum vs Stainless \u2014 Which Railing Material Is BEST? | Optimumrails.com",
+          "views": 1276,
+          "subs": 729,
+          "published_at": "2025-12-10T05:43:47Z",
+          "coverage": 0.5
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "how are microchips designed",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.35,
+        "max_coverage": 0.5,
+        "strong_match_count": 0,
+        "strong_match_rate": 0.0,
+        "loose_match_rate": 0.3,
+        "gap_signal": 1.0,
+        "interpretation": "nobody has made the definitive video on this query"
+      },
+      "view_profile": {
+        "median": 680294.5,
+        "p90": 7015881,
+        "max": 24674273,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 185000.0,
+        "max_subscribers": 22900000,
+        "under_100k_subs": 7,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 932,
+        "published_last_365d": 2,
+        "n": 20
+      },
+      "opportunity_score": 0.71,
+      "opportunity_components": {
+        "title_gap": 1.0,
+        "incumbent_subs": 0.248,
+        "view_ceiling": 0.167,
+        "staleness": 0.9
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-25T16:24:45.368319+00:00"
+      },
+      "top_results": [
+        {
+          "title": "How are microchips made? - George Zaidan and Sajan Saini",
+          "views": 1048682,
+          "subs": 22900000,
+          "published_at": "2025-02-25T16:01:15Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How are Microchips Made? \ud83d\udda5\ufe0f\ud83d\udee0\ufe0f CPU Manufacturing Process Steps",
+          "views": 11678733,
+          "subs": 2760000,
+          "published_at": "2024-05-17T03:20:58Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "\ud83d\udcbb How Are Microchips Made?",
+          "views": 7015881,
+          "subs": 1680000,
+          "published_at": "2022-01-04T15:00:33Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "HOW IT&#39;S MADE: Microchips",
+          "views": 1574777,
+          "subs": 165000,
+          "published_at": "2021-08-31T19:15:01Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How Microchips Work and Why They Power Everything Today",
+          "views": 183386,
+          "subs": 1030000,
+          "published_at": "2025-08-01T12:02:00Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How microchips are made",
+          "views": 2639262,
+          "subs": 48200,
+          "published_at": "2024-11-03T00:08:23Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How Microchips Are Actually Made (It&#39;s Insane)",
+          "views": 667983,
+          "subs": 5850,
+          "published_at": "2025-12-07T03:35:16Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "History of Microchips",
+          "views": 24343,
+          "subs": 38400,
+          "published_at": "2023-03-30T11:00:36Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Uncovering the Silicon: Demystifying How Chips are Built and How They Work",
+          "views": 452655,
+          "subs": 209000,
+          "published_at": "2019-05-20T20:10:02Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "The manufacturing process of chips #knowledge #science",
+          "views": 656304,
+          "subs": 71500,
+          "published_at": "2025-09-07T14:45:00Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How are BILLIONS of MICROCHIPS made from SAND? | How are SILICON WAFERS made?",
+          "views": 1464594,
+          "subs": 195000,
+          "published_at": "2023-11-18T13:30:01Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Chip Manufacturing - How are Microchips made? | Infineon",
+          "views": 3180716,
+          "subs": 50900,
+          "published_at": "2019-07-17T15:02:06Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Designing Billions of Circuits with Code",
+          "views": 692606,
+          "subs": 963000,
+          "published_at": "2021-08-19T23:00:22Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How Chips That Power AI Work | WSJ Tech Behind",
+          "views": 497626,
+          "subs": 6700000,
+          "published_at": "2023-12-27T15:06:27Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How Are Microchips Made? The Most Advanced Manufacturing Process on Earth",
+          "views": 16276,
+          "subs": 47600,
+          "published_at": "2026-06-06T16:30:08Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How Microchips Are Made",
+          "views": 31865,
+          "subs": 648000,
+          "published_at": "2023-10-22T18:21:36Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Computational lithography: Driving nanometer precision in microchip manufacturing | ASML",
+          "views": 994292,
+          "subs": 70700,
+          "published_at": "2024-11-28T08:30:02Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How To Make A CPU",
+          "views": 24674273,
+          "subs": 175000,
+          "published_at": "2021-11-04T14:00:18Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How NVIDIA&#39;s AI Chips Are REALLY Made (Step-by-Step Factory Tour) | Short Documentary",
+          "views": 19836,
+          "subs": 106000,
+          "published_at": "2025-05-30T14:01:22Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How It&#39;s Made: CPU,  Microchips, Laptops",
+          "views": 352885,
+          "subs": 234000,
+          "published_at": "2025-06-09T14:55:57Z",
+          "coverage": 0.5
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "how are microchips manufactured",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.325,
+        "max_coverage": 0.5,
+        "strong_match_count": 0,
+        "strong_match_rate": 0.0,
+        "loose_match_rate": 0.35,
+        "gap_signal": 1.0,
+        "interpretation": "nobody has made the definitive video on this query"
+      },
+      "view_profile": {
+        "median": 1021487.0,
+        "p90": 4843527,
+        "max": 11678733,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 119250.0,
+        "max_subscribers": 22900000,
+        "under_100k_subs": 10,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 679,
+        "published_last_365d": 3,
+        "n": 20
+      },
+      "opportunity_score": 0.704,
+      "opportunity_components": {
+        "title_gap": 1.0,
+        "incumbent_subs": 0.275,
+        "view_ceiling": 0.142,
+        "staleness": 0.85
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-25T16:24:44.106808+00:00"
+      },
+      "top_results": [
+        {
+          "title": "How are microchips made? - George Zaidan and Sajan Saini",
+          "views": 1048682,
+          "subs": 22900000,
+          "published_at": "2025-02-25T16:01:15Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "\ud83d\udcbb How Are Microchips Made?",
+          "views": 7015881,
+          "subs": 1680000,
+          "published_at": "2022-01-04T15:00:33Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How are Microchips Made? \ud83d\udda5\ufe0f\ud83d\udee0\ufe0f CPU Manufacturing Process Steps",
+          "views": 11678733,
+          "subs": 2760000,
+          "published_at": "2024-05-17T03:20:58Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "HOW IT&#39;S MADE: Microchips",
+          "views": 1574775,
+          "subs": 165000,
+          "published_at": "2021-08-31T19:15:01Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Chip Manufacturing - How are Microchips made? | Infineon",
+          "views": 3180716,
+          "subs": 50900,
+          "published_at": "2019-07-17T15:02:06Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How Are Microchips Made? The Most Advanced Manufacturing Process on Earth",
+          "views": 16276,
+          "subs": 47600,
+          "published_at": "2026-06-06T16:30:08Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How Microchips Are Actually Made (It&#39;s Insane)",
+          "views": 667983,
+          "subs": 5850,
+          "published_at": "2025-12-07T03:35:16Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How microchips are made",
+          "views": 2639262,
+          "subs": 48200,
+          "published_at": "2024-11-03T00:08:23Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "The manufacturing process of chips #knowledge #science",
+          "views": 656304,
+          "subs": 71500,
+          "published_at": "2025-09-07T14:45:00Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How Are Semiconductor Chips Made?",
+          "views": 49598,
+          "subs": 1030000,
+          "published_at": "2025-03-12T20:29:42Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How are BILLIONS of MICROCHIPS made from SAND? | How are SILICON WAFERS made?",
+          "views": 1464594,
+          "subs": 195000,
+          "published_at": "2023-11-18T13:30:01Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "\u2018Semiconductor Manufacturing Process\u2019 Explained | &#39;All About Semiconductor&#39; by Samsung Semiconductor",
+          "views": 1182466,
+          "subs": 139000,
+          "published_at": "2022-10-09T00:49:27Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "The Semiconductor Production Process Explained Clearly",
+          "views": 580685,
+          "subs": 67400,
+          "published_at": "2021-06-08T12:59:32Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How Microchips Work and Why They Power Everything Today",
+          "views": 183386,
+          "subs": 1030000,
+          "published_at": "2025-08-01T12:02:00Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Inside Micron Taiwan\u2019s Semiconductor Factory | Taiwan\u2019s Mega Factories EP1",
+          "views": 4843527,
+          "subs": 99500,
+          "published_at": "2024-02-06T02:00:11Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Lithography \u0995\u09bf? Microchip Manufacturing Process Part I",
+          "views": 54061,
+          "subs": 67000,
+          "published_at": "2025-04-30T10:45:29Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Semiconductor chip making process! \ud83d\udc46 #makeinindia #chip #making #process #india #semiconductor",
+          "views": 653557,
+          "subs": 241000,
+          "published_at": "2025-09-05T15:40:46Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Computational lithography: Driving nanometer precision in microchip manufacturing | ASML",
+          "views": 994292,
+          "subs": 70700,
+          "published_at": "2024-11-28T08:30:02Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "History of Microchips",
+          "views": 24340,
+          "subs": 38400,
+          "published_at": "2023-03-30T11:00:36Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Inside The Chip Factory 1,000 Times Cleaner Than An Operating Room | Made In America",
+          "views": 2838130,
+          "subs": 10600000,
+          "published_at": "2026-06-07T13:00:08Z",
+          "coverage": 0.0
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "what is carbon fibre made of",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.483,
+        "max_coverage": 1.0,
+        "strong_match_count": 1,
+        "strong_match_rate": 0.05,
+        "loose_match_rate": 0.6,
+        "gap_signal": 0.95,
+        "interpretation": "1 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 185207.0,
+        "p90": 1461706,
+        "max": 3447031,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 115000.0,
+        "max_subscribers": 5110000,
+        "under_100k_subs": 9,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 1249,
+        "published_last_365d": 2,
+        "n": 20
+      },
+      "opportunity_score": 0.703,
+      "opportunity_components": {
+        "title_gap": 0.95,
+        "incumbent_subs": 0.277,
+        "view_ceiling": 0.247,
+        "staleness": 0.9
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-25T16:25:05.687868+00:00"
+      },
+      "top_results": [
+        {
+          "title": "How Carbon Fiber is Made in Factories | HOW IT&#39;S MADE",
+          "views": 187424,
+          "subs": 165000,
+          "published_at": "2023-07-16T18:15:01Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How CARBON FIBER Is Made \u2014 The Material That Builds Supercars",
+          "views": 74310,
+          "subs": 75500,
+          "published_at": "2026-02-04T15:02:21Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Carbon Fiber - The Material Of The Future?",
+          "views": 1461706,
+          "subs": 5110000,
+          "published_at": "2017-02-27T14:03:45Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Carbon Fiber: Everything You Wanted to Know",
+          "views": 185054,
+          "subs": 1660,
+          "published_at": "2019-04-01T15:30:03Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Carbon Fiber Explained | Exactly What IS Carbon Fiber?",
+          "views": 6548,
+          "subs": 122000,
+          "published_at": "2018-10-04T04:59:45Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "How Is Carbon Fibre Made? | The Science Lesson You Always Dreamed Of!",
+          "views": 216810,
+          "subs": 869000,
+          "published_at": "2020-07-25T09:00:08Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Carbon Fiber: How It\u2019s Made and Why It\u2019s Stronger Than Steel",
+          "views": 94139,
+          "subs": 4840,
+          "published_at": "2026-04-21T19:30:09Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "What Exactly is Carbon Fiber?",
+          "views": 34691,
+          "subs": 4430,
+          "published_at": "2025-02-24T22:41:47Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Carbon Fiber 101: A Beginners Introduction",
+          "views": 8173,
+          "subs": 2060,
+          "published_at": "2025-02-28T19:30:00Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "What on earth are Carbon Fibre Aerogels?",
+          "views": 144993,
+          "subs": 4200,
+          "published_at": "2017-03-30T02:38:14Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "The Journey Of Carbon Fibre - Part 1 | How It Works \ud83d\udd2c",
+          "views": 119812,
+          "subs": 1930000,
+          "published_at": "2023-02-02T18:00:17Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How to make a carbon fiber part in under 1 minute.",
+          "views": 693102,
+          "subs": 130000,
+          "published_at": "2023-01-16T19:06:46Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Why Carbon Fiber Makes Sports Gear Unstoppable!",
+          "views": 3447031,
+          "subs": 496000,
+          "published_at": "2025-02-19T17:30:13Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "How to make DIY carbon fiber parts at home with wet lay",
+          "views": 185360,
+          "subs": 28900,
+          "published_at": "2020-04-07T13:00:11Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "This is why Carbon Fiber is so Special",
+          "views": 2119378,
+          "subs": 1320000,
+          "published_at": "2024-10-18T23:31:46Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Carbon Fiber Is Easy?",
+          "views": 388558,
+          "subs": 108000,
+          "published_at": "2022-06-14T22:59:47Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "How Carbon Fiber is made animation | Karthi Explains",
+          "views": 170398,
+          "subs": 46300,
+          "published_at": "2021-04-27T04:52:44Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "What Is Carbon Fiber \ud83e\udd37",
+          "views": 62141,
+          "subs": 3630000,
+          "published_at": "2023-08-09T10:00:25Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Breaking Down the Business of Carbon Fibre Manufacturing",
+          "views": 382400,
+          "subs": 499000,
+          "published_at": "2025-08-07T17:01:23Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "WHAT EXACTLY IS CARBON FIBER? \ud83d\ude33 #cars #carbonfiber",
+          "views": 1283618,
+          "subs": 89700,
+          "published_at": "2024-11-05T22:59:47Z",
+          "coverage": 0.333
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "how microchips are made in factory",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.583,
+        "max_coverage": 1.0,
+        "strong_match_count": 1,
+        "strong_match_rate": 0.05,
+        "loose_match_rate": 0.25,
+        "gap_signal": 0.95,
+        "interpretation": "1 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 113856.5,
+        "p90": 3180716,
+        "max": 11678733,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 3470.0,
+        "max_subscribers": 22900000,
+        "under_100k_subs": 14,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 547,
+        "published_last_365d": 9,
+        "n": 20
+      },
+      "opportunity_score": 0.698,
+      "opportunity_components": {
+        "title_gap": 0.95,
+        "incumbent_subs": 0.494,
+        "view_ceiling": 0.278,
+        "staleness": 0.55
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-25T16:24:51.362802+00:00"
+      },
+      "top_results": [
+        {
+          "title": "Chip Manufacturing - How are Microchips made? | Infineon",
+          "views": 3180716,
+          "subs": 50900,
+          "published_at": "2019-07-17T15:02:06Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How are Microchips Made? \ud83d\udda5\ufe0f\ud83d\udee0\ufe0f CPU Manufacturing Process Steps",
+          "views": 11678733,
+          "subs": 2760000,
+          "published_at": "2024-05-17T03:20:58Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How Are Microchips Made? The Most Advanced Manufacturing Process on Earth",
+          "views": 16276,
+          "subs": 47600,
+          "published_at": "2026-06-06T16:30:08Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How microchips are made",
+          "views": 2639262,
+          "subs": 48200,
+          "published_at": "2024-11-03T00:08:23Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How are microchips made? - George Zaidan and Sajan Saini",
+          "views": 1048682,
+          "subs": 22900000,
+          "published_at": "2025-02-25T16:01:15Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How Are Semiconductor Chips Made?",
+          "views": 49598,
+          "subs": 1030000,
+          "published_at": "2025-03-12T20:29:42Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "HOW IT&#39;S MADE: Microchips",
+          "views": 1574775,
+          "subs": 165000,
+          "published_at": "2021-08-31T19:15:01Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How chips are made",
+          "views": 46041,
+          "subs": 310,
+          "published_at": "2023-01-25T01:27:19Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "How Microchips Are Made Inside Billion Dollar Factory",
+          "views": 12,
+          "subs": 122,
+          "published_at": "2026-08-13T21:15:21Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How Microchips Are Actually Made (It&#39;s Insane)",
+          "views": 667983,
+          "subs": 5850,
+          "published_at": "2025-12-07T03:35:16Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How Intel Processors Are Made | Inside the Chip Manufacturing Factory",
+          "views": 178115,
+          "subs": 1090,
+          "published_at": "2025-12-24T05:10:53Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "\ud83d\udcbb How Are Microchips Made?",
+          "views": 7015881,
+          "subs": 1680000,
+          "published_at": "2022-01-04T15:00:33Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How Computer Chips Are Made \ud83d\udcbb | Inside a Semiconductor Factory! #Shorts",
+          "views": 1472,
+          "subs": 24,
+          "published_at": "2026-09-08T14:30:04Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How Intel CPUs Are Made \ud83d\udcbb | Amazing Chip Factory Process \ud83e\udd2f",
+          "views": 2342,
+          "subs": 171,
+          "published_at": "2026-07-13T01:00:07Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Inside the Secret Factory Making the World\u2019s Most Advanced Microchips",
+          "views": 330,
+          "subs": 166,
+          "published_at": "2026-07-30T21:19:53Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How Are Computer Chips Made?",
+          "views": 212703,
+          "subs": 291000,
+          "published_at": "2024-11-23T03:35:46Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Inside a Modern Semiconductor Factory  From Silicon Wafers to Microchips Full Process",
+          "views": 26786,
+          "subs": 800,
+          "published_at": "2025-12-28T00:04:24Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Semiconductor chip making fectory #semiconductor #chip #shorts",
+          "views": 228541,
+          "subs": 760,
+          "published_at": "2023-05-14T13:20:58Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How Billions of Tiny Transistors Are Made Into a Microchip \ud83e\udd2f#shorts",
+          "views": 9531,
+          "subs": 48,
+          "published_at": "2025-04-10T20:25:16Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How Are Computer Chips Made? \ud83e\udd2f The Tiny Technology Inside Your Devices#usa #1000subscriber",
+          "views": 2045,
+          "subs": 263,
+          "published_at": "2026-09-12T14:40:31Z",
+          "coverage": 0.333
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "how are tiny microchips made",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.4,
+        "max_coverage": 0.667,
+        "strong_match_count": 0,
+        "strong_match_rate": 0.0,
+        "loose_match_rate": 0.55,
+        "gap_signal": 1.0,
+        "interpretation": "nobody has made the definitive video on this query"
+      },
+      "view_profile": {
+        "median": 1123147.5,
+        "p90": 11678733,
+        "max": 56596848,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 118250.0,
+        "max_subscribers": 22900000,
+        "under_100k_subs": 10,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 682,
+        "published_last_365d": 4,
+        "n": 20
+      },
+      "opportunity_score": 0.695,
+      "opportunity_components": {
+        "title_gap": 1.0,
+        "incumbent_subs": 0.275,
+        "view_ceiling": 0.136,
+        "staleness": 0.8
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-25T16:24:59.454776+00:00"
+      },
+      "top_results": [
+        {
+          "title": "How are microchips made? - George Zaidan and Sajan Saini",
+          "views": 1048682,
+          "subs": 22900000,
+          "published_at": "2025-02-25T16:01:15Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "\ud83d\udcbb How Are Microchips Made?",
+          "views": 7015881,
+          "subs": 1680000,
+          "published_at": "2022-01-04T15:00:33Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How are Microchips Made? \ud83d\udda5\ufe0f\ud83d\udee0\ufe0f CPU Manufacturing Process Steps",
+          "views": 11678733,
+          "subs": 2760000,
+          "published_at": "2024-05-17T03:20:58Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How microchips are made",
+          "views": 2639262,
+          "subs": 48200,
+          "published_at": "2024-11-03T00:08:23Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How Microchips Are Actually Made (It&#39;s Insane)",
+          "views": 667983,
+          "subs": 5850,
+          "published_at": "2025-12-07T03:35:16Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How Microchips Work and Why They Power Everything Today",
+          "views": 183386,
+          "subs": 1030000,
+          "published_at": "2025-08-01T12:02:00Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "The manufacturing process of chips #knowledge #science",
+          "views": 656304,
+          "subs": 71500,
+          "published_at": "2025-09-07T14:45:00Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How Small Are Transistors",
+          "views": 260323,
+          "subs": 278,
+          "published_at": "2023-01-25T11:38:36Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How are BILLIONS of MICROCHIPS made from SAND? | How are SILICON WAFERS made?",
+          "views": 1464599,
+          "subs": 195000,
+          "published_at": "2023-11-18T13:30:01Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Apple Microchip CPU Under Microscope \ud83d\udd2c",
+          "views": 1601765,
+          "subs": 7250,
+          "published_at": "2024-09-11T23:00:32Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "How To Make A CPU",
+          "views": 24674273,
+          "subs": 175000,
+          "published_at": "2021-11-04T14:00:18Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "HOW IT&#39;S MADE: Microchips",
+          "views": 1574778,
+          "subs": 165000,
+          "published_at": "2021-08-31T19:15:01Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How Are Microchips Made? The Most Advanced Manufacturing Process on Earth",
+          "views": 16276,
+          "subs": 47600,
+          "published_at": "2026-06-06T16:30:08Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "I shrunk down into an M5 chip",
+          "views": 4074745,
+          "subs": 21300000,
+          "published_at": "2025-12-26T15:00:12Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Just how small is the smallest microchip?",
+          "views": 23626,
+          "subs": 25900,
+          "published_at": "2024-08-22T03:45:00Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "History of Microchips",
+          "views": 24344,
+          "subs": 38400,
+          "published_at": "2023-03-30T11:00:36Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "How Do We Make Transistors So Tiny!",
+          "views": 10132,
+          "subs": 239,
+          "published_at": "2024-12-06T19:00:28Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "How Are Computer Chips Made?",
+          "views": 212703,
+          "subs": 291000,
+          "published_at": "2024-11-23T03:35:46Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "The Closest Thing We Have to Alien Technology",
+          "views": 56596848,
+          "subs": 21300000,
+          "published_at": "2025-12-31T15:37:33Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How tiny wires connect #microchips? #WireBonding for high-tech electronics, #semicon #TechExplained",
+          "views": 1197613,
+          "subs": 1980,
+          "published_at": "2025-05-26T06:17:19Z",
+          "coverage": 0.667
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "how are computer microchips made",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.45,
+        "max_coverage": 0.667,
+        "strong_match_count": 0,
+        "strong_match_rate": 0.0,
+        "loose_match_rate": 0.45,
+        "gap_signal": 1.0,
+        "interpretation": "nobody has made the definitive video on this query"
+      },
+      "view_profile": {
+        "median": 1519688.5,
+        "p90": 11678733,
+        "max": 56596848,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 214500.0,
+        "max_subscribers": 22900000,
+        "under_100k_subs": 7,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 682,
+        "published_last_365d": 3,
+        "n": 20
+      },
+      "opportunity_score": 0.693,
+      "opportunity_components": {
+        "title_gap": 1.0,
+        "incumbent_subs": 0.238,
+        "view_ceiling": 0.117,
+        "staleness": 0.85
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-25T16:24:55.905142+00:00"
+      },
+      "top_results": [
+        {
+          "title": "How are microchips made? - George Zaidan and Sajan Saini",
+          "views": 1048682,
+          "subs": 22900000,
+          "published_at": "2025-02-25T16:01:15Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "\ud83d\udcbb How Are Microchips Made?",
+          "views": 7015881,
+          "subs": 1680000,
+          "published_at": "2022-01-04T15:00:33Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How are Microchips Made? \ud83d\udda5\ufe0f\ud83d\udee0\ufe0f CPU Manufacturing Process Steps",
+          "views": 11678733,
+          "subs": 2760000,
+          "published_at": "2024-05-17T03:20:58Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How To Make A CPU",
+          "views": 24674273,
+          "subs": 175000,
+          "published_at": "2021-11-04T14:00:18Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How microchips are made",
+          "views": 2639262,
+          "subs": 48200,
+          "published_at": "2024-11-03T00:08:23Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "The manufacturing process of chips #knowledge #science",
+          "views": 656304,
+          "subs": 71500,
+          "published_at": "2025-09-07T14:45:00Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "History of Microchips",
+          "views": 24344,
+          "subs": 38400,
+          "published_at": "2023-03-30T11:00:36Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "How Are Computer Chips Made?",
+          "views": 212703,
+          "subs": 291000,
+          "published_at": "2024-11-23T03:35:46Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How Microchips Are Actually Made (It&#39;s Insane)",
+          "views": 667983,
+          "subs": 5850,
+          "published_at": "2025-12-07T03:35:16Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How are BILLIONS of MICROCHIPS made from SAND? | How are SILICON WAFERS made?",
+          "views": 1464599,
+          "subs": 195000,
+          "published_at": "2023-11-18T13:30:01Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How It&#39;s Made: CPU,  Microchips, Laptops",
+          "views": 352885,
+          "subs": 234000,
+          "published_at": "2025-06-09T14:55:57Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "HOW IT&#39;S MADE: Microchips",
+          "views": 1574778,
+          "subs": 165000,
+          "published_at": "2021-08-31T19:15:01Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How Microchips Work and Why They Power Everything Today",
+          "views": 183386,
+          "subs": 1030000,
+          "published_at": "2025-08-01T12:02:00Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Computational lithography: Driving nanometer precision in microchip manufacturing | ASML",
+          "views": 994292,
+          "subs": 70700,
+          "published_at": "2024-11-28T08:30:02Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "From Sand To Silicon: The Making of a Chip | Intel",
+          "views": 2267079,
+          "subs": 569000,
+          "published_at": "2009-11-07T01:05:01Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Why The First Computers Were Made Out Of Light Bulbs",
+          "views": 8650126,
+          "subs": 21300000,
+          "published_at": "2023-05-13T14:06:52Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "The Closest Thing We Have to Alien Technology",
+          "views": 56596848,
+          "subs": 21300000,
+          "published_at": "2025-12-31T15:37:33Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "how are computer chips made",
+          "views": 112,
+          "subs": 278,
+          "published_at": "2025-03-25T16:06:03Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Inside The Chip Factory 1,000 Times Cleaner Than An Operating Room | Made In America",
+          "views": 2838130,
+          "subs": 10600000,
+          "published_at": "2026-06-07T13:00:08Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Apple Microchip CPU Under Microscope \ud83d\udd2c",
+          "views": 1601765,
+          "subs": 7250,
+          "published_at": "2024-09-11T23:00:32Z",
+          "coverage": 0.333
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "does damascus steel rust",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.633,
+        "max_coverage": 1.0,
+        "strong_match_count": 4,
+        "strong_match_rate": 0.2,
+        "loose_match_rate": 0.3,
+        "gap_signal": 0.8,
+        "interpretation": "4 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 28719.0,
+        "p90": 2713386,
+        "max": 10049390,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 6590.0,
+        "max_subscribers": 23100000,
+        "under_100k_subs": 14,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 1120,
+        "published_last_365d": 1,
+        "n": 20
+      },
+      "opportunity_score": 0.688,
+      "opportunity_components": {
+        "title_gap": 0.8,
+        "incumbent_subs": 0.454,
+        "view_ceiling": 0.363,
+        "staleness": 0.95
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-25T16:25:06.923182+00:00"
+      },
+      "top_results": [
+        {
+          "title": "Was True Damascus Steel Lost To Time? #history #sword #weapon #martialarts #tech #technology",
+          "views": 203710,
+          "subs": 432000,
+          "published_at": "2023-08-17T18:11:34Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "What Is Damascus Steel? (And Everything You Need to Know about It)",
+          "views": 68527,
+          "subs": 472000,
+          "published_at": "2023-06-12T15:00:31Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Getting Rust Off a Damascus Blade",
+          "views": 52871,
+          "subs": 455,
+          "published_at": "2023-10-24T03:02:30Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Learn how to identify real &amp; fake damascus steel knives #damascusknives",
+          "views": 102721,
+          "subs": 1590,
+          "published_at": "2025-04-23T02:01:30Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How to Fix A Rusty Kitchen Knife (Damascus Steel)",
+          "views": 10875,
+          "subs": 85,
+          "published_at": "2021-02-17T01:05:50Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "RUST REMOVED!!! Used Coke to clean my Damascus Steel tanto knife. #knife #rust #tips #tiktok",
+          "views": 15525,
+          "subs": 290,
+          "published_at": "2023-05-30T23:00:16Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How to Remove Rust from a Damascus steel blade and prepare it for long term storage.",
+          "views": 32185,
+          "subs": 8180,
+          "published_at": "2022-05-22T07:11:42Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "3 Common Etchants for Damascus Steel",
+          "views": 180507,
+          "subs": 139000,
+          "published_at": "2025-01-13T05:00:03Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How to clean your Damascus steel knife @HexClad",
+          "views": 36905,
+          "subs": 5020,
+          "published_at": "2023-07-22T18:16:27Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Scrap Pile Damascus - Junkyard steel Rust Test!",
+          "views": 7767,
+          "subs": 137000,
+          "published_at": "2018-08-19T14:58:24Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How to keep rust off your knife.",
+          "views": 18924,
+          "subs": 1020,
+          "published_at": "2023-01-15T23:52:28Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Restored Rusted Damascus Knife #ytshorts #shorts",
+          "views": 3462,
+          "subs": 571,
+          "published_at": "2023-09-16T21:00:03Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Satisfying damascus knife cleaning #damascusknife  #rustclips #viral #knifecommunity",
+          "views": 1756,
+          "subs": 14,
+          "published_at": "2026-03-16T03:37:24Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Forging Blade Spirit of Fire! || Damascus steel",
+          "views": 2713386,
+          "subs": 26200,
+          "published_at": "2025-02-10T09:25:38Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Removing Rust From Damascus Steel - Easy At Home (DIY) By SacredBlade",
+          "views": 1037,
+          "subs": 1,
+          "published_at": "2024-06-24T21:29:49Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Making a k-tip chef from twisted damascus #handmade #blacksmith #forging #damascussteel #bladesmith",
+          "views": 2770827,
+          "subs": 191000,
+          "published_at": "2024-11-29T14:15:24Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "How to remove rust from a knife#edc #outdoors #camping #hunting #handmade#",
+          "views": 25253,
+          "subs": 4530,
+          "published_at": "2025-05-12T18:34:17Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "What Happens When You Soak Damascus Steel In Acid For 2 Hours?",
+          "views": 5731,
+          "subs": 27800,
+          "published_at": "2023-07-03T13:05:18Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Rust Removing of Damascus Knife! #shorts #restoration #metal #restorationvideos",
+          "views": 3243,
+          "subs": 8160,
+          "published_at": "2023-10-18T12:22:53Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Can Vinegar REALLY Remove Rust From A Sword?",
+          "views": 10049390,
+          "subs": 23100000,
+          "published_at": "2023-04-13T15:00:01Z",
+          "coverage": 0.333
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "how are microchips made so small",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.333,
+        "max_coverage": 0.667,
+        "strong_match_count": 0,
+        "strong_match_rate": 0.0,
+        "loose_match_rate": 0.65,
+        "gap_signal": 1.0,
+        "interpretation": "nobody has made the definitive video on this query"
+      },
+      "view_profile": {
+        "median": 1519687.0,
+        "p90": 11678733,
+        "max": 56596848,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 185000.0,
+        "max_subscribers": 22900000,
+        "under_100k_subs": 8,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 671,
+        "published_last_365d": 4,
+        "n": 20
+      },
+      "opportunity_score": 0.687,
+      "opportunity_components": {
+        "title_gap": 1.0,
+        "incumbent_subs": 0.248,
+        "view_ceiling": 0.117,
+        "staleness": 0.8
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-25T16:24:58.365472+00:00"
+      },
+      "top_results": [
+        {
+          "title": "How are microchips made? - George Zaidan and Sajan Saini",
+          "views": 1048682,
+          "subs": 22900000,
+          "published_at": "2025-02-25T16:01:15Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "\ud83d\udcbb How Are Microchips Made?",
+          "views": 7015881,
+          "subs": 1680000,
+          "published_at": "2022-01-04T15:00:33Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How are Microchips Made? \ud83d\udda5\ufe0f\ud83d\udee0\ufe0f CPU Manufacturing Process Steps",
+          "views": 11678733,
+          "subs": 2760000,
+          "published_at": "2024-05-17T03:20:58Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "HOW IT&#39;S MADE: Microchips",
+          "views": 1574775,
+          "subs": 165000,
+          "published_at": "2021-08-31T19:15:01Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How microchips are made",
+          "views": 2639262,
+          "subs": 48200,
+          "published_at": "2024-11-03T00:08:23Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How are BILLIONS of MICROCHIPS made from SAND? | How are SILICON WAFERS made?",
+          "views": 1464599,
+          "subs": 195000,
+          "published_at": "2023-11-18T13:30:01Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How Microchips Are Actually Made (It&#39;s Insane)",
+          "views": 667983,
+          "subs": 5850,
+          "published_at": "2025-12-07T03:35:16Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "The manufacturing process of chips #knowledge #science",
+          "views": 656304,
+          "subs": 71500,
+          "published_at": "2025-09-07T14:45:00Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Apple Microchip CPU Under Microscope \ud83d\udd2c",
+          "views": 1601765,
+          "subs": 7250,
+          "published_at": "2024-09-11T23:00:32Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "History of Microchips",
+          "views": 24340,
+          "subs": 38400,
+          "published_at": "2023-03-30T11:00:36Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "How Microchips Work and Why They Power Everything Today",
+          "views": 183386,
+          "subs": 1030000,
+          "published_at": "2025-08-01T12:02:00Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "I shrunk down into an M5 chip",
+          "views": 4074745,
+          "subs": 21300000,
+          "published_at": "2025-12-26T15:00:12Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How ASML Makes Chips Faster With Its New $400 Million High NA Machine",
+          "views": 3606106,
+          "subs": 4170000,
+          "published_at": "2025-05-22T16:00:07Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How To Make A CPU",
+          "views": 24674273,
+          "subs": 175000,
+          "published_at": "2021-11-04T14:00:18Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How Small Are Transistors",
+          "views": 260329,
+          "subs": 278,
+          "published_at": "2023-01-25T11:38:36Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "The Closest Thing We Have to Alien Technology",
+          "views": 56596848,
+          "subs": 21300000,
+          "published_at": "2025-12-31T15:37:33Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How Are Computer Chips Made?",
+          "views": 212703,
+          "subs": 291000,
+          "published_at": "2024-11-23T03:35:46Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "How Does a Microchip Work? | Tiny Tech That Powers Everything",
+          "views": 1424,
+          "subs": 2700,
+          "published_at": "2025-11-12T16:00:26Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "CPU Transistors vs Human Hair Comparison \ud83d\udd2c\ud83e\udd2f #education #semiconductor #science",
+          "views": 11118865,
+          "subs": 12200,
+          "published_at": "2024-11-24T22:43:30Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Semiconductor chip making process! \ud83d\udc46 #makeinindia #chip #making #process #india #semiconductor",
+          "views": 653557,
+          "subs": 241000,
+          "published_at": "2025-09-05T15:40:46Z",
+          "coverage": 0.0
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "how strong is steel",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.5,
+        "max_coverage": 1.0,
+        "strong_match_count": 2,
+        "strong_match_rate": 0.1,
+        "loose_match_rate": 0.1,
+        "gap_signal": 0.9,
+        "interpretation": "2 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 146767.0,
+        "p90": 9189922,
+        "max": 19519083,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 170000.0,
+        "max_subscribers": 21300000,
+        "under_100k_subs": 9,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 964,
+        "published_last_365d": 1,
+        "n": 20
+      },
+      "opportunity_score": 0.682,
+      "opportunity_components": {
+        "title_gap": 0.9,
+        "incumbent_subs": 0.253,
+        "view_ceiling": 0.262,
+        "staleness": 0.95
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-25T16:24:46.562534+00:00"
+      },
+      "top_results": [
+        {
+          "title": "\ud83d\udd29 Tungsten vs Stainless Steel vs Titanium \u2013 The Ultimate Metal Showdown! \u2699\ufe0f",
+          "views": 236083,
+          "subs": 17500,
+          "published_at": "2025-04-03T05:30:04Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "HYDRAULIC PRESS VS TITANIUM AND STEEL BOLT, WHICH IS STRONGER",
+          "views": 3494945,
+          "subs": 1350000,
+          "published_at": "2022-01-23T11:00:08Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How Strong Are Metals? Explosion + BROKEN WINDOW! Hydraulic Press Test",
+          "views": 12808617,
+          "subs": 10300000,
+          "published_at": "2019-11-09T14:18:27Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "What is the difference between iron and steel?#shorts",
+          "views": 39042,
+          "subs": 122,
+          "published_at": "2025-05-30T01:09:08Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "STEEL vs IRON \u2013 What\u2019s the REAL Difference?",
+          "views": 173487,
+          "subs": 1810,
+          "published_at": "2025-05-17T21:20:34Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Is spider web really stronger than steel?",
+          "views": 9189922,
+          "subs": 21300000,
+          "published_at": "2026-08-02T13:21:11Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Let&#39;s Talk About The DC Comics Superhero Steel",
+          "views": 33213,
+          "subs": 129000,
+          "published_at": "2023-02-25T21:08:06Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Who IS Steel? #JohnHenryIrons #dccomics",
+          "views": 22389,
+          "subs": 29800,
+          "published_at": "2025-01-17T13:55:09Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Is Aluminum Actually Stronger Than Steel?",
+          "views": 56076,
+          "subs": 22400,
+          "published_at": "2025-07-14T17:00:06Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Why Steel is BEST for swords, even compared to Titanium or whatever",
+          "views": 288175,
+          "subs": 432000,
+          "published_at": "2023-05-04T20:06:28Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Damascus Steel vs Titanium Cutting Test!",
+          "views": 74864,
+          "subs": 9480,
+          "published_at": "2025-09-01T15:00:14Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Destruction Test - D2 vs. AUS8 vs. SK85 - Which is the better steel?",
+          "views": 49433,
+          "subs": 1170000,
+          "published_at": "2022-03-02T17:15:52Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Who is DC Comics&#39; Steel? &quot;Iron Man&quot; with a &quot;Mjolnir&quot;",
+          "views": 85642,
+          "subs": 211000,
+          "published_at": "2020-05-16T15:15:05Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Tungsten: The Strongest Metal in the World #tungsten #metals #facts",
+          "views": 105334,
+          "subs": 12500,
+          "published_at": "2024-06-16T15:50:21Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Making wood as strong as steel!",
+          "views": 970399,
+          "subs": 1960000,
+          "published_at": "2024-05-21T15:53:40Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Coke Tower Leans But Doesn&#39;t Fall Due to Strong Steel",
+          "views": 19519083,
+          "subs": 10000000,
+          "published_at": "2025-09-18T15:27:01Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "top 10 strongest metal on the earth",
+          "views": 99442,
+          "subs": 273,
+          "published_at": "2023-10-20T15:24:47Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Is Spider Silk Stronger Than Steel?",
+          "views": 1491034,
+          "subs": 5160000,
+          "published_at": "2020-12-27T16:00:10Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Is Spider Silk Stronger Than Steel? | MythBusters Jr.",
+          "views": 7478469,
+          "subs": 5380000,
+          "published_at": "2019-04-27T14:00:04Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "JB Weld Original Cold Steel VS JB Weld Kwikweld Head to Head Comparison",
+          "views": 120047,
+          "subs": 34000,
+          "published_at": "2021-01-23T23:51:22Z",
+          "coverage": 0.5
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "how are apple microchips made",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.4,
+        "max_coverage": 0.667,
+        "strong_match_count": 0,
+        "strong_match_rate": 0.0,
+        "loose_match_rate": 0.7,
+        "gap_signal": 1.0,
+        "interpretation": "nobody has made the definitive video on this query"
+      },
+      "view_profile": {
+        "median": 2080780.0,
+        "p90": 7015881,
+        "max": 24674273,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 566500.0,
+        "max_subscribers": 22900000,
+        "under_100k_subs": 8,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 718,
+        "published_last_365d": 3,
+        "n": 20
+      },
+      "opportunity_score": 0.678,
+      "opportunity_components": {
+        "title_gap": 1.0,
+        "incumbent_subs": 0.178,
+        "view_ceiling": 0.097,
+        "staleness": 0.85
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-25T16:24:54.694646+00:00"
+      },
+      "top_results": [
+        {
+          "title": "How are microchips made? - George Zaidan and Sajan Saini",
+          "views": 1048682,
+          "subs": 22900000,
+          "published_at": "2025-02-25T16:01:15Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "\ud83d\udcbb How Are Microchips Made?",
+          "views": 7015881,
+          "subs": 1680000,
+          "published_at": "2022-01-04T15:00:33Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Apple Microchip CPU Under Microscope \ud83d\udd2c",
+          "views": 1601765,
+          "subs": 7250,
+          "published_at": "2024-09-11T23:00:32Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How are Microchips Made? \ud83d\udda5\ufe0f\ud83d\udee0\ufe0f CPU Manufacturing Process Steps",
+          "views": 11678733,
+          "subs": 2760000,
+          "published_at": "2024-05-17T03:20:58Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Inside Apple\u2019s Multibillion-Dollar Push to Make Chips in the U.S. | WSJ",
+          "views": 2559795,
+          "subs": 6700000,
+          "published_at": "2026-02-24T02:00:53Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "The manufacturing process of chips #knowledge #science",
+          "views": 656304,
+          "subs": 71500,
+          "published_at": "2025-09-07T14:45:00Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How complex SoCs like Apple&#39;s A16 Bionic are made ...",
+          "views": 1143,
+          "subs": 4950,
+          "published_at": "2023-07-06T07:03:26Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How microchips are made",
+          "views": 2639262,
+          "subs": 48200,
+          "published_at": "2024-11-03T00:08:23Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How To Make A CPU",
+          "views": 24674273,
+          "subs": 175000,
+          "published_at": "2021-11-04T14:00:18Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Atomic-Scale Chipmaking: ASML + Apple\u2019s Future of Tech",
+          "views": 4691553,
+          "subs": 18700,
+          "published_at": "2025-09-11T16:06:11Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "TSMC\u2019s New Arizona Fab! Apple Will Finally Make Advanced Chips In The U.S.",
+          "views": 3401871,
+          "subs": 4170000,
+          "published_at": "2024-12-13T18:32:42Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "How Apple Just Changed the Entire Industry (M1 Chip)",
+          "views": 5177887,
+          "subs": 5240000,
+          "published_at": "2020-11-23T17:03:02Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "How Are Computer Chips Made?",
+          "views": 212703,
+          "subs": 291000,
+          "published_at": "2024-11-23T03:35:46Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "what&#39;s inside the apple chip? laser burn the chip",
+          "views": 140926,
+          "subs": 743,
+          "published_at": "2021-10-05T22:06:50Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Inside Apple\u2019s Multibillion-Dollar Push to Make Chips in the U.S. | xQc Reacts",
+          "views": 56580,
+          "subs": 2510000,
+          "published_at": "2026-05-09T16:58:08Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Why Apple Started Making Its Own Chips",
+          "views": 231659,
+          "subs": 842000,
+          "published_at": "2021-01-17T04:05:00Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "How a CPU Works in 100 Seconds // Apple Silicon M1 vs Intel i9",
+          "views": 3122681,
+          "subs": 4280000,
+          "published_at": "2021-05-06T16:37:54Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "What is inside Apple&#39;s bionic 3nm Chip || A chip designer POV#VLSI #ChipsDesign",
+          "views": 3909,
+          "subs": 11700,
+          "published_at": "2023-09-14T20:00:24Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Apple M5 Chip Hardware Explained",
+          "views": 31963,
+          "subs": 7870,
+          "published_at": "2026-03-01T10:30:55Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Apple Silicon Explained in 56 seconds",
+          "views": 2830420,
+          "subs": 21300000,
+          "published_at": "2025-03-16T00:20:59Z",
+          "coverage": 0.333
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "how microchips are made animation",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.417,
+        "max_coverage": 1.0,
+        "strong_match_count": 1,
+        "strong_match_rate": 0.05,
+        "loose_match_rate": 0.55,
+        "gap_signal": 0.95,
+        "interpretation": "1 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 1588270.0,
+        "p90": 11678733,
+        "max": 56596848,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 202000.0,
+        "max_subscribers": 22900000,
+        "under_100k_subs": 7,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 803,
+        "published_last_365d": 3,
+        "n": 20
+      },
+      "opportunity_score": 0.668,
+      "opportunity_components": {
+        "title_gap": 0.95,
+        "incumbent_subs": 0.242,
+        "view_ceiling": 0.114,
+        "staleness": 0.85
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-25T16:25:00.532391+00:00"
+      },
+      "top_results": [
+        {
+          "title": "How are microchips made? - George Zaidan and Sajan Saini",
+          "views": 1048682,
+          "subs": 22900000,
+          "published_at": "2025-02-25T16:01:15Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "\ud83d\udcbb How Are Microchips Made?",
+          "views": 7015881,
+          "subs": 1680000,
+          "published_at": "2022-01-04T15:00:33Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How are Microchips Made? \ud83d\udda5\ufe0f\ud83d\udee0\ufe0f CPU Manufacturing Process Steps",
+          "views": 11678733,
+          "subs": 2760000,
+          "published_at": "2024-05-17T03:20:58Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How To Make A CPU",
+          "views": 24674273,
+          "subs": 175000,
+          "published_at": "2021-11-04T14:00:18Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How microchips are made",
+          "views": 2639262,
+          "subs": 48200,
+          "published_at": "2024-11-03T00:08:23Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "The Closest Thing We Have to Alien Technology",
+          "views": 56596848,
+          "subs": 21300000,
+          "published_at": "2025-12-31T15:37:33Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How Microchips Work and Why They Power Everything Today",
+          "views": 183386,
+          "subs": 1030000,
+          "published_at": "2025-08-01T12:02:00Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "The manufacturing process of chips #knowledge #science",
+          "views": 656304,
+          "subs": 71500,
+          "published_at": "2025-09-07T14:45:00Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How a Microchip works",
+          "views": 2710742,
+          "subs": 376000,
+          "published_at": "2025-11-28T20:03:22Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "How are BILLIONS of MICROCHIPS made from SAND? | How are SILICON WAFERS made?",
+          "views": 1464599,
+          "subs": 195000,
+          "published_at": "2023-11-18T13:30:01Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How a CPU is Made / Microchips (Animation)",
+          "views": 249375,
+          "subs": 1590000,
+          "published_at": "2013-06-22T19:05:21Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How Microchips Are Actually Made (It&#39;s Insane)",
+          "views": 667983,
+          "subs": 5850,
+          "published_at": "2025-12-07T03:35:16Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Computational lithography: Driving nanometer precision in microchip manufacturing | ASML",
+          "views": 994292,
+          "subs": 70700,
+          "published_at": "2024-11-28T08:30:02Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "History of Microchips",
+          "views": 24340,
+          "subs": 38400,
+          "published_at": "2023-03-30T11:00:36Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "HOW IT&#39;S MADE: Microchips",
+          "views": 1574775,
+          "subs": 165000,
+          "published_at": "2021-08-31T19:15:01Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Uncovering the Silicon: Demystifying How Chips are Built and How They Work",
+          "views": 452655,
+          "subs": 209000,
+          "published_at": "2019-05-20T20:10:02Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Chip Manufacturing - How are Microchips made? | Infineon",
+          "views": 3180716,
+          "subs": 50900,
+          "published_at": "2019-07-17T15:02:06Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Apple Microchip CPU Under Microscope \ud83d\udd2c",
+          "views": 1601765,
+          "subs": 7250,
+          "published_at": "2024-09-11T23:00:32Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "The $200M Machine that Prints Microchips:  The EUV Photolithography System",
+          "views": 2239758,
+          "subs": 2760000,
+          "published_at": "2025-08-30T16:02:34Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "From Sand To Silicon: The Making of a Chip | Intel",
+          "views": 2267079,
+          "subs": 569000,
+          "published_at": "2009-11-07T01:05:01Z",
+          "coverage": 0.0
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "how are microchips made branch education",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.15,
+        "max_coverage": 0.5,
+        "strong_match_count": 0,
+        "strong_match_rate": 0.0,
+        "loose_match_rate": 0.8,
+        "gap_signal": 1.0,
+        "interpretation": "nobody has made the definitive video on this query"
+      },
+      "view_profile": {
+        "median": 1892286.0,
+        "p90": 11118865,
+        "max": 24674273,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 2760000.0,
+        "max_subscribers": 22900000,
+        "under_100k_subs": 4,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 622,
+        "published_last_365d": 3,
+        "n": 20
+      },
+      "opportunity_score": 0.659,
+      "opportunity_components": {
+        "title_gap": 1.0,
+        "incumbent_subs": 0.08,
+        "view_ceiling": 0.103,
+        "staleness": 0.85
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-25T16:24:57.058342+00:00"
+      },
+      "top_results": [
+        {
+          "title": "How are Microchips Made? \ud83d\udda5\ufe0f\ud83d\udee0\ufe0f CPU Manufacturing Process Steps",
+          "views": 11678733,
+          "subs": 2760000,
+          "published_at": "2024-05-17T03:20:58Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How are microchips made? - George Zaidan and Sajan Saini",
+          "views": 1048682,
+          "subs": 22900000,
+          "published_at": "2025-02-25T16:01:15Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "The $200M Machine that Prints Microchips:  The EUV Photolithography System",
+          "views": 2239758,
+          "subs": 2760000,
+          "published_at": "2025-08-30T16:02:34Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "How are BILLIONS of MICROCHIPS made from SAND? | How are SILICON WAFERS made?",
+          "views": 1464599,
+          "subs": 195000,
+          "published_at": "2023-11-18T13:30:01Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How To Make A CPU",
+          "views": 24674273,
+          "subs": 175000,
+          "published_at": "2021-11-04T14:00:18Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "The manufacturing process of chips #knowledge #science",
+          "views": 656304,
+          "subs": 71500,
+          "published_at": "2025-09-07T14:45:00Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How microchips are made",
+          "views": 2639262,
+          "subs": 48200,
+          "published_at": "2024-11-03T00:08:23Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How do Transistors Build into a CPU?  \ud83d\udda5\ufe0f\ud83e\udd14  How do Transistors Work? \ud83d\udda5\ufe0f\ud83e\udd14",
+          "views": 2474464,
+          "subs": 2760000,
+          "published_at": "2025-06-21T14:40:05Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Computational lithography: Driving nanometer precision in microchip manufacturing | ASML",
+          "views": 994292,
+          "subs": 70700,
+          "published_at": "2024-11-28T08:30:02Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "How do Graphics Cards Work?  Exploring GPU Architecture",
+          "views": 7584042,
+          "subs": 2760000,
+          "published_at": "2024-10-19T13:27:23Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How do Smartphone CPUs Work?  ||  Inside the System on a Chip",
+          "views": 2130880,
+          "subs": 2760000,
+          "published_at": "2020-11-24T00:32:58Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How GPUs Are Printed With Light",
+          "views": 502245,
+          "subs": 2760000,
+          "published_at": "2026-08-07T01:35:39Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "The Engineering that Runs the Digital World \ud83d\udee0\ufe0f\u2699\ufe0f\ud83d\udcbb How do CPUs Work?",
+          "views": 3147191,
+          "subs": 2760000,
+          "published_at": "2025-11-15T16:49:32Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "CPU Transistors vs Human Hair Comparison \ud83d\udd2c\ud83e\udd2f #education #semiconductor #science",
+          "views": 11118865,
+          "subs": 12200,
+          "published_at": "2024-11-24T22:43:30Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Zooming Into a CPU (It&#39;s Incredible)",
+          "views": 272556,
+          "subs": 2760000,
+          "published_at": "2026-07-09T17:18:38Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Semiconductor chip making process! \ud83d\udc46 #makeinindia #chip #making #process #india #semiconductor",
+          "views": 653557,
+          "subs": 241000,
+          "published_at": "2025-09-05T15:40:46Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "The Surface of a Microchip is Fascinating",
+          "views": 419083,
+          "subs": 1680000,
+          "published_at": "2024-03-02T17:00:00Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "From Sand to Silicon - The Journey of Semiconductor",
+          "views": 108001,
+          "subs": 139000,
+          "published_at": "2025-04-30T00:00:11Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How ASML Makes Chips Faster With Its New $400 Million High NA Machine",
+          "views": 3606106,
+          "subs": 4170000,
+          "published_at": "2025-05-22T16:00:07Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Technology Size Comparison  \ud83e\udd2f\ud83e\udd2f  3D Animation",
+          "views": 1653692,
+          "subs": 2760000,
+          "published_at": "2022-06-17T17:32:44Z",
+          "coverage": 0.0
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "how microchips are made veritasium",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.233,
+        "max_coverage": 0.667,
+        "strong_match_count": 0,
+        "strong_match_rate": 0.0,
+        "loose_match_rate": 0.75,
+        "gap_signal": 1.0,
+        "interpretation": "nobody has made the definitive video on this query"
+      },
+      "view_profile": {
+        "median": 4449603.5,
+        "p90": 24674273,
+        "max": 56596848,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 2760000.0,
+        "max_subscribers": 22900000,
+        "under_100k_subs": 4,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 911,
+        "published_last_365d": 2,
+        "n": 20
+      },
+      "opportunity_score": 0.659,
+      "opportunity_components": {
+        "title_gap": 1.0,
+        "incumbent_subs": 0.08,
+        "view_ceiling": 0.05,
+        "staleness": 0.9
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-25T16:25:02.138444+00:00"
+      },
+      "top_results": [
+        {
+          "title": "The Closest Thing We Have to Alien Technology",
+          "views": 56596848,
+          "subs": 21300000,
+          "published_at": "2025-12-31T15:37:33Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How are microchips made? - George Zaidan and Sajan Saini",
+          "views": 1048682,
+          "subs": 22900000,
+          "published_at": "2025-02-25T16:01:15Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How Does a Transistor Work?",
+          "views": 4520428,
+          "subs": 21300000,
+          "published_at": "2013-07-09T20:13:12Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How are Microchips Made? \ud83d\udda5\ufe0f\ud83d\udee0\ufe0f CPU Manufacturing Process Steps",
+          "views": 11678733,
+          "subs": 2760000,
+          "published_at": "2024-05-17T03:20:58Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "\ud83d\udcbb How Are Microchips Made?",
+          "views": 7015881,
+          "subs": 1680000,
+          "published_at": "2022-01-04T15:00:33Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Why The First Computers Were Made Out Of Light Bulbs",
+          "views": 8650126,
+          "subs": 21300000,
+          "published_at": "2023-05-13T14:06:52Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "How are BILLIONS of MICROCHIPS made from SAND? | How are SILICON WAFERS made?",
+          "views": 1464599,
+          "subs": 195000,
+          "published_at": "2023-11-18T13:30:01Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Future Computers Will Be Radically Different (Analog Computing)",
+          "views": 13124158,
+          "subs": 21300000,
+          "published_at": "2022-03-01T11:37:38Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "The manufacturing process of chips #knowledge #science",
+          "views": 656304,
+          "subs": 71500,
+          "published_at": "2025-09-07T14:45:00Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How To Make a Quantum Bit",
+          "views": 1805081,
+          "subs": 21300000,
+          "published_at": "2013-07-23T15:16:32Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How microchips are made",
+          "views": 2639262,
+          "subs": 48200,
+          "published_at": "2024-11-03T00:08:23Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "The $200M Machine that Prints Microchips:  The EUV Photolithography System",
+          "views": 2239758,
+          "subs": 2760000,
+          "published_at": "2025-08-30T16:02:34Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "How To Make A CPU",
+          "views": 24674273,
+          "subs": 175000,
+          "published_at": "2021-11-04T14:00:18Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Computational lithography: Driving nanometer precision in microchip manufacturing | ASML",
+          "views": 994292,
+          "subs": 70700,
+          "published_at": "2024-11-28T08:30:02Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Why It Was Almost Impossible to Make the Blue LED",
+          "views": 55244855,
+          "subs": 21300000,
+          "published_at": "2024-02-08T16:12:09Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How Alpha Particles Can Break Computer Chips",
+          "views": 4378779,
+          "subs": 21300000,
+          "published_at": "2026-05-15T13:01:53Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Uncovering the Silicon: Demystifying How Chips are Built and How They Work",
+          "views": 452655,
+          "subs": 209000,
+          "published_at": "2019-05-20T20:10:02Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "What makes quantum computers SO powerful?",
+          "views": 13658884,
+          "subs": 21300000,
+          "published_at": "2023-03-20T18:42:22Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How Are Computer Chips Made?",
+          "views": 212703,
+          "subs": 291000,
+          "published_at": "2024-11-23T03:35:46Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "CPU Transistors vs Human Hair Comparison \ud83d\udd2c\ud83e\udd2f #education #semiconductor #science",
+          "views": 11118865,
+          "subs": 12200,
+          "published_at": "2024-11-24T22:43:30Z",
+          "coverage": 0.0
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "how damascus steel is made",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.633,
+        "max_coverage": 1.0,
+        "strong_match_count": 2,
+        "strong_match_rate": 0.1,
+        "loose_match_rate": 0.2,
+        "gap_signal": 0.9,
+        "interpretation": "2 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 718562.5,
+        "p90": 4958410,
+        "max": 9376228,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 349000.0,
+        "max_subscribers": 10600000,
+        "under_100k_subs": 7,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 854,
+        "published_last_365d": 1,
+        "n": 20
+      },
+      "opportunity_score": 0.659,
+      "opportunity_components": {
+        "title_gap": 0.9,
+        "incumbent_subs": 0.208,
+        "view_ceiling": 0.163,
+        "staleness": 0.95
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-25T16:25:09.296449+00:00"
+      },
+      "top_results": [
+        {
+          "title": "FORGING DAMASCUS STEEL: Step by Step and showing different Patterns",
+          "views": 64986,
+          "subs": 27600,
+          "published_at": "2024-08-09T15:00:35Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "What Makes Damascus Steel So Special? A History and How It\u2019s Made",
+          "views": 52141,
+          "subs": 293000,
+          "published_at": "2025-02-17T23:47:25Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How Stainless Damascus is Made",
+          "views": 551959,
+          "subs": 3280000,
+          "published_at": "2026-02-22T20:08:44Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "What Is Damascus Steel? (And Everything You Need to Know about It)",
+          "views": 68527,
+          "subs": 472000,
+          "published_at": "2023-06-12T15:00:31Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "&quot;True Damascus Steel&quot;: History, Metallurgy, Production",
+          "views": 432382,
+          "subs": 16000,
+          "published_at": "2019-08-08T16:34:26Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Why Damascus Knives Are So Expensive | So Expensive | Business Insider",
+          "views": 6464675,
+          "subs": 10600000,
+          "published_at": "2023-03-18T14:00:26Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "The Secrets of Wootz Damascus Steel",
+          "views": 1854845,
+          "subs": 16500,
+          "published_at": "2017-11-22T03:28:28Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Was True Damascus Steel Lost To Time? #history #sword #weapon #martialarts #tech #technology",
+          "views": 203710,
+          "subs": 432000,
+          "published_at": "2023-08-17T18:11:34Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Forging a Damascus Steel Knife from Ball Bearings",
+          "views": 4441816,
+          "subs": 509000,
+          "published_at": "2024-06-21T18:45:27Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Damascus Steel From Milling Chips!",
+          "views": 4958410,
+          "subs": 3280000,
+          "published_at": "2024-07-21T16:51:16Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "The Secrets of Damascus Steel: Unveiling the Mystery",
+          "views": 6043,
+          "subs": 1820,
+          "published_at": "2025-05-22T07:10:04Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How to Make Damascus Steel -- Part 1",
+          "views": 885166,
+          "subs": 405000,
+          "published_at": "2013-12-21T16:38:32Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Forging Damascus By Hand (No Press or Powerhammer)",
+          "views": 25664,
+          "subs": 11600,
+          "published_at": "2020-04-16T00:37:19Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Amazing Pattern! Process of Making Damascus Knife",
+          "views": 1636868,
+          "subs": 463000,
+          "published_at": "2024-04-27T08:00:31Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Wootz - The True Damascus Steel?",
+          "views": 294993,
+          "subs": 45100,
+          "published_at": "2024-04-22T14:03:13Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "HOW TO FORGE: Basic Mosaic Damascus Steel",
+          "views": 467707,
+          "subs": 3280000,
+          "published_at": "2017-01-16T01:17:30Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Damascus knife making from steel powder #blacksmith #forging #metalworking #welding",
+          "views": 9376228,
+          "subs": 191000,
+          "published_at": "2025-08-28T20:24:06Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Steel Cable Damascus",
+          "views": 1855504,
+          "subs": 3280000,
+          "published_at": "2025-02-19T21:12:54Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How Damascus Steel is Made: Traditional Forging &amp; Pattern-Welding&quot;",
+          "views": 3475703,
+          "subs": 2410,
+          "published_at": "2024-11-25T08:05:41Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Making a k-tip chef from twisted damascus #handmade #blacksmith #forging #damascussteel #bladesmith",
+          "views": 2770827,
+          "subs": 191000,
+          "published_at": "2024-11-29T14:15:24Z",
+          "coverage": 0.333
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "how are microchips made ted",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.317,
+        "max_coverage": 1.0,
+        "strong_match_count": 2,
+        "strong_match_rate": 0.1,
+        "loose_match_rate": 0.7,
+        "gap_signal": 0.9,
+        "interpretation": "2 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 366123.0,
+        "p90": 11678733,
+        "max": 56596848,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 345500.0,
+        "max_subscribers": 27800000,
+        "under_100k_subs": 6,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 634,
+        "published_last_365d": 4,
+        "n": 20
+      },
+      "opportunity_score": 0.643,
+      "opportunity_components": {
+        "title_gap": 0.9,
+        "incumbent_subs": 0.209,
+        "view_ceiling": 0.205,
+        "staleness": 0.8
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-25T16:25:08.135626+00:00"
+      },
+      "top_results": [
+        {
+          "title": "How are microchips made? - George Zaidan and Sajan Saini",
+          "views": 1048682,
+          "subs": 22900000,
+          "published_at": "2025-02-25T16:01:15Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How are Microchips Made? \ud83d\udda5\ufe0f\ud83d\udee0\ufe0f CPU Manufacturing Process Steps",
+          "views": 11678733,
+          "subs": 2760000,
+          "published_at": "2024-05-17T03:20:58Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How microchips are made",
+          "views": 2639262,
+          "subs": 48200,
+          "published_at": "2024-11-03T00:08:23Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "\ud83d\udcbb How Are Microchips Made?",
+          "views": 7015881,
+          "subs": 1680000,
+          "published_at": "2022-01-04T15:00:33Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "How&quot; Microchips Are Made &quot;(a mini Ted Talks report)",
+          "views": 24,
+          "subs": 1,
+          "published_at": "2025-03-26T07:51:55Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "The self-assembling computer chips of the future | Karl Skjonnemand",
+          "views": 105189,
+          "subs": 27800000,
+          "published_at": "2019-03-13T17:02:47Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "History of Microchips",
+          "views": 24357,
+          "subs": 38400,
+          "published_at": "2023-03-30T11:00:36Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "TED Ed:: How Microchips Are Made:: Han Ju Won",
+          "views": 22,
+          "subs": 503,
+          "published_at": "2026-06-26T01:27:05Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How Chips Are Made, Simply Explained",
+          "views": 359387,
+          "subs": 371000,
+          "published_at": "2026-08-17T04:07:51Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "How To Make A CPU",
+          "views": 24674273,
+          "subs": 175000,
+          "published_at": "2021-11-04T14:00:18Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How transistors work - Gokul J. Krishnan",
+          "views": 973936,
+          "subs": 22900000,
+          "published_at": "2016-06-06T15:09:02Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "The $200M Machine that Prints Microchips:  The EUV Photolithography System",
+          "views": 2239758,
+          "subs": 2760000,
+          "published_at": "2025-08-30T16:02:34Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "The Closest Thing We Have to Alien Technology",
+          "views": 56596848,
+          "subs": 21300000,
+          "published_at": "2025-12-31T15:37:33Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "From Sand to Silicon - The Journey of Semiconductor",
+          "views": 108001,
+          "subs": 139000,
+          "published_at": "2025-04-30T00:00:11Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Frederick Balagadde: Bio-lab on a microchip",
+          "views": 17350,
+          "subs": 27800000,
+          "published_at": "2010-04-21T16:32:52Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Semiconductors explained in 16 mins | Chris Miller",
+          "views": 372859,
+          "subs": 320000,
+          "published_at": "2026-02-18T14:01:17Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How Does a Transistor Work?",
+          "views": 4520428,
+          "subs": 21300000,
+          "published_at": "2013-07-09T20:13:12Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "The Cost of Designing a Chip: Explained and Debunked",
+          "views": 82264,
+          "subs": 543,
+          "published_at": "2024-02-10T22:50:09Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "What Exactly is a Semiconductor?",
+          "views": 212561,
+          "subs": 139000,
+          "published_at": "2025-04-16T00:00:33Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "invideo ai 1080 The Invention That Made Computers for  #facts #historicalmyths",
+          "views": 224,
+          "subs": 37,
+          "published_at": "2025-08-10T14:54:53Z",
+          "coverage": 0.333
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "how are microchips made cpu manufacturing process steps",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.358,
+        "max_coverage": 1.0,
+        "strong_match_count": 3,
+        "strong_match_rate": 0.15,
+        "loose_match_rate": 0.75,
+        "gap_signal": 0.85,
+        "interpretation": "3 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 1115574.0,
+        "p90": 7015881,
+        "max": 24674273,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 170000.0,
+        "max_subscribers": 22900000,
+        "under_100k_subs": 8,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 912,
+        "published_last_365d": 2,
+        "n": 20
+      },
+      "opportunity_score": 0.631,
+      "opportunity_components": {
+        "title_gap": 0.85,
+        "incumbent_subs": 0.253,
+        "view_ceiling": 0.136,
+        "staleness": 0.9
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-25T16:24:50.107386+00:00"
+      },
+      "top_results": [
+        {
+          "title": "How are Microchips Made? \ud83d\udda5\ufe0f\ud83d\udee0\ufe0f CPU Manufacturing Process Steps",
+          "views": 11678733,
+          "subs": 2760000,
+          "published_at": "2024-05-17T03:20:58Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How are microchips made? - George Zaidan and Sajan Saini",
+          "views": 1048682,
+          "subs": 22900000,
+          "published_at": "2025-02-25T16:01:15Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "\ud83d\udcbb How Are Microchips Made?",
+          "views": 7015881,
+          "subs": 1680000,
+          "published_at": "2022-01-04T15:00:33Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "How are BILLIONS of MICROCHIPS made from SAND? | How are SILICON WAFERS made?",
+          "views": 1464594,
+          "subs": 195000,
+          "published_at": "2023-11-18T13:30:01Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "How Microchips Are Actually Made (It&#39;s Insane)",
+          "views": 667983,
+          "subs": 5850,
+          "published_at": "2025-12-07T03:35:16Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "The Semiconductor Production Process Explained Clearly",
+          "views": 580685,
+          "subs": 67400,
+          "published_at": "2021-06-08T12:59:32Z",
+          "coverage": 0.167
+        },
+        {
+          "title": "How To Make A CPU",
+          "views": 24674273,
+          "subs": 175000,
+          "published_at": "2021-11-04T14:00:18Z",
+          "coverage": 0.167
+        },
+        {
+          "title": "Computational lithography: Driving nanometer precision in microchip manufacturing | ASML",
+          "views": 994292,
+          "subs": 70700,
+          "published_at": "2024-11-28T08:30:02Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "How It&#39;s Made: CPU,  Microchips, Laptops",
+          "views": 352885,
+          "subs": 234000,
+          "published_at": "2025-06-09T14:55:57Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "HOW IT&#39;S MADE: CPU",
+          "views": 574713,
+          "subs": 165000,
+          "published_at": "2021-08-29T19:15:01Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "How are Microchips Made? \ud83d\udda5\ufe0f\ud83d\udee0\ufe0f CPU Manufacturing Process Steps",
+          "views": 43,
+          "subs": 224,
+          "published_at": "2026-01-24T15:19:18Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How Are Microchips Made? CPU Manufacturing Process Explained in 10 Minutes!",
+          "views": 27,
+          "subs": 5490,
+          "published_at": "2025-06-11T15:30:02Z",
+          "coverage": 0.833
+        },
+        {
+          "title": "Inside Micron Taiwan\u2019s Semiconductor Factory | Taiwan\u2019s Mega Factories EP1",
+          "views": 4843527,
+          "subs": 99500,
+          "published_at": "2024-02-06T02:00:11Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "The $200M Machine that Prints Microchips:  The EUV Photolithography System",
+          "views": 2239758,
+          "subs": 2760000,
+          "published_at": "2025-08-30T16:02:34Z",
+          "coverage": 0.167
+        },
+        {
+          "title": "Chip Manufacturing - How are Microchips made? | Infineon",
+          "views": 3180716,
+          "subs": 50900,
+          "published_at": "2019-07-17T15:02:06Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "\u2018Semiconductor Manufacturing Process\u2019 Explained | &#39;All About Semiconductor&#39; by Samsung Semiconductor",
+          "views": 1182466,
+          "subs": 139000,
+          "published_at": "2022-10-09T00:49:27Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "The manufacturing process of chips #knowledge #science",
+          "views": 656304,
+          "subs": 71500,
+          "published_at": "2025-09-07T14:45:00Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Intel: The Making of a Chip with 22nm/3D Transistors | Intel",
+          "views": 2525166,
+          "subs": 569000,
+          "published_at": "2012-05-25T20:10:22Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How Are Semiconductor Chips Made?",
+          "views": 49598,
+          "subs": 1030000,
+          "published_at": "2025-03-12T20:29:42Z",
+          "coverage": 0.167
+        },
+        {
+          "title": "I Can Die Now. - Intel Fab Tour!",
+          "views": 4523140,
+          "subs": 16900000,
+          "published_at": "2022-04-13T16:58:31Z",
+          "coverage": 0.0
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "how microchips are made manufacturing of a semiconductor",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.45,
+        "max_coverage": 1.0,
+        "strong_match_count": 3,
+        "strong_match_rate": 0.15,
+        "loose_match_rate": 0.35,
+        "gap_signal": 0.85,
+        "interpretation": "3 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 1021487.0,
+        "p90": 7015881,
+        "max": 24674273,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 119250.0,
+        "max_subscribers": 22900000,
+        "under_100k_subs": 10,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 622,
+        "published_last_365d": 4,
+        "n": 20
+      },
+      "opportunity_score": 0.621,
+      "opportunity_components": {
+        "title_gap": 0.85,
+        "incumbent_subs": 0.275,
+        "view_ceiling": 0.142,
+        "staleness": 0.8
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-25T16:24:52.479155+00:00"
+      },
+      "top_results": [
+        {
+          "title": "\u2018Semiconductor Manufacturing Process\u2019 Explained | &#39;All About Semiconductor&#39; by Samsung Semiconductor",
+          "views": 1182466,
+          "subs": 139000,
+          "published_at": "2022-10-09T00:49:27Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "\ud83d\udcbb How Are Microchips Made?",
+          "views": 7015881,
+          "subs": 1680000,
+          "published_at": "2022-01-04T15:00:33Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How are Microchips Made? \ud83d\udda5\ufe0f\ud83d\udee0\ufe0f CPU Manufacturing Process Steps",
+          "views": 11678733,
+          "subs": 2760000,
+          "published_at": "2024-05-17T03:20:58Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "How are microchips made? - George Zaidan and Sajan Saini",
+          "views": 1048682,
+          "subs": 22900000,
+          "published_at": "2025-02-25T16:01:15Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How Are Semiconductor Chips Made?",
+          "views": 49598,
+          "subs": 1030000,
+          "published_at": "2025-03-12T20:29:42Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How Microchips Are Made - Manufacturing of a Semiconductor",
+          "views": 419230,
+          "subs": 40500,
+          "published_at": "2020-12-12T16:39:07Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How Microchips Are Actually Made (It&#39;s Insane)",
+          "views": 667983,
+          "subs": 5850,
+          "published_at": "2025-12-07T03:35:16Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How microchips are made",
+          "views": 2639262,
+          "subs": 48200,
+          "published_at": "2024-11-03T00:08:23Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "The Semiconductor Production Process Explained Clearly",
+          "views": 580685,
+          "subs": 67400,
+          "published_at": "2021-06-08T12:59:32Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "The manufacturing process of chips #knowledge #science",
+          "views": 656304,
+          "subs": 71500,
+          "published_at": "2025-09-07T14:45:00Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Inside Micron Taiwan\u2019s Semiconductor Factory | Taiwan\u2019s Mega Factories EP1",
+          "views": 4843527,
+          "subs": 99500,
+          "published_at": "2024-02-06T02:00:11Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "How are BILLIONS of MICROCHIPS made from SAND? | How are SILICON WAFERS made?",
+          "views": 1464594,
+          "subs": 195000,
+          "published_at": "2023-11-18T13:30:01Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Computational lithography: Driving nanometer precision in microchip manufacturing | ASML",
+          "views": 994292,
+          "subs": 70700,
+          "published_at": "2024-11-28T08:30:02Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Semiconductor chip making process! \ud83d\udc46 #makeinindia #chip #making #process #india #semiconductor",
+          "views": 653557,
+          "subs": 241000,
+          "published_at": "2025-09-05T15:40:46Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Lithography \u0995\u09bf? Microchip Manufacturing Process Part I",
+          "views": 54069,
+          "subs": 67000,
+          "published_at": "2025-04-30T10:45:29Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How Are Microchips Made? The Most Advanced Manufacturing Process on Earth",
+          "views": 16276,
+          "subs": 47600,
+          "published_at": "2026-06-06T16:30:08Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Inside The Chip Factory 1,000 Times Cleaner Than An Operating Room | Made In America",
+          "views": 2838130,
+          "subs": 10600000,
+          "published_at": "2026-06-07T13:00:08Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "How a Semiconductor Chip is Made | Step-by-Step Process Explained #howitsmade #semiconductor",
+          "views": 26406,
+          "subs": 8470,
+          "published_at": "2025-10-01T16:57:35Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "The $200M Machine that Prints Microchips:  The EUV Photolithography System",
+          "views": 2239758,
+          "subs": 2760000,
+          "published_at": "2025-08-30T16:02:34Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "How To Make A CPU",
+          "views": 24674273,
+          "subs": 175000,
+          "published_at": "2021-11-04T14:00:18Z",
+          "coverage": 0.0
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "what is carbon fiber made out of",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.55,
+        "max_coverage": 0.75,
+        "strong_match_count": 5,
+        "strong_match_rate": 0.25,
+        "loose_match_rate": 0.05,
+        "gap_signal": 0.75,
+        "interpretation": "5 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 186243.0,
+        "p90": 2119374,
+        "max": 13120314,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 151000.0,
+        "max_subscribers": 5110000,
+        "under_100k_subs": 7,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 919,
+        "published_last_365d": 4,
+        "n": 20
+      },
+      "opportunity_score": 0.584,
+      "opportunity_components": {
+        "title_gap": 0.75,
+        "incumbent_subs": 0.26,
+        "view_ceiling": 0.247,
+        "staleness": 0.8
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-25T16:25:04.528693+00:00"
+      },
+      "top_results": [
+        {
+          "title": "How Carbon Fiber is Made in Factories | HOW IT&#39;S MADE",
+          "views": 187433,
+          "subs": 165000,
+          "published_at": "2023-07-16T18:15:01Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "How Is Carbon Fibre Made? | The Science Lesson You Always Dreamed Of!",
+          "views": 216811,
+          "subs": 869000,
+          "published_at": "2020-07-25T09:00:08Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How CARBON FIBER Is Made \u2014 The Material That Builds Supercars",
+          "views": 74290,
+          "subs": 75500,
+          "published_at": "2026-02-04T15:02:21Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Carbon Fiber: Everything You Wanted to Know",
+          "views": 185053,
+          "subs": 1660,
+          "published_at": "2019-04-01T15:30:03Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Carbon Fiber 101: A Beginners Introduction",
+          "views": 8170,
+          "subs": 2060,
+          "published_at": "2025-02-28T19:30:00Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "What Exactly is Carbon Fiber?",
+          "views": 34700,
+          "subs": 4430,
+          "published_at": "2025-02-24T22:41:47Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "The Journey Of Carbon Fibre - Part 1 | How It Works \ud83d\udd2c",
+          "views": 119812,
+          "subs": 1930000,
+          "published_at": "2023-02-02T18:00:17Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Carbon Fiber: How It\u2019s Made and Why It\u2019s Stronger Than Steel",
+          "views": 94142,
+          "subs": 4840,
+          "published_at": "2026-04-21T19:30:09Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "How to make a carbon fiber part in under 1 minute.",
+          "views": 693102,
+          "subs": 130000,
+          "published_at": "2023-01-16T19:06:46Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Carbon Fiber - The Material Of The Future?",
+          "views": 1461696,
+          "subs": 5110000,
+          "published_at": "2017-02-27T14:03:45Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How Carbon Fiber is made animation | Karthi Explains",
+          "views": 170397,
+          "subs": 46300,
+          "published_at": "2021-04-27T04:52:44Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "What Is Carbon Fiber \ud83e\udd37",
+          "views": 62143,
+          "subs": 3630000,
+          "published_at": "2023-08-09T10:00:25Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "This is why Carbon Fiber is so Special",
+          "views": 2119374,
+          "subs": 1320000,
+          "published_at": "2024-10-18T23:31:46Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Why Carbon Fiber Makes Sports Gear Unstoppable!",
+          "views": 3447031,
+          "subs": 496000,
+          "published_at": "2025-02-19T17:30:13Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Carbon Fiber has one major flaw!",
+          "views": 13120314,
+          "subs": 300000,
+          "published_at": "2025-03-19T20:01:18Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Making Forged Carbon Fiber Parts",
+          "views": 947851,
+          "subs": 137000,
+          "published_at": "2023-08-21T02:01:42Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "WHAT EXACTLY IS CARBON FIBER? \ud83d\ude33 #cars #carbonfiber",
+          "views": 1283603,
+          "subs": 89700,
+          "published_at": "2024-11-05T22:59:47Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Carbon Fiber Is Easy?",
+          "views": 388540,
+          "subs": 108000,
+          "published_at": "2022-06-14T22:59:47Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How Carbon Fiber Became the World&#39;s Strongest Lightweight Material",
+          "views": 5470,
+          "subs": 1030000,
+          "published_at": "2026-07-27T15:00:28Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "What Is Carbon Fiber Really Made Of? (Is It Stronger Than Steel?)",
+          "views": 43464,
+          "subs": 1030000,
+          "published_at": "2026-04-16T18:00:50Z",
+          "coverage": 0.75
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "how to tell if steel is high carbon",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.6,
+        "max_coverage": 0.75,
+        "strong_match_count": 11,
+        "strong_match_rate": 0.55,
+        "loose_match_rate": 0.15,
+        "gap_signal": 0.45,
+        "interpretation": "11 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 49271.0,
+        "p90": 406584,
+        "max": 1475679,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 49550.0,
+        "max_subscribers": 781000,
+        "under_100k_subs": 12,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 1268,
+        "published_last_365d": 2,
+        "n": 20
+      },
+      "opportunity_score": 0.475,
+      "opportunity_components": {
+        "title_gap": 0.45,
+        "incumbent_subs": 0.329,
+        "view_ceiling": 0.33,
+        "staleness": 0.9
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-25T16:24:47.665143+00:00"
+      },
+      "top_results": [
+        {
+          "title": "HOW TO IDENTIFY HIGH CARBON STEEL! 3 Simple Tests",
+          "views": 41547,
+          "subs": 35300,
+          "published_at": "2019-02-09T22:28:42Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "How To Determine Mild or High Carbon Steel with the Spark Test",
+          "views": 26128,
+          "subs": 3920,
+          "published_at": "2022-01-28T15:15:00Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "How To Tell The Carbon Content of Steel #shorts",
+          "views": 3787,
+          "subs": 177,
+          "published_at": "2021-08-02T14:30:08Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "High Carbon Steel vs Mild Steel Test",
+          "views": 406584,
+          "subs": 146000,
+          "published_at": "2016-11-26T01:19:34Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Mild Steel vs High Carbon Steel",
+          "views": 4613,
+          "subs": 614,
+          "published_at": "2019-05-08T11:56:58Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "How to Identify High Carbon Steel",
+          "views": 46159,
+          "subs": 8410,
+          "published_at": "2016-03-03T13:00:01Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "How to identify hardened steel",
+          "views": 94820,
+          "subs": 546000,
+          "published_at": "2010-08-29T01:22:53Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Why would someone want a high carbon knife?",
+          "views": 1475679,
+          "subs": 301000,
+          "published_at": "2024-02-03T04:17:37Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How High Maintenance is High Carbon Steel? Knife Care 101",
+          "views": 52383,
+          "subs": 101000,
+          "published_at": "2025-01-06T15:00:54Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Quick Tips #1 // Determining Carbon Content of Steel",
+          "views": 41621,
+          "subs": 63500,
+          "published_at": "2015-11-10T01:34:37Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Stainless Steel vs. Carbon Steel Pans: 10 Differences &amp; How to Choose",
+          "views": 230269,
+          "subs": 300000,
+          "published_at": "2022-07-29T14:28:45Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "What is 1095 Carbon Steel?",
+          "views": 23353,
+          "subs": 85900,
+          "published_at": "2021-03-11T00:00:00Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "What is Japanese VG10 Steel (Senken)",
+          "views": 104866,
+          "subs": 3020,
+          "published_at": "2025-09-23T21:18:42Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Knife Tempering | 1075 High Carbon Steel | 10 Series Steel",
+          "views": 656,
+          "subs": 3770,
+          "published_at": "2026-09-18T14:00:20Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Why Carbon Steel Knives Are The New Standard...",
+          "views": 130397,
+          "subs": 35600,
+          "published_at": "2025-04-24T13:47:34Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Carbon Steel Pans EXPLAINED (What They Don\u2019t Tell You)",
+          "views": 413200,
+          "subs": 300000,
+          "published_at": "2024-10-25T13:49:55Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "How to test hardness of scrap steel for knife making #blacksmithing #bladesmithing #knife",
+          "views": 241601,
+          "subs": 2980,
+          "published_at": "2025-10-17T18:29:06Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Carbon Steel V.S. Stainless - Which Makes a Better Knife?",
+          "views": 46054,
+          "subs": 101000,
+          "published_at": "2024-11-25T16:15:19Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Making a HARDENED STEEL KNIFE from soft SCRAP METAL | Making High Carbon Steel",
+          "views": 85350,
+          "subs": 781000,
+          "published_at": "2025-01-22T14:49:35Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "Low, medium and high carbon steel #carbonsteel #short",
+          "views": 12133,
+          "subs": 27800,
+          "published_at": "2023-12-12T22:15:55Z",
+          "coverage": 0.75
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "how the microchips are made",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.625,
+        "max_coverage": 1.0,
+        "strong_match_count": 10,
+        "strong_match_rate": 0.5,
+        "loose_match_rate": 0.25,
+        "gap_signal": 0.5,
+        "interpretation": "10 of 20 ranking titles squarely answer the query"
+      },
+      "view_profile": {
+        "median": 1256638.0,
+        "p90": 7015881,
+        "max": 24674273,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 170000.0,
+        "max_subscribers": 22900000,
+        "under_100k_subs": 9,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 777,
+        "published_last_365d": 3,
+        "n": 20
+      },
+      "opportunity_score": 0.447,
+      "opportunity_components": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.253,
+        "view_ceiling": 0.129,
+        "staleness": 0.85
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-09-25T16:24:48.847562+00:00"
+      },
+      "top_results": [
+        {
+          "title": "How are microchips made? - George Zaidan and Sajan Saini",
+          "views": 1048682,
+          "subs": 22900000,
+          "published_at": "2025-02-25T16:01:15Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "\ud83d\udcbb How Are Microchips Made?",
+          "views": 7015881,
+          "subs": 1680000,
+          "published_at": "2022-01-04T15:00:33Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How are Microchips Made? \ud83d\udda5\ufe0f\ud83d\udee0\ufe0f CPU Manufacturing Process Steps",
+          "views": 11678733,
+          "subs": 2760000,
+          "published_at": "2024-05-17T03:20:58Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How microchips are made",
+          "views": 2639262,
+          "subs": 48200,
+          "published_at": "2024-11-03T00:08:23Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "HOW IT&#39;S MADE: Microchips",
+          "views": 1574775,
+          "subs": 165000,
+          "published_at": "2021-08-31T19:15:01Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How Microchips Are Actually Made (It&#39;s Insane)",
+          "views": 667983,
+          "subs": 5850,
+          "published_at": "2025-12-07T03:35:16Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How To Make A CPU",
+          "views": 24674273,
+          "subs": 175000,
+          "published_at": "2021-11-04T14:00:18Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Lithography \u0995\u09bf? Microchip Manufacturing Process Part I",
+          "views": 54069,
+          "subs": 67000,
+          "published_at": "2025-04-30T10:45:29Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Chip Manufacturing - How are Microchips made? | Infineon",
+          "views": 3180716,
+          "subs": 50900,
+          "published_at": "2019-07-17T15:02:06Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "The manufacturing process of chips #knowledge #science",
+          "views": 656304,
+          "subs": 71500,
+          "published_at": "2025-09-07T14:45:00Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "How Are Microchips Made? The Most Advanced Manufacturing Process on Earth",
+          "views": 16276,
+          "subs": 47600,
+          "published_at": "2026-06-06T16:30:08Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Uncovering the Silicon: Demystifying How Chips are Built and How They Work",
+          "views": 452655,
+          "subs": 209000,
+          "published_at": "2019-05-20T20:10:02Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "History of Microchips",
+          "views": 24340,
+          "subs": 38400,
+          "published_at": "2023-03-30T11:00:36Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How are BILLIONS of MICROCHIPS made from SAND? | How are SILICON WAFERS made?",
+          "views": 1464594,
+          "subs": 195000,
+          "published_at": "2023-11-18T13:30:01Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How Are Semiconductor Chips Made?",
+          "views": 49598,
+          "subs": 1030000,
+          "published_at": "2025-03-12T20:29:42Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Inside The Chip Factory 1,000 Times Cleaner Than An Operating Room | Made In America",
+          "views": 2838130,
+          "subs": 10600000,
+          "published_at": "2026-06-07T13:00:08Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How Microchips Work and Why They Power Everything Today",
+          "views": 183386,
+          "subs": 1030000,
+          "published_at": "2025-08-01T12:02:00Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How Microchips are made ?| Microchips  \u0915\u0948\u0938\u0947 \u092c\u0928\u0924\u0947 \u0939\u0947 ? | Tech Baba",
+          "views": 10995,
+          "subs": 28300,
+          "published_at": "2021-12-28T04:45:01Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How ASML Makes Chips Faster With Its New $400 Million High NA Machine",
+          "views": 3606106,
+          "subs": 4170000,
+          "published_at": "2025-05-22T16:00:07Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Inside Micron Taiwan\u2019s Semiconductor Factory | Taiwan\u2019s Mega Factories EP1",
+          "views": 4843527,
+          "subs": 99500,
+          "published_at": "2024-02-06T02:00:11Z",
+          "coverage": 0.0
+        }
+      ],
+      "domain": null
+    }
+  ]
+}
