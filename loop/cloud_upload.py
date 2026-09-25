@@ -209,7 +209,17 @@ def diagnose_empty_shelf(queued: list[str], done: set[str], held: set[str],
 
     queued_set = set(queued)
     held_q = sorted(s for s in queued if s in held and s not in done)
-    awaiting_mac = [s for s in queued if s not in done and s not in held]
+    # PROMOTION-HELD SLUGS ARE NEVER "WAITING ON THE MAC" EITHER, for the
+    # same reason they are never "already promoted" just because they are
+    # coincidentally queued (below): the Mac has no real scripts/<slug>.md
+    # for one regardless of whether its slug also appears in a
+    # research/publish_order*.json row, because loop/draft.py's own gate
+    # refuses to author a held slug in the first place. Read early so both
+    # this check and the promotion-hold check below agree on one register.
+    promotion_holds_now = set(promotion_held or {})
+    awaiting_mac = [s for s in queued
+                    if s not in done and s not in held
+                    and s not in promotion_holds_now]
     if awaiting_mac:
         return {"code": "NOTHING_SHELVED",
                 "message": f"{len(awaiting_mac)} queued episode(s) are not in "
@@ -240,10 +250,26 @@ def diagnose_empty_shelf(queued: list[str], done: set[str], held: set[str],
                            "or re-run the Monday lane (loop/draft.py).",
                 "held_items": None}
     holds = promotion_held or {}
-    # A hold whose slug has since been queued or uploaded is over: promotion
-    # happened. Only the rest are still waiting on her.
-    active_holds = sorted(s for s in holds
-                          if s not in queued_set and s not in done)
+    # A hold whose slug has since been UPLOADED is over regardless. A hold
+    # whose slug is merely queued is over ONLY if scripts/<slug>.md now
+    # exists - real promotion means copying the held draft there (the `how`
+    # text below says so), and only that write is evidence a decision was
+    # actually made.
+    #
+    # `s not in queued_set` ALONE is not that evidence. Confirmed 2026-09-25:
+    # research/publish_order_deep_sea_ocean_science.json's own topic-mining
+    # pass produced a FRESH, unrelated candidate whose auto-generated slug
+    # (slug_of()) happened to collide with why-deep-sea-creatures, a script
+    # already held since 2026-09-23 awaiting her decision. The two are not
+    # the same thing - one is an unpromoted draft in loop/drafts/, the other
+    # a brand-new candidate with no script at all - but "in queued_set" could
+    # not tell them apart, so the hold silently stopped being reported the
+    # moment the collision landed, with nothing that looked like a decision
+    # ever having been made.
+    active_holds = sorted(
+        s for s in holds
+        if s not in done
+        and not (s in queued_set and (ROOT / "scripts" / f"{s}.md").exists()))
     orphans = sorted({
         str(it.get("slug")) for it in handoff
         if it.get("slug") and it.get("status") in NOT_YET_BUILT

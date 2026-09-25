@@ -462,18 +462,29 @@ print("RC", rc)
         # the hand-off file is a fixture with or without a stranded row.
         seed_ledger = """
 import batch_queue
-led = json.loads(ledger.LEDGER.read_text())
-led["published"] = [{"slug": s, "video_id": "V" + str(i), "question": s,
-                     "privacy": "private"}
-                    for i, s in enumerate(batch_queue.queued_slugs())]
-ledger.LEDGER.write_text(json.dumps(led))
-cloud_upload.RENDER_QUEUE = TMP / "render_queue.json"
-cloud_upload.RENDER_QUEUE.write_text(json.dumps({"items": ROWS}))
 # The promotion-hold register: a fixture unless the scenario sets HOLDS to
-# None, which means "the real loop/promotion_holds.json".
+# None, which means "the real loop/promotion_holds.json". Read BEFORE the
+# ledger is seeded, not after.
 if HOLDS is not None:
     batch_queue.PROMOTION_HOLDS = TMP / "promotion_holds.json"
     batch_queue.PROMOTION_HOLDS.write_text(json.dumps({"holds": HOLDS}))
+held_now = set(batch_queue.promotion_holds())
+led = json.loads(ledger.LEDGER.read_text())
+# A HELD SLUG IS NEVER "ALREADY PUBLISHED" IN THIS SIMULATION, whatever
+# batch_queue.queued_slugs() happens to contain today. Confirmed 2026-09-25:
+# a fresh, unrelated mining pass produced a candidate whose auto-generated
+# slug collided with an already-held script (why-deep-sea-creatures), so
+# "everything currently queued is published" briefly marked a genuinely
+# unpromoted, unpublished hold as published — a fact this fixture invented,
+# not one the real ledger ever recorded. A hold's own status is decided by
+# loop/promotion_holds.json, never by a coincidence in the queue.
+led["published"] = [{"slug": s, "video_id": "V" + str(i), "question": s,
+                     "privacy": "private"}
+                    for i, s in enumerate(batch_queue.queued_slugs())
+                    if s not in held_now]
+ledger.LEDGER.write_text(json.dumps(led))
+cloud_upload.RENDER_QUEUE = TMP / "render_queue.json"
+cloud_upload.RENDER_QUEUE.write_text(json.dumps({"items": ROWS}))
 if RUNWAY is not None:
     cloud_upload.cadence.runway = lambda per_week=None: RUNWAY
 rc = 0
@@ -559,9 +570,21 @@ print("RC", rc)
         for s_ in today:
             if s_ not in out:
                 fails.append(f"the held-for-promotion stop does not name {s_}")
-        if "[AUTHORED_NOT_QUEUED]" in out or "push-to-r2" in out:
+        # THE STOP BANNER ONLY, not the whole output. backfill.library_pending()
+        # logs a routine, correct, per-candidate "not shelved - run
+        # bin/push-to-r2.sh" note for ANY queued slug that genuinely has no
+        # render yet - which why-deep-sea-creatures now legitimately is, since
+        # its slug also collided with a freshly mined, unrelated candidate
+        # (2026-09-25). That note is true and harmless; it is not the
+        # diagnosis. A blanket substring search over the full output could not
+        # tell the two apart, so it checks only the NAMED STOP banner, where
+        # the actual conclusion lives.
+        banner = out[out.find("NAMED STOP"):]
+        if "[AUTHORED_NOT_QUEUED]" in banner or "push-to-r2" in banner:
             fails.append("held scripts were still reported as stranded, or "
-                         "blamed on the Mac's push")
+                         "blamed on the Mac's push, IN THE STOP BANNER ITSELF "
+                         f"(routine per-candidate logging is expected and is "
+                         f"not this): {banner.strip()[:400]}")
 
         # Same state, runway critical: the held decision is now what stands
         # between the channel and going dark, so it must reach her (exit 3).
