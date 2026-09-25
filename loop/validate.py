@@ -3579,6 +3579,71 @@ def v43_queue_asks_distinct_questions(items) -> Result:
     return r
 
 
+def v44_opening_payoff_first(items) -> Result:
+    """HARD. Every script this run hands the Mac that was drafted under the
+    opening rule (it carries `**Opening:** <variant>`, stamped by
+    loop/author.py) says its answer inside the first 30 seconds, per
+    loop/opening.py.problems(). Scripts drafted before the rule carry no
+    marker and are exempt - published and pre-rule videos are never re-cut.
+
+    2026-09-25: 6 of 10 measured videos lost the average viewer inside two
+    minutes (loop/state/retention_finding.md). The author redrafts a buried
+    answer inside its own retries; this is the same check one stage later,
+    so a hand-edited or hand-written script cannot route around it.
+    """
+    r = Result("V44 opening-payoff-first")
+    import opening as _op                                  # noqa: PLC0415
+    marked = 0
+    for it in items or []:
+        r.examined += 1
+        path = ROOT / it["script"]
+        if not path.exists():
+            r.fail(f"{it.get('slug')}: script {it['script']} does not exist")
+            continue
+        text = path.read_text(encoding="utf-8")
+        m = _op.MARK_RE.search(text)
+        if not m:
+            continue
+        marked += 1
+        if m.group(1) not in _op.VARIANTS:
+            r.fail(f"{it.get('slug')}: unknown opening variant {m.group(1)!r}")
+            continue
+        for p in _op.problems(text, m.group(1)):
+            r.fail(f"{it.get('slug')}: {p}")
+    if r.examined == 0:
+        r.fail("examined nothing")
+    elif marked == 0:
+        r.note("every item predates the opening rule (no **Opening:** marker); "
+               "nothing to hold to it this run")
+    return r
+
+
+def v45_nothing_waits_on_the_owner() -> Result:
+    """HARD. Every stop kind is automated, a secret only she holds, or an
+    error - and none asks her for a decision.
+
+    Owner's rule, 2026-09-25, verbatim: "Nothing is supposed to wait on the
+    owner." loop/stop_classes.py lists every stop kind the source can raise
+    and every classified code; this fails on one with no class, an
+    owner stop that names no credential/account/external service it holds,
+    or decision wording in any policy text or stop message.
+
+    Hard-fails when it examines zero stop kinds.
+    """
+    r = Result("V45 nothing-waits-on-owner")
+    import stop_classes as _sc                             # noqa: PLC0415
+    a = _sc.audit()
+    r.examined += len(a["rows"])
+    if not a["rows"]:
+        r.fail("listed zero stop kinds")
+        return r
+    for p in a["problems"]:
+        r.fail(p)
+    r.note("stop kinds by class: " + ", ".join(
+        f"{k} {v}" for k, v in sorted(a["counts"].items())))
+    return r
+
+
 def v42_authored_domain_is_allocated(items) -> Result:
     """HARD. No item this run hands to the Mac names a domain outside
     `loop/config.json` `domains.allocation`.
@@ -3655,7 +3720,9 @@ def run_all(items) -> tuple[bool, list[dict]]:
                v38_no_duplicate_or_zombie_schedule(),
                v39_queue_depth_is_remaining_not_scored(),
                v42_authored_domain_is_allocated(items),
-               v43_queue_asks_distinct_questions(items)]
+               v43_queue_asks_distinct_questions(items),
+               v44_opening_payoff_first(items),
+               v45_nothing_waits_on_the_owner()]
     rows = [r.as_dict() for r in results]
     return all(r.ok for r in results), rows
 

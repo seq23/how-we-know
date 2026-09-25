@@ -39,6 +39,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import domain_sources  # noqa: E402
 import durations  # noqa: E402
 import exclusions  # noqa: E402
+import opening  # noqa: E402
 import pov_match  # noqa: E402
 from common import LOOP, ROOT, config, now, read_json, write_json  # noqa: E402
 
@@ -414,6 +415,7 @@ def build_prompt(question: str, pov: dict, domain: str = DEFAULT_DOMAIN) -> list
                   target_minutes=RUNTIME_TARGET_MINUTES,
                   narration_floor=NARRATION_FLOOR_WORDS,
                   floor_minutes=RUNTIME_FLOOR_MINUTES) + "\n\n" +
+              opening.prompt_text() + "\n\n" +
               directives_for(domain) + "\n\n" +
               FORMAT.format(pov_line=pov["line"], pov_id=pov["pov_id"],
                            domain=domain, wpm=WPM))
@@ -708,6 +710,11 @@ def shape_problems(text: str, pov: dict) -> list[str]:
     # it inside its own MAX_ATTEMPTS attempts, the same as every other structural
     # problem in this function.
     p += directive_truth_problems(text)
+    # THE OPENING RULE (loop/opening.py, 2026-09-25): the payoff inside the
+    # first 30 seconds. A draft that buries its answer is fed back and
+    # REDRAFTED inside MAX_ATTEMPTS like every other shape problem, never
+    # held for a person.
+    p += opening.problems(text, opening.active())
     return p
 
 
@@ -827,6 +834,9 @@ def draft(question: str, slug: str, pov: dict, model: str | None = None,
         record_spend(slug, model, usage, cost, attempt, not problems)
 
         if not problems:
+            # Stamp the opening variant it was drafted and checked under, so
+            # the Friday measure lane can put this video in its cohort.
+            text = opening.mark(text, opening.active())
             path = DRAFTS / f"{slug}.md"
             path.write_text(text)
             return {"path": str(path.relative_to(ROOT)), "model": model,

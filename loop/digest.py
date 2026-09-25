@@ -219,7 +219,7 @@ def verdict(queued_rows: list[dict], cal: list[dict], pipe: dict,
     bury behind an unrelated calendar note.)
 
     `waiting` is `loop/common.py:owner_actions()` — everything with
-    disposition `owner_action`, the "## ⚠️ Waiting on you" section below,
+    disposition `owner_action`, the "## 🔑 Needs your key or account" section below,
     the ONE thing in this whole email actually addressed to her. It was
     never passed into this function at all: a week with an owner_action
     item and nothing else red or yellow rendered "🟢 Healthy" as BOTH the
@@ -239,7 +239,7 @@ def verdict(queued_rows: list[dict], cal: list[dict], pipe: dict,
                            f"({', '.join(sorted(set(loud_stops)))})")
     if waiting:
         reasons_yellow.append(
-            f"{len(waiting)} item(s) waiting on you: "
+            f"{len(waiting)} item(s) — needs your key or account: "
             + ", ".join(f"{rec.get('code')} ({stage})"
                         for stage, rec in sorted(waiting.items())))
     empty = [c for c in cal if not c["slug"]]
@@ -403,7 +403,7 @@ def render(week: str, now: dt.datetime) -> tuple[str, dict]:
     # first thing in the digest, above the week's numbers. `waiting` itself
     # is computed above, before verdict(), which now reads it too.
     if waiting:
-        L += ["## ⚠️ Waiting on you", "",
+        L += ["## 🔑 Needs your key or account", "",
               "These are the only things in this system that a machine cannot "
               "do. Everything else healed itself or is not blocking. No run "
               "went red for any of them — that is on purpose.", "",
@@ -520,7 +520,7 @@ def render(week: str, now: dt.datetime) -> tuple[str, dict]:
                          f"| {s['message'][:110]} |")
             L.append("")
         if waited:
-            L += [f"{len(waited)} stop(s) are waiting on YOU and are listed at "
+            L += [f"{len(waited)} stop(s) are needing YOUR key or account and are listed at "
                   f"the top of this email: "
                   + ", ".join(f"`{s['code']}` ({s['stage']})" for s in waited)
                   + ". None of them failed a run.", ""]

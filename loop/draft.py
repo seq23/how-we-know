@@ -27,6 +27,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import batch_queue  # noqa: E402 - loop/ is put on sys.path above
+import opening  # noqa: E402
 import breaker  # noqa: E402
 import author  # noqa: E402
 import cadence  # noqa: E402
@@ -73,6 +74,9 @@ def brief_for(topic: dict, week: str) -> Path:
             "No claim of expertise, credentials or professional advice.",
             "State uncertainty and evidence limits explicitly.",
             "Structure must differ from the previous video's shape.",
+            # loop/opening.py - the same rule the automated author is held to
+            # and the same check a hand-written script is gated by.
+            opening.prompt_text(),
         ],
         "required_sections": ["# <question>", "## Direct-answer lock",
                               "## Narration", "## Human fingerprint gate",
