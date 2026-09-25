@@ -286,7 +286,10 @@ if T is not None:
              ("how strong is steel", "why is steel so strong"),
              ("is damascus steel worth it", "is damascus steel better"),
              ("what lies in the deepest part of the ocean",
-              "what is the deepest part of the ocean")]
+              "what is the deepest part of the ocean"),
+             # a numbered catalogue slug standing in for its question
+             ("10-what-is-the-deepest-part-of-the-ocean",
+              "what lives in the deepest part of the ocean")]
     for a, b in same:
         examined += 1
         if not T.same_question(a, b):
