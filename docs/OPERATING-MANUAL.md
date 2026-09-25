@@ -248,6 +248,7 @@ section that follows it has said otherwise since. Corrected 2026-09-23.
 | Sat 10:00 | `weekly-score` | Actions | Measure demand and competition for candidate questions. Saturated topics are killed outright. |
 | Sun 10:00 | `sun-rank` | Actions | Re-order the publish queue by combined score. |
 | 1st monthly | `monthly-review` | Actions | Decide from thresholds, ask an LLM for a second opinion, apply within a fence, email the report. |
+| 1st of Jan/Apr/Jul/Oct | `taxonomy-refresh` | Actions | Re-mine demand and trends (free), re-measure competition for the current candidate ranking (quota-capped, `--budget 4000` of 10,000), and re-derive `research/proposed-taxonomy.json` — the ranked list `loop/domains.lifecycle()` promotes the next domain from. Added 2026-09-25: this file had been touched exactly once, ever, since 2026-08-30; the automatic domain swap was always data-driven, the data itself was frozen. |
 
 ### launchd agents on this Mac
 

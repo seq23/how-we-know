@@ -1,0 +1,74 @@
+name: loop · Quarterly · refresh the candidate-niche taxonomy
+
+# research/proposed-taxonomy.json — the ranked list loop/domains.lifecycle()
+# draws the NEXT domain from whenever an allocated one decays past its queue
+# floor — had been touched exactly once, ever, since 2026-08-30. The
+# automatic swap was always data-driven; the data itself was frozen. This
+# refreshes it on a real cadence so a swap, whenever the data actually calls
+# for one, reads current demand rather than a snapshot from whenever this
+# repo happened to be young.
+#
+# QUARTERLY, DELIBERATELY. Demand and trends are free (keyless autocomplete
+# and Trends-widget endpoints); competition is not — search.list costs 100 of
+# the 10,000 daily YouTube Data API units, shared with that same day's daily
+# upload and weekly per-domain queue refill. Evergreen educational demand
+# does not meaningfully shift week to week, so quarterly is frequent enough
+# to matter and far enough from the other quota-spending lanes to never
+# compete with them.
+#
+# 08:00 UTC on the 1st of Jan/Apr/Jul/Oct, chosen to avoid every other
+# schedule this repo already runs: Saturday (weekly-score), Sunday
+# (sun-rank), Monday (mon-draft), and the daily 14:00 UTC upload window.
+on:
+  schedule:
+    - cron: '0 8 1 1,4,7,10 *'
+  workflow_dispatch:
+    inputs:
+      budget:
+        description: 'YouTube Data API quota units to spend (of 10,000/day)'
+        required: false
+        default: '4000'
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: loop-state
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install loop dependencies
+        run: pip install -r requirements-loop.txt
+
+      # Same reasoning as every other lane in the loop-state concurrency
+      # group — see loop-sat-score.yml's identical step for the full history.
+      - name: Refresh to the current main before any stage acts
+        run: |
+          git fetch --quiet origin ${{ github.ref_name }}
+          before="$(git rev-parse --short HEAD)"
+          git reset --hard --quiet "origin/${{ github.ref_name }}"
+          after="$(git rev-parse --short HEAD)"
+          if [ "$before" = "$after" ]; then
+            echo "already current at $after"
+          else
+            echo "advanced $before -> $after (queued behind another lane's push)"
+          fi
+
+      - name: Refresh demand, trends, competition and re-derive the taxonomy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: >
+          bin/loop-stage.sh taxonomy-refresh loop/taxonomy_refresh.py
+          --budget "${{ github.event.inputs.budget || '4000' }}"
