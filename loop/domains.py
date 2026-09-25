@@ -390,6 +390,21 @@ def queue_depth(include_published: bool = False) -> dict[str, int]:
         except Exception:                                  # never break a count
             published = set()
 
+    # A QUEUED DUPLICATE IS NOT INVENTORY EITHER (2026-09-25). A row that asks
+    # a question already made, or already kept ahead of it, or that names
+    # another channel, is refused by loop/batch_queue.py on read - so no lane
+    # will ever write, narrate or upload it. Counting it here would report
+    # runway made of topics the selection can never pick: the same
+    # "two components each keeping their own list" defect as the published
+    # double-count above. batch_queue's rule is the one rule.
+    refused: set[str] = set()
+    if not include_published:
+        import batch_queue                                 # noqa: PLC0415
+        try:
+            refused = {r["slug"] for r in batch_queue.refused_entries()}
+        except batch_queue.NoPublishOrder:
+            refused = set()
+
     for path in _publish_order_files():
         q = _read(path).get("queue") or []
         for row in q:
@@ -400,6 +415,8 @@ def queue_depth(include_published: bool = False) -> dict[str, int]:
             seen_slugs.add(slug)
             if slug in published:
                 continue                      # already made; not inventory
+            if slug in refused:
+                continue                      # same question / other channel
             # THE SCRIPT IS THE AUTHORITY, THE FILE IS THE FALLBACK. A queued
             # topic has no script yet by definition, and until 2026-09-05 that
             # did not matter: the two live domains had scripts on disk for

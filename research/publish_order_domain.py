@@ -65,6 +65,7 @@ sys.path.insert(0, HERE)
 sys.path.insert(0, os.path.join(ROOT, "loop"))
 
 import exclusions                                              # noqa: E402
+import topic_identity as TI                                    # noqa: E402
 from competition import content_tokens                         # noqa: E402
 from mine import ENDPOINT, suggest                             # noqa: E402
 from publish_order import (                                    # noqa: E402
@@ -275,7 +276,8 @@ def generic_tokens(rows: list, seed_tokens: set) -> set:
 
 def _screen(rows: list, seed_tokens: set, limit: int,
             seen: list, picked: list, made: set | None = None,
-            generic: set | None = None) -> tuple[list, list]:
+            generic: set | None = None,
+            made_questions: list | None = None) -> tuple[list, list]:
     """Screen mined rows into `picked`/`seen` in place. Returns (added, killed).
 
     One screening implementation for both the broad pass and the deep one, so
@@ -300,6 +302,27 @@ def _screen(rows: list, seed_tokens: set, limit: int,
             killed.append({"query": q, "killed_by": "QUALIFIER_NOISE",
                            "rule": "autocomplete tail, not a topic",
                            "matched": QUALIFIER_NOISE.search(q).group(0)})
+            continue
+        # SOMEONE ELSE'S VIDEO. "how are microchips made veritasium" is a
+        # search for Veritasium's episode; answering it is making theirs
+        # again under our title. Refused, never normalised (2026-09-25).
+        ch = TI.names_other_channel(q)
+        if ch:
+            killed.append({"query": q, "killed_by": "OTHER_CHANNEL",
+                           "rule": "names another channel", "matched": ch})
+            continue
+        # THE SAME QUESTION AS AN EPISODE ALREADY MADE, IN OTHER WORDS. The
+        # slug check above only sees an exact slug, and the deep-sea
+        # catalogue's slugs are numbered, so it could never see deep sea at
+        # all: "what lives in the sea" is episode 08, "What creatures live
+        # in the deep sea?". Checked against every made question, so a
+        # variant of a published question is caught even when the bare
+        # question itself never reached this loop (2026-09-25).
+        qkey = TI.question_key(q)
+        hit = TI.first_same(qkey, made_questions or [])
+        if hit:
+            killed.append({"query": q, "killed_by": "NEAR_DUPLICATE_OF_MADE",
+                           "rule": hit[1], "matched": hit[0]})
             continue
         toks = {_stem(t) for t in content_tokens(q)} - FRAME
         hits = toks & seed_tokens
@@ -329,12 +352,31 @@ def _screen(rows: list, seed_tokens: set, limit: int,
         key = _canonical(q)
         if not key or key in seen or _is_narrower_ask(key, seen):
             continue
+        # ONE QUESTION, MANY PHRASINGS (2026-09-25). The exact-token rule
+        # above sees "what lives in the deep" and "what lives in the sea" as
+        # two topics; loop/topic_identity.py's question keys fold
+        # deep/depths/sea/ocean to one word, drop brand and format words and
+        # treat near-identical keys as one question. Both rules apply: the
+        # exact one still drops "how deep is the ocean frank sinatra" as a
+        # narrower "how deep is the ocean", which the question key (a
+        # one-generic-word key) deliberately does not.
+        pkeys = [TI.question_key(p) for p in picked]
         # THE BROADER QUESTION WINS. "why is outer space dark" is surfaced by
         # more probes than "why is space dark", so it arrives first -- but the
         # shorter question is the better episode, and they are the same
         # episode. A later candidate that is a strict SUBSET of one already
         # kept replaces it rather than being dropped as a duplicate.
-        sub = next((i for i, k in enumerate(seen) if key < k), None)
+        sub = next((i for i, k in enumerate(seen)
+                    if key < k or (qkey < pkeys[i]
+                                   and TI.why_same(qkey, pkeys[i]))), None)
+        if sub is None:
+            dup = next((i for i, k in enumerate(pkeys)
+                        if TI.why_same(qkey, k)), None)
+            if dup is not None:
+                killed.append({"query": q, "killed_by": "NEAR_DUPLICATE",
+                               "rule": TI.why_same(qkey, pkeys[dup]),
+                               "matched": picked[dup]})
+                continue
         if sub is not None:
             killed.append({"query": picked[sub], "killed_by": "BROADER_ASK",
                            "rule": "same question, narrower phrasing",
@@ -347,6 +389,16 @@ def _screen(rows: list, seed_tokens: set, limit: int,
         picked.append(q)
         added.append(q)
     return added, killed
+
+
+def made_question_keys() -> list:
+    """[(question, question key)] for every episode already made or written
+    -- loop/batch_queue.made_questions(), the one list, so generation, the
+    read-time queue and the Saturday hold gate cannot disagree about what
+    the channel has already answered. Read failures raise: an empty list
+    here would silently re-admit every repeat."""
+    import batch_queue                                     # noqa: PLC0415
+    return batch_queue.made_questions()
 
 
 def candidates(domain: str, limit: int = MAX_CANDIDATES,
@@ -394,10 +446,12 @@ def candidates(domain: str, limit: int = MAX_CANDIDATES,
         made = set()
 
     generic = generic_tokens(rows, seed_tokens)
+    made_questions = made_question_keys()
 
     seen: list = []
     picked: list = []
-    _, killed = _screen(rows, seed_tokens, limit, seen, picked, made, generic)
+    _, killed = _screen(rows, seed_tokens, limit, seen, picked, made, generic,
+                        made_questions)
 
     if deep and len(picked) < MIN_CANDIDATES:
         deep_path = os.path.join(
@@ -412,7 +466,8 @@ def candidates(domain: str, limit: int = MAX_CANDIDATES,
             before = len(picked)
             _, more_killed = _screen(extra, seed_tokens, limit, seen,
                                      picked, made,
-                                     generic | generic_tokens(extra, seed_tokens))
+                                     generic | generic_tokens(extra, seed_tokens),
+                                     made_questions)
             killed += more_killed
             print(f"deep mine: {before} -> {len(picked)} candidate(s)")
 
