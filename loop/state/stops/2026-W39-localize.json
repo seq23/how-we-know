@@ -1,7 +1,7 @@
 {
   "stage": "localize",
   "week": "2026-W39",
-  "at": "2026-09-24T15:10:39+00:00",
+  "at": "2026-09-25T15:11:30+00:00",
   "code": "LOCALIZATIONS_UP_TO_DATE",
   "message": "all 34 live video(s) already carry 5 localizations and defaultLanguage=en. Nothing was translated and nothing was written \u2014 a re-run costs nothing, which is the design.",
   "detail": {
@@ -43,11 +43,11 @@
     ]
   },
   "unblock": "Nothing to do. This stop means the lane is finished, not broken. It will do real work again when a new episode is uploaded or an English title changes.",
-  "disposition": "self_resolving",
-  "disposition_why": "Every live video already carries its localizations and defaultLanguage=en. The lane is FINISHED, not blocked: it does real work again the moment a new episode goes public or an English title changes. Nothing was written and a re-run costs nothing, which is the design. (run 8 of at most 8 before this escalates to a human.)",
-  "consecutive": 8,
+  "disposition": "needs_human",
+  "disposition_why": "'LOCALIZATIONS_UP_TO_DATE' has now stopped localize on 9 consecutive runs (limit 8), so it is not resolving itself. Eight consecutive days with nothing to localize is longer than the publish cadence can explain. At 4/week a new episode goes public at least every ~3 days and each one needs localizing, so an eight-day streak means either publishing has stopped or - the dangerous case - this lane can no longer SEE new videos and is reporting 'up to date' about a list that stopped growing. Check that the live-video count in the run's own note is rising.",
+  "consecutive": 9,
   "held_items": [],
-  "exit_code": 0,
+  "exit_code": 3,
   "work_done_before_stop": [],
   "notes": [
     "34 live video(s); 0 need work; languages es, pt-BR, hi, id, de"
