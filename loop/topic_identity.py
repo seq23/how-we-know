@@ -187,6 +187,10 @@ CHANNEL_RE = _channel_patterns()
 
 def _clean(q: str) -> str:
     q = (q or "").lower().replace("’", "'")
+    # A slug standing in for a question carries the catalogue's episode
+    # number ("10-what-is-the-deepest-part-of-the-ocean"); it is not a word
+    # of the question.
+    q = re.sub(r"^\s*\d{1,3}[-\s]+(?=[a-z])", "", q)
     q = re.sub(r"\bwhat's\b", "what is", q)
     q = re.sub(r"\bhow's\b", "how is", q)
     q = re.sub(r"\bwho's\b", "who is", q)
