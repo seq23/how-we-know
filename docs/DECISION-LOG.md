@@ -730,3 +730,61 @@ time), restore passes; inserting a `<` fails naming `'<' at line 18, column
 `LOOP_DRY_RUN=1 .venv/bin/python loop/channel_about.py` still refuses on
 missing credentials, not on the text — confirming the guard passes clean
 text through.
+
+---
+
+## 2026-09-25 — a hold is decided by the loop, and a slot the generator misses is a note, not a red build
+
+**What happened.** Two dispatches of the Monday lane today (runs 36163944334
+and 36164079633) went red on `main`. The first was `NO_SCRIPTS` on a stale
+W38 selection that named the four scripts held in `loop/promotion_holds.json`
+since the 23rd; the second authored three of four slots and fell to
+`AUTHOR_REQUIRED` on the fourth (`what-lives-in-the-deep`: the model drew
+`{{uncertain: 2000000 | …}}` over prose that said "2 million", was told four
+times that the number was never spoken, and was never told how to fix it).
+Issue #121 then asked the owner to (a) write a script by hand and (b) decide
+the four holds.
+
+**Owner instruction.** On the red: "why does it have to turn red on main
+because of the stop? why can't it skip with a note?" On the holds: "why can't
+these be left somewhere for an automated process to pick up and decide on?"
+
+**Decided.**
+
+- **`AUTHOR_REQUIRED` is self-resolving** (`loop/stop_policy.json`). The week
+  ships what was authored, the topic stays queued unwritten, next Monday
+  retries with a fresh budget. `max_consecutive: 1` — the same lane falling
+  short two Mondays running is a topic the generator cannot write, and pages.
+- **The retry loop names the remedy.** `loop/author.py` `DIRECTIVE_REMEDY` is
+  appended to any rejection of the "directive draws … never speaks" class,
+  and a `{{uncertain}}` whose RANGE is not a number is itself rejected
+  (`_uncertain_range_problems`) — the renderer silently dropped that beat.
+- **A hold is decided by the Saturday gate, never parked for the owner.**
+  `loop/score.py dispose_promotion_holds()` puts each held script's own title
+  through `research/publish_order_domain.py --query` — the same demand ÷
+  competition measurement every queued topic passed, imported unchanged.
+  Passed, or the slug is already a queued row: promoted (script to
+  `scripts/`, gated row appended to the domain's publish order, POV recorded).
+  Killed, or the domain holds no weekly slots: declined (script to
+  `loop/drafts/declined/`, never deleted). Gate cannot run (key, quota):
+  deferred, counted; four deferrals is `HOLD_GATE_FAILED`. Every decision is
+  appended here by the run itself. `SCRIPTS_AWAITING_PROMOTION` is therefore
+  self-resolving too (`max_consecutive: 8`, one Saturday cycle plus one).
+- **Expected outcome for today's four.** `why-deep-sea-creatures` is already
+  a queued row that passed (the slug collision noted in `loop/cloud_upload.py`)
+  and is promoted without a gate call. The three "how do scientists know…"
+  scripts declare `deep-sea-ocean-science` and are gated on their titles;
+  the gate decides, not this entry.
+
+**Guards.** `loop/tests/test_holds_are_decided_by_the_saturday_gate.py` (every
+branch, gate stubbed, nothing real touched — the first run of an existing
+score test against the real register promoted a real script and appended to
+this log, both reverted, and every test that runs `score.main()` now points
+`score.HOLDS_PATH` at an empty scratch register); `test_authoring.py` case 8
+(the remedy is in the feedback; a prose RANGE is rejected);
+`test_every_stop_is_classified.py` (127 codes, all classified);
+`test_stage_write_set_is_committed.py` (weekly-score now commits `scripts/`
+and `pov/pov-assignments.json`, negative proofs per stage block).
+
+**Verified.** Local suite before the PR; CI on the PR and on `main` after
+merge — see the PR.

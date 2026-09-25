@@ -59,8 +59,14 @@ def check() -> list[str]:
             return SimpleNamespace(returncode=0, stdout="ranked", stderr="")
         raise AssertionError(f"unexpected subprocess: {cmd}")
 
-    saved = (score.subprocess.run, score.missing_queues)
+    # An empty hold register: main() also decides promotion holds through
+    # the same subprocess.run (2026-09-25), and this test's subject is the
+    # domain gate's traceback, not the real loop/promotion_holds.json.
+    empty_holds = SCRATCH / "promotion_holds.json"
+    empty_holds.write_text('{"holds": []}')
+    saved = (score.subprocess.run, score.missing_queues, score.HOLDS_PATH)
     score.subprocess.run = fake_run
+    score.HOLDS_PATH = empty_holds
     score.missing_queues = lambda: {
         "deep-sea-ocean-science": SCRATCH / "publish_order_deep-sea.json"}
     try:
@@ -69,7 +75,7 @@ def check() -> list[str]:
         except SystemExit:
             pass
     finally:
-        score.subprocess.run, score.missing_queues = saved
+        score.subprocess.run, score.missing_queues, score.HOLDS_PATH = saved
 
     # -- Rule 0 / the trap itself, pinned --------------------------------
     examined += 1

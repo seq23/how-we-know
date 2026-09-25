@@ -396,6 +396,72 @@ def check() -> list[str]:
             (author.call_openrouter, author.dead_urls, author.record_spend,
              author.DRAFTS, author.shape_problems) = real
 
+    # ------------------------------------ 8. a directive rejection names the fix
+    # Run 36164079633 (2026-09-25): `{{uncertain: 2000000 | species | range
+    # 700000 to 2200000 | low confidence}}` over prose that said "2 million"
+    # was rejected four times with the fault named and the remedy never, and
+    # the slot fell to AUTHOR_REQUIRED. Two things are pinned: the malformed
+    # RANGE (prose no parser reads; the renderer silently drops the beat) is
+    # itself a rejection, and the feedback the model gets carries the remedy.
+    bad = ("# Q?\n## Narration\n"
+           "{{uncertain: 2000000 | species | range 700000 to 2200000 | low confidence}}\n"
+           "Around 2 million species may live down there.\n"
+           "## Human fingerprint gate\n")
+    # The RANGE is drawn on screen too, so it is spoken too (V1's rule for
+    # every number in a directive, unchanged).
+    good = ("# Q?\n## Narration\n"
+            "{{uncertain: 2,000,000 | species | 750,000 | low confidence}}\n"
+            "Around 2,000,000 species, give or take 750,000, may live down "
+            "there.\n"
+            "## Human fingerprint gate\n")
+    examined += 1
+    flags = author.directive_truth_problems(bad)
+    if not any(f.startswith("directive draws number '2000000'") for f in flags):
+        fails.append(f"an unspoken directive number was not flagged: {flags!r}")
+    if not any(f.startswith("uncertain directive's RANGE") for f in flags):
+        fails.append(f"a prose RANGE the renderer cannot parse was not "
+                     f"flagged: {flags!r}")
+    examined += 1
+    flags = author.directive_truth_problems(good)
+    if flags:
+        fails.append(f"a well-formed uncertain directive spoken verbatim was "
+                     f"flagged: {flags!r}")
+
+    examined += 1
+    seen: list[list[dict]] = []
+    drafts_out = iter([bad, good])
+
+    def _fake_call2(messages, model, key, **kw):
+        seen.append(messages)
+        return {"choices": [{"message": {"content": next(drafts_out)},
+                             "finish_reason": "stop"}],
+                "usage": {"cost": 0.0}}
+
+    real = (author.call_openrouter, author.dead_urls, author.record_spend,
+            author.DRAFTS, author.shape_problems)
+    with tempfile.TemporaryDirectory(dir=LOOP / "drafts") as td:
+        author.call_openrouter, author.dead_urls = _fake_call2, lambda t: []
+        author.record_spend = lambda *a, **k: None
+        author.shape_problems = lambda t, p: author.directive_truth_problems(t)
+        author.DRAFTS = Path(td)
+        try:
+            res = author.draft("Q?", "remedy-test", pov, key="sk-or-v1-" + "0" * 64)
+            if res.get("attempt") != 2:
+                fails.append(f"expected acceptance on attempt 2, got "
+                             f"{res.get('attempt')}")
+            fb = seen[1][-1]["content"] if len(seen) > 1 else ""
+            if author.DIRECTIVE_REMEDY not in fb:
+                fails.append("the rejection sent back to the model names the "
+                             "fault but not the remedy; a retry loop that "
+                             "repeats a diagnosis is paid attempts at the "
+                             "same mistake")
+        except author.AuthorStop as e:
+            fails.append(f"draft() stopped ({e.code}) instead of accepting the "
+                         f"corrected second draft")
+        finally:
+            (author.call_openrouter, author.dead_urls, author.record_spend,
+             author.DRAFTS, author.shape_problems) = real
+
     if examined == 0:
         fails.append("examined ZERO authoring cases")
     print(f"inspected {examined} authoring case(s)")

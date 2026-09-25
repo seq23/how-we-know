@@ -324,9 +324,12 @@ if sorted(why["held_items"] or []) != sorted(HELD):
     fails.append(f"the hold does not name exactly the four: {why['held_items']}")
 d, _ = common.disposition(CU.LANE, why["code"], why["detail"], 1,
                           held_items=why["held_items"], unblock=why["unblock"])
-if d != "owner_action":
+if d != "self_resolving":
     fails.append(f"SCRIPTS_AWAITING_PROMOTION is {d} on its first run, not the "
-                 f"green owner_action - it would page her on a decision she has")
+                 f"green self_resolving - since 2026-09-25 the Saturday gate "
+                 f"decides every hold (loop/score.py dispose_promotion_holds), "
+                 f"so this state clears on its own and must neither page her "
+                 f"nor wait on her")
 examined += 1
 why = CU.diagnose_empty_shelf(queued, simulated_done, set(),
                               rows + [{"slug": "a-new-stray", "status": "queued"}],
