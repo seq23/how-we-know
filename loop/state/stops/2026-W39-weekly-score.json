@@ -1,46 +1,50 @@
 {
   "stage": "weekly-score",
   "week": "2026-W39",
-  "at": "2026-09-25T16:25:36+00:00",
-  "code": "NEW_DOMAIN_QUOTA",
-  "message": "2 domain(s) could not be scored this run: deep-sea-ocean-science, materials-and-manufacturing. deep-sea-ocean-science holds weekly slots and its first topic gate stopped on YouTube Data API quota. It has no queue until this runs, and the drafting lane has nothing to draw from for it.",
+  "at": "2026-09-25T16:41:39+00:00",
+  "code": "NEW_DOMAIN_UNSCORED",
+  "message": "2 domain(s) could not be scored this run: deep-sea-ocean-science, materials-and-manufacturing. deep-sea-ocean-science holds weekly slots and its first topic gate raised an unhandled exception (exit 1), not a quota or key stop. This is a code defect, not a condition that clears on its own \u2014 retrying next Saturday cannot fix it.",
   "detail": {
     "stops": [
       {
         "domain": "deep-sea-ocean-science",
-        "code": "NEW_DOMAIN_QUOTA",
-        "message": "deep-sea-ocean-science holds weekly slots and its first topic gate stopped on YouTube Data API quota. It has no queue until this runs, and the drafting lane has nothing to draw from for it.",
+        "code": "NEW_DOMAIN_UNSCORED",
+        "message": "deep-sea-ocean-science holds weekly slots and its first topic gate raised an unhandled exception (exit 1), not a quota or key stop. This is a code defect, not a condition that clears on its own \u2014 retrying next Saturday cannot fix it.",
         "tail": [
-          "  File \"/home/runner/work/how-we-know/how-we-know/research/publish_order.py\", line 333, in reason",
-          "    subs = rec[\"competition\"][\"median_subscribers\"]",
-          "           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^",
-          "KeyError: 'median_subscribers'"
+          "    queue = sorted([r for r in out_rows if r[\"gate\"][\"verdict\"] != \"kill\"],",
+          "            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+          "  File \"/home/runner/work/how-we-know/how-we-know/research/publish_order_domain.py\", line 571, in <lambda>",
+          "    key=lambda r: -(r[\"combined\"][\"score\"] or 0))",
+          "                    ~~~~~~~~~~~~~^^^^^^^^^",
+          "KeyError: 'score'"
         ],
-        "unblock": "The next Saturday run retries. If it recurs, the candidate set is larger than one day's quota - lower --budget and let it fill over two weeks."
+        "unblock": "Run research/publish_order_domain.py --domain deep-sea-ocean-science --candidates-only and read the traceback. A domain with no queue cannot fill the slots the monthly review gave it."
       },
       {
         "domain": "materials-and-manufacturing",
-        "code": "NEW_DOMAIN_QUOTA",
-        "message": "materials-and-manufacturing holds weekly slots and its first topic gate stopped on YouTube Data API quota. It has no queue until this runs, and the drafting lane has nothing to draw from for it.",
+        "code": "NEW_DOMAIN_UNSCORED",
+        "message": "materials-and-manufacturing holds weekly slots and its first topic gate raised an unhandled exception (exit 1), not a quota or key stop. This is a code defect, not a condition that clears on its own \u2014 retrying next Saturday cannot fix it.",
         "tail": [
-          "  File \"/home/runner/work/how-we-know/how-we-know/research/publish_order.py\", line 333, in reason",
-          "    subs = rec[\"competition\"][\"median_subscribers\"]",
-          "           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^",
-          "KeyError: 'median_subscribers'"
+          "    queue = sorted([r for r in out_rows if r[\"gate\"][\"verdict\"] != \"kill\"],",
+          "            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+          "  File \"/home/runner/work/how-we-know/how-we-know/research/publish_order_domain.py\", line 571, in <lambda>",
+          "    key=lambda r: -(r[\"combined\"][\"score\"] or 0))",
+          "                    ~~~~~~~~~~~~~^^^^^^^^^",
+          "KeyError: 'score'"
         ],
-        "unblock": "The next Saturday run retries. If it recurs, the candidate set is larger than one day's quota - lower --budget and let it fill over two weeks."
+        "unblock": "Run research/publish_order_domain.py --domain materials-and-manufacturing --candidates-only and read the traceback. A domain with no queue cannot fill the slots the monthly review gave it."
       }
     ]
   },
-  "unblock": "deep-sea-ocean-science: The next Saturday run retries. If it recurs, the candidate set is larger than one day's quota - lower --budget and let it fill over two weeks.; materials-and-manufacturing: The next Saturday run retries. If it recurs, the candidate set is larger than one day's quota - lower --budget and let it fill over two weeks.",
-  "disposition": "self_resolving",
-  "disposition_why": "A newly admitted domain's first scoring pass exceeded the weekly budget. Its remaining candidates are scored next week; nothing is lost and no unscored topic can be queued. (run 3 of at most 3 before this escalates to a human.)",
-  "consecutive": 3,
+  "unblock": "deep-sea-ocean-science: Run research/publish_order_domain.py --domain deep-sea-ocean-science --candidates-only and read the traceback. A domain with no queue cannot fill the slots the monthly review gave it.; materials-and-manufacturing: Run research/publish_order_domain.py --domain materials-and-manufacturing --candidates-only and read the traceback. A domain with no queue cannot fill the slots the monthly review gave it.",
+  "disposition": "needs_human",
+  "disposition_why": "'NEW_DOMAIN_UNSCORED' is not in loop/stop_policy.json, so it is treated as needing a human. That is the default on purpose. 'NEW_DOMAIN_UNSCORED' did not name what it is waiting on (no held_items), so this run cannot tell a repeat from a new problem. A stop that cannot be identified is never held.",
+  "consecutive": 1,
   "held_items": [],
-  "exit_code": 0,
+  "exit_code": 3,
   "work_done_before_stop": [
     "scored and ranked 34 candidate(s)",
-    "ranking is fresh as of 2026-09-25T16:24:30.853853+00:00"
+    "ranking is fresh as of 2026-09-25T16:41:04.076737+00:00"
   ],
   "notes": [
     "running research/publish_order.py (owned by the research agent)",
@@ -51,14 +55,14 @@
     "  scorer:    killed              17-what-is-a-yeti-crab                        (demand,saturation)",
     "  scorer:    killed_provisional  03-why-deep-sea-creatures-are-surfacing       (saturation)",
     "deep-sea-ocean-science holds weekly slots and has no scored queue; running the gate for it",
-    "  deep-sea-ocean-science:   File \"/home/runner/work/how-we-know/how-we-know/research/publish_order.py\", line 333, in reason",
-    "  deep-sea-ocean-science:     subs = rec[\"competition\"][\"median_subscribers\"]",
-    "  deep-sea-ocean-science:            ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^",
-    "  deep-sea-ocean-science: KeyError: 'median_subscribers'",
+    "  deep-sea-ocean-science:   File \"/home/runner/work/how-we-know/how-we-know/research/publish_order_domain.py\", line 571, in <lambda>",
+    "  deep-sea-ocean-science:     key=lambda r: -(r[\"combined\"][\"score\"] or 0))",
+    "  deep-sea-ocean-science:                     ~~~~~~~~~~~~~^^^^^^^^^",
+    "  deep-sea-ocean-science: KeyError: 'score'",
     "materials-and-manufacturing holds weekly slots and has no scored queue; running the gate for it",
-    "  materials-and-manufacturing:   File \"/home/runner/work/how-we-know/how-we-know/research/publish_order.py\", line 333, in reason",
-    "  materials-and-manufacturing:     subs = rec[\"competition\"][\"median_subscribers\"]",
-    "  materials-and-manufacturing:            ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^",
-    "  materials-and-manufacturing: KeyError: 'median_subscribers'"
+    "  materials-and-manufacturing:   File \"/home/runner/work/how-we-know/how-we-know/research/publish_order_domain.py\", line 571, in <lambda>",
+    "  materials-and-manufacturing:     key=lambda r: -(r[\"combined\"][\"score\"] or 0))",
+    "  materials-and-manufacturing:                     ~~~~~~~~~~~~~^^^^^^^^^",
+    "  materials-and-manufacturing: KeyError: 'score'"
   ]
 }

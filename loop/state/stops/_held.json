@@ -23,5 +23,16 @@
     "reported_run": 34672456430,
     "reports": 2,
     "stage": "imagery-harvest"
+  },
+  "weekly-score::NEW_DOMAIN_UNSCORED": {
+    "code": "NEW_DOMAIN_UNSCORED",
+    "first_reported_at": "2026-09-25T16:41:39+00:00",
+    "issue": null,
+    "items": [],
+    "last_reported_at": "2026-09-25T16:41:39+00:00",
+    "last_seen_at": "2026-09-25T16:41:39+00:00",
+    "reported_run": null,
+    "reports": 1,
+    "stage": "weekly-score"
   }
 }
