@@ -58,6 +58,19 @@ QUOTA_MARKERS = re.compile(
 KEY_ABSENT_MARKERS = re.compile(r"YOUTUBE_API_KEY_ABSENT|no youtube data api key",
                                 re.I)
 
+# CHECKED BEFORE EITHER MARKER ABOVE, ALWAYS. Confirmed 2026-09-25: a real
+# KeyError in research/publish_order_domain.py crashed on the first
+# candidate for BOTH allocated domains, every run, and was classified
+# NEW_DOMAIN_QUOTA anyway — something earlier in the same captured stdout
+# (research/competition.py's own routine "10,000 quota units/day" progress
+# text, not an actual quota problem) matched QUOTA_MARKERS before the
+# traceback was ever read. Neither KEY_ABSENT_MARKERS's stop nor
+# QUOTA_MARKERS's stop is ever accompanied by a raw Python traceback — both
+# are this codebase's own deliberate, well-formed NAMED STOP text — so an
+# unhandled exception is checked first and unconditionally: it is the one
+# signal here that cannot be a coincidental keyword match.
+TRACEBACK_MARKER = re.compile(r"^Traceback \(most recent call last\):", re.M)
+
 
 def entrypoint() -> Path:
     """The command to run. The file names its own generator; config overrides."""
@@ -243,6 +256,19 @@ def score_new_domains(st: Stage) -> None:
         if g.returncode == 0 and path.exists():
             st.work(f"scored a first queue for {dom} -> "
                     f"{path.relative_to(ROOT)}")
+        elif TRACEBACK_MARKER.search(gout):
+            stops.append({
+                "domain": dom, "code": "NEW_DOMAIN_UNSCORED",
+                "message": f"{dom} holds weekly slots and its first topic "
+                    f"gate raised an unhandled exception (exit "
+                    f"{g.returncode}), not a quota or key stop. This is a "
+                    f"code defect, not a condition that clears on its own — "
+                    f"retrying next Saturday cannot fix it.",
+                "tail": gout.strip().splitlines()[-6:],
+                "unblock": "Run research/publish_order_domain.py --domain "
+                    f"{dom} --candidates-only and read the traceback. A "
+                    "domain with no queue cannot fill the slots the "
+                    "monthly review gave it."})
         elif KEY_ABSENT_MARKERS.search(gout):
             stops.append({
                 "domain": dom, "code": "NEW_DOMAIN_KEY_ABSENT",
