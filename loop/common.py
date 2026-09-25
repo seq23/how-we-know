@@ -762,7 +762,12 @@ class Stage:
                 fh.write(f"stop_code={s.code}\n")
                 fh.write(f"stop_stage={self.name}\n")
                 fh.write(f"stop_week={self.week}\n")
-                fh.write(f"stop_message={s.message}\n")
+                # Heredoc form: a message with a newline in it (FORMAT_PROBLEM
+                # wraps its figures) is otherwise an "Invalid format" that
+                # fails the whole step - a GREEN stop turned red by its own
+                # hand-off (PR #128's CI, 2026-09-25).
+                delim = f"STOP_MESSAGE_{os.getpid()}_EOF"
+                fh.write(f"stop_message<<{delim}\n{s.message}\n{delim}\n")
                 fh.write(f"stop_disposition={disp}\n")
         return EXIT_OK if disp in GREEN_DISPOSITIONS else EXIT_STOP
 

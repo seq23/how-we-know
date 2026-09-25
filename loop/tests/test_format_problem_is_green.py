@@ -58,7 +58,8 @@ if 'unblock="Read loop/state/retention_finding.md.' not in msrc:
 def stage_run(body: str) -> subprocess.CompletedProcess:
     scratch = tempfile.mkdtemp(prefix="format-problem-stops-")
     env = dict(os.environ, LOOP_STOPS_DIR=scratch, LOOP_DRY_RUN="1",
-               GITHUB_STEP_SUMMARY=os.path.join(scratch, "summary.md"))
+               GITHUB_STEP_SUMMARY=os.path.join(scratch, "summary.md"),
+               GITHUB_OUTPUT=os.path.join(scratch, "output.txt"))
     code = ("import sys; sys.path.insert(0, %r)\n" % str(LOOP)
             + "import common\n"
             + "with common.Stage('fri-measure', '2099-W01') as st:\n"
@@ -92,6 +93,28 @@ elif ("FORMAT_PROBLEM" not in warn[0]
                  f"file: {warn[0]!r}")
 elif "\n" in warn[0] or "%0A" not in warn[0]:
     fails.append("the annotation did not escape the message's newline")
+# The step's GITHUB_OUTPUT must still parse with a multi-line message: every
+# line is key=value, or a key<<DELIM heredoc closed by DELIM (the runner fails
+# the whole step on anything else - PR #128's first CI run).
+examined += 1
+lines = (Path(r.scratch) / "output.txt").read_text().splitlines()
+i, bad = 0, []
+while i < len(lines):
+    ln = lines[i]
+    if "<<" in ln and ("=" not in ln or ln.index("<<") < ln.index("=")):
+        delim = ln.split("<<", 1)[1]
+        j = lines.index(delim, i + 1) if delim in lines[i + 1:] else -1
+        if j < 0:
+            bad.append(ln)
+            break
+        i = j + 1
+    elif "=" in ln:
+        i += 1
+    else:
+        bad.append(ln)
+        i += 1
+if bad:
+    fails.append(f"GITHUB_OUTPUT would not parse: {bad[:2]}")
 rec_path = Path(r.scratch) / "2099-W01-fri-measure.json"
 examined += 1
 rec = json.loads(rec_path.read_text()) if rec_path.exists() else {}
