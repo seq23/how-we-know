@@ -822,3 +822,30 @@ incident's exact strings; fails on the pre-fix code); V43
 `distinct-questions` in `loop/validate.py`, negatively proven; V39 now asserts
 scored = remaining + uploaded + refused; `test_holds_are_decided_by_the_saturday_gate.py`
 case 0.
+
+## 2026-09-25 — one fact under several names; the miner refills thin queues; FORMAT_PROBLEM is green
+
+**Decisions (coordinator, on the #127 report).**
+- **Episode 10's fact has one name.** "Mariana Trench", "Challenger Deep",
+  "deepest part/point of the ocean", "deepest ocean" and "how deep is the
+  ocean" fold to one token in `loop/topic_identity.py`; "how deep is <it>"
+  folds to episode 10's own question. `how-deep-mariana-trench` (written
+  2026-09-25) and `how-deep-is-the-ocean` are refused. What LIVES there is a
+  different question and stays. Same rule for episode 16's whale fall.
+- **The miner refills to a floor.** `batch_queue.MIN_UNWRITTEN_TOPICS = 4`.
+  `loop/score.py missing_queues()` refills a domain under it (not only an
+  empty one); `research/publish_order_domain.py candidates()` climbs a
+  ladder (broad mine → deep-mine cache → dedicated seed vocabulary → fresh
+  autocomplete mine), running the same identity refusal on every rung, and
+  names `DOMAIN_QUEUE_THIN` (self-resolving, 3 Saturdays) when every rung is
+  spent. A regenerated queue carries forward rows whose scripts exist.
+  Questions naming nothing beyond the domain's core words ("why deep sea")
+  are refused as `VAGUE`.
+- **FORMAT_PROBLEM is owner_action**, not needs_human: exit 0, owner-action
+  file, top of the Sunday digest, and a `::warning` annotation naming
+  `loop/state/retention_finding.md`. Every green stop now carries that
+  annotation. The 2026-09-25 Friday run on 5cf1335 was red on this alone.
+
+**Guards.** `test_topic_selection_refuses_near_duplicates.py` sections 6–7;
+`test_format_problem_is_green.py` (8 cases, fails on the old policy);
+`test_every_stop_is_classified.py` registers `DOMAIN_QUEUE_THIN`.

@@ -97,9 +97,17 @@ def missing_queues() -> dict:
     import domains as dom                                   # noqa: PLC0415
     import publish_order_domain as pod                      # noqa: PLC0415
 
+    import batch_queue                                      # noqa: PLC0415
+
+    # THIN, NOT ONLY EMPTY (2026-09-25). A queue whose unwritten rows are all
+    # repeats of aired episodes has depth on paper and nothing to write, and
+    # waiting for depth 0 meant refilling only after the Monday lane had
+    # already run dry. A domain is refilled once its unwritten, non-duplicate,
+    # non-held topics fall under batch_queue.MIN_UNWRITTEN_TOPICS.
+    unwritten = batch_queue.unwritten_by_domain()
     out = {}
     for name in dom.allocation(config()):
-        if dom.queue_depth().get(name, 0) > 0:
+        if unwritten.get(name, 0) >= batch_queue.MIN_UNWRITTEN_TOPICS:
             continue
         out[name] = Path(pod.out_path(name))
     return out
@@ -557,10 +565,12 @@ def score_new_domains(st: Stage) -> None:
     refresh_primary_ranking() on purpose: its stop must never cost the
     channel the ranking every publishing lane reads.
     """
+    import batch_queue                                      # noqa: PLC0415
     stops: list[dict] = []
     for dom, path in missing_queues().items():
-        st.note(f"{dom} holds weekly slots and has no scored queue; "
-                f"running the gate for it")
+        st.note(f"{dom} holds weekly slots and has fewer than "
+                f"{batch_queue.MIN_UNWRITTEN_TOPICS} unwritten, non-duplicate "
+                f"topics queued; mining and running the gate for it")
         g = subprocess.run(
             [PY, str(ROOT / "research" / "publish_order_domain.py"),
              "--domain", dom], cwd=ROOT, capture_output=True, text=True,
@@ -569,8 +579,24 @@ def score_new_domains(st: Stage) -> None:
         for line in gout.strip().splitlines()[-4:]:
             st.note(f"  {dom}: {line[:150]}")
         if g.returncode == 0 and path.exists():
-            st.work(f"scored a first queue for {dom} -> "
+            st.work(f"scored a queue for {dom} -> "
                     f"{path.relative_to(ROOT)}")
+        elif "NAMED STOP DOMAIN_QUEUE_THIN" in gout:
+            # The queue it could build IS written; the stop names the gap.
+            if path.exists():
+                st.work(f"scored a queue for {dom} -> "
+                        f"{path.relative_to(ROOT)} (under the floor)")
+            line = next(ln for ln in gout.splitlines()
+                        if "NAMED STOP DOMAIN_QUEUE_THIN" in ln)
+            stops.append({
+                "domain": dom, "code": "DOMAIN_QUEUE_THIN",
+                "message": line.split(":", 1)[1].strip(),
+                "tail": gout.strip().splitlines()[-4:],
+                "unblock": "Add seeds for this domain to "
+                    "research/seeds_broad.json or its dedicated seed file "
+                    "(research/publish_order_domain.py DEDICATED_SEEDS); the "
+                    "next Saturday run mines them. The domain keeps "
+                    "publishing whatever it already has queued."})
         elif TRACEBACK_MARKER.search(gout):
             stops.append({
                 "domain": dom, "code": "NEW_DOMAIN_UNSCORED",
@@ -628,7 +654,7 @@ def score_new_domains(st: Stage) -> None:
         # quota that clears on its own), and nothing about any domain's stop
         # is dropped: the full per-domain detail rides in `detail["stops"]`.
         rank = {"NEW_DOMAIN_KEY_ABSENT": 0, "NEW_DOMAIN_UNSCORED": 1,
-                "NEW_DOMAIN_QUOTA": 2}
+                "NEW_DOMAIN_QUOTA": 2, "DOMAIN_QUEUE_THIN": 3}
         worst = min(stops, key=lambda s: rank.get(s["code"], 1))
         doms = ", ".join(s["domain"] for s in stops)
         st.named_stop(

@@ -279,6 +279,11 @@
       "why": "Every instruction in the file was already applied and recorded on an earlier run; the ledger holds each action. Re-running act with the same file is idempotent by design so a retried tick cannot reply twice.",
       "max_consecutive": 3,
       "escalation": "Three runs handed an already-applied file means the caller is not clearing its instruction store after a successful act. Check the boss-os duty task state, not this lane."
+    },
+    "DOMAIN_QUEUE_THIN": {
+      "why": "The Saturday miner widened every source it has (broad mine, deep-mine cache, dedicated seeds, a fresh autocomplete mine) and still found fewer than 4 unwritten topics that are not repeats of aired episodes. It wrote the queue it could; autocomplete changes week to week and the next Saturday mines again. The runway stops, not this, protect publishing.",
+      "max_consecutive": 3,
+      "escalation": "Three Saturdays under the floor means the domain's seed vocabulary is used up, not unlucky. Add seeds (research/seeds_broad.json or the domain's dedicated seed file). Go red."
     }
   },
   "owner_action": {
@@ -387,6 +392,11 @@
       "why": "A scheduled lane has never completed one real run, so its schedule is deliberately held. Arming is one command she runs once - `gh workflow run <workflow>` - and a lane that pages her daily until she does is exactly the alarm this taxonomy exists to delete.",
       "max_consecutive": 10,
       "escalation": "Ten scheduled runs held means the lane was built and never turned on. Go red, because an unarmed lane is indistinguishable from a deleted one."
+    },
+    "FORMAT_PROBLEM": {
+      "why": "Measurement found the format itself underperforming its retention floor (loop/state/retention_finding.md). That is a content-design DECISION only she can make, not a fault: the measurement was written and every lane keeps running. A red main for it (run on 5cf1335, 2026-09-25) paged her about a finding, not a failure.",
+      "max_consecutive": 52,
+      "escalation": "A year of weekly measurements naming the same format problem with no decision means the finding is being ignored, not pending. Go red."
     }
   },
   "needs_human": {
@@ -446,7 +456,6 @@
     "TAXONOMY_REFRESH_FAILED": "The quarterly taxonomy refresh exited non-zero for an unrecognised reason. The existing research/proposed-taxonomy.json stands unchanged.",
     "BREAKER_TRIPPED": "Only after loop/breaker.py has already tried to reset itself against the live cause and found it still true. A breaker that stays tripped is protecting the channel and must be seen.",
     "EXTENSION_REJECTED": "A script extension failed its own validators. The episode stays short rather than being padded with unsourced prose.",
-    "FORMAT_PROBLEM": "Measurement found the format itself underperforming its floor. A decision, not a fault, and it is hers to see.",
     "NEW_DOMAIN_UNSCORED": "A domain was admitted and never scored. Nothing may be queued from it.",
     "INSUFFICIENT_DOMAIN_EVIDENCE": "A domain decision was asked for on evidence too thin to make it. Refusing is correct.",
     "QUEUE_DECAYED_BUT_UNMEASURED": "The queue is decaying and there is no measurement to explain it.",

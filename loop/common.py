@@ -83,6 +83,25 @@ _SUMMARY_HEAD = {"self_resolving": "🛑 NAMED STOP",
 GREEN_DISPOSITIONS = ("self_resolving", "held", "owner_action")
 
 
+def label_of(disp: str) -> str:
+    return {"self_resolving": "self-resolving",
+            "held": "held, awaiting the owner",
+            "owner_action": "waiting on the owner"}.get(disp, "needs a human")
+
+
+def annotation(level: str, title: str, message: str) -> str:
+    """One GitHub Actions workflow command (`::warning title=...::...`).
+
+    Escaped per the workflow-command spec so a message with a newline, a
+    colon or a comma cannot end the command early and drop the rest."""
+    def esc(v: str, prop: bool = False) -> str:
+        v = v.replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
+        if prop:
+            v = v.replace(":", "%3A").replace(",", "%2C")
+        return v
+    return f"::{level} title={esc(title, True)}::{esc(message)}"
+
+
 # ---------------------------------------------------------------- primitives
 
 def now() -> str:
@@ -709,6 +728,14 @@ class Stage:
         print(banner, flush=True)
         if not _same_stream(sys.stdout, sys.stderr):
             print(banner, file=sys.stderr, flush=True)
+        # A GREEN named stop is still a named stop: in Actions it carries a
+        # warning annotation on the run page, with the unblock text (which
+        # names the file to read), so "green" never reads as "nothing here".
+        # Red stops keep exit 3 and the issue; they need no annotation.
+        if disp in GREEN_DISPOSITIONS:
+            print(annotation("warning", f"{s.code} ({label_of(disp)})",
+                             s.message + (f" -- {s.unblock}" if s.unblock
+                                          else "")), flush=True)
         label = {"self_resolving": "self-resolving",
                  "held": "HELD — reported, awaiting the owner",
                  "owner_action": "waiting on you (green, never paged)"
