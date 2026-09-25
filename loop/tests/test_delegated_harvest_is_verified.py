@@ -198,7 +198,7 @@ def main() -> int:
         check("2: which is owner_action - green, recorded, never a red build "
               "for a Mac that is off", rc == 0
               and rec.get("disposition") == "owner_action"
-              and "WAITING ON THE OWNER" in out,
+              and "NEEDS A SECRET ONLY SHE HOLDS" in out,
               f"rc={rc} disp={rec.get('disposition')}")
         check("2: the stop names the host and how to start it",
               other in rec.get("message", "")

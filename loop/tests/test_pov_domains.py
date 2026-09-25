@@ -126,8 +126,15 @@ def main() -> int:
               "tag's own vocabulary")
 
     # 7 ------------------------------------------- it still refuses to invent
-    check("select() raises rather than inventing when nothing is left",
-          _raises_when_exhausted())
+    # 2026-09-25 (owner's rule: nothing waits on her): a full rotation window
+    # no longer stops the week. It yields the LEAST-RECENTLY-USED transferable
+    # line - from her bank, never invented - and a bank with no transferable
+    # line at all still raises.
+    ok, detail = _window_full_takes_lru_bank_line()
+    check("a full rotation window yields her least-recently-used "
+          "transferable line, never an invented one", ok, detail)
+    check("select() raises rather than inventing when the bank has no "
+          "transferable line", _raises_when_exhausted())
 
     if CHECKS == 0:
         raise AssertionError("ran zero checks - an empty test proves nothing")
@@ -135,17 +142,39 @@ def main() -> int:
     return 0
 
 
-def _raises_when_exhausted() -> bool:
+def _window_full_takes_lru_bank_line() -> tuple[bool, str]:
     every = [l["id"] for l in P.bank()]
+    trans = [l["id"] for l in P.bank() if l["tier"] == "transferable"]
     real = P.rotation_window
     P.rotation_window = lambda: len(every) + 1
+    try:
+        pick = P.select("nothing-like-this-at-all", "qqqq zzzz", every)
+    except P.NoPovMatch as e:
+        return False, f"raised: {e}"
+    finally:
+        P.rotation_window = real
+    line = next((l for l in P.bank() if l["id"] == pick["pov_id"]), None)
+    want = min(trans, key=lambda i: (max(k for k, u in enumerate(every)
+                                         if u == i), i))
+    if not line or line["line"] != pick["line"]:
+        return False, f"picked a line not verbatim in the bank: {pick}"
+    if pick["pov_id"] != want:
+        return False, f"picked {pick['pov_id']}, least recently used is {want}"
+    return True, ""
+
+
+def _raises_when_exhausted() -> bool:
+    every = [l["id"] for l in P.bank()]
+    real, real_bank = P.rotation_window, P.bank
+    P.rotation_window = lambda: len(every) + 1
+    P.bank = lambda: [l for l in real_bank() if l["tier"] != "transferable"]
     try:
         P.select("nothing-like-this-at-all", "qqqq zzzz", every)
         return False
     except P.NoPovMatch:
         return True
     finally:
-        P.rotation_window = real
+        P.rotation_window, P.bank = real, real_bank
 
 
 if __name__ == "__main__":

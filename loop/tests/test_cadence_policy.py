@@ -354,14 +354,16 @@ def check() -> list[str]:
     if measure.retention_checkpoint([], cfg)["status"] != "no_data":
         fails.append("no data was not reported as no data")
 
-    # It must reach a human, not sit in JSON.
+    # It must be ACTED ON, not sit in JSON - and not wait on a person either
+    # (owner's rule, 2026-09-25). The lane runs the opening rule's own
+    # measurement and writes what it is doing into the finding.
     examined += 1
     msrc = (LOOP / "measure.py").read_text()
-    if "FORMAT_PROBLEM" not in msrc or "named_stop" not in msrc:
-        fails.append("a format problem does not raise a named stop, so nobody "
-                     "would see it")
-    if "retention_finding.md" not in msrc:
-        fails.append("no prose finding is written")
+    if "opening.evaluate(" not in msrc or "format finding acted on" not in msrc:
+        fails.append("a format problem is not acted on through loop/opening.py")
+    if "retention_finding.md" not in msrc or \
+            "What the loop is doing about it" not in msrc:
+        fails.append("the prose finding does not say what the loop is doing")
 
     # ------------------------------------------------ locked uploads
     examined += 1

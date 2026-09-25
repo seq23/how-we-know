@@ -502,6 +502,23 @@ def select(slug: str, subject: str, used_ids: list[str] | None = None,
                                       f"tag signal fired for this subject"}
 
     if not ranked:
+        # EVERY FITTING LINE IS INSIDE THE ROTATION WINDOW. Automated policy
+        # (owner's rule, 2026-09-25: nothing waits on her): the window
+        # yields rather than the week stopping. The transferable line used
+        # LONGEST AGO is taken - still her own words from the bank, never an
+        # invented one - and never a line already used this week.
+        history = list(used_ids or [])
+        pool = [l for l in bank() if l["tier"] == "transferable"]
+        if pool:
+            last = {l["id"]: max((i for i, u in enumerate(history)
+                                  if u == l["id"]), default=-1) for l in pool}
+            l = min(pool, key=lambda x: (last[x["id"]], x["id"]))
+            return {"pov_id": l["id"], "line": l["line"], "tag": l["tag"],
+                    "tier": l["tier"], "source_answer": l.get("source_answer"),
+                    "matched_by": f"least-recently-used transferable line "
+                                  f"(every fitting line was inside the "
+                                  f"{window}-video rotation window)"}
+    if not ranked:
         raise NoPovMatch(
             f"no POV line in the bank matches {slug!r}. The bank's own rule is "
             f"that the pipeline takes a NAMED STOP here rather than inventing "

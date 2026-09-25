@@ -849,3 +849,36 @@ case 0.
 **Guards.** `test_topic_selection_refuses_near_duplicates.py` sections 6–7;
 `test_format_problem_is_green.py` (8 cases, fails on the old policy);
 `test_every_stop_is_classified.py` registers `DOMAIN_QUEUE_THIN`.
+
+## 2026-09-25 — Nothing waits on the owner; the opening rule; every stop kind classed
+
+**Owner's rule, verbatim:** "Nothing is supposed to wait on the owner. This
+should be a rule in the repo so you never forget." Now at the top of
+CLAUDE.md and RUNBOOK.md, read by `loop/tests/test_nothing_waits_on_the_owner.py`.
+
+**The retention finding, acted on (decision made for her).** Every script
+drafted from 2026-09-28 lands its payoff — the answer or the most surprising
+true fact — inside the first 30 seconds (75 narrated words at 144.58 wpm),
+then walks the "how we know" chain (`loop/opening.py`, variant
+`cold-open-payoff`). The author's prompt and the hand-authoring brief carry
+it; `author.shape_problems()` rejects a buried answer and the draft is
+redrafted; V44 re-checks every marked script. Published videos are untouched.
+The Friday measure lane tags each video with its opening; 28 days after the
+rule starts it compares the new cohort's average view duration with the
+pre-rule cohort and, if it is not above, switches to `question-first-teaser`
+(question + one-line teaser in 10 s, full answer inside ~60 s) and logs it.
+No stop either way. FORMAT_PROBLEM is no longer a stop.
+
+**Shorts format:** stays the current cut format; the Mac's nightly batch cuts
+Shorts from every new render. Not pending.
+
+**Stop kinds, three classes** (`loop/stop_classes.py`, V45): automated policy
+(`self_resolving`), a secret/account/external service only she holds
+(`owner_action`, each naming it in `holds`), or a real error (`needs_human`).
+Converted from "waiting on her" to automated policy: SHORTS_INVENTORY_EXHAUSTED,
+CADENCE_SCALE_WITHHELD, SCRIPTS_AWAITING_PROMOTION_RUNWAY_CRITICAL,
+INSUFFICIENT_DOMAIN_EVIDENCE, QUEUE_DECAYED_BUT_UNMEASURED,
+NO_REPLACEMENT_DOMAIN, RUNWAY_WARN (found unclassified). LANE_NOT_ARMED_* now
+arms itself when its secrets are present and stops only on a missing secret.
+NO_POV_MATCH yields the least-recently-used transferable bank line when the
+rotation window is full. AUTHORED_NOT_QUEUED is worded as the defect it is.

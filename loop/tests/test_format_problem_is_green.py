@@ -1,24 +1,21 @@
-"""FORMAT_PROBLEM is a finding for the owner, never a red main.
+"""A format finding is ACTED ON, never a stop; a green stop never turns main red.
 
 THE INCIDENT. The Friday 17:00 measure run on main (5cf1335, 2026-09-25) went
 red on one thing only: the named stop FORMAT_PROBLEM, raised after the
-measurement was written. The repo rule is that a named stop is green and
-self-explaining; a red build is for real errors. FORMAT_PROBLEM is a content
-decision only she can make, so it is `owner_action`: exit 0, recorded in the
-owner-action file, carried to the top of the Sunday digest, and shown on the
-run page as a GitHub warning annotation that names the finding file.
+measurement was written. #128 made it a green stop; the owner's rule the
+same day ("Nothing waits on the owner") removed it as a stop altogether:
+the measure lane acts on the finding through loop/opening.py and logs it.
 
 WHAT THIS PROVES, in a scratch stops dir (never loop/state/):
-  1. loop/stop_policy.json classifies FORMAT_PROBLEM as owner_action, and NOT
-     as needs_human (it must be in exactly one section);
-  2. a real Stage raising it with measure.py's own message and unblock text
-     exits 0, disposition owner_action, prints a `::warning` annotation whose
-     text names loop/state/retention_finding.md, and records it in the
-     owner-action file;
-  3. a real error in the same stage (an exception) still fails the run, and
-     an unclassified stop still exits 3 - the green path is not a blanket one;
-  4. the warning annotation escapes newlines, so a multi-line message cannot
-     truncate the annotation.
+  1. FORMAT_PROBLEM is in no loop/stop_policy.json section and loop/measure.py
+     does not raise it; the lane calls opening.evaluate() and logs the action;
+  2. a GREEN stop (self-resolving QUOTA_EXHAUSTED, message with a newline)
+     exits 0, prints exactly one `::warning` annotation that names the file
+     its unblock text points at, escapes the newline, and leaves a
+     GITHUB_OUTPUT the runner can parse (PR #128's first CI run failed on an
+     unparseable one);
+  3. a real error still fails the run, and an unclassified stop still exits
+     3 without being dressed as a warning.
 Hard-fails if it examines zero cases.
 """
 from __future__ import annotations
@@ -38,25 +35,28 @@ PY = sys.executable
 fails: list[str] = []
 examined = 0
 
-# ------------------------------------------------------------ 1. the policy
+# ------------------------------------------------------------ 1. no stop
 pol = json.loads((LOOP / "stop_policy.json").read_text())
 examined += 1
-if "FORMAT_PROBLEM" not in (pol.get("owner_action") or {}):
-    fails.append("FORMAT_PROBLEM is not owner_action in loop/stop_policy.json")
-if "FORMAT_PROBLEM" in (pol.get("needs_human") or {}):
-    fails.append("FORMAT_PROBLEM is still listed as needs_human")
-
-# The message and unblock measure.py really raises with, read from source so
-# the test cannot drift from the lane.
+for sec in ("self_resolving", "owner_action", "needs_human"):
+    if "FORMAT_PROBLEM" in (pol.get(sec) or {}):
+        fails.append(f"FORMAT_PROBLEM is still a stop kind ({sec})")
 msrc = (LOOP / "measure.py").read_text()
 examined += 1
-if 'unblock="Read loop/state/retention_finding.md.' not in msrc:
-    fails.append("measure.py's FORMAT_PROBLEM unblock no longer names "
-                 "loop/state/retention_finding.md")
+import ast                                                 # noqa: E402
+for node in ast.walk(ast.parse(msrc)):
+    if (isinstance(node, ast.Call) and isinstance(node.func, ast.Attribute)
+            and node.func.attr == "named_stop" and node.args
+            and isinstance(node.args[0], ast.Constant)
+            and node.args[0].value == "FORMAT_PROBLEM"):
+        fails.append("loop/measure.py still raises FORMAT_PROBLEM as a stop")
+if "opening.evaluate(" not in msrc or "format finding acted on" not in msrc:
+    fails.append("loop/measure.py does not act on the format finding through "
+                 "loop/opening.py")
 
 
 def stage_run(body: str) -> subprocess.CompletedProcess:
-    scratch = tempfile.mkdtemp(prefix="format-problem-stops-")
+    scratch = tempfile.mkdtemp(prefix="green-stop-")
     env = dict(os.environ, LOOP_STOPS_DIR=scratch, LOOP_DRY_RUN="1",
                GITHUB_STEP_SUMMARY=os.path.join(scratch, "summary.md"),
                GITHUB_OUTPUT=os.path.join(scratch, "output.txt"))
@@ -73,29 +73,25 @@ def stage_run(body: str) -> subprocess.CompletedProcess:
 
 # ------------------------------------------------------------ 2. green stop
 r = stage_run(
-    "    st.named_stop('FORMAT_PROBLEM', '6 of 10 videos lose the average "
-    "viewer inside the first 2.0 minutes\\n(1:53 against a 146s floor).',\n"
-    "                  detail={'measured': 10},\n"
-    "                  unblock='Read loop/state/retention_finding.md. Better "
-    "ranking will not fix this.')\n")
+    "    st.named_stop('QUOTA_EXHAUSTED', 'no YouTube units left today\\n"
+    "(10,000 spent).',\n"
+    "                  detail={'resets_at': 'midnight Pacific'},\n"
+    "                  unblock='Nothing to do; see loop/state/quota.json. It "
+    "resets at midnight Pacific.')\n")
 examined += 1
 out = r.stdout + r.stderr
 if r.returncode != 0:
-    fails.append(f"FORMAT_PROBLEM exited {r.returncode}, not 0: a finding "
-                 f"turned main red. {out.strip()[-300:]}")
+    fails.append(f"a green stop exited {r.returncode}, not 0: "
+                 f"{out.strip()[-300:]}")
 warn = [ln for ln in r.stdout.splitlines() if ln.startswith("::warning ")]
 examined += 1
 if len(warn) != 1:
     fails.append(f"expected exactly one ::warning annotation, got {warn!r}")
-elif ("FORMAT_PROBLEM" not in warn[0]
-      or "loop/state/retention_finding.md" not in warn[0]):
-    fails.append(f"the annotation does not name the code and the finding "
-                 f"file: {warn[0]!r}")
-elif "\n" in warn[0] or "%0A" not in warn[0]:
+elif "QUOTA_EXHAUSTED" not in warn[0] or "loop/state/quota.json" not in warn[0]:
+    fails.append(f"the annotation does not name the code and the file its "
+                 f"unblock points at: {warn[0]!r}")
+elif "%0A" not in warn[0]:
     fails.append("the annotation did not escape the message's newline")
-# The step's GITHUB_OUTPUT must still parse with a multi-line message: every
-# line is key=value, or a key<<DELIM heredoc closed by DELIM (the runner fails
-# the whole step on anything else - PR #128's first CI run).
 examined += 1
 lines = (Path(r.scratch) / "output.txt").read_text().splitlines()
 i, bad = 0, []
@@ -103,11 +99,10 @@ while i < len(lines):
     ln = lines[i]
     if "<<" in ln and ("=" not in ln or ln.index("<<") < ln.index("=")):
         delim = ln.split("<<", 1)[1]
-        j = lines.index(delim, i + 1) if delim in lines[i + 1:] else -1
-        if j < 0:
+        if delim not in lines[i + 1:]:
             bad.append(ln)
             break
-        i = j + 1
+        i = lines.index(delim, i + 1) + 1
     elif "=" in ln:
         i += 1
     else:
@@ -118,14 +113,9 @@ if bad:
 rec_path = Path(r.scratch) / "2099-W01-fri-measure.json"
 examined += 1
 rec = json.loads(rec_path.read_text()) if rec_path.exists() else {}
-if rec.get("disposition") != "owner_action" or rec.get("exit_code") != 0:
-    fails.append(f"stop record is not owner_action/exit 0: "
+if rec.get("disposition") != "self_resolving" or rec.get("exit_code") != 0:
+    fails.append(f"stop record is not self_resolving/exit 0: "
                  f"{rec.get('disposition')}/{rec.get('exit_code')}")
-oa = Path(r.scratch) / "owner_action.json"
-examined += 1
-if not oa.exists() or "FORMAT_PROBLEM" not in oa.read_text():
-    fails.append("FORMAT_PROBLEM was not written to the owner-action file, so "
-                 "the Sunday digest would never carry it")
 
 # ------------------------------------------------------------ 3. still red
 r = stage_run("    raise RuntimeError('YouTube Analytics returned garbage')\n")

@@ -566,7 +566,7 @@ print("RC", rc)
                          "self-resolving (the Saturday gate decides every "
                          "hold since 2026-09-25), so its zero exit is "
                          "unexplained")
-        if "WAITING ON THE OWNER" in out:
+        if "NEEDS A SECRET ONLY SHE HOLDS" in out:
             fails.append("the held-for-promotion stop still says it waits on "
                          "the owner; nothing about a hold is hers to decide")
         if "NAMED STOP" not in out:
@@ -591,8 +591,11 @@ print("RC", rc)
                          f"(routine per-candidate logging is expected and is "
                          f"not this): {banner.strip()[:400]}")
 
-        # Same state, runway critical: the held decision is now what stands
-        # between the channel and going dark, so it must reach her (exit 3).
+        # Same state, runway critical. Since 2026-09-25 (owner's rule:
+        # nothing waits on her) the held scripts are decided by the Saturday
+        # gate, not by her, so this is automated policy: named, exit 0, and
+        # naming every held slug. The critical runway itself is RUNWAY_CRITICAL
+        # on the Sunday lane, which is red.
         examined += 1
         r = run(f"ROWS = {[{'slug': s_, 'status': 'queued'} for s_ in today]!r}\n"
                 "HOLDS = None\n"
@@ -602,10 +605,14 @@ print("RC", rc)
                 dict(base, R2_LOCAL_DIR=str(tmp / "empty-shelf-7e")), tmp)
         out = r.stdout + r.stderr
         if ("[SCRIPTS_AWAITING_PROMOTION_RUNWAY_CRITICAL]" not in out
-                or "RC 3" not in r.stdout):
-            fails.append("held scripts with a critical runway did not page "
-                         "(SCRIPTS_AWAITING_PROMOTION_RUNWAY_CRITICAL, exit 3): "
-                         f"{out.strip()[-300:]}")
+                or "RC 0" not in r.stdout
+                or "SELF-RESOLVING" not in out
+                or "Saturday" not in out
+                or not all(h in out for h in today)):
+            fails.append("held scripts with a critical runway were not the "
+                         "named, green SCRIPTS_AWAITING_PROMOTION_RUNWAY_"
+                         "CRITICAL naming every held slug and the Saturday "
+                         f"gate: {out.strip()[-300:]}")
 
     if examined == 0:
         fails.append("examined ZERO scenarios — this test cannot reach what "

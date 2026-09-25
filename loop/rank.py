@@ -313,22 +313,12 @@ def main() -> None:
                     detail={"target": want, "holding_at": per_week,
                             "runway_at_target": cadence.runway(want)},
                     unblock=(
-                        "Nothing is broken and nothing has stopped - the "
-                        f"channel keeps publishing at {per_week}/week and "
-                        "every episode already scheduled airs on its own "
-                        "date.\n\n"
-                        "The raise arms ITSELF the moment the queue can carry "
-                        "it. To bring that forward, add runway: let the "
-                        "authoring lane run (it writes "
-                        f"{per_week} script(s) a week now, {want} once it "
-                        "scales), then narrate and render them on the Mac with "
-                        "bin/batch-session.sh. Scripts alone are not runway - "
-                        "a rendered episode is.\n\n"
-                        "If you would rather scale on a thinner queue, lower "
-                        "cadence.scale.requires_runway_weeks in "
-                        "loop/config.json. That is a real trade: it buys "
-                        "episodes now against the risk of a gap later, and a "
-                        "gap costs more than the extra episodes earn."))
+                        "Nothing to do: the channel keeps publishing at "
+                        f"{per_week}/week, every scheduled episode airs on its "
+                        "own date, and the raise arms ITSELF the week the "
+                        "finished-episode queue can carry "
+                        f"{want}/week for cadence.scale.requires_runway_weeks. "
+                        "The nightly Mac batch is what adds that runway."))
 
         # Surfaced LAST and deliberately: the week is already written, so this
         # warns without costing the week. It is a named stop, which means an
@@ -340,32 +330,17 @@ def main() -> None:
                 rw["message"],
                 detail=rw,
                 unblock=(
-                    "TWO things, and the second is easy to miss.\n\n"
-                    "1. Refill scripts: the authoring lane (loop/author.py) "
-                    "writes them, or add them by hand.\n\n"
-                    "2. BATCH THE VOICE ON THE MAC. Narration is the one "
-                    "stage that genuinely cannot move to GitHub Actions: the "
-                    "voice model is local, and measured at ~1.2 hours per "
-                    "episode (67 beats in 71 minutes) it would consume most of "
-                    "the free Actions allowance and sit near the 6-hour job "
-                    "limit. Rendering and uploading CAN run elsewhere. A "
-                    "script existing does NOT mean a video exists.\n\n"
-                    "ONE COMMAND. It narrates everything unvoiced, renders "
-                    "everything unrendered, verifies nothing is clipped, and "
-                    "holds the Mac awake by itself. Roughly 1.2 h narration + "
-                    "12 min render per episode, so a full batch is about a day, "
-                    "unattended:\n\n"
-                    "    cd ~/GitHub/how-we-know\n"
-                    "    bin/batch-session.sh\n\n"
-                    "Preview with `bin/batch-session.sh --dry-run`. The full "
-                    "operator page is RUNBOOK.md - say \"runbook howweknow\" "
-                    "to Claude and it will open it.\n\n"
-                    "(The Mac-side launchd agents WERE installed on "
-                    "2026-09-01 with the owner's approval - tuesday, thursday, "
-                    "backfill and shorts - so routine weeks no longer need a "
-                    "manual pass. This stop is about refilling INVENTORY.)\n\n"
-                    "The week above still ships - publishing is never halted "
-                    "to protect the backlog, because that IS going dark."))
+                    "Nothing to run. The loop refills runway itself: the "
+                    "Monday lane authors from the publish queue, the "
+                    "Saturday miner refills thin queues, and "
+                    "com.howweknow.batch narrates and renders every night at "
+                    "23:00 on the Mac (bin/batch-session.sh). A warning that "
+                    "persists means the Mac has been asleep or shut at 23:00 "
+                    "- the one external host only she holds; `launchctl list "
+                    "| grep howweknow` and "
+                    "~/Library/Logs/how-we-know/batch.log say which. The "
+                    "week above still ships - publishing is never halted to "
+                    "protect the backlog."))
 
         # NOTHING IN THE PUBLISH QUEUE LEFT TO WRITE. Raised LAST so it can
         # never mask the runway or cadence stops above, which are the loud
