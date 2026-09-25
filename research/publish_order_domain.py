@@ -534,6 +534,17 @@ def build(domain: str, pause: float, budget: int) -> dict:
                     "NOT directly comparable to deep sea's mined_queries.json."),
                 "provenance": d["provenance"],
             },
+            # SAME SHAPE AS publish_order.py's OWN CONSTRUCTION, field for
+            # field. This dict used to carry only 6 of the 4 keys `reason()`
+            # itself reads (`median_subscribers` was one of the missing
+            # ones) — the shared gate is "imported unchanged" on purpose, but
+            # a caller handing it a record short a field it unconditionally
+            # reads crashes deterministically on the first non-empty
+            # candidate. Confirmed 2026-09-25: this KeyError, not quota,
+            # is why publish_order_domain.py had never once produced a queue
+            # for either allocated domain, and every attempt was
+            # misclassified as a self-resolving NEW_DOMAIN_QUOTA stop instead
+            # of the hard NEW_DOMAIN_UNSCORED failure it actually was.
             "competition": {
                 "opportunity_score": c["opportunity_score"],
                 "title_gap": gap,
@@ -541,6 +552,14 @@ def build(domain: str, pause: float, budget: int) -> dict:
                 "strong_match_count": tm["strong_match_count"],
                 "results_examined": c["results_examined"],
                 "median_views": c["view_profile"]["median"],
+                "p90_views": c["view_profile"]["p90"],
+                "median_subscribers": c["incumbents"]["median_subscribers"],
+                "channels_under_100k_subs": c["incumbents"]["under_100k_subs"],
+                "median_age_days": c["recency"]["median_age_days"],
+                "published_last_365d": c["recency"]["published_last_365d"],
+                "interpretation": tm["interpretation"],
+                "components": c["opportunity_components"],
+                "provenance": c["provenance"],
             },
         }
         rec["combined"] = combined(r["_demand_index"],
