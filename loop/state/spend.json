@@ -1748,10 +1748,142 @@
       "completion_tokens": 3280,
       "total_tokens": 8931,
       "cost_usd": 0.066153
+    },
+    {
+      "at": "2026-09-25T16:59:10+00:00",
+      "slug": "how-deep-mariana-trench",
+      "model": "anthropic/claude-sonnet-4.5",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 2095,
+      "completion_tokens": 3099,
+      "total_tokens": 5194,
+      "cost_usd": 0.05277
+    },
+    {
+      "at": "2026-09-25T16:59:39+00:00",
+      "slug": "how-deep-mariana-trench",
+      "model": "anthropic/claude-sonnet-4.5",
+      "attempt": 2,
+      "accepted": false,
+      "prompt_tokens": 5656,
+      "completion_tokens": 3038,
+      "total_tokens": 8694,
+      "cost_usd": 0.062538
+    },
+    {
+      "at": "2026-09-25T17:00:15+00:00",
+      "slug": "how-deep-mariana-trench",
+      "model": "anthropic/claude-sonnet-4.5",
+      "attempt": 3,
+      "accepted": true,
+      "prompt_tokens": 8805,
+      "completion_tokens": 3007,
+      "total_tokens": 11812,
+      "cost_usd": 0.07152
+    },
+    {
+      "at": "2026-09-25T17:01:22+00:00",
+      "slug": "what-lives-in-the-depths-of-the-ocean",
+      "model": "anthropic/claude-sonnet-4.5",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 2059,
+      "completion_tokens": 3110,
+      "total_tokens": 5169,
+      "cost_usd": 0.052827
+    },
+    {
+      "at": "2026-09-25T17:01:58+00:00",
+      "slug": "what-lives-in-the-depths-of-the-ocean",
+      "model": "anthropic/claude-sonnet-4.5",
+      "attempt": 2,
+      "accepted": true,
+      "prompt_tokens": 5476,
+      "completion_tokens": 3472,
+      "total_tokens": 8948,
+      "cost_usd": 0.068508
+    },
+    {
+      "at": "2026-09-25T17:03:08+00:00",
+      "slug": "what-lives-in-the-deep",
+      "model": "anthropic/claude-sonnet-4.5",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 2066,
+      "completion_tokens": 3033,
+      "total_tokens": 5099,
+      "cost_usd": 0.051693
+    },
+    {
+      "at": "2026-09-25T17:03:40+00:00",
+      "slug": "what-lives-in-the-deep",
+      "model": "anthropic/claude-sonnet-4.5",
+      "attempt": 2,
+      "accepted": false,
+      "prompt_tokens": 5574,
+      "completion_tokens": 3289,
+      "total_tokens": 8863,
+      "cost_usd": 0.066057
+    },
+    {
+      "at": "2026-09-25T17:04:20+00:00",
+      "slug": "what-lives-in-the-deep",
+      "model": "anthropic/claude-sonnet-4.5",
+      "attempt": 3,
+      "accepted": false,
+      "prompt_tokens": 9214,
+      "completion_tokens": 3409,
+      "total_tokens": 12623,
+      "cost_usd": 0.078777
+    },
+    {
+      "at": "2026-09-25T17:04:46+00:00",
+      "slug": "what-lives-in-the-deep",
+      "model": "anthropic/claude-sonnet-4.5",
+      "attempt": 4,
+      "accepted": false,
+      "prompt_tokens": 12926,
+      "completion_tokens": 3413,
+      "total_tokens": 16339,
+      "cost_usd": 0.089973
+    },
+    {
+      "at": "2026-09-25T17:06:03+00:00",
+      "slug": "what-lives-in-the-sea",
+      "model": "anthropic/claude-sonnet-4.5",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 2054,
+      "completion_tokens": 3079,
+      "total_tokens": 5133,
+      "cost_usd": 0.052347
+    },
+    {
+      "at": "2026-09-25T17:06:37+00:00",
+      "slug": "what-lives-in-the-sea",
+      "model": "anthropic/claude-sonnet-4.5",
+      "attempt": 2,
+      "accepted": false,
+      "prompt_tokens": 5343,
+      "completion_tokens": 3221,
+      "total_tokens": 8564,
+      "cost_usd": 0.064344
+    },
+    {
+      "at": "2026-09-25T17:07:07+00:00",
+      "slug": "what-lives-in-the-sea",
+      "model": "anthropic/claude-sonnet-4.5",
+      "attempt": 3,
+      "accepted": true,
+      "prompt_tokens": 8629,
+      "completion_tokens": 3222,
+      "total_tokens": 11851,
+      "cost_usd": 0.074217
     }
   ],
-  "total_usd": 9.276066,
-  "drafts_written": 77,
-  "average_usd_per_accepted_draft": 0.120468,
-  "updated": "2026-09-21T13:52:22+00:00"
+  "total_usd": 10.061637,
+  "drafts_written": 80,
+  "average_usd_per_accepted_draft": 0.12577,
+  "updated": "2026-09-25T17:07:07+00:00"
 }

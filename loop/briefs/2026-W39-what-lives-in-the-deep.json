@@ -1,0 +1,102 @@
+{
+  "week": "2026-W39",
+  "question": "what lives in the deep",
+  "domain": null,
+  "demand_evidence": {
+    "source": "research/topic_backlog.json (real YouTube autocomplete)",
+    "seed_hits": null,
+    "demand_score": null,
+    "competition": "UNSCORED \u2014 needs YOUTUBE_API_KEY"
+  },
+  "must_obey": [
+    "Every on-screen number and proper name appears verbatim in this script's own narration (visuals/CONTRACT.md rule 6).",
+    "Every digit-bearing sentence maps to a named public source listed under ## Sources.",
+    "No claim of expertise, credentials or professional advice.",
+    "State uncertainty and evidence limits explicitly.",
+    "Structure must differ from the previous video's shape."
+  ],
+  "required_sections": [
+    "# <question>",
+    "## Direct-answer lock",
+    "## Narration",
+    "## Human fingerprint gate",
+    "## Chapters",
+    "## Sources"
+  ],
+  "eligible_pov_lines": [
+    {
+      "id": "pov-001",
+      "tag": "scale",
+      "tier": "specific",
+      "line": "When I picture the deep ocean I don't see blue water or fish. I see black. A massive amount of black space where you can't tell what's beside you or beneath you."
+    },
+    {
+      "id": "pov-002",
+      "tag": "scale",
+      "tier": "specific",
+      "line": "It feels quiet, but not peaceful quiet. More like being somewhere you were never designed to be."
+    },
+    {
+      "id": "pov-004",
+      "tag": "scale",
+      "tier": "specific",
+      "line": "What gets me is the amount of water above you, and how completely unreachable the surface becomes from down there."
+    },
+    {
+      "id": "pov-006",
+      "tag": "disorientation",
+      "tier": "specific",
+      "line": "Something enormous could be relatively close to you and you would never know. I don't like that."
+    },
+    {
+      "id": "pov-018",
+      "tag": "systems",
+      "tier": "specific",
+      "line": "People misunderstand this as a collection of monsters. The creatures get attention because they look strange, but the real story is the system \u2014 pressure, darkness, scarcity, temperature, chemistry, time."
+    },
+    {
+      "id": "pov-021",
+      "tag": "unknown",
+      "tier": "transferable",
+      "line": "We talk about the ocean like it's a known thing because it's on every map. Most of what's under the surface is barely documented. We're living on a planet we haven't finished looking at."
+    },
+    {
+      "id": "pov-022",
+      "tag": "unknown",
+      "tier": "specific",
+      "line": "How did we map another planet better than our own seafloor? Mars can be read from orbit. The ocean blocks light and signal. So it's less ridiculous than it sounds \u2014 and still humbling."
+    },
+    {
+      "id": "pov-023",
+      "tag": "unknown",
+      "tier": "specific",
+      "line": "Our own planet is withholding an entire world from us."
+    },
+    {
+      "id": "pov-024",
+      "tag": "unknown",
+      "tier": "specific",
+      "line": "I used to think the deep ocean was mostly empty. A huge dark floor with a few strange fish scattered around."
+    },
+    {
+      "id": "pov-026",
+      "tag": "policy",
+      "tier": "transferable",
+      "line": "I think we should spend more on it \u2014 but I mean serious science. Mapping, robotics, sensors, long-term data collection."
+    },
+    {
+      "id": "pov-027",
+      "tag": "policy",
+      "tier": "transferable",
+      "line": "Not wealthy people doing dangerous stunts so they can say they went somewhere."
+    },
+    {
+      "id": "pov-028",
+      "tag": "policy",
+      "tier": "specific",
+      "line": "The ocean drives climate, weather, food systems, the basic functioning of the planet. Exploring it isn't a luxury."
+    }
+  ],
+  "directive_reference": "visuals/CONTRACT.md",
+  "note": "Authoring is the one lane a workflow cannot do for $0. Write this script locally, drop it in scripts/, add its POV row to pov/pov-assignments.json, and next Monday picks it up as inventory automatically."
+}

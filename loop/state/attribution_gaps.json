@@ -1,17 +1,24 @@
 {
-  "checked": "2026-09-21T13:52:29+00:00",
-  "scripts_with_gaps": 2,
+  "checked": "2026-09-25T17:07:14+00:00",
+  "scripts_with_gaps": 3,
   "gaps": [
     {
-      "slug": "how-do-scientists-know-so-much",
+      "slug": "how-deep-mariana-trench",
       "missing_from_sources": [
-        "Census of Marine Life"
+        "Scripps"
       ]
     },
     {
-      "slug": "why-deep-sea-creatures",
+      "slug": "what-lives-in-the-depths-of-the-ocean",
       "missing_from_sources": [
-        "Census of Marine Life"
+        "Census of Marine Life",
+        "Nature"
+      ]
+    },
+    {
+      "slug": "what-lives-in-the-sea",
+      "missing_from_sources": [
+        "Nature"
       ]
     }
   ],
