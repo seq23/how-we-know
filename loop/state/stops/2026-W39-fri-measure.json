@@ -1,0 +1,53 @@
+{
+  "stage": "fri-measure",
+  "week": "2026-W39",
+  "at": "2026-09-25T21:15:21+00:00",
+  "code": "FORMAT_PROBLEM",
+  "message": "6 of 10 videos lose the average viewer inside the first 2.0 minutes (1m53s average view duration against a 146.0s floor). This invalidates the format, not the topic selection.",
+  "detail": {
+    "status": "measured",
+    "measured": 10,
+    "floor_avd_seconds": 146.0,
+    "early_exit_threshold_minutes": 2.0,
+    "mean_view_duration_s": 113.7,
+    "mean_view_duration_mm_ss": "1m53s",
+    "videos_losing_viewers_in_first_2min": 6,
+    "videos_without_a_measured_runtime": [
+      "eJSCm5sk5AA"
+    ],
+    "format_verdict": "FORMAT PROBLEM",
+    "mean_pct_of_actual_runtime": 23.9,
+    "pct_basis": "each video's own measured duration (9 of 10 measured)"
+  },
+  "unblock": "Read loop/state/retention_finding.md. Better ranking will not fix this - the runtime or the structure has to change.",
+  "disposition": "needs_human",
+  "disposition_why": "'FORMAT_PROBLEM' is not in loop/stop_policy.json, so it is treated as needing a human. That is the default on purpose. 'FORMAT_PROBLEM' did not name what it is waiting on (no held_items), so this run cannot tell a repeat from a new problem. A stop that cannot be identified is never held.",
+  "consecutive": 1,
+  "held_items": [],
+  "exit_code": 3,
+  "work_done_before_stop": [
+    "recomputed retention streak from 8 measured video(s): 5 consecutive below 146.0s average view duration",
+    "per-domain duration streaks: {'materials-and-manufacturing': 3, 'deep-sea-ocean-science': 3}",
+    "judgeable domains (>= 8 measured): none yet - no domain can trip the breaker until one qualifies",
+    "recorded the channel's subscriber count for the monetisation gates",
+    "measured YuZxDiNUw4w: 22.87% retention",
+    "measured EY__zREBIUk: 52.04% retention",
+    "measured sfveDF88ZHo: 21.96% retention",
+    "measured TjrpzJE3utU: 0% retention",
+    "measured RlbR0qGmU0s: 1.96% retention",
+    "measured 9FcDJniofMM: 6.45% retention",
+    "measured aKyOg7xbxC0: 13.19% retention",
+    "measured izdEaeOQBvI: 49.27% retention",
+    "measured MozJZ-ChEZU: 0% retention",
+    "measured eJSCm5sk5AA: 5.98% retention",
+    "measured MAV4PF056RA: 23.56% retention",
+    "measured mOP33elEfpU: 24.65% retention",
+    "judgeable domains: none yet",
+    "retention checkpoint: 1m53s average view duration against a 146.0s floor (23.9% of actual runtime)",
+    "wrote loop/state/measurement.json \u2014 Sunday's ranking reads this"
+  ],
+  "notes": [
+    "revenue not measured this week: HTTP 401 - needs yt-analytics-monetary.readonly; revenue is zero until YPP anyway",
+    "FORMAT PROBLEM - see loop/state/retention_finding.md"
+  ]
+}
