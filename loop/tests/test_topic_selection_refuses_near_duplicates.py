@@ -289,7 +289,7 @@ if T is not None:
               "what is the deepest part of the ocean"),
              # a numbered catalogue slug standing in for its question
              ("10-what-is-the-deepest-part-of-the-ocean",
-              "what lives in the deepest part of the ocean")]
+              "how deep mariana trench")]
     for a, b in same:
         examined += 1
         if not T.same_question(a, b):
@@ -307,7 +307,11 @@ if T is not None:
                  ("what is a semiconductor made of", "how are microchips made"),
                  ("how is a silicon wafer made", "how are microchips made"),
                  ("why many deep sea creatures are red",
-                  "why some deep sea creatures are transparent")]
+                  "why some deep sea creatures are transparent"),
+                 # what LIVES at the deepest point is not episode 10's
+                 # question (owner's coordinator, 2026-09-25)
+                 ("10-what-is-the-deepest-part-of-the-ocean",
+                  "what lives in the deepest part of the ocean")]
     for a, b in different:
         examined += 1
         if T.same_question(a, b):
@@ -333,6 +337,105 @@ if T is not None:
             if T.same_question(a, b):
                 fails.append(f"rule merges two episodes already made: {a!r} / "
                              f"{b!r}")
+
+# ------------------------------------------------------ 6. one fact, many names
+# Episode 10 is "What is the deepest part of the ocean?" (the Challenger Deep
+# in the Mariana Trench). A viewer who saw it learns nothing from "how deep
+# mariana trench" or "how deep is the ocean"; "what lives in the mariana
+# trench" is a different question and must stay.
+EP10 = "what is the deepest part of the ocean"
+if T is not None:
+    for q in ["how deep mariana trench", "how deep is the ocean",
+              "how deep is the mariana trench", "how deep is challenger deep",
+              "how deep is really the ocean", "what is the deepest part of "
+              "the ocean called", "what is the deepest ocean in the world"]:
+        examined += 1
+        if not T.same_question(q, EP10):
+            fails.append(f"fact: {q!r} is episode 10's fact and was not "
+                         f"refused: {sorted(T.question_key(q))}")
+    for q in ["what lives in mariana trench", "what lives in the mariana trench",
+              "how do people reach challenger deep",
+              "how deep sea creatures survive the pressure",
+              "how deep can a submarine go"]:
+        examined += 1
+        if T.same_question(q, EP10):
+            fails.append(f"fact: {q!r} is a different question from episode "
+                         f"10 but was merged with it")
+    examined += 1
+    if not T.same_question("what is whale fall",
+                           "what happens when a whale dies in the deep ocean"):
+        fails.append("fact: 'what is whale fall' is episode 16's subject")
+# ...and on read, against the real catalogue: both W39 depth phrasings are
+# refused, the Mariana "what lives" question is not.
+for sl in ("how-deep-mariana-trench", "how-deep-is-the-ocean"):
+    examined += 1
+    if sl in real:
+        fails.append(f"real queue: {sl} is still selectable; it is episode 10")
+examined += 1
+if not ({"what-lives-in-mariana-trench",
+         "what-lives-in-the-deepest-part-of-the-ocean"} & real):
+    fails.append("real queue: the Mariana Trench 'what lives' question was "
+                 "refused; it is not episode 10's question")
+
+
+# ------------------------------------------------------ 7. the miner refills
+# Deep sea's real candidate set, read-only (no fresh mine): every candidate
+# the ladder returns is a question not already made, and not vague; widening
+# to the dedicated seed vocabulary adds candidates the broad seeds refused.
+log: list = []
+cands, _ = pod.candidates("deep-sea-ocean-science", network=False, log=log)
+made_keys = pod.made_question_keys()
+examined += 1
+if not any("dedicated seeds" in ln for ln in log):
+    fails.append(f"miner: the dedicated-seed rung never ran: {log}")
+for q in cands:
+    examined += 1
+    if T is not None and T.first_same(T.question_key(q), made_keys):
+        fails.append(f"miner: candidate {q!r} repeats an episode already made")
+    if T is not None and T.is_vague(T.question_key(q)):
+        fails.append(f"miner: candidate {q!r} names no subject")
+examined += 1
+if len(cands) < batch_queue.MIN_UNWRITTEN_TOPICS:
+    fails.append(f"miner: deep sea yields {len(cands)} candidate(s) read-only, "
+                 f"under the floor of {batch_queue.MIN_UNWRITTEN_TOPICS}")
+# The ladder stops early when a rung already has enough, and names the thin
+# case when every rung is spent.
+examined += 1
+msg = pod.thin_stop("deep-sea-ocean-science", 1, "topic(s)")
+if ("NAMED STOP DOMAIN_QUEUE_THIN" not in msg
+        or "deep-sea-ocean-science" not in msg or " 1 " not in msg):
+    fails.append(f"miner: the thin stop does not name the channel and the "
+                 f"count: {msg!r}")
+pol = json.loads((LOOP / "stop_policy.json").read_text())
+examined += 1
+if "DOMAIN_QUEUE_THIN" not in pol.get("self_resolving", {}):
+    fails.append("DOMAIN_QUEUE_THIN is not classified in loop/stop_policy.json")
+# Saturday refills a THIN domain, not only an empty one.
+import score                                               # noqa: E402
+saved_u = batch_queue.unwritten_by_domain
+batch_queue.unwritten_by_domain = lambda: {"deep-sea-ocean-science": 1,
+                                           "materials-and-manufacturing": 9}
+try:
+    mq = score.missing_queues()
+finally:
+    batch_queue.unwritten_by_domain = saved_u
+examined += 1
+if "deep-sea-ocean-science" not in mq or "materials-and-manufacturing" in mq:
+    fails.append(f"score.missing_queues() does not refill exactly the thin "
+                 f"domain: {sorted(mq)}")
+# A regenerated queue keeps the rows whose scripts already exist.
+tmpq = Path(tempfile.mkdtemp(prefix="carry-")) / "q.json"
+tmpq.write_text(json.dumps({"queue": [
+    {"slug": "why-is-steel-so-strong", "query": "why is steel so strong"},
+    {"slug": "a-row-with-no-script", "query": "x"}]}))
+blob = {"queue": [{"slug": "new-row", "query": "new"}]}
+examined += 1
+if pod.carry_forward(str(tmpq), blob) != 1 or \
+        [r["slug"] for r in blob["queue"]] != ["why-is-steel-so-strong",
+                                                "new-row"]:
+    fails.append(f"carry_forward did not keep exactly the written row: "
+                 f"{[r['slug'] for r in blob['queue']]}")
+
 
 # ------------------------------------------------------ 5. the upload lane
 # W39's render_queue.json hands the Mac "what-lives-in-the-sea" as `queued`.

@@ -69,8 +69,12 @@ def refused_entries() -> list[dict]:
 
 
 def _question_of(row: dict) -> str:
-    return (row.get("query") or row.get("title") or
-            str(row.get("slug") or "").replace("-", " ")).strip()
+    """The row's question: `query`, else `title`, else its slug spelled out -
+    a title with no words in it ("?") is not a question to judge."""
+    for q in (row.get("query"), row.get("title")):
+        if q and any(c.isalpha() for c in q):
+            return q.strip()
+    return str(row.get("slug") or "").replace("-", " ").strip()
 
 
 def _script_question(slug: str) -> str | None:
@@ -153,6 +157,12 @@ def _screened() -> tuple[list[dict], list[dict]]:
                            f"that channel's video, not ours"}
                 continue
             keys = [(q, T.question_key(q)) for q in qs]
+            if all(T.is_vague(k) for _, k in keys):
+                refused[r["slug"]] = {
+                    **r, "killed_by": "VAGUE", "matched": qs[-1],
+                    "why": "names no subject beyond the domain's own core "
+                           "words; there is nothing to answer about"}
+                continue
             hit = next((h for _, k in keys
                         for h in [T.first_same(k, kept_keys)] if h), None)
             if hit:
@@ -251,6 +261,31 @@ def publish_queue_gate(slugs: list[str]) -> tuple[list[str], dict[str, str]]:
         else:
             allowed.append(s)
     return allowed, refused
+
+
+# THE FLOOR EVERY ALLOCATED DOMAIN'S QUEUE IS MINED UP TO (2026-09-25).
+# Below this many unwritten, non-duplicate, non-held topics a domain is
+# refilled on Saturday (loop/score.py missing_queues), and the miner keeps
+# widening its sources until it clears it or names DOMAIN_QUEUE_THIN. Four
+# is two weeks of a domain's two weekly slots.
+MIN_UNWRITTEN_TOPICS = 4
+
+
+def unwritten_by_domain() -> dict[str, int]:
+    """Domain -> count of unwritten_entries() rows, by the row's `domain` or
+    its publish-order file's."""
+    out: dict[str, int] = {}
+    docs: dict[str, dict] = {}
+    for r in unwritten_entries():
+        d = r.get("domain")
+        if not d:
+            f = r["_domain_file"]
+            if f not in docs:
+                docs[f] = json.loads((ROOT / "research" / f).read_text())
+            d = docs[f].get("domain")
+        if d:
+            out[d] = out.get(d, 0) + 1
+    return out
 
 
 def unwritten_entries() -> list[dict]:
