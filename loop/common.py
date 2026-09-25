@@ -75,7 +75,7 @@ EXIT_STOP = 3
 # distrust the banner rather than the state.
 _SUMMARY_HEAD = {"self_resolving": "🛑 NAMED STOP",
                  "held": "⏸️ HELD STOP",
-                 "owner_action": "⚠️ WAITING ON YOU"}
+                 "owner_action": "🔑 NEEDS YOUR KEY OR ACCOUNT"}
 
 # Dispositions that do NOT fail the job. Named once: three places used to test
 # `disp == "self_resolving"` and a fourth disposition would have failed jobs in
@@ -85,8 +85,8 @@ GREEN_DISPOSITIONS = ("self_resolving", "held", "owner_action")
 
 def label_of(disp: str) -> str:
     return {"self_resolving": "self-resolving",
-            "held": "held, awaiting the owner",
-            "owner_action": "waiting on the owner"}.get(disp, "needs a human")
+            "held": "held, already reported",
+            "owner_action": "needs a secret only she holds"}.get(disp, "needs a human")
 
 
 def annotation(level: str, title: str, message: str) -> str:
@@ -402,7 +402,7 @@ def _owner_action_path() -> Path:
     Inside `_stops_dir()` deliberately, so `LOOP_STOPS_DIR` redirects it the
     same way it redirects stop records. The test suite runs real stages that
     take real stops; without this, a local `run_all.py` would write a live
-    "waiting on you" row into the committed state and it would appear at the
+    "needs your key or account" row into the committed state and it would appear at the
     top of her next digest. That exact class of leak already cost a day once,
     through _streaks.json.
     """
@@ -682,7 +682,7 @@ class Stage:
             "held": "HELD — already reported and unchanged, so this run exits 0 "
                     "and pages nobody. It is NOT resolved.",
             "owner_action":
-                "WAITING ON THE OWNER — this run exits 0 and does NOT page her; "
+                "NEEDS A SECRET ONLY SHE HOLDS — this run exits 0 and does NOT page her; "
                 "it is recorded in the owner-action file and appears at the TOP "
                 "of the Sunday digest. It is NOT resolved.",
         }.get(disp, "NEEDS A HUMAN — this run exits 3 and opens an issue")
@@ -737,8 +737,8 @@ class Stage:
                              s.message + (f" -- {s.unblock}" if s.unblock
                                           else "")), flush=True)
         label = {"self_resolving": "self-resolving",
-                 "held": "HELD — reported, awaiting the owner",
-                 "owner_action": "waiting on you (green, never paged)"
+                 "held": "HELD — already reported, unchanged",
+                 "owner_action": "needs a secret only she holds (green, never paged)"
                  }.get(
                      disp, "needs a human")
         summary(

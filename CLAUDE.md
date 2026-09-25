@@ -1,5 +1,12 @@
 # How We Know — read this first
 
+> **Nothing waits on the owner. A finding becomes an action with a measurement, never a question. Only a secret or an account she alone holds may stop, and that stop is green and self-explaining.**
+>
+> The owner's rule, 2026-09-25: "Nothing is supposed to wait on the owner.
+> This should be a rule in the repo so you never forget." Enforced by
+> `loop/stop_classes.py` (validator V45) and
+> `loop/tests/test_nothing_waits_on_the_owner.py`, which reads this line.
+
 Faceless, evidence-first YouTube channel (`@howweknowdeep`, howweknowdeep.com),
 designed to run without its owner. She is Sequoia Taylor; she decides, she does
 not operate it day to day.
@@ -49,7 +56,7 @@ and say what you chose and why.
 ## Run tests with
 
 ```bash
-python3 loop/tests/run_all.py     # 15 files; launches each test from .venv
+python3 loop/tests/run_all.py     # every loop/tests/test_*.py; launches each from .venv
 ```
 
 ## Traps that have already cost hours — each one reported as something else

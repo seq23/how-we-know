@@ -142,7 +142,7 @@ def a_exit_codes() -> tuple[list[str], int]:
                 fails.append(f"[{mode}] record claims exit {rec.get('exit_code')} "
                              f"but the process exited {rc}")
             if want_rc == 0 and not ("SELF-RESOLVING" in out
-                                     or "WAITING ON THE OWNER" in out):
+                                     or "NEEDS A SECRET ONLY SHE HOLDS" in out):
                 fails.append(f"[{mode}] exited 0 without saying WHY it was "
                              f"green — that reads as a silent skip")
     return fails, examined

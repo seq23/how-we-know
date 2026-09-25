@@ -129,6 +129,10 @@ GENERATED = {
     # A domain the miner refilled but could not lift over the floor of
     # batch_queue.MIN_UNWRITTEN_TOPICS (2026-09-25), collected the same way.
     "DOMAIN_QUEUE_THIN":           ("score.py", '"code": "DOMAIN_QUEUE_THIN"'),
+    # loop/rank.py raises the runway stop by level (2026-09-25: found
+    # unclassified by loop/stop_classes.py, i.e. red by default, all along).
+    "RUNWAY_WARN":                 ("rank.py", 'f"RUNWAY_{rw[\'level\'].upper()}"'),
+    "RUNWAY_CRITICAL":             ("rank.py", 'f"RUNWAY_{rw[\'level\'].upper()}"'),
     # loop/taxonomy_refresh.py's classify() picks one of these four by
     # variable, the same shape as score.py's own classify-and-collect above.
     "TAXONOMY_REFRESH_CRASHED":    ("taxonomy_refresh.py", '"TAXONOMY_REFRESH_CRASHED"'),
@@ -141,6 +145,7 @@ GENERATED = {
 FAMILIES = {
     "LANE_NOT_ARMED_": ("arming.py", 'f"LANE_NOT_ARMED_{lane.upper()'),
     "ANALYTICS_HTTP_": ("measure.py", 'f"ANALYTICS_HTTP_{e.code}"'),
+    "RUNWAY_":         ("rank.py", 'f"RUNWAY_{rw[\'level\'].upper()}"'),
 }
 
 
@@ -288,7 +293,7 @@ with Stage("probe-owner-stage", "2026-W37") as st:
                 f"C: an OAUTH_MISSING stop exited {r.returncode}; owner_action "
                 f"stops must exit 0 so she is never paged for a credential she "
                 f"will renew when she next sits down.\n{r.stdout[-600:]}")
-        if "WAITING ON THE OWNER" not in r.stdout:
+        if "NEEDS A SECRET ONLY SHE HOLDS" not in r.stdout:
             fails.append("C: the banner did not say the stop is waiting on the "
                          "owner — green with no explanation is just silence.")
         rec_path = os.path.join(stops, "2026-W37-probe-owner-stage.json")

@@ -127,10 +127,10 @@ if head.split(" — ", 1)[-1].startswith(("1 empty slot", "empty slot")):
     fails.append(f"verdict: the empty-slot reason must not lead the headline when a "
                  f"needs_human stop exists this week; got {head}")
 
-# THE 2026-09-23 GAP: an owner_action ("waiting on you") item was never
+# THE 2026-09-23 GAP: an owner_action ("needs your key or account") item was never
 # passed into verdict() at all. A week with nothing else red or yellow and
 # one owner_action item rendered "🟢 Healthy" as both headline and subject,
-# while the digest body's very first section ("## ⚠️ Waiting on you") said
+# while the digest body's very first section ("## 🔑 Needs your key or account") said
 # something needed her — the subject named no lane, or an unrelated one.
 WAITING_ONE = {"cloud-upload": {"code": "SCRIPTS_AWAITING_PROMOTION",
                                 "message": "four scripts await promotion",
@@ -138,7 +138,7 @@ WAITING_ONE = {"cloud-upload": {"code": "SCRIPTS_AWAITING_PROMOTION",
                                 "consecutive": 2}}
 mark, head, _ = digest.verdict(q, cal, {**pipe_ok, "scheduled": 28}, [], WAITING_ONE)
 examined += 1
-if mark != "🟡" or "waiting on you" not in head or "cloud-upload" not in head:
+if mark != "🟡" or "needs your key or account" not in head or "cloud-upload" not in head:
     fails.append(f"verdict: an owner_action item with nothing else red/yellow must "
                  f"be yellow and name the lane waiting on her; got {mark} {head}")
 
@@ -157,7 +157,7 @@ if mark != "🔴" or "needed a human" not in head:
 # reason) in the same week a real owner_action item is open elsewhere.
 mark, head, _ = digest.verdict([], cal_yel, pipe_ok, [], WAITING_ONE)
 examined += 1
-if "waiting on you" not in head or "cloud-upload" not in head:
+if "needs your key or account" not in head or "cloud-upload" not in head:
     fails.append(f"verdict: an owner_action item must lead the headline over an "
                  f"unrelated routine calendar reason; got {mark} {head}")
 

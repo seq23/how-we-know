@@ -410,21 +410,24 @@ def run(limit: int = 2, dry_run: bool = False) -> int:
         # twelve weeks away from that; at 9/week they are under six, so the
         # difference between a print and a stop is now weeks, not months.
         #
-        # It is a STOP, not a transition. What to do when the cut inventory runs
-        # out - native vertical or more chapters off the existing masters - is
-        # the owner's decision to make deliberately, and this stop is what puts
-        # it in front of her rather than a mechanism that fires on its own.
+        # Automated policy since 2026-09-25 (owner's rule: nothing waits on
+        # her). The Mac's nightly batch cuts Shorts from every newly rendered
+        # episode (bin/batch-session.sh shelve_shorts), so the next render
+        # refills the shelf; the format stays the current cut format, a
+        # decision recorded in docs/DECISION-LOG.md, not pending on anyone.
+        # Self-resolving, capped: two weeks with nothing cut is a stalled
+        # render pipeline and goes red.
         with Stage("shorts", week_id()) as st:
             st.named_stop(
                 "SHORTS_INVENTORY_EXHAUSTED",
                 "no cut Short is waiting to publish: every finished episode "
                 f"already has one on the calendar, at {per_week}/week.",
-                unblock="Nothing is broken and nothing has stopped - the "
-                        "Shorts already scheduled keep airing. This is the "
-                        "decision point: either cut more chapters from the "
-                        "existing masters (bin/make-shorts.sh --count 3), or "
-                        "decide whether Shorts move to a native vertical "
-                        "format. That is deliberately NOT automatic.")
+                unblock="Nothing to do: the Shorts already scheduled keep "
+                        "airing, and the Mac's nightly batch cuts and shelves "
+                        "Shorts from the next rendered episode "
+                        "(bin/batch-session.sh shelve_shorts). Shorts stay in "
+                        "the current cut format (docs/DECISION-LOG.md, "
+                        "2026-09-25).")
         return 0
 
     # The day's long-form upload comes first. `videos_affordable` used to be

@@ -299,17 +299,13 @@ def diagnose_empty_shelf(queued: list[str], done: set[str], held: set[str],
                            f"be narrated, rendered or uploaded.",
                 "detail": dict(base, authored_not_queued=orphans,
                                handoff="loop/render_queue.json"),
-                "unblock": "A decision for a person: either queue these slugs "
-                           "(copy loop/drafts/<slug>.md to scripts/<slug>.md and "
-                           "add a row with `slug` and `query` to a "
-                           "research/publish_order*.json), or hold them for a "
-                           "promotion decision by adding them to "
-                           "loop/promotion_holds.json. Since 2026-09-23 "
-                           "loop/rank.py and loop/draft.py select only "
-                           "publish-queue topics, so a new script here means "
-                           "something routed around that gate. Until then the "
-                           "channel airs only what is already scheduled; see "
-                           "the runway in loop/render_queue.json.",
+                "unblock": "A defect, not a decision: loop/rank.py and "
+                           "loop/draft.py select only publish-queue topics "
+                           "(since 2026-09-23), so a script here means a lane "
+                           "routed around that gate. Find the lane that wrote "
+                           "these rows to loop/render_queue.json and fix it; "
+                           "the channel airs what is already scheduled "
+                           "meanwhile (runway in loop/render_queue.json).",
                 "held_items": orphans}
     if active_holds:
         level = (runway or {}).get("level")
