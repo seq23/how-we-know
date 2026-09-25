@@ -126,6 +126,9 @@ GENERATED = {
     "NEW_DOMAIN_KEY_ABSENT":       ("score.py", '"code": "NEW_DOMAIN_KEY_ABSENT"'),
     "NEW_DOMAIN_QUOTA":            ("score.py", '"code": "NEW_DOMAIN_QUOTA"'),
     "NEW_DOMAIN_UNSCORED":         ("score.py", '"code": "NEW_DOMAIN_UNSCORED"'),
+    # A domain the miner refilled but could not lift over the floor of
+    # batch_queue.MIN_UNWRITTEN_TOPICS (2026-09-25), collected the same way.
+    "DOMAIN_QUEUE_THIN":           ("score.py", '"code": "DOMAIN_QUEUE_THIN"'),
     # loop/taxonomy_refresh.py's classify() picks one of these four by
     # variable, the same shape as score.py's own classify-and-collect above.
     "TAXONOMY_REFRESH_CRASHED":    ("taxonomy_refresh.py", '"TAXONOMY_REFRESH_CRASHED"'),

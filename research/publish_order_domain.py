@@ -114,7 +114,10 @@ QUALIFIER_NOISE = re.compile(
     # place-name collisions are not episodes.
     r"how\s+to\s+draw|drawing|colou?ring|papercraft|origami|"
     r"\bvideo\b|\bsong\b|\bgame\b|gold\s+city|minecraft|"
-    r"where\s+moses|dead\s+sea|north\s+sea|red\s+sea"
+    r"where\s+moses|dead\s+sea|north\s+sea|red\s+sea|"
+    # 2026-09-25, from the dedicated-seed rung: game items and quests
+    # ("how to get challenger deep rod", "... in fisch", "... dayz").
+    r"\brod\b|\bquest\b|fisch|dayz|roblox"
     r")\b", re.I)
 
 
@@ -277,7 +280,8 @@ def generic_tokens(rows: list, seed_tokens: set) -> set:
 def _screen(rows: list, seed_tokens: set, limit: int,
             seen: list, picked: list, made: set | None = None,
             generic: set | None = None,
-            made_questions: list | None = None) -> tuple[list, list]:
+            made_questions: list | None = None,
+            dead: list | None = None) -> tuple[list, list]:
     """Screen mined rows into `picked`/`seen` in place. Returns (added, killed).
 
     One screening implementation for both the broad pass and the deep one, so
@@ -285,6 +289,23 @@ def _screen(rows: list, seed_tokens: set, limit: int,
     refused.
     """
     added, killed = [], []
+    # Exact-token keys of candidates refused as ALREADY MADE. A killed
+    # question used to vanish, so its autocomplete tails ("how deep is the
+    # ocean frank sinatra") were measured against nothing and admitted - the
+    # same hole that let ten microchip variants through. The caller passes
+    # one list across the broad and deep passes.
+    dead = dead if dead is not None else []
+    # Seeded BEFORE the walk, so the order autocomplete ranked them in cannot
+    # matter: a tail with more probe hits than its bare question would
+    # otherwise be screened while `dead` was still empty.
+    for r in rows:
+        q0 = (r.get("query") or "").strip()
+        if not q0 or not r.get("question"):
+            continue
+        if ((made and slug_of(q0) in made)
+                or TI.first_same(TI.question_key(q0), made_questions or [])):
+            if _canonical(q0):
+                dead.append(_canonical(q0))
     for r in sorted(rows, key=lambda r: (-r["probe_hits"], r["query"])):
         if len(picked) >= limit:
             break
@@ -323,6 +344,17 @@ def _screen(rows: list, seed_tokens: set, limit: int,
         if hit:
             killed.append({"query": q, "killed_by": "NEAR_DUPLICATE_OF_MADE",
                            "rule": hit[1], "matched": hit[0]})
+            continue
+        if TI.is_vague(qkey):
+            killed.append({"query": q, "killed_by": "VAGUE",
+                           "rule": "names no subject beyond the domain's own "
+                                   "core words",
+                           "matched": " ".join(sorted(qkey))})
+            continue
+        if _canonical(q) and _is_narrower_ask(_canonical(q), dead):
+            killed.append({"query": q, "killed_by": "NEAR_DUPLICATE_OF_MADE",
+                           "rule": "a made question plus an autocomplete tail",
+                           "matched": " ".join(sorted(_canonical(q)))})
             continue
         toks = {_stem(t) for t in content_tokens(q)} - FRAME
         hits = toks & seed_tokens
@@ -401,15 +433,69 @@ def made_question_keys() -> list:
     return batch_queue.made_questions()
 
 
+# A DOMAIN'S DEDICATED SEED LIST, where one exists. broad_mined.json gave
+# every domain the same 8 seeds so domains could be ranked against each
+# other; the dedicated list is the richer vocabulary a domain was actually
+# mined with (deep sea: colossal squid, hydrothermal vent, whale fall, hadal
+# zone ...). Without it, "deep" and "sea" -- too common to count alone --
+# were deep sea's only words, and 212 of its 281 mined questions were
+# refused as GENERIC_MATCH_ONLY: a queue of four, three of them repeats of
+# aired episodes (2026-09-25). Convention for a promoted domain:
+# research/seeds_<slug>.json.
+DEDICATED_SEEDS = {
+    "deep-sea-ocean-science": "seeds.json",
+    "materials-and-manufacturing": "seeds_materials.json",
+}
+# Method-stem words in a dedicated seed list ("how do scientists know") name
+# the channel's premise, not a subject; as vocabulary they admit "how do
+# scientists think" to any domain.
+METHOD_STEM_WORDS = {"scientist", "know", "knew", "learn", "think", "find"}
+
+
+def dedicated_seeds(domain: str) -> list:
+    name = DEDICATED_SEEDS.get(domain, f"seeds_{slug_of_domain(domain)}.json")
+    path = os.path.join(HERE, name)
+    if not os.path.exists(path):
+        return []
+    with open(path, encoding="utf-8") as fh:
+        return list(json.load(fh).get("seeds") or [])
+
+
+def _vocab(seeds: list, domain: str, drop: set = frozenset()) -> set:
+    toks = set()
+    for seed in seeds:
+        toks |= {_stem(t) for t in content_tokens(seed)}
+    toks |= {_stem(t) for t in domain.replace("-", " ").split()}
+    return toks - FRAME - drop
+
+
 def candidates(domain: str, limit: int = MAX_CANDIDATES,
-               deep: bool = True) -> tuple[list, list]:
+               deep: bool = True, network: bool = True,
+               log: list | None = None,
+               mine_dir: str | None = None) -> tuple[list, list]:
     """Question-form, admitted, deduped candidates for `domain`, best first.
 
     Ranked by probe_hits -- how many separate autocomplete probes surfaced the
     string -- which is the only demand-ish signal available before the paid
     competition pass, and is used ONLY to choose what is worth spending quota
     on. The gate that decides what survives is the real one, downstream.
+
+    KEEPS MINING UNTIL IT HAS ENOUGH (2026-09-25). Every source runs the
+    same screen, including loop/topic_identity.py's refusal of questions
+    already made, so a source full of repeats contributes nothing and the
+    next one is tried. The ladder, cheapest first, stopping once
+    MIN_CANDIDATES survive:
+      1. research/broad_mined.json, the domain's broad seed vocabulary;
+      2. the domain's deep-mine cache (mined_queries*.json), same vocabulary;
+      3. both again with the domain's DEDICATED seed vocabulary added;
+      4. a fresh free autocomplete mine seeded with every seed above plus
+         what has survived so far (`network=False` skips it, for a
+         read-only look), written to its own refill cache so deep sea's
+         corpus file is never overwritten.
+    Fewer than MIN_UNWRITTEN_TOPICS surviving every rung is the caller's
+    DOMAIN_QUEUE_THIN named stop; `log` receives one line per rung.
     """
+    log = log if log is not None else []
     with open(BROAD, encoding="utf-8") as fh:
         blob = json.load(fh)
     if domain not in blob["domains"]:
@@ -427,11 +513,10 @@ def candidates(domain: str, limit: int = MAX_CANDIDATES,
     # not a topic -- and on a pipeline that drafts without asking anyone, a
     # collision that survives the gate becomes an episode.
     seeds = list(entry["provenance"]["seeds"])
-    seed_tokens = set()
-    for seed in seeds:
-        seed_tokens |= {_stem(t) for t in content_tokens(seed)}
-    seed_tokens |= {_stem(t) for t in domain.replace("-", " ").split()}
-    seed_tokens -= FRAME
+    seed_tokens = _vocab(seeds, domain)
+    extra_seeds = dedicated_seeds(domain)
+    wide_tokens = seed_tokens | _vocab(extra_seeds, domain,
+                                       drop=METHOD_STEM_WORDS)
 
     # AN EPISODE ALREADY MADE IS NOT A CANDIDATE. The publish-order files keep
     # a slug after its episode is published -- that is where its score and gate
@@ -444,34 +529,68 @@ def candidates(domain: str, limit: int = MAX_CANDIDATES,
         made = {r["slug"] for r in _led.load()["published"]}
     except Exception:                                      # never break a run
         made = set()
-
-    generic = generic_tokens(rows, seed_tokens)
     made_questions = made_question_keys()
 
     seen: list = []
     picked: list = []
-    _, killed = _screen(rows, seed_tokens, limit, seen, picked, made, generic,
-                        made_questions)
+    dead: list = []
+    killed: list = []
 
+    # Too-common words accumulate across rungs: a word that is a quarter of
+    # the broad mine stays unable to carry a candidate alone in the deep one.
+    generic: set = set()
+
+    def rung(label: str, rws: list, vocab: set) -> None:
+        if not rws or len(picked) >= limit:
+            return
+        before = len(picked)
+        generic.update(generic_tokens(rws, vocab))
+        _, k = _screen(rws, vocab, limit, seen, picked, made,
+                       set(generic), made_questions, dead)
+        killed.extend(k)
+        log.append(f"{label}: {before} -> {len(picked)} candidate(s)")
+        print(log[-1])
+
+    deep_path = os.path.join(HERE, DEEP_MINE_OVERRIDE.get(
+        domain, f"mined_queries_{slug_of_domain(domain)}.json"))
+    cached = []
+    own = os.path.join(HERE, f"mined_queries_{slug_of_domain(domain)}.json")
+    for path in dict.fromkeys((deep_path, own)):
+        if deep and os.path.exists(path):
+            with open(path, encoding="utf-8") as fh:
+                cached += _rows_of(json.load(fh))
+
+    rung("broad mine, broad seeds", rows, seed_tokens)
     if deep and len(picked) < MIN_CANDIDATES:
-        deep_path = os.path.join(
-            HERE, DEEP_MINE_OVERRIDE.get(
-                domain, f"mined_queries_{slug_of_domain(domain)}.json"))
-        if os.path.exists(deep_path):
-            with open(deep_path, encoding="utf-8") as fh:
-                extra = _rows_of(json.load(fh))
+        rung("deep-mine cache, broad seeds", cached, seed_tokens)
+    if len(picked) < MIN_CANDIDATES and wide_tokens != seed_tokens:
+        rung("broad mine, dedicated seeds", rows, wide_tokens)
+        if deep:
+            rung("deep-mine cache, dedicated seeds", cached, wide_tokens)
+    if deep and len(picked) < MIN_CANDIDATES:
+        if network:
+            # The domain's own mined_queries_<slug>.json. For deep sea that
+            # is NOT its corpus file (mined_queries.json, which
+            # research/publish_order.py reads and must keep), so the corpus
+            # is never overwritten; both are read as cache next time.
+            refill = os.path.join(
+                HERE, f"mined_queries_{slug_of_domain(domain)}.json")
+            if mine_dir:                     # a read-only look: not research/
+                refill = os.path.join(mine_dir, os.path.basename(refill))
+            fresh = deep_mine(domain, list(dict.fromkeys(
+                seeds + extra_seeds + picked)), refill)
+            rung("fresh autocomplete mine", fresh, wide_tokens)
         else:
-            extra = deep_mine(domain, seeds + picked, deep_path)
-        if extra:
-            before = len(picked)
-            _, more_killed = _screen(extra, seed_tokens, limit, seen,
-                                     picked, made,
-                                     generic | generic_tokens(extra, seed_tokens),
-                                     made_questions)
-            killed += more_killed
-            print(f"deep mine: {before} -> {len(picked)} candidate(s)")
+            log.append("fresh autocomplete mine: skipped (read-only run)")
+            print(log[-1])
 
-    return picked, killed
+    # One record per refused query, whichever rung refused it first.
+    out_killed, seen_q = [], set(picked)
+    for k in killed:
+        if k["query"] not in seen_q:
+            seen_q.add(k["query"])
+            out_killed.append(k)
+    return picked, out_killed
 
 
 def ensure_competition(domain: str, queries: list[str], budget: int) -> str:
@@ -529,8 +648,9 @@ def demand_probe(query: str, corpus_tokens: list[set], pause: float) -> dict:
     }
 
 
-def build(domain: str, pause: float, budget: int) -> dict:
-    cands, killed_early = candidates(domain)
+def build(domain: str, pause: float, budget: int,
+          network: bool = True) -> dict:
+    cands, killed_early = candidates(domain, network=network)
     if not cands:
         raise SystemExit(
             f"FATAL: no admitted question-form candidate for {domain} in "
@@ -682,6 +802,12 @@ def main() -> int:
                     help="quota units competition.py may plan to spend")
     ap.add_argument("--candidates-only", action="store_true",
                     help="print the candidates and spend no quota")
+    ap.add_argument("--mine-dir", default=None,
+                    help="write a fresh autocomplete mine here instead of "
+                         "research/ (a read-only look at what it would find)")
+    ap.add_argument("--no-network", action="store_true",
+                    help="never run a fresh autocomplete mine; with "
+                         "--candidates-only this is a read-only look")
     ap.add_argument("--query", action="append", default=[],
                     help="gate ONE question (repeatable) instead of the "
                          "domain's candidate list; prints the scored row(s) "
@@ -701,22 +827,31 @@ def main() -> int:
                                              "unmeasured": unmeasured}))
         return 0
 
+    import batch_queue                                         # noqa: PLC0415
+    floor = batch_queue.MIN_UNWRITTEN_TOPICS
+
     if a.candidates_only:
-        cands, killed = candidates(a.domain)
+        cands, killed = candidates(a.domain, network=not a.no_network,
+                                   mine_dir=a.mine_dir)
         print(f"{len(cands)} candidate(s) for {a.domain}:")
         for q in cands:
             print(f"  {q}")
         for k in killed:
             print(f"  KILLED  {k['query']}  ({k['rule']})")
+        if len(cands) < floor:
+            print(thin_stop(a.domain, len(cands), "candidate(s) before the "
+                            "gate"))
         return 0
 
-    blob = build(a.domain, a.pause, a.budget)
+    blob = build(a.domain, a.pause, a.budget, network=not a.no_network)
     path = out_path(a.domain)
+    carried = carry_forward(path, blob)
     with open(path, "w", encoding="utf-8") as fh:
         json.dump(blob, fh, indent=2)
         fh.write("\n")
     n = len(blob["queue"])
-    print(f"\n{n} topic(s) survived the gate, {len(blob['killed'])} killed "
+    print(f"\n{n} topic(s) survived the gate, {len(blob['killed'])} killed, "
+          f"{carried} written row(s) carried forward "
           f"-> {os.path.relpath(path, ROOT)}")
     if n == 0:
         # RULE 0: a gate that killed everything has produced no queue, and a
@@ -724,7 +859,49 @@ def main() -> int:
         print("NAMED STOP: every candidate failed the gate. The domain holds "
               "slots it cannot fill.", file=sys.stderr)
         return NAMED_STOP
+    have = batch_queue.unwritten_by_domain().get(a.domain, 0)
+    if have < floor:
+        print(thin_stop(a.domain, have, "unwritten, non-duplicate topic(s) "
+                        "after the gate"), file=sys.stderr)
+        return NAMED_STOP
     return 0
+
+
+# The marker loop/score.py reads to name this stop. Printed, never raised:
+# the queue the run DID produce is still written first.
+THIN_MARKER = "DOMAIN_QUEUE_THIN"
+
+
+def thin_stop(domain: str, n: int, what: str) -> str:
+    import batch_queue                                         # noqa: PLC0415
+    return (f"NAMED STOP {THIN_MARKER}: {domain} has {n} {what}, under the "
+            f"floor of {batch_queue.MIN_UNWRITTEN_TOPICS}, and every mining "
+            f"source is exhausted (broad mine, deep-mine cache, dedicated "
+            f"seeds, a fresh autocomplete mine).")
+
+
+def carry_forward(path: str, blob: dict) -> int:
+    """Keep the old queue's WRITTEN and HELD rows in a regenerated queue.
+
+    A regeneration re-mines candidates, and a topic that already has a
+    script is (correctly) no longer a candidate - so without this, a
+    rebuilt file would drop the row for a script the Mac has yet to narrate
+    and leave it stranded outside every publish order. Carried rows go
+    first, in their old order; loop/batch_queue.py still judges each one on
+    read. Returns how many were carried."""
+    import batch_queue                                         # noqa: PLC0415
+    if not os.path.exists(path):
+        return 0
+    with open(path, encoding="utf-8") as fh:
+        old = json.load(fh).get("queue") or []
+    holds = batch_queue.promotion_holds()
+    have = {r.get("slug") for r in blob["queue"]}
+    keep = [r for r in old if r.get("slug") and r["slug"] not in have
+            and (os.path.exists(os.path.join(ROOT, "scripts",
+                                             f"{r['slug']}.md"))
+                 or r["slug"] in holds)]
+    blob["queue"] = keep + blob["queue"]
+    return len(keep)
 
 
 if __name__ == "__main__":
