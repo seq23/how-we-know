@@ -116,7 +116,7 @@ def check() -> list[str]:
         # unchanged: a zero exit must SAY which of the two it is. A silent
         # pass still fails.
         if r.returncode == 0 and not ("SELF-RESOLVING" in out.upper()
-                                      or "WAITING ON THE OWNER" in out.upper()):
+                                      or "NEEDS A SECRET ONLY SHE HOLDS" in out.upper()):
             fails.append(f"loop/{fname} exited 0 without declaring the stop "
                          f"self-resolving or waiting on the owner — a zero "
                          f"exit is only legitimate for a stop "

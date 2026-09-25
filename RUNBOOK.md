@@ -1,5 +1,7 @@
 # RUNBOOK
 
+> **Nothing waits on the owner. A finding becomes an action with a measurement, never a question. Only a secret or an account she alone holds may stop, and that stop is green and self-explaining.**
+
 **Say "runbook howweknow" and this is the page.** Everything you personally have to do for
 How We Know, and nothing else. Reference detail lives in
 [`docs/OPERATING-MANUAL.md`](docs/OPERATING-MANUAL.md); the locked strategy lives
@@ -88,12 +90,11 @@ first; running `bin/batch-session.sh` by hand catches it up regardless of cause.
 publish automatically in the evening slot. You do not review them.
 
 **They now go out at 9 a week, not 4** (your decision, 2 September). That is
-about **five to six weeks of runway** rather than twelve. When the cut ones run
-out you get one email — `SHORTS_INVENTORY_EXHAUSTED` — asking you to choose
-between cutting more chapters from the existing episodes and moving Shorts to a
-proper vertical format. **Nothing switches format on its own**, deliberately:
-the 51 already cut are in the current format and re-cutting them would throw
-away work you have already paid for.
+about **five to six weeks of runway** rather than twelve. The Mac's nightly
+batch cuts Shorts from every newly rendered episode, so the shelf refills
+itself; Shorts stay in the current cut format (decided 2026-09-25 and logged,
+not pending on you). `SHORTS_INVENTORY_EXHAUSTED` is a green note, not a
+question.
 
 If you ever spot a bad one, that is the only manual lever:
 
@@ -113,27 +114,25 @@ build in your inbox**, whatever it was about. Some of those were worth sending
 and most were not — the worst one asked you to open the laptop and type a
 command to produce a file the server was already holding every ingredient for.
 
-Every halt this system can take has now been walked and given one of three
-answers.
+Every halt this system can take is one of three things (`loop/stop_classes.py`,
+validator V45, checks every one):
 
 | | What happens | You see |
 |---|---|---|
-| **It can fix itself** | It does, and the lane carries on | nothing |
-| **Only you can fix it** | The run stays **green** | one line at the top of the Sunday email, under **⚠️ Waiting on you** |
-| **Something is actually broken** | The run goes red | an email, as before |
+| **Automated policy** | The loop acts on a written rule and logs it | nothing, or a line in the Sunday email |
+| **A key or account only you hold** | The run stays **green** | one line at the top of the Sunday email, under **🔑 Needs your key or account** |
+| **Something is actually broken** | The run goes red | an email |
 
-Two things follow from that and both are deliberate:
-
-- **A green run is not a silent run.** Anything waiting on you is written down
-  and repeated in every Sunday digest until it is cleared.
-- **It goes red eventually anyway.** If a "waiting on you" item is still there
-  after a few runs — five days for a credential, three for a locked channel —
-  it stops being an errand and becomes a stall, and then it does email you.
+**Nothing waits on a decision from you.** A finding becomes an action with a
+measurement: the 2026-09-25 retention finding became the opening rule
+(`loop/opening.py`: the payoff in the first 30 seconds of every new script,
+compared against the old videos after four weeks, switched automatically if it
+does not win).
 
 **What is genuinely yours, and nothing else is:** a YouTube consent that has
 expired or been revoked, a channel-level flag from YouTube itself, an API key
-with no credit, and the one-off `gh workflow run` that arms a brand-new lane.
-That is the whole list.
+or account with no credit, a repository secret a new lane needs, and the Mac
+being awake with its lid open at 23:00. That is the whole list.
 
 ### What now fixes itself, that did not before
 

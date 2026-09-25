@@ -48,6 +48,7 @@ import breaker  # noqa: E402
 import domains  # noqa: E402
 import durations  # noqa: E402
 import ledger  # noqa: E402
+import opening  # noqa: E402
 import upload as up  # noqa: E402
 import ypp  # noqa: E402
 from common import (LOOP, Stage, config, now, read_json, summary,  # noqa: E402
@@ -147,8 +148,11 @@ def retention_checkpoint(rows: list[dict], cfg: dict,
     return cp
 
 
-def write_finding(cp: dict, cfg: dict) -> None:
-    """Prose, in a file, that says what the number means. Not buried JSON."""
+def write_finding(cp: dict, cfg: dict, acting: dict | None = None) -> None:
+    """Prose, in a file, that says what the number means - and, since
+    2026-09-25, what the loop is DOING about it (`acting`, from
+    opening.evaluate()). A finding is an action with a measurement, never a
+    question for the owner."""
     if cp["status"] != "measured":
         FINDING.write_text(
             "# Retention checkpoint\n\nNo view-duration data yet. This fills "
@@ -188,6 +192,26 @@ def write_finding(cp: dict, cfg: dict) -> None:
             "This is the one finding that should stop the content design being "
             "treated as settled.",
         ]
+    if acting:
+        c = acting.get("cohorts") or {}
+        lines += [
+            "",
+            "## What the loop is doing about it",
+            "",
+            f"Opening rule in force: **{acting['active']}** "
+            f"(loop/opening.py). Every script drafted from "
+            f"{opening.RULE_START} on must land its payoff in the first 30 "
+            f"seconds; a draft that does not is redrafted automatically. "
+            f"Published videos are untouched.",
+            "",
+            f"Measurement: {acting['active']} vs {acting['baseline']} by "
+            f"average view duration, compared on {acting['compare_on']}. If "
+            f"it is not ahead, the lane switches to the next variant itself "
+            f"and logs it. This week: {acting['action']} - {acting['why']}.",
+            "",
+            "| opening | measured videos | average view duration |",
+            "|---|---|---|",
+        ] + [f"| {k} | {v['n']} | {v['avd_s']}s |" for k, v in sorted(c.items())]
     else:
         lines += [
             "## Format is holding",
@@ -408,6 +432,12 @@ def video_records(data: dict, pub: list[dict], week: str) -> list[dict]:
                       if x.get("video_id") == d.get("video")), "") or ""),
             "estimated_revenue": d.get("estimatedRevenue"),
             "rpm": rpm(d),
+            # Which opening rule the video was drafted under (loop/opening.py),
+            # so the old and new cohorts can be compared by average view
+            # duration. Pre-rule videos read "pre-rule".
+            "opening": opening.variant_of(
+                next((x["slug"] for x in pub
+                      if x.get("video_id") == d.get("video")), "") or ""),
         })
     return out
 
@@ -640,7 +670,14 @@ def main() -> None:
         # ---- the retention checkpoint, reported prominently ---------------
         cp = retention_checkpoint(m["videos"], cfg, pub)
         m["retention_checkpoint"] = cp
-        write_finding(cp, cfg)
+        # THE OPENING RULE'S OWN MEASUREMENT (loop/opening.py). Cohorts by the
+        # rule each video was drafted under; after COMPARE_AFTER_DAYS the
+        # active variant is kept or replaced by the next one, here, logged,
+        # with no stop either way.
+        acting = opening.evaluate(m["videos"])
+        m["opening"] = acting
+        st.work(f"opening rule: {acting['action']} - {acting['why']}")
+        write_finding(cp, cfg, acting)
         if cp["status"] == "measured":
             st.work(f"retention checkpoint: {cp['mean_view_duration_mm_ss']} "
                     f"average view duration against a "
@@ -667,21 +704,16 @@ def main() -> None:
         write_json(MEASURE, m)
         st.work("wrote loop/state/measurement.json — Sunday's ranking reads this")
 
-        # A finding this consequential is not left as a number in a file. A
-        # named stop opens an issue and emails her, which is the point.
+        # A FORMAT PROBLEM IS ACTED ON, NOT RAISED (owner's rule, 2026-09-25:
+        # nothing waits on her). It used to be the named stop FORMAT_PROBLEM,
+        # which turned main red (5cf1335) over a finding only a content
+        # change could answer. The change is loop/opening.py, in force for
+        # every new draft, measured above; this line is the log of it.
         if cp.get("format_verdict") == "FORMAT PROBLEM":
-            st.named_stop(
-                "FORMAT_PROBLEM",
-                f"{cp['videos_losing_viewers_in_first_2min']} of "
-                f"{cp['measured']} videos lose the average viewer inside the "
-                f"first {cp['early_exit_threshold_minutes']} minutes "
-                f"({cp['mean_view_duration_mm_ss']} average view duration "
-                f"against a {cp['floor_avd_seconds']}s floor). This "
-                f"invalidates the format, not the topic selection.",
-                detail=cp,
-                unblock="Read loop/state/retention_finding.md. Better ranking "
-                        "will not fix this - the runtime or the structure has "
-                        "to change.")
+            st.work(f"format finding acted on: opening rule "
+                    f"{acting['active']} is in force for new drafts and is "
+                    f"compared on {acting['compare_on']} "
+                    f"(loop/state/retention_finding.md)")
 
 
 if __name__ == "__main__":

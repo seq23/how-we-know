@@ -131,25 +131,42 @@ def dispatched() -> bool:
     return os.environ.get("GITHUB_EVENT_NAME") == "workflow_dispatch"
 
 
-def gate(st, lane: str) -> None:
-    """Stop a SCHEDULED run of an unarmed lane, visibly.
+def missing_secrets(lane: str) -> list[str]:
+    """The lane's required secrets absent from this environment."""
+    return [k for k in require_lane(lane)["secrets"]
+            if not os.environ.get(k, "").strip()]
 
-    A dispatched run passes straight through — that is the run that arms it.
+
+def gate(st, lane: str) -> None:
+    """Let an unarmed lane arm itself; stop only on a missing secret.
+
+    NOTHING WAITS ON THE OWNER (her rule, 2026-09-25). This used to hold every
+    scheduled run of an unarmed lane until she ran `gh workflow run` by hand
+    once. That run proved nothing a scheduled run with the same secrets does
+    not prove, so a scheduled run with every required secret present IS the
+    arming run: it proceeds, and `record_success()` arms the lane when it
+    completes. A dispatched run passes as before. The one thing only she can
+    supply - a repository secret - is the one thing that still stops it, by
+    name.
     """
     if is_armed(lane) or dispatched():
+        return
+    missing = missing_secrets(lane)
+    if not missing:
+        print(f"arming: {lane} has never completed a real run; this scheduled "
+              f"run is its arming run (every required secret is present)",
+              flush=True)
         return
     spec = require_lane(lane)
     st.named_stop(
         f"LANE_NOT_ARMED_{lane.upper().replace('-', '_')}",
-        f"the {lane} lane has never completed a real run, so its schedule is "
-        f"held. This is recorded here rather than hidden in a commented-out "
-        f"cron line, which is how three lanes stayed silently dead.",
+        f"the {lane} lane has never completed a real run and cannot arm "
+        f"itself: {', '.join(missing)} is not set for this environment.",
         detail={"workflow": spec["workflow"], "proves": spec["proves"],
-                "secrets_required": spec["secrets"], "also": spec["also"]},
-        unblock=(f"Run it once by hand and it arms itself: "
-                 f"`gh workflow run {spec['workflow']}`. That run must "
-                 f"{spec['proves']}. It needs "
-                 f"{', '.join(spec['secrets'])}"
+                "secrets_required": spec["secrets"], "missing": missing,
+                "also": spec["also"]},
+        unblock=(f"Add {', '.join(missing)} as repository secret(s). The next "
+                 f"scheduled run arms the lane itself"
                  + (f". {spec['also']}" if spec["also"] else ".")))
 
 

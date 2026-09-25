@@ -104,7 +104,7 @@ def check() -> list[str]:
             fails.append("the approval page has no inlined week data")
         if "OVERRIDE" not in html:
             fails.append("the dashboard offers no override path")
-        if "waiting on you" not in html:
+        if "Nothing here waits on you" not in html:
             fails.append("the dashboard does not state that nothing waits on her")
         # The page must not have regained an approval gate.
         if re.search(r"Approve all|approval required", html, re.I):

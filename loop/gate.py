@@ -80,7 +80,7 @@ border-radius:9px;font-size:12px;color:var(--dim)}
 <div class="sub">__COUNT__ video__PLURAL__ picked automatically ·
 ceiling __CEILING__/week (deliberate)</div>
 
-<div class="note"><b>Nothing here is waiting on you.</b> Topics were picked from
+<div class="note"><b>Nothing here waits on you.</b> Topics were picked from
 demand data under the hard exclusion gate, and every POV line came from your own
 bank. This page is a notification. Drop a row only if you actively want it gone -
 the override window closes Tuesday 02:00, when rendering starts.</div>

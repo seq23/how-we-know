@@ -364,7 +364,7 @@ def main() -> int:
               f"rc={r2.returncode} code={rec.get('code')} tail={r2.stdout[-400:]!r}")
         check("which is owner_action: green, recorded, at the top of the digest",
               r2.returncode == 0 and rec.get("disposition") == "owner_action"
-              and "WAITING ON THE OWNER" in r2.stdout,
+              and "NEEDS A SECRET ONLY SHE HOLDS" in r2.stdout,
               f"rc={r2.returncode} disposition={rec.get('disposition')}")
         check("the stop says how to start the host, not which binary is missing",
               "bin/batch-session.sh" in (rec.get("unblock") or "")
