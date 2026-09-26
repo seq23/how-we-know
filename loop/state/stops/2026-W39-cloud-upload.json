@@ -1,33 +1,38 @@
 {
   "stage": "cloud-upload",
   "week": "2026-W39",
-  "at": "2026-09-25T14:14:01+00:00",
-  "code": "SCRIPTS_AWAITING_PROMOTION",
-  "message": "Nothing to upload: every one of the 34 episodes in research/publish_order*.json is already uploaded and dated, and the runway exists (5.5 weeks of queue at 4/week (0 publishable of 4 on disk). By domain: deep-sea-ocean-science: 4.5 week(s) at 2/week (0 queued, 9 already dated); materials-and-manufacturing: 6.5 week(s) at 2/week (0 queued, 13 already dated).). 4 script(s) are held outside the queue awaiting the owner's promotion decision: how-do-scientists-know-about-other-galaxies, how-do-scientists-know-how-old-something-is, how-do-scientists-know-so-much, why-deep-sea-creatures. They are not queued for the Mac and not deleted. The Mac is not the problem.",
+  "at": "2026-09-26T14:11:31+00:00",
+  "code": "NOTHING_SHELVED",
+  "message": "17 queued episode(s) are not in the ledger and not on the R2 shelf, so they are still waiting on the Mac (narration, render or push): how-do-scientists-know-so-much, how-do-scientists-know-how-old-something-is, how-do-scientists-know-about-other-galaxies, why-deep-sea-fish-die-when-brought-to-surface, what-lives-in-mariana-trench, how-deep-can-a-sperm-whale-go, why-deep-sea-creatures-are-creepers, how-deep-can-whales-dive ...",
   "detail": {
-    "queued": 34,
-    "uploaded": 34,
-    "render_gate_held": [],
-    "promotion_held": [
-      "how-do-scientists-know-about-other-galaxies",
-      "how-do-scientists-know-how-old-something-is",
+    "awaiting_mac": [
       "how-do-scientists-know-so-much",
-      "why-deep-sea-creatures"
+      "how-do-scientists-know-how-old-something-is",
+      "how-do-scientists-know-about-other-galaxies",
+      "why-deep-sea-fish-die-when-brought-to-surface",
+      "what-lives-in-mariana-trench",
+      "how-deep-can-a-sperm-whale-go",
+      "why-deep-sea-creatures-are-creepers",
+      "how-deep-can-whales-dive",
+      "why-are-deep-sea-creatures-so-big",
+      "what-is-hydrothermal-vents",
+      "how-are-microchips-designed",
+      "is-damascus-steel-better",
+      "how-to-tell-if-steel-is-hardened",
+      "does-damascus-steel-rust",
+      "is-aluminum-stronger-than-steel",
+      "how-to-tell-if-steel-is-high-carbon",
+      "how-materials-science-could-revolutionize-technology"
     ],
-    "runway_level": "ok",
-    "runway_weeks": 5.5,
-    "holds": "loop/promotion_holds.json"
+    "render_gate_held": [],
+    "queued": 51,
+    "uploaded": 34
   },
-  "unblock": "Promote: add a row with `slug` and `query` to a research/publish_order*.json and put the script at scripts/<slug>.md; the Mac's batch then narrates, renders and shelves it and this lane uploads it. Decline: remove its entry from loop/promotion_holds.json. Nothing is deleted either way.",
-  "disposition": "owner_action",
-  "disposition_why": "Nothing to upload: every queued episode is uploaded and dated, the runway exists, and the only scripts outside the queue are held on purpose in loop/promotion_holds.json awaiting the owner's promotion decision (decided 2026-09-23 that they wait for her; not queued for the Mac, not deleted). No automation can make that decision, and she already knows, so the run stays green, names the held slugs, and the fact goes to the digest instead of a daily page. A NEW script outside the queue that is not in the hold register is AUTHORED_NOT_QUEUED and still pages; a critical runway is SCRIPTS_AWAITING_PROMOTION_RUNWAY_CRITICAL and still pages. Only she can clear this, and retrying cannot, so the run stays GREEN and the fact is carried to the top of the Sunday digest instead of into her inbox as a failed build. (run 4 of at most 28 before this escalates.)",
-  "consecutive": 4,
-  "held_items": [
-    "how-do-scientists-know-about-other-galaxies",
-    "how-do-scientists-know-how-old-something-is",
-    "how-do-scientists-know-so-much",
-    "why-deep-sea-creatures"
-  ],
+  "unblock": "On the Mac: read the '=== batch session' block in ~/Library/Logs/how-we-know/batch.log. 'to narrate' and 'to render' list these slugs until they are built; bin/push-to-r2.sh shelves them afterwards.",
+  "disposition": "self_resolving",
+  "disposition_why": "Queued episodes are not in the ledger and not on the R2 shelf yet: the Mac's nightly batch is still narrating, rendering or pushing them, and it pushes what it renders, so the shelf fills on a later night. Since 2026-09-23 this code is raised ONLY in that state and names the waiting slugs in detail.awaiting_mac. An empty shelf because the whole queue is uploaded is PUBLISH_QUEUE_UPLOADED, and scripts stuck outside the queue are AUTHORED_NOT_QUEUED (see loop/cloud_upload.py diagnose_empty_shelf). (run 1 of at most 7 before this escalates to a human.)",
+  "consecutive": 1,
+  "held_items": [],
   "exit_code": 0,
   "work_done_before_stop": [],
   "notes": [
