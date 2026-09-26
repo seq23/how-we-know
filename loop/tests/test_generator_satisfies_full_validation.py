@@ -42,10 +42,10 @@ ROOT = LOOP.parent
 os.environ.setdefault("LOOP_STOPS_DIR", tempfile.mkdtemp(prefix="gen-val-"))
 sys.path.insert(0, str(LOOP))
 
-import author        # noqa: E402
-import batch_queue   # noqa: E402
-import draft         # noqa: E402
-import validate      # noqa: E402
+import author        # noqa: E402 - loop/ is on sys.path only after the insert above
+import batch_queue   # noqa: E402 - loop/ is on sys.path only after the insert above
+import draft         # noqa: E402 - loop/ is on sys.path only after the insert above
+import validate      # noqa: E402 - loop/ is on sys.path only after the insert above
 
 BAD_20260926 = [
     "{{uncertain: seven hundred fifty thousand | species | range five hundred "
