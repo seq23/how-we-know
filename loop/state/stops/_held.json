@@ -10,31 +10,6 @@
     "reports": 1,
     "stage": "fri-measure"
   },
-  "imagery-harvest::CLEARED_POOL_SHRANK": {
-    "code": "CLEARED_POOL_SHRANK",
-    "first_reported_at": "2026-09-12T04:39:30+00:00",
-    "issue": 77,
-    "items": [],
-    "last_reported_at": "2026-09-12T04:39:30+00:00",
-    "last_seen_at": "2026-09-12T04:39:30+00:00",
-    "reported_run": null,
-    "reports": 1,
-    "stage": "imagery-harvest"
-  },
-  "imagery-harvest::HARVESTER_TOOLING_ABSENT": {
-    "code": "HARVESTER_TOOLING_ABSENT",
-    "first_reported_at": "2026-09-12T04:39:30+00:00",
-    "issue": 91,
-    "items": [
-      "research/imagery_video.py needs ffmpeg",
-      "research/imagery_video.py needs vision-ocr"
-    ],
-    "last_reported_at": "2026-09-19T04:35:11+00:00",
-    "last_seen_at": "2026-09-19T04:35:11+00:00",
-    "reported_run": 34672456430,
-    "reports": 2,
-    "stage": "imagery-harvest"
-  },
   "mon-draft::AUTHOR_REQUIRED": {
     "code": "AUTHOR_REQUIRED",
     "first_reported_at": "2026-09-25T17:07:24+00:00",
