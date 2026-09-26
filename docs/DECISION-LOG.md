@@ -882,3 +882,14 @@ NO_REPLACEMENT_DOMAIN, RUNWAY_WARN (found unclassified). LANE_NOT_ARMED_* now
 arms itself when its secrets are present and stops only on a missing secret.
 NO_POV_MATCH yields the least-recently-used transferable bank line when the
 rotation window is full. AUTHORED_NOT_QUEUED is worded as the defect it is.
+
+## 2026-09-26 — the Saturday gate decided 4 held script(s)
+
+**What happened.** `loop/score.py dispose_promotion_holds()` put each script held in `loop/promotion_holds.json` through the same demand ÷ competition gate every queued topic passed (`research/publish_order_domain.py --query`). Owner instruction 2026-09-25: a hold is decided by the loop, never parked for her.
+
+- **PROMOTED** `how-do-scientists-know-so-much` — demand 0.531 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling. Row appended to `research/publish_order_deep_sea_ocean_science.json`.
+- **PROMOTED** `how-do-scientists-know-how-old-something-is` — demand 0.297 clears the 0.16 floor and title gap 0.85 clears the 0.3 saturation ceiling. Row appended to `research/publish_order_deep_sea_ocean_science.json`.
+- **PROMOTED** `how-do-scientists-know-about-other-galaxies` — demand 0.390 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling. Row appended to `research/publish_order_deep_sea_ocean_science.json`.
+- **DECLINED** `why-deep-sea-creatures` — 'why do deep sea creatures look so strange' is the same question as 'why deep sea creatures look so weird', already made (identical question key). Moved to `loop/drafts/declined/`, never deleted.
+
+**Verified.** Stop record and gate output in this run's job log; week 2026-W39.

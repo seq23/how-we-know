@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-25T17:07:24Z",
+  "generated": "2026-09-26T10:09:12Z",
   "rule": "one POV per video, no reuse, owner's own words only",
   "assignments": [
     {
@@ -345,6 +345,27 @@
       "tier": "transferable",
       "source": "matched by author",
       "line": "I'm interested in the evidence chain, not just the final fact somebody puts on screen."
+    },
+    {
+      "video": "how-do-scientists-know-so-much",
+      "pov_id": "pov-058",
+      "tier": "transferable",
+      "source": "promoted by the Saturday gate",
+      "line": "'Scientists say' is almost meaningless on its own. Which scientists? How many? Was it one paper? Was it replicated?"
+    },
+    {
+      "video": "how-do-scientists-know-how-old-something-is",
+      "pov_id": "pov-059",
+      "tier": "transferable",
+      "source": "promoted by the Saturday gate",
+      "line": "I'm not anti-science. I'm against using science as a magic authority word that means nobody has to show their work."
+    },
+    {
+      "video": "how-do-scientists-know-about-other-galaxies",
+      "pov_id": "pov-060",
+      "tier": "transferable",
+      "source": "promoted by the Saturday gate",
+      "line": "Science is a process. It is not a person behind a curtain handing down permanent answers."
     }
   ]
 }
