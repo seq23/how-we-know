@@ -2058,6 +2058,32 @@ def v27_lanes_see_every_domain() -> Result:
                                (_json.loads(path.read_text()).get("queue") or [])
                                if row.get("slug")}
 
+    # A ROW REFUSED ON READ WAS SEEN. Since 2026-09-25 (#127/#128)
+    # batch_queue refuses a row that asks the same question as an episode
+    # already made, or another channel's topic, and names every refusal in
+    # refused_entries() with its reason. Such a row is absent from the merged
+    # queue BY A DECISION, not because a lane reads one file by name - which
+    # is the only thing this validator exists to catch. Without this, every
+    # refusal read as a blind lane: V27 failed 20 times on 2026-09-26 over
+    # rows the queue had correctly refused, and the next Monday would have
+    # tripped the breaker on it. Each refused slug must still be NAMED with a
+    # reason; a row that is merely missing still fails.
+    try:
+        import batch_queue as _bq_ref                      # noqa: PLC0415
+        refused_rows = _bq_ref.refused_entries()
+    except Exception as e:                                 # noqa: BLE001
+        refused_rows = []
+        r.fail(f"loop/batch_queue.py could not list its refused rows: {e}")
+    refused = set()
+    for row in refused_rows:
+        r.examined += 1
+        if not row.get("slug") or not (row.get("why") or row.get("killed_by")):
+            r.fail(f"a refused queue row carries no slug or no reason: "
+                   f"{ {k: row.get(k) for k in ('slug', 'killed_by', 'why')} }")
+            continue
+        refused.add(row["slug"])
+    per_file = {f: slugs - refused for f, slugs in per_file.items()}
+
     # ---- no bin/ script names a single publish-order file ----------------
     for sh in sorted((ROOT / "bin").glob("*.sh")):
         r.examined += 1

@@ -389,7 +389,13 @@ def run(limit: int = 15, dry_run: bool = False,
                 f"{ytmeta.DEFAULT_LANGUAGE}. Nothing was translated and "
                 f"nothing was written — a re-run costs nothing, which is the "
                 f"design.",
-                detail={"videos": [r["slug"] for r in live]},
+                # newest_input_at lets loop/common.py tell "nothing new has
+                # been uploaded" (the upload lane's stop owns that) from
+                # "something new arrived and this lane cannot see it".
+                detail={"videos": [r["slug"] for r in live],
+                        "newest_input_at": max(
+                            (r.get("uploaded_at") or r.get("published_at")
+                             or "" for r in live), default="") or None},
                 unblock="Nothing to do. This stop means the lane is finished, "
                         "not broken. It will do real work again when a new "
                         "episode is uploaded or an English title changes.")

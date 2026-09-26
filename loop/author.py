@@ -325,14 +325,15 @@ the twenty existing scripts and the pipeline parses it.
 <directive>
 <One short paragraph. No call to action, no "subscribe".>
 
-## Human fingerprint gate
+## Editorial gate
 
-- Humanized cold open: DRAFTED — owner must confirm it sounds natural read aloud.
-- First-person producer observation: FROM POV BANK ({pov_id}) — owner-approved voice.
-- Evidence uncertainty or limitation: <COMPLETE or PENDING>
+*What this episode does that a template would not. Every line below is a property the pipeline enforces at build time — see V36 in `loop/validate.py`. It records no step a human still owes.*
+
+- Humanized cold open: PRESENT
+- First-person producer observation: FROM POV BANK ({pov_id})
+- Evidence uncertainty or limitation: COMPLETE
 - Structural variation: <one line describing this script's shape>
-- Number-level source audit: <COMPLETE or PENDING>
-- Final human watch-through: PENDING until the rendered MP4 exists.
+- Number-level source audit: COMPLETE
 
 ## Chapters
 
@@ -536,8 +537,27 @@ def record_spend(slug: str, model: str, usage: dict, cost: float | None,
 
 # --------------------------------------------------------------- validation
 
+# WHERE NARRATION ENDS. The gate section after it was "## Human fingerprint
+# gate" until 2026-09-05, when V36 (loop/validate.py) retired that heading
+# for "## Editorial gate" in every script on disk - and this template kept
+# writing the old one. Every script the Monday lane authored afterwards was
+# promoted into scripts/ carrying a heading V36 fails, so the NEXT run's full
+# validation tripped the breaker on the previous week's work (found
+# 2026-09-26 on six scripts). The generator and the validator now name one
+# heading; the old one still ends narration so an older draft is read right.
+NARRATION_ENDS = ("## Editorial gate", "## Human fingerprint")
+
+
+def narration_text(text: str) -> str:
+    """The ## Narration section of a script, up to its gate section."""
+    body = text.split("## Narration", 1)[-1]
+    for stop in NARRATION_ENDS:
+        body = body.split(stop, 1)[0]
+    return body
+
+
 REQUIRED_SECTIONS = ["## Direct-answer lock", "## Narration",
-                     "## Human fingerprint gate", "## Chapters", "## Sources"]
+                     "## Editorial gate", "## Chapters", "## Sources"]
 
 
 # Same rule as tests/test_directive_truth.py's V1 check ("a directive may not
@@ -562,6 +582,43 @@ def _stem(w: str) -> str:
     return w
 
 
+def directive_parse_problems(text: str) -> list[str]:
+    """Every v2 directive in the narration must parse AND render with the
+    planner the Mac renders from. Mirrors tests/test_directive_truth.py's
+    check_parses() against one in-memory draft, so a directive the planner
+    would silently drop is redrafted inside the retry loop instead of failing
+    V1 on next week's full validation."""
+    if "## Narration" not in text:
+        return []
+    visuals = str(Path(__file__).resolve().parent.parent / "visuals")
+    if visuals not in sys.path:
+        sys.path.insert(0, visuals)
+    import planner                                          # noqa: PLC0415
+    import segments_ext2                                    # noqa: PLC0415
+    out = []
+    for line in narration_text(text).split("\n"):
+        line = line.strip()
+        m = re.match(r"^\{\{\s*(\w+)\s*:?\s*(.*?)\s*\}\}$", line)
+        if not (m and m.group(1).lower() in _DIRECTIVE_KINDS):
+            continue
+        got = planner.parse_directive(line)
+        if got is None:
+            out.append(f"the directive {line[:90]!r} does not parse, so the "
+                       f"renderer would drop it silently. See "
+                       f"visuals/CONTRACT.md for its arguments: a VALUE must "
+                       f"be a number written in digits, an {{{{uncertain}}}} "
+                       f"RANGE a +/- half-width or LOW to HIGH, and a number "
+                       f"with no stated range is a {{{{stat}}}}.")
+            continue
+        seg, kw = got
+        try:
+            getattr(segments_ext2, seg)(0.7, **kw)
+        except Exception as e:                              # noqa: BLE001
+            out.append(f"the directive {line[:90]!r} parses but does not "
+                       f"render: {type(e).__name__}: {e}")
+    return out
+
+
 def directive_truth_problems(text: str) -> list[str]:
     """Every number and proper noun a v2 directive draws must already be in
     this script's own narration prose. Mirrors tests/test_directive_truth.py's
@@ -569,7 +626,7 @@ def directive_truth_problems(text: str) -> list[str]:
     disk, so it can run inside the retry loop before anything is written."""
     if "## Narration" not in text:
         return []
-    body = text.split("## Narration", 1)[1].split("## Human fingerprint", 1)[0]
+    body = narration_text(text)
     prose = " ".join(l for l in body.split("\n") if not l.strip().startswith("{{"))
     plow = prose.lower()
     flags = []
@@ -681,7 +738,7 @@ def shape_problems(text: str, pov: dict) -> list[str]:
                         last):
             p.append(f"the last ## Sources entry is incomplete, so the draft "
                      f"looks truncated: {last.strip()[:80]!r}")
-    nar = text.split("## Narration", 1)[-1].split("## Human fingerprint", 1)[0]
+    nar = narration_text(text)
     words = len([w for w in re.sub(r"\{\{[^}]*\}\}", " ", nar).split()])
     # 2026-09-03: this used to reject under 1,400 words and call it "9.3
     # minutes" at an assumed 150 wpm. At the MEASURED rate (144.58 wpm, see
@@ -710,6 +767,13 @@ def shape_problems(text: str, pov: dict) -> list[str]:
     # it inside its own MAX_ATTEMPTS attempts, the same as every other structural
     # problem in this function.
     p += directive_truth_problems(text)
+    # AND THE OTHER HALF OF V1: every v2 directive must PARSE. Found
+    # 2026-09-26 - three generated scripts in scripts/ carried an
+    # {{uncertain}} whose VALUE or RANGE the planner cannot read (a prose
+    # range, a number in words), which the truth check above cannot see: it
+    # only asks whether the numbers were spoken. The full V1 caught them a
+    # week later, where nothing retries and the breaker trips.
+    p += directive_parse_problems(text)
     # THE OPENING RULE (loop/opening.py, 2026-09-25): the payoff inside the
     # first 30 seconds. A draft that buries its answer is fed back and
     # REDRAFTED inside MAX_ATTEMPTS like every other shape problem, never

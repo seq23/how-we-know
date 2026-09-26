@@ -185,7 +185,7 @@ def check() -> list[str]:
     pov = {"line": "A line.", "pov_id": "pov-001"}
     complete = ("# Q?\n## Direct-answer lock\nx\n## Narration\n"
                 "### Producer POV\n[HUMAN] A line.\n" + ("w " * 950) +
-                "\n## Human fingerprint gate\n## Chapters\n## Sources\n\n"
+                "\n## Editorial gate\n## Chapters\n## Sources\n\n"
                 "- NOAA: Facts — https://oceanexplorer.noaa.gov/facts/\n"
                 "- WHOI: Ocean — https://www.whoi.edu/know-your-ocean/\n"
                 "- GEBCO: Charts — https://www.gebco.net/\n")

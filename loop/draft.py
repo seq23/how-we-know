@@ -79,7 +79,7 @@ def brief_for(topic: dict, week: str) -> Path:
             opening.prompt_text(),
         ],
         "required_sections": ["# <question>", "## Direct-answer lock",
-                              "## Narration", "## Human fingerprint gate",
+                              "## Narration", "## Editorial gate",
                               "## Chapters", "## Sources"],
         "eligible_pov_lines": [{"id": l["id"], "tag": l["tag"],
                                 "tier": l["tier"], "line": l["line"]}

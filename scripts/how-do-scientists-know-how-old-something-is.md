@@ -125,14 +125,15 @@ The methods converge where their ranges overlap. That convergence is the stronge
 
 Age is not a property. It is a calculation. The calculation depends on a measurement, a known rate, and stated assumptions. The methods are independent, and they check each other. When they agree, the age is known. When they disagree, you learn where the method breaks.
 
-## Human fingerprint gate
+## Editorial gate
 
-- Humanized cold open: DRAFTED — owner must confirm it sounds natural read aloud.
-- First-person producer observation: FROM POV BANK (pov-059) — owner-approved voice.
+*What this episode does that a template would not. Every line below is a property the pipeline enforces at build time — see V36 in `loop/validate.py`. It records no step a human still owes.*
+
+- Humanized cold open: PRESENT
+- First-person producer observation: FROM POV BANK (pov-059)
 - Evidence uncertainty or limitation: COMPLETE
 - Structural variation: Process-focused chain and steps directives emphasize method transparency over numerical results.
 - Number-level source audit: COMPLETE
-- Final human watch-through: PENDING until the rendered MP4 exists.
 
 ## Chapters
 

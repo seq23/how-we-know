@@ -462,13 +462,20 @@ print("RC", rc)
         # the hand-off file is a fixture with or without a stranded row.
         seed_ledger = """
 import batch_queue
-# The promotion-hold register: a fixture unless the scenario sets HOLDS to
-# None, which means "the real loop/promotion_holds.json". Read BEFORE the
-# ledger is seeded, not after.
-if HOLDS is not None:
-    batch_queue.PROMOTION_HOLDS = TMP / "promotion_holds.json"
-    batch_queue.PROMOTION_HOLDS.write_text(json.dumps({"holds": HOLDS}))
+# The promotion-hold register is ALWAYS a fixture. It used to fall back to
+# the real loop/promotion_holds.json when a scenario said HOLDS = None, and
+# the 2026-09-23 scenario below read "today's" real register - until the real
+# Saturday gate decided all four holds on 2026-09-26 (4eaed4e) and emptied
+# it. Read BEFORE the ledger is seeded, not after.
+batch_queue.PROMOTION_HOLDS = TMP / "promotion_holds.json"
+batch_queue.PROMOTION_HOLDS.write_text(json.dumps({"holds": HOLDS}))
 held_now = set(batch_queue.promotion_holds())
+# The queue as it stood on the scenario's day. A slug the real Saturday gate
+# has since PROMOTED into a publish order was in no publish order then; left
+# in, it would read as "queued with scripts/<slug>.md", i.e. already decided.
+_real_queued = batch_queue.queued_slugs
+batch_queue.queued_slugs = lambda: [s for s in _real_queued()
+                                    if s not in NOT_YET_QUEUED]
 led = json.loads(ledger.LEDGER.read_text())
 # A HELD SLUG IS NEVER "ALREADY PUBLISHED" IN THIS SIMULATION, whatever
 # batch_queue.queued_slugs() happens to contain today. Confirmed 2026-09-25:
@@ -497,7 +504,7 @@ print("RC", rc)
         stranded = "a-script-authored-but-never-queued"
         examined += 1
         r = run(f"ROWS = [{{'slug': {stranded!r}, 'status': 'queued'}}]\n"
-                "HOLDS = []\nRUNWAY = None\n"
+                "HOLDS = []\nNOT_YET_QUEUED = []\nRUNWAY = None\n"
                 + seed_ledger,
                 dict(base, R2_LOCAL_DIR=str(tmp / "empty-shelf-7b")), tmp)
         out = r.stdout + r.stderr
@@ -520,7 +527,7 @@ print("RC", rc)
 
         examined += 1
         r = run("ROWS = [{'slug': 'gone', 'status': 'dropped'}]\n"
-                "HOLDS = []\nRUNWAY = None\n"
+                "HOLDS = []\nNOT_YET_QUEUED = []\nRUNWAY = None\n"
                 + seed_ledger,
                 dict(base, R2_LOCAL_DIR=str(tmp / "empty-shelf-7c")), tmp)
         out = r.stdout + r.stderr
@@ -534,10 +541,10 @@ print("RC", rc)
             fails.append("a finished upload queue still tells the owner to "
                          "run bin/push-to-r2.sh")
 
-        # -- 7d. TODAY'S STATE, through the real lane (2026-09-23) --------
+        # -- 7d. THE 2026-09-23 STATE, through the real lane -------------
         # Every queued episode uploaded; the four scripts the Monday lane
         # wrote on 2026-09-21 still in loop/render_queue.json as `queued`;
-        # the REAL loop/promotion_holds.json naming them; runway ok. The
+        # the hold register of that day naming them; runway ok. The
         # owner decided these wait for her promotion decision, so this must
         # be a GREEN named stop that names all four - not AUTHORED_NOT_QUEUED
         # paging her, not NOTHING_SHELVED blaming the Mac, not a silent 0.
@@ -545,9 +552,17 @@ print("RC", rc)
                  "how-do-scientists-know-how-old-something-is",
                  "why-deep-sea-creatures",
                  "how-do-scientists-know-about-other-galaxies"]
+        # THE REGISTER AS IT STOOD ON 2026-09-23, frozen verbatim
+        # (git show 4eaed4e^:loop/promotion_holds.json), not the live file.
+        FROZEN_HOLDS = json.loads(
+            (HERE / "fixtures" / "promotion_holds_2026-09-23.json")
+            .read_text())["holds"]
+        if sorted(h["slug"] for h in FROZEN_HOLDS) != sorted(today):
+            fails.append("the frozen 2026-09-23 hold register does not hold "
+                         "exactly the four 2026-09-21 scripts")
         examined += 1
         r = run(f"ROWS = {[{'slug': s_, 'status': 'queued'} for s_ in today]!r}\n"
-                "HOLDS = None\n"
+                f"HOLDS = {FROZEN_HOLDS!r}\nNOT_YET_QUEUED = {today!r}\n"
                 "RUNWAY = {'level': 'ok', 'weeks_remaining': 6.0, "
                 "'message': 'fixture: 6.0 weeks of queue at 4/week'}\n"
                 + seed_ledger,
@@ -598,7 +613,7 @@ print("RC", rc)
         # on the Sunday lane, which is red.
         examined += 1
         r = run(f"ROWS = {[{'slug': s_, 'status': 'queued'} for s_ in today]!r}\n"
-                "HOLDS = None\n"
+                f"HOLDS = {FROZEN_HOLDS!r}\nNOT_YET_QUEUED = {today!r}\n"
                 "RUNWAY = {'level': 'critical', 'weeks_remaining': 1.0, "
                 "'message': 'fixture: 1.0 week'}\n"
                 + seed_ledger,

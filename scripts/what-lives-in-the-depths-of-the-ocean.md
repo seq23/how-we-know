@@ -123,14 +123,15 @@ We do not know how most deep-sea animals reproduce, how long they live, or how t
 
 What lives in the depths of the ocean is mostly a question we are still answering. The organisms we have named are a small fraction of what is there. The rest is pressure, darkness, and the ongoing work of looking.
 
-## Human fingerprint gate
+## Editorial gate
 
-- Humanized cold open: DRAFTED — owner must confirm it sounds natural read aloud.
-- First-person producer observation: FROM POV BANK (pov-038) — owner-approved voice.
+*What this episode does that a template would not. Every line below is a property the pipeline enforces at build time — see V36 in `loop/validate.py`. It records no step a human still owes.*
+
+- Humanized cold open: PRESENT
+- First-person producer observation: FROM POV BANK (pov-038)
 - Evidence uncertainty or limitation: COMPLETE
 - Structural variation: taxonomic and ecological cross-section with methodological reflection and cold seep addition
 - Number-level source audit: COMPLETE
-- Final human watch-through: PENDING until the rendered MP4 exists.
 
 ## Chapters
 
