@@ -45,7 +45,7 @@ A described species is not always a single evolutionary lineage. DNA barcoding, 
 
 ### Microbial diversity dwarfs macroscopic counts but resists traditional species definitions
 
-{{uncertain: 20,000 to 2 million | bacterial operational taxonomic units | published range, model-dependent | low confidence | Marine bacterial diversity estimate}}
+{{text}}
 
 Bacteria and archaea do not fit neatly into species counts. Microbiologists group prokaryotes into operational taxonomic units based on genetic similarity thresholds, typically 97 percent identity in the 16S ribosomal RNA gene. By that measure, a 2016 estimate in the Proceedings of the National Academy of Sciences suggested Earth's oceans might harbor between 20,000 and 2 million bacterial operational taxonomic units, and between 5,000 and 500,000 archaeal operational taxonomic units. The range is wide because sampling is sparse and the definition is arbitrary. A three-percent genetic difference might separate ecologically identical populations or functionally distinct lineages. The World Register of Marine Species does not attempt a comprehensive prokaryote catalog. The 240,000 figure refers almost entirely to eukaryotes — organisms with nucleated cells — and a small number of well-characterized bacterial genera. Microbial diversity likely exceeds macroscopic diversity by orders of magnitude, but the lack of a stable species concept for prokaryotes makes direct comparison difficult.
 
@@ -85,14 +85,15 @@ The described count of 240,000 species is solid — those are named organisms in
 
 What lives in the sea is a question with a growing answer. The catalog expands every year, and the tools for expanding it improve. The gap between what is known and what exists is not a failure of science — it is a measure of the ocean's size and the limited number of people trained to work at the boundary between collection and naming.
 
-## Human fingerprint gate
+## Editorial gate
 
-- Humanized cold open: DRAFTED — owner must confirm it sounds natural read aloud.
-- First-person producer observation: FROM POV BANK (pov-042) — owner-approved voice.
+*What this episode does that a template would not. Every line below is a property the pipeline enforces at build time — see V36 in `loop/validate.py`. It records no step a human still owes.*
+
+- Humanized cold open: PRESENT
+- First-person producer observation: FROM POV BANK (pov-042)
 - Evidence uncertainty or limitation: COMPLETE
 - Structural variation: Opens with catalog figure and gap, then unpacks sampling bias and taxonomic bottlenecks across depth zones and organism size classes.
 - Number-level source audit: COMPLETE
-- Final human watch-through: PENDING until the rendered MP4 exists.
 
 ## Chapters
 

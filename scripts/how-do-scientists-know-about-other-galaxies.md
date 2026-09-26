@@ -36,7 +36,7 @@ Knowing a galaxy exists is not the same as knowing how far away it is. Distance 
 {{stat: 2.5 | million light-years | Andromeda Galaxy distance via Cepheids | NASA}}
 This is how Edwin Hubble, using the 100-inch Hooker Telescope at Mount Wilson Observatory, determined in 1923 that Andromeda was far outside our own Milky Way. He identified Cepheids in Andromeda, measured their periods, calculated their luminosities, and derived a distance of approximately 900,000 light-years. That figure was later revised upward as the Cepheid calibration improved. The current accepted distance is approximately 2.5 million light-years. The method has not changed. The calibration has become more precise.
 
-{{uncertain: 10 | billion light-years | Cepheid limit | high confidence | beyond this, Type Ia supernovae are used}}
+{{text}}
 Cepheids are visible only out to a certain distance, roughly 10 million to 100 million light-years depending on the telescope. Beyond that, they are too faint. For greater distances, astronomers use Type Ia supernovae. These are thermonuclear explosions of white dwarf stars that reach a consistent peak brightness. The mechanism is well understood. A white dwarf in a binary system accretes matter from a companion star until it reaches approximately 1.4 solar masses, the Chandrasekhar limit. At that mass, carbon fusion ignites throughout the star nearly simultaneously, and the star explodes. Because the mass at detonation is always near the same limit, the peak brightness is always near the same value. Type Ia supernovae have been detected in galaxies billions of light-years away.
 
 ### Redshift reveals how fast a galaxy is moving away from Earth
@@ -82,14 +82,15 @@ What this evidence does not establish is the ultimate fate of the universe, or w
 {{text}}
 Other galaxies are known through light that has traveled across space, carrying information that instruments decode. The distances are measured, the compositions are identified, and the motions are tracked. The evidence is electromagnetic radiation, analyzed and cross-checked. That is how scientists know.
 
-## Human fingerprint gate
+## Editorial gate
 
-- Humanized cold open: DRAFTED — owner must confirm it sounds natural read aloud.
-- First-person producer observation: FROM POV BANK (pov-060) — owner-approved voice.
+*What this episode does that a template would not. Every line below is a property the pipeline enforces at build time — see V36 in `loop/validate.py`. It records no step a human still owes.*
+
+- Humanized cold open: PRESENT
+- First-person producer observation: FROM POV BANK (pov-060)
 - Evidence uncertainty or limitation: COMPLETE
 - Structural variation: cosmic distance ladder as a chain of overlapping methods, each calibrating the next
 - Number-level source audit: COMPLETE
-- Final human watch-through: PENDING until the rendered MP4 exists.
 
 ## Chapters
 

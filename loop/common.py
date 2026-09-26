@@ -486,6 +486,9 @@ def disposition(stage: str, code: str, detail, streak: int,
                 f"one did not supply {', '.join(missing)} in its detail.")
     cap = int(rule.get("max_consecutive", 3))
     if streak > cap:
+        upstream = _upstream_explains(stage, rule, detail, streak)
+        if upstream:
+            return ("self_resolving", upstream)
         return ("needs_human",
                 f"'{code}' has now stopped {stage} on {streak} consecutive runs "
                 f"(limit {cap}), so it is not resolving itself. "
@@ -499,6 +502,69 @@ def disposition(stage: str, code: str, detail, streak: int,
     return ("self_resolving",
             f"{rule.get('why', '')} (run {streak} of at most {cap} before this "
             f"escalates to a human.)")
+
+
+# AN IDLE LANE DOWNSTREAM OF AN IDLE LANE IS NOT A SECOND FAULT (2026-09-26).
+#
+# Run 36152459224 paged: LOCALIZATIONS_UP_TO_DATE on 9 consecutive days, over
+# its cap of 8, whose escalation reads "an eight-day streak means either
+# publishing has stopped or this lane can no longer SEE new videos". Neither
+# was a finding. The ledger had not grown since 2026-09-15 because the upload
+# lane had nothing to upload - and that lane had been saying so every day in
+# its own classified stops (NOTHING_SHELVED, which paged on its own cap on
+# 09-22, then SCRIPTS_AWAITING_PROMOTION). The localize lane's day counter was
+# a second clock on the upload lane's condition, keyed to a cadence it cannot
+# see (episodes are uploaded in batches ahead of their air dates, so a week
+# with no upload is normal while the runway lasts). Two components each
+# keeping their own count of one fact; the one that cannot see the reason
+# paged.
+#
+# A rule may therefore name its `upstream_stage`: the lane whose output is
+# this lane's only input. Past its cap such a stop stays green ONLY while
+# ALL of these hold, each read from committed state, never assumed:
+#   * the stop's detail carries `newest_input_at` - the newest input it could
+#     see (a stop that cannot say is escalated, as before);
+#   * that input is OLDER than this streak's first idle run: nothing new has
+#     arrived since the lane last had work. If something HAD arrived and the
+#     lane still found nothing to do, that is the blind-lane case the cap
+#     exists for, and it pages;
+#   * the upstream stage is itself mid-streak on a named stop right now, so
+#     its own classified stop, with its own cap, is what reports the idle.
+#     An upstream whose last run succeeded (no streak) yet delivered nothing
+#     here is unexplained, and pages;
+#   * the streak is inside `max_consecutive_upstream_idle`, an outer bound so
+#     that an upstream flipping between codes can never keep this quiet
+#     forever.
+def _upstream_explains(stage: str, rule: dict, detail, streak: int):
+    up = rule.get("upstream_stage")
+    if not up:
+        return None
+    outer = int(rule.get("max_consecutive_upstream_idle", 0))
+    if streak > outer:
+        return None
+    newest = detail.get("newest_input_at") if isinstance(detail, dict) else None
+    streaks = read_json(_streaks_path(), default={})
+    began = (streaks.get(stage) or {}).get("first_at")
+    up_rec = streaks.get(up) or {}
+    if not newest or not began or not up_rec.get("code"):
+        return None
+    try:
+        from datetime import datetime as _dt                # noqa: PLC0415
+        arrived_since = (_dt.fromisoformat(str(newest).replace("Z", "+00:00"))
+                         >= _dt.fromisoformat(str(began).replace("Z", "+00:00")))
+    except ValueError:
+        return None                     # an unreadable time explains nothing
+    if arrived_since:
+        return None
+    return (f"{stage} has had nothing to do on {streak} consecutive runs "
+            f"(past its own limit of {rule.get('max_consecutive')}), and "
+            f"that is explained upstream, not here: its newest input is "
+            f"from {newest}, before this idle streak began ({began}), and "
+            f"{up} is itself stopped on {up_rec['code']} "
+            f"({up_rec.get('count')} consecutive run(s) since "
+            f"{up_rec.get('first_at')}). That lane's own classified stop "
+            f"and cap report the idle. This stays green for at most "
+            f"{outer} consecutive runs.")
 
 
 def owner_action_record(rec: dict) -> None:

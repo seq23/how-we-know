@@ -145,8 +145,19 @@ def check() -> list[str]:
     saved = (score.subprocess.run, score.HOLDS_PATH, score.SCRIPTS_DIR,
              score.DECLINED_DIR, score.DECISION_LOG, score.RESEARCH_DIR,
              score.DRAFTS_DIR, batch_queue.queued_entries, domains.allocation,
-             pov_match.bank, pov_match.ASSIGNMENTS)
+             pov_match.bank, pov_match.ASSIGNMENTS, batch_queue.made_questions)
     score.subprocess.run = fake_run
+    # THE CHANNEL'S "ALREADY MADE" LIST IS A FIXTURE TOO. It used to be the
+    # real ledger plus every real scripts/*.md H1, which made case 5 depend on
+    # live state: on 2026-09-26 the real Saturday gate promoted
+    # how-do-scientists-know-how-old-something-is into scripts/, so the
+    # fixture's "no-key" hold (the same question) was declined as a repeat
+    # before it could ever be deferred, and case 7 found no hold left at all.
+    # Episode 01 is the one made question the fixture needs (case 0).
+    import topic_identity as TI
+    made = [("why deep sea creatures look so weird",
+             TI.question_key("why deep sea creatures look so weird"))]
+    batch_queue.made_questions = lambda exclude=frozenset(): list(made)
     score.HOLDS_PATH, score.SCRIPTS_DIR = holds_path, scripts_dir
     score.DECLINED_DIR, score.DECISION_LOG = declined_dir, log
     score.RESEARCH_DIR, score.DRAFTS_DIR = SCRATCH, drafts
@@ -296,7 +307,8 @@ def check() -> list[str]:
         (score.subprocess.run, score.HOLDS_PATH, score.SCRIPTS_DIR,
          score.DECLINED_DIR, score.DECISION_LOG, score.RESEARCH_DIR,
          score.DRAFTS_DIR, batch_queue.queued_entries, domains.allocation,
-         pov_match.bank, pov_match.ASSIGNMENTS) = saved
+         pov_match.bank, pov_match.ASSIGNMENTS,
+         batch_queue.made_questions) = saved
 
     if examined == 0:
         fails.append("examined ZERO cases")
