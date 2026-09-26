@@ -2069,9 +2069,9 @@ def v27_lanes_see_every_domain() -> Result:
     # tripped the breaker on it. Each refused slug must still be NAMED with a
     # reason; a row that is merely missing still fails.
     try:
-        import batch_queue as _bq_ref                      # noqa: PLC0415
+        import batch_queue as _bq_ref  # noqa: PLC0415 - every V27 probe imports lazily so one module that fails to import fails only its own probe
         refused_rows = _bq_ref.refused_entries()
-    except Exception as e:                                 # noqa: BLE001
+    except Exception as e:  # noqa: BLE001 - reported as a V27 failure below; one broken probe must never mask the other validators
         refused_rows = []
         r.fail(f"loop/batch_queue.py could not list its refused rows: {e}")
     refused = set()
