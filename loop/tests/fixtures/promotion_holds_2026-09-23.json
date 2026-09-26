@@ -1,0 +1,71 @@
+{
+  "_why": [
+    "Scripts that exist but are NOT in the publish queue, held on purpose until",
+    "the Saturday gate decides whether to promote them. Retired by this flag,",
+    "never by deletion: every script named here stays where it is.",
+    "",
+    "2026-09-23. The Monday lane authored four mined-demand topics on 2026-09-21",
+    "into loop/drafts/ and loop/render_queue.json. None is in any",
+    "research/publish_order*.json, none passed the demand gate, and the Mac's",
+    "nightly batch reads only the publish queue, so they could never air. The",
+    "owner decided (06:05 CDT): the Monday lane writes ONLY topics already in",
+    "the publish queue (loop/rank.py and loop/draft.py enforce it); these four",
+    "are not queued for the Mac and not deleted; the subject waits for her",
+    "promotion decision.",
+    "",
+    "WHO READS THIS. loop/batch_queue.py promotion_holds() is the only reader.",
+    "loop/cloud_upload.py uses it so an empty shelf with these scripts waiting",
+    "is the green, named SCRIPTS_AWAITING_PROMOTION stop (self-resolving), not",
+    "a daily AUTHORED_NOT_QUEUED page. loop/rank.py and loop/draft.py refuse to",
+    "select or queue a held slug.",
+    "",
+    "HOW A HOLD ENDS. 2026-09-25, owner instruction: a hold is not a decision",
+    "for her - 'why can't these be left somewhere for an automated process to",
+    "pick up and decide on?' So loop/score.py dispose_promotion_holds() runs",
+    "every Saturday, after the ranking refresh, and puts each held script's",
+    "own question through the same demand-and-competition gate every queued",
+    "topic passed (research/publish_order_domain.py --query). Passed, or the",
+    "slug is already a queued row that passed: PROMOTED - the script goes to",
+    "scripts/<slug>.md, a gated row is appended to its domain's",
+    "research/publish_order*.json, its POV line is recorded, and the row here",
+    "is removed. Killed: DECLINED - the script moves to loop/drafts/declined/,",
+    "the row here is removed. Both are appended to docs/DECISION-LOG.md. If the",
+    "gate cannot run (no YouTube key, quota) the row stays and its",
+    "gate_deferred count rises; four deferrals is the HOLD_GATE_FAILED stop.",
+    "This file is the one thing loop code edits here, and only that way."
+  ],
+  "holds": [
+    {
+      "slug": "how-do-scientists-know-so-much",
+      "script": "loop/drafts/how-do-scientists-know-so-much.md",
+      "subject": "method-evidence",
+      "held_since": "2026-09-23",
+      "authored": "2026-09-21 by the Monday lane (mined demand)",
+      "awaiting": "owner promotion decision for the method-evidence subject"
+    },
+    {
+      "slug": "how-do-scientists-know-how-old-something-is",
+      "script": "loop/drafts/how-do-scientists-know-how-old-something-is.md",
+      "subject": "method-evidence",
+      "held_since": "2026-09-23",
+      "authored": "2026-09-21 by the Monday lane (mined demand)",
+      "awaiting": "owner promotion decision for the method-evidence subject"
+    },
+    {
+      "slug": "how-do-scientists-know-about-other-galaxies",
+      "script": "loop/drafts/how-do-scientists-know-about-other-galaxies.md",
+      "subject": "method-evidence (backlog tagged it space)",
+      "held_since": "2026-09-23",
+      "authored": "2026-09-21 by the Monday lane (mined demand)",
+      "awaiting": "owner promotion decision for the method-evidence subject"
+    },
+    {
+      "slug": "why-deep-sea-creatures",
+      "script": "loop/drafts/why-deep-sea-creatures.md",
+      "subject": "method-evidence batch (backlog tagged it deep-sea-biology; not in the deep-sea publish queue and never passed the demand gate)",
+      "held_since": "2026-09-23",
+      "authored": "2026-09-21 by the Monday lane (mined demand)",
+      "awaiting": "owner promotion decision for the method-evidence subject"
+    }
+  ]
+}
