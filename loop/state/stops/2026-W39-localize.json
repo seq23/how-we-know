@@ -1,7 +1,7 @@
 {
   "stage": "localize",
   "week": "2026-W39",
-  "at": "2026-09-25T15:11:30+00:00",
+  "at": "2026-09-26T15:08:58+00:00",
   "code": "LOCALIZATIONS_UP_TO_DATE",
   "message": "all 34 live video(s) already carry 5 localizations and defaultLanguage=en. Nothing was translated and nothing was written \u2014 a re-run costs nothing, which is the design.",
   "detail": {
@@ -40,14 +40,15 @@
       "how-hot-does-a-welding-arc-get",
       "what-is-carbon-fiber-made-of",
       "what-is-concrete-made-of"
-    ]
+    ],
+    "newest_input_at": "2026-09-15T14:01:58+00:00"
   },
   "unblock": "Nothing to do. This stop means the lane is finished, not broken. It will do real work again when a new episode is uploaded or an English title changes.",
-  "disposition": "needs_human",
-  "disposition_why": "'LOCALIZATIONS_UP_TO_DATE' has now stopped localize on 9 consecutive runs (limit 8), so it is not resolving itself. Eight consecutive days with nothing to localize is longer than the publish cadence can explain. At 4/week a new episode goes public at least every ~3 days and each one needs localizing, so an eight-day streak means either publishing has stopped or - the dangerous case - this lane can no longer SEE new videos and is reporting 'up to date' about a list that stopped growing. Check that the live-video count in the run's own note is rising.",
-  "consecutive": 9,
+  "disposition": "self_resolving",
+  "disposition_why": "localize has had nothing to do on 10 consecutive runs (past its own limit of 8), and that is explained upstream, not here: its newest input is from 2026-09-15T14:01:58+00:00, before this idle streak began (2026-09-17T15:11:15+00:00), and cloud-upload is itself stopped on NOTHING_SHELVED (1 consecutive run(s) since 2026-09-26T14:11:31+00:00). That lane's own classified stop and cap report the idle. This stays green for at most 28 consecutive runs.",
+  "consecutive": 10,
   "held_items": [],
-  "exit_code": 3,
+  "exit_code": 0,
   "work_done_before_stop": [],
   "notes": [
     "34 live video(s); 0 need work; languages es, pt-BR, hi, id, de"
