@@ -46,7 +46,7 @@ SCRATCH = Path(tempfile.mkdtemp(prefix="idle-upstream-"))
 os.environ["LOOP_STOPS_DIR"] = str(SCRATCH / "stops")
 (SCRATCH / "stops").mkdir()
 sys.path.insert(0, str(LOOP))
-import common  # noqa: E402
+import common  # noqa: E402 - after sys.path insert and LOOP_STOPS_DIR, which common reads at call time
 
 CODE, STAGE, UP = "LOCALIZATIONS_UP_TO_DATE", "localize", "cloud-upload"
 # The committed state behind run 36152459224, verbatim.

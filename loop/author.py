@@ -593,8 +593,11 @@ def directive_parse_problems(text: str) -> list[str]:
     visuals = str(Path(__file__).resolve().parent.parent / "visuals")
     if visuals not in sys.path:
         sys.path.insert(0, visuals)
-    import planner                                          # noqa: PLC0415
-    import segments_ext2                                    # noqa: PLC0415
+    # Imported here, not at module top: visuals/ is only on sys.path after the
+    # insert above, and planner/segments_ext2 pull in PIL, which no other
+    # author.py caller needs.
+    import planner  # noqa: PLC0415 - visuals/ is on sys.path only from here
+    import segments_ext2  # noqa: PLC0415 - same; importing it installs the v2 parser
     out = []
     for line in narration_text(text).split("\n"):
         line = line.strip()
@@ -613,7 +616,7 @@ def directive_parse_problems(text: str) -> list[str]:
         seg, kw = got
         try:
             getattr(segments_ext2, seg)(0.7, **kw)
-        except Exception as e:                              # noqa: BLE001
+        except Exception as e:  # noqa: BLE001 - any renderer error is a draft defect to feed back, never a crash of the retry loop
             out.append(f"the directive {line[:90]!r} parses but does not "
                        f"render: {type(e).__name__}: {e}")
     return out

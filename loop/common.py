@@ -549,9 +549,9 @@ def _upstream_explains(stage: str, rule: dict, detail, streak: int):
     if not newest or not began or not up_rec.get("code"):
         return None
     try:
-        from datetime import datetime as _dt                # noqa: PLC0415
-        arrived_since = (_dt.fromisoformat(str(newest).replace("Z", "+00:00"))
-                         >= _dt.fromisoformat(str(began).replace("Z", "+00:00")))
+        arrived_since = (
+            _dt.datetime.fromisoformat(str(newest).replace("Z", "+00:00"))
+            >= _dt.datetime.fromisoformat(str(began).replace("Z", "+00:00")))
     except ValueError:
         return None                     # an unreadable time explains nothing
     if arrived_since:
