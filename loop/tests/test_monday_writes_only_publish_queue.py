@@ -63,18 +63,72 @@ HELD = ["how-do-scientists-know-so-much",
         "why-deep-sea-creatures",
         "how-do-scientists-know-about-other-galaxies"]
 
-# ---------------------------------------------------------------- 1. the gate
-queued = batch_queue.queued_slugs()
+# ------------------------------------------- 0. the frozen hold register
+#
+# A FROZEN FIXTURE, NOT loop/promotion_holds.json ITSELF - the same lesson
+# section 3 below already learned about next_topics.json. This file first
+# read the live register, which held exactly these four on the day it was
+# written. On 2026-09-26 the Saturday gate did its job (4eaed4e): it promoted
+# three into scripts/ and declined why-deep-sea-creatures into
+# loop/drafts/declined/, emptying the register, and every assertion here
+# that read "today's state" went false although nothing had regressed. The
+# register as it stood on 2026-09-23 (git show 4eaed4e^:loop/promotion_holds
+# .json), verbatim, is what every scenario below runs against - in-process
+# and in each sandboxed subprocess - so the incident it pins can never again
+# depend on what the real Saturday last decided.
+FROZEN_HOLDS = HERE / "fixtures" / "promotion_holds_2026-09-23.json"
+batch_queue.PROMOTION_HOLDS = FROZEN_HOLDS
 holds = batch_queue.promotion_holds()
+if sorted(holds) != sorted(HELD):
+    fails.append(f"the frozen 2026-09-23 register does not hold exactly the "
+                 f"four 2026-09-21 scripts: {sorted(holds)}")
+
+# What happened to the four since is a REAL invariant, checked on the real
+# repo: a hold retires by a DECISION, never by deletion, and the decision is
+# legible. loop/score.py dispose_promotion_holds() writes one of three
+# outcomes and this reads which one each script is in:
+#   promoted  scripts/<slug>.md exists (the draft in loop/drafts/ is left as
+#             the authored original - promotion writes, it does not move),
+#             the slug is out of the register, and the log says PROMOTED;
+#   declined  loop/drafts/declined/<slug>.md exists and loop/drafts/<slug>.md
+#             does NOT (declining MOVES), out of the register, log DECLINED;
+#   held      loop/drafts/<slug>.md exists and the real register holds it.
+real_holds = json.loads((ROOT / "loop" / "promotion_holds.json").read_text())
+real_held = {h["slug"] for h in real_holds.get("holds") or []}
+decision_log = (ROOT / "docs" / "DECISION-LOG.md").read_text(encoding="utf-8")
+for s in HELD:
+    examined += 1
+    draft_p = ROOT / "loop" / "drafts" / f"{s}.md"
+    promoted = (ROOT / "scripts" / f"{s}.md").exists()
+    declined = (ROOT / "loop" / "drafts" / "declined" / f"{s}.md").exists()
+    if promoted and declined:
+        fails.append(f"{s} is both promoted to scripts/ and declined")
+    elif promoted or declined:
+        verdict = "PROMOTED" if promoted else "DECLINED"
+        if s in real_held:
+            fails.append(f"{s} was {verdict.lower()} but is still in the real "
+                         f"loop/promotion_holds.json")
+        if f"**{verdict}** `{s}`" not in decision_log:
+            fails.append(f"{s} was {verdict.lower()} with no **{verdict}** "
+                         f"line in docs/DECISION-LOG.md")
+        if declined and draft_p.exists():
+            fails.append(f"{s} was declined but loop/drafts/{s}.md is still "
+                         f"there - declining moves the draft, never copies it")
+    elif not draft_p.exists():
+        fails.append(f"held script for {s} is gone from loop/drafts/, "
+                     f"scripts/ and loop/drafts/declined/ - holds retire by "
+                     f"decision, never by deletion")
+    elif s not in real_held:
+        fails.append(f"{s} is undecided in loop/drafts/ but the real register "
+                     f"no longer holds it - dropped from the register with no "
+                     f"decision")
+
+# ---------------------------------------------------------------- 1. the gate
+# The queue as it stood on 2026-09-23: the real queue minus the four, which
+# were in no publish order until the Saturday gate promoted three of them.
+queued = [s for s in batch_queue.queued_slugs() if s not in HELD]
 if not queued:
     fails.append("the real publish queue is empty - nothing to examine")
-if sorted(holds) != sorted(HELD):
-    fails.append(f"loop/promotion_holds.json does not hold exactly the four "
-                 f"2026-09-21 scripts: {sorted(holds)}")
-for s in HELD:
-    if not (ROOT / holds.get(s, {}).get("script", "missing")).exists():
-        fails.append(f"held script for {s} is gone - holds retire by flag, "
-                     f"never by deletion")
 mined = "how-do-scientists-know-what-a-mined-topic-is"
 allowed, refused = batch_queue.publish_queue_gate(queued + HELD + [mined])
 examined += len(queued) + len(HELD) + 1
@@ -98,6 +152,7 @@ from pathlib import Path
 sys.path.insert(0, {str(LOOP)!r})
 TMP = Path({str(tmp)!r})
 import cadence, batch_queue
+batch_queue.PROMOTION_HOLDS = Path({str(FROZEN_HOLDS)!r})
 cadence.runway = lambda per_week=None: {{
     "level": "ok", "weeks_remaining": 6.0, "short_domains": [],
     "by_domain": {{}}, "message": "fixture: 6.0 weeks of queue at 4/week"}}

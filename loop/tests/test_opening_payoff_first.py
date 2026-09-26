@@ -56,7 +56,7 @@ def script(cold: str) -> str:
             f"## Direct-answer lock\n\n{ANSWER} Researchers confirmed it by "
             f"culturing the bacteria.\n\n## Narration\n\n### Cold open\n\n"
             f"{{{{stat: 1 | lure | x | NOAA}}}}\n{cold}\n\n### Title card\n\n"
-            f"Why do anglerfish glow?\n\n## Human fingerprint gate\n\n- x\n")
+            f"Why do anglerfish glow?\n\n## Editorial gate\n\n- x\n")
 
 
 good = script(ANSWER + " " + FILLER)

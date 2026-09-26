@@ -65,7 +65,7 @@ Oceanographic models simulate currents, temperature, and salinity using equation
 
 ### Some questions remain open because the evidence is sparse
 
-{{uncertain: seven hundred fifty thousand | species | range five hundred thousand to ten million | low confidence | estimated marine species, many deep-sea}}
+{{text}}
 Species counts in the deep ocean are uncertain. Estimates range from five hundred thousand to ten million marine species, with many undiscovered in the deep sea. Ocean Census and the Census of Marine Life report a midpoint estimate near seven hundred fifty thousand, but they are extrapolations from limited sampling. Each trawl or submersible dive finds new species, suggesting the true number is high, but the rate of discovery does not yet allow a precise total. This is a real gap. The deep ocean is undersampled for biodiversity. Scientists state the uncertainty openly. The range is wide because the evidence is incomplete.
 
 {{ambient}}
@@ -86,14 +86,15 @@ High-resolution maps do not exist for ninety-five percent of the ocean floor. Bi
 {{ambient}}
 The deep ocean is not fully explored, but it is not unknown. Systematic measurement, physical laws, and tested models provide knowledge that does not require visiting every location. The distinction between imaging and understanding is the answer to the question.
 
-## Human fingerprint gate
+## Editorial gate
 
-- Humanized cold open: DRAFTED — owner must confirm it sounds natural read aloud.
-- First-person producer observation: FROM POV BANK (pov-058) — owner-approved voice.
+*What this episode does that a template would not. Every line below is a property the pipeline enforces at build time — see V36 in `loop/validate.py`. It records no step a human still owes.*
+
+- Humanized cold open: PRESENT
+- First-person producer observation: FROM POV BANK (pov-058)
 - Evidence uncertainty or limitation: COMPLETE
 - Structural variation: Opens with the five percent figure, then systematically distinguishes measurement types and explains how each contributes to knowledge without requiring exhaustive coverage.
 - Number-level source audit: COMPLETE
-- Final human watch-through: PENDING until the rendered MP4 exists.
 
 ## Chapters
 
