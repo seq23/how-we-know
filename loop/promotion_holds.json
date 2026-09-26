@@ -34,38 +34,5 @@
     "gate_deferred count rises; four deferrals is the HOLD_GATE_FAILED stop.",
     "This file is the one thing loop code edits here, and only that way."
   ],
-  "holds": [
-    {
-      "slug": "how-do-scientists-know-so-much",
-      "script": "loop/drafts/how-do-scientists-know-so-much.md",
-      "subject": "method-evidence",
-      "held_since": "2026-09-23",
-      "authored": "2026-09-21 by the Monday lane (mined demand)",
-      "awaiting": "owner promotion decision for the method-evidence subject"
-    },
-    {
-      "slug": "how-do-scientists-know-how-old-something-is",
-      "script": "loop/drafts/how-do-scientists-know-how-old-something-is.md",
-      "subject": "method-evidence",
-      "held_since": "2026-09-23",
-      "authored": "2026-09-21 by the Monday lane (mined demand)",
-      "awaiting": "owner promotion decision for the method-evidence subject"
-    },
-    {
-      "slug": "how-do-scientists-know-about-other-galaxies",
-      "script": "loop/drafts/how-do-scientists-know-about-other-galaxies.md",
-      "subject": "method-evidence (backlog tagged it space)",
-      "held_since": "2026-09-23",
-      "authored": "2026-09-21 by the Monday lane (mined demand)",
-      "awaiting": "owner promotion decision for the method-evidence subject"
-    },
-    {
-      "slug": "why-deep-sea-creatures",
-      "script": "loop/drafts/why-deep-sea-creatures.md",
-      "subject": "method-evidence batch (backlog tagged it deep-sea-biology; not in the deep-sea publish queue and never passed the demand gate)",
-      "held_since": "2026-09-23",
-      "authored": "2026-09-21 by the Monday lane (mined demand)",
-      "awaiting": "owner promotion decision for the method-evidence subject"
-    }
-  ]
+  "holds": []
 }

@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-09-25T16:55:17.864059+00:00",
+  "generated_utc": "2026-09-26T10:15:11.186704+00:00",
   "generator": "research/publish_order_domain.py --domain deep-sea-ocean-science",
   "domain": "deep-sea-ocean-science",
   "gate_source": "research/publish_order.py, imported unchanged",
@@ -13,9 +13,177 @@
   "refused_before_scoring": [
     {
       "query": "what lives in the deep ocean",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what creatures live in the deep sea"
+    },
+    {
+      "query": "what lives in the deep sea",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what creatures live in the deep sea"
+    },
+    {
+      "query": "why deep sea creatures",
+      "killed_by": "VAGUE",
+      "rule": "names no subject beyond the domain's own core words",
+      "matched": "?why sea"
+    },
+    {
+      "query": "how deep is the ocean",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what is the deepest part of the ocean"
+    },
+    {
+      "query": "how deep is the ocean evans",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep evan ocean"
+    },
+    {
+      "query": "why deep sea creatures look so weird",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "why deep sea creatures look so weird"
+    },
+    {
+      "query": "how deep is really the ocean",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what is the deepest part of the ocean"
+    },
+    {
+      "query": "how deep is the ocean nowak",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep nowak ocean"
+    },
+    {
+      "query": "how deep is the ocean tag",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep ocean tag"
+    },
+    {
+      "query": "why deep sea creatures grow so terrifying huge",
       "killed_by": "BROADER_ASK",
       "rule": "same question, narrower phrasing",
-      "matched": "how deep is the ocean"
+      "matched": "why are deep sea creatures so big"
+    },
+    {
+      "query": "why deep sea creatures are scary",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "why deep sea creatures are so scary"
+    },
+    {
+      "query": "why deep sea creatures are weird",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "why deep sea creatures look so weird"
+    },
+    {
+      "query": "why deep sea creatures coming to surface",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "why deep sea creatures are surfacing"
+    },
+    {
+      "query": "why do deep sea creatures",
+      "killed_by": "VAGUE",
+      "rule": "names no subject beyond the domain's own core words",
+      "matched": "?why sea"
+    },
+    {
+      "query": "why do deep sea creatures evolve into giants",
+      "killed_by": "NEAR_DUPLICATE",
+      "rule": "same question with qualifiers added",
+      "matched": "why are deep sea creatures so big"
+    },
+    {
+      "query": "how deep is the ocean actually go",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what is the deepest part of the ocean"
+    },
+    {
+      "query": "how deep is the ocean and animals",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what is the deepest part of the ocean"
+    },
+    {
+      "query": "how deep is the ocean and what lives there",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep liv ocean"
+    },
+    {
+      "query": "how deep is the ocean aretha franklin",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "aretha deep franklin ocean"
+    },
+    {
+      "query": "how deep is the ocean backing track",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "backing deep ocean track"
+    },
+    {
+      "query": "how deep is the ocean bill evans",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "bill deep evan ocean"
+    },
+    {
+      "query": "how deep is the ocean billie holiday",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "billi deep holiday ocean"
+    },
+    {
+      "query": "how deep is the ocean coleman hawkins",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "coleman deep hawkin ocean"
+    },
+    {
+      "query": "how deep is the ocean diana krall",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep diana krall ocean"
+    },
+    {
+      "query": "how deep is the ocean diana krall karaoke",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep diana karaok krall ocean"
+    },
+    {
+      "query": "how deep is the ocean doctor nos",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep doctor nos ocean"
+    },
+    {
+      "query": "how deep is the ocean ella fitzgerald",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep ella fitzgerald ocean"
+    },
+    {
+      "query": "how deep is the ocean ella fitzgerald karaoke",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep ella fitzgerald karaok ocean"
+    },
+    {
+      "query": "how deep is the ocean frank sinatra",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep frank ocean sinatra"
     },
     {
       "query": "how deep is the ocean full video",
@@ -24,10 +192,94 @@
       "matched": "video"
     },
     {
+      "query": "how deep is the ocean guitar lesson",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep guitar lesson ocean"
+    },
+    {
+      "query": "how deep is the ocean in gta 5",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep gta ocean"
+    },
+    {
+      "query": "how deep is the ocean irving berlin",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "berlin deep irving ocean"
+    },
+    {
+      "query": "how deep is the ocean jazz",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep jazz ocean"
+    },
+    {
+      "query": "how deep is the ocean jazz guitar",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep guitar jazz ocean"
+    },
+    {
+      "query": "how deep is the ocean jerry nowak",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep jerry nowak ocean"
+    },
+    {
+      "query": "how deep is the ocean karaoke",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep karaok ocean"
+    },
+    {
+      "query": "how deep is the ocean marvin gaye",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep gaye marvin ocean"
+    },
+    {
+      "query": "how deep is the ocean meters",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep meter ocean"
+    },
+    {
+      "query": "how deep is the ocean nat king cole",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "cole deep king nat ocean"
+    },
+    {
+      "query": "how deep is the ocean paul whiteman",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep ocean paul whiteman"
+    },
+    {
+      "query": "how deep is the ocean peggy lee",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep lee ocean peggy"
+    },
+    {
+      "query": "how deep is the ocean reaction",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep ocean reaction"
+    },
+    {
       "query": "how deep is the ocean real video",
       "killed_by": "QUALIFIER_NOISE",
       "rule": "autocomplete tail, not a topic",
       "matched": "video"
+    },
+    {
+      "query": "how deep is the ocean really is",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what is the deepest part of the ocean"
     },
     {
       "query": "what animals live in the dead sea",
@@ -36,10 +288,58 @@
       "matched": "dead sea"
     },
     {
+      "query": "why are deep sea creatures so weird",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "why deep sea creatures look so weird"
+    },
+    {
+      "query": "why deep sea creatures are coming out",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "why deep sea creatures are surfacing"
+    },
+    {
+      "query": "why deep sea creatures coming out",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "why deep sea creatures are surfacing"
+    },
+    {
+      "query": "why do deep sea creatures look so weird",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "why deep sea creatures look so weird"
+    },
+    {
       "query": "how big is the north sea",
       "killed_by": "QUALIFIER_NOISE",
       "rule": "autocomplete tail, not a topic",
       "matched": "north sea"
+    },
+    {
+      "query": "how deep is atlantic ocean where titanic sank",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "atlantic deep ocean sank titanic"
+    },
+    {
+      "query": "how deep is our ocean",
+      "killed_by": "VAGUE",
+      "rule": "names no subject beyond the domain's own core words",
+      "matched": "?how sea"
+    },
+    {
+      "query": "how deep is the bottom of the ocean",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "bottom deep ocean"
+    },
+    {
+      "query": "how deep is the deepest part of the ocean",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what is the deepest part of the ocean"
     },
     {
       "query": "how deep is the north sea",
@@ -48,16 +348,298 @@
       "matched": "north sea"
     },
     {
+      "query": "how deep is the ocean actually",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what is the deepest part of the ocean"
+    },
+    {
+      "query": "how deep is the ocean actually goes",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what is the deepest part of the ocean"
+    },
+    {
+      "query": "how deep is the ocean al cohn",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "cohn deep ocean"
+    },
+    {
+      "query": "how deep is the ocean allan holdsworth",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "allan deep holdsworth ocean"
+    },
+    {
+      "query": "how deep is the ocean animation",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what is the deepest part of the ocean"
+    },
+    {
+      "query": "how deep is the ocean backing track no bass",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "backing bas deep ocean track"
+    },
+    {
+      "query": "how deep is the ocean backing track no piano",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "backing deep ocean piano track"
+    },
+    {
+      "query": "how deep is the ocean barbara and jason",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "barbara deep jason ocean"
+    },
+    {
+      "query": "how deep is the ocean barbershop",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "barbershop deep ocean"
+    },
+    {
+      "query": "how deep is the ocean barbershop quartet",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "barbershop deep ocean quartet"
+    },
+    {
+      "query": "how deep is the ocean barbra streisand",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "barbra deep ocean streisand"
+    },
+    {
+      "query": "how deep is the ocean beach boys",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "beach boy deep ocean"
+    },
+    {
+      "query": "how deep is the ocean ben webster",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "ben deep ocean webster"
+    },
+    {
+      "query": "how deep is the ocean bing crosby",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "bing crosby deep ocean"
+    },
+    {
+      "query": "how deep is the ocean boogie belgique",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "belgiqu boogi deep ocean"
+    },
+    {
+      "query": "how deep is the ocean brenda lee",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "brenda deep lee ocean"
+    },
+    {
+      "query": "how deep is the ocean brian wilson",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "brian deep ocean wilson"
+    },
+    {
+      "query": "how deep is the ocean bright side",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "bright deep ocean side"
+    },
+    {
+      "query": "how deep is the ocean caseoh",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "caseoh deep ocean"
+    },
+    {
+      "query": "how deep is the ocean charlie parker",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "charli deep ocean parker"
+    },
+    {
+      "query": "how deep is the ocean chet baker",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "baker chet deep ocean"
+    },
+    {
+      "query": "how deep is the ocean chick corea",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "chick corea deep ocean"
+    },
+    {
+      "query": "how deep is the ocean choir",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "choir deep ocean"
+    },
+    {
+      "query": "how deep is the ocean coltrane",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "coltran deep ocean"
+    },
+    {
+      "query": "how deep is the ocean comparison",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "comparison deep ocean"
+    },
+    {
+      "query": "how deep is the ocean cover",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "cover deep ocean"
+    },
+    {
+      "query": "how deep is the ocean creatures",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what is the deepest part of the ocean"
+    },
+    {
+      "query": "how deep is the ocean dangmattsmith",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "dangmattsmith deep ocean"
+    },
+    {
       "query": "how deep is the ocean dhruv rathee",
       "killed_by": "QUALIFIER_NOISE",
       "rule": "autocomplete tail, not a topic",
       "matched": "dhruv rathee"
     },
     {
+      "query": "how deep is the ocean documentary",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what is the deepest part of the ocean"
+    },
+    {
       "query": "how deep is the ocean dr binocs",
       "killed_by": "QUALIFIER_NOISE",
       "rule": "autocomplete tail, not a topic",
       "matched": "dr binocs"
+    },
+    {
+      "query": "how deep is the ocean duke jordan",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep duke jordan ocean"
+    },
+    {
+      "query": "how deep is the ocean ella",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep ella ocean"
+    },
+    {
+      "query": "how deep is the ocean emmett",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep emmett ocean"
+    },
+    {
+      "query": "how deep is the ocean eric clapton",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "clapton deep eric ocean"
+    },
+    {
+      "query": "how deep is the ocean eric clapton live",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "clapton deep eric live ocean"
+    },
+    {
+      "query": "how deep is the ocean erroll garner",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep erroll garner ocean"
+    },
+    {
+      "query": "how deep is the ocean etta james",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep etta jam ocean"
+    },
+    {
+      "query": "how deep is the ocean fish",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep fish ocean"
+    },
+    {
+      "query": "how deep is the ocean floor",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep floor ocean"
+    },
+    {
+      "query": "how deep is the ocean foltyn",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep foltyn ocean"
+    },
+    {
+      "query": "how deep is the ocean frank sinatra karaoke",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep frank karaok ocean sinatra"
+    },
+    {
+      "query": "how deep is the ocean go",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what is the deepest part of the ocean"
+    },
+    {
+      "query": "how deep is the ocean goes",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what is the deepest part of the ocean"
+    },
+    {
+      "query": "how deep is the ocean guitar",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep guitar ocean"
+    },
+    {
+      "query": "how deep is the ocean guy lombardo",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep guy lombardo ocean"
+    },
+    {
+      "query": "how deep is the ocean hank mobley",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep hank mobley ocean"
+    },
+    {
+      "query": "how deep is the ocean harry connick",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "connick deep harry ocean"
+    },
+    {
+      "query": "how deep is the ocean helen forrest",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep forrest helen ocean"
     },
     {
       "query": "how deep is the ocean hindi",
@@ -72,16 +654,352 @@
       "matched": "hindi"
     },
     {
+      "query": "how deep is the ocean in real life",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep life ocean real"
+    },
+    {
+      "query": "how deep is the ocean in reality",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep ocean reality"
+    },
+    {
       "query": "how deep is the ocean in telugu",
       "killed_by": "QUALIFIER_NOISE",
       "rule": "autocomplete tail, not a topic",
       "matched": "telugu"
     },
     {
+      "query": "how deep is the ocean instrumental",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep instrumental ocean"
+    },
+    {
+      "query": "how deep is the ocean is",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what is the deepest part of the ocean"
+    },
+    {
+      "query": "how deep is the ocean jason gould",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep gould jason ocean"
+    },
+    {
+      "query": "how deep is the ocean jazz backing track",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "backing deep jazz ocean track"
+    },
+    {
+      "query": "how deep is the ocean jazz piano",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep jazz ocean piano"
+    },
+    {
+      "query": "how deep is the ocean jazz standard",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep jazz ocean standard"
+    },
+    {
+      "query": "how deep is the ocean jim hall",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep hall jim ocean"
+    },
+    {
+      "query": "how deep is the ocean john coltrane",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "coltran deep john ocean"
+    },
+    {
+      "query": "how deep is the ocean jonathan kreisberg",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep jonathan kreisberg ocean"
+    },
+    {
+      "query": "how deep is the ocean julie london",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep juli london ocean"
+    },
+    {
+      "query": "how deep is the ocean keepsake",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep keepsak ocean"
+    },
+    {
+      "query": "how deep is the ocean keith jarrett",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep jarrett keith ocean"
+    },
+    {
+      "query": "how deep is the ocean kenny barron",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "barron deep kenny ocean"
+    },
+    {
+      "query": "how deep is the ocean kurt rosenwinkel",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep kurt ocean rosenwinkel"
+    },
+    {
+      "query": "how deep is the ocean kurt rosenwinkel transcription",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep kurt ocean rosenwinkel transcription"
+    },
+    {
       "query": "how deep is the ocean kurzgesagt",
       "killed_by": "QUALIFIER_NOISE",
       "rule": "autocomplete tail, not a topic",
       "matched": "kurzgesagt"
+    },
+    {
+      "query": "how deep is the ocean lage lund",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep lage lund ocean"
+    },
+    {
+      "query": "how deep is the ocean lee konitz",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep konitz lee ocean"
+    },
+    {
+      "query": "how deep is the ocean live",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep live ocean"
+    },
+    {
+      "query": "how deep is the ocean look like",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what is the deepest part of the ocean"
+    },
+    {
+      "query": "how deep is the ocean luke davidson",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "davidson deep luke ocean"
+    },
+    {
+      "query": "how deep is the ocean mariana trench",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what is the deepest part of the ocean"
+    },
+    {
+      "query": "how deep is the ocean melody",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep melody ocean"
+    },
+    {
+      "query": "how deep is the ocean messyourself",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep messyourself ocean"
+    },
+    {
+      "query": "how deep is the ocean miles davis",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "davi deep mil ocean"
+    },
+    {
+      "query": "how deep is the ocean monument mythos",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep monument mytho ocean"
+    },
+    {
+      "query": "how deep is the ocean mr sunny bass",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "bas deep ocean sunny"
+    },
+    {
+      "query": "how deep is the ocean music",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep music ocean"
+    },
+    {
+      "query": "how deep is the ocean norah jones",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep jon norah ocean"
+    },
+    {
+      "query": "how deep is the ocean original",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep ocean original"
+    },
+    {
+      "query": "how deep is the ocean oscar peterson",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep ocean oscar peterson"
+    },
+    {
+      "query": "how deep is the ocean paul motian",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep motian ocean paul"
+    },
+    {
+      "query": "how deep is the ocean peekaboo kidz",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep kidz ocean peekaboo"
+    },
+    {
+      "query": "how deep is the ocean peter bernstein",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "bernstein deep ocean peter"
+    },
+    {
+      "query": "how deep is the ocean piano",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep ocean piano"
+    },
+    {
+      "query": "how deep is the ocean piano solo",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep ocean piano solo"
+    },
+    {
+      "query": "how deep is the ocean piano tutorial",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep ocean piano tutorial"
+    },
+    {
+      "query": "how deep is the ocean play along",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "along deep ocean play"
+    },
+    {
+      "query": "how deep is the ocean quartet",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep ocean quartet"
+    },
+    {
+      "query": "how deep is the ocean ray charles",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "charl deep ocean ray"
+    },
+    {
+      "query": "how deep is the ocean reaction mashup",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep mashup ocean reaction"
+    },
+    {
+      "query": "how deep is the ocean reaction time",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep ocean reaction time"
+    },
+    {
+      "query": "how deep is the ocean reaction vtuber",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep ocean reaction vtuber"
+    },
+    {
+      "query": "how deep is the ocean real life lore",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep life lore ocean real"
+    },
+    {
+      "query": "how deep is the ocean really go",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what is the deepest part of the ocean"
+    },
+    {
+      "query": "how deep is the ocean reprise",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep ocean repris"
+    },
+    {
+      "query": "how deep is the ocean rosana eckert",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep eckert ocean rosana"
+    },
+    {
+      "query": "how deep is the ocean saxophone",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep ocean saxophon"
+    },
+    {
+      "query": "how deep is the ocean scale",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep ocean scal"
+    },
+    {
+      "query": "how deep is the ocean scary creatures",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "creatur deep ocean scary"
+    },
+    {
+      "query": "how deep is the ocean sea creatures",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "creatur deep ocean sea"
+    },
+    {
+      "query": "how deep is the ocean shorts",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what is the deepest part of the ocean"
+    },
+    {
+      "query": "how deep is the ocean sidemen",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep ocean sidemen"
+    },
+    {
+      "query": "how deep is the ocean sinatra",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep ocean sinatra"
+    },
+    {
+      "query": "how deep is the ocean steve davis",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "davi deep ocean stev"
     },
     {
       "query": "how deep is the ocean tamil",
@@ -96,10 +1014,100 @@
       "matched": "telugu"
     },
     {
+      "query": "how deep is the ocean tenor conclave",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "conclav deep ocean tenor"
+    },
+    {
+      "query": "how deep is the ocean tenor sax",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep ocean sax tenor"
+    },
+    {
+      "query": "how deep is the ocean titanic sank in",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep ocean sank titanic"
+    },
+    {
+      "query": "how deep is the ocean transcription",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep ocean transcription"
+    },
+    {
+      "query": "how deep is the ocean trio",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep ocean trio"
+    },
+    {
+      "query": "how deep is the ocean trumpet",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep ocean trumpet"
+    },
+    {
       "query": "how deep is the ocean video",
       "killed_by": "QUALIFIER_NOISE",
       "rule": "autocomplete tail, not a topic",
       "matched": "video"
+    },
+    {
+      "query": "how deep is the ocean violin",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep ocean violin"
+    },
+    {
+      "query": "how deep is the ocean visual",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep ocean visual"
+    },
+    {
+      "query": "how deep is the ocean vocal",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep ocean vocal"
+    },
+    {
+      "query": "how deep is the ocean vocal jazz",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep jazz ocean vocal"
+    },
+    {
+      "query": "how deep is the ocean white christmas",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "christma deep ocean whit"
+    },
+    {
+      "query": "how deep is the ocean with animals",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what is the deepest part of the ocean"
+    },
+    {
+      "query": "how deep is the ocean zack d films",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep film ocean zack"
+    },
+    {
+      "query": "how deep is the ocean zemtv",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep ocean zemtv"
+    },
+    {
+      "query": "how deep is the pacific ocean",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep ocean pacific"
     },
     {
       "query": "how deep is the red sea where moses crossed",
@@ -120,10 +1128,40 @@
       "matched": "gold city"
     },
     {
+      "query": "how deep is your ocean",
+      "killed_by": "VAGUE",
+      "rule": "names no subject beyond the domain's own core words",
+      "matched": "?how sea"
+    },
+    {
+      "query": "how deep of the ocean",
+      "killed_by": "VAGUE",
+      "rule": "names no subject beyond the domain's own core words",
+      "matched": "?how sea"
+    },
+    {
+      "query": "how deep the ocean was",
+      "killed_by": "VAGUE",
+      "rule": "names no subject beyond the domain's own core words",
+      "matched": "?how sea"
+    },
+    {
       "query": "how to draw a anglerfish",
       "killed_by": "QUALIFIER_NOISE",
       "rule": "autocomplete tail, not a topic",
       "matched": "how to draw"
+    },
+    {
+      "query": "what animals are in the deep ocean",
+      "killed_by": "VAGUE",
+      "rule": "names no subject beyond the domain's own core words",
+      "matched": "?what sea"
+    },
+    {
+      "query": "what could live in the deep ocean",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what creatures live in the deep sea"
     },
     {
       "query": "what lives in the dead sea",
@@ -132,10 +1170,16 @@
       "matched": "dead sea"
     },
     {
-      "query": "what lives in the deep sea",
-      "killed_by": "BROADER_ASK",
-      "rule": "same question, narrower phrasing",
-      "matched": "what lives in the sea"
+      "query": "what lives in the depths of the ocean",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what creatures live in the deep sea"
+    },
+    {
+      "query": "what lives in the sea",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what creatures live in the deep sea"
     },
     {
       "query": "what's in the deep blue sea",
@@ -145,45 +1189,63 @@
     },
     {
       "query": "what's in the deep sea",
-      "killed_by": "GENERIC_MATCH_ONLY",
-      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
-      "matched": "deep sea"
+      "killed_by": "VAGUE",
+      "rule": "names no subject beyond the domain's own core words",
+      "matched": "?what sea"
     },
     {
       "query": "why are deep sea fish coming to surface",
-      "killed_by": "GENERIC_MATCH_ONLY",
-      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
-      "matched": "deep sea"
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "same question with qualifiers added",
+      "matched": "why deep sea creatures are surfacing"
     },
     {
-      "query": "why deep sea fish die when brought to surface",
-      "killed_by": "GENERIC_MATCH_ONLY",
-      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
-      "matched": "deep sea"
+      "query": "why are deep-sea creatures rising to the surface",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "why deep sea creatures are surfacing"
+    },
+    {
+      "query": "why deep ocean creatures are coming out",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "why deep sea creatures are surfacing"
+    },
+    {
+      "query": "why deep sea creatures get creepier",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "why deep sea creatures get creepier the deeper you go"
     },
     {
       "query": "how do scientists know so much",
-      "killed_by": "OFF_DOMAIN",
-      "rule": "shares no vocabulary with the domain seeds",
-      "matched": "know much scientist"
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "same question with qualifiers added",
+      "matched": "how do scientists know about other galaxies"
+    },
+    {
+      "query": "what lives in the deep",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what creatures live in the deep sea"
     },
     {
       "query": "why deep sea",
-      "killed_by": "GENERIC_MATCH_ONLY",
-      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
-      "matched": "deep sea"
+      "killed_by": "VAGUE",
+      "rule": "names no subject beyond the domain's own core words",
+      "matched": "?why sea"
     },
     {
       "query": "how do scientists know how old something is",
-      "killed_by": "OFF_DOMAIN",
-      "rule": "shares no vocabulary with the domain seeds",
-      "matched": "know old scientist something"
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "how do scientists know how old something is"
     },
     {
       "query": "how do scientists know about other galaxies",
-      "killed_by": "OFF_DOMAIN",
-      "rule": "shares no vocabulary with the domain seeds",
-      "matched": "about galaxi know other scientist"
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "how do scientists know about other galaxies"
     },
     {
       "query": "how do scientists know about other planets",
@@ -232,6 +1294,12 @@
       "killed_by": "OFF_DOMAIN",
       "rule": "shares no vocabulary with the domain seeds",
       "matched": "scientist think"
+    },
+    {
+      "query": "what lives in the deepest part of the ocean",
+      "killed_by": "NEAR_DUPLICATE",
+      "rule": "identical question key",
+      "matched": "what lives in mariana trench"
     },
     {
       "query": "how do scientists know the age of fossils",
@@ -307,15 +1375,15 @@
     },
     {
       "query": "what is deep sea fragment in fisch",
-      "killed_by": "GENERIC_MATCH_ONLY",
-      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
-      "matched": "deep sea"
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "fisch"
     },
     {
       "query": "what is whale fall",
-      "killed_by": "OFF_DOMAIN",
-      "rule": "shares no vocabulary with the domain seeds",
-      "matched": "fall whal"
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "same question with qualifiers added",
+      "matched": "what happens when a whale dies in the deep ocean"
     },
     {
       "query": "how deep is your love dru hill",
@@ -343,9 +1411,9 @@
     },
     {
       "query": "how do scientists know how old things are",
-      "killed_by": "OFF_DOMAIN",
-      "rule": "shares no vocabulary with the domain seeds",
-      "matched": "know old scientist thing"
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "same question with qualifiers added",
+      "matched": "how do scientists know how old something is"
     },
     {
       "query": "how do scientists learn about wild animals",
@@ -364,6 +1432,24 @@
       "killed_by": "GENERIC_MATCH_ONLY",
       "rule": "its only domain word is one that matches a quarter of everything the miner returned",
       "matched": "deep sea"
+    },
+    {
+      "query": "what is the deepest part of the ocean called",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what is the deepest part of the ocean"
+    },
+    {
+      "query": "what lies in the deepest part of the ocean",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what is the deepest part of the ocean"
+    },
+    {
+      "query": "what the deepest part of the ocean looks like",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what is the deepest part of the ocean"
     },
     {
       "query": "why dead sea floating",
@@ -385,9 +1471,9 @@
     },
     {
       "query": "why the deep sea frightens us",
-      "killed_by": "GENERIC_MATCH_ONLY",
-      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
-      "matched": "deep sea"
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "why deep sea creatures are so scary"
     },
     {
       "query": "how big nails",
@@ -442,6 +1528,12 @@
       "killed_by": "GENERIC_MATCH_ONLY",
       "rule": "its only domain word is one that matches a quarter of everything the miner returned",
       "matched": "deep"
+    },
+    {
+      "query": "how deep are the oceans",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what is the deepest part of the ocean"
     },
     {
       "query": "how deep are your dreams cloonee",
@@ -529,9 +1621,9 @@
     },
     {
       "query": "how deep can i go",
-      "killed_by": "GENERIC_MATCH_ONLY",
-      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
-      "matched": "deep"
+      "killed_by": "VAGUE",
+      "rule": "names no subject beyond the domain's own core words",
+      "matched": "?how sea"
     },
     {
       "query": "how deep can sperm whales dive",
@@ -540,28 +1632,34 @@
       "matched": "deep"
     },
     {
+      "query": "how deep can the ocean go",
+      "killed_by": "VAGUE",
+      "rule": "names no subject beyond the domain's own core words",
+      "matched": "?how sea"
+    },
+    {
       "query": "how deep can we dig",
       "killed_by": "GENERIC_MATCH_ONLY",
       "rule": "its only domain word is one that matches a quarter of everything the miner returned",
       "matched": "deep"
     },
     {
-      "query": "how deep can whales dive",
-      "killed_by": "GENERIC_MATCH_ONLY",
-      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
-      "matched": "deep"
-    },
-    {
       "query": "how deep can you go",
-      "killed_by": "GENERIC_MATCH_ONLY",
-      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
-      "matched": "deep"
+      "killed_by": "VAGUE",
+      "rule": "names no subject beyond the domain's own core words",
+      "matched": "?how sea"
     },
     {
       "query": "how deep can you go in subnautica",
       "killed_by": "GENERIC_MATCH_ONLY",
       "rule": "its only domain word is one that matches a quarter of everything the miner returned",
       "matched": "deep"
+    },
+    {
+      "query": "how deep can you go in the ocean",
+      "killed_by": "VAGUE",
+      "rule": "names no subject beyond the domain's own core words",
+      "matched": "?how sea"
     },
     {
       "query": "how deep did the titanic sink",
@@ -586,6 +1684,24 @@
       "killed_by": "GENERIC_MATCH_ONLY",
       "rule": "its only domain word is one that matches a quarter of everything the miner returned",
       "matched": "deep"
+    },
+    {
+      "query": "how deep does the ocean actually go",
+      "killed_by": "VAGUE",
+      "rule": "names no subject beyond the domain's own core words",
+      "matched": "?how sea"
+    },
+    {
+      "query": "how deep does the ocean go",
+      "killed_by": "VAGUE",
+      "rule": "names no subject beyond the domain's own core words",
+      "matched": "?how sea"
+    },
+    {
+      "query": "how deep does the ocean really go",
+      "killed_by": "VAGUE",
+      "rule": "names no subject beyond the domain's own core words",
+      "matched": "?how sea"
     },
     {
       "query": "how deep does the void go in minecraft",
@@ -750,6 +1866,12 @@
       "matched": "deep"
     },
     {
+      "query": "how deep goes the ocean",
+      "killed_by": "VAGUE",
+      "rule": "names no subject beyond the domain's own core words",
+      "matched": "?how sea"
+    },
+    {
       "query": "how deep golf 4",
       "killed_by": "GENERIC_MATCH_ONLY",
       "rule": "its only domain word is one that matches a quarter of everything the miner returned",
@@ -772,6 +1894,12 @@
       "killed_by": "GENERIC_MATCH_ONLY",
       "rule": "its only domain word is one that matches a quarter of everything the miner returned",
       "matched": "deep"
+    },
+    {
+      "query": "how deep have we gone in the ocean",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep gone ocean"
     },
     {
       "query": "how deep how deep is your love",
@@ -979,9 +2107,9 @@
     },
     {
       "query": "how deep live",
-      "killed_by": "GENERIC_MATCH_ONLY",
-      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
-      "matched": "deep"
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "same content words, different interrogative",
+      "matched": "what creatures live in the deep sea"
     },
     {
       "query": "how deep love",
@@ -1012,6 +2140,12 @@
       "killed_by": "GENERIC_MATCH_ONLY",
       "rule": "its only domain word is one that matches a quarter of everything the miner returned",
       "matched": "deep"
+    },
+    {
+      "query": "how deep mariana trench",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what is the deepest part of the ocean"
     },
     {
       "query": "how deep metal detector can detect",
@@ -1086,6 +2220,18 @@
       "matched": "north sea"
     },
     {
+      "query": "how deep ocean",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what is the deepest part of the ocean"
+    },
+    {
+      "query": "how deep ocean really is",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what is the deepest part of the ocean"
+    },
+    {
       "query": "how deep of a hole for fence post",
       "killed_by": "GENERIC_MATCH_ONLY",
       "rule": "its only domain word is one that matches a quarter of everything the miner returned",
@@ -1122,6 +2268,12 @@
       "matched": "deep"
     },
     {
+      "query": "how deep pacific ocean",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep ocean pacific"
+    },
+    {
       "query": "how deep packet inspection works",
       "killed_by": "GENERIC_MATCH_ONLY",
       "rule": "its only domain word is one that matches a quarter of everything the miner returned",
@@ -1129,9 +2281,9 @@
     },
     {
       "query": "how deep performed live",
-      "killed_by": "GENERIC_MATCH_ONLY",
-      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
-      "matched": "deep"
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep live performed"
     },
     {
       "query": "how deep piano",
@@ -1194,6 +2346,12 @@
       "matched": "deep"
     },
     {
+      "query": "how deep really is the ocean",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what is the deepest part of the ocean"
+    },
+    {
       "query": "how deep reinforcement learning works",
       "killed_by": "GENERIC_MATCH_ONLY",
       "rule": "its only domain word is one that matches a quarter of everything the miner returned",
@@ -1237,9 +2395,9 @@
     },
     {
       "query": "how deep sea pressure works",
-      "killed_by": "GENERIC_MATCH_ONLY",
-      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
-      "matched": "deep sea"
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "same question with qualifiers added",
+      "matched": "how deep sea creatures survive the pressure"
     },
     {
       "query": "how deep should a french drain be",
@@ -1344,6 +2502,12 @@
       "matched": "deep"
     },
     {
+      "query": "how deep the ocean is",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what is the deepest part of the ocean"
+    },
+    {
       "query": "how deep ugtei",
       "killed_by": "GENERIC_MATCH_ONLY",
       "rule": "its only domain word is one that matches a quarter of everything the miner returned",
@@ -1402,6 +2566,12 @@
       "killed_by": "GENERIC_MATCH_ONLY",
       "rule": "its only domain word is one that matches a quarter of everything the miner returned",
       "matched": "deep"
+    },
+    {
+      "query": "how deep was the ocean",
+      "killed_by": "VAGUE",
+      "rule": "names no subject beyond the domain's own core words",
+      "matched": "?how sea"
     },
     {
       "query": "how deep was the titanic",
@@ -1555,27 +2725,21 @@
     },
     {
       "query": "how to do challenger deep quest",
-      "killed_by": "GENERIC_MATCH_ONLY",
-      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
-      "matched": "deep"
-    },
-    {
-      "query": "how to draw a anglerfish",
       "killed_by": "QUALIFIER_NOISE",
       "rule": "autocomplete tail, not a topic",
-      "matched": "how to draw"
+      "matched": "quest"
     },
     {
       "query": "how to find scientist dayz",
-      "killed_by": "OFF_DOMAIN",
-      "rule": "shares no vocabulary with the domain seeds",
-      "matched": "dayz find scientist"
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "dayz"
     },
     {
       "query": "how to get challenger deep rod",
-      "killed_by": "GENERIC_MATCH_ONLY",
-      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
-      "matched": "deep"
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "rod"
     },
     {
       "query": "how to get deep quality sleep",
@@ -1585,15 +2749,15 @@
     },
     {
       "query": "what does the challenger deep look like",
-      "killed_by": "GENERIC_MATCH_ONLY",
-      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
-      "matched": "deep"
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what is the deepest part of the ocean"
     },
     {
       "query": "what does the midnight zone look like",
-      "killed_by": "OFF_DOMAIN",
-      "rule": "shares no vocabulary with the domain seeds",
-      "matched": "like look midnight zone"
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what is the midnight zone"
     },
     {
       "query": "what is dead sea in hindi",
@@ -1621,9 +2785,9 @@
     },
     {
       "query": "what is deep in sea",
-      "killed_by": "GENERIC_MATCH_ONLY",
-      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
-      "matched": "deep sea"
+      "killed_by": "VAGUE",
+      "rule": "names no subject beyond the domain's own core words",
+      "matched": "?what sea"
     },
     {
       "query": "what is deep sea diving",
@@ -1644,28 +2808,34 @@
       "matched": "deep sea"
     },
     {
-      "query": "what is hydrothermal vents",
-      "killed_by": "OFF_DOMAIN",
-      "rule": "shares no vocabulary with the domain seeds",
-      "matched": "hydrothermal vent"
-    },
-    {
       "query": "what is the deepest sea in the world",
-      "killed_by": "GENERIC_MATCH_ONLY",
-      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
-      "matched": "sea"
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what is the deepest part of the ocean"
     },
     {
-      "query": "why are deep sea fish coming to surface",
-      "killed_by": "GENERIC_MATCH_ONLY",
-      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
-      "matched": "deep sea"
+      "query": "what lives in the challenger deep",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "challenger deep liv"
     },
     {
-      "query": "why deep sea fish die when brought to surface",
-      "killed_by": "GENERIC_MATCH_ONLY",
-      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
-      "matched": "deep sea"
+      "query": "what's at the deepest part of the ocean",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what is the deepest part of the ocean"
+    },
+    {
+      "query": "what's the deepest part of the ocean",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what is the deepest part of the ocean"
+    },
+    {
+      "query": "why deep sea creature",
+      "killed_by": "VAGUE",
+      "rule": "names no subject beyond the domain's own core words",
+      "matched": "?why sea"
     },
     {
       "query": "why deep sea is explored",
@@ -1693,9 +2863,177 @@
     },
     {
       "query": "why the deep sea is scary",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "why deep sea creatures are so scary"
+    },
+    {
+      "query": "what animals live in the mariana trench",
+      "killed_by": "NEAR_DUPLICATE",
+      "rule": "identical question key",
+      "matched": "what lives in mariana trench"
+    },
+    {
+      "query": "how deep is the ocean song",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "song"
+    },
+    {
+      "query": "how deep in love",
       "killed_by": "GENERIC_MATCH_ONLY",
       "rule": "its only domain word is one that matches a quarter of everything the miner returned",
-      "matched": "deep sea"
+      "matched": "deep"
+    },
+    {
+      "query": "how deep in the ocean",
+      "killed_by": "VAGUE",
+      "rule": "names no subject beyond the domain's own core words",
+      "matched": "?how sea"
+    },
+    {
+      "query": "how deep in your love",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how deep in your love bee gees",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how deep in your love karaoke",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how deep in your love lyrics",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how deep in your love remix",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how deep is the ocean beckbrojack",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "beckbrojack deep ocean"
+    },
+    {
+      "query": "how deep is the ocean diana krall lyrics",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep diana krall lyric ocean"
+    },
+    {
+      "query": "how deep is the ocean eric clapton lyrics",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "clapton deep eric lyric ocean"
+    },
+    {
+      "query": "how deep is the ocean frank sinatra lyrics",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep frank lyric ocean sinatra"
+    },
+    {
+      "query": "how deep is the ocean in minecraft",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "minecraft"
+    },
+    {
+      "query": "how deep is the ocean in subnautica",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep ocean subnautica"
+    },
+    {
+      "query": "how deep is the ocean lyrics",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep lyric ocean"
+    },
+    {
+      "query": "how deep is the ocean movie",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "movie"
+    },
+    {
+      "query": "how deep is the ocean song barbra streisand",
+      "killed_by": "QUALIFIER_NOISE",
+      "rule": "autocomplete tail, not a topic",
+      "matched": "song"
+    },
+    {
+      "query": "how deep is the ocean trailer",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep ocean trailer"
+    },
+    {
+      "query": "how deep is the ocean with lyrics",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep lyric ocean"
+    },
+    {
+      "query": "how deep is your love like the ocean",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep like love ocean"
+    },
+    {
+      "query": "how deep is your love like the ocean lyrics",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep like love lyric ocean"
+    },
+    {
+      "query": "how deep is your love like the ocean remix",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "a made question plus an autocomplete tail",
+      "matched": "deep like love ocean remix"
+    },
+    {
+      "query": "how deep the father's love for us austin stone",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how deep the father's love for us stuart townend",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "how deep the ocean really is",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what is the deepest part of the ocean"
+    },
+    {
+      "query": "how deep your love bee gees",
+      "killed_by": "GENERIC_MATCH_ONLY",
+      "rule": "its only domain word is one that matches a quarter of everything the miner returned",
+      "matched": "deep"
+    },
+    {
+      "query": "what's in mariana trench",
+      "killed_by": "NEAR_DUPLICATE_OF_MADE",
+      "rule": "identical question key",
+      "matched": "what is the deepest part of the ocean"
     }
   ],
   "queue": [
@@ -1845,78 +3183,6 @@
       "reason": "CONTESTED DESPITE THE GAP: 100% lexical title gap, but median 9,950,079 views and 1,520,000 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated."
     },
     {
-      "slug": "what-lives-in-the-deep",
-      "domain": "deep-sea-ocean-science",
-      "title": "What lives in the deep?",
-      "query": "what lives in the deep",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.674 clears the 0.16 floor and title gap 0.95 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.6742,
-        "autocomplete_completions": 4,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 3,
-        "key_term": "liv",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 7,
-        "sample_completions": [
-          "what lives in the deepest part of the ocean",
-          "what lives in the deep",
-          "what lives in the deep ocean",
-          "what lives in the deep sea"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-25T16:55:11.801385+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.643,
-        "title_gap": 0.95,
-        "title_coverage_mean": 0.4,
-        "strong_match_count": 1,
-        "results_examined": 20,
-        "median_views": 5094150.5,
-        "p90_views": 16970836,
-        "median_subscribers": 629000.0,
-        "channels_under_100k_subs": 0,
-        "median_age_days": 553,
-        "published_last_365d": 3,
-        "interpretation": "1 of 20 ranking titles squarely answer the query",
-        "components": {
-          "title_gap": 0.95,
-          "incumbent_subs": 0.172,
-          "view_ceiling": 0.042,
-          "staleness": 0.85
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-09-18T23:43:51.766871+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.6584,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "CONTESTED DESPITE THE GAP: 95% lexical title gap, but median 5,094,150 views and 629,000 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated."
-    },
-    {
       "slug": "what-lives-in-the-sea",
       "domain": "deep-sea-ocean-science",
       "title": "What lives in the sea?",
@@ -1987,124 +3253,49 @@
       "reason": "CONTESTED DESPITE THE GAP: 100% lexical title gap, but median 3,305,242 views and 1,435,000 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated."
     },
     {
-      "slug": "what-the-deepest-part-of-the-ocean-looks-like",
+      "slug": "how-do-scientists-know-so-much",
       "domain": "deep-sea-ocean-science",
-      "title": "What the deepest part of the ocean looks like?",
-      "query": "what the deepest part of the ocean looks like",
+      "title": "How do scientists know so much about the deep ocean when we've explored so little of it?",
+      "query": "how do scientists know so much about the deep ocean when we've explored so little of it",
       "gate": {
         "verdict": "passed",
         "failed": [],
-        "reason": "demand 0.629 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling."
+        "reason": "demand 0.531 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling."
       },
       "demand": {
-        "demand_index": 0.6295,
-        "autocomplete_completions": 1,
-        "exact_in_autocomplete": true,
+        "demand_index": 0.5311,
+        "autocomplete_completions": 0,
+        "exact_in_autocomplete": false,
         "corpus_breadth": 0,
-        "key_term": "part",
+        "key_term": "explored",
         "key_term_completions": 10,
-        "key_term_corpus_breadth": 1,
-        "sample_completions": [
-          "what the deepest part of the ocean looks like"
-        ],
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [],
         "caveat": "autocomplete presence, NOT search volume",
         "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-25T16:55:15.843250+00:00"
+          "fetched_utc": "2026-09-26T10:09:08.023229+00:00"
         }
       },
       "competition": {
-        "opportunity_score": 0.666,
+        "opportunity_score": 0.665,
         "title_gap": 1.0,
-        "title_coverage_mean": 0.23,
+        "title_coverage_mean": 0.128,
         "strong_match_count": 0,
         "results_examined": 20,
-        "median_views": 9812787.0,
-        "p90_views": 47472916,
-        "median_subscribers": 1520000.0,
-        "channels_under_100k_subs": 2,
-        "median_age_days": 1114,
-        "published_last_365d": 1,
+        "median_views": 6164617.5,
+        "p90_views": 47491727,
+        "median_subscribers": 723000.0,
+        "channels_under_100k_subs": 3,
+        "median_age_days": 841,
+        "published_last_365d": 3,
         "interpretation": "nobody has made the definitive video on this query",
         "components": {
           "title_gap": 1.0,
-          "incumbent_subs": 0.117,
-          "view_ceiling": 0.001,
-          "staleness": 0.95
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-09-18T23:43:56.354518+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.6475,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "CONTESTED DESPITE THE GAP: 100% lexical title gap, but median 9,812,787 views and 1,520,000 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated."
-    },
-    {
-      "slug": "how-deep-is-the-ocean",
-      "domain": "deep-sea-ocean-science",
-      "title": "How deep is the ocean?",
-      "query": "how deep is the ocean",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.998 clears the 0.16 floor and title gap 0.50 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.9976,
-        "autocomplete_completions": 10,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 203,
-        "key_term": "ocean",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 253,
-        "sample_completions": [
-          "how deep is the ocean",
-          "how deep is the ocean really is",
-          "how deep is the ocean song",
-          "how deep is the ocean reaction",
-          "how deep is the ocean backing track"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-25T16:55:06.730845+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.397,
-        "title_gap": 0.5,
-        "title_coverage_mean": 0.725,
-        "strong_match_count": 10,
-        "results_examined": 20,
-        "median_views": 12822977.5,
-        "p90_views": 47472916,
-        "median_subscribers": 2070000.0,
-        "channels_under_100k_subs": 3,
-        "median_age_days": 920,
-        "published_last_365d": 3,
-        "interpretation": "10 of 20 ranking titles squarely answer the query",
-        "components": {
-          "title_gap": 0.5,
-          "incumbent_subs": 0.098,
-          "view_ceiling": 0.0,
+          "incumbent_subs": 0.163,
+          "view_ceiling": 0.03,
           "staleness": 0.85
         },
         "provenance": {
@@ -2117,140 +3308,70 @@
           "region": "US",
           "language": "en",
           "order": "relevance",
-          "fetched_utc": "2026-09-18T23:43:45.841944+00:00"
+          "fetched_utc": "2026-09-26T10:09:07.077593+00:00"
         }
       },
       "combined": {
-        "combined_score": 0.6293,
+        "combined_score": 0.5943,
         "trend_multiplier": 1.0,
         "trend_note": "no Trends data; neutral",
         "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
       },
-      "reason": "Strong demand (1.00) against partial coverage (50% title gap); winnable but contested."
+      "reason": "CONTESTED DESPITE THE GAP: 100% lexical title gap, but median 6,164,618 views and 723,000 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated.",
+      "promoted_from_hold": {
+        "held_since": "2026-09-23",
+        "decided": "2026-09-26T10:09:08+00:00"
+      }
     },
     {
-      "slug": "whats-at-the-deepest-part-of-the-ocean",
+      "slug": "how-do-scientists-know-how-old-something-is",
       "domain": "deep-sea-ocean-science",
-      "title": "What's at the deepest part of the ocean?",
-      "query": "what's at the deepest part of the ocean",
+      "title": "How do scientists know how old something is?",
+      "query": "how do scientists know how old something is",
       "gate": {
         "verdict": "passed",
         "failed": [],
-        "reason": "demand 0.671 clears the 0.16 floor and title gap 0.85 clears the 0.3 saturation ceiling."
+        "reason": "demand 0.297 clears the 0.16 floor and title gap 0.85 clears the 0.3 saturation ceiling."
       },
       "demand": {
-        "demand_index": 0.671,
-        "autocomplete_completions": 10,
+        "demand_index": 0.2968,
+        "autocomplete_completions": 3,
         "exact_in_autocomplete": true,
         "corpus_breadth": 0,
-        "key_term": "part",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 1,
-        "sample_completions": [
-          "what's at the deepest part of the ocean",
-          "what the deepest part of the ocean looks like",
-          "what is the deepest part of the ocean we've explored",
-          "what does the deepest part of the ocean look like",
-          "what is the deepest part of the ocean called"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-25T16:55:17.863791+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.585,
-        "title_gap": 0.85,
-        "title_coverage_mean": 0.263,
-        "strong_match_count": 3,
-        "results_examined": 20,
-        "median_views": 4584661.0,
-        "p90_views": 47472916,
-        "median_subscribers": 1332500.0,
-        "channels_under_100k_subs": 3,
-        "median_age_days": 1205,
-        "published_last_365d": 3,
-        "interpretation": "3 of 20 ranking titles squarely answer the query",
-        "components": {
-          "title_gap": 0.85,
-          "incumbent_subs": 0.125,
-          "view_ceiling": 0.048,
-          "staleness": 0.85
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-09-18T23:43:58.492704+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.6265,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "CONTESTED DESPITE THE GAP: 85% lexical title gap, but median 4,584,661 views and 1,332,500 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated."
-    },
-    {
-      "slug": "what-is-the-deepest-part-of-the-ocean-called",
-      "domain": "deep-sea-ocean-science",
-      "title": "What is the deepest part of the ocean called?",
-      "query": "what is the deepest part of the ocean called",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.639 clears the 0.16 floor and title gap 0.85 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.6389,
-        "autocomplete_completions": 4,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 0,
-        "key_term": "called",
+        "key_term": "old",
         "key_term_completions": 10,
         "key_term_corpus_breadth": 0,
         "sample_completions": [
-          "what is the deepest part of the ocean called",
-          "what is the deepest part of the ocean",
-          "what's the deepest part of the ocean",
-          "what\u2019s the deepest part of the ocean"
+          "how do scientists know how old something is",
+          "how do scientists know how old the earth is",
+          "how do scientists know how big the universe is"
         ],
         "caveat": "autocomplete presence, NOT search volume",
         "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-25T16:55:13.851364+00:00"
+          "fetched_utc": "2026-09-26T10:09:10.366697+00:00"
         }
       },
       "competition": {
-        "opportunity_score": 0.598,
+        "opportunity_score": 0.657,
         "title_gap": 0.85,
         "title_coverage_mean": 0.325,
         "strong_match_count": 3,
         "results_examined": 20,
-        "median_views": 6810072.5,
-        "p90_views": 46817622,
-        "median_subscribers": 2070000.0,
-        "channels_under_100k_subs": 4,
-        "median_age_days": 1236,
-        "published_last_365d": 0,
+        "median_views": 63569.0,
+        "p90_views": 893983,
+        "median_subscribers": 186000.0,
+        "channels_under_100k_subs": 9,
+        "median_age_days": 1213,
+        "published_last_365d": 2,
         "interpretation": "3 of 20 ranking titles squarely answer the query",
         "components": {
           "title_gap": 0.85,
-          "incumbent_subs": 0.098,
-          "view_ceiling": 0.024,
-          "staleness": 1.0
+          "incumbent_subs": 0.247,
+          "view_ceiling": 0.314,
+          "staleness": 0.9
         },
         "provenance": {
           "endpoint": "https://www.googleapis.com/youtube/v3",
@@ -2262,139 +3383,141 @@
           "region": "US",
           "language": "en",
           "order": "relevance",
-          "fetched_utc": "2026-09-18T23:43:54.075690+00:00"
+          "fetched_utc": "2026-09-26T10:09:09.394207+00:00"
         }
       },
       "combined": {
-        "combined_score": 0.6181,
+        "combined_score": 0.4416,
         "trend_multiplier": 1.0,
         "trend_note": "no Trends data; neutral",
         "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
       },
-      "reason": "CONTESTED DESPITE THE GAP: 85% lexical title gap, but median 6,810,072 views and 2,070,000 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated."
+      "reason": "Middle of the field: title gap 0.85, demand 0.30, opportunity 0.66.",
+      "promoted_from_hold": {
+        "held_since": "2026-09-23",
+        "decided": "2026-09-26T10:09:10+00:00"
+      }
     },
     {
-      "slug": "what-lives-in-the-deepest-part-of-the-ocean",
+      "slug": "how-do-scientists-know-about-other-galaxies",
       "domain": "deep-sea-ocean-science",
-      "title": "What lives in the deepest part of the ocean?",
-      "query": "what lives in the deepest part of the ocean",
+      "title": "How do scientists know about other galaxies?",
+      "query": "how do scientists know about other galaxies",
       "gate": {
         "verdict": "passed",
         "failed": [],
-        "reason": "demand 0.577 clears the 0.16 floor and title gap 0.85 clears the 0.3 saturation ceiling."
+        "reason": "demand 0.390 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling."
       },
       "demand": {
-        "demand_index": 0.5768,
-        "autocomplete_completions": 4,
+        "demand_index": 0.3895,
+        "autocomplete_completions": 2,
         "exact_in_autocomplete": true,
         "corpus_breadth": 0,
-        "key_term": "part",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 1,
-        "sample_completions": [
-          "what lives in the deepest part of the ocean",
-          "what's in the deepest part of the ocean",
-          "sea creatures in the deepest part of the ocean",
-          "what animals live in the deepest part of the ocean"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-25T16:55:12.817604+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.589,
-        "title_gap": 0.85,
-        "title_coverage_mean": 0.225,
-        "strong_match_count": 3,
-        "results_examined": 20,
-        "median_views": 4120297.5,
-        "p90_views": 16970836,
-        "median_subscribers": 1017500.0,
-        "channels_under_100k_subs": 0,
-        "median_age_days": 634,
-        "published_last_365d": 3,
-        "interpretation": "3 of 20 ranking titles squarely answer the query",
-        "components": {
-          "title_gap": 0.85,
-          "incumbent_subs": 0.142,
-          "view_ceiling": 0.055,
-          "staleness": 0.85
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-09-18T23:43:52.884593+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.5829,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "CONTESTED DESPITE THE GAP: 85% lexical title gap, but median 4,120,298 views and 1,017,500 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated."
-    },
-    {
-      "slug": "what-lies-in-the-deepest-part-of-the-ocean",
-      "domain": "deep-sea-ocean-science",
-      "title": "What lies in the deepest part of the ocean?",
-      "query": "what lies in the deepest part of the ocean",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.569 clears the 0.16 floor and title gap 0.80 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.5687,
-        "autocomplete_completions": 7,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 0,
-        "key_term": "lie",
+        "key_term": "galaxi",
         "key_term_completions": 10,
         "key_term_corpus_breadth": 0,
         "sample_completions": [
-          "what lies in the deepest part of the ocean",
-          "what is in the deepest part of the ocean",
-          "what is found in the deepest part of the ocean",
-          "what is the deepest part of the ocean we've explored",
-          "what is the deepest part of the ocean called"
+          "how do scientists know about other galaxies",
+          "how do scientists know about other planets"
         ],
         "caveat": "autocomplete presence, NOT search volume",
         "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-25T16:55:14.849125+00:00"
+          "fetched_utc": "2026-09-26T10:09:12.735171+00:00"
         }
       },
       "competition": {
-        "opportunity_score": 0.571,
-        "title_gap": 0.8,
-        "title_coverage_mean": 0.312,
-        "strong_match_count": 4,
+        "opportunity_score": 0.692,
+        "title_gap": 1.0,
+        "title_coverage_mean": 0.17,
+        "strong_match_count": 0,
         "results_examined": 20,
-        "median_views": 2369198.0,
-        "p90_views": 13022903,
-        "median_subscribers": 261500.0,
-        "channels_under_100k_subs": 7,
-        "median_age_days": 812,
-        "published_last_365d": 5,
-        "interpretation": "4 of 20 ranking titles squarely answer the query",
+        "median_views": 450684.5,
+        "p90_views": 1899782,
+        "median_subscribers": 1021000.0,
+        "channels_under_100k_subs": 8,
+        "median_age_days": 890,
+        "published_last_365d": 2,
+        "interpretation": "nobody has made the definitive video on this query",
         "components": {
-          "title_gap": 0.8,
-          "incumbent_subs": 0.226,
-          "view_ceiling": 0.089,
+          "title_gap": 1.0,
+          "incumbent_subs": 0.142,
+          "view_ceiling": 0.192,
+          "staleness": 0.9
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-26T10:09:11.764217+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.5192,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Open field (100% of top-20 titles miss the question) but thin demand (0.39) -- uncontested because few ask it.",
+      "promoted_from_hold": {
+        "held_since": "2026-09-23",
+        "decided": "2026-09-26T10:09:12+00:00"
+      }
+    },
+    {
+      "slug": "why-deep-sea-fish-die-when-brought-to-surface",
+      "domain": "deep-sea-ocean-science",
+      "title": "Why deep sea fish die when brought to surface?",
+      "query": "why deep sea fish die when brought to surface",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.520 clears the 0.16 floor and title gap 0.95 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.5199,
+        "autocomplete_completions": 1,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 1,
+        "key_term": "die",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 1,
+        "sample_completions": [
+          "why deep sea fish die when brought to surface"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-26T10:15:08.552840+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.671,
+        "title_gap": 0.95,
+        "title_coverage_mean": 0.35,
+        "strong_match_count": 1,
+        "results_examined": 20,
+        "median_views": 790563.5,
+        "p90_views": 10059598,
+        "median_subscribers": 82150.0,
+        "channels_under_100k_subs": 11,
+        "median_age_days": 585,
+        "published_last_365d": 5,
+        "interpretation": "1 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.95,
+          "incumbent_subs": 0.298,
+          "view_ceiling": 0.157,
           "staleness": 0.75
         },
         "provenance": {
@@ -2407,16 +3530,16 @@
           "region": "US",
           "language": "en",
           "order": "relevance",
-          "fetched_utc": "2026-09-18T23:43:55.234266+00:00"
+          "fetched_utc": "2026-09-26T10:15:01.328210+00:00"
         }
       },
       "combined": {
-        "combined_score": 0.5698,
+        "combined_score": 0.5906,
         "trend_multiplier": 1.0,
         "trend_note": "no Trends data; neutral",
         "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
       },
-      "reason": "CONTESTED DESPITE THE GAP: 80% lexical title gap, but median 2,369,198 views and 261,500 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated."
+      "reason": "Open field with real demand: 95% of top-20 titles do NOT answer the question, and demand index 0.52. Nobody has made this one."
     },
     {
       "slug": "what-lives-in-mariana-trench",
@@ -2426,10 +3549,10 @@
       "gate": {
         "verdict": "passed",
         "failed": [],
-        "reason": "demand 0.545 clears the 0.16 floor and title gap 0.80 clears the 0.3 saturation ceiling."
+        "reason": "demand 0.492 clears the 0.16 floor and title gap 0.95 clears the 0.3 saturation ceiling."
       },
       "demand": {
-        "demand_index": 0.5451,
+        "demand_index": 0.4923,
         "autocomplete_completions": 5,
         "exact_in_autocomplete": true,
         "corpus_breadth": 1,
@@ -2448,27 +3571,27 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-25T16:55:09.748551+00:00"
+          "fetched_utc": "2026-09-26T10:15:06.800707+00:00"
         }
       },
       "competition": {
-        "opportunity_score": 0.561,
-        "title_gap": 0.8,
-        "title_coverage_mean": 0.667,
-        "strong_match_count": 4,
+        "opportunity_score": 0.664,
+        "title_gap": 0.95,
+        "title_coverage_mean": 0.65,
+        "strong_match_count": 1,
         "results_examined": 20,
-        "median_views": 812554.0,
-        "p90_views": 8831434,
-        "median_subscribers": 215000.0,
-        "channels_under_100k_subs": 7,
-        "median_age_days": 508,
-        "published_last_365d": 8,
-        "interpretation": "4 of 20 ranking titles squarely answer the query",
+        "median_views": 113206.0,
+        "p90_views": 12244972,
+        "median_subscribers": 179000.0,
+        "channels_under_100k_subs": 8,
+        "median_age_days": 910,
+        "published_last_365d": 7,
+        "interpretation": "1 of 20 ranking titles squarely answer the query",
         "components": {
-          "title_gap": 0.8,
-          "incumbent_subs": 0.238,
-          "view_ceiling": 0.156,
-          "staleness": 0.6
+          "title_gap": 0.95,
+          "incumbent_subs": 0.25,
+          "view_ceiling": 0.278,
+          "staleness": 0.65
         },
         "provenance": {
           "endpoint": "https://www.googleapis.com/youtube/v3",
@@ -2480,68 +3603,65 @@
           "region": "US",
           "language": "en",
           "order": "relevance",
-          "fetched_utc": "2026-09-18T23:43:49.303930+00:00"
+          "fetched_utc": "2026-09-26T10:14:58.907522+00:00"
         }
       },
       "combined": {
-        "combined_score": 0.553,
+        "combined_score": 0.5717,
         "trend_multiplier": 1.0,
         "trend_note": "no Trends data; neutral",
         "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
       },
-      "reason": "Middle of the field: title gap 0.80, demand 0.55, opportunity 0.56."
+      "reason": "Open field (95% of top-20 titles miss the question) but thin demand (0.49) -- uncontested because few ask it."
     },
     {
-      "slug": "why-deep-sea-creatures",
+      "slug": "how-deep-can-a-sperm-whale-go",
       "domain": "deep-sea-ocean-science",
-      "title": "Why deep sea creatures?",
-      "query": "why deep sea creatures",
+      "title": "How deep can a sperm whale go?",
+      "query": "how deep can a sperm whale go",
       "gate": {
         "verdict": "passed",
         "failed": [],
-        "reason": "demand 0.866 clears the 0.16 floor and title gap 0.50 clears the 0.3 saturation ceiling."
+        "reason": "demand 0.427 clears the 0.16 floor and title gap 0.95 clears the 0.3 saturation ceiling."
       },
       "demand": {
-        "demand_index": 0.8659,
-        "autocomplete_completions": 8,
+        "demand_index": 0.4266,
+        "autocomplete_completions": 2,
         "exact_in_autocomplete": true,
-        "corpus_breadth": 173,
-        "key_term": "creatur",
+        "corpus_breadth": 0,
+        "key_term": "sperm",
         "key_term_completions": 10,
-        "key_term_corpus_breadth": 182,
+        "key_term_corpus_breadth": 0,
         "sample_completions": [
-          "why deep sea creatures get creepier the deeper you go",
-          "why deep sea creatures are big",
-          "why deep sea creatures are scary",
-          "why deep sea creatures are weird",
-          "why deep sea creatures look so weird"
+          "how deep can a sperm whale go",
+          "how deep can a sperm whale dive"
         ],
         "caveat": "autocomplete presence, NOT search volume",
         "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-09-25T16:55:08.741350+00:00"
+          "fetched_utc": "2026-09-26T10:15:11.186127+00:00"
         }
       },
       "competition": {
-        "opportunity_score": 0.349,
-        "title_gap": 0.5,
-        "title_coverage_mean": 0.75,
-        "strong_match_count": 10,
+        "opportunity_score": 0.659,
+        "title_gap": 0.95,
+        "title_coverage_mean": 0.467,
+        "strong_match_count": 1,
         "results_examined": 20,
-        "median_views": 2120780.0,
-        "p90_views": 11220732,
-        "median_subscribers": 754000.0,
-        "channels_under_100k_subs": 3,
-        "median_age_days": 319,
-        "published_last_365d": 13,
-        "interpretation": "10 of 20 ranking titles squarely answer the query",
+        "median_views": 321808.5,
+        "p90_views": 5697089,
+        "median_subscribers": 220000.0,
+        "channels_under_100k_subs": 7,
+        "median_age_days": 727,
+        "published_last_365d": 6,
+        "interpretation": "1 of 20 ranking titles squarely answer the query",
         "components": {
-          "title_gap": 0.5,
-          "incumbent_subs": 0.16,
-          "view_ceiling": 0.096,
-          "staleness": 0.35
+          "title_gap": 0.95,
+          "incumbent_subs": 0.237,
+          "view_ceiling": 0.213,
+          "staleness": 0.7
         },
         "provenance": {
           "endpoint": "https://www.googleapis.com/youtube/v3",
@@ -2553,16 +3673,316 @@
           "region": "US",
           "language": "en",
           "order": "relevance",
-          "fetched_utc": "2026-09-18T23:43:48.210283+00:00"
+          "fetched_utc": "2026-09-26T10:15:05.009162+00:00"
         }
       },
       "combined": {
-        "combined_score": 0.5497,
+        "combined_score": 0.5302,
         "trend_multiplier": 1.0,
         "trend_note": "no Trends data; neutral",
         "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
       },
-      "reason": "Strong demand (0.87) against partial coverage (50% title gap); winnable but contested."
+      "reason": "Open field (95% of top-20 titles miss the question) but thin demand (0.43) -- uncontested because few ask it."
+    },
+    {
+      "slug": "why-deep-sea-creatures-are-creepers",
+      "domain": "deep-sea-ocean-science",
+      "title": "Why deep sea creatures are creepers?",
+      "query": "why deep sea creatures are creepers",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.524 clears the 0.16 floor and title gap 0.75 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.5244,
+        "autocomplete_completions": 1,
+        "exact_in_autocomplete": false,
+        "corpus_breadth": 1,
+        "key_term": "creeper",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 1,
+        "sample_completions": [
+          "why deep sea creatures are scary"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-26T10:15:07.666966+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.534,
+        "title_gap": 0.75,
+        "title_coverage_mean": 0.362,
+        "strong_match_count": 5,
+        "results_examined": 20,
+        "median_views": 4027725.5,
+        "p90_views": 17285038,
+        "median_subscribers": 451500.0,
+        "channels_under_100k_subs": 6,
+        "median_age_days": 566,
+        "published_last_365d": 5,
+        "interpretation": "5 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.75,
+          "incumbent_subs": 0.192,
+          "view_ceiling": 0.056,
+          "staleness": 0.75
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-26T10:15:00.098426+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.5292,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "CONTESTED DESPITE THE GAP: 75% lexical title gap, but median 4,027,726 views and 451,500 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated."
+    },
+    {
+      "slug": "how-deep-can-whales-dive",
+      "domain": "deep-sea-ocean-science",
+      "title": "How deep can whales dive?",
+      "query": "how deep can whales dive",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.430 clears the 0.16 floor and title gap 0.75 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.4298,
+        "autocomplete_completions": 3,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "whal",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "how deep can whales dive",
+          "how deep can a sperm whale go",
+          "how can whales dive so deep"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-26T10:15:09.419977+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.56,
+        "title_gap": 0.75,
+        "title_coverage_mean": 0.45,
+        "strong_match_count": 5,
+        "results_examined": 20,
+        "median_views": 262174.0,
+        "p90_views": 6066136,
+        "median_subscribers": 236000.0,
+        "channels_under_100k_subs": 7,
+        "median_age_days": 561,
+        "published_last_365d": 6,
+        "interpretation": "5 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.75,
+          "incumbent_subs": 0.232,
+          "view_ceiling": 0.226,
+          "staleness": 0.7
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-26T10:15:02.542395+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.4906,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Middle of the field: title gap 0.75, demand 0.43, opportunity 0.56."
+    },
+    {
+      "slug": "why-are-deep-sea-creatures-so-big",
+      "domain": "deep-sea-ocean-science",
+      "title": "Why are deep sea creatures so big?",
+      "query": "why are deep sea creatures so big",
+      "gate": {
+        "verdict": "killed_provisional",
+        "failed": [
+          "saturation"
+        ],
+        "measurement": {
+          "demand_index": 0.4354,
+          "demand_floor": 0.16,
+          "title_gap": 0.15,
+          "saturation_ceiling": 0.3,
+          "autocomplete_completions": 1,
+          "corpus_breadth": 2
+        },
+        "reason": "title gap 0.15 is at or below the 0.3 saturation ceiling: 17 of the top 20 titles already answer this question squarely.",
+        "what_would_settle_it": "Re-measure with a larger result set and on a different day; 20 results at one moment is thin evidence to end a topic on."
+      },
+      "demand": {
+        "demand_index": 0.4354,
+        "autocomplete_completions": 1,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 2,
+        "key_term": "big",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 4,
+        "sample_completions": [
+          "why are deep sea creatures so big"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-26T10:15:05.934720+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.254,
+        "title_gap": 0.15,
+        "title_coverage_mean": 0.762,
+        "strong_match_count": 17,
+        "results_examined": 20,
+        "median_views": 51471.0,
+        "p90_views": 6743647,
+        "median_subscribers": 119900.0,
+        "channels_under_100k_subs": 10,
+        "median_age_days": 397,
+        "published_last_365d": 10,
+        "interpretation": "17 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.15,
+          "incumbent_subs": 0.274,
+          "view_ceiling": 0.327,
+          "staleness": 0.5
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-26T10:14:57.726618+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.3326,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "SATURATED: 85% of the top 20 titles answer this question squarely (median 51,471 views, 119,900 subs). The definitive video exists."
+    },
+    {
+      "slug": "what-is-hydrothermal-vents",
+      "domain": "deep-sea-ocean-science",
+      "title": "What is hydrothermal vents?",
+      "query": "what is hydrothermal vents",
+      "gate": {
+        "verdict": "killed",
+        "failed": [
+          "saturation"
+        ],
+        "measurement": {
+          "demand_index": 0.1781,
+          "demand_floor": 0.16,
+          "title_gap": 0.0,
+          "saturation_ceiling": 0.3,
+          "autocomplete_completions": 1,
+          "corpus_breadth": 0
+        },
+        "reason": "title gap 0.00 is at or below the 0.3 saturation ceiling: 20 of the top 20 titles already answer this question squarely.",
+        "what_would_settle_it": null
+      },
+      "demand": {
+        "demand_index": 0.1781,
+        "autocomplete_completions": 1,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "hydrothermal",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "what is hydrothermal vents"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-09-26T10:15:10.289493+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.285,
+        "title_gap": 0.0,
+        "title_coverage_mean": 1.0,
+        "strong_match_count": 20,
+        "results_examined": 20,
+        "median_views": 20768.0,
+        "p90_views": 203481,
+        "median_subscribers": 10410.0,
+        "channels_under_100k_subs": 16,
+        "median_age_days": 1686,
+        "published_last_365d": 1,
+        "interpretation": "20 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.0,
+          "incumbent_subs": 0.426,
+          "view_ceiling": 0.383,
+          "staleness": 0.95
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-09-26T10:15:03.748532+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.2253,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "SATURATED: 100% of the top 20 titles answer this question squarely (median 20,768 views, 10,410 subs). The definitive video exists."
     }
   ],
   "killed": [],
