@@ -1880,10 +1880,32 @@
       "completion_tokens": 3222,
       "total_tokens": 11851,
       "cost_usd": 0.074217
+    },
+    {
+      "at": "2026-09-28T10:12:04+00:00",
+      "slug": "why-deep-sea-fish-die-when-brought-to-surface",
+      "model": "anthropic/claude-sonnet-4.5",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 2244,
+      "completion_tokens": 2905,
+      "total_tokens": 5149,
+      "cost_usd": 0.050307
+    },
+    {
+      "at": "2026-09-28T10:12:39+00:00",
+      "slug": "why-deep-sea-fish-die-when-brought-to-surface",
+      "model": "anthropic/claude-sonnet-4.5",
+      "attempt": 2,
+      "accepted": true,
+      "prompt_tokens": 6251,
+      "completion_tokens": 3015,
+      "total_tokens": 9266,
+      "cost_usd": 0.063978
     }
   ],
-  "total_usd": 10.061637,
-  "drafts_written": 80,
-  "average_usd_per_accepted_draft": 0.12577,
-  "updated": "2026-09-25T17:07:07+00:00"
+  "total_usd": 10.175922,
+  "drafts_written": 81,
+  "average_usd_per_accepted_draft": 0.125629,
+  "updated": "2026-09-28T10:12:39+00:00"
 }
