@@ -1,7 +1,7 @@
 {
   "stage": "cloud-upload",
   "week": "2026-W40",
-  "at": "2026-09-28T14:15:13+00:00",
+  "at": "2026-09-29T14:13:36+00:00",
   "code": "NOTHING_SHELVED",
   "message": "17 queued episode(s) are not in the ledger and not on the R2 shelf, so they are still waiting on the Mac (narration, render or push): how-do-scientists-know-so-much, how-do-scientists-know-how-old-something-is, how-do-scientists-know-about-other-galaxies, why-deep-sea-fish-die-when-brought-to-surface, what-lives-in-mariana-trench, how-deep-can-a-sperm-whale-go, why-deep-sea-creatures-are-creepers, how-deep-can-whales-dive ...",
   "detail": {
@@ -30,8 +30,8 @@
   },
   "unblock": "On the Mac: read the '=== batch session' block in ~/Library/Logs/how-we-know/batch.log. 'to narrate' and 'to render' list these slugs until they are built; bin/push-to-r2.sh shelves them afterwards.",
   "disposition": "self_resolving",
-  "disposition_why": "Queued episodes are not in the ledger and not on the R2 shelf yet: the Mac's nightly batch is still narrating, rendering or pushing them, and it pushes what it renders, so the shelf fills on a later night. Since 2026-09-23 this code is raised ONLY in that state and names the waiting slugs in detail.awaiting_mac. An empty shelf because the whole queue is uploaded is PUBLISH_QUEUE_UPLOADED, and scripts stuck outside the queue are AUTHORED_NOT_QUEUED (see loop/cloud_upload.py diagnose_empty_shelf). (run 3 of at most 7 before this escalates to a human.)",
-  "consecutive": 3,
+  "disposition_why": "Queued episodes are not in the ledger and not on the R2 shelf yet: the Mac's nightly batch is still narrating, rendering or pushing them, and it pushes what it renders, so the shelf fills on a later night. Since 2026-09-23 this code is raised ONLY in that state and names the waiting slugs in detail.awaiting_mac. An empty shelf because the whole queue is uploaded is PUBLISH_QUEUE_UPLOADED, and scripts stuck outside the queue are AUTHORED_NOT_QUEUED (see loop/cloud_upload.py diagnose_empty_shelf). (run 4 of at most 7 before this escalates to a human.)",
+  "consecutive": 4,
   "held_items": [],
   "exit_code": 0,
   "work_done_before_stop": [],
