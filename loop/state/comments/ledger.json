@@ -3,7 +3,9 @@
   "cursors": {
     "GTvZFHQMMuQ": "2026-09-21T12:28:29Z",
     "MAV4PF056RA": "2026-09-20T20:01:33Z",
-    "sfveDF88ZHo": "2026-09-14T13:56:55Z"
+    "sfveDF88ZHo": "2026-09-14T13:56:55Z",
+    "Fkw7S2dU8QA": "2026-09-29T16:06:54Z",
+    "MWOUa3UEXSk": "2026-09-28T23:52:40Z"
   },
   "seen": {
     "UgwwhKbVrAMub0De6_d4AaABAg": {
@@ -53,6 +55,38 @@
       "proposed_reply": null,
       "product_note": null,
       "seen_at": "2026-09-21T17:44:43+00:00"
+    },
+    "UgyNi_x0f5lQTfupsaN4AaABAg": {
+      "comment_id": "UgyNi_x0f5lQTfupsaN4AaABAg",
+      "video_id": "Fkw7S2dU8QA",
+      "author": "@sequoiataylor5498",
+      "author_channel_id": "UC7O1lQikHSc77s7gNnj9htQ",
+      "text": "Very informative",
+      "published_at": "2026-09-29T16:06:54Z",
+      "like_count": 0,
+      "reply_count": 0,
+      "video_title": "What is aerogel made of?",
+      "class": "praise",
+      "proposed_action": null,
+      "proposed_reply": null,
+      "product_note": null,
+      "seen_at": "2026-09-30T19:05:28+00:00"
+    },
+    "UgzV4XVtiXTMVcxfivh4AaABAg": {
+      "comment_id": "UgzV4XVtiXTMVcxfivh4AaABAg",
+      "video_id": "MWOUa3UEXSk",
+      "author": "@sequoiataylor5498",
+      "author_channel_id": "UC7O1lQikHSc77s7gNnj9htQ",
+      "text": "A topic I\u2019ve been so interested in !",
+      "published_at": "2026-09-28T23:52:40Z",
+      "like_count": 0,
+      "reply_count": 0,
+      "video_title": "How do people reach challenger deep?",
+      "class": "praise",
+      "proposed_action": null,
+      "proposed_reply": null,
+      "product_note": null,
+      "seen_at": "2026-09-30T19:05:28+00:00"
     }
   },
   "instructions": {},
@@ -72,7 +106,16 @@
       "videos": 70,
       "new": 0,
       "units": 72
+    },
+    {
+      "at": "2026-09-30T19:05:28+00:00",
+      "videos": 70,
+      "new": 3,
+      "reported": 0,
+      "units": 72,
+      "cost_usd": 0.00156,
+      "model": "anthropic/claude-haiku-4.5"
     }
   ],
-  "updated": "2026-09-23T19:05:21+00:00"
+  "updated": "2026-09-30T19:05:28+00:00"
 }
