@@ -1,0 +1,40 @@
+{
+  "stage": "taxonomy-refresh",
+  "week": "2026-W40",
+  "at": "2026-10-01T09:11:37+00:00",
+  "code": "TAXONOMY_REFRESH_QUOTA",
+  "message": "competition (research/competition.py) failed; research/proposed-taxonomy.json was not regenerated this quarter. The existing ranking stands \u2014 stale evidence beats no evidence \u2014 and loop/domains.lifecycle() is unaffected until this clears.",
+  "detail": {
+    "step": "competition (research/competition.py)",
+    "tail": [
+      "[staleness] --force given; re-running research/competition.py regardless of age",
+      "API key loaded from: environment $YOUTUBE_API_KEY",
+      "76 candidates, estimated 7752 quota units of a 10000/day free allowance.",
+      "FATAL: 7752 units exceeds the 4000 unit budget. Refusing to start a run that will die half-scored."
+    ]
+  },
+  "unblock": "competition (research/competition.py) stopped on YouTube Data API quota. Re-run by hand once quota resets (workflow_dispatch), or lower --budget and let the next quarterly run finish what this one could not.",
+  "disposition": "self_resolving",
+  "disposition_why": "The quarterly taxonomy refresh's competition pass ran out of budget. The existing research/proposed-taxonomy.json stands unchanged - stale evidence beats no evidence - and no domain swap decision is affected until the next attempt. (run 1 of at most 2 before this escalates to a human.)",
+  "consecutive": 1,
+  "held_items": [],
+  "exit_code": 0,
+  "work_done_before_stop": [
+    "demand (research/mine_broad.py): exit 0",
+    "trends (research/trends.py): exit 0"
+  ],
+  "notes": [
+    "  demand (research/mine_broad.py): natural-history-adaptation          295    325   1.50     5     0     1.8    0.6  current",
+    "  demand (research/mine_broad.py): engineering-failure                 290    310   1.44     4     0     5.2    0.3  current",
+    "  demand (research/mine_broad.py): measurement-and-dating              276    291   1.35    10    15     0.3    1.7  NEW",
+    "  demand (research/mine_broad.py): animal-senses-cognition             180    193   0.89     9     0     1.0    0.5  NEW",
+    "  trends (research/trends.py):       HTTP 429; backing off 16s",
+    "  trends (research/trends.py):       HTTP 429; backing off 4s",
+    "  trends (research/trends.py):       HTTP 429; backing off 8s",
+    "  trends (research/trends.py):       HTTP 429; backing off 16s",
+    "  competition (research/competition.py): [staleness] --force given; re-running research/competition.py regardless of age",
+    "  competition (research/competition.py): API key loaded from: environment $YOUTUBE_API_KEY",
+    "  competition (research/competition.py): 76 candidates, estimated 7752 quota units of a 10000/day free allowance.",
+    "  competition (research/competition.py): FATAL: 7752 units exceeds the 4000 unit budget. Refusing to start a run that will die half-scored."
+  ]
+}
