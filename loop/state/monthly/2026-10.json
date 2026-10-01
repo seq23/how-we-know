@@ -1,0 +1,153 @@
+{
+  "sufficient": false,
+  "videos_measured": 0,
+  "views": 0,
+  "findings": [],
+  "changes": [
+    {
+      "key": "domains.allocation",
+      "applied": false,
+      "from": {
+        "deep-sea-ocean-science": 2,
+        "materials-and-manufacturing": 2
+      },
+      "to": {
+        "deep-sea-ocean-science": 2,
+        "materials-and-manufacturing": 2
+      },
+      "why": "0 of 2 domain(s) clear the 8-episode floor, so there is nothing to compare. The allocation is held exactly as it is \u2014 it is NOT reset to an even split, which would be a decision disguised as a default.",
+      "blocked_by": "INSUFFICIENT_DOMAIN_EVIDENCE"
+    }
+  ],
+  "domains": {
+    "deep-sea-ocean-science": {
+      "measured": 0,
+      "views": 0,
+      "avd_s": null,
+      "avp": null,
+      "judgeable": false,
+      "why": "no episode in this domain has analytics yet"
+    },
+    "materials-and-manufacturing": {
+      "measured": 0,
+      "views": 0,
+      "avd_s": null,
+      "avp": null,
+      "judgeable": false,
+      "why": "no episode in this domain has analytics yet"
+    }
+  },
+  "allocation": {
+    "applied": false,
+    "allocation": {
+      "deep-sea-ocean-science": 2,
+      "materials-and-manufacturing": 2
+    },
+    "held": [
+      "deep-sea-ocean-science",
+      "materials-and-manufacturing"
+    ],
+    "stop": "INSUFFICIENT_DOMAIN_EVIDENCE",
+    "why": "0 of 2 domain(s) clear the 8-episode floor, so there is nothing to compare. The allocation is held exactly as it is \u2014 it is NOT reset to an even split, which would be a decision disguised as a default."
+  },
+  "lifecycle": {
+    "applied": false,
+    "allocation": {
+      "deep-sea-ocean-science": 2,
+      "materials-and-manufacturing": 2
+    },
+    "why": "no allocated domain has decayed below the 4-topic queue floor."
+  },
+  "live_slots": {
+    "deep-sea-ocean-science": 2,
+    "materials-and-manufacturing": 2
+  },
+  "ypp": {
+    "as_of": "2026-10-01",
+    "long_form_watch_hours": 0.93,
+    "subscribers": 6,
+    "shorts_views_90d": null,
+    "deadline": {
+      "date": "2027-02-01",
+      "days_remaining": 123,
+      "passed": false,
+      "before_bar": 4000,
+      "after_bar": 8000,
+      "meaning": "The standard tier's long-form requirement doubles from 4000 to 8000 hours on 2027-02-01. Channels admitted before that date stay on the old bar."
+    },
+    "gates": [
+      {
+        "tier": "expanded",
+        "name": "Expanded YPP",
+        "unlocks": "fan funding - memberships, Super Thanks, Shopping. No ad revenue.",
+        "subscribers": {
+          "have": 6,
+          "need": 500,
+          "pct": 1.2,
+          "remaining": 494
+        },
+        "routes": [
+          {
+            "route": "long-form watch hours",
+            "have": 0.93,
+            "need": 3000,
+            "unit": "hours",
+            "pct": 0.0,
+            "remaining": 2999.07
+          },
+          {
+            "route": "Shorts views in 90 days (SEPARATE PATH \u2014 these views do not count toward the long-form hours above)",
+            "have": null,
+            "need": 3000000,
+            "unit": "views",
+            "pct": null,
+            "remaining": null
+          }
+        ],
+        "closest_pct": 0.0,
+        "long_form_hours_required_now": 3000,
+        "bar_moves_on": null
+      },
+      {
+        "tier": "standard",
+        "name": "Standard YPP",
+        "unlocks": "ad revenue, plus everything Expanded unlocks.",
+        "subscribers": {
+          "have": 6,
+          "need": 1000,
+          "pct": 0.6,
+          "remaining": 994
+        },
+        "routes": [
+          {
+            "route": "long-form watch hours",
+            "have": 0.93,
+            "need": 4000,
+            "unit": "hours",
+            "pct": 0.0,
+            "remaining": 3999.07
+          },
+          {
+            "route": "Shorts views in 90 days (SEPARATE PATH \u2014 these views do not count toward the long-form hours above)",
+            "have": null,
+            "need": 3000000,
+            "unit": "views",
+            "pct": null,
+            "remaining": null
+          }
+        ],
+        "closest_pct": 0.0,
+        "long_form_hours_required_now": 4000,
+        "bar_moves_on": "2027-02-01"
+      }
+    ]
+  },
+  "note": "0 measured video(s), 0 view(s) - below 3/100. No change made this month. Publishing continues; this is a young channel, not a fault.",
+  "month": "2026-10",
+  "advice": {
+    "ok": false,
+    "text": "",
+    "cost": null,
+    "why": "no OpenRouter key in .secrets/openrouter_key.txt or $OPENROUTER_API_KEY - advisory skipped, review unaffected"
+  }
+}

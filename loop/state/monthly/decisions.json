@@ -1,3 +1,20 @@
 {
-  "decisions": []
+  "decisions": [
+    {
+      "key": "domains.allocation",
+      "applied": false,
+      "from": {
+        "deep-sea-ocean-science": 2,
+        "materials-and-manufacturing": 2
+      },
+      "to": {
+        "deep-sea-ocean-science": 2,
+        "materials-and-manufacturing": 2
+      },
+      "why": "0 of 2 domain(s) clear the 8-episode floor, so there is nothing to compare. The allocation is held exactly as it is \u2014 it is NOT reset to an even split, which would be a decision disguised as a default.",
+      "blocked_by": "INSUFFICIENT_DOMAIN_EVIDENCE",
+      "month": "2026-10",
+      "at": "2026-10-01T07:35:37.852524+00:00"
+    }
+  ]
 }
