@@ -1,0 +1,29 @@
+{
+  "stage": "render-gate",
+  "week": "2026-W40",
+  "at": "2026-10-01T14:02:19+00:00",
+  "code": "RENDER_HELD",
+  "message": "1 finished render(s) held back; every other finished episode ships this run. Held: how-do-scientists-know-about-other-galaxies",
+  "detail": {
+    "held": {
+      "how-do-scientists-know-about-other-galaxies": [
+        "how-do-scientists-know-about-other-galaxies: rendered 9.73 min, under the 10.0-minute hard floor"
+      ]
+    },
+    "examined": 55
+  },
+  "unblock": "A render under the floor heals itself: extend.py has been asked for more sourced narration and the next bin/batch-session.sh re-voices and re-renders it. A clipped render needs re-rendering. The hold lifts on the run after the validators pass.",
+  "disposition": "needs_human",
+  "disposition_why": "'RENDER_HELD' is not in loop/stop_policy.json, so it is treated as needing a human. That is the default on purpose. 'RENDER_HELD' was reported on 2026-10-01T13:28:59+00:00 but no issue number was ever recorded against it, so this run cannot tell the owner where it is tracked. Reporting again is the only honest option.",
+  "consecutive": 1,
+  "held_items": [
+    "how-do-scientists-know-about-other-galaxies - rendered 9.73 min, under the 10.0-minute hard floor"
+  ],
+  "exit_code": 3,
+  "work_done_before_stop": [
+    "self-heal started for how-do-scientists-know-about-other-galaxies: --- runtime-self-heal: OK, 1 unit(s) of work"
+  ],
+  "notes": [
+    "1 render(s) held, 54 pass and ship as normal"
+  ]
+}

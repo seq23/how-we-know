@@ -20,5 +20,18 @@
     "reported_run": null,
     "reports": 1,
     "stage": "mon-draft"
+  },
+  "render-gate::RENDER_HELD": {
+    "code": "RENDER_HELD",
+    "first_reported_at": "2026-10-01T13:28:59+00:00",
+    "issue": null,
+    "items": [
+      "how-do-scientists-know-about-other-galaxies - rendered 9.73 min, under the 10.0-minute hard floor"
+    ],
+    "last_reported_at": "2026-10-01T14:02:19+00:00",
+    "last_seen_at": "2026-10-01T14:02:19+00:00",
+    "reported_run": null,
+    "reports": 2,
+    "stage": "render-gate"
   }
 }
