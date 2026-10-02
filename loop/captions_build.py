@@ -116,7 +116,12 @@ def timing_source(slug: str) -> tuple[str, int, int]:
     CAP = _cap()
     try:
         plan, _ = CAP.load_plan(slug)
-    except SystemExit as e:                        # no script, or a 0-beat plan
+    except (SystemExit, FileNotFoundError) as e:
+        # No script, no plan, or a 0-beat plan: a verdict about THIS slug,
+        # never a crash of the stage. load_plan() names a missing script as a
+        # SystemExit now; FileNotFoundError stays caught because the planner
+        # does its own open() calls and one slug's missing file must not cost
+        # every other episode its caption track and the night its Shorts.
         return (f"unplannable: {e}", 0, 0)
     _, source, measured = CAP.beat_durations(slug, plan)
     return (source, measured, len(plan))
@@ -195,7 +200,7 @@ def record_durations(slugs, *, note=print) -> list[str]:
     for slug in slugs:
         try:
             plan, _ = CAP.load_plan(slug)
-        except SystemExit:
+        except (SystemExit, FileNotFoundError):   # unwritten or unplannable
             continue
         idx = CAP.wav_indices(slug, plan)
         if not idx:
@@ -234,7 +239,11 @@ def heal(slugs, *, note=print, stage_git: bool = True) -> dict:
 
 
 def run(slugs=None, dry_run: bool = False) -> int:
-    selection = list(slugs) if slugs else batch_queue.queued_slugs()
+    # WRITTEN rows only. The queue carries the Monday lane's unwritten topics
+    # too, and an episode with no script has no caption gap this lane can
+    # judge - it is not narrated, not rendered, and not the Mac's to caption.
+    # Reading the whole queue is what crashed every batch from 2026-09-26.
+    selection = list(slugs) if slugs else batch_queue.written_slugs()
     with Stage(LANE, week_id(),
                zero_work_hint="Every queued episode already has a usable "
                               "captions/<slug>.srt. That is the finished "
@@ -245,14 +254,17 @@ def run(slugs=None, dry_run: bool = False) -> int:
         if not selection:
             st.named_stop(
                 "CAPTIONS_BUILD_EXAMINED_NOTHING",
-                "no queued slugs were found, so this lane examined zero "
-                "episodes. It refuses to report a clean caption shelf it never "
-                "looked at.",
+                "no queued slug has a script at scripts/<slug>.md, so this "
+                "lane examined zero episodes. It refuses to report a clean "
+                "caption shelf it never looked at.",
                 detail={"queue_files": [p.name for p in
-                                        batch_queue.publish_order_files()]},
-                unblock="research/publish_order*.json is missing or empty. "
-                        "Restore it: git checkout origin/main -- research/")
-        st.note(f"examined {len(selection)} queued episode(s)")
+                                        batch_queue.publish_order_files()],
+                        "queued_unwritten": len(batch_queue.queued_slugs())},
+                unblock="research/publish_order*.json is missing, empty, or "
+                        "holds only unwritten topics (the Monday lane's). "
+                        "Restore it: git checkout origin/main -- research/ "
+                        "scripts/")
+        st.note(f"examined {len(selection)} queued, written episode(s)")
 
         can, cannot = buildable(selection)
         for slug, why in cannot:
