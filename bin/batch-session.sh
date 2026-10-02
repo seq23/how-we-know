@@ -180,11 +180,17 @@ PYEOF
 # is neither narratable nor renderable, so the preview said "none" and the
 # reason never reached the operator. Name it instead. Rule 0: this stage does
 # not get to exit 0 having done nothing without saying why.
+#
+# WRITTEN rows only (loop/batch_queue.py:written_slugs). The queue also holds
+# the Monday lane's unwritten topics - thirty of them from 2026-09-25 - and
+# a topic with no script is not "blocked one stage earlier" on this Mac, it
+# is simply not written yet. Listing those here sent the operator to run the
+# planner hint below on scripts that do not exist (batch.err, 26 Sep).
 pending_plan=$($PY - <<'PLANEOF'
 import os, sys
 sys.path.insert(0, "loop")
 import batch_queue
-print(" ".join(s for s in batch_queue.queued_slugs()
+print(" ".join(s for s in batch_queue.written_slugs()
                 if not os.path.exists(f"plans/{s}.json")))
 PLANEOF
 )
@@ -590,14 +596,26 @@ import domains; print(domains.domain_of_slug('$slug') or 'deep-sea-ocean-science
 done
 
 echo; echo "--- captions (and the measured beat timings the cloud needs) ---"
+# THE SHORTS LANE DOES NOT DEPEND ON THIS STAGE. From 2026-09-26 to 10-01 the
+# failure branch below was `exit "$CAPRC"`, and loop/captions_build.py crashed
+# every night on one unwritten queue row (FileNotFoundError from the planner),
+# so the script never reached shelve_shorts: no Short reached R2 for a week
+# and the cloud Shorts lane named NO_SHORTS_SHELVED seven days running, then
+# went red. A caption failure is one episode's caption gap - the upload gate
+# refuses THAT episode (captions_lane.uncaptioned, the one shared rule) - and
+# must never cost every other episode its Short. The failure stays visible:
+# the heartbeat records ok=0 and this script exits with CAPRC at the very end,
+# after the Shorts, the harvest and the report have run.
 $PY loop/captions_build.py
 CAPRC=$?
 case $CAPRC in
   0) ;;
   3) echo "  named stop above - see the banner. The push continues: an episode"
      echo "  that cannot be captioned is refused at the upload gate, not here." ;;
-  *) echo "  captions_build FAILED (rc=$CAPRC). Not pushing renders whose caption"
-     echo "  tracks are unknown."; exit "$CAPRC" ;;
+  *) echo "  captions_build FAILED (rc=$CAPRC). Whatever it staged before failing"
+     echo "  is one healed episode's complete artifacts (it stages per slug) and"
+     echo "  is committed below; the Shorts, the harvest and the report still run;"
+     echo "  this script exits $CAPRC at the end so launchd and the log see it." ;;
 esac
 
 # COMMIT WHAT ONLY THIS MAC CAN PRODUCE, with explicit pathspecs.
@@ -640,7 +658,14 @@ harvest_footage
 echo; echo "--- report to the repository ---"
 held=$($PY -c "import sys; sys.path.insert(0,'loop'); import render_gate; print(','.join(sorted(render_gate.held_slugs())))")
 pending=$($PY -c "import sys; sys.path.insert(0,'loop'); import backfill; print(len(backfill.library_pending()))" 2>/dev/null || echo "")
-$PY loop/mac_sync.py heartbeat --lane batch --ok 1 --held "$held" --pending "$pending" 2>&1 | tail -1
+# ok=1 only when every stage finished; a captions failure is reported, never
+# hidden behind a Shorts lane that did shelve.
+batch_ok=1; [ "$CAPRC" -eq 0 ] || [ "$CAPRC" -eq 3 ] || batch_ok=0
+$PY loop/mac_sync.py heartbeat --lane batch --ok "$batch_ok" --held "$held" --pending "$pending" 2>&1 | tail -1
 $PY loop/mac_sync.py push --lane batch 2>&1 | tail -1
 
+if [ "$batch_ok" -eq 0 ]; then
+  echo; echo "=== batch complete WITH A CAPTIONS FAILURE (rc=$CAPRC) $(date '+%H:%M') ==="
+  exit "$CAPRC"
+fi
 echo; echo "=== batch complete $(date '+%H:%M') ==="
