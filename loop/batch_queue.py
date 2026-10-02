@@ -301,6 +301,31 @@ def unwritten_entries() -> list[dict]:
             and not (ROOT / "scripts" / f"{r['slug']}.md").exists()]
 
 
+def written_entries() -> list[dict]:
+    """Publish-queue rows that HAVE a script at scripts/<slug>.md. Best first.
+
+    THE ONLY ROWS THE MAC'S BATCH MAY PLAN, NARRATE, RENDER OR CAPTION. The
+    queue deliberately carries unwritten topics - they are what the Monday
+    lane authors (`unwritten_entries()`) - and from 2026-09-25 (a107efd) it
+    carried thirty of them at once. `loop/captions_build.py` read the whole
+    queue, asked the planner for a beat list for the first unwritten row,
+    and the planner's `open(scripts/<slug>.md)` raised FileNotFoundError:
+    every nightly batch from 26 Sep crashed at the captions stage and no
+    Short reached R2 for a week. This is the counterpart of
+    `unwritten_entries()` and the ONE definition of "the batch's queue", so
+    the writer (draft.py) and the batch cannot disagree about whose row a
+    slug is: unwritten rows belong to Monday, written rows to the Mac, and
+    every queued row is exactly one or the other (or held).
+    """
+    return [r for r in queued_entries()
+            if (ROOT / "scripts" / f"{r['slug']}.md").exists()]
+
+
+def written_slugs() -> list[str]:
+    """`written_entries()` as slugs."""
+    return [r["slug"] for r in written_entries()]
+
+
 if __name__ == "__main__":
     for s in queued_slugs():
         print(s)
