@@ -121,8 +121,18 @@ def load_plan(slug: str) -> list[dict]:
         plan = json.loads(pj.read_text())
         src = f"plans/{slug}.json"
     else:
+        md = SCRIPTS / f"{slug}.md"
+        if not md.exists():
+            # A SystemExit, like the 0-beat case below, so every caller that
+            # already treats "unplannable" as a per-slug verdict keeps doing
+            # so. The planner's own open() raised FileNotFoundError here and
+            # took the whole captions stage of the nightly batch down with it
+            # for a week (2026-09-26 .. 10-01) over one unwritten queue row.
+            raise SystemExit(f"error: {slug} has no plans/{slug}.json and no "
+                             f"scripts/{slug}.md to plan from - unwritten, "
+                             f"not unplannable by this machine.")
         import planner
-        plan = planner.plan(str(SCRIPTS / f"{slug}.md"))
+        plan = planner.plan(str(md))
         src = "planner.plan() (no frozen plan on disk)"
     if not plan:
         raise SystemExit(f"error: {slug} planned 0 beats - refusing to write an "
