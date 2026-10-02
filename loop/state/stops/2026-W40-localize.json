@@ -1,7 +1,7 @@
 {
   "stage": "localize",
   "week": "2026-W40",
-  "at": "2026-10-01T15:12:52+00:00",
+  "at": "2026-10-02T15:11:01+00:00",
   "code": "LOCALIZATIONS_UP_TO_DATE",
   "message": "all 34 live video(s) already carry 5 localizations and defaultLanguage=en. Nothing was translated and nothing was written \u2014 a re-run costs nothing, which is the design.",
   "detail": {
@@ -45,8 +45,8 @@
   },
   "unblock": "Nothing to do. This stop means the lane is finished, not broken. It will do real work again when a new episode is uploaded or an English title changes.",
   "disposition": "self_resolving",
-  "disposition_why": "localize has had nothing to do on 15 consecutive runs (past its own limit of 8), and that is explained upstream, not here: its newest input is from 2026-09-15T14:01:58+00:00, before this idle streak began (2026-09-17T15:11:15+00:00), and cloud-upload is itself stopped on NOTHING_SHELVED (6 consecutive run(s) since 2026-09-26T14:11:31+00:00). That lane's own classified stop and cap report the idle. This stays green for at most 28 consecutive runs.",
-  "consecutive": 15,
+  "disposition_why": "localize has had nothing to do on 16 consecutive runs (past its own limit of 8), and that is explained upstream, not here: its newest input is from 2026-09-15T14:01:58+00:00, before this idle streak began (2026-09-17T15:11:15+00:00), and cloud-upload is itself stopped on NOTHING_SHELVED (7 consecutive run(s) since 2026-09-26T14:11:31+00:00). That lane's own classified stop and cap report the idle. This stays green for at most 28 consecutive runs.",
+  "consecutive": 16,
   "held_items": [],
   "exit_code": 0,
   "work_done_before_stop": [],
