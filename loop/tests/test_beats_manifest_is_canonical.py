@@ -26,7 +26,15 @@ This test proves:
       outside the TTS venv, so its source is checked instead: it imports the
       helper and contains no other beats.json write;
   (b) no tracked path lies under audio/.narrate.lock/, the lock directory is
-      ignored, and every tracked audio/*/beats.json is byte-for-byte canonical.
+      ignored, and every tracked audio/*/beats.json is byte-for-byte canonical;
+  (c) the OTHER half of the same failure: audio/narration_report.json, which
+      narrate_all rewrites every run and nothing reads, had sat tracked and
+      uncommitted since 2026-09-04 (the batch commits by explicit pathspec),
+      so it alone would refuse the next pull. It is untracked and ignored,
+      git tracks nothing under audio/ beyond the manifests and two inert
+      pre-2026-09 artefacts, and bin/batch-session.sh stages the tracked
+      manifests (`git add -u -- audio`) before its commit, so a manifest whose
+      plan grew or shrank overnight is committed rather than left dirty.
 
 Hard-fails when it examines zero manifests.
 """
@@ -50,6 +58,11 @@ import captions as CAP                                          # noqa: E402
 import pov_repair                                               # noqa: E402
 
 WRITERS = ("voice/narrate_all.py", "loop/pov_repair.py", "visuals/captions.py")
+BATCH = "bin/batch-session.sh"
+# Tracked before the "beats.json is the ONE tracked file in audio/" rule, and
+# written by nothing that runs nightly. Anything else tracked under audio/ is
+# a file some run can dirty without committing.
+ALLOWED_TRACKED = {"audio/bed_test.wav", "audio/narration_audit.json"}
 # Any serialization of manifest rows that is not the helper.
 STRAY_WRITE = re.compile(r"json\.dumps\(\s*rows\b")
 
@@ -143,6 +156,22 @@ def check() -> tuple[int, list[str]]:
     manifests = [t for t in tracked if re.fullmatch(r"audio/[^/]+/beats\.json", t)]
     if not manifests:
         fails.append("git tracks zero audio/*/beats.json manifests")
+    stray = [t for t in tracked
+             if t and t not in manifests and t not in ALLOWED_TRACKED]
+    examined += 1
+    if stray:
+        fails.append(f"git tracks files under audio/ that a run rewrites and "
+                     f"the batch never commits: {stray}")
+    if subprocess.run(["git", "check-ignore", "-q", "audio/narration_report.json"],
+                      cwd=ROOT).returncode != 0:
+        fails.append("audio/narration_report.json is not in .gitignore")
+    batch = Path(ROOT, BATCH).read_text(encoding="utf-8")
+    add = re.search(r"^git add -u -- audio\b", batch, re.M)
+    commit = batch.find('git commit -q -m "captions:')
+    examined += 1
+    if not add or commit < 0 or add.start() > commit:
+        fails.append(f"{BATCH} does not stage the tracked manifests "
+                     f"(`git add -u -- audio`) before its captions commit")
     for t in manifests:
         examined += 1
         raw = Path(ROOT, t).read_bytes()
