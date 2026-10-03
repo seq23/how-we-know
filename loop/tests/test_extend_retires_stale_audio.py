@@ -103,6 +103,34 @@ if moved3:
     fails.append(f"with no record of what was voiced, {moved3} was retired - "
                  f"a guess, and a mass re-narration on a published episode")
 
+# -- C. the Shorts cut from the superseded render go with it ------------------
+# Their receipts resolve credits through plans/<slug>.json and the crop through
+# renders/<slug>-final.mp4; left behind, V14/V15 fail on them and
+# bin/push-to-r2.sh shelves NO Short for any episode (2026-10-03 evening).
+examined += 1
+sdir = tmp / "shorts"
+sdir.mkdir()
+for name in ("ep-short.mp4", "ep-short.mp4.short.json", "ep-short2.mp4",
+             "ep-short2.mp4.short.json", "ep-other-short.mp4", "other-short.mp4"):
+    (sdir / name).write_bytes(b"x")
+moved_s = extend.retire_shorts("ep", shorts_dir=sdir)
+if sorted(moved_s) != ["ep-short.mp4", "ep-short.mp4.short.json",
+                       "ep-short2.mp4", "ep-short2.mp4.short.json"]:
+    fails.append(f"retire_shorts moved {sorted(moved_s)}; expected exactly ep's "
+                 f"cuts and receipts")
+left = sorted(p.name for p in sdir.glob("*.mp4"))
+if left != ["ep-other-short.mp4", "other-short.mp4"]:
+    fails.append(f"other episodes' Shorts were touched: {left}")
+parked_s = sorted(p.name for p in (sdir / "superseded-short").iterdir()) \
+    if (sdir / "superseded-short").is_dir() else []
+if len(parked_s) != 4:
+    fails.append(f"stale Shorts were not parked (nothing may be deleted): {parked_s}")
+src_e = (ROOT / "loop" / "extend.py").read_text(encoding="utf-8")
+body = src_e.split("def extend_one(", 1)[1].split("\ndef ", 1)[0]
+if "retire_shorts(slug)" not in body:
+    fails.append("extend_one() does not retire the Shorts when it supersedes "
+                 "the render - the helper exists and nothing invokes it")
+
 # -- B. narration follows the plan file when one exists -----------------------
 examined += 1
 plans = tmp / "plans"
