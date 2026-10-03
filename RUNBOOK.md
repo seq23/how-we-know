@@ -105,6 +105,32 @@ If you ever spot a bad one, that is the only manual lever:
 That keeps it off the channel permanently. Nothing needs approving for Shorts to
 publish — the veto is the exception, not the workflow.
 
+**Every Short hands its viewer to its episode — nothing for you to do.**
+Decided 3 October: almost all of the channel's views come from Shorts, so each
+one now points home. Twice a day, after the morning upload lane and the evening
+Shorts lane, `loop/handoff.py` reads what is public on the channel and makes
+sure that:
+
+- every public Short's description **opens with `Full episode: https://youtu.be/…`**
+  and the episode's question (a Short that goes out before its episode airs
+  waits as `pending` and is finished the run after the episode goes public);
+- every public Short carries **one comment from the channel** with the same
+  question and link — once, never pinned, recorded so it is never repeated;
+- every public episode's description ends with a **"Shorts from this episode:"**
+  list;
+- every public video is in its domain playlist — **Deep Sea Science** or
+  **Materials & Manufacturing** — and each playlist has a channel section.
+
+It spends YouTube quota only after the day's upload and Shorts are safe, so a
+big day finishes the next morning (`HANDOFF_QUOTA_DEFERRED`, green).
+`HANDOFF_UP_TO_DATE` is the normal quiet result. Validator V46 fails only when a
+Short and its episode have both been public for a day and a half with no link.
+To see the plan without writing anything:
+
+```bash
+.venv/bin/python loop/handoff.py --dry-run
+```
+
 ---
 
 ## You should never get a "named stop" email again

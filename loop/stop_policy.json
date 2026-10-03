@@ -322,6 +322,27 @@
       "why": "Four weeks of runway left. Automated policy: the Monday lane authors from the queue, the Saturday miner refills thin queues and the Mac's nightly batch narrates and renders; publishing never halts. A green warning with the runway figures, not a page.",
       "max_consecutive": 3,
       "escalation": "Three weeks at warning without recovering means the nightly batch is not producing - it becomes an error. Go red."
+    },
+    "HANDOFF_UP_TO_DATE": {
+      "why": "Every public Short already opens with the link to its episode, every public episode lists its Shorts, and every public video is in its domain playlist. The hand-off lane (loop/handoff.py) is FINISHED, not blocked: it does real work again the first run after a Short or an episode goes public. Nothing was written and a re-run costs a few read units.",
+      "max_consecutive": 14,
+      "upstream_stage": "shorts-cloud",
+      "max_consecutive_upstream_idle": 60,
+      "_why_upstream": "The lane runs twice a day (after the upload lane and after the Shorts lane), so fourteen idle runs is a week. A week with nothing new public is normal when the Shorts shelf is empty or the episode runway is scheduled ahead - which the Shorts lane reports in its own classified stops. Past the cap this stays green only while the newest public video predates the idle streak AND shorts-cloud is itself mid-streak on a named stop (loop/common.py _upstream_explains); sixty runs (a month) is the outer bound.",
+      "escalation": "Past fourteen consecutive idle runs this pages only when the idle is NOT explained upstream: a video went public after the streak began and this lane still found nothing to do - the dangerous case, where it can no longer SEE liveness (videos.list) or the ledgers stopped growing - or shorts-cloud's last run succeeded yet nothing new is public, or the streak outlived its 60-run bound. Compare the public count in this run's stop detail with the ledgers."
+    },
+    "HANDOFF_QUOTA_DEFERRED": {
+      "why": "The hand-off lane spends 50 units per write and stands aside for the day's episode upload and evening Shorts (quota.deferrable_reserve). What did not fit is listed in loop/state/handoff.json `deferred` and is done the next run after the allowance resets at midnight Pacific; everything applied this run is already recorded in the ledgers. The back catalogue (34 Shorts, 18 episodes) is expected to take two quota days.",
+      "requires_detail": [
+        "resets_at"
+      ],
+      "max_consecutive": 5,
+      "escalation": "Five runs in a row still deferring means the lane is planning more writes than it ever gets to make - a loop rewriting the same descriptions (a composer that is not idempotent), or a reserve that never clears. Compare `deferred` across the last five loop/state/handoff.json commits: the same ids each time is the composer, a shrinking list is just a long back catalogue."
+    },
+    "HANDOFF_AWAITING_QUOTA": {
+      "why": "Same deferral, named by validator V46 that observed it: a live Short or video that the hand-off lane has recorded as deferred for quota in loop/state/handoff.json within the last two days. Nothing is lost; the lane finishes it on its next run.",
+      "max_consecutive": 5,
+      "escalation": "See HANDOFF_QUOTA_DEFERRED."
     }
   },
   "owner_action": {
@@ -582,6 +603,7 @@
     "INSTRUCTION_UNBACKED": "THE GATE. An instruction reached act without who gave it, when, through what, a legal action, or a swept comment. Nothing was applied - not the good lines either, so a partial reply cannot go out under a bad batch. A write to the channel with no instruction record behind it is exactly what this lane must never do.",
     "COMMENT_ACTION_REJECTED": "YouTube refused a hide or a reply (HTTP 4xx). Actions before it were applied and recorded; this one and the rest were not. Usually a missing youtube.force-ssl scope or a comment the author already deleted.",
     "RUNWAY_CRITICAL": "The runway is under the critical floor: the channel is close to going dark and the automated refill has not kept up. A real production failure.",
-    "RUNWAY_*": "Any other runway level is an unknown state of loop/cadence.runway() - a defect."
+    "RUNWAY_*": "Any other runway level is an unknown state of loop/cadence.runway() - a defect.",
+    "HANDOFF_WRITE_REJECTED": "YouTube refused a hand-off write (videos.update, playlistItems.insert, commentThreads.insert or playlists.insert) with something other than a quota error. Everything before it was applied and recorded; the next run retries only what is missing. A 403 here is a scope problem (the token needs https://www.googleapis.com/auth/youtube and force-ssl for comments); a 404 is a video that no longer exists under that id."
   }
 }

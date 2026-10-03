@@ -40,7 +40,11 @@ STAGE_FILES = ["rank.py", "draft.py", "override.py", "prepare.py",
                # GRACEFULLY - a missing clip becomes an illustrated episode,
                # not an error - so it is exactly the lane that could harvest
                # nothing for months and look fine.
-               "footage_lane.py"]
+               "footage_lane.py",
+               # The Short->episode hand-off, 2026-10-03. Twice-daily metadata
+               # writes against a channel whose liveness it reads from YouTube;
+               # "nothing new is public" must be its named stop, never a tick.
+               "handoff.py"]
 
 
 def run_snippet(code: str):

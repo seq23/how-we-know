@@ -142,3 +142,16 @@ jobs:
             ARGS="$ARGS --dry-run"
           fi
           bin/loop-stage.sh shorts-cloud loop/shorts_cloud.py $ARGS
+      # THE HAND-OFF (owner decision 2026-10-03, loop/handoff.py). Runs after
+      # the lane whatever the lane did: a Short or episode that went public
+      # since the last run gets its episode link, its channel comment, its
+      # Shorts block and its playlist row. Nothing to do is a self-resolving
+      # HANDOFF_UP_TO_DATE; quota short is HANDOFF_QUOTA_DEFERRED and the rest
+      # is done next run. Same credential as the lane above.
+      - name: Hand Shorts off to their episodes and keep the playlists complete
+        if: ${{ !cancelled() }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          YT_OAUTH_CLIENT_JSON: ${{ secrets.YT_OAUTH_CLIENT_JSON }}
+          YT_OAUTH_REFRESH_TOKEN: ${{ secrets.YT_OAUTH_REFRESH_TOKEN }}
+        run: bin/loop-stage.sh handoff loop/handoff.py
