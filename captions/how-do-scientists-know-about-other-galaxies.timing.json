@@ -1,0 +1,121 @@
+{
+  "episode": "how-do-scientists-know-about-other-galaxies",
+  "beats": 94,
+  "plan_source": "plans/how-do-scientists-know-about-other-galaxies.json",
+  "timing": "audio",
+  "beats_measured": 94,
+  "durations_recorded": 94,
+  "duration_s": 763.531,
+  "cues": 210,
+  "chapters_real": 13,
+  "chapters_published": 11,
+  "chapter_notes": [
+    "merged 2 chapter(s) under 10s: Title card (3.0s), Producer POV (6.2s)"
+  ],
+  "drift": {
+    "mean_abs_s": 40.8,
+    "worst_abs_s": 118.4,
+    "rows": [
+      {
+        "title": "Cold open",
+        "hand": "00:00",
+        "real": "0:00",
+        "drift_s": 0.0
+      },
+      {
+        "title": "Title card",
+        "hand": "00:35",
+        "real": "0:36",
+        "drift_s": 1.7
+      },
+      {
+        "title": "Light carries information across space that instruments can decode",
+        "hand": "00:38",
+        "real": "0:39",
+        "drift_s": 1.8
+      },
+      {
+        "title": "Distance is measured using objects with known intrinsic brightness",
+        "hand": "02:15",
+        "real": "2:02",
+        "drift_s": -12.7
+      },
+      {
+        "title": "Redshift reveals how fast a galaxy is moving away from Earth",
+        "hand": "04:30",
+        "real": "4:12",
+        "drift_s": -17.7
+      },
+      {
+        "title": "Producer POV",
+        "hand": "06:20",
+        "real": "5:37",
+        "drift_s": -42.2
+      },
+      {
+        "title": "Galaxies are not just points of light but resolved structures",
+        "hand": "06:32",
+        "real": "5:44",
+        "drift_s": -48.0
+      },
+      {
+        "title": "The cosmic distance ladder is a chain of overlapping methods",
+        "hand": "08:10",
+        "real": "7:03",
+        "drift_s": -66.7
+      },
+      {
+        "title": "What to notice in the edit",
+        "hand": "09:45",
+        "real": "8:13",
+        "drift_s": -91.0
+      },
+      {
+        "title": "Evidence limit",
+        "hand": "10:50",
+        "real": "8:51",
+        "drift_s": -118.4
+      },
+      {
+        "title": "Closing",
+        "hand": "11:35",
+        "real": "12:23",
+        "drift_s": 48.5
+      }
+    ]
+  },
+  "ffprobe": {
+    "file": "renders/how-do-scientists-know-about-other-galaxies-final.mp4",
+    "video_s": 763.53,
+    "last_cue_end_s": 763.531,
+    "delta_s": 0.001,
+    "ok": true
+  },
+  "text_checks": {
+    "beats_json": {
+      "checked": 94,
+      "mismatched": []
+    },
+    "script_text": {
+      "checked": 94,
+      "absent_from_narration": []
+    }
+  },
+  "script_chapters": {
+    "written": true,
+    "changed": true,
+    "removed_lines": [
+      "Title card",
+      "Producer POV"
+    ],
+    "chapters_not_in_script": [
+      "Gravitational lensing provides independent distance confirmation",
+      "Galaxy rotation curves reveal mass that does not emit light"
+    ]
+  },
+  "artifacts": [
+    "captions/how-do-scientists-know-about-other-galaxies.vtt",
+    "captions/how-do-scientists-know-about-other-galaxies.srt",
+    "captions/how-do-scientists-know-about-other-galaxies.chapters.txt"
+  ]
+}

@@ -98,17 +98,17 @@ The deep ocean is not fully explored, but it is not unknown. Systematic measurem
 
 ## Chapters
 
-- 00:00 Cold open
-- 00:24 The five percent figure measures imaging, not knowledge
-- 01:32 Physical laws apply everywhere, not just where cameras have been
-- 03:01 Sampling strategies extract global patterns from local measurements
-- 04:50 Remote sensing technologies measure without visiting
-- 06:34 Sediment cores record history without observing it in real time
-- 08:04 Models are tested, not assumed
-- 09:26 Some questions remain open because the evidence is sparse
-- 10:48 What to notice in the edit
-- 11:31 Evidence limit
-- 12:00 Closing
+- 0:00 Cold open
+- 0:25 The five percent figure measures imaging, not knowledge
+- 1:32 Physical laws apply everywhere, not just where cameras have been
+- 2:41 Sampling strategies extract global patterns from local measurements
+- 4:34 Remote sensing technologies measure without visiting
+- 5:41 Sediment cores record history without observing it in real time
+- 6:45 Models are tested, not assumed
+- 7:32 Some questions remain open because the evidence is sparse
+- 8:31 What to notice in the edit
+- 9:06 Evidence limit
+- 9:37 Closing
 
 ## Sources
 

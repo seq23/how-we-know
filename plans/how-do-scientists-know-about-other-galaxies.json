@@ -1,0 +1,1428 @@
+[
+  {
+    "segment": "depth_descent",
+    "seconds": 8.69,
+    "heading": "Cold open",
+    "narration": "The Andromeda Galaxy is approximately 2.5 million light-years from Earth, according to measurements published by NASA and the European Space Agency.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "That figure comes from observing a specific type of variable star called a Cepheid, whose brightness pulses at a rate tied to its intrinsic luminosity.",
+    "args": {
+      "lines": [
+        "That figure comes from",
+        "observing a specific type",
+        "of variable"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "depth_descent",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "The distance is not a guess. It is a calculation based on comparing how bright the star appears from Earth to how bright it actually is.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "What that distance does not tell you is how scientists confirmed Andromeda is a separate galaxy at all, or how they measure objects billions of light-years farther still.",
+    "args": {
+      "variant": 0
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 3.5,
+    "heading": "Title card",
+    "narration": "How do scientists know about other galaxies?",
+    "args": {
+      "lines": [
+        "How do scientists know",
+        "about other galaxies?"
+      ]
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 6.62,
+    "heading": "Light carries information across space that instruments can decode",
+    "narration": "When you look at a galaxy, you are not seeing the galaxy as it is now.",
+    "args": {
+      "term": "light",
+      "includes": [
+        "electromagnetic radiation with measurable properties"
+      ],
+      "excludes": [
+        "a carrier of subjective impressions"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Light carries information across space that instruments can decode",
+    "narration": "You are seeing light that left that galaxy millions or billions of years ago and has been traveling through space ever since.",
+    "args": {
+      "lines": [
+        "You are seeing light",
+        "that left that galaxy",
+        "millions"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 5.79,
+    "heading": "Light carries information across space that instruments can decode",
+    "narration": "Light is electromagnetic radiation, and it carries information in its wavelength, intensity, and spectrum.",
+    "args": {
+      "term": "light",
+      "includes": [
+        "electromagnetic radiation with measurable properties"
+      ],
+      "excludes": [
+        "a carrier of subjective impressions"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Light carries information across space that instruments can decode",
+    "narration": "A telescope collects that light. A spectrograph splits it into its component wavelengths, producing a spectrum.",
+    "args": {
+      "lines": [
+        "A telescope collects that",
+        "light. A spectrograph splits",
+        "it"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 6.62,
+    "heading": "Light carries information across space that instruments can decode",
+    "narration": "That spectrum contains absorption and emission lines corresponding to specific elements. Hydrogen produces a characteristic pattern.",
+    "args": {
+      "term": "light",
+      "includes": [
+        "electromagnetic radiation with measurable properties"
+      ],
+      "excludes": [
+        "a carrier of subjective impressions"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Light carries information across space that instruments can decode",
+    "narration": "So does helium, oxygen, and iron. The pattern is a fingerprint. If you see hydrogen's lines in a galaxy's spectrum, hydrogen is present in that galaxy.",
+    "args": {
+      "lines": [
+        "So does helium, oxygen,",
+        "and iron. The pattern"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 5.38,
+    "heading": "Light carries information across space that instruments can decode",
+    "narration": "The method is called spectroscopy, and it has been used since the mid-1800s.",
+    "args": {
+      "term": "light",
+      "includes": [
+        "electromagnetic radiation with measurable properties"
+      ],
+      "excludes": [
+        "a carrier of subjective impressions"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "Light carries information across space that instruments can decode",
+    "narration": "The reason this works is that every element absorbs and emits light at specific wavelengths, determined by the energy levels of its electrons.",
+    "args": {
+      "title": "SPECTROSCOPY",
+      "stages": [
+        "light collected",
+        "split into wavelengths",
+        "lines matched to elements"
+      ],
+      "conclusion": "composition determined"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Light carries information across space that instruments can decode",
+    "narration": "Those wavelengths do not change. Hydrogen in a laboratory on Earth produces the same spectral lines as hydrogen in a galaxy 10 million light-years away.",
+    "args": {
+      "lines": [
+        "Those wavelengths do not",
+        "change. Hydrogen in a",
+        "laboratory"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 7.03,
+    "heading": "Light carries information across space that instruments can decode",
+    "narration": "The lines may be shifted in wavelength due to the galaxy's motion, but the pattern remains recognizable.",
+    "args": {
+      "title": "SPECTROSCOPY",
+      "stages": [
+        "light collected",
+        "split into wavelengths",
+        "lines matched to elements"
+      ],
+      "conclusion": "composition determined"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Light carries information across space that instruments can decode",
+    "narration": "This is not interpretation. It is measurement. The spectrum is a physical record, and the lines either match known elements or they do not.",
+    "args": {
+      "lines": [
+        "This is not interpretation.",
+        "It is measurement. The",
+        "spectrum"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "size_ladder",
+    "seconds": 6.21,
+    "heading": "Distance is measured using objects with known intrinsic brightness",
+    "narration": "Knowing a galaxy exists is not the same as knowing how far away it is.",
+    "args": {
+      "items": [
+        [
+          "Cepheid variable",
+          30000.0
+        ],
+        [
+          "Type Ia supernova",
+          10000000000.0
+        ],
+        [
+          "Earth",
+          12742.0
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Distance is measured using objects with known intrinsic brightness",
+    "narration": "Distance measurements rely on standard candles, objects whose intrinsic brightness is known or can be calculated.",
+    "args": {
+      "lines": [
+        "Distance measurements rely on",
+        "standard candles, objects whose",
+        "intrinsic brightness"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "size_ladder",
+    "seconds": 7.45,
+    "heading": "Distance is measured using objects with known intrinsic brightness",
+    "narration": "Cepheid variables are one type. These are stars whose brightness oscillates over a period of days or weeks.",
+    "args": {
+      "items": [
+        [
+          "Cepheid variable",
+          30000.0
+        ],
+        [
+          "Type Ia supernova",
+          10000000000.0
+        ],
+        [
+          "Earth",
+          12742.0
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Distance is measured using objects with known intrinsic brightness",
+    "narration": "In 1908, Henrietta Swan Leavitt, working at Harvard College Observatory, discovered that the period of a Cepheid's pulsation is directly related to its luminosity.",
+    "args": {
+      "lines": [
+        "In 1908, Henrietta Swan",
+        "Leavitt, working at Harvard",
+        "College Observatory"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "size_ladder",
+    "seconds": 7.03,
+    "heading": "Distance is measured using objects with known intrinsic brightness",
+    "narration": "A Cepheid that pulses every 10 days is intrinsically brighter than one that pulses every 3 days.",
+    "args": {
+      "items": [
+        [
+          "Cepheid variable",
+          30000.0
+        ],
+        [
+          "Type Ia supernova",
+          10000000000.0
+        ],
+        [
+          "Earth",
+          12742.0
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Distance is measured using objects with known intrinsic brightness",
+    "narration": "If you measure the period, you know the luminosity. If you know the luminosity and measure the apparent brightness from Earth, you can calculate the distance.",
+    "args": {
+      "lines": [
+        "If you measure the",
+        "period, you know the",
+        "luminosity."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 9.0,
+    "heading": "Distance is measured using objects with known intrinsic brightness",
+    "narration": "This is how Edwin Hubble, using the 100-inch Hooker Telescope at Mount Wilson Observatory, determined in 1923 that Andromeda was far outside our own Milky Way.",
+    "args": {
+      "value": "2.5",
+      "unit": "million light-years",
+      "caption": "Andromeda Galaxy distance via Cepheids",
+      "source": "NASA"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Distance is measured using objects with known intrinsic brightness",
+    "narration": "He identified Cepheids in Andromeda, measured their periods, calculated their luminosities, and derived a distance of approximately 900,000 light-years.",
+    "args": {
+      "lines": [
+        "He identified Cepheids in",
+        "Andromeda, measured their periods,",
+        "calculated their"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 9.0,
+    "heading": "Distance is measured using objects with known intrinsic brightness",
+    "narration": "That figure was later revised upward as the Cepheid calibration improved. The current accepted distance is approximately 2.5 million light-years. The method has not changed. The calibration has become more precise.",
+    "args": {
+      "value": "2.5",
+      "unit": "million light-years",
+      "caption": "Andromeda Galaxy distance via Cepheids",
+      "source": "NASA"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Distance is measured using objects with known intrinsic brightness",
+    "narration": "Cepheids are visible only out to a certain distance, roughly 10 million to 100 million light-years depending on the telescope.",
+    "args": {
+      "lines": [
+        "Cepheids are visible only",
+        "out to a certain",
+        "distance, roughly"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "Distance is measured using objects with known intrinsic brightness",
+    "narration": "Beyond that, they are too faint. For greater distances, astronomers use Type Ia supernovae.",
+    "args": {
+      "lines": [
+        "Beyond that, they are",
+        "too faint. For greater",
+        "distances, astronomers"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "size_ladder",
+    "seconds": 5.79,
+    "heading": "Distance is measured using objects with known intrinsic brightness",
+    "narration": "These are thermonuclear explosions of white dwarf stars that reach a consistent peak brightness.",
+    "args": {
+      "items": [
+        [
+          "Cepheid variable",
+          30000.0
+        ],
+        [
+          "Type Ia supernova",
+          10000000000.0
+        ],
+        [
+          "Earth",
+          12742.0
+        ]
+      ]
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Distance is measured using objects with known intrinsic brightness",
+    "narration": "The mechanism is well understood. A white dwarf in a binary system accretes matter from a companion star until it reaches approximately 1.4 solar masses, the Chandrasekhar limit.",
+    "args": {
+      "lines": [
+        "The mechanism is well",
+        "understood. A white dwarf"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "Distance is measured using objects with known intrinsic brightness",
+    "narration": "At that mass, carbon fusion ignites throughout the star nearly simultaneously, and the star explodes.",
+    "args": {
+      "lines": [
+        "At that mass, carbon",
+        "fusion ignites throughout the",
+        "star nearly"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "size_ladder",
+    "seconds": 8.28,
+    "heading": "Distance is measured using objects with known intrinsic brightness",
+    "narration": "Because the mass at detonation is always near the same limit, the peak brightness is always near the same value.",
+    "args": {
+      "items": [
+        [
+          "Cepheid variable",
+          30000.0
+        ],
+        [
+          "Type Ia supernova",
+          10000000000.0
+        ],
+        [
+          "Earth",
+          12742.0
+        ]
+      ]
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Distance is measured using objects with known intrinsic brightness",
+    "narration": "Type Ia supernovae have been detected in galaxies billions of light-years away.",
+    "args": {
+      "lines": [
+        "Type Ia supernovae have",
+        "been detected in galaxies",
+        "billions"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 6.62,
+    "heading": "Redshift reveals how fast a galaxy is moving away from Earth",
+    "narration": "When a galaxy is moving away from Earth, the wavelengths of light it emits are stretched.",
+    "args": {
+      "term": "redshift",
+      "meaning": "wavelength stretched by recession",
+      "boundary": "measured in spectrum",
+      "source": "Doppler effect and expansion"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Redshift reveals how fast a galaxy is moving away from Earth",
+    "narration": "This is called redshift. The faster the recession, the greater the stretch.",
+    "args": {
+      "lines": [
+        "This is called redshift.",
+        "The faster the recession,",
+        "the greater"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 8.69,
+    "heading": "Redshift reveals how fast a galaxy is moving away from Earth",
+    "narration": "Redshift is measured by comparing the observed wavelength of a spectral line to the wavelength that line has in a laboratory.",
+    "args": {
+      "term": "redshift",
+      "meaning": "wavelength stretched by recession",
+      "boundary": "measured in spectrum",
+      "source": "Doppler effect and expansion"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Redshift reveals how fast a galaxy is moving away from Earth",
+    "narration": "If hydrogen's red line, normally at 656.3 nanometers, appears at 660 nanometers in a galaxy's spectrum, that galaxy is receding.",
+    "args": {
+      "lines": [
+        "If hydrogen's red line,",
+        "normally at 656.3 nanometers,",
+        "appears"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "Redshift reveals how fast a galaxy is moving away from Earth",
+    "narration": "The amount of shift tells you the velocity. This is the Doppler effect for light, analogous to the change in pitch of a siren as it moves away from you.",
+    "args": {
+      "term": "redshift",
+      "meaning": "wavelength stretched by recession",
+      "boundary": "measured in spectrum",
+      "source": "Doppler effect and expansion"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "timeline",
+    "seconds": 6.21,
+    "heading": "Redshift reveals how fast a galaxy is moving away from Earth",
+    "narration": "In 1929, Edwin Hubble published a paper showing that more distant galaxies have greater redshifts.",
+    "args": {
+      "events": [
+        [
+          1929,
+          "Hubble publishes velocity-distance relation"
+        ],
+        [
+          1998,
+          "accelerating expansion discovered"
+        ],
+        [
+          2003,
+          "WMAP measures cosmological parameters"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Redshift reveals how fast a galaxy is moving away from Earth",
+    "narration": "The relationship is linear: velocity increases with distance. This is evidence that the universe is expanding.",
+    "args": {
+      "lines": [
+        "The relationship is linear:",
+        "velocity increases with distance."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "timeline",
+    "seconds": 7.45,
+    "heading": "Redshift reveals how fast a galaxy is moving away from Earth",
+    "narration": "The slope of that relationship is called the Hubble constant, and its value has been refined over decades.",
+    "args": {
+      "events": [
+        [
+          1929,
+          "Hubble publishes velocity-distance relation"
+        ],
+        [
+          1998,
+          "accelerating expansion discovered"
+        ],
+        [
+          2003,
+          "WMAP measures cosmological parameters"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Redshift reveals how fast a galaxy is moving away from Earth",
+    "narration": "The Hubble Space Telescope, launched in 1990, has measured Cepheids in galaxies up to 60 million light-years away, improving the calibration.",
+    "args": {
+      "lines": [
+        "The Hubble Space Telescope,",
+        "launched in 1990, has",
+        "measured Cepheids"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "timeline",
+    "seconds": 8.69,
+    "heading": "Redshift reveals how fast a galaxy is moving away from Earth",
+    "narration": "The Planck satellite, which observed the cosmic microwave background from 2009 to 2013, provided an independent measurement of the expansion rate.",
+    "args": {
+      "events": [
+        [
+          1929,
+          "Hubble publishes velocity-distance relation"
+        ],
+        [
+          1998,
+          "accelerating expansion discovered"
+        ],
+        [
+          2003,
+          "WMAP measures cosmological parameters"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Redshift reveals how fast a galaxy is moving away from Earth",
+    "narration": "The two methods give slightly different values, a tension that remains unresolved, but both confirm that distant galaxies are receding and that the universe is expanding.",
+    "args": {
+      "lines": [
+        "The two methods give",
+        "slightly different values, a",
+        "tension"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 6.62,
+    "heading": "Producer POV",
+    "narration": "Science is a process. It is not a person behind a curtain handing down permanent answers.",
+    "args": {
+      "text": "Science is a process. It is not a person behind a curtain handing down permanent answers.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "anatomy_callout",
+    "seconds": 9.0,
+    "heading": "Galaxies are not just points of light but resolved structures",
+    "narration": "Early telescopes showed galaxies as fuzzy patches. William Herschel, in the late 1700s, cataloged thousands of nebulae, but he could not determine whether they were clouds within the Milky Way or separate systems.",
+    "args": {
+      "title": "SPIRAL GALAXY",
+      "parts": [
+        [
+          "nucleus",
+          0.5,
+          0.5
+        ],
+        [
+          "spiral arms",
+          0.3,
+          0.7
+        ],
+        [
+          "dust lanes",
+          0.6,
+          0.3
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Galaxies are not just points of light but resolved structures",
+    "narration": "The resolution was insufficient. By the early 1900s, larger telescopes revealed structure.",
+    "args": {
+      "lines": [
+        "The resolution was insufficient.",
+        "By the early 1900s,",
+        "larger telescopes"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "anatomy_callout",
+    "seconds": 9.0,
+    "heading": "Galaxies are not just points of light but resolved structures",
+    "narration": "Spiral arms, central bulges, and dust lanes became visible. The 100-inch Hooker Telescope, completed in 1917, was the instrument that allowed Hubble to resolve individual stars in Andromeda.",
+    "args": {
+      "title": "SPIRAL GALAXY",
+      "parts": [
+        [
+          "nucleus",
+          0.5,
+          0.5
+        ],
+        [
+          "spiral arms",
+          0.3,
+          0.7
+        ],
+        [
+          "dust lanes",
+          0.6,
+          0.3
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "Galaxies are not just points of light but resolved structures",
+    "narration": "Once individual stars were visible, Cepheids could be identified, and distance could be measured.",
+    "args": {
+      "lines": [
+        "Once individual stars were",
+        "visible, Cepheids could be",
+        "identified"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 9.0,
+    "heading": "Galaxies are not just points of light but resolved structures",
+    "narration": "Modern telescopes resolve galaxies in extraordinary detail. The Hubble Space Telescope has imaged galaxies billions of light-years away, showing their shapes, star-forming regions, and interactions with neighboring galaxies.",
+    "args": {
+      "title": "RESOLVED STRUCTURES",
+      "sources": [
+        [
+          "Hubble Space Telescope",
+          "images of distant galaxies"
+        ],
+        [
+          "Sloan Digital Sky Survey",
+          "spectroscopic data for millions of galaxies"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Galaxies are not just points of light but resolved structures",
+    "narration": "The Sloan Digital Sky Survey, which began in 2000, has obtained spectra for millions of galaxies, mapping their distances and velocities.",
+    "args": {
+      "lines": [
+        "The Sloan Digital Sky",
+        "Survey, which began in",
+        "2000, has"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 9.0,
+    "heading": "Galaxies are not just points of light but resolved structures",
+    "narration": "The James Webb Space Telescope, launched in 2021, observes in infrared, penetrating dust and detecting galaxies formed within a few hundred million years after the Big Bang.",
+    "args": {
+      "title": "RESOLVED STRUCTURES",
+      "sources": [
+        [
+          "Hubble Space Telescope",
+          "images of distant galaxies"
+        ],
+        [
+          "Sloan Digital Sky Survey",
+          "spectroscopic data for millions of galaxies"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Galaxies are not just points of light but resolved structures",
+    "narration": "These are not artist's impressions. They are photographs, built from photons collected over hours or days of exposure.",
+    "args": {
+      "lines": [
+        "These are not artist's",
+        "impressions. They are photographs,",
+        "built"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 6.21,
+    "heading": "The cosmic distance ladder is a chain of overlapping methods",
+    "narration": "The cosmic distance ladder is a sequence of techniques, each building on the one before.",
+    "args": {
+      "title": "DISTANCE LADDER",
+      "steps": [
+        [
+          "parallax for nearby stars",
+          ""
+        ],
+        [
+          "Cepheids for nearby galaxies",
+          ""
+        ],
+        [
+          "Type Ia supernovae for distant galaxies",
+          ""
+        ]
+      ],
+      "note": "each step calibrates the next"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "The cosmic distance ladder is a chain of overlapping methods",
+    "narration": "Parallax, the apparent shift in a star's position as Earth orbits the Sun, works for stars within a few hundred light-years.",
+    "args": {
+      "lines": [
+        "Parallax, the apparent shift",
+        "in a star's position",
+        "as Earth"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 7.03,
+    "heading": "The cosmic distance ladder is a chain of overlapping methods",
+    "narration": "Cepheids extend the ladder to tens of millions of light-years. Type Ia supernovae reach billions of light-years.",
+    "args": {
+      "title": "DISTANCE LADDER",
+      "steps": [
+        [
+          "parallax for nearby stars",
+          ""
+        ],
+        [
+          "Cepheids for nearby galaxies",
+          ""
+        ],
+        [
+          "Type Ia supernovae for distant galaxies",
+          ""
+        ]
+      ],
+      "note": "each step calibrates the next"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The cosmic distance ladder is a chain of overlapping methods",
+    "narration": "Each method overlaps with the next, allowing calibration. If Cepheids and supernovae are both visible in the same galaxy, the supernova's brightness can be calibrated against the Cepheid distance.",
+    "args": {
+      "lines": [
+        "Each method overlaps with",
+        "the next, allowing calibration.",
+        "If Cepheids"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 4.97,
+    "heading": "The cosmic distance ladder is a chain of overlapping methods",
+    "narration": "The ladder is not a single measurement but a series of cross-checks.",
+    "args": {
+      "title": "DISTANCE LADDER",
+      "steps": [
+        [
+          "parallax for nearby stars",
+          ""
+        ],
+        [
+          "Cepheids for nearby galaxies",
+          ""
+        ],
+        [
+          "Type Ia supernovae for distant galaxies",
+          ""
+        ]
+      ],
+      "note": "each step calibrates the next"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The cosmic distance ladder is a chain of overlapping methods",
+    "narration": "The Gaia satellite, launched by the European Space Agency in 2013, has measured parallaxes for more than a billion stars with unprecedented precision.",
+    "args": {
+      "lines": [
+        "The Gaia satellite, launched",
+        "by the European Space",
+        "Agency"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "The cosmic distance ladder is a chain of overlapping methods",
+    "narration": "Those measurements anchor the bottom of the ladder. Cepheids, calibrated against parallax distances, anchor the middle.",
+    "args": {
+      "lines": [
+        "Those measurements anchor the",
+        "bottom of the ladder.",
+        "Cepheids, calibrated"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.69,
+    "heading": "The cosmic distance ladder is a chain of overlapping methods",
+    "narration": "Supernovae, calibrated against Cepheids, anchor the top. The entire structure depends on the consistency of physical laws across space and time.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "The cosmic distance ladder is a chain of overlapping methods",
+    "narration": "If the speed of light varied, or if atomic spectra changed, the ladder would collapse. No evidence suggests either has occurred.",
+    "args": {
+      "lines": [
+        "If the speed of",
+        "light varied, or if",
+        "atomic spectra"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 6.62,
+    "heading": "What to notice in the edit",
+    "narration": "The evidence for other galaxies is not a single observation but a convergence of independent methods.",
+    "args": {
+      "title": "EVIDENCE TYPES",
+      "items": [
+        "+spectroscopy identifies elements",
+        "+standard candles measure distance",
+        "+redshift measures velocity",
+        "+resolved images show structure"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "What to notice in the edit",
+    "narration": "Spectroscopy identifies composition. Standard candles measure distance. Redshift measures velocity. Imaging resolves structure.",
+    "args": {
+      "lines": [
+        "Spectroscopy identifies composition. Standard",
+        "candles measure distance. Redshift",
+        "measures velocity."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 5.79,
+    "heading": "What to notice in the edit",
+    "narration": "Each method has been tested, refined, and cross-checked against others. The measurements are public.",
+    "args": {
+      "title": "EVIDENCE TYPES",
+      "items": [
+        "+spectroscopy identifies elements",
+        "+standard candles measure distance",
+        "+redshift measures velocity",
+        "+resolved images show structure"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "What to notice in the edit",
+    "narration": "The Hubble Space Telescope's archive contains more than 100 terabytes of data, accessible to anyone.",
+    "args": {
+      "lines": [
+        "The Hubble Space Telescope's",
+        "archive contains more than",
+        "100 terabytes"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "The Sloan Digital Sky Survey's data releases are freely available. The evidence is not locked behind closed doors. It is published, peer-reviewed, and reproducible.",
+    "args": {
+      "title": "EVIDENCE TYPES",
+      "items": [
+        "+spectroscopy identifies elements",
+        "+standard candles measure distance",
+        "+redshift measures velocity",
+        "+resolved images show structure"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "What this evidence does not establish is the ultimate fate of the universe, or whether other universes exist beyond the observable horizon.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.03,
+    "heading": "Evidence limit",
+    "narration": "The observable universe is limited by the speed of light and the finite age of the cosmos.",
+    "args": {
+      "variant": 2
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "Evidence limit",
+    "narration": "Light from objects beyond a certain distance, accounting for expansion, has not had time to reach Earth.",
+    "args": {
+      "lines": [
+        "Light from objects beyond",
+        "a certain distance, accounting",
+        "for expansion"
+      ]
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.03,
+    "heading": "Evidence limit",
+    "narration": "Anything beyond that distance is not observable, and claims about it are not based on direct evidence.",
+    "args": {
+      "variant": 4
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.03,
+    "heading": "Evidence limit",
+    "narration": "The methods described here apply only to the observable universe. They say nothing about what lies beyond.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 5.38,
+    "heading": "Gravitational lensing provides independent distance confirmation",
+    "narration": "Einstein's general relativity predicts that mass warps spacetime, and light follows that curvature.",
+    "args": {
+      "title": "LENSING",
+      "stages": [
+        "massive object bends spacetime",
+        "light path curves",
+        "multiple images or arcs form"
+      ],
+      "conclusion": "mass and distance calculated"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Gravitational lensing provides independent distance confirmation",
+    "narration": "When a massive galaxy or galaxy cluster lies between Earth and a more distant galaxy, the foreground mass acts as a gravitational lens.",
+    "args": {
+      "lines": [
+        "When a massive galaxy",
+        "or galaxy cluster lies",
+        "between Earth"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 7.45,
+    "heading": "Gravitational lensing provides independent distance confirmation",
+    "narration": "Light from the background galaxy bends around the lens, often producing multiple images, arcs, or even complete rings.",
+    "args": {
+      "title": "LENSING",
+      "stages": [
+        "massive object bends spacetime",
+        "light path curves",
+        "multiple images or arcs form"
+      ],
+      "conclusion": "mass and distance calculated"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Gravitational lensing provides independent distance confirmation",
+    "narration": "The effect was first observed in 1979 when astronomers identified a double image of a distant quasar, later confirmed to be a single object lensed by an intervening galaxy.",
+    "args": {
+      "lines": [
+        "The effect was first",
+        "observed in 1979 when",
+        "astronomers identified"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 6.21,
+    "heading": "Gravitational lensing provides independent distance confirmation",
+    "narration": "The amount of bending depends on the mass of the lens and the distances involved.",
+    "args": {
+      "title": "LENSING",
+      "stages": [
+        "massive object bends spacetime",
+        "light path curves",
+        "multiple images or arcs form"
+      ],
+      "conclusion": "mass and distance calculated"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Gravitational lensing provides independent distance confirmation",
+    "narration": "By measuring the positions and brightnesses of the lensed images, astronomers can calculate both the mass of the lensing object and the distance to the background galaxy.",
+    "args": {
+      "lines": [
+        "By measuring the positions",
+        "and brightnesses of the",
+        "lensed images"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 9.0,
+    "heading": "Gravitational lensing provides independent distance confirmation",
+    "narration": "The Hubble Space Telescope has cataloged thousands of gravitational lenses. Some of the most distant galaxies ever observed have been confirmed through lensing by foreground galaxy clusters.",
+    "args": {
+      "value": "13.2",
+      "unit": "billion light-years",
+      "caption": "distant galaxy magnified by lensing cluster",
+      "source": "Hubble Space Telescope"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Gravitational lensing provides independent distance confirmation",
+    "narration": "The lensing magnifies the background galaxy, making it visible when it would otherwise be too faint to detect.",
+    "args": {
+      "lines": [
+        "The lensing magnifies the",
+        "background galaxy, making it",
+        "visible"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 5.79,
+    "heading": "Gravitational lensing provides independent distance confirmation",
+    "narration": "This is not a distortion that obscures information\u2014it is a magnification that reveals it.",
+    "args": {
+      "value": "13.2",
+      "unit": "billion light-years",
+      "caption": "distant galaxy magnified by lensing cluster",
+      "source": "Hubble Space Telescope"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Gravitational lensing provides independent distance confirmation",
+    "narration": "The method is independent of standard candles and redshift measurements, providing a cross-check on distance estimates.",
+    "args": {
+      "lines": [
+        "The method is independent",
+        "of standard candles and",
+        "redshift measurements"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 5.79,
+    "heading": "Gravitational lensing provides independent distance confirmation",
+    "narration": "NASA's Hubble archive contains images of lensed galaxies at distances exceeding 13 billion light-years.",
+    "args": {
+      "value": "13.2",
+      "unit": "billion light-years",
+      "caption": "distant galaxy magnified by lensing cluster",
+      "source": "Hubble Space Telescope"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Galaxy rotation curves reveal mass that does not emit light",
+    "narration": "When astronomers measure the rotation speed of stars and gas in a spiral galaxy, they find that objects far from the galactic center move faster than expected.",
+    "args": {
+      "term": "visible matter",
+      "includes": [
+        "stars and gas that emit or absorb light"
+      ],
+      "excludes": [
+        "the only mass present"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Galaxy rotation curves reveal mass that does not emit light",
+    "narration": "According to Newtonian mechanics, if most of a galaxy's mass were concentrated in the visible stars and gas near the center, objects farther out should orbit more slowly, just as outer planets in the solar system orbit more slowly than inner ones.",
+    "args": {
+      "lines": [
+        "According to Newtonian mechanics,",
+        "if most of a",
+        "galaxy's mass"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 5.38,
+    "heading": "Galaxy rotation curves reveal mass that does not emit light",
+    "narration": "Instead, rotation speeds remain roughly constant out to the edge of the galaxy.",
+    "args": {
+      "term": "visible matter",
+      "includes": [
+        "stars and gas that emit or absorb light"
+      ],
+      "excludes": [
+        "the only mass present"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Galaxy rotation curves reveal mass that does not emit light",
+    "narration": "This was first documented in the 1970s by Vera Rubin and Kent Ford at the Carnegie Institution, using spectrographic observations of the Andromeda Galaxy and others.",
+    "args": {
+      "lines": [
+        "This was first documented",
+        "in the 1970s by",
+        "Vera Rubin"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Galaxy rotation curves reveal mass that does not emit light",
+    "narration": "The discrepancy implies that galaxies contain far more mass than is visible.",
+    "args": {
+      "lines": [
+        "The discrepancy implies that",
+        "galaxies contain far more",
+        "mass"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Galaxy rotation curves reveal mass that does not emit light",
+    "narration": "Observations show that while visible matter would predict rotation velocities dropping to perhaps 150 kilometers per second at a galaxy's outer edge, actual measurements often show velocities remaining near 220 kilometers per second or higher.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Galaxy rotation curves reveal mass that does not emit light",
+    "narration": "This unseen mass is called dark matter. It does not emit, absorb, or reflect light, but its gravitational influence is measurable.",
+    "args": {
+      "lines": [
+        "This unseen mass is",
+        "called dark matter. It",
+        "does"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Galaxy rotation curves reveal mass that does not emit light",
+    "narration": "The rotation curves are evidence not of what dark matter is, but that something with mass is present.",
+    "args": {
+      "lines": [
+        "The rotation curves are",
+        "evidence not of what",
+        "dark matter"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Galaxy rotation curves reveal mass that does not emit light",
+    "narration": "Multiple independent observations support this: gravitational lensing shows more mass than visible matter accounts for, and the cosmic microwave background's temperature fluctuations require dark matter to match the observed large-scale structure of the universe. The evidence converges, but the nature of dark matter remains unknown.",
+    "args": {
+      "variant": 2
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Closing",
+    "narration": "Other galaxies are known through light that has traveled across space, carrying information that instruments decode.",
+    "args": {
+      "lines": [
+        "Other galaxies are known",
+        "through light that has",
+        "traveled across"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Closing",
+    "narration": "The distances are measured, the compositions are identified, and the motions are tracked.",
+    "args": {
+      "lines": [
+        "The distances are measured,",
+        "the compositions are identified"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.38,
+    "heading": "Closing",
+    "narration": "The evidence is electromagnetic radiation, analyzed and cross-checked. That is how scientists know.",
+    "args": {
+      "variant": 3
+    },
+    "from": "directive+destagnate"
+  }
+]

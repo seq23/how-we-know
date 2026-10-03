@@ -1,0 +1,470 @@
+[
+  {
+    "i": 0,
+    "segment": "pressure_gauge",
+    "narration": "Deep sea fish die at the surface primarily from barotrauma \u2014 tissue damage caused by rapid decompression.",
+    "seconds": 7.290666666666667
+  },
+  {
+    "i": 1,
+    "segment": "text_beat",
+    "narration": "A fish living at one thousand meters experiences pressure one hundred times greater than you do right now.",
+    "seconds": 7.248
+  },
+  {
+    "i": 2,
+    "segment": "pressure_gauge",
+    "narration": "Its entire body is built around that constant squeeze. Bring it up fast and the physics that kept it alive become the physics that kill it.",
+    "seconds": 8.058666666666667
+  },
+  {
+    "i": 3,
+    "segment": "text_beat",
+    "narration": "The question is not why deep sea fish die at the surface. The question is what exactly fails first, and in what order.",
+    "seconds": 7.674666666666667
+  },
+  {
+    "i": 4,
+    "segment": "text_beat",
+    "narration": "Why do deep sea fish die when brought to the surface?",
+    "seconds": 3.2693333333333334
+  },
+  {
+    "i": 5,
+    "segment": "definition_card",
+    "narration": "Pressure at depth is not the ocean pushing on a fish from above.",
+    "seconds": 3.92
+  },
+  {
+    "i": 6,
+    "segment": "text_beat",
+    "narration": "It is water molecules pressing equally from every side \u2014 top, bottom, left, right, forward, back.",
+    "seconds": 7.1866666666666665
+  },
+  {
+    "i": 7,
+    "segment": "definition_card",
+    "narration": "At sea level you experience one atmosphere of pressure. At ten meters depth you experience two atmospheres.",
+    "seconds": 7.632
+  },
+  {
+    "i": 8,
+    "segment": "text_beat",
+    "narration": "At one hundred meters, eleven atmospheres. The relationship is linear: every ten meters adds roughly one atmosphere.",
+    "seconds": 7.962666666666666
+  },
+  {
+    "i": 9,
+    "segment": "definition_card",
+    "narration": "NOAA Ocean Exploration states that at the average ocean depth of three thousand seven hundred meters, pressure reaches three hundred seventy-one atmospheres.",
+    "seconds": 8.88
+  },
+  {
+    "i": 10,
+    "segment": "contrast_pair",
+    "narration": "Deep sea fish do not resist this pressure. They equilibrate with it.",
+    "seconds": 4.005333333333334
+  },
+  {
+    "i": 11,
+    "segment": "text_beat",
+    "narration": "Their tissues contain water, and water is nearly incompressible. The pressure outside matches the pressure inside.",
+    "seconds": 7.397333333333333
+  },
+  {
+    "i": 12,
+    "segment": "contrast_pair",
+    "narration": "There is no net crushing force because there is no pressure difference.",
+    "seconds": 4.208
+  },
+  {
+    "i": 13,
+    "segment": "text_beat",
+    "narration": "A fish at depth is not being squeezed any more than you are being squeezed by the atmosphere right now. It simply lives in a different baseline.",
+    "seconds": 8.925333333333333
+  },
+  {
+    "i": 14,
+    "segment": "anatomy_callout",
+    "narration": "Most bony fish possess a swim bladder \u2014 a gas-filled sac that provides buoyancy.",
+    "seconds": 5.925333333333334
+  },
+  {
+    "i": 15,
+    "segment": "text_beat",
+    "narration": "By adjusting the volume of gas inside, a fish can hover at a chosen depth without sinking or rising.",
+    "seconds": 5.626666666666667
+  },
+  {
+    "i": 16,
+    "segment": "anatomy_callout",
+    "narration": "Shallow-water fish inflate or deflate the bladder through a connection to the esophagus or through gas exchange with the blood.",
+    "seconds": 6.768
+  },
+  {
+    "i": 17,
+    "segment": "text_beat",
+    "narration": "The Monterey Bay Aquarium Research Institute notes that many deep sea fish either lack swim bladders entirely or have bladders filled with lipids instead of gas, precisely because gas becomes lethally unstable under rapid decompression.",
+    "seconds": 14.448
+  },
+  {
+    "i": 18,
+    "segment": "evidence_chain",
+    "narration": "When a fish with a gas-filled swim bladder ascends rapidly, the gas inside expands according to Boyle's law: pressure and volume are inversely related.",
+    "seconds": 10.394666666666666
+  },
+  {
+    "i": 19,
+    "segment": "text_beat",
+    "narration": "If pressure drops by half, volume doubles. If pressure drops from one hundred atmospheres to one atmosphere \u2014 a rise from one thousand meters to the surface \u2014 the gas attempts to expand one hundredfold.",
+    "seconds": 12.890666666666666
+  },
+  {
+    "i": 20,
+    "segment": "evidence_chain",
+    "narration": "The bladder cannot stretch that much. It ruptures, or it expands so violently that it pushes the stomach out through the mouth and compresses other organs.",
+    "seconds": 9.925333333333333
+  },
+  {
+    "i": 21,
+    "segment": "text_beat",
+    "narration": "NOAA documents this as the most visible sign of barotrauma in captured deep sea fish.",
+    "seconds": 5.488
+  },
+  {
+    "i": 22,
+    "segment": "text_beat",
+    "narration": "Fish tissues, like human tissues, hold dissolved gases \u2014 primarily nitrogen and oxygen.",
+    "seconds": 6.501333333333333
+  },
+  {
+    "i": 23,
+    "segment": "ambient_drift",
+    "narration": "At high pressure, more gas dissolves into the blood and tissue fluids.",
+    "seconds": 4.522666666666667
+  },
+  {
+    "i": 24,
+    "segment": "text_beat",
+    "narration": "Deep sea fish can have significantly elevated dissolved gas concentrations compared to surface fish, though the exact percentage varies by species and depth.",
+    "seconds": 8.730666666666666
+  },
+  {
+    "i": 25,
+    "segment": "text_beat",
+    "narration": "When pressure drops suddenly, those gases come out of solution, forming bubbles inside blood vessels, muscle and organs.",
+    "seconds": 7.525333333333333
+  },
+  {
+    "i": 26,
+    "segment": "ambient_drift",
+    "narration": "This is decompression sickness, the same mechanism that affects human divers who ascend too quickly.",
+    "seconds": 5.957333333333334
+  },
+  {
+    "i": 27,
+    "segment": "process_steps",
+    "narration": "The bubbles are not harmless. They block capillaries, interrupt oxygen delivery, and cause tissue death.",
+    "seconds": 6.330666666666667
+  },
+  {
+    "i": 28,
+    "segment": "text_beat",
+    "narration": "In extreme cases they form large pockets that distort the shape of internal organs.",
+    "seconds": 6.010666666666666
+  },
+  {
+    "i": 29,
+    "segment": "process_steps",
+    "narration": "The Smithsonian Ocean notes that even species without swim bladders suffer from this process, because every cell and every fluid space in the body is saturated with gas at depth. The damage is cumulative and often irreversible.",
+    "seconds": 14.778666666666666
+  },
+  {
+    "i": 30,
+    "segment": "anatomy_callout",
+    "narration": "A fish's eye contains vitreous humor \u2014 a gel-like fluid that fills the eyeball and maintains its shape.",
+    "seconds": 6.8853333333333335
+  },
+  {
+    "i": 31,
+    "segment": "text_beat",
+    "narration": "At depth, the pressure inside the eye equals the pressure outside. During rapid ascent, the pressure outside drops faster than the pressure inside can equalize.",
+    "seconds": 10.397333333333334
+  },
+  {
+    "i": 32,
+    "segment": "anatomy_callout",
+    "narration": "The fluid pushes outward against the sclera, the tough outer layer of the eye.",
+    "seconds": 5.232
+  },
+  {
+    "i": 33,
+    "segment": "text_beat",
+    "narration": "In many deep sea fish brought to the surface, the eyes protrude grotesquely from the skull, sometimes rupturing entirely.",
+    "seconds": 7.538666666666667
+  },
+  {
+    "i": 34,
+    "segment": "anatomy_callout",
+    "narration": "This is not an adaptation failing \u2014 it is a structure designed for one pressure regime being forced into another.",
+    "seconds": 6.352
+  },
+  {
+    "i": 35,
+    "segment": "contrast_pair",
+    "narration": "The eye does not need to be strong when pressure is equal on both sides.",
+    "seconds": 4.368
+  },
+  {
+    "i": 36,
+    "segment": "text_beat",
+    "narration": "It only needs to maintain its shape. Remove the external pressure and the internal pressure becomes a destructive force.",
+    "seconds": 7.610666666666667
+  },
+  {
+    "i": 37,
+    "segment": "contrast_pair",
+    "narration": "The same principle applies to other fluid-filled cavities \u2014 the gut, the cranial cavity, the lateral line system. All of them are built for equilibrium, not for imbalance.",
+    "seconds": 10.810666666666666
+  },
+  {
+    "i": 38,
+    "segment": "comparison",
+    "narration": "The deep ocean is cold. Below one thousand meters, temperature hovers near four degrees Celsius year-round, according to NOAA.",
+    "seconds": 8.349333333333334
+  },
+  {
+    "i": 39,
+    "segment": "text_beat",
+    "narration": "Surface water in temperate and tropical zones can exceed twenty degrees Celsius.",
+    "seconds": 4.922666666666666
+  },
+  {
+    "i": 40,
+    "segment": "comparison",
+    "narration": "A fish adapted to four degrees experiences metabolic disruption at twenty degrees.",
+    "seconds": 5.946666666666666
+  },
+  {
+    "i": 41,
+    "segment": "text_beat",
+    "narration": "Enzymes that fold correctly in cold water may denature in warm water.",
+    "seconds": 4.997333333333334
+  },
+  {
+    "i": 42,
+    "segment": "comparison",
+    "narration": "Oxygen solubility decreases as temperature rises, so even if the fish's gills still function, the water holds less of what it needs.",
+    "seconds": 8.261333333333333
+  },
+  {
+    "i": 43,
+    "segment": "text_beat",
+    "narration": "Deep sea fish are ectotherms \u2014 their body temperature matches the surrounding water.",
+    "seconds": 5.285333333333333
+  },
+  {
+    "i": 44,
+    "segment": "text_beat",
+    "narration": "They have no mechanism to cool themselves. Enzyme systems are optimized for four degrees Celsius.",
+    "seconds": 5.968
+  },
+  {
+    "i": 45,
+    "segment": "comparison",
+    "narration": "Membrane fluidity is tuned to four degrees Celsius. At twenty degrees Celsius, these systems cannot regulate properly.",
+    "seconds": 7.717333333333333
+  },
+  {
+    "i": 46,
+    "segment": "text_beat",
+    "narration": "The Monterey Bay Aquarium Research Institute states that temperature shock alone can be lethal, even if pressure change is controlled. The two stressors compound each other.",
+    "seconds": 9.648
+  },
+  {
+    "i": 47,
+    "segment": "quote_card",
+    "narration": "I'd want to stop if this channel began rewarding certainty more than truth \u2014 selecting evidence to protect the brand, repeating numbers because they performed well, turning unresolved questions into clean stories.",
+    "seconds": 13.296
+  },
+  {
+    "i": 48,
+    "segment": "quote_card",
+    "narration": "The moment it can't correct itself without treating correction as humiliation, it has become the thing it was built to expose.",
+    "seconds": 6.981333333333334
+  },
+  {
+    "i": 49,
+    "segment": "size_ladder",
+    "narration": "Not all deep sea fish are equally fragile. Species that migrate vertically \u2014 moving between deep and shallow water to feed \u2014 have adaptations that allow controlled pressure changes.",
+    "seconds": 12.112
+  },
+  {
+    "i": 50,
+    "segment": "text_beat",
+    "narration": "The Greenland shark, for example, ranges from the surface to depths exceeding twenty-two hundred meters.",
+    "seconds": 6.085333333333334
+  },
+  {
+    "i": 51,
+    "segment": "size_ladder",
+    "narration": "The cusk eel has been recorded at eighty-three hundred seventy meters, and the Mariana snailfish holds the record at eighty-one seventy-eight meters, according to NOAA and the Guinness World Records.",
+    "seconds": 10.842666666666666
+  },
+  {
+    "i": 52,
+    "segment": "text_beat",
+    "narration": "These extreme-depth species often lack swim bladders entirely and have gelatinous, watery tissues that compress and expand with less structural damage.",
+    "seconds": 9.392
+  },
+  {
+    "i": 53,
+    "segment": "contrast_pair",
+    "narration": "Even so, bringing them up slowly does not guarantee survival. A controlled ascent over hours reduces barotrauma but does not eliminate temperature shock or the metabolic stress of changing pressure.",
+    "seconds": 12.954666666666666
+  },
+  {
+    "i": 54,
+    "segment": "text_beat",
+    "narration": "Research vessels equipped with pressurized collection chambers have kept some deep sea specimens alive at the surface by maintaining them in cold, high-pressure water, but this requires specialized equipment and is not standard practice. The logistics are formidable and the success rate remains low.",
+    "seconds": 17.541333333333334
+  },
+  {
+    "i": 55,
+    "segment": "text_beat",
+    "narration": "The paradox is that studying deep sea fish in their natural state requires leaving them there.",
+    "seconds": 5.456
+  },
+  {
+    "i": 56,
+    "segment": "ambient_drift",
+    "narration": "NOAA Ocean Exploration and the Monterey Bay Aquarium Research Institute deploy remotely operated vehicles and crewed submersibles to observe, film and sample deep sea life without bringing it to the surface.",
+    "seconds": 12.133333333333333
+  },
+  {
+    "i": 57,
+    "segment": "text_beat",
+    "narration": "These platforms can spend hours at depth, recording behavior, anatomy and physiology in the environment where the animal is alive and functional.",
+    "seconds": 9.370666666666667
+  },
+  {
+    "i": 58,
+    "segment": "text_beat",
+    "narration": "The footage is the only window into how these animals actually live.",
+    "seconds": 4.197333333333333
+  },
+  {
+    "i": 59,
+    "segment": "evidence_chain",
+    "narration": "Traditional collection methods \u2014 trawl nets hauled to the surface \u2014 yield dead or dying specimens.",
+    "seconds": 6.2026666666666666
+  },
+  {
+    "i": 60,
+    "segment": "text_beat",
+    "narration": "These are valuable for anatomical study, genetic analysis and species identification, but they reveal nothing about behavior, locomotion or ecological role.",
+    "seconds": 10.992
+  },
+  {
+    "i": 61,
+    "segment": "evidence_chain",
+    "narration": "The fish that reaches the deck is not the fish that lived at depth.",
+    "seconds": 4.325333333333333
+  },
+  {
+    "i": 62,
+    "segment": "text_beat",
+    "narration": "Its tissues are distorted, its swim bladder may have ruptured, and its eyes may have burst.",
+    "seconds": 6.32
+  },
+  {
+    "i": 63,
+    "segment": "evidence_chain",
+    "narration": "What you see is the wreckage of decompression, not the animal itself.",
+    "seconds": 4.0906666666666665
+  },
+  {
+    "i": 64,
+    "segment": "text_beat",
+    "narration": "The deeper the fish, the more catastrophic the ascent. A fish from one thousand meters experiences a pressure drop of one hundred atmospheres.",
+    "seconds": 8.730666666666666
+  },
+  {
+    "i": 65,
+    "segment": "text_beat",
+    "narration": "A fish from four thousand meters \u2014 near the average ocean depth \u2014 experiences a drop of four hundred atmospheres.",
+    "seconds": 7.269333333333333
+  },
+  {
+    "i": 66,
+    "segment": "ambient_drift",
+    "narration": "A fish from eight thousand meters, near the maximum depth of the abyssal plains, experiences a drop of eight hundred atmospheres.",
+    "seconds": 8.186666666666667
+  },
+  {
+    "i": 67,
+    "segment": "text_beat",
+    "narration": "The violence scales linearly with depth, but the biological consequences are not linear.",
+    "seconds": 5.882666666666666
+  },
+  {
+    "i": 68,
+    "segment": "text_beat",
+    "narration": "There is a threshold beyond which no tissue architecture can tolerate the change, no matter how slowly it occurs.",
+    "seconds": 6.224
+  },
+  {
+    "i": 69,
+    "segment": "ambient_drift",
+    "narration": "We do not yet know where that threshold lies for most species.",
+    "seconds": 3.8986666666666667
+  },
+  {
+    "i": 70,
+    "segment": "text_beat",
+    "narration": "We do not know the safe ascent rate for most deep sea species.",
+    "seconds": 3.696
+  },
+  {
+    "i": 71,
+    "segment": "text_beat",
+    "narration": "Published ranges are wide, and experimental data are sparse because keeping deep sea fish alive in captivity is difficult even under controlled conditions.",
+    "seconds": 10.056
+  },
+  {
+    "i": 72,
+    "segment": "ambient_drift",
+    "narration": "The threshold at which barotrauma becomes irreversible varies by species, by depth of origin, and by the presence or absence of a swim bladder.",
+    "seconds": 9.104
+  },
+  {
+    "i": 73,
+    "segment": "text_beat",
+    "narration": "Stating that rapid ascent is fatal is well supported. Stating a universal safe rate is not.",
+    "seconds": 6.597333333333333
+  },
+  {
+    "i": 74,
+    "segment": "text_beat",
+    "narration": "The evidence tells us what kills them. It does not yet tell us how to prevent it in every case.",
+    "seconds": 5.712
+  },
+  {
+    "i": 75,
+    "segment": "ambient_drift",
+    "narration": "A deep sea fish dies at the surface because its body is a solution to a problem that no longer exists.",
+    "seconds": 5.754666666666667
+  },
+  {
+    "i": 76,
+    "segment": "text_beat",
+    "narration": "The pressure that shaped every cell, every membrane, every gas-filled space is gone.",
+    "seconds": 5.509333333333333
+  },
+  {
+    "i": 77,
+    "segment": "text_beat",
+    "narration": "What remains is a structure without its context \u2014 an answer to a question the surface does not ask.",
+    "seconds": 6.725333333333333
+  }
+]

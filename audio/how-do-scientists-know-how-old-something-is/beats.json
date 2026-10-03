@@ -1,0 +1,482 @@
+[
+  {
+    "i": 0,
+    "segment": "depth_descent",
+    "narration": "A shell from the deep ocean floor reads as eleven thousand years old by carbon-14 dating.",
+    "seconds": 6.16
+  },
+  {
+    "i": 1,
+    "segment": "text_beat",
+    "narration": "The same sample, placed in a different lab using a different isotope system, returns eleven thousand two hundred years.",
+    "seconds": 7.1306666666666665
+  },
+  {
+    "i": 2,
+    "segment": "depth_descent",
+    "narration": "The methods agree within their stated uncertainty ranges. That convergence is not luck. It is the structure of how age is known.",
+    "seconds": 8.250666666666667
+  },
+  {
+    "i": 3,
+    "segment": "text_beat",
+    "narration": "How do scientists know how old something is?",
+    "seconds": 2.8213333333333335
+  },
+  {
+    "i": 4,
+    "segment": "anatomy_callout",
+    "narration": "You cannot see age. You see a rock, a bone, a layer of sediment.",
+    "seconds": 4.538666666666667
+  },
+  {
+    "i": 5,
+    "segment": "text_beat",
+    "narration": "Age is what you calculate after measuring something that changes at a known rate.",
+    "seconds": 4.421333333333333
+  },
+  {
+    "i": 6,
+    "segment": "anatomy_callout",
+    "narration": "The measurement might be the ratio of two isotopes, the number of rings in a coral skeleton, or the thickness of sediment layers. The calculation converts that measurement into time.",
+    "seconds": 11.218666666666667
+  },
+  {
+    "i": 7,
+    "segment": "ambient_drift",
+    "narration": "The method you choose depends on what you are dating and how old you think it is.",
+    "seconds": 4.250666666666667
+  },
+  {
+    "i": 8,
+    "segment": "text_beat",
+    "narration": "Carbon-14 works for organic material up to about fifty thousand years old.",
+    "seconds": 4.325333333333333
+  },
+  {
+    "i": 9,
+    "segment": "anatomy_callout",
+    "narration": "Uranium-lead dating works for rocks millions to billions of years old. Counting layers works when layers form annually and remain intact. No single method covers everything.",
+    "seconds": 11.461333333333334
+  },
+  {
+    "i": 10,
+    "segment": "size_ladder",
+    "narration": "Radiometric dating relies on radioactive decay. An unstable isotope \u2014 the parent \u2014 breaks down into a stable isotope \u2014 the daughter \u2014 at a rate that does not change.",
+    "seconds": 12.698666666666666
+  },
+  {
+    "i": 11,
+    "segment": "text_beat",
+    "narration": "That rate is the half-life: the time it takes for half of the parent atoms to decay.",
+    "seconds": 5.061333333333334
+  },
+  {
+    "i": 12,
+    "segment": "size_ladder",
+    "narration": "Carbon-14 has a half-life of five thousand seven hundred and thirty years.",
+    "seconds": 4.8053333333333335
+  },
+  {
+    "i": 13,
+    "segment": "ambient_drift",
+    "narration": "It forms in the atmosphere when cosmic rays strike nitrogen. Living organisms take in carbon-14 while they are alive.",
+    "seconds": 8.52
+  },
+  {
+    "i": 14,
+    "segment": "text_beat",
+    "narration": "When they die, they stop taking it in, and the carbon-14 already in their tissues decays.",
+    "seconds": 5.221333333333333
+  },
+  {
+    "i": 15,
+    "segment": "size_ladder",
+    "narration": "Measure the ratio of carbon-14 to stable carbon-12, and you can calculate how long ago the organism died.",
+    "seconds": 7.301333333333333
+  },
+  {
+    "i": 16,
+    "segment": "ambient_drift",
+    "narration": "Uranium-238 decays to lead-206 with a half-life of four point five billion years.",
+    "seconds": 7.632
+  },
+  {
+    "i": 17,
+    "segment": "text_beat",
+    "narration": "Potassium-40 decays to argon-40 with a half-life of one point three billion years.",
+    "seconds": 6.096
+  },
+  {
+    "i": 18,
+    "segment": "size_ladder",
+    "narration": "These long half-lives make them useful for dating rocks and minerals far older than anything carbon-14 can reach.",
+    "seconds": 7.653333333333333
+  },
+  {
+    "i": 19,
+    "segment": "ambient_drift",
+    "narration": "The decay rate is not affected by temperature, pressure, or chemical environment.",
+    "seconds": 4.144
+  },
+  {
+    "i": 20,
+    "segment": "text_beat",
+    "narration": "That constancy is what makes the method work. You measure the ratio now, apply the known rate, and calculate backward to the starting point.",
+    "seconds": 8.026666666666667
+  },
+  {
+    "i": 21,
+    "segment": "ambient_drift",
+    "narration": "Some materials form layers at regular intervals. Trees add one ring per year.",
+    "seconds": 5.7973333333333334
+  },
+  {
+    "i": 22,
+    "segment": "text_beat",
+    "narration": "Ice sheets in Greenland and Antarctica trap a new layer of snow each year, and that snow compresses into ice while preserving a record of the atmosphere at the time it fell. Deep-sea sediments accumulate in layers, though the rate varies by location.",
+    "seconds": 15.944
+  },
+  {
+    "i": 23,
+    "segment": "ambient_drift",
+    "narration": "Counting layers gives you an age in years without needing to measure isotopes.",
+    "seconds": 4.762666666666667
+  },
+  {
+    "i": 24,
+    "segment": "ambient_drift",
+    "narration": "The method is direct. The limit is preservation. Layers must remain distinct and countable. Mixing, melting, or compression can erase the boundaries.",
+    "seconds": 10.885333333333334
+  },
+  {
+    "i": 25,
+    "segment": "text_beat",
+    "narration": "Ice cores from Greenland reach back more than one hundred thousand years with annual layers visible for much of that span.",
+    "seconds": 6.906666666666666
+  },
+  {
+    "i": 26,
+    "segment": "ambient_drift",
+    "narration": "The EPICA ice core from Antarctica, drilled at Dome C, reaches eight hundred thousand years.",
+    "seconds": 5.968
+  },
+  {
+    "i": 27,
+    "segment": "ambient_drift",
+    "narration": "The oldest ice, from Allan Hills in Antarctica, exceeds one million years, though annual layers are no longer countable at that depth.",
+    "seconds": 8.912
+  },
+  {
+    "i": 28,
+    "segment": "text_beat",
+    "narration": "Age at that point comes from modeling ice flow and comparing to radiometric dates from volcanic ash layers.",
+    "seconds": 6.768
+  },
+  {
+    "i": 29,
+    "segment": "ambient_drift",
+    "narration": "Every dating method rests on assumptions. For radiometric dating, you assume the decay rate has not changed, the sample has not gained or lost parent or daughter isotopes since it formed, and you know or can measure the initial conditions.",
+    "seconds": 14.053333333333333
+  },
+  {
+    "i": 30,
+    "segment": "text_beat",
+    "narration": "These assumptions are testable. Decay rates have been measured in the lab under extreme conditions \u2014 high temperature, high pressure, strong magnetic fields \u2014 and they do not change.",
+    "seconds": 10.650666666666666
+  },
+  {
+    "i": 31,
+    "segment": "ambient_drift",
+    "narration": "Samples can be checked for contamination by looking for isotopes that should not be there.",
+    "seconds": 5.317333333333333
+  },
+  {
+    "i": 32,
+    "segment": "ambient_drift",
+    "narration": "Initial conditions can be estimated by measuring multiple isotopes in the same sample or by dating minerals that formed with no daughter isotope present.",
+    "seconds": 9.488
+  },
+  {
+    "i": 33,
+    "segment": "text_beat",
+    "narration": "Zircon crystals, for example, incorporate uranium but reject lead when they crystallize.",
+    "seconds": 5.458666666666667
+  },
+  {
+    "i": 34,
+    "segment": "ambient_drift",
+    "narration": "Any lead-206 in a zircon crystal must have come from uranium-238 decay.",
+    "seconds": 6.053333333333334
+  },
+  {
+    "i": 35,
+    "segment": "ambient_drift",
+    "narration": "That makes zircon ideal for uranium-lead dating because the initial condition \u2014 zero lead \u2014 is known.",
+    "seconds": 6.608
+  },
+  {
+    "i": 36,
+    "segment": "text_beat",
+    "narration": "When assumptions are violated, methods disagree. A contaminated sample gives a different age depending on which isotope system you use.",
+    "seconds": 8.229333333333333
+  },
+  {
+    "i": 37,
+    "segment": "ambient_drift",
+    "narration": "That disagreement is a signal, not a failure. It tells you the sample is not suitable for that method.",
+    "seconds": 6.458666666666667
+  },
+  {
+    "i": 38,
+    "segment": "quote_card",
+    "narration": "I'm not anti-science. I'm against using science as a magic authority word that means nobody has to show their work.",
+    "seconds": 7.333333333333333
+  },
+  {
+    "i": 39,
+    "segment": "ambient_drift",
+    "narration": "Different methods applied to the same material should agree. When they do not, you learn where a method breaks down.",
+    "seconds": 6.330666666666667
+  },
+  {
+    "i": 40,
+    "segment": "text_beat",
+    "narration": "Carbon-14 dating assumes the ratio of carbon-14 to carbon-12 in the atmosphere has been constant.",
+    "seconds": 6.544
+  },
+  {
+    "i": 41,
+    "segment": "ambient_drift",
+    "narration": "It has not. Tree rings provide a countable record going back more than ten thousand years, and wood from those rings can be carbon-14 dated.",
+    "seconds": 8.794666666666666
+  },
+  {
+    "i": 42,
+    "segment": "ambient_drift",
+    "narration": "The comparison shows that atmospheric carbon-14 levels have varied by up to ten percent over the past few thousand years.",
+    "seconds": 7.728
+  },
+  {
+    "i": 43,
+    "segment": "text_beat",
+    "narration": "That variation is now part of the calibration curve used to correct carbon-14 dates.",
+    "seconds": 6.245333333333333
+  },
+  {
+    "i": 44,
+    "segment": "ambient_drift",
+    "narration": "Volcanic ash layers can be dated by potassium-argon and also placed in a sequence by their position in sediment or ice cores.",
+    "seconds": 8.082666666666666
+  },
+  {
+    "i": 45,
+    "segment": "ambient_drift",
+    "narration": "The radiometric age should match the layer-counted age. When it does, both methods are confirmed. When it does not, you investigate why.",
+    "seconds": 9.04
+  },
+  {
+    "i": 46,
+    "segment": "text_beat",
+    "narration": "Magnetic reversals \u2014 times when Earth's magnetic field flipped north to south \u2014 are recorded in rocks and sediments.",
+    "seconds": 6.576
+  },
+  {
+    "i": 47,
+    "segment": "ambient_drift",
+    "narration": "The timing of those reversals has been dated radiometrically and also counted in sediment cores.",
+    "seconds": 6.245333333333333
+  },
+  {
+    "i": 48,
+    "segment": "ambient_drift",
+    "narration": "The two records agree. That agreement extends the confidence in both methods.",
+    "seconds": 5.1466666666666665
+  },
+  {
+    "i": 49,
+    "segment": "zone_column",
+    "narration": "Deep-sea sediments form from the slow rain of dead plankton, dust, and volcanic ash.",
+    "seconds": 5.925333333333334
+  },
+  {
+    "i": 50,
+    "segment": "text_beat",
+    "narration": "The rate depends on location. Abyssal plains far from land accumulate one to five millimeters per thousand years.",
+    "seconds": 7.045333333333334
+  },
+  {
+    "i": 51,
+    "segment": "zone_column",
+    "narration": "Continental slopes, closer to sediment sources, accumulate ten to one hundred millimeters per thousand years. Near hydrothermal vents, mineral precipitation can add sediment much faster.",
+    "seconds": 13.637333333333334
+  },
+  {
+    "i": 52,
+    "segment": "ambient_drift",
+    "narration": "These rates are measured by dating sediment cores with multiple methods. Radiocarbon dates the youngest layers.",
+    "seconds": 6.8213333333333335
+  },
+  {
+    "i": 53,
+    "segment": "text_beat",
+    "narration": "Oxygen isotope ratios in foraminifera shells track glacial cycles, which have known timing from ice cores.",
+    "seconds": 7.258666666666667
+  },
+  {
+    "i": 54,
+    "segment": "zone_column",
+    "narration": "Magnetic reversals provide tie points at known ages. Microfossils indicate the age range based on when those species existed.",
+    "seconds": 8.421333333333333
+  },
+  {
+    "i": 55,
+    "segment": "ambient_drift",
+    "narration": "The uneven accumulation means you cannot simply measure depth and divide by an average rate.",
+    "seconds": 6.842666666666666
+  },
+  {
+    "i": 56,
+    "segment": "text_beat",
+    "narration": "Each core must be dated directly. The methods used depend on the age range and the material available.",
+    "seconds": 6.576
+  },
+  {
+    "i": 57,
+    "segment": "size_ladder",
+    "narration": "Every age measurement comes with uncertainty. That uncertainty is not a flaw.",
+    "seconds": 4.538666666666667
+  },
+  {
+    "i": 58,
+    "segment": "text_beat",
+    "narration": "It is a statement of what the measurement can and cannot resolve.",
+    "seconds": 4.1226666666666665
+  },
+  {
+    "i": 59,
+    "segment": "size_ladder",
+    "narration": "A radiocarbon date might be reported as eleven thousand two hundred years plus or minus four hundred years at ninety-five percent confidence.",
+    "seconds": 10.16
+  },
+  {
+    "i": 60,
+    "segment": "ambient_drift",
+    "narration": "That means if you repeated the measurement many times, ninety-five percent of the results would fall between ten thousand eight hundred and eleven thousand six hundred years. The uncertainty comes from counting statistics, instrument precision, and sample size.",
+    "seconds": 16.944
+  },
+  {
+    "i": 61,
+    "segment": "text_beat",
+    "narration": "Longer-lived isotopes have larger absolute uncertainties but smaller relative uncertainties. A uranium-lead date of one billion years might have an uncertainty of ten million years \u2014 one percent.",
+    "seconds": 13.04
+  },
+  {
+    "i": 62,
+    "segment": "size_ladder",
+    "narration": "That is precise enough to distinguish rock formations separated by tens of millions of years but not precise enough to resolve events a few million years apart.",
+    "seconds": 9.349333333333334
+  },
+  {
+    "i": 63,
+    "segment": "ambient_drift",
+    "narration": "Reporting uncertainty lets you compare measurements. Two ages that overlap within their uncertainty ranges are consistent.",
+    "seconds": 7.696
+  },
+  {
+    "i": 64,
+    "segment": "text_beat",
+    "narration": "Two ages that do not overlap are genuinely different, and that difference means something about the samples or the methods.",
+    "seconds": 7.077333333333334
+  },
+  {
+    "i": 65,
+    "segment": "ambient_drift",
+    "narration": "The visual directives in this script emphasize process over result. The chain from observation to age shows that age is not a direct measurement.",
+    "seconds": 8.869333333333334
+  },
+  {
+    "i": 66,
+    "segment": "text_beat",
+    "narration": "The steps directive for radiometric dating shows that the method is a procedure, not a black box.",
+    "seconds": 6.330666666666667
+  },
+  {
+    "i": 67,
+    "segment": "ambient_drift",
+    "narration": "The checklist of assumptions shows that the method is conditional, not absolute.",
+    "seconds": 4.336
+  },
+  {
+    "i": 68,
+    "segment": "ambient_drift",
+    "narration": "The ladder of half-lives shows the range of timescales different isotopes can measure.",
+    "seconds": 5.125333333333334
+  },
+  {
+    "i": 69,
+    "segment": "text_beat",
+    "narration": "The contrast directive shows that age is calculated, not observed. The sources directive shows that multiple independent lines of evidence support the same conclusion.",
+    "seconds": 9.221333333333334
+  },
+  {
+    "i": 70,
+    "segment": "ambient_drift",
+    "narration": "These methods tell you when something formed or died, not what happened to it afterward.",
+    "seconds": 4.677333333333333
+  },
+  {
+    "i": 71,
+    "segment": "text_beat",
+    "narration": "A rock dated to two billion years old formed two billion years ago.",
+    "seconds": 4.296
+  },
+  {
+    "i": 72,
+    "segment": "ambient_drift",
+    "narration": "That date does not tell you when the rock reached the surface, when it was buried, or when it was collected.",
+    "seconds": 6.277333333333333
+  },
+  {
+    "i": 73,
+    "segment": "ambient_drift",
+    "narration": "Carbon-14 becomes undetectable beyond about fifty thousand years. Material older than that cannot be dated by this method.",
+    "seconds": 7.973333333333334
+  },
+  {
+    "i": 74,
+    "segment": "text_beat",
+    "narration": "Uranium-lead dating requires minerals that incorporate uranium, which limits the types of samples it can date.",
+    "seconds": 6.810666666666667
+  },
+  {
+    "i": 75,
+    "segment": "ambient_drift",
+    "narration": "Layer counting requires continuous, undisturbed deposition, which is rare over long timescales.",
+    "seconds": 6.224
+  },
+  {
+    "i": 76,
+    "segment": "ambient_drift",
+    "narration": "The methods converge where their ranges overlap. That convergence is the strongest evidence that the methods work.",
+    "seconds": 7.632
+  },
+  {
+    "i": 77,
+    "segment": "text_beat",
+    "narration": "Where they do not overlap, you are extrapolating, and the uncertainty grows.",
+    "seconds": 4.912
+  },
+  {
+    "i": 78,
+    "segment": "ambient_drift",
+    "narration": "Age is not a property. It is a calculation. The calculation depends on a measurement, a known rate, and stated assumptions.",
+    "seconds": 8.293333333333333
+  },
+  {
+    "i": 79,
+    "segment": "text_beat",
+    "narration": "The methods are independent, and they check each other. When they agree, the age is known. When they disagree, you learn where the method breaks.",
+    "seconds": 7.962666666666666
+  }
+]

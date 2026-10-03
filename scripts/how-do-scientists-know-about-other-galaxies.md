@@ -77,6 +77,22 @@ The evidence for other galaxies is not a single observation but a convergence of
 {{ambient}}
 What this evidence does not establish is the ultimate fate of the universe, or whether other universes exist beyond the observable horizon. The observable universe is limited by the speed of light and the finite age of the cosmos. Light from objects beyond a certain distance, accounting for expansion, has not had time to reach Earth. Anything beyond that distance is not observable, and claims about it are not based on direct evidence. The methods described here apply only to the observable universe. They say nothing about what lies beyond.
 
+### Gravitational lensing provides independent distance confirmation
+
+{{chain: LENSING | massive object bends spacetime | light path curves | multiple images or arcs form | >mass and distance calculated}}
+Einstein's general relativity predicts that mass warps spacetime, and light follows that curvature. When a massive galaxy or galaxy cluster lies between Earth and a more distant galaxy, the foreground mass acts as a gravitational lens. Light from the background galaxy bends around the lens, often producing multiple images, arcs, or even complete rings. The effect was first observed in 1979 when astronomers identified a double image of a distant quasar, later confirmed to be a single object lensed by an intervening galaxy. The amount of bending depends on the mass of the lens and the distances involved. By measuring the positions and brightnesses of the lensed images, astronomers can calculate both the mass of the lensing object and the distance to the background galaxy.
+
+{{stat: 13.2 | billion light-years | distant galaxy magnified by lensing cluster | Hubble Space Telescope}}
+The Hubble Space Telescope has cataloged thousands of gravitational lenses. Some of the most distant galaxies ever observed have been confirmed through lensing by foreground galaxy clusters. The lensing magnifies the background galaxy, making it visible when it would otherwise be too faint to detect. This is not a distortion that obscures information—it is a magnification that reveals it. The method is independent of standard candles and redshift measurements, providing a cross-check on distance estimates. NASA's Hubble archive contains images of lensed galaxies at distances exceeding 13 billion light-years.
+
+### Galaxy rotation curves reveal mass that does not emit light
+
+{{contrast: visible matter | is=stars and gas that emit or absorb light | not=the only mass present}}
+When astronomers measure the rotation speed of stars and gas in a spiral galaxy, they find that objects far from the galactic center move faster than expected. According to Newtonian mechanics, if most of a galaxy's mass were concentrated in the visible stars and gas near the center, objects farther out should orbit more slowly, just as outer planets in the solar system orbit more slowly than inner ones. Instead, rotation speeds remain roughly constant out to the edge of the galaxy. This was first documented in the 1970s by Vera Rubin and Kent Ford at the Carnegie Institution, using spectrographic observations of the Andromeda Galaxy and others.
+
+{{text}}
+The discrepancy implies that galaxies contain far more mass than is visible. Observations show that while visible matter would predict rotation velocities dropping to perhaps 150 kilometers per second at a galaxy's outer edge, actual measurements often show velocities remaining near 220 kilometers per second or higher. This unseen mass is called dark matter. It does not emit, absorb, or reflect light, but its gravitational influence is measurable. The rotation curves are evidence not of what dark matter is, but that something with mass is present. Multiple independent observations support this: gravitational lensing shows more mass than visible matter accounts for, and the cosmic microwave background's temperature fluctuations require dark matter to match the observed large-scale structure of the universe. The evidence converges, but the nature of dark matter remains unknown.
+
 ### Closing
 
 {{text}}
@@ -94,19 +110,19 @@ Other galaxies are known through light that has traveled across space, carrying 
 
 ## Chapters
 
-- 00:00 Cold open
-- 00:35 Title card
-- 00:38 Light carries information across space that instruments can decode
-- 02:15 Distance is measured using objects with known intrinsic brightness
-- 04:30 Redshift reveals how fast a galaxy is moving away from Earth
-- 06:20 Producer POV
-- 06:32 Galaxies are not just points of light but resolved structures
-- 08:10 The cosmic distance ladder is a chain of overlapping methods
-- 09:45 What to notice in the edit
-- 10:50 Evidence limit
-- 11:35 Closing
+- 0:00 Cold open
+- 0:39 Light carries information across space that instruments can decode
+- 2:02 Distance is measured using objects with known intrinsic brightness
+- 4:12 Redshift reveals how fast a galaxy is moving away from Earth
+- 5:44 Galaxies are not just points of light but resolved structures
+- 7:03 The cosmic distance ladder is a chain of overlapping methods
+- 8:13 What to notice in the edit
+- 8:51 Evidence limit
+- 12:23 Closing
 
 ## Sources
+- https://www.nasa.gov/mission_pages/hubble/main/index.html
+- https://carnegiescience.edu/
 
 - NASA: Galaxies — https://science.nasa.gov/universe/galaxies/
 - European Space Agency: Gaia mission — https://www.esa.int/Science_Exploration/Space_Science/Gaia

@@ -1,0 +1,1067 @@
+[
+  {
+    "segment": "stat_card",
+    "seconds": 7.86,
+    "heading": "Cold open",
+    "narration": "Five percent. That is the fraction of the ocean floor mapped at high resolution according to NOAA Ocean Exploration.",
+    "args": {
+      "value": "5",
+      "unit": "percent",
+      "caption": "of the ocean floor mapped at high resolution",
+      "source": "NOAA Ocean Exploration"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Cold open",
+    "narration": "Yet textbooks describe pressure gradients, salinity profiles, and thermocline depths with confidence.",
+    "args": {
+      "lines": [
+        "Yet textbooks describe pressure",
+        "gradients, salinity profiles, and",
+        "thermocline depths"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 8.28,
+    "heading": "Cold open",
+    "narration": "The apparent contradiction dissolves when you separate two questions: how much have we photographed, and how much have we measured.",
+    "args": {
+      "value": "5",
+      "unit": "percent",
+      "caption": "of the ocean floor mapped at high resolution",
+      "source": "NOAA Ocean Exploration"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "Title card",
+    "narration": "How do scientists know so much about the deep ocean when we've explored so little of it?",
+    "args": {
+      "lines": [
+        "How do scientists know",
+        "so much about the",
+        "deep ocean"
+      ]
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "The five percent figure measures imaging, not knowledge",
+    "narration": "High-resolution mapping means resolving features smaller than one hundred meters across. It requires a ship to pass directly overhead with multibeam sonar or an autonomous vehicle to survey the area.",
+    "args": {
+      "term": "high-resolution mapping",
+      "meaning": "seafloor features smaller than one hundred meters resolved",
+      "boundary": "excludes satellite altimetry and sonar transects",
+      "source": "NOAA Ocean Exploration"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "The five percent figure measures imaging, not knowledge",
+    "narration": "NOAA Ocean Exploration defines this standard, and by that measure, five percent is correct.",
+    "args": {
+      "lines": [
+        "NOAA Ocean Exploration defines",
+        "this standard, and by",
+        "that measure"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 5.79,
+    "heading": "The five percent figure measures imaging, not knowledge",
+    "narration": "But the ocean has been measured in other ways for more than a century.",
+    "args": {
+      "term": "high-resolution mapping",
+      "meaning": "seafloor features smaller than one hundred meters resolved",
+      "boundary": "excludes satellite altimetry and sonar transects",
+      "source": "NOAA Ocean Exploration"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "The five percent figure measures imaging, not knowledge",
+    "narration": "Satellite altimetry detects gravitational anomalies caused by underwater mountains and trenches, revealing their locations without imaging them.",
+    "args": {
+      "lines": [
+        "Satellite altimetry detects gravitational",
+        "anomalies caused by underwater",
+        "mountains"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 5.38,
+    "heading": "The five percent figure measures imaging, not knowledge",
+    "narration": "Sonar transects sample depth along ship tracks. Sediment cores pull up layered history.",
+    "args": {
+      "term": "high-resolution mapping",
+      "meaning": "seafloor features smaller than one hundred meters resolved",
+      "boundary": "excludes satellite altimetry and sonar transects",
+      "source": "NOAA Ocean Exploration"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "The five percent figure measures imaging, not knowledge",
+    "narration": "Conductivity-temperature-depth casts measure the water column at thousands of points. Each method answers different questions.",
+    "args": {
+      "lines": [
+        "Conductivity-temperature-depth casts measure the",
+        "water column at thousands",
+        "of points."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 9.0,
+    "heading": "The five percent figure measures imaging, not knowledge",
+    "narration": "The General Bathymetric Chart of the Oceans, maintained by the International Hydrographic Organization and the Intergovernmental Oceanographic Commission, compiles these measurements into a global map.",
+    "args": {
+      "title": "Satellite altimetry and sonar",
+      "sources": [
+        [
+          "NOAA",
+          "gravity anomalies"
+        ],
+        [
+          "GEBCO",
+          "bathymetric compilation"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The five percent figure measures imaging, not knowledge",
+    "narration": "It is not high-resolution everywhere, but it is not five percent coverage either. The distinction matters because \"explored\" conflates seeing with knowing.",
+    "args": {
+      "lines": [
+        "It is not high-resolution",
+        "everywhere, but it is",
+        "not five"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "Physical laws apply everywhere, not just where cameras have been",
+    "narration": "Pressure increases by one atmosphere for every ten meters of depth. That relationship holds in the Mariana Trench and in the Puerto Rico Trench and in every trench not yet photographed.",
+    "args": {
+      "title": "Universal principles",
+      "stages": [
+        "pressure increases one atmosphere per ten meters",
+        "salinity measured at sample points",
+        "temperature profiles from CTD casts"
+      ],
+      "conclusion": "models interpolate between measurements"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Physical laws apply everywhere, not just where cameras have been",
+    "narration": "You do not need to visit each location to know the pressure there.",
+    "args": {
+      "lines": [
+        "You do not need",
+        "to visit each location",
+        "to know"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 5.38,
+    "heading": "Physical laws apply everywhere, not just where cameras have been",
+    "narration": "You need the depth, which sonar provides, and the equation, which physics provides.",
+    "args": {
+      "title": "Universal principles",
+      "stages": [
+        "pressure increases one atmosphere per ten meters",
+        "salinity measured at sample points",
+        "temperature profiles from CTD casts"
+      ],
+      "conclusion": "models interpolate between measurements"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Physical laws apply everywhere, not just where cameras have been",
+    "narration": "The same applies to temperature and salinity. Conductivity-temperature-depth instruments, or CTDs, lower through the water column and record profiles.",
+    "args": {
+      "lines": [
+        "The same applies to",
+        "temperature and salinity. Conductivity-temperature-depth",
+        "instruments"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "Physical laws apply everywhere, not just where cameras have been",
+    "narration": "Thousands of these casts, taken over decades, reveal patterns. The thermocline, the layer where temperature drops sharply, sits at predictable depths in different ocean basins.",
+    "args": {
+      "title": "Universal principles",
+      "stages": [
+        "pressure increases one atmosphere per ten meters",
+        "salinity measured at sample points",
+        "temperature profiles from CTD casts"
+      ],
+      "conclusion": "models interpolate between measurements"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Physical laws apply everywhere, not just where cameras have been",
+    "narration": "Salinity varies with evaporation and river input, but those inputs are measurable. Models interpolate between sample points using known circulation patterns.",
+    "args": {
+      "lines": [
+        "Salinity varies with evaporation",
+        "and river input, but",
+        "those inputs"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Physical laws apply everywhere, not just where cameras have been",
+    "narration": "Interpolation is not guessing. It is estimating between measurements using constraints. If you measure temperature at one hundred meters and at three hundred meters, and you know the water is stratified, you can estimate the gradient between them. The estimate carries uncertainty, but it is not a blind spot.",
+    "args": {
+      "term": "interpolation",
+      "includes": [
+        "estimating between measurements using physical laws"
+      ],
+      "excludes": [
+        "guessing without data"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 8.28,
+    "heading": "Sampling strategies extract global patterns from local measurements",
+    "narration": "Oceanographers do not measure every cubic meter of seawater. They measure representative samples and test whether patterns hold across locations.",
+    "args": {
+      "title": "Representative sampling",
+      "steps": [
+        [
+          "identify depth zones and regions",
+          ""
+        ],
+        [
+          "measure at scattered points",
+          ""
+        ],
+        [
+          "compare across locations",
+          ""
+        ]
+      ],
+      "note": "infer general principles"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Sampling strategies extract global patterns from local measurements",
+    "narration": "The oxygen minimum zone, a layer where dissolved oxygen drops to near zero, appears in all major oceans at depths between two hundred and one thousand meters.",
+    "args": {
+      "lines": [
+        "The oxygen minimum zone,",
+        "a layer where dissolved",
+        "oxygen drops"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "Sampling strategies extract global patterns from local measurements",
+    "narration": "It was not discovered by mapping every ocean. It was discovered by measuring oxygen at depth in multiple locations and recognizing the pattern.",
+    "args": {
+      "title": "Representative sampling",
+      "steps": [
+        [
+          "identify depth zones and regions",
+          ""
+        ],
+        [
+          "measure at scattered points",
+          ""
+        ],
+        [
+          "compare across locations",
+          ""
+        ]
+      ],
+      "note": "infer general principles"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Sampling strategies extract global patterns from local measurements",
+    "narration": "Once the pattern is established, you can predict where else it occurs.",
+    "args": {
+      "lines": [
+        "Once the pattern is",
+        "established, you can predict",
+        "where else"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "Sampling strategies extract global patterns from local measurements",
+    "narration": "Predictions are then tested with new measurements. This is how scientific knowledge accumulates. You do not need exhaustive coverage to identify a regularity.",
+    "args": {
+      "title": "Representative sampling",
+      "steps": [
+        [
+          "identify depth zones and regions",
+          ""
+        ],
+        [
+          "measure at scattered points",
+          ""
+        ],
+        [
+          "compare across locations",
+          ""
+        ]
+      ],
+      "note": "infer general principles"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Sampling strategies extract global patterns from local measurements",
+    "narration": "The Argo program, a collaboration among dozens of nations, maintains a fleet of nearly four thousand autonomous floats drifting through the upper two thousand meters of the ocean.",
+    "args": {
+      "lines": [
+        "The Argo program, a",
+        "collaboration among dozens of",
+        "nations, maintains"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Sampling strategies extract global patterns from local measurements",
+    "narration": "Each float surfaces every ten days, transmits its data, and dives again.",
+    "args": {
+      "lines": [
+        "Each float surfaces every",
+        "ten days, transmits its",
+        "data"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Sampling strategies extract global patterns from local measurements",
+    "narration": "NOAA and the Argo Steering Team report that these floats provide temperature and salinity profiles with a spatial resolution of about three hundred kilometers.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Sampling strategies extract global patterns from local measurements",
+    "narration": "That is not high-resolution imaging, but it is systematic, repeated measurement of the water column across all ocean basins.",
+    "args": {
+      "lines": [
+        "That is not high-resolution",
+        "imaging, but it is",
+        "systematic, repeated"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Sampling strategies extract global patterns from local measurements",
+    "narration": "The data reveal seasonal changes, current shifts, and heat distribution. They feed into climate models and weather forecasts.",
+    "args": {
+      "lines": [
+        "The data reveal seasonal",
+        "changes, current shifts, and",
+        "heat distribution."
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.21,
+    "heading": "Sampling strategies extract global patterns from local measurements",
+    "narration": "The floats do not photograph the seafloor, but they measure the water above it continuously.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Sampling strategies extract global patterns from local measurements",
+    "narration": "The Atlantic holds roughly eight hundred floats, the Pacific about nineteen hundred, the Indian Ocean around six hundred, and the Southern Ocean approximately four hundred, though these numbers shift as floats are deployed and retired.",
+    "args": {
+      "lines": [
+        "The Atlantic holds roughly",
+        "eight hundred floats, the",
+        "Pacific about"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 7.86,
+    "heading": "Producer POV",
+    "narration": "'Scientists say' is almost meaningless on its own. Which scientists? How many? Was it one paper? Was it replicated?",
+    "args": {
+      "text": "'Scientists say' is almost meaningless on its own. Which scientists? How many? Was it one paper? Was it replicated?",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "depth_descent",
+    "seconds": 5.38,
+    "heading": "Remote sensing technologies measure without visiting",
+    "narration": "Multibeam sonar emits sound waves in a fan shape and times their return.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Remote sensing technologies measure without visiting",
+    "narration": "The result is a swath of depth measurements, tens of kilometers wide, along the ship's path.",
+    "args": {
+      "lines": [
+        "The result is a",
+        "swath of depth measurements,",
+        "tens"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "depth_descent",
+    "seconds": 7.86,
+    "heading": "Remote sensing technologies measure without visiting",
+    "narration": "A single research cruise can map thousands of square kilometers. The technology does not require a human to descend.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.45,
+    "heading": "Remote sensing technologies measure without visiting",
+    "narration": "It does not require a camera. It measures distance by timing sound, and sound travels predictably in seawater.",
+    "args": {
+      "variant": 0
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Remote sensing technologies measure without visiting",
+    "narration": "The speed of sound in seawater varies with temperature, salinity, and pressure, but those variables are measurable, so the variation is correctable.",
+    "args": {
+      "lines": [
+        "The speed of sound",
+        "in seawater varies with",
+        "temperature, salinity"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "depth_descent",
+    "seconds": 5.79,
+    "heading": "Remote sensing technologies measure without visiting",
+    "narration": "Satellite altimetry works differently. It measures the height of the sea surface from orbit.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.79,
+    "heading": "Remote sensing technologies measure without visiting",
+    "narration": "Underwater mountains pull water toward them slightly, creating a bulge. Trenches create a depression.",
+    "args": {
+      "variant": 1
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Remote sensing technologies measure without visiting",
+    "narration": "The satellite detects these millimeter-scale variations, and from them, scientists infer the shape of the seafloor.",
+    "args": {
+      "lines": [
+        "The satellite detects these",
+        "millimeter-scale variations, and from",
+        "them, scientists"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "depth_descent",
+    "seconds": 4.97,
+    "heading": "Remote sensing technologies measure without visiting",
+    "narration": "The resolution is coarse, around five kilometers, but the coverage is global.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Remote sensing technologies measure without visiting",
+    "narration": "CryoSat-2 and Jason-3, both satellite missions, provide this data. It is not exploration in the sense of sending a submersible, but it is measurement.",
+    "args": {
+      "variant": 2
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "timeline",
+    "seconds": 7.86,
+    "heading": "Sediment cores record history without observing it in real time",
+    "narration": "Sediment accumulates on the ocean floor in layers, typically a few centimeters per thousand years in the deep sea.",
+    "args": {
+      "events": [
+        [
+          1947,
+          "piston corer developed"
+        ],
+        [
+          1968,
+          "Glomar Challenger drilling begins"
+        ],
+        [
+          2013,
+          "IODP reaches 2500 m sub-seafloor"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Sediment cores record history without observing it in real time",
+    "narration": "A piston corer drives a tube into the sediment and pulls up a column, sometimes thirty meters long.",
+    "args": {
+      "lines": [
+        "A piston corer drives",
+        "a tube into the",
+        "sediment"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "timeline",
+    "seconds": 5.38,
+    "heading": "Sediment cores record history without observing it in real time",
+    "narration": "The layers preserve a record. Microfossils in the sediment indicate past ocean temperatures.",
+    "args": {
+      "events": [
+        [
+          1947,
+          "piston corer developed"
+        ],
+        [
+          1968,
+          "Glomar Challenger drilling begins"
+        ],
+        [
+          2013,
+          "IODP reaches 2500 m sub-seafloor"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Sediment cores record history without observing it in real time",
+    "narration": "Ash layers mark volcanic eruptions. Magnetic minerals record reversals of Earth's magnetic field.",
+    "args": {
+      "lines": [
+        "Ash layers mark volcanic",
+        "eruptions. Magnetic minerals record",
+        "reversals"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "timeline",
+    "seconds": 9.0,
+    "heading": "Sediment cores record history without observing it in real time",
+    "narration": "The International Ocean Discovery Program, or IODP, has drilled more than fifteen hundred sites since nineteen sixty-eight, reaching as deep as twenty-five hundred meters below the seafloor.",
+    "args": {
+      "events": [
+        [
+          1947,
+          "piston corer developed"
+        ],
+        [
+          1968,
+          "Glomar Challenger drilling begins"
+        ],
+        [
+          2013,
+          "IODP reaches 2500 m sub-seafloor"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Sediment cores record history without observing it in real time",
+    "narration": "Each core is a timeline. You do not need to observe the past directly to know what happened.",
+    "args": {
+      "lines": [
+        "Each core is a",
+        "timeline. You do not",
+        "need"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "timeline",
+    "seconds": 9.0,
+    "heading": "Sediment cores record history without observing it in real time",
+    "narration": "You need a record that preserves it, and sediment does that. The program began with the Glomar Challenger in nineteen sixty-eight and continues today with multiple drilling vessels.",
+    "args": {
+      "events": [
+        [
+          1947,
+          "piston corer developed"
+        ],
+        [
+          1968,
+          "Glomar Challenger drilling begins"
+        ],
+        [
+          2013,
+          "IODP reaches 2500 m sub-seafloor"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Sediment cores record history without observing it in real time",
+    "narration": "The piston corer itself was developed in nineteen forty-seven and revolutionized marine geology by allowing scientists to sample deeper into the sediment column than earlier gravity corers could reach.",
+    "args": {
+      "lines": [
+        "The piston corer itself",
+        "was developed in nineteen",
+        "forty-seven"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 5.79,
+    "heading": "Models are tested, not assumed",
+    "narration": "Oceanographic models simulate currents, temperature, and salinity using equations of fluid motion and thermodynamics.",
+    "args": {
+      "title": "Model validation",
+      "items": [
+        "+compared against independent measurements",
+        "+adjusted when predictions fail",
+        "+published with uncertainty ranges",
+        "?perfect accuracy not claimed"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Models are tested, not assumed",
+    "narration": "They are not assumptions. They are tested against observations. If a model predicts a current speed and a drifter buoy measures a different speed, the model is revised.",
+    "args": {
+      "lines": [
+        "They are not assumptions.",
+        "They are tested against",
+        "observations."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 7.86,
+    "heading": "Models are tested, not assumed",
+    "narration": "The process is iterative. Early models of the thermohaline circulation, the global conveyor belt of deep water, were rough.",
+    "args": {
+      "title": "Model validation",
+      "items": [
+        "+compared against independent measurements",
+        "+adjusted when predictions fail",
+        "+published with uncertainty ranges",
+        "?perfect accuracy not claimed"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Models are tested, not assumed",
+    "narration": "Decades of measurement refined them. Today's models reproduce observed temperature distributions and predict seasonal changes that match satellite data.",
+    "args": {
+      "lines": [
+        "Decades of measurement refined",
+        "them. Today's models reproduce",
+        "observed temperature"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 6.21,
+    "heading": "Models are tested, not assumed",
+    "narration": "They still carry uncertainty, especially at small scales, but they are constrained by real measurements.",
+    "args": {
+      "title": "Model validation",
+      "items": [
+        "+compared against independent measurements",
+        "+adjusted when predictions fail",
+        "+published with uncertainty ranges",
+        "?perfect accuracy not claimed"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Models are tested, not assumed",
+    "narration": "A model that contradicts data is discarded or corrected. That is the test.",
+    "args": {
+      "lines": [
+        "A model that contradicts",
+        "data is discarded or",
+        "corrected."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Some questions remain open because the evidence is sparse",
+    "narration": "Species counts in the deep ocean are uncertain. Estimates range from five hundred thousand to ten million marine species, with many undiscovered in the deep sea.",
+    "args": {
+      "lines": [
+        "Species counts in the",
+        "deep ocean are uncertain.",
+        "Estimates range"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Some questions remain open because the evidence is sparse",
+    "narration": "Ocean Census and the Census of Marine Life report a midpoint estimate near seven hundred fifty thousand, but they are extrapolations from limited sampling.",
+    "args": {
+      "variant": 2
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Some questions remain open because the evidence is sparse",
+    "narration": "Each trawl or submersible dive finds new species, suggesting the true number is high, but the rate of discovery does not yet allow a precise total.",
+    "args": {
+      "lines": [
+        "Each trawl or submersible",
+        "dive finds new species,",
+        "suggesting"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Some questions remain open because the evidence is sparse",
+    "narration": "This is a real gap. The deep ocean is undersampled for biodiversity.",
+    "args": {
+      "lines": [
+        "This is a real",
+        "gap. The deep ocean",
+        "is undersampled"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.79,
+    "heading": "Some questions remain open because the evidence is sparse",
+    "narration": "Scientists state the uncertainty openly. The range is wide because the evidence is incomplete.",
+    "args": {
+      "variant": 3
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.28,
+    "heading": "Some questions remain open because the evidence is sparse",
+    "narration": "Geothermal heat flux through the seafloor is another example. Measurements exist at a few hundred points, mostly near mid-ocean ridges.",
+    "args": {
+      "variant": 3
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Some questions remain open because the evidence is sparse",
+    "narration": "The global average is estimated, but local variation is poorly known. Some areas may have higher flux than models predict. The evidence is not sufficient to resolve it everywhere.",
+    "args": {
+      "lines": [
+        "The global average is",
+        "estimated, but local variation",
+        "is poorly"
+      ]
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "Knowledge is not the same as exhaustive documentation. You do not need to photograph every square meter to know how pressure scales with depth, or where the thermocline sits, or how sediment layers form.",
+    "args": {
+      "term": "knowledge",
+      "includes": [
+        "patterns inferred from systematic measurement"
+      ],
+      "excludes": [
+        "complete documentation of every location"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "What to notice in the edit",
+    "narration": "You need measurements that reveal the pattern and tests that confirm it holds elsewhere.",
+    "args": {
+      "lines": [
+        "You need measurements that",
+        "reveal the pattern and",
+        "tests"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 8.69,
+    "heading": "What to notice in the edit",
+    "narration": "The five percent figure is real, but it measures one kind of data collection, not the sum of what is known.",
+    "args": {
+      "term": "knowledge",
+      "includes": [
+        "patterns inferred from systematic measurement"
+      ],
+      "excludes": [
+        "complete documentation of every location"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "The confusion arises when exploration is treated as synonymous with understanding, when in fact most scientific knowledge comes from instruments that sample, measure, and infer rather than observe directly.",
+    "args": {
+      "lines": [
+        "The confusion arises when",
+        "exploration is treated as",
+        "synonymous"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Evidence limit",
+    "narration": "High-resolution maps do not exist for ninety-five percent of the ocean floor.",
+    "args": {
+      "lines": [
+        "High-resolution maps do not",
+        "exist for ninety-five percent"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.38,
+    "heading": "Evidence limit",
+    "narration": "Biodiversity in the deep sea is undersampled, and species counts remain rough estimates.",
+    "args": {
+      "variant": 4
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "Evidence limit",
+    "narration": "Local variation in geothermal flux, small-scale topography, and rare geological features may not appear in current datasets.",
+    "args": {
+      "lines": [
+        "Local variation in geothermal",
+        "flux, small-scale topography, and",
+        "rare geological"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "Evidence limit",
+    "narration": "The knowledge scientists have is robust for large-scale patterns and physical laws, but it is not complete.",
+    "args": {
+      "lines": [
+        "The knowledge scientists have",
+        "is robust for large-scale",
+        "patterns"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.21,
+    "heading": "Evidence limit",
+    "narration": "Stating that limit is not a failure. It is an accurate description of the evidence.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 4.97,
+    "heading": "Closing",
+    "narration": "The deep ocean is not fully explored, but it is not unknown.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Closing",
+    "narration": "Systematic measurement, physical laws, and tested models provide knowledge that does not require visiting every location.",
+    "args": {
+      "lines": [
+        "Systematic measurement, physical laws,",
+        "and tested models provide",
+        "knowledge"
+      ]
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 4.97,
+    "heading": "Closing",
+    "narration": "The distinction between imaging and understanding is the answer to the question.",
+    "args": {
+      "variant": 2
+    },
+    "from": "directive"
+  }
+]
