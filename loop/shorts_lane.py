@@ -214,6 +214,85 @@ def upload_short(st, token: str, slug: str, question: str, path: Path,
     return vid
 
 
+# A Short whose episode the render gate is holding is parked in the ledger
+# under this flag with NO scheduled time. The row stays — dropping it would
+# make pending() upload the same cut again — and release_held() puts it back
+# on the calendar the first run after the hold lifts.
+HELD_BY_RENDER = "render_hold"
+
+
+def held_rows(led: dict) -> list[dict]:
+    return [r for r in led["published"] if r.get("held_by") == HELD_BY_RENDER]
+
+
+def releasable(led: dict) -> tuple[list[dict], list[dict]]:
+    """Ledger rows parked behind the render gate, split into
+    (hold lifted — release now, still held — leave alone)."""
+    held = render_gate.held_slugs()
+    rows = held_rows(led)
+    return ([r for r in rows if r["slug"] not in held],
+            [r for r in rows if r["slug"] in held])
+
+
+def release_held(st, token: str, lane: str = "shorts") -> int:
+    """Re-schedule every parked Short whose episode is no longer held.
+
+    WHAT HAPPENED. 2026-10-03 the cloud lane ran against main minutes before
+    #138 (pending() skipping held slugs) landed, and scheduled Shorts for two
+    episodes the render gate was holding under the 10-minute floor — a Short
+    pointing into an episode that was not on the channel, due public that
+    night. Both were unscheduled by hand (private, publishAt cleared) and their
+    rows flagged `held_by: render_hold`. This is the other half: a parked Short
+    is DEFERRED, not retired, and it must come back by itself once loop/extend.py
+    and the next batch have brought its episode over the floor — nothing here
+    waits on a person noticing the hold has lifted.
+
+    Returns how many were released. A row still held is named in a note and
+    skipped; nothing to release is NOT work, so a run that only gets this far
+    still trips Rule 0 as it should.
+    """
+    led = load_ledger()
+    release, still = releasable(led)
+    for r in still:
+        st.note(f"{r['slug']} Short stays unscheduled: its episode is still "
+                f"held by the render gate")
+    if not release:
+        return 0
+    when = schedule_for(led, len(release))
+    for row, t in zip(release, when):
+        vid = row["video_id"]
+        stamp = t.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+        P.set_privacy(token, vid, "private", publish_at=stamp)
+        time.sleep(2)
+        got = P.read_status_full(token, vid)
+        # Verify against YouTube, not the 200: a schedule the API accepted
+        # but did not store is exactly "runs but inert", and this Short
+        # would sit private forever with a ledger row saying otherwise.
+        if got.get("privacy") != "private" or \
+                _stamp(got.get("publishAt")) != _stamp(stamp):
+            st.named_stop("SHORT_RELEASE_NOT_APPLIED",
+                          f"{vid} ({row['slug']}) should be private with "
+                          f"publishAt={stamp} but reports {got}",
+                          detail={"row": row, "after": got},
+                          unblock="Check the Short in YouTube Studio; the API "
+                                  "accepted the schedule but did not apply it.")
+        row["scheduled_publish_at"] = stamp
+        row["released_at"] = now()
+        row.pop("held_by", None)
+        save_ledger(led)
+        quota.spend(FLIP_UNITS, lane)
+        st.work(f"{row['slug']} Short released: its episode cleared the render "
+                f"gate, scheduled for {stamp}")
+    return len(release)
+
+
+def _stamp(s: str | None):
+    """Compare RFC3339 stamps by instant, not by spelling."""
+    if not s:
+        return None
+    return datetime.fromisoformat(s.replace("Z", "+00:00"))
+
+
 def local_short(slug: str):
     """This Mac's answer to "is there a cut Short for this episode?"."""
     if not (ROOT / "renders" / f"{slug}-final.mp4").exists():

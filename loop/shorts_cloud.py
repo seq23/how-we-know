@@ -15,6 +15,11 @@ thought. They are already cut, so they cost nothing but this lane.
     cloud  this file, daily    R2 -> YouTube, private, evening slot
     repo   loop/state/shorts_ledger.json committed back
 
+A Short parked behind the render gate (`held_by: render_hold` in the ledger,
+no scheduled time) is re-scheduled by `shorts_lane.release_held()` on the first
+run after its episode clears the gate - before any new upload, so the two
+cannot be handed the same evening. Why that exists: see release_held.
+
 THE EVENING SLOT IS NOT THE EPISODE SLOT, and this file does not choose it.
 `shorts_lane.schedule_for()` does — 19:00 America/Chicago on Mon, Wed, Fri and
 Sat. Long-form peaks 08:00-11:00 local and Shorts peak 18:00-21:00, very nearly
@@ -116,7 +121,11 @@ def run(limit: int = 2, dry_run: bool = False) -> int:
 
         look = shelf_lookup(shelf)
         todo = SL.pending(have=look)
-        if not todo and look.unverified:
+        # Shorts parked behind the render gate (shorts_lane.release_held). A
+        # hold that has lifted is work for this run even when nothing new is
+        # on the shelf; a hold still in force is a note, not a stop.
+        to_release, still_held = SL.releasable(SL.load_ledger())
+        if not todo and not to_release and look.unverified:
             st.named_stop(
                 "SHORTS_SHELVED_BUT_UNVERIFIED",
                 f"{len(look.unverified)} Short(s) are on the R2 shelf and "
@@ -136,7 +145,7 @@ def run(limit: int = 2, dry_run: bool = False) -> int:
                         "push-shorts half writes both objects and refuses to "
                         "shelve a cut that fails V14 attribution or V15 "
                         "caption crop.")
-        if not todo:
+        if not todo and not to_release:
             st.named_stop(
                 "NO_SHORTS_SHELVED",
                 "every finished episode either already has a Short in the "
@@ -148,7 +157,7 @@ def run(limit: int = 2, dry_run: bool = False) -> int:
         # The same 10,000-unit daily allowance the episode lane spends from. A
         # Short costs exactly what an episode costs (1,600 insert + 50 thumb +
         # 50 flip); YouTube does not discount the short one.
-        afford = (limit if dry_run else
+        afford = (limit if dry_run or not todo else
                   quota.videos_affordable(limit,
                                           reserve=quota.upload_reserve()))
         if afford == 0:
@@ -161,17 +170,23 @@ def run(limit: int = 2, dry_run: bool = False) -> int:
             st.note(f"quota allows {afford} of {limit} today. {quota.report()}")
 
         take = todo[:afford]
-        led = SL.load_ledger()
-        when = SL.schedule_for(led, len(take))
-
-        for slug, t in zip(take, when):
-            print(f"  plan  {t.astimezone(SL.SHORTS_TZ):%a %d %b %H:%M %Z}  "
-                  f"{slug}")
-
+        for r in to_release:
+            print(f"  release  {r['slug']}  (hold lifted)")
+        for r in still_held:
+            print(f"  held     {r['slug']}  (still under the render gate)")
         if dry_run:
-            for slug, t in zip(take, when):
+            # Slots are planned from one ledger so the released rows and the
+            # new uploads cannot be handed the same evening.
+            when = SL.schedule_for(SL.load_ledger(), len(to_release) + len(take))
+            for r, t in zip(to_release, when):
+                st.work(f"would release {r['slug']} Short at "
+                        f"{t.astimezone(SL.SHORTS_TZ):%Y-%m-%d %H:%M %Z}")
+            for slug, t in zip(take, when[len(to_release):]):
                 st.work(f"planned Short for {slug} at "
                         f"{t.astimezone(SL.SHORTS_TZ):%Y-%m-%d %H:%M %Z}")
+            for r in still_held:
+                st.note(f"{r['slug']} Short stays unscheduled: its episode "
+                        f"is still held by the render gate")
             st.note("DRY RUN — nothing downloaded, nothing uploaded.")
             return 0
 
@@ -179,9 +194,23 @@ def run(limit: int = 2, dry_run: bool = False) -> int:
         if not creds or creds.get("unusable"):
             code, msg, unblock = up.credential_stop(creds, cfg)
             st.named_stop(code,
-                          f"{len(take)} verified Short(s) are shelved but "
-                          + msg, detail={"ready": take}, unblock=unblock)
+                          f"{len(take)} verified Short(s) are shelved and "
+                          f"{len(to_release)} parked Short(s) can be released, "
+                          f"but " + msg,
+                          detail={"ready": take,
+                                  "release": [r["slug"] for r in to_release]},
+                          unblock=unblock)
         token = up.access_token(creds)
+
+        # Release first: the slots it takes are in the ledger before the new
+        # uploads are scheduled, so the two cannot collide.
+        released = SL.release_held(st, token, lane=LANE)
+        if not take:
+            return 0
+        when = SL.schedule_for(SL.load_ledger(), len(take))
+        for slug, t in zip(take, when):
+            print(f"  plan  {t.astimezone(SL.SHORTS_TZ):%a %d %b %H:%M %Z}  "
+                  f"{slug}")
 
         with tempfile.TemporaryDirectory(prefix="how-we-know-shorts-") as td:
             tmp = Path(td)
