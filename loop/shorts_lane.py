@@ -56,6 +56,7 @@ import domains                                    # noqa: E402
 import ledger                                     # noqa: E402
 import publish as P                               # noqa: E402
 import quota                                      # noqa: E402
+import render_gate                                # noqa: E402
 import shorts_approval                            # noqa: E402
 import upload as up                               # noqa: E402
 from common import Stage, config, now, week_id     # noqa: E402
@@ -268,10 +269,20 @@ def pending(have=None) -> list[str]:
     # definition of the publish queue across domains, and V27 exists to stop
     # exactly this -- it simply had not been pointed at this module.
     done = {r["slug"] for r in load_ledger()["published"]}
+    # A HELD RENDER REACHES YOUTUBE BY NO ROUTE - THIS ONE INCLUDED. The render
+    # gate (loop/render_gate.py) holds a finished episode that is clipped or
+    # under the runtime floor, and both episode upload routes consult that
+    # hold. This lane did not. On 2026-10-03 the first Shorts to reach the R2
+    # shelf after a week-long gap were cut from three episodes the gate was
+    # holding at 9.86-9.90 minutes, so the cloud lane would have published a
+    # Short for an episode that does not yet exist on the channel, days before
+    # the episode it points back to. A held slug is DEFERRED, not dropped: it
+    # returns the run after the hold lifts, and its cut is never re-made.
+    held = render_gate.held_slugs()
     out = []
     for q in batch_queue.queued_entries():
         slug = q["slug"]
-        if slug in done:
+        if slug in done or slug in held:
             continue
         found = have(slug)
         if found is not True:
