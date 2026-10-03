@@ -140,13 +140,58 @@ RENDER_QUEUE = LOOP / "render_queue.json"
 NOT_YET_BUILT = ("queued", "approved")
 
 
+def shelved_without_thumbnail(shelf, slugs: list[str]) -> tuple[list[str], str | None]:
+    """Which of these slugs have a render on the shelf and no thumbnail beside it.
+
+    This is the one Mac-side fault the cloud CAN see: the Mac rendered and
+    pushed, and built no thumbnail, so `shelf_lookup` refuses the pair and the
+    lane reports "nothing shelved" as if the Mac were idle. From 2026-09-26 to
+    10-03 how-do-scientists-know-about-other-galaxies sat in exactly that
+    state for eight runs while the stop blamed narration (#143). Two HEADs per
+    slug; the bytes are never fetched. Returns (slugs, error) - a shelf error
+    ends the scan and is reported, never swallowed into "none".
+    """
+    out = []
+    for s in slugs:
+        try:
+            if (shelf.head(r2.render_key(s)) is not None
+                    and shelf.head(r2.thumb_key(s)) is None):
+                out.append(s)
+        except Exception as e:                             # noqa: BLE001
+            return out, f"shelf scan stopped at {s}: {str(e)[:120]}"
+    return out, None
+
+
+def mac_heartbeat_line(hb: dict | None) -> str:
+    """One sentence of what the committed Mac heartbeat says, or that it is
+    missing. loop/state/mac_heartbeat.json is written by the Mac's own lanes
+    and committed, so the cloud can quote it instead of guessing."""
+    if not hb:
+        return ("No Mac heartbeat is committed (loop/state/mac_heartbeat.json), "
+                "so the Mac's last run time is unknown from here.")
+    b = hb.get("batch") or {}
+    held = b.get("held") or (hb.get("backfill") or {}).get("held") or []
+    return (f"Mac batch last ran {b.get('last_run_at') or 'never'} "
+            f"({'ok' if b.get('ok') else 'NOT ok'}); "
+            f"{hb.get('renders_finished', '?')} renders finished on the Mac; "
+            f"{len(held)} held by the render gate"
+            + (f" ({', '.join(held[:4])})" if held else "") + ".")
+
+
 def diagnose_empty_shelf(queued: list[str], done: set[str], held: set[str],
                          handoff: list[dict] | None,
                          promotion_held: dict | None = None,
                          runway: dict | None = None,
-                         refused: set | None = None) -> dict:
+                         refused: set | None = None,
+                         shelf=None,
+                         heartbeat: dict | None = None) -> dict:
     """WHY the shelf holds nothing to upload, worked out from state this lane
     can already read. Returns the named stop to raise.
+
+    `shelf` (an r2 backend) and `heartbeat` (loop/state/mac_heartbeat.json) are
+    what let NOTHING_SHELVED name the blocker it can see instead of "the Mac
+    is stuck": a render shelved without its thumbnail is the first line when
+    there is one, and the Mac's last run and render count are quoted.
 
     WHY THIS EXISTS. From 2026-09-15 to 2026-09-22 this lane said
     NOTHING_SHELVED eight days running and then paged (#105) with "the Mac is
@@ -222,19 +267,51 @@ def diagnose_empty_shelf(queued: list[str], done: set[str], held: set[str],
                     if s not in done and s not in held
                     and s not in promotion_holds_now]
     if awaiting_mac:
+        # NAME THE BLOCKER THE CLOUD CAN SEE, FIRST. "Waiting on the Mac" was
+        # true of #143 only in the sense that the Mac had rendered, pushed and
+        # built no thumbnail; the stop said "narration, render or push" and
+        # the escalation said "the Mac side is stuck" while the Mac was
+        # producing every night. A render on the shelf with no thumbnail is
+        # knowable from here with two HEADs, so it is said first, by slug.
+        no_thumb, scan_err = ([], None) if shelf is None else \
+            shelved_without_thumbnail(shelf, awaiting_mac)
+        waiting = [s for s in awaiting_mac if s not in no_thumb]
+        lines = []
+        if no_thumb:
+            lines.append(f"{len(no_thumb)} render(s) shelved without a "
+                         f"thumbnail: {', '.join(no_thumb)} — the Mac rendered "
+                         f"and pushed these but built no thumbnail, and this "
+                         f"lane will not upload a video it cannot thumbnail.")
+        if scan_err:
+            lines.append(scan_err + ".")
+        lines.append(mac_heartbeat_line(heartbeat))
+        if waiting:
+            lines.append(f"{len(waiting)} queued episode(s) are not in the "
+                         f"ledger and not on the R2 shelf, so they are still "
+                         f"waiting on the Mac (narration, render or push): "
+                         f"{', '.join(waiting[:8])}"
+                         f"{' ...' if len(waiting) > 8 else ''}")
+        unblock = ("On the Mac: .venv/bin/python visuals/thumbs_for.py "
+                   + " ".join(no_thumb) + " && bin/push-to-r2.sh "
+                   + " ".join(no_thumb) + " — the nightly batch does this "
+                   "itself for anything it renders; this is what to run if "
+                   "it has not. ") if no_thumb else ""
+        unblock += ("For the rest, read the '=== batch session' block in "
+                    "~/Library/Logs/how-we-know/batch.log. 'to narrate' and "
+                    "'to render' list these slugs until they are built; "
+                    "bin/push-to-r2.sh shelves them afterwards.")
         return {"code": "NOTHING_SHELVED",
-                "message": f"{len(awaiting_mac)} queued episode(s) are not in "
-                           f"the ledger and not on the R2 shelf, so they are "
-                           f"still waiting on the Mac (narration, render or "
-                           f"push): {', '.join(awaiting_mac[:8])}"
-                           f"{' ...' if len(awaiting_mac) > 8 else ''}",
+                "message": " ".join(lines),
                 "detail": {"awaiting_mac": awaiting_mac,
+                           "shelved_without_thumbnail": no_thumb,
+                           "shelf_scan_error": scan_err,
+                           "mac_heartbeat": {
+                               "batch_last_run_at": ((heartbeat or {}).get("batch") or {}).get("last_run_at"),
+                               "renders_finished": (heartbeat or {}).get("renders_finished"),
+                               "held": ((heartbeat or {}).get("batch") or {}).get("held")},
                            "render_gate_held": held_q,
                            "queued": len(queued), "uploaded": len(done & queued_set)},
-                "unblock": "On the Mac: read the '=== batch session' block in "
-                           "~/Library/Logs/how-we-know/batch.log. 'to narrate' "
-                           "and 'to render' list these slugs until they are "
-                           "built; bin/push-to-r2.sh shelves them afterwards.",
+                "unblock": unblock,
                 "held_items": None}
 
     # Everything queued is uploaded (or held by the gate). Look upstream.
@@ -420,7 +497,10 @@ def run(limit: int = 4, dry_run: bool = False) -> int:
                 handoff_rows(),
                 promotion_held=batch_queue.promotion_holds(),
                 runway=cadence.runway(per_week),
-                refused={r["slug"] for r in batch_queue.refused_entries()})
+                refused={r["slug"] for r in batch_queue.refused_entries()},
+                shelf=shelf,
+                heartbeat=read_json(ROOT / "loop" / "state" / "mac_heartbeat.json",
+                                    default=None))
             st.named_stop(why["code"], why["message"], detail=why["detail"],
                           unblock=why["unblock"],
                           held_items=why["held_items"])
