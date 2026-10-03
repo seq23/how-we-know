@@ -624,6 +624,15 @@ esac
 # Nothing else is staged here: `git add -A` on this machine would sweep in
 # renders, work directories and half-written audio.
 git add -- pov/pov-assignments.json scripts plans channel/thumbnails 2>/dev/null
+# ...and the tracked audio/<slug>/beats.json manifests. voice/narrate_all.py
+# rebuilds every manifest from the scripts at the START of each run, so a plan
+# that grew or shrank (loop/extend.py, loop/pov_repair.py - both committed just
+# above) changes manifest CONTENT that captions_build never stages, because it
+# stages only the slugs whose durations it recorded. Left unstaged, the `git
+# pull --rebase` below refuses with "You have unstaged changes" and the night's
+# commit never leaves this Mac (CONFIRMED 2026-10-03). `-u` touches tracked
+# files only: a wav can never be swept in by it.
+git add -u -- audio 2>/dev/null
 if ! git diff --cached --quiet; then
   git commit -q -m "captions: tracks and measured beat timings from the batch
 

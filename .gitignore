@@ -59,6 +59,11 @@ audio/**/*.wav
 # other checkout, and the batch deleting it showed as ` D` every night
 # (untracked 2026-10-03).
 audio/.narrate.lock/
+# voice/narrate_all.py's progress report (--report default). Rewritten on
+# every run, read by nothing, and it sat uncommitted since 2026-09-04 because
+# the batch commits by explicit pathspec - the other half of the same
+# "unstaged changes" failure (untracked 2026-10-03).
+audio/narration_report.json
 
 # Vertical Shorts cut from renders/*-final.mp4 by bin/make-shorts.sh. Same class
 # as renders/*.mp4 above: regenerable output, too large for git history.
