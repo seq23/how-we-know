@@ -1,0 +1,26 @@
+{
+  "playlists": {
+    "deep-sea-ocean-science": {
+      "id": "PLOrZMDyoy1XM",
+      "title": "Deep Sea Science",
+      "created_at": "2026-10-03T14:30:06+00:00"
+    },
+    "materials-and-manufacturing": {
+      "id": "PLG5GY-GuhiF8",
+      "title": "Materials & Manufacturing",
+      "created_at": "2026-10-03T14:30:08+00:00"
+    }
+  },
+  "sections": {
+    "deep-sea-ocean-science": {
+      "refused": "HTTP 400 {\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"One or more channels are not active.\",\n    \"errors\": [\n      {\n        \"message\": \"One or more channels are not active.\",\n        \"domain\": \"youtube.channelSection\",\n        \"reason\": \"channelNotActive\"\n      }\n    ]\n  }\n}\n",
+      "playlist": "PLOrZMDyoy1XM",
+      "at": "2026-10-03T14:30:06+00:00"
+    },
+    "materials-and-manufacturing": {
+      "refused": "HTTP 400 {\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"One or more channels are not active.\",\n    \"errors\": [\n      {\n        \"message\": \"One or more channels are not active.\",\n        \"domain\": \"youtube.channelSection\",\n        \"reason\": \"channelNotActive\"\n      }\n    ]\n  }\n}\n",
+      "playlist": "PLG5GY-GuhiF8",
+      "at": "2026-10-03T14:30:08+00:00"
+    }
+  }
+}
