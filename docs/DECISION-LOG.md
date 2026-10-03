@@ -893,3 +893,30 @@ rotation window is full. AUTHORED_NOT_QUEUED is worded as the defect it is.
 - **DECLINED** `why-deep-sea-creatures` — 'why do deep sea creatures look so strange' is the same question as 'why deep sea creatures look so weird', already made (identical question key). Moved to `loop/drafts/declined/`, never deleted.
 
 **Verified.** Stop record and gate output in this run's job log; week 2026-W39.
+
+## 2026-10-03 — two Shorts for held episodes reached the schedule; parked, not deleted; released by the lane
+
+**What happened.** The cloud Shorts lane was dispatched against `main` at 12:46 UTC,
+minutes before #138 (`shorts_lane.pending()` skipping `render_gate.held_slugs()`)
+landed. It uploaded and scheduled Shorts for two episodes the render gate was
+holding under the 10-minute floor — `qPnBKYAR3ps` (how-do-scientists-know-so-much,
+publishAt 2026-10-04T00:00Z) and `5JErm9uFsFw` (how-do-scientists-know-how-old-something-is,
+02:00Z). A Short's purpose is the click-through into its episode; neither episode was
+on the channel.
+
+**Done.** Both unscheduled the same hour with `publish.cancel_schedule` (private,
+publishAt cleared, read back from YouTube: both `private`, `publishAt: None`).
+Neither was deleted — private is the hold. Their ledger rows stay, flagged
+`held_by: render_hold` with no scheduled time, so `pending()` never re-uploads the cuts.
+
+**Near miss inside the fix.** On `qPnBKYAR3ps` the unlisted→private round-trip
+returned 200 twice and the video read back **unlisted**. `cancel_schedule` checked only
+that publishAt was gone; it now re-applies private and re-reads, and raises if the
+flip does not take.
+
+**Rule.** A parked Short is deferred, not retired, and it must return without anyone
+noticing: `shorts_lane.release_held()` runs at the top of every cloud lane run,
+re-schedules each parked row whose slug has left the hold into the next
+`schedule_for()` slot, clears the flag and counts it as work; a row still held is a
+note. Guarded by `loop/tests/test_shorts_release_after_hold.py`, which also proves
+`shorts_cloud.run()` invokes the pass and that nothing-to-release is not work.

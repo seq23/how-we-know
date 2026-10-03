@@ -346,9 +346,13 @@
       "file": "how-do-scientists-know-so-much-short.mp4",
       "uploaded_at": "2026-10-03T12:46:33+00:00",
       "privacy": "private",
-      "scheduled_publish_at": "2026-10-04T00:00:00Z",
+      "scheduled_publish_at": null,
       "rank": 1,
-      "lane": "shorts-cloud"
+      "lane": "shorts-cloud",
+      "schedule_was": "2026-10-04T00:00:00Z",
+      "held_by": "render_hold",
+      "held_at": "2026-10-03T13:40:00+00:00",
+      "held_why": "uploaded before #138 landed; episode held under the 10-minute floor; unscheduled by hand, released by shorts_lane.release_held when the hold lifts"
     },
     {
       "slug": "how-do-scientists-know-how-old-something-is",
@@ -356,10 +360,14 @@
       "file": "how-do-scientists-know-how-old-something-is-short.mp4",
       "uploaded_at": "2026-10-03T12:46:43+00:00",
       "privacy": "private",
-      "scheduled_publish_at": "2026-10-04T02:00:00Z",
+      "scheduled_publish_at": null,
       "rank": 1,
-      "lane": "shorts-cloud"
+      "lane": "shorts-cloud",
+      "schedule_was": "2026-10-04T02:00:00Z",
+      "held_by": "render_hold",
+      "held_at": "2026-10-03T13:40:00+00:00",
+      "held_why": "uploaded before #138 landed; episode held under the 10-minute floor; unscheduled by hand, released by shorts_lane.release_held when the hold lifts"
     }
   ],
-  "updated": "2026-10-03T12:46:43+00:00"
+  "updated": "2026-10-03T13:40:00+00:00"
 }
