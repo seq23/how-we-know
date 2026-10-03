@@ -8,6 +8,18 @@
     "held": [],
     "pending": 0
   },
-  "renders_finished": 35,
-  "updated": "2026-10-02T14:01:23+00:00"
+  "renders_finished": 39,
+  "updated": "2026-10-03T11:49:54+00:00",
+  "batch": {
+    "last_run_at": "2026-10-03T11:49:54+00:00",
+    "week": "2026-W40",
+    "ok": true,
+    "last_success_at": "2026-10-03T11:49:54+00:00",
+    "held": [
+      "how-do-scientists-know-how-old-something-is",
+      "how-do-scientists-know-so-much",
+      "why-deep-sea-fish-die-when-brought-to-surface"
+    ],
+    "pending": 0
+  }
 }
