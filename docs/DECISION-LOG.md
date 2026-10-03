@@ -953,3 +953,81 @@ re-schedules each parked row whose slug has left the hold into the next
 `schedule_for()` slot, clears the flag and counts it as work; a row still held is a
 note. Guarded by `loop/tests/test_shorts_release_after_hold.py`, which also proves
 `shorts_cloud.run()` invokes the pass and that nothing-to-release is not work.
+
+## 2026-10-03 — Shorts are the channel's front door; every Short now hands its viewer to its episode
+
+**The measurement.** 2,588 views to date; ~2,400 of them from 34 Shorts, 149 from the
+16 measured episodes. Discovery is Shorts; watch time has to come from the episodes
+behind them. A Short whose description ended with the channel link and nothing else
+sent that viewer to a channel page, not to the episode it was cut from.
+
+**Decided (owner, 3 Oct 2026).** API-only; no comment pinning, no Studio automation.
+
+1. **Short → episode.** The first line of every Short's description is
+   `Full episode: https://youtu.be/<episode id> — <Question>?`. Set at upload when
+   the episode is already public (`shorts_lane.build_payload(…, episode_video_id)`);
+   otherwise the Short ships with the channel link and `handoff: pending`, and
+   `loop/handoff.py` rewrites it the run after the episode goes public → `handoff: done`.
+   **Why pending is normal, not a defect:** 30 of the first 36 Shorts aired days to
+   weeks BEFORE their episode (Shorts publish from the shelf nightly; episodes are
+   scheduled weeks ahead). A link to a scheduled-private video reads "unavailable",
+   so the link waits for the episode, never the other way round.
+2. **One channel comment per Short** — question + episode link — only once the Short
+   AND the episode are public. Routed through `loop/comments.py:post_channel_comment`,
+   the module's second gated write: the record carries `instructed_by: owner`,
+   `instructed_at: 2026-10-03`, `source: loop/handoff: owner decision 2026-10-03`; the
+   gate refuses a record missing any of the three, a video the ledgers do not own, and
+   a second comment on a video that has one. Recorded three ways: in `seen` as class
+   `own_channel` (so the weekly sweep never reports the channel's own words as a viewer
+   question), in `channel_comments` by video (the never-twice check), and in `actions`.
+   The comment id also sits on the Short's ledger row (`handoff_comment_id`).
+3. **Episode → Shorts.** Public episodes carry a `Shorts from this episode:` block —
+   `• <Short title> https://youtu.be/<id>` — placed after the sources and footer and
+   BEFORE the hashtag line, so `discovery.strip_hashtag_line` still round-trips and
+   V41 still sees a hashtag line last. Rewritten whenever a new Short of that episode
+   is public; the ids written are on the episode row (`shorts_block`).
+4. **Two playlists, titled from this decision** (`docs/CHANNEL-PLAN.md` names none):
+   **Deep Sea Science** and **Materials & Manufacturing**, keyed by the taxonomy's domain
+   slug in `loop/handoff.py:PLAYLIST_TITLES`; a third allocated domain without a title
+   is a refusal, never an invented name. Created once — an existing playlist with the
+   same title is adopted, never duplicated — and remembered in `loop/state/playlists.json`
+   with the channel section made for each (`channelSections.insert`; a refusal is
+   recorded there as a note). Every public episode and Short is inserted by
+   slug→domain; items are only ever added. Private/scheduled videos are not inserted
+   (a public playlist showing "private video" rows is the thing avoided).
+5. **Liveness is read from YouTube**, never inferred: the ledgers record upload-time
+   privacy (`private` + publishAt), so `videos.list` (1 unit / 50 ids) decides what is
+   public. The validator, which cannot spend quota, uses the airdate plus a 36-hour
+   grace (`HANDOFF_GRACE_H`) — one missed run plus the quota day it may have deferred into.
+6. **Quota.** Every write is 50 units. The lane is deferrable: it keeps
+   `quota.deferrable_reserve()` for the day's episode upload and evening Shorts, works in
+   priority order (playlists → Short links → playlist rows → comments → episode blocks),
+   records each write on its ledger row before the next, and takes
+   `HANDOFF_QUOTA_DEFERRED` (self-resolving, `resets_at` required) for the rest. The back
+   catalogue — 34 public Shorts, 17 public episodes, 106 writes ≈ 5,300 units — was planned
+   to take two quota days from the start; the counts are in the PR that landed this.
+7. **Where it runs.** As a final step of both daily cloud lanes
+   (`loop-upload-cloud.yml` 09:00 CT, `loop-shorts-cloud.yml` 18:00 CT), `if: !cancelled()`
+   so the lane's own stop never blocks it; same repo-secret credential. On the Mac:
+   `.venv/bin/python loop/handoff.py [--dry-run]`.
+8. **Stops.** `HANDOFF_UP_TO_DATE` (self-resolving, cap 14 runs = a week at twice daily,
+   explained upstream by `shorts-cloud` for up to 60), `HANDOFF_QUOTA_DEFERRED`
+   (self-resolving, cap 5), `HANDOFF_AWAITING_QUOTA` (V46's green name for the same
+   deferral), `HANDOFF_WRITE_REJECTED` (needs a human: a non-quota refusal). A Short whose
+   episode is not in the ledger — the two parked behind the render hold — is a note.
+9. **Guards.** V46 `shorts-handoff` fails when a settled Short on a settled episode is not
+   `handoff: done`, when any settled video lacks `playlist_item_id`, or when a domain has
+   no playlist; it is a green named stop while `loop/state/handoff.json` records the item
+   as deferred within 48 h; it hard-fails on zero items. Before the back-catalogue run it
+   failed on the real state with 66 findings — the negative proof against real data.
+   `loop/tests/test_handoff.py` proves the stage against a fake client (link composed,
+   comment exactly once, playlist row exactly once, pending→done, dry-run writes nothing,
+   quota-deferral records ids) and the comment gate negatively (gate line removed → the
+   unbacked comment IS written). Breaking the link composer made 8 of its 54 checks fail;
+   restored, 0. `test_rule_zero` lists `handoff.py`; `test_workflows` requires the step in
+   both lanes.
+
+**Rejected.** Pinning the comment (needs Studio; decided against). Linking at upload to
+a not-yet-public episode (reads "unavailable" for days). Inferring liveness from the
+ledger's publishAt in the lane (a cancelled schedule or a hold would mislead it; the
+validator, which cannot read YouTube, uses the airdate with a grace instead).

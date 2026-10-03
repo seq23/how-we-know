@@ -14,8 +14,10 @@ drafted reply. A pronunciation or narration complaint also carries a
 `product_note` ("pronunciation: <term>") - that is a real signal for the
 narration lexicon and is the one thing in a bad comment worth keeping.
 
-**act** applies per-comment instructions. It is the ONLY write path to
-YouTube in this module and it is gated: every instruction must carry who gave
+**act** applies per-comment instructions. It is one of the TWO write paths to
+YouTube in this module (the other is `post_channel_comment`, the loop's own
+comment on its own Short, gated the same way — see loop/handoff.py) and it is
+gated: every instruction must carry who gave
 it and when (`instructed_by`, `instructed_at`, `source`), the comment must be
 one the sweep already recorded, and the action must be one of hide / reply /
 ignore. Anything else is a NAMED STOP before any network call. `hide` is
@@ -63,6 +65,7 @@ UPLOADS_PLAYLIST = "UU" + CHANNEL_ID[2:]
 
 COMMENTS_DIR = STATE / "comments"
 LEDGER = COMMENTS_DIR / "ledger.json"
+SHORTS_LEDGER = STATE / "shorts_ledger.json"      # read by the channel-comment gate
 DIGEST_DEFAULT = COMMENTS_DIR / "digest.json"
 
 API = "https://www.googleapis.com/youtube/v3"
@@ -86,7 +89,7 @@ DRY_RUN = os.environ.get("LOOP_DRY_RUN") == "1"
 def _empty_ledger() -> dict:
     return {"channel_id": CHANNEL_ID, "cursors": {}, "seen": {},
             "instructions": {}, "actions": [], "sweeps": [],
-            "updated": None}
+            "channel_comments": {}, "updated": None}
 
 
 def load_ledger() -> dict:
@@ -116,7 +119,8 @@ def _get(token: str, path: str, params: dict) -> dict:
 
 def _write(token: str, path: str, params: dict, body: dict | None) -> dict:
     """THE ONLY network write in this module. act() reaches it only through
-    apply_instruction(), which has already checked the instruction record."""
+    apply_instruction(), and loop/handoff.py only through post_channel_comment();
+    each has already checked its instruction record."""
     if DRY_RUN:
         raise RuntimeError("LOOP_DRY_RUN=1: refusing a YouTube write")
     q = urllib.parse.urlencode(params)
@@ -528,6 +532,83 @@ def act(instructions_path: Path) -> int:
         write_json(COMMENTS_DIR / "last_act.json",
                    {"at": now(), "results": results})
     return 0
+
+
+# ------------------------------------------- the channel's own comment
+
+OWN_CLASS = "own_channel"
+
+
+def _channel_video_ids() -> set[str]:
+    """Every video id the loop's two ledgers say is the channel's own."""
+    import ytmeta                                            # noqa: PLC0415
+    ids = {r["video_id"] for r in ytmeta.live_videos()}
+    sh = read_json(SHORTS_LEDGER, default={"published": []})
+    ids |= {r["video_id"] for r in sh.get("published", []) if r.get("video_id")}
+    return ids
+
+
+def assert_channel_comment_backed(video_id: str, text: str, record: dict,
+                                  led: dict) -> None:
+    """THE GATE for a top-level comment the loop itself posts as the channel.
+
+    Owner decision 2026-10-03 (loop/handoff.py): one comment per Short, the
+    episode's question and link, never pinned. It is the second gated write in
+    this module and the same contract as assert_backed(): who instructed it,
+    when, through what (`instructed_by`, `instructed_at`, `source`), on a video
+    the ledgers say is OURS, with text, and not already posted on that video.
+    Raises Unbacked before any network call.
+    """
+    if not isinstance(record, dict):
+        raise Unbacked(f"{video_id}: instruction record is not an object")
+    missing = [k for k in REQUIRED_RECORD if not str(record.get(k) or "").strip()]
+    if missing:
+        raise Unbacked(f"{video_id}: channel-comment record lacks "
+                       f"{', '.join(missing)}")
+    if not str(text or "").strip():
+        raise Unbacked(f"{video_id}: channel comment without text")
+    if video_id not in _channel_video_ids():
+        raise Unbacked(f"{video_id}: not a video in this channel's ledgers")
+    if video_id in (led.get("channel_comments") or {}):
+        raise Unbacked(f"{video_id}: the channel already commented here "
+                       f"({led['channel_comments'][video_id].get('comment_id')})")
+
+
+def post_channel_comment(token: str, video_id: str, text: str, record: dict,
+                         led: dict) -> str:
+    """Post ONE top-level comment as the channel. Returns the comment id.
+
+    Recorded three ways so nothing downstream misreads it: in `seen` with
+    class `own_channel` (so the sweep never classifies the channel's own words
+    as a viewer question), in `channel_comments` keyed by video (the
+    never-twice check the gate enforces), and in `actions` beside every other
+    applied write. The caller saves the ledger.
+    """
+    assert_channel_comment_backed(video_id, text, record, led)
+    out = _write(token, "commentThreads", {"part": "snippet"},
+                 {"snippet": {"videoId": video_id, "channelId": CHANNEL_ID,
+                              "topLevelComment": {"snippet": {"textOriginal": text.strip()}}}})
+    cid = ((out.get("snippet") or {}).get("topLevelComment") or {}).get("id") or out.get("id")
+    if not cid:
+        raise RuntimeError(f"commentThreads.insert on {video_id} returned no id")
+    posted = now()
+    rec = {"comment_id": cid, "video_id": video_id, "author": "@howweknowdeep",
+           "author_channel_id": CHANNEL_ID, "text": text.strip(),
+           "published_at": posted, "like_count": 0, "reply_count": 0,
+           "class": OWN_CLASS, "proposed_action": None, "proposed_reply": None,
+           "product_note": None, "seen_at": posted}
+    action = {"comment_id": cid, "video_id": video_id, "action": "channel_comment",
+              "reply_text": text.strip(),
+              "instructed_by": record["instructed_by"],
+              "instructed_at": record["instructed_at"], "source": record["source"],
+              "note": record.get("note"), "applied_at": posted,
+              "result": f"posted ({cid})"}
+    led.setdefault("channel_comments", {})[video_id] = {
+        "comment_id": cid, "text": text.strip(), "posted_at": posted,
+        **{k: record.get(k) for k in REQUIRED_RECORD}}
+    led["seen"][cid] = {**rec, "acted": action}
+    led["actions"].append(action)
+    return cid
 
 
 # -------------------------------------------------------------------- main
