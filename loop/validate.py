@@ -3717,6 +3717,113 @@ def v42_authored_domain_is_allocated(items) -> Result:
 
 # ------------------------------------------------------------------ runner
 
+HANDOFF_STATE = REACH_STATE / "handoff.json"
+PLAYLISTS_STATE = REACH_STATE / "playlists.json"
+SHORTS_LEDGER_PATH = REACH_STATE / "shorts_ledger.json"
+# A quota deferral recorded by the hand-off lane excuses a missing hand-off
+# only while the lane is demonstrably still running: two days covers one
+# missed run and the quota day it deferred into.
+_HANDOFF_DEFERRAL_FRESH_H = 48
+
+
+def v46_shorts_handoff() -> Result:
+    """Every live Short hands its viewer to its live episode, and every live
+    video is in its domain playlist — in the LEDGER-RECORDED state.
+
+    Owner decision 2026-10-03: ~2,400 of the channel's 2,588 views came from
+    34 Shorts; the 16 measured episodes had 149. A Short that does not point
+    at its episode wastes the only traffic there is. loop/handoff.py writes
+    the link, the comment, the Shorts block and the playlist rows and records
+    each on the ledger row it served; this reads those rows.
+
+    "Live" here is the ledger's airdate plus `handoff.HANDOFF_GRACE_H` hours:
+    the lane runs twice a day and may have deferred a quota day, so a Short
+    public for an hour is not yet a finding. A Short whose EPISODE is not yet
+    live is correctly `pending` (thirty of the first 36 aired before their
+    episode). A missing row that the lane recorded as deferred for quota in
+    loop/state/handoff.json within the last two days is a NAMED STOP, green —
+    the deferral is the lane working as designed. Everything else is a
+    failure, and zero examined is a failure.
+    """
+    r = Result("V46 shorts-handoff")
+    sys.path.insert(0, str(ROOT / "loop"))
+    import handoff as _ho                                   # noqa: PLC0415
+    import datetime as _dt                                  # noqa: PLC0415
+    grace = -int(_ho.HANDOFF_GRACE_H)
+    shorts = (read_json(SHORTS_LEDGER_PATH, default={"published": []})
+              .get("published") or [])
+    episodes = {row["slug"]: row for row in _live_videos()}
+    hs = read_json(HANDOFF_STATE, default={})
+    deferred: set[str] = set()
+    last = hs.get("last_run_at")
+    if last:
+        try:
+            age = (_dt.datetime.now(_dt.timezone.utc)
+                   - _dt.datetime.fromisoformat(str(last).replace("Z", "+00:00")))
+            if age <= _dt.timedelta(hours=_HANDOFF_DEFERRAL_FRESH_H):
+                deferred = set(hs.get("deferred") or [])
+        except ValueError:
+            pass
+    waiting: list[str] = []
+    pl = (read_json(PLAYLISTS_STATE, default={}).get("playlists") or {})
+    for d in domains.allocation(config()):
+        r.examined += 1
+        if not (pl.get(d) or {}).get("id"):
+            if d in deferred:
+                waiting.append(f"playlist:{d}")
+            else:
+                r.fail(f"no playlist recorded for domain {d} in "
+                       f"loop/state/playlists.json — loop/handoff.py has not "
+                       f"created it")
+
+    def settled(row: dict) -> bool:
+        return _airs_within(row, grace) is True
+
+    for s in shorts:
+        if not s.get("video_id") or s.get("held_by") or not settled(s):
+            continue
+        ep = episodes.get(s["slug"])
+        r.examined += 1
+        if not ep:
+            r.note(f"{s['slug']}: Short {s['video_id']} has no episode in the "
+                   f"ledger; nothing to hand off to")
+            continue
+        if settled(ep) and s.get("handoff") != "done":
+            if s["video_id"] in deferred:
+                waiting.append(s["video_id"])
+            else:
+                r.fail(f"{s['slug']}: Short {s['video_id']} and episode "
+                       f"{ep['video_id']} have both been live more than "
+                       f"{-grace}h and the Short's description does not open "
+                       f"with the episode link (ledger handoff="
+                       f"{s.get('handoff')!r})")
+        if not s.get("playlist_item_id"):
+            if s["video_id"] in deferred:
+                waiting.append(s["video_id"])
+            else:
+                r.fail(f"{s['slug']}: Short {s['video_id']} is live and not in "
+                       f"its domain playlist")
+    for ep in episodes.values():
+        if not settled(ep):
+            continue
+        r.examined += 1
+        if not ep.get("playlist_item_id"):
+            if ep["video_id"] in deferred:
+                waiting.append(ep["video_id"])
+            else:
+                r.fail(f"{ep['slug']}: episode {ep['video_id']} is live and not "
+                       f"in its domain playlist")
+    if waiting:
+        r.named_stop("HANDOFF_AWAITING_QUOTA",
+                     f"{len(set(waiting))} item(s) deferred by loop/handoff.py "
+                     f"for quota at {last}; done on its next run",
+                     sorted(set(waiting)))
+    if r.examined == 0:
+        r.fail("examined nothing: no live Short, no live episode and no "
+               "allocated domain — this validator cannot reach what it governs")
+    return r
+
+
 def run_all(items) -> tuple[bool, list[dict]]:
     """Run every validator. Returns (all_passed, report_rows).
 
@@ -3748,7 +3855,8 @@ def run_all(items) -> tuple[bool, list[dict]]:
                v42_authored_domain_is_allocated(items),
                v43_queue_asks_distinct_questions(items),
                v44_opening_payoff_first(items),
-               v45_nothing_waits_on_the_owner()]
+               v45_nothing_waits_on_the_owner(),
+               v46_shorts_handoff()]
     rows = [r.as_dict() for r in results]
     return all(r.ok for r in results), rows
 
