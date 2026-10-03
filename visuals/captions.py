@@ -147,6 +147,40 @@ def beats_manifest_path(slug: str) -> Path:
     return AUDIO / slug / "beats.json"
 
 
+def beats_manifest_bytes(rows: list) -> bytes:
+    """THE canonical serialization of a beats manifest: `json.dumps(indent=2)`
+    plus one trailing newline, UTF-8. Every writer goes through this and the
+    committed files are kept in exactly this form, so a batch night that
+    rewrites a manifest without changing a value leaves the bytes untouched.
+
+    CONFIRMED 2026-10-03: voice/narrate_all.py rewrote every episode's
+    manifest on every run as `indent=1` with no trailing newline,
+    while record_durations and loop/pov_repair.py wrote `indent=2 + "\n"`.
+    Each night flipped 38 of 42 tracked manifests between the two shapes
+    (`git diff -w` empty), the batch's `git pull --rebase` then refused with
+    "You have unstaged changes", and the push of that night's work was lost.
+    """
+    return (json.dumps(rows, indent=2) + "\n").encode("utf-8")
+
+
+def write_beats_manifest(path: Path, rows: list) -> bool:
+    """Write `rows` to `path` in canonical form. Returns True when the file's
+    bytes changed; when the serialized bytes equal what is already on disk
+    nothing is written, so an unchanged manifest keeps its mtime and never
+    shows as modified to git. The write is atomic (tmp + os.replace)."""
+    data = beats_manifest_bytes(rows)
+    try:
+        if path.exists() and path.read_bytes() == data:
+            return False
+    except OSError:
+        pass
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_suffix(".json.tmp")
+    tmp.write_bytes(data)
+    os.replace(tmp, path)
+    return True
+
+
 def read_beats_manifest(slug: str) -> dict[int, dict]:
     p = beats_manifest_path(slug)
     if not p.exists():
@@ -220,9 +254,7 @@ def record_durations(slug: str, durs: list[float], measured_idx: set[int]) -> in
             r["seconds"] = val
             changed += 1
     if changed:
-        tmp = p.with_suffix(".json.tmp")
-        tmp.write_text(json.dumps(rows, indent=2) + "\n", encoding="utf-8")
-        os.replace(tmp, p)
+        write_beats_manifest(p, rows)
     return changed
 
 

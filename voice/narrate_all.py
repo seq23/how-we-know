@@ -64,6 +64,11 @@ from synth import (  # noqa: E402
     LEXICON, apply_lexicon, chunk_paragraph, high_shelf, match_rms,
     rms_dbfs, trim_silence,
 )
+# visuals/captions.py owns the manifest's ONE serialization (indent=2 + "\n").
+# Until 2026-10-03 this file wrote `indent=1` with no newline, so every batch
+# night re-formatted every tracked audio/<slug>/beats.json without changing a
+# value, and the batch's own `git pull --rebase` then refused the dirty tree.
+from captions import write_beats_manifest  # noqa: E402
 
 SR = 24000
 
@@ -329,7 +334,7 @@ def run(args, plans, total_beats) -> int:
                     and (AUDIO / slug / f"{i:04d}.wav").exists()):
                 row["seconds"] = was[1]
             rows.append(row)
-        mf.write_text(json.dumps(rows, indent=1))
+        write_beats_manifest(mf, rows)   # canonical bytes; no-op when unchanged
         for i, b in enumerate(plan):
             if not inspect(AUDIO / slug / f"{i:04d}.wav")[0]:
                 todo.append((slug, i, b["narration"]))
