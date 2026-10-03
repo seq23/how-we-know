@@ -43,8 +43,9 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 AGENTS="$HOME/Library/LaunchAgents"
 LOGDIR="$HOME/Library/Logs/how-we-know"
 
-plist(){ # name script weekday hour   (weekday "-" = every day)
+plist(){ # name script weekday hour [minute]   (weekday "-" = every day)
 WD=""
+MIN="${5:-0}"
 [ "$3" != "-" ] && WD="<key>Weekday</key><integer>$3</integer>"
 cat <<XML
 <?xml version="1.0" encoding="UTF-8"?>
@@ -62,7 +63,7 @@ cat <<XML
   <key>StartCalendarInterval</key>
   <dict>$WD
         <key>Hour</key><integer>$4</integer>
-        <key>Minute</key><integer>0</integer></dict>
+        <key>Minute</key><integer>$MIN</integer></dict>
   <key>StandardOutPath</key><string>$LOGDIR/$1.log</string>
   <key>StandardErrorPath</key><string>$LOGDIR/$1.err</string>
   <key>RunAtLoad</key><false/>
@@ -90,21 +91,24 @@ case "${1:-}" in
     # written down. If either is ever wanted again, the question to answer
     # first is which single agent owns narration.
     plist batch    batch-session.sh - 23 > "$AGENTS/com.howweknow.batch.plist"
+    # 22:55, FIVE MINUTES BEFORE THE BATCH: quit the apps that compete with the
+    # voice model for RAM (owner decision 2026-10-03; see bin/night-quit.sh).
+    plist nightquit night-quit.sh - 22 55 > "$AGENTS/com.howweknow.nightquit.plist"
     # VERIFY THE XML, never launchctl's own word. A plist launchd cannot parse
     # is still reported "loaded" and simply never fires; that is how two agents
     # sat installed and dead. plutil is the only thing that actually knows.
-    for n in batch; do
+    for n in batch nightquit; do
       plutil -lint "$AGENTS/com.howweknow.$n.plist" >/dev/null \
         || { echo "NAMED STOP: com.howweknow.$n.plist is not valid XML; not loading it." >&2; exit 4; }
     done
-    for n in batch; do
+    for n in batch nightquit; do
       launchctl unload "$AGENTS/com.howweknow.$n.plist" 2>/dev/null || true
       launchctl load  "$AGENTS/com.howweknow.$n.plist"
       echo "loaded com.howweknow.$n  (logs: $LOGDIR/$n.log)"
     done
     ;;
   --uninstall)
-    for n in batch tuesday thursday; do
+    for n in batch nightquit tuesday thursday; do
       launchctl unload "$AGENTS/com.howweknow.$n.plist" 2>/dev/null || true
       rm -f "$AGENTS/com.howweknow.$n.plist"
       echo "removed com.howweknow.$n"

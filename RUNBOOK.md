@@ -31,6 +31,8 @@ was a command she ran. As of this writing (2026-09-23) it is loaded, valid
 (`plutil -lint` on both installed plists passes) and running: last night's
 `batch.log` shows it fired at 23:00 and completed its pass.
 
+**At 22:55 the Mac quits Chrome, Signal and Spotify by itself** (`com.howweknow.nightquit`, your decision of 2026-10-03): this is an 8 GB machine and the voice model was swapping behind Chrome on five of seven nights. Reopen them in the morning; Chrome restores your tabs.
+
 **All you have to do is leave the Mac open at night, plugged in.** A launchd
 *Agent* (not a daemon) only fires while a user session is logged in — asleep or
 shut down, it does not run. This Mac's `pmset` sleep timer is already set to
