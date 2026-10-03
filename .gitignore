@@ -54,6 +54,11 @@ loop/plans/
 # rule only covered half the generated media. The beats.json manifests ARE tracked;
 # they are small and they are the audio-to-plan contract.
 audio/**/*.wav
+# voice/narrate_all.py's exclusive lock (mkdir + a pid file). It is created
+# at runtime and removed on exit; a pid file in git is a stale lock on every
+# other checkout, and the batch deleting it showed as ` D` every night
+# (untracked 2026-10-03).
+audio/.narrate.lock/
 
 # Vertical Shorts cut from renders/*-final.mp4 by bin/make-shorts.sh. Same class
 # as renders/*.mp4 above: regenerable output, too large for git history.
