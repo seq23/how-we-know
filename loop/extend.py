@@ -309,6 +309,10 @@ def extend_one(item: dict, st: Stage, dry_run: bool = False) -> dict:
         # extends it again, every night, for ever.
         if durations.forget(slug):
             stale.append(f"loop/state/durations.json:{slug}")
+    # A Short cut from that render is as stale as the render: its receipt
+    # names plans/<slug>.json for its credits and renders/<slug>-final.mp4 as
+    # its source, and both are now gone. See retire_shorts().
+    stale += [f"shorts/{n}" for n in retire_shorts(slug)]
 
     st.work(f"extended {slug}: {item['words_now']} -> {words_after} narration "
             f"words (~{durations.minutes_for(words_after):.1f} min), "
@@ -372,6 +376,38 @@ def retire_stale_audio(slug: str, old_narrations: dict | None,
     return moved
 
 
+SHORTS = ROOT / "shorts"
+
+
+def retire_shorts(slug: str, shorts_dir: Path | None = None) -> list[str]:
+    """Move aside every Short cut from this episode's superseded render.
+
+    WHY. bin/push-to-r2.sh runs V14 (attribution) and V15 (caption crop) over
+    EVERY receipt in shorts/ before shelving ANY Short, because the Linux
+    runner has no Apple Vision and cannot re-check later. A Short's receipt
+    resolves its credits through plans/<slug>.json and its crop through
+    renders/<slug>-final.mp4. On 2026-10-03 this stage extended three held
+    episodes, deleted their plans and moved their renders aside - and left
+    their Shorts in place, so that evening's push reported "plans/... is gone;
+    the credit its beats require cannot be re-resolved" three times and
+    shelved NOTHING, for every episode (SHORTS_UNVERIFIED). The Short of a
+    render that no longer exists is not a Short anyone may ship; it goes
+    where the render went, and the batch cuts a fresh one from the new render.
+    Nothing is deleted.
+    """
+    sdir = shorts_dir or SHORTS
+    if not sdir.is_dir():
+        return []
+    keep = sdir / "superseded-short"
+    moved = []
+    for f in sorted(sdir.glob(f"{slug}-short*.mp4")) + \
+            sorted(sdir.glob(f"{slug}-short*.mp4.short.json")):
+        keep.mkdir(exist_ok=True)
+        shutil.move(str(f), str(keep / f.name))
+        moved.append(f.name)
+    return moved
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true")
@@ -388,6 +424,11 @@ def main() -> int:
         print(f"{a.retire_stale}: {len(moved)} stale wav(s) moved to "
               f"audio/{a.retire_stale}/superseded/"
               + (f": {', '.join(moved)}" if moved else ""))
+        shorts = [] if (RENDERS / f"{a.retire_stale}-final.mp4").exists() \
+            else retire_shorts(a.retire_stale)
+        print(f"{a.retire_stale}: {len(shorts)} Short(s) of the superseded "
+              f"render moved to shorts/superseded-short/"
+              + (f": {', '.join(shorts)}" if shorts else ""))
         return 0
 
     target, band_min, floor = band()
