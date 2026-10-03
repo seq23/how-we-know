@@ -1,7 +1,7 @@
 {
   "stage": "cloud-upload",
   "week": "2026-W40",
-  "at": "2026-10-03T14:29:30+00:00",
+  "at": "2026-10-03T14:57:30+00:00",
   "code": "NOTHING_SHELVED",
   "message": "14 queued episode(s) are not in the ledger and not on the R2 shelf, so they are still waiting on the Mac (narration, render or push): how-do-scientists-know-about-other-galaxies, what-lives-in-mariana-trench, how-deep-can-a-sperm-whale-go, why-deep-sea-creatures-are-creepers, how-deep-can-whales-dive, why-are-deep-sea-creatures-so-big, what-is-hydrothermal-vents, how-are-microchips-designed ...",
   "detail": {
@@ -31,8 +31,8 @@
   },
   "unblock": "On the Mac: read the '=== batch session' block in ~/Library/Logs/how-we-know/batch.log. 'to narrate' and 'to render' list these slugs until they are built; bin/push-to-r2.sh shelves them afterwards.",
   "disposition": "needs_human",
-  "disposition_why": "'NOTHING_SHELVED' has now stopped cloud-upload on 8 consecutive runs (limit 7), so it is not resolving itself. Seven consecutive days with the same queued episodes still not shelved means the Mac side is stuck. The slugs are in this stop's detail.awaiting_mac. On the Mac, read the '=== batch session' block in ~/Library/Logs/how-we-know/batch.log: if 'to narrate' or 'to render' lists them, narration or rendering is the stuck part; if both say none and the renders exist, bin/push-to-r2.sh is.",
-  "consecutive": 8,
+  "disposition_why": "'NOTHING_SHELVED' has now stopped cloud-upload on 9 consecutive runs (limit 7), so it is not resolving itself. Seven consecutive days with the same queued episodes still not shelved means the Mac side is stuck. The slugs are in this stop's detail.awaiting_mac. On the Mac, read the '=== batch session' block in ~/Library/Logs/how-we-know/batch.log: if 'to narrate' or 'to render' lists them, narration or rendering is the stuck part; if both say none and the renders exist, bin/push-to-r2.sh is.",
+  "consecutive": 9,
   "held_items": [],
   "exit_code": 3,
   "work_done_before_stop": [],
