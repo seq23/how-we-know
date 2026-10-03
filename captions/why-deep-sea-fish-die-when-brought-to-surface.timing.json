@@ -1,0 +1,122 @@
+{
+  "episode": "why-deep-sea-fish-die-when-brought-to-surface",
+  "beats": 78,
+  "plan_source": "plans/why-deep-sea-fish-die-when-brought-to-surface.json",
+  "timing": "audio",
+  "beats_measured": 78,
+  "durations_recorded": 78,
+  "duration_s": 591.413,
+  "cues": 157,
+  "chapters_real": 13,
+  "chapters_published": 12,
+  "chapter_notes": [
+    "merged 1 chapter(s) under 10s: Title card (3.3s)"
+  ],
+  "drift": {
+    "mean_abs_s": 45.0,
+    "worst_abs_s": 106.6,
+    "rows": [
+      {
+        "title": "Cold open",
+        "hand": "00:00",
+        "real": "0:00",
+        "drift_s": 0.0
+      },
+      {
+        "title": "Title card",
+        "hand": "00:35",
+        "real": "0:30",
+        "drift_s": -4.7
+      },
+      {
+        "title": "Swim bladders are the first system to fail",
+        "hand": "01:31",
+        "real": "1:33",
+        "drift_s": 2.7
+      },
+      {
+        "title": "Dissolved gases come out of solution in tissues",
+        "hand": "02:55",
+        "real": "2:45",
+        "drift_s": -9.9
+      },
+      {
+        "title": "Eyes and other fluid-filled structures bulge outward",
+        "hand": "04:16",
+        "real": "3:45",
+        "drift_s": -30.5
+      },
+      {
+        "title": "Temperature shock is a secondary stressor",
+        "hand": "05:32",
+        "real": "4:44",
+        "drift_s": -47.3
+      },
+      {
+        "title": "Producer POV",
+        "hand": "06:40",
+        "real": "5:45",
+        "drift_s": -54.2
+      },
+      {
+        "title": "Some species tolerate a wider range than others",
+        "hand": "07:00",
+        "real": "6:06",
+        "drift_s": -53.9
+      },
+      {
+        "title": "What to notice in the edit",
+        "hand": "09:45",
+        "real": "8:18",
+        "drift_s": -86.9
+      },
+      {
+        "title": "Evidence limit",
+        "hand": "10:37",
+        "real": "8:58",
+        "drift_s": -98.7
+      },
+      {
+        "title": "Closing",
+        "hand": "11:20",
+        "real": "9:33",
+        "drift_s": -106.6
+      }
+    ]
+  },
+  "ffprobe": {
+    "file": "renders/why-deep-sea-fish-die-when-brought-to-surface-final.mp4",
+    "video_s": 591.413,
+    "last_cue_end_s": 591.413,
+    "delta_s": 0.0,
+    "ok": true
+  },
+  "text_checks": {
+    "beats_json": {
+      "checked": 78,
+      "mismatched": []
+    },
+    "script_text": {
+      "checked": 78,
+      "absent_from_narration": []
+    }
+  },
+  "script_chapters": {
+    "written": true,
+    "changed": true,
+    "removed_lines": [
+      "Title card",
+      "Pressure is not weight pressing down",
+      "Observation requires in situ study or fatal collection"
+    ],
+    "chapters_not_in_script": [
+      "Pressure is not weight pressing down \u2014 it is force from all directions",
+      "Observation requires either in situ study or fatal collection"
+    ]
+  },
+  "artifacts": [
+    "captions/why-deep-sea-fish-die-when-brought-to-surface.vtt",
+    "captions/why-deep-sea-fish-die-when-brought-to-surface.srt",
+    "captions/why-deep-sea-fish-die-when-brought-to-surface.chapters.txt"
+  ]
+}

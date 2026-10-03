@@ -137,19 +137,17 @@ Age is not a property. It is a calculation. The calculation depends on a measure
 
 ## Chapters
 
-- 00:00 Cold open
-- 00:28 Title card
-- 00:30 Age is measured, not observed
-- 01:18 Radiometric dating measures decay at known rates
-- 02:48 Layer counting provides independent confirmation
-- 04:18 Assumptions are stated and tested
-- 05:48 Producer POV
-- 05:58 Cross-checks reveal method boundaries
-- 07:28 Deep-sea sediments accumulate slowly and unevenly
-- 08:58 Uncertainty is quantified, not hidden
-- 10:28 What to notice in the edit
-- 11:08 Evidence limit
-- 11:48 Closing
+- 0:00 Cold open
+- 0:24 Age is measured, not observed
+- 1:04 Radiometric dating measures decay at known rates
+- 2:21 Layer counting provides independent confirmation
+- 3:27 Assumptions are stated and tested
+- 4:47 Cross-checks reveal method boundaries
+- 5:58 Deep-sea sediments accumulate slowly and unevenly
+- 7:00 Uncertainty is quantified, not hidden
+- 8:13 What to notice in the edit
+- 8:47 Evidence limit
+- 9:36 Closing
 
 ## Sources
 

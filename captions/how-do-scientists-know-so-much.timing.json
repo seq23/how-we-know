@@ -1,0 +1,115 @@
+{
+  "episode": "how-do-scientists-know-so-much",
+  "beats": 75,
+  "plan_source": "plans/how-do-scientists-know-so-much.json",
+  "timing": "audio",
+  "beats_measured": 75,
+  "durations_recorded": 75,
+  "duration_s": 594.085,
+  "cues": 164,
+  "chapters_real": 13,
+  "chapters_published": 11,
+  "chapter_notes": [
+    "merged 2 chapter(s) under 10s: Title card (5.1s), Producer POV (8.7s)"
+  ],
+  "drift": {
+    "mean_abs_s": 64.1,
+    "worst_abs_s": 144.1,
+    "rows": [
+      {
+        "title": "Cold open",
+        "hand": "00:00",
+        "real": "0:00",
+        "drift_s": 0.0
+      },
+      {
+        "title": "The five percent figure measures imaging, not knowledge",
+        "hand": "00:24",
+        "real": "0:25",
+        "drift_s": 1.8
+      },
+      {
+        "title": "Physical laws apply everywhere, not just where cameras have been",
+        "hand": "01:32",
+        "real": "1:32",
+        "drift_s": 0.6
+      },
+      {
+        "title": "Sampling strategies extract global patterns from local measurements",
+        "hand": "03:01",
+        "real": "2:41",
+        "drift_s": -19.3
+      },
+      {
+        "title": "Remote sensing technologies measure without visiting",
+        "hand": "04:50",
+        "real": "4:34",
+        "drift_s": -15.8
+      },
+      {
+        "title": "Sediment cores record history without observing it in real time",
+        "hand": "06:34",
+        "real": "5:41",
+        "drift_s": -52.9
+      },
+      {
+        "title": "Models are tested, not assumed",
+        "hand": "08:04",
+        "real": "6:45",
+        "drift_s": -78.4
+      },
+      {
+        "title": "Some questions remain open because the evidence is sparse",
+        "hand": "09:26",
+        "real": "7:32",
+        "drift_s": -113.8
+      },
+      {
+        "title": "What to notice in the edit",
+        "hand": "10:48",
+        "real": "8:31",
+        "drift_s": -136.5
+      },
+      {
+        "title": "Evidence limit",
+        "hand": "11:31",
+        "real": "9:06",
+        "drift_s": -144.1
+      },
+      {
+        "title": "Closing",
+        "hand": "12:00",
+        "real": "9:37",
+        "drift_s": -142.0
+      }
+    ]
+  },
+  "ffprobe": {
+    "file": "renders/how-do-scientists-know-so-much-final.mp4",
+    "video_s": 594.085,
+    "last_cue_end_s": 594.085,
+    "delta_s": 0.0,
+    "ok": true
+  },
+  "text_checks": {
+    "beats_json": {
+      "checked": 75,
+      "mismatched": []
+    },
+    "script_text": {
+      "checked": 75,
+      "absent_from_narration": []
+    }
+  },
+  "script_chapters": {
+    "written": true,
+    "changed": true,
+    "removed_lines": [],
+    "chapters_not_in_script": []
+  },
+  "artifacts": [
+    "captions/how-do-scientists-know-so-much.vtt",
+    "captions/how-do-scientists-know-so-much.srt",
+    "captions/how-do-scientists-know-so-much.chapters.txt"
+  ]
+}

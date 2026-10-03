@@ -192,6 +192,34 @@
       "tag": "evidence-limit"
     },
     {
+      "video": "how-deep-mariana-trench",
+      "pov_id": "pov-001",
+      "tier": "specific",
+      "source": "matched by author",
+      "line": "When I picture the deep ocean I don't see blue water or fish. I see black. A massive amount of black space where you can't tell what's beside you or beneath you."
+    },
+    {
+      "video": "how-do-scientists-know-about-other-galaxies",
+      "pov_id": "pov-060",
+      "tier": "transferable",
+      "source": "promoted by the Saturday gate",
+      "line": "Science is a process. It is not a person behind a curtain handing down permanent answers."
+    },
+    {
+      "video": "how-do-scientists-know-how-old-something-is",
+      "pov_id": "pov-059",
+      "tier": "transferable",
+      "source": "promoted by the Saturday gate",
+      "line": "I'm not anti-science. I'm against using science as a magic authority word that means nobody has to show their work."
+    },
+    {
+      "video": "how-do-scientists-know-so-much",
+      "pov_id": "pov-058",
+      "tier": "transferable",
+      "source": "promoted by the Saturday gate",
+      "line": "'Scientists say' is almost meaningless on its own. Which scientists? How many? Was it one paper? Was it replicated?"
+    },
+    {
       "video": "how-do-self-healing-materials-work",
       "pov_id": "pov-101",
       "tier": "specific",
@@ -306,6 +334,22 @@
       "recorded_by": "loop/pov_repair.py"
     },
     {
+      "video": "what-lives-in-the-sea",
+      "pov_id": "pov-042",
+      "tier": "transferable",
+      "source": "matched by author",
+      "line": "I'm interested in the evidence chain, not just the final fact somebody puts on screen."
+    },
+    {
+      "video": "why-deep-sea-fish-die-when-brought-to-surface",
+      "pov_id": "pov-138",
+      "tier": "transferable",
+      "source_answer": "21",
+      "line": "I'd want to stop if this channel began rewarding certainty more than truth \u2014 selecting evidence to protect the brand, repeating numbers because they performed well, turning unresolved questions into clean stories. The moment it can't correct itself without treating correction as humiliation, it has become the thing it was built to expose.",
+      "matched_by": "transferable tag:trust (the bank permits any evidence-based niche)",
+      "recorded_by": "loop/pov_repair.py"
+    },
+    {
       "video": "why-does-old-iron-not-rust",
       "pov_id": "pov-104",
       "tier": "transferable",
@@ -331,41 +375,6 @@
       "line": "When someone gives me a fact with a number in it, my first instinct is: where did the number come from? Not because I assume they're lying. Numbers can make almost anything sound authoritative.",
       "matched_by": "transferable tag:numbers (the bank permits any evidence-based niche)",
       "recorded_by": "loop/pov_repair.py"
-    },
-    {
-      "video": "how-deep-mariana-trench",
-      "pov_id": "pov-001",
-      "tier": "specific",
-      "source": "matched by author",
-      "line": "When I picture the deep ocean I don't see blue water or fish. I see black. A massive amount of black space where you can't tell what's beside you or beneath you."
-    },
-    {
-      "video": "what-lives-in-the-sea",
-      "pov_id": "pov-042",
-      "tier": "transferable",
-      "source": "matched by author",
-      "line": "I'm interested in the evidence chain, not just the final fact somebody puts on screen."
-    },
-    {
-      "video": "how-do-scientists-know-so-much",
-      "pov_id": "pov-058",
-      "tier": "transferable",
-      "source": "promoted by the Saturday gate",
-      "line": "'Scientists say' is almost meaningless on its own. Which scientists? How many? Was it one paper? Was it replicated?"
-    },
-    {
-      "video": "how-do-scientists-know-how-old-something-is",
-      "pov_id": "pov-059",
-      "tier": "transferable",
-      "source": "promoted by the Saturday gate",
-      "line": "I'm not anti-science. I'm against using science as a magic authority word that means nobody has to show their work."
-    },
-    {
-      "video": "how-do-scientists-know-about-other-galaxies",
-      "pov_id": "pov-060",
-      "tier": "transferable",
-      "source": "promoted by the Saturday gate",
-      "line": "Science is a process. It is not a person behind a curtain handing down permanent answers."
     }
   ]
 }

@@ -1,0 +1,885 @@
+[
+  {
+    "segment": "depth_descent",
+    "seconds": 6.62,
+    "heading": "Cold open",
+    "narration": "A shell from the deep ocean floor reads as eleven thousand years old by carbon-14 dating.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Cold open",
+    "narration": "The same sample, placed in a different lab using a different isotope system, returns eleven thousand two hundred years.",
+    "args": {
+      "lines": [
+        "The same sample, placed",
+        "in a different lab",
+        "using"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "depth_descent",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "The methods agree within their stated uncertainty ranges. That convergence is not luck. It is the structure of how age is known.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 3.5,
+    "heading": "Title card",
+    "narration": "How do scientists know how old something is?",
+    "args": {
+      "lines": [
+        "How do scientists know",
+        "how old something is?"
+      ]
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "anatomy_callout",
+    "seconds": 5.79,
+    "heading": "Age is measured, not observed",
+    "narration": "You cannot see age. You see a rock, a bone, a layer of sediment.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "Age is measured, not observed",
+    "narration": "Age is what you calculate after measuring something that changes at a known rate.",
+    "args": {
+      "lines": [
+        "Age is what you",
+        "calculate after measuring something",
+        "that changes"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "anatomy_callout",
+    "seconds": 9.0,
+    "heading": "Age is measured, not observed",
+    "narration": "The measurement might be the ratio of two isotopes, the number of rings in a coral skeleton, or the thickness of sediment layers. The calculation converts that measurement into time.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.03,
+    "heading": "Age is measured, not observed",
+    "narration": "The method you choose depends on what you are dating and how old you think it is.",
+    "args": {
+      "variant": 0
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Age is measured, not observed",
+    "narration": "Carbon-14 works for organic material up to about fifty thousand years old.",
+    "args": {
+      "lines": [
+        "Carbon-14 works for organic",
+        "material up to about",
+        "fifty thousand"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "anatomy_callout",
+    "seconds": 9.0,
+    "heading": "Age is measured, not observed",
+    "narration": "Uranium-lead dating works for rocks millions to billions of years old. Counting layers works when layers form annually and remain intact. No single method covers everything.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "size_ladder",
+    "seconds": 9.0,
+    "heading": "Radiometric dating measures decay at known rates",
+    "narration": "Radiometric dating relies on radioactive decay. An unstable isotope \u2014 the parent \u2014 breaks down into a stable isotope \u2014 the daughter \u2014 at a rate that does not change.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "Radiometric dating measures decay at known rates",
+    "narration": "That rate is the half-life: the time it takes for half of the parent atoms to decay.",
+    "args": {
+      "lines": [
+        "That rate is the",
+        "half-life: the time it",
+        "takes"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "size_ladder",
+    "seconds": 4.97,
+    "heading": "Radiometric dating measures decay at known rates",
+    "narration": "Carbon-14 has a half-life of five thousand seven hundred and thirty years.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.86,
+    "heading": "Radiometric dating measures decay at known rates",
+    "narration": "It forms in the atmosphere when cosmic rays strike nitrogen. Living organisms take in carbon-14 while they are alive.",
+    "args": {
+      "variant": 1
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Radiometric dating measures decay at known rates",
+    "narration": "When they die, they stop taking it in, and the carbon-14 already in their tissues decays.",
+    "args": {
+      "lines": [
+        "When they die, they",
+        "stop taking it"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "size_ladder",
+    "seconds": 7.45,
+    "heading": "Radiometric dating measures decay at known rates",
+    "narration": "Measure the ratio of carbon-14 to stable carbon-12, and you can calculate how long ago the organism died.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.38,
+    "heading": "Radiometric dating measures decay at known rates",
+    "narration": "Uranium-238 decays to lead-206 with a half-life of four point five billion years.",
+    "args": {
+      "variant": 2
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Radiometric dating measures decay at known rates",
+    "narration": "Potassium-40 decays to argon-40 with a half-life of one point three billion years.",
+    "args": {
+      "lines": [
+        "Potassium-40 decays to argon-40",
+        "with a half-life of",
+        "one point"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "size_ladder",
+    "seconds": 7.45,
+    "heading": "Radiometric dating measures decay at known rates",
+    "narration": "These long half-lives make them useful for dating rocks and minerals far older than anything carbon-14 can reach.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 4.97,
+    "heading": "Radiometric dating measures decay at known rates",
+    "narration": "The decay rate is not affected by temperature, pressure, or chemical environment.",
+    "args": {
+      "variant": 3
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Radiometric dating measures decay at known rates",
+    "narration": "That constancy is what makes the method work. You measure the ratio now, apply the known rate, and calculate backward to the starting point.",
+    "args": {
+      "lines": [
+        "That constancy is what",
+        "makes the method work.",
+        "You measure"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.38,
+    "heading": "Layer counting provides independent confirmation",
+    "narration": "Some materials form layers at regular intervals. Trees add one ring per year.",
+    "args": {
+      "variant": 4
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Layer counting provides independent confirmation",
+    "narration": "Ice sheets in Greenland and Antarctica trap a new layer of snow each year, and that snow compresses into ice while preserving a record of the atmosphere at the time it fell. Deep-sea sediments accumulate in layers, though the rate varies by location.",
+    "args": {
+      "lines": [
+        "Ice sheets in Greenland",
+        "and Antarctica trap a",
+        "new layer"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.38,
+    "heading": "Layer counting provides independent confirmation",
+    "narration": "Counting layers gives you an age in years without needing to measure isotopes.",
+    "args": {
+      "variant": 0
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Layer counting provides independent confirmation",
+    "narration": "The method is direct. The limit is preservation. Layers must remain distinct and countable. Mixing, melting, or compression can erase the boundaries.",
+    "args": {
+      "variant": 1
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Layer counting provides independent confirmation",
+    "narration": "Ice cores from Greenland reach back more than one hundred thousand years with annual layers visible for much of that span.",
+    "args": {
+      "lines": [
+        "Ice cores from Greenland",
+        "reach back more than",
+        "one hundred"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.21,
+    "heading": "Layer counting provides independent confirmation",
+    "narration": "The EPICA ice core from Antarctica, drilled at Dome C, reaches eight hundred thousand years.",
+    "args": {
+      "variant": 2
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Layer counting provides independent confirmation",
+    "narration": "The oldest ice, from Allan Hills in Antarctica, exceeds one million years, though annual layers are no longer countable at that depth.",
+    "args": {
+      "variant": 3
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Layer counting provides independent confirmation",
+    "narration": "Age at that point comes from modeling ice flow and comparing to radiometric dates from volcanic ash layers.",
+    "args": {
+      "lines": [
+        "Age at that point",
+        "comes from modeling ice",
+        "flow"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Assumptions are stated and tested",
+    "narration": "Every dating method rests on assumptions. For radiometric dating, you assume the decay rate has not changed, the sample has not gained or lost parent or daughter isotopes since it formed, and you know or can measure the initial conditions.",
+    "args": {
+      "variant": 4
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Assumptions are stated and tested",
+    "narration": "These assumptions are testable. Decay rates have been measured in the lab under extreme conditions \u2014 high temperature, high pressure, strong magnetic fields \u2014 and they do not change.",
+    "args": {
+      "lines": [
+        "These assumptions are testable.",
+        "Decay rates have been",
+        "measured"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.21,
+    "heading": "Assumptions are stated and tested",
+    "narration": "Samples can be checked for contamination by looking for isotopes that should not be there.",
+    "args": {
+      "variant": 0
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Assumptions are stated and tested",
+    "narration": "Initial conditions can be estimated by measuring multiple isotopes in the same sample or by dating minerals that formed with no daughter isotope present.",
+    "args": {
+      "variant": 1
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Assumptions are stated and tested",
+    "narration": "Zircon crystals, for example, incorporate uranium but reject lead when they crystallize.",
+    "args": {
+      "lines": [
+        "Zircon crystals, for example,",
+        "incorporate uranium but reject",
+        "lead"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 4.97,
+    "heading": "Assumptions are stated and tested",
+    "narration": "Any lead-206 in a zircon crystal must have come from uranium-238 decay.",
+    "args": {
+      "variant": 2
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.03,
+    "heading": "Assumptions are stated and tested",
+    "narration": "That makes zircon ideal for uranium-lead dating because the initial condition \u2014 zero lead \u2014 is known.",
+    "args": {
+      "variant": 3
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Assumptions are stated and tested",
+    "narration": "When assumptions are violated, methods disagree. A contaminated sample gives a different age depending on which isotope system you use.",
+    "args": {
+      "lines": [
+        "When assumptions are violated,",
+        "methods disagree. A contaminated",
+        "sample gives"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.86,
+    "heading": "Assumptions are stated and tested",
+    "narration": "That disagreement is a signal, not a failure. It tells you the sample is not suitable for that method.",
+    "args": {
+      "variant": 4
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 8.28,
+    "heading": "Producer POV",
+    "narration": "I'm not anti-science. I'm against using science as a magic authority word that means nobody has to show their work.",
+    "args": {
+      "text": "I'm not anti-science. I'm against using science as a magic authority word that means nobody has to show their work.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.28,
+    "heading": "Cross-checks reveal method boundaries",
+    "narration": "Different methods applied to the same material should agree. When they do not, you learn where a method breaks down.",
+    "args": {
+      "variant": 0
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "Cross-checks reveal method boundaries",
+    "narration": "Carbon-14 dating assumes the ratio of carbon-14 to carbon-12 in the atmosphere has been constant.",
+    "args": {
+      "lines": [
+        "Carbon-14 dating assumes the",
+        "ratio of carbon-14 to",
+        "carbon-12"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Cross-checks reveal method boundaries",
+    "narration": "It has not. Tree rings provide a countable record going back more than ten thousand years, and wood from those rings can be carbon-14 dated.",
+    "args": {
+      "variant": 1
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.28,
+    "heading": "Cross-checks reveal method boundaries",
+    "narration": "The comparison shows that atmospheric carbon-14 levels have varied by up to ten percent over the past few thousand years.",
+    "args": {
+      "variant": 2
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "Cross-checks reveal method boundaries",
+    "narration": "That variation is now part of the calibration curve used to correct carbon-14 dates.",
+    "args": {
+      "lines": [
+        "That variation is now",
+        "part of the calibration",
+        "curve used"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Cross-checks reveal method boundaries",
+    "narration": "Volcanic ash layers can be dated by potassium-argon and also placed in a sequence by their position in sediment or ice cores.",
+    "args": {
+      "variant": 3
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Cross-checks reveal method boundaries",
+    "narration": "The radiometric age should match the layer-counted age. When it does, both methods are confirmed. When it does not, you investigate why.",
+    "args": {
+      "variant": 4
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Cross-checks reveal method boundaries",
+    "narration": "Magnetic reversals \u2014 times when Earth's magnetic field flipped north to south \u2014 are recorded in rocks and sediments.",
+    "args": {
+      "lines": [
+        "times when Earth's magnetic",
+        "field flipped north to",
+        "south"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.21,
+    "heading": "Cross-checks reveal method boundaries",
+    "narration": "The timing of those reversals has been dated radiometrically and also counted in sediment cores.",
+    "args": {
+      "variant": 0
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 4.97,
+    "heading": "Cross-checks reveal method boundaries",
+    "narration": "The two records agree. That agreement extends the confidence in both methods.",
+    "args": {
+      "variant": 1
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "zone_column",
+    "seconds": 5.79,
+    "heading": "Deep-sea sediments accumulate slowly and unevenly",
+    "narration": "Deep-sea sediments form from the slow rain of dead plankton, dust, and volcanic ash.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Deep-sea sediments accumulate slowly and unevenly",
+    "narration": "The rate depends on location. Abyssal plains far from land accumulate one to five millimeters per thousand years.",
+    "args": {
+      "lines": [
+        "The rate depends on",
+        "location. Abyssal plains far",
+        "from land"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "zone_column",
+    "seconds": 9.0,
+    "heading": "Deep-sea sediments accumulate slowly and unevenly",
+    "narration": "Continental slopes, closer to sediment sources, accumulate ten to one hundred millimeters per thousand years. Near hydrothermal vents, mineral precipitation can add sediment much faster.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.62,
+    "heading": "Deep-sea sediments accumulate slowly and unevenly",
+    "narration": "These rates are measured by dating sediment cores with multiple methods. Radiocarbon dates the youngest layers.",
+    "args": {
+      "variant": 2
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Deep-sea sediments accumulate slowly and unevenly",
+    "narration": "Oxygen isotope ratios in foraminifera shells track glacial cycles, which have known timing from ice cores.",
+    "args": {
+      "lines": [
+        "Oxygen isotope ratios in",
+        "foraminifera shells track glacial",
+        "cycles"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "zone_column",
+    "seconds": 7.86,
+    "heading": "Deep-sea sediments accumulate slowly and unevenly",
+    "narration": "Magnetic reversals provide tie points at known ages. Microfossils indicate the age range based on when those species existed.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.21,
+    "heading": "Deep-sea sediments accumulate slowly and unevenly",
+    "narration": "The uneven accumulation means you cannot simply measure depth and divide by an average rate.",
+    "args": {
+      "variant": 3
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Deep-sea sediments accumulate slowly and unevenly",
+    "narration": "Each core must be dated directly. The methods used depend on the age range and the material available.",
+    "args": {
+      "lines": [
+        "Each core must be",
+        "dated directly. The methods",
+        "used depend"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "size_ladder",
+    "seconds": 4.97,
+    "heading": "Uncertainty is quantified, not hidden",
+    "narration": "Every age measurement comes with uncertainty. That uncertainty is not a flaw.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Uncertainty is quantified, not hidden",
+    "narration": "It is a statement of what the measurement can and cannot resolve.",
+    "args": {
+      "lines": [
+        "It is a statement",
+        "of what the measurement"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "size_ladder",
+    "seconds": 9.0,
+    "heading": "Uncertainty is quantified, not hidden",
+    "narration": "A radiocarbon date might be reported as eleven thousand two hundred years plus or minus four hundred years at ninety-five percent confidence.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Uncertainty is quantified, not hidden",
+    "narration": "That means if you repeated the measurement many times, ninety-five percent of the results would fall between ten thousand eight hundred and eleven thousand six hundred years. The uncertainty comes from counting statistics, instrument precision, and sample size.",
+    "args": {
+      "variant": 4
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Uncertainty is quantified, not hidden",
+    "narration": "Longer-lived isotopes have larger absolute uncertainties but smaller relative uncertainties. A uranium-lead date of one billion years might have an uncertainty of ten million years \u2014 one percent.",
+    "args": {
+      "lines": [
+        "Longer-lived isotopes have larger",
+        "absolute uncertainties but smaller",
+        "relative uncertainties."
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "size_ladder",
+    "seconds": 9.0,
+    "heading": "Uncertainty is quantified, not hidden",
+    "narration": "That is precise enough to distinguish rock formations separated by tens of millions of years but not precise enough to resolve events a few million years apart.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.62,
+    "heading": "Uncertainty is quantified, not hidden",
+    "narration": "Reporting uncertainty lets you compare measurements. Two ages that overlap within their uncertainty ranges are consistent.",
+    "args": {
+      "variant": 0
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Uncertainty is quantified, not hidden",
+    "narration": "Two ages that do not overlap are genuinely different, and that difference means something about the samples or the methods.",
+    "args": {
+      "lines": [
+        "Two ages that do",
+        "not overlap are genuinely",
+        "different"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "The visual directives in this script emphasize process over result. The chain from observation to age shows that age is not a direct measurement.",
+    "args": {
+      "variant": 1
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "What to notice in the edit",
+    "narration": "The steps directive for radiometric dating shows that the method is a procedure, not a black box.",
+    "args": {
+      "lines": [
+        "The steps directive for",
+        "radiometric dating shows that",
+        "the method"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 4.97,
+    "heading": "What to notice in the edit",
+    "narration": "The checklist of assumptions shows that the method is conditional, not absolute.",
+    "args": {
+      "variant": 2
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.38,
+    "heading": "What to notice in the edit",
+    "narration": "The ladder of half-lives shows the range of timescales different isotopes can measure.",
+    "args": {
+      "variant": 3
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "The contrast directive shows that age is calculated, not observed. The sources directive shows that multiple independent lines of evidence support the same conclusion.",
+    "args": {
+      "lines": [
+        "The contrast directive shows",
+        "that age is calculated,",
+        "not observed."
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.21,
+    "heading": "Evidence limit",
+    "narration": "These methods tell you when something formed or died, not what happened to it afterward.",
+    "args": {
+      "variant": 4
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Evidence limit",
+    "narration": "A rock dated to two billion years old formed two billion years ago.",
+    "args": {
+      "lines": [
+        "A rock dated to",
+        "two billion years old",
+        "formed two"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.69,
+    "heading": "Evidence limit",
+    "narration": "That date does not tell you when the rock reached the surface, when it was buried, or when it was collected.",
+    "args": {
+      "variant": 0
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.45,
+    "heading": "Evidence limit",
+    "narration": "Carbon-14 becomes undetectable beyond about fifty thousand years. Material older than that cannot be dated by this method.",
+    "args": {
+      "variant": 1
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Evidence limit",
+    "narration": "Uranium-lead dating requires minerals that incorporate uranium, which limits the types of samples it can date.",
+    "args": {
+      "lines": [
+        "Uranium-lead dating requires minerals",
+        "that incorporate uranium, which",
+        "limits"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 4.97,
+    "heading": "Evidence limit",
+    "narration": "Layer counting requires continuous, undisturbed deposition, which is rare over long timescales.",
+    "args": {
+      "variant": 2
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.03,
+    "heading": "Evidence limit",
+    "narration": "The methods converge where their ranges overlap. That convergence is the strongest evidence that the methods work.",
+    "args": {
+      "variant": 3
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Evidence limit",
+    "narration": "Where they do not overlap, you are extrapolating, and the uncertainty grows.",
+    "args": {
+      "lines": [
+        "Where they do not",
+        "overlap, you are extrapolating"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.69,
+    "heading": "Closing",
+    "narration": "Age is not a property. It is a calculation. The calculation depends on a measurement, a known rate, and stated assumptions.",
+    "args": {
+      "variant": 4
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "The methods are independent, and they check each other. When they agree, the age is known. When they disagree, you learn where the method breaks.",
+    "args": {
+      "lines": [
+        "The methods are independent,",
+        "and they check each",
+        "other."
+      ]
+    },
+    "from": "heuristic"
+  }
+]
