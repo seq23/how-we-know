@@ -991,8 +991,12 @@ sent that viewer to a channel page, not to the episode it was cut from.
    slug in `loop/handoff.py:PLAYLIST_TITLES`; a third allocated domain without a title
    is a refusal, never an invented name. Created once — an existing playlist with the
    same title is adopted, never duplicated — and remembered in `loop/state/playlists.json`
-   with the channel section made for each (`channelSections.insert`; a refusal is
-   recorded there as a note). Every public episode and Short is inserted by
+   with a channel section attempted for each (`channelSections.insert`). **Refused by
+   YouTube for this channel: HTTP 400 `channelNotActive` ("One or more channels are not
+   active") on both — a platform-side answer about the channel, not a body or scope
+   problem; recorded in `playlists.json` under `sections.<domain>.refused`, never
+   retried, and the playlists are reached from every video's description and comment
+   instead.** Every public episode and Short is inserted by
    slug→domain; items are only ever added. Private/scheduled videos are not inserted
    (a public playlist showing "private video" rows is the thing avoided).
 5. **Liveness is read from YouTube**, never inferred: the ledgers record upload-time
@@ -1004,8 +1008,13 @@ sent that viewer to a channel page, not to the episode it was cut from.
    priority order (playlists → Short links → playlist rows → comments → episode blocks),
    records each write on its ledger row before the next, and takes
    `HANDOFF_QUOTA_DEFERRED` (self-resolving, `resets_at` required) for the rest. The back
-   catalogue — 34 public Shorts, 17 public episodes, 106 writes ≈ 5,300 units — was planned
-   to take two quota days from the start; the counts are in the PR that landed this.
+   catalogue was run once from the Mac on 2026-10-03 after the dry run (106 writes ≈
+   5,300 units planned; 51 public videos: 34 Shorts, 17 episodes). **Applied in that run,
+   4,503 units: 2 playlists created, 51 playlist rows (34 Shorts + 17 episodes), 17 Shorts
+   given their first-line episode link (`done`), 17 Shorts marked `pending` because their
+   episode is still scheduled, 17 channel comments posted, 1 episode Shorts block
+   written; 16 episode blocks deferred to the next run (`HANDOFF_QUOTA_DEFERRED`, green).**
+   V46 passed on the recorded state (51 examined).
 7. **Where it runs.** As a final step of both daily cloud lanes
    (`loop-upload-cloud.yml` 09:00 CT, `loop-shorts-cloud.yml` 18:00 CT), `if: !cancelled()`
    so the lane's own stop never blocks it; same repo-secret credential. On the Mac:
