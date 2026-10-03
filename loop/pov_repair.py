@@ -66,6 +66,7 @@ import batch_queue                                  # noqa: E402
 import domains                                      # noqa: E402
 import ledger                                       # noqa: E402
 import pov_match                                    # noqa: E402
+from captions import write_beats_manifest           # noqa: E402
 from common import (STATE, Stage, now as _now, read_json,  # noqa: E402
                     week_id, write_json)
 
@@ -336,7 +337,7 @@ def repair_one(slug: str, dry_run: bool = False,
             if i in by:
                 by[i]["narration"] = fresh[i]["narration"]
                 by[i].pop("seconds", None)   # unvoiced now: not a measurement
-        bj.write_text(json.dumps(rows, indent=2) + "\n", encoding="utf-8")
+        write_beats_manifest(bj, rows)   # the one canonical serialization
 
     # 4. the caption track, which is now timed against words that changed
     for suffix in (".srt", ".vtt", ".chapters.txt", ".timing.json"):
