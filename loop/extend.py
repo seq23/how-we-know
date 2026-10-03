@@ -276,12 +276,24 @@ def extend_one(item: dict, st: Stage, dry_run: bool = False) -> dict:
                 "draft": str(tmp.relative_to(ROOT))}
 
     words_after = durations.narration_words_of(merged)
+    # The audio for every beat from the insertion point on was synthesised
+    # from the OLD text at that index. Retire it BEFORE the plan goes, while
+    # the plan still says what each wav was cut against (below).
+    old_plan = PLANS / f"{slug}.json"
+    old_narrations = None
+    if old_plan.exists():
+        try:
+            old_narrations = {i: b.get("narration")
+                              for i, b in enumerate(json.loads(old_plan.read_text()))}
+        except (json.JSONDecodeError, TypeError, AttributeError):
+            old_narrations = None
     path.write_text(merged, encoding="utf-8")
+    retired = retire_stale_audio(slug, old_narrations)
 
     # The plan, the audio after the insertion point and the render are now
     # stale. Move the render aside rather than deleting it - nothing in this
     # repo deletes finished work - and let the batch rebuild.
-    stale = []
+    stale = [f"audio/{slug}/{w}" for w in retired]
     plan = PLANS / f"{slug}.json"
     if plan.exists():
         plan.unlink()
@@ -306,11 +318,77 @@ def extend_one(item: dict, st: Stage, dry_run: bool = False) -> dict:
             "stale": stale}
 
 
+def retire_stale_audio(slug: str, old_narrations: dict | None,
+                       audio_dir: Path | None = None,
+                       new_plan: list | None = None) -> list[str]:
+    """Move aside every wav whose text is no longer the text at its index.
+
+    WHY. Narration is one wav per plan INDEX (audio/<slug>/0000.wav ...), and
+    voice/narrate_all.py skips any index that already has a valid wav. An
+    extension inserts sections before the closing one, so every beat from the
+    insertion point on moves to a new index - and the wavs already sitting at
+    those indices were synthesised from the sentences that USED to be there.
+    Until 2026-10-03 nothing retired them: the re-render would have spoken the
+    old closing lines under the new section's captions, and captions.verify_text
+    could not catch it because narrate_all rewrites beats.json from the new
+    plan before the render. loop/pov_repair.py already deletes the one wav it
+    replaces; this is the same rule for the many.
+
+    `old_narrations` is {index: text the wav at that index was cut from} - the
+    plan file before the script changed, or, when that is gone, the tracked
+    audio/<slug>/beats.json the last narration run wrote. Returns the file
+    names moved. Nothing is deleted: they go to audio/<slug>/superseded/, the
+    same place bin/batch-session.sh puts an orphan.
+    """
+    adir = (audio_dir or AUDIO) / slug
+    if not adir.is_dir():
+        return []
+    if old_narrations is None:
+        bj = adir / "beats.json"
+        if not bj.exists():
+            return []
+        try:
+            old_narrations = {int(r["i"]): r.get("narration")
+                              for r in json.loads(bj.read_text())
+                              if isinstance(r, dict) and "i" in r}
+        except (json.JSONDecodeError, TypeError, KeyError, ValueError):
+            return []
+    if new_plan is None:
+        sys.path.insert(0, str(ROOT / "visuals"))
+        import planner                                     # noqa: PLC0415
+        new_plan = planner.plan(str(SCRIPTS / f"{slug}.md"))
+    new_text = {i: b.get("narration") for i, b in enumerate(new_plan)}
+    moved = []
+    keep = adir / "superseded"
+    for wav in sorted(adir.glob("[0-9]*.wav")):
+        i = int(wav.stem)
+        if i in old_narrations and old_narrations[i] == new_text.get(i):
+            continue                      # same words at this index: still true
+        if i not in old_narrations and i in new_text:
+            continue                      # never recorded: nothing to compare
+        keep.mkdir(exist_ok=True)
+        shutil.move(str(wav), str(keep / wav.name))
+        moved.append(wav.name)
+    return moved
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--slug", default=None)
+    ap.add_argument("--retire-stale", metavar="SLUG", default=None,
+                    help="only move aside the wavs whose text no longer matches "
+                         "the script's plan at their index (uses "
+                         "audio/SLUG/beats.json as the record of what was "
+                         "voiced); for an episode extended before this check "
+                         "existed")
     a = ap.parse_args()
+    if a.retire_stale:
+        moved = retire_stale_audio(a.retire_stale, None)
+        print(f"{a.retire_stale}: {len(moved)} stale wav(s) moved to "
+              f"audio/{a.retire_stale}/superseded/"
+              + (f": {', '.join(moved)}" if moved else ""))
+        return 0
 
     target, band_min, floor = band()
     grandfathered = set(config()["retention"]["runtime_floor_grandfathered"])
