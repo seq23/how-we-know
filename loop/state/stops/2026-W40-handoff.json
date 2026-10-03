@@ -1,7 +1,7 @@
 {
   "stage": "handoff",
   "week": "2026-W40",
-  "at": "2026-10-03T14:57:34+00:00",
+  "at": "2026-10-03T23:52:10+00:00",
   "code": "HANDOFF_QUOTA_DEFERRED",
   "message": "16 action(s) wait for tomorrow's quota; 0 applied this run",
   "detail": {
@@ -28,8 +28,8 @@
   },
   "unblock": "Nothing to do; the allowance resets at midnight Pacific and this lane runs twice daily. Applied work is recorded.",
   "disposition": "self_resolving",
-  "disposition_why": "The hand-off lane spends 50 units per write and stands aside for the day's episode upload and evening Shorts (quota.deferrable_reserve). What did not fit is listed in loop/state/handoff.json `deferred` and is done the next run after the allowance resets at midnight Pacific; everything applied this run is already recorded in the ledgers. The back catalogue (34 Shorts, 18 episodes) is expected to take two quota days. (run 2 of at most 5 before this escalates to a human.)",
-  "consecutive": 2,
+  "disposition_why": "The hand-off lane spends 50 units per write and stands aside for the day's episode upload and evening Shorts (quota.deferrable_reserve). What did not fit is listed in loop/state/handoff.json `deferred` and is done the next run after the allowance resets at midnight Pacific; everything applied this run is already recorded in the ledgers. The back catalogue (34 Shorts, 18 episodes) is expected to take two quota days. (run 3 of at most 5 before this escalates to a human.)",
+  "consecutive": 3,
   "held_items": [],
   "exit_code": 0,
   "work_done_before_stop": [],
