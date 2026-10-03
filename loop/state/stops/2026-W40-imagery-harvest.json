@@ -1,0 +1,79 @@
+{
+  "stage": "imagery-harvest",
+  "week": "2026-W40",
+  "at": "2026-10-03T04:42:25+00:00",
+  "code": "DELEGATED_HARVEST_STALE",
+  "message": "1 delegated harvester(s) have not been run by their host inside the 10-day cap: research/imagery_video.py on mac-batch (last run: 2026-09-20T04:45:26+00:00; last success: 2026-09-20T04:45:26+00:00). This host cannot run it and the host that can has been silent, so the pool it feeds has stopped growing.",
+  "detail": {
+    "stale": [
+      {
+        "rel": "research/imagery_video.py",
+        "host": "mac-batch",
+        "state": "stale",
+        "cap_days": 10,
+        "last_success_at": "2026-09-20T04:45:26+00:00",
+        "last_run_at": "2026-09-20T04:45:26+00:00",
+        "success_age_days": 13.0,
+        "run_age_days": 13.0,
+        "records": 147,
+        "exit": 0,
+        "tail": [
+          "  rejected   42  gate 0-size",
+          "  rejected    1  gate C-window",
+          "  carried forward 3 previously-accepted clip(s)",
+          "downloaded 144 clips -> /Users/sequoiataylor/GitHub/how-we-know/channel/imagery/clips",
+          "manifest -> /Users/sequoiataylor/GitHub/how-we-know/channel/imagery/video_rights.json",
+          "verified 147 clips: sha256 matches, clean window present, commercial use cleared"
+        ]
+      }
+    ],
+    "host": "ci",
+    "stamps": "loop/state/harvest_runs.json"
+  },
+  "unblock": "mac-batch: wake the Mac (launchd fires the missed 23:00 batch on wake) or run bin/batch-session.sh on it by hand. The next run there stamps loop/state/harvest_runs.json and this clears on its own.",
+  "disposition": "owner_action",
+  "disposition_why": "research/imagery_video.py runs on the Mac's nightly batch (the only host with ffmpeg and Apple Vision) and loop/state/harvest_runs.json shows it has not run inside harvest.delegated_max_age_days. The batch runs it every night the Mac is awake with its lid open; the next run's stamp clears this. The Mac is the one external host she alone holds. Only she can clear this, and retrying cannot, so the run stays GREEN and the fact is carried to the top of the Sunday digest instead of into her inbox as a failed build. (run 1 of at most 2 before this escalates.)",
+  "consecutive": 1,
+  "held_items": [],
+  "exit_code": 0,
+  "work_done_before_stop": [
+    "harvested still imagery - NOAA Ocean Exploration, plus a hand-verified public-domain set through research/imagery.py",
+    "harvested materials stills - Wikimedia Commons, public-domain gate only through research/imagery_materials.py --missing",
+    "harvested species stills - the per-creature index every deep-sea episode draws its subject shots from through research/imagery_species.py",
+    "channel/imagery/rights.json grew 100 -> 105"
+  ],
+  "notes": [
+    "allocation: deep-sea-ocean-science 2, materials-and-manufacturing 2 -> 4 scheduled harvester(s): 3 run here on ci, 1 delegated",
+    "research/imagery_video.py is delegated to mac-batch (the Mac's nightly batch (bin/batch-session.sh, launchd com.howweknow.batch at 23:00 local; it has ffmpeg, swiftc and Apple Vision)); verified below, not run",
+    "cleared pool before: channel/imagery/materials.json 12 record(s)",
+    "cleared pool before: channel/imagery/rights.json 100 record(s)",
+    "cleared pool before: channel/imagery/species.json 33 record(s)",
+    "cleared pool before: channel/imagery/video_rights.json absent",
+    "demand at the current cadence: 4/week, 32 episode(s) over the next 8 weeks. An episode with no cleared footage is illustrated, which is a legitimate outcome and never a reason to widen the gate.",
+    "research/imagery.py: rights gate credit_is_noaa_only() present",
+    "  research/imagery.py: by slot: {'trench': 5, 'frilled_shark': 6, 'vehicle': 11, 'column': 5, 'anglerfish': 5, 'jelly': 3, 'sponge': 9, 'coral': 5, 'cucumber': 5, 'star': 6, 'red_animal': 5, 'siphonophore': 2, 'squid': 5, 'vent': 4, 'crab': 5, 'seafloor': 4, 'eyes': 4, 'transparent': 4, 'octopus': 3, 'fish': 3, 'snailfish': 3, 'biolum': 3}",
+    "  research/imagery.py:   rejected  18  third-party or copyrighted credit",
+    "  research/imagery.py:   rejected  15  too small",
+    "  research/imagery.py:   rejected  12  credit does not resolve to NOAA alone",
+    "  research/imagery.py:   rejected   2  credit carries a co-author",
+    "  research/imagery.py:   rejected   1  no credit line on item page",
+    "research/imagery_materials.py: rights gate pd_licence_ok() present",
+    "  research/imagery_materials.py:   DROP tempered-glass     no candidate passed both gates",
+    "  research/imagery_materials.py:   DROP crystal-structure  no candidate passed both gates",
+    "  research/imagery_materials.py:   DROP kevlar-aramid      no candidate passed both gates",
+    "  research/imagery_materials.py: ",
+    "  research/imagery_materials.py: 12/18 subjects covered -> /home/runner/work/how-we-know/how-we-know/channel/imagery/materials.json",
+    "  research/imagery_materials.py: rights verified: 12 assets, sha256 matched on every file",
+    "research/imagery_species.py: rights gate pd_licence_ok() present",
+    "  research/imagery_species.py:   uncovered         0  Lanternfish                ep 08",
+    "  research/imagery_species.py:        no public-domain candidate has been surveyed for this subject yet",
+    "  research/imagery_species.py:   uncovered         0  Vampire squid              ep 09",
+    "  research/imagery_species.py:        no public-domain candidate has been surveyed for this subject yet",
+    "  research/imagery_species.py:   uncovered         0  Viperfish                  ep 09",
+    "  research/imagery_species.py:        no public-domain candidate has been surveyed for this subject yet",
+    "cleared pool after: channel/imagery/materials.json 12 record(s)",
+    "cleared pool after: channel/imagery/rights.json 105 record(s)",
+    "cleared pool after: channel/imagery/species.json 33 record(s)",
+    "cleared pool after: channel/imagery/video_rights.json absent here; 147 record(s) on mac-batch as of 2026-09-20T04:45:26+00:00"
+  ]
+}

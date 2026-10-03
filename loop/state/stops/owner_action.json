@@ -1,1 +1,10 @@
-{}
+{
+  "imagery-harvest": {
+    "code": "DELEGATED_HARVEST_STALE",
+    "message": "1 delegated harvester(s) have not been run by their host inside the 10-day cap: research/imagery_video.py on mac-batch (last run: 2026-09-20T04:45:26+00:00; last success: 2026-09-20T04:45:26+00:00). This host cannot run it and the host that can has been silent, so the pool it feeds has stopped growing.",
+    "unblock": "mac-batch: wake the Mac (launchd fires the missed 23:00 batch on wake) or run bin/batch-session.sh on it by hand. The next run there stamps loop/state/harvest_runs.json and this clears on its own.",
+    "at": "2026-10-03T04:42:25+00:00",
+    "week": "2026-W40",
+    "consecutive": 1
+  }
+}
