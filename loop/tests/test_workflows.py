@@ -44,6 +44,16 @@ REQUIRED_STAGES = {
     # produces no error is exactly the kind this table exists to keep visible.
     "loop-imagery-harvest.yml": "loop/footage_lane.py",
 }
+# Stages that ride inside another lane's workflow, as a later step. The
+# hand-off lane runs after BOTH daily YouTube lanes: the morning upload lane
+# (episodes going public are what turn a Short's `pending` into `done`) and the
+# evening Shorts lane (a new Short needs its playlist row and, once public, its
+# comment). Dropping either step would leave the other half a day stale with
+# nothing to say so.
+REQUIRED_STEPS = {
+    "loop-upload-cloud.yml": ["loop/handoff.py"],
+    "loop-shorts-cloud.yml": ["loop/handoff.py"],
+}
 
 
 def load_yaml():
@@ -142,6 +152,16 @@ def check() -> list[str]:
             continue
         if stage not in open(path).read():
             fails.append(f"{wf}: does not invoke {stage}")
+    for wf, stages in REQUIRED_STEPS.items():
+        path = os.path.join(WF, wf)
+        if not os.path.exists(path):
+            continue                        # already reported above
+        text = open(path).read()
+        for stage in stages:
+            if stage not in text:
+                fails.append(f"{wf}: no longer runs {stage} after its lane — "
+                             f"the hand-off would go stale for half a day "
+                             f"with nothing reporting it")
 
     if seen == 0:
         fails.append("examined ZERO workflow files — this test cannot reach "

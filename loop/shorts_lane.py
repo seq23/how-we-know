@@ -192,7 +192,11 @@ def upload_short(st, token: str, slug: str, question: str, path: Path,
     so the evening slot, the privacy contract, the ledger row and the quota
     accounting cannot drift between the two machines.
     """
-    payload = build_payload(slug, question)
+    # The hand-off line goes in at upload when the episode is already public;
+    # otherwise the row is `handoff: pending` and loop/handoff.py finishes it.
+    import handoff                                         # noqa: PLC0415
+    episode_id = handoff.episode_link_for(token, slug)
+    payload = build_payload(slug, question, episode_video_id=episode_id)
     vid = up.resumable_upload(token, payload, path)
     stamp = when.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     P.set_privacy(token, vid, "private", publish_at=stamp)
@@ -207,7 +211,9 @@ def upload_short(st, token: str, slug: str, question: str, path: Path,
     led["published"].append({
         "slug": slug, "video_id": vid, "file": path.name,
         "uploaded_at": now(), "privacy": "private",
-        "scheduled_publish_at": stamp, "rank": 1, "lane": lane})
+        "scheduled_publish_at": stamp, "rank": 1, "lane": lane,
+        "handoff": "done" if episode_id else "pending",
+        **({"handoff_episode": episode_id, "handoff_at": now()} if episode_id else {})})
     save_ledger(led)
     quota.spend(UPLOAD_UNITS + THUMB_UNITS + FLIP_UNITS, lane)
     st.work(f"{slug} Short scheduled for {stamp}")
@@ -385,13 +391,21 @@ def cut(slug: str) -> Path | None:
     return made[0]
 
 
-def build_payload(slug: str, question: str) -> dict:
+def build_payload(slug: str, question: str,
+                  episode_video_id: str | None = None) -> dict:
     """Metadata for a Short. Deliberately NOT the episode's description.
 
     A Short carries a pointer back to the episode, because a viewer moving from
     a Short into long-form is the whole reason this lane exists. It does not
     repeat the full source list: the episode holds that, and a Short's
     description is read in a scroll.
+
+    `episode_video_id` (owner decision 2026-10-03, loop/handoff.py): when the
+    episode is already PUBLIC the description's FIRST line is
+    `Full episode: https://youtu.be/<id> — <Question>?`. When it is not —
+    thirty of the first 36 Shorts aired before their episode — the Short
+    ships with the channel link below and loop/handoff.py rewrites the first
+    line the run after the episode goes public.
 
     Tags and hashtags are the parent EPISODE's, plus "shorts" / "#Shorts" —
     owner instruction, 2026-09-21. A Short is one chapter of its episode, so
@@ -422,6 +436,9 @@ def build_payload(slug: str, question: str) -> dict:
             "Full episodes: https://youtube.com/@howweknowdeep\n"
             "howweknowdeep.com")
     desc = discovery.add_hashtag_line(body, hashtags)
+    if episode_video_id:
+        import handoff                                     # noqa: PLC0415
+        desc = handoff.short_description(desc, episode_video_id, question)
     return {"snippet": {"title": title[:100], "description": desc,
                         "tags": tags,
                         "categoryId": "27"},

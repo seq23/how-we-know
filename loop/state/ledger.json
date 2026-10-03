@@ -18,7 +18,13 @@
       "published_at": "2026-09-01T12:30:06+00:00",
       "privacy": "public",
       "receipt": "loop/state/receipts/10-what-is-the-deepest-part-of-the-ocean-upload.json",
-      "note": "re-upload: 3-frame tail pad, burned-in captions, 1 NOAA footage beat"
+      "note": "re-upload: 3-frame tail pad, burned-in captions, 1 NOAA footage beat",
+      "playlist_item_id": "UExPclpNRHlveTFYTS41QTY1Q0UxMTVCODczNThE",
+      "playlist": "PLOrZMDyoy1XM",
+      "shorts_block": [
+        "HZhm2dXaR9c"
+      ],
+      "shorts_block_at": "2026-10-03T14:31:00+00:00"
     },
     {
       "slug": "05-why-many-deep-sea-creatures-are-red",
@@ -27,7 +33,9 @@
       "uploaded_at": "2026-09-01T12:40:24+00:00",
       "privacy": "private",
       "scheduled_publish_at": "2026-09-06T15:00:00Z",
-      "note": "backfill: scheduled, not yet public"
+      "note": "backfill: scheduled, not yet public",
+      "playlist_item_id": "UExPclpNRHlveTFYTS4yMUQyQTQzMjRDNzMyQTMy",
+      "playlist": "PLOrZMDyoy1XM"
     },
     {
       "slug": "01-why-deep-sea-creatures-look-so-weird",
@@ -36,7 +44,9 @@
       "uploaded_at": "2026-09-01T12:40:36+00:00",
       "privacy": "private",
       "scheduled_publish_at": "2026-09-08T15:00:00Z",
-      "note": "backfill: scheduled, not yet public"
+      "note": "backfill: scheduled, not yet public",
+      "playlist_item_id": "UExPclpNRHlveTFYTS45RTgxNDRBMzUwRjQ0MDhC",
+      "playlist": "PLOrZMDyoy1XM"
     },
     {
       "slug": "14-how-big-is-a-colossal-squid",
@@ -45,7 +55,9 @@
       "uploaded_at": "2026-09-01T12:40:46+00:00",
       "privacy": "private",
       "scheduled_publish_at": "2026-09-13T15:00:00Z",
-      "note": "backfill: scheduled, not yet public"
+      "note": "backfill: scheduled, not yet public",
+      "playlist_item_id": "UExPclpNRHlveTFYTS5ENDU4Q0M4RDExNzM1Mjcy",
+      "playlist": "PLOrZMDyoy1XM"
     },
     {
       "slug": "20-what-is-the-midnight-zone",
@@ -54,7 +66,9 @@
       "uploaded_at": "2026-09-01T12:40:58+00:00",
       "privacy": "private",
       "scheduled_publish_at": "2026-09-15T15:00:00Z",
-      "note": "backfill: scheduled, not yet public"
+      "note": "backfill: scheduled, not yet public",
+      "playlist_item_id": "UExPclpNRHlveTFYTS4yMDhBMkNBNjRDMjQxQTg1",
+      "playlist": "PLOrZMDyoy1XM"
     },
     {
       "slug": "07-why-deep-sea-creatures-get-creepier-deeper",
@@ -63,7 +77,9 @@
       "uploaded_at": "2026-09-01T12:56:51+00:00",
       "privacy": "private",
       "scheduled_publish_at": "2026-09-20T15:00:00Z",
-      "note": "adopted 2026-09-01: uploaded unintentionally by test_named_stops before the LOOP_DRY_RUN guard existed. Render, metadata and thumbnail were correct, so it was scheduled rather than re-uploaded, saving 1600 quota units."
+      "note": "adopted 2026-09-01: uploaded unintentionally by test_named_stops before the LOOP_DRY_RUN guard existed. Render, metadata and thumbnail were correct, so it was scheduled rather than re-uploaded, saving 1600 quota units.",
+      "playlist_item_id": "UExPclpNRHlveTFYTS5GM0Q3M0MzMzY5NTJFNTdE",
+      "playlist": "PLOrZMDyoy1XM"
     },
     {
       "slug": "06-why-some-deep-sea-creatures-are-transparent",
@@ -72,7 +88,9 @@
       "uploaded_at": "2026-09-01T13:32:09+00:00",
       "privacy": "private",
       "scheduled_publish_at": "2026-09-22T15:00:00Z",
-      "note": "backfill: scheduled, not yet public"
+      "note": "backfill: scheduled, not yet public",
+      "playlist_item_id": "UExPclpNRHlveTFYTS4zRjM0MkVCRTg0MkYyQTM0",
+      "playlist": "PLOrZMDyoy1XM"
     },
     {
       "slug": "15-how-do-people-reach-challenger-deep",
@@ -81,7 +99,9 @@
       "uploaded_at": "2026-09-01T13:32:19+00:00",
       "privacy": "private",
       "scheduled_publish_at": "2026-09-27T15:00:00Z",
-      "note": "backfill: scheduled, not yet public"
+      "note": "backfill: scheduled, not yet public",
+      "playlist_item_id": "UExPclpNRHlveTFYTS45NzUwQkI1M0UxNThBMkU0",
+      "playlist": "PLOrZMDyoy1XM"
     },
     {
       "slug": "08-what-creatures-live-in-the-deep-sea",
@@ -90,7 +110,9 @@
       "uploaded_at": "2026-09-01T13:32:35+00:00",
       "privacy": "private",
       "scheduled_publish_at": "2026-09-29T15:00:00Z",
-      "note": "backfill: scheduled, not yet public"
+      "note": "backfill: scheduled, not yet public",
+      "playlist_item_id": "UExPclpNRHlveTFYTS5DNzE1RjZEMUZCMjA0RDBB",
+      "playlist": "PLOrZMDyoy1XM"
     },
     {
       "slug": "09-what-is-the-scariest-deep-sea-creature",
@@ -175,7 +197,9 @@
       "uploaded_at": "2026-09-04T13:04:56+00:00",
       "privacy": "private",
       "scheduled_publish_at": "2026-09-07T15:00:00Z",
-      "note": "backfill: scheduled, not yet public"
+      "note": "backfill: scheduled, not yet public",
+      "playlist_item_id": "UExHNUdZLUd1aGlGOC45RTgxNDRBMzUwRjQ0MDhC",
+      "playlist": "PLG5GY-GuhiF8"
     },
     {
       "slug": "how-does-quenching-harden-steel",
@@ -184,7 +208,9 @@
       "uploaded_at": "2026-09-04T13:05:08+00:00",
       "privacy": "private",
       "scheduled_publish_at": "2026-09-11T15:00:00Z",
-      "note": "backfill: scheduled, not yet public"
+      "note": "backfill: scheduled, not yet public",
+      "playlist_item_id": "UExHNUdZLUd1aGlGOC5ENDU4Q0M4RDExNzM1Mjcy",
+      "playlist": "PLG5GY-GuhiF8"
     },
     {
       "slug": "how-do-self-healing-materials-work",
@@ -193,7 +219,9 @@
       "uploaded_at": "2026-09-04T13:05:19+00:00",
       "privacy": "private",
       "scheduled_publish_at": "2026-09-14T15:00:00Z",
-      "note": "backfill: scheduled, not yet public"
+      "note": "backfill: scheduled, not yet public",
+      "playlist_item_id": "UExHNUdZLUd1aGlGOC4yMDhBMkNBNjRDMjQxQTg1",
+      "playlist": "PLG5GY-GuhiF8"
     },
     {
       "slug": "how-does-tempered-glass-shatter",
@@ -202,7 +230,9 @@
       "uploaded_at": "2026-09-05T21:36:15+00:00",
       "privacy": "private",
       "scheduled_publish_at": "2026-09-18T15:00:00Z",
-      "note": "backfill: scheduled, not yet public"
+      "note": "backfill: scheduled, not yet public",
+      "playlist_item_id": "UExHNUdZLUd1aGlGOC5GM0Q3M0MzMzY5NTJFNTdE",
+      "playlist": "PLG5GY-GuhiF8"
     },
     {
       "slug": "how-strong-is-titanium",
@@ -211,7 +241,9 @@
       "uploaded_at": "2026-09-05T21:36:32+00:00",
       "privacy": "private",
       "scheduled_publish_at": "2026-09-21T15:00:00Z",
-      "note": "backfill: scheduled, not yet public"
+      "note": "backfill: scheduled, not yet public",
+      "playlist_item_id": "UExHNUdZLUd1aGlGOC4zRjM0MkVCRTg0MkYyQTM0",
+      "playlist": "PLG5GY-GuhiF8"
     },
     {
       "slug": "how-is-damascus-steel-made",
@@ -220,7 +252,9 @@
       "uploaded_at": "2026-09-05T21:36:43+00:00",
       "privacy": "private",
       "scheduled_publish_at": "2026-09-25T15:00:00Z",
-      "note": "backfill: scheduled, not yet public"
+      "note": "backfill: scheduled, not yet public",
+      "playlist_item_id": "UExHNUdZLUd1aGlGOC45NzUwQkI1M0UxNThBMkU0",
+      "playlist": "PLG5GY-GuhiF8"
     },
     {
       "slug": "how-is-a-silicon-wafer-made",
@@ -229,7 +263,9 @@
       "uploaded_at": "2026-09-07T15:10:42+00:00",
       "privacy": "private",
       "scheduled_publish_at": "2026-09-28T15:00:00Z",
-      "note": "cloud-upload: scheduled, not yet public"
+      "note": "cloud-upload: scheduled, not yet public",
+      "playlist_item_id": "UExHNUdZLUd1aGlGOC5DNzE1RjZEMUZCMjA0RDBB",
+      "playlist": "PLG5GY-GuhiF8"
     },
     {
       "slug": "what-is-a-semiconductor-made-of",
@@ -238,7 +274,9 @@
       "uploaded_at": "2026-09-07T15:11:00+00:00",
       "privacy": "private",
       "scheduled_publish_at": "2026-10-02T15:00:00Z",
-      "note": "cloud-upload: scheduled, not yet public"
+      "note": "cloud-upload: scheduled, not yet public",
+      "playlist_item_id": "UExHNUdZLUd1aGlGOC43MTI1NDIwOTMwQjIxMzNG",
+      "playlist": "PLG5GY-GuhiF8"
     },
     {
       "slug": "how-strong-is-graphene",
@@ -332,5 +370,5 @@
     }
   ],
   "queued": [],
-  "updated": "2026-09-15T14:01:58+00:00"
+  "updated": "2026-10-03T14:31:00+00:00"
 }
