@@ -274,6 +274,19 @@ nothing is yours to do.
 any for three days, the Sunday email says `MAC_NOT_SHIPPING` and names why.
 Before 13 September that silence reached nobody.
 
+**"Nothing shelved" names what it can see** (since 2026-10-03, #143). The
+cloud's 09:00 CT upload lane says `NOTHING_SHELVED` when queued episodes are
+neither uploaded nor on the R2 shelf. For a week it blamed "narration, render
+or push" while the real gap was a finished deep-sea episode pushed **without a
+thumbnail** — the batch only knew how to build materials thumbnails. Every
+domain builds its own now (`visuals/thumbs_for.py`, one table, tested), and the
+stop's **first line** is the blocker the cloud can prove: `N render(s) shelved
+without a thumbnail: <slugs>` when that is the case, then the Mac's own
+heartbeat (when the batch last ran, how many renders are finished, what the
+gate holds), then whatever is genuinely still being narrated or rendered. A Mac
+that is producing but behind the queue reads as behind, not stuck. Still
+nothing for you to do; it tells whoever reads it where to look.
+
 ### What is on the Mac right now
 
 Two timers, both `launchctl`-loaded and `plutil -lint`-valid as of 2026-09-23:

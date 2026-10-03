@@ -440,13 +440,19 @@ import domains; print(domains.domain_of_slug('$slug') or 'deep-sea-ocean-science
 # at 09:00 - technically true, and useless, because the reason was a missing
 # 200 KB JPEG. Rendering and thumbnailing are one unit of work; splitting them
 # across a human is what created the stall.
+#
+# ONE BUILDER ENTRY POINT FOR EVERY DOMAIN. Until 2026-10-03 this function held
+# a `case "$dom"` with one line for materials and a `*)` that printed "<domain>
+# has no builder wired here; skipping" - for deep-sea-ocean-science, the
+# channel's first domain. The first unnumbered deep-sea episode to render
+# (how-do-scientists-know-about-other-galaxies) reached R2 with no thumbnail
+# and the cloud lane refused it for a week (#143). visuals/thumbs_for.py owns
+# the domain -> builder table now, and a test proves every allocated domain is
+# in it, so this script never again keeps a second, shorter list of its own.
 thumb_one() {
   local slug="$1" dom="$2" out="channel/thumbnails/$slug.jpg"
   [ -f "$out" ] && return 0
-  case "$dom" in
-    materials-and-manufacturing) builder="visuals/thumbs_materials.py" ;;
-    *) echo "      thumbnail: $dom has no builder wired here; skipping"; return 0 ;;
-  esac
+  local builder="visuals/thumbs_for.py"
   if HWK_DOMAIN="$dom" $PY "$builder" "$slug" >"/tmp/thumb-$slug.log" 2>&1 && [ -f "$out" ]; then
     echo "      thumbnail ok ($(du -h "$out" | cut -f1))"
   else
