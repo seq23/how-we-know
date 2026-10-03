@@ -27,7 +27,7 @@ vocabulary matters because two of them are commonly confused.
 
 | Term | What it is | Where it runs | How many |
 |---|---|---|---|
-| **launchd agent** | a macOS scheduled job, the Mac's equivalent of cron | **this Mac** | **2** (corrected 2026-09-23 — this row said 0 since 2026-09-01 and was never updated when `com.howweknow.batch` was installed 2026-09-04; see §3, "launchd agents on this Mac") |
+| **launchd agent** | a macOS scheduled job, the Mac's equivalent of cron | **this Mac** | **3** (2026-10-03: `com.howweknow.nightquit` added, see §3; corrected 2026-09-23 — this row said 0 since 2026-09-01 and was never updated when `com.howweknow.batch` was installed 2026-09-04; see §3, "launchd agents on this Mac") |
 | **cloud lane** | a GitHub Actions workflow | **GitHub's servers** | **11** scheduled (corrected 2026-09-23 — this said 7 since 2026-09-01; `loop-shorts-cloud.yml`, `loop-reach.yml`, `loop-imagery-harvest.yml` and `loop-sun-digest.yml` were added since. `loop-override.yml` and `loop-tests.yml` also live in `.github/workflows/` but are dispatch-only, not scheduled, so are not counted here) |
 | **Claude** | an assistant, run by a person having a conversation | nowhere, unattended | 0 |
 
@@ -252,7 +252,7 @@ section that follows it has said otherwise since. Corrected 2026-09-23.
 
 ### launchd agents on this Mac
 
-Two are installed, and only ONE of them narrates. This section was previously headed "No launchd agents.
+Three are installed, and only ONE of them narrates. This section was previously headed "No launchd agents.
 None." and said the laptop could be shut; that was true from 2026-09-01 until
 2026-09-04, when a second domain gave the Mac ~27 hours of narration to get
 through and nothing was scheduled to do it.
@@ -261,6 +261,7 @@ through and nothing was scheduled to do it.
 |---|---|---|
 | `com.howweknow.batch` | **daily 23:00** | `bin/batch-session.sh` — narrate every script with no audio, render every episode whose audio is complete, push to R2, then take a NAMED STOP. |
 | `com.howweknow.backfill` | daily 09:00 | Upload the next finished episode and date it. Does not narrate. |
+| `com.howweknow.nightquit` | daily 22:55 | `bin/night-quit.sh` — quit Chrome, Signal and Spotify so the voice model is not swapping (8 GB machine; owner decision 2026-10-03). Never fails the night. |
 
 **`tuesday` and `thursday` are deliberately NOT installed.** `bin/loop-tuesday.sh` narrates — it calls `bin/run-batch.sh voice` — so installing it puts a second narrator on the machine against a batch that already narrates nightly. Narration cannot be parallelised here: the voice model wants about four cores, so two narrators run at half speed each and race for the same `audio/<slug>/NNNN.wav`. `bin/loop-install-launchd.sh --install` installs the batch and nothing else.
 
