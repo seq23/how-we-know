@@ -469,3 +469,29 @@ if __name__ == "__main__":
     for s in p[:12]:
         print(f"{s['seconds']:>5.1f}s  {s['segment']:<18} {s['narration'][:62]}")
     json.dump(p, open(sys.argv[2],"w"), indent=2) if len(sys.argv)>2 else None
+
+
+# ---------------------------------------------------------------------------
+# THE PLAN THE AUDIO IS INDEXED AGAINST.
+#
+# assemble.py reads plans/<slug>.json and takes audio/<slug>/NNNN.wav by plan
+# position. voice/narrate_all.py used to plan from the SCRIPT every night, so
+# an episode whose script had moved on from its rendered plan - episode 13,
+# 62 beats by script, 61 in the plan that aired - had one beat the narrator
+# generated every night and bin/batch-session.sh moved aside as an orphan
+# every night, for ever: a wasted beat (2-25 minutes on an 8 GB M2) and a
+# permanent "41/42 complete". One plan, one index: when a plan file exists it
+# is the authority, because it is what the render will use; the script is the
+# source only until that file is written.
+PLANS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "plans")
+SCRIPTS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "scripts")
+
+
+def plan_for_audio(slug, plans_dir=None, scripts_dir=None):
+    """(plan, source) - plans/<slug>.json when it exists, else planned from
+    the script. `source` is "plan" or "script" so a caller can say which."""
+    pf = os.path.join(plans_dir or PLANS_DIR, f"{slug}.json")
+    if os.path.exists(pf):
+        with open(pf) as f:
+            return json.load(f), "plan"
+    return plan(os.path.join(scripts_dir or SCRIPTS_DIR, f"{slug}.md")), "script"

@@ -193,12 +193,16 @@ def episode_slugs(skip=True):
 
 
 def build_plans(only=None, skip=True):
+    # plans/<slug>.json when it exists, the script otherwise - see
+    # planner.plan_for_audio. The render indexes wavs by plan position, so
+    # narrating from a different plan than the one on disk voices beats the
+    # assembler can never use (and re-voices them every night).
     import planner
     plans = {}
     for slug in episode_slugs(skip):
         if only and not any(slug.startswith(o) for o in only):
             continue
-        plans[slug] = planner.plan(str(SCRIPTS / f"{slug}.md"))
+        plans[slug], _source = planner.plan_for_audio(slug)
     return plans
 
 

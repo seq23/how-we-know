@@ -152,6 +152,66 @@ if why["code"] != "PUBLISH_QUEUE_UPLOADED":
     fails.append(f"finished/dropped/queued/uploaded rows were read as stranded:"
                  f" {why['code']} {why.get('held_items')}")
 
+# -- 5b. the blocker the cloud CAN see is named first, by slug ----------------
+# #143 (2026-W40): how-do-scientists-know-about-other-galaxies was rendered,
+# pushed to R2 and had no thumbnail, so shelf_lookup refused the pair and this
+# stop said "waiting on the Mac (narration, render or push)" for eight runs
+# while the escalation text said "the Mac side is stuck". Two HEADs per slug
+# tell the two states apart.
+examined += 1
+import r2  # noqa: E402
+
+
+class FakeShelf:
+    """Renders for every waiting slug; a thumbnail for all but one."""
+    def __init__(self, no_thumb):
+        self.no_thumb = set(no_thumb)
+        self.heads = 0
+
+    def head(self, key):
+        self.heads += 1
+        for s in QUEUED:
+            if key == r2.render_key(s):
+                return {"sha256": "x"}
+            if key == r2.thumb_key(s):
+                return None if s in self.no_thumb else {"sha256": "y"}
+        return None
+
+
+hb = {"batch": {"last_run_at": "2026-10-03T11:49:54+00:00", "ok": True,
+                "held": ["held-one"]},
+      "renders_finished": 36}
+shelf = FakeShelf({QUEUED[31]})
+why = CU.diagnose_empty_shelf(QUEUED, set(QUEUED[:30]), set(), rows(STRANDED),
+                              shelf=shelf, heartbeat=hb)
+if why["code"] != "NOTHING_SHELVED":
+    fails.append(f"shelved-without-thumbnail gave {why['code']}")
+first = why["message"].split(". ")[0]
+if not first.startswith(f"1 render(s) shelved without a thumbnail: {QUEUED[31]}"):
+    fails.append(f"the first line does not name the render shelved without a "
+                 f"thumbnail: {first!r}")
+if why["detail"].get("shelved_without_thumbnail") != [QUEUED[31]]:
+    fails.append(f"detail.shelved_without_thumbnail = "
+                 f"{why['detail'].get('shelved_without_thumbnail')}")
+if "thumbs_for.py " + QUEUED[31] not in why["unblock"]:
+    fails.append(f"unblock does not say how to build the missing thumbnail: "
+                 f"{why['unblock']!r}")
+if "36 renders finished" not in why["message"] or "2026-10-03T11:49:54" not in why["message"]:
+    fails.append(f"the Mac heartbeat is not quoted: {why['message']!r}")
+if QUEUED[32] not in why["message"] or QUEUED[31] in why["message"].split("waiting on the Mac")[-1]:
+    fails.append("the slugs genuinely waiting on narration/render are not kept "
+                 "apart from the one shelved without a thumbnail")
+if shelf.heads > 2 * len(QUEUED[30:]):
+    fails.append(f"{shelf.heads} HEADs for {len(QUEUED[30:])} slugs - the scan "
+                 f"is fetching more than two sidecars per episode")
+# Without a shelf or heartbeat the stop still names the waiting slugs and says
+# the heartbeat is missing rather than inventing one.
+why = CU.diagnose_empty_shelf(QUEUED, set(QUEUED[:30]), set(), rows(STRANDED))
+if "No Mac heartbeat is committed" not in why["message"]:
+    fails.append("a missing heartbeat is not said to be missing")
+if why["detail"].get("shelved_without_thumbnail") != []:
+    fails.append("with no shelf to read, shelved_without_thumbnail is not []")
+
 # -- 6. never 'finished' by default -------------------------------------------
 examined += 1
 why = CU.diagnose_empty_shelf([], set(), set(), [])
