@@ -894,6 +894,39 @@ rotation window is full. AUTHORED_NOT_QUEUED is worded as the defect it is.
 
 **Verified.** Stop record and gate output in this run's job log; week 2026-W39.
 
+## 2026-10-03 — the empty Shorts shelf: the batch never reached shelve_shorts; the Shorts lane now honours the render hold; the Mac tree stays clean
+
+**What happened.** Issue #135: the cloud Shorts lane stopped `NO_SHORTS_SHELVED` ten
+runs running (23 Sep – 2 Oct) and went to "needs a human" at seven. The stop's own
+escalation text blamed `bin/push-to-r2.sh`'s V14/V15 gate. The batch log said
+otherwise: from 26 Sep to 1 Oct `bin/batch-session.sh` exited at
+`captions_build FAILED (rc=1)` — a planner `FileNotFoundError` on one unwritten
+queue row — before it reached `shelve_shorts`. Nothing was cut and nothing was
+pushed. The shelf was not refusing; it was never offered anything.
+
+**Decided and done.**
+- **#137** (landed 2 Oct): a caption failure is one episode's caption gap, refused
+  at the upload gate, never the night's Shorts. The first batch through (3 Oct,
+  06:49 CT) cut and shelved four Shorts; the lane found them and the stop cleared.
+- **#138**: three of those four were cut from episodes `loop/render_gate.py` holds
+  under the 10-minute floor. Both episode upload routes consult the hold; the Shorts
+  lane did not. `shorts_lane.pending()` now skips `render_gate.held_slugs()` — a held
+  slug is deferred, not dropped, and its cut is never re-made.
+  `test_shorts_skip_held_renders` proves it against a planted hold file.
+- **#139, #141**: the Mac checkout was dirty every night. `voice/narrate_all.py`
+  rewrote every `audio/<slug>/beats.json` on every run with a different
+  serialisation from the two other writers, so 34 manifests flipped nightly and
+  `git pull --rebase` refused mid-batch. One serializer
+  (`captions.write_beats_manifest`, atomic, no-op when unchanged) for all three;
+  `audio/.narrate.lock/pid` and `audio/narration_report.json` untracked and ignored;
+  the batch stages tracked manifests it changed. `test_beats_manifest_is_canonical`
+  guards all of it.
+
+**Lesson for the stop text.** `NO_SHORTS_SHELVED`'s escalation named the wrong
+suspect for a week. An empty shelf means the Mac did not reach `shelve_shorts`;
+the `--- shorts: cut what is rendered` marker in `batch.log` is the first thing
+to look for, and the RUNBOOK now says so.
+
 ## 2026-10-03 — two Shorts for held episodes reached the schedule; parked, not deleted; released by the lane
 
 **What happened.** The cloud Shorts lane was dispatched against `main` at 12:46 UTC,

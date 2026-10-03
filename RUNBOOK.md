@@ -134,6 +134,17 @@ expired or been revoked, a channel-level flag from YouTube itself, an API key
 or account with no credit, a repository secret a new lane needs, and the Mac
 being awake with its lid open at 23:00. That is the whole list.
 
+**The one email you did get, and what it meant (2026-10-03).** GitHub mailed you
+an issue titled `loop: shorts-cloud needs you` after the cloud Shorts lane found
+an empty shelf seven nights running (`NO_SHORTS_SHELVED`). That is the third row
+of the table: something was actually broken, and it was on the Mac. The nightly
+batch was dying at its captions step for six nights and never reached the step
+that cuts and shelves Shorts (fixed at source in #137: a caption failure is now
+one episode's gap, never the night's). An empty shelf always means the Mac did
+not get that far — `grep 'shorts: cut what is rendered' ~/Library/Logs/how-we-know/batch.log`
+shows which nights did. The stop clears itself the first night the batch gets
+through; the issue is closed by hand once it has.
+
 ### What now fixes itself, that did not before
 
 - **Captions.** Every episode's subtitle file is built automatically, in the
@@ -224,6 +235,14 @@ The short one heals itself (more sourced narration, re-voiced, re-rendered on
 the next batch). You see it as one line in the Sunday email:
 `RENDER_HELD: why-is-steel-so-strong — 9.90 min, under the floor`. Nothing for
 you to do unless the same line is still there a week later.
+
+**A held episode's Short waits with it** (since 2026-10-03, #138 and #140). The
+Shorts lane used to ignore the hold, so a Short could go public days before the
+episode it points back to existed on the channel. Now a held episode's Short is
+skipped, and if one was already uploaded it sits **private with no date**,
+flagged in the Shorts ledger. The evening after the episode's hold lifts, the
+lane dates that Short into its next slot by itself. Nothing is deleted and
+nothing is yours to do.
 
 **The Mac now reports in.** If it has finished episodes and has not shipped
 any for three days, the Sunday email says `MAC_NOT_SHIPPING` and names why.
