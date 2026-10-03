@@ -539,6 +539,7 @@
     "DIGEST_READ_NOTHING": "The digest rendered with no episodes, no schedule and no queue. A reassuring weekly email built on files it failed to open is worse than no email.",
     "SCHEDULE_NOT_APPLIED": "YouTube did not apply the publishAt this lane set. The video is uploaded and undated - the one state that silently never airs.",
     "SHORT_SCHEDULE_NOT_APPLIED": "As above, for a Short.",
+    "SHORT_RELEASE_NOT_APPLIED": "A Short parked behind the render gate was re-scheduled when the hold lifted and YouTube did not apply the publishAt. The Short would sit private forever beside a ledger row that says it is scheduled.",
     "SCHEDULED_FLIP_DID_NOT_HAPPEN": "A video whose publishAt has passed is still private. Something between this repo and YouTube is wrong and an episode has already missed its slot.",
     "FLIP_FAILED": "The private-to-public flip was refused. Needs the full youtube scope, not youtube.upload.",
     "RETIRE_NOT_APPLIED": "A retirement was requested and YouTube did not apply it. The video is still public when it should not be.",

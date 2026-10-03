@@ -104,6 +104,18 @@ def cancel_schedule(token: str, video_id: str) -> str | None:
         raise RuntimeError(
             f"{video_id} still carries publishAt={after['publishAt']} after "
             f"the unlisted round-trip. It would go public on that date.")
+    # THE SECOND FLIP CAN BE ACCEPTED AND NOT APPLIED. 2026-10-03, unscheduling
+    # qPnBKYAR3ps: both PUTs returned 200, publishAt was gone, and the video
+    # read back UNLISTED - visible to anyone with the link, for a cut this
+    # function exists to keep off the channel. One more private flip took.
+    # Re-apply and re-read rather than trust the 200.
+    if after.get("privacy") != "private":
+        set_privacy(token, video_id, "private")
+        after = read_status_full(token, video_id)
+        if after.get("privacy") != "private":
+            raise RuntimeError(
+                f"{video_id} reports privacyStatus={after.get('privacy')!r} "
+                f"after the unlisted round-trip; it should be private.")
     return stamp
 
 
