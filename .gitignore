@@ -86,3 +86,6 @@ channel/imagery/clips/
 # <slug>.credit.png here and re-reads it in the same run). Regenerated every
 # run; the same sweep committed 28 of them.
 loop/state/_v14/
+# V15 (shorts-caption-crop) writes its OCR'd row crops here for inspection,
+# exactly as V14 does above; 36 PNGs were sitting untracked on the Mac.
+loop/state/_v15/
