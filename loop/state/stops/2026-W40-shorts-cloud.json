@@ -1,0 +1,20 @@
+{
+  "stage": "shorts-cloud",
+  "week": "2026-W40",
+  "at": "2026-10-03T23:52:07+00:00",
+  "code": "QUOTA_EXHAUSTED",
+  "message": "no quota left today for a Short. quota day 2026-10-03 (PT): spent 8670 of 10000, 930 usable after 400 headroom; lanes: handoff 4505, shorts-cloud 3400, tags-backfill 765",
+  "detail": {
+    "resets_at": "2026-10-04T00:00:00-07:00"
+  },
+  "unblock": "Nothing to do; the allowance resets at midnight Pacific and this lane runs daily.",
+  "disposition": "self_resolving",
+  "disposition_why": "The YouTube allowance resets at midnight Pacific and every lane that raises this runs at least daily, so the work is deferred by a few hours, not lost. (run 1 of at most 3 before this escalates to a human.)",
+  "consecutive": 1,
+  "held_items": [],
+  "exit_code": 0,
+  "work_done_before_stop": [],
+  "notes": [
+    "shelf: r2://how-we-know-renders"
+  ]
+}
