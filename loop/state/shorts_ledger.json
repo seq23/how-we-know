@@ -162,9 +162,13 @@
       "scheduled_publish_at": "2026-09-11T00:00:00Z",
       "rank": 1,
       "lane": "shorts-cloud",
-      "handoff": "pending",
+      "handoff": "done",
       "playlist_item_id": "UExPclpNRHlveTFYTS5GNjNDRDREMDQxOThCMDQ2",
-      "playlist": "PLOrZMDyoy1XM"
+      "playlist": "PLOrZMDyoy1XM",
+      "handoff_episode": "G1TqXmf36Qo",
+      "handoff_at": "2026-10-04T15:35:13+00:00",
+      "handoff_comment_id": "UgyxTuHjfRBrvi_GU1l4AaABAg",
+      "handoff_comment_at": "2026-10-04T15:35:14+00:00"
     },
     {
       "slug": "19-what-is-the-deepest-fish-ever-recorded",
@@ -522,7 +526,8 @@
       "schedule_was": "2026-10-04T00:00:00Z",
       "held_by": "render_hold",
       "held_at": "2026-10-03T13:40:00+00:00",
-      "held_why": "uploaded before #138 landed; episode held under the 10-minute floor; unscheduled by hand, released by shorts_lane.release_held when the hold lifts"
+      "held_why": "uploaded before #138 landed; episode held under the 10-minute floor; unscheduled by hand, released by shorts_lane.release_held when the hold lifts",
+      "handoff": "pending"
     },
     {
       "slug": "how-do-scientists-know-how-old-something-is",
@@ -536,8 +541,9 @@
       "schedule_was": "2026-10-04T02:00:00Z",
       "held_by": "render_hold",
       "held_at": "2026-10-03T13:40:00+00:00",
-      "held_why": "uploaded before #138 landed; episode held under the 10-minute floor; unscheduled by hand, released by shorts_lane.release_held when the hold lifts"
+      "held_why": "uploaded before #138 landed; episode held under the 10-minute floor; unscheduled by hand, released by shorts_lane.release_held when the hold lifts",
+      "handoff": "pending"
     }
   ],
-  "updated": "2026-10-03T23:52:10+00:00"
+  "updated": "2026-10-04T15:35:22+00:00"
 }
