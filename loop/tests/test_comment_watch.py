@@ -231,6 +231,7 @@ low = src.lower()
 for word in ("west peek", "westpeek", "spry", "spry.vc"):
     check(f"F module never names {word!r}", word not in low)
 check("F the account is the channel's own", "the channel's own Google account" in src)
+check("F no personal mailbox is named in source", "@gmail.com" not in low)
 
 # ------------------------------------------------------------- G. policy
 policy = json.loads((LOOP / "stop_policy.json").read_text())

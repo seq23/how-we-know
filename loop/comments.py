@@ -27,7 +27,7 @@ which a real delete is not. `reply` is `comments.insert` as the channel. Every
 applied action is recorded in the ledger against its instruction record.
 `loop/tests/test_comment_watch.py` proves the gate negatively.
 
-Account: the channel's own Google account (the channel's own Google account), through
+Account: the channel's own Google account (the one that owns @howweknowdeep), through
 the same `.secrets/` token every other lane uses. Nothing here names any other
 business, and `test_comment_watch.py` greps this file to keep it that way.
 

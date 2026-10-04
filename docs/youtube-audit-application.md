@@ -44,21 +44,21 @@ Reasoning:
 | **Parent Company Name (if applicable)** | `self` |
 | **Your Organization's Primary Website** (required) | `https://howweknowdeep.com` |
 | **Country** (required) | `United States` |
-| **Street Address** (required) | `[OWNER SUPPLIES AT FILING]` |
+| **Street Address** (required) | `[OWNER SUPPLIES AT FILING]` — the postal address is never stored in this repo |
 | **City** (required) | `[OWNER SUPPLIES AT FILING]` |
-| **State/Province** (required) | `TN` |
+| **State/Province** (required) | `[OWNER SUPPLIES AT FILING]` |
 | **Postal Code** (required) | `[OWNER SUPPLIES AT FILING]` |
 | **Category** (required) | **Education and E-Learning** |
 | **Organization Size / Type** (required) | **Independent Developer/Sole Proprietor** |
 
 **On Category.** The dropdown also offers "Media and Entertainment" and "News and Journalism". *Education and E-Learning* is the better fit: the channel explains how things are known, it is not reporting news and not entertainment-first. It also matches the "Education & Research" use-case checkbox available later — but note the deliberate divergence there (see Section 5).
 
-**On the address.** The form requires a full postal address and there is no way to file without one. The address above is the one supplied:
+**On the address.** The form requires a full postal address and there is no way to file without one. The owner types it into the form at filing time; it is deliberately not written down here, because this repository is a public-posture codebase and a home address does not belong in one:
 
 ```
-Sequoia L. Taylor
-[OWNER SUPPLIES AT FILING]
-[OWNER SUPPLIES AT FILING]
+<full legal name>
+<street address>
+<city>, <state> <postal code>
 United States
 ```
 
@@ -73,7 +73,7 @@ United States
 | **Name** (required) | `Sequoia L. Taylor` |
 | **Email** (required) | `[OWNER DECISION]` — see below |
 
-**Email — needs her decision.** The candidate is **`the channel's own Google account`**, the account that owns the `@howweknowdeep` channel and the `how-we-know` Google Cloud project. Arguments for using it: the reviewer will cross-check that the applicant controls the channel and the project, and an address that matches both is the cleanest possible signal. Argument against: it is a personal-looking address, though for a sole proprietor that is unremarkable and the form expects it.
+**Email — needs her decision.** The candidate is **the channel's own Google account (the one that owns @howweknowdeep)**, the account that owns the `@howweknowdeep` channel and the `how-we-know` Google Cloud project. Arguments for using it: the reviewer will cross-check that the applicant controls the channel and the project, and an address that matches both is the cleanest possible signal. Argument against: it is a personal-looking address, though for a sole proprietor that is unremarkable and the form expects it.
 
 **Do not use any address associated with her other businesses.** This property is kept separate from them, and putting one of those addresses on a Google record permanently links them.
 
@@ -413,7 +413,7 @@ Name and address are now supplied and filled in above. **Two decisions remain:**
 
 | # | Field | What is needed |
 |---|---|---|
-| 1 | **Contact Email** | Decision: `the channel's own Google account` (owns the channel and the Cloud project) is the candidate, or a `@howweknowdeep.com` alias set up and receiving before filing. **Never** an address tied to any of her other businesses. |
+| 1 | **Contact Email** | Decision: the channel's own Google account (the one that owns @howweknowdeep) (owns the channel and the Cloud project) is the candidate, or a `@howweknowdeep.com` alias set up and receiving before filing. **Never** an address tied to any of her other businesses. |
 | 2 | **Demo account credentials** | Decision: recommended blank, with the drafted Special Instructions text instead. Do not hand over the account that owns the channel. |
 
 Plus one field to check only if the form shows it:
