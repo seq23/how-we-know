@@ -486,6 +486,20 @@ def check() -> list[str]:
         fails.append("loop/captions_lane.py has no CAPTIONS_INERT stop, so a "
                      "run that authenticated and touched nothing would pass "
                      "green on the strength of having read files off disk")
+    # The tripwire's decision, pinned on the inputs that paged the owner in
+    # issue #148 (2026-10-03) and on the cases that must still page.
+    examined += 1
+    import importlib
+    CL = importlib.import_module("captions_lane")
+    for args, want in [((0, 34, 0, 0, 0), "CAPTIONS_QUOTA_DEFERRED"),  # #148
+                       ((3, 34, 0, 0, 0), "CAPTIONS_INERT"),   # pending, nothing uploaded
+                       ((0, 34, 3, 0, 0), "CAPTIONS_INERT"),   # budget, nothing verified
+                       ((0, 0, 0, 0, 0), "CAPTIONS_INERT"),    # nothing on record at all
+                       ((0, 34, 0, 0, 1), None),               # re-verified one
+                       ((2, 34, 0, 1, 0), None)]:              # uploaded one
+        got = CL.inert_code(*args)
+        if got != want:
+            fails.append(f"captions_lane.inert_code{args} = {got!r}, want {want!r}")
     if "CAPTIONS_SCOPE_MISSING" not in cap_src:
         fails.append("loop/captions_lane.py does not name the force-ssl stop")
     if "force-ssl" not in cap_src:

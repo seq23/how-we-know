@@ -358,7 +358,23 @@ print("QUEUE_WRITTEN", draft.QUEUE.exists())
 
 # ------------------------------------------------ 4. the upload lane's verdict
 examined += 1
+# THE SAME FROZEN-FIXTURE LESSON, THIRD TIME. The scenario below is the
+# 2026-09-23 day: four scripts held, none aired. On 2026-10-04 the Mac's
+# backfill recorded the three PROMOTED scripts in the live ledger as
+# published - the hold retiring exactly the way section 0 demands - and
+# diagnose_empty_shelf() rightly stopped naming a published slug as held,
+# so this file went red on main (0c30eca) although nothing had regressed.
+# The live ledger may know of the four only through a promotion, which the
+# real-invariant loop above has already verified; here they are removed so
+# the frozen day stays frozen.
 done = {r["slug"] for r in ledger.load()["published"]}
+for s_ in sorted(done & set(HELD)):
+    examined += 1
+    if not (ROOT / "scripts" / f"{s_}.md").exists():
+        fails.append(f"{s_} is in the live ledger as published but was never "
+                     f"promoted into scripts/ - a held script aired without "
+                     f"the Saturday gate's decision")
+done -= set(HELD)
 rows = [{"slug": s, "status": "queued"} for s in HELD]
 ok_rw = {"level": "ok", "weeks_remaining": 6.0, "message": "6.0 weeks"}
 # Simulate "every queued episode is uploaded" as production would actually
