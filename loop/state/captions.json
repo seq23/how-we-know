@@ -385,8 +385,27 @@
       "verified_at": "2026-09-30T15:12:39+00:00"
     }
   },
-  "blocked": {},
-  "updated": "2026-10-03T16:23:34+00:00",
+  "blocked": {
+    "zs-gueHeX8k": {
+      "slug": "how-do-scientists-know-so-much",
+      "reason": "QUOTA_DEFERRED",
+      "since": "2026-10-04T16:17:12+00:00",
+      "sha256": "e4da2e3be44755ae9c8bf7fc47d41acdb9e7b29887b05bfb6ba9dc50da12b4b4"
+    },
+    "T6XeND2qM4k": {
+      "slug": "how-do-scientists-know-how-old-something-is",
+      "reason": "QUOTA_DEFERRED",
+      "since": "2026-10-04T16:17:12+00:00",
+      "sha256": "7600bcf400a6c6917ff3a395b953ad26c2dda5709ee29c9b30d9c02eb5095c81"
+    },
+    "Z-Z1FNVQXW0": {
+      "slug": "how-do-scientists-know-about-other-galaxies",
+      "reason": "QUOTA_DEFERRED",
+      "since": "2026-10-04T16:17:12+00:00",
+      "sha256": "6c4c67cde19c272156221561fc47a7a70b206b894763fec4c242eab85b25b643"
+    }
+  },
+  "updated": "2026-10-04T16:17:12+00:00",
   "token_scopes": [],
   "token_has_force_ssl": true
 }
