@@ -231,6 +231,30 @@ def _is_scope_error(e: urllib.error.HTTPError, detail: str) -> bool:
 
 # ---------------------------------------------------------------- the lane
 
+def inert_code(pending: int, shipped: int, budget: int,
+               inserted: int, confirmed: int) -> str | None:
+    """Which named stop, if any, the end-of-run tripwire takes.
+
+    None            the run did real work (uploaded or re-verified a track).
+    CAPTIONS_QUOTA_DEFERRED
+                    nothing was pending, tracks are on record, and the
+                    re-verification budget was 0 because the day's remaining
+                    units are reserved for the upload lane. Issue #148
+                    (2026-10-03): handoff + shorts-cloud had spent 7,905 of the
+                    day's 10,000 units, so 0 pending / 34 on record / budget 0
+                    paged the owner as CAPTIONS_INERT. Nothing was inert - the
+                    lane stood aside, which is the self-resolving deferral
+                    loop/stop_policy.json already names.
+    CAPTIONS_INERT  everything else: there WAS something to do (a pending
+                    upload, or budget to re-verify with) and nothing happened.
+    """
+    if inserted or confirmed:
+        return None
+    if pending == 0 and shipped > 0 and budget == 0:
+        return "CAPTIONS_QUOTA_DEFERRED"
+    return "CAPTIONS_INERT"
+
+
 def run(limit: int = 15, dry_run: bool = False, verify: int = 3) -> int:
     cfg = config()
     state = load_state()
@@ -506,6 +530,7 @@ def run(limit: int = 15, dry_run: bool = False, verify: int = 3) -> int:
         # track deleted in Studio would otherwise never be noticed, and the
         # state file would keep asserting a reach that no longer exists.
         # Oldest-checked first, budget-capped, so it costs 50 units a video.
+        budget = 0
         if not dry_run:
             budget = quota.units_affordable(
                 quota.CAPTION_LIST, verify,
@@ -556,7 +581,20 @@ def run(limit: int = 15, dry_run: bool = False, verify: int = 3) -> int:
         # separate check exists: without it, a run that reached YouTube and
         # touched nothing at all would still look green on the strength of
         # having read some files off disk.
-        if inserted == 0 and confirmed == 0 and not dry_run:
+        code = None if dry_run else inert_code(
+            len(pending), len(shipped), budget, inserted, confirmed)
+        if code == "CAPTIONS_QUOTA_DEFERRED":
+            st.named_stop(
+                "CAPTIONS_QUOTA_DEFERRED",
+                f"nothing to upload (0 pending, {len(shipped)} on record) and "
+                f"the day's remaining units are reserved for the upload lane, "
+                f"so re-verifying existing tracks waits for tomorrow's "
+                f"allowance. {quota.report()}",
+                detail={"shipped": [p["slug"] for p in shipped],
+                        "budget": budget},
+                unblock="Nothing. The allowance resets at midnight Pacific "
+                        "and this lane re-verifies then.")
+        elif code == "CAPTIONS_INERT":
             st.named_stop(
                 "CAPTIONS_INERT",
                 f"the lane authenticated and then neither uploaded nor "
