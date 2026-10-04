@@ -755,8 +755,53 @@
       "en_title": "What is concrete made of?",
       "source_hash": "42ab3308e9f1c51c916dcd0fe4bbd186",
       "applied_at": "2026-09-16T15:18:18+00:00"
+    },
+    "zs-gueHeX8k": {
+      "slug": "how-do-scientists-know-so-much",
+      "languages": [
+        "es",
+        "hi",
+        "id",
+        "pt-BR"
+      ],
+      "all_languages": [
+        "en",
+        "es",
+        "hi",
+        "id",
+        "pt-BR"
+      ],
+      "default_language": "en",
+      "en_title": "How do scientists know so much about the deep ocean when we've explored so little of it?",
+      "source_hash": "e1ac796a70943ec0277b4c5755032333",
+      "applied_at": "2026-10-04T16:18:07+00:00"
     }
   },
-  "updated": "2026-09-16T15:18:18+00:00",
-  "blocked": {}
+  "updated": "2026-10-04T16:18:07+00:00",
+  "blocked": {
+    "T6XeND2qM4k": {
+      "slug": "how-do-scientists-know-how-old-something-is",
+      "reason": "QUOTA_DEFERRED",
+      "since": "2026-10-04T16:17:14+00:00",
+      "missing": [
+        "de",
+        "es",
+        "hi",
+        "id",
+        "pt-BR"
+      ]
+    },
+    "Z-Z1FNVQXW0": {
+      "slug": "how-do-scientists-know-about-other-galaxies",
+      "reason": "QUOTA_DEFERRED",
+      "since": "2026-10-04T16:17:14+00:00",
+      "missing": [
+        "de",
+        "es",
+        "hi",
+        "id",
+        "pt-BR"
+      ]
+    }
+  }
 }
