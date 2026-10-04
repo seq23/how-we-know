@@ -1,7 +1,7 @@
 [
   {
     "i": 0,
-    "segment": "depth_descent",
+    "segment": "thermal_ascent",
     "narration": "The term Damascus steel refers to two separate materials made by two separate processes separated by more than a century of lost knowledge.",
     "seconds": 8.570666666666666
   },
@@ -13,7 +13,7 @@
   },
   {
     "i": 2,
-    "segment": "depth_descent",
+    "segment": "thermal_ascent",
     "narration": "Modern Damascus steel is pattern-welded steel, made by forge-welding layers of different steels together.",
     "seconds": 6.1066666666666665
   },
@@ -91,7 +91,7 @@
   },
   {
     "i": 15,
-    "segment": "timeline",
+    "segment": "process_column",
     "narration": "The ingots themselves did not display visible patterns. The patterns appeared only after the ingots were forged into blades.",
     "seconds": 7.045333333333334
   },
@@ -103,7 +103,7 @@
   },
   {
     "i": 17,
-    "segment": "timeline",
+    "segment": "process_column",
     "narration": "Forging stretched and thinned the carbide bands, aligning them along the length of the blade.",
     "seconds": 5.328
   },
@@ -121,7 +121,7 @@
   },
   {
     "i": 20,
-    "segment": "timeline",
+    "segment": "process_column",
     "narration": "The carbide-rich regions appeared lighter, the iron-rich regions darker. The resulting patterns \u2014 wavy lines, ladders, roses \u2014 were byproducts of the internal structure, not deliberate designs.",
     "seconds": 12.314666666666668
   },
@@ -139,7 +139,7 @@
   },
   {
     "i": 23,
-    "segment": "timeline",
+    "segment": "process_column",
     "narration": "The decline is attributed to multiple factors: depletion of specific ore sources, loss of knowledge as trade routes shifted, and competition from European steelmaking.",
     "seconds": 11.333333333333334
   },
@@ -151,7 +151,7 @@
   },
   {
     "i": 25,
-    "segment": "ambient_drift",
+    "segment": "thermal_ascent",
     "narration": "Modern Damascus steel, produced from the late 19th century onward, uses a completely different method called pattern welding.",
     "seconds": 7.397333333333333
   },
@@ -163,7 +163,7 @@
   },
   {
     "i": 27,
-    "segment": "ambient_drift",
+    "segment": "thermal_ascent",
     "narration": "Pattern welding begins with stacking alternating layers of two or more different steels, typically one high-carbon steel and one low-carbon or nickel-bearing steel.",
     "seconds": 9.936
   },
@@ -181,7 +181,7 @@
   },
   {
     "i": 30,
-    "segment": "ambient_drift",
+    "segment": "thermal_ascent",
     "narration": "A single fold doubles the layer count. Seven folds produce 128 layers.",
     "seconds": 5.669333333333333
   },
@@ -199,7 +199,7 @@
   },
   {
     "i": 33,
-    "segment": "ambient_drift",
+    "segment": "thermal_ascent",
     "narration": "The different steels etch at different rates, revealing the layered structure as a surface pattern.",
     "seconds": 5.832
   },
@@ -223,7 +223,7 @@
   },
   {
     "i": 37,
-    "segment": "ambient_drift",
+    "segment": "size_ladder",
     "narration": "The mechanical properties of wootz steel and pattern-welded steel differ because their structures differ.",
     "seconds": 5.882666666666666
   },
@@ -235,7 +235,7 @@
   },
   {
     "i": 39,
-    "segment": "ambient_drift",
+    "segment": "size_ladder",
     "narration": "The carbides increase hardness and wear resistance but also introduce planes of weakness if the bands are coarse or if forging temperature is too low.",
     "seconds": 8.773333333333333
   },
@@ -253,7 +253,7 @@
   },
   {
     "i": 42,
-    "segment": "ambient_drift",
+    "segment": "size_ladder",
     "narration": "However, if the weld between layers is incomplete or contaminated, the blade can delaminate along the interface.",
     "seconds": 7.152
   },
@@ -271,7 +271,7 @@
   },
   {
     "i": 45,
-    "segment": "ambient_drift",
+    "segment": "size_ladder",
     "narration": "Pattern-welded steel shows distinct layers with abrupt composition changes and visible weld lines at high magnification.",
     "seconds": 7.856
   },
@@ -289,7 +289,7 @@
   },
   {
     "i": 48,
-    "segment": "ambient_drift",
+    "segment": "process_column",
     "narration": "Efforts to recreate historical wootz steel began in earnest in the 1980s.",
     "seconds": 5.552
   },
@@ -301,7 +301,7 @@
   },
   {
     "i": 50,
-    "segment": "ambient_drift",
+    "segment": "process_column",
     "narration": "Their work, published in 1998, demonstrated that vanadium was essential for forming the fine carbide bands characteristic of high-quality wootz.",
     "seconds": 9.733333333333333
   },
@@ -319,7 +319,7 @@
   },
   {
     "i": 53,
-    "segment": "ambient_drift",
+    "segment": "process_column",
     "narration": "The difficulty in recreating wootz steel exactly reflects the complexity of the original process.",
     "seconds": 5.7973333333333334
   },
@@ -337,7 +337,7 @@
   },
   {
     "i": 56,
-    "segment": "ambient_drift",
+    "segment": "process_column",
     "narration": "Modern recreations produce steel with similar appearance and some similar properties, but whether they match the best historical examples in all respects remains uncertain.",
     "seconds": 10.16
   },
@@ -349,7 +349,7 @@
   },
   {
     "i": 58,
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "narration": "The term carbide refers to a compound of iron and carbon, specifically cementite, with the chemical formula Fe\u2083C.",
     "seconds": 8.048
   },
@@ -409,7 +409,7 @@
   },
   {
     "i": 68,
-    "segment": "ambient_drift",
+    "segment": "thermal_ascent",
     "narration": "Damascus steel is two answers, not one. The historical material was crucible steel with carbide bands.",
     "seconds": 7.557333333333333
   },

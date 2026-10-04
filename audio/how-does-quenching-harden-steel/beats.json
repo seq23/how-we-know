@@ -37,7 +37,7 @@
   },
   {
     "i": 6,
-    "segment": "text_beat",
+    "segment": "material_image",
     "narration": "Add carbon and heat the mixture above roughly 727 degrees Celsius, and the iron switches to face-centered cubic austenite.",
     "seconds": 9.029333333333334
   },
@@ -85,7 +85,7 @@
   },
   {
     "i": 14,
-    "segment": "process_column",
+    "segment": "stat_card",
     "narration": "The transformation to pearlite requires carbon to travel distances comparable to the spacing between cementite layers, typically hundreds of nanometers.",
     "seconds": 8.613333333333333
   },
@@ -103,7 +103,7 @@
   },
   {
     "i": 17,
-    "segment": "text_beat",
+    "segment": "material_image",
     "narration": "The iron lattice tries to shift back to body-centered cubic, but the trapped carbon distorts it into body-centered tetragonal martensite.",
     "seconds": 8.189333333333334
   },
@@ -151,7 +151,7 @@
   },
   {
     "i": 25,
-    "segment": "text_beat",
+    "segment": "evidence_chain",
     "narration": "The transformation happens at nearly the speed of sound in the material.",
     "seconds": 4.410666666666667
   },
@@ -205,7 +205,7 @@
   },
   {
     "i": 34,
-    "segment": "ambient_drift",
+    "segment": "contrast_pair",
     "narration": "Still water cools more slowly than agitated water. Quench tank design accounts for this.",
     "seconds": 5.776
   },
@@ -277,7 +277,7 @@
   },
   {
     "i": 46,
-    "segment": "text_beat",
+    "segment": "uncertainty_bar",
     "narration": "The distance over which hardness remains high indicates hardenability. High-hardenability steels form martensite even with slow cooling.",
     "seconds": 8.901333333333334
   },
@@ -331,7 +331,7 @@
   },
   {
     "i": 55,
-    "segment": "ambient_drift",
+    "segment": "magnitude_bar",
     "narration": "The carbon content is chosen for the application, and the quench is designed to achieve full transformation at that carbon level.",
     "seconds": 7.088
   },
@@ -385,7 +385,7 @@
   },
   {
     "i": 64,
-    "segment": "process_column",
+    "segment": "ambient_drift",
     "narration": "The carbides are much smaller than the cementite layers in pearlite, so the steel remains harder than slowly cooled steel even after tempering.",
     "seconds": 8.016
   },
@@ -445,7 +445,7 @@
   },
   {
     "i": 74,
-    "segment": "text_beat",
+    "segment": "checklist_reveal",
     "narration": "Alloy additions buy time. They let the core cool slowly enough to avoid cracking while still cooling fast enough to form martensite.",
     "seconds": 7.674666666666667
   },

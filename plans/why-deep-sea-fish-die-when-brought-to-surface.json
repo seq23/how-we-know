@@ -1100,14 +1100,180 @@
     "from": "directive"
   },
   {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "Cellular membranes are tuned to specific pressure regimes",
+    "narration": "Every cell in a deep sea fish is wrapped in a lipid bilayer membrane that must remain fluid enough to function but stable enough to hold its shape.",
+    "args": {
+      "term": "MEMBRANE FLUIDITY",
+      "meaning": "lipid bilayer flexibility",
+      "boundary": "optimized for ambient pressure",
+      "source": "MBARI"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cellular membranes are tuned to specific pressure regimes",
+    "narration": "At high pressure, membranes tend to compress and become more rigid. Deep sea organisms compensate by altering their membrane lipid composition \u2014 increasing the proportion of unsaturated fatty acids, which remain fluid under compression.",
+    "args": {
+      "lines": [
+        "At high pressure, membranes",
+        "tend to compress and",
+        "become"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "Cellular membranes are tuned to specific pressure regimes",
+    "narration": "The Monterey Bay Aquarium Research Institute reports that this adaptation is so finely tuned that a pressure change of even fifty atmospheres can push membrane fluidity outside its functional range.",
+    "args": {
+      "term": "MEMBRANE FLUIDITY",
+      "meaning": "lipid bilayer flexibility",
+      "boundary": "optimized for ambient pressure",
+      "source": "MBARI"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 7.45,
+    "heading": "Cellular membranes are tuned to specific pressure regimes",
+    "narration": "When pressure drops suddenly, these membranes become too fluid. Ion channels that regulate sodium, potassium and calcium leak.",
+    "args": {
+      "title": "MEMBRANE FAILURE",
+      "stages": [
+        "pressure drops",
+        "lipids expand",
+        "fluidity increases"
+      ],
+      "conclusion": "ion channels leak"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cellular membranes are tuned to specific pressure regimes",
+    "narration": "The electrical gradients that drive nerve signals and muscle contractions collapse. Cells lose the ability to maintain their internal chemistry distinct from the surrounding fluid.",
+    "args": {
+      "lines": [
+        "The electrical gradients that",
+        "drive nerve signals and",
+        "muscle contractions"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 4.97,
+    "heading": "Cellular membranes are tuned to specific pressure regimes",
+    "narration": "This is not a mechanical rupture \u2014 it is a regulatory failure.",
+    "args": {
+      "title": "MEMBRANE FAILURE",
+      "stages": [
+        "pressure drops",
+        "lipids expand",
+        "fluidity increases"
+      ],
+      "conclusion": "ion channels leak"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "Cellular membranes are tuned to specific pressure regimes",
+    "narration": "The cell is still intact, but it can no longer function as a bounded system.",
+    "args": {
+      "lines": [
+        "The cell is still",
+        "intact, but it can",
+        "no longer"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Protein structure depends on pressure stability",
+    "narration": "Proteins fold into three-dimensional shapes determined by weak bonds \u2014 hydrogen bonds, van der Waals forces, hydrophobic interactions.",
+    "args": {
+      "lines": [
+        "Proteins fold into three-dimensional",
+        "shapes determined by weak",
+        "bonds"
+      ]
+    },
+    "from": "directive"
+  },
+  {
     "segment": "ambient_drift",
-    "seconds": 8.69,
-    "heading": "Closing",
-    "narration": "A deep sea fish dies at the surface because its body is a solution to a problem that no longer exists.",
+    "seconds": 7.86,
+    "heading": "Protein structure depends on pressure stability",
+    "narration": "Pressure affects all of these. A protein that folds correctly at four hundred atmospheres may misfold at one atmosphere.",
     "args": {
       "variant": 1
     },
     "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Protein structure depends on pressure stability",
+    "narration": "Woods Hole Oceanographic Institution notes that deep sea enzymes often have amino acid sequences that differ from their shallow-water counterparts in ways that stabilize the folded structure under high pressure.",
+    "args": {
+      "lines": [
+        "Woods Hole Oceanographic Institution",
+        "notes that deep sea",
+        "enzymes often"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Protein structure depends on pressure stability",
+    "narration": "Remove that pressure and the protein unfolds or aggregates. Enzymes lose catalytic activity.",
+    "args": {
+      "lines": [
+        "Remove that pressure and",
+        "the protein unfolds or",
+        "aggregates. Enzymes"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Protein structure depends on pressure stability",
+    "narration": "Structural proteins lose mechanical strength. The biochemistry of the cell stops working not because the molecules are destroyed, but because they are no longer in the shape that makes them functional.",
+    "args": {
+      "variant": 2
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Closing",
+    "narration": "A deep sea fish dies at the surface because its body is a solution to a problem that no longer exists.",
+    "args": {
+      "lines": [
+        "A deep sea fish",
+        "dies at the surface",
+        "because"
+      ]
+    },
+    "from": "directive"
   },
   {
     "segment": "text_beat",
@@ -1124,16 +1290,13 @@
     "from": "directive"
   },
   {
-    "segment": "text_beat",
+    "segment": "ambient_drift",
     "seconds": 7.86,
     "heading": "Closing",
     "narration": "What remains is a structure without its context \u2014 an answer to a question the surface does not ask.",
     "args": {
-      "lines": [
-        "What remains is a",
-        "structure without its context"
-      ]
+      "variant": 3
     },
-    "from": "directive"
+    "from": "directive+destagnate"
   }
 ]

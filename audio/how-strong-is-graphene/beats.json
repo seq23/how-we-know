@@ -1,7 +1,7 @@
 [
   {
     "i": 0,
-    "segment": "depth_descent",
+    "segment": "size_ladder",
     "narration": "Graphene can withstand 130 gigapascals of tensile stress before breaking. That measurement comes from atomic force microscopy tests on suspended single-layer samples published in Science.",
     "seconds": 11.834666666666667
   },
@@ -13,7 +13,7 @@
   },
   {
     "i": 2,
-    "segment": "depth_descent",
+    "segment": "size_ladder",
     "narration": "The question is not whether graphene is strong in principle. The question is how that strength was measured, what it actually means, and why the number changes the moment you try to make something larger than a laboratory sample.",
     "seconds": 12.464
   },
@@ -25,7 +25,7 @@
   },
   {
     "i": 4,
-    "segment": "text_beat",
+    "segment": "material_image",
     "narration": "They suspended graphene sheets over circular wells etched into silicon dioxide substrates.",
     "seconds": 5.8933333333333335
   },
@@ -97,7 +97,7 @@
   },
   {
     "i": 16,
-    "segment": "text_beat",
+    "segment": "material_image",
     "narration": "Graphene's 130 gigapascals applies to in-plane tension, meaning force applied along the sheet.",
     "seconds": 6.48
   },
@@ -157,7 +157,7 @@
   },
   {
     "i": 26,
-    "segment": "size_ladder",
+    "segment": "ambient_drift",
     "narration": "A single vacancy, where one carbon atom is missing, reduces local strength by more than half.",
     "seconds": 6.010666666666666
   },
@@ -169,7 +169,7 @@
   },
   {
     "i": 28,
-    "segment": "size_ladder",
+    "segment": "ambient_drift",
     "narration": "Polycrystalline graphene, which is what chemical vapor deposition produces at scale, contains many grain boundaries.",
     "seconds": 6.714666666666667
   },
@@ -187,7 +187,7 @@
   },
   {
     "i": 31,
-    "segment": "size_ladder",
+    "segment": "ambient_drift",
     "narration": "Those samples are small, typically a few micrometers across, and produced by mechanical exfoliation. Larger samples inevitably contain defects.",
     "seconds": 10.333333333333334
   },
@@ -205,7 +205,7 @@
   },
   {
     "i": 34,
-    "segment": "size_ladder",
+    "segment": "ambient_drift",
     "narration": "Scaling up production means accepting lower average strength. Chemical vapor deposition can grow graphene sheets meters across, but those sheets are polycrystalline and contain wrinkles, tears, and contamination.",
     "seconds": 13.114666666666666
   },
@@ -337,7 +337,7 @@
   },
   {
     "i": 56,
-    "segment": "text_beat",
+    "segment": "thermal_ascent",
     "narration": "The 130 gigapascal measurement has been replicated by other groups using similar methods.",
     "seconds": 6.341333333333333
   },
@@ -349,7 +349,7 @@
   },
   {
     "i": 58,
-    "segment": "ambient_drift",
+    "segment": "thermal_ascent",
     "narration": "A 2015 study at MIT confirmed that grain boundaries reduce strength predictably.",
     "seconds": 5.882666666666666
   },
@@ -367,7 +367,7 @@
   },
   {
     "i": 61,
-    "segment": "ambient_drift",
+    "segment": "thermal_ascent",
     "narration": "The measurement also depends on temperature and loading rate. Graphene tested at cryogenic temperatures shows slightly higher strength because thermal vibrations are reduced.",
     "seconds": 10.298666666666668
   },
@@ -385,13 +385,13 @@
   },
   {
     "i": 64,
-    "segment": "ambient_drift",
+    "segment": "thermal_ascent",
     "narration": "Different conditions would yield different numbers, though the variation is small compared to the effect of defects.",
     "seconds": 6.042666666666666
   },
   {
     "i": 65,
-    "segment": "ambient_drift",
+    "segment": "size_ladder",
     "narration": "The 130 gigapascal tensile strength is the upper limit for defect-free, single-layer graphene under in-plane tension, measured on micrometer-scale samples.",
     "seconds": 9.936
   },
@@ -403,7 +403,7 @@
   },
   {
     "i": 67,
-    "segment": "ambient_drift",
+    "segment": "size_ladder",
     "narration": "It does not account for out-of-plane forces, shear, or long-term loading. The measurement is precise, but the conditions are specific.",
     "seconds": 7.802666666666667
   },
