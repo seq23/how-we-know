@@ -173,7 +173,7 @@ Owner watched it and approved, with the imagery note above as the standing corre
 
 - **KDP** — 7 books awaiting Amazon, 5 not created.
 - **`privacyContactEmail`** empty in `site/site-flags.json`. Candidate
-  `the channel's own Google account`; a `@howweknowdeep.com` alias would be better.
+  the channel's own Google account (the one that owns @howweknowdeep); a `@howweknowdeep.com` alias would be better.
 - `validate:retired-route-references` is 121s of the 297s sprylabs shard stage — the next
   CI lever, bigger than sharding was.
 

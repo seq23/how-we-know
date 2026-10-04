@@ -20,7 +20,7 @@ than evidence, it says so.
 | Handle | **@howweknowdeep** |
 | Channel ID | `UC5vZFZc15DIM6IrFwFgAECg` |
 | Site | **https://howweknowdeep.com** |
-| Google account | `the channel's own Google account` |
+| Google account | the channel's own Google account (the one that owns @howweknowdeep) |
 | Cloud project | `how-we-know` (681552889891) |
 | Domains live | deep sea (Sun/Tue) · materials-and-manufacturing (Mon/Fri, first aired 2026-09-07) |
 
