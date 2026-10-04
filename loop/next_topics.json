@@ -1,6 +1,6 @@
 {
-  "week": "2026-W39",
-  "generated": "2026-09-27T10:04:30+00:00",
+  "week": "2026-W40",
+  "generated": "2026-10-04T11:19:48+00:00",
   "videos_per_week": 4,
   "cadence_ceiling_note": "Deliberate. Never raised to clear a backlog.",
   "selection_mode": "automatic",
@@ -50,26 +50,27 @@
     },
     {
       "slug": "why-deep-sea-fish-die-when-brought-to-surface",
-      "question": "why deep sea fish die when brought to surface",
-      "script": "loop/drafts/why-deep-sea-fish-die-when-brought-to-surface.md",
-      "source": "publish-queue",
-      "queue_file": "publish_order_deep_sea_ocean_science.json",
-      "needs_authoring": true,
-      "pov_id": "pov-001",
-      "pov_line": "When I picture the deep ocean I don't see blue water or fish. I see black. A massive amount of black space where you can't tell what's beside you or beneath you.",
-      "pov_tag": "scale",
-      "pov_tier": "specific",
-      "pov_matched_by": "tag:scale score 2.8"
+      "question": "Why do deep sea fish die when brought to the surface?",
+      "script": "scripts/why-deep-sea-fish-die-when-brought-to-surface.md",
+      "source": "authored-inventory",
+      "publish_rank": 20,
+      "front_loaded": false,
+      "needs_authoring": false,
+      "pov_id": "pov-138",
+      "pov_line": "I'd want to stop if this channel began rewarding certainty more than truth \u2014 selecting evidence to protect the brand, repeating numbers because they performed well, turning unresolved questions into clean stories. The moment it can't correct itself without treating correction as humiliation, it has become the thing it was built to expose.",
+      "pov_tag": "trust",
+      "pov_tier": "transferable",
+      "pov_matched_by": "hand assignment in pov/pov-assignments.json"
     }
   ],
-  "to_author": 1,
+  "to_author": 0,
   "inventory_remaining": 0,
   "cadence": {
     "videos_per_week": 4,
     "why": "configured default (4/week)"
   },
   "publish_order": {
-    "ranked": 3,
+    "ranked": 4,
     "unranked": 3,
     "unranked_slugs": [
       "how-deep-mariana-trench",
@@ -85,7 +86,7 @@
     "queued_despite_kill": [],
     "order_entries": 51,
     "source": "research/publish_order.json",
-    "generated_at": "2026-09-26T10:09:05.365994+00:00",
+    "generated_at": "2026-10-03T10:09:08.104572+00:00",
     "generator": "research/publish_order.py",
     "status": "PRODUCTION",
     "episodes_ranked": null,
@@ -93,12 +94,12 @@
     "saturated_tail": []
   },
   "runway": {
-    "unpublished_scripts": 10,
-    "publishable": 3,
-    "scheduled_not_yet_aired": 21,
+    "unpublished_scripts": 11,
+    "publishable": 4,
+    "scheduled_not_yet_aired": 17,
     "basis": "publish queue",
     "videos_per_week": 4,
-    "weeks_remaining": 6.0,
+    "weeks_remaining": 5.2,
     "warn_below_weeks": 4.0,
     "critical_below_weeks": 2.0,
     "level": "ok",
@@ -106,23 +107,23 @@
       "deep-sea-ocean-science": {
         "slots_per_week": 2,
         "queued": 10,
-        "scheduled_ahead": 9,
-        "weeks": 9.5,
+        "scheduled_ahead": 7,
+        "weeks": 8.5,
         "level": "ok",
-        "message": "deep-sea-ocean-science: 9.5 week(s) at 2/week (10 queued, 9 already dated)"
+        "message": "deep-sea-ocean-science: 8.5 week(s) at 2/week (10 queued, 7 already dated)"
       },
       "materials-and-manufacturing": {
         "slots_per_week": 2,
         "queued": 7,
-        "scheduled_ahead": 12,
-        "weeks": 9.5,
+        "scheduled_ahead": 10,
+        "weeks": 8.5,
         "level": "ok",
-        "message": "materials-and-manufacturing: 9.5 week(s) at 2/week (7 queued, 12 already dated)"
+        "message": "materials-and-manufacturing: 8.5 week(s) at 2/week (7 queued, 10 already dated)"
       }
     },
     "short_domains": [],
     "never_go_dark": true,
-    "message": "6.0 weeks of queue at 4/week (3 publishable of 10 on disk). By domain: deep-sea-ocean-science: 9.5 week(s) at 2/week (10 queued, 9 already dated); materials-and-manufacturing: 9.5 week(s) at 2/week (7 queued, 12 already dated)."
+    "message": "5.2 weeks of queue at 4/week (4 publishable of 11 on disk). By domain: deep-sea-ocean-science: 8.5 week(s) at 2/week (10 queued, 7 already dated); materials-and-manufacturing: 8.5 week(s) at 2/week (7 queued, 10 already dated)."
   },
   "gate": {
     "authority": "pov/topic-taxonomy.json",
@@ -520,17 +521,6 @@
       "note": "shape_score orders candidates for SCORING, never for publishing. Demand and competition come from research/publish_order.json."
     },
     {
-      "query": "why deep sea fish die when brought to surface",
-      "domain": "deep-sea-biology",
-      "seed_hits": 1,
-      "is_question": true,
-      "shape_score": 2.5,
-      "demand_measured": false,
-      "competition": null,
-      "scored": false,
-      "note": "shape_score orders candidates for SCORING, never for publishing. Demand and competition come from research/publish_order.json."
-    },
-    {
       "query": "why nasa stopped exploring the deep sea in hindi",
       "domain": "depth-and-zones",
       "seed_hits": 1,
@@ -650,11 +640,22 @@
       "competition": null,
       "scored": false,
       "note": "shape_score orders candidates for SCORING, never for publishing. Demand and competition come from research/publish_order.json."
+    },
+    {
+      "query": "how deep the father's love for us piano",
+      "domain": "depth-and-zones",
+      "seed_hits": 1,
+      "is_question": true,
+      "shape_score": 2.5,
+      "demand_measured": false,
+      "competition": null,
+      "scored": false,
+      "note": "shape_score orders candidates for SCORING, never for publishing. Demand and competition come from research/publish_order.json."
     }
   ],
   "candidate_skips": {
     "already_published": 2,
-    "already_authored": 4,
+    "already_authored": 5,
     "excluded": 15
   },
   "override": {
