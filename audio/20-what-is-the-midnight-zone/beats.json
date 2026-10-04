@@ -19,7 +19,7 @@
   },
   {
     "i": 3,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "Above it, the twilight zone retains faint surface light. Below about 1,000 meters, sunlight is effectively absent.",
     "seconds": 8.176
   },
@@ -115,7 +115,7 @@
   },
   {
     "i": 19,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "Photophores beneath a fish can erase its silhouette against faint bioluminescent background or downwelling remnants at the upper boundary.",
     "seconds": 9.509333333333334
   },
@@ -139,7 +139,7 @@
   },
   {
     "i": 23,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "A submersible's lamps can overwhelm that natural scene, causing animals to flee or altering what the camera records.",
     "seconds": 7.0986666666666665
   },
@@ -169,7 +169,7 @@
   },
   {
     "i": 28,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "Species have narrower preferred ranges. Seamounts and slopes interrupt open water. Hydrothermal vents can add local chemical energy on the seafloor.",
     "seconds": 10.458666666666666
   },
@@ -187,7 +187,7 @@
   },
   {
     "i": 31,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "Its food webs depend on imported organic matter, predation, migration, and local chemosynthetic sources.",
     "seconds": 7.706666666666667
   },
@@ -308,37 +308,43 @@
   {
     "i": 51,
     "segment": "depth_descent",
-    "narration": "Settle into a slow hour here rather than a fast zone list: a particle of marine snow, a migrating animal passing through, a flash of bioluminescence, a predator waiting in darkness.",
+    "narration": "Give the viewer a slow hour rather than a fast zone list.",
     "seconds": 3.7813333333333334
   },
   {
     "i": 52,
     "segment": "text_beat",
-    "narration": "It runs quieter than the last record-chasing episode, and the depth gauge moves slowly on purpose \u2014 a reminder that the zone itself spans three vertical kilometers.",
+    "narration": "Follow a particle of marine snow, a migrating animal passing through, a flash of bioluminescence, and a predator waiting in darkness.",
     "seconds": 10.693333333333333
   },
   {
     "i": 53,
-    "segment": "stat_card",
-    "narration": "The 1,000- and 4,000-meter boundaries are conventional approximations. Local light, temperature, oxygen, currents, and seafloor depth vary.",
+    "segment": "depth_descent",
+    "narration": "The pace should be quieter than the previous record video. Keep the depth gauge moving slowly to reinforce that the zone itself spans three vertical kilometers.",
     "seconds": 9.733333333333333
   },
   {
     "i": 54,
-    "segment": "contrast_pair",
-    "narration": "WHOI describes the midnight zone as roughly 70 percent of all seawater, but that does not mean 70 percent of ocean species live there.",
+    "segment": "stat_card",
+    "narration": "The 1,000- and 4,000-meter boundaries are conventional approximations. Local light, temperature, oxygen, currents, and seafloor depth vary.",
     "seconds": 10.906666666666666
   },
   {
     "i": 55,
-    "segment": "text_beat",
-    "narration": "ROV lights can also alter behavior, so what cameras observe is not a perfectly neutral window.",
+    "segment": "contrast_pair",
+    "narration": "WHOI describes the midnight zone as roughly 70 percent of all seawater, but that does not mean 70 percent of ocean species live there.",
     "seconds": 9.136
   },
   {
     "i": 56,
+    "segment": "text_beat",
+    "narration": "ROV lights can also alter behavior, so what cameras observe is not a perfectly neutral window.",
+    "seconds": 6.565333333333333
+  },
+  {
+    "i": 57,
     "segment": "zone_column",
     "narration": "The midnight zone is not empty darkness. It is the largest dark habitat on the planet, full of signals our eyes usually miss and lives paced by food arriving from somewhere else. Its boundaries are approximate. Its scale is not.",
-    "seconds": 6.565333333333333
+    "seconds": 14.032
   }
 ]

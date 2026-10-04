@@ -25,7 +25,7 @@
   },
   {
     "i": 4,
-    "segment": "text_beat",
+    "segment": "material_image",
     "narration": "The wafer is not cut from a natural crystal. It is grown.",
     "seconds": 3.546666666666667
   },
@@ -73,7 +73,7 @@
   },
   {
     "i": 12,
-    "segment": "text_beat",
+    "segment": "material_image",
     "narration": "The wafer is soft-baked to evaporate solvents. A photomask \u2014 a quartz plate with opaque chrome patterns \u2014 is aligned above the wafer, and ultraviolet light shines through the mask.",
     "seconds": 12.666666666666666
   },
@@ -361,7 +361,7 @@
   },
   {
     "i": 60,
-    "segment": "text_beat",
+    "segment": "material_image",
     "narration": "SEMI standards specify the post-CMP flatness and defect density. Without CMP, photolithography could not focus on the next layer.",
     "seconds": 8.869333333333334
   },
@@ -385,7 +385,7 @@
   },
   {
     "i": 64,
-    "segment": "text_beat",
+    "segment": "material_image",
     "narration": "Transmission electron microscopy images the final transistor structure at atomic resolution, confirming that the layers are where the process intended them to be.",
     "seconds": 9.562666666666667
   },

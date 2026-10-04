@@ -119,6 +119,26 @@ Carbon-14 becomes undetectable beyond about fifty thousand years. Material older
 
 The methods converge where their ranges overlap. That convergence is the strongest evidence that the methods work. Where they do not overlap, you are extrapolating, and the uncertainty grows.
 
+### Coral skeletons record centuries in calcium carbonate
+
+{{anatomy: DEEP-SEA CORAL CROSS-SECTION | Annual band@0.3,0.5 | Uranium incorporation@0.6,0.3 | Radiocarbon signature@0.7,0.7}}
+
+Deep-sea corals grow slowly — some species add less than one millimeter per year — and their skeletons preserve a chemical record of the water they grew in. The calcium carbonate they deposit incorporates trace amounts of uranium but excludes thorium when it forms. That makes them suitable for uranium-thorium dating, which works for material up to about six hundred thousand years old.
+
+The method measures the ratio of thorium-230, a decay product of uranium-234, to the uranium still present. Because the coral starts with uranium and no thorium, the amount of thorium-230 tells you how long the coral has been growing. Deep-sea corals dated this way have reached ages exceeding four thousand years, confirmed by counting growth bands where visible and by radiocarbon dating of the youngest layers.
+
+Corals also record radiocarbon from the seawater. Deep water is older than surface water — it last exchanged carbon with the atmosphere centuries ago — so deep-sea corals incorporate carbon-14 that is already depleted. The apparent radiocarbon age is older than the true age. Correcting for this reservoir effect requires knowing the radiocarbon content of the water, which varies by depth and location. Uranium-thorium dating provides the true age, and the difference reveals the reservoir age of the water mass the coral grew in.
+
+### Sediment cores cross-check isotope stages against orbital cycles
+
+{{timeline: 1976=CLIMAP project maps last glacial maximum | 1980=Milankovitch cycles confirmed in sediment cores | 1995=Devil's Hole calcite challenges ice-volume timing | 2004=Integrated Ocean Drilling Program established}}
+
+Oxygen isotope ratios in foraminifera shells track the volume of ice on land. When ice sheets grow, they lock up water depleted in oxygen-18, leaving the ocean enriched. Foraminifera incorporate that enriched oxygen into their calcium carbonate shells. The ratio of oxygen-18 to oxygen-16 in a sediment core therefore records glacial and interglacial cycles.
+
+These cycles have been numbered — Marine Isotope Stage 1 is the current interglacial, Stage 2 is the last glacial maximum, and so on back to Stage 104, about two point six million years ago. The timing of these stages has been calibrated by radiometric dating of volcanic ash layers, by counting annual layers in ice cores, and by matching the cycles to orbital variations calculated from celestial mechanics.
+
+Earth's orbit changes shape, its axial tilt varies, and its axis precesses, all on predictable timescales. These Milankovitch cycles affect how much sunlight reaches different latitudes in different seasons, which drives glacial cycles. The match between the calculated orbital cycles and the measured isotope cycles, first demonstrated in a 1976 paper by Hays, Imbrie, and Shackleton in *Science*, confirmed that orbital forcing paces ice ages and that the sediment record extends back reliably for hundreds of thousands of years.
+
 ### Closing
 
 {{text}}
@@ -150,6 +170,10 @@ Age is not a property. It is a calculation. The calculation depends on a measure
 - 9:36 Closing
 
 ## Sources
+- https://oceanexplorer.noaa.gov/facts/
+- https://ocean.si.edu/ecosystems/deep-sea/deep-sea
+- https://scripps.ucsd.edu/research
+- https://www.whoi.edu/know-your-ocean/
 
 - NOAA Ocean Exploration: Ocean Exploration Facts — https://oceanexplorer.noaa.gov/facts/facts.html
 - Smithsonian Ocean: Deep Sea — https://ocean.si.edu/ecosystems/deep-sea/deep-sea

@@ -433,20 +433,104 @@
   },
   {
     "i": 72,
-    "segment": "ambient_drift",
-    "narration": "The deep ocean is not fully explored, but it is not unknown.",
-    "seconds": 4.485333333333333
+    "segment": "evidence_chain",
+    "narration": "In the early nineteen seventies, geophysicists measuring heat flow near mid-ocean ridges found a problem.",
+    "seconds": 6.789333333333333
   },
   {
     "i": 73,
     "segment": "text_beat",
-    "narration": "Systematic measurement, physical laws, and tested models provide knowledge that does not require visiting every location.",
-    "seconds": 7.472
+    "narration": "The measurements were lower than models of seafloor spreading predicted. New crust forms at these ridges as magma rises and cools, and that cooling should release heat.",
+    "seconds": 9.722666666666667
   },
   {
     "i": 74,
+    "segment": "evidence_chain",
+    "narration": "The measured values did not match. Scientists proposed that seawater circulating through cracks in the seafloor was carrying heat away, but no one had seen it happen.",
+    "seconds": 9.68
+  },
+  {
+    "i": 75,
+    "segment": "text_beat",
+    "narration": "In nineteen seventy-seven, the submersible Alvin descended to the Gal\u00e1pagos Rift and found hydrothermal vents, exactly as the heat budget required.",
+    "seconds": 8.634666666666666
+  },
+  {
+    "i": 76,
+    "segment": "evidence_chain",
+    "narration": "The vents were not discovered by accident. They were predicted by a gap in the data, and the prediction told researchers where to look.",
+    "seconds": 7.376
+  },
+  {
+    "i": 77,
+    "segment": "text_beat",
+    "narration": "Woods Hole Oceanographic Institution and the Smithsonian both document this sequence. The discovery in nineteen seventy-seven confirmed the circulation model and resolved the heat discrepancy.",
+    "seconds": 12.069333333333333
+  },
+  {
+    "i": 78,
+    "segment": "text_beat",
+    "narration": "Seismometers detect earthquakes globally, and the locations of those earthquakes trace plate boundaries.",
+    "seconds": 5.936
+  },
+  {
+    "i": 79,
+    "segment": "ambient_drift",
+    "narration": "The USGS maintains a network that records tens of thousands of events each year.",
+    "seconds": 5.488
+  },
+  {
+    "i": 80,
+    "segment": "text_beat",
+    "narration": "Most occur along mid-ocean ridges, subduction zones, and transform faults. The pattern is so consistent that earthquake data alone can map plate boundaries more precisely than early sonar surveys did.",
+    "seconds": 13.968
+  },
+  {
+    "i": 81,
+    "segment": "text_beat",
+    "narration": "The Pacific Ring of Fire generates roughly fifteen hundred detectable earthquakes per year, the Mid-Atlantic Ridge about four hundred, and Indian Ocean ridges around two hundred fifty, according to USGS earthquake catalogs.",
+    "seconds": 13.413333333333334
+  },
+  {
+    "i": 82,
+    "segment": "ambient_drift",
+    "narration": "These are not direct observations of the seafloor, but they reveal its structure.",
+    "seconds": 4.794666666666667
+  },
+  {
+    "i": 83,
+    "segment": "text_beat",
+    "narration": "The depth of an earthquake indicates whether it occurs in the crust or the mantle.",
+    "seconds": 4.346666666666667
+  },
+  {
+    "i": 84,
+    "segment": "text_beat",
+    "narration": "Shallow earthquakes cluster at ridges where plates pull apart. Deep earthquakes mark subduction zones where one plate dives beneath another.",
+    "seconds": 8.666666666666666
+  },
+  {
+    "i": 85,
+    "segment": "ambient_drift",
+    "narration": "The distribution is not random, and it does not require a camera to interpret.",
+    "seconds": 4.9013333333333335
+  },
+  {
+    "i": 86,
+    "segment": "ambient_drift",
+    "narration": "The deep ocean is not fully explored, but it is not unknown.",
+    "seconds": 4.016
+  },
+  {
+    "i": 87,
+    "segment": "text_beat",
+    "narration": "Systematic measurement, physical laws, and tested models provide knowledge that does not require visiting every location.",
+    "seconds": 7.077333333333334
+  },
+  {
+    "i": 88,
     "segment": "ambient_drift",
     "narration": "The distinction between imaging and understanding is the answer to the question.",
-    "seconds": 4.1546666666666665
+    "seconds": 4.634666666666667
   }
 ]

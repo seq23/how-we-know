@@ -91,6 +91,19 @@ The deeper the fish, the more catastrophic the ascent. A fish from one thousand 
 {{text}}
 We do not know the safe ascent rate for most deep sea species. Published ranges are wide, and experimental data are sparse because keeping deep sea fish alive in captivity is difficult even under controlled conditions. The threshold at which barotrauma becomes irreversible varies by species, by depth of origin, and by the presence or absence of a swim bladder. Stating that rapid ascent is fatal is well supported. Stating a universal safe rate is not. The evidence tells us what kills them. It does not yet tell us how to prevent it in every case.
 
+### Cellular membranes are tuned to specific pressure regimes
+
+{{define: MEMBRANE FLUIDITY | lipid bilayer flexibility | optimized for ambient pressure | MBARI}}
+Every cell in a deep sea fish is wrapped in a lipid bilayer membrane that must remain fluid enough to function but stable enough to hold its shape. At high pressure, membranes tend to compress and become more rigid. Deep sea organisms compensate by altering their membrane lipid composition — increasing the proportion of unsaturated fatty acids, which remain fluid under compression. The Monterey Bay Aquarium Research Institute reports that this adaptation is so finely tuned that a pressure change of even fifty atmospheres can push membrane fluidity outside its functional range.
+
+{{chain: MEMBRANE FAILURE | pressure drops | lipids expand | fluidity increases | >ion channels leak}}
+When pressure drops suddenly, these membranes become too fluid. Ion channels that regulate sodium, potassium and calcium leak. The electrical gradients that drive nerve signals and muscle contractions collapse. Cells lose the ability to maintain their internal chemistry distinct from the surrounding fluid. This is not a mechanical rupture — it is a regulatory failure. The cell is still intact, but it can no longer function as a bounded system.
+
+### Protein structure depends on pressure stability
+
+{{text}}
+Proteins fold into three-dimensional shapes determined by weak bonds — hydrogen bonds, van der Waals forces, hydrophobic interactions. Pressure affects all of these. A protein that folds correctly at four hundred atmospheres may misfold at one atmosphere. Woods Hole Oceanographic Institution notes that deep sea enzymes often have amino acid sequences that differ from their shallow-water counterparts in ways that stabilize the folded structure under high pressure. Remove that pressure and the protein unfolds or aggregates. Enzymes lose catalytic activity. Structural proteins lose mechanical strength. The biochemistry of the cell stops working not because the molecules are destroyed, but because they are no longer in the shape that makes them functional.
+
 ### Closing
 
 {{text}}
@@ -120,6 +133,8 @@ A deep sea fish dies at the surface because its body is a solution to a problem 
 - 9:33 Closing
 
 ## Sources
+- https://www.mbari.org/
+- https://www.whoi.edu/
 
 - NOAA Ocean Exploration: Ocean Facts — https://oceanexplorer.noaa.gov/facts/
 - Monterey Bay Aquarium Research Institute: Deep-Sea Research — https://www.mbari.org/

@@ -81,6 +81,16 @@ Knowledge is not the same as exhaustive documentation. You do not need to photog
 {{text}}
 High-resolution maps do not exist for ninety-five percent of the ocean floor. Biodiversity in the deep sea is undersampled, and species counts remain rough estimates. Local variation in geothermal flux, small-scale topography, and rare geological features may not appear in current datasets. The knowledge scientists have is robust for large-scale patterns and physical laws, but it is not complete. Stating that limit is not a failure. It is an accurate description of the evidence.
 
+### Hydrothermal vents were predicted before they were seen
+
+{{chain: Prediction to discovery | heat flow measurements on mid-ocean ridges | theoretical models of seafloor spreading | calculation of missing heat | >submersible confirms vents}}
+In the early nineteen seventies, geophysicists measuring heat flow near mid-ocean ridges found a problem. The measurements were lower than models of seafloor spreading predicted. New crust forms at these ridges as magma rises and cools, and that cooling should release heat. The measured values did not match. Scientists proposed that seawater circulating through cracks in the seafloor was carrying heat away, but no one had seen it happen. In nineteen seventy-seven, the submersible Alvin descended to the Galápagos Rift and found hydrothermal vents, exactly as the heat budget required. The vents were not discovered by accident. They were predicted by a gap in the data, and the prediction told researchers where to look. Woods Hole Oceanographic Institution and the Smithsonian both document this sequence. The discovery in nineteen seventy-seven confirmed the circulation model and resolved the heat discrepancy.
+
+### Earthquake locations map plate boundaries without imaging them
+
+{{text}}
+Seismometers detect earthquakes globally, and the locations of those earthquakes trace plate boundaries. The USGS maintains a network that records tens of thousands of events each year. Most occur along mid-ocean ridges, subduction zones, and transform faults. The pattern is so consistent that earthquake data alone can map plate boundaries more precisely than early sonar surveys did. The Pacific Ring of Fire generates roughly fifteen hundred detectable earthquakes per year, the Mid-Atlantic Ridge about four hundred, and Indian Ocean ridges around two hundred fifty, according to USGS earthquake catalogs. These are not direct observations of the seafloor, but they reveal its structure. The depth of an earthquake indicates whether it occurs in the crust or the mantle. Shallow earthquakes cluster at ridges where plates pull apart. Deep earthquakes mark subduction zones where one plate dives beneath another. The distribution is not random, and it does not require a camera to interpret.
+
 ### Closing
 
 {{ambient}}
@@ -111,6 +121,9 @@ The deep ocean is not fully explored, but it is not unknown. Systematic measurem
 - 9:37 Closing
 
 ## Sources
+- https://www.whoi.edu/
+- https://ocean.si.edu/ecosystems/deep-sea/hydrothermal-vents
+- https://www.usgs.gov/programs/earthquake-hazards
 
 - NOAA Ocean Exploration: Ocean Exploration Facts — https://oceanexplorer.noaa.gov/facts/
 - GEBCO: The General Bathymetric Chart of the Oceans — https://www.gebco.net/

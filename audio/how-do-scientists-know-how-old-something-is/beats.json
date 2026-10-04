@@ -470,13 +470,115 @@
   {
     "i": 78,
     "segment": "ambient_drift",
-    "narration": "Age is not a property. It is a calculation. The calculation depends on a measurement, a known rate, and stated assumptions.",
-    "seconds": 8.293333333333333
+    "narration": "Deep-sea corals grow slowly \u2014 some species add less than one millimeter per year \u2014 and their skeletons preserve a chemical record of the water they grew in.",
+    "seconds": 9.541333333333334
   },
   {
     "i": 79,
     "segment": "text_beat",
+    "narration": "The calcium carbonate they deposit incorporates trace amounts of uranium but excludes thorium when it forms.",
+    "seconds": 6.693333333333333
+  },
+  {
+    "i": 80,
+    "segment": "ambient_drift",
+    "narration": "That makes them suitable for uranium-thorium dating, which works for material up to about six hundred thousand years old.",
+    "seconds": 6.650666666666667
+  },
+  {
+    "i": 81,
+    "segment": "ambient_drift",
+    "narration": "The method measures the ratio of thorium-230, a decay product of uranium-234, to the uranium still present.",
+    "seconds": 8.389333333333333
+  },
+  {
+    "i": 82,
+    "segment": "text_beat",
+    "narration": "Because the coral starts with uranium and no thorium, the amount of thorium-230 tells you how long the coral has been growing.",
+    "seconds": 8.112
+  },
+  {
+    "i": 83,
+    "segment": "ambient_drift",
+    "narration": "Deep-sea corals dated this way have reached ages exceeding four thousand years, confirmed by counting growth bands where visible and by radiocarbon dating of the youngest layers.",
+    "seconds": 10.96
+  },
+  {
+    "i": 84,
+    "segment": "ambient_drift",
+    "narration": "Corals also record radiocarbon from the seawater. Deep water is older than surface water \u2014 it last exchanged carbon with the atmosphere centuries ago \u2014 so deep-sea corals incorporate carbon-14 that is already depleted.",
+    "seconds": 14.64
+  },
+  {
+    "i": 85,
+    "segment": "text_beat",
+    "narration": "The apparent radiocarbon age is older than the true age. Correcting for this reservoir effect requires knowing the radiocarbon content of the water, which varies by depth and location.",
+    "seconds": 12.602666666666666
+  },
+  {
+    "i": 86,
+    "segment": "ambient_drift",
+    "narration": "Uranium-thorium dating provides the true age, and the difference reveals the reservoir age of the water mass the coral grew in.",
+    "seconds": 7.8773333333333335
+  },
+  {
+    "i": 87,
+    "segment": "ambient_drift",
+    "narration": "Oxygen isotope ratios in foraminifera shells track the volume of ice on land.",
+    "seconds": 6.1066666666666665
+  },
+  {
+    "i": 88,
+    "segment": "text_beat",
+    "narration": "When ice sheets grow, they lock up water depleted in oxygen-18, leaving the ocean enriched.",
+    "seconds": 7.045333333333334
+  },
+  {
+    "i": 89,
+    "segment": "ambient_drift",
+    "narration": "Foraminifera incorporate that enriched oxygen into their calcium carbonate shells. The ratio of oxygen-18 to oxygen-16 in a sediment core therefore records glacial and interglacial cycles.",
+    "seconds": 12.986666666666666
+  },
+  {
+    "i": 90,
+    "segment": "ambient_drift",
+    "narration": "These cycles have been numbered \u2014 Marine Isotope Stage 1 is the current interglacial, Stage 2 is the last glacial maximum, and so on back to Stage 104, about two point six million years ago.",
+    "seconds": 12.986666666666666
+  },
+  {
+    "i": 91,
+    "segment": "text_beat",
+    "narration": "The timing of these stages has been calibrated by radiometric dating of volcanic ash layers, by counting annual layers in ice cores, and by matching the cycles to orbital variations calculated from celestial mechanics.",
+    "seconds": 13.744
+  },
+  {
+    "i": 92,
+    "segment": "ambient_drift",
+    "narration": "Earth's orbit changes shape, its axial tilt varies, and its axis precesses, all on predictable timescales.",
+    "seconds": 7.770666666666667
+  },
+  {
+    "i": 93,
+    "segment": "ambient_drift",
+    "narration": "These Milankovitch cycles affect how much sunlight reaches different latitudes in different seasons, which drives glacial cycles.",
+    "seconds": 8.282666666666668
+  },
+  {
+    "i": 94,
+    "segment": "text_beat",
+    "narration": "The match between the calculated orbital cycles and the measured isotope cycles, first demonstrated in a 1976 paper by Hays, Imbrie, and Shackleton in *Science*, confirmed that orbital forcing paces ice ages and that the sediment record extends back reliably for hundreds of thousands of years.",
+    "seconds": 19.125333333333334
+  },
+  {
+    "i": 95,
+    "segment": "ambient_drift",
+    "narration": "Age is not a property. It is a calculation. The calculation depends on a measurement, a known rate, and stated assumptions.",
+    "seconds": 8.176
+  },
+  {
+    "i": 96,
+    "segment": "text_beat",
     "narration": "The methods are independent, and they check each other. When they agree, the age is known. When they disagree, you learn where the method breaks.",
-    "seconds": 7.962666666666666
+    "seconds": 8.581333333333333
   }
 ]

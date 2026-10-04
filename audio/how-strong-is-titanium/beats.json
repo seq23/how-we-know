@@ -67,7 +67,7 @@
   },
   {
     "i": 11,
-    "segment": "ambient_drift",
+    "segment": "contrast_pair",
     "narration": "Mild steel sits around 400 to 550 megapascals. High-strength steel alloys reach 760 to 1400 megapascals.",
     "seconds": 10.384
   },
@@ -181,7 +181,7 @@
   },
   {
     "i": 30,
-    "segment": "text_beat",
+    "segment": "process_steps",
     "narration": "A specimen annealed at 700 degrees Celsius will have different grain size and dislocation density than one annealed at 900 degrees Celsius, and the strength will differ accordingly.",
     "seconds": 11.418666666666667
   },
@@ -247,7 +247,7 @@
   },
   {
     "i": 41,
-    "segment": "ambient_drift",
+    "segment": "definition_card",
     "narration": "The gap between them is ductility, the ability to deform before breaking.",
     "seconds": 4.944
   },
@@ -265,7 +265,7 @@
   },
   {
     "i": 44,
-    "segment": "ambient_drift",
+    "segment": "definition_card",
     "narration": "A ductile material gives warning before it breaks. A brittle material does not.",
     "seconds": 5.456
   },
@@ -319,7 +319,7 @@
   },
   {
     "i": 53,
-    "segment": "ambient_drift",
+    "segment": "evidence_chain",
     "narration": "A machined surface with tool marks concentrates stress and lowers fatigue life.",
     "seconds": 5.189333333333333
   },
@@ -337,7 +337,7 @@
   },
   {
     "i": 56,
-    "segment": "ambient_drift",
+    "segment": "evidence_chain",
     "narration": "It is a system property that depends on geometry, loading history, and environment as much as on the material itself.",
     "seconds": 7.1306666666666665
   },
@@ -385,7 +385,7 @@
   },
   {
     "i": 64,
-    "segment": "text_beat",
+    "segment": "contrast_pair",
     "narration": "Titanium's corrosion resistance is not absolute. Hydrochloric acid and hydrofluoric acid attack it.",
     "seconds": 6.789333333333333
   },
@@ -427,7 +427,7 @@
   },
   {
     "i": 71,
-    "segment": "thermal_ascent",
+    "segment": "ambient_drift",
     "narration": "These are used in the last stages of jet engine compressors, where titanium alloys would oxidize and aluminum would melt.",
     "seconds": 7.336
   },

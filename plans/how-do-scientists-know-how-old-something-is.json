@@ -860,11 +860,205 @@
   },
   {
     "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Coral skeletons record centuries in calcium carbonate",
+    "narration": "Deep-sea corals grow slowly \u2014 some species add less than one millimeter per year \u2014 and their skeletons preserve a chemical record of the water they grew in.",
+    "args": {
+      "variant": 4
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Coral skeletons record centuries in calcium carbonate",
+    "narration": "The calcium carbonate they deposit incorporates trace amounts of uranium but excludes thorium when it forms.",
+    "args": {
+      "lines": [
+        "The calcium carbonate they",
+        "deposit incorporates trace amounts",
+        "of uranium"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.86,
+    "heading": "Coral skeletons record centuries in calcium carbonate",
+    "narration": "That makes them suitable for uranium-thorium dating, which works for material up to about six hundred thousand years old.",
+    "args": {
+      "variant": 0
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.03,
+    "heading": "Coral skeletons record centuries in calcium carbonate",
+    "narration": "The method measures the ratio of thorium-230, a decay product of uranium-234, to the uranium still present.",
+    "args": {
+      "variant": 1
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Coral skeletons record centuries in calcium carbonate",
+    "narration": "Because the coral starts with uranium and no thorium, the amount of thorium-230 tells you how long the coral has been growing.",
+    "args": {
+      "lines": [
+        "Because the coral starts",
+        "with uranium and no",
+        "thorium"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Coral skeletons record centuries in calcium carbonate",
+    "narration": "Deep-sea corals dated this way have reached ages exceeding four thousand years, confirmed by counting growth bands where visible and by radiocarbon dating of the youngest layers.",
+    "args": {
+      "variant": 2
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Coral skeletons record centuries in calcium carbonate",
+    "narration": "Corals also record radiocarbon from the seawater. Deep water is older than surface water \u2014 it last exchanged carbon with the atmosphere centuries ago \u2014 so deep-sea corals incorporate carbon-14 that is already depleted.",
+    "args": {
+      "variant": 3
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Coral skeletons record centuries in calcium carbonate",
+    "narration": "The apparent radiocarbon age is older than the true age. Correcting for this reservoir effect requires knowing the radiocarbon content of the water, which varies by depth and location.",
+    "args": {
+      "lines": [
+        "The apparent radiocarbon age",
+        "is older than the",
+        "true age."
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.69,
+    "heading": "Coral skeletons record centuries in calcium carbonate",
+    "narration": "Uranium-thorium dating provides the true age, and the difference reveals the reservoir age of the water mass the coral grew in.",
+    "args": {
+      "variant": 4
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.38,
+    "heading": "Sediment cores cross-check isotope stages against orbital cycles",
+    "narration": "Oxygen isotope ratios in foraminifera shells track the volume of ice on land.",
+    "args": {
+      "variant": 0
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "Sediment cores cross-check isotope stages against orbital cycles",
+    "narration": "When ice sheets grow, they lock up water depleted in oxygen-18, leaving the ocean enriched.",
+    "args": {
+      "lines": [
+        "When ice sheets grow,",
+        "they lock up water",
+        "depleted"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Sediment cores cross-check isotope stages against orbital cycles",
+    "narration": "Foraminifera incorporate that enriched oxygen into their calcium carbonate shells. The ratio of oxygen-18 to oxygen-16 in a sediment core therefore records glacial and interglacial cycles.",
+    "args": {
+      "variant": 1
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Sediment cores cross-check isotope stages against orbital cycles",
+    "narration": "These cycles have been numbered \u2014 Marine Isotope Stage 1 is the current interglacial, Stage 2 is the last glacial maximum, and so on back to Stage 104, about two point six million years ago.",
+    "args": {
+      "variant": 2
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Sediment cores cross-check isotope stages against orbital cycles",
+    "narration": "The timing of these stages has been calibrated by radiometric dating of volcanic ash layers, by counting annual layers in ice cores, and by matching the cycles to orbital variations calculated from celestial mechanics.",
+    "args": {
+      "lines": [
+        "The timing of these",
+        "stages has been calibrated",
+        "by radiometric"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.62,
+    "heading": "Sediment cores cross-check isotope stages against orbital cycles",
+    "narration": "Earth's orbit changes shape, its axial tilt varies, and its axis precesses, all on predictable timescales.",
+    "args": {
+      "variant": 3
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.03,
+    "heading": "Sediment cores cross-check isotope stages against orbital cycles",
+    "narration": "These Milankovitch cycles affect how much sunlight reaches different latitudes in different seasons, which drives glacial cycles.",
+    "args": {
+      "variant": 4
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Sediment cores cross-check isotope stages against orbital cycles",
+    "narration": "The match between the calculated orbital cycles and the measured isotope cycles, first demonstrated in a 1976 paper by Hays, Imbrie, and Shackleton in *Science*, confirmed that orbital forcing paces ice ages and that the sediment record extends back reliably for hundreds of thousands of years.",
+    "args": {
+      "lines": [
+        "The match between the",
+        "calculated orbital cycles and",
+        "the measured"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
     "seconds": 8.69,
     "heading": "Closing",
     "narration": "Age is not a property. It is a calculation. The calculation depends on a measurement, a known rate, and stated assumptions.",
     "args": {
-      "variant": 4
+      "variant": 0
     },
     "from": "heuristic"
   },

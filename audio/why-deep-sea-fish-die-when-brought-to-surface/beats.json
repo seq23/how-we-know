@@ -451,20 +451,92 @@
   },
   {
     "i": 75,
-    "segment": "ambient_drift",
-    "narration": "A deep sea fish dies at the surface because its body is a solution to a problem that no longer exists.",
-    "seconds": 5.754666666666667
+    "segment": "definition_card",
+    "narration": "Every cell in a deep sea fish is wrapped in a lipid bilayer membrane that must remain fluid enough to function but stable enough to hold its shape.",
+    "seconds": 8.826666666666666
   },
   {
     "i": 76,
     "segment": "text_beat",
-    "narration": "The pressure that shaped every cell, every membrane, every gas-filled space is gone.",
-    "seconds": 5.509333333333333
+    "narration": "At high pressure, membranes tend to compress and become more rigid. Deep sea organisms compensate by altering their membrane lipid composition \u2014 increasing the proportion of unsaturated fatty acids, which remain fluid under compression.",
+    "seconds": 14.522666666666666
   },
   {
     "i": 77,
+    "segment": "definition_card",
+    "narration": "The Monterey Bay Aquarium Research Institute reports that this adaptation is so finely tuned that a pressure change of even fifty atmospheres can push membrane fluidity outside its functional range.",
+    "seconds": 11.941333333333333
+  },
+  {
+    "i": 78,
+    "segment": "evidence_chain",
+    "narration": "When pressure drops suddenly, these membranes become too fluid. Ion channels that regulate sodium, potassium and calcium leak.",
+    "seconds": 8.453333333333333
+  },
+  {
+    "i": 79,
     "segment": "text_beat",
+    "narration": "The electrical gradients that drive nerve signals and muscle contractions collapse. Cells lose the ability to maintain their internal chemistry distinct from the surrounding fluid.",
+    "seconds": 10.416
+  },
+  {
+    "i": 80,
+    "segment": "evidence_chain",
+    "narration": "This is not a mechanical rupture \u2014 it is a regulatory failure.",
+    "seconds": 4.1546666666666665
+  },
+  {
+    "i": 81,
+    "segment": "text_beat",
+    "narration": "The cell is still intact, but it can no longer function as a bounded system.",
+    "seconds": 4.677333333333333
+  },
+  {
+    "i": 82,
+    "segment": "text_beat",
+    "narration": "Proteins fold into three-dimensional shapes determined by weak bonds \u2014 hydrogen bonds, van der Waals forces, hydrophobic interactions.",
+    "seconds": 9.445333333333334
+  },
+  {
+    "i": 83,
+    "segment": "ambient_drift",
+    "narration": "Pressure affects all of these. A protein that folds correctly at four hundred atmospheres may misfold at one atmosphere.",
+    "seconds": 7.1626666666666665
+  },
+  {
+    "i": 84,
+    "segment": "text_beat",
+    "narration": "Woods Hole Oceanographic Institution notes that deep sea enzymes often have amino acid sequences that differ from their shallow-water counterparts in ways that stabilize the folded structure under high pressure.",
+    "seconds": 12.538666666666666
+  },
+  {
+    "i": 85,
+    "segment": "text_beat",
+    "narration": "Remove that pressure and the protein unfolds or aggregates. Enzymes lose catalytic activity.",
+    "seconds": 6.330666666666667
+  },
+  {
+    "i": 86,
+    "segment": "ambient_drift",
+    "narration": "Structural proteins lose mechanical strength. The biochemistry of the cell stops working not because the molecules are destroyed, but because they are no longer in the shape that makes them functional.",
+    "seconds": 11.664
+  },
+  {
+    "i": 87,
+    "segment": "text_beat",
+    "narration": "A deep sea fish dies at the surface because its body is a solution to a problem that no longer exists.",
+    "seconds": 7.013333333333334
+  },
+  {
+    "i": 88,
+    "segment": "text_beat",
+    "narration": "The pressure that shaped every cell, every membrane, every gas-filled space is gone.",
+    "seconds": 5.488
+  },
+  {
+    "i": 89,
+    "segment": "ambient_drift",
     "narration": "What remains is a structure without its context \u2014 an answer to a question the surface does not ask.",
-    "seconds": 6.725333333333333
+    "seconds": 7.301333333333333
   }
 ]

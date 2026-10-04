@@ -19,7 +19,7 @@
   },
   {
     "i": 3,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "At 8,336 meters, the camera recorded a single juvenile snailfish swimming through the illuminated area.",
     "seconds": 7.322666666666667
   },
@@ -43,7 +43,7 @@
   },
   {
     "i": 7,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "Those specimens hold the capture record. Headlines often combine the two achievements.",
     "seconds": 5.210666666666667
   },
@@ -121,7 +121,7 @@
   },
   {
     "i": 20,
-    "segment": "ambient_drift",
+    "segment": "species_image",
     "narration": "Snailfish feed on small trench animals and may exploit locally concentrated prey.",
     "seconds": 6.042666666666666
   },
@@ -145,7 +145,7 @@
   },
   {
     "i": 24,
-    "segment": "text_beat",
+    "segment": "species_image",
     "narration": "The open loop is the boundary: if Challenger Deep is roughly 10,935 meters, why does the fish record stop more than two and a half kilometers above it?",
     "seconds": 10.597333333333333
   },
@@ -308,43 +308,49 @@
   {
     "i": 51,
     "segment": "text_beat",
-    "narration": "Watch the screen split into FILMED and CAUGHT.",
+    "narration": "Split the screen into FILMED and CAUGHT.",
     "seconds": 2.48
   },
   {
     "i": 52,
     "segment": "checklist_reveal",
-    "narration": "The depth, the trench, and the evidence type all stay visible throughout, and the proposed physiological boundary around 8,200-8,400 meters shows up as a shaded range, not a brick wall. Read it as a record audit, not a countdown.",
+    "narration": "Keep the depth, trench, and evidence type visible. Then show the proposed physiological boundary around 8,200\u20138,400 meters as a shaded range, not a brick wall.",
     "seconds": 11.728
   },
   {
     "i": 53,
-    "segment": "timeline",
-    "narration": "The 8,336-meter animal was probably a known snailfish or a new endemic species because no physical specimen was taken.",
+    "segment": "text_beat",
+    "narration": "This turns the episode into a record audit rather than a simple countdown.",
     "seconds": 4.378666666666667
   },
   {
     "i": 54,
-    "segment": "text_beat",
-    "narration": "A 1970 cusk-eel trawl reached deeper, but NOAA notes uncertainty about where in the trawl path the fish was caught.",
+    "segment": "timeline",
+    "narration": "The 8,336-meter animal was probably a known snailfish or a new endemic species because no physical specimen was taken.",
     "seconds": 9.264
   },
   {
     "i": 55,
-    "segment": "timeline",
-    "narration": "Research suggests a fish depth boundary around 8,200\u20138,400 meters, but a future observation could refine the range.",
+    "segment": "text_beat",
+    "narration": "A 1970 cusk-eel trawl reached deeper, but NOAA notes uncertainty about where in the trawl path the fish was caught.",
     "seconds": 7.642666666666667
   },
   {
     "i": 56,
-    "segment": "depth_descent",
-    "narration": "The deepest-fish record is not one number. It is a chain of evidence: depth, camera, specimen, trench, and identification.",
+    "segment": "timeline",
+    "narration": "Research suggests a fish depth boundary around 8,200\u20138,400 meters, but a future observation could refine the range.",
     "seconds": 7.930666666666666
   },
   {
     "i": 57,
+    "segment": "depth_descent",
+    "narration": "The deepest-fish record is not one number. It is a chain of evidence: depth, camera, specimen, trench, and identification.",
+    "seconds": 8.4
+  },
+  {
+    "i": 58,
     "segment": "text_beat",
     "narration": "Keeping those pieces separate makes the record more credible\u2014and makes the remaining kilometer to Challenger Deep even more biologically interesting.",
-    "seconds": 8.4
+    "seconds": 8.037333333333333
   }
 ]

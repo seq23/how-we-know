@@ -314,43 +314,49 @@
   {
     "i": 52,
     "segment": "anatomy_callout",
-    "narration": "Watch the same whale silhouette change across years in a time-lapse, with each phase labeled on screen \u2014 not every whale fall runs on the same exact clock, and this doesn't pretend it does.",
+    "narration": "Use a time-lapse structure with the same whale silhouette changing across years.",
     "seconds": 4.976
   },
   {
     "i": 53,
     "segment": "text_beat",
-    "narration": "The succession is shown through original diagrams rather than documentary footage; any real whale-fall clip that does appear has its own license cleared and credited.",
+    "narration": "Keep the phases on screen and avoid pretending that every whale fall follows the same exact clock.",
     "seconds": 5.221333333333333
   },
   {
     "i": 54,
-    "segment": "ambient_drift",
-    "narration": "Stage names and time ranges are simplified models.",
+    "segment": "anatomy_callout",
+    "narration": "Original diagrams can show the succession without using copyrighted documentary footage. If real whale-fall footage is added, its license must be admitted clip by clip.",
     "seconds": 10.810666666666666
   },
   {
     "i": 55,
-    "segment": "checklist_reveal",
-    "narration": "Duration depends on whale size, depth, temperature, oxygen, burial, scavenger access, and local community.",
+    "segment": "ambient_drift",
+    "narration": "Stage names and time ranges are simplified models.",
     "seconds": 2.736
   },
   {
     "i": 56,
-    "segment": "text_beat",
-    "narration": "The phases can overlap rather than switching cleanly. A whale fall supports a rich ecosystem, but it is not accurate to claim that every carcass produces the same species sequence or lasts the same number of years.",
+    "segment": "checklist_reveal",
+    "narration": "Duration depends on whale size, depth, temperature, oxygen, burial, scavenger access, and local community.",
     "seconds": 9.104
   },
   {
     "i": 57,
     "segment": "text_beat",
-    "narration": "A whale fall is not one feeding event. It is ecological succession written across flesh, sediment, and bone.",
+    "narration": "The phases can overlap rather than switching cleanly. A whale fall supports a rich ecosystem, but it is not accurate to claim that every carcass produces the same species sequence or lasts the same number of years.",
     "seconds": 13.082666666666666
   },
   {
     "i": 58,
+    "segment": "text_beat",
+    "narration": "A whale fall is not one feeding event. It is ecological succession written across flesh, sediment, and bone.",
+    "seconds": 7.152
+  },
+  {
+    "i": 59,
     "segment": "ambient_drift",
     "narration": "By the time the skeleton becomes the main energy source, the animal has been gone for years and the ecosystem it created is still working.",
-    "seconds": 7.152
+    "seconds": 7.429333333333333
   }
 ]
