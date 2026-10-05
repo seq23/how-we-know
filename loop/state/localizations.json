@@ -774,34 +774,75 @@
       "default_language": "en",
       "en_title": "How do scientists know so much about the deep ocean when we've explored so little of it?",
       "source_hash": "e1ac796a70943ec0277b4c5755032333",
-      "applied_at": "2026-10-04T16:18:07+00:00"
-    }
-  },
-  "updated": "2026-10-04T16:18:07+00:00",
-  "blocked": {
+      "applied_at": "2026-10-05T15:12:01+00:00"
+    },
     "T6XeND2qM4k": {
       "slug": "how-do-scientists-know-how-old-something-is",
-      "reason": "QUOTA_DEFERRED",
-      "since": "2026-10-04T16:17:14+00:00",
-      "missing": [
+      "languages": [
         "de",
         "es",
         "hi",
         "id",
         "pt-BR"
-      ]
+      ],
+      "all_languages": [
+        "de",
+        "en",
+        "es",
+        "hi",
+        "id",
+        "pt-BR"
+      ],
+      "default_language": "en",
+      "en_title": "How do scientists know how old something is?",
+      "source_hash": "48f9baf083e7f3fd792720d2faa5df03",
+      "applied_at": "2026-10-05T15:12:49+00:00"
     },
     "Z-Z1FNVQXW0": {
       "slug": "how-do-scientists-know-about-other-galaxies",
-      "reason": "QUOTA_DEFERRED",
-      "since": "2026-10-04T16:17:14+00:00",
-      "missing": [
+      "languages": [
         "de",
         "es",
         "hi",
         "id",
         "pt-BR"
-      ]
+      ],
+      "all_languages": [
+        "de",
+        "en",
+        "es",
+        "hi",
+        "id",
+        "pt-BR"
+      ],
+      "default_language": "en",
+      "en_title": "How do scientists know about other galaxies?",
+      "source_hash": "f44981701208d9750e8073de757e915d",
+      "applied_at": "2026-10-05T15:13:42+00:00"
+    },
+    "qECmixjkDDU": {
+      "slug": "why-deep-sea-fish-die-when-brought-to-surface",
+      "languages": [
+        "de",
+        "es",
+        "hi",
+        "id",
+        "pt-BR"
+      ],
+      "all_languages": [
+        "de",
+        "en",
+        "es",
+        "hi",
+        "id",
+        "pt-BR"
+      ],
+      "default_language": "en",
+      "en_title": "Why deep sea fish die when brought to surface?",
+      "source_hash": "51cb748c2c948ea8a5b355feecce2c8d",
+      "applied_at": "2026-10-05T15:14:39+00:00"
     }
-  }
+  },
+  "updated": "2026-10-05T15:14:39+00:00",
+  "blocked": {}
 }
