@@ -141,7 +141,7 @@
       "track_kind": "standard",
       "source": "inserted",
       "recorded_at": "2026-09-03T17:28:10+00:00",
-      "verified_at": "2026-09-21T15:09:53+00:00"
+      "verified_at": "2026-10-05T15:11:48+00:00"
     },
     "l6HwRYGo-Nw": {
       "slug": "16-what-happens-when-a-whale-dies-in-the-deep-ocean",
@@ -152,7 +152,7 @@
       "track_kind": "standard",
       "source": "inserted",
       "recorded_at": "2026-09-03T17:28:11+00:00",
-      "verified_at": "2026-09-22T15:10:41+00:00"
+      "verified_at": "2026-10-05T15:11:49+00:00"
     },
     "EFimztjj_j8": {
       "slug": "13-how-does-bioluminescence-work-in-the-deep-sea",
@@ -283,7 +283,7 @@
       "track_kind": "standard",
       "source": "inserted",
       "recorded_at": "2026-09-09T15:09:43+00:00",
-      "verified_at": "2026-09-21T15:09:54+00:00"
+      "verified_at": "2026-10-05T15:11:48+00:00"
     },
     "7tdvXATeeng": {
       "slug": "why-does-old-iron-not-rust",
@@ -383,29 +383,50 @@
       "source": "inserted",
       "recorded_at": "2026-09-16T15:09:58+00:00",
       "verified_at": "2026-09-30T15:12:39+00:00"
-    }
-  },
-  "blocked": {
+    },
     "zs-gueHeX8k": {
       "slug": "how-do-scientists-know-so-much",
-      "reason": "QUOTA_DEFERRED",
-      "since": "2026-10-04T16:17:12+00:00",
-      "sha256": "e4da2e3be44755ae9c8bf7fc47d41acdb9e7b29887b05bfb6ba9dc50da12b4b4"
+      "caption_id": "AUieDaaryCbONOsaSCzR027U0BedpoBLBZwZxahYGPetY35Y6mOWM_D_",
+      "language": "en",
+      "srt_sha256": "e4da2e3be44755ae9c8bf7fc47d41acdb9e7b29887b05bfb6ba9dc50da12b4b4",
+      "cues": 164,
+      "track_kind": "standard",
+      "source": "inserted",
+      "recorded_at": "2026-10-05T15:11:45+00:00"
     },
     "T6XeND2qM4k": {
       "slug": "how-do-scientists-know-how-old-something-is",
-      "reason": "QUOTA_DEFERRED",
-      "since": "2026-10-04T16:17:12+00:00",
-      "sha256": "7600bcf400a6c6917ff3a395b953ad26c2dda5709ee29c9b30d9c02eb5095c81"
+      "caption_id": "AUieDaYTeJ6hsYkvakM1OjhJU8R7qOzktxifM0SRagaQRwLjv1rgXVQQ",
+      "language": "en",
+      "srt_sha256": "7600bcf400a6c6917ff3a395b953ad26c2dda5709ee29c9b30d9c02eb5095c81",
+      "cues": 160,
+      "track_kind": "standard",
+      "source": "inserted",
+      "recorded_at": "2026-10-05T15:11:46+00:00"
     },
     "Z-Z1FNVQXW0": {
       "slug": "how-do-scientists-know-about-other-galaxies",
-      "reason": "QUOTA_DEFERRED",
-      "since": "2026-10-04T16:17:12+00:00",
-      "sha256": "6c4c67cde19c272156221561fc47a7a70b206b894763fec4c242eab85b25b643"
+      "caption_id": "AUieDabSMcO9n3K5FLbtT4KFGHv03o3dcaYzxVeug39VK4sQwgA3amQB",
+      "language": "en",
+      "srt_sha256": "6c4c67cde19c272156221561fc47a7a70b206b894763fec4c242eab85b25b643",
+      "cues": 210,
+      "track_kind": "standard",
+      "source": "inserted",
+      "recorded_at": "2026-10-05T15:11:47+00:00"
+    },
+    "qECmixjkDDU": {
+      "slug": "why-deep-sea-fish-die-when-brought-to-surface",
+      "caption_id": "AUieDaaOxe5df37iOqkzy7ujaylDYiXGnYlA_4OXLMb8j0yrHpdi3VqZ",
+      "language": "en",
+      "srt_sha256": "d0d0663937918dff5a4310e342ed21bc66eb0b3a0e7f95558056426da8b50ca3",
+      "cues": 157,
+      "track_kind": "standard",
+      "source": "inserted",
+      "recorded_at": "2026-10-05T15:11:48+00:00"
     }
   },
-  "updated": "2026-10-04T16:17:12+00:00",
+  "blocked": {},
+  "updated": "2026-10-05T15:11:49+00:00",
   "token_scopes": [],
   "token_has_force_ssl": true
 }
