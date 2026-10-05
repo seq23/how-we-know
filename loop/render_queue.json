@@ -1,12 +1,12 @@
 {
-  "week": "2026-W40",
-  "generated": "2026-09-28T10:12:51+00:00",
+  "week": "2026-W41",
+  "generated": "2026-10-05T10:13:37+00:00",
   "videos_per_week": 4,
   "breaker": "closed",
   "validators": [
     {
       "validator": "V1 directive-truth",
-      "examined": 465,
+      "examined": 477,
       "status": "PASS",
       "failures": [],
       "notes": [
@@ -54,7 +54,8 @@
       "status": "PASS",
       "failures": [],
       "notes": [
-        "how-do-scientists-know-so-much: narration names Census of Marine Life with no matching ## Sources entry"
+        "how-do-scientists-know-so-much: narration names Woods Hole Oceanographic Institution, Census of Marine Life with no matching ## Sources entry",
+        "how-do-scientists-know-how-old-something-is: narration names Science with no matching ## Sources entry"
       ],
       "stops": []
     },
@@ -68,11 +69,11 @@
     },
     {
       "validator": "V8 source-urls",
-      "examined": 5,
-      "status": "PASS",
+      "examined": 0,
+      "status": "N/A(nothing generated)",
       "failures": [],
       "notes": [
-        "why-deep-sea-fish-die-when-brought-to-surface: https://ocean.si.edu/ecosystems/deep-sea/deep-sea returned 403 (bot-blocked, treated as reachable)"
+        "no generated scripts this week; nothing to fetch"
       ],
       "stops": []
     },
@@ -152,13 +153,13 @@
       "status": "PASS",
       "failures": [],
       "notes": [
-        "21 episode(s) dated through 2026-11-06; 2 domain(s) allocating on disjoint days {'deep-sea-ocean-science': (1, 6), 'materials-and-manufacturing': (0, 4)} at 4/week"
+        "20 episode(s) dated through 2026-11-06; 2 domain(s) allocating on disjoint days {'deep-sea-ocean-science': (1, 6), 'materials-and-manufacturing': (0, 4)} at 4/week"
       ],
       "stops": []
     },
     {
       "validator": "V21 no-boilerplate",
-      "examined": 44,
+      "examined": 45,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -166,7 +167,7 @@
     },
     {
       "validator": "V22 producer-notes-second-person",
-      "examined": 44,
+      "examined": 45,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -174,7 +175,7 @@
     },
     {
       "validator": "V23 chapters-yt-compliant",
-      "examined": 44,
+      "examined": 45,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -200,7 +201,7 @@
     },
     {
       "validator": "V27 lanes-see-domains",
-      "examined": 45,
+      "examined": 46,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -208,7 +209,7 @@
     },
     {
       "validator": "V28 lane-interpreters",
-      "examined": 30,
+      "examined": 31,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -224,7 +225,7 @@
     },
     {
       "validator": "V30 cloud-visibility",
-      "examined": 262,
+      "examined": 271,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -242,7 +243,7 @@
     },
     {
       "validator": "V32 scheduled-pov",
-      "examined": 22,
+      "examined": 21,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -250,11 +251,11 @@
     },
     {
       "validator": "V40 pov-assignment-integrity",
-      "examined": 43,
+      "examined": 44,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "43 assignment(s) agree with pov/pov-bank.json on the line, its tier and its domain, and no line is used twice"
+        "44 assignment(s) agree with pov/pov-bank.json on the line, its tier and its domain, and no line is used twice"
       ],
       "stops": []
     },
@@ -284,7 +285,7 @@
     },
     {
       "validator": "V36 editorial-gate",
-      "examined": 353,
+      "examined": 361,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -300,7 +301,7 @@
     },
     {
       "validator": "V38 no-duplicate-airing",
-      "examined": 37,
+      "examined": 40,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -326,7 +327,7 @@
     },
     {
       "validator": "V43 distinct-questions",
-      "examined": 21,
+      "examined": 15,
       "status": "PASS",
       "failures": [],
       "notes": [
@@ -344,12 +345,20 @@
     },
     {
       "validator": "V45 nothing-waits-on-owner",
-      "examined": 135,
+      "examined": 140,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "stop kinds by class: automated 40, automated/error 1, error 77, owner_secret 17"
+        "stop kinds by class: automated 43, automated/error 1, error 79, owner_secret 17"
       ],
+      "stops": []
+    },
+    {
+      "validator": "V46 shorts-handoff",
+      "examined": 52,
+      "status": "PASS",
+      "failures": [],
+      "notes": [],
       "stops": []
     }
   ],
@@ -366,40 +375,40 @@
     "why": "configured default (4/week)"
   },
   "runway": {
-    "unpublished_scripts": 11,
-    "publishable": 4,
-    "scheduled_not_yet_aired": 20,
+    "unpublished_scripts": 8,
+    "publishable": 1,
+    "scheduled_not_yet_aired": 19,
     "basis": "publish queue",
     "videos_per_week": 4,
-    "weeks_remaining": 6.0,
+    "weeks_remaining": 5.0,
     "warn_below_weeks": 4.0,
     "critical_below_weeks": 2.0,
     "level": "ok",
     "by_domain": {
       "deep-sea-ocean-science": {
         "slots_per_week": 2,
-        "queued": 10,
-        "scheduled_ahead": 8,
-        "weeks": 9.0,
+        "queued": 7,
+        "scheduled_ahead": 9,
+        "weeks": 8.0,
         "level": "ok",
-        "message": "deep-sea-ocean-science: 9.0 week(s) at 2/week (10 queued, 8 already dated)"
+        "message": "deep-sea-ocean-science: 8.0 week(s) at 2/week (7 queued, 9 already dated)"
       },
       "materials-and-manufacturing": {
         "slots_per_week": 2,
         "queued": 7,
-        "scheduled_ahead": 12,
-        "weeks": 9.5,
+        "scheduled_ahead": 10,
+        "weeks": 8.5,
         "level": "ok",
-        "message": "materials-and-manufacturing: 9.5 week(s) at 2/week (7 queued, 12 already dated)"
+        "message": "materials-and-manufacturing: 8.5 week(s) at 2/week (7 queued, 10 already dated)"
       }
     },
     "short_domains": [],
     "never_go_dark": true,
-    "message": "6.0 weeks of queue at 4/week (4 publishable of 11 on disk). By domain: deep-sea-ocean-science: 9.0 week(s) at 2/week (10 queued, 8 already dated); materials-and-manufacturing: 9.5 week(s) at 2/week (7 queued, 12 already dated)."
+    "message": "5.0 weeks of queue at 4/week (1 publishable of 8 on disk). By domain: deep-sea-ocean-science: 8.0 week(s) at 2/week (7 queued, 9 already dated); materials-and-manufacturing: 8.5 week(s) at 2/week (7 queued, 10 already dated)."
   },
   "authoring": {
-    "generated_this_week": 1,
-    "cost_usd": 0.063978,
+    "generated_this_week": 0,
+    "cost_usd": 0.0,
     "model": "anthropic/claude-sonnet-4.5"
   },
   "items": [
@@ -422,17 +431,22 @@
       "status": "queued",
       "pov_bank_line": "'Scientists say' is almost meaningless on its own. Which scientists? How many? Was it one paper? Was it replicated?",
       "pov_script_line": "'Scientists say' is almost meaningless on its own. Which scientists? How many? Was it one paper? Was it replicated?",
-      "source_count": 5,
+      "source_count": 8,
       "sources_cited": [
         "NOAA",
         "NOAA Ocean Exploration",
+        "Woods Hole Oceanographic Institution",
+        "Woods Hole",
+        "Smithsonian",
+        "USGS",
         "Ocean Census",
         "Census of Marine Life"
       ],
       "attribution_gaps": [
+        "Woods Hole Oceanographic Institution",
         "Census of Marine Life"
       ],
-      "planned_beats": 75
+      "planned_beats": 89
     },
     {
       "slug": "how-do-scientists-know-how-old-something-is",
@@ -453,10 +467,14 @@
       "status": "queued",
       "pov_bank_line": "I'm not anti-science. I'm against using science as a magic authority word that means nobody has to show their work.",
       "pov_script_line": "I'm not anti-science. I'm against using science as a magic authority word that means nobody has to show their work.",
-      "source_count": 4,
-      "sources_cited": [],
-      "attribution_gaps": [],
-      "planned_beats": 80
+      "source_count": 8,
+      "sources_cited": [
+        "Science"
+      ],
+      "attribution_gaps": [
+        "Science"
+      ],
+      "planned_beats": 97
     },
     {
       "slug": "how-do-scientists-know-about-other-galaxies",
@@ -477,44 +495,46 @@
       "status": "queued",
       "pov_bank_line": "Science is a process. It is not a person behind a curtain handing down permanent answers.",
       "pov_script_line": "Science is a process. It is not a person behind a curtain handing down permanent answers.",
-      "source_count": 5,
+      "source_count": 7,
       "sources_cited": [
         "NASA",
         "Science"
       ],
       "attribution_gaps": [],
-      "planned_beats": 74
+      "planned_beats": 94
     },
     {
       "slug": "why-deep-sea-fish-die-when-brought-to-surface",
-      "question": "why deep sea fish die when brought to surface",
+      "question": "Why do deep sea fish die when brought to the surface?",
       "script": "scripts/why-deep-sea-fish-die-when-brought-to-surface.md",
-      "generated": true,
-      "author_cost_usd": 0.063978,
-      "author_model": "anthropic/claude-sonnet-4.5",
-      "pov_id": "pov-001",
-      "pov_line": "When I picture the deep ocean I don't see blue water or fish. I see black. A massive amount of black space where you can't tell what's beside you or beneath you.",
-      "pov_tier": "specific",
-      "pov_matched_by": "tag:scale score 2.8",
+      "generated": false,
+      "author_cost_usd": null,
+      "author_model": null,
+      "pov_id": "pov-138",
+      "pov_line": "I'd want to stop if this channel began rewarding certainty more than truth \u2014 selecting evidence to protect the brand, repeating numbers because they performed well, turning unresolved questions into clean stories. The moment it can't correct itself without treating correction as humiliation, it has become the thing it was built to expose.",
+      "pov_tier": "transferable",
+      "pov_matched_by": "hand assignment in pov/pov-assignments.json",
       "work_copy": "loop/work/why-deep-sea-fish-die-when-brought-to-surface.md",
       "audio_dir": "audio/why-deep-sea-fish-die-when-brought-to-surface",
       "plan": "loop/plans/why-deep-sea-fish-die-when-brought-to-surface.json",
       "render": "renders/why-deep-sea-fish-die-when-brought-to-surface.mp4",
-      "source": "publish-queue",
+      "source": "authored-inventory",
       "status": "queued",
-      "pov_bank_line": "When I picture the deep ocean I don't see blue water or fish. I see black. A massive amount of black space where you can't tell what's beside you or beneath you.",
-      "pov_script_line": "When I picture the deep ocean I don't see blue water or fish. I see black. A massive amount of black space where you can't tell what's beside you or beneath you.",
-      "source_count": 5,
+      "pov_bank_line": "I'd want to stop if this channel began rewarding certainty more than truth \u2014 selecting evidence to protect the brand, repeating numbers because they performed well, turning unresolved questions into clean stories. The moment it can't correct itself without treating correction as humiliation, it has become the thing it was built to expose.",
+      "pov_script_line": "I'd want to stop if this channel began rewarding certainty more than truth \u2014 selecting evidence to protect the brand, repeating numbers because they performed well, turning unresolved questions into clean stories. The moment it can't correct itself without treating correction as humiliation, it has become the thing it was built to expose.",
+      "source_count": 7,
       "sources_cited": [
         "NOAA",
         "NOAA Ocean Exploration",
+        "Woods Hole Oceanographic Institution",
+        "Woods Hole",
         "Smithsonian",
         "Smithsonian Ocean",
         "Monterey Bay Aquarium Research Institute",
         "Guinness World Records"
       ],
       "attribution_gaps": [],
-      "planned_beats": 78
+      "planned_beats": 90
     }
   ],
   "unauthored": []

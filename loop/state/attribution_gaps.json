@@ -1,11 +1,18 @@
 {
-  "checked": "2026-09-28T10:12:47+00:00",
-  "scripts_with_gaps": 1,
+  "checked": "2026-10-05T10:13:34+00:00",
+  "scripts_with_gaps": 2,
   "gaps": [
     {
       "slug": "how-do-scientists-know-so-much",
       "missing_from_sources": [
+        "Woods Hole Oceanographic Institution",
         "Census of Marine Life"
+      ]
+    },
+    {
+      "slug": "how-do-scientists-know-how-old-something-is",
+      "missing_from_sources": [
+        "Science"
       ]
     }
   ],
