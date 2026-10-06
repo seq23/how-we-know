@@ -600,6 +600,33 @@
         "applied_at": "2026-10-05T23:09:52+00:00",
         "result": "posted (Ugw2ngBycgVpfPQ9UiR4AaABAg)"
       }
+    },
+    "UgwseuV_krcY9sGCAxd4AaABAg": {
+      "comment_id": "UgwseuV_krcY9sGCAxd4AaABAg",
+      "video_id": "ibVKSYTdhek",
+      "author": "@howweknowdeep",
+      "author_channel_id": "UC5vZFZc15DIM6IrFwFgAECg",
+      "text": "What is the deepest fish ever recorded? Full episode: https://youtu.be/OdYunlbB73g",
+      "published_at": "2026-10-06T23:10:05+00:00",
+      "like_count": 0,
+      "reply_count": 0,
+      "class": "own_channel",
+      "proposed_action": null,
+      "proposed_reply": null,
+      "product_note": null,
+      "seen_at": "2026-10-06T23:10:05+00:00",
+      "acted": {
+        "comment_id": "UgwseuV_krcY9sGCAxd4AaABAg",
+        "video_id": "ibVKSYTdhek",
+        "action": "channel_comment",
+        "reply_text": "What is the deepest fish ever recorded? Full episode: https://youtu.be/OdYunlbB73g",
+        "instructed_by": "owner",
+        "instructed_at": "2026-10-03",
+        "source": "loop/handoff: owner decision 2026-10-03",
+        "note": null,
+        "applied_at": "2026-10-06T23:10:05+00:00",
+        "result": "posted (UgwseuV_krcY9sGCAxd4AaABAg)"
+      }
     }
   },
   "instructions": {},
@@ -831,6 +858,18 @@
       "note": null,
       "applied_at": "2026-10-05T23:09:52+00:00",
       "result": "posted (Ugw2ngBycgVpfPQ9UiR4AaABAg)"
+    },
+    {
+      "comment_id": "UgwseuV_krcY9sGCAxd4AaABAg",
+      "video_id": "ibVKSYTdhek",
+      "action": "channel_comment",
+      "reply_text": "What is the deepest fish ever recorded? Full episode: https://youtu.be/OdYunlbB73g",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03",
+      "note": null,
+      "applied_at": "2026-10-06T23:10:05+00:00",
+      "result": "posted (UgwseuV_krcY9sGCAxd4AaABAg)"
     }
   ],
   "sweeps": [
@@ -1011,7 +1050,15 @@
       "instructed_by": "owner",
       "instructed_at": "2026-10-03",
       "source": "loop/handoff: owner decision 2026-10-03"
+    },
+    "ibVKSYTdhek": {
+      "comment_id": "UgwseuV_krcY9sGCAxd4AaABAg",
+      "text": "What is the deepest fish ever recorded? Full episode: https://youtu.be/OdYunlbB73g",
+      "posted_at": "2026-10-06T23:10:05+00:00",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03"
     }
   },
-  "updated": "2026-10-05T23:09:52+00:00"
+  "updated": "2026-10-06T23:10:05+00:00"
 }
