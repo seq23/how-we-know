@@ -13,6 +13,7 @@ permissions:
 
 jobs:
   test:
+    timeout-minutes: 8  # ~3x median 2.3m over 8 green runs; fault detector, not a budget
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

@@ -34,7 +34,7 @@ concurrency:
 jobs:
   digest:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 5  # was 15; ~4x median 0.4m over 6 green runs
     steps:
       - uses: actions/checkout@v4
         with:

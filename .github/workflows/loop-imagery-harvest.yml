@@ -45,7 +45,7 @@ concurrency:
 jobs:
   harvest:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 37  # was 60; ~4x median 4.2m over 5 green runs
     steps:
       - uses: actions/checkout@v4
         with:
