@@ -1,7 +1,7 @@
 {
   "stage": "handoff",
   "week": "2026-W41",
-  "at": "2026-10-08T14:15:16+00:00",
+  "at": "2026-10-08T23:09:41+00:00",
   "code": "HANDOFF_UP_TO_DATE",
   "message": "every public Short links to its episode, every public episode lists its Shorts, every public video is in its playlist (38 Short(s), 38 episode(s) examined; 0 Short(s) newly pending on an episode not yet public)",
   "detail": {
@@ -11,8 +11,8 @@
   },
   "unblock": "Nothing to do; this lane runs after every Shorts and upload lane run and acts the first time something new is public.",
   "disposition": "self_resolving",
-  "disposition_why": "Every public Short already opens with the link to its episode, every public episode lists its Shorts, and every public video is in its domain playlist. The hand-off lane (loop/handoff.py) is FINISHED, not blocked: it does real work again the first run after a Short or an episode goes public. Nothing was written and a re-run costs a few read units. (run 2 of at most 14 before this escalates to a human.)",
-  "consecutive": 2,
+  "disposition_why": "Every public Short already opens with the link to its episode, every public episode lists its Shorts, and every public video is in its domain playlist. The hand-off lane (loop/handoff.py) is FINISHED, not blocked: it does real work again the first run after a Short or an episode goes public. Nothing was written and a re-run costs a few read units. (run 3 of at most 14 before this escalates to a human.)",
+  "consecutive": 3,
   "held_items": [],
   "exit_code": 0,
   "work_done_before_stop": [],
