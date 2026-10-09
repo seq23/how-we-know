@@ -1,0 +1,36 @@
+{
+  "_what": "THE one config for affiliate links in NEW episode descriptions (loop/affiliates.py reads it; loop/upload.py build_payload places the block). Owner-approved build, 2026-10-08. Published videos are never re-described from here.",
+  "_ids_note": "Both IDs are deliberately EMPTY until the owner has accounts. Empty means every link is a plain store link with no tracking parameter at all. Paste the Amazon Associates tracking ID (looks like name-20) into amazon_associates_tag and/or the Bookshop.org affiliate ID into bookshop_affiliate_id; nothing else changes. Sign-up: https://affiliate-program.amazon.com/ and https://bookshop.org/affiliates",
+  "amazon_associates_tag": "",
+  "bookshop_affiliate_id": "",
+  "heading": "Books and references cited in this episode:",
+  "disclosure": "Disclosure: the links in this list may be affiliate links. If you buy through them, How We Know may earn a commission at no extra cost to you.",
+  "amazon_disclosure": "As an Amazon Associate, How We Know earns from qualifying purchases.",
+  "_items_note": "ONLY books and gear an episode already cites. An item is linked in an episode's description when one of its cited_as strings appears in that episode's ## Sources section - never by topic guess. bookshop_isbn13 is optional and left null unless verified: a wrong ISBN sends a viewer to the wrong book. Without it the item links to Amazon only.",
+  "items": [
+    {
+      "id": "aws-welding-handbook",
+      "label": "Welding Handbook (American Welding Society)",
+      "kind": "book",
+      "cited_as": ["American Welding Society: Welding Handbook"],
+      "amazon_search": "AWS Welding Handbook American Welding Society",
+      "bookshop_isbn13": null
+    },
+    {
+      "id": "asm-engineered-materials-handbook",
+      "label": "Engineered Materials Handbook: Composites (ASM International)",
+      "kind": "book",
+      "cited_as": ["ASM International: Engineered Materials Handbook"],
+      "amazon_search": "ASM Engineered Materials Handbook Composites",
+      "bookshop_isbn13": null
+    },
+    {
+      "id": "asm-handbook",
+      "label": "ASM Handbook (ASM International)",
+      "kind": "book",
+      "cited_as": ["ASM International: Alloy databases and handbooks"],
+      "amazon_search": "ASM Handbook ASM International",
+      "bookshop_isbn13": null
+    }
+  ]
+}

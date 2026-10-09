@@ -1040,3 +1040,36 @@ sent that viewer to a channel page, not to the episode it was cut from.
 a not-yet-public episode (reads "unavailable" for days). Inferring liveness from the
 ledger's publishAt in the lane (a cancelled schedule or a hold would mislead it; the
 validator, which cannot read YouTube, uses the airdate with a grace instead).
+
+## 2026-10-08 — deep-sea-led Shorts mix, curiosity titles, cited-book links (future uploads only)
+
+Owner-approved build after the channel audit: 25 subscribers, 58 videos, Shorts 93% of
+views, the deep-sea Shorts the only traction ("What is the midnight zone?" 1,110 views),
+generic question titles, nothing to buy or follow in any description. Nothing here edits a
+published video.
+
+1. **Shorts topic mix.** `loop/config.json shorts_topics.domain_mix` = deep sea 3,
+   materials 1 (8 of the last 12 Shorts were materials). `shorts_lane.order_by_mix`
+   orders the Shorts queue from the ledger's last 12 Shorts so each pick goes to the
+   domain furthest below its share; favoured terms (midnight zone, creatures, pressure,
+   trenches) lead within a domain. A preference, never a stall: if only materials is
+   ready, it airs. Long-form allocation stays 2/2 — six unwritten deep-sea topics cannot
+   carry three episodes a week.
+2. **Related episode.** A Short whose own episode is not public opens with
+   `Related episode: https://youtu.be/<id> — <live title>` (closest public same-domain
+   episode, one videos.list read); `handoff.short_description` swaps it for the Short's own
+   episode once that is live.
+3. **Titles.** `loop/titles.py`: subject first, every query word kept, the channel's
+   promise last ("The midnight zone — and how we know"); a script's own `## YouTube title`
+   (now asked for by `loop/author.py`) is used only if it keeps every search word, states
+   no number the script does not, is not a bare question and uses no clickbait. The site's
+   question records keep the exact query.
+4. **Affiliate links.** `channel/affiliates.json` is the one file; both IDs ship empty, so
+   links are plain until the owner fills one. Only books an episode's `## Sources` already
+   cites are linked (today: the AWS Welding Handbook and two ASM handbooks — no deep-sea
+   script cites a book or gear). FTC disclosure sits above the links.
+
+**Guard.** `loop/tests/test_titles_descriptions_topic_mix.py` (42 checks). Negative proof:
+with `pending()` returning queue order and the deficit pick inverted, 3 checks fail; restored, 0.
+
+**Not built (owner's call).** Email capture and a field guide — revisit at ~1,000 subscribers.

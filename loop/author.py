@@ -281,6 +281,15 @@ the twenty existing scripts and the pipeline parses it.
 **Word count:** <approximate>
 **Estimated narration:** <m>m <s>s at {wpm} WPM (measured, loop/durations.py)
 
+## YouTube title
+
+<ONE line of about 70 characters, NOT a question. Lead with the most specific,
+surprising TRUE thing from your Direct-answer lock; keep EVERY word of the
+question's subject so it still matches the search; end with "— and how we
+know". Any number in it must appear in the Direct-answer lock. Shape, for the
+question "what is the deepest fish ever recorded": "The deepest fish ever
+recorded was filmed 8,336 m down — and how we know". No clickbait words.>
+
 ## Direct-answer lock
 
 <One paragraph, 2-3 sentences, answering the question directly and completely.>

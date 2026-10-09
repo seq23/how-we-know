@@ -196,7 +196,9 @@ def upload_short(st, token: str, slug: str, question: str, path: Path,
     # otherwise the row is `handoff: pending` and loop/handoff.py finishes it.
     import handoff                                         # noqa: PLC0415
     episode_id = handoff.episode_link_for(token, slug)
-    payload = build_payload(slug, question, episode_video_id=episode_id)
+    related = None if episode_id else handoff.related_episode_for(token, slug)
+    payload = build_payload(slug, question, episode_video_id=episode_id,
+                            related=related)
     vid = up.resumable_upload(token, payload, path)
     stamp = when.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     P.set_privacy(token, vid, "private", publish_at=stamp)
@@ -373,6 +375,65 @@ def pending(have=None) -> list[str]:
         if found is not True:
             continue
         out.append(slug)
+    return order_by_mix(out)
+
+
+def _favour_score(slug: str, terms: set[str]) -> int:
+    words = set(slug.lower().replace("_", "-").split("-"))
+    return len(words & terms)
+
+
+def order_by_mix(slugs: list[str], recent: list[str] | None = None,
+                 cfg: dict | None = None) -> list[str]:
+    """`slugs` re-ordered to hold the Shorts topic mix (owner build 2026-10-08).
+
+    config.json `shorts_topics.domain_mix` gives each domain's share — deep
+    sea 3, materials 1. Starting from the domains of the last `window` Shorts
+    in the ledger, each next pick is from the domain furthest BELOW its share
+    that still has a candidate; inside a domain, a slug naming a favoured term
+    (midnight zone, creatures, pressure, trenches) goes first, then queue
+    order. A domain with nothing ready is skipped, never waited for: the mix
+    is a preference, and an empty evening slot earns nothing (Rule 0).
+
+    Stateless across runs by design — the ledger IS the memory, so a run that
+    takes 2 of a 9/week cadence still converges on 3:1 over the week.
+    """
+    cfg = cfg if cfg is not None else config()
+    st = cfg.get("shorts_topics") or {}
+    mix = {d: float(w) for d, w in (st.get("domain_mix") or {}).items() if w}
+    if not mix or not slugs:
+        return list(slugs)
+    terms = {t.lower() for t in st.get("favoured_terms") or []}
+    window = int(st.get("window") or 12)
+    if recent is None:
+        recent = [r["slug"] for r in load_ledger().get("published", [])
+                  if r.get("slug")][-window:]
+    counts = {d: 0 for d in mix}
+    for s_ in recent[-window:]:
+        d = domains.domain_of_slug(s_)
+        if d in counts:
+            counts[d] += 1
+    total_w = sum(mix.values())
+    buckets: dict[str, list[str]] = {}
+    for i, s_ in enumerate(slugs):
+        buckets.setdefault(domains.domain_of_slug(s_) or "", []).append(s_)
+    for d, b in buckets.items():
+        b.sort(key=lambda x: (-_favour_score(x, terms), slugs.index(x)))
+    out: list[str] = []
+    n = sum(counts.values())
+    while any(buckets.values()):
+        ready = [d for d in mix if buckets.get(d)]
+        if not ready:
+            # Domains outside the mix keep queue order, after the mixed ones.
+            for d, b in buckets.items():
+                out.extend(b)
+                b.clear()
+            break
+        n += 1
+        pick = max(ready, key=lambda d: (mix[d] / total_w * n - counts[d],
+                                         mix[d]))
+        out.append(buckets[pick].pop(0))
+        counts[pick] += 1
     return out
 
 
@@ -392,7 +453,8 @@ def cut(slug: str) -> Path | None:
 
 
 def build_payload(slug: str, question: str,
-                  episode_video_id: str | None = None) -> dict:
+                  episode_video_id: str | None = None,
+                  related: tuple[str, str] | None = None) -> dict:
     """Metadata for a Short. Deliberately NOT the episode's description.
 
     A Short carries a pointer back to the episode, because a viewer moving from
@@ -412,11 +474,11 @@ def build_payload(slug: str, question: str,
     it inherits that episode's domain rather than deriving its own; see
     loop/discovery.py.
     """
-    title = question.strip().rstrip("?")
-    title = (title[:1].upper() + title[1:] if title else title) + "?"
-
     script_path = ROOT / "scripts" / f"{slug}.md"
     script_text = script_path.read_text(encoding="utf-8") if script_path.exists() else ""
+    # 2026-10-08: curiosity-led, still on-search — loop/titles.py.
+    import titles                                          # noqa: PLC0415
+    title = titles.title_for(question, script_text)
     domain = domains.domain_of_slug(slug)
     blurb = DOMAIN_BLURB.get(domain, DOMAIN_BLURB["deep-sea-ocean-science"])
 
@@ -436,9 +498,15 @@ def build_payload(slug: str, question: str,
             "Full episodes: https://youtube.com/@howweknowdeep\n"
             "howweknowdeep.com")
     desc = discovery.add_hashtag_line(body, hashtags)
+    import handoff                                         # noqa: PLC0415
     if episode_video_id:
-        import handoff                                     # noqa: PLC0415
         desc = handoff.short_description(desc, episode_video_id, question)
+    elif related:
+        # Owner build 2026-10-08: a Short whose own episode is not public yet
+        # still hands its viewer to a long episode — the closest public one in
+        # the same domain. loop/handoff.py replaces this line with the Short's
+        # own episode the run after that episode goes public.
+        desc = handoff.related_description(desc, *related)
     return {"snippet": {"title": title[:100], "description": desc,
                         "tags": tags,
                         "categoryId": "27"},

@@ -279,10 +279,14 @@ def build_payload(item: dict) -> dict:
     #
     # (Captions are the different case: captions.insert needs force-ssl, which
     # the plain youtube scope does NOT cover. See loop/captions_lane.py.)
-    title = item["question"].strip().rstrip("?")
-    title = (title[:1].upper() + title[1:] if title else title) + "?"
-    if len(title) > TITLE_MAX:
-        title = title[:TITLE_MAX - 1].rsplit(" ", 1)[0] + "?"
+    #
+    # 2026-10-08 (owner-approved build): the title is no longer the bare query
+    # with a question mark. loop/titles.py leads with the subject and keeps
+    # every search word of the query — "How strong graphene really is — and
+    # how we know" — and refuses a figure the script does not state. The
+    # sentence-case fix above still holds: titles.py capitalises the same way.
+    import titles                                          # noqa: PLC0415
+    title = titles.title_for(item["question"], text)
 
     answer = ""
     m = re.search(r"## Direct-answer lock\s*\n+(.+?)\n\s*\n", text, re.S)
@@ -305,6 +309,13 @@ def build_payload(item: dict) -> dict:
     if sources:
         parts += ["Sources — every figure in this video traces to one of these:",
                   *[f"• {s}" for s in sources], ""]
+    # Books and gear the episode ALREADY CITES, from channel/affiliates.json
+    # (2026-10-08). Plain links until the owner sets an affiliate ID there;
+    # no block at all for an episode that cites none.
+    import affiliates                                      # noqa: PLC0415
+    aff = affiliates.block_for(text)
+    if aff:
+        parts += [aff, ""]
     parts += ["Evidence-first explainers. Every on-screen number comes from a "
               "named public source stated in the narration."]
     description = "\n".join(parts)[:DESC_MAX]
