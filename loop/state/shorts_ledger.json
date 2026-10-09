@@ -436,9 +436,13 @@
       "scheduled_publish_at": "2026-09-25T00:00:00Z",
       "rank": 1,
       "lane": "shorts-cloud",
-      "handoff": "pending",
+      "handoff": "done",
       "playlist_item_id": "UExHNUdZLUd1aGlGOC5EMEEwRUY5M0RDRTU3NDJC",
-      "playlist": "PLG5GY-GuhiF8"
+      "playlist": "PLG5GY-GuhiF8",
+      "handoff_episode": "7tdvXATeeng",
+      "handoff_at": "2026-10-09T23:10:26+00:00",
+      "handoff_comment_id": "UgwN7pq0c3xBI086FX14AaABAg",
+      "handoff_comment_at": "2026-10-09T23:10:27+00:00"
     },
     {
       "slug": "how-is-3d-printed-metal-made",
@@ -583,5 +587,5 @@
       "playlist": "PLOrZMDyoy1XM"
     }
   ],
-  "updated": "2026-10-09T14:14:58+00:00"
+  "updated": "2026-10-09T23:10:28+00:00"
 }
