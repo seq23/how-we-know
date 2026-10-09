@@ -201,5 +201,37 @@
   "mac": {
     "unshipped_days": 3,
     "_why": "2026-09-13. The Mac's lanes write their stops to loop/state/stops/ on the Mac, where the cloud digest cannot read them. Nine finished episodes shipped nothing for a week and no report anywhere said so. The Mac now pushes loop/state/mac_heartbeat.json after every lane run; the digest raises MAC_NOT_SHIPPING when the heartbeat shows finished renders pending for more than this many days, or when there has been no heartbeat at all for that long while renders are pending. Three days: the daily upload lane gets two chances before the silence is called a fault."
+  },
+  "shorts_topics": {
+    "domain_mix": {
+      "deep-sea-ocean-science": 3,
+      "materials-and-manufacturing": 1
+    },
+    "window": 12,
+    "favoured_terms": [
+      "midnight",
+      "twilight",
+      "zone",
+      "creature",
+      "creatures",
+      "fish",
+      "squid",
+      "octopus",
+      "shark",
+      "crab",
+      "whale",
+      "pressure",
+      "trench",
+      "mariana",
+      "challenger",
+      "hadal",
+      "abyss",
+      "abyssal",
+      "bioluminescence",
+      "vent",
+      "vents",
+      "deepest"
+    ],
+    "note": "Owner-approved build, 2026-10-08. The audit: Shorts bring 93% of views and the deep-sea Shorts are the only ones with traction ('What is the midnight zone?' 1,110 views), yet 8 of the last 12 Shorts were materials. loop/shorts_lane.py pending() now orders the Shorts queue so that, over the last `window` Shorts plus the ones being chosen, each domain is held to its domain_mix share: deep sea 3 of every 4, materials 1 of every 4 (shrunk, not removed). Within a domain, a topic naming one of favoured_terms (the midnight zone, strange creatures, pressure, trenches) goes first. The mix is a PREFERENCE, never a stall: when only one domain has a cut Short ready, that Short still airs, because an empty evening slot earns nothing. Long-form allocation (domains.allocation) is unchanged: the deep-sea long-form queue holds six unwritten topics, too few to carry 3 of 4 weekly episodes."
   }
 }

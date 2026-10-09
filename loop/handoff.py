@@ -90,6 +90,10 @@ HANDOFF_STATE = STATE / "handoff.json"
 
 CHANNEL_LINK = "https://youtube.com/@howweknowdeep"
 LINK_PREFIX = "Full episode: https://youtu.be/"
+# A Short whose own episode is not public yet points at the closest PUBLIC
+# episode of its domain instead (owner build 2026-10-08); short_description()
+# replaces this line with LINK_PREFIX once the Short's own episode is live.
+RELATED_PREFIX = "Related episode: https://youtu.be/"
 BLOCK_HEAD = "Shorts from this episode:"
 WRITE_UNITS = 50
 READ_UNITS = 1
@@ -146,13 +150,70 @@ def short_description(current: str, episode_video_id: str, question: str) -> str
     channel link, howweknowdeep.com, the hashtag line — is kept verbatim.
     """
     lines = (current or "").split("\n")
-    while lines and lines[0].startswith(LINK_PREFIX):
+    while lines and lines[0].startswith((LINK_PREFIX, RELATED_PREFIX)):
         lines.pop(0)
         while lines and lines[0].strip() == "":
             lines.pop(0)
     body = "\n".join(lines).strip("\n")
     out = link_line(episode_video_id, question) + ("\n\n" + body if body else "")
     return out[:DESC_MAX]
+
+
+def related_description(current: str, episode_video_id: str, title: str) -> str:
+    """`current` with a "Related episode:" line FIRST, exactly once.
+    `title` is the related episode's live YouTube title, used verbatim."""
+    lines = (current or "").split("\n")
+    while lines and lines[0].startswith((LINK_PREFIX, RELATED_PREFIX)):
+        lines.pop(0)
+        while lines and lines[0].strip() == "":
+            lines.pop(0)
+    body = "\n".join(lines).strip("\n")
+    line = f"{RELATED_PREFIX}{episode_video_id} — {title.strip()}"
+    return (line + ("\n\n" + body if body else ""))[:DESC_MAX]
+
+
+def _words(s: str) -> set[str]:
+    stop = {"what", "is", "the", "a", "an", "why", "how", "do", "does", "are",
+            "so", "of", "in", "to", "deep", "sea", "ocean", "made", "when"}
+    return {w for w in (s or "").lower().replace("-", " ").split()
+            if w.isalpha() and w not in stop}
+
+
+def related_episode_for(token: str | None, slug: str, yt=None,
+                        limit: int = 10) -> tuple[str, str] | None:
+    """(video id, live title) of the closest PUBLIC episode in `slug`'s domain.
+
+    Called only when the Short's own episode is not public. Ranked by words
+    shared with the Short's slug, then most recent; up to `limit` candidates
+    are read in ONE videos.list (1 unit) and the first public one wins. Never
+    the Short's own episode, never a retired one. None on any read failure —
+    a missing related link must never fail an upload — and under
+    LOOP_DRY_RUN, which reads nothing.
+    """
+    if up.DRY_RUN and yt is None:
+        return None
+    dom = domains.domain_of_slug(slug)
+    want = _words(slug)
+    rows = [r for r in ledger.load()["published"]
+            if r.get("slug") and r.get("slug") != slug and r.get("video_id")
+            and not r.get("retired_at")
+            and domains.domain_of_slug(r["slug"]) == dom]
+    if not rows:
+        return None
+    rows = sorted(enumerate(rows),
+                  key=lambda ir: (-len(_words(ir[1]["slug"]) & want), -ir[0]))
+    rows = [r for _, r in rows][:limit]
+    try:
+        client = yt or YouTube(token)
+        got, _ = fetch_videos(client, [r["video_id"] for r in rows])
+    except (urllib.error.URLError, OSError, ValueError, KeyError):
+        return None
+    for r in rows:
+        v = got.get(r["video_id"])
+        if _public(v):
+            live = (v.get("snippet") or {}).get("title")
+            return r["video_id"], live or title_of(r.get("question") or "")
+    return None
 
 
 def has_link(description: str, episode_video_id: str) -> bool:
