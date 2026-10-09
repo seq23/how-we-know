@@ -40,22 +40,22 @@ rows = [{"slug": "held-under-floor"}, {"slug": "finished-and-clear"},
         {"slug": "already-published"}]
 batch_queue.queued_entries = lambda: rows
 SL.load_ledger = lambda: {"published": [{"slug": "already-published"}], "updated": None}
-on_shelf = lambda slug: True   # every cut and receipt is on the shelf   # noqa: E731
+on_shelf = lambda slug, rank=1: True   # every cut and receipt is on the shelf   # noqa: E731
 
 HOLD.write_text(json.dumps({
     "held": {"held-under-floor": ["held-under-floor: rendered 9.87 min, under the 10.0-minute hard floor"]},
     "week": "2026-W40", "at": "2026-10-03T10:54:49+00:00"}), encoding="utf-8")
 
 got = SL.pending(have=on_shelf)
-assert "held-under-floor" not in got, f"a held render reached the Shorts lane: {got}"
-assert got == ["finished-and-clear"], f"the clear episode must still publish: {got}"
+assert "held-under-floor" not in [p.slug for p in got], f"a held render reached the Shorts lane: {got}"
+assert got == [SL.Pick("finished-and-clear", 1)], f"the clear episode must still publish: {got}"
 
 # The hold lifts: the slug comes back in publish order, nothing was dropped.
 HOLD.write_text(json.dumps({"held": {}, "week": "2026-W40", "at": None}), encoding="utf-8")
 got = SL.pending(have=on_shelf)
-assert got == ["held-under-floor", "finished-and-clear"], f"deferred, not dropped: {got}"
+assert got == [SL.Pick("held-under-floor", 1), SL.Pick("finished-and-clear", 1)], f"deferred, not dropped: {got}"
 
 # No hold file at all is "nothing held", as the gate itself promises.
 HOLD.unlink()
-assert SL.pending(have=on_shelf) == ["held-under-floor", "finished-and-clear"]
+assert SL.pending(have=on_shelf) == [SL.Pick("held-under-floor", 1), SL.Pick("finished-and-clear", 1)]
 print("OK  test_shorts_skip_held_renders: a held render is deferred by the Shorts lane and returns when the hold lifts")

@@ -1059,6 +1059,11 @@ def main(argv=None):
                          "Rank 2+ is a supporting idea, not the direct answer.")
     ap.add_argument("--dry-run", action="store_true",
                     help="print the beat selection without rendering")
+    ap.add_argument("--keep-existing", action="store_true",
+                    help="skip a rank whose cut AND receipt are already in "
+                         "--out: the nightly batch asks for deep sea's ranks "
+                         "2-3 on episodes whose rank 1 may already be on the "
+                         "channel, and that cut is never re-rendered")
     a = ap.parse_args(argv)
 
     slugs = a.slugs
@@ -1073,9 +1078,16 @@ def main(argv=None):
         sys.exit("FAIL: empty input set - no finished -final.mp4 renders to cut from")
 
     os.makedirs(a.out, exist_ok=True)
-    results, failed = [], []
+    results, failed, kept = [], [], []
     for slug in slugs:
         for rank in range(a.count):
+            stem = f"{slug}-short" if rank == 0 else f"{slug}-short{rank + 1}"
+            mp4 = os.path.join(a.out, f"{stem}.mp4")
+            if a.keep_existing and os.path.exists(mp4) \
+                    and os.path.exists(f"{mp4}.short.json"):
+                print(f"keep {mp4} (already cut)")
+                kept.append(mp4)
+                continue
             try:
                 r = make_short(slug, a.out, a.max_seconds, a.target_seconds,
                                a.dry_run, rank)
@@ -1106,7 +1118,7 @@ def main(argv=None):
                       f"(-{r['band_rows_lost']})  {len(r['credits'])} credit(s)"
                       + (f"  PROBLEMS: {r['problems']}" if r["problems"] else ""))
 
-    if not results:
+    if not results and not kept:
         sys.exit("FAIL: produced nothing")
     bad = [r for r in results if not a.dry_run and not r["ok"]]
     if bad or failed:

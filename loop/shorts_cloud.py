@@ -82,10 +82,10 @@ def shelf_lookup(shelf):
     `.short.json` is a video nobody can later prove was credited, and the
     receipt is the only record of which beats it used.
     """
-    def look(slug: str):
-        if shelf.head(r2.short_key(slug)) is None:
+    def look(slug: str, rank: int = 1):
+        if shelf.head(r2.short_key(slug, rank)) is None:
             return "not shelved in R2 — run bin/push-to-r2.sh on the Mac"
-        if shelf.head(r2.short_receipt_key(slug)) is None:
+        if shelf.head(r2.short_receipt_key(slug, rank)) is None:
             # RECORDED, not just refused. An empty selection has two very
             # different causes and one of them is a defect: "nothing has been
             # cut yet" resolves itself on the Mac's next push, while "a cut IS
@@ -94,7 +94,7 @@ def shelf_lookup(shelf):
             # self-resolving without separating the second is exactly the
             # 'inert lane wearing a reassuring label' this repo warns about.
             look.unverified.append(
-                (slug, "the cut is shelved but its .short.json receipt is not"))
+                (SL.Pick(slug, rank).label, "the cut is shelved but its .short.json receipt is not"))
             return "the cut is shelved but its .short.json receipt is not"
         return True
     look.unverified = []
@@ -169,7 +169,10 @@ def run(limit: int = 2, dry_run: bool = False) -> int:
         if afford < limit:
             st.note(f"quota allows {afford} of {limit} today. {quota.report()}")
 
-        take = todo[:afford]
+        # Released rows' evenings are planned first so the two cannot be
+        # handed the same slot; plan() then keeps two cuts of one episode off
+        # the same day (deep sea publishes cuts 2 and 3 since 2026-10-08).
+        take = [p for p, _ in SL.plan(SL.load_ledger(), todo, afford)]
         for r in to_release:
             print(f"  release  {r['slug']}  (hold lifted)")
         for r in still_held:
@@ -177,12 +180,15 @@ def run(limit: int = 2, dry_run: bool = False) -> int:
         if dry_run:
             # Slots are planned from one ledger so the released rows and the
             # new uploads cannot be handed the same evening.
-            when = SL.schedule_for(SL.load_ledger(), len(to_release) + len(take))
+            led = SL.load_ledger()
+            when = SL.schedule_for(led, len(to_release))
             for r, t in zip(to_release, when):
                 st.work(f"would release {r['slug']} Short at "
                         f"{t.astimezone(SL.SHORTS_TZ):%Y-%m-%d %H:%M %Z}")
-            for slug, t in zip(take, when[len(to_release):]):
-                st.work(f"planned Short for {slug} at "
+                led = {"published": led["published"] + [dict(
+                    r, scheduled_publish_at=t.strftime("%Y-%m-%dT%H:%M:%SZ"))]}
+            for p, t in SL.plan(led, todo, afford):
+                st.work(f"planned Short for {p.label} at "
                         f"{t.astimezone(SL.SHORTS_TZ):%Y-%m-%d %H:%M %Z}")
             for r in still_held:
                 st.note(f"{r['slug']} Short stays unscheduled: its episode "
@@ -197,7 +203,7 @@ def run(limit: int = 2, dry_run: bool = False) -> int:
                           f"{len(take)} verified Short(s) are shelved and "
                           f"{len(to_release)} parked Short(s) can be released, "
                           f"but " + msg,
-                          detail={"ready": take,
+                          detail={"ready": [p.label for p in take],
                                   "release": [r["slug"] for r in to_release]},
                           unblock=unblock)
         token = up.access_token(creds)
@@ -207,26 +213,27 @@ def run(limit: int = 2, dry_run: bool = False) -> int:
         released = SL.release_held(st, token, lane=LANE)
         if not take:
             return 0
-        when = SL.schedule_for(SL.load_ledger(), len(take))
-        for slug, t in zip(take, when):
+        planned = SL.plan(SL.load_ledger(), todo, afford)
+        take = [p for p, _ in planned]
+        for p, t in planned:
             print(f"  plan  {t.astimezone(SL.SHORTS_TZ):%a %d %b %H:%M %Z}  "
-                  f"{slug}")
+                  f"{p.label}")
 
         with tempfile.TemporaryDirectory(prefix="how-we-know-shorts-") as td:
             tmp = Path(td)
-            for slug, t in zip(take, when):
-                path = tmp / f"{slug}-short.mp4"
+            for (slug, rank), t in planned:
+                path = tmp / SL.short_file(slug, rank)
                 # The receipt travels with the cut. It is not used to decide
                 # anything here — V14 already read it on the Mac — but pulling
                 # it proves the pair is intact, and a Short whose receipt has
                 # gone missing is one nobody can audit later.
-                meta = shelf.head(r2.short_receipt_key(slug))
-                fetch_verified(shelf, r2.short_key(slug), path)
-                st.work(f"pulled {slug} Short from {shelf.label} "
+                meta = shelf.head(r2.short_receipt_key(slug, rank))
+                fetch_verified(shelf, r2.short_key(slug, rank), path)
+                st.work(f"pulled {SL.Pick(slug, rank).label} Short from {shelf.label} "
                         f"({path.stat().st_size:,} bytes, verified; receipt "
                         f"{meta['size']} bytes)")
                 SL.upload_short(st, token, slug, B.question_for(slug), path, t,
-                                lane=LANE)
+                                lane=LANE, rank=rank)
                 path.unlink(missing_ok=True)
 
         # A real Short just published for real. That is the exact evidence
@@ -234,7 +241,8 @@ def run(limit: int = 2, dry_run: bool = False) -> int:
         # tomorrow no longer has to stop and ask.
         arming.record_success(
             'shorts-cloud',
-            detail=f"published {len(take)} Short(s): {take}")
+            detail=f"published {len(take)} Short(s): "
+                   f"{[p.label for p in take]}")
     return 0
 
 

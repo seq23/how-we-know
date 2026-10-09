@@ -195,7 +195,7 @@ if fav and plain:
 check("only materials ready -> materials still airs",
       SL.order_by_mix(mat_slugs[:3], recent=[]) == mat_slugs[:3])
 check("pending() routes through order_by_mix",
-      "return order_by_mix(out)" in (LOOP / "shorts_lane.py").read_text())
+      "return order_by_mix(out, cfg=cfg)" in (LOOP / "shorts_lane.py").read_text())
 
 # ---------------------------------------------------------- related episode
 print("related episode")

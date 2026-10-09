@@ -86,8 +86,12 @@ else:
     body_start = batch.find("shelve_shorts()")
     body_end = batch.find("\n}\n", body_start)
     body = batch[body_start:body_end]
-    if "shorts_lane.uncut()" not in body:
-        fails.append("3: shelve_shorts does not ask shorts_lane.uncut() what to cut")
+    # cut_groups() is uncut() plus the deeper ranks deep sea publishes; the
+    # cut must never re-render a cut already on disk (or on the channel).
+    if "shorts_lane.cut_groups()" not in body:
+        fails.append("3: shelve_shorts does not ask shorts_lane.cut_groups() what to cut")
+    if "--keep-existing" not in body or "--count" not in body:
+        fails.append("3: shelve_shorts must cut with --count N --keep-existing")
     if "bin/make-shorts.sh" not in body:
         fails.append("3: shelve_shorts does not run bin/make-shorts.sh")
     if "bin/push-to-r2.sh" not in body:
