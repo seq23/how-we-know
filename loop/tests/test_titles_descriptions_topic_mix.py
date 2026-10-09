@@ -140,9 +140,9 @@ check("shorts_lane.build_payload titles through titles.py",
 # ------------------------------------------------------------- affiliates
 print("affiliates")
 cfg = A.load()
-# 9 Oct 2026: the owner's Amazon Associates Store ID is live (seq23-20); Bookshop is not set yet.
+# 9 Oct 2026: the owner's Amazon Associates Store ID (seq23-20) and Bookshop affiliate id (129693) are live.
 check("the shipped Amazon tag is the owner's Store ID", cfg["amazon_associates_tag"] == "seq23-20", cfg["amazon_associates_tag"])
-check("the shipped Bookshop id is still empty", cfg["bookshop_affiliate_id"] == "")
+check("the shipped Bookshop id is the owner's affiliate id", cfg["bookshop_affiliate_id"] == "129693", cfg["bookshop_affiliate_id"])
 txt = (ROOT / item["script"]).read_text()
 blk = A.block_for(txt, cfg)
 check("a citing episode gets a block", "Welding Handbook" in blk, blk)
