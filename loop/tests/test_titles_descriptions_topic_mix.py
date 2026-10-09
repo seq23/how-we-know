@@ -140,15 +140,20 @@ check("shorts_lane.build_payload titles through titles.py",
 # ------------------------------------------------------------- affiliates
 print("affiliates")
 cfg = A.load()
-check("both affiliate ids ship empty",
-      cfg["amazon_associates_tag"] == "" and cfg["bookshop_affiliate_id"] == "")
+# 9 Oct 2026: the owner's Amazon Associates Store ID is live (seq23-20); Bookshop is not set yet.
+check("the shipped Amazon tag is the owner's Store ID", cfg["amazon_associates_tag"] == "seq23-20", cfg["amazon_associates_tag"])
+check("the shipped Bookshop id is still empty", cfg["bookshop_affiliate_id"] == "")
 txt = (ROOT / item["script"]).read_text()
 blk = A.block_for(txt, cfg)
 check("a citing episode gets a block", "Welding Handbook" in blk, blk)
-check("with no id the links carry no tracking", blk and "tag=" not in blk and "/a/" not in blk, blk)
+check("shipped links carry the owner's tag and the Associates sentence",
+      "tag=seq23-20" in blk and cfg["amazon_disclosure"] in blk and "/a/" not in blk, blk)
 check("the FTC disclosure is present, above the first link",
       cfg["disclosure"] in blk and blk.index(cfg["disclosure"]) < blk.index("• "), blk)
-check("no Amazon Associates sentence while no tag is set", cfg["amazon_disclosure"] not in blk)
+untagged = dict(cfg, amazon_associates_tag="", bookshop_affiliate_id="")
+ub = A.block_for(txt, untagged)
+check("with no id the links carry no tracking", ub and "tag=" not in ub and "/a/" not in ub, ub)
+check("no Amazon Associates sentence while no tag is set", cfg["amazon_disclosure"] not in ub)
 tagged = dict(cfg, amazon_associates_tag="howweknow-20", bookshop_affiliate_id="12345",
               items=[dict(cfg["items"][0], bookshop_isbn13="9780000000002")])
 tb = A.block_for(txt, tagged)
