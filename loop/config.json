@@ -208,6 +208,11 @@
       "materials-and-manufacturing": 1
     },
     "window": 12,
+    "cuts_per_episode": {
+      "deep-sea-ocean-science": 3,
+      "default": 1,
+      "note": "Owner-approved build, 2026-10-08 ('more deep-sea Shorts, since they bring 93% of views'). visuals/shorts.py already cut three Shorts from every deep-sea episode (ranks 1-3) but only rank 1 ever published. loop/shorts_lane.py cuts_for() reads this: deep sea publishes all three, materials stays at one. Spacing is the existing evening ladder; plan() never puts two from one episode on the same local day, and order_by_mix() airs every rank 1 before any rank 2 inside a domain. Guard: loop/tests/test_shorts_deep_sea_all_cuts.py."
+    },
     "favoured_terms": [
       "midnight",
       "twilight",

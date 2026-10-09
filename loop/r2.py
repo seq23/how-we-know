@@ -140,21 +140,23 @@ def thumb_key(slug: str) -> str:
     return f"{THUMB_PREFIX}{slug}.jpg"
 
 
-def short_key(slug: str) -> str:
-    """Rank 1 only. `shorts_lane.py` publishes rank 1 unattended and nothing
-    deeper: rank 2+ picks were not trustworthy on inspection (one is a hedge
-    chapter, another an editorial note), so deeper cuts stay a human's call."""
-    return f"{SHORT_PREFIX}{slug}-short.mp4"
+def short_key(slug: str, rank: int = 1) -> str:
+    """The shelf key of one cut: rank 1 is `<slug>-short.mp4`, rank N is
+    `<slug>-shortN.mp4`, the names visuals/shorts.py writes. Ranks 2 and 3 are
+    shelved only for the domains `shorts_lane.cuts_for` allows (deep sea,
+    owner build 2026-10-08)."""
+    name = f"{slug}-short.mp4" if rank == 1 else f"{slug}-short{rank}.mp4"
+    return f"{SHORT_PREFIX}{name}"
 
 
-def short_receipt_key(slug: str) -> str:
+def short_receipt_key(slug: str, rank: int = 1) -> str:
     """The `.short.json` beside the cut — what V14/V15 read to do their work.
 
     It is shelved with the Short so the evidence travels with the artefact.
     Without it nobody downstream can re-check which beats were used or where
     the caption band was cropped.
     """
-    return f"{SHORT_PREFIX}{slug}-short.mp4.short.json"
+    return f"{short_key(slug, rank)}.short.json"
 
 
 def sha256_file(path) -> str:
@@ -709,13 +711,20 @@ def push_shorts(backend: _Backend, slugs=None, force: bool = False) -> dict:
     shorts = ROOT / "shorts"
     slugs = list(slugs) if slugs else _publish_slugs()
     sent, skipped, absent, refused = [], [], [], []
-    for slug in slugs:
-        mp4 = shorts / f"{slug}-short.mp4"
-        rec = shorts / f"{slug}-short.mp4.short.json"
+    import shorts_lane                                    # noqa: PLC0415
+    for slug, rank in ((s_, r_) for s_ in slugs
+                       for r_ in range(1, shorts_lane.cuts_for(s_) + 1)):
+        name = shorts_lane.short_file(slug, rank)
+        mp4 = shorts / name
+        rec = shorts / f"{name}.short.json"
         if not mp4.exists() or not rec.exists():
-            absent.append(f"{slug}: no rank-1 cut with a receipt")
-            print(f"  ·  skip {slug} short: not cut yet")
+            if rank == 1:
+                absent.append(f"{slug}: no rank-1 cut with a receipt")
+                print(f"  ·  skip {slug} short: not cut yet")
+            # A deeper rank that was never cut is not a gap: an episode with
+            # one self-contained idea has no rank 2 (visuals/shorts.py).
             continue
+        slug_label = shorts_lane.Pick(slug, rank).label
         why_bad = receipt_refuses(rec)
         if why_bad:
             # THE CUT'S OWN VERIFIER SAID NO. visuals/shorts.py writes
@@ -724,23 +733,23 @@ def push_shorts(backend: _Backend, slugs=None, force: bool = False) -> dict:
             # refused cut would have been shelved and published like a good
             # one. V14/V15 above prove the credit and the crop; this proves
             # the cut itself. Loud every night until it is fixed or re-cut.
-            refused.append(f"{slug}: {why_bad}")
-            print(f"  ✗  refuse {slug} short: its own receipt says {why_bad}")
+            refused.append(f"{slug_label}: {why_bad}")
+            print(f"  ✗  refuse {slug_label} short: its own receipt says {why_bad}")
             continue
-        for local, key, what in ((mp4, short_key(slug), "short"),
-                                 (rec, short_receipt_key(slug), "receipt")):
+        for local, key, what in ((mp4, short_key(slug, rank), "short"),
+                                 (rec, short_receipt_key(slug, rank), "receipt")):
             if not force:
                 same, why = backend.same_as(local, key)
                 if same:
-                    skipped.append(f"{slug} {what}: {why}")
-                    print(f"  =  skip {slug} {what}: already shelved, {why}")
+                    skipped.append(f"{slug_label} {what}: {why}")
+                    print(f"  =  skip {slug_label} {what}: already shelved, {why}")
                     continue
             else:
                 why = "forced"
-            print(f"  ↑  push {slug} {what} ({local.stat().st_size:,} bytes) "
+            print(f"  ↑  push {slug_label} {what} ({local.stat().st_size:,} bytes) "
                   f"— {why}", flush=True)
             r = backend.put(local, key)
-            sent.append(f"{slug} {what}: {r['size']} bytes")
+            sent.append(f"{slug_label} {what}: {r['size']} bytes")
     if refused:
         print(f"  {len(refused)} Short(s) refused by their own receipt; re-cut "
               f"or fix visuals/shorts.py, they are not shelved and will not "

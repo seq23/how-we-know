@@ -18,11 +18,13 @@ episode slot lands in the worst part of its own day, so this lane owns its own
 hour and its own days. See docs/OPERATING-MANUAL.md section 2.
 
 WHAT IS AUTOMATED AND WHAT IS NOT. visuals/shorts.py ranks each episode's
-chapters against that episode's own direct-answer lock. Rank 1 was correct on
-every episode checked and is cut unattended. Ranks 2+ are NOT trustworthy enough
-to publish blind - one of them is a hedge chapter, another is an editorial note -
-so this lane takes rank 1 only. Deeper cuts stay a human's call via
-`bin/make-shorts.sh --dry-run --count 3`.
+chapters against that episode's own direct-answer lock. Rank 1 publishes for
+every episode. Ranks 2 and 3 publish for DEEP SEA only (owner build
+2026-10-08: deep-sea Shorts bring 93% of views; config.json
+shorts_topics.cuts_per_episode), each one through the same receipt, V14/V15
+and render-gate checks as rank 1, never two from one episode on the same day
+(plan), and spread through the queue rank by rank (order_by_mix). Materials
+stays at one Short an episode.
 
 THE SOURCE IS THE FINISHED EPISODE, AND ONLY THAT. The 16:9 masters carry
 burned-in captions, and a Short burns its own sized for a 1080x1920 canvas.
@@ -42,6 +44,7 @@ import time
 import urllib.error
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from typing import NamedTuple
 from zoneinfo import ZoneInfo
 
 LOOP = Path(__file__).resolve().parent
@@ -101,6 +104,39 @@ SHORTS_WEEKDAYS = tuple(sorted({wd for wd, _ in SHORTS_SLOT_LADDER[:4]}))
 UPLOAD_UNITS, THUMB_UNITS, FLIP_UNITS = 1600, 50, 50
 DAILY_UNITS = 10000
 LEDGER = LOOP / "state" / "shorts_ledger.json"
+
+# THE DEEPEST RANK ANY EPISODE MAY PUBLISH. visuals/shorts.py names its cuts
+# <slug>-short.mp4 (rank 1), <slug>-short2.mp4, <slug>-short3.mp4.
+MAX_RANK = 3
+
+
+class Pick(NamedTuple):
+    """One cut Short waiting for an evening: which episode, which rank."""
+    slug: str
+    rank: int = 1
+
+    @property
+    def label(self) -> str:
+        return self.slug if self.rank == 1 else f"{self.slug} (cut {self.rank})"
+
+
+def short_file(slug: str, rank: int = 1) -> str:
+    """The cut's filename, exactly as visuals/shorts.py writes it."""
+    return f"{slug}-short.mp4" if rank == 1 else f"{slug}-short{rank}.mp4"
+
+
+def cuts_for(slug: str, cfg: dict | None = None) -> int:
+    """How many of an episode's cut Shorts may publish (owner build 2026-10-08).
+
+    config.json `shorts_topics.cuts_per_episode`: deep sea 3, everything else
+    the default 1. Deep-sea Shorts bring 93% of the channel's views, and every
+    deep-sea episode already has three verified cuts on disk - only rank 1 ever
+    aired. Materials stays at one. Capped at MAX_RANK.
+    """
+    cfg = cfg if cfg is not None else config()
+    per = (cfg.get("shorts_topics") or {}).get("cuts_per_episode") or {}
+    n = per.get(domains.domain_of_slug(slug) or "", per.get("default", 1))
+    return max(1, min(MAX_RANK, int(n)))
 
 
 class ShortsCadenceExceedsLadder(Exception):
@@ -183,8 +219,46 @@ def schedule_for(led: dict, n: int) -> list[datetime]:
     return slots(anchor, n)
 
 
+def _local_day(stamp) -> object:
+    if isinstance(stamp, str):
+        stamp = datetime.fromisoformat(stamp.replace("Z", "+00:00"))
+    return stamp.astimezone(SHORTS_TZ).date()
+
+
+def plan(led: dict, picks: list, n: int) -> list[tuple[Pick, datetime]]:
+    """Up to `n` of `picks` (in their mix order), each with its evening slot.
+
+    THE ONE RULE ADDED WITH THE DEEP-SEA CUTS 2 AND 3: no two Shorts from the
+    same episode on the same local day - counting every Short already on the
+    calendar, not just this run's. Slots come from `schedule_for`, unchanged,
+    so the evening ladder and the cadence decide WHEN; this only decides WHICH
+    pick takes each slot. A slot is filled by the first pick (in mix order)
+    whose episode is not already on that day; a slot no pick may take is left
+    empty rather than doubled up.
+    """
+    picks = [p if isinstance(p, Pick) else Pick(p) for p in picks]
+    if n <= 0 or not picks:
+        return []
+    on_day = {(r["slug"], _local_day(r["scheduled_publish_at"]))
+              for r in led.get("published", [])
+              if r.get("slug") and r.get("scheduled_publish_at")}
+    remaining = list(picks)
+    out: list[tuple[Pick, datetime]] = []
+    for t in schedule_for(led, n + 14):
+        if len(out) == n or not remaining:
+            break
+        day = _local_day(t)
+        for i, p in enumerate(remaining):
+            if (p.slug, day) not in on_day:
+                out.append((p, t))
+                on_day.add((p.slug, day))
+                del remaining[i]
+                break
+    return out
+
+
 def upload_short(st, token: str, slug: str, question: str, path: Path,
-                 when: datetime, lane: str = "shorts") -> str:
+                 when: datetime, lane: str = "shorts", rank: int = 1) -> str:
     """Upload one cut Short, schedule it, record it, spend the quota.
 
     THE ONLY PLACE A SHORT IS UPLOADED. loop/shorts_cloud.py calls this with a
@@ -213,7 +287,7 @@ def upload_short(st, token: str, slug: str, question: str, path: Path,
     led["published"].append({
         "slug": slug, "video_id": vid, "file": path.name,
         "uploaded_at": now(), "privacy": "private",
-        "scheduled_publish_at": stamp, "rank": 1, "lane": lane,
+        "scheduled_publish_at": stamp, "rank": rank, "lane": lane,
         "handoff": "done" if episode_id else "pending",
         **({"handoff_episode": episode_id, "handoff_at": now()} if episode_id else {})})
     save_ledger(led)
@@ -301,8 +375,15 @@ def _stamp(s: str | None):
     return datetime.fromisoformat(s.replace("Z", "+00:00"))
 
 
-def local_short(slug: str):
-    """This Mac's answer to "is there a cut Short for this episode?"."""
+def local_short(slug: str, rank: int = 1):
+    """This Mac's answer to "is there a cut Short for this episode?".
+
+    Rank 1 is cut on demand from the render; a deeper rank publishes only
+    when its cut is already on disk (bin/batch-session.sh cuts them)."""
+    if rank > 1:
+        if not (SHORTS_DIR / short_file(slug, rank)).exists():
+            return f"no rank-{rank} cut on disk"
+        return True
     if not (ROOT / "renders" / f"{slug}-final.mp4").exists():
         return "no finished render to cut from"
     return True
@@ -340,13 +421,50 @@ def uncut(renders_dir: Path | None = None,
     return out
 
 
-def pending(have=None) -> list[str]:
-    """Finished episodes that have no Short published yet.
+def cut_groups(renders_dir: Path | None = None, shorts_dir: Path | None = None,
+               cfg: dict | None = None) -> dict[int, list[str]]:
+    """{cut count: [slugs]} - what the Mac's nightly batch asks shorts.py for.
 
-    Publish order, so the Shorts follow the same ranking the episodes do.
-    `have` locates the material; it defaults to this machine's disk and is
-    swapped for an R2 lookup by loop/shorts_cloud.py.
+    `uncut()` alone answered "which episodes have no rank-1 cut", which was the
+    whole question while only rank 1 published. With deep sea now publishing
+    cuts 2 and 3 (cuts_for), an episode also needs cutting when its rank-1 cut
+    exists but a deeper rank it may publish does not - capped by the chapters
+    its own rank-1 receipt says were eligible, so an episode with one
+    self-contained idea is not re-tried every night. bin/batch-session.sh runs
+    `make-shorts.sh --count N --keep-existing` per group, so a cut already on
+    disk (and possibly already on the channel) is never re-rendered.
     """
+    renders_dir = renders_dir or (ROOT / "renders")
+    shorts_dir = shorts_dir or SHORTS_DIR
+    first = set(uncut(renders_dir, shorts_dir))
+    groups: dict[int, list[str]] = {}
+    for f in sorted(renders_dir.glob("*-final.mp4")):
+        slug = f.name[:-len("-final.mp4")]
+        want = cuts_for(slug, cfg)
+        if slug not in first:
+            rec = shorts_dir / f"{short_file(slug)}.short.json"
+            try:
+                eligible = int(json.loads(rec.read_text())
+                               .get("eligible_chapters") or want)
+            except (OSError, ValueError, TypeError):
+                eligible = want
+            want = min(want, max(1, eligible))
+            if all((shorts_dir / short_file(slug, r)).exists()
+                   for r in range(1, want + 1)):
+                continue
+        groups.setdefault(want, []).append(slug)
+    return groups
+
+
+def pending(have=None, cfg: dict | None = None) -> list[Pick]:
+    """Cut Shorts not published yet, as Picks, in the order they should air.
+
+    One Pick per (episode, rank) up to `cuts_for(slug)`: rank 1 for every
+    domain, ranks 2 and 3 as well for deep sea (owner build 2026-10-08).
+    `have(slug, rank)` locates the material; it defaults to this machine's disk
+    and is swapped for an R2 lookup by loop/shorts_cloud.py.
+    """
+    cfg = cfg if cfg is not None else config()
     have = have or local_short
     # EVERY DOMAIN'S QUEUE, NOT JUST DEEP SEA'S. This read
     # `research/publish_order.json` by name, so materials-and-manufacturing was
@@ -355,7 +473,8 @@ def pending(have=None) -> list[str]:
     # materials episodes had no Short cut at all. loop/batch_queue.py is the one
     # definition of the publish queue across domains, and V27 exists to stop
     # exactly this -- it simply had not been pointed at this module.
-    done = {r["slug"] for r in load_ledger()["published"]}
+    done = {(r["slug"], int(r.get("rank") or 1))
+            for r in load_ledger()["published"] if r.get("slug")}
     # A HELD RENDER REACHES YOUTUBE BY NO ROUTE - THIS ONE INCLUDED. The render
     # gate (loop/render_gate.py) holds a finished episode that is clipped or
     # under the runtime floor, and both episode upload routes consult that
@@ -369,13 +488,15 @@ def pending(have=None) -> list[str]:
     out = []
     for q in batch_queue.queued_entries():
         slug = q["slug"]
-        if slug in done or slug in held:
+        if slug in held:
             continue
-        found = have(slug)
-        if found is not True:
-            continue
-        out.append(slug)
-    return order_by_mix(out)
+        for rank in range(1, cuts_for(slug, cfg) + 1):
+            if (slug, rank) in done:
+                continue
+            if have(slug, rank) is not True:
+                continue
+            out.append(Pick(slug, rank))
+    return order_by_mix(out, cfg=cfg)
 
 
 def _favour_score(slug: str, terms: set[str]) -> int:
@@ -383,8 +504,16 @@ def _favour_score(slug: str, terms: set[str]) -> int:
     return len(words & terms)
 
 
-def order_by_mix(slugs: list[str], recent: list[str] | None = None,
-                 cfg: dict | None = None) -> list[str]:
+def _slug_of(x) -> str:
+    return x.slug if isinstance(x, Pick) else x
+
+
+def _rank_of(x) -> int:
+    return x.rank if isinstance(x, Pick) else 1
+
+
+def order_by_mix(slugs: list, recent: list[str] | None = None,
+                 cfg: dict | None = None) -> list:
     """`slugs` re-ordered to hold the Shorts topic mix (owner build 2026-10-08).
 
     config.json `shorts_topics.domain_mix` gives each domain's share — deep
@@ -394,6 +523,10 @@ def order_by_mix(slugs: list[str], recent: list[str] | None = None,
     (midnight zone, creatures, pressure, trenches) goes first, then queue
     order. A domain with nothing ready is skipped, never waited for: the mix
     is a preference, and an empty evening slot earns nothing (Rule 0).
+
+    Items are slugs or Picks. Inside a domain every episode's rank 1 goes
+    before any rank 2, and every rank 2 before any rank 3, so an episode's
+    deeper cuts are spread across the queue rather than airing back to back.
 
     Stateless across runs by design — the ledger IS the memory, so a run that
     takes 2 of a 9/week cadence still converges on 3:1 over the week.
@@ -415,10 +548,13 @@ def order_by_mix(slugs: list[str], recent: list[str] | None = None,
             counts[d] += 1
     total_w = sum(mix.values())
     buckets: dict[str, list[str]] = {}
-    for i, s_ in enumerate(slugs):
-        buckets.setdefault(domains.domain_of_slug(s_) or "", []).append(s_)
+    for s_ in slugs:
+        buckets.setdefault(domains.domain_of_slug(_slug_of(s_)) or "",
+                           []).append(s_)
+    pos = {id(x): i for i, x in enumerate(slugs)}
     for d, b in buckets.items():
-        b.sort(key=lambda x: (-_favour_score(x, terms), slugs.index(x)))
+        b.sort(key=lambda x: (_rank_of(x), -_favour_score(_slug_of(x), terms),
+                              pos[id(x)]))
     out: list[str] = []
     n = sum(counts.values())
     while any(buckets.values()):
@@ -552,22 +688,10 @@ def run(limit: int = 2, dry_run: bool = False) -> int:
     #
     # loop/shorts_approval.py is still honoured as a VETO: anything explicitly
     # rejected there is skipped. Nothing has to be approved for it to publish.
-    MAX_RANK = 3
-
-    def _rank(path):
-        stem = path.stem
-        return 1 if stem.endswith("-short") else int(stem.rsplit("-short", 1)[1])
-
-    todo = []
-    for t in pending():
-        for f in sorted(SHORTS_DIR.glob(f"{t}-short*.mp4")):
-            try:
-                r = _rank(f)
-            except ValueError:
-                continue
-            if r <= MAX_RANK and not shorts_approval.is_rejected(f.name):
-                todo.append(t)
-                break
+    # Ranks 2+ publish for the domains config.json `cuts_per_episode` names
+    # (deep sea, 3; owner build 2026-10-08) - see cuts_for and pending().
+    todo = [p for p in pending()
+            if not shorts_approval.is_rejected(short_file(p.slug, p.rank))]
 
     # The stashed side also carried its own `if not todo:` here, printing a
     # sentence and returning 0. It is DROPPED rather than merged, for three
@@ -595,8 +719,9 @@ def run(limit: int = 2, dry_run: bool = False) -> int:
         with Stage("shorts", week_id()) as st:
             st.named_stop(
                 "SHORTS_INVENTORY_EXHAUSTED",
-                "no cut Short is waiting to publish: every finished episode "
-                f"already has one on the calendar, at {per_week}/week.",
+                "no cut Short is waiting to publish: every cut a finished "
+                f"episode may publish is already on the calendar, at "
+                f"{per_week}/week.",
                 unblock="Nothing to do: the Shorts already scheduled keep "
                         "airing, and the Mac's nightly batch cuts and shelves "
                         "Shorts from the next rendered episode "
@@ -615,16 +740,15 @@ def run(limit: int = 2, dry_run: bool = False) -> int:
               f"{quota.upload_reserve()} units for the day's episode upload. "
               f"{quota.report()}")
         return 0
-    take = todo[:afford]
+    led = load_ledger()
+    planned = plan(led, todo, afford)
+    take = [p for p, _ in planned]
     cost = len(take) * (UPLOAD_UNITS + THUMB_UNITS + FLIP_UNITS)
 
-    led = load_ledger()
-    when = schedule_for(led, len(take))
-
-    print(f"\n{len(todo)} episode(s) without a Short; taking {len(take)} "
+    print(f"\n{len(todo)} cut Short(s) unpublished; taking {len(take)} "
           f"({cost} of {DAILY_UNITS} units). {cadence_why}\n")
-    for slug, t in zip(take, when):
-        print(f"  {t.astimezone(SHORTS_TZ):%a %d %b %H:%M %Z}  {slug}")
+    for p, t in planned:
+        print(f"  {t.astimezone(SHORTS_TZ):%a %d %b %H:%M %Z}  {p.label}")
     if dry_run:
         print("\nDRY RUN - nothing cut or uploaded.")
         return 0
@@ -639,15 +763,20 @@ def run(limit: int = 2, dry_run: bool = False) -> int:
             # named, actionable stop belongs.
             code, msg, unblock = up.credential_stop(creds, cfg)
             st.named_stop(code, f"{len(take)} Short(s) are ready but " + msg,
-                          detail={"ready": take}, unblock=unblock)
+                          detail={"ready": [p.label for p in take]},
+                          unblock=unblock)
         token = up.access_token(creds)
-        for slug, t in zip(take, when):
-            path = cut(slug)
-            if path is None:
-                st.note(f"{slug}: no Short produced; left for the next run")
-                continue
-            st.work(f"cut {path.name}")
-            upload_short(st, token, slug, B.question_for(slug), path, t)
+        for p, t in planned:
+            if p.rank == 1:
+                path = cut(p.slug)
+                if path is None:
+                    st.note(f"{p.slug}: no Short produced; left for the next run")
+                    continue
+                st.work(f"cut {path.name}")
+            else:
+                path = SHORTS_DIR / short_file(p.slug, p.rank)
+            upload_short(st, token, p.slug, B.question_for(p.slug), path, t,
+                         rank=p.rank)
     return 0
 
 

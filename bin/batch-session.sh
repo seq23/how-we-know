@@ -296,15 +296,23 @@ echo "  to render now : ${pending_render:-none}"
 # what is new and skips what is already there.
 shelve_shorts() {
   echo; echo "--- shorts: cut what is rendered and uncut, then shelve ---"
-  local uncut
-  uncut=$($PY -c "import sys; sys.path.insert(0,'loop'); import shorts_lane; print(' '.join(shorts_lane.uncut()))") || {
+  # Grouped by how many cuts the episode may publish (shorts_lane.cut_groups):
+  # deep sea 3, everything else 1 (owner build 2026-10-08). --keep-existing
+  # means a cut already on disk - possibly already on the channel - is never
+  # re-rendered; only the missing ranks are cut.
+  local groups
+  groups=$($PY -c "import sys; sys.path.insert(0,'loop'); import shorts_lane
+for n, s in sorted(shorts_lane.cut_groups().items()): print(n, ' '.join(s))") || {
     echo "  shorts_lane.uncut() refused - this machine holds no finished render"; return 0; }
-  if [ -n "${uncut// }" ]; then
-    echo "  uncut: $uncut"
-    # shellcheck disable=SC2086
-    bin/make-shorts.sh $uncut || echo "  make-shorts.sh rc=$? - whatever it did cut is shelved below; the rest is retried tomorrow"
+  if [ -n "${groups// }" ]; then
+    while read -r n slugs; do
+      [ -n "$slugs" ] || continue
+      echo "  uncut (x$n): $slugs"
+      # shellcheck disable=SC2086
+      bin/make-shorts.sh --count "$n" --keep-existing $slugs || echo "  make-shorts.sh rc=$? - whatever it did cut is shelved below; the rest is retried tomorrow"
+    done <<< "$groups"
   else
-    echo "  every finished render already has a Short cut"
+    echo "  every finished render already has its Shorts cut"
   fi
   if [ -x bin/push-to-r2.sh ]; then
     bin/push-to-r2.sh

@@ -1073,3 +1073,19 @@ published video.
 with `pending()` returning queue order and the deficit pick inverted, 3 checks fail; restored, 0.
 
 **Not built (owner's call).** Email capture and a field guide — revisit at ~1,000 subscribers.
+
+## 2026-10-08 — deep sea publishes all three cut Shorts; materials stays at one
+
+Owner, follow-up to #153: "more deep-sea Shorts, since they bring 93% of views". Every
+deep-sea episode already had three verified cuts (ranks 1-3) on the Mac; only rank 1 was
+ever shelved or published. Now `shorts_topics.cuts_per_episode` (deep sea 3, default 1)
+drives `shorts_lane.cuts_for`, and the ledger, R2 shelf keys, `pending()` and the nightly
+cut (`cut_groups`, `make-shorts.sh --count N --keep-existing`) are rank-aware. Spacing is
+the existing evening ladder and cadence; `plan()` never puts two Shorts from one episode
+on the same local day (a slot only that episode could take stays empty), and inside a
+domain every rank 1 airs before any rank 2. The 3:1 mix is unchanged. Quota logic is
+unchanged: one Short costs what it did. Published videos are not touched.
+
+Supply: deep sea goes from ~2 Shorts/week (rank 1 of two new episodes) to ~6/week steady
+state, with 34 rank-2/3 cuts already on disk as an immediate backlog.
+Guard: loop/tests/test_shorts_deep_sea_all_cuts.py (26 checks).

@@ -2014,8 +2014,8 @@ def v27_lanes_see_every_domain() -> Result:
         # from 2026-09-14 - read as a domain the lane could not see, and the
         # breaker tripped on a finished job. What the lane can SEE is what it
         # iterates: its pending set plus the slugs its own ledger says are done.
-        seen = {_dom.domain_of_slug(s)
-                for s in _sl.pending(have=lambda _s: True)}
+        seen = {_dom.domain_of_slug(p_.slug)
+                for p_ in _sl.pending(have=lambda *_a: True)}
         seen |= {_dom.domain_of_slug(r_["slug"])
                  for r_ in _sl.load_ledger()["published"]}
         seen.discard(None)
