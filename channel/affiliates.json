@@ -1,7 +1,7 @@
 {
   "_what": "THE one config for affiliate links in NEW episode descriptions (loop/affiliates.py reads it; loop/upload.py build_payload places the block). Owner-approved build, 2026-10-08. Published videos are never re-described from here.",
   "_ids_note": "Both IDs are deliberately EMPTY until the owner has accounts. Empty means every link is a plain store link with no tracking parameter at all. Paste the Amazon Associates tracking ID (looks like name-20) into amazon_associates_tag and/or the Bookshop.org affiliate ID into bookshop_affiliate_id; nothing else changes. Sign-up: https://affiliate-program.amazon.com/ and https://bookshop.org/affiliates",
-  "amazon_associates_tag": "",
+  "amazon_associates_tag": "seq23-20",
   "bookshop_affiliate_id": "",
   "heading": "Books and references cited in this episode:",
   "disclosure": "Disclosure: the links in this list may be affiliate links. If you buy through them, How We Know may earn a commission at no extra cost to you.",
