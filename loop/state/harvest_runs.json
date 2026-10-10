@@ -54,19 +54,19 @@
   },
   "research/imagery_video.py": {
     "host": "mac-batch",
-    "last_run_at": "2026-10-03T11:49:51+00:00",
+    "last_run_at": "2026-10-10T04:52:04+00:00",
     "ok": true,
     "exit": 0,
-    "week": "2026-W40",
-    "records": 149,
+    "week": "2026-W41",
+    "records": 163,
     "tail": [
-      "  rejected   43  gate 0-size",
+      "  rejected   42  gate 0-size",
       "  rejected    1  gate C-window",
       "  carried forward 4 previously-accepted clip(s)",
-      "downloaded 145 clips -> /Users/sequoiataylor/GitHub/how-we-know/channel/imagery/clips",
+      "downloaded 159 clips -> /Users/sequoiataylor/GitHub/how-we-know/channel/imagery/clips",
       "manifest -> /Users/sequoiataylor/GitHub/how-we-know/channel/imagery/video_rights.json",
-      "verified 149 clips: sha256 matches, clean window present, commercial use cleared"
+      "verified 163 clips: sha256 matches, clean window present, commercial use cleared"
     ],
-    "last_success_at": "2026-10-03T11:49:51+00:00"
+    "last_success_at": "2026-10-10T04:52:04+00:00"
   }
 }
