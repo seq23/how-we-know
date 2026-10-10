@@ -22,7 +22,7 @@
       "pin_errors"
     ]
   },
-  "generated_at": "2026-10-03T10:09:08.104572+00:00",
+  "generated_at": "2026-10-10T10:09:31.282855+00:00",
   "generator": "research/publish_order.py",
   "rule": "pov/topic-taxonomy.json: 'Rank candidates by (search demand / competition).' Implemented as a hard GATE on both axes, then a geometric combined score among survivors.",
   "gate": {
@@ -317,7 +317,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-03T10:08:59.000447+00:00"
+          "fetched_utc": "2026-10-10T10:09:21.664623+00:00"
         }
       },
       "competition": {
@@ -396,7 +396,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-03T10:08:54.431574+00:00"
+          "fetched_utc": "2026-10-10T10:09:16.786534+00:00"
         }
       },
       "competition": {
@@ -474,7 +474,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-03T10:08:50.770596+00:00"
+          "fetched_utc": "2026-10-10T10:09:12.965577+00:00"
         }
       },
       "competition": {
@@ -552,7 +552,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-03T10:09:02.634148+00:00"
+          "fetched_utc": "2026-10-10T10:09:25.508363+00:00"
         }
       },
       "competition": {
@@ -632,7 +632,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-03T10:09:08.103954+00:00"
+          "fetched_utc": "2026-10-10T10:09:31.282420+00:00"
         }
       },
       "competition": {
@@ -712,7 +712,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-03T10:08:55.341294+00:00"
+          "fetched_utc": "2026-10-10T10:09:17.777470+00:00"
         }
       },
       "competition": {
@@ -793,7 +793,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-03T10:08:56.257649+00:00"
+          "fetched_utc": "2026-10-10T10:09:18.742957+00:00"
         }
       },
       "competition": {
@@ -871,7 +871,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-03T10:09:03.550051+00:00"
+          "fetched_utc": "2026-10-10T10:09:26.465137+00:00"
         }
       },
       "competition": {
@@ -952,7 +952,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-03T10:08:57.176755+00:00"
+          "fetched_utc": "2026-10-10T10:09:19.731611+00:00"
         }
       },
       "competition": {
@@ -1031,7 +1031,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-03T10:08:58.092567+00:00"
+          "fetched_utc": "2026-10-10T10:09:20.734703+00:00"
         }
       },
       "competition": {
@@ -1108,7 +1108,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-03T10:09:07.196756+00:00"
+          "fetched_utc": "2026-10-10T10:09:30.292860+00:00"
         }
       },
       "competition": {
@@ -1183,7 +1183,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-03T10:09:06.281599+00:00"
+          "fetched_utc": "2026-10-10T10:09:29.342304+00:00"
         }
       },
       "competition": {
@@ -1262,7 +1262,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-03T10:08:53.510022+00:00"
+          "fetched_utc": "2026-10-10T10:09:15.831044+00:00"
         }
       },
       "competition": {
@@ -1340,7 +1340,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-03T10:09:04.463705+00:00"
+          "fetched_utc": "2026-10-10T10:09:27.432016+00:00"
         }
       },
       "competition": {
@@ -1417,7 +1417,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-03T10:09:01.726678+00:00"
+          "fetched_utc": "2026-10-10T10:09:24.552983+00:00"
         }
       },
       "competition": {
@@ -1495,7 +1495,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-03T10:08:51.677597+00:00"
+          "fetched_utc": "2026-10-10T10:09:13.922432+00:00"
         }
       },
       "competition": {
