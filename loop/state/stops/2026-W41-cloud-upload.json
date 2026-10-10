@@ -1,7 +1,7 @@
 {
   "stage": "cloud-upload",
   "week": "2026-W41",
-  "at": "2026-10-09T14:14:55+00:00",
+  "at": "2026-10-10T14:12:44+00:00",
   "code": "NOTHING_SHELVED",
   "message": "Mac batch last ran 2026-10-04T05:30:26+00:00 (ok); 39 renders finished on the Mac; 0 held by the render gate. 13 queued episode(s) are not in the ledger and not on the R2 shelf, so they are still waiting on the Mac (narration, render or push): what-lives-in-mariana-trench, how-deep-can-a-sperm-whale-go, why-deep-sea-creatures-are-creepers, how-deep-can-whales-dive, why-are-deep-sea-creatures-so-big, what-is-hydrothermal-vents, how-are-microchips-designed, is-damascus-steel-better ...",
   "detail": {
@@ -33,8 +33,8 @@
   },
   "unblock": "For the rest, read the '=== batch session' block in ~/Library/Logs/how-we-know/batch.log. 'to narrate' and 'to render' list these slugs until they are built; bin/push-to-r2.sh shelves them afterwards.",
   "disposition": "self_resolving",
-  "disposition_why": "Queued episodes are not in the ledger and not on the R2 shelf yet: the Mac's nightly batch is still narrating, rendering or pushing them, and it pushes what it renders, so the shelf fills on a later night. Since 2026-09-23 this code is raised ONLY in that state and names the waiting slugs in detail.awaiting_mac. An empty shelf because the whole queue is uploaded is PUBLISH_QUEUE_UPLOADED, and scripts stuck outside the queue are AUTHORED_NOT_QUEUED (see loop/cloud_upload.py diagnose_empty_shelf). (run 5 of at most 7 before this escalates to a human.)",
-  "consecutive": 5,
+  "disposition_why": "Queued episodes are not in the ledger and not on the R2 shelf yet: the Mac's nightly batch is still narrating, rendering or pushing them, and it pushes what it renders, so the shelf fills on a later night. Since 2026-09-23 this code is raised ONLY in that state and names the waiting slugs in detail.awaiting_mac. An empty shelf because the whole queue is uploaded is PUBLISH_QUEUE_UPLOADED, and scripts stuck outside the queue are AUTHORED_NOT_QUEUED (see loop/cloud_upload.py diagnose_empty_shelf). (run 6 of at most 7 before this escalates to a human.)",
+  "consecutive": 6,
   "held_items": [],
   "exit_code": 0,
   "work_done_before_stop": [],
