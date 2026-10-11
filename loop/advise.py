@@ -50,7 +50,8 @@ sys.path.insert(0, str(ROOT / "loop"))
 
 import author  # noqa: E402  - reuse its key handling and HTTP client
 
-MODEL = "anthropic/claude-sonnet-4.5"
+# Free models only since 2026-10-11: the model is author.configured_model(),
+# which loop/llm_router.py restricts to config/llm_routing.json. Was Sonnet 4.5.
 MAX_ADVICE_CHARS = 4000
 
 AIMS = """\
@@ -144,7 +145,8 @@ def advise(report: dict, cfg: dict, videos: list[dict]) -> dict:
                        "$OPENROUTER_API_KEY - advisory skipped, review unaffected"}
     try:
         out = author.call_openrouter(build_prompt(report, cfg, videos),
-                                     MODEL, key, timeout=120)
+                                     author.configured_model(), key,
+                                     timeout=120)
         text = (out["choices"][0]["message"]["content"] or "").strip()
         if not text:
             return {"ok": False, "text": "", "cost": None,

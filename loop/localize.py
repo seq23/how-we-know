@@ -525,6 +525,13 @@ def run(limit: int = 15, dry_run: bool = False,
             for lang, key in missing:
                 try:
                     got = translate(lang, en_title, en_desc, api_key, model)
+                except author.llm_router.LLMStop as e:
+                    # A refused key, no free model answering, or a non-zero
+                    # cost is the same for every language: stop by name
+                    # rather than note it five times per video.
+                    save(CACHE_FILE, cache)
+                    st.named_stop(e.code, f"{slug} [{lang}]: {e.message}",
+                                  detail=e.detail, unblock=e.unblock)
                 except Exception as e:                      # noqa: BLE001
                     # One language failing must not cost the other four, and
                     # must never take the lane down.

@@ -88,11 +88,19 @@ GENERATED = {
     "DRY_RUN_NO_CREDENTIALS":      ("r2.py", '"DRY_RUN_NO_CREDENTIALS"'),
     "SHORTS_UNVERIFIED":           ("r2.py", '"SHORTS_UNVERIFIED"'),
     "OPENROUTER_KEY_MISSING":      ("author.py", '"OPENROUTER_KEY_MISSING"'),
-    "OPENROUTER_UNAUTHORISED":     ("author.py", '"OPENROUTER_UNAUTHORISED"'),
-    "OPENROUTER_OUT_OF_CREDIT":    ("author.py", '"OPENROUTER_OUT_OF_CREDIT"'),
-    "OPENROUTER_RATE_LIMITED":     ("author.py", '"OPENROUTER_RATE_LIMITED"'),
-    "OPENROUTER_ERROR":            ("author.py", '"OPENROUTER_ERROR"'),
+    # The free route (2026-10-11) names the provider's refusals itself;
+    # author/extend/localize/comments pass them through by e.code.
+    "OPENROUTER_KEY_DISABLED_OR_INVALID":
+                                   ("llm_router.py", '"OPENROUTER_KEY_DISABLED_OR_INVALID"'),
+    "OPENROUTER_NO_FREE_MODEL":    ("llm_router.py", '"OPENROUTER_NO_FREE_MODEL"'),
+    "OPENROUTER_PAID_MODEL_REFUSED":
+                                   ("llm_router.py", '"OPENROUTER_PAID_MODEL_REFUSED"'),
+    "OPENROUTER_PAID_COST_REFUSED":
+                                   ("llm_router.py", '"OPENROUTER_PAID_COST_REFUSED"'),
     "OPENROUTER_UNREACHABLE":      ("author.py", '"OPENROUTER_UNREACHABLE"'),
+    # The Monday lane picks AUTHOR_REQUIRED unless every slot failed for one
+    # route-wide reason (loop/draft.py, 2026-10-11).
+    "AUTHOR_REQUIRED":             ("draft.py", 'else "AUTHOR_REQUIRED"'),
     "DRAFT_FAILED_VALIDATION":     ("author.py", '"DRAFT_FAILED_VALIDATION"'),
     "TOPIC_EXCLUDED":              ("author.py", '"TOPIC_EXCLUDED"'),
     "INSUFFICIENT_DOMAIN_EVIDENCE": ("domains.py", '"INSUFFICIENT_DOMAIN_EVIDENCE"'),

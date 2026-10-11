@@ -63,6 +63,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # The authoring lane. Absent -> a named OPENROUTER_KEY_MISSING stop
           # and the week ships whatever inventory covers; never a crash.
+          # No OPENROUTER_MODEL here since 2026-10-11: loop/llm_router.py
+          # picks from config/llm_routing.json, which holds $0 models only.
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-          OPENROUTER_MODEL: ${{ vars.OPENROUTER_MODEL }}
         run: bin/loop-stage.sh mon-draft loop/draft.py

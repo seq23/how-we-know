@@ -238,11 +238,6 @@
       "max_consecutive": 2,
       "escalation": "Two runs of 5xx in a row outlives any normal Google incident - check the request shape, and remember that estimatedRevenue beside ordinary metrics fails the WHOLE call."
     },
-    "OPENROUTER_RATE_LIMITED": {
-      "why": "The model provider rate-limited this run. No draft was written from a truncated answer and the lane retries on its next schedule.",
-      "max_consecutive": 3,
-      "escalation": "Three rate-limited runs in a row means the account is at a sustained limit, not a burst - the lane needs a smaller batch or a different model."
-    },
     "OPENROUTER_UNREACHABLE": {
       "why": "A transient network failure reaching OpenRouter. Nothing was written; the lane retries on its next schedule.",
       "max_consecutive": 3,
@@ -343,6 +338,11 @@
       "why": "Same deferral, named by validator V46 that observed it: a live Short or video that the hand-off lane has recorded as deferred for quota in loop/state/handoff.json within the last two days. Nothing is lost; the lane finishes it on its next run.",
       "max_consecutive": 5,
       "escalation": "See HANDOFF_QUOTA_DEFERRED."
+    },
+    "OPENROUTER_NO_FREE_MODEL": {
+      "why": "Every $0 model in config/llm_routing.json failed this run (free-tier rate limit, upstream outage, or an empty answer). Nothing was written from a partial answer and there is no paid fallback by owner policy (2026-10-11); the lane retries on its next schedule.",
+      "max_consecutive": 3,
+      "escalation": "Three runs with no free model answering is not a burst: a listed model has probably been withdrawn or gated. Refresh config/llm_routing.json from https://openrouter.ai/api/v1/models (keep only ':free' 0/0 models, >=32k context) and re-run; detail lists each model's failure."
     }
   },
   "owner_action": {
@@ -450,24 +450,6 @@
         "what": "OPENROUTER_API_KEY"
       }
     },
-    "OPENROUTER_UNAUTHORISED": {
-      "why": "The model key was rejected. Only she can replace it.",
-      "max_consecutive": 3,
-      "escalation": "See OPENROUTER_KEY_MISSING.",
-      "holds": {
-        "kind": "credential",
-        "what": "OPENROUTER_API_KEY"
-      }
-    },
-    "OPENROUTER_OUT_OF_CREDIT": {
-      "why": "The model account has no credit. Only she can top it up.",
-      "max_consecutive": 3,
-      "escalation": "Three runs out of credit means authoring has stopped, and the runway warning that would have told her is itself produced by an authoring lane. Go red.",
-      "holds": {
-        "kind": "account",
-        "what": "the OpenRouter account's credit"
-      }
-    },
     "EXTEND_KEY_MISSING": {
       "why": "The extension lane's model key is absent. Episodes under the runtime floor stay unextended; nothing is published short, because the floor gate refuses them separately.",
       "max_consecutive": 3,
@@ -511,6 +493,15 @@
       "holds": {
         "kind": "credential",
         "what": "the lane's repository secrets (named in the stop)"
+      }
+    },
+    "OPENROUTER_KEY_DISABLED_OR_INVALID": {
+      "why": "OpenRouter refused the key on the free route (HTTP 401, or 401/402/403 from every free model in config/llm_routing.json). Since 2026-10-11 the key has a $0 credit limit and only $0 models are ever called, so this is the key itself being revoked, disabled or invalid - never a balance to top up. Only she can mint a key. Supersedes OPENROUTER_UNAUTHORISED and OPENROUTER_OUT_OF_CREDIT (retired 2026-10-11 with the paid route); a free-tier rate limit is now OPENROUTER_NO_FREE_MODEL, superseding OPENROUTER_RATE_LIMITED.",
+      "max_consecutive": 3,
+      "escalation": "Three runs refused means every model lane (Monday authoring, extension, localisation, comments, monthly advisory) is dark. Mint a key at https://openrouter.ai/settings/keys ($0 limit is fine) and set OPENROUTER_API_KEY and .secrets/openrouter_key.txt.",
+      "holds": {
+        "kind": "credential",
+        "what": "OPENROUTER_API_KEY"
       }
     }
   },
@@ -604,6 +595,8 @@
     "COMMENT_ACTION_REJECTED": "YouTube refused a hide or a reply (HTTP 4xx). Actions before it were applied and recorded; this one and the rest were not. Usually a missing youtube.force-ssl scope or a comment the author already deleted.",
     "RUNWAY_CRITICAL": "The runway is under the critical floor: the channel is close to going dark and the automated refill has not kept up. A real production failure.",
     "RUNWAY_*": "Any other runway level is an unknown state of loop/cadence.runway() - a defect.",
-    "HANDOFF_WRITE_REJECTED": "YouTube refused a hand-off write (videos.update, playlistItems.insert, commentThreads.insert or playlists.insert) with something other than a quota error. Everything before it was applied and recorded; the next run retries only what is missing. A 403 here is a scope problem (the token needs https://www.googleapis.com/auth/youtube and force-ssl for comments); a 404 is a video that no longer exists under that id."
+    "HANDOFF_WRITE_REJECTED": "YouTube refused a hand-off write (videos.update, playlistItems.insert, commentThreads.insert or playlists.insert) with something other than a quota error. Everything before it was applied and recorded; the next run retries only what is missing. A 403 here is a scope problem (the token needs https://www.googleapis.com/auth/youtube and force-ssl for comments); a 404 is a video that no longer exists under that id.",
+    "OPENROUTER_PAID_MODEL_REFUSED": "A lane or variable ($OPENROUTER_MODEL, $OPENROUTER_COMMENTS_MODEL) named a model outside config/llm_routing.json. Owner policy 2026-10-11: nothing paid. Refused before the network; a configuration defect to fix, never to work around.",
+    "OPENROUTER_PAID_COST_REFUSED": "OpenRouter reported a non-zero cost for a model listed as free. The repo may spend $0 (owner, 2026-10-11), so the call's result is discarded and the lane stops loudly. A listed model changed price: refresh config/llm_routing.json."
   }
 }

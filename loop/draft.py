@@ -512,17 +512,32 @@ def main() -> None:
 
         if unauthored:
             # The FALLBACK, not the normal path: generation failed or its
-            # output failed validation for these rows.
+            # output failed validation for these rows. Every one of these -
+            # an unusable free-model draft included - lands HERE, and the
+            # topic is re-selected next Monday on the same free route; there
+            # is no paid retry (loop/llm_router.py, owner 2026-10-11). Only
+            # when EVERY slot failed for the same route-wide reason (the key
+            # was refused, or no free model answered) is that reason the
+            # stop's own code, so a credential problem is not read as a
+            # generator having a bad day.
+            codes = {t.get("author_stop") for t in unauthored}
+            route_wide = (author.llm_router.KEY_DISABLED,
+                          author.llm_router.NO_FREE_MODEL)
+            stop_code = (codes.pop() if len(codes) == 1
+                         and next(iter(codes)) in route_wide
+                         else "AUTHOR_REQUIRED")
             st.named_stop(
-                "AUTHOR_REQUIRED",
+                stop_code,
                 f"{len(unauthored)} slot(s) could not be authored automatically; "
                 f"briefs were written to loop/briefs/. The week still ships "
                 f"{len(items)} video(s).",
                 detail={"briefs": [t.get("question") for t in unauthored],
                         "stops": [t.get("author_stop") for t in unauthored
                                   if t.get("author_stop")]},
-                unblock="Check the stop codes above. If OPENROUTER_KEY_MISSING, "
-                        "put the key in .secrets/openrouter_key.txt. If "
+                unblock="Check the stop codes above. If OPENROUTER_KEY_MISSING "
+                        "or OPENROUTER_KEY_DISABLED_OR_INVALID, put a working "
+                        "key in .secrets/openrouter_key.txt / the "
+                        "OPENROUTER_API_KEY secret. If "
                         "DRAFT_FAILED_VALIDATION, the brief in loop/briefs/ is "
                         "ready for a human.")
 

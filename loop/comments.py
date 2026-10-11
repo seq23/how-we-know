@@ -73,12 +73,12 @@ CLASSES = ("negative", "question", "praise", "spam", "other")
 ACTIONS = ("hide", "reply", "ignore")
 REPORTED = ("negative", "question")
 CLASSIFY_BATCH = 40
-# The cheapest model on the repo's route. Classification of a forty-comment
-# batch is a few hundred output tokens; author.DEFAULT_MODEL (Sonnet) would
-# cost ~5x for the same label. Overridable, never empty (see
-# author.configured_model for why an empty variable is "unset").
+# A $0 model since 2026-10-11 (was anthropic/claude-haiku-4.5). Overridable,
+# never empty (see author.configured_model for why an empty variable is
+# "unset"), and an override outside config/llm_routing.json is refused by
+# loop/llm_router.py before the network: OPENROUTER_PAID_MODEL_REFUSED.
 CLASSIFY_MODEL = (os.environ.get("OPENROUTER_COMMENTS_MODEL", "").strip()
-                  or "anthropic/claude-haiku-4.5")
+                  or author.DEFAULT_MODEL)
 UNIT_LIST, UNIT_WRITE = 1, 50
 
 DRY_RUN = os.environ.get("LOOP_DRY_RUN") == "1"
@@ -372,6 +372,9 @@ def sweep(out_path: Path, limit_videos: int | None) -> int:
                               unblock="Nothing was recorded for this batch; "
                                       "re-run. If it repeats, the model or "
                                       "prompt changed shape.")
+            except author.llm_router.LLMStop as e:
+                st.named_stop(e.code, e.message, detail=e.detail,
+                              unblock=e.unblock)
             except urllib.error.URLError as e:
                 st.named_stop("OPENROUTER_UNREACHABLE", str(e))
             cost += c

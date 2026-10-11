@@ -216,13 +216,22 @@ def extend_one(item: dict, st: Stage, dry_run: bool = False) -> dict:
     # heal" mean "stop, more politely".
     merged, urls, problems = "", [], []
     for attempt in range(1, author.MAX_ATTEMPTS + 1):
-        resp = author.call_openrouter(messages, author.DEFAULT_MODEL, key)
+        try:
+            resp = author.call_openrouter(messages, author.configured_model(),
+                                          key)
+        except author.llm_router.LLMStop as e:
+            # Free route only (loop/llm_router.py): a refused key, no free
+            # model answering, or a cost above $0 stops here by name. The
+            # script is unchanged and the floor gate keeps holding it.
+            st.named_stop(e.code, f"{slug}: {e.message}", detail=e.detail,
+                          unblock=e.unblock)
+        model_used = resp.get("model_used") or author.configured_model()
         choice = (resp.get("choices") or [{}])[0]
         new_text = ((choice.get("message") or {}).get("content") or "").strip()
         new_text = re.sub(r"^```(?:markdown|md)?\s*\n|\n```\s*$", "", new_text)
         finish = choice.get("finish_reason") or choice.get("native_finish_reason")
         usage = resp.get("usage") or {}
-        author.record_spend(slug, author.DEFAULT_MODEL, usage,
+        author.record_spend(slug, model_used, usage,
                             usage.get("cost"), attempt, bool(new_text))
 
         problems = []
