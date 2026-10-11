@@ -1,76 +1,72 @@
 {
-  "week": "2026-W40",
-  "generated": "2026-10-04T11:19:48+00:00",
+  "week": "2026-W41",
+  "generated": "2026-10-11T10:04:29+00:00",
   "videos_per_week": 4,
   "cadence_ceiling_note": "Deliberate. Never raised to clear a backlog.",
   "selection_mode": "automatic",
   "owner_involvement": "notified, not asked",
   "selected": [
     {
-      "slug": "how-do-scientists-know-so-much",
-      "question": "How do scientists know so much about the deep ocean when we've explored so little of it?",
-      "script": "scripts/how-do-scientists-know-so-much.md",
-      "source": "authored-inventory",
-      "publish_rank": 17,
-      "front_loaded": false,
-      "needs_authoring": false,
-      "pov_id": "pov-058",
-      "pov_line": "'Scientists say' is almost meaningless on its own. Which scientists? How many? Was it one paper? Was it replicated?",
-      "pov_tag": "authority",
-      "pov_tier": "transferable",
-      "pov_matched_by": "hand assignment in pov/pov-assignments.json"
+      "slug": "what-lives-in-mariana-trench",
+      "question": "what lives in mariana trench",
+      "script": "loop/drafts/what-lives-in-mariana-trench.md",
+      "source": "publish-queue",
+      "queue_file": "publish_order_deep_sea_ocean_science.json",
+      "needs_authoring": true,
+      "pov_id": "pov-001",
+      "pov_line": "When I picture the deep ocean I don't see blue water or fish. I see black. A massive amount of black space where you can't tell what's beside you or beneath you.",
+      "pov_tag": "scale",
+      "pov_tier": "specific",
+      "pov_matched_by": "tag:scale score 5.6"
     },
     {
-      "slug": "how-do-scientists-know-how-old-something-is",
-      "question": "How do scientists know how old something is?",
-      "script": "scripts/how-do-scientists-know-how-old-something-is.md",
-      "source": "authored-inventory",
-      "publish_rank": 18,
-      "front_loaded": false,
-      "needs_authoring": false,
-      "pov_id": "pov-059",
-      "pov_line": "I'm not anti-science. I'm against using science as a magic authority word that means nobody has to show their work.",
-      "pov_tag": "authority",
+      "slug": "how-deep-can-a-sperm-whale-go",
+      "question": "how deep can a sperm whale go",
+      "script": "loop/drafts/how-deep-can-a-sperm-whale-go.md",
+      "source": "publish-queue",
+      "queue_file": "publish_order_deep_sea_ocean_science.json",
+      "needs_authoring": true,
+      "pov_id": "pov-038",
+      "pov_line": "How do we know an animal behaves a certain way when we've seen it three times?",
+      "pov_tag": "evidence",
       "pov_tier": "transferable",
-      "pov_matched_by": "hand assignment in pov/pov-assignments.json"
+      "pov_matched_by": "transferable fallback (tag:evidence); no tag signal fired for this subject"
     },
     {
-      "slug": "how-do-scientists-know-about-other-galaxies",
-      "question": "How do scientists know about other galaxies?",
-      "script": "scripts/how-do-scientists-know-about-other-galaxies.md",
-      "source": "authored-inventory",
-      "publish_rank": 19,
-      "front_loaded": false,
-      "needs_authoring": false,
-      "pov_id": "pov-060",
-      "pov_line": "Science is a process. It is not a person behind a curtain handing down permanent answers.",
-      "pov_tag": "authority",
-      "pov_tier": "transferable",
-      "pov_matched_by": "hand assignment in pov/pov-assignments.json"
+      "slug": "why-deep-sea-creatures-are-creepers",
+      "question": "why deep sea creatures are creepers",
+      "script": "loop/drafts/why-deep-sea-creatures-are-creepers.md",
+      "source": "publish-queue",
+      "queue_file": "publish_order_deep_sea_ocean_science.json",
+      "needs_authoring": true,
+      "pov_id": "pov-002",
+      "pov_line": "It feels quiet, but not peaceful quiet. More like being somewhere you were never designed to be.",
+      "pov_tag": "scale",
+      "pov_tier": "specific",
+      "pov_matched_by": "tag:scale score 2.8"
     },
     {
-      "slug": "why-deep-sea-fish-die-when-brought-to-surface",
-      "question": "Why do deep sea fish die when brought to the surface?",
-      "script": "scripts/why-deep-sea-fish-die-when-brought-to-surface.md",
-      "source": "authored-inventory",
-      "publish_rank": 20,
-      "front_loaded": false,
-      "needs_authoring": false,
-      "pov_id": "pov-138",
-      "pov_line": "I'd want to stop if this channel began rewarding certainty more than truth \u2014 selecting evidence to protect the brand, repeating numbers because they performed well, turning unresolved questions into clean stories. The moment it can't correct itself without treating correction as humiliation, it has become the thing it was built to expose.",
-      "pov_tag": "trust",
+      "slug": "how-deep-can-whales-dive",
+      "question": "how deep can whales dive",
+      "script": "loop/drafts/how-deep-can-whales-dive.md",
+      "source": "publish-queue",
+      "queue_file": "publish_order_deep_sea_ocean_science.json",
+      "needs_authoring": true,
+      "pov_id": "pov-085",
+      "pov_line": "It doesn't bother me that instruments extend what we can know. Human senses are extremely limited. That's the point of technology.",
+      "pov_tag": "instruments",
       "pov_tier": "transferable",
-      "pov_matched_by": "hand assignment in pov/pov-assignments.json"
+      "pov_matched_by": "tag:instruments score 2.0"
     }
   ],
-  "to_author": 0,
+  "to_author": 4,
   "inventory_remaining": 0,
   "cadence": {
     "videos_per_week": 4,
     "why": "configured default (4/week)"
   },
   "publish_order": {
-    "ranked": 4,
+    "ranked": 0,
     "unranked": 3,
     "unranked_slugs": [
       "how-deep-mariana-trench",
@@ -86,7 +82,7 @@
     "queued_despite_kill": [],
     "order_entries": 51,
     "source": "research/publish_order.json",
-    "generated_at": "2026-10-03T10:09:08.104572+00:00",
+    "generated_at": "2026-10-10T10:09:31.282855+00:00",
     "generator": "research/publish_order.py",
     "status": "PRODUCTION",
     "episodes_ranked": null,
@@ -94,36 +90,36 @@
     "saturated_tail": []
   },
   "runway": {
-    "unpublished_scripts": 11,
-    "publishable": 4,
+    "unpublished_scripts": 7,
+    "publishable": 0,
     "scheduled_not_yet_aired": 17,
     "basis": "publish queue",
     "videos_per_week": 4,
-    "weeks_remaining": 5.2,
+    "weeks_remaining": 4.2,
     "warn_below_weeks": 4.0,
     "critical_below_weeks": 2.0,
     "level": "ok",
     "by_domain": {
       "deep-sea-ocean-science": {
         "slots_per_week": 2,
-        "queued": 10,
-        "scheduled_ahead": 7,
-        "weeks": 8.5,
+        "queued": 6,
+        "scheduled_ahead": 9,
+        "weeks": 7.5,
         "level": "ok",
-        "message": "deep-sea-ocean-science: 8.5 week(s) at 2/week (10 queued, 7 already dated)"
+        "message": "deep-sea-ocean-science: 7.5 week(s) at 2/week (6 queued, 9 already dated)"
       },
       "materials-and-manufacturing": {
         "slots_per_week": 2,
         "queued": 7,
-        "scheduled_ahead": 10,
-        "weeks": 8.5,
+        "scheduled_ahead": 8,
+        "weeks": 7.5,
         "level": "ok",
-        "message": "materials-and-manufacturing: 8.5 week(s) at 2/week (7 queued, 10 already dated)"
+        "message": "materials-and-manufacturing: 7.5 week(s) at 2/week (7 queued, 8 already dated)"
       }
     },
     "short_domains": [],
     "never_go_dark": true,
-    "message": "5.2 weeks of queue at 4/week (4 publishable of 11 on disk). By domain: deep-sea-ocean-science: 8.5 week(s) at 2/week (10 queued, 7 already dated); materials-and-manufacturing: 8.5 week(s) at 2/week (7 queued, 10 already dated)."
+    "message": "4.2 weeks of queue at 4/week (0 publishable of 7 on disk). By domain: deep-sea-ocean-science: 7.5 week(s) at 2/week (6 queued, 9 already dated); materials-and-manufacturing: 7.5 week(s) at 2/week (7 queued, 8 already dated)."
   },
   "gate": {
     "authority": "pov/topic-taxonomy.json",
@@ -654,8 +650,8 @@
     }
   ],
   "candidate_skips": {
-    "already_published": 2,
-    "already_authored": 5,
+    "already_published": 5,
+    "already_authored": 2,
     "excluded": 15
   },
   "override": {
