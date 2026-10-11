@@ -136,11 +136,29 @@ def check() -> list[str]:
         examined += 1
         want = int(cfg["cadence"]["scale"]["to"])
         ok4, _ = cadence.queue_supports(want)
-        if ok4 and n2 != want:
-            fails.append(f"the queue supports {want}/week but the cadence "
-                         f"resolved to {n2} ({why2})")
-        if not ok4 and f"NOT scaled to {want}" not in why2:
-            fails.append(f"the scale was withheld without saying so: {why2!r}")
+        if live >= want:
+            # The owner has already set the cadence at (or above) the scale
+            # target, so the scale has no decision to make - cadence.effective
+            # only weighs it when want > n. Found 2026-10-11 when the queue
+            # stopped supporting 4/week (2026-W41 state) and this test began
+            # demanding a "NOT scaled" sentence for a scale that correctly
+            # never ran. The truth to pin: the owner's number holds whatever
+            # the queue says, and nothing claims a scale decision either way.
+            if n2 != live:
+                fails.append(f"the owner set {live}/week, at or above the "
+                             f"scale target {want}, but the cadence resolved "
+                             f"to {n2} ({why2})")
+            if "scaled to" in why2:
+                fails.append(f"the cadence claims a scale decision the scale "
+                             f"never made (configured {live} >= {want}): "
+                             f"{why2!r}")
+        else:
+            if ok4 and n2 != want:
+                fails.append(f"the queue supports {want}/week but the cadence "
+                             f"resolved to {n2} ({why2})")
+            if not ok4 and f"NOT scaled to {want}" not in why2:
+                fails.append(f"the scale was withheld without saying so: "
+                             f"{why2!r}")
     finally:
         if backup_ev is not None:
             ev_file.write_text(backup_ev)
