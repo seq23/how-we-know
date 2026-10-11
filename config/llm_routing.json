@@ -1,0 +1,63 @@
+{
+  "_why": [
+    "Owner policy 2026-10-11, verbatim: \"nothing should be paid ... cut the probes and make them free.\"",
+    "The repo's OpenRouter key now has a $0 monthly credit limit. Every model call in this repo goes through loop/llm_router.py, which sends ONLY the models below, in this order, with a per-request max price of 0, and fails loudly if OpenRouter ever reports a non-zero cost.",
+    "There is no paid fallback. A refused key is the named stop OPENROUTER_KEY_DISABLED_OR_INVALID; no free model answering is OPENROUTER_NO_FREE_MODEL.",
+    "Refresh: fetch https://openrouter.ai/api/v1/models (no key needed), keep only ':free' text models priced 0/0 with >= 32k context, strongest general instruct model first, update snapshot_date. loop/tests/test_llm_routing.py enforces the shape."
+  ],
+  "snapshot_date": "2026-10-11",
+  "source": "https://openrouter.ai/api/v1/models",
+  "max_cost_usd": 0,
+  "paid_fallback": false,
+  "min_context_length": 32000,
+  "models": [
+    {
+      "id": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "context_length": 1000000,
+      "max_completion_tokens": 65536,
+      "pricing": {
+        "prompt": "0",
+        "completion": "0"
+      }
+    },
+    {
+      "id": "nvidia/nemotron-3-super-120b-a12b:free",
+      "context_length": 262144,
+      "max_completion_tokens": 235929,
+      "pricing": {
+        "prompt": "0",
+        "completion": "0"
+      }
+    },
+    {
+      "id": "google/gemma-4-31b-it:free",
+      "context_length": 262144,
+      "max_completion_tokens": 32768,
+      "pricing": {
+        "prompt": "0",
+        "completion": "0"
+      }
+    },
+    {
+      "id": "google/gemma-4-26b-a4b-it:free",
+      "context_length": 262144,
+      "max_completion_tokens": 32768,
+      "pricing": {
+        "prompt": "0",
+        "completion": "0"
+      }
+    }
+  ],
+  "excluded": {
+    "thinkingmachines/inkling:free": "listed $0 but answers HTTP 403 'only available on agentic harnesses' to this repo's key (probed 2026-10-11)",
+    "openrouter/free": "a meta-router to an unspecified free model; the route here must name its model",
+    "inclusionai/ling-3.1-flash": "$0 today but not a ':free' variant, so its price can change without a new id"
+  },
+  "probe_2026_10_11": {
+    "nvidia/nemotron-3-ultra-550b-a55b:free": "answered, reported cost 0",
+    "nvidia/nemotron-3-super-120b-a12b:free": "answered, reported cost 0",
+    "google/gemma-4-31b-it:free": "HTTP 429 upstream rate limit (transient; kept as fallback)",
+    "google/gemma-4-26b-a4b-it:free": "HTTP 429 upstream rate limit (transient; kept as fallback)",
+    "anthropic/claude-haiku-4.5 (paid, control)": "HTTP 403 Key limit exceeded - the $0 credit limit refuses paid calls"
+  }
+}

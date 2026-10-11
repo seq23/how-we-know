@@ -39,6 +39,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import domain_sources  # noqa: E402
 import durations  # noqa: E402
 import exclusions  # noqa: E402
+import llm_router  # noqa: E402
 import opening  # noqa: E402
 import pov_match  # noqa: E402
 from common import LOOP, ROOT, config, now, read_json, write_json  # noqa: E402
@@ -83,10 +84,14 @@ SPEND = LOOP / "state" / "spend.json"
 KEY_FILE = ROOT / ".secrets" / "openrouter_key.txt"
 API = "https://openrouter.ai/api/v1/chat/completions"
 
-# Sonnet 4.5 for ~$0.07 a script. The sub-cent models exist, but this stage
-# writes factual claims with citations and a cheap model that invents a
-# plausible NOAA URL costs far more than six cents to catch.
-DEFAULT_MODEL = "anthropic/claude-sonnet-4.5"
+# $0 ONLY, since 2026-10-11 (owner: "nothing should be paid"). Until then this
+# was anthropic/claude-sonnet-4.5 at ~$0.07 a script. The model list, its order
+# and the no-paid-fallback rule live in config/llm_routing.json and are
+# enforced by loop/llm_router.py; DEFAULT_MODEL is simply the first free model
+# there. A free model that writes an unusable draft is retried on the free
+# route and then raises DRAFT_FAILED_VALIDATION, exactly as before - never a
+# paid retry. The dead-URL probe below still catches an invented citation.
+DEFAULT_MODEL = llm_router.default_model()
 
 
 def configured_model() -> str:
@@ -444,34 +449,23 @@ def build_prompt(question: str, pov: dict, domain: str = DEFAULT_DOMAIN) -> list
 
 # ---------------------------------------------------------------- the call
 
-# A transient API 500 is item 13a's textbook case: known, safe, deterministic
-# remedy (wait briefly, retry the exact same request), never masking a real
-# defect because it only fires for the specific server-side codes that mean
-# "try again", never for anything this lane's own request caused (401, 402,
-# 403, 404, 429 all skip straight past this and reach the caller unchanged).
-TRANSIENT_HTTP_CODES = (500, 502, 503, 504)
-TRANSIENT_RETRIES = 3
-TRANSIENT_BACKOFF_S = 2.0
+# The HTTP client, the free-model list, the transient-error retries and the
+# $0 cost check all live in loop/llm_router.py since 2026-10-11. This name is
+# kept because every lane (and its tests) already call it.
+TRANSIENT_HTTP_CODES = llm_router.TRANSIENT_HTTP_CODES
+TRANSIENT_RETRIES = llm_router.TRANSIENT_RETRIES
+TRANSIENT_BACKOFF_S = llm_router.TRANSIENT_BACKOFF_S
 
 
 def call_openrouter(messages: list[dict], model: str, key: str,
                     timeout: int = 300, temperature: float = 0.4) -> dict:
-    """The one HTTP client for OpenRouter. Every lane uses this; none forks it.
+    """Every lane's model call. Routes ONLY to $0 models (loop/llm_router.py).
 
-    `temperature` defaults to 0.4 — factual work, not creative writing. The
-    localisation lane passes 0.0: there is exactly one right way to say
-    "deepest" in Indonesian and any sampling at all is a chance to miss it.
-
-    SELF-HEALS a transient server error or a dropped connection: up to
-    TRANSIENT_RETRIES attempts, `TRANSIENT_BACKOFF_S * attempt` between them.
-    Every attempt after the first prints `[self-heal]` so it shows up in
-    whichever lane's log called this — draft.py, advise.py and localize.py
-    all go through here, so the fix is shared once rather than three times.
-    A retry that still fails after the budget is exhausted raises normally;
-    it never swallows the error; the caller's existing NAMED STOP path is the
-    escalation, unchanged. A heal that keeps firing on every call is visible
-    in the log by construction — the same log a human already reads for
-    st.note() lines — rather than being silently absorbed forever.
+    `model` must be one of config/llm_routing.json's free models; it is tried
+    first and the other free models follow it. A model outside that list is
+    refused before the network (OPENROUTER_PAID_MODEL_REFUSED). Raises
+    llm_router.LLMStop for every route failure; never a paid fallback.
+    `temperature` 0.4 = factual work; the localisation lane passes 0.0.
     """
     if not (model or "").strip():
         # Refuse before the network: OpenRouter's answer to this is a 400
@@ -479,46 +473,8 @@ def call_openrouter(messages: list[dict], model: str, key: str,
         raise ValueError("call_openrouter: model is empty — resolve it with "
                          "author.configured_model(), never straight from "
                          "$OPENROUTER_MODEL")
-    body = json.dumps({
-        "model": model,
-        "messages": messages,
-        "max_tokens": 16000,
-        "temperature": temperature,
-        "usage": {"include": True},  # ask OpenRouter to report real cost
-    }).encode()
-    req_headers = {
-        "Authorization": f"Bearer {key}",
-        "Content-Type": "application/json",
-        "HTTP-Referer": "https://github.com/seq23/how-we-know",
-        "X-Title": "How We Know - authoring lane",
-    }
-    last_err: Exception | None = None
-    for attempt in range(1, TRANSIENT_RETRIES + 1):
-        req = urllib.request.Request(API, data=body, method="POST",
-                                     headers=req_headers)
-        try:
-            with urllib.request.urlopen(req, timeout=timeout) as r:
-                if attempt > 1:
-                    print(f"[self-heal] OpenRouter call succeeded on attempt "
-                         f"{attempt}/{TRANSIENT_RETRIES} after "
-                         f"{last_err.__class__.__name__ if last_err else ''} "
-                         f"— healed, continuing", flush=True)
-                return json.loads(r.read())
-        except urllib.error.HTTPError as e:
-            if e.code not in TRANSIENT_HTTP_CODES or attempt == TRANSIENT_RETRIES:
-                raise
-            last_err = e
-        except (TimeoutError, ConnectionError, urllib.error.URLError) as e:
-            if attempt == TRANSIENT_RETRIES:
-                raise
-            last_err = e
-        print(f"[self-heal] OpenRouter attempt {attempt}/{TRANSIENT_RETRIES} "
-             f"failed ({last_err.__class__.__name__}: {last_err}); retrying "
-             f"in {TRANSIENT_BACKOFF_S * attempt:.0f}s — a transient server "
-             f"error is the known, safe, deterministic case this retries",
-             flush=True)
-        time.sleep(TRANSIENT_BACKOFF_S * attempt)
-    raise last_err  # pragma: no cover - loop always returns or raises above
+    return llm_router.complete(messages, key, preferred=model,
+                               timeout=timeout, temperature=temperature)
 
 
 def record_spend(slug: str, model: str, usage: dict, cost: float | None,
@@ -862,29 +818,19 @@ def draft(question: str, slug: str, pov: dict, model: str | None = None,
     for attempt in range(1, MAX_ATTEMPTS + 1):
         try:
             resp = call_openrouter(messages, model, key)
-        except urllib.error.HTTPError as e:
-            detail = e.read().decode("utf-8", "ignore")[:300]
-            # Never let a key reach a log, even via an echoed request.
-            detail = detail.replace(key, redact_key(key))
-            if e.code in (401, 403):
-                raise AuthorStop("OPENROUTER_UNAUTHORISED",
-                                 f"OpenRouter rejected the key (HTTP {e.code})",
-                                 "Check the key is current and the account is "
-                                 "funded: https://openrouter.ai/settings/keys")
-            if e.code == 402:
-                raise AuthorStop("OPENROUTER_OUT_OF_CREDIT",
-                                 "the OpenRouter account is out of credit",
-                                 "Top up at https://openrouter.ai/credits")
-            if e.code == 429:
-                raise AuthorStop("OPENROUTER_RATE_LIMITED",
-                                 "OpenRouter rate limited this request",
-                                 "Re-run the stage later; the queue is unchanged.")
-            raise AuthorStop("OPENROUTER_ERROR",
-                             f"OpenRouter returned HTTP {e.code}", detail)
+        except llm_router.LLMStop as e:
+            # The free route's own named stops (key refused, no free model
+            # answered, a paid model or a non-zero cost refused) pass through
+            # under their own code. draft.py turns every AuthorStop into the
+            # week's AUTHOR_REQUIRED, so this is the same stop path as an
+            # unusable draft - never a paid retry.
+            raise AuthorStop(e.code, e.message, e.unblock) from None
         except Exception as e:
             raise AuthorStop("OPENROUTER_UNREACHABLE",
                              f"{type(e).__name__} calling OpenRouter",
                              "Check network access and re-run.")
+        # The free model that answered is the one recorded and retried.
+        model = resp.get("model_used") or model
 
         choice = (resp.get("choices") or [{}])[0]
         text = (choice.get("message") or {}).get("content") or ""

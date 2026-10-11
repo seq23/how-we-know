@@ -75,12 +75,21 @@ def check() -> list[str]:
     # ------------------------------------------------ 2. named stops
     examined += 1
     src = (LOOP / "author.py").read_text()
-    for code in ("OPENROUTER_KEY_MISSING", "OPENROUTER_UNAUTHORISED",
-                 "OPENROUTER_OUT_OF_CREDIT", "OPENROUTER_RATE_LIMITED",
-                 "OPENROUTER_UNREACHABLE", "DRAFT_FAILED_VALIDATION",
-                 "TOPIC_EXCLUDED"):
+    for code in ("OPENROUTER_KEY_MISSING", "OPENROUTER_UNREACHABLE",
+                 "DRAFT_FAILED_VALIDATION", "TOPIC_EXCLUDED"):
         if code not in src:
             fails.append(f"loop/author.py has no named stop for {code}")
+    # Since 2026-10-11 the provider's refusals are named by the free route
+    # (loop/llm_router.py) and passed through draft() under their own code;
+    # the old 401/402/429 mapping is gone because the router owns it.
+    rsrc = (LOOP / "llm_router.py").read_text()
+    for code in ("OPENROUTER_KEY_DISABLED_OR_INVALID", "OPENROUTER_NO_FREE_MODEL",
+                 "OPENROUTER_PAID_MODEL_REFUSED", "OPENROUTER_PAID_COST_REFUSED"):
+        if f'"{code}"' not in rsrc:
+            fails.append(f"loop/llm_router.py has no named stop for {code}")
+    if "except llm_router.LLMStop" not in src:
+        fails.append("author.draft() does not pass the free route's named "
+                     "stops through as AuthorStop")
 
     key_guard_broken = False
     # api_key() itself: both env guards win over a key file that exists.
