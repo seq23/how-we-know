@@ -682,6 +682,33 @@
         "applied_at": "2026-10-09T23:10:27+00:00",
         "result": "posted (UgwN7pq0c3xBI086FX14AaABAg)"
       }
+    },
+    "Ugx3box3gjqzlYdwPml4AaABAg": {
+      "comment_id": "Ugx3box3gjqzlYdwPml4AaABAg",
+      "video_id": "zd_fjP4RPWE",
+      "author": "@howweknowdeep",
+      "author_channel_id": "UC5vZFZc15DIM6IrFwFgAECg",
+      "text": "Why does black-smoker water not boil? Full episode: https://youtu.be/IbrSPKUK1IM",
+      "published_at": "2026-10-11T23:10:56+00:00",
+      "like_count": 0,
+      "reply_count": 0,
+      "class": "own_channel",
+      "proposed_action": null,
+      "proposed_reply": null,
+      "product_note": null,
+      "seen_at": "2026-10-11T23:10:56+00:00",
+      "acted": {
+        "comment_id": "Ugx3box3gjqzlYdwPml4AaABAg",
+        "video_id": "zd_fjP4RPWE",
+        "action": "channel_comment",
+        "reply_text": "Why does black-smoker water not boil? Full episode: https://youtu.be/IbrSPKUK1IM",
+        "instructed_by": "owner",
+        "instructed_at": "2026-10-03",
+        "source": "loop/handoff: owner decision 2026-10-03",
+        "note": null,
+        "applied_at": "2026-10-11T23:10:56+00:00",
+        "result": "posted (Ugx3box3gjqzlYdwPml4AaABAg)"
+      }
     }
   },
   "instructions": {},
@@ -937,6 +964,18 @@
       "note": null,
       "applied_at": "2026-10-09T23:10:27+00:00",
       "result": "posted (UgwN7pq0c3xBI086FX14AaABAg)"
+    },
+    {
+      "comment_id": "Ugx3box3gjqzlYdwPml4AaABAg",
+      "video_id": "zd_fjP4RPWE",
+      "action": "channel_comment",
+      "reply_text": "Why does black-smoker water not boil? Full episode: https://youtu.be/IbrSPKUK1IM",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03",
+      "note": null,
+      "applied_at": "2026-10-11T23:10:56+00:00",
+      "result": "posted (Ugx3box3gjqzlYdwPml4AaABAg)"
     }
   ],
   "sweeps": [
@@ -1142,7 +1181,15 @@
       "instructed_by": "owner",
       "instructed_at": "2026-10-03",
       "source": "loop/handoff: owner decision 2026-10-03"
+    },
+    "zd_fjP4RPWE": {
+      "comment_id": "Ugx3box3gjqzlYdwPml4AaABAg",
+      "text": "Why does black-smoker water not boil? Full episode: https://youtu.be/IbrSPKUK1IM",
+      "posted_at": "2026-10-11T23:10:56+00:00",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03"
     }
   },
-  "updated": "2026-10-09T23:10:27+00:00"
+  "updated": "2026-10-11T23:10:56+00:00"
 }
