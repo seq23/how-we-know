@@ -79,8 +79,19 @@ def check() -> list[str]:
     # rather than crash, which is what this test actually verifies.
     env["GITHUB_EVENT_NAME"] = "workflow_dispatch"
 
+    # The live circuit breaker (loop/state/breaker.json) halts upload.py at
+    # breaker.guard() before any credential check. On 2026-10-12 a real
+    # mon-draft run tripped it (V21) and this test went red on main for a
+    # correct, named halt. BREAKER_TRIPPED is accepted for upload.py ONLY
+    # while the committed breaker really is tripped - and then it is the ONLY
+    # acceptable stop, because guard() runs first.
+    sys.path.insert(0, LOOP)
+    import breaker  # noqa: E402,PLC0415
+    tripped = breaker.is_tripped()
     for fname, acceptable in LANES:
         examined += 1
+        if fname == "upload.py" and tripped:
+            acceptable = ("BREAKER_TRIPPED",)
         r = subprocess.run([PY, os.path.join(LOOP, fname)],
                            capture_output=True, text=True, cwd=ROOT, env=env)
         out = r.stdout + r.stderr
