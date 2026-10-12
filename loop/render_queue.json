@@ -1,6 +1,6 @@
 {
-  "week": "2026-W41",
-  "generated": "2026-10-05T10:13:37+00:00",
+  "week": "2026-W42",
+  "generated": "2026-10-12T15:31:43+00:00",
   "videos_per_week": 4,
   "breaker": "closed",
   "validators": [
@@ -26,7 +26,7 @@
     },
     {
       "validator": "V3 taxonomy",
-      "examined": 4,
+      "examined": 1,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -34,7 +34,7 @@
     },
     {
       "validator": "V4 pov",
-      "examined": 4,
+      "examined": 1,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -42,7 +42,7 @@
     },
     {
       "validator": "V5 sources-present",
-      "examined": 4,
+      "examined": 1,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -50,18 +50,17 @@
     },
     {
       "validator": "V6 attribution (soft)",
-      "examined": 4,
+      "examined": 1,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "how-do-scientists-know-so-much: narration names Woods Hole Oceanographic Institution, Census of Marine Life with no matching ## Sources entry",
-        "how-do-scientists-know-how-old-something-is: narration names Science with no matching ## Sources entry"
+        "how-deep-can-a-sperm-whale-go: narration names Woods Hole Oceanographic Institution with no matching ## Sources entry"
       ],
       "stops": []
     },
     {
       "validator": "V7 plans",
-      "examined": 4,
+      "examined": 1,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -69,11 +68,11 @@
     },
     {
       "validator": "V8 source-urls",
-      "examined": 0,
-      "status": "N/A(nothing generated)",
+      "examined": 6,
+      "status": "PASS",
       "failures": [],
       "notes": [
-        "no generated scripts this week; nothing to fetch"
+        "how-deep-can-a-sperm-whale-go: https://ocean.si.edu/ocean-life/marine-mammals/sperm-whales returned 403 (bot-blocked, treated as reachable)"
       ],
       "stops": []
     },
@@ -153,7 +152,7 @@
       "status": "PASS",
       "failures": [],
       "notes": [
-        "20 episode(s) dated through 2026-11-06; 2 domain(s) allocating on disjoint days {'deep-sea-ocean-science': (1, 6), 'materials-and-manufacturing': (0, 4)} at 4/week"
+        "16 episode(s) dated through 2026-11-08; 2 domain(s) allocating on disjoint days {'deep-sea-ocean-science': (1, 6), 'materials-and-manufacturing': (0, 4)} at 4/week"
       ],
       "stops": []
     },
@@ -209,7 +208,7 @@
     },
     {
       "validator": "V28 lane-interpreters",
-      "examined": 31,
+      "examined": 32,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -225,7 +224,7 @@
     },
     {
       "validator": "V30 cloud-visibility",
-      "examined": 271,
+      "examined": 277,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -243,7 +242,7 @@
     },
     {
       "validator": "V32 scheduled-pov",
-      "examined": 21,
+      "examined": 17,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -301,7 +300,7 @@
     },
     {
       "validator": "V38 no-duplicate-airing",
-      "examined": 40,
+      "examined": 41,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -319,7 +318,7 @@
     },
     {
       "validator": "V42 authored-domain-allocated",
-      "examined": 4,
+      "examined": 1,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -327,7 +326,7 @@
     },
     {
       "validator": "V43 distinct-questions",
-      "examined": 15,
+      "examined": 14,
       "status": "PASS",
       "failures": [],
       "notes": [
@@ -337,7 +336,7 @@
     },
     {
       "validator": "V44 opening-payoff-first",
-      "examined": 4,
+      "examined": 1,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -345,17 +344,17 @@
     },
     {
       "validator": "V45 nothing-waits-on-owner",
-      "examined": 140,
+      "examined": 142,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "stop kinds by class: automated 43, automated/error 1, error 79, owner_secret 17"
+        "stop kinds by class: automated 43, automated/error 1, error 82, owner_secret 16"
       ],
       "stops": []
     },
     {
       "validator": "V46 shorts-handoff",
-      "examined": 52,
+      "examined": 60,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -377,165 +376,82 @@
   "runway": {
     "unpublished_scripts": 8,
     "publishable": 1,
-    "scheduled_not_yet_aired": 19,
+    "scheduled_not_yet_aired": 15,
     "basis": "publish queue",
     "videos_per_week": 4,
-    "weeks_remaining": 5.0,
+    "weeks_remaining": 4.0,
     "warn_below_weeks": 4.0,
     "critical_below_weeks": 2.0,
-    "level": "ok",
+    "level": "warn",
     "by_domain": {
       "deep-sea-ocean-science": {
         "slots_per_week": 2,
-        "queued": 7,
-        "scheduled_ahead": 9,
-        "weeks": 8.0,
+        "queued": 6,
+        "scheduled_ahead": 8,
+        "weeks": 7.0,
         "level": "ok",
-        "message": "deep-sea-ocean-science: 8.0 week(s) at 2/week (7 queued, 9 already dated)"
+        "message": "deep-sea-ocean-science: 7.0 week(s) at 2/week (6 queued, 8 already dated)"
       },
       "materials-and-manufacturing": {
         "slots_per_week": 2,
         "queued": 7,
-        "scheduled_ahead": 10,
-        "weeks": 8.5,
+        "scheduled_ahead": 7,
+        "weeks": 7.0,
         "level": "ok",
-        "message": "materials-and-manufacturing: 8.5 week(s) at 2/week (7 queued, 10 already dated)"
+        "message": "materials-and-manufacturing: 7.0 week(s) at 2/week (7 queued, 7 already dated)"
       }
     },
     "short_domains": [],
     "never_go_dark": true,
-    "message": "5.0 weeks of queue at 4/week (1 publishable of 8 on disk). By domain: deep-sea-ocean-science: 8.0 week(s) at 2/week (7 queued, 9 already dated); materials-and-manufacturing: 8.5 week(s) at 2/week (7 queued, 10 already dated)."
+    "message": "RUNWAY WARNING: only 4.0 weeks of queue left at 4/week - 1 publishable episode(s) of 8 on disk. Act now, not later: the authoring lane needs lead time and its human fallback needs more. By domain: deep-sea-ocean-science: 7.0 week(s) at 2/week (6 queued, 8 already dated); materials-and-manufacturing: 7.0 week(s) at 2/week (7 queued, 7 already dated)."
   },
   "authoring": {
-    "generated_this_week": 0,
+    "generated_this_week": 1,
     "cost_usd": 0.0,
-    "model": "anthropic/claude-sonnet-4.5"
+    "model": "nvidia/nemotron-3-super-120b-a12b:free"
   },
   "items": [
     {
-      "slug": "how-do-scientists-know-so-much",
-      "question": "How do scientists know so much about the deep ocean when we've explored so little of it?",
-      "script": "scripts/how-do-scientists-know-so-much.md",
-      "generated": false,
-      "author_cost_usd": null,
-      "author_model": null,
-      "pov_id": "pov-058",
-      "pov_line": "'Scientists say' is almost meaningless on its own. Which scientists? How many? Was it one paper? Was it replicated?",
+      "slug": "how-deep-can-a-sperm-whale-go",
+      "question": "how deep can a sperm whale go",
+      "script": "scripts/how-deep-can-a-sperm-whale-go.md",
+      "generated": true,
+      "author_cost_usd": 0,
+      "author_model": "gemini/gemini-3-flash-preview",
+      "pov_id": "pov-038",
+      "pov_line": "How do we know an animal behaves a certain way when we've seen it three times?",
       "pov_tier": "transferable",
-      "pov_matched_by": "hand assignment in pov/pov-assignments.json",
-      "work_copy": "loop/work/how-do-scientists-know-so-much.md",
-      "audio_dir": "audio/how-do-scientists-know-so-much",
-      "plan": "loop/plans/how-do-scientists-know-so-much.json",
-      "render": "renders/how-do-scientists-know-so-much.mp4",
-      "source": "authored-inventory",
+      "pov_matched_by": "transferable fallback (tag:evidence); no tag signal fired for this subject",
+      "work_copy": "loop/work/how-deep-can-a-sperm-whale-go.md",
+      "audio_dir": "audio/how-deep-can-a-sperm-whale-go",
+      "plan": "loop/plans/how-deep-can-a-sperm-whale-go.json",
+      "render": "renders/how-deep-can-a-sperm-whale-go.mp4",
+      "source": "publish-queue",
       "status": "queued",
-      "pov_bank_line": "'Scientists say' is almost meaningless on its own. Which scientists? How many? Was it one paper? Was it replicated?",
-      "pov_script_line": "'Scientists say' is almost meaningless on its own. Which scientists? How many? Was it one paper? Was it replicated?",
-      "source_count": 8,
+      "pov_bank_line": "How do we know an animal behaves a certain way when we've seen it three times?",
+      "pov_script_line": "How do we know an animal behaves a certain way when we've seen it three times?",
+      "source_count": 6,
       "sources_cited": [
         "NOAA",
         "NOAA Ocean Exploration",
-        "Woods Hole Oceanographic Institution",
-        "Woods Hole",
-        "Smithsonian",
-        "USGS",
-        "Ocean Census",
-        "Census of Marine Life"
-      ],
-      "attribution_gaps": [
-        "Woods Hole Oceanographic Institution",
-        "Census of Marine Life"
-      ],
-      "planned_beats": 89
-    },
-    {
-      "slug": "how-do-scientists-know-how-old-something-is",
-      "question": "How do scientists know how old something is?",
-      "script": "scripts/how-do-scientists-know-how-old-something-is.md",
-      "generated": false,
-      "author_cost_usd": null,
-      "author_model": null,
-      "pov_id": "pov-059",
-      "pov_line": "I'm not anti-science. I'm against using science as a magic authority word that means nobody has to show their work.",
-      "pov_tier": "transferable",
-      "pov_matched_by": "hand assignment in pov/pov-assignments.json",
-      "work_copy": "loop/work/how-do-scientists-know-how-old-something-is.md",
-      "audio_dir": "audio/how-do-scientists-know-how-old-something-is",
-      "plan": "loop/plans/how-do-scientists-know-how-old-something-is.json",
-      "render": "renders/how-do-scientists-know-how-old-something-is.mp4",
-      "source": "authored-inventory",
-      "status": "queued",
-      "pov_bank_line": "I'm not anti-science. I'm against using science as a magic authority word that means nobody has to show their work.",
-      "pov_script_line": "I'm not anti-science. I'm against using science as a magic authority word that means nobody has to show their work.",
-      "source_count": 8,
-      "sources_cited": [
-        "Science"
-      ],
-      "attribution_gaps": [
-        "Science"
-      ],
-      "planned_beats": 97
-    },
-    {
-      "slug": "how-do-scientists-know-about-other-galaxies",
-      "question": "How do scientists know about other galaxies?",
-      "script": "scripts/how-do-scientists-know-about-other-galaxies.md",
-      "generated": false,
-      "author_cost_usd": null,
-      "author_model": null,
-      "pov_id": "pov-060",
-      "pov_line": "Science is a process. It is not a person behind a curtain handing down permanent answers.",
-      "pov_tier": "transferable",
-      "pov_matched_by": "hand assignment in pov/pov-assignments.json",
-      "work_copy": "loop/work/how-do-scientists-know-about-other-galaxies.md",
-      "audio_dir": "audio/how-do-scientists-know-about-other-galaxies",
-      "plan": "loop/plans/how-do-scientists-know-about-other-galaxies.json",
-      "render": "renders/how-do-scientists-know-about-other-galaxies.mp4",
-      "source": "authored-inventory",
-      "status": "queued",
-      "pov_bank_line": "Science is a process. It is not a person behind a curtain handing down permanent answers.",
-      "pov_script_line": "Science is a process. It is not a person behind a curtain handing down permanent answers.",
-      "source_count": 7,
-      "sources_cited": [
-        "NASA",
-        "Science"
-      ],
-      "attribution_gaps": [],
-      "planned_beats": 94
-    },
-    {
-      "slug": "why-deep-sea-fish-die-when-brought-to-surface",
-      "question": "Why do deep sea fish die when brought to the surface?",
-      "script": "scripts/why-deep-sea-fish-die-when-brought-to-surface.md",
-      "generated": false,
-      "author_cost_usd": null,
-      "author_model": null,
-      "pov_id": "pov-138",
-      "pov_line": "I'd want to stop if this channel began rewarding certainty more than truth \u2014 selecting evidence to protect the brand, repeating numbers because they performed well, turning unresolved questions into clean stories. The moment it can't correct itself without treating correction as humiliation, it has become the thing it was built to expose.",
-      "pov_tier": "transferable",
-      "pov_matched_by": "hand assignment in pov/pov-assignments.json",
-      "work_copy": "loop/work/why-deep-sea-fish-die-when-brought-to-surface.md",
-      "audio_dir": "audio/why-deep-sea-fish-die-when-brought-to-surface",
-      "plan": "loop/plans/why-deep-sea-fish-die-when-brought-to-surface.json",
-      "render": "renders/why-deep-sea-fish-die-when-brought-to-surface.mp4",
-      "source": "authored-inventory",
-      "status": "queued",
-      "pov_bank_line": "I'd want to stop if this channel began rewarding certainty more than truth \u2014 selecting evidence to protect the brand, repeating numbers because they performed well, turning unresolved questions into clean stories. The moment it can't correct itself without treating correction as humiliation, it has become the thing it was built to expose.",
-      "pov_script_line": "I'd want to stop if this channel began rewarding certainty more than truth \u2014 selecting evidence to protect the brand, repeating numbers because they performed well, turning unresolved questions into clean stories. The moment it can't correct itself without treating correction as humiliation, it has become the thing it was built to expose.",
-      "source_count": 7,
-      "sources_cited": [
-        "NOAA",
-        "NOAA Ocean Exploration",
+        "MBARI",
+        "WHOI",
         "Woods Hole Oceanographic Institution",
         "Woods Hole",
         "Smithsonian",
         "Smithsonian Ocean",
         "Monterey Bay Aquarium Research Institute",
-        "Guinness World Records"
+        "Census of Marine Life"
       ],
-      "attribution_gaps": [],
-      "planned_beats": 90
+      "attribution_gaps": [
+        "Woods Hole Oceanographic Institution"
+      ],
+      "planned_beats": 100
     }
   ],
-  "unauthored": []
+  "unauthored": [
+    "what lives in mariana trench",
+    "why deep sea creatures are creepers",
+    "how deep can whales dive"
+  ]
 }

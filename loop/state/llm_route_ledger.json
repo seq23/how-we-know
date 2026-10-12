@@ -1,4 +1,275 @@
 {
   "_why": "Measured $0 fallback order (owner 2026-10-12). Written by loop/llm_router.py; ranked by `python3 loop/llm_router.py standing`. See RUNBOOK.md 'Fallback standing'.",
-  "models": {}
+  "models": {
+    "gemini/gemini-2.5-flash": [
+      {
+        "lane": "mon-draft",
+        "latency_s": 19.6,
+        "outcome": "answered",
+        "ts": "2026-10-12T15:22:08Z"
+      },
+      {
+        "lane": "mon-draft",
+        "latency_s": null,
+        "outcome": "failed_validation",
+        "ts": "2026-10-12T15:22:13Z"
+      },
+      {
+        "lane": "mon-draft",
+        "latency_s": 30.2,
+        "outcome": "answered",
+        "ts": "2026-10-12T15:22:46Z"
+      },
+      {
+        "lane": "mon-draft",
+        "latency_s": null,
+        "outcome": "failed_validation",
+        "ts": "2026-10-12T15:22:48Z"
+      },
+      {
+        "lane": "mon-draft",
+        "latency_s": 15.5,
+        "outcome": "answered",
+        "ts": "2026-10-12T15:23:06Z"
+      },
+      {
+        "lane": "mon-draft",
+        "latency_s": null,
+        "outcome": "failed_validation",
+        "ts": "2026-10-12T15:23:08Z"
+      },
+      {
+        "lane": "mon-draft",
+        "latency_s": 17.9,
+        "outcome": "answered",
+        "ts": "2026-10-12T15:23:29Z"
+      },
+      {
+        "lane": "mon-draft",
+        "latency_s": null,
+        "outcome": "failed_validation",
+        "ts": "2026-10-12T15:23:32Z"
+      }
+    ],
+    "gemini/gemini-2.5-flash-lite": [
+      {
+        "lane": "mon-draft",
+        "latency_s": 0.2,
+        "outcome": "error",
+        "ts": "2026-10-12T15:24:47Z"
+      }
+    ],
+    "gemini/gemini-3-flash-preview": [
+      {
+        "lane": "mon-draft",
+        "latency_s": 33.5,
+        "outcome": "answered",
+        "ts": "2026-10-12T15:13:58Z"
+      },
+      {
+        "lane": "mon-draft",
+        "latency_s": null,
+        "outcome": "failed_validation",
+        "ts": "2026-10-12T15:14:05Z"
+      },
+      {
+        "lane": "mon-draft",
+        "latency_s": 26.0,
+        "outcome": "answered",
+        "ts": "2026-10-12T15:14:35Z"
+      },
+      {
+        "lane": "mon-draft",
+        "latency_s": null,
+        "outcome": "failed_validation",
+        "ts": "2026-10-12T15:14:37Z"
+      },
+      {
+        "lane": "mon-draft",
+        "latency_s": 206.7,
+        "outcome": "answered",
+        "ts": "2026-10-12T15:18:07Z"
+      },
+      {
+        "lane": "mon-draft",
+        "latency_s": null,
+        "outcome": "failed_validation",
+        "ts": "2026-10-12T15:18:07Z"
+      },
+      {
+        "lane": "mon-draft",
+        "latency_s": 45.2,
+        "outcome": "answered",
+        "ts": "2026-10-12T15:18:55Z"
+      },
+      {
+        "lane": "mon-draft",
+        "latency_s": null,
+        "outcome": "passed",
+        "ts": "2026-10-12T15:18:57Z"
+      }
+    ],
+    "gemini/gemini-3.5-flash": [
+      {
+        "lane": "mon-draft",
+        "latency_s": 5.5,
+        "outcome": "error",
+        "ts": "2026-10-12T15:06:49Z"
+      },
+      {
+        "lane": "mon-draft",
+        "latency_s": 39.8,
+        "outcome": "error",
+        "ts": "2026-10-12T15:13:24Z"
+      },
+      {
+        "lane": "mon-draft",
+        "latency_s": 5.0,
+        "outcome": "error",
+        "ts": "2026-10-12T15:21:49Z"
+      },
+      {
+        "lane": "mon-draft",
+        "latency_s": 8.6,
+        "outcome": "error",
+        "ts": "2026-10-12T15:24:47Z"
+      }
+    ],
+    "gemini/gemini-3.5-flash-lite": [
+      {
+        "lane": "mon-draft",
+        "latency_s": 7.5,
+        "outcome": "answered",
+        "ts": "2026-10-12T15:06:56Z"
+      },
+      {
+        "lane": "mon-draft",
+        "latency_s": null,
+        "outcome": "failed_validation",
+        "ts": "2026-10-12T15:06:59Z"
+      },
+      {
+        "lane": "mon-draft",
+        "latency_s": 5.1,
+        "outcome": "answered",
+        "ts": "2026-10-12T15:07:07Z"
+      },
+      {
+        "lane": "mon-draft",
+        "latency_s": null,
+        "outcome": "failed_validation",
+        "ts": "2026-10-12T15:07:09Z"
+      },
+      {
+        "lane": "mon-draft",
+        "latency_s": 6.2,
+        "outcome": "answered",
+        "ts": "2026-10-12T15:07:18Z"
+      },
+      {
+        "lane": "mon-draft",
+        "latency_s": null,
+        "outcome": "failed_validation",
+        "ts": "2026-10-12T15:07:28Z"
+      },
+      {
+        "lane": "mon-draft",
+        "latency_s": 4.9,
+        "outcome": "answered",
+        "ts": "2026-10-12T15:07:36Z"
+      },
+      {
+        "lane": "mon-draft",
+        "latency_s": null,
+        "outcome": "failed_validation",
+        "ts": "2026-10-12T15:07:38Z"
+      }
+    ],
+    "google/gemma-4-26b-a4b-it:free": [
+      {
+        "lane": "mon-draft",
+        "latency_s": 0.2,
+        "outcome": "rate_limited",
+        "ts": "2026-10-12T15:24:48Z"
+      }
+    ],
+    "google/gemma-4-31b-it:free": [
+      {
+        "lane": "mon-draft",
+        "latency_s": 0.2,
+        "outcome": "rate_limited",
+        "ts": "2026-10-12T15:24:48Z"
+      }
+    ],
+    "nvidia/nemotron-3-super-120b-a12b:free": [
+      {
+        "lane": "mon-draft",
+        "latency_s": 206.2,
+        "outcome": "empty",
+        "ts": "2026-10-12T15:06:43Z"
+      },
+      {
+        "lane": "mon-draft",
+        "latency_s": 303.6,
+        "outcome": "empty",
+        "ts": "2026-10-12T15:12:44Z"
+      },
+      {
+        "lane": "mon-draft",
+        "latency_s": 163.6,
+        "outcome": "empty",
+        "ts": "2026-10-12T15:21:44Z"
+      },
+      {
+        "lane": "mon-draft",
+        "latency_s": 58.6,
+        "outcome": "answered",
+        "ts": "2026-10-12T15:24:34Z"
+      },
+      {
+        "lane": "mon-draft",
+        "latency_s": null,
+        "outcome": "failed_validation",
+        "ts": "2026-10-12T15:24:35Z"
+      }
+    ],
+    "nvidia/nemotron-3-ultra-550b-a55b:free": [
+      {
+        "lane": "mon-draft",
+        "latency_s": 103.6,
+        "outcome": "answered",
+        "ts": "2026-10-12T15:26:31Z"
+      },
+      {
+        "lane": "mon-draft",
+        "latency_s": null,
+        "outcome": "failed_validation",
+        "ts": "2026-10-12T15:26:43Z"
+      },
+      {
+        "lane": "mon-draft",
+        "latency_s": 155.2,
+        "outcome": "answered",
+        "ts": "2026-10-12T15:29:21Z"
+      },
+      {
+        "lane": "mon-draft",
+        "latency_s": null,
+        "outcome": "failed_validation",
+        "ts": "2026-10-12T15:29:23Z"
+      },
+      {
+        "lane": "mon-draft",
+        "latency_s": 120.6,
+        "outcome": "answered",
+        "ts": "2026-10-12T15:31:27Z"
+      },
+      {
+        "lane": "mon-draft",
+        "latency_s": null,
+        "outcome": "failed_validation",
+        "ts": "2026-10-12T15:31:29Z"
+      }
+    ]
+  }
 }

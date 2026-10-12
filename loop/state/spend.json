@@ -1902,10 +1902,186 @@
       "completion_tokens": 3015,
       "total_tokens": 9266,
       "cost_usd": 0.063978
+    },
+    {
+      "at": "2026-10-12T15:06:59+00:00",
+      "slug": "what-lives-in-mariana-trench",
+      "model": "gemini/gemini-3.5-flash-lite",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 2198,
+      "completion_tokens": 1751,
+      "total_tokens": 3949,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-12T15:07:09+00:00",
+      "slug": "what-lives-in-mariana-trench",
+      "model": "gemini/gemini-3.5-flash-lite",
+      "attempt": 2,
+      "accepted": false,
+      "prompt_tokens": 4716,
+      "completion_tokens": 1855,
+      "total_tokens": 6571,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-12T15:07:28+00:00",
+      "slug": "what-lives-in-mariana-trench",
+      "model": "gemini/gemini-3.5-flash-lite",
+      "attempt": 3,
+      "accepted": false,
+      "prompt_tokens": 7144,
+      "completion_tokens": 2237,
+      "total_tokens": 9381,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-12T15:07:38+00:00",
+      "slug": "what-lives-in-mariana-trench",
+      "model": "gemini/gemini-3.5-flash-lite",
+      "attempt": 4,
+      "accepted": false,
+      "prompt_tokens": 9664,
+      "completion_tokens": 2232,
+      "total_tokens": 11896,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-12T15:14:05+00:00",
+      "slug": "how-deep-can-a-sperm-whale-go",
+      "model": "gemini/gemini-3-flash-preview",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 2155,
+      "completion_tokens": 3351,
+      "total_tokens": 8793,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-12T15:14:37+00:00",
+      "slug": "how-deep-can-a-sperm-whale-go",
+      "model": "gemini/gemini-3-flash-preview",
+      "attempt": 2,
+      "accepted": false,
+      "prompt_tokens": 7342,
+      "completion_tokens": 3666,
+      "total_tokens": 13967,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-12T15:18:07+00:00",
+      "slug": "how-deep-can-a-sperm-whale-go",
+      "model": "gemini/gemini-3-flash-preview",
+      "attempt": 3,
+      "accepted": false,
+      "prompt_tokens": 11484,
+      "completion_tokens": 2617,
+      "total_tokens": 77016,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-12T15:18:57+00:00",
+      "slug": "how-deep-can-a-sperm-whale-go",
+      "model": "gemini/gemini-3-flash-preview",
+      "attempt": 4,
+      "accepted": true,
+      "prompt_tokens": 14179,
+      "completion_tokens": 4200,
+      "total_tokens": 25552,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-12T15:22:13+00:00",
+      "slug": "why-deep-sea-creatures-are-creepers",
+      "model": "gemini/gemini-2.5-flash",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 2157,
+      "completion_tokens": 3514,
+      "total_tokens": 5671,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-12T15:22:48+00:00",
+      "slug": "why-deep-sea-creatures-are-creepers",
+      "model": "gemini/gemini-2.5-flash",
+      "attempt": 2,
+      "accepted": false,
+      "prompt_tokens": 6603,
+      "completion_tokens": 3555,
+      "total_tokens": 14029,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-12T15:23:08+00:00",
+      "slug": "why-deep-sea-creatures-are-creepers",
+      "model": "gemini/gemini-2.5-flash",
+      "attempt": 3,
+      "accepted": false,
+      "prompt_tokens": 10560,
+      "completion_tokens": 3553,
+      "total_tokens": 14586,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-12T15:23:32+00:00",
+      "slug": "why-deep-sea-creatures-are-creepers",
+      "model": "gemini/gemini-2.5-flash",
+      "attempt": 4,
+      "accepted": false,
+      "prompt_tokens": 14665,
+      "completion_tokens": 3547,
+      "total_tokens": 19143,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-12T15:24:35+00:00",
+      "slug": "how-deep-can-whales-dive",
+      "model": "nvidia/nemotron-3-super-120b-a12b:free",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 2254,
+      "completion_tokens": 5311,
+      "total_tokens": 7565,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-12T15:26:43+00:00",
+      "slug": "how-deep-can-whales-dive",
+      "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "attempt": 2,
+      "accepted": false,
+      "prompt_tokens": 4270,
+      "completion_tokens": 3095,
+      "total_tokens": 7365,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-12T15:29:23+00:00",
+      "slug": "how-deep-can-whales-dive",
+      "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "attempt": 3,
+      "accepted": false,
+      "prompt_tokens": 6827,
+      "completion_tokens": 5266,
+      "total_tokens": 12093,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-12T15:31:29+00:00",
+      "slug": "how-deep-can-whales-dive",
+      "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "attempt": 4,
+      "accepted": false,
+      "prompt_tokens": 9302,
+      "completion_tokens": 2806,
+      "total_tokens": 12108,
+      "cost_usd": 0
     }
   ],
   "total_usd": 10.175922,
-  "drafts_written": 81,
-  "average_usd_per_accepted_draft": 0.125629,
-  "updated": "2026-09-28T10:12:39+00:00"
+  "drafts_written": 82,
+  "average_usd_per_accepted_draft": 0.124097,
+  "updated": "2026-10-12T15:31:29+00:00"
 }

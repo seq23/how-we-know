@@ -1,0 +1,103 @@
+{
+  "week": "2026-W42",
+  "question": "how deep can whales dive",
+  "domain": null,
+  "demand_evidence": {
+    "source": "research/topic_backlog.json (real YouTube autocomplete)",
+    "seed_hits": null,
+    "demand_score": null,
+    "competition": "UNSCORED \u2014 needs YOUTUBE_API_KEY"
+  },
+  "must_obey": [
+    "Every on-screen number and proper name appears verbatim in this script's own narration (visuals/CONTRACT.md rule 6).",
+    "Every digit-bearing sentence maps to a named public source listed under ## Sources.",
+    "No claim of expertise, credentials or professional advice.",
+    "State uncertainty and evidence limits explicitly.",
+    "Structure must differ from the previous video's shape.",
+    "OPENING RULE (cold-open-payoff, in force for every script): the first thirty seconds of narration - the first 75 words - must deliver the PAYOFF: the actual answer to the title question, or the single most surprising true fact that answers it, stated plainly with its figure if it has one. Only after the payoff do you open the 'how we know' chain: where the evidence comes from, what it does and does not settle. The Direct-answer lock's first sentence must be recognisably spoken inside those first 75 words. Do not open by restating the question, by scene-setting, or by promising an answer later."
+  ],
+  "required_sections": [
+    "# <question>",
+    "## Direct-answer lock",
+    "## Narration",
+    "## Editorial gate",
+    "## Chapters",
+    "## Sources"
+  ],
+  "eligible_pov_lines": [
+    {
+      "id": "pov-002",
+      "tag": "scale",
+      "tier": "specific",
+      "line": "It feels quiet, but not peaceful quiet. More like being somewhere you were never designed to be."
+    },
+    {
+      "id": "pov-004",
+      "tag": "scale",
+      "tier": "specific",
+      "line": "What gets me is the amount of water above you, and how completely unreachable the surface becomes from down there."
+    },
+    {
+      "id": "pov-006",
+      "tag": "disorientation",
+      "tier": "specific",
+      "line": "Something enormous could be relatively close to you and you would never know. I don't like that."
+    },
+    {
+      "id": "pov-018",
+      "tag": "systems",
+      "tier": "specific",
+      "line": "People misunderstand this as a collection of monsters. The creatures get attention because they look strange, but the real story is the system \u2014 pressure, darkness, scarcity, temperature, chemistry, time."
+    },
+    {
+      "id": "pov-021",
+      "tag": "unknown",
+      "tier": "transferable",
+      "line": "We talk about the ocean like it's a known thing because it's on every map. Most of what's under the surface is barely documented. We're living on a planet we haven't finished looking at."
+    },
+    {
+      "id": "pov-022",
+      "tag": "unknown",
+      "tier": "specific",
+      "line": "How did we map another planet better than our own seafloor? Mars can be read from orbit. The ocean blocks light and signal. So it's less ridiculous than it sounds \u2014 and still humbling."
+    },
+    {
+      "id": "pov-023",
+      "tag": "unknown",
+      "tier": "specific",
+      "line": "Our own planet is withholding an entire world from us."
+    },
+    {
+      "id": "pov-024",
+      "tag": "unknown",
+      "tier": "specific",
+      "line": "I used to think the deep ocean was mostly empty. A huge dark floor with a few strange fish scattered around."
+    },
+    {
+      "id": "pov-026",
+      "tag": "policy",
+      "tier": "transferable",
+      "line": "I think we should spend more on it \u2014 but I mean serious science. Mapping, robotics, sensors, long-term data collection."
+    },
+    {
+      "id": "pov-027",
+      "tag": "policy",
+      "tier": "transferable",
+      "line": "Not wealthy people doing dangerous stunts so they can say they went somewhere."
+    },
+    {
+      "id": "pov-028",
+      "tag": "policy",
+      "tier": "specific",
+      "line": "The ocean drives climate, weather, food systems, the basic functioning of the planet. Exploring it isn't a luxury."
+    },
+    {
+      "id": "pov-029",
+      "tag": "risk",
+      "tier": "transferable",
+      "line": "Would I go down in a small experimental submersible, trusting one person's confidence? No. I'd want independent testing, certification, redundancy, and an operating history."
+    }
+  ],
+  "directive_reference": "visuals/CONTRACT.md",
+  "note": "Authoring is the one lane a workflow cannot do for $0. Write this script locally, drop it in scripts/, add its POV row to pov/pov-assignments.json, and next Monday picks it up as inventory automatically."
+}
