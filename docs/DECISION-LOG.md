@@ -1089,3 +1089,23 @@ unchanged: one Short costs what it did. Published videos are not touched.
 Supply: deep sea goes from ~2 Shorts/week (rank 1 of two new episodes) to ~6/week steady
 state, with 34 rank-2/3 cuts already on disk as an immediate backlog.
 Guard: loop/tests/test_shorts_deep_sea_all_cuts.py (26 checks).
+
+## 2026-10-12 — Shorts supply, long-form cadence, model route
+
+- **Views fell with Shorts output, not with long-form.** W37 14 Shorts → 1,013 views; W41 1 Short → 246.
+  Long-form never passed 63 views in a week. Cause: from 21 Sep the Mac batch's SHORTS_UNVERIFIED stop
+  (three bad cuts) blocked the whole Shorts shelf, and nothing paged: the Mac has no issue path, the
+  cloud lane's empty-shelf stop was self-resolving with a 7-day cap that reset on 3 Oct, and the digest
+  verdict never counted Shorts. Fixes: shelf decoupled, Mac stops file an issue and a stop record, cap
+  2 days, dry-shelf stop, Shorts count in the digest verdict. Full numbers: docs/research/how-we-know-numbers.md.
+- **Long-form cadence stays at 4/week** (owner, 12 Oct: "we decided 4 for a reason"). Research reviewed
+  (AIR 18K-channel Education niche flat 2–20 uploads/month, cliff above 20; OverseerOS breakouts under
+  10K subs ≈3/week; vidIQ more-is-more): 4 holds; nothing says 2 is better. A 2/week proposal was withdrawn.
+- **Drain the Shorts backlog at 2 a day** (owner, 12 Oct) while the verified shelf holds two weeks or
+  more; normal pace of shorts_per_week after.
+- **Model route is subscription → Gemini free tier → $0 OpenRouter in measured order** (owner, 12 Oct:
+  "use my claude subscription usage in advance of the $0 openrouter"; her AI Studio key handed over,
+  never ask to rotate). Bench 12 Oct: no free model writes a passing script; failures are dead citations
+  and broken directives, not length. Details: docs/research/zero-dollar-model-routing.md.
+- **Monday authoring budget 210 min, ceiling 230** (owner, 12 Oct: "make it much longer so this doesn't
+  happen again"); ends before the 14:00 UTC upload lane joins the loop-state queue.
