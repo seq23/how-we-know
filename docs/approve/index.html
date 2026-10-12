@@ -41,7 +41,7 @@ border-radius:9px;font-size:12px;color:var(--dim)}
 </style></head><body><div class="wrap">
 
 <h1>Week 2026-W42</h1>
-<div class="sub">1 video picked automatically ·
+<div class="sub">4 videos picked automatically ·
 ceiling 4/week (deliberate)</div>
 
 <div class="note"><b>Nothing here waits on you.</b> Topics were picked from
@@ -51,24 +51,60 @@ the override window closes Tuesday 02:00, when rendering starts.</div>
 
 <div class="bar">
   <span>breaker <b class="ok">closed</b></span>
-  <span>validators <b class="ok">passed</b></span>
+  <span>validators <b class="bad">FAILED</b></span>
   <span>gate refused <b>15</b> candidates</span>
-  <span>authored <b>1</b></span>
+  <span>authored <b>3</b></span>
   <span>cost <b>$0.000</b></span>
 </div>
 
-<div class="stop"><b>Attribution gap (does not block):</b> narration names a body that is not in that script's <code>## Sources</code> — how-deep-can-a-sperm-whale-go → Woods Hole Oceanographic Institution.</div><div class="stop"><b>Named stop:</b> 3 slot(s) could not be authored automatically; briefs are in <code>loop/briefs/</code>. The week still ships 1.</div>
+<div class="stop"><b>Attribution gap (does not block):</b> narration names a body that is not in that script's <code>## Sources</code> — how-deep-can-a-sperm-whale-go → Woods Hole Oceanographic Institution; why-deep-sea-creatures-are-creepers → Science.</div>
 
 <form id="f">
 <div class="card">
-  <p class="q">1. how deep can a sperm whale go</p>
+  <p class="q">1. what lives in mariana trench</p>
   <div class="meta">
-    <span class="tag gen">drafted by gemini/gemini-3-flash-preview</span>
-    how-deep-can-a-sperm-whale-go · 6 sources (all verified) · 100 beats
+    <span class="tag gen">drafted by claude-subscription/opus</span>
+    what-lives-in-mariana-trench · 5 sources (all verified) · 88 beats
+  </div>
+  <div class="pov"><b>POV pov-001</b> — When I picture the deep ocean I don&#x27;t see blue water or fish. I see black. A massive amount of black space where you can&#x27;t tell what&#x27;s beside you or beneath you.<br>
+    <span style="font-size:11px;opacity:.7">matched: tag:scale score 5.6</span></div>
+  <button class="drop" data-slug="what-lives-in-mariana-trench">Drop</button>
+</div>
+
+
+<div class="card">
+  <p class="q">2. how deep can a sperm whale go</p>
+  <div class="meta">
+    <span class="tag ">human-authored</span>
+    how-deep-can-a-sperm-whale-go · 6 sources · 100 beats
   </div>
   <div class="pov"><b>POV pov-038</b> — How do we know an animal behaves a certain way when we&#x27;ve seen it three times?<br>
     <span style="font-size:11px;opacity:.7">matched: transferable fallback (tag:evidence); no tag signal fired for this subject</span></div>
   <button class="drop" data-slug="how-deep-can-a-sperm-whale-go">Drop</button>
+</div>
+
+
+<div class="card">
+  <p class="q">3. why deep sea creatures are creepers</p>
+  <div class="meta">
+    <span class="tag gen">drafted by claude-subscription/opus</span>
+    why-deep-sea-creatures-are-creepers · 6 sources (all verified) · 84 beats
+  </div>
+  <div class="pov"><b>POV pov-002</b> — It feels quiet, but not peaceful quiet. More like being somewhere you were never designed to be.<br>
+    <span style="font-size:11px;opacity:.7">matched: tag:scale score 2.8</span></div>
+  <button class="drop" data-slug="why-deep-sea-creatures-are-creepers">Drop</button>
+</div>
+
+
+<div class="card">
+  <p class="q">4. how deep can whales dive</p>
+  <div class="meta">
+    <span class="tag gen">drafted by claude-subscription/opus</span>
+    how-deep-can-whales-dive · 5 sources (all verified) · 71 beats
+  </div>
+  <div class="pov"><b>POV pov-085</b> — It doesn&#x27;t bother me that instruments extend what we can know. Human senses are extremely limited. That&#x27;s the point of technology.<br>
+    <span style="font-size:11px;opacity:.7">matched: tag:instruments score 2.0</span></div>
+  <button class="drop" data-slug="how-deep-can-whales-dive">Drop</button>
 </div>
 </form>
 
@@ -86,7 +122,7 @@ the override window closes Tuesday 02:00, when rendering starts.</div>
 
 </div>
 <script>
-const DATA = {"week": "2026-W42", "generated": "2026-10-12T15:31:43+00:00", "items": [{"slug": "how-deep-can-a-sperm-whale-go"}]};
+const DATA = {"week": "2026-W42", "generated": "2026-10-12T15:53:50+00:00", "items": [{"slug": "what-lives-in-mariana-trench"}, {"slug": "how-deep-can-a-sperm-whale-go"}, {"slug": "why-deep-sea-creatures-are-creepers"}, {"slug": "how-deep-can-whales-dive"}]};
 const REPO = "seq23/how-we-know";
 function selected(){
   return [...document.querySelectorAll("button.drop.on")].map(b => b.dataset.slug);
