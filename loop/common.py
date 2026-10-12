@@ -475,6 +475,16 @@ def disposition(stage: str, code: str, detail, streak: int,
         held.record(_stops_dir(), entry)
         if verdict == "held":
             return ("held", why)
+        # 2026-10-12, run 38272528658: this said "'VALIDATOR_FAILED' is not in
+        # loop/stop_policy.json" when the code IS there, enumerated under
+        # needs_human (the audit section this function never reads, because
+        # the default already sends it here). Same verdict; the words now
+        # tell the truth about which of the two it is.
+        if _match_rule(policy.get("needs_human"), code):
+            return ("needs_human",
+                    f"'{code}' is classified needs_human in "
+                    f"loop/stop_policy.json: it is a defect a person reads. "
+                    + why)
         return ("needs_human",
                 f"'{code}' is not in loop/stop_policy.json, so it is treated as "
                 f"needing a human. That is the default on purpose. " + why)
