@@ -19,7 +19,15 @@ concurrency:
 
 jobs:
   draft:
-    timeout-minutes: 31  # ~3x median 0.6m over 7 green runs; fault detector, not a budget
+    # Derived from loop/draft.py AUTHORING_BUDGET_MIN (40): no draft attempt
+    # starts past that budget, one in-flight attempt is at most ~6 minutes
+    # (a 300 s request plus citation fetches), and setup, validation and the
+    # dashboard take ~3. The honest worst case is ~50 minutes; this is the
+    # fault detector above it, never the budget. The old 31 was 3x a PAID
+    # model's 0.6-minute median and cancelled run 38235183608 (2026-10-12)
+    # while the $0 route was still writing the third topic.
+    # loop/tests/test_mon_draft_authoring_budget.py pins ceiling == budget + 20.
+    timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

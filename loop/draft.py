@@ -22,6 +22,7 @@ its output fails validation - not the normal path.
 from __future__ import annotations
 
 import sys
+import time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -42,6 +43,33 @@ from common import (BRIEFS, LOOP, ROOT, Stage, config, now,  # noqa: E402
 
 QUEUE = LOOP / "render_queue.json"
 TOPICS = LOOP / "next_topics.json"
+
+
+# Wall-clock budget for everything this lane authors, in minutes. The $0
+# OpenRouter route (config/llm_routing.json, 2026-10-11) answers in minutes:
+# on 2026-10-12 (run 38235183608) one topic took 8 minutes and the next 18 for
+# four attempts each, and the job's 31-minute ceiling - calibrated on a paid
+# model's 0.6-minute median - cancelled the third topic mid-draft. A cancelled
+# job commits nothing; a budget ends the lane on time with whatever it has
+# and a brief for the rest. The ceiling in .github/workflows/loop-mon-draft.yml
+# is derived from this number; loop/tests/test_mon_draft_authoring_budget.py
+# pins the two together.
+AUTHORING_BUDGET_MIN = 40
+
+
+def authoring_deadline(start: float | None = None) -> float:
+    """time.monotonic() instant after which no draft attempt starts."""
+    return (time.monotonic() if start is None else start) + AUTHORING_BUDGET_MIN * 60
+
+
+def budget_exhausted(st, slug: str, deadline: float) -> bool:
+    """True (and a named note) when the lane may not start another draft."""
+    if time.monotonic() < deadline:
+        return False
+    st.note(f"{slug}: NAMED STOP [AUTHORING_BUDGET_EXHAUSTED] the lane's "
+            f"{AUTHORING_BUDGET_MIN}-minute authoring budget is spent; not "
+            f"authored this week — the brief stays in loop/briefs/ for next Monday")
+    return True
 
 
 def brief_for(topic: dict, week: str) -> Path:
@@ -96,7 +124,8 @@ def brief_for(topic: dict, week: str) -> Path:
 
 
 def rebuild_runway_if_short(st, cfg: dict, per_week: int, used_slugs: list[str],
-                            skip_slugs: set[str]) -> None:
+                            skip_slugs: set[str],
+                            deadline: float | None = None) -> None:
     """A runway warning that only ever LOGGED is a warning nobody has to act
     on until it is nearly too late. 2026-09-03: `runway.warn_weeks`/
     `critical_weeks` existed only as a number in a report; nothing ran the
@@ -162,6 +191,10 @@ def rebuild_runway_if_short(st, cfg: dict, per_week: int, used_slugs: list[str],
     authored, failed = [], []
     for row, dom in candidates[:cap]:
         slug, question = row["slug"], row.get("query", row.get("question", ""))
+        if deadline is not None and budget_exhausted(st, slug, deadline):
+            failed.append(f"{slug}: [AUTHORING_BUDGET_EXHAUSTED] the "
+                          f"{AUTHORING_BUDGET_MIN}-minute authoring budget is spent")
+            continue
         try:
             pov = pov_match.select(slug, question, used_slugs)
         except pov_match.NoPovMatch as e:
@@ -170,7 +203,8 @@ def rebuild_runway_if_short(st, cfg: dict, per_week: int, used_slugs: list[str],
         try:
             res = author.draft(question, slug,
                                {"pov_id": pov["pov_id"], "line": pov["line"]},
-                               domain=dom or domains.UNSUFFIXED_FILE_DOMAIN)
+                               domain=dom or domains.UNSUFFIXED_FILE_DOMAIN,
+                               deadline=deadline)
         except author.AuthorStop as e:
             failed.append(f"{slug}: [{e.code}] {e.message}")
             continue
@@ -278,6 +312,9 @@ def main() -> None:
                zero_work_hint="loop/next_topics.json selected nothing. Run "
                               "loop/rank.py, or check the authored inventory "
                               "in scripts/.") as st:
+        # Every draft attempt in this run, main slots and runway rebuild
+        # alike, must START before this instant (see AUTHORING_BUDGET_MIN).
+        deadline = authoring_deadline()
 
         topics = read_json(TOPICS, default=None)
         if topics is None:
@@ -333,7 +370,8 @@ def main() -> None:
             # RUNWAY_AUTHORING_FALLBACK (loud) when it cannot.
             used_ids = [r.get("pov_id") for r in ledger.load()["published"]
                         if r.get("pov_id")]
-            rebuild_runway_if_short(st, cfg, per_week, used_ids, set(refused))
+            rebuild_runway_if_short(st, cfg, per_week, used_ids, set(refused),
+                                    deadline=deadline)
             if st.units:
                 # The rebuild wrote publish-queue scripts: real work, an OK
                 # run. Nothing above this line calls st.work().
@@ -363,6 +401,13 @@ def main() -> None:
                     unauthored.append(t)
                     st.note(f"{t['slug']}: no POV line matched; not authored")
                     continue
+                if budget_exhausted(st, t["slug"], deadline):
+                    unauthored.append({
+                        **t, "author_stop": "AUTHORING_BUDGET_EXHAUSTED",
+                        "author_message": f"the {AUTHORING_BUDGET_MIN}-minute "
+                                          f"authoring budget was spent before "
+                                          f"this slot"})
+                    continue
                 try:
                     # domain=, explicitly — without it author.draft() falls
                     # back to its own DEFAULT_DOMAIN (deep sea) regardless of
@@ -374,7 +419,8 @@ def main() -> None:
                     # outside domains.allocation, so this is always a live
                     # allocated domain.
                     res = author.draft(t["question"], t["slug"], pov,
-                                       domain=domains.row_domain(t))
+                                       domain=domains.row_domain(t),
+                                       deadline=deadline)
                 except author.AuthorStop as e:
                     # Named, expected, and never a crash. The week continues on
                     # whatever inventory covers.
@@ -548,7 +594,8 @@ def main() -> None:
         skip_slugs = {i["slug"] for i in items} | {t.get("slug") for t in unauthored}
         used_ids = [r.get("pov_id") for r in ledger.load()["published"]
                    if r.get("pov_id")]
-        rebuild_runway_if_short(st, cfg, per_week, used_ids, skip_slugs)
+        rebuild_runway_if_short(st, cfg, per_week, used_ids, skip_slugs,
+                                deadline=deadline)
 
 
 if __name__ == "__main__":

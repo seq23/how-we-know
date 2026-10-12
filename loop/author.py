@@ -801,8 +801,17 @@ def dead_urls(text: str) -> list[str]:
 # ------------------------------------------------------------------- public
 
 def draft(question: str, slug: str, pov: dict, model: str | None = None,
-          key: str | None = None, domain: str = DEFAULT_DOMAIN) -> dict:
-    """Draft one script. Raises AuthorStop for every expected failure."""
+          key: str | None = None, domain: str = DEFAULT_DOMAIN,
+          deadline: float | None = None) -> dict:
+    """Draft one script. Raises AuthorStop for every expected failure.
+
+    `deadline` is a time.monotonic() instant. No attempt STARTS past it: the
+    free route answers in minutes, not seconds, and on 2026-10-12 (run
+    38235183608) two topics spent 8 and 18 minutes on four attempts each
+    before the job's own ceiling cancelled the third mid-draft. Past the
+    deadline this raises AUTHORING_BUDGET_EXHAUSTED, which loop/draft.py
+    folds into the same AUTHOR_REQUIRED note as DRAFT_FAILED_VALIDATION.
+    """
     key = key or api_key()
     if not key:
         raise AuthorStop(
@@ -816,6 +825,16 @@ def draft(question: str, slug: str, pov: dict, model: str | None = None,
 
     last: list[str] = []
     for attempt in range(1, MAX_ATTEMPTS + 1):
+        if deadline is not None and time.monotonic() >= deadline:
+            raise AuthorStop(
+                "AUTHORING_BUDGET_EXHAUSTED",
+                f"the lane's wall-clock authoring budget ran out before attempt "
+                f"{attempt} of {MAX_ATTEMPTS}"
+                + (f"; the last rejection: {'; '.join(last)}" if last else ""),
+                "Falls back to AUTHOR_REQUIRED, exactly like "
+                "DRAFT_FAILED_VALIDATION: the brief stays in loop/briefs/ for "
+                "next Monday. The budget is loop/draft.py AUTHORING_BUDGET_MIN; "
+                "the job ceiling in loop-mon-draft.yml is derived from it.")
         try:
             resp = call_openrouter(messages, model, key)
         except llm_router.LLMStop as e:

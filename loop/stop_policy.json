@@ -521,6 +521,7 @@
     "STATE_FILE_CORRUPT": "Only after loop/common.py has already tried to restore the file from origin/main and failed. A state file that cannot be restored is a real defect.",
     "VALIDATOR_FAILED": "A validator found a defect. That is the whole point of it.",
     "DRAFT_FAILED_VALIDATION": "A generated script did not pass its own validators and was not queued. A defect in the draft or in the prompt.",
+    "AUTHORING_BUDGET_EXHAUSTED": "The Monday lane's wall-clock authoring budget (loop/draft.py AUTHORING_BUDGET_MIN) was spent before this slot or attempt could start, so the topic was left as a brief for next Monday. Folded into AUTHOR_REQUIRED like DRAFT_FAILED_VALIDATION; it is the lane ending on time instead of being cancelled by its job ceiling (run 38235183608, 2026-10-12).",
     "HOLD_GATE_FAILED": "loop/score.py dispose_promotion_holds() could not decide a held script: the single-query gate raised an unhandled exception (a code defect, retrying next Saturday cannot fix it), or it has been deferred on a missing key or quota for four Saturdays running (the hold is now older than any decision should be). Time does not fix either; a person reads the stop's detail.",
     "RUNWAY_AUTHORING_FALLBACK": "The runway warning had to fall back to a degraded authoring path. It must be seen, because the fallback is not the intended pipeline.",
     "TOPIC_EXCLUDED": "A queued topic is on the exclusion list. A queue defect, not a transient.",

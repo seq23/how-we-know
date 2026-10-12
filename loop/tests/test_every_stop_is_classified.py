@@ -102,6 +102,9 @@ GENERATED = {
     # route-wide reason (loop/draft.py, 2026-10-11).
     "AUTHOR_REQUIRED":             ("draft.py", 'else "AUTHOR_REQUIRED"'),
     "DRAFT_FAILED_VALIDATION":     ("author.py", '"DRAFT_FAILED_VALIDATION"'),
+    # The Monday lane's wall-clock budget (2026-10-12); folded into
+    # AUTHOR_REQUIRED by draft.py the same way DRAFT_FAILED_VALIDATION is.
+    "AUTHORING_BUDGET_EXHAUSTED":  ("author.py", '"AUTHORING_BUDGET_EXHAUSTED"'),
     "TOPIC_EXCLUDED":              ("author.py", '"TOPIC_EXCLUDED"'),
     "INSUFFICIENT_DOMAIN_EVIDENCE": ("domains.py", '"INSUFFICIENT_DOMAIN_EVIDENCE"'),
     "QUEUE_DECAYED_BUT_UNMEASURED": ("domains.py", '"QUEUE_DECAYED_BUT_UNMEASURED"'),
