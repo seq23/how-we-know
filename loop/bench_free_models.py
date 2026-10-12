@@ -118,17 +118,9 @@ def sections(text: str) -> dict[str, int]:
 
 
 def category(problems: list[str], finish, empty: bool) -> str:
-    if empty:
-        return "empty_or_error"
-    if not problems:
-        return "passed"
-    if any(p.startswith("output was cut off") for p in problems):
-        return "truncated"
-    if any(p.startswith("source URL") for p in problems):
-        return "dead_url"
-    if all(p.startswith("narration is only") for p in problems):
-        return "length_only"
-    return "structure"
+    """The lane's own classifier (author.rejection_category), so the bench
+    and the drafting lane's citation-repair decision cannot drift."""
+    return author.rejection_category(problems, finish, empty)
 
 
 GEMINI_API = "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions"
@@ -170,8 +162,12 @@ class Bench:
             row.update(outcome="skipped_cap", category="empty_or_error")
             return row
         time.sleep(GEMINI_SLEEP_S if gem else SLEEP_S)
-        b = {"model": model, "messages": messages, "max_tokens": 16000, "temperature": 0.4}
+        # The production body (llm_router.openrouter_body: reasoning cap and
+        # max_tokens from config) - one builder, so the bench measures what
+        # the lane sends. --reasoning low/medium overrides the cap's form.
+        b = llm_router.openrouter_body(model, messages, 0.4)
         if gem:
+            b = {k: b[k] for k in ("model", "messages", "max_tokens", "temperature")}
             self.gused += 1
             key, post = self.gkey, gemini_post
             if self.reasoning != "default":
@@ -179,8 +175,6 @@ class Bench:
         else:
             self.used += 1
             key, post = self.key, llm_router._post
-            b |= {"usage": {"include": True},
-                  "provider": {"max_price": {"prompt": 0, "completion": 0}}}
             if self.reasoning != "default":
                 b["reasoning"] = {"effort": self.reasoning}
         body = json.dumps(b).encode()
@@ -350,8 +344,61 @@ def markdown(res) -> str:
     return "\n".join(L)
 
 
+# ---- seeding the route ledger from a bench (owner 2026-10-12) -------------
+SEED_KEEP = 20          # the ledger's own bound (loop/tools/merge_route_ledger)
+
+
+def _ledger_outcome(row: dict) -> str | None:
+    """A bench row as a route-ledger outcome; None = no request was judged."""
+    o = str(row.get("outcome") or "")
+    if o == "answered":
+        if "passed" not in row:
+            return None
+        return "passed" if row["passed"] else "failed_validation"
+    if o == "empty":
+        return "empty"
+    if o == "http_429":
+        return "rate_limited"
+    if o.startswith("http_") or o in ("error", "fell_through"):
+        return "error"
+    return None          # skipped_cap, "answered, result lost to the crash"
+
+
+def seed_events(res: dict) -> dict[str, list[dict]]:
+    """One ledger event per bench attempt per model (prior aborted-run rows
+    first, then the bench rows, in recorded order), lane "bench", bounded at
+    SEED_KEEP per model. Gemini rows get the router's "gemini/" id. The
+    bench records no clock time, so events are stamped <date>T14:MM:SSZ in
+    order - before that day's production run, whose events stay newest."""
+    gem = set(llm_router.load_config().get("gemini_route", {}).get("models") or [])
+    out: dict[str, list[dict]] = {}
+    i = 0
+    for row in list(res.get("prior_rows") or []) + list(res.get("rows") or []):
+        outcome = _ledger_outcome(row)
+        if not outcome:
+            continue
+        m = row["model"]
+        mid = llm_router.GEMINI_PREFIX + m if m in gem else m
+        lat = row.get("latency_s")
+        out.setdefault(mid, []).append({
+            "ts": f"{res['date']}T14:{i // 60:02d}:{i % 60:02d}Z",
+            "outcome": outcome,
+            "latency_s": round(float(lat), 1) if isinstance(lat, (int, float)) else None,
+            "lane": "bench"})
+        i += 1
+    return {m: evs[-SEED_KEEP:] for m, evs in out.items()}
+
+
+def seed_ledger(res: dict, ledger: dict) -> dict:
+    sys.path.insert(0, str(LOOP / "tools"))
+    import merge_route_ledger as mrl
+    return mrl.merge({"models": seed_events(res)}, ledger, keep=SEED_KEEP)
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
+    ap.add_argument("--seed-ledger", metavar="JSON",
+                    help="merge a results file's attempts into the route ledger, 0 requests")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--rerank", metavar="JSON",
                     help="re-rank and rewrite the outputs from an existing results file, 0 requests")
@@ -364,6 +411,13 @@ def main() -> None:
                     help="requests an aborted run already spent today, recorded in the JSON")
     a = ap.parse_args()
     cap = min(a.cap, CAP)
+    if a.seed_ledger:
+        led = llm_router.read_ledger()
+        out = seed_ledger(json.loads(Path(a.seed_ledger).read_text()), led)
+        out["_why"] = led.get("_why") or out.get("_why")
+        Path(llm_router.LEDGER).write_text(json.dumps(out, indent=2, sort_keys=True) + "\n")
+        print(f"seeded {llm_router.LEDGER} from {a.seed_ledger}")
+        return
     if a.rerank:
         return write(json.loads(Path(a.rerank).read_text()))
     listing = free_listing()

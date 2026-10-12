@@ -293,6 +293,23 @@ def check() -> tuple[list[str], int]:
             measured = [m for m in got if m in bench_rank]
             if measured != [m for m in bench_rank if m in measured] or not measured:
                 fails.append(f"(i) seeded ledger order {got} != bench ranking {bench_rank}")
+            # ...and the committed ledger really carries the bench's attempts
+            # (bench_free_models.seed_events), not just a config reorder.
+            import bench_free_models as BFM  # noqa: E402
+            res = json.loads((ROOT / bench["file"]).read_text())
+            want = BFM.seed_events(res)
+            if not want:
+                fails.append("(i) the bench file yields ZERO ledger events")
+            for m, evs in want.items():
+                have = (seeded.get("models") or {}).get(m) or []
+                missing = [e for e in evs if e not in have]
+                if missing and len(have) < MRL.KEEP:
+                    fails.append(f"(i) {m}: {len(missing)} bench event(s) not in "
+                                 f"the committed ledger")
+                if any(e.get("lane") != "bench" for e in evs):
+                    fails.append(f"(i) {m}: a seeded event's lane is not 'bench'")
+            if not any(r["bucket"] != "UNMEASURED" for r in R.standing(ids, seeded)):
+                fails.append("(i) the seeded ledger measured no model")
 
         # (j) the Gemini free tier
         GKEY = "AIza" + "G" * 35

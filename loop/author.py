@@ -798,6 +798,62 @@ def dead_urls(text: str) -> list[str]:
     return out
 
 
+# Rejection categories (bench 2026-10-12). ONE classifier for the drafting
+# lane and loop/bench_free_models.py, so the bench's verdict and the lane's
+# repair decision cannot drift. Precedence: empty > truncated > dead_url >
+# length_only > structure.
+DEAD_URL_PREFIX = "source URL "
+TRUNCATED_PREFIX = "output was cut off"
+LENGTH_PREFIX = "narration is only"
+REJECTION_CATEGORIES = ("passed", "empty_or_error", "truncated", "dead_url",
+                        "length_only", "structure")
+
+
+def rejection_category(problems: list[str], finish=None,
+                       empty: bool = False) -> str:
+    if empty:
+        return "empty_or_error"
+    if not problems:
+        return "passed"
+    if any(p.startswith(TRUNCATED_PREFIX) for p in problems) or (
+            finish and finish not in ("stop", "end_turn")):
+        return "truncated"
+    if any(p.startswith(DEAD_URL_PREFIX) for p in problems):
+        return "dead_url"
+    if all(p.startswith(LENGTH_PREFIX) for p in problems):
+        return "length_only"
+    return "structure"
+
+
+def repairable_urls(problems: list[str], finish=None,
+                    empty: bool = False) -> list[str]:
+    """The dead URLs, when dead_urls() findings are a rejection's ONLY
+    problems (no shape problem, not truncated); otherwise []. The nearest
+    miss in the 2026-10-12 bench (gemini-2.5-flash) cleared the floor every
+    time and was stopped only by dead links - a full redraft re-rolls the
+    whole script; a citation repair keeps the script that already passed."""
+    if rejection_category(problems, finish, empty) != "dead_url":
+        return []
+    if not all(p.startswith(DEAD_URL_PREFIX) for p in problems):
+        return []
+    out = []
+    for p in problems:
+        m = re.search(r"(https?://[^\s)>\]]+?)(?: - |$)", p)
+        if m and m.group(1) not in out:
+            out.append(m.group(1))
+    return out if len(out) == len(problems) else []
+
+
+def repair_prompt(urls: list[str], problems: list[str]) -> str:
+    return (f"These {len(urls)} source URLs are dead: "
+            + ", ".join(urls)
+            + ". Replace each with a working URL from the same publisher or "
+              "an equivalent primary source; change nothing else in the "
+              "script.\n\nWhat the link checker found:\n"
+            + "\n".join(f"- {p}" for p in problems)
+            + "\n\nOutput the full script and nothing else.")
+
+
 # ------------------------------------------------------------------- public
 
 def draft(question: str, slug: str, pov: dict, model: str | None = None,
@@ -889,6 +945,15 @@ def draft(question: str, slug: str, pov: dict, model: str | None = None,
                     "usage": usage}
 
         last = problems
+        dead = repairable_urls(problems, finish, not text.strip())
+        if dead:
+            # Citation repair turn: everything but the links already passed.
+            # The repair is checked by the same shape_problems() + dead_urls()
+            # pass on the next attempt, inside MAX_ATTEMPTS.
+            messages = messages + [
+                {"role": "assistant", "content": text},
+                {"role": "user", "content": repair_prompt(dead, problems)}]
+            continue
         remedy = ("\n\n" + DIRECTIVE_REMEDY
                   if any(p.startswith("directive draws") or
                          p.startswith("uncertain directive") for p in problems)

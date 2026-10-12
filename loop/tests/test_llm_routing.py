@@ -81,6 +81,14 @@ def check() -> list[str]:
                      "one rate limit would stop every lane")
     if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(cfg.get("snapshot_date"))):
         fails.append("snapshot_date is not YYYY-MM-DD")
+    examined += 1
+    if cfg.get("reasoning_max_tokens") != 2000 or cfg.get("max_tokens") != 24000:
+        fails.append(f"reasoning_max_tokens/max_tokens are "
+                     f"{cfg.get('reasoning_max_tokens')!r}/{cfg.get('max_tokens')!r}"
+                     f", pinned at 2000/24000 by the 2026-10-12 bench")
+    if "research/free_model_bench/2026-10-12.md" not in " ".join(cfg.get("_why") or []) \
+            or "reasoning_max_tokens" not in " ".join(cfg.get("_why") or []):
+        fails.append("config _why does not cite the bench for reasoning_max_tokens")
     free = R.free_models()
     # Negative proofs: each break must be caught by config_problems().
     for name, mutate in (
@@ -90,7 +98,19 @@ def check() -> list[str]:
                 id="anthropic/claude-sonnet-4.5")),
             ("no snapshot date", lambda c: c.pop("snapshot_date")),
             ("a paid fallback", lambda c: c.update(paid_fallback=True)),
-            ("a budget above 0", lambda c: c.update(max_cost_usd=5))):
+            ("a budget above 0", lambda c: c.update(max_cost_usd=5)),
+            # Reasoning cap (bench 2026-10-12): uncapped reasoning models
+            # spent the whole max_tokens thinking and returned empty text.
+            ("no reasoning cap", lambda c: c.pop("reasoning_max_tokens")),
+            ("a reasoning cap below OpenRouter's 1024 floor",
+             lambda c: c.update(reasoning_max_tokens=500)),
+            ("a string reasoning cap",
+             lambda c: c.update(reasoning_max_tokens="2000")),
+            ("no max_tokens", lambda c: c.pop("max_tokens")),
+            ("max_tokens leaving under 16,000 for the script",
+             lambda c: c.update(max_tokens=c["reasoning_max_tokens"] + 15000)),
+            ("max_tokens above a model's completion limit",
+             lambda c: c["models"][0].update(max_completion_tokens=8000))):
         examined += 1
         bad = json.loads(json.dumps(cfg))
         mutate(bad)
@@ -170,6 +190,17 @@ def check() -> list[str]:
             if (b.get("provider") or {}).get("max_price") != {"prompt": 0,
                                                              "completion": 0}:
                 fails.append("a request lacks provider.max_price = 0")
+            # The reasoning cap rides on every OpenRouter request, in the
+            # max_tokens form (effort is not accepted by every listed model;
+            # exclude would still spend the budget).
+            if b.get("reasoning") != {"max_tokens": cfg["reasoning_max_tokens"]}:
+                fails.append(f"a request's reasoning is {b.get('reasoning')!r}, "
+                             f"not {{'max_tokens': {cfg['reasoning_max_tokens']}}}")
+            if b.get("max_tokens") != cfg["max_tokens"]:
+                fails.append(f"a request's max_tokens is {b.get('max_tokens')}, "
+                             f"not config's {cfg['max_tokens']}")
+        if not sent:
+            fails.append("no request body examined for the reasoning cap")
 
         for script, want, name in (
                 ([401], R.KEY_DISABLED, "HTTP 401"),

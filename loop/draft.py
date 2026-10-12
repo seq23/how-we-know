@@ -54,8 +54,11 @@ TOPICS = LOOP / "next_topics.json"
 # job commits nothing; a budget ends the lane on time with whatever it has
 # and a brief for the rest. The ceiling in .github/workflows/loop-mon-draft.yml
 # is derived from this number; loop/tests/test_mon_draft_authoring_budget.py
-# pins the two together.
-AUTHORING_BUDGET_MIN = 40
+# pins the two together. The lane starts at 05:00 UTC Monday (owner
+# 2026-10-12: the overnight window, when free tiers are least loaded) and the
+# next loop-state lane, loop-upload-cloud, queues at 14:00 UTC: 480 + 20
+# minutes of ceiling ends by 13:20 UTC, so the budget is the whole slot.
+AUTHORING_BUDGET_MIN = 480
 
 
 def authoring_deadline(start: float | None = None) -> float:

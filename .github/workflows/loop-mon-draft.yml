@@ -1,4 +1,4 @@
-name: loop · Mon 06:00 · draft, validate, gate
+name: loop · Mon 00:00 CT · draft, validate, gate
 
 # Builds loop/render_queue.json - the only handoff to the Mac - authors any topic
 # that has no script yet, and rebuilds the dashboard. Nothing waits on the owner.
@@ -6,7 +6,12 @@ name: loop · Mon 06:00 · draft, validate, gate
 # voiced. Generated scripts are validated at FULL strength, not relaxed.
 on:
   schedule:
-    - cron: '0 10 * * 1'
+    # 05:00 UTC Monday = 00:00 Central, Sunday night into Monday. Owner
+    # 2026-10-12: "do the loop during that window each day so we can get free
+    # usage" - the free tiers are least loaded overnight (Gemini 3.5 Flash
+    # answered 503 at 10:03 and 10:13 UTC that morning). The next loop-state
+    # lane is loop-upload-cloud at 14:00 UTC, so the slot is 9 hours.
+    - cron: '0 5 * * 1'
   workflow_dispatch:
 
 permissions:
@@ -19,15 +24,17 @@ concurrency:
 
 jobs:
   draft:
-    # Derived from loop/draft.py AUTHORING_BUDGET_MIN (40): no draft attempt
+    # Derived from loop/draft.py AUTHORING_BUDGET_MIN (480): no draft attempt
     # starts past that budget, one in-flight attempt is at most ~6 minutes
     # (a 300 s request plus citation fetches), and setup, validation and the
-    # dashboard take ~3. The honest worst case is ~50 minutes; this is the
-    # fault detector above it, never the budget. The old 31 was 3x a PAID
-    # model's 0.6-minute median and cancelled run 38235183608 (2026-10-12)
-    # while the $0 route was still writing the third topic.
-    # loop/tests/test_mon_draft_authoring_budget.py pins ceiling == budget + 20.
-    timeout-minutes: 60
+    # dashboard take ~3. This is the fault detector above the budget, never
+    # the budget: 05:00 UTC + 500 min ends by 13:20 UTC, before
+    # loop-upload-cloud joins the loop-state queue at 14:00 UTC. The old 31
+    # was 3x a PAID model's 0.6-minute median and cancelled run 38235183608
+    # (2026-10-12) while the $0 route was still writing the third topic.
+    # loop/tests/test_mon_draft_authoring_budget.py pins ceiling == budget + 20
+    # and the slot.
+    timeout-minutes: 500
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

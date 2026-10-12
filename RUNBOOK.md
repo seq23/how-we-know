@@ -447,7 +447,7 @@ and `loop/tests/test_runbook_lanes.py` fails if a `loop-state` workflow has no r
 | `loop-sat-score` | Sat 05:00 (`0 10 * * 6`) | Runs the research agent's demand/competition pass so the publish order is re-derived on current data every week. | no |
 | `loop-sun-rank` | Sun 05:00 (`0 10 * * 0`) | The brain half of the loop: mines demand, ranks it, and proposes the week. | no |
 | `loop-sun-digest` | Sun 11:00 (`0 16 * * 0`) | The one email a week that arrives when nothing is wrong. | no |
-| `loop-mon-draft` | Mon 05:00 (`0 10 * * 1`) | Builds `loop/render_queue.json` (the only handoff to the Mac), authors any topic that has no script yet, and rebuilds the dashboard. | yes |
+| `loop-mon-draft` | Sun night 00:00 (`0 5 * * 1`) | Builds `loop/render_queue.json` (the only handoff to the Mac), authors any topic that has no script yet, and rebuilds the dashboard. | yes |
 | Mac render batch | daily 23:00 on her Mac (launchd, `bin/loop-install-launchd.sh` → `bin/batch-session.sh`) | Narrates every script that has no audio, renders every episode that has audio but no video, and pushes the results out for uploading; it reads `loop/render_queue.json`. | yes — `loop/extend.py` heals short episodes; the $0 route only, the Mac holds no subscription token |
 | `loop-upload-cloud` | daily 09:00 (`0 14 * * *`) | Pulls the next pending episode's render and thumbnail from Cloudflare R2 and uploads it to YouTube as private with its publish date. | no |
 | `loop-reach` | daily 10:00 (`0 15 * * *`) | Non-English reach plus discovery metadata: English captions, localized titles and descriptions, tags. | yes (localization) |

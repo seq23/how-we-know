@@ -20,7 +20,11 @@ Pinned here, through the code that runs, never by reading prose:
   3. loop-mon-draft.yml's timeout-minutes == AUTHORING_BUDGET_MIN + 20: the
      ceiling is derived from the budget (one in-flight attempt of ~6 min
      plus ~3 of setup, validation and dashboard, with headroom), so neither
-     can drift without the other.
+     can drift without the other; the lane starts at 05:00 UTC Monday (owner
+     2026-10-12, the overnight free-tier window), the budget is at least 180,
+     and start + ceiling ends before loop-upload-cloud.yml's hour, when the
+     next loop-state lane queues; no other weekly or daily loop-state lane
+     fires inside that window on a Monday.
   4. The stop code is classified in loop/stop_policy.json (needs_human,
      beside DRAFT_FAILED_VALIDATION).
 
@@ -136,9 +140,46 @@ def check() -> list[str]:
                          f"{draft.AUTHORING_BUDGET_MIN} min so the ceiling "
                          f"must be {want} (budget + {CEILING_HEADROOM_MIN}). "
                          f"Change AUTHORING_BUDGET_MIN and the ceiling together.")
-    if draft.AUTHORING_BUDGET_MIN < 30:
+    if draft.AUTHORING_BUDGET_MIN < 180:
         fails.append(f"AUTHORING_BUDGET_MIN={draft.AUTHORING_BUDGET_MIN} is "
-                     f"under 30: the $0 route needs 8-18 min per topic")
+                     f"under 180: the $0 route needs 8-18 min per topic and "
+                     f"the slot is the whole night")
+    # The slot, read from the workflows themselves.
+    m2 = re.search(r"cron:\s*'0 (\d+) \* \* 1'", text)
+    if not m2 or int(m2.group(1)) != 5:
+        fails.append("loop-mon-draft.yml no longer starts at 05:00 UTC Monday "
+                     "(owner 2026-10-12: the overnight free-tier window); "
+                     "re-derive AUTHORING_BUDGET_MIN against the next lane in "
+                     "the loop-state group")
+    else:
+        start = int(m2.group(1)) * 60
+        end = start + draft.AUTHORING_BUDGET_MIN + CEILING_HEADROOM_MIN
+        up = re.search(r"cron:\s*'0 (\d+) \* \* \*'",
+                       (WF.parent / "loop-upload-cloud.yml").read_text())
+        if not up:
+            fails.append("loop-upload-cloud.yml has no daily cron to fit before")
+        elif end >= int(up.group(1)) * 60:
+            fails.append(f"budget {draft.AUTHORING_BUDGET_MIN} + "
+                         f"{CEILING_HEADROOM_MIN} from {start // 60:02d}:00 UTC "
+                         f"reaches {up.group(1)}:00 UTC, when "
+                         f"loop-upload-cloud.yml joins the loop-state queue")
+        seen = 0
+        for wf in sorted(WF.parent.glob("*.yml")):
+            t = wf.read_text()
+            if wf == WF or "group: loop-state" not in t:
+                continue
+            for mm, hh, dom, mon, dow in re.findall(
+                    r"cron:\s*'(\d+) (\d+) (\S+) (\S+) (\S+)'", t):
+                seen += 1
+                if dom != "*" or dow not in ("*", "1"):
+                    continue
+                at = int(hh) * 60 + int(mm)
+                if start <= at < end:
+                    fails.append(f"{wf.name} ({hh}:{mm} UTC) fires inside the "
+                                 f"Monday authoring window")
+        if seen == 0:
+            fails.append("found ZERO other loop-state crons to check the slot "
+                         "against")
 
     # 4. the code is in the glossary
     examined += 1
