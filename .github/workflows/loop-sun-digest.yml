@@ -108,7 +108,9 @@ jobs:
           } > "$BODY"
 
           # THE VERDICT IS THE SUBJECT. loop/digest.py writes one line per week
-          # ("Weekly digest — 🟢 Healthy: 3 queued this week, 28 scheduled — 2026-W38")
+          # ("🔴 Shorts stopped: 1 of 9 published this week, … — needs you: check the
+          # Mac's nightly batch — 2026-W42"): one plain sentence, worst problem first.
+          # Last week's issue is found by its label and week, not a title prefix.
           # so the inbox is the dashboard. Falls back to the plain title if the
           # stage did not write one, never to no email.
           TITLE="$(head -n 1 "loop/state/digest/${WEEK}.subject" 2>/dev/null)"
@@ -122,7 +124,7 @@ jobs:
 
           # Close last week's, so the issue list stays a signal and not a pile.
           PREV="$(date -u -d 'last week' +%G-W%V 2>/dev/null || date -u -v-1w +%G-W%V)"
-          OLD="$(gh issue list --state open --search "Weekly digest — ${PREV} in:title" \
+          OLD="$(gh issue list --state open --label weekly-digest --search "${PREV} in:title" \
                  --json number --jq '.[0].number' 2>/dev/null)"
           if [ -n "$OLD" ] && [ "$OLD" != "null" ]; then
             gh issue close "$OLD" --comment "Superseded by the ${WEEK} digest." >/dev/null 2>&1 \

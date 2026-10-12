@@ -337,6 +337,37 @@ with Stage("probe-owner-stage", "2026-W37") as st:
                 fails.append(f"C: recorded disposition {rec.get('disposition')!r}, "
                              f"expected 'owner_action'.")
 
+    # ---- F. every code has a PLAIN sentence the owner can read -------------
+    # Owner, 2026-10-12: "make sure it tells me plainly what is honestly going
+    # on". The Sunday digest prints `plain` wherever it once printed a code
+    # (loop/digest.py plain()); a code without one would reach her inbox as a
+    # fallback sentence that names nothing. Every section, held.codes too.
+    import re as _re
+    token = _re.compile(r"[A-Z]{3,}_[A-Z_]+")
+    held_codes = (POLICY.get("held") or {}).get("codes") or {}
+    plain_checked = 0
+    # held.codes may carry only reminder_days and why (test_held_stops), so
+    # a held code's plain sentence lives in its disposition section: assert
+    # every held code is in one, where the loop below checks its `plain`.
+    for code in held_codes:
+        if not code.startswith("_") and not (code in SELF or code in OWNER or code in HUMAN):
+            fails.append(f"F: held code `{code}` is in no disposition section, so "
+                         f"it has no plain sentence.")
+    for name, sec in (("self_resolving", SELF), ("owner_action", OWNER),
+                      ("needs_human", HUMAN)):
+        for code, rule in sec.items():
+            if code.startswith("_"):
+                continue
+            plain_checked += 1
+            text = rule.get("plain") if isinstance(rule, dict) else None
+            if not isinstance(text, str) or not text.strip():
+                fails.append(f"F: `{code}` ({name}) has no `plain` sentence.")
+            elif token.search(text) or "_" in text:
+                fails.append(f"F: `{code}` ({name}) plain text carries a code "
+                             f"token, not plain words: {text!r}")
+    if plain_checked == 0:
+        fails.append("F: examined zero codes for a plain sentence.")
+
     print(f"examined {len(all_codes)} stop codes: "
           f"{len(SELF)} self-resolving, {len(OWNER)} owner-action, "
           f"{len(HUMAN)} needs-a-human")
