@@ -1,6 +1,6 @@
 # How We Know Numbers
 
-Repo copy of https://claude.ai/artifact/RrPVjRUBf8WDxSy7Cq5Qgf (v1.1, 12 Oct 2026). Numbers from the live
+Repo copy of https://claude.ai/artifact/RrPVjRUBf8WDxSy7Cq5Qgf (v1.3, 12 Oct 2026, final for the day). Numbers from the live
 YouTube Analytics API and the repo's own state. The page is the living version.
 
 ## 1. The channel, 90 days to 11 Oct 2026
@@ -58,6 +58,16 @@ Sunday night into Monday), still after Sunday's rank lane. The slot before the 9
 widens from 4 h to 9 h, so the authoring budget rises from 210 to 480 minutes (ceiling 500). The route
 ledger timestamps every outcome; two or three Mondays will show whether the 503s went away.
 
+**Landed by the end of 12 Oct:** shelf decoupled and drain 2/day at 19:00 and 21:00 CT (#169; 40 Shorts
+pushed to R2, backlog about 10 days); Monday lane at 05:00 UTC, budget 480, ceiling 500 (#171); Shorts and
+a channel verdict in the digest (#166); plain-words digest subject, worst problem first, with the action
+(#177, #182: W39–W41 read "🟢 Stalled" under red bodies because a variable was reused); every stop code has
+a plain sentence; the Mac never sleeps on AC (`pmset -c disablesleep 1`; on battery a closed lid still
+sleeps it) and the nightly batch resumes on wake (#175; the CI sweep's resume lives in seq-bin); the monthly
+email (#176). W42 digest, issue #183: "🔴 Publishing is halted: the safety switch tripped Mon 12 Oct because
+a quality check failed — needs you: check the Mac's nightly batch — 2026-W42". First monthly email, issue
+#179: "Monthly: 7 episodes + 4 Shorts published in October so far (to 12 Oct); no pivot rule triggered".
+
 ## 5. Long-form cadence: the research
 
 Owner decision 2 Sep 2026: 4 a week, the ceiling. Reviewed 12 Oct: **4 holds.**
@@ -79,4 +89,5 @@ Adding to the picture means re-rendering (~12 min each, audio kept) and a new up
 need no re-render. Existing rules: topic kill at title-gap ≤ 0.3 or demand < 0.16; domain swap when its
 queue decays below 4 after 8 measured episodes; slot moves need 8 measured each and a 30 s AVD spread;
 opening test keeps a variant only if its AVD beats the old cohort. No channel-level keep/kill/pivot rule
-exists yet; the weekly verdict block is the first step.
+exists yet; the weekly verdict block (#166) is the first step, and the monthly email (#176) reports every
+existing rule with its numbers each month, which is how the pivot research reaches the owner.

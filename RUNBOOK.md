@@ -90,6 +90,13 @@ was off at 23:00, it starts the night's batch when it comes back, up to 06:00.
   from the same place). Narration never runs past 07:00 on a resume.
 - **Where it lives:** `loop/state/_local/batch_progress.json` on the Mac (not in
   git); the agent's log is `~/Library/Logs/how-we-know/batch-resume.log`.
+  Landed in PR #175.
+- **The Mac never sleeps on AC** (owner, 12 Oct 2026: "no sleep and restart on
+  wake, I need both"): `sudo pmset -c disablesleep 1` (`pmset -g` shows
+  `SleepDisabled 1`), lid closed included. On battery a closed lid still
+  sleeps it, which is what resume-on-wake is for.
+- The CI sweep's own resume-on-wake (`com.seq.ci-sweep-resume`) lives in
+  `seq-bin`, not here.
 
 ### If a runway-warning email ever arrives, it means the nightly batch has fallen behind
 
@@ -464,8 +471,8 @@ and `loop/tests/test_runbook_lanes.py` fails if a `loop-state` workflow has no r
 |---|---|---|---|
 | `loop-sat-score` | Sat 05:00 (`0 10 * * 6`) | Runs the research agent's demand/competition pass so the publish order is re-derived on current data every week. | no |
 | `loop-sun-rank` | Sun 05:00 (`0 10 * * 0`) | The brain half of the loop: mines demand, ranks it, and proposes the week. | no |
-| `loop-sun-digest` | Sun 11:00 (`0 16 * * 0`) | The one email a week that arrives when nothing is wrong. | no |
-| `loop-mon-draft` | Sun night 00:00 (`0 5 * * 1`) | Builds `loop/render_queue.json` (the only handoff to the Mac), authors any topic that has no script yet, and rebuilds the dashboard. | yes |
+| `loop-sun-digest` | Sun 11:00 (`0 16 * * 0`) | The one email a week, whatever the week was: its subject is one plain sentence, worst problem first (see "Digest" below). | no |
+| `loop-mon-draft` | Sun night 00:00 (`0 5 * * 1`) | Builds `loop/render_queue.json` (the only handoff to the Mac), authors any topic that has no script yet (480-minute authoring budget, 500-minute job ceiling, pinned by `loop/tests/test_mon_draft_authoring_budget.py`; done by 13:20 UTC, before the 14:00 UTC upload lane), promotes validated drafts to `scripts/`, and rebuilds the dashboard. | yes |
 | Mac render batch | daily 23:00 on her Mac (launchd, `bin/loop-install-launchd.sh` → `bin/batch-session.sh`) | Narrates every script that has no audio, renders every episode that has audio but no video, and pushes the results out for uploading; it reads `loop/render_queue.json`. | yes — `loop/extend.py` heals short episodes; the $0 route only, the Mac holds no subscription token |
 | `loop-upload-cloud` | daily 09:00 (`0 14 * * *`) | Pulls the next pending episode's render and thumbnail from Cloudflare R2 and uploads it to YouTube as private with its publish date. | no |
 | `loop-reach` | daily 10:00 (`0 15 * * *`) | Non-English reach plus discovery metadata: English captions, localized titles and descriptions, tags. | yes (localization) |
@@ -475,7 +482,7 @@ and `loop/tests/test_runbook_lanes.py` fails if a `loop-state` workflow has no r
 | `loop-imagery-harvest` | Fri 23:00 (`0 4 * * 6`) | Grows the rights-cleared footage pool ahead of demand. | no |
 | `loop-quarterly-taxonomy-refresh` | 1st of Jan/Apr/Jul/Oct 03:00 (`0 8 1 1,4,7,10 *`) | Refreshes the ranked candidate-niche taxonomy the next domain is drawn from. | no |
 | `loop-override` | manual (an issue opened or edited) | The veto path: a row dropped from the dashboard opens a prefilled issue and this ingests it. | no |
-| `loop-monthly-review` | 1st 02:12 (`12 7 1 * *`) — its own `main-automation` queue | Reads a month of measurement and says what to change. | yes (the advisory) |
+| `loop-monthly-review` | 1st 02:12 (`12 7 1 * *`) — its own `main-automation` queue | Reads a month of measurement, says what to change, and sends the monthly email (see "Monthly email" below). | yes (the advisory and the email's paragraph) |
 
 Every lane above except the Mac batch and the monthly review shares the one
 `loop-state` concurrency queue, and GitHub keeps only one waiting run per group,
@@ -486,9 +493,10 @@ Monday authoring budget ends well before the 09:00 upload lane.
 
 The order, decided in code (`loop/llm_router.py`, `config/llm_routing.json`):
 
-1. **Your Claude subscription first**, through the headless Claude Code CLI,
-   whenever the lane carries `CLAUDE_CODE_OAUTH_TOKEN`. Prepaid; no per-call
-   bill.
+1. **Your Claude subscription first**, through the headless Claude Code CLI
+   (`claude -p --model opus`, never `--bare`: `--bare` ignores the OAuth
+   token), whenever the lane carries `CLAUDE_CODE_OAUTH_TOKEN`. Prepaid; no
+   per-call bill.
 2. **Your Google AI Studio key, free tier only, second** (`gemini_route` in
    `config/llm_routing.json`), whenever the lane carries `GEMINI_API_KEY`.
    Models are tried in the listed order through Google's OpenAI-compatible
@@ -508,6 +516,14 @@ The order, decided in code (`loop/llm_router.py`, `config/llm_routing.json`):
 
 **Why:** your decisions of 11 Oct 2026 ("nothing should be paid") and 12 Oct
 2026 ("use my claude subscription usage in advance of the $0 openrouter").
+
+**Request shape (PR #171):** every OpenRouter request caps hidden reasoning at
+2,000 tokens (`reasoning_max_tokens`) inside `max_tokens` 24,000, so reasoning
+models stop thinking and write. When a draft's only problems are dead source
+links, the next attempt is a citation-repair turn ("replace these N URLs,
+change nothing else") instead of a full rewrite. The config's first model is
+not a preference (`effective_preference()`, PR #167): only an explicit
+`$OPENROUTER_MODEL` jumps the queue, so Gemini always runs before OpenRouter.
 
 **Which lanes carry it:** every workflow whose stage can reach the router. The
 list is not kept here; `loop/tests/test_claude_subscription_route.py` derives it
@@ -552,22 +568,73 @@ only reorders it and never adds a model.
 - **See it:** `python3 loop/llm_router.py standing`. The Monday lane prints the
   same table (`[free-route standing]` lines) at stage start, so each run log
   shows the order it used.
-- **Seed (12 Oct 2026):** the config order is the starting point,
-  with `nvidia/nemotron-3-ultra-550b-a55b:free` moved to the bottom because on
-  run 38235183608 it returned an empty answer and cost the Monday lane ~5
-  minutes before the route moved on. The ledger started empty; the first runs
-  measure the rest.
+- **Seed (12 Oct 2026, PR #171):** the ledger was seeded from the free-model
+  bench (`research/free_model_bench/2026-10-12.md`) plus that day's production
+  runs. Standing at the end of 12 Oct (`standing` with the Gemini key set):
+
+  | # | Model | Bucket | Judged | Pass rate |
+  |---|---|---|---|---|
+  | 1 | `gemini/gemini-2.5-flash-lite` | UNMEASURED | 1 | 0.00 |
+  | 2 | `gemini/gemini-3-flash-preview` | MEASURED-BAD | 5 | 0.20 (best) |
+  | 3 | `gemini/gemini-2.5-flash` | MEASURED-BAD | 8 | 0.00 |
+  | 4 | `gemini/gemini-3.5-flash-lite` | MEASURED-BAD | 4 | 0.00 |
+  | 5 | `gemini/gemini-3.5-flash` | MEASURED-BAD | 5 | 0.00 |
+  | 6 | `nvidia/nemotron-3-ultra-550b-a55b:free` | MEASURED-BAD | 8 | 0.00 |
+  | 7 | `nvidia/nemotron-3-super-120b-a12b:free` | MEASURED-BAD | 9 | 0.00 |
+  | 8 | `google/gemma-4-31b-it:free` | MEASURED-BAD | 5 | 0.00 |
+  | 9 | `google/gemma-4-26b-a4b-it:free` | MEASURED-BAD | 5 | 0.00 |
+
+  Every free model is MEASURED-BAD except the one not yet measured: no $0
+  model writes a passing script yet, so the subscription tier is the writer
+  and the free list is a fallback. Read the live order from the command, not
+  this table.
 - **The pin:** `loop/tests/test_measured_fallback.py`. Concurrent lanes'
   ledger commits merge as a union (`loop/tools/merge_route_ledger.py`).
 
-**The Monday authoring budget** (PR #159): `AUTHORING_BUDGET_MIN` in
+**The Monday authoring budget** (PRs #159, #161, #171): `AUTHORING_BUDGET_MIN` in
 `loop/draft.py` is the wall-clock budget for everything the Monday lane
-authors; no draft attempt starts past it, and the job ceiling in
-`loop-mon-draft.yml` is that budget + 20 minutes.
+authors (480 minutes since the lane moved to 05:00 UTC); no draft attempt
+starts past it, and what is left becomes a brief (`AUTHORING_BUDGET_EXHAUSTED`).
+The job ceiling in `loop-mon-draft.yml` is that budget + 20 minutes (500).
 `loop/tests/test_mon_draft_authoring_budget.py` pins the two together. The
 budget must end before the 09:00 upload lane, which waits behind it in the
 `loop-state` queue. Read the numbers from those two files; this page describes,
 the code decides.
+
+## Digest
+
+`loop-sun-digest` (Sun 11:00 CT) opens one issue labelled `weekly-digest`
+(the workflow creates the label if missing). Since PRs #177 and #182:
+
+- **The subject is one plain sentence**, worst problem first, counts as
+  "X of Y" against target. `— needs you: <action>` appears only when a
+  needs-human or owner-action stop is open; `— watching` for yellow; `— not
+  fixed yet` for red with no stop; green names the counts. The emoji and
+  sentence in the subject are the body's first line, pinned by a test that
+  renders the digest and compares them.
+- **Every stop code has a `plain` sentence** in `loop/stop_policy.json`, and
+  the digest prints it wherever it used to print a code
+  (`test_every_stop_is_classified` check F hard-fails a missing one).
+- **Why:** the W39–W41 digests were red but read "🟢 Stalled …", because
+  `render()` reused the verdict's `mark` variable in the runway loop.
+- **W42, 12 Oct 2026:** issue #183, "🔴 Publishing is halted: the safety
+  switch tripped Mon 12 Oct because a quality check failed — needs you: check
+  the Mac's nightly batch — 2026-W42" (#181 was the same sentence under 🟢,
+  the bug #182 fixed).
+
+## Monthly email
+
+`loop/monthly_email.py` (PR #176), sent by `loop-monthly-review` on the 1st as
+an issue that @-mentions you. A manual dispatch (`mode: email-to-date`, the
+default) sends the month to date. Four sections: what was published, by
+format and domain with titles; what the data says; every keep/change/pivot
+rule with its numbers, triggered or not; what needs you. Subject:
+`Monthly: N episodes + M Shorts published in <Month>; <rule clause>`. The one
+advisory paragraph comes through the router (subscription first) and is
+refused if it carries a number the email did not print. The pivot research
+reaches you through this email. First one, 12 Oct 2026: issue #179, "Monthly:
+7 episodes + 4 Shorts published in October so far (to 12 Oct); no pivot rule
+triggered".
 
 ---
 
