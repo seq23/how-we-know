@@ -608,3 +608,27 @@ the code decides.
 - **The `## Direct-answer lock` in a script is never spoken.** It feeds the
   description's first line, the thumbnail brief and the Shorts scorer —
   `## Narration` is the only section a viewer ever hears.
+
+## Free model bench
+
+- **What it measures:** which $0 models can actually write a script. `loop/bench_free_models.py`
+  sends two real topics that need authoring (one per allocated domain) to each candidate with the
+  real prompt (`author.build_prompt`) and judges them with the real checks (`author.shape_problems`,
+  `author.dead_urls`, finish_reason): one draft, one correction turn built exactly as `author.draft()`
+  builds it, then up to 6 "go 2x" expansion turns on the best draft that failed on length alone.
+  Every request is pinned to the model under test (no fall-through), carries max price 0, and
+  stops the bench if a cost above 0 is reported. Gemini (Google AI Studio free tier,
+  `.secrets/gemini_key.txt`) is benched alongside the OpenRouter `:free` models.
+- **How to run:** `.venv/bin/python loop/bench_free_models.py` (the judges need numpy; the venv has
+  it, and a zero-cost preflight stops before any request if it is missing). `--dry-run` prints the
+  plan; `--rerank <json>` rewrites the outputs with 0 requests. Hard cap 60 OpenRouter requests
+  plus 8 Gemini per run. The key is not on OpenRouter's free tier (`is_free_tier` false: credits
+  were bought once, so `:free` models allow 1,000 requests/day, 20/min).
+- **When to re-run:** whenever `config/llm_routing.json`'s roster changes, or a new `:free` model
+  appears at https://openrouter.ai/api/v1/models.
+- **Results:** `research/free_model_bench/<date>.{json,md}`, also copied to
+  `~/GitHub/.wt/free_model_bench_latest.json`. `loop/tests/test_free_model_bench.py` pins them.
+- **Verdict, 12 Oct 2026:** nothing at $0 passed: no draft failed on length alone, so lengthening
+  is not the fix; the drafts that clear the 1,446-word floor fail on dead citations and unparseable
+  directives. Closest is `gemini-2.5-flash` (~19 s, two dead URLs from a pass); six of eleven models
+  never returned a script, mostly because hidden reasoning ate the whole 16,000-token budget.
