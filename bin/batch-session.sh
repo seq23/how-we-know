@@ -6,6 +6,8 @@
 #
 #   bin/batch-session.sh --max-episodes 4   # one week's worth, then stop
 #   bin/batch-session.sh --no-overlap       # render only after narration ends
+#   bin/batch-session.sh --resume-if-interrupted   # launchd, every 300 s: see
+#                                           # RESUME ON WAKE below
 #
 # Run this when the rank lane emails a RUNWAY warning. It narrates every script
 # that has no audio, renders every episode that has audio but no video, pushes
@@ -76,10 +78,119 @@ while [ $# -gt 0 ]; do
     --dry-run)      DRY=1 ;;
     --no-overlap)   OVERLAP="" ;;
     --max-episodes) MAX_EPISODES="${2:-0}"; shift ;;
-    *) echo "unknown option: $1"; echo "usage: bin/batch-session.sh [--dry-run] [--no-overlap] [--max-episodes N]"; exit 2 ;;
+    --resume-if-interrupted) RESUME_ONLY=1 ;;
+    *) echo "unknown option: $1"; echo "usage: bin/batch-session.sh [--dry-run] [--no-overlap] [--max-episodes N] [--resume-if-interrupted]"; exit 2 ;;
   esac
   shift
 done
+
+# ---------------------------------------------------------------------------
+# RESUME ON WAKE (owner, 2026-10-12: "no sleep and restart on wake, I need
+# both"). Sleep alone never needed this: a sleeping Mac SUSPENDS this process
+# and it carries on at wake. What kills a night is a reboot, a battery run
+# flat or a kill - and then nothing re-ran the batch until the next 23:00.
+#
+# So the night is recorded in loop/state/_local/batch_progress.json (ignored
+# by git; see loop/batch_progress.py) as each unit completes, and launchd's
+# com.howweknow.batch-resume runs this script every 300 s with
+# --resume-if-interrupted. That mode exits in well under a second unless the
+# gate says GO: an unfinished night from TONIGHT (resume it), or no batch yet
+# tonight between 23:00 and 06:00 (the Mac was off at 23:00 - launchd fires a
+# missed calendar job on wake from sleep, never after a power-off). Past 09:00
+# an unfinished night is reported, not resumed: the day's cloud lanes own the
+# Mac's outputs then.
+#
+# Every step already skips work on disk, so a resume repeats nothing that
+# finished. On top of that, whole phases recorded done tonight (narrate,
+# render, captions, shelve, harvest) are skipped outright, and a render
+# killed mid-mux - which leaves a TRUNCATED renders/<slug>-final.mp4 that
+# render_one would otherwise treat as finished - is moved aside and redone.
+#
+# THE CAPS ARE UNCHANGED. Narration's cap is a WALL CLOCK (--until 07:00), not
+# a duration, so a resume at 03:00 stops at the same 07:00 the 23:00 start
+# would have; a resumed session never gets a fresh allowance. And a resume (or
+# a launchd start fired late) after 07:00 does not narrate at all - otherwise
+# --until 07:00 would roll to TOMORROW 07:00 and narrate through her day. What
+# a resumed session holds awake (caffeinate -w) is its own process from the
+# moment it resumed, which is all it can hold: the interrupted one is gone.
+# ---------------------------------------------------------------------------
+RESUME_ONLY="${RESUME_ONLY:-}"
+BATCH_PROGRESS="${BATCH_PROGRESS:-$ROOT/loop/state/_local/batch_progress.json}"
+BATCH_LOCK="${BATCH_LOCK:-$(dirname "$BATCH_PROGRESS")/batch.lock}"
+export BATCH_PROGRESS
+PYP="$PY"; [ -x "$PYP" ] || PYP=python3       # the progress helper is stdlib only
+BP() { "$PYP" loop/batch_progress.py "$@"; }
+RESUMED_FROM=""
+PROGRESS_BEGUN=""
+BATCH_KILLED=""
+
+# THE ONE-BATCH LOCK. A pid file, taken atomically (noclobber), in the ignored
+# _local directory so no git operation can delete it - the failure the
+# narrator's audio/.narrate.lock had (see ONE NARRATOR below). A pid that is
+# dead, or alive but no longer this script (pids are reused after a reboot),
+# is stale and is taken over.
+lock_holder() {
+  local pid
+  pid=$(cat "$BATCH_LOCK" 2>/dev/null) || return 1
+  [ -n "$pid" ] && [ "$pid" != "$$" ] && kill -0 "$pid" 2>/dev/null     && ps -p "$pid" -o command= 2>/dev/null | grep -q "batch-session"     && { echo "$pid"; return 0; }
+  return 1
+}
+take_lock() {
+  mkdir -p "$(dirname "$BATCH_LOCK")"
+  local holder
+  if holder=$(lock_holder); then echo "$holder"; return 1; fi
+  rm -f "$BATCH_LOCK"
+  ( set -o noclobber; echo "$$" > "$BATCH_LOCK" ) 2>/dev/null && return 0
+  holder=$(lock_holder) && { echo "$holder"; return 1; }
+  echo "?"; return 1
+}
+on_exit() {
+  local rc=$1
+  # A finished run - including a named stop's exit 3 - is a COMPLETE night,
+  # so the resume agent does not re-run a stop every five minutes. Only a
+  # kill (TERM/INT/HUP: shutdown, logout, Ctrl-C) or SIGKILL/power loss, which
+  # never reaches here, leaves the night open for a resume.
+  if [ -n "$PROGRESS_BEGUN" ] && [ -z "$BATCH_KILLED" ]; then
+    BP complete "$rc" >/dev/null 2>&1
+  fi
+  [ "$(cat "$BATCH_LOCK" 2>/dev/null)" = "$$" ] && rm -f "$BATCH_LOCK"
+}
+report_incomplete_night() {
+  $PY loop/batch_progress.py report-incomplete 2>&1 | tail -1
+  $PY loop/mac_sync.py push --lane batch "loop/state/stops/$($PY -c "import sys; sys.path.insert(0,'loop'); from common import week_id; print(week_id())")-mac-batch.json" 2>&1 | tail -1
+}
+# step NAME FN: run a whole phase unless tonight's record says it finished.
+step() {
+  local name="$1"; shift
+  if BP done "$name"; then
+    echo; echo "--- $name: already completed tonight - skipped on resume ---"
+    return 0
+  fi
+  "$@"
+  BP phase "$name"
+}
+# Narration may run now? Always for a hand run (unchanged); for a resume or a
+# launchd start, only inside the night (see THE CAPS ARE UNCHANGED above).
+narration_allowed() {
+  [ -n "$RESUMED_FROM" ] || [ -n "$RESUME_ONLY" ]     || case "${XPC_SERVICE_NAME:-}" in com.howweknow.*) false ;; *) true ;; esac     || return 0
+  NARRATION_UNTIL="$NARRATION_UNTIL" BP narration-window
+}
+hold_awake() { caffeinate -dimsu -w $$ & }
+
+[ -n "${BATCH_TEST_STUBS:-}" ] && . "$BATCH_TEST_STUBS"   # tests only
+if [ -n "$RESUME_ONLY" ]; then
+  if holder=$(lock_holder); then
+    echo "$(date '+%F %H:%M') batch-resume: a batch is already running (pid $holder) - nothing to do"
+    exit 0
+  fi
+  gate_line=$(BP gate); gate_rc=$?
+  echo "$(date '+%F %H:%M') batch-resume: $gate_line"
+  case $gate_rc in
+    0) ;;
+    11) report_incomplete_night; exit 0 ;;
+    *) exit 0 ;;
+  esac
+fi
 
 # SELF-HEAL FIRST, IN THE SAME PASS. loop/extend.py used to run near the END of
 # this script, after narration and rendering, so a script it lengthened was
@@ -88,12 +199,14 @@ done
 # Run here, before the pending lists are computed, an extension drops the stale
 # plan and the ordinary steps below re-plan, narrate the moved beats and render
 # it once, tonight. --dry-run only says what it would do.
+phase_selfheal() {
 echo; echo "--- self-heal anything under the runtime floor ---"
 if [ -n "$DRY" ]; then
   $PY loop/extend.py --dry-run || echo "  (see the banner above)"
 else
   $PY loop/extend.py || echo "  (extension refused for at least one episode; those scripts are unchanged and the gate below will HOLD them, not the batch)"
 fi
+}
 
 # THE ONE DEFINITION OF "ready to render": every beat in the plan has a wav and
 # there is no finished render yet. Both the overlap poll and the final sweep
@@ -140,6 +253,7 @@ print(" ".join(out))
 READYEOF
 }
 
+phase_survey() {
 pending_audio=$($PY - <<'PYEOF'
 import json, glob, os, sys
 sys.path.insert(0, "loop")
@@ -203,8 +317,7 @@ echo "=== batch session $(date '+%Y-%m-%d %H:%M') ==="
 echo "  to narrate : ${pending_audio:-none}"
 echo "  to render  : ${pending_render:-none}"
 echo "  no plan yet: ${pending_plan:-none}"
-
-if [ -n "$DRY" ]; then echo; echo "DRY RUN - nothing done."; exit 0; fi
+}
 
 # ---------------------------------------------------------------------------
 # SELF-HEAL AN UNTRACED PRODUCER POV, BEFORE ANYTHING IS VOICED.
@@ -230,6 +343,7 @@ if [ -n "$DRY" ]; then echo; echo "DRY RUN - nothing done."; exit 0; fi
 # script directly, so it voiced 84 beats for an episode nothing downstream
 # could see. The commands were already written out here; running them is not a
 # judgement call.
+phase_prepare() {
 echo; echo "--- build any missing shot plan ---"
 for slug in ${pending_plan:-}; do
   echo "  planning $slug"
@@ -279,6 +393,7 @@ PYEOF2
 echo "  to narrate now: ${pending_audio:-none}"
 pending_render=$(renderable)
 echo "  to render now : ${pending_render:-none}"
+}
 
 # ---------------------------------------------------------------------------
 # SHORTS ARE CUT AND SHELVED ON EVERY NIGHT, INCLUDING AN IDLE ONE.
@@ -294,8 +409,10 @@ echo "  to render now : ${pending_render:-none}"
 # an episode is never re-cut. push-to-r2.sh is idempotent and refuses anything
 # V14/V15 reject or the render gate holds, so calling it on an idle night shelves
 # what is new and skips what is already there.
-PUSH_OUT="${TMPDIR:-/tmp}/how-we-know-push.$$.out"
-: > "$PUSH_OUT"
+# Kept beside the progress file, not in $TMPDIR, so a RESUMED night still
+# scans the push output its first half produced (an empty file would clear
+# the mac-batch stop record). A fresh night truncates it.
+PUSH_OUT="$(dirname "$BATCH_PROGRESS")/batch_push.out"
 shelve_shorts() {
   echo; echo "--- shorts: cut what is rendered and uncut, then shelve ---"
   # Grouped by how many cuts the episode may publish (shorts_lane.cut_groups):
@@ -316,11 +433,13 @@ for n, s in sorted(shorts_lane.cut_groups().items()): print(n, ' '.join(s))") ||
   else
     echo "  every finished render already has its Shorts cut"
   fi
+  BP unit shorts_cut
   if [ -x bin/push-to-r2.sh ]; then
     # Teed, so the report step can hand its named stops to
     # loop/mac_batch_stop.py: launchd has no workflow to turn an exit 3 into
     # an issue, and SHORTS_UNVERIFIED went unseen from 21 Sep to 12 Oct 2026.
     bin/push-to-r2.sh 2>&1 | tee "$PUSH_OUT"
+    BP unit push
   else
     echo "  bin/push-to-r2.sh does not exist yet - the cloud upload lane is still"
     echo "  being built. Until it lands, uploading stays on this Mac."
@@ -377,6 +496,7 @@ harvest_footage() {
 # problem was an untraced producer POV reported "nothing to do" and left
 # eight episodes stranded -- the repair below could never run, because the
 # script had already decided there was nothing to repair.
+phase_idle() {
 if [ -z "${pending_audio// }" ] && [ -z "${pending_render// }" ]; then
   echo
   if [ -n "${pending_plan// }" ]; then
@@ -398,19 +518,19 @@ if [ -z "${pending_audio// }" ] && [ -z "${pending_render// }" ]; then
   # Idle for narration and render is NOT idle for Shorts. The cut-and-shelve
   # step runs here too, or an idle week starves the cloud Shorts lane (see
   # shelve_shorts above).
-  shelve_shorts
+  step shelve shelve_shorts
   # Nor is it idle for footage: the only host with Vision is this one, and
   # the cloud lane is verifying that it harvests (see harvest_footage above).
-  harvest_footage
+  step harvest harvest_footage
   exit 0
 fi
+}
 
 
 
 # Hold the machine awake for the whole batch. -dimsu covers display, idle, disk,
 # system and user-idle sleep; without it a long narration run dies on lid close.
-echo "  holding the Mac awake for the duration"
-caffeinate -dimsu -w $$ &
+# (hold_awake, defined above, and called from the main sequence at the end.)
 
 RENDERED=0
 render_one() {
@@ -433,13 +553,17 @@ import sys; sys.path.insert(0,'loop')
 import domains; print(domains.domain_of_slug('$slug') or 'deep-sea-ocean-science')" 2>/dev/null) \
     || dom=deep-sea-ocean-science
   echo "      domain: $dom"
+  # IN FLIGHT: a kill during the mux leaves a truncated -final.mp4 behind;
+  # the progress file names it so a resume sets it aside and renders again.
+  BP rendering "$slug"
   # EXACTLY the call the two-phase version made. No duration, no frame count,
   # no timing override: the audio is the authority and assemble.py owns that.
   HWK_DOMAIN="$dom" $PY visuals/assemble.py "plans/$slug.json" "renders/${slug}-final.mp4" \
       --audio-dir "audio/$slug" --burn-captions \
       > "/tmp/asm-$slug.log" 2>&1 \
-    && { echo "    ok"; RENDERED=$((RENDERED+1)); thumb_one "$slug" "$dom"; } \
+    && { echo "    ok"; RENDERED=$((RENDERED+1)); BP unit render "$slug"; thumb_one "$slug" "$dom"; } \
     || { echo "    FAILED"; tail -8 "/tmp/asm-$slug.log"; }
+  BP rendering ""
   return 0
 }
 
@@ -475,6 +599,14 @@ thumb_one() {
   fi
 }
 
+phase_narrate() {
+if [ -n "${pending_audio// }" ] && ! narration_allowed; then
+  echo
+  echo "  narration skipped: it is past $NARRATION_UNTIL on a resumed or scheduled"
+  echo "  run, and narrating now would run to TOMORROW's $NARRATION_UNTIL. Tonight's"
+  echo "  23:00 batch continues it; rendering below still runs."
+  pending_audio=""
+fi
 if [ -n "${pending_audio// }" ] && [ ! -x "$PY_TTS" ]; then
   echo
   echo "NAMED STOP: $PY_TTS does not exist, so nothing can be narrated."
@@ -532,12 +664,16 @@ if [ -n "${pending_audio// }" ]; then
     $PY_TTS voice/narrate_all.py --until "$NARRATION_UNTIL" || echo "  narration exited $? - rendering covers what completed"
   fi
 fi
+}
 
+phase_render() {
 echo; echo "--- render (final sweep) ---"
 for slug in $(renderable); do
   render_one "$slug" || { echo "  --max-episodes $MAX_EPISODES reached; stopping"; break; }
 done
+}
 
+phase_captions() {
 echo; echo "--- can the cloud see everything this batch just used? ---"
 # THE MAC IS WHERE UNTRACKED FILES ARE BORN, so this is where the question is
 # cheapest to answer. V30 walks every lane entrypoint's import closure and every
@@ -627,6 +763,7 @@ echo; echo "--- captions (and the measured beat timings the cloud needs) ---"
 # after the Shorts, the harvest and the report have run.
 $PY loop/captions_build.py
 CAPRC=$?
+BP set caprc "$CAPRC"            # a resume that skips this phase still reports it
 case $CAPRC in
   0) ;;
   3) echo "  named stop above - see the banner. The push continues: an episode"
@@ -671,30 +808,31 @@ else
   echo "  nothing new to commit - every narrated episode already has its track"
   echo "  and its measured timings on origin."
 fi
+}
 
 # Cut Shorts from tonight's renders, then push everything (renders, captions,
 # Shorts) to R2 for the cloud lanes.
-shelve_shorts
+# (step shelve shelve_shorts - in the main sequence below.)
 
 # The video harvest, after the renders are shelved: the cloud lanes need the
 # shelf first, and the harvest can take an hour of NOAA range requests.
-harvest_footage
+# (step harvest harvest_footage - in the main sequence below.)
 
 # THE MAC REPORTS. The cloud digest reads loop/state/mac_heartbeat.json and this
 # week's stop files from the repository; a Mac that finished renders and shipped
 # none of them now says so where it can be seen. See loop/mac_sync.py.
+phase_report() {
 echo; echo "--- report to the repository ---"
 held=$($PY -c "import sys; sys.path.insert(0,'loop'); import render_gate; print(','.join(sorted(render_gate.held_slugs())))")
 pending=$($PY -c "import sys; sys.path.insert(0,'loop'); import backfill; print(len(backfill.library_pending()))" 2>/dev/null || echo "")
 # ok=1 only when every stage finished; a captions failure is reported, never
 # hidden behind a Shorts lane that did shelve.
 batch_ok=1; [ "$CAPRC" -eq 0 ] || [ "$CAPRC" -eq 3 ] || batch_ok=0
-$PY loop/mac_sync.py heartbeat --lane batch --ok "$batch_ok" --held "$held" --pending "$pending" 2>&1 | tail -1
+$PY loop/mac_sync.py heartbeat --lane batch --ok "$batch_ok" --held "$held" --pending "$pending" --resumed-from "$RESUMED_FROM" 2>&1 | tail -1
 # Every named stop the push ended on reaches the repository (stop file,
 # committed just below) and, when it pages, ONE deduped GitHub issue. Never
 # blocks: what passed is already on the shelf. See loop/mac_batch_stop.py.
 $PY loop/mac_batch_stop.py scan "$PUSH_OUT" 2>&1 | grep -E "mac-batch" || true
-rm -f "$PUSH_OUT"
 $PY loop/mac_sync.py push --lane batch "loop/state/stops/$($PY -c "import sys; sys.path.insert(0,'loop'); from common import week_id; print(week_id())")-mac-batch.json" 2>&1 | tail -1
 
 if [ "$batch_ok" -eq 0 ]; then
@@ -702,3 +840,45 @@ if [ "$batch_ok" -eq 0 ]; then
   exit "$CAPRC"
 fi
 echo; echo "=== batch complete $(date '+%H:%M') ==="
+}
+
+# ---------------------------------------------------------------------------
+# THE SEQUENCE. Everything above is a definition; this is the night.
+# loop/tests/test_batch_resume_on_wake.py sources BATCH_TEST_STUBS here to
+# replace the phases with fakes and drive the resume logic with a fake clock.
+# ---------------------------------------------------------------------------
+[ -n "${BATCH_TEST_STUBS:-}" ] && . "$BATCH_TEST_STUBS"
+
+if [ -n "$DRY" ]; then
+  phase_selfheal; phase_survey
+  echo; echo "DRY RUN - nothing done."; exit 0
+fi
+
+if ! holder=$(take_lock); then
+  echo "NAMED STOP: another batch session is running (pid $holder); not starting a second."
+  exit 0
+fi
+trap 'on_exit $?' EXIT
+trap 'BATCH_KILLED=1; exit 143' TERM INT HUP
+BP begin
+PROGRESS_BEGUN=1
+RESUMED_FROM=$(BP resumed-from)
+[ -n "$RESUMED_FROM" ] || : > "$PUSH_OUT"
+touch "$PUSH_OUT"
+CAPRC=$(BP get caprc 0)
+
+phase_selfheal
+phase_survey
+phase_prepare
+phase_idle
+echo "  holding the Mac awake for the duration"
+hold_awake
+step narrate phase_narrate
+step render phase_render
+step captions phase_captions
+# Cut Shorts from tonight's renders, then push everything (renders, captions,
+# Shorts) to R2 for the cloud lanes.
+step shelve shelve_shorts
+# The video harvest, after the renders are shelved.
+step harvest harvest_footage
+phase_report

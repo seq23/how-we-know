@@ -471,8 +471,8 @@ def main() -> int:
             block = batch[stop_at:exit_at] if stop_at >= 0 else ""
             check("8: the nothing-to-do path calls harvest_footage before its "
                   "exit 0 (the batch has been idle every night since 09-12)",
-                  re.search(r"^\s*harvest_footage\s*$", block, re.M) is not None)
-            calls = re.findall(r"^\s*harvest_footage\s*$", batch, re.M)
+                  re.search(r"^\s*(?:step\s+\w+\s+)?harvest_footage\s*$", block, re.M) is not None)
+            calls = re.findall(r"^\s*(?:step\s+\w+\s+)?harvest_footage\s*$", batch, re.M)
             check("8: the narrate-or-render path calls it too",
                   len(calls) >= 2, f"{len(calls)} call(s)")
             # Invocation lines, not comments: `$PY loop/footage_lane.py ...`.
