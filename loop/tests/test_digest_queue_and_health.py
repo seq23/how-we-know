@@ -74,7 +74,7 @@ pipe_ok = {"queued": 0, "scripted": 0, "narrated": 0, "finished_waiting": 0, "he
            "scheduled": 15, "waiting_days": None, "mac_last_seen": NOW, "mac_silent_days": 0}
 mark, head, _ = digest.verdict([], cal_red, pipe_ok, [])
 examined += 1
-if mark != "🔴" or "empty slot" not in head:
+if mark != "🔴" or "empty day(s) in the next two weeks" not in head or not head.endswith("— not fixed yet"):
     fails.append(f"verdict: an empty slot inside 14 days must be red; got {mark} {head}")
 
 # an empty slot only in week 4 -> yellow
@@ -82,82 +82,78 @@ late_day = cal[-1]["days_away"]
 cal_yel = digest.calendar(full_ledger(skip=(late_day,)), CFG, NOW)
 mark, head, _ = digest.verdict([], cal_yel, pipe_ok, [])
 examined += 1
-if mark != "🟡":
-    fails.append(f"verdict: an empty slot in week four must be yellow; got {mark} {head}")
+if mark != "🟡" or "Episode calendar has gaps" not in head or not head.endswith("— watching") or "needs you" in head:
+    fails.append(f"verdict: an empty slot in week four must be yellow, plain, and 'watching'; got {mark} {head}")
 
 # everything full, nothing waiting -> green, with the counts in the headline
 mark, head, _ = digest.verdict(q, cal, {**pipe_ok, "scheduled": 28}, [])
 examined += 1
-if mark != "🟢" or "2 queued this week" not in head or "28 scheduled" not in head:
+if mark != "🟢" or not head.startswith("All lanes ran: 2 episodes queued") or "28 scheduled" not in head:
     fails.append(f"verdict: full calendar and nothing waiting must be green with counts; got {mark} {head}")
 
 # finished work waiting 8 days on the Mac -> red, even with a full calendar
 mark, head, _ = digest.verdict(q, cal, {**pipe_ok, "finished_waiting": 9, "waiting_days": 8}, [])
 examined += 1
-if mark != "🔴" or "waiting 8 days" not in head:
+if mark != "🔴" or "Uploads stuck: 9 finished episode(s) waiting 8 days on the Mac" not in head:
     fails.append(f"verdict: nine finished episodes waiting eight days must be red; got {mark} {head}")
 
 # nothing queued this week while something is finished -> yellow (the 6-13 Sep shape, day 2)
 mark, head, _ = digest.verdict([], cal, {**pipe_ok, "finished_waiting": 9, "waiting_days": 2}, [])
 examined += 1
-if mark != "🟡" or "nothing queued this week while 9" not in head:
+if mark != "🟡" or "No episode uploaded this week while 9 finished episode(s) wait" not in head:
     fails.append(f"verdict: finished work and nothing queued must be yellow; got {mark} {head}")
 
-# a stop that needed a human -> red, AND the subject names the lane that
-# actually needs her, not just an emoji
-mark, head, _ = digest.verdict(q, cal, pipe_ok, ["cloud-upload"])
+# a stop that needed a human -> red, AND the subject says in plain words what
+# happened and what to do (2026-10-12: a lane name in brackets was not read as
+# a problem). The stop arrives as its record, the way render() passes it.
+UPLOAD_STOP = {"stage": "cloud-upload", "code": "UPLOAD_FAILED",
+               "disposition": "needs_human", "consecutive": 1}
+UPLOAD_PLAIN = digest.plain("UPLOAD_FAILED")
+mark, head, _ = digest.verdict(q, cal, pipe_ok, [UPLOAD_STOP])
 examined += 1
-if mark != "🔴" or "cloud-upload" not in head or "needed a human" not in head:
-    fails.append(f"verdict: a needs_human stop must be red and name its stage in the "
-                 f"headline; got {mark} {head}")
+if (mark != "🔴" or not head.lower().startswith(UPLOAD_PLAIN.lower())
+        or not head.endswith("— needs you: read the stop issue on GitHub")):
+    fails.append(f"verdict: a needs_human stop must be red, say what happened in "
+                 f"its plain words and end with what to do; got {mark} {head}")
 
-# THE 2026-09-22 BUG, negative proof: a week with BOTH a routine empty-slot
-# reason (red on its own, proven above via cal_red) AND a needs_human stop
-# must lead with the needs_human stop — the one with an actual open GitHub
-# issue behind it — not with the empty slot. Before the fix, this function
-# checked the empty slot first and the subject would have named that instead,
-# exactly the "Shorts lane" subject on a long-form NEEDS YOU incident this
-# guards against.
-mark, head, _ = digest.verdict([], cal_red, pipe_ok, ["cloud-upload"])
+# THE 2026-09-22 BUG, negative proof: a week with BOTH a red empty-slot reason
+# AND a needs_human stop must lead with the needs_human stop - the one with an
+# actual open GitHub issue behind it - not with the empty slot.
+mark, head, reasons = digest.verdict([], cal_red, pipe_ok, [UPLOAD_STOP])
 examined += 1
-if mark != "🔴" or "cloud-upload" not in head or "needed a human" not in head:
+if mark != "🔴" or not head.lower().startswith(UPLOAD_PLAIN.lower()) or "needs you" not in head:
     fails.append(f"verdict: a needs_human stop must win the headline over a routine "
                  f"empty-slot reason from the same week; got {mark} {head}")
-if head.split(" — ", 1)[-1].startswith(("1 empty slot", "empty slot")):
+if head.startswith("Episode calendar"):
     fails.append(f"verdict: the empty-slot reason must not lead the headline when a "
                  f"needs_human stop exists this week; got {head}")
+if not any(r.startswith("Episode calendar has gaps") for r in reasons[1:]):
+    fails.append(f"verdict: the empty slot must still be listed under the headline; got {reasons}")
 
-# THE 2026-09-23 GAP: an owner_action ("needs your key or account") item was never
-# passed into verdict() at all. A week with nothing else red or yellow and
-# one owner_action item rendered "🟢 Healthy" as both headline and subject,
-# while the digest body's very first section ("## 🔑 Needs your key or account") said
-# something needed her — the subject named no lane, or an unrelated one.
-WAITING_ONE = {"cloud-upload": {"code": "SCRIPTS_AWAITING_PROMOTION",
-                                "message": "four scripts await promotion",
-                                "unblock": "promote or decline",
+# THE 2026-09-23 GAP: an owner_action ("needs your key or account") item was
+# never passed into verdict(). Now it is yellow, in plain words, with its action.
+WAITING_ONE = {"cloud-upload": {"code": "OAUTH_EXPIRED",
+                                "message": "refresh token rejected",
+                                "unblock": "re-consent",
                                 "consecutive": 2}}
 mark, head, _ = digest.verdict(q, cal, {**pipe_ok, "scheduled": 28}, [], WAITING_ONE)
 examined += 1
-if mark != "🟡" or "needs your key or account" not in head or "cloud-upload" not in head:
+if (mark != "🟡" or not head.lower().startswith(digest.plain("OAUTH_EXPIRED").lower())
+        or not head.endswith("— needs you: sign in to YouTube again")):
     fails.append(f"verdict: an owner_action item with nothing else red/yellow must "
-                 f"be yellow and name the lane waiting on her; got {mark} {head}")
+                 f"be yellow, plain, and name her action; got {mark} {head}")
 
-# owner_action must not outrank a real needs_human stop — she said the run
-# STAYS GREEN for owner_action; it must never look more urgent than a
-# genuine failure that already opened its own issue.
-mark, head, _ = digest.verdict(q, cal, pipe_ok, ["cloud-upload"], WAITING_ONE)
+# owner_action must not outrank a real needs_human stop.
+mark, head, _ = digest.verdict(q, cal, pipe_ok, [UPLOAD_STOP], WAITING_ONE)
 examined += 1
-if mark != "🔴" or "needed a human" not in head:
+if mark != "🔴" or not head.lower().startswith(UPLOAD_PLAIN.lower()):
     fails.append(f"verdict: a needs_human stop must still win over an owner_action "
                  f"item in the same week; got {mark} {head}")
 
-# owner_action must outrank a routine reason from an unrelated lane —
-# the actual "Shorts lane subject, cloud-upload content" shape: nothing
-# needed a human, but the calendar happens to be thin (a routine, unrelated
-# reason) in the same week a real owner_action item is open elsewhere.
+# owner_action must outrank a routine calendar note.
 mark, head, _ = digest.verdict([], cal_yel, pipe_ok, [], WAITING_ONE)
 examined += 1
-if "needs your key or account" not in head or "cloud-upload" not in head:
+if not head.lower().startswith(digest.plain("OAUTH_EXPIRED").lower()) or "needs you" not in head:
     fails.append(f"verdict: an owner_action item must lead the headline over an "
                  f"unrelated routine calendar reason; got {mark} {head}")
 
@@ -177,13 +173,13 @@ if '.subject").write_text' not in src:
 # subject and would have passed every check above while silently dropping
 # every reason computed above — this is the check that would have caught it.
 examined += 1
-full_verdict = "🔴 Stalled: 3 queued this week, 5 scheduled — 2 stop(s) needed a human this week (cloud-upload, weekly-score)"
+full_verdict = "🔴 Shorts stopped: 1 of 9 published this week, 1 of 9 the week before — needs you: check the Mac's nightly batch"
 subject = digest.digest_subject(full_verdict, "2026-W39")
-if "cloud-upload" not in subject or "weekly-score" not in subject:
+if "needs you: check the Mac's nightly batch" not in subject or "1 of 9" not in subject:
     fails.append(f"digest_subject() drops the reason text - the exact 2026-09-23 "
-                 f"bug (subject named no lane at all): {subject!r}")
-if not subject.startswith("Weekly digest — 🔴 Stalled"):
-    fails.append(f"digest_subject() does not lead with the mark and headline: {subject!r}")
+                 f"bug (subject named no problem at all): {subject!r}")
+if not subject.startswith("🔴 Shorts stopped"):
+    fails.append(f"digest_subject() does not lead with the mark and the problem: {subject!r}")
 if not subject.endswith("2026-W39"):
     fails.append(f"digest_subject() drops the week: {subject!r}")
 
@@ -235,7 +231,7 @@ flag, why = digest.shorts_flag(one)
 if flag != "yellow" or "1 vs 9" not in why:
     fails.append(f"one week under the Shorts target is not yellow: {flag} {why}")
 mark, head, _ = digest.verdict(q, cal, {**pipe_ok, "scheduled": 28}, [], None, one)
-if mark != "🟡" or "Shorts under target" not in head:
+if mark != "🟡" or not head.startswith("Shorts under target: 1 of 9") or not head.endswith("— watching"):
     fails.append(f"a green week with Shorts under target did not go yellow: {mark} {head}")
 
 examined += 1
@@ -246,7 +242,7 @@ flag, why = digest.shorts_flag(two)
 if flag != "red" or f"{digest.SHORTS_RED_WEEKS} weeks running" not in why:
     fails.append(f"two consecutive weeks under the Shorts target is not red: {flag} {why}")
 mark, head, _ = digest.verdict(q, cal_yel, {**pipe_ok, "scheduled": 28}, [], None, two)
-if mark != "🔴" or "Shorts under target" not in head:
+if mark != "🔴" or not head.startswith("Shorts stopped: 1 of 9 published this week, 1 of 9"):
     fails.append(f"two Shorts-short weeks did not lead a red subject over a "
                  f"calendar note: {mark} {head}")
 examined += 1
@@ -254,8 +250,99 @@ if digest.shorts_flag(None) != (None, None) or digest.shorts_flag({}) != (None, 
     fails.append("an unmeasured Shorts cadence raised a flag")
 examined += 1
 src = open(os.path.join(os.path.dirname(digest.__file__), "digest.py")).read()
-if "verdict(queued_rows, cal, pipe, loud_stages,\n                                      waiting, sc)" not in src:
-    fails.append("render() does not pass the Shorts cadence into verdict()")
+if "verdict(queued_rows, cal, pipe, loud_stops,\n                                      waiting, sc, quiet_stops, per_week, br)" not in src:
+    fails.append("render() does not pass the stops, Shorts cadence, episode target and breaker into verdict()")
+
+# ---- PLAIN WORDS (owner, 2026-10-12): "make sure it tells me plainly what is
+# honestly going on if something needs work it should say it in the subject".
+# W40/W41 read "🔴 Stalled: 1 queued this week, 16 scheduled — 1 stop(s) needed
+# a human this week (mac)" while Shorts fell from 14 a week to 1.
+import re                                                          # noqa: E402
+CODE_TOKEN = re.compile(r"[A-Z]{3,}_[A-Z_]+")
+MAC_STOP = {"stage": "mac", "code": "MAC_NOT_SHIPPING", "disposition": "needs_human",
+            "consecutive": 1}
+QUIET_SUPPLY = {"stage": "shorts-cloud", "code": "NO_SHORTS_SHELVED",
+                "disposition": "self_resolving", "consecutive": 6}
+QUIET_OTHER = {"stage": "localize", "code": "LOCALIZATIONS_UP_TO_DATE",
+               "disposition": "self_resolving", "consecutive": 1}
+seen_lines: list[str] = []
+
+# (a) Shorts shortfall + a needs_human Mac stop -> 🔴, Shorts first with X of Y,
+#     ends with what she does.
+examined += 1
+a_mark, a_head, a_reasons = digest.verdict(q, cal, {**pipe_ok, "scheduled": 28}, [MAC_STOP],
+                                           None, two, [QUIET_SUPPLY, QUIET_OTHER], 2)
+seen_lines += [a_head] + a_reasons
+if (a_mark != "🔴" or not a_head.startswith("Shorts") or "1 of 9" not in a_head
+        or not a_head.endswith("— needs you: check the Mac's nightly batch")):
+    fails.append(f"(a) Shorts shortfall with a Mac stop: {a_mark} {a_head}")
+if not any(r.startswith(digest.plain("MAC_NOT_SHIPPING")[:1].upper()) and "Mac" in r for r in a_reasons[1:]):
+    fails.append(f"(a) the Mac stop is not listed under the subject line: {a_reasons}")
+subj = digest.digest_subject(f"{a_mark} {a_head}", "2026-W41")
+seen_lines.append(subj)
+if not subj.startswith("🔴 Shorts") or not subj.endswith(" — 2026-W41"):
+    fails.append(f"(a) the subject file line is not the plain sentence plus the week: {subj!r}")
+
+# (b) under target one week, no stop -> 🟡, no "needs you".
+examined += 1
+b_mark, b_head, b_reasons = digest.verdict(q, cal, {**pipe_ok, "scheduled": 28}, [],
+                                           None, one, [], 2)
+seen_lines += [b_head] + b_reasons
+if b_mark != "🟡" or "needs you" in b_head or "1 of 9" not in b_head or not b_head.endswith("— watching"):
+    fails.append(f"(b) one Shorts-short week: {b_mark} {b_head}")
+
+# (c) all green -> 🟢 with the counts.
+examined += 1
+c_mark, c_head, c_reasons = digest.verdict(q, cal, {**pipe_ok, "scheduled": 28}, [],
+                                           None, sc, [QUIET_OTHER], 2)
+seen_lines += [c_head] + c_reasons
+if c_mark != "🟢" or c_head != "All lanes ran: 2 of 2 episodes queued, 28 scheduled, Shorts 14 of 9" or c_reasons:
+    fails.append(f"(c) a green week: {c_mark} {c_head} {c_reasons}")
+
+# episodes under target -> yellow, plain, and its supply stop listed, not hidden
+examined += 1
+EP_QUIET = {"stage": "cloud-upload", "code": "NOTHING_SHELVED",
+            "disposition": "self_resolving", "consecutive": 7}
+e_mark, e_head, e_reasons = digest.verdict([], cal, {**pipe_ok, "scheduled": 16}, [],
+                                           None, sc, [EP_QUIET], 4)
+seen_lines += [e_head] + e_reasons
+if (e_mark != "🟡" or not e_head.startswith("Episodes under target: 0 of 4")
+        or f"Still happening: {digest.plain('NOTHING_SHELVED')} (7 runs in a row)" not in e_reasons):
+    fails.append(f"episodes under target must be a yellow problem with its supply stop "
+                 f"listed, not filed as cleared: {e_mark} {e_head} {e_reasons}")
+
+# breaker tripped -> red, first, plain
+examined += 1
+k_mark, k_head, k_reasons = digest.verdict(q, cal, {**pipe_ok, "scheduled": 28}, [MAC_STOP],
+                                           None, two, [], 2,
+                                           {"state": "tripped", "cause": "validator",
+                                            "tripped_at": "2026-10-12T15:53:50+00:00"})
+seen_lines += [k_head] + k_reasons
+if k_mark != "🔴" or not k_head.startswith("Publishing is halted") or "Mon 12 Oct" not in k_head:
+    fails.append(f"a tripped breaker must lead a red subject in plain words: {k_mark} {k_head}")
+
+# (e) a self-resolving stop never reaches the subject when a shortfall exists.
+examined += 1
+for code in (QUIET_SUPPLY["code"], QUIET_OTHER["code"]):
+    if digest.plain(code).lower() in a_head.lower():
+        fails.append(f"(e) self-resolving {code} reached the subject: {a_head}")
+if not any(r.startswith("Still happening: " + digest.plain("NO_SHORTS_SHELVED")) for r in a_reasons):
+    fails.append(f"(e) the Shorts supply stop was dropped instead of listed under the shortfall: {a_reasons}")
+if any(digest.plain("LOCALIZATIONS_UP_TO_DATE") in r for r in a_reasons):
+    fails.append(f"(e) an unrelated self-resolving stop was listed as a problem: {a_reasons}")
+rsrc = open(os.path.join(LOOP, "digest.py")).read()
+if 'page nobody: "' in rsrc or "Cleared on their own this week: " not in rsrc:
+    fails.append("(e) the 'page nobody' footnote is back, or 'Cleared on their own' is gone")
+
+# (d) no stop code ever appears in a subject or a first-line problem.
+examined += 1
+if len(seen_lines) < 10:
+    fails.append(f"(d) examined only {len(seen_lines)} subject/problem lines")
+leaks = [ln for ln in seen_lines if CODE_TOKEN.search(ln)]
+if leaks:
+    fails.append(f"(d) a stop code reached the subject or its problem lines: {leaks[:3]}")
+if 'f"## {mark} {headline}", ""]' not in rsrc or 'for r in reasons[1:]:' not in rsrc:
+    fails.append("(d) the body's first line is no longer the subject sentence")
 
 if examined < 6:
     fails.append("Rule 0: fewer than six verdicts examined")

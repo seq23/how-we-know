@@ -117,7 +117,8 @@
         "resets_at"
       ],
       "max_consecutive": 3,
-      "escalation": "Three runs in a row means the day's allowance is structurally short, not momentarily spent - the lanes are asking for more units than a day holds. That needs a human: reduce a lane's per-run limit, or spread the caption backfill wider."
+      "escalation": "Three runs in a row means the day's allowance is structurally short, not momentarily spent - the lanes are asking for more units than a day holds. That needs a human: reduce a lane's per-run limit, or spread the caption backfill wider.",
+      "plain": "YouTube's daily upload allowance ran out; the work waits until it resets overnight"
     },
     "LOCALIZATIONS_UP_TO_DATE": {
       "why": "Every live video already carries its localizations and defaultLanguage=en. The lane is FINISHED, not blocked: it does real work again the moment a new episode goes public or an English title changes. Nothing was written and a re-run costs nothing, which is the design.",
@@ -125,17 +126,20 @@
       "upstream_stage": "cloud-upload",
       "max_consecutive_upstream_idle": 28,
       "_why_upstream": "2026-09-26, run 36152459224: this paged on day 9 while the ledger had not grown since 2026-09-15 because the upload lane had nothing to upload, which that lane was reporting every day in its own classified stops. Uploads land in batches ahead of air dates, so a week without one is normal while the runway lasts. Past the cap this stays green only while the newest live video predates the idle streak AND cloud-upload is itself mid-streak on a named stop (loop/common.py _upstream_explains); something new arriving unseen, or an upstream that last succeeded, still pages. Twenty-eight runs is the outer bound: RUNWAY_WARN's three-week cap plus a week, so if nothing upstream has paged in four weeks this does.",
-      "escalation": "Past eight consecutive days this pages only when the idle is NOT explained upstream: either a video was uploaded after the streak began and this lane still found nothing to localize - the dangerous case, where it can no longer SEE new videos and reports 'up to date' about a list that stopped growing - or cloud-upload's last run succeeded yet nothing new reached loop/state/ledger.json, or the streak outlived its 28-run outer bound. Compare the live-video count in this run's note with the ledger, and read cloud-upload's latest stop record."
+      "escalation": "Past eight consecutive days this pages only when the idle is NOT explained upstream: either a video was uploaded after the streak began and this lane still found nothing to localize - the dangerous case, where it can no longer SEE new videos and reports 'up to date' about a list that stopped growing - or cloud-upload's last run succeeded yet nothing new reached loop/state/ledger.json, or the streak outlived its 28-run outer bound. Compare the live-video count in this run's note with the ledger, and read cloud-upload's latest stop record.",
+      "plain": "every live video already has its translated titles, so there was nothing to do"
     },
     "NOTHING_SHELVED": {
       "why": "Queued episodes are not in the ledger and not on the R2 shelf yet: the Mac's nightly batch is still narrating, rendering or pushing them, and it pushes what it renders, so the shelf fills on a later night. Since 2026-09-23 this code is raised ONLY in that state and names the waiting slugs in detail.awaiting_mac. An empty shelf because the whole queue is uploaded is PUBLISH_QUEUE_UPLOADED, and scripts stuck outside the queue are AUTHORED_NOT_QUEUED (see loop/cloud_upload.py diagnose_empty_shelf).",
       "max_consecutive": 7,
-      "escalation": "Seven consecutive days with the same queued episodes still not shelved. Read the stop's FIRST LINE before blaming the Mac: 'N render(s) shelved without a thumbnail: <slugs>' means the Mac rendered and pushed but built no thumbnail (detail.shelved_without_thumbnail) - on the Mac, .venv/bin/python visuals/thumbs_for.py <slugs> && bin/push-to-r2.sh <slugs>. The heartbeat sentence (detail.mac_heartbeat) says when the batch last ran and how many renders are finished, so a Mac that is producing but behind the queue reads as behind, not stuck. Only when neither applies read the '=== batch session' block in ~/Library/Logs/how-we-know/batch.log: if 'to narrate' or 'to render' lists the slugs, narration or rendering is the slow part; if both say none and the renders exist, bin/push-to-r2.sh is."
+      "escalation": "Seven consecutive days with the same queued episodes still not shelved. Read the stop's FIRST LINE before blaming the Mac: 'N render(s) shelved without a thumbnail: <slugs>' means the Mac rendered and pushed but built no thumbnail (detail.shelved_without_thumbnail) - on the Mac, .venv/bin/python visuals/thumbs_for.py <slugs> && bin/push-to-r2.sh <slugs>. The heartbeat sentence (detail.mac_heartbeat) says when the batch last ran and how many renders are finished, so a Mac that is producing but behind the queue reads as behind, not stuck. Only when neither applies read the '=== batch session' block in ~/Library/Logs/how-we-know/batch.log: if 'to narrate' or 'to render' lists the slugs, narration or rendering is the slow part; if both say none and the renders exist, bin/push-to-r2.sh is.",
+      "plain": "the Mac has rendered nothing new for the upload lane"
     },
     "PUBLISH_QUEUE_FULLY_WRITTEN": {
       "why": "Every topic in research/publish_order*.json already has a script, so the Monday lane (and Sunday's selection) has nothing it is allowed to write. Owner decision 2026-09-23: the Monday lane writes ONLY topics already in the publish queue, never mined demand that has not passed the gate. The queue grows when the Saturday scoring pass or the owner adds a row, and the lane writes it the next Monday. A short runway is NOT this stop: RUNWAY_WARN/RUNWAY_CRITICAL (Sunday) and RUNWAY_AUTHORING_FALLBACK (Monday) are raised first and page.",
       "max_consecutive": 4,
-      "escalation": "Four consecutive weekly runs with nothing in the publish queue to write means the queue is not growing while episodes keep airing. Check whether the Saturday scoring pass is adding rows to research/publish_order*.json, and whether scripts in loop/promotion_holds.json are waiting on a promotion decision."
+      "escalation": "Four consecutive weekly runs with nothing in the publish queue to write means the queue is not growing while episodes keep airing. Check whether the Saturday scoring pass is adding rows to research/publish_order*.json, and whether scripts in loop/promotion_holds.json are waiting on a promotion decision.",
+      "plain": "every topic in the queue already has a script, so there was nothing new to write"
     },
     "AUTHOR_REQUIRED": {
       "why": "One or more of the week's slots could not be authored automatically (the generator's own retry budget ran out, its key was absent, or a draft failed validation) and a research brief was written to loop/briefs/ for each. The week still ships every slot that WAS authored, and the topic stays in the publish queue unwritten, so next Monday's run selects it again with a fresh retry budget. Owner instruction 2026-09-25: a stop that costs nobody a decision and that the next scheduled run retries is a note, not a red build. It is NOT a silent skip: the briefs are committed, the stop is in the job summary, and the streak cap below is what turns a repeat into a page.",
@@ -143,17 +147,20 @@
         "briefs"
       ],
       "max_consecutive": 1,
-      "escalation": "The SAME Monday lane fell short two weeks running. One miss is the generator having a bad day on one topic; two in a row means a topic the generator cannot write at all (a validator it cannot satisfy, a figure it cannot source) is being re-selected every week and burning the retry budget each time. Read detail.stops and detail.briefs in the stop record: if DRAFT_FAILED_VALIDATION, the rejection text names the check; fix the prompt or the check, not the script. If OPENROUTER_KEY_MISSING, put the key in .secrets/openrouter_key.txt."
+      "escalation": "The SAME Monday lane fell short two weeks running. One miss is the generator having a bad day on one topic; two in a row means a topic the generator cannot write at all (a validator it cannot satisfy, a figure it cannot source) is being re-selected every week and burning the retry budget each time. Read detail.stops and detail.briefs in the stop record: if DRAFT_FAILED_VALIDATION, the rejection text names the check; fix the prompt or the check, not the script. If OPENROUTER_KEY_MISSING, put the key in .secrets/openrouter_key.txt.",
+      "plain": "a script could not be written automatically; a brief is waiting"
     },
     "SCRIPTS_AWAITING_PROMOTION": {
       "why": "Nothing to upload: every queued episode is uploaded and dated, the runway exists, and the only scripts outside the queue are held in loop/promotion_holds.json. Since 2026-09-25 a hold is decided by the loop: the Saturday weekly-score stage runs every held script's question through the same demand-and-competition gate every queued topic passed and either promotes it (script into scripts/, row into its domain's publish order) or declines it (script moved to loop/drafts/declined/, hold removed, logged in docs/DECISION-LOG.md). So this state clears on its own the next Saturday. A NEW script outside the queue that is not in the hold register is AUTHORED_NOT_QUEUED and still pages; a critical runway is SCRIPTS_AWAITING_PROMOTION_RUNWAY_CRITICAL, decided by the same Saturday gate.",
       "max_consecutive": 8,
-      "escalation": "Eight consecutive daily runs is a full Saturday-to-Saturday cycle plus one: the weekly-score stage ran and the holds are still there. Either it could not run the gate (its own run's stop record says why - the YouTube key, or quota) or loop/score.py dispose_promotion_holds() is not being reached. Read the most recent weekly-score stop record and the hold rows' gate_deferred counters."
+      "escalation": "Eight consecutive daily runs is a full Saturday-to-Saturday cycle plus one: the weekly-score stage ran and the holds are still there. Either it could not run the gate (its own run's stop record says why - the YouTube key, or quota) or loop/score.py dispose_promotion_holds() is not being reached. Read the most recent weekly-score stop record and the hold rows' gate_deferred counters.",
+      "plain": "nothing to upload: every queued episode is already up and the spare scripts are on hold"
     },
     "PUBLISH_QUEUE_UPLOADED": {
       "why": "Every episode in research/publish_order*.json is already uploaded and dated, and the authoring lane has no script waiting outside the queue. The lane is FINISHED, not blocked. It uploads again as soon as a new episode is queued and the Mac shelves it. The channel keeps airing what is already scheduled in the meantime.",
       "max_consecutive": 8,
-      "escalation": "Eight days with every queued episode uploaded and nothing new arriving means nothing has entered the publish queue for over a week, at a cadence that needs new episodes every week. The Monday authoring lane runs every 7 days, so an eighth day means at least one Monday added nothing. Check the last 'loop · Mon 06:00' run and loop/render_queue.json, and compare the runway figure there with the dates in loop/state/ledger.json."
+      "escalation": "Eight days with every queued episode uploaded and nothing new arriving means nothing has entered the publish queue for over a week, at a cadence that needs new episodes every week. The Monday authoring lane runs every 7 days, so an eighth day means at least one Monday added nothing. Check the last 'loop · Mon 06:00' run and loop/render_queue.json, and compare the runway figure there with the dates in loop/state/ledger.json.",
+      "plain": "every episode in the queue is already uploaded and dated"
     },
     "NO_FLIP_DUE_YET": {
       "why": "Episodes are on the calendar but none has reached its publishAt yet, so there is no completed flip to verify. This resolves itself the moment the first scheduled video is due - it is the state of a channel whose queue is entirely ahead of it.",
@@ -161,168 +168,201 @@
         "next"
       ],
       "max_consecutive": 3,
-      "escalation": "Three consecutive weekly runs with no flip ever falling due means the calendar is drifting ahead faster than the channel airs - or every row lost its scheduled_publish_at. Check that the earliest scheduled_publish_at in loop/state/ledger.json is actually in the near future and that videos are still going public on their dates."
+      "escalation": "Three consecutive weekly runs with no flip ever falling due means the calendar is drifting ahead faster than the channel airs - or every row lost its scheduled_publish_at. Check that the earliest scheduled_publish_at in loop/state/ledger.json is actually in the near future and that videos are still going public on their dates.",
+      "plain": "no scheduled episode has reached its air time yet, so there was nothing to check"
     },
     "CAPTIONS_UP_TO_DATE": {
       "why": "Every queued episode already carries a usable captions/<slug>.srt. The lane is FINISHED, not blocked: it builds a track again the moment an episode is narrated without one, which is now the same pass that produces the narration.",
       "max_consecutive": 10,
-      "escalation": "Ten consecutive runs with nothing to caption while episodes are still being narrated means this lane can no longer SEE new episodes - check that its 'examined N queued episode(s)' note is counting the whole publish queue, not a stale slice of it."
+      "escalation": "Ten consecutive runs with nothing to caption while episodes are still being narrated means this lane can no longer SEE new episodes - check that its 'examined N queued episode(s)' note is counting the whole publish queue, not a stale slice of it.",
+      "plain": "every queued episode already has captions"
     },
     "QUOTA_DEFERRED": {
       "why": "The lane deliberately left the day's remaining YouTube units for the upload it is protecting. It takes fewer per run and finishes over several days; the allowance resets at midnight Pacific.",
       "max_consecutive": 5,
-      "escalation": "Five days of deferring means the reserve is permanently eating this lane's budget - the two lanes are asking for more than a 10,000-unit day holds. Lower a per-run limit rather than raising the reserve."
+      "escalation": "Five days of deferring means the reserve is permanently eating this lane's budget - the two lanes are asking for more than a 10,000-unit day holds. Lower a per-run limit rather than raising the reserve.",
+      "plain": "a lane saved the day's YouTube allowance for the upload and will finish tomorrow"
     },
     "CAPTIONS_QUOTA_DEFERRED": {
       "why": "Same deferral, named by the validator that observed it: the caption backfill stood aside for the day's upload. Nothing is lost; it resumes tomorrow.",
       "max_consecutive": 5,
-      "escalation": "See QUOTA_DEFERRED."
+      "escalation": "See QUOTA_DEFERRED.",
+      "plain": "captions waited a day so the upload could use the YouTube allowance"
     },
     "LOCALIZE_QUOTA_DEFERRED": {
       "why": "Same deferral for the localisation lane. Nothing is lost; it resumes tomorrow.",
       "max_consecutive": 5,
-      "escalation": "See QUOTA_DEFERRED."
+      "escalation": "See QUOTA_DEFERRED.",
+      "plain": "translations waited a day so the upload could use the YouTube allowance"
     },
     "SCORER_QUOTA": {
       "why": "The weekly scorer stopped inside its own model budget. It scores the rest on the next weekly run and the ranking it already produced stands.",
       "max_consecutive": 3,
-      "escalation": "Three weeks of running out mid-score means the candidate pool is growing faster than the budget scores it. Raise the budget or narrow the mining."
+      "escalation": "Three weeks of running out mid-score means the candidate pool is growing faster than the budget scores it. Raise the budget or narrow the mining.",
+      "plain": "the weekly topic scoring hit its budget and finishes next week"
     },
     "NEW_DOMAIN_QUOTA": {
       "why": "A newly admitted domain's first scoring pass exceeded the weekly budget. Its remaining candidates are scored next week; nothing is lost and no unscored topic can be queued.",
       "max_consecutive": 3,
-      "escalation": "A new domain that cannot finish scoring in three weeks is too large to bootstrap at this budget - score it in a dispatched run instead."
+      "escalation": "A new domain that cannot finish scoring in three weeks is too large to bootstrap at this budget - score it in a dispatched run instead.",
+      "plain": "a new subject area's first scoring hit the weekly budget and finishes next week"
     },
     "TAXONOMY_REFRESH_QUOTA": {
       "why": "The quarterly taxonomy refresh's competition pass ran out of budget. The existing research/proposed-taxonomy.json stands unchanged - stale evidence beats no evidence - and no domain swap decision is affected until the next attempt.",
       "max_consecutive": 2,
-      "escalation": "Two quarters running out at the same budget means the candidate set genuinely needs more than --budget allows. Dispatch it by hand with a higher --budget on a day with quota to spare."
+      "escalation": "Two quarters running out at the same budget means the candidate set genuinely needs more than --budget allows. Dispatch it by hand with a higher --budget on a day with quota to spare.",
+      "plain": "the quarterly subject review ran out of budget; the current list stands"
     },
     "UPLOAD_QUOTA": {
       "why": "The Mac-side upload path found the day's allowance spent. Identical in kind to QUOTA_EXHAUSTED: it resets at midnight Pacific and the lane runs daily.",
       "max_consecutive": 3,
-      "escalation": "See QUOTA_EXHAUSTED."
+      "escalation": "See QUOTA_EXHAUSTED.",
+      "plain": "YouTube's daily upload allowance was spent; the Mac uploads again after it resets"
     },
     "NOTHING_PUBLISHED": {
       "why": "No episode is live yet for this lane to act on. Every episode now uploads private with a publishAt stamp, so this is the ordinary state of a channel whose queue is entirely ahead of it - and it clears itself the moment YouTube flips the first one.",
       "max_consecutive": 7,
-      "escalation": "Seven runs with nothing public while the ledger holds scheduled rows means either the flips are not happening (see publish.py's SCHEDULED_FLIP_DID_NOT_HAPPEN) or this lane is reading a ledger that stopped growing."
+      "escalation": "Seven runs with nothing public while the ledger holds scheduled rows means either the flips are not happening (see publish.py's SCHEDULED_FLIP_DID_NOT_HAPPEN) or this lane is reading a ledger that stopped growing.",
+      "plain": "no episode is live yet for this lane to work on"
     },
     "NOTHING_RENDERED": {
       "why": "Nothing finished on the Mac since the last run. The batch is the producer and it runs when the runway warning fires, so an empty pass is the expected state between batches.",
       "max_consecutive": 7,
-      "escalation": "Seven days with nothing rendered while scripts are queued means the Mac batch is not running at all - bin/batch-session.sh, or the launchd agent that starts it."
+      "escalation": "Seven days with nothing rendered while scripts are queued means the Mac batch is not running at all - bin/batch-session.sh, or the launchd agent that starts it.",
+      "plain": "the Mac finished nothing new since the last run"
     },
     "NO_SHORTS_SHELVED": {
       "why": "Every cut Short is already uploaded, or none has been pushed to R2 since the last run. The Mac's push is the producer; an empty shelf resolves on the next one.",
       "max_consecutive": 2,
       "_why_max_consecutive": "Lowered from 7 on 2026-10-12. The Mac shelves every night, so two empty days is a broken producer, not a slow one. At 7 the count reset on 3 Oct when three Shorts slipped through and it never escalated across three weeks of a held shelf.",
-      "escalation": "Two days of an empty Shorts shelf means the Mac's nightly push is not shelving. Read loop/state/stops/<week>-mac-batch.json (and the open '[mac-batch] <CODE>' issue it filed): bin/push-to-r2.sh's push-shorts half refuses a cut that fails V14 attribution or V15 crop and names it there."
+      "escalation": "Two days of an empty Shorts shelf means the Mac's nightly push is not shelving. Read loop/state/stops/<week>-mac-batch.json (and the open '[mac-batch] <CODE>' issue it filed): bin/push-to-r2.sh's push-shorts half refuses a cut that fails V14 attribution or V15 crop and names it there.",
+      "plain": "no new Short reached the shelf"
     },
     "SHORTS_SHELF_DRY": {
       "why": "No verified Short is on the R2 shelf and fewer than shorts_per_week Shorts went out in the trailing seven days. The Mac batch shelves nightly, so one or two dry days can be a night it had nothing new to cut.",
       "max_consecutive": 2,
-      "escalation": "A third consecutive dry day with the week below target means the Mac is not shelving Shorts. Read loop/state/stops/<week>-mac-batch.json and any open '[mac-batch] <CODE>' issue; the stop's first line gives the trailing-7-day count, the target and the last date a Short was shelved."
+      "escalation": "A third consecutive dry day with the week below target means the Mac is not shelving Shorts. Read loop/state/stops/<week>-mac-batch.json and any open '[mac-batch] <CODE>' issue; the stop's first line gives the trailing-7-day count, the target and the last date a Short was shelved.",
+      "plain": "no checked Short is waiting on the shelf and fewer than the weekly target went out"
     },
     "NOTHING_TO_PREPARE": {
       "why": "Every queued row already has its frozen work copy. The stage is finished, not blocked; it acts again the moment the ranking admits a new topic.",
       "max_consecutive": 5,
-      "escalation": "Five weeks with nothing to prepare means the ranking is not admitting topics - check the Saturday score lane, not this one."
+      "escalation": "Five weeks with nothing to prepare means the ranking is not admitting topics - check the Saturday score lane, not this one.",
+      "plain": "every queued topic was already prepared"
     },
     "CADENCE_CEILING": {
       "why": "The drafting lane already holds as many finished scripts as the locked cadence can publish. Writing more would deepen a queue that is already ahead of the calendar; it drafts again as soon as the queue drains.",
       "max_consecutive": 8,
-      "escalation": "Eight weeks at the ceiling means the queue is not draining - publishing has stalled somewhere downstream, or the ceiling in loop/config.json no longer matches the real cadence."
+      "escalation": "Eight weeks at the ceiling means the queue is not draining - publishing has stalled somewhere downstream, or the ceiling in loop/config.json no longer matches the real cadence.",
+      "plain": "enough scripts are already written for the schedule, so no more were drafted"
     },
     "NETWORK_UNREACHABLE": {
       "why": "A transient network failure reaching the YouTube API. Nothing was written, nothing was spent, and the measurement lane runs again on its own schedule.",
       "max_consecutive": 2,
-      "escalation": "Two consecutive runs unable to reach the API is an outage or a DNS/egress change on the runner, not a blip."
+      "escalation": "Two consecutive runs unable to reach the API is an outage or a DNS/egress change on the runner, not a blip.",
+      "plain": "the network to YouTube failed briefly; the lane tries again on its next run"
     },
     "ANALYTICS_HTTP_5*": {
       "why": "A 5xx is Google's server, not this repo's request. The week's measurement is deferred to the next run; nothing was written from a partial answer.",
       "max_consecutive": 2,
-      "escalation": "Two runs of 5xx in a row outlives any normal Google incident - check the request shape, and remember that estimatedRevenue beside ordinary metrics fails the WHOLE call."
+      "escalation": "Two runs of 5xx in a row outlives any normal Google incident - check the request shape, and remember that estimatedRevenue beside ordinary metrics fails the WHOLE call.",
+      "plain": "Google's analytics server had an error; the weekly numbers wait for the next run"
     },
     "OPENROUTER_UNREACHABLE": {
       "why": "A transient network failure reaching OpenRouter. Nothing was written; the lane retries on its next schedule.",
       "max_consecutive": 3,
-      "escalation": "Three unreachable runs is an outage or an egress change, not a blip."
+      "escalation": "Three unreachable runs is an outage or an egress change, not a blip.",
+      "plain": "the AI model service could not be reached; the lane tries again next run"
     },
     "R2_COMMAND_FAILED": {
       "why": "wrangler already retried the connectivity classes with backoff before raising this, so reaching here means the shelf was unreachable for the whole attempt. Nothing was uploaded and nothing was consumed; the lane runs daily.",
       "max_consecutive": 2,
-      "escalation": "Two consecutive days of a failing wrangler command is not an outage. Read the stderr in the stop's detail: a bucket rename and a token that lost R2 write both look exactly like this."
+      "escalation": "Two consecutive days of a failing wrangler command is not an outage. Read the stderr in the stop's detail: a bucket rename and a token that lost R2 write both look exactly like this.",
+      "plain": "the storage shelf could not be reached; the lane tries again next run"
     },
     "BREAKER_TRIPPED_ALREADY_REPORTED": {
       "why": "A second (or third, or fourth) guarded lane stopping on the SAME breaker trip another lane has already raised. It is just as halted - nothing publishes - but one flag is one problem, and four red jobs a day for it is how a real alarm gets tuned out. The breaker is re-tested at the top of every guarded lane and closes itself the moment the cause has passed, so this also disappears on its own.",
       "max_consecutive": 14,
-      "escalation": "Two weeks of guarded lanes stopping on one trip means the breaker is not being cleared by anything - the validators are still failing, or the cause is a strike or a manual trip that only she can clear. The lane that OWNS the alarm has been red that whole time; go and read that one."
+      "escalation": "Two weeks of guarded lanes stopping on one trip means the breaker is not being cleared by anything - the validators are still failing, or the cause is a strike or a manual trip that only she can clear. The lane that OWNS the alarm has been red that whole time; go and read that one.",
+      "plain": "another lane also stopped on the safety switch that was already reported"
     },
     "POV_ALL_TRACED": {
       "why": "Every queued episode either carries no [HUMAN] beat or already traces to pov/pov-assignments.json. The lane is FINISHED, not blocked: it acts again the moment an episode is authored with an untraced first-person beat.",
       "max_consecutive": 10,
-      "escalation": "Ten runs with nothing to trace while new episodes are being authored means this lane can no longer see them - check its 'examined N queued episode(s)' note against the real queue size."
+      "escalation": "Ten runs with nothing to trace while new episodes are being authored means this lane can no longer see them - check its 'examined N queued episode(s)' note against the real queue size.",
+      "plain": "every first-person line in the queue is already traced to an interview"
     },
     "CAPTIONS_BEFORE_AIRDATE": {
       "why": "The videos are uploaded PRIVATE with a future airdate, their .srt files are ready, and the daily reach lane inserts tracks in turn. Nothing is missing and nothing is late; the validator turns red on its own a fixed number of hours before each one airs, which is the real deadline. This is the state of a queue that is ahead of itself.",
       "max_consecutive": 7,
-      "escalation": "Seven days of the same videos waiting for a track they already have the source for means the reach lane is not inserting - check its quota reserve, and that youtube.force-ssl is still on the credential."
+      "escalation": "Seven days of the same videos waiting for a track they already have the source for means the reach lane is not inserting - check its quota reserve, and that youtube.force-ssl is still on the credential.",
+      "plain": "captions are ready and go on in turn before each episode airs"
     },
     "LOCALIZE_BEFORE_AIRDATE": {
       "why": "Same shape, for translated titles and descriptions: private, dated in the future, and taken in turn by the daily localize lane. The validator goes red on its own hours before air, while a lane cycle is still left to fix it.",
       "max_consecutive": 7,
-      "escalation": "Seven days of the same videos unlocalized means the localize lane is not acting - check OPENROUTER credit and the daily quota reserve."
+      "escalation": "Seven days of the same videos unlocalized means the localize lane is not acting - check OPENROUTER credit and the daily quota reserve.",
+      "plain": "translations are ready and go on in turn before each episode airs"
     },
     "NO_NEW_COMMENTS": {
       "why": "The weekly comment sweep found nothing newer than its per-video cursors. The lane is FINISHED for the week, not blocked: it classifies again the moment a viewer writes something. The digest file is written empty so the Mac job that emails the owner can record NOTHING_TO_REPORT by name instead of sending nothing.",
       "max_consecutive": 8,
-      "escalation": "Eight weekly sweeps with no new comment on a channel publishing 4/week is longer than silence explains. Check that list_uploads() still returns the whole uploads playlist and that the cursors in loop/state/comments/ledger.json are not ahead of real time."
+      "escalation": "Eight weekly sweeps with no new comment on a channel publishing 4/week is longer than silence explains. Check that list_uploads() still returns the whole uploads playlist and that the cursors in loop/state/comments/ledger.json are not ahead of real time.",
+      "plain": "no new viewer comments this week"
     },
     "INSTRUCTIONS_ALREADY_APPLIED": {
       "why": "Every instruction in the file was already applied and recorded on an earlier run; the ledger holds each action. Re-running act with the same file is idempotent by design so a retried tick cannot reply twice.",
       "max_consecutive": 3,
-      "escalation": "Three runs handed an already-applied file means the caller is not clearing its instruction store after a successful act. Check the boss-os duty task state, not this lane."
+      "escalation": "Three runs handed an already-applied file means the caller is not clearing its instruction store after a successful act. Check the boss-os duty task state, not this lane.",
+      "plain": "every comment instruction had already been carried out"
     },
     "DOMAIN_QUEUE_THIN": {
       "why": "The Saturday miner widened every source it has (broad mine, deep-mine cache, dedicated seeds, a fresh autocomplete mine) and still found fewer than 4 unwritten topics that are not repeats of aired episodes. It wrote the queue it could; autocomplete changes week to week and the next Saturday mines again. The runway stops, not this, protect publishing.",
       "max_consecutive": 3,
-      "escalation": "Three Saturdays under the floor means the domain's seed vocabulary is used up, not unlucky. Add seeds (research/seeds_broad.json or the domain's dedicated seed file). Go red."
+      "escalation": "Three Saturdays under the floor means the domain's seed vocabulary is used up, not unlucky. Add seeds (research/seeds_broad.json or the domain's dedicated seed file). Go red.",
+      "plain": "a subject area has fewer than four unwritten topics even after searching wider"
     },
     "SHORTS_INVENTORY_EXHAUSTED": {
       "why": "Every cut Short is on the calendar. Automated policy: the Mac's nightly batch (bin/batch-session.sh shelve_shorts) cuts Shorts from every newly rendered episode, so the next render refills the shelf. The format decision is made and recorded (docs/DECISION-LOG.md 2026-09-25): Shorts stay in the current cut format; a switch to native vertical is not pending on anyone.",
       "max_consecutive": 14,
-      "escalation": "Two weeks with nothing cut means no episode has rendered in two weeks - the render pipeline is stalled, which is an error. Go red."
+      "escalation": "Two weeks with nothing cut means no episode has rendered in two weeks - the render pipeline is stalled, which is an error. Go red.",
+      "plain": "every Short already cut is on the calendar; new ones come from new episodes"
     },
     "CADENCE_SCALE_WITHHELD": {
       "why": "Automated policy: the loop publishes at the lower rate until the finished-episode queue can carry the higher one for a month, then raises itself. The Mac's nightly batch is what adds runway; nothing is pending on anyone.",
       "max_consecutive": 12,
-      "escalation": "Twelve weeks withheld means the nightly batch is not producing runway - a throughput error. Go red."
+      "escalation": "Twelve weeks withheld means the nightly batch is not producing runway - a throughput error. Go red.",
+      "plain": "the channel stays at the lower publishing rate until there are enough finished episodes"
     },
     "SCRIPTS_AWAITING_PROMOTION_RUNWAY_CRITICAL": {
       "why": "Automated policy: the Saturday gate (loop/score.py dispose_promotion_holds) decides every held script - promoted into the queue or declined - on its next run; the runway stops raise separately if publishing is at risk.",
       "max_consecutive": 2,
-      "escalation": "Two Saturdays with holds still undecided means the gate itself is failing (HOLD_GATE_FAILED names why). Go red."
+      "escalation": "Two Saturdays with holds still undecided means the gate itself is failing (HOLD_GATE_FAILED names why). Go red.",
+      "plain": "held scripts are waiting for Saturday's decision while the runway is short"
     },
     "INSUFFICIENT_DOMAIN_EVIDENCE": {
       "why": "Automated policy: with fewer than two domains past the measured-episode floor, the monthly review keeps the allocation exactly as it is and re-evaluates next month. Nothing is decided on thin evidence and nothing is pending on anyone.",
       "max_consecutive": 12,
-      "escalation": "A year without two judgeable domains means measurement is not accumulating - an error. Go red."
+      "escalation": "A year without two judgeable domains means measurement is not accumulating - an error. Go red.",
+      "plain": "too few measured episodes to change the subject mix, so it stays as it is"
     },
     "QUEUE_DECAYED_BUT_UNMEASURED": {
       "why": "Automated policy: a thin queue on a domain with too few measured episodes is refilled by the Saturday miner (loop/score.py missing_queues, floor batch_queue.MIN_UNWRITTEN_TOPICS), never retired; the monthly review re-checks next month.",
       "max_consecutive": 6,
-      "escalation": "Six months decayed and still unmeasured means the refill is not working. Go red."
+      "escalation": "Six months decayed and still unmeasured means the refill is not working. Go red.",
+      "plain": "a subject area's queue is thin and is being refilled automatically"
     },
     "NO_REPLACEMENT_DOMAIN": {
       "why": "Automated policy: with no unused domain in research/proposed-taxonomy.json, the decayed domain keeps its slots and the Saturday miner keeps refilling it; the quarterly taxonomy refresh adds candidates.",
       "max_consecutive": 6,
-      "escalation": "Six months with no replacement after two quarterly refreshes means the taxonomy refresh is not producing domains. Go red."
+      "escalation": "Six months with no replacement after two quarterly refreshes means the taxonomy refresh is not producing domains. Go red.",
+      "plain": "a fading subject area keeps its slots because no new one is ready"
     },
     "RUNWAY_WARN": {
       "why": "Four weeks of runway left. Automated policy: the Monday lane authors from the queue, the Saturday miner refills thin queues and the Mac's nightly batch narrates and renders; publishing never halts. A green warning with the runway figures, not a page.",
       "max_consecutive": 3,
-      "escalation": "Three weeks at warning without recovering means the nightly batch is not producing - it becomes an error. Go red."
+      "escalation": "Three weeks at warning without recovering means the nightly batch is not producing - it becomes an error. Go red.",
+      "plain": "only about four weeks of finished episodes are left"
     },
     "HANDOFF_UP_TO_DATE": {
       "why": "Every public Short already opens with the link to its episode, every public episode lists its Shorts, and every public video is in its domain playlist. The hand-off lane (loop/handoff.py) is FINISHED, not blocked: it does real work again the first run after a Short or an episode goes public. Nothing was written and a re-run costs a few read units.",
@@ -330,7 +370,8 @@
       "upstream_stage": "shorts-cloud",
       "max_consecutive_upstream_idle": 60,
       "_why_upstream": "The lane runs twice a day (after the upload lane and after the Shorts lane), so fourteen idle runs is a week. A week with nothing new public is normal when the Shorts shelf is empty or the episode runway is scheduled ahead - which the Shorts lane reports in its own classified stops. Past the cap this stays green only while the newest public video predates the idle streak AND shorts-cloud is itself mid-streak on a named stop (loop/common.py _upstream_explains); sixty runs (a month) is the outer bound.",
-      "escalation": "Past fourteen consecutive idle runs this pages only when the idle is NOT explained upstream: a video went public after the streak began and this lane still found nothing to do - the dangerous case, where it can no longer SEE liveness (videos.list) or the ledgers stopped growing - or shorts-cloud's last run succeeded yet nothing new is public, or the streak outlived its 60-run bound. Compare the public count in this run's stop detail with the ledgers."
+      "escalation": "Past fourteen consecutive idle runs this pages only when the idle is NOT explained upstream: a video went public after the streak began and this lane still found nothing to do - the dangerous case, where it can no longer SEE liveness (videos.list) or the ledgers stopped growing - or shorts-cloud's last run succeeded yet nothing new is public, or the streak outlived its 60-run bound. Compare the public count in this run's stop detail with the ledgers.",
+      "plain": "every Short already links to its episode and every video is in its playlist"
     },
     "HANDOFF_QUOTA_DEFERRED": {
       "why": "The hand-off lane spends 50 units per write and stands aside for the day's episode upload and evening Shorts (quota.deferrable_reserve). What did not fit is listed in loop/state/handoff.json `deferred` and is done the next run after the allowance resets at midnight Pacific; everything applied this run is already recorded in the ledgers. The back catalogue (34 Shorts, 18 episodes) is expected to take two quota days.",
@@ -338,17 +379,20 @@
         "resets_at"
       ],
       "max_consecutive": 5,
-      "escalation": "Five runs in a row still deferring means the lane is planning more writes than it ever gets to make - a loop rewriting the same descriptions (a composer that is not idempotent), or a reserve that never clears. Compare `deferred` across the last five loop/state/handoff.json commits: the same ids each time is the composer, a shrinking list is just a long back catalogue."
+      "escalation": "Five runs in a row still deferring means the lane is planning more writes than it ever gets to make - a loop rewriting the same descriptions (a composer that is not idempotent), or a reserve that never clears. Compare `deferred` across the last five loop/state/handoff.json commits: the same ids each time is the composer, a shrinking list is just a long back catalogue.",
+      "plain": "linking Shorts to episodes waited a day for the YouTube allowance"
     },
     "HANDOFF_AWAITING_QUOTA": {
       "why": "Same deferral, named by validator V46 that observed it: a live Short or video that the hand-off lane has recorded as deferred for quota in loop/state/handoff.json within the last two days. Nothing is lost; the lane finishes it on its next run.",
       "max_consecutive": 5,
-      "escalation": "See HANDOFF_QUOTA_DEFERRED."
+      "escalation": "See HANDOFF_QUOTA_DEFERRED.",
+      "plain": "some Short-to-episode links are waiting for tomorrow's YouTube allowance"
     },
     "OPENROUTER_NO_FREE_MODEL": {
       "why": "Every $0 model in config/llm_routing.json failed this run (free-tier rate limit, upstream outage, or an empty answer). Nothing was written from a partial answer and there is no paid fallback by owner policy (2026-10-11); the lane retries on its next schedule.",
       "max_consecutive": 3,
-      "escalation": "Three runs with no free model answering is not a burst: a listed model has probably been withdrawn or gated. Refresh config/llm_routing.json from https://openrouter.ai/api/v1/models (keep only ':free' 0/0 models, >=32k context) and re-run; detail lists each model's failure."
+      "escalation": "Three runs with no free model answering is not a burst: a listed model has probably been withdrawn or gated. Refresh config/llm_routing.json from https://openrouter.ai/api/v1/models (keep only ':free' 0/0 models, >=32k context) and re-run; detail lists each model's failure.",
+      "plain": "every free AI model failed this run; nothing was written and it tries again"
     }
   },
   "owner_action": {
@@ -373,7 +417,8 @@
       "holds": {
         "kind": "credential",
         "what": "YT_OAUTH_REFRESH_TOKEN / YT_OAUTH_CLIENT_JSON"
-      }
+      },
+      "plain": "the YouTube login is missing; only you can sign in again"
     },
     "OAUTH_EXPIRED": {
       "why": "The stored refresh token no longer works. Re-consent is a browser round trip only she can complete.",
@@ -382,7 +427,8 @@
       "holds": {
         "kind": "credential",
         "what": "the YouTube OAuth refresh token"
-      }
+      },
+      "plain": "the YouTube login expired; only you can sign in again"
     },
     "OAUTH_NOT_CONSENTED": {
       "why": "No consent has ever been granted for this credential. Only she can grant it.",
@@ -391,7 +437,8 @@
       "holds": {
         "kind": "credential",
         "what": "YouTube OAuth consent"
-      }
+      },
+      "plain": "YouTube access was never granted; only you can grant it"
     },
     "OAUTH_UNUSABLE": {
       "why": "The credential exists and Google will not accept it. Re-consent needs her Google account.",
@@ -400,7 +447,8 @@
       "holds": {
         "kind": "credential",
         "what": "the YouTube OAuth credential"
-      }
+      },
+      "plain": "Google will not accept the YouTube login; only you can sign in again"
     },
     "OAUTH_REJECTED": {
       "why": "Google rejected the stored credentials with 401/403 during measurement. A scope or a consent she alone can restore.",
@@ -409,7 +457,8 @@
       "holds": {
         "kind": "credential",
         "what": "the YouTube OAuth credential's scopes"
-      }
+      },
+      "plain": "Google refused the YouTube login when reading the numbers; only you can sign in again"
     },
     "CAPTIONS_SCOPE_MISSING": {
       "why": "captions.insert needs the youtube.force-ssl scope and this credential does not carry it. Re-consent is a browser round trip only she can complete. Nothing is lost meanwhile: the .srt files are committed and the lane inserts them the run after the grant.",
@@ -418,7 +467,8 @@
       "holds": {
         "kind": "credential",
         "what": "the youtube.force-ssl OAuth scope"
-      }
+      },
+      "plain": "the YouTube login lacks permission to add captions; only you can sign in again"
     },
     "R2_CREDENTIALS_MISSING": {
       "why": "CLOUDFLARE_API_TOKEN or CLOUDFLARE_ACCOUNT_ID is not set for this environment. Only she can supply a token.",
@@ -427,7 +477,8 @@
       "holds": {
         "kind": "credential",
         "what": "CLOUDFLARE_API_TOKEN / CLOUDFLARE_ACCOUNT_ID"
-      }
+      },
+      "plain": "the storage shelf key is missing; only you can supply it"
     },
     "NEW_DOMAIN_KEY_ABSENT": {
       "why": "YOUTUBE_API_KEY is absent, so a newly promoted domain cannot have its competition measured and gets no queue. Only she can mint the key. The primary ranking is refreshed before this stop, so publishing is not affected by it.",
@@ -436,7 +487,8 @@
       "holds": {
         "kind": "credential",
         "what": "YOUTUBE_API_KEY"
-      }
+      },
+      "plain": "the YouTube data key is missing, so a new subject area gets no topics"
     },
     "TAXONOMY_REFRESH_KEY_ABSENT": {
       "why": "YOUTUBE_API_KEY is absent, so the quarterly taxonomy refresh's competition pass cannot run. Only she can mint the key. The existing research/proposed-taxonomy.json stands unchanged; no domain swap decision is affected.",
@@ -445,7 +497,8 @@
       "holds": {
         "kind": "credential",
         "what": "YOUTUBE_API_KEY"
-      }
+      },
+      "plain": "the YouTube data key is missing, so the quarterly subject review cannot run"
     },
     "OPENROUTER_KEY_MISSING": {
       "why": "OPENROUTER_API_KEY is absent. Only she can mint one.",
@@ -454,7 +507,8 @@
       "holds": {
         "kind": "credential",
         "what": "OPENROUTER_API_KEY"
-      }
+      },
+      "plain": "the AI model key is missing; only you can create one"
     },
     "EXTEND_KEY_MISSING": {
       "why": "The extension lane's model key is absent. Episodes under the runtime floor stay unextended; nothing is published short, because the floor gate refuses them separately.",
@@ -463,7 +517,8 @@
       "holds": {
         "kind": "credential",
         "what": "the extension lane's model key"
-      }
+      },
+      "plain": "the key for lengthening short scripts is missing"
     },
     "UPLOADS_LOCKED_PRIVATE": {
       "why": "YouTube has locked this channel's uploads to private - an account-side flag, usually a verification step. No code path can clear it and retrying cannot.",
@@ -472,7 +527,8 @@
       "holds": {
         "kind": "account",
         "what": "the YouTube channel's account standing"
-      }
+      },
+      "plain": "YouTube has locked the channel's uploads to private; only you can clear it in YouTube"
     },
     "WRONG_CHANNEL": {
       "why": "The credential authenticates a different YouTube channel than the one configured. Refusing is correct and only she can re-consent as the right account.",
@@ -481,7 +537,8 @@
       "holds": {
         "kind": "credential",
         "what": "the YouTube OAuth consent for @howweknowdeep"
-      }
+      },
+      "plain": "the YouTube login is for a different channel; only you can sign in as the right one"
     },
     "DELEGATED_HARVEST_STALE": {
       "why": "research/imagery_video.py runs on the Mac's nightly batch (the only host with ffmpeg and Apple Vision) and loop/state/harvest_runs.json shows it has not run inside harvest.delegated_max_age_days. The batch runs it every night the Mac is awake with its lid open; the next run's stamp clears this. The Mac is the one external host she alone holds.",
@@ -490,7 +547,8 @@
       "holds": {
         "kind": "external_service",
         "what": "the Mac, the only host with ffmpeg and Apple Vision"
-      }
+      },
+      "plain": "the Mac has not collected new footage recently"
     },
     "LANE_NOT_ARMED_*": {
       "why": "A scheduled lane that has never completed a real run arms ITSELF: its first scheduled run with every required secret present is the arming run (loop/arming.py gate). This stop is raised only when one of those secrets is absent, and names which. Only she can supply a repository secret.",
@@ -499,7 +557,8 @@
       "holds": {
         "kind": "credential",
         "what": "the lane's repository secrets (named in the stop)"
-      }
+      },
+      "plain": "a scheduled lane has not run for real yet because a key it needs is missing"
     },
     "OPENROUTER_KEY_DISABLED_OR_INVALID": {
       "why": "OpenRouter refused the key on the free route (HTTP 401, or 401/402/403 from every free model in config/llm_routing.json). Since 2026-10-11 the key has a $0 credit limit and only $0 models are ever called, so this is the key itself being revoked, disabled or invalid - never a balance to top up. Only she can mint a key. Supersedes OPENROUTER_UNAUTHORISED and OPENROUTER_OUT_OF_CREDIT (retired 2026-10-11 with the paid route); a free-tier rate limit is now OPENROUTER_NO_FREE_MODEL, superseding OPENROUTER_RATE_LIMITED.",
@@ -508,7 +567,8 @@
       "holds": {
         "kind": "credential",
         "what": "OPENROUTER_API_KEY"
-      }
+      },
+      "plain": "the AI model service refused the key"
     }
   },
   "needs_human": {
@@ -523,87 +583,333 @@
       "or a validator that found what it was built to find. Red is the correct",
       "outcome for all three."
     ],
-    "ZERO_WORK": "Rule 0. A stage that did nothing is indistinguishable from a stage that is broken, so this one always reaches a person.",
-    "STATE_FILE_CORRUPT": "Only after loop/common.py has already tried to restore the file from origin/main and failed. A state file that cannot be restored is a real defect.",
-    "VALIDATOR_FAILED": "A validator found a defect. That is the whole point of it.",
-    "DRAFT_FAILED_VALIDATION": "A generated script did not pass its own validators and was not queued. A defect in the draft or in the prompt.",
-    "AUTHORING_BUDGET_EXHAUSTED": "The Monday lane's wall-clock authoring budget (loop/draft.py AUTHORING_BUDGET_MIN) was spent before this slot or attempt could start, so the topic was left as a brief for next Monday. Folded into AUTHOR_REQUIRED like DRAFT_FAILED_VALIDATION; it is the lane ending on time instead of being cancelled by its job ceiling (run 38235183608, 2026-10-12).",
-    "HOLD_GATE_FAILED": "loop/score.py dispose_promotion_holds() could not decide a held script: the single-query gate raised an unhandled exception (a code defect, retrying next Saturday cannot fix it), or it has been deferred on a missing key or quota for four Saturdays running (the hold is now older than any decision should be). Time does not fix either; a person reads the stop's detail.",
-    "RUNWAY_AUTHORING_FALLBACK": "The runway warning had to fall back to a degraded authoring path. It must be seen, because the fallback is not the intended pipeline.",
-    "TOPIC_EXCLUDED": "A queued topic is on the exclusion list. A queue defect, not a transient.",
-    "SCORER_MISSING": "The scoring entrypoint is absent. Nothing can rank without it.",
-    "SCORER_FAILED": "The scorer crashed. A defect.",
-    "NO_RANKING_PRODUCED": "Scoring ran and produced no ranking. A guard against an empty loop passing as success.",
-    "NO_SCORED_CANDIDATES": "Nothing was scored, so nothing may be admitted. Zero-item guard.",
-    "RANKING_STALE_AFTER_SCORING": "The ranking did not move after a scoring pass. 'Runs but inert'.",
-    "NO_ADMITTED_TOPICS": "The ranking admitted nothing. The channel cannot draft against an empty admitted set.",
-    "NO_POV_MATCH": "A defect: the POV bank holds no transferable line at all, or pov/pov-assignments.json assigns a line this repo cannot honour. A rotation window that has used every fitting line is NOT this stop - loop/pov_match.py takes the least-recently-used transferable line from her bank (never an invented one).",
-    "NO_TOPICS": "loop/next_topics.json is missing. A state defect.",
-    "NO_SCRIPTS": "The drafting lane produced no script. Zero-item guard.",
-    "NO_QUEUE": "The publish queue file is missing. A state defect - restore it from origin/main.",
-    "PUBLISH_ORDER_MISSING": "The ranked queue this lane must read does not exist.",
-    "PUBLISH_ORDER_STALE": "The ranked queue is older than the scoring that should have rewritten it.",
-    "AUTHORED_NOT_QUEUED": "A defect, not a decision: loop/rank.py and loop/draft.py select only publish-queue topics, so a script in loop/render_queue.json outside every research/publish_order*.json means a lane routed around that gate. Find the lane and fix it; the stranded script is re-judged by the queue on read.",
-    "PUBLISH_QUEUE_EMPTY": "research/publish_order*.json exists but holds zero rows. An empty queue looks the same as a deleted one, so it is never read as finished.",
-    "QUEUE_ROW_HAS_NO_QUESTION": "A shelved, selected episode carries no title. A broken queue row, refused before any byte is fetched.",
-    "POV_UNTRACED": "An episode's first-person [HUMAN] beat traces to no approved POV entry. Uploading it would have the channel assert she said something no interview records. A validator may not clear this for her.",
-    "CAPTIONS_NOT_READY": "Now reachable only when an episode was never fully narrated, because loop/captions_build.py builds the track for every episode whose beat timings are committed. What is left is a genuine gap in the audio, not a missing derived file.",
-    "CAPTIONS_UNBUILDABLE": "An episode has no caption track and no measured narration timing to build one from. A track timed off the planner's word-count estimate would put cues on screen at times the voice does not speak.",
-    "CAPTIONS_BUILD_EXAMINED_NOTHING": "The caption lane could not read the publish queue, so it examined zero episodes. A guard that examines nothing must hard-fail.",
-    "CAPTIONS_INERT": "The caption upload lane ran and inserted nothing it should have. 'Runs but inert'.",
-    "NO_CAPTION_FILES": "No .srt exists for any published video. Since captions are now built automatically, this means the captions/ directory itself is missing or unreadable.",
-    "LOCALIZE_INERT": "The localisation lane ran and wrote nothing it should have. 'Runs but inert'.",
-    "CHAPTERS_BACKFILL_INERT": "The chapters backfill ran and changed nothing it should have. 'Runs but inert'.",
-    "TAGS_BACKFILL_INERT": "The tags/hashtags backfill ran and neither rewrote a video nor confirmed one already correct. 'Runs but inert'.",
-    "DIGEST_READ_NOTHING": "The digest rendered with no episodes, no schedule and no queue. A reassuring weekly email built on files it failed to open is worse than no email.",
-    "SCHEDULE_NOT_APPLIED": "YouTube did not apply the publishAt this lane set. The video is uploaded and undated - the one state that silently never airs.",
-    "SHORT_SCHEDULE_NOT_APPLIED": "As above, for a Short.",
-    "SHORT_RELEASE_NOT_APPLIED": "A Short parked behind the render gate was re-scheduled when the hold lifted and YouTube did not apply the publishAt. The Short would sit private forever beside a ledger row that says it is scheduled.",
-    "SCHEDULED_FLIP_DID_NOT_HAPPEN": "A video whose publishAt has passed is still private. Something between this repo and YouTube is wrong and an episode has already missed its slot.",
-    "FLIP_FAILED": "The private-to-public flip was refused. Needs the full youtube scope, not youtube.upload.",
-    "RETIRE_NOT_APPLIED": "A retirement was requested and YouTube did not apply it. The video is still public when it should not be.",
-    "RETIRE_SCHEDULE_NOT_CLEARED": "A retired video kept its publishAt, so YouTube could re-publish it.",
-    "UPLOAD_FAILED": "The upload itself failed. A defect or a platform error that has already consumed quota.",
-    "CHANNEL_UNREADABLE": "The channel could not be read at all, so no lane can verify it is acting on the right one.",
-    "TAXONOMY_REFRESH_CRASHED": "The quarterly taxonomy refresh raised an unhandled exception in one of its steps. A code defect, not a condition that clears on its own next quarter - the existing research/proposed-taxonomy.json stands unchanged.",
-    "TAXONOMY_REFRESH_FAILED": "The quarterly taxonomy refresh exited non-zero for an unrecognised reason. The existing research/proposed-taxonomy.json stands unchanged.",
-    "BREAKER_TRIPPED": "Only after loop/breaker.py has already tried to reset itself against the live cause and found it still true. A breaker that stays tripped is protecting the channel and must be seen.",
-    "EXTENSION_REJECTED": "A script extension failed its own validators. The episode stays short rather than being padded with unsourced prose.",
-    "NEW_DOMAIN_UNSCORED": "A domain was admitted and never scored. Nothing may be queued from it.",
-    "DOMAIN_HAS_NO_HARVESTER": "A live domain has no imagery harvester, so its episodes cannot get cleared footage.",
-    "NO_HARVESTER": "No harvester at all is registered. Zero-item guard.",
-    "RIGHTS_GATE_MISSING": "Footage was harvested with no rights manifest. Public-domain-only is not negotiable in this repo.",
-    "CLEARED_POOL_SHRANK": "The cleared imagery pool got smaller. Something removed rights-cleared assets and that must never pass quietly.",
-    "HARVESTER_TOOLING_ABSENT": "A harvester's own declaration names THIS host as the one that runs it, and this host lacks the tooling it requires (ffmpeg, Apple Vision). Since 2026-09-19 that is a wrong declaration - a harvester that needs the Mac says host: mac-batch and the Linux lane verifies it instead of holding on it - so what is left is a defect. Earns HELD by naming the harvester and each tool; a new harvester or a new requirement pages.",
-    "DELEGATED_HARVEST_FAILING": "A harvester delegated to another host WAS run there inside harvest.delegated_max_age_days and did not succeed (loop/state/harvest_runs.json: ok=false, exit code and output tail recorded). The host is alive; the harvester is broken on it, or its source is. That is a defect and the stamp says where to look.",
-    "SHORTS_UNVERIFIED": "A Short failed V14 attribution or V15 caption-crop and was refused the shelf. Nothing unverified reaches YouTube.",
-    "WRANGLER_MISSING": "wrangler is not installed in this environment. On a runner that is a broken install step, not a missing credential.",
-    "R2_AUTH_FAILED": "wrangler could not authenticate. Almost always CLOUDFLARE_ACCOUNT_ID being unset rather than a token problem - see THE TRAP in loop/r2.py - which is a configuration defect, not something to wait out.",
-    "DRY_RUN_WRITE_REFUSED": "A dry run attempted a real write. A defect in the calling lane.",
-    "DRY_RUN_NO_CREDENTIALS": "LOOP_DRY_RUN=1 refuses to load credentials, by design. Seeing this outside a test means a real lane is running in dry mode.",
-    "NOTHING_DROPPED": "The override lane was told to drop rows and dropped none. She dispatched it by hand and is watching; a silent no-op would be the wrong answer.",
-    "NO_DROPS_NAMED": "The override lane was dispatched with nothing named. As above.",
-    "WEEK_MISMATCH": "The override names a different week than the one running. Refusing is correct.",
-    "OPENROUTER_ERROR": "An unclassified model-provider error. Unclassified means unexamined; it must be seen once so it can be classified.",
-    "OPENROUTER_MODEL_UNKNOWN": "The configured model does not exist at the provider. A configuration defect.",
-    "ANALYTICS_HTTP_4*": "A 4xx is this repo's request, not Google's server - a bad metric combination or a scope. Retrying an identical bad request forever is the definition of an inert lane.",
-    "SHORTS_SHELVED_BUT_UNVERIFIED": "A Short is on the R2 shelf whose .short.json receipt is not. The receipt is the only record of which beats it used and who is credited for them, and public-domain attribution is the one thing this pipeline may not drop. An empty shelf is self-resolving; this is a broken push wearing the same shape.",
-    "POV_UNREPAIRABLE": "An untraced [HUMAN] beat whose sentence matches no beat in plans/<slug>.json. The script and the frozen plan have diverged, so the audio the words belong to cannot be identified and editing one without the other would make the captions state words the voice never said.",
-    "POV_REPAIR_EXAMINED_NOTHING": "The POV repair lane could not read the publish queue, so it examined zero episodes. A guard that examines nothing must hard-fail.",
-    "PULL_FAILED": "2026-09-13. The Mac lane could not bring main up to date before deciding what to upload, even after loop/mac_sync.py took upstream for every loop-state file the Mac had touched. What is left is a conflict in something a person edited. Refusing to upload against a possibly stale ledger is correct - a duplicate public video is worse than a skipped day - and it must be SEEN: from 12 September this code repeated every morning, was not classified, and its stop file never left the Mac, so nine finished episodes shipped nothing behind a message nobody was shown.",
-    "REBASE_IN_PROGRESS": "The Mac lane found a recent or conflicted rebase in .git and will not touch it. A person is in the middle of something, or a conflict is unresolved; either way the lane must not act on that tree.",
-    "RENDER_GATE_EMPTY": "loop/render_gate.py ran V13 and V24 on the Mac and between them they examined zero renders, on a machine whose job is to hold renders. A gate that looked at nothing has passed nothing; Rule 0.",
-    "RENDER_HELD": "One or more finished renders failed V13 (clipped) or V24 (under the runtime floor) and are HELD BY NAME while every other finished episode ships - the gate no longer refuses the whole batch for one short episode (6-13 September 2026: eight finished episodes sat a week behind one that was six seconds short). Earns HELD by naming each held slug and its reason; loop/extend.py is invoked for each one under the floor and the next batch re-voices and re-renders it. A new slug entering the hold pages once.",
-    "MAC_NOT_SHIPPING": "The cloud digest read loop/state/mac_heartbeat.json and found the Mac holding finished renders it has not shipped for longer than mac.unshipped_days, or no heartbeat at all for that long while renders are pending. The Mac's own stops used to stay on the Mac; this is the cloud noticing the silence.",
-    "CAPTION_SOURCE_HELD": "Live videos with no captions/<slug>.srt at all. Reaching here means an episode that is ALREADY PUBLIC has no caption source, which is past the point where any lane can prevent harm - loop/captions_build.py builds a track for anything with committed beat timings, so this is an episode whose narration was never finished. It is deliberately reported rather than double-alarmed for holds that are already issued, and it fails outright for anything not covered by one.",
-    "COMMENT_CLASSIFIER_UNUSABLE": "The classifier answered in a shape parse_classification() refuses - a missing id, an unknown class, or a reported class with no action. Nothing was recorded for that batch, so nothing is lost; but a model that changed shape needs a person to look.",
-    "INSTRUCTIONS_UNREADABLE": "act was handed a file that is not a JSON object of comment_id -> instruction. The caller's parser is broken; nothing was applied.",
-    "INSTRUCTION_UNBACKED": "THE GATE. An instruction reached act without who gave it, when, through what, a legal action, or a swept comment. Nothing was applied - not the good lines either, so a partial reply cannot go out under a bad batch. A write to the channel with no instruction record behind it is exactly what this lane must never do.",
-    "COMMENT_ACTION_REJECTED": "YouTube refused a hide or a reply (HTTP 4xx). Actions before it were applied and recorded; this one and the rest were not. Usually a missing youtube.force-ssl scope or a comment the author already deleted.",
-    "RUNWAY_CRITICAL": "The runway is under the critical floor: the channel is close to going dark and the automated refill has not kept up. A real production failure.",
-    "RUNWAY_*": "Any other runway level is an unknown state of loop/cadence.runway() - a defect.",
-    "HANDOFF_WRITE_REJECTED": "YouTube refused a hand-off write (videos.update, playlistItems.insert, commentThreads.insert or playlists.insert) with something other than a quota error. Everything before it was applied and recorded; the next run retries only what is missing. A 403 here is a scope problem (the token needs https://www.googleapis.com/auth/youtube and force-ssl for comments); a 404 is a video that no longer exists under that id.",
-    "OPENROUTER_PAID_MODEL_REFUSED": "A lane or variable ($OPENROUTER_MODEL, $OPENROUTER_COMMENTS_MODEL) named a model outside config/llm_routing.json. Owner policy 2026-10-11: nothing paid. Refused before the network; a configuration defect to fix, never to work around.",
-    "OPENROUTER_PAID_COST_REFUSED": "OpenRouter reported a non-zero cost for a model listed as free. The repo may spend $0 (owner, 2026-10-11), so the call's result is discarded and the lane stops loudly. A listed model changed price: refresh config/llm_routing.json."
+    "ZERO_WORK": {
+      "why": "Rule 0. A stage that did nothing is indistinguishable from a stage that is broken, so this one always reaches a person.",
+      "plain": "a lane ran and did nothing at all"
+    },
+    "STATE_FILE_CORRUPT": {
+      "why": "Only after loop/common.py has already tried to restore the file from origin/main and failed. A state file that cannot be restored is a real defect.",
+      "plain": "a saved state file is damaged and could not be restored"
+    },
+    "VALIDATOR_FAILED": {
+      "why": "A validator found a defect. That is the whole point of it.",
+      "plain": "a quality check found a defect"
+    },
+    "DRAFT_FAILED_VALIDATION": {
+      "why": "A generated script did not pass its own validators and was not queued. A defect in the draft or in the prompt.",
+      "plain": "a written script failed its checks and was not queued"
+    },
+    "AUTHORING_BUDGET_EXHAUSTED": {
+      "why": "The Monday lane's wall-clock authoring budget (loop/draft.py AUTHORING_BUDGET_MIN) was spent before this slot or attempt could start, so the topic was left as a brief for next Monday. Folded into AUTHOR_REQUIRED like DRAFT_FAILED_VALIDATION; it is the lane ending on time instead of being cancelled by its job ceiling (run 38235183608, 2026-10-12).",
+      "plain": "Monday's script writing ran out of time before every slot was written"
+    },
+    "HOLD_GATE_FAILED": {
+      "why": "loop/score.py dispose_promotion_holds() could not decide a held script: the single-query gate raised an unhandled exception (a code defect, retrying next Saturday cannot fix it), or it has been deferred on a missing key or quota for four Saturdays running (the hold is now older than any decision should be). Time does not fix either; a person reads the stop's detail.",
+      "plain": "the Saturday decision on held scripts crashed"
+    },
+    "RUNWAY_AUTHORING_FALLBACK": {
+      "why": "The runway warning had to fall back to a degraded authoring path. It must be seen, because the fallback is not the intended pipeline.",
+      "plain": "scripts had to be written by the backup method because the runway was short"
+    },
+    "TOPIC_EXCLUDED": {
+      "why": "A queued topic is on the exclusion list. A queue defect, not a transient.",
+      "plain": "a queued topic is on the do-not-make list"
+    },
+    "SCORER_MISSING": {
+      "why": "The scoring entrypoint is absent. Nothing can rank without it.",
+      "plain": "the topic scoring program is missing"
+    },
+    "SCORER_FAILED": {
+      "why": "The scorer crashed. A defect.",
+      "plain": "the topic scoring crashed"
+    },
+    "NO_RANKING_PRODUCED": {
+      "why": "Scoring ran and produced no ranking. A guard against an empty loop passing as success.",
+      "plain": "topic scoring ran and produced no ranking"
+    },
+    "NO_SCORED_CANDIDATES": {
+      "why": "Nothing was scored, so nothing may be admitted. Zero-item guard.",
+      "plain": "no topic was scored, so none could be chosen"
+    },
+    "RANKING_STALE_AFTER_SCORING": {
+      "why": "The ranking did not move after a scoring pass. 'Runs but inert'.",
+      "plain": "the topic ranking did not change after scoring"
+    },
+    "NO_ADMITTED_TOPICS": {
+      "why": "The ranking admitted nothing. The channel cannot draft against an empty admitted set.",
+      "plain": "the ranking chose no topics to make"
+    },
+    "NO_POV_MATCH": {
+      "why": "A defect: the POV bank holds no transferable line at all, or pov/pov-assignments.json assigns a line this repo cannot honour. A rotation window that has used every fitting line is NOT this stop - loop/pov_match.py takes the least-recently-used transferable line from her bank (never an invented one).",
+      "plain": "no approved first-person line fits this episode"
+    },
+    "NO_TOPICS": {
+      "why": "loop/next_topics.json is missing. A state defect.",
+      "plain": "the list of next topics is missing"
+    },
+    "NO_SCRIPTS": {
+      "why": "The drafting lane produced no script. Zero-item guard.",
+      "plain": "the writing lane produced no script"
+    },
+    "NO_QUEUE": {
+      "why": "The publish queue file is missing. A state defect - restore it from origin/main.",
+      "plain": "the publish queue file is missing"
+    },
+    "PUBLISH_ORDER_MISSING": {
+      "why": "The ranked queue this lane must read does not exist.",
+      "plain": "the ranked topic queue is missing"
+    },
+    "PUBLISH_ORDER_STALE": {
+      "why": "The ranked queue is older than the scoring that should have rewritten it.",
+      "plain": "the ranked topic queue is older than the latest scoring"
+    },
+    "AUTHORED_NOT_QUEUED": {
+      "why": "A defect, not a decision: loop/rank.py and loop/draft.py select only publish-queue topics, so a script in loop/render_queue.json outside every research/publish_order*.json means a lane routed around that gate. Find the lane and fix it; the stranded script is re-judged by the queue on read.",
+      "plain": "a script exists for a topic that is not in the queue"
+    },
+    "PUBLISH_QUEUE_EMPTY": {
+      "why": "research/publish_order*.json exists but holds zero rows. An empty queue looks the same as a deleted one, so it is never read as finished.",
+      "plain": "the publish queue is empty"
+    },
+    "QUEUE_ROW_HAS_NO_QUESTION": {
+      "why": "A shelved, selected episode carries no title. A broken queue row, refused before any byte is fetched.",
+      "plain": "a queued episode has no title"
+    },
+    "POV_UNTRACED": {
+      "why": "An episode's first-person [HUMAN] beat traces to no approved POV entry. Uploading it would have the channel assert she said something no interview records. A validator may not clear this for her.",
+      "plain": "an episode has a first-person line that traces to no interview, so it was held"
+    },
+    "CAPTIONS_NOT_READY": {
+      "why": "Now reachable only when an episode was never fully narrated, because loop/captions_build.py builds the track for every episode whose beat timings are committed. What is left is a genuine gap in the audio, not a missing derived file.",
+      "plain": "an episode has no captions yet because it was never fully narrated"
+    },
+    "CAPTIONS_UNBUILDABLE": {
+      "why": "An episode has no caption track and no measured narration timing to build one from. A track timed off the planner's word-count estimate would put cues on screen at times the voice does not speak.",
+      "plain": "an episode has no captions and no narration timing to build them from"
+    },
+    "CAPTIONS_BUILD_EXAMINED_NOTHING": {
+      "why": "The caption lane could not read the publish queue, so it examined zero episodes. A guard that examines nothing must hard-fail.",
+      "plain": "the captions lane could not read the queue and checked nothing"
+    },
+    "CAPTIONS_INERT": {
+      "why": "The caption upload lane ran and inserted nothing it should have. 'Runs but inert'.",
+      "plain": "the captions lane ran and added nothing it should have"
+    },
+    "NO_CAPTION_FILES": {
+      "why": "No .srt exists for any published video. Since captions are now built automatically, this means the captions/ directory itself is missing or unreadable.",
+      "plain": "no caption files exist for any published video"
+    },
+    "LOCALIZE_INERT": {
+      "why": "The localisation lane ran and wrote nothing it should have. 'Runs but inert'.",
+      "plain": "the translations lane ran and wrote nothing it should have"
+    },
+    "CHAPTERS_BACKFILL_INERT": {
+      "why": "The chapters backfill ran and changed nothing it should have. 'Runs but inert'.",
+      "plain": "the chapters update ran and changed nothing it should have"
+    },
+    "TAGS_BACKFILL_INERT": {
+      "why": "The tags/hashtags backfill ran and neither rewrote a video nor confirmed one already correct. 'Runs but inert'.",
+      "plain": "the tags update ran and changed nothing it should have"
+    },
+    "DIGEST_READ_NOTHING": {
+      "why": "The digest rendered with no episodes, no schedule and no queue. A reassuring weekly email built on files it failed to open is worse than no email.",
+      "plain": "this weekly email could read no episodes, schedule or queue"
+    },
+    "SCHEDULE_NOT_APPLIED": {
+      "why": "YouTube did not apply the publishAt this lane set. The video is uploaded and undated - the one state that silently never airs.",
+      "plain": "YouTube did not take an episode's air date, so it would never air"
+    },
+    "SHORT_SCHEDULE_NOT_APPLIED": {
+      "why": "As above, for a Short.",
+      "plain": "YouTube did not take a Short's air date, so it would never air"
+    },
+    "SHORT_RELEASE_NOT_APPLIED": {
+      "why": "A Short parked behind the render gate was re-scheduled when the hold lifted and YouTube did not apply the publishAt. The Short would sit private forever beside a ledger row that says it is scheduled.",
+      "plain": "a held Short was released and YouTube did not take its air date"
+    },
+    "SCHEDULED_FLIP_DID_NOT_HAPPEN": {
+      "why": "A video whose publishAt has passed is still private. Something between this repo and YouTube is wrong and an episode has already missed its slot.",
+      "plain": "an episode passed its air time and is still private"
+    },
+    "FLIP_FAILED": {
+      "why": "The private-to-public flip was refused. Needs the full youtube scope, not youtube.upload.",
+      "plain": "YouTube refused to make a video public"
+    },
+    "RETIRE_NOT_APPLIED": {
+      "why": "A retirement was requested and YouTube did not apply it. The video is still public when it should not be.",
+      "plain": "a video that should be retired is still public"
+    },
+    "RETIRE_SCHEDULE_NOT_CLEARED": {
+      "why": "A retired video kept its publishAt, so YouTube could re-publish it.",
+      "plain": "a retired video still has an air date and could go public again"
+    },
+    "UPLOAD_FAILED": {
+      "why": "The upload itself failed. A defect or a platform error that has already consumed quota.",
+      "plain": "an upload to YouTube failed"
+    },
+    "CHANNEL_UNREADABLE": {
+      "why": "The channel could not be read at all, so no lane can verify it is acting on the right one.",
+      "plain": "the YouTube channel could not be read at all"
+    },
+    "TAXONOMY_REFRESH_CRASHED": {
+      "why": "The quarterly taxonomy refresh raised an unhandled exception in one of its steps. A code defect, not a condition that clears on its own next quarter - the existing research/proposed-taxonomy.json stands unchanged.",
+      "plain": "the quarterly subject review crashed"
+    },
+    "TAXONOMY_REFRESH_FAILED": {
+      "why": "The quarterly taxonomy refresh exited non-zero for an unrecognised reason. The existing research/proposed-taxonomy.json stands unchanged.",
+      "plain": "the quarterly subject review failed"
+    },
+    "BREAKER_TRIPPED": {
+      "why": "Only after loop/breaker.py has already tried to reset itself against the live cause and found it still true. A breaker that stays tripped is protecting the channel and must be seen.",
+      "plain": "the safety switch stopped all publishing and has not reset"
+    },
+    "EXTENSION_REJECTED": {
+      "why": "A script extension failed its own validators. The episode stays short rather than being padded with unsourced prose.",
+      "plain": "a lengthened script failed its checks, so the episode stays short"
+    },
+    "NEW_DOMAIN_UNSCORED": {
+      "why": "A domain was admitted and never scored. Nothing may be queued from it.",
+      "plain": "a new subject area was added and never scored"
+    },
+    "DOMAIN_HAS_NO_HARVESTER": {
+      "why": "A live domain has no imagery harvester, so its episodes cannot get cleared footage.",
+      "plain": "a live subject area has no footage collector"
+    },
+    "NO_HARVESTER": {
+      "why": "No harvester at all is registered. Zero-item guard.",
+      "plain": "no footage collector is set up at all"
+    },
+    "RIGHTS_GATE_MISSING": {
+      "why": "Footage was harvested with no rights manifest. Public-domain-only is not negotiable in this repo.",
+      "plain": "footage was collected without its rights record"
+    },
+    "CLEARED_POOL_SHRANK": {
+      "why": "The cleared imagery pool got smaller. Something removed rights-cleared assets and that must never pass quietly.",
+      "plain": "the pool of rights-cleared footage got smaller"
+    },
+    "HARVESTER_TOOLING_ABSENT": {
+      "why": "A harvester's own declaration names THIS host as the one that runs it, and this host lacks the tooling it requires (ffmpeg, Apple Vision). Since 2026-09-19 that is a wrong declaration - a harvester that needs the Mac says host: mac-batch and the Linux lane verifies it instead of holding on it - so what is left is a defect. Earns HELD by naming the harvester and each tool; a new harvester or a new requirement pages.",
+      "plain": "the footage collector ran on a machine without the video tools it needs"
+    },
+    "DELEGATED_HARVEST_FAILING": {
+      "why": "A harvester delegated to another host WAS run there inside harvest.delegated_max_age_days and did not succeed (loop/state/harvest_runs.json: ok=false, exit code and output tail recorded). The host is alive; the harvester is broken on it, or its source is. That is a defect and the stamp says where to look.",
+      "plain": "the Mac's footage collection is failing"
+    },
+    "SHORTS_UNVERIFIED": {
+      "why": "A Short failed V14 attribution or V15 caption-crop and was refused the shelf. Nothing unverified reaches YouTube.",
+      "plain": "a Short failed its credit or caption check on the Mac and was held"
+    },
+    "WRANGLER_MISSING": {
+      "why": "wrangler is not installed in this environment. On a runner that is a broken install step, not a missing credential.",
+      "plain": "the storage shelf tool is not installed"
+    },
+    "R2_AUTH_FAILED": {
+      "why": "wrangler could not authenticate. Almost always CLOUDFLARE_ACCOUNT_ID being unset rather than a token problem - see THE TRAP in loop/r2.py - which is a configuration defect, not something to wait out.",
+      "plain": "the storage shelf refused the login"
+    },
+    "DRY_RUN_WRITE_REFUSED": {
+      "why": "A dry run attempted a real write. A defect in the calling lane.",
+      "plain": "a test run tried to make a real change and was stopped"
+    },
+    "DRY_RUN_NO_CREDENTIALS": {
+      "why": "LOOP_DRY_RUN=1 refuses to load credentials, by design. Seeing this outside a test means a real lane is running in dry mode.",
+      "plain": "a real lane ran in test mode without its keys"
+    },
+    "NOTHING_DROPPED": {
+      "why": "The override lane was told to drop rows and dropped none. She dispatched it by hand and is watching; a silent no-op would be the wrong answer.",
+      "plain": "the manual drop request removed nothing"
+    },
+    "NO_DROPS_NAMED": {
+      "why": "The override lane was dispatched with nothing named. As above.",
+      "plain": "the manual drop request named nothing to drop"
+    },
+    "WEEK_MISMATCH": {
+      "why": "The override names a different week than the one running. Refusing is correct.",
+      "plain": "a manual request named the wrong week"
+    },
+    "OPENROUTER_ERROR": {
+      "why": "An unclassified model-provider error. Unclassified means unexamined; it must be seen once so it can be classified.",
+      "plain": "the AI model service returned an unexplained error"
+    },
+    "OPENROUTER_MODEL_UNKNOWN": {
+      "why": "The configured model does not exist at the provider. A configuration defect.",
+      "plain": "the configured AI model does not exist"
+    },
+    "ANALYTICS_HTTP_4*": {
+      "why": "A 4xx is this repo's request, not Google's server - a bad metric combination or a scope. Retrying an identical bad request forever is the definition of an inert lane.",
+      "plain": "Google refused the request for the weekly numbers"
+    },
+    "SHORTS_SHELVED_BUT_UNVERIFIED": {
+      "why": "A Short is on the R2 shelf whose .short.json receipt is not. The receipt is the only record of which beats it used and who is credited for them, and public-domain attribution is the one thing this pipeline may not drop. An empty shelf is self-resolving; this is a broken push wearing the same shape.",
+      "plain": "a Short is on the shelf without its credits record"
+    },
+    "POV_UNREPAIRABLE": {
+      "why": "An untraced [HUMAN] beat whose sentence matches no beat in plans/<slug>.json. The script and the frozen plan have diverged, so the audio the words belong to cannot be identified and editing one without the other would make the captions state words the voice never said.",
+      "plain": "a first-person line could not be repaired because the script and plan disagree"
+    },
+    "POV_REPAIR_EXAMINED_NOTHING": {
+      "why": "The POV repair lane could not read the publish queue, so it examined zero episodes. A guard that examines nothing must hard-fail.",
+      "plain": "the first-person repair lane could not read the queue and checked nothing"
+    },
+    "PULL_FAILED": {
+      "why": "2026-09-13. The Mac lane could not bring main up to date before deciding what to upload, even after loop/mac_sync.py took upstream for every loop-state file the Mac had touched. What is left is a conflict in something a person edited. Refusing to upload against a possibly stale ledger is correct - a duplicate public video is worse than a skipped day - and it must be SEEN: from 12 September this code repeated every morning, was not classified, and its stop file never left the Mac, so nine finished episodes shipped nothing behind a message nobody was shown.",
+      "plain": "the Mac could not update its copy of the project"
+    },
+    "REBASE_IN_PROGRESS": {
+      "why": "The Mac lane found a recent or conflicted rebase in .git and will not touch it. A person is in the middle of something, or a conflict is unresolved; either way the lane must not act on that tree.",
+      "plain": "the Mac's copy of the project is mid-merge, so the lane left it alone"
+    },
+    "RENDER_GATE_EMPTY": {
+      "why": "loop/render_gate.py ran V13 and V24 on the Mac and between them they examined zero renders, on a machine whose job is to hold renders. A gate that looked at nothing has passed nothing; Rule 0.",
+      "plain": "the Mac's render check looked at no renders"
+    },
+    "RENDER_HELD": {
+      "why": "One or more finished renders failed V13 (clipped) or V24 (under the runtime floor) and are HELD BY NAME while every other finished episode ships - the gate no longer refuses the whole batch for one short episode (6-13 September 2026: eight finished episodes sat a week behind one that was six seconds short). Earns HELD by naming each held slug and its reason; loop/extend.py is invoked for each one under the floor and the next batch re-voices and re-renders it. A new slug entering the hold pages once.",
+      "plain": "a finished episode failed its picture or length check on the Mac and was held back"
+    },
+    "MAC_NOT_SHIPPING": {
+      "why": "The cloud digest read loop/state/mac_heartbeat.json and found the Mac holding finished renders it has not shipped for longer than mac.unshipped_days, or no heartbeat at all for that long while renders are pending. The Mac's own stops used to stay on the Mac; this is the cloud noticing the silence.",
+      "plain": "the Mac has finished episodes it has not uploaded"
+    },
+    "CAPTION_SOURCE_HELD": {
+      "why": "Live videos with no captions/<slug>.srt at all. Reaching here means an episode that is ALREADY PUBLIC has no caption source, which is past the point where any lane can prevent harm - loop/captions_build.py builds a track for anything with committed beat timings, so this is an episode whose narration was never finished. It is deliberately reported rather than double-alarmed for holds that are already issued, and it fails outright for anything not covered by one.",
+      "plain": "a public video has no captions"
+    },
+    "COMMENT_CLASSIFIER_UNUSABLE": {
+      "why": "The classifier answered in a shape parse_classification() refuses - a missing id, an unknown class, or a reported class with no action. Nothing was recorded for that batch, so nothing is lost; but a model that changed shape needs a person to look.",
+      "plain": "the comment sorter gave an answer that could not be used"
+    },
+    "INSTRUCTIONS_UNREADABLE": {
+      "why": "act was handed a file that is not a JSON object of comment_id -> instruction. The caller's parser is broken; nothing was applied.",
+      "plain": "a comment instruction file could not be read"
+    },
+    "INSTRUCTION_UNBACKED": {
+      "why": "THE GATE. An instruction reached act without who gave it, when, through what, a legal action, or a swept comment. Nothing was applied - not the good lines either, so a partial reply cannot go out under a bad batch. A write to the channel with no instruction record behind it is exactly what this lane must never do.",
+      "plain": "a comment instruction arrived without who sent it, so nothing was applied"
+    },
+    "COMMENT_ACTION_REJECTED": {
+      "why": "YouTube refused a hide or a reply (HTTP 4xx). Actions before it were applied and recorded; this one and the rest were not. Usually a missing youtube.force-ssl scope or a comment the author already deleted.",
+      "plain": "YouTube refused to hide or reply to a comment"
+    },
+    "RUNWAY_CRITICAL": {
+      "why": "The runway is under the critical floor: the channel is close to going dark and the automated refill has not kept up. A real production failure.",
+      "plain": "the channel is close to running out of finished episodes"
+    },
+    "RUNWAY_*": {
+      "why": "Any other runway level is an unknown state of loop/cadence.runway() - a defect.",
+      "plain": "the runway measure returned an unknown state"
+    },
+    "HANDOFF_WRITE_REJECTED": {
+      "why": "YouTube refused a hand-off write (videos.update, playlistItems.insert, commentThreads.insert or playlists.insert) with something other than a quota error. Everything before it was applied and recorded; the next run retries only what is missing. A 403 here is a scope problem (the token needs https://www.googleapis.com/auth/youtube and force-ssl for comments); a 404 is a video that no longer exists under that id.",
+      "plain": "YouTube refused to link a Short to its episode"
+    },
+    "OPENROUTER_PAID_MODEL_REFUSED": {
+      "why": "A lane or variable ($OPENROUTER_MODEL, $OPENROUTER_COMMENTS_MODEL) named a model outside config/llm_routing.json. Owner policy 2026-10-11: nothing paid. Refused before the network; a configuration defect to fix, never to work around.",
+      "plain": "a lane asked for a paid AI model and was refused"
+    },
+    "OPENROUTER_PAID_COST_REFUSED": {
+      "why": "OpenRouter reported a non-zero cost for a model listed as free. The repo may spend $0 (owner, 2026-10-11), so the call's result is discarded and the lane stops loudly. A listed model changed price: refresh config/llm_routing.json.",
+      "plain": "a free AI model charged money, so its answer was thrown away"
+    }
   }
 }

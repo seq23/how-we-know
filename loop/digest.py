@@ -219,95 +219,221 @@ def pipeline(led: dict, depth: dict, hb: dict, now: dt.datetime) -> dict:
             "mac_silent_days": (now - last_seen).days if last_seen else None}
 
 
-def verdict(queued_rows: list[dict], cal: list[dict], pipe: dict,
-            loud_stops: list[str],
-            waiting: dict | None = None,
-            shorts: dict | None = None) -> tuple[str, str, list[str]]:
-    """(emoji, one-line verdict, reasons). The rules, in words:
+# PLAIN WORDS (owner, 2026-10-12, verbatim: "make sure the shorts lane email is
+# honest. make sure it tells me plainly what is honestly going on if something
+# needs work it should say it in the subject"). The W40 and W41 subjects read
+# "🔴 Stalled: 1 queued this week, 16 scheduled — 1 stop(s) needed a human this
+# week (mac)": a lane name in brackets, no mention of Shorts (which had fallen
+# from 14 a week to 1), and no action. She did not read them as a problem. So
+# every problem is now ONE plain sentence, the subject is the worst of them,
+# and a stop code never reaches the subject or the first line - each code's
+# `plain` sentence in loop/stop_policy.json does (test_every_stop_is_classified
+# fails a code without one).
+POLICY = ROOT / "loop" / "stop_policy.json"
+_PLAIN: dict | None = None
+PLAIN_FALLBACK = "a lane stopped on something it could not fix by itself"
 
-    🔴  a stop that needed a human; or an empty slot inside EMPTY_SLOT_RED_DAYS;
-        or finished work waiting more than WAIT_RED_DAYS; or the Mac silent
-        that long with work pending.
-    🟡  an item waiting on her (`owner_action`); or an empty slot inside the
-        calendar; or finished work waiting more than WAIT_YELLOW_DAYS; or
-        nothing queued this week while something is finished.
-    🟢  otherwise.
-    Shorts (shorts_flag): under config shorts_per_week for SHORTS_RED_WEEKS
-    consecutive weeks is 🔴, for the trailing week alone 🟡. Checked right
-    after the stop and owner checks, ahead of the calendar notes, because
-    Shorts carry most of the channel's views.
 
-    `loud_stops` is the STAGE NAME of every stop this week whose disposition
-    was needs_human — the ones that already opened their own GitHub issue.
-    THIS CHECK RUNS FIRST. Before 2026-09-22 it ran last, so the subject line
-    (`reasons_red[0]`, below) named whichever ROUTINE pipeline observation —
-    an empty slot two weeks out, work waiting on the Mac — happened to be
-    checked earlier in this function, even in a week that also had a real
-    named stop with its own open issue. That is exactly backwards: a
-    needs_human stop IS the "NEEDS YOU" content and the other reasons are
-    not, so the subject must name the lane that actually needs her, not
-    whichever lane this function happens to check first. (The 2026-09-22
-    audit: cloud-upload's NOTHING_SHELVED stop — its 8th consecutive day,
-    issue #105 — is exactly the kind of reason this used to be able to
-    bury behind an unrelated calendar note.)
+def plain(code: str | None) -> str:
+    """The owner-readable sentence for a stop code, from loop/stop_policy.json.
 
-    `waiting` is `loop/common.py:owner_actions()` — everything with
-    disposition `owner_action`, the "## 🔑 Needs your key or account" section below,
-    the ONE thing in this whole email actually addressed to her. It was
-    never passed into this function at all: a week with an owner_action
-    item and nothing else red or yellow rendered "🟢 Healthy" as BOTH the
-    headline and the subject line, while the body's very first section said
-    something needed her — the subject named no lane, or whichever
-    unrelated calendar/pipeline note this function happened to check next,
-    instead of the lane actually carrying the NEEDS-YOU content. Checked
-    second, right after `loud_stops` and before any routine reason, for the
-    same priority reason: it out-ranks a calendar note, never a genuine
-    needs_human failure. It stays 🟡, not 🔴 — her own instruction was that
-    an owner_action stop keeps its run green, and this only fixes the
-    SUBJECT, not that disposition.
+    Exact key first, then a `PREFIX*` wildcard family, across every section
+    (and held.codes). A code with no `plain` gets PLAIN_FALLBACK - never the
+    code itself.
     """
-    reasons_red, reasons_yellow = [], []
-    if loud_stops:
-        reasons_red.append(f"{len(loud_stops)} stop(s) needed a human this week "
-                           f"({', '.join(sorted(set(loud_stops)))})")
-    if waiting:
-        reasons_yellow.append(
-            f"{len(waiting)} item(s) — needs your key or account: "
-            + ", ".join(f"{rec.get('code')} ({stage})"
-                        for stage, rec in sorted(waiting.items())))
-    sflag, sreason = shorts_flag(shorts)
+    global _PLAIN
+    if _PLAIN is None:
+        _PLAIN = {}
+        try:
+            pol = json.loads(POLICY.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            pol = {}
+        secs = [pol.get(k) or {} for k in ("self_resolving", "owner_action", "needs_human")]
+        secs.append((pol.get("held") or {}).get("codes") or {})
+        for sec in secs:
+            for c, rule in sec.items():
+                if isinstance(rule, dict) and rule.get("plain") and c not in _PLAIN:
+                    _PLAIN[c] = rule["plain"]
+    code = code or ""
+    if code in _PLAIN:
+        return _PLAIN[code]
+    best = max((c for c in _PLAIN if c.endswith("*") and code.startswith(c[:-1])),
+               key=len, default=None)
+    return _PLAIN[best] if best else PLAIN_FALLBACK
+
+
+# Stops the Mac raises (or the cloud raises about the Mac). Their fix is on the
+# Mac, so the subject's action says so.
+MAC_STAGES = {"mac", "mac-batch", "backfill", "render-gate", "batch"}
+MAC_CODES = {"MAC_NOT_SHIPPING", "PULL_FAILED", "REBASE_IN_PROGRESS",
+             "RENDER_GATE_EMPTY", "RENDER_HELD", "SHORTS_UNVERIFIED",
+             "SHORTS_SHELVED_BUT_UNVERIFIED", "HARVESTER_TOOLING_ABSENT",
+             "DELEGATED_HARVEST_FAILING", "DELEGATED_HARVEST_STALE"}
+# Self-resolving codes that ARE a supply shortfall when output is under target.
+# W39-W41 filed NOTHING_SHELVED under "page nobody" three weeks running while
+# Shorts and episodes fell; when a shortfall exists these join its problem line.
+SHORTS_SUPPLY = {"NO_SHORTS_SHELVED", "SHORTS_SHELF_DRY", "SHORTS_INVENTORY_EXHAUSTED"}
+EPISODE_SUPPLY = {"NOTHING_SHELVED", "NOTHING_RENDERED", "RUNWAY_WARN"}
+
+
+def _stop(s) -> dict:
+    return {"stage": s, "code": None} if isinstance(s, str) else dict(s)
+
+
+def action_for(stop: dict) -> str:
+    """What she does about a needs-you stop, in six words or fewer."""
+    code, stage = stop.get("code") or "", stop.get("stage") or ""
+    if stop.get("disposition") == "owner_action" or stop.get("_owner"):
+        if code.startswith("OAUTH") or code in {"CAPTIONS_SCOPE_MISSING", "WRONG_CHANNEL"}:
+            return "sign in to YouTube again"
+        if code == "UPLOADS_LOCKED_PRIVATE":
+            return "clear the lock in YouTube Studio"
+        return "add the missing key or login"
+    if stage in MAC_STAGES or code in MAC_CODES:
+        return "check the Mac's nightly batch"
+    return "read the stop issue on GitHub"
+
+
+def _cap(s: str) -> str:
+    return s[:1].upper() + s[1:]
+
+
+def _repeat(s: dict) -> str:
+    n = int(s.get("consecutive") or 1)
+    return f" ({n} runs in a row)" if n > 1 else ""
+
+
+def shorts_problem(shorts: dict | None) -> tuple[str | None, str | None]:
+    """(flag, one plain sentence) for the Shorts cadence. Pure."""
+    flag, _ = shorts_flag(shorts)
+    if not flag:
+        return None, None
+    want = int(shorts["target_per_week"])
+    now_n = int(shorts.get("published_7d") or 0)
+    prev_n = int(shorts.get("published_prev_7d") or 0)
+    if flag == "red":
+        head = ("Shorts stopped" if now_n * 4 < want else
+                f"Shorts under target {SHORTS_RED_WEEKS} weeks running")
+        text = f"{head}: {now_n} of {want} published this week, {prev_n} of {want} the week before"
+    else:
+        text = f"Shorts under target: {now_n} of {want} published this week"
+    if shorts.get("shelf") is not None:
+        text += ("; none waiting on the shelf" if not shorts.get("shelf") else
+                 f"; shelf {shorts['shelf']} ({shorts.get('shelf_weeks')} weeks)")
+    return flag, text
+
+
+def verdict(queued_rows: list[dict], cal: list[dict], pipe: dict,
+            loud_stops: list,
+            waiting: dict | None = None,
+            shorts: dict | None = None,
+            quiet_stops: list[dict] | None = None,
+            episodes_target: int | None = None,
+            breaker_state: dict | None = None) -> tuple[str, str, list[str]]:
+    """(emoji, subject sentence, every problem line worst-first). Pure.
+
+    Each problem is one plain sentence naming WHAT (Shorts, episodes, the Mac,
+    uploads) with numbers as "X of Y". Worst first:
+
+      🔴 publishing halted by the circuit breaker (`breaker_state` not
+         closed) - nothing airs at all until it resets;
+      🔴 Shorts under target two weeks running (shorts_flag red) - Shorts carry
+         most of the channel's views, and W40-W41 hid exactly this;
+      🔴 a stop that needed a human (`loud_stops`, needs_human) - each in its
+         `plain` words; it out-ranks every routine pipeline note (2026-09-22:
+         an unrelated calendar note used to lead over a real stop);
+      🔴 an empty slot inside EMPTY_SLOT_RED_DAYS, finished work waiting more
+         than WAIT_RED_DAYS, the Mac silent that long with work pending;
+      🟡 an item waiting on her key or account (`waiting`, owner_action) - it
+         out-ranks a routine note, never a needs_human failure;
+      🟡 Shorts or episodes under target this week, an empty slot in the
+         calendar, finished work waiting more than WAIT_YELLOW_DAYS, nothing
+         queued while work waits, renders held by the quality check.
+
+    The subject is the worst sentence, then:
+      "— needs you: <action in ≤6 words>" ONLY when a needs_human or
+         owner_action stop exists (the action is that stop's);
+      "— not fixed yet" for red with no such stop; "— watching" for yellow.
+    🟢 names the counts: "All lanes ran: X of Y episodes queued, N scheduled,
+    Shorts A of B".
+
+    `quiet_stops` are the week's self_resolving stops. They never reach the
+    subject on their own; but when Shorts or episodes are under target the
+    supply codes among them (SHORTS_SUPPLY, EPISODE_SUPPLY) are listed as
+    "Still happening: …" lines right under the shortfall, because a stop that "cleared itself" for three weeks
+    while output fell did not clear.
+    """
+    loud = [_stop(s) for s in loud_stops or []]
+    owners = [{"stage": st_, "code": rec.get("code"), "disposition": "owner_action",
+               "consecutive": rec.get("consecutive")}
+              for st_, rec in sorted((waiting or {}).items())]
+    quiet = [_stop(s) for s in quiet_stops or []]
+    red: list[tuple[str, str | None]] = []       # (plain sentence, action or None)
+    yellow: list[tuple[str, str | None]] = []
+
+    if breaker_state and breaker_state.get("state") not in (None, "closed"):
+        when = _when(breaker_state.get("tripped_at"))
+        cause = {"validator": "a quality check failed"}.get(
+            breaker_state.get("cause"), "a safety check failed")
+        red.append((f"Publishing is halted: the safety switch tripped"
+                    f"{f' {when:%a %d %b}' if when else ''} because {cause}", None))
+    sflag, stext = shorts_problem(shorts)
+    # A supply stop that kept "clearing itself" while output fell is listed
+    # right under the shortfall it explains, as its own line - never in the
+    # subject, never as "cleared on their own".
+    still = lambda codes: [(f"Still happening: {plain(s.get('code'))}{_repeat(s)}", None)  # noqa: E731
+                           for s in quiet if s.get("code") in codes]
     if sflag == "red":
-        reasons_red.append(sreason)
-    elif sflag == "yellow":
-        reasons_yellow.append(sreason)
+        red.append((stext, None))
+        red += still(SHORTS_SUPPLY)
+    for s in loud:
+        red.append((f"{_cap(plain(s.get('code')))}{_repeat(s)}", action_for(s)))
     empty = [c for c in cal if not c["slug"]]
     soon = [c for c in empty if c["days_away"] <= EMPTY_SLOT_RED_DAYS]
     if soon:
-        reasons_red.append(f"{len(soon)} empty slot(s) inside {EMPTY_SLOT_RED_DAYS} days "
-                           f"(first {soon[0]['date']:%a %d %b}, {soon[0]['domain']})")
-    elif empty:
-        reasons_yellow.append(f"{len(empty)} empty slot(s) inside {CALENDAR_WEEKS} weeks "
-                              f"(first {empty[0]['date']:%a %d %b}, {empty[0]['domain']})")
+        red.append((f"Episode calendar has gaps: {len(soon)} empty day(s) in the next "
+                    f"two weeks, first {soon[0]['date']:%a %d %b} ({soon[0]['domain']})", None))
     wd = pipe.get("waiting_days")
-    if pipe.get("finished_waiting"):
-        if wd is not None and wd > WAIT_RED_DAYS:
-            reasons_red.append(f"{pipe['finished_waiting']} finished episode(s) waiting {wd} days on the Mac")
-        elif wd is not None and wd > WAIT_YELLOW_DAYS:
-            reasons_yellow.append(f"{pipe['finished_waiting']} finished episode(s) waiting {wd} days on the Mac")
-        elif not queued_rows:
-            reasons_yellow.append(f"nothing queued this week while {pipe['finished_waiting']} finished episode(s) wait")
+    n_wait = pipe.get("finished_waiting") or 0
+    if n_wait and wd is not None and wd > WAIT_RED_DAYS:
+        red.append((f"Uploads stuck: {n_wait} finished episode(s) waiting {wd} days on the Mac", None))
     ms = pipe.get("mac_silent_days")
-    if pipe.get("finished_waiting") and ms is not None and ms > WAIT_RED_DAYS:
-        reasons_red.append(f"the Mac has not reported for {ms} days with work pending")
-    if pipe.get("held"):
-        reasons_yellow.append(f"held by the render gate: {', '.join(pipe['held'])}")
+    if n_wait and ms is not None and ms > WAIT_RED_DAYS:
+        red.append((f"The Mac has not reported for {ms} days with {n_wait} episode(s) waiting", None))
 
+    for s in owners:
+        yellow.append((_cap(plain(s.get("code"))), action_for(s)))
+    if sflag == "yellow":
+        yellow.append((stext, None))
+        yellow += still(SHORTS_SUPPLY)
     n_q, n_s = len(queued_rows), pipe.get("scheduled", 0)
-    if reasons_red:
-        return "🔴", f"Stalled: {n_q} queued this week, {n_s} scheduled — {reasons_red[0]}", reasons_red + reasons_yellow
-    if reasons_yellow:
-        return "🟡", f"Watch: {n_q} queued this week, {n_s} scheduled — {reasons_yellow[0]}", reasons_yellow
-    return "🟢", f"Healthy: {n_q} queued this week, {n_s} scheduled, every slot filled for {CALENDAR_WEEKS} weeks", []
+    if episodes_target and n_q < episodes_target:
+        yellow.append((f"Episodes under target: {n_q} of {episodes_target} uploaded "
+                       f"this week, {n_s} scheduled ahead", None))
+        yellow += still(EPISODE_SUPPLY)
+    if empty and not soon:
+        yellow.append((f"Episode calendar has gaps: {len(empty)} empty day(s) in the next "
+                       f"{CALENDAR_WEEKS} weeks, first {empty[0]['date']:%a %d %b} ({empty[0]['domain']})", None))
+    if n_wait and wd is not None and WAIT_YELLOW_DAYS < wd <= WAIT_RED_DAYS:
+        yellow.append((f"Uploads slow: {n_wait} finished episode(s) waiting {wd} days on the Mac", None))
+    elif n_wait and not queued_rows and not (wd is not None and wd > WAIT_RED_DAYS):
+        yellow.append((f"No episode uploaded this week while {n_wait} finished episode(s) wait on the Mac", None))
+    if pipe.get("held"):
+        yellow.append((f"Held back by the Mac's quality check: {', '.join(pipe['held'])}", None))
+
+    needs = loud + owners
+    problems = red + yellow
+    if problems:
+        mark = "🔴" if red else "🟡"
+        tail = (f"needs you: {action_for(needs[0])}" if needs else
+                "not fixed yet" if red else "watching")
+        reasons = [t + (f" — {a}" if a else "") for t, a in problems]
+        return mark, f"{problems[0][0]} — {tail}", reasons
+    shorts_part = ""
+    if shorts and shorts.get("target_per_week"):
+        shorts_part = f", Shorts {int(shorts.get('published_7d') or 0)} of {int(shorts['target_per_week'])}"
+    eps = f"{n_q} of {episodes_target}" if episodes_target else f"{n_q}"
+    return "🟢", f"All lanes ran: {eps} episodes queued, {n_s} scheduled{shorts_part}", []
 
 
 def stops_in(week: str) -> list[dict]:
@@ -333,6 +459,7 @@ def stops_in(week: str) -> list[dict]:
             "why": blob.get("disposition_why") or "",
             "unblock": blob.get("unblock") or "",
             "disposition": blob.get("disposition") or "needs_human",
+            "consecutive": blob.get("consecutive") or 1,
             "self_resolving": blob.get("disposition") == "self_resolving",
         })
     return out
@@ -391,7 +518,7 @@ def _mac_stop(message: str) -> dict:
                    "finished work has waited longer than mac.unshipped_days.",
             "unblock": "On the Mac: ~/Library/Logs/how-we-know/backfill.log names the "
                        "stop; bin/loop-backfill-daily.sh re-runs it by hand.",
-            "disposition": "needs_human", "self_resolving": False}
+            "disposition": "needs_human", "consecutive": 1, "self_resolving": False}
 
 
 def render(week: str, now: dt.datetime) -> tuple[str, dict]:
@@ -414,7 +541,8 @@ def render(week: str, now: dt.datetime) -> tuple[str, dict]:
     queued_rows = queued_this_week(led, week_ago, now)
     cal = calendar(led, cfg, now)
     pipe = pipeline(led, depth, hb, now)
-    loud_stages = sorted({s["stage"] for s in stops if s["disposition"] == "needs_human"})
+    loud_stops = [s for s in stops if s["disposition"] == "needs_human"]
+    quiet_stops = [s for s in stops if s["disposition"] == "self_resolving"]
     # Computed here, not where it used to be (just below, right before the
     # "## Waiting on you" section) — verdict() needs it too, so the subject
     # line can name it. See verdict()'s own docstring for the incident.
@@ -433,8 +561,8 @@ def render(week: str, now: dt.datetime) -> tuple[str, dict]:
           if sl is not None else None)
     if sc is not None:
         cv["shorts_cadence"] = sc
-    mark, headline, reasons = verdict(queued_rows, cal, pipe, loud_stages,
-                                      waiting, sc)
+    mark, headline, reasons = verdict(queued_rows, cal, pipe, loud_stops,
+                                      waiting, sc, quiet_stops, per_week, br)
 
     def dom(slug: str) -> str:
         return by_slug.get(slug, "—")
@@ -467,7 +595,7 @@ def render(week: str, now: dt.datetime) -> tuple[str, dict]:
               "went red for any of them — that is on purpose.", "",
               "| Stage | What is blocked | What clears it |", "|---|---|---|"]
         for stage, rec in sorted(waiting.items()):
-            L.append(f"| {stage} | `{rec.get('code')}` — "
+            L.append(f"| {stage} | {plain(rec.get('code'))} — "
                      f"{(rec.get('message') or '')[:140]} "
                      f"| {(rec.get('unblock') or '')[:220]} |")
         L += ["", "Each has been in this state for "
@@ -572,21 +700,32 @@ def render(week: str, now: dt.datetime) -> tuple[str, dict]:
         if loud:
             L += [f"**{len(loud)} stop(s) needed a human** and each opened its "
                   f"own issue when it happened:", "",
-                  "| Stage | Code | What it said |", "|---|---|---|"]
+                  "| Stage | What happened | What it said |", "|---|---|---|"]
             for s in loud:
-                L.append(f"| {s['stage']} | `{s['code']}` "
+                L.append(f"| {s['stage']} | {plain(s['code'])} "
                          f"| {s['message'][:110]} |")
             L.append("")
         if waited:
             L += [f"{len(waited)} stop(s) are needing YOUR key or account and are listed at "
                   f"the top of this email: "
-                  + ", ".join(f"`{s['code']}` ({s['stage']})" for s in waited)
+                  + "; ".join(plain(s['code']) for s in waited)
                   + ". None of them failed a run.", ""]
-        if quiet:
-            L += [f"{len(quiet)} self-resolving stop(s) — a lane halting "
-                  f"deliberately in a state that clears itself. These are "
-                  f"normal operation and page nobody: "
-                  + ", ".join(f"`{s['code']}` ({s['stage']})" for s in quiet)
+        # NEVER A FOOTNOTE FOR A SHORTFALL. This line used to read "These
+        # are normal operation and page nobody", and W39-W41 filed
+        # NOTHING_SHELVED and NO_SHORTS_SHELVED here while Shorts fell from
+        # 14 a week to 1. When output is under target, the supply stops are
+        # already on the shortfall's problem line at the top (verdict()), so
+        # they are left out of "cleared on their own" - they did not clear.
+        # Same two conditions verdict() uses to absorb them.
+        hide = set()
+        if shorts_flag(sc)[0]:
+            hide |= SHORTS_SUPPLY
+        if per_week and len(queued_rows) < per_week:
+            hide |= EPISODE_SUPPLY
+        cleared = [s for s in quiet if s["code"] not in hide]
+        if cleared:
+            L += ["Cleared on their own this week: "
+                  + "; ".join(sorted({plain(s['code']) for s in cleared}))
                   + ".", ""]
 
     near = (gates.get("gates") or [{}])[0]
@@ -686,10 +825,15 @@ def digest_subject(verdict_text: str, week: str, max_len: int = 180) -> str:
 
     Fixed by keeping the FULL verdict — mark, counts, AND the reason —
     capped only so one runaway reason cannot produce an unreadable subject.
+
+    2026-10-12: the "Weekly digest — " prefix is gone so the inbox shows the
+    problem first ("🔴 Shorts stopped: 1 of 9 … — needs you: … — 2026-W42");
+    verdict() now writes that sentence in plain words. The workflow finds last
+    week's issue by label and week instead of the prefix.
     """
     if len(verdict_text) > max_len:
         verdict_text = verdict_text[:max_len - 3] + "..."
-    return f"Weekly digest — {verdict_text} — {week}"
+    return f"{verdict_text} — {week}"
 
 
 if __name__ == "__main__":
