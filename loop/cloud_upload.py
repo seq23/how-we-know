@@ -49,6 +49,7 @@ sys.path.insert(0, str(LOOP))
 import cadence                               # noqa: E402
 import backfill                                  # noqa: E402
 import batch_queue                               # noqa: E402
+import breaker                                   # noqa: E402
 import captions_build                            # noqa: E402
 import captions_lane                             # noqa: E402
 import ledger                                    # noqa: E402
@@ -451,6 +452,16 @@ def handoff_rows() -> list[dict] | None:
 
 
 def run(limit: int = 4, dry_run: bool = False) -> int:
+    # THE CIRCUIT BREAKER (2026-10-12). This lane is one of the two that
+    # actually put episodes on the channel, and it never asked the breaker:
+    # "Publishing is halted" in the digest was true of fri-publish and false of
+    # the 09:00 upload. Same call, same place as loop/publish.py: before the
+    # lane's own Stage, so a live trip ends in the named BREAKER_TRIPPED stop
+    # (exit 3) and nothing is pulled, uploaded or scheduled. Every cause halts
+    # it, retention included - the breaker has no per-cause exemption.
+    # Already-scheduled YouTube items are left alone. Pinned by
+    # loop/tests/test_cloud_lanes_honour_breaker.py.
+    breaker.guard(LANE)
     cfg = config()
     # THROUGH cadence.effective(). See the note in loop/backfill.py:library():
     # this lane assigns the publish slot, so it must see the same cadence the

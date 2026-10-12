@@ -1,6 +1,6 @@
 """The circuit breaker.
 
-One flag halts **publishing** — upload and the public flip — without tearing
+One flag halts **publishing** — every upload and the public flip — without tearing
 down the rest of the pipeline. Mining, drafting, validating, voicing and
 rendering all continue while it is open, so the week's work still accumulates
 and nothing has to be rebuilt when the breaker is reset.
@@ -15,16 +15,30 @@ Usage
     python loop/breaker.py trip  --cause validator --detail "test_directive_truth failed"
     python loop/breaker.py reset --note "fixed the directive in script 07"
     python loop/breaker.py guard --stage thu-upload      # exit 3 if tripped
+
+The lanes that call guard() are GUARDED below: every one that uploads to
+YouTube or flips a video public, plus the old weekly render script.
+loop/tests/test_cloud_lanes_honour_breaker.py proves each file really calls
+guard() with that stage name and that RUNBOOK.md "The circuit breaker" lists
+every one. Every cause halts every one of them: the breaker has no per-cause exemption,
+so a retention trip holds Shorts as well as episodes. Already-scheduled
+YouTube items are left alone; nothing is un-scheduled.
 """
 from __future__ import annotations
 
 import argparse
+import os
 import sys
+from pathlib import Path
 
 from common import (STATE, EXIT_OK, EXIT_STOP, Stage, now, read_json,
                     write_json, summary)
 
-FLAG = STATE / "breaker.json"
+# Overridable so the test suite never reads or writes the loop's own flag
+# (loop/tests/run_all.py points it at scratch, as it does LOOP_STOPS_DIR):
+# guard() writes `reported_by` into it, and six lanes now call guard(), so a
+# lane test run against a live trip would both stop and dirty committed state.
+FLAG = Path(os.environ.get("LOOP_BREAKER_FLAG") or STATE / "breaker.json")
 
 CAUSES = {
     "strike": "A copyright or community-guidelines strike on the channel.",
@@ -49,6 +63,18 @@ CAUSES = {
 # are deliberately absent: a strike is cleared by YouTube and a hand-thrown
 # breaker is a decision, and re-testing neither is something code can do.
 AUTO_RESETTABLE = ("validator", "retention", "domain")
+
+# stage name -> the file whose entry point calls guard(stage). One list; the
+# test reads it against the code and the RUNBOOK, so it cannot drift.
+GUARDED = {
+    "cloud-upload": "loop/cloud_upload.py",   # daily 09:00 CT, Actions
+    "shorts-cloud": "loop/shorts_cloud.py",   # daily 18:00 CT, Actions
+    "fri-publish": "loop/publish.py",         # Fri 08:00 CT, Actions
+    "thu-upload": "loop/upload.py",           # Mac, bin/loop-thursday.sh
+    "backfill": "loop/backfill.py",           # Mac, bin/loop-backfill-daily.sh
+    "shorts": "loop/shorts_lane.py",          # Mac, bin/loop-shorts-daily.sh
+    "tue-render": "bin/loop-tuesday.sh",      # Mac, old weekly render
+}
 
 CLOSED = {"state": "closed", "tripped_at": None, "cause": None,
           "detail": None, "history": []}
@@ -143,9 +169,9 @@ def autoreset() -> dict | None:
 
     THE DEFECT THIS CLOSES. The breaker had a trip path and no automatic reset
     path at all, so a validator failure fixed in the very next commit left
-    publishing halted until someone typed `loop/breaker.py reset`. Four lanes
-    guard on it, so one stale flag presented as four red lanes every day and
-    read as four separate problems.
+    publishing halted until someone typed `loop/breaker.py reset`. Every
+    publishing lane guards on it, so one stale flag presented as several red
+    lanes every day and read as several separate problems.
     """
     b = load()
     if b.get("state") != "tripped":
@@ -224,7 +250,7 @@ def guard(stage_name: str) -> None:
     2. IF IT IS REALLY TRIPPED, STOP — every guarded lane, exactly as before.
        Nothing publishes against a live breaker.
 
-    3. REPORT IT ONCE. Four lanes call this. Before, one flag produced four red
+    3. REPORT IT ONCE. Several lanes call this. Before, one flag produced four red
        jobs and four issue comments a day, which reads as four problems and
        triages as four. The FIRST stage to stop on a given trip owns the alarm
        and goes red; the others take a stop that names it and stay green. They
@@ -259,7 +285,7 @@ def guard(stage_name: str) -> None:
             f"publishing is halted: {b.get('cause')} — {b.get('detail')}"
             + ("" if first else
                f". This is the SAME trip the '{owner.get('stage')}' stage "
-               f"already raised; one flag halts four lanes and it is one "
+               f"already raised; one flag halts every publishing lane and it is one "
                f"problem, not four."),
             detail={**b, "recheck": (healed or {}).get("why")},
             unblock=("This clears itself: the breaker is re-tested at the top "
