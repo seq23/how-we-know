@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12T16:42:45Z",
+  "generated": "2026-10-12T17:08:43Z",
   "rule": "one POV per video, no reuse, owner's own words only",
   "assignments": [
     {
@@ -382,6 +382,20 @@
       "tier": "transferable",
       "source": "matched by author",
       "line": "Space is fascinating, but Earth bothers me more. We're already here and still don't understand huge parts of it."
+    },
+    {
+      "video": "why-deep-sea-creatures-are-creepers",
+      "pov_id": "pov-002",
+      "tier": "specific",
+      "source": "matched by author",
+      "line": "It feels quiet, but not peaceful quiet. More like being somewhere you were never designed to be."
+    },
+    {
+      "video": "how-deep-can-whales-dive",
+      "pov_id": "pov-085",
+      "tier": "transferable",
+      "source": "matched by author",
+      "line": "It doesn't bother me that instruments extend what we can know. Human senses are extremely limited. That's the point of technology."
     }
   ]
 }
