@@ -71,6 +71,11 @@ OTHER_CHANNEL = ["how microchips are made veritasium",
 DISTINCT = ["how deep mariana trench", "what lives in mariana trench",
             "how are microchips designed", "does damascus steel rust",
             "is aluminum stronger than steel"]
+# The loop MAKES these over time (2026-10-12, run 38278464493 authored "how are
+# microchips designed"), and a made question is refused - correctly. 1a-1c test
+# that a question distinct from what is made survives, so the anchors used
+# there are the real made list WITHOUT the DISTINCT questions' own keys; the
+# rephrasings (CHIP_SAME, DEEP_SAME) are still screened against the full list.
 EP08 = ("08-what-creatures-live-in-the-deep-sea",
         "what creatures live in the deep sea")
 CHIPS = ("how-are-microchips-made", "how are microchips made")
@@ -93,7 +98,10 @@ def screen(queries: list[str], seeds: str, made: set,
     kw = {}
     if "made_questions" in inspect.signature(pod._screen).parameters:
         # The real made-question list: the ledger plus every scripts/*.md H1.
-        kw["made_questions"] = (pod.made_question_keys() if anchors else [])
+        import topic_identity as _ti                       # noqa: PLC0415
+        own = {_ti.question_key(q) for q in DISTINCT}
+        kw["made_questions"] = ([k for k in pod.made_question_keys()
+                                 if k[1] not in own] if anchors else [])
     _, killed = pod._screen(rows, seed_tokens, 50, seen, picked,
                             made if anchors else set(), None, **kw)
     return picked, killed
@@ -394,10 +402,29 @@ for q in cands:
         fails.append(f"miner: candidate {q!r} repeats an episode already made")
     if T is not None and T.is_vague(T.question_key(q)):
         fails.append(f"miner: candidate {q!r} names no subject")
+# REWRITTEN 2026-10-12 (run 38278464493). This pinned "the read-only look
+# clears the floor", a fact about the LIVE catalogue: the Monday lane made
+# three more deep-sea episodes and the free mine (network on) now also finds
+# 3, so DOMAIN_QUEUE_THIN is the true state, not a defect. The pin is now the
+# contract the docstring of candidates() states, and it is stricter: either
+# the floor is cleared, or EVERY read-only rung demonstrably ran (no early
+# exit hiding candidates) and still came up short - the case thin_stop()
+# names, checked just below. Zero candidates read-only is still a failure.
 examined += 1
-if len(cands) < batch_queue.MIN_UNWRITTEN_TOPICS:
-    fails.append(f"miner: deep sea yields {len(cands)} candidate(s) read-only, "
-                 f"under the floor of {batch_queue.MIN_UNWRITTEN_TOPICS}")
+floor = batch_queue.MIN_UNWRITTEN_TOPICS
+if not cands:
+    fails.append("miner: deep sea yields ZERO candidates read-only")
+elif len(cands) < floor:
+    ran = [ln.split(":")[0] for ln in log]
+    for rung in ("broad mine, broad seeds", "deep-mine cache, broad seeds",
+                 "broad mine, dedicated seeds",
+                 "deep-mine cache, dedicated seeds",
+                 "fresh autocomplete mine"):
+        examined += 1
+        if rung not in ran:
+            fails.append(f"miner: {len(cands)} candidate(s), under the floor "
+                         f"of {floor}, yet rung {rung!r} never ran - the "
+                         f"ladder stopped before exhausting its sources: {log}")
 # The ladder stops early when a rung already has enough, and names the thin
 # case when every rung is spent.
 examined += 1

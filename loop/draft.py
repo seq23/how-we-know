@@ -288,6 +288,24 @@ def rebuild_runway_if_short(st, cfg: dict, per_week: int, used_slugs: list[str],
                        for n, d in dark_by.items())))
 
 
+def carried_draft(t: dict) -> bool:
+    """A publish-queue slot whose model draft already sits in loop/drafts/
+    from an EARLIER run - authored, then refused by a validator, so never
+    promoted. This run does not re-author it (the file exists), so it is not
+    `generated` this week; but it is still a loop-authored draft, and once it
+    passes validation it must reach scripts/ like any other.
+
+    2026-10-12, run 38278464493: three drafts authored by run 38272528658
+    (stopped by V21) were queued and validated green, then left in
+    loop/drafts/, which bin/batch-session.sh never narrates - queued on paper
+    only.
+    """
+    script = str(t.get("script") or "")
+    return bool(t.get("needs_authoring") and not t.get("generated")
+                and script.startswith("loop/drafts/")
+                and (ROOT / script).exists())
+
+
 def promote_to_scripts(st, item: dict) -> None:
     """A validated, generated script for a PUBLISH-QUEUE topic goes to
     scripts/<slug>.md, the one path bin/batch-session.sh narrates from.
@@ -486,6 +504,7 @@ def main() -> None:
                 "question": t["question"],
                 "script": t["script"],
                 "generated": bool(t.get("generated")),
+                "carried_draft": carried_draft(t),
                 "author_cost_usd": t.get("author_cost_usd"),
                 "author_model": t.get("author_model"),
                 "pov_id": t.get("pov_id"),
@@ -533,7 +552,7 @@ def main() -> None:
         # passing validator run, and the taxonomy ceiling still caps it.
         if passed:
             for it in items:
-                if it.get("generated"):
+                if it.get("generated") or it.get("carried_draft"):
                     promote_to_scripts(st, it)
                     ev = cadence.record_authoring_evidence(
                         it["slug"], it["script"], report)
