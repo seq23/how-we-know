@@ -1109,3 +1109,7 @@ Guard: loop/tests/test_shorts_deep_sea_all_cuts.py (26 checks).
   and broken directives, not length. Details: docs/research/zero-dollar-model-routing.md.
 - **Monday authoring budget 210 min, ceiling 230** (owner, 12 Oct: "make it much longer so this doesn't
   happen again"); ends before the 14:00 UTC upload lane joins the loop-state queue.
+- **Monday draft lane moves to 05:00 UTC** (owner, 12 Oct: "do the loop during that window each day so we
+  can get free usage"): Gemini 3.5 Flash was 503 "overloaded" at 10:03/10:13 UTC; the quiet window is
+  ~02:00–06:00 UTC. Budget re-derived to 480 min, ceiling 500, before the 14:00 UTC upload lane. The
+  ledger's timestamps decide whether it helped.
