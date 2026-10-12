@@ -267,17 +267,23 @@ QUIET_OTHER = {"stage": "localize", "code": "LOCALIZATIONS_UP_TO_DATE",
                "disposition": "self_resolving", "consecutive": 1}
 seen_lines: list[str] = []
 
-# (a) Shorts shortfall + a needs_human Mac stop -> 🔴, Shorts first with X of Y,
-#     ends with what she does.
+# (a) Shorts shortfall + a needs_human Mac stop -> 🔴, Shorts first with X of Y.
+#     The Shorts line has no action of its own, so the subject must NOT borrow
+#     the Mac stop's ("needs you: check the Mac's nightly batch" under a Shorts
+#     lead is the W42 defect's shape): it says "not fixed yet" and counts the
+#     Mac stop as "+1 more needs you"; the body carries the Mac line WITH its
+#     own action.
 examined += 1
 a_mark, a_head, a_reasons = digest.verdict(q, cal, {**pipe_ok, "scheduled": 28}, [MAC_STOP],
                                            None, two, [QUIET_SUPPLY, QUIET_OTHER], 2)
 seen_lines += [a_head] + a_reasons
 if (a_mark != "🔴" or not a_head.startswith("Shorts") or "1 of 9" not in a_head
-        or not a_head.endswith("— needs you: check the Mac's nightly batch")):
+        or not a_head.endswith("— not fixed yet — +1 more needs you")
+        or "check the Mac" in a_head):
     fails.append(f"(a) Shorts shortfall with a Mac stop: {a_mark} {a_head}")
-if not any(r.startswith(digest.plain("MAC_NOT_SHIPPING")[:1].upper()) and "Mac" in r for r in a_reasons[1:]):
-    fails.append(f"(a) the Mac stop is not listed under the subject line: {a_reasons}")
+if not any(r.startswith(digest.plain("MAC_NOT_SHIPPING")[:1].upper()) and "Mac" in r
+           and r.endswith("— check the Mac's nightly batch") for r in a_reasons[1:]):
+    fails.append(f"(a) the Mac stop is not listed, with its own action, under the subject line: {a_reasons}")
 subj = digest.digest_subject(f"{a_mark} {a_head}", "2026-W41")
 seen_lines.append(subj)
 if not subj.startswith("🔴 Shorts") or not subj.endswith(" — 2026-W41"):
@@ -320,6 +326,44 @@ k_mark, k_head, k_reasons = digest.verdict(q, cal, {**pipe_ok, "scheduled": 28},
 seen_lines += [k_head] + k_reasons
 if k_mark != "🔴" or not k_head.startswith("Publishing is halted") or "Mon 12 Oct" not in k_head:
     fails.append(f"a tripped breaker must lead a red subject in plain words: {k_mark} {k_head}")
+# THE W42 SUBJECT (2026-10-12), negative proof: the breaker led, a Mac stop was
+# also present, and the subject read "Publishing is halted … — needs you: check
+# the Mac's nightly batch" - an action that does not clear the switch. The
+# subject's action must be the breaker's own, in stop_policy.json's words, and
+# the Mac stop is counted, not named; the body lists each with its own action.
+examined += 1
+import json as _json                                               # noqa: E402
+_pol = _json.load(open(os.path.join(LOOP, "stop_policy.json")))
+BREAKER_ACTION = (_pol["needs_human"]["BREAKER_TRIPPED"] or {}).get("action")
+if not BREAKER_ACTION:
+    fails.append("stop_policy.json: BREAKER_TRIPPED has no `action` for the subject to use")
+elif (not k_head.endswith(f"— needs you: {BREAKER_ACTION} — +1 more needs you")
+        or "check the Mac" in k_head):
+    fails.append(f"(W42) the breaker leads but the subject's action is not the "
+                 f"breaker's own plus '+1 more needs you': {k_head}")
+if not (any(r.startswith("Publishing is halted") and r.endswith(f"— {BREAKER_ACTION}")
+            for r in k_reasons)
+        and any("Mac" in r and r.endswith("— check the Mac's nightly batch") for r in k_reasons[1:])):
+    fails.append(f"(W42) the body must list the breaker and the Mac stop each with its "
+                 f"own action: {k_reasons}")
+# breaker alone: its action, no "+N more".
+examined += 1
+k1_mark, k1_head, k1_reasons = digest.verdict(q, cal, {**pipe_ok, "scheduled": 28}, [],
+                                              None, sc, [], 2,
+                                              {"state": "tripped", "cause": "validator",
+                                               "tripped_at": "2026-10-12T15:53:50+00:00"})
+seen_lines += [k1_head] + k1_reasons
+if k1_mark != "🔴" or not k1_head.endswith(f"— needs you: {BREAKER_ACTION}") or "more needs you" in k1_head:
+    fails.append(f"(W42) a breaker alone must end with its own action and no count: {k1_head}")
+# a retention trip is cleared by the weekly measurement: no action of hers.
+examined += 1
+_, k2_head, _ = digest.verdict(q, cal, {**pipe_ok, "scheduled": 28}, [MAC_STOP],
+                               None, sc, [], 2,
+                               {"state": "tripped", "cause": "retention",
+                                "tripped_at": "2026-10-12T15:53:50+00:00"})
+seen_lines.append(k2_head)
+if not k2_head.endswith("— not fixed yet — +1 more needs you") or "check the Mac" in k2_head:
+    fails.append(f"(W42) a retention trip must not borrow another stop's action: {k2_head}")
 
 # (e) a self-resolving stop never reaches the subject when a shortfall exists.
 examined += 1

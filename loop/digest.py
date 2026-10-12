@@ -276,6 +276,32 @@ SHORTS_SUPPLY = {"NO_SHORTS_SHELVED", "SHORTS_SHELF_DRY", "SHORTS_INVENTORY_EXHA
 EPISODE_SUPPLY = {"NOTHING_SHELVED", "NOTHING_RENDERED", "RUNWAY_WARN"}
 
 
+def policy_action(code: str) -> str | None:
+    """The `action` text loop/stop_policy.json gives a needs_human code, if any."""
+    try:
+        pol = json.loads(POLICY.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return None
+    rule = (pol.get("needs_human") or {}).get(code)
+    return rule.get("action") if isinstance(rule, dict) else None
+
+
+def breaker_action(breaker_state: dict) -> str | None:
+    """What clears a tripped safety switch, by its cause. Pure but for the policy.
+
+    A validator trip closes itself once every quality check passes, so the
+    action is the policy's own words for BREAKER_TRIPPED. A manual trip or a
+    strike has a stop issue; a retention or domain trip is cleared by the next
+    weekly measurement, so it has no action of hers (None - "not fixed yet").
+    """
+    cause = breaker_state.get("cause")
+    if cause == "validator":
+        return policy_action("BREAKER_TRIPPED") or "fix the failing quality check"
+    if cause in ("retention", "domain"):
+        return None
+    return "read the stop issue on GitHub"
+
+
 def _stop(s) -> dict:
     return {"stage": s, "code": None} if isinstance(s, str) else dict(s)
 
@@ -351,8 +377,9 @@ def verdict(queued_rows: list[dict], cal: list[dict], pipe: dict,
          queued while work waits, renders held by the quality check.
 
     The subject is the worst sentence, then:
-      "— needs you: <action in ≤6 words>" ONLY when a needs_human or
-         owner_action stop exists (the action is that stop's);
+      "— needs you: <action in ≤6 words>" ONLY when the LEAD problem has an
+         action of hers (its own - never another problem's), then
+         "— +N more needs you" counting every other problem with an action;
       "— not fixed yet" for red with no such stop; "— watching" for yellow.
     🟢 names the counts: "All lanes ran: X of Y episodes queued, N scheduled,
     Shorts A of B".
@@ -376,7 +403,8 @@ def verdict(queued_rows: list[dict], cal: list[dict], pipe: dict,
         cause = {"validator": "a quality check failed"}.get(
             breaker_state.get("cause"), "a safety check failed")
         red.append((f"Publishing is halted: the safety switch tripped"
-                    f"{f' {when:%a %d %b}' if when else ''} because {cause}", None))
+                    f"{f' {when:%a %d %b}' if when else ''} because {cause}",
+                    breaker_action(breaker_state)))
     sflag, stext = shorts_problem(shorts)
     # A supply stop that kept "clearing itself" while output fell is listed
     # right under the shortfall it explains, as its own line - never in the
@@ -421,14 +449,24 @@ def verdict(queued_rows: list[dict], cal: list[dict], pipe: dict,
     if pipe.get("held"):
         yellow.append((f"Held back by the Mac's quality check: {', '.join(pipe['held'])}", None))
 
-    needs = loud + owners
     problems = red + yellow
     if problems:
         mark = "🔴" if red else "🟡"
-        tail = (f"needs you: {action_for(needs[0])}" if needs else
+        # THE ACTION BELONGS TO THE LEAD (2026-10-12, W42). The tail used to be
+        # the action of the FIRST needs-you stop, whatever led the subject:
+        # "Publishing is halted: the safety switch tripped … — needs you: check
+        # the Mac's nightly batch", and checking the Mac does not clear the
+        # switch. Now the action is the lead problem's own, and every OTHER
+        # problem with an action is counted ("+1 more needs you"); the body
+        # lists each with its own action.
+        lead, lead_action = problems[0]
+        more = sum(1 for _, a in problems[1:] if a)
+        tail = (f"needs you: {lead_action}" if lead_action else
                 "not fixed yet" if red else "watching")
+        if more:
+            tail += f" — +{more} more needs you"
         reasons = [t + (f" — {a}" if a else "") for t, a in problems]
-        return mark, f"{problems[0][0]} — {tail}", reasons
+        return mark, f"{lead} — {tail}", reasons
     shorts_part = ""
     if shorts and shorts.get("target_per_week"):
         shorts_part = f", Shorts {int(shorts.get('published_7d') or 0)} of {int(shorts['target_per_week'])}"
