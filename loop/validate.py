@@ -1778,8 +1778,52 @@ def probe(url: str, timeout: int = 20) -> tuple[int, str]:
 _SENT_SPLIT = re.compile(r"(?<=[.!?])\s+")
 
 
-def v21_no_boilerplate() -> Result:
-    """No narration sentence may be a VERBATIM repeat across two scripts.
+def spoken_parts(path) -> tuple[str, list[str]]:
+    """spoken(), split by WHO is speaking: (narrated text, [HUMAN] lines).
+
+    The same line filter as spoken() - headings, bullets and **Label:** lines
+    are dropped - but a line carrying the [HUMAN] tag is returned on its own,
+    tag stripped, instead of being folded into the narration. The tag in the
+    SOURCE decides, never a text match: a narrated sentence that happens to
+    echo a bank line is still narration.
+    """
+    narrated, human = [], []
+    for line in narration(path).split("\n"):
+        s = line.strip()
+        if not s or s.startswith("#") or s.startswith(("-", "*", "+")):
+            continue
+        if re.match(r"^\*\*[^*]+:\*\*", s):
+            continue
+        if "[HUMAN]" in s:
+            human.append(re.sub(r"\s+", " ", s.replace("[HUMAN]", " ")).strip())
+        else:
+            narrated.append(s)
+    return " ".join(narrated), human
+
+
+def _aired_slugs(now=None) -> set[str]:
+    """Slugs whose episode is already PUBLIC: in the ledger and either never
+    scheduled or scheduled for a moment that has passed. A private upload
+    dated for next month has not aired."""
+    import datetime as _dt                                 # noqa: PLC0415
+    now = now or _dt.datetime.now(_dt.timezone.utc)
+    out = set()
+    for row in ledger.load()["published"]:
+        when = row.get("scheduled_publish_at")
+        if when:
+            try:
+                at = _dt.datetime.fromisoformat(when.replace("Z", "+00:00"))
+            except ValueError:
+                continue
+            if at > now:
+                continue
+        out.add(row["slug"])
+    return out
+
+
+def v21_no_boilerplate(scripts_dir=None, aired=None, window=None) -> Result:
+    """No NARRATED sentence may be a verbatim repeat across two scripts, and no
+    [HUMAN] line may sit in more unaired scripts than the POV rotation window.
 
     2026-09-03: ten of twenty scripts carried the identical sentence "The rest
     of this video follows that question through the actual environmental
@@ -1791,17 +1835,38 @@ def v21_no_boilerplate() -> Result:
     YouTube's 15 July 2025 inauthentic-content policy names.
 
     There was no single generator to patch - `author.py` does not emit this
-    text, so the durable fix is this guard, not a template edit. Any sentence
-    of 8+ words that is byte-identical across two different scripts' narration
+    text, so the durable fix is this guard, not a template edit. Any narrated
+    sentence of 8+ words that is byte-identical across two different scripts
     fails, before it ever reaches a render.
+
+    2026-10-12, run 38272528658 (mon-draft): V21 stopped the Monday lane
+    because how-deep-can-a-sperm-whale-go.md and
+    what-lives-in-the-depths-of-the-ocean.md both carry the owner's interview
+    line "[HUMAN] How do we know an animal behaves a certain way when we've
+    seen it three times?". That is not generator boilerplate: [HUMAN] lines
+    are verbatim from pov/pov-bank.json, and loop/pov_match.select() reuses a
+    transferable line on purpose (least-recently-used, outside its rotation
+    window). V21 and pov_match were contradicting each other. So:
+      (1) lines TAGGED [HUMAN] in the source are exempt from the verbatim
+          check - by the tag, never by text matching; narrated prose keeps
+          the full 8-word rule;
+      (2) so the exemption cannot become a loophole, the same [HUMAN] line in
+          MORE unaired scripts than pov_match.rotation_window() fails. Aired
+          = in the ledger and past its scheduled publish time.
 
     Hard-fails when it examines zero scripts.
     """
+    import pov_match as _pm                                # noqa: PLC0415
     r = Result("V21 no-boilerplate")
+    scripts_dir = Path(scripts_dir) if scripts_dir else ROOT / "scripts"
+    aired = _aired_slugs() if aired is None else set(aired)
+    window = _pm.rotation_window() if window is None else window
     seen: dict[str, str] = {}
-    for p in sorted((ROOT / "scripts").glob("*.md")):
+    human_in: dict[str, list[str]] = {}
+    for p in sorted(scripts_dir.glob("*.md")):
         r.examined += 1
-        text = re.sub(r"\s+", " ", spoken(p)).strip()
+        narrated, human = spoken_parts(p)
+        text = re.sub(r"\s+", " ", narrated).strip()
         for sent in _SENT_SPLIT.split(text):
             sent = sent.strip()
             words = sent.split()
@@ -1812,6 +1877,16 @@ def v21_no_boilerplate() -> Result:
                        f"sentence ({len(words)} words): {sent[:100]!r}")
             else:
                 seen.setdefault(sent, p.name)
+        if p.stem not in aired:
+            for line in set(human):
+                human_in.setdefault(line, []).append(p.name)
+    if r.examined == 0:
+        r.fail(f"no scripts found in {scripts_dir}, so this examined nothing.")
+    for line, names in sorted(human_in.items()):
+        if len(names) > window:
+            r.fail(f"[HUMAN] line in {len(names)} unaired scripts, more than "
+                   f"the {window}-video POV rotation window: {line[:80]!r} "
+                   f"({', '.join(names[:5])}...)")
     return r
 
 

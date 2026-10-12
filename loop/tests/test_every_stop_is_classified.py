@@ -278,6 +278,24 @@ def run_audit() -> int:
         if disp != want:
             fails.append(f"D: `{probe}` classified {disp}, expected {want} — {why}")
 
+    # ---- E. a needs_human code is never reported as UNLISTED -----------------
+    # 2026-10-12, run 38272528658: disposition() told the Monday log
+    # "'VALIDATOR_FAILED' is not in loop/stop_policy.json" while the code sat
+    # in needs_human. The verdict was right; the reason sent the reader hunting
+    # for a misfiled key that was not misfiled. Every needs_human code must be
+    # classified needs_human AND say it is listed.
+    nh = [c for c in section("needs_human") if not c.startswith("_")]
+    if not nh:
+        fails.append("E: needs_human lists zero codes, so this examined nothing.")
+    for code in nh:
+        disp, why = common.disposition("probe-stage", code, {}, 1)
+        if disp != "needs_human":
+            fails.append(f"E: `{code}` is listed needs_human but classified "
+                         f"{disp} — {why}")
+        elif "is not in loop/stop_policy.json" in why:
+            fails.append(f"E: `{code}` is listed under needs_human, yet "
+                         f"disposition() reports it as unlisted: {why[:120]}")
+
     # ---- C. owner_action is green, recorded, and cleared by success -----------
     HARNESS = r'''
 import os, sys

@@ -308,8 +308,84 @@ def check_registry() -> list[str]:
     return fails
 
 
+def check_v21() -> list[str]:
+    """V21 exempts [HUMAN] lines BY TAG, keeps narrated prose strict, and
+    bounds [HUMAN] reuse by pov_match's rotation window.
+
+    2026-10-12, run 38272528658: the Monday lane went red because two scripts
+    shared the owner's own interview line, which pov_match reuses on purpose.
+    (a) a shared [HUMAN] line passes; (b) a shared narrated sentence fails;
+    (c) one [HUMAN] line in more unaired scripts than the window fails, while
+    the same count with the extras aired passes. Hard-fails on zero cases.
+    """
+    fails, cases = [], 0
+    human = "[HUMAN] How do we know an animal behaves a certain way when we've seen it three times?"
+    narrated = "The rest of this video follows that question through every single source we could find."
+
+    def write(d, name, extra):
+        Path(d, name + ".md").write_text(
+            "# T\n\n## Narration\n\nA short opening line here.\n\n"
+            f"Unique prose for {name} with enough words to count as a sentence.\n\n"
+            f"{extra}\n\n## Sources\n\n- x\n")
+
+    def run(names_extra, aired=(), window=2):
+        d = tempfile.mkdtemp(prefix="v21-")
+        for n, e in names_extra:
+            write(d, n, e)
+        return validate.v21_no_boilerplate(scripts_dir=d, aired=aired,
+                                           window=window)
+
+    from pathlib import Path  # noqa: PLC0415
+    # (a) a [HUMAN] line shared by two scripts is the owner's voice, not boilerplate
+    cases += 1
+    r = run([("a", human), ("b", human)])
+    if r.failures or r.examined != 2:
+        fails.append(f"V21 (a): two scripts sharing a [HUMAN] line must pass; "
+                     f"got examined={r.examined} failures={r.failures}")
+    # (b) a narrated sentence shared by two scripts is still boilerplate
+    cases += 1
+    r = run([("a", narrated), ("b", narrated)])
+    if not any("verbatim narrated" in f for f in r.failures):
+        fails.append("V21 (b): two scripts sharing an 8+ word NARRATED sentence "
+                     "must fail; the [HUMAN] exemption has swallowed narration")
+    # (b') the SAME words, tagged in one script and narrated in two others,
+    # still fail on the narrated pair - the tag exempts lines, not text.
+    cases += 1
+    r = run([("a", "[HUMAN] " + narrated), ("b", narrated), ("c", narrated)])
+    if not any("verbatim narrated" in f for f in r.failures):
+        fails.append("V21 (b'): exemption must be by the [HUMAN] tag in the "
+                     "source, never by matching the text of a human line")
+    # (c) the same [HUMAN] line in more unaired scripts than the window fails
+    cases += 1
+    r = run([("a", human), ("b", human), ("c", human)], window=2)
+    if not any("rotation window" in f for f in r.failures):
+        fails.append("V21 (c): a [HUMAN] line in 3 unaired scripts with a "
+                     "window of 2 must fail - the exemption became a loophole")
+    # (c') aired scripts do not count toward the bound
+    cases += 1
+    r = run([("a", human), ("b", human), ("c", human)], aired={"a"}, window=2)
+    if r.failures:
+        fails.append(f"V21 (c'): only UNAIRED scripts count against the window; "
+                     f"got {r.failures}")
+    # the window is pov_match's own, never a hardcoded copy
+    cases += 1
+    import inspect  # noqa: PLC0415
+    if "rotation_window()" not in inspect.getsource(validate.v21_no_boilerplate):
+        fails.append("V21 must read its window from pov_match.rotation_window()")
+    # zero scripts examined is a failure, not a pass
+    cases += 1
+    r = validate.v21_no_boilerplate(scripts_dir=tempfile.mkdtemp(prefix="v21-"),
+                                    aired=(), window=2)
+    if r.status != "FAIL(examined 0)" and not r.failures:
+        fails.append(f"V21 on an empty scripts dir must fail; got {r.status}")
+    if cases == 0:
+        fails.append("check_v21 examined zero cases")
+    print(f"inspected {cases} V21 case(s)")
+    return fails
+
+
 if __name__ == "__main__":
-    f = check() + check_registry()
+    f = check() + check_registry() + check_v21()
     for x in f:
         print(f"  ✗ {x}")
     print("all green - every validator catches its own defect and fails on empty"
