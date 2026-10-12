@@ -23,11 +23,22 @@ import tempfile
 HERE = os.path.dirname(os.path.abspath(__file__))
 LOOP = os.path.abspath(os.path.join(HERE, ".."))
 ROOT = os.path.abspath(os.path.join(LOOP, ".."))
-FLAG = os.path.join(LOOP, "state", "breaker.json")
+# The flag the CLI below really reads: run_all.py points LOOP_BREAKER_FLAG at
+# scratch so this file never writes the committed one.
+FLAG = (os.environ.get("LOOP_BREAKER_FLAG")
+        or os.path.join(LOOP, "state", "breaker.json"))
 PY = sys.executable
 
-# Stages that must refuse while the breaker is tripped.
-PUBLISHING = ["tue-render", "thu-upload", "fri-publish"]
+# Stages that must refuse while the breaker is tripped: EVERY guarded lane,
+# read from breaker.GUARDED, not a second hand-kept list. Was three names
+# (tue-render, thu-upload, fri-publish) while the two daily cloud lanes that
+# actually upload were never guarded (2026-10-12).
+sys.path.insert(0, LOOP)
+import breaker as _breaker  # noqa: E402
+PUBLISHING = list(_breaker.GUARDED)
+if len(PUBLISHING) < 7:
+    raise SystemExit(f"FAIL: breaker.GUARDED lists {len(PUBLISHING)} lanes; "
+                     f"at least the seven guarded on 2026-10-12 must be there")
 
 
 # THE SUITE MUST NOT WRITE THE LOOP'S OWN STATE. `breaker.py guard` takes a

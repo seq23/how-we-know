@@ -208,7 +208,7 @@ through; the issue is closed by hand once it has.
   real line from your bank and the episode is rebuilt. Nothing is ever added to
   that bank without you — matching is automatic, approving is not.
 - **The circuit breaker.** It re-tests its own cause and closes as soon as the
-  cause has passed. It also stops reporting one problem four times.
+  cause has passed. It also reports one problem once, however many lanes it halts.
 - **A corrupted internal file.** Restored from the last good copy, silently.
 - **A domain's scored queue running completely dry** — every stage of
   `research/publish_order*.json` empty for that domain, not just thin. This is
@@ -458,6 +458,47 @@ to either tier — Shorts views never add into the long-form hours total.**
 `loop/ypp.py` reports progress against both tiers and both routes every
 monthly review, nearest gate first.
 
+## The circuit breaker
+
+One flag, `loop/state/breaker.json` (`loop/breaker.py`), halts **publishing**:
+every upload to YouTube and the Friday public flip. Mining, ranking, drafting,
+narrating and rendering carry on, so nothing has to be rebuilt when it closes.
+
+- **What trips it:** a failing validator in the Monday draft (`validator`),
+  retention below the floor for consecutive videos (`retention`), one subject
+  area below its floor while others hold (`domain`), a channel strike
+  (`strike`), or you by hand (`manual`).
+- **Every cause halts every lane below, Shorts included.** The breaker has no
+  per-cause exemption, so a retention trip holds the daily Shorts as well as
+  the episodes (decided 2026-10-12: `loop/breaker.py` says publishing halts
+  for every cause, and nothing says otherwise).
+- **What it leaves alone:** anything already uploaded and scheduled on YouTube
+  still goes public at its slot. Nothing is un-scheduled.
+- **The lanes that honour it** — each calls `breaker.guard()` before it
+  touches YouTube and, while it is tripped, ends in the named stop
+  `BREAKER_TRIPPED` (the first lane to hit a trip goes red; the rest take
+  `BREAKER_TRIPPED_ALREADY_REPORTED` and stay green, because it is one
+  problem). One list in code, `breaker.GUARDED`;
+  `loop/tests/test_cloud_lanes_honour_breaker.py` proves each lane really
+  stops and that this list matches it:
+  - `cloud-upload` — `loop-upload-cloud`, daily 09:00
+  - `shorts-cloud` — `loop-shorts-cloud`, daily 18:00
+  - `fri-publish` — `loop-fri-publish`, Fri 08:00
+  - `thu-upload` — `loop/upload.py` on the Mac
+  - `backfill` — the Mac's daily backfill upload (`bin/loop-backfill-daily.sh`)
+  - `shorts` — the Mac's Shorts upload (`bin/loop-shorts-daily.sh`)
+  - `tue-render` — the old weekly render script (`bin/loop-tuesday.sh`); the
+    nightly batch renders regardless, as above
+
+  Until 2026-10-12 the two daily cloud lanes and the two Mac upload lanes did
+  not ask, so the digest's "Publishing is halted" was true of Friday's flip
+  only. It is now true of every lane that publishes.
+- **How it closes:** by itself. A validator trip closes at the top of the next
+  guarded lane once every validator passes again (and the Monday draft closes
+  it the moment its own re-run passes); a retention or domain trip closes on
+  the next weekly measurement that no longer sees the breach. Only a strike or
+  a manual trip needs `python loop/breaker.py reset --note "<what you fixed>"`.
+
 ## Lanes
 
 Every scheduled lane, in the order of a week. Times are Central daylight time
@@ -474,10 +515,10 @@ and `loop/tests/test_runbook_lanes.py` fails if a `loop-state` workflow has no r
 | `loop-sun-digest` | Sun 11:00 (`0 16 * * 0`) | The one email a week, whatever the week was: its subject is one plain sentence, worst problem first (see "Digest" below). | no |
 | `loop-mon-draft` | Sun night 00:00 (`0 5 * * 1`) | Builds `loop/render_queue.json` (the only handoff to the Mac), authors any topic that has no script yet (480-minute authoring budget, 500-minute job ceiling, pinned by `loop/tests/test_mon_draft_authoring_budget.py`; done by 13:20 UTC, before the 14:00 UTC upload lane), promotes validated drafts to `scripts/`, and rebuilds the dashboard. | yes |
 | Mac render batch | daily 23:00 on her Mac (launchd, `bin/loop-install-launchd.sh` → `bin/batch-session.sh`) | Narrates every script that has no audio, renders every episode that has audio but no video, and pushes the results out for uploading; it reads `loop/render_queue.json`. | yes — `loop/extend.py` heals short episodes; the $0 route only, the Mac holds no subscription token |
-| `loop-upload-cloud` | daily 09:00 (`0 14 * * *`) | Pulls the next pending episode's render and thumbnail from Cloudflare R2 and uploads it to YouTube as private with its publish date. | no |
+| `loop-upload-cloud` | daily 09:00 (`0 14 * * *`) | Pulls the next pending episode's render and thumbnail from Cloudflare R2 and uploads it to YouTube as private with its publish date. Halts while the circuit breaker is tripped (`BREAKER_TRIPPED`). | no |
 | `loop-reach` | daily 10:00 (`0 15 * * *`) | Non-English reach plus discovery metadata: English captions, localized titles and descriptions, tags. | yes (localization) |
-| `loop-shorts-cloud` | daily 18:00 (`0 23 * * *`) | Pulls a verified Short from R2 and uploads it to YouTube as private with its evening slot. | no |
-| `loop-fri-publish` | Fri 08:00 (`0 13 * * 5`) | Flips private uploads to public, but only against a receipt proving the upload happened. | no |
+| `loop-shorts-cloud` | daily 18:00 (`0 23 * * *`) | Pulls a verified Short from R2 and uploads it to YouTube as private with its evening slot. Halts while the circuit breaker is tripped (`BREAKER_TRIPPED`). | no |
+| `loop-fri-publish` | Fri 08:00 (`0 13 * * 5`) | Flips private uploads to public, but only against a receipt proving the upload happened. Halts while the circuit breaker is tripped (`BREAKER_TRIPPED`). | no |
 | `loop-fri-measure` | Fri 16:00 (`0 21 * * 5`) | Pulls retention and RPM, writes measurement, and can trip the circuit breaker. | no |
 | `loop-imagery-harvest` | Fri 23:00 (`0 4 * * 6`) | Grows the rights-cleared footage pool ahead of demand. | no |
 | `loop-quarterly-taxonomy-refresh` | 1st of Jan/Apr/Jul/Oct 03:00 (`0 8 1 1,4,7,10 *`) | Refreshes the ranked candidate-niche taxonomy the next domain is drawn from. | no |

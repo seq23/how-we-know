@@ -53,6 +53,7 @@ sys.path.insert(0, str(LOOP))
 
 import backfill as B                              # noqa: E402
 import batch_queue                                # noqa: E402
+import breaker                                    # noqa: E402
 import cadence                                    # noqa: E402
 import discovery                                  # noqa: E402
 import domains                                    # noqa: E402
@@ -834,6 +835,12 @@ def main() -> int:
     ap.add_argument("--limit", type=int, default=2)
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
+    # THE CIRCUIT BREAKER (2026-10-12). This lane uploads to YouTube and
+    # never asked the breaker, so "Publishing is halted" was not true of it.
+    # Here in main(), the Mac entry point (bin/loop-shorts-daily.sh); the
+    # cloud lane guards itself as shorts-cloud. Listed in breaker.GUARDED;
+    # pinned by loop/tests/test_cloud_lanes_honour_breaker.py.
+    breaker.guard("shorts")
     return run(limit=a.limit, dry_run=a.dry_run)
 
 

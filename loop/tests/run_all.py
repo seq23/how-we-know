@@ -97,6 +97,12 @@ def main() -> int:
         # reorder the real $0 fallback. One fresh, empty ledger per test file,
         # so no test's standing depends on which test ran before it.
         env["LLM_ROUTE_LEDGER"] = os.path.join(stops, f"route-ledger-{name}.json")
+        # And for the circuit breaker's flag (2026-10-12): every publishing lane
+        # now calls breaker.guard(), which reads the flag and writes
+        # `reported_by` into it. A lane test must not stop because the LIVE
+        # breaker happens to be tripped, nor write the committed flag. Absent
+        # file = closed; a test that wants a trip writes its own.
+        env["LOOP_BREAKER_FLAG"] = os.path.join(stops, f"breaker-{name}.json")
         print(f"\n──── {name}")
         # Each test picks its OWN interpreter needs: test_workflows re-execs
         # into the system python3 for pyyaml, while the validators need the

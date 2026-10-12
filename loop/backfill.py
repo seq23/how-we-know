@@ -45,6 +45,7 @@ LOOP = Path(__file__).resolve().parent
 ROOT = LOOP.parent
 sys.path.insert(0, str(LOOP))
 
+import breaker                                   # noqa: E402
 import cadence                                   # noqa: E402
 import ledger                                    # noqa: E402
 import quota                                     # noqa: E402
@@ -545,6 +546,12 @@ def main() -> int:
                     help="max videos this run (quota: 4 is safe, 6 is the wall)")
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
+    # THE CIRCUIT BREAKER (2026-10-12). This lane uploads to YouTube and
+    # never asked the breaker, so "Publishing is halted" was not true of it.
+    # Here in main(), the Mac entry point (bin/loop-backfill-daily.sh), not
+    # run(): run() also serves callers that own a Stage of their own. Listed in breaker.GUARDED; pinned by
+    # loop/tests/test_cloud_lanes_honour_breaker.py.
+    breaker.guard("backfill")
     return run(limit=a.limit, dry_run=a.dry_run)
 
 

@@ -66,6 +66,7 @@ ROOT = LOOP.parent
 sys.path.insert(0, str(LOOP))
 
 import backfill as B                              # noqa: E402
+import breaker                                    # noqa: E402
 import quota                                      # noqa: E402
 import r2                                         # noqa: E402
 import shorts_lane as SL                          # noqa: E402
@@ -103,6 +104,16 @@ def shelf_lookup(shelf):
 
 
 def run(limit: int = 2, dry_run: bool = False) -> int:
+    # THE CIRCUIT BREAKER (2026-10-12). This lane is one of the two that
+    # actually put Shorts on the channel, and it never asked the breaker:
+    # "Publishing is halted" in the digest was true of fri-publish and false of
+    # the 18:00 Shorts upload. Same call, same place as loop/publish.py: before the
+    # lane's own Stage, so a live trip ends in the named BREAKER_TRIPPED stop
+    # (exit 3) and nothing is pulled, uploaded or scheduled. Every cause halts
+    # it, retention included - the breaker has no per-cause exemption.
+    # Already-scheduled YouTube items are left alone. Pinned by
+    # loop/tests/test_cloud_lanes_honour_breaker.py.
+    breaker.guard(LANE)
     cfg = config()
 
     with Stage(LANE, week_id(),
