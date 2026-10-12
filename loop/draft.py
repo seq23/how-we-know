@@ -566,6 +566,14 @@ def main() -> None:
             for f in row["failures"]:
                 print(f"      ✗ {f}", flush=True)
         st.work(f"ran {len(report)} validators over {len(items)} item(s)")
+        # The same run that trips the breaker on a failure is the one that
+        # resets it on a pass (breaker.clear_after_validation). Without this a
+        # validator trip stayed on main after the fix landed and the re-run
+        # went green (2026-10-12, V21).
+        cleared = breaker.clear_after_validation(passed, report)
+        if cleared:
+            st.work(f"circuit breaker reset: all {len(report)} validators "
+                    f"pass again (the validator trip is cleared)")
 
         queue = {
             "week": week,

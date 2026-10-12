@@ -171,7 +171,10 @@ def clear_if(cause: str, note: str) -> dict | None:
     b = load()
     if b.get("state") != "tripped" or b.get("cause") != cause:
         return None
-    if b.get("also"):
+    # A second trip for the SAME cause (mon-draft re-run red twice, say) is
+    # the same condition seen again; the evidence that clears one clears both.
+    # Only an extra trip for a DIFFERENT cause keeps the breaker shut.
+    if any(a.get("cause") != cause for a in b.get("also", [])):
         # More than one thing tripped it. Clearing one is not clearing the
         # breaker, and silently doing so would resume publishing against a
         # cause nobody re-tested.
@@ -182,6 +185,30 @@ def clear_if(cause: str, note: str) -> dict | None:
     print(f"  [heal] circuit breaker RESET automatically — {note}", flush=True)
     summary(f"### ✅ Circuit breaker reset automatically\n{note}\n")
     return out
+
+
+def clear_after_validation(passed: bool, report: list[dict]) -> dict | None:
+    """The drafting stage's own reset: called with the result of the SAME
+    validate.run_all() whose failure trips the breaker (loop/draft.py).
+
+    THE DEFECT THIS CLOSES (2026-10-12). mon-draft tripped the breaker on a
+    failing validator and had no reset path at all: a passing run of the very
+    check that tripped it wrote `validators_passed: true` into the render queue
+    and left breaker.json `tripped`. The only reset was the lazy one inside
+    guard(), and none of the lanes that run between Monday and Friday call
+    guard() - so V21 (fixed by #173, re-run green twice at 16:35 and 17:08 UTC)
+    kept the switch showing HALTED on main until Friday's publish lane.
+
+    Fails closed: clears nothing on a failed run, on an empty report (a check
+    that examined nothing proves nothing), or for any cause but `validator`.
+    """
+    if not passed or not report:
+        return None
+    if any("FAIL" in r.get("status", "") for r in report):
+        return None
+    return clear_if("validator",
+                    f"all {len(report)} validators pass again in the drafting "
+                    f"run that re-ran the check")
 
 
 def guard(stage_name: str) -> None:
