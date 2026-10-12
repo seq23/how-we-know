@@ -1,0 +1,42 @@
+{
+  "as_of": "2026-10-12",
+  "computed": "2026-10-12",
+  "views_28d": {
+    "long_form": 198,
+    "shorts": 1027,
+    "basis": "YouTube Analytics 28-day report, 2026-10-12",
+    "unattributed": 0,
+    "total": 1225,
+    "shorts_share_pct": 83.8
+  },
+  "median_views_per_long_form_video": 7,
+  "long_form_videos_measured": 21,
+  "median_views_per_short": 36.5,
+  "shorts_measured": 38,
+  "avd_s": 70.0,
+  "avd_basis": "long-form, trailing 28 days",
+  "avd_floor_s": 146.0,
+  "avd_vs_floor": "below",
+  "subscribers_28d_net": 21,
+  "subscribers_total": 26,
+  "subscribers_floor": 500,
+  "watch_hours_long_form": 4.0,
+  "watch_hours_floor": 3000.0,
+  "watch_hours_pct": 0.1,
+  "watch_hours_28d": 3.9,
+  "weeks_to_watch_hour_floor_at_28d_pace": 3073.0,
+  "impressions": {
+    "unavailable": "HTTP 400: The query is not supported. Check the documentation at https://developers.google.com/youtube/analytics/v2/available_reports for a list of supported queries."
+  },
+  "shorts_cadence": {
+    "as_of": "2026-10-12T15:54:16+00:00",
+    "target_per_week": 9,
+    "published_7d": 2,
+    "published_prev_7d": 3,
+    "scheduled_ahead": 0,
+    "r2_verified_unpublished": 0,
+    "r2_basis": "R2 listing of shorts/: 152 object(s), 0 verified and not uploaded",
+    "shelf": 0,
+    "shelf_weeks": 0.0
+  }
+}
