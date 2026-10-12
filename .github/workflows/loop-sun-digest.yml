@@ -115,6 +115,9 @@ jobs:
           # stage did not write one, never to no email.
           TITLE="$(head -n 1 "loop/state/digest/${WEEK}.subject" 2>/dev/null)"
           [ -n "$TITLE" ] || TITLE="Weekly digest — ${WEEK}"
+          # The label never existed, so every digest went out unlabelled; make it.
+          gh label create weekly-digest --color 0E8A16 \
+            --description "Sunday digest" >/dev/null 2>&1 || true
           gh issue create \
             --title "$TITLE" \
             --body-file "$BODY" \
@@ -124,8 +127,12 @@ jobs:
 
           # Close last week's, so the issue list stays a signal and not a pile.
           PREV="$(date -u -d 'last week' +%G-W%V 2>/dev/null || date -u -v-1w +%G-W%V)"
-          OLD="$(gh issue list --state open --label weekly-digest --search "${PREV} in:title" \
-                 --json number --jq '.[0].number' 2>/dev/null)"
+          # By week in the title, minus the "loop: <lane> needs you — <week>" stop
+          # issues; label-free so the unlabelled digests before 12 Oct close too.
+          OLD="$(gh issue list --state open --search "${PREV} in:title" --limit 30 \
+                 --json number,title \
+                 --jq "[.[] | select((.title | startswith(\"loop:\") | not) and (.title | endswith(\"${PREV}\")))][0].number" \
+                 2>/dev/null)"
           if [ -n "$OLD" ] && [ "$OLD" != "null" ]; then
             gh issue close "$OLD" --comment "Superseded by the ${WEEK} digest." >/dev/null 2>&1 \
               && echo "closed #$OLD"

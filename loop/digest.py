@@ -563,6 +563,7 @@ def render(week: str, now: dt.datetime) -> tuple[str, dict]:
         cv["shorts_cadence"] = sc
     mark, headline, reasons = verdict(queued_rows, cal, pipe, loud_stops,
                                       waiting, sc, quiet_stops, per_week, br)
+    verdict_line = f"{mark} {headline}"     # frozen here; the subject reads this
 
     def dom(slug: str) -> str:
         return by_slug.get(slug, "—")
@@ -683,11 +684,14 @@ def render(week: str, now: dt.datetime) -> tuple[str, dict]:
     for name in sorted(set(alloc) | set(runway)):
         r = runway.get(name, {})
         weeks = r.get("weeks")
-        mark = {"critical": "🔴", "warn": "🟠", "ok": "🟢",
-                "not_active": "⚪"}.get(r.get("level"), "")
+        # `rmark`, never `mark`: until 2026-10-12 this loop rebound the
+        # verdict's `mark`, so the SUBJECT carried the last runway row's 🟢
+        # while the body said 🔴 ("🟢 Stalled: …", W39-W41).
+        rmark = {"critical": "🔴", "warn": "🟠", "ok": "🟢",
+                 "not_active": "⚪"}.get(r.get("level"), "")
         L.append(f"| {name} | {live.get(name, 0)} of {alloc.get(name, 0)} "
                  f"| {depth.get(name, 0)} "
-                 f"| {'—' if weeks is None else f'{weeks:.1f}'} | {mark} |")
+                 f"| {'—' if weeks is None else f'{weeks:.1f}'} | {rmark} |")
     L.append("")
 
     loud = [s for s in stops if s["disposition"] == "needs_human"]
@@ -744,7 +748,7 @@ def render(week: str, now: dt.datetime) -> tuple[str, dict]:
 
     counts = {"aired": len(out_rows), "scheduled": len(next_rows),
               "queued": sum(depth.values()), "stops": len(stops),
-              "tripped": tripped, "verdict": f"{mark} {headline}",
+              "tripped": tripped, "verdict": verdict_line,
               "queued_this_week": len(queued_rows), "empty_slots": len(empties)}
     return "\n".join(L), counts
 
