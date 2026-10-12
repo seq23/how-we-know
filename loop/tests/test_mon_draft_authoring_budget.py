@@ -20,7 +20,8 @@ Pinned here, through the code that runs, never by reading prose:
   3. loop-mon-draft.yml's timeout-minutes == AUTHORING_BUDGET_MIN + 20: the
      ceiling is derived from the budget (one in-flight attempt of ~6 min
      plus ~3 of setup, validation and dashboard, with headroom), so neither
-     can drift without the other.
+     can drift without the other; the budget is at least 180 and the pair
+     ends before 14:00 UTC, when the next loop-state lane queues.
   4. The stop code is classified in loop/stop_policy.json (needs_human,
      beside DRAFT_FAILED_VALIDATION).
 
@@ -136,9 +137,24 @@ def check() -> list[str]:
                          f"{draft.AUTHORING_BUDGET_MIN} min so the ceiling "
                          f"must be {want} (budget + {CEILING_HEADROOM_MIN}). "
                          f"Change AUTHORING_BUDGET_MIN and the ceiling together.")
-    if draft.AUTHORING_BUDGET_MIN < 30:
+    # The budget fills the Monday slot (owner, 2026-10-12: "much longer so
+    # this doesn't happen again") but must leave the loop-state queue before
+    # loop-upload-cloud.yml joins it at 14:00 UTC: 10:00 start + budget +
+    # ceiling headroom < 240 min, and never again a number a slow free model
+    # can run out.
+    if draft.AUTHORING_BUDGET_MIN < 180:
         fails.append(f"AUTHORING_BUDGET_MIN={draft.AUTHORING_BUDGET_MIN} is "
-                     f"under 30: the $0 route needs 8-18 min per topic")
+                     f"under 180: the $0 route needs 8-18 min per topic and "
+                     f"the slot is the whole morning")
+    if draft.AUTHORING_BUDGET_MIN + CEILING_HEADROOM_MIN >= 240:
+        fails.append(f"budget {draft.AUTHORING_BUDGET_MIN} + {CEILING_HEADROOM_MIN} "
+                     f"reaches 14:00 UTC, when loop-upload-cloud.yml joins the "
+                     f"loop-state queue")
+    m2 = re.search(r"cron:\s*'0 (\d+) \* \* 1'", text)
+    if not m2 or int(m2.group(1)) != 10:
+        fails.append("loop-mon-draft.yml no longer starts at 10:00 UTC; "
+                     "re-derive AUTHORING_BUDGET_MIN against the next lane "
+                     "in the loop-state group")
 
     # 4. the code is in the glossary
     examined += 1
