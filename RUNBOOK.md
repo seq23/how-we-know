@@ -471,9 +471,21 @@ The order, decided in code (`loop/llm_router.py`, `config/llm_routing.json`):
 1. **Your Claude subscription first**, through the headless Claude Code CLI,
    whenever the lane carries `CLAUDE_CODE_OAUTH_TOKEN`. Prepaid; no per-call
    bill.
-2. **The $0 OpenRouter list second** (`config/llm_routing.json` `models`), if the
-   subscription is missing, expired or fails for any reason.
-3. **Never an API key, never a paid model.** `max_cost_usd` is 0 and
+2. **Your Google AI Studio key, free tier only, second** (`gemini_route` in
+   `config/llm_routing.json`), whenever the lane carries `GEMINI_API_KEY`.
+   Models are tried in the listed order through Google's OpenAI-compatible
+   endpoint; a 403/404/429, timeout or empty answer skips to the next with one
+   `[gemini-route] skipped …` line, and the tier never stops a lane.
+   **Data rule:** free-tier Gemini prompts may be used by Google to improve its
+   products, so this tier is fine for channel scripts and **never for anything
+   confidential (LP names, deal terms)**. The router is the only door to a
+   model here, and this repo holds nothing confidential.
+3. **The $0 OpenRouter list third** (`config/llm_routing.json` `models`), if
+   the tiers above are missing or fail for any reason. Gemini and OpenRouter
+   models are ranked together by the measured standing below, so a
+   rate-limited Gemini day drops Gemini under a good OpenRouter model on its
+   own.
+4. **Never an API key, never a paid model.** `max_cost_usd` is 0 and
    `paid_fallback` is false; a reported cost above 0 is a named stop.
 
 **Why:** your decisions of 11 Oct 2026 ("nothing should be paid") and 12 Oct
@@ -481,8 +493,8 @@ The order, decided in code (`loop/llm_router.py`, `config/llm_routing.json`):
 
 **Which lanes carry it:** every workflow whose stage can reach the router. The
 list is not kept here; `loop/tests/test_claude_subscription_route.py` derives it
-from the code and fails if any such lane lacks the pinned CLI or the secret, or
-if any other lane passes the secret. The "Calls a model?" column above is the
+from the code and fails if any such lane lacks the pinned CLI or either secret
+(`CLAUDE_CODE_OAUTH_TOKEN`, `GEMINI_API_KEY`), or if any other lane passes one. The "Calls a model?" column above is the
 same derivation.
 
 **Rotating the token** (valid one year; the current one was created 12 Oct
@@ -498,6 +510,37 @@ call falls through to the $0 route on its own. The trace is one
 `[claude-route] … — falling back to the $0 route` line in the stage log, and the
 print-only step **"Probe the Claude subscription tier"** in each lane shows
 `success is_error=False 'ok'` when the token works.
+
+### Fallback standing
+
+The order of the free models (Gemini when keyed, then the OpenRouter list) is
+**measured, not guessed**. `config/llm_routing.json` is the roster; the ledger
+only reorders it and never adds a model.
+
+- **What is recorded:** every free-model call outcome (answered, empty, error,
+  rate-limited, timeout) and every Monday draft verdict (passed, failed
+  validation) lands in `loop/state/llm_route_ledger.json`, last 20 per model,
+  with time, latency and lane. Never a prompt, draft, key or the subscription.
+- **How it ranks** (last 12 events per model; pass rate = passed ÷ judged,
+  where judged = passed + failed validation + empty + error + timeout +
+  rate-limited; an answer with no verdict yet counts as neither):
+  1. **MEASURED-GOOD** — at least 4 judged, pass rate ≥ 0.5: best pass rate
+     first, then fastest.
+  2. **UNMEASURED** — fewer than 4 judged: config order.
+  3. **MEASURED-BAD** — at least 4 judged, pass rate < 0.5: best pass rate first.
+  No data at all = exactly the config order. A lane's preferred model (the one
+  that answered the last attempt on a topic) still goes first unless it is
+  MEASURED-BAD; then it keeps its measured place.
+- **See it:** `python3 loop/llm_router.py standing`. The Monday lane prints the
+  same table (`[free-route standing]` lines) at stage start, so each run log
+  shows the order it used.
+- **Seed (12 Oct 2026):** the config order is the starting point,
+  with `nvidia/nemotron-3-ultra-550b-a55b:free` moved to the bottom because on
+  run 38235183608 it returned an empty answer and cost the Monday lane ~5
+  minutes before the route moved on. The ledger started empty; the first runs
+  measure the rest.
+- **The pin:** `loop/tests/test_measured_fallback.py`. Concurrent lanes'
+  ledger commits merge as a union (`loop/tools/merge_route_ledger.py`).
 
 **The Monday authoring budget** (PR #159): `AUTHORING_BUDGET_MIN` in
 `loop/draft.py` is the wall-clock budget for everything the Monday lane

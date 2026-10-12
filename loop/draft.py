@@ -35,6 +35,7 @@ import cadence  # noqa: E402
 import domains  # noqa: E402
 import gate  # noqa: E402
 import ledger  # noqa: E402
+import llm_router  # noqa: E402
 import pov_match  # noqa: E402
 import rank  # noqa: E402 - loop/ is put on sys.path above
 import validate  # noqa: E402
@@ -51,19 +52,10 @@ TOPICS = LOOP / "next_topics.json"
 # four attempts each, and the job's 31-minute ceiling - calibrated on a paid
 # model's 0.6-minute median - cancelled the third topic mid-draft. A cancelled
 # job commits nothing; a budget ends the lane on time with whatever it has
-# and a brief for the rest.
-#
-# 210 minutes is the WHOLE slot (owner, 2026-10-12: "make it much longer so
-# this doesn't happen again"): the lane is queued at 10:00 UTC and the next
-# lane in the `loop-state` concurrency group, loop-upload-cloud.yml, at 14:00
-# UTC. GitHub keeps one waiting run per group, so a Monday job still running
-# at 15:00 would let loop-reach.yml bump the upload lane out of the queue.
-# Budget 210 + the ceiling's 20 ends by 13:50 UTC. At the free route's
-# 8-18 minutes per topic that is 12-25 topics; a week needs at most the
-# cadence's slots plus runway.rebuild_max_extra. The ceiling in
-# .github/workflows/loop-mon-draft.yml is derived from this number;
-# loop/tests/test_mon_draft_authoring_budget.py pins the two together.
-AUTHORING_BUDGET_MIN = 210
+# and a brief for the rest. The ceiling in .github/workflows/loop-mon-draft.yml
+# is derived from this number; loop/tests/test_mon_draft_authoring_budget.py
+# pins the two together.
+AUTHORING_BUDGET_MIN = 40
 
 
 def authoring_deadline(start: float | None = None) -> float:
@@ -324,6 +316,10 @@ def main() -> None:
         # Every draft attempt in this run, main slots and runway rebuild
         # alike, must START before this instant (see AUTHORING_BUDGET_MIN).
         deadline = authoring_deadline()
+        # Which $0 fallback order this run uses (measured; RUNBOOK
+        # "Fallback standing"). One line per model, in the run log only.
+        for line in llm_router.standing_lines():
+            print(f"[free-route standing] {line}", flush=True)
 
         topics = read_json(TOPICS, default=None)
         if topics is None:

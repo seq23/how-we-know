@@ -33,6 +33,39 @@ Rules, each enforced here rather than written down:
     per-call bill) is asked FIRST. Any failure there prints one
     [claude-route] line and falls through to the $0 list unchanged; it never
     raises and is never a stop. Without the variable no subprocess is run.
+  * Owner 2026-10-12: her Google AI Studio key, FREE TIER ONLY, is the
+    second tier. When $GEMINI_API_KEY is set, config `gemini_route.models`
+    (ids "gemini/<model>") join the front of the $0 roster, called through
+    Google's OpenAI-compatible endpoint. Any 403/404/429/5xx, timeout or
+    empty answer skips to the next model with one [gemini-route] line; the
+    tier never raises and is never a stop. Without the variable no Gemini
+    request is made. The key is sent only in the Authorization header -
+    never argv, a log line or the ledger.
+    DATA RULE: free-tier Gemini prompts may be used by Google to improve its
+    products. This tier is for channel scripts only and never for anything
+    confidential (LP names, deal terms). This router is the only door to a
+    model in this repo, and this repo holds nothing confidential.
+  * Owner 2026-10-12: the $0 fallback ORDER is measured, not guessed. Every
+    free-model call outcome (answered / empty / error / rate_limited /
+    timeout) and every structural verdict loop/author.py reaches on an
+    answer (passed / failed_validation, via record_validation) lands in
+    loop/state/llm_route_ledger.json, last LEDGER_KEEP per model. standing()
+    ranks the roster (the Gemini models when the key is set, then the
+    config's OpenRouter models) from their last STANDING_WINDOW events, so
+    a rate-limited Gemini day drops it below a good OpenRouter model:
+      MEASURED-GOOD  >= 4 judged events and pass_rate >= 0.5 (pass_rate
+                     desc, then median latency asc)
+      UNMEASURED     <  4 judged events (config order)
+      MEASURED-BAD   >= 4 judged events and pass_rate < 0.5 (pass_rate desc)
+    pass_rate = passed / (passed + failed_validation + empty + error +
+    timeout + rate_limited); "judged" = that denominator. An answer with no
+    verdict yet counts as neither, so it never makes a model measured. No data anywhere = exactly the config order. The config list
+    is the roster; the ledger only reorders it, never adds a model.
+    complete() walks standing() order. A caller's `preferred` model still
+    goes first UNLESS it is MEASURED-BAD; a BAD preferred model loses the
+    preference and keeps its measured place - after every MEASURED-GOOD
+    (and UNMEASURED) model. The subscription tier is never ranked or
+    recorded. Pinned by loop/tests/test_measured_fallback.py.
 
 Callers keep their own semantics for USABLE output (loop/author.py retries a
 draft that fails validation against the SAME free route and then raises
@@ -43,9 +76,13 @@ from __future__ import annotations
 import json
 import os
 import shutil
+import socket
+import statistics
 import subprocess
+import sys
 import tempfile
 import time
+from datetime import datetime, timezone
 import urllib.error
 import urllib.request
 from pathlib import Path
@@ -53,6 +90,25 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 CONFIG = ROOT / "config" / "llm_routing.json"
 API = "https://openrouter.ai/api/v1/chat/completions"
+# The Gemini free tier (owner 2026-10-12): Google's OpenAI-compatible door.
+GEMINI_API = ("https://generativelanguage.googleapis.com/v1beta/openai/"
+              "chat/completions")
+GEMINI_ENV = "GEMINI_API_KEY"
+GEMINI_PREFIX = "gemini/"
+GEMINI_ROUTE_NAME = "gemini-free-tier"
+# The measured fallback order (owner 2026-10-12). LLM_ROUTE_LEDGER redirects
+# it (loop/tests/run_all.py points it at a temp file so tests never write the
+# real one).
+LEDGER = Path(os.environ.get("LLM_ROUTE_LEDGER")
+              or ROOT / "loop" / "state" / "llm_route_ledger.json")
+LEDGER_KEEP = 20
+STANDING_WINDOW = 12
+STANDING_MIN_EVENTS = 4
+STANDING_GOOD_RATE = 0.5
+CALL_OUTCOMES = ("answered", "empty", "error", "rate_limited", "timeout")
+VERDICT_OUTCOMES = ("passed", "failed_validation")
+FAIL_OUTCOMES = ("failed_validation", "empty", "error", "timeout",
+                 "rate_limited")
 
 TRANSIENT_HTTP_CODES = (500, 502, 503, 504)
 TRANSIENT_RETRIES = 3
@@ -124,6 +180,23 @@ def config_problems(cfg: dict) -> list[str]:
                 out.append(f"{mid} pricing.{k} is {v!r}, must be 0")
         if (m.get("context_length") or 0) < floor:
             out.append(f"{mid} context {m.get('context_length')} < {floor}")
+    gr = cfg.get("gemini_route")
+    if gr is not None:
+        if not isinstance(gr, dict):
+            out.append("gemini_route must be an object")
+        else:
+            if gr.get("provider") != "google-ai-studio":
+                out.append("gemini_route.provider must be 'google-ai-studio'")
+            if gr.get("env") != GEMINI_ENV:
+                out.append(f"gemini_route.env must be {GEMINI_ENV!r}")
+            if gr.get("free_tier_only") is not True:
+                out.append("gemini_route.free_tier_only must be true")
+            gm = gr.get("models")
+            if not isinstance(gm, list) or not gm or not all(
+                    isinstance(m, str) and m.strip() and "/" not in m
+                    for m in gm):
+                out.append("gemini_route.models must be a non-empty list of "
+                           "bare Gemini model names")
     sr = cfg.get("subscription_route")
     if sr is not None:
         if not isinstance(sr, dict):
@@ -312,6 +385,213 @@ def _subscription_complete(messages: list[dict],
             "route": "claude-subscription"}
 
 
+# ---- the Gemini free tier (owner 2026-10-12) -------------------------------
+def gemini_models() -> list[str]:
+    """"gemini/<model>" ids, in config order - empty unless the key is set."""
+    if not os.environ.get(GEMINI_ENV, "").strip():
+        return []
+    gr = load_config().get("gemini_route") or {}
+    return [GEMINI_PREFIX + m.strip() for m in gr.get("models") or []
+            if isinstance(m, str) and m.strip()]
+
+
+def roster() -> list[str]:
+    """Every model complete() may walk: Gemini (when keyed), then the $0 list."""
+    return gemini_models() + free_models()
+
+
+def _gemini_post(body: bytes, key: str, timeout: int) -> dict:
+    req = urllib.request.Request(GEMINI_API, data=body, method="POST", headers={
+        "Authorization": f"Bearer {key}",
+        "Content-Type": "application/json",
+    })
+    with urllib.request.urlopen(req, timeout=timeout) as r:
+        return json.loads(r.read())
+
+
+def _gemini_try(model: str, messages: list[dict], timeout: int,
+                temperature: float) -> tuple[dict | None, str]:
+    """One Gemini model -> (response, "") or (None, why). Never raises."""
+    key = os.environ.get(GEMINI_ENV, "").strip()
+    name = model[len(GEMINI_PREFIX):]
+    body = json.dumps({"model": name, "messages": messages,
+                       "temperature": temperature}).encode()
+    t0 = time.monotonic()
+    try:
+        resp = _gemini_post(body, key, timeout)
+    except Exception as e:                          # noqa: BLE001
+        _record(model, _call_outcome(e), time.monotonic() - t0)
+        if isinstance(e, urllib.error.HTTPError):
+            try:
+                detail = e.read().decode("utf-8", "ignore")[:120]
+            except Exception:                       # noqa: BLE001
+                detail = ""
+            why = f"HTTP {e.code} {detail}"
+        else:
+            why = f"{type(e).__name__}: {str(e)[:120]}"
+        why = why.replace(key, "<key>") if key else why
+        print(f"[gemini-route] skipped {model}: {why.splitlines()[0] if why else ''}",
+              flush=True)
+        return None, why
+    latency = time.monotonic() - t0
+    choice = ((resp or {}).get("choices") or [{}])[0]
+    if not ((choice.get("message") or {}).get("content") or "").strip():
+        _record(model, "empty", latency)
+        print(f"[gemini-route] skipped {model}: empty answer", flush=True)
+        return None, "empty answer"
+    _record(model, "answered", latency)
+    usage = dict(resp.get("usage") or {})
+    usage["cost"] = 0          # free tier; Google reports no cost field
+    resp["usage"] = usage
+    resp["model_used"] = model
+    resp["route"] = GEMINI_ROUTE_NAME
+    return resp, ""
+
+# ---- the measured fallback order (owner 2026-10-12) ------------------------
+def _lane() -> str:
+    lane = os.environ.get("LOOP_STAGE", "").strip()
+    if lane:
+        return lane
+    return os.path.basename(sys.argv[0] or "") or "unknown"
+
+
+def read_ledger() -> dict:
+    try:
+        data = json.loads(Path(LEDGER).read_text())
+    except (OSError, ValueError):
+        return {"models": {}}
+    if not isinstance(data, dict) or not isinstance(data.get("models"), dict):
+        return {"models": {}}
+    return data
+
+
+def _record(model: str, outcome: str, latency_s: float | None = None) -> None:
+    """Append one outcome for a free model. Never raises: the ledger is
+    measurement, and a write failure must not cost a lane its answer. Only
+    a model id, an outcome word, a latency and a lane name are stored -
+    never a prompt, a draft, a key or the subscription tier."""
+    model = (model or "").strip()
+    if not model or model == SUBSCRIPTION_MODEL_USED:
+        return
+    if outcome not in CALL_OUTCOMES + VERDICT_OUTCOMES:
+        return
+    try:
+        data = read_ledger()
+        ev = {"ts": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+              "outcome": outcome,
+              "latency_s": (round(float(latency_s), 1)
+                            if latency_s is not None else None),
+              "lane": _lane()}
+        rows = data["models"].setdefault(model, [])
+        rows.append(ev)
+        data["models"][model] = rows[-LEDGER_KEEP:]
+        data["_why"] = ("Measured $0 fallback order (owner 2026-10-12). "
+                        "Written by loop/llm_router.py; ranked by "
+                        "`python3 loop/llm_router.py standing`. See RUNBOOK.md "
+                        "'Fallback standing'.")
+        Path(LEDGER).parent.mkdir(parents=True, exist_ok=True)
+        Path(LEDGER).write_text(json.dumps(data, indent=2, sort_keys=True)
+                                + "\n")
+    except Exception as e:                          # noqa: BLE001
+        print(f"[free-route] route ledger not written: {type(e).__name__}",
+              flush=True)
+
+
+def record_validation(model: str, ok: bool) -> None:
+    """loop/author.py's structural verdict on an answer this route gave."""
+    _record(model, "passed" if ok else "failed_validation")
+
+
+def standing(models: list[str] | None = None,
+             ledger: dict | None = None) -> list[dict]:
+    """The config's free models in measured order (see the module docstring).
+    Each row: model, bucket, events, pass_rate, median_latency_s, last."""
+    models = list(models if models is not None else roster())
+    data = ledger if ledger is not None else read_ledger()
+    rows = []
+    for i, m in enumerate(models):
+        evs = (data.get("models") or {}).get(m) or []
+        window = evs[-STANDING_WINDOW:]
+        passed = sum(1 for e in window if e.get("outcome") == "passed")
+        failed = sum(1 for e in window if e.get("outcome") in FAIL_OUTCOMES)
+        judged = passed + failed
+        rate = passed / judged if judged else None
+        lats = [e["latency_s"] for e in window
+                if isinstance(e.get("latency_s"), (int, float))]
+        n = len(window)
+        # Bucketed on JUDGED events: an answer with no verdict yet (a lane
+        # that does not validate, or a draft still being checked) is neither
+        # a pass nor a failure, so it cannot make a model measured.
+        if judged < STANDING_MIN_EVENTS:
+            bucket = "UNMEASURED"
+        elif (rate or 0.0) >= STANDING_GOOD_RATE:
+            bucket = "MEASURED-GOOD"
+        else:
+            bucket = "MEASURED-BAD"
+        rows.append({"model": m, "bucket": bucket, "events": n,
+                     "judged": judged,
+                     "pass_rate": rate,
+                     "median_latency_s": (statistics.median(lats)
+                                          if lats else None),
+                     "last": (evs[-1].get("outcome") if evs else None),
+                     "_config_index": i})
+    inf = float("inf")
+    good = sorted((r for r in rows if r["bucket"] == "MEASURED-GOOD"),
+                  key=lambda r: (-(r["pass_rate"] or 0.0),
+                                 r["median_latency_s"]
+                                 if r["median_latency_s"] is not None else inf,
+                                 r["_config_index"]))
+    unmeasured = [r for r in rows if r["bucket"] == "UNMEASURED"]
+    bad = sorted((r for r in rows if r["bucket"] == "MEASURED-BAD"),
+                 key=lambda r: (-(r["pass_rate"] or 0.0), r["_config_index"]))
+    out = good + unmeasured + bad
+    for r in out:
+        r.pop("_config_index", None)
+    return out
+
+
+def route_order(preferred: str | None = None,
+                rows: list[dict] | None = None) -> list[str]:
+    """standing() order with `preferred` placed by the documented rule."""
+    rows = rows if rows is not None else standing()
+    order = [r["model"] for r in rows]
+    pref = (preferred or "").strip()
+    if not pref or pref not in order:
+        return order
+    bucket = next(r["bucket"] for r in rows if r["model"] == pref)
+    if bucket == "MEASURED-BAD":
+        # Loses its preference: it keeps its measured place, after every
+        # MEASURED-GOOD and UNMEASURED model.
+        return order
+    order.remove(pref)
+    return [pref] + order
+
+
+def standing_lines(rows: list[dict] | None = None) -> list[str]:
+    rows = rows if rows is not None else standing()
+    out = []
+    for i, r in enumerate(rows, 1):
+        rate = "-" if r["pass_rate"] is None else f"{r['pass_rate']:.2f}"
+        lat = ("-" if r["median_latency_s"] is None
+               else f"{r['median_latency_s']:.1f}s")
+        out.append(f"{i}. {r['model']}  {r['bucket']}  "
+                   f"events={r['events']} (judged {r['judged']})  "
+                   f"pass_rate={rate}  median_latency={lat}  "
+                   f"last={r['last'] or '-'}")
+    return out
+
+
+def _call_outcome(e: BaseException) -> str:
+    if isinstance(e, urllib.error.HTTPError):
+        return "rate_limited" if e.code == 429 else "error"
+    if isinstance(e, (TimeoutError, socket.timeout)):
+        return "timeout"
+    if isinstance(e, urllib.error.URLError) and isinstance(
+            getattr(e, "reason", None), (TimeoutError, socket.timeout)):
+        return "timeout"
+    return "error"
+
+
 def complete(messages: list[dict], key: str, *, preferred: str | None = None,
              timeout: int = 300, temperature: float = 0.4,
              max_tokens: int = 16000) -> dict:
@@ -320,6 +600,10 @@ def complete(messages: list[dict], key: str, *, preferred: str | None = None,
     `preferred` (a lane's configured model) goes first if - and only if - it
     is in the free list; naming a model outside it is refused outright, never
     silently swapped, so a paid model in a variable is seen.
+    The free models are walked in measured order (standing()); a MEASURED-
+    BAD `preferred` model is not moved first - it keeps its measured place,
+    after the MEASURED-GOOD (and UNMEASURED) ones.
+    Every call outcome is written to the route ledger.
     Returns OpenRouter's response dict; `resp["model_used"]` names the model.
     """
     models = free_models()
@@ -331,6 +615,13 @@ def complete(messages: list[dict], key: str, *, preferred: str | None = None,
     sub = _subscription_complete(messages, timeout)
     if sub is not None:
         return sub
+    gem = gemini_models()
+    # A retry naming a Gemini model while the key is absent goes back to the
+    # normal order; it is not a paid model, so it is not refused.
+    if preferred and preferred.strip().startswith(GEMINI_PREFIX) \
+            and preferred.strip() not in gem:
+        preferred = None
+    models = gem + models
     if preferred and preferred.strip() and preferred.strip() not in models:
         raise LLMStop(
             PAID_MODEL_REFUSED,
@@ -338,8 +629,7 @@ def complete(messages: list[dict], key: str, *, preferred: str | None = None,
             f"$0 models may be called",
             "Unset $OPENROUTER_MODEL / $OPENROUTER_COMMENTS_MODEL or set it to "
             "a model listed in config/llm_routing.json.")
-    order = ([preferred.strip()] if preferred and preferred.strip() else []) \
-        + [m for m in models if m != (preferred or "").strip()]
+    order = route_order(preferred, standing(models))
 
     failures, codes = [], []
     key_stop_unblock = (
@@ -348,6 +638,15 @@ def complete(messages: list[dict], key: str, *, preferred: str | None = None,
         "only free models are called) and store it as OPENROUTER_API_KEY "
         "(Actions) and .secrets/openrouter_key.txt (Mac).")
     for model in order:
+        if model in gem:
+            resp, why = _gemini_try(model, messages, timeout, temperature)
+            if resp is not None:
+                if failures:
+                    print(f"[free-route] answered by {model} after: "
+                          + " | ".join(failures), flush=True)
+                return resp
+            failures.append(f"{model}: {why[:120]}")
+            continue
         body = json.dumps({
             "model": model,
             "messages": messages,
@@ -357,9 +656,11 @@ def complete(messages: list[dict], key: str, *, preferred: str | None = None,
             # OpenRouter refuses any endpoint above this price. 0 = free only.
             "provider": {"max_price": {"prompt": 0, "completion": 0}},
         }).encode()
+        t0 = time.monotonic()
         try:
             resp = _post(body, key, timeout)
         except urllib.error.HTTPError as e:
+            _record(model, _call_outcome(e), time.monotonic() - t0)
             detail = e.read().decode("utf-8", "ignore")[:200].replace(key, "<key>")
             if e.code in KEY_INVALID_CODES:
                 raise LLMStop(KEY_DISABLED,
@@ -370,9 +671,11 @@ def complete(messages: list[dict], key: str, *, preferred: str | None = None,
             failures.append(f"{model}: HTTP {e.code} {detail[:120]}")
             continue
         except Exception as e:                      # noqa: BLE001
+            _record(model, _call_outcome(e), time.monotonic() - t0)
             codes.append(None)
             failures.append(f"{model}: {type(e).__name__}: {str(e)[:120]}")
             continue
+        latency = time.monotonic() - t0
         cost = reported_cost(resp)
         if cost is not None and not _is_zero(cost):
             raise LLMStop(
@@ -384,9 +687,11 @@ def complete(messages: list[dict], key: str, *, preferred: str | None = None,
                 {"model": model, "cost": cost})
         choice = (resp.get("choices") or [{}])[0]
         if not ((choice.get("message") or {}).get("content") or "").strip():
+            _record(model, "empty", latency)
             codes.append(None)
             failures.append(f"{model}: empty answer")
             continue
+        _record(model, "answered", latency)
         if failures:
             print(f"[free-route] answered by {model} after: "
                   + " | ".join(failures), flush=True)
@@ -405,5 +710,11 @@ def complete(messages: list[dict], key: str, *, preferred: str | None = None,
 
 
 if __name__ == "__main__":
+    if sys.argv[1:2] == ["standing"]:
+        print(f"free-route standing (ledger: {Path(LEDGER).name}; "
+              f"order used by complete()):")
+        for line in standing_lines():
+            print("  " + line)
+        raise SystemExit(0)
     print(json.dumps({"snapshot_date": load_config()["snapshot_date"],
                       "models": free_models()}, indent=2))

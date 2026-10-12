@@ -63,6 +63,7 @@ jobs:
           # Her Claude subscription answers first (prepaid, no per-call bill);
           # absent or failing -> the $0 OpenRouter route, unchanged.
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: bin/loop-stage.sh monthly-review loop/monthly.py
 
       # The review is worthless sitting in a file nobody opens. loop-stage.sh only

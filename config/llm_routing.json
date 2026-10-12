@@ -4,7 +4,9 @@
     "The repo's OpenRouter key now has a $0 monthly credit limit. Every model call in this repo goes through loop/llm_router.py, which sends ONLY the models below, in this order, with a per-request max price of 0, and fails loudly if OpenRouter ever reports a non-zero cost.",
     "There is no paid fallback. A refused key is the named stop OPENROUTER_KEY_DISABLED_OR_INVALID; no free model answering is OPENROUTER_NO_FREE_MODEL.",
     "Refresh: fetch https://openrouter.ai/api/v1/models (no key needed), keep only ':free' text models priced 0/0 with >= 32k context, strongest general instruct model first, update snapshot_date. loop/tests/test_llm_routing.py enforces the shape.",
-    "Owner 2026-10-12, verbatim: \"use my claude subscription usage in advance of the $0 openrouter\". subscription_route (her prepaid Claude subscription via the headless Claude Code CLI, no per-call bill) answers first when CLAUDE_CODE_OAUTH_TOKEN is set; any failure there falls through to the $0 list below."
+    "Owner 2026-10-12, verbatim: \"use my claude subscription usage in advance of the $0 openrouter\". subscription_route (her prepaid Claude subscription via the headless Claude Code CLI, no per-call bill) answers first when CLAUDE_CODE_OAUTH_TOKEN is set; any failure there falls through to the $0 list below.",
+    "Owner 2026-10-12: GEMINI_API_KEY (her AI Studio key, free tier only) puts gemini_route's models between the subscription and the list below; they are ranked in the same route ledger.",
+    "Owner 2026-10-12: the order below is a SEED, not a ranking. loop/llm_router.py standing() measures it from loop/state/llm_route_ledger.json (every call outcome and every draft verdict) and walks the measured order. Seeded from run 38235183608 (Mon 12 Oct 2026): nemotron-3-ultra returned an EMPTY answer and cost ~5 minutes before the route moved on, so it starts last."
   ],
   "snapshot_date": "2026-10-11",
   "source": "https://openrouter.ai/api/v1/models",
@@ -16,17 +18,21 @@
     "model": "opus",
     "why": "Owner 2026-10-12: her Claude subscription (prepaid, no per-call bill) answers first; the $0 OpenRouter list below is the fallback. Never an API key, never a paid model."
   },
+  "gemini_route": {
+    "provider": "google-ai-studio",
+    "env": "GEMINI_API_KEY",
+    "models": [
+      "gemini-3.5-flash",
+      "gemini-3.5-flash-lite",
+      "gemini-3-flash-preview",
+      "gemini-2.5-flash",
+      "gemini-2.5-flash-lite"
+    ],
+    "free_tier_only": true,
+    "why": "Owner 2026-10-12: her existing AI Studio key, free tier (10-15 req/min, ~250-1500/day per model); never a billed project. Behind the subscription, ahead of the OpenRouter list because Gemini Flash writes long-form far better than any :free model there. Whether 3.5 is on the free tier is unknown (key probed 2026-10-12: 62 models visible), so 403/404/429 on any model falls through with one [gemini-route] line. Data rule: free-tier prompts may be used by Google to improve its products - channel scripts only, never anything confidential (LP names, deal terms); this repo holds nothing confidential."
+  },
   "min_context_length": 32000,
   "models": [
-    {
-      "id": "nvidia/nemotron-3-ultra-550b-a55b:free",
-      "context_length": 1000000,
-      "max_completion_tokens": 65536,
-      "pricing": {
-        "prompt": "0",
-        "completion": "0"
-      }
-    },
     {
       "id": "nvidia/nemotron-3-super-120b-a12b:free",
       "context_length": 262144,
@@ -49,6 +55,15 @@
       "id": "google/gemma-4-26b-a4b-it:free",
       "context_length": 262144,
       "max_completion_tokens": 32768,
+      "pricing": {
+        "prompt": "0",
+        "completion": "0"
+      }
+    },
+    {
+      "id": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "context_length": 1000000,
+      "max_completion_tokens": 65536,
       "pricing": {
         "prompt": "0",
         "completion": "0"

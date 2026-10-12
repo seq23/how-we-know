@@ -9,3 +9,8 @@
 # git config before every pull --rebase that can touch this file. See
 # loop/tools/merge_quota_json.py for the merge logic itself.
 loop/state/quota.json merge=quota-union
+
+# loop/state/llm_route_ledger.json is appended to by every lane that calls a
+# $0 model (loop/llm_router.py). A conflict is a false positive; the driver
+# unions both sides' timestamped events. Command set in bin/loop-stage.sh.
+loop/state/llm_route_ledger.json merge=route-ledger-union
