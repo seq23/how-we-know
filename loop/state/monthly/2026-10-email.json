@@ -1,0 +1,266 @@
+{
+  "month": "2026-10",
+  "partial": true,
+  "from": "2026-10-01",
+  "to": "2026-10-12",
+  "today": "2026-10-12",
+  "published": {
+    "long_form": 7,
+    "shorts": 4,
+    "by_domain": {
+      "long_form": {
+        "materials": [
+          {
+            "slug": "what-is-a-semiconductor-made-of",
+            "question": "what is a semiconductor made of",
+            "video_id": "kTBlLeWdi4g",
+            "aired": "2026-10-02"
+          },
+          {
+            "slug": "how-strong-is-graphene",
+            "question": "how strong is graphene",
+            "video_id": "debozzLtVRA",
+            "aired": "2026-10-05"
+          },
+          {
+            "slug": "why-does-old-iron-not-rust",
+            "question": "why does old iron not rust",
+            "video_id": "7tdvXATeeng",
+            "aired": "2026-10-09"
+          },
+          {
+            "slug": "how-is-3d-printed-metal-made",
+            "question": "how is 3d printed metal made",
+            "video_id": "VDFFur-xYUU",
+            "aired": "2026-10-12"
+          }
+        ],
+        "deep sea": [
+          {
+            "slug": "09-what-is-the-scariest-deep-sea-creature",
+            "question": "what is the scariest deep sea creature",
+            "video_id": "G1TqXmf36Qo",
+            "aired": "2026-10-04"
+          },
+          {
+            "slug": "19-what-is-the-deepest-fish-ever-recorded",
+            "question": "what is the deepest fish ever recorded",
+            "video_id": "OdYunlbB73g",
+            "aired": "2026-10-06"
+          },
+          {
+            "slug": "18-why-does-black-smoker-water-not-boil",
+            "question": "why does black-smoker water not boil",
+            "video_id": "IbrSPKUK1IM",
+            "aired": "2026-10-11"
+          }
+        ]
+      },
+      "shorts": {
+        "deep sea": [
+          {
+            "slug": "how-do-scientists-know-so-much",
+            "question": "how do scientists know so much about the deep ocean when we've explored so little of it",
+            "video_id": "qPnBKYAR3ps",
+            "aired": "2026-10-05"
+          },
+          {
+            "slug": "how-do-scientists-know-how-old-something-is",
+            "question": "how do scientists know how old something is",
+            "video_id": "5JErm9uFsFw",
+            "aired": "2026-10-05"
+          },
+          {
+            "slug": "how-do-scientists-know-about-other-galaxies",
+            "question": "how do scientists know about other galaxies",
+            "video_id": "7QtJ_B2kggQ",
+            "aired": "2026-10-06"
+          },
+          {
+            "slug": "why-deep-sea-fish-die-when-brought-to-surface",
+            "question": "why deep sea fish die when brought to surface",
+            "video_id": "0I4Pi91TWB4",
+            "aired": "2026-10-07"
+          }
+        ]
+      }
+    },
+    "ahead": {
+      "long_form": {
+        "count": 15,
+        "last": "2026-11-08"
+      },
+      "shorts": {
+        "count": 2,
+        "last": "2026-10-13"
+      }
+    }
+  },
+  "data": {
+    "views_28d_long_form": 198,
+    "views_28d_shorts": 1027,
+    "views_month_long_form": 24,
+    "views_month_shorts": 371,
+    "median_views_per_episode": 7,
+    "median_views_per_short": 36.5,
+    "top_episodes": [
+      {
+        "video_id": "kTBlLeWdi4g",
+        "views": 9,
+        "title": "what is a semiconductor made of"
+      },
+      {
+        "video_id": "OdYunlbB73g",
+        "views": 7,
+        "title": "what is the deepest fish ever recorded"
+      },
+      {
+        "video_id": "G1TqXmf36Qo",
+        "views": 4,
+        "title": "what is the scariest deep sea creature"
+      },
+      {
+        "video_id": "debozzLtVRA",
+        "views": 3,
+        "title": "how strong is graphene"
+      },
+      {
+        "video_id": "7tdvXATeeng",
+        "views": 1,
+        "title": "why does old iron not rust"
+      }
+    ],
+    "top_shorts": [
+      {
+        "video_id": "7QtJ_B2kggQ",
+        "views": 187,
+        "title": "how do scientists know about other galaxies"
+      },
+      {
+        "video_id": "5JErm9uFsFw",
+        "views": 105,
+        "title": "how do scientists know how old something is"
+      },
+      {
+        "video_id": "qPnBKYAR3ps",
+        "views": 70,
+        "title": "how do scientists know so much about the deep ocean when we've explored so little of it"
+      },
+      {
+        "video_id": "0I4Pi91TWB4",
+        "views": 9,
+        "title": "why deep sea fish die when brought to surface"
+      }
+    ],
+    "avd_s": 70.0,
+    "avd_floor_s": 146.0,
+    "subscribers_28d_net": 21,
+    "subscribers_total": 26,
+    "watch_hours": 4.0,
+    "watch_hours_floor": 3000.0,
+    "watch_hours_pct": 0.1,
+    "verdict_as_of": "2026-10-12",
+    "shorts_weeks": [
+      {
+        "week": "2026-W40",
+        "from": "2026-10-01",
+        "to": "2026-10-04",
+        "shorts": 0,
+        "target": 9,
+        "full_week": false
+      },
+      {
+        "week": "2026-W41",
+        "from": "2026-10-05",
+        "to": "2026-10-11",
+        "shorts": 4,
+        "target": 9,
+        "full_week": true
+      },
+      {
+        "week": "2026-W42",
+        "from": "2026-10-12",
+        "to": "2026-10-12",
+        "shorts": 0,
+        "target": 9,
+        "full_week": false
+      }
+    ]
+  },
+  "previous": null,
+  "rules": {
+    "domain_swap": {
+      "triggered": false,
+      "retired": null,
+      "promoted": null,
+      "need_measured": 8,
+      "queue_floor": 4,
+      "domains": {
+        "deep sea": {
+          "measured": 11,
+          "queue": 6,
+          "avd_s": 111.9
+        },
+        "materials": {
+          "measured": 8,
+          "queue": 7,
+          "avd_s": 98.6
+        }
+      },
+      "why": "no allocated domain has decayed below the 4-topic queue floor."
+    },
+    "slot_move": {
+      "triggered": false,
+      "moved": null,
+      "spread_s": 13.3,
+      "need_spread_s": 30.0,
+      "need_measured": 8,
+      "why": "deep-sea-ocean-science leads materials-and-manufacturing by 13s of average view duration, under the 30s spread that justifies moving a slot."
+    },
+    "opening": {
+      "triggered": false,
+      "active": "cold-open-payoff",
+      "eligible": 0,
+      "need": 3,
+      "compare_on": null,
+      "action": "wait",
+      "why": "not yet decidable: 0 published video(s) carry cold-open-payoff (in force since 2026-09-28); the comparison with pre-rule is set 28 days after the 3rd one airs, and every newly authored script carries it"
+    },
+    "topic_kills": [
+      {
+        "slug": "12-what-is-a-frilled-shark",
+        "on": "2026-10-10",
+        "why": "title gap 0.00 is at or below the 0.3 saturation ceiling: 20 of the top 20 titles already answer this question squarely."
+      },
+      {
+        "slug": "11-what-is-a-dumbo-octopus",
+        "on": "2026-10-10",
+        "why": "title gap 0.10 is at or below the 0.3 saturation ceiling: 18 of the top 20 titles already answer this question squarely."
+      },
+      {
+        "slug": "17-what-is-a-yeti-crab",
+        "on": "2026-10-10",
+        "why": "demand_index 0.126 is below the 0.16 floor (audience-led: top-20 median views and query-family breadth, not autocomplete completions); title gap 0.00 is at or below the 0.3 saturation ceiling: 20 of the top 20 titles already answer this question squarely."
+      },
+      {
+        "slug": "03-why-deep-sea-creatures-are-surfacing",
+        "on": "2026-10-10",
+        "why": "title gap 0.20 is at or below the 0.3 saturation ceiling: 16 of the top 20 titles already answer this question squarely."
+      }
+    ],
+    "cadence": {
+      "per_week": 4,
+      "owner_decision": "2 Sep 2026",
+      "research": "reviewed 12 Oct 2026: 4 a week holds (education channels posting 2-20 a month sit in the same flat zone; the cliff is past 20 a month) - docs/research/how-we-know-numbers.md, section 5",
+      "triggered": false
+    }
+  },
+  "needs_you": [],
+  "advice": {
+    "ok": true,
+    "text": "Median views are 7 per episode and 36.5 per Short, so no pivot rule has triggered; the data is too thin to pivot on, and the 13.3 s domain spread means nothing at these counts. The figure that matters is average view duration: 70 s against the 146 s floor. The single change for next month is getting the opening-line experiment live. 0 of 3 eligible episodes have aired, and that experiment targets exactly this gap. One hint, not a conclusion: the best Shorts are broad \"how do scientists know\" questions (187 and 105 views), and two of them are filed as deep sea when they are not. Also, the watch-hour target reads 3,000, so please check it against the Partner Programme threshold. This is advisory; the rules decide.",
+    "route": "claude-subscription",
+    "model": "claude-subscription/opus",
+    "why": ""
+  }
+}
