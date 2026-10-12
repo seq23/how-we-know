@@ -37,6 +37,7 @@ import cadence                                             # noqa: E402
 import domains                                             # noqa: E402
 import ledger                                              # noqa: E402
 import ypp                                                 # noqa: E402
+import verdict as channel_verdict                          # noqa: E402
 from common import Stage, config, week_id                  # noqa: E402
 from common import owner_actions as common_owner_actions  # noqa: E402
 
@@ -97,6 +98,33 @@ EMPTY_SLOT_RED_DAYS = 14      # her decision, 2026-09-14: an empty slot inside t
 CALENDAR_WEEKS = 4
 WAIT_YELLOW_DAYS = 3          # finished work waiting longer than this is yellow...
 WAIT_RED_DAYS = 7             # ...and longer than this is red
+# SHORTS CADENCE (owner, 2026-10-12: "why did the Shorts lane emails never tell
+# me"). Shorts went from 14 a week to 1 while this verdict counted long-form
+# slots only. One week under config shorts_per_week is yellow; this week AND
+# the week before under it is red.
+SHORTS_RED_WEEKS = 2
+SHORTS_LEDGER = ROOT / "loop" / "state" / "shorts_ledger.json"
+
+
+def shorts_flag(shorts: dict | None) -> tuple[str | None, str | None]:
+    """("red" | "yellow" | None, reason) from a verdict.shorts_cadence() dict.
+
+    Pure. Red when the trailing 7 days AND the 7 before them were both under
+    target (SHORTS_RED_WEEKS consecutive weeks); yellow when only the
+    trailing 7 days were; None when on target or unmeasured.
+    """
+    if not shorts or not shorts.get("target_per_week"):
+        return None, None
+    want = int(shorts["target_per_week"])
+    now_n, prev_n = int(shorts.get("published_7d") or 0), int(shorts.get("published_prev_7d") or 0)
+    if now_n >= want:
+        return None, None
+    shelf = (f"; shelf {shorts.get('shelf')} verified unpublished "
+             f"({shorts.get('shelf_weeks')} wk)" if shorts.get("shelf") is not None else "")
+    if prev_n < want:
+        return "red", (f"Shorts under target {SHORTS_RED_WEEKS} weeks running: "
+                       f"{now_n} then {prev_n} vs {want}/week{shelf}")
+    return "yellow", f"Shorts under target this week: {now_n} vs {want}/week{shelf}"
 
 
 def queued_this_week(led: dict, since: dt.datetime, until: dt.datetime) -> list[dict]:
@@ -193,7 +221,8 @@ def pipeline(led: dict, depth: dict, hb: dict, now: dt.datetime) -> dict:
 
 def verdict(queued_rows: list[dict], cal: list[dict], pipe: dict,
             loud_stops: list[str],
-            waiting: dict | None = None) -> tuple[str, str, list[str]]:
+            waiting: dict | None = None,
+            shorts: dict | None = None) -> tuple[str, str, list[str]]:
     """(emoji, one-line verdict, reasons). The rules, in words:
 
     🔴  a stop that needed a human; or an empty slot inside EMPTY_SLOT_RED_DAYS;
@@ -203,6 +232,10 @@ def verdict(queued_rows: list[dict], cal: list[dict], pipe: dict,
         calendar; or finished work waiting more than WAIT_YELLOW_DAYS; or
         nothing queued this week while something is finished.
     🟢  otherwise.
+    Shorts (shorts_flag): under config shorts_per_week for SHORTS_RED_WEEKS
+    consecutive weeks is 🔴, for the trailing week alone 🟡. Checked right
+    after the stop and owner checks, ahead of the calendar notes, because
+    Shorts carry most of the channel's views.
 
     `loud_stops` is the STAGE NAME of every stop this week whose disposition
     was needs_human — the ones that already opened their own GitHub issue.
@@ -242,6 +275,11 @@ def verdict(queued_rows: list[dict], cal: list[dict], pipe: dict,
             f"{len(waiting)} item(s) — needs your key or account: "
             + ", ".join(f"{rec.get('code')} ({stage})"
                         for stage, rec in sorted(waiting.items())))
+    sflag, sreason = shorts_flag(shorts)
+    if sflag == "red":
+        reasons_red.append(sreason)
+    elif sflag == "yellow":
+        reasons_yellow.append(sreason)
     empty = [c for c in cal if not c["slug"]]
     soon = [c for c in empty if c["days_away"] <= EMPTY_SLOT_RED_DAYS]
     if soon:
@@ -381,7 +419,22 @@ def render(week: str, now: dt.datetime) -> tuple[str, dict]:
     # "## Waiting on you" section) — verdict() needs it too, so the subject
     # line can name it. See verdict()'s own docstring for the incident.
     waiting = common_owner_actions()
-    mark, headline, reasons = verdict(queued_rows, cal, pipe, loud_stages, waiting)
+    # Shorts cadence, live at render time from the shorts ledger; the R2
+    # shelf count is the Friday measure lane's (channel_verdict.json).
+    cv = channel_verdict.read() or {}
+    prev_sc = cv.get("shorts_cadence") or {}
+    try:
+        sl = json.loads(SHORTS_LEDGER.read_text()).get("published", [])
+    except (OSError, ValueError):
+        sl = None
+    sc = (channel_verdict.shorts_cadence(
+              sl, cadence.shorts_effective(), now,
+              prev_sc.get("r2_verified_unpublished"), prev_sc.get("r2_basis"))
+          if sl is not None else None)
+    if sc is not None:
+        cv["shorts_cadence"] = sc
+    mark, headline, reasons = verdict(queued_rows, cal, pipe, loud_stages,
+                                      waiting, sc)
 
     def dom(slug: str) -> str:
         return by_slug.get(slug, "—")
@@ -392,6 +445,11 @@ def render(week: str, now: dt.datetime) -> tuple[str, dict]:
         L.append(f"- {r}")
     if len(reasons) > 1:
         L.append("")
+
+    # IS THIS WORKING - the channel's numbers with their floors beside them,
+    # written each Friday by loop/measure.py into channel_verdict.json
+    # (loop/verdict.py). Second on the page, under the pipeline verdict.
+    L += channel_verdict.digest_block(cv)
 
     # --- THE ONLY THING IN THIS EMAIL THAT IS ADDRESSED TO HER --------------
     #
