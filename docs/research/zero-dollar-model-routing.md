@@ -1,6 +1,6 @@
 # $0 Model Routing
 
-Repo copy of the research page https://claude.ai/artifact/V3mv9fNxg8DmsB3tLpxmLG (v1.4, 12 Oct 2026).
+Repo copy of the research page https://claude.ai/artifact/V3mv9fNxg8DmsB3tLpxmLG (v1.6, 12 Oct 2026, final for the day).
 The page is the living version; this copy is refreshed when it changes. The code decides, this explains.
 
 ## 1. The route, in order
@@ -19,6 +19,10 @@ The page is the living version; this copy is refreshed when it changes. The code
    used by Google to improve its products: channel scripts only, never anything confidential.
 3. **The $0 OpenRouter list, in measured order** (`config/llm_routing.json` is the roster;
    `loop/state/llm_route_ledger.json` reorders it by pass rate and latency; `python3 loop/llm_router.py standing`).
+   Gemini and OpenRouter models are ranked together; the config's first model is not a preference
+   (`effective_preference()`, #167). Every OpenRouter request carries a reasoning cap of 2,000 tokens
+   inside `max_tokens` 24,000, and a draft whose only problems are dead links gets a citation-repair
+   turn instead of a rewrite (#171).
 4. **Never**: an API key billed per call, a paid model, an OpenAI subscription (no API access, Codex
    sign-in does not run headless), or any route that trains on confidential input.
 
@@ -51,7 +55,12 @@ GLM-5.x, DeepSeek V4, Qwen3.8).
 
 **Production, Mon 12 Oct 2026 (run 38235183608):** Ultra answered empty (5 min lost); Super wrote
 ~1,025 words against a ~1,300-word floor and cited a dead URL; the job was cancelled by a 31-minute
-ceiling set on a paid model's median. Fixed by #159/#161: 210-minute authoring budget, 230 ceiling.
+ceiling set on a paid model's median. Fixed by #159/#161 (budget in code, ceiling derived from it); since
+#171 the lane starts at 05:00 UTC with a 480-minute budget and a 500-minute ceiling.
+
+**Subscription in production:** run 38272528658 wrote three scripts on `claude-subscription/opus`, first
+attempt each; Monday run 38282185828 (12 Oct) succeeded, promoted the validated drafts to `scripts/` (#184)
+and left 4 items in `loop/render_queue.json`.
 
 **Bench, 12 Oct 2026** (`loop/bench_free_models.py`, results `research/free_model_bench/2026-10-12.md`):
 no free model wrote a passing script. gemini-2.5-flash came closest (every draft over the floor,
@@ -60,7 +69,25 @@ stopped by broken visual cues. gemma-4-31b/26b were rate-limited every time; ink
 non-agentic callers (403); nemotron-3.5-lightning and dots-3-note answered empty; gemini-3.5-flash 503.
 **No draft failed on length alone, so the "expand to 2x" idea does not apply**; the failures are dead
 citations and broken directives. Reasoning models on OpenRouter think until the 16,000-token limit and
-return empty text (`finish_reason=length`); the request needs a reasoning cap.
+return empty text (`finish_reason=length`). Both fixes landed in #171: the reasoning cap (probe after:
+nemotron-3-super `finish_reason=stop`, 937 words, 1,999 reasoning tokens, cost 0) and the citation-repair
+turn.
+
+**Standing at the end of 12 Oct** (ledger seeded from the bench and the day's runs, #171):
+
+| # | Model | Bucket | Judged | Pass rate |
+|---|---|---|---|---|
+| 1 | gemini-2.5-flash-lite | UNMEASURED | 1 | 0.00 |
+| 2 | gemini-3-flash-preview | MEASURED-BAD | 5 | 0.20 (best) |
+| 3 | gemini-2.5-flash | MEASURED-BAD | 8 | 0.00 |
+| 4 | gemini-3.5-flash-lite | MEASURED-BAD | 4 | 0.00 |
+| 5 | gemini-3.5-flash | MEASURED-BAD | 5 | 0.00 |
+| 6 | nemotron-3-ultra-550b-a55b:free | MEASURED-BAD | 8 | 0.00 |
+| 7 | nemotron-3-super-120b-a12b:free | MEASURED-BAD | 9 | 0.00 |
+| 8 | gemma-4-31b-it:free | MEASURED-BAD | 5 | 0.00 |
+| 9 | gemma-4-26b-a4b-it:free | MEASURED-BAD | 5 | 0.00 |
+
+The subscription tier is the writer; the free list is a fallback.
 
 ## 5. What the web says
 

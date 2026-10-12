@@ -465,6 +465,54 @@
         "latency_s": null,
         "outcome": "failed_validation",
         "ts": "2026-10-12T15:31:29Z"
+      },
+      {
+        "lane": "test_claude_subscription_route.py",
+        "latency_s": 0.0,
+        "outcome": "answered",
+        "ts": "2026-10-12T17:13:17Z"
+      },
+      {
+        "lane": "test_claude_subscription_route.py",
+        "latency_s": 0.0,
+        "outcome": "answered",
+        "ts": "2026-10-12T17:13:17Z"
+      },
+      {
+        "lane": "test_claude_subscription_route.py",
+        "latency_s": 0.0,
+        "outcome": "answered",
+        "ts": "2026-10-12T17:13:17Z"
+      },
+      {
+        "lane": "test_claude_subscription_route.py",
+        "latency_s": 0.0,
+        "outcome": "answered",
+        "ts": "2026-10-12T17:13:17Z"
+      },
+      {
+        "lane": "test_claude_subscription_route.py",
+        "latency_s": 0.0,
+        "outcome": "answered",
+        "ts": "2026-10-12T17:13:17Z"
+      },
+      {
+        "lane": "test_claude_subscription_route.py",
+        "latency_s": 0.0,
+        "outcome": "answered",
+        "ts": "2026-10-12T17:13:17Z"
+      },
+      {
+        "lane": "test_claude_subscription_route.py",
+        "latency_s": 0.0,
+        "outcome": "answered",
+        "ts": "2026-10-12T17:13:17Z"
+      },
+      {
+        "lane": "test_claude_subscription_route.py",
+        "latency_s": 0.0,
+        "outcome": "answered",
+        "ts": "2026-10-12T17:13:17Z"
       }
     ],
     "nvidia/nemotron-3.5-lightning:free": [

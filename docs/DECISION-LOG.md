@@ -1113,3 +1113,39 @@ Guard: loop/tests/test_shorts_deep_sea_all_cuts.py (26 checks).
   can get free usage"): Gemini 3.5 Flash was 503 "overloaded" at 10:03/10:13 UTC; the quiet window is
   ~02:00–06:00 UTC. Budget re-derived to 480 min, ceiling 500, before the 14:00 UTC upload lane. The
   ledger's timestamps decide whether it helped.
+
+## 2026-10-12 — final
+
+Everything decided on 12 Oct 2026, as landed on `main` by the end of the day.
+
+- **Monday authoring budget in code** (#159, #161): no draft attempt starts past `AUTHORING_BUDGET_MIN`;
+  what is left becomes a brief (`AUTHORING_BUDGET_EXHAUSTED`); the job ceiling is budget + 20, pinned by test.
+- **Measured $0 fallback + Gemini free tier** (#163): route = subscription → Gemini → OpenRouter, the free
+  models ranked together by `loop/state/llm_route_ledger.json`; `python3 loop/llm_router.py standing`.
+- **The config default is not a preference** (#167): `effective_preference()`; Gemini goes first.
+- **Shorts shelf decoupled** (#169): a bad cut holds only itself; V14/V15 measure the right thing; drain at
+  2/day (19:00 and 21:00 CT); dry-shelf stop; Mac stops file an issue.
+- **Reasoning cap 2,000 / max_tokens 24,000, citation-repair turn, bench-seeded ledger; Monday lane at
+  05:00 UTC (`0 5 * * 1`), budget 480, ceiling 500** (#171). Standing at day's end: every free model
+  MEASURED-BAD except gemini-2.5-flash-lite (UNMEASURED); best pass rate gemini-3-flash-preview 0.20.
+  The subscription tier (opus via `claude -p`, no `--bare`) is the writer.
+- **V21 exempts `[HUMAN]` POV lines by tag; reuse bounded by the rotation window** (#173); the
+  VALIDATOR_FAILED "not in stop_policy.json" message fixed.
+- **A tripped breaker adds BREAKER_TRIPPED, never replaces the other stops** (#174).
+- **Batch resumes on wake** (#175): `com.howweknow.batch-resume` every 300 s, starts a missed night up to
+  06:00, cutoff 09:00 (`BATCH_NIGHT_INCOMPLETE`, self-resolving), interrupted renders quarantined to
+  `renders/interrupted/`. With it, the Mac never sleeps on AC (`pmset -c disablesleep 1`); on battery a
+  closed lid still sleeps it. The CI sweep's resume-on-wake (`com.seq.ci-sweep-resume`) lives in seq-bin.
+- **Monthly email** (#176): `loop/monthly_email.py`, the 1st of each month, manual dispatch = month to
+  date; paragraph via the subscription route, refused if it prints a number the email does not. Pivot
+  research is delivered through it. First one: issue #179.
+- **Digest subject in plain words** (#177): one sentence, worst problem first, counts vs target,
+  "needs you: <action>" only for needs-human stops; every stop code (137) has a `plain` sentence (test F).
+- **Runway rebuild validates the item with its matched POV line** (#178).
+- **BATCH_NIGHT_INCOMPLETE gets its plain sentence** (#180, red main after #175 met #177).
+- **Subject emoji matches the body's verdict** (#182): W39–W41 read "🟢 Stalled" under red bodies
+  (a reused `mark` variable); `weekly-digest` label created. W42: issue #183.
+- **Carried-over validated drafts are promoted to `scripts/`** (#184). Monday run 38282185828: success,
+  3 scripts promoted, 4 items in `loop/render_queue.json`.
+- **Long-form cadence 4/week holds; Shorts drain 2/day** (owner, research in
+  docs/research/how-we-know-numbers.md).
