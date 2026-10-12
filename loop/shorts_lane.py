@@ -101,6 +101,13 @@ SHORTS_SLOT_LADDER = ((0, 19), (2, 19), (4, 19), (5, 19),
                       (6, 19), (1, 19), (3, 19),
                       (5, 21), (6, 21))
 SHORTS_WEEKDAYS = tuple(sorted({wd for wd, _ in SHORTS_SLOT_LADDER[:4]}))
+# DRAIN MODE (owner, 2026-10-12: "the backlog needs to be drained properly -
+# possibly 2 short posts per day until its drained"). Two evenings' rungs a
+# day, 19:00 and 21:00 local - both inside the stated 18:00-21:00 Shorts peak,
+# rather than one 12 hours later in the worst part of a Short's day. Used only
+# while drain_mode() says the verified shelf holds a backlog; see config
+# cadence.shorts_drain.
+DRAIN_LADDER = tuple((wd, h) for wd in range(7) for h in (19, 21))
 UPLOAD_UNITS, THUMB_UNITS, FLIP_UNITS = 1600, 50, 50
 DAILY_UNITS = 10000
 LEDGER = LOOP / "state" / "shorts_ledger.json"
@@ -165,7 +172,8 @@ def save_ledger(d: dict) -> None:
     LEDGER.write_text(json.dumps(d, indent=2) + "\n")
 
 
-def slots(start: datetime, n: int, per_week: int | None = None) -> list[datetime]:
+def slots(start: datetime, n: int, per_week: int | None = None,
+          ladder: tuple | None = None) -> list[datetime]:
     """`n` Short slots on the cadence's evenings, pinned in LOCAL time.
 
     Local, not UTC, for the same reason the episode slots are: a fixed UTC hour
@@ -175,9 +183,12 @@ def slots(start: datetime, n: int, per_week: int | None = None) -> list[datetime
     Short already on the calendar - so raising the Shorts cadence hands out new
     evenings past the end of the existing run and never re-dates one.
     """
-    if per_week is None:
-        per_week = cadence.shorts_effective()
-    rungs = slot_ladder(per_week)
+    if ladder is not None:
+        rungs = ladder
+    else:
+        if per_week is None:
+            per_week = cadence.shorts_effective()
+        rungs = slot_ladder(per_week)
     by_day: dict[int, list[int]] = {}
     for wd, hour in rungs:
         by_day.setdefault(wd, []).append(hour)
@@ -204,7 +215,7 @@ def slots(start: datetime, n: int, per_week: int | None = None) -> list[datetime
     return out
 
 
-def schedule_for(led: dict, n: int) -> list[datetime]:
+def schedule_for(led: dict, n: int, drain: bool = False) -> list[datetime]:
     """The next `n` EVENING slots, given every Short already on the calendar.
 
     THE ONLY PLACE A SHORT'S SLOT IS ASSIGNED. The Mac lane and the cloud lane
@@ -216,7 +227,44 @@ def schedule_for(led: dict, n: int) -> list[datetime]:
               for r in led["published"] if r.get("scheduled_publish_at")]
     anchor = max([datetime.now(timezone.utc)] +
                  [datetime.fromisoformat(s) for s in stamps])
-    return slots(anchor, n)
+    return slots(anchor, n, ladder=DRAIN_LADDER if drain else None)
+
+
+def drain_mode(backlog: int, cfg: dict | None = None) -> dict:
+    """Whether the cloud lane drains the shelf at `per_day`, and why.
+
+    `backlog` is the number of verified, unpublished cuts on the R2 shelf.
+    Drain while it holds at least `while_backlog_weeks_at_least` weeks of
+    supply at shorts_per_week; the normal ladder resumes below that.
+    """
+    c = (cfg or config())["cadence"]
+    d = c.get("shorts_drain") or {}
+    per_week = cadence.shorts_effective()
+    weeks = backlog / per_week if per_week else 0.0
+    floor = float(d.get("while_backlog_weeks_at_least", 0) or 0)
+    on = bool(d) and floor > 0 and weeks >= floor
+    per_day = int(d.get("per_day", 1)) if on else None
+    return {"on": on, "per_run": per_day, "backlog": backlog,
+            "weeks": round(weeks, 1), "per_week": per_week,
+            "line": (f"shorts mode: {'DRAIN ' + str(per_day) + '/day' if on else f'normal {per_week}/week'}"
+                     f" - verified backlog {backlog} cut(s) = {weeks:.1f} week(s) "
+                     f"at {per_week}/week (drain at >= {floor:g} weeks)")}
+
+
+def published_trailing(led: dict, days: int = 7,
+                       at: datetime | None = None) -> int:
+    """Shorts whose publish time fell in the trailing `days` days."""
+    at = at or datetime.now(timezone.utc)
+    lo = at - timedelta(days=days)
+    n = 0
+    for r in led.get("published", []):
+        stamp = r.get("scheduled_publish_at") or r.get("uploaded_at")
+        if not stamp:
+            continue
+        t = datetime.fromisoformat(str(stamp).replace("Z", "+00:00"))
+        if lo < t <= at:
+            n += 1
+    return n
 
 
 def _local_day(stamp) -> object:
@@ -225,7 +273,8 @@ def _local_day(stamp) -> object:
     return stamp.astimezone(SHORTS_TZ).date()
 
 
-def plan(led: dict, picks: list, n: int) -> list[tuple[Pick, datetime]]:
+def plan(led: dict, picks: list, n: int,
+         drain: bool = False) -> list[tuple[Pick, datetime]]:
     """Up to `n` of `picks` (in their mix order), each with its evening slot.
 
     THE ONE RULE ADDED WITH THE DEEP-SEA CUTS 2 AND 3: no two Shorts from the
@@ -244,7 +293,7 @@ def plan(led: dict, picks: list, n: int) -> list[tuple[Pick, datetime]]:
               if r.get("slug") and r.get("scheduled_publish_at")}
     remaining = list(picks)
     out: list[tuple[Pick, datetime]] = []
-    for t in schedule_for(led, n + 14):
+    for t in schedule_for(led, n + 14, drain=drain):
         if len(out) == n or not remaining:
             break
         day = _local_day(t)

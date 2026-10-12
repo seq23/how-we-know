@@ -2078,10 +2078,43 @@
       "completion_tokens": 2806,
       "total_tokens": 12108,
       "cost_usd": 0
+    },
+    {
+      "at": "2026-10-12T15:48:26+00:00",
+      "slug": "what-lives-in-mariana-trench",
+      "model": "claude-subscription/opus",
+      "attempt": 1,
+      "accepted": true,
+      "prompt_tokens": 3768,
+      "completion_tokens": 16988,
+      "total_tokens": 20756,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-12T15:51:08+00:00",
+      "slug": "why-deep-sea-creatures-are-creepers",
+      "model": "claude-subscription/opus",
+      "attempt": 1,
+      "accepted": true,
+      "prompt_tokens": 3736,
+      "completion_tokens": 15975,
+      "total_tokens": 19711,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-12T15:53:33+00:00",
+      "slug": "how-deep-can-whales-dive",
+      "model": "claude-subscription/opus",
+      "attempt": 1,
+      "accepted": true,
+      "prompt_tokens": 3741,
+      "completion_tokens": 14531,
+      "total_tokens": 18272,
+      "cost_usd": 0
     }
   ],
   "total_usd": 10.175922,
-  "drafts_written": 82,
-  "average_usd_per_accepted_draft": 0.124097,
-  "updated": "2026-10-12T15:31:29+00:00"
+  "drafts_written": 85,
+  "average_usd_per_accepted_draft": 0.119717,
+  "updated": "2026-10-12T15:53:33+00:00"
 }

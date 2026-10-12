@@ -172,17 +172,33 @@ else:
     if "held_by" in row or not row.get("scheduled_publish_at"):
         fails.append(f"4: run() left the released row unflagged/unscheduled: {row}")
 
-tube.calls.clear()
-try:
-    SC.run(limit=2)                                     # nothing new, nothing to release
-    fails.append("4: with nothing to release and nothing shelved, run() must take NO_SHORTS_SHELVED")
-except SystemExit:
-    stops = list((tmp / "stops").glob("*shorts-cloud.json"))
-    rec = json.loads(stops[0].read_text()) if stops else {}
-    if rec.get("code") != "NO_SHORTS_SHELVED":
-        fails.append(f"4: expected NO_SHORTS_SHELVED, stop record says {rec.get('code')!r} ({stops})")
-    if tube.calls:
-        fails.append(f"4: YouTube was written to on a run with nothing to do: {tube.calls}")
+# Nothing new and nothing to release. Since 2026-10-12 WHICH stop depends on
+# the week: an empty shelf in a week below shorts_per_week is SHORTS_SHELF_DRY
+# (Rule 0 - three weeks of 3, 3, 1 Shorts exited 0 as NO_SHORTS_SHELVED); an
+# empty shelf in a week already on target is NO_SHORTS_SHELVED. Both asserted.
+def _empty_run(expect: str, why: str) -> None:
+    tube.calls.clear()
+    try:
+        SC.run(limit=2)
+        fails.append(f"4: with nothing to release and nothing shelved, run() must take {expect} ({why})")
+    except SystemExit:
+        stops = list((tmp / "stops").glob("*shorts-cloud.json"))
+        rec = json.loads(stops[0].read_text()) if stops else {}
+        if rec.get("code") != expect:
+            fails.append(f"4: {why}: expected {expect}, stop record says {rec.get('code')!r} ({stops})")
+        if tube.calls:
+            fails.append(f"4: YouTube was written to on a run with nothing to do: {tube.calls}")
+
+
+_empty_run("SHORTS_SHELF_DRY", "a week below target")
+from datetime import datetime as _dt, timedelta as _td, timezone as _tz  # noqa: E402
+_led = json.loads(LEDGER.read_text())
+_now = _dt.now(_tz.utc)
+_led["published"] += [{"slug": f"on-target-{i}", "rank": 1, "video_id": f"vt{i}",
+                       "scheduled_publish_at": (_now - _td(hours=3 + 12 * i))
+                       .strftime("%Y-%m-%dT%H:%M:%SZ")} for i in range(12)]
+LEDGER.write_text(json.dumps(_led))
+_empty_run("NO_SHORTS_SHELVED", "a week already on target")
 
 if fails:
     print("FAIL test_shorts_release_after_hold:")

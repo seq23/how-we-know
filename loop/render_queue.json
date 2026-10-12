@@ -1,12 +1,12 @@
 {
   "week": "2026-W42",
-  "generated": "2026-10-12T15:31:43+00:00",
+  "generated": "2026-10-12T15:53:50+00:00",
   "videos_per_week": 4,
   "breaker": "closed",
   "validators": [
     {
       "validator": "V1 directive-truth",
-      "examined": 477,
+      "examined": 488,
       "status": "PASS",
       "failures": [],
       "notes": [
@@ -26,7 +26,7 @@
     },
     {
       "validator": "V3 taxonomy",
-      "examined": 1,
+      "examined": 4,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -34,7 +34,7 @@
     },
     {
       "validator": "V4 pov",
-      "examined": 1,
+      "examined": 4,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -42,7 +42,7 @@
     },
     {
       "validator": "V5 sources-present",
-      "examined": 1,
+      "examined": 4,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -50,17 +50,18 @@
     },
     {
       "validator": "V6 attribution (soft)",
-      "examined": 1,
+      "examined": 4,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "how-deep-can-a-sperm-whale-go: narration names Woods Hole Oceanographic Institution with no matching ## Sources entry"
+        "how-deep-can-a-sperm-whale-go: narration names Woods Hole Oceanographic Institution with no matching ## Sources entry",
+        "why-deep-sea-creatures-are-creepers: narration names Science with no matching ## Sources entry"
       ],
       "stops": []
     },
     {
       "validator": "V7 plans",
-      "examined": 1,
+      "examined": 4,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -68,11 +69,15 @@
     },
     {
       "validator": "V8 source-urls",
-      "examined": 6,
+      "examined": 22,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "how-deep-can-a-sperm-whale-go: https://ocean.si.edu/ocean-life/marine-mammals/sperm-whales returned 403 (bot-blocked, treated as reachable)"
+        "what-lives-in-mariana-trench: https://ocean.si.edu/ecosystems/deep-sea/deep-sea returned 403 (bot-blocked, treated as reachable)",
+        "how-deep-can-a-sperm-whale-go: https://ocean.si.edu/ocean-life/marine-mammals/sperm-whales returned 403 (bot-blocked, treated as reachable)",
+        "why-deep-sea-creatures-are-creepers: https://ocean.si.edu/ecosystems/deep-sea/deep-sea returned 403 (bot-blocked, treated as reachable)",
+        "why-deep-sea-creatures-are-creepers: https://ocean.si.edu/ returned 403 (bot-blocked, treated as reachable)",
+        "how-deep-can-whales-dive: https://ocean.si.edu/ecosystems/deep-sea/deep-sea returned 403 (bot-blocked, treated as reachable)"
       ],
       "stops": []
     },
@@ -158,15 +163,17 @@
     },
     {
       "validator": "V21 no-boilerplate",
-      "examined": 45,
-      "status": "PASS",
-      "failures": [],
+      "examined": 46,
+      "status": "FAIL(1)",
+      "failures": [
+        "what-lives-in-the-depths-of-the-ocean.md and how-deep-can-a-sperm-whale-go.md share a verbatim narrated sentence (16 words): \"How do we know an animal behaves a certain way when we've seen it three times?\""
+      ],
       "notes": [],
       "stops": []
     },
     {
       "validator": "V22 producer-notes-second-person",
-      "examined": 45,
+      "examined": 46,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -174,7 +181,7 @@
     },
     {
       "validator": "V23 chapters-yt-compliant",
-      "examined": 45,
+      "examined": 46,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -224,7 +231,7 @@
     },
     {
       "validator": "V30 cloud-visibility",
-      "examined": 277,
+      "examined": 278,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -284,7 +291,7 @@
     },
     {
       "validator": "V36 editorial-gate",
-      "examined": 361,
+      "examined": 369,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -318,7 +325,7 @@
     },
     {
       "validator": "V42 authored-domain-allocated",
-      "examined": 1,
+      "examined": 4,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -326,7 +333,7 @@
     },
     {
       "validator": "V43 distinct-questions",
-      "examined": 14,
+      "examined": 17,
       "status": "PASS",
       "failures": [],
       "notes": [
@@ -336,7 +343,7 @@
     },
     {
       "validator": "V44 opening-payoff-first",
-      "examined": 1,
+      "examined": 4,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -361,7 +368,7 @@
       "stops": []
     }
   ],
-  "validators_passed": true,
+  "validators_passed": false,
   "approval": {
     "required": false,
     "mode": "notified, not asked",
@@ -406,18 +413,46 @@
     "message": "RUNWAY WARNING: only 4.0 weeks of queue left at 4/week - 1 publishable episode(s) of 8 on disk. Act now, not later: the authoring lane needs lead time and its human fallback needs more. By domain: deep-sea-ocean-science: 7.0 week(s) at 2/week (6 queued, 8 already dated); materials-and-manufacturing: 7.0 week(s) at 2/week (7 queued, 7 already dated)."
   },
   "authoring": {
-    "generated_this_week": 1,
+    "generated_this_week": 3,
     "cost_usd": 0.0,
     "model": "nvidia/nemotron-3-super-120b-a12b:free"
   },
   "items": [
     {
-      "slug": "how-deep-can-a-sperm-whale-go",
-      "question": "how deep can a sperm whale go",
-      "script": "scripts/how-deep-can-a-sperm-whale-go.md",
+      "slug": "what-lives-in-mariana-trench",
+      "question": "what lives in mariana trench",
+      "script": "loop/drafts/what-lives-in-mariana-trench.md",
       "generated": true,
       "author_cost_usd": 0,
-      "author_model": "gemini/gemini-3-flash-preview",
+      "author_model": "claude-subscription/opus",
+      "pov_id": "pov-001",
+      "pov_line": "When I picture the deep ocean I don't see blue water or fish. I see black. A massive amount of black space where you can't tell what's beside you or beneath you.",
+      "pov_tier": "specific",
+      "pov_matched_by": "tag:scale score 5.6",
+      "work_copy": "loop/work/what-lives-in-mariana-trench.md",
+      "audio_dir": "audio/what-lives-in-mariana-trench",
+      "plan": "loop/plans/what-lives-in-mariana-trench.json",
+      "render": "renders/what-lives-in-mariana-trench.mp4",
+      "source": "publish-queue",
+      "status": "queued",
+      "pov_bank_line": "When I picture the deep ocean I don't see blue water or fish. I see black. A massive amount of black space where you can't tell what's beside you or beneath you.",
+      "pov_script_line": "When I picture the deep ocean I don't see blue water or fish. I see black. A massive amount of black space where you can't tell what's beside you or beneath you.",
+      "source_count": 5,
+      "sources_cited": [
+        "NOAA",
+        "National Geographic",
+        "Scripps"
+      ],
+      "attribution_gaps": [],
+      "planned_beats": 88
+    },
+    {
+      "slug": "how-deep-can-a-sperm-whale-go",
+      "question": "how deep can a sperm whale go",
+      "script": "loop/drafts/how-deep-can-a-sperm-whale-go.md",
+      "generated": false,
+      "author_cost_usd": null,
+      "author_model": null,
       "pov_id": "pov-038",
       "pov_line": "How do we know an animal behaves a certain way when we've seen it three times?",
       "pov_tier": "transferable",
@@ -447,11 +482,70 @@
         "Woods Hole Oceanographic Institution"
       ],
       "planned_beats": 100
+    },
+    {
+      "slug": "why-deep-sea-creatures-are-creepers",
+      "question": "why deep sea creatures are creepers",
+      "script": "loop/drafts/why-deep-sea-creatures-are-creepers.md",
+      "generated": true,
+      "author_cost_usd": 0,
+      "author_model": "claude-subscription/opus",
+      "pov_id": "pov-002",
+      "pov_line": "It feels quiet, but not peaceful quiet. More like being somewhere you were never designed to be.",
+      "pov_tier": "specific",
+      "pov_matched_by": "tag:scale score 2.8",
+      "work_copy": "loop/work/why-deep-sea-creatures-are-creepers.md",
+      "audio_dir": "audio/why-deep-sea-creatures-are-creepers",
+      "plan": "loop/plans/why-deep-sea-creatures-are-creepers.json",
+      "render": "renders/why-deep-sea-creatures-are-creepers.mp4",
+      "source": "publish-queue",
+      "status": "queued",
+      "pov_bank_line": "It feels quiet, but not peaceful quiet. More like being somewhere you were never designed to be.",
+      "pov_script_line": "It feels quiet, but not peaceful quiet. More like being somewhere you were never designed to be.",
+      "source_count": 6,
+      "sources_cited": [
+        "NOAA",
+        "NOAA Ocean Exploration",
+        "MBARI",
+        "Smithsonian",
+        "Monterey Bay Aquarium Research Institute",
+        "Science"
+      ],
+      "attribution_gaps": [
+        "Science"
+      ],
+      "planned_beats": 84
+    },
+    {
+      "slug": "how-deep-can-whales-dive",
+      "question": "how deep can whales dive",
+      "script": "loop/drafts/how-deep-can-whales-dive.md",
+      "generated": true,
+      "author_cost_usd": 0,
+      "author_model": "claude-subscription/opus",
+      "pov_id": "pov-085",
+      "pov_line": "It doesn't bother me that instruments extend what we can know. Human senses are extremely limited. That's the point of technology.",
+      "pov_tier": "transferable",
+      "pov_matched_by": "tag:instruments score 2.0",
+      "work_copy": "loop/work/how-deep-can-whales-dive.md",
+      "audio_dir": "audio/how-deep-can-whales-dive",
+      "plan": "loop/plans/how-deep-can-whales-dive.json",
+      "render": "renders/how-deep-can-whales-dive.mp4",
+      "source": "publish-queue",
+      "status": "queued",
+      "pov_bank_line": "It doesn't bother me that instruments extend what we can know. Human senses are extremely limited. That's the point of technology.",
+      "pov_script_line": "It doesn't bother me that instruments extend what we can know. Human senses are extremely limited. That's the point of technology.",
+      "source_count": 5,
+      "sources_cited": [
+        "NOAA",
+        "NOAA Ocean Exploration",
+        "Smithsonian",
+        "Smithsonian Ocean",
+        "Guinness World Records"
+      ],
+      "attribution_gaps": [],
+      "planned_beats": 71
     }
   ],
-  "unauthored": [
-    "what lives in mariana trench",
-    "why deep sea creatures are creepers",
-    "how deep can whales dive"
-  ]
+  "unauthored": []
 }
