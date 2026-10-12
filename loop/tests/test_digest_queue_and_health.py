@@ -344,6 +344,18 @@ if leaks:
 if 'f"## {mark} {headline}", ""]' not in rsrc or 'for r in reasons[1:]:' not in rsrc:
     fails.append("(d) the body's first line is no longer the subject sentence")
 
+# The subject's emoji is the verdict's, not the last runway row's. Until
+# 2026-10-12 render() rebound `mark` in the Runway table, so W39-W42 subjects
+# read "🟢 Stalled…" / "🟢 Publishing is halted…" under a 🔴 body.
+examined += 1
+_body, _counts = digest.render("2026-W99", dt.datetime.now(dt.timezone.utc))
+_first = next((ln for ln in _body.splitlines() if ln.startswith("## ")), "")
+if _first[3:] != _counts["verdict"]:
+    fails.append(f"render(): the subject's verdict {_counts['verdict'][:60]!r} is not "
+                 f"the body's first line {_first[:60]!r}")
+if CODE_TOKEN.search(_first):
+    fails.append(f"(d) a stop code reached the body's first line: {_first}")
+
 if examined < 6:
     fails.append("Rule 0: fewer than six verdicts examined")
 if fails:
