@@ -559,6 +559,34 @@ def _mac_stop(message: str) -> dict:
             "disposition": "needs_human", "consecutive": 1, "self_resolving": False}
 
 
+def r2_shelf_now(prev_sc: dict, now: dt.datetime) -> tuple[int | None, str, str | None]:
+    """(verified Shorts on R2 not yet uploaded, basis, as-of) at render time.
+
+    WHY (2026-10-12, W42). The digest printed "shelf 2 verified unpublished,
+    0 on R2" at 16:44 UTC while 38 verified cuts sat on R2: it reused the
+    measure lane's 15:54:16 count, and the Mac pushed all 40 rank-2/3 cuts
+    between 15:54:34 and 16:00:39 (R2 last_modified). The count was true when
+    taken and stale when mailed, with nothing on the page saying when it was
+    taken. So the digest reads the shelf itself - measure.r2_shelf_count(),
+    the same listing and the same verified test the Shorts lane applies - and
+    falls back to the measured count only when the live read is unavailable,
+    stamped with the time it was measured. Never a guessed zero.
+    """
+    try:
+        import measure                                     # noqa: PLC0415
+        n, basis = measure.r2_shelf_count()
+    except Exception as e:                                 # noqa: BLE001
+        n, basis = None, f"live R2 read failed: {str(e)[:100]}"
+    if n is not None:
+        return n, f"{basis} (read live)", now.isoformat(timespec="seconds")
+    measured = prev_sc.get("r2_verified_unpublished")
+    if measured is None:
+        return None, basis, None
+    as_of = prev_sc.get("r2_as_of") or prev_sc.get("as_of")
+    return (measured, f"measured {as_of}: {prev_sc.get('r2_basis')} "
+                      f"(live read unavailable: {basis})", as_of)
+
+
 def render(week: str, now: dt.datetime) -> tuple[str, dict]:
     """The digest, and the counts it was built from."""
     cfg = config()
@@ -585,17 +613,18 @@ def render(week: str, now: dt.datetime) -> tuple[str, dict]:
     # "## Waiting on you" section) — verdict() needs it too, so the subject
     # line can name it. See verdict()'s own docstring for the incident.
     waiting = common_owner_actions()
-    # Shorts cadence, live at render time from the shorts ledger; the R2
-    # shelf count is the Friday measure lane's (channel_verdict.json).
+    # Shorts cadence, live at render time from the shorts ledger AND the R2
+    # shelf (r2_shelf_now); the measure lane's count is only the fallback.
     cv = channel_verdict.read() or {}
     prev_sc = cv.get("shorts_cadence") or {}
     try:
         sl = json.loads(SHORTS_LEDGER.read_text()).get("published", [])
     except (OSError, ValueError):
         sl = None
+    r2_n, r2_basis, r2_as_of = r2_shelf_now(prev_sc, now)
     sc = (channel_verdict.shorts_cadence(
-              sl, cadence.shorts_effective(), now,
-              prev_sc.get("r2_verified_unpublished"), prev_sc.get("r2_basis"))
+              sl, cadence.shorts_effective(), now, r2_n, r2_basis,
+              r2_as_of=r2_as_of)
           if sl is not None else None)
     if sc is not None:
         cv["shorts_cadence"] = sc

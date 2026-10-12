@@ -571,6 +571,12 @@ def score_new_domains(st: Stage) -> None:
         st.note(f"{dom} holds weekly slots and has fewer than "
                 f"{batch_queue.MIN_UNWRITTEN_TOPICS} unwritten, non-duplicate "
                 f"topics queued; mining and running the gate for it")
+        def stamp():
+            try:
+                return path.stat().st_mtime_ns
+            except OSError:
+                return None
+        before = stamp()
         g = subprocess.run(
             [PY, str(ROOT / "research" / "publish_order_domain.py"),
              "--domain", dom], cwd=ROOT, capture_output=True, text=True,
@@ -583,7 +589,10 @@ def score_new_domains(st: Stage) -> None:
                     f"{path.relative_to(ROOT)}")
         elif "NAMED STOP DOMAIN_QUEUE_THIN" in gout:
             # The queue it could build IS written; the stop names the gap.
-            if path.exists():
+            # Only when THIS run wrote it: with zero candidates the miner
+            # writes nothing (2026-10-12), and last week's file on disk is
+            # not work done today.
+            if path.exists() and stamp() != before:
                 st.work(f"scored a queue for {dom} -> "
                         f"{path.relative_to(ROOT)} (under the floor)")
             line = next(ln for ln in gout.splitlines()

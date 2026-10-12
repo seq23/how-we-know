@@ -257,20 +257,35 @@ else:
     if not r.ok:
         fails.append(f"V43 fails on the real queue: {r.failures[:3]}")
     # Negative proof: bypass the read-time rule and V43 must fail.
-    orig = batch_queue._screened
-    batch_queue._screened = lambda: (batch_queue._raw_entries(), [])
+    # ON A FIXTURE QUEUE (2026-10-12). This bypassed the rule on the REAL
+    # queue, so it proved something only while the live publish-order files
+    # still held an unpublished rephrasing for the bypass to expose - a fact
+    # the loop consumes as it makes episodes. The W39 incident queue, with
+    # episode 08 and microchips made, always holds them; V43 must pass on it
+    # with the rule in place AND fail on it with the rule bypassed.
+    saved = with_fixture(W39 + CHIP_SAME + DISTINCT[2:], [EP08, CHIPS])
     try:
-        r = v43([])
+        r_on = v43([])
+        orig = batch_queue._screened
+        batch_queue._screened = lambda: (batch_queue._raw_entries(), [])
+        try:
+            r = v43([])
+        finally:
+            batch_queue._screened = orig
+        # A week that repeats episode 08 fails even if the queue is clean.
+        r_week = v43([{"slug": slug(DEEP_SAME[2]), "question": DEEP_SAME[2]}])
     finally:
-        batch_queue._screened = orig
+        restore(saved)
+    examined += 1
+    if not r_on.ok or r_on.examined == 0:
+        fails.append(f"V43 fails (or examines nothing) on the fixture W39 queue "
+                     f"with the read-time rule in place: {r_on.failures[:3]}")
     examined += 1
     if r.ok:
         fails.append("V43 PASSED with the read-time rule bypassed - a guard "
                      "that cannot see what it governs")
-    # A week that repeats episode 08 fails even if the queue is clean.
     examined += 1
-    r = v43([{"slug": slug(DEEP_SAME[2]), "question": DEEP_SAME[2]}])
-    if r.ok:
+    if r_week.ok:
         fails.append("V43 passed a week item that repeats episode 08")
 
 examined += 1
@@ -374,16 +389,35 @@ if T is not None:
                            "what happens when a whale dies in the deep ocean"):
         fails.append("fact: 'what is whale fall' is episode 16's subject")
 # ...and on read, against the real catalogue: both W39 depth phrasings are
-# refused, the Mariana "what lives" question is not.
+# refused (an invariant - they can never become selectable again).
 for sl in ("how-deep-mariana-trench", "how-deep-is-the-ocean"):
     examined += 1
     if sl in real:
         fails.append(f"real queue: {sl} is still selectable; it is episode 10")
+# ...and on a FIXTURE queue, the Mariana "what lives" question is kept while
+# both depth phrasings are refused. This read the REAL queue until
+# 2026-10-12: "what-lives-in-mariana-trench" leaves it the day its episode is
+# published, so the pin would go red on the loop doing its job (the fate of
+# the section-7 pin). The fixture is the W39 depth queue with episode 10 made.
+EP10_ROW = ("10-what-is-the-deepest-part-of-the-ocean", EP10)
+saved = with_fixture(["how deep mariana trench", "how deep is the ocean",
+                      "what lives in mariana trench",
+                      "what lives in the deepest part of the ocean"],
+                     [EP10_ROW])
+try:
+    fx = set(batch_queue.queued_slugs())
+finally:
+    restore(saved)
+for sl in ("how-deep-mariana-trench", "how-deep-is-the-ocean"):
+    examined += 1
+    if sl in fx:
+        fails.append(f"fixture queue: {sl} is selectable with episode 10 made")
+# The two "what lives" rows are one question as each other (one survives,
+# the first in queue order), never episode 10's.
 examined += 1
-if not ({"what-lives-in-mariana-trench",
-         "what-lives-in-the-deepest-part-of-the-ocean"} & real):
-    fails.append("real queue: the Mariana Trench 'what lives' question was "
-                 "refused; it is not episode 10's question")
+if "what-lives-in-mariana-trench" not in fx:
+    fails.append(f"fixture queue: what-lives-in-mariana-trench was refused; "
+                 f"it is not episode 10's question: {sorted(fx)}")
 
 
 # ------------------------------------------------------ 7. the miner refills

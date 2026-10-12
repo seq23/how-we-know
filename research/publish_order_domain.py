@@ -652,10 +652,16 @@ def build(domain: str, pause: float, budget: int,
           network: bool = True) -> dict:
     cands, killed_early = candidates(domain, network=network)
     if not cands:
-        raise SystemExit(
-            f"FATAL: no admitted question-form candidate for {domain} in "
-            f"broad_mined.json. RULE 0 — this script will not write an empty "
-            f"queue and exit 0. Mine the domain deeper with mine_domain.py.")
+        # ZERO IS THE THIN CASE, NAMED (2026-10-12). Every rung ran and none
+        # survived - the deep-sea state once the Monday lane made the last
+        # read-only candidates. This raised a bare "FATAL", which
+        # loop/score.py could not classify, so a domain that had simply run
+        # out of questions reached the owner as NEW_DOMAIN_UNSCORED, "a code
+        # defect". RULE 0 still holds: no empty queue is written, and the
+        # exit is NAMED_STOP with the marker score.py reads.
+        print(thin_stop(domain, 0, "admitted, non-duplicate candidate(s) "
+                        "before the gate"), file=sys.stderr, flush=True)
+        raise SystemExit(NAMED_STOP)
     print(f"{len(cands)} candidate(s) for {domain} "
           f"({len(killed_early)} refused by exclusions before any quota spend)")
 
