@@ -410,21 +410,37 @@ for q in cands:
 # the floor is cleared, or EVERY read-only rung demonstrably ran (no early
 # exit hiding candidates) and still came up short - the case thin_stop()
 # names, checked just below. Zero candidates read-only is still a failure.
+# RE-PINNED 2026-10-12 17:08 UTC (commit c768d30, PR #185's CI): the next
+# Monday run wrote three more deep-sea scripts and the read-only set reached
+# ZERO - again the live catalogue, not a defect (the free network mine is the
+# rung that refills it, and DOMAIN_QUEUE_THIN is the true state). "Zero is a
+# failure" pinned the catalogue a third time. The pin is now the contract for
+# any shortfall, zero included, and stricter than before: every read-only rung
+# ran AND logged its own "N -> M candidate(s)" count (no silent rung), and the
+# network rung says it was skipped because this look is read-only - so the
+# only source left is the one the Saturday lane runs. A miner that returned
+# nothing without walking its ladder still fails here.
+import re as _re                                           # noqa: E402
 examined += 1
 floor = batch_queue.MIN_UNWRITTEN_TOPICS
-if not cands:
-    fails.append("miner: deep sea yields ZERO candidates read-only")
-elif len(cands) < floor:
-    ran = [ln.split(":")[0] for ln in log]
+if len(cands) < floor:
+    by_rung = {ln.split(":")[0]: ln for ln in log}
     for rung in ("broad mine, broad seeds", "deep-mine cache, broad seeds",
                  "broad mine, dedicated seeds",
-                 "deep-mine cache, dedicated seeds",
-                 "fresh autocomplete mine"):
+                 "deep-mine cache, dedicated seeds"):
         examined += 1
-        if rung not in ran:
+        line = by_rung.get(rung)
+        if line is None:
             fails.append(f"miner: {len(cands)} candidate(s), under the floor "
                          f"of {floor}, yet rung {rung!r} never ran - the "
                          f"ladder stopped before exhausting its sources: {log}")
+        elif not _re.search(r": \d+ -> \d+ candidate", line):
+            fails.append(f"miner: rung {rung!r} ran but did not report its "
+                         f"count: {line!r}")
+    examined += 1
+    if "skipped (read-only run)" not in by_rung.get("fresh autocomplete mine", ""):
+        fails.append(f"miner: under the floor read-only, the network rung must "
+                     f"say it was skipped for being read-only: {log}")
 # The ladder stops early when a rung already has enough, and names the thin
 # case when every rung is spent.
 examined += 1

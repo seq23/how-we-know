@@ -768,7 +768,9 @@
     },
     "BREAKER_TRIPPED": {
       "why": "Only after loop/breaker.py has already tried to reset itself against the live cause and found it still true. A breaker that stays tripped is protecting the channel and must be seen.",
-      "plain": "the safety switch stopped all publishing and has not reset"
+      "plain": "the safety switch stopped all publishing and has not reset",
+      "action": "fix the failing quality check",
+      "_action_why": "Used for a VALIDATOR trip only (a manual trip or a strike is not cleared by a fix). A validator trip closes itself at the top of the next guarded lane once every quality check passes (loop/breaker.py recheck); fixing the check is the only thing that clears it. The Sunday digest puts this in the subject when the switch leads it (2026-10-12: the W42 subject borrowed the Mac stop's action instead)."
     },
     "EXTENSION_REJECTED": {
       "why": "A script extension failed its own validators. The episode stays short rather than being padded with unsourced prose.",
