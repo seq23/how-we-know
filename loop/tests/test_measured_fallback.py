@@ -133,6 +133,21 @@ def check() -> tuple[list[str], int]:
         if r["events"] != 12 or r["judged"] != 12 or r["pass_rate"] != 1.0 or r["bucket"] != "MEASURED-GOOD":
             fails.append(f"(b) window of 12 not applied: {r}")
 
+        # (c0) the config default is NOT a preference: with the Gemini tier
+        # present, preferred=default_model() must not move the first
+        # OpenRouter id ahead of it (run 38267335065, 2026-10-12)
+        n += 1
+        if R.effective_preference(R.default_model()) is not None:
+            fails.append("(c0) default_model() is treated as a preference")
+        if R.effective_preference("  ") is not None:
+            fails.append("(c0) blank preference is not None")
+        if R.effective_preference("google/gemma-4-31b-it:free") != "google/gemma-4-31b-it:free":
+            fails.append("(c0) an explicit non-default preference was dropped")
+        gem_rows = [{"model": "gemini/gemini-3.5-flash", "bucket": "UNMEASURED"},
+                    {"model": R.default_model(), "bucket": "UNMEASURED"}]
+        got = R.route_order(R.effective_preference(R.default_model()), gem_rows)
+        if got[0] != "gemini/gemini-3.5-flash":
+            fails.append(f"(c0) default preference jumped ahead of the Gemini tier: {got}")
         # (c) preferred
         n += 1
         led = {"models": {"m1": [_ev("empty")] * 4, "m2": [_ev("passed")] * 4,

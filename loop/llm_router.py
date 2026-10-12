@@ -550,6 +550,14 @@ def standing(models: list[str] | None = None,
     return out
 
 
+def effective_preference(preferred: str | None) -> str | None:
+    """None when `preferred` is unset or is just the config default."""
+    pref = (preferred or "").strip()
+    if not pref or pref == default_model():
+        return None
+    return pref
+
+
 def route_order(preferred: str | None = None,
                 rows: list[dict] | None = None) -> list[str]:
     """standing() order with `preferred` placed by the documented rule."""
@@ -629,6 +637,15 @@ def complete(messages: list[dict], key: str, *, preferred: str | None = None,
             f"$0 models may be called",
             "Unset $OPENROUTER_MODEL / $OPENROUTER_COMMENTS_MODEL or set it to "
             "a model listed in config/llm_routing.json.")
+    # THE CONFIG DEFAULT IS NOT A PREFERENCE. author.DEFAULT_MODEL is
+    # free_models()[0] - the first OpenRouter id in config - and every lane
+    # passes it unless $OPENROUTER_MODEL names something else. Treating it as
+    # a preference put nvidia/nemotron-3-super ahead of the Gemini tier on
+    # the first Monday run after the tiers landed (run 38267335065,
+    # 2026-10-12: "answered by gemini-3.5-flash-lite after: nemotron-super:
+    # empty answer"). Only an explicit override is a preference; the default
+    # means "whatever the measured order ranks first".
+    preferred = effective_preference(preferred)
     order = route_order(preferred, standing(models))
 
     failures, codes = [], []
