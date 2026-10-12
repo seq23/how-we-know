@@ -247,7 +247,8 @@ def _aired(entry: dict) -> dt.datetime | None:
 
 def shorts_cadence(published: list[dict], per_week: int, now: dt.datetime,
                    r2_unpublished: int | None = None,
-                   r2_basis: str | None = None) -> dict:
+                   r2_basis: str | None = None,
+                   r2_as_of: str | None = None) -> dict:
     """Shorts aired in the trailing 7 days and the 7 before, against target,
     and how many weeks the verified-but-unpublished shelf covers.
 
@@ -279,6 +280,12 @@ def shorts_cadence(published: list[dict], per_week: int, now: dt.datetime,
         "scheduled_ahead": ahead,
         "r2_verified_unpublished": r2_unpublished,
         "r2_basis": r2_basis,
+        # When the R2 count was TAKEN - not as_of, which is when the cadence
+        # was computed. The W42 digest mailed a 15:54 count at 16:44 as if
+        # current; the page now prints this beside the number.
+        "r2_as_of": r2_as_of if r2_as_of is not None else (
+            now.isoformat(timespec="seconds") if r2_unpublished is not None
+            else None),
         "shelf": shelf,
         "shelf_weeks": round(shelf / per_week, 1) if per_week else None,
     }
@@ -301,6 +308,15 @@ def _n(v) -> str:
     return "unknown" if v is None else f"{v:,.0f}" if isinstance(v, (int, float)) else str(v)
 
 
+def _hhmm(iso: str | None) -> str:
+    """'2026-10-12T15:54:16+00:00' -> '2026-10-12 15:54 UTC'; 'unknown time'."""
+    if not iso:
+        return "unknown time"
+    d = _aired({"scheduled_publish_at": iso})
+    return (d.astimezone(dt.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+            if d else str(iso)[:16])
+
+
 def digest_block(v: dict | None) -> list[str]:
     """Seven lines, each number with its floor beside it. Markdown lines."""
     sc = (v or {}).get("shorts_cadence") or {}
@@ -314,7 +330,8 @@ def digest_block(v: dict | None) -> list[str]:
             f" target; shelf {sc.get('shelf')} verified unpublished = "
             f"{sc.get('shelf_weeks')} week(s) ({sc.get('scheduled_ahead')} "
             f"scheduled on YouTube, "
-            + (f"{r2} on R2)" if r2 is not None else
+            + (f"{r2} on R2 at {_hhmm(sc.get('r2_as_of'))})"
+               if r2 is not None else
                f"R2 not read: {(sc.get('r2_basis') or 'unknown')[:60]})"))
     else:
         shorts_line = "- **Shorts:** cadence not measured yet"

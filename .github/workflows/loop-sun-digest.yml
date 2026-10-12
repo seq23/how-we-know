@@ -76,6 +76,10 @@ jobs:
       - name: Render the week
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Read-only: the digest lists the R2 shorts/ shelf at render time
+          # (loop/digest.py r2_shelf_now) instead of mailing a stale count.
+          CLOUDFLARE_ACCOUNT_ID: 8d147e242033699dd37c6f5a451f48d2
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         run: bin/loop-stage.sh weekly-digest loop/digest.py
 
       # The digest sitting in a file nobody opens is the exact failure the

@@ -183,9 +183,15 @@ live_unwritten = [r["slug"] for r in batch_queue.unwritten_entries()]
 live_held = set(batch_queue.promotion_holds())
 live_queued = batch_queue.queued_slugs()
 examined += len(live_queued)
-if not live_written:
-    fails.append("1b: the live queue has no written row at all - this guard "
-                 "examined nothing the Mac could narrate")
+# NOT "the live queue has a written row" (moved 2026-10-12): written rows
+# leave the queue as the Mac narrates and the lane publishes them, so that
+# pinned a moment of the live catalogue and goes red on the loop catching
+# up. Section 1 proves written_slugs() on a fixture that always has one; here
+# the live rule must still examine rows, and every row must be classified.
+if not live_queued:
+    fails.append("1b: the live publish queue is empty - this guard examined "
+                 "nothing (an empty queue is DOMAIN_QUEUE_THIN's to name, "
+                 "never a silent pass)")
 for s in live_written:
     if not (ROOT / "scripts" / f"{s}.md").exists():
         fails.append(f"1b: written_slugs() names {s!r}, which has no script")
