@@ -3,12 +3,19 @@
     "Owner policy 2026-10-11, verbatim: \"nothing should be paid ... cut the probes and make them free.\"",
     "The repo's OpenRouter key now has a $0 monthly credit limit. Every model call in this repo goes through loop/llm_router.py, which sends ONLY the models below, in this order, with a per-request max price of 0, and fails loudly if OpenRouter ever reports a non-zero cost.",
     "There is no paid fallback. A refused key is the named stop OPENROUTER_KEY_DISABLED_OR_INVALID; no free model answering is OPENROUTER_NO_FREE_MODEL.",
-    "Refresh: fetch https://openrouter.ai/api/v1/models (no key needed), keep only ':free' text models priced 0/0 with >= 32k context, strongest general instruct model first, update snapshot_date. loop/tests/test_llm_routing.py enforces the shape."
+    "Refresh: fetch https://openrouter.ai/api/v1/models (no key needed), keep only ':free' text models priced 0/0 with >= 32k context, strongest general instruct model first, update snapshot_date. loop/tests/test_llm_routing.py enforces the shape.",
+    "Owner 2026-10-12, verbatim: \"use my claude subscription usage in advance of the $0 openrouter\". subscription_route (her prepaid Claude subscription via the headless Claude Code CLI, no per-call bill) answers first when CLAUDE_CODE_OAUTH_TOKEN is set; any failure there falls through to the $0 list below."
   ],
   "snapshot_date": "2026-10-11",
   "source": "https://openrouter.ai/api/v1/models",
   "max_cost_usd": 0,
   "paid_fallback": false,
+  "subscription_route": {
+    "provider": "claude-code",
+    "env": "CLAUDE_CODE_OAUTH_TOKEN",
+    "model": "opus",
+    "why": "Owner 2026-10-12: her Claude subscription (prepaid, no per-call bill) answers first; the $0 OpenRouter list below is the fallback. Never an API key, never a paid model."
+  },
   "min_context_length": 32000,
   "models": [
     {
