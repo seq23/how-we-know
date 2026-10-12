@@ -31,7 +31,38 @@ jobs:
           python-version: '3.12'
       - name: Install loop dependencies
         run: pip install -r requirements-loop.txt
+      # Owner 2026-10-12: "use my claude subscription usage in advance of the
+      # $0 openrouter". The headless Claude Code CLI, pinned; loop/llm_router.py
+      # asks it first and falls back to the $0 list on any failure.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install the Claude Code CLI (subscription tier, pinned)
+        run: npm install -g @anthropic-ai/claude-code@2.1.296
+      # Print-only: shows whether the subscription tier answers today. Never
+      # fails the job; the stage falls back to the $0 route by itself. Same
+      # flags as loop/llm_router.py (not --bare: --bare never reads the OAuth
+      # token).
+      - name: Probe the Claude subscription tier (print only)
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+        run: |
+          cd "$(mktemp -d)"
+          { claude -p --output-format json --model opus --max-turns 1 --tools "" \
+              --no-session-persistence --setting-sources "" --strict-mcp-config \
+              --disable-slash-commands --exclude-dynamic-system-prompt-sections \
+              --system-prompt "Answer in one word." <<< "Reply with exactly: ok" \
+            | python3 -c 'import json,sys; d=json.load(sys.stdin); print("[claude-route] probe:", d.get("subtype"), "is_error=%s" % d.get("is_error"), repr(str(d.get("result"))[:80]))'; } \
+            || echo "[claude-route] probe failed; the stage falls back to the \$0 route"
       - name: Review the month
+        env:
+          # loop/monthly.py -> loop/advise.py -> loop/llm_router.py. Until
+          # 2026-10-12 this step had no key, so the advisory always skipped;
+          # the $0 key lets advise.py run, and the subscription answers first.
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          # Her Claude subscription answers first (prepaid, no per-call bill);
+          # absent or failing -> the $0 OpenRouter route, unchanged.
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
         run: bin/loop-stage.sh monthly-review loop/monthly.py
 
       # The review is worthless sitting in a file nobody opens. loop-stage.sh only

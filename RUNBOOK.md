@@ -433,6 +433,83 @@ to either tier — Shorts views never add into the long-form hours total.**
 `loop/ypp.py` reports progress against both tiers and both routes every
 monthly review, nearest gate first.
 
+## Lanes
+
+Every scheduled lane, in the order of a week. Times are Central daylight time
+(one hour earlier in winter, CST); the UTC cron the workflow actually carries is
+in brackets. "Calls a model?" is derived from code, not kept by hand:
+`loop/tests/test_claude_subscription_route.py` walks the call graph of
+`loop/*.py` to `llm_router.complete()` and fails if this column disagrees with it,
+and `loop/tests/test_runbook_lanes.py` fails if a `loop-state` workflow has no row.
+
+| Lane | When | What it does | Calls a model? |
+|---|---|---|---|
+| `loop-sat-score` | Sat 05:00 (`0 10 * * 6`) | Runs the research agent's demand/competition pass so the publish order is re-derived on current data every week. | no |
+| `loop-sun-rank` | Sun 05:00 (`0 10 * * 0`) | The brain half of the loop: mines demand, ranks it, and proposes the week. | no |
+| `loop-sun-digest` | Sun 11:00 (`0 16 * * 0`) | The one email a week that arrives when nothing is wrong. | no |
+| `loop-mon-draft` | Mon 05:00 (`0 10 * * 1`) | Builds `loop/render_queue.json` (the only handoff to the Mac), authors any topic that has no script yet, and rebuilds the dashboard. | yes |
+| Mac render batch | daily 23:00 on her Mac (launchd, `bin/loop-install-launchd.sh` → `bin/batch-session.sh`) | Narrates every script that has no audio, renders every episode that has audio but no video, and pushes the results out for uploading; it reads `loop/render_queue.json`. | yes — `loop/extend.py` heals short episodes; the $0 route only, the Mac holds no subscription token |
+| `loop-upload-cloud` | daily 09:00 (`0 14 * * *`) | Pulls the next pending episode's render and thumbnail from Cloudflare R2 and uploads it to YouTube as private with its publish date. | no |
+| `loop-reach` | daily 10:00 (`0 15 * * *`) | Non-English reach plus discovery metadata: English captions, localized titles and descriptions, tags. | yes (localization) |
+| `loop-shorts-cloud` | daily 18:00 (`0 23 * * *`) | Pulls a verified Short from R2 and uploads it to YouTube as private with its evening slot. | no |
+| `loop-fri-publish` | Fri 08:00 (`0 13 * * 5`) | Flips private uploads to public, but only against a receipt proving the upload happened. | no |
+| `loop-fri-measure` | Fri 16:00 (`0 21 * * 5`) | Pulls retention and RPM, writes measurement, and can trip the circuit breaker. | no |
+| `loop-imagery-harvest` | Fri 23:00 (`0 4 * * 6`) | Grows the rights-cleared footage pool ahead of demand. | no |
+| `loop-quarterly-taxonomy-refresh` | 1st of Jan/Apr/Jul/Oct 03:00 (`0 8 1 1,4,7,10 *`) | Refreshes the ranked candidate-niche taxonomy the next domain is drawn from. | no |
+| `loop-override` | manual (an issue opened or edited) | The veto path: a row dropped from the dashboard opens a prefilled issue and this ingests it. | no |
+| `loop-monthly-review` | 1st 02:12 (`12 7 1 * *`) — its own `main-automation` queue | Reads a month of measurement and says what to change. | yes (the advisory) |
+
+Every lane above except the Mac batch and the monthly review shares the one
+`loop-state` concurrency queue, and GitHub keeps only one waiting run per group,
+so a long lane can push the next waiting one out of the queue. That is why the
+Monday authoring budget ends well before the 09:00 upload lane.
+
+## Model route
+
+The order, decided in code (`loop/llm_router.py`, `config/llm_routing.json`):
+
+1. **Your Claude subscription first**, through the headless Claude Code CLI,
+   whenever the lane carries `CLAUDE_CODE_OAUTH_TOKEN`. Prepaid; no per-call
+   bill.
+2. **The $0 OpenRouter list second** (`config/llm_routing.json` `models`), if the
+   subscription is missing, expired or fails for any reason.
+3. **Never an API key, never a paid model.** `max_cost_usd` is 0 and
+   `paid_fallback` is false; a reported cost above 0 is a named stop.
+
+**Why:** your decisions of 11 Oct 2026 ("nothing should be paid") and 12 Oct
+2026 ("use my claude subscription usage in advance of the $0 openrouter").
+
+**Which lanes carry it:** every workflow whose stage can reach the router. The
+list is not kept here; `loop/tests/test_claude_subscription_route.py` derives it
+from the code and fails if any such lane lacks the pinned CLI or the secret, or
+if any other lane passes the secret. The "Calls a model?" column above is the
+same derivation.
+
+**Rotating the token** (valid one year; the current one was created 12 Oct
+2026, so it expires **12 Oct 2027**):
+
+```bash
+claude setup-token
+gh secret set CLAUDE_CODE_OAUTH_TOKEN -R seq23/how-we-know
+```
+
+**When it is missing or expired** nothing breaks and nothing emails you: every
+call falls through to the $0 route on its own. The trace is one
+`[claude-route] … — falling back to the $0 route` line in the stage log, and the
+print-only step **"Probe the Claude subscription tier"** in each lane shows
+`success is_error=False 'ok'` when the token works.
+
+**The Monday authoring budget** (PR #159): `AUTHORING_BUDGET_MIN` in
+`loop/draft.py` is the wall-clock budget for everything the Monday lane
+authors; no draft attempt starts past it, and the job ceiling in
+`loop-mon-draft.yml` is that budget + 20 minutes.
+`loop/tests/test_mon_draft_authoring_budget.py` pins the two together. The
+budget must end before the 09:00 upload lane, which waits behind it in the
+`loop-state` queue. Read the numbers from those two files; this page describes,
+the code decides.
+
+---
+
 ## If something looks wrong
 
 - **A video published at the wrong time** — check `loop/state/ledger.json` for its
@@ -453,8 +530,9 @@ monthly review, nearest gate first.
 
 ## Things that are true and easy to forget
 
-- **Claude is not part of the running system.** Nothing calls a model to decide
-  whether to publish. Close the terminal and the channel keeps going.
+- **Claude is not part of the running system's decisions.** A model (your
+  Claude subscription first — see *Model route*) writes and translates scripts,
+  but nothing calls a model to decide whether to publish. Close the terminal and the channel keeps going.
 - **"Agent" here means a macOS timer**, not an AI. Three were removed on
   2026-09-01; one remains.
 - **Upload day is not publish day.** A video can be uploaded weeks before it airs.

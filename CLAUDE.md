@@ -26,6 +26,7 @@ too. The convention is `runbook <project>` -> that repo's `RUNBOOK.md`.
 | Document | What it is |
 |---|---|
 | [`RUNBOOK.md`](RUNBOOK.md) | What SHE does — as of 2026-09-23, nothing routine. Start here. |
+| [`RUNBOOK.md` § Model route](RUNBOOK.md#model-route) | The model order: her Claude subscription (`CLAUDE_CODE_OAUTH_TOKEN`) first, the $0 OpenRouter list second, never paid. `config/llm_routing.json` and the tests decide. |
 | [`docs/OPERATING-MANUAL.md`](docs/OPERATING-MANUAL.md) | How it works, and why the numbers are what they are. |
 | [`docs/CHANNEL-PLAN.md`](docs/CHANNEL-PLAN.md) | Locked strategy. Guarded by `loop/validate_plan.py`. Drift means the pipeline is wrong, not the plan. |
 | [`docs/DECISION-LOG.md`](docs/DECISION-LOG.md) | Dated decisions, near misses, research with its evidential quality, and rejected figures. Append-only. |

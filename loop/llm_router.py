@@ -27,6 +27,12 @@ Rules, each enforced here rather than written down:
     retries, a dropped connection, an empty answer) moves to the next free
     model. When every free model has failed: OPENROUTER_NO_FREE_MODEL.
   * There is no paid fallback. `paid_fallback` in the config must be false.
+  * Owner 2026-10-12: "use my claude subscription usage in advance of the $0
+    openrouter". When $CLAUDE_CODE_OAUTH_TOKEN is set and a `claude` binary is
+    on PATH, the headless Claude Code CLI (her prepaid subscription, no
+    per-call bill) is asked FIRST. Any failure there prints one
+    [claude-route] line and falls through to the $0 list unchanged; it never
+    raises and is never a stop. Without the variable no subprocess is run.
 
 Callers keep their own semantics for USABLE output (loop/author.py retries a
 draft that fails validation against the SAME free route and then raises
@@ -35,6 +41,10 @@ DRAFT_FAILED_VALIDATION, which the Monday lane turns into AUTHOR_REQUIRED).
 from __future__ import annotations
 
 import json
+import os
+import shutil
+import subprocess
+import tempfile
 import time
 import urllib.error
 import urllib.request
@@ -114,6 +124,18 @@ def config_problems(cfg: dict) -> list[str]:
                 out.append(f"{mid} pricing.{k} is {v!r}, must be 0")
         if (m.get("context_length") or 0) < floor:
             out.append(f"{mid} context {m.get('context_length')} < {floor}")
+    sr = cfg.get("subscription_route")
+    if sr is not None:
+        if not isinstance(sr, dict):
+            out.append("subscription_route must be an object")
+        else:
+            if sr.get("provider") != "claude-code":
+                out.append("subscription_route.provider must be 'claude-code'")
+            if sr.get("env") != "CLAUDE_CODE_OAUTH_TOKEN":
+                out.append("subscription_route.env must be "
+                           "'CLAUDE_CODE_OAUTH_TOKEN' (never an API key)")
+            if not str(sr.get("model") or "").strip():
+                out.append("subscription_route.model is empty")
     return sorted(set(out))
 
 
@@ -179,6 +201,117 @@ def _post(body: bytes, key: str, timeout: int) -> dict:
     raise last  # pragma: no cover
 
 
+# ---- the subscription tier (owner 2026-10-12) ------------------------------
+SUBSCRIPTION_ENV = "CLAUDE_CODE_OAUTH_TOKEN"
+SUBSCRIPTION_MODEL = "opus"
+SUBSCRIPTION_MODEL_USED = "claude-subscription/opus"
+SUBSCRIPTION_TIMEOUT_S = 600
+CLAUDE_CLI_VERSION = "2.1.296"
+
+
+def _subscription_command(system: str) -> list[str]:
+    """The headless CLI call. NOT --bare: --bare reads only ANTHROPIC_API_KEY
+    and never the OAuth token (verified 2026-10-12 with CLI 2.1.296), so it
+    would make this tier inert. The flags below keep the context minimal
+    instead (~650 tokens for a one-line prompt, measured): our own system
+    prompt, no tools, no settings files, no MCP, no skills, run from an empty
+    directory so no CLAUDE.md is discovered. The token travels only in the
+    environment, never in argv."""
+    return ["claude", "-p", "--output-format", "json",
+            "--model", SUBSCRIPTION_MODEL, "--max-turns", "1",
+            "--tools", "", "--no-session-persistence",
+            "--setting-sources", "", "--strict-mcp-config",
+            "--disable-slash-commands",
+            "--exclude-dynamic-system-prompt-sections",
+            "--system-prompt", system]
+
+
+def _render_turns(messages: list[dict]) -> tuple[str, str]:
+    """system = every system message joined; user = the rest in order. A
+    single user turn goes as-is; a multi-turn exchange (author.draft() appends
+    the rejected draft and the corrections) is rendered 'user:'/'assistant:'."""
+    system = "\n\n".join(str(m.get("content") or "") for m in messages
+                          if m.get("role") == "system")
+    rest = [m for m in messages if m.get("role") != "system"]
+    if len(rest) == 1 and rest[0].get("role") == "user":
+        return system, str(rest[0].get("content") or "")
+    user = "\n\n".join(f"{m.get('role') or 'user'}:\n{m.get('content') or ''}"
+                        for m in rest)
+    return system, user
+
+
+def _scrub(text: str) -> str:
+    tok = os.environ.get(SUBSCRIPTION_ENV) or ""
+    text = (text or "").replace("\n", " ").strip()
+    if tok:
+        text = text.replace(tok, "<token>")
+    return text[:200]
+
+
+def subscription_timeout(caller_timeout: int) -> int:
+    """600 s for the long authoring calls (author.draft() asks for 300 on
+    OpenRouter); a caller that asked for less (localize 90/180, comments and
+    advise 120) keeps its own, so a short-ceiling lane (loop-reach.yml: 6 min)
+    is never held past its job budget by a hung CLI before the fallback."""
+    return SUBSCRIPTION_TIMEOUT_S if caller_timeout >= 300 else max(30, caller_timeout)
+
+
+def _subscription_complete(messages: list[dict],
+                           caller_timeout: int = 300) -> dict | None:
+    """Her Claude subscription, or None (and one log line) on any failure.
+    Never raises; never called when the env var is absent."""
+    if not (os.environ.get(SUBSCRIPTION_ENV) or "").strip():
+        return None
+    # The config is the switch too: no subscription_route, no tier.
+    if not load_config().get("subscription_route"):
+        return None
+    fall = " — falling back to the $0 route"
+    limit = subscription_timeout(caller_timeout)
+    try:
+        if not shutil.which("claude"):
+            print(f"[claude-route] no `claude` binary on PATH{fall}", flush=True)
+            return None
+        system, user = _render_turns(messages)
+        with tempfile.TemporaryDirectory(prefix="claude-route-") as cwd:
+            proc = subprocess.run(_subscription_command(system), input=user,
+                                  capture_output=True, text=True,
+                                  timeout=limit,
+                                  env=os.environ, cwd=cwd)
+        if proc.returncode != 0:
+            print(f"[claude-route] exit {proc.returncode}: "
+                  f"{_scrub(proc.stderr or proc.stdout)}{fall}", flush=True)
+            return None
+        out = json.loads(proc.stdout or "")
+        result = str(out.get("result") or "")
+        if out.get("is_error") or not result.strip():
+            why = "is_error" if out.get("is_error") else "empty result"
+            print(f"[claude-route] {why}: {_scrub(result)}{fall}", flush=True)
+            return None
+    except subprocess.TimeoutExpired:
+        print(f"[claude-route] timed out after {limit}s{fall}",
+              flush=True)
+        return None
+    except Exception as e:                          # noqa: BLE001
+        print(f"[claude-route] {type(e).__name__}: {_scrub(str(e))}{fall}",
+              flush=True)
+        return None
+    usage = dict(out.get("usage") or {})
+    pin = sum(int(usage.get(k) or 0) for k in (
+        "input_tokens", "cache_creation_input_tokens", "cache_read_input_tokens"))
+    pout = int(usage.get("output_tokens") or 0)
+    usage.update({"prompt_tokens": pin, "completion_tokens": pout,
+                  "total_tokens": pin + pout,
+                  # The CLI's total_cost_usd is a nominal figure under a
+                  # subscription, not a charge; kept for the record only.
+                  "nominal_cost_usd": out.get("total_cost_usd"),
+                  "cost": 0})
+    print(f"[claude-route] answered by {SUBSCRIPTION_MODEL_USED}", flush=True)
+    return {"choices": [{"message": {"role": "assistant", "content": result},
+                         "finish_reason": "stop"}],
+            "usage": usage, "model_used": SUBSCRIPTION_MODEL_USED,
+            "route": "claude-subscription"}
+
+
 def complete(messages: list[dict], key: str, *, preferred: str | None = None,
              timeout: int = 300, temperature: float = 0.4,
              max_tokens: int = 16000) -> dict:
@@ -190,6 +323,14 @@ def complete(messages: list[dict], key: str, *, preferred: str | None = None,
     Returns OpenRouter's response dict; `resp["model_used"]` names the model.
     """
     models = free_models()
+    # The subscription tier's own name is not an OpenRouter model: a caller
+    # that recorded it (author.draft() retries with model_used) gets the
+    # normal free order behind the subscription tier, never a refusal.
+    if preferred and preferred.strip() == SUBSCRIPTION_MODEL_USED:
+        preferred = None
+    sub = _subscription_complete(messages, timeout)
+    if sub is not None:
+        return sub
     if preferred and preferred.strip() and preferred.strip() not in models:
         raise LLMStop(
             PAID_MODEL_REFUSED,
