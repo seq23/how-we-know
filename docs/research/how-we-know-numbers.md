@@ -1,6 +1,6 @@
 # How We Know Numbers
 
-Repo copy of https://claude.ai/artifact/RrPVjRUBf8WDxSy7Cq5Qgf (v1, 12 Oct 2026). Numbers from the live
+Repo copy of https://claude.ai/artifact/RrPVjRUBf8WDxSy7Cq5Qgf (v1.1, 12 Oct 2026). Numbers from the live
 YouTube Analytics API and the repo's own state. The page is the living version.
 
 ## 1. The channel, 90 days to 11 Oct 2026
@@ -50,6 +50,13 @@ dry-shelf stop when the trailing week is under target; the digest shows Shorts p
 shelf depth, yellow one short week, red two; measurement repaired (monthly review month boundary,
 append-only history, opening-experiment eligibility, per-Short metrics, CTR where the API allows, a
 weekly channel verdict).
+
+**The writing lane moves into the quiet window** (owner's idea, 12 Oct): Gemini 3.5 Flash answered 503
+"overloaded" at 10:03 and 10:13 UTC, when Europe and India are at work and free-tier traffic is shed
+first. The Monday draft cron moves from 10:00 UTC (5 a.m. Central) to 05:00 UTC (midnight Central,
+Sunday night into Monday), still after Sunday's rank lane. The slot before the 9 a.m. Central upload lane
+widens from 4 h to 9 h, so the authoring budget rises from 210 to 480 minutes (ceiling 500). The route
+ledger timestamps every outcome; two or three Mondays will show whether the 503s went away.
 
 ## 5. Long-form cadence: the research
 

@@ -1,6 +1,6 @@
 # $0 Model Routing
 
-Repo copy of the research page https://claude.ai/artifact/V3mv9fNxg8DmsB3tLpxmLG (v1.2, 12 Oct 2026).
+Repo copy of the research page https://claude.ai/artifact/V3mv9fNxg8DmsB3tLpxmLG (v1.4, 12 Oct 2026).
 The page is the living version; this copy is refreshed when it changes. The code decides, this explains.
 
 ## 1. The route, in order
@@ -34,6 +34,8 @@ doesn't happen again" (the Monday authoring budget, `loop/draft.py` `AUTHORING_B
 | Per day, default | 50 for an account that has bought under $10 of credits in its lifetime |
 | Per day, upgraded | 1,000 once the account has ever bought $10 or more; permanent |
 | Scope | per account across every key |
+| 503 "overloaded" | Google's answer when a Gemini model has no spare capacity; free-tier traffic is shed first. Transient, not the key (sibling models answered in the same minute). The router skips it in seconds; the ledger records it, so a model that keeps refusing drops below the ones that answer |
+| Quiet window | unpublished by any provider; by business hours across the US, Europe and India the lightest load is roughly 02:00–06:00 UTC. Owner decision 12 Oct 2026: the Monday lane runs at 05:00 UTC |
 | This account | **1,000/day**, confirmed 12 Oct 2026 from `GET /api/v1/auth/key` (`is_free_tier: false`); a $0 key limit still serves free models |
 
 ## 3. The live roster, 12 Oct 2026
@@ -74,7 +76,7 @@ trial since July 2026, 8K context), Cloudflare Workers AI (10,000 neurons/day, s
 ## 7. The pattern for any repo
 
 One router; config is the roster, the ledger is the order; the budget lives in code and the ceiling is
-derived from it; a failed draft is a brief, not a red build; bench before trusting; every lane that
+derived from it (how-we-know: 05:00 UTC start, 480-minute budget, 500 ceiling, before the 14:00 UTC upload lane); run the heavy lane in the quiet window (02:00–06:00 UTC) and let the ledger confirm; a failed draft is a brief, not a red build; bench before trusting; every lane that
 can reach the router gets the secrets (a test derives the set by tracing real calls); the runbook
 describes, the tests decide. Reference implementation: this repo (`loop/llm_router.py`,
 `config/llm_routing.json`, `loop/bench_free_models.py`, `loop/tests/test_llm_routing.py`,
