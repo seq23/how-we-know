@@ -42,6 +42,7 @@ told plainly when to say "not enough signal" instead of manufacturing a finding.
 from __future__ import annotations
 
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -195,3 +196,98 @@ def _parse(text: str) -> tuple[dict | None, str]:
         except (TypeError, ValueError):
             return d, f"change.to is not a number ({ch['to']!r}); nothing applied"
     return d, ""
+
+
+# ------------------------------------------------- the monthly email's paragraph
+
+MONTHLY_SYSTEM = AIMS + """
+TODAY'S TASK
+Write ONE plain-English paragraph (at most 120 words, no headings, no lists,
+no code, no JSON) for the owner's monthly email: "what the data suggests".
+"""
+
+_NUM = re.compile(r"\d+(?:,\d{3})*(?:\.\d+)?")
+
+
+def _numbers(text: str) -> set[str]:
+    out = set()
+    for m in _NUM.findall(text):
+        n = m.replace(",", "")
+        if "." in n:
+            n = n.rstrip("0").rstrip(".")
+        out.add(n)
+    return out
+
+
+def monthly_problems(text: str, sections: str, triggered: list[str]) -> list[str]:
+    """Why a monthly paragraph may not be printed. Empty = it may."""
+    probs = []
+    if not text.strip():
+        return ["the model returned an empty paragraph"]
+    stray = sorted(_numbers(text) - _numbers(sections), key=len)
+    if stray:
+        probs.append("cites numbers that are not in the email: " + ", ".join(stray[:6]))
+    low = text.lower()
+    if not triggered and "no pivot rule has triggered" not in low:
+        probs.append('does not say "no pivot rule has triggered"')
+    if triggered and "trigger" not in low:
+        probs.append("does not say which pivot rule triggered")
+    return probs
+
+
+def monthly_prompt(sections: str, triggered: list[str], retry: str = "") -> list[dict]:
+    fired = ("These rules TRIGGERED this month: " + "; ".join(triggered) + "."
+             if triggered else
+             "NO pivot rule triggered this month. Say exactly \"no pivot rule "
+             "has triggered; the data is too thin to pivot on\" if the numbers "
+             "are thin (they are thin unless a domain has 8+ measured episodes "
+             "and hundreds of views per episode); otherwise say \"no pivot rule "
+             "has triggered\" and why.")
+    user = ("Here is this month's email so far.\n\n" + sections + "\n\n" + fired +
+            "\n\nRules for your paragraph:\n"
+            "1. Cite ONLY numbers that appear above, written the same way. No "
+            "other numbers at all - no new percentages, sums or estimates.\n"
+            "2. Name the single most important thing to change next month.\n"
+            "3. Say explicitly whether any pivot rule has actually triggered.\n"
+            "4. Advisory only: the rules decide.\n"
+            "Reply with the paragraph and nothing else.")
+    if retry:
+        user += ("\n\nYour previous answer was refused because it " + retry +
+                 ". Write it again following the rules.")
+    return [{"role": "system", "content": MONTHLY_SYSTEM},
+            {"role": "user", "content": user}]
+
+
+def monthly_paragraph(sections: str, triggered: list[str]) -> dict:
+    """{'ok', 'text', 'route', 'model', 'why'} for the monthly email.
+
+    Same path as advise(): author.call_openrouter -> loop/llm_router.py, so
+    her subscription answers first and the $0 list is the fallback. Never
+    raises; never returns a paragraph that breaks monthly_problems() - one
+    retry with the refusal reason, then a named reason instead of text.
+    """
+    import os
+    key = author.api_key()
+    if not key and not os.environ.get("CLAUDE_CODE_OAUTH_TOKEN"):
+        return {"ok": False, "text": "", "route": None, "model": None,
+                "why": "no model route configured (neither "
+                       "$CLAUDE_CODE_OAUTH_TOKEN nor an OpenRouter key)"}
+    retry = ""
+    for _ in range(2):
+        try:
+            out = author.call_openrouter(monthly_prompt(sections, triggered, retry),
+                                         author.configured_model(), key or "",
+                                         timeout=180)
+            text = " ".join((out["choices"][0]["message"]["content"] or "").split())
+        except Exception as e:                  # noqa: BLE001 - never take the lane down
+            return {"ok": False, "text": "", "route": None, "model": None,
+                    "why": f"{type(e).__name__}: {str(e)[:160]}"}
+        probs = monthly_problems(text, sections, triggered)
+        if not probs:
+            return {"ok": True, "text": text[:MAX_ADVICE_CHARS],
+                    "route": out.get("route"), "model": out.get("model_used"),
+                    "why": ""}
+        retry = "; ".join(probs)
+    return {"ok": False, "text": "", "route": out.get("route"),
+            "model": out.get("model_used"),
+            "why": f"the model's paragraph was refused twice ({retry})"}
