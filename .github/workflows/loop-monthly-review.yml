@@ -9,7 +9,16 @@ name: loop · 1st 07:00 · monthly review
 on:
   schedule:
     - cron: '12 7 1 * *'
+  # On demand (owner, 2026-10-12): the monthly EMAIL for this month to date.
+  # `full-review` also re-runs loop/monthly.py, which may change
+  # loop/config.json, so it is opt-in; the default only reports.
   workflow_dispatch:
+    inputs:
+      mode:
+        description: 'email-to-date (report only) or full-review (also run the review)'
+        type: choice
+        options: [email-to-date, full-review]
+        default: email-to-date
 
 permissions:
   contents: write
@@ -55,6 +64,7 @@ jobs:
             | python3 -c 'import json,sys; d=json.load(sys.stdin); print("[claude-route] probe:", d.get("subtype"), "is_error=%s" % d.get("is_error"), repr(str(d.get("result"))[:80]))'; } \
             || echo "[claude-route] probe failed; the stage falls back to the \$0 route"
       - name: Review the month
+        if: github.event_name == 'schedule' || inputs.mode == 'full-review'
         env:
           # loop/monthly.py -> loop/advise.py -> loop/llm_router.py. Until
           # 2026-10-12 this step had no key, so the advisory always skipped;
@@ -75,7 +85,7 @@ jobs:
       # `if: always()` because the report is the point. If the stage itself failed,
       # that is exactly the month she most needs to see.
       - name: Deliver the report
-        if: always()
+        if: always() && (github.event_name == 'schedule' || inputs.mode == 'full-review')
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -86,7 +96,10 @@ jobs:
             exit 1
           fi
           BODY="$(mktemp)"
-          cat "$FILE" > "$BODY"
+          # @-mention: an issue opened by Actions is neither "participating"
+          # nor a mention, so without this line no email is ever sent (the
+          # Sunday digest found this; the review never had it).
+          { echo "@seq23"; echo; cat "$FILE"; } > "$BODY"
           {
             echo
             echo "---"
@@ -113,3 +126,53 @@ jobs:
             gh issue close "$OLD" --comment "Superseded by the ${MONTH} review." >/dev/null 2>&1 \
               && echo "closed #$OLD"
           fi
+
+      # THE MONTHLY EMAIL (owner, 2026-10-12): what was published, what the
+      # data says, and whether any keep/change/pivot rule triggered. On the
+      # 1st it reports the month just ended; on demand, this month to date.
+      # Its advisory paragraph goes through loop/advise.py -> llm_router.py,
+      # her subscription first.
+      - name: Write the monthly email
+        if: always()
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            bin/loop-stage.sh monthly-email loop/monthly_email.py
+          else
+            bin/loop-stage.sh monthly-email loop/monthly_email.py --now
+          fi
+
+      # Same send mechanism as the Sunday digest: a NEW issue that @-mentions
+      # the owner, titled by the stage's .subject line.
+      - name: Send the monthly email
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            MONTH="$(date -u -d '1 month ago' +%Y-%m 2>/dev/null || date -u -v-1m +%Y-%m)"
+          else
+            MONTH="$(date -u +%Y-%m)"
+          fi
+          FILE="loop/state/monthly/${MONTH}-email.md"
+          if [ ! -s "$FILE" ]; then
+            echo "no monthly email at $FILE - the stage did not produce one"
+            exit 1
+          fi
+          TITLE="$(head -n 1 "loop/state/monthly/${MONTH}-email.subject" 2>/dev/null)"
+          [ -n "$TITLE" ] || TITLE="Monthly: ${MONTH}"
+          BODY="$(mktemp)"
+          {
+            echo "@seq23"
+            echo
+            cat "$FILE"
+            echo
+            echo "Run: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          } > "$BODY"
+          URL="$(gh issue create --title "$TITLE" --body-file "$BODY" --label monthly-email 2>/dev/null \
+                 || gh issue create --title "$TITLE" --body-file "$BODY")"
+          echo "sent: ${TITLE}"
+          echo "issue: ${URL}"
