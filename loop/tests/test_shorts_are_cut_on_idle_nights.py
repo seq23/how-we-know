@@ -109,12 +109,12 @@ else:
         block = batch[stop_at:exit_at]
         # An invocation line, not the word - a comment that mentions the
         # function must not satisfy this.
-        if not re.search(r"^\s*shelve_shorts\s*$", block, re.M):
+        if not re.search(r"^\s*(?:step\s+\w+\s+)?shelve_shorts\s*$", block, re.M):
             fails.append("3: the nothing-to-do path exits 0 without shelve_shorts - "
                          "an idle week starves the cloud Shorts lane")
 
     # The narrate-or-render path calls it too, after the function body.
-    calls = [m.start() for m in re.finditer(r"^\s*shelve_shorts\s*$", batch, re.M)]
+    calls = [m.start() for m in re.finditer(r"^\s*(?:step\s+\w+\s+)?shelve_shorts\s*$", batch, re.M)]
     if len(calls) < 2:
         fails.append(f"3: shelve_shorts is invoked {len(calls)} time(s); both paths must call it")
 

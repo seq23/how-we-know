@@ -151,7 +151,13 @@ def heartbeat(lane: str, ok: bool, **facts) -> dict:
     rec.update({"last_run_at": _now(), "week": week_id(), "ok": bool(ok)})
     if ok:
         rec["last_success_at"] = rec["last_run_at"]
-    rec.update({k: v for k, v in facts.items() if v is not None})
+    rec.update({k: v for k, v in facts.items() if v is not None and v != ""})
+    # An EMPTY string clears a fact: `resumed_from` is set only on a night
+    # the batch resumed after an interruption, and must not outlive it.
+    for k in [k for k, v in facts.items() if v == ""]:
+        rec.pop(k, None)
+    if ok:
+        rec.pop("incomplete_night", None)   # a finished run supersedes it
     hb[lane] = rec
     hb["renders_finished"] = len(glob.glob(str(ROOT / "renders" / "*-final.mp4")))
     hb["updated"] = _now()
@@ -202,6 +208,9 @@ def main() -> int:
                    help="comma-separated slugs the render gate is holding")
     h.add_argument("--pending", type=int, default=None,
                    help="finished episodes still to ship after this run")
+    h.add_argument("--resumed-from", default=None,
+                   help="phase/episode an interrupted night resumed from "
+                        "(empty clears it); see loop/batch_progress.py")
     p = sub.add_parser("push")
     p.add_argument("--lane", required=True)
     p.add_argument("paths", nargs="*")
@@ -214,7 +223,7 @@ def main() -> int:
     if a.cmd == "heartbeat":
         held = [s for s in (a.held or "").split(",") if s]
         hb = heartbeat(a.lane, bool(a.ok), uploaded=a.uploaded, held=held,
-                       pending=a.pending)
+                       pending=a.pending, resumed_from=a.resumed_from)
         print(f"  heartbeat: {a.lane} ok={bool(a.ok)} renders_finished="
               f"{hb['renders_finished']} held={len(held)}")
         return 0

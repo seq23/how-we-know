@@ -215,16 +215,22 @@ else:
                          "Shorts of every other episode die with one caption "
                          "failure")
     shelve_calls = [m.start() for m in
-                    re.finditer(r"^\s*shelve_shorts\s*$", batch, re.M)]
+                    re.finditer(r"^\s*(?:step\s+\w+\s+)?shelve_shorts\s*$", batch, re.M)]
     after = [c for c in shelve_calls if c > call_at]
     if not after:
         fails.append("3: no shelve_shorts invocation after captions_build")
     else:
         tail = batch[max(after):]
+        # The report (and its exit) may be the phase_report function the
+        # main sequence calls after the Shorts: follow that one call into
+        # its body, which must still end on exit "$CAPRC".
+        if re.search(r"^\s*phase_report\s*$", tail, re.M):
+            r0 = batch.find("phase_report() {")
+            tail += batch[r0:batch.find("\n}\n", r0)] if r0 >= 0 else ""
         if not re.search(r'^\s*exit "\$CAPRC"\s*$', tail, re.M):
             fails.append("3: the script never exits with $CAPRC after "
                          "shelve_shorts - a captions failure is now silent")
-        if not re.search(r"^\s*harvest_footage\s*$", tail, re.M):
+        if not re.search(r"^\s*(?:step\s+\w+\s+)?harvest_footage\s*$", tail, re.M):
             fails.append("3: harvest_footage no longer runs after the Shorts "
                          "on the narrate-or-render path")
     if re.search(r"heartbeat --lane batch --ok 1\b", batch):

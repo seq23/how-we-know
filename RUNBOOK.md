@@ -75,6 +75,22 @@ What the 23:00 timer (or a by-hand run) does:
 When it finishes it prints `V13 ... CLEAN`. That means no video ends before its
 own narration does. If it prints failures, tell Claude — do not upload.
 
+### If the Mac restarts or runs flat mid-batch, the night resumes on wake
+
+`com.howweknow.batch-resume` checks every 5 minutes (and at login). If tonight's
+batch was cut off — a reboot, the battery ran out — it **continues from the
+last completed step**: narration, renders, captions, Shorts, the R2 push and
+the footage harvest that already finished are skipped, and a render that was
+killed half-written is moved to `renders/interrupted/` and redone. If the Mac
+was off at 23:00, it starts the night's batch when it comes back, up to 06:00.
+
+- **Cutoff 09:00.** After that it does not resume — the cloud lanes own the
+  day. The unfinished night is noted in the heartbeat and as
+  `BATCH_NIGHT_INCOMPLETE` (self-resolving: tonight's 23:00 batch carries on
+  from the same place). Narration never runs past 07:00 on a resume.
+- **Where it lives:** `loop/state/_local/batch_progress.json` on the Mac (not in
+  git); the agent's log is `~/Library/Logs/how-we-know/batch-resume.log`.
+
 ### If a runway-warning email ever arrives, it means the nightly batch has fallen behind
 
 The warning fires at **four weeks of runway**, not at zero, so the channel keeps
@@ -291,11 +307,13 @@ nothing for you to do; it tells whoever reads it where to look.
 
 ### What is on the Mac right now
 
-Two timers, both `launchctl`-loaded and `plutil -lint`-valid as of 2026-09-23:
+Four timers, all `launchctl`-loaded and `plutil -lint`-valid (batch-resume added 2026-10-12):
 
 | Agent | When | What it does |
 |---|---|---|
 | `com.howweknow.batch` | **daily 23:00** | `bin/batch-session.sh` — narrates, renders, shelves to R2. This is step 2 of "The whole loop, plainly" above; see "The nightly batch, in detail". |
+| `com.howweknow.batch-resume` | every 5 min | `bin/batch-session.sh --resume-if-interrupted` — resumes a night a restart or flat battery cut off, until 09:00; otherwise does nothing. |
+| `com.howweknow.nightquit` | daily 22:55 | Quits Chrome, Signal and Spotify before the batch. |
 | `com.howweknow.backfill` | daily 09:00 | Uploads the last few of the original 16 pre-cloud-upload episodes. It **stops by itself** when they are done; it does not narrate or render. |
 
 Check any time:

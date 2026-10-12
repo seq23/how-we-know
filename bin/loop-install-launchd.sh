@@ -3,6 +3,10 @@
 #
 #   DAILY 23:00    bin/batch-session.sh  narrate what has no audio, render what
 #                                        has audio, push, then NAMED STOP
+#   EVERY 300 s    bin/batch-session.sh --resume-if-interrupted
+#                                        resume a night a reboot or a flat
+#                                        battery interrupted; a no-op in well
+#                                        under a second otherwise (2026-10-12)
 #
 # ONE AGENT, and only one, because only one thing here narrates. tuesday and
 # thursday are deliberately NOT installed - see the --install block.
@@ -71,7 +75,45 @@ cat <<XML
 XML
 }
 
+# Every StartInterval seconds rather than on a calendar: the RESUME agent.
+# A missed StartCalendarInterval fires on wake from SLEEP, but nothing fires
+# after a power-off or a reboot, and a killed batch was never re-run. This one
+# asks bin/batch-session.sh --resume-if-interrupted, which owns the decision
+# (loop/batch_progress.py gate). RunAtLoad true, so a login after a reboot
+# checks at once instead of five minutes later.
+plist_interval(){ # name seconds script [args...]
+local name="$1" secs="$2"; shift 2
+cat <<XML
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+  <key>Label</key><string>com.howweknow.$name</string>
+  <key>ProgramArguments</key>
+  <array><string>/bin/bash</string><string>-lc</string>
+    <string>cd $ROOT &amp;&amp; $ROOT/bin/$*</string></array>
+  <key>StartInterval</key><integer>$secs</integer>
+  <key>StandardOutPath</key><string>$LOGDIR/$name.log</string>
+  <key>StandardErrorPath</key><string>$LOGDIR/$name.err</string>
+  <key>RunAtLoad</key><true/>
+</dict></plist>
+XML
+}
+
+AGENT_NAMES="batch nightquit batch-resume"
+print_one(){
+  case "$1" in
+    batch)        plist batch    batch-session.sh - 23 ;;
+    nightquit)    plist nightquit night-quit.sh - 22 55 ;;
+    batch-resume) plist_interval batch-resume 300 batch-session.sh --resume-if-interrupted ;;
+    *) echo "unknown agent: $1 (one of: $AGENT_NAMES)" >&2; return 2 ;;
+  esac
+}
+
 case "${1:-}" in
+  --plist)   # print ONE agent's plist exactly as --install writes it
+    print_one "${2:-}"
+    ;;
   --install)
     mkdir -p "$AGENTS" "$LOGDIR"
     # ONLY THE BATCH. tuesday and thursday are NOT installed, and that is the
@@ -90,25 +132,27 @@ case "${1:-}" in
     # to the nightly batch. Re-adding them undid a decision the manual had
     # written down. If either is ever wanted again, the question to answer
     # first is which single agent owns narration.
-    plist batch    batch-session.sh - 23 > "$AGENTS/com.howweknow.batch.plist"
+    print_one batch > "$AGENTS/com.howweknow.batch.plist"
     # 22:55, FIVE MINUTES BEFORE THE BATCH: quit the apps that compete with the
     # voice model for RAM (owner decision 2026-10-03; see bin/night-quit.sh).
-    plist nightquit night-quit.sh - 22 55 > "$AGENTS/com.howweknow.nightquit.plist"
+    print_one nightquit > "$AGENTS/com.howweknow.nightquit.plist"
+    # EVERY 300 s: resume a night a reboot or a dead battery interrupted.
+    print_one batch-resume > "$AGENTS/com.howweknow.batch-resume.plist"
     # VERIFY THE XML, never launchctl's own word. A plist launchd cannot parse
     # is still reported "loaded" and simply never fires; that is how two agents
     # sat installed and dead. plutil is the only thing that actually knows.
-    for n in batch nightquit; do
+    for n in $AGENT_NAMES; do
       plutil -lint "$AGENTS/com.howweknow.$n.plist" >/dev/null \
         || { echo "NAMED STOP: com.howweknow.$n.plist is not valid XML; not loading it." >&2; exit 4; }
     done
-    for n in batch nightquit; do
+    for n in $AGENT_NAMES; do
       launchctl unload "$AGENTS/com.howweknow.$n.plist" 2>/dev/null || true
       launchctl load  "$AGENTS/com.howweknow.$n.plist"
       echo "loaded com.howweknow.$n  (logs: $LOGDIR/$n.log)"
     done
     ;;
   --uninstall)
-    for n in batch nightquit tuesday thursday; do
+    for n in $AGENT_NAMES tuesday thursday; do
       launchctl unload "$AGENTS/com.howweknow.$n.plist" 2>/dev/null || true
       rm -f "$AGENTS/com.howweknow.$n.plist"
       echo "removed com.howweknow.$n"
@@ -119,7 +163,9 @@ case "${1:-}" in
     echo "logs: $LOGDIR"
     ;;
   *)
-    echo "# Daily 23:00 - the only agent installed"; plist batch batch-session.sh - 23
+    echo "# Daily 23:00 - the batch"; print_one batch
+    echo "# Daily 22:55 - quit the apps that compete for RAM"; print_one nightquit
+    echo "# Every 300 s - resume an interrupted night"; print_one batch-resume
     echo; echo "Nothing was written. Re-run with --install to load these."
     ;;
 esac
