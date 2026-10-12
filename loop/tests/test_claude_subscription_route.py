@@ -44,6 +44,10 @@ import llm_router as R  # noqa: E402
 TOKEN = "sk-ant-oat01-TEST-TOKEN-must-never-print-0123456789"
 PIN = "@anthropic-ai/claude-code@2.1.296"
 SECRET_LINE = "CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}"
+# Owner 2026-10-12: the Gemini free tier (GEMINI_API_KEY) sits between the
+# subscription and the $0 OpenRouter list, so every router-reaching step
+# carries BOTH secrets, and no other lane carries either.
+GEMINI_LINE = "GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}"
 MSGS = [{"role": "system", "content": "Be brief."},
         {"role": "user", "content": "Say ok."}]
 
@@ -168,9 +172,13 @@ def lane_problems(mods: set[str]) -> tuple[list[str], list[str]]:
                          if not l.lstrip().startswith("#"))
         runs = {m for m in mods if re.search(rf"loop/{m}\.py\b", text)}
         has_secret = "secrets.CLAUDE_CODE_OAUTH_TOKEN" in text
+        has_gemini = "secrets.GEMINI_API_KEY" in text
         if not runs:
             if has_secret:
                 out.append(f"{wf.name} passes CLAUDE_CODE_OAUTH_TOKEN but runs "
+                           f"no stage that reaches llm_router")
+            if has_gemini:
+                out.append(f"{wf.name} passes GEMINI_API_KEY but runs "
                            f"no stage that reaches llm_router")
             continue
         lanes.append(wf.name)
@@ -186,10 +194,12 @@ def lane_problems(mods: set[str]) -> tuple[list[str], list[str]]:
             code = "\n".join(l for l in step.splitlines()
                              if not l.lstrip().startswith("#"))
             hit = {m for m in mods if re.search(rf"loop/{m}\.py\b", code)}
-            if hit and SECRET_LINE not in step:
-                name = re.search(r"name:\s*(.+)", step)
-                out.append(f"{wf.name} step {name.group(1).strip() if name else '?'!r} "
-                           f"runs {sorted(hit)} without {SECRET_LINE}")
+            for line in (SECRET_LINE, GEMINI_LINE):
+                if hit and line not in step:
+                    name = re.search(r"name:\s*(.+)", step)
+                    out.append(f"{wf.name} step "
+                               f"{name.group(1).strip() if name else '?'!r} "
+                               f"runs {sorted(hit)} without {line}")
     return out, lanes
 
 
@@ -342,8 +352,24 @@ def check() -> list[str]:
             neg, _ = lane_problems(mods)
         finally:
             WORKFLOWS = real
-    if len(neg) < 2:
-        fails.append("(f) a router lane without the pin and secret was not seen")
+    if len(neg) < 3 or not any("GEMINI_API_KEY" in n for n in neg) \
+            or not any("CLAUDE_CODE_OAUTH_TOKEN" in n for n in neg):
+        fails.append("(f) a router lane without the pin and BOTH secrets "
+                     f"was not seen: {neg}")
+    # Negative: a non-router lane carrying GEMINI_API_KEY is seen.
+    examined += 1
+    with tempfile.TemporaryDirectory() as d:
+        Path(d, "y.yml").write_text(
+            "jobs:\n  j:\n    steps:\n      - name: s\n        env:\n"
+            "          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}\n"
+            "        run: echo hi\n")
+        WORKFLOWS = Path(d)
+        try:
+            neg, _ = lane_problems(mods)
+        finally:
+            WORKFLOWS = real
+    if not any("passes GEMINI_API_KEY" in n for n in neg):
+        fails.append("(f) a non-router lane carrying GEMINI_API_KEY was not seen")
 
     # (g) a retry naming the subscription tier is not refused.
     examined += 1

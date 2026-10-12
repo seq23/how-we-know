@@ -873,6 +873,9 @@ def draft(question: str, slug: str, pov: dict, model: str | None = None,
             problems.insert(0, f"output was cut off (finish_reason={finish!r}); "
                                f"the draft is incomplete")
         record_spend(slug, model, usage, cost, attempt, not problems)
+        # The same verdict ranks the $0 fallback order (RUNBOOK "Fallback
+        # standing"); the subscription tier is ignored there.
+        llm_router.record_validation(model, not problems)
 
         if not problems:
             # Stamp the opening variant it was drafted and checked under, so

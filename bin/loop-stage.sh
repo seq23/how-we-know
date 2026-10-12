@@ -44,6 +44,9 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"; cd "$ROOT"
 PY="${LOOP_PYTHON:-python3}"
 
 STAGE="${1:?usage: loop-stage.sh <stage> <file.py> [args…]}"; shift
+# loop/llm_router.py stamps each free-model outcome in the route ledger with
+# the lane that asked; this is where it learns the lane's name.
+export LOOP_STAGE="$STAGE"
 FILE="${1:?usage: loop-stage.sh <stage> <file.py> [args…]}"; shift
 
 echo "::group::$STAGE"
@@ -283,6 +286,10 @@ else
   # committed file - only local config can supply that.
   git config merge.quota-union.driver \
     "python3 $ROOT/loop/tools/merge_quota_json.py %O %A %B"
+  # Same for the $0 route ledger (2026-10-12): every lane that calls a free
+  # model appends timestamped outcomes, so the merge is the union of both.
+  git config merge.route-ledger-union.driver \
+    "python3 $ROOT/loop/tools/merge_route_ledger.py %O %A %B"
 
   # Another stage, or the Mac, may have pushed while this ran. Rebase, never
   # force. PUSHED tracks whether a push actually landed - it is not safe to

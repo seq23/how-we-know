@@ -19,16 +19,15 @@ concurrency:
 
 jobs:
   draft:
-    # Derived from loop/draft.py AUTHORING_BUDGET_MIN (210): no draft attempt
+    # Derived from loop/draft.py AUTHORING_BUDGET_MIN (40): no draft attempt
     # starts past that budget, one in-flight attempt is at most ~6 minutes
     # (a 300 s request plus citation fetches), and setup, validation and the
-    # dashboard take ~3. Ceiling = budget + 20, ending by 13:50 UTC, before
-    # loop-upload-cloud.yml (14:00 UTC) joins the loop-state queue. A fault
-    # detector above the honest worst case, never the budget. The old 31 was
-    # 3x a PAID model's 0.6-minute median and cancelled run 38235183608
-    # (2026-10-12) while the $0 route was still writing the third topic.
+    # dashboard take ~3. The honest worst case is ~50 minutes; this is the
+    # fault detector above it, never the budget. The old 31 was 3x a PAID
+    # model's 0.6-minute median and cancelled run 38235183608 (2026-10-12)
+    # while the $0 route was still writing the third topic.
     # loop/tests/test_mon_draft_authoring_budget.py pins ceiling == budget + 20.
-    timeout-minutes: 230
+    timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -101,4 +100,5 @@ jobs:
           # Her Claude subscription answers first (prepaid, no per-call bill);
           # absent or failing -> the $0 OpenRouter list above, unchanged.
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: bin/loop-stage.sh mon-draft loop/draft.py

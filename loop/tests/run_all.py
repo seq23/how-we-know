@@ -84,10 +84,19 @@ def main() -> int:
     import tempfile                                        # noqa: PLC0415
     stops = tempfile.mkdtemp(prefix="loop-test-stops-")
     env = dict(os.environ, LOOP_STOPS_DIR=stops)
+    # No test makes a live model call: the Gemini tier (loop/llm_router.py)
+    # must never reach the network from a test, whatever the shell exports.
+    env.pop("GEMINI_API_KEY", None)
 
     failed = []
     for f in files:
         name = os.path.basename(f)
+        # Same reason for loop/llm_router.py's route ledger (2026-10-12): any
+        # test that drives complete() through a fake _post would otherwise
+        # write loop/state/llm_route_ledger.json, and the fake outcomes would
+        # reorder the real $0 fallback. One fresh, empty ledger per test file,
+        # so no test's standing depends on which test ran before it.
+        env["LLM_ROUTE_LEDGER"] = os.path.join(stops, f"route-ledger-{name}.json")
         print(f"\n──── {name}")
         # Each test picks its OWN interpreter needs: test_workflows re-execs
         # into the system python3 for pyyaml, while the validators need the
