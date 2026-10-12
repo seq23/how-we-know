@@ -87,6 +87,9 @@ GENERATED = {
     "DRY_RUN_WRITE_REFUSED":       ("r2.py", '"DRY_RUN_WRITE_REFUSED"'),
     "DRY_RUN_NO_CREDENTIALS":      ("r2.py", '"DRY_RUN_NO_CREDENTIALS"'),
     "SHORTS_UNVERIFIED":           ("r2.py", '"SHORTS_UNVERIFIED"'),
+    # 2026-10-12: an empty shelf in a week below shorts_per_week is not a
+    # no-op (three weeks of 3, 3, 1 Shorts exited 0). Escalates on day 3.
+    "SHORTS_SHELF_DRY":            ("shorts_cloud.py", '"SHORTS_SHELF_DRY"'),
     "OPENROUTER_KEY_MISSING":      ("author.py", '"OPENROUTER_KEY_MISSING"'),
     # The free route (2026-10-11) names the provider's refusals itself;
     # author/extend/localize/comments pass them through by e.code.

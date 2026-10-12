@@ -617,7 +617,7 @@ def push(backend: _Backend, slugs=None, force: bool = False) -> dict:
     return {"pushed": sent, "skipped": skipped, "absent": absent}
 
 
-def verify_shorts() -> tuple[bool, list[str]]:
+def verify_shorts() -> tuple[bool, list[str], set[str]]:
     """Run V14 (attribution) and V15 (caption crop) over `shorts/`.
 
     WHY THIS IS A PRECONDITION OF SHELVING, AND NOT A CI STEP.
@@ -641,16 +641,22 @@ def verify_shorts() -> tuple[bool, list[str]]:
     pixels, and a Short that fails is never shelved, so the cloud lane can only
     ever publish a verified one.
 
-    Returns `(ok, lines)`. Never raises: a validator that cannot import is a
-    failure, not a crash, and certainly not a pass.
+    Returns `(ok, lines, held)`. `held` is the set of cut file names that
+    failed V14 or V15 BY NAME (validate.Result.failed_files); those cuts, and
+    only those, are kept off the shelf. `ok` is False only for a failure that
+    belongs to no single file - the validator could not import, crashed, or
+    examined nothing - because then no cut is proven and the whole shelf holds.
+    Never raises: a validator that cannot import is a failure, not a crash,
+    and certainly not a pass.
     """
     sys.path.insert(0, str(ROOT / "loop"))
     lines = []
     try:
         import validate as V                                # noqa: PLC0415
     except Exception as e:                                  # noqa: BLE001
-        return False, [f"loop/validate.py could not be imported: {e}"]
+        return False, [f"loop/validate.py could not be imported: {e}"], set()
     ok = True
+    held: set[str] = set()
     for fn in (V.v14_shorts_attribution, V.v15_shorts_caption_crop):
         try:
             r = fn()
@@ -659,12 +665,20 @@ def verify_shorts() -> tuple[bool, list[str]]:
             lines.append(f"{fn.__name__} CRASHED: {e}")
             continue
         good = not r.failures
-        ok = ok and good
+        named = set(getattr(r, "failed_files", None) or ())
+        # Every failure must be pinned to a file for the per-cut hold to be
+        # enough. A failure message that names no held file is unattributable
+        # and holds everything.
+        unpinned = [f for f in r.failures
+                    if not any(str(f).startswith(n) for n in named)]
+        if unpinned or (not good and not named):
+            ok = False
+        held |= named
         lines.append(f"{r.name}: {'PASS' if good else 'FAIL'} "
                      f"(examined {r.examined})")
         for f in r.failures[:5]:
             lines.append(f"    {f}")
-    return ok, lines
+    return ok, lines, held
 
 
 def receipt_refuses(rec: Path) -> str | None:
@@ -686,14 +700,23 @@ def receipt_refuses(rec: Path) -> str | None:
 
 
 def push_shorts(backend: _Backend, slugs=None, force: bool = False) -> dict:
-    """Shelve every cut Short — but only after V14 and V15 pass.
+    """Shelve every cut Short that V14 and V15 passed — and no other.
 
-    The gate is on the WHOLE directory, not per file, because that is how the
-    validators work: they read every receipt in `shorts/`. One uncredited cut
-    blocks the shelf until it is fixed or removed, which is the correct
-    severity for the one rule this pipeline may not break.
+    THE GATE IS PER CUT. Until 2026-10-12 it was on the whole directory: one
+    failing cut refused every Short. From 2026-10-08 two correct deep-sea cuts
+    (V14 compared them with footage that is not in them, see
+    validate.py:_credits_the_master_burned) and one correct crop (V15 compared
+    frames one apart) held all 81 cuts, and no Short posted for days while
+    Shorts are most of the channel's views. A guard must not reach beyond what
+    it governs: a cut that fails holds THAT cut, named every night, and its
+    siblings ship. The invariant is unchanged - no cut reaches R2 unless both
+    validators passed for it - and a failure that names no cut (validator
+    could not import, crashed, examined nothing) still refuses everything,
+    because then no cut is proven.
     """
-    ok, lines = verify_shorts()
+    res = verify_shorts()
+    ok, lines = res[0], res[1]
+    held_files = set(res[2]) if len(res) > 2 else set()
     for line in lines:
         print(f"  {line}")
     if not ok:
@@ -710,7 +733,7 @@ def push_shorts(backend: _Backend, slugs=None, force: bool = False) -> dict:
 
     shorts = ROOT / "shorts"
     slugs = list(slugs) if slugs else _publish_slugs()
-    sent, skipped, absent, refused = [], [], [], []
+    sent, skipped, absent, refused, held = [], [], [], [], []
     import shorts_lane                                    # noqa: PLC0415
     for slug, rank in ((s_, r_) for s_ in slugs
                        for r_ in range(1, shorts_lane.cuts_for(s_) + 1)):
@@ -725,6 +748,11 @@ def push_shorts(backend: _Backend, slugs=None, force: bool = False) -> dict:
             # one self-contained idea has no rank 2 (visuals/shorts.py).
             continue
         slug_label = shorts_lane.Pick(slug, rank).label
+        if name in held_files:
+            held.append(slug_label)
+            print(f"  ✗  hold {slug_label} short: V14/V15 failed for THIS cut "
+                  f"(see above); fix or delete {name} - its siblings still ship")
+            continue
         why_bad = receipt_refuses(rec)
         if why_bad:
             # THE CUT'S OWN VERIFIER SAID NO. visuals/shorts.py writes
@@ -754,8 +782,11 @@ def push_shorts(backend: _Backend, slugs=None, force: bool = False) -> dict:
         print(f"  {len(refused)} Short(s) refused by their own receipt; re-cut "
               f"or fix visuals/shorts.py, they are not shelved and will not "
               f"publish: " + "; ".join(refused))
+    if held:
+        print(f"  {len(held)} Short(s) held by V14/V15, not shelved, will not "
+              f"publish until fixed or deleted: " + "; ".join(held))
     return {"pushed": sent, "skipped": skipped, "absent": absent,
-            "refused": refused, "verified": lines}
+            "refused": refused, "held": held, "verified": lines}
 
 
 def main(argv=None) -> int:

@@ -57,6 +57,7 @@ from __future__ import annotations
 
 import argparse
 import sys
+import json
 import tempfile
 from pathlib import Path
 
@@ -146,6 +147,16 @@ def run(limit: int = 2, dry_run: bool = False) -> int:
                         "shelve a cut that fails V14 attribution or V15 "
                         "caption crop.")
         if not todo and not to_release:
+            dry = shelf_dry(SL.load_ledger(), cfg)
+            if dry:
+                st.named_stop("SHORTS_SHELF_DRY", dry["message"],
+                              detail=dry,
+                              unblock="The Mac's nightly bin/batch-session.sh "
+                                      "cuts and shelves Shorts. Read "
+                                      "loop/state/stops/<week>-mac-batch.json "
+                                      "and any open '[mac-batch] <CODE>' "
+                                      "issue: a cut V14/V15 refused is named "
+                                      "there.")
             st.named_stop(
                 "NO_SHORTS_SHELVED",
                 "every finished episode either already has a Short in the "
@@ -153,6 +164,16 @@ def run(limit: int = 2, dry_run: bool = False) -> int:
                 unblock="On the Mac: bin/make-shorts.sh --all, then "
                         "bin/push-to-r2.sh — which refuses to shelve a Short "
                         "that fails V14 or V15.")
+
+        # DRAIN MODE (owner, 2026-10-12): a verified backlog of two weeks or
+        # more goes out at shorts_drain.per_day on the two-a-day evening
+        # ladder; below that, the normal shorts_per_week ladder and --limit.
+        dm = SL.drain_mode(len(todo), cfg)
+        drain = dm["on"]
+        if drain:
+            limit = max(limit, int(dm["per_run"]))
+        print(f"  {dm['line']}", flush=True)
+        st.note(dm["line"])
 
         # The same 10,000-unit daily allowance the episode lane spends from. A
         # Short costs exactly what an episode costs (1,600 insert + 50 thumb +
@@ -172,7 +193,7 @@ def run(limit: int = 2, dry_run: bool = False) -> int:
         # Released rows' evenings are planned first so the two cannot be
         # handed the same slot; plan() then keeps two cuts of one episode off
         # the same day (deep sea publishes cuts 2 and 3 since 2026-10-08).
-        take = [p for p, _ in SL.plan(SL.load_ledger(), todo, afford)]
+        take = [p for p, _ in SL.plan(SL.load_ledger(), todo, afford, drain=drain)]
         for r in to_release:
             print(f"  release  {r['slug']}  (hold lifted)")
         for r in still_held:
@@ -187,7 +208,7 @@ def run(limit: int = 2, dry_run: bool = False) -> int:
                         f"{t.astimezone(SL.SHORTS_TZ):%Y-%m-%d %H:%M %Z}")
                 led = {"published": led["published"] + [dict(
                     r, scheduled_publish_at=t.strftime("%Y-%m-%dT%H:%M:%SZ"))]}
-            for p, t in SL.plan(led, todo, afford):
+            for p, t in SL.plan(led, todo, afford, drain=drain):
                 st.work(f"planned Short for {p.label} at "
                         f"{t.astimezone(SL.SHORTS_TZ):%Y-%m-%d %H:%M %Z}")
             for r in still_held:
@@ -213,7 +234,7 @@ def run(limit: int = 2, dry_run: bool = False) -> int:
         released = SL.release_held(st, token, lane=LANE)
         if not take:
             return 0
-        planned = SL.plan(SL.load_ledger(), todo, afford)
+        planned = SL.plan(SL.load_ledger(), todo, afford, drain=drain)
         take = [p for p, _ in planned]
         for p, t in planned:
             print(f"  plan  {t.astimezone(SL.SHORTS_TZ):%a %d %b %H:%M %Z}  "
@@ -244,6 +265,44 @@ def run(limit: int = 2, dry_run: bool = False) -> int:
             detail=f"published {len(take)} Short(s): "
                    f"{[p.label for p in take]}")
     return 0
+
+
+def shelf_dry(led: dict, cfg: dict, at=None) -> dict | None:
+    """The SHORTS_SHELF_DRY record, or None when the week is on target.
+
+    RULE 0. From 22 Sep 2026 this lane exited 0 every day while publishing 3,
+    3 and then 1 Short a week against shorts_per_week = 9, because an empty
+    shelf was a self-resolving no-op whatever the week looked like. An empty
+    shelf is only "nothing to do" when the week's Shorts already went out.
+    """
+    from datetime import datetime, timezone  # noqa: PLC0415
+    import cadence  # noqa: PLC0415
+    at = at or datetime.now(timezone.utc)
+    target = cadence.shorts_effective()
+    n7 = SL.published_trailing(led, 7, at)
+    if n7 >= target:
+        return None
+    rows = led.get("published", [])
+    last_pub = max((r.get("scheduled_publish_at") or "" for r in rows),
+                   default="") or "never"
+    last_up = max((r.get("uploaded_at") or "" for r in rows),
+                  default="") or "never"
+    hb = {}
+    try:
+        hb = json.loads((LOOP / "state" / "mac_heartbeat.json").read_text())
+    except (OSError, ValueError):
+        pass
+    batch = (hb.get("batch") or {}).get("last_run_at") or "unknown"
+    return {
+        "message": (f"{n7} Short(s) published in the trailing 7 days vs a "
+                    f"target of {target}/week, and the R2 shelf holds no "
+                    f"verified Short. Last Short taken off the shelf "
+                    f"{last_up[:10]} (publishing {last_pub[:10]}); the Mac "
+                    f"batch last ran {str(batch)[:16]}."),
+        "published_trailing_7d": n7, "target_per_week": target,
+        "last_shelf_upload_at": last_up, "last_publish_at": last_pub,
+        "mac_batch_last_run_at": batch,
+    }
 
 
 def fetch_verified(shelf, key: str, dest: Path) -> Path:
