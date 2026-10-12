@@ -1,12 +1,12 @@
 {
   "week": "2026-W42",
-  "generated": "2026-10-12T17:08:43+00:00",
+  "generated": "2026-10-12T18:04:40+00:00",
   "videos_per_week": 4,
-  "breaker": "tripped",
+  "breaker": "closed",
   "validators": [
     {
       "validator": "V1 directive-truth",
-      "examined": 521,
+      "examined": 550,
       "status": "PASS",
       "failures": [],
       "notes": [
@@ -163,7 +163,7 @@
     },
     {
       "validator": "V21 no-boilerplate",
-      "examined": 49,
+      "examined": 52,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -171,7 +171,7 @@
     },
     {
       "validator": "V22 producer-notes-second-person",
-      "examined": 49,
+      "examined": 52,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -179,7 +179,7 @@
     },
     {
       "validator": "V23 chapters-yt-compliant",
-      "examined": 49,
+      "examined": 52,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -255,11 +255,11 @@
     },
     {
       "validator": "V40 pov-assignment-integrity",
-      "examined": 45,
+      "examined": 47,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "45 assignment(s) agree with pov/pov-bank.json on the line, its tier and its domain, and no line is used twice"
+        "47 assignment(s) agree with pov/pov-bank.json on the line, its tier and its domain, and no line is used twice"
       ],
       "stops": []
     },
@@ -289,7 +289,7 @@
     },
     {
       "validator": "V36 editorial-gate",
-      "examined": 393,
+      "examined": 417,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -419,7 +419,7 @@
     {
       "slug": "what-lives-in-mariana-trench",
       "question": "what lives in mariana trench",
-      "script": "scripts/what-lives-in-mariana-trench.md",
+      "script": "loop/drafts/what-lives-in-mariana-trench.md",
       "generated": false,
       "carried_draft": true,
       "author_cost_usd": null,
@@ -486,7 +486,7 @@
     {
       "slug": "why-deep-sea-creatures-are-creepers",
       "question": "why deep sea creatures are creepers",
-      "script": "scripts/why-deep-sea-creatures-are-creepers.md",
+      "script": "loop/drafts/why-deep-sea-creatures-are-creepers.md",
       "generated": false,
       "carried_draft": true,
       "author_cost_usd": null,
@@ -520,7 +520,7 @@
     {
       "slug": "how-deep-can-whales-dive",
       "question": "how deep can whales dive",
-      "script": "scripts/how-deep-can-whales-dive.md",
+      "script": "loop/drafts/how-deep-can-whales-dive.md",
       "generated": false,
       "carried_draft": true,
       "author_cost_usd": null,

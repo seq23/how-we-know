@@ -1,8 +1,8 @@
 {
-  "state": "tripped",
-  "tripped_at": "2026-10-12T15:53:50+00:00",
-  "cause": "validator",
-  "detail": "V21 no-boilerplate=FAIL(1)",
+  "state": "closed",
+  "tripped_at": null,
+  "cause": null,
+  "detail": null,
   "history": [
     {
       "event": "trip",
@@ -105,6 +105,12 @@
       "at": "2026-10-12T15:53:50+00:00",
       "cause": "validator",
       "detail": "V21 no-boilerplate=FAIL(1)"
+    },
+    {
+      "event": "reset",
+      "at": "2026-10-12T18:04:40+00:00",
+      "cleared_cause": "validator",
+      "note": "automatic: all 40 validators pass again in the drafting run that re-ran the check"
     }
   ]
 }
