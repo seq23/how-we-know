@@ -214,8 +214,16 @@ def rebuild_runway_if_short(st, cfg: dict, per_week: int, used_slugs: list[str],
             continue
         draft_path = ROOT / res["path"]
         text = draft_path.read_text(encoding="utf-8")
+        # The matched line travels WITH the item, exactly as rank.py's rows
+        # carry it for main(): V4 reads pov_id/pov_line off the item when no
+        # hand assignment exists, and the assignment is only recorded AFTER
+        # validation passes. Without them V4 failed every runway draft with
+        # "no POV line assigned and none matched" - run 38275491631
+        # (2026-10-12) authored three good scripts and stopped
+        # RUNWAY_AUTHORING_FALLBACK on all three.
         item = {"slug": slug, "question": question, "script": res["path"],
-                "generated": True}
+                "generated": True, "pov_id": pov["pov_id"],
+                "pov_line": pov["line"]}
         passed, report = validate.run_all([item])
         if passed:
             # Evidence is recorded ONLY inside this passed-validators branch —
