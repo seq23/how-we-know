@@ -1,7 +1,83 @@
 {
   "_why": "Measured $0 fallback order (owner 2026-10-12). Written by loop/llm_router.py; ranked by `python3 loop/llm_router.py standing`. See RUNBOOK.md 'Fallback standing'.",
   "models": {
+    "apodex/apodex-1.1-mini:free": [
+      {
+        "lane": "bench",
+        "latency_s": null,
+        "outcome": "empty",
+        "ts": "2026-10-12T14:00:06Z"
+      },
+      {
+        "lane": "bench",
+        "latency_s": 55.0,
+        "outcome": "empty",
+        "ts": "2026-10-12T14:00:19Z"
+      },
+      {
+        "lane": "bench",
+        "latency_s": 43.4,
+        "outcome": "failed_validation",
+        "ts": "2026-10-12T14:00:29Z"
+      },
+      {
+        "lane": "bench",
+        "latency_s": 53.6,
+        "outcome": "empty",
+        "ts": "2026-10-12T14:00:30Z"
+      }
+    ],
+    "dots-studio/dots-3-note-preview:free": [
+      {
+        "lane": "bench",
+        "latency_s": null,
+        "outcome": "empty",
+        "ts": "2026-10-12T14:00:04Z"
+      },
+      {
+        "lane": "bench",
+        "latency_s": null,
+        "outcome": "empty",
+        "ts": "2026-10-12T14:00:12Z"
+      },
+      {
+        "lane": "bench",
+        "latency_s": 174.0,
+        "outcome": "empty",
+        "ts": "2026-10-12T14:00:17Z"
+      },
+      {
+        "lane": "bench",
+        "latency_s": 185.9,
+        "outcome": "empty",
+        "ts": "2026-10-12T14:00:27Z"
+      }
+    ],
     "gemini/gemini-2.5-flash": [
+      {
+        "lane": "bench",
+        "latency_s": 14.9,
+        "outcome": "failed_validation",
+        "ts": "2026-10-12T14:00:35Z"
+      },
+      {
+        "lane": "bench",
+        "latency_s": 17.2,
+        "outcome": "failed_validation",
+        "ts": "2026-10-12T14:00:36Z"
+      },
+      {
+        "lane": "bench",
+        "latency_s": 23.9,
+        "outcome": "failed_validation",
+        "ts": "2026-10-12T14:00:37Z"
+      },
+      {
+        "lane": "bench",
+        "latency_s": 20.4,
+        "outcome": "failed_validation",
+        "ts": "2026-10-12T14:00:38Z"
+      },
       {
         "lane": "mon-draft",
         "latency_s": 19.6,
@@ -61,6 +137,12 @@
     ],
     "gemini/gemini-3-flash-preview": [
       {
+        "lane": "bench",
+        "latency_s": 17.3,
+        "outcome": "failed_validation",
+        "ts": "2026-10-12T14:00:39Z"
+      },
+      {
         "lane": "mon-draft",
         "latency_s": 33.5,
         "outcome": "answered",
@@ -110,6 +192,12 @@
       }
     ],
     "gemini/gemini-3.5-flash": [
+      {
+        "lane": "bench",
+        "latency_s": 4.7,
+        "outcome": "error",
+        "ts": "2026-10-12T14:00:34Z"
+      },
       {
         "lane": "mon-draft",
         "latency_s": 5.5,
@@ -187,6 +275,30 @@
     ],
     "google/gemma-4-26b-a4b-it:free": [
       {
+        "lane": "bench",
+        "latency_s": null,
+        "outcome": "rate_limited",
+        "ts": "2026-10-12T14:00:05Z"
+      },
+      {
+        "lane": "bench",
+        "latency_s": null,
+        "outcome": "rate_limited",
+        "ts": "2026-10-12T14:00:13Z"
+      },
+      {
+        "lane": "bench",
+        "latency_s": 0.3,
+        "outcome": "rate_limited",
+        "ts": "2026-10-12T14:00:18Z"
+      },
+      {
+        "lane": "bench",
+        "latency_s": 0.3,
+        "outcome": "rate_limited",
+        "ts": "2026-10-12T14:00:28Z"
+      },
+      {
         "lane": "mon-draft",
         "latency_s": 0.2,
         "outcome": "rate_limited",
@@ -195,6 +307,30 @@
     ],
     "google/gemma-4-31b-it:free": [
       {
+        "lane": "bench",
+        "latency_s": null,
+        "outcome": "rate_limited",
+        "ts": "2026-10-12T14:00:01Z"
+      },
+      {
+        "lane": "bench",
+        "latency_s": null,
+        "outcome": "rate_limited",
+        "ts": "2026-10-12T14:00:09Z"
+      },
+      {
+        "lane": "bench",
+        "latency_s": 0.2,
+        "outcome": "rate_limited",
+        "ts": "2026-10-12T14:00:14Z"
+      },
+      {
+        "lane": "bench",
+        "latency_s": 0.5,
+        "outcome": "rate_limited",
+        "ts": "2026-10-12T14:00:24Z"
+      },
+      {
         "lane": "mon-draft",
         "latency_s": 0.2,
         "outcome": "rate_limited",
@@ -202,6 +338,36 @@
       }
     ],
     "nvidia/nemotron-3-super-120b-a12b:free": [
+      {
+        "lane": "bench",
+        "latency_s": null,
+        "outcome": "empty",
+        "ts": "2026-10-12T14:00:07Z"
+      },
+      {
+        "lane": "bench",
+        "latency_s": null,
+        "outcome": "empty",
+        "ts": "2026-10-12T14:00:08Z"
+      },
+      {
+        "lane": "bench",
+        "latency_s": 165.3,
+        "outcome": "failed_validation",
+        "ts": "2026-10-12T14:00:20Z"
+      },
+      {
+        "lane": "bench",
+        "latency_s": 128.1,
+        "outcome": "failed_validation",
+        "ts": "2026-10-12T14:00:21Z"
+      },
+      {
+        "lane": "bench",
+        "latency_s": 163.4,
+        "outcome": "empty",
+        "ts": "2026-10-12T14:00:31Z"
+      },
       {
         "lane": "mon-draft",
         "latency_s": 206.2,
@@ -234,6 +400,36 @@
       }
     ],
     "nvidia/nemotron-3-ultra-550b-a55b:free": [
+      {
+        "lane": "bench",
+        "latency_s": null,
+        "outcome": "empty",
+        "ts": "2026-10-12T14:00:00Z"
+      },
+      {
+        "lane": "bench",
+        "latency_s": 653.7,
+        "outcome": "failed_validation",
+        "ts": "2026-10-12T14:00:22Z"
+      },
+      {
+        "lane": "bench",
+        "latency_s": 137.9,
+        "outcome": "failed_validation",
+        "ts": "2026-10-12T14:00:23Z"
+      },
+      {
+        "lane": "bench",
+        "latency_s": 472.2,
+        "outcome": "failed_validation",
+        "ts": "2026-10-12T14:00:32Z"
+      },
+      {
+        "lane": "bench",
+        "latency_s": 119.6,
+        "outcome": "failed_validation",
+        "ts": "2026-10-12T14:00:33Z"
+      },
       {
         "lane": "mon-draft",
         "latency_s": 103.6,
@@ -269,6 +465,58 @@
         "latency_s": null,
         "outcome": "failed_validation",
         "ts": "2026-10-12T15:31:29Z"
+      }
+    ],
+    "nvidia/nemotron-3.5-lightning:free": [
+      {
+        "lane": "bench",
+        "latency_s": null,
+        "outcome": "empty",
+        "ts": "2026-10-12T14:00:02Z"
+      },
+      {
+        "lane": "bench",
+        "latency_s": null,
+        "outcome": "empty",
+        "ts": "2026-10-12T14:00:10Z"
+      },
+      {
+        "lane": "bench",
+        "latency_s": 258.7,
+        "outcome": "empty",
+        "ts": "2026-10-12T14:00:15Z"
+      },
+      {
+        "lane": "bench",
+        "latency_s": 270.0,
+        "outcome": "empty",
+        "ts": "2026-10-12T14:00:25Z"
+      }
+    ],
+    "thinkingmachines/inkling:free": [
+      {
+        "lane": "bench",
+        "latency_s": null,
+        "outcome": "error",
+        "ts": "2026-10-12T14:00:03Z"
+      },
+      {
+        "lane": "bench",
+        "latency_s": null,
+        "outcome": "error",
+        "ts": "2026-10-12T14:00:11Z"
+      },
+      {
+        "lane": "bench",
+        "latency_s": 0.2,
+        "outcome": "error",
+        "ts": "2026-10-12T14:00:16Z"
+      },
+      {
+        "lane": "bench",
+        "latency_s": 0.2,
+        "outcome": "error",
+        "ts": "2026-10-12T14:00:26Z"
       }
     ]
   }

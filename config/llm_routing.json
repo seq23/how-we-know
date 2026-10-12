@@ -6,12 +6,30 @@
     "Refresh: fetch https://openrouter.ai/api/v1/models (no key needed), keep only ':free' text models priced 0/0 with >= 32k context, strongest general instruct model first, update snapshot_date. loop/tests/test_llm_routing.py enforces the shape.",
     "Owner 2026-10-12, verbatim: \"use my claude subscription usage in advance of the $0 openrouter\". subscription_route (her prepaid Claude subscription via the headless Claude Code CLI, no per-call bill) answers first when CLAUDE_CODE_OAUTH_TOKEN is set; any failure there falls through to the $0 list below.",
     "Owner 2026-10-12: GEMINI_API_KEY (her AI Studio key, free tier only) puts gemini_route's models between the subscription and the list below; they are ranked in the same route ledger.",
-    "Owner 2026-10-12: the order below is a SEED, not a ranking. loop/llm_router.py standing() measures it from loop/state/llm_route_ledger.json (every call outcome and every draft verdict) and walks the measured order. Seeded from run 38235183608 (Mon 12 Oct 2026): nemotron-3-ultra returned an EMPTY answer and cost ~5 minutes before the route moved on, so it starts last."
+    "Owner 2026-10-12: the order below is a SEED, not a ranking. loop/llm_router.py standing() measures it from loop/state/llm_route_ledger.json (every call outcome and every draft verdict) and walks the measured order. Seeded from run 38235183608 (Mon 12 Oct 2026): nemotron-3-ultra returned an EMPTY answer and cost ~5 minutes before the route moved on, so it started last. Re-seeded from the 2026-10-12 bench (seeded_from_bench): the OpenRouter models now follow the bench ranking, ultra first - it wrote 1,290-1,513-word drafts where super truncated or came back empty - and the route ledger carries the bench's attempts (lane \"bench\"), so standing() reproduces that ranking.",
+    "Bench 2026-10-12 (research/free_model_bench/2026-10-12.md): nemotron-3-super, -ultra, -3.5-lightning and dots-3-note spent the whole 16,000-token max_tokens on hidden reasoning and returned empty text (finish_reason=length). reasoning_max_tokens caps that thinking (OpenRouter `reasoning.max_tokens`, the form every listed model accepts; `effort` is not - ultra takes only high/medium - and `exclude` still spends the budget); max_tokens 24000 fits a ~1,500-word script plus that budget. loop/llm_router.py reasoning_problems() pins the shape."
   ],
   "snapshot_date": "2026-10-11",
   "source": "https://openrouter.ai/api/v1/models",
   "max_cost_usd": 0,
   "paid_fallback": false,
+  "seeded_from_bench": {
+    "file": "research/free_model_bench/2026-10-12.json",
+    "ranking": [
+      "gemini/gemini-2.5-flash",
+      "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "gemini/gemini-3-flash-preview",
+      "apodex/apodex-1.1-mini:free",
+      "nvidia/nemotron-3-super-120b-a12b:free",
+      "google/gemma-4-31b-it:free",
+      "nvidia/nemotron-3.5-lightning:free",
+      "thinkingmachines/inkling:free",
+      "dots-studio/dots-3-note-preview:free",
+      "google/gemma-4-26b-a4b-it:free",
+      "gemini/gemini-3.5-flash"
+    ],
+    "why": "Owner 2026-10-12: the ranking of research/free_model_bench/2026-10-12.md, in route-ledger ids. loop/state/llm_route_ledger.json was seeded from the same file (python3 loop/bench_free_models.py --seed-ledger <file>); loop/tests/test_measured_fallback.py case (i) checks standing() reproduces it."
+  },
   "subscription_route": {
     "provider": "claude-code",
     "env": "CLAUDE_CODE_OAUTH_TOKEN",
@@ -22,17 +40,28 @@
     "provider": "google-ai-studio",
     "env": "GEMINI_API_KEY",
     "models": [
-      "gemini-3.5-flash",
-      "gemini-3.5-flash-lite",
-      "gemini-3-flash-preview",
       "gemini-2.5-flash",
-      "gemini-2.5-flash-lite"
+      "gemini-3-flash-preview",
+      "gemini-3.5-flash-lite",
+      "gemini-2.5-flash-lite",
+      "gemini-3.5-flash"
     ],
     "free_tier_only": true,
-    "why": "Owner 2026-10-12: her existing AI Studio key, free tier (10-15 req/min, ~250-1500/day per model); never a billed project. Behind the subscription, ahead of the OpenRouter list because Gemini Flash writes long-form far better than any :free model there. Whether 3.5 is on the free tier is unknown (key probed 2026-10-12: 62 models visible), so 403/404/429 on any model falls through with one [gemini-route] line. Data rule: free-tier prompts may be used by Google to improve its products - channel scripts only, never anything confidential (LP names, deal terms); this repo holds nothing confidential."
+    "why": "Owner 2026-10-12: her existing AI Studio key, free tier (10-15 req/min, ~250-1500/day per model); never a billed project. Behind the subscription, ahead of the OpenRouter list because Gemini Flash writes long-form far better than any :free model there. Whether 3.5 is on the free tier is unknown (key probed 2026-10-12: 62 models visible), so 403/404/429 on any model falls through with one [gemini-route] line. Data rule: free-tier prompts may be used by Google to improve its products - channel scripts only, never anything confidential (LP names, deal terms); this repo holds nothing confidential. Order re-seeded from the 2026-10-12 bench: gemini-2.5-flash (the bench's nearest miss) and gemini-3-flash-preview first, the unbenched lite models next, gemini-3.5-flash (503 in the bench and 4 errors on the Monday run) last; standing() reorders them by measured pass rate."
   },
   "min_context_length": 32000,
+  "max_tokens": 24000,
+  "reasoning_max_tokens": 2000,
   "models": [
+    {
+      "id": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "context_length": 1000000,
+      "max_completion_tokens": 65536,
+      "pricing": {
+        "prompt": "0",
+        "completion": "0"
+      }
+    },
     {
       "id": "nvidia/nemotron-3-super-120b-a12b:free",
       "context_length": 262144,
@@ -55,15 +84,6 @@
       "id": "google/gemma-4-26b-a4b-it:free",
       "context_length": 262144,
       "max_completion_tokens": 32768,
-      "pricing": {
-        "prompt": "0",
-        "completion": "0"
-      }
-    },
-    {
-      "id": "nvidia/nemotron-3-ultra-550b-a55b:free",
-      "context_length": 1000000,
-      "max_completion_tokens": 65536,
       "pricing": {
         "prompt": "0",
         "completion": "0"

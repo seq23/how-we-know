@@ -159,6 +159,7 @@ def config_problems(cfg: dict) -> list[str]:
     models = cfg.get("models") or []
     if not models:
         out.append("no models listed")
+    out += reasoning_problems(cfg)
     floor = cfg.get("min_context_length") or 32000
     seen = set()
     for m in models:
@@ -210,6 +211,57 @@ def config_problems(cfg: dict) -> list[str]:
             if not str(sr.get("model") or "").strip():
                 out.append("subscription_route.model is empty")
     return sorted(set(out))
+
+
+# Hidden-reasoning cap (bench 2026-10-12, research/free_model_bench/2026-10-12.md):
+# nemotron-3-super/-ultra/-3.5-lightning and dots-3-note thought until the
+# request's max_tokens and returned EMPTY text (finish_reason=length). The
+# OpenRouter `reasoning.max_tokens` form is the one every listed model takes:
+# token-budget models use it directly, effort-only models get an effort level
+# derived from it (OpenRouter docs, use-cases/reasoning-tokens). `effort` is
+# NOT universal - nemotron-3-ultra accepts only high/medium, and "low" still
+# let 3.5-lightning spend 16,000 tokens in the bench. `exclude: true` only
+# hides the reasoning; the budget is still spent.
+REASONING_MIN_TOKENS = 1024     # OpenRouter's floor for a direct budget
+
+
+def reasoning_problems(cfg: dict) -> list[str]:
+    out = []
+    cap, mx = cfg.get("reasoning_max_tokens"), cfg.get("max_tokens")
+    if not isinstance(cap, int) or isinstance(cap, bool) \
+            or cap < REASONING_MIN_TOKENS:
+        out.append(f"reasoning_max_tokens is {cap!r}; must be an int >= "
+                   f"{REASONING_MIN_TOKENS} (an uncapped reasoning model "
+                   f"returns empty text)")
+    if not isinstance(mx, int) or isinstance(mx, bool):
+        out.append(f"max_tokens is {mx!r}; must be an int")
+    elif isinstance(cap, int) and mx - cap < 16000:
+        out.append(f"max_tokens {mx} leaves under 16,000 tokens for the "
+                   f"script after a {cap}-token reasoning budget")
+    for m in cfg.get("models") or []:
+        mc = (m or {}).get("max_completion_tokens")
+        if isinstance(mx, int) and isinstance(mc, int) and mc < mx:
+            out.append(f"{m.get('id')} max_completion_tokens {mc} < "
+                       f"max_tokens {mx}")
+    return out
+
+
+def openrouter_body(model: str, messages: list[dict], temperature: float,
+                    max_tokens: int | None = None,
+                    cfg: dict | None = None) -> dict:
+    """The one OpenRouter request body complete() sends."""
+    cfg = cfg if cfg is not None else load_config()
+    return {
+        "model": model,
+        "messages": messages,
+        "max_tokens": int(max_tokens or cfg["max_tokens"]),
+        "temperature": temperature,
+        # Caps hidden thinking so the answer is not starved (see above).
+        "reasoning": {"max_tokens": int(cfg["reasoning_max_tokens"])},
+        "usage": {"include": True},
+        # OpenRouter refuses any endpoint above this price. 0 = free only.
+        "provider": {"max_price": {"prompt": 0, "completion": 0}},
+    }
 
 
 def load_config(path: Path | None = None) -> dict:
@@ -602,7 +654,7 @@ def _call_outcome(e: BaseException) -> str:
 
 def complete(messages: list[dict], key: str, *, preferred: str | None = None,
              timeout: int = 300, temperature: float = 0.4,
-             max_tokens: int = 16000) -> dict:
+             max_tokens: int | None = None) -> dict:
     """Send `messages` to the first free model that answers.
 
     `preferred` (a lane's configured model) goes first if - and only if - it
@@ -664,15 +716,8 @@ def complete(messages: list[dict], key: str, *, preferred: str | None = None,
                 return resp
             failures.append(f"{model}: {why[:120]}")
             continue
-        body = json.dumps({
-            "model": model,
-            "messages": messages,
-            "max_tokens": max_tokens,
-            "temperature": temperature,
-            "usage": {"include": True},
-            # OpenRouter refuses any endpoint above this price. 0 = free only.
-            "provider": {"max_price": {"prompt": 0, "completion": 0}},
-        }).encode()
+        body = json.dumps(openrouter_body(model, messages, temperature,
+                                          max_tokens)).encode()
         t0 = time.monotonic()
         try:
             resp = _post(body, key, timeout)
