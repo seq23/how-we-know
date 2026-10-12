@@ -1,0 +1,848 @@
+{
+  "date": "2026-10-12",
+  "roster": [
+    "google/gemma-4-31b-it:free",
+    "nvidia/nemotron-3.5-lightning:free",
+    "thinkingmachines/inkling:free",
+    "dots-studio/dots-3-note-preview:free",
+    "google/gemma-4-26b-a4b-it:free",
+    "apodex/apodex-1.1-mini:free",
+    "nvidia/nemotron-3-super-120b-a12b:free",
+    "nvidia/nemotron-3-ultra-550b-a55b:free",
+    "gemini-3.5-flash",
+    "gemini-2.5-flash",
+    "gemini-3-flash-preview"
+  ],
+  "config_roster": [
+    "nvidia/nemotron-3-ultra-550b-a55b:free",
+    "nvidia/nemotron-3-super-120b-a12b:free",
+    "google/gemma-4-31b-it:free",
+    "google/gemma-4-26b-a4b-it:free"
+  ],
+  "floor_words": 1446,
+  "wpm": 144.58,
+  "cap": 43,
+  "prior_aborted_requests": 17,
+  "reasoning": "low",
+  "prior_rows": [
+    {
+      "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "outcome": "empty",
+      "note": "production body, topic what-lives-in-mariana-trench"
+    },
+    {
+      "model": "google/gemma-4-31b-it:free",
+      "outcome": "http_429",
+      "note": "production body, topic what-lives-in-mariana-trench"
+    },
+    {
+      "model": "nvidia/nemotron-3.5-lightning:free",
+      "outcome": "empty",
+      "note": "production body, topic what-lives-in-mariana-trench"
+    },
+    {
+      "model": "thinkingmachines/inkling:free",
+      "outcome": "http_403",
+      "note": "production body, topic what-lives-in-mariana-trench (agentic harnesses only)"
+    },
+    {
+      "model": "dots-studio/dots-3-note-preview:free",
+      "outcome": "empty",
+      "note": "production body, topic what-lives-in-mariana-trench"
+    },
+    {
+      "model": "google/gemma-4-26b-a4b-it:free",
+      "outcome": "http_429",
+      "note": "production body, topic what-lives-in-mariana-trench"
+    },
+    {
+      "model": "apodex/apodex-1.1-mini:free",
+      "outcome": "empty",
+      "note": "production body, topic what-lives-in-mariana-trench"
+    },
+    {
+      "model": "nvidia/nemotron-3-super-120b-a12b:free",
+      "outcome": "empty",
+      "note": "production body, topic what-lives-in-mariana-trench"
+    },
+    {
+      "model": "nvidia/nemotron-3-super-120b-a12b:free",
+      "outcome": "empty",
+      "note": "diagnostic repeat: finish_reason=length, completion_tokens=16000 all reasoning, content 0 chars, 170 s"
+    },
+    {
+      "model": "google/gemma-4-31b-it:free",
+      "outcome": "http_429",
+      "note": "reasoning effort low, topic what-lives-in-mariana-trench (run crashed in the judge on a missing numpy before recording the next model)"
+    },
+    {
+      "model": "nvidia/nemotron-3.5-lightning:free",
+      "outcome": "empty",
+      "note": "reasoning effort low, topic what-lives-in-mariana-trench (run crashed in the judge on a missing numpy before recording the next model)"
+    },
+    {
+      "model": "thinkingmachines/inkling:free",
+      "outcome": "http_403",
+      "note": "reasoning effort low, topic what-lives-in-mariana-trench (run crashed in the judge on a missing numpy before recording the next model)"
+    },
+    {
+      "model": "dots-studio/dots-3-note-preview:free",
+      "outcome": "empty",
+      "note": "reasoning effort low, topic what-lives-in-mariana-trench (run crashed in the judge on a missing numpy before recording the next model)"
+    },
+    {
+      "model": "google/gemma-4-26b-a4b-it:free",
+      "outcome": "http_429",
+      "note": "reasoning effort low, topic what-lives-in-mariana-trench (run crashed in the judge on a missing numpy before recording the next model)"
+    },
+    {
+      "model": "apodex/apodex-1.1-mini:free",
+      "outcome": "answered, result lost to the crash",
+      "note": "reasoning effort low, topic what-lives-in-mariana-trench (run crashed in the judge on a missing numpy before recording the next model)"
+    }
+  ],
+  "topics": [
+    {
+      "slug": "what-lives-in-mariana-trench",
+      "question": "what lives in mariana trench",
+      "domain": "deep-sea-ocean-science",
+      "pov_id": "pov-001"
+    },
+    {
+      "slug": "how-microchips-are-made-veritasium",
+      "question": "how microchips are made veritasium",
+      "domain": "materials-and-manufacturing",
+      "pov_id": "pov-119"
+    }
+  ],
+  "rows": [
+    {
+      "model": "google/gemma-4-31b-it:free",
+      "latency_s": 0.2,
+      "words": 0,
+      "finish_reason": null,
+      "problems": [],
+      "passed": false,
+      "outcome": "http_429",
+      "error": "{\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"google/gemma-4-31b-it:free is temporarily rate-limited upstream. Please retry shortl",
+      "category": "empty_or_error",
+      "topic": "what-lives-in-mariana-trench",
+      "phase": "draft"
+    },
+    {
+      "model": "nvidia/nemotron-3.5-lightning:free",
+      "latency_s": 258.7,
+      "words": 0,
+      "finish_reason": "length",
+      "problems": [],
+      "passed": false,
+      "outcome": "empty",
+      "model_served": "nvidia/nemotron-3.5-lightning:free",
+      "completion_tokens": 16000,
+      "reasoning_tokens": 16000,
+      "category": "empty_or_error",
+      "error": "empty content, finish_reason=length, reasoning_tokens=16000",
+      "topic": "what-lives-in-mariana-trench",
+      "phase": "draft"
+    },
+    {
+      "model": "thinkingmachines/inkling:free",
+      "latency_s": 0.2,
+      "words": 0,
+      "finish_reason": null,
+      "problems": [],
+      "passed": false,
+      "outcome": "http_403",
+      "error": "{\"error\":{\"message\":\"thinkingmachines/inkling:free is only available on agentic harnesses. Try plugging it into a coding agent or productivity app listed on htt",
+      "category": "empty_or_error",
+      "topic": "what-lives-in-mariana-trench",
+      "phase": "draft"
+    },
+    {
+      "model": "dots-studio/dots-3-note-preview:free",
+      "latency_s": 174.0,
+      "words": 0,
+      "finish_reason": "length",
+      "problems": [],
+      "passed": false,
+      "outcome": "empty",
+      "model_served": "dots-studio/dots-3-note-preview:free",
+      "completion_tokens": 16000,
+      "reasoning_tokens": 15487,
+      "category": "empty_or_error",
+      "error": "empty content, finish_reason=length, reasoning_tokens=15487",
+      "topic": "what-lives-in-mariana-trench",
+      "phase": "draft"
+    },
+    {
+      "model": "google/gemma-4-26b-a4b-it:free",
+      "latency_s": 0.3,
+      "words": 0,
+      "finish_reason": null,
+      "problems": [],
+      "passed": false,
+      "outcome": "http_429",
+      "error": "{\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"google/gemma-4-26b-a4b-it:free is temporarily rate-limited upstream. Please retry sh",
+      "category": "empty_or_error",
+      "topic": "what-lives-in-mariana-trench",
+      "phase": "draft"
+    },
+    {
+      "model": "apodex/apodex-1.1-mini:free",
+      "latency_s": 55.0,
+      "words": 0,
+      "finish_reason": "length",
+      "problems": [],
+      "passed": false,
+      "outcome": "empty",
+      "model_served": "apodex/apodex-1.1-mini:free",
+      "completion_tokens": 16000,
+      "reasoning_tokens": 13264,
+      "category": "empty_or_error",
+      "error": "empty content, finish_reason=length, reasoning_tokens=13264",
+      "topic": "what-lives-in-mariana-trench",
+      "phase": "draft"
+    },
+    {
+      "model": "nvidia/nemotron-3-super-120b-a12b:free",
+      "latency_s": 165.3,
+      "words": 422,
+      "finish_reason": "length",
+      "problems": [
+        "output was cut off (finish_reason='length'); the draft is incomplete",
+        "missing section '## Chapters'",
+        "missing section '## Sources'",
+        "only 0 source URL(s); at least 3 required",
+        "narration is only 422 words; at the measured 144.58 wpm that is ~2.9 minutes, under the 10.0-minute hard floor (1446 words minimum)",
+        "directive draws name 'Hole' the narration never speaks: '{{define: TERM=Mariana snailfish | MEANING=deepest-living vertebrate fish '",
+        "directive draws name 'Oceanographic' the narration never speaks: '{{define: TERM=Mariana snailfish | MEANING=deepest-living vertebrate fish '",
+        "directive draws name 'Institution' the narration never speaks: '{{define: TERM=Mariana snailfish | MEANING=deepest-living vertebrate fish '",
+        "directive draws name 'Institute' the narration never speaks: '{{define: TERM=jellyfish | MEANING=gelatinous predator | BOUNDARY=found in'",
+        "opening rule cold-open-payoff: the answer is not in the first 75 narrated words (~31s). Only 8 of the 24 content words of the Direct-answer lock's first sentence are spoken there (need 12). Move the payoff - 'The Mariana Trench hosts a diverse community of life, from the deepest-living vertebrate\u2014the Mariana snailfish\u2014to scaven' - into the cold open, before the evidence chain."
+      ],
+      "passed": false,
+      "outcome": "answered",
+      "model_served": "nvidia/nemotron-3-super-120b-a12b:free",
+      "completion_tokens": 16000,
+      "reasoning_tokens": 14732,
+      "category": "truncated",
+      "head": "# what lives in mariana trench?\n\n**Status:** DRAFT \u2014 OWNER CONFIRMATION AND MASTER WATCH REQUIRED\n**Domain:** deep-sea-ocean-science\n**Word count:** 1735\n**Estimated narration:** 12m 0s at 144.58 WPM ",
+      "topic": "what-lives-in-mariana-trench",
+      "phase": "draft"
+    },
+    {
+      "model": "nvidia/nemotron-3-super-120b-a12b:free",
+      "latency_s": 128.1,
+      "words": 549,
+      "finish_reason": "stop",
+      "problems": [
+        "the last ## Sources entry is incomplete, so the draft looks truncated: '- Guinness World Records: https://www.guinnessworldrecords.com/world-records/dee'",
+        "narration is only 549 words; at the measured 144.58 wpm that is ~3.8 minutes, under the 10.0-minute hard floor (1446 words minimum)"
+      ],
+      "passed": false,
+      "outcome": "answered",
+      "model_served": "nvidia/nemotron-3-super-120b-a12b:free",
+      "completion_tokens": 11726,
+      "reasoning_tokens": 9697,
+      "category": "structure",
+      "head": "# what lives in mariana trench?\n\n**Status:** DRAFT \u2014 OWNER CONFIRMATION AND MASTER WATCH REQUIRED\n**Domain:** deep-sea-ocean-science\n**Word count:** 1735\n**Estimated narration:** 12m 0s at 144.58 WPM ",
+      "topic": "what-lives-in-mariana-trench",
+      "phase": "correction"
+    },
+    {
+      "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "latency_s": 653.7,
+      "words": 1015,
+      "finish_reason": "length",
+      "problems": [
+        "output was cut off (finish_reason='length'); the draft is incomplete",
+        "missing section '## Editorial gate'",
+        "missing section '## Chapters'",
+        "missing section '## Sources'",
+        "missing '### Producer POV'",
+        "only 0 source URL(s); at least 3 required",
+        "narration is only 1015 words; at the measured 144.58 wpm that is ~7.0 minutes, under the 10.0-minute hard floor (1446 words minimum)",
+        "uncertain directive has no RANGE field; visuals/CONTRACT.md rule 7 requires a stated \u00b1 half-width: '{{uncertain}}'",
+        "the directive '{{uncertain}}' does not parse, so the renderer would drop it silently. See visuals/CONTRACT.md for its arguments: a VALUE must be a number written in digits, an {{uncertain}} RANGE a +/- half-width or LOW to HIGH, and a number with no stated range is a {{stat}}.",
+        "the directive '{{chain}}' does not parse, so the renderer would drop it silently. See visuals/CONTRACT.md for its arguments: a VALUE must be a number written in digits, an {{uncertain}} RANGE a +/- half-width or LOW to HIGH, and a number with no stated range is a {{stat}}.",
+        "the directive '{{steps}}' does not parse, so the renderer would drop it silently. See visuals/CONTRACT.md for its arguments: a VALUE must be a number written in digits, an {{uncertain}} RANGE a +/- half-width or LOW to HIGH, and a number with no stated range is a {{stat}}.",
+        "the directive '{{contrast}}' does not parse, so the renderer would drop it silently. See visuals/CONTRACT.md for its arguments: a VALUE must be a number written in digits, an {{uncertain}} RANGE a +/- half-width or LOW to HIGH, and a number with no stated range is a {{stat}}."
+      ],
+      "passed": false,
+      "outcome": "answered",
+      "model_served": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "completion_tokens": 16000,
+      "reasoning_tokens": 12806,
+      "category": "truncated",
+      "head": "# what lives in mariana trench?\n\n**Status:** DRAFT \u2014 OWNER CONFIRMATION AND MASTER WATCH REQUIRED\n**Domain:** deep-sea-ocean-science\n**Word count:** 1460\n**Estimated narration:** 10m 5s at 144.58 WPM ",
+      "topic": "what-lives-in-mariana-trench",
+      "phase": "draft"
+    },
+    {
+      "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "latency_s": 137.9,
+      "words": 1290,
+      "finish_reason": "stop",
+      "problems": [
+        "narration is only 1290 words; at the measured 144.58 wpm that is ~8.9 minutes, under the 10.0-minute hard floor (1446 words minimum)",
+        "directive draws name 'UNESCO' the narration never speaks: '{{define: hadal zone | depths greater than 6,000 m | boundary defined by U'",
+        "directive draws number '8178' the narration never speaks: '{{uncertain: 8178 | m | 7000 to 8178 | 0.8 | deepest confirmed video recor'",
+        "uncertain directive's RANGE '7000 to 8178' is not a number: write the \u00b1 half-width in the same unit as VALUE (e.g. `750000`, or `200000/1300000` for asymmetric bounds); the renderer drops a directive it cannot parse: '{{uncertain: 8178 | m | 7000 to 8178 | 0.8 | deepest confirmed video recor'",
+        "directive draws number '7000' the narration never speaks: '{{uncertain: 8178 | m | 7000 to 8178 | 0.8 | deepest confirmed video recor'",
+        "directive draws number '8178' the narration never speaks: '{{uncertain: 8178 | m | 7000 to 8178 | 0.8 | deepest confirmed video recor'",
+        "directive draws number '0.8' the narration never speaks: '{{uncertain: 8178 | m | 7000 to 8178 | 0.8 | deepest confirmed video recor'",
+        "directive draws number '200' the narration never speaks: '{{uncertain: 200 | operational taxonomic units | 150 to 250 | 0.6 | metage'",
+        "uncertain directive's RANGE '150 to 250' is not a number: write the \u00b1 half-width in the same unit as VALUE (e.g. `750000`, or `200000/1300000` for asymmetric bounds); the renderer drops a directive it cannot parse: '{{uncertain: 200 | operational taxonomic units | 150 to 250 | 0.6 | metage'",
+        "directive draws number '0.6' the narration never speaks: '{{uncertain: 200 | operational taxonomic units | 150 to 250 | 0.6 | metage'",
+        "source URL returns HTTP 404 and does not exist: https://oceanexplorer.noaa.gov/facts/challenger-deep.html - replace it with a page you are certain of, or drop the claim it supports. The nearest page on that site that does exist is https://oceanexplorer.noaa.gov/facts/ - cite it ONLY if it genuinely supports the claim.",
+        "source URL returns HTTP 404 and does not exist: https://schmidtocean.org/cruise/mariana-trench-2017/ - replace it with a page you are certain of, or drop the claim it supports. The nearest page on that site that does exist is https://schmidtocean.org/cruise/ - cite it ONLY if it genuinely supports the claim.",
+        "source URL returns HTTP 404 and does not exist: https://www.mbari.org/deep-sea-genetics/ - replace it with a page you are certain of, or drop the claim it supports. The nearest page on that site that does exist is https://www.mbari.org/ - cite it ONLY if it genuinely supports the claim.",
+        "source URL returns HTTP 404 and does not exist: https://www.whoi.edu/what-we-do/explore/hadal-microbiology/ - replace it with a page you are certain of, or drop the claim it supports. The nearest page on that site that does exist is https://www.whoi.edu/what-we-do/explore/ - cite it ONLY if it genuinely supports the claim.",
+        "source URL returns HTTP 404 and does not exist: https://www.jamstec.go.jp/e/research/hadal/amphipod2019/ - replace it with a page you are certain of, or drop the claim it supports. The nearest page on that site that does exist is https://www.jamstec.go.jp/e/ - cite it ONLY if it genuinely supports the claim."
+      ],
+      "passed": false,
+      "outcome": "answered",
+      "model_served": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "completion_tokens": 4035,
+      "reasoning_tokens": 1135,
+      "category": "dead_url",
+      "head": "# what lives in mariana trench?\n\n**Status:** DRAFT \u2014 OWNER CONFIRMATION AND MASTER WATCH REQUIRED\n**Domain:** deep-sea-ocean-science\n**Word count:** 1580\n**Estimated narration:** 10m 56s at 144.58 WPM",
+      "topic": "what-lives-in-mariana-trench",
+      "phase": "correction"
+    },
+    {
+      "model": "google/gemma-4-31b-it:free",
+      "latency_s": 0.5,
+      "words": 0,
+      "finish_reason": null,
+      "problems": [],
+      "passed": false,
+      "outcome": "http_429",
+      "error": "{\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"google/gemma-4-31b-it:free is temporarily rate-limited upstream. Please retry shortl",
+      "category": "empty_or_error",
+      "topic": "how-microchips-are-made-veritasium",
+      "phase": "draft"
+    },
+    {
+      "model": "nvidia/nemotron-3.5-lightning:free",
+      "latency_s": 270.0,
+      "words": 0,
+      "finish_reason": "length",
+      "problems": [],
+      "passed": false,
+      "outcome": "empty",
+      "model_served": "nvidia/nemotron-3.5-lightning:free",
+      "completion_tokens": 16000,
+      "reasoning_tokens": 16000,
+      "category": "empty_or_error",
+      "error": "empty content, finish_reason=length, reasoning_tokens=16000",
+      "topic": "how-microchips-are-made-veritasium",
+      "phase": "draft"
+    },
+    {
+      "model": "thinkingmachines/inkling:free",
+      "latency_s": 0.2,
+      "words": 0,
+      "finish_reason": null,
+      "problems": [],
+      "passed": false,
+      "outcome": "http_403",
+      "error": "{\"error\":{\"message\":\"thinkingmachines/inkling:free is only available on agentic harnesses. Try plugging it into a coding agent or productivity app listed on htt",
+      "category": "empty_or_error",
+      "topic": "how-microchips-are-made-veritasium",
+      "phase": "draft"
+    },
+    {
+      "model": "dots-studio/dots-3-note-preview:free",
+      "latency_s": 185.9,
+      "words": 0,
+      "finish_reason": "length",
+      "problems": [],
+      "passed": false,
+      "outcome": "empty",
+      "model_served": "dots-studio/dots-3-note-preview:free",
+      "completion_tokens": 16000,
+      "reasoning_tokens": 16171,
+      "category": "empty_or_error",
+      "error": "empty content, finish_reason=length, reasoning_tokens=16171",
+      "topic": "how-microchips-are-made-veritasium",
+      "phase": "draft"
+    },
+    {
+      "model": "google/gemma-4-26b-a4b-it:free",
+      "latency_s": 0.3,
+      "words": 0,
+      "finish_reason": null,
+      "problems": [],
+      "passed": false,
+      "outcome": "http_429",
+      "error": "{\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"google/gemma-4-26b-a4b-it:free is temporarily rate-limited upstream. Please retry sh",
+      "category": "empty_or_error",
+      "topic": "how-microchips-are-made-veritasium",
+      "phase": "draft"
+    },
+    {
+      "model": "apodex/apodex-1.1-mini:free",
+      "latency_s": 43.4,
+      "words": 1333,
+      "finish_reason": "stop",
+      "problems": [
+        "narration is only 1333 words; at the measured 144.58 wpm that is ~9.2 minutes, under the 10.0-minute hard floor (1446 words minimum)",
+        "directive draws name 'International' the narration never speaks: '{{define: Doping | Intentional introduction of impurities to change electr'",
+        "uncertain directive's RANGE 'Varies by manufacturer' is not a number: write the \u00b1 half-width in the same unit as VALUE (e.g. `750000`, or `200000/1300000` for asymmetric bounds); the renderer drops a directive it cannot parse: '{{uncertain: Process node | nanometres | Varies by manufacturer | Wide | M'",
+        "the directive '{{contrast: Fab | is automated | is not manual}}' does not parse, so the renderer would drop it silently. See visuals/CONTRACT.md for its arguments: a VALUE must be a number written in digits, an {{uncertain}} RANGE a +/- half-width or LOW to HIGH, and a number with no stated range is a {{stat}}.",
+        "the directive '{{uncertain: Process node | nanometres | Varies by manufacturer | Wide | Marketing labels ' does not parse, so the renderer would drop it silently. See visuals/CONTRACT.md for its arguments: a VALUE must be a number written in digits, an {{uncertain}} RANGE a +/- half-width or LOW to HIGH, and a number with no stated range is a {{stat}}.",
+        "opening rule cold-open-payoff: the answer is not in the first 75 narrated words (~31s). Only 4 of the 13 content words of the Direct-answer lock's first sentence are spoken there (need 7). Move the payoff - 'Microchips are built by patterning purified silicon with light at the nanometre scale, layer by layer, and verifying eve' - into the cold open, before the evidence chain.",
+        "source URL returns HTTP 404 and does not exist: https://www.nature.com/natmater/ - replace it with a page you are certain of, or drop the claim it supports. The nearest page on that site that does exist is https://www.nature.com/ - cite it ONLY if it genuinely supports the claim."
+      ],
+      "passed": false,
+      "outcome": "answered",
+      "model_served": "apodex/apodex-1.1-mini:free",
+      "completion_tokens": 11680,
+      "reasoning_tokens": 9812,
+      "category": "dead_url",
+      "head": "# How Microchips Are Made \u2014 and how we know\n\n**Status:** DRAFT \u2014 OWNER CONFIRMATION AND MASTER WATCH REQUIRED\n**Domain:** materials-and-manufacturing\n**Word count:** 1735\n**Estimated narration:** 12m ",
+      "topic": "how-microchips-are-made-veritasium",
+      "phase": "draft"
+    },
+    {
+      "model": "apodex/apodex-1.1-mini:free",
+      "latency_s": 53.6,
+      "words": 0,
+      "finish_reason": "length",
+      "problems": [],
+      "passed": false,
+      "outcome": "empty",
+      "model_served": "apodex/apodex-1.1-mini:free",
+      "completion_tokens": 16000,
+      "reasoning_tokens": 16659,
+      "category": "empty_or_error",
+      "error": "empty content, finish_reason=length, reasoning_tokens=16659",
+      "topic": "how-microchips-are-made-veritasium",
+      "phase": "correction"
+    },
+    {
+      "model": "nvidia/nemotron-3-super-120b-a12b:free",
+      "latency_s": 163.4,
+      "words": 0,
+      "finish_reason": "length",
+      "problems": [],
+      "passed": false,
+      "outcome": "empty",
+      "model_served": "nvidia/nemotron-3-super-120b-a12b:free",
+      "completion_tokens": 16000,
+      "reasoning_tokens": 16000,
+      "category": "empty_or_error",
+      "error": "empty content, finish_reason=length, reasoning_tokens=16000",
+      "topic": "how-microchips-are-made-veritasium",
+      "phase": "draft"
+    },
+    {
+      "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "latency_s": 472.2,
+      "words": 5360,
+      "finish_reason": "length",
+      "problems": [
+        "output was cut off (finish_reason='length'); the draft is incomplete",
+        "missing section '## Direct-answer lock'",
+        "missing section '## Editorial gate'",
+        "missing section '## Chapters'",
+        "missing section '## Sources'",
+        "does not begin with a '# ' title",
+        "missing '### Producer POV'",
+        "only 0 source URL(s); at least 3 required",
+        "no Direct-answer lock sentence to check the opening against"
+      ],
+      "passed": false,
+      "outcome": "answered",
+      "model_served": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "completion_tokens": 16000,
+      "reasoning_tokens": 12881,
+      "category": "truncated",
+      "head": "We need to produce a script for \"how microchips are made veritasium\". The channel is \"How We Know\". The script must follow the format exactly. Must include the Producer POV line exactly as given, pref",
+      "topic": "how-microchips-are-made-veritasium",
+      "phase": "draft"
+    },
+    {
+      "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "latency_s": 119.6,
+      "words": 1513,
+      "finish_reason": "stop",
+      "problems": [
+        "uncertain directive's RANGE '90-98' is not a number: write the \u00b1 half-width in the same unit as VALUE (e.g. `750000`, or `200000/1300000` for asymmetric bounds); the renderer drops a directive it cannot parse: '{{uncertain: 95 | % | 90-98 | 0.9 | Yield estimate}}'",
+        "the directive '{{uncertain: 95 | % | 90-98 | 0.9 | Yield estimate}}' does not parse, so the renderer would drop it silently. See visuals/CONTRACT.md for its arguments: a VALUE must be a number written in digits, an {{uncertain}} RANGE a +/- half-width or LOW to HIGH, and a number with no stated range is a {{stat}}."
+      ],
+      "passed": false,
+      "outcome": "answered",
+      "model_served": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "completion_tokens": 5017,
+      "reasoning_tokens": 2335,
+      "category": "structure",
+      "head": "# how microchips are made veritasium?\n\n**Status:** DRAFT \u2014 OWNER CONFIRMATION AND MASTER WATCH REQUIRED\n**Domain:** materials-and-manufacturing\n**Word count:** 1800\n**Estimated narration:** 12m 24s at",
+      "topic": "how-microchips-are-made-veritasium",
+      "phase": "correction"
+    },
+    {
+      "model": "gemini-3.5-flash",
+      "latency_s": 4.7,
+      "words": 0,
+      "finish_reason": null,
+      "problems": [],
+      "passed": false,
+      "outcome": "http_503",
+      "error": "[{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again late",
+      "category": "empty_or_error",
+      "topic": "what-lives-in-mariana-trench",
+      "phase": "draft"
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "latency_s": 14.9,
+      "words": 1346,
+      "finish_reason": "stop",
+      "problems": [
+        "narration is only 1346 words; at the measured 144.58 wpm that is ~9.3 minutes, under the 10.0-minute hard floor (1446 words minimum)",
+        "directive draws name 'IDENTIFICATION' the narration never speaks: '{{chain: HOW WE KNOW LIFE EXISTS | ROV deployment | Sample collection | DN'",
+        "directive draws name 'HIGHER' the narration never speaks: '{{steps: MICROBIAL ENERGY SOURCES | Organic matter breakdown | Chemosynthe'",
+        "directive draws number '10000' the narration never speaks: '{{uncertain: 10000 | meters | Microbial life | Wide range of estimates | S'",
+        "uncertain directive's RANGE 'Microbial life' is not a number: write the \u00b1 half-width in the same unit as VALUE (e.g. `750000`, or `200000/1300000` for asymmetric bounds); the renderer drops a directive it cannot parse: '{{uncertain: 10000 | meters | Microbial life | Wide range of estimates | S'",
+        "directive draws number '200' the narration never speaks: '{{magnitude: TRENCH DIVERSITY | SPECIES | Amphipods=200 | Snailfish=30 | F'",
+        "directive draws number '30' the narration never speaks: '{{magnitude: TRENCH DIVERSITY | SPECIES | Amphipods=200 | Snailfish=30 | F'",
+        "directive draws number '100' the narration never speaks: '{{magnitude: TRENCH DIVERSITY | SPECIES | Amphipods=200 | Snailfish=30 | F'",
+        "directive draws number '50' the narration never speaks: '{{magnitude: TRENCH DIVERSITY | SPECIES | Amphipods=200 | Snailfish=30 | F'",
+        "the directive '{{uncertain: 10000 | meters | Microbial life | Wide range of estimates | Smithsonian Ocean' does not parse, so the renderer would drop it silently. See visuals/CONTRACT.md for its arguments: a VALUE must be a number written in digits, an {{uncertain}} RANGE a +/- half-width or LOW to HIGH, and a number with no stated range is a {{stat}}.",
+        "source URL returns HTTP 404 and does not exist: https://oceanexplorer.noaa.gov/facts/mariana.html - replace it with a page you are certain of, or drop the claim it supports. The nearest page on that site that does exist is https://oceanexplorer.noaa.gov/facts/ - cite it ONLY if it genuinely supports the claim.",
+        "source URL returns HTTP 404 and does not exist: https://www.mbari.org/animals/deep-sea-fish/ - replace it with a page you are certain of, or drop the claim it supports. The nearest page on that site that does exist is https://www.mbari.org/ - cite it ONLY if it genuinely supports the claim.",
+        "source URL returns HTTP 404 and does not exist: https://schmidtocean.org/cruise/deepest-fish-filmed/ - replace it with a page you are certain of, or drop the claim it supports. The nearest page on that site that does exist is https://schmidtocean.org/cruise/ - cite it ONLY if it genuinely supports the claim.",
+        "source URL returns HTTP 404 and does not exist: https://www.whoi.edu/what-we-do/explore/deep-sea/hadal-zone/ - replace it with a page you are certain of, or drop the claim it supports. The nearest page on that site that does exist is https://www.whoi.edu/what-we-do/explore/ - cite it ONLY if it genuinely supports the claim."
+      ],
+      "passed": false,
+      "outcome": "answered",
+      "model_served": "gemini-2.5-flash",
+      "completion_tokens": 2912,
+      "reasoning_tokens": null,
+      "category": "dead_url",
+      "head": "# what lives in mariana trench?\n\n**Status:** DRAFT \u2014 OWNER CONFIRMATION AND MASTER WATCH REQUIRED\n**Domain:** deep-sea-ocean-science\n**Word count:** 1735\n**Estimated narration:** 12m 0s at 144.58 WPM ",
+      "topic": "what-lives-in-mariana-trench",
+      "phase": "draft"
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "latency_s": 17.2,
+      "words": 1586,
+      "finish_reason": "stop",
+      "problems": [
+        "source URL returns HTTP 404 and does not exist: https://www.mbari.org/animals/ - replace it with a page you are certain of, or drop the claim it supports. The nearest page on that site that does exist is https://www.mbari.org/ - cite it ONLY if it genuinely supports the claim.",
+        "source URL returns HTTP 404 and does not exist: https://www.whoi.edu/what-we-do/explore/deep-sea/ - replace it with a page you are certain of, or drop the claim it supports. The nearest page on that site that does exist is https://www.whoi.edu/what-we-do/explore/ - cite it ONLY if it genuinely supports the claim."
+      ],
+      "passed": false,
+      "outcome": "answered",
+      "model_served": "gemini-2.5-flash",
+      "completion_tokens": 3097,
+      "reasoning_tokens": null,
+      "category": "dead_url",
+      "head": "# what lives in mariana trench?\n\n**Status:** DRAFT \u2014 OWNER CONFIRMATION AND MASTER WATCH REQUIRED\n**Domain:** deep-sea-ocean-science\n**Word count:** 1735\n**Estimated narration:** 12m 0s at 144.58 WPM ",
+      "topic": "what-lives-in-mariana-trench",
+      "phase": "correction"
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "latency_s": 23.9,
+      "words": 1943,
+      "finish_reason": "stop",
+      "problems": [
+        "directive draws name 'REDUCTION' the narration never speaks: '{{steps: SILICON PURIFICATION | QUARTZ REDUCTION | POLYCRYSTALLINE SILICON'",
+        "directive draws name 'International' the narration never speaks: '{{define: CZOCHRALSKI PROCESS | A method for growing single crystals by sl'",
+        "directive draws name 'GRINDING' the narration never speaks: '{{steps: INGOT SAWING | EDGE GRINDING | LAPPING | ETCHING | POLISHING | >S'",
+        "directive draws name 'International' the narration never speaks: '{{define: CHEMICAL MECHANICAL PLANARIZATION | A process combining chemical'",
+        "directive draws name 'UV' the narration never speaks: '{{chain: PHOTORESIST COATING | EXPOSURE TO UV LIGHT | DEVELOPMENT | >PATTE'",
+        "directive draws name 'Institute' the narration never speaks: '{{define: ANISOTROPIC ETCHING | Etching that proceeds preferentially in on'",
+        "directive draws name 'Department' the narration never speaks: '{{define: DOPING | Intentionally introducing impurities into a semiconduct'",
+        "directive draws name 'REACTION' the narration never speaks: '{{contrast: PHYSICAL VAPOR DEPOSITION | is=MATERIAL SPUTTERED FROM A TARGE'",
+        "directive draws name 'COVERAGE' the narration never speaks: '{{checklist: FILM PROPERTIES | +THICKNESS UNIFORMITY | +COMPOSITION | +STE'",
+        "directive draws name 'International' the narration never speaks: '{{define: VIA | A vertical electrical connection between different layers '",
+        "directive draws number '1000' the narration never speaks: '{{uncertain: 1000 | steps | 200-1500 | published range | SEMI Internationa'",
+        "uncertain directive's RANGE '200-1500' is not a number: write the \u00b1 half-width in the same unit as VALUE (e.g. `750000`, or `200000/1300000` for asymmetric bounds); the renderer drops a directive it cannot parse: '{{uncertain: 1000 | steps | 200-1500 | published range | SEMI Internationa'",
+        "directive draws name 'International' the narration never speaks: '{{uncertain: 1000 | steps | 200-1500 | published range | SEMI Internationa'",
+        "the directive '{{chain: ION IMPLANTATION | ANNEALING | >ACTIVATION OF DOPANTS}}' does not parse, so the renderer would drop it silently. See visuals/CONTRACT.md for its arguments: a VALUE must be a number written in digits, an {{uncertain}} RANGE a +/- half-width or LOW to HIGH, and a number with no stated range is a {{stat}}.",
+        "the directive '{{uncertain: 1000 | steps | 200-1500 | published range | SEMI International Standards}}' does not parse, so the renderer would drop it silently. See visuals/CONTRACT.md for its arguments: a VALUE must be a number written in digits, an {{uncertain}} RANGE a +/- half-width or LOW to HIGH, and a number with no stated range is a {{stat}}.",
+        "opening rule cold-open-payoff: the answer is not in the first 75 narrated words (~31s). Only 7 of the 18 content words of the Direct-answer lock's first sentence are spoken there (need 9). Move the payoff - 'Microchips are built layer by layer on highly purified silicon wafers, typically 300 mm in diameter, through a sequence ' - into the cold open, before the evidence chain.",
+        "source URL returns HTTP 404 and does not exist: https://www.fraunhofer.de/en/research/microelectronics.html - replace it with a page you are certain of, or drop the claim it supports. The nearest page on that site that does exist is https://www.fraunhofer.de/en/research/ - cite it ONLY if it genuinely supports the claim.",
+        "source URL returns HTTP 404 and does not exist: https://www.nist.gov/engineering/materials-science-and-engineering - replace it with a page you are certain of, or drop the claim it supports. The nearest page on that site that does exist is https://www.nist.gov/ - cite it ONLY if it genuinely supports the claim."
+      ],
+      "passed": false,
+      "outcome": "answered",
+      "model_served": "gemini-2.5-flash",
+      "completion_tokens": 3689,
+      "reasoning_tokens": null,
+      "category": "dead_url",
+      "head": "# How Microchips Are Made?\n\n**Status:** DRAFT \u2014 OWNER CONFIRMATION AND MASTER WATCH REQUIRED\n**Domain:** materials-and-manufacturing\n**Word count:** 1738\n**Estimated narration:** 12m 02s at 144.58 WPM",
+      "topic": "how-microchips-are-made-veritasium",
+      "phase": "draft"
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "latency_s": 20.4,
+      "words": 2037,
+      "finish_reason": "stop",
+      "problems": [
+        "directive draws name 'REACTION' the narration never speaks: '{{contrast: PHYSICAL VAPOR DEPOSITION | is=MATERIAL SPUTTERED FROM A TARGE'",
+        "the directive '{{chain: ION IMPLANTATION | ANNEALING | >ACTIVATION OF DOPANTS}}' does not parse, so the renderer would drop it silently. See visuals/CONTRACT.md for its arguments: a VALUE must be a number written in digits, an {{uncertain}} RANGE a +/- half-width or LOW to HIGH, and a number with no stated range is a {{stat}}.",
+        "source URL returns HTTP 404 and does not exist: https://www.nist.gov/engineering/materials-science - replace it with a page you are certain of, or drop the claim it supports. The nearest page on that site that does exist is https://www.nist.gov/ - cite it ONLY if it genuinely supports the claim."
+      ],
+      "passed": false,
+      "outcome": "answered",
+      "model_served": "gemini-2.5-flash",
+      "completion_tokens": 3787,
+      "reasoning_tokens": null,
+      "category": "dead_url",
+      "head": "# How Microchips Are Made?\n\n**Status:** DRAFT \u2014 OWNER CONFIRMATION AND MASTER WATCH REQUIRED\n**Domain:** materials-and-manufacturing\n**Word count:** 1738\n**Estimated narration:** 12m 02s at 144.58 WPM",
+      "topic": "how-microchips-are-made-veritasium",
+      "phase": "correction"
+    },
+    {
+      "model": "gemini-3-flash-preview",
+      "latency_s": 17.3,
+      "words": 1450,
+      "finish_reason": "stop",
+      "problems": [
+        "directive draws number '11,000' the narration never speaks: '{{define: HADAL ZONE | The deepest region of the ocean, extending from 6,0'",
+        "directive draws name 'Soft-bodied' the narration never speaks: '{{contrast: DEEP SEA FISH | is=Snailfish (Soft-bodied) | not=Anglerfish (B'",
+        "directive draws name 'Bony/Toothed' the narration never speaks: '{{contrast: DEEP SEA FISH | is=Snailfish (Soft-bodied) | not=Anglerfish (B'",
+        "uncertain directive's RANGE '5-20 CM' is not a number: write the \u00b1 half-width in the same unit as VALUE (e.g. `750000`, or `200000/1300000` for asymmetric bounds); the renderer drops a directive it cannot parse: '{{uncertain: 10 | CENTIMETERS | 5-20 CM | HIGH | XENOPHYOPHORE SIZE}}'",
+        "directive draws name 'CM' the narration never speaks: '{{uncertain: 10 | CENTIMETERS | 5-20 CM | HIGH | XENOPHYOPHORE SIZE}}'",
+        "directive draws name 'Morphology' the narration never speaks: '{{chain: IDENTIFICATION | Benthic Lander Camera | Visual Morphology | >Xen'",
+        "directive draws number '10935' the narration never speaks: '{{uncertain: 10935 | METERS | 10911-10994 M | MEDIUM | CHALLENGER DEEP DEP'",
+        "uncertain directive's RANGE '10911-10994 M' is not a number: write the \u00b1 half-width in the same unit as VALUE (e.g. `750000`, or `200000/1300000` for asymmetric bounds); the renderer drops a directive it cannot parse: '{{uncertain: 10935 | METERS | 10911-10994 M | MEDIUM | CHALLENGER DEEP DEP'",
+        "directive draws number '10911' the narration never speaks: '{{uncertain: 10935 | METERS | 10911-10994 M | MEDIUM | CHALLENGER DEEP DEP'",
+        "directive draws number '10994' the narration never speaks: '{{uncertain: 10935 | METERS | 10911-10994 M | MEDIUM | CHALLENGER DEEP DEP'",
+        "the directive '{{uncertain: 10 | CENTIMETERS | 5-20 CM | HIGH | XENOPHYOPHORE SIZE}}' does not parse, so the renderer would drop it silently. See visuals/CONTRACT.md for its arguments: a VALUE must be a number written in digits, an {{uncertain}} RANGE a +/- half-width or LOW to HIGH, and a number with no stated range is a {{stat}}.",
+        "the directive '{{uncertain: 10935 | METERS | 10911-10994 M | MEDIUM | CHALLENGER DEEP DEPTH}}' does not parse, so the renderer would drop it silently. See visuals/CONTRACT.md for its arguments: a VALUE must be a number written in digits, an {{uncertain}} RANGE a +/- half-width or LOW to HIGH, and a number with no stated range is a {{stat}}.",
+        "opening rule cold-open-payoff: the answer is not in the first 75 narrated words (~31s). Only 3 of the 19 content words of the Direct-answer lock's first sentence are spoken there (need 10). Move the payoff - 'The Mariana Trench is inhabited by specialized snailfish, giant single-celled xenophyophores, and amphipods that thrive ' - into the cold open, before the evidence chain.",
+        "source URL returns HTTP 404 and does not exist: https://oceanexplorer.noaa.gov/facts/7-miles-deep.html - replace it with a page you are certain of, or drop the claim it supports. The nearest page on that site that does exist is https://oceanexplorer.noaa.gov/facts/ - cite it ONLY if it genuinely supports the claim.",
+        "source URL returns HTTP 404 and does not exist: https://www.uwa.edu.au/news/article/2023/april/scientists-set-new-record-for-deepest-fish-ever-filmed - replace it with a page you are certain of, or drop the claim it supports. The nearest page on that site that does exist is https://www.uwa.edu.au/news/article/2023/april/ - cite it ONLY if it genuinely supports the claim.",
+        "source URL returns HTTP 404 and does not exist: https://schmidtocean.org/cruise/expanding-the-frontiers-of-the-deep/ - replace it with a page you are certain of, or drop the claim it supports. The nearest page on that site that does exist is https://schmidtocean.org/cruise/ - cite it ONLY if it genuinely supports the claim."
+      ],
+      "passed": false,
+      "outcome": "answered",
+      "model_served": "gemini-3-flash-preview",
+      "completion_tokens": 2951,
+      "reasoning_tokens": null,
+      "category": "dead_url",
+      "head": "# What lives in the Mariana Trench?\n\n**Status:** DRAFT \u2014 OWNER CONFIRMATION AND MASTER WATCH REQUIRED\n**Domain:** deep-sea-ocean-science\n**Word count:** 1748\n**Estimated narration:** 12m 05s at 144.58",
+      "topic": "what-lives-in-mariana-trench",
+      "phase": "draft"
+    }
+  ],
+  "expansions": [],
+  "skipped": {
+    "liquid/lfm-2.5-2.6b:free": "not benched: code-only, content-safety or too small for a 1,500-word script",
+    "thinkingmachines/inkling-small:free": "not benched: code-only, content-safety or too small for a 1,500-word script",
+    "poolside/laguna-s-2.1:free": "not benched: code-only, content-safety or too small for a 1,500-word script",
+    "poolside/laguna-xs-2.1:free": "not benched: code-only, content-safety or too small for a 1,500-word script",
+    "cohere/north-mini-code:free": "not benched: code-only, content-safety or too small for a 1,500-word script",
+    "nvidia/nemotron-3.5-content-safety:free": "not benched: code-only, content-safety or too small for a 1,500-word script",
+    "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free": "not benched: code-only, content-safety or too small for a 1,500-word script"
+  },
+  "bench_status": "ran",
+  "not_run_reason": null,
+  "account": {
+    "is_free_tier": false,
+    "limit": 0,
+    "limit_remaining": 0,
+    "usage": 98.835783896,
+    "rate_limit": {
+      "requests": -1,
+      "interval": "10s",
+      "note": "This field is deprecated and safe to ignore."
+    },
+    "note": "credits were bought once, so ':free' models allow 1000 requests/day and 20/min"
+  },
+  "requests_used": 20,
+  "gemini_requests_used": 6,
+  "ranking": [
+    {
+      "model": "gemini-2.5-flash",
+      "passes": 0,
+      "attempts": 4,
+      "median_words": 1764.5,
+      "best_floor_ratio": 1.0,
+      "fewest_problems": 2,
+      "nearest_miss": [
+        "source URL returns HTTP 404 and does not exist: https://www.mbari.org/animals/ - replace it with a page you are certain of, or drop the claim it supports. The nearest page on that site that does exist is https://www.mbari.org/ - cite it ONLY if it genuinely supports the claim.",
+        "source URL returns HTTP 404 and does not exist: https://www.whoi.edu/what-we-do/explore/deep-sea/ - replace it with a page you are certain of, or drop the claim it supports. The nearest page on that site that does exist is https://www.whoi.edu/what-we-do/explore/ - cite it ONLY if it genuinely supports the claim."
+      ],
+      "median_latency_s": 18.8,
+      "categories": {
+        "dead_url": 4
+      }
+    },
+    {
+      "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+      "passes": 0,
+      "attempts": 4,
+      "median_words": 1401.5,
+      "best_floor_ratio": 1.0,
+      "fewest_problems": 2,
+      "nearest_miss": [
+        "uncertain directive's RANGE '90-98' is not a number: write the \u00b1 half-width in the same unit as VALUE (e.g. `750000`, or `200000/1300000` for asymmetric bounds); the renderer drops a directive it cannot parse: '{{uncertain: 95 | % | 90-98 | 0.9 | Yield estimate}}'",
+        "the directive '{{uncertain: 95 | % | 90-98 | 0.9 | Yield estimate}}' does not parse, so the renderer would drop it silently. See visuals/CONTRACT.md for its arguments: a VALUE must be a number written in digits, an {{uncertain}} RANGE a +/- half-width or LOW to HIGH, and a number with no stated range is a {{stat}}."
+      ],
+      "median_latency_s": 305.1,
+      "categories": {
+        "dead_url": 1,
+        "structure": 1,
+        "truncated": 2
+      }
+    },
+    {
+      "model": "gemini-3-flash-preview",
+      "passes": 0,
+      "attempts": 1,
+      "median_words": 1450,
+      "best_floor_ratio": 1.0,
+      "fewest_problems": 16,
+      "nearest_miss": [
+        "directive draws number '11,000' the narration never speaks: '{{define: HADAL ZONE | The deepest region of the ocean, extending from 6,0'",
+        "directive draws name 'Soft-bodied' the narration never speaks: '{{contrast: DEEP SEA FISH | is=Snailfish (Soft-bodied) | not=Anglerfish (B'",
+        "directive draws name 'Bony/Toothed' the narration never speaks: '{{contrast: DEEP SEA FISH | is=Snailfish (Soft-bodied) | not=Anglerfish (B'",
+        "uncertain directive's RANGE '5-20 CM' is not a number: write the \u00b1 half-width in the same unit as VALUE (e.g. `750000`, or `200000/1300000` for asymmetric bounds); the renderer drops a directive it cannot parse: '{{uncertain: 10 | CENTIMETERS | 5-20 CM | HIGH | XENOPHYOPHORE SIZE}}'",
+        "directive draws name 'CM' the narration never speaks: '{{uncertain: 10 | CENTIMETERS | 5-20 CM | HIGH | XENOPHYOPHORE SIZE}}'",
+        "directive draws name 'Morphology' the narration never speaks: '{{chain: IDENTIFICATION | Benthic Lander Camera | Visual Morphology | >Xen'",
+        "directive draws number '10935' the narration never speaks: '{{uncertain: 10935 | METERS | 10911-10994 M | MEDIUM | CHALLENGER DEEP DEP'",
+        "uncertain directive's RANGE '10911-10994 M' is not a number: write the \u00b1 half-width in the same unit as VALUE (e.g. `750000`, or `200000/1300000` for asymmetric bounds); the renderer drops a directive it cannot parse: '{{uncertain: 10935 | METERS | 10911-10994 M | MEDIUM | CHALLENGER DEEP DEP'",
+        "directive draws number '10911' the narration never speaks: '{{uncertain: 10935 | METERS | 10911-10994 M | MEDIUM | CHALLENGER DEEP DEP'",
+        "directive draws number '10994' the narration never speaks: '{{uncertain: 10935 | METERS | 10911-10994 M | MEDIUM | CHALLENGER DEEP DEP'",
+        "the directive '{{uncertain: 10 | CENTIMETERS | 5-20 CM | HIGH | XENOPHYOPHORE SIZE}}' does not parse, so the renderer would drop it silently. See visuals/CONTRACT.md for its arguments: a VALUE must be a number written in digits, an {{uncertain}} RANGE a +/- half-width or LOW to HIGH, and a number with no stated range is a {{stat}}.",
+        "the directive '{{uncertain: 10935 | METERS | 10911-10994 M | MEDIUM | CHALLENGER DEEP DEPTH}}' does not parse, so the renderer would drop it silently. See visuals/CONTRACT.md for its arguments: a VALUE must be a number written in digits, an {{uncertain}} RANGE a +/- half-width or LOW to HIGH, and a number with no stated range is a {{stat}}.",
+        "opening rule cold-open-payoff: the answer is not in the first 75 narrated words (~31s). Only 3 of the 19 content words of the Direct-answer lock's first sentence are spoken there (need 10). Move the payoff - 'The Mariana Trench is inhabited by specialized snailfish, giant single-celled xenophyophores, and amphipods that thrive ' - into the cold open, before the evidence chain.",
+        "source URL returns HTTP 404 and does not exist: https://oceanexplorer.noaa.gov/facts/7-miles-deep.html - replace it with a page you are certain of, or drop the claim it supports. The nearest page on that site that does exist is https://oceanexplorer.noaa.gov/facts/ - cite it ONLY if it genuinely supports the claim.",
+        "source URL returns HTTP 404 and does not exist: https://www.uwa.edu.au/news/article/2023/april/scientists-set-new-record-for-deepest-fish-ever-filmed - replace it with a page you are certain of, or drop the claim it supports. The nearest page on that site that does exist is https://www.uwa.edu.au/news/article/2023/april/ - cite it ONLY if it genuinely supports the claim.",
+        "source URL returns HTTP 404 and does not exist: https://schmidtocean.org/cruise/expanding-the-frontiers-of-the-deep/ - replace it with a page you are certain of, or drop the claim it supports. The nearest page on that site that does exist is https://schmidtocean.org/cruise/ - cite it ONLY if it genuinely supports the claim."
+      ],
+      "median_latency_s": 17.3,
+      "categories": {
+        "dead_url": 1
+      }
+    },
+    {
+      "model": "apodex/apodex-1.1-mini:free",
+      "passes": 0,
+      "attempts": 3,
+      "median_words": 1333,
+      "best_floor_ratio": 0.922,
+      "fewest_problems": 7,
+      "nearest_miss": [
+        "narration is only 1333 words; at the measured 144.58 wpm that is ~9.2 minutes, under the 10.0-minute hard floor (1446 words minimum)",
+        "directive draws name 'International' the narration never speaks: '{{define: Doping | Intentional introduction of impurities to change electr'",
+        "uncertain directive's RANGE 'Varies by manufacturer' is not a number: write the \u00b1 half-width in the same unit as VALUE (e.g. `750000`, or `200000/1300000` for asymmetric bounds); the renderer drops a directive it cannot parse: '{{uncertain: Process node | nanometres | Varies by manufacturer | Wide | M'",
+        "the directive '{{contrast: Fab | is automated | is not manual}}' does not parse, so the renderer would drop it silently. See visuals/CONTRACT.md for its arguments: a VALUE must be a number written in digits, an {{uncertain}} RANGE a +/- half-width or LOW to HIGH, and a number with no stated range is a {{stat}}.",
+        "the directive '{{uncertain: Process node | nanometres | Varies by manufacturer | Wide | Marketing labels ' does not parse, so the renderer would drop it silently. See visuals/CONTRACT.md for its arguments: a VALUE must be a number written in digits, an {{uncertain}} RANGE a +/- half-width or LOW to HIGH, and a number with no stated range is a {{stat}}.",
+        "opening rule cold-open-payoff: the answer is not in the first 75 narrated words (~31s). Only 4 of the 13 content words of the Direct-answer lock's first sentence are spoken there (need 7). Move the payoff - 'Microchips are built by patterning purified silicon with light at the nanometre scale, layer by layer, and verifying eve' - into the cold open, before the evidence chain.",
+        "source URL returns HTTP 404 and does not exist: https://www.nature.com/natmater/ - replace it with a page you are certain of, or drop the claim it supports. The nearest page on that site that does exist is https://www.nature.com/ - cite it ONLY if it genuinely supports the claim."
+      ],
+      "median_latency_s": 43.4,
+      "categories": {
+        "dead_url": 1,
+        "empty_or_error": 2
+      }
+    },
+    {
+      "model": "nvidia/nemotron-3-super-120b-a12b:free",
+      "passes": 0,
+      "attempts": 3,
+      "median_words": 485.5,
+      "best_floor_ratio": 0.38,
+      "fewest_problems": 2,
+      "nearest_miss": [
+        "the last ## Sources entry is incomplete, so the draft looks truncated: '- Guinness World Records: https://www.guinnessworldrecords.com/world-records/dee'",
+        "narration is only 549 words; at the measured 144.58 wpm that is ~3.8 minutes, under the 10.0-minute hard floor (1446 words minimum)"
+      ],
+      "median_latency_s": 146.7,
+      "categories": {
+        "empty_or_error": 1,
+        "structure": 1,
+        "truncated": 1
+      }
+    },
+    {
+      "model": "google/gemma-4-31b-it:free",
+      "passes": 0,
+      "attempts": 2,
+      "median_words": null,
+      "best_floor_ratio": 0.0,
+      "fewest_problems": null,
+      "nearest_miss": null,
+      "median_latency_s": null,
+      "categories": {
+        "empty_or_error": 2
+      }
+    },
+    {
+      "model": "nvidia/nemotron-3.5-lightning:free",
+      "passes": 0,
+      "attempts": 2,
+      "median_words": null,
+      "best_floor_ratio": 0.0,
+      "fewest_problems": null,
+      "nearest_miss": null,
+      "median_latency_s": null,
+      "categories": {
+        "empty_or_error": 2
+      }
+    },
+    {
+      "model": "thinkingmachines/inkling:free",
+      "passes": 0,
+      "attempts": 2,
+      "median_words": null,
+      "best_floor_ratio": 0.0,
+      "fewest_problems": null,
+      "nearest_miss": null,
+      "median_latency_s": null,
+      "categories": {
+        "empty_or_error": 2
+      }
+    },
+    {
+      "model": "dots-studio/dots-3-note-preview:free",
+      "passes": 0,
+      "attempts": 2,
+      "median_words": null,
+      "best_floor_ratio": 0.0,
+      "fewest_problems": null,
+      "nearest_miss": null,
+      "median_latency_s": null,
+      "categories": {
+        "empty_or_error": 2
+      }
+    },
+    {
+      "model": "google/gemma-4-26b-a4b-it:free",
+      "passes": 0,
+      "attempts": 2,
+      "median_words": null,
+      "best_floor_ratio": 0.0,
+      "fewest_problems": null,
+      "nearest_miss": null,
+      "median_latency_s": null,
+      "categories": {
+        "empty_or_error": 2
+      }
+    },
+    {
+      "model": "gemini-3.5-flash",
+      "passes": 0,
+      "attempts": 1,
+      "median_words": null,
+      "best_floor_ratio": 0.0,
+      "fewest_problems": null,
+      "nearest_miss": null,
+      "median_latency_s": null,
+      "categories": {
+        "empty_or_error": 1
+      }
+    }
+  ],
+  "verdict": "Nothing at $0 clears it yet: no model passed and no draft failed on length alone, so the expansion (\"go 2x\") pass had nothing to lengthen - length is not what stops these models. Closest was gemini-2.5-flash (1.0 of the 1446-word floor, median 18.8 s), whose best draft failed only on 2 problem(s): source URL returns HTTP 404 and does not exist: https://www.mbari.org/; source URL returns HTTP 404 and does not exist: https://www.whoi.edu/w. 6 of 11 benched models never returned a script at all (hidden reasoning used the whole 16,000-token budget, upstream 429, or 403)."
+}

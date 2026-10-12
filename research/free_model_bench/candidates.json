@@ -1,0 +1,16 @@
+{
+  "_why": [
+    "Benched candidates, priority order (coordinator research 2026-10-12): every ':free' text model OpenRouter served that day that could plausibly write long-form prose.",
+    "Kept as data, not code: loop/tests/test_llm_routing.py B allows only config/llm_routing.json models in loop/*.py. The bench still refuses any id OpenRouter does not list priced 0/0, and every request carries max_price 0."
+  ],
+  "models": [
+    "google/gemma-4-31b-it:free",
+    "nvidia/nemotron-3.5-lightning:free",
+    "thinkingmachines/inkling:free",
+    "dots-studio/dots-3-note-preview:free",
+    "google/gemma-4-26b-a4b-it:free",
+    "apodex/apodex-1.1-mini:free",
+    "nvidia/nemotron-3-super-120b-a12b:free",
+    "nvidia/nemotron-3-ultra-550b-a55b:free"
+  ]
+}
