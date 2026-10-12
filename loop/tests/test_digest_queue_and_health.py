@@ -194,6 +194,69 @@ capped = digest.digest_subject(huge, "2026-W39")
 if len(capped) > 220:
     fails.append(f"digest_subject() does not cap a runaway reason: {len(capped)} chars")
 
+# ---- SHORTS CADENCE (owner, 2026-10-12: "why did the Shorts lane emails
+# never tell me"). Shorts fell from 14 a week to 1 while this verdict counted
+# long-form slots only and NO_SHORTS_SHELVED sat under self-resolving stops.
+# Under target one week -> yellow; two consecutive weeks -> red; it outranks
+# the calendar notes and names the numbers in the subject.
+import verdict as CV                                               # noqa: E402
+
+SNOW = dt.datetime(2026, 10, 12, 12, tzinfo=dt.timezone.utc)
+
+
+def shorts_rows(per_day_last: int, per_day_prev: int, ahead: int = 0) -> list[dict]:
+    out = []
+    for d in range(7):
+        for _ in range(per_day_last):
+            out.append({"scheduled_publish_at": (SNOW - dt.timedelta(days=d, hours=1)).isoformat()})
+        for _ in range(per_day_prev):
+            out.append({"scheduled_publish_at": (SNOW - dt.timedelta(days=7 + d, hours=1)).isoformat()})
+    for i in range(ahead):
+        out.append({"scheduled_publish_at": (SNOW + dt.timedelta(days=1 + i)).isoformat()})
+    return out
+
+
+examined += 1
+sc = CV.shorts_cadence(shorts_rows(2, 2, ahead=3), 9, SNOW, 6, "fixture")
+if (sc["published_7d"], sc["published_prev_7d"], sc["shelf"], sc["shelf_weeks"]) != (14, 14, 9, 1.0):
+    fails.append(f"shorts_cadence() miscounts the trailing weeks or the shelf: {sc}")
+examined += 1
+if digest.shorts_flag(sc) != (None, None):
+    fails.append(f"Shorts on target raised a flag: {digest.shorts_flag(sc)}")
+mark, head, _ = digest.verdict(q, cal, {**pipe_ok, "scheduled": 28}, [], None, sc)
+if mark != "🟢":
+    fails.append(f"Shorts on target turned a green week {mark}: {head}")
+
+examined += 1
+one = CV.shorts_cadence(shorts_rows(0, 2)
+                        + [{"scheduled_publish_at": (SNOW - dt.timedelta(days=2)).isoformat()}],
+                        9, SNOW, 0, "fixture")
+flag, why = digest.shorts_flag(one)
+if flag != "yellow" or "1 vs 9" not in why:
+    fails.append(f"one week under the Shorts target is not yellow: {flag} {why}")
+mark, head, _ = digest.verdict(q, cal, {**pipe_ok, "scheduled": 28}, [], None, one)
+if mark != "🟡" or "Shorts under target" not in head:
+    fails.append(f"a green week with Shorts under target did not go yellow: {mark} {head}")
+
+examined += 1
+two = CV.shorts_cadence([{"scheduled_publish_at": (SNOW - dt.timedelta(days=2)).isoformat()},
+                         {"scheduled_publish_at": (SNOW - dt.timedelta(days=9)).isoformat()}],
+                        9, SNOW, 0, "fixture")
+flag, why = digest.shorts_flag(two)
+if flag != "red" or f"{digest.SHORTS_RED_WEEKS} weeks running" not in why:
+    fails.append(f"two consecutive weeks under the Shorts target is not red: {flag} {why}")
+mark, head, _ = digest.verdict(q, cal_yel, {**pipe_ok, "scheduled": 28}, [], None, two)
+if mark != "🔴" or "Shorts under target" not in head:
+    fails.append(f"two Shorts-short weeks did not lead a red subject over a "
+                 f"calendar note: {mark} {head}")
+examined += 1
+if digest.shorts_flag(None) != (None, None) or digest.shorts_flag({}) != (None, None):
+    fails.append("an unmeasured Shorts cadence raised a flag")
+examined += 1
+src = open(os.path.join(os.path.dirname(digest.__file__), "digest.py")).read()
+if "verdict(queued_rows, cal, pipe, loud_stages,\n                                      waiting, sc)" not in src:
+    fails.append("render() does not pass the Shorts cadence into verdict()")
+
 if examined < 6:
     fails.append("Rule 0: fewer than six verdicts examined")
 if fails:

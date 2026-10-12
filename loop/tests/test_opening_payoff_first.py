@@ -147,30 +147,63 @@ start = datetime(2026, 9, 28, tzinfo=timezone.utc)
 
 
 def vids(old: float, new: float, variant: str = "cold-open-payoff",
-         base: str = O.PRE_RULE) -> list[dict]:
+         base: str = O.PRE_RULE, aired: datetime = start) -> list[dict]:
+    """Four baseline and four new-rule rows; the new ones air on consecutive
+    days from `aired`, so the 3rd airs at aired + 2 days."""
     return ([{"average_view_duration_s": old, "opening": base}] * 4
-            + [{"average_view_duration_s": new, "opening": variant}] * 4)
+            + [{"average_view_duration_s": new, "opening": variant,
+                "aired_at": (aired + timedelta(days=i)).date().isoformat()}
+               for i in range(4)])
 
 
+# The comparison date is 28 days after the 3rd marked video AIRS, never a
+# fixed date from when the rule came in (audit 2026-10-12: the fixed date
+# 2026-10-26 arrived with one marked video, airing 2026-11-08).
+due = start + timedelta(days=2 + O.COMPARE_AFTER_DAYS)
 examined += 1
 r = O.evaluate(vids(113, 90), now=start + timedelta(days=10), path=state)
 if r["action"] != "wait" or state.exists():
     fails.append(f"evaluate() acted before {O.COMPARE_AFTER_DAYS} days: {r}")
 examined += 1
-r = O.evaluate(vids(113, 150), now=start + timedelta(days=29), path=state)
+# 29 days after the rule came in is past the OLD fixed date, but only 27
+# days after the 3rd marked video aired: it must still wait.
+r = O.evaluate(vids(113, 90), now=start + timedelta(days=29), path=state)
+if r["action"] != "wait" or state.exists() or r["compare_on"] != due.date().isoformat():
+    fails.append(f"evaluate() acted on the rule's start date, not on the 3rd "
+                 f"marked video's airing + {O.COMPARE_AFTER_DAYS} days: {r}")
+examined += 1
+# Two marked videos, a year later: NOT YET DECIDABLE, by name, no date.
+two = [x for x in vids(113, 90) if x["opening"] == O.PRE_RULE] + \
+      [x for x in vids(113, 90) if x["opening"] != O.PRE_RULE][:2]
+r = O.evaluate(two, now=start + timedelta(days=365), path=state)
+if (r["action"] != "wait" or r.get("decidable") is not False
+        or r["compare_on"] is not None or "not yet decidable" not in r["why"]):
+    fails.append(f"two marked videos did not read as not yet decidable: {r}")
+examined += 1
+# Airing dates known from the ledger (scheduled, not yet measured) count too.
+r = O.evaluate(two, now=start + timedelta(days=365), path=state,
+               aired={"cold-open-payoff": ["2026-09-28", "2026-09-29",
+                                           "2026-11-08"]})
+if r["compare_on"] != "2026-12-06":
+    fails.append(f"the scheduled 3rd airing did not set the date: {r}")
+examined += 1
+r = O.evaluate(vids(113, 150), now=due + timedelta(days=1), path=state)
 if r["action"] != "keep":
     fails.append(f"a variant that beats its baseline was not kept: {r}")
 examined += 1
-r = O.evaluate(vids(113, 100), now=start + timedelta(days=29), path=state)
+r = O.evaluate(vids(113, 100), now=due + timedelta(days=1), path=state)
 doc = json.loads(state.read_text()) if state.exists() else {}
 if (r["action"] != "switch" or doc.get("active") != "question-first-teaser"
         or not doc.get("history") or "not above" not in doc["history"][-1]["why"]):
     fails.append(f"a losing variant did not switch to the next one and log "
                  f"why: {r} / {doc}")
 examined += 1
-later = datetime.fromisoformat(doc["since"]) + timedelta(days=29)
+since = datetime.fromisoformat(doc["since"])
+later = since + timedelta(days=2 + O.COMPARE_AFTER_DAYS + 1)
 v = (vids(113, 100) + [{"average_view_duration_s": 95,
-                        "opening": "question-first-teaser"}] * 4)
+                        "opening": "question-first-teaser",
+                        "aired_at": (since + timedelta(days=i)).date().isoformat()}
+                       for i in range(4)])
 r = O.evaluate(v, now=later, path=state)
 if r["action"] != "switch" or r.get("to") != "cold-open-payoff":
     fails.append(f"with every variant tried and losing, evaluate() did not "

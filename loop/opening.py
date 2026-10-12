@@ -203,6 +203,35 @@ def variant_of(slug: str) -> str:
     return PRE_RULE
 
 
+def stamp_on_assembly(path: Path, variant: str | None = None) -> tuple[str, list[str]]:
+    """Stamp an unmarked script entering the week's queue with the active
+    rule, when its opening already satisfies that rule's mechanical check.
+
+    WHY (audit, 2026-10-12). author.draft() stamps every script it writes,
+    but by 2026-10-12 it had written ONE since the rule came into force: the
+    week's queue is assembled mostly from scripts/ inventory, and anything
+    hand-authored from a brief_for() brief lands there unmarked too. So
+    videos produced under the rule were measured as "pre-rule" and the
+    experiment starved. Assembly is the one door every script passes through
+    on its way to a render, so the stamp is applied there. A script whose
+    opening does NOT pass the check is left unmarked and stays in the
+    baseline - it is not what the rule asks for, and stamping it would
+    poison the cohort the rule is judged on.
+
+    Returns (outcome, problems): "marked" (already carried a marker),
+    "stamped" (written now), or "nonconforming" (left as is).
+    """
+    text = path.read_text(encoding="utf-8")
+    if MARK_RE.search(text):
+        return "marked", []
+    v = variant or active()
+    why = problems(text, v)
+    if why:
+        return "nonconforming", why
+    path.write_text(mark(text, v), encoding="utf-8")
+    return "stamped", []
+
+
 # ------------------------------------------------------------ the state
 
 def _now() -> datetime:
@@ -238,32 +267,74 @@ def cohorts(videos: list[dict]) -> dict[str, dict]:
             for k, x in acc.items()}
 
 
+def _day(s: str) -> datetime:
+    return datetime.fromisoformat(s[:10]).replace(tzinfo=timezone.utc)
+
+
+def compare_date(act: str, videos: list[dict],
+                 aired: dict[str, list[str]] | None = None) -> datetime | None:
+    """COMPARE_AFTER_DAYS after the MIN_COHORT-th video drafted under `act`
+    went public; None while fewer than MIN_COHORT have an airing date.
+
+    WHY NOT A FIXED DATE (audit, 2026-10-12). The date used to be `since` +
+    28 days - 2026-10-26 for the first rule - but a rule's videos are not
+    watched from the day it comes into force: the runway was 44 pre-rule
+    scripts already uploaded and scheduled through 2026-11-08, so on its fixed
+    date the rule had ONE marked video, airing two weeks later. A date counted
+    from airings cannot arrive before the evidence does. `aired` is
+    variant -> airing dates of every published video (measured or not, from
+    the ledger); measured rows' own `aired_at` fill in when it is absent.
+    """
+    dates = set((aired or {}).get(act) or [])
+    dates |= {v["aired_at"][:10] for v in videos
+              if v.get("opening") == act and v.get("aired_at")}
+    dates = sorted(dates)
+    if len(dates) < MIN_COHORT:
+        return None
+    return _day(dates[MIN_COHORT - 1]) + timedelta(days=COMPARE_AFTER_DAYS)
+
+
 def evaluate(videos: list[dict], now: datetime | None = None,
-             path: Path | None = None, write: bool = True) -> dict:
+             path: Path | None = None, write: bool = True,
+             aired: dict[str, list[str]] | None = None) -> dict:
     """Compare the active variant with its baseline and switch if it lost.
 
-    Returns {"action": "wait"|"keep"|"switch", "why": ..., ...}. Never raises
-    a stop. Baseline: the variant before the active one in VARIANTS, or
-    PRE_RULE for the first.
+    Returns {"action": "wait"|"keep"|"switch", "why": ..., "decidable": bool,
+    ...}. Never raises a stop. Baseline: the variant before the active one in
+    VARIANTS, or PRE_RULE for the first. The comparison date is
+    compare_date(): 28 days after the 3rd video drafted under the active rule
+    AIRS. Until three have an airing date it is not yet decidable, and says so
+    by name (the lane logs OPENING_NOT_YET_DECIDABLE).
     """
     now = now or _now()
     doc = load(path)
     act = doc["active"] if doc["active"] in VARIANTS else next(iter(VARIANTS))
     order = list(VARIANTS)
     base = PRE_RULE if order.index(act) == 0 else order[order.index(act) - 1]
-    since = datetime.fromisoformat(doc["since"]).replace(tzinfo=timezone.utc) \
-        if len(doc["since"]) == 10 else datetime.fromisoformat(doc["since"])
-    due = since + timedelta(days=COMPARE_AFTER_DAYS)
+    due = compare_date(act, videos, aired)
     c = cohorts(videos)
     new, old = c.get(act), c.get(base)
     res = {"active": act, "baseline": base, "cohorts": c,
-           "compare_on": due.date().isoformat()}
+           "compare_on": due.date().isoformat() if due else None,
+           "decidable": True}
+    if due is None:
+        n = len(set((aired or {}).get(act) or []) |
+                {v["aired_at"][:10] for v in videos
+                 if v.get("opening") == act and v.get("aired_at")})
+        return {**res, "action": "wait", "decidable": False,
+                "why": f"not yet decidable: {n} published video(s) carry "
+                       f"{act} (in force since {doc['since']}); the comparison "
+                       f"with {base} is set {COMPARE_AFTER_DAYS} days after the "
+                       f"{MIN_COHORT}rd one airs, and every newly authored "
+                       f"script carries it"}
     if now < due:
         return {**res, "action": "wait",
-                "why": f"{act} in force since {doc['since']}; compared with "
-                       f"{base} on {due.date().isoformat()}"}
+                "why": f"{act} in force since {doc['since']}; its "
+                       f"{MIN_COHORT}rd video airs "
+                       f"{(due - timedelta(days=COMPARE_AFTER_DAYS)).date()}; "
+                       f"compared with {base} on {due.date().isoformat()}"}
     if not new or new["n"] < MIN_COHORT or not old:
-        return {**res, "action": "wait",
+        return {**res, "action": "wait", "decidable": False,
                 "why": f"{act} has {new['n'] if new else 0} measured video(s) "
                        f"(need {MIN_COHORT}) or no {base} baseline; compared "
                        f"again next Friday"}

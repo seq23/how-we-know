@@ -50,6 +50,7 @@ import durations  # noqa: E402
 import ledger  # noqa: E402
 import opening  # noqa: E402
 import upload as up  # noqa: E402
+import verdict  # noqa: E402
 import ypp  # noqa: E402
 from common import (LOOP, Stage, config, now, read_json, summary,  # noqa: E402
                     week_id, write_json)
@@ -322,20 +323,37 @@ def breaker_cause(streaks: dict, need: int, judgeable: dict | None = None) -> di
                     f"the format.")}
 
 
+# subscribersGained rides in the same call: confirmed 2026-10-12 against the
+# live channel (21 long-form rows, 38 Shorts rows, HTTP 200) - it is an
+# ordinary metric, not a monetary one, so it cannot sink the call the way
+# estimatedRevenue did.
 CORE_METRICS = ("views,estimatedMinutesWatched,averageViewDuration,"
-                "averageViewPercentage")
+                "averageViewPercentage,subscribersGained")
+# Thumbnail impressions and click-through rate. ASKED FOR, SEPARATELY, and its
+# refusal is recorded verbatim, never guessed. 2026-10-12, live channel: the
+# old names `impressions,impressionClickThroughRate` are rejected as "Unknown
+# identifier (impressions) given in field parameters.metrics." and the current
+# `videoThumbnailImpressions,videoThumbnailImpressionsClickRate` return
+# HTTP 400 "The query is not supported" for every shape tried (video
+# dimension with and without a filter, sorted top-N, day, channel total, by
+# creatorContentType). The call stays so the lane picks the numbers up the day
+# the API serves them, with no other change.
+IMPRESSION_METRICS = "videoThumbnailImpressions,videoThumbnailImpressionsClickRate"
+SHORTS_LEDGER = LOOP / "state" / "shorts_ledger.json"
+FILTER_CHUNK = 50
 MONEY_METRICS = "estimatedRevenue"
 
 
-def _analytics_call(token: str, video_ids: list[str], metrics: str) -> dict:
-    q = urllib.parse.urlencode({
-        "ids": "channel==MINE",
-        "startDate": "2020-01-01",
-        "endDate": now()[:10],
-        "metrics": metrics,
-        "dimensions": "video",
-        "filters": "video==" + ",".join(video_ids),
-    })
+def _analytics_call(token: str, video_ids: list[str] | None, metrics: str,
+                    dimensions: str = "video",
+                    start: str = "2020-01-01") -> dict:
+    params = {"ids": "channel==MINE", "startDate": start,
+              "endDate": now()[:10], "metrics": metrics}
+    if dimensions:
+        params["dimensions"] = dimensions
+    if video_ids:
+        params["filters"] = "video==" + ",".join(video_ids)
+    q = urllib.parse.urlencode(params)
     req = urllib.request.Request(f"{ANALYTICS}?{q}",
                                  headers={"Authorization": f"Bearer {token}"})
     with urllib.request.urlopen(req, timeout=60) as r:
@@ -432,6 +450,12 @@ def video_records(data: dict, pub: list[dict], week: str) -> list[dict]:
                       if x.get("video_id") == d.get("video")), "") or ""),
             "estimated_revenue": d.get("estimatedRevenue"),
             "rpm": rpm(d),
+            "subscribers_gained": d.get("subscribersGained"),
+            # When it went (or goes) public: the opening experiment's
+            # comparison date is counted from the 3rd marked video's airing.
+            "aired_at": aired_at(next((x for x in pub
+                                       if x.get("video_id") == d.get("video")),
+                                      {})),
             # Which opening rule the video was drafted under (loop/opening.py),
             # so the old and new cohorts can be compared by average view
             # duration. Pre-rule videos read "pre-rule".
@@ -440,6 +464,208 @@ def video_records(data: dict, pub: list[dict], week: str) -> list[dict]:
                       if x.get("video_id") == d.get("video")), "") or ""),
         })
     return out
+
+
+def aired_at(entry: dict) -> str | None:
+    """The date a ledger entry went, or is scheduled to go, public."""
+    w = (entry.get("published_at") or entry.get("scheduled_publish_at")
+         or entry.get("uploaded_at"))
+    return w[:10] if w else None
+
+
+def aired_by_variant(pub: list[dict]) -> dict[str, list[str]]:
+    """variant -> airing dates of every published video drafted under it,
+    measured or not. A scheduled video's date is known in advance, so the
+    experiment can say WHEN it becomes decidable before the views exist."""
+    out: dict[str, list[str]] = {}
+    for x in pub:
+        if not x.get("slug") or x.get("retired_at"):
+            continue
+        when = aired_at(x)
+        if when:
+            out.setdefault(opening.variant_of(x["slug"]), []).append(when)
+    return {k: sorted(v) for k, v in out.items()}
+
+
+def _chunks(ids: list[str]) -> list[list[str]]:
+    return [ids[i:i + FILTER_CHUNK] for i in range(0, len(ids), FILTER_CHUNK)]
+
+
+def short_ids() -> list[str]:
+    led = read_json(SHORTS_LEDGER, default={"published": []})
+    return [x["video_id"] for x in led.get("published", [])
+            if x.get("video_id") and not x.get("retired_at")]
+
+
+def fetch_shorts(token: str, ids: list[str]) -> list[dict]:
+    """The same core metrics for every Short in loop/state/shorts_ledger.json.
+
+    Shorts carried 93% of the channel's views at the 2026-10-12 audit and the
+    lane measured none of them."""
+    rows = []
+    for chunk in _chunks(ids):
+        data = _analytics_call(token, chunk, CORE_METRICS)
+        cols = [h["name"] for h in data.get("columnHeaders", [])]
+        for row in data.get("rows", []) or []:
+            d = dict(zip(cols, row))
+            rows.append({"video_id": d.get("video"), "views": d.get("views"),
+                         "estimated_minutes_watched": d.get("estimatedMinutesWatched"),
+                         "average_view_duration_s": d.get("averageViewDuration"),
+                         "average_view_percentage": d.get("averageViewPercentage"),
+                         "subscribers_gained": d.get("subscribersGained")})
+    return rows
+
+
+def fetch_impressions(token: str, ids: list[str]) -> tuple[dict, str | None]:
+    """video_id -> {impressions, ctr_pct}, or ({}, the API's refusal verbatim)."""
+    out: dict[str, dict] = {}
+    try:
+        for chunk in _chunks(ids):
+            data = _analytics_call(token, chunk, IMPRESSION_METRICS)
+            cols = [h["name"] for h in data.get("columnHeaders", [])]
+            for row in data.get("rows", []) or []:
+                d = dict(zip(cols, row))
+                out[d.get("video")] = {
+                    "impressions": d.get("videoThumbnailImpressions"),
+                    "ctr_pct": d.get("videoThumbnailImpressionsClickRate")}
+    except urllib.error.HTTPError as e:
+        try:
+            body = json.loads(e.read().decode("utf-8", "replace"))
+            msg = body.get("error", {}).get("message", "")
+        except (ValueError, AttributeError):
+            msg = ""
+        return {}, f"HTTP {e.code}: {msg}".strip()
+    return out, None
+
+
+def fetch_channel_window(token: str, days: int = verdict.WINDOW_DAYS) -> dict:
+    """Trailing-window totals by content type (long-form vs Shorts) and by
+    traffic source. Two calls; both confirmed 200 on 2026-10-12."""
+    import datetime as _dt                                   # noqa: PLC0415
+    start = (_dt.date.today() - _dt.timedelta(days=days)).isoformat()
+    by_type = {}
+    data = _analytics_call(token, None, "views,estimatedMinutesWatched,"
+                           "subscribersGained,subscribersLost",
+                           dimensions="creatorContentType", start=start)
+    for row in data.get("rows", []) or []:
+        t, v, mins, g, lost = row
+        by_type[t] = {"views": v, "minutes": mins,
+                      "subscribers_gained": g, "subscribers_lost": lost}
+    traffic = {}
+    data = _analytics_call(token, None, "views,estimatedMinutesWatched",
+                           dimensions="insightTrafficSourceType", start=start)
+    for row in data.get("rows", []) or []:
+        traffic[row[0]] = {"views": row[1], "minutes": row[2]}
+    return {"window_days": days, "start": start, "by_type": by_type,
+            "traffic": traffic}
+
+
+def history_rows(long_recs: list[dict], short_recs: list[dict],
+                 channel: dict | None, impressions: dict, imp_error: str | None,
+                 week: str, day: str) -> list[dict]:
+    """This Friday's rows for loop/state/measurement_history.jsonl."""
+    rows = []
+    keep = ("views", "estimated_minutes_watched", "average_view_duration_s",
+            "average_view_percentage", "subscribers_gained")
+    for kind, recs in (("long", long_recs), ("short", short_recs)):
+        for r in recs:
+            if not r.get("video_id"):
+                continue
+            row = {"kind": kind, "video_id": r["video_id"], "week": week,
+                   "date": day, **{k: r.get(k) for k in keep}}
+            if kind == "long":
+                row.update({"runtime_s": r.get("runtime_s"),
+                            "opening": r.get("opening"),
+                            "aired_at": r.get("aired_at")})
+            imp = impressions.get(r["video_id"]) or {}
+            row["impressions"] = imp.get("impressions")
+            row["impressions_ctr_pct"] = imp.get("ctr_pct")
+            rows.append(row)
+    if channel is not None:
+        tot_imp = [v["impressions"] for v in impressions.values()
+                   if v.get("impressions") is not None]
+        rows.append({"kind": "channel", "week": week, "date": day, **channel,
+                     "impressions": ({"unavailable": imp_error} if imp_error else
+                                     {"impressions": sum(tot_imp) if tot_imp else None,
+                                      "videos": len(tot_imp)})})
+    return rows
+
+
+R2_OBJECTS = ("https://api.cloudflare.com/client/v4/accounts/{acct}/r2/"
+              "buckets/{bucket}/objects")
+
+
+def r2_shelf_count() -> tuple[int | None, str]:
+    """Verified Shorts on the R2 shelf not yet uploaded: (count, basis).
+
+    ONE paginated read-only listing of the shorts/ prefix through the
+    Cloudflare REST API - not a wrangler `head` per candidate, which would not
+    fit this lane's five-minute job. "Verified" is the shorts-cloud lane's own
+    test (cut AND receipt shelved - loop/shorts_cloud.py shelf_lookup), and
+    the candidates are its own: shorts_lane.pending(), which already skips
+    what the ledger holds and what the render gate holds. None when the
+    listing cannot be read; the reason is the basis, never a guessed zero.
+    """
+    import os                                                # noqa: PLC0415
+    import r2                                                # noqa: PLC0415
+    import shorts_lane                                       # noqa: PLC0415
+    acct = (os.environ.get("CLOUDFLARE_ACCOUNT_ID") or "").strip()
+    tok = (os.environ.get("CLOUDFLARE_API_TOKEN") or "").strip()
+    if os.environ.get("LOOP_DRY_RUN") == "1" or not acct or not tok:
+        return None, "R2 credentials are not in this job's environment"
+    url = R2_OBJECTS.format(acct=acct, bucket=r2.bucket_name())
+    keys: set[str] = set()
+    cursor = None
+    try:
+        for _ in range(50):
+            q = {"prefix": r2.SHORT_PREFIX, "per_page": "1000"}
+            if cursor:
+                q["cursor"] = cursor
+            req = urllib.request.Request(
+                f"{url}?{urllib.parse.urlencode(q)}",
+                headers={"Authorization": f"Bearer {tok}"})
+            with urllib.request.urlopen(req, timeout=60) as r:
+                data = json.loads(r.read())
+            keys |= {o.get("key") for o in data.get("result") or []}
+            info = data.get("result_info") or {}
+            cursor = info.get("cursor")
+            if not info.get("is_truncated") or not cursor:
+                break
+    except urllib.error.HTTPError as e:
+        return None, f"R2 listing refused: HTTP {e.code}"
+    except (urllib.error.URLError, TimeoutError, ValueError) as e:
+        return None, f"R2 listing failed: {str(e)[:120]}"
+
+    def have(slug: str, rank: int = 1):
+        return (r2.short_key(slug, rank) in keys
+                and r2.short_receipt_key(slug, rank) in keys) or "not shelved"
+    picks = shorts_lane.pending(have)
+    return len(picks), (f"R2 listing of {r2.SHORT_PREFIX}: {len(keys)} "
+                        f"object(s), {len(picks)} verified and not uploaded")
+
+
+def shorts_cadence_now(cfg: dict) -> dict:
+    """verdict.shorts_cadence() for this moment, R2 shelf included."""
+    import datetime as _dt                                   # noqa: PLC0415
+    import cadence                                           # noqa: PLC0415
+    n, basis = r2_shelf_count()
+    led = read_json(SHORTS_LEDGER, default={"published": []})
+    return verdict.shorts_cadence(led.get("published", []),
+                                  cadence.shorts_effective(),
+                                  _dt.datetime.now(_dt.timezone.utc), n, basis)
+
+
+def write_verdict(st, cfg: dict, rows: list[dict] | None = None,
+                  shorts: dict | None = None) -> dict:
+    """channel_verdict.json from the history on disk (plus this week's rows)."""
+    v = verdict.write(rows, cfg, shorts=shorts)
+    w = v.get("views_28d") or {}
+    st.work(f"wrote loop/state/channel_verdict.json: 28-day views "
+            f"{w.get('total')} (long-form {w.get('long_form')}, Shorts "
+            f"{w.get('shorts')}); AVD {v.get('avd_s')}s vs "
+            f"{v.get('avd_floor_s')}s floor; {v.get('watch_hours_long_form')} "
+            f"of {v.get('watch_hours_floor')} watch hours")
+    return v
 
 
 def fetch_channel_stats(token: str) -> dict | None:
@@ -538,6 +764,11 @@ def main() -> None:
                 st.work("reset the circuit breaker: the retention breach that "
                         "tripped it is no longer present in the measurement")
 
+        # The verdict is recomputed from the history on disk before anything
+        # talks to Google, so an unmeasured week still refreshes it.
+        if verdict.load_history():
+            write_verdict(st, cfg)
+
         if not pub:
             st.named_stop(
                 "NOTHING_PUBLISHED",
@@ -573,7 +804,7 @@ def main() -> None:
         try:
             token = up.access_token(creds)
 
-            fetch_channel_stats(token)
+            stats = fetch_channel_stats(token)
             st.work("recorded the channel's subscriber count for the "
                     "monetisation gates")
 
@@ -642,7 +873,8 @@ def main() -> None:
             # retention metric; only revenue/RPM are recorded as None.
             st.note(f"revenue not measured this week: "
                     f"{data['revenue_unavailable']}")
-        for rec in video_records(data, pub, week):
+        long_recs = video_records(data, pub, week)
+        for rec in long_recs:
             m["videos"] = [v for v in m["videos"]
                            if v["video_id"] != rec["video_id"]] + [rec]
             st.work(f"measured {rec['video_id']}: "
@@ -674,9 +906,11 @@ def main() -> None:
         # rule each video was drafted under; after COMPARE_AFTER_DAYS the
         # active variant is kept or replaced by the next one, here, logged,
         # with no stop either way.
-        acting = opening.evaluate(m["videos"])
+        acting = opening.evaluate(m["videos"], aired=aired_by_variant(pub))
         m["opening"] = acting
         st.work(f"opening rule: {acting['action']} - {acting['why']}")
+        if not acting.get("decidable", True):
+            st.note(f"OPENING_NOT_YET_DECIDABLE: {acting['why']}")
         write_finding(cp, cfg, acting)
         if cp["status"] == "measured":
             st.work(f"retention checkpoint: {cp['mean_view_duration_mm_ss']} "
@@ -703,6 +937,41 @@ def main() -> None:
         m["updated"] = now()
         write_json(MEASURE, m)
         st.work("wrote loop/state/measurement.json — Sunday's ranking reads this")
+
+        # ---- the history, Shorts, and the one verdict (loop/verdict.py) ----
+        # Each extra read is a NOTE when it fails, never a stop: the long-form
+        # measurement above is already written and is what the breaker needs.
+        short_recs, chan, imp, imp_err = [], None, {}, None
+        try:
+            short_recs = fetch_shorts(token, short_ids())
+            st.work(f"measured {len(short_recs)} Short(s) from "
+                    f"loop/state/shorts_ledger.json")
+        except (urllib.error.URLError, TimeoutError, ValueError) as e:
+            st.note(f"SHORTS_UNMEASURED: {str(e)[:200]}")
+        try:
+            imp, imp_err = fetch_impressions(token, video_ids)
+        except (urllib.error.URLError, TimeoutError, ValueError) as e:
+            imp_err = f"network: {str(e)[:200]}"
+        if imp_err:
+            st.note(f"IMPRESSIONS_UNAVAILABLE: the YouTube Analytics API "
+                    f"refused thumbnail impressions/CTR - {imp_err}")
+        try:
+            chan = fetch_channel_window(token)
+            chan["subscribers_total"] = (stats or {}).get("subscribers")
+        except (urllib.error.URLError, TimeoutError, ValueError) as e:
+            st.note(f"CHANNEL_WINDOW_UNMEASURED: {str(e)[:200]}")
+        hrows = history_rows(long_recs, short_recs, chan, imp, imp_err,
+                             week, now()[:10])
+        n_hist = verdict.append_history(hrows)
+        st.work(f"appended {len(hrows)} dated row(s) to "
+                f"loop/state/measurement_history.jsonl ({n_hist} on file)")
+        sc = shorts_cadence_now(cfg)
+        st.work(f"Shorts cadence: {sc['published_7d']} in 7 days vs "
+                f"{sc['target_per_week']}/week; shelf {sc['shelf']} "
+                f"({sc['shelf_weeks']} wk) - {sc['r2_basis']}")
+        if sc["r2_verified_unpublished"] is None:
+            st.note(f"SHORTS_SHELF_UNREAD: {sc['r2_basis']}")
+        write_verdict(st, cfg, shorts=sc)
 
         # A FORMAT PROBLEM IS ACTED ON, NOT RAISED (owner's rule, 2026-09-25:
         # nothing waits on her). It used to be the named stop FORMAT_PROBLEM,

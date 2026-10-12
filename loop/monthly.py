@@ -95,8 +95,18 @@ def prev_month(mid: str) -> str:
 
 
 def collect(mid: str) -> list[dict]:
+    """The rows this review judges: the month just ended, plus `mid` itself.
+
+    The review runs on the 1st. The Friday lane stamps each row with the
+    moment it measured, so on the 1st every row is stamped the PREVIOUS
+    month - and a filter on `mid` alone kept none of them. October 2026's
+    review read "0 measured videos" and held every change for a month of
+    data it had on disk (audit, 2026-10-12). measurement.json holds one
+    (latest) row per video, so there is nothing to de-duplicate.
+    """
     m = read_json(MEASURE, default={"videos": []})
-    return [r for r in m.get("videos", []) if (r.get("at") or "")[:7] == mid]
+    window = {mid, prev_month(mid)}
+    return [r for r in m.get("videos", []) if (r.get("at") or "")[:7] in window]
 
 
 def _log() -> dict:

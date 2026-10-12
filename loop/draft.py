@@ -451,6 +451,25 @@ def main() -> None:
                 unauthored.append(t)
                 continue
 
+            # Every script that reaches a render carries the opening rule it
+            # was produced under, whichever path authored it (loop/opening.py
+            # stamp_on_assembly). Without this the experiment counted only
+            # model drafts and starved for a month.
+            # Model drafts under loop/drafts/ were stamped by author.draft();
+            # the stamp here is for the scripts/ inventory and hand-authored
+            # scripts, the only path bin/batch-session.sh narrates from.
+            inv = ROOT / "scripts" / f"{t['slug']}.md"
+            stamped, why = (opening.stamp_on_assembly(inv)
+                            if inv.exists() and inv.resolve() == script.resolve()
+                            else ("marked", []))
+            if stamped == "stamped":
+                st.work(f"{t['slug']}: stamped opening rule "
+                        f"{opening.active()} - its opening passes the check")
+            elif stamped == "nonconforming":
+                st.note(f"{t['slug']}: opening does not meet "
+                        f"{opening.active()}; measured as {opening.PRE_RULE} "
+                        f"({why[0][:120]})")
+
             items.append({
                 "slug": t["slug"],
                 "question": t["question"],
