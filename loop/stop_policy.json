@@ -131,6 +131,7 @@
     },
     "BATCH_NIGHT_INCOMPLETE": {
       "why": "The Mac's nightly batch was interrupted (a reboot, a battery run flat, a kill) and com.howweknow.batch-resume had not finished it by 09:00, when the day's cloud lanes own the Mac's outputs. Nothing is lost: every step skips what is on disk, so tonight's 23:00 batch continues from where the night stopped (loop/batch_progress.py, bin/batch-session.sh RESUME ON WAKE). Raised once per interrupted night, from the resume agent's first run after 09:00.",
+      "plain": "the Mac's overnight batch was cut off (a restart or a flat battery) and did not finish by 09:00; tonight's batch picks up where it stopped",
       "max_consecutive": 3,
       "escalation": "Three consecutive nights interrupted and not resumed. The Mac is being shut down or running flat every night, or the resume agent is not loaded: run `launchctl list | grep howweknow` on the Mac (com.howweknow.batch-resume must be listed) and read ~/Library/Logs/how-we-know/batch-resume.log and batch.log for where each night stopped."
     },
