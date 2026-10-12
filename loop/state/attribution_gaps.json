@@ -1,19 +1,6 @@
 {
-  "checked": "2026-10-12T15:53:40+00:00",
-  "scripts_with_gaps": 2,
-  "gaps": [
-    {
-      "slug": "how-deep-can-a-sperm-whale-go",
-      "missing_from_sources": [
-        "Woods Hole Oceanographic Institution"
-      ]
-    },
-    {
-      "slug": "why-deep-sea-creatures-are-creepers",
-      "missing_from_sources": [
-        "Science"
-      ]
-    }
-  ],
+  "checked": "2026-10-12T16:18:02+00:00",
+  "scripts_with_gaps": 0,
+  "gaps": [],
   "fix": "Add the named body's own URL to that script's ## Sources list. This validator turns green on its own once it is there."
 }

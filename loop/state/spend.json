@@ -2111,10 +2111,43 @@
       "completion_tokens": 14531,
       "total_tokens": 18272,
       "cost_usd": 0
+    },
+    {
+      "at": "2026-10-12T16:12:26+00:00",
+      "slug": "why-are-deep-sea-creatures-so-big",
+      "model": "claude-subscription/opus",
+      "attempt": 1,
+      "accepted": true,
+      "prompt_tokens": 3769,
+      "completion_tokens": 9313,
+      "total_tokens": 13082,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-12T16:15:28+00:00",
+      "slug": "what-is-hydrothermal-vents",
+      "model": "claude-subscription/opus",
+      "attempt": 1,
+      "accepted": true,
+      "prompt_tokens": 3740,
+      "completion_tokens": 19028,
+      "total_tokens": 22768,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-12T16:17:58+00:00",
+      "slug": "how-are-microchips-designed",
+      "model": "claude-subscription/opus",
+      "attempt": 1,
+      "accepted": true,
+      "prompt_tokens": 3577,
+      "completion_tokens": 14923,
+      "total_tokens": 18500,
+      "cost_usd": 0
     }
   ],
   "total_usd": 10.175922,
-  "drafts_written": 85,
-  "average_usd_per_accepted_draft": 0.119717,
-  "updated": "2026-10-12T15:53:33+00:00"
+  "drafts_written": 88,
+  "average_usd_per_accepted_draft": 0.115635,
+  "updated": "2026-10-12T16:17:58+00:00"
 }

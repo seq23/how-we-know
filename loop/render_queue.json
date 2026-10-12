@@ -1,8 +1,8 @@
 {
   "week": "2026-W42",
-  "generated": "2026-10-12T15:53:50+00:00",
+  "generated": "2026-10-12T16:10:45+00:00",
   "videos_per_week": 4,
-  "breaker": "closed",
+  "breaker": "tripped",
   "validators": [
     {
       "validator": "V1 directive-truth",
@@ -164,10 +164,8 @@
     {
       "validator": "V21 no-boilerplate",
       "examined": 46,
-      "status": "FAIL(1)",
-      "failures": [
-        "what-lives-in-the-depths-of-the-ocean.md and how-deep-can-a-sperm-whale-go.md share a verbatim narrated sentence (16 words): \"How do we know an animal behaves a certain way when we've seen it three times?\""
-      ],
+      "status": "PASS",
+      "failures": [],
       "notes": [],
       "stops": []
     },
@@ -215,7 +213,7 @@
     },
     {
       "validator": "V28 lane-interpreters",
-      "examined": 32,
+      "examined": 33,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -231,7 +229,7 @@
     },
     {
       "validator": "V30 cloud-visibility",
-      "examined": 278,
+      "examined": 279,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -351,11 +349,11 @@
     },
     {
       "validator": "V45 nothing-waits-on-owner",
-      "examined": 142,
+      "examined": 143,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "stop kinds by class: automated 43, automated/error 1, error 82, owner_secret 16"
+        "stop kinds by class: automated 44, automated/error 1, error 82, owner_secret 16"
       ],
       "stops": []
     },
@@ -368,7 +366,7 @@
       "stops": []
     }
   ],
-  "validators_passed": false,
+  "validators_passed": true,
   "approval": {
     "required": false,
     "mode": "notified, not asked",
@@ -413,18 +411,18 @@
     "message": "RUNWAY WARNING: only 4.0 weeks of queue left at 4/week - 1 publishable episode(s) of 8 on disk. Act now, not later: the authoring lane needs lead time and its human fallback needs more. By domain: deep-sea-ocean-science: 7.0 week(s) at 2/week (6 queued, 8 already dated); materials-and-manufacturing: 7.0 week(s) at 2/week (7 queued, 7 already dated)."
   },
   "authoring": {
-    "generated_this_week": 3,
+    "generated_this_week": 0,
     "cost_usd": 0.0,
-    "model": "nvidia/nemotron-3-super-120b-a12b:free"
+    "model": "nvidia/nemotron-3-ultra-550b-a55b:free"
   },
   "items": [
     {
       "slug": "what-lives-in-mariana-trench",
       "question": "what lives in mariana trench",
       "script": "loop/drafts/what-lives-in-mariana-trench.md",
-      "generated": true,
-      "author_cost_usd": 0,
-      "author_model": "claude-subscription/opus",
+      "generated": false,
+      "author_cost_usd": null,
+      "author_model": null,
       "pov_id": "pov-001",
       "pov_line": "When I picture the deep ocean I don't see blue water or fish. I see black. A massive amount of black space where you can't tell what's beside you or beneath you.",
       "pov_tier": "specific",
@@ -487,9 +485,9 @@
       "slug": "why-deep-sea-creatures-are-creepers",
       "question": "why deep sea creatures are creepers",
       "script": "loop/drafts/why-deep-sea-creatures-are-creepers.md",
-      "generated": true,
-      "author_cost_usd": 0,
-      "author_model": "claude-subscription/opus",
+      "generated": false,
+      "author_cost_usd": null,
+      "author_model": null,
       "pov_id": "pov-002",
       "pov_line": "It feels quiet, but not peaceful quiet. More like being somewhere you were never designed to be.",
       "pov_tier": "specific",
@@ -520,9 +518,9 @@
       "slug": "how-deep-can-whales-dive",
       "question": "how deep can whales dive",
       "script": "loop/drafts/how-deep-can-whales-dive.md",
-      "generated": true,
-      "author_cost_usd": 0,
-      "author_model": "claude-subscription/opus",
+      "generated": false,
+      "author_cost_usd": null,
+      "author_model": null,
       "pov_id": "pov-085",
       "pov_line": "It doesn't bother me that instruments extend what we can know. Human senses are extremely limited. That's the point of technology.",
       "pov_tier": "transferable",

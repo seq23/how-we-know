@@ -50,21 +50,21 @@ bank. This page is a notification. Drop a row only if you actively want it gone 
 the override window closes Tuesday 02:00, when rendering starts.</div>
 
 <div class="bar">
-  <span>breaker <b class="ok">closed</b></span>
-  <span>validators <b class="bad">FAILED</b></span>
+  <span>breaker <b class="bad">tripped</b></span>
+  <span>validators <b class="ok">passed</b></span>
   <span>gate refused <b>15</b> candidates</span>
-  <span>authored <b>3</b></span>
+  <span>authored <b>0</b></span>
   <span>cost <b>$0.000</b></span>
 </div>
 
-<div class="stop"><b>Attribution gap (does not block):</b> narration names a body that is not in that script's <code>## Sources</code> — how-deep-can-a-sperm-whale-go → Woods Hole Oceanographic Institution; why-deep-sea-creatures-are-creepers → Science.</div>
+<div class="stop"><b>Attribution gap (does not block):</b> narration names a body that is not in that script's <code>## Sources</code> — how-deep-can-a-sperm-whale-go → Woods Hole Oceanographic Institution; why-deep-sea-creatures-are-creepers → Science.</div><div class="stop"><b>Circuit breaker tripped.</b> Publishing is halted. Drafting and rendering continue; nothing goes public until it is reset.</div>
 
 <form id="f">
 <div class="card">
   <p class="q">1. what lives in mariana trench</p>
   <div class="meta">
-    <span class="tag gen">drafted by claude-subscription/opus</span>
-    what-lives-in-mariana-trench · 5 sources (all verified) · 88 beats
+    <span class="tag ">human-authored</span>
+    what-lives-in-mariana-trench · 5 sources · 88 beats
   </div>
   <div class="pov"><b>POV pov-001</b> — When I picture the deep ocean I don&#x27;t see blue water or fish. I see black. A massive amount of black space where you can&#x27;t tell what&#x27;s beside you or beneath you.<br>
     <span style="font-size:11px;opacity:.7">matched: tag:scale score 5.6</span></div>
@@ -87,8 +87,8 @@ the override window closes Tuesday 02:00, when rendering starts.</div>
 <div class="card">
   <p class="q">3. why deep sea creatures are creepers</p>
   <div class="meta">
-    <span class="tag gen">drafted by claude-subscription/opus</span>
-    why-deep-sea-creatures-are-creepers · 6 sources (all verified) · 84 beats
+    <span class="tag ">human-authored</span>
+    why-deep-sea-creatures-are-creepers · 6 sources · 84 beats
   </div>
   <div class="pov"><b>POV pov-002</b> — It feels quiet, but not peaceful quiet. More like being somewhere you were never designed to be.<br>
     <span style="font-size:11px;opacity:.7">matched: tag:scale score 2.8</span></div>
@@ -99,8 +99,8 @@ the override window closes Tuesday 02:00, when rendering starts.</div>
 <div class="card">
   <p class="q">4. how deep can whales dive</p>
   <div class="meta">
-    <span class="tag gen">drafted by claude-subscription/opus</span>
-    how-deep-can-whales-dive · 5 sources (all verified) · 71 beats
+    <span class="tag ">human-authored</span>
+    how-deep-can-whales-dive · 5 sources · 71 beats
   </div>
   <div class="pov"><b>POV pov-085</b> — It doesn&#x27;t bother me that instruments extend what we can know. Human senses are extremely limited. That&#x27;s the point of technology.<br>
     <span style="font-size:11px;opacity:.7">matched: tag:instruments score 2.0</span></div>
@@ -122,7 +122,7 @@ the override window closes Tuesday 02:00, when rendering starts.</div>
 
 </div>
 <script>
-const DATA = {"week": "2026-W42", "generated": "2026-10-12T15:53:50+00:00", "items": [{"slug": "what-lives-in-mariana-trench"}, {"slug": "how-deep-can-a-sperm-whale-go"}, {"slug": "why-deep-sea-creatures-are-creepers"}, {"slug": "how-deep-can-whales-dive"}]};
+const DATA = {"week": "2026-W42", "generated": "2026-10-12T16:10:45+00:00", "items": [{"slug": "what-lives-in-mariana-trench"}, {"slug": "how-deep-can-a-sperm-whale-go"}, {"slug": "why-deep-sea-creatures-are-creepers"}, {"slug": "how-deep-can-whales-dive"}]};
 const REPO = "seq23/how-we-know";
 function selected(){
   return [...document.querySelectorAll("button.drop.on")].map(b => b.dataset.slug);
