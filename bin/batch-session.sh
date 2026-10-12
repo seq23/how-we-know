@@ -294,6 +294,8 @@ echo "  to render now : ${pending_render:-none}"
 # an episode is never re-cut. push-to-r2.sh is idempotent and refuses anything
 # V14/V15 reject or the render gate holds, so calling it on an idle night shelves
 # what is new and skips what is already there.
+PUSH_OUT="${TMPDIR:-/tmp}/how-we-know-push.$$.out"
+: > "$PUSH_OUT"
 shelve_shorts() {
   echo; echo "--- shorts: cut what is rendered and uncut, then shelve ---"
   # Grouped by how many cuts the episode may publish (shorts_lane.cut_groups):
@@ -315,7 +317,10 @@ for n, s in sorted(shorts_lane.cut_groups().items()): print(n, ' '.join(s))") ||
     echo "  every finished render already has its Shorts cut"
   fi
   if [ -x bin/push-to-r2.sh ]; then
-    bin/push-to-r2.sh
+    # Teed, so the report step can hand its named stops to
+    # loop/mac_batch_stop.py: launchd has no workflow to turn an exit 3 into
+    # an issue, and SHORTS_UNVERIFIED went unseen from 21 Sep to 12 Oct 2026.
+    bin/push-to-r2.sh 2>&1 | tee "$PUSH_OUT"
   else
     echo "  bin/push-to-r2.sh does not exist yet - the cloud upload lane is still"
     echo "  being built. Until it lands, uploading stays on this Mac."
@@ -685,7 +690,12 @@ pending=$($PY -c "import sys; sys.path.insert(0,'loop'); import backfill; print(
 # hidden behind a Shorts lane that did shelve.
 batch_ok=1; [ "$CAPRC" -eq 0 ] || [ "$CAPRC" -eq 3 ] || batch_ok=0
 $PY loop/mac_sync.py heartbeat --lane batch --ok "$batch_ok" --held "$held" --pending "$pending" 2>&1 | tail -1
-$PY loop/mac_sync.py push --lane batch 2>&1 | tail -1
+# Every named stop the push ended on reaches the repository (stop file,
+# committed just below) and, when it pages, ONE deduped GitHub issue. Never
+# blocks: what passed is already on the shelf. See loop/mac_batch_stop.py.
+$PY loop/mac_batch_stop.py scan "$PUSH_OUT" 2>&1 | grep -E "mac-batch" || true
+rm -f "$PUSH_OUT"
+$PY loop/mac_sync.py push --lane batch "loop/state/stops/$($PY -c "import sys; sys.path.insert(0,'loop'); from common import week_id; print(week_id())")-mac-batch.json" 2>&1 | tail -1
 
 if [ "$batch_ok" -eq 0 ]; then
   echo; echo "=== batch complete WITH A CAPTIONS FAILURE (rc=$CAPRC) $(date '+%H:%M') ==="

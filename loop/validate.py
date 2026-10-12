@@ -176,8 +176,19 @@ class Result:
         # Set only by a validator that legitimately governs nothing this week.
         # Never set it to quiet a validator that SHOULD have found items.
         self.exempt = False
+        # The files a per-artefact validator (V14, V15) failed, by name. A
+        # failure that is NOT in here is not attributable to one file (could
+        # not import, examined nothing) and must hold everything it governs;
+        # one that is, holds only that file. r2.py:push_shorts reads this so a
+        # bad Short holds that Short, never its siblings.
+        self.failed_files: set[str] = set()
 
     def fail(self, msg: str):
+        self.failures.append(msg)
+
+    def fail_file(self, name: str, msg: str):
+        """A failure that belongs to exactly one file, `name`."""
+        self.failed_files.add(name)
         self.failures.append(msg)
 
     def note(self, msg: str):
@@ -827,6 +838,88 @@ def _samples(rec: dict, n: int = 3) -> list[tuple[float, float]]:
              s["source_start"] + s["seconds"] / 2) for s in segs]
 
 
+SRC_FPS = 30          # renders/<slug>-final.mp4 (visuals/assemble.py)
+FRAME_SLACK = 2       # V15: master frames either side of t_src each hypothesis may use
+
+
+def _footage_credit_lines(SH) -> list[str]:
+    """Every credit line a footage beat can burn, longest first."""
+    import footage as FT                                    # noqa: PLC0415
+    lines = {str(a.get("required_credit") or a.get("source_org") or "")
+             for a in FT.load_manifest().get("assets", [])}
+    return sorted((c for c in lines if c), key=len, reverse=True)
+
+
+def _credits_the_master_burned(SH, ocr, rec: dict, plan: list, tmp: Path):
+    """(credit lines, {beat: why}) for the beats a Short uses - for a FOOTAGE
+    beat, the credit the MASTER actually burned, read off its pixels.
+
+    WHY NOT JUST visuals/shorts.py:resolve_credits. It re-runs footage.assign()
+    against TODAY's channel/imagery/video_rights.json. Placement is
+    deterministic for a given manifest, but the manifest grows (Cook Islands
+    and American Samoa clips arrived 19 Sep - 9 Oct 2026), the pools rotate,
+    and a master rendered on 30 Aug now re-resolves to a clip it never
+    contained. From 2026-10-09 V14 failed 08-...-deep-sea-short2 and
+    20-what-is-the-midnight-zone-short2 for not showing '2026 Cook Islands ROV
+    Exploration' - while the master itself burns 'VOYAGE TO THE RIDGE 2022' on
+    that beat and the Short correctly credits exactly that. The validator was
+    comparing the cut against footage that is not in it.
+
+    So for a footage beat the expected credit is read off the master's own
+    credit strip (footage.py:_credit_overlay, lower left) at three points in
+    the beat and matched to a credit line the manifest knows. That is
+    independent of the Short's receipt and of manifest drift. Only when the
+    master's strip cannot be read is today's assignment used - which fails
+    closed rather than open. Species and `source` credits are not placed by
+    rotation and still come from the manifests.
+    """
+    import footage as FT                                    # noqa: PLC0415
+    lines, seen, dropped = [], set(), {}
+    known = None
+    segs = {int(s["beat"]): s for s in rec.get("segments") or []}
+    src = ROOT / rec["source"]
+    cuts = SH.footage_cuts(rec["slug"], plan)
+
+    def add(c):
+        k = re.sub(r"[^a-z0-9]+", "", c.lower())
+        if k and k not in seen:
+            seen.add(k)
+            lines.append(c)
+
+    for i in rec["beats"]:
+        burned = None
+        seg = segs.get(int(i))
+        if cuts[i] is not None and seg is not None and src.exists():
+            known = known if known is not None else _footage_credit_lines(SH)
+            strip = f"crop={FT.W // 2 + 400}:110:0:{FT.H - 120}"
+            for q in (0.25, 0.5, 0.75):
+                t = seg["source_start"] + seg["seconds"] * q
+                read = _ocr_words(ocr, _frame(
+                    src, t, tmp / f"{rec['slug']}.b{i}.{q}.master.png", strip))
+                for c in known:
+                    words = [w for w in re.findall(r"[A-Z0-9]+", c.upper())
+                             if len(w) > 2]
+                    if words and all(f" {w} " in read for w in words):
+                        burned = c
+                        break
+                if burned:
+                    break
+        try:
+            got = SH.beat_credits(rec["slug"], plan, i)
+        except SH.CreditUnresolved as e:
+            if burned is None:
+                dropped[i] = str(e)
+                continue
+            got = []
+        if burned is not None:
+            # replace the drifted footage credit with the burned one; keep any
+            # `Source:` line the beat also draws
+            got = [burned] + [g for g in got if g.startswith("Source: ")]
+        for c in got:
+            add(c)
+    return lines, dropped
+
+
 def v14_shorts_attribution() -> Result:
     """HARD. A Short built from a beat whose asset carries a credit SHOWS it.
 
@@ -863,14 +956,15 @@ def v14_shorts_attribution() -> Result:
         slug = rec["slug"]
         plan_path = ROOT / "plans" / f"{slug}.json"
         if not plan_path.exists():
-            r.fail(f"{mp4.name}: plans/{slug}.json is gone; the credit its beats "
-                   f"require cannot be re-resolved")
+            r.fail_file(mp4.name, f"{mp4.name}: plans/{slug}.json is gone; the "
+                        f"credit its beats require cannot be re-resolved")
             continue
         plan = json.loads(plan_path.read_text())
-        want, dropped = SH.resolve_credits(slug, plan, rec["beats"])
+        want, dropped = _credits_the_master_burned(SH, ocr, rec, plan, tmp)
         if dropped:
-            r.fail(f"{mp4.name}: kept beat(s) {sorted(dropped)} whose credit "
-                   f"cannot be resolved: {list(dropped.values())[0]}")
+            r.fail_file(mp4.name, f"{mp4.name}: kept beat(s) {sorted(dropped)} "
+                        f"whose credit cannot be resolved: "
+                        f"{list(dropped.values())[0]}")
         if not want:
             uncredited += 1
             continue
@@ -883,8 +977,9 @@ def v14_shorts_attribution() -> Result:
             words = [w for w in re.findall(r"[A-Z0-9]+", c.upper()) if len(w) > 2]
             missing = [w for w in words if f" {w} " not in seen]
             if missing:
-                r.fail(f"{mp4.name}: credit {c!r} is not on screen - Vision read "
-                       f"{seen.strip()!r} in the credit strip, missing {missing}")
+                r.fail_file(mp4.name, f"{mp4.name}: credit {c!r} is not on "
+                            f"screen - Vision read {seen.strip()!r} in the "
+                            f"credit strip, missing {missing}")
     if r.examined == 0:
         r.fail(f"examined 0 Shorts that carry credited material ({len(receipts)} "
                f"Short(s) present, {uncredited} using no credited asset) - this "
@@ -940,13 +1035,13 @@ def v15_shorts_caption_crop() -> Result:
     for mp4, rec in receipts:
         src = ROOT / rec["source"]
         if not src.exists():
-            r.fail(f"{mp4.name}: source {rec['source']} is gone")
+            r.fail_file(mp4.name, f"{mp4.name}: source {rec['source']} is gone")
             continue
         ch, by, bh = rec["source_crop_height"], rec["band_y"], rec["band_h"]
         top = SH.plate_top(rec["cap_lines"])
         plate = f"crop={SH.SRC_W}:{SH.SRC_H - SH.CAP.CAP_BOTTOM - top}:0:{top}"
         if ch > top:
-            r.fail(f"{mp4.name}: crop keeps {ch} source rows but the "
+            r.fail_file(mp4.name, f"{mp4.name}: crop keeps {ch} source rows but the "
                    f"{rec['cap_lines']}-line caption plate starts at row {top} - "
                    f"{ch - top} row(s) of burned caption reach the picture")
         for k, (t_short, t_src) in enumerate(_samples(rec)):
@@ -954,21 +1049,34 @@ def v15_shorts_caption_crop() -> Result:
             if not _ocr_words(ocr, removed).strip():
                 continue                 # master not captioning here; no evidence
             r.examined += 1
-            m = np.asarray(Image.open(
-                _frame(src, t_src, tmp / f"{mp4.stem}.{k}.src.png")
-            ).convert("RGB"))
             s = np.asarray(Image.open(
                 _frame(mp4, t_short, tmp / f"{mp4.stem}.{k}.short.png")
             ).convert("RGB")).astype(np.int16)[by:by + bh]
+            # FRAME ALIGNMENT. `-ss` on two different encodes does not land on
+            # the same instant: the Short's beats are concatenated on frame
+            # boundaries, so its frame at t_short can be the master's frame one
+            # or two away from t_src. On a static picture that is invisible; on
+            # an animated counter (how-do-scientists-know-so-much-short2 @15.8s,
+            # 2026-10-12: the master read 5,632 and the Short 5,555) the
+            # mismatch outweighed the caption and a correct crop read 3.53 vs
+            # 6.60. One frame earlier it read 1.43 vs 6.62. So EACH hypothesis
+            # is scored at its best alignment over the same +/-FRAME_SLACK
+            # master frames - the same freedom for both, so the relative test
+            # is exactly as strict about the caption and no longer measures
+            # the encoder's frame rounding.
+            masters = [np.asarray(Image.open(
+                _frame(src, max(0.0, t_src + j / SRC_FPS),
+                       tmp / f"{mp4.stem}.{k}.src{j:+d}.png")
+            ).convert("RGB")) for j in range(-FRAME_SLACK, FRAME_SLACK + 1)]
 
             def fit(rows):
-                exp = np.asarray(Image.fromarray(m[:rows]).resize(
-                    (SH.OUT_W, bh), Image.BICUBIC)).astype(np.int16)
-                return float(np.abs(exp - s).mean())
+                return min(float(np.abs(np.asarray(Image.fromarray(m[:rows])
+                           .resize((SH.OUT_W, bh), Image.BICUBIC))
+                           .astype(np.int16) - s).mean()) for m in masters)
 
             cropped, whole = fit(ch), fit(SH.SRC_H)
             if cropped * 2 >= whole:
-                r.fail(f"{mp4.name} @{t_short:.1f}s: the band fits the UNCROPPED "
+                r.fail_file(mp4.name, f"{mp4.name} @{t_short:.1f}s: the band fits the UNCROPPED "
                        f"master about as well as the cropped one "
                        f"(cropped {cropped:.2f} vs whole {whole:.2f}) - the "
                        f"burned caption band was not removed")

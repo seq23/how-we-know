@@ -215,8 +215,14 @@
     },
     "NO_SHORTS_SHELVED": {
       "why": "Every cut Short is already uploaded, or none has been pushed to R2 since the last run. The Mac's push is the producer; an empty shelf resolves on the next one.",
-      "max_consecutive": 7,
-      "escalation": "Seven days of an empty Shorts shelf while shorts/ holds uncut inventory means bin/push-to-r2.sh's push-shorts half is failing - it gates on V14 attribution and V15 crop, and a refusal there is silent to this lane."
+      "max_consecutive": 2,
+      "_why_max_consecutive": "Lowered from 7 on 2026-10-12. The Mac shelves every night, so two empty days is a broken producer, not a slow one. At 7 the count reset on 3 Oct when three Shorts slipped through and it never escalated across three weeks of a held shelf.",
+      "escalation": "Two days of an empty Shorts shelf means the Mac's nightly push is not shelving. Read loop/state/stops/<week>-mac-batch.json (and the open '[mac-batch] <CODE>' issue it filed): bin/push-to-r2.sh's push-shorts half refuses a cut that fails V14 attribution or V15 crop and names it there."
+    },
+    "SHORTS_SHELF_DRY": {
+      "why": "No verified Short is on the R2 shelf and fewer than shorts_per_week Shorts went out in the trailing seven days. The Mac batch shelves nightly, so one or two dry days can be a night it had nothing new to cut.",
+      "max_consecutive": 2,
+      "escalation": "A third consecutive dry day with the week below target means the Mac is not shelving Shorts. Read loop/state/stops/<week>-mac-batch.json and any open '[mac-batch] <CODE>' issue; the stop's first line gives the trailing-7-day count, the target and the last date a Short was shelved."
     },
     "NOTHING_TO_PREPARE": {
       "why": "Every queued row already has its frozen work copy. The stage is finished, not blocked; it acts again the moment the ranking admits a new topic.",

@@ -163,10 +163,14 @@ def heartbeat(lane: str, ok: bool, **facts) -> dict:
 
 def push(paths: list[str], message: str) -> tuple[bool, str]:
     """Commit exactly these paths (if changed) and push. Never `git add -A`."""
-    existing = [p for p in paths if (ROOT / p).exists()]
+    # A stop file a stage CLEARED is gone from disk but still tracked; its
+    # deletion must be committed too, or origin keeps a resolved stop forever.
+    tracked = {p for p in paths
+               if _git("ls-files", "--error-unmatch", "--", p).returncode == 0}
+    existing = [p for p in paths if (ROOT / p).exists() or p in tracked]
     if not existing:
         return True, "nothing to commit"
-    _git("add", "--", *existing)
+    _git("add", "-A", "--", *existing)
     if _git("diff", "--cached", "--quiet").returncode == 0:
         return True, "nothing changed"
     c = _git("commit", "-q", "-m", message)
