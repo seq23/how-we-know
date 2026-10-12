@@ -3,99 +3,103 @@
 **Status:** DRAFT — OWNER CONFIRMATION AND MASTER WATCH REQUIRED
 **Domain:** deep-sea-ocean-science
 **Opening:** cold-open-payoff
-**Word count:** ~1760
-**Estimated narration:** 12m 10s at 144.58 WPM (measured, loop/durations.py)
+**Word count:** ~1720
+**Estimated narration:** 11m 54s at 144.58 WPM (measured, loop/durations.py)
 
 ## YouTube title
 
-Hydrothermal vents release seawater up to 400 °C — and how we know
+Hydrothermal vents pour out seawater up to 400°C, still liquid — and how we know
 
 ## Direct-answer lock
 
-A hydrothermal vent is an opening in the seafloor where seawater that has soaked down into hot rock comes back out, heated and loaded with dissolved minerals. NOAA Ocean Exploration reports this fluid can reach around 400 degrees Celsius, and it stays liquid under deep-sea pressure. Its chemistry feeds ecosystems built on chemosynthesis, where microbes, not sunlight, make the first food.
+A hydrothermal vent is an opening in the seafloor where seawater that has soaked down into hot rock flows back out, heated and loaded with dissolved minerals. NOAA puts the hottest vent fluid at up to 400 degrees Celsius, and it stays liquid because deep-ocean pressure raises the boiling point. Many vents support ecosystems that run on chemosynthesis, where microbes draw energy from chemicals such as hydrogen sulfide instead of sunlight.
 
 ## Narration
 
 ### Cold open
 
-{{stat: 400 | degrees Celsius | Vent fluid at its hottest | NOAA Ocean Exploration}}
-A hydrothermal vent is an opening in the seafloor where seawater that has soaked down into hot rock comes back out, heated and loaded with dissolved minerals. NOAA Ocean Exploration reports that this water can reach around 400 degrees Celsius, and it comes out as liquid. That figure is the easy part. It does not tell you why anyone cares. The chemistry in that water feeds whole communities of animals whose food chain starts with chemical energy instead of sunlight. The people who found the first vent were looking for heat. Nobody on board expected life.
+{{stat: 400 | degrees Celsius | hottest vent fluid, still liquid | NOAA}}
+A hydrothermal vent is an opening in the seafloor where seawater that has soaked down into hot rock flows back out, heated and loaded with dissolved minerals. NOAA puts the hottest of that fluid at up to 400 degrees Celsius, and on the deep seafloor it stays liquid. That number tells you how hot a vent can run. It does not tell you why the water refuses to boil, where the heat comes from, or how whole communities of animals live beside it in total darkness. Those answers were assembled piece by piece, from instruments, samples, and one discovery nobody planned for.
 
 ### Title card
 
 What is a hydrothermal vent?
 
-### A vent is the exit of a loop through hot rock
+### Geologists predicted vents before anyone saw one
 
-{{steps: How a vent works | seeps down through cracks | heated near magma | strips minerals from rock | rises and erupts | >vent is the exit}}
-Start at a mid-ocean ridge, where two tectonic plates pull apart and molten rock sits relatively close beneath the seafloor. The new crust there is cracked and porous. Cold seawater seeps down through cracks, sometimes deep into the rock. On the way it is heated near magma, and hot water dissolves minerals far more aggressively than cold water. It strips minerals from rock: metals such as iron, copper and zinc, along with sulfur that ends up as hydrogen sulfide. It loses its dissolved oxygen and turns acidic. Hot water is lighter than the cold water around it, so it rises and erupts back out through the seafloor. The vent is the exit, the place where that hidden plumbing breaks the surface.
+{{timeline: 1977=Galápagos Rift | 1979=East Pacific Rise}}
+Vents were expected before they were found. By the time of the first expedition, the theory of seafloor spreading held that new ocean crust forms along mid-ocean ridges, where tectonic plates pull apart and molten rock rises close to the seafloor. If that was right, cold ocean water should be seeping into the young, cracked rock, warming up, and escaping somewhere. Instruments towed above the Galápagos Rift had recorded faint pulses of warmer water. So in 1977, scientists dove in the submersible Alvin, operated by the Woods Hole Oceanographic Institution, to find the source. They found the warm springs. Around them they also found something the expedition had not been designed to study: dense clusters of clams, mussels and tube worms, thriving in the dark.
 
-{{contrast: hydrothermal vent | is=the exit of a circulation loop | not=a volcano erupting lava}}
-It helps to be precise about what that makes a vent. It is not a volcano erupting lava, even though it sits on volcanic ground and depends on volcanic heat. It is the exit of a circulation loop, closer in spirit to a hot spring than to an eruption. That distinction shapes how scientists study it. A loop has an inflow, a heating zone and an outflow, and only the outflow can be visited directly. Everything about the deep plumbing, including how far down the water goes and how long it stays there, has to be inferred from what comes out. You will hear that limit again before the end.
+{{text}}
+The team was made up mostly of geologists and geochemists, and the biology arrived as a surprise. Two years later, in 1979, Alvin dives on the East Pacific Rise found something hotter. Tall mineral chimneys were pouring out what looked like thick black smoke. The temperature probe the team carried was not built for it; by WHOI's account, part of it melted. Those first black smokers turned a predicted phenomenon into one of the most closely studied features of the deep ocean.
 
-### Pressure, not mystery, keeps the water liquid
+### A vent is the exit of plumbing you cannot see
 
-{{define: boiling point | the temperature at which water turns to vapour | rises as pressure rises | NOAA Ocean Exploration}}
-The boiling point is the temperature at which water turns to vapour, and it is not fixed. It rises as pressure rises. Most known vents lie on the deep seafloor, under a column of ocean thousands of metres tall, and the weight of that water pushes the boiling point far above anything you would see in a kitchen. So fluid near 400 degrees Celsius can pour out as liquid. A short distance away, the surrounding deep water is only a few degrees above freezing. That steep contrast is measured directly. Submersibles and remotely operated vehicles carry temperature probes that are pushed into the opening of a vent, and the reading is taken where the fluid first emerges. Move the probe a little way into the surrounding water and the number collapses, because vent fluid mixes and cools almost instantly.
+{{steps: How vent fluid forms | seawater seeps down | heated by magma | dissolves metals and sulfide | rises and exits | >much of what it carries precipitates}}
+Here is the sequence as geochemists reconstruct it. First, cold seawater seeps down through cracks in the crust near a ridge. Deeper in, that water is heated by magma sitting below the seafloor. Hot water under pressure is chemically aggressive. As it moves through rock it gives up some of its own dissolved ingredients and dissolves metals and sulfide in their place: iron, copper, zinc, and hydrogen sulfide among them. Hot fluid is buoyant, so it rises and exits through the seafloor, often along the same fractures that let it in.
 
-### The first vent was found by testing a prediction about heat
+{{define: black smoker | a vent chimney releasing a cloud of metal sulfide particles | not smoke in any burning sense | NOAA}}
+When that fluid meets bottom water just above freezing, much of what it carries precipitates almost instantly. That is what the black smoke is. NOAA describes it as a cloud of mineral particles, mostly metal sulfides, not smoke in any burning sense. Some of those particles settle around the opening, and layer by layer they build a hollow chimney. Chimneys grow, crack, topple and regrow. Where hot fluid has already mixed with seawater underground, the vent runs cooler, carries lighter-colored minerals, and is called a white smoker. Other vents build no chimney at all. They appear only as shimmering water rising from cracks, called diffuse flow.
+
+{{chain: Inferring the hidden plumbing | vent fluid collected | almost stripped of magnesium | seismic surveys | laboratory experiments | >the water reacted with hot rock}}
+No one has watched seawater travel down through the crust, so that leg of the loop is inferred. The strongest evidence is chemical. Vent fluid collected by submersibles and robotic vehicles comes up almost stripped of magnesium, an element seawater normally carries in abundance. The simplest explanation is that the water reacted with hot rock along the way and left its magnesium behind in new minerals. Seismic surveys that image magma beneath ridges, and laboratory experiments that heat seawater with crushed basalt, point to the same loop.
+
+### The water stays liquid because pressure moves the boiling point
+
+{{contrast: boiling point | is=set by pressure | not=fixed at 100 degrees Celsius}}
+At sea level, pure water boils at 100 degrees Celsius. That is not a property of water alone. It is a property of water under the weight of one atmosphere of air. On the deep seafloor, the whole ocean above presses down, and the pressure there is many times higher than at the surface. The boiling point is set by pressure, and it climbs with it. That is why fluid near 400 degrees can leave a chimney as a liquid rather than as a burst of steam.
+
+{{text}}
+Pressure raises the bar, but it does not remove it. Under some combinations of temperature and depth, vent fluid does boil underground, or separates into a lighter, vapor-like phase and a dense, salty brine. Scientists detect this after the fact, in the saltiness of what comes out. Some vents release fluid fresher than seawater and others release fluid saltier than seawater, and that difference is a fingerprint of separation happening somewhere below. At the hottest and deepest extremes, the distinction between liquid and gas stops being meaningful at all.
+
+### Vent life runs on chemistry, not sunlight
+
+{{light}}
+Almost every food web you know begins with photosynthesis. Sunlight fades quickly with depth, and at most vents there is none at all. Life there runs instead on chemosynthesis. Microbes capture energy from chemical reactions, most famously by oxidizing the hydrogen sulfide in vent fluid, and use that energy to build sugars from carbon dioxide. Some live free in the water or on rock. Others live inside animals. Either way, these microbes are the base of the vent food web.
+
+{{anatomy: Giant tube worm | red plume@0.5,0.15 | trophosome@0.5,0.55 | white tube@0.5,0.85}}
+The giant tube worm, Riftia pachyptila, shows how far that partnership can go. Adults have no mouth and no gut. Their red plume, colored by hemoglobin, takes up oxygen, carbon dioxide and hydrogen sulfide from the surrounding water. The blood carries those to an organ called the trophosome, packed with symbiotic bacteria that run the chemistry and feed the worm from within. The animal itself lives inside a tough white tube anchored to the rock.
+
+{{chain: How we know the worm is fed by bacteria | dissection | microscopy | enzyme measurements | carbon signatures | >the worm is fed by its symbionts}}
+Biologists did not take that arrangement on trust. Several lines of evidence agree. Dissection showed there is no mouth and no gut. Microscopy showed bacteria inside the trophosome, densely packed in its cells. Enzyme measurements found the chemical machinery for fixing carbon using energy from sulfide. And carbon signatures in the worm's tissue match carbon fixed by those bacteria, not carbon from food sinking down from the surface. Any one of these could be questioned on its own. Together, they show the worm is fed by its symbionts.
+
+{{text}}
+Vent communities also differ from ocean to ocean. Giant tube worms dominate many Pacific sites. On the Mid-Atlantic Ridge, swarming shrimp crowd the chimneys instead. In the Indian Ocean, the scaly-foot snail grows a shell layered with iron sulfide. Biologists explain these differences partly by how larvae disperse between vent fields that can be far apart, and partly by local chemistry. How exactly animals colonize a newly formed vent remains an active question.
+
+### Some vents run on rock chemistry instead of magma
 
 {{timeline: 1977=Galápagos Rift | 1979=East Pacific Rise | 2000=Lost City}}
-In 1977, scientists diving in the submersible Alvin, operated by Woods Hole Oceanographic Institution, reached the floor of the Galápagos Rift in the eastern Pacific. They were not there by chance. Geologists had worked out a heat budget for spreading ridges. The heat flowing up through young seafloor was lower than models of cooling crust predicted, which suggested that circulating seawater was carrying the missing heat away. Towed instruments near the bottom had recorded small temperature spikes in the water. The dive was a test of that prediction, and the prediction held. Warm water was shimmering out of cracks in the young lava.
+Black smokers are not the whole story. In 2000, researchers exploring near the Mid-Atlantic Ridge came upon a field of pale, towering chimneys that became known as Lost City. NOAA Ocean Exploration has documented the site with remotely operated vehicles. Its chimneys are made of carbonate minerals, not metal sulfides, and its fluid is far cooler than a black smoker's and strongly alkaline rather than acidic.
 
-{{chain: How the first vent was found | heat budget | temperature spikes | dive was a test | >life nobody predicted}}
-What the prediction did not include was the clams, mussels and tubeworms clustered around that warm water, in a place far too deep for anything to grow on sunlight. This is worth slowing down on, because it shows how the knowledge was built. The heat budget came first, then the temperature spikes, then a dive designed to test a specific idea. The geology was confirmed by design. The biology arrived as life nobody predicted, and explaining it became a separate research effort that took years of sampling and laboratory work. One expedition settled where the vents were. It could not settle how the animals lived.
+{{contrast: Lost City | is=driven by rock chemistry | not=driven by magma}}
+The heat source is different too. Lost City sits on mantle rock that has been pushed up close to the seafloor. When seawater reacts with that rock, in a process called serpentinization, the reaction itself releases heat, along with hydrogen and methane. So Lost City is driven by rock chemistry, not driven by magma. That matters because it means vents can exist away from active volcanic centers, and it gives microbes a different menu of chemical energy to live on.
+
+### Vents shape more than the animals living on them
+
+{{sources: Who publishes the evidence | NOAA=vent temperatures and expeditions | WHOI=Alvin and the 1977 dives | Smithsonian=deep-sea life}}
+Vents also affect the ocean as a whole. Seawater is thought to circulate through hydrothermal systems over very long timescales, and in the process vents add some elements to the ocean and remove others. Plumes of dissolved iron from vents have been traced far from their source. The minerals left behind form deposits rich in copper, zinc and other metals, which is why vents interest economic geologists as well as biologists. Much of this work is published by public bodies: NOAA reports on vent temperatures and expeditions, WHOI on Alvin and the 1977 dives, and the Smithsonian on deep-sea life.
+
+{{text}}
+Vents also sit at the center of one of science's open questions. Some researchers propose that life on Earth began at hydrothermal vents, where chemical energy and mineral surfaces were both available, and alkaline systems like Lost City feature heavily in that argument. Others favor shallow pools on land, where repeated drying and wetting can concentrate molecules. Laboratory experiments support pieces of both ideas. Neither has been demonstrated, and you should treat any confident claim either way as ahead of the evidence.
 
 ### Producer POV
 
 [HUMAN] Space is fascinating, but Earth bothers me more. We're already here and still don't understand huge parts of it.
 
-### The black in a black smoker is minerals, not smoke
-
-{{anatomy: Black smoker | black plume@0.5,0.2 | chimney wall@0.5,0.6 | seafloor@0.5,0.9}}
-Two years later, in 1979, Alvin dove on the East Pacific Rise off Mexico and found vents far hotter than the ones at the Galápagos. Mineral chimneys stood on the seafloor with a black plume pouring from their tops. These became known as black smokers. The black is not smoke. When hot, acidic, metal-rich fluid meets near-freezing seawater, dissolved metals combine with sulfide and drop out instantly as fine mineral particles, and those particles are what cloud the water. The chimney wall forms the same way. Minerals crystallise wherever hot meets cold, layer on layer, so the structure builds upward around its own outflow.
-
-{{contrast: black plume | is=fine mineral particles | not=smoke}}
-How is that known rather than assumed? Samples. Submersibles and robotic vehicles break off pieces of chimney and bring them to the surface, and particles can be filtered straight out of the plume. In the laboratory the material identifies as metal sulfides, the same family of minerals found in some ore deposits on land. Not every vent is that dramatic. Cooler vents release paler fluid, sometimes called white smokers, where different minerals precipitate. The colour is a readout of chemistry and temperature, and the chimney itself is a record, built from whatever the fluid was carrying as it formed.
-
-### Vent food webs start with chemistry, not light
-
-{{define: chemosynthesis | making food using energy from chemical reactions | still needs oxygen from the surface | Smithsonian Ocean}}
-The animals at the Galápagos Rift needed an energy source, and sunlight could not be it. The answer is chemosynthesis, which means making food using energy from chemical reactions instead of light. At vents, microbes take hydrogen sulfide from the fluid and oxidise it, then use the energy released to turn carbon dioxide into organic matter. Smithsonian Ocean's deep-sea coverage explains this process for a general audience, with microbes playing the role that plants play on land. There is a catch worth stating. That reaction uses oxygen dissolved in seawater, and that oxygen was produced by photosynthesis near the surface. So the system still needs oxygen from the surface. Vent life is powered by chemistry, but it is not fully independent of the sunlit world.
-
-{{checklist: The giant tubeworm | +no mouth or gut | +bacteria packed inside | +enzymes for fixing carbon | +carbon signature unlike surface food}}
-The clearest case is the giant tubeworm, Riftia pachyptila. As an adult it has no mouth or gut. Its red plume takes up chemicals from the water, and inside its body is an organ with bacteria packed inside, densely enough that they make up much of the tissue. Researchers then found enzymes for fixing carbon in that tissue, the molecular machinery that chemosynthetic bacteria use. And when the worm's tissue is analysed for its carbon, it carries a carbon signature unlike surface food, the chemical fingerprint of a different starting point. Each line of evidence alone could be argued with. An animal with no gut could, in principle, absorb food through its skin. Together, they leave little room. The worm is fed by the bacteria it houses.
-
-### Not every vent runs on magma
-
-{{contrast: Lost City | is=alkaline and carbonate | not=acidic and sulfide}}
-In 2000, researchers working on the Mid-Atlantic Ridge came across a field of pale chimneys they named Lost City. It broke the pattern. It sits away from the volcanic centre of the ridge, and its heat does not come mainly from magma. It comes from reactions between seawater and mantle rock, which release heat along with hydrogen and methane. Its fluids are alkaline and carbonate, not acidic and sulfide, and they are far cooler than a black smoker's. Its chimneys are built from carbonate minerals, white instead of black. NOAA Ocean Exploration has sent expeditions back to study it. Lost City showed that hydrothermal venting is a family of processes, not one recipe.
-
-{{text}}
-That family matters for one of the largest open questions in science. Some researchers have proposed that alkaline vents like Lost City offer conditions in which the chemistry of early life could have begun, with natural energy differences across thin mineral walls. Others favour different settings entirely, including pools on land. This is a hypothesis under active debate, not a finding. Vents are a candidate, and the honest position is that the origin of life has not been traced to them or to anywhere else.
-
-### Vents are usually detected from a distance before they are seen
-
-{{steps: How a vent is located | detect the plume | trace it to a source | map the seafloor | dive to confirm | >seen, then sampled}}
-Finding a new vent rarely starts with a camera. Vent plumes rise from the seafloor and spread sideways through the water, carrying a signal that instruments can read long before anyone sees a chimney. The first job is to detect the plume. Sensors lowered on cables or carried by robotic vehicles look for slight warmth, cloudy particles and chemical tracers, including a rare form of helium that originates in the mantle. The second job is to trace it to a source, following the signal as it strengthens. Then crews map the seafloor in fine detail, often with autonomous vehicles, and finally they dive to confirm, with a submersible or a remotely operated vehicle. Only then is a vent seen, then sampled.
-
-{{sources: Who builds the evidence | MBARI=seafloor mapping vehicles | Woods Hole Oceanographic Institution=operates Alvin | NOAA Ocean Exploration=expeditions}}
-That workflow is shared across institutions. MBARI, the Monterey Bay Aquarium Research Institute, uses seafloor mapping vehicles to chart vent fields in fine detail. Woods Hole Oceanographic Institution still operates Alvin, the submersible behind the first vent dives. NOAA Ocean Exploration runs expeditions that survey poorly known stretches of seafloor. Each step narrows the search, and each one relies on a different kind of evidence: chemistry in the water, shape on the map, and finally direct observation.
-
 ### What to notice in the edit
 
-{{text}}
-Notice how often this story has two halves. The vents themselves were predicted from a heat budget and confirmed by a dive. The animals were not predicted at all, and had to be explained after the fact through dissection, enzyme work and chemical fingerprints. Notice also that almost every fact here was gathered at the exit of the loop, at the opening in the seafloor. Temperature, minerals, microbes and plumes are all measured where the fluid comes out, because that is the only place anyone can reach.
+{{ambient}}
+As you watch vent footage, remember that every image is lit by the vehicle itself. Without its lamps the scene would be black, so the colors you see are the colors of artificial light on rock and tissue. The black smoke looks slow and soft, but it is fluid hot enough to damage instruments not built for it. Watch, too, for the shimmer above the cooler cracks. That ripple is diffuse flow, warm water bending the light as it rises, and many vent animals live in that milder water rather than in the hottest jets.
 
 ### Evidence limit
 
-{{checklist: What the evidence settles | +how vents form | +what feeds vent life | -how many vents exist | ?how life began}}
-Here is what the evidence does not establish. It explains how vents form and what feeds vent life, but it does not tell you how many vents exist. Only a fraction of the global mid-ocean ridge system has been surveyed closely enough to find them, and estimates of the total vary widely. The deep plumbing beneath any single vent is inferred, not observed. Vents also change. Some shut down and new ones open, so any map is a snapshot. The figure of around 400 degrees Celsius describes the hottest fluid at the opening, not a typical vent. And whether vents had anything to do with how life began remains an open question.
+{{checklist: What the evidence settles | +vent fluid stays liquid under pressure | +tube worms are fed by symbionts | -how many vents exist | ?where life began}}
+This evidence firmly establishes some things. First, vent fluid stays liquid under pressure, which follows from basic physics and is confirmed by direct measurement. Second, tube worms are fed by symbionts, shown by several independent lines of evidence. Other things remain open. No one knows precisely how many vents exist. The mid-ocean ridge system is enormous, only a small fraction has been surveyed closely, and estimates vary widely. Vents can switch on and off as eruptions and earthquakes reshape the plumbing, so any map is a snapshot. And where life began is not settled by anything in this video.
 
 ### Closing
 
-{{ambient}}
-A hydrothermal vent is seawater completing a loop through hot rock and returning changed. The heat was found because someone predicted it. The life around it was found because someone went to look, and was willing to be surprised.
+{{text}}
+A hydrothermal vent is seawater returning from a journey through hot rock, carrying the crust's chemistry back into the ocean. We know its temperature because instruments were sent into it, its plumbing because of what is missing from its water, and its life because biologists took that life apart and looked. Much of the seafloor where such vents could exist has still never been seen.
 
 ## Editorial gate
 
@@ -104,28 +108,28 @@ A hydrothermal vent is seawater completing a loop through hot rock and returning
 - Humanized cold open: PRESENT
 - First-person producer observation: FROM POV BANK (pov-077)
 - Evidence uncertainty or limitation: COMPLETE
-- Structural variation: follows the fluid's own loop, from inflow to exit, then splits the discovery into a predicted half (heat) and an unpredicted half (life)
+- Structural variation: discovery-first history, then the inferred underground loop, then physics, biology and a magma-free counterexample, closing on what remains unmapped
 - Number-level source audit: COMPLETE
 
 ## Chapters
 
 - 00:00 Cold open
-- 00:38 Title card
-- 00:41 A vent is the exit of a loop through hot rock
-- 02:15 Pressure, not mystery, keeps the water liquid
-- 03:15 The first vent was found by testing a prediction about heat
-- 04:40 Producer POV
-- 04:48 The black in a black smoker is minerals, not smoke
-- 06:10 Vent food webs start with chemistry, not light
-- 07:50 Not every vent runs on magma
-- 09:10 Vents are usually detected from a distance before they are seen
-- 10:35 What to notice in the edit
-- 11:10 Evidence limit
-- 11:50 Closing
+- 00:42 Title card
+- 00:47 Geologists predicted vents before anyone saw one
+- 02:12 A vent is the exit of plumbing you cannot see
+- 04:10 The water stays liquid because pressure moves the boiling point
+- 05:25 Vent life runs on chemistry, not sunlight
+- 07:25 Some vents run on rock chemistry instead of magma
+- 08:30 Vents shape more than the animals living on them
+- 09:45 Producer POV
+- 09:55 What to notice in the edit
+- 10:35 Evidence limit
+- 11:15 Closing
 
 ## Sources
 
+- NOAA: What is a hydrothermal vent? (NOAA Ocean Service) — https://oceanservice.noaa.gov/facts/vents.html
 - NOAA Ocean Exploration: Ocean Facts — https://oceanexplorer.noaa.gov/facts/
+- Woods Hole Oceanographic Institution (WHOI): home and research — https://www.whoi.edu/
 - Smithsonian Ocean: The Deep Sea — https://ocean.si.edu/ecosystems/deep-sea/deep-sea
-- Woods Hole Oceanographic Institution: WHOI home — https://www.whoi.edu/
-- MBARI (Monterey Bay Aquarium Research Institute): MBARI home — https://www.mbari.org/
+- MBARI (Monterey Bay Aquarium Research Institute): home and research — https://www.mbari.org/

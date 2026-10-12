@@ -1,6 +1,6 @@
 {
   "week": "2026-W42",
-  "generated": "2026-10-12T16:10:45+00:00",
+  "generated": "2026-10-12T16:36:12+00:00",
   "videos_per_week": 4,
   "breaker": "tripped",
   "validators": [
@@ -229,7 +229,7 @@
     },
     {
       "validator": "V30 cloud-visibility",
-      "examined": 279,
+      "examined": 281,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -349,11 +349,11 @@
     },
     {
       "validator": "V45 nothing-waits-on-owner",
-      "examined": 143,
+      "examined": 144,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "stop kinds by class: automated 44, automated/error 1, error 82, owner_secret 16"
+        "stop kinds by class: automated 45, automated/error 1, error 82, owner_secret 16"
       ],
       "stops": []
     },

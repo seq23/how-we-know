@@ -3,94 +3,94 @@
 **Status:** DRAFT — OWNER CONFIRMATION AND MASTER WATCH REQUIRED
 **Domain:** materials-and-manufacturing
 **Opening:** cold-open-payoff
-**Word count:** ~1900
-**Estimated narration:** 13m 8s at 144.58 WPM (measured, loop/durations.py)
+**Word count:** ~1740
+**Estimated narration:** 12m 2s at 144.58 WPM (measured, loop/durations.py)
 
 ## YouTube title
 
-Microchips are designed as code before silicon exists — and how we know
+Microchips are designed as written text, not drawn by hand — and how we know
 
 ## Direct-answer lock
 
-Microchips are designed almost entirely as software. Engineers describe a circuit's behaviour in a hardware description language. Automated tools then turn that description into logic gates, and then into the physical geometry of billions of transistors. Simulation, formal proof and rule checks test the result before anything is manufactured. The Intel 4004 of 1971 held about 2,300 transistors and was laid out by hand, but modern chips are far too large for that, so the answer is the automated design flow itself rather than a drawing board.
+Microchips are designed mostly as text: engineers describe a chip's behaviour in a hardware description language such as Verilog or VHDL, and software tools translate that description into logic gates and then into the geometric layout of billions of transistors. Most of the effort goes not into drawing the chip but into proving the design correct before anything is manufactured, through simulation, formal proofs and checks against the factory's own rules.
 
 ## Narration
 
 ### Cold open
 
-{{stat: 2,300 | transistors | Intel 4004, laid out by hand | IEEE}}
-Microchips are designed almost entirely as software. Engineers write down what a circuit should do in a hardware description language. Automated tools translate that description into logic gates, then into the physical geometry of billions of transistors, and simulation checks all of it before anything is manufactured. The past makes the point. IEEE's histories record that the Intel 4004, released in 1971, held about 2,300 transistors, and that it was laid out by hand. Nobody lays out billions by hand. So the interesting question is not who draws a modern chip. The question is how anyone can know that a design which has never physically existed will work on the day it finally does.
+{{contrast: Chip design | is=text translated by software | not=drawn by hand}}
+Microchips are designed mostly as text. Engineers describe a chip's behaviour in a hardware description language such as Verilog or VHDL, and software tools translate that description into logic gates and then into the geometric layout of billions of transistors. Both languages are published as standards by the IEEE. So the answer to who draws the chip is, largely, nobody. It is not drawn by hand. What that answer does not settle is how anyone knows the result will work. Nobody can inspect billions of transistors before the factory runs, and a mistake found afterwards is expensive. The real story of chip design is the story of how that confidence is built.
 
 ### Title card
 
 How are microchips designed?
 
-### A chip begins as a description of behaviour, not a picture
+### A chip begins as a description of what it does
 
-{{contrast: register-transfer level | is=a description of how data moves between registers on each tick of the clock | not=a drawing of transistors}}
-The starting point is a specification. It sets out what the chip must compute, how fast, and within what power budget. From there, designers write at what is called the register-transfer level. A register is a small block of storage. The description says, in effect: on each tick of the clock, take the values in these registers, combine them this way, and store the result over there. So it is a description of how data moves between registers on each tick of the clock. It is not a drawing of transistors, and it does not say where anything sits on the silicon. That separation is deliberate. A person can reason about data moving between registers. A person cannot reason about billions of individual switches. The whole design method rests on letting humans work at the level where their judgement is reliable, and letting software handle the levels where it is not.
-
-{{define: hardware description language | text that describes circuit behaviour and structure, which tools can simulate and synthesise | it is not a program that runs on a processor | IEEE}}
-The text itself is written in a hardware description language. The two most widely known are Verilog and VHDL, and IEEE maintains both as formal standards. That matters for a practical reason. A description has to mean exactly the same thing to every tool that reads it, from different vendors, years apart. A hardware description language looks a little like ordinary programming code, but it is not a program that runs on a processor. Lines that appear one after another on the page may describe pieces of hardware that all operate at the same instant. This is the first place where intuition from software misleads people. The text describes structure and timing, and the same file serves two purposes. It can be simulated, to see what the circuit would do, and it can be synthesised, to build the circuit itself.
-
-### Synthesis turns code into gates a factory already knows how to make
-
-{{steps: From description to gates | register-transfer level | synthesis | standard cells | >timing constraints decide what counts as done}}
-Synthesis is the step that converts the register-transfer level description into a netlist, which is a list of logic gates and the wires connecting them. The gates are not invented fresh for each chip. The manufacturer, called the foundry, supplies a library of standard cells. These are pre-designed, pre-measured building blocks such as basic logic gates and storage elements. Each one is characterised for how fast it switches and how much power it draws under that foundry's process. The synthesis tool's job is to find an arrangement of standard cells that does what the description says. There are usually many correct arrangements, and they differ in size, speed and power, so synthesis is really a search. The tool tries to satisfy goals the engineers have set, and the most important of those goals are timing constraints.
+{{define: Hardware description language | text that describes structure and behaviour that exist all at once | it does not describe steps to be run one after another | IEEE}}
+Start with the language, because that is where the design actually lives. A hardware description language looks like code, and engineers type it in an editor like any programmer. But it does not describe steps to be run one after another. It describes structure and behaviour that exist all at once: these signals connect here, this value updates on every tick of the clock, this block waits for that one. The two dominant languages, Verilog and VHDL, along with an extended form called SystemVerilog, are published as standards by the IEEE. That is how every tool vendor and every design team can agree on what a given line of text means. The agreement is not a detail. Without a shared, written definition of the language, a design could mean one thing in the simulator and something slightly different in the tool that builds it.
 
 {{text}}
-Timing constraints decide what counts as done. A clock signal sets the rhythm of the chip. Every signal has to travel from one register, through its gates, to the next register before the next tick arrives. If one path is too slow, the circuit computes the wrong answer whenever that path is exercised. Static timing analysis checks every such path mathematically, using the delays measured for each standard cell. It does not wait to see whether a simulation happens to trip over the slow one. This is one of the clearest examples of the design flow trading observation for exhaustive calculation.
+Most designs are written at what engineers call the register-transfer level. A register is a small store that holds a value. The description says how values move between registers, and what logic transforms them on the way, at each edge of the clock. Nothing at this level says where a transistor sits or how long a wire is. That separation is deliberate. It lets a team reason about what the chip should compute before anyone decides what it physically looks like, and it lets the same description be rebuilt for a different factory later.
 
-### Placement and routing are optimisation problems handed to algorithms
+### Synthesis turns the description into gates the factory already knows how to make
 
-{{chain: From netlist to geometry | placement | routing | parasitic extraction | >timing is checked again}}
-A netlist says which gates connect to which. It says nothing about where they go. Placement assigns every standard cell a position on the die. Routing then draws the metal wires that join them, across many stacked layers of interconnect. Neither step is done by hand. Both are optimisation problems far too large to solve perfectly, so commercial tools use methods that find very good solutions rather than provably best ones. Once wires exist, they have real length, resistance and capacitance, and those properties slow signals down. A step called parasitic extraction estimates them from the geometry. Then timing is checked again with the new delays included. If the checks fail, engineers adjust the placement, the constraints or the design itself, and the loop repeats. Much of a chip's schedule is spent going round that loop.
+{{chain: Logic synthesis | register-transfer description | standard cells | >netlist}}
+The next step is called logic synthesis, and it is done by software. The synthesis tool reads the register-transfer description and maps it onto a library of standard cells. A standard cell is a small, pre-designed circuit — a gate that performs AND, a gate that inverts a signal, a storage element called a flip-flop — drawn and characterised in advance for one specific manufacturing process. The factory, usually called a foundry, or a library vendor working with it, has measured how fast each cell switches and how much power it draws under different conditions of voltage and temperature. The output of synthesis is a netlist: a list of cells and the wires that connect them.
 
-{{sources: Who shaped the method | IEEE=standardises Verilog and VHDL | MIT=a course built on that method}}
-This layered way of working has a history. In the late nineteen-seventies, Carver Mead and Lynn Conway set out a method that separated system design from the details of a particular fabrication process. It used simplified layout rules, so designers did not need to be device physicists. Lynn Conway taught a course at MIT built on that method, and the students' designs were gathered and fabricated together. Today IEEE standardises Verilog and VHDL, the languages at the top of the flow, so that tools from different companies agree. The point of this history is not who deserves credit. The point is that modern chip design is a deliberate stack of abstractions, each one checked against the one below it.
+{{contrast: Equivalence checking | is=a proof for every input | not=a test that tries examples}}
+Here is the first place the "how we know" question bites. Synthesis does not simply translate; it optimises, rewriting logic to be smaller or faster. So the netlist is not a line-by-line copy of what the engineer wrote. To confirm the two still mean the same thing, teams run equivalence checking, a formal method that proves mathematically that the netlist and the original description produce identical outputs for every input. It is not a test that tries examples. It is a proof for every input, and that difference matters for everything that follows.
 
 ### Producer POV
 
 [HUMAN] How do we know an animal behaves a certain way when we've seen it three times?
 
-### Most of the work is proving the design is right
+### Verification samples behaviour, then proves what it can
 
-{{contrast: verification | is=evidence the design matches its specification | not=proof the chip will be manufactured correctly}}
-That question came from the producer's notes on a different subject, animal behaviour, but it is exactly the right question here. A simulation is an observation. You feed the design a set of inputs, watch what it does, and compare that with what the specification says it should do. Seeing it behave correctly a few times proves very little. A chip has an astronomically large number of possible input sequences, and a fault might hide in one nobody tried. So verification teams do not just run tests. They also measure what their tests have exercised. Coverage metrics record which lines of the description ran, which conditions were hit, and which corner cases were reached. Verification produces evidence the design matches its specification. It is not proof the chip will be manufactured correctly, which is a separate problem handled later. Engineers across the industry describe verification as taking more effort than writing the design itself. How much more varies by project and by survey.
+{{checklist: Verification evidence | +testbench | +reference model | +coverage | ?states never visited}}
+That question, asked about animals, is exactly the right one to ask about chips. A modern processor has far more possible internal states than any simulation could ever visit. So no one observes a chip's behaviour exhaustively. Verification engineers build a testbench, a surrounding program that feeds the design inputs and checks its outputs against a reference model of what should happen. On many teams verification takes more effort than writing the design itself, though published estimates of the split vary and this script will not quote one. Engineers generate constrained random stimulus, enormous numbers of plausible but unplanned input sequences, because bugs hide in combinations no one thought to write by hand. Then they measure coverage: which lines executed, which states were reached, which scenarios the plan said must occur.
 
-{{text}}
-Where observation is not enough, there is a second tool. Formal verification uses mathematical methods to prove that a property holds for every possible input, not just the ones tried. For example, an engineer might state that two requests can never be granted the same resource at once. A formal tool either proves it, or returns a specific counterexample showing how it fails. Formal methods do not scale to everything on a large chip, so they are aimed at the parts where a hidden error would be most costly. Together, these give the honest answer to the producer's question. You watch many times, you measure how much you have watched, and where you can, you stop watching and prove.
+{{steps: Verification | simulation | coverage | formal verification | emulation | >each method covers a gap the others leave}}
+Coverage is the honest part. It tells the team what was exercised and, by subtraction, what was not. Where simulation cannot reach, formal verification steps in. A tool is given a property — this buffer never overflows, these two requests are never granted at once — and searches for any sequence of inputs that breaks it. If none exists, the property is proven within the bounds the tool was given. For large designs, teams also load the description onto emulation hardware, or onto reconfigurable chips called FPGAs, which run the logic far faster than simulation and let real software boot on a design that does not physically exist yet. Each method covers a gap the others leave.
 
-### Physical rules are checked before any mask is made
+### Physical design turns a list of gates into geometry
 
-{{checklist: Sign-off checks before tape-out | +design rule checking | +layout versus schematic | +timing sign-off | ?whether the foundry's models match real silicon}}
-Before a design leaves the company, it goes through sign-off. Design rule checking compares the finished geometry against the foundry's rules. These include minimum widths, minimum spacings, and many subtler constraints that the manufacturing process requires. Layout versus schematic confirms that the shapes actually drawn form the same circuit as the netlist, with nothing shorted and nothing missing. Timing sign-off repeats the timing analysis across the full range of conditions the chip is specified for. That includes variations in temperature, supply voltage and the manufacturing process itself. Each of these is a mechanical check against a model. None of them can settle whether the foundry's models match real silicon. That depends on the foundry's measurements of its own process, and the design team largely has to trust them.
+{{chain: Physical design | floorplanning | placement | clock tree synthesis | routing | >metal wires that connect everything}}
+Only now does the chip acquire a shape. Physical design begins with floorplanning: deciding where large blocks such as memories and processor cores will sit, and how power reaches them. Placement software then positions every standard cell from the netlist. Clock tree synthesis builds the network that delivers the clock signal so that it arrives at every flip-flop at nearly the same moment. Routing draws the metal wires that connect everything, stacked in many layers above the transistors. All of this is automated, because the number of cells is far too large for hands, but engineers steer it constantly, adjusting constraints and re-running when results fall short.
 
-{{define: tape-out | the handoff of layout data to make photomasks | the end of design, not the end of uncertainty | SEMI}}
-The handoff is still called tape-out, a name from the days when layout data left on magnetic tape. Today it is a file describing every polygon on every layer. The formats for that data are themselves standardised. SEMI, the semiconductor industry association, publishes a layout exchange standard called OASIS. The file goes to make photomasks, the stencils used to pattern each layer onto the wafer. Tape-out is the end of design, not the end of uncertainty. Masks are expensive, so a mistake found after this point costs far more to fix than one found in simulation. That cost is why so much of the flow exists.
+{{define: Static timing analysis | adds up the delay along every path between registers | only as good as the delay models it is fed | foundry}}
+How do they know when results fall short? Mainly through static timing analysis. Instead of simulating signals, the tool adds up the delay along every path between registers, using the characterised cell data and estimates of wire delay, and checks that each signal arrives before the next clock edge. A path that is too slow is called a timing violation. Static timing analysis is powerful because it is exhaustive over paths without needing any input patterns. Its boundary is that it is only as good as the delay models it is fed, which is why the careful measurement work done by the foundry matters so much.
 
-### The first silicon is still an experiment
+### Signoff checks the layout against the factory's own rules
 
-{{chain: Testing first silicon | wafers return | bring-up | post-silicon validation | >errata are documented}}
-When the first wafers return, a phase called bring-up begins. Engineers power the chip on and check that its clocks run and its basic interfaces respond. Then they begin post-silicon validation, running real software and stress tests at full speed. This covers far more behaviour than any simulation could in the same time. Here the observational problem returns in a new form. Real silicon runs billions of cycles a second, so it explores behaviour quickly. But engineers can see far less of what is happening inside it than they could in a simulator. Designers often build in extra test and debug circuitry for exactly this reason. Problems found at this stage may be fixed with a revised set of masks, or worked around in software. Some are written up as errata, documents that tell customers which behaviours to avoid.
+{{checklist: Signoff | +design rule checking | +layout versus schematic | +parasitic extraction | +timing is checked again}}
+Before a design leaves the team, it goes through signoff. Design rule checking compares every shape in the layout against the foundry's rule set: minimum widths, minimum spacings, how layers may overlap. Those rules encode what the manufacturing process can reliably print. Layout versus schematic checking extracts the circuit that the geometry actually forms and confirms it matches the netlist. Parasitic extraction calculates the resistance and capacitance of the real wires, and timing is checked again with those values. A design that passes all of this is handed off in a step still called tape-out, a name commonly traced to the era when layouts were shipped on magnetic tape.
 
-{{ambient}}
-Underneath all of this sits measurement. Every one of these values began as a physical measurement of real structures on real wafers. That includes the delays in a standard cell library, the rules in a design rule check, and the variation a timing analysis allows for. This is why NIST works on the measurement science behind semiconductor manufacturing. A design flow that runs entirely in software is only as trustworthy as the measurements it was calibrated against.
+{{sources: Shared standards | IEEE=hardware description languages | SEMI=SEMI International Standards | NIST=semiconductor metrology}}
+The layout becomes a set of photomasks, the stencils used to pattern each layer of the wafer. Here the design world meets the public standards bodies. SEMI, the industry association for semiconductor manufacturing, publishes the SEMI International Standards used across equipment, materials and masks, so that a design from one company can be built with tools from many others. NIST, the United States national measurement institute, works on semiconductor metrology — how to measure features far too small to see, and how sure anyone can be of that measurement. These bodies do not design chips. They supply the shared definitions and measurements that let a design be trusted outside the room it was made in.
+
+### The first chips back from the factory are the real experiment
+
+{{steps: First silicon | bring-up | scan chains | automated test equipment | >design for test}}
+Everything up to tape-out is prediction. The first wafers back from the foundry are where prediction meets matter. Engineers run bring-up: they power the first chips, check that clocks start, load test software, and compare behaviour against the models. To make this possible, designers add circuitry whose only purpose is to be tested. Scan chains link the flip-flops so their contents can be shifted out and read, which lets automated test equipment check each manufactured chip for physical defects. This practice is called design for test, and it is why a chip can be checked after manufacture, not only before.
+
+{{contrast: Verification | is=reduces risk | not=removing it}}
+When bring-up finds a bug that slipped through, the outcome depends on where it lives. Some bugs can be worked around in software or firmware. Others require a respin: corrected masks and another trip through the factory, which costs time and money. Manufacturers also publish lists of known bugs in shipped products, usually called errata. Those documents are some of the most candid public evidence about chip design, because they show directly that verification reduces risk without removing it.
 
 ### What to notice in the edit
 
-{{timeline: 1965=Gordon Moore's paper | 1971=Intel 4004}}
-In the edit, watch the scale change. In 1965, Gordon Moore published his observation that the number of components on a chip was growing on a steady schedule. IEEE has documented that pattern repeatedly since. By 1971 the Intel 4004 existed, still small enough to lay out by hand. Every diagram in this episode that shows code turning into gates, and gates into geometry, is showing the response to that growth. When a hand-drawn layout appears on screen, it is history. When an automated layout appears, notice that nobody chose where most of those cells went.
+{{text}}
+In the edit, watch for the shift between two kinds of evidence. Some steps, like equivalence checking, formal proofs and static timing analysis, are exhaustive within a stated model. Others, like simulation and bring-up, are samples. The animation draws those differently. A proven claim is drawn solid; a sampled one is drawn as scattered points with gaps between them. Whenever you see the gaps, that is the honest picture of what testing alone can show.
 
 ### Evidence limit
 
-{{checklist: What this episode establishes | +the design flow is automated | +verification combines simulation and proof | -what any specific company does internally | ?how much effort each stage takes}}
-This episode describes the general design flow as it is taught and as public standards define it. It does not establish what any specific company does internally. Detailed flows, tools and schedules are commercially confidential, and they vary between a small sensor chip and a large processor. Figures for how much effort each stage takes come largely from industry surveys and are not settled. Nor does verification guarantee correctness. Shipped chips have contained errors that every check missed, which is exactly why errata exist. The design flow reduces the risk of a wrong chip. It does not remove it.
+{{checklist: What this establishes | +the method | -how any particular company runs its flow | -that any shipped chip is free of bugs}}
+This account describes the method as public standards and teaching material lay it out. It does not establish how any particular company runs its flow. Those details, including the tools chosen, the size of teams and the cost of a design, are mostly proprietary, and published estimates vary so widely that this script states none of them. It also does not establish that any shipped chip is free of bugs. Verification proves properties inside models, and the models themselves are assumptions about how silicon behaves. The published errata are the reminder of where that gap shows.
 
 ### Closing
 
-{{text}}
-A modern chip is first a text, then a list, then a picture no person drew, and only at the very end a physical object. It is trustworthy not because anyone saw it work. It is trustworthy because each layer was checked against the one beneath it, and the bottom layer was measured.
+{{ambient}}
+So a microchip is designed the way a careful argument is written: stated in a precise language, translated step by step, and checked at each step against something it must agree with. The chip you are holding is the last link in that chain. The evidence that it works is not one test, but the agreement of all of them.
 
 ## Editorial gate
 
@@ -99,29 +99,27 @@ A modern chip is first a text, then a list, then a picture no person drew, and o
 - Humanized cold open: PRESENT
 - First-person producer observation: FROM POV BANK (pov-038)
 - Evidence uncertainty or limitation: COMPLETE
-- Structural variation: follows the design flow top to bottom, from text to gates to geometry to silicon, and uses the producer's observation question to turn simulation into an evidence problem
+- Structural variation: a digit-free design-flow walk-through that sorts every step into proof versus sample, ending on first silicon as the real experiment
 - Number-level source audit: COMPLETE
 
 ## Chapters
 
 - 00:00 Cold open
 - 00:50 Title card
-- 00:53 A chip begins as a description of behaviour, not a picture
-- 02:55 Synthesis turns code into gates a factory already knows how to make
-- 04:35 Placement and routing are optimisation problems handed to algorithms
-- 06:30 Producer POV
-- 06:40 Most of the work is proving the design is right
-- 08:50 Physical rules are checked before any mask is made
-- 10:30 The first silicon is still an experiment
-- 11:50 What to notice in the edit
-- 12:30 Evidence limit
-- 13:10 Closing
+- 00:53 A chip begins as a description of what it does
+- 02:22 Synthesis turns the description into gates the factory already knows how to make
+- 03:42 Producer POV
+- 03:50 Verification samples behaviour, then proves what it can
+- 05:38 Physical design turns a list of gates into geometry
+- 07:10 Signoff checks the layout against the factory's own rules
+- 08:46 The first chips back from the factory are the real experiment
+- 10:00 What to notice in the edit
+- 10:32 Evidence limit
+- 11:15 Closing
 
 ## Sources
 
 - IEEE: Institute of Electrical and Electronics Engineers home — https://www.ieee.org/
-- IEEE: IEEE Standards Association (Verilog and VHDL standards) — https://standards.ieee.org/
-- IEEE: IEEE Spectrum (semiconductor history, Intel 4004, Moore's observation) — https://spectrum.ieee.org/
-- SEMI: SEMI home (industry association and standards, including OASIS) — https://www.semi.org/
-- NIST: National Institute of Standards and Technology home (semiconductor measurement science) — https://www.nist.gov/
-- MIT: Massachusetts Institute of Technology home — https://www.mit.edu/
+- IEEE Standards Association: standards including hardware description languages — https://standards.ieee.org/
+- SEMI: SEMI and SEMI International Standards — https://www.semi.org/
+- NIST: National Institute of Standards and Technology, semiconductor measurement work — https://www.nist.gov/

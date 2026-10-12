@@ -8,92 +8,103 @@
 
 ## YouTube title
 
-Cold water is why some deep sea creatures get so big — and how we know
+Deep sea creatures grow so big in cold, oxygen-rich water — and how we know
 
 ## Direct-answer lock
 
-Only some deep sea creatures are giants, and the best-supported reason is cold. Below the depth where NOAA says sunlight runs out, at about 1,000 meters, the water stays only a few degrees above freezing, and animals that cannot heat their own bodies tend to grow more slowly and end up larger in cold water. Scarce food and the extra oxygen that cold water holds probably add to the effect, but no single cause has been proven, and many deep-sea animals are actually small.
+Most deep-sea creatures are not big. Gigantism appears in particular groups, mainly cold-blooded crustaceans and molluscs such as giant isopods, giant amphipods and giant squid. The leading explanations are that cold water slows growth while holding more dissolved oxygen, and that scarce food rewards large bodies that can travel far and go long periods without eating. A 1999 study in Nature linked maximum amphipod size to the amount of oxygen in the water.
 
 ## Narration
 
 ### Cold open
 
-{{stat: 1,000 | meters | Below this depth, sunlight runs out | NOAA}}
-Only some deep sea creatures are giants, and the best-supported reason is cold. Below about 1,000 meters, the depth where NOAA says sunlight runs out, the water stays a few degrees above freezing. In water that cold, animals that cannot heat their own bodies tend to grow more slowly and end up larger. That explains part of the pattern. It does not explain why so many other animals down there stay small, and it does not tell you how much of the pattern comes from what we happen to catch.
+{{stat: 1999 | study in Nature | linked the largest amphipod sizes to how much oxygen the water holds | Nature}}
+Most deep-sea creatures are not big. Gigantism appears in particular groups, mainly cold-blooded crustaceans and molluscs such as giant isopods, giant amphipods and giant squid. For those groups, the sharpest single clue came in 1999, when a study in Nature linked the largest amphipod sizes to how much oxygen the water holds. That settles less than it sounds. It tells you where the giants tend to occur. On its own, it does not tell you why they grow, or whether depth has anything to do with it.
 
 ### Title card
 
 Why are deep sea creatures so big?
 
-### The giants belong to a few groups, not to the whole deep
+### Most deep-sea animals are small, and the giants are the exception
 
-{{contrast: deep-sea gigantism | is=a size trend in particular groups | not=a rule for every deep animal}}
-Scientists call it deep-sea gigantism, and the name sounds broader than the thing it describes. It does not mean that everything in the deep is large. It means that certain groups of animals have deep-water members that are much bigger than their relatives in shallow water. The best-known examples are crustaceans and cephalopods. The giant isopod is a relative of the woodlouse you might find under a garden stone, but it is big enough to fill your two cupped hands. Deep-sea amphipods, which in shallow water are the size of a grain of rice, include giants such as Alicella gigantea. Then there is the giant squid, which the Smithsonian describes as one of the largest invertebrates known, with eyes that are among the biggest of any animal.
+{{contrast: deep-sea life | is=outnumbered many times over by animals you could hold on a fingertip | not=a habitat dominated by giants}}
+Start with the part the popular image leaves out. Watch footage from a remotely operated vehicle descending through the deep water column, and you will see that most of what drifts past its lights is small: jellies, shrimp, copepods, worms, and the larvae of animals that live somewhere else. On the seafloor, much of the life is buried in the mud, and a lot of it is too small to see without a microscope. The giants in the thumbnails are real, but they are scattered. Animals you could hold on a fingertip outnumber them many times over.
+
+{{define: deep-sea gigantism | some deep-sea animals growing much larger than their shallow-water relatives | always a comparison within a group, not across the whole ocean | NOAA Ocean Exploration}}
+So the honest version of the question is narrower. Why do some deep-sea animals grow much larger than their shallow-water relatives? Biologists call that pattern deep-sea gigantism, or sometimes abyssal gigantism. You will find the term in explainers published by NOAA Ocean Exploration and Smithsonian Ocean. The word relatives is doing the work. A giant isopod is only giant next to the small isopods of coastlines and gardens, the woodlice you may have found under a stone. It is always a comparison within a group, not across the whole ocean.
+
+### The giants cluster in a few cold-blooded groups
+
+{{checklist: Where gigantism shows up | +giant isopod | +giant amphipod | +sea spiders | +giant squid | -fish as a group}}
+The examples that come up again and again have something in common. The giant isopod, Bathynomus giganteus, scavenges on the deep seafloor. Alicella gigantea is a giant amphipod, a relative of the small sandhoppers on a beach, and it has been hauled up in baited traps from great depth. Sea spiders are usually tiny, but in cold water they reach the size of a dinner plate. The giant squid, Architeuthis, is among the longest invertebrates known. Fish, as a group, do not show the same consistent pattern. Many of the most common deep-sea fish, such as bristlemouths and lanternfish, are small.
 
 {{text}}
-Hold that list next to the animals that dominate the deep by sheer numbers. The bristlemouths, small fish no longer than a finger, are thought to be among the most abundant vertebrates on the planet. Most anglerfish would fit in your palm. The deep is full of small animals. So the honest question is not why everything down there is big. It is why a few lineages, again and again, produced oversized deep-water members, while others did not.
-
-### Cold slows growth and stretches it into size
-
-{{zones: midnight zone}}
-Start with the one condition every giant shares, which is temperature. The ocean is layered. The sunlit surface sits on top, the twilight zone lies beneath it, and below that comes the midnight zone, where no sunlight arrives at all. NOAA describes sunlight fading so fast that significant light rarely reaches past 200 meters, and essentially none reaches past 1,000 meters. Below that, the water is cold almost everywhere on Earth, whether you are under the tropics or the poles. The heat of the surface does not mix down that far.
-
-{{define: temperature-size rule | cold-blooded animals raised colder grow slower but mature larger | a laboratory pattern, not a law of the deep | lab rearing experiments}}
-Biologists have measured what cold does to growing animals, and they did it in the laboratory, where the evidence is cleanest. You take animals of one species, raise some in warm water and some in cold, and measure them as adults. Across a large share of the cold-blooded species tested this way, the cold-reared animals grow more slowly, take longer to mature, and end up larger. This pattern is called the temperature-size rule. A related idea, Bergmann's rule, was first described for warm-blooded animals, which tend to be larger in colder climates. The two are not the same mechanism, but both point the same direction: colder often means bigger.
-
-{{chain: From a lab tank to the deep | raise one species warm and cold | measure adult size | repeat across many species | >cold-reared animals end up larger}}
-That is the chain of evidence behind the leading explanation. It runs from controlled experiments, through a pattern repeated across many species, to an inference about animals living in the deep. Notice where the inference makes its jump. Nobody has raised a giant isopod from egg to adult under controlled deep-sea conditions and compared it with a warm-water sibling. The deep-sea claim borrows its strength from the laboratory, and borrowed strength is real strength, but it is not direct proof.
-
-### A slower metabolism per gram rewards a bigger body
-
-{{define: Kleiber's rule | metabolic rate rises with body mass to the three-quarter power | describes energy use, not why size evolved | Max Kleiber}}
-The second strand of the explanation is about energy. In the twentieth century, the animal scientist Max Kleiber found that an animal's metabolic rate rises with its body mass, but more slowly than the mass does. The relationship is close to the three-quarter power of body mass, and it is now called Kleiber's rule. The consequence matters more than the formula. A bigger animal burns more energy in total, but less energy per gram of its own body.
-
-{{steps: Why size helps when meals are rare | a large body stores more reserves | each gram burns energy more slowly | reserves last longer between meals | >a big animal can wait out the gaps}}
-Now apply that to the deep. Very little food is made there. Almost everything an animal eats has sunk down from the sunlit water above, as a slow drizzle of dead material, or arrives as a rare windfall like the carcass of a whale. In a place where meals are scarce and unpredictable, an animal that stores more and burns it more slowly can survive the long gaps between them. A large body can also travel farther in search of the next meal. Giant isopods are known to go very long periods without eating in captivity, which fits this picture of an animal built to wait.
+Look at what the giants share. They are ectotherms, animals whose body temperature follows the water around them. Most are crustaceans or molluscs. The same groups also produce giants in the shallow, cold seas around Antarctica, where great depth plays no part. That overlap is the first real clue in this story. It suggests that depth itself may not be the cause. Cold may be. On this reading, depth matters mostly because the deep is where the cold water is.
 
 ### Producer POV
 
 [HUMAN] When I picture the deep ocean I don't see blue water or fish. I see black. A massive amount of black space where you can't tell what's beside you or beneath you.
 
-### Cold water holds more oxygen, and that may raise the ceiling
-
-{{contrast: oxygen hypothesis | is=more dissolved oxygen may let bodies grow larger | not=a confirmed cause in every group}}
-That black space is cold, and cold water has one more property worth knowing. It holds more dissolved oxygen than warm water. Much of the deep is supplied by water that sank from the surface near the poles, carrying oxygen down with it. An animal that breathes through its body surface or through gills has a problem as it grows, because its volume rises faster than the surface it uses to take in oxygen. More oxygen in the water could loosen that limit and let a larger body still breathe.
-
-{{sources: Who tested what | Nature=amphipod size tracked oxygen availability | NOAA=sunlight and temperature with depth | Smithsonian=the giant squid and deep-sea life}}
-A study published in Nature compared the largest amphipods found in different waters and reported that maximum size tracked the amount of oxygen available. It was striking evidence, and it was mostly about polar waters, where cold and oxygen-rich conditions also occur near the surface. Researchers have since debated how far the idea extends, and whether oxygen sets the upper limit everywhere, or only for some kinds of animals. It remains a serious hypothesis rather than a settled cause.
-
-### Scarce food pushes size in both directions
-
-{{checklist: What the food argument predicts | +large bodies can outlast long gaps between meals | +large bodies can roam farther for food | -it does not explain the many small deep animals | ?which effect wins in a given group}}
-Here is where the explanation gets harder. Scarce food can favour a big body, for the reasons you just heard. But scarce food can also favour a small one. A small animal needs less food in total, and when there is very little to go around, needing less can be the better strategy. For many communities that live on the seafloor, studies tend to find that small animals make up more of the living community as depth increases. Some deep-sea snails have been found to grow larger with depth in one region and not in another.
+### Cold water makes cold-blooded bodies mature larger
 
 {{text}}
-So the same condition, too little food, is used to explain both bigness and smallness. That does not make the argument wrong. It means food shortage does not choose a direction on its own. Whether a lineage grows large or small probably depends on how it feeds, how it moves, how long it lives, and what its ancestors were already like. A scavenger that can smell a carcass from far away gains from a big, long-lasting body. A tiny animal grazing on the sediment may gain more from needing almost nothing.
+Biologists have long observed a pattern called Bergmann's rule: within related groups, larger forms tend to be found in colder places. It was first described for warm-blooded animals. A related pattern holds for ectotherms, and it is usually called the temperature-size rule. Raise the same species in colder water in a laboratory and, very often, it grows more slowly but reaches maturity at a larger body size. In many of these animals, the cells themselves also tend to be larger at low temperature.
 
-### Our view of the deep is tilted toward big things
+{{chain: The temperature clue | cold water | slower growth | later maturity | >larger adult body}}
+Below the surface layers, the deep sea is cold, close to freezing in many places, and it stays that way all year. No warm season speeds things up. So the chain runs like this: cold water, slower growth, later maturity, larger adult body. The way this mechanism is known is what gives it weight. You do not have to infer it from a few odd specimens. You can test it in tanks, changing one variable at a time and holding the rest steady, and the result repeats across many species.
 
-{{contrast: what we see | is=animals large enough to catch, film or wash ashore | not=a fair sample of everything living down there}}
-There is one more factor, and it concerns the observers rather than the animals. The deep is enormous and very lightly explored. For most of history the giant squid was known almost entirely from dead or dying specimens that floated to the surface or were caught by fishing gear. A NOAA-supported expedition later filmed a living one in the Gulf of Mexico, but such footage remains rare. Large animals are easier to notice, more likely to be photographed, and far more likely to be remembered and reported.
+### Oxygen may set the ceiling, and cold deep water carries more of it
 
-{{steps: How a sample gets skewed | big animals are caught or filmed more often | big finds get reported widely | small animals stay unnamed longer | >the deep looks bigger than it is}}
-Exploration tools add their own filter. Research institutions such as MBARI have collected long video records from remotely operated vehicles, and those records are valuable precisely because they show animals in place, alive, without the damage of a net. But cameras favour what is large and moves into the lights. Tiny animals, soft-bodied animals, and animals that flee from vehicles are all harder to count. Researchers know this, and they correct for it where they can. It still means that part of our impression of a deep sea full of giants is an impression of what is easiest to see.
+{{steps: Why oxygen limits size | larger animals have less surface relative to their volume | cold water holds more dissolved oxygen | cold slows the animal's metabolism | >each cell needs less}}
+Temperature alone does not explain why size should have an upper limit. Oxygen might. As an animal grows, its volume rises faster than its surface. Larger animals therefore have less surface relative to their volume, and getting oxygen to every cell becomes harder. Cold water helps in two separate ways. First, cold water holds more dissolved oxygen than warm water does. Second, cold slows the animal's metabolism, so each cell needs less. Supply goes up while demand goes down.
+
+{{sources: The oxygen evidence | Nature=published the amphipod oxygen study | British Antarctic Survey=Lloyd Peck}}
+In 1999, Gauthier Chapelle and Lloyd Peck, the latter of the British Antarctic Survey, published the amphipod oxygen study in Nature. Amphipods were a good choice. They live almost everywhere, in warm water and in cold, and the largest known sizes of many species had already been recorded. The two researchers compared those maximum sizes against the conditions where the animals lived. Temperature on its own was not the best predictor. The amount of oxygen the water could carry was. Where oxygen was plentiful, the biggest amphipods appeared.
+
+{{chain: Why the deep holds oxygen | cold surface water near the poles | sank and spread along the ocean floor | carrying its oxygen with it | >both cold and reasonably well oxygenated}}
+Why would that apply to the deep sea? Much of the ocean's deep water began as cold surface water near the poles. That water sank and spread along the ocean floor, carrying its oxygen with it. So a great deal of the deep sea is both cold and reasonably well oxygenated, the combination the amphipod study pointed to. There is a useful exception. In many regions, layers at middle depths run low on oxygen, and those layers are not known for giants. That fits the idea. It does not prove it.
+
+### Scarce food rewards a body that can search far and wait long
+
+{{text}}
+The second family of explanations is about food. Below the sunlit layer, nothing photosynthesises in open water. Most deep-sea life therefore depends on what sinks from above: dead plankton, faecal pellets, flakes of drifting debris, and now and then the carcass of a fish or a whale. Food arrives rarely, and it lands in places nobody can predict.
+
+{{steps: The food argument | food arrives rarely | a larger body stores more | it burns energy more slowly per gram | >a big scavenger can travel and wait}}
+A larger body changes the arithmetic. It stores more. And under a relationship known as Kleiber's law, bigger animals burn energy more slowly per gram of tissue than small ones do. Put those together. Food arrives rarely, a larger body stores more, it burns energy more slowly per gram, and so a big scavenger can travel and wait. Giant isopods kept in aquariums are known for going very long stretches without eating. A large amphipod can cover more seafloor and reach a fallen fish before smaller competitors do.
+
+{{contrast: scarce food | is=can favour giants among mobile scavengers | not=a push toward large size everywhere}}
+This explanation has a weakness worth saying aloud. Scarce food can argue the other way. Less food can just as easily mean smaller bodies. In many deep-sea groups, typical size falls with depth, while in some it rises. Food may favour giants among mobile scavengers and favour small bodies among animals that sit in the mud and wait. Scarce food is not a push toward large size everywhere. The same pressure produces different outcomes depending on how an animal makes its living.
+
+### Our nets and traps favour the big ones
+
+{{text}}
+There is also a quieter problem underneath all the explanations so far: how the animals were found in the first place. Much of what is known about deep-sea giants comes from trawls dragged along the seafloor and from baited traps lowered on long lines. A baited trap attracts mobile scavengers, which are exactly the animals the food argument predicts will be large. A coarse net keeps big animals and lets small ones slip through the mesh. And big, strange specimens are the ones that get described, photographed and remembered.
+
+{{contrast: a sampling result | is=what the trap caught | not=what lives there}}
+None of this makes the giants imaginary. A giant isopod on a laboratory bench is a giant isopod. But the impression of a deep sea full of large animals partly reflects what the trap caught, not what lives there. Fair comparisons need the same gear, used the same way, at the same depths, across many sites, with shallow-water relatives measured just as carefully. Studies built like that are slow and expensive, and there are still relatively few of them.
+
+### Seeing giants alive is changing what can be asked
+
+{{text}}
+For most of history, the largest deep-sea animals were known only from dead or dying specimens, washed ashore or brought up tangled in nets. That limits what you can learn. You can measure a body on a deck. You cannot see how it hunts, how fast it moves, or how much energy it spends doing so. In 2004, Tsunemi Kubodera and a colleague took the first photographs of a live giant squid in the wild, off Japan. In 2012, a team including Kubodera recorded the first video of a giant squid in its natural habitat.
+
+{{timeline: 2004=first photographs of a live giant squid | 2012=first video of a giant squid | 2025=colossal squid alive in its natural habitat}}
+In 2025, an expedition run by the Schmidt Ocean Institute with the Ocean Census filmed a colossal squid alive in its natural habitat for the first time, near the South Sandwich Islands. It was a juvenile, and it was small. That is a useful correction. Even the animal often described as the heaviest invertebrate on Earth starts life tiny. How it becomes enormous is a question about growth in cold, dark water over a long time, and live observation can begin to answer that kind of question.
 
 ### What to notice in the edit
 
-{{ambient}}
-As you watch the footage, notice the order of the evidence. The strongest piece, the temperature-size rule, comes from controlled experiments on animals that are mostly not deep-sea animals. The energy argument comes from Kleiber's rule, a measured relationship applied to a habitat where meals are rare. The oxygen idea comes from comparisons across waters, which show a pattern but cannot isolate a single cause. And sitting over all of it is a sampling bias that makes giants look more common than they are. Each layer is a different kind of knowing.
+{{contrast: size on screen | is=laser dots a fixed distance apart | not=a guess from the frame}}
+When footage of a deep-sea giant appears, watch for scale. Many remotely operated vehicles project laser dots a fixed distance apart, which lets scientists measure what is on screen. Without a scale bar or laser dots, size on video is a guess from the frame. Notice, too, where the animal is. Often it is at bait, or in a vehicle's lights, which is the sampling problem described earlier. And notice what is not on screen: the small animals all around it.
 
 ### Evidence limit
 
-{{checklist: What is and is not settled | +cold water is linked to larger size in lab-raised animals | +bigger bodies use less energy per gram | ?how much oxygen limits size in the deep | -no single proven cause of deep-sea gigantism}}
-This evidence does not establish a single cause of deep-sea gigantism. It does not show that cold, oxygen and food shortage act the same way in every group, and it cannot say how much each one contributes. It does not tell you that the deep is mostly populated by large animals, because it is not. And because so much of the deep has never been surveyed, it cannot rule out that our picture will shift as smaller and harder-to-see animals are counted properly. The careful conclusion is that cold is the best-supported factor, and the rest is still being worked out.
+{{checklist: What is settled | +gigantism appears in particular groups | +cold water slows growth | ?whether oxygen sets the ceiling | ?which cause matters most}}
+Here is what this evidence does not establish. It does not show that depth itself makes animals large. Cold, oxygen and food all change with depth, and they are hard to separate in the field. The oxygen link is a correlation across species, strongest in amphipods, and researchers still debate how well it extends to other groups. So whether oxygen sets the ceiling remains open. Which cause matters most probably differs from one group to another, and in many groups it has never been measured. What is settled is narrower. Gigantism appears in particular groups, and cold water slows growth in ectotherms in ways laboratories can measure.
 
 ### Closing
 
 {{ambient}}
-So when you see a giant isopod or the arm of a giant squid, you are looking at a few lineages that answered the same cold, dark, hungry conditions by growing large. Others answered by staying small. Both are solutions to the same black water.
+The deep sea is not a place where everything grows huge. It is a place where a few kinds of animal, in cold water, given time, and with food scattered far apart, can outgrow their relatives in warm, shallow seas. The giants are real. The explanation is still being assembled, one trap, one camera and one careful comparison at a time.
 
 ## Editorial gate
 
@@ -102,29 +113,31 @@ So when you see a giant isopod or the arm of a giant squid, you are looking at a
 - Humanized cold open: PRESENT
 - First-person producer observation: FROM POV BANK (pov-001)
 - Evidence uncertainty or limitation: COMPLETE
-- Structural variation: hypothesis-by-hypothesis build that ends on observer bias, so the last cause examined is the one that sits in the scientists rather than in the animals
+- Structural variation: overturns the premise first (most deep-sea animals are small), then tests three rival mechanisms and a sampling-bias objection against each other before turning to live observation
 - Number-level source audit: COMPLETE
 
 ## Chapters
 
 - 00:00 Cold open
-- 00:35 Title card
-- 00:40 The giants belong to a few groups, not to the whole deep
-- 02:00 Cold slows growth and stretches it into size
-- 04:05 A slower metabolism per gram rewards a bigger body
-- 05:30 Producer POV
-- 05:45 Cold water holds more oxygen, and that may raise the ceiling
-- 07:05 Scarce food pushes size in both directions
-- 08:25 Our view of the deep is tilted toward big things
-- 09:50 What to notice in the edit
-- 10:30 Evidence limit
-- 11:30 Closing
+- 00:36 Title card
+- 00:40 Most deep-sea animals are small, and the giants are the exception
+- 02:00 The giants cluster in a few cold-blooded groups
+- 03:15 Producer POV
+- 03:30 Cold water makes cold-blooded bodies mature larger
+- 04:45 Oxygen may set the ceiling, and cold deep water carries more of it
+- 06:30 Scarce food rewards a body that can search far and wait long
+- 08:00 Our nets and traps favour the big ones
+- 09:05 Seeing giants alive is changing what can be asked
+- 10:25 What to notice in the edit
+- 11:00 Evidence limit
+- 11:40 Closing
 
 ## Sources
 
-- NOAA Ocean Service: How far does light travel in the ocean? — https://oceanservice.noaa.gov/facts/light_travel.html
-- NOAA Ocean Exploration: Ocean Facts — https://oceanexplorer.noaa.gov/facts/
-- Smithsonian Ocean: The Deep Sea — https://ocean.si.edu/ecosystems/deep-sea/deep-sea
+- Nature: Polar gigantism dictated by oxygen availability (Chapelle & Peck, 1999) — https://www.nature.com/articles/20267
+- British Antarctic Survey: home and research — https://www.bas.ac.uk/
 - Smithsonian Ocean: Giant Squid — https://ocean.si.edu/ocean-life/invertebrates/giant-squid
-- MBARI (Monterey Bay Aquarium Research Institute): Home — https://www.mbari.org/
-- Nature: Journal home — https://www.nature.com/
+- Smithsonian Ocean: The Deep Sea — https://ocean.si.edu/ecosystems/deep-sea/deep-sea
+- NOAA Ocean Exploration: Ocean Facts — https://oceanexplorer.noaa.gov/facts/
+- Schmidt Ocean Institute: home and expeditions — https://schmidtocean.org/
+- Ocean Census: home — https://oceancensus.org/
