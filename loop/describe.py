@@ -121,8 +121,18 @@ def answered(q: str, script: str) -> list[str]:
     import longform_title as LT                            # noqa: PLC0415
     ev = LT.evidence_text(script)
     have = {LT.stem(w) for w in LT.content_words(ev)}
+    # Exact stems (a prefix match let "blackstone" through on "black"); a
+    # negation is the script's own when it negates anything (the title
+    # guard's rule), so "Why aren't deep sea fish crushed?" stands.
+    negates = any(LT._clean(w) in LT.CONTRADICTION or LT._clean(w).endswith("n't")  # noqa: SLF001
+                  for w in LT._tokens(ev))                 # noqa: SLF001
+    def near(w: str) -> bool:
+        st_ = LT.stem(w)
+        return st_ in have or any((st_.startswith(h) or h.startswith(st_))
+                                  and abs(len(st_) - len(h)) <= 3 for h in have)
     p = [f"{w!r} is not in the script" for w in LT.content_words(q)
-         if not LT._match(LT.stem(w), have)]               # noqa: SLF001
+         if not near(w)
+         and not (negates and (w in LT.CONTRADICTION or w.endswith("n't")))]
     low, evl = q.lower(), ev.lower()
     for term in OFF_LIMITS:
         if re.search(rf"\b{re.escape(term)}\b", low) and \
@@ -145,7 +155,20 @@ def search_questions(question: str, title: str, suggest=None,
              f"how {subject}", f"what {subject}", f"is {subject}",
              f"{subject} why", f"{subject} how"]
     found: list[str] = []
+    # Too few on the plain seeds -> the wider net people also type, then the
+    # alphabet sweep research/mine.expand uses (13 Oct 2026: 8 of 38 live
+    # videos had under four answered phrasings on the first pass).
+    wide = [f"{w} {subject}" for w in ("why do", "why does", "why are", "what do",
+                                       "how do", "how does", "can", "do", "are",
+                                       "where do", "how deep")]
+    alpha = [f"{subject} {c}" for c in "abcdefghijklmnopqrstuvwyz"] + \
+            [f"why {subject} {c}" for c in "abcdhimnstw"]
+    seeds = seeds + ["\x00"] + wide + ["\x00"] + alpha
     for seed in dict.fromkeys(s for s in seeds if s and s.strip()):
+        if seed == "\x00":
+            if len(found) + 2 >= MIN_QUESTIONS + 2:
+                break                    # enough already; stop widening
+            continue
         for s in suggest(seed) or []:
             s = re.sub(r"\s+", " ", str(s)).strip().lower()
             if (QUESTION_RE.match(s) and _names_subject(s, subject)
@@ -269,6 +292,8 @@ def problems(description: str, title: str, question: str,
           if ln.startswith("•") and ln.strip().endswith("?")]
     if script:
         for q_ in qs:
+            if q_.rstrip("?").lower() == title.rstrip("?").lower():
+                continue                 # the title is truth-guarded itself
             why = answered(q_, script)
             if why:
                 p.append(f"lists {q_!r}, which the script does not answer: {why[0]}")
