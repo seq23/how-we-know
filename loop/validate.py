@@ -4331,6 +4331,9 @@ def v49_lengthen_splice() -> Result:
       longer in loop/state/render_hold.json;
     * every `full_rerender` episode that had a render recorded it as
       superseded; unknown states fail;
+    * every row is a renderable episode (lengthen.renderable_slugs(), i.e.
+      batch_queue.queued_slugs()) or a published one - a killed or
+      near-duplicate topic in lengthen.json is a dead row and fails;
     * a cloud re-open (`pending_bind`) still matches the script it wrote, and
       a re-opened queued script still passes the hook rule;
     * queued scripts breaking the hook rule or the floor are a HELD stop
@@ -4364,8 +4367,12 @@ def v49_lengthen_splice() -> Result:
                       default={"held": {}}).get("held") or {})
     import hashlib                                         # noqa: PLC0415
     published_ln = _ln.published_slugs()
+    live_ln = _ln.renderable_slugs()
     for slug, rec in sorted(_ln.load()["episodes"].items()):
         r.examined += 1
+        if slug not in published_ln and slug not in live_ln:
+            r.fail(f"{slug}: in lengthen.json but {_ln.dead_topic(slug, live_ln)}"
+                   f" - a dead row; remove it")
         st_ = rec.get("status")
         if st_ not in ("scripted", "full_rerender", "spliced"):
             r.fail(f"{slug}: unknown lengthen status {st_!r}")

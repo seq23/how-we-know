@@ -205,6 +205,11 @@ for name in ("SCRIPTS", "PLANS", "AUDIO", "RENDERS", "CAPTIONS"):
     d.mkdir()
     setattr(L, name, d)
 L.STATE, L.SUPERSEDED, L.HOLD = TMP / "lengthen.json", TMP / "sup.json", TMP / "hold.json"
+# The fixture episodes stand in for queued ones; section 7 proves the real
+# renderable_slugs() (= batch_queue.queued_slugs()) excludes dead topics.
+_real_renderable = L.renderable_slugs
+_FIXTURE_LIVE = {"fixture-slug", "fixture-reopen", "fixture-extend"}
+L.renderable_slugs = lambda: set(_FIXTURE_LIVE)
 L.THUMB_OUT = str(TMP / "thumbs")
 durations.DURATIONS = TMP / "durations.json"
 slug = "fixture-slug"
@@ -430,8 +435,10 @@ L.SCRIPTS, L.DRAFTS, L.PLANS = ROOT / "scripts", LOOP / "drafts", ROOT / "plans"
 L.AUDIO, L.RENDERS, L.CAPTIONS = ROOT / "audio", ROOT / "renders", ROOT / "captions"
 L.STATE = LOOP / "state" / "lengthen.json"
 L._measured_s = saved_measured                                # noqa: SLF001
+L.renderable_slugs = _real_renderable
 res = V.v49_lengthen_splice().as_dict()
 check(not res["failures"], f"V49 fails on the real repo: {res['failures']}")
+L.renderable_slugs = lambda: set(_FIXTURE_LIVE)
 for _n, _v in _fixture_paths.items():
     setattr(L, _n, _v)
 L.STATE = TMP / "lengthen.json"
@@ -447,6 +454,74 @@ try:
           f"V49 passed a spliced episode with no superseded record: {res['failures']}")
 finally:
     V.ROOT = saved
+
+# ---------------------------------------- 7. dead topics are never worked
+# 2026-10-13: lengthen.json held six pending binds the batch would never
+# render - three killed by the gate, one killed 03-, two refused as
+# near-duplicates - because this lane listed every scripts/*.md instead of
+# asking the batch queue. renderable_slugs() IS batch_queue.queued_slugs();
+# a tiny publish order with one killed and one near-duplicate topic proves
+# queue_slugs, stage_script, run_bind and V49 all skip or fail them.
+import batch_queue                                            # noqa: E402
+L.renderable_slugs = _real_renderable
+check(L.renderable_slugs() == set(batch_queue.queued_slugs()),
+      "lengthen.renderable_slugs() is not batch_queue.queued_slugs() on the real repo")
+bq_root = TMP / "bq_root"
+(bq_root / "research").mkdir(parents=True)
+(bq_root / "scripts").mkdir()
+(bq_root / "research" / "publish_order.json").write_text(json.dumps({
+    "queue": [{"slug": "fx-live", "query": "why do zebrafish hum at the hadal trench"},
+              {"slug": "fx-dup", "query": "why do zebrafish hum at the hadal trench"}],
+    "killed": [{"slug": "fx-killed", "query": "how loud is a lanternfish choir",
+                "verdict": "killed"}]}))
+_saved_bq_root, _saved_ledger = batch_queue.ROOT, ledger.LEDGER
+batch_queue.ROOT = bq_root
+ledger.LEDGER = TMP / "ledger-empty.json"
+ledger.LEDGER.write_text(json.dumps({"published": [], "queued": []}))
+saved_state7, saved_measured7, saved_scripts7 = L.STATE, L._measured_s, L.SCRIPTS  # noqa: SLF001
+L.SCRIPTS = TMP / "scripts7"
+L.SCRIPTS.mkdir()
+L.STATE = TMP / "lengthen-dead.json"
+L._measured_s = lambda s_: 700.0                              # noqa: SLF001
+try:
+    refused = {r["slug"]: r["killed_by"] for r in batch_queue.refused_entries()}
+    check(refused.get("fx-dup") == "NEAR_DUPLICATE",
+          f"fixture: fx-dup is not refused as a near-duplicate: {refused}")
+    live = L.renderable_slugs()
+    check(live == {"fx-live"}, f"renderable_slugs kept a dead topic: {live}")
+    for s7 in ("fx-live", "fx-dup", "fx-killed"):
+        (L.SCRIPTS / f"{s7}.md").write_text(BAD)
+    q7 = L.queue_slugs()
+    check("fx-live" in q7 and "fx-dup" not in q7 and "fx-killed" not in q7,
+          f"queue_slugs re-opens a dead topic: {q7}")
+    check("fx-dup" not in L._short_slugs() and "fx-killed" not in L._short_slugs(),  # noqa: SLF001
+          "_short_slugs lists a dead topic")
+    L._ask = lambda m: (_ for _ in ()).throw(AssertionError("model called"))  # noqa: SLF001
+    for s7 in ("fx-dup", "fx-killed"):
+        try:
+            r7 = L.stage_script(s7, cloud=True, check_urls=False)
+        except AssertionError as e:                       # the model was called
+            r7 = {"status": f"worked ({e})"}
+        check(r7["status"] == "dead_topic", f"stage_script worked dead topic {s7}: {r7}")
+    dead_doc = {"episodes": {s7: {"status": "scripted", "mode": "pending_bind",
+                                  "kind": "reopen", "new_script_sha256": "x"}
+                             for s7 in ("fx-dup", "fx-killed")}}
+    L.save(dead_doc, L.STATE)
+    bound = []
+    _saved_bind = L.bind
+    L.bind = lambda s_, d_: (bound.append(s_) or {"status": "refused", "slug": s_})
+    try:
+        L.run_bind()
+    finally:
+        L.bind = _saved_bind
+    check(not bound, f"run_bind bound a dead topic: {bound}")
+    res7 = V.v49_lengthen_splice().as_dict()
+    check(any("fx-killed" in f and "dead row" in f for f in res7["failures"])
+          and any("fx-dup" in f and "dead row" in f for f in res7["failures"]),
+          f"V49 passed dead rows in lengthen.json: {res7['failures']}")
+finally:
+    batch_queue.ROOT, ledger.LEDGER = _saved_bq_root, _saved_ledger
+    L.STATE, L._measured_s, L.SCRIPTS = saved_state7, saved_measured7, saved_scripts7  # noqa: SLF001
 
 if examined == 0:
     fails.append("examined nothing")
