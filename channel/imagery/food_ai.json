@@ -328,6 +328,40 @@
       "altered_content": true,
       "licence": "generated on Workers AI (FLUX.1 [schnell], Apache-2.0 weights); output owned by the channel",
       "credit_line": "AI-GENERATED IMAGE"
+    },
+    {
+      "key": "thumb-three-foods",
+      "prompt": "three foods together as one tight group filling the frame: a crusty golden loaf of bread torn open, a thick seared steak with a dark crust, and a glossy bar of dark chocolate snapped in half, touching each other on a dark slab, close up, centered",
+      "full_prompt": "three foods together as one tight group filling the frame: a crusty golden loaf of bread torn open, a thick seared steak with a dark crust, and a glossy bar of dark chocolate snapped in half, touching each other on a dark slab, close up, centered. photorealistic macro food photography, single glossy subject lit from the side by one warm key light, deep dark warm background, rich saturated colour, shallow depth of field, cinematic, no text, no people, no hands, no logos",
+      "seed": 7,
+      "model": "@cf/black-forest-labs/flux-1-schnell",
+      "steps": 4,
+      "width": 1024,
+      "height": 576,
+      "local_file": "assets/food_ai__thumb-three-foods__s7.jpg",
+      "sha256": "8f0e90465b0096b91b19f59dcc296705bb85c5d690fe5b45f56c494340fd382a",
+      "generated_at": "2026-10-13T15:31:58.338769+00:00",
+      "ai_generated": true,
+      "altered_content": true,
+      "licence": "generated on Workers AI (FLUX.1 [schnell], Apache-2.0 weights); output owned by the channel",
+      "credit_line": "AI-GENERATED IMAGE"
+    },
+    {
+      "key": "thumb-three-foods-b",
+      "prompt": "three foods together as one tight group filling the frame: a crusty golden loaf of bread torn open, a thick seared steak with a dark crust, and a glossy bar of dark chocolate snapped in half, touching each other on a dark slab, close up, centered",
+      "full_prompt": "three foods together as one tight group filling the frame: a crusty golden loaf of bread torn open, a thick seared steak with a dark crust, and a glossy bar of dark chocolate snapped in half, touching each other on a dark slab, close up, centered. photorealistic macro food photography, single glossy subject lit from the side by one warm key light, deep dark warm background, rich saturated colour, shallow depth of field, cinematic, no text, no people, no hands, no logos",
+      "seed": 7,
+      "model": "@cf/black-forest-labs/flux-1-schnell",
+      "steps": 4,
+      "width": 1024,
+      "height": 576,
+      "local_file": "assets/food_ai__thumb-three-foods-b__s7.jpg",
+      "sha256": "5af168ab71f0a7839797ba44f32bb499f10b43488bd5969a8f7c26d27d9168fb",
+      "generated_at": "2026-10-13T15:32:01.137944+00:00",
+      "ai_generated": true,
+      "altered_content": true,
+      "licence": "generated on Workers AI (FLUX.1 [schnell], Apache-2.0 weights); output owned by the channel",
+      "credit_line": "AI-GENERATED IMAGE"
     }
   ]
 }

@@ -478,7 +478,12 @@ split monthly and writes its reasoning to `loop/state/monthly/<month>.md`.
 ## Food, the third domain — one look from you, then nothing
 
 - **Registered and scheduled** (Wednesday and Saturday), **held** until you have watched the
-  chocolate sample: `~/Desktop/how-we-know-food-sample/` (the mp4, three thumbnails, a note).
+  chocolate sample, round 2: `~/Desktop/how-we-know-food-sample-round-2/` (the mp4, a 720p copy
+  for sending, three thumbnails, a note listing every clip and its licence). Round 1 is in
+  `~/Desktop/how-we-know-food-sample/`; your verdict on it (one voice; real movement) is built in.
+- **Real footage keys:** Pixabay reads `~/.config/how-we-know/pixabay.key` (mode 600). A Pexels
+  key, when Pexels issues them again, goes in `pexels.key` beside it - no code change. Without
+  either, the free fallbacks (Mixkit, Commons, Internet Archive, NASA) still find the footage.
 - **Your notes are the next iteration.** When it is right, the gate is one line in
   `loop/config.json` (`domains.sample_gate` → `"state": "cleared"`); after that the first full
   30-minute video renders on the Mac like any other episode. Until then Wed/Sat simply stay empty.
