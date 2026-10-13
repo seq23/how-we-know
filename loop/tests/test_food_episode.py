@@ -99,6 +99,18 @@ sp = food.parse(ROOT / "scripts" / "food" / "why-does-chocolate-melt-in-your-mou
 check(sum(1 for p in sp if p["phase"] == "opening") == 1,
       "a single-question script keeps the sample's cutting (no segment re-hook)")
 
+# every line that points at the screen is bound to clips that exist (reviewed)
+import re as _re  # noqa: E402
+man = {r["subject"] for r in json.loads((ROOT / "channel" / "imagery" / "food_clips.json").read_text())["index"]}
+pointing = [p for p in paras if p["segment"] in food.SEGMENTS and
+            _re.search(r"on the screen|look at the|watch the|look closely", p["text"], _re.I)
+            and not _re.search(r"scanners can watch", p["text"])]
+unbound = [p["text"][:50] for p in pointing if not any(_re.search(pat, p["text"], _re.I)
+                                                        for pat, _ in food.SCREEN_BIND)]
+check(pointing and not unbound, f"every on-screen line has a clip binding ({len(pointing)}): unbound {unbound}")
+missing = sorted({k for _, ks in food.SCREEN_BIND for k in ks} - man)
+check(not missing, f"every bound clip is a manifest record: missing {missing}")
+
 # ------------------------------------------------- 4. the queue and the lanes
 import batch_queue as BQ  # noqa: E402
 import domains as D  # noqa: E402
