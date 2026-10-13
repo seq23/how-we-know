@@ -69,6 +69,13 @@ check(LT.EXEMPLARS == {
     "19-what-is-the-deepest-fish-ever-recorded": "How Deep Can a Fish Live?",
     "how-strong-is-titanium": "Is Titanium Stronger Than Steel?"},
     "the owner's three locked titles changed")
+# The owner's series shape for multi-question food videos (13 Oct 2026).
+_fs = (ROOT / "scripts" / "food" / "why-bread-rises-steak-browns-chocolate-snaps.md").read_text(encoding="utf-8")
+check(not LT.title_problems("Bread, Steak, Chocolate: What's Inside?", _fs, LT.question_of(_fs)),
+      f"the owner's series title fails: {LT.title_problems(chr(66)+'read, Steak, Chocolate: What' + chr(39) + 's Inside?', _fs, LT.question_of(_fs))}")
+check(any("more than one idea" in x for x in LT.title_problems(
+          "Bread, Steak, Chocolate: Why It Works", _fs, LT.question_of(_fs))),
+      "a colon title outside the series shape passed")
 good = "Is a Welding Arc Hotter Than the Sun?"
 check(not LT.title_problems(good, SCRIPT, Q),
       f"a plain, traceable question failed: {LT.title_problems(good, SCRIPT, Q)}")

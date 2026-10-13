@@ -4651,12 +4651,33 @@ def v50_repackage_state() -> Result:
     ids = {x.get("video_id") for x in rows}
     sys.path.insert(0, str(ROOT / "visuals"))
     import thumb_contract as _tc                           # noqa: PLC0415
+    try:
+        import demand as _dm_                              # noqa: PLC0415
+        _demand_videos = _dm_.load().get("videos") or {}
+    except Exception:                                      # noqa: BLE001
+        _demand_videos = {}
     for slug, row in _lt.load()["titles"].items():
         if row.get("applied_at"):
             r.examined += 1
             if row.get("applied_video_id") not in ids:
                 r.fail(f"{slug}: title applied to {row.get('applied_video_id')}, "
                        f"which no ledger row knows")
+        # The demand lane owns a thumbnail under a live Studio test or after a
+        # second packaging round; this lane's variant A may not land after it.
+        vid_ = row.get("applied_video_id")
+        dv = ((_demand_videos or {}).get(vid_) or {}) if vid_ else {}
+        ts_ = row.get("thumbnail_applied_at") or (row.get("applied_at")
+                                                  if row.get("thumbnail_applied") else None)
+        if ts_ and dv:
+            r.examined += 1
+            t_on = (dv.get("thumbnail_test") or {})
+            if t_on.get("active") and t_on.get("started") and ts_[:10] > str(t_on["started"])[:10]:
+                r.fail(f"{slug}: variant A went up {ts_[:10]} during the Studio "
+                       f"thumbnail test started {t_on['started']}")
+            reps_ = [x.get("at") for x in dv.get("repackages") or [] if x.get("thumbnail")]
+            if reps_ and ts_ > max(reps_):
+                r.fail(f"{slug}: variant A went up {ts_[:16]} over the demand "
+                       f"lane's round-{dv.get('repackage_round')} thumbnail")
         if row.get("thumbnail_applied"):
             # Only a set whose contract HOLDS may be on a live video: on 13 Oct
             # 2026 a set refused at B left A.jpg behind and it shipped.
@@ -4809,7 +4830,7 @@ def v60_description_search_block() -> Result:
             r.fail(f"{slug}: the template could not compose: {e}")
             continue
         for p_ in _ds.problems(snip["description"], t, q,
-                               _up.build_chapters(slug, text)):
+                               _up.build_chapters(slug, text), script=text):
             r.fail(f"{slug}: {p_}")
         if slug in live:
             meta = _rp.search_meta(slug, q)

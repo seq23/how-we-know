@@ -189,6 +189,37 @@ run(RP.run_apply, yt=yt)
 check(not [c for c in yt.calls if c[0] == "update_snippet"],
       "a title that no longer passes was applied")
 
+# ------------------------------------- 1c. the demand lane owns a thumbnail
+# (coordination, 13 Oct 2026): a live Studio test, or a second packaging round
+# (B/C already up) -> the title goes up, variant A does not.
+import demand                                                 # noqa: E402
+demand.SNAPSHOT = TMP / "demand.json"
+for label, vrec in (("test", {"thumbnail_test": {"active": True, "started": "2026-10-10"}}),
+                    ("round", {"repackage_round": 1, "thumbnails_used": ["A", "B"]})):
+    reset_state()
+    demand.SNAPSHOT.write_text(json.dumps({"videos": {"OLD1": {"video_id": "OLD1", **vrec}}}))
+    yt = FakeYT()
+    run(RP.run_apply, yt=yt)
+    check([c for c in yt.calls if c[0] == "update_snippet"]
+          and not [c for c in yt.calls if c[0] == "set_thumbnail"],
+          f"variant A was pushed over the demand lane's {label}: {yt.calls}")
+    check(not [t for t in RP.apply_plan() if t.get("thumb_only")],
+          f"a thumbnail-only pass was planned over the demand lane's {label}")
+demand.SNAPSHOT.write_text(json.dumps({"videos": {}}))
+# V50 holds it: a row whose variant A landed after the test started fails.
+import validate as V                                          # noqa: E402
+reset_state()
+LT.STATE.write_text(json.dumps({"titles": {SLUG: {
+    "new_title": GOOD, "checks_passed": True, "applied_at": "2026-10-12T00:00:00+00:00",
+    "applied_video_id": "OLD1", "thumbnail_applied": False,
+    "thumbnail_applied_at": "2026-10-12T00:00:00+00:00"}}}))
+demand.SNAPSHOT.write_text(json.dumps({"videos": {"OLD1": {
+    "video_id": "OLD1", "thumbnail_test": {"active": True, "started": "2026-10-10"}}}}))
+res = V.v50_repackage_state().as_dict()
+check(any("Studio" in f for f in res["failures"]),
+      f"V50 passed a variant A that landed during a Studio test: {res['failures']}")
+demand.SNAPSHOT.write_text(json.dumps({"videos": {}}))
+
 # ----------------------------------------------------------- 2. quota guard
 reset_state()
 quota.STATE.write_text(json.dumps({"day": today_pt(), "spent": 4450,

@@ -69,6 +69,14 @@ check(not any("chart" in g or "how we know" in g.lower() or "gold" in g for g in
 check(len(D.search_questions(Q, TITLE, suggest=lambda s: ["x"] * 3, pause=0)) == 2,
       "with no real phrasings the list was padded")
 
+# 1b. only questions the SCRIPT answers (food agent, 13 Oct 2026: "Is steak
+# good for you?" was offered for a video that never says)
+ans = D.search_questions(Q, TITLE, suggest=lambda s: FAKE.get(s, []), pause=0, script=SCRIPT)
+check(not any("magnetic" in g or "expensive" in g for g in ans),
+      f"a question the script never answers was kept: {ans}")
+check(D.answered("Is titanium good for you?", SCRIPT),
+      "a health question the script never takes passed")
+
 # ------------------------------------------------------------ 2. compose
 STATE = TMP / "descriptions.json"
 D.STATE = STATE
@@ -109,6 +117,9 @@ check(not D.problems(snip["description"], TITLE, Q, ref),
 thin = snip["description"].replace("• " + got[2], "").replace("• " + got[3], "")
 check(any("phrasing" in p for p in D.problems(thin, TITLE, Q, ref)),
       "a description with too few phrasings passed")
+bogus = snip["description"].replace("\u2022 " + got[1], "\u2022 Is titanium magnetic?")
+check(any("does not answer" in p for p in D.problems(bogus, TITLE, Q, ref, script=SCRIPT)),
+      "a description listing a question the script never answers passed")
 check(any("subject" in p for p in D.problems("T?\n0:00 a", "T?", Q)),
       "a description that never names the subject passed")
 if ref:

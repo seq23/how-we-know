@@ -171,7 +171,8 @@ def apply_plan(slugs: list[str] | None = None) -> list[dict]:
             # same for a variant A REBUILT since it went up (its sha256 is
             # recorded at apply time).
             img = (thumb_for(slug)
-                   if row.get("applied_video_id") == live[slug]["video_id"] else None)
+                   if row.get("applied_video_id") == live[slug]["video_id"]
+                   and not demand_thumb_block(live[slug]["video_id"]) else None)
             meta = search_meta(slug, row.get("question")) \
                 if row.get("applied_video_id") == live[slug]["video_id"] else None
             if meta and row.get("description_sha256") != meta["sha"]:
@@ -224,6 +225,29 @@ def search_meta(slug: str, question: str | None) -> dict | None:
     blob = snip["description"] + "\n" + "|".join(snip["tags"])
     return {"description": snip["description"], "tags": snip["tags"],
             "sha": hashlib.sha256(blob.encode()).hexdigest()}
+
+
+def demand_thumb_block(video_id: str) -> str | None:
+    """Why this lane must leave a video's thumbnail alone, or None.
+
+    The demand lane (loop/demand.py, snapshot loop/state/demand.json) owns a
+    video's thumbnail once it has (a) a live Studio Test & Compare running
+    (`thumbnail_test.active`) or (b) a second packaging round
+    (`repackage_round` >= 1, variant B or C already set). Variant A pushed
+    over either would end the test or undo the round (coordination, 13 Oct
+    2026). Titles and descriptions still go up."""
+    try:
+        import demand                                      # noqa: PLC0415
+        v = (demand.load().get("videos") or {}).get(video_id) or {}
+    except Exception:                                      # noqa: BLE001
+        return None
+    if (v.get("thumbnail_test") or {}).get("active"):
+        return "a Studio thumbnail test is running (demand lane)"
+    if int(v.get("repackage_round") or 0) >= 1:
+        used = (v.get("thumbnails_used") or ["?"])[-1]
+        return (f"demand round {v.get('repackage_round')} set variant {used}; "
+                f"the demand lane owns this thumbnail")
+    return None
 
 
 def _sha(p: Path) -> str:
@@ -311,6 +335,10 @@ def run_apply(slugs=None, limit: int = 0, dry_run: bool = False, yt=None) -> int
             yt.update_snippet(t["video_id"], snippet)
             spent = quota.VIDEO_READ + quota.VIDEO_UPDATE
             img = thumb_for(t["slug"])
+            blocked = demand_thumb_block(t["video_id"])
+            if img and blocked:
+                st.note(f"{t['slug']}: thumbnail left alone - {blocked}")
+                img = None
             row0 = doc["titles"][t["slug"]]
             if img and t.get("meta_only") and row0.get("thumbnail_applied") \
                     and row0.get("thumbnail_sha256") == _sha(img):
@@ -328,7 +356,8 @@ def run_apply(slugs=None, limit: int = 0, dry_run: bool = False, yt=None) -> int
             if img:
                 doc["titles"][t["slug"]]["thumbnail_applied"] = True
                 doc["titles"][t["slug"]]["thumbnail_sha256"] = _sha(img)
-            elif not t.get("meta_only"):
+                doc["titles"][t["slug"]]["thumbnail_applied_at"] = stamp
+            elif not t.get("meta_only") and not blocked:
                 doc["titles"][t["slug"]]["thumbnail_applied"] = False
             if t.get("meta_only"):
                 st.work(f"{t['video_id']} ({t['slug']}) search block (description "
