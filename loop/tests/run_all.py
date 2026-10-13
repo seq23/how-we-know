@@ -10,6 +10,7 @@ from __future__ import annotations
 import glob
 import os
 import subprocess
+import time
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -124,7 +125,12 @@ def main() -> int:
         # breaker happens to be tripped, nor write the committed flag. Absent
         # file = closed; a test that wants a trip writes its own.
         env["LOOP_BREAKER_FLAG"] = os.path.join(stops, f"breaker-{name}.json")
-        print(f"\n──── {name}")
+        # flush: the header must land in the CI log BEFORE the child's own
+        # output, or per-test timing cannot be read off the log timestamps
+        # (2026-10-13: every header arrived at the end, so balancing the
+        # shards had nothing to go on).
+        print(f"\n──── {name}", flush=True)
+        t0 = time.monotonic()
         # Each test picks its OWN interpreter needs: test_workflows re-execs
         # into the system python3 for pyyaml, while the validators need the
         # venv's numpy and Pillow. Launching every test from the venv lets each
@@ -133,6 +139,7 @@ def main() -> int:
         # numpy, each time sending someone after a content bug that did not
         # exist. An unrun validator is not a failing one.
         r = subprocess.run([PY, f], cwd=ROOT, env=env)
+        print(f"──── {name} took {time.monotonic() - t0:.0f}s", flush=True)
         if r.returncode != 0:
             failed.append(name)
 
