@@ -17,8 +17,9 @@ impossible-scale feel from real footage (walls, kaleidoscopes), cuts every
   3. The timeline builder obeys the cadence on synthetic beats and real clip
      records: opening shots 3-5 s, body holds 6-12 s, one device, 3-5 composites,
      no AI still on a picture shot.
-  4. The ffmpeg treatments write exactly the frames asked for (a wall and a
-     kaleidoscope from a generated test clip).
+  4. The ffmpeg treatments: their filter graphs on every host (12 staggered
+     tiles, 6 mirrored; a four-way mirror; 2x blend; ping-pong; ranges + crop),
+     and where ffmpeg exists, exactly the frames asked for.
   5. V53 passes on the real repo.
 
 NEGATIVE PROOFS (run 2026-10-13, then restored):
@@ -30,6 +31,7 @@ from __future__ import annotations
 
 import json
 import os
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -122,16 +124,37 @@ spec2 = {**tl, "ai_assets": ["chocolate-break-macro"], "altered_content": True, 
 check(not F.check_spec(spec2), f"the built timeline passes the spec contract: {F.check_spec(spec2)}")
 
 # ------------------------------------------------- 4. the ffmpeg treatments
-with tempfile.TemporaryDirectory() as td:
-    src = Path(td) / "src.mp4"
-    subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "lavfi", "-i",
-                    "testsrc2=size=640x360:rate=25:duration=3", "-pix_fmt", "yuv420p", str(src)],
-                   check=True)
-    for tr in ("wall", "kaleido", "slowmo"):
-        out = Path(td) / f"{tr}.mp4"
-        info = FM.prepare(str(src), {}, 4.0, out, tr)
-        check(info["frames"] == 120 and FM.count_frames(out) == 120,
-              f"{tr}: exactly 120 frames of 4 s at 30 fps from a 3 s clip (looped seamlessly)")
+# The graph is checked on every host; where ffmpeg exists (the Mac that renders)
+# each treatment is also run and its frame count asserted. CI has no ffmpeg.
+g = FM.graph({}, 4.0, "wall", clip_dur=3.0)
+check(g["frames"] == 120 and "xstack=inputs=12" in g["vf"] and g["vf"].count("hflip") == 6
+      and len({m for m in __import__("re").findall(r"trim=start=([0-9.]+),setpts=PTS-STARTPTS(?:,hflip)?\[t", g["vf"])}) == 12,
+      "wall: 12 tiles, 6 mirrored, 12 different start offsets")
+g = FM.graph({}, 4.0, "kaleido", clip_dur=3.0)
+check(all(x in g["vf"] for x in ("hflip", "vflip", "hstack", "vstack", "sin(")),
+      "kaleido: four-way mirror with a drifting window")
+g = FM.graph({}, 4.0, "slowmo", clip_dur=3.0)
+check("setpts=2.0000*PTS" in g["vf"] and "minterpolate" in g["vf"], "slowmo: 2x, frames blended")
+g = FM.graph({}, 12.0, "play", clip_dur=3.0)
+check("reverse" in g["vf"] and "concat=n=2" in g["vf"], "a clip shorter than its shot ping-pongs, never jumps")
+g = FM.graph({"ranges": [[1.0, 3.0], [5.0, 8.0]], "crop": [0.1, 0, 0.9, 0.9]}, 4.0, "play",
+             clip_dur=10.0, offset=2.5)
+check(g["span"] == [5.0, 8.0] and "crop=trunc(iw*0.9" in g["vf"],
+      "a reused ranged clip shows its next usable range, cropped as recorded")
+if shutil.which("ffmpeg"):
+    with tempfile.TemporaryDirectory() as td:
+        src = Path(td) / "src.mp4"
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "lavfi", "-i",
+                        "testsrc2=size=640x360:rate=25:duration=3", "-pix_fmt", "yuv420p", str(src)],
+                       check=True)
+        for tr in ("wall", "kaleido", "slowmo"):
+            out = Path(td) / f"{tr}.mp4"
+            info = FM.prepare(str(src), {}, 4.0, out, tr)
+            check(info["frames"] == 120 and FM.count_frames(out) == 120,
+                  f"{tr}: exactly 120 frames of 4 s at 30 fps from a 3 s clip (looped seamlessly)")
+else:
+    print("  note  no ffmpeg on this host: the treatments' graphs are checked above, "
+          "their rendered frame counts on the Mac that renders")
 
 # ------------------------------------------------------------------ 5. V53
 import validate as V                                           # noqa: E402

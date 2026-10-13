@@ -91,13 +91,14 @@ def _base_chain(src_span_s: float, need_s: float, speed: float) -> str:
     return chain
 
 
-def prepare(rec_path: str, rec: dict, dur: float, out: Path, treatment: str = "play",
-            seed: int = 0, offset: float = 0.0) -> dict:
-    """Write `out` (exact frames, 1920x1080, 30 fps, no audio). Returns what it did."""
+def graph(rec: dict, dur: float, treatment: str, clip_dur: float, seed: int = 0,
+          offset: float = 0.0) -> dict:
+    """The ffmpeg filter graph for one treatment - a pure function (no ffmpeg
+    needed), so a host without ffmpeg can still check what would be drawn."""
     if treatment not in TREATMENTS:
         raise ValueError(f"unknown treatment {treatment!r}")
     n = int(round(dur * FPS))
-    cd = probe_duration(rec_path)
+    cd = clip_dur
     if rec.get("ranges"):
         a, b = _span(rec, cd, int(round(offset / 2.5)))
     else:
@@ -150,6 +151,15 @@ def prepare(rec_path: str, rec: dict, dur: float, out: Path, treatment: str = "p
               f"split[q0][q1];[q1]hflip[q1f];[q0][q1f]hstack,split[h0][h1];[h1]vflip[h1f];"
               f"[h0][h1f]vstack,setsar=1[v]")
     vf = vf[:-3] + f",{VIGNETTE}[v]"                      # every treatment ends "...[v]"
+    return {"vf": vf, "frames": n, "span": [round(a, 3), round(b, 3)], "speed": speed}
+
+
+def prepare(rec_path: str, rec: dict, dur: float, out: Path, treatment: str = "play",
+            seed: int = 0, offset: float = 0.0) -> dict:
+    """Write `out` (exact frames, 1920x1080, 30 fps, no audio). Returns what it did."""
+    g = graph(rec, dur, treatment, probe_duration(rec_path), seed, offset)
+    vf, n, speed = g["vf"], g["frames"], g["speed"]
+    a, b = g["span"]
     cmd = ["ffmpeg", "-v", "error", "-y", "-i", rec_path, "-filter_complex", vf, "-map", "[v]",
            "-frames:v", str(n), "-an", "-c:v", "libx264", "-preset", "veryfast", "-crf", "14",
            "-pix_fmt", "yuv420p", "-r", str(FPS), str(out)]
