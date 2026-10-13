@@ -205,16 +205,29 @@ quota.STATE.unlink(missing_ok=True)
 
 
 class SchedYT(FakeYT):
+    """YouTube as observed 2026-10-13: a re-date applies, but the next
+    read-back or two still return the OLD publishAt."""
+    STALE_READS = 2
+
     def __init__(self):
         super().__init__()
-        self.pa = {}
+        self.pa = {r["video_id"]: r["scheduled_publish_at"] for r in rows}
+        self.stale = {}
 
     def set_schedule(self, vid, publish_at):
         self.calls.append(("set_schedule", vid, publish_at))
+        self.stale[vid] = (self.pa.get(vid), self.STALE_READS)
         self.pa[vid] = publish_at
 
     def status(self, vid):
+        old, n = self.stale.get(vid, (None, 0))
+        if n:
+            self.stale[vid] = (old, n - 1)
+            return {"privacy": "private", "publishAt": old}
         return {"privacy": "private", "publishAt": self.pa.get(vid)}
+
+
+RP.SLEEP = lambda s: None
 
 
 yt = SchedYT()
@@ -245,8 +258,20 @@ check(sorted(c[1] for c in yt.calls if c[0] == "set_schedule") == ["D0", "D1", "
               and led2[v]["rescheduled_from"] == [r["scheduled_publish_at"] for r in rows if r["video_id"] == v]
               for v in plan)
       and led2["SOON"]["scheduled_publish_at"] == stamp(0.5)
-      and spent() == 4 * (quota.VIDEO_UPDATE + quota.VIDEO_READ),
-      f"reschedule did not re-date via videos.update and record it: {code} {yt.calls}")
+      and spent() == 4 * (quota.VIDEO_UPDATE + quota.VIDEO_READ * 4),
+      f"reschedule did not re-date via videos.update, wait out the stale "
+      f"read-back and record it: {code} {yt.calls} {spent()}")
+# An earlier write that YouTube already applied is recorded, not re-sent.
+ledger.LEDGER.write_text(json.dumps({"published": rows, "queued": []}))
+yt = SchedYT()
+for v_, p_ in plan.items():
+    yt.pa[v_] = p_["new"]
+code = run(RP.run_reschedule, yt=yt)
+led3 = {r["video_id"]: r for r in json.loads(ledger.LEDGER.read_text())["published"]}
+check(not [c for c in yt.calls if c[0] == "set_schedule"]
+      and all(led3[v]["scheduled_publish_at"] == plan[v]["new"] for v in plan),
+      f"a re-date YouTube already held was re-sent or not recorded: {yt.calls}")
+ledger.LEDGER.write_text(json.dumps({"published": list(led2.values()), "queued": []}))
 code = run(RP.run_reschedule, yt=SchedYT())
 check(code == "RESCHEDULE_UP_TO_DATE", f"a second reschedule was not UP_TO_DATE: {code}")
 

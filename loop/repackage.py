@@ -313,6 +313,14 @@ def reschedule_plan(led: dict | None = None) -> list[dict]:
     return out
 
 
+READBACK_WAITS_S = (3, 6, 10, 15, 20)
+SLEEP = __import__("time").sleep          # tests replace it
+
+
+def _pa(status: dict) -> str:
+    return (status.get("publishAt") or "").replace(".000Z", "Z")
+
+
 def run_reschedule(limit: int = 0, dry_run: bool = False, yt=None) -> int:
     """Re-date the scheduled long-form videos onto the rotation (owner
     decision 2026-10-13). videos.update only - 50 units a video; nothing is
@@ -340,7 +348,7 @@ def run_reschedule(limit: int = 0, dry_run: bool = False, yt=None) -> int:
                           f"all {len(plan)} scheduled long-form video(s) already "
                           f"sit on their rotation day",
                           unblock="Nothing to do.")
-        fit = affordable(quota.VIDEO_UPDATE + quota.VIDEO_READ, len(moves))
+        fit = affordable(quota.VIDEO_UPDATE + quota.VIDEO_READ * 6, len(moves))
         if fit == 0:
             st.named_stop("QUOTA_EXHAUSTED",
                           f"{len(moves)} video(s) to re-date and no room after "
@@ -360,10 +368,25 @@ def run_reschedule(limit: int = 0, dry_run: bool = False, yt=None) -> int:
         led = ledger.load()
         by_id = {r.get("video_id"): r for r in led["published"]}
         for m in moves:
-            yt.set_schedule(m["video_id"], m["new"])
+            # READ FIRST: a re-date YouTube already holds (an earlier run's
+            # write whose read-back was stale) is recorded, not re-sent.
             got = yt.status(m["video_id"]) or {}
-            quota.spend(quota.VIDEO_UPDATE + quota.VIDEO_READ, LANE)
-            pa = (got.get("publishAt") or "").replace(".000Z", "Z")
+            spent_ = quota.VIDEO_READ
+            if _pa(got) != m["new"]:
+                yt.set_schedule(m["video_id"], m["new"])
+                spent_ += quota.VIDEO_UPDATE
+                # THE READ-BACK IS EVENTUALLY CONSISTENT. 2026-10-13, run
+                # 38401393843: all ten writes applied, and every immediate
+                # read-back still returned the old publishAt - so the lane
+                # kept the old dates and called it a failure. Poll briefly.
+                for wait in READBACK_WAITS_S:
+                    got = yt.status(m["video_id"]) or {}
+                    spent_ += quota.VIDEO_READ
+                    if _pa(got) == m["new"]:
+                        break
+                    SLEEP(wait)
+            quota.spend(spent_, LANE)
+            pa = _pa(got)
             if pa != m["new"] or got.get("privacy") not in (None, "private"):
                 st.note(f"{m['slug']}: YouTube reports publishAt={pa!r} "
                         f"privacy={got.get('privacy')!r} after re-dating to "
