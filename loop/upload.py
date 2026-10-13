@@ -321,31 +321,49 @@ def build_payload(item: dict) -> dict:
             if line.strip().startswith("-"):
                 sources.append(line.strip()[1:].strip())
 
-    parts = [answer, ""]
-    if chapters:
-        parts += ["Chapters", *chapters, ""]
-    if sources:
-        parts += ["Sources — every figure in this video traces to one of these:",
-                  *[f"• {s}" for s in sources], ""]
-    # Books and gear the episode ALREADY CITES, from channel/affiliates.json
-    # (2026-10-08). Plain links until the owner sets an affiliate ID there;
-    # no block at all for an episode that cites none.
+    # THE SEARCH BLOCK (owner, 13 Oct 2026): loop/describe.compose - the
+    # title-as-question first line, chapters named as questions, 4-8 real
+    # phrasings people type, the sources line. One template for every domain;
+    # `repackage apply` takes the same snippet from here. Until the slug's
+    # block is prepared (loop/describe.py prepare, daily in loop-repackage)
+    # the legacy description below ships and V60 names the slug pending.
     import affiliates                                      # noqa: PLC0415
+    import describe                                        # noqa: PLC0415
     aff = affiliates.block_for(text)
-    if aff:
-        parts += [aff, ""]
-    parts += ["Evidence-first explainers. Every on-screen number comes from a "
-              "named public source stated in the narration."]
-    description = "\n".join(parts)[:DESC_MAX]
-
-    # Tags and hashtags are DERIVED per episode from its own domain and
-    # subject — owner instruction, 2026-09-21. See loop/discovery.py: no
-    # fixed list here any more, and a materials episode no longer ships
-    # tagged "marine biology".
     domain = domains.domain_of_slug(slug)
-    tags = discovery.tags_for(slug, text, domain)
-    hashtags = discovery.hashtags_for(slug, text, domain)
-    description = discovery.add_hashtag_line(description, hashtags)[:DESC_MAX]
+    composed = describe.compose(slug, text, title, item["question"], chapters,
+                                sources, extra=[aff])
+    if composed:
+        description, tags = composed
+        description = description[:DESC_MAX]
+        hashtags = discovery.hashtags_for(slug, text, domain)
+        description = discovery.add_hashtag_line(description, hashtags)[:DESC_MAX]
+    else:
+        parts = [answer, ""]
+        if chapters:
+            parts += ["Chapters", *chapters, ""]
+        if sources:
+            parts += ["Sources — every figure in this video traces to one of these:",
+                      *[f"• {s}" for s in sources], ""]
+        # Books and gear the episode ALREADY CITES, from channel/affiliates.json
+        # (2026-10-08). Plain links until the owner sets an affiliate ID there;
+        # no block at all for an episode that cites none.
+        import affiliates                                      # noqa: PLC0415
+        aff = affiliates.block_for(text)
+        if aff:
+            parts += [aff, ""]
+        parts += ["Evidence-first explainers. Every on-screen number comes from a "
+                  "named public source stated in the narration."]
+        description = "\n".join(parts)[:DESC_MAX]
+    
+        # Tags and hashtags are DERIVED per episode from its own domain and
+        # subject — owner instruction, 2026-09-21. See loop/discovery.py: no
+        # fixed list here any more, and a materials episode no longer ships
+        # tagged "marine biology".
+        domain = domains.domain_of_slug(slug)
+        tags = discovery.tags_for(slug, text, domain)
+        hashtags = discovery.hashtags_for(slug, text, domain)
+        description = discovery.add_hashtag_line(description, hashtags)[:DESC_MAX]
 
     return {
         # defaultLanguage is NOT cosmetic and NOT optional here.

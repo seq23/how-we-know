@@ -172,6 +172,16 @@ def apply_plan(slugs: list[str] | None = None) -> list[dict]:
             # recorded at apply time).
             img = (thumb_for(slug)
                    if row.get("applied_video_id") == live[slug]["video_id"] else None)
+            meta = search_meta(slug, row.get("question")) \
+                if row.get("applied_video_id") == live[slug]["video_id"] else None
+            if meta and row.get("description_sha256") != meta["sha"]:
+                # The search block (13 Oct 2026) changed or never went up:
+                # title + description + tags in one videos.update (51 units),
+                # and the thumbnail with it when that is pending too.
+                out.append({"slug": slug, "video_id": live[slug]["video_id"],
+                            "title": row["new_title"],
+                            "question": row.get("question"), "meta_only": True})
+                continue
             if img and (not row.get("thumbnail_applied")
                         or row.get("thumbnail_sha256") != _sha(img)):
                 out.append({"slug": slug, "video_id": live[slug]["video_id"],
@@ -194,6 +204,26 @@ def thumb_for(slug: str) -> Path | None:
     if not p.exists() or not (p.parent / "contract.json").exists():
         return None
     return None if thumb_contract.verify(slug, str(p.parent.parent)) else p
+
+
+def search_meta(slug: str, question: str | None) -> dict | None:
+    """{description, tags, sha} from the ONE template (loop/describe.compose
+    via upload.build_payload), or None while the slug has no prepared search
+    block - then the live description is left as it is."""
+    import describe                                        # noqa: PLC0415
+    import hashlib                                         # noqa: PLC0415
+    import upload                                          # noqa: PLC0415
+    rec = describe.load()["episodes"].get(slug) or {}
+    if len(rec.get("questions") or []) < describe.MIN_QUESTIONS:
+        return None
+    try:
+        snip = upload.build_payload({"slug": slug, "question": question or "",
+                                     "script": f"scripts/{slug}.md"})["snippet"]
+    except Exception:                                      # noqa: BLE001
+        return None
+    blob = snip["description"] + "\n" + "|".join(snip["tags"])
+    return {"description": snip["description"], "tags": snip["tags"],
+            "sha": hashlib.sha256(blob.encode()).hexdigest()}
 
 
 def _sha(p: Path) -> str:
@@ -273,10 +303,18 @@ def run_apply(slugs=None, limit: int = 0, dry_run: bool = False, yt=None) -> int
                 st.note(f"{t['slug']}: {t['video_id']} not found on the channel")
                 quota.spend(quota.VIDEO_READ, LANE)
                 continue
-            snippet = ytmeta.merge_snippet(live.get("snippet"), title=t["title"])
+            meta = search_meta(t["slug"], t.get("question"))
+            extra = ({"description": meta["description"], "tags": meta["tags"]}
+                     if meta else {})
+            snippet = ytmeta.merge_snippet(live.get("snippet"), title=t["title"],
+                                           **extra)
             yt.update_snippet(t["video_id"], snippet)
             spent = quota.VIDEO_READ + quota.VIDEO_UPDATE
             img = thumb_for(t["slug"])
+            row0 = doc["titles"][t["slug"]]
+            if img and t.get("meta_only") and row0.get("thumbnail_applied") \
+                    and row0.get("thumbnail_sha256") == _sha(img):
+                img = None                # already the live thumbnail
             if img:
                 yt.set_thumbnail(t["video_id"], img)
                 spent += quota.THUMBNAIL
@@ -284,9 +322,18 @@ def run_apply(slugs=None, limit: int = 0, dry_run: bool = False, yt=None) -> int
             stamp = _now().isoformat(timespec="seconds")
             doc["titles"][t["slug"]]["applied_at"] = stamp
             doc["titles"][t["slug"]]["applied_video_id"] = t["video_id"]
-            doc["titles"][t["slug"]]["thumbnail_applied"] = bool(img)
+            if meta:
+                doc["titles"][t["slug"]]["description_sha256"] = meta["sha"]
+                doc["titles"][t["slug"]]["description_applied_at"] = stamp
             if img:
+                doc["titles"][t["slug"]]["thumbnail_applied"] = True
                 doc["titles"][t["slug"]]["thumbnail_sha256"] = _sha(img)
+            elif not t.get("meta_only"):
+                doc["titles"][t["slug"]]["thumbnail_applied"] = False
+            if t.get("meta_only"):
+                st.work(f"{t['video_id']} ({t['slug']}) search block (description "
+                        f"+ tags) updated" + (" and thumbnailed" if img else ""))
+                continue
             r = rows.get(t["slug"])
             if r is not None:
                 r["title"] = t["title"]

@@ -4703,6 +4703,69 @@ def v51_channel_branding() -> Result:
     return r
 
 
+def v60_description_search_block() -> Result:
+    """HARD. Every long-form description carries the search block (owner,
+    13 Oct 2026; loop/describe.py): >= 4 question phrasings people type, the
+    title's subject named, the title as the first line, and chapters whose
+    timestamps are the render's (upload.build_chapters: captions/<slug>.
+    chapters.txt from the real timing). Checked on what WOULD ship - the one
+    template, composed now - for every live video and queued script with a
+    prepared block. Live videos with no block yet, or whose live description
+    is not today's (titles.json description_sha256), are a HELD stop by name
+    until loop-repackage prepares and applies them. Zero examined fails.
+    """
+    r = Result("V60 description-search-block")
+    import describe as _ds                                 # noqa: PLC0415
+    import ledger as _led                                  # noqa: PLC0415
+    import longform_title as _lt                           # noqa: PLC0415
+    import repackage as _rp                                # noqa: PLC0415
+    import upload as _up                                   # noqa: PLC0415
+    r.examined += 1
+    probe = _ds.problems("T?\n\nChapters\n0:00 A?\n\nQuestions this video "
+                         "answers:\n\u2022 Why?\n", "T?", "what is titanium")
+    if not any("question phrasing" in x for x in probe):
+        r.fail("self-check: a description with one phrasing passed")
+    doc = _ds.load()
+    titles = _lt.load()["titles"]
+    live = {x["slug"]: x for x in _led.load()["published"]
+            if x.get("video_id") and not x.get("retired_at")}
+    pending = []
+    for slug in sorted(set(live) | set(doc["episodes"])):
+        sp = ROOT / "scripts" / f"{slug}.md"
+        if not sp.exists():
+            continue
+        text = sp.read_text(encoding="utf-8")
+        q = _lt._question_for(slug, text)                  # noqa: SLF001
+        t, _w, _s = _lt.title_for_upload(slug, text, q)
+        rec = doc["episodes"].get(slug) or {}
+        if len(rec.get("questions") or []) < _ds.MIN_QUESTIONS or not t:
+            if slug in live:
+                pending.append(slug)
+            continue
+        r.examined += 1
+        try:
+            snip = _up.build_payload({"slug": slug, "question": q,
+                                      "script": f"scripts/{slug}.md"})["snippet"]
+        except Exception as e:                             # noqa: BLE001
+            r.fail(f"{slug}: the template could not compose: {e}")
+            continue
+        for p_ in _ds.problems(snip["description"], t, q,
+                               _up.build_chapters(slug, text)):
+            r.fail(f"{slug}: {p_}")
+        if slug in live:
+            meta = _rp.search_meta(slug, q)
+            if meta and (titles.get(slug) or {}).get("description_sha256") != meta["sha"]:
+                pending.append(slug)
+    if pending:
+        r.named_stop("DESCRIPTION_PENDING",
+                     f"{len(pending)} live long-form video(s) do not carry "
+                     f"today's search block yet; loop-repackage prepares and "
+                     f"applies it daily", pending)
+    if r.examined == 0:
+        r.fail("examined ZERO descriptions")
+    return r
+
+
 def run_all(items) -> tuple[bool, list[dict]]:
     """Run every validator. Returns (all_passed, report_rows).
 
@@ -4741,6 +4804,7 @@ def run_all(items) -> tuple[bool, list[dict]]:
                v49_lengthen_splice(),
                v50_repackage_state(),
                v51_channel_branding(),
+               v60_description_search_block(),
                v52_food_domain(),
                v53_food_preset(),
                v54_food_voice_sound()]
