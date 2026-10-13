@@ -568,18 +568,6 @@ def _publish_slugs() -> list[str]:
     return batch_queue.queued_slugs()
 
 
-def _lengthened_slugs() -> list[str]:
-    """Published episodes loop/lengthen.py has spliced to 10:30-11:30 and
-    loop/repackage.py has not yet re-uploaded: their new cut must reach the
-    shelf although they left the publish queue long ago. Renders only - the
-    Shorts push (push_shorts) keeps reading _publish_slugs()."""
-    try:
-        import lengthen                                    # noqa: PLC0415
-        return lengthen.ready_for_reupload()
-    except Exception:                                      # noqa: BLE001
-        return []
-
-
 def push(backend: _Backend, slugs=None, force: bool = False) -> dict:
     """Shelve every finished render and thumbnail that is not already up there.
 
@@ -593,7 +581,7 @@ def push(backend: _Backend, slugs=None, force: bool = False) -> dict:
     """
     renders = ROOT / "renders"
     thumbs = ROOT / "channel" / "thumbnails"
-    slugs = list(slugs) if slugs else _publish_slugs() + _lengthened_slugs()
+    slugs = list(slugs) if slugs else _publish_slugs()
     # A render the gate holds is never shelved, by either route: the cloud
     # upload lane takes whatever is on the shelf, so refusing it here is what
     # keeps a sub-floor or clipped render off YouTube. See loop/render_gate.py.

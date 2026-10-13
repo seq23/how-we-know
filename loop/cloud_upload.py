@@ -776,7 +776,15 @@ def run(limit: int = 4, dry_run: bool = False) -> int:
                         "deleted meanwhile: the render stays on the R2 shelf.")
 
         led = ledger.load()
-        when = backfill.schedule_for(led, len(take), per_week)
+        # THE ROTATION (owner decision 2026-10-13, cadence.rotation): each
+        # episode on its own domain's weekday, one a day at 10:00 local; an
+        # episode whose domain holds no day this week waits on the shelf.
+        when_all = backfill.schedule_slugs(led, [s_ for s_, _, _ in take], per_week)
+        skipped = [s_ for (s_, _, _), w in zip(take, when_all) if w is None]
+        if skipped:
+            st.note(f"no rotation day for {', '.join(skipped)}; left on the shelf")
+        take = [t for t, w in zip(take, when_all) if w is not None]
+        when = [w for w in when_all if w is not None]
 
         for (slug, _, _), t in zip(take, when):
             print(f"  plan  {t:%a %d %b %H:%M UTC}  {slug}")

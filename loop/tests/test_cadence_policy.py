@@ -503,10 +503,13 @@ def check() -> list[str]:
                     if wd not in days:
                         fails.append(f"at {pw}/week {dom} was given {stamp}, "
                                      f"outside its own days {tuple(days)}")
-                    if wd in (2, 3):
-                        fails.append(f"at {pw}/week a slot landed on a "
-                                     f"Wednesday or Thursday, the two "
-                                     f"measured-weak days")
+                    # The owner's rotation (2026-10-13) replaced the
+                    # weak-day rule: each slot on ITS domain's rotation day,
+                    # never Sunday.
+                    if _bf.rotation_days(cfg).get(wd) != dom or wd == 6:
+                        fails.append(f"at {pw}/week {dom} got {stamp}, which "
+                                     f"the rotation gives to "
+                                     f"{_bf.rotation_days(cfg).get(wd)!r}")
         # And the ledger itself is untouched by asking.
         examined += 1
         if _led.load()["published"] != led_now["published"]:
@@ -524,10 +527,11 @@ def check() -> list[str]:
     examined += 1
     if len(set(_bf.weekdays_for(4))) != 4:
         fails.append("the 4/week ladder does not name four distinct days")
-    if set(_bf.weekdays_for(2)) != {6, 1}:
-        fails.append("the 2/week ladder is no longer Sunday and Tuesday, so "
-                     "the fourteen scheduled episodes are on a schedule the "
-                     "loop no longer computes")
+    if set(_bf.weekdays_for(6)) != set(_bf.rotation_days(cfg)) or \
+            6 in _bf.weekdays_for(6):
+        fails.append("the 6/week publish days are not the owner's rotation "
+                     "(Mon-Sat, Sunday none) - loop/config.json "
+                     "cadence.rotation")
 
     import shorts_lane as _sl                                 # noqa: PLC0415
     examined += 1

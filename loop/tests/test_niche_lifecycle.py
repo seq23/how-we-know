@@ -7,7 +7,8 @@ as finished. `loop/domains.lifecycle()` closes that; this proves it, and proves
 each refusal, by constructing the month rather than waiting years for one.
 
   1. a decayed, measured domain is RETIRED and the next-ranked one PROMOTED
-  2. the new allocation still sums to cadence.ceiling
+  2. the new allocation keeps its total, and the rotation's weekdays move
+     with it (the promoted domain takes the retired one's days)
   3. a decayed domain with too FEW measured episodes is refused, named
      QUEUE_DECAYED_BUT_UNMEASURED - a thin queue early is a scoring backlog
   4. with no unused domain left, retirement is refused, named
@@ -91,12 +92,24 @@ def main() -> int:
           d["promoted"] == D.next_unused(list(alloc)),
           f"promoted {d['promoted']}")
     check("the retired domain keeps no slots", victim not in d["allocation"])
-    check("the allocation still sums to cadence.ceiling",
-          sum(d["allocation"].values()) == ceiling,
-          f"sums to {sum(d['allocation'].values())}")
+    # Since the owner's rotation (2026-10-13) the allocation is expressed in
+    # REGISTERED rotation days, not the ceiling: retirement keeps the total.
+    check("the allocation keeps its total (the rotation's registered days)",
+          sum(d["allocation"].values()) == sum(alloc.values()),
+          f"sums to {sum(d['allocation'].values())}, was {sum(alloc.values())}")
+    new_rot = D.rotation_after(cfg, d["allocation"])
+    moved_cfg = {**cfg, "cadence": {**cfg["cadence"], "rotation": {
+        **cfg["cadence"]["rotation"], "weekdays": new_rot}},
+        "domains": {**cfg["domains"], "allocation": d["allocation"]}}
+    check("the rotation moves with it: the promoted domain takes the retired "
+          "one's weekdays and nothing else changes",
+          victim not in new_rot.values()
+          and D.rotation_counts(moved_cfg) == d["allocation"]
+          and all(new_rot[k] == v for k, v in cfg["cadence"]["rotation"]["weekdays"].items()
+                  if v not in (victim, d["promoted"])),
+          f"{new_rot}")
     # and the split it produces must not raise
-    D.slots_at({**cfg, "domains": {**cfg["domains"],
-                                   "allocation": d["allocation"]}}, 2)
+    D.slots_at(moved_cfg, 2)
     check("slots_at() accepts the post-retirement split", True)
 
     # 3 ------------------------------------------- decayed but barely measured

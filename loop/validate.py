@@ -110,8 +110,9 @@ THE REPACKAGE JOB (owner decisions 12-13 Oct 2026), in the render gate:
                         subject fill >= 60%, the one grade, A chosen)
   V49 lengthen-splice   the ten-minute splice keeps its books: band
                         arithmetic, frame boundary, superseded + hold state
-  V50 repackage-state   titles applied, re-uploads re-pointed, slots at most
-                        LONG_FORM_PER_DAY a day, Shorts reserve kept
+  V50 repackage-state   forward only: titles/thumbnails applied to ledger
+                        videos, re-dated rows on their rotation day, no
+                        upload/delete/publish path, Shorts reserve kept
   (the stake-then-payoff hook is V44's: it checks whatever variant a script
   is marked with, and stake-then-payoff is first in loop/opening.py VARIANTS)
 
@@ -1523,6 +1524,9 @@ def v19_snippet_merge() -> Result:
     return r
 
 
+ROTATION_START = "2026-10-13"     # cadence.rotation came into force
+
+
 def v20_cadence_schedule() -> Result:
     """The cadence raise cannot disturb anything already scheduled — proven.
 
@@ -1565,18 +1569,28 @@ def v20_cadence_schedule() -> Result:
     ceiling = int(cfg["cadence"].get("ceiling", 4))
 
     # ---- the ladders are long enough, and never reach a weak day --------
+    # ---- THE ROTATION (owner decision 2026-10-13, cadence.rotation) ----
+    # Replaces the old "never Wednesday or Thursday" ladder rule: the owner's
+    # three-niche schedule uses every day but Sunday, one domain per day, one
+    # long-form a day. Held here exactly as written in docs/CHANNEL-PLAN.md.
     r.examined += 1
+    rot_days = backfill.rotation_days(cfg)
+    rc = backfill.rotation(cfg)
+    if 6 in rot_days:
+        r.fail(f"the rotation maps Sunday to {rot_days[6]}; Sunday carries no "
+               f"long-form slot (compilations later)")
+    if len(rot_days) != per_week:
+        r.fail(f"the rotation maps {len(rot_days)} weekday(s) but the cadence "
+               f"is {per_week}/week - the pin and the rotation must move together")
+    if int(rc.get("per_day", 0)) < 1:
+        r.fail(f"rotation per_day is {rc.get('per_day')!r}; at least one")
     try:
         days = backfill.weekdays_for(ceiling)
-        weak = {2, 3}                       # Wednesday, Thursday
-        on_weak = sorted(weak & set(days))
-        if on_weak:
-            r.fail(f"the publish ladder reaches weekday(s) {on_weak} at the "
-                   f"{ceiling}/week ceiling; Wednesday and Thursday are the "
-                   f"two measured-weak days and no cadence may use them")
+        if set(days) != set(rot_days):
+            r.fail(f"the publish weekdays {days} at the {ceiling}/week ceiling "
+                   f"are not the rotation's {sorted(rot_days)}")
     except backfill.CadenceExceedsLadder as e:
-        r.fail(f"the publish weekday ladder cannot carry the {ceiling}/week "
-               f"ceiling: {e}")
+        r.fail(f"the rotation cannot carry the {ceiling}/week ceiling: {e}")
 
     r.examined += 1
     shorts_week = C.shorts_effective()
@@ -1636,9 +1650,9 @@ def v20_cadence_schedule() -> Result:
                            f"and {d}; two domains sharing a publish day is how "
                            f"they double-book each other")
                 seen_days[wd] = d
-                if wd in {2, 3}:
-                    r.fail(f"{d} is assigned weekday {wd} (Wednesday/Thursday), "
-                           f"the two measured-weak days")
+                if rot_days.get(wd) != d:
+                    r.fail(f"{d} is assigned weekday {wd}, which the rotation "
+                           f"gives to {rot_days.get(wd)!r}")
 
         allocated: set[str] = set()
         for d, days in live.items():
@@ -1664,6 +1678,43 @@ def v20_cadence_schedule() -> Result:
                     r.fail(f"{stamp} is only {lead:.1f}h away, inside the "
                            f"{backfill.MIN_LEAD_HOURS}h minimum lead — the "
                            f"owner cannot watch it through before it airs")
+        # EVERY DATED, UNAIRED EPISODE SITS ON ITS OWN DOMAIN'S ROTATION DAY,
+        # at a rotation slot time, at most per_day a day. Rows dated before
+        # the rotation existed (ROTATION_START) that are off it are a HELD
+        # stop until `loop/repackage.py reschedule` re-dates them; a row
+        # dated since is a hard failure.
+        import domains as _dm                              # noqa: PLC0415
+        times = set(rc.get("slot_times_local") or [])
+        per_day_seen: dict = {}
+        off: list[str] = []
+        retired_ = {x.get("video_id") for x in led["published"]
+                    if x.get("retired_at") or x.get("schedule_cancelled_at")}
+        for row in tail:
+            if row.get("video_id") in retired_:
+                continue                  # retired: private, schedule cleared
+            r.examined += 1
+            when = row["when"].astimezone(backfill.PUBLISH_TZ)
+            dom_ = _dm.domain_of_slug(row["slug"]) or "deep-sea-ocean-science"
+            per_day_seen[when.date()] = per_day_seen.get(when.date(), 0) + 1
+            if rot_days.get(when.weekday()) == dom_ and f"{when:%H:%M}" in times:
+                continue
+            full = next((x for x in led["published"]
+                         if x.get("video_id") == row.get("video_id")), {})
+            why = (f"{row['slug']} ({dom_}) is dated {when:%a %d %b %H:%M %Z}, "
+                   f"not its rotation day/time")
+            if (full.get("rescheduled_at") or full.get("uploaded_at") or "") < ROTATION_START:
+                off.append(row["slug"])
+            else:
+                r.fail(why)
+        for day_, n_ in per_day_seen.items():
+            if n_ > int(rc.get("per_day", 1)):
+                r.fail(f"{n_} long-form episodes are dated on {day_}; the "
+                       f"rotation allows {rc.get('per_day', 1)} a day")
+        if off:
+            r.named_stop("OFF_ROTATION_RESCHEDULE_PENDING",
+                         f"{len(off)} episode(s) dated before the rotation sit "
+                         f"off it; `loop/repackage.py reschedule` re-dates them",
+                         off)
         r.note(f"{len(tail)} episode(s) dated through {last:%Y-%m-%d}; "
                f"{len(live)} domain(s) allocating on disjoint days "
                f"{ {d: tuple(v) for d, v in live.items()} } at {per_week}/week")
@@ -4221,75 +4272,61 @@ def v49_lengthen_splice() -> Result:
 
 
 def v50_repackage_state() -> Result:
-    """HARD. The repackage lane's books agree with the ledgers, and its quota
-    guard still leaves the Shorts lane its reserve.
+    """HARD. The repackage lane keeps its books, forward only.
 
-    * settings: long_form_per_day is a non-negative int, every slot time parses;
-    * the lane's reserve is never below quota.shorts_reserve();
-    * every replaced old->new: the ledger row now carries the new id with the
-      old in replaced_video_ids, and no Short still hands off to the old id;
-    * every scheduled re-upload sits at a configured local slot time, at most
-      long_form_per_day per local day;
-    * every applied title's video is the ledger's (or a replaced) id.
+    * its quota reserve never drops below the Shorts lane's
+      (quota.shorts_reserve()) - the 3,400 the evening Shorts need;
+    * the lane has no upload, no delete and no privacy-flip path: a published
+      video's title and thumbnail are all it may change, and a scheduled
+      one's date (owner decisions 13 Oct 2026, forward only);
+    * every applied title's video id is a ledger video;
+    * every re-dated ledger row sits on its own domain's rotation weekday,
+      at most one a day (the rotation itself is V20's).
     """
     r = Result("V50 repackage-state")
     import repackage as _rp                                # noqa: PLC0415
     import quota as _q                                     # noqa: PLC0415
     import ledger as _led                                  # noqa: PLC0415
     import longform_title as _lt                           # noqa: PLC0415
-    from zoneinfo import ZoneInfo as _Z                    # noqa: PLC0415
+    import backfill as _bf                                 # noqa: PLC0415
+    import domains as _dm                                  # noqa: PLC0415
     import datetime as _dt                                 # noqa: PLC0415
     r.examined += 1
-    cfg = _rp.settings()
-    per = cfg.get("long_form_per_day")
-    if not isinstance(per, int) or per < 0:
-        r.fail(f"repackage.long_form_per_day is {per!r}, not a count")
-        per = 0
-    for t in cfg.get("slot_times_local") or []:
-        if not re.fullmatch(r"\d\d:\d\d", str(t)):
-            r.fail(f"repackage slot time {t!r} does not parse as HH:MM")
     if _rp.reserve() < _q.shorts_reserve():
         r.fail("the repackage reserve is smaller than the Shorts lane's")
-    doc = _rp.load()
+    src = (ROOT / "loop" / "repackage.py").read_text()
+    for bad, why in (("resumable_upload", "an upload path"),
+                     ('"DELETE"', "an HTTP DELETE"),
+                     ('"privacyStatus": "public"', "a path that makes a video public"),
+                     ('"public", publish_at', "a path that makes a video public"),
+                     ("set_privacy(self.token, vid, privacy", "a free privacy flip")):
+        if bad in src:
+            r.fail(f"loop/repackage.py carries {why} - published videos are "
+                   f"never re-uploaded, deleted or re-privated (forward only)")
     rows = _led.load().get("published") or []
-    by_slug = {x["slug"]: x for x in rows if not x.get("retired_at")}
-    olds = set(doc["replaced"])
-    for slug, rec in sorted(doc["reuploads"].items()):
-        r.examined += 1
-        if rec.get("phase") == "replaced":
-            row = by_slug.get(slug) or {}
-            if row.get("video_id") != rec.get("new_video_id"):
-                r.fail(f"{slug}: replaced by {rec.get('new_video_id')} but the "
-                       f"ledger still points at {row.get('video_id')}")
-            if rec.get("old_video_id") not in {
-                    x.get("video_id") for x in row.get("replaced_video_ids") or []}:
-                r.fail(f"{slug}: old id {rec.get('old_video_id')} missing from "
-                       f"replaced_video_ids")
-    tz = _Z(cfg.get("tz", "America/Chicago"))
-    per_day: dict = {}
-    for slug, rec in doc["reuploads"].items():
-        if rec.get("phase") != "scheduled":
-            continue
-        at = _dt.datetime.fromisoformat(rec["scheduled_publish_at"].replace("Z", "+00:00")).astimezone(tz)
-        if f"{at:%H:%M}" not in (cfg.get("slot_times_local") or [])[:max(per, 0)]:
-            r.fail(f"{slug}: scheduled at {at:%H:%M %Z}, not a repackage slot")
-        per_day[at.date()] = per_day.get(at.date(), 0) + 1
-    for d, n in per_day.items():
-        if n > per:
-            r.fail(f"{n} re-uploads scheduled on {d}, over long_form_per_day={per}")
-    shorts = (read_json(SHORTS_LEDGER_PATH, default={"published": []})
-              .get("published") or [])
-    for s in shorts:
-        if s.get("handoff_episode") in olds:
-            r.fail(f"Short {s.get('video_id')} still hands off to replaced "
-                   f"episode {s['handoff_episode']}")
-    live_ids = {x.get("video_id") for x in rows} | olds | set(doc["replaced"].values())
+    ids = {x.get("video_id") for x in rows}
     for slug, row in _lt.load()["titles"].items():
         if row.get("applied_at"):
             r.examined += 1
-            if row.get("applied_video_id") not in live_ids:
+            if row.get("applied_video_id") not in ids:
                 r.fail(f"{slug}: title applied to {row.get('applied_video_id')}, "
                        f"which no ledger row knows")
+    rot = _bf.rotation_days(config())
+    per_day: dict = {}
+    for x in rows:
+        if not x.get("rescheduled_at") or x.get("retired_at"):
+            continue
+        r.examined += 1
+        when = _dt.datetime.fromisoformat(
+            x["scheduled_publish_at"].replace("Z", "+00:00")).astimezone(_bf.PUBLISH_TZ)
+        dom = _dm.domain_of_slug(x["slug"]) or "deep-sea-ocean-science"
+        if rot.get(when.weekday()) != dom:
+            r.fail(f"{x['slug']}: re-dated to {when:%a %d %b}, not a {dom} "
+                   f"rotation day")
+        per_day[when.date()] = per_day.get(when.date(), 0) + 1
+    for d, n in per_day.items():
+        if n > 1:
+            r.fail(f"{n} re-dated episodes share {d}")
     return r
 
 

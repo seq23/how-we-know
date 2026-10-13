@@ -1190,3 +1190,18 @@ PRIVATE (never deleted) only after their replacement is public.
   48-hour test). The 2026-09-28 `cold-open-payoff` rule was answer-first, not a hook — the loop measured
   supply, never demand; a demand verdict and weekly email are part of the program. Full text:
   docs/CHANNEL-PLAN.md § "The long-form program of 2026-10-13" onward.
+
+## 2026-10-13 (later) — forward only, and the three-niche rotation
+
+- **Forward only** (owner): published videos are never re-rendered, re-uploaded, extended or privated.
+  The `repackage reupload` command from #191 is removed (it never ran against a video: its one dispatch
+  ended `REPACKAGE_NO_BACKLOG`); `loop/lengthen.py` refuses published slugs (`published_refused`).
+  `repackage apply` (title + thumbnail, public and scheduled) is the one pass that touches the catalogue.
+- **No drain; a one-a-day rotation** (owner): Mon/Thu deep sea, Tue/Fri materials, Wed/Sat food (mapped,
+  not yet registered — its days stay empty), Sun none, 10:00 local, `per_day` 1. `videos_per_week` and the
+  ceiling move 4 → 6 with it (`validate_plan.PLAN_CADENCE`). V20's "never Wednesday or Thursday" ladder rule
+  is replaced by the stricter rotation rule: every dated episode on its own domain's day and time, one a
+  day, Sunday unmapped; rows dated before the rotation sit in a held stop until
+  `loop/repackage.py reschedule` re-dates them (videos.update only, per-domain order kept, nothing inside
+  24 h moves).
+

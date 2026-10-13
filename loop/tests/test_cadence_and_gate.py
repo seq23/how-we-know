@@ -1,8 +1,8 @@
 """The two invariants that protect the loop from its owner's good intentions.
 
-**The cadence ceiling.** `pov/topic-taxonomy.json` sets the CEILING at four a
-week. `loop/config.json` sets the OPERATING cadence, currently two, escalating
-to three on evidence. Two components each keeping their own number with no link
+**The cadence ceiling.** `pov/topic-taxonomy.json` sets the CEILING at six a
+week since the owner's three-niche rotation of 2026-10-13 (four before it).
+`loop/config.json` sets the OPERATING cadence, the rotation's six mapped days. Two components each keeping their own number with no link
 between them is exactly how a ceiling quietly becomes five, so this test is the
 link: the operating cadence and the escalated cadence must both sit at or under
 the taxonomy's ceiling, and the ceiling recorded in config must match it.
@@ -26,7 +26,7 @@ LOOP = os.path.abspath(os.path.join(HERE, ".."))
 ROOT = os.path.abspath(os.path.join(LOOP, ".."))
 PAGE = os.path.join(ROOT, "docs", "approve", "index.html")
 
-CEILING = 4
+CEILING = 6      # owner's three-niche rotation, 2026-10-13 (was 4)
 
 
 def check() -> list[str]:
@@ -50,6 +50,14 @@ def check() -> list[str]:
     if a > CEILING or esc > CEILING:
         fails.append(f"cadence raised above {CEILING}; the ceiling is "
                      f"deliberate and never raised to clear a backlog")
+    rot = (cfg["cadence"].get("rotation") or {}).get("weekdays") or {}
+    mapped = sum(1 for v in rot.values() if v)
+    examined += 1
+    if a != mapped:
+        fails.append(f"operating cadence {a} is not the rotation's {mapped} "
+                     f"mapped days - the pin and the rotation move together")
+    if rot.get("sun"):
+        fails.append("the rotation maps Sunday; Sunday carries no long-form")
     if not cfg["cadence"].get("deliberate"):
         fails.append("loop/config.json no longer marks the ceiling deliberate")
 
@@ -127,6 +135,6 @@ if __name__ == "__main__":
     f = check()
     for x in f:
         print(f"  ✗ {x}")
-    print("all green - ceiling held at 4, gate credentialless and small"
+    print(f"all green - ceiling held at {CEILING}, gate credentialless and small"
           if not f else f"{len(f)} failure(s)")
     sys.exit(1 if f else 0)

@@ -21,7 +21,9 @@ ffmpeg/ffprobe call are fixtured; every path is a scratch directory.
      packet-identical, refuses a stitched file under the floor, and on success
      marks `spliced`, records the old render in superseded_renders.json and
      clears render_hold.json;
-  6. V49 passes on the real repo and fails on a spliced row with no
+  6. forward only: a published slug is refused (published_refused) before any
+     model call and is never listed as short;
+  7. V49 passes on the real repo and fails on a spliced row with no
      superseded record.
 
 NEGATIVE PROOF (run once, 2026-10-13): change frames_through()'s round() to
@@ -287,9 +289,20 @@ check(len(ran) == 2 and [p["narration"] for p in ran[0][0]] == ["n0", "n1", "n2"
       and [p["narration"] for p in ran[1][0]] == ["t0", "t1"]
       and ran[1][1] == ["0000.wav", "0001.wav"],
       f"only the opening and the tail were rendered, each with its own wavs: {ran}")
-check(L.ready_for_reupload(L.STATE) == [] and (L.save(doc, L.STATE) or True)
-      and L.ready_for_reupload(L.STATE) == [slug],
-      "a spliced episode is not ready for re-upload")
+# FORWARD ONLY (owner, 13 Oct 2026): a published slug is refused before any
+# model call, whatever its length.
+import ledger                                                 # noqa: E402
+_saved_led = ledger.LEDGER
+ledger.LEDGER = TMP / "ledger.json"
+ledger.LEDGER.write_text(json.dumps({"published": [{"slug": slug, "video_id": "V"}],
+                                     "queued": []}))
+L._ask = lambda m: (_ for _ in ()).throw(AssertionError("model called"))  # noqa: SLF001
+r = L.stage_script(slug)
+check(r["status"] == "published_refused", f"a published episode was extended: {r}")
+check(slug not in L._short_slugs(), "a published slug was listed as short")  # noqa: SLF001
+ledger.LEDGER = _saved_led
+check(not hasattr(L, "ready_for_reupload"), "the re-upload hand-off still exists")
+L.save(doc, L.STATE)                     # the spliced books V49 reads below
 
 # --------------------------------------------------------------------- 6. V49
 import validate as V                                          # noqa: E402

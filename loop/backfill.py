@@ -33,6 +33,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 import time
 import urllib.error
@@ -132,51 +133,96 @@ class CadenceExceedsLadder(Exception):
     """More slots a week were asked for than there are evidenced days."""
 
 
+WEEKDAY_NAMES = ("mon", "tue", "wed", "thu", "fri", "sat", "sun")
+
+
+def rotation(cfg: dict | None = None) -> dict:
+    """cadence.rotation: {"weekdays": {mon..sun: domain|None}, "per_day",
+    "slot_times_local"}. LONG_FORM_PER_DAY in the environment overrides
+    per_day for one run (owner's setting, default 1)."""
+    c = dict(((cfg or config()).get("cadence") or {}).get("rotation") or {})
+    env = os.environ.get("LONG_FORM_PER_DAY", "").strip()
+    if env.isdigit():
+        c["per_day"] = int(env)
+    c.setdefault("per_day", 1)
+    c.setdefault("slot_times_local", [f"{PUBLISH_HOUR_LOCAL:02d}:00"])
+    c.setdefault("weekdays", {})
+    return c
+
+
+def rotation_days(cfg: dict | None = None) -> dict[int, str]:
+    """weekday number -> the domain that owns it. Unmapped (Sunday) absent."""
+    wk = rotation(cfg)["weekdays"]
+    return {i: wk[n] for i, n in enumerate(WEEKDAY_NAMES) if wk.get(n)}
+
+
 def weekdays_for(per_week: int) -> tuple[int, ...]:
-    """The weekdays a cadence of `per_week` publishes on.
+    """The weekdays a cadence of `per_week` publishes on: the rotation's
+    mapped days (owner decision 2026-10-13, cadence.rotation).
 
     Raises rather than wrapping round. Silently reusing a day would put two
-    episodes on one morning and call it a cadence increase, and reaching past
-    the ladder would put one on a day the evidence says is weak - both are
-    failures that look exactly like success from the outside.
+    episodes on one morning and call it a cadence increase.
     """
+    days = sorted(rotation_days())
     n = max(1, int(per_week))
-    if n > len(PUBLISH_WEEKDAY_LADDER):
+    if n > len(days):
         raise CadenceExceedsLadder(
-            f"cadence is {n}/week but only {len(PUBLISH_WEEKDAY_LADDER)} "
-            f"evidenced publish days exist. Add a day to "
-            f"PUBLISH_WEEKDAY_LADDER with the evidence for it - do not let the "
-            f"allocator double up a morning or wander onto Wednesday.")
-    return tuple(sorted(PUBLISH_WEEKDAY_LADDER[:n]))
+            f"cadence is {n}/week but the rotation maps only {len(days)} "
+            f"publish days (loop/config.json cadence.rotation). Map a day - do "
+            f"not let the allocator double up a morning.")
+    return tuple(days[:n]) if n < len(days) else tuple(days)
 
 
 def domain_weekdays(cfg: dict, per_week: int) -> dict[str, tuple[int, ...]]:
-    """Which weekdays each domain publishes on, at `per_week`.
-
-    The ladder is ranked by evidence and a cadence takes the first N rungs;
-    this splits those N rungs between the domains using `domains.live_slots`,
-    which is already the one place the weekly split is expressed. Rungs are
-    handed out IN LADDER ORDER, strongest first, and the domain that already
-    holds slots keeps the ones it has.
-
-    At 2/week that is deep sea on (Sun, Tue) and materials on nothing. At
-    4/week deep sea keeps EXACTLY (Sun, Tue) and materials takes the two rungs
-    the raise added, (Mon, Fri). That property is the whole reason a cadence
-    raise can weave a second domain into the existing weeks instead of queuing
-    it behind them: the new domain is never assigned a day the old one is
-    already publishing on, so no existing slot can be contended for and none
-    has to move.
-    """
+    """Which weekdays each REGISTERED domain publishes on: straight from the
+    rotation map (owner decision 2026-10-13). A mapped domain that is not yet
+    allocated (food-science until it is registered) gets nothing here, so its
+    days stay empty - no other domain may borrow them."""
     import domains as _dom                                 # noqa: PLC0415
-    ladder = list(PUBLISH_WEEKDAY_LADDER[:max(1, int(per_week))])
-    split = _dom.slots_at(cfg, int(per_week))
-    # Deterministic order: the domain with the most slots first, ties broken
-    # by name, so the same cadence always produces the same assignment.
-    out: dict[str, tuple[int, ...]] = {}
-    for name in sorted(split, key=lambda d: (-split[d], d)):
-        take, ladder = ladder[:split[name]], ladder[split[name]:]
-        out[name] = tuple(sorted(take))
-    return out
+    known = set(_dom.allocation(cfg))
+    out: dict[str, list[int]] = {d: [] for d in known}
+    for wd, d in sorted(rotation_days(cfg).items()):
+        if d in known:
+            out[d].append(wd)
+    return {d: tuple(v) for d, v in out.items()}
+
+
+def rotation_slots(start: datetime, n: int, days: tuple[int, ...],
+                   taken: set[str], cfg: dict | None = None) -> list[datetime]:
+    """`n` free slots strictly after `start` on `days`, at the rotation's
+    fixed local times, at most per_day a day COUNTING what is already dated
+    that day (any domain), never a taken slot."""
+    rc = rotation(cfg)
+    per_day = int(rc["per_day"])
+    times = [tuple(int(x) for x in t.split(":"))
+             for t in rc["slot_times_local"]][:max(per_day, 0)]
+    out: list[datetime] = []
+    if not times or n <= 0:
+        return out
+    by_day: dict = {}
+    for t in taken:
+        try:
+            dt = datetime.fromisoformat(t.replace("Z", "+00:00")).astimezone(PUBLISH_TZ)
+        except ValueError:
+            continue
+        by_day[dt.date()] = by_day.get(dt.date(), 0) + 1
+    day = start.astimezone(PUBLISH_TZ).date()
+    for _ in range(4000):
+        if day.weekday() in days:
+            for hh, mm in times:
+                if by_day.get(day, 0) >= per_day or len(out) >= n:
+                    break
+                u = datetime(day.year, day.month, day.day, hh, mm,
+                             tzinfo=PUBLISH_TZ).astimezone(timezone.utc)
+                if u <= start or u.isoformat() in taken:
+                    continue
+                out.append(u)
+                by_day[day] = by_day.get(day, 0) + 1
+            if len(out) >= n:
+                return out
+        day += timedelta(days=1)
+    raise CadenceExceedsLadder(f"could not find {n} free slot(s) on weekdays "
+                               f"{days} after {start.isoformat()}")
 
 
 def occupied(led: dict) -> set[str]:
@@ -348,7 +394,33 @@ def schedule_for(led: dict, n: int, per_week: int,
     # between Sun 20 and Sun 27: base was Sun 20, +3.5 days landed on Wed 23,
     # and the next Sunday/Tuesday after that is Sun 27. A silently dropped
     # publish slot on a channel whose whole argument is a predictable cadence.
-    return slots(base, n, per_week, days=days, taken=taken)
+    if days is None:
+        # No domain: only the rotation's REGISTERED days, never a day held
+        # for a domain that has nothing to publish yet.
+        days = tuple(sorted(wd for d in domain_weekdays(config(), per_week).values()
+                            for wd in d))
+    return rotation_slots(base, n, days, taken)
+
+
+def schedule_slugs(led: dict, slugs: list[str], per_week: int) -> list[datetime | None]:
+    """One slot per slug, each on ITS OWN domain's rotation weekdays, in the
+    order given; slots handed out here count as taken for the next. A slug
+    whose domain holds no rotation day (not registered, or mapped to nothing)
+    gets None and is not uploaded - its day is never borrowed."""
+    import domains as _dom                                 # noqa: PLC0415
+    taken = set(occupied(led))
+    split = domain_weekdays(config(), per_week)
+    base = datetime.now(timezone.utc) + timedelta(hours=MIN_LEAD_HOURS)
+    out: list[datetime | None] = []
+    for slug in slugs:
+        days = split.get(_dom.domain_of_slug(slug) or "deep-sea-ocean-science")
+        if not days:
+            out.append(None)
+            continue
+        t = rotation_slots(base, 1, days, taken)[0]
+        taken.add(t.isoformat())
+        out.append(t)
+    return out
 
 
 def upload_one(st, token: str, slug: str, question: str, render: Path,

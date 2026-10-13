@@ -271,14 +271,7 @@ def slots_at(cfg: dict, per_week: int) -> dict[str, int]:
     Largest ceiling share first, so a domain never loses its last live slot to
     rounding while a smaller one keeps one.
     """
-    alloc = allocation(cfg)
-    ceiling = int(cfg["cadence"]["ceiling"])
-    total = sum(alloc.values()) or 1
-    if total != ceiling:
-        raise ValueError(
-            f"domains.allocation sums to {total} but cadence.ceiling is "
-            f"{ceiling}. The allocation is expressed at the ceiling; if they "
-            f"disagree the live split is arithmetic on a number nobody owns.")
+    alloc = rotation_counts(cfg)
     order = sorted(alloc, key=lambda d: (-alloc[d], d))
     out = {d: 0 for d in alloc}
     left = int(per_week)
@@ -287,6 +280,56 @@ def slots_at(cfg: dict, per_week: int) -> dict[str, int]:
         out[d] = take
         left -= take
     return out
+
+
+def rotation_counts(cfg: dict) -> dict[str, int]:
+    """Weekly long-form days per REGISTERED domain, from the owner's rotation
+    (cadence.rotation, 2026-10-13). The allocation must agree with it - two
+    lists of the weekly split are the drift this module exists to prevent - so
+    a disagreement raises, naming both. A mapped domain not yet in the
+    allocation (food-science) is counted nowhere: its days stay empty."""
+    alloc = allocation(cfg)
+    wk = ((cfg.get("cadence") or {}).get("rotation") or {}).get("weekdays") or {}
+    counts = {d: 0 for d in alloc}
+    for name in ("mon", "tue", "wed", "thu", "fri", "sat", "sun"):
+        d = wk.get(name)
+        if d in counts:
+            counts[d] += 1
+    if not wk:
+        return dict(alloc)
+    if counts != alloc:
+        raise ValueError(
+            f"domains.allocation {alloc} disagrees with cadence.rotation's "
+            f"weekdays {counts}. The rotation is the owner's schedule "
+            f"(docs/CHANNEL-PLAN.md); move both together.")
+    return counts
+
+
+def rotation_after(cfg: dict, new_alloc: dict[str, int]) -> dict:
+    """The rotation weekdays once the allocation moves to `new_alloc`.
+
+    A domain that loses slots frees its LATEST weekdays first; a domain that
+    gains takes the freed days in weekday order. Days mapped to a domain the
+    allocation never knew (food-science before it is registered) are left
+    exactly as they are. So the rotation and the allocation always move
+    together - rotation_counts() raises if they ever disagree."""
+    names = ("mon", "tue", "wed", "thu", "fri", "sat", "sun")
+    wk = dict(((cfg.get("cadence") or {}).get("rotation") or {}).get("weekdays") or {})
+    old = allocation(cfg)
+    freed: list[str] = []
+    for d in old:
+        mine = [n for n in names if wk.get(n) == d]
+        drop = len(mine) - int(new_alloc.get(d, 0))
+        for n in (mine[::-1][:drop] if drop > 0 else []):
+            wk[n] = None
+            freed.append(n)
+    freed.sort(key=names.index)
+    for d, want in sorted(new_alloc.items()):
+        have = sum(1 for n in names if wk.get(n) == d)
+        while have < int(want) and freed:
+            wk[freed.pop(0)] = d
+            have += 1
+    return wk
 
 
 def live_slots(cfg: dict) -> dict[str, int]:
