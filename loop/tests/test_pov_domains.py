@@ -154,10 +154,20 @@ def _window_full_takes_lru_bank_line() -> tuple[bool, str]:
     finally:
         P.rotation_window = real
     line = next((l for l in P.bank() if l["id"] == pick["pov_id"]), None)
-    want = min(trans, key=lambda i: (max(k for k, u in enumerate(every)
-                                         if u == i), i))
+    # Least-recently-used AMONG the lines no other live episode owns: the
+    # window yields, the no-reuse rule never does (2026-10-13 - the yield
+    # used to hand out owned lines, which record_assignment then refused).
+    owned = P.owned_by_other_live("nothing-like-this-at-all")
+    free = [i for i in trans if i not in owned]
+    if not free or len(free) == len(trans):
+        return False, (f"probe is vacuous: {len(owned)} owned of "
+                       f"{len(trans)} transferable lines")
+    want = min(free, key=lambda i: (max(k for k, u in enumerate(every)
+                                        if u == i), i))
     if not line or line["line"] != pick["line"]:
         return False, f"picked a line not verbatim in the bank: {pick}"
+    if pick["pov_id"] in owned:
+        return False, f"picked {pick['pov_id']}, which a live episode owns"
     if pick["pov_id"] != want:
         return False, f"picked {pick['pov_id']}, least recently used is {want}"
     return True, ""
