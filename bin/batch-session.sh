@@ -192,7 +192,9 @@ hold_awake() { caffeinate -dimsu -w $$ & }
 # loop/mac_sync.py guard; proved by loop/tests/test_mac_branch_guard.py.
 checkout_guard() {
   echo "--- checkout guard: on main and up to date with origin/main ---"
-  if ! $PY loop/mac_sync.py guard --lane mac-batch; then
+  # $PYP: the stdlib fallback (python3 when .venv is absent, as in CI) - a
+  # missing render venv must not stop the guard from running at all.
+  if ! "$PYP" loop/mac_sync.py guard --lane mac-batch; then
     echo "  the night is refused; nothing was planned, narrated or rendered."
     exit 3
   fi
