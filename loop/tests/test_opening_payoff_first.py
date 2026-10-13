@@ -98,8 +98,10 @@ if any(p.startswith("opening rule") for p in author.shape_problems(good, pov)):
     fails.append("author.shape_problems() rejects a payoff-first opening")
 examined += 1
 system = author.build_prompt("why do anglerfish glow", pov)[0]["content"]
-if O.prompt_text("cold-open-payoff") not in system:
-    fails.append("the drafting prompt does not carry the opening rule")
+if O.prompt_text(O.active()) not in system or \
+        O.prompt_text("stake-then-payoff") not in system:
+    fails.append("the drafting prompt does not carry the opening rule in "
+                 "force (stake-then-payoff, owner instruction 13 Oct 2026)")
 examined += 1
 if "O.prompt_text()" not in (LOOP / "draft.py").read_text().replace(
         "opening.prompt_text()", "O.prompt_text()"):
@@ -146,7 +148,7 @@ state = Path(tempfile.mkdtemp(prefix="opening-state-")) / "opening_variant.json"
 start = datetime(2026, 9, 28, tzinfo=timezone.utc)
 
 
-def vids(old: float, new: float, variant: str = "cold-open-payoff",
+def vids(old: float, new: float, variant: str = "stake-then-payoff",
          base: str = O.PRE_RULE, aired: datetime = start) -> list[dict]:
     """Four baseline and four new-rule rows; the new ones air on consecutive
     days from `aired`, so the 3rd airs at aired + 2 days."""
@@ -182,7 +184,7 @@ if (r["action"] != "wait" or r.get("decidable") is not False
 examined += 1
 # Airing dates known from the ledger (scheduled, not yet measured) count too.
 r = O.evaluate(two, now=start + timedelta(days=365), path=state,
-               aired={"cold-open-payoff": ["2026-09-28", "2026-09-29",
+               aired={"stake-then-payoff": ["2026-09-28", "2026-09-29",
                                            "2026-11-08"]})
 if r["compare_on"] != "2026-12-06":
     fails.append(f"the scheduled 3rd airing did not set the date: {r}")
@@ -193,21 +195,37 @@ if r["action"] != "keep":
 examined += 1
 r = O.evaluate(vids(113, 100), now=due + timedelta(days=1), path=state)
 doc = json.loads(state.read_text()) if state.exists() else {}
-if (r["action"] != "switch" or doc.get("active") != "question-first-teaser"
+if (r["action"] != "switch" or doc.get("active") != "cold-open-payoff"
         or not doc.get("history") or "not above" not in doc["history"][-1]["why"]):
-    fails.append(f"a losing variant did not switch to the next one and log "
-                 f"why: {r} / {doc}")
+    fails.append(f"a losing stake-then-payoff did not switch to the next "
+                 f"variant (cold-open-payoff) and log why: {r} / {doc}")
+examined += 1
+# The second rung: cold-open-payoff, measured against stake-then-payoff, loses
+# too -> the third variant, logged.
+since = datetime.fromisoformat(doc["since"])
+later = since + timedelta(days=2 + O.COMPARE_AFTER_DAYS + 1)
+v2 = (vids(113, 100) + [{"average_view_duration_s": 97,
+                         "opening": "cold-open-payoff",
+                         "aired_at": (since + timedelta(days=i)).date().isoformat()}
+                        for i in range(4)])
+r = O.evaluate(v2, now=later, path=state)
+doc = json.loads(state.read_text())
+if (r["action"] != "switch" or doc.get("active") != "question-first-teaser"
+        or len(doc.get("history") or []) != 2
+        or "cold-open-payoff averaged 97" not in doc["history"][-1]["why"]):
+    fails.append(f"a losing cold-open-payoff did not switch to "
+                 f"question-first-teaser and log why: {r} / {doc}")
 examined += 1
 since = datetime.fromisoformat(doc["since"])
 later = since + timedelta(days=2 + O.COMPARE_AFTER_DAYS + 1)
-v = (vids(113, 100) + [{"average_view_duration_s": 95,
-                        "opening": "question-first-teaser",
-                        "aired_at": (since + timedelta(days=i)).date().isoformat()}
-                       for i in range(4)])
+v = (v2 + [{"average_view_duration_s": 95,
+            "opening": "question-first-teaser",
+            "aired_at": (since + timedelta(days=i)).date().isoformat()}
+           for i in range(4)])
 r = O.evaluate(v, now=later, path=state)
-if r["action"] != "switch" or r.get("to") != "cold-open-payoff":
+if r["action"] != "switch" or r.get("to") != "stake-then-payoff":
     fails.append(f"with every variant tried and losing, evaluate() did not "
-                 f"settle on the best measured one: {r}")
+                 f"settle on the best measured one (stake-then-payoff, 100s): {r}")
 examined += 1
 if O.active(state) not in O.VARIANTS:
     fails.append("active() returned an unknown variant")
@@ -235,7 +253,7 @@ finally:
     measure.FINDING = saved
 examined += 1
 txt = fin.read_text()
-if "What the loop is doing about it" not in txt or "cold-open-payoff" not in txt:
+if "What the loop is doing about it" not in txt or "stake-then-payoff" not in txt:
     fails.append("the finding does not say what the loop is doing about it")
 
 if examined == 0:

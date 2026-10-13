@@ -288,12 +288,13 @@ the twenty existing scripts and the pipeline parses it.
 
 ## YouTube title
 
-<ONE line of about 70 characters, NOT a question. Lead with the most specific,
-surprising TRUE thing from your Direct-answer lock; keep EVERY word of the
-question's subject so it still matches the search; end with "— and how we
-know". Any number in it must appear in the Direct-answer lock. Shape, for the
-question "what is the deepest fish ever recorded": "The deepest fish ever
-recorded was filmed 8,336 m down — and how we know". No clickbait words.>
+<ONE line of AT MOST 60 characters, NOT a question. A specific subject plus a
+stake: a concrete figure your Direct-answer lock states, a contradiction
+(never, without, not, only) or something lost, broken or survived. NEVER the
+words "how we know" (the brand is the channel name). Never just the question
+reworded. Every word and figure must appear in your own script. Shape, for the
+question "what is the midnight zone": "The ocean layer where sunlight never
+reaches". No clickbait words.>
 
 ## Direct-answer lock
 
@@ -747,6 +748,18 @@ def shape_problems(text: str, pov: dict) -> list[str]:
     # REDRAFTED inside MAX_ATTEMPTS like every other shape problem, never
     # held for a person.
     p += opening.problems(text, opening.active())
+    # THE LONG-FORM TITLE FORMULA (loop/longform_title.py, owner decision
+    # 2026-10-13): the draft's own `## YouTube title` must pass the formula
+    # and its truth guard, or the draft is redrafted here, inside its own
+    # retries - the upload lane would otherwise hold it for a title.
+    import longform_title                                  # noqa: PLC0415
+    own = longform_title.script_title(text)
+    if not own:
+        p.append("missing '## YouTube title' (one line, <=60 characters, "
+                 "subject plus stake, never 'how we know')")
+    else:
+        p += [f"YouTube title {own!r}: {x}"
+              for x in longform_title.title_problems(own, text)]
     return p
 
 

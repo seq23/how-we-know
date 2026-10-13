@@ -246,6 +246,15 @@ def build_chapters(slug: str, script_text: str) -> list[str]:
     return [f"{_fmt_ts(secs)} {label}" for secs, label in rows]
 
 
+class TitleRefused(Exception):
+    """No long-form title passes loop/longform_title.py; the slug is held."""
+
+    def __init__(self, slug: str, problems: list[str]):
+        super().__init__(f"{slug}: no passing long-form title: "
+                         + "; ".join(problems))
+        self.slug, self.problems = slug, problems
+
+
 def build_payload(item: dict) -> dict:
     """Compose the video's YouTube metadata from the script itself.
 
@@ -285,8 +294,17 @@ def build_payload(item: dict) -> dict:
     # every search word of the query — "How strong graphene really is — and
     # how we know" — and refuses a figure the script does not state. The
     # sentence-case fix above still holds: titles.py capitalises the same way.
-    import titles                                          # noqa: PLC0415
-    title = titles.title_for(item["question"], text)
+    #
+    # 2026-10-13 (owner decision, repackage job 1): LONG-FORM titles follow
+    # loop/longform_title.py — <=60 characters, a subject plus a stake, never
+    # "how we know", every word and figure traceable to the script. The only
+    # door is title_for_upload(); nothing passing means NO upload (TitleRefused),
+    # never a fallback title. Shorts keep loop/titles.py (shorts_lane.py).
+    import longform_title                                  # noqa: PLC0415
+    title, why, _src = longform_title.title_for_upload(
+        item.get("slug") or path.stem, text, item["question"])
+    if title is None:
+        raise TitleRefused(item.get("slug") or path.stem, why)
 
     answer = ""
     m = re.search(r"## Direct-answer lock\s*\n+(.+?)\n\s*\n", text, re.S)

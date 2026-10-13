@@ -28,8 +28,29 @@ WANT_PAID = {"hasPaidProductPlacement": False}
 import glob                                                        # noqa: E402
 script = sorted(glob.glob(os.path.join(LOOP, "..", "scripts", "*.md")))[0]
 slug = os.path.basename(script)[:-3]
-long_form = upload.build_payload({"slug": slug, "question": slug.split("-", 1)[-1].replace("-", " "),
-                                  "script": os.path.relpath(script, os.path.join(LOOP, ".."))})
+# 2026-10-13: a long-form upload needs a title that passes
+# loop/longform_title.py; with none, build_payload REFUSES (TitleRefused) -
+# proved here first - and the passing one is supplied from a scratch
+# titles.json, never the committed state.
+import json as _json                                               # noqa: E402
+import tempfile as _tf                                             # noqa: E402
+from pathlib import Path as _P                                     # noqa: E402
+import longform_title                                              # noqa: E402
+_item = {"slug": slug, "question": slug.split("-", 1)[-1].replace("-", " "),
+         "script": os.path.relpath(script, os.path.join(LOOP, ".."))}
+_scratch = _P(_tf.mkdtemp(prefix="three-questions-")) / "titles.json"
+longform_title.STATE = _scratch
+try:
+    upload.build_payload(_item)
+    if not longform_title.script_title(open(script).read()):
+        fails.append("upload.build_payload built a long-form payload with no "
+                     "passing title")
+except upload.TitleRefused:
+    pass
+_scratch.write_text(_json.dumps({"titles": {slug: {
+    "new_title": "Crushing pressure rewards unusual deep-sea body plans",
+    "checks_passed": True}}}))
+long_form = upload.build_payload(_item)
 # A real slug, not a fabricated one: shorts_lane.build_payload now resolves
 # the episode's own domain from scripts/<slug>.md (loop/discovery.py), and a
 # slug with no script on disk has no domain to resolve.

@@ -673,6 +673,17 @@ for slug in $(renderable); do
 done
 }
 
+# THE TEN-MINUTE SPLICE (loop/lengthen.py, owner decision 2026-10-13). An
+# episode whose new opening and tail were scripted (`lengthen.py script`) has
+# had ONLY those beats narrated above; this renders them and stitches them
+# around the untouched body of the existing render (packet-verified), then
+# moves the stale caption track aside so the captions phase below rebuilds it
+# for the new timeline. Nothing waiting is a green LENGTHEN_NOTHING_TO_SPLICE.
+phase_lengthen() {
+echo; echo "--- lengthen: new hook + kept body + tail ---"
+$PY loop/lengthen.py splice || echo "  lengthen splice exited $? - the old render is untouched"
+}
+
 phase_captions() {
 echo; echo "--- can the cloud see everything this batch just used? ---"
 # THE MAC IS WHERE UNTRACKED FILES ARE BORN, so this is where the question is
@@ -875,6 +886,7 @@ echo "  holding the Mac awake for the duration"
 hold_awake
 step narrate phase_narrate
 step render phase_render
+step lengthen phase_lengthen
 step captions phase_captions
 # Cut Shorts from tonight's renders, then push everything (renders, captions,
 # Shorts) to R2 for the cloud lanes.

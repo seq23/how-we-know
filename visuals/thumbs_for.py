@@ -58,6 +58,7 @@ from __future__ import annotations
 import json
 import os
 import re
+import shutil
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -274,8 +275,29 @@ def _set_palette(dom: str) -> None:
 
 
 def build(slug: str, out_dir: str | None = None) -> str:
+    """The thumbnail a long-form upload attaches.
+
+    2026-10-13 (owner decision, repackage job 1): the CONTRACT builder
+    (visuals/thumb_contract.py) runs first - three variants under
+    <out>/variants/<slug>/, one channel grade, <=3 words, one big subject - and
+    its chooser's variant A becomes <out>/<slug>.jpg. Only when no
+    rights-verified image of the episode's subject can meet the contract
+    (ContractRefused, printed by name) does the domain builder below draw the
+    card, and validator V48 reports that episode until an image exists."""
     dom = domain_of(slug)
     _set_palette(dom)
+    out = out_dir or OUT
+    import thumb_contract                                  # noqa: PLC0415
+    try:
+        r = thumb_contract.build_variants(
+            slug, out_root=os.path.join(out, "variants"))
+        os.makedirs(out, exist_ok=True)
+        path = os.path.join(out, f"{slug}.jpg")
+        shutil.copyfile(r["chosen"], path)
+        _check_output(path)
+        return path
+    except thumb_contract.ContractRefused as e:
+        print(f"  CONTRACT_REFUSED {e}", flush=True)
     return builder_for(dom)(slug, out_dir=out_dir)
 
 
