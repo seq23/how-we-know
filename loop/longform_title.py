@@ -103,6 +103,10 @@ EXEMPLARS = {
 }
 # The word a stranger uses for a domain counts as naming the subject ("Why Is
 # the Deep Sea So Dark?" is the midnight-zone episode).
+# THE SERIES SHAPE (owner, 13 Oct 2026) for a multi-question video: two or
+# three plain subject nouns and "What's Inside?" - "Bread, Steak, Chocolate:
+# What's Inside?". The one allowed exception to "one idea".
+SERIES_RE = re.compile(r"^[A-Z][a-z]{1,11}(?:, [A-Z][a-z]{1,11}){1,2}: What['\u2019]s Inside\?$")
 DOMAIN_PLAIN = {"deep-sea-ocean-science": {"deep", "sea", "ocean"}}
 JARGON = {"bathypelagic", "abyssopelagic", "hadal", "pelagic", "abyssal",
           "tensile", "anisotropic", "gigapascal", "gigapascals", "megapascal",
@@ -124,7 +128,7 @@ STOP = {
     "we", "you", "your", "our", "they", "their", "them", "there", "here",
     "with", "about", "one", "just", "really", "actually", "even", "still",
     "most", "more", "less", "much", "many", "some", "any", "all", "every",
-    "each", "s", "t",
+    "each", "s", "t", "what's", "that's", "there's", "here's", "who's",
 }
 # Words that state a contradiction: the title says the obvious is false.
 CONTRADICTION = {
@@ -371,7 +375,9 @@ def plainness_problems(title: str, question: str, script: str = "") -> list[str]
         p.append(f"title does not name the subject in its first "
                  f"{SUBJECT_WITHIN} words that count, in a stranger's word (one of: "
                  f"{', '.join(sorted(subj))}) - never a metaphor or riddle")
-    if LIST_RE.search(title) or title.count(",") > 1 or re.search(r"[:;]", title):
+    series = bool(SERIES_RE.match(title))
+    if not series and (LIST_RE.search(title) or title.count(",") > 1
+                       or re.search(r"[:;]", title)):
         p.append("title carries more than one idea - one plain question or "
                  "one short claim")
     g = fk_grade(title, subj)

@@ -136,6 +136,14 @@ jobs:
             ARGS="$ARGS --dry-run"
           fi
           bin/loop-stage.sh queue-reopen loop/queue_reopen.py $ARGS
+      - name: Build contract thumbnails for live videos (drama line on the $0 route)
+        if: ${{ !cancelled() && github.event.inputs.propose_only != 'true' && github.event.inputs.dry_run != 'true' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: bin/loop-stage.sh thumbs loop/thumbs_lane.py
       - name: Prepare search blocks for descriptions (autocomplete phrasings, chapter questions)
         if: ${{ !cancelled() }}
         env:
@@ -156,7 +164,7 @@ jobs:
           YT_OAUTH_CLIENT_JSON: ${{ secrets.YT_OAUTH_CLIENT_JSON }}
           YT_OAUTH_REFRESH_TOKEN: ${{ secrets.YT_OAUTH_REFRESH_TOKEN }}
         run: |
-          ARGS="--limit ${{ github.event.inputs.limit || 20 }}"
+          ARGS="--limit ${{ github.event.inputs.limit || 40 }}"
           if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
             ARGS="$ARGS --dry-run"
           fi

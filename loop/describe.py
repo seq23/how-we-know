@@ -105,8 +105,34 @@ def _names_subject(q: str, subject: str) -> bool:
     return bool(want & have)
 
 
+# Never listed unless the script itself talks about it (food agent, 13 Oct
+# 2026: "Is steak good for you?" came back for a video that never says).
+OFF_LIMITS = {"health", "healthy", "healthier", "unhealthy", "good for you",
+              "bad for you", "cancer", "calories", "calorie", "diet", "safe",
+              "safe to eat", "price", "cost", "costs", "expensive", "cheap",
+              "buy", "worth", "dangerous", "poisonous", "toxic", "nutrition"}
+
+
+def answered(q: str, script: str) -> list[str]:
+    """Why the script does NOT answer question `q` ([] = it does): every
+    content word must be traceable to the Direct-answer lock, the narration
+    or the sources (the title truth guard's own mechanism), and no
+    health/medical/price angle the script never takes."""
+    import longform_title as LT                            # noqa: PLC0415
+    ev = LT.evidence_text(script)
+    have = {LT.stem(w) for w in LT.content_words(ev)}
+    p = [f"{w!r} is not in the script" for w in LT.content_words(q)
+         if not LT._match(LT.stem(w), have)]               # noqa: SLF001
+    low, evl = q.lower(), ev.lower()
+    for term in OFF_LIMITS:
+        if re.search(rf"\b{re.escape(term)}\b", low) and \
+                not re.search(rf"\b{re.escape(term)}\b", evl):
+            p.append(f"a {term!r} question the script never answers")
+    return p
+
+
 def search_questions(question: str, title: str, suggest=None,
-                     pause: float = 0.3) -> list[str]:
+                     pause: float = 0.3, script: str = "") -> list[str]:
     """4-8 question phrasings people type, from autocomplete. Real strings
     only (research/mine.py's rule); the title and question count."""
     import longform_title as LT                            # noqa: PLC0415
@@ -124,7 +150,8 @@ def search_questions(question: str, title: str, suggest=None,
             s = re.sub(r"\s+", " ", str(s)).strip().lower()
             if (QUESTION_RE.match(s) and _names_subject(s, subject)
                     and not LT.BRAND_PHRASE.search(s) and len(s) <= 70
-                    and s not in found):
+                    and s not in found
+                    and (not script or not answered(s, script))):
                 found.append(s)
         if pause:
             time.sleep(pause)
@@ -232,7 +259,7 @@ def compose(slug: str, script: str, title: str, question: str,
 
 
 def problems(description: str, title: str, question: str,
-             chapters_ref: list[str] | None = None) -> list[str]:
+             chapters_ref: list[str] | None = None, script: str = "") -> list[str]:
     """V60's check on one composed description. [] = it holds."""
     import longform_title as LT                            # noqa: PLC0415
     p: list[str] = []
@@ -240,6 +267,11 @@ def problems(description: str, title: str, question: str,
     qs = [ln[1:].strip() for ln in (block[1].split("\n\n", 1)[0].splitlines()
                                     if len(block) > 1 else [])
           if ln.startswith("•") and ln.strip().endswith("?")]
+    if script:
+        for q_ in qs:
+            why = answered(q_, script)
+            if why:
+                p.append(f"lists {q_!r}, which the script does not answer: {why[0]}")
     if len(qs) < MIN_QUESTIONS:
         p.append(f"{len(qs)} question phrasing(s); the search block needs "
                  f">= {MIN_QUESTIONS}")
@@ -286,7 +318,7 @@ def prepare(slugs: list[str], dry_run: bool = False, suggest=None,
         if dry_run:
             made.append(slug)
             continue
-        qs = search_questions(q, title, suggest=suggest)
+        qs = search_questions(q, title, suggest=suggest, script=text)
         labels = [_split_chapter(c)[1] for c in upload.build_chapters(slug, text)]
         names = chapter_questions(title, labels)
         d["episodes"][slug] = {"questions": qs, "chapter_names": names,
