@@ -454,7 +454,8 @@
       "uploaded_at": "2026-09-14T03:07:38+00:00",
       "privacy": "private",
       "scheduled_publish_at": "2026-10-16T15:00:00Z",
-      "note": "backfill: scheduled, not yet public"
+      "note": "backfill: scheduled, not yet public",
+      "title": "Carbon in a graphite plane does not slide"
     },
     {
       "slug": "why-is-steel-so-strong",
@@ -467,7 +468,8 @@
       "rescheduled_from": [
         "2026-10-19T15:00:00Z"
       ],
-      "rescheduled_at": "2026-10-13T13:13:51+00:00"
+      "rescheduled_at": "2026-10-13T13:13:51+00:00",
+      "title": "Beyond one point two percent carbon, it is cast iron"
     },
     {
       "slug": "what-is-aerogel-made-of",
@@ -585,5 +587,5 @@
     }
   ],
   "queued": [],
-  "updated": "2026-10-13T13:56:50+00:00"
+  "updated": "2026-10-13T14:45:29+00:00"
 }

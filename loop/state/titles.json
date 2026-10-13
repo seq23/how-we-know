@@ -14,7 +14,8 @@
       "question": "why deep sea creatures look so weird",
       "slug": "01-why-deep-sea-creatures-look-so-weird",
       "thumbnail_applied": true,
-      "thumbnail_sha256": "add5167ab5ee9154409770ef5c031a4e74dd165c80176ef4a9b1df8c38062a84"
+      "thumbnail_applied_at": "2026-10-13T14:45:14+00:00",
+      "thumbnail_sha256": "f7e3f1dfcf1f4f89c8ec1277ecb1d6529e8270d2e23c91d42b5ac264d33dbe55"
     },
     "02-how-deep-sea-creatures-survive-pressure": {
       "applied_at": "2026-10-13T13:55:20+00:00",
@@ -604,7 +605,8 @@
       "question": "what is carbon fiber made of",
       "slug": "what-is-carbon-fiber-made-of",
       "thumbnail_applied": true,
-      "thumbnail_sha256": "3dcd6f095aafed886fda6c926fbf5bc8f0e6a64e2d0ea3a5898e40448d0bd443"
+      "thumbnail_applied_at": "2026-10-13T14:45:16+00:00",
+      "thumbnail_sha256": "f73a6961f4ed3781593cfb445ea283a261208705b814c816f915db79cc2d7ecb"
     },
     "what-is-concrete-made-of": {
       "applied_at": "2026-10-13T13:56:45+00:00",
@@ -751,7 +753,8 @@
       "thumbnail_applied": false
     },
     "why-is-carbon-fiber-so-strong": {
-      "applied_at": null,
+      "applied_at": "2026-10-13T14:45:23+00:00",
+      "applied_video_id": "Eueb6oHEbMs",
       "attempts": 1,
       "checks_passed": true,
       "model": "claude-subscription/opus",
@@ -761,10 +764,13 @@
       "problems": [],
       "proposed_at": "2026-10-13T13:40:57+00:00",
       "question": "why is carbon fiber so strong",
-      "slug": "why-is-carbon-fiber-so-strong"
+      "slug": "why-is-carbon-fiber-so-strong",
+      "thumbnail_applied": true,
+      "thumbnail_sha256": "596953f68ee0cba2ab594942affe832fd634d5991c9371d5d8d30d01803c216a"
     },
     "why-is-steel-so-strong": {
-      "applied_at": null,
+      "applied_at": "2026-10-13T14:45:29+00:00",
+      "applied_video_id": "98ejztJsQNY",
       "attempts": 1,
       "checks_passed": true,
       "model": "claude-subscription/opus",
@@ -774,8 +780,10 @@
       "problems": [],
       "proposed_at": "2026-10-13T13:41:11+00:00",
       "question": "why is steel so strong",
-      "slug": "why-is-steel-so-strong"
+      "slug": "why-is-steel-so-strong",
+      "thumbnail_applied": true,
+      "thumbnail_sha256": "33dab3a0b1cf6d27e85c2880162030cbac5b9b6b3d86b8a2610ba483656a44a2"
     }
   },
-  "updated": "2026-10-13T14:01:45+00:00"
+  "updated": "2026-10-13T14:45:29+00:00"
 }
