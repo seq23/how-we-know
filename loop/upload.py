@@ -377,10 +377,32 @@ def build_payload(item: dict) -> dict:
                    # YouTube's "altered or synthetic content" question NO. Set at upload so no
                    # video ever needs the two fields fixed by hand in Studio again; the same
                    # two fields are asserted on the whole back catalogue by loop/video_settings.py.
-                   "containsSyntheticMedia": False},
+                   # Exception (13 Oct 2026): a food episode whose spec records realistic
+                   # AI stills answers YES - altered_content() above.
+                   "containsSyntheticMedia": altered_content(slug)},
         # And "paid promotion" answered No, same decision, same day.
         "paidProductPlacementDetails": {"hasPaidProductPlacement": False},
     }
+
+
+SPECS = ROOT / "channel" / "specs"
+
+
+def altered_content(slug: str) -> bool:
+    """YouTube's "altered or synthetic content" answer for one video.
+
+    The 14 Sep 2026 owner decision answers No for every video, and it still
+    stands for every video WITHOUT an episode spec. The 13 Oct 2026 food
+    decision (docs/CHANNEL-PLAN.md, A third domain: food science) adds the one
+    exception: "AI stills that look real carry YouTube's altered-content
+    label". visuals/food.py writes `altered_content` into the episode spec at
+    channel/specs/<slug>.json whenever a realistic AI still is on screen; this
+    reads it. A spec that does not parse raises - a wrong No would be a false
+    disclosure."""
+    p = SPECS / f"{slug}.json"
+    if not p.exists():
+        return False
+    return bool(json.loads(p.read_text()).get("altered_content"))
 
 
 # -------------------------------------------------------------------- upload

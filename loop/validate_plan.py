@@ -38,6 +38,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import cadence  # noqa: E402
 import domain_sources  # noqa: E402
+import domains  # noqa: E402
 import exclusions  # noqa: E402
 import pov_match  # noqa: E402
 from common import LOOP, ROOT, config, read_json  # noqa: E402
@@ -458,9 +459,16 @@ def c10_domains_admitted() -> Check:
         # interview predates the domain field entirely and was about nothing
         # else. Matching on the raw field would wrongly fail deep sea, which
         # never needed a top-up because it was never "outside deep sea".
+        # A pending_approval line (drafted for a sample review, never yet
+        # read by the owner) counts ONLY while that domain's sample gate is
+        # open: the two are reviewed together. Once the gate clears, an
+        # approved line is required, so an unapproved draft can never stand
+        # in for the top-up on a domain that is rendering.
+        gated = domain_id in domains.sample_gated(cfg)
         specific = [ln for ln in pov_lines
                     if pov_match.line_domain(ln) == domain_id
-                    and ln.get("tier") == "specific"]
+                    and ln.get("tier") == "specific"
+                    and (gated or not ln.get("pending_approval"))]
         if not specific:
             c.fail(f"{domain_id!r} has zero tier:specific line(s) in "
                    f"pov/pov-bank.json - new_niche_requirement's POV top-up "

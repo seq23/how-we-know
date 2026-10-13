@@ -117,6 +117,25 @@ THE REPACKAGE JOB (owner decisions 12-13 Oct 2026), in the render gate:
                         keywords name every channel domain (loop/channel_
                         branding.py), the banner words keep "evidence chain"
                         and "How we know what we know", no deep-sea-only words
+
+THE FOOD DOMAIN (owner decision 13 Oct 2026, docs/CHANNEL-PLAN.md "A third
+domain: food science"), in the render gate:
+
+  V52 food-domain       food-science is registered end to end (taxonomy,
+                        allocation = its Wed/Sat rotation days, sources,
+                        palette + device, author brief, thumbnail builder,
+                        playlist title, harvester, seeded queue) and HELD by
+                        its sample gate until cleared: nothing authors it,
+                        and an unapproved POV line never stands in once open
+  V53 food-preset       visuals/food.py's contract on real output: the
+                        committed sample proof (grade re-derived from the
+                        ungraded frames, opening cuts 3-5 s, calm holds 8-15 s,
+                        subject coverage, one device, credits, altered_content
+                        whenever AI stills are on screen)
+  V54 food-voice-sound  the calm register is measurably slower, lower and
+                        more paused than standard on the sample's own audio,
+                        and the sound bed is ducked under the voice; the
+                        rulers are self-checked on synthetic signals
   (the stake-then-payoff hook is V44's: it checks whatever variant a script
   is marked with, and stake-then-payoff is first in loop/opening.py VARIANTS)
 
@@ -2333,7 +2352,12 @@ def v27_lanes_see_every_domain() -> Result:
         import domains as _dom2                            # noqa: PLC0415
         seen2 = {_dom2.domain_of_slug(s) for s in _r2._publish_slugs()}
         seen2.discard(None)
-        gap = set(_dom2.allocation(config())) - seen2
+        # A sample-gated domain has no script in scripts/ BY DESIGN (its
+        # drafts wait in scripts/food/ until the owner clears the sample), so
+        # the shelf cannot see it yet; it is held, not invisible.
+        _c2 = config()
+        gap = (set(_dom2.allocation(_c2)) - set(_dom2.sample_gated(_c2))
+               - seen2)
         if gap:
             r.fail(f"loop/r2.py cannot shelve anything in "
                    f"{', '.join(sorted(gap))}. Both cloud lanes publish from "
@@ -4066,8 +4090,15 @@ def v46_shorts_handoff() -> Result:
             pass
     waiting: list[str] = []
     pl = (read_json(PLAYLISTS_STATE, default={}).get("playlists") or {})
-    for d in domains.allocation(config()):
+    _cfg = config()
+    _gated = domains.sample_gated(_cfg)
+    for d in domains.allocation(_cfg):
         r.examined += 1
+        if d in _gated:
+            # Held behind its owner-review sample: no video, so no playlist
+            # yet (loop/handoff.py creates it the first run after it clears).
+            # A gated domain that already HAS one is not an error either.
+            continue
         if not (pl.get(d) or {}).get("id"):
             if d in deferred:
                 waiting.append(f"playlist:{d}")
@@ -4352,6 +4383,176 @@ def v49_lengthen_splice() -> Result:
     return r
 
 
+# ---------------------------------------------------------- the food domain
+FOOD = "food-science"
+FOOD_SAMPLE_SPEC = ROOT / "channel" / "specs" / "food-sample-chocolate.json"
+FOOD_SAMPLE_PROOF = ROOT / "channel" / "specs" / "food-sample-chocolate.proof.npz"
+
+
+def v52_food_domain() -> Result:
+    """HARD. food-science is registered everywhere a domain must be, and held.
+
+    Every list that enumerates domains names it (two components each keeping
+    their own list is this repo's recurring defect): the taxonomy, the
+    allocation and the rotation's Wed/Sat, the source allowlist (>= 3), the
+    palette and device, loop/author.py's brief and directive menu, the
+    thumbnail builder, the playlist title, a scheduled harvester, a seeded
+    publish order. While loop/config.json domains.sample_gate holds it,
+    domains.allocation_gate refuses a food row by name and
+    batch_queue.publish_queue_gate refuses a food slug. Self-check: a cleared
+    copy of the config lets the same row through.
+    """
+    r = Result("V52 food-domain")
+    import domains as _d                                   # noqa: PLC0415
+    import domain_sources as _ds                           # noqa: PLC0415
+    import author as _au                                   # noqa: PLC0415
+    import handoff as _ho                                  # noqa: PLC0415
+    import backfill as _bf                                 # noqa: PLC0415
+    cfg = config()
+    r.examined += 1
+    if FOOD not in _d.known():
+        r.fail("food-science is not in research/proposed-taxonomy.json")
+        return r
+    alloc = _d.allocation(cfg)
+    days = _bf.domain_weekdays(cfg, int(cfg["cadence"]["videos_per_week"])).get(FOOD)
+    if alloc.get(FOOD) != 2 or days != (2, 5):
+        r.fail(f"food-science allocation {alloc.get(FOOD)} / weekdays {days}: the "
+               f"rotation gives it Wednesday and Saturday (2, 5)")
+    r.examined += 1
+    if len(_ds.ALLOWLIST.get(FOOD) or []) < 3:
+        r.fail("food-science has fewer than 3 allowlisted sources")
+    sys.path.append(str(ROOT / "visuals"))
+    import importlib.util                                  # noqa: PLC0415
+    spec = importlib.util.spec_from_file_location("vdomains", ROOT / "visuals" / "domains.py")
+    vd = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(vd)
+    if not (vd.has_palette(FOOD) and vd.has_device(FOOD)):
+        r.fail("food-science has no palette/device in visuals/domains.py")
+    if FOOD not in _au.DOMAIN_BRIEF or FOOD not in _au.DEVICE_DIRECTIVES:
+        r.fail("food-science has no brief/directive menu in loop/author.py")
+    if FOOD not in _ho.PLAYLIST_TITLES:
+        r.fail("food-science has no playlist title in loop/handoff.py")
+    import thumbs_for                                      # noqa: PLC0415
+    if FOOD not in thumbs_for.BUILDERS:
+        r.fail("food-science has no thumbnail builder in visuals/thumbs_for.py")
+    harv = ROOT / "research" / "imagery_food.py"
+    if not harv.exists() or '"domain": "food-science"' not in harv.read_text():
+        r.fail("food-science has no HARVESTER declaration (research/imagery_food.py)")
+    po = ROOT / "research" / "publish_order_food_science.json"
+    r.examined += 1
+    if not po.exists():
+        r.fail("research/publish_order_food_science.json is missing")
+    else:
+        doc = json.loads(po.read_text())
+        asked = {x["query"] for x in (doc.get("queue") or []) + (doc.get("unmeasured") or [])}
+        first = set(doc.get("first_video") or [])
+        if len(asked) < 23 or not first or not first <= asked:
+            r.fail(f"food queue holds {len(asked)} question(s); the first video's "
+                   f"three plus >= 20 more are required")
+    # THE HOLD, and its self-check
+    gated = _d.sample_gated(cfg)
+    row = {"slug": "v51-probe", "domain": FOOD}
+    ok, refused = _d.allocation_gate([row], cfg)
+    r.examined += 1
+    if FOOD in gated:
+        if ok or "sample_gate" not in (refused.get("v51-probe") or ""):
+            r.fail("food-science is sample-gated but allocation_gate let a food row through")
+        # A note, not a stop: the gate is the channel plan's own step (the
+        # sample is reviewed the same day it is rendered), its Wed/Sat stay
+        # empty by design and nothing else in the loop waits on it.
+        r.note("food-science is registered and scheduled (Wed/Sat); its first "
+               "full render follows the chocolate sample (loop/config.json "
+               "domains.sample_gate)")
+    cleared = json.loads(json.dumps(cfg))
+    for d_ in (cleared["domains"].get("sample_gate") or {}).values():
+        d_["state"] = "cleared"
+    ok2, _ = _d.allocation_gate([row], cleared)
+    if not ok2:
+        r.fail("self-check: a cleared sample gate still refused the food row")
+    return r
+
+
+def v53_food_preset() -> Result:
+    """HARD. The food preset's contract, on the sample's real output.
+
+    channel/specs/food-sample-chocolate.json is the episode spec the render
+    wrote (shots, credits, altered_content) and .proof.npz holds, for the
+    sampled picture frames, the UNGRADED composite and the DECODED final
+    frame. visuals/food.check_spec and check_frames are the same functions
+    `visuals/food.py check` runs on the mp4 itself. Self-check: a shot list
+    with an 8-second opening cut fails, and an ungraded frame fails the grade.
+    """
+    r = Result("V53 food-preset")
+    sys.path.append(str(ROOT / "visuals"))
+    import food as _f                                      # noqa: PLC0415
+    if not FOOD_SAMPLE_SPEC.exists() or not FOOD_SAMPLE_PROOF.exists():
+        r.fail("the food sample's spec or proof frames are missing from channel/specs/")
+        return r
+    spec = json.loads(FOOD_SAMPLE_SPEC.read_text())
+    import numpy as _np                                    # noqa: PLC0415
+    proof = _np.load(FOOD_SAMPLE_PROOF)
+    r.examined += len(spec.get("shots") or [])
+    for p in _f.check_spec(spec):
+        r.fail(f"sample spec: {p}")
+    n, probs = _f.check_frames(proof["ungraded"], proof["final"], proof["masks"])
+    r.examined += n
+    for p in probs:
+        r.fail(f"sample frames: {p}")
+    bad = json.loads(json.dumps(spec))
+    first = next(s for s in bad["shots"] if s.get("register") == "standard")
+    first["dur"] = 8.0
+    if not _f.check_spec(bad):
+        r.fail("self-check: an 8-second opening cut passed the preset")
+    n2, p2 = _f.check_frames(proof["ungraded"], proof["ungraded"], proof["masks"])
+    if not p2:
+        r.fail("self-check: ungraded frames passed the grade check")
+    return r
+
+
+def v54_food_voice_sound() -> Result:
+    """HARD. Calm is slower, lower and more paused; the bed ducks under her.
+
+    Reads the sample's measured audio (voice/food_voice.measure and
+    visuals/food_sound.measure, recorded in the sample spec when it was
+    rendered) against voice/registers.json's contract and food_sound.CONTRACT.
+    Self-check, on synthetic signals so the rulers themselves are proven: a
+    1.5-semitone shift is measured as one, and an unducked bed fails.
+    """
+    r = Result("V54 food-voice-sound")
+    sys.path.append(str(ROOT / "voice"))
+    sys.path.append(str(ROOT / "visuals"))
+    import food_voice as _fv                               # noqa: PLC0415
+    import food_sound as _fs                               # noqa: PLC0415
+    import numpy as _np                                    # noqa: PLC0415
+    regs = _fv.registers()
+    if regs.get("switch_at") != "### Title card" or "calm" not in regs["registers"]:
+        r.fail("voice/registers.json has no calm register switching at the title card")
+    if not FOOD_SAMPLE_SPEC.exists():
+        r.fail("no food sample spec to read the measured audio from")
+        return r
+    spec = json.loads(FOOD_SAMPLE_SPEC.read_text())
+    meas = spec.get("voice") or {}
+    r.examined += sum(int(v.get("beats") or 0) for v in meas.values())
+    for p in _fv.check(meas):
+        r.fail(f"voice: {p}")
+    snd = spec.get("sound") or {}
+    r.examined += 1 if snd else 0
+    for p in _fs.check(snd) if snd else ["no sound measurement recorded"]:
+        r.fail(f"sound: {p}")
+    sr = 24000
+    t = _np.arange(sr * 2) / sr
+    x = (0.3 * _np.sin(2 * _np.pi * 190 * t)).astype(_np.float32)
+    a, b = _fv._median_f0(x, sr), _fv._median_f0(_fv.shift_down(x, -1.5), sr)
+    if not (a and b) or abs(12 * _np.log2(a / b) - 1.5) > 0.25:
+        r.fail(f"self-check: the pitch ruler read a 1.5-semitone shift as {a} -> {b}")
+    v = _np.zeros(_fs.SR * 4, _np.float32)
+    v[: _fs.SR * 2] = 0.2 * _np.sin(2 * _np.pi * 200 * _np.arange(_fs.SR * 2) / _fs.SR)
+    bed = _np.full(_fs.SR * 4, 0.01, _np.float32)
+    if not _fs.check(_fs.measure(v, bed, v + bed)):
+        r.fail("self-check: an unducked bed passed the ducking contract")
+    return r
+
+
 def v50_repackage_state() -> Result:
     """HARD. The repackage lane keeps its books, forward only.
 
@@ -4536,7 +4737,10 @@ def run_all(items) -> tuple[bool, list[dict]]:
                v48_thumbnail_contract(),
                v49_lengthen_splice(),
                v50_repackage_state(),
-               v51_channel_branding()]
+               v51_channel_branding(),
+               v52_food_domain(),
+               v53_food_preset(),
+               v54_food_voice_sound()]
     rows = [r.as_dict() for r in results]
     return all(r.ok for r in results), rows
 

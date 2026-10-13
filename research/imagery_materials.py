@@ -299,7 +299,10 @@ def _search(phrase: str, limit: int = 6) -> list[str]:
     return out
 
 
-def harvest(dry_run: bool = False, only: list[str] | None = None) -> dict:
+def harvest(dry_run: bool = False, only: list[str] | None = None, *,
+            subjects: list[dict] | None = None, manifest: str | None = None,
+            domain: str = "materials-and-manufacturing", prefix: str = "mat",
+            unillustratable: dict | None = None) -> dict:
     """Harvest the subjects in `only` (default: all) and MERGE into the manifest.
 
     Merging, not overwriting: a partial re-run for the subjects a throttled
@@ -307,13 +310,18 @@ def harvest(dry_run: bool = False, only: list[str] | None = None) -> dict:
     That is the same rule imagery.py states for its two gates - neither may
     delete the other's records - applied to two runs of one gate.
     """
+    # research/imagery_food.py (2026-10-13) runs this SAME gate over its own
+    # subjects into its own manifest; materials' defaults are unchanged.
+    SUBJECTS_ = SUBJECTS if subjects is None else subjects
+    MANIFEST_ = MATERIALS_MANIFEST if manifest is None else manifest
+    UNILL_ = UNILLUSTRATABLE if unillustratable is None else unillustratable
     os.makedirs(ASSETS, exist_ok=True)
     prior = {}
-    if os.path.exists(MATERIALS_MANIFEST):
-        for rec in json.load(open(MATERIALS_MANIFEST)).get("index", []):
+    if os.path.exists(MANIFEST_):
+        for rec in json.load(open(MANIFEST_)).get("index", []):
             prior[rec["subject"]] = rec
     accepted, rejected = [], []
-    todo = [s for s in SUBJECTS if (not only or s["key"] in only)]
+    todo = [s for s in SUBJECTS_ if (not only or s["key"] in only)]
     for sub in todo:
         if sub["key"] in prior and (not only or sub["key"] not in only):
             accepted.append(prior[sub["key"]])
@@ -321,6 +329,16 @@ def harvest(dry_run: bool = False, only: list[str] | None = None) -> dict:
         got = None
         for phrase in sub["queries"]:
             for title in _search(phrase):
+                # IDENTITY, by name (2026-10-13): a subject may list words of
+                # which the FILE TITLE must contain one. "chocolate bar"
+                # matched a Spitzer image of the Milky Way on the food pass;
+                # a picture whose own title never names its subject is not
+                # evidence of that subject. Absent for materials (unchanged).
+                need = sub.get("title_any")
+                if need and not any(w in title.lower() for w in need):
+                    continue
+                if any(w in title.lower() for w in sub.get("title_none") or ()):
+                    continue
                 try:
                     iq = (f"{COMMONS_API}?action=query&format=json&prop=imageinfo"
                           f"&iiprop=url|size|mime|extmetadata&titles="
@@ -361,7 +379,7 @@ def harvest(dry_run: bool = False, only: list[str] | None = None) -> dict:
         stem = re.sub(r"[^a-z0-9]+", "-", title.lower().removeprefix("file:")).strip("-")[:60]
         src = info["url"].split("?")[0]
         ext = os.path.splitext(urllib.parse.urlparse(src).path)[1].lower() or ".jpg"
-        fname = f"mat__{sub['key']}__{stem}{ext}"
+        fname = f"{prefix}__{sub['key']}__{stem}{ext}"
         path = os.path.join(ASSETS, fname)
         sha = None
         if not dry_run:
@@ -412,7 +430,7 @@ def harvest(dry_run: bool = False, only: list[str] | None = None) -> dict:
 
     man = {
         "generated": datetime.now(timezone.utc).isoformat(),
-        "domain": "materials-and-manufacturing",
+        "domain": domain,
         "policy": ("Public domain or CC0 only, verified live at the Commons item page. "
                    "CC-BY is not a public-domain dedication and this channel is monetised. "
                    "Licence gate is research/imagery.pd_licence_ok, imported not "
@@ -421,20 +439,20 @@ def harvest(dry_run: bool = False, only: list[str] | None = None) -> dict:
         "rights_fields_required": ["depicts", "subject_basis", "credit_line", "item_url",
                                    "licence", "sha256"],
         "asset_count": len(accepted),
-        "subjects_total": len(SUBJECTS),
+        "subjects_total": len(SUBJECTS_),
         "subjects_covered": sorted({a["subject"] for a in accepted}),
-        "subjects_unillustratable": UNILLUSTRATABLE,
+        "subjects_unillustratable": UNILL_,
         "rejected": rejected,
         "index": accepted,
     }
     if not dry_run:
-        json.dump(man, open(MATERIALS_MANIFEST, "w"), indent=2)
+        json.dump(man, open(MANIFEST_, "w"), indent=2)
     return man
 
 
-def verify_rights(man: dict | None = None) -> int:
+def verify_rights(man: dict | None = None, manifest: str | None = None) -> int:
     """Every recorded asset is on disk, unmodified, and carries its rights fields."""
-    man = man or json.load(open(MATERIALS_MANIFEST))
+    man = man or json.load(open(manifest or MATERIALS_MANIFEST))
     req = man["rights_fields_required"]
     n = 0
     for rec in man["index"]:

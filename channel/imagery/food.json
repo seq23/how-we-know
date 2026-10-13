@@ -1,0 +1,181 @@
+{
+  "generated": "2026-10-13T14:03:16.077124+00:00",
+  "domain": "food-science",
+  "policy": "Public domain or CC0 only, verified live at the Commons item page. CC-BY is not a public-domain dedication and this channel is monetised. Licence gate is research/imagery.pd_licence_ok, imported not reimplemented; the copyright-assertion screen is this module's own and differs from imagery.THIRD_PARTY on purpose - see the module docstring.",
+  "rights_fields_required": [
+    "depicts",
+    "subject_basis",
+    "credit_line",
+    "item_url",
+    "licence",
+    "sha256"
+  ],
+  "asset_count": 5,
+  "subjects_total": 14,
+  "subjects_covered": [
+    "cocoa-beans",
+    "cocoa-pod",
+    "gas-chromatograph",
+    "pasteur",
+    "xray-diffraction"
+  ],
+  "subjects_unillustratable": {
+    "cocoa-butter-form-v": {
+      "why": "The form V crystal itself is seen only as a diffraction pattern or a polarised micrograph in copyrighted journal figures. The drawn cross-section device (visuals/food.py) stands in, and the narration says it is a drawing."
+    },
+    "loaf-xray-tomography": {
+      "why": "Published X-ray tomography of a baking loaf is journal figures under copyright. The drawn cross-section device stands in."
+    }
+  },
+  "rejected": [
+    {
+      "subject": "bread-loaf",
+      "title": "Loaf of Bread with Magic Yeast.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Loaf_of_Bread_with_Magic_Yeast.jpg",
+      "reason": "identity, reviewed by eye 2026-10-13: licence passed but the picture is not its subject (or not its stated medium); title_none added so no rerun picks it"
+    },
+    {
+      "subject": "calorimeter",
+      "title": "BULKHEAD-NEUTRON CALORIMETER, NEVADA TEST SITE - DPLA - f07682d8ed916c06617d6fb8593c4ab5.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:BULKHEAD-NEUTRON_CALORIMETER,_NEVADA_TEST_SITE_-_DPLA_-_f07682d8ed916c06617d6fb8593c4ab5.jpg",
+      "reason": "identity, reviewed by eye 2026-10-13: licence passed but the picture is not its subject (or not its stated medium); title_none added so no rerun picks it"
+    },
+    {
+      "subject": "chocolate-bar",
+      "title": "2024 \u0448\u0430\u043a\u0430\u043b\u044f\u0434 \u0416\u0430\u0434\u0430\u044e \u0412\u0430\u043c \u041a\u0430\u043c\u0443\u043d\u0430\u0440\u043a\u0430 - Belarusian chocolate Zhadayu Vam.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:2024_%D1%88%D0%B0%D0%BA%D0%B0%D0%BB%D1%8F%D0%B4_%D0%96%D0%B0%D0%B4%D0%B0%D1%8E_%D0%92%D0%B0%D0%BC_%D0%9A%D0%B0%D0%BC%D1%83%D0%BD%D0%B0%D1%80%D0%BA%D0%B0_-_Belarusian_chocolate_Zhadayu_Vam.jpg",
+      "reason": "identity, reviewed by eye 2026-10-13: licence passed but the picture is not its subject (or not its stated medium); title_none added so no rerun picks it"
+    },
+    {
+      "subject": "dough",
+      "title": "Bread dough kneading machine.1877.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Bread_dough_kneading_machine.1877.jpg",
+      "reason": "identity, reviewed by eye 2026-10-13: licence passed but the picture is not its subject (or not its stated medium); title_none added so no rerun picks it"
+    },
+    {
+      "subject": "melted-chocolate",
+      "title": "Industries of War - Candy - CANDY MANUFACTURE. Chocolate Dipping Department. Girls dipping centers in liquid chocolate coating temperature of room 65 degrees, supplied by cold air system. Wallace and Co., New York City - NARA - 31486448.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Industries_of_War_-_Candy_-_CANDY_MANUFACTURE._Chocolate_Dipping_Department._Girls_dipping_centers_in_liquid_chocolate_coating_temperature_of_room_65_degrees,_supplied_by_cold_air_system._Wallace_and_Co.,_New_York_City_-_NARA_-_31486448.jpg",
+      "reason": "identity, reviewed by eye 2026-10-13: licence passed but the picture is not its subject (or not its stated medium); title_none added so no rerun picks it"
+    },
+    {
+      "subject": "seared-steak",
+      "title": "Steak House Grill (82107).jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Steak_House_Grill_(82107).jpg",
+      "reason": "identity, reviewed by eye 2026-10-13: licence passed but the picture is not its subject (or not its stated medium); title_none added so no rerun picks it"
+    },
+    {
+      "subject": "wheat-field",
+      "title": "Van Gogh, Wheat Field with Reaper (Harvest in Provence).jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Van_Gogh,_Wheat_Field_with_Reaper_(Harvest_in_Provence).jpg",
+      "reason": "identity, reviewed by eye 2026-10-13: licence passed but the picture is not its subject (or not its stated medium); title_none added so no rerun picks it"
+    }
+  ],
+  "index": [
+    {
+      "subject": "cocoa-beans",
+      "label": "COCOA BEANS",
+      "title": "Roast cocoa beans ready to pounded into a paste for the Samoan koko drink..JPG",
+      "depicts": "photograph",
+      "subject_basis": "Fermented or roasted cocoa beans, the source of the fat the narration measures.",
+      "credit_line": "COCOA BEANS \u2014 PHOTOGRAPH, TEINESAVAII (PUBLIC DOMAIN)",
+      "treatment": "photo",
+      "source_org": "Teinesavaii",
+      "licence": "Public domain",
+      "matched_query": "cocoa beans roasted",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Roast_cocoa_beans_ready_to_pounded_into_a_paste_for_the_Samoan_koko_drink..JPG",
+      "direct_url": "https://upload.wikimedia.org/wikipedia/commons/4/47/Roast_cocoa_beans_ready_to_pounded_into_a_paste_for_the_Samoan_koko_drink..JPG",
+      "local_file": "assets/food__cocoa-beans__roast-cocoa-beans-ready-to-pounded-into-a-paste-for-the-samo.jpg",
+      "sha256": "b89b897a0dc37b76812050d69176b002b5f7b04ff3a785f39ca7ef2c5bf154a3",
+      "width": 3264,
+      "height": 2448,
+      "licence_basis": "Commons item page asserts Public domain (Copyrighted=False)"
+    },
+    {
+      "subject": "cocoa-pod",
+      "label": "CACAO POD",
+      "title": "Cacao-pod-k4636-14.jpg",
+      "depicts": "photograph",
+      "subject_basis": "The fruit of Theobroma cacao, whose seeds give cocoa butter.",
+      "credit_line": "CACAO POD \u2014 PHOTOGRAPH, KEITH WELLER, USDA ARS (PUBLIC DOMAIN)",
+      "treatment": "photo",
+      "source_org": "Keith Weller, USDA ARS",
+      "licence": "Public domain",
+      "matched_query": "theobroma cacao fruit",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Cacao-pod-k4636-14.jpg",
+      "direct_url": "https://upload.wikimedia.org/wikipedia/commons/0/01/Cacao-pod-k4636-14.jpg",
+      "local_file": "assets/food__cocoa-pod__cacao-pod-k4636-14-jpg.jpg",
+      "sha256": "cba0b9ba326b291dc03ad5d6956d56b9125493e2f4e9d5547b3d7b120459c9cd",
+      "width": 2700,
+      "height": 1796,
+      "licence_basis": "Commons item page asserts Public domain (Copyrighted=False)"
+    },
+    {
+      "subject": "gas-chromatograph",
+      "label": "GAS CHROMATOGRAPH",
+      "title": "Gas chromatograph.jpg",
+      "depicts": "photograph",
+      "subject_basis": "A gas chromatograph: the instrument that separates the crust's aroma compounds.",
+      "credit_line": "GAS CHROMATOGRAPH \u2014 PHOTOGRAPH, LINDA BARTLETT (PHOTOGRAPHER) (PUBLIC DOMAIN)",
+      "treatment": "photo",
+      "source_org": "Linda Bartlett (photographer)",
+      "licence": "Public domain",
+      "matched_query": "gas chromatograph instrument",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Gas_chromatograph.jpg",
+      "direct_url": "https://upload.wikimedia.org/wikipedia/commons/9/95/Gas_chromatograph.jpg",
+      "local_file": "assets/food__gas-chromatograph__gas-chromatograph-jpg.jpg",
+      "sha256": "37d5897ffc5568430344138a17e912cd972a7cae7fdccfdadbcbb6ab182f4268",
+      "width": 2700,
+      "height": 1800,
+      "licence_basis": "Commons item page asserts Public domain (Copyrighted=False)"
+    },
+    {
+      "subject": "pasteur",
+      "label": "LOUIS PASTEUR",
+      "title": "Louis Pasteur, foto av Paul Nadar, Crisco edit.jpg",
+      "depicts": "photograph",
+      "subject_basis": "Louis Pasteur (1822-1895), whose 1857 fermentation work the bread segment cites.",
+      "credit_line": "LOUIS PASTEUR \u2014 PHOTOGRAPH, PAUL NADAR (PUBLIC DOMAIN)",
+      "treatment": "photo",
+      "source_org": "Paul Nadar",
+      "licence": "Public domain",
+      "matched_query": "Louis Pasteur portrait",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Louis_Pasteur,_foto_av_Paul_Nadar,_Crisco_edit.jpg",
+      "direct_url": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Louis_Pasteur%2C_foto_av_Paul_Nadar%2C_Crisco_edit.jpg",
+      "local_file": "assets/food__pasteur__louis-pasteur-foto-av-paul-nadar-crisco-edit-jpg.jpg",
+      "sha256": "ea34672c0fde378893c572d908da96c7b97957f49ace5beb7b77085614452ffd",
+      "width": 2388,
+      "height": 3292,
+      "licence_basis": "Commons item page asserts Public domain (Copyrighted=False)"
+    },
+    {
+      "subject": "xray-diffraction",
+      "label": "X-RAY DIFFRACTION",
+      "title": "Apparatus for obtaining x-ray diffraction patterns - DPLA - 4418b03cd728d6e16bece7ec3acb0c63.jpg",
+      "depicts": "photograph",
+      "subject_basis": "An X-ray diffraction instrument or pattern: how the six crystal forms of cocoa butter are told apart.",
+      "credit_line": "X-RAY DIFFRACTION \u2014 PHOTOGRAPH, UNATTRIBUTED (PUBLIC DOMAIN)",
+      "treatment": "photo",
+      "source_org": "Wikimedia Commons",
+      "licence": "Public domain",
+      "matched_query": "x-ray diffraction pattern",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Apparatus_for_obtaining_x-ray_diffraction_patterns_-_DPLA_-_4418b03cd728d6e16bece7ec3acb0c63.jpg",
+      "direct_url": "https://upload.wikimedia.org/wikipedia/commons/6/66/Apparatus_for_obtaining_x-ray_diffraction_patterns_-_DPLA_-_4418b03cd728d6e16bece7ec3acb0c63.jpg",
+      "local_file": "assets/food__xray-diffraction__apparatus-for-obtaining-x-ray-diffraction-patterns-dpla-4418.jpg",
+      "sha256": "c835840b20cd0e59e891385d251e537fee59d0aa8df2201c4e9c6b9894406e46",
+      "width": 3312,
+      "height": 2755,
+      "licence_basis": "Commons item page asserts Public domain (Copyrighted=False)"
+    }
+  ],
+  "sources_unavailable": [
+    {
+      "source": "Pexels",
+      "why": "$PEXELS_API_KEY absent: the free search API needs an account key; Commons PD/CC0 is used alone"
+    },
+    {
+      "source": "Pixabay",
+      "why": "$PIXABAY_API_KEY absent: the free search API needs an account key; Commons PD/CC0 is used alone"
+    }
+  ]
+}

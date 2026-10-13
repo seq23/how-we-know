@@ -163,7 +163,8 @@
     "taxonomy_note": "The ONLY source of domain names. Nothing in this repo may name a domain absent from ranked_domains; loop/domains.py refuses one.",
     "allocation": {
       "deep-sea-ocean-science": 2,
-      "materials-and-manufacturing": 2
+      "materials-and-manufacturing": 2,
+      "food-science": 2
     },
     "allocation_note": "Weekly long-form slots per domain AT THE CADENCE CEILING (cadence.ceiling). The live weekly split is derived from cadence.videos_per_week by loop/domains.py live_slots(), largest share first, so there is ONE list and the split cannot drift from the cadence. At today's 2/week that is deep sea 2, materials 0; at the owner's 4/week target it is 2 and 2. The monthly review may move at most ONE ceiling slot a month, from measured evidence, and never to zero - a domain is retired on queue decay, not on one bad month.",
     "min_episodes_to_judge": 8,
@@ -180,8 +181,22 @@
       "materials-and-manufacturing": [
         "Monday",
         "Friday"
+      ],
+      "food-science": [
+        "Wednesday",
+        "Saturday"
       ]
     },
+    "sample_gate": {
+      "food-science": {
+        "state": "awaiting_owner_review",
+        "sample": "~/Desktop/how-we-know-food-sample/",
+        "clears_when": "the owner says the chocolate sample is right (docs/CHANNEL-PLAN.md, A third domain: food science - The gate). Clearing it is one edit: state -> cleared.",
+        "holds": "loop/domains.allocation_gate() refuses to author any food-science topic and loop/batch_queue.publish_queue_gate() refuses any food-science slug while the state is not 'cleared', so the Monday lane and the Mac batch cannot render a full food video before the sample is approved. The food scripts wait in scripts/food/ (outside scripts/*.md, which the Mac narrates).",
+        "pending_pov": "pov/pov-bank.json lines with pending_approval true ride with this review; loop/validate_plan.py c10 counts them only while this gate is open."
+      }
+    },
+    "sample_gate_note": "A domain listed here is registered and scheduled but may not author, narrate or render a full episode until its state is 'cleared'. A missing entry means no gate. Self-explaining hold, not a stop: its rotation days stay empty, never borrowed.",
     "publish_days_note": "Owner decision 2026-09-03. Materials runs ON TOP of deep sea, not instead of it, on the two days deep sea does not use. Long-form stays 10:00 Central; Shorts keep the evening window.",
     "per_domain_requirements": {
       "source_allowlist": "Each domain names its own public bodies. Deep sea's list is ORG_NAMES in loop/validate.py; a new domain adds its own and must not inherit NOAA/MBARI, which publish nothing about its subject.",

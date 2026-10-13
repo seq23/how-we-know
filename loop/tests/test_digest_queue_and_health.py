@@ -64,8 +64,15 @@ cal = digest.calendar(full_ledger(), CFG, NOW)
 examined += 1
 if not cal or any(not c["slug"] for c in cal):
     fails.append(f"calendar: a fully dated month should show no empty slot; got {[c for c in cal if not c['slug']]}")
+# Deep sea and materials hold four rotation days a week; food-science's two are
+# held behind its sample gate (domains.sample_gate) and are not slots yet.
+import domains as _D                                               # noqa: E402
+_gated = set(_D.sample_gated(CFG))
 if len(cal) != 16:
-    fails.append(f"calendar: 4 weeks at 4/week should be 16 slots, got {len(cal)}")
+    fails.append(f"calendar: 4 weeks of the four ungated rotation days should be 16 slots, got {len(cal)}")
+examined += 1
+if any(c["domain"] in _gated for c in cal):
+    fails.append(f"calendar: a sample-gated domain's days were counted as slots: {sorted({c['domain'] for c in cal} & _gated)}")
 
 # an empty slot on the first publish day inside 14 days -> red
 first_slot_day = cal[0]["days_away"]

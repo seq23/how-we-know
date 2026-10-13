@@ -2669,6 +2669,98 @@
         ]
       },
       "demand_side_rank": 20
+    },
+    {
+      "domain": "food-science",
+      "in_current_taxonomy": false,
+      "demand_side_score": 0.4833,
+      "score_components_normalised": {
+        "demand_surface": 0.337,
+        "depth": 0.41,
+        "explainer_fit": 0.931,
+        "method_fit": 0.231,
+        "noise_purity": 0.885,
+        "exclusion_safety": 0.137
+      },
+      "measured": {
+        "requests": 216,
+        "unique_queries": 697,
+        "clean_unique": 551,
+        "depth_per_request": 3.227,
+        "question_rate": 0.2783,
+        "method_queries": 3,
+        "method_queries_source": "research/broad_method.json (dedicated method-stem pass, 54 requests per domain)",
+        "method_pass": {
+          "seeds": [
+            "how do we know about food",
+            "how do scientists know about food"
+          ],
+          "requests": 54,
+          "unique_queries": 55,
+          "method_queries": 3,
+          "method_rate": 0.0545,
+          "clean_unique": 52
+        },
+        "noise_rate": 0.0129,
+        "exclusion_rate": 0.0215,
+        "multi_probe_confirmed": 110
+      },
+      "exclusion_breakdown": {
+        "Dangerous acts, stunts, or anything replicable and harmful": 11,
+        "Content directed at children (COPPA exposure)": 3,
+        "filter.py BARRED": 1
+      },
+      "trend": {
+        "status": "not_measured"
+      },
+      "competition": {
+        "measured": false,
+        "status": "NOT_MEASURED",
+        "why": "quota was spent on higher-ranked domains and the 20 existing scripts; not scored as zero"
+      },
+      "demand_over_competition": {
+        "score": null,
+        "status": "unscored_competition_not_measured"
+      },
+      "top_method_queries": [
+        "how do scientists date fossils",
+        "how do scientists know so much",
+        "how do scientists know the age of fossils"
+      ],
+      "top_questions": [
+        "why does chocolate melt",
+        "why do onions make you cry",
+        "why does bread rise",
+        "why does onions make you cry",
+        "why doesn't my bread rise",
+        "why is my bread not rising",
+        "how is cheese made",
+        "what to do when chocolate is not melting"
+      ],
+      "provenance": {
+        "endpoint": "https://suggestqueries.google.com/complete/search",
+        "surface": "youtube_autocomplete (ds=yt, client=firefox, hl=en, gl=us)",
+        "method": "each seed probed bare, then suffixed with each letter a-z",
+        "started_utc": "2026-10-13T13:22:07.183083+00:00",
+        "finished_utc": "2026-10-13T13:24:05.549860+00:00",
+        "pause_seconds": 0.4,
+        "seeds": [
+          "food science",
+          "why does bread rise",
+          "maillard reaction",
+          "why does chocolate melt",
+          "how is cheese made",
+          "why do onions make you cry",
+          "fermentation",
+          "what happens when you cook food"
+        ]
+      },
+      "demand_side_rank": 5,
+      "registered": {
+        "date": "2026-10-13",
+        "by": "owner decision (docs/CHANNEL-PLAN.md, A third domain: food science)",
+        "how_scored": "research/mine_broad.py general + method passes for food-science only (same 216/54-request budgets), then research/propose.py run in a scratch copy over all 21 domains; only this record was taken from that run so the 20 committed records stay byte-identical. Competition is not measured at domain level (demand_over_competition null), the same state as 13 of the 20."
+      }
     }
   ]
 }

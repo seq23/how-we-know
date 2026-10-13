@@ -217,6 +217,24 @@ def build_materials(slug: str, out_dir: str | None = None,
     return path
 
 
+def build_food(slug: str, out_dir: str | None = None,
+               script_path: str | None = None) -> str:
+    """food-science (2026-10-13): the long-form contract set (three variants,
+    the one channel grade, <= 3 words, one subject >= 60%) from the food
+    manifests, variant A copied to where the upload lanes attach it. Food
+    scripts wait in scripts/food/ while the domain is sample-gated."""
+    import thumb_contract                                  # noqa: PLC0415
+    sp = script_path or next((p for p in (os.path.join(SCRIPTS, f"{slug}.md"),
+                                          os.path.join(SCRIPTS, "food", f"{slug}.md"))
+                              if os.path.exists(p)), None)
+    res = thumb_contract.build_variants(slug, script_path=sp)
+    os.makedirs(out_dir or OUT, exist_ok=True)
+    path = os.path.join(out_dir or OUT, f"{slug}.jpg")
+    shutil.copyfile(res["chosen"], path)
+    _check_output(path)
+    return path
+
+
 def _check_output(path: str) -> None:
     from PIL import Image                                  # noqa: PLC0415
     size = os.path.getsize(path)
@@ -233,6 +251,7 @@ def _check_output(path: str) -> None:
 BUILDERS = {
     DEEP_SEA: build_deep_sea,
     MATERIALS: build_materials,
+    "food-science": build_food,
 }
 
 

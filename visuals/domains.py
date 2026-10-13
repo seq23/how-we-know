@@ -77,6 +77,22 @@ PALETTES: dict[str, dict[str, tuple[int, int, int]]] = {
         "TEXT":  (250, 244, 236),
         "MUTED": (189, 171, 158),
     },
+    "food-science": {
+        # 2026-10-13. The owner's brief: a dark warm ground, one glossy
+        # subject lit from the side. The palette is the kitchen's own heat
+        # axis (see DEVICES): cocoa-black ground, crumb and crust, caramel,
+        # Maillard brown, and a cool butter-white kept for the single
+        # glowing cross-section line. visuals/food.py grades the footage and
+        # stills toward these same stops.
+        "INK":   (14, 9, 7),        # cocoa black - the ground
+        "DEEP":  (38, 22, 15),      # dark crust
+        "MID":   (112, 58, 28),     # Maillard brown
+        "CYAN":  (232, 150, 62),    # caramel - primary accent
+        "PALE":  (246, 214, 160),   # crumb - secondary accent
+        "AMBER": (255, 236, 196),   # butter-white glow, the cross-section line
+        "TEXT":  (252, 244, 232),
+        "MUTED": (196, 170, 148),
+    },
 }
 
 
@@ -142,6 +158,35 @@ DEVICES: dict[str, dict] = {
                         "material sits exactly there — the per-episode "
                         "figure always comes from that episode's own "
                         "narration and ## Sources."),
+    },
+    "food-science": {
+        "axis": "temperature",
+        "unit": "C",
+        "unit_label": "DEGREES C",
+        "title": "THE KITCHEN SCALE",
+        "max": 300,
+        "default_ascent_label": "THE CRUST",
+        # Kitchen thresholds the three first questions turn on:
+        #   MELT      cocoa butter form V melts at about 34 C, under body heat
+        #   BAKE CORE yeast dies near 60 C; a loaf's crumb sets toward 96 C
+        #   MAILLARD  browning becomes fast above roughly 140 C
+        #   CARAMEL   sucrose caramelises from about 160 C
+        #   CHAR      past about 200 C sugars and proteins burn
+        "bands": [
+            ("MELT",      0,   40),
+            ("BAKE CORE", 40,  100),
+            ("MAILLARD",  100, 160),
+            ("CARAMEL",   160, 200),
+            ("CHAR",      200, 300),
+        ],
+        "source_note": ("rounded kitchen convention (USDA, IFT and the "
+                        "food-chemistry literature); every per-episode "
+                        "figure comes from that episode's own narration and "
+                        "## Sources, never from the visual alone."),
+        "signature": ("one glowing cross-section per video - the subject cut "
+                      "open with a single butter-white line tracing the "
+                      "structure that answers the question "
+                      "(visuals/food.py cross_section)."),
     },
 }
 

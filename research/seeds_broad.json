@@ -83,6 +83,11 @@
     "logistics-how-things-move": {
       "in_current_taxonomy": false,
       "seeds": ["container ship", "supply chain", "why are ports congested", "how does air traffic control work", "what happens to lost cargo", "ever given suez", "shipping container logistics", "cargo plane loading"]
+    },
+    "food-science": {
+      "in_current_taxonomy": false,
+      "_added": "2026-10-13, the owner's third domain (docs/CHANNEL-PLAN.md, A third domain: food science); mined with the same 8-seed budget",
+      "seeds": ["food science", "why does bread rise", "maillard reaction", "why does chocolate melt", "how is cheese made", "why do onions make you cry", "fermentation", "what happens when you cook food"]
     }
   }
 }

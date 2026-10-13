@@ -468,6 +468,8 @@ Shorts lane protected first.
 pins `videos_per_week` at 6, `loop/config.json` carries the rotation above as `cadence.rotation`
 (one a day at 10:00 local, `per_day` 1), and `loop/domains.live_slots()` /
 `loop/backfill.domain_weekdays()` read it. Validator V20 holds every dated long-form episode to it.
-food-science is mapped but not yet registered: its Wednesday and Saturday stay empty until the PR
-that lands the food domain registers it in the taxonomy. Changing this table without moving those
-pins is drift.
+food-science is REGISTERED (the food-domain PR of 2026-10-13: taxonomy, allocation 2 on Wed/Sat,
+sources, palette, preset, harvester, thumbnail builder, seeded queue; validator V52) and held behind
+its sample gate (`loop/config.json` `domains.sample_gate`): its Wednesday and Saturday stay empty,
+never borrowed, until the chocolate sample is cleared and a food episode is queued. Changing this
+table without moving those pins is drift.

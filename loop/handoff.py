@@ -681,7 +681,11 @@ def save_all(episodes_doc: dict, shorts_doc: dict, pl: dict, hs: dict) -> None:
 
 def run(dry_run: bool = False, yt=None, token: str | None = None) -> int:
     cfg = config()
-    alloc = list(domains.allocation(cfg))
+    # A domain held behind its owner-review sample (domains.sample_gate) has
+    # no video yet; its playlist and channel shelf are created the first run
+    # after the gate clears, never as an empty shelf on the channel home.
+    gated = domains.sample_gated(cfg)
+    alloc = [d for d in domains.allocation(cfg) if d not in gated]
     episodes_doc = ledger.load()
     shorts_doc = load_shorts()
     pl = load_playlists()

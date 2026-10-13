@@ -346,8 +346,9 @@ def main() -> int:
               r1.stdout[-600:])
         check("the pool report names the Mac's count beside the local absence",
               "video_rights.json absent here; 113 record(s) on mac-batch" in r1.stdout)
-        check("the three ci harvesters still ran (dry) first",
-              r1.stdout.count("[work] would harvest") == 3)
+        # Four since 2026-10-13: research/imagery_food.py joined the three.
+        check("the four ci harvesters still ran (dry) first",
+              r1.stdout.count("[work] would harvest") == 4)
         check("HARVESTER_TOOLING_ABSENT is not raised for a delegated harvester",
               "HARVESTER_TOOLING_ABSENT" not in r1.stdout)
 

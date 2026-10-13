@@ -207,6 +207,28 @@ def _read_json_default(path: Path) -> dict:
         return {}
 
 
+def sample_gated(cfg: dict) -> dict[str, dict]:
+    """Domains registered but held behind their owner-review sample.
+
+    `loop/config.json` `domains.sample_gate` (2026-10-13, food-science): the
+    channel plan says the first food video renders only after the owner has
+    watched a 2-3 minute sample and said it is right. A gated domain keeps its
+    allocation and its rotation days (they stay empty, never borrowed) but
+    nothing may author, narrate or render a full episode for it. Every entry
+    must name a domain the taxonomy knows and a state; a state other than
+    'cleared' holds."""
+    gate = (cfg.get("domains") or {}).get("sample_gate") or {}
+    out = {}
+    for name, row in gate.items():
+        require_known(name)
+        state = (row or {}).get("state")
+        if not state:
+            raise ValueError(f"domains.sample_gate[{name!r}] has no state")
+        if state != "cleared":
+            out[name] = row
+    return out
+
+
 def allocation_gate(rows: list[dict], cfg: dict) -> tuple[list[dict], dict[str, str]]:
     """Refuse to author any row whose domain holds no weekly slot.
 
@@ -227,10 +249,17 @@ def allocation_gate(rows: list[dict], cfg: dict) -> tuple[list[dict], dict[str, 
     `batch_queue.publish_queue_gate`.
     """
     alloc = allocation(cfg)
+    gated = sample_gated(cfg)
     allowed, refused = [], {}
     for row in rows:
         dom = row_domain(row)
-        if dom in alloc:
+        if dom in gated:
+            refused[row.get("slug", "<no-slug>")] = (
+                f"domain {dom!r} is held behind its owner-review sample "
+                f"(loop/config.json domains.sample_gate: "
+                f"{gated[dom].get('state')}) - no full episode is authored "
+                f"until it is cleared")
+        elif dom in alloc:
             allowed.append(row)
         else:
             refused[row.get("slug", "<no-slug>")] = (

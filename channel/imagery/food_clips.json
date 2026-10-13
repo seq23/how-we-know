@@ -1,0 +1,48 @@
+{
+  "generated": "2026-10-13T14:06:19.089582+00:00",
+  "domain": "food-science",
+  "policy": "Public domain or CC0 only, verified live; same gates as the stills.",
+  "rights_fields_required": [
+    "depicts",
+    "subject_basis",
+    "credit_line",
+    "item_url",
+    "licence",
+    "sha256"
+  ],
+  "asset_count": 0,
+  "subjects_total": 4,
+  "sources_unavailable": [
+    {
+      "source": "Pexels",
+      "why": "$PEXELS_API_KEY absent: the free search API needs an account key; Commons PD/CC0 is used alone"
+    },
+    {
+      "source": "Pixabay",
+      "why": "$PIXABAY_API_KEY absent: the free search API needs an account key; Commons PD/CC0 is used alone"
+    }
+  ],
+  "rejected": [
+    {
+      "subject": "chocolate-pour",
+      "title": null,
+      "reason": "no clip passed both gates"
+    },
+    {
+      "subject": "chocolate-making",
+      "title": null,
+      "reason": "no clip passed both gates"
+    },
+    {
+      "subject": "steak-sizzle",
+      "title": null,
+      "reason": "no clip passed both gates"
+    },
+    {
+      "subject": "dough-kneading",
+      "title": null,
+      "reason": "no clip passed both gates"
+    }
+  ],
+  "index": []
+}

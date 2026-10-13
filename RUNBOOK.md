@@ -475,6 +475,16 @@ split monthly and writes its reasoning to `loop/state/monthly/<month>.md`.
   count, and the next-ranked domain in the taxonomy takes its slots
   automatically.
 
+## Food, the third domain — one look from you, then nothing
+
+- **Registered and scheduled** (Wednesday and Saturday), **held** until you have watched the
+  chocolate sample: `~/Desktop/how-we-know-food-sample/` (the mp4, three thumbnails, a note).
+- **Your notes are the next iteration.** When it is right, the gate is one line in
+  `loop/config.json` (`domains.sample_gate` → `"state": "cleared"`); after that the first full
+  30-minute video renders on the Mac like any other episode. Until then Wed/Sat simply stay empty.
+- **Three food POV lines are drafted** for you to read with the sample (`pov/pov-bank.json`,
+  `pending_approval`); nothing uses them until they are yours.
+
 ## Monetisation, both gates
 
 There are two Partner Programme tiers, not one, and the loop now tracks both

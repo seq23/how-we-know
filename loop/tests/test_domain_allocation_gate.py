@@ -108,13 +108,39 @@ rows = ([{"slug": f"ok-{d}", "domain": d} for d in ALLOC]
           {"slug": "bad-space", "domain": "space-astronomy"}])
 allowed, refused = domains.allocation_gate(rows, CFG)
 allowed_slugs = {r["slug"] for r in allowed}
-if allowed_slugs != {f"ok-{d}" for d in ALLOC}:
+# An allocated domain held behind its owner-review sample (domains.sample_gate,
+# food-science from 2026-10-13) is REFUSED, by name, until the gate clears.
+GATED = set(domains.sample_gated(CFG))
+want_ok = {f"ok-{d}" for d in ALLOC if d not in GATED}
+if allowed_slugs != want_ok:
     fails.append(f"allocation_gate() allowed {sorted(allowed_slugs)}, wanted "
-                 f"exactly the allocated fixture(s) {sorted(f'ok-{d}' for d in ALLOC)}")
+                 f"exactly the allocated, ungated fixture(s) {sorted(want_ok)}")
 for slug in ("bad-method-evidence", "bad-space"):
     if slug not in refused or "domains.allocation" not in refused[slug]:
         fails.append(f"allocation_gate() did not refuse {slug} by name, "
                      f"naming domains.allocation: {refused.get(slug)!r}")
+for d in GATED:
+    examined += 1
+    if "sample_gate" not in (refused.get(f"ok-{d}") or ""):
+        fails.append(f"allocation_gate() did not refuse sample-gated {d} by "
+                     f"name: {refused.get(f'ok-{d}')!r}")
+# Cleared, the same rows are all allowed: the gate holds only while open.
+examined += 1
+cleared = json.loads(json.dumps(CFG))
+for d in (cleared["domains"].get("sample_gate") or {}):
+    cleared["domains"]["sample_gate"][d]["state"] = "cleared"
+ok2, _ = domains.allocation_gate(rows, cleared)
+if {r["slug"] for r in ok2} != {f"ok-{d}" for d in ALLOC}:
+    fails.append(f"a cleared sample gate still refused: {sorted(r['slug'] for r in ok2)}")
+# A gate naming a domain the taxonomy does not know is refused, not ignored.
+examined += 1
+bad = json.loads(json.dumps(CFG))
+bad["domains"]["sample_gate"] = {"no-such-domain": {"state": "awaiting_owner_review"}}
+try:
+    domains.sample_gated(bad)
+    fails.append("sample_gated() accepted a domain absent from the taxonomy")
+except domains.UnknownDomain:
+    pass
 
 # ------------------------------------------------------ 3. draft.py, sandboxed
 def run(body: str, tmp: Path) -> subprocess.CompletedProcess:

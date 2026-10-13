@@ -237,6 +237,23 @@ def candidates(slug: str, script_path: str | None = None) -> list[dict]:
                 add_mat(subj)
         except Exception:                                  # noqa: BLE001
             pass
+    if not out:
+        # FOOD (2026-10-13): the food preset's own rights/provenance
+        # manifests - Commons PD/CC0 stills (food.json) and the Workers AI
+        # stills (food_ai.json, credited "AI-GENERATED IMAGE") - in the
+        # order visuals/food.THUMB_SUBJECTS names for this slug.
+        try:
+            import food                                    # noqa: PLC0415
+            cat = food.catalogue()
+            for key in food.THUMB_SUBJECTS.get(slug, []):
+                r = cat.get(key)
+                if r and r["kind"] != "clip":
+                    out.append({"path": r["path"], "local_file": r["local_file"],
+                                "sha256": r.get("sha256"), "credit": r["credit"],
+                                "crop": r.get("crop"), "subject": key,
+                                "manifest": "food_ai.json" if r["ai"] else "food.json"})
+        except Exception:                                  # noqa: BLE001
+            pass
     seen, uniq = set(), []
     for c in out:
         if c["local_file"] in seen or not os.path.exists(c["path"]):
