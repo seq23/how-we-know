@@ -165,12 +165,30 @@ def a_each_defect_is_detected():
         doctored[1]["pov_id"] = doctored[0]["pov_id"]
         doctored[1]["tier"] = doctored[0]["tier"]
         doctored[1]["line"] = doctored[0]["line"]
-        got = {d["code"] for d in P.assignment_defects(rows=doctored)}
+        both = {doctored[0]["video"], doctored[1]["video"]}
+        got = {d["code"] for d in P.assignment_defects(rows=doctored,
+                                                       live=both)}
         if "POV_ID_REUSED" not in got:
             fails.append(f"POV_ID_REUSED was not detected when one line was "
                          f"assigned to two videos, which is the rule "
                          f"pov/pov-assignments.json states in its own header. "
                          f"Got {sorted(got) or 'nothing'}.")
+        # A DEAD holder (killed topic, never renders) does not make a live
+        # episode's line a reuse - and the dead row is not flagged either.
+        examined += 1
+        one = {doctored[1]["video"]}
+        got = {d["code"] for d in P.assignment_defects(rows=doctored,
+                                                       live=one)}
+        if "POV_ID_REUSED" in got:
+            fails.append("POV_ID_REUSED fired when the other holder of the "
+                         "line is a dead topic that can never air - reuse is "
+                         "judged among live episodes (batch_queue.live_slugs())")
+        # ...and the default live set is batch_queue.live_slugs(), not a copy.
+        examined += 1
+        import inspect  # noqa: PLC0415
+        if "live_slugs()" not in inspect.getsource(P.assignment_defects):
+            fails.append("assignment_defects() must default its live set to "
+                         "batch_queue.live_slugs(), the one renderable notion")
 
     return fails, examined
 

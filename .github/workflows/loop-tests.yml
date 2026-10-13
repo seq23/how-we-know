@@ -15,6 +15,10 @@ jobs:
   test:
     timeout-minutes: 8  # ~3x median 2.3m over 8 green runs; fault detector, not a budget
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2]  # run_all.py --shard K/2; every shard named here (test_registry_green_on_main.py)
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -25,7 +29,7 @@ jobs:
       - name: Install the one dependency the tests need
         run: pip install --quiet pyyaml
       - name: Loop tests
-        run: python loop/tests/run_all.py
+        run: python loop/tests/run_all.py --shard ${{ matrix.shard }}/2
       - name: Conformance with the locked plan
         run: python loop/validate_plan.py
       - name: Shell syntax

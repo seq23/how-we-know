@@ -203,6 +203,22 @@ def queued_slugs() -> list[str]:
     return [r["slug"] for r in queued_entries()]
 
 
+def live_slugs() -> set[str]:
+    """Every episode that can reach the channel or already has: the batch
+    queue (queued_slugs(), the ONE notion of "renderable") plus every slug in
+    the published ledger. Anything else is a dead topic - killed by the gate
+    or refused by the same-question rule - whose script will never render.
+
+    Built on queued_slugs(), never a second list. V21 (verbatim narration) and
+    pov_match's no-reuse rule judge only these: a sentence or a POV line in a
+    script that can never air cannot repeat anything on the channel, and on
+    2026-10-13 a dead topic's assignment row (03-why-deep-sea-creatures-are-
+    surfacing, pov-038) blocked recording the line a scheduled episode really
+    carries. Un-killing a topic brings it straight back into scope."""
+    import ledger                                          # noqa: PLC0415
+    return set(queued_slugs()) | {r["slug"] for r in ledger.load()["published"]}
+
+
 # ---------------------------------------------------------------- the rule
 #
 # THE MONDAY LANE WRITES ONLY TOPICS ALREADY IN THE PUBLISH QUEUE. Owner

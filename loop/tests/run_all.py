@@ -10,6 +10,7 @@ from __future__ import annotations
 import glob
 import os
 import subprocess
+import time
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -59,6 +60,27 @@ def main() -> int:
     if not files:
         print("FAIL: no loop tests found — this runner examined zero tests")
         return 1
+    # --shard K/N runs every Nth file from the K-th (1-based). CI runs N
+    # shards in parallel (.github/workflows/loop-tests.yml matrix) so the
+    # merge gate stays under its ceiling: the suite had grown to 5-7.5 min
+    # against an 8-min fault detector, and on 2026-10-13 the registry gate
+    # (test_registry_green_on_main.py) pushed a PR run over it. No argument
+    # = every file, as before. test_registry_green_on_main.py asserts the
+    # matrix names every shard 1..N, so no file can fall between shards.
+    args = sys.argv[1:]
+    if args[:1] == ["--shard"] and len(args) == 2:
+        k, n = (int(x) for x in args[1].split("/"))
+        if not 1 <= k <= n:
+            print(f"FAIL: --shard {args[1]} is not K/N with 1 <= K <= N")
+            return 1
+        files = files[k - 1::n]
+        print(f"shard {k}/{n}: {len(files)} file(s)")
+        if not files:
+            print("FAIL: this shard holds zero test files")
+            return 1
+    elif args:
+        print(f"FAIL: unknown arguments {args}; usage: run_all.py [--shard K/N]")
+        return 1
 
     before = state_snapshot()
     if not before:
@@ -103,7 +125,12 @@ def main() -> int:
         # breaker happens to be tripped, nor write the committed flag. Absent
         # file = closed; a test that wants a trip writes its own.
         env["LOOP_BREAKER_FLAG"] = os.path.join(stops, f"breaker-{name}.json")
-        print(f"\n──── {name}")
+        # flush: the header must land in the CI log BEFORE the child's own
+        # output, or per-test timing cannot be read off the log timestamps
+        # (2026-10-13: every header arrived at the end, so balancing the
+        # shards had nothing to go on).
+        print(f"\n──── {name}", flush=True)
+        t0 = time.monotonic()
         # Each test picks its OWN interpreter needs: test_workflows re-execs
         # into the system python3 for pyyaml, while the validators need the
         # venv's numpy and Pillow. Launching every test from the venv lets each
@@ -112,6 +139,7 @@ def main() -> int:
         # numpy, each time sending someone after a content bug that did not
         # exist. An unrun validator is not a failing one.
         r = subprocess.run([PY, f], cwd=ROOT, env=env)
+        print(f"──── {name} took {time.monotonic() - t0:.0f}s", flush=True)
         if r.returncode != 0:
             failed.append(name)
 
