@@ -1149,3 +1149,31 @@ Everything decided on 12 Oct 2026, as landed on `main` by the end of the day.
   3 scripts promoted, 4 items in `loop/render_queue.json`.
 - **Long-form cadence 4/week holds; Shorts drain 2/day** (owner, research in
   docs/research/how-we-know-numbers.md).
+
+## 2026-10-13 — long-form repackage, job 1 of 3: the tooling and its guards
+
+Owner decisions of 12–13 Oct 2026, binding: nothing is privated by niche, nothing starts over, both
+niches stay on the one channel. Long-form only; Shorts untouched. Old under-ten-minute episodes are made
+PRIVATE (never deleted) only after their replacement is public.
+
+- **Title formula as code** (`loop/longform_title.py`, V47): ≤60 characters, subject + stake (figure,
+  contradiction or stake verb), never "how we know", never a bare restatement of the question, every
+  content word and figure traceable to the script. The only door is `title_for_upload()`; the upload
+  lanes hold a slug with no passing title (`TITLE_REFUSED`) and `loop-repackage` proposes daily on the
+  $0 route. Shorts keep `loop/titles.py`.
+- **Thumbnail contract** (`visuals/thumb_contract.py`, V48): one rights-verified subject at ≥60% fill,
+  ≤3 words, one constant grade (`hwk-split-navy-amber-v1`), three variants, A ships. Episodes with no
+  public-domain image of their own subject are refused by name and keep the domain builder's card.
+- **Hook rule** (`loop/opening.py` `stake-then-payoff`, first and active; V44): first sentence ≤15 words,
+  <50% shared with title and question; payoff still inside 75 words.
+- **Ten-minute splice** (`loop/lengthen.py`, V49): her question "can't u just add something on the end" —
+  new hook + the untouched body (cut `-c copy` at the title-card keyframe, verified by framemd5; CONFIRMED
+  on 02-how-deep-sea-creatures-survive-pressure: boundary frame 423 is a keyframe and the cut body is
+  13,155/13,155 packets identical) + a warm, sourced tail ending on the next episode. Full re-render only
+  when the sidecar timings are unusable. There is no separate end-card beat in this pipeline; the tail's
+  last line is the end card.
+- **Repackage lane** (`loop/repackage.py`, `loop-repackage.yml`, V50): `apply` (title + variant A) and
+  `reupload` (new video at fixed slots, `long_form_per_day` 2; old cut private once the new one is public;
+  ledger, Shorts hand-off and playlist re-pointed). Quota under lane `repackage`, never touching the
+  episode upload's 1,700 or the Shorts lane's 3,400. The old video's playlist row is left in place: this
+  repo has no HTTP DELETE.
