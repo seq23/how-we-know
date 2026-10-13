@@ -563,6 +563,7 @@ and `loop/tests/test_runbook_lanes.py` fails if a `loop-state` workflow has no r
 | `loop-reach` | daily 10:00 (`0 15 * * *`) | Non-English reach plus discovery metadata: English captions, localized titles and descriptions, tags. | yes (localization) |
 | `loop-shorts-cloud` | daily 18:00 (`0 23 * * *`) | Pulls a verified Short from R2 and uploads it to YouTube as private with its evening slot. Halts while the circuit breaker is tripped (`BREAKER_TRIPPED`). | no |
 | `loop-repackage` | daily 18:30 (`30 23 * * *`) | Long-form repackage (your decisions of 12-13 Oct 2026), forward only: drafts a passing long-form title for every script not yet uploaded and puts new titles and contract thumbnails on videos already up (public or scheduled). Dispatched with `reschedule=true` it re-dates scheduled videos onto the rotation. Never uploads, deletes or privates anything. | yes (long-form titles) |
+| `loop-demand` | daily 08:30 (`30 13 * * *`); the email Mondays in the same run | Phase 4: per-video demand for every public long-form video, the verdict against your floors, an automatic second title and thumbnail for a video failing every bar after 7 days (two rounds at most), and the Monday demand email (see "Demand" below). | yes (a second-packaging title) |
 | `loop-fri-publish` | Fri 08:00 (`0 13 * * 5`) | Flips private uploads to public, but only against a receipt proving the upload happened. Halts while the circuit breaker is tripped (`BREAKER_TRIPPED`). | no |
 | `loop-fri-measure` | Fri 16:00 (`0 21 * * 5`) | Pulls retention and RPM, writes measurement, and can trip the circuit breaker. | no |
 | `loop-imagery-harvest` | Fri 23:00 (`0 4 * * 6`) | Grows the rights-cleared footage pool ahead of demand. | no |
@@ -721,6 +722,60 @@ refused if it carries a number the email did not print. The pivot research
 reaches you through this email. First one, 12 Oct 2026: issue #179, "Monthly:
 7 episodes + 4 Shorts published in October so far (to 12 Oct); no pivot rule
 triggered".
+
+## Demand — the Monday email (nothing for you to do)
+
+Phase 4, 13 Oct 2026. `loop/demand.py`, run by `loop-demand` (daily 13:30 UTC =
+08:30 Central in summer time; the email Mondays, in the same run). Long-form only.
+
+- **Daily pull:** for every public long-form video, views, average view
+  percentage and duration, watch minutes, subscribers gained, the traffic split
+  (browse / suggested / search / external) and the **30-second hold** from
+  YouTube's audience-retention curve. YouTube withholds the curve on low-view
+  videos; that reads `insufficient`, never 0. Snapshot `loop/state/demand.json`,
+  one row per video per day in `loop/state/demand_history.jsonl`.
+- **Verdict** on the CURRENT title and thumbnail (since they went up): PASS /
+  WATCH / FAIL against click-through > 4 %, 30-second hold > 70 %, watched > 40 %;
+  under 30 views since the current packaging = too few to judge.
+- **Second packaging, automatic:** a video failing every bar it can be judged on,
+  7+ days after its current packaging, gets a new title (the long-form proposer)
+  and thumbnail B, later C. Two rounds at most, then it is listed as
+  NEEDS_REVIEW in the email. A video with a running Studio thumbnail test gets
+  the new title only.
+- **The email** (issue labelled `demand-weekly`, like the digest): is packaging
+  working (yes / no / too early), the counts, this week's new titles, hooked vs
+  older openings, best and worst three by watch minutes per view, the day-30
+  check. Refused, not sent, if any number in it is not in the snapshot
+  (`DEMAND_EMAIL_UNTRACED`).
+
+### Monday Studio read (the coordinator, in Chrome; bounded to 10 minutes)
+
+Click-through and impressions exist only in YouTube Studio. Never scraped
+unattended. Each Monday, before 13:30 UTC:
+
+1. Chrome, signed in to the channel: `studio.youtube.com` → **Analytics** →
+   **Advanced mode** → **Content** tab, Content type **Videos** (not Shorts),
+   period **Last 28 days**, metrics include **Impressions** and **Impressions
+   click-through rate (%)**.
+2. **Export current view → Comma-separated values (.csv).** It downloads a zip;
+   the file is `Table data.csv`.
+3. `.venv/bin/python loop/demand.py ingest-studio "<path>/Table data.csv" --as-of <the period's end date>`
+   — it merges only long-form ids, skips the Total row and Shorts, and refuses
+   (exit 1) if nothing merged.
+4. `git add loop/state/demand.json loop/state/demand_history.jsonl`, commit
+   `demand: Studio click-through <date>`, `git pull --rebase && git push`.
+
+Stop at the first sign-in, 2-step or consent prompt (that is her account only):
+skip the week. Click-through then reads "not known yet" in the email; nothing
+blocks and nothing is asked of her.
+
+### Thumbnail tests (Studio Test & Compare)
+
+After starting a test in Studio: `.venv/bin/python loop/demand.py mark-test <video_id> --start --variants A B C`;
+after it ends: `... mark-test <video_id> --end`. Commit the snapshot as above.
+While a test is active the second packaging changes the title only, because a
+thumbnail change cancels the test; the email says so. V70 fails if a thumbnail
+ever changed during an active test.
 
 ---
 
