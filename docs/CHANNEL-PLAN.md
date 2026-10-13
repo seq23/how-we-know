@@ -370,3 +370,94 @@ Listed so that changing it is a decision, not a drift:
 - **Materials-and-manufacturing's scored queue decaying** below
   `domains.queue_exhausted_below` after it starts. It retires and the next-ranked domain
   in `research/proposed-taxonomy.json` takes its slots — never a fixed episode count.
+
+## The long-form program of 2026-10-13 (owner decisions; never re-raise)
+
+After 60 days the channel's own numbers (median 7 views per long-form video, 70 s average view
+duration against the 146 s floor, 26 subscribers; `loop/state/channel_verdict.json` 2026-10-12)
+said the videos were not passing YouTube's first test. The niches were not the problem: materials
+pulled twice the clicks per video, deep sea twice the retention. The owner's rulings, in force:
+
+- **Nothing is privated by niche and nothing starts over.** Both domains stay on this channel.
+- **Everything long-form, published and queued, gets fixed.** Shorts, their titles, thumbnails and
+  the 2/day drain are untouched by this program.
+- **Title formula, guarded in code:** at most 60 characters, a specific subject plus a stake, a
+  contradiction or a figure; **never the phrase "how we know" in a title** (the brand lives in
+  the channel name and the script's second act); never a bare restatement of the question; every
+  word and figure traceable to the script (truth guard). `loop/title.py` once it lands.
+- **Thumbnail contract, guarded in code:** one subject filling at least 60 % of the frame, high
+  contrast, at most three words, ONE constant colour grade across the channel; three variants per
+  episode, variant A published, Studio Test & Compare on the rest.
+- **Hook rule:** opening variant `stake-then-payoff` is first in `loop/opening.py` — the first
+  narrated sentence is at most 15 words, states a stake, contradiction or figure, never the
+  title; the payoff still lands inside the first 75 words. The 28-day AVD comparison keeps running.
+- **Ten-minute floor, enforced by extension not by holding:** every long-form episode under
+  10:00 is extended to 10:30–11:30 with real sourced evidence beats. **The extension is a splice,
+  never a full re-render:** a freshly rendered hook replaces the cold open, the existing body from
+  the title card onward is kept byte-identical, a freshly rendered tail (what the evidence does
+  not settle, the open question, a next-episode tease — written warm and funny, never filler)
+  is appended, and the three are concatenated.
+- **Published episodes under ten minutes (all eleven deep-sea ones) are re-uploaded as new
+  videos** with the new title, thumbnail and opening. The old copy is set **private, never
+  deleted**, only after the replacement is confirmed public, so its retention data survives.
+- **Backlog drain:** a long-form drain lane at **two a day** until the 11 re-uploads and the
+  queued episodes are out (about 16 days), then the steady schedule below. A one-day dump was
+  rejected: the API quota caps uploads at three or four a day and simultaneous uploads dilute
+  each video's 48-hour test.
+- **Demand is measured, not just supply:** per-video click-through proxies and retention from
+  the Analytics API daily, Studio click-through weekly, one weekly email. Day-30 gate: CTR above
+  4 %, 30-second retention above 70 %, average view duration above 40 %; a video under all three
+  after seven days gets a second title and thumbnail automatically.
+
+## A third domain: food science (decided 2026-10-13)
+
+**"How We Know: Food"** is an additional domain on this channel (a Food playlist), not a change
+to the two above. Same "how we know" questions, same hook rule, same title and thumbnail
+contract, a new imagery preset and a calmer register.
+
+- **Format:** about 30 minutes to start, three questions of roughly nine minutes each, a hooked
+  90-second cold open, then the pace slows and the voice lowers so the video works as wind-down
+  and on mute (captions on, a low sound layer of sizzle, snap and pour). Later: 60–120 minute
+  compilations and single-food deep dives; ten-minute cuts of the same scripts feed search.
+  Judged by **watch minutes per view and click-through, not view percentage.**
+- **First video:** *Why bread rises, steak browns and chocolate snaps* — why bread rises (Pasteur
+  1857, yeast under the microscope, X-ray tomography of a baking loaf); why seared meat tastes
+  good (Maillard 1912, Hodge 1953, gas chromatography of the crust); why chocolate melts in the
+  mouth and not the hand (cocoa butter form V, X-ray diffraction, calorimetry).
+- **Imagery, the owner's words:** marvellous and hypnotic, realistic not animated, AI is fine,
+  **fantastical in scale rather than physics** — fields of dough rising, a thousand steaks
+  sizzling, chocolate falling in sheets. At $0: Flux stills on Workers AI's free allowance and
+  local Stable Diffusion with slow zoom and parallax; Pexels/Pixabay slow-motion macro for real
+  pours and snaps; a few open-model AI video hero clips rendered overnight on the Mac. AI stills
+  that look real carry YouTube's altered-content label. Full generated motion at viral quality is
+  a paid tool and is never proposed.
+- **The gate:** a **two-to-three-minute sample** of the chocolate segment (hook, register shift,
+  preset, sound, captions, voice, title and three thumbnails) is rendered first; the owner reviews
+  it the same day; it iterates until she says it is right; only then does the first full video
+  render. Food starts in week one beside the drain, not after it.
+- **Content runway is not the constraint** (thousands of questions; scripts reused as cuts and
+  compilations). **Mac render time is**, and the render ledger sets the food cadence: one a week
+  if the first week's logs say two will not fit, two once the drain is done.
+
+## Three-niche schedule (decided 2026-10-13; replaces "4 long-form per week" above once it lands)
+
+| Day | Long-form slot | Shorts |
+|---|---|---|
+| Mon | deep sea | 19:00, 21:00 CT |
+| Tue | materials | 19:00, 21:00 CT |
+| Wed | food | 19:00, 21:00 CT |
+| Thu | deep sea | 19:00, 21:00 CT |
+| Fri | materials | 19:00, 21:00 CT |
+| Sat | food | 19:00, 21:00 CT |
+| Sun | none (compilations later) | 19:00, 21:00 CT |
+
+Six long-form a week, one slot a day at a fixed local time. The steady state **is the long-form
+drain lane** with its per-day count set to one and a domain rotation — no second scheduler. The
+channel home gets three shelves, one playlist per domain, under one grade, one title formula and
+one thumbnail contract. Quota on the worst drain day is about 8,200 of 10,000 units with the
+Shorts lane protected first.
+
+**State of the pins:** until the drain lane and the food domain land, `loop/validate_plan.py`
+still pins `videos_per_week` at 4 and `loop/domains.py` still splits the week two and two. The PR
+that lands the drain lane moves the pin to 6 and the rotation above; the PR that lands the food
+domain registers it in the taxonomy. Changing this table without moving those pins is drift.
