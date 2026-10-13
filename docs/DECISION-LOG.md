@@ -1190,6 +1190,16 @@ PRIVATE (never deleted) only after their replacement is public.
   48-hour test). The 2026-09-28 `cold-open-payoff` rule was answer-first, not a hook — the loop measured
   supply, never demand; a demand verdict and weekly email are part of the program. Full text:
   docs/CHANNEL-PLAN.md § "The long-form program of 2026-10-13" onward.
+- **2026-10-13 — Forward only** (owner, same day, supersedes the re-upload part of the entry above). Published
+  videos are never re-rendered, re-uploaded, extended or privated; the under-ten-minute deep-sea episodes stay
+  as they are. Kept: the title-and-thumbnail pass over all 21 published long-form videos (cheap, reversible,
+  triggers YouTube's re-test). The hook, the splice extension and the drain apply to the queue and everything
+  after it. The drain shrinks to the queue (~20 episodes, ~10 days at 2/day).
+- **2026-10-13 — No drain; one-a-day rotation** (owner, latest). Fifteen long-form videos were already uploaded
+  private and scheduled through 8 Nov, so there is nothing to drain; they are re-dated onto Mon/Thu deep sea
+  and Tue/Fri materials by API, Wed/Sat held for food. The Mac's render time goes to the food sample and first
+  food video first. The lane is a one-a-day rotation lane; `videos_per_week` moves 4→6 with it.
+
 
 ## 2026-10-13 (later) — forward only, and the three-niche rotation
 
