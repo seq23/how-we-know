@@ -1,0 +1,40 @@
+{
+  "stage": "repackage-reschedule",
+  "week": "2026-W42",
+  "at": "2026-10-13T12:58:14+00:00",
+  "code": "ZERO_WORK",
+  "message": "stage 'repackage-reschedule' completed without doing anything",
+  "detail": {
+    "notes": [
+      "16-what-happens-when-a-whale-dies-in-the-deep-ocean: YouTube reports publishAt='2026-10-18T15:00:00Z' privacy='private' after re-dating to 2026-10-15T15:00:00Z; the ledger keeps the old date",
+      "why-is-steel-so-strong: YouTube reports publishAt='2026-10-19T15:00:00Z' privacy='private' after re-dating to 2026-10-20T15:00:00Z; the ledger keeps the old date",
+      "13-how-does-bioluminescence-work-in-the-deep-sea: YouTube reports publishAt='2026-10-20T15:00:00Z' privacy='private' after re-dating to 2026-10-19T15:00:00Z; the ledger keeps the old date",
+      "02-how-deep-sea-creatures-survive-pressure: YouTube reports publishAt='2026-10-25T15:00:00Z' privacy='private' after re-dating to 2026-10-22T15:00:00Z; the ledger keeps the old date",
+      "what-is-kevlar-made-of: YouTube reports publishAt='2026-10-26T15:00:00Z' privacy='private' after re-dating to 2026-10-27T15:00:00Z; the ledger keeps the old date",
+      "how-do-scientists-know-so-much: YouTube reports publishAt='2026-10-27T15:00:00Z' privacy='private' after re-dating to 2026-10-26T15:00:00Z; the ledger keeps the old date",
+      "how-do-scientists-know-how-old-something-is: YouTube reports publishAt='2026-11-01T16:00:00Z' privacy='private' after re-dating to 2026-10-29T15:00:00Z; the ledger keeps the old date",
+      "what-is-carbon-fiber-made-of: YouTube reports publishAt='2026-11-02T16:00:00Z' privacy='private' after re-dating to 2026-11-03T16:00:00Z; the ledger keeps the old date",
+      "how-do-scientists-know-about-other-galaxies: YouTube reports publishAt='2026-11-03T16:00:00Z' privacy='private' after re-dating to 2026-11-02T16:00:00Z; the ledger keeps the old date",
+      "why-deep-sea-fish-die-when-brought-to-surface: YouTube reports publishAt='2026-11-08T16:00:00Z' privacy='private' after re-dating to 2026-11-05T16:00:00Z; the ledger keeps the old date"
+    ]
+  },
+  "unblock": "No scheduled video needed re-dating.",
+  "disposition": "needs_human",
+  "disposition_why": "'ZERO_WORK' is classified needs_human in loop/stop_policy.json: it is a defect a person reads. 'ZERO_WORK' did not name what it is waiting on (no held_items), so this run cannot tell a repeat from a new problem. A stop that cannot be identified is never held.",
+  "consecutive": 1,
+  "held_items": [],
+  "exit_code": 3,
+  "work_done_before_stop": [],
+  "notes": [
+    "16-what-happens-when-a-whale-dies-in-the-deep-ocean: YouTube reports publishAt='2026-10-18T15:00:00Z' privacy='private' after re-dating to 2026-10-15T15:00:00Z; the ledger keeps the old date",
+    "why-is-steel-so-strong: YouTube reports publishAt='2026-10-19T15:00:00Z' privacy='private' after re-dating to 2026-10-20T15:00:00Z; the ledger keeps the old date",
+    "13-how-does-bioluminescence-work-in-the-deep-sea: YouTube reports publishAt='2026-10-20T15:00:00Z' privacy='private' after re-dating to 2026-10-19T15:00:00Z; the ledger keeps the old date",
+    "02-how-deep-sea-creatures-survive-pressure: YouTube reports publishAt='2026-10-25T15:00:00Z' privacy='private' after re-dating to 2026-10-22T15:00:00Z; the ledger keeps the old date",
+    "what-is-kevlar-made-of: YouTube reports publishAt='2026-10-26T15:00:00Z' privacy='private' after re-dating to 2026-10-27T15:00:00Z; the ledger keeps the old date",
+    "how-do-scientists-know-so-much: YouTube reports publishAt='2026-10-27T15:00:00Z' privacy='private' after re-dating to 2026-10-26T15:00:00Z; the ledger keeps the old date",
+    "how-do-scientists-know-how-old-something-is: YouTube reports publishAt='2026-11-01T16:00:00Z' privacy='private' after re-dating to 2026-10-29T15:00:00Z; the ledger keeps the old date",
+    "what-is-carbon-fiber-made-of: YouTube reports publishAt='2026-11-02T16:00:00Z' privacy='private' after re-dating to 2026-11-03T16:00:00Z; the ledger keeps the old date",
+    "how-do-scientists-know-about-other-galaxies: YouTube reports publishAt='2026-11-03T16:00:00Z' privacy='private' after re-dating to 2026-11-02T16:00:00Z; the ledger keeps the old date",
+    "why-deep-sea-fish-die-when-brought-to-surface: YouTube reports publishAt='2026-11-08T16:00:00Z' privacy='private' after re-dating to 2026-11-05T16:00:00Z; the ledger keeps the old date"
+  ]
+}
