@@ -37,34 +37,34 @@
     },
     "B": {
       "file": "B.jpg",
-      "source": "assets/mat__silicon-wafer__silicon-wafer-researcher-jpg.jpg",
+      "source": "assets/mat__microchip-die__hp-pa-8700-die-shot-etched-42799937502-jpg.jpg",
       "manifest": "materials.json",
-      "subject": "silicon-wafer",
-      "sha256": "88741e28a10f10c3780cb5ba2d3c893fa2090abb0f4500066d20138184485a4c",
+      "subject": "microchip-die",
+      "sha256": "ea66ba65d30ffae6633b7654be28e3209533a434956777f8d42c64d90c5c2454",
       "box": [
-        161,
-        700,
-        5743,
-        3840
+        0,
+        1287,
+        4223,
+        3663
       ],
       "crop": null,
-      "text": "SEMICONDUCTOR JUST SILICON",
-      "words": 3,
-      "credit": "PHOTOGRAPH, U.S. DEPARTMENT OF ENERGY (PUBLIC DOMAIN)",
+      "text": "SEMICONDUCTOR JUST",
+      "words": 2,
+      "credit": "MICROGRAPH, MARTIJN BOER FROM NETHERLANDS (PUBLIC DOMAIN)",
       "text_bbox": [
-        44,
-        385,
-        1009,
-        664
+        46,
+        392,
+        1042,
+        676
       ],
       "credit_bbox": [
-        689,
-        13,
+        629,
+        14,
         1266,
-        33
+        35
       ],
-      "fill": 0.7487,
-      "energy": 0.8588
+      "fill": 0.8318,
+      "energy": 0.9242
     },
     "C": {
       "file": "C.jpg",
@@ -73,29 +73,29 @@
       "subject": "microchip-die",
       "sha256": "ea66ba65d30ffae6633b7654be28e3209533a434956777f8d42c64d90c5c2454",
       "box": [
-        385,
-        1511,
-        3962,
-        3523
+        1085,
+        1456,
+        4286,
+        3256
       ],
       "crop": null,
       "text": "SEMICONDUCTOR JUST SILICON",
       "words": 3,
       "credit": "MICROGRAPH, MARTIJN BOER FROM NETHERLANDS (PUBLIC DOMAIN)",
       "text_bbox": [
-        44,
-        385,
-        1009,
-        664
+        237,
+        246,
+        1234,
+        676
       ],
       "credit_bbox": [
-        635,
-        13,
-        1266,
+        14,
+        14,
+        651,
         35
       ],
-      "fill": 0.7757,
-      "energy": 0.9726
+      "fill": 0.9476,
+      "energy": 1.0
     }
   }
 }

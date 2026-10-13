@@ -37,65 +37,65 @@
     },
     "B": {
       "file": "B.jpg",
-      "source": "assets/squid__15400__20210907-hires.jpg",
+      "source": "assets/squid__29476__september2026-hires.jpg",
       "manifest": "rights.json",
       "subject": "squid",
-      "sha256": "da20115cbdbac5ab36809c5a0644ff8957f46117ee02cce04d2ac805c5cd1828",
+      "sha256": "7546d06b4828b1460e128d8ea258d04c4bd1b06fcdca526d2a46d7fb2a246496",
       "box": [
         0,
         0,
-        1815,
-        1021
+        1920,
+        1080
       ],
       "crop": null,
-      "text": "NOT THE LONGEST",
-      "words": 3,
-      "credit": "NOAA Ocean Exploration, 2021 ROV Shakedown",
+      "text": "BIG COLOSSAL",
+      "words": 2,
+      "credit": "NOAA Ocean Exploration, Windows to the Deep 2019",
       "text_bbox": [
-        46,
-        243,
-        814,
-        664
+        44,
+        515,
+        992,
+        678
       ],
       "credit_bbox": [
-        827,
-        13,
+        809,
+        14,
         1266,
         35
       ],
-      "fill": 0.6702,
-      "energy": 0.4208
+      "fill": 0.8325,
+      "energy": 0.8406
     },
     "C": {
       "file": "C.jpg",
-      "source": "assets/squid__15400__20210907-hires.jpg",
+      "source": "assets/squid__30135__ex1903l2-bobtail-squid.jpg",
       "manifest": "rights.json",
       "subject": "squid",
-      "sha256": "da20115cbdbac5ab36809c5a0644ff8957f46117ee02cce04d2ac805c5cd1828",
+      "sha256": "66301af4da4176907065e63189816fd426084e0b0ffb78f2212fb085a2b8156b",
       "box": [
-        0,
-        46,
-        1537,
-        910
+        185,
+        104,
+        1920,
+        1080
       ],
       "crop": null,
       "text": "COLOSSAL SQUID",
       "words": 2,
-      "credit": "NOAA Ocean Exploration, 2021 ROV Shakedown",
+      "credit": "NOAA Ocean Exploration, Windows to the Deep 2019",
       "text_bbox": [
-        44,
-        342,
-        1050,
-        686
+        551,
+        344,
+        1236,
+        691
       ],
       "credit_bbox": [
-        827,
-        13,
-        1266,
+        14,
+        14,
+        471,
         35
       ],
-      "fill": 0.7173,
-      "energy": 0.4076
+      "fill": 0.8482,
+      "energy": 0.8271
     }
   }
 }

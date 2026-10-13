@@ -1,0 +1,125 @@
+{
+  "slug": "why-bread-rises-steak-browns-chocolate-snaps",
+  "title": "Bread, Steak, Chocolate: What's Inside?",
+  "layout": "triptych",
+  "grade": "hwk-split-navy-amber-v1",
+  "chosen": "A",
+  "headline": "WHAT'S INSIDE?",
+  "subtitle": "Bread · Steak · Chocolate",
+  "credit": "AI-GENERATED IMAGE · CHOCOLATE: MIXKIT",
+  "panels": [
+    {
+      "subject": "bread",
+      "source": "assets/food_ai__panel-bread__s7.jpg",
+      "sha256": "d2bab07785b3b021c9491d1b9030a215a788b5fc1330fb3f448402511f3643ef",
+      "credit": "AI-GENERATED IMAGE",
+      "ai": true
+    },
+    {
+      "subject": "steak",
+      "source": "assets/food_ai__panel-steak__s7.jpg",
+      "sha256": "eb68c16d609bf34e71345ded714dc4a79ddec89a9454841e9591e1a4beb432a5",
+      "credit": "AI-GENERATED IMAGE",
+      "ai": true
+    },
+    {
+      "subject": "chocolate",
+      "source": "assets/food_frame__chunks-macro__t4.jpg",
+      "sha256": "69d1d3d609c10f770488050d7e913d23cef405598fd84476297d3660af4f3732",
+      "credit": "CHOCOLATE: MIXKIT",
+      "ai": false
+    }
+  ],
+  "variants": {
+    "A": {
+      "file": "A.jpg",
+      "layout": "vertical",
+      "largest": 2,
+      "place": "top",
+      "panel_shares": [
+        0.28984375,
+        0.28984375,
+        0.4203125
+      ],
+      "text": "WHAT'S INSIDE?",
+      "headline_bbox": [
+        76,
+        60,
+        1203,
+        225
+      ],
+      "subtitle_bbox": [
+        325,
+        228,
+        954,
+        287
+      ],
+      "credit_bbox": [
+        862,
+        688,
+        1266,
+        705
+      ]
+    },
+    "B": {
+      "file": "B.jpg",
+      "layout": "horizontal",
+      "largest": 1,
+      "place": "top",
+      "panel_shares": [
+        0.2902777777777778,
+        0.41944444444444445,
+        0.2902777777777778
+      ],
+      "text": "WHAT'S INSIDE?",
+      "headline_bbox": [
+        76,
+        60,
+        1203,
+        225
+      ],
+      "subtitle_bbox": [
+        325,
+        228,
+        954,
+        287
+      ],
+      "credit_bbox": [
+        862,
+        688,
+        1266,
+        705
+      ]
+    },
+    "C": {
+      "file": "C.jpg",
+      "layout": "diagonal",
+      "largest": 0,
+      "place": "center",
+      "panel_shares": [
+        0.420869140625,
+        0.29062391493055556,
+        0.29006727430555557
+      ],
+      "text": "WHAT'S INSIDE?",
+      "headline_bbox": [
+        76,
+        248,
+        1203,
+        413
+      ],
+      "subtitle_bbox": [
+        325,
+        416,
+        954,
+        475
+      ],
+      "credit_bbox": [
+        862,
+        688,
+        1266,
+        705
+      ]
+    }
+  }
+}

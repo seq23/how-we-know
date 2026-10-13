@@ -1,0 +1,21 @@
+{
+  "policy": "Still frames grabbed from approved real clips (channel/imagery/food_clips.json); each carries its clip's licence and sha256.",
+  "index": [
+    {
+      "key": "frame-chunks-macro",
+      "local_file": "assets/food_frame__chunks-macro__t4.jpg",
+      "sha256": "69d1d3d609c10f770488050d7e913d23cef405598fd84476297d3660af4f3732",
+      "from_clip": "chunks-macro",
+      "t_s": 4.0,
+      "clip_sha256": "db0a15a5208f758c32065a3da2d1fe2fb70232607bdba965dfa58689f309d525",
+      "source": "mixkit",
+      "item_url": "https://mixkit.co/free-stock-video/chocolate-bar-chunks-texture-41121/",
+      "licence": "Mixkit Stock Video Free License",
+      "licence_url": "https://mixkit.co/license/#videoFree",
+      "licence_text": "licences/mixkit-stock-video-free-license.txt",
+      "credit_line": "CHOCOLATE - FOOTAGE FRAME, MIXKIT",
+      "ai_generated": false,
+      "made_by": "ffmpeg -ss 4 -i <clip> -frames:v 1 -q:v 2 (a still frame of an approved real clip; the clip's licence allows modification)"
+    }
+  ]
+}

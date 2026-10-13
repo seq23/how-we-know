@@ -97,11 +97,19 @@ check(got and got[0] == "0.4 GIGAPASCALS" and not any("GRAPHENE" in x and "0.4" 
       f"thumbnail text crosses a clause and prints one figure over another subject: {got}")
 import tempfile as _tf                                          # noqa: E402
 _d = _tf.mkdtemp()
+# The refusal is forced: graphene now builds (13 Oct 2026, the builder tries
+# more crops for distinct B/C), so B is made impossible - no two pictures can
+# be 65 bits apart on a 64-bit hash - and the directory must stay empty.
+import thumb_distinct as _TD                                    # noqa: E402
+_keep = _TD.MIN_PHASH_DISTANCE
+_TD.MIN_PHASH_DISTANCE = 65
 try:
     TC.build_variants("how-strong-is-graphene", out_root=_d)    # refused at B
     _left = None
 except TC.ContractRefused:
     _left = os.listdir(_d)
+finally:
+    _TD.MIN_PHASH_DISTANCE = _keep
 check(_left == [], f"a refused set left files behind for a lane to ship: {_left}")
 
 # ------------------------------- 2d. PLAIN thumbnail words (owner, 13 Oct)

@@ -227,7 +227,16 @@ def build_food(slug: str, out_dir: str | None = None,
     sp = script_path or next((p for p in (os.path.join(SCRIPTS, f"{slug}.md"),
                                           os.path.join(SCRIPTS, "food", f"{slug}.md"))
                               if os.path.exists(p)), None)
-    res = thumb_contract.build_variants(slug, script_path=sp)
+    # The owner's three-panel design for multi-subject "What's Inside?" videos
+    # (13 Oct 2026) is built from hand-chosen panels (visuals/thumb_triptych.py);
+    # a verified triptych set is kept, never overwritten by the one-picture builder.
+    tdir = os.path.join(thumb_contract.VARIANTS_DIR, slug)
+    tcon = os.path.join(tdir, "contract.json")
+    if (os.path.exists(tcon) and json.load(open(tcon)).get("layout") == "triptych"
+            and not thumb_contract.verify(slug)):
+        res = {"chosen": os.path.join(tdir, f"{thumb_contract.CHOSEN}.jpg")}
+    else:
+        res = thumb_contract.build_variants(slug, script_path=sp)
     os.makedirs(out_dir or OUT, exist_ok=True)
     path = os.path.join(out_dir or OUT, f"{slug}.jpg")
     shutil.copyfile(res["chosen"], path)

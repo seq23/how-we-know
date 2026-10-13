@@ -37,65 +37,65 @@
     },
     "B": {
       "file": "B.jpg",
-      "source": "assets/snailfish__22125__Seascape-Alaska-Snailfish-1920x1080-1.jpg",
+      "source": "assets/snailfish__11416__dive12-eggs-on-coral-hires.jpg",
       "manifest": "rights.json",
       "subject": "snailfish",
-      "sha256": "318f666182b28d6c3a9ef987ad84a6126e416fd745e71445eb46db61d0e2f7c4",
+      "sha256": "fab59425f73ca001953677ee0cbdd1132ed4c87d354c4dc5050529bf656e876e",
       "box": [
-        225,
-        127,
+        0,
+        0,
         1920,
         1080
       ],
       "crop": null,
-      "text": "WITHOUT LIGHT",
+      "text": "DEEPEST PART",
       "words": 2,
       "credit": "NOAA Ocean Exploration, Seascape Alaska",
       "text_bbox": [
         44,
-        342,
-        965,
-        663
+        515,
+        982,
+        678
       ],
       "credit_bbox": [
-        876,
-        13,
+        890,
+        14,
         1266,
         35
       ],
-      "fill": 0.6822,
-      "energy": 0.5202
+      "fill": 0.8037,
+      "energy": 0.3367
     },
     "C": {
       "file": "C.jpg",
-      "source": "assets/snailfish__22125__Seascape-Alaska-Snailfish-1920x1080-1.jpg",
+      "source": "assets/snailfish__14304__dive07-snailfish-hires.jpg",
       "manifest": "rights.json",
       "subject": "snailfish",
-      "sha256": "318f666182b28d6c3a9ef987ad84a6126e416fd745e71445eb46db61d0e2f7c4",
+      "sha256": "80f100828f25d8cfec21e5360996895e0f11f9150bb9c9066e556e230b951912",
       "box": [
-        675,
-        281,
+        598,
+        183,
         1920,
-        982
+        927
       ],
       "crop": null,
       "text": "CLOSE TO FREEZING",
       "words": 3,
       "credit": "NOAA Ocean Exploration, Seascape Alaska",
       "text_bbox": [
-        46,
-        243,
-        869,
-        664
+        703,
+        246,
+        1234,
+        676
       ],
       "credit_bbox": [
-        876,
-        13,
-        1266,
+        14,
+        14,
+        390,
         35
       ],
-      "fill": 0.757,
-      "energy": 0.3669
+      "fill": 0.8318,
+      "energy": 0.752
     }
   }
 }

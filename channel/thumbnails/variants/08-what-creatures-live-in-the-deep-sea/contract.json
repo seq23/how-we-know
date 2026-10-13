@@ -37,65 +37,65 @@
     },
     "B": {
       "file": "B.jpg",
-      "source": "assets/siphonophore__29477__ex1703-siphonophore-1920x1080-1.jpg",
+      "source": "assets/snailfish__22125__Seascape-Alaska-Snailfish-1920x1080-1.jpg",
       "manifest": "rights.json",
-      "subject": "siphonophore",
-      "sha256": "67f47d10323a41e3e846134b240d70b925eb123f1a1327e8879a048ac7a0d5d1",
+      "subject": "snailfish",
+      "sha256": "318f666182b28d6c3a9ef987ad84a6126e416fd745e71445eb46db61d0e2f7c4",
       "box": [
-        0,
-        0,
+        225,
+        127,
         1920,
         1080
       ],
       "crop": null,
-      "text": "NOT ONE ANGLERFISH",
-      "words": 3,
-      "credit": "NOAA Ocean Exploration, Discovering the Deep: Exploring Remote Pacific MPAs",
+      "text": "CREATURES LIVE",
+      "words": 2,
+      "credit": "NOAA Ocean Exploration, Seascape Alaska",
       "text_bbox": [
-        47,
-        267,
-        1035,
-        664
+        44,
+        344,
+        814,
+        675
       ],
       "credit_bbox": [
-        545,
-        13,
+        890,
+        14,
         1266,
         35
       ],
-      "fill": 0.9162,
-      "energy": 0.2254
+      "fill": 0.6822,
+      "energy": 0.5202
     },
     "C": {
       "file": "C.jpg",
-      "source": "assets/siphonophore__29477__ex1703-siphonophore-1920x1080-1.jpg",
+      "source": "assets/snailfish__11416__dive12-eggs-on-coral-hires.jpg",
       "manifest": "rights.json",
-      "subject": "siphonophore",
-      "sha256": "67f47d10323a41e3e846134b240d70b925eb123f1a1327e8879a048ac7a0d5d1",
+      "subject": "snailfish",
+      "sha256": "fab59425f73ca001953677ee0cbdd1132ed4c87d354c4dc5050529bf656e876e",
       "box": [
-        0,
-        0,
+        296,
+        68,
         1920,
-        1080
+        982
       ],
       "crop": null,
       "text": "NO PLANTS",
       "words": 2,
-      "credit": "NOAA Ocean Exploration, Discovering the Deep: Exploring Remote Pacific MPAs",
+      "credit": "NOAA Ocean Exploration, Seascape Alaska",
       "text_bbox": [
-        44,
-        342,
-        804,
-        663
+        506,
+        515,
+        1235,
+        678
       ],
       "credit_bbox": [
-        545,
-        13,
-        1266,
+        14,
+        14,
+        390,
         35
       ],
-      "fill": 0.9162,
-      "energy": 0.2254
+      "fill": 0.7009,
+      "energy": 0.3216
     }
   }
 }

@@ -37,10 +37,10 @@
     },
     "B": {
       "file": "B.jpg",
-      "source": "assets/anglerfish__15767__20210801-hires.jpg",
+      "source": "assets/anglerfish__13309__ex2206-dive06-anglerfish-hires.jpg",
       "manifest": "rights.json",
       "subject": "anglerfish",
-      "sha256": "9045fcd5368c27c08755820161e77f318909bc80d8974a1c11bad4a454f04afc",
+      "sha256": "c3ef2a3531839b870e1b8f903bfbec918a1555d40cf0ed6177b702e07c1ec6f4",
       "box": [
         0,
         0,
@@ -48,54 +48,54 @@
         1080
       ],
       "crop": null,
-      "text": "NOT A LAW",
-      "words": 3,
-      "credit": "NOAA Ocean Exploration, Deep Connections 2019",
+      "text": "BIOLUMINESCENCE DEEP",
+      "words": 2,
+      "credit": "NOAA Ocean Exploration, Voyage to the Ridge 2022",
       "text_bbox": [
-        45,
-        520,
-        1076,
-        663
+        47,
+        407,
+        1054,
+        673
       ],
       "credit_bbox": [
-        811,
-        13,
+        819,
+        14,
         1266,
         35
       ],
-      "fill": 0.8411,
-      "energy": 0.7035
+      "fill": 0.785,
+      "energy": 0.2569
     },
     "C": {
       "file": "C.jpg",
-      "source": "assets/anglerfish__15767__20210801-hires.jpg",
+      "source": "assets/anglerfish__30136__october2026-hires.jpg",
       "manifest": "rights.json",
       "subject": "anglerfish",
-      "sha256": "9045fcd5368c27c08755820161e77f318909bc80d8974a1c11bad4a454f04afc",
+      "sha256": "39b08d0aef17557f1aef7b9c97e3759c2980d6c6cece83cf48bd73ec2ed73cae",
       "box": [
-        0,
-        11,
-        1900,
-        1080
+        780,
+        475,
+        1442,
+        847
       ],
       "crop": null,
       "text": "DEEP SEA LIGHT",
       "words": 3,
-      "credit": "NOAA Ocean Exploration, Deep Connections 2019",
+      "credit": "NOAA Ocean Exploration, Mountains in the Deep: Exploring the Central Pacific Basin",
       "text_bbox": [
-        46,
-        245,
-        548,
-        664
+        218,
+        515,
+        1236,
+        678
       ],
       "credit_bbox": [
-        811,
-        13,
-        1266,
+        14,
+        14,
+        747,
         35
       ],
-      "fill": 0.8318,
-      "energy": 0.7052
+      "fill": 0.9159,
+      "energy": 0.8586
     }
   }
 }
