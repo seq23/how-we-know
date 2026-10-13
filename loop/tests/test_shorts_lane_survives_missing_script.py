@@ -195,11 +195,20 @@ if not live_queued:
 for s in live_written:
     if not (ROOT / "scripts" / f"{s}.md").exists():
         fails.append(f"1b: written_slugs() names {s!r}, which has no script")
+# A FOURTH class since 2026-10-13: food episodes, written and rendered by the
+# food pipeline from scripts/food/ (batch_queue.food_entries) - never the
+# batch's rows (written) nor the Monday lane's (unwritten).
+live_food = [r["slug"] for r in batch_queue.food_entries()] if hasattr(batch_queue, "food_entries") else []
+for s in live_food:
+    if not (ROOT / "scripts" / "food" / f"{s}.md").exists():
+        fails.append(f"1b: food_entries() names {s!r}, which has no scripts/food/ script")
+    if s in live_written or s in live_unwritten:
+        fails.append(f"1b: food episode {s!r} is also a batch or Monday row")
 uncovered = [s for s in live_queued
              if s not in live_written and s not in live_unwritten
-             and s not in live_held]
+             and s not in live_held and s not in live_food]
 if uncovered:
-    fails.append(f"1b: queued rows that are neither written, unwritten nor "
+    fails.append(f"1b: queued rows that are neither written, unwritten, food-made nor "
                  f"held: {uncovered}")
 
 # ---------------------------------- 3. the batch script keeps its Shorts
