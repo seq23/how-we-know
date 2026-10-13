@@ -14,7 +14,7 @@ THE DEFECT THIS GUARDS (CONFIRMED 2026-10-13, main 28ac4e4). Two faults met:
      sentence against that stale frozen plan, found nothing, and stopped as
      POV_UNREPAIRABLE - "needs a human" - for all three.
 
-Properties, all behavioural, on the real 28ac4e4 bytes of one of the three:
+Properties, all behavioural, on one of the three rebuilt in its 28ac4e4 state:
 
   A. V71 FAILS on the broken state (the guard can see the defect).
   B. A stale plan that is NOT pending bind is still refused - the divergence
@@ -34,7 +34,6 @@ from __future__ import annotations
 import hashlib
 import json
 import os
-import subprocess
 import sys
 import tempfile
 from pathlib import Path
@@ -50,12 +49,26 @@ import pov_repair                                              # noqa: E402
 import validate                                                # noqa: E402
 
 SLUG = "what-lives-in-mariana-trench"
-BROKEN = "28ac4e4"          # main before the fix: reused pov-001, stale plan
+# The 28ac4e4 defect, rebuilt from the tracked files (CI clones shallow, so
+# the old commit is not there to `git show`): the script's [HUMAN] beat speaks
+# pov-001 - owned by live how-deep-mariana-trench - with no row of its own.
+REUSED = "pov-001"
+OWNER = "how-deep-mariana-trench"
 
 
-def at(rev: str, path: str) -> str:
-    return subprocess.run(["git", "-C", str(ROOT), "show", f"{rev}:{path}"],
-                          check=True, capture_output=True, text=True).stdout
+def broken_script() -> str:
+    text = (ROOT / "scripts" / f"{SLUG}.md").read_text(encoding="utf-8")
+    para = next(p for p in text.split("\n\n") if "[HUMAN]" in p)
+    line = next(l["line"] for l in pov_match.bank() if l["id"] == REUSED)
+    return text.replace(para, f"[HUMAN] {line}", 1)
+
+
+def broken_assignments() -> dict:
+    doc = json.loads((ROOT / "pov" / "pov-assignments.json").read_text())
+    doc["assignments"] = [a for a in doc["assignments"] if a["video"] != SLUG]
+    assert any(a["video"] == OWNER and a["pov_id"] == REUSED
+               for a in doc["assignments"]), "fixture premise gone"
+    return doc
 
 
 def sha(text: str) -> str:
@@ -65,12 +78,15 @@ def sha(text: str) -> str:
 def fixture(tmp: Path, pending: bool) -> None:
     for d in ("scripts", "drafts", "plans", "audio", "renders", "captions"):
         (tmp / d).mkdir(parents=True, exist_ok=True)
-    script = at(BROKEN, f"scripts/{SLUG}.md")
+    pov_match.ASSIGNMENTS = ROOT / "pov" / "pov-assignments.json"
+    script = broken_script()
+    doc = broken_assignments()
     (tmp / "scripts" / f"{SLUG}.md").write_text(script, encoding="utf-8")
     (tmp / "drafts" / f"{SLUG}.md").write_text(script, encoding="utf-8")
+    # The tracked plan: either the old script's (pending bind, as on
+    # 28ac4e4) or tonight's re-freeze - neither carries the pov-001 sentence.
     (tmp / "plans" / f"{SLUG}.json").write_text(
-        at(BROKEN, f"plans/{SLUG}.json"), encoding="utf-8")
-    doc = json.loads(at(BROKEN, "pov/pov-assignments.json"))
+        (ROOT / "plans" / f"{SLUG}.json").read_text(), encoding="utf-8")
     (tmp / "assignments.json").write_text(json.dumps(doc, indent=2) + "\n")
     eps = {}
     if pending:
