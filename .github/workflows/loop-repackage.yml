@@ -6,7 +6,8 @@ name: loop · daily 18:30 CT · long-form repackage (titles + thumbnails)
 #
 #   1. propose   loop/longform_title.py drafts a passing long-form title for
 #                every not-yet-uploaded script that lacks one (the upload lane
-#                holds a slug until it has one). $0 model route: her Claude
+#                holds a slug until it has one), then for every live long-form
+#                video with no passing row in titles.json (`--needed`). $0 model route: her Claude
 #                subscription, the Gemini free tier, the $0 OpenRouter list.
 #   2. apply     new titles + the contract thumbnail (variant A) onto live
 #                videos (public and private-scheduled) in loop/state/titles.json.
@@ -36,6 +37,15 @@ on:
         default: '2'
       dry_run:
         description: 'Plan only - write nothing to YouTube'
+        type: boolean
+        required: false
+        default: false
+      propose_limit:
+        description: 'Max titles to propose this run (queued scripts first, then live videos with no passing title)'
+        required: false
+        default: '6'
+      propose_only:
+        description: 'Propose titles only; skip apply (so a dry-run apply can be read first)'
         type: boolean
         required: false
         default: false
@@ -82,20 +92,20 @@ jobs:
           YT_OAUTH_CLIENT_JSON: ${{ secrets.YT_OAUTH_CLIENT_JSON }}
           YT_OAUTH_REFRESH_TOKEN: ${{ secrets.YT_OAUTH_REFRESH_TOKEN }}
         run: python3 auth/check_ci_scopes.py
-      - name: Propose long-form titles for scripts not yet uploaded
+      - name: Propose long-form titles (queued scripts, then live videos with none)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
-          ARGS="--pending --limit 4"
+          ARGS="--needed --limit ${{ github.event.inputs.propose_limit || 6 }}"
           if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
             ARGS="$ARGS --dry-run"
           fi
           bin/loop-stage.sh titles loop/longform_title.py propose $ARGS
       - name: Apply new titles and thumbnails to live videos
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && github.event.inputs.propose_only != 'true' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           YT_OAUTH_CLIENT_JSON: ${{ secrets.YT_OAUTH_CLIENT_JSON }}

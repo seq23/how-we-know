@@ -162,10 +162,20 @@ def apply_plan(slugs: list[str] | None = None) -> list[dict]:
     for slug, row in sorted(LT.load()["titles"].items()):
         if slugs and slug not in slugs:
             continue
-        if not row.get("checks_passed") or row.get("applied_at"):
-            continue
-        if slug not in live:
+        if not row.get("checks_passed") or slug not in live:
             continue                     # queued: the upload lane uses it
+        if row.get("applied_at"):
+            # A title that went up without its thumbnail (no contract variant
+            # existed yet) gets the thumbnail alone once variant A exists -
+            # otherwise applied_at would hide it from this lane for good.
+            if (not row.get("thumbnail_applied")
+                    and row.get("applied_video_id") == live[slug]["video_id"]
+                    and thumb_for(slug)):
+                out.append({"slug": slug, "video_id": live[slug]["video_id"],
+                            "title": row["new_title"],
+                            "question": row.get("question"),
+                            "thumb_only": True})
+            continue
         out.append({"slug": slug, "video_id": live[slug]["video_id"],
                     "title": row["new_title"], "question": row.get("question")})
     return out
@@ -212,6 +222,10 @@ def run_apply(slugs=None, limit: int = 0, dry_run: bool = False, yt=None) -> int
         todo = todo[:fit]
         if dry_run:
             for t in todo:
+                if t.get("thumb_only"):
+                    st.work(f"DRY RUN would thumbnail {t['video_id']} "
+                            f"({t['slug']}) with variant A (title already applied)")
+                    continue
                 st.work(f"DRY RUN would title {t['video_id']} ({t['slug']}) "
                         f"{t['title']!r}" + (" + thumbnail A" if thumb_for(t['slug'])
                                              else " (no contract thumbnail yet)"))
@@ -224,6 +238,16 @@ def run_apply(slugs=None, limit: int = 0, dry_run: bool = False, yt=None) -> int
         led = ledger.load()
         rows = {r["slug"]: r for r in led["published"]}
         for t in todo:
+            if t.get("thumb_only"):
+                img = thumb_for(t["slug"])
+                yt.set_thumbnail(t["video_id"], img)
+                quota.spend(quota.THUMBNAIL, LANE)
+                row_ = doc["titles"][t["slug"]]
+                row_["thumbnail_applied"] = True
+                row_["thumbnail_applied_at"] = _now().isoformat(timespec="seconds")
+                st.work(f"{t['video_id']} ({t['slug']}) thumbnailed (variant A; "
+                        f"its title went up earlier)")
+                continue
             script = (ROOT / "scripts" / f"{t['slug']}.md").read_text(encoding="utf-8")
             why = LT.title_problems(t["title"], script, t.get("question"))
             if why:

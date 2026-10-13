@@ -4,6 +4,7 @@
     .venv/bin/python loop/longform_title.py propose --slugs a b c      # draft + write
     .venv/bin/python loop/longform_title.py propose --pending --limit 6
     .venv/bin/python loop/longform_title.py propose --published --dry-run
+    .venv/bin/python loop/longform_title.py propose --needed --limit 6    # the daily lane
 
 WHY THIS EXISTS. Owner decision, 12-13 Oct 2026 (repackage job 1 of 3). The
 2026-10-08 formula (loop/titles.py) kept every query word and ended "— and how
@@ -499,6 +500,34 @@ def published_slugs() -> list[str]:
             and (SCRIPTS / f"{r['slug']}.md").exists()]
 
 
+def published_needing(doc: dict | None = None) -> list[str]:
+    """Live long-form videos (public or private-scheduled) whose titles.json
+    row is missing, failed, or no longer passes against today's script.
+    `repackage apply` puts only titles.json rows on live videos, so a live
+    video with no passing row would keep its old title forever; the daily
+    lane proposes these (job 2, 13 Oct 2026). Unique, ledger order."""
+    doc = doc if doc is not None else load()
+    out: list[str] = []
+    for slug in published_slugs():
+        if slug in out:
+            continue
+        text = (SCRIPTS / f"{slug}.md").read_text(encoding="utf-8")
+        row = doc["titles"].get(slug) or {}
+        t = row.get("new_title")
+        if row.get("checks_passed") and t and not title_problems(
+                t, text, _question_for(slug, text)):
+            continue
+        out.append(slug)
+    return out
+
+
+def needed_slugs() -> list[str]:
+    """Everything the daily lane must title: scripts not yet uploaded first
+    (the upload lane holds them), then live videos with no passing row."""
+    out = pending_slugs()
+    return out + [s for s in published_needing() if s not in out]
+
+
 def run_propose(slugs: list[str], dry_run: bool = False,
                 path: Path | None = None) -> dict:
     doc = load(path)
@@ -549,6 +578,8 @@ def main(argv: list[str] | None = None) -> int:
     g.add_argument("--slugs-file")
     g.add_argument("--pending", action="store_true")
     g.add_argument("--published", action="store_true")
+    g.add_argument("--needed", action="store_true",
+                   help="pending scripts + live videos with no passing title")
     pr.add_argument("--limit", type=int, default=0)
     pr.add_argument("--dry-run", action="store_true")
     a = ap.parse_args(argv)
@@ -572,6 +603,8 @@ def main(argv: list[str] | None = None) -> int:
                  if s.strip()]
     elif a.pending:
         slugs = pending_slugs()
+    elif a.needed:
+        slugs = needed_slugs()
     else:
         slugs = published_slugs()
     if a.limit:
@@ -582,8 +615,9 @@ def main(argv: list[str] | None = None) -> int:
         if not slugs:
             st.named_stop(
                 "TITLES_UP_TO_DATE",
-                "every script not yet uploaded already has a long-form title "
-                "that passes loop/longform_title.py",
+                "every script not yet uploaded (and, with --needed, every "
+                "live long-form video) already has a long-form title that "
+                "passes loop/longform_title.py",
                 unblock="Nothing to do; new scripts are titled on the next run.")
         r = run_propose(slugs, dry_run=a.dry_run)
         for s in r["made"]:

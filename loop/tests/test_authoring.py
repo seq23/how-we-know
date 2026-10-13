@@ -28,6 +28,13 @@ LOOP = HERE.parent
 ROOT = LOOP.parent
 sys.path.insert(0, str(LOOP))
 
+# The router records every call it routes. Pointed at a scratch file so this
+# test never rewrites the committed loop/state/llm_route_ledger.json (found
+# 2026-10-13: a local run added twelve "test_authoring.py" rows to it).
+import os as _os  # noqa: E402
+import tempfile as _tf  # noqa: E402
+_os.environ["LLM_ROUTE_LEDGER"] = str(Path(_tf.mkdtemp(prefix="route-ledger-")) / "ledger.json")
+
 import author  # noqa: E402
 
 KEY_SHAPES = [r"sk-or-v1-[0-9a-f]{16,}", r"sk-or-[A-Za-z0-9_-]{24,}"]
