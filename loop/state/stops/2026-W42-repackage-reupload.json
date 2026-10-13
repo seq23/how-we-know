@@ -1,0 +1,16 @@
+{
+  "stage": "repackage-reupload",
+  "week": "2026-W42",
+  "at": "2026-10-13T12:17:14+00:00",
+  "code": "REPACKAGE_NO_BACKLOG",
+  "message": "no lengthened episode is waiting to be re-uploaded",
+  "detail": null,
+  "unblock": "Nothing to do. loop/lengthen.py splices episodes on the Mac; this lane re-uploads each one the run after it is shelved. The standing 4-a-week cadence is unaffected.",
+  "disposition": "self_resolving",
+  "disposition_why": "No lengthened episode is waiting to be re-uploaded. The drain acts only while loop/lengthen.py has spliced episodes on the shelf; the standing 4-a-week cadence belongs to the upload lane and is unaffected. (run 1 of at most 400 before this escalates to a human.)",
+  "consecutive": 1,
+  "held_items": [],
+  "exit_code": 0,
+  "work_done_before_stop": [],
+  "notes": []
+}
