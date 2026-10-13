@@ -59,6 +59,27 @@ def main() -> int:
     if not files:
         print("FAIL: no loop tests found — this runner examined zero tests")
         return 1
+    # --shard K/N runs every Nth file from the K-th (1-based). CI runs N
+    # shards in parallel (.github/workflows/loop-tests.yml matrix) so the
+    # merge gate stays under its ceiling: the suite had grown to 5-7.5 min
+    # against an 8-min fault detector, and on 2026-10-13 the registry gate
+    # (test_registry_green_on_main.py) pushed a PR run over it. No argument
+    # = every file, as before. test_registry_green_on_main.py asserts the
+    # matrix names every shard 1..N, so no file can fall between shards.
+    args = sys.argv[1:]
+    if args[:1] == ["--shard"] and len(args) == 2:
+        k, n = (int(x) for x in args[1].split("/"))
+        if not 1 <= k <= n:
+            print(f"FAIL: --shard {args[1]} is not K/N with 1 <= K <= N")
+            return 1
+        files = files[k - 1::n]
+        print(f"shard {k}/{n}: {len(files)} file(s)")
+        if not files:
+            print("FAIL: this shard holds zero test files")
+            return 1
+    elif args:
+        print(f"FAIL: unknown arguments {args}; usage: run_all.py [--shard K/N]")
+        return 1
 
     before = state_snapshot()
     if not before:

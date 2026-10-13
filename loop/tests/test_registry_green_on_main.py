@@ -48,10 +48,21 @@ def check() -> list[str]:
 
     # The test is only a gate if CI runs it: loop-tests.yml must run the
     # harness that globs test_*.py, on every pull request.
+    # CI shards the suite (run_all.py --shard K/N); every shard 1..N must be
+    # in the matrix or files - this one included - silently never run.
     wf = (ROOT / ".github" / "workflows" / "loop-tests.yml").read_text()
     if "loop/tests/run_all.py" not in wf or "pull_request" not in wf:
         fails.append("loop-tests.yml no longer runs loop/tests/run_all.py on "
                      "pull_request, so this registry gate blocks nothing")
+    m = re.search(r"run_all\.py --shard \$\{\{ matrix\.shard \}\}/(\d+)", wf)
+    shards = re.search(r"shard:\s*\[([0-9,\s]+)\]", wf)
+    if m:
+        n = int(m.group(1))
+        have = sorted(int(x) for x in shards.group(1).split(",")) if shards else []
+        if have != list(range(1, n + 1)):
+            fails.append(f"loop-tests.yml runs run_all.py in {n} shards but its "
+                         f"matrix names {have} - a missing shard is a slice of "
+                         f"the suite that never runs")
 
     items = copy.deepcopy(read_json(ROOT / "loop" / "render_queue.json")["items"])
     ok, rows = validate.run_all(items)
