@@ -266,6 +266,23 @@ d = fresh()
 t, why = D.new_title_for(d["videos"]["V1"] | {"title": GOOD}, propose_ok)
 check(t is None and "repeated" in why, f"a repeat of the current title is refused: {why}")
 
+# A re-proposed titles.json row (applied_at None, the live title's stamp under
+# "previous") still dates the packaging: judging it on lifetime data would
+# repackage a video for the title it no longer has (CI dispatch, 13 Oct 2026).
+LT.STATE.write_text(json.dumps({"titles": {SLUG: {
+    "applied_at": None, "applied_video_id": "V1",
+    "previous": {"new_title": "x", "applied_at": "2026-10-28T00:00:00+00:00"}}}}))
+d = fresh()
+check(d["videos"]["V1"]["packaging_since"] == "2026-10-28",
+      f"NEGATIVE: a re-proposed row keeps its packaging date: {d['videos']['V1']['packaging_since']}")
+check(D.repackage_candidates(d) == [], "so the video is not repackaged on its old title's data")
+d["videos"]["V1"]["packaging_pass_at"] = "2026-10-29T00:00:00+00:00"
+LT.STATE.write_text(json.dumps({"titles": {}}))
+d2 = D.pull(FakeAPI(), doc=d, day=TODAY)
+check(d2["videos"]["V1"]["packaging_since"] == "2026-10-29",
+      "the snapshot never forgets a packaging stamp once seen")
+LT.STATE.write_text(json.dumps({"titles": {}}))
+
 # ------------------------------------------------------------------ 5. email
 print("── 5. the Monday email traces every number, or refuses")
 d = fresh()
