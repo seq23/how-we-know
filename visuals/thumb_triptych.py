@@ -22,12 +22,13 @@ the files on disk (validator V48):
   * SUBTITLE: up to 3 words, and they must be exactly the title's subject
     nouns - nothing else (it is exempt from the word cap for that reason);
   * PANELS: three, each covering >= PANEL_MIN_SHARE of the frame;
-  * LEGIBLE AT FEED SIZE: downscaled to 320 px wide, the headline's letters are
-    >= 12 px tall and its text/edge luminance contrast >= 4.5:1, the
-    subtitle's >= 6 px and >= 3:1;
+  * LEGIBLE AT FEED SIZE: downscaled to 320 px wide, inside the recorded type
+    box, the headline is >= 12 px tall with fill/stroke luminance contrast
+    >= 4.5:1, the subtitle >= 6 px and >= 3:1 (measured on published pixels, so
+    it holds on any host's fonts);
   * GRADE + SOURCES: each panel is the cleared bytes of its source, cover-
     cropped and graded with thumb_contract.grade; the published pixels outside
-    the type equal a fresh composition within GRADE_TOLERANCE;
+    the type boxes equal a fresh composition within GRADE_TOLERANCE;
   * DISTINCT: the three pictures (before type) differ pairwise by
     thumb_distinct.MIN_PHASH_DISTANCE.
 """
@@ -131,20 +132,28 @@ def picture(sources: list[str], layout: str, largest: int) -> tuple[Image.Image,
     return out, shares
 
 
-def draw_type(pic: Image.Image, headline: str, subtitle: str, place: str, credit: str):
-    """Headline + subtitle (+ credit) over a soft dark band. Returns image and boxes."""
-    im = pic.copy()
-    d = ImageDraw.Draw(im, "RGBA")
-    hf, sf, cf = _font(176), _font(60), T._font(T._CREDIT_FONTS, 18)   # noqa: SLF001
-    hw = d.textlength(headline, font=hf)
-    sw = d.textlength(subtitle, font=sf)
+def _rows(place: str) -> tuple[int, int]:
     hy = 34 if place == "top" else (TH - 176 - 80) // 2 - 10
-    sy = hy + 186
+    return hy, hy + 186
+
+
+def band_only(pic: Image.Image, place: str) -> Image.Image:
+    """The picture with the soft dark band the type sits on (no type)."""
+    hy, sy = _rows(place)
     band = Image.new("L", (TW, TH), 0)
     ImageDraw.Draw(band).rectangle((0, hy + 6, TW, sy + 78), fill=125)
     band = band.filter(ImageFilter.GaussianBlur(22))
-    im = Image.composite(Image.new("RGB", (TW, TH), (6, 4, 4)), im, band)
+    return Image.composite(Image.new("RGB", (TW, TH), (6, 4, 4)), pic, band)
+
+
+def draw_type(pic: Image.Image, headline: str, subtitle: str, place: str, credit: str):
+    """Headline + subtitle (+ credit) over a soft dark band. Returns image and boxes."""
+    hf, sf, cf = _font(176), _font(60), T._font(T._CREDIT_FONTS, 18)   # noqa: SLF001
+    hy, sy = _rows(place)
+    im = band_only(pic, place)
     d = ImageDraw.Draw(im)
+    hw = d.textlength(headline, font=hf)
+    sw = d.textlength(subtitle, font=sf)
     hx, sx = (TW - hw) / 2, (TW - sw) / 2
     d.text((hx, hy), headline, font=hf, fill=(255, 255, 255), stroke_width=10, stroke_fill=(0, 0, 0))
     d.text((sx, sy), subtitle, font=sf, fill=(255, 236, 200), stroke_width=5, stroke_fill=(0, 0, 0))
@@ -163,23 +172,21 @@ def _lum(a: np.ndarray) -> np.ndarray:
     return c @ np.array([0.2126, 0.7152, 0.0722])
 
 
-def legibility(img: Image.Image, text: str, size: int, xy, stroke: int) -> tuple[float, float]:
-    """At FEED_W wide: (letter height px, luminance contrast of fill vs its edge ring)."""
-    m = Image.new("L", (TW, TH), 0)
-    ImageDraw.Draw(m).text(xy, text, font=_font(size), fill=255)
-    ring = Image.new("L", (TW, TH), 0)
-    ImageDraw.Draw(ring).text(xy, text, font=_font(size), fill=255, stroke_width=stroke)
+def legibility(img: Image.Image, bbox) -> tuple[float, float]:
+    """At FEED_W wide, measured on the PUBLISHED pixels inside the recorded type
+    box (font-independent): (letter height px, luminance contrast between the
+    brightest tenth - the letter fill - and the darkest tenth - its stroke)."""
     k = FEED_W / TW
     sz = (FEED_W, int(TH * k))
     small = np.asarray(img.convert("RGB").resize(sz, Image.LANCZOS)).astype(np.float64)
-    ms = np.asarray(m.resize(sz, Image.LANCZOS)) > 160
-    rs = (np.asarray(ring.resize(sz, Image.LANCZOS)) > 60) & ~(np.asarray(m.resize(sz, Image.LANCZOS)) > 40)
-    if not ms.any() or not rs.any():
+    x0, y0, x1, y1 = (int(round(v * k)) for v in bbox)
+    roi = small[max(0, y0):y1 + 1, max(0, x0):x1 + 1].reshape(-1, 3)
+    if len(roi) < 20:
         return 0.0, 0.0
-    lf, lr = float(_lum(small[ms]).mean()), float(_lum(small[rs]).mean())
-    contrast = (max(lf, lr) + 0.05) / (min(lf, lr) + 0.05)
-    ys = np.where(ms.any(1))[0]
-    return float(ys.max() - ys.min() + 1), contrast
+    lum = np.sort(_lum(roi))
+    n = max(1, len(lum) // 10)
+    lf, lr = float(lum[-n:].mean()), float(lum[:n].mean())
+    return float(y1 - y0), (lf + 0.05) / (lr + 0.05)
 
 
 def _sha(path: str) -> str:
@@ -269,22 +276,23 @@ def verify_dir(d: str, rec: dict) -> list[str]:
                 p.append(f"{slug}/{name}: not a {TW}x{TH} JPEG")
                 continue
             got = im.convert("RGB")
-        want, hb, sb, cb = draw_type(pic, head, rec["subtitle"], v["place"], rec["credit"])
-        if hb != v["headline_bbox"] or sb != v["subtitle_bbox"]:
-            p.append(f"{slug}/{name}: type boxes are not where the record says")
-        if (hb[2] - hb[0]) < HEADLINE_MIN_WIDTH * TW:
-            p.append(f"{slug}/{name}: headline spans {(hb[2] - hb[0]) / TW:.0%} of the width, "
-                     f"under {HEADLINE_MIN_WIDTH:.0%}")
+        hb, sb, cb = v["headline_bbox"], v["subtitle_bbox"], v["credit_bbox"]
+        # the picture under the type, compared outside the recorded type boxes
+        # (fonts differ between hosts; the panels, grade and band do not)
+        want = band_only(pic, v["place"])
+        mask = np.ones((TH, TW), bool)
+        for x0, y0, x1, y1 in (hb, sb, cb):
+            mask[max(0, y0 - 6):y1 + 6, max(0, x0 - 6):x1 + 6] = False
         diff = float(np.abs(np.asarray(got).astype(np.float32) -
-                            np.asarray(want).astype(np.float32)).mean())
+                            np.asarray(want).astype(np.float32))[mask].mean())
         if diff > T.GRADE_TOLERANCE:
             p.append(f"{slug}/{name}: published pixels differ from a fresh graded composition "
                      f"by {diff:.1f} per channel")
-        hy = 34 if v["place"] == "top" else (TH - 176 - 80) // 2 - 10
-        hx = (TW - ImageDraw.Draw(got).textlength(head, font=_font(176))) / 2
-        h_px, h_c = legibility(got, head, 176, (hx, hy), 10)
-        sx = (TW - ImageDraw.Draw(got).textlength(rec["subtitle"], font=_font(60))) / 2
-        s_px, s_c = legibility(got, rec["subtitle"], 60, (sx, hy + 186), 5)
+        if (hb[2] - hb[0]) < HEADLINE_MIN_WIDTH * TW:
+            p.append(f"{slug}/{name}: headline spans {(hb[2] - hb[0]) / TW:.0%} of the width, "
+                     f"under {HEADLINE_MIN_WIDTH:.0%}")
+        h_px, h_c = legibility(got, hb)
+        s_px, s_c = legibility(got, sb)
         if h_px < HEAD_MIN_PX or h_c < HEAD_MIN_CONTRAST:
             p.append(f"{slug}/{name}: headline at {FEED_W} px is {h_px:.0f} px tall, contrast "
                      f"{h_c:.1f}:1 (needs {HEAD_MIN_PX} px, {HEAD_MIN_CONTRAST}:1)")

@@ -90,20 +90,17 @@ def paint_out(d):
 
 
 p = broken(lambda r: None, paint_out)
-check(any("headline at 320" in x or "differ from a fresh" in x for x in p),
+check(any("headline at 320" in x for x in p),
       f"a painted-out headline fails: {p[:1]}")
 check(bool(broken(lambda r: r["panels"][0].update(sha256="0" * 64))), "a panel with other bytes fails")
 
 grey = Image.new("RGB", (T.TW, T.TH), (120, 110, 100))
 ImageDraw.Draw(grey).text((200, 34), "WHAT'S INSIDE?", font=TT._font(176), fill=(140, 128, 116),
                           stroke_width=10, stroke_fill=(128, 118, 108))
-px, c = TT.legibility(grey, "WHAT'S INSIDE?", 176, (200, 34), 10)
+px, c = TT.legibility(grey, rec0["variants"]["A"]["headline_bbox"])
 check(c < TT.HEAD_MIN_CONTRAST, f"a low-contrast headline measures {c:.1f}:1 at 320 px - under the floor")
 pub = Image.open(os.path.join(src, "A.jpg"))
-v = rec0["variants"]["A"]
-hy = 34 if v["place"] == "top" else (T.TH - 176 - 80) // 2 - 10
-hx = (T.TW - ImageDraw.Draw(pub).textlength(rec0["headline"], font=TT._font(176))) / 2
-px, c = TT.legibility(pub, rec0["headline"], 176, (hx, hy), 10)
+px, c = TT.legibility(pub, rec0["variants"]["A"]["headline_bbox"])
 check(px >= TT.HEAD_MIN_PX and c >= TT.HEAD_MIN_CONTRAST,
       f"the published headline at 320 px: {px:.0f} px tall, {c:.1f}:1")
 
