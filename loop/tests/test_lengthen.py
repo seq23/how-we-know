@@ -116,7 +116,7 @@ SCRIPT = """# What is the midnight zone?
 
 ## YouTube title
 
-No sunlight reaches below 1,000 meters
+No sunlight reaches the midnight zone below 1,000 meters
 
 ## Direct-answer lock
 

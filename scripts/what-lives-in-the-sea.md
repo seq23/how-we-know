@@ -75,7 +75,7 @@ The 2.2 million figure is an extrapolation, not a count. It rests on the assumpt
 
 ### Evidence limit
 
-{{uncertain: 2.2 | million species | half a million to 5 million | model-dependent | Total marine species estimate, Census of Marine Life}}
+{{stat: 2.2 | million species | Total marine species estimate, a model output | Census of Marine Life}}
 
 The described count of 240,000 species is solid — those are named organisms in a database you can query. The total estimate of 2.2 million is a model output that depends on assumptions about how biodiversity scales with habitat area and sampling effort. Published estimates range from half a million to 5 million marine species. The range reflects genuine uncertainty about deep-sea diversity, not sloppiness. No method currently exists to count species without collecting and describing them. The evidence establishes that most marine diversity is undescribed and that the deep sea holds most of that undescribed diversity. It does not establish a precise total. The uncertainty is not a gap in knowledge that will close soon — it is intrinsic to the scale of the task and the rate at which taxonomic work proceeds.
 

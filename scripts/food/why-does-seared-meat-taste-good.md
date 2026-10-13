@@ -10,7 +10,7 @@
 
 ## YouTube title
 
-What Maillard found in 1912 makes every crust brown
+Why seared meat tastes good and boiled meat never browns
 
 ## Direct-answer lock
 

@@ -35,12 +35,16 @@
     "03-why-deep-sea-creatures-are-surfacing": {
       "applied_at": null,
       "attempts": 1,
-      "checks_passed": true,
+      "checks_passed": false,
+      "invalidated_at": "2026-10-13T15:07:46+00:00",
+      "invalidated_why": "owner's plainness rule (13 Oct 2026): the title must name its subject in plain words; re-proposed by loop-repackage",
       "model": "claude-subscription/opus",
       "new_title": "A single stranding is not an earthquake prediction",
       "old_title": "Why deep sea creatures are surfacing — and how we know",
       "old_title_source": "titles.py (2026-10-08 rule)",
-      "problems": [],
+      "problems": [
+        "title never names the episode's subject in plain words (one of: creatures, deep, sea) - say what it is about, never a metaphor or a riddle for it"
+      ],
       "proposed_at": "2026-10-13T12:16:19+00:00",
       "question": "Why deep sea creatures are surfacing?",
       "slug": "03-why-deep-sea-creatures-are-surfacing"
@@ -49,12 +53,16 @@
       "applied_at": "2026-10-13T13:55:23+00:00",
       "applied_video_id": "xyZ9xs7OF3g",
       "attempts": 1,
-      "checks_passed": true,
+      "checks_passed": false,
+      "invalidated_at": "2026-10-13T15:07:46+00:00",
+      "invalidated_why": "owner's plainness rule (13 Oct 2026): the title must name its subject in plain words; re-proposed by loop-repackage",
       "model": "claude-subscription/opus",
       "new_title": "At a thousand meters, the danger is not a fish",
       "old_title": "Why deep sea creatures are so scary — and how we know",
       "old_title_source": "titles.py (2026-10-08 rule)",
-      "problems": [],
+      "problems": [
+        "title never names the episode's subject in plain words (one of: creatures, deep, sea) - say what it is about, never a metaphor or a riddle for it"
+      ],
       "proposed_at": "2026-10-13T13:37:10+00:00",
       "question": "why deep sea creatures are so scary",
       "slug": "04-why-deep-sea-creatures-are-so-scary",
@@ -80,12 +88,17 @@
       "applied_at": "2026-10-13T13:55:29+00:00",
       "applied_video_id": "MozJZ-ChEZU",
       "attempts": 1,
-      "checks_passed": true,
+      "checks_passed": false,
+      "invalidated_at": "2026-10-13T15:07:46+00:00",
+      "invalidated_why": "owner's plainness rule (13 Oct 2026): the title must name its subject in plain words; re-proposed by loop-repackage",
       "model": "claude-subscription/opus",
       "new_title": "Transparency is not magic invisibility",
       "old_title": "Why some deep sea creatures are transparent — and how we know",
       "old_title_source": "titles.py (2026-10-08 rule)",
-      "problems": [],
+      "problems": [
+        "title never names the episode's subject in plain words (one of: creatures, deep, sea, transparent) - say what it is about, never a metaphor or a riddle for it",
+        "title reads at Flesch -35 (needs 60+): plainer, shorter words a 12-year-old gets on first read"
+      ],
       "proposed_at": "2026-10-13T13:35:46+00:00",
       "question": "why some deep sea creatures are transparent",
       "slug": "06-why-some-deep-sea-creatures-are-transparent",
@@ -96,12 +109,16 @@
       "applied_at": "2026-10-13T13:55:33+00:00",
       "applied_video_id": "MAV4PF056RA",
       "attempts": 1,
-      "checks_passed": true,
+      "checks_passed": false,
+      "invalidated_at": "2026-10-13T15:07:46+00:00",
+      "invalidated_why": "owner's plainness rule (13 Oct 2026): the title must name its subject in plain words; re-proposed by loop-repackage",
       "model": "claude-subscription/opus",
       "new_title": "The deepest fish is not a giant fanged predator",
       "old_title": "Why deep sea creatures get creepier the deeper you go — and how we know",
       "old_title_source": "titles.py (2026-10-08 rule)",
-      "problems": [],
+      "problems": [
+        "title never names the episode's subject in plain words (one of: creatures, deep, sea) - say what it is about, never a metaphor or a riddle for it"
+      ],
       "proposed_at": "2026-10-13T13:35:33+00:00",
       "question": "why deep sea creatures get creepier the deeper you go",
       "slug": "07-why-deep-sea-creatures-get-creepier-deeper",
@@ -128,12 +145,16 @@
       "applied_at": "2026-10-13T13:55:40+00:00",
       "applied_video_id": "G1TqXmf36Qo",
       "attempts": 1,
-      "checks_passed": true,
+      "checks_passed": false,
+      "invalidated_at": "2026-10-13T15:07:46+00:00",
+      "invalidated_why": "owner's plainness rule (13 Oct 2026): the title must name its subject in plain words; re-proposed by loop-repackage",
       "model": "claude-subscription/opus",
       "new_title": "The vampire squid eats marine snow, not blood",
       "old_title": "The scariest deep sea creature — and how we know",
       "old_title_source": "titles.py (2026-10-08 rule)",
-      "problems": [],
+      "problems": [
+        "title never names the episode's subject in plain words (one of: creature, deep, scariest, sea) - say what it is about, never a metaphor or a riddle for it"
+      ],
       "proposed_at": "2026-10-13T13:36:28+00:00",
       "question": "what is the scariest deep sea creature",
       "slug": "09-what-is-the-scariest-deep-sea-creature",
@@ -144,12 +165,17 @@
       "applied_at": "2026-10-13T13:55:45+00:00",
       "applied_video_id": "sfveDF88ZHo",
       "attempts": 1,
-      "checks_passed": true,
+      "checks_passed": false,
+      "invalidated_at": "2026-10-13T15:07:46+00:00",
+      "invalidated_why": "owner's plainness rule (13 Oct 2026): the title must name its subject in plain words; re-proposed by loop-repackage",
       "model": "claude-subscription/opus",
       "new_title": "Challenger Deep supports life without sunlight",
       "old_title": "The deepest part of the ocean — and how we know",
       "old_title_source": "titles.py (2026-10-08 rule)",
-      "problems": [],
+      "problems": [
+        "title never names the episode's subject in plain words (one of: deepest, ocean) - say what it is about, never a metaphor or a riddle for it",
+        "title reads at Flesch 46 (needs 60+): plainer, shorter words a 12-year-old gets on first read"
+      ],
       "proposed_at": "2026-10-13T13:34:14+00:00",
       "question": "what is the deepest part of the ocean",
       "slug": "10-what-is-the-deepest-part-of-the-ocean",
@@ -277,12 +303,16 @@
       "applied_at": "2026-10-13T13:56:02+00:00",
       "applied_video_id": "OdYunlbB73g",
       "attempts": 1,
-      "checks_passed": true,
+      "checks_passed": false,
+      "invalidated_at": "2026-10-13T15:07:46+00:00",
+      "invalidated_why": "owner's plainness rule (13 Oct 2026): the title must name its subject in plain words; re-proposed by loop-repackage",
       "model": "claude-subscription/opus",
       "new_title": "Hadal snailfish lack a swim bladder at 8,336 meters",
       "old_title": "The deepest fish ever recorded — and how we know",
       "old_title_source": "titles.py (2026-10-08 rule)",
-      "problems": [],
+      "problems": [
+        "title never names the episode's subject in plain words (one of: deepest, fish) - say what it is about, never a metaphor or a riddle for it"
+      ],
       "proposed_at": "2026-10-13T13:36:44+00:00",
       "question": "what is the deepest fish ever recorded",
       "slug": "19-what-is-the-deepest-fish-ever-recorded",
@@ -293,12 +323,16 @@
       "applied_at": "2026-10-13T13:56:02+00:00",
       "applied_video_id": "izdEaeOQBvI",
       "attempts": 1,
-      "checks_passed": true,
+      "checks_passed": false,
+      "invalidated_at": "2026-10-13T15:07:46+00:00",
+      "invalidated_why": "owner's plainness rule (13 Oct 2026): the title must name its subject in plain words; re-proposed by loop-repackage",
       "model": "claude-subscription/opus",
       "new_title": "The bathypelagic zone: cold, dark, and not empty",
       "old_title": "The midnight zone — and how we know",
       "old_title_source": "titles.py (2026-10-08 rule)",
-      "problems": [],
+      "problems": [
+        "title is a list of mysteries - one plain claim about one subject"
+      ],
       "proposed_at": "2026-10-13T13:35:17+00:00",
       "question": "what is the midnight zone",
       "slug": "20-what-is-the-midnight-zone",
@@ -307,12 +341,16 @@
     "how-are-microchips-designed": {
       "applied_at": null,
       "attempts": 1,
-      "checks_passed": true,
+      "checks_passed": false,
+      "invalidated_at": "2026-10-13T15:07:46+00:00",
+      "invalidated_why": "owner's plainness rule (13 Oct 2026): the title must name its subject in plain words; re-proposed by loop-repackage",
       "model": "claude-subscription/opus",
       "new_title": "Chip design: a proof for every input, not a test",
       "old_title": "Microchips are designed as written text, not drawn by hand — and how we know",
       "old_title_source": "titles.py (2026-10-08 rule)",
-      "problems": [],
+      "problems": [
+        "title never names the episode's subject in plain words (one of: microchips) - say what it is about, never a metaphor or a riddle for it"
+      ],
       "proposed_at": "2026-10-13T12:57:20+00:00",
       "question": "how are microchips designed",
       "slug": "how-are-microchips-designed"
@@ -321,12 +359,17 @@
       "applied_at": "2026-10-13T13:56:05+00:00",
       "applied_video_id": "YuZxDiNUw4w",
       "attempts": 1,
-      "checks_passed": true,
+      "checks_passed": false,
+      "invalidated_at": "2026-10-13T15:07:46+00:00",
+      "invalidated_why": "owner's plainness rule (13 Oct 2026): the title must name its subject in plain words; re-proposed by loop-repackage",
       "model": "claude-subscription/opus",
       "new_title": "Silicon wafers are not cut from a natural crystal",
       "old_title": "How microchips are really made — and how we know",
       "old_title_source": "titles.py (2026-10-08 rule)",
-      "problems": [],
+      "problems": [
+        "title never names the episode's subject in plain words (one of: microchips) - say what it is about, never a metaphor or a riddle for it",
+        "title reads at Flesch 57 (needs 60+): plainer, shorter words a 12-year-old gets on first read"
+      ],
       "proposed_at": "2026-10-13T13:38:10+00:00",
       "question": "how are microchips made",
       "slug": "how-are-microchips-made",
@@ -336,12 +379,17 @@
     "how-deep-can-a-sperm-whale-go": {
       "applied_at": null,
       "attempts": 1,
-      "checks_passed": true,
+      "checks_passed": false,
+      "invalidated_at": "2026-10-13T15:07:46+00:00",
+      "invalidated_why": "owner's plainness rule (13 Oct 2026): the title must name its subject in plain words; re-proposed by loop-repackage",
       "model": "claude-subscription/opus",
       "new_title": "The air-breathing mammal that dives to 2,992 meters",
       "old_title": "The sperm whale record is a 2,992 meter deep dive — and how we know",
       "old_title_source": "titles.py (2026-10-08 rule)",
-      "problems": [],
+      "problems": [
+        "title never names the episode's subject in plain words (one of: deep, sperm, whale) - say what it is about, never a metaphor or a riddle for it",
+        "title reads at Flesch 51 (needs 60+): plainer, shorter words a 12-year-old gets on first read"
+      ],
       "proposed_at": "2026-10-13T12:57:34+00:00",
       "question": "how deep can a sperm whale go",
       "slug": "how-deep-can-a-sperm-whale-go"
@@ -349,12 +397,17 @@
     "how-deep-can-whales-dive": {
       "applied_at": null,
       "attempts": 1,
-      "checks_passed": true,
+      "checks_passed": false,
+      "invalidated_at": "2026-10-13T15:07:46+00:00",
+      "invalidated_why": "owner's plainness rule (13 Oct 2026): the title must name its subject in plain words; re-proposed by loop-repackage",
       "model": "claude-subscription/opus",
       "new_title": "Nobody watched the whale reach 2,992 metres",
       "old_title": "Whales can dive 2,992 m deep, a beaked whale's record — and how we know",
       "old_title_source": "titles.py (2026-10-08 rule)",
-      "problems": [],
+      "problems": [
+        "title never names the episode's subject in plain words (one of: deep, dive, whales) - say what it is about, never a metaphor or a riddle for it",
+        "title reads at Flesch 43 (needs 60+): plainer, shorter words a 12-year-old gets on first read"
+      ],
       "proposed_at": "2026-10-13T12:57:49+00:00",
       "question": "how deep can whales dive",
       "slug": "how-deep-can-whales-dive"
@@ -376,12 +429,17 @@
       "applied_at": "2026-10-13T13:56:06+00:00",
       "applied_video_id": "Z-Z1FNVQXW0",
       "attempts": 1,
-      "checks_passed": true,
+      "checks_passed": false,
+      "invalidated_at": "2026-10-13T15:07:46+00:00",
+      "invalidated_why": "owner's plainness rule (13 Oct 2026): the title must name its subject in plain words; re-proposed by loop-repackage",
       "model": "claude-subscription/opus",
       "new_title": "Type Ia supernovae explode at 1.4 solar masses",
       "old_title": "How scientists know about other galaxies",
       "old_title_source": "titles.py (2026-10-08 rule)",
-      "problems": [],
+      "problems": [
+        "title never names the episode's subject in plain words (one of: galaxies) - say what it is about, never a metaphor or a riddle for it",
+        "title reads at Flesch 51 (needs 60+): plainer, shorter words a 12-year-old gets on first read"
+      ],
       "proposed_at": "2026-10-13T13:43:48+00:00",
       "question": "how do scientists know about other galaxies",
       "slug": "how-do-scientists-know-about-other-galaxies",
@@ -406,12 +464,16 @@
       "applied_at": "2026-10-13T13:56:07+00:00",
       "applied_video_id": "zs-gueHeX8k",
       "attempts": 1,
-      "checks_passed": true,
+      "checks_passed": false,
+      "invalidated_at": "2026-10-13T15:07:46+00:00",
+      "invalidated_why": "owner's plainness rule (13 Oct 2026): the title must name its subject in plain words; re-proposed by loop-repackage",
       "model": "claude-subscription/opus",
       "new_title": "Five percent mapped is not five percent known",
       "old_title": "How scientists know so much about the deep ocean when we've explored so little of it",
       "old_title_source": "titles.py (2026-10-08 rule)",
-      "problems": [],
+      "problems": [
+        "title never names the episode's subject in plain words (one of: deep, ocean) - say what it is about, never a metaphor or a riddle for it"
+      ],
       "proposed_at": "2026-10-13T13:43:05+00:00",
       "question": "how do scientists know so much about the deep ocean when we've explored so little of it",
       "slug": "how-do-scientists-know-so-much",
@@ -421,12 +483,16 @@
       "applied_at": "2026-10-13T13:56:12+00:00",
       "applied_video_id": "eJSCm5sk5AA",
       "attempts": 1,
-      "checks_passed": true,
+      "checks_passed": false,
+      "invalidated_at": "2026-10-13T15:07:46+00:00",
+      "invalidated_why": "owner's plainness rule (13 Oct 2026): the title must name its subject in plain words; re-proposed by loop-repackage",
       "model": "claude-subscription/opus",
       "new_title": "The crack that breaks open its own repair",
       "old_title": "How self-healing materials really work — and how we know",
       "old_title_source": "titles.py (2026-10-08 rule)",
-      "problems": [],
+      "problems": [
+        "title never names the episode's subject in plain words (one of: healing, materials, self) - say what it is about, never a metaphor or a riddle for it"
+      ],
       "proposed_at": "2026-10-13T13:38:43+00:00",
       "question": "how do self-healing materials work",
       "slug": "how-do-self-healing-materials-work",
@@ -437,12 +503,17 @@
       "applied_at": "2026-10-13T13:56:15+00:00",
       "applied_video_id": "aKyOg7xbxC0",
       "attempts": 1,
-      "checks_passed": true,
+      "checks_passed": false,
+      "invalidated_at": "2026-10-13T15:07:46+00:00",
+      "invalidated_why": "owner's plainness rule (13 Oct 2026): the title must name its subject in plain words; re-proposed by loop-repackage",
       "model": "claude-subscription/opus",
       "new_title": "Faster than 100 degrees per second, carbon is trapped",
       "old_title": "How quenching hardens steel — and how we know",
       "old_title_source": "titles.py (2026-10-08 rule)",
-      "problems": [],
+      "problems": [
+        "title never names the episode's subject in plain words (one of: harden, quenching, steel) - say what it is about, never a metaphor or a riddle for it",
+        "title reads at Flesch 57 (needs 60+): plainer, shorter words a 12-year-old gets on first read"
+      ],
       "proposed_at": "2026-10-13T13:38:28+00:00",
       "question": "how does quenching harden steel",
       "slug": "how-does-quenching-harden-steel",
@@ -500,12 +571,16 @@
       "applied_at": "2026-10-13T13:56:26+00:00",
       "applied_video_id": "xbmIX6n2OI8",
       "attempts": 1,
-      "checks_passed": true,
+      "checks_passed": false,
+      "invalidated_at": "2026-10-13T15:07:46+00:00",
+      "invalidated_why": "owner's plainness rule (13 Oct 2026): the title must name its subject in plain words; re-proposed by loop-repackage",
       "model": "claude-subscription/opus",
       "new_title": "Nine-nines silicon does not exist in nature",
       "old_title": "How a silicon wafer is really made — and how we know",
       "old_title_source": "titles.py (2026-10-08 rule)",
-      "problems": [],
+      "problems": [
+        "title reads at Flesch 55 (needs 60+): plainer, shorter words a 12-year-old gets on first read"
+      ],
       "proposed_at": "2026-10-13T13:39:41+00:00",
       "question": "how is a silicon wafer made",
       "slug": "how-is-a-silicon-wafer-made",
@@ -579,12 +654,17 @@
       "applied_at": "2026-10-13T13:56:38+00:00",
       "applied_video_id": "vrb83gWWaYw",
       "attempts": 1,
-      "checks_passed": true,
+      "checks_passed": false,
+      "invalidated_at": "2026-10-13T15:07:46+00:00",
+      "invalidated_why": "owner's plainness rule (13 Oct 2026): the title must name its subject in plain words; re-proposed by loop-repackage",
       "model": "claude-subscription/opus",
       "new_title": "Window glass that is ninety-nine percent air",
       "old_title": "What aerogel is really made of — and how we know",
       "old_title_source": "titles.py (2026-10-08 rule)",
-      "problems": [],
+      "problems": [
+        "title never names the episode's subject in plain words (one of: aerogel) - say what it is about, never a metaphor or a riddle for it",
+        "title reads at Flesch 55 (needs 60+): plainer, shorter words a 12-year-old gets on first read"
+      ],
       "proposed_at": "2026-10-13T13:41:27+00:00",
       "question": "what is aerogel made of",
       "slug": "what-is-aerogel-made-of",
@@ -595,12 +675,16 @@
       "applied_at": "2026-10-13T13:56:41+00:00",
       "applied_video_id": "X2_UfcYnXwc",
       "attempts": 1,
-      "checks_passed": true,
+      "checks_passed": false,
+      "invalidated_at": "2026-10-13T15:07:46+00:00",
+      "invalidated_why": "owner's plainness rule (13 Oct 2026): the title must name its subject in plain words; re-proposed by loop-repackage",
       "model": "claude-subscription/opus",
       "new_title": "Without stabilization, PAN fiber melts and collapses",
       "old_title": "What carbon fiber is really made of — and how we know",
       "old_title_source": "titles.py (2026-10-08 rule)",
-      "problems": [],
+      "problems": [
+        "title reads at Flesch 31 (needs 60+): plainer, shorter words a 12-year-old gets on first read"
+      ],
       "proposed_at": "2026-10-13T13:42:30+00:00",
       "question": "what is carbon fiber made of",
       "slug": "what-is-carbon-fiber-made-of",
@@ -627,12 +711,16 @@
     "what-is-hydrothermal-vents": {
       "applied_at": null,
       "attempts": 1,
-      "checks_passed": true,
+      "checks_passed": false,
+      "invalidated_at": "2026-10-13T15:07:46+00:00",
+      "invalidated_why": "owner's plainness rule (13 Oct 2026): the title must name its subject in plain words; re-proposed by loop-repackage",
       "model": "claude-subscription/opus",
       "new_title": "Vent ecosystems that run on chemicals, not sunlight",
       "old_title": "Hydrothermal vents pour out seawater up to 400°C, still liquid — and how we know",
       "old_title_source": "titles.py (2026-10-08 rule)",
-      "problems": [],
+      "problems": [
+        "title reads at Flesch 51 (needs 60+): plainer, shorter words a 12-year-old gets on first read"
+      ],
       "proposed_at": "2026-10-13T13:13:03+00:00",
       "question": "what is hydrothermal vents",
       "slug": "what-is-hydrothermal-vents"
@@ -655,12 +743,16 @@
     "what-lives-in-mariana-trench": {
       "applied_at": null,
       "attempts": 1,
-      "checks_passed": true,
+      "checks_passed": false,
+      "invalidated_at": "2026-10-13T15:07:46+00:00",
+      "invalidated_why": "owner's plainness rule (13 Oct 2026): the title must name its subject in plain words; re-proposed by loop-repackage",
       "model": "claude-subscription/opus",
       "new_title": "Life nearly 11,000 metres down, but not a fish",
       "old_title": "What really lives in Mariana Trench — and how we know",
       "old_title_source": "titles.py (2026-10-08 rule)",
-      "problems": [],
+      "problems": [
+        "title never names the episode's subject in plain words (one of: mariana, trench) - say what it is about, never a metaphor or a riddle for it"
+      ],
       "proposed_at": "2026-10-13T13:13:15+00:00",
       "question": "what lives in mariana trench",
       "slug": "what-lives-in-mariana-trench"
@@ -668,7 +760,9 @@
     "what-lives-in-the-depths-of-the-ocean": {
       "applied_at": null,
       "attempts": 1,
-      "checks_passed": true,
+      "checks_passed": false,
+      "invalidated_at": "2026-10-13T15:07:46+00:00",
+      "invalidated_why": "owner's plainness rule (13 Oct 2026): the title must name its subject in plain words; re-proposed by loop-repackage",
       "model": "claude-subscription/opus",
       "new_title": "Only female anglerfish possess the lure",
       "old_title": "What really lives in the depths of the ocean — and how we know",
@@ -677,7 +771,10 @@
         "applied_at": null,
         "new_title": "percent of deep-sea pelagic animals produce light"
       },
-      "problems": [],
+      "problems": [
+        "title never names the episode's subject in plain words (one of: depths, ocean) - say what it is about, never a metaphor or a riddle for it",
+        "title reads at Flesch 32 (needs 60+): plainer, shorter words a 12-year-old gets on first read"
+      ],
       "proposed_at": "2026-10-13T13:55:15+00:00",
       "question": "What lives in the depths of the ocean?",
       "slug": "what-lives-in-the-depths-of-the-ocean"
@@ -685,12 +782,17 @@
     "what-lives-in-the-sea": {
       "applied_at": null,
       "attempts": 1,
-      "checks_passed": true,
+      "checks_passed": false,
+      "invalidated_at": "2026-10-13T15:07:46+00:00",
+      "invalidated_why": "owner's plainness rule (13 Oct 2026): the title must name its subject in plain words; re-proposed by loop-repackage",
       "model": "claude-subscription/opus",
       "new_title": "Over 100 potentially new species in 28 days",
       "old_title": "What really lives in the sea — and how we know",
       "old_title_source": "titles.py (2026-10-08 rule)",
-      "problems": [],
+      "problems": [
+        "title never names the episode's subject in plain words (one of: sea) - say what it is about, never a metaphor or a riddle for it",
+        "title reads at Flesch 40 (needs 60+): plainer, shorter words a 12-year-old gets on first read"
+      ],
       "proposed_at": "2026-10-13T13:13:48+00:00",
       "question": "What lives in the sea?",
       "slug": "what-lives-in-the-sea"
@@ -772,12 +874,16 @@
       "applied_at": "2026-10-13T14:45:29+00:00",
       "applied_video_id": "98ejztJsQNY",
       "attempts": 1,
-      "checks_passed": true,
+      "checks_passed": false,
+      "invalidated_at": "2026-10-13T15:07:46+00:00",
+      "invalidated_why": "owner's plainness rule (13 Oct 2026): the title must name its subject in plain words; re-proposed by loop-repackage",
       "model": "claude-subscription/opus",
       "new_title": "Beyond one point two percent carbon, it is cast iron",
       "old_title": "Why steel is so strong — and how we know",
       "old_title_source": "titles.py (2026-10-08 rule)",
-      "problems": [],
+      "problems": [
+        "title never names the episode's subject in plain words (one of: steel) - say what it is about, never a metaphor or a riddle for it"
+      ],
       "proposed_at": "2026-10-13T13:41:11+00:00",
       "question": "why is steel so strong",
       "slug": "why-is-steel-so-strong",
@@ -785,5 +891,5 @@
       "thumbnail_sha256": "33dab3a0b1cf6d27e85c2880162030cbac5b9b6b3d86b8a2610ba483656a44a2"
     }
   },
-  "updated": "2026-10-13T14:45:29+00:00"
+  "updated": "2026-10-13T15:07:46+00:00"
 }

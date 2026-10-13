@@ -111,6 +111,28 @@ STAKE = {
     "rusts", "stop", "stops", "outlast", "outlasts", "beat", "beats",
     "dissolve", "dissolves", "eat", "eats", "eaten", "hunt", "hunts",
 }
+# PLAINNESS (owner, 13 Oct 2026, on "6 crystals, a breathing fungus and a
+# crust you never see": "those words make no sense"). A title names its
+# subject in the words a stranger recognises instantly and states a claim a
+# 12-year-old understands on first read. Question words that are NOT the
+# subject - they never satisfy "names the subject":
+SUBJECT_GENERIC = {
+    "made", "make", "work", "works", "working", "get", "gets", "got", "so",
+    "know", "knows", "scientists", "scientist", "people", "happens", "happen",
+    "happening", "brought", "thing", "things", "something", "part", "really",
+    "strong", "hot", "big", "old", "far", "long", "fast", "high", "low",
+    "weird", "scary", "creepier", "deeper", "true", "real", "kind", "kinds",
+    "type", "types", "way", "ways", "use", "used", "need", "needs",
+    "not", "ever", "go", "goes", "look", "looks", "live", "lives", "living",
+    "die", "dies", "survive", "recorded", "explored", "little", "other",
+    "we've", "reach", "designed", "printed", "surfacing", "brought",
+}
+PLAIN_MIN_FLESCH = 60.0        # Flesch reading ease of the title alone
+# "6 crystals, a breathing fungus and a crust": a numbered list of riddles.
+# A list that NAMES its subjects ("Why bread rises, steak browns and chocolate
+# snaps") is plain; a list of riddles is caught by the subject check.
+LIST_RE = re.compile(r"^\s*\d+\s+[a-z]+\b[^.]*,", re.I)
+
 NUMBER_WORDS = {
     "zero": 0, "one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6,
     "seven": 7, "eight": 8, "nine": 9, "ten": 10, "eleven": 11, "twelve": 12,
@@ -242,6 +264,62 @@ def has_stake(title: str) -> bool:
 
 
 # --------------------------------------------------------------- the gate
+def subject_words(question: str) -> set[str]:
+    """The episode's subject, in the question's own plain words: its content
+    words minus the ones that are only how the question is asked."""
+    out = set()
+    for w in content_words(question or ""):
+        for x in re.split(r"[-\u2013]", w):
+            if x and x not in SUBJECT_GENERIC and x not in STOP:
+                out.add(x)
+    return out
+
+
+def _syllables(word: str) -> int:
+    w = re.sub(r"[^a-z]", "", word.lower())
+    if not w:
+        return 2 if re.search(r"\d", word) else 0      # a figure reads as ~2
+    groups = re.findall(r"[aeiouy]+", w)
+    n = len(groups)
+    if w.endswith("e") and not w.endswith(("le", "ee")) and n > 1:
+        n -= 1
+    return max(1, n)
+
+
+def flesch(text: str, names: set[str] | None = None) -> float:
+    """Flesch reading ease of one line: 206.835 - 1.015*(words/sentence)
+    - 84.6*(syllables/word). 60+ is plain English. Words in `names` (the
+    episode's own subject - "hydrothermal", "semiconductor") count as one
+    syllable: the subject's name is fixed, the words around it are not."""
+    words = [w for w in re.findall(r"[\w][\w'.,%-]*", text or "") if w.strip(".,")]
+    if not words:
+        return 0.0
+    ns = {stem(n) for n in (names or ())}
+    syl = sum(1 if stem(_clean(w.strip(".,"))) in ns else _syllables(w)
+              for w in words)
+    return 206.835 - 1.015 * len(words) - 84.6 * (syl / len(words))
+
+
+def plainness_problems(title: str, question: str) -> list[str]:
+    """The owner's plainness rule, mechanically (13 Oct 2026)."""
+    p: list[str] = []
+    subj = subject_words(question)
+    have = {stem(x) for w in content_words(title)
+            for x in re.split(r"[-\u2013]", w) if x}
+    if subj and not (have & {stem(w) for w in subj}):
+        p.append(f"title never names the episode's subject in plain words "
+                 f"(one of: {', '.join(sorted(subj))}) - say what it is "
+                 f"about, never a metaphor or a riddle for it")
+    if LIST_RE.search(title):
+        p.append("title is a list of mysteries - one plain claim about one "
+                 "subject")
+    fre = flesch(title, subj)
+    if fre < PLAIN_MIN_FLESCH:
+        p.append(f"title reads at Flesch {fre:.0f} (needs {PLAIN_MIN_FLESCH:.0f}+): "
+                 f"plainer, shorter words a 12-year-old gets on first read")
+    return p
+
+
 def title_problems(title: str, script: str, question: str | None = None) -> list[str]:
     """Everything wrong with `title` as a long-form title. [] = it may ship."""
     p: list[str] = []
@@ -279,6 +357,7 @@ def title_problems(title: str, script: str, question: str | None = None) -> list
         p.append("title carries no stake: no concrete figure, no "
                  "contradiction (never/without/not ...) and no stake verb "
                  "(crush/die/survive ...)")
+    p += plainness_problems(t, q)
     qs = {stem(w) for w in content_words(q)}
     ts = {stem(w) for w in cw}
     if ts and qs and ts <= qs:
@@ -373,6 +452,10 @@ channel. Write {n} candidate titles for the episode below, one per line, no \
 numbering, no quotes, nothing else.
 
 RULES - every candidate is checked by a program and rejected if it breaks one:
+- PLAIN FIRST: name the episode's subject in the plain word a stranger \
+recognises instantly - one of: {subject}. No riddles, no metaphors in place \
+of the subject (yeast, not "a breathing fungus"), no lists of mysteries;
+- a claim a 12-year-old understands on first read, in short everyday words;
 - at most {max} characters;
 - a specific subject plus a STAKE: a concrete figure the script states, a \
 contradiction (never, without, not, only ...) or something lost, broken or \
@@ -384,8 +467,9 @@ the script establishes;
 adjectives or numbers it does not state. No hype words, no capitals for \
 emphasis.
 
-Shape (a different subject, for the SHAPE only): question "what is the \
-midnight zone" -> "The ocean layer where sunlight has never existed".
+Shapes (different subjects, for the SHAPE only): "Why chocolate melts in \
+your mouth but not in your hand"; "The fish that lives where submarines get \
+crushed"; "Titanium is not as strong as steel, so why use it".
 
 QUESTION: {question}
 
@@ -432,6 +516,7 @@ def propose(slug: str, script: str, question: str | None = None,
     q = question or question_of(script)
     messages = [{"role": "user", "content": PROMPT.format(
         n=n, max=TITLE_MAX, question=q, answer=answer_lock(script),
+        subject=", ".join(sorted(subject_words(q))) or "the question's subject",
         excerpt=_excerpt(script))}]
     last: dict[str, list[str]] = {}
     model = ""

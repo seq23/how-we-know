@@ -54,7 +54,7 @@ SLUG = None
 # Passing long-form titles (loop/longform_title.py) for the slugs this test
 # can pick; each is traced to that script's Direct-answer lock.
 TITLES = {"10-what-is-the-deepest-part-of-the-ocean":
-          "Challenger Deep reaches 10,935 meters below sea level"}
+          "The deepest part of the ocean reaches 10,935 meters"}  # plain: names the subject
 
 
 def _pick_slug() -> str:
