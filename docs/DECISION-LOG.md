@@ -1190,3 +1190,8 @@ PRIVATE (never deleted) only after their replacement is public.
   48-hour test). The 2026-09-28 `cold-open-payoff` rule was answer-first, not a hook — the loop measured
   supply, never demand; a demand verdict and weekly email are part of the program. Full text:
   docs/CHANNEL-PLAN.md § "The long-form program of 2026-10-13" onward.
+- **2026-10-13 — Forward only** (owner, same day, supersedes the re-upload part of the entry above). Published
+  videos are never re-rendered, re-uploaded, extended or privated; the under-ten-minute deep-sea episodes stay
+  as they are. Kept: the title-and-thumbnail pass over all 21 published long-form videos (cheap, reversible,
+  triggers YouTube's re-test). The hook, the splice extension and the drain apply to the queue and everything
+  after it. The drain shrinks to the queue (~20 episodes, ~10 days at 2/day).

@@ -391,17 +391,20 @@ pulled twice the clicks per video, deep sea twice the retention. The owner's rul
 - **Hook rule:** opening variant `stake-then-payoff` is first in `loop/opening.py` — the first
   narrated sentence is at most 15 words, states a stake, contradiction or figure, never the
   title; the payoff still lands inside the first 75 words. The 28-day AVD comparison keeps running.
-- **Ten-minute floor, enforced by extension not by holding:** every long-form episode under
-  10:00 is extended to 10:30–11:30 with real sourced evidence beats. **The extension is a splice,
+- **Ten-minute floor, enforced by extension not by holding:** every QUEUED long-form script under
+  10:00 is extended to 10:30–11:30 with real sourced evidence beats before it is rendered or uploaded. **The extension is a splice,
   never a full re-render:** a freshly rendered hook replaces the cold open, the existing body from
   the title card onward is kept byte-identical, a freshly rendered tail (what the evidence does
   not settle, the open question, a next-episode tease — written warm and funny, never filler)
   is appended, and the three are concatenated.
-- **Published episodes under ten minutes (all eleven deep-sea ones) are re-uploaded as new
-  videos** with the new title, thumbnail and opening. The old copy is set **private, never
-  deleted**, only after the replacement is confirmed public, so its retention data survives.
-- **Backlog drain:** a long-form drain lane at **two a day** until the 11 re-uploads and the
-  queued episodes are out (about 16 days), then the steady schedule below. A one-day dump was
+- **FORWARD ONLY (owner, later on 2026-10-13):** published videos are never re-rendered,
+  re-uploaded, extended or privated. The eleven under-ten-minute deep-sea episodes stay exactly
+  as they are. The one thing that touches the catalogue is the **packaging pass**: a new title
+  and thumbnail on all 21 published long-form videos through the API (100 quota units each, one
+  day, reversible) — kept because YouTube re-tests a video whose packaging changes, which answers
+  "niche or packaging" in a week without remaking anything.
+- **Backlog drain:** a long-form drain lane at **two a day** until the queued episodes are out
+  (about ten days), then the steady schedule below. A one-day dump was
   rejected: the API quota caps uploads at three or four a day and simultaneous uploads dilute
   each video's 48-hour test.
 - **Demand is measured, not just supply:** per-video click-through proxies and retention from
