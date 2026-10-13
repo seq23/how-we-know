@@ -1,9 +1,12 @@
 {
   "titles": {
     "01-why-deep-sea-creatures-look-so-weird": {
-      "applied_at": null,
+      "applied_at": "2026-10-13T23:44:30+00:00",
+      "applied_video_id": "EY__zREBIUk",
       "attempts": 1,
       "checks_passed": true,
+      "description_applied_at": "2026-10-13T23:44:30+00:00",
+      "description_sha256": "898cf3b0ec758211016efe8c79d474cbc660c1dea56f742f3056462330e081f5",
       "model": "claude-subscription/opus",
       "new_title": "Are Deep Sea Creatures Ugly?",
       "old_title": "Nets, not depth, damage the soft deep-sea body",
@@ -15,12 +18,18 @@
       "problems": [],
       "proposed_at": "2026-10-13T16:03:44+00:00",
       "question": "why deep sea creatures look so weird",
-      "slug": "01-why-deep-sea-creatures-look-so-weird"
+      "slug": "01-why-deep-sea-creatures-look-so-weird",
+      "thumbnail_applied": true,
+      "thumbnail_applied_at": "2026-10-13T23:44:30+00:00",
+      "thumbnail_sha256": "4dd81e501bdd7f6e208a819d45987131e13b894e74cb961b61b91302cea92423"
     },
     "02-how-deep-sea-creatures-survive-pressure": {
-      "applied_at": null,
+      "applied_at": "2026-10-13T23:44:31+00:00",
+      "applied_video_id": "nv-M6q8h-Lk",
       "attempts": 1,
       "checks_passed": true,
+      "description_applied_at": "2026-10-13T23:44:31+00:00",
+      "description_sha256": "cda1c01a77268d82320546eedf8f23d61f6e45d91429ef9692212fbca9cadfb7",
       "model": "claude-subscription/opus",
       "new_title": "Why Aren't Deep Sea Fish Crushed?",
       "old_title": "Deep-sea fish are not flattened because they lack gas",
@@ -32,7 +41,8 @@
       "problems": [],
       "proposed_at": "2026-10-13T16:05:47+00:00",
       "question": "how deep sea creatures survive the pressure",
-      "slug": "02-how-deep-sea-creatures-survive-pressure"
+      "slug": "02-how-deep-sea-creatures-survive-pressure",
+      "thumbnail_applied": false
     },
     "03-why-deep-sea-creatures-are-surfacing": {
       "applied_at": null,
@@ -52,9 +62,12 @@
       "slug": "03-why-deep-sea-creatures-are-surfacing"
     },
     "04-why-deep-sea-creatures-are-so-scary": {
-      "applied_at": null,
+      "applied_at": "2026-10-13T23:44:35+00:00",
+      "applied_video_id": "xyZ9xs7OF3g",
       "attempts": 1,
       "checks_passed": true,
+      "description_applied_at": "2026-10-13T23:44:35+00:00",
+      "description_sha256": "784234ceadcb54e990015cdaf0163a48ee2a2971dc430cbe8572d6c96769a6dd",
       "model": "claude-subscription/opus",
       "new_title": "Can a Deep Sea Fish Eat a Human?",
       "old_title": "At a thousand meters, the danger is not a fish",
@@ -66,12 +79,18 @@
       "problems": [],
       "proposed_at": "2026-10-13T16:05:09+00:00",
       "question": "why deep sea creatures are so scary",
-      "slug": "04-why-deep-sea-creatures-are-so-scary"
+      "slug": "04-why-deep-sea-creatures-are-so-scary",
+      "thumbnail_applied": true,
+      "thumbnail_applied_at": "2026-10-13T23:44:35+00:00",
+      "thumbnail_sha256": "09a02990705d7fc14cbcb5ff4690732bcda84b18b400f3140d8b859613d130e5"
     },
     "05-why-many-deep-sea-creatures-are-red": {
-      "applied_at": null,
+      "applied_at": "2026-10-13T23:44:35+00:00",
+      "applied_video_id": "mOP33elEfpU",
       "attempts": 1,
       "checks_passed": true,
+      "description_applied_at": "2026-10-13T23:44:35+00:00",
+      "description_sha256": "f52fa687f68f94117c3d32d494bbf3b0c5875de84a2e9e999227b12d577a5496",
       "model": "claude-subscription/opus",
       "new_title": "Red Is Not Red in the Deep Sea",
       "old_title": "Red is not a warning color in the deep sea",
@@ -83,12 +102,16 @@
       "problems": [],
       "proposed_at": "2026-10-13T16:03:33+00:00",
       "question": "why many deep sea creatures are red",
-      "slug": "05-why-many-deep-sea-creatures-are-red"
+      "slug": "05-why-many-deep-sea-creatures-are-red",
+      "thumbnail_applied": false
     },
     "06-why-some-deep-sea-creatures-are-transparent": {
-      "applied_at": null,
+      "applied_at": "2026-10-13T23:44:38+00:00",
+      "applied_video_id": "MozJZ-ChEZU",
       "attempts": 1,
       "checks_passed": true,
+      "description_applied_at": "2026-10-13T23:44:38+00:00",
+      "description_sha256": "ee58df01fd2e2757423befa173c285df57c4196f90d06738af19a74aef101782",
       "model": "claude-subscription/opus",
       "new_title": "Why Are Deep Sea Jellies Clear?",
       "old_title": "Transparency is not magic invisibility",
@@ -100,12 +123,18 @@
       "problems": [],
       "proposed_at": "2026-10-13T16:04:17+00:00",
       "question": "why some deep sea creatures are transparent",
-      "slug": "06-why-some-deep-sea-creatures-are-transparent"
+      "slug": "06-why-some-deep-sea-creatures-are-transparent",
+      "thumbnail_applied": true,
+      "thumbnail_applied_at": "2026-10-13T23:44:38+00:00",
+      "thumbnail_sha256": "152f78a2d20ed24a2f89348d7385a1094db08c321b8dc4efdc4672ab25cf41e8"
     },
     "07-why-deep-sea-creatures-get-creepier-deeper": {
-      "applied_at": null,
+      "applied_at": "2026-10-13T23:44:42+00:00",
+      "applied_video_id": "MAV4PF056RA",
       "attempts": 1,
       "checks_passed": true,
+      "description_applied_at": "2026-10-13T23:44:42+00:00",
+      "description_sha256": "6717484c14ed737aa74a4d9f00e9b4ce0e9e47aaf9ad7816723053fa48d1aeae",
       "model": "claude-subscription/opus",
       "new_title": "Do Deep Sea Animals Get Scarier?",
       "old_title": "The deepest fish is not a giant fanged predator",
@@ -117,7 +146,10 @@
       "problems": [],
       "proposed_at": "2026-10-13T16:04:05+00:00",
       "question": "why deep sea creatures get creepier the deeper you go",
-      "slug": "07-why-deep-sea-creatures-get-creepier-deeper"
+      "slug": "07-why-deep-sea-creatures-get-creepier-deeper",
+      "thumbnail_applied": true,
+      "thumbnail_applied_at": "2026-10-13T23:44:42+00:00",
+      "thumbnail_sha256": "a43845588aee4fa7e65e563ad7bd4178fe7d667d4b3699b4b876abbeea4c3c88"
     },
     "08-what-creatures-live-in-the-deep-sea": {
       "applied_at": null,
@@ -881,5 +913,5 @@
       "slug": "why-is-steel-so-strong"
     }
   },
-  "updated": "2026-10-13T23:38:47+00:00"
+  "updated": "2026-10-13T23:44:42+00:00"
 }
