@@ -206,9 +206,14 @@ def packaging_pass_at(slug: str, vid: str) -> str | None:
     """When the packaging pass put this video's current title up (titles.json)."""
     import longform_title as LT                            # noqa: PLC0415
     row = LT.load()["titles"].get(slug) or {}
-    if row.get("applied_at") and row.get("applied_video_id") in (vid, None):
-        return row["applied_at"]
-    return None
+    # A re-proposed row (a new rule, 13 Oct 2026 #206) resets applied_at to
+    # None and keeps the live title's stamp under "previous" - the title on
+    # the video is still the one applied then, so that is when it went up.
+    stamps = [row.get("applied_at"), (row.get("previous") or {}).get("applied_at")]
+    if row.get("applied_video_id") not in (vid, None):
+        return None
+    stamps = [x for x in stamps if x]
+    return max(stamps) if stamps else None
 
 
 def packaging_since(v: dict) -> str | None:
@@ -331,7 +336,10 @@ def pull(api, doc: dict | None = None, day: date | None = None) -> dict:
                   "public_since": (sn.get("publishedAt") or r.get("scheduled_publish_at")
                                    or r.get("published_at") or "")[:10] or None,
                   "duration_s": iso_duration_s(cd.get("duration")),
-                  "packaging_pass_at": packaging_pass_at(slug, vid)})
+                  # Never forgets: the latest packaging stamp ever seen.
+                  "packaging_pass_at": max([x for x in (v.get("packaging_pass_at"),
+                                                        packaging_pass_at(slug, vid)) if x],
+                                           default=None)})
         v["hooked"] = v["variant_of"] == HOOKED
         v.setdefault("thumbnail_test", {"active": False, "started": None,
                                         "variants": []})
