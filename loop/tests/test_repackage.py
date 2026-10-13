@@ -65,6 +65,8 @@ ledger.LEDGER = TMP / "ledger.json"
 LT.STATE = TMP / "titles.json"
 quota.STATE = TMP / "quota.json"
 TC.VARIANTS_DIR = str(TMP / "variants")
+import describe                                               # noqa: E402
+describe.STATE = TMP / "descriptions.json"    # never the real search blocks
 # A REAL contract set (three variants + contract.json, verify() holds): the
 # lane ships variant A only from a set whose contract holds.
 TC.build_variants(SLUG, out_root=str(TMP / "variants"), title=GOOD)
