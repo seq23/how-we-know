@@ -1319,9 +1319,10 @@ food in motion - real MOVEMENT and the impossible-scale feel (round 1 was 11/13 
   user-uploaded "opensource_movies" PD marks are not trusted - they include film trailers) -> NASA.
   Licence and terms wording stored in `channel/imagery/licences/`.
 - **Caught on the way, by the gates:** two Pixabay chocolate pours were generated video
-  (`isAiGenerated` / type "animation") - Pixabay now keeps only `type: film`; Mixkit 22920 is
-  under the Stock Video RESTRICTED licence - the item-page gate refused it. Pixabay's chocolate
-  stock is thin (4 usable filmed clips); Mixkit supplies most.
+  (`isAiGenerated` / type "animation") - Pixabay now keeps only `type: film`; a third (a splash)
+  is tagged "3d" by its uploader and is refused on its own words; Mixkit 22920 is under the
+  Stock Video RESTRICTED licence - the item-page gate refused it. Pixabay's chocolate stock is
+  thin (3 filmed clips kept, 1 on screen); Mixkit supplies 9 of the 11 clips on screen.
 - **Fallback proof:** with the Pixabay key made unavailable by env (her file untouched), the
   chocolate shot list resolves 12 real clips from the fallbacks; with the fallbacks off too, 0
   (V53, `loop/tests/test_food_footage_chain.py`).

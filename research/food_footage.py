@@ -520,11 +520,18 @@ SHOTS: list[dict] = [
      # the VOA report's cacao footage (pods on the tree, beans drying, hands in
      # the beans); the interviews, the fertiliser shed and the captions are not used
      "ranges": {"commons:File:Production de cacao ivorienne VOA 01000000-0aff-0242-01e6-08db257d93df 720p.webm":
-                [[17.5, 23.5], [43.0, 59.5], [84.0, 89.5], [196.5, 207.5], [0.5, 11.5]]}, "basis": "Cacao farming: pods and beans, where cocoa butter comes from."},
+                [[19.8, 22.5], [85.6, 88.0], [82.4, 85.3], [44.0, 49.3], [53.5, 57.7],
+                 [202.5, 207.5], [39.6, 43.6], [0.3, 9.6]]},
+     # scene cuts measured with ffmpeg scdet; the crop keeps VOA's corner logo out of frame
+     # (the credit line names Voice of America on screen instead)
+     "crop": {"commons:File:Production de cacao ivorienne VOA 01000000-0aff-0242-01e6-08db257d93df 720p.webm":
+              [0.12, 0.0, 0.88, 0.86]},
+     "basis": "Cacao farming: pods and beans, where cocoa butter comes from."},
 ]
 # Looked at and refused, with the reason (source:id -> why).
 REFUSED: dict[str, str] = {
     "pixabay:307248": "Pixabay marks it AI-generated (type animation)",
+    "pixabay:98283": "its uploader tags it '3d': it may be a render, and only filmed footage is allowed",
     "pixabay:326912": "Pixabay type 'animation': generated, not filmed",
     "mixkit:22920": "its item page puts it under the Stock Video RESTRICTED License (gate caught it)",
     "pixabay:55580": "a CG render of chocolate gears, not footage",
@@ -553,7 +560,6 @@ PREFER: dict[str, list[str]] = {
     "pour-dark": ["mixkit:41109"],
     "sheets": ["mixkit:41126"],
     "fountain-flow": ["mixkit:41112"],
-    "splash": ["pixabay:98283"],
     "stream": ["mixkit:41109"],
     "drip-strawberry": ["pixabay:71743", "mixkit:41125"],
     "coat": ["mixkit:41115", "mixkit:41125"],
@@ -587,10 +593,16 @@ def _text(c: dict) -> str:
     return f"{c.get('title') or ''} {c.get('item_url') or ''}".lower()
 
 
-def matches(c: dict, shot: dict) -> bool:
+def banned(c: dict) -> bool:
+    """Generated, drawn or branded by its own words - refused even when hand-picked."""
     t = _text(c)
-    if any(re.search(rf"(^|[^a-z]){re.escape(w)}([^a-z]|$)", t) for w in BANNED_WORDS):
+    return any(re.search(rf"(^|[^a-z]){re.escape(w)}([^a-z]|$)", t) for w in BANNED_WORDS)
+
+
+def matches(c: dict, shot: dict) -> bool:
+    if banned(c):
         return False
+    t = _text(c)
     return all(any(w in t for w in grp) for grp in shot["must"])
 
 
@@ -605,11 +617,11 @@ def _pool(a: Adapter, offline: bool, snap: dict, cache: dict) -> dict:
 
 
 def resolve(shots: list[dict] | None = None, offline: bool = False,
-            snapshot: dict | None = None) -> dict:
+            recorded: dict | None = None) -> dict:
     """One clip per need, falling through the chain. offline: read the recorded
     candidates instead of searching (the CI form of the same proof)."""
     shots = shots or SHOTS
-    snap = snapshot if snapshot is not None else (
+    snap = recorded if recorded is not None else (
         json.loads(CANDIDATES.read_text()) if offline and CANDIDATES.exists() else {})
     used: set[str] = set()
     picks, misses, tried = [], [], {}
@@ -637,7 +649,7 @@ def resolve(shots: list[dict] | None = None, offline: bool = False,
             for c in cands:
                 uid = f"{a.name}:{c['id']}"
                 c = {**c, "source": a.name}
-                if uid in used or uid in REFUSED:
+                if uid in used or uid in REFUSED or banned(c):
                     continue
                 if uid not in pref and not strict(c, shot):
                     continue

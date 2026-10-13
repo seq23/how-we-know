@@ -22,7 +22,7 @@ impossible-scale feel from real footage (walls, kaleidoscopes), cuts every
   5. V53 passes on the real repo.
 
 NEGATIVE PROOFS (run 2026-10-13, then restored):
-  * FOOD_GRADE mix 0.30 -> 0.0 in visuals/food.py -> case 1 fails ("grade not applied");
+  * FOOD_GRADE mix 0.34 -> 0.0 in visuals/food.py -> case 1 fails ("grade not applied");
   * PRESET body_hold_s (6, 12) -> (13, 20) -> cases 1 and 3 fail;
   * REAL_VIDEO_SHARE_MIN 0.60 -> 0.99 -> case 1 fails ("real video is ...% of screen time").
 """

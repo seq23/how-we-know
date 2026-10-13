@@ -85,7 +85,7 @@ FOOD_GRADE = {
     "shadow": (8, 22, 40),
     "highlight": (255, 222, 168),
     "contrast": 1.18,
-    "mix": 0.30,
+    "mix": 0.34,
     "saturation": 1.30,
 }
 
@@ -216,7 +216,7 @@ DIAGRAM_STILLS = ["chocolate-break-macro", "gloss-macro"]
 # Thumbnail subjects per slug, best first (visuals/thumb_contract.candidates).
 THUMB_SUBJECTS = {
     "why-bread-rises-steak-browns-chocolate-snaps":
-        ["thumb-three-foods", "thumb-three-foods-b"],
+        ["thumb-three-foods-e", "thumb-three-foods-d", "thumb-three-foods"],
     "why-does-chocolate-melt-in-your-mouth-not-your-hand":
         ["thumb-chocolate-halves", "chocolate-snap", "chocolate-break-macro"],
     "why-does-bread-rise": ["dough-field", "bread-loaf", "loaf-crumb-macro"],
@@ -225,9 +225,11 @@ THUMB_SUBJECTS = {
 # Treatment per clip use: liquids in slow motion, solids pushed in, the rest as shot.
 SLOW_USES = {"pour", "drip", "liquid", "sheets", "coat"}
 PUSH_USES = {"solid", "bar", "crystal", "gloss", "cacao"}
-# The impossible-scale composites: which uses make a good wall / kaleidoscope.
-WALL_USES = {"drip", "pour", "scale", "solid"}
-KALEIDO_USES = {"sheets", "liquid", "scale"}
+# The impossible-scale composites, by clip, best first (looked at on contact
+# sheets 2026-10-13): a wall wants a subject with clear edges on a dark ground,
+# a kaleidoscope wants flowing liquid with no recognisable object in it.
+WALL_CLIPS = ["drip-strawberry", "field", "chunks", "pile"]
+KALEIDO_CLIPS = ["fountain-flow", "drip-macro", "sheets"]
 
 
 def clips_of(cat: dict) -> list[str]:
@@ -251,6 +253,8 @@ def treatment_for(rec: dict, phase: str) -> str:
     uses = set(rec.get("uses") or [])
     if phase == "opening":
         return "play"                           # the hook cuts fast; real speed reads best
+    if rec.get("ranges"):
+        return "slowmo"                         # short usable spans of a longer report: stretch, not loop
     if uses & SLOW_USES:
         return "slowmo"
     if uses & PUSH_USES:
@@ -343,14 +347,14 @@ def _place_composites(shots: list[dict], cat: dict, lo: int, hi: int) -> None:
     if body and want > 0:
         step = len(body) / want
         chosen += [body[min(len(body) - 1, int(step * (k + 0.5)))] for k in range(want)]
-    kinds = ["wall", "kaleido"]
+    taken: set[str] = set()
     for n, s in enumerate(chosen):
-        kind = kinds[n % 2] if s["phase"] == "body" else "wall"
-        fit = WALL_USES if kind == "wall" else KALEIDO_USES
-        if not (set(cat[s["asset"]].get("uses") or []) & fit):
-            alt = next((k for k in clips_of(cat) if set(cat[k].get("uses") or []) & fit), None)
-            if alt:
-                s["asset"] = alt
+        kind = "wall" if s["phase"] == "opening" or n % 2 else "kaleido"
+        pref = [k for k in (WALL_CLIPS if kind == "wall" else KALEIDO_CLIPS)
+                if k in cat and k not in taken]
+        if pref:
+            s["asset"] = pref[0]
+        taken.add(s["asset"])
         s["treatment"] = kind
         s["composite"] = True
 
@@ -626,7 +630,9 @@ def render(script: Path, voice_dir: Path, out: Path, beat_idx: list[int] | None,
             continue
         rec = cat[s["asset"]]
         n = ends[k] - starts[k] + lead[k]
-        key = hashlib.sha256(json.dumps([rec["sha256"], s["treatment"], n, k, s.get("offset")])
+        key = hashlib.sha256(json.dumps([rec["sha256"], s["treatment"], n, k, s.get("offset"),
+                                         FM.VIGNETTE, rec.get("crop"), rec.get("ranges"),
+                                         FM.SLOWMO, FM.PUSH_IN])
                              .encode()).hexdigest()[:12]
         seg = segdir / f"{k:03d}-{s['treatment']}-{key}.mp4"
         if not seg.exists():

@@ -1,22 +1,27 @@
 {
  "script": "scripts/food/why-does-chocolate-melt-in-your-mouth-not-your-hand.md",
  "preset": {
-  "id": "food-v1",
+  "id": "food-v2",
   "opening_cut_s": [
    3.0,
    5.0
   ],
-  "calm_hold_s": [
-   8.0,
-   15.0
+  "body_hold_s": [
+   6.0,
+   12.0
   ],
   "still_zoom": [
    1.0,
    1.08
   ],
   "parallax_px": 28,
-  "crossfade_s": 1.0,
-  "devices_per_part_max": 1
+  "crossfade_s": 0.6,
+  "devices_per_part_max": 1,
+  "composites": [
+   3,
+   5
+  ],
+  "real_video_share_min": 0.6
  },
  "grade": {
   "id": "food-v1/hwk-split-navy-amber-v1",
@@ -32,154 +37,268 @@
    168
   ],
   "contrast": 1.18,
-  "mix": 0.3,
+  "mix": 0.34,
   "saturation": 1.3
  },
- "duration_s": 156.06,
+ "duration_s": 173.56,
  "shots": [
   {
    "start": 0.0,
    "dur": 4.5035117015518225,
    "kind": "picture",
    "beat": 0,
-   "asset": "tempering-slab",
-   "register": "standard"
+   "phase": "opening",
+   "register": "standard",
+   "asset": "drip-strawberry",
+   "treatment": "wall",
+   "composite": true,
+   "offset": 0.0
   },
   {
    "start": 4.5035117015518225,
    "dur": 3.5900912839589414,
    "kind": "picture",
    "beat": 0,
-   "asset": "cocoa-butter-wall",
-   "register": "standard"
+   "phase": "opening",
+   "register": "standard",
+   "asset": "fountain-flow",
+   "treatment": "play",
+   "offset": 0.0
   },
   {
    "start": 8.093602985510763,
    "dur": 3.0208731878068162,
    "kind": "picture",
    "beat": 0,
-   "asset": "cocoa-beans",
-   "register": "standard"
+   "phase": "opening",
+   "register": "standard",
+   "asset": "pour-dark",
+   "treatment": "play",
+   "offset": 0.0
   },
   {
    "start": 11.11447617331758,
    "dur": 3.0166291988590905,
    "kind": "picture",
    "beat": 0,
-   "asset": "chocolate-snap",
-   "register": "standard"
+   "phase": "opening",
+   "register": "standard",
+   "asset": "sheets",
+   "treatment": "play",
+   "offset": 0.0
   },
   {
    "start": 14.131105372176672,
    "dur": 4.94211411914576,
    "kind": "picture",
    "beat": 0,
-   "asset": "chocolate-break-macro",
-   "register": "standard"
+   "phase": "opening",
+   "register": "standard",
+   "asset": "coat",
+   "treatment": "play",
+   "offset": 0.0
   },
   {
    "start": 19.073219491322433,
    "dur": 5.0,
    "kind": "picture",
    "beat": 0,
-   "asset": "melting-square",
-   "register": "standard"
+   "phase": "opening",
+   "register": "standard",
+   "asset": "drip-strawberry",
+   "treatment": "play",
+   "offset": 2.5
   },
   {
    "start": 24.073219491322433,
    "dur": 4.428069994489383,
    "kind": "picture",
    "beat": 0,
-   "asset": "chocolate-sheets",
-   "register": "standard"
+   "phase": "opening",
+   "register": "standard",
+   "asset": "bite",
+   "treatment": "play",
+   "offset": 0.0
   },
   {
    "start": 28.501289485811817,
    "dur": 4.733710514188189,
    "kind": "picture",
    "beat": 0,
-   "asset": "gloss-macro",
-   "register": "standard"
+   "phase": "opening",
+   "register": "standard",
+   "asset": "chunks",
+   "treatment": "play",
+   "offset": 0.0
   },
   {
    "start": 33.23500000000001,
-   "dur": 5.23,
+   "dur": 4.438,
    "kind": "title",
    "beat": 1,
+   "phase": "body",
    "text": "Why does chocolate melt in your mouth but not in your hand?",
-   "asset": "chocolate-ocean"
+   "asset": "sheets",
+   "treatment": "slowmo",
+   "offset": 2.5
   },
   {
-   "start": 38.465,
-   "dur": 9.575327082252521,
+   "start": 37.67300000000001,
+   "dur": 7.054470882710982,
    "kind": "picture",
    "beat": 2,
-   "asset": "cacao-field",
-   "register": "calm"
+   "phase": "body",
+   "register": "standard",
+   "asset": "chunks-macro",
+   "treatment": "pushin",
+   "offset": 0.0
   },
   {
-   "start": 48.040327082252524,
-   "dur": 9.82256772952387,
+   "start": 44.72747088271099,
+   "dur": 7.236621521766546,
    "kind": "picture",
    "beat": 2,
-   "asset": "cocoa-pod",
-   "register": "calm"
+   "phase": "body",
+   "register": "standard",
+   "asset": "field",
+   "treatment": "wall",
+   "composite": true,
+   "offset": 0.0
   },
   {
-   "start": 57.86289481177639,
-   "dur": 13.280105188223606,
+   "start": 51.96409240447753,
+   "dur": 9.783907595522473,
    "kind": "picture",
    "beat": 2,
-   "asset": "chocolate-river",
-   "register": "calm"
+   "phase": "body",
+   "register": "standard",
+   "asset": "field",
+   "treatment": "pushin",
+   "offset": 2.5
   },
   {
-   "start": 71.143,
-   "dur": 30.439,
-   "kind": "device",
+   "start": 61.748000000000005,
+   "dur": 7.408968293684953,
+   "kind": "picture",
    "beat": 3,
+   "phase": "body",
+   "register": "standard",
+   "asset": "cacao",
+   "treatment": "slowmo",
+   "offset": 0.0
+  },
+  {
+   "start": 69.15696829368495,
+   "dur": 8.303271105322162,
+   "kind": "picture",
+   "beat": 3,
+   "phase": "body",
+   "register": "standard",
+   "asset": "fountain-flow",
+   "treatment": "kaleido",
+   "composite": true,
+   "offset": 2.5
+  },
+  {
+   "start": 77.46023939900712,
+   "dur": 11.642760600992885,
+   "kind": "picture",
+   "beat": 3,
+   "phase": "body",
+   "register": "standard",
+   "asset": "cacao",
+   "treatment": "slowmo",
+   "offset": 2.5
+  },
+  {
+   "start": 89.10300000000001,
+   "dur": 10.721512122368862,
+   "kind": "picture",
+   "beat": 4,
+   "phase": "body",
+   "register": "standard",
+   "asset": "chunks",
+   "treatment": "pushin",
+   "offset": 2.5
+  },
+  {
+   "start": 99.82451212236887,
+   "dur": 8.527487877631136,
+   "kind": "picture",
+   "beat": 4,
+   "phase": "body",
+   "register": "standard",
+   "asset": "chunks-macro",
+   "treatment": "pushin",
+   "offset": 2.5
+  },
+  {
+   "start": 108.352,
+   "dur": 23.889,
+   "kind": "device",
+   "beat": 5,
+   "phase": "body",
    "asset": "chocolate-break-macro",
-   "label": "form five crystals"
+   "treatment": "still",
+   "label": "form five crystals",
+   "offset": 0.0
   },
   {
-   "start": 101.582,
-   "dur": 13.034430820189291,
+   "start": 132.241,
+   "dur": 9.679186100191291,
    "kind": "picture",
-   "beat": 4,
-   "asset": "chocolate-ocean",
-   "register": "calm"
+   "beat": 6,
+   "phase": "body",
+   "register": "standard",
+   "asset": "chunks",
+   "treatment": "wall",
+   "composite": true,
+   "offset": 5.0
   },
   {
-   "start": 114.61643082018928,
-   "dur": 10.3670965011629,
+   "start": 141.9201861001913,
+   "dur": 8.572677444132523,
    "kind": "picture",
-   "beat": 4,
-   "asset": "cocoa-butter-wall",
-   "register": "calm"
+   "beat": 6,
+   "phase": "body",
+   "register": "standard",
+   "asset": "fountain-flow",
+   "treatment": "slowmo",
+   "offset": 5.0
   },
   {
-   "start": 124.98352732135218,
-   "dur": 13.239472678647807,
+   "start": 150.49286354432382,
+   "dur": 8.719136455676184,
    "kind": "picture",
-   "beat": 4,
-   "asset": "cocoa-beans",
-   "register": "calm"
+   "beat": 6,
+   "phase": "body",
+   "register": "standard",
+   "asset": "pour-dark",
+   "treatment": "slowmo",
+   "offset": 2.5
   },
   {
-   "start": 138.22299999999998,
-   "dur": 8.913359370279924,
+   "start": 159.21200000000002,
+   "dur": 6.667218408675333,
    "kind": "picture",
-   "beat": 5,
-   "asset": "melting-square",
-   "register": "calm"
+   "beat": 7,
+   "phase": "body",
+   "register": "standard",
+   "asset": "drip-macro",
+   "treatment": "kaleido",
+   "composite": true,
+   "offset": 0.0
   },
   {
-   "start": 147.1363593702799,
-   "dur": 8.926640629720076,
+   "start": 165.87921840867534,
+   "dur": 7.6797815913246685,
    "kind": "picture",
-   "beat": 5,
-   "asset": "chocolate-sheets",
-   "register": "calm"
+   "beat": 7,
+   "phase": "body",
+   "register": "standard",
+   "asset": "coat",
+   "treatment": "slowmo",
+   "offset": 2.5
   }
  ],
  "captions": {
@@ -187,35 +306,390 @@
   "sidecar": "food-sample-chocolate.srt"
  },
  "ai_assets": [
-  "cacao-field",
-  "chocolate-break-macro",
-  "chocolate-ocean",
-  "chocolate-river",
-  "chocolate-sheets",
-  "chocolate-snap",
-  "cocoa-butter-wall",
-  "gloss-macro",
-  "melting-square",
-  "tempering-slab"
+  "chocolate-break-macro"
  ],
  "real_assets": [
-  "cocoa-beans",
-  "cocoa-pod"
+  "bite",
+  "cacao",
+  "chunks",
+  "chunks-macro",
+  "coat",
+  "drip-macro",
+  "drip-strawberry",
+  "field",
+  "fountain-flow",
+  "pour-dark",
+  "sheets"
  ],
  "credits": {
-  "cocoa-beans": "COCOA BEANS \u2014 PHOTOGRAPH, TEINESAVAII (PUBLIC DOMAIN)",
-  "cocoa-pod": "CACAO POD \u2014 PHOTOGRAPH, KEITH WELLER, USDA ARS (PUBLIC DOMAIN)"
+  "bite": "CHOCOLATE - FOOTAGE, MIXKIT (MIXKIT STOCK VIDEO FREE LICENSE)",
+  "cacao": "CACAO - FOOTAGE, VOA, YASSIN CIYOW (PUBLIC DOMAIN)",
+  "chunks": "CHOCOLATE - FOOTAGE, MIXKIT (MIXKIT STOCK VIDEO FREE LICENSE)",
+  "chunks-macro": "CHOCOLATE - FOOTAGE, MIXKIT (MIXKIT STOCK VIDEO FREE LICENSE)",
+  "coat": "LIQUID CHOCOLATE - FOOTAGE, MIXKIT (MIXKIT STOCK VIDEO FREE LICENSE)",
+  "drip-macro": "LIQUID CHOCOLATE - FOOTAGE, MIXKIT (MIXKIT STOCK VIDEO FREE LICENSE)",
+  "drip-strawberry": "LIQUID CHOCOLATE - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)",
+  "field": "CHOCOLATE - FOOTAGE, MIXKIT (MIXKIT STOCK VIDEO FREE LICENSE)",
+  "fountain-flow": "MELTED CHOCOLATE - FOOTAGE, MIXKIT (MIXKIT STOCK VIDEO FREE LICENSE)",
+  "pour-dark": "MELTED CHOCOLATE - FOOTAGE, MIXKIT (MIXKIT STOCK VIDEO FREE LICENSE)",
+  "sheets": "MELTED CHOCOLATE - FOOTAGE, MIXKIT (MIXKIT STOCK VIDEO FREE LICENSE)"
+ },
+ "clip_licences": {
+  "bite": {
+   "source": "mixkit",
+   "source_id": "10373",
+   "item_url": "https://mixkit.co/free-stock-video/woman-biting-a-chocolate-on-a-yellow-background-10373/",
+   "licence": "Mixkit Stock Video Free License",
+   "licence_url": "https://mixkit.co/license/#videoFree",
+   "licence_text": "licences/mixkit-stock-video-free-license.txt",
+   "fetched_at": "2026-10-13T15:20:57+00:00",
+   "sha256": "8519c94cbeed1db121126dcb31199b7c3d7cbbad471b285788b9af7a82bf29b3",
+   "credit_line": "CHOCOLATE - FOOTAGE, MIXKIT (MIXKIT STOCK VIDEO FREE LICENSE)"
+  },
+  "cacao": {
+   "source": "commons",
+   "source_id": "File:Production de cacao ivorienne VOA 01000000-0aff-0242-01e6-08db257d93df 720p.webm",
+   "item_url": "https://commons.wikimedia.org/wiki/File:Production_de_cacao_ivorienne_VOA_01000000-0aff-0242-01e6-08db257d93df_720p.webm",
+   "licence": "Public domain",
+   "licence_url": "https://commons.wikimedia.org/wiki/Commons:Licensing",
+   "licence_text": null,
+   "fetched_at": "2026-10-13T15:21:02+00:00",
+   "sha256": "9859106c631f8656dd8908e0a85cbf06dd68d46b804158755bba4b1aec4e926d",
+   "credit_line": "CACAO - FOOTAGE, VOA, YASSIN CIYOW (PUBLIC DOMAIN)"
+  },
+  "chunks": {
+   "source": "mixkit",
+   "source_id": "41117",
+   "item_url": "https://mixkit.co/free-stock-video/pile-of-pieces-of-chocolate-bars-falling-down-41117/",
+   "licence": "Mixkit Stock Video Free License",
+   "licence_url": "https://mixkit.co/license/#videoFree",
+   "licence_text": "licences/mixkit-stock-video-free-license.txt",
+   "fetched_at": "2026-10-13T15:20:49+00:00",
+   "sha256": "6f051b408c9edaf04691ed0d890f0f33fbf7131fe33d4e895e836c9ac1f49685",
+   "credit_line": "CHOCOLATE - FOOTAGE, MIXKIT (MIXKIT STOCK VIDEO FREE LICENSE)"
+  },
+  "chunks-macro": {
+   "source": "mixkit",
+   "source_id": "41121",
+   "item_url": "https://mixkit.co/free-stock-video/chocolate-bar-chunks-texture-41121/",
+   "licence": "Mixkit Stock Video Free License",
+   "licence_url": "https://mixkit.co/license/#videoFree",
+   "licence_text": "licences/mixkit-stock-video-free-license.txt",
+   "fetched_at": "2026-10-13T15:20:53+00:00",
+   "sha256": "db0a15a5208f758c32065a3da2d1fe2fb70232607bdba965dfa58689f309d525",
+   "credit_line": "CHOCOLATE - FOOTAGE, MIXKIT (MIXKIT STOCK VIDEO FREE LICENSE)"
+  },
+  "coat": {
+   "source": "mixkit",
+   "source_id": "41115",
+   "item_url": "https://mixkit.co/free-stock-video/cover-a-strawberry-with-chocolate-syrup-on-a-red-background-41115/",
+   "licence": "Mixkit Stock Video Free License",
+   "licence_url": "https://mixkit.co/license/#videoFree",
+   "licence_text": "licences/mixkit-stock-video-free-license.txt",
+   "fetched_at": "2026-10-13T15:20:42+00:00",
+   "sha256": "2697506d094db1adaaedf85f0beb0958502f522805a653a3965b81490f54756b",
+   "credit_line": "LIQUID CHOCOLATE - FOOTAGE, MIXKIT (MIXKIT STOCK VIDEO FREE LICENSE)"
+  },
+  "drip-macro": {
+   "source": "mixkit",
+   "source_id": "41108",
+   "item_url": "https://mixkit.co/free-stock-video/texture-of-strawberries-covered-with-chocolate-syrup-41108/",
+   "licence": "Mixkit Stock Video Free License",
+   "licence_url": "https://mixkit.co/license/#videoFree",
+   "licence_text": "licences/mixkit-stock-video-free-license.txt",
+   "fetched_at": "2026-10-13T15:20:45+00:00",
+   "sha256": "ed0b8077f77fe29b8ff04db232d51a765d8561c29a6fc1713a25291702ecb5b4",
+   "credit_line": "LIQUID CHOCOLATE - FOOTAGE, MIXKIT (MIXKIT STOCK VIDEO FREE LICENSE)"
+  },
+  "drip-strawberry": {
+   "source": "pixabay",
+   "source_id": "71743",
+   "item_url": "https://pixabay.com/videos/id-71743/",
+   "licence": "Pixabay Content License",
+   "licence_url": "https://pixabay.com/service/license-summary/",
+   "licence_text": "licences/pixabay-content-license-summary.txt",
+   "fetched_at": "2026-10-13T15:31:10+00:00",
+   "sha256": "a70616f9af44058dfa07a2d27d32d65613ddb611b81a730f459475bad99df84c",
+   "credit_line": "LIQUID CHOCOLATE - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)"
+  },
+  "field": {
+   "source": "mixkit",
+   "source_id": "40797",
+   "item_url": "https://mixkit.co/free-stock-video/many-chocolate-beans-slowly-rotating-40797/",
+   "licence": "Mixkit Stock Video Free License",
+   "licence_url": "https://mixkit.co/license/#videoFree",
+   "licence_text": "licences/mixkit-stock-video-free-license.txt",
+   "fetched_at": "2026-10-13T15:22:37+00:00",
+   "sha256": "6ee6f628b28257a283937c67bc36df1167e433db846b44e2b567f08717fecbab",
+   "credit_line": "CHOCOLATE - FOOTAGE, MIXKIT (MIXKIT STOCK VIDEO FREE LICENSE)"
+  },
+  "fountain-flow": {
+   "source": "mixkit",
+   "source_id": "41112",
+   "item_url": "https://mixkit.co/free-stock-video/liquid-chocolate-flowing-into-a-chocolate-fountain-41112/",
+   "licence": "Mixkit Stock Video Free License",
+   "licence_url": "https://mixkit.co/license/#videoFree",
+   "licence_text": "licences/mixkit-stock-video-free-license.txt",
+   "fetched_at": "2026-10-13T15:20:37+00:00",
+   "sha256": "b602e9da06c1b8d541f6d4bf526ef8f780ccec7ae5b9bf7b32103e4948ed53de",
+   "credit_line": "MELTED CHOCOLATE - FOOTAGE, MIXKIT (MIXKIT STOCK VIDEO FREE LICENSE)"
+  },
+  "pour-dark": {
+   "source": "mixkit",
+   "source_id": "41109",
+   "item_url": "https://mixkit.co/free-stock-video/pouring-chocolate-syrup-onto-a-white-plate-41109/",
+   "licence": "Mixkit Stock Video Free License",
+   "licence_url": "https://mixkit.co/license/#videoFree",
+   "licence_text": "licences/mixkit-stock-video-free-license.txt",
+   "fetched_at": "2026-10-13T15:22:34+00:00",
+   "sha256": "0b6bdfa174bbc91a5cdec6394f6a6f22039031ae63e862d9f1b94ac61b383084",
+   "credit_line": "MELTED CHOCOLATE - FOOTAGE, MIXKIT (MIXKIT STOCK VIDEO FREE LICENSE)"
+  },
+  "sheets": {
+   "source": "mixkit",
+   "source_id": "41126",
+   "item_url": "https://mixkit.co/free-stock-video/texture-of-a-liquid-chocolate-fountain-41126/",
+   "licence": "Mixkit Stock Video Free License",
+   "licence_url": "https://mixkit.co/license/#videoFree",
+   "licence_text": "licences/mixkit-stock-video-free-license.txt",
+   "fetched_at": "2026-10-13T15:20:33+00:00",
+   "sha256": "5a41ce64e301834598d4b1e9f9c3490f928f0c12895a4a2fc126494ca454571a",
+   "credit_line": "MELTED CHOCOLATE - FOOTAGE, MIXKIT (MIXKIT STOCK VIDEO FREE LICENSE)"
+  }
+ },
+ "composites": [
+  {
+   "shot": 0,
+   "asset": "drip-strawberry",
+   "treatment": "wall",
+   "start": 0.0,
+   "dur": 4.5
+  },
+  {
+   "shot": 10,
+   "asset": "field",
+   "treatment": "wall",
+   "start": 44.73,
+   "dur": 7.24
+  },
+  {
+   "shot": 13,
+   "asset": "fountain-flow",
+   "treatment": "kaleido",
+   "start": 69.16,
+   "dur": 8.3
+  },
+  {
+   "shot": 18,
+   "asset": "chunks",
+   "treatment": "wall",
+   "start": 132.24,
+   "dur": 9.68
+  },
+  {
+   "shot": 21,
+   "asset": "drip-macro",
+   "treatment": "kaleido",
+   "start": 159.21,
+   "dur": 6.67
+  }
+ ],
+ "screen_time": {
+  "real_video_s": 149.67,
+  "still_s": 23.89,
+  "real_video_share": 0.8624
  },
  "altered_content": true,
  "ai_video_clips": 0,
- "ai_video_note": "no open video model runs on this Mac; AI shots are stills with motion",
+ "ai_video_note": "no open video model runs on this Mac; the only AI pictures are the diagram stills under the cross-section device",
+ "voice": {
+  "register": [
+   "standard"
+  ],
+  "beats": [
+   {
+    "index": 0,
+    "register": "standard",
+    "pitch_factor": 1.0,
+    "words": 97,
+    "start_s": 0.0,
+    "total_s": 33.235,
+    "spoken_s": 32.205,
+    "wpm": 180.7,
+    "median_f0_hz": 198.3,
+    "pauses": [
+     0.34,
+     0.59,
+     0.69,
+     0.65,
+     0.34,
+     0.7,
+     0.3,
+     0.38,
+     0.38,
+     0.34,
+     0.26,
+     0.35,
+     0.26,
+     0.44
+    ]
+   },
+   {
+    "index": 1,
+    "register": "standard",
+    "pitch_factor": 1.0,
+    "words": 12,
+    "start_s": 33.24,
+    "total_s": 4.438,
+    "spoken_s": 3.888,
+    "wpm": 185.2,
+    "median_f0_hz": 207.8,
+    "pauses": [
+     0.35
+    ]
+   },
+   {
+    "index": 2,
+    "register": "standard",
+    "pitch_factor": 1.0,
+    "words": 74,
+    "start_s": 37.67,
+    "total_s": 24.075,
+    "spoken_s": 23.205,
+    "wpm": 191.3,
+    "median_f0_hz": 201.7,
+    "pauses": [
+     0.49,
+     0.29,
+     0.29,
+     0.37,
+     0.69,
+     0.26,
+     0.38,
+     0.32,
+     0.49
+    ]
+   },
+   {
+    "index": 3,
+    "register": "standard",
+    "pitch_factor": 1.0,
+    "words": 67,
+    "start_s": 61.75,
+    "total_s": 27.355,
+    "spoken_s": 26.645,
+    "wpm": 150.9,
+    "median_f0_hz": 196.7,
+    "pauses": [
+     0.4,
+     0.33,
+     0.31,
+     0.54,
+     0.32,
+     0.3,
+     0.26,
+     0.48,
+     0.51,
+     0.69
+    ]
+   },
+   {
+    "index": 4,
+    "register": "standard",
+    "pitch_factor": 1.0,
+    "words": 53,
+    "start_s": 89.1,
+    "total_s": 19.249,
+    "spoken_s": 18.539,
+    "wpm": 171.5,
+    "median_f0_hz": 196.7,
+    "pauses": [
+     0.42,
+     0.26,
+     0.44,
+     0.4,
+     0.47
+    ]
+   },
+   {
+    "index": 5,
+    "register": "standard",
+    "pitch_factor": 1.0,
+    "words": 63,
+    "start_s": 108.35,
+    "total_s": 23.889,
+    "spoken_s": 23.179,
+    "wpm": 163.1,
+    "median_f0_hz": 198.3,
+    "pauses": [
+     0.52,
+     0.62,
+     0.3,
+     0.57,
+     0.32,
+     0.78,
+     0.48,
+     0.41,
+     0.67,
+     0.27
+    ]
+   },
+   {
+    "index": 6,
+    "register": "standard",
+    "pitch_factor": 1.0,
+    "words": 68,
+    "start_s": 132.24,
+    "total_s": 26.971,
+    "spoken_s": 26.261,
+    "wpm": 155.4,
+    "median_f0_hz": 202.5,
+    "pauses": [
+     0.39,
+     0.49,
+     0.63,
+     0.36,
+     0.28,
+     0.57,
+     0.49,
+     0.47
+    ]
+   },
+   {
+    "index": 7,
+    "register": "standard",
+    "pitch_factor": 1.0,
+    "words": 34,
+    "start_s": 159.21,
+    "total_s": 14.347,
+    "spoken_s": 13.797,
+    "wpm": 147.9,
+    "median_f0_hz": 193.5,
+    "pauses": [
+     0.58,
+     0.71,
+     0.79,
+     0.27,
+     0.75
+    ]
+   }
+  ],
+  "total_s": 173.56,
+  "pace_wpm_by_third": [
+   177.4,
+   157.0,
+   151.0
+  ],
+  "median_f0_hz": 198.3,
+  "words": 468
+ },
  "sound": {
-  "bed_db_in_speech": -55.89,
-  "bed_db_in_gaps": -43.2,
-  "voice_db_in_speech": -25.54,
-  "peak_dbfs": -1.01,
-  "duck_db": 12.69,
-  "voice_over_bed_db": 30.35,
+  "bed_db_in_speech": -55.45,
+  "bed_db_in_gaps": -48.56,
+  "voice_db_in_speech": -25.25,
+  "peak_dbfs": -1.31,
+  "duck_db": 6.89,
+  "voice_over_bed_db": 30.2,
   "contract_problems": []
  },
  "proofs": [
@@ -223,12 +697,13 @@
    "frame": 0,
    "shot": 0,
    "kind": "picture",
+   "treatment": "wall",
    "masked": [
     [
-     1675,
+     1202,
      20,
      1895,
-     42
+     46
     ],
     [
      457,
@@ -242,12 +717,13 @@
    "frame": 90,
    "shot": 0,
    "kind": "picture",
+   "treatment": "wall",
    "masked": [
     [
-     1675,
+     1202,
      20,
      1895,
-     42
+     46
     ],
     [
      84,
@@ -267,12 +743,13 @@
    "frame": 180,
    "shot": 1,
    "kind": "picture",
+   "treatment": "play",
    "masked": [
     [
-     1675,
+     1136,
      20,
      1895,
-     42
+     46
     ],
     [
      84,
@@ -292,9 +769,10 @@
    "frame": 270,
    "shot": 2,
    "kind": "picture",
+   "treatment": "play",
    "masked": [
     [
-     1278,
+     1136,
      20,
      1895,
      46
@@ -311,12 +789,13 @@
    "frame": 360,
    "shot": 3,
    "kind": "picture",
+   "treatment": "play",
    "masked": [
     [
-     1675,
+     1136,
      20,
      1895,
-     42
+     46
     ],
     [
      482,
@@ -330,12 +809,13 @@
    "frame": 450,
    "shot": 4,
    "kind": "picture",
+   "treatment": "play",
    "masked": [
     [
-     1675,
+     1145,
      20,
      1895,
-     42
+     46
     ],
     [
      446,
@@ -349,12 +829,13 @@
    "frame": 540,
    "shot": 4,
    "kind": "picture",
+   "treatment": "play",
    "masked": [
     [
-     1675,
+     1145,
      20,
      1895,
-     42
+     46
     ],
     [
      489,
@@ -368,12 +849,13 @@
    "frame": 630,
    "shot": 5,
    "kind": "picture",
+   "treatment": "play",
    "masked": [
     [
-     1675,
+     1202,
      20,
      1895,
-     42
+     46
     ],
     [
      608,
@@ -387,12 +869,13 @@
    "frame": 720,
    "shot": 5,
    "kind": "picture",
+   "treatment": "play",
    "masked": [
     [
-     1675,
+     1202,
      20,
      1895,
-     42
+     46
     ],
     [
      458,
@@ -406,12 +889,13 @@
    "frame": 810,
    "shot": 6,
    "kind": "picture",
+   "treatment": "play",
    "masked": [
     [
-     1675,
+     1218,
      20,
      1895,
-     42
+     46
     ],
     [
      638,
@@ -425,12 +909,13 @@
    "frame": 900,
    "shot": 7,
    "kind": "picture",
+   "treatment": "play",
    "masked": [
     [
-     1675,
+     1218,
      20,
      1895,
-     42
+     46
     ],
     [
      520,
@@ -444,12 +929,13 @@
    "frame": 990,
    "shot": 7,
    "kind": "picture",
+   "treatment": "play",
    "masked": [
     [
-     1675,
+     1218,
      20,
      1895,
-     42
+     46
     ]
    ]
   },
@@ -457,12 +943,13 @@
    "frame": 1080,
    "shot": 8,
    "kind": "title",
+   "treatment": "slowmo",
    "masked": [
     [
-     1675,
+     1136,
      20,
      1895,
-     42
+     46
     ],
     [
      230,
@@ -476,17 +963,18 @@
    "frame": 1170,
    "shot": 9,
    "kind": "picture",
+   "treatment": "pushin",
    "masked": [
     [
-     1675,
+     1218,
      20,
      1895,
-     42
+     46
     ],
     [
-     570,
+     627,
      942,
-     1349,
+     1292,
      1010
     ]
    ]
@@ -495,12 +983,13 @@
    "frame": 1260,
    "shot": 9,
    "kind": "picture",
+   "treatment": "pushin",
    "masked": [
     [
-     1675,
+     1218,
      20,
      1895,
-     42
+     46
     ],
     [
      84,
@@ -509,58 +998,41 @@
      700
     ],
     [
-     548,
+     611,
      942,
-     1371,
+     1308,
      1010
     ]
    ]
   },
   {
    "frame": 1350,
-   "shot": 9,
+   "shot": 10,
    "kind": "picture",
+   "treatment": "wall",
    "masked": [
     [
-     1675,
+     1218,
      20,
      1895,
-     42
+     46
     ],
     [
-     669,
+     560,
      942,
-     1250,
+     1359,
      1010
     ]
    ]
   },
   {
    "frame": 1440,
-   "shot": 9,
-   "kind": "picture",
-   "masked": [
-    [
-     1675,
-     20,
-     1895,
-     42
-    ],
-    [
-     612,
-     942,
-     1307,
-     1010
-    ]
-   ]
-  },
-  {
-   "frame": 1530,
    "shot": 10,
    "kind": "picture",
+   "treatment": "wall",
    "masked": [
     [
-     1177,
+     1218,
      20,
      1895,
      46
@@ -574,12 +1046,13 @@
    ]
   },
   {
-   "frame": 1620,
+   "frame": 1530,
    "shot": 10,
    "kind": "picture",
+   "treatment": "wall",
    "masked": [
     [
-     1177,
+     1218,
      20,
      1895,
      46
@@ -593,12 +1066,13 @@
    ]
   },
   {
-   "frame": 1710,
-   "shot": 10,
+   "frame": 1620,
+   "shot": 11,
    "kind": "picture",
+   "treatment": "pushin",
    "masked": [
     [
-     1177,
+     1218,
      20,
      1895,
      46
@@ -612,53 +1086,16 @@
    ]
   },
   {
-   "frame": 1800,
+   "frame": 1710,
    "shot": 11,
    "kind": "picture",
+   "treatment": "pushin",
    "masked": [
     [
-     1675,
+     1218,
      20,
      1895,
-     42
-    ],
-    [
-     528,
-     942,
-     1391,
-     1010
-    ]
-   ]
-  },
-  {
-   "frame": 1890,
-   "shot": 11,
-   "kind": "picture",
-   "masked": [
-    [
-     1675,
-     20,
-     1895,
-     42
-    ],
-    [
-     473,
-     942,
-     1446,
-     1010
-    ]
-   ]
-  },
-  {
-   "frame": 1980,
-   "shot": 11,
-   "kind": "picture",
-   "masked": [
-    [
-     1675,
-     20,
-     1895,
-     42
+     46
     ],
     [
      611,
@@ -669,15 +1106,16 @@
    ]
   },
   {
-   "frame": 2070,
+   "frame": 1800,
    "shot": 11,
    "kind": "picture",
+   "treatment": "pushin",
    "masked": [
     [
-     1675,
+     1218,
      20,
      1895,
-     42
+     46
     ],
     [
      600,
@@ -688,309 +1126,532 @@
    ]
   },
   {
-   "frame": 2160,
+   "frame": 1890,
    "shot": 12,
-   "kind": "device",
+   "kind": "picture",
+   "treatment": "slowmo",
    "masked": [
     [
-     1675,
+     1324,
      20,
      1895,
-     42
+     46
     ],
     [
-     506,
+     427,
      942,
-     1413,
+     1492,
      1010
+    ]
+   ]
+  },
+  {
+   "frame": 1980,
+   "shot": 12,
+   "kind": "picture",
+   "treatment": "slowmo",
+   "masked": [
+    [
+     1324,
+     20,
+     1895,
+     46
     ],
     [
-     0,
-     0,
-     1920,
-     1080
+     386,
+     942,
+     1533,
+     1010
+    ]
+   ]
+  },
+  {
+   "frame": 2070,
+   "shot": 12,
+   "kind": "picture",
+   "treatment": "slowmo",
+   "masked": [
+    [
+     1324,
+     20,
+     1895,
+     46
+    ],
+    [
+     479,
+     942,
+     1440,
+     1010
+    ]
+   ]
+  },
+  {
+   "frame": 2160,
+   "shot": 13,
+   "kind": "picture",
+   "treatment": "kaleido",
+   "masked": [
+    [
+     1136,
+     20,
+     1895,
+     46
+    ],
+    [
+     468,
+     942,
+     1451,
+     1010
     ]
    ]
   },
   {
    "frame": 2250,
-   "shot": 12,
-   "kind": "device",
+   "shot": 13,
+   "kind": "picture",
+   "treatment": "kaleido",
    "masked": [
     [
-     1675,
+     1136,
      20,
      1895,
-     42
+     46
     ],
     [
-     648,
+     536,
      942,
-     1271,
+     1383,
      1010
-    ],
-    [
-     0,
-     0,
-     1920,
-     1080
     ]
    ]
   },
   {
    "frame": 2340,
-   "shot": 12,
-   "kind": "device",
+   "shot": 14,
+   "kind": "picture",
+   "treatment": "slowmo",
    "masked": [
     [
-     1675,
+     1324,
      20,
      1895,
-     42
+     46
     ],
     [
-     645,
+     494,
      942,
-     1274,
+     1425,
      1010
-    ],
-    [
-     0,
-     0,
-     1920,
-     1080
     ]
    ]
   },
   {
    "frame": 2430,
-   "shot": 12,
-   "kind": "device",
+   "shot": 14,
+   "kind": "picture",
+   "treatment": "slowmo",
    "masked": [
     [
-     1675,
+     1324,
      20,
      1895,
-     42
+     46
     ],
     [
-     692,
+     527,
      942,
-     1227,
+     1392,
      1010
-    ],
-    [
-     0,
-     0,
-     1920,
-     1080
     ]
    ]
   },
   {
    "frame": 2520,
-   "shot": 12,
-   "kind": "device",
+   "shot": 14,
+   "kind": "picture",
+   "treatment": "slowmo",
    "masked": [
     [
-     1675,
+     1324,
      20,
      1895,
-     42
+     46
     ],
     [
-     580,
+     429,
      942,
-     1339,
+     1490,
      1010
-    ],
-    [
-     0,
-     0,
-     1920,
-     1080
     ]
    ]
   },
   {
    "frame": 2610,
-   "shot": 12,
-   "kind": "device",
+   "shot": 14,
+   "kind": "picture",
+   "treatment": "slowmo",
    "masked": [
     [
-     1675,
+     1324,
      20,
      1895,
-     42
+     46
     ],
     [
-     620,
+     615,
      942,
-     1299,
+     1304,
      1010
-    ],
-    [
-     0,
-     0,
-     1920,
-     1080
     ]
    ]
   },
   {
    "frame": 2700,
-   "shot": 12,
-   "kind": "device",
+   "shot": 15,
+   "kind": "picture",
+   "treatment": "pushin",
    "masked": [
     [
-     1675,
+     1218,
      20,
      1895,
-     42
+     46
     ],
     [
-     591,
+     471,
      942,
-     1328,
+     1448,
      1010
-    ],
-    [
-     0,
-     0,
-     1920,
-     1080
     ]
    ]
   },
   {
    "frame": 2790,
-   "shot": 12,
-   "kind": "device",
+   "shot": 15,
+   "kind": "picture",
+   "treatment": "pushin",
    "masked": [
     [
-     1675,
+     1218,
      20,
      1895,
-     42
+     46
     ],
     [
-     679,
+     484,
      942,
-     1240,
+     1435,
      1010
-    ],
-    [
-     0,
-     0,
-     1920,
-     1080
     ]
    ]
   },
   {
    "frame": 2880,
-   "shot": 12,
-   "kind": "device",
+   "shot": 15,
+   "kind": "picture",
+   "treatment": "pushin",
    "masked": [
     [
-     1675,
+     1218,
      20,
      1895,
-     42
+     46
     ],
     [
-     591,
+     510,
      942,
-     1328,
+     1409,
      1010
-    ],
-    [
-     0,
-     0,
-     1920,
-     1080
     ]
    ]
   },
   {
    "frame": 2970,
-   "shot": 12,
-   "kind": "device",
+   "shot": 15,
+   "kind": "picture",
+   "treatment": "pushin",
    "masked": [
     [
-     1675,
+     1218,
      20,
      1895,
-     42
+     46
     ],
     [
-     534,
+     651,
      942,
-     1385,
+     1268,
      1010
-    ],
-    [
-     0,
-     0,
-     1920,
-     1080
     ]
    ]
   },
   {
    "frame": 3060,
-   "shot": 13,
+   "shot": 16,
    "kind": "picture",
+   "treatment": "pushin",
    "masked": [
     [
-     1675,
+     1218,
      20,
      1895,
-     42
+     46
     ],
     [
-     521,
+     624,
      942,
-     1398,
+     1295,
      1010
     ]
    ]
   },
   {
    "frame": 3150,
-   "shot": 13,
+   "shot": 16,
    "kind": "picture",
+   "treatment": "pushin",
    "masked": [
     [
-     1675,
+     1218,
      20,
      1895,
-     42
+     46
     ],
     [
-     84,
-     534,
-     377,
-     700
-    ],
-    [
-     521,
+     443,
      942,
-     1398,
+     1476,
      1010
     ]
    ]
   },
   {
    "frame": 3240,
-   "shot": 13,
+   "shot": 16,
    "kind": "picture",
+   "treatment": "pushin",
+   "masked": [
+    [
+     1218,
+     20,
+     1895,
+     46
+    ]
+   ]
+  },
+  {
+   "frame": 3330,
+   "shot": 17,
+   "kind": "device",
+   "treatment": "still",
    "masked": [
     [
      1675,
      20,
      1895,
      42
+    ],
+    [
+     447,
+     942,
+     1472,
+     1010
+    ],
+    [
+     0,
+     0,
+     1920,
+     1080
+    ]
+   ]
+  },
+  {
+   "frame": 3420,
+   "shot": 17,
+   "kind": "device",
+   "treatment": "still",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     490,
+     942,
+     1429,
+     1010
+    ],
+    [
+     0,
+     0,
+     1920,
+     1080
+    ]
+   ]
+  },
+  {
+   "frame": 3510,
+   "shot": 17,
+   "kind": "device",
+   "treatment": "still",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     452,
+     942,
+     1467,
+     1010
+    ],
+    [
+     0,
+     0,
+     1920,
+     1080
+    ]
+   ]
+  },
+  {
+   "frame": 3600,
+   "shot": 17,
+   "kind": "device",
+   "treatment": "still",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     503,
+     942,
+     1416,
+     1010
+    ],
+    [
+     0,
+     0,
+     1920,
+     1080
+    ]
+   ]
+  },
+  {
+   "frame": 3690,
+   "shot": 17,
+   "kind": "device",
+   "treatment": "still",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     444,
+     942,
+     1475,
+     1010
+    ],
+    [
+     0,
+     0,
+     1920,
+     1080
+    ]
+   ]
+  },
+  {
+   "frame": 3780,
+   "shot": 17,
+   "kind": "device",
+   "treatment": "still",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     513,
+     942,
+     1406,
+     1010
+    ],
+    [
+     0,
+     0,
+     1920,
+     1080
+    ]
+   ]
+  },
+  {
+   "frame": 3870,
+   "shot": 17,
+   "kind": "device",
+   "treatment": "still",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     494,
+     942,
+     1425,
+     1010
+    ],
+    [
+     0,
+     0,
+     1920,
+     1080
+    ]
+   ]
+  },
+  {
+   "frame": 3960,
+   "shot": 17,
+   "kind": "device",
+   "treatment": "still",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     0,
+     0,
+     1920,
+     1080
+    ]
+   ]
+  },
+  {
+   "frame": 4050,
+   "shot": 18,
+   "kind": "picture",
+   "treatment": "wall",
+   "masked": [
+    [
+     1218,
+     20,
+     1895,
+     46
     ],
     [
      84,
@@ -999,93 +1660,110 @@
      700
     ],
     [
-     483,
+     410,
      942,
-     1436,
+     1509,
      1010
     ]
    ]
   },
   {
-   "frame": 3330,
-   "shot": 13,
+   "frame": 4140,
+   "shot": 18,
    "kind": "picture",
+   "treatment": "wall",
    "masked": [
     [
-     1675,
+     1218,
      20,
      1895,
-     42
+     46
     ],
     [
-     418,
-     942,
-     1501,
-     1010
-    ]
-   ]
-  },
-  {
-   "frame": 3420,
-   "shot": 13,
-   "kind": "picture",
-   "masked": [
-    [
-     1675,
-     20,
-     1895,
-     42
-    ]
-   ]
-  },
-  {
-   "frame": 3510,
-   "shot": 14,
-   "kind": "picture",
-   "masked": [
-    [
-     1675,
-     20,
-     1895,
-     42
+     84,
+     534,
+     377,
+     700
     ],
     [
-     280,
+     555,
      942,
-     1639,
+     1364,
      1010
     ]
    ]
   },
   {
-   "frame": 3600,
-   "shot": 14,
+   "frame": 4230,
+   "shot": 18,
    "kind": "picture",
+   "treatment": "wall",
    "masked": [
     [
-     1675,
+     1218,
      20,
      1895,
-     42
+     46
     ],
     [
-     544,
+     403,
      942,
-     1375,
+     1516,
      1010
     ]
    ]
   },
   {
-   "frame": 3690,
-   "shot": 14,
+   "frame": 4320,
+   "shot": 19,
    "kind": "picture",
+   "treatment": "slowmo",
    "masked": [
     [
-     1675,
+     1136,
      20,
      1895,
-     42
+     46
+    ],
+    [
+     290,
+     942,
+     1629,
+     1010
+    ]
+   ]
+  },
+  {
+   "frame": 4410,
+   "shot": 19,
+   "kind": "picture",
+   "treatment": "slowmo",
+   "masked": [
+    [
+     1136,
+     20,
+     1895,
+     46
+    ],
+    [
+     591,
+     942,
+     1328,
+     1010
+    ]
+   ]
+  },
+  {
+   "frame": 4500,
+   "shot": 19,
+   "kind": "picture",
+   "treatment": "slowmo",
+   "masked": [
+    [
+     1136,
+     20,
+     1895,
+     46
     ],
     [
      466,
@@ -1096,245 +1774,168 @@
    ]
   },
   {
-   "frame": 3780,
-   "shot": 15,
-   "kind": "picture",
-   "masked": [
-    [
-     1278,
-     20,
-     1895,
-     46
-    ],
-    [
-     431,
-     942,
-     1488,
-     1010
-    ]
-   ]
-  },
-  {
-   "frame": 3870,
-   "shot": 15,
-   "kind": "picture",
-   "masked": [
-    [
-     1278,
-     20,
-     1895,
-     46
-    ],
-    [
-     431,
-     942,
-     1488,
-     1010
-    ]
-   ]
-  },
-  {
-   "frame": 3960,
-   "shot": 15,
-   "kind": "picture",
-   "masked": [
-    [
-     1278,
-     20,
-     1895,
-     46
-    ],
-    [
-     497,
-     942,
-     1422,
-     1010
-    ]
-   ]
-  },
-  {
-   "frame": 4050,
-   "shot": 15,
-   "kind": "picture",
-   "masked": [
-    [
-     1278,
-     20,
-     1895,
-     46
-    ],
-    [
-     534,
-     942,
-     1385,
-     1010
-    ]
-   ]
-  },
-  {
-   "frame": 4140,
-   "shot": 15,
-   "kind": "picture",
-   "masked": [
-    [
-     1278,
-     20,
-     1895,
-     46
-    ]
-   ]
-  },
-  {
-   "frame": 4230,
-   "shot": 16,
-   "kind": "picture",
-   "masked": [
-    [
-     1675,
-     20,
-     1895,
-     42
-    ],
-    [
-     84,
-     534,
-     357,
-     700
-    ],
-    [
-     588,
-     942,
-     1331,
-     1010
-    ]
-   ]
-  },
-  {
-   "frame": 4320,
-   "shot": 16,
-   "kind": "picture",
-   "masked": [
-    [
-     1675,
-     20,
-     1895,
-     42
-    ],
-    [
-     84,
-     534,
-     357,
-     700
-    ],
-    [
-     622,
-     942,
-     1297,
-     1010
-    ]
-   ]
-  },
-  {
-   "frame": 4410,
-   "shot": 16,
-   "kind": "picture",
-   "masked": [
-    [
-     1675,
-     20,
-     1895,
-     42
-    ],
-    [
-     605,
-     942,
-     1314,
-     1010
-    ]
-   ]
-  },
-  {
-   "frame": 4500,
-   "shot": 17,
-   "kind": "picture",
-   "masked": [
-    [
-     1675,
-     20,
-     1895,
-     42
-    ],
-    [
-     682,
-     942,
-     1237,
-     1010
-    ]
-   ]
-  },
-  {
    "frame": 4590,
-   "shot": 17,
+   "shot": 20,
    "kind": "picture",
+   "treatment": "slowmo",
    "masked": [
     [
-     1675,
+     1136,
      20,
      1895,
-     42
+     46
     ],
     [
-     631,
+     371,
      942,
-     1288,
+     1548,
      1010
     ]
    ]
   },
   {
    "frame": 4680,
-   "shot": 17,
+   "shot": 20,
    "kind": "picture",
+   "treatment": "slowmo",
    "masked": [
     [
-     1675,
+     1136,
      20,
      1895,
-     42
+     46
+    ],
+    [
+     464,
+     942,
+     1455,
+     1010
+    ]
+   ]
+  },
+  {
+   "frame": 4770,
+   "shot": 20,
+   "kind": "picture",
+   "treatment": "slowmo",
+   "masked": [
+    [
+     1136,
+     20,
+     1895,
+     46
+    ]
+   ]
+  },
+  {
+   "frame": 4860,
+   "shot": 21,
+   "kind": "picture",
+   "treatment": "kaleido",
+   "masked": [
+    [
+     1145,
+     20,
+     1895,
+     46
+    ],
+    [
+     84,
+     534,
+     357,
+     700
+    ],
+    [
+     546,
+     942,
+     1373,
+     1010
+    ]
+   ]
+  },
+  {
+   "frame": 4950,
+   "shot": 21,
+   "kind": "picture",
+   "treatment": "kaleido",
+   "masked": [
+    [
+     1145,
+     20,
+     1895,
+     46
+    ],
+    [
+     84,
+     534,
+     357,
+     700
+    ],
+    [
+     593,
+     942,
+     1326,
+     1010
+    ]
+   ]
+  },
+  {
+   "frame": 5040,
+   "shot": 22,
+   "kind": "picture",
+   "treatment": "slowmo",
+   "masked": [
+    [
+     1145,
+     20,
+     1895,
+     46
+    ],
+    [
+     634,
+     942,
+     1285,
+     1010
+    ]
+   ]
+  },
+  {
+   "frame": 5130,
+   "shot": 22,
+   "kind": "picture",
+   "treatment": "slowmo",
+   "masked": [
+    [
+     1145,
+     20,
+     1895,
+     46
+    ],
+    [
+     578,
+     942,
+     1341,
+     1010
     ]
    ]
   }
  ],
- "voice": {
-  "standard": {
-   "beats": 1,
-   "words": 97,
-   "wpm": 180.7,
-   "pace_wpm": 175.1,
-   "median_f0_hz": 198.3,
-   "mean_pause_s": 0.43
-  },
-  "calm": {
-   "beats": 5,
-   "words": 251,
-   "wpm": 143.7,
-   "pace_wpm": 122.6,
-   "median_f0_hz": 173.9,
-   "mean_pause_s": 0.666
-  }
- },
- "voice_problems": [],
- "preset_problems": [],
  "sample": {
-  "mp4": "~/Desktop/how-we-know-food-sample/food-sample-chocolate.mp4",
+  "round": 2,
+  "mp4": "~/Desktop/how-we-know-food-sample-round-2/food-sample-chocolate.mp4",
   "beats_from_script": [
    0,
    1,
    2,
+   3,
+   4,
    5,
    6,
    7
   ],
-  "what": "the chocolate part's hooked cold open, title card, register shift and first calm sections"
- }
+  "title": "Why Does Chocolate Melt in Your Mouth?",
+  "what": "the chocolate part's hooked cold open, title card and first three sections, one voice throughout, real footage"
+ },
+ "voice_problems": [],
+ "preset_problems": []
 }

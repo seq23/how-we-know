@@ -22,7 +22,7 @@ records which shot used which, so NOTE.txt can say what is a composite):
   wall     COMPOSITE: the clip tiled GRID_COLS x GRID_ROWS, every tile started
            at a staggered offset and alternate tiles mirrored, so one pour
            becomes a wall of pours that never move in step.
-  kaleido  COMPOSITE: four-way mirror symmetry of the clip, turning slowly.
+  kaleido  COMPOSITE: four-way mirror symmetry of the clip's centre, drifting slowly.
 
 The grade is NOT applied here: visuals/food.py applies the one food LUT to
 every frame of every treatment, stills and clips alike, so the whole video
@@ -39,10 +39,14 @@ W, H, FPS = 1920, 1080, 30
 SLOWMO = 2.0
 PUSH_IN = 1.12
 GRID_COLS, GRID_ROWS = 4, 3
-KALEIDO_DEG_PER_S = 2.0
+KALEIDO_DRIFT = 0.6          # share of the free margin the mirror window drifts across
+KALEIDO_PERIOD_S = 24.0      # one slow drift cycle
 TREATMENTS = ("play", "slowmo", "pushin", "wall", "kaleido")
 COMPOSITES = ("wall", "kaleido")
 COVER = f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},setsar=1"
+# One frame shape for every treatment, so the cut from a clip to a composite reads as one film:
+# a soft dark vignette (the warm-dark ground); the colour grade itself is visuals/food.py's LUT.
+VIGNETTE = "vignette=angle=PI/6"
 
 
 def probe_duration(path: str) -> float:
@@ -102,6 +106,9 @@ def prepare(rec_path: str, rec: dict, dur: float, out: Path, treatment: str = "p
     span = max(0.2, b - a)
     speed = SLOWMO if treatment == "slowmo" else 1.0
     trim = f"trim=start={a:.3f}:end={b:.3f},setpts=PTS-STARTPTS"
+    if rec.get("crop"):                       # x, y, w, h as fractions of the source frame
+        cx, cy, cw, ch = rec["crop"]
+        trim += f",crop=trunc(iw*{cw}/2)*2:trunc(ih*{ch}/2)*2:trunc(iw*{cx}):trunc(ih*{cy})"
     base = _base_chain(span, dur + 0.5, speed)
     if treatment in ("play", "slowmo"):
         vf = f"[0:v]{trim},{base},{COVER}[v]"
@@ -132,14 +139,17 @@ def prepare(rec_path: str, rec: dict, dur: float, out: Path, treatment: str = "p
                     f"crop={tw}:{th},split={k}" + "".join(f"[s{i}]" for i in range(k)))
         vf = ";".join(parts)
     else:                                                     # kaleido
-        r = KALEIDO_DEG_PER_S * 3.14159265 / 180
-        big = int(H * 1.5) // 2 * 2
-        src = int(big * 1.42) // 2 * 2       # rotated, the square still covers its own frame
-        vf = (f"[0:v]{trim},{base},scale={src}:{src}:force_original_aspect_ratio=increase,"
-              f"crop={src}:{src},rotate={r:.5f}*t:ow={big}:oh={big}:c=black,"
-              f"crop={big // 2}:{big // 2}:0:0,split[q0][q1];[q1]hflip[q1f];"
-              f"[q0][q1f]hstack,split[h0][h1];[h1]vflip[h1f];[h0][h1f]vstack,"
-              f"scale={W}:{W}:force_original_aspect_ratio=increase,crop={W}:{H},setsar=1[v]")
+        # Four-way mirror of a window that drifts slowly over the clip's CENTRE
+        # (where the subject is), so the symmetry turns without ever showing an
+        # empty corner or a rotation's black edge.
+        qw, qh = W // 2, H // 2
+        drift = f"{KALEIDO_DRIFT}*sin(2*PI*t/{KALEIDO_PERIOD_S})"
+        vf = (f"[0:v]{trim},{base},scale={int(W * 1.25)}:{int(H * 1.25)}:force_original_aspect_ratio=increase,"
+              f"crop={int(W * 1.25)}:{int(H * 1.25)},"
+              f"crop={qw}:{qh}:x='(iw-{qw})/2+(iw-{qw})/2*{drift}':y='(ih-{qh})/2+(ih-{qh})/2*{drift}*0.6',"
+              f"split[q0][q1];[q1]hflip[q1f];[q0][q1f]hstack,split[h0][h1];[h1]vflip[h1f];"
+              f"[h0][h1f]vstack,setsar=1[v]")
+    vf = vf[:-3] + f",{VIGNETTE}[v]"                      # every treatment ends "...[v]"
     cmd = ["ffmpeg", "-v", "error", "-y", "-i", rec_path, "-filter_complex", vf, "-map", "[v]",
            "-frames:v", str(n), "-an", "-c:v", "libx264", "-preset", "veryfast", "-crf", "14",
            "-pix_fmt", "yuv420p", "-r", str(FPS), str(out)]
