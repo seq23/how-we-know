@@ -1,0 +1,16 @@
+{
+  "stage": "titles",
+  "week": "2026-W42",
+  "at": "2026-10-13T14:36:04+00:00",
+  "code": "TITLES_UP_TO_DATE",
+  "message": "every script not yet uploaded (and, with --needed, every live long-form video) already has a long-form title that passes loop/longform_title.py",
+  "detail": null,
+  "unblock": "Nothing to do; new scripts are titled on the next run.",
+  "disposition": "self_resolving",
+  "disposition_why": "Every script not yet uploaded already has a long-form title that passes. The proposer is FINISHED, not blocked: a new script is titled the run after it lands. (run 1 of at most 400 before this escalates to a human.)",
+  "consecutive": 1,
+  "held_items": [],
+  "exit_code": 0,
+  "work_done_before_stop": [],
+  "notes": []
+}
