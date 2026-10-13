@@ -117,6 +117,27 @@ _t = TC.text_options("Steel fails at 0.4 gigapascals, graphene at 130",
                      _LT.subject_words("how strong is graphene"))
 check(not any("0.4" in x for x in _t), f"a figure from another subject's clause: {_t}")
 
+# ------------------------------------ 2e. THE DRAMA LINE (owner's lock)
+_ti = (ROOT / "scripts" / "how-strong-is-titanium.md").read_text(encoding="utf-8")
+_sub = {"titanium"}
+check(not TC.drama_problems("TITANIUM", _ti, _sub), "a bare subject failed the drama gate")
+check(TC.drama_problems("TITANIUM BEATS DIAMOND HAMMERS", _ti, _sub),
+      "four words passed the drama gate")
+check(any("not in the script" in x for x in TC.drama_problems("TITANIUM UNICORN", _ti, _sub)),
+      "a word the script never says passed the drama gate")
+check(any("neither" in x for x in TC.drama_problems("VERY GOOD", _ti, _sub)),
+      "a line with no subject, figure or contradiction passed")
+_saved_tt = TC.THUMB_TEXT
+TC.THUMB_TEXT = os.path.join(_tf.mkdtemp(), "thumb_text.json")
+_asked = []
+_lines = TC.drama_text("how-strong-is-titanium", "Is Titanium Stronger Than Steel?", _ti, _sub,
+                       ask=lambda m: (_asked.append(m) or ("TITANIUM\nTITANIUM UNICORN\nA B C D", "fx")))
+check(_lines == ["TITANIUM"] and len(_asked) == 1, f"drama_text did not gate the model's lines: {_lines}")
+_again = TC.drama_text("how-strong-is-titanium", "Is Titanium Stronger Than Steel?", _ti, _sub,
+                       ask=lambda m: (_ for _ in ()).throw(AssertionError("asked twice")))
+check(_again == ["TITANIUM"], "the cached drama line was not reused")
+TC.THUMB_TEXT = _saved_tt
+
 # --------------------------------------------------------------- 3. negatives
 slug = "19-what-is-the-deepest-fish-ever-recorded"
 bad_root = TMP / "bad"

@@ -316,6 +316,97 @@ DANGLING = {"ever", "your", "you", "my", "per", "plus", "minus", "because", "up"
             "that", "which", "a", "an", "the", "is", "are", "it", "its"}
 
 
+# THE DRAMA LINE (owner's lock, 13 Oct 2026): "thumbnail text (<=3 words)
+# carries the drama/subject; the title stays clear and short". A question
+# title yields fragments ("FISH LIVE", "STEEL STRONG"), so the words are
+# drafted on the $0 route from the script's own answer and gated here:
+# <=3 words, every word traceable to the script, short common words, and
+# the subject, a simple figure or a contradiction in it. Cached per slug in
+# loop/state/thumb_text.json; text_options() is the fallback.
+THUMB_TEXT = os.path.join(ROOT, "loop", "state", "thumb_text.json")
+DRAMA_PROMPT = """Write {n} candidate thumbnail texts for a science video, one \
+per line, nothing else. Each is 1 to 3 words, in capitals, the most dramatic \
+TRUE thing the script's answer says - the surprise, a simple figure, or what \
+is NOT so. Short common words a 12-year-old knows; every word must be in the \
+script below; never repeat the title's question; no punctuation except an \
+apostrophe. Shapes (other videos): "NOT STRONGER", "NO SUNLIGHT", "5 MILES DOWN".
+
+TITLE: {title}
+SUBJECT: {subject}
+DIRECT-ANSWER LOCK: {answer}
+SCRIPT EXCERPT: {excerpt}
+"""
+
+
+def drama_problems(text: str, script: str, subject: set[str]) -> list[str]:
+    sys.path.insert(0, os.path.join(ROOT, "loop"))
+    import longform_title as LT                            # noqa: PLC0415
+    p: list[str] = []
+    words = text.split()
+    if not 1 <= len(words) <= MAX_WORDS:
+        p.append(f"{len(words)} words")
+    if re.search(r"[^A-Z0-9' %-]", text):
+        p.append("not plain capitals")
+    ev = LT.evidence_text(script)
+    have = {LT.stem(w) for w in LT.content_words(ev)}
+    ss = {LT.stem(w) for w in subject}
+    for w in LT.content_words(text.lower()):
+        if not LT._match(LT.stem(w), have) and w not in LT.CONTRADICTION:  # noqa: SLF001
+            p.append(f"{w!r} is not in the script")
+        if LT._syllables(w) > LT.MAX_SYLLABLES and LT.stem(w) not in ss:  # noqa: SLF001
+            p.append(f"{w!r} is a long word")
+    low_ = text.lower().split()
+    if low_ and (low_[-1] in DANGLING or low_[-1] == "than"):
+        p.append("ends on a word that needs the next one")
+    if sum(1 for w in low_ if w in LT.NUMBER_WORDS or w in ("point", "to")) >= 2:
+        p.append("a spelled-out figure or a range - one simple figure in digits")
+    nums = re.findall(r"\d[\d,.]*", text)
+    if any(not LT._simple_number(n) for n in nums):        # noqa: SLF001
+        p.append("a figure that is not simple")
+    bad = [n for n in LT._numbers_in_title(text.lower())   # noqa: SLF001
+           if n not in set(LT.figures(ev))]
+    if bad:
+        p.append("a figure the script never states")
+    toks = {LT.stem(w) for w in re.findall(r"[a-z0-9]+", text.lower())}
+    if not (toks & ss or nums or toks & {LT.stem(w) for w in LT.CONTRADICTION}
+            or toks & {LT.stem(w) for w in LT.STAKE}):
+        p.append("names neither the subject, a figure nor a contradiction")
+    return p
+
+
+def drama_text(slug: str, title: str, script: str, subject: set[str],
+               ask=None) -> list[str]:
+    """Cached, gated drama lines for one slug (newest title wins)."""
+    try:
+        cache = json.load(open(THUMB_TEXT))
+    except (OSError, ValueError):
+        cache = {}
+    rec = cache.get(slug) or {}
+    if rec.get("title") == title and rec.get("texts"):
+        return [t for t in rec["texts"] if not drama_problems(t, script, subject)]
+    if ask is None:
+        return []
+    sys.path.insert(0, os.path.join(ROOT, "loop"))
+    import longform_title as LT                            # noqa: PLC0415
+    msg = DRAMA_PROMPT.format(n=6, title=title, subject=", ".join(sorted(subject)),
+                              answer=LT.answer_lock(script),
+                              excerpt=LT._excerpt(script, 400))  # noqa: SLF001
+    try:
+        reply, model = ask([{"role": "user", "content": msg}])
+    except Exception:                                      # noqa: BLE001
+        return []
+    out = []
+    for ln in (reply or "").splitlines():
+        t = re.sub(r"^\s*(?:[-*]|\d{1,2}[.)])\s+", "", ln).strip().strip('"').upper()
+        if t and t not in out and not drama_problems(t, script, subject):
+            out.append(t)
+    cache[slug] = {"title": title, "texts": out[:3], "model": model}
+    with open(THUMB_TEXT, "w") as fh:
+        json.dump(cache, fh, indent=2, sort_keys=True)
+        fh.write("\n")
+    return out[:3]
+
+
 def text_options(title: str, subject: set[str] | None = None) -> list[str]:
     """Up to three <=3-word phrases from the (already truth-guarded) title.
 
@@ -453,6 +544,9 @@ def title_for(slug: str, script_text: str) -> str:
     return thumbs_for.hook_from_script(os.path.join(SCRIPTS, f"{slug}.md"))
 
 
+DRAMA_ASK = None     # set by the CLI (the $0 route); tests pass a fixture
+
+
 def build_variants(slug: str, out_root: str | None = None,
                    title: str | None = None,
                    script_path: str | None = None,
@@ -460,23 +554,44 @@ def build_variants(slug: str, out_root: str | None = None,
     """Build A, B, C and contract.json. Raises ContractRefused, named.
     `texts` (owner-given thumbnail words, each <= MAX_WORDS) replace the phrases
     taken from the title - the food sample's "WHAT'S INSIDE?" is the owner's."""
+    return build_into(slug, os.path.join(out_root or VARIANTS_DIR, slug),
+                      title=title, script_path=script_path, texts=texts)
+
+
+def build_into(slug: str, final_dir: str, title: str | None = None,
+               script_path: str | None = None,
+               texts: list[str] | None = None) -> dict:
+    """build_variants with the set's directory named by the caller (so the
+    lane's write set is a path, not a slug - loop/tools/write_set.py)."""
     sys.path.insert(0, os.path.join(ROOT, "loop"))
     sp = script_path or os.path.join(SCRIPTS, f"{slug}.md")
     text_src = open(sp, encoding="utf-8").read() if os.path.exists(sp) else ""
     title = title or title_for(slug, text_src)
+    owner_texts = bool(texts)
     if texts and any(len(t.split()) > MAX_WORDS for t in texts):
         raise ContractRefused(f"{slug}: thumbnail text over {MAX_WORDS} words: {texts}")
+    sys.path.insert(0, os.path.join(ROOT, "loop"))
+    import longform_title as LT                            # noqa: PLC0415
+    subject = None
+    if text_src:
+        subject = LT.subject_words(LT._question_for(slug, text_src))  # noqa: SLF001
+        dm = re.search(r"^\*\*Domain:\*\*\s*(\S+)", text_src, re.M)
+        subject |= LT.DOMAIN_PLAIN.get(dm.group(1) if dm else "", set())
     if texts:
         texts = [t.upper() for t in texts]
     else:
-        sys.path.insert(0, os.path.join(ROOT, "loop"))
-        import longform_title as LT                            # noqa: PLC0415
-        subject = LT.subject_words(LT._question_for(slug, text_src)) if text_src else None  # noqa: SLF001
         texts = text_options(title, subject)
-    if not texts:
+    if not texts and not text_src:
         raise ContractRefused(f"{slug}: no title or hook to take <= {MAX_WORDS} "
                               f"words from")
     cands = candidates(slug, sp)
+    if cands and text_src and not owner_texts:
+        # the drama line only for an episode that has a picture to carry it
+        drama = drama_text(slug, title, text_src, subject or set(), ask=DRAMA_ASK)
+        texts = list(dict.fromkeys(drama + texts))[:3]
+    if not texts:
+        raise ContractRefused(f"{slug}: no title or hook to take <= {MAX_WORDS} "
+                              f"words from")
     if not cands:
         raise ContractRefused(
             f"{slug}: no rights-verified image of this episode's subject in "
@@ -496,10 +611,9 @@ def build_variants(slug: str, out_root: str | None = None,
     # Built in a scratch directory and moved into place only when all three
     # variants pass: a refusal at B left A.jpg behind with no contract.json
     # (how-strong-is-graphene, 13 Oct 2026), and repackage apply shipped it.
-    final_dir = os.path.join(out_root or VARIANTS_DIR, slug)
     os.makedirs(os.path.dirname(final_dir), exist_ok=True)
     import tempfile                                        # noqa: PLC0415
-    out_dir = tempfile.mkdtemp(prefix=f".{slug}-", dir=os.path.dirname(final_dir))
+    out_dir = tempfile.mkdtemp(prefix=".contract-", dir=os.path.dirname(final_dir))
     rec = {"slug": slug, "title": title, "grade": GRADE["id"],
            "chosen": CHOSEN, "variants": {}}
     srcs: dict[int, Image.Image] = {}
@@ -612,7 +726,37 @@ def contract_slugs(root: str | None = None) -> list[str]:
                   if os.path.exists(os.path.join(r, s, "contract.json")))
 
 
+def needed_slugs() -> list[str]:
+    """Live long-form videos whose contract set is missing or was built for
+    another title than today's (the lock re-titles; the words follow)."""
+    sys.path.insert(0, os.path.join(ROOT, "loop"))
+    import ledger                                          # noqa: PLC0415
+    out = []
+    for r in ledger.load()["published"]:
+        slug = r.get("slug")
+        if not r.get("video_id") or r.get("retired_at") or slug in out:
+            continue
+        sp = os.path.join(SCRIPTS, f"{slug}.md")
+        if not os.path.exists(sp):
+            continue
+        title = title_for(slug, open(sp, encoding="utf-8").read())
+        try:
+            rec = json.load(open(os.path.join(VARIANTS_DIR, slug, "contract.json")))
+        except (OSError, ValueError):
+            rec = {}
+        if rec.get("title") != title:
+            out.append(slug)
+    return out
+
+
 def main(argv: list[str]) -> int:
+    global DRAMA_ASK
+    if "--drama" in argv:
+        # Draft drama lines on the repo's $0 route (subscription first, then
+        # the free tiers; never paid): loop/longform_title._ask.
+        sys.path.insert(0, os.path.join(ROOT, "loop"))
+        import longform_title as LT                        # noqa: PLC0415
+        DRAMA_ASK = LT._ask                                # noqa: SLF001
     if "--chosen" in argv:
         for s in [a for a in argv if not a.startswith("--")]:
             print(chooser(s))
@@ -637,7 +781,7 @@ def main(argv: list[str]) -> int:
     made = 0
     for s in slugs:
         try:
-            r = build_variants(s)
+            r = build_into(s, f"{VARIANTS_DIR}/{s}")
             made += 1
             c = r["contract"]["variants"]
             print(f"  OK   {s}: " + ", ".join(

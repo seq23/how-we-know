@@ -198,6 +198,12 @@ fi
 # 2026-10-13) rewrites scripts/<slug>.md (and its loop/drafts/ twin, under
 # loop/). Without this line the new openings would be written on the runner
 # and lost while loop/state/lengthen.json said they existed.
+# The thumbnail lane (visuals/thumb_contract.py --needed) writes the contract
+# sets the apply step ships; uncommitted, the next run would rebuild them and
+# the live thumbnail would match nothing in the repo.
+if [ "$STAGE" = "thumbs" ]; then
+  git add channel/thumbnails/variants 2>/dev/null
+fi
 if [ "$STAGE" = "queue-reopen" ]; then
   git add scripts 2>/dev/null
 fi
