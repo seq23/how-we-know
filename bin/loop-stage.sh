@@ -194,6 +194,13 @@ fi
 # was named here: the first Monday that authors rather than assembles would
 # have tripped the Rule 0 guard below with the script written and lost. The
 # Mac's batch already commits exactly these two paths (bin/batch-session.sh).
+# The queue re-open (loop/lengthen.py reopen --cloud, owner hook rule of
+# 2026-10-13) rewrites scripts/<slug>.md (and its loop/drafts/ twin, under
+# loop/). Without this line the new openings would be written on the runner
+# and lost while loop/state/lengthen.json said they existed.
+if [ "$STAGE" = "queue-reopen" ]; then
+  git add scripts 2>/dev/null
+fi
 if [ "$STAGE" = "mon-draft" ]; then
   git add scripts 2>/dev/null
   git add pov/pov-assignments.json 2>/dev/null

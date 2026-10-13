@@ -398,6 +398,13 @@ extended or made private — its title and thumbnail are the only things that ch
   candidate B is live, A and C sit in `channel/branding/candidates/`. To switch:
   `.venv/bin/python loop/channel_branding.py --candidate A`. A new domain needs only a
   display name in `channel/branding/branding.json`; validator V51 fails until it is applied.
+- **The queue under the hook rule** (`loop/queue_reopen.py`, daily in
+  `loop-repackage`): every script not yet uploaded that opens the old way gets
+  a new hook-first cold open (the rest untouched); one under ten minutes also
+  gets the tail. The Mac's batch binds each one before it narrates
+  (`loop/lengthen.py bind`) and re-renders; until then the upload lanes hold
+  the episode (`HOOK_REOPEN_PENDING`). Per-slug record:
+  `loop/state/lengthen.json`.
 
 ---
 

@@ -344,6 +344,24 @@ echo "  no plan yet: ${pending_plan:-none}"
 # could see. The commands were already written out here; running them is not a
 # judgement call.
 phase_prepare() {
+# THE MAC HALF OF A CLOUD RE-OPEN (loop/lengthen.py bind, owner hook rule of
+# 2026-10-13). loop-repackage rewrote these scripts' cold opens (and tails)
+# in the cloud and touched nothing else, so plans/, audio/ and renders/ here
+# are still the OLD script's. Bind FIRST - before anything plans or narrates
+# - so a stale wav is never voiced into a new beat and a stale render is
+# moved aside (recorded in superseded_renders.json, which the cloud upload
+# lane refuses on) instead of shipping the old opening. A full re-render
+# unlinks the old plan; pending_plan is recomputed so tonight re-plans it.
+echo; echo "--- bind cloud re-opened scripts to this Mac's plans, wavs and renders ---"
+$PY loop/lengthen.py bind || echo "  lengthen bind exited $? - nothing was moved for an episode it refused"
+pending_plan=$($PY - <<'BINDPLANEOF'
+import os, sys
+sys.path.insert(0, "loop")
+import batch_queue
+print(" ".join(s for s in batch_queue.written_slugs()
+                if not os.path.exists(f"plans/{s}.json")))
+BINDPLANEOF
+)
 echo; echo "--- build any missing shot plan ---"
 for slug in ${pending_plan:-}; do
   echo "  planning $slug"
