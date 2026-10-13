@@ -1,6 +1,6 @@
 {
   "slug": "what-is-a-semiconductor-made-of",
-  "title": "A semiconductor is not defined by being silicon",
+  "title": "Is a Semiconductor Just Silicon?",
   "grade": "hwk-split-navy-amber-v1",
   "chosen": "A",
   "variants": {
@@ -17,20 +17,20 @@
         3840
       ],
       "crop": null,
-      "text": "NOT DEFINED",
-      "words": 2,
+      "text": "SEMICONDUCTOR JUST SILICON",
+      "words": 3,
       "credit": "PHOTOGRAPH, U.S. DEPARTMENT OF ENERGY (PUBLIC DOMAIN)",
       "text_bbox": [
         44,
-        515,
-        889,
-        678
+        385,
+        1009,
+        664
       ],
       "credit_bbox": [
-        687,
-        14,
+        689,
+        13,
         1266,
-        35
+        33
       ],
       "fill": 0.8131,
       "energy": 0.8088
@@ -48,54 +48,54 @@
         3840
       ],
       "crop": null,
-      "text": "NOT DEFINED",
-      "words": 2,
+      "text": "SEMICONDUCTOR JUST SILICON",
+      "words": 3,
       "credit": "PHOTOGRAPH, U.S. DEPARTMENT OF ENERGY (PUBLIC DOMAIN)",
       "text_bbox": [
         44,
-        515,
-        889,
-        678
+        385,
+        1009,
+        664
       ],
       "credit_bbox": [
-        687,
-        14,
+        689,
+        13,
         1266,
-        35
+        33
       ],
       "fill": 0.7487,
       "energy": 0.8588
     },
     "C": {
       "file": "C.jpg",
-      "source": "assets/mat__silicon-wafer__silicon-wafer-researcher-jpg.jpg",
+      "source": "assets/mat__microchip-die__hp-pa-8700-die-shot-etched-42799937502-jpg.jpg",
       "manifest": "materials.json",
-      "subject": "silicon-wafer",
-      "sha256": "88741e28a10f10c3780cb5ba2d3c893fa2090abb0f4500066d20138184485a4c",
+      "subject": "microchip-die",
+      "sha256": "ea66ba65d30ffae6633b7654be28e3209533a434956777f8d42c64d90c5c2454",
       "box": [
-        1031,
-        1180,
-        5760,
-        3840
+        385,
+        1511,
+        3962,
+        3523
       ],
       "crop": null,
-      "text": "SEMICONDUCTOR NOT DEFINED",
+      "text": "SEMICONDUCTOR JUST SILICON",
       "words": 3,
-      "credit": "PHOTOGRAPH, U.S. DEPARTMENT OF ENERGY (PUBLIC DOMAIN)",
+      "credit": "MICROGRAPH, MARTIJN BOER FROM NETHERLANDS (PUBLIC DOMAIN)",
       "text_bbox": [
-        46,
-        246,
-        1042,
-        674
+        44,
+        385,
+        1009,
+        664
       ],
       "credit_bbox": [
-        687,
-        14,
+        635,
+        13,
         1266,
         35
       ],
-      "fill": 0.8131,
-      "energy": 0.8088
+      "fill": 0.7757,
+      "energy": 0.9726
     }
   }
 }
