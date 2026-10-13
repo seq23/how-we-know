@@ -51,7 +51,59 @@
       "proposed_at": "2026-10-13T12:17:11+00:00",
       "question": "What is a yeti crab?",
       "slug": "17-what-is-a-yeti-crab"
+    },
+    "how-are-microchips-designed": {
+      "applied_at": null,
+      "attempts": 1,
+      "checks_passed": true,
+      "model": "claude-subscription/opus",
+      "new_title": "Chip design: a proof for every input, not a test",
+      "old_title": "Microchips are designed as written text, not drawn by hand — and how we know",
+      "old_title_source": "titles.py (2026-10-08 rule)",
+      "problems": [],
+      "proposed_at": "2026-10-13T12:57:20+00:00",
+      "question": "how are microchips designed",
+      "slug": "how-are-microchips-designed"
+    },
+    "how-deep-can-a-sperm-whale-go": {
+      "applied_at": null,
+      "attempts": 1,
+      "checks_passed": true,
+      "model": "claude-subscription/opus",
+      "new_title": "The air-breathing mammal that dives to 2,992 meters",
+      "old_title": "The sperm whale record is a 2,992 meter deep dive — and how we know",
+      "old_title_source": "titles.py (2026-10-08 rule)",
+      "problems": [],
+      "proposed_at": "2026-10-13T12:57:34+00:00",
+      "question": "how deep can a sperm whale go",
+      "slug": "how-deep-can-a-sperm-whale-go"
+    },
+    "how-deep-can-whales-dive": {
+      "applied_at": null,
+      "attempts": 1,
+      "checks_passed": true,
+      "model": "claude-subscription/opus",
+      "new_title": "Nobody watched the whale reach 2,992 metres",
+      "old_title": "Whales can dive 2,992 m deep, a beaked whale's record — and how we know",
+      "old_title_source": "titles.py (2026-10-08 rule)",
+      "problems": [],
+      "proposed_at": "2026-10-13T12:57:49+00:00",
+      "question": "how deep can whales dive",
+      "slug": "how-deep-can-whales-dive"
+    },
+    "how-deep-mariana-trench": {
+      "applied_at": null,
+      "attempts": 1,
+      "checks_passed": true,
+      "model": "claude-subscription/opus",
+      "new_title": "Trieste reached Challenger Deep with no room to stand",
+      "old_title": "How deep the Mariana Trench really is — and how we know",
+      "old_title_source": "titles.py (2026-10-08 rule)",
+      "problems": [],
+      "proposed_at": "2026-10-13T12:58:04+00:00",
+      "question": "How deep is the Mariana Trench?",
+      "slug": "how-deep-mariana-trench"
     }
   },
-  "updated": "2026-10-13T12:17:11+00:00"
+  "updated": "2026-10-13T12:58:04+00:00"
 }
