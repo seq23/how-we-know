@@ -700,17 +700,17 @@
     "what-is-hydrothermal-vents": {
       "applied_at": null,
       "attempts": 1,
-      "checks_passed": false,
-      "invalidated_at": "2026-10-13T15:07:46+00:00",
-      "invalidated_why": "owner's plainness rule (13 Oct 2026): the title must name its subject in plain words; re-proposed by loop-repackage",
+      "checks_passed": true,
       "model": "claude-subscription/opus",
-      "new_title": "Vent ecosystems that run on chemicals, not sunlight",
+      "new_title": "How Hot Are Hydrothermal Vents?",
       "old_title": "Hydrothermal vents pour out seawater up to 400°C, still liquid — and how we know",
       "old_title_source": "titles.py (2026-10-08 rule)",
-      "problems": [
-        "title reads at Flesch 51 (needs 60+): plainer, shorter words a 12-year-old gets on first read"
-      ],
-      "proposed_at": "2026-10-13T13:13:03+00:00",
+      "previous": {
+        "applied_at": null,
+        "new_title": "Vent ecosystems that run on chemicals, not sunlight"
+      },
+      "problems": [],
+      "proposed_at": "2026-10-13T23:38:02+00:00",
       "question": "what is hydrothermal vents",
       "slug": "what-is-hydrothermal-vents"
     },
@@ -734,57 +734,51 @@
     "what-lives-in-mariana-trench": {
       "applied_at": null,
       "attempts": 1,
-      "checks_passed": false,
-      "invalidated_at": "2026-10-13T15:07:46+00:00",
-      "invalidated_why": "owner's plainness rule (13 Oct 2026): the title must name its subject in plain words; re-proposed by loop-repackage",
+      "checks_passed": true,
       "model": "claude-subscription/opus",
-      "new_title": "Life nearly 11,000 metres down, but not a fish",
+      "new_title": "Is the Mariana Trench Empty?",
       "old_title": "What really lives in Mariana Trench — and how we know",
       "old_title_source": "titles.py (2026-10-08 rule)",
-      "problems": [
-        "title never names the episode's subject in plain words (one of: mariana, trench) - say what it is about, never a metaphor or a riddle for it"
-      ],
-      "proposed_at": "2026-10-13T13:13:15+00:00",
+      "previous": {
+        "applied_at": null,
+        "new_title": "Life nearly 11,000 metres down, but not a fish"
+      },
+      "problems": [],
+      "proposed_at": "2026-10-13T23:38:17+00:00",
       "question": "what lives in mariana trench",
       "slug": "what-lives-in-mariana-trench"
     },
     "what-lives-in-the-depths-of-the-ocean": {
       "applied_at": null,
       "attempts": 1,
-      "checks_passed": false,
-      "invalidated_at": "2026-10-13T15:07:46+00:00",
-      "invalidated_why": "owner's plainness rule (13 Oct 2026): the title must name its subject in plain words; re-proposed by loop-repackage",
+      "checks_passed": true,
       "model": "claude-subscription/opus",
-      "new_title": "Only female anglerfish possess the lure",
+      "new_title": "What Lives in the Deep Ocean?",
       "old_title": "What really lives in the depths of the ocean — and how we know",
       "old_title_source": "titles.py (2026-10-08 rule)",
       "previous": {
         "applied_at": null,
-        "new_title": "percent of deep-sea pelagic animals produce light"
+        "new_title": "Only female anglerfish possess the lure"
       },
-      "problems": [
-        "title never names the episode's subject in plain words (one of: depths, ocean) - say what it is about, never a metaphor or a riddle for it",
-        "title reads at Flesch 32 (needs 60+): plainer, shorter words a 12-year-old gets on first read"
-      ],
-      "proposed_at": "2026-10-13T13:55:15+00:00",
+      "problems": [],
+      "proposed_at": "2026-10-13T23:38:27+00:00",
       "question": "What lives in the depths of the ocean?",
       "slug": "what-lives-in-the-depths-of-the-ocean"
     },
     "what-lives-in-the-sea": {
       "applied_at": null,
       "attempts": 1,
-      "checks_passed": false,
-      "invalidated_at": "2026-10-13T15:07:46+00:00",
-      "invalidated_why": "owner's plainness rule (13 Oct 2026): the title must name its subject in plain words; re-proposed by loop-repackage",
+      "checks_passed": true,
       "model": "claude-subscription/opus",
-      "new_title": "Over 100 potentially new species in 28 days",
+      "new_title": "Is the Deep Sea Empty?",
       "old_title": "What really lives in the sea — and how we know",
       "old_title_source": "titles.py (2026-10-08 rule)",
-      "problems": [
-        "title never names the episode's subject in plain words (one of: sea) - say what it is about, never a metaphor or a riddle for it",
-        "title reads at Flesch 40 (needs 60+): plainer, shorter words a 12-year-old gets on first read"
-      ],
-      "proposed_at": "2026-10-13T13:13:48+00:00",
+      "previous": {
+        "applied_at": null,
+        "new_title": "Over 100 potentially new species in 28 days"
+      },
+      "problems": [],
+      "proposed_at": "2026-10-13T23:38:35+00:00",
       "question": "What lives in the sea?",
       "slug": "what-lives-in-the-sea"
     },
@@ -804,17 +798,17 @@
     "why-deep-sea-creatures-are-creepers": {
       "applied_at": null,
       "attempts": 1,
-      "checks_passed": false,
-      "invalidated_at": "2026-10-13T15:30:23+00:00",
-      "invalidated_why": "owner's LOCKED title rule (13 Oct 2026): <=40 chars, sixth grade, one idea, subject first",
+      "checks_passed": true,
       "model": "claude-subscription/opus",
-      "new_title": "Deep sea creatures built for darkness, not menace",
+      "new_title": "Why Are Deep Sea Animals Red?",
       "old_title": "Deep sea creatures are creepers built by darkness — and how we know",
       "old_title_source": "titles.py (2026-10-08 rule)",
-      "problems": [
-        "title is 49 characters, over the 40 a phone shows"
-      ],
-      "proposed_at": "2026-10-13T13:34:00+00:00",
+      "previous": {
+        "applied_at": null,
+        "new_title": "Deep sea creatures built for darkness, not menace"
+      },
+      "problems": [],
+      "proposed_at": "2026-10-13T23:38:47+00:00",
       "question": "why deep sea creatures are creepers",
       "slug": "why-deep-sea-creatures-are-creepers"
     },
@@ -887,5 +881,5 @@
       "slug": "why-is-steel-so-strong"
     }
   },
-  "updated": "2026-10-13T18:38:19+00:00"
+  "updated": "2026-10-13T23:38:47+00:00"
 }
