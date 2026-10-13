@@ -103,7 +103,59 @@
       "proposed_at": "2026-10-13T12:58:04+00:00",
       "question": "How deep is the Mariana Trench?",
       "slug": "how-deep-mariana-trench"
+    },
+    "what-is-hydrothermal-vents": {
+      "applied_at": null,
+      "attempts": 1,
+      "checks_passed": true,
+      "model": "claude-subscription/opus",
+      "new_title": "Vent ecosystems that run on chemicals, not sunlight",
+      "old_title": "Hydrothermal vents pour out seawater up to 400°C, still liquid — and how we know",
+      "old_title_source": "titles.py (2026-10-08 rule)",
+      "problems": [],
+      "proposed_at": "2026-10-13T13:13:03+00:00",
+      "question": "what is hydrothermal vents",
+      "slug": "what-is-hydrothermal-vents"
+    },
+    "what-lives-in-mariana-trench": {
+      "applied_at": null,
+      "attempts": 1,
+      "checks_passed": true,
+      "model": "claude-subscription/opus",
+      "new_title": "Life nearly 11,000 metres down, but not a fish",
+      "old_title": "What really lives in Mariana Trench — and how we know",
+      "old_title_source": "titles.py (2026-10-08 rule)",
+      "problems": [],
+      "proposed_at": "2026-10-13T13:13:15+00:00",
+      "question": "what lives in mariana trench",
+      "slug": "what-lives-in-mariana-trench"
+    },
+    "what-lives-in-the-depths-of-the-ocean": {
+      "applied_at": null,
+      "attempts": 1,
+      "checks_passed": true,
+      "model": "claude-subscription/opus",
+      "new_title": "percent of deep-sea pelagic animals produce light",
+      "old_title": "What really lives in the depths of the ocean — and how we know",
+      "old_title_source": "titles.py (2026-10-08 rule)",
+      "problems": [],
+      "proposed_at": "2026-10-13T13:13:37+00:00",
+      "question": "What lives in the depths of the ocean?",
+      "slug": "what-lives-in-the-depths-of-the-ocean"
+    },
+    "what-lives-in-the-sea": {
+      "applied_at": null,
+      "attempts": 1,
+      "checks_passed": true,
+      "model": "claude-subscription/opus",
+      "new_title": "Over 100 potentially new species in 28 days",
+      "old_title": "What really lives in the sea — and how we know",
+      "old_title_source": "titles.py (2026-10-08 rule)",
+      "problems": [],
+      "proposed_at": "2026-10-13T13:13:48+00:00",
+      "question": "What lives in the sea?",
+      "slug": "what-lives-in-the-sea"
     }
   },
-  "updated": "2026-10-13T12:58:04+00:00"
+  "updated": "2026-10-13T13:13:48+00:00"
 }
