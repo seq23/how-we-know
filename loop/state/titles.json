@@ -343,17 +343,17 @@
     "how-are-microchips-designed": {
       "applied_at": null,
       "attempts": 1,
-      "checks_passed": false,
-      "invalidated_at": "2026-10-13T15:07:46+00:00",
-      "invalidated_why": "owner's plainness rule (13 Oct 2026): the title must name its subject in plain words; re-proposed by loop-repackage",
+      "checks_passed": true,
       "model": "claude-subscription/opus",
-      "new_title": "Chip design: a proof for every input, not a test",
+      "new_title": "Do Microchips Start as Text?",
       "old_title": "Microchips are designed as written text, not drawn by hand — and how we know",
       "old_title_source": "titles.py (2026-10-08 rule)",
-      "problems": [
-        "title never names the episode's subject in plain words (one of: microchips) - say what it is about, never a metaphor or a riddle for it"
-      ],
-      "proposed_at": "2026-10-13T12:57:20+00:00",
+      "previous": {
+        "applied_at": null,
+        "new_title": "Chip design: a proof for every input, not a test"
+      },
+      "problems": [],
+      "proposed_at": "2026-10-13T18:37:38+00:00",
       "question": "how are microchips designed",
       "slug": "how-are-microchips-designed"
     },
@@ -377,53 +377,51 @@
     "how-deep-can-a-sperm-whale-go": {
       "applied_at": null,
       "attempts": 1,
-      "checks_passed": false,
-      "invalidated_at": "2026-10-13T15:07:46+00:00",
-      "invalidated_why": "owner's plainness rule (13 Oct 2026): the title must name its subject in plain words; re-proposed by loop-repackage",
+      "checks_passed": true,
       "model": "claude-subscription/opus",
-      "new_title": "The air-breathing mammal that dives to 2,992 meters",
+      "new_title": "How Deep Do Sperm Whales Dive?",
       "old_title": "The sperm whale record is a 2,992 meter deep dive — and how we know",
       "old_title_source": "titles.py (2026-10-08 rule)",
-      "problems": [
-        "title never names the episode's subject in plain words (one of: deep, sperm, whale) - say what it is about, never a metaphor or a riddle for it",
-        "title reads at Flesch 51 (needs 60+): plainer, shorter words a 12-year-old gets on first read"
-      ],
-      "proposed_at": "2026-10-13T12:57:34+00:00",
+      "previous": {
+        "applied_at": null,
+        "new_title": "The air-breathing mammal that dives to 2,992 meters"
+      },
+      "problems": [],
+      "proposed_at": "2026-10-13T18:37:51+00:00",
       "question": "how deep can a sperm whale go",
       "slug": "how-deep-can-a-sperm-whale-go"
     },
     "how-deep-can-whales-dive": {
       "applied_at": null,
       "attempts": 1,
-      "checks_passed": false,
-      "invalidated_at": "2026-10-13T15:07:46+00:00",
-      "invalidated_why": "owner's plainness rule (13 Oct 2026): the title must name its subject in plain words; re-proposed by loop-repackage",
+      "checks_passed": true,
       "model": "claude-subscription/opus",
-      "new_title": "Nobody watched the whale reach 2,992 metres",
+      "new_title": "How Deep Do Whales Go?",
       "old_title": "Whales can dive 2,992 m deep, a beaked whale's record — and how we know",
       "old_title_source": "titles.py (2026-10-08 rule)",
-      "problems": [
-        "title never names the episode's subject in plain words (one of: deep, dive, whales) - say what it is about, never a metaphor or a riddle for it",
-        "title reads at Flesch 43 (needs 60+): plainer, shorter words a 12-year-old gets on first read"
-      ],
-      "proposed_at": "2026-10-13T12:57:49+00:00",
+      "previous": {
+        "applied_at": null,
+        "new_title": "Nobody watched the whale reach 2,992 metres"
+      },
+      "problems": [],
+      "proposed_at": "2026-10-13T18:38:02+00:00",
       "question": "how deep can whales dive",
       "slug": "how-deep-can-whales-dive"
     },
     "how-deep-mariana-trench": {
       "applied_at": null,
       "attempts": 1,
-      "checks_passed": false,
-      "invalidated_at": "2026-10-13T15:30:23+00:00",
-      "invalidated_why": "owner's LOCKED title rule (13 Oct 2026): <=40 chars, sixth grade, one idea, subject first",
+      "checks_passed": true,
       "model": "claude-subscription/opus",
-      "new_title": "Trieste reached Challenger Deep with no room to stand",
+      "new_title": "Why Would the Trench Crush You?",
       "old_title": "How deep the Mariana Trench really is — and how we know",
       "old_title_source": "titles.py (2026-10-08 rule)",
-      "problems": [
-        "title is 53 characters, over the 40 a phone shows"
-      ],
-      "proposed_at": "2026-10-13T12:58:04+00:00",
+      "previous": {
+        "applied_at": null,
+        "new_title": "Trieste reached Challenger Deep with no room to stand"
+      },
+      "problems": [],
+      "proposed_at": "2026-10-13T18:38:19+00:00",
       "question": "How deep is the Mariana Trench?",
       "slug": "how-deep-mariana-trench"
     },
@@ -889,5 +887,5 @@
       "slug": "why-is-steel-so-strong"
     }
   },
-  "updated": "2026-10-13T17:40:06+00:00"
+  "updated": "2026-10-13T18:38:19+00:00"
 }
