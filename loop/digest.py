@@ -152,8 +152,15 @@ def calendar(led: dict, cfg: dict, now: dt.datetime, weeks: int = CALENDAR_WEEKS
     Empty slots are the number she cares about; they were invisible before.
     """
     import backfill                                        # noqa: PLC0415
+    import domains as _dom                                 # noqa: PLC0415
     per_week = int(cfg["cadence"]["videos_per_week"])
-    days_by_domain = backfill.domain_weekdays(cfg, per_week)
+    # A domain held behind its owner-review sample (domains.sample_gate) has
+    # days that are EMPTY BY DESIGN until the sample clears; counting them as
+    # gaps would turn a decided hold into a red digest every week.
+    gated = _dom.sample_gated(cfg)
+    days_by_domain = {d: w for d, w in
+                      backfill.domain_weekdays(cfg, per_week).items()
+                      if d not in gated}
     dated: dict[str, dict] = {}
     for row in led["published"]:
         if row.get("retired_at"):

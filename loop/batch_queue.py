@@ -249,9 +249,29 @@ def publish_queue_gate(slugs: list[str]) -> tuple[list[str], dict[str, str]]:
     """
     queued = set(queued_slugs())
     holds = promotion_holds()
+    import domains as _dom                                 # noqa: PLC0415
+    gated = _dom.sample_gated(json.loads(
+        (ROOT / "loop" / "config.json").read_text()))
+    gated_slugs: set = set()
+    if gated:
+        # Every slug a gated domain's own publish order names, queued or not
+        # yet measured: a food topic is held for the sample, by name, rather
+        # than refused for some other reason that would read as a defect.
+        for path in publish_order_files():
+            doc = json.loads(path.read_text())
+            if doc.get("domain") in gated:
+                gated_slugs |= {r["slug"] for r in (doc.get("queue") or [])
+                                + (doc.get("unmeasured") or []) if r.get("slug")}
+        gated_slugs |= {r["slug"] for r in queued_entries()
+                        if _dom.row_domain(r) in gated}
     allowed, refused = [], {}
     for s in slugs:
-        if s in holds:
+        dom = _dom.domain_of_slug(s) if gated else None
+        if s in gated_slugs or dom in gated:
+            refused[s] = ("its domain is held behind the owner-review sample "
+                          "(loop/config.json domains.sample_gate) - no full "
+                          "episode until the sample is cleared")
+        elif s in holds:
             refused[s] = ("held awaiting the Saturday gate's promotion decision "
                           f"(loop/promotion_holds.json: "
                           f"{holds[s].get('awaiting', 'promotion')})")

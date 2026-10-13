@@ -55,6 +55,19 @@ ALLOWLIST: dict[str, list[str]] = {
         "Archaeological Institute of America", "British Museum",
         "Smithsonian",
     ],
+    # 2026-10-13, the owner's third domain. Food chemistry is published by
+    # agricultural and food-standards bodies and the chemistry societies, not
+    # by any body on the two lists above; each name here publishes primary
+    # material on bread, meat or chocolate science.
+    "food-science": [
+        "USDA", "USDA Agricultural Research Service", "FDA",
+        "Institute of Food Technologists", "IFT", "American Chemical Society",
+        "ACS", "Royal Society of Chemistry", "Institut Pasteur",
+        "Journal of Agricultural and Food Chemistry", "Food Chemistry",
+        "Nature", "Science", "Smithsonian", "National Institutes of Health",
+        "NIH", "PubChem", "American Oil Chemists' Society", "AOCS",
+        "French Academy of Sciences",
+    ],
 }
 
 # Alternate spellings/domains an attribution check should accept as the same
@@ -74,6 +87,18 @@ ALIAS: dict[str, dict[str, str]] = {
         "USGS Minerals": "usgs.gov", "USGS": "usgs.gov",
         "Fraunhofer": "fraunhofer.de", "Nature Materials": "nature.com",
         "ASTM International": "astm.org",
+    },
+    "food-science": {
+        "USDA": "usda.gov", "USDA Agricultural Research Service": "ars.usda.gov",
+        "FDA": "fda.gov", "IFT": "Institute of Food Technologists",
+        "Institute of Food Technologists": "ift.org",
+        "ACS": "American Chemical Society",
+        "American Chemical Society": "acs.org",
+        "Royal Society of Chemistry": "rsc.org",
+        "Institut Pasteur": "pasteur.fr", "NIH": "nih.gov",
+        "National Institutes of Health": "nih.gov", "PubChem": "nih.gov",
+        "AOCS": "American Oil Chemists' Society",
+        "American Oil Chemists' Society": "aocs.org",
     },
 }
 

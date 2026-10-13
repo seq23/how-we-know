@@ -461,6 +461,24 @@ def dedicated_seeds(domain: str) -> list:
         return list(json.load(fh).get("seeds") or [])
 
 
+def seed_questions(domain: str) -> list:
+    """A domain's seeded QUESTIONS (research/seeds_<slug>.json `questions`),
+    screened first and through the same _screen as every mined row.
+
+    2026-10-13, food-science: the owner named the first video's three
+    questions, and a new domain's broad mine is eight seeds deep. A seeded
+    question is a candidate for the gate, never a pass: competition, demand
+    and saturation decide it exactly as they decide a mined one."""
+    name = DEDICATED_SEEDS.get(domain, f"seeds_{slug_of_domain(domain)}.json")
+    path = os.path.join(HERE, name)
+    if not os.path.exists(path):
+        return []
+    with open(path, encoding="utf-8") as fh:
+        qs = json.load(fh).get("questions") or []
+    return [{"query": q.strip().lower(), "question": True, "noise": False,
+             "excluded": False, "probe_hits": 0} for q in qs if q.strip()]
+
+
 def _vocab(seeds: list, domain: str, drop: set = frozenset()) -> set:
     toks = set()
     for seed in seeds:
@@ -560,6 +578,7 @@ def candidates(domain: str, limit: int = MAX_CANDIDATES,
             with open(path, encoding="utf-8") as fh:
                 cached += _rows_of(json.load(fh))
 
+    rung("seeded questions, dedicated seeds", seed_questions(domain), wide_tokens)
     rung("broad mine, broad seeds", rows, seed_tokens)
     if deep and len(picked) < MIN_CANDIDATES:
         rung("deep-mine cache, broad seeds", cached, seed_tokens)

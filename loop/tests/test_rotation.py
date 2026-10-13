@@ -1,8 +1,9 @@
 """The three-niche rotation: one long-form a day, each weekday owned by a domain.
 
 Owner decision, 13 Oct 2026 (docs/CHANNEL-PLAN.md "Three-niche schedule"):
-Mon/Thu deep sea, Tue/Fri materials, Wed/Sat food-science (mapped ahead of its
-registration - its days stay EMPTY), Sunday none, 10:00 local, per_day 1.
+Mon/Thu deep sea, Tue/Fri materials, Wed/Sat food-science (registered
+2026-10-13; held behind its sample gate, so its days stay EMPTY until it has a
+cleared, queued episode - never borrowed), Sunday none, 10:00 local, per_day 1.
 
   1. the config map is exactly that, the pin (videos_per_week 6) matches the
      mapped days, and live_slots()/domain_weekdays() read it;
@@ -59,8 +60,8 @@ check(rot["weekdays"] == {"mon": DEEP, "tue": MAT, "wed": FOOD, "thu": DEEP,
       f"the rotation is not the owner's: {rot}")
 check(cfg["cadence"]["videos_per_week"] == 6 == len(B.rotation_days(cfg)),
       "videos_per_week does not match the rotation's mapped days")
-check(D.live_slots(cfg) == {DEEP: 2, MAT: 2}
-      and B.domain_weekdays(cfg, 6) == {DEEP: (0, 3), MAT: (1, 4)},
+check(D.live_slots(cfg) == {DEEP: 2, MAT: 2, FOOD: 2}
+      and B.domain_weekdays(cfg, 6) == {DEEP: (0, 3), MAT: (1, 4), FOOD: (2, 5)},
       f"live_slots/domain_weekdays do not read the rotation: "
       f"{D.live_slots(cfg)} {B.domain_weekdays(cfg, 6)}")
 

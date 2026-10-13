@@ -99,3 +99,6 @@ loop/state/_v14/
 # V15 (shorts-caption-crop) writes its OCR'd row crops here for inspection,
 # exactly as V14 does above; 36 PNGs were sitting untracked on the Mac.
 loop/state/_v15/
+
+# Food sound layer files (2026-10-13): CC0/PD recordings, rights in channel/sound/food.json
+channel/sound/*.ogg

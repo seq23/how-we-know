@@ -61,8 +61,19 @@ def every_video(token: str) -> list[dict]:
     return out
 
 
+def want_for(video_id: str) -> dict:
+    """WANT, except containsSyntheticMedia follows the episode spec
+    (loop/upload.altered_content, 13 Oct 2026): a food episode with realistic
+    AI stills is never flipped back to No by this pass."""
+    import ledger                                          # noqa: PLC0415
+    import upload                                          # noqa: PLC0415
+    slug = next((r["slug"] for r in (ledger.load().get("published") or [])
+                 if r.get("video_id") == video_id), None)
+    return {**WANT, "containsSyntheticMedia": bool(slug and upload.altered_content(slug))}
+
+
 def update_status(token: str, video: dict) -> None:
-    status = {**video["status"], **WANT}
+    status = {**video["status"], **want_for(video["id"])}
     # publishAt may only be sent alongside privacyStatus=private, which is how a scheduled video
     # already reads; an already-public video carries no publishAt. Pass through as read.
     body = json.dumps({"id": video["id"], "status": status, "paidProductPlacementDetails": WANT_PAID}).encode()

@@ -160,8 +160,12 @@ class NoPovMatch(Exception):
 
 
 def bank() -> list[dict]:
+    """Every line the owner has approved. A `pending_approval` line (drafted
+    for a domain's sample review, 2026-10-13 food-science) is NOT her voice
+    yet: it is never selected, and a script assigned one is a defect."""
     with BANK.open() as fh:
-        return json.load(fh)["lines"]
+        return [ln for ln in json.load(fh)["lines"]
+                if not ln.get("pending_approval")]
 
 
 def rotation_window() -> int:

@@ -1,0 +1,1340 @@
+{
+ "script": "scripts/food/why-does-chocolate-melt-in-your-mouth-not-your-hand.md",
+ "preset": {
+  "id": "food-v1",
+  "opening_cut_s": [
+   3.0,
+   5.0
+  ],
+  "calm_hold_s": [
+   8.0,
+   15.0
+  ],
+  "still_zoom": [
+   1.0,
+   1.08
+  ],
+  "parallax_px": 28,
+  "crossfade_s": 1.0,
+  "devices_per_part_max": 1
+ },
+ "grade": {
+  "id": "food-v1/hwk-split-navy-amber-v1",
+  "base": "hwk-split-navy-amber-v1",
+  "shadow": [
+   8,
+   22,
+   40
+  ],
+  "highlight": [
+   255,
+   222,
+   168
+  ],
+  "contrast": 1.18,
+  "mix": 0.3,
+  "saturation": 1.3
+ },
+ "duration_s": 156.06,
+ "shots": [
+  {
+   "start": 0.0,
+   "dur": 4.5035117015518225,
+   "kind": "picture",
+   "beat": 0,
+   "asset": "tempering-slab",
+   "register": "standard"
+  },
+  {
+   "start": 4.5035117015518225,
+   "dur": 3.5900912839589414,
+   "kind": "picture",
+   "beat": 0,
+   "asset": "cocoa-butter-wall",
+   "register": "standard"
+  },
+  {
+   "start": 8.093602985510763,
+   "dur": 3.0208731878068162,
+   "kind": "picture",
+   "beat": 0,
+   "asset": "cocoa-beans",
+   "register": "standard"
+  },
+  {
+   "start": 11.11447617331758,
+   "dur": 3.0166291988590905,
+   "kind": "picture",
+   "beat": 0,
+   "asset": "chocolate-snap",
+   "register": "standard"
+  },
+  {
+   "start": 14.131105372176672,
+   "dur": 4.94211411914576,
+   "kind": "picture",
+   "beat": 0,
+   "asset": "chocolate-break-macro",
+   "register": "standard"
+  },
+  {
+   "start": 19.073219491322433,
+   "dur": 5.0,
+   "kind": "picture",
+   "beat": 0,
+   "asset": "melting-square",
+   "register": "standard"
+  },
+  {
+   "start": 24.073219491322433,
+   "dur": 4.428069994489383,
+   "kind": "picture",
+   "beat": 0,
+   "asset": "chocolate-sheets",
+   "register": "standard"
+  },
+  {
+   "start": 28.501289485811817,
+   "dur": 4.733710514188189,
+   "kind": "picture",
+   "beat": 0,
+   "asset": "gloss-macro",
+   "register": "standard"
+  },
+  {
+   "start": 33.23500000000001,
+   "dur": 5.23,
+   "kind": "title",
+   "beat": 1,
+   "text": "Why does chocolate melt in your mouth but not in your hand?",
+   "asset": "chocolate-ocean"
+  },
+  {
+   "start": 38.465,
+   "dur": 9.575327082252521,
+   "kind": "picture",
+   "beat": 2,
+   "asset": "cacao-field",
+   "register": "calm"
+  },
+  {
+   "start": 48.040327082252524,
+   "dur": 9.82256772952387,
+   "kind": "picture",
+   "beat": 2,
+   "asset": "cocoa-pod",
+   "register": "calm"
+  },
+  {
+   "start": 57.86289481177639,
+   "dur": 13.280105188223606,
+   "kind": "picture",
+   "beat": 2,
+   "asset": "chocolate-river",
+   "register": "calm"
+  },
+  {
+   "start": 71.143,
+   "dur": 30.439,
+   "kind": "device",
+   "beat": 3,
+   "asset": "chocolate-break-macro",
+   "label": "form five crystals"
+  },
+  {
+   "start": 101.582,
+   "dur": 13.034430820189291,
+   "kind": "picture",
+   "beat": 4,
+   "asset": "chocolate-ocean",
+   "register": "calm"
+  },
+  {
+   "start": 114.61643082018928,
+   "dur": 10.3670965011629,
+   "kind": "picture",
+   "beat": 4,
+   "asset": "cocoa-butter-wall",
+   "register": "calm"
+  },
+  {
+   "start": 124.98352732135218,
+   "dur": 13.239472678647807,
+   "kind": "picture",
+   "beat": 4,
+   "asset": "cocoa-beans",
+   "register": "calm"
+  },
+  {
+   "start": 138.22299999999998,
+   "dur": 8.913359370279924,
+   "kind": "picture",
+   "beat": 5,
+   "asset": "melting-square",
+   "register": "calm"
+  },
+  {
+   "start": 147.1363593702799,
+   "dur": 8.926640629720076,
+   "kind": "picture",
+   "beat": 5,
+   "asset": "chocolate-sheets",
+   "register": "calm"
+  }
+ ],
+ "captions": {
+  "burned_in": true,
+  "sidecar": "food-sample-chocolate.srt"
+ },
+ "ai_assets": [
+  "cacao-field",
+  "chocolate-break-macro",
+  "chocolate-ocean",
+  "chocolate-river",
+  "chocolate-sheets",
+  "chocolate-snap",
+  "cocoa-butter-wall",
+  "gloss-macro",
+  "melting-square",
+  "tempering-slab"
+ ],
+ "real_assets": [
+  "cocoa-beans",
+  "cocoa-pod"
+ ],
+ "credits": {
+  "cocoa-beans": "COCOA BEANS \u2014 PHOTOGRAPH, TEINESAVAII (PUBLIC DOMAIN)",
+  "cocoa-pod": "CACAO POD \u2014 PHOTOGRAPH, KEITH WELLER, USDA ARS (PUBLIC DOMAIN)"
+ },
+ "altered_content": true,
+ "ai_video_clips": 0,
+ "ai_video_note": "no open video model runs on this Mac; AI shots are stills with motion",
+ "sound": {
+  "bed_db_in_speech": -55.89,
+  "bed_db_in_gaps": -43.2,
+  "voice_db_in_speech": -25.54,
+  "peak_dbfs": -1.01,
+  "duck_db": 12.69,
+  "voice_over_bed_db": 30.35,
+  "contract_problems": []
+ },
+ "proofs": [
+  {
+   "frame": 0,
+   "shot": 0,
+   "kind": "picture",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     457,
+     942,
+     1462,
+     1010
+    ]
+   ]
+  },
+  {
+   "frame": 90,
+   "shot": 0,
+   "kind": "picture",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     84,
+     534,
+     338,
+     700
+    ],
+    [
+     545,
+     942,
+     1374,
+     1010
+    ]
+   ]
+  },
+  {
+   "frame": 180,
+   "shot": 1,
+   "kind": "picture",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     84,
+     534,
+     338,
+     700
+    ],
+    [
+     595,
+     942,
+     1324,
+     1010
+    ]
+   ]
+  },
+  {
+   "frame": 270,
+   "shot": 2,
+   "kind": "picture",
+   "masked": [
+    [
+     1278,
+     20,
+     1895,
+     46
+    ],
+    [
+     491,
+     942,
+     1428,
+     1010
+    ]
+   ]
+  },
+  {
+   "frame": 360,
+   "shot": 3,
+   "kind": "picture",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     482,
+     942,
+     1437,
+     1010
+    ]
+   ]
+  },
+  {
+   "frame": 450,
+   "shot": 4,
+   "kind": "picture",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     446,
+     942,
+     1473,
+     1010
+    ]
+   ]
+  },
+  {
+   "frame": 540,
+   "shot": 4,
+   "kind": "picture",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     489,
+     942,
+     1430,
+     1010
+    ]
+   ]
+  },
+  {
+   "frame": 630,
+   "shot": 5,
+   "kind": "picture",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     608,
+     942,
+     1311,
+     1010
+    ]
+   ]
+  },
+  {
+   "frame": 720,
+   "shot": 5,
+   "kind": "picture",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     458,
+     942,
+     1461,
+     1010
+    ]
+   ]
+  },
+  {
+   "frame": 810,
+   "shot": 6,
+   "kind": "picture",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     638,
+     942,
+     1281,
+     1010
+    ]
+   ]
+  },
+  {
+   "frame": 900,
+   "shot": 7,
+   "kind": "picture",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     520,
+     942,
+     1399,
+     1010
+    ]
+   ]
+  },
+  {
+   "frame": 990,
+   "shot": 7,
+   "kind": "picture",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ]
+   ]
+  },
+  {
+   "frame": 1080,
+   "shot": 8,
+   "kind": "title",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     230,
+     430,
+     1689,
+     650
+    ]
+   ]
+  },
+  {
+   "frame": 1170,
+   "shot": 9,
+   "kind": "picture",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     570,
+     942,
+     1349,
+     1010
+    ]
+   ]
+  },
+  {
+   "frame": 1260,
+   "shot": 9,
+   "kind": "picture",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     84,
+     534,
+     670,
+     700
+    ],
+    [
+     548,
+     942,
+     1371,
+     1010
+    ]
+   ]
+  },
+  {
+   "frame": 1350,
+   "shot": 9,
+   "kind": "picture",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     669,
+     942,
+     1250,
+     1010
+    ]
+   ]
+  },
+  {
+   "frame": 1440,
+   "shot": 9,
+   "kind": "picture",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     612,
+     942,
+     1307,
+     1010
+    ]
+   ]
+  },
+  {
+   "frame": 1530,
+   "shot": 10,
+   "kind": "picture",
+   "masked": [
+    [
+     1177,
+     20,
+     1895,
+     46
+    ],
+    [
+     462,
+     942,
+     1457,
+     1010
+    ]
+   ]
+  },
+  {
+   "frame": 1620,
+   "shot": 10,
+   "kind": "picture",
+   "masked": [
+    [
+     1177,
+     20,
+     1895,
+     46
+    ],
+    [
+     610,
+     942,
+     1309,
+     1010
+    ]
+   ]
+  },
+  {
+   "frame": 1710,
+   "shot": 10,
+   "kind": "picture",
+   "masked": [
+    [
+     1177,
+     20,
+     1895,
+     46
+    ],
+    [
+     528,
+     942,
+     1391,
+     1010
+    ]
+   ]
+  },
+  {
+   "frame": 1800,
+   "shot": 11,
+   "kind": "picture",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     528,
+     942,
+     1391,
+     1010
+    ]
+   ]
+  },
+  {
+   "frame": 1890,
+   "shot": 11,
+   "kind": "picture",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     473,
+     942,
+     1446,
+     1010
+    ]
+   ]
+  },
+  {
+   "frame": 1980,
+   "shot": 11,
+   "kind": "picture",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     611,
+     942,
+     1308,
+     1010
+    ]
+   ]
+  },
+  {
+   "frame": 2070,
+   "shot": 11,
+   "kind": "picture",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     600,
+     942,
+     1319,
+     1010
+    ]
+   ]
+  },
+  {
+   "frame": 2160,
+   "shot": 12,
+   "kind": "device",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     506,
+     942,
+     1413,
+     1010
+    ],
+    [
+     0,
+     0,
+     1920,
+     1080
+    ]
+   ]
+  },
+  {
+   "frame": 2250,
+   "shot": 12,
+   "kind": "device",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     648,
+     942,
+     1271,
+     1010
+    ],
+    [
+     0,
+     0,
+     1920,
+     1080
+    ]
+   ]
+  },
+  {
+   "frame": 2340,
+   "shot": 12,
+   "kind": "device",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     645,
+     942,
+     1274,
+     1010
+    ],
+    [
+     0,
+     0,
+     1920,
+     1080
+    ]
+   ]
+  },
+  {
+   "frame": 2430,
+   "shot": 12,
+   "kind": "device",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     692,
+     942,
+     1227,
+     1010
+    ],
+    [
+     0,
+     0,
+     1920,
+     1080
+    ]
+   ]
+  },
+  {
+   "frame": 2520,
+   "shot": 12,
+   "kind": "device",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     580,
+     942,
+     1339,
+     1010
+    ],
+    [
+     0,
+     0,
+     1920,
+     1080
+    ]
+   ]
+  },
+  {
+   "frame": 2610,
+   "shot": 12,
+   "kind": "device",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     620,
+     942,
+     1299,
+     1010
+    ],
+    [
+     0,
+     0,
+     1920,
+     1080
+    ]
+   ]
+  },
+  {
+   "frame": 2700,
+   "shot": 12,
+   "kind": "device",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     591,
+     942,
+     1328,
+     1010
+    ],
+    [
+     0,
+     0,
+     1920,
+     1080
+    ]
+   ]
+  },
+  {
+   "frame": 2790,
+   "shot": 12,
+   "kind": "device",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     679,
+     942,
+     1240,
+     1010
+    ],
+    [
+     0,
+     0,
+     1920,
+     1080
+    ]
+   ]
+  },
+  {
+   "frame": 2880,
+   "shot": 12,
+   "kind": "device",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     591,
+     942,
+     1328,
+     1010
+    ],
+    [
+     0,
+     0,
+     1920,
+     1080
+    ]
+   ]
+  },
+  {
+   "frame": 2970,
+   "shot": 12,
+   "kind": "device",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     534,
+     942,
+     1385,
+     1010
+    ],
+    [
+     0,
+     0,
+     1920,
+     1080
+    ]
+   ]
+  },
+  {
+   "frame": 3060,
+   "shot": 13,
+   "kind": "picture",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     521,
+     942,
+     1398,
+     1010
+    ]
+   ]
+  },
+  {
+   "frame": 3150,
+   "shot": 13,
+   "kind": "picture",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     84,
+     534,
+     377,
+     700
+    ],
+    [
+     521,
+     942,
+     1398,
+     1010
+    ]
+   ]
+  },
+  {
+   "frame": 3240,
+   "shot": 13,
+   "kind": "picture",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     84,
+     534,
+     377,
+     700
+    ],
+    [
+     483,
+     942,
+     1436,
+     1010
+    ]
+   ]
+  },
+  {
+   "frame": 3330,
+   "shot": 13,
+   "kind": "picture",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     418,
+     942,
+     1501,
+     1010
+    ]
+   ]
+  },
+  {
+   "frame": 3420,
+   "shot": 13,
+   "kind": "picture",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ]
+   ]
+  },
+  {
+   "frame": 3510,
+   "shot": 14,
+   "kind": "picture",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     280,
+     942,
+     1639,
+     1010
+    ]
+   ]
+  },
+  {
+   "frame": 3600,
+   "shot": 14,
+   "kind": "picture",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     544,
+     942,
+     1375,
+     1010
+    ]
+   ]
+  },
+  {
+   "frame": 3690,
+   "shot": 14,
+   "kind": "picture",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     466,
+     942,
+     1453,
+     1010
+    ]
+   ]
+  },
+  {
+   "frame": 3780,
+   "shot": 15,
+   "kind": "picture",
+   "masked": [
+    [
+     1278,
+     20,
+     1895,
+     46
+    ],
+    [
+     431,
+     942,
+     1488,
+     1010
+    ]
+   ]
+  },
+  {
+   "frame": 3870,
+   "shot": 15,
+   "kind": "picture",
+   "masked": [
+    [
+     1278,
+     20,
+     1895,
+     46
+    ],
+    [
+     431,
+     942,
+     1488,
+     1010
+    ]
+   ]
+  },
+  {
+   "frame": 3960,
+   "shot": 15,
+   "kind": "picture",
+   "masked": [
+    [
+     1278,
+     20,
+     1895,
+     46
+    ],
+    [
+     497,
+     942,
+     1422,
+     1010
+    ]
+   ]
+  },
+  {
+   "frame": 4050,
+   "shot": 15,
+   "kind": "picture",
+   "masked": [
+    [
+     1278,
+     20,
+     1895,
+     46
+    ],
+    [
+     534,
+     942,
+     1385,
+     1010
+    ]
+   ]
+  },
+  {
+   "frame": 4140,
+   "shot": 15,
+   "kind": "picture",
+   "masked": [
+    [
+     1278,
+     20,
+     1895,
+     46
+    ]
+   ]
+  },
+  {
+   "frame": 4230,
+   "shot": 16,
+   "kind": "picture",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     84,
+     534,
+     357,
+     700
+    ],
+    [
+     588,
+     942,
+     1331,
+     1010
+    ]
+   ]
+  },
+  {
+   "frame": 4320,
+   "shot": 16,
+   "kind": "picture",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     84,
+     534,
+     357,
+     700
+    ],
+    [
+     622,
+     942,
+     1297,
+     1010
+    ]
+   ]
+  },
+  {
+   "frame": 4410,
+   "shot": 16,
+   "kind": "picture",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     605,
+     942,
+     1314,
+     1010
+    ]
+   ]
+  },
+  {
+   "frame": 4500,
+   "shot": 17,
+   "kind": "picture",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     682,
+     942,
+     1237,
+     1010
+    ]
+   ]
+  },
+  {
+   "frame": 4590,
+   "shot": 17,
+   "kind": "picture",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ],
+    [
+     631,
+     942,
+     1288,
+     1010
+    ]
+   ]
+  },
+  {
+   "frame": 4680,
+   "shot": 17,
+   "kind": "picture",
+   "masked": [
+    [
+     1675,
+     20,
+     1895,
+     42
+    ]
+   ]
+  }
+ ],
+ "voice": {
+  "standard": {
+   "beats": 1,
+   "words": 97,
+   "wpm": 180.7,
+   "pace_wpm": 175.1,
+   "median_f0_hz": 198.3,
+   "mean_pause_s": 0.43
+  },
+  "calm": {
+   "beats": 5,
+   "words": 251,
+   "wpm": 143.7,
+   "pace_wpm": 122.6,
+   "median_f0_hz": 173.9,
+   "mean_pause_s": 0.666
+  }
+ },
+ "voice_problems": [],
+ "preset_problems": [],
+ "sample": {
+  "mp4": "~/Desktop/how-we-know-food-sample/food-sample-chocolate.mp4",
+  "beats_from_script": [
+   0,
+   1,
+   2,
+   5,
+   6,
+   7
+  ],
+  "what": "the chocolate part's hooked cold open, title card, register shift and first calm sections"
+ }
+}

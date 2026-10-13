@@ -7,7 +7,7 @@
   "seedfile": "seeds_method.json",
   "seeds_per_domain": 2,
   "requests_per_domain": 54,
-  "domain_count": 20,
+  "domain_count": 21,
   "domains": {
     "deep-sea-ocean-science": {
       "domain": "deep-sea-ocean-science",
@@ -8380,8 +8380,817 @@
         }
       ],
       "in_current_taxonomy": false
+    },
+    "food-science": {
+      "domain": "food-science",
+      "provenance": {
+        "endpoint": "https://suggestqueries.google.com/complete/search",
+        "surface": "youtube_autocomplete (ds=yt, client=firefox, hl=en, gl=us)",
+        "method": "each seed probed bare, then suffixed with each letter a-z",
+        "started_utc": "2026-10-13T13:24:05.650990+00:00",
+        "finished_utc": "2026-10-13T13:24:35.296228+00:00",
+        "pause_seconds": 0.4,
+        "seeds": [
+          "how do we know about food",
+          "how do scientists know about food"
+        ]
+      },
+      "metrics": {
+        "seed_count": 2,
+        "requests": 54,
+        "empty_responses": 3,
+        "raw_completions": 161,
+        "unique_queries": 55,
+        "depth_per_request": 1.019,
+        "questions": 52,
+        "question_rate": 0.9455,
+        "method_queries": 3,
+        "method_rate": 0.0545,
+        "noise": 0,
+        "noise_rate": 0.0,
+        "excluded": 3,
+        "exclusion_rate": 0.0545,
+        "long_tail_4plus_words": 46,
+        "clean_unique": 52,
+        "clean_rate": 0.9455,
+        "multi_probe_confirmed": 16
+      },
+      "exclusion_breakdown": {
+        "filter.py BARRED": 2,
+        "Dangerous acts, stunts, or anything replicable and harmful": 1
+      },
+      "queries": [
+        {
+          "query": "food pyramid ted ed",
+          "probe_hits": 3,
+          "probes": [
+            "how do scientists know about food a",
+            "how do scientists know about food g",
+            "how do scientists know about food p"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": false,
+          "method": false,
+          "words": 4
+        },
+        {
+          "query": "how do scientists date fossils",
+          "probe_hits": 16,
+          "probes": [
+            "how do scientists know about food",
+            "how do scientists know about food a",
+            "how do scientists know about food d",
+            "how do scientists know about food e"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": true,
+          "words": 5
+        },
+        {
+          "query": "how do scientists find answers",
+          "probe_hits": 1,
+          "probes": [
+            "how do scientists know about food x"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": false,
+          "words": 5
+        },
+        {
+          "query": "how do scientists know so much",
+          "probe_hits": 15,
+          "probes": [
+            "how do scientists know about food",
+            "how do scientists know about food a",
+            "how do scientists know about food c",
+            "how do scientists know about food e"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": true,
+          "words": 6
+        },
+        {
+          "query": "how do scientists know the age of fossils",
+          "probe_hits": 1,
+          "probes": [
+            "how do scientists know about food x"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": true,
+          "words": 8
+        },
+        {
+          "query": "how do they eat in space",
+          "probe_hits": 2,
+          "probes": [
+            "how do scientists know about food o",
+            "how do scientists know about food v"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": false,
+          "words": 6
+        },
+        {
+          "query": "how do they make seaweed",
+          "probe_hits": 1,
+          "probes": [
+            "how do scientists know about food m"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": false,
+          "words": 5
+        },
+        {
+          "query": "how do we eat food",
+          "probe_hits": 1,
+          "probes": [
+            "how do we know about food e"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": false,
+          "words": 5
+        },
+        {
+          "query": "how do we eat in space",
+          "probe_hits": 5,
+          "probes": [
+            "how do scientists know about food b",
+            "how do scientists know about food i",
+            "how do scientists know about food s",
+            "how do scientists know about food u"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": false,
+          "words": 6
+        },
+        {
+          "query": "how do we get our food",
+          "probe_hits": 11,
+          "probes": [
+            "how do we know about food b",
+            "how do we know about food d",
+            "how do we know about food g",
+            "how do we know about food h"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": false,
+          "words": 6
+        },
+        {
+          "query": "how do we produce food",
+          "probe_hits": 3,
+          "probes": [
+            "how do we know about food f",
+            "how do we know about food m",
+            "how do we know about food p"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": false,
+          "words": 5
+        },
+        {
+          "query": "how do we taste food",
+          "probe_hits": 16,
+          "probes": [
+            "how do we know about food a",
+            "how do we know about food c",
+            "how do we know about food e",
+            "how do we know about food f"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": false,
+          "words": 5
+        },
+        {
+          "query": "how do we taste things",
+          "probe_hits": 11,
+          "probes": [
+            "how do we know about food a",
+            "how do we know about food c",
+            "how do we know about food e",
+            "how do we know about food i"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": false,
+          "words": 5
+        },
+        {
+          "query": "how do we use food",
+          "probe_hits": 6,
+          "probes": [
+            "how do we know about food c",
+            "how do we know about food f",
+            "how do we know about food p",
+            "how do we know about food r"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": false,
+          "words": 5
+        },
+        {
+          "query": "how do you eat jackfruit",
+          "probe_hits": 1,
+          "probes": [
+            "how do we know about food z"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": false,
+          "words": 5
+        },
+        {
+          "query": "how do you fry squash",
+          "probe_hits": 1,
+          "probes": [
+            "how do we know about food z"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": false,
+          "words": 5
+        },
+        {
+          "query": "how does food get spoilt",
+          "probe_hits": 1,
+          "probes": [
+            "how do we know about food p"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": false,
+          "words": 5
+        },
+        {
+          "query": "how food affects you",
+          "probe_hits": 1,
+          "probes": [
+            "how do we know about food h"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": false,
+          "words": 4
+        },
+        {
+          "query": "how food becomes energy",
+          "probe_hits": 1,
+          "probes": [
+            "how do scientists know about food b"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": false,
+          "words": 4
+        },
+        {
+          "query": "how food built america",
+          "probe_hits": 1,
+          "probes": [
+            "how do we know about food b"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": false,
+          "words": 4
+        },
+        {
+          "query": "how food chain",
+          "probe_hits": 1,
+          "probes": [
+            "how do we know about food c"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": false,
+          "words": 3
+        },
+        {
+          "query": "how food challenge",
+          "probe_hits": 1,
+          "probes": [
+            "how do we know about food c"
+          ],
+          "noise": false,
+          "excluded": true,
+          "exclusions": [
+            "Dangerous acts, stunts, or anything replicable and harmful"
+          ],
+          "question": true,
+          "method": false,
+          "words": 3
+        },
+        {
+          "query": "how food digest",
+          "probe_hits": 1,
+          "probes": [
+            "how do we know about food d"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": false,
+          "words": 3
+        },
+        {
+          "query": "how food digest in stomach",
+          "probe_hits": 1,
+          "probes": [
+            "how do we know about food d"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": false,
+          "words": 5
+        },
+        {
+          "query": "how food digestion in human body",
+          "probe_hits": 1,
+          "probes": [
+            "how do we know about food d"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": false,
+          "words": 6
+        },
+        {
+          "query": "how food grow",
+          "probe_hits": 1,
+          "probes": [
+            "how do we know about food g"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": false,
+          "words": 3
+        },
+        {
+          "query": "how food made",
+          "probe_hits": 1,
+          "probes": [
+            "how do we know about food m"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": false,
+          "words": 3
+        },
+        {
+          "query": "how food make",
+          "probe_hits": 1,
+          "probes": [
+            "how do we know about food m"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": false,
+          "words": 3
+        },
+        {
+          "query": "how food order in train",
+          "probe_hits": 1,
+          "probes": [
+            "how do we know about food o"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": false,
+          "words": 5
+        },
+        {
+          "query": "how food order in zomato",
+          "probe_hits": 1,
+          "probes": [
+            "how do we know about food o"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": false,
+          "words": 5
+        },
+        {
+          "query": "how food reviews be",
+          "probe_hits": 1,
+          "probes": [
+            "how do we know about food r"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": false,
+          "words": 4
+        },
+        {
+          "query": "how food rots",
+          "probe_hits": 1,
+          "probes": [
+            "how do we know about food h"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": false,
+          "words": 3
+        },
+        {
+          "query": "how food travel",
+          "probe_hits": 1,
+          "probes": [
+            "how do we know about food t"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": false,
+          "words": 3
+        },
+        {
+          "query": "how food video",
+          "probe_hits": 1,
+          "probes": [
+            "how do we know about food v"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": false,
+          "words": 3
+        },
+        {
+          "query": "how food was made",
+          "probe_hits": 1,
+          "probes": [
+            "how do we know about food w"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": false,
+          "words": 4
+        },
+        {
+          "query": "how food you eat affects your brain",
+          "probe_hits": 1,
+          "probes": [
+            "how do we know about food y"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": false,
+          "words": 7
+        },
+        {
+          "query": "how food you eat affects your gut",
+          "probe_hits": 1,
+          "probes": [
+            "how do we know about food y"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": false,
+          "words": 7
+        },
+        {
+          "query": "how to explain food pyramid",
+          "probe_hits": 2,
+          "probes": [
+            "how do scientists know about food p",
+            "how do scientists know about food q"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": false,
+          "words": 5
+        },
+        {
+          "query": "how to spot a fad diet ted ed",
+          "probe_hits": 3,
+          "probes": [
+            "how do scientists know about food d",
+            "how do scientists know about food h",
+            "how do scientists know about food s"
+          ],
+          "noise": false,
+          "excluded": true,
+          "exclusions": [
+            "filter.py BARRED"
+          ],
+          "question": true,
+          "method": false,
+          "words": 8
+        },
+        {
+          "query": "how to try new foods",
+          "probe_hits": 1,
+          "probes": [
+            "how do we know about food v"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": false,
+          "words": 5
+        },
+        {
+          "query": "how we get our food",
+          "probe_hits": 3,
+          "probes": [
+            "how do we know about food b",
+            "how do we know about food d",
+            "how do we know about food p"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": false,
+          "words": 5
+        },
+        {
+          "query": "information about food pyramid",
+          "probe_hits": 1,
+          "probes": [
+            "how do scientists know about food a"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": false,
+          "method": false,
+          "words": 4
+        },
+        {
+          "query": "ted ed how do carbohydrates impact your health",
+          "probe_hits": 3,
+          "probes": [
+            "how do scientists know about food g",
+            "how do scientists know about food n",
+            "how do scientists know about food w"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": false,
+          "method": false,
+          "words": 8
+        },
+        {
+          "query": "what do you eat answer",
+          "probe_hits": 1,
+          "probes": [
+            "how do we know about food q"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": false,
+          "words": 5
+        },
+        {
+          "query": "what is a food label",
+          "probe_hits": 1,
+          "probes": [
+            "how do we know about food l"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": false,
+          "words": 5
+        },
+        {
+          "query": "what is a macrobiotic diet",
+          "probe_hits": 1,
+          "probes": [
+            "how do scientists know about food z"
+          ],
+          "noise": false,
+          "excluded": true,
+          "exclusions": [
+            "filter.py BARRED"
+          ],
+          "question": true,
+          "method": false,
+          "words": 5
+        },
+        {
+          "query": "what is food answer",
+          "probe_hits": 1,
+          "probes": [
+            "how do we know about food q"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": false,
+          "words": 4
+        },
+        {
+          "query": "what is in our food",
+          "probe_hits": 1,
+          "probes": [
+            "how do we know about food y"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": false,
+          "words": 5
+        },
+        {
+          "query": "what is the scientific process",
+          "probe_hits": 1,
+          "probes": [
+            "how do scientists know about food z"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": false,
+          "words": 5
+        },
+        {
+          "query": "where do minerals come from",
+          "probe_hits": 1,
+          "probes": [
+            "how do scientists know about food m"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": false,
+          "words": 5
+        },
+        {
+          "query": "where does come from food",
+          "probe_hits": 19,
+          "probes": [
+            "how do we know about food a",
+            "how do we know about food b",
+            "how do we know about food c",
+            "how do we know about food d"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": false,
+          "words": 5
+        },
+        {
+          "query": "where does food coloring come from",
+          "probe_hits": 1,
+          "probes": [
+            "how do we know about food g"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": false,
+          "words": 6
+        },
+        {
+          "query": "where does food come from book",
+          "probe_hits": 4,
+          "probes": [
+            "how do scientists know about food b",
+            "how do scientists know about food k",
+            "how do scientists know about food n",
+            "how do scientists know about food y"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": false,
+          "words": 6
+        },
+        {
+          "query": "where does my food come from book",
+          "probe_hits": 1,
+          "probes": [
+            "how do we know about food b"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": false,
+          "words": 7
+        },
+        {
+          "query": "why do we cook our food",
+          "probe_hits": 1,
+          "probes": [
+            "how do we know about food w"
+          ],
+          "noise": false,
+          "excluded": false,
+          "exclusions": [],
+          "question": true,
+          "method": false,
+          "words": 6
+        }
+      ],
+      "in_current_taxonomy": false
     }
   },
   "reclassified_at": "2026-08-30T20:45:07.173158+00:00",
-  "reclassified_note": "Query strings are the ORIGINAL mined responses; only the noise/exclusion labels derived from filter.py were recomputed. No new network calls."
+  "reclassified_note": "Query strings are the ORIGINAL mined responses; only the noise/exclusion labels derived from filter.py were recomputed. No new network calls.",
+  "appended": [
+    {
+      "domain": "food-science",
+      "mined_at": "2026-10-13T13:24:35.297178+00:00",
+      "how": "research/mine_broad.py --only food-science, same seed budget, appended 2026-10-13 (third domain)"
+    }
+  ]
 }

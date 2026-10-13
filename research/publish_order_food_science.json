@@ -1,0 +1,760 @@
+{
+  "generated_utc": "2026-10-13T14:08:25.673648+00:00",
+  "generator": "research/publish_order_domain.py seeded questions + demand_probe (free half only), 2026-10-13",
+  "domain": "food-science",
+  "gate_source": "research/publish_order.py, imported unchanged",
+  "thresholds": {
+    "DEMAND_FLOOR": 0.16,
+    "DEMAND_FIRM_BELOW": 0.1,
+    "SATURATION_GAP_CEILING": 0.3,
+    "SATURATION_FIRM_AT_OR_BELOW": 0.1
+  },
+  "status": "COMPETITION_PENDING",
+  "status_note": "The gate needs YouTube search competition (~100 quota units a question) and the channel's one quota was already committed on 2026-10-13 (3,814 units spent by 13:00 UTC, the upload and Shorts lanes still to run). So every seeded question is UNMEASURED here, never queued: demand_without_competition is publish_order.demand_index's own no-competition fallback (corpus breadth + autocomplete), and meets_floor_on_free_signals compares it with the same DEMAND_FLOOR. The Saturday score lane (loop/score.py missing_queues: food-science is allocated with fewer than 4 unwritten topics) runs research/publish_order_domain.py --domain food-science, which screens these seeded questions first (seed_questions), measures competition and writes the real gated queue over this file. Nothing is authored from food-science before then anyway: loop/config.json domains.sample_gate holds it.",
+  "candidate_source": "research/seeds_food_science.json questions, screened by publish_order_domain._screen",
+  "first_video": [
+    "why does bread rise",
+    "why does seared meat taste good",
+    "why does chocolate melt"
+  ],
+  "meets_floor_on_free_signals": [
+    "why does bread rise",
+    "why does chocolate melt",
+    "why does popcorn pop",
+    "why do onions make you cry",
+    "why does cheese melt",
+    "why does bread go stale",
+    "why does honey never spoil",
+    "why does coffee taste bitter",
+    "why does milk curdle",
+    "why do apples turn brown",
+    "why does salt make food taste better",
+    "why does chocolate taste so good"
+  ],
+  "refused_before_scoring": [],
+  "queue": [],
+  "killed": [],
+  "unmeasured": [
+    {
+      "slug": "why-does-bread-rise",
+      "domain": "food-science",
+      "title": "Why does bread rise?",
+      "query": "why does bread rise",
+      "status": "no_competition_score",
+      "admitted_by_screen": true,
+      "screen_refusal": null,
+      "exclusions_admitted": true,
+      "demand_without_competition": 0.5729,
+      "meets_floor_on_free_signals": true,
+      "demand": {
+        "autocomplete_completions": 6,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 7,
+        "key_term": "rise",
+        "key_term_completions": 10,
+        "sample_completions": [
+          "why does bread rise",
+          "why does dough rise",
+          "why does yeast make bread rise",
+          "why does my bread not rise",
+          "why doesn't my bread rise"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-13T14:07:45.532464+00:00"
+        }
+      }
+    },
+    {
+      "slug": "why-does-seared-meat-taste-good",
+      "domain": "food-science",
+      "title": "Why does seared meat taste good?",
+      "query": "why does seared meat taste good",
+      "status": "no_competition_score",
+      "admitted_by_screen": true,
+      "screen_refusal": null,
+      "exclusions_admitted": true,
+      "demand_without_competition": 0.035,
+      "meets_floor_on_free_signals": false,
+      "demand": {
+        "autocomplete_completions": 2,
+        "exact_in_autocomplete": false,
+        "corpus_breadth": 0,
+        "key_term": "good",
+        "key_term_completions": 10,
+        "sample_completions": [
+          "why does meat taste so good",
+          "why steak can be eaten rare"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-13T14:07:46.597347+00:00"
+        }
+      }
+    },
+    {
+      "slug": "why-does-chocolate-melt",
+      "domain": "food-science",
+      "title": "Why does chocolate melt?",
+      "query": "why does chocolate melt",
+      "status": "no_competition_score",
+      "admitted_by_screen": true,
+      "screen_refusal": null,
+      "exclusions_admitted": true,
+      "demand_without_competition": 0.5518,
+      "meets_floor_on_free_signals": true,
+      "demand": {
+        "autocomplete_completions": 3,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 9,
+        "key_term": "melt",
+        "key_term_completions": 10,
+        "sample_completions": [
+          "why does chocolate melt",
+          "why are my chocolate melts so thick",
+          "how can chocolate melt"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-13T14:07:47.647476+00:00"
+        }
+      }
+    },
+    {
+      "slug": "why-does-popcorn-pop",
+      "domain": "food-science",
+      "title": "Why does popcorn pop?",
+      "query": "why does popcorn pop",
+      "status": "no_competition_score",
+      "admitted_by_screen": true,
+      "screen_refusal": null,
+      "exclusions_admitted": true,
+      "demand_without_competition": 0.3325,
+      "meets_floor_on_free_signals": true,
+      "demand": {
+        "autocomplete_completions": 9,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "pop",
+        "key_term_completions": 10,
+        "sample_completions": [
+          "why does popcorn pop",
+          "why does popcorn pop video",
+          "why does popcorn pop scishow",
+          "why does popcorn pop jenny hoyos",
+          "why does popcorn pop aumsum"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-13T14:07:49.007294+00:00"
+        }
+      }
+    },
+    {
+      "slug": "why-do-onions-make-you-cry",
+      "domain": "food-science",
+      "title": "Why do onions make you cry?",
+      "query": "why do onions make you cry",
+      "status": "no_competition_score",
+      "admitted_by_screen": true,
+      "screen_refusal": null,
+      "exclusions_admitted": true,
+      "demand_without_competition": 0.7314,
+      "meets_floor_on_free_signals": true,
+      "demand": {
+        "autocomplete_completions": 10,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 14,
+        "key_term": "cry",
+        "key_term_completions": 10,
+        "sample_completions": [
+          "why do onions make you cry",
+          "why do onions make you cry zack d films",
+          "why do onions make you cry aumsum",
+          "why do onions make you cry muppets",
+          "why do onions make us cry"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-13T14:07:50.038275+00:00"
+        }
+      }
+    },
+    {
+      "slug": "why-does-cheese-melt",
+      "domain": "food-science",
+      "title": "Why does cheese melt?",
+      "query": "why does cheese melt",
+      "status": "no_competition_score",
+      "admitted_by_screen": true,
+      "screen_refusal": null,
+      "exclusions_admitted": true,
+      "demand_without_competition": 0.21,
+      "meets_floor_on_free_signals": true,
+      "demand": {
+        "autocomplete_completions": 2,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "melt",
+        "key_term_completions": 10,
+        "sample_completions": [
+          "why does cheese melt",
+          "does cheddar cheese melt"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-13T14:07:51.065151+00:00"
+        }
+      }
+    },
+    {
+      "slug": "why-do-eggs-turn-white-when-cooked",
+      "domain": "food-science",
+      "title": "Why do eggs turn white when cooked?",
+      "query": "why do eggs turn white when cooked",
+      "status": "no_competition_score",
+      "admitted_by_screen": true,
+      "screen_refusal": null,
+      "exclusions_admitted": true,
+      "demand_without_competition": 0.035,
+      "meets_floor_on_free_signals": false,
+      "demand": {
+        "autocomplete_completions": 2,
+        "exact_in_autocomplete": false,
+        "corpus_breadth": 0,
+        "key_term": "cooked",
+        "key_term_completions": 10,
+        "sample_completions": [
+          "why boiled eggs turn black",
+          "why do eggs turn solid when cooked"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-13T14:07:52.111000+00:00"
+        }
+      }
+    },
+    {
+      "slug": "why-does-bread-go-stale",
+      "domain": "food-science",
+      "title": "Why does bread go stale?",
+      "query": "why does bread go stale",
+      "status": "no_competition_score",
+      "admitted_by_screen": true,
+      "screen_refusal": null,
+      "exclusions_admitted": true,
+      "demand_without_competition": 0.21,
+      "meets_floor_on_free_signals": true,
+      "demand": {
+        "autocomplete_completions": 2,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "stale",
+        "key_term_completions": 10,
+        "sample_completions": [
+          "why does bread go stale",
+          "why does bread get moldy"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-13T14:07:53.139409+00:00"
+        }
+      }
+    },
+    {
+      "slug": "why-does-caramel-turn-brown",
+      "domain": "food-science",
+      "title": "Why does caramel turn brown?",
+      "query": "why does caramel turn brown",
+      "status": "no_competition_score",
+      "admitted_by_screen": false,
+      "screen_refusal": "same question with qualifiers added",
+      "exclusions_admitted": true,
+      "demand_without_competition": 0.0,
+      "meets_floor_on_free_signals": false,
+      "demand": {
+        "autocomplete_completions": 0,
+        "exact_in_autocomplete": false,
+        "corpus_breadth": 0,
+        "key_term": "caramel",
+        "key_term_completions": 10,
+        "sample_completions": [],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-13T14:07:54.184435+00:00"
+        }
+      }
+    },
+    {
+      "slug": "why-does-sourdough-taste-sour",
+      "domain": "food-science",
+      "title": "Why does sourdough taste sour?",
+      "query": "why does sourdough taste sour",
+      "status": "no_competition_score",
+      "admitted_by_screen": true,
+      "screen_refusal": null,
+      "exclusions_admitted": true,
+      "demand_without_competition": 0.035,
+      "meets_floor_on_free_signals": false,
+      "demand": {
+        "autocomplete_completions": 2,
+        "exact_in_autocomplete": false,
+        "corpus_breadth": 0,
+        "key_term": "sour",
+        "key_term_completions": 10,
+        "sample_completions": [
+          "why is sourdough sour",
+          "what does sourdough taste like"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-13T14:07:55.211783+00:00"
+        }
+      }
+    },
+    {
+      "slug": "why-do-chili-peppers-taste-hot",
+      "domain": "food-science",
+      "title": "Why do chili peppers taste hot?",
+      "query": "why do chili peppers taste hot",
+      "status": "no_competition_score",
+      "admitted_by_screen": true,
+      "screen_refusal": null,
+      "exclusions_admitted": true,
+      "demand_without_competition": 0.0525,
+      "meets_floor_on_free_signals": false,
+      "demand": {
+        "autocomplete_completions": 3,
+        "exact_in_autocomplete": false,
+        "corpus_breadth": 0,
+        "key_term": "chili",
+        "key_term_completions": 10,
+        "sample_completions": [
+          "why are chillies hot",
+          "hot peppers health benefits",
+          "why are chili peppers hot"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-13T14:07:56.249414+00:00"
+        }
+      }
+    },
+    {
+      "slug": "why-does-honey-never-spoil",
+      "domain": "food-science",
+      "title": "Why does honey never spoil?",
+      "query": "why does honey never spoil",
+      "status": "no_competition_score",
+      "admitted_by_screen": true,
+      "screen_refusal": null,
+      "exclusions_admitted": true,
+      "demand_without_competition": 0.21,
+      "meets_floor_on_free_signals": true,
+      "demand": {
+        "autocomplete_completions": 2,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "never",
+        "key_term_completions": 10,
+        "sample_completions": [
+          "why does honey never spoil",
+          "why does honey never go bad"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-13T14:07:57.266897+00:00"
+        }
+      }
+    },
+    {
+      "slug": "why-does-ice-cream-melt-so-fast",
+      "domain": "food-science",
+      "title": "Why does ice cream melt so fast?",
+      "query": "why does ice cream melt so fast",
+      "status": "no_competition_score",
+      "admitted_by_screen": true,
+      "screen_refusal": null,
+      "exclusions_admitted": true,
+      "demand_without_competition": 0.0,
+      "meets_floor_on_free_signals": false,
+      "demand": {
+        "autocomplete_completions": 0,
+        "exact_in_autocomplete": false,
+        "corpus_breadth": 0,
+        "key_term": "fast",
+        "key_term_completions": 10,
+        "sample_completions": [],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-13T14:07:58.299591+00:00"
+        }
+      }
+    },
+    {
+      "slug": "why-does-coffee-taste-bitter",
+      "domain": "food-science",
+      "title": "Why does coffee taste bitter?",
+      "query": "why does coffee taste bitter",
+      "status": "no_competition_score",
+      "admitted_by_screen": true,
+      "screen_refusal": null,
+      "exclusions_admitted": true,
+      "demand_without_competition": 0.245,
+      "meets_floor_on_free_signals": true,
+      "demand": {
+        "autocomplete_completions": 4,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "bitter",
+        "key_term_completions": 10,
+        "sample_completions": [
+          "why does coffee taste bitter",
+          "why does coffee taste bad",
+          "why coffee taste bitter",
+          "why does my instant coffee taste bad"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-13T14:07:59.336870+00:00"
+        }
+      }
+    },
+    {
+      "slug": "why-does-milk-curdle",
+      "domain": "food-science",
+      "title": "Why does milk curdle?",
+      "query": "why does milk curdle",
+      "status": "no_competition_score",
+      "admitted_by_screen": true,
+      "screen_refusal": null,
+      "exclusions_admitted": true,
+      "demand_without_competition": 0.1925,
+      "meets_floor_on_free_signals": true,
+      "demand": {
+        "autocomplete_completions": 1,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "curdle",
+        "key_term_completions": 10,
+        "sample_completions": [
+          "why does milk curdle"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-13T14:08:00.397776+00:00"
+        }
+      }
+    },
+    {
+      "slug": "why-do-apples-turn-brown",
+      "domain": "food-science",
+      "title": "Why do apples turn brown?",
+      "query": "why do apples turn brown",
+      "status": "no_competition_score",
+      "admitted_by_screen": true,
+      "screen_refusal": null,
+      "exclusions_admitted": true,
+      "demand_without_competition": 0.21,
+      "meets_floor_on_free_signals": true,
+      "demand": {
+        "autocomplete_completions": 2,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "appl",
+        "key_term_completions": 10,
+        "sample_completions": [
+          "why do apples turn brown",
+          "why do apples go brown"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-13T14:08:01.433520+00:00"
+        }
+      }
+    },
+    {
+      "slug": "why-does-pasta-water-get-starchy",
+      "domain": "food-science",
+      "title": "Why does pasta water get starchy?",
+      "query": "why does pasta water get starchy",
+      "status": "no_competition_score",
+      "admitted_by_screen": true,
+      "screen_refusal": null,
+      "exclusions_admitted": true,
+      "demand_without_competition": 0.0175,
+      "meets_floor_on_free_signals": false,
+      "demand": {
+        "autocomplete_completions": 1,
+        "exact_in_autocomplete": false,
+        "corpus_breadth": 0,
+        "key_term": "starchy",
+        "key_term_completions": 10,
+        "sample_completions": [
+          "what does pasta water do"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-13T14:08:02.465326+00:00"
+        }
+      }
+    },
+    {
+      "slug": "why-does-salt-make-food-taste-better",
+      "domain": "food-science",
+      "title": "Why does salt make food taste better?",
+      "query": "why does salt make food taste better",
+      "status": "no_competition_score",
+      "admitted_by_screen": true,
+      "screen_refusal": null,
+      "exclusions_admitted": true,
+      "demand_without_competition": 0.21,
+      "meets_floor_on_free_signals": true,
+      "demand": {
+        "autocomplete_completions": 2,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "better",
+        "key_term_completions": 10,
+        "sample_completions": [
+          "why does salt make food taste better",
+          "aumsum why does salt make food taste better"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-13T14:08:03.515544+00:00"
+        }
+      }
+    },
+    {
+      "slug": "why-does-garlic-smell-so-strong",
+      "domain": "food-science",
+      "title": "Why does garlic smell so strong?",
+      "query": "why does garlic smell so strong",
+      "status": "no_competition_score",
+      "admitted_by_screen": true,
+      "screen_refusal": null,
+      "exclusions_admitted": true,
+      "demand_without_competition": 0.0,
+      "meets_floor_on_free_signals": false,
+      "demand": {
+        "autocomplete_completions": 0,
+        "exact_in_autocomplete": false,
+        "corpus_breadth": 0,
+        "key_term": "smell",
+        "key_term_completions": 10,
+        "sample_completions": [],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-13T14:08:04.558605+00:00"
+        }
+      }
+    },
+    {
+      "slug": "how-does-cheese-get-its-holes",
+      "domain": "food-science",
+      "title": "How does cheese get its holes?",
+      "query": "how does cheese get its holes",
+      "status": "no_competition_score",
+      "admitted_by_screen": true,
+      "screen_refusal": null,
+      "exclusions_admitted": true,
+      "demand_without_competition": 0.0525,
+      "meets_floor_on_free_signals": false,
+      "demand": {
+        "autocomplete_completions": 3,
+        "exact_in_autocomplete": false,
+        "corpus_breadth": 0,
+        "key_term": "hol",
+        "key_term_completions": 10,
+        "sample_completions": [
+          "how swiss cheese gets its holes",
+          "how does cheese get made",
+          "why do cheese have holes"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-13T14:08:05.603526+00:00"
+        }
+      }
+    },
+    {
+      "slug": "how-does-butter-get-made-from-cream",
+      "domain": "food-science",
+      "title": "How does butter get made from cream?",
+      "query": "how does butter get made from cream",
+      "status": "no_competition_score",
+      "admitted_by_screen": true,
+      "screen_refusal": null,
+      "exclusions_admitted": true,
+      "demand_without_competition": 0.0175,
+      "meets_floor_on_free_signals": false,
+      "demand": {
+        "autocomplete_completions": 1,
+        "exact_in_autocomplete": false,
+        "corpus_breadth": 0,
+        "key_term": "butter",
+        "key_term_completions": 10,
+        "sample_completions": [
+          "how does cream turn into butter"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-13T14:08:06.644579+00:00"
+        }
+      }
+    },
+    {
+      "slug": "why-does-rice-get-sticky",
+      "domain": "food-science",
+      "title": "Why does rice get sticky?",
+      "query": "why does rice get sticky",
+      "status": "no_competition_score",
+      "admitted_by_screen": true,
+      "screen_refusal": null,
+      "exclusions_admitted": true,
+      "demand_without_competition": 0.0175,
+      "meets_floor_on_free_signals": false,
+      "demand": {
+        "autocomplete_completions": 1,
+        "exact_in_autocomplete": false,
+        "corpus_breadth": 0,
+        "key_term": "sticky",
+        "key_term_completions": 10,
+        "sample_completions": [
+          "why does rice get mushy"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-13T14:08:07.676010+00:00"
+        }
+      }
+    },
+    {
+      "slug": "why-does-toast-turn-brown",
+      "domain": "food-science",
+      "title": "Why does toast turn brown?",
+      "query": "why does toast turn brown",
+      "status": "no_competition_score",
+      "admitted_by_screen": false,
+      "screen_refusal": "same question with qualifiers added",
+      "exclusions_admitted": true,
+      "demand_without_competition": 0.0175,
+      "meets_floor_on_free_signals": false,
+      "demand": {
+        "autocomplete_completions": 1,
+        "exact_in_autocomplete": false,
+        "corpus_breadth": 0,
+        "key_term": "turn",
+        "key_term_completions": 10,
+        "sample_completions": [
+          "why toaster won't stay down"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-13T14:08:08.706597+00:00"
+        }
+      }
+    },
+    {
+      "slug": "why-does-meat-need-to-rest-after-cooking",
+      "domain": "food-science",
+      "title": "Why does meat need to rest after cooking?",
+      "query": "why does meat need to rest after cooking",
+      "status": "no_competition_score",
+      "admitted_by_screen": true,
+      "screen_refusal": null,
+      "exclusions_admitted": true,
+      "demand_without_competition": 0.0,
+      "meets_floor_on_free_signals": false,
+      "demand": {
+        "autocomplete_completions": 0,
+        "exact_in_autocomplete": false,
+        "corpus_breadth": 0,
+        "key_term": "after",
+        "key_term_completions": 10,
+        "sample_completions": [],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-13T14:08:09.749514+00:00"
+        }
+      }
+    },
+    {
+      "slug": "why-does-steak-taste-better-seared",
+      "domain": "food-science",
+      "title": "Why does steak taste better seared?",
+      "query": "why does steak taste better seared",
+      "status": "no_competition_score",
+      "admitted_by_screen": true,
+      "screen_refusal": null,
+      "exclusions_admitted": true,
+      "demand_without_competition": 0.0,
+      "meets_floor_on_free_signals": false,
+      "demand": {
+        "autocomplete_completions": 0,
+        "exact_in_autocomplete": false,
+        "corpus_breadth": 0,
+        "key_term": "better",
+        "key_term_completions": 10,
+        "sample_completions": [],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-13T14:08:10.811207+00:00"
+        }
+      }
+    },
+    {
+      "slug": "why-does-chocolate-taste-so-good",
+      "domain": "food-science",
+      "title": "Why does chocolate taste so good?",
+      "query": "why does chocolate taste so good",
+      "status": "no_competition_score",
+      "admitted_by_screen": true,
+      "screen_refusal": null,
+      "exclusions_admitted": true,
+      "demand_without_competition": 0.1925,
+      "meets_floor_on_free_signals": true,
+      "demand": {
+        "autocomplete_completions": 1,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "good",
+        "key_term_completions": 10,
+        "sample_completions": [
+          "why does chocolate taste so good"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-13T14:08:11.881259+00:00"
+        }
+      }
+    }
+  ]
+}

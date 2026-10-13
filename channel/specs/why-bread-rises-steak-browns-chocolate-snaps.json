@@ -1,0 +1,17 @@
+{
+  "_why": "Episode spec for the first food video (docs/CHANNEL-PLAN.md, A third domain: food science). loop/upload.py altered_content() reads `altered_content` and sends YouTube's status.containsSyntheticMedia; visuals/food.py rewrites this file from the full render (which only happens once loop/config.json domains.sample_gate clears).",
+  "slug": "why-bread-rises-steak-browns-chocolate-snaps",
+  "domain": "food-science",
+  "preset": "food-v1",
+  "parts": [
+    "scripts/food/why-does-bread-rise.md",
+    "scripts/food/why-does-seared-meat-taste-good.md",
+    "scripts/food/why-does-chocolate-melt-in-your-mouth-not-your-hand.md"
+  ],
+  "episode_script": "scripts/food/why-bread-rises-steak-browns-chocolate-snaps.md",
+  "altered_content": true,
+  "altered_content_why": "realistic AI stills (Workers AI FLUX.1 schnell, channel/imagery/food_ai.json) are on screen: 'AI stills that look real carry YouTube's altered-content label' (owner, 2026-10-13)",
+  "ai_video_clips": 0,
+  "captions": {"burned_in": true, "sidecar": "srt"},
+  "voice": {"cold_open": "standard", "after_title_card": "calm", "registers": "voice/registers.json"}
+}

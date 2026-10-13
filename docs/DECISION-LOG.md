@@ -1237,3 +1237,40 @@ PRIVATE (never deleted) only after their replacement is public.
   wavs and render (superseded by sha256) or keeps the body for a splice. Until the new cut exists both
   upload lanes hold the episode (`HOOK_REOPEN_PENDING`), so an old-hook render cannot ship by any path.
   Per-slug record of what changed: `loop/state/lengthen.json`.
+
+## 2026-10-13 (later) — the food domain is registered; the chocolate sample is rendered
+
+- **food-science registered as the third domain**, end to end, in one PR: scored into
+  `research/proposed-taxonomy.json` with the same 8-seed general + method mining as the other 20
+  (demand 0.483, between paleontology and incident analysis; competition not measured at domain
+  level, the same state as 13 of the 20); allocation 2 = its Wed/Sat rotation days; source
+  allowlist (USDA/ARS, NIH/PubMed, PubChem, ACS, RSC, AOCS, Institut Pasteur ...); palette and
+  "kitchen scale" device; author brief; thumbnail builder; playlist title; harvester. V52.
+- **Held by a sample gate, not by an empty allocation** (`domains.sample_gate`): authoring and
+  the publish queue refuse food rows by name, the digest does not count its days as gaps, the
+  hand-off lane creates no empty Food shelf. The food scripts wait in `scripts/food/`, outside
+  `scripts/*.md`, which the Mac narrates nightly. Clearing it is one edit (`state: cleared`).
+- **POV top-up drafted, not approved.** Three `tier: specific` food lines are in the bank with
+  `pending_approval`; `pov_match` never selects them and `validate_plan` c10 counts them only
+  while the gate is open. The food scripts use her existing transferable lines.
+- **Topic queue: seeded, competition pending.** 26 questions (the first video's three + 23) are
+  screened first by `publish_order_domain.seed_questions`; the free demand half is recorded, 12
+  meet the floor on it (bread 0.573, chocolate 0.552, onions 0.731 ...; seared meat 0.035 below).
+  The search half (~100 units a question) was NOT spent today: 3,814 units were already gone by
+  13:00 UTC with the upload and Shorts lanes still to run. Saturday's score lane measures it.
+- **Imagery preset `food`** (`visuals/food.py`, V53): the thumbnail grade of #191 mixed for motion,
+  slow zoom + two-layer parallax on stills, 3-5 s cuts then 8-15 s holds, one glowing
+  cross-section per part, credits on every real asset and "AI-GENERATED IMAGE" on every AI one,
+  `altered_content` in the episode spec, which `loop/upload.py` now sends as
+  `containsSyntheticMedia` (the 14 Sep "No" stands for everything without a spec;
+  `loop/video_settings.py` no longer flips a food video back).
+- **Sources, as found:** Workers AI FLUX.1 schnell on the free allowance (19 stills, one refused by eye for a brand-like embossing; capped at 50 a
+  day = 3,000 of 10,000 free neurons); Commons PD/CC0 stills, with an identity screen added after
+  the first pass matched "chocolate bar" to a Spitzer image of the Milky Way; Commons returned no
+  PD/CC0 food clips and Pexels/Pixabay need an account key, so the sample has NO real motion
+  footage; no open video model runs on this 8 GB Mac, so no AI video either - stills with motion.
+- **Calm voice** (`voice/registers.json`, V54): same Chatterbox route; one sentence per breath,
+  0.75 s rests, 1.5 s between paragraphs, -2 semitones by resampling. The first try (-1.5,
+  40-word chunks) measured only 1.3x standard's pauses and was retuned before the sample.
+- **Sound layer** (`visuals/food_sound.py`): Commons PD recordings of frying, pouring and
+  cracking, sidechain-ducked under the voice and measured on the mix.

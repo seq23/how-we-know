@@ -1078,6 +1078,33 @@
       "domain": "materials-and-manufacturing",
       "source": "owner-approved 2026-09-07",
       "line": "'What is it made of' sounds like it wants one element. Silicon is over ninety percent of production, but the defining property is the impurity deliberately added to it, not the base material. I answered the question underneath the question."
+    },
+    {
+      "id": "pov-145",
+      "tag": "evidence-limit",
+      "tier": "specific",
+      "domain": "food-science",
+      "source": "drafted 2026-10-13 for the food sample review",
+      "pending_approval": true,
+      "line": "Every recipe tells you to temper chocolate, and almost none tell you what tempering is doing. It is choosing one crystal out of six. I wanted the thing the instruction was protecting."
+    },
+    {
+      "id": "pov-146",
+      "tag": "thesis",
+      "tier": "specific",
+      "domain": "food-science",
+      "source": "drafted 2026-10-13 for the food sample review",
+      "pending_approval": true,
+      "line": "A good crust is not a matter of taste. It is a reaction somebody had to name, then wait forty years for somebody else to map. The kitchen ran on it the whole time without knowing."
+    },
+    {
+      "id": "pov-147",
+      "tag": "instruments",
+      "tier": "specific",
+      "domain": "food-science",
+      "source": "drafted 2026-10-13 for the food sample review",
+      "pending_approval": true,
+      "line": "I trust a food fact more when it came out of a machine that never tasted anything: a microscope, an X-ray, a gas chromatograph. Taste is where the question starts, not where the answer is checked."
     }
   ],
   "interview_2": "interveiw_2_broad.txt",
@@ -1133,6 +1160,15 @@
       "pov-136",
       "pov-137",
       "pov-138"
+    ]
+  },
+  "food_pending": {
+    "date": "2026-10-13",
+    "note": "Drafted in the owner's established voice for the food-science POV top-up and NOT yet approved. pending_approval lines are never selected by loop/pov_match.py and count for loop/validate_plan.py c10 only while loop/config.json domains.sample_gate['food-science'] is open. Approval = drop pending_approval and set source to 'owner-approved <date>'.",
+    "ids": [
+      "pov-145",
+      "pov-146",
+      "pov-147"
     ]
   }
 }
