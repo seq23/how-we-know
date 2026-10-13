@@ -1,0 +1,101 @@
+{
+  "slug": "how-strong-is-graphene",
+  "title": "Is Graphene Stronger Than Steel?",
+  "grade": "hwk-split-navy-amber-v1",
+  "chosen": "A",
+  "variants": {
+    "A": {
+      "file": "A.jpg",
+      "source": "assets/mat__graphene-lattice__u-s-department-of-energy-science-389-012-009-13784554485-jpg.jpg",
+      "manifest": "materials.json",
+      "subject": "graphene-lattice",
+      "sha256": "344f12e38a3a2fb99e58556c99d48ac723187c84bafb2524a8e8c1e3bf94d691",
+      "box": [
+        1325,
+        373,
+        2880,
+        1248
+      ],
+      "crop": null,
+      "text": "ONLY PERFECT SHEETS",
+      "words": 3,
+      "credit": "DIAGRAM, U.S. DEPARTMENT OF ENERGY FROM UNITED STATES (PUBLIC DOMAIN)",
+      "text_bbox": [
+        46,
+        243,
+        781,
+        664
+      ],
+      "credit_bbox": [
+        526,
+        13,
+        1266,
+        33
+      ],
+      "fill": 0.7801,
+      "energy": 0.909
+    },
+    "B": {
+      "file": "B.jpg",
+      "source": "assets/mat__graphene-lattice__u-s-department-of-energy-science-389-012-009-13784554485-jpg.jpg",
+      "manifest": "materials.json",
+      "subject": "graphene-lattice",
+      "sha256": "344f12e38a3a2fb99e58556c99d48ac723187c84bafb2524a8e8c1e3bf94d691",
+      "box": [
+        1574,
+        303,
+        3129,
+        1178
+      ],
+      "crop": null,
+      "text": "ONE LAYER ONLY",
+      "words": 3,
+      "credit": "DIAGRAM, U.S. DEPARTMENT OF ENERGY FROM UNITED STATES (PUBLIC DOMAIN)",
+      "text_bbox": [
+        711,
+        243,
+        1235,
+        664
+      ],
+      "credit_bbox": [
+        14,
+        13,
+        754,
+        33
+      ],
+      "fill": 0.8743,
+      "energy": 0.9423
+    },
+    "C": {
+      "file": "C.jpg",
+      "source": "assets/mat__graphene-lattice__u-s-department-of-energy-science-389-012-009-13784554485-jpg.jpg",
+      "manifest": "materials.json",
+      "subject": "graphene-lattice",
+      "sha256": "344f12e38a3a2fb99e58556c99d48ac723187c84bafb2524a8e8c1e3bf94d691",
+      "box": [
+        1325,
+        521,
+        2880,
+        1397
+      ],
+      "crop": null,
+      "text": "NO DEFECTS",
+      "words": 2,
+      "credit": "DIAGRAM, U.S. DEPARTMENT OF ENERGY FROM UNITED STATES (PUBLIC DOMAIN)",
+      "text_bbox": [
+        44,
+        342,
+        911,
+        663
+      ],
+      "credit_bbox": [
+        526,
+        13,
+        1266,
+        33
+      ],
+      "fill": 0.6335,
+      "energy": 0.4157
+    }
+  }
+}
