@@ -889,6 +889,14 @@
       "why": "2026-09-13. The Mac lane could not bring main up to date before deciding what to upload, even after loop/mac_sync.py took upstream for every loop-state file the Mac had touched. What is left is a conflict in something a person edited. Refusing to upload against a possibly stale ledger is correct - a duplicate public video is worse than a skipped day - and it must be SEEN: from 12 September this code repeated every morning, was not classified, and its stop file never left the Mac, so nine finished episodes shipped nothing behind a message nobody was shown.",
       "plain": "the Mac could not update its copy of the project"
     },
+    "MAC_NOT_ON_MAIN": {
+      "why": "2026-10-13. The Mac checkout was left on a merged PR's branch (fix/breaker-resets-in-draft). Every Mac lane commits on the current branch and pushes the local main ref, so four Mac-state commits were stranded off main and the 23:00 batch ran from code and scripts 39 commits behind - it would have rendered the stale versions of 13 reopened scripts. loop/mac_sync.py guard refuses the whole night rather than act on the wrong branch.",
+      "plain": "the Mac's copy of the project was on the wrong branch, so the nightly batch refused to run"
+    },
+    "MAC_BEHIND_MAIN": {
+      "why": "2026-10-13. After fetching and pulling, the Mac checkout still did not contain origin/main, so the nightly batch would act on stale scripts. loop/mac_sync.py guard refuses the night.",
+      "plain": "the Mac's copy of the project was behind, so the nightly batch refused to run"
+    },
     "REBASE_IN_PROGRESS": {
       "why": "The Mac lane found a recent or conflicted rebase in .git and will not touch it. A person is in the middle of something, or a conflict is unresolved; either way the lane must not act on that tree.",
       "plain": "the Mac's copy of the project is mid-merge, so the lane left it alone"

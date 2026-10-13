@@ -50,6 +50,7 @@ phase_survey(){ L survey; pending_audio="slug-a:3/9"; pending_render=""; pending
 phase_prepare(){ L prepare; }
 phase_idle(){ return 0; }
 hold_awake(){ :; }
+checkout_guard(){ :; }   # proved separately: loop/tests/test_mac_branch_guard.py
 phase_narrate(){ L narrate; }
 phase_render(){ L render; }
 phase_lengthen(){ L lengthen; }
@@ -179,15 +180,39 @@ check(log2 == ["report_incomplete"], f"(c) reported more than once: {log2}")
 
 # -- d. a running batch holds the lock -> no-op ---------------------------
 cases += 1
-holder = subprocess.Popen(["bash", "-c", "exec -a batch-session-holder sleep 30"])
+# THE HOLDER MUST BE A RECOGNISABLE, LIVE BATCH BEFORE THE SCRIPT LOOKS AT IT.
+# Run 38438192859 attempt 1 (2026-10-13): both lock checks below took the live
+# holder for a stale lock and a second night ran alongside it. The holder was
+# `bash -c "exec -a batch-session-holder sleep 30"` - two execs, a window in
+# which ps can see an empty cmdline, and a bash that exits (leaving a zombie
+# whose cmdline is empty but which `kill -0` still finds) if exec fails - and
+# the script's lock_holder() piped ps into `grep -q` under pipefail, which
+# can lose to SIGPIPE. Not reproduced in 2,400 Linux trials, so every
+# candidate is removed at source: lock_holder() no longer pipes; the holder
+# is ONE execve with argv[0] already set; the case starts only once ps shows
+# the holder's name, and each check first asserts the holder is still that.
+import shutil as _sh                                      # noqa: E402
+import time as _t                                         # noqa: E402
+holder = subprocess.Popen(["batch-session-holder", "30"], executable=_sh.which("sleep"))
+_deadline = _t.monotonic() + 10
+while "batch-session" not in subprocess.run(
+        ["ps", "-p", str(holder.pid), "-o", "command="],
+        capture_output=True, text=True).stdout:
+    if _t.monotonic() > _deadline:
+        fails.append("(d) the lock holder never showed 'batch-session' in ps; "
+                     "the case cannot be set up")
+        break
+    _t.sleep(0.02)
 try:
     dl = TMP / "d"
     dl.mkdir()
     (dl / "batch.lock").write_text(f"{holder.pid}\n")
     (dl / "batch_progress.json").write_text(json.dumps(INCOMPLETE))
+    check(holder.poll() is None, "(d) the lock holder died before the check; setup is broken")
     r, log = again(dl, "2026-10-13T02:30", "--resume-if-interrupted")
     check(r.returncode == 0 and log == [] and "already running" in r.stdout,
           f"(d) resumed alongside a running batch: {r.stdout!r} {log}")
+    check(holder.poll() is None, "(d) the lock holder died before the second check")
     r, log = again(dl, "2026-10-13T02:30")
     check(r.returncode == 0 and log == [] and "another batch session" in r.stdout,
           f"(d) a normal run started a second batch: {r.stdout!r} {log}")
@@ -209,6 +234,9 @@ for now, want in [("2026-10-13T07:30", 1), ("2026-10-13T02:00", 0),
                          "NARRATION_UNTIL": "07:00"}).returncode
     check(rc == want, f"(e) narration-window at {now} = {rc}, want {want}")
 src = SCRIPT.read_text()
+_lh = src[src.index("lock_holder() {"):src.index("take_lock() {")]
+check("| grep" not in _lh and 'case "$cmd" in *batch-session*)' in _lh,
+      "(d) lock_holder() pipes ps into grep again - the pipefail/SIGPIPE race is back")
 check('if [ -n "${pending_audio// }" ] && ! narration_allowed; then' in src,
       "(e) phase_narrate no longer consults narration_allowed")
 

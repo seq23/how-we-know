@@ -130,9 +130,17 @@ BATCH_KILLED=""
 # dead, or alive but no longer this script (pids are reused after a reboot),
 # is stale and is taken over.
 lock_holder() {
-  local pid
+  # NO PIPE INTO `grep -q` HERE. Under `set -o pipefail`, piping ps to grep -q is a
+  # race: grep -q exits on its first match, and if ps writes after that it dies
+  # of SIGPIPE and the pipeline reads as "not a batch" - a live holder taken
+  # for a stale lock. One `ps` into a variable, matched by `case`, has no
+  # second process to lose (loop/tests/test_batch_resume_on_wake.py (d),
+  # which failed once on main on 2026-10-13, run 38438192859 attempt 1).
+  local pid cmd
   pid=$(cat "$BATCH_LOCK" 2>/dev/null) || return 1
-  [ -n "$pid" ] && [ "$pid" != "$$" ] && kill -0 "$pid" 2>/dev/null     && ps -p "$pid" -o command= 2>/dev/null | grep -q "batch-session"     && { echo "$pid"; return 0; }
+  [ -n "$pid" ] && [ "$pid" != "$$" ] && kill -0 "$pid" 2>/dev/null || return 1
+  cmd=$(ps -p "$pid" -o command= 2>/dev/null) || return 1
+  case "$cmd" in *batch-session*) echo "$pid"; return 0 ;; esac
   return 1
 }
 take_lock() {
@@ -176,6 +184,19 @@ narration_allowed() {
   NARRATION_UNTIL="$NARRATION_UNTIL" BP narration-window
 }
 hold_awake() { caffeinate -dimsu -w $$ & }
+# ON MAIN, UP TO DATE, OR NOT AT ALL (2026-10-13). The lanes commit on
+# whatever branch this checkout is on; left on a merged PR's branch it ran
+# 39 commits behind main and would have rendered stale scripts. The guard
+# fetches + fast-forwards and REFUSES the night with a named stop
+# (MAC_NOT_ON_MAIN / PULL_FAILED / MAC_BEHIND_MAIN) otherwise. See
+# loop/mac_sync.py guard; proved by loop/tests/test_mac_branch_guard.py.
+checkout_guard() {
+  echo "--- checkout guard: on main and up to date with origin/main ---"
+  if ! $PY loop/mac_sync.py guard --lane mac-batch; then
+    echo "  the night is refused; nothing was planned, narrated or rendered."
+    exit 3
+  fi
+}
 
 [ -n "${BATCH_TEST_STUBS:-}" ] && . "$BATCH_TEST_STUBS"   # tests only
 if [ -n "$RESUME_ONLY" ]; then
@@ -889,6 +910,7 @@ if ! holder=$(take_lock); then
 fi
 trap 'on_exit $?' EXIT
 trap 'BATCH_KILLED=1; exit 143' TERM INT HUP
+checkout_guard
 BP begin
 PROGRESS_BEGUN=1
 RESUMED_FROM=$(BP resumed-from)
