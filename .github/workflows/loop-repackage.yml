@@ -136,6 +136,19 @@ jobs:
             ARGS="$ARGS --dry-run"
           fi
           bin/loop-stage.sh queue-reopen loop/queue_reopen.py $ARGS
+      - name: Prepare search blocks for descriptions (autocomplete phrasings, chapter questions)
+        if: ${{ !cancelled() }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          ARGS="--needed --limit 60"
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            ARGS="$ARGS --dry-run"
+          fi
+          bin/loop-stage.sh describe loop/describe.py prepare $ARGS
       - name: Apply new titles and thumbnails to live videos
         if: ${{ !cancelled() && github.event.inputs.propose_only != 'true' }}
         env:
