@@ -1,0 +1,1484 @@
+[
+  {
+    "segment": "depth_descent",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "A sperm whale can dive to a depth of 2,992 meters, a figure recorded by digital acoustic tags and published by the Census of Marine Life.",
+    "args": {
+      "to_depth": 2992,
+      "label": "SPERM WHALE RECORD"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Cold open",
+    "narration": "This depth represents a pressure of nearly 300 atmospheres, yet these air-breathing mammals regularly descend into the midnight zone to hunt.",
+    "args": {
+      "lines": [
+        "This depth represents a",
+        "pressure of nearly 300",
+        "atmospheres, yet"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "depth_descent",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "While 2,992 meters is the confirmed SPERM WHALE RECORD, it does not settle the question of their absolute biological limit or how they survive the crushing weight of the deep.",
+    "args": {
+      "to_depth": 2992,
+      "label": "SPERM WHALE RECORD"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 3.5,
+    "heading": "Title card",
+    "narration": "how deep can a sperm whale go?",
+    "args": {
+      "lines": [
+        "how deep can a",
+        "sperm whale go?"
+      ]
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "Digital acoustic tags provide the primary evidence",
+    "narration": "To understand how we know a sperm whale can reach 2,992 meters, we must look at the technology used to track them.",
+    "args": {
+      "title": "TAGGING",
+      "steps": [
+        [
+          "APPROACH",
+          ""
+        ],
+        [
+          "POLE DEPLOYMENT",
+          ""
+        ],
+        [
+          "SUCTION ATTACHMENT",
+          ""
+        ]
+      ],
+      "note": "DATA LOGGING"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Digital acoustic tags provide the primary evidence",
+    "narration": "For most of the twentieth century, our understanding of whale depth was based on indirect evidence from whaling or accidental encounters.",
+    "args": {
+      "lines": [
+        "For most of the",
+        "twentieth century, our understanding",
+        "of whale"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "Digital acoustic tags provide the primary evidence",
+    "narration": "This changed with the development of the DTAG, or digital acoustic recording tag, by researchers at the Woods Hole Oceanographic Institution, or WHOI.",
+    "args": {
+      "title": "TAGGING",
+      "steps": [
+        [
+          "APPROACH",
+          ""
+        ],
+        [
+          "POLE DEPLOYMENT",
+          ""
+        ],
+        [
+          "SUCTION ATTACHMENT",
+          ""
+        ]
+      ],
+      "note": "DATA LOGGING"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Digital acoustic tags provide the primary evidence",
+    "narration": "A DTAG is a compact device equipped with a suite of sensors, including pressure gauges, accelerometers, and magnetometers.",
+    "args": {
+      "lines": [
+        "A DTAG is a",
+        "compact device equipped with",
+        "a suite"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 4.97,
+    "heading": "Digital acoustic tags provide the primary evidence",
+    "narration": "The TAGGING process begins with a careful APPROACH by a research vessel.",
+    "args": {
+      "title": "TAGGING",
+      "steps": [
+        [
+          "APPROACH",
+          ""
+        ],
+        [
+          "POLE DEPLOYMENT",
+          ""
+        ],
+        [
+          "SUCTION ATTACHMENT",
+          ""
+        ]
+      ],
+      "note": "DATA LOGGING"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Digital acoustic tags provide the primary evidence",
+    "narration": "Using a 12-meter carbon fiber POLE DEPLOYMENT, the team achieves a SUCTION ATTACHMENT of the tag onto the whale\u2019s back.",
+    "args": {
+      "lines": [
+        "Using a 12-meter carbon",
+        "fiber POLE DEPLOYMENT, the",
+        "team achieves"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "Digital acoustic tags provide the primary evidence",
+    "narration": "Once secured, the device begins continuous DATA LOGGING of the animal's movements and the surrounding environment, sampling audio at rates up to 192 kilohertz.",
+    "args": {
+      "title": "TAGGING",
+      "steps": [
+        [
+          "APPROACH",
+          ""
+        ],
+        [
+          "POLE DEPLOYMENT",
+          ""
+        ],
+        [
+          "SUCTION ATTACHMENT",
+          ""
+        ]
+      ],
+      "note": "DATA LOGGING"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 5.38,
+    "heading": "Digital acoustic tags provide the primary evidence",
+    "narration": "The PRESSURE SENSOR inside the tag is the critical instrument for depth measurement.",
+    "args": {
+      "title": "DTAG",
+      "stages": [
+        "PRESSURE SENSOR",
+        "VOLTAGE CHANGE"
+      ],
+      "conclusion": "DEPTH DATA"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Digital acoustic tags provide the primary evidence",
+    "narration": "As the whale descends, the increasing weight of the water column exerts force on a silicon diaphragm within the sensor.",
+    "args": {
+      "lines": [
+        "As the whale descends,",
+        "the increasing weight of",
+        "the water"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 7.45,
+    "heading": "Digital acoustic tags provide the primary evidence",
+    "narration": "This force causes a measurable VOLTAGE CHANGE through electrical resistance, which the tag\u2019s computer converts into DEPTH DATA.",
+    "args": {
+      "title": "DTAG",
+      "stages": [
+        "PRESSURE SENSOR",
+        "VOLTAGE CHANGE"
+      ],
+      "conclusion": "DEPTH DATA"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Digital acoustic tags provide the primary evidence",
+    "narration": "Because the tag records data multiple times per second, researchers can reconstruct a high-resolution profile of the entire dive.",
+    "args": {
+      "lines": [
+        "Because the tag records",
+        "data multiple times per",
+        "second, researchers"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "Digital acoustic tags provide the primary evidence",
+    "narration": "This is how the record of 2,992 meters was captured. The tag eventually releases its suction grip, floats to the surface, and emits a radio signal so researchers can retrieve the stored data.",
+    "args": {
+      "title": "DTAG",
+      "stages": [
+        "PRESSURE SENSOR",
+        "VOLTAGE CHANGE"
+      ],
+      "conclusion": "DEPTH DATA"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Digital acoustic tags provide the primary evidence",
+    "narration": "This method has transformed marine biology from a science of surface observations into a science of deep-sea tracking, allowing us to map the three-dimensional path of a whale as it navigates the dark.",
+    "args": {
+      "lines": [
+        "This method has transformed",
+        "marine biology from a",
+        "science"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "uncertainty_bar",
+    "seconds": 8.69,
+    "heading": "Digital acoustic tags provide the primary evidence",
+    "narration": "While 2,992 METERS is the RECORDED MAXIMUM, we maintain a 95% confidence that most extreme dives fall within the 2,250/3,000 range.",
+    "args": {
+      "value": "2,992",
+      "unit": "METERS",
+      "plus": "2,250",
+      "minus": "3,000",
+      "confidence": "95%",
+      "caption": "RECORDED MAXIMUM"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "Digital acoustic tags provide the primary evidence",
+    "narration": "It is important to note that we have only tagged a small fraction of the global population.",
+    "args": {
+      "lines": [
+        "It is important to",
+        "note that we have",
+        "only tagged"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "uncertainty_bar",
+    "seconds": 7.03,
+    "heading": "Digital acoustic tags provide the primary evidence",
+    "narration": "NOAA Ocean Exploration notes that regular foraging dives are more frequently recorded between 600 and 2,250 meters.",
+    "args": {
+      "value": "2,992",
+      "unit": "METERS",
+      "plus": "2,250",
+      "minus": "3,000",
+      "confidence": "95%",
+      "caption": "RECORDED MAXIMUM"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Digital acoustic tags provide the primary evidence",
+    "narration": "The variation in these figures often depends on the local bathymetry and the depth at which their prey is located.",
+    "args": {
+      "lines": [
+        "The variation in these",
+        "figures often depends on",
+        "the local"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "uncertainty_bar",
+    "seconds": 9.0,
+    "heading": "Digital acoustic tags provide the primary evidence",
+    "narration": "In some regions, the seafloor may not even reach 3,000 meters, effectively capping the whale's potential dive depth regardless of its physical capability.",
+    "args": {
+      "value": "2,992",
+      "unit": "METERS",
+      "plus": "2,250",
+      "minus": "3,000",
+      "confidence": "95%",
+      "caption": "RECORDED MAXIMUM"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Digital acoustic tags provide the primary evidence",
+    "narration": "We must view the 2,992 meter record as a verified minimum for the species' potential, rather than an absolute ceiling.",
+    "args": {
+      "lines": [
+        "We must view the",
+        "2,992 meter record as",
+        "a verified"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "uncertainty_bar",
+    "seconds": 9.0,
+    "heading": "Digital acoustic tags provide the primary evidence",
+    "narration": "The data suggests that these animals are not just visiting these depths, but are operating within a well-defined ecological niche that spans several kilometers of the vertical water column.",
+    "args": {
+      "value": "2,992",
+      "unit": "METERS",
+      "plus": "2,250",
+      "minus": "3,000",
+      "confidence": "95%",
+      "caption": "RECORDED MAXIMUM"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "pressure_gauge",
+    "seconds": 7.03,
+    "heading": "Physiology allows survival at 300 atmospheres",
+    "narration": "At a depth of 2,992 meters, the pressure is approximately 300 times greater than at the surface.",
+    "args": {
+      "depth_m": 2992
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Physiology allows survival at 300 atmospheres",
+    "narration": "For a human, or any unpressurized vessel, this would be catastrophic. To survive this, the sperm whale has evolved a suite of biological adaptations.",
+    "args": {
+      "lines": [
+        "For a human, or",
+        "any unpressurized vessel"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "pressure_gauge",
+    "seconds": 7.86,
+    "heading": "Physiology allows survival at 300 atmospheres",
+    "narration": "According to the Smithsonian Ocean portal, one of the most critical is the ability to collapse the rib cage.",
+    "args": {
+      "depth_m": 2992
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Physiology allows survival at 300 atmospheres",
+    "narration": "Unlike humans, whose rigid chests would crack under the weight of the deep ocean, a sperm whale\u2019s ribs are connected by flexible cartilage.",
+    "args": {
+      "lines": [
+        "Unlike humans, whose rigid",
+        "chests would crack under",
+        "the weight"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "pressure_gauge",
+    "seconds": 9.0,
+    "heading": "Physiology allows survival at 300 atmospheres",
+    "narration": "This allows the lungs to fold down completely, which prevents the air inside from being forced into the bloodstream under high pressure, a process that helps avoid the nitrogen narcosis and decompression sickness that plague human divers.",
+    "args": {
+      "depth_m": 2992
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Physiology allows survival at 300 atmospheres",
+    "narration": "By eliminating the air space, the whale becomes essentially incompressible, its internal tissues matching the pressure of the surrounding sea.",
+    "args": {
+      "lines": [
+        "By eliminating the air",
+        "space, the whale becomes",
+        "essentially incompressible"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "anatomy_callout",
+    "seconds": 9.0,
+    "heading": "Physiology allows survival at 300 atmospheres",
+    "narration": "Another vital adaptation is the whale's internal oxygen storage. While humans store most of their oxygen in their lungs, deep-diving whales store it in their blood and muscles.",
+    "args": {
+      "title": "SPERM WHALE",
+      "parts": [
+        [
+          "SPERMACETI ORGAN",
+          0.2,
+          0.3
+        ],
+        [
+          "COLLAPSIBLE LUNGS",
+          0.4,
+          0.5
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Physiology allows survival at 300 atmospheres",
+    "narration": "The SPERM WHALE has a high concentration of hemoglobin in its blood and an even higher concentration of myoglobin in its muscle tissue.",
+    "args": {
+      "lines": [
+        "The SPERM WHALE has",
+        "a high concentration of",
+        "hemoglobin"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "anatomy_callout",
+    "seconds": 9.0,
+    "heading": "Physiology allows survival at 300 atmospheres",
+    "narration": "Myoglobin is a protein that binds oxygen, and in sperm whales, it is found at levels 10 times higher than in terrestrial mammals.",
+    "args": {
+      "title": "SPERM WHALE",
+      "parts": [
+        [
+          "SPERMACETI ORGAN",
+          0.2,
+          0.3
+        ],
+        [
+          "COLLAPSIBLE LUNGS",
+          0.4,
+          0.5
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Physiology allows survival at 300 atmospheres",
+    "narration": "This allows them to remain submerged for 90 minutes or more, even though their COLLAPSIBLE LUNGS are non-functional for the duration of the deep dive.",
+    "args": {
+      "lines": [
+        "This allows them to",
+        "remain submerged for 90",
+        "minutes"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "anatomy_callout",
+    "seconds": 9.0,
+    "heading": "Physiology allows survival at 300 atmospheres",
+    "narration": "The SPERMACETI ORGAN, located in the massive head, also plays a role in this specialized anatomy, though its primary function is related to sound and buoyancy.",
+    "args": {
+      "title": "SPERM WHALE",
+      "parts": [
+        [
+          "SPERMACETI ORGAN",
+          0.2,
+          0.3
+        ],
+        [
+          "COLLAPSIBLE LUNGS",
+          0.4,
+          0.5
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Physiology allows survival at 300 atmospheres",
+    "narration": "During the dive, the whale can shunt blood away from its extremities, prioritizing the oxygen supply for the brain and heart, ensuring that critical functions remain active even as the body endures extreme cold and pressure.",
+    "args": {
+      "lines": [
+        "During the dive, the",
+        "whale can shunt blood",
+        "away"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.45,
+    "heading": "Physiology allows survival at 300 atmospheres",
+    "narration": "The efficiency of this system is what allows the whale to perform what researchers call an AEROBIC DIVE.",
+    "args": {
+      "term": "DIVE",
+      "includes": [
+        "AEROBIC"
+      ],
+      "excludes": [
+        "ANAEROBIC"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Physiology allows survival at 300 atmospheres",
+    "narration": "By managing their oxygen stores carefully, they can stay below the surface for long periods without building up excessive lactic acid.",
+    "args": {
+      "lines": [
+        "By managing their oxygen",
+        "stores carefully, they can",
+        "stay below"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Physiology allows survival at 300 atmospheres",
+    "narration": "This is a delicate balance. If a whale stays down too long and exhausts its oxygen, it must switch to ANAEROBIC metabolism, which requires a much longer recovery time at the surface.",
+    "args": {
+      "term": "DIVE",
+      "includes": [
+        "AEROBIC"
+      ],
+      "excludes": [
+        "ANAEROBIC"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Physiology allows survival at 300 atmospheres",
+    "narration": "Data from WHOI suggests that most sperm whale dives stay within this AEROBIC limit, ensuring they can dive again shortly after a brief interval of breathing at the surface.",
+    "args": {
+      "lines": [
+        "Data from WHOI suggests",
+        "that most sperm whale",
+        "dives stay"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 8.28,
+    "heading": "Physiology allows survival at 300 atmospheres",
+    "narration": "This capacity for rapid \"re-diving\" is essential for a predator that must spend hours each day hunting in the deep.",
+    "args": {
+      "term": "DIVE",
+      "includes": [
+        "AEROBIC"
+      ],
+      "excludes": [
+        "ANAEROBIC"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Physiology allows survival at 300 atmospheres",
+    "narration": "The whale is not just surviving the dive; it is maintaining a high level of athletic performance in an environment that would be lethal to almost any other mammal.",
+    "args": {
+      "lines": [
+        "The whale is not",
+        "just surviving the dive"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "The spermaceti organ may manage buoyancy",
+    "narration": "The sperm whale is named for the spermaceti organ, a massive cavity in its head filled with up to 1,900 liters of a waxy substance called spermaceti oil.",
+    "args": {
+      "term": "BATHYPELAGIC",
+      "meaning": "THE MIDNIGHT ZONE",
+      "boundary": "1,000 to 4,000",
+      "source": "NOAA"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The spermaceti organ may manage buoyancy",
+    "narration": "For decades, scientists have debated the function of this organ. One leading hypothesis, supported by the Monterey Bay Aquarium Research Institute, or MBARI, is that it acts as a buoyancy regulator.",
+    "args": {
+      "lines": [
+        "For decades, scientists have",
+        "debated the function of",
+        "this organ."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "The spermaceti organ may manage buoyancy",
+    "narration": "As the whale begins its descent into the colder waters of the BATHYPELAGIC zone, also known as THE MIDNIGHT ZONE, which NOAA defines as the region between 1,000 to 4,000 meters, it may circulate cold seawater through its nasal passages to cool the oil.",
+    "args": {
+      "term": "BATHYPELAGIC",
+      "meaning": "THE MIDNIGHT ZONE",
+      "boundary": "1,000 to 4,000",
+      "source": "NOAA"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The spermaceti organ may manage buoyancy",
+    "narration": "This cooling process is facilitated by a complex heat exchange system involving the right and left nasal passages, which can selectively expose the oil to the ambient temperature of the deep.",
+    "args": {
+      "lines": [
+        "This cooling process is",
+        "facilitated by a complex",
+        "heat exchange"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "The spermaceti organ may manage buoyancy",
+    "narration": "As the spermaceti oil cools, it solidifies and becomes denser. This increase in density would provide the whale with BUOYANCY CONTROL, helping it sink without having to expend energy swimming downward.",
+    "args": {
+      "title": "DIVE ADAPTATIONS",
+      "items": [
+        "+COLLAPSIBLE LUNGS",
+        "+MYOGLOBIN",
+        "?BUOYANCY CONTROL"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The spermaceti organ may manage buoyancy",
+    "narration": "When the whale is ready to return to the surface, increased blood flow to the organ could warm the wax, melting it and making the whale more buoyant.",
+    "args": {
+      "lines": [
+        "When the whale is",
+        "ready to return to",
+        "the surface"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "The spermaceti organ may manage buoyancy",
+    "narration": "This theory is still a subject of active research, as it is difficult to measure the temperature of the oil in a living, diving whale.",
+    "args": {
+      "title": "DIVE ADAPTATIONS",
+      "items": [
+        "+COLLAPSIBLE LUNGS",
+        "+MYOGLOBIN",
+        "?BUOYANCY CONTROL"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The spermaceti organ may manage buoyancy",
+    "narration": "However, the sheer size of the organ\u2014occupying nearly one-third of the whale's body length\u2014suggests it plays a fundamental role in its deep-sea lifestyle alongside its COLLAPSIBLE LUNGS and high MYOGLOBIN levels.",
+    "args": {
+      "lines": [
+        "However, the sheer size",
+        "of the organ"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "The spermaceti organ may manage buoyancy",
+    "narration": "These DIVE ADAPTATIONS are what make such extreme depths accessible, turning the whale into a biological submarine capable of passive depth changes.",
+    "args": {
+      "title": "DIVE ADAPTATIONS",
+      "items": [
+        "+COLLAPSIBLE LUNGS",
+        "+MYOGLOBIN",
+        "?BUOYANCY CONTROL"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "The spermaceti organ may manage buoyancy",
+    "narration": "If this buoyancy theory is correct, it explains how a creature the size of a school bus can descend to nearly 3,000 meters and return without exhausting its oxygen supply.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "The spermaceti organ may manage buoyancy",
+    "narration": "Every movement in the deep ocean is a calculation of energy. By using a passive system to change its density, the sperm whale preserves its muscle-bound oxygen for the actual hunt.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The spermaceti organ may manage buoyancy",
+    "narration": "This energy conservation is what makes the sperm whale one of the most successful predators in the ocean's interior, allowing it to spend the majority of its life in a realm where food is scarce and the environment is unforgiving.",
+    "args": {
+      "lines": [
+        "This energy conservation is",
+        "what makes the sperm",
+        "whale one"
+      ]
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 6.21,
+    "heading": "Echolocation reveals the deep-sea hunt",
+    "narration": "We know sperm whales are hunting at these depths because the DTAGs also record sound.",
+    "args": {
+      "title": "ECHOLOCATION",
+      "stages": [
+        "CLICK EMISSION",
+        "TARGET REFLECTION"
+      ],
+      "conclusion": "PREY DETECTION"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Echolocation reveals the deep-sea hunt",
+    "narration": "In the total darkness of the deep ocean, eyes are of limited use.",
+    "args": {
+      "lines": [
+        "In the total darkness",
+        "of the deep ocean,",
+        "eyes"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 4.97,
+    "heading": "Echolocation reveals the deep-sea hunt",
+    "narration": "Instead, the sperm whale uses the most powerful biological sonar on Earth.",
+    "args": {
+      "title": "ECHOLOCATION",
+      "stages": [
+        "CLICK EMISSION",
+        "TARGET REFLECTION"
+      ],
+      "conclusion": "PREY DETECTION"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Echolocation reveals the deep-sea hunt",
+    "narration": "By forcing air through specialized structures in its nasal passage known as phonic lips, the whale produces loud clicks.",
+    "args": {
+      "lines": [
+        "By forcing air through",
+        "specialized structures in its",
+        "nasal passage"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 6.21,
+    "heading": "Echolocation reveals the deep-sea hunt",
+    "narration": "The CLICK EMISSION travels through the spermaceti organ, which focuses the sound into a beam.",
+    "args": {
+      "title": "ECHOLOCATION",
+      "stages": [
+        "CLICK EMISSION",
+        "TARGET REFLECTION"
+      ],
+      "conclusion": "PREY DETECTION"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Echolocation reveals the deep-sea hunt",
+    "narration": "When the sound hits an object, like a giant squid, it creates a TARGET REFLECTION that echoes back to the whale.",
+    "args": {
+      "lines": [
+        "When the sound hits",
+        "an object, like a",
+        "giant squid"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 8.69,
+    "heading": "Echolocation reveals the deep-sea hunt",
+    "narration": "This sophisticated PREY DETECTION system allows the whale to \"see\" with sound through ECHOLOCATION, identifying targets from hundreds of meters away.",
+    "args": {
+      "title": "ECHOLOCATION",
+      "stages": [
+        "CLICK EMISSION",
+        "TARGET REFLECTION"
+      ],
+      "conclusion": "PREY DETECTION"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "magnitude_bar",
+    "seconds": 7.45,
+    "heading": "Echolocation reveals the deep-sea hunt",
+    "narration": "The interval between the click and the echo tells the whale exactly how far away the prey is.",
+    "args": {
+      "title": "DEPTH",
+      "unit": "METERS",
+      "items": [
+        [
+          "RECORD",
+          "2,992"
+        ],
+        [
+          "COMMON",
+          "2,250"
+        ],
+        [
+          "CABLE",
+          "1,133"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Echolocation reveals the deep-sea hunt",
+    "narration": "As the whale closes in on its target, the rate of clicking increases, creating a sound known as a \"terminal buzz.\" By syncing this audio data with the depth data from the pressure sensor, researchers can confirm that sperm whales are actively foraging at the bottom of their dives.",
+    "args": {
+      "lines": [
+        "As the whale closes",
+        "in on its target,",
+        "the rate"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "magnitude_bar",
+    "seconds": 9.0,
+    "heading": "Echolocation reveals the deep-sea hunt",
+    "narration": "We have recorded these terminal buzzes at depths exceeding 2,000 meters, proving that the descent to 2,992 meters is not a random event, but a targeted search for food.",
+    "args": {
+      "title": "DEPTH",
+      "unit": "METERS",
+      "items": [
+        [
+          "RECORD",
+          "2,992"
+        ],
+        [
+          "COMMON",
+          "2,250"
+        ],
+        [
+          "CABLE",
+          "1,133"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Echolocation reveals the deep-sea hunt",
+    "narration": "This depth far exceeds the 1,133 meter CABLE record from the mid-twentieth century and the 2,250 meter COMMON foraging depth compared to the 2,992 meter RECORD.",
+    "args": {
+      "lines": [
+        "This depth far exceeds",
+        "the 1,133 meter CABLE",
+        "record"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "magnitude_bar",
+    "seconds": 7.45,
+    "heading": "Echolocation reveals the deep-sea hunt",
+    "narration": "The intensity of these clicks can reach 230 decibels, making them the loudest sounds produced by any animal.",
+    "args": {
+      "title": "DEPTH",
+      "unit": "METERS",
+      "items": [
+        [
+          "RECORD",
+          "2,992"
+        ],
+        [
+          "COMMON",
+          "2,250"
+        ],
+        [
+          "CABLE",
+          "1,133"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 4.97,
+    "heading": "Echolocation reveals the deep-sea hunt",
+    "narration": "The primary targets of these hunts are cephalopods, including the giant squid.",
+    "args": {
+      "title": "DATA SOURCES",
+      "sources": [
+        [
+          "NOAA",
+          "2,250"
+        ],
+        [
+          "WHOI",
+          "2,992"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "Echolocation reveals the deep-sea hunt",
+    "narration": "While we rarely see these battles directly, the evidence is written on the whales themselves.",
+    "args": {
+      "lines": [
+        "While we rarely see",
+        "these battles directly, the",
+        "evidence"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 5.38,
+    "heading": "Echolocation reveals the deep-sea hunt",
+    "narration": "Many adult sperm whales bear circular scars from the suckers of large squid.",
+    "args": {
+      "title": "DATA SOURCES",
+      "sources": [
+        [
+          "NOAA",
+          "2,250"
+        ],
+        [
+          "WHOI",
+          "2,992"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "Echolocation reveals the deep-sea hunt",
+    "narration": "Furthermore, the stomach contents of stranded whales often contain thousands of indigestible squid beaks.",
+    "args": {
+      "lines": [
+        "Furthermore, the stomach contents",
+        "of stranded whales often",
+        "contain thousands"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 9.0,
+    "heading": "Echolocation reveals the deep-sea hunt",
+    "narration": "By identifying the species of squid from these beaks, marine biologists at institutions like the Smithsonian can determine the depth ranges where the whales must have been feeding.",
+    "args": {
+      "title": "DATA SOURCES",
+      "sources": [
+        [
+          "NOAA",
+          "2,250"
+        ],
+        [
+          "WHOI",
+          "2,992"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Echolocation reveals the deep-sea hunt",
+    "narration": "The DATA SOURCES from WHOI and NOAA consistently point to 2,992 and 2,250 meters respectively for these deep-sea predators, confirming that their entire life cycle is tethered to the abyss.",
+    "args": {
+      "lines": [
+        "The DATA SOURCES from",
+        "WHOI and NOAA consistently",
+        "point"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 8.28,
+    "heading": "Producer POV",
+    "narration": "What gets me is the amount of water above you, and how completely unreachable the surface becomes from down there.",
+    "args": {
+      "text": "What gets me is the amount of water above you, and how completely unreachable the surface becomes from down there.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "pressure_gauge",
+    "seconds": 9.0,
+    "heading": "Historical evidence came from telegraph cables",
+    "narration": "Before the era of digital tags, our evidence for sperm whale depth came from a much more destructive source: submarine telegraph cables.",
+    "args": {
+      "depth_m": 1133
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Historical evidence came from telegraph cables",
+    "narration": "In the mid-twentieth century, as global communication networks expanded across the ocean floor, repair crews began finding whales entangled in the lines.",
+    "args": {
+      "lines": [
+        "In the mid-twentieth century,",
+        "as global communication networks",
+        "expanded across"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "pressure_gauge",
+    "seconds": 9.0,
+    "heading": "Historical evidence came from telegraph cables",
+    "narration": "In 1955, a report by geologist Bruce Heezen documented a sperm whale entangled in a CABLE at a depth of 1,133 meters off the coast of South America.",
+    "args": {
+      "depth_m": 1133
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.79,
+    "heading": "Historical evidence came from telegraph cables",
+    "narration": "At the time, this was one of the deepest confirmed records for any mammal.",
+    "args": {
+      "variant": 3
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Historical evidence came from telegraph cables",
+    "narration": "Later, in 1991, SONAR observations began to provide more dynamic data, leading eventually to the first DTAG deployments in 2000 by researchers Mark Johnson and Peter Tyack.",
+    "args": {
+      "lines": [
+        "Later, in 1991, SONAR",
+        "observations began to provide",
+        "more dynamic"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "pressure_gauge",
+    "seconds": 5.38,
+    "heading": "Historical evidence came from telegraph cables",
+    "narration": "While these cable entanglements provided a physical proof of depth, they were imprecise.",
+    "args": {
+      "depth_m": 1133
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Historical evidence came from telegraph cables",
+    "narration": "It was often unclear if the whale had become entangled at that depth or if it had been dragged there by the weight of the cable.",
+    "args": {
+      "variant": 4
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Historical evidence came from telegraph cables",
+    "narration": "However, these incidents established the sperm whale\u2019s reputation as a deep diver long before we had the sensors to prove it.",
+    "args": {
+      "lines": [
+        "However, these incidents established",
+        "the sperm whale\u2019s reputation"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "pressure_gauge",
+    "seconds": 9.0,
+    "heading": "Historical evidence came from telegraph cables",
+    "narration": "To put the modern 2,992 meter record in perspective, it is more than three times the height of the BURJ KHALIFA, the world's tallest building, which stands at 828 meters.",
+    "args": {
+      "depth_m": 1133
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Historical evidence came from telegraph cables",
+    "narration": "The whale is essentially traveling the length of three and a half skyscrapers straight down into the earth and back up on a single breath, enduring a pressure change that would crush any man-made structure not specifically designed for the deep.",
+    "args": {
+      "variant": 0
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "Historical evidence came from telegraph cables",
+    "narration": "The transition from cable entanglements to acoustic tagging represents a shift in how we know the ocean.",
+    "args": {
+      "lines": [
+        "The transition from cable",
+        "entanglements to acoustic tagging",
+        "represents"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Historical evidence came from telegraph cables",
+    "narration": "We moved from accidental, often fatal encounters to precise, non-invasive observation. This has allowed us to see that the 1,133 meter cable record was actually a conservative estimate of the whale's true range.",
+    "args": {
+      "lines": [
+        "We moved from accidental,",
+        "often fatal encounters to",
+        "precise, non-invasive"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "pressure_gauge",
+    "seconds": 9.0,
+    "heading": "Historical evidence came from telegraph cables",
+    "narration": "Modern data shows they regularly double that depth as part of their daily routine, a feat that was once thought impossible for a mammal.",
+    "args": {
+      "depth_m": 1133
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Historical evidence came from telegraph cables",
+    "narration": "This evolution of evidence highlights the importance of technological advancement in our quest to understand the planet's least accessible environments.",
+    "args": {
+      "lines": [
+        "This evolution of evidence",
+        "highlights the importance of",
+        "technological advancement"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 6.21,
+    "heading": "What to notice in the edit",
+    "narration": "When examining the data, it is important to distinguish between \"regular\" behavior and \"maximum\" behavior.",
+    "args": {
+      "title": "DEPTH RECORDS",
+      "sources": [
+        [
+          "GUINNESS",
+          "2,992"
+        ],
+        [
+          "NOAA",
+          "2,250"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "Most scientific literature, including publications from NOAA, focuses on the 2,250 meter range because that is where the majority of the population spends its time.",
+    "args": {
+      "lines": [
+        "Most scientific literature, including",
+        "publications from NOAA, focuses"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "The 2,992 meter figure, also cited by GUINNESS World Records, is an outlier\u2014a record-breaking performance likely achieved by a large male in peak physical condition.",
+    "args": {
+      "title": "DEPTH RECORDS",
+      "sources": [
+        [
+          "GUINNESS",
+          "2,992"
+        ],
+        [
+          "NOAA",
+          "2,250"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "In the edit, you will see that the depth profile of a sperm whale dive is often shaped like a \"U,\" with a rapid descent, a long period of foraging at a consistent depth, and a steady ascent. This \"U\" shape is the hallmark of a focused, energy-efficient hunter.",
+    "args": {
+      "lines": [
+        "In the edit, you",
+        "will see that the",
+        "depth profile"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "uncertainty_bar",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "The evidence we have for the sperm whale's maximum depth is limited by the duration of our observations and the number of tagged individuals.",
+    "args": {
+      "value": "2,992",
+      "unit": "METERS",
+      "plus": "2,250",
+      "minus": "3,000",
+      "confidence": "95%",
+      "caption": "RECORDED MAXIMUM"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "While 2,992 METERS is the highest figure currently recorded by a DTAG, it does not necessarily represent the absolute physiological limit of the species.",
+    "args": {
+      "lines": [
+        "While 2,992 METERS is",
+        "the highest figure currently",
+        "recorded"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "uncertainty_bar",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "Furthermore, other species have since surpassed this record. The Cuvier\u2019s beaked whale has been recorded at depths far beyond 3,000 meters, with one individual reaching 3,700 meters.",
+    "args": {
+      "value": "2,992",
+      "unit": "METERS",
+      "plus": "2,250",
+      "minus": "3,000",
+      "confidence": "95%",
+      "caption": "RECORDED MAXIMUM"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "Evidence limit",
+    "narration": "Our knowledge of \"the deepest\" is always a moving target, defined by the latest successful tag recovery.",
+    "args": {
+      "lines": [
+        "Our knowledge of \"the",
+        "deepest\" is always a",
+        "moving target"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "uncertainty_bar",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "We must acknowledge that there may be sperm whales diving even deeper in parts of the ocean we have yet to monitor, hidden by the sheer scale of the global sea.",
+    "args": {
+      "value": "2,992",
+      "unit": "METERS",
+      "plus": "2,250",
+      "minus": "3,000",
+      "confidence": "95%",
+      "caption": "RECORDED MAXIMUM"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "depth_descent",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "We know the sperm whale can reach 2,992 meters because we have measured the pressure on its back and heard the sound of its hunt in the dark.",
+    "args": {
+      "to_depth": 2992,
+      "label": "SPERM WHALE RECORD"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Closing",
+    "narration": "This figure is not a guess, but a data point captured by sensors that survive where we cannot.",
+    "args": {
+      "lines": [
+        "This figure is not",
+        "a guess, but a",
+        "data point"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "depth_descent",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "As tagging technology improves and we monitor more of the ocean, our understanding of these deep-sea journeys will continue to evolve, likely revealing that the limits of the deep are even further than we currently record.",
+    "args": {
+      "to_depth": 2992,
+      "label": "SPERM WHALE RECORD"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "The sperm whale remains a sentinel of the abyss, a bridge between the world of air and the world of crushing pressure.",
+    "args": {
+      "lines": [
+        "The sperm whale remains",
+        "a sentinel of the",
+        "abyss"
+      ]
+    },
+    "from": "directive-rhythm"
+  }
+]

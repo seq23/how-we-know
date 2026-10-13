@@ -114,18 +114,16 @@ A hydrothermal vent is seawater returning from a journey through hot rock, carry
 
 ## Chapters
 
-- 00:00 Cold open
-- 00:42 Title card
-- 00:47 Geologists predicted vents before anyone saw one
-- 02:12 A vent is the exit of plumbing you cannot see
-- 04:10 The water stays liquid because pressure moves the boiling point
-- 05:25 Vent life runs on chemistry, not sunlight
-- 07:25 Some vents run on rock chemistry instead of magma
-- 08:30 Vents shape more than the animals living on them
-- 09:45 Producer POV
-- 09:55 What to notice in the edit
-- 10:35 Evidence limit
-- 11:15 Closing
+- 0:00 Cold open
+- 0:36 Geologists predicted vents before anyone saw one
+- 1:52 A vent is the exit of plumbing you cannot see
+- 3:36 The water stays liquid because pressure moves the boiling point
+- 4:40 Vent life runs on chemistry, not sunlight
+- 6:42 Some vents run on rock chemistry instead of magma
+- 7:39 Vents shape more than the animals living on them
+- 8:56 What to notice in the edit
+- 9:27 Evidence limit
+- 10:07 Closing
 
 ## Sources
 

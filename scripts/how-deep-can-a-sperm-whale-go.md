@@ -71,7 +71,7 @@ The primary targets of these hunts are cephalopods, including the giant squid. W
 
 ### Producer POV
 
-[HUMAN] How do we know an animal behaves a certain way when we've seen it three times?
+[HUMAN] What gets me is the amount of water above you, and how completely unreachable the surface becomes from down there.
 
 ### Historical evidence came from telegraph cables
 
@@ -111,13 +111,13 @@ We know the sperm whale can reach 2,992 meters because we have measured the pres
 
 ## Chapters
 
-- 00:00 Cold open
-- 00:45 Digital acoustic tags provide the primary evidence
-- 03:15 Physiology allows survival at 300 atmospheres
-- 05:45 The spermaceti organ may manage buoyancy
-- 08:15 Echolocation reveals the deep-sea hunt
-- 10:00 Historical evidence came from telegraph cables
-- 11:15 Evidence limit
+- 0:00 Cold open
+- 0:31 Digital acoustic tags provide the primary evidence
+- 3:29 Physiology allows survival at 300 atmospheres
+- 6:18 The spermaceti organ may manage buoyancy
+- 8:37 Echolocation reveals the deep-sea hunt
+- 11:10 Historical evidence came from telegraph cables
+- 14:08 Evidence limit
 
 ## Sources
 - https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0092633

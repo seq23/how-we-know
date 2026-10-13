@@ -43,7 +43,7 @@ Here is the first place the "how we know" question bites. Synthesis does not sim
 
 ### Producer POV
 
-[HUMAN] How do we know an animal behaves a certain way when we've seen it three times?
+[HUMAN] Deep-sea science builds conclusions from incomplete observations, damaged specimens, sonar, water samples and tiny windows of footage.
 
 ### Verification samples behaviour, then proves what it can
 
@@ -104,18 +104,16 @@ So a microchip is designed the way a careful argument is written: stated in a pr
 
 ## Chapters
 
-- 00:00 Cold open
-- 00:50 Title card
-- 00:53 A chip begins as a description of what it does
-- 02:22 Synthesis turns the description into gates the factory already knows how to make
-- 03:42 Producer POV
-- 03:50 Verification samples behaviour, then proves what it can
-- 05:38 Physical design turns a list of gates into geometry
-- 07:10 Signoff checks the layout against the factory's own rules
-- 08:46 The first chips back from the factory are the real experiment
-- 10:00 What to notice in the edit
-- 10:32 Evidence limit
-- 11:15 Closing
+- 0:00 Cold open
+- 0:42 A chip begins as a description of what it does
+- 2:07 Synthesis turns the description into gates the factory already knows how to make
+- 3:31 Verification samples behaviour, then proves what it can
+- 5:07 Physical design turns a list of gates into geometry
+- 6:28 Signoff checks the layout against the factory's own rules
+- 7:53 The first chips back from the factory are the real experiment
+- 9:00 What to notice in the edit
+- 9:29 Evidence limit
+- 10:06 Closing
 
 ## Sources
 

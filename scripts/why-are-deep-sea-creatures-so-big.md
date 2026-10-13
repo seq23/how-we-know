@@ -43,7 +43,7 @@ Look at what the giants share. They are ectotherms, animals whose body temperatu
 
 ### Producer POV
 
-[HUMAN] When I picture the deep ocean I don't see blue water or fish. I see black. A massive amount of black space where you can't tell what's beside you or beneath you.
+[HUMAN] We talk about the ocean like it's a known thing because it's on every map. Most of what's under the surface is barely documented. We're living on a planet we haven't finished looking at.
 
 ### Cold water makes cold-blooded bodies mature larger
 

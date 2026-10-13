@@ -38,7 +38,7 @@ They live under more than 1,000 times the pressure at the surface, a figure NOAA
 
 ### Producer POV
 
-[HUMAN] When I picture the deep ocean I don't see blue water or fish. I see black. A massive amount of black space where you can't tell what's beside you or beneath you.
+[HUMAN] My first reaction to being wrong is irritation — not because reality contradicted me, but because I let a bad model get far enough into my thinking to become a belief. I don't feel loyalty to being wrong just because I was confidently wrong yesterday.
 
 ### Almost nobody has seen it; machines have waited
 
