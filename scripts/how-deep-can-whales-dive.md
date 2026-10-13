@@ -110,16 +110,18 @@ So how deep can whales dive? At least 2,992 metres, because a tag says so. Beyon
 
 ## Chapters
 
-- 0:00 Cold open
-- 0:35 The record is a sensor reading, not a sighting
-- 2:17 Before tags, depth was inferred from clues
-- 3:51 A deep diver carries its oxygen in its muscles
-- 4:59 Depth and duration are different records
-- 5:56 Other whales dive deep, but their numbers are softer
-- 6:51 The deepest known dive is a floor, not a ceiling
-- 7:41 What to notice in the edit
-- 8:08 Evidence limit
-- 8:37 Closing
+- 00:00 Cold open
+- 00:40 Title card
+- 00:45 The record is a sensor reading, not a sighting
+- 02:45 Before tags, depth was inferred from clues
+- 04:30 Producer POV
+- 04:40 A deep diver carries its oxygen in its muscles
+- 06:05 Depth and duration are different records
+- 07:15 Other whales dive deep, but their numbers are softer
+- 08:25 The deepest known dive is a floor, not a ceiling
+- 09:35 What to notice in the edit
+- 10:15 Evidence limit
+- 11:30 Closing
 
 ## Sources
 

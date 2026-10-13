@@ -397,15 +397,21 @@
         "latency_s": null,
         "outcome": "failed_validation",
         "ts": "2026-10-12T15:24:35Z"
+      },
+      {
+        "lane": "extend.py",
+        "latency_s": 27.9,
+        "outcome": "answered",
+        "ts": "2026-10-13T14:04:09Z"
+      },
+      {
+        "lane": "extend.py",
+        "latency_s": 36.0,
+        "outcome": "answered",
+        "ts": "2026-10-13T14:04:49Z"
       }
     ],
     "nvidia/nemotron-3-ultra-550b-a55b:free": [
-      {
-        "lane": "bench",
-        "latency_s": null,
-        "outcome": "empty",
-        "ts": "2026-10-12T14:00:00Z"
-      },
       {
         "lane": "bench",
         "latency_s": 653.7,
@@ -513,6 +519,18 @@
         "latency_s": 0.0,
         "outcome": "answered",
         "ts": "2026-10-12T17:13:17Z"
+      },
+      {
+        "lane": "extend.py",
+        "latency_s": 0.7,
+        "outcome": "empty",
+        "ts": "2026-10-13T14:03:41Z"
+      },
+      {
+        "lane": "extend.py",
+        "latency_s": 0.8,
+        "outcome": "empty",
+        "ts": "2026-10-13T14:04:13Z"
       }
     ],
     "nvidia/nemotron-3.5-lightning:free": [
