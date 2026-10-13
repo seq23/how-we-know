@@ -1,0 +1,274 @@
+{
+  "_why": "Owner instruction 2026-10-13: the banner said 'bottom of the ocean' (deep sea only) while the channel carries three domains. Owner refinement the same day: the banner and description are OPEN-ENDED. The tagline names the idea, never a domain list, so a new domain never needs a new banner; the description's one domain line is generated from the channel's domains (loop/channel_branding.py channel_domains()) at apply time. Owner rulings later that day: keep the ORIGINAL logo (visuals/brand.py mark() + the Georgia wordmark, drawn by that code, not a copy) and the original wording minus the deep-sea-only clause; the lines read as one thought, question -> answer -> cadence; vivid cinematic panels under one warm-dark grade with soft fades; three candidates, one applied, switching is one command. A domain without an entry under `domains` is refused by the apply and failed by validator V51.",
+  "channel_name": "How We Know",
+  "required_phrases": [
+    "evidence chain",
+    "how we know what we know"
+  ],
+  "banned_wording": [
+    "bottom of the ocean",
+    "bottom of the sea",
+    "deep sea only"
+  ],
+  "applied": "B",
+  "applied_why": "B: the clearest single subject per panel (a red deep-sea jelly, a forge bar throwing sparks, honey falling in one glossy stream) and the clearest reading order: the question, the answer on the next line in the secondary colour, then the cadence - the original lockup's rhythm at the largest legible size. A's one-line version shrinks the type to fit; C's crystal is busy behind the words.",
+  "description_note": "The description itself lives in channel/about.md (its one source, with its provenance); its {{DOMAINS}} token is replaced at apply time by every channel domain's `display` below, joined in plain English. loop/channel_about.py and loop/channel_branding.py both read it through channel_about.read_about(), so they can never push two different texts.",
+  "channel_keywords": [
+    "how we know",
+    "science explained",
+    "evidence",
+    "explainer",
+    "how do scientists know"
+  ],
+  "domains": {
+    "deep-sea-ocean-science": {
+      "display": "the deep sea",
+      "keywords": [
+        "deep sea",
+        "ocean science",
+        "marine biology",
+        "oceanography"
+      ]
+    },
+    "materials-and-manufacturing": {
+      "display": "the materials around you",
+      "keywords": [
+        "materials science",
+        "manufacturing",
+        "how things are made",
+        "metallurgy"
+      ]
+    },
+    "food-science": {
+      "display": "the food on your plate",
+      "keywords": [
+        "food science",
+        "kitchen chemistry",
+        "science of cooking"
+      ]
+    }
+  },
+  "images": {
+    "comb jelly": {
+      "manifest": "channel/imagery/rights.json",
+      "local_file": "assets/biolum__14878__20201015-hires.jpg",
+      "sha256": "57f590e0cd36ce94c33dfb9b1086b58d327e4d60c11c07b557d66dbea88fcb40",
+      "credit": "NOAA Ocean Exploration"
+    },
+    "red jelly": {
+      "manifest": "channel/imagery/rights.json",
+      "local_file": "assets/jelly__14848__20211103-hires.jpg",
+      "sha256": "00b1d01d9359ba41b8cd59bcced9df6a1f0aad87816a422bbab8f68b64a2ad8a",
+      "credit": "NOAA Ocean Exploration"
+    },
+    "dumbo octopus": {
+      "manifest": "channel/imagery/rights.json",
+      "local_file": "assets/octopus__10184__20211217-hires.jpg",
+      "sha256": "31e5b212d8f25651a2ee509c6f8a6352c2aa7165bf6a68b48b5e908bf68ca9b5",
+      "credit": "NOAA Ocean Exploration"
+    },
+    "molten steel": {
+      "manifest": "channel/branding/branding.json",
+      "local_file": "assets/flux__steel1.jpg",
+      "sha256": "68045fcbb86dd032b3baca374e586a14f915ab0ff010867ded51df38a8cf6d71",
+      "credit": "AI image (FLUX.1 schnell)",
+      "rights": {
+        "model": "@cf/black-forest-labs/flux-1-schnell",
+        "provider": "Cloudflare Workers AI (free daily allowance, $0)",
+        "account": "8d147e242033699dd37c6f5a451f48d2",
+        "date": "2026-10-13",
+        "licence": "FLUX.1 [schnell] is Apache-2.0; outputs carry no third-party copyright and no attribution duty. Credited on the banner as an AI image anyway, so nothing reads as a photograph it is not.",
+        "commercial_use_permitted": true,
+        "prompt": "cinematic macro photograph, glowing orange molten steel pouring from a crucible, bright sparks, dark foundry background, realistic, ultra detailed, high contrast"
+      }
+    },
+    "forge": {
+      "manifest": "channel/branding/branding.json",
+      "local_file": "assets/flux__forge1.jpg",
+      "sha256": "2eade993e25157f8883f7a0be9bf02397918517850e97298e3895dfe2aa1c171",
+      "credit": "AI image (FLUX.1 schnell)",
+      "rights": {
+        "model": "@cf/black-forest-labs/flux-1-schnell",
+        "provider": "Cloudflare Workers AI (free daily allowance, $0)",
+        "account": "8d147e242033699dd37c6f5a451f48d2",
+        "date": "2026-10-13",
+        "licence": "FLUX.1 [schnell] is Apache-2.0; outputs carry no third-party copyright and no attribution duty. Credited on the banner as an AI image anyway, so nothing reads as a photograph it is not.",
+        "commercial_use_permitted": true,
+        "prompt": "cinematic photograph, a glowing red-hot steel bar on an anvil being forged, bright orange sparks flying, dark smithy background, realistic, ultra detailed, high contrast"
+      }
+    },
+    "crystal": {
+      "manifest": "channel/branding/branding.json",
+      "local_file": "assets/flux__crystal1.jpg",
+      "sha256": "0ca5504a6be3345953530cc46506be4afa73d2e9f71ea694135aff34f176b10a",
+      "credit": "AI image (FLUX.1 schnell)",
+      "rights": {
+        "model": "@cf/black-forest-labs/flux-1-schnell",
+        "provider": "Cloudflare Workers AI (free daily allowance, $0)",
+        "account": "8d147e242033699dd37c6f5a451f48d2",
+        "date": "2026-10-13",
+        "licence": "FLUX.1 [schnell] is Apache-2.0; outputs carry no third-party copyright and no attribution duty. Credited on the banner as an AI image anyway, so nothing reads as a photograph it is not.",
+        "commercial_use_permitted": true,
+        "prompt": "cinematic macro photograph of a rainbow iridescent bismuth crystal, metallic stepped staircase geometry, gold magenta and teal oxide colours, black background, dramatic studio light, ultra detailed, realistic"
+      }
+    },
+    "chocolate pour": {
+      "manifest": "channel/branding/branding.json",
+      "local_file": "assets/flux__choc1.jpg",
+      "sha256": "07e0794a24e3f605727727ebcfbb7fb86b6593012d70f4e0b2c8f29f19f443f5",
+      "credit": "AI image (FLUX.1 schnell)",
+      "rights": {
+        "model": "@cf/black-forest-labs/flux-1-schnell",
+        "provider": "Cloudflare Workers AI (free daily allowance, $0)",
+        "account": "8d147e242033699dd37c6f5a451f48d2",
+        "date": "2026-10-13",
+        "licence": "FLUX.1 [schnell] is Apache-2.0; outputs carry no third-party copyright and no attribution duty. Credited on the banner as an AI image anyway, so nothing reads as a photograph it is not.",
+        "commercial_use_permitted": true,
+        "prompt": "cinematic macro photograph, a thick glossy ribbon of molten dark chocolate pouring and folding, warm amber rim light, deep black background, shallow depth of field, ultra detailed, realistic"
+      }
+    },
+    "honey": {
+      "manifest": "channel/branding/branding.json",
+      "local_file": "assets/flux__honey1.jpg",
+      "sha256": "881bdd1bb28fd539f0ebc2a855f00feaae4dc7164749699fbe3a56dcd20cbaf3",
+      "credit": "AI image (FLUX.1 schnell)",
+      "rights": {
+        "model": "@cf/black-forest-labs/flux-1-schnell",
+        "provider": "Cloudflare Workers AI (free daily allowance, $0)",
+        "account": "8d147e242033699dd37c6f5a451f48d2",
+        "date": "2026-10-13",
+        "licence": "FLUX.1 [schnell] is Apache-2.0; outputs carry no third-party copyright and no attribution duty. Credited on the banner as an AI image anyway, so nothing reads as a photograph it is not.",
+        "commercial_use_permitted": true,
+        "prompt": "cinematic macro photograph, golden honey dripping from a wooden dipper in a slow glossy stream, backlit warm glow, deep black background, realistic, ultra detailed"
+      }
+    },
+    "chocolate snap": {
+      "manifest": "channel/branding/branding.json",
+      "local_file": "assets/flux__choc2.jpg",
+      "sha256": "3a5b9357d1883ac1f93ad84f91c11347b102a576acf81ff0054e412e93a35a26",
+      "credit": "AI image (FLUX.1 schnell)",
+      "rights": {
+        "model": "@cf/black-forest-labs/flux-1-schnell",
+        "provider": "Cloudflare Workers AI (free daily allowance, $0)",
+        "account": "8d147e242033699dd37c6f5a451f48d2",
+        "date": "2026-10-13",
+        "licence": "FLUX.1 [schnell] is Apache-2.0; outputs carry no third-party copyright and no attribution duty. Credited on the banner as an AI image anyway, so nothing reads as a photograph it is not.",
+        "commercial_use_permitted": true,
+        "prompt": "cinematic macro photograph, a square of dark chocolate snapping in half, glossy surface, crumbs suspended, warm rim light, black background, realistic, ultra detailed"
+      }
+    }
+  },
+  "candidates": {
+    "A": {
+      "lines": [
+        [
+          "How we know what we know? We follow the evidence chain."
+        ],
+        [
+          "NEW EPISODES WEEKLY   ·   @howweknowdeep"
+        ]
+      ],
+      "panels": [
+        {
+          "domain": "deep-sea-ocean-science",
+          "image": "comb jelly",
+          "focus": [
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "domain": "materials-and-manufacturing",
+          "image": "molten steel",
+          "focus": [
+            0.62,
+            0.55
+          ]
+        },
+        {
+          "domain": "food-science",
+          "image": "chocolate pour",
+          "focus": [
+            0.5,
+            0.42
+          ]
+        }
+      ]
+    },
+    "B": {
+      "lines": [
+        [
+          "How we know what we know?",
+          "We follow the evidence chain."
+        ],
+        [
+          "NEW EPISODES WEEKLY   ·   @howweknowdeep"
+        ]
+      ],
+      "panels": [
+        {
+          "domain": "deep-sea-ocean-science",
+          "image": "red jelly",
+          "focus": [
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "domain": "materials-and-manufacturing",
+          "image": "forge",
+          "focus": [
+            0.6,
+            0.5
+          ]
+        },
+        {
+          "domain": "food-science",
+          "image": "honey",
+          "focus": [
+            0.55,
+            0.5
+          ]
+        }
+      ]
+    },
+    "C": {
+      "lines": [
+        [
+          "How we know what we know:",
+          "following the evidence chain."
+        ],
+        [
+          "NEW EPISODES WEEKLY   ·   @howweknowdeep"
+        ]
+      ],
+      "panels": [
+        {
+          "domain": "deep-sea-ocean-science",
+          "image": "dumbo octopus",
+          "focus": [
+            0.82,
+            0.5
+          ]
+        },
+        {
+          "domain": "materials-and-manufacturing",
+          "image": "crystal",
+          "focus": [
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "domain": "food-science",
+          "image": "chocolate snap",
+          "focus": [
+            0.5,
+            0.5
+          ]
+        }
+      ]
+    }
+  },
+  "panels_note": "One panel per entry, left to right; build_banner() divides the safe area by len(panels) and fades each into the next, so a fourth domain's picture is one more entry. Every image is re-hashed against its record before a pixel is used."
+}

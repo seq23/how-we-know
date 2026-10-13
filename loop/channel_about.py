@@ -58,6 +58,7 @@ CHANNELS_URL = "https://www.googleapis.com/youtube/v3/channels"
 
 MARKER_START = "<!-- ABOUT:START -->"
 MARKER_END = "<!-- ABOUT:END -->"
+DOMAINS_TOKEN = "{{DOMAINS}}"
 
 # YouTube caps brandingSettings.channel.description at 1,000 UTF-16 code
 # units (what the API counts, not bytes or code points — identical for this
@@ -109,7 +110,14 @@ def read_about() -> str:
         sys.exit(f"FATAL: {ABOUT_FILE} is missing {MARKER_START!r} / "
                  f"{MARKER_END!r} — nothing to push")
     body = text.split(MARKER_START, 1)[1].split(MARKER_END, 1)[0]
-    return body.strip("\n")
+    body = body.strip("\n")
+    # The one generated line (owner refinement 2026-10-13): the channel's
+    # CURRENT domains, from loop/config.json via loop/channel_branding.py, so
+    # a new domain changes the About text without anyone editing it.
+    if DOMAINS_TOKEN in body:
+        import channel_branding as cb                     # noqa: PLC0415
+        body = body.replace(DOMAINS_TOKEN, cb.domains_phrase(config()))
+    return body
 
 
 def read_channel(token: str) -> dict:
