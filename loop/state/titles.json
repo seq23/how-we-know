@@ -37,17 +37,17 @@
     "03-why-deep-sea-creatures-are-surfacing": {
       "applied_at": null,
       "attempts": 1,
-      "checks_passed": false,
-      "invalidated_at": "2026-10-13T15:07:46+00:00",
-      "invalidated_why": "owner's plainness rule (13 Oct 2026): the title must name its subject in plain words; re-proposed by loop-repackage",
+      "checks_passed": true,
       "model": "claude-subscription/opus",
-      "new_title": "A single stranding is not an earthquake prediction",
+      "new_title": "One Deep Sea Fish Is Not a Trend",
       "old_title": "Why deep sea creatures are surfacing — and how we know",
       "old_title_source": "titles.py (2026-10-08 rule)",
-      "problems": [
-        "title never names the episode's subject in plain words (one of: creatures, deep, sea) - say what it is about, never a metaphor or a riddle for it"
-      ],
-      "proposed_at": "2026-10-13T12:16:19+00:00",
+      "previous": {
+        "applied_at": null,
+        "new_title": "A single stranding is not an earthquake prediction"
+      },
+      "problems": [],
+      "proposed_at": "2026-10-13T17:39:39+00:00",
       "question": "Why deep sea creatures are surfacing?",
       "slug": "03-why-deep-sea-creatures-are-surfacing"
     },
@@ -173,34 +173,34 @@
     "11-what-is-a-dumbo-octopus": {
       "applied_at": null,
       "attempts": 1,
-      "checks_passed": false,
-      "invalidated_at": "2026-10-13T15:30:23+00:00",
-      "invalidated_why": "owner's LOCKED title rule (13 Oct 2026): <=40 chars, sixth grade, one idea, subject first",
+      "checks_passed": true,
       "model": "claude-subscription/opus",
-      "new_title": "Dumbo octopus is not one species, it is a nickname",
+      "new_title": "How Does a Dumbo Octopus Swim?",
       "old_title": "Meet the dumbo octopus — and how we know what it is",
       "old_title_source": "titles.py (2026-10-08 rule)",
-      "problems": [
-        "title is 50 characters, over the 40 a phone shows"
-      ],
-      "proposed_at": "2026-10-13T12:16:32+00:00",
+      "previous": {
+        "applied_at": null,
+        "new_title": "Dumbo octopus is not one species, it is a nickname"
+      },
+      "problems": [],
+      "proposed_at": "2026-10-13T17:39:49+00:00",
       "question": "What is a dumbo octopus?",
       "slug": "11-what-is-a-dumbo-octopus"
     },
     "12-what-is-a-frilled-shark": {
       "applied_at": null,
       "attempts": 1,
-      "checks_passed": false,
-      "invalidated_at": "2026-10-13T15:30:23+00:00",
-      "invalidated_why": "owner's LOCKED title rule (13 Oct 2026): <=40 chars, sixth grade, one idea, subject first",
+      "checks_passed": true,
       "model": "claude-subscription/opus",
-      "new_title": "The frilled shark was not unchanged for 80 million years",
+      "new_title": "Is the Frilled Shark an Eel?",
       "old_title": "Meet the frilled shark — and how we know what it is",
       "old_title_source": "titles.py (2026-10-08 rule)",
-      "problems": [
-        "title is 56 characters, over the 40 a phone shows"
-      ],
-      "proposed_at": "2026-10-13T12:16:55+00:00",
+      "previous": {
+        "applied_at": null,
+        "new_title": "The frilled shark was not unchanged for 80 million years"
+      },
+      "problems": [],
+      "proposed_at": "2026-10-13T17:39:58+00:00",
       "question": "What is a frilled shark?",
       "slug": "12-what-is-a-frilled-shark"
     },
@@ -275,17 +275,17 @@
     "17-what-is-a-yeti-crab": {
       "applied_at": null,
       "attempts": 1,
-      "checks_passed": false,
-      "invalidated_at": "2026-10-13T15:30:23+00:00",
-      "invalidated_why": "owner's LOCKED title rule (13 Oct 2026): <=40 chars, sixth grade, one idea, subject first",
+      "checks_passed": true,
       "model": "claude-subscription/opus",
-      "new_title": "Yeti crab bacteria were food, not camouflage",
+      "new_title": "What Do Yeti Crabs Eat?",
       "old_title": "Meet the yeti crab — and how we know what it is",
       "old_title_source": "titles.py (2026-10-08 rule)",
-      "problems": [
-        "title is 44 characters, over the 40 a phone shows"
-      ],
-      "proposed_at": "2026-10-13T12:17:11+00:00",
+      "previous": {
+        "applied_at": null,
+        "new_title": "Yeti crab bacteria were food, not camouflage"
+      },
+      "problems": [],
+      "proposed_at": "2026-10-13T17:40:06+00:00",
       "question": "What is a yeti crab?",
       "slug": "17-what-is-a-yeti-crab"
     },
@@ -889,5 +889,5 @@
       "slug": "why-is-steel-so-strong"
     }
   },
-  "updated": "2026-10-13T16:09:27+00:00"
+  "updated": "2026-10-13T17:40:06+00:00"
 }
