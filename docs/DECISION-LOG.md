@@ -1195,3 +1195,7 @@ PRIVATE (never deleted) only after their replacement is public.
   as they are. Kept: the title-and-thumbnail pass over all 21 published long-form videos (cheap, reversible,
   triggers YouTube's re-test). The hook, the splice extension and the drain apply to the queue and everything
   after it. The drain shrinks to the queue (~20 episodes, ~10 days at 2/day).
+- **2026-10-13 — No drain; one-a-day rotation** (owner, latest). Fifteen long-form videos were already uploaded
+  private and scheduled through 8 Nov, so there is nothing to drain; they are re-dated onto Mon/Thu deep sea
+  and Tue/Fri materials by API, Wed/Sat held for food. The Mac's render time goes to the food sample and first
+  food video first. The lane is a one-a-day rotation lane; `videos_per_week` moves 4→6 with it.
