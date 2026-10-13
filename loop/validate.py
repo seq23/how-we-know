@@ -3122,12 +3122,23 @@ def v34_niche_lifecycle_is_acted_on() -> Result:
             r.fail(f"promoted {d['promoted']}, expected the next-ranked unused "
                    f"domain {expected}")
         r.examined += 1
-        ceiling = int(cfg["cadence"]["ceiling"])
-        if sum(d["allocation"].values()) != ceiling:
+        # Since the rotation (2026-10-13) the allocation is the REGISTERED
+        # rotation days: retirement keeps that total, and the rotation's
+        # weekdays move with it - else domains.rotation_counts() raises and
+        # takes the whole publishing lane down.
+        if sum(d["allocation"].values()) != sum(alloc.values()):
             r.fail(f"the post-retirement allocation sums to "
-                   f"{sum(d['allocation'].values())}, not cadence.ceiling "
-                   f"{ceiling}. domains.slots_at() raises on that, which would "
-                   f"take the whole publishing lane down.")
+                   f"{sum(d['allocation'].values())}, not the "
+                   f"{sum(alloc.values())} registered rotation days it had.")
+        try:
+            moved = {**cfg, "cadence": {**cfg["cadence"], "rotation": {
+                **(cfg["cadence"].get("rotation") or {}),
+                "weekdays": _dom.rotation_after(cfg, d["allocation"])}},
+                "domains": {**cfg["domains"], "allocation": d["allocation"]}}
+            _dom.slots_at(moved, 2)
+        except ValueError as e:
+            r.fail(f"the post-retirement rotation disagrees with its "
+                   f"allocation: {e}")
         r.examined += 1
         if victim in d["allocation"]:
             r.fail(f"{victim} was retired and still holds slots in the new "
