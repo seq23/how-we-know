@@ -4524,10 +4524,10 @@
 "beat": 1,
 "phase": "opening",
 "register": "standard",
-"asset": "steak-smoke",
+"asset": "steak-lab",
 "segment": "steak",
 "treatment": "play",
-"hands": false,
+"hands": true,
 "offset": 0.0
 },
 {
@@ -4642,11 +4642,11 @@
 "beat": 5,
 "phase": "body",
 "register": "standard",
-"asset": "steak-lab",
+"asset": "steak-pan",
 "segment": "steak",
-"treatment": "play",
+"treatment": "slowmo",
 "hands": true,
-"offset": 0.0
+"offset": 2.5
 },
 {
 "start": 115.18518518518515,
@@ -4747,9 +4747,9 @@
 "beat": 9,
 "phase": "body",
 "register": "standard",
-"asset": "steak-pan",
+"asset": "steak-slowmo",
 "segment": "steak",
-"treatment": "slowmo",
+"treatment": "play",
 "hands": true,
 "offset": 2.5
 },
@@ -4760,9 +4760,9 @@
 "beat": 10,
 "phase": "body",
 "register": "standard",
-"asset": "steak-slowmo",
+"asset": "steak-fry",
 "segment": "steak",
-"treatment": "play",
+"treatment": "slowmo",
 "hands": true,
 "offset": 2.5
 },
@@ -4773,10 +4773,10 @@
 "beat": 10,
 "phase": "body",
 "register": "standard",
-"asset": "steak-fry",
+"asset": "steak-grill-sit",
 "segment": "steak",
-"treatment": "slowmo",
-"hands": true,
+"treatment": "play",
+"hands": false,
 "offset": 2.5
 },
 {
@@ -4800,9 +4800,9 @@
 "beat": 11,
 "phase": "body",
 "register": "standard",
-"asset": "steak-smoke",
+"asset": "steak-roast",
 "segment": "steak",
-"treatment": "slowmo",
+"treatment": "play",
 "hands": false,
 "offset": 2.5
 },
@@ -4813,10 +4813,10 @@
 "beat": 11,
 "phase": "body",
 "register": "standard",
-"asset": "steak-lab",
+"asset": "steak-bbq",
 "segment": "steak",
 "treatment": "play",
-"hands": true,
+"hands": false,
 "offset": 2.5
 },
 {
@@ -4839,9 +4839,9 @@
 "beat": 13,
 "phase": "body",
 "register": "standard",
-"asset": "steak-roast",
+"asset": "steak-coffee",
 "segment": "steak",
-"treatment": "play",
+"treatment": "slowmo",
 "hands": false,
 "offset": 2.5
 },
@@ -4852,7 +4852,7 @@
 "beat": 13,
 "phase": "body",
 "register": "standard",
-"asset": "steak-bbq",
+"asset": "steak-toast",
 "segment": "steak",
 "treatment": "play",
 "hands": false,
@@ -4876,10 +4876,10 @@
 "beat": 15,
 "phase": "body",
 "register": "standard",
-"asset": "steak-coffee",
+"asset": "steak-lab",
 "segment": "steak",
-"treatment": "slowmo",
-"hands": false,
+"treatment": "play",
+"hands": true,
 "offset": 2.5
 },
 {
@@ -4889,11 +4889,11 @@
 "beat": 15,
 "phase": "body",
 "register": "standard",
-"asset": "steak-toast",
+"asset": "steak-coffee",
 "segment": "steak",
-"treatment": "play",
+"treatment": "slowmo",
 "hands": false,
-"offset": 2.5
+"offset": 5.0
 },
 {
 "start": 300.7407407407407,
@@ -4902,12 +4902,12 @@
 "beat": 16,
 "phase": "body",
 "register": "standard",
-"asset": "steak-smoke",
+"asset": "steak-coffee",
 "segment": "steak",
 "treatment": "kaleido",
 "composite": true,
 "hands": false,
-"offset": 5.0
+"offset": 7.5
 },
 {
 "start": 309.969602477354,
@@ -4916,9 +4916,9 @@
 "beat": 16,
 "phase": "body",
 "register": "standard",
-"asset": "steak-coffee",
+"asset": "steak-bbq",
 "segment": "steak",
-"treatment": "slowmo",
+"treatment": "play",
 "hands": false,
 "offset": 5.0
 },
@@ -4929,10 +4929,10 @@
 "beat": 16,
 "phase": "body",
 "register": "standard",
-"asset": "steak-lab",
+"asset": "steak-grill-sit",
 "segment": "steak",
 "treatment": "play",
-"hands": true,
+"hands": false,
 "offset": 5.0
 },
 {
@@ -4994,12 +4994,12 @@
 "beat": 19,
 "phase": "body",
 "register": "standard",
-"asset": "steak-grill-sit",
+"asset": "steak-butter",
 "segment": "steak",
 "treatment": "wall",
 "composite": true,
 "hands": false,
-"offset": 2.5
+"offset": 5.0
 },
 {
 "start": 375.92359528090213,
@@ -5008,11 +5008,11 @@
 "beat": 19,
 "phase": "body",
 "register": "standard",
-"asset": "steak-butter",
+"asset": "steak-flame",
 "segment": "steak",
 "treatment": "slowmo",
 "hands": false,
-"offset": 5.0
+"offset": 2.5
 },
 {
 "start": 382.59259259259255,
@@ -5021,9 +5021,9 @@
 "beat": 20,
 "phase": "body",
 "register": "standard",
-"asset": "steak-roast",
+"asset": "steak-fire",
 "segment": "steak",
-"treatment": "play",
+"treatment": "slowmo",
 "hands": false,
 "offset": 5.0
 },
@@ -5034,7 +5034,7 @@
 "beat": 21,
 "phase": "body",
 "register": "standard",
-"asset": "steak-bbq",
+"asset": "steak-toast",
 "segment": "steak",
 "treatment": "play",
 "hands": false,
@@ -5047,11 +5047,11 @@
 "beat": 21,
 "phase": "body",
 "register": "standard",
-"asset": "steak-flame",
+"asset": "steak-coals",
 "segment": "steak",
 "treatment": "slowmo",
 "hands": false,
-"offset": 2.5
+"offset": 7.5
 },
 {
 "start": 410.0723408241896,
@@ -5060,11 +5060,11 @@
 "beat": 21,
 "phase": "body",
 "register": "standard",
-"asset": "steak-toast",
+"asset": "steak-sizzle",
 "segment": "steak",
-"treatment": "play",
+"treatment": "slowmo",
 "hands": false,
-"offset": 5.0
+"offset": 7.5
 },
 {
 "start": 418.88888888888886,
@@ -5073,11 +5073,11 @@
 "beat": 22,
 "phase": "body",
 "register": "standard",
-"asset": "steak-fire",
+"asset": "steak-sear-grill",
 "segment": "steak",
 "treatment": "slowmo",
 "hands": false,
-"offset": 5.0
+"offset": 10.0
 },
 {
 "start": 428.68170678416925,
@@ -5086,9 +5086,9 @@
 "beat": 22,
 "phase": "body",
 "register": "standard",
-"asset": "steak-coals",
+"asset": "steak-tenderloin",
 "segment": "steak",
-"treatment": "slowmo",
+"treatment": "play",
 "hands": false,
 "offset": 7.5
 },
@@ -5099,12 +5099,12 @@
 "beat": 23,
 "phase": "body",
 "register": "standard",
-"asset": "steak-coffee",
+"asset": "steak-flame",
 "segment": "steak",
 "treatment": "kaleido",
 "composite": true,
 "hands": false,
-"offset": 7.5
+"offset": 5.0
 },
 {
 "start": 445.5555555555555,
@@ -5126,11 +5126,11 @@
 "beat": 24,
 "phase": "body",
 "register": "standard",
-"asset": "steak-sear-grill",
+"asset": "steak-flame",
 "segment": "steak",
 "treatment": "slowmo",
 "hands": false,
-"offset": 10.0
+"offset": 7.5
 },
 {
 "start": 467.037037037037,
@@ -5139,9 +5139,9 @@
 "beat": 25,
 "phase": "body",
 "register": "standard",
-"asset": "steak-sizzle",
+"asset": "steak-seasoned",
 "segment": "steak",
-"treatment": "slowmo",
+"treatment": "play",
 "hands": false,
 "offset": 7.5
 },
@@ -5165,11 +5165,11 @@
 "beat": 26,
 "phase": "body",
 "register": "standard",
-"asset": "steak-flame",
+"asset": "steak-coals",
 "segment": "steak",
 "treatment": "slowmo",
 "hands": false,
-"offset": 5.0
+"offset": 10.0
 },
 {
 "start": 490.0,
@@ -5178,7 +5178,7 @@
 "beat": 27,
 "phase": "body",
 "register": "standard",
-"asset": "steak-tenderloin",
+"asset": "steak-grill-sit",
 "segment": "steak",
 "treatment": "play",
 "hands": false,
@@ -5191,11 +5191,11 @@
 "beat": 27,
 "phase": "body",
 "register": "standard",
-"asset": "steak-seasoned",
+"asset": "steak-coffee",
 "segment": "steak",
-"treatment": "play",
+"treatment": "slowmo",
 "hands": false,
-"offset": 7.5
+"offset": 10.0
 },
 {
 "start": 509.78838516629804,
@@ -5204,12 +5204,12 @@
 "beat": 27,
 "phase": "body",
 "register": "standard",
-"asset": "steak-grill-sit",
+"asset": "steak-bbq",
 "segment": "steak",
 "treatment": "wall",
 "composite": true,
 "hands": false,
-"offset": 5.0
+"offset": 7.5
 },
 {
 "start": 517.4074074074074,
@@ -5218,7 +5218,7 @@
 "beat": 28,
 "phase": "body",
 "register": "standard",
-"asset": "steak-bbq",
+"asset": "steak-toast",
 "segment": "steak",
 "treatment": "play",
 "hands": false,
@@ -5231,11 +5231,11 @@
 "beat": 28,
 "phase": "body",
 "register": "standard",
-"asset": "steak-coffee",
+"asset": "steak-roast",
 "segment": "steak",
-"treatment": "slowmo",
+"treatment": "play",
 "hands": false,
-"offset": 10.0
+"offset": 5.0
 },
 {
 "start": 535.23808814773,
@@ -5244,9 +5244,9 @@
 "beat": 28,
 "phase": "body",
 "register": "standard",
-"asset": "steak-coals",
+"asset": "steak-bbq",
 "segment": "steak",
-"treatment": "slowmo",
+"treatment": "play",
 "hands": false,
 "offset": 10.0
 }
@@ -5255,10 +5255,10 @@
 "real_video_s": 529.26,
 "still_s": 14.44,
 "real_video_share": 0.9734,
-"hands_s": 63.48,
-"hands_share": 0.1168,
-"spectacle_s": 303.69,
-"spectacle_share": 0.5585
+"hands_s": 54.51,
+"hands_share": 0.1003,
+"spectacle_s": 291.8,
+"spectacle_share": 0.5367
 },
 "composites": [
 {
@@ -5324,34 +5324,6 @@
 "beat": 16,
 "phase": "body",
 "register": "standard",
-"asset": "steak-smoke",
-"segment": "steak",
-"treatment": "kaleido",
-"composite": true,
-"hands": false,
-"offset": 5.0
-},
-{
-"start": 366.2361520693911,
-"dur": 9.687443211511024,
-"kind": "picture",
-"beat": 19,
-"phase": "body",
-"register": "standard",
-"asset": "steak-grill-sit",
-"segment": "steak",
-"treatment": "wall",
-"composite": true,
-"hands": false,
-"offset": 2.5
-},
-{
-"start": 437.40740740740733,
-"dur": 8.148148148148147,
-"kind": "picture",
-"beat": 23,
-"phase": "body",
-"register": "standard",
 "asset": "steak-coffee",
 "segment": "steak",
 "treatment": "kaleido",
@@ -5360,18 +5332,46 @@
 "offset": 7.5
 },
 {
+"start": 366.2361520693911,
+"dur": 9.687443211511024,
+"kind": "picture",
+"beat": 19,
+"phase": "body",
+"register": "standard",
+"asset": "steak-butter",
+"segment": "steak",
+"treatment": "wall",
+"composite": true,
+"hands": false,
+"offset": 5.0
+},
+{
+"start": 437.40740740740733,
+"dur": 8.148148148148147,
+"kind": "picture",
+"beat": 23,
+"phase": "body",
+"register": "standard",
+"asset": "steak-flame",
+"segment": "steak",
+"treatment": "kaleido",
+"composite": true,
+"hands": false,
+"offset": 5.0
+},
+{
 "start": 509.78838516629804,
 "dur": 7.6190222411093504,
 "kind": "picture",
 "beat": 27,
 "phase": "body",
 "register": "standard",
-"asset": "steak-grill-sit",
+"asset": "steak-bbq",
 "segment": "steak",
 "treatment": "wall",
 "composite": true,
 "hands": false,
-"offset": 5.0
+"offset": 7.5
 }
 ],
 "credits": {
@@ -5390,7 +5390,6 @@
 "steak-seasoned": "STEAK - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)",
 "steak-sizzle": "STEAK - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)",
 "steak-slowmo": "STEAK - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)",
-"steak-smoke": "AROMA - FOOTAGE, MIXKIT (MIXKIT STOCK VIDEO FREE LICENSE)",
 "steak-tenderloin": "BEEF - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)",
 "steak-toast": "TOAST - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)"
 },
@@ -5413,7 +5412,6 @@
 "steak-seasoned",
 "steak-sizzle",
 "steak-slowmo",
-"steak-smoke",
 "steak-tenderloin",
 "steak-toast"
 ],
@@ -5582,17 +5580,6 @@
 "fetched_at": "2026-10-13T17:36:19+00:00",
 "sha256": "721c3507621d31944c3a4cbdcfb3cd3db31bcbb681786b5c8e363571e956706e",
 "credit_line": "STEAK - FOOTAGE, PIXABAY (PIXABAY CONTENT LICENSE)"
-},
-"steak-smoke": {
-"source": "mixkit",
-"source_id": "50956",
-"item_url": "https://mixkit.co/free-stock-video/soft-and-traslucent-smoke-flows-up-on-a-dark-background-50956/",
-"licence": "Mixkit Stock Video Free License",
-"licence_url": "https://mixkit.co/license/#videoFree",
-"licence_text": "licences/mixkit-stock-video-free-license.txt",
-"fetched_at": "2026-10-13T17:37:13+00:00",
-"sha256": "596bd1478b1d15b09edf036ead4a515a6c316f3b9c58f3f29fa4481abc46e91f",
-"credit_line": "AROMA - FOOTAGE, MIXKIT (MIXKIT STOCK VIDEO FREE LICENSE)"
 },
 "steak-tenderloin": {
 "source": "pixabay",
@@ -6537,10 +6524,10 @@
 "real_video_s": 1722.89,
 "still_s": 63.7,
 "real_video_share": 0.9643,
-"hands_s": 187.14,
-"hands_share": 0.1047,
-"spectacle_s": 945.39,
-"spectacle_share": 0.5292
+"hands_s": 178.16,
+"hands_share": 0.0997,
+"spectacle_s": 933.5,
+"spectacle_share": 0.5225
 },
 "hands_notes": [],
 "clips_per_segment": {
@@ -6587,7 +6574,7 @@
 ]
 },
 "steak": {
-"count": 18,
+"count": 17,
 "by_source": {},
 "clips": [
 "steak-bbq",
@@ -6605,7 +6592,6 @@
 "steak-seasoned",
 "steak-sizzle",
 "steak-slowmo",
-"steak-smoke",
 "steak-tenderloin",
 "steak-toast"
 ]

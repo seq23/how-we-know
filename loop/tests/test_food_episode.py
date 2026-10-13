@@ -79,6 +79,10 @@ check(food.treatment_for({"uses": ["sizzle"]}, "body") == "slowmo"
       and food.treatment_for({"uses": ["flame"]}, "body") == "slowmo",
       "sizzles and flames default to slow motion in the body")
 
+check(FM._span({"black": {"spans": [[0.0, 2.867]]}}, 9.17)[0] > 2.867,
+      "a clip that opens on black is never used from its black (pixabay:71743 put a black frame in the cold open)")
+check(FM._span({"black": {"spans": [[7.0, 9.17]]}}, 9.17)[1] < 7.0, "nor from the black it closes on")
+
 # ------------------------------------------------------ 3. parse and pieces
 paras = food.parse(ROOT / "scripts" / "food" / f"{SLUG}.md")
 pcs = food.pieces(paras)

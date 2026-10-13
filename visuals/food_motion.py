@@ -78,7 +78,16 @@ def _span(rec: dict, clip_dur: float, use: int = 0) -> tuple[float, float]:
         a, b = rng[use % len(rng)]
         return float(a), float(min(b, clip_dur))
     pad = 0.3 if clip_dur > 3 else 0.0
-    return pad, clip_dur - pad
+    a, b = pad, clip_dur - pad
+    # never the black a stock clip opens or closes on (research/food_footage.black_spans)
+    for s, e in (rec.get("black") or {}).get("spans") or []:
+        if s <= a + 0.1:
+            a = max(a, e + 0.1)
+        elif e >= b - 0.1:
+            b = min(b, s - 0.1)
+    if b - a < 1.0:                              # all but black: keep the old span
+        return pad, clip_dur - pad
+    return a, b
 
 
 def ramped_len(span: float, k: float = RAMP_TO, r: float = RAMP_IN_S) -> float:

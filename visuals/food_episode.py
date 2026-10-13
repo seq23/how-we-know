@@ -5,6 +5,7 @@
     .venv/bin/python visuals/food_episode.py render SCRIPT VOICE_ROOT WORK_DIR [--pieces open,chocolate]
     .venv/bin/python visuals/food_episode.py stitch SCRIPT VOICE_ROOT WORK_DIR FINAL.mp4
     .venv/bin/python visuals/food_episode.py check  FINAL.mp4        # the episode contract, on the file
+    .venv/bin/python visuals/food_episode.py describe SCRIPT         # the description template's record
 
 THE FORMAT (docs/CHANNEL-PLAN.md, "A third domain: food science"; owner,
 13 Oct 2026, approving the round-2 chocolate sample: "MUCH better"): one
@@ -331,6 +332,49 @@ def export_episode_proof(work: Path, order: list[str], out: Path) -> Path:
     return out
 
 
+# --------------------------------------------------------------- describe
+def describe(script: Path, chapter_labels: list[str] | None = None, suggest=None) -> dict:
+    """The shared description template's record (loop/describe.py, its own
+    state file and its own functions) for a food episode, whose script lives in
+    scripts/food/ where `describe.py prepare` does not look. 4-8 phrasings,
+    each one the script answers (describe.answered), led by each segment's own
+    question; chapters named as questions by describe.chapter_questions."""
+    sys.path.insert(0, str(ROOT / "loop"))
+    import describe as DS                                      # noqa: PLC0415
+    import longform_title as LT                                # noqa: PLC0415
+    slug = slug_of(script)
+    text = script.read_text(encoding="utf-8")
+    paras = food.parse(script)
+    pcs = food.pieces(paras)
+    seg_qs = [paras[pcs[s][0]]["text"] for s in food.SEGMENTS if s in pcs]
+    title, why, _src = LT.title_for_upload(slug, text, None)
+    if not title:
+        raise ValueError(f"no passing title: {why}")
+    per = max(1, (DS.MAX_QUESTIONS - len(seg_qs)) // max(1, len(seg_qs)))
+    qs: list[str] = []
+    for q in seg_qs:
+        found = DS.search_questions(q.rstrip("?").lower(), q, suggest=suggest, script=text)
+        # answered by the script, and a whole question (an autocomplete stub
+        # like "how chocolate melt" is a search string, not a phrasing to show)
+        keep = [x for x in found if not DS.answered(x, text) and len(x.split()) >= 4
+                and x.split()[0].lower() == q.split()[0].lower()]
+        for x in [q] + [x for x in keep if x.lower() != q.lower()][:per]:
+            if x.lower() not in {y.lower() for y in qs} and len(qs) < DS.MAX_QUESTIONS:
+                qs.append(x)
+    if len(qs) < DS.MIN_QUESTIONS:
+        raise ValueError(f"only {len(qs)} script-answered phrasings")
+    labels = chapter_labels or (["Cold open"] + seg_qs + ["Closing"])
+    names = DS.chapter_questions(title, labels) or {}
+    doc = DS.load()
+    doc["episodes"][slug] = {"questions": qs, "chapter_names": names,
+                             "subject": "bread steak chocolate", "title": title,
+                             "prepared_at": DS._now(),               # noqa: SLF001
+                             "prepared_by": "visuals/food_episode.py describe "
+                                            "(scripts/food/, per-segment phrasings)"}
+    DS.save(doc)
+    return doc["episodes"][slug]
+
+
 # ------------------------------------------------------------------ check
 def check_episode(spec: dict) -> list[str]:
     """The owner's locked food contract on a full episode spec. [] = it ships.
@@ -460,6 +504,9 @@ def main(argv: list[str]) -> int:
         probs = spec["episode_problems"]
         print("\n".join(probs) or "food episode contract holds")
         return 1 if probs else 0
+    if cmd == "describe":
+        print(json.dumps(describe(Path(argv[1])), indent=1))
+        return 0
     if cmd == "check":
         probs = check(Path(argv[1]))
         print("\n".join(probs) or "food episode contract holds")

@@ -333,7 +333,7 @@ WALL_CLIPS_BY = {
 KALEIDO_CLIPS_BY = {
     "chocolate": KALEIDO_CLIPS,
     "bread": ["bread-wheat-field", "bread-mixer", "bread-flour-mill"],
-    "steak": ["steak-fire", "steak-smoke", "steak-coffee", "steak-butter"],
+    "steak": ["steak-fire", "steak-coffee", "steak-butter", "steak-flame"],
     "open": ["fountain-flow", "steak-fire", "bread-wheat-field"],
     "tail": ["sheets", "steak-fire"],
 }
@@ -834,7 +834,8 @@ def render(script: Path, voice_dir: Path, out: Path, beat_idx: list[int] | None,
         n = ends[k] - starts[k] + lead[k]
         key = hashlib.sha256(json.dumps([rec["sha256"], s["treatment"], n, k, s.get("offset"),
                                          FM.VIGNETTE, rec.get("crop"), rec.get("ranges"),
-                                         FM.SLOWMO, FM.PUSH_IN, FM.RAMP_TO, FM.RAMP_IN_S])
+                                         FM.SLOWMO, FM.PUSH_IN, FM.RAMP_TO, FM.RAMP_IN_S,
+                                         (rec.get("black") or {}).get("spans")])
                              .encode()).hexdigest()[:12]
         seg = segdir / f"{k:03d}-{s['treatment']}-{key}.mp4"
         if not seg.exists():

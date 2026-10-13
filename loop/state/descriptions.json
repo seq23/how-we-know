@@ -1199,6 +1199,20 @@
       "subject": "deep sea creatures",
       "title": "Most deep-sea creatures are not big"
     },
+    "why-bread-rises-steak-browns-chocolate-snaps": {
+      "chapter_names": {},
+      "prepared_at": "2026-10-13T18:55:21+00:00",
+      "prepared_by": "visuals/food_episode.py describe (scripts/food/, per-segment phrasings)",
+      "questions": [
+        "Why does chocolate melt in your mouth but not in your hand?",
+        "Why does bread rise?",
+        "Why does dough rise?",
+        "Why does seared meat taste so good?",
+        "Why does meat taste so good?"
+      ],
+      "subject": "bread steak chocolate",
+      "title": "Bread, Steak, Chocolate: What's Inside?"
+    },
     "why-deep-sea-fish-die-when-brought-to-surface": {
       "chapter_names": {
         "Closing": "So why do the eyes bulge?",
@@ -1318,5 +1332,5 @@
       "title": "What Makes Steel So Strong?"
     }
   },
-  "updated": "2026-10-13T18:44:23+00:00"
+  "updated": "2026-10-13T18:55:21+00:00"
 }

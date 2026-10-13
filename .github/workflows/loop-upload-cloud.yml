@@ -55,7 +55,10 @@ concurrency:
 
 jobs:
   upload:
-    timeout-minutes: 5  # ~3x median 1.1m over 8 green runs; fault detector, not a budget
+    # ~3x median 1.1m over 8 green runs for ~10-minute episodes (~100 MB). A 30-minute
+    # food episode (13 Oct 2026) is ~6x the bytes both ways (R2 parts down, YouTube up):
+    # 25 is ~4x its expected ~6 min - a fault detector, not a budget.
+    timeout-minutes: 25
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

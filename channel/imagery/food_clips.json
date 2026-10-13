@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T17:44:33+00:00",
+  "generated": "2026-10-13T18:08:37+00:00",
   "domain": "food-science",
   "module": "research/food_footage.py",
   "policy": "Real video only, through the free fallback chain (Pixabay, Pexels, Mixkit, [Coverr disabled by its terms], Commons PD/CC0, Internet Archive PD collections, NASA). Licences allow commercial reuse without attribution; every clip is still credited on screen.",
@@ -16,7 +16,7 @@
     "depicts",
     "subject_basis"
   ],
-  "asset_count": 48,
+  "asset_count": 47,
   "chain": [
     "pixabay",
     "pexels",
@@ -36,7 +36,7 @@
     "nasa": "usable"
   },
   "resolved_by_source": {
-    "mixkit": 11,
+    "mixkit": 10,
     "pixabay": 37,
     "commons": 1
   },
@@ -108,6 +108,10 @@
         "detail": 0.996,
         "frames": 5,
         "sha256": "5649ac859b09592985d2e667f0f5925fe1ae4097fa4ea6b55c55b7574af5e9d3"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "5649ac859b09592985d2e667f0f5925fe1ae4097fa4ea6b55c55b7574af5e9d3"
       }
     },
     {
@@ -156,6 +160,10 @@
         "detail": 0.332,
         "frames": 5,
         "sha256": "8519c94cbeed1db121126dcb31199b7c3d7cbbad471b285788b9af7a82bf29b3"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "8519c94cbeed1db121126dcb31199b7c3d7cbbad471b285788b9af7a82bf29b3"
       }
     },
     {
@@ -202,6 +210,10 @@
         "gloss": 0.0,
         "detail": 0.346,
         "frames": 5,
+        "sha256": "871a4ba36c7eb097def67430a5111812c22b305df3edc374b61382f3f5f890b2"
+      },
+      "black": {
+        "spans": [],
         "sha256": "871a4ba36c7eb097def67430a5111812c22b305df3edc374b61382f3f5f890b2"
       }
     },
@@ -250,6 +262,10 @@
         "detail": 0.424,
         "frames": 5,
         "sha256": "9308b7ca82fbbc857ef4e7a452f9b3a785420a446a2d4f7dcf05c9c27f7d255e"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "9308b7ca82fbbc857ef4e7a452f9b3a785420a446a2d4f7dcf05c9c27f7d255e"
       }
     },
     {
@@ -295,6 +311,10 @@
         "gloss": 0.006,
         "detail": 0.486,
         "frames": 5,
+        "sha256": "f4414913f9e2b95fa7f7e21c23f6955b10bd65ebf2baf71faaafc87e615424ea"
+      },
+      "black": {
+        "spans": [],
         "sha256": "f4414913f9e2b95fa7f7e21c23f6955b10bd65ebf2baf71faaafc87e615424ea"
       }
     },
@@ -342,6 +362,10 @@
         "detail": 0.397,
         "frames": 5,
         "sha256": "3fc20696621a43e9958d28b91a3a4286a20183190d047687e64eb21f825d6147"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "3fc20696621a43e9958d28b91a3a4286a20183190d047687e64eb21f825d6147"
       }
     },
     {
@@ -386,6 +410,10 @@
         "gloss": 0.034,
         "detail": 0.694,
         "frames": 5,
+        "sha256": "a9ebd2c787a2087b5386327dc9171a915fa09c820582f0b41a4c3cf230d85794"
+      },
+      "black": {
+        "spans": [],
         "sha256": "a9ebd2c787a2087b5386327dc9171a915fa09c820582f0b41a4c3cf230d85794"
       }
     },
@@ -440,6 +468,10 @@
         "detail": 0.63,
         "frames": 5,
         "sha256": "a0467b8a56c619ed909c13d33772b1349af37a5772d63cd35734f472409c2e2e"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "a0467b8a56c619ed909c13d33772b1349af37a5772d63cd35734f472409c2e2e"
       }
     },
     {
@@ -485,6 +517,10 @@
         "gloss": 0.41,
         "detail": 0.9,
         "frames": 5,
+        "sha256": "96b90dbb4a47c27e3cf342bc81dbf679ee7f57dd7245ac0c5d3d4039be06e475"
+      },
+      "black": {
+        "spans": [],
         "sha256": "96b90dbb4a47c27e3cf342bc81dbf679ee7f57dd7245ac0c5d3d4039be06e475"
       }
     },
@@ -533,6 +569,10 @@
         "detail": 0.347,
         "frames": 5,
         "sha256": "66de1f2f9ce78c9ba9f08de18e010bbb17c9cdf78fc8622a8be7a7ac4a6701fe"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "66de1f2f9ce78c9ba9f08de18e010bbb17c9cdf78fc8622a8be7a7ac4a6701fe"
       }
     },
     {
@@ -577,6 +617,10 @@
         "gloss": 0.083,
         "detail": 0.606,
         "frames": 5,
+        "sha256": "c2132b296c4c0e5a8105b6a13257794728185deae6b7698a741a55c58aad7cc2"
+      },
+      "black": {
+        "spans": [],
         "sha256": "c2132b296c4c0e5a8105b6a13257794728185deae6b7698a741a55c58aad7cc2"
       }
     },
@@ -624,6 +668,10 @@
         "gloss": 0.008,
         "detail": 0.706,
         "frames": 5,
+        "sha256": "fde745619a4bf40aaeb6c39ec6425e107bfc079ec8f1e83d043aa5c6abb2c69d"
+      },
+      "black": {
+        "spans": [],
         "sha256": "fde745619a4bf40aaeb6c39ec6425e107bfc079ec8f1e83d043aa5c6abb2c69d"
       }
     },
@@ -673,6 +721,10 @@
         "detail": 0.655,
         "frames": 5,
         "sha256": "c7054dae8f5e9c4c52a87c88f96e6a82bb4950fa30af6df3c78afc846721fae0"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "c7054dae8f5e9c4c52a87c88f96e6a82bb4950fa30af6df3c78afc846721fae0"
       }
     },
     {
@@ -718,6 +770,10 @@
         "gloss": 0.015,
         "detail": 0.66,
         "frames": 5,
+        "sha256": "e80d2e743d511f63bcf4ed6c017b3b79cf9dfb7e5ce67cf58f623a30498a3f5b"
+      },
+      "black": {
+        "spans": [],
         "sha256": "e80d2e743d511f63bcf4ed6c017b3b79cf9dfb7e5ce67cf58f623a30498a3f5b"
       }
     },
@@ -767,6 +823,10 @@
         "detail": 0.692,
         "frames": 5,
         "sha256": "60f5466c32de0ee216c69d8590ee6c645ab45bf7e8a17291e1c7e536888fe33f"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "60f5466c32de0ee216c69d8590ee6c645ab45bf7e8a17291e1c7e536888fe33f"
       }
     },
     {
@@ -814,6 +874,10 @@
         "detail": 0.215,
         "frames": 5,
         "sha256": "8646a8a98d848b05c61dadce581e5d89f539e16ca2726efc9923b9677068b183"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "8646a8a98d848b05c61dadce581e5d89f539e16ca2726efc9923b9677068b183"
       }
     },
     {
@@ -859,6 +923,10 @@
         "gloss": 0.0,
         "detail": 0.587,
         "frames": 5,
+        "sha256": "4eff14c1d689505b9f36e501a1177e3de975968b987d388481135a217b8749cc"
+      },
+      "black": {
+        "spans": [],
         "sha256": "4eff14c1d689505b9f36e501a1177e3de975968b987d388481135a217b8749cc"
       }
     },
@@ -906,6 +974,10 @@
         "detail": 1.0,
         "frames": 5,
         "sha256": "2fb70f5b317314cec169beff2999f75160cdced02aa96866c03855e012aa9361"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "2fb70f5b317314cec169beff2999f75160cdced02aa96866c03855e012aa9361"
       }
     },
     {
@@ -952,6 +1024,10 @@
         "gloss": 0.001,
         "detail": 1.0,
         "frames": 5,
+        "sha256": "ab74ee791fbd91484e6cd509fd3476ab6a3a1267169175697f7d4c667e65edb7"
+      },
+      "black": {
+        "spans": [],
         "sha256": "ab74ee791fbd91484e6cd509fd3476ab6a3a1267169175697f7d4c667e65edb7"
       }
     },
@@ -1041,6 +1117,10 @@
         "detail": 1.0,
         "frames": 5,
         "sha256": "9859106c631f8656dd8908e0a85cbf06dd68d46b804158755bba4b1aec4e926d"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "9859106c631f8656dd8908e0a85cbf06dd68d46b804158755bba4b1aec4e926d"
       }
     },
     {
@@ -1088,6 +1168,10 @@
         "gloss": 0.0,
         "detail": 0.752,
         "frames": 5,
+        "sha256": "6f051b408c9edaf04691ed0d890f0f33fbf7131fe33d4e895e836c9ac1f49685"
+      },
+      "black": {
+        "spans": [],
         "sha256": "6f051b408c9edaf04691ed0d890f0f33fbf7131fe33d4e895e836c9ac1f49685"
       }
     },
@@ -1137,6 +1221,10 @@
         "detail": 0.823,
         "frames": 5,
         "sha256": "db0a15a5208f758c32065a3da2d1fe2fb70232607bdba965dfa58689f309d525"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "db0a15a5208f758c32065a3da2d1fe2fb70232607bdba965dfa58689f309d525"
       }
     },
     {
@@ -1184,6 +1272,10 @@
         "detail": 0.513,
         "frames": 5,
         "sha256": "2697506d094db1adaaedf85f0beb0958502f522805a653a3965b81490f54756b"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "2697506d094db1adaaedf85f0beb0958502f522805a653a3965b81490f54756b"
       }
     },
     {
@@ -1230,6 +1322,10 @@
         "gloss": 0.0,
         "detail": 0.746,
         "frames": 5,
+        "sha256": "ed0b8077f77fe29b8ff04db232d51a765d8561c29a6fc1713a25291702ecb5b4"
+      },
+      "black": {
+        "spans": [],
         "sha256": "ed0b8077f77fe29b8ff04db232d51a765d8561c29a6fc1713a25291702ecb5b4"
       }
     },
@@ -1279,6 +1375,15 @@
         "detail": 0.205,
         "frames": 5,
         "sha256": "a70616f9af44058dfa07a2d27d32d65613ddb611b81a730f459475bad99df84c"
+      },
+      "black": {
+        "spans": [
+          [
+            0.0,
+            2.867
+          ]
+        ],
+        "sha256": "a70616f9af44058dfa07a2d27d32d65613ddb611b81a730f459475bad99df84c"
       }
     },
     {
@@ -1324,6 +1429,10 @@
         "gloss": 0.0,
         "detail": 0.398,
         "frames": 5,
+        "sha256": "6ee6f628b28257a283937c67bc36df1167e433db846b44e2b567f08717fecbab"
+      },
+      "black": {
+        "spans": [],
         "sha256": "6ee6f628b28257a283937c67bc36df1167e433db846b44e2b567f08717fecbab"
       }
     },
@@ -1372,6 +1481,10 @@
         "detail": 0.223,
         "frames": 5,
         "sha256": "b602e9da06c1b8d541f6d4bf526ef8f780ccec7ae5b9bf7b32103e4948ed53de"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "b602e9da06c1b8d541f6d4bf526ef8f780ccec7ae5b9bf7b32103e4948ed53de"
       }
     },
     {
@@ -1417,6 +1530,10 @@
         "gloss": 0.002,
         "detail": 0.787,
         "frames": 5,
+        "sha256": "49a22324e3750f32ce70be6c9bced9aaca8bb16d9f401365eb1c450bd8b48287"
+      },
+      "black": {
+        "spans": [],
         "sha256": "49a22324e3750f32ce70be6c9bced9aaca8bb16d9f401365eb1c450bd8b48287"
       }
     },
@@ -1464,6 +1581,10 @@
         "gloss": 0.0,
         "detail": 0.285,
         "frames": 5,
+        "sha256": "0b6bdfa174bbc91a5cdec6394f6a6f22039031ae63e862d9f1b94ac61b383084"
+      },
+      "black": {
+        "spans": [],
         "sha256": "0b6bdfa174bbc91a5cdec6394f6a6f22039031ae63e862d9f1b94ac61b383084"
       }
     },
@@ -1513,6 +1634,10 @@
         "detail": 0.358,
         "frames": 5,
         "sha256": "5a41ce64e301834598d4b1e9f9c3490f928f0c12895a4a2fc126494ca454571a"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "5a41ce64e301834598d4b1e9f9c3490f928f0c12895a4a2fc126494ca454571a"
       }
     },
     {
@@ -1559,6 +1684,10 @@
         "gloss": 0.188,
         "detail": 0.964,
         "frames": 5,
+        "sha256": "f088baaa35e409bc26402f8cfb995d0af959e6f90a2a95d6174d10a9e01941fe"
+      },
+      "black": {
+        "spans": [],
         "sha256": "f088baaa35e409bc26402f8cfb995d0af959e6f90a2a95d6174d10a9e01941fe"
       }
     },
@@ -1607,6 +1736,10 @@
         "detail": 0.954,
         "frames": 5,
         "sha256": "49a43a2defa58524f4cf399796dc78957835a4f6f6944f248adaec69fa2592f9"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "49a43a2defa58524f4cf399796dc78957835a4f6f6944f248adaec69fa2592f9"
       }
     },
     {
@@ -1652,6 +1785,10 @@
         "gloss": 0.0,
         "detail": 0.684,
         "frames": 5,
+        "sha256": "a0474a9e8c961416f2b81a1c80cb549ce615a71381f8f01b30f0c53d8b9ac93c"
+      },
+      "black": {
+        "spans": [],
         "sha256": "a0474a9e8c961416f2b81a1c80cb549ce615a71381f8f01b30f0c53d8b9ac93c"
       }
     },
@@ -1699,6 +1836,10 @@
         "detail": 1.0,
         "frames": 5,
         "sha256": "f298ef0a18935e4e37a4ba3d6431827f039d6be901e07a57ffd091840e031fa7"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "f298ef0a18935e4e37a4ba3d6431827f039d6be901e07a57ffd091840e031fa7"
       }
     },
     {
@@ -1744,6 +1885,10 @@
         "gloss": 0.286,
         "detail": 1.0,
         "frames": 5,
+        "sha256": "fe37e89790db277f0b87a587926a11698821e14ae60dfff11f2c3b0187a2692e"
+      },
+      "black": {
+        "spans": [],
         "sha256": "fe37e89790db277f0b87a587926a11698821e14ae60dfff11f2c3b0187a2692e"
       }
     },
@@ -1791,6 +1936,10 @@
         "gloss": 0.0,
         "detail": 0.976,
         "frames": 5,
+        "sha256": "3a20d431cae44340ae5ee46e78bcebb91f3cbbe81187c22b7609e896993c2f9c"
+      },
+      "black": {
+        "spans": [],
         "sha256": "3a20d431cae44340ae5ee46e78bcebb91f3cbbe81187c22b7609e896993c2f9c"
       }
     },
@@ -1840,6 +1989,10 @@
         "detail": 0.685,
         "frames": 5,
         "sha256": "5327319abd3493d79fc6957f9565268e2dabe1aec51bedff5cdd128838117b34"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "5327319abd3493d79fc6957f9565268e2dabe1aec51bedff5cdd128838117b34"
       }
     },
     {
@@ -1887,6 +2040,10 @@
         "detail": 0.831,
         "frames": 5,
         "sha256": "9c9a13d8407d0fc7d06713936557acc3377f2a0467ce663e370c275082db1169"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "9c9a13d8407d0fc7d06713936557acc3377f2a0467ce663e370c275082db1169"
       }
     },
     {
@@ -1931,6 +2088,10 @@
         "gloss": 0.221,
         "detail": 0.641,
         "frames": 5,
+        "sha256": "8fb0b59182a1d75767f48aba0a4a9253ea1d54d2a812a5dd979f2cb9b8550eb4"
+      },
+      "black": {
+        "spans": [],
         "sha256": "8fb0b59182a1d75767f48aba0a4a9253ea1d54d2a812a5dd979f2cb9b8550eb4"
       }
     },
@@ -1981,6 +2142,10 @@
         "detail": 0.589,
         "frames": 5,
         "sha256": "bc70b0e106f424c3462685b26381350c9ba46a3f4096425fbbfcd9ba6d45d14a"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "bc70b0e106f424c3462685b26381350c9ba46a3f4096425fbbfcd9ba6d45d14a"
       }
     },
     {
@@ -2026,6 +2191,10 @@
         "gloss": 0.0,
         "detail": 0.974,
         "frames": 5,
+        "sha256": "85159b6d76ac6622ae97c302308d80f7e6fb1fabf487dce2b1b8483bd44ec6d1"
+      },
+      "black": {
+        "spans": [],
         "sha256": "85159b6d76ac6622ae97c302308d80f7e6fb1fabf487dce2b1b8483bd44ec6d1"
       }
     },
@@ -2077,6 +2246,10 @@
         "detail": 0.892,
         "frames": 5,
         "sha256": "94ebb9a403ff3e8a03460592ff6ca87b3504d355919a8a6c0eb86023b15e100b"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "94ebb9a403ff3e8a03460592ff6ca87b3504d355919a8a6c0eb86023b15e100b"
       }
     },
     {
@@ -2122,6 +2295,10 @@
         "gloss": 0.075,
         "detail": 0.499,
         "frames": 5,
+        "sha256": "ee92e5f087cf344b08701f933e6094ffce63947ce3d4b7f9c29ad175f2dc5ca3"
+      },
+      "black": {
+        "spans": [],
         "sha256": "ee92e5f087cf344b08701f933e6094ffce63947ce3d4b7f9c29ad175f2dc5ca3"
       }
     },
@@ -2170,6 +2347,10 @@
         "detail": 1.0,
         "frames": 5,
         "sha256": "717801beb0c7e2c3f5bf4ef7dfa18bad294b4185b72684f7423069176390a03d"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "717801beb0c7e2c3f5bf4ef7dfa18bad294b4185b72684f7423069176390a03d"
       }
     },
     {
@@ -2217,52 +2398,10 @@
         "detail": 0.571,
         "frames": 5,
         "sha256": "721c3507621d31944c3a4cbdcfb3cd3db31bcbb681786b5c8e363571e956706e"
-      }
-    },
-    {
-      "subject": "steak-smoke",
-      "key": "steak-smoke",
-      "label": "AROMA",
-      "source": "mixkit",
-      "source_id": "50956",
-      "title": "soft and traslucent smoke flows up on a dark background",
-      "item_url": "https://mixkit.co/free-stock-video/soft-and-traslucent-smoke-flows-up-on-a-dark-background-50956/",
-      "download_url": "https://assets.mixkit.co/videos/50956/50956-1080.mp4",
-      "licence": "Mixkit Stock Video Free License",
-      "licence_url": "https://mixkit.co/license/#videoFree",
-      "licence_text": "licences/mixkit-stock-video-free-license.txt",
-      "terms_url": "https://mixkit.co/terms/",
-      "terms_text": "licences/mixkit-user-terms-restrictions.txt",
-      "licence_basis": "item page states 'Mixkit Stock Video Free License' for this download",
-      "attribution_required": false,
-      "fetched_at": "2026-10-13T17:37:13+00:00",
-      "sha256": "596bd1478b1d15b09edf036ead4a515a6c316f3b9c58f3f29fa4481abc46e91f",
-      "local_file": "clips/food_clip__steak-smoke__mixkit-50956__soft-and-traslucent-smoke-flows-up-on-a-dark-bac.mp4",
-      "credit_line": "AROMA - FOOTAGE, MIXKIT (MIXKIT STOCK VIDEO FREE LICENSE)",
-      "source_org": "Mixkit",
-      "depicts": "video",
-      "subject_basis": "Smoke rising on a dark ground: aroma leaving the pan, drawn as what it is.",
-      "uses": [
-        "smoke",
-        "aroma"
-      ],
-      "sound": null,
-      "segment": "steak",
-      "ai_generated": false,
-      "width": 1920,
-      "height": 1080,
-      "fps": 23.976,
-      "duration_s": 17.392,
-      "hands": false,
-      "hands_basis": "smoke on black",
-      "richness": {
-        "score": 0.152,
-        "saturation": 0.292,
-        "contrast": 0.105,
-        "gloss": 0.0,
-        "detail": 0.096,
-        "frames": 5,
-        "sha256": "596bd1478b1d15b09edf036ead4a515a6c316f3b9c58f3f29fa4481abc46e91f"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "721c3507621d31944c3a4cbdcfb3cd3db31bcbb681786b5c8e363571e956706e"
       }
     },
     {
@@ -2310,6 +2449,10 @@
         "detail": 0.617,
         "frames": 5,
         "sha256": "8d3cb2ebb41174afe94465b0bbe1a77b9f521fd5addd8535d2d0581aa844b230"
+      },
+      "black": {
+        "spans": [],
+        "sha256": "8d3cb2ebb41174afe94465b0bbe1a77b9f521fd5addd8535d2d0581aa844b230"
       }
     },
     {
@@ -2355,6 +2498,10 @@
         "gloss": 0.0,
         "detail": 0.389,
         "frames": 5,
+        "sha256": "58b9db7deec36fde9e203ed6d5509532719a4faf9105448d2954f14fb73ffa2b"
+      },
+      "black": {
+        "spans": [],
         "sha256": "58b9db7deec36fde9e203ed6d5509532719a4faf9105448d2954f14fb73ffa2b"
       }
     }

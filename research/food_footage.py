@@ -622,8 +622,6 @@ SHOTS += [
           ["coffee", "roast"], "Coffee beans roasting: the same browning reaction."),
     _shot("steak", "steak-toast", "toast", "TOAST", [["toast", "toaster"], ["bread", "toaster"]],
           ["toast", "bread"], "Bread toasting: the same browning reaction."),
-    _shot("steak", "steak-smoke", "smoke", "AROMA", [["smoke"], ["flows", "rising", "dark"]],
-          ["smoke", "aroma"], "Smoke rising on a dark ground: aroma leaving the pan, drawn as what it is."),
     _shot("steak", "steak-lab", "laboratory", "LABORATORY", [["lab"], ["tubes", "dropper", "drops"]],
           ["lab"], "Laboratory glassware: the chemistry of a smell, measured."),
 ]
@@ -638,6 +636,7 @@ REFUSED: dict[str, str] = {
     "pixabay:82789": "roast chicken with peppers, not a seared steak",
     "pixabay:11602": "hands working raw meat in flour, not a cooked steak sliced open",
     "pixabay:4403": "people at a barbecue; the meat is a corner of the frame",
+    "mixkit:50956": "smoke on black: after the grade it reads as an empty black frame (first full render, 13 Oct 2026)",
     "mixkit:6948": "its item page puts it under the Stock Video RESTRICTED License (gate caught it, 13 Oct 2026)",
     "mixkit:6787": "its item page puts it under the Stock Video RESTRICTED License (gate caught it, 13 Oct 2026)",
     "mixkit:48057": "its item page puts it under the Stock Video RESTRICTED License (gate caught it, 13 Oct 2026)",
@@ -725,7 +724,6 @@ PREFER.update({
     "steak-sliced": ["pixabay:11602"],
     "steak-coffee": ["mixkit:24762", "pixabay:71288"],
     "steak-toast": ["pixabay:199970"],
-    "steak-smoke": ["mixkit:50956", "mixkit:8461"],
     "steak-lab": ["pixabay:76396"],
 })
 # HUMAN HANDS (owner, 13 Oct 2026): "limit human hands" - not a ban ("not bad
@@ -771,7 +769,6 @@ HANDS: dict[str, tuple[bool, str]] = {
     "steak-sear-grill": (False, "a steak on a grill pan"),
     "steak-seasoned": (False, "tongs over coals, no hand in frame"),
     "steak-sizzle": (False, "beef and peppers on a sizzling plate"),
-    "steak-smoke": (False, "smoke on black"),
     "steak-tenderloin": (False, "sliced seared beef on a plate"),
     "steak-toast": (False, "a toaster"),
     "steak-roast": (False, "browned roast meats on a board"),
@@ -980,11 +977,26 @@ def richness(path: Path, ranges: list | None = None, n: int = 5) -> dict:
     return {"score": round(score, 3), **{k: round(v, 3) for k, v in parts.items()}, "frames": got}
 
 
+def black_spans(path: Path) -> list[list[float]]:
+    """Spans of (near) black picture, by ffmpeg blackdetect. A stock clip that
+    opens on 2.9 s of black (pixabay:71743) put a black frame in the first
+    full render's cold open; visuals/food_motion._span never uses them."""
+    r = subprocess.run(["ffmpeg", "-hide_banner", "-i", str(path), "-vf",
+                        "blackdetect=d=0.2:pix_th=0.12", "-an", "-f", "null", "-"],
+                       capture_output=True, text=True)
+    out = []
+    for m in re.finditer(r"black_start:([\d.]+) black_end:([\d.]+)", r.stderr):
+        out.append([round(float(m.group(1)), 3), round(float(m.group(2)), 3)])
+    return out
+
+
 def score_richness(index: list[dict]) -> list[dict]:
     for r in index:
         path = IMAGERY / r["local_file"]
         if path.exists() and (r.get("richness") or {}).get("sha256") != r.get("sha256"):
             r["richness"] = {**richness(path, r.get("ranges")), "sha256": r.get("sha256")}
+        if path.exists() and (r.get("black") or {}).get("sha256") != r.get("sha256"):
+            r["black"] = {"spans": black_spans(path), "sha256": r.get("sha256")}
     return index
 
 

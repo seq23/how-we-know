@@ -452,6 +452,17 @@ contract, a new imagery preset and a calmer register.
   preset, sound, captions, voice, title and three thumbnails) is rendered first; the owner reviews
   it the same day; it iterates until she says it is right; only then does the first full video
   render. Food starts in week one beside the drain, not after it.
+- **Gate CLEARED 2026-10-13** (owner on the round-2 sample: "MUCH better"). The first full video
+  is built as five pieces - cold open + title card, chocolate, bread, steak, tail - each rendered
+  and checked on its own and stitched without a re-encode, byte-identical (`visuals/food_episode.py`,
+  the #191 splice proof). Its contract is the locked list above plus the owner's two notes of the
+  same day, both measured per render and per episode (`visuals/food_episode.check_episode`, V55,
+  held in the upload lane by `loop/backfill.food_hold`): **limit human hands** - a preference,
+  not a ban: noted above 15 % of screen time, failing above 30 %; **mesmerising** - at least 40 %
+  of every segment in slow motion or impossible-scale composites (5-8 a segment), speed-ramped
+  slow motion for pours and drips, the richest-looking clip first (each clip's richness scored
+  and recorded). Food episodes carry no producer-POV beat until the owner's food interview
+  (`domains.pov_not_required`); their scripts live in `scripts/food/`, outside the nightly batch.
 - **Content runway is not the constraint** (thousands of questions; scripts reused as cuts and
   compilations). **Mac render time is**, and the render ledger sets the food cadence: one a week
   if the first week's logs say two will not fit, two once the drain is done.
@@ -480,7 +491,7 @@ pins `videos_per_week` at 6, `loop/config.json` carries the rotation above as `c
 (one a day at 10:00 local, `per_day` 1), and `loop/domains.live_slots()` /
 `loop/backfill.domain_weekdays()` read it. Validator V20 holds every dated long-form episode to it.
 food-science is REGISTERED (the food-domain PR of 2026-10-13: taxonomy, allocation 2 on Wed/Sat,
-sources, palette, preset, harvester, thumbnail builder, seeded queue; validator V52) and held behind
-its sample gate (`loop/config.json` `domains.sample_gate`): its Wednesday and Saturday stay empty,
-never borrowed, until the chocolate sample is cleared and a food episode is queued. Changing this
+sources, palette, preset, harvester, thumbnail builder, seeded queue; validator V52) and was held behind
+its sample gate (`loop/config.json` `domains.sample_gate`) until the owner cleared it on
+2026-10-13; its Wednesday and Saturday stay empty, never borrowed, whenever no food episode is queued. Changing this
 table without moving those pins is drift.
