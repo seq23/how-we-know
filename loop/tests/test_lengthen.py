@@ -194,6 +194,8 @@ L._ask = fake_ask                                             # noqa: SLF001
 L.budget = (lambda body_s, open_words, wpm=None, _b=L.budget:  # tail ~70 words
             {**_b(body_s, open_words, wpm), "tail_words": 70})
 r = L.draft("fixture-slug", SCRIPT, body_s=480.0, check_urls=False)
+check("{{uncertain: VALUE | UNIT | RANGE" in calls[0][0]["content"],
+      "the extension prompt does not carry the author's directive menu")
 check(r["applied"] and r["attempts"] == 2 and "Rejected" in calls[1][-1]["content"],
       f"draft() did not feed the rejection back and retry to a pass: {r.get('problems')}")
 
@@ -339,6 +341,7 @@ rec = st_doc["episodes"].get(rslug) or {}
 check(r["status"] == "scripted" and rec.get("mode") == "pending_bind"
       and rec.get("kind") == "reopen" and "TAIL:" not in asked[0][0]["content"]
       and "OPENING:" in asked[0][0]["content"]
+      and "VISUAL DIRECTIVES" in asked[0][0]["content"]
       and "photon of daylight dies" in new_text and "Scientists have long" not in new_text
       and "### Title card\n\nWhat is the midnight zone?" in new_text
       and "What the evidence does not settle" not in new_text
@@ -417,9 +420,20 @@ check("bin/loop-stage.sh queue-reopen loop/queue_reopen.py $ARGS" in _wf,
 
 # --------------------------------------------------------------------- 6. V49
 import validate as V                                          # noqa: E402
+# The REAL repo: every path this module reads goes back to the real tree for
+# this one call (a pending_bind record is checked against the real script -
+# with SCRIPTS still pointing at the scratch dir it read as a mismatch, the
+# day the first cloud re-open landed).
+_fixture_paths = {n: getattr(L, n) for n in ("SCRIPTS", "DRAFTS", "PLANS", "AUDIO",
+                                              "RENDERS", "CAPTIONS", "STATE")}
+L.SCRIPTS, L.DRAFTS, L.PLANS = ROOT / "scripts", LOOP / "drafts", ROOT / "plans"
+L.AUDIO, L.RENDERS, L.CAPTIONS = ROOT / "audio", ROOT / "renders", ROOT / "captions"
 L.STATE = LOOP / "state" / "lengthen.json"
+L._measured_s = saved_measured                                # noqa: SLF001
 res = V.v49_lengthen_splice().as_dict()
 check(not res["failures"], f"V49 fails on the real repo: {res['failures']}")
+for _n, _v in _fixture_paths.items():
+    setattr(L, _n, _v)
 L.STATE = TMP / "lengthen.json"
 saved = V.ROOT
 fake_root = TMP / "root"

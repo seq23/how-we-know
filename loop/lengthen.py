@@ -398,6 +398,8 @@ not change. You write two new pieces.
 
 {next_line}
 
+{directive_rules}
+
 Output EXACTLY this shape and nothing else:
 OPENING:
 <the new cold open paragraph(s)>
@@ -425,6 +427,8 @@ Every figure you speak must already be in the script below or come from a \
 named public source you list under SOURCES:. Do not restate the title or the \
 question as the first sentence. Second person sparingly, no hype words.
 
+{directive_rules}
+
 Output EXACTLY this shape and nothing else:
 OPENING:
 <the new cold open paragraph(s)>
@@ -436,6 +440,23 @@ QUESTION: {question}
 EXISTING SCRIPT:
 {script}
 """
+
+
+def directive_rules(text: str) -> str:
+    """The author's own directive menu for this script's domain, so a new
+    opening or tail writes {{...}} lines the parser accepts. Without it the
+    first cloud run (13 Oct 2026) refused what-lives-in-the-sea four times on
+    an {{uncertain}} RANGE written as words."""
+    import author                                          # noqa: PLC0415
+    m = re.search(r"^\*\*Domain:\*\*\s*(\S+)", text, re.M)
+    try:
+        menu = author.directives_for(m.group(1) if m else author.DEFAULT_DOMAIN)
+    except KeyError:
+        return ("Write NO {{...}} directive lines: this domain has no "
+                "directive menu yet.")
+    return ("Any {{...}} directive line you add follows this menu EXACTLY "
+            "(numbers as digits, a RANGE as a number); when in doubt, add "
+            "none:\n" + menu)
 
 
 def _ask(messages: list[dict]) -> tuple[str, str, str | None]:
@@ -500,10 +521,11 @@ def draft(slug: str, text: str, body_s: float, check_urls: bool = True,
             target=f"{TARGET_MIN}-{TARGET_MAX}", open_words=open_words,
             tail_words=b["tail_words"], hook_rule=hook_rule,
             tail_rules=TAIL_RULES, next_line=next_episode_hint(slug),
-            question=q, script=text)
+            directive_rules=directive_rules(text), question=q, script=text)
     else:
         content = PROMPT_REOPEN.format(open_words=open_words,
                                        hook_rule=hook_rule, question=q,
+                                       directive_rules=directive_rules(text),
                                        script=text)
     messages = [{"role": "user", "content": content}]
     problems: list[str] = ["no attempt made"]
