@@ -100,18 +100,19 @@ def human_beat(slug: str) -> tuple[str, str] | None:
     return None
 
 
-def plan_index(slug: str, said: str) -> int | None:
-    """Which beat of plans/<slug>.json carries this text.
+def plan_index(slug: str, said: str, plan: list | None = None) -> int | None:
+    """Which beat of plans/<slug>.json (or of `plan`) carries this text.
 
     Matched on normalised prose, not on identity: the planner strips the
     `[HUMAN]` marker when it builds the beat, and a script may differ from the
     plan by whitespace alone.
     """
-    pj = PLANS / f"{slug}.json"
-    if not pj.exists():
-        return None
+    if plan is None:
+        pj = PLANS / f"{slug}.json"
+        if not pj.exists():
+            return None
+        plan = json.loads(pj.read_text())
     want = _norm(said)
-    plan = json.loads(pj.read_text())
     for i, b in enumerate(plan):
         n = _norm(b.get("narration") or "")
         if n and (n == want or n in want or want in n):
@@ -238,7 +239,32 @@ def repair_one(slug: str, dry_run: bool = False,
         return {"slug": slug, "skipped": "no [HUMAN] beat in the script"}
     para, said = beat
 
-    idx = plan_index(slug, said)
+    # A SCRIPT THE CLOUD REWROTE AND THIS MAC HAS NOT BOUND YET.
+    #
+    # CONFIRMED 2026-10-13. loop/queue_reopen.py rewrote seven queued
+    # scripts' openings in the cloud and, by design, touched nothing else:
+    # plans/, audio/ and renders/ are the Mac's, and `loop/lengthen.py bind`
+    # re-freezes them before anything plans or narrates. Until then the frozen
+    # plan is the OLD script's, so matching the [HUMAN] sentence against it
+    # is matching against the wrong episode: three such scripts (their lines
+    # handed out by select() while another live episode still owned them, so
+    # never recorded) stopped this lane as POV_UNREPAIRABLE, "needs a human".
+    # Nothing needed a human. The plan to judge a swap against is the one bind
+    # WILL freeze, planner.plan(script); only the script changes here (both
+    # twins, and the fingerprint bind checks, via lengthen.amend_pending_script)
+    # and bind retires the stale plan, wavs and render afterwards as it always
+    # does. Writing plans/ here would hand bind the NEW plan as the "old" one
+    # and it would keep wavs that belong to different words.
+    import lengthen                                    # noqa: PLC0415
+    pending = lengthen.pending_bind(slug) is not None
+    if pending:
+        import planner                                 # noqa: PLC0415
+        original_plan = planner.plan(str(SCRIPTS / f"{slug}.md"))
+    else:
+        pj = PLANS / f"{slug}.json"
+        original_plan = json.loads(pj.read_text()) if pj.exists() else None
+
+    idx = plan_index(slug, said, original_plan) if original_plan else None
     if idx is None:
         # Refuse rather than guess. Editing the script without editing the beat
         # the audio was generated from would leave the caption text and the
@@ -281,7 +307,6 @@ def repair_one(slug: str, dry_run: bool = False,
     import planner                                     # noqa: PLC0415
     sp = SCRIPTS / f"{slug}.md"
     original_text = sp.read_text(encoding="utf-8")
-    original_plan = json.loads((PLANS / f"{slug}.json").read_text())
 
     subject = f"{q.get(slug, '')} {slug.replace('-', ' ')}"
     domain = domains.domain_of_slug(slug)
@@ -313,6 +338,20 @@ def repair_one(slug: str, dry_run: bool = False,
     if dry_run:
         sp.write_text(original_text, encoding="utf-8")
         rec["dry_run"] = True
+        return rec
+
+    if pending:
+        # The script only; bind() makes this Mac's plan, wavs and render agree
+        # with it tonight, exactly as for the cloud's own rewrite.
+        new_text = sp.read_text(encoding="utf-8")
+        lengthen.amend_pending_script(
+            slug, new_text,
+            f"loop/pov_repair.py: [HUMAN] beat now speaks {pick['pov_id']}")
+        rec["pending_bind"] = True
+        rec["beats_revoiced"] = [i for i in range(len(fresh))
+                                 if original_plan[i]["narration"]
+                                 != fresh[i]["narration"]]
+        record_assignment(slug, pick)
         return rec
 
     # 1 + 2. the script is already written; freeze the plan the planner really
@@ -454,8 +493,10 @@ def run(dry_run: bool = False) -> int:
             st.work(f"{slug}: beat {rec['beat']} now speaks {rec['pov_id']} "
                     f"({rec['matched_by']}) — "
                     f"was {rec['was'][:60]!r}, now {rec['now'][:60]!r}"
-                    + ("" if dry_run else "; audio, captions and render "
-                                          "invalidated for rebuild"))
+                    + ("" if dry_run else
+                       "; script amended for tonight's lengthen bind, which "
+                       "re-freezes its plan" if rec.get("pending_bind") else
+                       "; audio, captions and render invalidated for rebuild"))
         if refused and not st.units:
             st.named_stop(
                 "POV_UNREPAIRABLE",

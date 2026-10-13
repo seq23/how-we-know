@@ -3119,6 +3119,89 @@ def v40_pov_assignment_integrity() -> Result:
     return r
 
 
+def v71_queued_pov_traced(slugs=None) -> Result:
+    """Every queued script's [HUMAN] beat traces to its plan AND to one bank
+    line no other live episode speaks.
+
+    THE HOLE V32 AND V40 LEFT. V32 looks only at episodes already scheduled
+    on YouTube; V40 looks only at rows in pov/pov-assignments.json. A queued
+    script whose line was never recorded is invisible to both. CONFIRMED
+    2026-10-13: three queued scripts (how-are-microchips-designed,
+    what-lives-in-mariana-trench, why-are-deep-sea-creatures-so-big) carried
+    lines owned by other live episodes, unrecorded, and the first thing to
+    notice was the Mac's POV repair stopping as POV_UNREPAIRABLE.
+
+    Per queued, unpublished script with a [HUMAN] beat:
+      1. it has a row in pov/pov-assignments.json;
+      2. the beat speaks that row's bank line, verbatim (normalised);
+      3. no other live episode is assigned the same bank id;
+      4. a beat of the plan the batch will voice carries it - plans/<slug>.json,
+         or planner.plan(script) while the episode is pending lengthen bind
+         (its frozen plan is the OLD script's by design until the Mac binds).
+         No plan yet is a note: the batch builds missing plans first.
+
+    Hard-fails when it examines zero scripts.
+    """
+    r = Result("V71 queued-pov-traced")
+    import batch_queue as _bq                               # noqa: PLC0415
+    import ledger as _ledger                                # noqa: PLC0415
+    import lengthen as _len                                 # noqa: PLC0415
+    import pov_match as _pov                                # noqa: PLC0415
+    import pov_repair as _rep                               # noqa: PLC0415
+
+    published = {e["slug"] for e in _ledger.load()["published"]}
+    hand = _pov.hand_assignments()
+    bank = {l["id"]: l for l in _pov.bank()}
+    live = _bq.live_slugs()
+    for slug in (slugs if slugs is not None else _bq.queued_slugs()):
+        if slug in published:
+            continue
+        beat = _rep.human_beat(slug)
+        if beat is None:
+            continue
+        r.examined += 1
+        _para, said = beat
+        row = hand.get(slug)
+        if not row:
+            r.fail(f"{slug}: its [HUMAN] beat has no row in "
+                   f"pov/pov-assignments.json - run loop/pov_repair.py")
+            continue
+        line = bank.get(row.get("pov_id"))
+        if line is None or _rep._norm(line["line"]) not in _rep._norm(said):
+            r.fail(f"{slug}: its [HUMAN] beat does not speak "
+                   f"{row.get('pov_id')}'s bank line, which is what its "
+                   f"assignment records")
+            continue
+        others = sorted(v for v, a in hand.items()
+                        if v != slug and v in live
+                        and a.get("pov_id") == row["pov_id"])
+        if others:
+            r.fail(f"{slug}: {row['pov_id']} is also assigned to live "
+                   f"episode(s) {', '.join(others)} - one POV per video")
+        if _len.pending_bind(slug) is not None:
+            sys.path.insert(0, str(ROOT / "visuals"))
+            import planner as _planner                      # noqa: PLC0415
+            plan = _planner.plan(str(_rep.SCRIPTS / f"{slug}.md"))
+        else:
+            pj = _rep.PLANS / f"{slug}.json"
+            if not pj.exists():
+                r.note(f"{slug}: no plan yet - the batch freezes one before "
+                       f"it narrates")
+                continue
+            plan = read_json(pj)
+        if _rep.plan_index(slug, said, plan) is None:
+            r.fail(f"{slug}: no beat of the plan the batch will voice carries "
+                   f"its [HUMAN] line - the script and plans/{slug}.json have "
+                   f"diverged")
+    if r.examined == 0:
+        r.fail("examined ZERO queued scripts with a [HUMAN] beat - a guard "
+               "that sees nothing is not a clean one")
+        return r
+    r.note(f"examined {r.examined} queued [HUMAN] beat(s): each must trace to its plan and to "
+           f"one bank line no other live episode speaks")
+    return r
+
+
 def v33_every_domain_is_harvested() -> Result:
     """Every domain holding a weekly slot must have something harvesting for it.
 
@@ -5115,6 +5198,7 @@ def run_all(items) -> tuple[bool, list[dict]]:
                v31_render_has_thumbnail(),
                v32_scheduled_pov_is_hers(),
                v40_pov_assignment_integrity(),
+               v71_queued_pov_traced(),
                v33_every_domain_is_harvested(),
                v34_niche_lifecycle_is_acted_on(),
                v35_digest_reaches_her(),

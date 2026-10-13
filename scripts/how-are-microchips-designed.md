@@ -43,7 +43,7 @@ Here is the first place the "how we know" question bites. Synthesis does not sim
 
 ### Producer POV
 
-[HUMAN] How do we know an animal behaves a certain way when we've seen it three times?
+[HUMAN] Deep-sea science builds conclusions from incomplete observations, damaged specimens, sonar, water samples and tiny windows of footage.
 
 ### Verification samples behaviour, then proves what it can
 

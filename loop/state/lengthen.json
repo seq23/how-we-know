@@ -1,6 +1,12 @@
 {
   "episodes": {
     "how-are-microchips-designed": {
+      "amended": [
+        {
+          "at": "2026-10-13T22:25:46+00:00",
+          "why": "loop/pov_repair.py: [HUMAN] beat now speaks pov-041"
+        }
+      ],
       "attempts": 1,
       "budget": {
         "tail_words": 0
@@ -16,7 +22,7 @@
       "minutes_before": 11.58,
       "mode": "pending_bind",
       "model": "claude-subscription/opus",
-      "new_script_sha256": "784f464ac921330d06e3c256f03c1486cfa30bf78cf157624c04f4c7a39fffa1",
+      "new_script_sha256": "7764535434ef8d61ba899d41048c8fa556f5ec4636209d1d54af9c3be48a6f99",
       "old_render_sha256": null,
       "old_script_sha256": "869d7254bfe70c1863de47f53a4299d1041e8b96509a84a2884d3849ad8cac4f",
       "scripted_at": "2026-10-13T14:44:24+00:00",
@@ -98,6 +104,12 @@
       "words_before": 1696
     },
     "what-lives-in-mariana-trench": {
+      "amended": [
+        {
+          "at": "2026-10-13T22:25:46+00:00",
+          "why": "loop/pov_repair.py: [HUMAN] beat now speaks pov-102"
+        }
+      ],
       "attempts": 1,
       "budget": {
         "tail_words": 0
@@ -112,7 +124,7 @@
       "minutes_before": 13.05,
       "mode": "pending_bind",
       "model": "claude-subscription/opus",
-      "new_script_sha256": "16a7b5e740bbb4ce130f73885e5bd8e3b56fcd9b4e3c4f1ef2da2e401444ab20",
+      "new_script_sha256": "0aaf2bbcce94cab147cc9922684e267a5ba1ce109d39819587702661c621a9b9",
       "old_render_sha256": null,
       "old_script_sha256": "2f5e9cc1efa2c73f48640c0544ccc20978d8193a44d132154e259da26b51edb4",
       "scripted_at": "2026-10-13T14:49:00+00:00",
@@ -122,6 +134,12 @@
       "words_before": 1887
     },
     "why-are-deep-sea-creatures-so-big": {
+      "amended": [
+        {
+          "at": "2026-10-13T22:25:47+00:00",
+          "why": "loop/pov_repair.py: [HUMAN] beat now speaks pov-021"
+        }
+      ],
       "attempts": 1,
       "budget": {
         "tail_words": 0
@@ -137,7 +155,7 @@
       "minutes_before": 12.12,
       "mode": "pending_bind",
       "model": "claude-subscription/opus",
-      "new_script_sha256": "7ae7bbfaf9e03afd834401e9f4ed4ff3df5762e789995c503c967439d7b80b93",
+      "new_script_sha256": "bef5ccd890a05395ff198d33326e1b5d8472d78bb87a8d86f68471a52c74a84f",
       "old_render_sha256": null,
       "old_script_sha256": "b6daa0fdc6a201d09ddf37e9e7d27a5233fa50b2ffbe5c7415b13c352eb1adb3",
       "scripted_at": "2026-10-13T14:49:21+00:00",
@@ -171,5 +189,5 @@
       "words_before": 1845
     }
   },
-  "updated": "2026-10-13T17:41:31+00:00"
+  "updated": "2026-10-13T22:25:47+00:00"
 }

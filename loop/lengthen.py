@@ -584,6 +584,42 @@ def save(doc: dict, path: Path | None = None) -> None:
     p.write_text(json.dumps(doc, indent=2, sort_keys=True) + "\n")
 
 
+def pending_bind(slug: str, doc: dict | None = None) -> dict | None:
+    """The episode's record while the cloud has rewritten its script and this
+    Mac has not bound it yet, else None. THE ONE DEFINITION: bind() and
+    loop/pov_repair.py both ask it, because in that state plans/<slug>.json,
+    audio/ and renders/ still describe the OLD script by design."""
+    rec = (doc if doc is not None else load())["episodes"].get(slug) or {}
+    if rec.get("status") == "scripted" and rec.get("mode") == "pending_bind":
+        return rec
+    return None
+
+
+def amend_pending_script(slug: str, text: str, why: str,
+                         doc: dict | None = None) -> dict:
+    """Another lane edits a script that is still `pending_bind`.
+
+    bind() refuses any script whose sha256 is not the one recorded here ("pull
+    first"), so an edit made between the cloud rewrite and the Mac's bind
+    (loop/pov_repair.py swapping an untraced [HUMAN] line for a bank line)
+    must move that fingerprint in the same step, or the night's bind refuses
+    the episode and its stale plan, wavs and render survive. Writes both
+    twins, exactly as script_cloud() does, and nothing else: the plan, audio
+    and render are still bind()'s to make agree."""
+    d = doc if doc is not None else load()
+    rec = pending_bind(slug, d)
+    if rec is None:
+        raise ValueError(f"{slug} is not pending_bind; nothing to amend")
+    for p in _twins(slug):
+        p.write_text(text, encoding="utf-8")
+    rec["new_script_sha256"] = hashlib.sha256(text.encode()).hexdigest()
+    rec.setdefault("amended", []).append({"at": _now(), "why": why})
+    d["episodes"][slug] = rec
+    if doc is None:
+        save(d)
+    return rec
+
+
 def _read_json(p: Path, default):
     try:
         return json.loads(p.read_text())
@@ -907,7 +943,7 @@ def bind(slug: str, doc: dict) -> dict:
     in bin/batch-session.sh BEFORE the batch plans or narrates, so a stale
     wav is never voiced into a new beat and a stale render never ships."""
     rec = dict(doc["episodes"].get(slug) or {})
-    if rec.get("status") != "scripted" or rec.get("mode") != "pending_bind":
+    if pending_bind(slug, doc) is None:
         return {"slug": slug, "status": "skip",
                 "why": f"state is {rec.get('status')!r}/{rec.get('mode')!r}"}
     sp = script_path(slug)
