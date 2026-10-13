@@ -183,6 +183,15 @@
       "tag": "disorientation"
     },
     {
+      "video": "how-are-microchips-designed",
+      "pov_id": "pov-041",
+      "tier": "transferable",
+      "source_answer": 19,
+      "line": "Deep-sea science builds conclusions from incomplete observations, damaged specimens, sonar, water samples and tiny windows of footage.",
+      "matched_by": "transferable tag:evidence (the bank permits any evidence-based niche)",
+      "recorded_by": "loop/pov_repair.py"
+    },
+    {
       "video": "how-are-microchips-made",
       "pov_id": "pov-099",
       "tier": "specific",
@@ -190,6 +199,20 @@
       "line": "I went looking for the actual yield rate \u2014 what fraction of chips on a wafer work \u2014 and manufacturers don't publish it. I could describe the process in exact steps and still not answer that adjacent question.",
       "why": "yield: went looking for the real number and found the honest absence of one",
       "tag": "evidence-limit"
+    },
+    {
+      "video": "how-deep-can-a-sperm-whale-go",
+      "pov_id": "pov-038",
+      "tier": "transferable",
+      "source": "matched by author",
+      "line": "How do we know an animal behaves a certain way when we've seen it three times?"
+    },
+    {
+      "video": "how-deep-can-whales-dive",
+      "pov_id": "pov-085",
+      "tier": "transferable",
+      "source": "matched by author",
+      "line": "It doesn't bother me that instruments extend what we can know. Human senses are extremely limited. That's the point of technology."
     },
     {
       "video": "how-deep-mariana-trench",
@@ -325,6 +348,13 @@
       "recorded_by": "loop/pov_repair.py"
     },
     {
+      "video": "what-is-hydrothermal-vents",
+      "pov_id": "pov-077",
+      "tier": "transferable",
+      "source": "matched by author",
+      "line": "Space is fascinating, but Earth bothers me more. We're already here and still don't understand huge parts of it."
+    },
+    {
       "video": "what-is-kevlar-made-of",
       "pov_id": "pov-113",
       "tier": "transferable",
@@ -334,11 +364,36 @@
       "recorded_by": "loop/pov_repair.py"
     },
     {
+      "video": "what-lives-in-mariana-trench",
+      "pov_id": "pov-102",
+      "tier": "transferable",
+      "source_answer": "01",
+      "line": "My first reaction to being wrong is irritation \u2014 not because reality contradicted me, but because I let a bad model get far enough into my thinking to become a belief. I don't feel loyalty to being wrong just because I was confidently wrong yesterday.",
+      "matched_by": "transferable tag:confidence (the bank permits any evidence-based niche)",
+      "recorded_by": "loop/pov_repair.py"
+    },
+    {
       "video": "what-lives-in-the-sea",
       "pov_id": "pov-042",
       "tier": "transferable",
       "source": "matched by author",
       "line": "I'm interested in the evidence chain, not just the final fact somebody puts on screen."
+    },
+    {
+      "video": "why-are-deep-sea-creatures-so-big",
+      "pov_id": "pov-021",
+      "tier": "transferable",
+      "source_answer": 10,
+      "line": "We talk about the ocean like it's a known thing because it's on every map. Most of what's under the surface is barely documented. We're living on a planet we haven't finished looking at.",
+      "matched_by": "transferable tag:unknown (the bank permits any evidence-based niche)",
+      "recorded_by": "loop/pov_repair.py"
+    },
+    {
+      "video": "why-deep-sea-creatures-are-creepers",
+      "pov_id": "pov-002",
+      "tier": "specific",
+      "source": "matched by author",
+      "line": "It feels quiet, but not peaceful quiet. More like being somewhere you were never designed to be."
     },
     {
       "video": "why-deep-sea-fish-die-when-brought-to-surface",
@@ -375,34 +430,6 @@
       "line": "When someone gives me a fact with a number in it, my first instinct is: where did the number come from? Not because I assume they're lying. Numbers can make almost anything sound authoritative.",
       "matched_by": "transferable tag:numbers (the bank permits any evidence-based niche)",
       "recorded_by": "loop/pov_repair.py"
-    },
-    {
-      "video": "what-is-hydrothermal-vents",
-      "pov_id": "pov-077",
-      "tier": "transferable",
-      "source": "matched by author",
-      "line": "Space is fascinating, but Earth bothers me more. We're already here and still don't understand huge parts of it."
-    },
-    {
-      "video": "why-deep-sea-creatures-are-creepers",
-      "pov_id": "pov-002",
-      "tier": "specific",
-      "source": "matched by author",
-      "line": "It feels quiet, but not peaceful quiet. More like being somewhere you were never designed to be."
-    },
-    {
-      "video": "how-deep-can-whales-dive",
-      "pov_id": "pov-085",
-      "tier": "transferable",
-      "source": "matched by author",
-      "line": "It doesn't bother me that instruments extend what we can know. Human senses are extremely limited. That's the point of technology."
-    },
-    {
-      "video": "how-deep-can-a-sperm-whale-go",
-      "pov_id": "pov-038",
-      "tier": "transferable",
-      "source": "matched by author",
-      "line": "How do we know an animal behaves a certain way when we've seen it three times?"
     }
   ]
 }

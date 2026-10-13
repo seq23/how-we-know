@@ -450,6 +450,15 @@ def score(line: dict, subject: str, domain: str | None = None) -> float:
     return s
 
 
+def owned_by_other_live(slug: str) -> set[str]:
+    """Bank ids assigned to a live episode other than `slug` (V40's scope:
+    batch_queue.live_slugs(), the queue plus the published ledger)."""
+    import batch_queue                                     # noqa: PLC0415
+    live = batch_queue.live_slugs()
+    return {a["pov_id"] for v, a in hand_assignments().items()
+            if v != slug and v in live and a.get("pov_id")}
+
+
 def select(slug: str, subject: str, used_ids: list[str] | None = None,
            domain: str | None = None) -> dict:
     """Pick one POV line. Raises NoPovMatch rather than inventing one.
@@ -458,7 +467,20 @@ def select(slug: str, subject: str, used_ids: list[str] | None = None,
     """
     used = list(used_ids or [])
     window = rotation_window()
-    recent = set(used[-window:])
+    # THE WINDOW AND EVERY LINE ANOTHER LIVE EPISODE ALREADY OWNS.
+    #
+    # CONFIRMED 2026-10-13. The rotation window only stops a line recurring
+    # within twelve consecutive videos; the file's rule is "one POV per video,
+    # no reuse" and V40 enforces it across every live episode. Honouring only
+    # the window, the 2026-10-12 Monday draft handed pov-001 (owned by
+    # how-deep-mariana-trench) to two new scripts and pov-038 (owned by
+    # how-deep-can-a-sperm-whale-go) to a third. record_assignment() then
+    # correctly refused to write the reuse, so all three were promoted with an
+    # untraced [HUMAN] beat for pov_repair to clear on the Mac - and when the
+    # cloud reopened them first, that repair stopped as "needs a human".
+    # Excluding the owned lines here is the same rule pov_repair.ranked_lines()
+    # applies, so the line chosen is the line that can be recorded.
+    recent = set(used[-window:]) | owned_by_other_live(slug)
 
     # The episode's domain comes from its script -- the one join this repo uses
     # everywhere else. An unresolvable slug leaves it None, and score() falls
@@ -523,7 +545,8 @@ def select(slug: str, subject: str, used_ids: list[str] | None = None,
         # LONGEST AGO is taken - still her own words from the bank, never an
         # invented one - and never a line already used this week.
         history = list(used_ids or [])
-        pool = [l for l in bank() if l["tier"] == "transferable"]
+        pool = [l for l in bank() if l["tier"] == "transferable"
+                and l["id"] not in owned_by_other_live(slug)]
         if pool:
             last = {l["id"]: max((i for i, u in enumerate(history)
                                   if u == l["id"]), default=-1) for l in pool}
