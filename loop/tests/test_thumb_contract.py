@@ -91,6 +91,19 @@ for t_, want in (("Faster than 100 degrees per second, carbon is trapped", "100 
         x.split()[-1].lower() in TC.DANGLING for x in got if len(x.split()) > 1),
           f"thumbnail text ends on a dangling word: {t_!r} -> {got}")
 
+# --------------------------- 2c. clause boundaries, and no partial sets
+got = TC.text_options("Steel fails at 0.4 gigapascals, graphene at 130")
+check(got and got[0] == "0.4 GIGAPASCALS" and not any("GRAPHENE" in x and "0.4" in x for x in got),
+      f"thumbnail text crosses a clause and prints one figure over another subject: {got}")
+import tempfile as _tf                                          # noqa: E402
+_d = _tf.mkdtemp()
+try:
+    TC.build_variants("how-strong-is-graphene", out_root=_d)    # refused at B
+    _left = None
+except TC.ContractRefused:
+    _left = os.listdir(_d)
+check(_left == [], f"a refused set left files behind for a lane to ship: {_left}")
+
 # --------------------------------------------------------------- 3. negatives
 slug = "19-what-is-the-deepest-fish-ever-recorded"
 bad_root = TMP / "bad"

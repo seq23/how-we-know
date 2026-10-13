@@ -4355,12 +4355,22 @@ def v50_repackage_state() -> Result:
                    f"never re-uploaded, deleted or re-privated (forward only)")
     rows = _led.load().get("published") or []
     ids = {x.get("video_id") for x in rows}
+    sys.path.insert(0, str(ROOT / "visuals"))
+    import thumb_contract as _tc                           # noqa: PLC0415
     for slug, row in _lt.load()["titles"].items():
         if row.get("applied_at"):
             r.examined += 1
             if row.get("applied_video_id") not in ids:
                 r.fail(f"{slug}: title applied to {row.get('applied_video_id')}, "
                        f"which no ledger row knows")
+        if row.get("thumbnail_applied"):
+            # Only a set whose contract HOLDS may be on a live video: on 13 Oct
+            # 2026 a set refused at B left A.jpg behind and it shipped.
+            r.examined += 1
+            bad = _tc.verify(slug)
+            if bad:
+                r.fail(f"{slug}: a thumbnail went live from a set whose "
+                       f"contract does not hold: {bad[0]}")
     rot = _bf.rotation_days(config())
     per_day: dict = {}
     for x in rows:

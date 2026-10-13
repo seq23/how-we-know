@@ -302,15 +302,19 @@ DANGLING = {"per", "plus", "minus", "because", "up", "about", "but", "not",
 def text_options(title: str) -> list[str]:
     """Up to three <=3-word phrases from the (already truth-guarded) title."""
     import longform_title as LT                            # noqa: PLC0415
-    toks = [t for t in re.findall(r"[\w][\w,.'%-]*", title or "")]
-    clean = [t.strip(".,'") for t in toks]
+    toks = [t for t in re.findall(r"[\w][\w,.'%-]*[:;]?", title or "")]
+    clean = [t.strip(".,'':;") for t in toks]
     low = [t.lower() for t in clean]
+    # A phrase never crosses a clause boundary: "Steel fails at 0.4
+    # gigapascals, graphene at 130" gave "0.4 GIGAPASCALS GRAPHENE" (13 Oct
+    # 2026) - steel's figure printed over graphene's name.
+    ends = [bool(re.search(r"[,:;]$", t)) for t in toks]
     opts: list[list[str]] = []
 
     def phrase_from(i):
         ph = [clean[i]]
         j = i + 1
-        while j < len(clean) and len(ph) < MAX_WORDS:
+        while j < len(clean) and len(ph) < MAX_WORDS and not ends[j - 1]:
             if low[j] not in STOP:
                 ph.append(clean[j])
             elif len(ph) >= 2:
@@ -326,7 +330,12 @@ def text_options(title: str) -> list[str]:
         if t in LT.CONTRADICTION or t in LT.STAKE:
             opts.append(phrase_from(i))
             break
-    content = [c for c, lo in zip(clean, low) if lo not in STOP]
+    content: list[str] = []
+    for c, lo, e in zip(clean, low, ends):
+        if lo not in STOP:
+            content.append(c)
+        if e and content:
+            break                       # the first clause only
     if content:
         opts.append(content[:MAX_WORDS])
     out = []
@@ -424,8 +433,13 @@ def build_variants(slug: str, out_root: str | None = None,
         plan[2] = (("C", 1, 0.85, (0.5, 0.42), texts[0], "left")
                    if len(cands) > 1 else
                    ("C", 0, 0.95, (0.42, 0.5), texts[0], "right"))
-    out_dir = os.path.join(out_root or VARIANTS_DIR, slug)
-    os.makedirs(out_dir, exist_ok=True)
+    # Built in a scratch directory and moved into place only when all three
+    # variants pass: a refusal at B left A.jpg behind with no contract.json
+    # (how-strong-is-graphene, 13 Oct 2026), and repackage apply shipped it.
+    final_dir = os.path.join(out_root or VARIANTS_DIR, slug)
+    os.makedirs(os.path.dirname(final_dir), exist_ok=True)
+    import tempfile                                        # noqa: PLC0415
+    out_dir = tempfile.mkdtemp(prefix=f".{slug}-", dir=os.path.dirname(final_dir))
     rec = {"slug": slug, "title": title, "grade": GRADE["id"],
            "chosen": CHOSEN, "variants": {}}
     srcs: dict[int, Image.Image] = {}
@@ -440,6 +454,8 @@ def build_variants(slug: str, out_root: str | None = None,
                 ok = (k, box, fill, energy)
                 break
         if ok is None:
+            import shutil                                  # noqa: PLC0415
+            shutil.rmtree(out_dir, ignore_errors=True)
             raise ContractRefused(
                 f"{slug}: variant {name}: no candidate image reaches the "
                 f"{SUBJECT_FILL_MIN:.0%} subject fill with real subject "
@@ -459,7 +475,11 @@ def build_variants(slug: str, out_root: str | None = None,
     with open(os.path.join(out_dir, "contract.json"), "w") as fh:
         json.dump(rec, fh, indent=2, ensure_ascii=False)
         fh.write("\n")
-    return {"dir": out_dir, "chosen": os.path.join(out_dir, f"{CHOSEN}.jpg"),
+    if os.path.isdir(final_dir):
+        import shutil                                      # noqa: PLC0415
+        shutil.rmtree(final_dir)
+    os.replace(out_dir, final_dir)
+    return {"dir": final_dir, "chosen": os.path.join(final_dir, f"{CHOSEN}.jpg"),
             "contract": rec}
 
 
