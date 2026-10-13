@@ -46,6 +46,11 @@ and say what you chose and why.
 - **Public-domain imagery only** — the channel is monetised, and CC-BY is not a
   public-domain dedication. Stripping or omitting attribution is the one thing
   this pipeline may not do. If a credit cannot be resolved, drop the beat.
+  One owner-approved widening (2026-10-13, food sample round 2): **real food
+  FOOTAGE** may also come from libraries whose licence allows commercial reuse
+  with no attribution required (Pixabay, Pexels, Mixkit), through
+  `research/food_footage.py` only, each clip's licence wording stored and
+  re-checked, and still credited on screen. Photographic stills stay PD/CC0.
 - **No invented figures.** Every on-screen number is stated in the narration and
   traced to a named public source.
 - **Rule 0: no stage may exit 0 having done nothing.** Work done, or a NAMED stop

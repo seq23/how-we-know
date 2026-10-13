@@ -4,40 +4,37 @@
     .venv/bin/python visuals/food.py check OUT.mp4            # the contract, on the file
 
 THE OWNER'S BRIEF (2026-10-13, docs/CHANNEL-PLAN.md "A third domain: food
-science"): marvellous, hypnotic, realistic not animated, AI is fine,
-FANTASTICAL IN SCALE, NOT PHYSICS. Turned into a contract every line of which
-check() measures on the rendered file (validator V53,
+science") and her verdict on sample round 1 the same day, both binding:
+marvellous, hypnotic, realistic, FANTASTICAL IN SCALE, NOT PHYSICS - and
+(a) ONE VOICE at normal explainer pace start to finish (the imagery carries
+the hypnotic quality, not the narration), (b) REAL MOVEMENT, not stills. Turned
+into a contract every line of which check() measures (validator V53,
 loop/tests/test_food_preset.py):
 
-  * GRADE. A dark warm ground and the channel's own split tone: the
-    thumbnail grade of #191 (visuals/thumb_contract.GRADE,
-    hwk-split-navy-amber-v1 - navy shadows, amber highlights, contrast 1.18)
-    mixed lighter for moving pictures and with the photograph's own colour
-    pushed up (FOOD_GRADE). Applied to every picture frame as an exact
-    per-pixel LUT before any type is drawn; the render keeps proof frames of
-    the ungraded picture so check() can re-grade them and compare.
-  * ONE GLOSSY SUBJECT, side-lit. The AI stills are prompted for exactly that
-    (visuals/food_stills.LOOK); real stills and clips are chosen for it.
-    Measured as subject coverage: the salient subject spans at least
-    SUBJECT_COVERAGE_MIN of the frame's larger side on picture frames.
-  * MOTION ON STILLS. A slow zoom plus a two-layer depth parallax (the
-    salient subject drifts against its own background) on every still; real
-    clips play as shot.
-  * CADENCE. Cuts every 3-5 s in the hooked opening; holds of 8-15 s after
-    the title card. The shot list is written beside the render and check()
-    reads it.
+  * GRADE. One warm-dark split tone on every frame of every source: the
+    thumbnail grade of #191 (visuals/thumb_contract.GRADE) mixed for motion
+    (FOOD_GRADE), applied as an exact per-pixel LUT to clips, composites and
+    stills alike before any type is drawn; proof frames of the ungraded
+    picture let check() re-grade them and compare.
+  * REAL VIDEO. Food in motion is real footage from research/food_footage.py
+    (Pixabay first, then the free fallback chain), each clip with its licence
+    recorded. At least REAL_VIDEO_SHARE_MIN of screen time is real video; an
+    AI still appears ONLY as the explanatory diagram (the glowing
+    cross-section), never standing in for food in motion.
+  * IMPOSSIBLE SCALE from real footage (visuals/food_motion.py): COMPOSITES_PER_SAMPLE
+    walls of tiled, staggered, mirrored clips and slow kaleidoscopes, plus slow
+    motion, seamless ping-pong loops and slow push-ins.
+  * CADENCE. Cuts every 3-5 s in the hooked opening; holds of 6-12 s after
+    the title card (shorter than round 1's 8-15 s: the voice is at explainer
+    pace now). The shot list is written beside the render and check() reads it.
   * ONE SIGNATURE DEVICE per part: the glowing cross-section
-    ({{cross_section: SUBJECT | LABEL}}) - the subject cut open, one
-    butter-white line tracing the structure that answers the question. It is
-    a drawing and the note says so.
-  * HONEST CREDITS. Every real still or clip draws its credit line; every AI
-    still draws "AI-GENERATED IMAGE". The episode spec beside the render sets
-    `altered_content: true` whenever a realistic AI still is on screen, and
-    loop/upload.py sends it as YouTube's containsSyntheticMedia.
+    ({{cross_section: SUBJECT | LABEL}}), a drawing, and the note says so.
+  * HONEST CREDITS. Every clip draws its credit line, even where its licence
+    does not require one; an AI still draws "AI-GENERATED IMAGE" and the
+    episode spec sets `altered_content` (loop/upload.py -> containsSyntheticMedia).
   * CAPTIONS ON. Burned in, from the voice's own chunk timings, plus an .srt.
 
-No AI video: no open video model runs on this Mac (8 GB, no weights), so every
-AI shot is a still given motion here. Nothing in this module is paid.
+No AI video: no open video model runs on this Mac (8 GB). Nothing here is paid.
 """
 from __future__ import annotations
 
@@ -61,14 +58,18 @@ IMAGERY = ROOT / "channel" / "imagery"
 W, H, FPS = 1920, 1080, 30
 
 PRESET = {
-    "id": "food-v1",
+    "id": "food-v2",
     "opening_cut_s": (3.0, 5.0),
-    "calm_hold_s": (8.0, 15.0),
+    "body_hold_s": (6.0, 12.0),
     "still_zoom": (1.0, 1.08),
     "parallax_px": 28,
-    "crossfade_s": 1.0,
+    "crossfade_s": 0.6,
     "devices_per_part_max": 1,
+    "composites": (3, 5),
+    "real_video_share_min": 0.60,
 }
+REAL_VIDEO_SHARE_MIN = PRESET["real_video_share_min"]
+COMPOSITES_PER_SAMPLE = PRESET["composites"]
 # A subject on screen: the salient box spans >= 30% of the frame's larger side
 # AND salient pixels carry real energy (the thumbnail contract's floor, so an
 # empty dark frame cannot pass by being dark everywhere). Calibrated on the
@@ -84,7 +85,7 @@ FOOD_GRADE = {
     "shadow": (8, 22, 40),
     "highlight": (255, 222, 168),
     "contrast": 1.18,
-    "mix": 0.30,
+    "mix": 0.34,
     "saturation": 1.30,
 }
 
@@ -156,8 +157,10 @@ def parse(script: Path) -> list[dict]:
                 d = {"kind": m.group(1).lower(),
                      "args": [x.strip() for x in m.group(2).split("|")] if m.group(2) else []}
         text = " ".join(ln for ln in lines if not DIRECTIVE.match(ln.strip())).strip()
-        out.append({"section": sec, "directive": d, "text": text,
-                    "register": "standard" if sec == "Cold open" else "calm"})
+        # ONE voice start to finish (owner, 2026-10-13); the opening differs
+        # only in its cutting.
+        out.append({"section": sec, "directive": d, "text": text, "register": "standard",
+                    "phase": "opening" if sec == "Cold open" else "body"})
     return out
 
 
@@ -194,55 +197,69 @@ def verify_asset(rec: dict) -> None:
                          f"never shown uncredited (CLAUDE.md)")
 
 
-# Keyword -> asset keys, most specific first. The paragraph's own words pick
-# its pictures; nothing is shown that the narration is not talking about,
-# except the scale shots, which are the preset's atmosphere.
-KEYWORDS: list[tuple[str, list[str]]] = [
-    ("x-ray", ["xray-diffraction"]),
-    ("calorimet", ["calorimeter"]),
-    ("chromatograph", ["gas-chromatograph"]),
-    ("pasteur", ["pasteur"]),
-    ("maillard", ["maillard", "seared-crust-macro"]),
-    ("microscope", ["yeast-micrograph"]),
-    ("yeast", ["yeast-micrograph", "dough-field"]),
-    ("dough", ["dough-field", "dough", "dough-kneading"]),
-    ("loaf", ["bread-loaf", "loaf-crumb-macro"]),
-    ("crust", ["seared-crust-macro", "seared-steak"]),
-    ("steak", ["thousand-steaks", "seared-steak", "steak-sizzle"]),
-    ("sear", ["seared-crust-macro", "steak-sizzle", "thousand-steaks"]),
-    ("temper", ["tempering-slab", "chocolate-making"]),
-    ("cacao", ["cacao-field", "cocoa-pod", "cocoa-beans"]),
-    ("cocoa butter", ["cocoa-butter-wall", "cocoa-beans"]),
-    ("snap", ["chocolate-snap", "chocolate-break-macro"]),
-    ("gloss", ["gloss-macro"]),
-    ("melt", ["melting-square", "melted-chocolate", "chocolate-pour", "chocolate-sheets"]),
-    ("liquid", ["chocolate-river", "chocolate-ocean", "chocolate-pour"]),
-    ("crystal", ["chocolate-break-macro", "gloss-macro", "chocolate-mountain"]),
-    ("bar", ["chocolate-bar", "chocolate-snap", "chocolate-mountain"]),
-    ("chocolate", ["chocolate-sheets", "chocolate-river", "chocolate-ocean",
-                   "chocolate-mountain", "melting-square"]),
+# Narration word -> what the footage must show (research/food_footage.SHOTS
+# `uses`). The paragraph's own words pick its clips; nothing is shown that the
+# narration is not talking about.
+WORD_USES: list[tuple[str, list[str]]] = [
+    ("pour", ["pour"]), ("melt", ["melt", "liquid"]), ("liquid", ["liquid"]),
+    ("tongue", ["mouth", "melt"]), ("mouth", ["mouth", "melt"]), ("bite", ["bite", "mouth"]),
+    ("snap", ["snap", "bar"]), ("break", ["snap", "crystal"]), ("bar", ["bar", "solid"]),
+    ("crystal", ["crystal", "solid"]), ("gloss", ["gloss", "solid"]), ("shine", ["gloss"]),
+    ("temper", ["temper", "coat"]), ("set", ["coat", "solid"]), ("drip", ["drip"]),
+    ("cocoa butter", ["cocoa", "cacao"]), ("cocoa", ["cocoa", "cacao"]), ("cacao", ["cacao"]),
+    ("bean", ["beans", "cacao"]), ("hand", ["solid", "bar"]), ("warm", ["melt"]),
+    ("degrees", ["melt", "liquid"]), ("chocolate", ["liquid", "solid", "scale"]),
 ]
+# Diagram stills (AI) - the only place an AI still may appear: under the glowing
+# cross-section device. Never food in motion.
+DIAGRAM_STILLS = ["chocolate-break-macro", "gloss-macro"]
 # Thumbnail subjects per slug, best first (visuals/thumb_contract.candidates).
 THUMB_SUBJECTS = {
     "why-bread-rises-steak-browns-chocolate-snaps":
-        ["thumb-chocolate-halves", "thumb-chocolate-crystal", "thumb-chocolate-break", "chocolate-break-macro"],
+        ["thumb-three-foods-e", "thumb-three-foods-d", "thumb-three-foods"],
     "why-does-chocolate-melt-in-your-mouth-not-your-hand":
-        ["chocolate-snap", "melting-square", "chocolate-break-macro"],
+        ["thumb-chocolate-halves", "chocolate-snap", "chocolate-break-macro"],
     "why-does-bread-rise": ["dough-field", "bread-loaf", "loaf-crumb-macro"],
     "why-does-seared-meat-taste-good": ["thousand-steaks", "seared-crust-macro", "seared-steak"],
 }
-SCALE_SHOTS = ["chocolate-sheets", "chocolate-river", "chocolate-ocean",
-               "chocolate-mountain", "cacao-field", "tempering-slab"]
+# Treatment per clip use: liquids in slow motion, solids pushed in, the rest as shot.
+SLOW_USES = {"pour", "drip", "liquid", "sheets", "coat"}
+PUSH_USES = {"solid", "bar", "crystal", "gloss", "cacao"}
+# The impossible-scale composites, by clip, best first (looked at on contact
+# sheets 2026-10-13): a wall wants a subject with clear edges on a dark ground,
+# a kaleidoscope wants flowing liquid with no recognisable object in it.
+WALL_CLIPS = ["drip-strawberry", "field", "chunks", "pile"]
+KALEIDO_CLIPS = ["fountain-flow", "drip-macro", "sheets"]
+
+
+def clips_of(cat: dict) -> list[str]:
+    return [k for k, r in cat.items() if r["kind"] == "clip"]
 
 
 def pool_for(text: str, cat: dict) -> list[str]:
+    """Clip keys for a paragraph: those whose uses its words name, then the rest."""
     low = text.lower()
-    out: list[str] = []
-    for word, keys in KEYWORDS:
+    want: list[str] = []
+    for word, uses in WORD_USES:
         if word in low:
-            out += [k for k in keys if k in cat and k not in out]
-    out += [k for k in SCALE_SHOTS if k in cat and k not in out]
-    return out
+            want += [u for u in uses if u not in want]
+    clips = clips_of(cat)
+    scored = sorted(clips, key=lambda k: min((want.index(u) for u in cat[k].get("uses") or []
+                                               if u in want), default=len(want) + 1))
+    return scored
+
+
+def treatment_for(rec: dict, phase: str) -> str:
+    uses = set(rec.get("uses") or [])
+    if phase == "opening":
+        return "play"                           # the hook cuts fast; real speed reads best
+    if rec.get("ranges"):
+        return "slowmo"                         # short usable spans of a longer report: stretch, not loop
+    if uses & SLOW_USES:
+        return "slowmo"
+    if uses & PUSH_USES:
+        return "pushin"
+    return "play"
 
 
 # ----------------------------------------------------------------- timeline
@@ -273,39 +290,86 @@ def cut_lengths(total: float, lo: float, hi: float, seed: int) -> list[float]:
 
 
 def build_timeline(paras: list[dict], beats: list[dict], cat: dict) -> dict:
-    """Shots over the narration: cuts in the opening, holds after the title."""
+    """Shots over the narration: cuts in the opening, holds after the title,
+    composites spread through the video, AI only under the device."""
     shots, t, used, last = [], 0.0, {}, None
     devices = 0
+    lo_c, hi_c = PRESET["composites"]
+    clips = clips_of(cat)
     for i, (p, b) in enumerate(zip(paras, beats)):
         dur = float(b["duration"])
         if p["section"] == "Title card":
-            shots.append({"start": t, "dur": dur, "kind": "title", "beat": i,
-                          "text": p["text"], "asset": "chocolate-ocean"
-                          if "chocolate-ocean" in cat else None})
+            bg = next((k for k in clips if "sheets" in (cat[k].get("uses") or [])), clips[0] if clips else None)
+            shots.append({"start": t, "dur": dur, "kind": "title", "beat": i, "phase": "body",
+                          "text": p["text"], "asset": bg, "treatment": "slowmo" if bg else None})
             t += dur
             continue
         d = p.get("directive") or {}
         if d.get("kind") == "cross_section" and devices < PRESET["devices_per_part_max"]:
-            devices += 1
-            shots.append({"start": t, "dur": dur, "kind": "device", "beat": i,
-                          "asset": "chocolate-break-macro" if "chocolate-break-macro" in cat
-                          else pool_for(p["text"], cat)[0],
-                          "label": (d.get("args") or ["", ""])[-1]})
-            t += dur
-            continue
-        lo, hi = PRESET["opening_cut_s"] if p["register"] == "standard" else PRESET["calm_hold_s"]
+            still = next((k for k in DIAGRAM_STILLS if k in cat), None)
+            if still:
+                devices += 1
+                shots.append({"start": t, "dur": dur, "kind": "device", "beat": i, "phase": "body",
+                              "asset": still, "treatment": "still",
+                              "label": (d.get("args") or ["", ""])[-1]})
+                t += dur
+                continue
+        phase = p.get("phase") or ("opening" if p["section"] == "Cold open" else "body")
+        lo, hi = PRESET["opening_cut_s"] if phase == "opening" else PRESET["body_hold_s"]
         pool = pool_for(p["text"], cat)
+        if not pool:
+            raise ValueError("no real clips in the catalogue - food in motion is real footage only")
         for j, L in enumerate(cut_lengths(dur, lo, hi, seed=i)):
-            # least-used first, so a part does not repeat itself
             order = sorted(pool, key=lambda k: (used.get(k, 0), pool.index(k)))
             pick = next((k for k in order if k != last), order[0])
             last = pick
             used[pick] = used.get(pick, 0) + 1
-            shots.append({"start": t, "dur": L, "kind": "picture", "beat": i,
-                          "asset": pick, "register": p["register"]})
+            shots.append({"start": t, "dur": L, "kind": "picture", "beat": i, "phase": phase,
+                          "register": "standard", "asset": pick,
+                          "treatment": treatment_for(cat[pick], phase)})
             t += L
-    return {"preset": PRESET["id"], "grade": FOOD_GRADE["id"], "duration": t,
-            "shots": shots}
+    _place_composites(shots, cat, lo_c, hi_c)
+    for k, s in enumerate(shots):                 # staggered in-points: a clip reused never repeats its frames
+        s["offset"] = round(sum(1 for x in shots[:k] if x.get("asset") == s.get("asset")) * 2.5, 2)
+    return {"preset": PRESET["id"], "grade": FOOD_GRADE["id"], "duration": t, "shots": shots}
+
+
+def _place_composites(shots: list[dict], cat: dict, lo: int, hi: int) -> None:
+    """Turn 3-5 picture shots into the impossible-scale composites: the opening's
+    first shot (a wall), then body holds spread evenly, wall and kaleidoscope
+    alternating, each on a clip that suits it."""
+    pics = [s for s in shots if s["kind"] == "picture"]
+    if not pics:
+        return
+    chosen = [pics[0]] if pics[0]["phase"] == "opening" else []
+    body = [s for s in pics if s["phase"] == "body"]
+    want = max(lo, min(hi, len(body) // 3 + len(chosen))) - len(chosen)
+    if body and want > 0:
+        step = len(body) / want
+        chosen += [body[min(len(body) - 1, int(step * (k + 0.5)))] for k in range(want)]
+    taken: set[str] = set()
+    for n, s in enumerate(chosen):
+        kind = "wall" if s["phase"] == "opening" or n % 2 else "kaleido"
+        pref = [k for k in (WALL_CLIPS if kind == "wall" else KALEIDO_CLIPS)
+                if k in cat and k not in taken]
+        if pref:
+            s["asset"] = pref[0]
+        taken.add(s["asset"])
+        s["treatment"] = kind
+        s["composite"] = True
+
+
+def screen_time(spec: dict) -> dict:
+    """Seconds of real video vs stills on screen (title cards count by their background)."""
+    real = still = 0.0
+    for s in spec.get("shots") or []:
+        if s.get("treatment") in ("play", "slowmo", "pushin", "wall", "kaleido"):
+            real += s["dur"]
+        else:
+            still += s["dur"]
+    tot = real + still
+    return {"real_video_s": round(real, 2), "still_s": round(still, 2),
+            "real_video_share": round(real / tot, 4) if tot else 0.0}
 
 
 # ----------------------------------------------------------- picture layers
@@ -367,26 +431,6 @@ class Still:
         fg = self.base.resize((W, H), Image.BILINEAR, box=view(zf, p))
         mk = self.mask.resize((W, H), Image.BILINEAR, box=view(zf, p))
         return Image.composite(fg, bg, mk)
-
-
-class Clip:
-    """A real clip, decoded once, scaled to cover the frame."""
-
-    def __init__(self, path: str, seconds: float):
-        n = int(seconds * FPS) + 2
-        cmd = ["ffmpeg", "-v", "error", "-i", path, "-vf",
-               f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps={FPS}",
-               "-frames:v", str(n), "-f", "rawvideo", "-pix_fmt", "rgb24", "-"]
-        raw = subprocess.run(cmd, capture_output=True, check=True).stdout
-        k = len(raw) // (W * H * 3)
-        if k == 0:
-            raise ValueError(f"{path}: no frames decoded")
-        self.frames = np.frombuffer(raw[:k * W * H * 3], np.uint8).reshape(k, H, W, 3)
-
-    def frame(self, u: float, direction: int = 1) -> Image.Image:
-        i = int(u * (len(self.frames) - 1))
-        # ping-pong a clip shorter than its hold, never a hard loop jump
-        return Image.fromarray(self.frames[i])
 
 
 def cross_section(base: Image.Image, u: float, label: str) -> Image.Image:
@@ -534,8 +578,15 @@ def srt(spans: list[tuple]) -> str:
     return "\n".join(f"{i + 1}\n{ts(s)} --> {ts(e)}\n{t}\n" for i, (s, e, t) in enumerate(spans))
 
 
+def _crossfades(s: dict, nxt: dict | None) -> bool:
+    """Body shots dissolve into the next; the opening cuts hard; no dissolve into the title."""
+    return bool(nxt and s.get("phase") == "body" and s["kind"] in ("picture", "device")
+                and nxt["kind"] != "title")
+
+
 def render(script: Path, voice_dir: Path, out: Path, beat_idx: list[int] | None,
            bed: Path | None = None, proof_every: int = 90) -> dict:
+    import food_motion as FM                                  # noqa: PLC0415
     paras = parse(script)
     if beat_idx is not None:
         paras = [paras[i] for i in beat_idx]
@@ -546,9 +597,9 @@ def render(script: Path, voice_dir: Path, out: Path, beat_idx: list[int] | None,
         if b["text"].split()[:6] != p["text"].split()[:6]:
             raise ValueError(f"beat {b['index']} voices {b['text'][:40]!r}, not "
                              f"{p['text'][:40]!r}")
-        if b["register"] != p["register"]:
-            raise ValueError(f"beat {b['index']} is {b['register']}, its section "
-                             f"says {p['register']}")
+        if b.get("register", "standard") != "standard":
+            raise ValueError(f"beat {b['index']} was voiced in {b['register']!r}: food videos "
+                             f"are ONE voice start to finish (owner, 2026-10-13)")
     cat = catalogue()
     tl = build_timeline(paras, beats, cat)
     for s in tl["shots"]:
@@ -559,56 +610,83 @@ def render(script: Path, voice_dir: Path, out: Path, beat_idx: list[int] | None,
     work.mkdir(parents=True, exist_ok=True)
     proofs = work / "proofs"
     proofs.mkdir(exist_ok=True)
+    segdir = work / "segments"
+    segdir.mkdir(exist_ok=True)
     silent = work / "picture.mp4"
-    # Re-mixing sound or captions-free changes must not cost a 10-minute
-    # picture pass: reuse picture.mp4 when the shot list is unchanged.
     tl_path, log_path = work / "timeline.json", work / "proofs.json"
     if (silent.exists() and tl_path.exists() and log_path.exists()
             and json.loads(tl_path.read_text()) == json.loads(json.dumps(tl))):
         return _finish(script, voice_dir, out, work, silent, tl, beats, caps, cat,
                        json.loads(log_path.read_text()), bed)
+    shots = tl["shots"]
+    xf = int(round(PRESET["crossfade_s"] * FPS))
+    starts = [int(round(s["start"] * FPS)) for s in shots]
+    ends = starts[1:] + [int(round(tl["duration"] * FPS))]
+    lead = [0] + [xf if _crossfades(shots[k], shots[k + 1]) else 0 for k in range(len(shots) - 1)]
+    # ---- 1. every clip shot prepared by ffmpeg (exact frames, streamed later)
+    segs: dict[int, Path] = {}
+    for k, s in enumerate(shots):
+        if s.get("treatment") not in FM.TREATMENTS:
+            continue
+        rec = cat[s["asset"]]
+        n = ends[k] - starts[k] + lead[k]
+        key = hashlib.sha256(json.dumps([rec["sha256"], s["treatment"], n, k, s.get("offset"),
+                                         FM.VIGNETTE, rec.get("crop"), rec.get("ranges"),
+                                         FM.SLOWMO, FM.PUSH_IN])
+                             .encode()).hexdigest()[:12]
+        seg = segdir / f"{k:03d}-{s['treatment']}-{key}.mp4"
+        if not seg.exists():
+            info = FM.prepare(rec["path"], rec, n / FPS, seg, s["treatment"], seed=k,
+                              offset=float(s.get("offset") or 0))
+            print(f"  segment {k:02d} {s['treatment']:<7} {s['asset']:<16} {info['frames']} frames",
+                  flush=True)
+        segs[k] = seg
+    # ---- 2. frame by frame: picture, the one grade, then type
     enc = subprocess.Popen(
         ["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24",
          "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-", "-c:v", "libx264",
          "-preset", "medium", "-crf", "17", "-pix_fmt", "yuv420p", str(silent)],
         stdin=subprocess.PIPE)
-    total = int(round(tl["duration"] * FPS))
-    cache: dict[str, object] = {}
+    total = ends[-1]
+    streams: dict[int, object] = {}
+    stills: dict[str, Still] = {}
     proof_log = []
-    xf = int(PRESET["crossfade_s"] * FPS)
 
-    def layer(s: dict, local: float) -> Image.Image:
-        key = s.get("asset")
-        rec = cat.get(key) if key else None
-        if key not in cache:
-            cache.clear() if len(cache) > 6 else None
-            cache[key] = (Clip(rec["path"], s["dur"] + 2) if rec and rec["kind"] == "clip"
-                          else Still(rec["path"]) if rec else None)
-        src = cache[key]
-        u = min(1.0, max(0.0, local / max(s["dur"], 1e-6)))
-        base = src.frame(u, 1 if hash(key) % 2 else -1) if src else Image.new("RGB", (W, H), INK)
+    def frame_of(k: int, f: int) -> Image.Image:
+        s = shots[k]
+        if k in segs:
+            if k not in streams:
+                streams[k] = FM.Stream(segs[k])
+            arr = streams[k].next()
+            base = Image.fromarray(arr)
+        elif s.get("asset"):
+            if s["asset"] not in stills:
+                stills.clear()
+                stills[s["asset"]] = Still(cat[s["asset"]]["path"])
+            u = min(1.0, max(0.0, (f - starts[k]) / max(1, ends[k] - starts[k])))
+            base = stills[s["asset"]].frame(u, 1 if k % 2 else -1)
+        else:
+            base = Image.new("RGB", (W, H), INK)
+        u = min(1.0, max(0.0, (f - starts[k]) / max(1, ends[k] - starts[k])))
         if s["kind"] == "device":
             base = cross_section(base, u, s.get("label", ""))
         if s["kind"] == "title":
             base = Image.blend(base, Image.new("RGB", (W, H), INK), 0.55)
         return base
 
-    shots = tl["shots"]
-    si = 0
+    k = 0
     for f in range(total):
+        while k < len(shots) - 1 and f >= ends[k]:
+            if k in streams:
+                streams.pop(k).close()
+            k += 1
+        s = shots[k]
         t = f / FPS
-        while si < len(shots) - 1 and t >= shots[si]["start"] + shots[si]["dur"]:
-            si += 1
-        s = shots[si]
         local = t - s["start"]
-        pic = layer(s, local)
-        # calm holds dissolve into the next shot; the opening cuts hard
-        nxt = shots[si + 1] if si + 1 < len(shots) else None
-        remain = s["start"] + s["dur"] - t
-        if (nxt and s.get("register") == "calm" and nxt.get("kind") != "title"
-                and remain * FPS < xf):
-            a = 1 - remain * FPS / xf
-            pic = Image.blend(pic, layer(nxt, 0.0), a * 0.999)
+        pic = frame_of(k, f)
+        if k + 1 < len(shots) and lead[k + 1] and f >= ends[k] - xf:
+            a = (f - (ends[k] - xf) + 1) / (xf + 1)
+            pic = Image.blend(pic, frame_of(k + 1, f), a)
         arr = np.asarray(pic, dtype=np.uint8)
         graded = grade_frame(arr)
         if f % proof_every == 0:
@@ -628,18 +706,20 @@ def render(script: Path, voice_dir: Path, out: Path, beat_idx: list[int] | None,
                 b = draw_card(im, p["directive"], (since - 1.0) / 6.0)
                 if b:
                     boxes.append(b)
-        # the title card shows the question itself; no caption under it
         cb = None if s["kind"] == "title" else draw_caption(im, caption_at(caps, t))
         if cb:
             boxes.append(cb)
         if s["kind"] == "device":
             boxes.append((0, 0, W, H))       # the device is drawn, not graded
         if f % proof_every == 0:
-            proof_log.append({"frame": f, "shot": shots.index(s), "kind": s["kind"],
+            proof_log.append({"frame": f, "shot": k, "kind": s["kind"],
+                              "treatment": s.get("treatment"),
                               "masked": [list(map(int, b)) for b in boxes if b]})
         enc.stdin.write(np.asarray(im, dtype=np.uint8).tobytes())
         if f % (FPS * 10) == 0:
             print(f"  frame {f}/{total}", flush=True)
+    for st in streams.values():
+        st.close()
     enc.stdin.close()
     if enc.wait() != 0:
         raise RuntimeError("encoder failed")
@@ -649,18 +729,21 @@ def render(script: Path, voice_dir: Path, out: Path, beat_idx: list[int] | None,
                    proof_log, bed)
 
 
+def clip_licence(rec: dict) -> dict:
+    return {k: rec.get(k) for k in ("source", "source_id", "item_url", "licence", "licence_url",
+                                     "licence_text", "fetched_at", "sha256", "credit_line")}
+
+
 def _finish(script, voice_dir, out, work, silent, tl, beats, caps, cat,
             proof_log, bed) -> dict:
     shots = tl["shots"]
-
-    # ---- audio: the voice, the low food bed ducked under it, then the mux
     voice = work / "voice.wav"
     lst = work / "voice.txt"
     lst.write_text("".join(f"file '{voice_dir / b['file']}'\n" for b in beats))
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0",
                     "-i", str(lst), "-ar", "48000", "-ac", "1", str(voice)], check=True)
     import food_sound                                         # noqa: PLC0415
-    bed_raw = bed or food_sound.build_bed(tl, work / "bed.wav")
+    bed_raw = bed or food_sound.build_bed(tl, work / "bed.wav", cat)
     mix = food_sound.duck_and_mix(voice, bed_raw, work)
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(silent), "-i", str(mix["mix"]),
                     "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-shortest",
@@ -668,17 +751,26 @@ def _finish(script, voice_dir, out, work, silent, tl, beats, caps, cat,
     out.with_suffix(".srt").write_text(srt(caps))
     ai = sorted({s["asset"] for s in shots if s.get("asset") and cat[s["asset"]]["ai"]})
     real = sorted({s["asset"] for s in shots if s.get("asset") and not cat[s["asset"]]["ai"]})
+    sys.path.insert(0, str(ROOT / "voice"))
+    import food_voice                                         # noqa: PLC0415
     spec = {
         "script": str(script.relative_to(ROOT)) if script.is_relative_to(ROOT) else str(script),
         "preset": PRESET, "grade": FOOD_GRADE, "duration_s": round(tl["duration"], 2),
         "shots": shots, "captions": {"burned_in": True, "sidecar": out.with_suffix(".srt").name},
         "ai_assets": ai, "real_assets": real,
         "credits": {k: cat[k]["credit"] for k in real},
+        "clip_licences": {k: clip_licence(cat[k]) for k in real if cat[k]["kind"] == "clip"},
+        "composites": [{"shot": i, "asset": s["asset"], "treatment": s["treatment"],
+                        "start": round(s["start"], 2), "dur": round(s["dur"], 2)}
+                       for i, s in enumerate(shots) if s.get("composite")],
+        "screen_time": screen_time({"shots": shots}),
         # YouTube's altered-or-synthetic-content disclosure. loop/upload.py
         # reads this field and sends status.containsSyntheticMedia.
         "altered_content": bool(ai),
         "ai_video_clips": 0,
-        "ai_video_note": "no open video model runs on this Mac; AI shots are stills with motion",
+        "ai_video_note": "no open video model runs on this Mac; the only AI pictures are the "
+                         "diagram stills under the cross-section device",
+        "voice": food_voice.measure(voice_dir),
         "sound": mix["measured"], "proofs": proof_log,
     }
     out.with_suffix(".food.json").write_text(json.dumps(spec, indent=1))
@@ -696,35 +788,60 @@ def _decode(mp4: Path, frames: list[int]) -> dict[int, np.ndarray]:
     return {f: arr[i] for i, f in enumerate(frames[:k])}
 
 
+CLIP_LICENCE_FIELDS = ("source", "item_url", "licence", "licence_url", "sha256", "fetched_at")
+
+
 def check_spec(spec: dict) -> list[str]:
-    """Cadence, device count and honesty fields, from the episode spec."""
+    """Cadence, one register, real-video share, composites, device count, licences
+    and honesty fields, from the episode spec."""
     p: list[str] = []
     shots = spec.get("shots") or []
     if not shots:
         return ["no shots - a render that shows nothing proves nothing"]
     lo_o, hi_o = PRESET["opening_cut_s"]
-    lo_c, hi_c = PRESET["calm_hold_s"]
+    lo_b, hi_b = PRESET["body_hold_s"]
     for i, s in enumerate(shots):
+        if s.get("register", "standard") != "standard":
+            p.append(f"shot {i} is in register {s['register']!r}: one voice start to finish")
         if s["kind"] != "picture":
             continue
         d = s["dur"]
-        if s.get("register") == "standard" and not (lo_o - 0.05 <= d <= hi_o + 0.05):
+        if s.get("phase") == "opening" and not (lo_o - 0.05 <= d <= hi_o + 0.05):
             p.append(f"opening shot {i} holds {d:.1f}s, outside {lo_o}-{hi_o}s")
-        if s.get("register") == "calm" and d > hi_c + 0.05:
-            p.append(f"calm shot {i} holds {d:.1f}s, over {hi_c}s")
-        if s.get("register") == "calm" and d < lo_c - 0.05:
+        if s.get("phase") == "body" and d > hi_b + 0.05:
+            p.append(f"body shot {i} holds {d:.1f}s, over {hi_b}s")
+        if s.get("phase") == "body" and d < lo_b - 0.05:
             beat_total = sum(x["dur"] for x in shots if x["beat"] == s["beat"])
-            if beat_total >= lo_c:
-                p.append(f"calm shot {i} cuts after {d:.1f}s, under {lo_c}s")
-    if not any(s.get("register") == "standard" for s in shots):
+            if beat_total >= lo_b:
+                p.append(f"body shot {i} cuts after {d:.1f}s, under {lo_b}s")
+    if not any(s.get("phase") == "opening" for s in shots):
         p.append("no opening shots: the hooked opening is missing")
-    if not any(s.get("register") == "calm" for s in shots):
-        p.append("no calm holds: the register never shifts")
+    if not any(s.get("phase") == "body" and s["kind"] == "picture" for s in shots):
+        p.append("no body holds after the title card")
     n_dev = sum(1 for s in shots if s["kind"] == "device")
     if n_dev > PRESET["devices_per_part_max"]:
-        p.append(f"{n_dev} signature devices in one part, over "
-                 f"{PRESET['devices_per_part_max']}")
-    if spec.get("ai_assets") and not spec.get("altered_content"):
+        p.append(f"{n_dev} signature devices in one part, over {PRESET['devices_per_part_max']}")
+    lo_c, hi_c = PRESET["composites"]
+    n_comp = sum(1 for s in shots if s.get("composite") or s.get("treatment") in ("wall", "kaleido"))
+    if not lo_c <= n_comp <= hi_c:
+        p.append(f"{n_comp} impossible-scale composites, outside {lo_c}-{hi_c}")
+    st = screen_time(spec)
+    if st["real_video_share"] < REAL_VIDEO_SHARE_MIN:
+        p.append(f"real video is {st['real_video_share']:.0%} of screen time, under "
+                 f"{REAL_VIDEO_SHARE_MIN:.0%} - stills are not acceptable for food in motion")
+    ai = set(spec.get("ai_assets") or [])
+    for i, s in enumerate(shots):
+        if s.get("asset") in ai and s["kind"] != "device":
+            p.append(f"shot {i}: AI still {s['asset']!r} stands in for food ({s['kind']}); "
+                     f"AI stills are for the diagram only")
+    lic = spec.get("clip_licences") or {}
+    for s in shots:
+        if s.get("treatment") in ("play", "slowmo", "pushin", "wall", "kaleido"):
+            rec = lic.get(s.get("asset")) or {}
+            miss = [k for k in CLIP_LICENCE_FIELDS if not rec.get(k)]
+            if miss:
+                p.append(f"clip {s.get('asset')!r} on screen with no recorded licence ({miss})")
+    if ai and not spec.get("altered_content"):
         p.append("AI stills on screen but altered_content is not set")
     for k, c in (spec.get("credits") or {}).items():
         if not c:

@@ -4479,15 +4479,24 @@ def v53_food_preset() -> Result:
     """HARD. The food preset's contract, on the sample's real output.
 
     channel/specs/food-sample-chocolate.json is the episode spec the render
-    wrote (shots, credits, altered_content) and .proof.npz holds, for the
-    sampled picture frames, the UNGRADED composite and the DECODED final
-    frame. visuals/food.check_spec and check_frames are the same functions
-    `visuals/food.py check` runs on the mp4 itself. Self-check: a shot list
-    with an 8-second opening cut fails, and an ungraded frame fails the grade.
+    wrote (shots, treatments, clip licences, screen time, altered_content) and
+    .proof.npz holds, for sampled picture frames, the UNGRADED composite and
+    the DECODED final frame. visuals/food.check_spec and check_frames are the
+    same functions `visuals/food.py check` runs on the mp4. Owner verdict on
+    round 1 (2026-10-13): >= 60 % of screen time real video, every clip with a
+    recorded licence, AI stills for the diagram only, 3-5 composites.
+    THE FALLBACK CHAIN (research/food_footage.py): with Pixabay unavailable
+    (key dir pointed at nothing, env key blank - her file untouched) the
+    chocolate shot list still resolves >= 10 real clips from the recorded
+    candidates; with every fallback off too, it does not.
+    Self-checks: an 8-second opening cut fails; an AI still on a picture shot
+    fails; a clip with no licence fails; an ungraded frame fails the grade.
     """
     r = Result("V53 food-preset")
     sys.path.append(str(ROOT / "visuals"))
+    sys.path.append(str(ROOT / "research"))
     import food as _f                                      # noqa: PLC0415
+    import food_footage as _ff                             # noqa: PLC0415
     if not FOOD_SAMPLE_SPEC.exists() or not FOOD_SAMPLE_PROOF.exists():
         r.fail("the food sample's spec or proof frames are missing from channel/specs/")
         return r
@@ -4501,11 +4510,52 @@ def v53_food_preset() -> Result:
     r.examined += n
     for p in probs:
         r.fail(f"sample frames: {p}")
+    # every clip the sample shows is a manifest record that passes the rights fields
+    man = {x["subject"]: x for x in _ff.load().get("index") or []}
+    for k, lic in (spec.get("clip_licences") or {}).items():
+        r.examined += 1
+        rec = man.get(k)
+        if not rec or rec.get("sha256") != lic.get("sha256"):
+            r.fail(f"sample clip {k!r} is not the record in channel/imagery/food_clips.json")
+        else:
+            for p in _ff.record_problems(rec):
+                r.fail(f"clip record: {p}")
+    # the fallback chain, offline, with Pixabay unavailable
+    saved = {k: os.environ.get(k) for k in ("HWK_FOOTAGE_KEY_DIR", "PIXABAY_API_KEY",
+                                             "PEXELS_API_KEY", "HWK_FOOTAGE_DISABLE")}
+    try:
+        os.environ.update({"HWK_FOOTAGE_KEY_DIR": "/nonexistent-hwk-proof", "PIXABAY_API_KEY": "",
+                           "PEXELS_API_KEY": "", "HWK_FOOTAGE_DISABLE": ""})
+        res = _ff.resolve(offline=True)
+        r.examined += res["count"]
+        if res["by_source"].get("pixabay"):
+            r.fail("fallback proof: Pixabay answered although its key was made unavailable")
+        if not res["enough"]:
+            r.fail(f"fallback chain: without Pixabay only {res['count']} real clips resolve "
+                   f"(need {_ff.MIN_REAL_CLIPS}); misses {res['misses']}")
+        os.environ["HWK_FOOTAGE_DISABLE"] = ",".join(_ff.FALLBACKS)
+        if _ff.resolve(offline=True)["count"]:
+            r.fail("self-check: with every source off the chain still resolved clips")
+    finally:
+        for k, v in saved.items():
+            if v is None:
+                os.environ.pop(k, None)
+            else:
+                os.environ[k] = v
     bad = json.loads(json.dumps(spec))
-    first = next(s for s in bad["shots"] if s.get("register") == "standard")
+    first = next(s for s in bad["shots"] if s.get("phase") == "opening" and s["kind"] == "picture")
     first["dur"] = 8.0
     if not _f.check_spec(bad):
         r.fail("self-check: an 8-second opening cut passed the preset")
+    bad = json.loads(json.dumps(spec))
+    pic = next(s for s in bad["shots"] if s["kind"] == "picture")
+    bad["ai_assets"] = sorted(set(bad.get("ai_assets") or []) | {pic["asset"]})
+    if not _f.check_spec(bad):
+        r.fail("self-check: an AI still standing in for food passed the preset")
+    bad = json.loads(json.dumps(spec))
+    bad["clip_licences"] = {}
+    if not _f.check_spec(bad):
+        r.fail("self-check: clips with no recorded licence passed the preset")
     n2, p2 = _f.check_frames(proof["ungraded"], proof["ungraded"], proof["masks"])
     if not p2:
         r.fail("self-check: ungraded frames passed the grade check")
@@ -4513,13 +4563,15 @@ def v53_food_preset() -> Result:
 
 
 def v54_food_voice_sound() -> Result:
-    """HARD. Calm is slower, lower and more paused; the bed ducks under her.
+    """HARD. One voice start to finish; the bed ducks under her.
 
-    Reads the sample's measured audio (voice/food_voice.measure and
-    visuals/food_sound.measure, recorded in the sample spec when it was
-    rendered) against voice/registers.json's contract and food_sound.CONTRACT.
-    Self-check, on synthetic signals so the rulers themselves are proven: a
-    1.5-semitone shift is measured as one, and an unducked bed fails.
+    Reads the sample's measured audio (voice/food_voice.measure, per beat and
+    per third, and visuals/food_sound.measure, recorded in the sample spec when
+    it was rendered) against voice/registers.json's contract - a mid-video
+    change of pitch or pace FAILS (owner verdict on round 1, 2026-10-13: the
+    calm register is gone) - and food_sound.CONTRACT. Self-check, on synthetic
+    beats so the ruler itself is proven: a beat lowered 2 semitones and slowed
+    fails, and an unducked bed fails.
     """
     r = Result("V54 food-voice-sound")
     sys.path.append(str(ROOT / "voice"))
@@ -4528,26 +4580,33 @@ def v54_food_voice_sound() -> Result:
     import food_sound as _fs                               # noqa: PLC0415
     import numpy as _np                                    # noqa: PLC0415
     regs = _fv.registers()
-    if regs.get("switch_at") != "### Title card" or "calm" not in regs["registers"]:
-        r.fail("voice/registers.json has no calm register switching at the title card")
+    if set(regs["registers"]) != {"standard"} or "switch_at" in regs:
+        r.fail("voice/registers.json still carries a second register or a switch point")
     if not FOOD_SAMPLE_SPEC.exists():
         r.fail("no food sample spec to read the measured audio from")
         return r
     spec = json.loads(FOOD_SAMPLE_SPEC.read_text())
     meas = spec.get("voice") or {}
-    r.examined += sum(int(v.get("beats") or 0) for v in meas.values())
+    r.examined += len(meas.get("beats") or [])
     for p in _fv.check(meas):
         r.fail(f"voice: {p}")
     snd = spec.get("sound") or {}
     r.examined += 1 if snd else 0
     for p in _fs.check(snd) if snd else ["no sound measurement recorded"]:
         r.fail(f"sound: {p}")
+    if meas.get("beats"):
+        bad = json.loads(json.dumps(meas))
+        b = max(bad["beats"], key=lambda x: x["words"])
+        b["median_f0_hz"] = round(b["median_f0_hz"] * 2 ** (-2 / 12), 1)
+        b["wpm"] = round(b["wpm"] * 0.75, 1)
+        if not _fv.check(bad):
+            r.fail("self-check: a beat 2 semitones lower and 25% slower passed one-voice")
     sr = 24000
     t = _np.arange(sr * 2) / sr
     x = (0.3 * _np.sin(2 * _np.pi * 190 * t)).astype(_np.float32)
-    a, b = _fv._median_f0(x, sr), _fv._median_f0(_fv.shift_down(x, -1.5), sr)
-    if not (a and b) or abs(12 * _np.log2(a / b) - 1.5) > 0.25:
-        r.fail(f"self-check: the pitch ruler read a 1.5-semitone shift as {a} -> {b}")
+    a, b_ = _fv._median_f0(x, sr), _fv._median_f0(_fv.shift_down(x, -1.5), sr)
+    if not (a and b_) or abs(12 * _np.log2(a / b_) - 1.5) > 0.25:
+        r.fail(f"self-check: the pitch ruler read a 1.5-semitone shift as {a} -> {b_}")
     v = _np.zeros(_fs.SR * 4, _np.float32)
     v[: _fs.SR * 2] = 0.2 * _np.sin(2 * _np.pi * 200 * _np.arange(_fs.SR * 2) / _fs.SR)
     bed = _np.full(_fs.SR * 4, 0.01, _np.float32)

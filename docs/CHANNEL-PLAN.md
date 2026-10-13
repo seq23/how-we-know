@@ -422,21 +422,32 @@ to the two above. Same "how we know" questions, same hook rule, same title and t
 contract, a new imagery preset and a calmer register.
 
 - **Format:** about 30 minutes to start, three questions of roughly nine minutes each, a hooked
-  90-second cold open, then the pace slows and the voice lowers so the video works as wind-down
-  and on mute (captions on, a low sound layer of sizzle, snap and pour). Later: 60–120 minute
-  compilations and single-food deep dives; ten-minute cuts of the same scripts feed search.
-  Judged by **watch minutes per view and click-through, not view percentage.**
+  90-second cold open, then **one voice at normal explainer pace start to finish** - the owner's
+  verdict on sample round 1 (2026-10-13) dropped the calm, lowered register: the IMAGERY carries
+  the hypnotic quality, not the narration. Works on mute (captions on, a low sound layer of
+  sizzle, snap and pour matched to the footage). Later: 60–120 minute compilations and
+  single-food deep dives; ten-minute cuts of the same scripts feed search. Judged by **watch
+  minutes per view and click-through, not view percentage.**
 - **First video:** *Why bread rises, steak browns and chocolate snaps* — why bread rises (Pasteur
   1857, yeast under the microscope, X-ray tomography of a baking loaf); why seared meat tastes
   good (Maillard 1912, Hodge 1953, gas chromatography of the crust); why chocolate melts in the
   mouth and not the hand (cocoa butter form V, X-ray diffraction, calorimetry).
-- **Imagery, the owner's words:** marvellous and hypnotic, realistic not animated, AI is fine,
+- **Imagery, the owner's words:** marvellous and hypnotic, realistic not animated,
   **fantastical in scale rather than physics** — fields of dough rising, a thousand steaks
-  sizzling, chocolate falling in sheets. At $0: Flux stills on Workers AI's free allowance and
-  local Stable Diffusion with slow zoom and parallax; Pexels/Pixabay slow-motion macro for real
-  pours and snaps; a few open-model AI video hero clips rendered overnight on the Mac. AI stills
-  that look real carry YouTube's altered-content label. Full generated motion at viral quality is
-  a paid tool and is never proposed.
+  sizzling, chocolate falling in sheets. Her round-1 verdict (2026-10-13): **stills are not
+  acceptable for food in motion** — real MOVEMENT, pours, drips, sizzles, chocolate falling in
+  sheets. At $0: real clips through a free fallback chain (`research/food_footage.py`: Pixabay,
+  Pexels, Mixkit, Commons PD/CC0, Internet Archive PD collections, NASA; Coverr refused by its own
+  terms), made impossible in scale by ffmpeg composites (`visuals/food_motion.py`: walls of
+  staggered mirrored pours, slow kaleidoscopes, slow motion, push-ins), all under one grade. AI
+  stills only as the explanatory diagram (the glowing cross-section), flagged as altered content.
+  At least 60% of screen time is real video (V53). No open video model runs on the Mac; full
+  generated motion is a paid tool and is never proposed.
+- **Titles (owner, 2026-10-13):** plain, sixth-grade, <= 40 characters, subject first, usually a
+  question. The first full video is **"Bread, Steak, Chocolate: What's Inside?"**; its chocolate
+  segment/sample is **"Why Does Chocolate Melt in Your Mouth?"**. **"<Food>, <Food>, <Food>:
+  What's Inside?"** is the series title shape for future three-question food videos (three
+  subject nouns + "What's Inside?"). Thumbnails show all three foods with at most three plain words.
 - **The gate:** a **two-to-three-minute sample** of the chocolate segment (hook, register shift,
   preset, sound, captions, voice, title and three thumbnails) is rendered first; the owner reviews
   it the same day; it iterates until she says it is right; only then does the first full video

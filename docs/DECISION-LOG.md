@@ -1303,3 +1303,36 @@ PRIVATE (never deleted) only after their replacement is public.
   Its rounds live in demand.json; titles.json is not written.
 - **Thumbnail tests:** `demand mark-test <id> --start|--end`; an active test means title only.
 
+## 2026-10-13 - Food sample round 2: one voice, real movement, a free footage chain
+
+**Owner verdict on round 1 (binding):** (a) ONE voice at normal explainer pace start to finish -
+the calm register and its title-card switch are removed, and a render whose pace or pitch
+changes mid-video now FAILS (`voice/food_voice.check`, V54); (b) stills are not acceptable for
+food in motion - real MOVEMENT and the impossible-scale feel (round 1 was 11/13 AI stills).
+
+- **Footage chain** (`research/food_footage.py`): Pixabay (key file, primary) -> Pexels (dormant;
+  Pexels paused new API keys today) -> Mixkit (licence: YouTube/commercial, no attribution;
+  User Terms cl. 9 forbid MASS download by script, so one category page per need, at most 20
+  downloads a run, 4 s apart, the FREE licence re-read on each item page) -> Coverr DISABLED (its
+  Website Terms forbid "robots, or any other automated means"; the clip licence itself would have
+  allowed the use) -> Commons PD/CC0 -> Internet Archive (Prelinger/FedFlix only, PD licenseurl;
+  user-uploaded "opensource_movies" PD marks are not trusted - they include film trailers) -> NASA.
+  Licence and terms wording stored in `channel/imagery/licences/`.
+- **Caught on the way, by the gates:** two Pixabay chocolate pours were generated video
+  (`isAiGenerated` / type "animation") - Pixabay now keeps only `type: film`; a third (a splash)
+  is tagged "3d" by its uploader and is refused on its own words; Mixkit 22920 is under the
+  Stock Video RESTRICTED licence - the item-page gate refused it. Pixabay's chocolate stock is
+  thin (3 filmed clips kept, 1 on screen); Mixkit supplies 9 of the 11 clips on screen.
+- **Fallback proof:** with the Pixabay key made unavailable by env (her file untouched), the
+  chocolate shot list resolves 12 real clips from the fallbacks; with the fallbacks off too, 0
+  (V53, `loop/tests/test_food_footage_chain.py`).
+- **Impossible scale from real clips** (`visuals/food_motion.py`): 4x3 walls of staggered,
+  mirrored tiles; slow four-way kaleidoscopes; 2x slow motion (blend, no invented motion);
+  ping-pong loops; push-ins. 3-5 per sample. AI stills only under the glowing cross-section.
+- **Titles (owner):** full video "Bread, Steak, Chocolate: What's Inside?"; sample "Why Does
+  Chocolate Melt in Your Mouth?"; "<Food>, <Food>, <Food>: What's Inside?" is the series shape.
+- **CLAUDE.md widened, narrowly:** real food FOOTAGE may come from no-attribution commercial
+  licences (Pixabay, Pexels, Mixkit) through the footage module only; photographic stills stay
+  PD/CC0; every clip is credited on screen anyway.
+- Gate stays closed (`domains.sample_gate`, round 2 awaiting her review).
+

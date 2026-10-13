@@ -1,17 +1,147 @@
 {
-  "_why": "Episode spec for the first food video (docs/CHANNEL-PLAN.md, A third domain: food science). loop/upload.py altered_content() reads `altered_content` and sends YouTube's status.containsSyntheticMedia; visuals/food.py rewrites this file from the full render (which only happens once loop/config.json domains.sample_gate clears).",
-  "slug": "why-bread-rises-steak-browns-chocolate-snaps",
-  "domain": "food-science",
-  "preset": "food-v1",
-  "parts": [
-    "scripts/food/why-does-bread-rise.md",
-    "scripts/food/why-does-seared-meat-taste-good.md",
-    "scripts/food/why-does-chocolate-melt-in-your-mouth-not-your-hand.md"
+ "_why": "Episode spec for the first food video (docs/CHANNEL-PLAN.md, A third domain: food science). loop/upload.py altered_content() reads `altered_content` and sends YouTube's status.containsSyntheticMedia; visuals/food.py rewrites this file from the full render (which only happens once loop/config.json domains.sample_gate clears).",
+ "slug": "why-bread-rises-steak-browns-chocolate-snaps",
+ "domain": "food-science",
+ "preset": "food-v2",
+ "parts": [
+  "scripts/food/why-does-bread-rise.md",
+  "scripts/food/why-does-seared-meat-taste-good.md",
+  "scripts/food/why-does-chocolate-melt-in-your-mouth-not-your-hand.md"
+ ],
+ "episode_script": "scripts/food/why-bread-rises-steak-browns-chocolate-snaps.md",
+ "altered_content": true,
+ "altered_content_why": "AI stills appear only as the explanatory diagram under the glowing cross-section (Workers AI FLUX.1 schnell, channel/imagery/food_ai.json); food in motion is real footage (research/food_footage.py). 'AI stills that look real carry YouTube's altered-content label' (owner, 2026-10-13)",
+ "ai_video_clips": 0,
+ "captions": {
+  "burned_in": true,
+  "sidecar": "srt"
+ },
+ "voice": {
+  "register": "standard",
+  "one_voice_start_to_finish": true,
+  "registers": "voice/registers.json",
+  "why": "owner verdict on sample round 1, 2026-10-13: one voice, normal explainer pace; the calm register is removed"
+ },
+ "title_owner": {
+  "full_video": "Bread, Steak, Chocolate: What's Inside?",
+  "chocolate_segment_sample": "Why Does Chocolate Melt in Your Mouth?",
+  "series_shape": "<Food>, <Food>, <Food>: What's Inside?",
+  "decided": "2026-10-13 (owner)",
+  "_note": "the shared title gate (loop/longform_title.py) owns which title ships; this records her decision for the description template"
+ },
+ "segments": [
+  {
+   "part": "scripts/food/why-does-bread-rise.md",
+   "chapter": "Why does bread rise?",
+   "spoken_at_segment_open": "Why does bread rise?",
+   "subjects": [
+    "bread",
+    "yeast",
+    "dough"
+   ],
+   "phrasings": [
+    "why does bread rise",
+    "what makes bread rise",
+    "how does yeast make bread rise",
+    "why does dough rise",
+    "why does bread rise in the oven",
+    "what ingredient causes bread to rise",
+    "how yeast makes bread rise"
+   ],
+   "phrasing_source": "Google/YouTube autocomplete (suggestqueries.google.com, client=firefox, hl=en, gl=us, ds=yt and web), pulled 2026-10-13, $0; kept only phrasings this segment answers",
+   "search_questions": [
+    "Why Does Bread Rise?",
+    "Why does dough rise?",
+    "Why does yeast make bread rise?",
+    "Why does my bread not rise?",
+    "Why doesn't my bread rise?",
+    "Why is my bread not rising?",
+    "Why bread rises?",
+    "Why bread doesn't rise?"
+   ],
+   "search_questions_by": "loop/describe.search_questions (the shared description template, #207), live autocomplete 2026-10-13"
+  },
+  {
+   "part": "scripts/food/why-does-seared-meat-taste-good.md",
+   "chapter": "Why does seared meat taste so good?",
+   "spoken_at_segment_open": "Why does seared meat taste so good?",
+   "subjects": [
+    "steak",
+    "searing",
+    "browning"
+   ],
+   "phrasings": [
+    "why does seared meat taste better",
+    "why does meat brown when cooked",
+    "why does steak turn brown",
+    "maillard reaction explained",
+    "maillard reaction steak",
+    "why sear meat",
+    "why does meat taste so good"
+   ],
+   "phrasing_source": "Google/YouTube autocomplete (suggestqueries.google.com, client=firefox, hl=en, gl=us, ds=yt and web), pulled 2026-10-13, $0; kept only phrasings this segment answers",
+   "search_questions": [
+    "Why Does Seared Meat Taste So Good?",
+    "Why does meat taste so good?",
+    "How to make meat taste good?",
+    "What does meat taste like?",
+    "Is steak good for you?",
+    "Is eating steak good for you?"
+   ],
+   "search_questions_by": "loop/describe.search_questions (the shared description template, #207), live autocomplete 2026-10-13"
+  },
+  {
+   "part": "scripts/food/why-does-chocolate-melt-in-your-mouth-not-your-hand.md",
+   "chapter": "Why does chocolate melt in your mouth but not in your hand?",
+   "spoken_at_segment_open": "Why does chocolate melt in your mouth but not in your hand?",
+   "subjects": [
+    "chocolate",
+    "tempering",
+    "cocoa butter"
+   ],
+   "phrasings": [
+    "why does chocolate melt in your mouth",
+    "what makes chocolate melt in your mouth",
+    "why does chocolate melt in your hand",
+    "chocolate melting point",
+    "why tempering chocolate is important",
+    "what is the science behind tempering chocolate",
+    "why does tempering chocolate work"
+   ],
+   "phrasing_source": "Google/YouTube autocomplete (suggestqueries.google.com, client=firefox, hl=en, gl=us, ds=yt and web), pulled 2026-10-13, $0; kept only phrasings this segment answers",
+   "search_questions": [
+    "Why Does Chocolate Melt in Your Mouth?",
+    "Why does chocolate melt in your mouth but not in your hand?",
+    "Why does chocolate melt?",
+    "What to do if melted chocolate is too thick?",
+    "Why is my melted chocolate thicker?",
+    "Why homemade chocolate melts easily?",
+    "How chocolate melt?",
+    "How you melt chocolate?"
+   ],
+   "search_questions_by": "loop/describe.search_questions (the shared description template, #207), live autocomplete 2026-10-13"
+  }
+ ],
+ "segments_why": "owner, 2026-10-13: descriptions and captions carry the questions people ask. The shared description template (built by the title/description work, with its own validator) reads chapter/subjects/phrasings from here; the srt stays verbatim narration, and each segment's title card SPEAKS its question, so the question is in the captions.",
+ "description_template": {
+  "module": "loop/describe.py",
+  "compose": "describe.compose(slug, script, title, question, chapters, sources, state={'episodes': {slug: {'questions': ..., 'chapter_names': ...}}}) at the full render, when chapter timestamps exist",
+  "chapter_names": {
+   "Why does bread rise?": "Why does bread rise?",
+   "Why does seared meat taste so good?": "Why does seared meat taste so good?",
+   "Why does chocolate melt in your mouth but not in your hand?": "Why does chocolate melt in your mouth but not in your hand?"
+  },
+  "questions": [
+   "Bread, Steak, Chocolate: What's Inside?",
+   "Why does bread rise?",
+   "What makes bread rise?",
+   "How does yeast make bread rise?",
+   "Why does seared meat taste better?",
+   "Why does meat brown when cooked?",
+   "Why does chocolate melt in your mouth?",
+   "Why does chocolate melt in your hand?"
   ],
-  "episode_script": "scripts/food/why-bread-rises-steak-browns-chocolate-snaps.md",
-  "altered_content": true,
-  "altered_content_why": "realistic AI stills (Workers AI FLUX.1 schnell, channel/imagery/food_ai.json) are on screen: 'AI stills that look real carry YouTube's altered-content label' (owner, 2026-10-13)",
-  "ai_video_clips": 0,
-  "captions": {"burned_in": true, "sidecar": "srt"},
-  "voice": {"cold_open": "standard", "after_title_card": "calm", "registers": "voice/registers.json"}
+  "min_questions": 4,
+  "questions_why": "hand-kept from the autocomplete pulls (segments[].phrasings): only questions this video answers. describe.search_questions' own picks (segments[].search_questions) include ones it does not answer - 'Is steak good for you?', 'How you melt chocolate?' - and a health question is outside the food brief."
+ }
 }

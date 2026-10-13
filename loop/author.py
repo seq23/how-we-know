@@ -68,14 +68,16 @@ DOMAIN_BRIEF: dict[str, dict[str, str]] = {
             "https://www.asminternational.org/"),
     },
     # 2026-10-13, the owner's third domain (docs/CHANNEL-PLAN.md, A third
-    # domain: food science). After the title card the register is CALM:
-    # wind-down pace, short sentences, room to breathe, and it must work on
-    # mute, so every paragraph names the thing on screen.
+    # domain: food science). ONE voice at normal explainer pace start to
+    # finish (owner's verdict on sample round 1, 2026-10-13: the imagery
+    # carries the hypnotic quality, not the narration). It must work on mute,
+    # so every paragraph names the thing on screen.
     "food-science": {
         "subject": "food science - what physically and chemically happens to "
-                   "food, and the instruments that showed it. After the title "
-                   "card the register is calm and unhurried, for winding down, "
-                   "and never gives dietary or health advice",
+                   "food, and the instruments that showed it. One voice at "
+                   "normal explainer pace from start to finish; every paragraph "
+                   "names what is on screen, and it never gives dietary or "
+                   "health advice",
         "example_urls": (
             "https://www.ars.usda.gov/ or "
             "https://pubchem.ncbi.nlm.nih.gov/"),

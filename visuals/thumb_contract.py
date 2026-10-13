@@ -455,16 +455,24 @@ def title_for(slug: str, script_text: str) -> str:
 
 def build_variants(slug: str, out_root: str | None = None,
                    title: str | None = None,
-                   script_path: str | None = None) -> dict:
-    """Build A, B, C and contract.json. Raises ContractRefused, named."""
+                   script_path: str | None = None,
+                   texts: list[str] | None = None) -> dict:
+    """Build A, B, C and contract.json. Raises ContractRefused, named.
+    `texts` (owner-given thumbnail words, each <= MAX_WORDS) replace the phrases
+    taken from the title - the food sample's "WHAT'S INSIDE?" is the owner's."""
     sys.path.insert(0, os.path.join(ROOT, "loop"))
     sp = script_path or os.path.join(SCRIPTS, f"{slug}.md")
     text_src = open(sp, encoding="utf-8").read() if os.path.exists(sp) else ""
     title = title or title_for(slug, text_src)
-    sys.path.insert(0, os.path.join(ROOT, "loop"))
-    import longform_title as LT                            # noqa: PLC0415
-    subject = LT.subject_words(LT._question_for(slug, text_src)) if text_src else None  # noqa: SLF001
-    texts = text_options(title, subject)
+    if texts and any(len(t.split()) > MAX_WORDS for t in texts):
+        raise ContractRefused(f"{slug}: thumbnail text over {MAX_WORDS} words: {texts}")
+    if texts:
+        texts = [t.upper() for t in texts]
+    else:
+        sys.path.insert(0, os.path.join(ROOT, "loop"))
+        import longform_title as LT                            # noqa: PLC0415
+        subject = LT.subject_words(LT._question_for(slug, text_src)) if text_src else None  # noqa: SLF001
+        texts = text_options(title, subject)
     if not texts:
         raise ContractRefused(f"{slug}: no title or hook to take <= {MAX_WORDS} "
                               f"words from")

@@ -138,25 +138,49 @@ def _read_wav(path: Path) -> np.ndarray:
         return np.frombuffer(w.readframes(w.getnframes()), np.int16).astype(np.float32) / 32768.0
 
 
-def build_bed(timeline: dict, out: Path) -> Path:
-    """One cue per shot (looped, faded) at BED_DB; snaps are one-shots."""
+def shot_cue(s: dict, cat: dict | None) -> str | None:
+    """The cue a shot's PICTURE implies. A real clip carries its own (research/
+    food_footage.SHOTS `sound`: a pour under pours, snaps under breaking bars and
+    a bite, silence under still heaps); anything else falls back to its key."""
+    rec = (cat or {}).get(s.get("asset") or "") or {}
+    if rec.get("kind") == "clip":
+        return rec.get("sound")
+    if s.get("kind") == "device":
+        return None
+    return cue_for(s.get("asset"))
+
+
+SNAP_EVERY_S = 1.6               # broken pieces tumbling: a snap now and then, not one
+
+
+def build_bed(timeline: dict, out: Path, cat: dict | None = None) -> Path:
+    """One cue per shot, matched to what is on screen, at BED_DB: pours looped
+    and faded (a composite wall of pours a little fuller), snaps as one-shots
+    spaced through the shot."""
     n = int(timeline["duration"] * SR) + SR
     bed = np.zeros(n, np.float32)
     src = {k: _load(k) for k in SOUNDS}
     fade = int(0.8 * SR)
     for s in timeline["shots"]:
-        cue = cue_for(s.get("asset"))
+        cue = shot_cue(s, cat)
         if not cue:
             continue
         a, L = int(s["start"] * SR), int(s["dur"] * SR)
         x = src[cue]
         if cue == "snap":
-            seg = x[:min(len(x), int(1.5 * SR))].copy()
+            one = x[:min(len(x), int(1.2 * SR))].copy()
+            seg = np.zeros(L, np.float32)
+            for k, at in enumerate(np.arange(0.3, s["dur"] - 0.6, SNAP_EVERY_S)):
+                j = int(at * SR)
+                o = one[(k * int(0.37 * SR)) % max(1, len(one) // 2):][:L - j]
+                seg[j:j + len(o)] += o * (0.8 if k else 1.0)
         else:
             reps = int(np.ceil(L / len(x)))
             seg = np.tile(x, reps)[:L].copy()
+        if s.get("treatment") == "wall" and cue == "pour":
+            seg = seg * 1.4                            # a wall of pours sounds fuller
         env = np.ones(len(seg), np.float32)
-        f = min(fade, len(seg) // 3)
+        f = 0 if cue == "snap" else min(fade, len(seg) // 3)
         if f > 0:
             env[:f] = np.linspace(0, 1, f)
             env[-f:] = np.linspace(1, 0, f)

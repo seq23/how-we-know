@@ -1,7 +1,6 @@
 {
-  "_why": "Voice registers on the free local route (Chatterbox, MIT weights, voice/LICENSING.md). Owner decision 2026-10-13 (docs/CHANNEL-PLAN.md, A third domain: food science): the food videos open hooked, then the pace slows and the voice lowers so the video works as wind-down. 'calm' switches in at the title card. Guarded by validator V54 (loop/validate.py) and loop/tests/test_food_voice_sound.py, which measure the rendered audio, not this file.",
+  "_why": "Voice on the free local route (Chatterbox, MIT weights, voice/LICENSING.md). Owner verdict on food sample round 1, 2026-10-13: ONE VOICE, NORMAL EXPLAINER PACE, START TO FINISH - the calm register and its title-card switch are removed; the imagery carries the hypnotic quality, not the narration. Guarded by validator V54 (loop/validate.py) and loop/tests/test_food_voice_sound.py, which measure the rendered audio per beat, not this file.",
   "route": "chatterbox-local",
-  "switch_at": "### Title card",
   "registers": {
     "standard": {
       "exaggeration": 0.4,
@@ -10,24 +9,17 @@
       "pause_sentence_s": 0.16,
       "pause_paragraph_s": 0.55,
       "pitch_semitones": 0.0,
-      "note": "the channel's existing read (voice/narrate_all.py defaults)",
+      "note": "the channel's existing read (voice/narrate_all.py defaults), used for every beat",
       "max_words": 40
-    },
-    "calm": {
-      "exaggeration": 0.3,
-      "cfg_weight": 0.3,
-      "temperature": 0.6,
-      "pause_sentence_s": 0.75,
-      "pause_paragraph_s": 1.5,
-      "pitch_semitones": -2.0,
-      "note": "slower, lower, more pause: one sentence per breath (max_words 18) with a 0.75 s rest between sentences and 1.5 s between paragraphs; Chatterbox's lower cfg_weight paces more deliberately and lower exaggeration flattens the delivery; the pitch shift resamples, which lowers pitch AND slows the read by the same factor (2^(-2/12) = 0.891). Measured on the first sample: -1.5 semitones and 40-word chunks left calm only 1.3x standard's pauses - too close to tell apart.",
-      "max_words": 18
     }
   },
   "contract": {
-    "calm_pace_at_most_share_of_standard": 0.85,
-    "calm_pitch_drop_semitones_at_least": 1.0,
-    "calm_mean_pause_at_least_share_of_standard": 1.5,
-    "_pace": "pace = words / total beat seconds, pauses included: what a listener hears as slow"
+    "only_register": "standard",
+    "pitch_spread_semitones_at_most": 1.0,
+    "speech_wpm_spread_share_at_most": 0.2,
+    "pace_spread_share_at_most": 0.2,
+    "min_words_per_measured_beat": 20,
+    "_rule": "no beat's median pitch may sit more than 1 semitone from the video's median, no beat's speech rate more than 20% from the median, and no third of the video may pace (words over total seconds, pauses included) more than 20% from the others - a mid-video change of pace or pitch FAILS",
+    "_calibration": "Measured 2026-10-13. One unchanged voice (round 2 sample, 8 beats, same settings) varies naturally: speech 148-191 wpm (median 163, +17%/-9%), pitch within 0.6 semitone, thirds 177/157/151 wpm. Round 1's register change measured -2.0 semitones and thirds 161/128/112 (-20%/-30% from the opening). The limits sit between the two: 1 semitone, 20% per beat, 20% per third."
   }
 }
