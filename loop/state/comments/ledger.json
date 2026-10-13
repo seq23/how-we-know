@@ -736,6 +736,87 @@
         "applied_at": "2026-10-12T16:05:02+00:00",
         "result": "posted (Ugw1uLUoqajJCoRICg94AaABAg)"
       }
+    },
+    "UgyubYvjm3qDKmEl9r54AaABAg": {
+      "comment_id": "UgyubYvjm3qDKmEl9r54AaABAg",
+      "video_id": "nFW6gjUH7-A",
+      "author": "@howweknowdeep",
+      "author_channel_id": "UC5vZFZc15DIM6IrFwFgAECg",
+      "text": "Why deep sea creatures are so scary? Full episode: https://youtu.be/xyZ9xs7OF3g",
+      "published_at": "2026-10-13T23:09:51+00:00",
+      "like_count": 0,
+      "reply_count": 0,
+      "class": "own_channel",
+      "proposed_action": null,
+      "proposed_reply": null,
+      "product_note": null,
+      "seen_at": "2026-10-13T23:09:51+00:00",
+      "acted": {
+        "comment_id": "UgyubYvjm3qDKmEl9r54AaABAg",
+        "video_id": "nFW6gjUH7-A",
+        "action": "channel_comment",
+        "reply_text": "Why deep sea creatures are so scary? Full episode: https://youtu.be/xyZ9xs7OF3g",
+        "instructed_by": "owner",
+        "instructed_at": "2026-10-03",
+        "source": "loop/handoff: owner decision 2026-10-03",
+        "note": null,
+        "applied_at": "2026-10-13T23:09:51+00:00",
+        "result": "posted (UgyubYvjm3qDKmEl9r54AaABAg)"
+      }
+    },
+    "UgwYHgz-oPxPMmbcTgB4AaABAg": {
+      "comment_id": "UgwYHgz-oPxPMmbcTgB4AaABAg",
+      "video_id": "DscaYfXzxUY",
+      "author": "@howweknowdeep",
+      "author_channel_id": "UC5vZFZc15DIM6IrFwFgAECg",
+      "text": "What is the midnight zone? Full episode: https://youtu.be/izdEaeOQBvI",
+      "published_at": "2026-10-13T23:09:52+00:00",
+      "like_count": 0,
+      "reply_count": 0,
+      "class": "own_channel",
+      "proposed_action": null,
+      "proposed_reply": null,
+      "product_note": null,
+      "seen_at": "2026-10-13T23:09:52+00:00",
+      "acted": {
+        "comment_id": "UgwYHgz-oPxPMmbcTgB4AaABAg",
+        "video_id": "DscaYfXzxUY",
+        "action": "channel_comment",
+        "reply_text": "What is the midnight zone? Full episode: https://youtu.be/izdEaeOQBvI",
+        "instructed_by": "owner",
+        "instructed_at": "2026-10-03",
+        "source": "loop/handoff: owner decision 2026-10-03",
+        "note": null,
+        "applied_at": "2026-10-13T23:09:52+00:00",
+        "result": "posted (UgwYHgz-oPxPMmbcTgB4AaABAg)"
+      }
+    },
+    "Ugy784aZ2P1Rorbf69Z4AaABAg": {
+      "comment_id": "Ugy784aZ2P1Rorbf69Z4AaABAg",
+      "video_id": "g9mvDsG_k6E",
+      "author": "@howweknowdeep",
+      "author_channel_id": "UC5vZFZc15DIM6IrFwFgAECg",
+      "text": "What is the deepest fish ever recorded? Full episode: https://youtu.be/OdYunlbB73g",
+      "published_at": "2026-10-13T23:09:52+00:00",
+      "like_count": 0,
+      "reply_count": 0,
+      "class": "own_channel",
+      "proposed_action": null,
+      "proposed_reply": null,
+      "product_note": null,
+      "seen_at": "2026-10-13T23:09:52+00:00",
+      "acted": {
+        "comment_id": "Ugy784aZ2P1Rorbf69Z4AaABAg",
+        "video_id": "g9mvDsG_k6E",
+        "action": "channel_comment",
+        "reply_text": "What is the deepest fish ever recorded? Full episode: https://youtu.be/OdYunlbB73g",
+        "instructed_by": "owner",
+        "instructed_at": "2026-10-03",
+        "source": "loop/handoff: owner decision 2026-10-03",
+        "note": null,
+        "applied_at": "2026-10-13T23:09:52+00:00",
+        "result": "posted (Ugy784aZ2P1Rorbf69Z4AaABAg)"
+      }
     }
   },
   "instructions": {},
@@ -1015,6 +1096,42 @@
       "note": null,
       "applied_at": "2026-10-12T16:05:02+00:00",
       "result": "posted (Ugw1uLUoqajJCoRICg94AaABAg)"
+    },
+    {
+      "comment_id": "UgyubYvjm3qDKmEl9r54AaABAg",
+      "video_id": "nFW6gjUH7-A",
+      "action": "channel_comment",
+      "reply_text": "Why deep sea creatures are so scary? Full episode: https://youtu.be/xyZ9xs7OF3g",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03",
+      "note": null,
+      "applied_at": "2026-10-13T23:09:51+00:00",
+      "result": "posted (UgyubYvjm3qDKmEl9r54AaABAg)"
+    },
+    {
+      "comment_id": "UgwYHgz-oPxPMmbcTgB4AaABAg",
+      "video_id": "DscaYfXzxUY",
+      "action": "channel_comment",
+      "reply_text": "What is the midnight zone? Full episode: https://youtu.be/izdEaeOQBvI",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03",
+      "note": null,
+      "applied_at": "2026-10-13T23:09:52+00:00",
+      "result": "posted (UgwYHgz-oPxPMmbcTgB4AaABAg)"
+    },
+    {
+      "comment_id": "Ugy784aZ2P1Rorbf69Z4AaABAg",
+      "video_id": "g9mvDsG_k6E",
+      "action": "channel_comment",
+      "reply_text": "What is the deepest fish ever recorded? Full episode: https://youtu.be/OdYunlbB73g",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03",
+      "note": null,
+      "applied_at": "2026-10-13T23:09:52+00:00",
+      "result": "posted (Ugy784aZ2P1Rorbf69Z4AaABAg)"
     }
   ],
   "sweeps": [
@@ -1236,7 +1353,31 @@
       "instructed_by": "owner",
       "instructed_at": "2026-10-03",
       "source": "loop/handoff: owner decision 2026-10-03"
+    },
+    "nFW6gjUH7-A": {
+      "comment_id": "UgyubYvjm3qDKmEl9r54AaABAg",
+      "text": "Why deep sea creatures are so scary? Full episode: https://youtu.be/xyZ9xs7OF3g",
+      "posted_at": "2026-10-13T23:09:51+00:00",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03"
+    },
+    "DscaYfXzxUY": {
+      "comment_id": "UgwYHgz-oPxPMmbcTgB4AaABAg",
+      "text": "What is the midnight zone? Full episode: https://youtu.be/izdEaeOQBvI",
+      "posted_at": "2026-10-13T23:09:52+00:00",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03"
+    },
+    "g9mvDsG_k6E": {
+      "comment_id": "Ugy784aZ2P1Rorbf69Z4AaABAg",
+      "text": "What is the deepest fish ever recorded? Full episode: https://youtu.be/OdYunlbB73g",
+      "posted_at": "2026-10-13T23:09:52+00:00",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03"
     }
   },
-  "updated": "2026-10-12T16:05:02+00:00"
+  "updated": "2026-10-13T23:09:52+00:00"
 }

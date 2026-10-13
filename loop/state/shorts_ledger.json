@@ -213,9 +213,13 @@
       "scheduled_publish_at": "2026-09-13T02:00:00Z",
       "rank": 1,
       "lane": "shorts-cloud",
-      "handoff": "pending",
+      "handoff": "done",
       "playlist_item_id": "UExPclpNRHlveTFYTS45ODRDNTg0QjA4NkFBNkQy",
-      "playlist": "PLOrZMDyoy1XM"
+      "playlist": "PLOrZMDyoy1XM",
+      "handoff_episode": "xyZ9xs7OF3g",
+      "handoff_at": "2026-10-13T23:09:49+00:00",
+      "handoff_comment_id": "UgyubYvjm3qDKmEl9r54AaABAg",
+      "handoff_comment_at": "2026-10-13T23:09:51+00:00"
     },
     {
       "slug": "16-what-happens-when-a-whale-dies-in-the-deep-ocean",
@@ -605,7 +609,11 @@
       "lane": "shorts-cloud",
       "handoff": "done",
       "handoff_episode": "izdEaeOQBvI",
-      "handoff_at": "2026-10-12T16:04:49+00:00"
+      "handoff_at": "2026-10-12T16:04:49+00:00",
+      "playlist_item_id": "UExPclpNRHlveTFYTS4zRDBDOEZDOUM0MDY5NEEz",
+      "playlist": "PLOrZMDyoy1XM",
+      "handoff_comment_id": "UgwYHgz-oPxPMmbcTgB4AaABAg",
+      "handoff_comment_at": "2026-10-13T23:09:52+00:00"
     },
     {
       "slug": "19-what-is-the-deepest-fish-ever-recorded",
@@ -618,7 +626,11 @@
       "lane": "shorts-cloud",
       "handoff": "done",
       "handoff_episode": "OdYunlbB73g",
-      "handoff_at": "2026-10-12T16:04:58+00:00"
+      "handoff_at": "2026-10-12T16:04:58+00:00",
+      "playlist_item_id": "UExPclpNRHlveTFYTS5CMEQ2Mjk5NTc3NDZFRUNB",
+      "playlist": "PLOrZMDyoy1XM",
+      "handoff_comment_id": "Ugy784aZ2P1Rorbf69Z4AaABAg",
+      "handoff_comment_at": "2026-10-13T23:09:52+00:00"
     },
     {
       "slug": "02-how-deep-sea-creatures-survive-pressure",
@@ -645,5 +657,5 @@
       "handoff_at": "2026-10-13T23:09:46+00:00"
     }
   ],
-  "updated": "2026-10-13T23:09:46+00:00"
+  "updated": "2026-10-13T23:09:54+00:00"
 }
