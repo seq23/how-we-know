@@ -669,6 +669,28 @@ def published_slugs() -> set[str]:
             if r.get("slug") and r.get("video_id")}
 
 
+def renderable_slugs() -> set[str]:
+    """Every episode the Mac's batch will actually render: exactly
+    loop/batch_queue.queued_slugs(), the ONE notion of "renderable". A topic
+    the gate killed (research/publish_order*.json `killed`, never in `queue`)
+    or the same-question rule refused (NEAR_DUPLICATE, VAGUE, OTHER_CHANNEL)
+    is not in it. No second list here: on 2026-10-13 this lane kept its own
+    (every scripts/*.md) and queued six dead topics for binding that the
+    batch would never render."""
+    import batch_queue                                     # noqa: PLC0415
+    return set(batch_queue.queued_slugs())
+
+
+def dead_topic(slug: str, renderable: set[str] | None = None) -> str | None:
+    """Why this slug will never render (so is never lengthened, re-opened or
+    bound), or None."""
+    live = renderable_slugs() if renderable is None else renderable
+    if slug in live:
+        return None
+    return ("not in the batch queue (killed, or refused as a near-duplicate, "
+            "vague or another channel's topic) - the batch will never render it")
+
+
 def script_path(slug: str) -> Path:
     """scripts/<slug>.md, else the not-yet-promoted loop/drafts/<slug>.md."""
     sp = SCRIPTS / f"{slug}.md"
@@ -704,6 +726,9 @@ def script_cloud(slug: str, dry_run: bool = False, doc: dict | None = None,
         return {"slug": slug, "status": "published_refused",
                 "why": "published videos are never extended or re-uploaded "
                        "(owner decision, 13 Oct 2026: forward only)"}
+    dead = dead_topic(slug)
+    if dead:
+        return {"slug": slug, "status": "dead_topic", "why": dead}
     sp = script_path(slug)
     text = sp.read_text(encoding="utf-8")
     measured = _measured_s(slug)
@@ -761,6 +786,9 @@ def stage_script(slug: str, dry_run: bool = False, doc: dict | None = None,
         return {"slug": slug, "status": "published_refused",
                 "why": "published videos are never extended or re-uploaded "
                        "(owner decision, 13 Oct 2026: forward only)"}
+    dead = dead_topic(slug)
+    if dead:
+        return {"slug": slug, "status": "dead_topic", "why": dead}
     sp = script_path(slug)
     text = sp.read_text(encoding="utf-8")
     measured = _measured_s(slug)
@@ -1059,10 +1087,12 @@ def finish_splice(slug: str, stitched: Path, secs: float, rec: dict,
 # -------------------------------------------------------------------- cli
 def _short_slugs() -> list[str]:
     """Queued scripts and drafts under the floor. Never a published slug."""
-    out, done = [], published_slugs()
+    out, done, live = [], published_slugs(), renderable_slugs()
     for p in sorted(list(SCRIPTS.glob("*.md")) + list(DRAFTS.glob("*.md"))):
         if p.stem in done or p.stem in out or ".extended" in p.name:
             continue
+        if p.stem not in live:
+            continue                 # dead topic: the batch never renders it
         try:
             if needs_lengthening(p.read_text(encoding="utf-8"), _measured_s(p.stem)):
                 out.append(p.stem)
@@ -1093,16 +1123,18 @@ def upload_hold(slug: str) -> str | None:
 
 
 def queue_slugs() -> list[str]:
-    """Every QUEUED script (scripts/ and loop/drafts/, never a published slug)
-    that breaks the floor or the hook rule, short ones first. The one list
+    """Every QUEUED script (scripts/ and loop/drafts/, never a published slug,
+    never a dead topic - see renderable_slugs()) that breaks the floor or the hook rule, short ones first. The one list
     the cloud lane works and V49 holds."""
-    out, done = [], published_slugs()
+    out, done, live = [], published_slugs(), renderable_slugs()
     doc = load()
     short, hook = [], []
     for p in sorted(list(SCRIPTS.glob("*.md")) + list(DRAFTS.glob("*.md"))):
         s = p.stem
         if s in done or s in out or s in short or s in hook or ".extended" in p.name:
             continue
+        if s not in live:
+            continue                 # dead topic (renderable_slugs): never render
         if (doc["episodes"].get(s) or {}).get("mode") == "pending_bind":
             continue                 # scripted in the cloud; the Mac binds it
         try:
@@ -1122,8 +1154,14 @@ def run_bind() -> int:
     doc = load()
     todo = sorted(s for s, r in doc["episodes"].items()
                   if r.get("status") == "scripted" and r.get("mode") == "pending_bind")
+    live = renderable_slugs()
+    dead = [s for s in todo if s not in live]
+    for s in dead:
+        print(f"  LENGTHEN_DEAD_TOPIC {s}: {dead_topic(s, live)}; not bound")
+    todo = [s for s in todo if s in live]
     if not todo:
-        print("LENGTHEN_NOTHING_TO_BIND: no cloud re-open or extension awaits this Mac")
+        print("LENGTHEN_NOTHING_TO_BIND: no cloud re-open or extension of a "
+              "renderable episode awaits this Mac")
         return 0
     for s in todo:
         r = bind(s, doc)
