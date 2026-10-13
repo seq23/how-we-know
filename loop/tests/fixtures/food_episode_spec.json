@@ -1624,12 +1624,12 @@
 "beat": 26,
 "phase": "body",
 "register": "standard",
-"asset": "chunks",
+"asset": "beans",
 "segment": "chocolate",
 "treatment": "wall",
 "composite": true,
 "hands": false,
-"offset": 15.0
+"offset": 10.0
 },
 {
 "start": 516.6732187992499,
@@ -1799,12 +1799,12 @@
 "beat": 26,
 "phase": "body",
 "register": "standard",
-"asset": "chunks",
+"asset": "beans",
 "segment": "chocolate",
 "treatment": "wall",
 "composite": true,
 "hands": false,
-"offset": 15.0
+"offset": 10.0
 }
 ],
 "credits": {
@@ -2778,7 +2778,7 @@
 "beat": 3,
 "phase": "body",
 "register": "standard",
-"asset": "bread-flour-mill",
+"asset": "bread-grow-oven",
 "segment": "bread",
 "treatment": "wall",
 "composite": true,
@@ -2861,7 +2861,7 @@
 "segment": "bread",
 "treatment": "slowmo",
 "hands": false,
-"offset": 0.0
+"offset": 2.5
 },
 {
 "start": 124.44518123897976,
@@ -2966,7 +2966,7 @@
 "segment": "bread",
 "treatment": "slowmo",
 "hands": false,
-"offset": 2.5
+"offset": 0.0
 },
 {
 "start": 197.55555555555554,
@@ -2988,12 +2988,12 @@
 "beat": 10,
 "phase": "body",
 "register": "standard",
-"asset": "bread-grow-oven",
+"asset": "bread-loaf-oven",
 "segment": "bread",
 "treatment": "wall",
 "composite": true,
 "hands": false,
-"offset": 2.5
+"offset": 5.0
 },
 {
 "start": 213.59178241428296,
@@ -3058,7 +3058,7 @@
 "segment": "bread",
 "treatment": "play",
 "hands": false,
-"offset": 5.0
+"offset": 7.5
 },
 {
 "start": 257.18518518518516,
@@ -3084,7 +3084,7 @@
 "segment": "bread",
 "treatment": "slowmo",
 "hands": false,
-"offset": 5.0
+"offset": 2.5
 },
 {
 "start": 276.6010018429168,
@@ -3111,7 +3111,7 @@
 "segment": "bread",
 "treatment": "play",
 "hands": false,
-"offset": 7.5
+"offset": 10.0
 },
 {
 "start": 298.074074074074,
@@ -3185,7 +3185,7 @@
 "beat": 17,
 "phase": "body",
 "register": "standard",
-"asset": "bread-wheat-close",
+"asset": "bread-harvest",
 "segment": "bread",
 "treatment": "wall",
 "composite": true,
@@ -3203,7 +3203,7 @@
 "segment": "bread",
 "treatment": "slowmo",
 "hands": false,
-"offset": 7.5
+"offset": 5.0
 },
 {
 "start": 353.2335682311685,
@@ -3255,7 +3255,7 @@
 "segment": "bread",
 "treatment": "slowmo",
 "hands": false,
-"offset": 10.0
+"offset": 12.5
 },
 {
 "start": 391.6296296296295,
@@ -3279,7 +3279,7 @@
 "segment": "bread",
 "treatment": "play",
 "hands": false,
-"offset": 10.0
+"offset": 12.5
 },
 {
 "start": 428.8023137338189,
@@ -3301,12 +3301,12 @@
 "beat": 22,
 "phase": "body",
 "register": "standard",
-"asset": "bread-wheat-close",
+"asset": "bread-wheat-field",
 "segment": "bread",
 "treatment": "kaleido",
 "composite": true,
 "hands": false,
-"offset": 12.5
+"offset": 15.0
 },
 {
 "start": 448.6666666666665,
@@ -3332,7 +3332,7 @@
 "segment": "bread",
 "treatment": "slowmo",
 "hands": false,
-"offset": 10.0
+"offset": 7.5
 },
 {
 "start": 467.8275051882407,
@@ -3384,7 +3384,7 @@
 "segment": "bread",
 "treatment": "slowmo",
 "hands": false,
-"offset": 12.5
+"offset": 15.0
 },
 {
 "start": 498.91627484207874,
@@ -3397,7 +3397,7 @@
 "segment": "bread",
 "treatment": "slowmo",
 "hands": false,
-"offset": 15.0
+"offset": 17.5
 },
 {
 "start": 507.2760359757356,
@@ -3411,7 +3411,7 @@
 "treatment": "wall",
 "composite": true,
 "hands": false,
-"offset": 15.0
+"offset": 10.0
 },
 {
 "start": 517.185185185185,
@@ -3424,7 +3424,7 @@
 "segment": "bread",
 "treatment": "slowmo",
 "hands": false,
-"offset": 12.5
+"offset": 10.0
 },
 {
 "start": 527.1982298621488,
@@ -3437,7 +3437,7 @@
 "segment": "bread",
 "treatment": "play",
 "hands": false,
-"offset": 12.5
+"offset": 15.0
 },
 {
 "start": 535.6582368086054,
@@ -3484,7 +3484,7 @@
 "beat": 3,
 "phase": "body",
 "register": "standard",
-"asset": "bread-flour-mill",
+"asset": "bread-grow-oven",
 "segment": "bread",
 "treatment": "wall",
 "composite": true,
@@ -3512,12 +3512,12 @@
 "beat": 10,
 "phase": "body",
 "register": "standard",
-"asset": "bread-grow-oven",
+"asset": "bread-loaf-oven",
 "segment": "bread",
 "treatment": "wall",
 "composite": true,
 "hands": false,
-"offset": 2.5
+"offset": 5.0
 },
 {
 "start": 276.6010018429168,
@@ -3540,7 +3540,7 @@
 "beat": 17,
 "phase": "body",
 "register": "standard",
-"asset": "bread-wheat-close",
+"asset": "bread-harvest",
 "segment": "bread",
 "treatment": "wall",
 "composite": true,
@@ -3554,12 +3554,12 @@
 "beat": 22,
 "phase": "body",
 "register": "standard",
-"asset": "bread-wheat-close",
+"asset": "bread-wheat-field",
 "segment": "bread",
 "treatment": "kaleido",
 "composite": true,
 "hands": false,
-"offset": 12.5
+"offset": 15.0
 },
 {
 "start": 507.2760359757356,
@@ -3573,7 +3573,7 @@
 "treatment": "wall",
 "composite": true,
 "hands": false,
-"offset": 15.0
+"offset": 10.0
 }
 ],
 "credits": {
@@ -4994,12 +4994,12 @@
 "beat": 19,
 "phase": "body",
 "register": "standard",
-"asset": "steak-butter",
+"asset": "steak-flame",
 "segment": "steak",
 "treatment": "wall",
 "composite": true,
 "hands": false,
-"offset": 5.0
+"offset": 2.5
 },
 {
 "start": 375.92359528090213,
@@ -5012,7 +5012,7 @@
 "segment": "steak",
 "treatment": "slowmo",
 "hands": false,
-"offset": 2.5
+"offset": 5.0
 },
 {
 "start": 382.59259259259255,
@@ -5099,7 +5099,7 @@
 "beat": 23,
 "phase": "body",
 "register": "standard",
-"asset": "steak-flame",
+"asset": "steak-butter",
 "segment": "steak",
 "treatment": "kaleido",
 "composite": true,
@@ -5338,12 +5338,12 @@
 "beat": 19,
 "phase": "body",
 "register": "standard",
-"asset": "steak-butter",
+"asset": "steak-flame",
 "segment": "steak",
 "treatment": "wall",
 "composite": true,
 "hands": false,
-"offset": 5.0
+"offset": 2.5
 },
 {
 "start": 437.40740740740733,
@@ -5352,7 +5352,7 @@
 "beat": 23,
 "phase": "body",
 "register": "standard",
-"asset": "steak-flame",
+"asset": "steak-butter",
 "segment": "steak",
 "treatment": "kaleido",
 "composite": true,

@@ -332,6 +332,26 @@ def export_episode_proof(work: Path, order: list[str], out: Path) -> Path:
     return out
 
 
+# ----------------------------------------------------------------- reroll
+def outliers(voice_dir: Path) -> list[int]:
+    """Beats food_voice.check names (pitch or pace outside the one-voice limits)."""
+    import food_voice                                           # noqa: PLC0415
+    probs = food_voice.check(food_voice.measure(voice_dir))
+    return sorted({int(m.group(1)) for x in probs for m in [re.match(r"beat (\d+) ", x)] if m})
+
+
+def reroll(plan_p: Path, voice_dir: Path, beats: list[int], attempt: int = 1) -> list[int]:
+    """Mark `beats` for another draw of the same voice (a new seed) and remove
+    their audio, so the next food_voice.py run re-voices only them."""
+    plan = json.loads(plan_p.read_text())
+    for i in beats:
+        plan[i]["seed"] = 1234 + 7919 * attempt
+        for ext in (".wav", ".json"):
+            (voice_dir / f"{i:04d}{ext}").unlink(missing_ok=True)
+    plan_p.write_text(json.dumps(plan, indent=1))
+    return beats
+
+
 # --------------------------------------------------------------- describe
 def describe(script: Path, chapter_labels: list[str] | None = None, suggest=None) -> dict:
     """The shared description template's record (loop/describe.py, its own
@@ -504,6 +524,11 @@ def main(argv: list[str]) -> int:
         probs = spec["episode_problems"]
         print("\n".join(probs) or "food episode contract holds")
         return 1 if probs else 0
+    if cmd == "reroll":                    # reroll PLAN VOICE_DIR [attempt]
+        vd = Path(argv[2])
+        bad = outliers(vd)
+        print(json.dumps(reroll(Path(argv[1]), vd, bad, int(argv[3]) if len(argv) > 3 else 1)))
+        return 0
     if cmd == "describe":
         print(json.dumps(describe(Path(argv[1])), indent=1))
         return 0

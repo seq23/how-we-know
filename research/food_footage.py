@@ -538,6 +538,17 @@ def _shot(segment: str, need: str, query: str, label: str, must: list[list[str]]
             "uses": uses, "sound": sound, "basis": basis}
 
 
+# The sound layer's cue per bread/steak need (visuals/food_sound): crackle for a
+# crust being cut or beans roasting, a fire's crackle under flames and coals,
+# grain and flour falling under the pour cue; wheat in the wind gets none.
+SOUND_FOR = {
+    "bread-buns": "snap", "bread-display": "snap", "bread-loaf-knife": "snap", "bread-slice": "snap",
+    "bread-oven-fire": "sizzle", "bread-flour-sift": "pour", "bread-flour-mill": "pour",
+    "bread-mixer": "pour", "bread-flour-dough": "pour",
+    "steak-fire": "sizzle", "steak-coals": "sizzle", "steak-coffee": "snap", "steak-toast": "snap",
+}
+
+
 # The first full video (owner, 13 Oct 2026: "Bread, Steak, Chocolate: What's
 # Inside?") adds a bread and a steak segment: >= MIN_REAL_CLIPS real clips each,
 # through the same chain, the same gates, the same licence record. The owner's
@@ -625,6 +636,9 @@ SHOTS += [
     _shot("steak", "steak-lab", "laboratory", "LABORATORY", [["lab"], ["tubes", "dropper", "drops"]],
           ["lab"], "Laboratory glassware: the chemistry of a smell, measured."),
 ]
+for _s in SHOTS:
+    if _s["need"] in SOUND_FOR:
+        _s["sound"] = SOUND_FOR[_s["need"]]
 
 # Looked at and refused, with the reason (source:id -> why).
 REFUSED: dict[str, str] = {
@@ -927,7 +941,7 @@ def shot_extras(shot: dict, uid: str) -> dict:
     """Per-clip review fields carried from the shot list onto its record: the
     usable ranges and crop (the VOA report, a clip whose opening shows hands),
     the segment, and the reviewed hands answer (HANDS)."""
-    out = {"segment": shot.get("segment", "chocolate")}
+    out = {"segment": shot.get("segment", "chocolate"), "sound": shot.get("sound")}
     for k in ("ranges", "crop"):
         v = (shot.get(k) or {}).get(uid)
         if v:

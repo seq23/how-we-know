@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T18:08:37+00:00",
+  "generated": "2026-10-13T19:59:14+00:00",
   "domain": "food-science",
   "module": "research/food_footage.py",
   "policy": "Real video only, through the free fallback chain (Pixabay, Pexels, Mixkit, [Coverr disabled by its terms], Commons PD/CC0, Internet Archive PD collections, NASA). Licences allow commercial reuse without attribution; every clip is still credited on screen.",
@@ -194,7 +194,7 @@
         "crust",
         "bake"
       ],
-      "sound": null,
+      "sound": "snap",
       "segment": "bread",
       "ai_generated": false,
       "width": 1920,
@@ -245,7 +245,7 @@
         "scale",
         "crust"
       ],
-      "sound": null,
+      "sound": "snap",
       "segment": "bread",
       "ai_generated": false,
       "width": 1920,
@@ -295,7 +295,7 @@
         "dough",
         "flour"
       ],
-      "sound": null,
+      "sound": "pour",
       "segment": "bread",
       "ai_generated": false,
       "width": 1920,
@@ -345,7 +345,7 @@
         "flour",
         "wheat"
       ],
-      "sound": null,
+      "sound": "pour",
       "segment": "bread",
       "ai_generated": false,
       "width": 1920,
@@ -394,7 +394,7 @@
       "uses": [
         "flour"
       ],
-      "sound": null,
+      "sound": "pour",
       "segment": "bread",
       "ai_generated": false,
       "width": 1920,
@@ -652,7 +652,7 @@
         "crumb",
         "loaf"
       ],
-      "sound": null,
+      "sound": "snap",
       "segment": "bread",
       "ai_generated": false,
       "width": 1920,
@@ -806,7 +806,7 @@
         "knead",
         "scale"
       ],
-      "sound": null,
+      "sound": "pour",
       "segment": "bread",
       "ai_generated": false,
       "width": 1920,
@@ -857,7 +857,7 @@
         "bake",
         "crust"
       ],
-      "sound": null,
+      "sound": "sizzle",
       "segment": "bread",
       "ai_generated": false,
       "width": 1920,
@@ -907,7 +907,7 @@
         "slice",
         "crumb"
       ],
-      "sound": null,
+      "sound": "snap",
       "segment": "bread",
       "ai_generated": false,
       "width": 1920,
@@ -1769,7 +1769,7 @@
         "flame",
         "char"
       ],
-      "sound": null,
+      "sound": "sizzle",
       "segment": "steak",
       "ai_generated": false,
       "width": 1920,
@@ -1819,7 +1819,7 @@
         "coffee",
         "roast"
       ],
-      "sound": null,
+      "sound": "snap",
       "segment": "steak",
       "ai_generated": false,
       "width": 1920,
@@ -1869,7 +1869,7 @@
         "flame",
         "char"
       ],
-      "sound": null,
+      "sound": "sizzle",
       "segment": "steak",
       "ai_generated": false,
       "width": 1920,
@@ -2175,7 +2175,7 @@
         "grill",
         "meat"
       ],
-      "sound": "sizzle",
+      "sound": null,
       "segment": "steak",
       "ai_generated": false,
       "width": 1920,
@@ -2432,7 +2432,7 @@
         "crust",
         "meat"
       ],
-      "sound": "sizzle",
+      "sound": null,
       "segment": "steak",
       "ai_generated": false,
       "width": 1920,
@@ -2482,7 +2482,7 @@
         "toast",
         "bread"
       ],
-      "sound": null,
+      "sound": "snap",
       "segment": "steak",
       "ai_generated": false,
       "width": 1920,

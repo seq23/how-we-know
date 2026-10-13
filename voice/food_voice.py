@@ -96,7 +96,10 @@ def synthesise(plan: list[dict], out: Path, reference: str,
         pieces, spans, cursor = [], [], 0.0
         chunks = _chunks(beat["text"], int(reg.get("max_words", 40)))
         for ci, chunk in enumerate(chunks):
-            torch.manual_seed(1234 + i * 31 + ci)
+            # a beat may carry its own seed: re-voicing ONE beat that fell outside
+            # the one-voice contract (visuals/food_episode.py reroll) with another
+            # draw of the same voice, never a different register
+            torch.manual_seed(int(beat.get("seed", 1234)) + i * 31 + ci)
             w = model.generate(apply_lexicon(chunk, LEXICON), audio_prompt_path=None,
                                exaggeration=reg["exaggeration"],
                                cfg_weight=reg["cfg_weight"],
@@ -122,7 +125,7 @@ def synthesise(plan: list[dict], out: Path, reference: str,
         sf.write(str(wav_path), audio, SR, subtype="PCM_16")
         meta = {"index": i, "file": wav_path.name, "register": "standard",
                 "pitch_factor": round(f, 4), "text": beat["text"],
-                "words": len(beat["text"].split()),
+                "words": len(beat["text"].split()), "seed": int(beat.get("seed", 1234)),
                 "duration": round(len(audio) / SR, 3), "spans": spans}
         meta_path.write_text(json.dumps(meta, indent=1))
         manifest["beats"].append(meta)

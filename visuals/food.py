@@ -324,16 +324,18 @@ KALEIDO_CLIPS = ["fountain-flow", "drip-macro", "sheets"]
 # Per segment of the full episode (contact sheets, 2026-10-13). Hands-free clips
 # only: a composite multiplies its picture, so a hand in it would be a wall of hands.
 WALL_CLIPS_BY = {
-    "chocolate": WALL_CLIPS,
-    "bread": ["bread-buns", "bread-display", "bread-rise-oven", "bread-wheat-close"],
-    "steak": ["steak-skewers", "steak-sizzle", "steak-sear-grill", "steak-coals"],
+    "chocolate": WALL_CLIPS + ["beans", "chunks-macro"],
+    "bread": ["bread-wheat-close", "bread-grow-oven", "bread-loaf-oven", "bread-harvest",
+              "bread-wheat-field"],
+    "steak": ["steak-sizzle", "steak-sear-grill", "steak-coals", "steak-flame", "steak-bbq",
+              "steak-roast"],
     "open": ["field", "steak-sear-grill", "bread-rise-oven", "chunks"],
     "tail": ["pile", "bread-buns", "steak-skewers"],
 }
 KALEIDO_CLIPS_BY = {
-    "chocolate": KALEIDO_CLIPS,
-    "bread": ["bread-wheat-field", "bread-mixer", "bread-flour-mill"],
-    "steak": ["steak-fire", "steak-coffee", "steak-butter", "steak-flame"],
+    "chocolate": KALEIDO_CLIPS + ["coat", "pour-dark"],
+    "bread": ["bread-wheat-field", "bread-mixer", "bread-harvest", "bread-wheat-close"],
+    "steak": ["steak-fire", "steak-coffee", "steak-butter", "steak-grill-sit"],
     "open": ["fountain-flow", "steak-fire", "bread-wheat-field"],
     "tail": ["sheets", "steak-fire"],
 }
@@ -535,8 +537,8 @@ def _place_composites(shots: list[dict], cat: dict, lo: int, hi: int,
         kind = "wall" if s["phase"] == "opening" or n % 2 else "kaleido"
         walls = WALL_CLIPS_BY.get(role, WALL_CLIPS)
         kals = KALEIDO_CLIPS_BY.get(role, KALEIDO_CLIPS)
-        pref = [k for k in (walls if kind == "wall" else kals)
-                if k in cat and k not in taken and not cat[k].get("hands")]
+        ok = [k for k in (walls if kind == "wall" else kals) if k in cat and not cat[k].get("hands")]
+        pref = [k for k in ok if k not in taken] or ok      # reuse a reviewed clip before an unsuitable one
         if pref:
             s["asset"] = pref[0]
         taken.add(s["asset"])
