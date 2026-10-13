@@ -2,7 +2,8 @@
 
 **Status:** DRAFT — OWNER CONFIRMATION AND MASTER WATCH REQUIRED
 **Domain:** deep-sea-ocean-science
-**Opening:** cold-open-payoff
+**Reopened:** 2026-10-13 (loop/lengthen.py reopen, hook rule)
+**Opening:** stake-then-payoff
 **Word count:** ~1780
 **Estimated narration:** 12m 19s at 144.58 WPM (measured, loop/durations.py)
 
@@ -18,8 +19,7 @@ Life reaches the very bottom of the Mariana Trench, nearly 11,000 metres down, w
 
 ### Cold open
 
-{{stat: 11,000 | metres | the depth NOAA gives for its deepest point | NOAA}}
-Life reaches the very bottom of the Mariana Trench, nearly 11,000 metres down, where the floor is worked by scavenging amphipods, sea cucumbers, giant single-celled xenophyophores and dense microbial communities. That is the depth NOAA gives for its deepest point. What you will not find there, as far as anyone has recorded, is a fish. That absence is the interesting part, because it is not simply an accident of where the cameras happened to point. It looks like a limit written into the chemistry of a fish's own cells. And almost everything we know about this place comes from machines that sat on the seabed in the dark and waited.
+In 1960, Jacques Piccard reported a flatfish where fish appear unable to survive. Life reaches the very bottom of the Mariana Trench, nearly 11,000 metres down, where the floor is worked by scavenging amphipods, sea cucumbers, giant single-celled xenophyophores and dense microbial communities. Fish stop a few kilometres higher, held back, it seems, by the chemistry of their own cells. Most of what we know comes from baited landers that sat on the seabed in the dark and waited. They show what came to the bait, not a census of the floor.
 
 ### Title card
 

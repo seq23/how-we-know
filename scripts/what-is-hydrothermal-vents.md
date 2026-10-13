@@ -2,7 +2,8 @@
 
 **Status:** DRAFT — OWNER CONFIRMATION AND MASTER WATCH REQUIRED
 **Domain:** deep-sea-ocean-science
-**Opening:** cold-open-payoff
+**Reopened:** 2026-10-13 (loop/lengthen.py reopen, hook rule)
+**Opening:** stake-then-payoff
 **Word count:** ~1720
 **Estimated narration:** 11m 54s at 144.58 WPM (measured, loop/durations.py)
 
@@ -19,7 +20,7 @@ A hydrothermal vent is an opening in the seafloor where seawater that has soaked
 ### Cold open
 
 {{stat: 400 | degrees Celsius | hottest vent fluid, still liquid | NOAA}}
-A hydrothermal vent is an opening in the seafloor where seawater that has soaked down into hot rock flows back out, heated and loaded with dissolved minerals. NOAA puts the hottest of that fluid at up to 400 degrees Celsius, and on the deep seafloor it stays liquid. That number tells you how hot a vent can run. It does not tell you why the water refuses to boil, where the heat comes from, or how whole communities of animals live beside it in total darkness. Those answers were assembled piece by piece, from instruments, samples, and one discovery nobody planned for.
+In 1979, a temperature probe lowered into a black smoker partly melted. A hydrothermal vent is an opening in the seafloor where seawater that has soaked down into hot rock flows back out, heated and loaded with dissolved minerals. NOAA puts the hottest of that fluid at up to 400 degrees Celsius, and deep-ocean pressure keeps it liquid. The evidence comes from instruments sent down by submersibles, fluid samples missing their magnesium, and a 1977 dive that found animals nobody expected. Together they settle the heat and the chemistry. They do not settle how many vents exist.
 
 ### Title card
 

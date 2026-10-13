@@ -2,7 +2,8 @@
 
 **Status:** DRAFT — OWNER CONFIRMATION AND MASTER WATCH REQUIRED
 **Domain:** deep-sea-ocean-science
-**Opening:** cold-open-payoff
+**Reopened:** 2026-10-13 (loop/lengthen.py reopen, hook rule)
+**Opening:** stake-then-payoff
 **Word count:** ~1740
 **Estimated narration:** 12m 2s at 144.58 WPM (measured, loop/durations.py)
 
@@ -18,8 +19,7 @@ The deepest dive ever recorded by a whale reached 2,992 metres, made by a Cuvier
 
 ### Cold open
 
-{{stat: 2,992 | metres | Deepest dive recorded by a whale, a Cuvier's beaked whale | Guinness World Records}}
-The deepest dive ever recorded by a whale reached 2,992 metres, made by a Cuvier's beaked whale wearing a tag off southern California, in a study published in 2014. Guinness World Records lists it as the deepest dive by any mammal. But read that sentence carefully. It says recorded. The number tells you how deep one tag followed one animal on one dive. It does not tell you how deep a whale can go. Those are different claims, and the gap between them is where this story actually lives.
+Nobody saw it happen: roughly three hundred times surface pressure, in total darkness. The deepest dive ever recorded by a whale reached 2,992 metres, made by a Cuvier's beaked whale wearing a tag off southern California, in a study published in 2014. Guinness World Records lists it as the deepest dive by any mammal. The only witness was a pressure sensor, which logged depth and relayed summaries by satellite. That settles one thing: a whale got there and came back. It does not settle how deep a whale can go. A record is a floor, not a ceiling.
 
 ### Title card
 

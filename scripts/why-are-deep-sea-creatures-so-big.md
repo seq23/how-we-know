@@ -2,7 +2,8 @@
 
 **Status:** DRAFT — OWNER CONFIRMATION AND MASTER WATCH REQUIRED
 **Domain:** deep-sea-ocean-science
-**Opening:** cold-open-payoff
+**Reopened:** 2026-10-13 (loop/lengthen.py reopen, hook rule)
+**Opening:** stake-then-payoff
 **Word count:** ~1740
 **Estimated narration:** 12m 2s at 144.58 WPM (measured, loop/durations.py)
 
@@ -18,8 +19,7 @@ Most deep-sea creatures are not big. Gigantism appears in particular groups, mai
 
 ### Cold open
 
-{{stat: 1999 | study in Nature | linked the largest amphipod sizes to how much oxygen the water holds | Nature}}
-Most deep-sea creatures are not big. Gigantism appears in particular groups, mainly cold-blooded crustaceans and molluscs such as giant isopods, giant amphipods and giant squid. For those groups, the sharpest single clue came in 1999, when a study in Nature linked the largest amphipod sizes to how much oxygen the water holds. That settles less than it sounds. It tells you where the giants tend to occur. On its own, it does not tell you why they grow, or whether depth has anything to do with it.
+A giant isopod is only giant beside the woodlice under a garden stone. Most deep-sea creatures are not big. Gigantism appears in particular groups, mainly cold-blooded crustaceans and molluscs such as giant isopods, giant amphipods and giant squid. For those groups, the sharpest single clue came in 1999, when a study in Nature linked the largest amphipod sizes to how much oxygen the water holds. That settles less than it sounds. It shows where the giants tend to occur. On its own, it does not show why they grow, or whether depth has anything to do with it.
 
 ### Title card
 

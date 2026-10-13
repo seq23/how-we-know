@@ -162,7 +162,152 @@
       "why_full": null,
       "words_after": 2400,
       "words_before": 2392
+    },
+    "how-deep-can-whales-dive": {
+      "attempts": 1,
+      "budget": {
+        "tail_words": 0
+      },
+      "hook_after": "Nobody saw it happen: roughly three hundred times surface pressure, in total darkness. The deepest dive ever recorded by a whale reached 2,992 metres, made by a Cuvier's beaked whale wearing a tag off southern California, in a study publish",
+      "hook_before": "{{stat: 2,992 | metres | Deepest dive recorded by a whale, a Cuvier's beaked whale | Guinness World Records}}\nThe deepest dive ever recorded by a whale reached 2,992 metres, made by a Cuvier's beaked whale wearing a tag off southern Califor",
+      "hook_problems_before": [
+        "opening rule stake-then-payoff: the first narrated sentence is 29 words; the hook must be at most 15 - one concrete stake, contradiction or figure: \"The deepest dive ever recorded by a whale reached 2,992 metres, made by a Cuvier's beaked whale wearing a tag off southe\""
+      ],
+      "kind": "reopen",
+      "minutes_after": 10.68,
+      "minutes_before": 10.62,
+      "mode": "pending_bind",
+      "model": "claude-subscription/opus",
+      "new_script_sha256": "5f0e582382495172161f6a5e4ab3b75c1f81afc8d0d329997e3e79ffa824a259",
+      "old_render_sha256": null,
+      "old_script_sha256": "cccac47ded14e8f3a7d77f6e2b3dacbce0e6d5eb9b9f0d41abc1b510b90eeee8",
+      "scripted_at": "2026-10-13T14:48:36+00:00",
+      "status": "scripted",
+      "why_full": null,
+      "words_after": 1544,
+      "words_before": 1535
+    },
+    "what-is-hydrothermal-vents": {
+      "attempts": 1,
+      "budget": {
+        "tail_words": 0
+      },
+      "hook_after": "{{stat: 400 | degrees Celsius | hottest vent fluid, still liquid | NOAA}}\nIn 1979, a temperature probe lowered into a black smoker partly melted. A hydrothermal vent is an opening in the seafloor where seawater that has soaked down into hot",
+      "hook_before": "{{stat: 400 | degrees Celsius | hottest vent fluid, still liquid | NOAA}}\nA hydrothermal vent is an opening in the seafloor where seawater that has soaked down into hot rock flows back out, heated and loaded with dissolved minerals. NOAA pu",
+      "hook_problems_before": [
+        "opening rule stake-then-payoff: the first narrated sentence is 27 words; the hook must be at most 15 - one concrete stake, contradiction or figure: 'A hydrothermal vent is an opening in the seafloor where seawater that has soaked down into hot rock flows back out, heat'"
+      ],
+      "kind": "reopen",
+      "minutes_after": 11.7,
+      "minutes_before": 11.73,
+      "mode": "pending_bind",
+      "model": "claude-subscription/opus",
+      "new_script_sha256": "920dd3d5d0ba667874b0de26fc5be6da34089b8cb8449230e7b8d1a1b84fdb39",
+      "old_render_sha256": null,
+      "old_script_sha256": "5662c0d1dc67d9b31d4c7eba09ffd9f09b6739f852a62b67d2e45905b2cba86c",
+      "scripted_at": "2026-10-13T14:48:46+00:00",
+      "status": "scripted",
+      "why_full": null,
+      "words_after": 1691,
+      "words_before": 1696
+    },
+    "what-lives-in-mariana-trench": {
+      "attempts": 1,
+      "budget": {
+        "tail_words": 0
+      },
+      "hook_after": "In 1960, Jacques Piccard reported a flatfish where fish appear unable to survive. Life reaches the very bottom of the Mariana Trench, nearly 11,000 metres down, where the floor is worked by scavenging amphipods, sea cucumbers, giant single-",
+      "hook_before": "{{stat: 11,000 | metres | the depth NOAA gives for its deepest point | NOAA}}\nLife reaches the very bottom of the Mariana Trench, nearly 11,000 metres down, where the floor is worked by scavenging amphipods, sea cucumbers, giant single-cell",
+      "hook_problems_before": [
+        "opening rule stake-then-payoff: the first narrated sentence is 30 words; the hook must be at most 15 - one concrete stake, contradiction or figure: 'Life reaches the very bottom of the Mariana Trench, nearly 11,000 metres down, where the floor is worked by scavenging a'"
+      ],
+      "kind": "reopen",
+      "minutes_after": 12.93,
+      "minutes_before": 13.05,
+      "mode": "pending_bind",
+      "model": "claude-subscription/opus",
+      "new_script_sha256": "16a7b5e740bbb4ce130f73885e5bd8e3b56fcd9b4e3c4f1ef2da2e401444ab20",
+      "old_render_sha256": null,
+      "old_script_sha256": "2f5e9cc1efa2c73f48640c0544ccc20978d8193a44d132154e259da26b51edb4",
+      "scripted_at": "2026-10-13T14:49:00+00:00",
+      "status": "scripted",
+      "why_full": null,
+      "words_after": 1869,
+      "words_before": 1887
+    },
+    "what-lives-in-the-depths-of-the-ocean": {
+      "attempts": 1,
+      "budget": {
+        "tail_words": 0
+      },
+      "hook_after": "In the deep sea, at least nine of every ten species have no name. The deep ocean hosts an estimated one million species, though fewer than ten percent have been formally described. That figure comes from Ocean Census, and it is a model, not",
+      "hook_before": "{{stat: 1,000,000 | species | estimated deep-sea biodiversity | Ocean Census}}\n\nAn estimated one million species live in the deep ocean, according to Ocean Census, a global initiative to accelerate marine species discovery. Fewer than ten p",
+      "hook_problems_before": [
+        "opening rule stake-then-payoff: the first narrated sentence is 22 words; the hook must be at most 15 - one concrete stake, contradiction or figure: 'An estimated one million species live in the deep ocean, according to Ocean Census, a global initiative to accelerate ma'"
+      ],
+      "kind": "reopen",
+      "minutes_after": 11.17,
+      "minutes_before": 11.02,
+      "mode": "pending_bind",
+      "model": "claude-subscription/opus",
+      "new_script_sha256": "17dfe377f8d092c5471978c9687fadd0fa8e133098ba79987cbd13e77df26a28",
+      "old_render_sha256": null,
+      "old_script_sha256": "14aed2a1acee759cc12315148d381ef5ef5f78f1585a7a1a7129f546ca9cc57f",
+      "scripted_at": "2026-10-13T14:49:11+00:00",
+      "status": "scripted",
+      "why_full": null,
+      "words_after": 1615,
+      "words_before": 1593
+    },
+    "why-are-deep-sea-creatures-so-big": {
+      "attempts": 1,
+      "budget": {
+        "tail_words": 0
+      },
+      "hook_after": "A giant isopod is only giant beside the woodlice under a garden stone. Most deep-sea creatures are not big. Gigantism appears in particular groups, mainly cold-blooded crustaceans and molluscs such as giant isopods, giant amphipods and gian",
+      "hook_before": "{{stat: 1999 | study in Nature | linked the largest amphipod sizes to how much oxygen the water holds | Nature}}\nMost deep-sea creatures are not big. Gigantism appears in particular groups, mainly cold-blooded crustaceans and molluscs such ",
+      "hook_problems_before": [
+        "opening rule stake-then-payoff: the first sentence restates the title (4 of its 5 content words are in 'Deep sea creatures grow so big in cold, oxygen-rich water \u2014 and how we know'); open on the stake instead",
+        "opening rule stake-then-payoff: the first sentence restates the question (4 of its 5 content words are in 'Why are deep sea creatures so big?'); open on the stake instead"
+      ],
+      "kind": "reopen",
+      "minutes_after": 12.19,
+      "minutes_before": 12.12,
+      "mode": "pending_bind",
+      "model": "claude-subscription/opus",
+      "new_script_sha256": "7ae7bbfaf9e03afd834401e9f4ed4ff3df5762e789995c503c967439d7b80b93",
+      "old_render_sha256": null,
+      "old_script_sha256": "b6daa0fdc6a201d09ddf37e9e7d27a5233fa50b2ffbe5c7415b13c352eb1adb3",
+      "scripted_at": "2026-10-13T14:49:21+00:00",
+      "status": "scripted",
+      "why_full": null,
+      "words_after": 1763,
+      "words_before": 1752
+    },
+    "why-deep-sea-creatures-are-creepers": {
+      "attempts": 1,
+      "budget": {
+        "tail_words": 0
+      },
+      "hook_after": "The blobfish's famous sagging face is mostly an injury from being hauled up. In deep water it is a fairly ordinary, soft fish. That points to the real answer. Deep sea creatures look creepy because they are built for a place with no sunligh",
+      "hook_before": "{{stat: 1,000 | metres | Below this depth, no sunlight reaches | NOAA}}\nDeep sea creatures look creepy because they are built for a place with no sunlight, little food and crushing pressure, and NOAA puts the start of that sunless midnight ",
+      "hook_problems_before": [
+        "opening rule stake-then-payoff: the first narrated sentence is 35 words; the hook must be at most 15 - one concrete stake, contradiction or figure: 'Deep sea creatures look creepy because they are built for a place with no sunlight, little food and crushing pressure, a'"
+      ],
+      "kind": "reopen",
+      "minutes_after": 12.64,
+      "minutes_before": 12.76,
+      "mode": "pending_bind",
+      "model": "claude-subscription/opus",
+      "new_script_sha256": "ad0ca4767c5734d5576c3cde621d63b4490bba2433d5d8d2440f93555cad2d36",
+      "old_render_sha256": null,
+      "old_script_sha256": "c3490b250b196ec8d417e485d895a23488dccd53bf7126ceeca15eb02a3b219d",
+      "scripted_at": "2026-10-13T14:49:34+00:00",
+      "status": "scripted",
+      "why_full": null,
+      "words_after": 1827,
+      "words_before": 1845
     }
   },
-  "updated": "2026-10-13T14:44:54+00:00"
+  "updated": "2026-10-13T14:49:34+00:00"
 }

@@ -2,6 +2,8 @@
 
 **Status:** DRAFT — OWNER CONFIRMATION AND MASTER WATCH REQUIRED
 **Domain:** deep-sea-ocean-science
+**Reopened:** 2026-10-13 (loop/lengthen.py reopen, hook rule)
+**Opening:** stake-then-payoff
 **Word count:** 1750
 **Estimated narration:** 12m 6s at 144.58 WPM (measured, loop/durations.py)
 
@@ -13,9 +15,7 @@ The deep ocean hosts an estimated one million species, though fewer than ten per
 
 ### Cold open
 
-{{stat: 1,000,000 | species | estimated deep-sea biodiversity | Ocean Census}}
-
-An estimated one million species live in the deep ocean, according to Ocean Census, a global initiative to accelerate marine species discovery. Fewer than ten percent have been formally described. The figure is an extrapolation from sampling density, genetic surveys, and the rate at which new species appear in every expedition. It is not a count. The deep sea is the largest habitat on Earth by volume, and it remains the least observed. What lives there is still mostly a list of absences.
+In the deep sea, at least nine of every ten species have no name. The deep ocean hosts an estimated one million species, though fewer than ten percent have been formally described. That figure comes from Ocean Census, and it is a model, not a count. Researchers extrapolate from sampling effort, habitat area, and how often new species turn up on each expedition. Published estimates of the described share range from five to fifteen percent. The evidence shows that the deep is inhabited all the way into its trenches. It does not tell us how many species are there, or how most of them live.
 
 ### Title card
 

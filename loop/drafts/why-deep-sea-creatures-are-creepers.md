@@ -2,7 +2,8 @@
 
 **Status:** DRAFT — OWNER CONFIRMATION AND MASTER WATCH REQUIRED
 **Domain:** deep-sea-ocean-science
-**Opening:** cold-open-payoff
+**Reopened:** 2026-10-13 (loop/lengthen.py reopen, hook rule)
+**Opening:** stake-then-payoff
 **Word count:** ~1760
 **Estimated narration:** 12m 10s at 144.58 WPM (measured, loop/durations.py)
 
@@ -18,8 +19,7 @@ Deep sea creatures look creepy because they are built for a place with no sunlig
 
 ### Cold open
 
-{{stat: 1,000 | metres | Below this depth, no sunlight reaches | NOAA}}
-Deep sea creatures look creepy because they are built for a place with no sunlight, little food and crushing pressure, and NOAA puts the start of that sunless midnight zone at about 1,000 metres down. The huge mouths, the glowing lures, the needle teeth, the black and red skin: almost all of it is engineering for darkness, not menace. But that answer leaves something unsettled. If these bodies are simply good solutions, why do they read to us as horror? Part of the answer is in the animals. Part of it, it turns out, is in how we have met them: in nets, under lights, out of context. This episode separates the two.
+The blobfish's famous sagging face is mostly an injury from being hauled up. In deep water it is a fairly ordinary, soft fish. That points to the real answer. Deep sea creatures look creepy because they are built for a place with no sunlight, little food and crushing pressure, and NOAA puts the start of that sunless midnight zone at about 1,000 metres down. The evidence comes from NOAA's depth zones, years of MBARI vehicle footage and Smithsonian specimen work. It explains the teeth, lures and red skin. It cannot settle why they unsettle us.
 
 ### Title card
 
