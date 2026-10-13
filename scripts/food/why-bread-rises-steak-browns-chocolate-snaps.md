@@ -10,7 +10,7 @@
 
 ## YouTube title
 
-6 crystals, a breathing fungus and a crust you never see
+Why chocolate melts in your mouth and not in your hand
 
 ## Direct-answer lock
 

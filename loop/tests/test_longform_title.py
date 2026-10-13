@@ -188,6 +188,25 @@ check(any("begins with a capital" in p_ for p_ in
           LT.title_problems("percent of welding arcs reach 11,000 degrees", SCRIPT, Q)),
       "a title fragment starting mid-sentence passed the formula")
 
+# ------------------------------------------- 5c. PLAINNESS (owner, 13 Oct)
+# "6 crystals, a breathing fungus and a crust you never see" -> "those words
+# make no sense". The subject, in plain words; no riddles, no lists; Flesch 60+.
+FQ = "why bread rises, steak browns and chocolate snaps"
+bad_food = LT.plainness_problems("6 crystals, a breathing fungus and a crust you never see", FQ)
+check(any("subject" in x for x in bad_food) and any("list" in x for x in bad_food),
+      f"the owner's riddle title passed the plainness rule: {bad_food}")
+for good_, q_ in (("Why chocolate melts in your mouth but not in your hand", "why chocolate snaps"),
+                  ("The fish that lives where submarines get crushed", "what is the deepest fish ever recorded"),
+                  ("Why hydrothermal vents never boil over", "what is hydrothermal vents")):
+    check(not LT.plainness_problems(good_, q_),
+          f"a plain title failed plainness: {good_!r} {LT.plainness_problems(good_, q_)}")
+check(any("Flesch" in x for x in LT.plainness_problems(
+          "Titanium's anisotropic microstructural deformation characteristics", "how strong is titanium")),
+      "a jargon title passed the readability floor")
+check(any("subject" in x for x in LT.title_problems(
+          "Window glass that is ninety-nine percent air", SCRIPT, Q)),
+      "title_problems does not apply the plainness rule")
+
 # ------------------------------------------- 6. --needed: live videos too
 # Job 2 (13 Oct 2026): every live long-form video gets a passing title, and
 # the daily lane must keep proposing for any live video that has none - else

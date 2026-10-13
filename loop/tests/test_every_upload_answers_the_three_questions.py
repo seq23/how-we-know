@@ -48,7 +48,7 @@ try:
 except upload.TitleRefused:
     pass
 _scratch.write_text(_json.dumps({"titles": {slug: {
-    "new_title": "Crushing pressure rewards unusual deep-sea body plans",
+    "new_title": "Pressure crushes nets, not deep-sea creatures",   # plain (owner, 13 Oct)
     "checks_passed": True}}}))
 long_form = upload.build_payload(_item)
 # A real slug, not a fabricated one: shorts_lane.build_payload now resolves

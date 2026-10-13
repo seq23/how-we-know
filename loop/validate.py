@@ -4181,11 +4181,14 @@ def v47_longform_title(items) -> Result:
              "1,000 meters the last sunlight is gone.\n\n## Narration\n\n"
              "No sunlight reaches the midnight zone.\n")
     for bad in ("The midnight zone — and how we know",
-                "Sunlight is gone at 4,000 meters in the midnight zone"):
+                "Sunlight is gone at 4,000 meters in the midnight zone",
+                # PLAINNESS (owner, 13 Oct 2026): a staked, traceable title
+                # that never names the subject is still refused
+                "The last sunlight is gone at 1,000 meters"):
         if not _lt.title_problems(bad, probe):
             r.fail(f"self-check: the formula accepted {bad!r}")
-    if _lt.title_problems("The last sunlight is gone at 1,000 meters", probe):
-        r.fail("self-check: the formula refused a traceable, staked title")
+    if _lt.title_problems("No sunlight reaches the midnight zone", probe):
+        r.fail("self-check: the formula refused a plain, traceable, staked title")
 
     def script_of(slug):
         p = ROOT / "scripts" / f"{slug}.md"

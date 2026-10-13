@@ -104,6 +104,19 @@ except TC.ContractRefused:
     _left = os.listdir(_d)
 check(_left == [], f"a refused set left files behind for a lane to ship: {_left}")
 
+# ------------------------------- 2d. PLAIN thumbnail words (owner, 13 Oct)
+import longform_title as _LT                                    # noqa: E402
+_t = TC.text_options("At a thousand meters, the danger is not a fish",
+                     _LT.subject_words("why deep sea creatures are so scary"))
+check("NOT FISH" not in _t and "NOT A FISH" not in _t,
+      f"a riddle fragment was offered as thumbnail text: {_t}")
+_t = TC.text_options("Why chocolate melts in your mouth but not in your hand",
+                     _LT.subject_words("why chocolate snaps"))
+check(_t and _t[0] == "CHOCOLATE MELTS", f"variant A does not name the plain subject: {_t}")
+_t = TC.text_options("Steel fails at 0.4 gigapascals, graphene at 130",
+                     _LT.subject_words("how strong is graphene"))
+check(not any("0.4" in x for x in _t), f"a figure from another subject's clause: {_t}")
+
 # --------------------------------------------------------------- 3. negatives
 slug = "19-what-is-the-deepest-fish-ever-recorded"
 bad_root = TMP / "bad"

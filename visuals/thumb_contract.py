@@ -310,14 +310,19 @@ def fit_crop(src: Image.Image, target: float, place) -> tuple[tuple, float, floa
 
 
 # ----------------------------------------------------------------------- text
-DANGLING = {"per", "plus", "minus", "because", "up", "about", "but", "not",
+DANGLING = {"ever", "your", "you", "my", "per", "plus", "minus", "because", "up", "about", "but", "not",
             "no", "than", "at", "by", "of", "in", "on", "to", "from", "with",
             "without", "and", "or", "for", "into", "over", "under", "while",
             "that", "which", "a", "an", "the", "is", "are", "it", "its"}
 
 
-def text_options(title: str) -> list[str]:
-    """Up to three <=3-word phrases from the (already truth-guarded) title."""
+def text_options(title: str, subject: set[str] | None = None) -> list[str]:
+    """Up to three <=3-word phrases from the (already truth-guarded) title.
+
+    With `subject` (longform_title.subject_words of the episode's question)
+    the PLAINNESS rule holds (owner, 13 Oct 2026): every phrase is the plain
+    subject or a figure with its unit, never a riddle fragment ("NOT FISH",
+    "NOT SEEN"); the subject phrase comes first, so variant A names it."""
     import longform_title as LT                            # noqa: PLC0415
     toks = [t for t in re.findall(r"[\w][\w,.'%-]*[:;]?", title or "")]
     clean = [t.strip(".,'':;") for t in toks]
@@ -339,21 +344,48 @@ def text_options(title: str) -> list[str]:
             j += 1
         return ph
 
+    subj = {LT.stem(w) for w in (subject or ())}
+
+    def names_subject(ph):
+        return any(LT.stem(x) in subj for w in ph
+                   for x in re.split(r"[-\u2013]", w.lower()) if x)
+
+    if subj:
+        for i, t in enumerate(clean):
+            if names_subject([t]):
+                opts.append(phrase_from(i))
+                break
     for i, t in enumerate(clean):
         if re.search(r"\d", t):
-            opts.append(phrase_from(i))
+            ph = phrase_from(i)
+            if not subj or len(ph) >= 2:      # a bare number is a riddle too
+                opts.append(ph)
             break
     for i, t in enumerate(low):
         if t in LT.CONTRADICTION or t in LT.STAKE:
             opts.append(phrase_from(i))
             break
+    if subj:
+        # a figure counts only inside a clause that names the subject:
+        # "Steel fails at 0.4 gigapascals, graphene at 130" -> 0.4 is steel's
+        clause, k = [], 0
+        for e in ends:
+            clause.append(k)
+            k += e
+        subj_clauses = {clause[i] for i, t in enumerate(clean)
+                        if names_subject([t])}
+
+        def figure_ok(o):
+            return any(re.search(r"\d", w) and clause[clean.index(w)] in subj_clauses
+                       for w in o if w in clean)
+        opts = [o for o in opts if names_subject(o) or figure_ok(o)]
     content: list[str] = []
     for c, lo, e in zip(clean, low, ends):
         if lo not in STOP:
             content.append(c)
         if e and content:
             break                       # the first clause only
-    if content:
+    if content and (not subj or names_subject(content[:MAX_WORDS])):
         opts.append(content[:MAX_WORDS])
     out = []
     for ph in opts:
@@ -429,7 +461,10 @@ def build_variants(slug: str, out_root: str | None = None,
     sp = script_path or os.path.join(SCRIPTS, f"{slug}.md")
     text_src = open(sp, encoding="utf-8").read() if os.path.exists(sp) else ""
     title = title or title_for(slug, text_src)
-    texts = text_options(title)
+    sys.path.insert(0, os.path.join(ROOT, "loop"))
+    import longform_title as LT                            # noqa: PLC0415
+    subject = LT.subject_words(LT._question_for(slug, text_src)) if text_src else None  # noqa: SLF001
+    texts = text_options(title, subject)
     if not texts:
         raise ContractRefused(f"{slug}: no title or hook to take <= {MAX_WORDS} "
                               f"words from")

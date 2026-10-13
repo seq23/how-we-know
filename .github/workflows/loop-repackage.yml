@@ -53,6 +53,11 @@ on:
         description: 'Max queued scripts to re-open/extend this run (hook rule, ten-minute floor)'
         required: false
         default: '3'
+      propose_published:
+        description: 'Re-propose EVERY live long-form video (not only those with no passing title) - after a formula change'
+        type: boolean
+        required: false
+        default: false
       propose_only:
         description: 'Propose titles only; skip apply (so a dry-run apply can be read first)'
         type: boolean
@@ -111,6 +116,9 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
           ARGS="--needed --limit ${{ github.event.inputs.propose_limit || 6 }}"
+          if [ "${{ github.event.inputs.propose_published }}" = "true" ]; then
+            ARGS="--published --limit ${{ github.event.inputs.propose_limit || 6 }}"
+          fi
           if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
             ARGS="$ARGS --dry-run"
           fi
