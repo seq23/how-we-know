@@ -239,5 +239,12 @@
       "deepest"
     ],
     "note": "Owner-approved build, 2026-10-08. The audit: Shorts bring 93% of views and the deep-sea Shorts are the only ones with traction ('What is the midnight zone?' 1,110 views), yet 8 of the last 12 Shorts were materials. loop/shorts_lane.py pending() now orders the Shorts queue so that, over the last `window` Shorts plus the ones being chosen, each domain is held to its domain_mix share: deep sea 3 of every 4, materials 1 of every 4 (shrunk, not removed). Within a domain, a topic naming one of favoured_terms (the midnight zone, strange creatures, pressure, trenches) goes first. The mix is a PREFERENCE, never a stall: when only one domain has a cut Short ready, that Short still airs, because an empty evening slot earns nothing. Long-form allocation (domains.allocation) is unchanged: the deep-sea long-form queue holds six unwritten topics, too few to carry 3 of 4 weekly episodes."
+  },
+  "repackage": {
+    "long_form_per_day": 2,
+    "_long_form_per_day": "Owner's choice, 13 Oct 2026: two re-uploaded longer cuts a day while the backlog lasts (loop/repackage.py). Hers to change; 0 pauses the re-upload drain. The standing 4-a-week cadence is the upload lane's and is not affected.",
+    "slot_times_local": ["11:00", "15:00", "13:00", "17:00"],
+    "tz": "America/Chicago",
+    "min_lead_hours": 2
   }
 }

@@ -690,6 +690,42 @@ def run(limit: int = 4, dry_run: bool = False) -> int:
         # ever remove a reason to refuse; nothing here can pass an episode the
         # gate would have blocked, because the gate re-asks
         # `captions_lane.uncaptioned()` afterwards against the files on disk.
+        # -- the TITLE gate (2026-10-13, loop/longform_title.py) -----------
+        # A long-form title must pass the formula and its truth guard before a
+        # byte is fetched. A slug with no passing title is HELD on the shelf;
+        # the daily proposer in loop-repackage (`longform_title.py propose
+        # --pending`) drafts one on the $0 route and the next run uploads it.
+        import longform_title                              # noqa: PLC0415
+        untitled_lf = {}
+        tdoc = longform_title.load()
+        for s_, _, _ in take:
+            sp_ = ROOT / "scripts" / f"{s_}.md"
+            text_ = sp_.read_text(encoding="utf-8") if sp_.exists() else ""
+            t_, why_, _ = longform_title.title_for_upload(
+                s_, text_, questions.get(s_), tdoc)
+            if t_ is None:
+                untitled_lf[s_] = "; ".join(why_)[:300]
+        if untitled_lf:
+            for s_, w_ in sorted(untitled_lf.items()):
+                print(f"  REFUSE {s_}: no passing long-form title — {w_}")
+            st.note(f"held {len(untitled_lf)} episode(s) with no long-form "
+                    f"title that passes loop/longform_title.py: "
+                    f"{', '.join(sorted(untitled_lf))}. They stay on the "
+                    f"shelf; nothing is deleted.")
+            take = [t for t in take if t[0] not in untitled_lf]
+        if untitled_lf and not take:
+            st.named_stop(
+                "TITLE_REFUSED",
+                f"every episode ready to upload today has no long-form title "
+                f"that passes the formula and its truth guard: "
+                + "; ".join(f"{s} — {w}" for s, w in sorted(untitled_lf.items())),
+                detail={"untitled": untitled_lf},
+                held_items=sorted(untitled_lf),
+                unblock="Nothing to type. loop-repackage runs `loop/longform_title.py "
+                        "propose --pending` every day on the $0 model route and "
+                        "writes loop/state/titles.json; the next run of this "
+                        "lane uploads every slug that now has a passing title.")
+
         healed = captions_build.heal([s_ for s_, _, _ in take], note=st.note)
         for slug_ in healed["built"]:
             st.work(f"built the missing caption track for {slug_} in the cloud "

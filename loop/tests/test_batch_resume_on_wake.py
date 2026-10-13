@@ -52,6 +52,7 @@ phase_idle(){ return 0; }
 hold_awake(){ :; }
 phase_narrate(){ L narrate; }
 phase_render(){ L render; }
+phase_lengthen(){ L lengthen; }
 phase_captions(){ L captions; CAPRC=0; }
 shelve_shorts(){ L shelve; }
 harvest_footage(){ L harvest; }
@@ -101,7 +102,7 @@ INCOMPLETE = {"night": "2026-10-12", "started_at": "2026-10-12T23:00:04",
               "last_completed_at": "2026-10-13T01:40:00", "phase": "render",
               "episode": "slug-a", "phases_done": ["narrate", "render"],
               "units": [], "complete": False}
-ALL = ["selfheal", "survey", "prepare", "narrate", "render", "captions",
+ALL = ["selfheal", "survey", "prepare", "narrate", "render", "lengthen", "captions",
        "shelve", "harvest"]
 
 # -- a. no progress file -> no-op (day, 22:30 and 07:00) ------------------
@@ -135,7 +136,7 @@ check("resuming night of 2026-10-12 from render/slug-a" in r.stdout,
       f"(b) no resume line: {r.stdout!r}")
 check("narrate" not in log and "render" not in log,
       f"(b) a phase recorded done tonight was RE-RUN on resume: {log}")
-check(log == ["selfheal", "survey", "prepare", "captions", "shelve", "harvest",
+check(log == ["selfheal", "survey", "prepare", "lengthen", "captions", "shelve", "harvest",
               "report resumed_from=render/slug-a"],
       f"(b) the resume did not finish the night from the recorded phase: {log}")
 p = json.loads(prog.read_text())

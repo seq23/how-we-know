@@ -51,6 +51,12 @@ PY = sys.executable
 SLUG = None
 
 
+# Passing long-form titles (loop/longform_title.py) for the slugs this test
+# can pick; each is traced to that script's Direct-answer lock.
+TITLES = {"10-what-is-the-deepest-part-of-the-ocean":
+          "Challenger Deep reaches 10,935 meters below sea level"}
+
+
 def _pick_slug() -> str:
     order = json.loads((ROOT / "research" / "publish_order.json").read_text())
     for q in order["queue"]:
@@ -81,6 +87,15 @@ common.STOPS = TMP / "state" / "stops"
 # write PROOF of a real upload into the actual repo state — exactly the kind
 # of test writing to production this file's own docstring warns about.
 arming.EVIDENCE = TMP / "state" / "lane_evidence.json"
+# 2026-10-13: a long-form upload needs a title that passes
+# loop/longform_title.py (else the lane HOLDS the slug, TITLE_REFUSED). The
+# scenario's titles.json is a sandbox copy; TEST_TITLE empty = none at all.
+import longform_title
+longform_title.STATE = TMP / "state" / "titles.json"
+longform_title.STATE.unlink(missing_ok=True)
+if os.environ.get("TEST_SLUG") and os.environ.get("TEST_TITLE"):
+    longform_title.STATE.write_text(json.dumps({"titles": {os.environ["TEST_SLUG"]: {
+        "new_title": os.environ["TEST_TITLE"], "checks_passed": True}}}))
 
 # ---- every irreversible YouTube call, replaced by a recorder ---------------
 CALLS = []
@@ -226,7 +241,11 @@ print("ON_DISK", (Path(os.environ["TEST_TMP"]) / "dryshelf" /
 
         # -- 3. the whole lane, end to end, against the stub ---------------
         shelve(shelf, slug, b"\x00" * 4096, b"\xff" * 512)
-        stub_env = dict(base, R2_LOCAL_DIR=str(shelf))
+        stub_env = dict(base, R2_LOCAL_DIR=str(shelf), TEST_SLUG=slug,
+                        TEST_TITLE=TITLES.get(slug, ""))
+        if not stub_env["TEST_TITLE"]:
+            fails.append(f"no passing long-form title fixture for {slug}; add "
+                         f"one to TITLES")
         examined += 1
         r = run("""
 rc = 0
@@ -245,6 +264,21 @@ print("QUOTA", json.dumps(q))
         if "RC 0" not in out:
             fails.append(f"the lane did not exit 0 on a good run: "
                          f"{out.strip()[-600:]} {r.stderr[-600:]}")
+        if TITLES.get(slug) and json.dumps(TITLES[slug]) not in out:
+            fails.append("end-to-end: the upload did not carry the long-form "
+                         "title from titles.json")
+        examined += 1
+        r_nt = run("""
+rc = 0
+try:
+    cloud_upload.run(limit=1)
+except SystemExit as e:
+    rc = e.code
+print("CALLS", json.dumps(CALLS))
+""", dict(stub_env, TEST_TITLE=""), tmp)
+        if '"insert"' in r_nt.stdout or "TITLE_REFUSED" not in (r_nt.stdout + r_nt.stderr):
+            fails.append("with no passing long-form title the lane uploaded "
+                         "anyway, or did not name TITLE_REFUSED")
         for want, why in (('"insert"', "no videos.insert was attempted"),
                           ('"privacy"', "the privacy/publishAt call was not made"),
                           ('"thumb"', "the thumbnail was not set")):

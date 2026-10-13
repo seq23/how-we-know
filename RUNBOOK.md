@@ -374,6 +374,30 @@ nothing on a second run.
 
 ---
 
+## Long-form repackage — nothing for you to do
+
+Your decisions of 12–13 October 2026, built as code (job 1 of 3). **Long-form
+only; Shorts are untouched.** Nothing is privated by niche, nothing starts
+over, both niches stay on this channel.
+
+- **Titles** (`loop/longform_title.py`): at most 60 characters, a subject plus
+  a stake, never "how we know", and every word and figure must be in the
+  script. No passing title, no upload — the slug waits a day while
+  `loop-repackage` drafts one.
+- **Thumbnails** (`visuals/thumb_contract.py`): one big subject, at most three
+  words, one channel colour grade; three variants per episode, A goes up.
+- **Openings** (`loop/opening.py`): the first sentence is a hook of 15 words or
+  fewer; the answer still lands inside 30 seconds.
+- **Under ten minutes** (`loop/lengthen.py`): a new hook is spliced onto the
+  untouched body of the existing render, plus a warm, sourced tail ending on
+  the next episode — 10:30 to 11:30 in all. A published one goes up as a NEW
+  video; once it is public the old one is made private, never deleted.
+- **Two re-uploads a day** is the setting `repackage.long_form_per_day` in
+  `loop/config.json` (yours to change). When the backlog is empty the lane
+  goes quiet and the normal 4-a-week schedule carries on as before.
+
+---
+
 ## The publishing rhythm
 
 - **Long-form: Sunday, Monday, Tuesday and Friday, 10:00 Central.** Pinned in
@@ -518,6 +542,7 @@ and `loop/tests/test_runbook_lanes.py` fails if a `loop-state` workflow has no r
 | `loop-upload-cloud` | daily 09:00 (`0 14 * * *`) | Pulls the next pending episode's render and thumbnail from Cloudflare R2 and uploads it to YouTube as private with its publish date. Halts while the circuit breaker is tripped (`BREAKER_TRIPPED`). | no |
 | `loop-reach` | daily 10:00 (`0 15 * * *`) | Non-English reach plus discovery metadata: English captions, localized titles and descriptions, tags. | yes (localization) |
 | `loop-shorts-cloud` | daily 18:00 (`0 23 * * *`) | Pulls a verified Short from R2 and uploads it to YouTube as private with its evening slot. Halts while the circuit breaker is tripped (`BREAKER_TRIPPED`). | no |
+| `loop-repackage` | daily 18:30 (`30 23 * * *`) | Long-form repackage (your decisions of 12-13 Oct 2026): drafts a passing long-form title for every script not yet uploaded, puts new titles and contract thumbnails on live videos, and re-uploads lengthened episodes as new videos at two slots a day, making the old cut private (never deleted) once the new one is public. Acts only while there is a backlog. | yes (long-form titles) |
 | `loop-fri-publish` | Fri 08:00 (`0 13 * * 5`) | Flips private uploads to public, but only against a receipt proving the upload happened. Halts while the circuit breaker is tripped (`BREAKER_TRIPPED`). | no |
 | `loop-fri-measure` | Fri 16:00 (`0 21 * * 5`) | Pulls retention and RPM, writes measurement, and can trip the circuit breaker. | no |
 | `loop-imagery-harvest` | Fri 23:00 (`0 4 * * 6`) | Grows the rights-cleared footage pool ahead of demand. | no |

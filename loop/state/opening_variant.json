@@ -1,0 +1,12 @@
+{
+  "active": "stake-then-payoff",
+  "since": "2026-10-13",
+  "history": [
+    {
+      "from": "cold-open-payoff",
+      "to": "stake-then-payoff",
+      "at": "2026-10-13T00:00:00+00:00",
+      "why": "owner instruction 13 Oct 2026: a hook, not an encyclopaedia opening; stake-then-payoff is first in loop/opening.py VARIANTS and in force now"
+    }
+  ]
+}

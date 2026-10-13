@@ -12,7 +12,9 @@ Proves, with no network and no credential (LOOP_DRY_RUN=1):
      (falling back) when it drops a search word, invents a number, is a bare
      question or uses clickbait — and the NEGATIVE proof: title_problems()
      finds each of those defects when fed them directly;
-  4. upload.build_payload and shorts_lane.build_payload both title through it.
+  4. shorts_lane.build_payload titles through it; upload.build_payload (long
+     form) titles through loop/longform_title.py since 2026-10-13 and refuses
+     an upload with no passing title.
 
   AFFILIATES (loop/affiliates.py, channel/affiliates.json)
   5. the config ships with BOTH ids empty, and an episode citing a listed
@@ -128,11 +130,38 @@ check("a number the query itself carries is not an invented figure",
 slug = "how-hot-does-a-welding-arc-get"
 item = {"slug": slug, "script": f"scripts/{slug}.md",
         "question": "how hot does a welding arc get"}
-ep = up.build_payload(item)
-check("upload.build_payload titles through titles.py",
-      ep["snippet"]["title"] == T.title_for(item["question"],
-                                            (ROOT / item["script"]).read_text()),
-      ep["snippet"]["title"])
+# 2026-10-13 (owner decision, repackage job 1): LONG-FORM uploads title
+# through loop/longform_title.py, not titles.py (Shorts keep titles.py, below).
+# Without a passing title the payload is REFUSED; with one in titles.json it is
+# exactly that title. A scratch titles.json, never the committed one.
+import longform_title as LFT  # noqa: E402
+_saved_state = LFT.STATE
+LFT.STATE = Path(tempfile.mkdtemp(prefix="lf-title-")) / "titles.json"
+try:
+    try:
+        up.build_payload(item)
+        refused = False
+    except up.TitleRefused:
+        refused = True
+    check("upload.build_payload refuses a long-form upload with no passing title",
+          refused and LFT.script_title((ROOT / item["script"]).read_text()) is None)
+    good_lf = "A welding arc core reaches 11,000 degrees Celsius"
+    LFT.STATE.write_text(json.dumps({"titles": {slug: {
+        "new_title": good_lf, "checks_passed": True}}}))
+    ep = up.build_payload(item)
+    check("upload.build_payload titles through longform_title.py",
+          ep["snippet"]["title"] == good_lf, ep["snippet"]["title"])
+    check("the long-form title never carries 'how we know'",
+          "how we know" not in ep["snippet"]["title"].lower(), ep["snippet"]["title"])
+    LFT.STATE.write_text(json.dumps({"titles": {slug: {
+        "new_title": "Welding arc — and how we know", "checks_passed": True}}}))
+    try:
+        up.build_payload(item)
+        check("a failing titles.json title is refused at upload", False)
+    except up.TitleRefused:
+        check("a failing titles.json title is refused at upload", True)
+finally:
+    LFT.STATE = _saved_state
 sh = SL.build_payload("20-what-is-the-midnight-zone", "what is the midnight zone")
 check("shorts_lane.build_payload titles through titles.py",
       sh["snippet"]["title"] == "The midnight zone — and how we know", sh["snippet"]["title"])

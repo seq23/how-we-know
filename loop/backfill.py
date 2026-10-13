@@ -391,6 +391,9 @@ def upload_one(st, token: str, slug: str, question: str, render: Path,
     led = ledger.load()
     led["published"].append({
         "slug": slug, "question": question, "video_id": vid,
+        # The title it went up with: V47 holds every upload from
+        # longform_title.RULE_START to the long-form formula.
+        "title": payload["snippet"]["title"],
         "uploaded_at": now(), "privacy": "private",
         "scheduled_publish_at": stamp,
         "note": f"{lane}: scheduled, not yet public"})

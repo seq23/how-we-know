@@ -99,6 +99,22 @@ breaker, publishing.
                        loop/shorts_lane.py carries the same tags plus
                        "shorts". Owner instruction, 2026-09-21
 
+THE REPACKAGE JOB (owner decisions 12-13 Oct 2026), in the render gate:
+
+  V47 longform-title    no long-form title ships that fails
+                        loop/longform_title.py (<=60 chars, subject + stake,
+                        never "how we know", every word and figure traced to
+                        the script); queued items without one are HELD
+  V48 thumbnail-contract every contract variant set still meets
+                        visuals/thumb_contract.py (3 variants, <=3 words,
+                        subject fill >= 60%, the one grade, A chosen)
+  V49 lengthen-splice   the ten-minute splice keeps its books: band
+                        arithmetic, frame boundary, superseded + hold state
+  V50 repackage-state   titles applied, re-uploads re-pointed, slots at most
+                        LONG_FORM_PER_DAY a day, Shorts reserve kept
+  (the stake-then-payoff hook is V44's: it checks whatever variant a script
+  is marked with, and stake-then-payoff is first in loop/opening.py VARIANTS)
+
 V16 and V17 may report a QUOTA_DEFERRED video as a GREEN NAMED STOP rather
 than a failure. That is not a softened assertion: the deferral must be
 RECORDED, with the date it was FIRST made, by the lane that made it, and the
@@ -4007,6 +4023,276 @@ def v46_shorts_handoff() -> Result:
     return r
 
 
+# ===================================================== the repackage job (1 of 3)
+# Owner decisions 12-13 Oct 2026. V47 title formula, V48 thumbnail contract,
+# V44 (above) carries the stake-then-payoff hook, V49 the ten-minute splice,
+# V50 the repackage lane's state. Each examines real state AND a built-in
+# self-check, so none can pass on an empty loop.
+
+def v47_longform_title(items) -> Result:
+    """HARD. No long-form title ships that fails loop/longform_title.py.
+
+    * every ledger row uploaded from longform_title.RULE_START carries the
+      title it went up with, and that title passes the formula and its truth
+      guard against today's script;
+    * every titles.json proposal marked checks_passed still passes (a script
+      edit can make a title untrue; an applied one is then a live defect);
+    * every queue item without a passing title is a HELD named stop
+      (TITLE_PENDING): the upload lane holds it, the daily proposer fills it.
+    Self-check: a "how we know" title and an invented figure are refused.
+    """
+    r = Result("V47 longform-title")
+    import longform_title as _lt                           # noqa: PLC0415
+    import ledger as _led                                  # noqa: PLC0415
+    r.examined += 1
+    probe = ("# what is the midnight zone\n\n## Direct-answer lock\n\nAt "
+             "1,000 meters the last sunlight is gone.\n\n## Narration\n\n"
+             "No sunlight reaches the midnight zone.\n")
+    for bad in ("The midnight zone — and how we know",
+                "Sunlight is gone at 4,000 meters in the midnight zone"):
+        if not _lt.title_problems(bad, probe):
+            r.fail(f"self-check: the formula accepted {bad!r}")
+    if _lt.title_problems("The last sunlight is gone at 1,000 meters", probe):
+        r.fail("self-check: the formula refused a traceable, staked title")
+
+    def script_of(slug):
+        p = ROOT / "scripts" / f"{slug}.md"
+        return p.read_text(encoding="utf-8") if p.exists() else None
+
+    for row in _led.load().get("published") or []:
+        if (row.get("uploaded_at") or "") < _lt.RULE_START or row.get("retired_at"):
+            continue
+        r.examined += 1
+        text = script_of(row["slug"])
+        t = row.get("title")
+        if not t:
+            r.fail(f"{row['slug']}: uploaded {row['uploaded_at'][:10]} with no "
+                   f"recorded title")
+            continue
+        if text is None:
+            r.fail(f"{row['slug']}: no script to trace its title to")
+            continue
+        for p in _lt.title_problems(t, text, row.get("question")):
+            r.fail(f"{row['slug']}: live title {t!r}: {p}")
+    for slug, row in sorted(_lt.load()["titles"].items()):
+        if not row.get("checks_passed"):
+            continue
+        r.examined += 1
+        text = script_of(slug)
+        if text is None:
+            r.fail(f"{slug}: titles.json proposes a title for a missing script")
+            continue
+        for p in _lt.title_problems(row["new_title"], text, row.get("question")):
+            r.fail(f"{slug}: titles.json title {row['new_title']!r} no longer "
+                   f"passes: {p}")
+    pending = []
+    doc = _lt.load()
+    for it in items or []:
+        r.examined += 1
+        text = script_of(it.get("slug") or "")
+        if text is None:
+            continue
+        t, _why, _src = _lt.title_for_upload(it["slug"], text,
+                                             it.get("question"), doc)
+        if t is None:
+            pending.append(it["slug"])
+    if pending:
+        r.named_stop("TITLE_PENDING",
+                     f"{len(pending)} queued episode(s) have no passing "
+                     f"long-form title yet; the upload lane holds them and "
+                     f"loop-repackage proposes one daily", sorted(pending))
+    return r
+
+
+def v48_thumbnail_contract() -> Result:
+    """HARD. Every long-form thumbnail built under the contract still meets it
+    (visuals/thumb_contract.verify: three variants, <=3 words, subject fill
+    >= 60% with real subject energy, the one channel grade applied, variant A
+    chosen), and the grade itself is the channel's one constant.
+
+    On a machine that holds renders, an unpublished render with no contract
+    variant set is a HELD stop (THUMB_CONTRACT_PENDING): the builder refuses
+    rather than borrow a lookalike, and says so per episode.
+    """
+    r = Result("V48 thumbnail-contract")
+    sys.path.insert(0, str(ROOT / "visuals"))
+    try:
+        import thumb_contract as _tc                       # noqa: PLC0415
+        from PIL import Image as _Im                       # noqa: PLC0415
+    except Exception as e:                                 # noqa: BLE001
+        r.fail(f"cannot import visuals/thumb_contract.py: {e}")
+        return r
+    r.examined += 1
+    probe = _Im.new("RGB", (64, 36), (40, 160, 90))
+    a, b = _tc.grade(probe), _tc.grade(probe)
+    if list(a.getdata()) != list(b.getdata()):
+        r.fail("self-check: the grade is not deterministic")
+    if list(a.getdata()) == list(probe.getdata()):
+        r.fail("self-check: the grade changed nothing")
+    if _tc.MAX_WORDS != 3 or _tc.SUBJECT_FILL_MIN < 0.60 or _tc.CHOSEN != "A":
+        r.fail("self-check: the contract constants were loosened "
+               f"(MAX_WORDS={_tc.MAX_WORDS}, SUBJECT_FILL_MIN="
+               f"{_tc.SUBJECT_FILL_MIN}, CHOSEN={_tc.CHOSEN})")
+    try:
+        _tc.draw(probe.resize((_tc.TW, _tc.TH)), "ONE TWO THREE FOUR", "x")
+        r.fail("self-check: draw() accepted four words")
+    except ValueError:
+        pass
+    for slug in _tc.contract_slugs():
+        r.examined += 1
+        for p in _tc.verify(slug):
+            r.fail(p)
+    renders = sorted((ROOT / "renders").glob("*-final.mp4"))
+    if renders:
+        import ledger as _led                              # noqa: PLC0415
+        done = _led.published_slugs()
+        have = set(_tc.contract_slugs())
+        missing = [m.name[: -len("-final.mp4")] for m in renders
+                   if m.name[: -len("-final.mp4")] not in done
+                   and m.name[: -len("-final.mp4")] not in have]
+        r.examined += len(renders)
+        if missing:
+            r.named_stop("THUMB_CONTRACT_PENDING",
+                         f"{len(missing)} unpublished render(s) carry no "
+                         f"contract variant set (visuals/thumbs_for.py builds "
+                         f"it; a refusal names the missing image)", missing)
+    return r
+
+
+def v49_lengthen_splice() -> Result:
+    """HARD. The ten-minute extension (loop/lengthen.py) keeps its books.
+
+    * self-check: the budget lands a typical 8-minute body inside the
+      10:30-11:30 band at >= MIN_WORDS, and frames_through() reproduces
+      visuals/assemble.py's whole-episode frame allocation;
+    * every `spliced` episode is over the 10-minute floor, its old render is
+      recorded in loop/state/superseded_renders.json by sha256, and it is no
+      longer in loop/state/render_hold.json;
+    * every `full_rerender` episode that had a render recorded it as
+      superseded; unknown states fail.
+    """
+    r = Result("V49 lengthen-splice")
+    import math as _m                                      # noqa: PLC0415
+    import lengthen as _ln                                 # noqa: PLC0415
+    r.examined += 1
+    b = _ln.budget(480.0, 40, wpm=144.58)
+    if not b["in_band"]:
+        r.fail(f"self-check: an 8-minute body budgets to {b['total_min']} min, "
+               f"outside {_ln.TARGET_MIN}-{_ln.TARGET_MAX}")
+    if _ln.MIN_WORDS < round(_ln.TARGET_MIN * 144.58):
+        r.fail(f"self-check: MIN_WORDS {_ln.MIN_WORDS} is under "
+               f"{_ln.TARGET_MIN} min at 144.58 wpm")
+    secs = [3.217, 5.5, 2.768, 7.01, 4.4]
+    alloc, emitted = [], 0
+    for i in range(len(secs)):
+        due = sum(secs[:i + 1])
+        want = (_m.ceil(due * 30) if i == len(secs) - 1 else int(round(due * 30)))
+        alloc.append(max(1, want - emitted))
+        emitted += alloc[-1]
+    for k in range(len(secs) + 1):
+        if _ln.frames_through(secs, k) != sum(alloc[:k]):
+            r.fail(f"self-check: frames_through(k={k}) disagrees with "
+                   f"assemble.py's allocation")
+            break
+    sup = read_json(ROOT / "loop" / "state" / "superseded_renders.json", default={})
+    hold = (read_json(ROOT / "loop" / "state" / "render_hold.json",
+                      default={"held": {}}).get("held") or {})
+    for slug, rec in sorted(_ln.load()["episodes"].items()):
+        r.examined += 1
+        st_ = rec.get("status")
+        if st_ not in ("scripted", "full_rerender", "spliced"):
+            r.fail(f"{slug}: unknown lengthen status {st_!r}")
+            continue
+        old = rec.get("old_render_sha256")
+        recorded = {(sup.get(slug) or {}).get("sha256")} | {
+            p.get("sha256") for p in (sup.get(slug) or {}).get("previous") or []}
+        if st_ in ("spliced", "full_rerender") and old and old not in recorded:
+            r.fail(f"{slug}: {st_} but its old render (sha {old[:12]}) is not "
+                   f"in superseded_renders.json - the shelf could serve it")
+        if st_ == "spliced":
+            if (rec.get("new_seconds") or 0) / 60.0 < _ln.FLOOR_MIN:
+                r.fail(f"{slug}: spliced render is "
+                       f"{(rec.get('new_seconds') or 0) / 60:.2f} min, under "
+                       f"the floor")
+            if slug in hold:
+                r.fail(f"{slug}: spliced past the floor and still held in "
+                       f"render_hold.json")
+    return r
+
+
+def v50_repackage_state() -> Result:
+    """HARD. The repackage lane's books agree with the ledgers, and its quota
+    guard still leaves the Shorts lane its reserve.
+
+    * settings: long_form_per_day is a non-negative int, every slot time parses;
+    * the lane's reserve is never below quota.shorts_reserve();
+    * every replaced old->new: the ledger row now carries the new id with the
+      old in replaced_video_ids, and no Short still hands off to the old id;
+    * every scheduled re-upload sits at a configured local slot time, at most
+      long_form_per_day per local day;
+    * every applied title's video is the ledger's (or a replaced) id.
+    """
+    r = Result("V50 repackage-state")
+    import repackage as _rp                                # noqa: PLC0415
+    import quota as _q                                     # noqa: PLC0415
+    import ledger as _led                                  # noqa: PLC0415
+    import longform_title as _lt                           # noqa: PLC0415
+    from zoneinfo import ZoneInfo as _Z                    # noqa: PLC0415
+    import datetime as _dt                                 # noqa: PLC0415
+    r.examined += 1
+    cfg = _rp.settings()
+    per = cfg.get("long_form_per_day")
+    if not isinstance(per, int) or per < 0:
+        r.fail(f"repackage.long_form_per_day is {per!r}, not a count")
+        per = 0
+    for t in cfg.get("slot_times_local") or []:
+        if not re.fullmatch(r"\d\d:\d\d", str(t)):
+            r.fail(f"repackage slot time {t!r} does not parse as HH:MM")
+    if _rp.reserve() < _q.shorts_reserve():
+        r.fail("the repackage reserve is smaller than the Shorts lane's")
+    doc = _rp.load()
+    rows = _led.load().get("published") or []
+    by_slug = {x["slug"]: x for x in rows if not x.get("retired_at")}
+    olds = set(doc["replaced"])
+    for slug, rec in sorted(doc["reuploads"].items()):
+        r.examined += 1
+        if rec.get("phase") == "replaced":
+            row = by_slug.get(slug) or {}
+            if row.get("video_id") != rec.get("new_video_id"):
+                r.fail(f"{slug}: replaced by {rec.get('new_video_id')} but the "
+                       f"ledger still points at {row.get('video_id')}")
+            if rec.get("old_video_id") not in {
+                    x.get("video_id") for x in row.get("replaced_video_ids") or []}:
+                r.fail(f"{slug}: old id {rec.get('old_video_id')} missing from "
+                       f"replaced_video_ids")
+    tz = _Z(cfg.get("tz", "America/Chicago"))
+    per_day: dict = {}
+    for slug, rec in doc["reuploads"].items():
+        if rec.get("phase") != "scheduled":
+            continue
+        at = _dt.datetime.fromisoformat(rec["scheduled_publish_at"].replace("Z", "+00:00")).astimezone(tz)
+        if f"{at:%H:%M}" not in (cfg.get("slot_times_local") or [])[:max(per, 0)]:
+            r.fail(f"{slug}: scheduled at {at:%H:%M %Z}, not a repackage slot")
+        per_day[at.date()] = per_day.get(at.date(), 0) + 1
+    for d, n in per_day.items():
+        if n > per:
+            r.fail(f"{n} re-uploads scheduled on {d}, over long_form_per_day={per}")
+    shorts = (read_json(SHORTS_LEDGER_PATH, default={"published": []})
+              .get("published") or [])
+    for s in shorts:
+        if s.get("handoff_episode") in olds:
+            r.fail(f"Short {s.get('video_id')} still hands off to replaced "
+                   f"episode {s['handoff_episode']}")
+    live_ids = {x.get("video_id") for x in rows} | olds | set(doc["replaced"].values())
+    for slug, row in _lt.load()["titles"].items():
+        if row.get("applied_at"):
+            r.examined += 1
+            if row.get("applied_video_id") not in live_ids:
+                r.fail(f"{slug}: title applied to {row.get('applied_video_id')}, "
+                       f"which no ledger row knows")
+    return r
+
+
 def run_all(items) -> tuple[bool, list[dict]]:
     """Run every validator. Returns (all_passed, report_rows).
 
@@ -4039,7 +4325,11 @@ def run_all(items) -> tuple[bool, list[dict]]:
                v43_queue_asks_distinct_questions(items),
                v44_opening_payoff_first(items),
                v45_nothing_waits_on_the_owner(),
-               v46_shorts_handoff()]
+               v46_shorts_handoff(),
+               v47_longform_title(items),
+               v48_thumbnail_contract(),
+               v49_lengthen_splice(),
+               v50_repackage_state()]
     rows = [r.as_dict() for r in results]
     return all(r.ok for r in results), rows
 

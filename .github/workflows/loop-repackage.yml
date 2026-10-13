@@ -1,0 +1,116 @@
+name: loop · daily 18:30 CT · long-form repackage (titles, thumbnails, longer cuts)
+
+# The long-form REPACKAGE lane (owner decisions 12-13 Oct 2026; loop/repackage.py).
+# LONG-FORM ONLY. Shorts - their titles, thumbnails, the R2 drain and
+# loop-shorts-cloud.yml - are not touched here.
+#
+#   1. propose   loop/longform_title.py drafts a passing long-form title for
+#                every not-yet-uploaded script that lacks one (the upload lane
+#                holds a slug until it has one). $0 model route: her Claude
+#                subscription, the Gemini free tier, the $0 OpenRouter list.
+#   2. apply     new titles + the contract thumbnail (variant A) onto live
+#                videos listed in loop/state/titles.json.
+#   3. reupload  lengthened episodes (loop/lengthen.py, spliced on the Mac and
+#                shelved in R2) go up as NEW videos at fixed repackage slots,
+#                LONG_FORM_PER_DAY a day; once public, the old video is made
+#                private (never deleted) and everything re-points to the new id.
+#
+# Runs AFTER the 18:00 Shorts lane (same loop-state queue), so the Shorts lane
+# has already spent; quota.shorts_reserve() keeps its 3,400 regardless. Acts
+# only while a backlog exists: with none, every step is a green named stop.
+#
+# ARMED by loop/arming.py like the Shorts lane. Prove it first:
+#     gh workflow run loop-repackage.yml -f dry_run=true
+#     gh workflow run loop-repackage.yml -f limit=1
+on:
+  schedule:
+    - cron: '30 23 * * *'
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: 'Max items per step this run'
+        required: false
+        default: '2'
+      dry_run:
+        description: 'Plan only - write nothing to YouTube'
+        type: boolean
+        required: false
+        default: false
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: loop-state
+  cancel-in-progress: false
+
+jobs:
+  repackage:
+    # New lane: no measured median yet. 4 titles x ~2 min on the subscription
+    # tier + two 50-200 MB re-uploads; a fault detector, not a budget.
+    timeout-minutes: 40
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install wrangler
+        run: npm install -g wrangler@4
+      - name: Install the Claude Code CLI (subscription tier, pinned)
+        run: npm install -g @anthropic-ai/claude-code@2.1.296
+      - name: Install loop dependencies
+        run: pip install -r requirements-loop.txt
+      - name: Refresh to the current main before any stage acts
+        run: |
+          git fetch --quiet origin ${{ github.ref_name }}
+          git reset --hard --quiet "origin/${{ github.ref_name }}"
+      - name: Verify the CI YouTube credential's scopes
+        env:
+          YT_OAUTH_CLIENT_JSON: ${{ secrets.YT_OAUTH_CLIENT_JSON }}
+          YT_OAUTH_REFRESH_TOKEN: ${{ secrets.YT_OAUTH_REFRESH_TOKEN }}
+        run: python3 auth/check_ci_scopes.py
+      - name: Propose long-form titles for scripts not yet uploaded
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          ARGS="--pending --limit 4"
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            ARGS="$ARGS --dry-run"
+          fi
+          bin/loop-stage.sh titles loop/longform_title.py propose $ARGS
+      - name: Apply new titles and thumbnails to live videos
+        if: ${{ !cancelled() }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          YT_OAUTH_CLIENT_JSON: ${{ secrets.YT_OAUTH_CLIENT_JSON }}
+          YT_OAUTH_REFRESH_TOKEN: ${{ secrets.YT_OAUTH_REFRESH_TOKEN }}
+        run: |
+          ARGS="--limit ${{ github.event.inputs.limit || 20 }}"
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            ARGS="$ARGS --dry-run"
+          fi
+          bin/loop-stage.sh repackage-apply loop/repackage.py apply $ARGS
+      - name: Re-upload lengthened episodes; private the old cut once the new is public
+        if: ${{ !cancelled() }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: 8d147e242033699dd37c6f5a451f48d2
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          YT_OAUTH_CLIENT_JSON: ${{ secrets.YT_OAUTH_CLIENT_JSON }}
+          YT_OAUTH_REFRESH_TOKEN: ${{ secrets.YT_OAUTH_REFRESH_TOKEN }}
+        run: |
+          ARGS="--limit ${{ github.event.inputs.limit || 2 }}"
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            ARGS="$ARGS --dry-run"
+          fi
+          bin/loop-stage.sh repackage-reupload loop/repackage.py reupload $ARGS

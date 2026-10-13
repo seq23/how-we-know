@@ -28,6 +28,21 @@ HOW IT IS HELD TO THAT:
     switches to the next variant in VARIANTS by itself and logs why. No stop
     either way.
 
+THE HOOK (owner instruction, 13 Oct 2026: "a hook, not an encyclopaedia
+opening"). `stake-then-payoff` is FIRST in VARIANTS and in force from
+HOOK_START: the first narrated sentence is at most 15 words, states a concrete
+stake, contradiction or figure, and shares under half its content words with
+the title and with the question; the payoff (the Direct-answer lock's first
+sentence) is still inside the first 75 words; then the "how we know" chain.
+problems() gates all three; a failing draft is redrafted inside the author's
+retry loop as before. The 28-day AVD measurement and the auto-switch work
+unchanged with it active (its baseline is the pre-rule cohort; losing switches
+to cold-open-payoff). Published videos: their titles, thumbnails and duration
+are now governed by the repackage job (loop/longform_title.py,
+visuals/thumb_contract.py, loop/lengthen.py, loop/repackage.py); their cuts are
+still never edited in place - a longer cut is a NEW upload, and the old video
+is made private, never deleted.
+
 The answer check is mechanical, not a judgement: the Direct-answer lock's
 first sentence is the answer; at least ANSWER_SHARE of its content words (and
 at least ANSWER_MIN_HITS of them) must be spoken in the first
@@ -47,6 +62,7 @@ STATE = ROOT / "loop" / "state" / "opening_variant.json"
 SCRIPTS = ROOT / "scripts"
 
 RULE_START = "2026-09-28"          # drafts from this Monday on
+HOOK_START = "2026-10-13"          # stake-then-payoff in force from here
 PRE_RULE = "pre-rule"
 ANSWER_WITHIN_WORDS = 75           # ~31 s at 144.58 wpm
 ANSWER_SHARE = 0.5
@@ -57,6 +73,27 @@ MIN_COHORT = 3
 # Ordered. The first is the rule in force from RULE_START; each later one is
 # what the lane switches to if the one before it does not beat its baseline.
 VARIANTS = {
+    # Owner instruction, 13 Oct 2026: a hook, not an encyclopaedia opening.
+    "stake-then-payoff": {
+        "prompt": (
+            "OPENING RULE (stake-then-payoff, in force for every script): the "
+            "FIRST narrated sentence is a hook of at most {first} words that "
+            "states a concrete stake, contradiction or figure - something "
+            "that is lost, broken, impossible or surprising, from this "
+            "episode's own evidence. It must NOT restate the title or the "
+            "question (share fewer than half its content words with either). "
+            "Then the PAYOFF: the Direct-answer lock's first sentence must be "
+            "recognisably spoken inside the first {within} words. Only then "
+            "the 'how we know' chain: where the evidence comes from, what it "
+            "does and does not settle. Example shape (a different subject, "
+            "for the SHAPE only): 'At the bottom of the Mariana Trench, a "
+            "styrofoam cup shrinks to the size of a thimble.' - then the "
+            "answer - then the evidence."),
+        "question_within": None,
+        "answer_within": ANSWER_WITHIN_WORDS,
+        "first_sentence_max": 15,
+        "title_overlap_max": 0.5,
+    },
     "cold-open-payoff": {
         "prompt": (
             "OPENING RULE (cold-open-payoff, in force for every script): the "
@@ -133,6 +170,17 @@ def title_question(script: str) -> str:
     return m.group(1).strip() if m else ""
 
 
+def first_sentence(script: str) -> str:
+    """The first narrated sentence (directives and headings removed)."""
+    spoken = " ".join(narration_words(script))
+    return re.split(r"(?<=[.!?])\s+", spoken, maxsplit=1)[0] if spoken else ""
+
+
+def youtube_title(script: str) -> str:
+    m = re.search(r"^## YouTube title\s*\n+(.+?)\s*$", script, re.M)
+    return m.group(1).strip().strip('"') if m else ""
+
+
 def problems(script: str, variant: str) -> list[str]:
     """Why this script breaks the opening rule `variant`; [] when it holds."""
     spec = VARIANTS[variant]
@@ -157,6 +205,25 @@ def problems(script: str, variant: str) -> list[str]:
             f"{len(want)} content words of the Direct-answer lock's first "
             f"sentence are spoken there (need {need}). Move the payoff - "
             f"{ans[:120]!r} - into the cold open, before the evidence chain.")
+    fmax = spec.get("first_sentence_max")
+    if fmax:
+        first = first_sentence(script)
+        n = len(first.split())
+        if n > fmax:
+            out.append(
+                f"opening rule {variant}: the first narrated sentence is {n} "
+                f"words; the hook must be at most {fmax} - one concrete "
+                f"stake, contradiction or figure: {first[:120]!r}")
+        fc = set(_content(first))
+        omax = spec.get("title_overlap_max", 0.5)
+        for label, ref in (("title", youtube_title(script)),
+                           ("question", title_question(script))):
+            rc = set(_content(ref or ""))
+            if fc and rc and len(fc & rc) / len(fc) >= omax:
+                out.append(
+                    f"opening rule {variant}: the first sentence restates the "
+                    f"{label} ({len(fc & rc)} of its {len(fc)} content words "
+                    f"are in {ref!r}); open on the stake instead")
     qw = spec.get("question_within")
     if qw:
         q = set(_content(title_question(script)))
@@ -172,7 +239,8 @@ def prompt_text(variant: str | None = None) -> str:
     v = variant or active()
     spec = VARIANTS[v]
     return spec["prompt"].format(within=spec["answer_within"],
-                                 teaser=spec.get("question_within") or 0)
+                                 teaser=spec.get("question_within") or 0,
+                                 first=spec.get("first_sentence_max") or 0)
 
 
 # ------------------------------------------------------------ the marker
