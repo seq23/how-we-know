@@ -178,6 +178,37 @@ try:
 finally:
     ledger.LEDGER = saved
 
+# ------------------------------------------- 6. --needed: live videos too
+# Job 2 (13 Oct 2026): every live long-form video gets a passing title, and
+# the daily lane must keep proposing for any live video that has none - else
+# `repackage apply` (titles.json only) leaves its old title up for good.
+fake.write_text(json.dumps({"published": [
+    {"slug": SLUG, "question": Q, "video_id": "LIVE1",
+     "uploaded_at": "2026-09-01T00:00:00+00:00"},
+    {"slug": SLUG, "question": Q, "video_id": "DUP0",
+     "uploaded_at": "2026-09-01T00:00:00+00:00",
+     "retired_at": "2026-09-02T00:00:00+00:00"}], "queued": []}))
+ledger.LEDGER = fake
+try:
+    LT.STATE.write_text(json.dumps({"titles": {}}))
+    check(LT.published_needing() == [SLUG],
+          f"a live video with no titles.json row is not needed: {LT.published_needing()}")
+    LT.STATE.write_text(json.dumps({"titles": {SLUG: {
+        "new_title": "Welding — and how we know", "checks_passed": True}}}))
+    check(LT.published_needing() == [SLUG],
+          "a live video whose recorded title no longer passes is not needed")
+    LT.STATE.write_text(json.dumps({"titles": {SLUG: {
+        "new_title": good, "checks_passed": True}}}))
+    check(LT.published_needing() == [],
+          f"a live video with a passing row is re-proposed: {LT.published_needing()}")
+    check(SLUG not in LT.needed_slugs(), "needed_slugs re-proposes a titled live video")
+finally:
+    ledger.LEDGER = saved
+wf = (ROOT / ".github" / "workflows" / "loop-repackage.yml").read_text()
+check('ARGS="--needed' in wf and "longform_title.py propose $ARGS" in wf,
+      "the daily repackage lane does not propose with --needed: live videos "
+      "with no passing title would never get one")
+
 if examined == 0:
     fails.append("examined nothing")
 print(f"examined {examined} case(s)")

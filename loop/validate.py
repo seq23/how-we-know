@@ -1613,6 +1613,41 @@ def v20_cadence_schedule() -> Result:
     tail = C.scheduled_tail()
     taken = {row["scheduled_publish_at"] for row in tail}
     led = L.load()
+
+    # ---- ONE dated row per episode, never a Sunday, no date on a retired row
+    # THE GAP (job 2, 2026-10-13): 02-how-deep-sea-creatures-survive-pressure
+    # read as scheduled twice - Thu 22 Oct (nv-M6q8h-Lk) and Sun 25 Oct - and
+    # this validator passed, because the Sunday row was a retired duplicate
+    # (_fQ3-YI63oQ, private, publishAt cleared on the live API 5 Sep) that
+    # still carried `scheduled_publish_at`, and every check below skips
+    # retired rows. Any reader that does not (cadence.scheduled_tail itself
+    # returns it) saw the episode twice and a Sunday slot taken. Now: a
+    # retired/superseded row keeps its old date only as `schedule_was`; two
+    # live dated rows for one slug fail; a Sunday date fails outright, held
+    # or not (the rotation maps no Sunday slot - CHANNEL-PLAN.md).
+    retired_ids = {x.get("video_id") for x in led["published"]
+                   if x.get("retired_at") or x.get("schedule_cancelled_at")
+                   or x.get("status") == "superseded_duplicate"}
+    live_dated: dict[str, list[str]] = {}
+    for row in tail:
+        r.examined += 1
+        when_l = row["when"].astimezone(backfill.PUBLISH_TZ)
+        if row.get("video_id") in retired_ids:
+            r.fail(f"{row['slug']} ({row.get('video_id')}) is retired or a "
+                   f"superseded duplicate but still carries scheduled_publish_at "
+                   f"{row['scheduled_publish_at']}; keep it as `schedule_was` "
+                   f"so no reader sees the episode scheduled twice")
+            continue
+        if when_l.weekday() == 6:
+            r.fail(f"{row['slug']} ({row.get('video_id')}) is dated "
+                   f"{when_l:%a %d %b %H:%M %Z}; Sunday carries no long-form slot")
+        live_dated.setdefault(row["slug"], []).append(
+            f"{row.get('video_id')} {row['scheduled_publish_at']}")
+    for slug_, rows_ in sorted(live_dated.items()):
+        if len(rows_) > 1:
+            r.fail(f"{slug_} is scheduled {len(rows_)} times ({'; '.join(rows_)}); "
+                   f"one episode, one dated upload - the other is a superseded "
+                   f"duplicate: private, no publishAt, status superseded_duplicate")
     if tail:
         last = tail[-1]["when"]
         # ONE ALLOCATION PER DOMAIN, ON ITS OWN DAYS. This block used to draw

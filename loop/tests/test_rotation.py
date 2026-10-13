@@ -128,6 +128,51 @@ for uploaded, want in (("2026-10-20T00:00:00+00:00", "fail"),
               any(s_["code"] == "OFF_ROTATION_RESCHEDULE_PENDING" for s_ in res["stops"]),
               f"V20 did not hold a pre-rotation row for reschedule: {res}")
 
+# ---------------------------------------- 5. V20: duplicates and Sundays
+# Job 2 (2026-10-13): 02-how-deep-sea-creatures-survive-pressure read as
+# scheduled Thu 22 Oct AND Sun 25 Oct and V20 passed. Each of these must fail,
+# even for rows dated before the rotation (those are otherwise only HELD).
+def _slot(weekday: int) -> str:
+    t = now + timedelta(days=10)
+    while t.astimezone(B.PUBLISH_TZ).weekday() != weekday:
+        t += timedelta(days=1)
+    t = t.astimezone(B.PUBLISH_TZ).replace(hour=10, minute=0, second=0, microsecond=0)
+    return t.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+OLD = "2026-09-03T14:00:00+00:00"
+row = {"slug": deep[0], "privacy": "private", "uploaded_at": OLD}
+cases = (
+    ("duplicate", [dict(row, video_id="A1", scheduled_publish_at=_slot(3)),
+                   dict(row, video_id="A2", scheduled_publish_at=_slot(0))],
+     "scheduled 2 times"),
+    ("sunday", [dict(row, video_id="A1", scheduled_publish_at=_slot(6))],
+     "Sunday carries no long-form slot"),
+    ("retired-dated", [dict(row, video_id="A1", scheduled_publish_at=_slot(3)),
+                       dict(row, video_id="A2", scheduled_publish_at=_slot(6),
+                            retired_at=OLD)],
+     "still carries scheduled_publish_at"),
+    ("superseded-clean", [dict(row, video_id="A1", scheduled_publish_at=_slot(3)),
+                          dict(row, video_id="A2", retired_at=OLD,
+                               status="superseded_duplicate",
+                               schedule_was=_slot(6))],
+     None),
+)
+for name, rows_, want in cases:
+    fake.write_text(json.dumps({"published": rows_, "queued": []}))
+    ledger.LEDGER = fake
+    try:
+        res = V.v20_cadence_schedule().as_dict()
+    finally:
+        ledger.LEDGER = saved
+    if want:
+        check(any(want in f for f in res["failures"]),
+              f"V20 passed the {name} case: {res['failures']}")
+    else:
+        check(not any(k in f for f in res["failures"] for k in
+                      ("scheduled 2 times", "Sunday", "still carries")),
+              f"V20 failed a clean superseded duplicate: {res['failures']}")
+
 if examined == 0:
     fails.append("examined nothing")
 print(f"examined {examined} case(s)")
