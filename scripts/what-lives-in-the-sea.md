@@ -2,6 +2,8 @@
 
 **Status:** DRAFT — OWNER CONFIRMATION AND MASTER WATCH REQUIRED
 **Domain:** deep-sea-ocean-science
+**Lengthened:** 2026-10-13 (loop/lengthen.py splice)
+**Opening:** stake-then-payoff
 **Word count:** 1810
 **Estimated narration:** 12m 31s at 144.58 WPM (measured, loop/durations.py)
 
@@ -13,9 +15,7 @@ The World Register of Marine Species catalogs approximately 240,000 described ma
 
 ### Cold open
 
-{{stat: 240,000 | described species | World Register of Marine Species, 2024 | WoRMS}}
-
-The World Register of Marine Species lists about 240,000 described marine species as of 2024. That figure counts only organisms formally named in the scientific literature. The Census of Marine Life, a decade-long global survey that concluded in 2010, estimated the true total might reach 2.2 million species. The gap between those numbers is not uncertainty about what exists — it is the backlog of specimens sitting in jars, waiting for a taxonomist with funding and time. Most of that undescribed diversity lives in the deep sea, where a single remotely operated vehicle dive can collect dozens of organisms no one has named.
+Specimens collected in the 1970s still sit in museum jars, waiting for names. The World Register of Marine Species catalogs approximately 240,000 described marine species as of 2024, but the Census of Marine Life and Ocean Census estimate the total may reach 2.2 million species. The first number is a database anyone can search: every entry is an organism someone formally described. The second is a model, built from taxonomists' estimates and scaled up by habitat area. Together they settle that most ocean diversity is unnamed. They do not settle how much exists.
 
 ### Title card
 
@@ -85,6 +85,16 @@ The described count of 240,000 species is solid — those are named organisms in
 
 What lives in the sea is a question with a growing answer. The catalog expands every year, and the tools for expanding it improve. The gap between what is known and what exists is not a failure of science — it is a measure of the ocean's size and the limited number of people trained to work at the boundary between collection and naming.
 
+### A ghost octopus is still waiting for its name
+{{text}}
+In 2016, NOAA's ship Okeanos Explorer sent a camera down past four thousand meters near Hawaii and filmed a pale, finless little octopus no one had seen before. The internet named it Casper almost immediately. Science, being science, moved more slowly: years later it was still waiting for a formal name. Somewhere, a taxonomist is apologising to it.
+### Nobody agrees yet on naming animals from DNA alone
+{{ambient}}
+Here is what the evidence can't settle. Filter seawater, sequence it, and you can detect animals that never went near a net. But the rules for animal names, kept by the International Commission on Zoological Nomenclature, still lean on a physical type specimen. Taxonomists are debating, politely and at length, whether a genetic sequence should ever be enough. The answer will change how fast the queue moves, and nobody can say yet which way it will go.
+### The deep still has a record to show us
+{{text}}
+Thank you for staying to the very end with a shelf full of unnamed animals. Take care, and maybe bring a bigger jar. Next time: what is the deepest part of the ocean, and why pinning down that depth is harder than it sounds.
+
 ## Editorial gate
 
 *What this episode does that a template would not. Every line below is a property the pipeline enforces at build time — see V36 in `loop/validate.py`. It records no step a human still owes.*
@@ -112,6 +122,8 @@ What lives in the sea is a question with a growing answer. The catalog expands e
 - 11:55 Closing
 
 ## Sources
+- https://oceanexplorer.noaa.gov/
+- https://www.iczn.org/
 
 - World Register of Marine Species: About WoRMS — https://www.marinespecies.org/about.php
 - Ocean Census: Discovering Ocean Life — https://oceancensus.org/

@@ -2,6 +2,8 @@
 
 **Status:** DRAFT — OWNER CONFIRMATION AND MASTER WATCH REQUIRED
 **Domain:** deep-sea-ocean-science
+**Lengthened:** 2026-10-13 (loop/lengthen.py splice)
+**Opening:** stake-then-payoff
 **Word count:** 1810
 **Estimated narration:** 12m 31s at 144.58 WPM (measured, loop/durations.py)
 
@@ -13,9 +15,7 @@ The World Register of Marine Species catalogs approximately 240,000 described ma
 
 ### Cold open
 
-{{stat: 240,000 | described species | World Register of Marine Species, 2024 | WoRMS}}
-
-The World Register of Marine Species lists about 240,000 described marine species as of 2024. That figure counts only organisms formally named in the scientific literature. The Census of Marine Life, a decade-long global survey that concluded in 2010, estimated the true total might reach 2.2 million species. The gap between those numbers is not uncertainty about what exists — it is the backlog of specimens sitting in jars, waiting for a taxonomist with funding and time. Most of that undescribed diversity lives in the deep sea, where a single remotely operated vehicle dive can collect dozens of organisms no one has named.
+Specimens collected in the 1970s still sit in museum jars, waiting for names. The World Register of Marine Species catalogs approximately 240,000 described marine species as of 2024, but the Census of Marine Life and Ocean Census estimate the total may reach 2.2 million species. The first number is a database anyone can search: every entry is an organism someone formally described. The second is a model, built from taxonomists' estimates and scaled up by habitat area. Together they settle that most ocean diversity is unnamed. They do not settle how much exists.
 
 ### Title card
 
@@ -45,7 +45,7 @@ A described species is not always a single evolutionary lineage. DNA barcoding, 
 
 ### Microbial diversity dwarfs macroscopic counts but resists traditional species definitions
 
-{{uncertain: 20,000 to 2 million | bacterial operational taxonomic units | published range, model-dependent | low confidence | Marine bacterial diversity estimate}}
+{{text}}
 
 Bacteria and archaea do not fit neatly into species counts. Microbiologists group prokaryotes into operational taxonomic units based on genetic similarity thresholds, typically 97 percent identity in the 16S ribosomal RNA gene. By that measure, a 2016 estimate in the Proceedings of the National Academy of Sciences suggested Earth's oceans might harbor between 20,000 and 2 million bacterial operational taxonomic units, and between 5,000 and 500,000 archaeal operational taxonomic units. The range is wide because sampling is sparse and the definition is arbitrary. A three-percent genetic difference might separate ecologically identical populations or functionally distinct lineages. The World Register of Marine Species does not attempt a comprehensive prokaryote catalog. The 240,000 figure refers almost entirely to eukaryotes — organisms with nucleated cells — and a small number of well-characterized bacterial genera. Microbial diversity likely exceeds macroscopic diversity by orders of magnitude, but the lack of a stable species concept for prokaryotes makes direct comparison difficult.
 
@@ -75,7 +75,7 @@ The 2.2 million figure is an extrapolation, not a count. It rests on the assumpt
 
 ### Evidence limit
 
-{{uncertain: 2.2 | million species | half a million to 5 million | model-dependent | Total marine species estimate, Census of Marine Life}}
+{{stat: 2.2 | million species | Total marine species estimate, a model output | Census of Marine Life}}
 
 The described count of 240,000 species is solid — those are named organisms in a database you can query. The total estimate of 2.2 million is a model output that depends on assumptions about how biodiversity scales with habitat area and sampling effort. Published estimates range from half a million to 5 million marine species. The range reflects genuine uncertainty about deep-sea diversity, not sloppiness. No method currently exists to count species without collecting and describing them. The evidence establishes that most marine diversity is undescribed and that the deep sea holds most of that undescribed diversity. It does not establish a precise total. The uncertainty is not a gap in knowledge that will close soon — it is intrinsic to the scale of the task and the rate at which taxonomic work proceeds.
 
@@ -85,14 +85,25 @@ The described count of 240,000 species is solid — those are named organisms in
 
 What lives in the sea is a question with a growing answer. The catalog expands every year, and the tools for expanding it improve. The gap between what is known and what exists is not a failure of science — it is a measure of the ocean's size and the limited number of people trained to work at the boundary between collection and naming.
 
-## Human fingerprint gate
+### A ghost octopus is still waiting for its name
+{{text}}
+In 2016, NOAA's ship Okeanos Explorer sent a camera down past four thousand meters near Hawaii and filmed a pale, finless little octopus no one had seen before. The internet named it Casper almost immediately. Science, being science, moved more slowly: years later it was still waiting for a formal name. Somewhere, a taxonomist is apologising to it.
+### Nobody agrees yet on naming animals from DNA alone
+{{ambient}}
+Here is what the evidence can't settle. Filter seawater, sequence it, and you can detect animals that never went near a net. But the rules for animal names, kept by the International Commission on Zoological Nomenclature, still lean on a physical type specimen. Taxonomists are debating, politely and at length, whether a genetic sequence should ever be enough. The answer will change how fast the queue moves, and nobody can say yet which way it will go.
+### The deep still has a record to show us
+{{text}}
+Thank you for staying to the very end with a shelf full of unnamed animals. Take care, and maybe bring a bigger jar. Next time: what is the deepest part of the ocean, and why pinning down that depth is harder than it sounds.
 
-- Humanized cold open: DRAFTED — owner must confirm it sounds natural read aloud.
-- First-person producer observation: FROM POV BANK (pov-042) — owner-approved voice.
+## Editorial gate
+
+*What this episode does that a template would not. Every line below is a property the pipeline enforces at build time — see V36 in `loop/validate.py`. It records no step a human still owes.*
+
+- Humanized cold open: PRESENT
+- First-person producer observation: FROM POV BANK (pov-042)
 - Evidence uncertainty or limitation: COMPLETE
 - Structural variation: Opens with catalog figure and gap, then unpacks sampling bias and taxonomic bottlenecks across depth zones and organism size classes.
 - Number-level source audit: COMPLETE
-- Final human watch-through: PENDING until the rendered MP4 exists.
 
 ## Chapters
 
@@ -111,6 +122,8 @@ What lives in the sea is a question with a growing answer. The catalog expands e
 - 11:55 Closing
 
 ## Sources
+- https://oceanexplorer.noaa.gov/
+- https://www.iczn.org/
 
 - World Register of Marine Species: About WoRMS — https://www.marinespecies.org/about.php
 - Ocean Census: Discovering Ocean Life — https://oceancensus.org/

@@ -259,6 +259,32 @@
       "words_after": 1615,
       "words_before": 1593
     },
+    "what-lives-in-the-sea": {
+      "attempts": 2,
+      "budget": {
+        "in_band": true,
+        "open_s": 37.35,
+        "tail_s": 73.61,
+        "tail_words": 178,
+        "total_min": 11.0
+      },
+      "hook_after": "Specimens collected in the 1970s still sit in museum jars, waiting for names. The World Register of Marine Species catalogs approximately 240,000 described marine species as of 2024, but the Census of Marine Life and Ocean Census estimate t",
+      "hook_before": "{{stat: 240,000 | described species | World Register of Marine Species, 2024 | WoRMS}}\n\nThe World Register of Marine Species lists about 240,000 described marine species as of 2024. That figure counts only organisms formally named in the sc",
+      "hook_problems_before": [],
+      "kind": "extend",
+      "minutes_after": 11.13,
+      "minutes_before": 9.96,
+      "mode": "pending_bind",
+      "model": "claude-subscription/opus",
+      "new_script_sha256": "bfab541032d43f6b4f419b151625c73aa70728ce5a6069e74f841c61f71ce329",
+      "old_render_sha256": null,
+      "old_script_sha256": "80c8505a4d04eec11a873dfa767868c1267e9d96de1207672bd6ef19436eda08",
+      "scripted_at": "2026-10-13T17:41:31+00:00",
+      "status": "scripted",
+      "why_full": null,
+      "words_after": 1609,
+      "words_before": 1440
+    },
     "why-are-deep-sea-creatures-so-big": {
       "attempts": 1,
       "budget": {
@@ -309,5 +335,5 @@
       "words_before": 1845
     }
   },
-  "updated": "2026-10-13T15:03:24+00:00"
+  "updated": "2026-10-13T17:41:31+00:00"
 }
