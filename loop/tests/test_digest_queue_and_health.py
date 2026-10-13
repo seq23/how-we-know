@@ -64,12 +64,17 @@ cal = digest.calendar(full_ledger(), CFG, NOW)
 examined += 1
 if not cal or any(not c["slug"] for c in cal):
     fails.append(f"calendar: a fully dated month should show no empty slot; got {[c for c in cal if not c['slug']]}")
-# Deep sea and materials hold four rotation days a week; food-science's two are
-# held behind its sample gate (domains.sample_gate) and are not slots yet.
+# Every rotation day of an ungated domain is a slot: deep sea, materials and
+# (since its sample gate cleared on 13 Oct 2026) food - six days, 24 slots in
+# four weeks. A sample-gated domain's days would not count (domains.sample_gate).
 import domains as _D                                               # noqa: E402
 _gated = set(_D.sample_gated(CFG))
-if len(cal) != 16:
-    fails.append(f"calendar: 4 weeks of the four ungated rotation days should be 16 slots, got {len(cal)}")
+_rot = {d for d in (CFG["cadence"]["rotation"]["weekdays"] or {}).values() if d}
+_live_days = sum(1 for d in CFG["cadence"]["rotation"]["weekdays"].values()
+                 if d and d not in _gated)
+if len(cal) != 4 * _live_days or _live_days != 6:
+    fails.append(f"calendar: 4 weeks of the {_live_days} ungated rotation days should be "
+                 f"{4 * _live_days} slots (six since food cleared), got {len(cal)}")
 examined += 1
 if any(c["domain"] in _gated for c in cal):
     fails.append(f"calendar: a sample-gated domain's days were counted as slots: {sorted({c['domain'] for c in cal} & _gated)}")

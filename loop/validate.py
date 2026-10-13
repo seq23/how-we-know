@@ -4618,6 +4618,131 @@ def v54_food_voice_sound() -> Result:
     return r
 
 
+FOOD_EPISODE_FIXTURE = ROOT / "loop" / "tests" / "fixtures" / "food_episode_spec.json"
+
+
+def _food_mark_hands(spec: dict, share: float) -> dict:
+    """A copy of an episode spec with hands on the first `share` of every piece."""
+    import food as _f                                      # noqa: PLC0415
+    s = json.loads(json.dumps(spec))
+    for pm in s["pieces"]:
+        tot = sum(x["dur"] for x in pm["shots"]) or 1.0
+        acc = 0.0
+        for x in pm["shots"]:
+            x["hands"] = acc + x["dur"] <= share * tot
+            acc += x["dur"]
+    shots = [{**x, "start": pm["start_s"] + x["start"]} for pm in s["pieces"] for x in pm["shots"]]
+    s["screen_time"] = _f.screen_time({"shots": shots})
+    return s
+
+
+def v55_food_episode() -> Result:
+    """HARD. No food episode ships unless it passes the owner's locked contract.
+
+    The contract (owner, 13 Oct 2026, from the approved round-2 sample, plus her
+    two notes the same day): one voice at explainer pace across the WHOLE episode
+    (V54's ruler); >= 60 % real moving footage; composites from real clips; AI
+    stills only under the diagram, altered_content set; the bed ducked under
+    speech; captions on; every clip's licence recorded; each segment opening on
+    its own question; at least 10 real clips a segment; 28-32 minutes; picture
+    never ending before its narration (V13's rule); the credit line read back
+    off the pixels (V14's method); the stitch byte-identical to its pieces
+    (#191's proof); HANDS visible <= 30 % (a note above 15 %: "limit human
+    hands", not a ban); SPECTACLE - slow motion or composites - >= 40 % of every
+    segment ("mesmerising"). visuals/food_episode.check_episode is the contract;
+    loop/backfill.food_hold runs it in the upload lane (library_pending and
+    upload_one both), so this validator checks that every food episode the
+    lanes can see is either passing or held by name.
+    Self-checks on a synthetic episode spec (loop/tests/fixtures, the real
+    script and catalogue with estimated beat lengths): it passes as built, and
+    each break below must fail it.
+    """
+    r = Result("V55 food-episode")
+    sys.path.append(str(ROOT / "visuals"))
+    sys.path.append(str(ROOT / "voice"))
+    import batch_queue as _bq                              # noqa: PLC0415
+    import backfill as _bf                                 # noqa: PLC0415
+    import domains as _d                                   # noqa: PLC0415
+    import food as _f                                      # noqa: PLC0415
+    import food_episode as _fe                             # noqa: PLC0415
+    import ledger as _lg                                   # noqa: PLC0415
+    published = {x["slug"] for x in _lg.load().get("published") or [] if x.get("slug")}
+    slugs = [x["slug"] for x in _bq.food_entries()]
+    slugs += [s for s in sorted(published) if _d.domain_of_slug(s) == FOOD and s not in slugs]
+    if not slugs:
+        r.fail("no food episode is queued or published - V55 would govern nothing")
+    for slug in slugs:
+        r.examined += 1
+        spec_p = ROOT / "channel" / "specs" / f"{slug}.json"
+        spec = json.loads(spec_p.read_text()) if spec_p.exists() else {}
+        if spec.get("kind") == "food-episode":
+            for p_ in _fe.check_episode_files(spec_p):
+                r.fail(f"{slug}: {p_}")
+            st = spec.get("screen_time") or {}
+            seg = {pm["piece"]: pm["screen_time"].get("spectacle_share") for pm in spec["pieces"]}
+            r.note(f"{slug}: {spec['duration_s'] / 60:.1f} min, real video "
+                   f"{st.get('real_video_share', 0):.0%}, hands {st.get('hands_share', 0):.0%}, "
+                   f"spectacle by piece {seg}")
+            for n in spec.get("hands_notes") or []:
+                r.note(f"{slug}: {n}")
+        elif slug in published:
+            r.fail(f"{slug} is on the channel with no passing food-episode spec")
+        else:
+            why = _bf.food_hold(slug)
+            if not why:
+                r.fail(f"{slug}: not rendered as a food episode, yet food_hold lets it ship")
+            else:
+                r.note(f"{slug}: held by the upload lane until rendered: {why[:120]}")
+    # ---- self-checks on the synthetic spec
+    if not FOOD_EPISODE_FIXTURE.exists():
+        r.fail("loop/tests/fixtures/food_episode_spec.json is missing - the self-checks cannot run")
+        return r
+    fx = json.loads(FOOD_EPISODE_FIXTURE.read_text())
+    r.examined += len(fx.get("pieces") or [])
+    base = _fe.check_episode(fx)
+    if base:
+        r.fail(f"self-check: the fixture itself fails: {base[:3]}")
+
+    def must_fail(why: str, spec: dict) -> None:
+        if not _fe.check_episode(spec):
+            r.fail(f"self-check: {why} passed the food episode contract")
+    must_fail("hands on 35 % of every piece", _food_mark_hands(fx, 0.35))
+    mid = _food_mark_hands(fx, 0.20)
+    if _fe.check_episode(mid) or not _f.hands_notes({"shots": [x for pm in mid["pieces"] for x in pm["shots"]]}):
+        r.fail("self-check: hands on 20 % must pass WITH a note (a preference, not a ban)")
+    b = json.loads(json.dumps(fx))
+    for pm in b["pieces"]:
+        if pm["piece"] == "bread":
+            for x in pm["shots"]:
+                if x.get("treatment") == "slowmo":
+                    x["treatment"] = "play"
+    must_fail("a bread segment with its slow motion taken out (spectacle under 40 %)", b)
+    b = json.loads(json.dumps(fx))
+    b["duration_s"] = 25 * 60
+    must_fail("a 25-minute episode", b)
+    b = json.loads(json.dumps(fx))
+    next(pm for pm in b["pieces"] if pm["piece"] == "steak")["opens_with"] = "The inside of a steak never gets hot."
+    must_fail("a segment that does not open on its question", b)
+    b = json.loads(json.dumps(fx))
+    next(pm for pm in b["pieces"] if pm["piece"] == "chocolate")["clip_licences"] = {}
+    must_fail("clips with no recorded licence", b)
+    b = json.loads(json.dumps(fx))
+    bb = max(b["voice"]["beats"], key=lambda x: x["words"])
+    bb["median_f0_hz"] = round(bb["median_f0_hz"] * 2 ** (-2 / 12), 1)
+    must_fail("a beat 2 semitones lower (two voices)", b)
+    b = json.loads(json.dumps(fx))
+    b["stitch"]["byte_identical"] = False
+    must_fail("a stitch not proven byte-identical", b)
+    b = json.loads(json.dumps(fx))
+    b["attribution_ocr"] = {"examined": 20, "read": 5}
+    must_fail("credits read back on 5 of 20 frames", b)
+    b = json.loads(json.dumps(fx))
+    pm = next(pm for pm in b["pieces"] if pm["piece"] == "tail")
+    pm["video_s"] = pm["voice_s"] - 1.0
+    must_fail("a piece whose picture ends a second before its narration", b)
+    return r
+
+
 def v50_repackage_state() -> Result:
     """HARD. The repackage lane keeps its books, forward only.
 
@@ -4925,6 +5050,7 @@ def run_all(items) -> tuple[bool, list[dict]]:
                v52_food_domain(),
                v53_food_preset(),
                v54_food_voice_sound(),
+               v55_food_episode(),
                v70_demand_verdict()]
     rows = [r.as_dict() for r in results]
     return all(r.ok for r in results), rows

@@ -189,13 +189,20 @@
     },
     "sample_gate": {
       "food-science": {
-        "state": "awaiting_owner_review",
+        "state": "cleared",
+        "cleared_note": "approved by owner 13 Oct 2026 — round 2 (\"MUCH better\"); the first full video, Bread, Steak, Chocolate: What's Inside?, is built from it",
         "sample": "~/Desktop/how-we-know-food-sample-round-2/",
         "round": 2,
         "round_1_verdict": "2026-10-13: rejected - (a) one voice, normal explainer pace start to finish (calm register removed); (b) real movement, not stills (round 1 was 11/13 AI stills). Round 2 answers both and waits for her review.",
         "clears_when": "the owner says the chocolate sample is right (docs/CHANNEL-PLAN.md, A third domain: food science - The gate). Clearing it is one edit: state -> cleared.",
         "holds": "loop/domains.allocation_gate() refuses to author any food-science topic and loop/batch_queue.publish_queue_gate() refuses any food-science slug while the state is not 'cleared', so the Monday lane and the Mac batch cannot render a full food video before the sample is approved. The food scripts wait in scripts/food/ (outside scripts/*.md, which the Mac narrates).",
         "pending_pov": "pov/pov-bank.json lines with pending_approval true ride with this review; loop/validate_plan.py c10 counts them only while this gate is open."
+      }
+    },
+    "pov_not_required": {
+      "food-science": {
+        "decided": "2026-10-13",
+        "basis": "the owner approved the round-2 sample and ordered the first full video published; her food interview (the three pending_approval lines in pov/pov-bank.json) has not happened, so food episodes carry NO producer-POV beat until it does - one voice, her words never invented. loop/validate_plan.py c10 fails any scripts/food/*.md narration that carries a [HUMAN] beat."
       }
     },
     "sample_gate_note": "A domain listed here is registered and scheduled but may not author, narrate or render a full episode until its state is 'cleared'. A missing entry means no gate. Self-explaining hold, not a stop: its rotation days stay empty, never borrowed.",

@@ -87,6 +87,15 @@ RENDER_PREFIX = "renders/"
 THUMB_PREFIX = "thumbnails/"
 SHORT_PREFIX = "shorts/"
 META_SUFFIX = ".meta.json"
+# ONE OBJECT PER UPLOAD IS CAPPED. `wrangler r2 object put` refuses a file over
+# 315 MB, and a 30-minute food episode (2026-10-13: about 30 minutes of real
+# footage at crf 17) is several times that. A file over PART_BYTES is shelved
+# as `<key>.partNNN` objects; the sidecar records the whole file's size and
+# sha256 plus each part's, `get` reassembles them and checks the whole sha256,
+# so every reader keeps the one contract "the bytes are the bytes the sidecar
+# names". Files under the cap are unchanged: one object, as before.
+PART_BYTES = 200 * 1024 * 1024
+PART_SUFFIX = ".part"
 
 # Pin the major. wrangler 4 is what the r2 object contract above was verified
 # against; a 5.x that changes the flags must be adopted deliberately.
@@ -271,11 +280,42 @@ class _Backend:
                 unblock="Unset LOOP_DRY_RUN to perform real writes.")
 
     # -- sidecar -----------------------------------------------------------
-    def _meta_blob(self, path) -> bytes:
+    part_bytes = PART_BYTES
+
+    def _meta_blob(self, path, parts: list[dict] | None = None) -> bytes:
         path = Path(path)
-        return (json.dumps({"sha256": sha256_file(path),
-                            "size": path.stat().st_size}, indent=2)
-                + "\n").encode()
+        m = {"sha256": sha256_file(path), "size": path.stat().st_size}
+        if parts:
+            m["parts"] = parts
+        return (json.dumps(m, indent=2) + "\n").encode()
+
+    @staticmethod
+    def _split(path: Path, td: Path, size: int) -> list[Path]:
+        out = []
+        with Path(path).open("rb") as fh:
+            k = 0
+            while True:
+                blob = fh.read(size)
+                if not blob:
+                    break
+                part = td / f"part{k:03d}"
+                part.write_bytes(blob)
+                out.append(part)
+                k += 1
+        return out
+
+    @staticmethod
+    def _join(parts: list[Path], dest: Path, want: dict) -> Path:
+        with dest.open("wb") as out:
+            for pth in parts:
+                out.write(pth.read_bytes())
+        got = sha256_file(dest)
+        if want.get("sha256") and got != want["sha256"]:
+            dest.unlink(missing_ok=True)
+            raise R2Unavailable("PARTS_CORRUPT",
+                                f"{want.get('key')}: reassembled parts hash {got[:12]}..., "
+                                f"the sidecar says {want['sha256'][:12]}...")
+        return dest
 
 
 class LocalBackend(_Backend):
@@ -298,19 +338,6 @@ class LocalBackend(_Backend):
             raise R2Unavailable("BAD_KEY", f"key escapes the stub root: {key}")
         return p
 
-    def head(self, key: str) -> dict | None:
-        meta = self._path(key + META_SUFFIX)
-        obj = self._path(key)
-        if not obj.exists():
-            return None
-        sha = None
-        if meta.exists():
-            try:
-                sha = json.loads(meta.read_text()).get("sha256")
-            except json.JSONDecodeError:
-                sha = None
-        return {"key": key, "size": obj.stat().st_size, "sha256": sha}
-
     def get(self, key: str, dest) -> Path:
         src = self._path(key)
         if not src.exists():
@@ -318,23 +345,58 @@ class LocalBackend(_Backend):
                                 f"{key} is not in {self.label}")
         dest = Path(dest)
         dest.parent.mkdir(parents=True, exist_ok=True)
+        meta = self._meta(key)
+        if meta and meta.get("parts"):
+            return self._join([self._path(x["key"]) for x in meta["parts"]], dest,
+                              {**meta, "key": key})
         shutil.copyfile(src, dest)
         return dest
+
+    def _meta(self, key: str) -> dict | None:
+        m = self._path(key + META_SUFFIX)
+        try:
+            return json.loads(m.read_text()) if m.exists() else None
+        except json.JSONDecodeError:
+            return None
 
     def put(self, path, key: str) -> dict:
         self._refuse_write(key)
         path = Path(path)
         dst = self._path(key)
         dst.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copyfile(path, dst)
+        parts = None
+        if path.stat().st_size > self.part_bytes:
+            parts = []
+            with tempfile.TemporaryDirectory() as td:
+                for k, part in enumerate(self._split(path, Path(td), self.part_bytes)):
+                    pk = f"{key}{PART_SUFFIX}{k:03d}"
+                    shutil.copyfile(part, self._path(pk))
+                    parts.append({"key": pk, "size": part.stat().st_size,
+                                  "sha256": sha256_file(part)})
+            # The object itself is a marker naming its parts; the bytes are the parts.
+            dst.write_text(json.dumps({"parts": [x["key"] for x in parts]}))
+        else:
+            shutil.copyfile(path, dst)
         # Sidecar AFTER the object, exactly as the network backend does, so the
         # stub cannot pass a test the real thing would fail.
-        self._path(key + META_SUFFIX).write_bytes(self._meta_blob(path))
+        self._path(key + META_SUFFIX).write_bytes(self._meta_blob(path, parts))
         return {"key": key, "size": path.stat().st_size,
                 "sha256": sha256_file(path)}
 
+    def head(self, key: str) -> dict | None:
+        obj = self._path(key)
+        if not obj.exists():
+            return None
+        m = self._meta(key) or {}
+        size = m.get("size") if m.get("parts") else obj.stat().st_size
+        return {"key": key, "size": int(size), "sha256": m.get("sha256")}
+
     def delete(self, key: str) -> None:
         self._refuse_write(key)
+        for x in (self._meta(key) or {}).get("parts") or []:
+            pp = self._path(x["key"])
+            if pp.exists():
+                pp.unlink()
         for p in (self._path(key), self._path(key + META_SUFFIX)):
             if p.exists():
                 p.unlink()
@@ -447,9 +509,34 @@ class WranglerBackend(_Backend):
         return {"key": key, "size": int(m.get("size", -1)),
                 "sha256": m.get("sha256")}
 
+    def _meta(self, key: str) -> dict | None:
+        with tempfile.TemporaryDirectory() as td:
+            dst = Path(td) / "meta.json"
+            r = self._run(["r2", "object", "get", self._obj(key + META_SUFFIX),
+                           "--file", str(dst), "--remote"], ok_missing=True)
+            if r is None or not dst.exists():
+                return None
+            try:
+                return json.loads(dst.read_text())
+            except json.JSONDecodeError:
+                return None
+
     def get(self, key: str, dest) -> Path:
         dest = Path(dest)
         dest.parent.mkdir(parents=True, exist_ok=True)
+        meta = self._meta(key)
+        if meta and meta.get("parts"):
+            with tempfile.TemporaryDirectory(dir=dest.parent) as td:
+                got = []
+                for x in meta["parts"]:
+                    pp = Path(td) / x["key"].rsplit("/", 1)[-1]
+                    r = self._run(["r2", "object", "get", self._obj(x["key"]),
+                                   "--file", str(pp), "--remote"], ok_missing=True)
+                    if r is None or not pp.exists():
+                        raise R2Unavailable("OBJECT_MISSING",
+                                            f"{x['key']} (a part of {key}) is not in {self.label}")
+                    got.append(pp)
+                return self._join(got, dest, {**meta, "key": key})
         r = self._run(["r2", "object", "get", self._obj(key),
                        "--file", str(dest), "--remote"], ok_missing=True)
         if r is None or not dest.exists():
@@ -462,13 +549,29 @@ class WranglerBackend(_Backend):
     def put(self, path, key: str) -> dict:
         self._refuse_write(key)
         path = Path(path)
-        self._run(["r2", "object", "put", self._obj(key), "--file", str(path),
-                   "--content-type", content_type(path), "--remote"])
+        parts = None
+        if path.stat().st_size > self.part_bytes:
+            parts = []
+            with tempfile.TemporaryDirectory(dir=path.parent) as td:
+                for k, part in enumerate(self._split(path, Path(td), self.part_bytes)):
+                    pk = f"{key}{PART_SUFFIX}{k:03d}"
+                    self._run(["r2", "object", "put", self._obj(pk), "--file", str(part),
+                               "--content-type", "application/octet-stream", "--remote"])
+                    parts.append({"key": pk, "size": part.stat().st_size,
+                                  "sha256": sha256_file(part)})
+                    part.unlink()
+                marker = Path(td) / "marker.json"
+                marker.write_text(json.dumps({"parts": [x["key"] for x in parts]}))
+                self._run(["r2", "object", "put", self._obj(key), "--file", str(marker),
+                           "--content-type", "application/json", "--remote"])
+        else:
+            self._run(["r2", "object", "put", self._obj(key), "--file", str(path),
+                       "--content-type", content_type(path), "--remote"])
         # Sidecar second, so a sidecar can never advertise bytes that are not
         # there. A crash between the two costs one re-push, not a bad read.
         with tempfile.TemporaryDirectory() as td:
             m = Path(td) / "meta.json"
-            m.write_bytes(self._meta_blob(path))
+            m.write_bytes(self._meta_blob(path, parts))
             self._run(["r2", "object", "put", self._obj(key + META_SUFFIX),
                        "--file", str(m), "--content-type", "application/json",
                        "--remote"])
@@ -477,6 +580,9 @@ class WranglerBackend(_Backend):
 
     def delete(self, key: str) -> None:
         self._refuse_write(key)
+        for x in (self._meta(key) or {}).get("parts") or []:
+            self._run(["r2", "object", "delete", self._obj(x["key"]), "--remote"],
+                      ok_missing=True)
         self._run(["r2", "object", "delete", self._obj(key), "--remote"],
                   ok_missing=True)
         self._run(["r2", "object", "delete", self._obj(key + META_SUFFIX),

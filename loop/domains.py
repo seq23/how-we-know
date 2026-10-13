@@ -124,10 +124,20 @@ def domain_of_script(path: Path) -> str | None:
 
 
 def domain_of_slug(slug: str, default: str | None = None) -> str | None:
-    p = SCRIPTS / f"{slug}.md"
-    if not p.exists():
+    p = script_of(slug)
+    if p is None:
         return default
     return domain_of_script(p) or default
+
+
+def script_of(slug: str) -> Path | None:
+    """scripts/<slug>.md, else a food episode's scripts/food/<slug>.md
+    (loop/batch_queue.FOOD_SCRIPTS: written and rendered by the food pipeline,
+    outside the nightly batch's scripts/*.md), else None."""
+    for p in (SCRIPTS / f"{slug}.md", SCRIPTS / "food" / f"{slug}.md"):
+        if p.exists():
+            return p
+    return None
 
 
 def by_slug() -> dict[str, str]:

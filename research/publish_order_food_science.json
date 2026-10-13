@@ -32,7 +32,26 @@
     "why does chocolate taste so good"
   ],
   "refused_before_scoring": [],
-  "queue": [],
+  "queue": [
+    {
+      "slug": "why-bread-rises-steak-browns-chocolate-snaps",
+      "domain": "food-science",
+      "title": "Why does bread rise, steak brown and chocolate snap?",
+      "query": "why does bread rise steak brown and chocolate snap",
+      "gate": {
+        "verdict": "owner_chosen",
+        "failed": [],
+        "reason": "the owner chose the first video's three questions (docs/CHANNEL-PLAN.md, 13 Oct 2026) and approved the round-2 sample the same day; the free demand half: bread 0.573 and chocolate 0.552 clear the 0.16 floor, seared meat 0.035 does not; the competition half is unmeasured until Saturday's score lane"
+      },
+      "first_video_parts": [
+        "why does bread rise",
+        "why does seared meat taste good",
+        "why does chocolate melt"
+      ],
+      "made_by": "visuals/food_episode.py (scripts/food/, rendered as pieces and stitched)",
+      "queued": "2026-10-13"
+    }
+  ],
   "killed": [],
   "unmeasured": [
     {
@@ -756,5 +775,6 @@
         }
       }
     }
-  ]
+  ],
+  "queue_length": 1
 }

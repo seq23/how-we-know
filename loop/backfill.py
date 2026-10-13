@@ -129,6 +129,39 @@ PUBLISH_WEEKDAYS = tuple(PUBLISH_WEEKDAY_LADDER[:2])   # cadence 2: Sun and Tue
 MIN_LEAD_HOURS = 24
 
 
+class FoodContractRefused(Exception):
+    """A food episode whose spec fails the food contract; the slug is held."""
+
+    def __init__(self, slug: str, why: str):
+        super().__init__(f"{slug}: food contract refused: {why}")
+        self.slug, self.why = slug, why
+
+
+def food_hold(slug: str) -> str | None:
+    """Why a food-science episode may not ship, or None.
+
+    THE OWNER'S LOCKED FOOD CONTRACT (13 Oct 2026, from the approved round-2
+    sample; visuals/food.py check_episode): one voice at explainer pace, >= 60 %
+    real moving footage, composites from real clips, AI stills only under the
+    diagram with altered_content set, a sound bed ducked under speech, captions
+    on, hands visible <= 30 % (noted above 15 %), every clip's licence recorded,
+    each segment opening on its own question, 28-32 minutes. The committed
+    episode spec (channel/specs/<slug>.json, written by visuals/food_episode.py
+    from the stitched render) and its proof frames are what is checked, so the
+    cloud lane - which never sees the render's pixels until it downloads them -
+    holds a failing food video by name. Not a food episode -> None."""
+    import domains as _dom                                 # noqa: PLC0415
+    if _dom.domain_of_slug(slug) != "food-science":
+        return None
+    spec_p = ROOT / "channel" / "specs" / f"{slug}.json"
+    if not spec_p.exists():
+        return "no episode spec at channel/specs/<slug>.json - a food video ships only with one"
+    sys.path.insert(0, str(ROOT / "visuals"))
+    import food_episode as _fe                             # noqa: PLC0415
+    probs = _fe.check_episode_files(spec_p)
+    return probs[0] if probs else None
+
+
 class CadenceExceedsLadder(Exception):
     """More slots a week were asked for than there are evidenced days."""
 
@@ -351,6 +384,11 @@ def library_pending(verbose: bool = False,
                 print(f"  HELD {slug}: refused by the render gate; heals or "
                       f"re-renders before it can ship (loop/state/render_hold.json)")
             continue
+        why_food = food_hold(slug)
+        if why_food:
+            if verbose:
+                print(f"  HELD {slug}: the food contract refuses it: {why_food}")
+            continue
         # THE HOOK RULE (owner, 13 Oct 2026): a queued episode ships only once
         # its script opens stake-then-payoff AND the cut was rendered from
         # that opening. loop/lengthen.py upload_hold() says which is missing.
@@ -444,7 +482,16 @@ def upload_one(st, token: str, slug: str, question: str, render: Path,
     `lane` only names who spent the quota, so loop/state/quota.json says which
     machine did the work during the transition.
     """
-    item = {"slug": slug, "script": f"scripts/{slug}.md", "question": question}
+    import domains as _dom                                 # noqa: PLC0415
+    sp = _dom.script_of(slug)
+    item = {"slug": slug, "question": question,
+            "script": (str(sp.relative_to(ROOT)) if sp else f"scripts/{slug}.md")}
+    # A food episode ships only if its episode spec passes the food contract
+    # (owner's locked contract, 13 Oct 2026). library_pending holds it by name
+    # first; this is the second door, so no path uploads a failing food video.
+    why_food = food_hold(slug)
+    if why_food:
+        raise FoodContractRefused(slug, why_food)
     payload = up.build_payload(item)
     vid = up.resumable_upload(token, payload, render)
     st.work(f"uploaded {slug} -> {vid} (private)")

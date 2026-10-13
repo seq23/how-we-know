@@ -133,7 +133,7 @@ def _screened() -> tuple[list[dict], list[dict]]:
     refused: dict[str, dict] = {}
 
     def written(r: dict) -> bool:
-        return (ROOT / "scripts" / f"{r['slug']}.md").exists()
+        return (ROOT / "scripts" / f"{r['slug']}.md").exists() or food_made(r["slug"])
 
     passes = ([r for r in rows if r["slug"] not in published and written(r)],
               [r for r in rows if r["slug"] not in published
@@ -308,6 +308,26 @@ def unwritten_by_domain() -> dict[str, int]:
     return out
 
 
+# FOOD EPISODES (2026-10-13). A food-science episode is written, voiced and
+# rendered by the food pipeline (visuals/food_episode.py: one voice, real
+# footage, rendered as pieces and stitched), never by the nightly batch's
+# planner/narrator/renderer, so its script lives in scripts/food/<slug>.md,
+# outside scripts/*.md. Its queue row is neither the Monday lane's (it is
+# written) nor the batch's (the batch would re-render it the wrong way): it
+# belongs to the upload lane alone, which ships it once its render and its
+# episode spec pass the food contract (visuals/food.check_episode).
+FOOD_SCRIPTS = ROOT / "scripts" / "food"
+
+
+def food_made(slug: str) -> bool:
+    return (FOOD_SCRIPTS / f"{slug}.md").exists()
+
+
+def food_entries() -> list[dict]:
+    """Queue rows made by the food pipeline. Best first."""
+    return [r for r in queued_entries() if food_made(r["slug"])]
+
+
 def unwritten_entries() -> list[dict]:
     """Publish-queue rows that have no script at scripts/<slug>.md yet.
 
@@ -318,7 +338,8 @@ def unwritten_entries() -> list[dict]:
     holds = promotion_holds()
     return [r for r in queued_entries()
             if r["slug"] not in holds
-            and not (ROOT / "scripts" / f"{r['slug']}.md").exists()]
+            and not (ROOT / "scripts" / f"{r['slug']}.md").exists()
+            and not food_made(r["slug"])]
 
 
 def written_entries() -> list[dict]:
@@ -338,7 +359,8 @@ def written_entries() -> list[dict]:
     every queued row is exactly one or the other (or held).
     """
     return [r for r in queued_entries()
-            if (ROOT / "scripts" / f"{r['slug']}.md").exists()]
+            if (ROOT / "scripts" / f"{r['slug']}.md").exists()
+            and not food_made(r["slug"])]
 
 
 def written_slugs() -> list[str]:

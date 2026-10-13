@@ -924,6 +924,8 @@ def carry_forward(path: str, blob: dict) -> int:
     keep = [r for r in old if r.get("slug") and r["slug"] not in have
             and (os.path.exists(os.path.join(ROOT, "scripts",
                                              f"{r['slug']}.md"))
+                 or os.path.exists(os.path.join(ROOT, "scripts", "food",
+                                                f"{r['slug']}.md"))
                  or r["slug"] in holds)]
     blob["queue"] = keep + blob["queue"]
     return len(keep)
