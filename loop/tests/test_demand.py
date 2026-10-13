@@ -62,7 +62,7 @@ def check(cond: bool, msg: str) -> None:
 
 
 SLUG = "how-hot-does-a-welding-arc-get"
-GOOD = "A welding arc core reaches 11,000 degrees Celsius"
+GOOD = "Is a Welding Arc Hotter Than the Sun?"  # the locked rule (#206), as test_repackage
 TODAY = date(2026, 10, 30)
 ledger.LEDGER = TMP / "ledger.json"
 LT.STATE = TMP / "titles.json"
