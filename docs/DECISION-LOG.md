@@ -1365,3 +1365,18 @@ food in motion - real MOVEMENT and the impossible-scale feel (round 1 was 11/13 
   0.16 floor; the competition half is unmeasured until Saturday's score lane (recorded in the spec).
 - **R2 multi-part objects**: wrangler caps one put at 315 MB; files over 200 MB are shelved as parts
   with a whole-file sha256 that `get` re-checks. The cloud-upload job timeout covers a 30-minute render.
+
+## 2026-10-13 — Three registered validators failed on a green main
+
+- **The registry now runs in CI and blocks** (`loop/tests/test_registry_green_on_main.py`).
+  Nothing in CI called `validate.run_all()`; only the weekly Monday lane and the breaker did, so V21,
+  V30 and V32 failed on main 632964f while every merge went green. Chosen over a Mac-only list
+  because each validator already goes N/A by its own rule where its media is absent; no allowlist.
+- **V21 and the POV no-reuse rule judge live episodes only** (`batch_queue.live_slugs()` = the
+  batch queue plus the ledger, built on `queued_slugs()`, no second list). The frilled-shark /
+  dumbo-octopus shared sign-off sits in two killed topics that never render.
+- **how-deep-can-a-sperm-whale-go → pov-038 recorded** (verbatim bank line, airs 2026-11-09). It was
+  unrecordable because the killed 03-why-deep-sea-creatures-are-surfacing still held pov-038.
+- **V30 rule B: gitignored-by-design assets must be sha256-pinned, not git-tracked.** The 50 food
+  clips live under the ignored `channel/imagery/clips/` on purpose; an untracked asset that is NOT
+  ignored still fails as before.

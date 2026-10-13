@@ -10,6 +10,7 @@ one.
 """
 from __future__ import annotations
 
+import json
 import os
 import shutil
 import subprocess
@@ -308,6 +309,11 @@ def check_registry() -> list[str]:
     return fails
 
 
+def inspect_src(fn) -> str:
+    import inspect  # noqa: PLC0415
+    return inspect.getsource(fn)
+
+
 def check_v21() -> list[str]:
     """V21 exempts [HUMAN] lines BY TAG, keeps narrated prose strict, and
     bounds [HUMAN] reuse by pov_match's rotation window.
@@ -328,12 +334,13 @@ def check_v21() -> list[str]:
             f"Unique prose for {name} with enough words to count as a sentence.\n\n"
             f"{extra}\n\n## Sources\n\n- x\n")
 
-    def run(names_extra, aired=(), window=2):
+    def run(names_extra, aired=(), window=2, live=None):
         d = tempfile.mkdtemp(prefix="v21-")
         for n, e in names_extra:
             write(d, n, e)
+        live = {n for n, _ in names_extra} if live is None else live
         return validate.v21_no_boilerplate(scripts_dir=d, aired=aired,
-                                           window=window)
+                                           window=window, live=live)
 
     from pathlib import Path  # noqa: PLC0415
     # (a) a [HUMAN] line shared by two scripts is the owner's voice, not boilerplate
@@ -367,6 +374,26 @@ def check_v21() -> list[str]:
     if r.failures:
         fails.append(f"V21 (c'): only UNAIRED scripts count against the window; "
                      f"got {r.failures}")
+    # (d) a DEAD script (not live: killed, never queued, never aired) is not
+    # judged - but a live pair with the same sentence still fails, and a dead
+    # script is reported by name, never dropped silently.
+    cases += 1
+    r = run([("a", narrated), ("b", narrated), ("c", "")], live={"a", "c"})
+    if r.failures or r.examined != 2:
+        fails.append(f"V21 (d): a sentence shared with a dead script must not "
+                     f"fail and the dead script must not be examined; got "
+                     f"examined={r.examined} failures={r.failures}")
+    if not any("b.md" in n and "dead-topic" in n for n in r.notes):
+        fails.append("V21 (d): the dead script was dropped without a note")
+    cases += 1
+    r = run([("a", narrated), ("b", narrated), ("c", "")], live={"a", "b"})
+    if not any("verbatim narrated" in f for f in r.failures):
+        fails.append("V21 (d'): two LIVE scripts sharing a narrated sentence "
+                     "must still fail when a dead script sits beside them")
+    # (d'') the live set is batch_queue.live_slugs(), never a second list
+    cases += 1
+    if "live_slugs()" not in inspect_src(validate.v21_no_boilerplate):
+        fails.append("V21 must take its live set from batch_queue.live_slugs()")
     # the window is pov_match's own, never a hardcoded copy
     cases += 1
     import inspect  # noqa: PLC0415
@@ -375,7 +402,7 @@ def check_v21() -> list[str]:
     # zero scripts examined is a failure, not a pass
     cases += 1
     r = validate.v21_no_boilerplate(scripts_dir=tempfile.mkdtemp(prefix="v21-"),
-                                    aired=(), window=2)
+                                    aired=(), window=2, live=set())
     if r.status != "FAIL(examined 0)" and not r.failures:
         fails.append(f"V21 on an empty scripts dir must fail; got {r.status}")
     if cases == 0:
@@ -384,8 +411,67 @@ def check_v21() -> list[str]:
     return fails
 
 
+def check_v30() -> list[str]:
+    """V30 rule B: a tracked manifest's asset must be tracked, OR be kept
+    machine-local by .gitignore AND pinned by sha256 in its row.
+
+    2026-10-13: channel/imagery/food_clips.json (tracked by design, clips under
+    the gitignored channel/imagery/clips/) failed all 50 rows. Built in a
+    scratch git repo: (a) ignored + sha256 passes; (b) ignored, no sha256
+    fails; (c) untracked and NOT ignored fails - the materials.json defect is
+    still caught. Hard-fails on zero cases.
+    """
+    from pathlib import Path  # noqa: PLC0415
+    fails, cases = [], 0
+    d = Path(tempfile.mkdtemp(prefix="v30-"))
+    (d / "bin").mkdir()
+    (d / "loop").mkdir()
+    (d / "channel" / "imagery" / "clips").mkdir(parents=True)
+    (d / "bin" / "lane.sh").write_text("python loop/lane.py\n")
+    (d / "loop" / "lane.py").write_text("import json\n")
+    (d / ".gitignore").write_text("channel/imagery/clips/\n")
+    (d / "channel" / "imagery" / "tracked.jpg").write_text("x")
+
+    def manifest(rows):
+        (d / "channel" / "imagery" / "m.json").write_text(
+            json.dumps({"index": rows}))
+        subprocess.run(["git", "add", "-A"], cwd=d, check=True)
+
+    subprocess.run(["git", "init", "-q"], cwd=d, check=True)
+    saved = validate.ROOT
+    validate.ROOT = d
+    try:
+        sha = "a" * 64
+        cases += 1
+        manifest([{"local_file": "tracked.jpg"},
+                  {"local_file": "clips/c.mp4", "sha256": sha}])
+        r = validate.v30_cloud_visibility()
+        if r.failures:
+            fails.append(f"V30 (a): a gitignored-by-design clip pinned by "
+                         f"sha256 must pass; got {r.failures}")
+        cases += 1
+        manifest([{"local_file": "clips/c.mp4"}])
+        r = validate.v30_cloud_visibility()
+        if not any("no 64-hex" in f for f in r.failures):
+            fails.append("V30 (b): a gitignored clip with no sha256 must fail - "
+                         "nothing pins the bytes")
+        cases += 1
+        manifest([{"local_file": "forgotten.jpg", "sha256": sha}])
+        r = validate.v30_cloud_visibility()
+        if not any("which is not" in f for f in r.failures):
+            fails.append("V30 (c): an untracked asset that .gitignore does NOT "
+                         "exclude must still fail, sha256 or not")
+    finally:
+        validate.ROOT = saved
+        shutil.rmtree(d, ignore_errors=True)
+    if cases == 0:
+        fails.append("check_v30 examined zero cases")
+    print(f"inspected {cases} V30 case(s)")
+    return fails
+
+
 if __name__ == "__main__":
-    f = check() + check_registry() + check_v21()
+    f = check() + check_registry() + check_v21() + check_v30()
     for x in f:
         print(f"  ✗ {x}")
     print("all green - every validator catches its own defect and fails on empty"

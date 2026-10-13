@@ -248,7 +248,7 @@ def _domain_of(slug: str):
         return None
 
 
-def assignment_defects(rows=None, slugs=None) -> list[dict]:
+def assignment_defects(rows=None, slugs=None, live=None) -> list[dict]:
     """Every way an entry in pov/pov-assignments.json can be wrong.
 
     Returns a list of {video, pov_id, code, why}. Empty means the file says
@@ -272,17 +272,28 @@ def assignment_defects(rows=None, slugs=None) -> list[dict]:
       * a `tier: specific` line fits only its own domain. This is `score()`'s
         rule, applied to the path that skips `score()`.
       * `pov/pov-assignments.json` states its own rule in its own header:
-        "one POV per video, no reuse".
+        "one POV per video, no reuse". Reuse is judged among LIVE episodes
+        only - `batch_queue.live_slugs()`, the batch queue plus the published
+        ledger (`live` overrides it for a guard). A dead topic's row never
+        airs, so it cannot repeat a line on the channel; on 2026-10-13 the
+        killed 03-why-deep-sea-creatures-are-surfacing still held pov-038 and
+        so blocked recording the line how-deep-can-a-sperm-whale-go (airs
+        2026-11-09) really carries. Un-killing a topic restores the check.
     """
     if rows is None:
         rows = read_json(ASSIGNMENTS)["assignments"] if ASSIGNMENTS.exists() \
             else []
     lines = {l["id"]: l for l in bank()}
+    if live is None:
+        import batch_queue                                 # noqa: PLC0415
+        live = batch_queue.live_slugs()
+    live = set(live)
     seen: dict = {}
     out = []
     for a in rows:
         video, pid = a.get("video"), a.get("pov_id")
-        seen.setdefault(pid, []).append(video)
+        if video in live:
+            seen.setdefault(pid, []).append(video)
     for a in rows:
         video, pid = a.get("video"), a.get("pov_id")
         if slugs is not None and video not in set(slugs):
@@ -321,7 +332,7 @@ def assignment_defects(rows=None, slugs=None) -> list[dict]:
                     f"it; a hand assignment skips score(), so it is the only "
                     f"way this can happen.")
         others = [v for v in seen.get(pid, []) if v != video]
-        if others:
+        if others and video in live:
             add("POV_ID_REUSED",
                 f"{pid} is assigned to {video} and also to "
                 f"{', '.join(sorted(others))}. pov/pov-assignments.json's own "
@@ -613,7 +624,11 @@ def record_assignment(slug: str, pov: dict, *, source: str = "matched by author"
     # automatic writer of the file, so a rule enforced only on READ would let
     # the loop manufacture the very row every reader then has to reject. The
     # reuse check needs the rows already on file, hence rows + [row].
-    bad = assignment_defects(rows=rows + [row], slugs=[slug])
+    # The episode being recorded is live by definition - it is being authored
+    # to air - even before the queue or the ledger can name it.
+    import batch_queue                                     # noqa: PLC0415
+    bad = assignment_defects(rows=rows + [row], slugs=[slug],
+                             live=batch_queue.live_slugs() | {slug})
     if bad:
         print(f"  REFUSE to record {slug}: "
               + "; ".join(f"[{d['code']}] {d['why']}" for d in bad))

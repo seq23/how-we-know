@@ -1946,7 +1946,8 @@ def _aired_slugs(now=None) -> set[str]:
     return out
 
 
-def v21_no_boilerplate(scripts_dir=None, aired=None, window=None) -> Result:
+def v21_no_boilerplate(scripts_dir=None, aired=None, window=None,
+                       live=None) -> Result:
     """No NARRATED sentence may be a verbatim repeat across two scripts, and no
     [HUMAN] line may sit in more unaired scripts than the POV rotation window.
 
@@ -1979,6 +1980,16 @@ def v21_no_boilerplate(scripts_dir=None, aired=None, window=None) -> Result:
           MORE unaired scripts than pov_match.rotation_window() fails. Aired
           = in the ledger and past its scheduled publish time.
 
+    2026-10-13: 12-what-is-a-frilled-shark.md and 11-what-is-a-dumbo-octopus.md
+    failed V21 on a shared sign-off the lengthen lane re-opened into both -
+    and both are KILLED topics that will never render (the lane stopped
+    touching dead topics in #216). V21's job is what reaches a render, so:
+      (3) only LIVE scripts are judged - batch_queue.live_slugs(), the batch
+          queue (the one notion of "renderable" that lengthen and the batch
+          use) plus every aired episode. No second list. A dead script is
+          reported by count, never silently dropped, and un-killing it puts it
+          straight back in scope.
+
     Hard-fails when it examines zero scripts.
     """
     import pov_match as _pm                                # noqa: PLC0415
@@ -1986,9 +1997,17 @@ def v21_no_boilerplate(scripts_dir=None, aired=None, window=None) -> Result:
     scripts_dir = Path(scripts_dir) if scripts_dir else ROOT / "scripts"
     aired = _aired_slugs() if aired is None else set(aired)
     window = _pm.rotation_window() if window is None else window
+    if live is None:
+        import batch_queue as _bq                          # noqa: PLC0415
+        live = _bq.live_slugs()
+    live = set(live)
     seen: dict[str, str] = {}
     human_in: dict[str, list[str]] = {}
+    dead: list[str] = []
     for p in sorted(scripts_dir.glob("*.md")):
+        if p.stem not in live:
+            dead.append(p.name)
+            continue
         r.examined += 1
         narrated, human = spoken_parts(p)
         text = re.sub(r"\s+", " ", narrated).strip()
@@ -2005,8 +2024,13 @@ def v21_no_boilerplate(scripts_dir=None, aired=None, window=None) -> Result:
         if p.stem not in aired:
             for line in set(human):
                 human_in.setdefault(line, []).append(p.name)
+    if dead:
+        r.note(f"{len(dead)} dead-topic script(s) not judged - killed or "
+               f"refused, never in the batch queue or the ledger, so they "
+               f"never render: {', '.join(dead)}")
     if r.examined == 0:
-        r.fail(f"no scripts found in {scripts_dir}, so this examined nothing.")
+        r.fail(f"no live scripts found in {scripts_dir}, so this examined "
+               f"nothing.")
     for line, names in sorted(human_in.items()):
         if len(names) > window:
             r.fail(f"[HUMAN] line in {len(names)} unaired scripts, more than "
@@ -2703,6 +2727,18 @@ def v30_cloud_visibility() -> Result:
          hundreds of megabytes and belong on the Mac and in R2 - and V9-V15
          already handle that by going N/A.
 
+         MACHINE-LOCAL BY DESIGN IS NOT MISSING. 2026-10-13: the food lane's
+         channel/imagery/food_clips.json is tracked ON PURPOSE with its clips
+         under the gitignored channel/imagery/clips/ ("Clips never enter git;
+         the manifest and every sha256 do" - research/food_footage.py), and
+         this rule failed all 50 rows. Git tracking is the wrong question for
+         an asset .gitignore excludes by design; what makes such a manifest
+         honest on a machine without the bytes is that each row PINS them. So
+         an untracked asset that `git check-ignore` reports ignored must carry
+         a 64-hex `sha256` (the bytes R2/the Mac must match); an untracked
+         asset that is NOT ignored is still the materials.json defect and
+         fails exactly as before.
+
     Hard-fails when it examines zero items.
     """
     r = Result("V30 cloud-visibility")
@@ -2803,6 +2839,7 @@ def v30_cloud_visibility() -> Result:
             if isinstance(v, list):
                 rows += [x for x in v if isinstance(x, dict)]
         base = str(pathlib.PurePosixPath(rel).parent)
+        untracked = []
         for row in rows:
             lf = row.get("local_file")
             if not lf:
@@ -2810,10 +2847,29 @@ def v30_cloud_visibility() -> Result:
             r.examined += 1
             asset = f"{base}/{lf}"
             if asset not in tracked:
+                untracked.append((asset, lf, row))
+        if not untracked:
+            continue
+        ignored = set(_sp.run(["git", "check-ignore", "--stdin"], cwd=ROOT,
+                              input="\n".join(a for a, _, _ in untracked),
+                              capture_output=True, text=True).stdout.split())
+        pinned = 0
+        for asset, lf, row in untracked:
+            if asset not in ignored:
                 r.fail(f"{rel} is tracked and names {lf}, which is not. A "
                        f"rights manifest in git whose asset is not in git is "
                        f"how eleven material_image beats reached the cloud "
                        f"with no file behind them.")
+            elif not re.fullmatch(r"[0-9a-f]{64}", str(row.get("sha256", ""))):
+                r.fail(f"{rel} names {lf}, which .gitignore keeps machine-"
+                       f"local by design, but the row carries no 64-hex "
+                       f"sha256 - so nothing pins the bytes a host without "
+                       f"them must fetch, and a different file would pass.")
+            else:
+                pinned += 1
+        if pinned:
+            r.note(f"{rel}: {pinned} asset(s) machine-local by design "
+                   f"(.gitignore), each pinned by sha256 in the manifest")
     return r
 
 
