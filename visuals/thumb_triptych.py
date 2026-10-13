@@ -8,10 +8,11 @@ variants differ in COMPOSITION (vertical panels, horizontal strips, a diagonal
 split; headline placement; which food is largest), never in the words.
 
 THE REFERENCE EXAMPLE (owner's pick, 13 Oct 2026 - "thumbnail F" of the food
-round-2 sample, variant C of channel/thumbnails/variants/why-bread-rises-steak-
+round-2 sample, PUBLISHED as variant A of channel/thumbnails/variants/why-bread-rises-steak-
 browns-chocolate-snaps): REFERENCE below - a DIAGONAL split, the FIRST subject
 (bread) largest, the headline CENTRED over the panels, the subject line beneath.
-The vertical-panels and horizontal-strips compositions (D, E) remain valid.
+The vertical-panels and horizontal-strips compositions (D, E) remain valid and
+are the set's B and C (Test & Compare; the demand lane's second packaging).
 
 THE WIDENED CONTRACT - visuals/thumb_contract.verify() hands any set whose
 contract.json says `"layout": "triptych"` to verify() here, which re-checks
@@ -62,7 +63,7 @@ HEAD_MIN_PX, HEAD_MIN_CONTRAST = 12, 4.5
 SUB_MIN_PX, SUB_MIN_CONTRAST = 6, 3.0
 LAYOUTS = ("vertical", "horizontal", "diagonal")
 REFERENCE = {"layout": "diagonal", "largest": 0, "place": "center"}   # the owner's pick (F)
-REFERENCE_SET = ("why-bread-rises-steak-browns-chocolate-snaps", "C")
+REFERENCE_SET = ("why-bread-rises-steak-browns-chocolate-snaps", "A")   # F is variant A (owner, 13 Oct 2026)
 TW, TH = T.TW, T.TH
 
 

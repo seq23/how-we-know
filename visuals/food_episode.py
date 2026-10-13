@@ -278,7 +278,7 @@ def stitch(script: Path, voice_root: Path, work: Path, final: Path) -> dict:
     spec = {
         **{k: v for k, v in prior.items() if k in ("_why", "slug", "domain", "parts",
                                                     "title_owner", "segments", "altered_content_why",
-                                                    "demand_note")},
+                                                    "demand_note", "thumbnail")},
         "kind": "food-episode", "slug": slug, "domain": "food-science",
         "episode_script": str(script.relative_to(ROOT)) if script.is_relative_to(ROOT) else str(script),
         "preset": food.PRESET["id"], "grade": food.FOOD_GRADE["id"],
