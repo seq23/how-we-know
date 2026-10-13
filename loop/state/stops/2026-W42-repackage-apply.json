@@ -1,7 +1,7 @@
 {
   "stage": "repackage-apply",
   "week": "2026-W42",
-  "at": "2026-10-13T17:38:07+00:00",
+  "at": "2026-10-13T17:54:42+00:00",
   "code": "QUOTA_EXHAUSTED",
   "message": "38 title(s) ready to apply and the day's usable allowance after the upload and Shorts reserves (5100 units) does not fit one",
   "detail": {
@@ -49,8 +49,8 @@
   },
   "unblock": "Nothing to do: tomorrow's run resumes where this one stopped.",
   "disposition": "self_resolving",
-  "disposition_why": "The YouTube allowance resets at midnight Pacific and every lane that raises this runs at least daily, so the work is deferred by a few hours, not lost. (run 1 of at most 3 before this escalates to a human.)",
-  "consecutive": 1,
+  "disposition_why": "The YouTube allowance resets at midnight Pacific and every lane that raises this runs at least daily, so the work is deferred by a few hours, not lost. (run 2 of at most 3 before this escalates to a human.)",
+  "consecutive": 2,
   "held_items": [],
   "exit_code": 0,
   "work_done_before_stop": [],
