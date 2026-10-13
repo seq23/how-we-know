@@ -10,7 +10,7 @@
 
 ## YouTube title
 
-Bread rises on living cells, as Pasteur argued in 1857
+Does Yeast Make Bread Rise?
 
 ## Direct-answer lock
 

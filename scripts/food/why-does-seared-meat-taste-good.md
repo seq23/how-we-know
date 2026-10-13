@@ -10,7 +10,7 @@
 
 ## YouTube title
 
-Why seared meat tastes good and boiled meat never browns
+Why Does a Seared Crust Taste Good?
 
 ## Direct-answer lock
 

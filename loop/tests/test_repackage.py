@@ -60,7 +60,7 @@ def check(cond: bool, msg: str) -> None:
 
 
 SLUG = "how-hot-does-a-welding-arc-get"
-GOOD = "A welding arc core reaches 11,000 degrees Celsius"
+GOOD = "Is a Welding Arc Hotter Than the Sun?"
 ledger.LEDGER = TMP / "ledger.json"
 LT.STATE = TMP / "titles.json"
 quota.STATE = TMP / "quota.json"

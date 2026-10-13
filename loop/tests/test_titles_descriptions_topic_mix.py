@@ -145,7 +145,7 @@ try:
         refused = True
     check("upload.build_payload refuses a long-form upload with no passing title",
           refused and LFT.script_title((ROOT / item["script"]).read_text()) is None)
-    good_lf = "A welding arc core reaches 11,000 degrees Celsius"
+    good_lf = "Is a Welding Arc Hotter Than the Sun?"
     LFT.STATE.write_text(json.dumps({"titles": {slug: {
         "new_title": good_lf, "checks_passed": True}}}))
     ep = up.build_payload(item)
