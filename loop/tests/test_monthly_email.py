@@ -198,7 +198,7 @@ for needle in ("**Domain swap rule**", "below 4 after 8 measured", "deep sea: 2 
                "**Opening-line experiment**", "of 3 eligible episodes aired",
                "decision date not set yet",
                "**Topic kills**", "2 this month", "what-is-a-frilled-shark", "new-one",
-               "**Cadence:** 4 episodes a week", "2 Sep 2026",
+               "**Cadence:** 6 episodes a week", "13 Oct 2026",
                "docs/research/how-we-know-numbers.md",
                "**Rules that triggered:** none."):
     check(f"rules section prints {needle!r}", needle in rules)

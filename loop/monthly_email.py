@@ -57,10 +57,11 @@ PUBLISH_ORDERS = ROOT / "research"
 DECISION_LOG = ROOT / "docs" / "DECISION-LOG.md"
 
 HISTORY_STARTS = "2026-10-12"
-CADENCE_OWNER_DECISION = "2 Sep 2026"
-CADENCE_RESEARCH = ("reviewed 12 Oct 2026: 4 a week holds (education channels "
-                    "posting 2-20 a month sit in the same flat zone; the cliff "
-                    f"is past 20 a month) - {RESEARCH_DOC}, section 5")
+CADENCE_OWNER_DECISION = "13 Oct 2026 (three-niche rotation, one a day Mon-Sat)"
+CADENCE_RESEARCH = ("26 a month sits past the 20-a-month cliff the 12 Oct 2026 "
+                    "review found for ONE niche; spread across three niches "
+                    "it is under 9 a month each - "
+                    f"{RESEARCH_DOC}, section 5; docs/CHANNEL-PLAN.md")
 
 LABEL = {"deep-sea-ocean-science": "deep sea",
          "materials-and-manufacturing": "materials"}

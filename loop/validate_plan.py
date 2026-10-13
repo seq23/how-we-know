@@ -46,10 +46,12 @@ PLAN = ROOT / "docs" / "CHANNEL-PLAN.md"
 
 # The plan's own numbers, restated here as code. Changing the plan does NOT
 # change these - that is the point.
-PLAN_CADENCE = 4        # owner set it live 2026-09-04; see
-                        # cadence.owner_set in loop/config.json
+PLAN_CADENCE = 6        # owner's three-niche rotation, 2026-10-13
+                        # (docs/CHANNEL-PLAN.md "Three-niche schedule";
+                        # cadence.rotation in loop/config.json). Was 4 from
+                        # 2026-09-04.
 PLAN_ESCALATED = 3
-PLAN_SCALE = 4        # owner decision 2026-09-02; also the taxonomy ceiling
+PLAN_SCALE = 4        # owner decision 2026-09-02 (a no-op below the 6 rotation)
 PLAN_SHORTS = 9       # the middle of the owner's 8-10 Shorts/week band
 PLAN_PUBLISH_SOURCE = "research/publish_order.json"
 PLAN_PINNED = [
@@ -102,7 +104,7 @@ def src(name: str) -> str:
 # ------------------------------------------------------------------ checks
 
 def c1_cadence() -> Check:
-    c = Check(1, "cadence starts at 2/week from config and raises itself to 4")
+    c = Check(1, "cadence is the owner's 6/week rotation from config (gated steps 3 and 4 below it)")
     cfg = config()["cadence"]
     if cfg["videos_per_week"] != PLAN_CADENCE:
         c.fail(f"config says {cfg['videos_per_week']}/week, the plan says "

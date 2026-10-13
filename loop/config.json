@@ -2,12 +2,12 @@
   "repo": "seq23/how-we-know",
   "channel_handle": "@howweknowdeep",
   "cadence": {
-    "videos_per_week": 4,
+    "videos_per_week": 6,
     "default": 2,
     "escalated": 3,
-    "ceiling": 4,
+    "ceiling": 6,
     "deliberate": true,
-    "note": "Operating cadence is 4/week, set by the owner on 2026-09-04 (see owner_set). 4 is the taxonomy ceiling and is never exceeded. The two evidence-gated automatic steps below remain armed and are now no-ops at this rate. Change the number here; no logic reads a hardcoded cadence. At 4/week loop/domains.live_slots() splits the week deep sea 2, materials 2, and backfill.domain_weekdays() puts deep sea on its existing Sun/Tue and materials on the two ADDED days, Mon/Fri - so raising the cadence moves no episode already on the calendar.",
+    "note": "Operating cadence is 6/week from 2026-10-13: the owner's three-niche rotation (cadence.rotation; docs/CHANNEL-PLAN.md, Three-niche schedule) - one long-form a day Mon-Sat at 10:00 local, each weekday owned by one domain, Sunday none. The ceiling moved to 6 with it. A rotation day whose domain is not yet registered (food-science) or has nothing queued stays empty; nothing borrows it. Earlier: 4/week set by the owner on 2026-09-04. The evidence-gated escalation and scale steps below remain armed and are no-ops at this rate. No logic reads a hardcoded cadence.",
     "escalation": {
       "to": 3,
       "automatic": true,
@@ -28,6 +28,20 @@
     "shorts_per_week": 9,
     "shorts_note": "8-10/week, set at 9. Shorts keep their OWN scheduler and their own evening ladder (loop/shorts_lane.py): they peak 18:00-21:00 local while long-form peaks 08:00-11:00, so a Short posted on the episode slot lands in the worst part of its own day. Shorts consume no episode inventory and do not count toward the 4,000 watch hours - they are the only cheap lever on the SUBSCRIBER half of the threshold, which research put at roughly 12x more binding than hours. 51 are already cut; at 9/week that is ~5.7 weeks.",
     "shorts_floor": 4,
+    "rotation": {
+      "weekdays": {
+        "mon": "deep-sea-ocean-science",
+        "tue": "materials-and-manufacturing",
+        "wed": "food-science",
+        "thu": "deep-sea-ocean-science",
+        "fri": "materials-and-manufacturing",
+        "sat": "food-science",
+        "sun": null
+      },
+      "per_day": 1,
+      "slot_times_local": ["10:00"],
+      "_why": "Owner decision 13 Oct 2026 (docs/CHANNEL-PLAN.md, Three-niche schedule): six long-form a week, one a day at 10:00 local, each weekday owned by one domain; Sunday none (compilations later). food-science is mapped ahead of its registration in the taxonomy - until then its Wednesday and Saturday stay EMPTY, never borrowed by another domain. per_day is the owner's (default 1; LONG_FORM_PER_DAY overrides for a run). loop/backfill.py rotation_days()/domain_weekdays() read it; V20 holds every scheduled long-form video to it."
+    },
     "shorts_drain": {"per_day": 2, "while_backlog_weeks_at_least": 2, "_why": "Owner 2026-10-12: drain the backlog at 2/day until it is gone; normal pace (shorts_per_week) resumes when the verified shelf holds under two weeks of supply. loop/shorts_lane.py drain_mode() reads it; the two daily slots are 19:00 and 21:00 local, both inside the 18:00-21:00 Shorts peak."},
     "owner_set": "2026-09-04 - Sequoia, explicitly: 'i want you to raise the cadence'. Set DIRECTLY here rather than through cadence.scale, which is the AUTOMATIC self-arming path and still requires authoring_evidence() - a script the authoring lane itself produced and validated - which does not exist yet. Manufacturing that evidence to open an automatic gate would have been a lie told to a guard. An owner setting the number by hand is a different act from the loop deciding it has earned it, and this field records which one happened. The scale gate is left armed and untouched; if it ever fires it can only agree, because 4 is also the ceiling."
   },

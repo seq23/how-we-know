@@ -4,9 +4,9 @@
   "approval_type": "standing_broad",
   "selection_rule": "Rank candidates by (search demand / competition). Take the top N per week under the cadence ceiling. Never repeat a published question.",
   "cadence": {
-    "videos_per_week": 4,
+    "videos_per_week": 6,
     "deliberate": true,
-    "note": "Ceiling is intentional. Never raised to clear a backlog."
+    "note": "Ceiling is intentional. Never raised to clear a backlog. Raised 4 -> 6 on 2026-10-13 by the owner's three-niche rotation (one long-form a day Mon-Sat, docs/CHANNEL-PLAN.md), not by a backlog."
   },
   "admitted_domains": [
     "Deep sea and ocean science",

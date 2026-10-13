@@ -464,7 +464,10 @@ channel home gets three shelves, one playlist per domain, under one grade, one t
 one thumbnail contract. Quota on the worst drain day is about 8,200 of 10,000 units with the
 Shorts lane protected first.
 
-**State of the pins:** until the drain lane and the food domain land, `loop/validate_plan.py`
-still pins `videos_per_week` at 4 and `loop/domains.py` still splits the week two and two. The PR
-that lands the rotation lane moves the pin to 6 and the rotation above; the PR that lands the food
-domain registers it in the taxonomy. Changing this table without moving those pins is drift.
+**State of the pins:** LANDED 2026-10-13 (the repackage PR that followed #191). `loop/validate_plan.py`
+pins `videos_per_week` at 6, `loop/config.json` carries the rotation above as `cadence.rotation`
+(one a day at 10:00 local, `per_day` 1), and `loop/domains.live_slots()` /
+`loop/backfill.domain_weekdays()` read it. Validator V20 holds every dated long-form episode to it.
+food-science is mapped but not yet registered: its Wednesday and Saturday stay empty until the PR
+that lands the food domain registers it in the taxonomy. Changing this table without moving those
+pins is drift.

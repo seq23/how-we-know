@@ -100,7 +100,7 @@ even though the launch hour was not.
 
 | Decision | Answer | Evidence |
 |---|---|---|
-| **Long-form frequency** | **4 per week** (raised from 2, owner decision 2026-09-02) | Channels posting 1–3×/week get better per-video views than daily uploaders, so this is deliberately at the top of the band and capped there by the taxonomy ceiling. |
+| **Long-form frequency** | **6 per week** (the owner's three-niche rotation of 2026-10-13: one a day Mon–Sat at 10:00 local, Mon/Thu deep sea, Tue/Fri materials, Wed/Sat food once registered, Sunday none; was 4 from 2026-09-02) | Channels posting 1–3×/week get better per-video views than daily uploaders; across three niches six a week is two per niche, inside that band. `loop/config.json` `cadence.rotation`; V20 holds every dated episode to it. |
 | **Shorts frequency** | **9 per week** (raised from 4; the owner's band is 8–10) | Creators running both formats grow subscribers ~3× faster than single-format channels — and subscribers are the binding constraint, see below. |
 | **Long-form time** | **Sunday, Monday, Tuesday & Friday, 10:00 America/Chicago** | Long-form peaks 08:00–11:00 local. Sunday is the strongest day, then Tuesday and Monday; Wednesday and Thursday underperform and the ladder never reaches them. |
 | **Shorts time** | **18:00–21:00 local**, 19:00 daily plus a second 21:00 slot on Saturday and Sunday | Shorts peak in the evening — very nearly the inverse of long-form. A Short posted on the episode slot lands in the worst part of its own day. |

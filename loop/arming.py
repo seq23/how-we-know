@@ -72,10 +72,9 @@ LANES = {
     },
     "repackage": {
         "workflow": "loop-repackage.yml",
-        "proves": ("re-uploaded at least one lengthened long-form episode as a "
-                   "new scheduled video"),
-        "secrets": ["YT_OAUTH_CLIENT_JSON", "YT_OAUTH_REFRESH_TOKEN",
-                    "CLOUDFLARE_API_TOKEN", "CLOUDFLARE_ACCOUNT_ID"],
+        "proves": ("applied at least one new long-form title (and its contract "
+                   "thumbnail) to a live video"),
+        "secrets": ["YT_OAUTH_CLIENT_JSON", "YT_OAUTH_REFRESH_TOKEN"],
         "also": "first proven by dispatch: gh workflow run loop-repackage.yml -f limit=1",
     },
     "reach": {

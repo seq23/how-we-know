@@ -207,6 +207,12 @@ def apply_allocation(cfg: dict, decision: dict, mid: str) -> dict:
                 "blocked_by": "cooldown: the allocation moved last month, and "
                               "the effect cannot be measured yet"}
     live = json.loads(CONFIG.read_text())
+    import domains as _D                                   # noqa: PLC0415
+    # The rotation's weekdays move WITH the allocation (2026-10-13): the
+    # promoted/gaining domain takes the days the other gives up.
+    rot = (live.get("cadence") or {}).get("rotation")
+    if rot is not None:
+        rot["weekdays"] = _D.rotation_after(live, decision["allocation"])
     live["domains"]["allocation"] = decision["allocation"]
     CONFIG.write_text(json.dumps(live, indent=2) + "\n")
     return {"key": DOMAIN_CHANGE_KEY, "applied": True,

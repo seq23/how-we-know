@@ -37,11 +37,10 @@ sentence) is still inside the first 75 words; then the "how we know" chain.
 problems() gates all three; a failing draft is redrafted inside the author's
 retry loop as before. The 28-day AVD measurement and the auto-switch work
 unchanged with it active (its baseline is the pre-rule cohort; losing switches
-to cold-open-payoff). Published videos: their titles, thumbnails and duration
-are now governed by the repackage job (loop/longform_title.py,
-visuals/thumb_contract.py, loop/lengthen.py, loop/repackage.py); their cuts are
-still never edited in place - a longer cut is a NEW upload, and the old video
-is made private, never deleted.
+to cold-open-payoff). Published videos: their titles and thumbnails are now
+governed by the repackage job (loop/longform_title.py, visuals/thumb_contract.py,
+loop/repackage.py apply); their cuts are never edited in place, never
+re-uploaded and never extended - forward only (owner, 13 Oct 2026).
 
 The answer check is mechanical, not a judgement: the Direct-answer lock's
 first sentence is the answer; at least ANSWER_SHARE of its content words (and

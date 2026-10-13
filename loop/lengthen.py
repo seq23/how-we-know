@@ -6,7 +6,8 @@
     .venv/bin/python loop/lengthen.py status
 
 Owner decisions, 12-13 Oct 2026 (repackage job 1 of 3). Every long-form
-episode under 10:00 of narration - queued OR already published - is brought to
+QUEUED episode under 10:00 of narration (scripts/ and loop/drafts/, not yet
+uploaded) is brought to
 10:30-11:30 (TARGET_MIN..TARGET_MAX minutes; at the measured 144.58 wpm that is
 >= 1,520 narrated words, loop/durations.py). Her question: "do u have to
 re-render the entire videos, can't u just add something on the end". The
@@ -66,9 +67,12 @@ STATE, in loop/state/lengthen.json, per slug:
     spliced         the stitched render passed the 10-minute floor; the old
                     cut is recorded in loop/state/superseded_renders.json, the
                     slug is cleared from loop/state/render_hold.json and the
-                    render is ready for loop/repackage.py `reupload`
-Published videos are NEVER edited in place: a longer cut is a NEW upload
-(loop/repackage.py reupload) and the old video is made private, never deleted.
+                    render ships through the normal upload lane
+
+FORWARD ONLY (owner decision, 13 Oct 2026, later the same day). A PUBLISHED
+episode is never re-rendered, re-uploaded, extended or privated: stage_script
+refuses any slug in loop/state/ledger.json (`published_refused`), and nothing
+in this repo uploads a second cut of a live video.
 
 Model route: loop/llm_router.py via author.call_openrouter - her Claude
 subscription when the lane carries it, the Gemini free tier, the $0 OpenRouter
@@ -95,6 +99,7 @@ ROOT = LOOP.parent
 sys.path.insert(0, str(LOOP))
 
 SCRIPTS = ROOT / "scripts"
+DRAFTS = LOOP / "drafts"
 PLANS = ROOT / "plans"
 AUDIO = ROOT / "audio"
 RENDERS = ROOT / "renders"
@@ -523,10 +528,6 @@ def clear_hold(slug: str, path: Path | None = None) -> bool:
     return True
 
 
-def ready_for_reupload(path: Path | None = None) -> list[str]:
-    return sorted(s for s, r in load(path)["episodes"].items()
-                  if r.get("status") == "spliced" and not r.get("reuploaded_at"))
-
 
 # ---------------------------------------------------------- stage: script
 def remap_audio(slug: str, old_k: int, new_k: int, body_n: int,
@@ -566,9 +567,25 @@ def _measured_s(slug: str) -> float | None:
     return durations.duration_s(slug)
 
 
+def published_slugs() -> set[str]:
+    import ledger                                          # noqa: PLC0415
+    return {r["slug"] for r in ledger.load().get("published") or []
+            if r.get("slug") and r.get("video_id")}
+
+
+def script_path(slug: str) -> Path:
+    """scripts/<slug>.md, else the not-yet-promoted loop/drafts/<slug>.md."""
+    sp = SCRIPTS / f"{slug}.md"
+    return sp if sp.exists() else DRAFTS / f"{slug}.md"
+
+
 def stage_script(slug: str, dry_run: bool = False, doc: dict | None = None,
                  check_urls: bool = True) -> dict:
-    sp = SCRIPTS / f"{slug}.md"
+    if slug in published_slugs():
+        return {"slug": slug, "status": "published_refused",
+                "why": "published videos are never extended or re-uploaded "
+                       "(owner decision, 13 Oct 2026: forward only)"}
+    sp = script_path(slug)
     text = sp.read_text(encoding="utf-8")
     measured = _measured_s(slug)
     if not needs_lengthening(text, measured):
@@ -805,8 +822,11 @@ def finish_splice(slug: str, stitched: Path, secs: float, rec: dict,
 
 # -------------------------------------------------------------------- cli
 def _short_slugs() -> list[str]:
-    out = []
-    for p in sorted(SCRIPTS.glob("*.md")):
+    """Queued scripts and drafts under the floor. Never a published slug."""
+    out, done = [], published_slugs()
+    for p in sorted(list(SCRIPTS.glob("*.md")) + list(DRAFTS.glob("*.md"))):
+        if p.stem in done or p.stem in out or ".extended" in p.name:
+            continue
         try:
             if needs_lengthening(p.read_text(encoding="utf-8"), _measured_s(p.stem)):
                 out.append(p.stem)
@@ -855,7 +875,7 @@ def main(argv: list[str] | None = None) -> int:
         return 0
     if a.cmd == "plan":
         for s in slugs:
-            text = (SCRIPTS / f"{s}.md").read_text(encoding="utf-8")
+            text = script_path(s).read_text(encoding="utf-8")
             w = words_now(text)
             print(f"  {s}: {w} narrated words ({minutes_of_words(w):.2f} min); "
                   f"needs >= {MIN_WORDS}")
