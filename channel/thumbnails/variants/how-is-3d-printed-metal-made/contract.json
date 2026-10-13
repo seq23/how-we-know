@@ -1,0 +1,101 @@
+{
+  "slug": "how-is-3d-printed-metal-made",
+  "title": "Metal cooling at 10000 degrees per second",
+  "grade": "hwk-split-navy-amber-v1",
+  "chosen": "A",
+  "variants": {
+    "A": {
+      "file": "A.jpg",
+      "source": "assets/mat__3d-printed-metal__dhp-czz1-slm-1893-jpg.jpg",
+      "manifest": "materials.json",
+      "subject": "3d-printed-metal",
+      "sha256": "f0ab586e41d0aeba2c4dabca0040fc40084a28aa3a4df57a62931e1c1de450dd",
+      "box": [
+        300,
+        539,
+        2678,
+        1876
+      ],
+      "crop": null,
+      "text": "10000 DEGREES",
+      "words": 2,
+      "credit": "PHOTOGRAPH, UNKNOWN AUTHOR UNKNOWN AUTHOR (PUBLIC DOMAIN)",
+      "text_bbox": [
+        44,
+        345,
+        640,
+        678
+      ],
+      "credit_bbox": [
+        602,
+        14,
+        1266,
+        35
+      ],
+      "fill": 0.8691,
+      "energy": 0.8238
+    },
+    "B": {
+      "file": "B.jpg",
+      "source": "assets/mat__3d-printed-metal__dhp-czz1-slm-1893-jpg.jpg",
+      "manifest": "materials.json",
+      "subject": "3d-printed-metal",
+      "sha256": "f0ab586e41d0aeba2c4dabca0040fc40084a28aa3a4df57a62931e1c1de450dd",
+      "box": [
+        0,
+        390,
+        2807,
+        1969
+      ],
+      "crop": null,
+      "text": "10000 DEGREES",
+      "words": 2,
+      "credit": "PHOTOGRAPH, UNKNOWN AUTHOR UNKNOWN AUTHOR (PUBLIC DOMAIN)",
+      "text_bbox": [
+        44,
+        345,
+        640,
+        678
+      ],
+      "credit_bbox": [
+        602,
+        14,
+        1266,
+        35
+      ],
+      "fill": 0.9346,
+      "energy": 0.8825
+    },
+    "C": {
+      "file": "C.jpg",
+      "source": "assets/mat__3d-printed-metal__dhp-czz1-slm-1893-jpg.jpg",
+      "manifest": "materials.json",
+      "subject": "3d-printed-metal",
+      "sha256": "f0ab586e41d0aeba2c4dabca0040fc40084a28aa3a4df57a62931e1c1de450dd",
+      "box": [
+        300,
+        539,
+        2678,
+        1876
+      ],
+      "crop": null,
+      "text": "METAL COOLING 10000",
+      "words": 3,
+      "credit": "PHOTOGRAPH, UNKNOWN AUTHOR UNKNOWN AUTHOR (PUBLIC DOMAIN)",
+      "text_bbox": [
+        46,
+        248,
+        557,
+        676
+      ],
+      "credit_bbox": [
+        602,
+        14,
+        1266,
+        35
+      ],
+      "fill": 0.8691,
+      "energy": 0.8238
+    }
+  }
+}

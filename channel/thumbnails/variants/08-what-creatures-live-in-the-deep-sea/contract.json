@@ -1,0 +1,101 @@
+{
+  "slug": "08-what-creatures-live-in-the-deep-sea",
+  "title": "Sharks use deep water, but not the greatest trench depths",
+  "grade": "hwk-split-navy-amber-v1",
+  "chosen": "A",
+  "variants": {
+    "A": {
+      "file": "A.jpg",
+      "source": "assets/siphonophore__29477__ex1703-siphonophore-1920x1080-1.jpg",
+      "manifest": "rights.json",
+      "subject": "siphonophore",
+      "sha256": "67f47d10323a41e3e846134b240d70b925eb123f1a1327e8879a048ac7a0d5d1",
+      "box": [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "crop": null,
+      "text": "NOT GREATEST TRENCH",
+      "words": 3,
+      "credit": "NOAA Ocean Exploration, Discovering the Deep: Exploring Remote Pacific MPAs",
+      "text_bbox": [
+        46,
+        246,
+        615,
+        676
+      ],
+      "credit_bbox": [
+        570,
+        14,
+        1266,
+        35
+      ],
+      "fill": 0.9162,
+      "energy": 0.2254
+    },
+    "B": {
+      "file": "B.jpg",
+      "source": "assets/siphonophore__29477__ex1703-siphonophore-1920x1080-1.jpg",
+      "manifest": "rights.json",
+      "subject": "siphonophore",
+      "sha256": "67f47d10323a41e3e846134b240d70b925eb123f1a1327e8879a048ac7a0d5d1",
+      "box": [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "crop": null,
+      "text": "NOT GREATEST TRENCH",
+      "words": 3,
+      "credit": "NOAA Ocean Exploration, Discovering the Deep: Exploring Remote Pacific MPAs",
+      "text_bbox": [
+        46,
+        246,
+        615,
+        676
+      ],
+      "credit_bbox": [
+        570,
+        14,
+        1266,
+        35
+      ],
+      "fill": 0.9162,
+      "energy": 0.2254
+    },
+    "C": {
+      "file": "C.jpg",
+      "source": "assets/siphonophore__29477__ex1703-siphonophore-1920x1080-1.jpg",
+      "manifest": "rights.json",
+      "subject": "siphonophore",
+      "sha256": "67f47d10323a41e3e846134b240d70b925eb123f1a1327e8879a048ac7a0d5d1",
+      "box": [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "crop": null,
+      "text": "SHARKS USE DEEP",
+      "words": 3,
+      "credit": "NOAA Ocean Exploration, Discovering the Deep: Exploring Remote Pacific MPAs",
+      "text_bbox": [
+        46,
+        538,
+        1056,
+        676
+      ],
+      "credit_bbox": [
+        570,
+        14,
+        1266,
+        35
+      ],
+      "fill": 0.9162,
+      "energy": 0.2254
+    }
+  }
+}

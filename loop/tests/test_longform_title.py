@@ -178,6 +178,16 @@ try:
 finally:
     ledger.LEDGER = saved
 
+# ------------------------------------------- 5b. a leading figure survives
+# 2026-10-13: "76 percent of ..." was parsed as list item 76 and proposed as
+# "percent of deep-sea pelagic animals produce light" - and it passed.
+check(LT._candidates("1. Seventy\n2) Eighty\n- Ninety\n76 percent of fish glow")  # noqa: SLF001
+      == ["Seventy", "Eighty", "Ninety", "76 percent of fish glow"],
+      f"_candidates mangles a leading figure: {LT._candidates('76 percent of fish glow')}")  # noqa: SLF001
+check(any("begins with a capital" in p_ for p_ in
+          LT.title_problems("percent of welding arcs reach 11,000 degrees", SCRIPT, Q)),
+      "a title fragment starting mid-sentence passed the formula")
+
 # ------------------------------------------- 6. --needed: live videos too
 # Job 2 (13 Oct 2026): every live long-form video gets a passing title, and
 # the daily lane must keep proposing for any live video that has none - else

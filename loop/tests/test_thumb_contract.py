@@ -82,6 +82,15 @@ p = thumbs_for.build("19-what-is-the-deepest-fish-ever-recorded", out_dir=str(ou
 check(Path(p).read_bytes() == (out / "variants" / "19-what-is-the-deepest-fish-ever-recorded" / "A.jpg").read_bytes(),
       "thumbs_for.build did not ship variant A as the upload thumbnail")
 
+# ------------------------------------- 2b. no phrase ends mid-thought
+# 2026-10-13: "100 DEGREES PER", "10,935 METERS PLUS" were built for live videos.
+for t_, want in (("Faster than 100 degrees per second, carbon is trapped", "100 DEGREES"),
+                 ("Challenger Deep is 10,935 meters, plus or minus six", "10,935 METERS")):
+    got = TC.text_options(t_)
+    check(got and got[0] == want and not any(
+        x.split()[-1].lower() in TC.DANGLING for x in got if len(x.split()) > 1),
+          f"thumbnail text ends on a dangling word: {t_!r} -> {got}")
+
 # --------------------------------------------------------------- 3. negatives
 slug = "19-what-is-the-deepest-fish-ever-recorded"
 bad_root = TMP / "bad"

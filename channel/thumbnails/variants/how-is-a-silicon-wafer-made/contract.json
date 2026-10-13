@@ -1,0 +1,101 @@
+{
+  "slug": "how-is-a-silicon-wafer-made",
+  "title": "Nine-nines silicon does not exist in nature",
+  "grade": "hwk-split-navy-amber-v1",
+  "chosen": "A",
+  "variants": {
+    "A": {
+      "file": "A.jpg",
+      "source": "assets/mat__silicon-wafer__silicon-wafer-researcher-jpg.jpg",
+      "manifest": "materials.json",
+      "subject": "silicon-wafer",
+      "sha256": "88741e28a10f10c3780cb5ba2d3c893fa2090abb0f4500066d20138184485a4c",
+      "box": [
+        1031,
+        1180,
+        5760,
+        3840
+      ],
+      "crop": null,
+      "text": "NOT EXIST",
+      "words": 2,
+      "credit": "PHOTOGRAPH, U.S. DEPARTMENT OF ENERGY (PUBLIC DOMAIN)",
+      "text_bbox": [
+        44,
+        515,
+        721,
+        678
+      ],
+      "credit_bbox": [
+        687,
+        14,
+        1266,
+        35
+      ],
+      "fill": 0.8131,
+      "energy": 0.8088
+    },
+    "B": {
+      "file": "B.jpg",
+      "source": "assets/mat__silicon-wafer__silicon-wafer-researcher-jpg.jpg",
+      "manifest": "materials.json",
+      "subject": "silicon-wafer",
+      "sha256": "88741e28a10f10c3780cb5ba2d3c893fa2090abb0f4500066d20138184485a4c",
+      "box": [
+        161,
+        700,
+        5743,
+        3840
+      ],
+      "crop": null,
+      "text": "NOT EXIST",
+      "words": 2,
+      "credit": "PHOTOGRAPH, U.S. DEPARTMENT OF ENERGY (PUBLIC DOMAIN)",
+      "text_bbox": [
+        44,
+        515,
+        721,
+        678
+      ],
+      "credit_bbox": [
+        687,
+        14,
+        1266,
+        35
+      ],
+      "fill": 0.7487,
+      "energy": 0.8588
+    },
+    "C": {
+      "file": "C.jpg",
+      "source": "assets/mat__silicon-wafer__silicon-wafer-researcher-jpg.jpg",
+      "manifest": "materials.json",
+      "subject": "silicon-wafer",
+      "sha256": "88741e28a10f10c3780cb5ba2d3c893fa2090abb0f4500066d20138184485a4c",
+      "box": [
+        1031,
+        1180,
+        5760,
+        3840
+      ],
+      "crop": null,
+      "text": "NINE-NINES SILICON",
+      "words": 2,
+      "credit": "PHOTOGRAPH, U.S. DEPARTMENT OF ENERGY (PUBLIC DOMAIN)",
+      "text_bbox": [
+        44,
+        344,
+        805,
+        678
+      ],
+      "credit_bbox": [
+        687,
+        14,
+        1266,
+        35
+      ],
+      "fill": 0.8131,
+      "energy": 0.8088
+    }
+  }
+}

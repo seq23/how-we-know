@@ -293,6 +293,12 @@ def fit_crop(src: Image.Image, target: float, place) -> tuple[tuple, float, floa
 
 
 # ----------------------------------------------------------------------- text
+DANGLING = {"per", "plus", "minus", "because", "up", "about", "but", "not",
+            "no", "than", "at", "by", "of", "in", "on", "to", "from", "with",
+            "without", "and", "or", "for", "into", "over", "under", "while",
+            "that", "which", "a", "an", "the", "is", "are", "it", "its"}
+
+
 def text_options(title: str) -> list[str]:
     """Up to three <=3-word phrases from the (already truth-guarded) title."""
     import longform_title as LT                            # noqa: PLC0415
@@ -325,7 +331,13 @@ def text_options(title: str) -> list[str]:
         opts.append(content[:MAX_WORDS])
     out = []
     for ph in opts:
-        s = " ".join(ph[:MAX_WORDS]).upper()
+        ph = list(ph[:MAX_WORDS])
+        # Never end on a word that needs the next one ("100 DEGREES PER",
+        # "10,935 METERS PLUS", "NOT FLATTENED BECAUSE" - all built on
+        # 2026-10-13 before this trim).
+        while len(ph) > 1 and ph[-1].lower() in DANGLING:
+            ph.pop()
+        s = " ".join(ph).upper()
         if s and s not in out:
             out.append(s)
     return out

@@ -575,12 +575,16 @@
     "what-lives-in-the-depths-of-the-ocean": {
       "applied_at": null,
       "attempts": 1,
-      "checks_passed": true,
+      "checks_passed": false,
+      "invalidated_at": "2026-10-13T13:47:07+00:00",
+      "invalidated_why": "the proposer's list-marker strip ate its leading figure (fixed 2026-10-13); re-proposed by the next loop-repackage run",
       "model": "claude-subscription/opus",
       "new_title": "percent of deep-sea pelagic animals produce light",
       "old_title": "What really lives in the depths of the ocean — and how we know",
       "old_title_source": "titles.py (2026-10-08 rule)",
-      "problems": [],
+      "problems": [
+        "title starts with 'p': a title begins with a capital or a figure, never mid-sentence"
+      ],
       "proposed_at": "2026-10-13T13:13:37+00:00",
       "question": "What lives in the depths of the ocean?",
       "slug": "what-lives-in-the-depths-of-the-ocean"
@@ -677,5 +681,5 @@
       "slug": "why-is-steel-so-strong"
     }
   },
-  "updated": "2026-10-13T13:44:01+00:00"
+  "updated": "2026-10-13T13:47:07+00:00"
 }

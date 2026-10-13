@@ -1,0 +1,101 @@
+{
+  "slug": "14-how-big-is-a-colossal-squid",
+  "title": "The colossal squid is heaviest, not longest",
+  "grade": "hwk-split-navy-amber-v1",
+  "chosen": "A",
+  "variants": {
+    "A": {
+      "file": "A.jpg",
+      "source": "assets/squid__15400__20210907-hires.jpg",
+      "manifest": "rights.json",
+      "subject": "squid",
+      "sha256": "da20115cbdbac5ab36809c5a0644ff8957f46117ee02cce04d2ac805c5cd1828",
+      "box": [
+        0,
+        46,
+        1537,
+        910
+      ],
+      "crop": null,
+      "text": "NOT LONGEST",
+      "words": 2,
+      "credit": "NOAA Ocean Exploration, 2021 ROV Shakedown",
+      "text_bbox": [
+        44,
+        515,
+        929,
+        678
+      ],
+      "credit_bbox": [
+        846,
+        14,
+        1266,
+        35
+      ],
+      "fill": 0.7173,
+      "energy": 0.4076
+    },
+    "B": {
+      "file": "B.jpg",
+      "source": "assets/squid__15400__20210907-hires.jpg",
+      "manifest": "rights.json",
+      "subject": "squid",
+      "sha256": "da20115cbdbac5ab36809c5a0644ff8957f46117ee02cce04d2ac805c5cd1828",
+      "box": [
+        0,
+        0,
+        1815,
+        1021
+      ],
+      "crop": null,
+      "text": "NOT LONGEST",
+      "words": 2,
+      "credit": "NOAA Ocean Exploration, 2021 ROV Shakedown",
+      "text_bbox": [
+        44,
+        515,
+        929,
+        678
+      ],
+      "credit_bbox": [
+        846,
+        14,
+        1266,
+        35
+      ],
+      "fill": 0.6702,
+      "energy": 0.4208
+    },
+    "C": {
+      "file": "C.jpg",
+      "source": "assets/squid__15400__20210907-hires.jpg",
+      "manifest": "rights.json",
+      "subject": "squid",
+      "sha256": "da20115cbdbac5ab36809c5a0644ff8957f46117ee02cce04d2ac805c5cd1828",
+      "box": [
+        0,
+        46,
+        1537,
+        910
+      ],
+      "crop": null,
+      "text": "COLOSSAL SQUID HEAVIEST",
+      "words": 3,
+      "credit": "NOAA Ocean Exploration, 2021 ROV Shakedown",
+      "text_bbox": [
+        46,
+        246,
+        633,
+        676
+      ],
+      "credit_bbox": [
+        846,
+        14,
+        1266,
+        35
+      ],
+      "fill": 0.7173,
+      "energy": 0.4076
+    }
+  }
+}

@@ -252,6 +252,12 @@ def title_problems(title: str, script: str, question: str | None = None) -> list
     if len(t) > TITLE_MAX:
         p.append(f"title is {len(t)} characters, over the {TITLE_MAX} a phone "
                  f"shows")
+    if not (t[0].isupper() or t[0].isdigit()):
+        # A fragment: "percent of deep-sea pelagic animals produce light" was
+        # proposed and passed on 2026-10-13 after _candidates() stripped its
+        # leading figure as if it were list numbering.
+        p.append(f"title starts with {t[0]!r}: a title begins with a capital "
+                 f"or a figure, never mid-sentence")
     if BRAND_PHRASE.search(t):
         p.append("title contains 'how we know' - the brand lives in the "
                  "channel name and the script's second act, never the title")
@@ -410,7 +416,10 @@ def _ask(messages: list[dict]) -> tuple[str, str]:
 def _candidates(text: str) -> list[str]:
     out = []
     for line in (text or "").splitlines():
-        line = re.sub(r"^\s*(?:[-*\d.)]+\s+)", "", line).strip().strip('"\'')
+        # List markers only ("1. ", "2) ", "- ", "* "). The old pattern
+        # [-*\d.)]+ also ate a LEADING FIGURE: "76 percent of ..." became
+        # "percent of ..." (2026-10-13, what-lives-in-the-depths-of-the-ocean).
+        line = re.sub(r"^\s*(?:[-*\u2022]|\d{1,2}[.)])\s+", "", line).strip().strip('"\'')
         if line and len(line) < 120:
             out.append(line)
     return out
