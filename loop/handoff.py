@@ -106,6 +106,10 @@ DESC_MAX = up.DESC_MAX
 PLAYLIST_TITLES = {
     "deep-sea-ocean-science": "Deep Sea Science",
     "materials-and-manufacturing": "Materials & Manufacturing",
+    # Owner decision 2026-10-13 (docs/CHANNEL-PLAN.md, "A third domain: food
+    # science"): a Food playlist, created ahead of the first food episode by
+    # loop/channel_branding.py so its shelf exists the day the domain lands.
+    "food-science": "Food Science",
 }
 PLAYLIST_DESCRIPTIONS = {
     "deep-sea-ocean-science":
@@ -115,6 +119,10 @@ PLAYLIST_DESCRIPTIONS = {
         "Evidence-first answers about materials and how things are made: "
         "every episode and every Short, newest last. Every figure traces to "
         "a named public source.",
+    "food-science":
+        "Evidence-first answers about the food on your plate: why bread "
+        "rises, steak browns and chocolate snaps, and how anyone found out. "
+        "Every figure traces to a named public source.",
 }
 
 # Who is on record for the channel comments. loop/comments.py refuses any

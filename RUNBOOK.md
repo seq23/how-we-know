@@ -393,6 +393,11 @@ extended or made private — its title and thumbnail are the only things that ch
 - **Under ten minutes** (`loop/lengthen.py`, queued scripts only): a new hook is
   spliced onto the untouched body of the render, plus a warm, sourced tail
   ending on the next episode — 10:30 to 11:30 in all.
+- **Channel banner, About text, keywords and home shelves** (`loop/channel_branding.py`,
+  13 Oct 2026): your original logo and words, three domain pictures underneath;
+  candidate B is live, A and C sit in `channel/branding/candidates/`. To switch:
+  `.venv/bin/python loop/channel_branding.py --candidate A`. A new domain needs only a
+  display name in `channel/branding/branding.json`; validator V51 fails until it is applied.
 
 ---
 

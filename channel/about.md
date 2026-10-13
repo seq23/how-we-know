@@ -10,24 +10,13 @@ breaks. Do not add markdown formatting inside the markers — YouTube's About
 box is plain text.
 
 <!-- ABOUT:START -->
-How do we know what we claim to know? One question per episode, followed back
-to the evidence it came from — sonar, specimens, and thirty seconds of footage.
+How we know what we know. One question per episode, followed back along the evidence chain: who measured it, how, and what they were guessing.
 
-Most of the deep ocean has never been seen. We've mapped Mars better than our
-own seafloor. That gap — between what gets stated as fact and what was actually
-observed — is the whole subject here.
+Right now: {{DOMAINS}} — and more as we go.
 
-Two tracks. Deep sea on Sundays and Tuesdays: what lives below
-the last sunlight and how anyone found out. Materials and manufacturing on
-Mondays and Fridays: how steel is hardened, how a silicon wafer is made, why
-carbon fiber holds. Whatever the topic, the method is the same: where did this
-number come from, who measured it, and what were they guessing?
+Every figure is sourced to named public research, from NOAA, MBARI, Woods Hole and the Smithsonian to NIST, ASTM and ASM International. Uncertainty is stated, not smoothed over; when the evidence is thin, the episode says so.
 
-Every figure is sourced to named public research — NOAA, MBARI, Woods Hole,
-the Smithsonian, NIST, ASTM and ASM International. Uncertainty is stated, not
-smoothed over. When the evidence is thin, the episode says so.
-
-New episodes weekly.
+New episodes every week.
 <!-- ABOUT:END -->
 
 ## Provenance
@@ -52,3 +41,13 @@ New episodes weekly.
   are unchanged. `loop/channel_about.py` now refuses before the request if
   the body ever exceeds 1,000 UTF-16 units or contains `<`/`>`, so a future
   edit gets a named refusal instead of a 400.
+- **2026-10-13** — rewritten open-ended for three domains (owner instruction
+  and refinement, 13 Oct 2026). The two-track paragraph (deep sea and
+  materials, with weekday pairs that the three-niche rotation replaced) is
+  gone. One line now names the channel's CURRENT domains, generated at push
+  time from `{{DOMAINS}}`: `loop/channel_branding.py channel_domains()` reads
+  the rotation and allocation in `loop/config.json` and each domain's display
+  name from `channel/branding/branding.json`, so a new domain changes this line
+  without anyone editing it. The opening now leads with "How we know what we know" and "the evidence chain", the banner's own words (owner, 13 Oct 2026). The sources sentence (same
+  seven named bodies) and the uncertainty sentences are kept. Validator V51
+  fails if the live description misses any channel domain.
