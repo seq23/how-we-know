@@ -1,0 +1,101 @@
+{
+  "slug": "01-why-deep-sea-creatures-look-so-weird",
+  "title": "Nets, not depth, damage the soft deep-sea body",
+  "grade": "hwk-split-navy-amber-v1",
+  "chosen": "A",
+  "variants": {
+    "A": {
+      "file": "A.jpg",
+      "source": "assets/anglerfish__15767__20210801-hires.jpg",
+      "manifest": "rights.json",
+      "subject": "anglerfish",
+      "sha256": "9045fcd5368c27c08755820161e77f318909bc80d8974a1c11bad4a454f04afc",
+      "box": [
+        0,
+        11,
+        1900,
+        1080
+      ],
+      "crop": null,
+      "text": "NOT DEPTH DAMAGE",
+      "words": 3,
+      "credit": "NOAA Ocean Exploration, Deep Connections 2019",
+      "text_bbox": [
+        46,
+        246,
+        534,
+        676
+      ],
+      "credit_bbox": [
+        832,
+        14,
+        1266,
+        35
+      ],
+      "fill": 0.8318,
+      "energy": 0.7052
+    },
+    "B": {
+      "file": "B.jpg",
+      "source": "assets/anglerfish__15767__20210801-hires.jpg",
+      "manifest": "rights.json",
+      "subject": "anglerfish",
+      "sha256": "9045fcd5368c27c08755820161e77f318909bc80d8974a1c11bad4a454f04afc",
+      "box": [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "crop": null,
+      "text": "NOT DEPTH DAMAGE",
+      "words": 3,
+      "credit": "NOAA Ocean Exploration, Deep Connections 2019",
+      "text_bbox": [
+        46,
+        246,
+        534,
+        676
+      ],
+      "credit_bbox": [
+        832,
+        14,
+        1266,
+        35
+      ],
+      "fill": 0.8411,
+      "energy": 0.7035
+    },
+    "C": {
+      "file": "C.jpg",
+      "source": "assets/anglerfish__15767__20210801-hires.jpg",
+      "manifest": "rights.json",
+      "subject": "anglerfish",
+      "sha256": "9045fcd5368c27c08755820161e77f318909bc80d8974a1c11bad4a454f04afc",
+      "box": [
+        0,
+        11,
+        1900,
+        1080
+      ],
+      "crop": null,
+      "text": "NETS NOT DEPTH",
+      "words": 3,
+      "credit": "NOAA Ocean Exploration, Deep Connections 2019",
+      "text_bbox": [
+        45,
+        523,
+        1077,
+        677
+      ],
+      "credit_bbox": [
+        832,
+        14,
+        1266,
+        35
+      ],
+      "fill": 0.8318,
+      "energy": 0.7052
+    }
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "slug": "why-deep-sea-fish-die-when-brought-to-surface",
+  "title": "Deep sea fish are not being squeezed at depth",
+  "grade": "hwk-split-navy-amber-v1",
+  "chosen": "A",
+  "variants": {
+    "A": {
+      "file": "A.jpg",
+      "source": "assets/fish__15757__dive05-rattail-hires.jpg",
+      "manifest": "rights.json",
+      "subject": "fish",
+      "sha256": "65f1473918542347b437e2c00f12cc364783cf62cb7441ab0c41d2a5f665cebd",
+      "box": [
+        475,
+        499,
+        1354,
+        993
+      ],
+      "crop": null,
+      "text": "NOT BEING SQUEEZED",
+      "words": 3,
+      "credit": "NOAA Ocean Exploration, Seascape Alaska",
+      "text_bbox": [
+        46,
+        246,
+        614,
+        688
+      ],
+      "credit_bbox": [
+        890,
+        14,
+        1266,
+        35
+      ],
+      "fill": 0.6168,
+      "energy": 0.3584
+    },
+    "B": {
+      "file": "B.jpg",
+      "source": "assets/fish__15757__dive05-rattail-hires.jpg",
+      "manifest": "rights.json",
+      "subject": "fish",
+      "sha256": "65f1473918542347b437e2c00f12cc364783cf62cb7441ab0c41d2a5f665cebd",
+      "box": [
+        335,
+        484,
+        1214,
+        978
+      ],
+      "crop": null,
+      "text": "NOT BEING SQUEEZED",
+      "words": 3,
+      "credit": "NOAA Ocean Exploration, Seascape Alaska",
+      "text_bbox": [
+        46,
+        246,
+        614,
+        688
+      ],
+      "credit_bbox": [
+        890,
+        14,
+        1266,
+        35
+      ],
+      "fill": 0.6075,
+      "energy": 0.3741
+    },
+    "C": {
+      "file": "C.jpg",
+      "source": "assets/fish__15757__dive05-rattail-hires.jpg",
+      "manifest": "rights.json",
+      "subject": "fish",
+      "sha256": "65f1473918542347b437e2c00f12cc364783cf62cb7441ab0c41d2a5f665cebd",
+      "box": [
+        475,
+        499,
+        1354,
+        993
+      ],
+      "crop": null,
+      "text": "DEEP SEA FISH",
+      "words": 3,
+      "credit": "NOAA Ocean Exploration, Seascape Alaska",
+      "text_bbox": [
+        44,
+        515,
+        981,
+        678
+      ],
+      "credit_bbox": [
+        890,
+        14,
+        1266,
+        35
+      ],
+      "fill": 0.6168,
+      "energy": 0.3584
+    }
+  }
+}

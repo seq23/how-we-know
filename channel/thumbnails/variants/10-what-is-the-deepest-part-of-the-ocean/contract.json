@@ -1,0 +1,101 @@
+{
+  "slug": "10-what-is-the-deepest-part-of-the-ocean",
+  "title": "Challenger Deep supports life without sunlight",
+  "grade": "hwk-split-navy-amber-v1",
+  "chosen": "A",
+  "variants": {
+    "A": {
+      "file": "A.jpg",
+      "source": "assets/snailfish__22125__Seascape-Alaska-Snailfish-1920x1080-1.jpg",
+      "manifest": "rights.json",
+      "subject": "snailfish",
+      "sha256": "318f666182b28d6c3a9ef987ad84a6126e416fd745e71445eb46db61d0e2f7c4",
+      "box": [
+        675,
+        281,
+        1920,
+        982
+      ],
+      "crop": null,
+      "text": "WITHOUT SUNLIGHT",
+      "words": 2,
+      "credit": "NOAA Ocean Exploration, Seascape Alaska",
+      "text_bbox": [
+        44,
+        344,
+        713,
+        678
+      ],
+      "credit_bbox": [
+        890,
+        14,
+        1266,
+        35
+      ],
+      "fill": 0.757,
+      "energy": 0.3669
+    },
+    "B": {
+      "file": "B.jpg",
+      "source": "assets/snailfish__22125__Seascape-Alaska-Snailfish-1920x1080-1.jpg",
+      "manifest": "rights.json",
+      "subject": "snailfish",
+      "sha256": "318f666182b28d6c3a9ef987ad84a6126e416fd745e71445eb46db61d0e2f7c4",
+      "box": [
+        225,
+        127,
+        1920,
+        1080
+      ],
+      "crop": null,
+      "text": "WITHOUT SUNLIGHT",
+      "words": 2,
+      "credit": "NOAA Ocean Exploration, Seascape Alaska",
+      "text_bbox": [
+        44,
+        344,
+        713,
+        678
+      ],
+      "credit_bbox": [
+        890,
+        14,
+        1266,
+        35
+      ],
+      "fill": 0.6822,
+      "energy": 0.5202
+    },
+    "C": {
+      "file": "C.jpg",
+      "source": "assets/snailfish__22125__Seascape-Alaska-Snailfish-1920x1080-1.jpg",
+      "manifest": "rights.json",
+      "subject": "snailfish",
+      "sha256": "318f666182b28d6c3a9ef987ad84a6126e416fd745e71445eb46db61d0e2f7c4",
+      "box": [
+        675,
+        281,
+        1920,
+        982
+      ],
+      "crop": null,
+      "text": "CHALLENGER DEEP SUPPORTS",
+      "words": 3,
+      "credit": "NOAA Ocean Exploration, Seascape Alaska",
+      "text_bbox": [
+        46,
+        246,
+        763,
+        676
+      ],
+      "credit_bbox": [
+        890,
+        14,
+        1266,
+        35
+      ],
+      "fill": 0.757,
+      "energy": 0.3669
+    }
+  }
+}

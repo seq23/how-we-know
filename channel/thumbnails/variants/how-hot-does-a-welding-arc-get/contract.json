@@ -1,0 +1,101 @@
+{
+  "slug": "how-hot-does-a-welding-arc-get",
+  "title": "The welding arc is not one thing, so not one number",
+  "grade": "hwk-split-navy-amber-v1",
+  "chosen": "A",
+  "variants": {
+    "A": {
+      "file": "A.jpg",
+      "source": "assets/mat__welding-arc__us-army-soldier-welding-two-metal-pieces-fort-gregg-adams-vi.jpg",
+      "manifest": "materials.json",
+      "subject": "welding-arc",
+      "sha256": "7c923374ed0b2343385815c61c7c967a9144b3ade848cd6aff6648969607ad06",
+      "box": [
+        632,
+        771,
+        4566,
+        2983
+      ],
+      "crop": null,
+      "text": "NOT ONE THING",
+      "words": 3,
+      "credit": "PHOTOGRAPH, JUAN F. JIMENEZ, ARMY (PUBLIC DOMAIN)",
+      "text_bbox": [
+        44,
+        515,
+        1043,
+        678
+      ],
+      "credit_bbox": [
+        748,
+        14,
+        1266,
+        35
+      ],
+      "fill": 0.7383,
+      "energy": 0.9077
+    },
+    "B": {
+      "file": "B.jpg",
+      "source": "assets/mat__welding-arc__us-army-soldier-welding-two-metal-pieces-fort-gregg-adams-vi.jpg",
+      "manifest": "materials.json",
+      "subject": "welding-arc",
+      "sha256": "7c923374ed0b2343385815c61c7c967a9144b3ade848cd6aff6648969607ad06",
+      "box": [
+        0,
+        524,
+        4644,
+        3137
+      ],
+      "crop": null,
+      "text": "NOT ONE THING",
+      "words": 3,
+      "credit": "PHOTOGRAPH, JUAN F. JIMENEZ, ARMY (PUBLIC DOMAIN)",
+      "text_bbox": [
+        44,
+        515,
+        1043,
+        678
+      ],
+      "credit_bbox": [
+        748,
+        14,
+        1266,
+        35
+      ],
+      "fill": 0.6542,
+      "energy": 0.7379
+    },
+    "C": {
+      "file": "C.jpg",
+      "source": "assets/mat__welding-arc__us-army-soldier-welding-two-metal-pieces-fort-gregg-adams-vi.jpg",
+      "manifest": "materials.json",
+      "subject": "welding-arc",
+      "sha256": "7c923374ed0b2343385815c61c7c967a9144b3ade848cd6aff6648969607ad06",
+      "box": [
+        632,
+        771,
+        4566,
+        2983
+      ],
+      "crop": null,
+      "text": "WELDING ARC",
+      "words": 2,
+      "credit": "PHOTOGRAPH, JUAN F. JIMENEZ, ARMY (PUBLIC DOMAIN)",
+      "text_bbox": [
+        44,
+        515,
+        962,
+        678
+      ],
+      "credit_bbox": [
+        748,
+        14,
+        1266,
+        35
+      ],
+      "fill": 0.7383,
+      "energy": 0.9077
+    }
+  }
+}

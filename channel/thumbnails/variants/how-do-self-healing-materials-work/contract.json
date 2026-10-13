@@ -1,0 +1,101 @@
+{
+  "slug": "how-do-self-healing-materials-work",
+  "title": "The crack that breaks open its own repair",
+  "grade": "hwk-split-navy-amber-v1",
+  "chosen": "A",
+  "variants": {
+    "A": {
+      "file": "A.jpg",
+      "source": "assets/mat__concrete__as-a-cement-mixer-pours-it-on-construction-workers-shovel-ce.jpeg",
+      "manifest": "materials.json",
+      "subject": "concrete",
+      "sha256": "f2ad04f93caf9468c5fb2be60f0dc2f6f5e93cb644f21c06ae3de89481173a20",
+      "box": [
+        185,
+        142,
+        3000,
+        1726
+      ],
+      "crop": null,
+      "text": "CRACK BREAKS OPEN",
+      "words": 3,
+      "credit": "PHOTOGRAPH, DEPARTMENT OF DEFENSE. AMERICAN FORCES INFORMATI (PUBLIC DOMAIN)",
+      "text_bbox": [
+        46,
+        246,
+        506,
+        676
+      ],
+      "credit_bbox": [
+        428,
+        14,
+        1266,
+        35
+      ],
+      "fill": 0.8691,
+      "energy": 0.8421
+    },
+    "B": {
+      "file": "B.jpg",
+      "source": "assets/mat__concrete__as-a-cement-mixer-pours-it-on-construction-workers-shovel-ce.jpeg",
+      "manifest": "materials.json",
+      "subject": "concrete",
+      "sha256": "f2ad04f93caf9468c5fb2be60f0dc2f6f5e93cb644f21c06ae3de89481173a20",
+      "box": [
+        0,
+        48,
+        3000,
+        1736
+      ],
+      "crop": null,
+      "text": "CRACK BREAKS OPEN",
+      "words": 3,
+      "credit": "PHOTOGRAPH, DEPARTMENT OF DEFENSE. AMERICAN FORCES INFORMATI (PUBLIC DOMAIN)",
+      "text_bbox": [
+        46,
+        246,
+        506,
+        676
+      ],
+      "credit_bbox": [
+        428,
+        14,
+        1266,
+        35
+      ],
+      "fill": 0.8429,
+      "energy": 0.8461
+    },
+    "C": {
+      "file": "C.jpg",
+      "source": "assets/mat__concrete__as-a-cement-mixer-pours-it-on-construction-workers-shovel-ce.jpeg",
+      "manifest": "materials.json",
+      "subject": "concrete",
+      "sha256": "f2ad04f93caf9468c5fb2be60f0dc2f6f5e93cb644f21c06ae3de89481173a20",
+      "box": [
+        482,
+        99,
+        3000,
+        1516
+      ],
+      "crop": null,
+      "text": "CRACK BREAKS OPEN",
+      "words": 3,
+      "credit": "PHOTOGRAPH, DEPARTMENT OF DEFENSE. AMERICAN FORCES INFORMATI (PUBLIC DOMAIN)",
+      "text_bbox": [
+        774,
+        246,
+        1235,
+        676
+      ],
+      "credit_bbox": [
+        14,
+        14,
+        852,
+        35
+      ],
+      "fill": 0.8901,
+      "energy": 0.8732
+    }
+  }
+}
