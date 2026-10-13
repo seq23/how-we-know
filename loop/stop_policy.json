@@ -737,6 +737,14 @@
       "why": "The digest rendered with no episodes, no schedule and no queue. A reassuring weekly email built on files it failed to open is worse than no email.",
       "plain": "this weekly email could read no episodes, schedule or queue"
     },
+    "DEMAND_EMAIL_UNTRACED": {
+      "why": "The Monday demand email printed a number, date or title that loop/state/demand.json does not hold. It is refused, not sent: an email whose numbers cannot be traced is worse than none (owner brief, phase 4, 13 Oct 2026).",
+      "plain": "the Monday demand email had a number it could not trace, so it was not sent"
+    },
+    "DEMAND_PULL_INCOMPLETE": {
+      "why": "The daily demand pull finished without a history row for every public long-form video, or its books fail loop/demand.py problems(). A pull that skips a video is a bug, not a quiet day (Rule 0).",
+      "plain": "the daily demand pull missed a public video"
+    },
     "SCHEDULE_NOT_APPLIED": {
       "why": "YouTube did not apply the publishAt this lane set. The video is uploaded and undated - the one state that silently never airs.",
       "plain": "YouTube did not take an episode's air date, so it would never air"

@@ -4766,6 +4766,40 @@ def v60_description_search_block() -> Result:
     return r
 
 
+# ===================================================== V70 demand verdict
+# Phase 4 (13 Oct 2026): the loop measured supply and never demand. The daily
+# pull, the verdict, the automatic second packaging and the Monday email keep
+# their books in loop/state/demand.json; loop/demand.py problems() is the one
+# definition of "sound", shared with loop/tests/test_demand.py.
+
+def v70_demand_verdict() -> Result:
+    """HARD. The demand books are sound.
+
+    * the last daily pull wrote a history row for EVERY public long-form
+      video it saw (Rule 0: zero public ids is a failure, not a quiet day);
+    * a retention curve YouTube withheld reads "insufficient", its floor
+      "unknown" - never a zero; no click-through floor is judged before a
+      Studio ingest;
+    * the automatic second packaging never exceeds two rounds, never touches
+      a Short or a video under seven days, and never changes a thumbnail
+      while a Studio Test & Compare is active;
+    * every number, date and title in the last Monday email is in the
+      snapshot it was rendered from.
+    """
+    r = Result("V70 demand-verdict")
+    import demand as _dm                                   # noqa: PLC0415
+    doc = _dm.load()
+    r.examined += len((doc.get("pull") or {}).get("public_ids") or [])
+    for m in _dm.problems(doc):
+        r.fail(m)
+    if not r.examined:
+        r.fail("loop/state/demand.json holds no pull - the demand lane has "
+               "examined nothing (Rule 0)")
+    r.note(f"pull {(doc.get('pull') or {}).get('date')}: "
+           f"{(doc.get('channel') or {}).get('counts')}")
+    return r
+
+
 def run_all(items) -> tuple[bool, list[dict]]:
     """Run every validator. Returns (all_passed, report_rows).
 
@@ -4807,7 +4841,8 @@ def run_all(items) -> tuple[bool, list[dict]]:
                v60_description_search_block(),
                v52_food_domain(),
                v53_food_preset(),
-               v54_food_voice_sound()]
+               v54_food_voice_sound(),
+               v70_demand_verdict()]
     rows = [r.as_dict() for r in results]
     return all(r.ok for r in results), rows
 

@@ -1274,3 +1274,32 @@ PRIVATE (never deleted) only after their replacement is public.
   40-word chunks) measured only 1.3x standard's pauses and was retuned before the sample.
 - **Sound layer** (`visuals/food_sound.py`): Commons PD recordings of frying, pouring and
   cracking, sidechain-ducked under the voice and measured on the mix.
+
+## 2026-10-13 (later) — phase 4: the demand verdict
+
+- **What:** `loop/demand.py` + `loop-demand.yml` (daily pull, Monday email), validator V70,
+  `loop/tests/test_demand.py`. The loop measured supply; this measures demand per long-form video.
+- **30-second retention IS available per video** from the Analytics audience-retention report
+  (`audienceWatchRatio` by `elapsedVideoTimeRatio`, `filters=video==<id>`), read at 30 s / runtime.
+  First pull: a curve for 4 of 24 public long-form videos; YouTube returns HTTP 200 with zero rows
+  for the rest (its own low-view threshold - not views alone: a 45-view video had none, a 23-view
+  one had a curve). Recorded as `insufficient`, never 0.
+- **Click-through is NOT in the API** (measure.py, 12 Oct: HTTP 400 for every shape). It comes in
+  through `demand.py ingest-studio` from Studio's CSV export, read by the coordinator on Mondays
+  (RUNBOOK.md); "unknown" until then. No unattended Studio scrape.
+- **MIN_VIEWS = 30 views since the current packaging**, chosen from the data: median long-form video
+  8 lifetime views, best 87, second 45. The brief's example (50 in 7 days) has never been reached by
+  any long-form video here, so it would make every verdict INSUFFICIENT forever and the second
+  packaging inert. Thirty is the smallest sample where one viewer stops swinging a mean by tens of
+  points, and it is reachable.
+- **The verdict judges the CURRENT packaging** (metrics since the later of public date, the
+  packaging pass's `applied_at`, and the last automatic round) - judging a new title on views its
+  old title earned would repackage videos for their old packaging. Consequence: the first snapshot
+  (13 Oct) is 24 of 24 INSUFFICIENT, because the packaging pass put new titles up that day;
+  "is packaging working" reads **too early** until about 20 Oct.
+- **The second packaging writes through the repackage lane's own client, quota reserve and arming
+  gate** but does not go through `repackage apply`, which only ever sets variant A from
+  titles.json (and would cancel a running Studio test). Units are recorded under lane `demand`.
+  Its rounds live in demand.json; titles.json is not written.
+- **Thumbnail tests:** `demand mark-test <id> --start|--end`; an active test means title only.
+

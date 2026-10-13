@@ -1,0 +1,141 @@
+name: loop · daily demand + Mon 08:30 CT email
+
+# PHASE 4, THE DEMAND VERDICT (owner brief, 13 Oct 2026). The loop measured
+# SUPPLY (did it publish) and never DEMAND (do strangers click and stay).
+#
+#   daily 13:30 UTC  loop/demand.py pull  - per-video Analytics for every
+#                    public long-form video (Shorts excluded by the ledger),
+#                    30-second retention, the verdict against the owner's
+#                    floors, and the automatic second packaging (title + next
+#                    thumbnail variant; title only during a Studio test).
+#   Mon, same run    loop/demand.py email - one page, every number traced to
+#                    loop/state/demand.json or refused. 13:30 UTC is 08:30
+#                    Central in CDT (07:30 in CST), after the Monday search
+#                    report and the Monday authoring window (ends 13:20 UTC),
+#                    before the 14:00 UTC upload lane; the email reads the
+#                    pull that just ran; delivered exactly like the Sunday digest: a NEW
+#                    issue that @-mentions the owner, titled by the .subject.
+#
+# Click-through and impressions are not in the Analytics API; they arrive by
+# `python loop/demand.py ingest-studio <csv>` (RUNBOOK.md, Monday Studio read).
+on:
+  schedule:
+    - cron: '30 13 * * *'
+  workflow_dispatch:
+    inputs:
+      step:
+        description: 'pull (measure + judge + second packaging), email (Monday email), or both'
+        type: choice
+        options: [pull, email, both]
+        default: pull
+      dry_run:
+        description: 'Pull and judge, but plan the second packaging only (no YouTube writes)'
+        type: boolean
+        required: false
+        default: false
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: loop-state
+  cancel-in-progress: false
+
+jobs:
+  demand:
+    # New lane, no measured median yet: the first live pull took ~4.5 min
+    # (24 retention-report calls at ~10 s each). A fault detector at ~4x.
+    timeout-minutes: 20
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      # The second packaging asks loop/longform_title.py for a new title on
+      # the repo's route: her Claude subscription first, then $0 models.
+      - name: Install the Claude Code CLI (subscription tier, pinned)
+        run: npm install -g @anthropic-ai/claude-code@2.1.296
+      - name: Install loop dependencies
+        run: pip install -r requirements-loop.txt
+      - name: Refresh to the current main before any stage acts
+        run: |
+          git fetch --quiet origin ${{ github.ref_name }}
+          git reset --hard --quiet "origin/${{ github.ref_name }}"
+
+      - name: Pull, judge, second packaging
+        if: github.event_name == 'schedule' || inputs.step == 'pull' || inputs.step == 'both'
+        env:
+          YT_OAUTH_CLIENT_JSON: ${{ secrets.YT_OAUTH_CLIENT_JSON }}
+          YT_OAUTH_REFRESH_TOKEN: ${{ secrets.YT_OAUTH_REFRESH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            bin/loop-stage.sh demand-pull loop/demand.py pull --dry-run
+          else
+            bin/loop-stage.sh demand-pull loop/demand.py pull
+          fi
+
+      - name: Write the Monday email
+        id: email
+        # demand.py as a whole reaches the model route (the second packaging),
+        # so every step that runs it carries the route's keys (route test (f)).
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        if: always() && ((github.event_name == 'schedule' && startsWith(github.event.schedule, '30 13')) || inputs.step == 'email' || inputs.step == 'both')
+        run: |
+          # Scheduled: Mondays only (Central). Dispatched: whenever asked.
+          if [ "${{ github.event_name }}" = "schedule" ] && [ "$(TZ=America/Chicago date +%u)" != "1" ]; then
+            echo "not Monday in Central time - no email today"
+            echo "skipped=1" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          bin/loop-stage.sh demand-email loop/demand.py email
+
+      # Same send mechanism as the Sunday digest (loop-sun-digest.yml): a NEW
+      # issue that @-mentions the owner, so GitHub emails it; last week's is
+      # closed so the issue list stays a signal.
+      - name: Send the Monday email
+        if: always() && steps.email.conclusion != 'skipped' && steps.email.outputs.skipped != '1'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          WEEK="$(date -u +%G-W%V)"
+          FILE="loop/state/demand/${WEEK}.md"
+          if [ ! -s "$FILE" ]; then
+            echo "no demand email at $FILE - the stage refused or did not run"
+            exit 1
+          fi
+          TITLE="$(head -n 1 "loop/state/demand/${WEEK}.subject" 2>/dev/null)"
+          [ -n "$TITLE" ] || TITLE="Demand ${WEEK}"
+          BODY="$(mktemp)"
+          {
+            echo "@seq23"
+            echo
+            cat "$FILE"
+            echo
+            echo "Run: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          } > "$BODY"
+          gh label create demand-weekly --color 1D76DB \
+            --description "Monday demand email" >/dev/null 2>&1 || true
+          gh issue create --title "$TITLE" --body-file "$BODY" --label demand-weekly >/dev/null 2>&1 \
+            || gh issue create --title "$TITLE" --body-file "$BODY" >/dev/null
+          echo "sent: ${TITLE}"
+          PREV="$(date -u -d 'last week' +%G-W%V 2>/dev/null || date -u -v-1w +%G-W%V)"
+          OLD="$(gh issue list --state open --label demand-weekly --search "Demand ${PREV} in:title" \
+                 --json number --jq '.[0].number' 2>/dev/null)"
+          if [ -n "$OLD" ] && [ "$OLD" != "null" ]; then
+            gh issue close "$OLD" --comment "Superseded by the ${WEEK} demand email." >/dev/null 2>&1 \
+              && echo "closed #$OLD"
+          fi
