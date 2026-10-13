@@ -1177,3 +1177,16 @@ PRIVATE (never deleted) only after their replacement is public.
   ledger, Shorts hand-off and playlist re-pointed). Quota under lane `repackage`, never touching the
   episode upload's 1,700 or the Shorts lane's 3,400. The old video's playlist row is left in place: this
   repo has no HTTP DELETE.
+- **2026-10-13 — Long-form program, third domain, three-niche schedule** (owner; discussion session, decisions
+  only). Published and queued long-form videos all get the title formula (≤60 chars, stake, never "how we
+  know"), the thumbnail contract (one subject ≥60 %, ≤3 words, one grade, three variants), the
+  `stake-then-payoff` hook, and a ten-minute floor met by SPLICE (new hook + untouched body + warm, funny
+  evidence tail), never a full re-render. Under-ten-minute published episodes are re-uploaded and the old
+  copy goes private (owner chose private over a one-off deletion, for the retention data). Nothing is
+  privated by niche; nothing starts over. Shorts untouched. Drain at 2/day then six a week on the
+  Mon/Thu deep sea, Tue/Fri materials, Wed/Sat food rotation. Third domain "food science": 30-minute
+  three-question videos, hypnotic realistic AI-ok imagery at $0, a 2–3 minute chocolate sample as a
+  one-day gate before the first full video. One-day dump rejected (quota ~4 uploads/day; dumps dilute the
+  48-hour test). The 2026-09-28 `cold-open-payoff` rule was answer-first, not a hook — the loop measured
+  supply, never demand; a demand verdict and weekly email are part of the program. Full text:
+  docs/CHANNEL-PLAN.md § "The long-form program of 2026-10-13" onward.
