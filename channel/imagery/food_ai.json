@@ -433,6 +433,40 @@
       "licence": "generated on Workers AI (FLUX.1 [schnell], Apache-2.0 weights); output owned by the channel",
       "credit_line": "AI-GENERATED IMAGE",
       "excluded": "refused by eye 2026-10-13: gibberish letters embossed on the chocolate bar"
+    },
+    {
+      "key": "panel-bread",
+      "prompt": "a crusty golden sourdough loaf torn open showing its airy crumb, glossy crust, close up, filling the frame",
+      "full_prompt": "a crusty golden sourdough loaf torn open showing its airy crumb, glossy crust, close up, filling the frame. photorealistic macro food photography, single glossy subject lit from the side by one warm key light, deep dark warm background, rich saturated colour, shallow depth of field, cinematic, no text, no people, no hands, no logos",
+      "seed": 7,
+      "model": "@cf/black-forest-labs/flux-1-schnell",
+      "steps": 4,
+      "width": 1024,
+      "height": 576,
+      "local_file": "assets/food_ai__panel-bread__s7.jpg",
+      "sha256": "d2bab07785b3b021c9491d1b9030a215a788b5fc1330fb3f448402511f3643ef",
+      "generated_at": "2026-10-13T17:34:29.132662+00:00",
+      "ai_generated": true,
+      "altered_content": true,
+      "licence": "generated on Workers AI (FLUX.1 [schnell], Apache-2.0 weights); output owned by the channel",
+      "credit_line": "AI-GENERATED IMAGE"
+    },
+    {
+      "key": "panel-steak",
+      "prompt": "a thick seared steak sliced open, dark glossy crust and pink centre, close up, filling the frame",
+      "full_prompt": "a thick seared steak sliced open, dark glossy crust and pink centre, close up, filling the frame. photorealistic macro food photography, single glossy subject lit from the side by one warm key light, deep dark warm background, rich saturated colour, shallow depth of field, cinematic, no text, no people, no hands, no logos",
+      "seed": 7,
+      "model": "@cf/black-forest-labs/flux-1-schnell",
+      "steps": 4,
+      "width": 1024,
+      "height": 576,
+      "local_file": "assets/food_ai__panel-steak__s7.jpg",
+      "sha256": "eb68c16d609bf34e71345ded714dc4a79ddec89a9454841e9591e1a4beb432a5",
+      "generated_at": "2026-10-13T17:34:31.188311+00:00",
+      "ai_generated": true,
+      "altered_content": true,
+      "licence": "generated on Workers AI (FLUX.1 [schnell], Apache-2.0 weights); output owned by the channel",
+      "credit_line": "AI-GENERATED IMAGE"
     }
   ]
 }

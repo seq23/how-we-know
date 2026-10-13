@@ -4243,7 +4243,10 @@ def v48_thumbnail_contract() -> Result:
     """HARD. Every long-form thumbnail built under the contract still meets it
     (visuals/thumb_contract.verify: three variants, <=3 words, subject fill
     >= 60% with real subject energy, the one channel grade applied, variant A
-    chosen), and the grade itself is the channel's one constant.
+    chosen, and - owner, 13 Oct 2026 - three genuinely different pictures,
+    every pair >= visuals/thumb_distinct.MIN_PHASH_DISTANCE apart, texts not
+    all identical; a "triptych" set is held to visuals/thumb_triptych.py),
+    and the grade itself is the channel's one constant.
 
     On a machine that holds renders, an unpublished render with no contract
     variant set is a HELD stop (THUMB_CONTRACT_PENDING): the builder refuses

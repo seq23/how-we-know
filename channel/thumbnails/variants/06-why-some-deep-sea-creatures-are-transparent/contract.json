@@ -42,29 +42,29 @@
       "subject": "siphonophore",
       "sha256": "67f47d10323a41e3e846134b240d70b925eb123f1a1327e8879a048ac7a0d5d1",
       "box": [
-        0,
-        0,
-        1920,
+        42,
+        70,
+        1837,
         1080
       ],
       "crop": null,
-      "text": "NOT MAGIC",
+      "text": "DEEP SEA",
       "words": 2,
       "credit": "NOAA Ocean Exploration, Discovering the Deep: Exploring Remote Pacific MPAs",
       "text_bbox": [
         44,
-        342,
-        689,
-        663
+        515,
+        658,
+        678
       ],
       "credit_bbox": [
-        545,
-        13,
+        570,
+        14,
         1266,
         35
       ],
-      "fill": 0.9162,
-      "energy": 0.2254
+      "fill": 0.8848,
+      "energy": 0.2149
     },
     "C": {
       "file": "C.jpg",
@@ -73,29 +73,29 @@
       "subject": "siphonophore",
       "sha256": "67f47d10323a41e3e846134b240d70b925eb123f1a1327e8879a048ac7a0d5d1",
       "box": [
+        42,
         0,
-        0,
-        1920,
-        1080
+        1837,
+        1010
       ],
       "crop": null,
       "text": "NO ROCKS",
       "words": 2,
       "credit": "NOAA Ocean Exploration, Discovering the Deep: Exploring Remote Pacific MPAs",
       "text_bbox": [
-        44,
-        513,
-        1057,
-        663
+        549,
+        515,
+        1235,
+        678
       ],
       "credit_bbox": [
-        545,
-        13,
-        1266,
+        14,
+        14,
+        710,
         35
       ],
-      "fill": 0.9162,
-      "energy": 0.2254
+      "fill": 0.9215,
+      "energy": 0.2323
     }
   }
 }

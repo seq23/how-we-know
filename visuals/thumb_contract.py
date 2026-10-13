@@ -544,23 +544,48 @@ def title_for(slug: str, script_text: str) -> str:
     return thumbs_for.hook_from_script(os.path.join(SCRIPTS, f"{slug}.md"))
 
 
+def _shorter(text: str) -> str:
+    """A second, shorter phrasing of a one-phrase title: its longest prefix that
+    does not end on a dangling word. The phrase itself when it cannot shrink."""
+    w = text.split()
+    for n in range(len(w) - 1, 0, -1):
+        if w[n - 1].lower().strip(".,'?!") not in DANGLING:
+            return " ".join(w[:n])
+    return text
+
+
+SLUG_STOP = {"what", "why", "how", "is", "are", "a", "an", "the", "of", "does", "do",
+             "made", "so", "get", "in", "to", "it", "work", "when", "most", "many", "some"}
+
+
+def _slug_phrase(slug: str) -> str:
+    """The episode's subject in plain words, from its slug ("what-is-carbon-
+    fiber-made-of" -> "CARBON FIBER"): the variant text of last resort."""
+    w = [x for x in re.sub(r"^\d+-", "", slug).split("-") if x and x not in SLUG_STOP]
+    return " ".join(w[:min(2, MAX_WORDS)]).upper()
+
+
 DRAMA_ASK = None     # set by the CLI (the $0 route); tests pass a fixture
 
 
 def build_variants(slug: str, out_root: str | None = None,
                    title: str | None = None,
                    script_path: str | None = None,
-                   texts: list[str] | None = None) -> dict:
+                   texts: list[str] | None = None,
+                   keep_a: bool = False) -> dict:
     """Build A, B, C and contract.json. Raises ContractRefused, named.
     `texts` (owner-given thumbnail words, each <= MAX_WORDS) replace the phrases
-    taken from the title - the food sample's "WHAT'S INSIDE?" is the owner's."""
+    taken from the title - the food sample's "WHAT'S INSIDE?" is the owner's.
+    `keep_a` keeps the set's existing A (the published variant: file, record,
+    words) and rebuilds only B and C - the repair for a set whose B or C
+    duplicates A (owner, 13 Oct 2026)."""
     return build_into(slug, os.path.join(out_root or VARIANTS_DIR, slug),
-                      title=title, script_path=script_path, texts=texts)
+                      title=title, script_path=script_path, texts=texts, keep_a=keep_a)
 
 
 def build_into(slug: str, final_dir: str, title: str | None = None,
                script_path: str | None = None,
-               texts: list[str] | None = None) -> dict:
+               texts: list[str] | None = None, keep_a: bool = False) -> dict:
     """build_variants with the set's directory named by the caller (so the
     lane's write set is a path, not a slug - loop/tools/write_set.py)."""
     sys.path.insert(0, os.path.join(ROOT, "loop"))
@@ -598,45 +623,80 @@ def build_into(slug: str, final_dir: str, title: str | None = None,
             f"channel/imagery/rights.json or materials.json (plan beats, slug "
             f"and hook searched); the contract needs one big subject and this "
             f"module never borrows a lookalike")
-    plan = [("A", 0, 0.85, (0.5, 0.42), texts[0], "left"),
-            ("B", 0, 0.72, (0.66, 0.45), texts[0], "left"),
-            ("C", 0, 0.85, (0.5, 0.42),
-             texts[1] if len(texts) > 1 else texts[0], "left")]
-    if len(texts) == 1:
-        # One phrase only: C differs by image when there is a second one, by
-        # crop (tighter, centred, type on the right) when there is not.
-        plan[2] = (("C", 1, 0.85, (0.5, 0.42), texts[0], "left")
-                   if len(cands) > 1 else
-                   ("C", 0, 0.95, (0.42, 0.5), texts[0], "right"))
+    # A is the published variant and keeps its long-standing plan. B and C must
+    # be GENUINELY different (owner, 13 Oct 2026: two of three food variants
+    # were the same picture): each takes, in preference order, another
+    # candidate image, then another crop/emphasis of the same one, and is kept
+    # only when its pHash differs from every variant already made
+    # (visuals/thumb_distinct.py). Texts are not all identical.
+    import thumb_distinct as TD                            # noqa: PLC0415
+    alt = texts[1] if len(texts) > 1 else _shorter(texts[0])
+    if alt.upper() == texts[0].upper():
+        alt = _slug_phrase(slug) or alt
+    alt2 = texts[2] if len(texts) > 2 else (texts[0] if alt != texts[0] else alt)
+    crops = [(0.72, (0.66, 0.45), "left"), (0.95, (0.34, 0.5), "right"),
+             (0.62, (0.5, 0.42), "left"), (0.9, (0.7, 0.5), "left"),
+             (0.9, (0.3, 0.5), "right"), (0.98, (0.5, 0.25), "left"),
+             (0.98, (0.5, 0.75), "right"), (0.55, (0.5, 0.5), "left")]
+    plan = [("A", [0], [(0.85, (0.5, 0.42), "left")], texts[0]),
+            ("B", [1, 0, 2], crops, alt),
+            ("C", [2, 1, 0], crops[1:] + crops[:1], alt2)]
     # Built in a scratch directory and moved into place only when all three
     # variants pass: a refusal at B left A.jpg behind with no contract.json
     # (how-strong-is-graphene, 13 Oct 2026), and repackage apply shipped it.
     os.makedirs(os.path.dirname(final_dir), exist_ok=True)
     import tempfile                                        # noqa: PLC0415
+    import shutil                                          # noqa: PLC0415
     out_dir = tempfile.mkdtemp(prefix=".contract-", dir=os.path.dirname(final_dir))
     rec = {"slug": slug, "title": title, "grade": GRADE["id"],
            "chosen": CHOSEN, "variants": {}}
     srcs: dict[int, Image.Image] = {}
-    for name, ci, target, place, text, side in plan:
-        tried = list(range(ci, len(cands))) + list(range(0, ci))
-        ok = None
-        for k in tried:
+    made: dict[str, int] = {}
+    if keep_a:
+        old_dir = final_dir
+        old = json.load(open(os.path.join(old_dir, "contract.json")))
+        rec["title"] = old.get("title", rec["title"])
+        rec["variants"]["A"] = old["variants"]["A"]
+        shutil.copyfile(os.path.join(old_dir, "A.jpg"), os.path.join(out_dir, "A.jpg"))
+        a = old["variants"]["A"]
+        made["A"] = TD.phash(base_frame(_open_source({"path": os.path.join(IMAGERY, a["source"]),
+                                                      "crop": a.get("crop")}), a["box"]))
+        plan = plan[1:]
+    for name, order, options, text in plan:
+        order = [k for k in dict.fromkeys(order + list(range(len(cands)))) if k < len(cands)]
+        ok, best, fill_seen = None, None, False
+        for k in order:
             if k not in srcs:
                 srcs[k] = _open_source(cands[k])
-            box, fill, energy = fit_crop(srcs[k], target, place)
-            if fill >= SUBJECT_FILL_MIN and energy >= _thumbs().MIN_SUBJECT_ENERGY:
-                ok = (k, box, fill, energy)
+            for target, place, side in options:
+                box, fill, energy = fit_crop(srcs[k], target, place)
+                if fill < SUBJECT_FILL_MIN or energy < _thumbs().MIN_SUBJECT_ENERGY:
+                    continue
+                fill_seen = True
+                base = base_frame(srcs[k], box)
+                h = TD.phash(base)              # the PICTURE, before any type is drawn
+                im, tb, cb = draw(base.copy(), text, cands[k]["credit"], side)
+                dmin = min((TD.distance(h, x) for x in made.values()), default=64)
+                if best is None or dmin > best[0]:
+                    best = (dmin, k, box, fill, energy, im, tb, cb, h)
+                if dmin >= TD.MIN_PHASH_DISTANCE:
+                    ok = best = (dmin, k, box, fill, energy, im, tb, cb, h)
+                    break
+            if ok:
                 break
         if ok is None:
-            import shutil                                  # noqa: PLC0415
             shutil.rmtree(out_dir, ignore_errors=True)
+            if not fill_seen:
+                raise ContractRefused(
+                    f"{slug}: variant {name}: no candidate image reaches the "
+                    f"{SUBJECT_FILL_MIN:.0%} subject fill with real subject "
+                    f"energy ({len(cands)} tried)")
             raise ContractRefused(
-                f"{slug}: variant {name}: no candidate image reaches the "
-                f"{SUBJECT_FILL_MIN:.0%} subject fill with real subject "
-                f"energy ({len(cands)} tried)")
-        k, box, fill, energy = ok
-        im, tb, cb = draw(base_frame(srcs[k], box), text, cands[k]["credit"],
-                          side)
+                f"{slug}: variant {name}: every candidate crop is a near-duplicate of "
+                f"another variant (best pHash distance {best[0]}, needs >= "
+                f"{TD.MIN_PHASH_DISTANCE}) - a second rights-cleared image is needed")
+        _d, k, box, fill, energy, im, tb, cb, h = ok
+        made[name] = h
         path = os.path.join(out_dir, f"{name}.jpg")
         im.save(path, "JPEG", quality=92, optimize=True, progressive=True)
         rec["variants"][name] = {
@@ -646,11 +706,14 @@ def build_into(slug: str, final_dir: str, title: str | None = None,
             "crop": cands[k]["crop"], "text": text, "words": len(text.split()),
             "credit": cands[k]["credit"], "text_bbox": tb, "credit_bbox": cb,
             "fill": fill, "energy": energy}
+    dup = TD.check(_pictures(rec), {n: rec["variants"][n]["text"] for n in VARIANT_NAMES})
+    if dup:
+        shutil.rmtree(out_dir, ignore_errors=True)
+        raise ContractRefused(f"{slug}: " + "; ".join(dup))
     with open(os.path.join(out_dir, "contract.json"), "w") as fh:
         json.dump(rec, fh, indent=2, ensure_ascii=False)
         fh.write("\n")
     if os.path.isdir(final_dir):
-        import shutil                                      # noqa: PLC0415
         shutil.rmtree(final_dir)
     os.replace(out_dir, final_dir)
     return {"dir": final_dir, "chosen": os.path.join(final_dir, f"{CHOSEN}.jpg"),
@@ -670,6 +733,10 @@ def verify(slug: str, root: str | None = None) -> list[str]:
     if not os.path.exists(cpath):
         return [f"{slug}: no contract.json in {d}"]
     rec = json.load(open(cpath))
+    if rec.get("layout") == "triptych":
+        # The owner's multi-subject layout (13 Oct 2026) has its own contract.
+        import thumb_triptych                              # noqa: PLC0415
+        return thumb_triptych.verify_dir(d, rec)
     p: list[str] = []
     if rec.get("grade") != GRADE["id"]:
         p.append(f"{slug}: built with grade {rec.get('grade')!r}, not the "
@@ -715,7 +782,25 @@ def verify(slug: str, root: str | None = None) -> list[str]:
             p.append(f"{slug}/{name}: published pixels differ from the graded "
                      f"crop by {diff:.1f} per channel - the channel grade is "
                      f"not what was applied")
+    vs = rec.get("variants") or {}
+    if all(n in vs for n in VARIANT_NAMES):
+        import thumb_distinct as TD                        # noqa: PLC0415
+        try:
+            pics = _pictures(rec)
+        except Exception as e:                             # noqa: BLE001
+            return p + [f"{slug}: variant pictures could not be rebuilt: {e}"]
+        p += [f"{slug}: {x}" for x in TD.check(pics, {n: vs[n].get("text", "") for n in VARIANT_NAMES})]
     return p
+
+
+def _pictures(rec: dict) -> dict:
+    """Each variant's picture as graded, BEFORE type: what the distinctness rule
+    compares (two variants with one picture and different words are one picture)."""
+    return {n: base_frame(_open_source({"path": os.path.join(IMAGERY, v["source"]),
+                                        "crop": v.get("crop")}), v["box"])
+            for n, v in (rec.get("variants") or {}).items()}
+
+
 
 
 def contract_slugs(root: str | None = None) -> list[str]:

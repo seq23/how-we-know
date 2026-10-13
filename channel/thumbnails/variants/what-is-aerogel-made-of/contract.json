@@ -42,29 +42,29 @@
       "subject": "aerogel",
       "sha256": "c11da515d57f81991fa4a2aae578e7cfdf8baf25158272ac1018e0993d3a9e39",
       "box": [
-        0,
-        3952,
+        711,
+        4004,
         5279,
-        6922
+        6573
       ],
       "crop": null,
-      "text": "99 PERCENT AIR",
-      "words": 3,
+      "text": "AEROGEL",
+      "words": 1,
       "credit": "PHOTOGRAPH, NASA'S SCIENTIFIC VISUALIZATION STUDIO - EMITS/S (PUBLIC DOMAIN)",
       "text_bbox": [
-        46,
-        243,
-        804,
-        662
+        647,
+        515,
+        1236,
+        678
       ],
       "credit_bbox": [
-        482,
-        13,
-        1266,
-        33
+        14,
+        14,
+        794,
+        35
       ],
-      "fill": 0.7757,
-      "energy": 0.4336
+      "fill": 0.8411,
+      "energy": 0.5601
     },
     "C": {
       "file": "C.jpg",
@@ -74,28 +74,28 @@
       "sha256": "c11da515d57f81991fa4a2aae578e7cfdf8baf25158272ac1018e0993d3a9e39",
       "box": [
         0,
-        4082,
-        5105,
-        6954
+        3932,
+        4821,
+        6644
       ],
       "crop": null,
       "text": "NOT A FOAM",
       "words": 3,
       "credit": "PHOTOGRAPH, NASA'S SCIENTIFIC VISUALIZATION STUDIO - EMITS/S (PUBLIC DOMAIN)",
       "text_bbox": [
-        46,
-        243,
-        538,
-        664
+        44,
+        515,
+        837,
+        678
       ],
       "credit_bbox": [
-        482,
-        13,
+        486,
+        14,
         1266,
-        33
+        35
       ],
-      "fill": 0.7664,
-      "energy": 0.4361
+      "fill": 0.8411,
+      "energy": 0.44
     }
   }
 }

@@ -37,65 +37,65 @@
     },
     "B": {
       "file": "B.jpg",
-      "source": "assets/fish__15757__dive05-rattail-hires.jpg",
+      "source": "assets/fish__14809__dive04-rattail-hires.jpg",
       "manifest": "rights.json",
       "subject": "fish",
-      "sha256": "65f1473918542347b437e2c00f12cc364783cf62cb7441ab0c41d2a5f665cebd",
+      "sha256": "b220e83aa82a87dec6ebc290d83bcae0b12586174739aedadd50bc8cd602aa83",
       "box": [
-        335,
-        484,
-        1214,
-        978
+        403,
+        329,
+        1315,
+        842
       ],
       "crop": null,
-      "text": "NOT SQUEEZED",
+      "text": "DEEP SEA",
       "words": 2,
       "credit": "NOAA Ocean Exploration, Seascape Alaska",
       "text_bbox": [
         44,
-        342,
-        1074,
-        686
+        515,
+        658,
+        678
       ],
       "credit_bbox": [
-        876,
-        13,
+        890,
+        14,
         1266,
         35
       ],
-      "fill": 0.6075,
-      "energy": 0.3741
+      "fill": 0.6449,
+      "energy": 0.4044
     },
     "C": {
       "file": "C.jpg",
-      "source": "assets/fish__15757__dive05-rattail-hires.jpg",
+      "source": "assets/fish__15526__dive02-rattail-hires.jpg",
       "manifest": "rights.json",
       "subject": "fish",
-      "sha256": "65f1473918542347b437e2c00f12cc364783cf62cb7441ab0c41d2a5f665cebd",
+      "sha256": "b58127fbaa0a04edccc46e6a13ec4e1f99728938a615e99b8a813aa480387af0",
       "box": [
-        475,
-        499,
-        1354,
-        993
+        202,
+        491,
+        1249,
+        1080
       ],
       "crop": null,
       "text": "100 TIMES",
       "words": 2,
       "credit": "NOAA Ocean Exploration, Seascape Alaska",
       "text_bbox": [
-        44,
-        513,
-        1057,
-        663
+        535,
+        515,
+        1236,
+        678
       ],
       "credit_bbox": [
-        876,
-        13,
-        1266,
+        14,
+        14,
+        390,
         35
       ],
-      "fill": 0.6168,
-      "energy": 0.3584
+      "fill": 0.9058,
+      "energy": 0.7282
     }
   }
 }

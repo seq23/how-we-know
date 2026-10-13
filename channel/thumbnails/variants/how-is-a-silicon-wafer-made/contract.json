@@ -37,65 +37,65 @@
     },
     "B": {
       "file": "B.jpg",
-      "source": "assets/mat__silicon-wafer__silicon-wafer-researcher-jpg.jpg",
+      "source": "assets/mat__welding-arc__us-army-soldier-welding-two-metal-pieces-fort-gregg-adams-vi.jpg",
       "manifest": "materials.json",
-      "subject": "silicon-wafer",
-      "sha256": "88741e28a10f10c3780cb5ba2d3c893fa2090abb0f4500066d20138184485a4c",
+      "subject": "welding-arc",
+      "sha256": "7c923374ed0b2343385815c61c7c967a9144b3ade848cd6aff6648969607ad06",
       "box": [
-        161,
-        700,
-        5743,
-        3840
+        0,
+        524,
+        4644,
+        3137
       ],
       "crop": null,
-      "text": "NOT IN NATURE",
-      "words": 3,
-      "credit": "PHOTOGRAPH, U.S. DEPARTMENT OF ENERGY (PUBLIC DOMAIN)",
+      "text": "SILICON WAFER",
+      "words": 2,
+      "credit": "PHOTOGRAPH, JUAN F. JIMENEZ, ARMY (PUBLIC DOMAIN)",
       "text_bbox": [
-        46,
-        243,
-        711,
-        664
+        44,
+        515,
+        1069,
+        678
       ],
       "credit_bbox": [
-        689,
-        13,
+        748,
+        14,
         1266,
-        33
+        35
       ],
-      "fill": 0.7487,
-      "energy": 0.8588
+      "fill": 0.6542,
+      "energy": 0.7379
     },
     "C": {
       "file": "C.jpg",
-      "source": "assets/mat__silicon-wafer__silicon-wafer-researcher-jpg.jpg",
+      "source": "assets/mat__welding-arc__us-army-soldier-welding-two-metal-pieces-fort-gregg-adams-vi.jpg",
       "manifest": "materials.json",
-      "subject": "silicon-wafer",
-      "sha256": "88741e28a10f10c3780cb5ba2d3c893fa2090abb0f4500066d20138184485a4c",
+      "subject": "welding-arc",
+      "sha256": "7c923374ed0b2343385815c61c7c967a9144b3ade848cd6aff6648969607ad06",
       "box": [
-        1031,
-        1180,
-        5760,
-        3840
+        1402,
+        710,
+        4922,
+        2690
       ],
       "crop": null,
       "text": "2000 DEGREES",
       "words": 2,
-      "credit": "PHOTOGRAPH, U.S. DEPARTMENT OF ENERGY (PUBLIC DOMAIN)",
+      "credit": "PHOTOGRAPH, JUAN F. JIMENEZ, ARMY (PUBLIC DOMAIN)",
       "text_bbox": [
-        44,
-        342,
-        940,
-        663
+        255,
+        515,
+        1235,
+        678
       ],
       "credit_bbox": [
-        689,
-        13,
-        1266,
-        33
+        14,
+        14,
+        532,
+        35
       ],
-      "fill": 0.8131,
-      "energy": 0.8088
+      "fill": 0.7383,
+      "energy": 0.9575
     }
   }
 }
