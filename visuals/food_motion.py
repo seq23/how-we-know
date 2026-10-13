@@ -37,6 +37,13 @@ from pathlib import Path
 
 W, H, FPS = 1920, 1080, 30
 SLOWMO = 2.0
+# SPEED-RAMPED SLOW MOTION (owner, 13 Oct 2026: "keep speed-ramped slow motion
+# as the default treatment for pours and drips"). A pour starts at real speed
+# and eases into RAMP_TO x slower over its first RAMP_IN_S seconds of source,
+# then holds there; frames blended, never invented.
+RAMP_TO = 2.6
+RAMP_IN_S = 0.8
+RAMP_USES = {"pour", "drip", "liquid", "sheets", "coat"}
 PUSH_IN = 1.12
 GRID_COLS, GRID_ROWS = 4, 3
 KALEIDO_DRIFT = 0.6          # share of the free margin the mirror window drifts across
@@ -71,21 +78,46 @@ def _span(rec: dict, clip_dur: float, use: int = 0) -> tuple[float, float]:
         a, b = rng[use % len(rng)]
         return float(a), float(min(b, clip_dur))
     pad = 0.3 if clip_dur > 3 else 0.0
-    return pad, clip_dur - pad
+    a, b = pad, clip_dur - pad
+    # never the black a stock clip opens or closes on (research/food_footage.black_spans)
+    for s, e in (rec.get("black") or {}).get("spans") or []:
+        if s <= a + 0.1:
+            a = max(a, e + 0.1)
+        elif e >= b - 0.1:
+            b = min(b, s - 0.1)
+    if b - a < 1.0:                              # all but black: keep the old span
+        return pad, clip_dur - pad
+    return a, b
 
 
-def _base_chain(src_span_s: float, need_s: float, speed: float) -> str:
+def ramped_len(span: float, k: float = RAMP_TO, r: float = RAMP_IN_S) -> float:
+    r = min(r, span)
+    return r * (1 + k) / 2 + k * (span - r)
+
+
+def _base_chain(src_span_s: float, need_s: float, speed: float, ramp: bool = False) -> str:
     """Filters that turn [0, src_span_s] of input into >= need_s seconds at 30 fps,
-    slowed by `speed`, ping-ponged when the slowed span is too short."""
-    f = [f"setpts={speed:.4f}*PTS"] if speed != 1.0 else []
-    if speed != 1.0:
+    slowed by `speed` (or ramped from real speed to RAMP_TO), ping-ponged when the
+    slowed span is too short."""
+    if ramp:
+        k, r = RAMP_TO, min(RAMP_IN_S, src_span_s)
+        f = [f"setpts='(if(lt(T,{r:.3f}),T+({k - 1:.3f})/(2*{r:.3f})*T*T,"
+             f"{r * (1 + k) / 2:.4f}+{k:.3f}*(T-{r:.3f})))/TB'",
+             f"minterpolate=fps={FPS}:mi_mode=blend"]
+        out_len = ramped_len(src_span_s, k, r)
+    else:
+        f = [f"setpts={speed:.4f}*PTS"] if speed != 1.0 else []
+        out_len = src_span_s * speed
+    if ramp:
+        pass
+    elif speed != 1.0:
         f.append(f"minterpolate=fps={FPS}:mi_mode=blend")
     else:
         f.append(f"fps={FPS}")
     chain = ",".join(f)
-    if src_span_s * speed + 0.05 < need_s:
+    if out_len + 0.05 < need_s:
         # forward + reverse = a seamless loop; repeated as many times as needed
-        reps = int(need_s / (2 * src_span_s * speed)) + 1
+        reps = int(need_s / (2 * out_len)) + 1
         chain += (f",split[fw][bw0];[bw0]reverse[bw];[fw][bw]concat=n=2:v=1:a=0,"
                   f"loop=loop={reps}:size=32767:start=0")
     return chain
@@ -105,12 +137,13 @@ def graph(rec: dict, dur: float, treatment: str, clip_dur: float, seed: int = 0,
         a, b = _span(rec, cd)
         a = min(b - 0.5, a + offset) if b - a > 1.0 else a
     span = max(0.2, b - a)
-    speed = SLOWMO if treatment == "slowmo" else 1.0
+    ramp = treatment == "slowmo" and bool(set(rec.get("uses") or []) & RAMP_USES)
+    speed = (RAMP_TO if ramp else SLOWMO) if treatment == "slowmo" else 1.0
     trim = f"trim=start={a:.3f}:end={b:.3f},setpts=PTS-STARTPTS"
     if rec.get("crop"):                       # x, y, w, h as fractions of the source frame
         cx, cy, cw, ch = rec["crop"]
         trim += f",crop=trunc(iw*{cw}/2)*2:trunc(ih*{ch}/2)*2:trunc(iw*{cx}):trunc(ih*{cy})"
-    base = _base_chain(span, dur + 0.5, speed)
+    base = _base_chain(span, dur + 0.5, speed, ramp)
     if treatment in ("play", "slowmo"):
         vf = f"[0:v]{trim},{base},{COVER}[v]"
     elif treatment == "pushin":
@@ -151,7 +184,8 @@ def graph(rec: dict, dur: float, treatment: str, clip_dur: float, seed: int = 0,
               f"split[q0][q1];[q1]hflip[q1f];[q0][q1f]hstack,split[h0][h1];[h1]vflip[h1f];"
               f"[h0][h1f]vstack,setsar=1[v]")
     vf = vf[:-3] + f",{VIGNETTE}[v]"                      # every treatment ends "...[v]"
-    return {"vf": vf, "frames": n, "span": [round(a, 3), round(b, 3)], "speed": speed}
+    return {"vf": vf, "frames": n, "span": [round(a, 3), round(b, 3)], "speed": speed,
+            "ramp": ramp}
 
 
 def prepare(rec_path: str, rec: dict, dur: float, out: Path, treatment: str = "play",

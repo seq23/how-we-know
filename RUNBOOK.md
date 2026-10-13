@@ -475,20 +475,23 @@ split monthly and writes its reasoning to `loop/state/monthly/<month>.md`.
   count, and the next-ranked domain in the taxonomy takes its slots
   automatically.
 
-## Food, the third domain — one look from you, then nothing
+## Food, the third domain — approved, running
 
-- **Registered and scheduled** (Wednesday and Saturday), **held** until you have watched the
-  chocolate sample, round 2: `~/Desktop/how-we-know-food-sample-round-2/` (the mp4, a 720p copy
-  for sending, three thumbnails, a note listing every clip and its licence). Round 1 is in
-  `~/Desktop/how-we-know-food-sample/`; your verdict on it (one voice; real movement) is built in.
-- **Real footage keys:** Pixabay reads `~/.config/how-we-know/pixabay.key` (mode 600). A Pexels
-  key, when Pexels issues them again, goes in `pexels.key` beside it - no code change. Without
-  either, the free fallbacks (Mixkit, Commons, Internet Archive, NASA) still find the footage.
-- **Your notes are the next iteration.** When it is right, the gate is one line in
-  `loop/config.json` (`domains.sample_gate` → `"state": "cleared"`); after that the first full
-  30-minute video renders on the Mac like any other episode. Until then Wed/Sat simply stay empty.
-- **Three food POV lines are drafted** for you to read with the sample (`pov/pov-bank.json`,
-  `pending_approval`); nothing uses them until they are yours.
+- **You approved the chocolate sample on 13 October** ("MUCH better"); the gate is open
+  (`loop/config.json` `domains.sample_gate`). The first full video, **"Bread, Steak, Chocolate:
+  What's Inside?"**, is rendered on this Mac in five pieces and stitched, and the cloud upload lane
+  schedules it into the first Wednesday or Saturday slot at least 24 hours after it goes up.
+- **Your two notes are rules now, measured on every food render:** hands kept rare (a note above
+  15 % of screen time, a failure above 30 %) and mesmerising imagery (at least 40 % of every segment
+  in slow motion or impossible-scale walls and mirrors). A food video that fails either, or any other
+  line of the approved sample's contract, is held by the upload lane by name, never shipped.
+- **Thumbnail F** is the published one; D and E are the B and C variants for Test & Compare.
+- **Your food interview is the one thing still open, and nothing waits on it:** until the three
+  drafted food POV lines are yours (`pov/pov-bank.json`, `pending_approval`), food videos simply have
+  no producer-POV line.
+- **Real footage keys:** Pixabay reads `~/.config/how-we-know/pixabay.key`. Mixkit's *restricted*
+  clips are refused by the footage module (most of its bread clips are restricted); a Pexels key, when
+  Pexels issues them again, goes in `pexels.key` beside it - no code change.
 
 ## Monetisation, both gates
 

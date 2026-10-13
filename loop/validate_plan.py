@@ -469,7 +469,26 @@ def c10_domains_admitted() -> Check:
                     if pov_match.line_domain(ln) == domain_id
                     and ln.get("tier") == "specific"
                     and (gated or not ln.get("pending_approval"))]
-        if not specific:
+        # A domain may instead ship with NO producer-POV beat at all until its
+        # top-up exists (config.json domains.pov_not_required, dated, with its
+        # basis): the requirement exists so that lines which do not transfer are
+        # never spoken in it, and a domain whose episodes carry no [HUMAN] beat
+        # speaks none. Held to that here: any of its scripts with a [HUMAN]
+        # beat fails, whatever the declaration says.
+        exempt = (cfg.get("domains", {}).get("pov_not_required") or {}).get(domain_id)
+        if not specific and exempt:
+            import batch_queue                             # noqa: PLC0415
+            shipping = [batch_queue.FOOD_SCRIPTS / f"{r['slug']}.md"
+                        for r in batch_queue.food_entries()
+                        if domains.row_domain(r) == domain_id]
+            carriers = [s.name for s in shipping if "[HUMAN]" in _narration(s)]
+            if carriers:
+                c.fail(f"{domain_id!r} is declared POV-free (domains.pov_not_required) "
+                       f"but {', '.join(carriers)} carries a [HUMAN] beat")
+            else:
+                c.note(f"{domain_id!r}: no producer-POV beat in its episodes until its "
+                       f"top-up ({exempt.get('basis', '')[:80]})")
+        elif not specific:
             c.fail(f"{domain_id!r} has zero tier:specific line(s) in "
                    f"pov/pov-bank.json - new_niche_requirement's POV top-up "
                    f"was never done for it")
@@ -480,6 +499,11 @@ def c10_domains_admitted() -> Check:
         c.note(f"{checked} domain(s) admitted and equipped: "
                + ", ".join(sorted(d for d, s in allocation.items() if s)))
     return c
+
+
+def _narration(script: Path) -> str:
+    t = script.read_text(encoding="utf-8")
+    return t.split("## Narration", 1)[1].split("\n## ", 1)[0] if "## Narration" in t else t
 
 
 # ------------------------------------------------------------------ runner

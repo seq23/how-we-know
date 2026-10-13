@@ -143,5 +143,18 @@
   ],
   "min_questions": 4,
   "questions_why": "hand-kept from the autocomplete pulls (segments[].phrasings): only questions this video answers. describe.search_questions' own picks (segments[].search_questions) include ones it does not answer - 'Is steak good for you?', 'How you melt chocolate?' - and a health question is outside the food brief."
+ },
+ "thumbnail": {
+  "published": "A",
+  "A": "thumbnail F - diagonal split, bread largest, headline centred",
+  "B": "thumbnail D - vertical panels",
+  "C": "thumbnail E - horizontal strips",
+  "set": "channel/thumbnails/variants/why-bread-rises-steak-browns-chocolate-snaps/ (triptych, #213)",
+  "decided": "owner, 13 Oct 2026: F is the one; D and E are B and C for Test & Compare and the demand lane's second packaging"
+ },
+ "demand_note": {
+  "seared_meat": "why does seared meat taste good: free demand half 0.035, under the 0.16 floor (research/publish_order_food_science.json, 13 Oct 2026); competition half unmeasured until Saturday's score lane (17 Oct) - kept because the owner chose the three questions",
+  "bread": "0.573 (clears the floor)",
+  "chocolate": "0.552 (clears the floor)"
  }
 }

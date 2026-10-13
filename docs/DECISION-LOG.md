@@ -1336,3 +1336,32 @@ food in motion - real MOVEMENT and the impossible-scale feel (round 1 was 11/13 
   PD/CC0; every clip is credited on screen anyway.
 - Gate stays closed (`domains.sample_gate`, round 2 awaiting her review).
 
+
+## 2026-10-13 (later) — food: the sample approved; the first full video
+
+- **Owner: "MUCH better"** on the round-2 chocolate sample. `domains.sample_gate` cleared (dated note).
+  Its contract is now the food domain's, measured per piece and per episode
+  (`visuals/food_episode.check_episode`, V55) and HELD in the upload lane (`backfill.food_hold`, in
+  `library_pending` and `upload_one`) - a food video that fails any line cannot ship by any path.
+- **Her two notes the same day, as numbers.** Hands: a preference, not a ban - noted above 15 % of
+  screen time, failing above 30 %; the timeline keeps a 12 % hands budget per piece and every clip's
+  hands answer is a reviewed record (`research/food_footage.HANDS`, contact sheets). Mesmerising:
+  slow motion or composites >= 40 % of every segment (5-8 composites a segment), speed-ramped slow
+  motion (real speed easing to 2.6x over 0.8 s) for pours and drips, slow motion the default for
+  anything that flows, flickers or rises, and the richest clip first (saturation, contrast, gloss,
+  detail, scored on five frames and recorded per clip).
+- **Rendered as five pieces, stitched with no re-encode** (open, chocolate, bread, steak, tail),
+  refused unless every piece's packets reappear byte-identical (#191's proof); never one 30-minute pass.
+- **Footage, as found.** Mixkit's bread and many steak clips are under its Stock Video RESTRICTED
+  licence - the item-page gate refused 12; Pixabay carries bread and steak. No filmed, free
+  rising-dough clip exists in the chain (Mixkit's two are restricted), so the bread lines that
+  claimed "the dough has doubled on the screen" were rewritten to what the footage shows. A Pixabay
+  clip that opens on 2.9 s of black put a black frame in the first cold-open render: black spans are
+  now detected per clip and never used (`black_spans`, `food_motion._span`); smoke-on-black refused.
+- **No producer POV in food yet.** Her food interview (three `pending_approval` lines) has not
+  happened; food ships no [HUMAN] beat until it does (`domains.pov_not_required`; c10 fails a shipping
+  food script with one). Her words are never invented.
+- **Seared meat stays** (her choice of the three) though its free demand half is 0.035, under the
+  0.16 floor; the competition half is unmeasured until Saturday's score lane (recorded in the spec).
+- **R2 multi-part objects**: wrangler caps one put at 315 MB; files over 200 MB are shelved as parts
+  with a whole-file sha256 that `get` re-checks. The cloud-upload job timeout covers a 30-minute render.

@@ -157,10 +157,45 @@ def parse(script: Path) -> list[dict]:
                 d = {"kind": m.group(1).lower(),
                      "args": [x.strip() for x in m.group(2).split("|")] if m.group(2) else []}
         text = " ".join(ln for ln in lines if not DIRECTIVE.match(ln.strip())).strip()
+        seg = segment_of(sec)
         # ONE voice start to finish (owner, 2026-10-13); the opening differs
-        # only in its cutting.
+        # only in its cutting. In a full episode each segment re-hooks: its
+        # question and the paragraph after it are cut like an opening.
         out.append({"section": sec, "directive": d, "text": text, "register": "standard",
-                    "phase": "opening" if sec == "Cold open" else "body"})
+                    "segment": seg, "phase": "opening" if sec == "Cold open" else "body"})
+    if any(":" in (x["section"] or "") and segment_of(x["section"]) in SEGMENTS for x in out):
+        for seg in SEGMENTS:
+            for x in [x for x in out if x["segment"] == seg][:SEGMENT_OPENING_BEATS]:
+                x["phase"] = "opening"
+    return out
+
+
+# A full food episode (owner, 2026-10-13: three ~9-minute questions under one
+# hooked cold open, a title card and a warm tail) names every narration section
+# "<Food>: <heading>". The prefix is the segment; "Cold open" and "Title card"
+# are the open, "Closing" the tail. A single-question script (the sample) has no
+# prefixes and is one segment, "chocolate".
+SEGMENTS = ("chocolate", "bread", "steak")
+SEGMENT_OPENING_BEATS = 2
+
+
+def segment_of(section: str | None) -> str:
+    s = (section or "").strip()
+    if s in ("Cold open", "Title card"):
+        return "open"
+    if s == "Closing":
+        return "tail"
+    head = s.split(":", 1)[0].strip().lower() if ":" in s else ""
+    return head if head in SEGMENTS else "chocolate"
+
+
+def pieces(paras: list[dict]) -> dict[str, list[int]]:
+    """Paragraph indices per render piece, in episode order. A full episode is
+    rendered as these pieces and stitched (visuals/food_episode.py), never as a
+    single 30-minute pass."""
+    out: dict[str, list[int]] = {}
+    for i, p in enumerate(paras):
+        out.setdefault(p["segment"], []).append(i)
     return out
 
 
@@ -184,7 +219,24 @@ def catalogue() -> dict[str, dict]:
                         "credit": ("AI-GENERATED IMAGE" if kind == "ai"
                                    else (r.get("credit_line") or "")),
                         "ai": kind == "ai"}
+            if kind == "clip":
+                cat[key]["segment"] = r.get("segment") or "chocolate"
+                cat[key]["hands"] = hands_of(cat[key])
     return cat
+
+
+def hands_of(rec: dict) -> bool:
+    """Does this clip show human hands? The reviewed answer
+    (research/food_footage.HANDS, from contact sheets) when there is one, else
+    the clip's own words. Owner, 13 Oct 2026: LIMIT HUMAN HANDS - not a ban,
+    "not bad if we do sometimes"; HANDS_NOTE_SHARE / HANDS_FAIL_SHARE."""
+    sys.path.insert(0, str(ROOT / "research"))
+    import food_footage as _ff                                # noqa: PLC0415
+    got = _ff.HANDS.get(rec.get("subject") or rec.get("key") or "")
+    if got is not None:
+        return bool(got[0])
+    words = f"{rec.get('title') or ''}".lower()
+    return any(w in words for w in _ff.HAND_WORDS)
 
 
 def verify_asset(rec: dict) -> None:
@@ -210,9 +262,44 @@ WORD_USES: list[tuple[str, list[str]]] = [
     ("bean", ["beans", "cacao"]), ("hand", ["solid", "bar"]), ("warm", ["melt"]),
     ("degrees", ["melt", "liquid"]), ("chocolate", ["liquid", "solid", "scale"]),
 ]
+WORD_USES_BREAD: list[tuple[str, list[str]]] = [
+    ("oven spring", ["rise", "oven"]), ("rise", ["rise", "oven"]), ("rising", ["rise"]),
+    ("doubled", ["rise"]), ("dough", ["dough", "rise"]), ("knead", ["knead", "dough"]),
+    ("gluten", ["stretch", "dough"]), ("stretch", ["stretch", "dough"]),
+    ("yeast", ["micro", "rise"]), ("cell", ["micro", "rise"]), ("microscope", ["micro", "lab"]),
+    ("pasteur", ["micro", "lab"]), ("ferment", ["micro", "dough"]), ("brewer", ["dough"]),
+    ("flour", ["flour", "wheat"]), ("wheat", ["wheat", "flour"]), ("starch", ["flour", "crumb"]),
+    ("oven", ["oven", "bake"]), ("bake", ["oven", "bake"]), ("heat", ["oven"]),
+    ("crumb", ["crumb", "slice"]), ("slice", ["slice", "crumb"]), ("hole", ["crumb", "slice"]),
+    ("bubble", ["rise", "crumb"]), ("crust", ["crust", "bake"]), ("loaf", ["loaf", "bake"]),
+    ("x-ray", ["lab", "crumb"]), ("scanner", ["lab", "crumb"]), ("warm", ["rise", "oven"]),
+    ("sourdough", ["dough"]), ("gas", ["rise"]), ("bread", ["loaf", "rise", "scale"]),
+]
+WORD_USES_STEAK: list[tuple[str, list[str]]] = [
+    ("sear", ["sear", "sizzle"]), ("pan", ["pan", "sizzle"]), ("grill", ["grill", "flame"]),
+    ("flame", ["flame", "grill"]), ("fire", ["flame", "char"]), ("crust", ["sear", "crust"]),
+    ("brown", ["sear", "crust"]), ("boil", ["steam", "pan"]), ("water", ["steam", "pan"]),
+    ("steam", ["steam", "pan"]), ("hiss", ["sizzle", "pan"]), ("dry", ["sear"]),
+    ("smell", ["smoke", "aroma"]), ("aroma", ["smoke", "aroma"]), ("molecule", ["smoke", "lab"]),
+    ("chemist", ["lab"]), ("laborator", ["lab"]), ("chromatograph", ["lab", "smoke"]),
+    ("spectrometer", ["lab"]), ("instrument", ["lab"]), ("column", ["lab"]),
+    ("maillard", ["sear", "crust"]), ("sugar", ["sear"]), ("amino", ["sear"]),
+    ("fat", ["fat", "butter", "sizzle"]), ("lamb", ["meat"]), ("animal", ["meat"]),
+    ("coffee", ["coffee", "roast"]), ("roast", ["roast", "coffee", "grill"]),
+    ("toast", ["toast"]), ("char", ["char", "flame"]), ("burn", ["char", "flame"]),
+    ("caramel", ["sear"]), ("interior", ["sliced", "inside"]), ("inside", ["sliced", "inside"]),
+    ("cut", ["sliced"]), ("butter", ["butter"]), ("cook", ["grill", "pan"]),
+    ("steak", ["sear", "grill", "meat"]), ("meat", ["meat", "grill"]), ("beef", ["meat", "sear"]),
+]
+WORD_USES_BY = {"chocolate": WORD_USES, "bread": WORD_USES_BREAD, "steak": WORD_USES_STEAK}
 # Diagram stills (AI) - the only place an AI still may appear: under the glowing
-# cross-section device. Never food in motion.
-DIAGRAM_STILLS = ["chocolate-break-macro", "gloss-macro"]
+# cross-section device. Never food in motion. One device per segment.
+DIAGRAM_STILLS_BY = {
+    "chocolate": ["chocolate-break-macro", "gloss-macro"],
+    "bread": ["loaf-crumb-macro"],
+    "steak": ["seared-crust-macro"],
+}
+DIAGRAM_STILLS = DIAGRAM_STILLS_BY["chocolate"]
 # Thumbnail subjects per slug, best first (visuals/thumb_contract.candidates).
 THUMB_SUBJECTS = {
     "why-bread-rises-steak-browns-chocolate-snaps":
@@ -223,29 +310,63 @@ THUMB_SUBJECTS = {
     "why-does-seared-meat-taste-good": ["thousand-steaks", "seared-crust-macro", "seared-steak"],
 }
 # Treatment per clip use: liquids in slow motion, solids pushed in, the rest as shot.
-SLOW_USES = {"pour", "drip", "liquid", "sheets", "coat"}
+SLOW_USES = {"pour", "drip", "liquid", "sheets", "coat",
+             # owner, 13 Oct 2026: slow motion is the default for anything that
+             # flows, flickers or rises - the hypnotic register lives here
+             "sizzle", "flame", "smoke", "aroma", "steam", "fat", "butter", "char",
+             "flour", "wheat", "rise", "coffee", "roast"}
 PUSH_USES = {"solid", "bar", "crystal", "gloss", "cacao"}
 # The impossible-scale composites, by clip, best first (looked at on contact
 # sheets 2026-10-13): a wall wants a subject with clear edges on a dark ground,
 # a kaleidoscope wants flowing liquid with no recognisable object in it.
 WALL_CLIPS = ["drip-strawberry", "field", "chunks", "pile"]
 KALEIDO_CLIPS = ["fountain-flow", "drip-macro", "sheets"]
+# Per segment of the full episode (contact sheets, 2026-10-13). Hands-free clips
+# only: a composite multiplies its picture, so a hand in it would be a wall of hands.
+WALL_CLIPS_BY = {
+    "chocolate": WALL_CLIPS,
+    "bread": ["bread-buns", "bread-display", "bread-rise-oven", "bread-wheat-close"],
+    "steak": ["steak-skewers", "steak-sizzle", "steak-sear-grill", "steak-coals"],
+    "open": ["field", "steak-sear-grill", "bread-rise-oven", "chunks"],
+    "tail": ["pile", "bread-buns", "steak-skewers"],
+}
+KALEIDO_CLIPS_BY = {
+    "chocolate": KALEIDO_CLIPS,
+    "bread": ["bread-wheat-field", "bread-mixer", "bread-flour-mill"],
+    "steak": ["steak-fire", "steak-coffee", "steak-butter", "steak-flame"],
+    "open": ["fountain-flow", "steak-fire", "bread-wheat-field"],
+    "tail": ["sheets", "steak-fire"],
+}
+# Hands: a clip with hands is never preferred while a hands-free clip suits the
+# paragraph as well (owner, 13 Oct 2026). Measured per render, per episode.
+HANDS_NOTE_SHARE = 0.15      # above this the render carries a note
+HANDS_FAIL_SHARE = 0.30      # above this it fails
+HANDS_BUDGET = 0.12          # what the timeline aims for, per piece
 
 
-def clips_of(cat: dict) -> list[str]:
-    return [k for k, r in cat.items() if r["kind"] == "clip"]
+def clips_of(cat: dict, segment: str | None = None) -> list[str]:
+    """Clip keys; a segment sees only its own food's clips (the open and the tail
+    see all three)."""
+    return [k for k, r in cat.items() if r["kind"] == "clip"
+            and (segment in (None, "open", "tail") or r.get("segment", "chocolate") == segment)]
 
 
-def pool_for(text: str, cat: dict) -> list[str]:
-    """Clip keys for a paragraph: those whose uses its words name, then the rest."""
+def pool_for(text: str, cat: dict, segment: str | None = None) -> list[str]:
+    """Clip keys for a paragraph: those whose uses its words name, then the rest;
+    hands-free before hands at the same fit."""
     low = text.lower()
     want: list[str] = []
-    for word, uses in WORD_USES:
-        if word in low:
-            want += [u for u in uses if u not in want]
-    clips = clips_of(cat)
-    scored = sorted(clips, key=lambda k: min((want.index(u) for u in cat[k].get("uses") or []
-                                               if u in want), default=len(want) + 1))
+    tables = ([WORD_USES_BY.get(segment, WORD_USES)] if segment in WORD_USES_BY
+              else list(WORD_USES_BY.values()) if segment in ("open", "tail") else [WORD_USES])
+    for table in tables:
+        for word, uses in table:
+            if word in low:
+                want += [u for u in uses if u not in want]
+    clips = clips_of(cat, segment)
+    scored = sorted(clips, key=lambda k: (min((want.index(u) for u in cat[k].get("uses") or []
+                                                if u in want), default=len(want) + 1),
+                                          bool(cat[k].get("hands")),
+                                          -float((cat[k].get("richness") or {}).get("score") or 0)))
     return scored
 
 
@@ -293,7 +414,8 @@ def build_timeline(paras: list[dict], beats: list[dict], cat: dict) -> dict:
     """Shots over the narration: cuts in the opening, holds after the title,
     composites spread through the video, AI only under the device."""
     shots, t, used, last = [], 0.0, {}, None
-    devices = 0
+    devices: dict[str, int] = {}
+    hands_s, piece_s = 0.0, sum(float(b["duration"]) for b in beats)
     lo_c, hi_c = PRESET["composites"]
     clips = clips_of(cat)
     for i, (p, b) in enumerate(zip(paras, beats)):
@@ -305,10 +427,11 @@ def build_timeline(paras: list[dict], beats: list[dict], cat: dict) -> dict:
             t += dur
             continue
         d = p.get("directive") or {}
-        if d.get("kind") == "cross_section" and devices < PRESET["devices_per_part_max"]:
-            still = next((k for k in DIAGRAM_STILLS if k in cat), None)
+        seg = p.get("segment") or "chocolate"
+        if d.get("kind") == "cross_section" and devices.get(seg, 0) < PRESET["devices_per_part_max"]:
+            still = next((k for k in DIAGRAM_STILLS_BY.get(seg, DIAGRAM_STILLS) if k in cat), None)
             if still:
-                devices += 1
+                devices[seg] = devices.get(seg, 0) + 1
                 shots.append({"start": t, "dur": dur, "kind": "device", "beat": i, "phase": "body",
                               "asset": still, "treatment": "still",
                               "label": (d.get("args") or ["", ""])[-1]})
@@ -316,42 +439,104 @@ def build_timeline(paras: list[dict], beats: list[dict], cat: dict) -> dict:
                 continue
         phase = p.get("phase") or ("opening" if p["section"] == "Cold open" else "body")
         lo, hi = PRESET["opening_cut_s"] if phase == "opening" else PRESET["body_hold_s"]
-        pool = pool_for(p["text"], cat)
+        pool = pool_for(p["text"], cat, seg)
         if not pool:
             raise ValueError("no real clips in the catalogue - food in motion is real footage only")
         for j, L in enumerate(cut_lengths(dur, lo, hi, seed=i)):
             order = sorted(pool, key=lambda k: (used.get(k, 0), pool.index(k)))
-            pick = next((k for k in order if k != last), order[0])
+            # THE HANDS BUDGET (owner, 13 Oct 2026: limit hands, not a ban): a
+            # clip with hands is taken only while the piece stays under
+            # HANDS_BUDGET of its length; otherwise the best hands-free clip.
+            over = hands_s + L > HANDS_BUDGET * piece_s
+            pick = next((k for k in order if k != last and not (over and cat[k].get("hands"))),
+                        next((k for k in order if k != last), order[0]))
+            if cat[pick].get("hands"):
+                hands_s += L
             last = pick
             used[pick] = used.get(pick, 0) + 1
             shots.append({"start": t, "dur": L, "kind": "picture", "beat": i, "phase": phase,
-                          "register": "standard", "asset": pick,
+                          "register": "standard", "asset": pick, "segment": seg,
                           "treatment": treatment_for(cat[pick], phase)})
             t += L
-    _place_composites(shots, cat, lo_c, hi_c)
+    role = piece_role(paras)
+    lo_c, hi_c = COMPOSITES_BY_ROLE.get(role, (lo_c, hi_c))
+    _place_composites(shots, cat, lo_c, hi_c, role)
+    if role in SEGMENTS or role == "open":
+        _raise_spectacle(shots, cat, SPECTACLE_TARGET)
+    for s in shots:
+        if s.get("asset") in cat and cat[s["asset"]]["kind"] == "clip":
+            s["hands"] = bool(cat[s["asset"]].get("hands"))
     for k, s in enumerate(shots):                 # staggered in-points: a clip reused never repeats its frames
         s["offset"] = round(sum(1 for x in shots[:k] if x.get("asset") == s.get("asset")) * 2.5, 2)
-    return {"preset": PRESET["id"], "grade": FOOD_GRADE["id"], "duration": t, "shots": shots}
+    return {"preset": PRESET["id"], "grade": FOOD_GRADE["id"], "duration": t, "shots": shots,
+            "piece": role}
 
 
-def _place_composites(shots: list[dict], cat: dict, lo: int, hi: int) -> None:
+# What a render piece is: "sample" (one question, the approved round-2 cut),
+# or one of a full episode's pieces - "open" (cold open + title card), a
+# segment ("chocolate", "bread", "steak") or "tail".
+# Owner, 13 Oct 2026 (after approving the sample): push the imagery further
+# toward MESMERISING - at least SPECTACLE_SHARE_MIN of every segment's screen
+# time in slow motion or an impossible-scale composite, more composites than the
+# sample's five. The open re-uses the spectacle rule; the tail is too short to.
+SEGMENT_COMPOSITES = (5, 8)
+SPECTACLE_SHARE_MIN = 0.40
+SPECTACLE_TARGET = 0.50
+SPECTACLE_TREATMENTS = ("slowmo", "wall", "kaleido")
+COMPOSITES_BY_ROLE = {"sample": PRESET["composites"], "open": (1, 3), "tail": (0, 2),
+                      **{s: SEGMENT_COMPOSITES for s in SEGMENTS}}
+
+
+def _raise_spectacle(shots: list[dict], cat: dict, target: float) -> None:
+    """Turn body holds into slow motion, richest clip first, until spectacle
+    (slow motion + composites) reaches `target` of the piece's screen time."""
+    total = sum(s["dur"] for s in shots) or 1.0
+
+    def share() -> float:
+        return sum(s["dur"] for s in shots if s.get("treatment") in SPECTACLE_TREATMENTS) / total
+    cands = [s for s in shots if s["kind"] == "picture" and s.get("phase") == "body"
+             and s.get("treatment") in ("play", "pushin")]
+    cands.sort(key=lambda s: -float((cat.get(s["asset"], {}).get("richness") or {}).get("score") or 0))
+    for s in cands:
+        if share() >= target:
+            break
+        s["treatment"] = "slowmo"
+
+
+def piece_role(paras: list[dict]) -> str:
+    segs = {p.get("segment") for p in paras}
+    if segs <= {"open"}:
+        return "open"
+    if segs <= {"tail"}:
+        return "tail"
+    body = segs - {"open", "tail"}
+    if len(body) == 1 and segs == body:
+        return next(iter(body))
+    return "sample"
+
+
+def _place_composites(shots: list[dict], cat: dict, lo: int, hi: int,
+                      role: str = "sample") -> None:
     """Turn 3-5 picture shots into the impossible-scale composites: the opening's
     first shot (a wall), then body holds spread evenly, wall and kaleidoscope
     alternating, each on a clip that suits it."""
     pics = [s for s in shots if s["kind"] == "picture"]
-    if not pics:
+    if not pics or hi <= 0:
         return
     chosen = [pics[0]] if pics[0]["phase"] == "opening" else []
     body = [s for s in pics if s["phase"] == "body"]
     want = max(lo, min(hi, len(body) // 3 + len(chosen))) - len(chosen)
+    want = min(want, hi - len(chosen))
     if body and want > 0:
         step = len(body) / want
         chosen += [body[min(len(body) - 1, int(step * (k + 0.5)))] for k in range(want)]
     taken: set[str] = set()
     for n, s in enumerate(chosen):
         kind = "wall" if s["phase"] == "opening" or n % 2 else "kaleido"
-        pref = [k for k in (WALL_CLIPS if kind == "wall" else KALEIDO_CLIPS)
-                if k in cat and k not in taken]
+        walls = WALL_CLIPS_BY.get(role, WALL_CLIPS)
+        kals = KALEIDO_CLIPS_BY.get(role, KALEIDO_CLIPS)
+        pref = [k for k in (walls if kind == "wall" else kals)
+                if k in cat and k not in taken and not cat[k].get("hands")]
         if pref:
             s["asset"] = pref[0]
         taken.add(s["asset"])
@@ -361,15 +546,32 @@ def _place_composites(shots: list[dict], cat: dict, lo: int, hi: int) -> None:
 
 def screen_time(spec: dict) -> dict:
     """Seconds of real video vs stills on screen (title cards count by their background)."""
-    real = still = 0.0
+    real = still = hands = spect = 0.0
     for s in spec.get("shots") or []:
+        if s.get("treatment") in SPECTACLE_TREATMENTS:
+            spect += s["dur"]
         if s.get("treatment") in ("play", "slowmo", "pushin", "wall", "kaleido"):
             real += s["dur"]
         else:
             still += s["dur"]
+        if s.get("hands"):
+            hands += s["dur"]
     tot = real + still
     return {"real_video_s": round(real, 2), "still_s": round(still, 2),
-            "real_video_share": round(real / tot, 4) if tot else 0.0}
+            "real_video_share": round(real / tot, 4) if tot else 0.0,
+            "hands_s": round(hands, 2), "hands_share": round(hands / tot, 4) if tot else 0.0,
+            "spectacle_s": round(spect, 2),
+            "spectacle_share": round(spect / tot, 4) if tot else 0.0}
+
+
+def hands_notes(spec: dict) -> list[str]:
+    """The hands figure as a NOTE above HANDS_NOTE_SHARE (owner: a preference,
+    not a ban). check_spec fails it above HANDS_FAIL_SHARE."""
+    st = screen_time(spec)
+    if HANDS_NOTE_SHARE < st["hands_share"] <= HANDS_FAIL_SHARE:
+        return [f"hands visible on {st['hands_share']:.0%} of screen time, above the "
+                f"{HANDS_NOTE_SHARE:.0%} preference (owner, 13 Oct 2026: limit hands)"]
+    return []
 
 
 # ----------------------------------------------------------- picture layers
@@ -632,7 +834,8 @@ def render(script: Path, voice_dir: Path, out: Path, beat_idx: list[int] | None,
         n = ends[k] - starts[k] + lead[k]
         key = hashlib.sha256(json.dumps([rec["sha256"], s["treatment"], n, k, s.get("offset"),
                                          FM.VIGNETTE, rec.get("crop"), rec.get("ranges"),
-                                         FM.SLOWMO, FM.PUSH_IN])
+                                         FM.SLOWMO, FM.PUSH_IN, FM.RAMP_TO, FM.RAMP_IN_S,
+                                         (rec.get("black") or {}).get("spans")])
                              .encode()).hexdigest()[:12]
         seg = segdir / f"{k:03d}-{s['treatment']}-{key}.mp4"
         if not seg.exists():
@@ -756,6 +959,7 @@ def _finish(script, voice_dir, out, work, silent, tl, beats, caps, cat,
     spec = {
         "script": str(script.relative_to(ROOT)) if script.is_relative_to(ROOT) else str(script),
         "preset": PRESET, "grade": FOOD_GRADE, "duration_s": round(tl["duration"], 2),
+        "piece": tl.get("piece", "sample"),
         "shots": shots, "captions": {"burned_in": True, "sidecar": out.with_suffix(".srt").name},
         "ai_assets": ai, "real_assets": real,
         "credits": {k: cat[k]["credit"] for k in real},
@@ -764,6 +968,7 @@ def _finish(script, voice_dir, out, work, silent, tl, beats, caps, cat,
                         "start": round(s["start"], 2), "dur": round(s["dur"], 2)}
                        for i, s in enumerate(shots) if s.get("composite")],
         "screen_time": screen_time({"shots": shots}),
+        "hands_notes": hands_notes({"shots": shots}),
         # YouTube's altered-or-synthetic-content disclosure. loop/upload.py
         # reads this field and sends status.containsSyntheticMedia.
         "altered_content": bool(ai),
@@ -806,26 +1011,39 @@ def check_spec(spec: dict) -> list[str]:
         if s["kind"] != "picture":
             continue
         d = s["dur"]
-        if s.get("phase") == "opening" and not (lo_o - 0.05 <= d <= hi_o + 0.05):
-            p.append(f"opening shot {i} holds {d:.1f}s, outside {lo_o}-{hi_o}s")
+        beat_total = sum(x["dur"] for x in shots if x["beat"] == s["beat"])
+        if s.get("phase") == "opening" and d > hi_o + 0.05:
+            p.append(f"opening shot {i} holds {d:.1f}s, over {hi_o}s")
+        # a beat shorter than the shortest cut (a segment's spoken question,
+        # about two seconds) is one shot; it cannot be cut to 3 s
+        if s.get("phase") == "opening" and d < lo_o - 0.05 and beat_total >= lo_o:
+            p.append(f"opening shot {i} cuts after {d:.1f}s, under {lo_o}s")
         if s.get("phase") == "body" and d > hi_b + 0.05:
             p.append(f"body shot {i} holds {d:.1f}s, over {hi_b}s")
         if s.get("phase") == "body" and d < lo_b - 0.05:
             beat_total = sum(x["dur"] for x in shots if x["beat"] == s["beat"])
             if beat_total >= lo_b:
                 p.append(f"body shot {i} cuts after {d:.1f}s, under {lo_b}s")
-    if not any(s.get("phase") == "opening" for s in shots):
+    role = spec.get("piece") or "sample"
+    if role != "tail" and not any(s.get("phase") == "opening" for s in shots):
         p.append("no opening shots: the hooked opening is missing")
-    if not any(s.get("phase") == "body" and s["kind"] == "picture" for s in shots):
+    if role not in ("open", "tail") and not any(
+            s.get("phase") == "body" and s["kind"] == "picture" for s in shots):
         p.append("no body holds after the title card")
     n_dev = sum(1 for s in shots if s["kind"] == "device")
     if n_dev > PRESET["devices_per_part_max"]:
         p.append(f"{n_dev} signature devices in one part, over {PRESET['devices_per_part_max']}")
-    lo_c, hi_c = PRESET["composites"]
+    lo_c, hi_c = COMPOSITES_BY_ROLE.get(role, PRESET["composites"])
     n_comp = sum(1 for s in shots if s.get("composite") or s.get("treatment") in ("wall", "kaleido"))
     if not lo_c <= n_comp <= hi_c:
         p.append(f"{n_comp} impossible-scale composites, outside {lo_c}-{hi_c}")
     st = screen_time(spec)
+    if role in SEGMENTS and st["spectacle_share"] < SPECTACLE_SHARE_MIN:
+        p.append(f"spectacle (slow motion + composites) is {st['spectacle_share']:.0%} of the "
+                 f"segment, under {SPECTACLE_SHARE_MIN:.0%} (owner, 13 Oct 2026: mesmerising)")
+    if st["hands_share"] > HANDS_FAIL_SHARE:
+        p.append(f"hands visible on {st['hands_share']:.0%} of screen time, over "
+                 f"{HANDS_FAIL_SHARE:.0%} (owner, 13 Oct 2026: limit human hands)")
     if st["real_video_share"] < REAL_VIDEO_SHARE_MIN:
         p.append(f"real video is {st['real_video_share']:.0%} of screen time, under "
                  f"{REAL_VIDEO_SHARE_MIN:.0%} - stills are not acceptable for food in motion")

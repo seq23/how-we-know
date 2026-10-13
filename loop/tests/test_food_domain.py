@@ -65,29 +65,36 @@ cfg = common.config()
 import validate as V                                           # noqa: E402
 res = V.v52_food_domain().as_dict()
 check(not res["failures"], f"V52 passes on the real repo: {res['failures']}")
-check(any("sample" in n for n in res.get("notes") or []) and not res["stops"],
-      "V52 reports the sample gate as a note - it is the plan's step, not a stop")
+check(not res["stops"], "V52 takes no stop on the real repo")
 
-# ------------------------------------------------------------------ 2. the hold
-check(FOOD in D.sample_gated(cfg), "food-science is sample-gated in the real config")
+# ------------------------------------------------------------------ 2. the gate (CLEARED 13 Oct 2026)
+# The owner approved the round-2 chocolate sample on 13 Oct 2026 ("MUCH better").
+# The real config records it, dated; the gate's machinery is still proven on a
+# gated COPY, so it holds the next domain that is sample-gated.
+gate = cfg["domains"]["sample_gate"][FOOD]
+check(gate["state"] == "cleared" and "13 Oct 2026" in gate.get("cleared_note", "")
+      and "round 2" in gate.get("cleared_note", ""),
+      f"the real gate is cleared with the owner's dated note: {gate.get('state')} / {gate.get('cleared_note')}")
+check(FOOD not in D.sample_gated(cfg), "food-science is no longer sample-gated in the real config")
 ok, refused = D.allocation_gate([{"slug": "f", "domain": FOOD}], cfg)
-check(not ok and "sample_gate" in refused.get("f", ""),
-      f"allocation_gate refuses a food row by name: {refused}")
+check(bool(ok) and not refused, f"allocation_gate lets a food row through now: {refused}")
 import batch_queue as BQ                                       # noqa: E402
-allowed, why = BQ.publish_queue_gate(["why-does-bread-rise"])
-check(not allowed and "sample" in why.get("why-does-bread-rise", ""),
-      f"publish_queue_gate refuses a food slug while gated: {why}")
+allowed, why = BQ.publish_queue_gate(["why-bread-rises-steak-browns-chocolate-snaps"])
+check(allowed == ["why-bread-rises-steak-browns-chocolate-snaps"],
+      f"publish_queue_gate admits the first food episode: {why}")
 import digest                                                  # noqa: E402
 import datetime as dt                                          # noqa: E402
 cal = digest.calendar({"published": []}, cfg, dt.datetime(2026, 10, 13, tzinfo=dt.timezone.utc))
-check(cal and not any(c["domain"] == FOOD for c in cal),
-      "the digest calendar counts no food slot while gated (empty by design, not a gap)")
-cleared = json.loads(json.dumps(cfg))
-cleared["domains"]["sample_gate"][FOOD]["state"] = "cleared"
-ok2, _ = D.allocation_gate([{"slug": "f", "domain": FOOD}], cleared)
-check(bool(ok2), "the same food row passes once the gate is cleared")
-cal2 = digest.calendar({"published": []}, cleared, dt.datetime(2026, 10, 13, tzinfo=dt.timezone.utc))
-check(any(c["domain"] == FOOD for c in cal2), "cleared, food's Wed/Sat are counted slots")
+check(any(c["domain"] == FOOD for c in cal), "cleared: food's Wed/Sat are counted slots")
+gated = json.loads(json.dumps(cfg))
+gated["domains"]["sample_gate"][FOOD]["state"] = "awaiting_owner_review"
+okg, refg = D.allocation_gate([{"slug": "f", "domain": FOOD}], gated)
+check(not okg and "sample_gate" in refg.get("f", ""),
+      f"a gated copy still refuses a food row by name: {refg}")
+calg = digest.calendar({"published": []}, gated, dt.datetime(2026, 10, 13, tzinfo=dt.timezone.utc))
+check(calg and not any(c["domain"] == FOOD for c in calg),
+      "a gated copy counts no food slot (empty by design, not a gap)")
+cleared = cfg
 
 # ------------------------------------------------------------------ 3. POV
 import pov_match                                               # noqa: E402
@@ -99,15 +106,30 @@ check(not any(ln["id"] in {p["id"] for p in pending} for ln in pov_match.bank())
       "pov_match.bank() never offers a pending line")
 import validate_plan as VP                                     # noqa: E402
 c10 = VP.c10_domains_admitted()
-check(not c10.failures, f"c10 passes while the gate is open: {c10.failures}")
+check(not c10.failures, f"c10 passes on the real repo: {c10.failures}")
+check(cfg["domains"].get("pov_not_required", {}).get(FOOD, {}).get("decided") == "2026-10-13",
+      "food-science ships with no POV beat by a dated declaration, until its top-up")
 saved = VP.config
-VP.config = lambda: cleared
+undeclared = json.loads(json.dumps(cfg))
+undeclared["domains"].pop("pov_not_required", None)
+VP.config = lambda: undeclared
 try:
     c10b = VP.c10_domains_admitted()
 finally:
     VP.config = saved
 check(any("food-science" in f for f in c10b.failures),
-      "c10 FAILS once the gate clears with only pending food lines")
+      "c10 FAILS a cleared food domain with only pending lines and no declaration")
+# the declaration never excuses a [HUMAN] beat in a shipping food episode
+ep = ROOT / "scripts" / "food" / "why-bread-rises-steak-browns-chocolate-snaps.md"
+orig = ep.read_text()
+try:
+    ep.write_text(orig.replace("### Closing\n\n{{ambient}}\n", "### Closing\n\n{{ambient}}\n[HUMAN] ", 1))
+    c10c = VP.c10_domains_admitted()
+finally:
+    ep.write_text(orig)
+check(any("[HUMAN]" in f for f in c10c.failures),
+      f"c10 FAILS a shipping food episode that carries a [HUMAN] beat: {c10c.failures}")
+
 
 # ------------------------------------------------------------------ 4. queue
 po = json.loads((ROOT / "research" / "publish_order_food_science.json").read_text())

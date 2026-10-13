@@ -528,12 +528,127 @@ SHOTS: list[dict] = [
               [0.12, 0.0, 0.88, 0.86]},
      "basis": "Cacao farming: pods and beans, where cocoa butter comes from."},
 ]
+for _s in SHOTS:
+    _s.setdefault("segment", "chocolate")
+
+
+def _shot(segment: str, need: str, query: str, label: str, must: list[list[str]],
+          uses: list[str], basis: str, sound: str | None = None) -> dict:
+    return {"segment": segment, "need": need, "query": query, "label": label, "must": must,
+            "uses": uses, "sound": sound, "basis": basis}
+
+
+# The first full video (owner, 13 Oct 2026: "Bread, Steak, Chocolate: What's
+# Inside?") adds a bread and a steak segment: >= MIN_REAL_CLIPS real clips each,
+# through the same chain, the same gates, the same licence record. The owner's
+# standing preference the same day - LIMIT HUMAN HANDS, "not bad if we do
+# sometimes" - is a pick order (clips without hands are reviewed first) and a
+# measured share (HANDS below; visuals/food.py screen_time), not a ban.
+SHOTS += [
+    # ---- bread
+    _shot("bread", "bread-rise-oven", "oven", "BREAD", [["bread"], ["rising", "growing"]],
+          ["rise", "oven", "loaf", "bake"], "A loaf rising inside the oven: oven spring, filmed."),
+    {**_shot("bread", "bread-grow-oven", "oven", "BREAD", [["bread"], ["growing", "rising"]],
+             ["rise", "dough", "bake"], "Proved dough balls on a baking tray: risen dough, filmed."),
+     # the first 5.5 s show the baker's hand shaping a ball; only the tray is used
+     "ranges": {"pixabay:42040": [[6.0, 15.5]]}},
+    _shot("bread", "bread-mixer", "dough", "DOUGH", [["dough"], ["mixer", "industrial"]],
+          ["dough", "stretch", "knead", "scale"], "An industrial mixer working dough: gluten being lined up."),
+    _shot("bread", "bread-knead", "dough", "DOUGH", [["dough"], ["kneading", "knead"]],
+          ["knead", "dough", "stretch"], "Dough kneaded by hand: the gluten network strengthened."),
+    _shot("bread", "bread-flour-dough", "dough", "DOUGH", [["dough"], ["flour", "sprinkling"]],
+          ["dough", "flour"], "Flour on fresh dough."),
+    _shot("bread", "bread-wheat-field", "wheat", "WHEAT", [["wheat"], ["field", "swaying", "golden"]],
+          ["wheat", "flour", "scale"], "A field of wheat moving in the wind: where the flour starts."),
+    _shot("bread", "bread-wheat-close", "wheat", "WHEAT", [["wheat"], ["close", "tops", "crop"]],
+          ["wheat", "flour"], "Ears of wheat close up."),
+    _shot("bread", "bread-harvest", "wheat", "WHEAT", [["wheat", "mower"], ["harvest"]],
+          ["wheat", "scale"], "Wheat harvested at field scale."),
+    _shot("bread", "bread-flour-mill", "flour", "FLOUR", [["flour"], ["stone", "rotating", "mill"]],
+          ["flour", "wheat"], "Wheat ground to flour between turning stones."),
+    _shot("bread", "bread-flour-sift", "flour", "FLOUR", [["flour"], ["sifting", "sieve"]],
+          ["flour"], "Flour falling through a sieve in slow motion."),
+    _shot("bread", "bread-buns", "bread", "BREAD", [["bread"], ["bun", "buns"]],
+          ["loaf", "crust", "bake"], "Baked bread rolls: the browned crust."),
+    _shot("bread", "bread-loaf-knife", "bread", "BREAD", [["bread"], ["knife", "loaf"]],
+          ["slice", "crumb", "loaf"], "A loaf cut open: the crumb and its holes."),
+    _shot("bread", "bread-slice", "bread", "BREAD", [["bread"], ["slice", "cut"]],
+          ["slice", "crumb"], "Bread sliced: the holes the gas left."),
+    _shot("bread", "bread-oven-fire", "bread oven", "BREAD", [["bread", "oven"], ["fire", "flame"]],
+          ["oven", "bake", "crust"], "The fire of a bread oven: the heat that sets the crumb."),
+    _shot("bread", "bread-loaf-oven", "bread oven", "BREAD", [["bread", "loaf"], ["oven"]],
+          ["oven", "loaf", "bake", "crust"], "Loaves in an oven."),
+    _shot("bread", "bread-display", "bakery", "BREAD", [["baked", "bakery"], ["display", "goods"]],
+          ["loaf", "scale", "crust"], "Rows of baked goods: bread at scale."),
+    _shot("bread", "bread-microscope", "microscope", "MICROSCOPE", [["microscope"], ["lab", "close"]],
+          ["micro", "lab"], "A laboratory microscope: the instrument that showed yeast is alive."),
+    _shot("bread", "bread-lab", "laboratory", "LABORATORY", [["lab", "laboratory"], ["tube", "drops", "dropper"]],
+          ["lab"], "Laboratory glass: measurement, not tasting."),
+    # ---- steak
+    _shot("steak", "steak-sear-grill", "steak", "STEAK", [["steak"], ["seared", "sizzling", "fiery"]],
+          ["sear", "grill", "flame", "sizzle", "crust", "meat"], "A steak seared on a hot grill: the Maillard crust forming.", "sizzle"),
+    _shot("steak", "steak-slowmo", "steak", "STEAK", [["steak"], ["slow motion", "grill"]],
+          ["grill", "sear", "meat"], "A steak on the grill in slow motion.", "sizzle"),
+    _shot("steak", "steak-sizzle", "steak", "STEAK", [["steak"], ["sizzling", "close"]],
+          ["sear", "sizzle", "crust"], "A sizzling steak close up: the browned surface.", "sizzle"),
+    _shot("steak", "steak-flame", "steak", "STEAK", [["steak"], ["flame", "barbeque", "barbecue"]],
+          ["flame", "grill", "char"], "Steak over flames.", "sizzle"),
+    _shot("steak", "steak-butter", "steak", "STEAK", [["steak"], ["butter"]],
+          ["butter", "fat", "sizzle"], "Butter melting on a hot steak: fat at work.", "sizzle"),
+    _shot("steak", "steak-grill-sit", "steak", "STEAK", [["steak"], ["grill", "grilled"]],
+          ["grill", "crust", "meat"], "A grilled steak resting on the grill.", "sizzle"),
+    _shot("steak", "steak-tenderloin", "barbecue", "BEEF", [["beef", "tenderloin"], ["seared", "grill"]],
+          ["sliced", "inside", "crust", "sear", "meat"],
+          "Seared beef sliced: the pale interior under the thin brown crust."),
+    _shot("steak", "steak-bbq", "grill", "STEAK", [["steak", "meat"], ["bbq", "grill", "roasting"]],
+          ["grill", "meat", "scale"], "Meat on a barbecue grill.", "sizzle"),
+    _shot("steak", "steak-roast", "grill", "MEAT", [["meat"], ["roasting", "grill"]],
+          ["grill", "meat", "crust"], "Browned, roasted meats: the Maillard crust on many cuts."),
+    _shot("steak", "steak-fire", "grill", "GRILL", [["flames", "fire"], ["grill", "bbq", "brazier"]],
+          ["flame", "char"], "Flames inside a grill: the heat source, and what charring is."),
+    _shot("steak", "steak-coals", "grill", "GRILL", [["carbon", "coal", "coals"], ["flames", "brazier"]],
+          ["flame", "char"], "Coals burning: heat without fire on the meat."),
+    _shot("steak", "steak-pan", "meat", "MEAT", [["meat"], ["frying", "pan"]],
+          ["pan", "fat", "sizzle", "steam", "sear"], "Meat frying in a pan: water leaving, browning beginning.", "sizzle"),
+    _shot("steak", "steak-fry", "steak", "MEAT", [["meat"], ["frying", "piece"]],
+          ["pan", "sear", "sizzle", "fat"], "A piece of meat frying close up.", "sizzle"),
+    _shot("steak", "steak-skewers", "meat", "MEAT", [["meat"], ["skewers"]],
+          ["grill", "scale", "meat"], "Skewers of meat grilling.", "sizzle"),
+    _shot("steak", "steak-seasoned", "barbecue", "STEAK", [["steak"], ["seasoned"]],
+          ["grill", "sear"], "A seasoned steak on the grill.", "sizzle"),
+    _shot("steak", "steak-sliced", "steak", "STEAK", [["steak"], ["sliced", "knife"]],
+          ["sliced", "inside", "crust"], "A cooked steak sliced: the pale interior inside the brown crust."),
+    _shot("steak", "steak-coffee", "coffee roasting", "COFFEE", [["coffee"], ["roasting", "roasted"]],
+          ["coffee", "roast"], "Coffee beans roasting: the same browning reaction."),
+    _shot("steak", "steak-toast", "toast", "TOAST", [["toast", "toaster"], ["bread", "toaster"]],
+          ["toast", "bread"], "Bread toasting: the same browning reaction."),
+    _shot("steak", "steak-lab", "laboratory", "LABORATORY", [["lab"], ["tubes", "dropper", "drops"]],
+          ["lab"], "Laboratory glassware: the chemistry of a smell, measured."),
+]
+
 # Looked at and refused, with the reason (source:id -> why).
 REFUSED: dict[str, str] = {
     "pixabay:307248": "Pixabay marks it AI-generated (type animation)",
     "pixabay:98283": "its uploader tags it '3d': it may be a render, and only filmed footage is allowed",
     "pixabay:326912": "Pixabay type 'animation': generated, not filmed",
     "mixkit:22920": "its item page puts it under the Stock Video RESTRICTED License (gate caught it)",
+    "pixabay:250784": "the same shot as pixabay:43653 (uploaded twice); one copy is enough",
+    "pixabay:82789": "roast chicken with peppers, not a seared steak",
+    "pixabay:11602": "hands working raw meat in flour, not a cooked steak sliced open",
+    "pixabay:4403": "people at a barbecue; the meat is a corner of the frame",
+    "mixkit:50956": "smoke on black: after the grade it reads as an empty black frame (first full render, 13 Oct 2026)",
+    "mixkit:6948": "its item page puts it under the Stock Video RESTRICTED License (gate caught it, 13 Oct 2026)",
+    "mixkit:6787": "its item page puts it under the Stock Video RESTRICTED License (gate caught it, 13 Oct 2026)",
+    "mixkit:48057": "its item page puts it under the Stock Video RESTRICTED License (gate caught it, 13 Oct 2026)",
+    "mixkit:21057": "its item page puts it under the Stock Video RESTRICTED License (gate caught it, 13 Oct 2026)",
+    "mixkit:27143": "its item page puts it under the Stock Video RESTRICTED License (gate caught it, 13 Oct 2026)",
+    "mixkit:48053": "its item page puts it under the Stock Video RESTRICTED License (gate caught it, 13 Oct 2026)",
+    "mixkit:21927": "its item page puts it under the Stock Video RESTRICTED License (gate caught it, 13 Oct 2026)",
+    "mixkit:45724": "its item page puts it under the Stock Video RESTRICTED License (gate caught it, 13 Oct 2026)",
+    "mixkit:31741": "its item page puts it under the Stock Video RESTRICTED License (gate caught it, 13 Oct 2026)",
+    "mixkit:22774": "its item page puts it under the Stock Video RESTRICTED License (gate caught it, 13 Oct 2026)",
+    "mixkit:45718": "its item page puts it under the Stock Video RESTRICTED License (gate caught it, 13 Oct 2026)",
+    "mixkit:17556": "its item page puts it under the Stock Video RESTRICTED License (gate caught it, 13 Oct 2026)",
     "pixabay:55580": "a CG render of chocolate gears, not footage",
     "pixabay:186709": "a recognisable brand (Nutella) - Pixabay licence bars branded commercial use",
     "pixabay:71745": "red sauce, not chocolate",
@@ -571,6 +686,92 @@ PREFER: dict[str, list[str]] = {
     "field": ["mixkit:40797"],
     "bite": ["mixkit:10373"],
     "cacao": ["commons:File:Production de cacao ivorienne VOA 01000000-0aff-0242-01e6-08db257d93df 720p.webm"],
+}
+PREFER.update({
+    "bread-rise-oven": ["pixabay:250784"],
+    "bread-grow-oven": ["pixabay:42040"],
+    "bread-mixer": ["pixabay:65278"],
+    "bread-knead": ["mixkit:42467"],
+    "bread-flour-dough": ["pixabay:75700"],
+    "bread-wheat-field": ["mixkit:25915", "mixkit:17120", "pixabay:17285"],
+    "bread-wheat-close": ["mixkit:21531", "mixkit:17427"],
+    "bread-harvest": ["mixkit:45782", "mixkit:23781"],
+    "bread-flour-mill": ["pixabay:784"],
+    "bread-flour-sift": ["pixabay:292737"],
+    "bread-buns": ["pixabay:207994", "pixabay:207992"],
+    "bread-loaf-knife": ["pixabay:63066", "pixabay:14239"],
+    "bread-slice": ["pixabay:209418"],
+    "bread-oven-fire": ["pixabay:107899"],
+    "bread-loaf-oven": ["pixabay:205890"],
+    "bread-display": ["pixabay:207992"],
+    "bread-microscope": ["pixabay:86260", "pixabay:86259"],
+    "bread-lab": ["pixabay:197483"],
+    "steak-sear-grill": ["mixkit:45723"],
+    "steak-slowmo": ["mixkit:46660"],
+    "steak-sizzle": ["mixkit:45716", "pixabay:11632"],
+    "steak-flame": ["mixkit:45728"],
+    "steak-butter": ["pixabay:72000"],
+    "steak-grill-sit": ["mixkit:45722", "pixabay:16406"],
+    "steak-tenderloin": ["mixkit:45717"],
+    "steak-bbq": ["pixabay:127253", "mixkit:2774"],
+    "steak-roast": ["mixkit:2993"],
+    "steak-fire": ["mixkit:2780"],
+    "steak-coals": ["mixkit:6969", "pixabay:127250"],
+    "steak-pan": ["pixabay:208479", "mixkit:46673"],
+    "steak-fry": ["mixkit:46663", "pixabay:208354"],
+    "steak-skewers": ["pixabay:4403"],
+    "steak-seasoned": ["pixabay:16373"],
+    "steak-sliced": ["pixabay:11602"],
+    "steak-coffee": ["mixkit:24762", "pixabay:71288"],
+    "steak-toast": ["pixabay:199970"],
+    "steak-lab": ["pixabay:76396"],
+})
+# HUMAN HANDS (owner, 13 Oct 2026): "limit human hands" - not a ban ("not bad
+# if we do sometimes"). Reviewed on contact sheets: need -> (hands visible, why).
+# A clip not listed falls back to its own words (HAND_WORDS). visuals/food.py
+# measures hands-visible screen time per render and per episode.
+HAND_WORDS = ("hand", "hands", "chef", "cook ", "baker", "kneading", "woman", "man ",
+              "person", "girl", "boy", "mom", "biting", "eating", "cutting", "slicing")
+HANDS: dict[str, tuple[bool, str]] = {
+    # chocolate (round-2 sample)
+    "bite": (True, "a woman's hand lifts the chocolate to her mouth"),
+    "cacao": (True, "the VOA ranges include hands in the drying beans"),
+    # bread - contact sheets 2026-10-13
+    "bread-buns": (True, "a hand holds the roll while a knife cuts it"),
+    "bread-display": (True, "hands cut a baguette on a board"),
+    "bread-flour-dough": (True, "a hand rolls the dough at the end"),
+    "bread-flour-sift": (True, "a hand taps the sieve"),
+    "bread-knead": (True, "a hand presses the dough"),
+    "bread-lab": (True, "a gloved hand holds the flask"),
+    "bread-loaf-knife": (True, "hands slice the loaf"),
+    "bread-slice": (True, "hands slice the loaf"),
+    "bread-grow-oven": (False, "only the tray of risen dough is used (ranges skip the hand)"),
+    "bread-flour-mill": (False, "windmill sails and falling grain, no person"),
+    "bread-harvest": (False, "wheat against the sun"),
+    "bread-loaf-oven": (False, "dough on a sheeter belt, no person"),
+    "bread-microscope": (False, "a face at the eyepiece; no hands in frame"),
+    "bread-mixer": (False, "flour heap and rolling pin, no hands"),
+    "bread-oven-fire": (False, "fire in a bread oven"),
+    "bread-wheat-close": (False, "wheat"),
+    "bread-wheat-field": (False, "wheat"),
+    # steak - contact sheets 2026-10-13
+    "steak-fry": (True, "a hand with tongs at the edge of frame"),
+    "steak-lab": (True, "a gloved hand at the rack"),
+    "steak-pan": (True, "hands cut raw beef"),
+    "steak-slowmo": (True, "tongs and the hand holding them lower the steak"),
+    "steak-bbq": (False, "a steak searing in a pan"),
+    "steak-butter": (False, "steaks in a pan"),
+    "steak-coals": (False, "a steak over coals"),
+    "steak-coffee": (False, "coffee beans before flames"),
+    "steak-fire": (False, "a wood fire"),
+    "steak-flame": (False, "a rib steak on the grill"),
+    "steak-grill-sit": (False, "meat browning in a pan"),
+    "steak-sear-grill": (False, "a steak on a grill pan"),
+    "steak-seasoned": (False, "tongs over coals, no hand in frame"),
+    "steak-sizzle": (False, "beef and peppers on a sizzling plate"),
+    "steak-tenderloin": (False, "sliced seared beef on a plate"),
+    "steak-toast": (False, "a toaster"),
+    "steak-roast": (False, "browned roast meats on a board"),
 }
 OFF_SUBJECT = ("beach", "commission", "puffs", "drugslab", "smoothie", "conference", "coffee",
                "latte", "ice cream", "waffle", "cereal", "cupcake", "donut", "cake", "milk",
@@ -716,8 +917,87 @@ def _record(pick: dict, shot: dict, meta: dict, blob: bytes) -> dict:
         "credit_line": f"{shot['label']} - FOOTAGE, {who[:36].upper()} ({lic.upper()[:40]})",
         "source_org": meta.get("source_org") or who, "depicts": "video",
         "subject_basis": shot["basis"], "uses": shot["uses"], "sound": shot.get("sound"),
+        "segment": shot.get("segment", "chocolate"),
         "ai_generated": False, **probe(CLIPS / fname),
+        **shot_extras(shot, f"{pick['source']}:{pick['id']}"),
     }
+
+
+def shot_extras(shot: dict, uid: str) -> dict:
+    """Per-clip review fields carried from the shot list onto its record: the
+    usable ranges and crop (the VOA report, a clip whose opening shows hands),
+    the segment, and the reviewed hands answer (HANDS)."""
+    out = {"segment": shot.get("segment", "chocolate")}
+    for k in ("ranges", "crop"):
+        v = (shot.get(k) or {}).get(uid)
+        if v:
+            out[k] = v
+    h = HANDS.get(shot["need"])
+    if h is not None:
+        out["hands"], out["hands_basis"] = bool(h[0]), h[1]
+    return out
+
+
+# RICHNESS (owner, 13 Oct 2026: "favour the richest-looking clips - gloss,
+# depth, saturation - score candidates for it and record the score"). Measured
+# on five frames of the clip itself, numpy only: saturation (HSV S), contrast
+# (luma spread), gloss (share of near-white specular pixels inside saturated
+# regions) and detail (mean luma gradient). visuals/food.pool_for ranks by it
+# after fit and hands.
+RICHNESS_WEIGHTS = {"saturation": 0.35, "contrast": 0.25, "gloss": 0.15, "detail": 0.25}
+
+
+def richness(path: Path, ranges: list | None = None, n: int = 5) -> dict:
+    import numpy as np                                         # noqa: PLC0415
+    dur = float(probe(path).get("duration_s") or 0) or 10.0
+    lo, hi = (ranges[0] if ranges else (0.0, dur))
+    sat = con = glo = det = 0.0
+    got = 0
+    for k in range(n):
+        t = lo + (hi - lo) * (k + 0.5) / n
+        raw = subprocess.run(["ffmpeg", "-v", "error", "-ss", f"{t:.2f}", "-i", str(path),
+                              "-frames:v", "1", "-vf", "scale=192:108", "-f", "rawvideo",
+                              "-pix_fmt", "rgb24", "-"], capture_output=True).stdout
+        if len(raw) != 192 * 108 * 3:
+            continue
+        a = np.frombuffer(raw, np.uint8).reshape(108, 192, 3).astype(np.float32) / 255
+        mx, mn = a.max(-1), a.min(-1)
+        s = np.where(mx > 0, (mx - mn) / np.maximum(mx, 1e-6), 0)
+        lum = a @ np.array([0.299, 0.587, 0.114], np.float32)
+        sat += float(s.mean())
+        con += float(min(1.0, lum.std() / 0.25))
+        spec = (lum > 0.85) & (np.roll(s, 2, 0) > 0.35)
+        glo += float(min(1.0, spec.mean() * 20))
+        det += float(min(1.0, (np.abs(np.diff(lum, axis=0)).mean() + np.abs(np.diff(lum, axis=1)).mean()) * 12))
+        got += 1
+    if not got:
+        return {"score": 0.0, "frames": 0}
+    parts = {"saturation": sat / got, "contrast": con / got, "gloss": glo / got, "detail": det / got}
+    score = sum(RICHNESS_WEIGHTS[k] * min(1.0, v) for k, v in parts.items())
+    return {"score": round(score, 3), **{k: round(v, 3) for k, v in parts.items()}, "frames": got}
+
+
+def black_spans(path: Path) -> list[list[float]]:
+    """Spans of (near) black picture, by ffmpeg blackdetect. A stock clip that
+    opens on 2.9 s of black (pixabay:71743) put a black frame in the first
+    full render's cold open; visuals/food_motion._span never uses them."""
+    r = subprocess.run(["ffmpeg", "-hide_banner", "-i", str(path), "-vf",
+                        "blackdetect=d=0.2:pix_th=0.12", "-an", "-f", "null", "-"],
+                       capture_output=True, text=True)
+    out = []
+    for m in re.finditer(r"black_start:([\d.]+) black_end:([\d.]+)", r.stderr):
+        out.append([round(float(m.group(1)), 3), round(float(m.group(2)), 3)])
+    return out
+
+
+def score_richness(index: list[dict]) -> list[dict]:
+    for r in index:
+        path = IMAGERY / r["local_file"]
+        if path.exists() and (r.get("richness") or {}).get("sha256") != r.get("sha256"):
+            r["richness"] = {**richness(path, r.get("ranges")), "sha256": r.get("sha256")}
+        if path.exists() and (r.get("black") or {}).get("sha256") != r.get("sha256"):
+            r["black"] = {"spans": black_spans(path), "sha256": r.get("sha256")}
+    return index
 
 
 def load() -> dict:
@@ -757,7 +1037,7 @@ def harvest(only_missing: bool = True) -> dict:
         old = prior.get(shot["need"])
         if only_missing and old and old.get("source_id") == pick["id"] \
                 and (IMAGERY / old["local_file"]).exists():
-            index[shot["need"]] = old
+            index[shot["need"]] = {**old, **shot_extras(shot, f"{pick['source']}:{pick['id']}")}
             continue
         if fetched >= MAX_PER_RUN:
             rejected.append({"subject": shot["need"], "reason": f"per-run cap {MAX_PER_RUN}"})
@@ -773,7 +1053,7 @@ def harvest(only_missing: bool = True) -> dict:
         save(list(index.values()), rejected, res)
     for need in res["misses"]:
         rejected.append({"subject": need, "reason": "no adapter in the chain had a matching clip"})
-    return save(list(index.values()), rejected, res)
+    return save(score_richness(list(index.values())), rejected, res)
 
 
 def record_problems(rec: dict) -> list[str]:
