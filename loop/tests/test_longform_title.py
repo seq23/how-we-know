@@ -57,21 +57,32 @@ SCRIPT = (ROOT / "scripts" / f"{SLUG}.md").read_text(encoding="utf-8")
 Q = "how hot does a welding arc get"
 
 # ---------------------------------------------------------------- 1. formula
-good = "A welding arc core reaches 11,000 degrees Celsius"
+# THE LOCK (owner, 13 Oct 2026): <=40 chars, sixth grade, one idea, the
+# subject first, simple numbers. Her three titles are the reference set and
+# must pass against their own scripts.
+for ex_slug, ex_title in LT.EXEMPLARS.items():
+    ex_text = (ROOT / "scripts" / f"{ex_slug}.md").read_text(encoding="utf-8")
+    ex_pr = LT.title_problems(ex_title, ex_text, LT._question_for(ex_slug, ex_text))  # noqa: SLF001
+    check(not ex_pr, f"the owner's locked exemplar {ex_title!r} fails the gate: {ex_pr}")
+check(LT.EXEMPLARS == {
+    "20-what-is-the-midnight-zone": "Why Is the Deep Sea So Dark?",
+    "19-what-is-the-deepest-fish-ever-recorded": "How Deep Can a Fish Live?",
+    "how-strong-is-titanium": "Is Titanium Stronger Than Steel?"},
+    "the owner's three locked titles changed")
+good = "Is a Welding Arc Hotter Than the Sun?"
 check(not LT.title_problems(good, SCRIPT, Q),
-      f"a staked, traceable title failed: {LT.title_problems(good, SCRIPT, Q)}")
+      f"a plain, traceable question failed: {LT.title_problems(good, SCRIPT, Q)}")
 cases = {
-    "how we know": ("Welding arc heat at 11,000 degrees — and how we know",
-                    "how we know"),
-    "invented figure": ("A welding arc core reaches 45,000 degrees Celsius",
-                        "never does"),
-    "unsupported word": ("A welding arc core reaches 11,000 furious degrees",
-                         "unsupported"),
+    "how we know": ("How we know a welding arc is hot", "how we know"),
+    "invented figure": ("Can a Welding Arc Reach 45,000 Degrees?", "never does"),
+    "unsupported word": ("Is a Welding Arc Hotter Than Lava?", "unsupported"),
     "bare restatement": ("How hot does a welding arc get", "restatement"),
-    "too long": ("A welding arc core reaches 11,000 degrees Celsius at its "
-                 "core in the lab", "characters"),
-    "no stake": ("The welding arc core temperature", "no stake"),
-    "bare question": ("Does a welding arc reach 11,000 degrees?", "bare question"),
+    "too long": ("Is a Welding Arc Hotter Than the Sun Is Today?", "characters"),
+    "claim with no contradiction": ("The welding arc core temperature", "claim title"),
+    "hard number": ("Does a Welding Arc Hit 11,487 Degrees?", "simple and vivid"),
+    "jargon": ("Welding arc tensile heat is not simple", "jargon"),
+    "subject late": ("Do Sun Fires Burn Hotter Than Welding?", "first 4 words"),
+    "two ideas": ("Welding arcs: hot, bright, and not safe", "more than one idea"),
 }
 for label, (t, needle) in cases.items():
     pr = LT.title_problems(t, SCRIPT, Q)
@@ -97,7 +108,7 @@ LT.STATE.unlink()
 calls: list[list[dict]] = []
 replies = iter([
     "Welding arcs — and how we know\nHow hot does a welding arc get",
-    "A welding arc core reaches 11,000 degrees Celsius\nA welding arc reaches "
+    "Is a Welding Arc Hotter Than the Sun?\nA welding arc reaches "
     "99,999 degrees"])
 
 
@@ -193,14 +204,14 @@ check(any("begins with a capital" in p_ for p_ in
 # make no sense". The subject, in plain words; no riddles, no lists; Flesch 60+.
 FQ = "why bread rises, steak browns and chocolate snaps"
 bad_food = LT.plainness_problems("6 crystals, a breathing fungus and a crust you never see", FQ)
-check(any("subject" in x for x in bad_food) and any("list" in x for x in bad_food),
+check(any("subject" in x for x in bad_food) and any("more than one idea" in x for x in bad_food),
       f"the owner's riddle title passed the plainness rule: {bad_food}")
 for good_, q_ in (("Why chocolate melts in your mouth but not in your hand", "why chocolate snaps"),
-                  ("The fish that lives where submarines get crushed", "what is the deepest fish ever recorded"),
+                  ("How Deep Can a Fish Live?", "what is the deepest fish ever recorded"),
                   ("Why hydrothermal vents never boil over", "what is hydrothermal vents")):
     check(not LT.plainness_problems(good_, q_),
           f"a plain title failed plainness: {good_!r} {LT.plainness_problems(good_, q_)}")
-check(any("Flesch" in x for x in LT.plainness_problems(
+check(any("grade" in x or "jargon" in x for x in LT.plainness_problems(
           "Titanium's anisotropic microstructural deformation characteristics", "how strong is titanium")),
       "a jargon title passed the readability floor")
 check(any("subject" in x for x in LT.title_problems(

@@ -14,6 +14,21 @@ midnight zone — and how we know". The brand stays in the channel name and in
 the script's second act. A long-form title now has to do one job: make a
 scroller stop, with a claim the episode actually makes.
 
+THE LOCK (owner, 13 Oct 2026 - supersedes the 60-character formula below
+where they differ). Her three titles ARE the reference set (EXEMPLARS):
+    20-what-is-the-midnight-zone               "Why Is the Deep Sea So Dark?"
+    19-what-is-the-deepest-fish-ever-recorded  "How Deep Can a Fish Live?"
+    how-strong-is-titanium                     "Is Titanium Stronger Than Steel?"
+  * <= 40 characters, target ~30;
+  * sixth grade: Flesch-Kincaid grade <= 6, no word over three syllables
+    unless it is the subject's own name, no jargon (JARGON);
+  * ONE idea: usually a plain question; a short claim only when the
+    script's answer is itself a contradiction (then it must carry one);
+  * the subject named in the first four words, in the word a stranger uses
+    (the question's own subject words, or the domain's plain word: deep sea);
+  * numbers only when simple and vivid (<= 2 significant digits, no decimals);
+  * never "how we know"; truth-guarded against the script as before.
+
 THE FORMULA (title_problems() enforces every line, mechanically):
 
   * at most TITLE_MAX = 60 characters (what a phone shows untruncated);
@@ -72,8 +87,27 @@ sys.path.insert(0, str(LOOP))
 STATE = LOOP / "state" / "titles.json"
 SCRIPTS = ROOT / "scripts"
 
-TITLE_MAX = 60
-MIN_CONTENT_WORDS = 3
+TITLE_MAX = 40                 # owner's lock, 13 Oct 2026 (was 60)
+TITLE_TARGET = 30
+MIN_CONTENT_WORDS = 2
+MAX_GRADE = 6.0                # Flesch-Kincaid grade: sixth grade
+MAX_SYLLABLES = 3              # per word, unless it is the subject's own name
+SUBJECT_WITHIN = 4             # the subject is named in the first few words
+# THE LOCK - the owner's own titles (13 Oct 2026). The gate must pass these
+# three against their scripts and refuse anything that would not sit beside
+# them (loop/tests/test_longform_title.py pins them).
+EXEMPLARS = {
+    "20-what-is-the-midnight-zone": "Why Is the Deep Sea So Dark?",
+    "19-what-is-the-deepest-fish-ever-recorded": "How Deep Can a Fish Live?",
+    "how-strong-is-titanium": "Is Titanium Stronger Than Steel?",
+}
+# The word a stranger uses for a domain counts as naming the subject ("Why Is
+# the Deep Sea So Dark?" is the midnight-zone episode).
+DOMAIN_PLAIN = {"deep-sea-ocean-science": {"deep", "sea", "ocean"}}
+JARGON = {"bathypelagic", "abyssopelagic", "hadal", "pelagic", "abyssal",
+          "tensile", "anisotropic", "gigapascal", "gigapascals", "megapascal",
+          "megapascals", "crystalline", "polymer", "polymers", "stabilization",
+          "metallurgical", "microstructure", "isotope", "isotopes"}
 MAX_ATTEMPTS = 3
 RULE_START = "2026-10-13"      # uploads from this day on are held to it (V47)
 
@@ -300,23 +334,62 @@ def flesch(text: str, names: set[str] | None = None) -> float:
     return 206.835 - 1.015 * len(words) - 84.6 * (syl / len(words))
 
 
-def plainness_problems(title: str, question: str) -> list[str]:
-    """The owner's plainness rule, mechanically (13 Oct 2026)."""
+def fk_grade(text: str, names: set[str] | None = None) -> float:
+    """Flesch-Kincaid grade of one line; the subject's own name counts as one
+    syllable ("titanium" is the word a stranger uses for titanium)."""
+    words = [w for w in re.findall(r"[\w][\w'.,%-]*", text or "") if w.strip(".,")]
+    if not words:
+        return 99.0
+    ns = {stem(n) for n in (names or ())}
+    syl = sum(1 if stem(_clean(w.strip(".,"))) in ns else _syllables(w)
+              for w in words)
+    return 0.39 * len(words) + 11.8 * (syl / len(words)) - 15.59
+
+
+def _simple_number(tok: str) -> bool:
+    """'5', '10', '11,000', '340' are simple; '8,336', '1.4', '0.4' are not."""
+    t = tok.replace(",", "")
+    if not re.fullmatch(r"\d+", t):
+        return False
+    if "," not in tok and 1000 <= int(t) <= 2099:
+        return True                  # a year ("in 1857") is vivid, not a statistic
+    return len(t.rstrip("0")) <= 2
+
+
+def plainness_problems(title: str, question: str, script: str = "") -> list[str]:
+    """The owner's LOCKED title contract (13 Oct 2026), mechanically: one
+    idea, sixth-grade words, the subject named in the first few words in
+    the word a stranger uses, simple numbers only."""
     p: list[str] = []
-    subj = subject_words(question)
-    have = {stem(x) for w in content_words(title)
-            for x in re.split(r"[-\u2013]", w) if x}
-    if subj and not (have & {stem(w) for w in subj}):
-        p.append(f"title never names the episode's subject in plain words "
-                 f"(one of: {', '.join(sorted(subj))}) - say what it is "
-                 f"about, never a metaphor or a riddle for it")
-    if LIST_RE.search(title):
-        p.append("title is a list of mysteries - one plain claim about one "
-                 "subject")
-    fre = flesch(title, subj)
-    if fre < PLAIN_MIN_FLESCH:
-        p.append(f"title reads at Flesch {fre:.0f} (needs {PLAIN_MIN_FLESCH:.0f}+): "
-                 f"plainer, shorter words a 12-year-old gets on first read")
+    m = re.search(r"^\*\*Domain:\*\*\s*(\S+)", script or "", re.M)
+    subj = subject_words(question) | DOMAIN_PLAIN.get(m.group(1) if m else "", set())
+    words = re.findall(r"[\w][\w'%-]*", title)
+    lead = [w for w in words if _clean(w).lower() not in STOP][:SUBJECT_WITHIN]
+    early = {stem(x) for w in lead
+             for x in re.split(r"[-\u2013]", _clean(w).lower()) if x}
+    if subj and not (early & {stem(w) for w in subj}):
+        p.append(f"title does not name the subject in its first "
+                 f"{SUBJECT_WITHIN} words that count, in a stranger's word (one of: "
+                 f"{', '.join(sorted(subj))}) - never a metaphor or riddle")
+    if LIST_RE.search(title) or title.count(",") > 1 or re.search(r"[:;]", title):
+        p.append("title carries more than one idea - one plain question or "
+                 "one short claim")
+    g = fk_grade(title, subj)
+    if g > MAX_GRADE:
+        p.append(f"title reads at grade {g:.1f}; the lock is sixth grade "
+                 f"(short common words)")
+    ss = {stem(w) for w in subj}
+    long_ = [w for w in words if _syllables(w) > MAX_SYLLABLES
+             and stem(_clean(w)) not in ss]
+    jar = [w for w in words if _clean(w).lower() in JARGON]
+    if long_ or jar:
+        p.append(f"title uses jargon or long words {sorted(set(long_ + jar))} - "
+                 f"the words a curious 12-year-old says out loud")
+    hard = [w for w in re.findall(r"\d[\d,.]*", title)
+            if not _simple_number(w.rstrip(".,"))]
+    if hard:
+        p.append(f"title number(s) {hard} are not simple and vivid "
+                 f"('5 miles down', never '8,336 metres')")
     return p
 
 
@@ -339,8 +412,7 @@ def title_problems(title: str, script: str, question: str | None = None) -> list
     if BRAND_PHRASE.search(t):
         p.append("title contains 'how we know' - the brand lives in the "
                  "channel name and the script's second act, never the title")
-    if t.endswith("?"):
-        p.append("title is a bare question - state the stake instead")
+    is_question = t.endswith("?")
     if "<" in t or ">" in t:
         p.append("title contains < or >, which YouTube rejects")
     low = t.lower()
@@ -353,11 +425,11 @@ def title_problems(title: str, script: str, question: str | None = None) -> list
     if len(cw) < MIN_CONTENT_WORDS:
         p.append(f"title has {len(cw)} content word(s); a specific subject "
                  f"needs at least {MIN_CONTENT_WORDS}")
-    if not has_stake(t):
-        p.append("title carries no stake: no concrete figure, no "
-                 "contradiction (never/without/not ...) and no stake verb "
-                 "(crush/die/survive ...)")
-    p += plainness_problems(t, q)
+    if not is_question and not has_stake(t):
+        p.append("a claim title must state the script's contradiction (never/"
+                 "not/without ...) or a stake; otherwise ask the plain "
+                 "question a curious person would type")
+    p += plainness_problems(t, q, script)
     qs = {stem(w) for w in content_words(q)}
     ts = {stem(w) for w in cw}
     if ts and qs and ts <= qs:
@@ -451,25 +523,23 @@ PROMPT = """You title long-form YouTube episodes for an evidence-first science \
 channel. Write {n} candidate titles for the episode below, one per line, no \
 numbering, no quotes, nothing else.
 
-RULES - every candidate is checked by a program and rejected if it breaks one:
-- PLAIN FIRST: name the episode's subject in the plain word a stranger \
-recognises instantly - one of: {subject}. No riddles, no metaphors in place \
-of the subject (yeast, not "a breathing fungus"), no lists of mysteries;
-- a claim a 12-year-old understands on first read, in short everyday words;
-- at most {max} characters;
-- a specific subject plus a STAKE: a concrete figure the script states, a \
-contradiction (never, without, not, only ...) or something lost, broken or \
-survived;
-- never the words "how we know" in any form, never a question mark;
-- never just the episode's question reworded - say the surprising true thing \
-the script establishes;
-- EVERY word and figure must come from the script below. Do not add facts, \
-adjectives or numbers it does not state. No hype words, no capitals for \
-emphasis.
+THE OWNER'S LOCKED RULE - a program checks every candidate:
+- at most {max} characters; aim for about {target};
+- ONE idea: usually the plain question a curious person would say out loud or \
+type into search; a short claim only when the script's answer is itself a \
+contradiction ("... is not ...");
+- sixth-grade words: short and common, no jargon, no word over three \
+syllables except the subject's own name;
+- name the subject in the first few words, in the word a stranger uses - one \
+of: {subject};
+- numbers only when simple and vivid ("5 miles down", never "8,336 metres");
+- never the words "how we know";
+- every word must be supported by the script below; add no facts.
 
-Shapes (different subjects, for the SHAPE only): "Why chocolate melts in \
-your mouth but not in your hand"; "The fish that lives where submarines get \
-crushed"; "Titanium is not as strong as steel, so why use it".
+The owner's own titles - yours must sit naturally beside these:
+  "Why Is the Deep Sea So Dark?"
+  "How Deep Can a Fish Live?"
+  "Is Titanium Stronger Than Steel?"
 
 QUESTION: {question}
 
@@ -515,7 +585,8 @@ def propose(slug: str, script: str, question: str | None = None,
     model, attempts}."""
     q = question or question_of(script)
     messages = [{"role": "user", "content": PROMPT.format(
-        n=n, max=TITLE_MAX, question=q, answer=answer_lock(script),
+        n=n, max=TITLE_MAX, target=TITLE_TARGET, question=q,
+        answer=answer_lock(script),
         subject=", ".join(sorted(subject_words(q))) or "the question's subject",
         excerpt=_excerpt(script))}]
     last: dict[str, list[str]] = {}
@@ -638,7 +709,14 @@ def run_propose(slugs: list[str], dry_run: bool = False,
             print(f"  would propose {slug}: old {old!r}")
             made.append(slug)
             continue
-        r = propose(slug, text, q)
+        if slug in EXEMPLARS:
+            # The owner wrote this one (the lock); the model never replaces it.
+            t_ = EXEMPLARS[slug]
+            pr_ = title_problems(t_, text, q)
+            r = {"new_title": t_, "checks_passed": not pr_, "problems": pr_,
+                 "model": "owner (locked exemplar, 13 Oct 2026)", "attempts": 0}
+        else:
+            r = propose(slug, text, q)
         prev = doc["titles"].get(slug) or {}
         doc["titles"][slug] = {
             "slug": slug, "question": q, "old_title": old,

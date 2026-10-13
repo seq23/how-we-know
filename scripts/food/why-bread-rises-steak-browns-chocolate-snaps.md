@@ -10,7 +10,7 @@
 
 ## YouTube title
 
-Why chocolate melts in your mouth and not in your hand
+Why Does Chocolate Melt in Your Mouth?
 
 ## Direct-answer lock
 

@@ -10,7 +10,7 @@
 
 ## YouTube title
 
-Chocolate melts at 34 degrees, just under your mouth
+Why Doesn't Chocolate Melt in Your Hand?
 
 ## Direct-answer lock
 

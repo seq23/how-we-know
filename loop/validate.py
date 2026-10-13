@@ -4187,7 +4187,7 @@ def v47_longform_title(items) -> Result:
                 "The last sunlight is gone at 1,000 meters"):
         if not _lt.title_problems(bad, probe):
             r.fail(f"self-check: the formula accepted {bad!r}")
-    if _lt.title_problems("No sunlight reaches the midnight zone", probe):
+    if _lt.title_problems("The midnight zone has no sunlight", probe):
         r.fail("self-check: the formula refused a plain, traceable, staked title")
 
     def script_of(slug):
