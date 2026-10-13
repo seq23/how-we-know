@@ -167,10 +167,13 @@ def apply_plan(slugs: list[str] | None = None) -> list[dict]:
         if row.get("applied_at"):
             # A title that went up without its thumbnail (no contract variant
             # existed yet) gets the thumbnail alone once variant A exists -
-            # otherwise applied_at would hide it from this lane for good.
-            if (not row.get("thumbnail_applied")
-                    and row.get("applied_video_id") == live[slug]["video_id"]
-                    and thumb_for(slug)):
+            # otherwise applied_at would hide it from this lane for good. The
+            # same for a variant A REBUILT since it went up (its sha256 is
+            # recorded at apply time).
+            img = (thumb_for(slug)
+                   if row.get("applied_video_id") == live[slug]["video_id"] else None)
+            if img and (not row.get("thumbnail_applied")
+                        or row.get("thumbnail_sha256") != _sha(img)):
                 out.append({"slug": slug, "video_id": live[slug]["video_id"],
                             "title": row["new_title"],
                             "question": row.get("question"),
@@ -182,10 +185,20 @@ def apply_plan(slugs: list[str] | None = None) -> list[dict]:
 
 
 def thumb_for(slug: str) -> Path | None:
+    """Variant A, only from a set whose contract HOLDS (visuals/
+    thumb_contract.verify). A bare A.jpg is not a contract thumbnail: on 13 Oct
+    2026 a set refused at B left A behind and this lane shipped it."""
     sys.path.insert(0, str(ROOT / "visuals"))
     import thumb_contract                                  # noqa: PLC0415
     p = Path(thumb_contract.chooser(slug))
-    return p if p.exists() else None
+    if not p.exists() or not (p.parent / "contract.json").exists():
+        return None
+    return None if thumb_contract.verify(slug, str(p.parent.parent)) else p
+
+
+def _sha(p: Path) -> str:
+    import hashlib                                         # noqa: PLC0415
+    return hashlib.sha256(p.read_bytes()).hexdigest()
 
 
 def run_apply(slugs=None, limit: int = 0, dry_run: bool = False, yt=None) -> int:
@@ -244,6 +257,7 @@ def run_apply(slugs=None, limit: int = 0, dry_run: bool = False, yt=None) -> int
                 quota.spend(quota.THUMBNAIL, LANE)
                 row_ = doc["titles"][t["slug"]]
                 row_["thumbnail_applied"] = True
+                row_["thumbnail_sha256"] = _sha(img)
                 row_["thumbnail_applied_at"] = _now().isoformat(timespec="seconds")
                 st.work(f"{t['video_id']} ({t['slug']}) thumbnailed (variant A; "
                         f"its title went up earlier)")
@@ -271,6 +285,8 @@ def run_apply(slugs=None, limit: int = 0, dry_run: bool = False, yt=None) -> int
             doc["titles"][t["slug"]]["applied_at"] = stamp
             doc["titles"][t["slug"]]["applied_video_id"] = t["video_id"]
             doc["titles"][t["slug"]]["thumbnail_applied"] = bool(img)
+            if img:
+                doc["titles"][t["slug"]]["thumbnail_sha256"] = _sha(img)
             r = rows.get(t["slug"])
             if r is not None:
                 r["title"] = t["title"]

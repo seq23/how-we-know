@@ -65,8 +65,9 @@ ledger.LEDGER = TMP / "ledger.json"
 LT.STATE = TMP / "titles.json"
 quota.STATE = TMP / "quota.json"
 TC.VARIANTS_DIR = str(TMP / "variants")
-(TMP / "variants" / SLUG).mkdir(parents=True)
-(TMP / "variants" / SLUG / "A.jpg").write_bytes(b"\xff\xd8 variant A")
+# A REAL contract set (three variants + contract.json, verify() holds): the
+# lane ships variant A only from a set whose contract holds.
+TC.build_variants(SLUG, out_root=str(TMP / "variants"), title=GOOD)
 
 
 def reset_state():
@@ -143,8 +144,13 @@ check(code == "REPACKAGE_UP_TO_DATE", f"a second apply was not UP_TO_DATE: {code
 # 1a. a title that went up with no contract variant gets variant A ALONE once
 # it exists (job 2, 13 Oct 2026): applied_at must not hide it for good.
 reset_state()
-A = TMP / "variants" / SLUG / "A.jpg"
-A.rename(A.with_suffix(".off"))
+VDIR = TMP / "variants" / SLUG
+VDIR.rename(VDIR.with_name(SLUG + ".off"))
+VDIR.mkdir()
+(VDIR / "A.jpg").write_bytes((VDIR.with_name(SLUG + ".off") / "A.jpg").read_bytes())
+# a BARE A.jpg (a set refused at B left it behind - how-strong-is-graphene,
+# 13 Oct 2026) is not a contract thumbnail and must not ship
+check(RP.thumb_for(SLUG) is None, "a bare A.jpg with no contract.json counts as a thumbnail")
 yt = FakeYT()
 run(RP.run_apply, yt=yt)
 row = json.loads(LT.STATE.read_text())["titles"][SLUG]
@@ -152,7 +158,9 @@ check(row.get("applied_at") and row.get("thumbnail_applied") is False
       and not [c for c in yt.calls if c[0] == "set_thumbnail"],
       f"with no variant on disk the title should go up alone: {row} {yt.calls}")
 check(not RP.apply_plan(), "a title-only row was re-planned with no variant on disk")
-A.with_suffix(".off").rename(A)
+import shutil                                                 # noqa: E402
+shutil.rmtree(VDIR)
+VDIR.with_name(SLUG + ".off").rename(VDIR)
 before = spent()
 yt = FakeYT()
 code = run(RP.run_apply, yt=yt)
@@ -164,6 +172,15 @@ check(code is None and yt.calls == [("set_thumbnail", "OLD1", "A.jpg")]
       f"{quota.THUMBNAIL} units: {code} {yt.calls} {spent() - before}")
 code = run(RP.run_apply, yt=FakeYT())
 check(code == "REPACKAGE_UP_TO_DATE", f"after the thumbnail pass: {code}")
+# a REBUILT variant A (new text, new bytes) reaches the live video alone
+TC.build_variants(SLUG, out_root=str(TMP / "variants"),
+                  title="The welding arc is not one thing")
+yt = FakeYT()
+code = run(RP.run_apply, yt=yt)
+check(code is None and yt.calls == [("set_thumbnail", "OLD1", "A.jpg")],
+      f"a rebuilt variant A did not reach the live video: {code} {yt.calls}")
+code = run(RP.run_apply, yt=FakeYT())
+check(code == "REPACKAGE_UP_TO_DATE", f"after the rebuilt thumbnail: {code}")
 reset_state()
 LT.STATE.write_text(json.dumps({"titles": {SLUG: {
     "new_title": "Welding — and how we know", "checks_passed": True}}}))
