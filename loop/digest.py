@@ -273,6 +273,7 @@ def plain(code: str | None) -> str:
 # Mac, so the subject's action says so.
 MAC_STAGES = {"mac", "mac-batch", "backfill", "render-gate", "batch"}
 MAC_CODES = {"MAC_NOT_SHIPPING", "PULL_FAILED", "REBASE_IN_PROGRESS",
+             "MAC_NOT_ON_MAIN", "MAC_BEHIND_MAIN",
              "RENDER_GATE_EMPTY", "RENDER_HELD", "SHORTS_UNVERIFIED",
              "SHORTS_SHELVED_BUT_UNVERIFIED", "HARVESTER_TOOLING_ABSENT",
              "DELEGATED_HARVEST_FAILING", "DELEGATED_HARVEST_STALE"}

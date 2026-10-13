@@ -181,9 +181,49 @@ check("longform_title.title_for_upload" in src and '"TITLE_REFUSED"' in src
 # --------------------------------------------------------------------- 5. V47
 import validate as V                                          # noqa: E402
 import ledger                                                 # noqa: E402
-res = V.v47_longform_title([]).as_dict()
+# THE REAL REPO MEANS THE REAL titles.json TOO. This check ran with LT.STATE
+# still pointed at the fixture above, so the real proposals were never
+# examined and a queued repair could not be seen.
+_fixture_state, LT.STATE = LT.STATE, LOOP / "state" / "titles.json"
+try:
+    res = V.v47_longform_title([]).as_dict()
+finally:
+    LT.STATE = _fixture_state
 check(not res["failures"], f"V47 self-check fails on the real repo: {res['failures']}")
 saved = ledger.LEDGER
+
+# -- 5a'. a live failing title is HELD only while a passing repair is queued
+# (TITLE_RETITLE_PENDING, 2026-10-13); with no repair, or a repair that itself
+# fails, or one already applied, it is a hard failure.
+BADLIVE = "Welding arc — and how we know"
+fake = TMP / "ledger_retitle.json"
+fake.write_text(json.dumps({"published": [{
+    "slug": SLUG, "question": Q, "video_id": "X", "uploaded_at": "2026-10-14T00:00:00+00:00",
+    "title": BADLIVE}], "queued": []}))
+ledger.LEDGER = fake
+try:
+    for label, row, want_held in [
+            ("passing unapplied repair", {"new_title": good, "checks_passed": True,
+                                          "applied_at": None}, True),
+            ("no repair queued", None, False),
+            ("repair that fails", {"new_title": "Welding — and how we know",
+                                   "checks_passed": True, "applied_at": None}, False),
+            ("repair already applied", {"new_title": good, "checks_passed": True,
+                                        "applied_at": "2026-10-14T01:00:00+00:00"}, False),
+            ("repair not checks_passed", {"new_title": good, "checks_passed": False}, False)]:
+        LT.STATE.write_text(json.dumps({"titles": {SLUG: row} if row else {}}))
+        res = V.v47_longform_title([]).as_dict()
+        live_fail = any("live title" in f for f in res["failures"])
+        held = any(st.get("code") == "TITLE_RETITLE_PENDING" and SLUG in st.get("items", [])
+                   for st in res.get("stops") or [])
+        if want_held:
+            check(held and not live_fail, f"V47 {label}: not held by name: {res}")
+        else:
+            check(live_fail and not held, f"V47 {label}: a failing live title passed: {res}")
+finally:
+    ledger.LEDGER = saved
+    if LT.STATE.exists():
+        LT.STATE.unlink()
 fake = TMP / "ledger.json"
 fake.write_text(json.dumps({"published": [{
     "slug": SLUG, "question": Q, "video_id": "X", "uploaded_at": "2026-10-14T00:00:00+00:00",

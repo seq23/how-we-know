@@ -344,8 +344,23 @@ def main() -> int:
               "[work] verified research/imagery_video.py is harvesting on "
               "mac-batch (delegated)" in r1.stdout and "113 record(s)" in r1.stdout,
               r1.stdout[-600:])
-        check("the pool report names the Mac's count beside the local absence",
-              "video_rights.json absent here; 113 record(s) on mac-batch" in r1.stdout)
+        # HOST-AWARE, NOT HOST-BLIND. The Mac keeps a local (gitignored)
+        # channel/imagery/video_rights.json, so on the Mac the lane rightly
+        # reports the LOCAL count and this check failed there while passing
+        # in CI. Each host is held to its own exact line.
+        _vr = os.path.join(ROOT, "channel", "imagery", "video_rights.json")
+        if os.path.exists(_vr):
+            _spec = importlib.util.spec_from_file_location("_fl_count", LANE_SRC)
+            _fl = importlib.util.module_from_spec(_spec)
+            _spec.loader.exec_module(_fl)
+            _n = _fl._count(_fl.Path(_vr))                # noqa: SLF001
+            check("the pool report names the local count where the manifest exists",
+                  f"cleared pool after: channel/imagery/video_rights.json {_n} record(s)\n"
+                  in r1.stdout + "\n" and "record(s) here;" not in r1.stdout,
+                  r1.stdout[-600:])
+        else:
+            check("the pool report names the Mac's count beside the local absence",
+                  "video_rights.json absent here; 113 record(s) on mac-batch" in r1.stdout)
         # Four since 2026-10-13: research/imagery_food.py joined the three.
         check("the four ci harvesters still ran (dry) first",
               r1.stdout.count("[work] would harvest") == 4)

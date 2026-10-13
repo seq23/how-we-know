@@ -1,0 +1,29 @@
+{
+  "stage": "render-gate",
+  "week": "2026-W42",
+  "at": "2026-10-13T14:04:51+00:00",
+  "code": "RENDER_HELD",
+  "message": "1 finished render(s) held back; every other finished episode ships this run. Held: how-deep-can-whales-dive",
+  "detail": {
+    "held": {
+      "how-deep-can-whales-dive": [
+        "how-deep-can-whales-dive: rendered 8.97 min, under the 10.0-minute hard floor"
+      ]
+    },
+    "examined": 69
+  },
+  "unblock": "A render under the floor heals itself: extend.py has been asked for more sourced narration and the next bin/batch-session.sh re-voices and re-renders it. A clipped render needs re-rendering. The hold lifts on the run after the validators pass.",
+  "disposition": "needs_human",
+  "disposition_why": "'RENDER_HELD' is classified needs_human in loop/stop_policy.json: it is a defect a person reads. 'RENDER_HELD' was reported on 2026-10-13T12:03:40+00:00 but no issue number was ever recorded against it, so this run cannot tell the owner where it is tracked. Reporting again is the only honest option.",
+  "consecutive": 1,
+  "held_items": [
+    "how-deep-can-whales-dive - rendered 8.97 min, under the 10.0-minute hard floor"
+  ],
+  "exit_code": 3,
+  "work_done_before_stop": [
+    "self-heal started for how-deep-can-whales-dive: --- runtime-self-heal: OK, 1 unit(s) of work"
+  ],
+  "notes": [
+    "1 render(s) held, 68 pass and ship as normal"
+  ]
+}

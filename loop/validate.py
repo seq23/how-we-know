@@ -4194,6 +4194,7 @@ def v47_longform_title(items) -> Result:
         p = ROOT / "scripts" / f"{slug}.md"
         return p.read_text(encoding="utf-8") if p.exists() else None
 
+    retitle: list[str] = []
     for row in _led.load().get("published") or []:
         if (row.get("uploaded_at") or "") < _lt.RULE_START or row.get("retired_at"):
             continue
@@ -4207,8 +4208,30 @@ def v47_longform_title(items) -> Result:
         if text is None:
             r.fail(f"{row['slug']}: no script to trace its title to")
             continue
-        for p in _lt.title_problems(t, text, row.get("question")):
+        probs = _lt.title_problems(t, text, row.get("question"))
+        # A LIVE TITLE THAT FAILS IS REPAIRED BY loop/repackage.py apply, which
+        # waits on quota. 2026-10-13: the Mac's backfill, running 39 commits
+        # behind main from the wrong branch (see loop/mac_sync.py guard),
+        # uploaded how-deep-can-a-sperm-whale-go under an old-rule title; the
+        # proposer had already queued a passing one. That is HELD by name
+        # (TITLE_RETITLE_PENDING) ONLY while a different, checks_passed,
+        # unapplied titles.json proposal passes against today's script right
+        # now; with no such repair queued it stays a hard failure.
+        fix = (_lt.load()["titles"].get(row["slug"]) or {}) if probs else {}
+        if (probs and fix.get("checks_passed") and not fix.get("applied_at")
+                and fix.get("new_title") and fix["new_title"] != t
+                and not _lt.title_problems(fix["new_title"], text,
+                                           row.get("question"))):
+            retitle.append(row["slug"])
+            continue
+        for p in probs:
             r.fail(f"{row['slug']}: live title {t!r}: {p}")
+    if retitle:
+        r.named_stop("TITLE_RETITLE_PENDING",
+                     f"{len(retitle)} live video(s) went up under a title that "
+                     f"fails the formula; a passing replacement is queued in "
+                     f"loop/state/titles.json and loop/repackage.py apply "
+                     f"writes it as quota allows", retitle)
     for slug, row in sorted(_lt.load()["titles"].items()):
         if not row.get("checks_passed"):
             continue

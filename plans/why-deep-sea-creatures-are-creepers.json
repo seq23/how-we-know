@@ -1,0 +1,1260 @@
+[
+  {
+    "segment": "stat_card",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "Deep sea creatures look creepy because they are built for a place with no sunlight, little food and crushing pressure, and NOAA puts the start of that sunless midnight zone at about 1,000 metres down.",
+    "args": {
+      "value": "1,000",
+      "unit": "metres",
+      "caption": "Below this depth, no sunlight reaches",
+      "source": "NOAA"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "The huge mouths, the glowing lures, the needle teeth, the black and red skin: almost all of it is engineering for darkness, not menace.",
+    "args": {
+      "lines": [
+        "The huge mouths, the",
+        "glowing lures, the needle",
+        "teeth"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 8.69,
+    "heading": "Cold open",
+    "narration": "But that answer leaves something unsettled. If these bodies are simply good solutions, why do they read to us as horror?",
+    "args": {
+      "value": "1,000",
+      "unit": "metres",
+      "caption": "Below this depth, no sunlight reaches",
+      "source": "NOAA"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "Part of the answer is in the animals. Part of it, it turns out, is in how we have met them: in nets, under lights, out of context. This episode separates the two.",
+    "args": {
+      "lines": [
+        "Part of the answer",
+        "is in the animals.",
+        "Part"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 3.5,
+    "heading": "Title card",
+    "narration": "Why are deep sea creatures such creepers?",
+    "args": {
+      "lines": [
+        "Why are deep sea",
+        "creatures such creepers?"
+      ]
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "zone_column",
+    "seconds": 8.28,
+    "heading": "The creepy features are answers to darkness",
+    "narration": "Start with the light, because almost everything else follows from it. NOAA divides the open ocean into layers by depth.",
+    "args": {
+      "highlight": "MIDNIGHT ZONE"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "The creepy features are answers to darkness",
+    "narration": "The sunlight zone runs to roughly 200 metres, where there is enough light for photosynthesis.",
+    "args": {
+      "lines": [
+        "The sunlight zone runs",
+        "to roughly 200 metres,",
+        "where there"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "zone_column",
+    "seconds": 9.0,
+    "heading": "The creepy features are answers to darkness",
+    "narration": "Below it, the twilight zone fades from dim blue to nothing. By about 1,000 metres you are in the midnight zone, and from there down through the abyssal and hadal zones, the only light is light that animals make themselves.",
+    "args": {
+      "highlight": "MIDNIGHT ZONE"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The creepy features are answers to darkness",
+    "narration": "That is most of the ocean's living space. NOAA and the Smithsonian both describe the deep sea as the largest habitat on Earth, and almost all of it is permanently dark.",
+    "args": {
+      "lines": [
+        "That is most of",
+        "the ocean's living space.",
+        "NOAA"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "light_attenuation",
+    "seconds": 8.28,
+    "heading": "The creepy features are answers to darkness",
+    "narration": "Water does not dim all colours equally. Red light is absorbed first, in the upper layers, and blue travels furthest.",
+    "args": {},
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "The creepy features are answers to darkness",
+    "narration": "That single physical fact explains one of the strangest-looking habits of deep animals: many of them are red.",
+    "args": {
+      "lines": [
+        "That single physical fact",
+        "explains one of the",
+        "strangest-looking habits"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "light_attenuation",
+    "seconds": 9.0,
+    "heading": "The creepy features are answers to darkness",
+    "narration": "Shrimp, jellies and some fish carry deep red pigment, which seems like the opposite of camouflage until you remember that, where they live, there is no red light to reflect.",
+    "args": {},
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "The creepy features are answers to darkness",
+    "narration": "Red becomes black. Other species skip the trick and are simply black.",
+    "args": {
+      "lines": [
+        "Red becomes black. Other",
+        "species skip the trick"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "light_attenuation",
+    "seconds": 9.0,
+    "heading": "The creepy features are answers to darkness",
+    "narration": "Smithsonian researchers have described ultra-black fish whose skin absorbs almost all of the light that hits it, so that a predator's glow or a searchlight finds almost nothing to bounce back.",
+    "args": {},
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "The creepy features are answers to darkness",
+    "narration": "The colours that look lurid in a photograph are, at depth, invisibility.",
+    "args": {
+      "lines": [
+        "The colours that look",
+        "lurid in a photograph"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 7.03,
+    "heading": "Producer POV",
+    "narration": "It feels quiet, but not peaceful quiet. More like being somewhere you were never designed to be.",
+    "args": {
+      "text": "It feels quiet, but not peaceful quiet. More like being somewhere you were never designed to be.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 6.21,
+    "heading": "Light is the deep sea's main language",
+    "narration": "If the deep is dark, you might expect animals to give up on light altogether.",
+    "args": {
+      "title": "How MBARI counted glowing animals",
+      "stages": [
+        "years of video",
+        "identified each animal",
+        "which groups produce light"
+      ],
+      "conclusion": "about three quarters of the animals"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Light is the deep sea's main language",
+    "narration": "The opposite happened. Researchers at MBARI, the Monterey Bay Aquarium Research Institute, went through years of video from their remotely operated vehicles.",
+    "args": {
+      "lines": [
+        "The opposite happened. Researchers",
+        "at MBARI, the Monterey",
+        "Bay Aquarium Research Institute"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 7.45,
+    "heading": "Light is the deep sea's main language",
+    "narration": "They identified each animal on screen and checked it against what is known about which groups produce light.",
+    "args": {
+      "title": "How MBARI counted glowing animals",
+      "stages": [
+        "years of video",
+        "identified each animal",
+        "which groups produce light"
+      ],
+      "conclusion": "about three quarters of the animals"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Light is the deep sea's main language",
+    "narration": "Their result was that about three quarters of the animals they observed in the water column can make light.",
+    "args": {
+      "lines": [
+        "Their result was that",
+        "about three quarters of",
+        "the animals"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 7.86,
+    "heading": "Light is the deep sea's main language",
+    "narration": "That is not a census of every ocean, and it relies on classifying whole groups as glowing or not.",
+    "args": {
+      "title": "How MBARI counted glowing animals",
+      "stages": [
+        "years of video",
+        "identified each animal",
+        "which groups produce light"
+      ],
+      "conclusion": "about three quarters of the animals"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "Light is the deep sea's main language",
+    "narration": "But it is direct observation, in place, over a long record, and it makes the point plainly.",
+    "args": {
+      "lines": [
+        "But it is direct",
+        "observation, in place, over",
+        "a long"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 6.21,
+    "heading": "Light is the deep sea's main language",
+    "narration": "Down here, light is not absent. It is rare, and it belongs to the animals.",
+    "args": {
+      "title": "How MBARI counted glowing animals",
+      "stages": [
+        "years of video",
+        "identified each animal",
+        "which groups produce light"
+      ],
+      "conclusion": "about three quarters of the animals"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 5.38,
+    "heading": "Light is the deep sea's main language",
+    "narration": "That is why so many deep sea faces come with a lamp attached.",
+    "args": {
+      "term": "lure",
+      "includes": [
+        "bait, camouflage, alarm or signal"
+      ],
+      "excludes": [
+        "decoration"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "Light is the deep sea's main language",
+    "narration": "The anglerfish's lure is a modified spine tipped with an organ full of light-producing bacteria.",
+    "args": {
+      "lines": [
+        "The anglerfish's lure is",
+        "a modified spine tipped"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Light is the deep sea's main language",
+    "narration": "In a place where food is scarce and swimming after it costs energy, it is cheaper to make prey come to you.",
+    "args": {
+      "term": "lure",
+      "includes": [
+        "bait, camouflage, alarm or signal"
+      ],
+      "excludes": [
+        "decoration"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Light is the deep sea's main language",
+    "narration": "Other animals use light the opposite way. Many twilight-zone fish have light organs along their bellies that match the faint glow from above, erasing their silhouette for anything looking up.",
+    "args": {
+      "lines": [
+        "Other animals use light",
+        "the opposite way. Many",
+        "twilight-zone fish"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Light is the deep sea's main language",
+    "narration": "Some shrimp spew glowing clouds to startle a predator. The eerie dots and filaments that make these animals look alien are each a working tool, not decoration: bait, camouflage, alarm or signal.",
+    "args": {
+      "term": "lure",
+      "includes": [
+        "bait, camouflage, alarm or signal"
+      ],
+      "excludes": [
+        "decoration"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 6.21,
+    "heading": "A big mouth is what scarce food looks like",
+    "narration": "The second pressure on deep bodies is hunger. With no sunlight, there are no plants.",
+    "args": {
+      "term": "marine snow",
+      "meaning": "a slow drift of dead plankton, waste and mucus",
+      "boundary": "a real meal can be a rare event",
+      "source": "NOAA"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "A big mouth is what scarce food looks like",
+    "narration": "Most food in the deep arrives from above as marine snow, a slow drift of dead plankton, waste and mucus, or as the occasional large carcass.",
+    "args": {
+      "lines": [
+        "Most food in the",
+        "deep arrives from above",
+        "as marine"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 4.97,
+    "heading": "A big mouth is what scarce food looks like",
+    "narration": "NOAA describes marine snow as a primary food source for deep-sea life.",
+    "args": {
+      "term": "marine snow",
+      "meaning": "a slow drift of dead plankton, waste and mucus",
+      "boundary": "a real meal can be a rare event",
+      "source": "NOAA"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "A big mouth is what scarce food looks like",
+    "narration": "It is a dependable supply for the ecosystem as a whole, but for any one animal, a real meal can be a rare event.",
+    "args": {
+      "lines": [
+        "It is a dependable",
+        "supply for the ecosystem"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 5.38,
+    "heading": "A big mouth is what scarce food looks like",
+    "narration": "Now look at a gulper eel or a viperfish with that in mind.",
+    "args": {
+      "title": "Building a predator for rare meals",
+      "steps": [
+        [
+          "mouths become enormous",
+          ""
+        ],
+        [
+          "teeth grow long",
+          ""
+        ],
+        [
+          "stomachs that stretch",
+          ""
+        ]
+      ],
+      "note": "Nothing that arrives can be wasted"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "A big mouth is what scarce food looks like",
+    "narration": "If meals are rare, you cannot afford to miss one, and you cannot afford to refuse one because it is too big.",
+    "args": {
+      "lines": [
+        "If meals are rare,",
+        "you cannot afford to",
+        "miss one"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "A big mouth is what scarce food looks like",
+    "narration": "So mouths become enormous relative to the body. Teeth grow long and often curve inward, working less like knives and more like a cage that stops a slippery catch from escaping.",
+    "args": {
+      "title": "Building a predator for rare meals",
+      "steps": [
+        [
+          "mouths become enormous",
+          ""
+        ],
+        [
+          "teeth grow long",
+          ""
+        ],
+        [
+          "stomachs that stretch",
+          ""
+        ]
+      ],
+      "note": "Nothing that arrives can be wasted"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "A big mouth is what scarce food looks like",
+    "narration": "Some species have stomachs that stretch to take prey close to their own size.",
+    "args": {
+      "lines": [
+        "Some species have stomachs",
+        "that stretch to take",
+        "prey close"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "A big mouth is what scarce food looks like",
+    "narration": "Nothing that arrives can be wasted. Many deep fish have weak muscles and watery flesh, and they spend long periods drifting rather than hunting.",
+    "args": {
+      "title": "Building a predator for rare meals",
+      "steps": [
+        [
+          "mouths become enormous",
+          ""
+        ],
+        [
+          "teeth grow long",
+          ""
+        ],
+        [
+          "stomachs that stretch",
+          ""
+        ]
+      ],
+      "note": "Nothing that arrives can be wasted"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "A big mouth is what scarce food looks like",
+    "narration": "The fangs that make them look ferocious belong, in many cases, to animals that move very little and wait.",
+    "args": {
+      "lines": [
+        "The fangs that make",
+        "them look ferocious belong"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "anatomy_callout",
+    "seconds": 6.62,
+    "heading": "Eyes go to extremes, not to average",
+    "narration": "Eyes are where deep animals look most unfamiliar, and where the evidence is clearest about why.",
+    "args": {
+      "title": "Barreleye",
+      "parts": [
+        [
+          "Tubular eyes",
+          0.5,
+          0.4
+        ],
+        [
+          "Transparent shield",
+          0.5,
+          0.2
+        ],
+        [
+          "Nostrils",
+          0.4,
+          0.55
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Eyes go to extremes, not to average",
+    "narration": "In the twilight zone there is still a faint glow from above, so many animals there have enormous eyes to catch it.",
+    "args": {
+      "lines": [
+        "In the twilight zone",
+        "there is still a",
+        "faint glow"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "anatomy_callout",
+    "seconds": 9.0,
+    "heading": "Eyes go to extremes, not to average",
+    "narration": "Deeper, where the only light is bioluminescence, some species keep large sensitive eyes for spotting flashes, while others have small eyes or have lost them in favour of touch, smell and the sense of vibration.",
+    "args": {
+      "title": "Barreleye",
+      "parts": [
+        [
+          "Tubular eyes",
+          0.5,
+          0.4
+        ],
+        [
+          "Transparent shield",
+          0.5,
+          0.2
+        ],
+        [
+          "Nostrils",
+          0.4,
+          0.55
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Eyes go to extremes, not to average",
+    "narration": "The barreleye is the case most people remember. For a long time, specimens brought up in nets suggested an odd fish with tubular eyes fixed pointing upward.",
+    "args": {
+      "lines": [
+        "The barreleye is the",
+        "case most people remember."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "anatomy_callout",
+    "seconds": 9.0,
+    "heading": "Eyes go to extremes, not to average",
+    "narration": "Then MBARI filmed living barreleyes with remotely operated vehicles and showed that the head is covered by a transparent shield filled with fluid, and that the tubular eyes can rotate inside it to look up or forward.",
+    "args": {
+      "title": "Barreleye",
+      "parts": [
+        [
+          "Tubular eyes",
+          0.5,
+          0.4
+        ],
+        [
+          "Transparent shield",
+          0.5,
+          0.2
+        ],
+        [
+          "Nostrils",
+          0.4,
+          0.55
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Eyes go to extremes, not to average",
+    "narration": "The two dark spots where you would expect eyes are its nostrils.",
+    "args": {
+      "lines": [
+        "The two dark spots",
+        "where you would expect",
+        "eyes"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "anatomy_callout",
+    "seconds": 6.21,
+    "heading": "Eyes go to extremes, not to average",
+    "narration": "A creature that looked like a broken design turned out, alive, to make complete sense.",
+    "args": {
+      "title": "Barreleye",
+      "parts": [
+        [
+          "Tubular eyes",
+          0.5,
+          0.4
+        ],
+        [
+          "Transparent shield",
+          0.5,
+          0.2
+        ],
+        [
+          "Nostrils",
+          0.4,
+          0.55
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Eyes go to extremes, not to average",
+    "narration": "Some deep animals have gone further still. A few dragonfish produce red light from organs near their eyes, and can see it, while most of their neighbours cannot.",
+    "args": {
+      "lines": [
+        "Some deep animals have",
+        "gone further still. A",
+        "few dragonfish"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Eyes go to extremes, not to average",
+    "narration": "In a world tuned to blue, that gives them a private searchlight.",
+    "args": {
+      "lines": [
+        "In a world tuned",
+        "to blue, that gives",
+        "them"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "anatomy_callout",
+    "seconds": 9.0,
+    "heading": "Eyes go to extremes, not to average",
+    "narration": "It is a reminder that strange-looking is often just a sign of solving a problem nobody at the surface ever had to solve.",
+    "args": {
+      "title": "Barreleye",
+      "parts": [
+        [
+          "Tubular eyes",
+          0.5,
+          0.4
+        ],
+        [
+          "Transparent shield",
+          0.5,
+          0.2
+        ],
+        [
+          "Nostrils",
+          0.4,
+          0.55
+        ]
+      ]
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 9.0,
+    "heading": "Pressure explains the soft bodies, and the blobfish",
+    "narration": "The third force is pressure. NOAA notes that pressure rises by about one atmosphere for every 10 metres of seawater, so near 1,000 metres it is roughly 100 times what you feel at the surface, and it keeps climbing all the way to the trenches.",
+    "args": {
+      "value": "100",
+      "unit": "times",
+      "caption": "Pressure near 1,000 metres compared with the surface",
+      "source": "NOAA"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Pressure explains the soft bodies, and the blobfish",
+    "narration": "Pressure does not crush a body that is mostly water, because water barely compresses, and there is no air space to collapse.",
+    "args": {
+      "lines": [
+        "Pressure does not crush",
+        "a body that is",
+        "mostly water"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 7.03,
+    "heading": "Pressure explains the soft bodies, and the blobfish",
+    "narration": "What pressure does is disturb molecules: it can stop proteins folding properly and make cell membranes stiff.",
+    "args": {
+      "value": "100",
+      "unit": "times",
+      "caption": "Pressure near 1,000 metres compared with the surface",
+      "source": "NOAA"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Pressure explains the soft bodies, and the blobfish",
+    "narration": "Deep animals answer with chemistry rather than armour. Fish from greater depths tend to carry more of a small molecule called TMAO, which helps proteins hold their shape, and their bodies often lean towards watery, gelatinous tissue with light skeletons.",
+    "args": {
+      "lines": [
+        "Deep animals answer with",
+        "chemistry rather than armour.",
+        "Fish"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 6.21,
+    "heading": "Pressure explains the soft bodies, and the blobfish",
+    "narration": "That softness is part of why they look unfinished to us. It is not weakness.",
+    "args": {
+      "value": "100",
+      "unit": "times",
+      "caption": "Pressure near 1,000 metres compared with the surface",
+      "source": "NOAA"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "Pressure explains the soft bodies, and the blobfish",
+    "narration": "It is what a body looks like when it is not fighting the water.",
+    "args": {
+      "lines": [
+        "It is what a",
+        "body looks like when",
+        "it"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Pressure explains the soft bodies, and the blobfish",
+    "narration": "Which brings us to the most famous creeper of all. The blobfish became a symbol of ugliness from photographs of specimens hauled up in trawl nets.",
+    "args": {
+      "term": "blobfish",
+      "includes": [
+        "a fairly ordinary, if soft, deep-water fish"
+      ],
+      "excludes": [
+        "a symbol of ugliness"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "Pressure explains the soft bodies, and the blobfish",
+    "narration": "But those images show a fish that has been dragged out of high pressure into the air.",
+    "args": {
+      "lines": [
+        "But those images show",
+        "a fish that has",
+        "been dragged"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Pressure explains the soft bodies, and the blobfish",
+    "narration": "Its loose, gelatinous body, built to be supported by water, slumps and sags once that support is gone, and its skin is often damaged by the net.",
+    "args": {
+      "term": "blobfish",
+      "includes": [
+        "a fairly ordinary, if soft, deep-water fish"
+      ],
+      "excludes": [
+        "a symbol of ugliness"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "Pressure explains the soft bodies, and the blobfish",
+    "narration": "In its own habitat, the blobfish looks like a fairly ordinary, if soft, deep-water fish.",
+    "args": {
+      "lines": [
+        "In its own habitat,",
+        "the blobfish looks like",
+        "a fairly"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 4.97,
+    "heading": "Pressure explains the soft bodies, and the blobfish",
+    "narration": "The face that made it a meme is largely a decompression injury.",
+    "args": {
+      "term": "blobfish",
+      "includes": [
+        "a fairly ordinary, if soft, deep-water fish"
+      ],
+      "excludes": [
+        "a symbol of ugliness"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Pressure explains the soft bodies, and the blobfish",
+    "narration": "That is worth holding onto, because it is not the only case where the creepiness was manufactured on the way up.",
+    "args": {
+      "lines": [
+        "That is worth holding",
+        "onto, because it"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "Finding a mate in the dark rewrites the body",
+    "narration": "Darkness and scarcity also shape how deep animals meet. In a vast dark volume with few individuals, finding a partner at all is hard.",
+    "args": {
+      "term": "sexual parasitism",
+      "meaning": "fuses with her permanently",
+      "boundary": "Not every anglerfish does this",
+      "source": "Smithsonian"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Finding a mate in the dark rewrites the body",
+    "narration": "Some deep sea anglerfish solved this with a habit called sexual parasitism, which sounds like horror and works like logistics.",
+    "args": {
+      "lines": [
+        "Some deep sea anglerfish",
+        "solved this with a",
+        "habit called"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "Finding a mate in the dark rewrites the body",
+    "narration": "The males are much smaller than the females, and in some species a male bites onto a female and fuses with her permanently, their blood supplies joining, so that he becomes a source of sperm she carries with her.",
+    "args": {
+      "term": "sexual parasitism",
+      "meaning": "fuses with her permanently",
+      "boundary": "Not every anglerfish does this",
+      "source": "Smithsonian"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Finding a mate in the dark rewrites the body",
+    "narration": "The Smithsonian has described this among the anglerfish it studies. Not every anglerfish does this, and the details vary between groups.",
+    "args": {
+      "lines": [
+        "The Smithsonian has described",
+        "this among the anglerfish",
+        "it studies."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "Finding a mate in the dark rewrites the body",
+    "narration": "But it follows the same rule as the teeth and the lures. When encounters are rare, bodies evolve to make each one count.",
+    "args": {
+      "term": "sexual parasitism",
+      "meaning": "fuses with her permanently",
+      "boundary": "Not every anglerfish does this",
+      "source": "Smithsonian"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "The creepiness is partly in the camera",
+    "narration": "Now the part of the answer that belongs to us. For most of the history of deep sea science, people met these animals as dead specimens, brought up in nets, often damaged, discoloured or collapsed.",
+    "args": {
+      "title": "What makes a deep animal look creepy",
+      "items": [
+        "+dead specimens, brought up in nets",
+        "+Photographs were taken under flash",
+        "+Close framing hides scale",
+        "?why a particular viewer finds those teeth unsettling"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "The creepiness is partly in the camera",
+    "narration": "Photographs were taken under flash, which lights up red skin that is invisible at depth and throws hard shadows across teeth.",
+    "args": {
+      "lines": [
+        "Photographs were taken under",
+        "flash, which lights up",
+        "red skin"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 7.45,
+    "heading": "The creepiness is partly in the camera",
+    "narration": "Close framing hides scale: many of the fiercest-looking deep fish are small enough to sit in your hand.",
+    "args": {
+      "title": "What makes a deep animal look creepy",
+      "items": [
+        "+dead specimens, brought up in nets",
+        "+Photographs were taken under flash",
+        "+Close framing hides scale",
+        "?why a particular viewer finds those teeth unsettling"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The creepiness is partly in the camera",
+    "narration": "And human brains are quick to read faces into anything with two eyes and a mouth, so a gaping jaw reads as aggression even in an animal that is simply waiting.",
+    "args": {
+      "lines": [
+        "And human brains are",
+        "quick to read faces",
+        "into anything"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 9.0,
+    "heading": "The creepiness is partly in the camera",
+    "narration": "That is changing because of how the deep is now studied. NOAA Ocean Exploration streams live video from its expeditions, and MBARI has built a long record of footage from remotely operated vehicles.",
+    "args": {
+      "title": "Who watches the deep alive",
+      "sources": [
+        [
+          "MBARI",
+          "footage from remotely operated vehicles"
+        ],
+        [
+          "NOAA Ocean Exploration",
+          "streams live video from its expeditions"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The creepiness is partly in the camera",
+    "narration": "Seen alive, in their own water, under controlled light, many of these animals look less like monsters and more like what they are: slow, delicate, finely tuned specialists.",
+    "args": {
+      "lines": [
+        "Seen alive, in their",
+        "own water, under controlled",
+        "light"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 6.62,
+    "heading": "The creepiness is partly in the camera",
+    "narration": "The barreleye and the blobfish are both cases where seeing the living animal changed the story.",
+    "args": {
+      "title": "Who watches the deep alive",
+      "sources": [
+        [
+          "MBARI",
+          "footage from remotely operated vehicles"
+        ],
+        [
+          "NOAA Ocean Exploration",
+          "streams live video from its expeditions"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "What to notice in the edit",
+    "narration": "As you watch the footage in this episode, notice where the light comes from.",
+    "args": {
+      "lines": [
+        "As you watch the",
+        "footage in this episode,",
+        "notice"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "What to notice in the edit",
+    "narration": "When it comes from the vehicle, you are seeing the animal as no deep sea neighbour ever does.",
+    "args": {
+      "lines": [
+        "When it comes from",
+        "the vehicle, you are",
+        "seeing"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.03,
+    "heading": "What to notice in the edit",
+    "narration": "When the lights go down and only its own glow remains, you are closer to its world.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "What to notice in the edit",
+    "narration": "Notice, too, which shots are of living animals and which are of specimens.",
+    "args": {
+      "lines": [
+        "Notice, too, which shots",
+        "are of living animals"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "What to notice in the edit",
+    "narration": "A slack body on a deck and the same species hanging in open water are not the same evidence.",
+    "args": {
+      "lines": [
+        "A slack body on",
+        "a deck and the",
+        "same species"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 4.97,
+    "heading": "Evidence limit",
+    "narration": "This evidence does not show that every strange feature is an adaptation.",
+    "args": {
+      "term": "the MBARI figure",
+      "includes": [
+        "a strong indication"
+      ],
+      "excludes": [
+        "a global count"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "Some traits may be side effects, or leftovers from ancestors, and for many species we have only a handful of observations, sometimes only damaged specimens.",
+    "args": {
+      "lines": [
+        "Some traits may be",
+        "side effects, or leftovers",
+        "from ancestors"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "The MBARI figure on bioluminescence comes from one region and from classifying animals by group, so it is a strong indication rather than a global count.",
+    "args": {
+      "term": "the MBARI figure",
+      "includes": [
+        "a strong indication"
+      ],
+      "excludes": [
+        "a global count"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Evidence limit",
+    "narration": "And creepy is not a biological category at all. Science can explain why a deep fish has long teeth.",
+    "args": {
+      "lines": [
+        "And creepy is not",
+        "a biological category at",
+        "all. Science"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "It cannot settle why a particular viewer finds those teeth unsettling. That part sits in us, and the evidence there is thinner.",
+    "args": {
+      "term": "the MBARI figure",
+      "includes": [
+        "a strong indication"
+      ],
+      "excludes": [
+        "a global count"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "So the deep sea is not full of monsters. It is full of answers to darkness, hunger and pressure, worked out over a very long time by animals that never needed to look friendly to anyone.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.79,
+    "heading": "Closing",
+    "narration": "The creepiness is real as a feeling. It is just not the animals' purpose.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive"
+  }
+]

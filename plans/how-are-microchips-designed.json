@@ -1,0 +1,1118 @@
+[
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "Microchips are designed mostly as text. Engineers describe a chip's behaviour in a hardware description language such as Verilog or VHDL, and software tools translate that description into logic gates and then into the geometric layout of billions of transistors.",
+    "args": {
+      "term": "Chip design",
+      "includes": [
+        "text translated by software"
+      ],
+      "excludes": [
+        "drawn by hand"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Cold open",
+    "narration": "Both languages are published as standards by the IEEE. So the answer to who draws the chip is, largely, nobody.",
+    "args": {
+      "lines": [
+        "Both languages are published",
+        "as standards by the",
+        "IEEE."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 8.28,
+    "heading": "Cold open",
+    "narration": "It is not drawn by hand. What that answer does not settle is how anyone knows the result will work.",
+    "args": {
+      "term": "Chip design",
+      "includes": [
+        "text translated by software"
+      ],
+      "excludes": [
+        "drawn by hand"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "Cold open",
+    "narration": "Nobody can inspect billions of transistors before the factory runs, and a mistake found afterwards is expensive.",
+    "args": {
+      "lines": [
+        "Nobody can inspect billions",
+        "of transistors before the",
+        "factory runs"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 6.21,
+    "heading": "Cold open",
+    "narration": "The real story of chip design is the story of how that confidence is built.",
+    "args": {
+      "term": "Chip design",
+      "includes": [
+        "text translated by software"
+      ],
+      "excludes": [
+        "drawn by hand"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 4.97,
+    "heading": "A chip begins as a description of what it does",
+    "narration": "Start with the language, because that is where the design actually lives.",
+    "args": {
+      "term": "Hardware description language",
+      "meaning": "text that describes structure and behaviour that exist all at once",
+      "boundary": "it does not describe steps to be run one after another",
+      "source": "IEEE"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "A chip begins as a description of what it does",
+    "narration": "A hardware description language looks like code, and engineers type it in an editor like any programmer.",
+    "args": {
+      "lines": [
+        "A hardware description language",
+        "looks like code, and",
+        "engineers type"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 4.97,
+    "heading": "A chip begins as a description of what it does",
+    "narration": "But it does not describe steps to be run one after another.",
+    "args": {
+      "term": "Hardware description language",
+      "meaning": "text that describes structure and behaviour that exist all at once",
+      "boundary": "it does not describe steps to be run one after another",
+      "source": "IEEE"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "A chip begins as a description of what it does",
+    "narration": "It describes structure and behaviour that exist all at once: these signals connect here, this value updates on every tick of the clock, this block waits for that one.",
+    "args": {
+      "lines": [
+        "It describes structure and",
+        "behaviour that exist all",
+        "at once:"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 8.69,
+    "heading": "A chip begins as a description of what it does",
+    "narration": "The two dominant languages, Verilog and VHDL, along with an extended form called SystemVerilog, are published as standards by the IEEE.",
+    "args": {
+      "term": "Hardware description language",
+      "meaning": "text that describes structure and behaviour that exist all at once",
+      "boundary": "it does not describe steps to be run one after another",
+      "source": "IEEE"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "A chip begins as a description of what it does",
+    "narration": "That is how every tool vendor and every design team can agree on what a given line of text means.",
+    "args": {
+      "lines": [
+        "That is how every",
+        "tool vendor and every",
+        "design team"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "A chip begins as a description of what it does",
+    "narration": "The agreement is not a detail. Without a shared, written definition of the language, a design could mean one thing in the simulator and something slightly different in the tool that builds it.",
+    "args": {
+      "term": "Hardware description language",
+      "meaning": "text that describes structure and behaviour that exist all at once",
+      "boundary": "it does not describe steps to be run one after another",
+      "source": "IEEE"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "A chip begins as a description of what it does",
+    "narration": "Most designs are written at what engineers call the register-transfer level. A register is a small store that holds a value.",
+    "args": {
+      "lines": [
+        "Most designs are written",
+        "at what engineers call",
+        "the register-transfer"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "A chip begins as a description of what it does",
+    "narration": "The description says how values move between registers, and what logic transforms them on the way, at each edge of the clock.",
+    "args": {
+      "lines": [
+        "The description says how",
+        "values move between registers,",
+        "and what"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.21,
+    "heading": "A chip begins as a description of what it does",
+    "narration": "Nothing at this level says where a transistor sits or how long a wire is.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "A chip begins as a description of what it does",
+    "narration": "That separation is deliberate. It lets a team reason about what the chip should compute before anyone decides what it physically looks like, and it lets the same description be rebuilt for a different factory later.",
+    "args": {
+      "lines": [
+        "That separation is deliberate.",
+        "It lets a team",
+        "reason about"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 5.38,
+    "heading": "Synthesis turns the description into gates the factory already knows how to make",
+    "narration": "The next step is called logic synthesis, and it is done by software.",
+    "args": {
+      "title": "Logic synthesis",
+      "stages": [
+        "register-transfer description",
+        "standard cells"
+      ],
+      "conclusion": "netlist"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Synthesis turns the description into gates the factory already knows how to make",
+    "narration": "The synthesis tool reads the register-transfer description and maps it onto a library of standard cells.",
+    "args": {
+      "lines": [
+        "The synthesis tool reads",
+        "the register-transfer description and",
+        "maps it"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "Synthesis turns the description into gates the factory already knows how to make",
+    "narration": "A standard cell is a small, pre-designed circuit \u2014 a gate that performs AND, a gate that inverts a signal, a storage element called a flip-flop \u2014 drawn and characterised in advance for one specific manufacturing process.",
+    "args": {
+      "title": "Logic synthesis",
+      "stages": [
+        "register-transfer description",
+        "standard cells"
+      ],
+      "conclusion": "netlist"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Synthesis turns the description into gates the factory already knows how to make",
+    "narration": "The factory, usually called a foundry, or a library vendor working with it, has measured how fast each cell switches and how much power it draws under different conditions of voltage and temperature.",
+    "args": {
+      "lines": [
+        "The factory, usually called",
+        "a foundry, or a",
+        "library vendor"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 7.03,
+    "heading": "Synthesis turns the description into gates the factory already knows how to make",
+    "narration": "The output of synthesis is a netlist: a list of cells and the wires that connect them.",
+    "args": {
+      "title": "Logic synthesis",
+      "stages": [
+        "register-transfer description",
+        "standard cells"
+      ],
+      "conclusion": "netlist"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Synthesis turns the description into gates the factory already knows how to make",
+    "narration": "Here is the first place the \"how we know\" question bites. Synthesis does not simply translate; it optimises, rewriting logic to be smaller or faster.",
+    "args": {
+      "term": "Equivalence checking",
+      "includes": [
+        "a proof for every input"
+      ],
+      "excludes": [
+        "a test that tries examples"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Synthesis turns the description into gates the factory already knows how to make",
+    "narration": "So the netlist is not a line-by-line copy of what the engineer wrote.",
+    "args": {
+      "lines": [
+        "So the netlist is",
+        "not a line-by-line copy",
+        "of what"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Synthesis turns the description into gates the factory already knows how to make",
+    "narration": "To confirm the two still mean the same thing, teams run equivalence checking, a formal method that proves mathematically that the netlist and the original description produce identical outputs for every input.",
+    "args": {
+      "term": "Equivalence checking",
+      "includes": [
+        "a proof for every input"
+      ],
+      "excludes": [
+        "a test that tries examples"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Synthesis turns the description into gates the factory already knows how to make",
+    "narration": "It is not a test that tries examples. It is a proof for every input, and that difference matters for everything that follows.",
+    "args": {
+      "lines": [
+        "It is not a",
+        "test that tries examples.",
+        "It"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 7.03,
+    "heading": "Producer POV",
+    "narration": "Deep-sea science builds conclusions from incomplete observations, damaged specimens, sonar, water samples and tiny windows of footage.",
+    "args": {
+      "text": "Deep-sea science builds conclusions from incomplete observations, damaged specimens, sonar, water samples and tiny windows of footage.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 5.79,
+    "heading": "Verification samples behaviour, then proves what it can",
+    "narration": "That question, asked about animals, is exactly the right one to ask about chips.",
+    "args": {
+      "title": "Verification evidence",
+      "items": [
+        "+testbench",
+        "+reference model",
+        "+coverage",
+        "?states never visited"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "Verification samples behaviour, then proves what it can",
+    "narration": "A modern processor has far more possible internal states than any simulation could ever visit.",
+    "args": {
+      "lines": [
+        "A modern processor has",
+        "far more possible internal",
+        "states"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "Verification samples behaviour, then proves what it can",
+    "narration": "So no one observes a chip's behaviour exhaustively. Verification engineers build a testbench, a surrounding program that feeds the design inputs and checks its outputs against a reference model of what should happen.",
+    "args": {
+      "title": "Verification evidence",
+      "items": [
+        "+testbench",
+        "+reference model",
+        "+coverage",
+        "?states never visited"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Verification samples behaviour, then proves what it can",
+    "narration": "On many teams verification takes more effort than writing the design itself, though published estimates of the split vary and this script will not quote one.",
+    "args": {
+      "lines": [
+        "On many teams verification",
+        "takes more effort than",
+        "writing"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "Verification samples behaviour, then proves what it can",
+    "narration": "Engineers generate constrained random stimulus, enormous numbers of plausible but unplanned input sequences, because bugs hide in combinations no one thought to write by hand.",
+    "args": {
+      "title": "Verification evidence",
+      "items": [
+        "+testbench",
+        "+reference model",
+        "+coverage",
+        "?states never visited"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Verification samples behaviour, then proves what it can",
+    "narration": "Then they measure coverage: which lines executed, which states were reached, which scenarios the plan said must occur.",
+    "args": {
+      "lines": [
+        "Then they measure coverage:",
+        "which lines executed, which",
+        "states"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 7.45,
+    "heading": "Verification samples behaviour, then proves what it can",
+    "narration": "Coverage is the honest part. It tells the team what was exercised and, by subtraction, what was not.",
+    "args": {
+      "title": "Verification",
+      "steps": [
+        [
+          "simulation",
+          ""
+        ],
+        [
+          "coverage",
+          ""
+        ],
+        [
+          "formal verification",
+          ""
+        ],
+        [
+          "emulation",
+          ""
+        ]
+      ],
+      "note": "each method covers a gap the others leave"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Verification samples behaviour, then proves what it can",
+    "narration": "Where simulation cannot reach, formal verification steps in. A tool is given a property \u2014 this buffer never overflows, these two requests are never granted at once \u2014 and searches for any sequence of inputs that breaks it.",
+    "args": {
+      "lines": [
+        "Where simulation cannot reach,",
+        "formal verification steps in.",
+        "A tool"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 5.79,
+    "heading": "Verification samples behaviour, then proves what it can",
+    "narration": "If none exists, the property is proven within the bounds the tool was given.",
+    "args": {
+      "title": "Verification",
+      "steps": [
+        [
+          "simulation",
+          ""
+        ],
+        [
+          "coverage",
+          ""
+        ],
+        [
+          "formal verification",
+          ""
+        ],
+        [
+          "emulation",
+          ""
+        ]
+      ],
+      "note": "each method covers a gap the others leave"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Verification samples behaviour, then proves what it can",
+    "narration": "For large designs, teams also load the description onto emulation hardware, or onto reconfigurable chips called FPGAs, which run the logic far faster than simulation and let real software boot on a design that does not physically exist yet. Each method covers a gap the others leave.",
+    "args": {
+      "lines": [
+        "For large designs, teams",
+        "also load the description",
+        "onto emulation"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "Physical design turns a list of gates into geometry",
+    "narration": "Only now does the chip acquire a shape. Physical design begins with floorplanning: deciding where large blocks such as memories and processor cores will sit, and how power reaches them.",
+    "args": {
+      "title": "Physical design",
+      "stages": [
+        "floorplanning",
+        "placement",
+        "clock tree synthesis",
+        "routing"
+      ],
+      "conclusion": "metal wires that connect everything"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Physical design turns a list of gates into geometry",
+    "narration": "Placement software then positions every standard cell from the netlist. Clock tree synthesis builds the network that delivers the clock signal so that it arrives at every flip-flop at nearly the same moment.",
+    "args": {
+      "lines": [
+        "Placement software then positions",
+        "every standard cell from",
+        "the netlist."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 6.21,
+    "heading": "Physical design turns a list of gates into geometry",
+    "narration": "Routing draws the metal wires that connect everything, stacked in many layers above the transistors.",
+    "args": {
+      "title": "Physical design",
+      "stages": [
+        "floorplanning",
+        "placement",
+        "clock tree synthesis",
+        "routing"
+      ],
+      "conclusion": "metal wires that connect everything"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Physical design turns a list of gates into geometry",
+    "narration": "All of this is automated, because the number of cells is far too large for hands, but engineers steer it constantly, adjusting constraints and re-running when results fall short.",
+    "args": {
+      "lines": [
+        "All of this is",
+        "automated, because the number",
+        "of cells"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 5.38,
+    "heading": "Physical design turns a list of gates into geometry",
+    "narration": "How do they know when results fall short? Mainly through static timing analysis.",
+    "args": {
+      "term": "Static timing analysis",
+      "meaning": "adds up the delay along every path between registers",
+      "boundary": "only as good as the delay models it is fed",
+      "source": "foundry"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Physical design turns a list of gates into geometry",
+    "narration": "Instead of simulating signals, the tool adds up the delay along every path between registers, using the characterised cell data and estimates of wire delay, and checks that each signal arrives before the next clock edge.",
+    "args": {
+      "lines": [
+        "Instead of simulating signals,",
+        "the tool adds up",
+        "the delay"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "Physical design turns a list of gates into geometry",
+    "narration": "A path that is too slow is called a timing violation. Static timing analysis is powerful because it is exhaustive over paths without needing any input patterns.",
+    "args": {
+      "term": "Static timing analysis",
+      "meaning": "adds up the delay along every path between registers",
+      "boundary": "only as good as the delay models it is fed",
+      "source": "foundry"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Physical design turns a list of gates into geometry",
+    "narration": "Its boundary is that it is only as good as the delay models it is fed, which is why the careful measurement work done by the foundry matters so much.",
+    "args": {
+      "lines": [
+        "Its boundary is that",
+        "it is only as",
+        "good"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "Signoff checks the layout against the factory's own rules",
+    "narration": "Before a design leaves the team, it goes through signoff. Design rule checking compares every shape in the layout against the foundry's rule set: minimum widths, minimum spacings, how layers may overlap.",
+    "args": {
+      "title": "Signoff",
+      "items": [
+        "+design rule checking",
+        "+layout versus schematic",
+        "+parasitic extraction",
+        "+timing is checked again"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Signoff checks the layout against the factory's own rules",
+    "narration": "Those rules encode what the manufacturing process can reliably print. Layout versus schematic checking extracts the circuit that the geometry actually forms and confirms it matches the netlist.",
+    "args": {
+      "lines": [
+        "Those rules encode what",
+        "the manufacturing process can",
+        "reliably print."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 7.86,
+    "heading": "Signoff checks the layout against the factory's own rules",
+    "narration": "Parasitic extraction calculates the resistance and capacitance of the real wires, and timing is checked again with those values.",
+    "args": {
+      "title": "Signoff",
+      "items": [
+        "+design rule checking",
+        "+layout versus schematic",
+        "+parasitic extraction",
+        "+timing is checked again"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Signoff checks the layout against the factory's own rules",
+    "narration": "A design that passes all of this is handed off in a step still called tape-out, a name commonly traced to the era when layouts were shipped on magnetic tape.",
+    "args": {
+      "lines": [
+        "A design that passes",
+        "all of this is",
+        "handed off"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 7.03,
+    "heading": "Signoff checks the layout against the factory's own rules",
+    "narration": "The layout becomes a set of photomasks, the stencils used to pattern each layer of the wafer.",
+    "args": {
+      "title": "Shared standards",
+      "sources": [
+        [
+          "IEEE",
+          "hardware description languages"
+        ],
+        [
+          "SEMI",
+          "SEMI International Standards"
+        ],
+        [
+          "NIST",
+          "semiconductor metrology"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Signoff checks the layout against the factory's own rules",
+    "narration": "Here the design world meets the public standards bodies. SEMI, the industry association for semiconductor manufacturing, publishes the SEMI International Standards used across equipment, materials and masks, so that a design from one company can be built with tools from many others.",
+    "args": {
+      "lines": [
+        "Here the design world",
+        "meets the public standards",
+        "bodies. SEMI"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 9.0,
+    "heading": "Signoff checks the layout against the factory's own rules",
+    "narration": "NIST, the United States national measurement institute, works on semiconductor metrology \u2014 how to measure features far too small to see, and how sure anyone can be of that measurement.",
+    "args": {
+      "title": "Shared standards",
+      "sources": [
+        [
+          "IEEE",
+          "hardware description languages"
+        ],
+        [
+          "SEMI",
+          "SEMI International Standards"
+        ],
+        [
+          "NIST",
+          "semiconductor metrology"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Signoff checks the layout against the factory's own rules",
+    "narration": "These bodies do not design chips. They supply the shared definitions and measurements that let a design be trusted outside the room it was made in.",
+    "args": {
+      "lines": [
+        "These bodies do not",
+        "design chips. They supply",
+        "the shared"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 7.45,
+    "heading": "The first chips back from the factory are the real experiment",
+    "narration": "Everything up to tape-out is prediction. The first wafers back from the foundry are where prediction meets matter.",
+    "args": {
+      "title": "First silicon",
+      "steps": [
+        [
+          "bring-up",
+          ""
+        ],
+        [
+          "scan chains",
+          ""
+        ],
+        [
+          "automated test equipment",
+          ""
+        ]
+      ],
+      "note": "design for test"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "The first chips back from the factory are the real experiment",
+    "narration": "Engineers run bring-up: they power the first chips, check that clocks start, load test software, and compare behaviour against the models.",
+    "args": {
+      "lines": [
+        "Engineers run bring-up: they",
+        "power the first chips,",
+        "check"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 5.79,
+    "heading": "The first chips back from the factory are the real experiment",
+    "narration": "To make this possible, designers add circuitry whose only purpose is to be tested.",
+    "args": {
+      "title": "First silicon",
+      "steps": [
+        [
+          "bring-up",
+          ""
+        ],
+        [
+          "scan chains",
+          ""
+        ],
+        [
+          "automated test equipment",
+          ""
+        ]
+      ],
+      "note": "design for test"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The first chips back from the factory are the real experiment",
+    "narration": "Scan chains link the flip-flops so their contents can be shifted out and read, which lets automated test equipment check each manufactured chip for physical defects.",
+    "args": {
+      "lines": [
+        "Scan chains link the",
+        "flip-flops so their contents"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 8.69,
+    "heading": "The first chips back from the factory are the real experiment",
+    "narration": "This practice is called design for test, and it is why a chip can be checked after manufacture, not only before.",
+    "args": {
+      "title": "First silicon",
+      "steps": [
+        [
+          "bring-up",
+          ""
+        ],
+        [
+          "scan chains",
+          ""
+        ],
+        [
+          "automated test equipment",
+          ""
+        ]
+      ],
+      "note": "design for test"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 6.21,
+    "heading": "The first chips back from the factory are the real experiment",
+    "narration": "When bring-up finds a bug that slipped through, the outcome depends on where it lives.",
+    "args": {
+      "term": "Verification",
+      "includes": [
+        "reduces risk"
+      ],
+      "excludes": [
+        "removing it"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The first chips back from the factory are the real experiment",
+    "narration": "Some bugs can be worked around in software or firmware. Others require a respin: corrected masks and another trip through the factory, which costs time and money.",
+    "args": {
+      "lines": [
+        "Some bugs can be",
+        "worked around in software",
+        "or firmware."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 5.38,
+    "heading": "The first chips back from the factory are the real experiment",
+    "narration": "Manufacturers also publish lists of known bugs in shipped products, usually called errata.",
+    "args": {
+      "term": "Verification",
+      "includes": [
+        "reduces risk"
+      ],
+      "excludes": [
+        "removing it"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The first chips back from the factory are the real experiment",
+    "narration": "Those documents are some of the most candid public evidence about chip design, because they show directly that verification reduces risk without removing it.",
+    "args": {
+      "lines": [
+        "Those documents are some",
+        "of the most candid",
+        "public evidence"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "What to notice in the edit",
+    "narration": "In the edit, watch for the shift between two kinds of evidence.",
+    "args": {
+      "lines": [
+        "In the edit, watch",
+        "for the shift between",
+        "two kinds"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.03,
+    "heading": "What to notice in the edit",
+    "narration": "Some steps, like equivalence checking, formal proofs and static timing analysis, are exhaustive within a stated model.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "What to notice in the edit",
+    "narration": "Others, like simulation and bring-up, are samples. The animation draws those differently.",
+    "args": {
+      "lines": [
+        "Others, like simulation and",
+        "bring-up, are samples. The",
+        "animation draws"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "What to notice in the edit",
+    "narration": "A proven claim is drawn solid; a sampled one is drawn as scattered points with gaps between them.",
+    "args": {
+      "lines": [
+        "A proven claim is",
+        "drawn solid"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.62,
+    "heading": "What to notice in the edit",
+    "narration": "Whenever you see the gaps, that is the honest picture of what testing alone can show.",
+    "args": {
+      "variant": 2
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 5.79,
+    "heading": "Evidence limit",
+    "narration": "This account describes the method as public standards and teaching material lay it out.",
+    "args": {
+      "title": "What this establishes",
+      "items": [
+        "+the method",
+        "-how any particular company runs its flow",
+        "-that any shipped chip is free of bugs"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "It does not establish how any particular company runs its flow. Those details, including the tools chosen, the size of teams and the cost of a design, are mostly proprietary, and published estimates vary so widely that this script states none of them.",
+    "args": {
+      "lines": [
+        "It does not establish",
+        "how any particular company",
+        "runs"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 5.38,
+    "heading": "Evidence limit",
+    "narration": "It also does not establish that any shipped chip is free of bugs.",
+    "args": {
+      "title": "What this establishes",
+      "items": [
+        "+the method",
+        "-how any particular company runs its flow",
+        "-that any shipped chip is free of bugs"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "Verification proves properties inside models, and the models themselves are assumptions about how silicon behaves. The published errata are the reminder of where that gap shows.",
+    "args": {
+      "lines": [
+        "Verification proves properties inside",
+        "models, and the models",
+        "themselves"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "So a microchip is designed the way a careful argument is written: stated in a precise language, translated step by step, and checked at each step against something it must agree with.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 4.97,
+    "heading": "Closing",
+    "narration": "The chip you are holding is the last link in that chain.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Closing",
+    "narration": "The evidence that it works is not one test, but the agreement of all of them.",
+    "args": {
+      "lines": [
+        "The evidence that it",
+        "works is not one",
+        "test"
+      ]
+    },
+    "from": "directive+destagnate"
+  }
+]

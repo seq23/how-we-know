@@ -56,12 +56,87 @@ STATE_PREFIX = "loop/state/"
 
 
 def _git(*args: str, check: bool = False) -> subprocess.CompletedProcess:
-    return subprocess.run(["git", *args], cwd=ROOT, text=True,
+    # MAC_SYNC_REPO: tests only - lets loop/tests/test_mac_branch_guard.py run
+    # the REAL bin/batch-session.sh against a throwaway clone's branch.
+    return subprocess.run(["git", *args], cwd=os.environ.get("MAC_SYNC_REPO") or ROOT, text=True,
                           capture_output=True, check=check)
 
 
 def _now() -> str:
     return dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
+
+
+
+# ---------------------------------------------------------------- branch guard
+#
+# 2026-10-13. Every Mac lane commits on WHATEVER BRANCH THE CHECKOUT IS ON and
+# then runs `git push origin main` - which pushes the LOCAL `main` ref, not
+# HEAD. The checkout had been left on fix/breaker-resets-in-draft after PR
+# #189 merged, so four "Mac state" commits (backfill, batch, imagery-harvest,
+# captions) piled up on a dead branch, `push` reported nothing wrong, and the
+# 23:00 batch ran from code and scripts 39 commits behind main: it would have
+# voiced and rendered the stale versions of the 13 reopened scripts. So:
+# pull() and push() refuse off main, and `guard` (run by bin/batch-session.sh
+# before the night begins) refuses the whole batch unless the checkout is on
+# main and holds origin/main after a fetch + fast-forward, writing a NAMED
+# STOP otherwise. Proved by loop/tests/test_mac_branch_guard.py.
+
+MAIN = "main"
+
+
+def current_branch() -> str:
+    """The checked-out branch, or "" for a detached HEAD."""
+    return _git("symbolic-ref", "--short", "-q", "HEAD").stdout.strip()
+
+
+def off_main_reason() -> str:
+    b = current_branch()
+    if b == MAIN:
+        return ""
+    where = f"branch {b!r}" if b else "a detached HEAD"
+    return (f"the Mac checkout is on {where}, not {MAIN!r}; a lane run here "
+            f"would act on that branch's files and strand its commits off main")
+
+
+def _stop_dir() -> Path:
+    return Path(os.environ.get("LOOP_STOPS_DIR") or ROOT / "loop" / "state" / "stops")
+
+
+def write_stop(lane: str, code: str, message: str, unblock: str) -> Path:
+    d = _stop_dir()
+    d.mkdir(parents=True, exist_ok=True)
+    path = d / f"{week_id()}-{lane}.json"
+    path.write_text(json.dumps({
+        "stage": lane, "week": week_id(), "at": _now(), "code": code,
+        "message": message, "unblock": unblock, "disposition": "needs_human",
+        "disposition_why": f"'{code}' is classified needs_human in "
+                           f"loop/stop_policy.json: a defect, not a wait.",
+        "exit_code": 3, "work_done_before_stop": [], "notes": []}, indent=2) + "\n")
+    return path
+
+
+def guard(lane: str) -> tuple[bool, str]:
+    """Refuse unless the checkout is on main and up to date with origin/main."""
+    reason = off_main_reason()
+    if reason:
+        path = write_stop(
+            lane, "MAC_NOT_ON_MAIN", reason + ". Refusing the whole run.",
+            f"cd {ROOT} && git status, commit or move anything uncommitted, "
+            f"then: git checkout {MAIN} && git pull --ff-only. "
+            f"Any commits on that branch must reach main by a PR first.")
+        return False, f"NAMED STOP [MAC_NOT_ON_MAIN]: {reason} (recorded -> {path})"
+    ok, msg = pull()
+    if not ok:
+        path = write_stop(lane, "PULL_FAILED",
+                          f"could not bring {MAIN} up to date before the run: {msg}",
+                          f"cd {ROOT} && git pull --rebase origin {MAIN}; resolve what it reports.")
+        return False, f"NAMED STOP [PULL_FAILED]: {msg} (recorded -> {path})"
+    if _git("merge-base", "--is-ancestor", f"origin/{MAIN}", "HEAD").returncode != 0:
+        path = write_stop(lane, "MAC_BEHIND_MAIN",
+                          f"after the pull, HEAD does not contain origin/{MAIN}",
+                          f"cd {ROOT} && git pull --ff-only origin {MAIN}")
+        return False, f"NAMED STOP [MAC_BEHIND_MAIN]: HEAD lacks origin/{MAIN} (recorded -> {path})"
+    return True, f"on {MAIN}, up to date with origin/{MAIN}: {msg}"
 
 
 # ---------------------------------------------------------------- pull
@@ -102,6 +177,8 @@ def set_aside(paths: list[str]) -> list[str]:
 
 def pull(base: str = "origin/main") -> tuple[bool, str]:
     """Bring main up to date. Returns (ok, message). Never raises."""
+    if off_main_reason():
+        return False, off_main_reason()
     f = _git("fetch", "origin", "main")
     if f.returncode != 0:
         return False, "fetch failed: " + (f.stderr.strip().splitlines() or ["?"])[-1]
@@ -169,6 +246,10 @@ def heartbeat(lane: str, ok: bool, **facts) -> dict:
 
 def push(paths: list[str], message: str) -> tuple[bool, str]:
     """Commit exactly these paths (if changed) and push. Never `git add -A`."""
+    if off_main_reason():
+        # Committing here and pushing `main` is exactly how four Mac-state
+        # commits were stranded on a dead branch (2026-10-13). Commit nothing.
+        return False, "refused, nothing committed: " + off_main_reason()
     # A stop file a stage CLEARED is gone from disk but still tracked; its
     # deletion must be committed too, or origin keeps a resolved stop forever.
     tracked = {p for p in paths
@@ -200,6 +281,8 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
     sub.add_parser("pull")
+    g = sub.add_parser("guard")
+    g.add_argument("--lane", required=True)
     h = sub.add_parser("heartbeat")
     h.add_argument("--lane", required=True)
     h.add_argument("--ok", type=int, default=1)
@@ -219,6 +302,10 @@ def main() -> int:
     if a.cmd == "pull":
         ok, msg = pull()
         print(f"  {'pulled' if ok else 'PULL FAILED'}: {msg}")
+        return 0 if ok else 3
+    if a.cmd == "guard":
+        ok, msg = guard(a.lane)
+        print(f"  {msg}" if ok else msg)
         return 0 if ok else 3
     if a.cmd == "heartbeat":
         held = [s for s in (a.held or "").split(",") if s]
