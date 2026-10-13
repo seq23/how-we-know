@@ -4,6 +4,8 @@
     .venv/bin/python loop/lengthen.py script --slugs a b [--dry-run]
     .venv/bin/python loop/lengthen.py splice [--slugs a b] [--dry-run]
     .venv/bin/python loop/lengthen.py status
+    .venv/bin/python loop/lengthen.py bind                      # the Mac, in the batch
+    .venv/bin/python loop/queue_reopen.py [--limit N] [--dry-run]  # the cloud lane
 
 Owner decisions, 12-13 Oct 2026 (repackage job 1 of 3). Every long-form
 QUEUED episode under 10:00 of narration (scripts/ and loop/drafts/, not yet
@@ -126,6 +128,22 @@ NEXT_POINTER = re.compile(
     r"coming up next|see you next|join us next|on the next episode)\b", re.I)
 
 
+HOOK_VARIANT = "stake-then-payoff"   # loop/opening.py, first and active
+
+
+def hook_problems(text: str) -> list[str]:
+    """Why this script's opening breaks the hook rule; [] when it holds."""
+    import opening                                         # noqa: PLC0415
+    return opening.problems(text, HOOK_VARIANT)
+
+
+def needs_reopen(text: str) -> bool:
+    """The hook rule (owner, 13 Oct 2026): every QUEUED long-form script
+    opens stake-then-payoff. One that does not is re-opened: a new cold open
+    only, the rest of the script untouched."""
+    return bool(hook_problems(text))
+
+
 class SpliceUnusable(Exception):
     """The measured timeline cannot locate the body; fall back to full."""
 
@@ -244,16 +262,20 @@ def cold_open(text: str) -> str:
 def splice_script(text: str, new_open: str, tail_md: str,
                   sources: list[str] | None = None) -> str:
     """Replace the cold open's body, append the tail at the end of the
-    narration, add any new sources. Nothing else in the script moves."""
+    narration (none for a hook-only re-open), add any new sources, and stamp
+    the opening variant. Nothing else in the script moves."""
+    import opening                                         # noqa: PLC0415
     m = re.search(r"(### Cold open\s*\n)(.*?)(?=\n### |\n## |\Z)", text, re.S | re.I)
     if not m:
         raise ValueError("no '### Cold open' section")
     out = text[: m.start(2)] + new_open.strip() + "\n" + text[m.end(2):]
-    a, b = _narration_span(out)
-    tail = tail_md.strip()
-    if not tail.startswith("### "):
-        tail = "### " + tail.lstrip("# ").lstrip()
-    out = out[:b].rstrip() + "\n\n" + tail + "\n" + out[b:]
+    tail = (tail_md or "").strip()
+    if tail:
+        a, b = _narration_span(out)
+        if not tail.startswith("### "):
+            tail = "### " + tail.lstrip("# ").lstrip()
+        out = out[:b].rstrip() + "\n\n" + tail + "\n" + out[b:]
+    out = opening.mark(out, HOOK_VARIANT)
     if sources and "## Sources" in out:
         head, rest = out.split("## Sources", 1)
         nl = rest.find("\n")
@@ -262,9 +284,11 @@ def splice_script(text: str, new_open: str, tail_md: str,
         if add:
             out = (head + "## Sources" + rest[:nl] + "\n"
                    + "\n".join(f"- {u}" for u in add) + rest[nl:])
-    stamp = f"**Lengthened:** {_now()[:10]} (loop/lengthen.py splice)"
-    if re.search(r"^\*\*Lengthened:\*\*.*$", out, re.M):
-        out = re.sub(r"^\*\*Lengthened:\*\*.*$", stamp, out, count=1, flags=re.M)
+    label = "Lengthened" if tail else "Reopened"
+    stamp = (f"**{label}:** {_now()[:10]} (loop/lengthen.py "
+             f"{'splice' if tail else 'reopen, hook rule'})")
+    if re.search(rf"^\*\*{label}:\*\*.*$", out, re.M):
+        out = re.sub(rf"^\*\*{label}:\*\*.*$", stamp, out, count=1, flags=re.M)
     else:
         mm = re.search(r"^\*\*Domain:\*\*.*$", out, re.M)
         if mm:
@@ -390,6 +414,30 @@ EXISTING SCRIPT:
 """
 
 
+PROMPT_REOPEN = """You are re-opening a finished evidence-first science \
+episode. Everything after the cold open is ALREADY WRITTEN (and may already be \
+narrated and rendered) and will not change. You write ONE new piece.
+
+OPENING: a replacement for the cold open, about {open_words} words. \
+{hook_rule}
+
+Every figure you speak must already be in the script below or come from a \
+named public source you list under SOURCES:. Do not restate the title or the \
+question as the first sentence. Second person sparingly, no hype words.
+
+Output EXACTLY this shape and nothing else:
+OPENING:
+<the new cold open paragraph(s)>
+SOURCES:
+- <one working URL per line for any NEW source; leave empty if none>
+
+QUESTION: {question}
+
+EXISTING SCRIPT:
+{script}
+"""
+
+
 def _ask(messages: list[dict]) -> tuple[str, str, str | None]:
     """One call on the $0 route: (text, model_used, finish_reason).
     Tests replace this; nothing here may reach a paid model."""
@@ -401,6 +449,14 @@ def _ask(messages: list[dict]) -> tuple[str, str, str | None]:
     text = re.sub(r"^```(?:markdown|md)?\s*\n|\n```\s*$", "", text)
     return text, resp.get("model_used") or "", (
         choice.get("finish_reason") or choice.get("native_finish_reason"))
+
+
+def parse_open_reply(text: str) -> tuple[str, list[str]]:
+    m = re.search(r"OPENING:\s*\n(.*?)(?:\n\s*SOURCES:\s*\n?(.*))?\Z",
+                  text.strip() + "\n", re.S)
+    if not m or not m.group(1).strip() or re.search(r"^\s*TAIL:", m.group(1), re.M):
+        raise ValueError("reply is not OPENING:/SOURCES: shaped")
+    return m.group(1).strip(), re.findall(r"https?://[^\s)>\]]+", m.group(2) or "")
 
 
 def parse_reply(text: str) -> tuple[str, str, list[str]]:
@@ -428,20 +484,28 @@ def next_episode_hint(slug: str) -> str:
     return "Tease the next episode with a one-line hint of a related question."
 
 
-def draft(slug: str, text: str, body_s: float, check_urls: bool = True) -> dict:
-    """Draft opening + tail, gate the merge, retry with the problems fed
-    back. Returns {applied, merged, problems, budget, model}."""
+def draft(slug: str, text: str, body_s: float, check_urls: bool = True,
+          tail: bool = True) -> dict:
+    """Draft opening + tail (tail=False: the opening alone - a hook-only
+    re-open of a script already at the floor), gate the merge, retry with the
+    problems fed back. Returns {applied, merged, problems, budget, model}."""
     import author                                          # noqa: PLC0415
     import opening                                         # noqa: PLC0415
     open_words = max(30, min(90, len(cold_open(text).split())))
-    b = budget(body_s, open_words)
+    b = budget(body_s, open_words) if tail else {"tail_words": 0}
     q = opening.title_question(text)
-    hook_rule = opening.prompt_text("stake-then-payoff")
-    messages = [{"role": "user", "content": PROMPT.format(
-        target=f"{TARGET_MIN}-{TARGET_MAX}", open_words=open_words,
-        tail_words=b["tail_words"], hook_rule=hook_rule,
-        tail_rules=TAIL_RULES, next_line=next_episode_hint(slug),
-        question=q, script=text)}]
+    hook_rule = opening.prompt_text(HOOK_VARIANT)
+    if tail:
+        content = PROMPT.format(
+            target=f"{TARGET_MIN}-{TARGET_MAX}", open_words=open_words,
+            tail_words=b["tail_words"], hook_rule=hook_rule,
+            tail_rules=TAIL_RULES, next_line=next_episode_hint(slug),
+            question=q, script=text)
+    else:
+        content = PROMPT_REOPEN.format(open_words=open_words,
+                                       hook_rule=hook_rule, question=q,
+                                       script=text)
+    messages = [{"role": "user", "content": content}]
     problems: list[str] = ["no attempt made"]
     merged, model = "", ""
     for attempt in range(1, author.MAX_ATTEMPTS + 1):
@@ -450,10 +514,18 @@ def draft(slug: str, text: str, body_s: float, check_urls: bool = True) -> dict:
         if finish and finish not in ("stop", "end_turn"):
             problems.append(f"output was cut off (finish_reason={finish!r})")
         try:
-            new_open, tail, urls = parse_reply(reply)
-            merged = splice_script(text, new_open, tail, urls)
-            problems += tail_problems(tail, text, b["tail_words"])
+            if tail:
+                new_open, tail_md, urls = parse_reply(reply)
+                problems += tail_problems(tail_md, text, b["tail_words"])
+            else:
+                (new_open, urls), tail_md = parse_open_reply(reply), ""
+            merged = splice_script(text, new_open, tail_md, urls)
             problems += merged_problems(merged, slug, check_urls)
+            if not tail and needs_lengthening(merged) and \
+                    not needs_lengthening(text):
+                problems.append("the new opening took the script under the "
+                                f"{FLOOR_MIN}-minute floor; keep it about "
+                                f"{open_words} words")
         except ValueError as e:
             problems.append(str(e))
         if not problems:
@@ -464,9 +536,11 @@ def draft(slug: str, text: str, body_s: float, check_urls: bool = True) -> dict:
             {"role": "assistant", "content": reply},
             {"role": "user", "content": "Rejected by the automated checks:\n"
              + "\n".join(f"- {x}" for x in problems[:8])
-             + "\n\nRewrite both pieces so none of those is true. Same rules, "
-               "same shape, same lengths. Do not drop a sourced claim to dodge "
-               "a check."}]
+             + ("\n\nRewrite both pieces so none of those is true. Same rules, "
+                "same shape, same lengths. Do not drop a sourced claim to dodge "
+                "a check." if tail else
+                "\n\nRewrite the opening so none of those is true. Same rules, "
+                "same shape, same length.")}]
     return {"applied": False, "merged": merged, "problems": problems[:8],
             "budget": b, "model": model, "attempts": author.MAX_ATTEMPTS}
 
@@ -579,8 +653,31 @@ def script_path(slug: str) -> Path:
     return sp if sp.exists() else DRAFTS / f"{slug}.md"
 
 
-def stage_script(slug: str, dry_run: bool = False, doc: dict | None = None,
+def _twins(slug: str) -> list[Path]:
+    """Every copy of a queued script: scripts/<slug>.md and a carried-over
+    loop/drafts/<slug>.md. draft.promote_to_scripts never overwrites
+    scripts/, so a drafts twin is inert - but it is kept identical so no
+    reader of loop/drafts/ sees the old opening."""
+    return [p for p in (SCRIPTS / f"{slug}.md", DRAFTS / f"{slug}.md")
+            if p.exists()]
+
+
+def _kind(text: str, measured: float | None) -> str | None:
+    if needs_lengthening(text, measured):
+        return "extend"
+    if needs_reopen(text):
+        return "reopen"
+    return None
+
+
+def script_cloud(slug: str, dry_run: bool = False, doc: dict | None = None,
                  check_urls: bool = True) -> dict:
+    """THE CLOUD HALF (loop-repackage, subscription route first): draft and
+    gate the new opening (+ tail), write scripts/<slug>.md and its drafts
+    twin, record `pending_bind` in loop/state/lengthen.json. Writes NOTHING
+    else - plans/, audio/ and renders/ are the Mac's, and bind() there makes
+    them agree. Kept free of every Mac-side write so the queue-reopen
+    stage's write set is exactly what bin/loop-stage.sh commits."""
     if slug in published_slugs():
         return {"slug": slug, "status": "published_refused",
                 "why": "published videos are never extended or re-uploaded "
@@ -588,39 +685,124 @@ def stage_script(slug: str, dry_run: bool = False, doc: dict | None = None,
     sp = script_path(slug)
     text = sp.read_text(encoding="utf-8")
     measured = _measured_s(slug)
-    if not needs_lengthening(text, measured):
+    kind = _kind(text, measured)
+    if kind is None:
         return {"slug": slug, "status": "not_short",
-                "why": f"{(measured or 0) / 60 or minutes_of_words(words_now(text)):.2f} min"}
+                "why": f"at the floor and the opening passes {HOOK_VARIANT}"}
+    est_body_s = (measured or minutes_of_words(words_now(text)) * 60) \
+        - minutes_of_words(len(cold_open(text).split())) * 60
+    if dry_run:
+        return {"slug": slug, "status": "dry_run", "kind": kind,
+                "mode": "pending_bind"}
+    r = draft(slug, text, est_body_s, check_urls=check_urls,
+              tail=kind == "extend")
+    if not r["applied"]:
+        return {"slug": slug, "status": "rejected", "kind": kind,
+                "problems": r["problems"], "mode": "pending_bind"}
+    merged = r["merged"]
+    rec = {"status": "scripted", "mode": "pending_bind", "kind": kind,
+           "why_full": None, "words_before": words_now(text),
+           "words_after": words_now(merged),
+           "minutes_before": round(minutes_of_words(words_now(text)), 2),
+           "minutes_after": round(minutes_of_words(words_now(merged)), 2),
+           "hook_before": cold_open(text)[:240],
+           "hook_after": cold_open(merged)[:240],
+           "hook_problems_before": hook_problems(text)[:3],
+           "budget": r["budget"], "model": r["model"],
+           "attempts": r.get("attempts"), "scripted_at": _now(),
+           "old_script_sha256": hashlib.sha256(text.encode()).hexdigest(),
+           "new_script_sha256": hashlib.sha256(merged.encode()).hexdigest(),
+           "old_render_sha256": None}
+    # Both copies: draft.promote_to_scripts never overwrites scripts/, so a
+    # carried-over loop/drafts/ twin is inert - kept identical anyway so no
+    # reader of loop/drafts/ sees the old opening.
+    if (SCRIPTS / f"{slug}.md").exists():
+        (SCRIPTS / f"{slug}.md").write_text(merged, encoding="utf-8")
+    if (DRAFTS / f"{slug}.md").exists():
+        (DRAFTS / f"{slug}.md").write_text(merged, encoding="utf-8")
+    d = doc if doc is not None else load()
+    d["episodes"][slug] = rec
+    if doc is None:
+        save(d)
+    return {"slug": slug, **rec}
+
+
+def stage_script(slug: str, dry_run: bool = False, doc: dict | None = None,
+                 check_urls: bool = True, cloud: bool = False) -> dict:
+    """Bring one QUEUED script to the rules: under the floor -> new hook +
+    tail ("extend"); at the floor but failing the hook rule -> new hook only
+    ("reopen"). cloud=True (the CI lane, which holds the subscription route
+    but none of the Mac's audio, plans or renders) writes the script and
+    records `pending_bind`; the Mac's batch binds it (bind()) before it
+    plans or narrates anything."""
+    if slug in published_slugs():
+        return {"slug": slug, "status": "published_refused",
+                "why": "published videos are never extended or re-uploaded "
+                       "(owner decision, 13 Oct 2026: forward only)"}
+    sp = script_path(slug)
+    text = sp.read_text(encoding="utf-8")
+    measured = _measured_s(slug)
+    kind = _kind(text, measured)
+    if kind is None:
+        return {"slug": slug, "status": "not_short",
+                "why": f"{(measured or 0) / 60 or minutes_of_words(words_now(text)):.2f} "
+                       f"min and the opening passes {HOOK_VARIANT}"}
+    est_body_s = (measured or minutes_of_words(words_now(text)) * 60) \
+        - minutes_of_words(len(cold_open(text).split())) * 60
+    if cloud:
+        return script_cloud(slug, dry_run, doc, check_urls)
     plan_p = PLANS / f"{slug}.json"
     old_plan = (_read_json(plan_p, None) if plan_p.exists() else None) \
         or _plan_for(sp)
-    beats = _read_json(AUDIO / slug / "beats.json", [])
-    side = _read_json(RENDERS / f"{slug}-final.mp4.render.json", None)
-    render = RENDERS / f"{slug}-final.mp4"
-    mode, why = "splice", ""
-    try:
-        if not render.exists():
-            raise SpliceUnusable("no render on this machine")
-        bd = boundary(old_plan, beats, side)
-        body_s = bd["body_s"]
-    except SpliceUnusable as e:
-        mode, why, bd = "full", str(e), None
-        body_s = (measured or minutes_of_words(words_now(text)) * 60) \
-            - minutes_of_words(len(cold_open(text).split())) * 60
+    mode, why, bd = _decide_mode(slug, old_plan)
+    body_s = bd["body_s"] if bd else est_body_s
     if dry_run:
         b = budget(body_s, max(30, min(90, len(cold_open(text).split()))))
         return {"slug": slug, "status": "dry_run", "mode": mode, "why": why,
-                "budget": b}
-    r = draft(slug, text, body_s, check_urls=check_urls)
+                "kind": kind, "budget": b}
+    r = draft(slug, text, body_s, check_urls=check_urls, tail=kind == "extend")
     if not r["applied"]:
         return {"slug": slug, "status": "rejected", "problems": r["problems"],
-                "mode": mode}
+                "mode": mode, "kind": kind}
     merged = r["merged"]
-    rec = {"status": "scripted", "mode": mode, "why_full": why or None,
+    render = RENDERS / f"{slug}-final.mp4"
+    rec = {"status": "scripted", "mode": mode, "kind": kind,
+           "why_full": why or None,
            "words_before": words_now(text), "words_after": words_now(merged),
            "budget": r["budget"], "model": r["model"], "scripted_at": _now(),
            "old_render_sha256": sha256(render) if render.exists() else None}
-    sp.write_text(merged, encoding="utf-8")
+    for p in _twins(slug):
+        p.write_text(merged, encoding="utf-8")
+    rec = _bind_local(slug, sp, old_plan, mode, bd, rec)
+    d = doc if doc is not None else load()
+    d["episodes"][slug] = {**(d["episodes"].get(slug) or {}), **rec}
+    if doc is None:
+        save(d)
+    return {"slug": slug, **rec}
+
+
+def _decide_mode(slug: str, old_plan: list[dict] | None):
+    """('splice', '', boundary) when the render on this machine can keep its
+    body; ('full', why, None) otherwise."""
+    beats = _read_json(AUDIO / slug / "beats.json", [])
+    side = _read_json(RENDERS / f"{slug}-final.mp4.render.json", None)
+    try:
+        if not (RENDERS / f"{slug}-final.mp4").exists():
+            raise SpliceUnusable("no render on this machine")
+        if not old_plan:
+            raise SpliceUnusable("no plan the render was built from")
+        return "splice", "", boundary(old_plan, beats, side)
+    except SpliceUnusable as e:
+        return "full", str(e), None
+
+
+def _bind_local(slug: str, sp: Path, old_plan: list[dict] | None, mode: str,
+                bd: dict | None, rec: dict) -> dict:
+    """The new script is on disk. Make this machine's plan, wavs and render
+    agree with it: keep the rendered body (splice) or retire what the old
+    script produced (full). Nothing is deleted."""
+    plan_p = PLANS / f"{slug}.json"
+    render = RENDERS / f"{slug}-final.mp4"
     new_plan = _plan_for(sp)
     if mode == "splice":
         new_k = next((i for i, p in enumerate(new_plan)
@@ -634,35 +816,64 @@ def stage_script(slug: str, dry_run: bool = False, doc: dict | None = None,
         if same:
             plan_p.write_text(json.dumps(new_plan, indent=1) + "\n")
             rm = remap_audio(slug, bd["k"], new_k, len(body_old))
-            rec.update({"old_k": bd["k"], "new_k": new_k,
+            rec.update({"mode": "splice", "old_k": bd["k"], "new_k": new_k,
                         "body_beats": len(body_old),
                         "boundary_frames": bd["boundary_frames"],
                         "total_frames_old": bd["total_frames"],
                         "body_s": bd["body_s"], "audio_moved": rm["moved"]})
-        else:
-            mode = rec["mode"] = "full"
-            rec["why_full"] = ("the re-planned body does not reproduce the "
-                               "rendered beats, so the render cannot be kept")
-    if mode == "full":
-        import extend                                      # noqa: PLC0415
-        import durations                                   # noqa: PLC0415
+            return rec
+        mode = "full"
+        rec["why_full"] = ("the re-planned body does not reproduce the "
+                           "rendered beats, so the render cannot be kept")
+    import extend                                          # noqa: PLC0415
+    import durations                                       # noqa: PLC0415
+    rec["mode"] = "full"
+    if old_plan:
         old_narr = {i: b.get("narration") for i, b in enumerate(old_plan)}
         extend.retire_stale_audio(slug, old_narr, new_plan=new_plan)
-        if plan_p.exists():
-            plan_p.unlink()
-        if render.exists():
-            record_superseded(slug, render, "lengthen: full re-render to "
-                              f"{TARGET_MIN}-{TARGET_MAX} min")
-            keep = RENDERS / "superseded-short"
-            keep.mkdir(exist_ok=True)
-            shutil.move(str(render), str(keep / f"{slug}-final.pre-lengthen.mp4"))
-            durations.forget(slug)
-        extend.retire_shorts(slug)
-        rec["status"] = "full_rerender"
-    d = doc if doc is not None else load()
-    d["episodes"][slug] = {**(d["episodes"].get(slug) or {}), **rec}
-    if doc is None:
-        save(d)
+    if plan_p.exists():
+        plan_p.unlink()
+    if render.exists():
+        rec["old_render_sha256"] = rec.get("old_render_sha256") or sha256(render)
+        record_superseded(slug, render, f"lengthen {rec.get('kind') or 'extend'}: "
+                          f"full re-render (new opening"
+                          f"{' + tail' if rec.get('kind') != 'reopen' else ''})")
+        keep = RENDERS / "superseded-short"
+        keep.mkdir(exist_ok=True)
+        shutil.move(str(render), str(keep / f"{slug}-final.pre-lengthen.mp4"))
+        side = RENDERS / f"{slug}-final.mp4.render.json"
+        if side.exists():
+            shutil.move(str(side), str(keep / f"{slug}-final.pre-lengthen.mp4.render.json"))
+        durations.forget(slug)
+    extend.retire_shorts(slug)
+    rec["status"] = "full_rerender"
+    return rec
+
+
+def bind(slug: str, doc: dict) -> dict:
+    """THE MAC HALF of a cloud re-open/extension (`pending_bind`). The cloud
+    lane wrote the new script and touched nothing else; plans/<slug>.json,
+    audio/<slug>/ and renders/ on this Mac are still the OLD script's. Runs
+    in bin/batch-session.sh BEFORE the batch plans or narrates, so a stale
+    wav is never voiced into a new beat and a stale render never ships."""
+    rec = dict(doc["episodes"].get(slug) or {})
+    if rec.get("status") != "scripted" or rec.get("mode") != "pending_bind":
+        return {"slug": slug, "status": "skip",
+                "why": f"state is {rec.get('status')!r}/{rec.get('mode')!r}"}
+    sp = script_path(slug)
+    text = sp.read_text(encoding="utf-8") if sp.exists() else ""
+    if hashlib.sha256(text.encode()).hexdigest() != rec.get("new_script_sha256"):
+        return {"slug": slug, "status": "refused",
+                "why": "the script on disk is not the one the cloud wrote - "
+                       "pull first; nothing was moved"}
+    plan_p = PLANS / f"{slug}.json"
+    old_plan = _read_json(plan_p, None) if plan_p.exists() else None
+    mode, why, bd = _decide_mode(slug, old_plan)
+    if mode == "full":
+        rec["why_full"] = why
+    rec = _bind_local(slug, sp, old_plan, mode, bd, rec)
+    rec["bound_at"] = _now()
+    doc["episodes"][slug] = rec
     return {"slug": slug, **rec}
 
 
@@ -736,8 +947,10 @@ def stage_splice(slug: str, dry_run: bool = False, doc: dict | None = None) -> d
     with tempfile.TemporaryDirectory(prefix=f"lengthen-{slug}-") as td:
         work = Path(td)
         opening = _segment(slug, plan, 0, new_k, work / "open.mp4", work)
-        tail = _segment(slug, plan, tail_first, len(plan) - tail_first,
-                        work / "tail.mp4", work)
+        # A hook-only re-open has no tail: new opening + kept body.
+        tail = (_segment(slug, plan, tail_first, len(plan) - tail_first,
+                         work / "tail.mp4", work)
+                if len(plan) > tail_first else None)
         body = work / "body.mp4"
         bs = rec["boundary_frames"] / FPS
         RUN(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y",
@@ -751,7 +964,8 @@ def stage_splice(slug: str, dry_run: bool = False, doc: dict | None = None) -> d
                            f"render from frame {rec['boundary_frames']} "
                            f"({len(body_md5)} vs {len(old_md5)} packets)"}
         lst = work / "concat.txt"
-        lst.write_text("".join(f"file '{p}'\n" for p in (opening, body, tail)))
+        lst.write_text("".join(f"file '{p}'\n" for p in (opening, body, tail)
+                               if p is not None))
         out = work / f"{slug}-final.mp4"
         RUN(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-f",
              "concat", "-safe", "0", "-i", str(lst), "-c", "copy",
@@ -835,13 +1049,85 @@ def _short_slugs() -> list[str]:
     return out
 
 
+def upload_hold(slug: str) -> str | None:
+    """Why the upload lanes must not ship this queued episode yet, or None.
+
+    * a re-open/extension is scripted but not yet re-rendered: whatever cut
+      exists (on the Mac or the R2 shelf) speaks the OLD opening;
+    * the script itself breaks the hook rule: the repackage lane re-opens it
+      first (owner, 13 Oct 2026 - every queued script opens stake-then-payoff).
+    A full re-render's stale shelf cut is refused separately, by sha256, from
+    loop/state/superseded_renders.json (loop/cloud_upload.py)."""
+    rec = load()["episodes"].get(slug) or {}
+    if rec.get("status") == "scripted":
+        return (f"its new opening is scripted ({rec.get('mode')}) but not yet "
+                f"rendered; the cut that exists speaks the old one")
+    p = script_path(slug)
+    if p.exists():
+        bad = hook_problems(p.read_text(encoding="utf-8"))
+        if bad:
+            return f"its opening breaks the hook rule: {bad[0][:160]}"
+    return None
+
+
+def queue_slugs() -> list[str]:
+    """Every QUEUED script (scripts/ and loop/drafts/, never a published slug)
+    that breaks the floor or the hook rule, short ones first. The one list
+    the cloud lane works and V49 holds."""
+    out, done = [], published_slugs()
+    doc = load()
+    short, hook = [], []
+    for p in sorted(list(SCRIPTS.glob("*.md")) + list(DRAFTS.glob("*.md"))):
+        s = p.stem
+        if s in done or s in out or s in short or s in hook or ".extended" in p.name:
+            continue
+        if (doc["episodes"].get(s) or {}).get("mode") == "pending_bind":
+            continue                 # scripted in the cloud; the Mac binds it
+        try:
+            text = script_path(s).read_text(encoding="utf-8")
+            k = _kind(text, _measured_s(s))
+        except Exception:                                  # noqa: BLE001
+            continue
+        if k == "extend":
+            short.append(s)
+        elif k == "reopen":
+            hook.append(s)
+    return short + hook
+
+
+def run_bind() -> int:
+    """THE MAC: bind every `pending_bind` episode (see bind())."""
+    doc = load()
+    todo = sorted(s for s, r in doc["episodes"].items()
+                  if r.get("status") == "scripted" and r.get("mode") == "pending_bind")
+    if not todo:
+        print("LENGTHEN_NOTHING_TO_BIND: no cloud re-open or extension awaits this Mac")
+        return 0
+    for s in todo:
+        r = bind(s, doc)
+        print(f"  {r['status']:<14} {r.get('mode', ''):<7} {s}  {r.get('why') or r.get('why_full') or ''}")
+    save(doc)
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
-    ap.add_argument("cmd", choices=("plan", "script", "splice", "status"))
+    ap.add_argument("cmd", choices=("plan", "script", "splice", "status",
+                                    "reopen", "bind"))
     ap.add_argument("--slugs", nargs="*")
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--cloud", action="store_true",
+                    help="reopen on a machine without the Mac's audio/renders: "
+                         "write the script, leave the binding to the Mac")
     a = ap.parse_args(argv)
+    if a.cmd == "reopen":
+        if a.cloud:
+            import queue_reopen                            # noqa: PLC0415
+            return queue_reopen.run(a.limit, a.dry_run, a.slugs or None)
+        a.cmd = "script"             # on the Mac: re-open and bind in one go
+    if a.cmd == "bind":
+        return run_bind()
     doc = load()
     if a.cmd == "status":
         eps = doc["episodes"]
@@ -866,7 +1152,7 @@ def main(argv: list[str] | None = None) -> int:
         if not a.dry_run:
             save(doc)
         return 0
-    slugs = a.slugs if a.slugs is not None and a.slugs else _short_slugs()
+    slugs = a.slugs if a.slugs is not None and a.slugs else queue_slugs()
     if a.limit:
         slugs = slugs[: a.limit]
     if not slugs:

@@ -1215,3 +1215,25 @@ PRIVATE (never deleted) only after their replacement is public.
   `loop/repackage.py reschedule` re-dates them (videos.update only, per-domain order kept, nothing inside
   24 h moves).
 
+
+## 2026-10-13 — long-form repackage, job 2: applying it
+
+- **Every live long-form video is titled, not only the queue** (#198): `longform_title.py propose --needed`
+  (queued scripts first, then live videos with no passing row) is what the daily `loop-repackage` lane runs,
+  so a live video can never keep its old title for want of a row. 38 live videos (23 public + 15
+  scheduled on 13 Oct, read back from the API - not the 21 + 15 first counted) all got a passing title
+  on the subscription route in one run.
+- **The duplicate 02-how-deep-sea-creatures-survive-pressure was one retired upload carrying a stale date**
+  (#198): `_fQ3-YI63oQ` was retired on 5 Sep with its publishAt cancelled (read back 13 Oct: private,
+  publishAt None); its ledger row still said 25 Oct. Now `status: superseded_duplicate`, date kept only as
+  `schedule_was`. V20 fails a retired row with a date, one episode dated twice, and any Sunday date.
+- **Thumbnails where the contract can build them** (#200): 24 of 38 live videos get variant A; 14 are
+  refused by name (no rights-verified image of their own subject) and keep their thumbnail. A title applied
+  without its thumbnail gets variant A alone once a set exists (#198).
+- **The queue under the hook rule, split cloud / Mac** (this PR): the subscription route lives in CI and the
+  audio, plans and renders live on the Mac, so `loop/queue_reopen.py` (daily in `loop-repackage`) writes
+  only the new script (new hook-first cold open; under ten minutes also the warm, sourced tail) and records
+  `pending_bind`; `loop/lengthen.py bind`, first in the batch's prepare phase, retires the old opening's
+  wavs and render (superseded by sha256) or keeps the body for a splice. Until the new cut exists both
+  upload lanes hold the episode (`HOOK_REOPEN_PENDING`), so an old-hook render cannot ship by any path.
+  Per-slug record of what changed: `loop/state/lengthen.json`.

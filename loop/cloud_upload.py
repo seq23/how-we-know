@@ -501,10 +501,36 @@ def run(limit: int = 4, dry_run: bool = False) -> int:
         if not pending:
             # NAME THE STATE, don't guess it. See diagnose_empty_shelf().
             import render_gate                             # noqa: PLC0415
+            import lengthen                                # noqa: PLC0415
+            done_ = {r["slug"] for r in ledger.load()["published"]}
+            gate_held = render_gate.held_slugs()
+            # THE HOOK RULE holds queued episodes on purpose (loop/lengthen.py
+            # upload_hold): the repackage lane re-opens the script and the
+            # Mac re-renders it. That is not "waiting on the Mac" for a
+            # render it already made, so it gets its own self-resolving code.
+            hook_held = sorted(s for s in batch_queue.queued_slugs()
+                               if s not in done_ and s not in gate_held
+                               and lengthen.upload_hold(s))
+            other = [s for s in batch_queue.queued_slugs()
+                     if s not in done_ and s not in gate_held
+                     and s not in hook_held]
+            if hook_held and not other:
+                st.named_stop(
+                    "HOOK_REOPEN_PENDING",
+                    f"{len(hook_held)} queued episode(s) wait on the hook "
+                    f"rule: {', '.join(hook_held)}. Each script is re-opened "
+                    f"(new stake-then-payoff cold open; under ten minutes "
+                    f"also extended) by loop-repackage and re-rendered by the "
+                    f"Mac's batch before it may ship.",
+                    detail={"hook_held": {s: lengthen.upload_hold(s)
+                                          for s in hook_held}},
+                    held_items=hook_held,
+                    unblock="Nothing to type: loop-repackage re-opens daily "
+                            "and the nightly batch re-renders.")
             why = diagnose_empty_shelf(
                 batch_queue.queued_slugs(),
-                {r["slug"] for r in ledger.load()["published"]},
-                render_gate.held_slugs(),
+                done_,
+                gate_held | set(hook_held),
                 handoff_rows(),
                 promotion_held=batch_queue.promotion_holds(),
                 runway=cadence.runway(per_week),

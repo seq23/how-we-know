@@ -335,6 +335,7 @@ def library_pending(verbose: bool = False,
     # cadence.publish_order() use.
     import batch_queue                                     # noqa: PLC0415
     import render_gate                                     # noqa: PLC0415
+    import lengthen                                        # noqa: PLC0415
     done = {r["slug"] for r in ledger.load()["published"]}
     # THE HOLD, not a halt. A render V13/V24 refused is skipped HERE, by name,
     # and everything else stays pending - see loop/render_gate.py for the week
@@ -349,6 +350,14 @@ def library_pending(verbose: bool = False,
             if verbose:
                 print(f"  HELD {slug}: refused by the render gate; heals or "
                       f"re-renders before it can ship (loop/state/render_hold.json)")
+            continue
+        # THE HOOK RULE (owner, 13 Oct 2026): a queued episode ships only once
+        # its script opens stake-then-payoff AND the cut was rendered from
+        # that opening. loop/lengthen.py upload_hold() says which is missing.
+        why_hook = lengthen.upload_hold(slug)
+        if why_hook:
+            if verbose:
+                print(f"  HELD {slug}: {why_hook}")
             continue
         found = assets(slug)
         if not isinstance(found, tuple):

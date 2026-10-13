@@ -303,6 +303,117 @@ check(slug not in L._short_slugs(), "a published slug was listed as short")  # n
 ledger.LEDGER = _saved_led
 check(not hasattr(L, "ready_for_reupload"), "the re-upload hand-off still exists")
 L.save(doc, L.STATE)                     # the spliced books V49 reads below
+# ------------------------------------------- 5b. the hook rule on the queue
+# Owner, 13 Oct 2026 (job 2): every QUEUED script opens stake-then-payoff.
+# One at the floor but failing the hook is RE-OPENED (new cold open only);
+# one under the floor is EXTENDED (new hook + tail). In the cloud the script
+# is written and the Mac binds it; the upload lanes hold it until then.
+import hashlib                                                # noqa: E402
+BAD = SCRIPT.replace("Old opening sentence. ", "Scientists have long wondered "
+                     "what lies in the dark water far below the waves where "
+                     "sunlight fades and strange animals live in the cold. ")
+check(L.needs_reopen(BAD) and not L.needs_reopen(SCRIPT),
+      "fixture: the hook rule does not separate the two openings")
+saved_state, saved_measured = L.STATE, L._measured_s          # noqa: SLF001
+L.STATE = TMP / "lengthen-hook.json"
+L.DRAFTS = TMP / "drafts"
+L.DRAFTS.mkdir()
+L._measured_s = lambda s_: 700.0                              # noqa: SLF001
+rslug = "fixture-reopen"
+(L.SCRIPTS / f"{rslug}.md").write_text(BAD)
+(L.DRAFTS / f"{rslug}.md").write_text(BAD)                    # a carried-over twin
+old_plan_r = [{"heading": "Cold open", "narration": "old"},
+              {"heading": "Title card", "narration": "t"}]
+(L.PLANS / f"{rslug}.json").write_text(json.dumps(old_plan_r))
+check(rslug in L.queue_slugs(), f"a hook-failing queued script is not queued for re-open: {L.queue_slugs()}")
+check(L.upload_hold(rslug) and "hook rule" in L.upload_hold(rslug),
+      f"the upload lanes would ship a script that breaks the hook rule: {L.upload_hold(rslug)}")
+asked = []
+REOPEN = NEW_OPEN.replace("the seafloor.", "the seafloor, far below the waves.")
+L._ask = lambda m: (asked.append(m) or (f"OPENING:\n{REOPEN}\nSOURCES:\n",  # noqa: SLF001
+                                         "fixture/free", "stop"))
+r = L.stage_script(rslug, cloud=True, check_urls=False)
+new_text = (L.SCRIPTS / f"{rslug}.md").read_text()
+st_doc = L.load()
+rec = st_doc["episodes"].get(rslug) or {}
+check(r["status"] == "scripted" and rec.get("mode") == "pending_bind"
+      and rec.get("kind") == "reopen" and "TAIL:" not in asked[0][0]["content"]
+      and "OPENING:" in asked[0][0]["content"]
+      and "photon of daylight dies" in new_text and "Scientists have long" not in new_text
+      and "### Title card\n\nWhat is the midnight zone?" in new_text
+      and "What the evidence does not settle" not in new_text
+      and "**Reopened:**" in new_text and "**Opening:** stake-then-payoff" in new_text
+      and (L.DRAFTS / f"{rslug}.md").read_text() == new_text
+      and json.loads((L.PLANS / f"{rslug}.json").read_text()) == old_plan_r
+      and rec.get("new_script_sha256") == hashlib.sha256(new_text.encode()).hexdigest(),
+      f"a cloud hook-only re-open did not write just the new opening: {r} {rec}")
+check(rslug not in L.queue_slugs(), "a pending_bind script is re-opened a second time")
+check(L.upload_hold(rslug) and "not yet" in L.upload_hold(rslug),
+      f"the old cut of a re-opened script could ship before the Mac re-renders: {L.upload_hold(rslug)}")
+# THE MAC binds it: no sidecar -> full re-render; the old render is recorded
+# and moved aside, the stale plan unlinked, nothing deleted.
+rrender = L.RENDERS / f"{rslug}-final.mp4"
+rrender.write_bytes(b"old cut with the old opening")
+old_sha = L.sha256(rrender)
+L._plan_for = lambda p: [{"heading": "Cold open", "narration": "new"},  # noqa: SLF001
+                         {"heading": "Title card", "narration": "t"}]
+(L.SCRIPTS / f"{rslug}.md").write_text(new_text + "edited after the cloud\n")
+b = L.bind(rslug, st_doc)
+check(b["status"] == "refused" and rrender.exists(),
+      f"bind acted on a script that is not the one the cloud wrote: {b}")
+(L.SCRIPTS / f"{rslug}.md").write_text(new_text)
+b = L.bind(rslug, st_doc)
+sup = json.loads(L.SUPERSEDED.read_text())
+check(b["status"] == "full_rerender" and st_doc["episodes"][rslug].get("bound_at")
+      and not rrender.exists()
+      and (L.RENDERS / "superseded-short" / f"{rslug}-final.pre-lengthen.mp4").exists()
+      and sup.get(rslug, {}).get("sha256") == old_sha
+      and not (L.PLANS / f"{rslug}.json").exists(),
+      f"bind did not retire the old cut and plan: {b}")
+L.save(st_doc)
+check(L.upload_hold(rslug) is None,
+      f"a bound, hook-passing script is still held: {L.upload_hold(rslug)}")
+# an EXTENSION in the cloud: new hook + tail, still pending_bind
+eslug = "fixture-extend"
+(L.SCRIPTS / f"{eslug}.md").write_text(SCRIPT)
+L._measured_s = lambda s_: None                               # noqa: SLF001
+L._ask = lambda m: (f"OPENING:\n{NEW_OPEN}\nTAIL:\n{TAIL}\nSOURCES:\n",  # noqa: SLF001
+                    "fixture/free", "stop")
+r = L.stage_script(eslug, cloud=True, check_urls=False)
+check(r["status"] == "scripted" and r.get("kind") == "extend"
+      and "What the evidence does not settle" in (L.SCRIPTS / f"{eslug}.md").read_text(),
+      f"a cloud extension did not write the hook and the tail: {r}")
+# V49 holds a cloud re-open to the script it wrote
+import validate as V                                          # noqa: E402
+(L.SCRIPTS / f"{eslug}.md").write_text(SCRIPT)
+res = V.v49_lengthen_splice().as_dict()
+check(any("pending_bind" in f for f in res["failures"]),
+      f"V49 passed a pending_bind episode whose script changed under it: {res['failures']}")
+L.STATE, L._measured_s = saved_state, saved_measured          # noqa: SLF001
+# the wiring: both upload lanes hold, the Mac binds before it plans, the
+# cloud lane re-opens daily and its scripts are committed
+import inspect                                                # noqa: E402
+import backfill                                               # noqa: E402
+_bf = inspect.getsource(backfill.library_pending)
+_cu = (LOOP / "cloud_upload.py").read_text()
+_bs = (ROOT / "bin" / "batch-session.sh").read_text()
+_ls = (ROOT / "bin" / "loop-stage.sh").read_text()
+_wf = (ROOT / ".github" / "workflows" / "loop-repackage.yml").read_text()
+_prep = _bs.split("phase_prepare() {", 1)[1]
+check("lengthen.upload_hold(slug)" in _bf
+      and _bf.index("upload_hold") < _bf.index("found = assets(slug)"),
+      "backfill.library_pending does not hold a hook-failing episode before locating it")
+check('"HOOK_REOPEN_PENDING"' in _cu and "lengthen.upload_hold(s)" in _cu,
+      "the cloud upload lane does not name the hook hold")
+check("loop/lengthen.py bind" in _prep
+      and _prep.index("loop/lengthen.py bind") < _prep.index("build any missing shot plan"),
+      "the Mac does not bind cloud re-opens before it plans and narrates")
+check('"$STAGE" = "queue-reopen"' in _ls
+      and "git add scripts" in _ls.split('"$STAGE" = "queue-reopen"', 1)[1][:200],
+      "loop-stage.sh does not commit the scripts the queue-reopen stage writes")
+check("bin/loop-stage.sh queue-reopen loop/queue_reopen.py $ARGS" in _wf,
+      "loop-repackage does not run the cloud re-open")
+
 
 # --------------------------------------------------------------------- 6. V49
 import validate as V                                          # noqa: E402

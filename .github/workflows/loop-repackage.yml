@@ -9,6 +9,11 @@ name: loop · daily 18:30 CT · long-form repackage (titles + thumbnails)
 #                holds a slug until it has one), then for every live long-form
 #                video with no passing row in titles.json (`--needed`). $0 model route: her Claude
 #                subscription, the Gemini free tier, the $0 OpenRouter list.
+#   1b. reopen   loop/lengthen.py re-opens every QUEUED script whose cold open
+#                breaks the hook rule (stake-then-payoff) and extends every one
+#                under ten minutes (new hook + kept body + warm, sourced tail);
+#                the Mac's batch binds each one (`lengthen.py bind`) and
+#                re-renders. Published videos are never touched.
 #   2. apply     new titles + the contract thumbnail (variant A) onto live
 #                videos (public and private-scheduled) in loop/state/titles.json.
 #   3. reschedule (dispatch with reschedule=true) re-dates the private,
@@ -44,6 +49,10 @@ on:
         description: 'Max titles to propose this run (queued scripts first, then live videos with no passing title)'
         required: false
         default: '6'
+      reopen_limit:
+        description: 'Max queued scripts to re-open/extend this run (hook rule, ten-minute floor)'
+        required: false
+        default: '3'
       propose_only:
         description: 'Propose titles only; skip apply (so a dry-run apply can be read first)'
         type: boolean
@@ -65,9 +74,11 @@ concurrency:
 
 jobs:
   repackage:
-    # New lane: no measured median yet. 4 titles x ~2 min on the subscription
-    # tier + up to 20 metadata writes; a fault detector, not a budget.
-    timeout-minutes: 30
+    # New lane: no measured median yet. Titles ~15 s each on the
+    # subscription tier (13 Oct: 4 in 60 s); a re-open drafts against the
+    # whole script with dead-URL checks, ~2-4 min each, 3 a day by default.
+    # A fault detector, not a budget.
+    timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -104,6 +115,19 @@ jobs:
             ARGS="$ARGS --dry-run"
           fi
           bin/loop-stage.sh titles loop/longform_title.py propose $ARGS
+      - name: Re-open / extend queued scripts (hook rule, ten-minute floor)
+        if: ${{ !cancelled() && github.event.inputs.propose_only != 'true' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          ARGS="--limit ${{ github.event.inputs.reopen_limit || 3 }}"
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            ARGS="$ARGS --dry-run"
+          fi
+          bin/loop-stage.sh queue-reopen loop/queue_reopen.py $ARGS
       - name: Apply new titles and thumbnails to live videos
         if: ${{ !cancelled() && github.event.inputs.propose_only != 'true' }}
         env:

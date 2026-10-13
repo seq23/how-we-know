@@ -4270,7 +4270,11 @@ def v49_lengthen_splice() -> Result:
       recorded in loop/state/superseded_renders.json by sha256, and it is no
       longer in loop/state/render_hold.json;
     * every `full_rerender` episode that had a render recorded it as
-      superseded; unknown states fail.
+      superseded; unknown states fail;
+    * a cloud re-open (`pending_bind`) still matches the script it wrote, and
+      a re-opened queued script still passes the hook rule;
+    * queued scripts breaking the hook rule or the floor are a HELD stop
+      (QUEUE_HOOK_PENDING), by name, until loop-repackage re-opens them.
     """
     r = Result("V49 lengthen-splice")
     import math as _m                                      # noqa: PLC0415
@@ -4298,6 +4302,8 @@ def v49_lengthen_splice() -> Result:
     sup = read_json(ROOT / "loop" / "state" / "superseded_renders.json", default={})
     hold = (read_json(ROOT / "loop" / "state" / "render_hold.json",
                       default={"held": {}}).get("held") or {})
+    import hashlib                                         # noqa: PLC0415
+    published_ln = _ln.published_slugs()
     for slug, rec in sorted(_ln.load()["episodes"].items()):
         r.examined += 1
         st_ = rec.get("status")
@@ -4310,6 +4316,20 @@ def v49_lengthen_splice() -> Result:
         if st_ in ("spliced", "full_rerender") and old and old not in recorded:
             r.fail(f"{slug}: {st_} but its old render (sha {old[:12]}) is not "
                    f"in superseded_renders.json - the shelf could serve it")
+        if st_ == "scripted" and rec.get("mode") == "pending_bind":
+            sp_ = _ln.script_path(slug)
+            have = (hashlib.sha256(sp_.read_bytes()).hexdigest()
+                    if sp_.exists() else None)
+            if have != rec.get("new_script_sha256"):
+                r.fail(f"{slug}: scripted in the cloud (pending_bind) but "
+                       f"the script on disk is not the one it wrote - the "
+                       f"Mac would refuse to bind it")
+        if rec.get("kind") and slug not in published_ln:
+            sp_ = _ln.script_path(slug)
+            if sp_.exists():
+                for p_ in _ln.hook_problems(sp_.read_text(encoding="utf-8"))[:1]:
+                    r.fail(f"{slug}: re-opened ({rec.get('kind')}) but the "
+                           f"script breaks the hook rule again: {p_}")
         if st_ == "spliced":
             if (rec.get("new_seconds") or 0) / 60.0 < _ln.FLOOR_MIN:
                 r.fail(f"{slug}: spliced render is "
@@ -4318,6 +4338,17 @@ def v49_lengthen_splice() -> Result:
             if slug in hold:
                 r.fail(f"{slug}: spliced past the floor and still held in "
                        f"render_hold.json")
+    # THE QUEUE UNDER THE HOOK RULE (owner, 13 Oct 2026): every queued
+    # script opens stake-then-payoff and runs ten minutes. What does not yet
+    # is a HELD stop by name - the repackage lane re-opens it daily and the
+    # upload lanes hold it (loop/lengthen.py upload_hold) meanwhile.
+    q = _ln.queue_slugs()
+    r.examined += 1
+    if q:
+        r.named_stop("QUEUE_HOOK_PENDING",
+                     f"{len(q)} queued script(s) break the hook rule or the "
+                     f"ten-minute floor and are not yet re-opened; "
+                     f"loop-repackage re-opens them daily", sorted(q))
     return r
 
 
