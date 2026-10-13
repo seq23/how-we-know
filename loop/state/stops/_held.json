@@ -33,5 +33,18 @@
     "reported_run": null,
     "reports": 1,
     "stage": "mon-draft"
+  },
+  "render-gate::RENDER_HELD": {
+    "code": "RENDER_HELD",
+    "first_reported_at": "2026-10-13T12:03:40+00:00",
+    "issue": null,
+    "items": [
+      "how-deep-can-whales-dive - rendered 8.97 min, under the 10.0-minute hard floor"
+    ],
+    "last_reported_at": "2026-10-13T12:03:40+00:00",
+    "last_seen_at": "2026-10-13T12:03:40+00:00",
+    "reported_run": null,
+    "reports": 1,
+    "stage": "render-gate"
   }
 }
