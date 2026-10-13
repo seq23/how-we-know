@@ -2,7 +2,8 @@
 
 **Status:** DRAFT — OWNER CONFIRMATION AND MASTER WATCH REQUIRED
 **Domain:** materials-and-manufacturing
-**Opening:** cold-open-payoff
+**Reopened:** 2026-10-13 (loop/lengthen.py reopen, hook rule)
+**Opening:** stake-then-payoff
 **Word count:** ~1740
 **Estimated narration:** 12m 2s at 144.58 WPM (measured, loop/durations.py)
 
@@ -18,8 +19,7 @@ Microchips are designed mostly as text: engineers describe a chip's behaviour in
 
 ### Cold open
 
-{{contrast: Chip design | is=text translated by software | not=drawn by hand}}
-Microchips are designed mostly as text. Engineers describe a chip's behaviour in a hardware description language such as Verilog or VHDL, and software tools translate that description into logic gates and then into the geometric layout of billions of transistors. Both languages are published as standards by the IEEE. So the answer to who draws the chip is, largely, nobody. It is not drawn by hand. What that answer does not settle is how anyone knows the result will work. Nobody can inspect billions of transistors before the factory runs, and a mistake found afterwards is expensive. The real story of chip design is the story of how that confidence is built.
+Chipmakers publish lists of bugs in chips they have already shipped. Those lists exist because of how the work is done. Microchips are designed mostly as text: engineers describe a chip's behaviour in a hardware description language such as Verilog or VHDL, and software tools translate that description into logic gates and then into the geometric layout of billions of transistors. Both languages are IEEE standards. Most effort goes into proving the design before manufacture, through simulation, formal proofs and the foundry's rules. Those checks reduce risk, and the errata show they cannot remove it.
 
 ### Title card
 

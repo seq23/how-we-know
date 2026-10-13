@@ -2,6 +2,8 @@
 
 **Status:** HUMANIZED EDITORIAL PASS COMPLETE — OWNER CONFIRMATION AND MASTER WATCH REQUIRED    
 **Domain:** deep-sea-ocean-science  
+**Lengthened:** 2026-10-13 (loop/lengthen.py splice)
+**Opening:** stake-then-payoff
 **Article:** /questions/what-is-a-frilled-shark  
 **Word count:** 1163  
 **Estimated narration:** 8m 01s at 145 WPM
@@ -15,8 +17,7 @@ A frilled shark is a rare deep-water shark with an eel-like body, six pairs of f
 
 ### Cold open
 
-{{anatomy: AN ANCIENT-LOOKING BODY | mouth at the end of the head@0.10,0.50 | frilled collar@0.30,0.48 | long flexible body@0.60,0.50}}
-The frilled shark looks ancient. That does not mean the living species stopped evolving in the distant past. 'Living fossil' is a visual shortcut, not a time machine.
+Nobody has ever filmed this animal catching dinner in the wild. A frilled shark is a rare deep-water shark with an eel-like body, six pairs of frilled gill slits, and flexible jaws. Nets, brief clips and stomach contents settle its anatomy. They don't settle how it hunts.
 
 ### Title card
 
@@ -98,6 +99,26 @@ Feeding behavior remains poorly observed, so claims about striking like a snake 
 
 {{anatomy: AN UNFAMILIAR BODY | frill-like gill openings@0.30,0.48 | long flexible body@0.62,0.50}}
 The frilled shark does not need a frozen-in-time claim to be compelling. It is a modern animal with an unfamiliar body, rare observations, and a feeding story that anatomy suggests but cameras have barely tested.
+
+### This shark may hold the longest pregnancy we know of
+
+Here's a fact we've been keeping in our back pocket. Smithsonian Ocean reports that a frilled shark pregnancy may last up to three and a half years. Three and a half years. In that time, a human can be born, learn to walk, and start having strong opinions about which spoon is the correct spoon. Meanwhile, a frilled shark embryo is still slowly getting on with the business of becoming a shark. If the figure holds, Smithsonian notes, it may be the longest gestation of any animal with a backbone.
+
+The key word is "may." Nobody has watched a single frilled shark from mating to birth. Nobody has followed one female through a pregnancy at depth either. The number is a careful estimate built from how slowly the embryos appear to grow. It's a very good clue, but it isn't a stopwatch, and it could shift as more pregnant females turn up in more places.
+
+### What the nets can't tell us
+
+Most of our evidence arrives by accident, tangled in deep-water fishing gear. That gives us bodies, which are great for counting gill slits. Bodies are terrible for counting populations. We don't know how many frilled sharks exist, how far individuals travel, or how many years a wild one lives. A shark that shows up in nets now and then could be rare. It could also be common in places where nobody happens to fish. From the deck of a boat, those two situations look awkwardly similar.
+
+There's another wrinkle. Taxonomists have formally named a second frilled shark species, from waters off southern Africa. So some older records filed under "the frilled shark" may actually describe two different animals. Imagine writing a biography and discovering halfway through that you've been interviewing twins.
+
+### The question still swimming in the dark
+
+The big open question is the one from our first line: how does it actually eat? The jaws and inward-pointing teeth suggest it grabs slippery prey like squid. The long body hints at a lunge or a sideways strike. Some researchers have wondered whether those frilly gills help it pull water and prey inward. Every one of those ideas is waiting on the same thing, which is a camera in the right place at the right moment. In the deep sea, that is roughly like hoping to photograph a particular moth by leaving a torch on somewhere in Europe.
+
+That's what makes it fun. We have the anatomy, the stomach contents, and a pregnancy longer than most phone contracts. The actual dinner scene is still unfilmed. Thanks for staying down here with me, and mind the pressure on the way up.
+
+Next time: what is the deepest part of the ocean, and how do you measure a hole nobody can see the bottom of?
 
 ## Editorial gate
 

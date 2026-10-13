@@ -2,6 +2,8 @@
 
 **Status:** HUMANIZED EDITORIAL PASS COMPLETE — OWNER CONFIRMATION AND MASTER WATCH REQUIRED    
 **Domain:** deep-sea-ocean-science  
+**Lengthened:** 2026-10-13 (loop/lengthen.py splice)
+**Opening:** stake-then-payoff
 **Article:** /questions/why-deep-sea-creatures-are-surfacing  
 **Word count:** 1199  
 **Estimated narration:** 8m 16s at 145 WPM
@@ -15,8 +17,7 @@ Many midwater animals rise naturally toward the surface every night to feed, the
 
 ### Cold open
 
-{{zones:}}
-A strange fish near the surface is not proof that the deep sea is sending a warning. Before the story becomes climate collapse, earthquake prediction, or an omen, there is a more basic question: was this animal actually out of place?
+Every night, billions of animals swim upward, and almost nobody notices. Many midwater animals rise naturally toward the surface every night to feed, then descend before daylight. Sonar and net surveys show this routine. A true deep resident at the surface is different.
 
 ### Title card
 
@@ -125,6 +126,21 @@ A permanent deep resident may arrive because of injury, currents, capture, disea
 {{zones:}}
 One strange sighting is a clue, not a diagnosis. The responsible story begins with species, condition, time, place, and previous records. If those pieces are missing, the honest headline is not 'the deep sea is changing.' It is 'we do not yet know why this animal was here.'
 
+### The ocean once fooled the people listening to it
+During the Second World War, navy sonar operators kept finding a seafloor that wasn't there. Their pings bounced off something hundreds of meters down, solid enough to look like the bottom. But this bottom moved. At dusk it rose, and at dawn it sank again. It was the deep scattering layer: a crowd of fish, squid and shrimp packed densely enough to pass for geology. NOAA still calls it the "false bottom." Even the ocean floor, it turns out, can be faked by a very organized dinner rush.
+
+### We know the commute, not the guest list
+Woods Hole puts the twilight zone at roughly 200 to 1,000 meters below the surface. That band of water stretches across most of the planet, and we have sampled it in spoonfuls. Nets miss fast swimmers, because fast swimmers dodge nets. Cameras scare some animals and attract others. So researchers can watch the whole layer rise on sonar and still not say exactly who is in it, how many there are, or why one species stops partway while its neighbour keeps climbing.
+
+For permanent deep residents, the baseline is thinner still. It is hard to call a sighting unusual with confidence when we barely know what usual looks like. That is not a failure. It is an honest inventory of a very large, very dark room, taken by people holding very small flashlights.
+
+### The open question is where the carbon goes
+Here is the puzzle that keeps researchers up at night, which feels appropriate. Animals that feed near the surface and then swim down carry carbon with them. They breathe it out, excrete it, or get eaten at depth, and some of that carbon stays down for a long time. Woods Hole's Ocean Twilight Zone project exists partly to measure how much. The estimates still disagree, and the animals doing the work refuse to fill in timesheets. Getting that number right matters for understanding the ocean's role in climate. It depends on the same unglamorous things this episode has been about: identification, effort, and measurements repeated until they agree.
+
+So the next strange fish on your feed comes with better questions than "is it an omen?" Ask what it is, where it normally lives, and who was counting. It's a small, nerdy skill, but a useful one.
+
+Thanks for staying all the way to the bottom with me, and next time: what is the deepest part of the ocean, and how anyone managed to measure it.
+
 ## Editorial gate
 
 *What this episode does that a template would not. Every line below is a property the pipeline enforces at build time — see V36 in `loop/validate.py`. It records no step a human still owes.*
@@ -157,6 +173,7 @@ One strange sighting is a clue, not a diagnosis. The responsible story begins wi
 - 07:56 Closing
 
 ## Sources
+- https://twilightzone.whoi.edu/
 
 - NOAA Ocean Exploration: What is vertical migration of zooplankton and why does it matter? — https://oceanexplorer.noaa.gov/ocean-fact/vertical-migration/
 - NOAA Ocean Exploration: What is the deep scattering layer? — https://oceanexplorer.noaa.gov/ocean-fact/dsl/

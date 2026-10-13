@@ -1,0 +1,168 @@
+{
+  "episodes": {
+    "03-why-deep-sea-creatures-are-surfacing": {
+      "attempts": 2,
+      "budget": {
+        "in_band": true,
+        "open_s": 17.43,
+        "tail_s": 166.81,
+        "tail_words": 402,
+        "total_min": 11.0
+      },
+      "hook_after": "Every night, billions of animals swim upward, and almost nobody notices. Many midwater animals rise naturally toward the surface every night to feed, then descend before daylight. Sonar and net surveys show this routine. A true deep residen",
+      "hook_before": "{{zones:}}\nA strange fish near the surface is not proof that the deep sea is sending a warning. Before the story becomes climate collapse, earthquake prediction, or an omen, there is a more basic question: was this animal actually out of pl",
+      "hook_problems_before": [
+        "opening rule stake-then-payoff: the answer is not in the first 75 narrated words (~31s). Only 4 of the 14 content words of the Direct-answer lock's first sentence are spoken there (need 7). Move the payoff - 'Many midwater animals rise naturally toward the surface every night to feed, then descend before daylight.' - into the cold open, before the evidence chain.",
+        "opening rule stake-then-payoff: the first narrated sentence is 17 words; the hook must be at most 15 - one concrete stake, contradiction or figure: 'A strange fish near the surface is not proof that the deep sea is sending a warning.'"
+      ],
+      "kind": "extend",
+      "minutes_after": 10.82,
+      "minutes_before": 8.06,
+      "mode": "pending_bind",
+      "model": "claude-subscription/opus",
+      "new_script_sha256": "31e6cfa0b0fe1bf90065874ec5266158d58029c1d32473c319a0a893faa2117b",
+      "old_render_sha256": null,
+      "old_script_sha256": "3294cbc1f60f7cc933b51d932084e46afeadc798ae1298b945a3e8ed86c9eee3",
+      "scripted_at": "2026-10-13T14:40:56+00:00",
+      "status": "scripted",
+      "why_full": null,
+      "words_after": 1564,
+      "words_before": 1166
+    },
+    "11-what-is-a-dumbo-octopus": {
+      "attempts": 2,
+      "budget": {
+        "in_band": true,
+        "open_s": 15.77,
+        "tail_s": 166.57,
+        "tail_words": 402,
+        "total_min": 11.0
+      },
+      "hook_after": "At 6,957 metres down, a soft, finned animal was filmed calmly hovering. A dumbo octopus is a finned deep-sea octopus in the cirrate group. The evidence is lander video: it shows where one lived, not where all do.",
+      "hook_before": "{{descent: 6957 | NEARLY SEVEN KILOMETRES DOWN}}\nA finned octopus was filmed at 6,957 meters\u2014nearly seven kilometers down\u2014moving in water that our machines enter only with full-ocean-depth engineering. It had not survived a descent. It was ",
+      "hook_problems_before": [
+        "opening rule stake-then-payoff: the first narrated sentence is 21 words; the hook must be at most 15 - one concrete stake, contradiction or figure: 'A finned octopus was filmed at 6,957 meters\u2014nearly seven kilometers down\u2014moving in water that our machines enter only wi'"
+      ],
+      "kind": "extend",
+      "minutes_after": 11.09,
+      "minutes_before": 8.22,
+      "mode": "pending_bind",
+      "model": "claude-subscription/opus",
+      "new_script_sha256": "addf4471c872b821231d28a5f9a67e4765be231da23deecffbf6c351ccb5b11b",
+      "old_render_sha256": null,
+      "old_script_sha256": "01a360d1147b03c7a1a747e0492c658266b157abdea28c216954243ffaa87ffe",
+      "scripted_at": "2026-10-13T14:41:50+00:00",
+      "status": "scripted",
+      "why_full": null,
+      "words_after": 1603,
+      "words_before": 1189
+    },
+    "12-what-is-a-frilled-shark": {
+      "attempts": 2,
+      "budget": {
+        "in_band": true,
+        "open_s": 19.5,
+        "tail_s": 178.61,
+        "tail_words": 431,
+        "total_min": 11.0
+      },
+      "hook_after": "Nobody has ever filmed this animal catching dinner in the wild. A frilled shark is a rare deep-water shark with an eel-like body, six pairs of frilled gill slits, and flexible jaws. Nets, brief clips and stomach contents settle its anatomy.",
+      "hook_before": "{{anatomy: AN ANCIENT-LOOKING BODY | mouth at the end of the head@0.10,0.50 | frilled collar@0.30,0.48 | long flexible body@0.60,0.50}}\nThe frilled shark looks ancient. That does not mean the living species stopped evolving in the distant p",
+      "hook_problems_before": [
+        "opening rule stake-then-payoff: the answer is not in the first 75 narrated words (~31s). Only 4 of the 14 content words of the Direct-answer lock's first sentence are spoken there (need 7). Move the payoff - 'A frilled shark is a rare deep-water shark with an eel-like body, six pairs of frilled gill slits, and flexible jaws.' - into the cold open, before the evidence chain.",
+        "opening rule stake-then-payoff: the first sentence restates the question (2 of its 4 content words are in 'What is a frilled shark?'); open on the stake instead"
+      ],
+      "kind": "extend",
+      "minutes_after": 11.27,
+      "minutes_before": 8.02,
+      "mode": "pending_bind",
+      "model": "claude-subscription/opus",
+      "new_script_sha256": "79bb7b720646558e390f25902211336933d9138357803530c1f91b1bffa5e8c5",
+      "old_render_sha256": null,
+      "old_script_sha256": "42a8ba89f1834652fe627bd132b54793bbf2a0cc514612416fa8d274754788ca",
+      "scripted_at": "2026-10-13T14:42:50+00:00",
+      "status": "scripted",
+      "why_full": null,
+      "words_after": 1629,
+      "words_before": 1160
+    },
+    "17-what-is-a-yeti-crab": {
+      "attempts": 2,
+      "budget": {
+        "in_band": true,
+        "open_s": 14.52,
+        "tail_s": 170.31,
+        "tail_words": 411,
+        "total_min": 11.0
+      },
+      "hook_after": "A thousand metres down off Costa Rica, an animal waves its arms to grow dinner. Yeti crabs are deep-sea crustaceans in the family Kiwaidae. Some grow bacteria on hair-like setae and eat them. Video, anatomy and tissue chemistry show it, mos",
+      "hook_before": "{{descent: 1040 | CHEMICAL-RICH WATER}}\nThe yeti crab does not carry a garden. It waves bacteria-covered claws through chemical-rich water, then harvests the growth. 'Farming' sounds cute until you see the isotope evidence behind it.",
+      "hook_problems_before": [
+        "opening rule stake-then-payoff: the first sentence restates the question (2 of its 4 content words are in 'What is a yeti crab?'); open on the stake instead"
+      ],
+      "kind": "extend",
+      "minutes_after": 11.26,
+      "minutes_before": 8.16,
+      "mode": "pending_bind",
+      "model": "claude-subscription/opus",
+      "new_script_sha256": "d3c9729b2b64aee851c78caad446785e83a928d30c78f5a07c7c5779a5fec971",
+      "old_render_sha256": null,
+      "old_script_sha256": "ece2bff71409a23f5613ae6d28f24bdc014e14a3b205e7652fffb51afde46824",
+      "scripted_at": "2026-10-13T14:44:00+00:00",
+      "status": "scripted",
+      "why_full": null,
+      "words_after": 1628,
+      "words_before": 1180
+    },
+    "how-are-microchips-designed": {
+      "attempts": 1,
+      "budget": {
+        "tail_words": 0
+      },
+      "hook_after": "Chipmakers publish lists of bugs in chips they have already shipped. Those lists exist because of how the work is done. Microchips are designed mostly as text: engineers describe a chip's behaviour in a hardware description language such as",
+      "hook_before": "{{contrast: Chip design | is=text translated by software | not=drawn by hand}}\nMicrochips are designed mostly as text. Engineers describe a chip's behaviour in a hardware description language such as Verilog or VHDL, and software tools tran",
+      "hook_problems_before": [
+        "opening rule stake-then-payoff: the first sentence restates the title (3 of its 4 content words are in 'Microchips are designed as written text, not drawn by hand \u2014 and how we know'); open on the stake instead",
+        "opening rule stake-then-payoff: the first sentence restates the question (2 of its 4 content words are in 'How are microchips designed?'); open on the stake instead"
+      ],
+      "kind": "reopen",
+      "minutes_after": 11.46,
+      "minutes_before": 11.58,
+      "mode": "pending_bind",
+      "model": "claude-subscription/opus",
+      "new_script_sha256": "784f464ac921330d06e3c256f03c1486cfa30bf78cf157624c04f4c7a39fffa1",
+      "old_render_sha256": null,
+      "old_script_sha256": "869d7254bfe70c1863de47f53a4299d1041e8b96509a84a2884d3849ad8cac4f",
+      "scripted_at": "2026-10-13T14:44:24+00:00",
+      "status": "scripted",
+      "why_full": null,
+      "words_after": 1657,
+      "words_before": 1674
+    },
+    "how-deep-can-a-sperm-whale-go": {
+      "attempts": 1,
+      "budget": {
+        "tail_words": 0
+      },
+      "hook_after": "A telegraph cable hauled up in 1955 held a dead whale from 1,133 meters. Today the number is far larger. A sperm whale can dive to a depth of 2,992 meters, a figure recorded by digital acoustic tags and published by the Census of Marine Lif",
+      "hook_before": "{{descent: 2,992 | SPERM WHALE RECORD}}\nA sperm whale can dive to a depth of 2,992 meters, a figure recorded by digital acoustic tags and published by the Census of Marine Life. This depth represents a pressure of nearly 300 atmospheres, ye",
+      "hook_problems_before": [
+        "opening rule stake-then-payoff: the first narrated sentence is 26 words; the hook must be at most 15 - one concrete stake, contradiction or figure: 'A sperm whale can dive to a depth of 2,992 meters, a figure recorded by digital acoustic tags and published by the Censu'"
+      ],
+      "kind": "reopen",
+      "minutes_after": 16.6,
+      "minutes_before": 16.54,
+      "mode": "pending_bind",
+      "model": "claude-subscription/opus",
+      "new_script_sha256": "02d060d909c7036f3c4a732cf9758bfa18af5058cecf26eecb2dc9b6d307bffe",
+      "old_render_sha256": null,
+      "old_script_sha256": "a3c06c42451fb41d1af0cdb319de6882a5e3dfe54a7e55f9a35d6d2b451bdde4",
+      "scripted_at": "2026-10-13T14:44:54+00:00",
+      "status": "scripted",
+      "why_full": null,
+      "words_after": 2400,
+      "words_before": 2392
+    }
+  },
+  "updated": "2026-10-13T14:44:54+00:00"
+}

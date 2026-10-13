@@ -2,6 +2,8 @@
 
 **Status:** HUMANIZED EDITORIAL PASS COMPLETE — OWNER CONFIRMATION AND MASTER WATCH REQUIRED    
 **Domain:** deep-sea-ocean-science  
+**Lengthened:** 2026-10-13 (loop/lengthen.py splice)
+**Opening:** stake-then-payoff
 **Article:** /questions/what-is-a-yeti-crab  
 **Word count:** 1166  
 **Estimated narration:** 8m 02s at 145 WPM
@@ -15,8 +17,7 @@ Yeti crabs are deep-sea crustaceans in the family Kiwaidae. Some grow chemosynth
 
 ### Cold open
 
-{{descent: 1040 | CHEMICAL-RICH WATER}}
-The yeti crab does not carry a garden. It waves bacteria-covered claws through chemical-rich water, then harvests the growth. 'Farming' sounds cute until you see the isotope evidence behind it.
+A thousand metres down off Costa Rica, an animal waves its arms to grow dinner. Yeti crabs are deep-sea crustaceans in the family Kiwaidae. Some grow bacteria on hair-like setae and eat them. Video, anatomy and tissue chemistry show it, most clearly in one species.
 
 ### Title card
 
@@ -130,6 +131,26 @@ The paper supports bacteria as a major food source for this species; it does not
 {{descent: 1040 | A TESTED DIET}}
 The yeti crab story works because three kinds of evidence agree: what the crab does, what its body is built to do, and what its tissues say it has eaten. The dance is memorable. The tested diet is the reason it is science.
 
+### The farming proof covers one crab, not the whole family
+
+The arm-waving, the scraping mouthparts and the lipid and isotope results all come from Kiwa puravida, the species found about 1,000 metres down at a Costa Rican methane seep. That is one species in a family that keeps adding members. When researchers formally described the Antarctic yeti crab, Kiwa tyleri, in 2015, they found an animal built along different lines. It has short claws instead of long hairy arms, and a dense mat of setae across its chest where the bacteria grow. The team that discovered it reportedly nicknamed it "the Hoff" after a certain television lifeguard famous for his chest hair. Science contains multitudes.
+
+So the honest position is a little untidy. Several yeti crabs clearly carry bacteria. Whether they all feed on them in the same way, or move to help them grow, has not been tested species by species with the same chemistry. The 2011 evidence is strong, but it applies to one crab.
+
+### The mothers who walk away from the warmth
+
+One fact this episode has not used yet comes from the 2015 Kiwa tyleri paper. Near Antarctic vents, these crabs crowd into a thin band of warm water. Too close to the vent and they cook, as the episode showed with water that can pass 340 degrees Celsius. Too far and they are in water near freezing. Brooding females, though, were found away from the warm zone, carrying their eggs out in the colder surroundings. The authors suggest the eggs may need cooler conditions to develop, and that a mother leaving her bacterial food supply might not have the energy reserves to make it back.
+
+That is a hard trade. You leave the only warm, food-producing spot for kilometres, possibly for good, so the next generation can start. Most of us complain about a cold commute.
+
+### The question still being chased: where do the bacteria come from?
+
+This is the part nobody has fully worked out. A newly hatched yeti crab larva drifts away from its parents, sometimes across long stretches of open ocean between isolated vents. When it settles, it needs the right bacteria on its setae. Researchers are still trying to find out whether juveniles pick up their microbes from the surrounding water, from neighbouring crabs, or through some arrangement we have not seen yet. Even how far larvae travel between vent fields is still being studied.
+
+It is a nice reminder that these animals were only described this century, and that most of their lives happen where nobody has been watching yet.
+
+Thanks for staying to the end, wrap up warm, and leave your eggs somewhere sensible. Next time: what is the deepest part of the ocean, and how anyone managed to measure it.
+
 ## Editorial gate
 
 *What this episode does that a template would not. Every line below is a property the pipeline enforces at build time — see V36 in `loop/validate.py`. It records no step a human still owes.*
@@ -160,6 +181,8 @@ The yeti crab story works because three kinds of evidence agree: what the crab d
 - 07:45 Closing
 
 ## Sources
+- https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0127621
+- https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001234
 
 - PLOS ONE: Dancing for Food in the Deep Sea: Bacterial Farming by a New Species of Yeti Crab — https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0026243
 - NOAA National Ocean Service: What is a hydrothermal vent? — https://oceanservice.noaa.gov/facts/vents.html

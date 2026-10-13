@@ -2,6 +2,8 @@
 
 **Status:** HUMANIZED EDITORIAL PASS COMPLETE — OWNER CONFIRMATION AND MASTER WATCH REQUIRED    
 **Domain:** deep-sea-ocean-science  
+**Lengthened:** 2026-10-13 (loop/lengthen.py splice)
+**Opening:** stake-then-payoff
 **Article:** /questions/what-is-a-dumbo-octopus  
 **Word count:** 1200  
 **Estimated narration:** 8m 17s at 145 WPM
@@ -15,8 +17,7 @@ A dumbo octopus is a finned deep-sea octopus in the cirrate group. It swims main
 
 ### Cold open
 
-{{descent: 6957 | NEARLY SEVEN KILOMETRES DOWN}}
-A finned octopus was filmed at 6,957 meters—nearly seven kilometers down—moving in water that our machines enter only with full-ocean-depth engineering. It had not survived a descent. It was already home.
+At 6,957 metres down, a soft, finned animal was filmed calmly hovering. A dumbo octopus is a finned deep-sea octopus in the cirrate group. The evidence is lander video: it shows where one lived, not where all do.
 
 ### Title card
 
@@ -105,6 +106,22 @@ The 6,957-meter record is a confirmed observation of one Grimpoteuthis individua
 
 {{text}}
 A dumbo octopus is not impressive because it looks cute under pressure. It is impressive because a soft, finned body can function at a depth that rewrote the known cephalopod map. The record is narrow, and it is still extraordinary.
+
+### The octopus didn't fill in a form
+
+Here is the slightly embarrassing part of deep-sea biology: the deepest octopus on record didn't agree to an interview. It was filmed twice in 2020, at 5,760 and 6,957 metres, and then it swam out of frame. We don't know its age, its sex, or whether it lived there or had wandered downslope. The lander was baited, so the most famous octopus in the hadal zone may have been there for the snacks. That doesn't weaken the record. It just means one of the most-cited cephalopod sightings of the decade rests on a single animal deciding to show up.
+
+And "dumbo" keeps causing trouble. Grimpoteuthis is one genus in a wider cirrate family tree. Telling species apart often depends on internal anatomy, fin shape and cirri. A camera at seven kilometres won't show those details, and a crushed specimen on deck may not keep them. The cute nickname has outrun the taxonomy, which happens to most of us eventually.
+
+### A leftover fact: no calendar required
+
+Here's something the episode hasn't covered: cirrate octopuses don't eat like their shallow cousins. Many octopuses drill or crack their prey open. Cirrates are thought to swallow small crustaceans and worms whole, and the cirri along their arms may help move food toward the mouth. NOAA describes this feeding style as shaped by a food-poor environment. Studies of preserved females suggest some carry eggs at several stages of development at once. That would let them lay eggs whenever conditions allow, without waiting for a season. In a place with no sunrise, no winter, and a food supply that arrives at random, skipping the calendar is a sensible plan.
+
+### The last one percent
+
+The open question researchers are still chasing is about the edge of the map. The 2020 paper estimated that cephalopods could potentially use about 99 percent of the global seafloor. That leaves roughly 1 percent: the deepest trench floors, deeper than any octopus has been filmed. Nobody knows whether that last sliver is a hard physiological wall or just a place no camera has watched long enough. Nearly the whole ocean floor is now plausible octopus territory, and we are squinting at the remaining crumb like it owes us money.
+
+Answering that will take more landers, longer recordings, and many patient hours of footage showing absolutely nothing. Thanks for staying down here with me, and mind the pressure on the way up. Next time: what is the deepest part of the ocean, and how sure are we about that number?
 
 ## Editorial gate
 

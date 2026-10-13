@@ -2,7 +2,8 @@
 
 **Status:** DRAFT — OWNER CONFIRMATION AND MASTER WATCH REQUIRED
 **Domain:** deep-sea-ocean-science
-**Opening:** cold-open-payoff
+**Reopened:** 2026-10-13 (loop/lengthen.py reopen, hook rule)
+**Opening:** stake-then-payoff
 **Word count:** 1752
 **Estimated narration:** 12m 07s at 144.58 WPM (measured, loop/durations.py)
 
@@ -18,8 +19,7 @@ A sperm whale can dive to a depth of 2,992 meters, a figure recorded by digital 
 
 ### Cold open
 
-{{descent: 2,992 | SPERM WHALE RECORD}}
-A sperm whale can dive to a depth of 2,992 meters, a figure recorded by digital acoustic tags and published by the Census of Marine Life. This depth represents a pressure of nearly 300 atmospheres, yet these air-breathing mammals regularly descend into the midnight zone to hunt. While 2,992 meters is the confirmed SPERM WHALE RECORD, it does not settle the question of their absolute biological limit or how they survive the crushing weight of the deep.
+A telegraph cable hauled up in 1955 held a dead whale from 1,133 meters. Today the number is far larger. A sperm whale can dive to a depth of 2,992 meters, a figure recorded by digital acoustic tags and published by the Census of Marine Life. That record comes from pressure sensors suctioned to a whale's back, logging depth several times a second. It shows how deep one tagged whale went. It cannot show the species' limit; only a small fraction has ever been tagged.
 
 ### Title card
 
@@ -120,6 +120,7 @@ We know the sperm whale can reach 2,992 meters because we have measured the pres
 - 11:15 Evidence limit
 
 ## Sources
+- https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0092633
 
 - NOAA Ocean Exploration: Ocean Facts — https://oceanexplorer.noaa.gov/facts/
 - Smithsonian Ocean: Sperm Whales — https://ocean.si.edu/ocean-life/marine-mammals/sperm-whales
