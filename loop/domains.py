@@ -140,6 +140,14 @@ def script_of(slug: str) -> Path | None:
     return None
 
 
+def script_paths() -> list[Path]:
+    """Every script on disk, in the two places script_of() looks: the nightly
+    batch's scripts/*.md, then the food pipeline's scripts/food/*.md. ONE
+    list, so a reader that walks "every script" sees the same set script_of()
+    resolves - a food episode is not invisible to it (V41, 14 Oct 2026)."""
+    return sorted(SCRIPTS.glob("*.md")) + sorted((SCRIPTS / "food").glob("*.md"))
+
+
 def by_slug() -> dict[str, str]:
     out = {}
     for p in sorted(SCRIPTS.glob("*.md")):

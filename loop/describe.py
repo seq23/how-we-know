@@ -270,15 +270,43 @@ def compose(slug: str, script: str, title: str, question: str,
     parts.append(CHANNEL_LINE)
     description = "\n".join(parts)
     subj = [w for w in (rec.get("subject") or subject_phrase(question)).split() if w]
-    tags: list[str] = []
-    for t in [q.rstrip("?").lower() for q in qs] + subj:
-        if t and t not in tags:
-            cand = tags + [t]
-            # YouTube counts a tag with spaces as wrapped in quotes.
-            size = sum(len(x) + (2 if " " in x else 0) for x in cand) + len(cand) - 1
-            if size <= TAGS_MAX:
-                tags = cand
-    return description, tags
+    return description, compose_tags(slug, [q.rstrip("?").lower() for q in qs] + subj)
+
+
+def _tags_fit(tags: list[str]) -> bool:
+    # YouTube counts a tag with spaces as wrapped in quotes (TAGS_MAX); the
+    # upload path also holds every payload to loop/discovery.TAG_TOTAL_MAX
+    # (V41). The stricter of the two wins.
+    import discovery                                       # noqa: PLC0415
+    quoted = sum(len(x) + (2 if " " in x else 0) for x in tags) + len(tags) - 1
+    plain = sum(len(x) + 1 for x in tags)
+    return quoted <= TAGS_MAX and plain <= discovery.TAG_TOTAL_MAX
+
+
+def compose_tags(slug: str, phrasings: list[str]) -> list[str]:
+    """The search phrasings, then the episode's own domain tags and the
+    channel's (loop/config.json `discovery`, the same list loop/discovery.py
+    uses) - those last two RESERVED first, so the phrasings fill only what is
+    left and can never crowd the domain off the video (V41, 14 Oct 2026: two
+    prepared slugs shipped tags with none of their domain's own)."""
+    import discovery                                       # noqa: PLC0415
+    import domains                                         # noqa: PLC0415
+    from common import config                              # noqa: PLC0415
+    reserved: list[str] = []
+    domain = domains.domain_of_slug(slug)
+    if domain:
+        d_tags, _, c_tags, _ = discovery._discovery_block(config(), domain)
+        for t in [*d_tags, *c_tags]:
+            t = t.strip().lower()
+            if t and t not in reserved and _tags_fit(reserved + [t]):
+                reserved.append(t)
+    head: list[str] = []
+    for t in phrasings:
+        t = t.strip().lower()
+        if t and t not in head and t not in reserved \
+                and _tags_fit(head + [t] + reserved):
+            head.append(t)
+    return head + reserved
 
 
 def problems(description: str, title: str, question: str,

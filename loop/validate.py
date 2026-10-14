@@ -3868,8 +3868,14 @@ def v41_discovery_metadata() -> Result:
         exact shape of the bug this closes: a materials episode carrying
         "marine biology".
       * the description ends with a recognisable hashtag line of 1-60
-        hashtags, whose first three are subject, domain, channel — the three
-        YouTube shows above the title.
+        hashtags, in subject, domain, channel order up to HASHTAG_MAX (the
+        subject is loop/discovery.subject_hashtags: one, or three for a
+        "<Food>, <Food>, <Food>: What's Inside?" series title), and the
+        domain's and channel's own hashtag are always on it.
+      * the script is found wherever loop/domains.script_of() looks
+        (domains.script_paths: scripts/*.md and scripts/food/*.md).
+      * loop/tests/test_v41_every_domain_discoverable.py runs this at the
+        merge gate and proves it fails on a stripped or script-less domain.
       * `loop/shorts_lane.py:build_payload` for the same episode carries
         "shorts" plus at least one of the domain's own tags.
       * the total tag length does not exceed `TAG_TOTAL_MAX`, and
@@ -3921,9 +3927,11 @@ def v41_discovery_metadata() -> Result:
             r.fail(f"{name}: discovery.domains has no `hashtags`")
         domain_tags[name] = set(block.get("tags") or [])
 
-    # One real script per allocated domain — the first on disk that carries it.
+    # One real script per allocated domain — the first on disk that carries it,
+    # walking every place loop/domains.script_of() resolves a slug (a food
+    # episode lives under scripts/food/, 14 Oct 2026).
     script_of: dict[str, Path] = {}
-    for p in sorted((ROOT / "scripts").glob("*.md")):
+    for p in domains.script_paths():
         d = domains.domain_of_script(p)
         if d in alloc and d not in script_of:
             script_of[d] = p
@@ -3973,18 +3981,31 @@ def v41_discovery_metadata() -> Result:
                 r.fail(f"{name}: {slug}'s hashtag line carries {len(hts)} "
                        f"hashtag(s), outside YouTube's 1-60")
             script_text = p.read_text(encoding="utf-8")
-            subject_ht = _disc._hashtag_word(
-                _disc.subject_of(_disc._script_title(slug, script_text)))
+            # The subject leads: one hashtag, or the three of a "<Food>,
+            # <Food>, <Food>: What's Inside?" series title (owner, 13 Oct
+            # 2026) - loop/discovery.subject_hashtags, the builder's own.
+            subject_hts = [h for h in _disc.subject_hashtags(slug, script_text)
+                           if h]
             domain_ht = ((disc_cfg.get("domains") or {}).get(name) or {}) \
                 .get("hashtags") or []
             channel_ht = (disc_cfg.get("channel") or {}).get("hashtags") or []
-            want_first3 = [h for h in [subject_ht, *domain_ht, *channel_ht]
-                           if h][:3]
-            if hts[:len(want_first3)] != want_first3:
-                r.fail(f"{name}: {slug}'s first hashtag(s) are {hts[:3]}, "
-                       f"expected subject/domain/channel order "
-                       f"{want_first3} — those are the ones YouTube shows "
-                       f"above the title")
+            want = []
+            for h in [*subject_hts, *domain_ht, *channel_ht]:
+                if h and h.lower() not in {w.lower() for w in want}:
+                    want.append(h)
+            want = want[:_disc.HASHTAG_MAX]
+            if hts[:len(want)] != want:
+                r.fail(f"{name}: {slug}'s hashtags are {hts[:len(want)]}, "
+                       f"expected subject/domain/channel order {want} — "
+                       f"the first three are the ones YouTube shows above "
+                       f"the title")
+            # Whatever the subject's width, the domain's and the channel's
+            # own hashtag are on the line - never pushed off it.
+            for must in (domain_ht[:1] + channel_ht[:1]):
+                if must not in hts:
+                    r.fail(f"{name}: {slug}'s hashtag line {hts} lacks "
+                           f"{must} - the domain/channel hashtag was pushed "
+                           f"off by the subject")
 
         r.examined += 1
         short_payload = _sl.build_payload(slug, question)

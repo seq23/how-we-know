@@ -188,6 +188,20 @@ def _hashtag_word(phrase: str) -> str:
     return "#" + "".join(w.capitalize() for w in words) if words else ""
 
 
+def subject_hashtags(slug: str, script_text: str) -> list[str]:
+    """The episode's own subject hashtag(s) - what leads its hashtag line.
+    One function, read by hashtags_for() and by V41, so the builder and the
+    validator cannot disagree on the subject."""
+    # The series shape (owner, 13 Oct 2026): "<Food>, <Food>, <Food>: What's
+    # Inside?" names three subjects; each is a tag, never one run-together word
+    # ("#BreadRiseSteakBrownAndChocolateSnap" was the first composition).
+    m = re.search(r"^## YouTube title\s*\n+([A-Z][a-z]+), ([A-Z][a-z]+), ([A-Z][a-z]+): "
+                  r"What's Inside\?\s*$", script_text, re.M)
+    if m:
+        return [f"#{w}" for w in m.groups()]
+    return [_hashtag_word(subject_of(_script_title(slug, script_text)))]
+
+
 def hashtags_for(slug: str, script_text: str, domain: str) -> list[str]:
     """Ordered, de-duplicated hashtags: subject, domain, channel — capped at
     `HASHTAG_MAX` so the first three (what YouTube shows above the title) are
@@ -196,14 +210,7 @@ def hashtags_for(slug: str, script_text: str, domain: str) -> list[str]:
     domains.require_known(domain)
     cfg = config()
     _, domain_hashtags, _, channel_hashtags = _discovery_block(cfg, domain)
-    subject_tags = [_hashtag_word(subject_of(_script_title(slug, script_text)))]
-    # The series shape (owner, 13 Oct 2026): "<Food>, <Food>, <Food>: What's
-    # Inside?" names three subjects; each is a tag, never one run-together word
-    # ("#BreadRiseSteakBrownAndChocolateSnap" was the first composition).
-    m = re.search(r"^## YouTube title\s*\n+([A-Z][a-z]+), ([A-Z][a-z]+), ([A-Z][a-z]+): "
-                  r"What's Inside\?\s*$", script_text, re.M)
-    if m:
-        subject_tags = [f"#{w}" for w in m.groups()]
+    subject_tags = subject_hashtags(slug, script_text)
 
     seen: set[str] = set()
     out: list[str] = []
