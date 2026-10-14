@@ -1380,3 +1380,17 @@ food in motion - real MOVEMENT and the impossible-scale feel (round 1 was 11/13 
 - **V30 rule B: gitignored-by-design assets must be sha256-pinned, not git-tracked.** The 50 food
   clips live under the ignored `channel/imagery/clips/` on purpose; an untracked asset that is NOT
   ignored still fails as before.
+- **The render, as measured** (13 Oct, evening): 28.5 minutes (open 1:30, chocolate 8:48, bread
+  8:37, steak 8:48, tail 0:48); real video 96 %; hands 13 % of the episode (bread 20 %, noted - its
+  on-screen lines name a slice, a crumb, a stretching dough); spectacle 59 / 51 / 51 % by segment;
+  credits read back off the pixels on 20 of 20 sampled frames; voice one register, thirds 168/170/169
+  wpm after five beats were re-drawn (two pitch, three pace outliers). Footage per segment: chocolate
+  13 (Mixkit 9, Pixabay 3, Commons 1), bread 17 and steak 17 (all Pixabay).
+- **Found by the first render, fixed at source:** the concat demuxer writes the encoder header into
+  every keyframe it copies, so the stitch proof is two-part (non-key packets byte-identical, keyframes
+  decode identical); the mux's bare `-shortest` let a mix 0.2 s short cut the picture and the last
+  pause (V13's rule in `check_episode` caught it; the mix is now padded to the picture); lines that
+  point at the screen ("look at the slice on the screen") now get the clip they name.
+- **Voice throughput is the long pole on this 8 GB Mac**: Chatterbox needs ~4 GB; with other work
+  resident it is paged out and slows from ~12x to ~40x real time. A food episode's ~25 new minutes of
+  narration took most of an afternoon; plan food voicing for a quiet Mac.
