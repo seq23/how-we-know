@@ -464,9 +464,13 @@ def resumable_upload(token: str, payload: dict, video: Path) -> str:
     })
     with urllib.request.urlopen(req, timeout=60) as r:
         session = r.headers["Location"]
+    # STREAMED, not read into memory: a 30-minute food episode is ~1.8 GB, on a
+    # runner with 7 GB of RAM (13 Oct 2026). urllib sends a file object as the
+    # body when Content-Length is given.
     with video.open("rb") as fh:
-        put = urllib.request.Request(session, data=fh.read(), method="PUT",
-                                     headers={"Content-Type": "video/mp4"})
+        put = urllib.request.Request(session, data=fh, method="PUT",
+                                     headers={"Content-Type": "video/mp4",
+                                              "Content-Length": str(video.stat().st_size)})
         with urllib.request.urlopen(put, timeout=3600) as r2:
             return json.loads(r2.read())["id"]
 
