@@ -43,6 +43,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "loop"))
 sys.path.append(str(ROOT / "visuals"))
 
+import ledger                                                  # noqa: E402
 import lengthen                                                # noqa: E402
 import pov_match                                               # noqa: E402
 import pov_repair                                              # noqa: E402
@@ -54,6 +55,24 @@ SLUG = "what-lives-in-mariana-trench"
 # pov-001 - owned by live how-deep-mariana-trench - with no row of its own.
 REUSED = "pov-001"
 OWNER = "how-deep-mariana-trench"
+
+
+# THE FIXTURE'S PREMISE IS A QUEUED, UNPUBLISHED SCRIPT (its 28ac4e4 state).
+# SLUG shipped on 2026-10-14, so the real ledger made V71 and pov_repair skip
+# it as published: every V71 case examined ZERO and this test went red on the
+# calendar alone. The ledger is rebuilt here exactly as it was then - SLUG
+# absent, every other published row kept - and V71 must still examine
+# exactly one script in every case (v71() below), so nothing is loosened.
+_real_ledger_load = ledger.load
+
+
+def _ledger_as_at_28ac4e4(*a, **k):
+    d = dict(_real_ledger_load(*a, **k))
+    d["published"] = [e for e in d.get("published") or [] if e.get("slug") != SLUG]
+    return d
+
+
+ledger.load = _ledger_as_at_28ac4e4
 
 
 def broken_script() -> str:

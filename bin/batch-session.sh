@@ -377,6 +377,13 @@ phase_prepare() {
 # unlinks the old plan; pending_plan is recomputed so tonight re-plans it.
 echo; echo "--- bind cloud re-opened scripts to this Mac's plans, wavs and renders ---"
 $PY loop/lengthen.py bind || echo "  lengthen bind exited $? - nothing was moved for an episode it refused"
+# PUSH THE BIND NOW, before anything plans, narrates or captions: the bind
+# state (loop/state/lengthen.json, superseded_renders.json, the unlinked or
+# rewritten plans - loop/mac_sync.py BIND_STATE / bind_paths) is the Mac's own
+# write, and the caption pass later changes the very scripts a stale
+# `pending_bind` record fingerprints (V49 red on main, 2026-10-14). Pushed here
+# it lands beside the script bytes it was bound against.
+$PY loop/mac_sync.py push --lane lengthen-bind 2>&1 | tail -1
 pending_plan=$($PY - <<'BINDPLANEOF'
 import os, sys
 sys.path.insert(0, "loop")
