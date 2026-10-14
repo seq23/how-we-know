@@ -244,6 +244,37 @@ def heartbeat(lane: str, ok: bool, **facts) -> dict:
 
 # ---------------------------------------------------------------- push
 
+# EVERY TRACKED FILE `loop/lengthen.py bind` CAN WRITE, so every push carries
+# them. 2026-10-14: the 04:00 batch bound seven cloud re-opens (pending_bind ->
+# full_rerender, old renders recorded in superseded_renders.json, a stale plan
+# unlinked) and nothing pushed that state. Origin kept `pending_bind` records
+# beside script bytes the caption pass then changed: V49 red on main, and the
+# cloud upload lane blind to superseded renders it must refuse. The bind is the
+# Mac's authoritative write, so - like the ledger and quota - it is committed
+# before the next pull, never left for `pull` to set aside.
+# Guarded by loop/tests/test_bind_state_is_pushed.py, which runs bind() on a
+# fixture and fails on any tracked file it writes that bind_paths() omits.
+BIND_STATE = (
+    "loop/state/lengthen.json",
+    "loop/state/superseded_renders.json",
+    "loop/state/durations.json",       # durations.forget() on a full re-render
+)
+
+
+def bind_paths(state: Path | None = None) -> list[str]:
+    """BIND_STATE plus plans/<slug>.json of every episode bind() has bound
+    (it rewrites the plan on a splice and unlinks it on a full re-render).
+    push() keeps only paths that exist or are tracked, and stages nothing
+    that did not change."""
+    try:
+        doc = json.loads((state or ROOT / BIND_STATE[0]).read_text())
+    except (OSError, ValueError):
+        doc = {}
+    slugs = sorted(s for s, r in (doc.get("episodes") or {}).items()
+                   if isinstance(r, dict) and r.get("bound_at"))
+    return list(BIND_STATE) + [f"plans/{s}.json" for s in slugs]
+
+
 def push(paths: list[str], message: str) -> tuple[bool, str]:
     """Commit exactly these paths (if changed) and push. Never `git add -A`."""
     if off_main_reason():
@@ -322,7 +353,7 @@ def main() -> int:
             f"loop/state/stops/{wk}-render-gate.json",
             "loop/state/render_hold.json",
             "loop/state/stops/_held.json",
-        ]
+        ] + bind_paths()
         ok, msg = push(sorted(set(paths)), f"{a.lane}: Mac state {dt.date.today():%Y-%m-%d}")
         print(f"  {msg}")
         return 0 if ok else 3
