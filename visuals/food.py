@@ -324,19 +324,58 @@ KALEIDO_CLIPS = ["fountain-flow", "drip-macro", "sheets"]
 # Per segment of the full episode (contact sheets, 2026-10-13). Hands-free clips
 # only: a composite multiplies its picture, so a hand in it would be a wall of hands.
 WALL_CLIPS_BY = {
-    "chocolate": WALL_CLIPS,
-    "bread": ["bread-buns", "bread-display", "bread-rise-oven", "bread-wheat-close"],
-    "steak": ["steak-skewers", "steak-sizzle", "steak-sear-grill", "steak-coals"],
+    "chocolate": WALL_CLIPS + ["beans", "chunks-macro"],
+    "bread": ["bread-wheat-close", "bread-grow-oven", "bread-loaf-oven", "bread-harvest",
+              "bread-wheat-field"],
+    "steak": ["steak-sizzle", "steak-sear-grill", "steak-coals", "steak-flame", "steak-bbq",
+              "steak-roast"],
     "open": ["field", "steak-sear-grill", "bread-rise-oven", "chunks"],
     "tail": ["pile", "bread-buns", "steak-skewers"],
 }
 KALEIDO_CLIPS_BY = {
-    "chocolate": KALEIDO_CLIPS,
-    "bread": ["bread-wheat-field", "bread-mixer", "bread-flour-mill"],
-    "steak": ["steak-fire", "steak-coffee", "steak-butter", "steak-flame"],
+    "chocolate": KALEIDO_CLIPS + ["coat", "pour-dark"],
+    "bread": ["bread-wheat-field", "bread-mixer", "bread-harvest", "bread-wheat-close"],
+    "steak": ["steak-fire", "steak-coffee", "steak-butter", "steak-grill-sit"],
     "open": ["fountain-flow", "steak-fire", "bread-wheat-field"],
     "tail": ["sheets", "steak-fire"],
 }
+# WHEN THE NARRATION POINTS AT THE SCREEN ("look at the slice on the screen")
+# the picture must be the thing it names: the line's own words bind its clips,
+# first in its pool (the hands budget yields to it). Reviewed on contact sheets.
+SCREEN_BIND: list[tuple[str, list[str]]] = [
+    (r"bar on the screen", ["chunks-macro", "chunks", "pile"]),
+    (r"chocolate keeps pouring", ["pour-dark", "fountain-flow", "sheets"]),
+    (r"running in slow folds", ["fountain-flow", "sheets"]),
+    (r"fold and settle", ["sheets", "drip-macro", "coat"]),
+    (r"melted chocolate on the screen", ["sheets", "fountain-flow"]),
+    (r"wall of pieces", ["chunks", "pile", "beans"]),
+    (r"dough on the screen as it stretches", ["bread-knead", "bread-flour-dough"]),
+    (r"(watch|look at) the dough on the screen", ["bread-grow-oven", "bread-knead"]),
+    (r"loaves have risen", ["bread-buns", "bread-loaf-knife", "bread-grow-oven"]),
+    (r"loaves sit in the heat", ["bread-loaf-oven", "bread-oven-fire"]),
+    (r"slice on the screen", ["bread-slice", "bread-loaf-knife"]),
+    (r"crumb on the screen", ["bread-loaf-knife", "bread-slice"]),
+    (r"pan on the screen", ["steak-bbq", "steak-grill-sit", "steak-butter"]),
+    (r"crust on the screen", ["steak-flame", "steak-coals", "steak-sear-grill"]),
+    (r"meat keeps searing", ["steak-sear-grill", "steak-sizzle"]),
+    (r"turn in the heat", ["steak-slowmo", "steak-flame"]),
+    (r"fat on the screen", ["steak-butter", "steak-bbq"]),
+    (r"grills go on and on", ["steak-flame", "steak-sear-grill", "steak-coals"]),
+    (r"sear on the screen", ["steak-sear-grill", "steak-bbq"]),
+]
+
+
+# lines that name an impossible-scale picture get it, as a wall of the bound clip
+SCREEN_WALL = r"wall of pieces|grills go on and on"
+
+
+def screen_bound(text: str, cat: dict) -> list[str]:
+    for pat, keys in SCREEN_BIND:
+        if re.search(pat, text, re.I):
+            return [k for k in keys if k in cat]
+    return []
+
+
 # Hands: a clip with hands is never preferred while a hands-free clip suits the
 # paragraph as well (owner, 13 Oct 2026). Measured per render, per episode.
 HANDS_NOTE_SHARE = 0.15      # above this the render carries a note
@@ -440,14 +479,22 @@ def build_timeline(paras: list[dict], beats: list[dict], cat: dict) -> dict:
         phase = p.get("phase") or ("opening" if p["section"] == "Cold open" else "body")
         lo, hi = PRESET["opening_cut_s"] if phase == "opening" else PRESET["body_hold_s"]
         pool = pool_for(p["text"], cat, seg)
+        bound = screen_bound(p["text"], cat)
+        if bound:
+            pool = bound + [k for k in pool if k not in bound]
         if not pool:
             raise ValueError("no real clips in the catalogue - food in motion is real footage only")
         for j, L in enumerate(cut_lengths(dur, lo, hi, seed=i)):
-            order = sorted(pool, key=lambda k: (used.get(k, 0), pool.index(k)))
+            order = (bound + [k for k in sorted(pool, key=lambda k: (used.get(k, 0), pool.index(k)))
+                              if k not in bound]) if bound else \
+                sorted(pool, key=lambda k: (used.get(k, 0), pool.index(k)))
             # THE HANDS BUDGET (owner, 13 Oct 2026: limit hands, not a ban): a
             # clip with hands is taken only while the piece stays under
             # HANDS_BUDGET of its length; otherwise the best hands-free clip.
-            over = hands_s + L > HANDS_BUDGET * piece_s
+            # ...except where the narration points at the screen ("look at the
+            # slice on the screen"): the picture must be the thing it names
+            deictic = bool(bound)
+            over = hands_s + L > HANDS_BUDGET * piece_s and not deictic
             pick = next((k for k in order if k != last and not (over and cat[k].get("hands"))),
                         next((k for k in order if k != last), order[0]))
             if cat[pick].get("hands"):
@@ -456,7 +503,10 @@ def build_timeline(paras: list[dict], beats: list[dict], cat: dict) -> dict:
             used[pick] = used.get(pick, 0) + 1
             shots.append({"start": t, "dur": L, "kind": "picture", "beat": i, "phase": phase,
                           "register": "standard", "asset": pick, "segment": seg,
-                          "treatment": treatment_for(cat[pick], phase)})
+                          "treatment": treatment_for(cat[pick], phase),
+                          **({"bound": True} if bound and pick in bound else {}),
+                          **({"force_wall": True} if j == 0 and bound and
+                             re.search(SCREEN_WALL, p["text"], re.I) else {})})
             t += L
     role = piece_role(paras)
     lo_c, hi_c = COMPOSITES_BY_ROLE.get(role, (lo_c, hi_c))
@@ -523,8 +573,16 @@ def _place_composites(shots: list[dict], cat: dict, lo: int, hi: int,
     pics = [s for s in shots if s["kind"] == "picture"]
     if not pics or hi <= 0:
         return
-    chosen = [pics[0]] if pics[0]["phase"] == "opening" else []
-    body = [s for s in pics if s["phase"] == "body"]
+    forced = [s for s in pics if s.get("force_wall")]
+    for s in forced:                        # the narration names this picture: a wall of it
+        s["treatment"], s["composite"] = "wall", True
+    hi -= len(forced)
+    lo = max(0, lo - len(forced))
+    if hi <= 0:
+        return
+    chosen = [pics[0]] if pics[0]["phase"] == "opening" and not pics[0].get("force_wall") else []
+    # a shot the narration points at keeps its picture
+    body = [s for s in pics if s["phase"] == "body" and not s.get("bound") and not s.get("force_wall")]
     want = max(lo, min(hi, len(body) // 3 + len(chosen))) - len(chosen)
     want = min(want, hi - len(chosen))
     if body and want > 0:
@@ -535,8 +593,8 @@ def _place_composites(shots: list[dict], cat: dict, lo: int, hi: int,
         kind = "wall" if s["phase"] == "opening" or n % 2 else "kaleido"
         walls = WALL_CLIPS_BY.get(role, WALL_CLIPS)
         kals = KALEIDO_CLIPS_BY.get(role, KALEIDO_CLIPS)
-        pref = [k for k in (walls if kind == "wall" else kals)
-                if k in cat and k not in taken and not cat[k].get("hands")]
+        ok = [k for k in (walls if kind == "wall" else kals) if k in cat and not cat[k].get("hands")]
+        pref = [k for k in ok if k not in taken] or ok      # reuse a reviewed clip before an unsuitable one
         if pref:
             s["asset"] = pref[0]
         taken.add(s["asset"])
@@ -948,8 +1006,13 @@ def _finish(script, voice_dir, out, work, silent, tl, beats, caps, cat,
     import food_sound                                         # noqa: PLC0415
     bed_raw = bed or food_sound.build_bed(tl, work / "bed.wav", cat)
     mix = food_sound.duck_and_mix(voice, bed_raw, work)
+    # The PICTURE sets the length: the mix is padded with silence to it (apad) and
+    # cut there. A bare -shortest cut the picture to the mix, and the mix ran a
+    # fifth of a second short of the narration: the first full render's steak
+    # piece lost its last 9 frames and the end of its last pause (caught by
+    # V13's rule in visuals/food_episode.check_episode).
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(silent), "-i", str(mix["mix"]),
-                    "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-shortest",
+                    "-c:v", "copy", "-af", "apad", "-c:a", "aac", "-b:a", "192k", "-shortest",
                     "-movflags", "+faststart", str(out)], check=True)
     out.with_suffix(".srt").write_text(srt(caps))
     ai = sorted({s["asset"] for s in shots if s.get("asset") and cat[s["asset"]]["ai"]})

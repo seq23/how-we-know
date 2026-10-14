@@ -332,7 +332,7 @@ def build_payload(item: dict) -> dict:
     aff = affiliates.block_for(text)
     domain = domains.domain_of_slug(slug)
     composed = describe.compose(slug, text, title, item["question"], chapters,
-                                sources, extra=[aff])
+                                sources, extra=[aff, footage_credits(slug)])
     if composed:
         description, tags = composed
         description = description[:DESC_MAX]
@@ -406,6 +406,35 @@ def build_payload(item: dict) -> dict:
 SPECS = ROOT / "channel" / "specs"
 
 
+def footage_credits(slug: str) -> str:
+    """The attribution block for a food episode: every footage source on screen,
+    its licence, and the AI-image label (CLAUDE.md: stripping or omitting
+    attribution is the one thing this pipeline may not do - credited on screen
+    AND here, even where the licence does not require it). '' for anything else."""
+    p = SPECS / f"{slug}.json"
+    if not p.exists():
+        return ""
+    spec = json.loads(p.read_text())
+    if spec.get("kind") != "food-episode":
+        return ""
+    by: dict[str, set] = {}
+    for pm in spec.get("pieces") or []:
+        for rec in (pm.get("clip_licences") or {}).values():
+            src = {"commons": "Wikimedia Commons", "pixabay": "Pixabay", "mixkit": "Mixkit",
+                   "pexels": "Pexels", "archive": "Internet Archive", "nasa": "NASA"}.get(
+                rec.get("source") or "", rec.get("source") or "")
+            by.setdefault(src, set()).add(rec.get("licence") or "")
+    if not by:
+        return ""
+    lines = ["Footage, credited on screen as it appears:"]
+    for src in sorted(by):
+        lines.append(f"• {src} — {', '.join(sorted(x for x in by[src] if x))}")
+    if spec.get("ai_assets"):
+        lines.append("• The glowing cross-section diagrams are drawn over AI-generated images, "
+                     "labelled on screen.")
+    return "\n".join(lines)
+
+
 def altered_content(slug: str) -> bool:
     """YouTube's "altered or synthetic content" answer for one video.
 
@@ -435,9 +464,13 @@ def resumable_upload(token: str, payload: dict, video: Path) -> str:
     })
     with urllib.request.urlopen(req, timeout=60) as r:
         session = r.headers["Location"]
+    # STREAMED, not read into memory: a 30-minute food episode is ~1.8 GB, on a
+    # runner with 7 GB of RAM (13 Oct 2026). urllib sends a file object as the
+    # body when Content-Length is given.
     with video.open("rb") as fh:
-        put = urllib.request.Request(session, data=fh.read(), method="PUT",
-                                     headers={"Content-Type": "video/mp4"})
+        put = urllib.request.Request(session, data=fh, method="PUT",
+                                     headers={"Content-Type": "video/mp4",
+                                              "Content-Length": str(video.stat().st_size)})
         with urllib.request.urlopen(put, timeout=3600) as r2:
             return json.loads(r2.read())["id"]
 

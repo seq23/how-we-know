@@ -196,11 +196,18 @@ def hashtags_for(slug: str, script_text: str, domain: str) -> list[str]:
     domains.require_known(domain)
     cfg = config()
     _, domain_hashtags, _, channel_hashtags = _discovery_block(cfg, domain)
-    subject_tag = _hashtag_word(subject_of(_script_title(slug, script_text)))
+    subject_tags = [_hashtag_word(subject_of(_script_title(slug, script_text)))]
+    # The series shape (owner, 13 Oct 2026): "<Food>, <Food>, <Food>: What's
+    # Inside?" names three subjects; each is a tag, never one run-together word
+    # ("#BreadRiseSteakBrownAndChocolateSnap" was the first composition).
+    m = re.search(r"^## YouTube title\s*\n+([A-Z][a-z]+), ([A-Z][a-z]+), ([A-Z][a-z]+): "
+                  r"What's Inside\?\s*$", script_text, re.M)
+    if m:
+        subject_tags = [f"#{w}" for w in m.groups()]
 
     seen: set[str] = set()
     out: list[str] = []
-    for h in [subject_tag, *domain_hashtags, *channel_hashtags]:
+    for h in [*subject_tags, *domain_hashtags, *channel_hashtags]:
         h = h.strip()
         key = h.lower()
         if not h or not h.startswith("#") or key in seen:

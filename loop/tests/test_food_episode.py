@@ -99,6 +99,18 @@ sp = food.parse(ROOT / "scripts" / "food" / "why-does-chocolate-melt-in-your-mou
 check(sum(1 for p in sp if p["phase"] == "opening") == 1,
       "a single-question script keeps the sample's cutting (no segment re-hook)")
 
+# every line that points at the screen is bound to clips that exist (reviewed)
+import re as _re  # noqa: E402
+man = {r["subject"] for r in json.loads((ROOT / "channel" / "imagery" / "food_clips.json").read_text())["index"]}
+pointing = [p for p in paras if p["segment"] in food.SEGMENTS and
+            _re.search(r"on the screen|look at the|watch the|look closely", p["text"], _re.I)
+            and not _re.search(r"scanners can watch", p["text"])]
+unbound = [p["text"][:50] for p in pointing if not any(_re.search(pat, p["text"], _re.I)
+                                                        for pat, _ in food.SCREEN_BIND)]
+check(pointing and not unbound, f"every on-screen line has a clip binding ({len(pointing)}): unbound {unbound}")
+missing = sorted({k for _, ks in food.SCREEN_BIND for k in ks} - man)
+check(not missing, f"every bound clip is a manifest record: missing {missing}")
+
 # ------------------------------------------------- 4. the queue and the lanes
 import batch_queue as BQ  # noqa: E402
 import domains as D  # noqa: E402
@@ -153,6 +165,72 @@ with tempfile.TemporaryDirectory() as td:
               "a file under the cap is one object, as before")
     finally:
         os.environ["LOOP_DRY_RUN"] = "1"
+
+# ------------------------------------- 6. packaging: credits, hashtags, stitch
+import upload as UP  # noqa: E402
+import discovery as DI  # noqa: E402
+cred = UP.footage_credits(SLUG)
+spec_now = json.loads((ROOT / "channel" / "specs" / f"{SLUG}.json").read_text())
+if spec_now.get("kind") == "food-episode":
+    check(all(w in cred for w in ("Mixkit", "Pixabay", "Wikimedia Commons", "AI-generated")),
+          f"the description credits every footage source and the AI images: {cred[:80]!r}")
+check(UP.footage_credits("02-how-deep-sea-creatures-survive-pressure") == "",
+      "no food spec, no food credits block")
+tags = DI.hashtags_for(SLUG, (ROOT / "scripts" / "food" / f"{SLUG}.md").read_text(), "food-science")
+check(tags[:3] == ["#Bread", "#Steak", "#Chocolate"], f"series hashtags, one per subject: {tags}")
+import shutil  # noqa: E402
+import subprocess  # noqa: E402
+import types  # noqa: E402
+# THE STITCH PROOF'S LOGIC, with packets supplied (no ffmpeg: CI has none). The
+# Mac additionally runs it on two real encoded clips below.
+PK = {"a.mp4": [(100, "k1"), (10, "a1"), (10, "a2")], "b.mp4": [(90, "k2"), (12, "b1")]}
+KM = {"a.mp4": ["A"], "b.mp4": ["B"]}
+real_vp, real_km, real_sp = FE.video_packets, FE.keyframe_md5s, FE.subprocess
+
+
+def fake_run(cmd, **kw):
+    Path(cmd[-1]).write_bytes(b"x")
+    return types.SimpleNamespace(returncode=0, stdout="", stderr="")
+
+
+with tempfile.TemporaryDirectory() as td:
+    d = Path(td)
+    for n in PK:
+        (d / n).write_bytes(b"x")
+
+    def case(final_packets, final_keys):
+        FE.video_packets = lambda pth: final_packets if pth.name == "f.mp4" else PK[pth.name]
+        FE.keyframe_md5s = lambda pth: final_keys if pth.name == "f.mp4" else KM[pth.name]
+        try:
+            return FE.stitch_files([d / "a.mp4", d / "b.mp4"], d / "f.mp4")
+        except RuntimeError as err:
+            return str(err)
+    FE.subprocess = types.SimpleNamespace(run=fake_run)
+    try:
+        good = [(140, "K1"), (10, "a1"), (10, "a2"), (130, "K2"), (12, "b1")]
+        r = case(good, ["A", "B"])
+        check(isinstance(r, dict) and r["keyframes_with_inline_header"] == 2,
+              f"keyframes grown by their header + identical other packets: accepted ({r})")
+        check("refused" in str(case([(140, "K1"), (10, "zz"), (10, "a2"), (130, "K2"), (12, "b1")], ["A", "B"])),
+              "a changed non-key packet: refused")
+        check("refused" in str(case([(900, "K1"), (10, "a1"), (10, "a2"), (130, "K2"), (12, "b1")], ["A", "B"])),
+              "a keyframe grown by more than a header: refused")
+        check("refused" in str(case(good, ["A", "X"])), "a keyframe that decodes to another picture: refused")
+        check("refused" in str(case(good[:-1], ["A", "B"])), "a packet missing from the stitch: refused")
+    finally:
+        FE.video_packets, FE.keyframe_md5s, FE.subprocess = real_vp, real_km, real_sp
+
+if shutil.which("ffmpeg"):
+    with tempfile.TemporaryDirectory() as td:
+        d = Path(td)
+        for i, col in enumerate(("red", "blue")):
+            subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "lavfi", "-i", f"color={col}:s=64x36:r=30:d=2",
+                            "-c:v", "libx264", "-g", "15", "-pix_fmt", "yuv420p", str(d / f"p{i}.mp4")], check=True)
+        info = FE.stitch_files([d / "p0.mp4", d / "p1.mp4"], d / "all.mp4")
+        check(info["byte_identical"] and info["keyframes_decoded_identical"] >= 2,
+              f"two real encoded pieces stitch, proven: {info['keyframes_with_inline_header']} keyframes with headers")
+else:
+    print("  --  no ffmpeg on this machine: the real two-clip stitch runs on the Mac")
 
 print(f"examined {N} case(s)")
 if FAILS:
