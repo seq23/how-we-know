@@ -1,57 +1,57 @@
 [
   {
-    "segment": "stat_card",
+    "segment": "depth_descent",
+    "seconds": 5.38,
+    "heading": "Cold open",
+    "narration": "A giant isopod is only giant beside the woodlice under a garden stone.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
     "seconds": 9.0,
     "heading": "Cold open",
     "narration": "Most deep-sea creatures are not big. Gigantism appears in particular groups, mainly cold-blooded crustaceans and molluscs such as giant isopods, giant amphipods and giant squid.",
     "args": {
-      "value": "1999",
-      "unit": "study in Nature",
-      "caption": "linked the largest amphipod sizes to how much oxygen the water holds",
-      "source": "Nature"
+      "lines": [
+        "Most deep-sea creatures are",
+        "not big. Gigantism appears",
+        "in particular"
+      ]
     },
-    "from": "directive"
+    "from": "heuristic"
   },
   {
-    "segment": "text_beat",
+    "segment": "depth_descent",
     "seconds": 9.0,
     "heading": "Cold open",
     "narration": "For those groups, the sharpest single clue came in 1999, when a study in Nature linked the largest amphipod sizes to how much oxygen the water holds.",
-    "args": {
-      "lines": [
-        "For those groups, the",
-        "sharpest single clue came",
-        "in 1999"
-      ]
-    },
-    "from": "directive-rhythm"
+    "args": {},
+    "from": "heuristic"
   },
   {
-    "segment": "stat_card",
-    "seconds": 6.21,
+    "segment": "ambient_drift",
+    "seconds": 5.79,
     "heading": "Cold open",
-    "narration": "That settles less than it sounds. It tells you where the giants tend to occur.",
+    "narration": "That settles less than it sounds. It shows where the giants tend to occur.",
     "args": {
-      "value": "1999",
-      "unit": "study in Nature",
-      "caption": "linked the largest amphipod sizes to how much oxygen the water holds",
-      "source": "Nature"
+      "variant": 0
     },
-    "from": "directive"
+    "from": "heuristic"
   },
   {
     "segment": "text_beat",
-    "seconds": 8.28,
+    "seconds": 7.86,
     "heading": "Cold open",
-    "narration": "On its own, it does not tell you why they grow, or whether depth has anything to do with it.",
+    "narration": "On its own, it does not show why they grow, or whether depth has anything to do with it.",
     "args": {
       "lines": [
         "On its own, it",
-        "does not tell you",
-        "why they"
+        "does not show why",
+        "they grow"
       ]
     },
-    "from": "directive-rhythm"
+    "from": "heuristic"
   },
   {
     "segment": "text_beat",
@@ -1255,7 +1255,7 @@
     "heading": "Closing",
     "narration": "The deep sea is not a place where everything grows huge. It is a place where a few kinds of animal, in cold water, given time, and with food scattered far apart, can outgrow their relatives in warm, shallow seas.",
     "args": {
-      "variant": 0
+      "variant": 1
     },
     "from": "directive"
   },
@@ -1265,7 +1265,7 @@
     "heading": "Closing",
     "narration": "The giants are real. The explanation is still being assembled, one trap, one camera and one careful comparison at a time.",
     "args": {
-      "variant": 1
+      "variant": 2
     },
     "from": "directive"
   }

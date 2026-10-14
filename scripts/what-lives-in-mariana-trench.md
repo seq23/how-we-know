@@ -116,18 +116,17 @@ At the bottom of the deepest trench, in total darkness and under more than 1,000
 
 ## Chapters
 
-- 00:00 Cold open
-- 00:45 Title card
-- 00:48 The deepest floor belongs to crustaceans
-- 02:40 Producer POV
-- 02:54 Almost nobody has seen it; machines have waited
-- 04:17 Fish live in the trench, but stop short of the floor
-- 06:17 Some of the largest single cells on Earth live there
-- 07:22 The trench lives on what falls into it
-- 09:36 The first sighting is still argued over
-- 10:51 What to notice in the edit
-- 11:26 Evidence limit
-- 12:12 Closing
+- 0:00 Cold open
+- 0:35 The deepest floor belongs to crustaceans
+- 2:13 Producer POV
+- 2:29 Almost nobody has seen it; machines have waited
+- 3:33 Fish live in the trench, but stop short of the floor
+- 5:24 Some of the largest single cells on Earth live there
+- 6:24 The trench lives on what falls into it
+- 8:23 The first sighting is still argued over
+- 9:29 What to notice in the edit
+- 9:59 Evidence limit
+- 10:43 Closing
 
 ## Sources
 

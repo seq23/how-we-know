@@ -1,57 +1,57 @@
 [
   {
-    "segment": "stat_card",
+    "segment": "depth_descent",
+    "seconds": 5.38,
+    "heading": "Cold open",
+    "narration": "The blobfish's famous sagging face is mostly an injury from being hauled up.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Cold open",
+    "narration": "In deep water it is a fairly ordinary, soft fish. That points to the real answer.",
+    "args": {
+      "lines": [
+        "In deep water it",
+        "is a fairly ordinary,",
+        "soft fish."
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "depth_descent",
     "seconds": 9.0,
     "heading": "Cold open",
     "narration": "Deep sea creatures look creepy because they are built for a place with no sunlight, little food and crushing pressure, and NOAA puts the start of that sunless midnight zone at about 1,000 metres down.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.62,
+    "heading": "Cold open",
+    "narration": "The evidence comes from NOAA's depth zones, years of MBARI vehicle footage and Smithsonian specimen work.",
     "args": {
-      "value": "1,000",
-      "unit": "metres",
-      "caption": "Below this depth, no sunlight reaches",
-      "source": "NOAA"
+      "variant": 0
     },
-    "from": "directive"
+    "from": "heuristic"
   },
   {
     "segment": "text_beat",
-    "seconds": 9.0,
+    "seconds": 6.21,
     "heading": "Cold open",
-    "narration": "The huge mouths, the glowing lures, the needle teeth, the black and red skin: almost all of it is engineering for darkness, not menace.",
+    "narration": "It explains the teeth, lures and red skin. It cannot settle why they unsettle us.",
     "args": {
       "lines": [
-        "The huge mouths, the",
-        "glowing lures, the needle",
-        "teeth"
+        "It explains the teeth,",
+        "lures and red skin.",
+        "It cannot"
       ]
     },
-    "from": "directive-rhythm"
-  },
-  {
-    "segment": "stat_card",
-    "seconds": 8.69,
-    "heading": "Cold open",
-    "narration": "But that answer leaves something unsettled. If these bodies are simply good solutions, why do they read to us as horror?",
-    "args": {
-      "value": "1,000",
-      "unit": "metres",
-      "caption": "Below this depth, no sunlight reaches",
-      "source": "NOAA"
-    },
-    "from": "directive"
-  },
-  {
-    "segment": "text_beat",
-    "seconds": 9.0,
-    "heading": "Cold open",
-    "narration": "Part of the answer is in the animals. Part of it, it turns out, is in how we have met them: in nets, under lights, out of context. This episode separates the two.",
-    "args": {
-      "lines": [
-        "Part of the answer",
-        "is in the animals.",
-        "Part"
-      ]
-    },
-    "from": "directive-rhythm"
+    "from": "heuristic"
   },
   {
     "segment": "text_beat",
@@ -1243,7 +1243,7 @@
     "heading": "Closing",
     "narration": "So the deep sea is not full of monsters. It is full of answers to darkness, hunger and pressure, worked out over a very long time by animals that never needed to look friendly to anyone.",
     "args": {
-      "variant": 0
+      "variant": 1
     },
     "from": "directive"
   },
@@ -1253,7 +1253,7 @@
     "heading": "Closing",
     "narration": "The creepiness is real as a feeling. It is just not the animals' purpose.",
     "args": {
-      "variant": 1
+      "variant": 2
     },
     "from": "directive"
   }

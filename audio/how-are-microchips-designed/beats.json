@@ -1,440 +1,434 @@
 [
   {
     "i": 0,
-    "segment": "contrast_pair",
-    "narration": "Microchips are designed mostly as text. Engineers describe a chip's behaviour in a hardware description language such as Verilog or VHDL, and software tools translate that description into logic gates and then into the geometric layout of billions of transistors.",
-    "seconds": 17.52
+    "segment": "depth_descent",
+    "narration": "Chipmakers publish lists of bugs in chips they have already shipped. Those lists exist because of how the work is done.",
+    "seconds": 6.330666666666667
   },
   {
     "i": 1,
     "segment": "text_beat",
-    "narration": "Both languages are published as standards by the IEEE. So the answer to who draws the chip is, largely, nobody.",
-    "seconds": 7.290666666666667
+    "narration": "Microchips are designed mostly as text: engineers describe a chip's behaviour in a hardware description language such as Verilog or VHDL, and software tools translate that description into logic gates and then into the geometric layout of billions of transistors.",
+    "seconds": 16.325333333333333
   },
   {
     "i": 2,
-    "segment": "contrast_pair",
-    "narration": "It is not drawn by hand. What that answer does not settle is how anyone knows the result will work.",
-    "seconds": 6.330666666666667
+    "segment": "depth_descent",
+    "narration": "Both languages are IEEE standards. Most effort goes into proving the design before manufacture, through simulation, formal proofs and the foundry's rules.",
+    "seconds": 11.514666666666667
   },
   {
     "i": 3,
-    "segment": "text_beat",
-    "narration": "Nobody can inspect billions of transistors before the factory runs, and a mistake found afterwards is expensive.",
-    "seconds": 6.533333333333333
+    "segment": "ambient_drift",
+    "narration": "Those checks reduce risk, and the errata show they cannot remove it.",
+    "seconds": 3.546666666666667
   },
   {
     "i": 4,
-    "segment": "contrast_pair",
-    "narration": "The real story of chip design is the story of how that confidence is built.",
-    "seconds": 4.890666666666666
+    "segment": "definition_card",
+    "narration": "Start with the language, because that is where the design actually lives.",
+    "seconds": 4.0906666666666665
   },
   {
     "i": 5,
-    "segment": "definition_card",
-    "narration": "Start with the language, because that is where the design actually lives.",
-    "seconds": 4.037333333333334
+    "segment": "text_beat",
+    "narration": "A hardware description language looks like code, and engineers type it in an editor like any programmer.",
+    "seconds": 5.914666666666666
   },
   {
     "i": 6,
-    "segment": "text_beat",
-    "narration": "A hardware description language looks like code, and engineers type it in an editor like any programmer.",
-    "seconds": 5.648
+    "segment": "definition_card",
+    "narration": "But it does not describe steps to be run one after another.",
+    "seconds": 4.528
   },
   {
     "i": 7,
-    "segment": "definition_card",
-    "narration": "But it does not describe steps to be run one after another.",
-    "seconds": 3.7493333333333334
+    "segment": "text_beat",
+    "narration": "It describes structure and behaviour that exist all at once: these signals connect here, this value updates on every tick of the clock, this block waits for that one.",
+    "seconds": 10.501333333333333
   },
   {
     "i": 8,
-    "segment": "text_beat",
-    "narration": "It describes structure and behaviour that exist all at once: these signals connect here, this value updates on every tick of the clock, this block waits for that one.",
-    "seconds": 10.298666666666668
+    "segment": "definition_card",
+    "narration": "The two dominant languages, Verilog and VHDL, along with an extended form called SystemVerilog, are published as standards by the IEEE.",
+    "seconds": 10.341333333333333
   },
   {
     "i": 9,
-    "segment": "definition_card",
-    "narration": "The two dominant languages, Verilog and VHDL, along with an extended form called SystemVerilog, are published as standards by the IEEE.",
-    "seconds": 9.36
+    "segment": "text_beat",
+    "narration": "That is how every tool vendor and every design team can agree on what a given line of text means.",
+    "seconds": 6.1386666666666665
   },
   {
     "i": 10,
-    "segment": "text_beat",
-    "narration": "That is how every tool vendor and every design team can agree on what a given line of text means.",
-    "seconds": 6.810666666666667
+    "segment": "definition_card",
+    "narration": "The agreement is not a detail. Without a shared, written definition of the language, a design could mean one thing in the simulator and something slightly different in the tool that builds it.",
+    "seconds": 10.405333333333333
   },
   {
     "i": 11,
-    "segment": "definition_card",
-    "narration": "The agreement is not a detail. Without a shared, written definition of the language, a design could mean one thing in the simulator and something slightly different in the tool that builds it.",
-    "seconds": 10.106666666666667
+    "segment": "text_beat",
+    "narration": "Most designs are written at what engineers call the register-transfer level. A register is a small store that holds a value.",
+    "seconds": 8.037333333333333
   },
   {
     "i": 12,
     "segment": "text_beat",
-    "narration": "Most designs are written at what engineers call the register-transfer level. A register is a small store that holds a value.",
-    "seconds": 8.456
+    "narration": "The description says how values move between registers, and what logic transforms them on the way, at each edge of the clock.",
+    "seconds": 7.602666666666667
   },
   {
     "i": 13,
-    "segment": "text_beat",
-    "narration": "The description says how values move between registers, and what logic transforms them on the way, at each edge of the clock.",
-    "seconds": 7.794666666666667
+    "segment": "material_image",
+    "narration": "Nothing at this level says where a transistor sits or how long a wire is.",
+    "seconds": 5.136
   },
   {
     "i": 14,
-    "segment": "ambient_drift",
-    "narration": "Nothing at this level says where a transistor sits or how long a wire is.",
-    "seconds": 5.381333333333333
+    "segment": "text_beat",
+    "narration": "That separation is deliberate. It lets a team reason about what the chip should compute before anyone decides what it physically looks like, and it lets the same description be rebuilt for a different factory later.",
+    "seconds": 11.674666666666667
   },
   {
     "i": 15,
-    "segment": "text_beat",
-    "narration": "That separation is deliberate. It lets a team reason about what the chip should compute before anyone decides what it physically looks like, and it lets the same description be rebuilt for a different factory later.",
-    "seconds": 13.146666666666667
+    "segment": "evidence_chain",
+    "narration": "The next step is called logic synthesis, and it is done by software.",
+    "seconds": 3.994666666666667
   },
   {
     "i": 16,
-    "segment": "evidence_chain",
-    "narration": "The next step is called logic synthesis, and it is done by software.",
-    "seconds": 4.304
+    "segment": "text_beat",
+    "narration": "The synthesis tool reads the register-transfer description and maps it onto a library of standard cells.",
+    "seconds": 6.181333333333333
   },
   {
     "i": 17,
-    "segment": "text_beat",
-    "narration": "The synthesis tool reads the register-transfer description and maps it onto a library of standard cells.",
-    "seconds": 6.576
+    "segment": "evidence_chain",
+    "narration": "A standard cell is a small, pre-designed circuit \u2014 a gate that performs AND, a gate that inverts a signal, a storage element called a flip-flop \u2014 drawn and characterised in advance for one specific manufacturing process.",
+    "seconds": 15.216
   },
   {
     "i": 18,
-    "segment": "evidence_chain",
-    "narration": "A standard cell is a small, pre-designed circuit \u2014 a gate that performs AND, a gate that inverts a signal, a storage element called a flip-flop \u2014 drawn and characterised in advance for one specific manufacturing process.",
-    "seconds": 13.530666666666667
+    "segment": "text_beat",
+    "narration": "The factory, usually called a foundry, or a library vendor working with it, has measured how fast each cell switches and how much power it draws under different conditions of voltage and temperature.",
+    "seconds": 11.834666666666667
   },
   {
     "i": 19,
-    "segment": "text_beat",
-    "narration": "The factory, usually called a foundry, or a library vendor working with it, has measured how fast each cell switches and how much power it draws under different conditions of voltage and temperature.",
-    "seconds": 9.850666666666667
+    "segment": "evidence_chain",
+    "narration": "The output of synthesis is a netlist: a list of cells and the wires that connect them.",
+    "seconds": 5.008
   },
   {
     "i": 20,
-    "segment": "evidence_chain",
-    "narration": "The output of synthesis is a netlist: a list of cells and the wires that connect them.",
-    "seconds": 5.168
+    "segment": "contrast_pair",
+    "narration": "Here is the first place the \"how we know\" question bites. Synthesis does not simply translate; it optimises, rewriting logic to be smaller or faster.",
+    "seconds": 10.32
   },
   {
     "i": 21,
-    "segment": "contrast_pair",
-    "narration": "Here is the first place the \"how we know\" question bites. Synthesis does not simply translate; it optimises, rewriting logic to be smaller or faster.",
-    "seconds": 10.512
+    "segment": "text_beat",
+    "narration": "So the netlist is not a line-by-line copy of what the engineer wrote.",
+    "seconds": 4.026666666666666
   },
   {
     "i": 22,
-    "segment": "text_beat",
-    "narration": "So the netlist is not a line-by-line copy of what the engineer wrote.",
-    "seconds": 4.037333333333334
+    "segment": "contrast_pair",
+    "narration": "To confirm the two still mean the same thing, teams run equivalence checking, a formal method that proves mathematically that the netlist and the original description produce identical outputs for every input.",
+    "seconds": 12.677333333333333
   },
   {
     "i": 23,
-    "segment": "contrast_pair",
-    "narration": "To confirm the two still mean the same thing, teams run equivalence checking, a formal method that proves mathematically that the netlist and the original description produce identical outputs for every input.",
-    "seconds": 12.762666666666666
+    "segment": "text_beat",
+    "narration": "It is not a test that tries examples. It is a proof for every input, and that difference matters for everything that follows.",
+    "seconds": 7.397333333333333
   },
   {
     "i": 24,
-    "segment": "text_beat",
-    "narration": "It is not a test that tries examples. It is a proof for every input, and that difference matters for everything that follows.",
-    "seconds": 8.005333333333333
+    "segment": "quote_card",
+    "narration": "Deep-sea science builds conclusions from incomplete observations, damaged specimens, sonar, water samples and tiny windows of footage.",
+    "seconds": 9.893333333333333
   },
   {
     "i": 25,
-    "segment": "quote_card",
-    "narration": "Deep-sea science builds conclusions from incomplete observations, damaged specimens, sonar, water samples and tiny windows of footage.",
-    "seconds": 9.136
+    "segment": "checklist_reveal",
+    "narration": "That question, asked about animals, is exactly the right one to ask about chips.",
+    "seconds": 4.8373333333333335
   },
   {
     "i": 26,
-    "segment": "checklist_reveal",
-    "narration": "That question, asked about animals, is exactly the right one to ask about chips.",
-    "seconds": 5.36
+    "segment": "text_beat",
+    "narration": "A modern processor has far more possible internal states than any simulation could ever visit.",
+    "seconds": 5.456
   },
   {
     "i": 27,
-    "segment": "text_beat",
-    "narration": "A modern processor has far more possible internal states than any simulation could ever visit.",
-    "seconds": 6.0
+    "segment": "checklist_reveal",
+    "narration": "So no one observes a chip's behaviour exhaustively. Verification engineers build a testbench, a surrounding program that feeds the design inputs and checks its outputs against a reference model of what should happen.",
+    "seconds": 12.357333333333333
   },
   {
     "i": 28,
-    "segment": "checklist_reveal",
-    "narration": "So no one observes a chip's behaviour exhaustively. Verification engineers build a testbench, a surrounding program that feeds the design inputs and checks its outputs against a reference model of what should happen.",
-    "seconds": 11.962666666666667
+    "segment": "text_beat",
+    "narration": "On many teams verification takes more effort than writing the design itself, though published estimates of the split vary and this script will not quote one.",
+    "seconds": 9.637333333333334
   },
   {
     "i": 29,
-    "segment": "text_beat",
-    "narration": "On many teams verification takes more effort than writing the design itself, though published estimates of the split vary and this script will not quote one.",
-    "seconds": 9.829333333333333
+    "segment": "checklist_reveal",
+    "narration": "Engineers generate constrained random stimulus, enormous numbers of plausible but unplanned input sequences, because bugs hide in combinations no one thought to write by hand.",
+    "seconds": 11.344
   },
   {
     "i": 30,
-    "segment": "checklist_reveal",
-    "narration": "Engineers generate constrained random stimulus, enormous numbers of plausible but unplanned input sequences, because bugs hide in combinations no one thought to write by hand.",
-    "seconds": 11.717333333333332
+    "segment": "text_beat",
+    "narration": "Then they measure coverage: which lines executed, which states were reached, which scenarios the plan said must occur.",
+    "seconds": 7.461333333333333
   },
   {
     "i": 31,
-    "segment": "text_beat",
-    "narration": "Then they measure coverage: which lines executed, which states were reached, which scenarios the plan said must occur.",
-    "seconds": 7.197333333333333
+    "segment": "process_steps",
+    "narration": "Coverage is the honest part. It tells the team what was exercised and, by subtraction, what was not.",
+    "seconds": 7.045333333333334
   },
   {
     "i": 32,
-    "segment": "process_steps",
-    "narration": "Coverage is the honest part. It tells the team what was exercised and, by subtraction, what was not.",
-    "seconds": 6.842666666666666
+    "segment": "text_beat",
+    "narration": "Where simulation cannot reach, formal verification steps in. A tool is given a property \u2014 this buffer never overflows, these two requests are never granted at once \u2014 and searches for any sequence of inputs that breaks it.",
+    "seconds": 14.672
   },
   {
     "i": 33,
-    "segment": "text_beat",
-    "narration": "Where simulation cannot reach, formal verification steps in. A tool is given a property \u2014 this buffer never overflows, these two requests are never granted at once \u2014 and searches for any sequence of inputs that breaks it.",
-    "seconds": 14.832
+    "segment": "process_steps",
+    "narration": "If none exists, the property is proven within the bounds the tool was given.",
+    "seconds": 4.581333333333333
   },
   {
     "i": 34,
-    "segment": "process_steps",
-    "narration": "If none exists, the property is proven within the bounds the tool was given.",
-    "seconds": 5.370666666666667
+    "segment": "text_beat",
+    "narration": "For large designs, teams also load the description onto emulation hardware, or onto reconfigurable chips called FPGAs, which run the logic far faster than simulation and let real software boot on a design that does not physically exist yet. Each method covers a gap the others leave.",
+    "seconds": 17.984
   },
   {
     "i": 35,
-    "segment": "text_beat",
-    "narration": "For large designs, teams also load the description onto emulation hardware, or onto reconfigurable chips called FPGAs, which run the logic far faster than simulation and let real software boot on a design that does not physically exist yet. Each method covers a gap the others leave.",
-    "seconds": 17.525333333333332
+    "segment": "evidence_chain",
+    "narration": "Only now does the chip acquire a shape. Physical design begins with floorplanning: deciding where large blocks such as memories and processor cores will sit, and how power reaches them.",
+    "seconds": 10.949333333333334
   },
   {
     "i": 36,
-    "segment": "evidence_chain",
-    "narration": "Only now does the chip acquire a shape. Physical design begins with floorplanning: deciding where large blocks such as memories and processor cores will sit, and how power reaches them.",
-    "seconds": 10.576
+    "segment": "text_beat",
+    "narration": "Placement software then positions every standard cell from the netlist. Clock tree synthesis builds the network that delivers the clock signal so that it arrives at every flip-flop at nearly the same moment.",
+    "seconds": 13.114666666666666
   },
   {
     "i": 37,
-    "segment": "text_beat",
-    "narration": "Placement software then positions every standard cell from the netlist. Clock tree synthesis builds the network that delivers the clock signal so that it arrives at every flip-flop at nearly the same moment.",
-    "seconds": 11.557333333333334
+    "segment": "evidence_chain",
+    "narration": "Routing draws the metal wires that connect everything, stacked in many layers above the transistors.",
+    "seconds": 5.946666666666666
   },
   {
     "i": 38,
-    "segment": "evidence_chain",
-    "narration": "Routing draws the metal wires that connect everything, stacked in many layers above the transistors.",
-    "seconds": 6.589333333333333
+    "segment": "text_beat",
+    "narration": "All of this is automated, because the number of cells is far too large for hands, but engineers steer it constantly, adjusting constraints and re-running when results fall short.",
+    "seconds": 10.224
   },
   {
     "i": 39,
-    "segment": "text_beat",
-    "narration": "All of this is automated, because the number of cells is far too large for hands, but engineers steer it constantly, adjusting constraints and re-running when results fall short.",
-    "seconds": 10.970666666666666
+    "segment": "definition_card",
+    "narration": "How do they know when results fall short? Mainly through static timing analysis.",
+    "seconds": 5.338666666666667
   },
   {
     "i": 40,
-    "segment": "definition_card",
-    "narration": "How do they know when results fall short? Mainly through static timing analysis.",
-    "seconds": 5.210666666666667
+    "segment": "text_beat",
+    "narration": "Instead of simulating signals, the tool adds up the delay along every path between registers, using the characterised cell data and estimates of wire delay, and checks that each signal arrives before the next clock edge.",
+    "seconds": 13.744
   },
   {
     "i": 41,
-    "segment": "text_beat",
-    "narration": "Instead of simulating signals, the tool adds up the delay along every path between registers, using the characterised cell data and estimates of wire delay, and checks that each signal arrives before the next clock edge.",
-    "seconds": 14.341333333333333
+    "segment": "definition_card",
+    "narration": "A path that is too slow is called a timing violation. Static timing analysis is powerful because it is exhaustive over paths without needing any input patterns.",
+    "seconds": 10.949333333333334
   },
   {
     "i": 42,
-    "segment": "definition_card",
-    "narration": "A path that is too slow is called a timing violation. Static timing analysis is powerful because it is exhaustive over paths without needing any input patterns.",
-    "seconds": 11.664
+    "segment": "text_beat",
+    "narration": "Its boundary is that it is only as good as the delay models it is fed, which is why the careful measurement work done by the foundry matters so much.",
+    "seconds": 8.432
   },
   {
     "i": 43,
-    "segment": "text_beat",
-    "narration": "Its boundary is that it is only as good as the delay models it is fed, which is why the careful measurement work done by the foundry matters so much.",
-    "seconds": 9.402666666666667
+    "segment": "checklist_reveal",
+    "narration": "Before a design leaves the team, it goes through signoff. Design rule checking compares every shape in the layout against the foundry's rule set: minimum widths, minimum spacings, how layers may overlap.",
+    "seconds": 12.848
   },
   {
     "i": 44,
-    "segment": "checklist_reveal",
-    "narration": "Before a design leaves the team, it goes through signoff. Design rule checking compares every shape in the layout against the foundry's rule set: minimum widths, minimum spacings, how layers may overlap.",
-    "seconds": 11.653333333333334
+    "segment": "text_beat",
+    "narration": "Those rules encode what the manufacturing process can reliably print. Layout versus schematic checking extracts the circuit that the geometry actually forms and confirms it matches the netlist.",
+    "seconds": 11.674666666666667
   },
   {
     "i": 45,
-    "segment": "text_beat",
-    "narration": "Those rules encode what the manufacturing process can reliably print. Layout versus schematic checking extracts the circuit that the geometry actually forms and confirms it matches the netlist.",
-    "seconds": 12.314666666666668
+    "segment": "checklist_reveal",
+    "narration": "Parasitic extraction calculates the resistance and capacitance of the real wires, and timing is checked again with those values.",
+    "seconds": 7.301333333333333
   },
   {
     "i": 46,
-    "segment": "checklist_reveal",
-    "narration": "Parasitic extraction calculates the resistance and capacitance of the real wires, and timing is checked again with those values.",
-    "seconds": 8.208
+    "segment": "text_beat",
+    "narration": "A design that passes all of this is handed off in a step still called tape-out, a name commonly traced to the era when layouts were shipped on magnetic tape.",
+    "seconds": 9.189333333333334
   },
   {
     "i": 47,
-    "segment": "text_beat",
-    "narration": "A design that passes all of this is handed off in a step still called tape-out, a name commonly traced to the era when layouts were shipped on magnetic tape.",
-    "seconds": 9.850666666666667
+    "segment": "source_compare",
+    "narration": "The layout becomes a set of photomasks, the stencils used to pattern each layer of the wafer.",
+    "seconds": 5.7973333333333334
   },
   {
     "i": 48,
-    "segment": "source_compare",
-    "narration": "The layout becomes a set of photomasks, the stencils used to pattern each layer of the wafer.",
-    "seconds": 5.68
+    "segment": "text_beat",
+    "narration": "Here the design world meets the public standards bodies. SEMI, the industry association for semiconductor manufacturing, publishes the SEMI International Standards used across equipment, materials and masks, so that a design from one company can be built with tools from many others.",
+    "seconds": 17.904
   },
   {
     "i": 49,
-    "segment": "text_beat",
-    "narration": "Here the design world meets the public standards bodies. SEMI, the industry association for semiconductor manufacturing, publishes the SEMI International Standards used across equipment, materials and masks, so that a design from one company can be built with tools from many others.",
-    "seconds": 17.744
+    "segment": "source_compare",
+    "narration": "NIST, the United States national measurement institute, works on semiconductor metrology \u2014 how to measure features far too small to see, and how sure anyone can be of that measurement.",
+    "seconds": 12.634666666666666
   },
   {
     "i": 50,
-    "segment": "source_compare",
-    "narration": "NIST, the United States national measurement institute, works on semiconductor metrology \u2014 how to measure features far too small to see, and how sure anyone can be of that measurement.",
-    "seconds": 11.792
+    "segment": "text_beat",
+    "narration": "These bodies do not design chips. They supply the shared definitions and measurements that let a design be trusted outside the room it was made in.",
+    "seconds": 9.338666666666667
   },
   {
     "i": 51,
-    "segment": "text_beat",
-    "narration": "These bodies do not design chips. They supply the shared definitions and measurements that let a design be trusted outside the room it was made in.",
-    "seconds": 7.866666666666666
+    "segment": "process_steps",
+    "narration": "Everything up to tape-out is prediction. The first wafers back from the foundry are where prediction meets matter.",
+    "seconds": 6.021333333333334
   },
   {
     "i": 52,
-    "segment": "process_steps",
-    "narration": "Everything up to tape-out is prediction. The first wafers back from the foundry are where prediction meets matter.",
-    "seconds": 6.672
+    "segment": "text_beat",
+    "narration": "Engineers run bring-up: they power the first chips, check that clocks start, load test software, and compare behaviour against the models.",
+    "seconds": 8.837333333333333
   },
   {
     "i": 53,
-    "segment": "text_beat",
-    "narration": "Engineers run bring-up: they power the first chips, check that clocks start, load test software, and compare behaviour against the models.",
-    "seconds": 7.856
+    "segment": "process_steps",
+    "narration": "To make this possible, designers add circuitry whose only purpose is to be tested.",
+    "seconds": 5.1146666666666665
   },
   {
     "i": 54,
-    "segment": "process_steps",
-    "narration": "To make this possible, designers add circuitry whose only purpose is to be tested.",
-    "seconds": 5.232
+    "segment": "text_beat",
+    "narration": "Scan chains link the flip-flops so their contents can be shifted out and read, which lets automated test equipment check each manufactured chip for physical defects.",
+    "seconds": 10.461333333333334
   },
   {
     "i": 55,
-    "segment": "text_beat",
-    "narration": "Scan chains link the flip-flops so their contents can be shifted out and read, which lets automated test equipment check each manufactured chip for physical defects.",
-    "seconds": 10.213333333333333
+    "segment": "process_steps",
+    "narration": "This practice is called design for test, and it is why a chip can be checked after manufacture, not only before.",
+    "seconds": 7.685333333333333
   },
   {
     "i": 56,
-    "segment": "process_steps",
-    "narration": "This practice is called design for test, and it is why a chip can be checked after manufacture, not only before.",
-    "seconds": 6.714666666666667
+    "segment": "contrast_pair",
+    "narration": "When bring-up finds a bug that slipped through, the outcome depends on where it lives.",
+    "seconds": 4.762666666666667
   },
   {
     "i": 57,
-    "segment": "contrast_pair",
-    "narration": "When bring-up finds a bug that slipped through, the outcome depends on where it lives.",
-    "seconds": 4.570666666666667
+    "segment": "text_beat",
+    "narration": "Some bugs can be worked around in software or firmware. Others require a respin: corrected masks and another trip through the factory, which costs time and money.",
+    "seconds": 10.778666666666666
   },
   {
     "i": 58,
-    "segment": "text_beat",
-    "narration": "Some bugs can be worked around in software or firmware. Others require a respin: corrected masks and another trip through the factory, which costs time and money.",
-    "seconds": 10.234666666666667
+    "segment": "contrast_pair",
+    "narration": "Manufacturers also publish lists of known bugs in shipped products, usually called errata.",
+    "seconds": 5.882666666666666
   },
   {
     "i": 59,
-    "segment": "contrast_pair",
-    "narration": "Manufacturers also publish lists of known bugs in shipped products, usually called errata.",
-    "seconds": 6.32
+    "segment": "text_beat",
+    "narration": "Those documents are some of the most candid public evidence about chip design, because they show directly that verification reduces risk without removing it.",
+    "seconds": 8.965333333333334
   },
   {
     "i": 60,
     "segment": "text_beat",
-    "narration": "Those documents are some of the most candid public evidence about chip design, because they show directly that verification reduces risk without removing it.",
-    "seconds": 9.530666666666667
+    "narration": "In the edit, watch for the shift between two kinds of evidence.",
+    "seconds": 4.197333333333333
   },
   {
     "i": 61,
-    "segment": "text_beat",
-    "narration": "In the edit, watch for the shift between two kinds of evidence.",
-    "seconds": 3.8453333333333335
+    "segment": "ambient_drift",
+    "narration": "Some steps, like equivalence checking, formal proofs and static timing analysis, are exhaustive within a stated model.",
+    "seconds": 8.005333333333333
   },
   {
     "i": 62,
-    "segment": "ambient_drift",
-    "narration": "Some steps, like equivalence checking, formal proofs and static timing analysis, are exhaustive within a stated model.",
-    "seconds": 8.048
+    "segment": "text_beat",
+    "narration": "Others, like simulation and bring-up, are samples. The animation draws those differently.",
+    "seconds": 5.392
   },
   {
     "i": 63,
     "segment": "text_beat",
-    "narration": "Others, like simulation and bring-up, are samples. The animation draws those differently.",
-    "seconds": 6.234666666666667
+    "narration": "A proven claim is drawn solid; a sampled one is drawn as scattered points with gaps between them.",
+    "seconds": 6.021333333333334
   },
   {
     "i": 64,
-    "segment": "text_beat",
-    "narration": "A proven claim is drawn solid; a sampled one is drawn as scattered points with gaps between them.",
-    "seconds": 5.434666666666667
+    "segment": "ambient_drift",
+    "narration": "Whenever you see the gaps, that is the honest picture of what testing alone can show.",
+    "seconds": 5.050666666666666
   },
   {
     "i": 65,
-    "segment": "ambient_drift",
-    "narration": "Whenever you see the gaps, that is the honest picture of what testing alone can show.",
-    "seconds": 5.328
+    "segment": "checklist_reveal",
+    "narration": "This account describes the method as public standards and teaching material lay it out.",
+    "seconds": 5.850666666666666
   },
   {
     "i": 66,
-    "segment": "checklist_reveal",
-    "narration": "This account describes the method as public standards and teaching material lay it out.",
-    "seconds": 5.306666666666667
+    "segment": "text_beat",
+    "narration": "It does not establish how any particular company runs its flow. Those details, including the tools chosen, the size of teams and the cost of a design, are mostly proprietary, and published estimates vary so widely that this script states none of them.",
+    "seconds": 16.773333333333333
   },
   {
     "i": 67,
-    "segment": "text_beat",
-    "narration": "It does not establish how any particular company runs its flow. Those details, including the tools chosen, the size of teams and the cost of a design, are mostly proprietary, and published estimates vary so widely that this script states none of them.",
-    "seconds": 16.730666666666668
+    "segment": "checklist_reveal",
+    "narration": "It also does not establish that any shipped chip is free of bugs.",
+    "seconds": 4.602666666666667
   },
   {
     "i": 68,
-    "segment": "checklist_reveal",
-    "narration": "It also does not establish that any shipped chip is free of bugs.",
-    "seconds": 4.250666666666667
+    "segment": "text_beat",
+    "narration": "Verification proves properties inside models, and the models themselves are assumptions about how silicon behaves. The published errata are the reminder of where that gap shows.",
+    "seconds": 11.546666666666667
   },
   {
     "i": 69,
-    "segment": "text_beat",
-    "narration": "Verification proves properties inside models, and the models themselves are assumptions about how silicon behaves. The published errata are the reminder of where that gap shows.",
-    "seconds": 10.8
+    "segment": "ambient_drift",
+    "narration": "So a microchip is designed the way a careful argument is written: stated in a precise language, translated step by step, and checked at each step against something it must agree with.",
+    "seconds": 10.597333333333333
   },
   {
     "i": 70,
     "segment": "ambient_drift",
-    "narration": "So a microchip is designed the way a careful argument is written: stated in a precise language, translated step by step, and checked at each step against something it must agree with.",
-    "seconds": 11.738666666666667
+    "narration": "The chip you are holding is the last link in that chain.",
+    "seconds": 3.344
   },
   {
     "i": 71,
-    "segment": "ambient_drift",
-    "narration": "The chip you are holding is the last link in that chain.",
-    "seconds": 3.6213333333333333
-  },
-  {
-    "i": 72,
     "segment": "text_beat",
     "narration": "The evidence that it works is not one test, but the agreement of all of them.",
-    "seconds": 4.8373333333333335
+    "seconds": 4.752
   }
 ]

@@ -1,33 +1,33 @@
 [
   {
     "i": 0,
-    "segment": "stat_card",
-    "narration": "Life reaches the very bottom of the Mariana Trench, nearly 11,000 metres down, where the floor is worked by scavenging amphipods, sea cucumbers, giant single-celled xenophyophores and dense microbial communities.",
-    "seconds": 13.605333333333334
+    "segment": "depth_descent",
+    "narration": "In 1960, Jacques Piccard reported a flatfish where fish appear unable to survive.",
+    "seconds": 5.7973333333333334
   },
   {
     "i": 1,
     "segment": "text_beat",
-    "narration": "That is the depth NOAA gives for its deepest point. What you will not find there, as far as anyone has recorded, is a fish.",
-    "seconds": 7.642666666666667
+    "narration": "Life reaches the very bottom of the Mariana Trench, nearly 11,000 metres down, where the floor is worked by scavenging amphipods, sea cucumbers, giant single-celled xenophyophores and dense microbial communities.",
+    "seconds": 13.605333333333334
   },
   {
     "i": 2,
-    "segment": "stat_card",
-    "narration": "That absence is the interesting part, because it is not simply an accident of where the cameras happened to point.",
-    "seconds": 6.394666666666667
+    "segment": "depth_descent",
+    "narration": "Fish stop a few kilometres higher, held back, it seems, by the chemistry of their own cells.",
+    "seconds": 5.8293333333333335
   },
   {
     "i": 3,
-    "segment": "text_beat",
-    "narration": "It looks like a limit written into the chemistry of a fish's own cells.",
-    "seconds": 4.069333333333334
+    "segment": "ambient_drift",
+    "narration": "Most of what we know comes from baited landers that sat on the seabed in the dark and waited.",
+    "seconds": 5.253333333333333
   },
   {
     "i": 4,
-    "segment": "stat_card",
-    "narration": "And almost everything we know about this place comes from machines that sat on the seabed in the dark and waited.",
-    "seconds": 7.418666666666667
+    "segment": "text_beat",
+    "narration": "They show what came to the bait, not a census of the floor.",
+    "seconds": 3.344
   },
   {
     "i": 5,
@@ -224,256 +224,307 @@
   {
     "i": 37,
     "segment": "evidence_chain",
-    "narration": "Researchers who sampled fish from progressively deeper water found that its concentration rises with depth."
+    "narration": "Researchers who sampled fish from progressively deeper water found that its concentration rises with depth.",
+    "seconds": 6.8213333333333335
   },
   {
     "i": 38,
     "segment": "text_beat",
-    "narration": "That trend cannot continue forever. Past a certain point, the dissolved molecules inside the fish would outnumber those in the surrounding seawater, and water would flow into its tissues faster than it could cope."
+    "narration": "That trend cannot continue forever. Past a certain point, the dissolved molecules inside the fish would outnumber those in the surrounding seawater, and water would flow into its tissues faster than it could cope.",
+    "seconds": 12.093333333333334
   },
   {
     "i": 39,
     "segment": "evidence_chain",
-    "narration": "Extend the trend downward and it predicts a limit above the floor of the deepest trenches, a few kilometres short of the bottom. The deepest fish ever filmed sit close to that predicted line."
+    "narration": "Extend the trend downward and it predicts a limit above the floor of the deepest trenches, a few kilometres short of the bottom. The deepest fish ever filmed sit close to that predicted line.",
+    "seconds": 11.664
   },
   {
     "i": 40,
     "segment": "contrast_pair",
-    "narration": "Notice the shape of that argument. It is a prediction that fits the observations, not a proven law."
+    "narration": "Notice the shape of that argument. It is a prediction that fits the observations, not a proven law.",
+    "seconds": 6.565333333333333
   },
   {
     "i": 41,
     "segment": "text_beat",
-    "narration": "It rests on a trend measured in a limited number of species, extended beyond the depths where it was measured, and then checked against where fish have actually been seen."
+    "narration": "It rests on a trend measured in a limited number of species, extended beyond the depths where it was measured, and then checked against where fish have actually been seen.",
+    "seconds": 9.296
   },
   {
     "i": 42,
     "segment": "contrast_pair",
-    "narration": "So far the check has held. Years of landers dropped into the deepest trenches have filmed amphipods at the bottom and no fish."
+    "narration": "So far the check has held. Years of landers dropped into the deepest trenches have filmed amphipods at the bottom and no fish.",
+    "seconds": 8.144
   },
   {
     "i": 43,
     "segment": "text_beat",
-    "narration": "A lack of sightings is weaker evidence than a sighting. Still, many drops that all come back the same way add up to something you can lean on."
+    "narration": "A lack of sightings is weaker evidence than a sighting. Still, many drops that all come back the same way add up to something you can lean on.",
+    "seconds": 8.101333333333333
   },
   {
     "i": 44,
     "segment": "definition_card",
-    "narration": "Lower than the fish, there is life of a stranger kind. Xenophyophores are giant single-celled organisms, relatives of the shelled amoebae known as foraminifera."
+    "narration": "Lower than the fish, there is life of a stranger kind. Xenophyophores are giant single-celled organisms, relatives of the shelled amoebae known as foraminifera.",
+    "seconds": 11.450666666666667
   },
   {
     "i": 45,
     "segment": "text_beat",
-    "narration": "A single xenophyophore can grow to the size of your palm or larger, building a fragile, sponge-like case out of sediment grains and debris."
+    "narration": "A single xenophyophore can grow to the size of your palm or larger, building a fragile, sponge-like case out of sediment grains and debris.",
+    "seconds": 8.56
   },
   {
     "i": 46,
     "segment": "definition_card",
-    "narration": "It is one cell, not an animal. In 2011, an expedition led by researchers from Scripps, working with National Geographic, used free-falling cameras to film xenophyophores deep in the Mariana Trench, below the depths where they had previously been recorded."
+    "narration": "It is one cell, not an animal. In 2011, an expedition led by researchers from Scripps, working with National Geographic, used free-falling cameras to film xenophyophores deep in the Mariana Trench, below the depths where they had previously been recorded.",
+    "seconds": 16.666666666666668
   },
   {
     "i": 47,
     "segment": "ambient_drift",
-    "narration": "Xenophyophores matter beyond their oddness. Their cases trap particles, and other small organisms live in and around them."
+    "narration": "Xenophyophores matter beyond their oddness. Their cases trap particles, and other small organisms live in and around them.",
+    "seconds": 8.816
   },
   {
     "i": 48,
     "segment": "ambient_drift",
-    "narration": "On parts of the deep seafloor they add structure to an otherwise flat, soft landscape."
+    "narration": "On parts of the deep seafloor they add structure to an otherwise flat, soft landscape.",
+    "seconds": 5.584
   },
   {
     "i": 49,
     "segment": "text_beat",
-    "narration": "Whether they play that same role at the deepest points of the trench is not well established."
+    "narration": "Whether they play that same role at the deepest points of the trench is not well established.",
+    "seconds": 4.997333333333334
   },
   {
     "i": 50,
     "segment": "ambient_drift",
-    "narration": "They have been seen there, but they have not been studied there the way a reef is studied."
+    "narration": "They have been seen there, but they have not been studied there the way a reef is studied.",
+    "seconds": 4.378666666666667
   },
   {
     "i": 51,
     "segment": "light_attenuation",
-    "narration": "No sunlight reaches the trench. Light fades fast with depth, the reds first and the blues last, and long before the hadal zone there is nothing left for photosynthesis."
+    "narration": "No sunlight reaches the trench. Light fades fast with depth, the reds first and the blues last, and long before the hadal zone there is nothing left for photosynthesis.",
+    "seconds": 10.064
   },
   {
     "i": 52,
     "segment": "text_beat",
-    "narration": "Nothing at the bottom can grow its food from sunlight. Almost everything the trench eats arrives from above."
+    "narration": "Nothing at the bottom can grow its food from sunlight. Almost everything the trench eats arrives from above.",
+    "seconds": 6.618666666666667
   },
   {
     "i": 53,
     "segment": "light_attenuation",
-    "narration": "Most of it is a slow drift of dead plankton, faecal pellets and organic debris that oceanographers call marine snow."
+    "narration": "Most of it is a slow drift of dead plankton, faecal pellets and organic debris that oceanographers call marine snow.",
+    "seconds": 8.016
   },
   {
     "i": 54,
     "segment": "text_beat",
-    "narration": "Occasionally there is a larger windfall, such as a dead fish sinking from shallower water."
+    "narration": "Occasionally there is a larger windfall, such as a dead fish sinking from shallower water.",
+    "seconds": 5.082666666666666
   },
   {
     "i": 55,
     "segment": "evidence_chain",
-    "narration": "The trench's shape changes what reaches the floor. A trench is a long, steep-sided valley."
+    "narration": "The trench's shape changes what reaches the floor. A trench is a long, steep-sided valley.",
+    "seconds": 5.712
   },
   {
     "i": 56,
     "segment": "text_beat",
-    "narration": "Material that settles on the trench walls does not stay put, because sediment slides carry it downslope, and the axis of the trench gathers organic matter from a much wider area than the patch of sea directly above it."
+    "narration": "Material that settles on the trench walls does not stay put, because sediment slides carry it downslope, and the axis of the trench gathers organic matter from a much wider area than the patch of sea directly above it.",
+    "seconds": 12.986666666666666
   },
   {
     "i": 57,
     "segment": "evidence_chain",
-    "narration": "Researchers have measured how quickly microbes in Challenger Deep sediment use oxygen."
+    "narration": "Researchers have measured how quickly microbes in Challenger Deep sediment use oxygen.",
+    "seconds": 5.285333333333333
   },
   {
     "i": 58,
     "segment": "text_beat",
-    "narration": "They found more activity than on the shallower abyssal plain nearby. The simplest reading is that the trench works as a funnel, so food collects at the bottom."
+    "narration": "They found more activity than on the shallower abyssal plain nearby. The simplest reading is that the trench works as a funnel, so food collects at the bottom.",
+    "seconds": 9.253333333333334
   },
   {
     "i": 59,
     "segment": "text_beat",
-    "narration": "That is why the microbes may be the trench's most important residents, even though they are the least visible."
+    "narration": "That is why the microbes may be the trench's most important residents, even though they are the least visible.",
+    "seconds": 6.768
   },
   {
     "i": 60,
     "segment": "light_attenuation",
-    "narration": "Bacteria and archaea live throughout the sediment, breaking down what falls, and everything else depends on their work."
+    "narration": "Bacteria and archaea live throughout the sediment, breaking down what falls, and everything else depends on their work.",
+    "seconds": 6.661333333333333
   },
   {
     "i": 61,
     "segment": "text_beat",
-    "narration": "You will never see them on a lander's camera. They are known from sediment cores and water samples, which are read in the laboratory through their genes and their chemistry."
+    "narration": "You will never see them on a lander's camera. They are known from sediment cores and water samples, which are read in the laboratory through their genes and their chemistry.",
+    "seconds": 9.658666666666667
   },
   {
     "i": 62,
     "segment": "ambient_drift",
-    "narration": "Not everything at the bottom chases bait. Sea cucumbers, soft-bodied relatives of starfish, plough slowly across the sediment, swallowing it and digesting the organic matter it holds."
+    "narration": "Not everything at the bottom chases bait. Sea cucumbers, soft-bodied relatives of starfish, plough slowly across the sediment, swallowing it and digesting the organic matter it holds.",
+    "seconds": 11.397333333333334
   },
   {
     "i": 63,
     "segment": "ambient_drift",
-    "narration": "They are among the commonest large animals on soft deep-sea floors, and cameras have recorded them deep in the Mariana Trench."
+    "narration": "They are among the commonest large animals on soft deep-sea floors, and cameras have recorded them deep in the Mariana Trench.",
+    "seconds": 7.984
   },
   {
     "i": 64,
     "segment": "light_attenuation",
-    "narration": "Because they feed on sediment rather than carcasses, they are exactly the kind of animal a baited trap tends to miss."
+    "narration": "Because they feed on sediment rather than carcasses, they are exactly the kind of animal a baited trap tends to miss.",
+    "seconds": 7.578666666666667
   },
   {
     "i": 65,
     "segment": "ambient_drift",
-    "narration": "That is a reminder that the trench's species list is shaped by the tools used to compile it."
+    "narration": "That is a reminder that the trench's species list is shaped by the tools used to compile it.",
+    "seconds": 5.7973333333333334
   },
   {
     "i": 66,
     "segment": "timeline",
-    "narration": "People have reached the floor too, and their reports are part of the record, with all the strengths and weaknesses of eyewitness evidence."
+    "narration": "People have reached the floor too, and their reports are part of the record, with all the strengths and weaknesses of eyewitness evidence.",
+    "seconds": 7.013333333333334
   },
   {
     "i": 67,
     "segment": "text_beat",
-    "narration": "In 1960, Jacques Piccard and Don Walsh descended into the Challenger Deep in the bathyscaphe Trieste."
+    "narration": "In 1960, Jacques Piccard and Don Walsh descended into the Challenger Deep in the bathyscaphe Trieste.",
+    "seconds": 7.088
   },
   {
     "i": 68,
     "segment": "timeline",
-    "narration": "Piccard later described seeing a flatfish on the bottom. In 2012, James Cameron made a solo dive to the Challenger Deep in a purpose-built submersible, in a project supported by National Geographic."
+    "narration": "Piccard later described seeing a flatfish on the bottom. In 2012, James Cameron made a solo dive to the Challenger Deep in a purpose-built submersible, in a project supported by National Geographic.",
+    "seconds": 12.24
   },
   {
     "i": 69,
     "segment": "text_beat",
-    "narration": "He described a pale, featureless floor with small amphipods moving across it."
+    "narration": "He described a pale, featureless floor with small amphipods moving across it.",
+    "seconds": 5.2
   },
   {
     "i": 70,
     "segment": "checklist_reveal",
-    "narration": "The flatfish is this episode's best lesson in weighing evidence. It was an eyewitness account from a trained observer, made under enormous strain, through a small window, in poor light."
+    "narration": "The flatfish is this episode's best lesson in weighing evidence. It was an eyewitness account from a trained observer, made under enormous strain, through a small window, in poor light.",
+    "seconds": 10.746666666666666
   },
   {
     "i": 71,
     "segment": "text_beat",
-    "narration": "There is no photograph. It also conflicts with everything since: the chemical argument for a fish depth limit, and years of camera drops that have never shown a fish at that depth."
+    "narration": "There is no photograph. It also conflicts with everything since: the chemical argument for a fish depth limit, and years of camera drops that have never shown a fish at that depth.",
+    "seconds": 11.122666666666667
   },
   {
     "i": 72,
     "segment": "checklist_reveal",
-    "narration": "Most deep-sea biologists now think Piccard saw something else, perhaps a sea cucumber, though we cannot know for certain what was really seen."
+    "narration": "Most deep-sea biologists now think Piccard saw something else, perhaps a sea cucumber, though we cannot know for certain what was really seen.",
+    "seconds": 7.824
   },
   {
     "i": 73,
     "segment": "text_beat",
-    "narration": "The report is not dismissed because it is inconvenient. It is outweighed."
+    "narration": "The report is not dismissed because it is inconvenient. It is outweighed.",
+    "seconds": 4.784
   },
   {
     "i": 74,
     "segment": "source_compare",
-    "narration": "As you watch, notice which kind of evidence sits behind each claim."
+    "narration": "As you watch, notice which kind of evidence sits behind each claim.",
+    "seconds": 4.794666666666667
   },
   {
     "i": 75,
     "segment": "text_beat",
-    "narration": "The depth of the floor is a survey measurement, and NOAA is the source for the figure in this episode."
+    "narration": "The depth of the floor is a survey measurement, and NOAA is the source for the figure in this episode.",
+    "seconds": 5.968
   },
   {
     "i": 76,
     "segment": "source_compare",
-    "narration": "Amphipods at the bottom are physical specimens, caught and brought up. The xenophyophores were filmed by researchers from Scripps."
+    "narration": "Amphipods at the bottom are physical specimens, caught and brought up. The xenophyophores were filmed by researchers from Scripps.",
+    "seconds": 7.376
   },
   {
     "i": 77,
     "segment": "text_beat",
-    "narration": "The fish limit is an argument from chemistry, checked against footage. The flatfish is a single eyewitness report."
+    "narration": "The fish limit is an argument from chemistry, checked against footage. The flatfish is a single eyewitness report.",
+    "seconds": 6.608
   },
   {
     "i": 78,
     "segment": "source_compare",
-    "narration": "These are different grades of evidence, and the edit should not let them blur into one confident list."
+    "narration": "These are different grades of evidence, and the edit should not let them blur into one confident list.",
+    "seconds": 5.573333333333333
   },
   {
     "i": 79,
     "segment": "checklist_reveal",
-    "narration": "This evidence establishes that life reaches the bottom of the Mariana Trench, and it names some of what lives there."
+    "narration": "This evidence establishes that life reaches the bottom of the Mariana Trench, and it names some of what lives there.",
+    "seconds": 7.077333333333334
   },
   {
     "i": 80,
     "segment": "text_beat",
-    "narration": "It does not provide a full species list. The trench is long, and only a small fraction of its floor has ever been sampled or filmed."
+    "narration": "It does not provide a full species list. The trench is long, and only a small fraction of its floor has ever been sampled or filmed.",
+    "seconds": 8.506666666666666
   },
   {
     "i": 81,
     "segment": "checklist_reveal",
-    "narration": "Landers favour scavengers. Many specimens collected from hadal depths are still waiting to be formally described."
+    "narration": "Landers favour scavengers. Many specimens collected from hadal depths are still waiting to be formally described.",
+    "seconds": 7.354666666666667
   },
   {
     "i": 82,
     "segment": "text_beat",
-    "narration": "Microbial diversity is known mainly through genetic surveys, which detect far more than has been named."
+    "narration": "Microbial diversity is known mainly through genetic surveys, which detect far more than has been named.",
+    "seconds": 6.096
   },
   {
     "i": 83,
     "segment": "checklist_reveal",
-    "narration": "The evidence also does not tell us how many animals live there, how long they live, or how stable these communities are over time."
+    "narration": "The evidence also does not tell us how many animals live there, how long they live, or how stable these communities are over time.",
+    "seconds": 8.986666666666666
   },
   {
     "i": 84,
     "segment": "text_beat",
-    "narration": "What we have is a sketch drawn through a handful of windows, not a census."
+    "narration": "What we have is a sketch drawn through a handful of windows, not a census.",
+    "seconds": 5.242666666666667
   },
   {
     "i": 85,
     "segment": "ambient_drift",
-    "narration": "At the bottom of the deepest trench, in total darkness and under more than 1,000 times the pressure at the surface, small crustaceans gather at a fallen meal."
+    "narration": "At the bottom of the deepest trench, in total darkness and under more than 1,000 times the pressure at the surface, small crustaceans gather at a fallen meal.",
+    "seconds": 9.018666666666666
   },
   {
     "i": 86,
     "segment": "ambient_drift",
-    "narration": "A single cell builds its fragile house from mud. Microbes work through what drifts down from the sunlit sea far above."
+    "narration": "A single cell builds its fragile house from mud. Microbes work through what drifts down from the sunlit sea far above.",
+    "seconds": 7.109333333333334
   },
   {
     "i": 87,
     "segment": "text_beat",
-    "narration": "The trench is not empty. It is simply very hard to see."
+    "narration": "The trench is not empty. It is simply very hard to see.",
+    "seconds": 4.1866666666666665
   }
 ]

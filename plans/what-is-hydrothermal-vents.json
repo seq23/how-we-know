@@ -1,9 +1,9 @@
 [
   {
     "segment": "stat_card",
-    "seconds": 9.0,
+    "seconds": 4.97,
     "heading": "Cold open",
-    "narration": "A hydrothermal vent is an opening in the seafloor where seawater that has soaked down into hot rock flows back out, heated and loaded with dissolved minerals.",
+    "narration": "In 1979, a temperature probe lowered into a black smoker partly melted.",
     "args": {
       "value": "400",
       "unit": "degrees Celsius",
@@ -14,23 +14,23 @@
   },
   {
     "segment": "text_beat",
-    "seconds": 8.69,
+    "seconds": 9.0,
     "heading": "Cold open",
-    "narration": "NOAA puts the hottest of that fluid at up to 400 degrees Celsius, and on the deep seafloor it stays liquid.",
+    "narration": "A hydrothermal vent is an opening in the seafloor where seawater that has soaked down into hot rock flows back out, heated and loaded with dissolved minerals.",
     "args": {
       "lines": [
-        "NOAA puts the hottest",
-        "of that fluid at",
-        "up"
+        "A hydrothermal vent is",
+        "an opening in the",
+        "seafloor"
       ]
     },
     "from": "directive-rhythm"
   },
   {
     "segment": "stat_card",
-    "seconds": 9.0,
+    "seconds": 7.86,
     "heading": "Cold open",
-    "narration": "That number tells you how hot a vent can run. It does not tell you why the water refuses to boil, where the heat comes from, or how whole communities of animals live beside it in total darkness.",
+    "narration": "NOAA puts the hottest of that fluid at up to 400 degrees Celsius, and deep-ocean pressure keeps it liquid.",
     "args": {
       "value": "400",
       "unit": "degrees Celsius",
@@ -41,17 +41,30 @@
   },
   {
     "segment": "text_beat",
-    "seconds": 6.62,
+    "seconds": 9.0,
     "heading": "Cold open",
-    "narration": "Those answers were assembled piece by piece, from instruments, samples, and one discovery nobody planned for.",
+    "narration": "The evidence comes from instruments sent down by submersibles, fluid samples missing their magnesium, and a 1977 dive that found animals nobody expected.",
     "args": {
       "lines": [
-        "Those answers were assembled",
-        "piece by piece, from",
-        "instruments, samples"
+        "The evidence comes from",
+        "instruments sent down by",
+        "submersibles, fluid"
       ]
     },
     "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 6.62,
+    "heading": "Cold open",
+    "narration": "Together they settle the heat and the chemistry. They do not settle how many vents exist.",
+    "args": {
+      "value": "400",
+      "unit": "degrees Celsius",
+      "caption": "hottest vent fluid, still liquid",
+      "source": "NOAA"
+    },
+    "from": "directive"
   },
   {
     "segment": "text_beat",

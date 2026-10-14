@@ -1,0 +1,1084 @@
+[
+  {
+    "segment": "depth_descent",
+    "seconds": 5.38,
+    "heading": "Cold open",
+    "narration": "Nobody saw it happen: roughly three hundred times surface pressure, in total darkness.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "The deepest dive ever recorded by a whale reached 2,992 metres, made by a Cuvier's beaked whale wearing a tag off southern California, in a study published in 2014.",
+    "args": {
+      "lines": [
+        "The deepest dive ever",
+        "recorded by a whale",
+        "reached 2,992"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "depth_descent",
+    "seconds": 4.97,
+    "heading": "Cold open",
+    "narration": "Guinness World Records lists it as the deepest dive by any mammal.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.21,
+    "heading": "Cold open",
+    "narration": "The only witness was a pressure sensor, which logged depth and relayed summaries by satellite.",
+    "args": {
+      "variant": 0
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "That settles one thing: a whale got there and came back. It does not settle how deep a whale can go. A record is a floor, not a ceiling.",
+    "args": {
+      "lines": [
+        "That settles one thing:",
+        "a whale got there",
+        "and came"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 3.5,
+    "heading": "Title card",
+    "narration": "How deep can whales dive?",
+    "args": {
+      "lines": [
+        "How deep can whales",
+        "dive?"
+      ]
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 4.97,
+    "heading": "The record is a sensor reading, not a sighting",
+    "narration": "Nobody watched that whale reach the bottom of its dive. Nobody could.",
+    "args": {
+      "title": "How the record was made",
+      "stages": [
+        "tag attached at the surface",
+        "pressure sensor logs depth",
+        "data relayed by satellite"
+      ],
+      "conclusion": "2,992 metres"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The record is a sensor reading, not a sighting",
+    "narration": "At that depth there is no sunlight, and Cuvier's beaked whales are hard enough to find at the surface, where they spend only short intervals between long dives.",
+    "args": {
+      "lines": [
+        "At that depth there",
+        "is no sunlight, and",
+        "Cuvier's beaked"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "The record is a sensor reading, not a sighting",
+    "narration": "What researchers did instead was attach an electronic tag to the animal while it breathed at the surface, and then let the tag do the watching.",
+    "args": {
+      "title": "How the record was made",
+      "stages": [
+        "tag attached at the surface",
+        "pressure sensor logs depth",
+        "data relayed by satellite"
+      ],
+      "conclusion": "2,992 metres"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The record is a sensor reading, not a sighting",
+    "narration": "The tag carried a pressure sensor. It logged pressure at regular intervals and, over the following weeks, relayed summarised records through satellites to researchers on shore.",
+    "args": {
+      "lines": [
+        "The tag carried a",
+        "pressure sensor. It logged",
+        "pressure"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 6.21,
+    "heading": "The record is a sensor reading, not a sighting",
+    "narration": "The 2,992 metres is what that sensor reported at the deepest point of one dive.",
+    "args": {
+      "title": "How the record was made",
+      "stages": [
+        "tag attached at the surface",
+        "pressure sensor logs depth",
+        "data relayed by satellite"
+      ],
+      "conclusion": "2,992 metres"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 7.45,
+    "heading": "The record is a sensor reading, not a sighting",
+    "narration": "Pressure is a very good proxy for depth, because seawater is heavy and its weight adds up predictably.",
+    "args": {
+      "term": "pressure sensor",
+      "meaning": "a gauge that converts water pressure into depth",
+      "boundary": "it reports depth, not what the whale was doing there",
+      "source": "NOAA Ocean Exploration"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "The record is a sensor reading, not a sighting",
+    "narration": "As NOAA Ocean Exploration explains, pressure increases by roughly one atmosphere for every ten metres you descend.",
+    "args": {
+      "lines": [
+        "As NOAA Ocean Exploration",
+        "explains, pressure increases by",
+        "roughly one"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 6.62,
+    "heading": "The record is a sensor reading, not a sighting",
+    "narration": "So a tag that knows the pressure knows the depth, within the accuracy of its sensor.",
+    "args": {
+      "term": "pressure sensor",
+      "meaning": "a gauge that converts water pressure into depth",
+      "boundary": "it reports depth, not what the whale was doing there",
+      "source": "NOAA Ocean Exploration"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "The record is a sensor reading, not a sighting",
+    "narration": "At 2,992 metres, that arithmetic gives roughly three hundred times the pressure at the surface.",
+    "args": {
+      "lines": [
+        "At 2,992 metres, that",
+        "arithmetic gives roughly three",
+        "hundred times"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "The record is a sensor reading, not a sighting",
+    "narration": "What the sensor cannot tell you is why the whale went there, what it found, or whether it could have gone further.",
+    "args": {
+      "term": "pressure sensor",
+      "meaning": "a gauge that converts water pressure into depth",
+      "boundary": "it reports depth, not what the whale was doing there",
+      "source": "NOAA Ocean Exploration"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "The record is a sensor reading, not a sighting",
+    "narration": "It also helps to know that the record was not a lucky single reading.",
+    "args": {
+      "lines": [
+        "It also helps to",
+        "know that the record"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "The record is a sensor reading, not a sighting",
+    "narration": "The study tagged several whales and followed them for weeks, logging a great many deep dives.",
+    "args": {
+      "lines": [
+        "The study tagged several",
+        "whales and followed them",
+        "for weeks"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.69,
+    "heading": "The record is a sensor reading, not a sighting",
+    "narration": "Most of those dives were shallower than the record. That matters, because it tells you how to read the headline number.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "The record is a sensor reading, not a sighting",
+    "narration": "It is the extreme edge of a pattern, not the typical dive.",
+    "args": {
+      "lines": [
+        "It is the extreme",
+        "edge of a pattern"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The record is a sensor reading, not a sighting",
+    "narration": "When you see a single figure attached to a species, ask whether it is the usual behaviour or the most extreme thing ever caught on an instrument. Here, it is clearly the second.",
+    "args": {
+      "lines": [
+        "When you see a",
+        "single figure attached to",
+        "a species"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 5.79,
+    "heading": "Before tags, depth was inferred from clues",
+    "narration": "For most of the history of whale science, nobody could follow a diving whale.",
+    "args": {
+      "title": "Older lines of evidence",
+      "steps": [
+        [
+          "entangled cables",
+          ""
+        ],
+        [
+          "stomach contents",
+          ""
+        ],
+        [
+          "timed disappearances",
+          ""
+        ]
+      ],
+      "note": "depth inferred, not measured"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "Before tags, depth was inferred from clues",
+    "narration": "Depth had to be inferred. One line of evidence came from the seafloor itself.",
+    "args": {
+      "lines": [
+        "Depth had to be",
+        "inferred. One line of",
+        "evidence came"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "Before tags, depth was inferred from clues",
+    "narration": "In the era of submarine telegraph cables, repair crews occasionally hauled up dead sperm whales tangled in cable that had been laid in deep water.",
+    "args": {
+      "title": "Older lines of evidence",
+      "steps": [
+        [
+          "entangled cables",
+          ""
+        ],
+        [
+          "stomach contents",
+          ""
+        ],
+        [
+          "timed disappearances",
+          ""
+        ]
+      ],
+      "note": "depth inferred, not measured"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "Before tags, depth was inferred from clues",
+    "narration": "Wherever the cable lay, the whale had evidently been. Another clue came from stomach contents.",
+    "args": {
+      "lines": [
+        "Wherever the cable lay,",
+        "the whale had evidently",
+        "been."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "Before tags, depth was inferred from clues",
+    "narration": "Sperm whales taken by whalers were found to contain the hard beaks of squid, including kinds that live far below the sunlit surface. If the prey lives deep, the predator must reach it.",
+    "args": {
+      "title": "Older lines of evidence",
+      "steps": [
+        [
+          "entangled cables",
+          ""
+        ],
+        [
+          "stomach contents",
+          ""
+        ],
+        [
+          "timed disappearances",
+          ""
+        ]
+      ],
+      "note": "depth inferred, not measured"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "Before tags, depth was inferred from clues",
+    "narration": "A third method was simply patience. Observers on ships timed how long whales stayed down between breaths.",
+    "args": {
+      "lines": [
+        "A third method was",
+        "simply patience. Observers on",
+        "ships timed"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Before tags, depth was inferred from clues",
+    "narration": "Long absences suggested deep dives, but a stopwatch measures time, not depth.",
+    "args": {
+      "lines": [
+        "Long absences suggested deep",
+        "dives, but a stopwatch",
+        "measures time"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Before tags, depth was inferred from clues",
+    "narration": "A whale could spend an hour travelling sideways. Each of these clues was real, and each pointed downward, but none of them could put a single trustworthy number on a dive.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Before tags, depth was inferred from clues",
+    "narration": "They established that some whales go deep. They could not say how deep.",
+    "args": {
+      "lines": [
+        "They established that some",
+        "whales go deep. They"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 5.79,
+    "heading": "Before tags, depth was inferred from clues",
+    "narration": "That changed when electronics became small and robust enough to ride on a whale.",
+    "args": {
+      "title": "From clue to measurement",
+      "stages": [
+        "stopwatch timing",
+        "stomach contents",
+        "electronic tag"
+      ],
+      "conclusion": "a depth reading"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Before tags, depth was inferred from clues",
+    "narration": "Early recorders had to be recovered to read their memory, which meant finding a small floating tag somewhere at sea.",
+    "args": {
+      "lines": [
+        "Early recorders had to",
+        "be recovered to read",
+        "their memory"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "Before tags, depth was inferred from clues",
+    "narration": "Later designs could compress their records and transmit them by satellite whenever the whale surfaced, so the data reached researchers even if the tag itself was never seen again.",
+    "args": {
+      "title": "From clue to measurement",
+      "stages": [
+        "stopwatch timing",
+        "stomach contents",
+        "electronic tag"
+      ],
+      "conclusion": "a depth reading"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 8.69,
+    "heading": "Producer POV",
+    "narration": "It doesn't bother me that instruments extend what we can know. Human senses are extremely limited. That's the point of technology.",
+    "args": {
+      "text": "It doesn't bother me that instruments extend what we can know. Human senses are extremely limited. That's the point of technology.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "anatomy_callout",
+    "seconds": 5.38,
+    "heading": "A deep diver carries its oxygen in its muscles",
+    "narration": "The obvious question is how a breathing animal survives a dive like that.",
+    "args": {
+      "title": "Cuvier's beaked whale",
+      "parts": [
+        [
+          "muscle rich in myoglobin",
+          0.5,
+          0.5
+        ],
+        [
+          "compressible lungs",
+          0.35,
+          0.4
+        ],
+        [
+          "slowed heart",
+          0.3,
+          0.5
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "A deep diver carries its oxygen in its muscles",
+    "narration": "The answer is not a giant lungful of air. Deep-diving whales store most of their oxygen in their blood and, above all, in their muscles, which are packed with a protein called myoglobin.",
+    "args": {
+      "lines": [
+        "The answer is not",
+        "a giant lungful of",
+        "air. Deep-diving"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "anatomy_callout",
+    "seconds": 9.0,
+    "heading": "A deep diver carries its oxygen in its muscles",
+    "narration": "Myoglobin binds oxygen and holds it where it will be used. In some diving mammals it is so concentrated that the muscle looks very dark.",
+    "args": {
+      "title": "Cuvier's beaked whale",
+      "parts": [
+        [
+          "muscle rich in myoglobin",
+          0.5,
+          0.5
+        ],
+        [
+          "compressible lungs",
+          0.35,
+          0.4
+        ],
+        [
+          "slowed heart",
+          0.3,
+          0.5
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "A deep diver carries its oxygen in its muscles",
+    "narration": "On the way down, the whale's heart slows, and blood flow is redirected toward the organs that cannot tolerate running short, such as the brain and the heart itself, while other tissues make do.",
+    "args": {
+      "lines": [
+        "On the way down,",
+        "the whale's heart slows,",
+        "and blood"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "A deep diver carries its oxygen in its muscles",
+    "narration": "The lungs do something that sounds alarming. As pressure rises, they compress, and the air in them is squeezed into stiffer airways where little gas exchange takes place.",
+    "args": {
+      "term": "diving whale",
+      "includes": [
+        "oxygen stored in blood and muscle"
+      ],
+      "excludes": [
+        "a giant lungful of air"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "A deep diver carries its oxygen in its muscles",
+    "narration": "That is protective. Less nitrogen dissolves into the blood under pressure, which lowers the risk of the gas coming out of solution on the way up, the problem human divers know as decompression sickness.",
+    "args": {
+      "lines": [
+        "That is protective. Less",
+        "nitrogen dissolves into the",
+        "blood under"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "A deep diver carries its oxygen in its muscles",
+    "narration": "Much of this physiology was worked out in other diving mammals, such as seals, and is inferred for beaked whales, which are far too elusive to study in a laboratory.",
+    "args": {
+      "term": "diving whale",
+      "includes": [
+        "oxygen stored in blood and muscle"
+      ],
+      "excludes": [
+        "a giant lungful of air"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Depth and duration are different records",
+    "narration": "The 2014 study reported more than depth. That same record dive lasted more than two hours, which was also reported as a record for a mammal at the time.",
+    "args": {
+      "lines": [
+        "The 2014 study reported",
+        "more than depth. That",
+        "same record"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Depth and duration are different records",
+    "narration": "Depth and duration are related but not identical. A whale's oxygen budget limits how long it can stay down, and depth is part of that cost, because the longer the descent and the ascent, the less time remains for hunting at the bottom.",
+    "args": {
+      "lines": [
+        "Depth and duration are",
+        "related but not identical.",
+        "A whale's"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "Depth and duration are different records",
+    "narration": "Tag records show the typical shape. Cuvier's beaked whales descend steeply, spend time hunting at depth, and then rise, often more slowly than they went down.",
+    "args": {
+      "title": "Shape of a foraging dive",
+      "steps": [
+        [
+          "descent",
+          ""
+        ],
+        [
+          "hunting at depth",
+          ""
+        ],
+        [
+          "ascent",
+          ""
+        ]
+      ],
+      "note": "recovery at the surface"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Depth and duration are different records",
+    "narration": "Other studies, using tags that record sound, have picked up the whales' echolocation clicks during the deep part of the dive, which is how researchers infer that this is where the searching for prey happens.",
+    "args": {
+      "lines": [
+        "Other studies, using tags",
+        "that record sound, have",
+        "picked up"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 7.03,
+    "heading": "Depth and duration are different records",
+    "narration": "Between deep dives, the whales make a series of shallower ones and spend time near the surface.",
+    "args": {
+      "title": "Shape of a foraging dive",
+      "steps": [
+        [
+          "descent",
+          ""
+        ],
+        [
+          "hunting at depth",
+          ""
+        ],
+        [
+          "ascent",
+          ""
+        ]
+      ],
+      "note": "recovery at the surface"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Depth and duration are different records",
+    "narration": "Later tagging studies have recorded even longer dives, which tells you the 2014 duration was not an absolute limit either.",
+    "args": {
+      "lines": [
+        "Later tagging studies have",
+        "recorded even longer dives,",
+        "which tells"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "Other whales dive deep, but their numbers are softer",
+    "narration": "Cuvier's beaked whale is not the only deep diver. Sperm whales, the largest toothed whales, hunt squid in deep water and have long been the textbook example of a deep diver.",
+    "args": {
+      "title": "How solid is the evidence",
+      "items": [
+        "+Cuvier's beaked whale: a tag-measured record",
+        "?sperm whale maximum: estimates vary",
+        "-baleen whales as record divers"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Other whales dive deep, but their numbers are softer",
+    "narration": "NOAA's species profiles describe both sperm whales and beaked whales as deep-diving hunters.",
+    "args": {
+      "lines": [
+        "NOAA's species profiles describe",
+        "both sperm whales and",
+        "beaked whales"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 6.62,
+    "heading": "Other whales dive deep, but their numbers are softer",
+    "narration": "But published maximum depths for sperm whales vary, and the range in the literature is wide.",
+    "args": {
+      "title": "How solid is the evidence",
+      "items": [
+        "+Cuvier's beaked whale: a tag-measured record",
+        "?sperm whale maximum: estimates vary",
+        "-baleen whales as record divers"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "Other whales dive deep, but their numbers are softer",
+    "narration": "Some figures come from tags, some from older acoustic tracking, and some from inference.",
+    "args": {
+      "lines": [
+        "Some figures come from",
+        "tags, some from older",
+        "acoustic tracking"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 4.97,
+    "heading": "Other whales dive deep, but their numbers are softer",
+    "narration": "That variation is a property of the evidence, not of the whales.",
+    "args": {
+      "title": "How solid is the evidence",
+      "items": [
+        "+Cuvier's beaked whale: a tag-measured record",
+        "?sperm whale maximum: estimates vary",
+        "-baleen whales as record divers"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Other whales dive deep, but their numbers are softer",
+    "narration": "At the other end, baleen whales such as blue and humpback whales mostly feed much shallower, filtering swarms of small animals that gather in the upper layers of the water.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.03,
+    "heading": "Other whales dive deep, but their numbers are softer",
+    "narration": "Their dives are impressive as feats of size, but they are not contenders for the depth record.",
+    "args": {
+      "variant": 2
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Other whales dive deep, but their numbers are softer",
+    "narration": "Size, in other words, is not depth. The deepest known diver is a medium-sized whale most people have never heard of.",
+    "args": {
+      "lines": [
+        "Size, in other words,",
+        "is not depth. The",
+        "deepest known"
+      ]
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 5.38,
+    "heading": "The deepest known dive is a floor, not a ceiling",
+    "narration": "Here is the most important thing to understand about any record like this.",
+    "args": {
+      "title": "Why the record understates the limit",
+      "stages": [
+        "few animals tagged",
+        "tags fall off within weeks",
+        "sensors have a rated maximum depth"
+      ],
+      "conclusion": "the true limit is unknown"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The deepest known dive is a floor, not a ceiling",
+    "narration": "It is a lower bound. Only a small number of Cuvier's beaked whales have ever been tagged, and each tag stays attached for a limited time, usually days to weeks, before it falls off or stops transmitting.",
+    "args": {
+      "lines": [
+        "It is a lower",
+        "bound. Only a small",
+        "number"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "The deepest known dive is a floor, not a ceiling",
+    "narration": "Each sensor also has a rated maximum depth it can measure. A whale that dives beyond what has been sampled leaves no trace in the data.",
+    "args": {
+      "title": "Why the record understates the limit",
+      "stages": [
+        "few animals tagged",
+        "tags fall off within weeks",
+        "sensors have a rated maximum depth"
+      ],
+      "conclusion": "the true limit is unknown"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The deepest known dive is a floor, not a ceiling",
+    "narration": "The ocean also sets a local limit. A whale cannot dive deeper than the seafloor beneath it, so a tagged animal living over moderately deep water may never show what it could do over a deeper basin.",
+    "args": {
+      "lines": [
+        "The ocean also sets",
+        "a local limit. A",
+        "whale cannot"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The deepest known dive is a floor, not a ceiling",
+    "narration": "And there may be a physiological cost that rises steeply with depth, so that a whale able to go deeper rarely chooses to.",
+    "args": {
+      "lines": [
+        "And there may be",
+        "a physiological cost that",
+        "rises steeply"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.45,
+    "heading": "The deepest known dive is a floor, not a ceiling",
+    "narration": "Researchers can describe what tagged whales did. Describing what they could do is a different and harder problem.",
+    "args": {
+      "variant": 2
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "Notice that every number in this episode came from an instrument that rode along with an animal, or from arithmetic you can check yourself.",
+    "args": {
+      "title": "Who reports what",
+      "sources": [
+        [
+          "Guinness World Records",
+          "deepest dive by a mammal"
+        ],
+        [
+          "NOAA Ocean Exploration",
+          "pressure rises with depth"
+        ],
+        [
+          "Smithsonian Ocean",
+          "no sunlight in the deep sea"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "What to notice in the edit",
+    "narration": "Guinness World Records lists the record dive. NOAA Ocean Exploration explains the pressure relationship.",
+    "args": {
+      "lines": [
+        "Guinness World Records lists",
+        "the record dive. NOAA",
+        "Ocean Exploration"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "Smithsonian Ocean describes the deep sea as a place sunlight does not reach, which is why no camera on a ship could have seen that dive.",
+    "args": {
+      "title": "Who reports what",
+      "sources": [
+        [
+          "Guinness World Records",
+          "deepest dive by a mammal"
+        ],
+        [
+          "NOAA Ocean Exploration",
+          "pressure rises with depth"
+        ],
+        [
+          "Smithsonian Ocean",
+          "no sunlight in the deep sea"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "What to notice in the edit",
+    "narration": "None of the graphics is a picture of the whale at the bottom. They are readings, drawn.",
+    "args": {
+      "lines": [
+        "None of the graphics",
+        "is a picture of",
+        "the whale"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 6.21,
+    "heading": "Evidence limit",
+    "narration": "This evidence establishes that at least one Cuvier's beaked whale reached 2,992 metres and returned.",
+    "args": {
+      "title": "What the evidence settles",
+      "items": [
+        "+a whale reached 2,992 metres",
+        "-the maximum depth any whale can reach",
+        "?how often beaked whales dive that deep"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "It does not establish the maximum depth any whale can reach, the depth limit of the species, or how often such dives happen.",
+    "args": {
+      "lines": [
+        "It does not establish",
+        "the maximum depth any",
+        "whale"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 5.38,
+    "heading": "Evidence limit",
+    "narration": "It rests on a small number of tagged animals in a few regions.",
+    "args": {
+      "title": "What the evidence settles",
+      "items": [
+        "+a whale reached 2,992 metres",
+        "-the maximum depth any whale can reach",
+        "?how often beaked whales dive that deep"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "It also says nothing about what the whale found at the bottom of that dive. The sensor recorded pressure, and pressure is all it recorded.",
+    "args": {
+      "lines": [
+        "It also says nothing",
+        "about what the whale",
+        "found"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.21,
+    "heading": "Closing",
+    "narration": "So how deep can whales dive? At least 2,992 metres, because a tag says so.",
+    "args": {
+      "variant": 4
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.21,
+    "heading": "Closing",
+    "narration": "Beyond that, the honest answer is that the ocean has not been asked often enough.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "Every tag that rides down with a whale is a small question put to the dark, and each answer is only as deep as the dive it happened to catch.",
+    "args": {
+      "lines": [
+        "Every tag that rides",
+        "down with a whale"
+      ]
+    },
+    "from": "directive+destagnate"
+  }
+]

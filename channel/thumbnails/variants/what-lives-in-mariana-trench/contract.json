@@ -1,0 +1,101 @@
+{
+  "slug": "what-lives-in-mariana-trench",
+  "title": "Is the Mariana Trench Empty?",
+  "grade": "hwk-split-navy-amber-v1",
+  "chosen": "A",
+  "variants": {
+    "A": {
+      "file": "A.jpg",
+      "source": "assets/trench__9714__ex1605l1-seastar-walking-poster-1280x720-1.jpg",
+      "manifest": "rights.json",
+      "subject": "trench",
+      "sha256": "deda793a1dc9c55a8eada805a0b39c599e617a7d2e0d9c39339f843928cd2d6b",
+      "box": [
+        327,
+        241,
+        886,
+        556
+      ],
+      "crop": null,
+      "text": "MARIANA TRENCH EMPTY",
+      "words": 3,
+      "credit": "NOAA Ocean Exploration, 2016 Deepwater Exploration of the Marianas",
+      "text_bbox": [
+        46,
+        248,
+        587,
+        674
+      ],
+      "credit_bbox": [
+        658,
+        14,
+        1266,
+        35
+      ],
+      "fill": 0.7801,
+      "energy": 0.8911
+    },
+    "B": {
+      "file": "B.jpg",
+      "source": "assets/trench__9714__ex1605l1-seastar-walking-poster-1280x720-1.jpg",
+      "manifest": "rights.json",
+      "subject": "trench",
+      "sha256": "deda793a1dc9c55a8eada805a0b39c599e617a7d2e0d9c39339f843928cd2d6b",
+      "box": [
+        170,
+        206,
+        831,
+        578
+      ],
+      "crop": null,
+      "text": "MARIANA TRENCH",
+      "words": 2,
+      "credit": "NOAA Ocean Exploration, 2016 Deepwater Exploration of the Marianas",
+      "text_bbox": [
+        44,
+        347,
+        676,
+        678
+      ],
+      "credit_bbox": [
+        658,
+        14,
+        1266,
+        35
+      ],
+      "fill": 0.623,
+      "energy": 0.6018
+    },
+    "C": {
+      "file": "C.jpg",
+      "source": "assets/trench__15030__20211123-hires.jpg",
+      "manifest": "rights.json",
+      "subject": "trench",
+      "sha256": "226ba4a9b7ce8ba541137d21af00dfea0d96ea56436b3585594b32d0252701b4",
+      "box": [
+        82,
+        41,
+        1255,
+        700
+      ],
+      "crop": null,
+      "text": "MARIANA TRENCH EMPTY",
+      "words": 3,
+      "credit": "NOAA Ocean Exploration, 2016 Deepwater Exploration of the Marianas",
+      "text_bbox": [
+        46,
+        248,
+        587,
+        674
+      ],
+      "credit_bbox": [
+        658,
+        14,
+        1266,
+        35
+      ],
+      "fill": 0.6178,
+      "energy": 0.3153
+    }
+  }
+}

@@ -1,79 +1,43 @@
 [
   {
-    "segment": "contrast_pair",
+    "segment": "depth_descent",
+    "seconds": 8.69,
+    "heading": "Cold open",
+    "narration": "Chipmakers publish lists of bugs in chips they have already shipped. Those lists exist because of how the work is done.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
     "seconds": 9.0,
     "heading": "Cold open",
-    "narration": "Microchips are designed mostly as text. Engineers describe a chip's behaviour in a hardware description language such as Verilog or VHDL, and software tools translate that description into logic gates and then into the geometric layout of billions of transistors.",
-    "args": {
-      "term": "Chip design",
-      "includes": [
-        "text translated by software"
-      ],
-      "excludes": [
-        "drawn by hand"
-      ]
-    },
-    "from": "directive"
-  },
-  {
-    "segment": "text_beat",
-    "seconds": 8.28,
-    "heading": "Cold open",
-    "narration": "Both languages are published as standards by the IEEE. So the answer to who draws the chip is, largely, nobody.",
+    "narration": "Microchips are designed mostly as text: engineers describe a chip's behaviour in a hardware description language such as Verilog or VHDL, and software tools translate that description into logic gates and then into the geometric layout of billions of transistors.",
     "args": {
       "lines": [
-        "Both languages are published",
-        "as standards by the",
-        "IEEE."
+        "Microchips are designed mostly",
+        "as text: engineers describe",
+        "a chip's"
       ]
     },
-    "from": "directive-rhythm"
+    "from": "heuristic"
   },
   {
-    "segment": "contrast_pair",
-    "seconds": 8.28,
+    "segment": "depth_descent",
+    "seconds": 9.0,
     "heading": "Cold open",
-    "narration": "It is not drawn by hand. What that answer does not settle is how anyone knows the result will work.",
-    "args": {
-      "term": "Chip design",
-      "includes": [
-        "text translated by software"
-      ],
-      "excludes": [
-        "drawn by hand"
-      ]
-    },
-    "from": "directive"
+    "narration": "Both languages are IEEE standards. Most effort goes into proving the design before manufacture, through simulation, formal proofs and the foundry's rules.",
+    "args": {},
+    "from": "heuristic"
   },
   {
-    "segment": "text_beat",
-    "seconds": 7.03,
+    "segment": "ambient_drift",
+    "seconds": 4.97,
     "heading": "Cold open",
-    "narration": "Nobody can inspect billions of transistors before the factory runs, and a mistake found afterwards is expensive.",
+    "narration": "Those checks reduce risk, and the errata show they cannot remove it.",
     "args": {
-      "lines": [
-        "Nobody can inspect billions",
-        "of transistors before the",
-        "factory runs"
-      ]
+      "variant": 0
     },
-    "from": "directive-rhythm"
-  },
-  {
-    "segment": "contrast_pair",
-    "seconds": 6.21,
-    "heading": "Cold open",
-    "narration": "The real story of chip design is the story of how that confidence is built.",
-    "args": {
-      "term": "Chip design",
-      "includes": [
-        "text translated by software"
-      ],
-      "excludes": [
-        "drawn by hand"
-      ]
-    },
-    "from": "directive"
+    "from": "heuristic"
   },
   {
     "segment": "definition_card",
@@ -198,14 +162,16 @@
     "from": "directive"
   },
   {
-    "segment": "ambient_drift",
+    "segment": "material_image",
     "seconds": 6.21,
     "heading": "A chip begins as a description of what it does",
     "narration": "Nothing at this level says where a transistor sits or how long a wire is.",
     "args": {
-      "variant": 0
+      "subject": "microchip-die",
+      "label": "TRANSISTOR",
+      "pick": 0
     },
-    "from": "directive+destagnate"
+    "from": "directive+destagnate+material"
   },
   {
     "segment": "text_beat",
@@ -1087,7 +1053,7 @@
     "heading": "Closing",
     "narration": "So a microchip is designed the way a careful argument is written: stated in a precise language, translated step by step, and checked at each step against something it must agree with.",
     "args": {
-      "variant": 0
+      "variant": 1
     },
     "from": "directive"
   },
@@ -1097,7 +1063,7 @@
     "heading": "Closing",
     "narration": "The chip you are holding is the last link in that chain.",
     "args": {
-      "variant": 1
+      "variant": 2
     },
     "from": "directive"
   },

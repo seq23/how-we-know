@@ -1,70 +1,57 @@
 [
   {
-    "segment": "stat_card",
+    "segment": "depth_descent",
+    "seconds": 5.38,
+    "heading": "Cold open",
+    "narration": "In 1960, Jacques Piccard reported a flatfish where fish appear unable to survive.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
     "seconds": 9.0,
     "heading": "Cold open",
     "narration": "Life reaches the very bottom of the Mariana Trench, nearly 11,000 metres down, where the floor is worked by scavenging amphipods, sea cucumbers, giant single-celled xenophyophores and dense microbial communities.",
     "args": {
-      "value": "11,000",
-      "unit": "metres",
-      "caption": "the depth NOAA gives for its deepest point",
-      "source": "NOAA"
+      "lines": [
+        "Life reaches the very",
+        "bottom of the Mariana",
+        "Trench, nearly"
+      ]
     },
-    "from": "directive"
+    "from": "heuristic"
+  },
+  {
+    "segment": "depth_descent",
+    "seconds": 7.03,
+    "heading": "Cold open",
+    "narration": "Fish stop a few kilometres higher, held back, it seems, by the chemistry of their own cells.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.86,
+    "heading": "Cold open",
+    "narration": "Most of what we know comes from baited landers that sat on the seabed in the dark and waited.",
+    "args": {
+      "variant": 0
+    },
+    "from": "heuristic"
   },
   {
     "segment": "text_beat",
-    "seconds": 9.0,
+    "seconds": 5.38,
     "heading": "Cold open",
-    "narration": "That is the depth NOAA gives for its deepest point. What you will not find there, as far as anyone has recorded, is a fish.",
+    "narration": "They show what came to the bait, not a census of the floor.",
     "args": {
       "lines": [
-        "That is the depth",
-        "NOAA gives for its",
-        "deepest point."
+        "They show what came",
+        "to the bait, not",
+        "a census"
       ]
     },
-    "from": "directive-rhythm"
-  },
-  {
-    "segment": "stat_card",
-    "seconds": 8.28,
-    "heading": "Cold open",
-    "narration": "That absence is the interesting part, because it is not simply an accident of where the cameras happened to point.",
-    "args": {
-      "value": "11,000",
-      "unit": "metres",
-      "caption": "the depth NOAA gives for its deepest point",
-      "source": "NOAA"
-    },
-    "from": "directive"
-  },
-  {
-    "segment": "text_beat",
-    "seconds": 5.79,
-    "heading": "Cold open",
-    "narration": "It looks like a limit written into the chemistry of a fish's own cells.",
-    "args": {
-      "lines": [
-        "It looks like a",
-        "limit written into the",
-        "chemistry"
-      ]
-    },
-    "from": "directive-rhythm"
-  },
-  {
-    "segment": "stat_card",
-    "seconds": 8.69,
-    "heading": "Cold open",
-    "narration": "And almost everything we know about this place comes from machines that sat on the seabed in the dark and waited.",
-    "args": {
-      "value": "11,000",
-      "unit": "metres",
-      "caption": "the depth NOAA gives for its deepest point",
-      "source": "NOAA"
-    },
-    "from": "directive"
+    "from": "heuristic"
   },
   {
     "segment": "text_beat",
@@ -654,7 +641,7 @@
     "heading": "Some of the largest single cells on Earth live there",
     "narration": "Xenophyophores matter beyond their oddness. Their cases trap particles, and other small organisms live in and around them.",
     "args": {
-      "variant": 0
+      "variant": 1
     },
     "from": "directive"
   },
@@ -664,7 +651,7 @@
     "heading": "Some of the largest single cells on Earth live there",
     "narration": "On parts of the deep seafloor they add structure to an otherwise flat, soft landscape.",
     "args": {
-      "variant": 1
+      "variant": 2
     },
     "from": "directive"
   },
@@ -688,7 +675,7 @@
     "heading": "Some of the largest single cells on Earth live there",
     "narration": "They have been seen there, but they have not been studied there the way a reef is studied.",
     "args": {
-      "variant": 3
+      "variant": 4
     },
     "from": "directive"
   },
@@ -838,7 +825,7 @@
     "heading": "The trench lives on what falls into it",
     "narration": "Not everything at the bottom chases bait. Sea cucumbers, soft-bodied relatives of starfish, plough slowly across the sediment, swallowing it and digesting the organic matter it holds.",
     "args": {
-      "variant": 4
+      "variant": 0
     },
     "from": "directive"
   },
@@ -848,7 +835,7 @@
     "heading": "The trench lives on what falls into it",
     "narration": "They are among the commonest large animals on soft deep-sea floors, and cameras have recorded them deep in the Mariana Trench.",
     "args": {
-      "variant": 0
+      "variant": 1
     },
     "from": "directive"
   },
@@ -866,7 +853,7 @@
     "heading": "The trench lives on what falls into it",
     "narration": "That is a reminder that the trench's species list is shaped by the tools used to compile it.",
     "args": {
-      "variant": 2
+      "variant": 3
     },
     "from": "directive"
   },
@@ -1179,7 +1166,7 @@
     "heading": "Closing",
     "narration": "At the bottom of the deepest trench, in total darkness and under more than 1,000 times the pressure at the surface, small crustaceans gather at a fallen meal.",
     "args": {
-      "variant": 3
+      "variant": 4
     },
     "from": "directive"
   },
@@ -1189,7 +1176,7 @@
     "heading": "Closing",
     "narration": "A single cell builds its fragile house from mud. Microbes work through what drifts down from the sunlit sea far above.",
     "args": {
-      "variant": 4
+      "variant": 0
     },
     "from": "directive"
   },
