@@ -78,9 +78,19 @@ days: dict = {}
 for p, t in p_drain:
     days.setdefault(SL._local_day(t), []).append((p, t))
 two_a_day = [v for v in days.values() if len(v) == 2]
-check("2 drain: 14 Shorts planned onto 7 days, two a day",
-      len(p_drain) == 14 and len(days) == 7 and len(two_a_day) == 7,
-      f"{len(p_drain)} on {len(days)} days")
+# The plan starts at the next free evening slot, so the run's own clock decides
+# whether today still has both (before 19:00: 7 days of two) or only the 21:00
+# (8 days: one, six of two, one). Pinned exactly either way - it went red at
+# 20:00 local on 13 Oct 2026 with no commit behind it.
+order = [days[k] for k in sorted(days)]
+first_hour = min(t for _, t in p_drain).astimezone(SL.SHORTS_TZ).hour
+if first_hour == 19:
+    want_ok = len(days) == 7 and len(two_a_day) == 7
+else:
+    want_ok = (first_hour == 21 and len(days) == 8 and len(order[0]) == 1
+               and len(order[-1]) == 1 and all(len(v) == 2 for v in order[1:-1]))
+check("2 drain: 14 Shorts planned two a day (7 days, or 8 when today has only 21:00 left)",
+      len(p_drain) == 14 and want_ok, f"{len(p_drain)} on {len(days)} days, first slot {first_hour}:00")
 hours = sorted({t.astimezone(SL.SHORTS_TZ).hour for _, t in p_drain})
 check("2 drain slots are 19:00 and 21:00 local", hours == [19, 21], str(hours))
 check("2 drain never puts one episode twice on a day",

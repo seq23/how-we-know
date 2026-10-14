@@ -178,33 +178,59 @@ check(UP.footage_credits("02-how-deep-sea-creatures-survive-pressure") == "",
       "no food spec, no food credits block")
 tags = DI.hashtags_for(SLUG, (ROOT / "scripts" / "food" / f"{SLUG}.md").read_text(), "food-science")
 check(tags[:3] == ["#Bread", "#Steak", "#Chocolate"], f"series hashtags, one per subject: {tags}")
+import shutil  # noqa: E402
 import subprocess  # noqa: E402
+import types  # noqa: E402
+# THE STITCH PROOF'S LOGIC, with packets supplied (no ffmpeg: CI has none). The
+# Mac additionally runs it on two real encoded clips below.
+PK = {"a.mp4": [(100, "k1"), (10, "a1"), (10, "a2")], "b.mp4": [(90, "k2"), (12, "b1")]}
+KM = {"a.mp4": ["A"], "b.mp4": ["B"]}
+real_vp, real_km, real_sp = FE.video_packets, FE.keyframe_md5s, FE.subprocess
+
+
+def fake_run(cmd, **kw):
+    Path(cmd[-1]).write_bytes(b"x")
+    return types.SimpleNamespace(returncode=0, stdout="", stderr="")
+
+
 with tempfile.TemporaryDirectory() as td:
     d = Path(td)
-    for i, col in enumerate(("red", "blue")):
-        subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "lavfi", "-i", f"color={col}:s=64x36:r=30:d=2",
-                        "-c:v", "libx264", "-g", "15", "-pix_fmt", "yuv420p", str(d / f"p{i}.mp4")], check=True)
-    info = FE.stitch_files([d / "p0.mp4", d / "p1.mp4"], d / "all.mp4")
-    check(info["byte_identical"] and info["keyframes_decoded_identical"] >= 2,
-          f"two pieces stitch, proven packet- and keyframe-identical: {info}")
-    real_vp, real_km = FE.video_packets, FE.keyframe_md5s
-    try:                     # a non-key packet that changed in the stitch: refused
-        FE.video_packets = lambda pth: ([(s, ("0" * 32 if i == 5 else m)) for i, (s, m) in
-                                         enumerate(real_vp(pth))] if pth.name == "t.mp4" else real_vp(pth))
+    for n in PK:
+        (d / n).write_bytes(b"x")
+
+    def case(final_packets, final_keys):
+        FE.video_packets = lambda pth: final_packets if pth.name == "f.mp4" else PK[pth.name]
+        FE.keyframe_md5s = lambda pth: final_keys if pth.name == "f.mp4" else KM[pth.name]
         try:
-            FE.stitch_files([d / "p0.mp4", d / "p1.mp4"], d / "t.mp4")
-            check(False, "a changed packet in the stitch is refused")
-        except RuntimeError:
-            check(not (d / "t.mp4").exists(), "a changed packet in the stitch is refused, and the file removed")
-        FE.video_packets = real_vp   # a keyframe whose picture differs: refused
-        FE.keyframe_md5s = lambda pth: (["x"] + real_km(pth)[1:]) if pth.name == "k.mp4" else real_km(pth)
-        try:
-            FE.stitch_files([d / "p0.mp4", d / "p1.mp4"], d / "k.mp4")
-            check(False, "a keyframe that decodes differently is refused")
-        except RuntimeError:
-            check(True, "a keyframe that decodes differently is refused")
+            return FE.stitch_files([d / "a.mp4", d / "b.mp4"], d / "f.mp4")
+        except RuntimeError as err:
+            return str(err)
+    FE.subprocess = types.SimpleNamespace(run=fake_run)
+    try:
+        good = [(140, "K1"), (10, "a1"), (10, "a2"), (130, "K2"), (12, "b1")]
+        r = case(good, ["A", "B"])
+        check(isinstance(r, dict) and r["keyframes_with_inline_header"] == 2,
+              f"keyframes grown by their header + identical other packets: accepted ({r})")
+        check("refused" in str(case([(140, "K1"), (10, "zz"), (10, "a2"), (130, "K2"), (12, "b1")], ["A", "B"])),
+              "a changed non-key packet: refused")
+        check("refused" in str(case([(900, "K1"), (10, "a1"), (10, "a2"), (130, "K2"), (12, "b1")], ["A", "B"])),
+              "a keyframe grown by more than a header: refused")
+        check("refused" in str(case(good, ["A", "X"])), "a keyframe that decodes to another picture: refused")
+        check("refused" in str(case(good[:-1], ["A", "B"])), "a packet missing from the stitch: refused")
     finally:
-        FE.video_packets, FE.keyframe_md5s = real_vp, real_km
+        FE.video_packets, FE.keyframe_md5s, FE.subprocess = real_vp, real_km, real_sp
+
+if shutil.which("ffmpeg"):
+    with tempfile.TemporaryDirectory() as td:
+        d = Path(td)
+        for i, col in enumerate(("red", "blue")):
+            subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "lavfi", "-i", f"color={col}:s=64x36:r=30:d=2",
+                            "-c:v", "libx264", "-g", "15", "-pix_fmt", "yuv420p", str(d / f"p{i}.mp4")], check=True)
+        info = FE.stitch_files([d / "p0.mp4", d / "p1.mp4"], d / "all.mp4")
+        check(info["byte_identical"] and info["keyframes_decoded_identical"] >= 2,
+              f"two real encoded pieces stitch, proven: {info['keyframes_with_inline_header']} keyframes with headers")
+else:
+    print("  --  no ffmpeg on this machine: the real two-clip stitch runs on the Mac")
 
 print(f"examined {N} case(s)")
 if FAILS:
