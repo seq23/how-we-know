@@ -817,6 +817,33 @@
         "applied_at": "2026-10-13T23:09:52+00:00",
         "result": "posted (Ugy784aZ2P1Rorbf69Z4AaABAg)"
       }
+    },
+    "UgzcYjwmMdieurLbLvh4AaABAg": {
+      "comment_id": "UgzcYjwmMdieurLbLvh4AaABAg",
+      "video_id": "HLjcjyug4Ac",
+      "author": "@howweknowdeep",
+      "author_channel_id": "UC5vZFZc15DIM6IrFwFgAECg",
+      "text": "What is the deepest part of the ocean? Full episode: https://youtu.be/sfveDF88ZHo",
+      "published_at": "2026-10-14T14:13:02+00:00",
+      "like_count": 0,
+      "reply_count": 0,
+      "class": "own_channel",
+      "proposed_action": null,
+      "proposed_reply": null,
+      "product_note": null,
+      "seen_at": "2026-10-14T14:13:02+00:00",
+      "acted": {
+        "comment_id": "UgzcYjwmMdieurLbLvh4AaABAg",
+        "video_id": "HLjcjyug4Ac",
+        "action": "channel_comment",
+        "reply_text": "What is the deepest part of the ocean? Full episode: https://youtu.be/sfveDF88ZHo",
+        "instructed_by": "owner",
+        "instructed_at": "2026-10-03",
+        "source": "loop/handoff: owner decision 2026-10-03",
+        "note": null,
+        "applied_at": "2026-10-14T14:13:02+00:00",
+        "result": "posted (UgzcYjwmMdieurLbLvh4AaABAg)"
+      }
     }
   },
   "instructions": {},
@@ -1132,6 +1159,18 @@
       "note": null,
       "applied_at": "2026-10-13T23:09:52+00:00",
       "result": "posted (Ugy784aZ2P1Rorbf69Z4AaABAg)"
+    },
+    {
+      "comment_id": "UgzcYjwmMdieurLbLvh4AaABAg",
+      "video_id": "HLjcjyug4Ac",
+      "action": "channel_comment",
+      "reply_text": "What is the deepest part of the ocean? Full episode: https://youtu.be/sfveDF88ZHo",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03",
+      "note": null,
+      "applied_at": "2026-10-14T14:13:02+00:00",
+      "result": "posted (UgzcYjwmMdieurLbLvh4AaABAg)"
     }
   ],
   "sweeps": [
@@ -1377,7 +1416,15 @@
       "instructed_by": "owner",
       "instructed_at": "2026-10-03",
       "source": "loop/handoff: owner decision 2026-10-03"
+    },
+    "HLjcjyug4Ac": {
+      "comment_id": "UgzcYjwmMdieurLbLvh4AaABAg",
+      "text": "What is the deepest part of the ocean? Full episode: https://youtu.be/sfveDF88ZHo",
+      "posted_at": "2026-10-14T14:13:02+00:00",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03"
     }
   },
-  "updated": "2026-10-13T23:09:52+00:00"
+  "updated": "2026-10-14T14:13:02+00:00"
 }
