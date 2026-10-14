@@ -108,10 +108,35 @@ def ffprobe_s(path: Path, stream: str | None = None) -> float:
     return float(r.stdout.strip().splitlines()[0])
 
 
-def video_md5s(path: Path) -> list[str]:
+def video_packets(path: Path) -> list[tuple[int, str]]:
+    """(size, md5) of every video packet, in order, without decoding."""
     r = subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-i", str(path),
                         "-map", "0:v:0", "-c", "copy", "-f", "framemd5", "-"],
                        capture_output=True, text=True, check=True)
+    out = []
+    for ln in r.stdout.splitlines():
+        if ln and not ln.startswith("#"):
+            f = [x.strip() for x in ln.split(",")]
+            out.append((int(f[4]), f[5]))
+    return out
+
+
+def video_md5s(path: Path) -> list[str]:
+    return [m for _, m in video_packets(path)]
+
+
+# The concat demuxer writes the parameter sets (SPS/PPS, 40-odd bytes) inline into
+# every KEYFRAME it copies, because each piece carries its own encoder header. So
+# the proof is two-part: every other packet is byte-identical to its piece's, and
+# the keyframes - which differ only by that header - decode to identical pictures.
+PARAM_SET_SLACK = 256
+
+
+def keyframe_md5s(path: Path) -> list[str]:
+    """md5 of every DECODED keyframe (the decoder skips the rest: fast)."""
+    r = subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-skip_frame", "nokey",
+                        "-i", str(path), "-map", "0:v:0", "-fps_mode", "passthrough",
+                        "-f", "framemd5", "-"], capture_output=True, text=True, check=True)
     return [ln.rsplit(",", 1)[-1].strip() for ln in r.stdout.splitlines()
             if ln and not ln.startswith("#")]
 
@@ -124,11 +149,21 @@ def stitch_files(pieces: list[Path], final: Path) -> dict:
         subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-f", "concat",
                         "-safe", "0", "-i", str(lst), "-c", "copy", "-movflags", "+faststart",
                         str(final)], check=True)
-    whole = video_md5s(final)
-    at = 0
+    whole = video_packets(final)
+    at, inline = 0, 0
     for p in pieces:
-        own = video_md5s(p)
-        if whole[at:at + len(own)] != own:
+        own = video_packets(p)
+        got = whole[at:at + len(own)]
+        bad = len(got) != len(own)
+        for (gs, gm), (os_, om) in zip(got, own):
+            if gm == om:
+                continue
+            if 0 < gs - os_ <= PARAM_SET_SLACK:
+                inline += 1                       # a keyframe carrying its header
+                continue
+            bad = True
+            break
+        if bad:
             final.unlink(missing_ok=True)
             raise RuntimeError(f"stitch refused: {p.name} is not byte-identical inside "
                                f"{final.name} from packet {at}")
@@ -136,7 +171,14 @@ def stitch_files(pieces: list[Path], final: Path) -> dict:
     if at != len(whole):
         final.unlink(missing_ok=True)
         raise RuntimeError(f"stitch refused: {len(whole)} packets stitched, {at} in the pieces")
-    return {"packets": len(whole), "byte_identical": True}
+    keys = [m for p in pieces for m in keyframe_md5s(p)]
+    if keyframe_md5s(final) != keys:
+        final.unlink(missing_ok=True)
+        raise RuntimeError("stitch refused: the stitched keyframes do not decode to the pieces' pictures")
+    return {"packets": len(whole), "byte_identical": True,
+            "keyframes_with_inline_header": inline, "keyframes_decoded_identical": len(keys),
+            "note": "every non-key packet byte-identical to its piece's; keyframes carry the "
+                    "encoder header inline (concat demuxer) and decode to identical pictures"}
 
 
 def combine_voice(measures: list[dict], offsets: list[float]) -> dict:
@@ -202,7 +244,7 @@ def attribution_read(final: Path, pieces_meta: list[dict], per_piece: int = 4) -
                                 "-vf", f"crop=1100:70:{food.W - 1100}:0,scale=2200:140",
                                 "-frames:v", "1", "-y", str(png)], check=True, capture_output=True)
                 items = IV.ocr([str(png)]).get(str(png), [])
-                got = " ".join((x.get("text") if isinstance(x, dict) else str(x)) for x in items).upper()
+                got = " ".join(str((x.get("t") or x.get("text") or "") if isinstance(x, dict) else x) for x in items).upper()
                 want = [w for w in re.findall(r"[A-Z]{4,}", credit.upper())]
                 hit = sum(1 for w in want if w in got)
                 examined += 1

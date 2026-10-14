@@ -166,6 +166,46 @@ with tempfile.TemporaryDirectory() as td:
     finally:
         os.environ["LOOP_DRY_RUN"] = "1"
 
+# ------------------------------------- 6. packaging: credits, hashtags, stitch
+import upload as UP  # noqa: E402
+import discovery as DI  # noqa: E402
+cred = UP.footage_credits(SLUG)
+spec_now = json.loads((ROOT / "channel" / "specs" / f"{SLUG}.json").read_text())
+if spec_now.get("kind") == "food-episode":
+    check(all(w in cred for w in ("Mixkit", "Pixabay", "Wikimedia Commons", "AI-generated")),
+          f"the description credits every footage source and the AI images: {cred[:80]!r}")
+check(UP.footage_credits("02-how-deep-sea-creatures-survive-pressure") == "",
+      "no food spec, no food credits block")
+tags = DI.hashtags_for(SLUG, (ROOT / "scripts" / "food" / f"{SLUG}.md").read_text(), "food-science")
+check(tags[:3] == ["#Bread", "#Steak", "#Chocolate"], f"series hashtags, one per subject: {tags}")
+import subprocess  # noqa: E402
+with tempfile.TemporaryDirectory() as td:
+    d = Path(td)
+    for i, col in enumerate(("red", "blue")):
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "lavfi", "-i", f"color={col}:s=64x36:r=30:d=2",
+                        "-c:v", "libx264", "-g", "15", "-pix_fmt", "yuv420p", str(d / f"p{i}.mp4")], check=True)
+    info = FE.stitch_files([d / "p0.mp4", d / "p1.mp4"], d / "all.mp4")
+    check(info["byte_identical"] and info["keyframes_decoded_identical"] >= 2,
+          f"two pieces stitch, proven packet- and keyframe-identical: {info}")
+    real_vp, real_km = FE.video_packets, FE.keyframe_md5s
+    try:                     # a non-key packet that changed in the stitch: refused
+        FE.video_packets = lambda pth: ([(s, ("0" * 32 if i == 5 else m)) for i, (s, m) in
+                                         enumerate(real_vp(pth))] if pth.name == "t.mp4" else real_vp(pth))
+        try:
+            FE.stitch_files([d / "p0.mp4", d / "p1.mp4"], d / "t.mp4")
+            check(False, "a changed packet in the stitch is refused")
+        except RuntimeError:
+            check(not (d / "t.mp4").exists(), "a changed packet in the stitch is refused, and the file removed")
+        FE.video_packets = real_vp   # a keyframe whose picture differs: refused
+        FE.keyframe_md5s = lambda pth: (["x"] + real_km(pth)[1:]) if pth.name == "k.mp4" else real_km(pth)
+        try:
+            FE.stitch_files([d / "p0.mp4", d / "p1.mp4"], d / "k.mp4")
+            check(False, "a keyframe that decodes differently is refused")
+        except RuntimeError:
+            check(True, "a keyframe that decodes differently is refused")
+    finally:
+        FE.video_packets, FE.keyframe_md5s = real_vp, real_km
+
 print(f"examined {N} case(s)")
 if FAILS:
     print("FAIL: " + "; ".join(FAILS[:5]))

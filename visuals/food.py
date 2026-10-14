@@ -1006,8 +1006,13 @@ def _finish(script, voice_dir, out, work, silent, tl, beats, caps, cat,
     import food_sound                                         # noqa: PLC0415
     bed_raw = bed or food_sound.build_bed(tl, work / "bed.wav", cat)
     mix = food_sound.duck_and_mix(voice, bed_raw, work)
+    # The PICTURE sets the length: the mix is padded with silence to it (apad) and
+    # cut there. A bare -shortest cut the picture to the mix, and the mix ran a
+    # fifth of a second short of the narration: the first full render's steak
+    # piece lost its last 9 frames and the end of its last pause (caught by
+    # V13's rule in visuals/food_episode.check_episode).
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(silent), "-i", str(mix["mix"]),
-                    "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-shortest",
+                    "-c:v", "copy", "-af", "apad", "-c:a", "aac", "-b:a", "192k", "-shortest",
                     "-movflags", "+faststart", str(out)], check=True)
     out.with_suffix(".srt").write_text(srt(caps))
     ai = sorted({s["asset"] for s in shots if s.get("asset") and cat[s["asset"]]["ai"]})
