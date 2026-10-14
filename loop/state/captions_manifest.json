@@ -1,6 +1,6 @@
 {
   "week": "2026-W42",
-  "at": "2026-10-13T15:11:43+00:00",
+  "at": "2026-10-14T15:11:19+00:00",
   "plan": [
     {
       "slug": "10-what-is-the-deepest-part-of-the-ocean",
@@ -305,6 +305,38 @@
       "cues": 157,
       "sha256": "d0d0663937918dff5a4310e342ed21bc66eb0b3a0e7f95558056426da8b50ca3",
       "already": true
+    },
+    {
+      "slug": "how-deep-can-a-sperm-whale-go",
+      "video_id": "hh5mMno-Iis",
+      "srt": "/home/runner/work/how-we-know/how-we-know/captions/how-deep-can-a-sperm-whale-go.srt",
+      "cues": 230,
+      "sha256": "db4772ae95478784d9754bef130952d83d4fa8ff8198a0ca70a77e5c3c604003",
+      "already": false
+    },
+    {
+      "slug": "what-lives-in-mariana-trench",
+      "video_id": "REa1JiBNVto",
+      "srt": "/home/runner/work/how-we-know/how-we-know/captions/what-lives-in-mariana-trench.srt",
+      "cues": 188,
+      "sha256": "0a84762a8a74f8b08adff6bb591357c638636bf3802ed7df00851465bd2d5ec3",
+      "already": false
+    },
+    {
+      "slug": "what-is-hydrothermal-vents",
+      "video_id": "09O44lDEYYo",
+      "srt": "/home/runner/work/how-we-know/how-we-know/captions/what-is-hydrothermal-vents.srt",
+      "cues": 168,
+      "sha256": "672a882f9549dc139bf4c657555839463f3ca205bb979ac1349b14a56fa2e25b",
+      "already": false
+    },
+    {
+      "slug": "how-are-microchips-designed",
+      "video_id": "rn99K4kav40",
+      "srt": "/home/runner/work/how-we-know/how-we-know/captions/how-are-microchips-designed.srt",
+      "cues": 167,
+      "sha256": "232dd1272a1aa0629daeadd253cbabaf5ffac4b7dbfccdc7ea7a416ce45a8ea9",
+      "already": false
     }
   ],
   "gaps": []

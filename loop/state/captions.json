@@ -86,7 +86,7 @@
       "track_kind": "standard",
       "source": "inserted",
       "recorded_at": "2026-09-03T17:28:06+00:00",
-      "verified_at": "2026-09-30T15:12:39+00:00"
+      "verified_at": "2026-10-14T15:11:20+00:00"
     },
     "jec80gk8rM0": {
       "slug": "08-what-creatures-live-in-the-deep-sea",
@@ -97,7 +97,7 @@
       "track_kind": "standard",
       "source": "inserted",
       "recorded_at": "2026-09-03T17:28:06+00:00",
-      "verified_at": "2026-09-30T15:12:39+00:00"
+      "verified_at": "2026-10-14T15:11:21+00:00"
     },
     "G1TqXmf36Qo": {
       "slug": "09-what-is-the-scariest-deep-sea-creature",
@@ -382,7 +382,7 @@
       "track_kind": "standard",
       "source": "inserted",
       "recorded_at": "2026-09-16T15:09:58+00:00",
-      "verified_at": "2026-09-30T15:12:39+00:00"
+      "verified_at": "2026-10-14T15:11:21+00:00"
     },
     "zs-gueHeX8k": {
       "slug": "how-do-scientists-know-so-much",
@@ -427,10 +427,39 @@
       "source": "inserted",
       "recorded_at": "2026-10-05T15:11:48+00:00",
       "verified_at": "2026-10-07T15:19:25+00:00"
+    },
+    "hh5mMno-Iis": {
+      "slug": "how-deep-can-a-sperm-whale-go",
+      "caption_id": "AUieDabyFd-NzOmYSW1tqST2QL7OQ2vGPObN7TIonmUElqZ5c8BEFgDE",
+      "language": "en",
+      "srt_sha256": "db4772ae95478784d9754bef130952d83d4fa8ff8198a0ca70a77e5c3c604003",
+      "cues": 230,
+      "track_kind": "standard",
+      "source": "inserted",
+      "recorded_at": "2026-10-14T15:11:20+00:00"
     }
   },
-  "blocked": {},
-  "updated": "2026-10-13T15:11:44+00:00",
+  "blocked": {
+    "REa1JiBNVto": {
+      "slug": "what-lives-in-mariana-trench",
+      "reason": "QUOTA_DEFERRED",
+      "since": "2026-10-14T15:11:20+00:00",
+      "sha256": "0a84762a8a74f8b08adff6bb591357c638636bf3802ed7df00851465bd2d5ec3"
+    },
+    "09O44lDEYYo": {
+      "slug": "what-is-hydrothermal-vents",
+      "reason": "QUOTA_DEFERRED",
+      "since": "2026-10-14T15:11:20+00:00",
+      "sha256": "672a882f9549dc139bf4c657555839463f3ca205bb979ac1349b14a56fa2e25b"
+    },
+    "rn99K4kav40": {
+      "slug": "how-are-microchips-designed",
+      "reason": "QUOTA_DEFERRED",
+      "since": "2026-10-14T15:11:20+00:00",
+      "sha256": "232dd1272a1aa0629daeadd253cbabaf5ffac4b7dbfccdc7ea7a416ce45a8ea9"
+    }
+  },
+  "updated": "2026-10-14T15:11:21+00:00",
   "token_scopes": [],
   "token_has_force_ssl": true
 }
