@@ -1,0 +1,101 @@
+{
+  "slug": "how-are-microchips-designed",
+  "title": "Do Microchips Start as Text?",
+  "grade": "hwk-split-navy-amber-v1",
+  "chosen": "A",
+  "variants": {
+    "A": {
+      "file": "A.jpg",
+      "source": "assets/mat__microchip-die__hp-pa-8700-die-shot-etched-42799937502-jpg.jpg",
+      "manifest": "materials.json",
+      "subject": "microchip-die",
+      "sha256": "ea66ba65d30ffae6633b7654be28e3209533a434956777f8d42c64d90c5c2454",
+      "box": [
+        385,
+        1511,
+        3962,
+        3523
+      ],
+      "crop": null,
+      "text": "MICROCHIPS START",
+      "words": 2,
+      "credit": "MICROGRAPH, MARTIJN BOER FROM NETHERLANDS (PUBLIC DOMAIN)",
+      "text_bbox": [
+        47,
+        405,
+        1033,
+        664
+      ],
+      "credit_bbox": [
+        635,
+        13,
+        1266,
+        35
+      ],
+      "fill": 0.7757,
+      "energy": 0.9726
+    },
+    "B": {
+      "file": "B.jpg",
+      "source": "assets/mat__microchip-die__hp-pa-8700-die-shot-etched-42799937502-jpg.jpg",
+      "manifest": "materials.json",
+      "subject": "microchip-die",
+      "sha256": "ea66ba65d30ffae6633b7654be28e3209533a434956777f8d42c64d90c5c2454",
+      "box": [
+        0,
+        1287,
+        4223,
+        3663
+      ],
+      "crop": null,
+      "text": "MICROCHIPS START TEXT",
+      "words": 3,
+      "credit": "MICROGRAPH, MARTIJN BOER FROM NETHERLANDS (PUBLIC DOMAIN)",
+      "text_bbox": [
+        47,
+        267,
+        1033,
+        662
+      ],
+      "credit_bbox": [
+        635,
+        13,
+        1266,
+        35
+      ],
+      "fill": 0.8318,
+      "energy": 0.9242
+    },
+    "C": {
+      "file": "C.jpg",
+      "source": "assets/mat__microchip-die__hp-pa-8700-die-shot-etched-42799937502-jpg.jpg",
+      "manifest": "materials.json",
+      "subject": "microchip-die",
+      "sha256": "ea66ba65d30ffae6633b7654be28e3209533a434956777f8d42c64d90c5c2454",
+      "box": [
+        1085,
+        1456,
+        4286,
+        3256
+      ],
+      "crop": null,
+      "text": "MICROCHIPS START",
+      "words": 2,
+      "credit": "MICROGRAPH, MARTIJN BOER FROM NETHERLANDS (PUBLIC DOMAIN)",
+      "text_bbox": [
+        247,
+        405,
+        1233,
+        664
+      ],
+      "credit_bbox": [
+        14,
+        13,
+        645,
+        35
+      ],
+      "fill": 0.9476,
+      "energy": 1.0
+    }
+  }
+}

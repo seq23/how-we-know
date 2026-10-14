@@ -93,6 +93,11 @@
     ],
     "title": "How Deep Can a Fish Live?"
   },
+  "how-are-microchips-designed": {
+    "model": "claude-subscription/opus",
+    "texts": [],
+    "title": "Do Microchips Start as Text?"
+  },
   "how-are-microchips-made": {
     "model": "claude-subscription/opus",
     "texts": [
@@ -184,6 +189,15 @@
       "NOT IN NATURE"
     ],
     "title": "Concrete Does Not Dry"
+  },
+  "what-is-hydrothermal-vents": {
+    "model": "claude-subscription/opus",
+    "texts": [
+      "400 DEGREES",
+      "PROBE MELTED",
+      "UP TO 400"
+    ],
+    "title": "How Hot Are Hydrothermal Vents?"
   },
   "why-deep-sea-fish-die-when-brought-to-surface": {
     "model": "claude-subscription/opus",

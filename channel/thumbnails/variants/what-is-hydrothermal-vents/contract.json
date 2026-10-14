@@ -1,0 +1,101 @@
+{
+  "slug": "what-is-hydrothermal-vents",
+  "title": "How Hot Are Hydrothermal Vents?",
+  "grade": "hwk-split-navy-amber-v1",
+  "chosen": "A",
+  "variants": {
+    "A": {
+      "file": "A.jpg",
+      "source": "assets/vent__16065__ex2205-dive02-smoker-1280x720-poster.jpg",
+      "manifest": "rights.json",
+      "subject": "vent",
+      "sha256": "d050f3b11cbcea3d24035086cad98a056b453229485aed912eeafa7e29b049f4",
+      "box": [
+        185,
+        238,
+        1015,
+        705
+      ],
+      "crop": null,
+      "text": "400 DEGREES",
+      "words": 2,
+      "credit": "NOAA Ocean Exploration, Voyage to the Ridge 2022",
+      "text_bbox": [
+        44,
+        342,
+        940,
+        663
+      ],
+      "credit_bbox": [
+        793,
+        13,
+        1266,
+        35
+      ],
+      "fill": 0.729,
+      "energy": 0.7092
+    },
+    "B": {
+      "file": "B.jpg",
+      "source": "assets/vent__5177__1605activevent-hires.jpg",
+      "manifest": "rights.json",
+      "subject": "vent",
+      "sha256": "6e45781eb563e1410f1e7c4c36a0c1ccbe37ea044a535e4ce756686a522f556a",
+      "box": [
+        0,
+        13,
+        1545,
+        882
+      ],
+      "crop": null,
+      "text": "PROBE MELTED",
+      "words": 2,
+      "credit": "NOAA Ocean Exploration, 2016 Deepwater Exploration of the Marianas",
+      "text_bbox": [
+        44,
+        342,
+        798,
+        661
+      ],
+      "credit_bbox": [
+        622,
+        13,
+        1266,
+        35
+      ],
+      "fill": 0.6168,
+      "energy": 0.4198
+    },
+    "C": {
+      "file": "C.jpg",
+      "source": "assets/vent__12596__dive02-moytirra-vents-1280x720-poster.jpg",
+      "manifest": "rights.json",
+      "subject": "vent",
+      "sha256": "80bca342d010e312d0fdeae64f1647a21f516ac105e077a808d9f7dc26f1fc94",
+      "box": [
+        196,
+        295,
+        951,
+        720
+      ],
+      "crop": null,
+      "text": "UP TO 400",
+      "words": 3,
+      "credit": "Video courtesy of NOAA Ocean Exploration, Voyage to the Ridge 2022.",
+      "text_bbox": [
+        227,
+        513,
+        1236,
+        663
+      ],
+      "credit_bbox": [
+        14,
+        13,
+        656,
+        35
+      ],
+      "fill": 0.8318,
+      "energy": 0.2918
+    }
+  }
+}
