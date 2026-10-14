@@ -1,8 +1,12 @@
 {
-  "last_run_at": "2026-10-13T23:09:48+00:00",
+  "last_run_at": "2026-10-14T01:25:57+00:00",
   "lane": "handoff",
-  "deferred": [],
-  "resets_at": null,
+  "deferred": [
+    "MAV4PF056RA",
+    "MozJZ-ChEZU",
+    "xyZ9xs7OF3g"
+  ],
+  "resets_at": "2026-10-14T00:00:00-07:00",
   "notes": [],
-  "units_spent": 503
+  "units_spent": 153
 }
