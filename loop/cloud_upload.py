@@ -724,8 +724,10 @@ def run(limit: int = 4, dry_run: bool = False) -> int:
         import longform_title                              # noqa: PLC0415
         untitled_lf = {}
         tdoc = longform_title.load()
+        import domains as _dom_                             # noqa: PLC0415
         for s_, _, _ in take:
-            sp_ = ROOT / "scripts" / f"{s_}.md"
+            # a food episode's script is scripts/food/<slug>.md (domains.script_of)
+            sp_ = _dom_.script_of(s_) or ROOT / "scripts" / f"{s_}.md"
             text_ = sp_.read_text(encoding="utf-8") if sp_.exists() else ""
             t_, why_, _ = longform_title.title_for_upload(
                 s_, text_, questions.get(s_), tdoc)
