@@ -8,6 +8,7 @@
         }
       ],
       "attempts": 1,
+      "bound_at": "2026-10-14T04:00:05+00:00",
       "budget": {
         "tail_words": 0
       },
@@ -20,19 +21,20 @@
       "kind": "reopen",
       "minutes_after": 11.46,
       "minutes_before": 11.58,
-      "mode": "pending_bind",
+      "mode": "full",
       "model": "claude-subscription/opus",
       "new_script_sha256": "7764535434ef8d61ba899d41048c8fa556f5ec4636209d1d54af9c3be48a6f99",
-      "old_render_sha256": null,
+      "old_render_sha256": "dc2b53ca772b40bf3b941bda063f877a8b051fa18c59e5498a804f252540e60d",
       "old_script_sha256": "869d7254bfe70c1863de47f53a4299d1041e8b96509a84a2884d3849ad8cac4f",
       "scripted_at": "2026-10-13T14:44:24+00:00",
-      "status": "scripted",
-      "why_full": null,
+      "status": "full_rerender",
+      "why_full": "no renders/<slug>-final.mp4.render.json sidecar",
       "words_after": 1657,
       "words_before": 1674
     },
     "how-deep-can-a-sperm-whale-go": {
       "attempts": 1,
+      "bound_at": "2026-10-14T04:00:05+00:00",
       "budget": {
         "tail_words": 0
       },
@@ -44,19 +46,20 @@
       "kind": "reopen",
       "minutes_after": 16.6,
       "minutes_before": 16.54,
-      "mode": "pending_bind",
+      "mode": "full",
       "model": "claude-subscription/opus",
       "new_script_sha256": "02d060d909c7036f3c4a732cf9758bfa18af5058cecf26eecb2dc9b6d307bffe",
-      "old_render_sha256": null,
+      "old_render_sha256": "0e6e7edf0069385e6d86425bf15bcc939b29066dde8d4140427efd9b94df8ebb",
       "old_script_sha256": "a3c06c42451fb41d1af0cdb319de6882a5e3dfe54a7e55f9a35d6d2b451bdde4",
       "scripted_at": "2026-10-13T14:44:54+00:00",
-      "status": "scripted",
-      "why_full": null,
+      "status": "full_rerender",
+      "why_full": "no renders/<slug>-final.mp4.render.json sidecar",
       "words_after": 2400,
       "words_before": 2392
     },
     "how-deep-can-whales-dive": {
       "attempts": 1,
+      "bound_at": "2026-10-14T04:00:05+00:00",
       "budget": {
         "tail_words": 0
       },
@@ -68,19 +71,20 @@
       "kind": "reopen",
       "minutes_after": 10.68,
       "minutes_before": 10.62,
-      "mode": "pending_bind",
+      "mode": "full",
       "model": "claude-subscription/opus",
       "new_script_sha256": "5f0e582382495172161f6a5e4ab3b75c1f81afc8d0d329997e3e79ffa824a259",
       "old_render_sha256": null,
       "old_script_sha256": "cccac47ded14e8f3a7d77f6e2b3dacbce0e6d5eb9b9f0d41abc1b510b90eeee8",
       "scripted_at": "2026-10-13T14:48:36+00:00",
-      "status": "scripted",
-      "why_full": null,
+      "status": "full_rerender",
+      "why_full": "no render on this machine",
       "words_after": 1544,
       "words_before": 1535
     },
     "what-is-hydrothermal-vents": {
       "attempts": 1,
+      "bound_at": "2026-10-14T04:00:05+00:00",
       "budget": {
         "tail_words": 0
       },
@@ -92,14 +96,14 @@
       "kind": "reopen",
       "minutes_after": 11.7,
       "minutes_before": 11.73,
-      "mode": "pending_bind",
+      "mode": "full",
       "model": "claude-subscription/opus",
       "new_script_sha256": "920dd3d5d0ba667874b0de26fc5be6da34089b8cb8449230e7b8d1a1b84fdb39",
-      "old_render_sha256": null,
+      "old_render_sha256": "e30c3179ce88d14a385956545b7007dc608e671efb469a7119bddebe27083837",
       "old_script_sha256": "5662c0d1dc67d9b31d4c7eba09ffd9f09b6739f852a62b67d2e45905b2cba86c",
       "scripted_at": "2026-10-13T14:48:46+00:00",
-      "status": "scripted",
-      "why_full": null,
+      "status": "full_rerender",
+      "why_full": "no renders/<slug>-final.mp4.render.json sidecar",
       "words_after": 1691,
       "words_before": 1696
     },
@@ -111,6 +115,7 @@
         }
       ],
       "attempts": 1,
+      "bound_at": "2026-10-14T04:00:05+00:00",
       "budget": {
         "tail_words": 0
       },
@@ -122,14 +127,14 @@
       "kind": "reopen",
       "minutes_after": 12.93,
       "minutes_before": 13.05,
-      "mode": "pending_bind",
+      "mode": "full",
       "model": "claude-subscription/opus",
       "new_script_sha256": "0aaf2bbcce94cab147cc9922684e267a5ba1ce109d39819587702661c621a9b9",
       "old_render_sha256": null,
       "old_script_sha256": "2f5e9cc1efa2c73f48640c0544ccc20978d8193a44d132154e259da26b51edb4",
       "scripted_at": "2026-10-13T14:49:00+00:00",
-      "status": "scripted",
-      "why_full": null,
+      "status": "full_rerender",
+      "why_full": "no render on this machine",
       "words_after": 1869,
       "words_before": 1887
     },
@@ -141,6 +146,7 @@
         }
       ],
       "attempts": 1,
+      "bound_at": "2026-10-14T04:00:05+00:00",
       "budget": {
         "tail_words": 0
       },
@@ -153,19 +159,20 @@
       "kind": "reopen",
       "minutes_after": 12.19,
       "minutes_before": 12.12,
-      "mode": "pending_bind",
+      "mode": "full",
       "model": "claude-subscription/opus",
       "new_script_sha256": "bef5ccd890a05395ff198d33326e1b5d8472d78bb87a8d86f68471a52c74a84f",
       "old_render_sha256": null,
       "old_script_sha256": "b6daa0fdc6a201d09ddf37e9e7d27a5233fa50b2ffbe5c7415b13c352eb1adb3",
       "scripted_at": "2026-10-13T14:49:21+00:00",
-      "status": "scripted",
-      "why_full": null,
+      "status": "full_rerender",
+      "why_full": "no render on this machine",
       "words_after": 1763,
       "words_before": 1752
     },
     "why-deep-sea-creatures-are-creepers": {
       "attempts": 1,
+      "bound_at": "2026-10-14T04:00:05+00:00",
       "budget": {
         "tail_words": 0
       },
@@ -177,17 +184,17 @@
       "kind": "reopen",
       "minutes_after": 12.64,
       "minutes_before": 12.76,
-      "mode": "pending_bind",
+      "mode": "full",
       "model": "claude-subscription/opus",
       "new_script_sha256": "ad0ca4767c5734d5576c3cde621d63b4490bba2433d5d8d2440f93555cad2d36",
       "old_render_sha256": null,
       "old_script_sha256": "c3490b250b196ec8d417e485d895a23488dccd53bf7126ceeca15eb02a3b219d",
       "scripted_at": "2026-10-13T14:49:34+00:00",
-      "status": "scripted",
-      "why_full": null,
+      "status": "full_rerender",
+      "why_full": "no render on this machine",
       "words_after": 1827,
       "words_before": 1845
     }
   },
-  "updated": "2026-10-13T22:25:47+00:00"
+  "updated": "2026-10-14T04:00:05+00:00"
 }
