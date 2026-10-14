@@ -166,6 +166,16 @@ with tempfile.TemporaryDirectory() as td:
     finally:
         os.environ["LOOP_DRY_RUN"] = "1"
 
+# the cloud lane's title gate reads the food script where it lives (it read
+# scripts/<slug>.md and refused the first food episode: TITLE_REFUSED, 13 Oct)
+import longform_title as LT  # noqa: E402
+sp = D.script_of(SLUG)
+title, why, _ = LT.title_for_upload(SLUG, sp.read_text(), None)
+check(title == "Bread, Steak, Chocolate: What's Inside?", f"the title passes from scripts/food/: {title} {why}")
+src_cu = (ROOT / "loop" / "cloud_upload.py").read_text()
+gate = src_cu[src_cu.index("the TITLE gate"):src_cu.index("TITLE_REFUSED")]
+check("script_of(" in gate, "the cloud lane's title gate resolves the script with domains.script_of")
+
 # ------------------------------------- 6. packaging: credits, hashtags, stitch
 import upload as UP  # noqa: E402
 import discovery as DI  # noqa: E402
