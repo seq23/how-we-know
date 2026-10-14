@@ -1,25 +1,23 @@
 {
   "stage": "cloud-upload",
   "week": "2026-W42",
-  "at": "2026-10-14T01:25:55+00:00",
-  "code": "TITLE_REFUSED",
-  "message": "every episode ready to upload today has no long-form title that passes the formula and its truth guard: why-bread-rises-steak-browns-chocolate-snaps \u2014 no proposed title in loop/state/titles.json and no ## YouTube title in the script",
+  "at": "2026-10-14T14:12:57+00:00",
+  "code": "QUOTA_EXHAUSTED",
+  "message": "no quota left today for a whole video (1700 units). Already spent today by: backfill 5100. quota day 2026-10-14 (PT): spent 5100 of 10000, 4500 usable after 400 headroom; lanes: backfill 5100",
   "detail": {
-    "untitled": {
-      "why-bread-rises-steak-browns-chocolate-snaps": "no proposed title in loop/state/titles.json and no ## YouTube title in the script"
-    }
+    "pending": [
+      "why-bread-rises-steak-browns-chocolate-snaps"
+    ],
+    "resets_at": "2026-10-15T00:00:00-07:00"
   },
-  "unblock": "Nothing to type. loop-repackage runs `loop/longform_title.py propose --pending` every day on the $0 model route and writes loop/state/titles.json; the next run of this lane uploads every slug that now has a passing title.",
+  "unblock": "Usually nothing to do \u2014 the allowance resets at midnight Pacific and this lane runs daily, so tomorrow's run picks up exactly where this one stopped. If the spending lane above is 'backfill', the Mac's launchd agent com.howweknow.backfill is still uploading the same library from the other side. Two lanes on one 10,000-unit allowance is the documented transition state, not a fault: unload the Mac agent once this lane has uploaded once, watched.",
   "disposition": "self_resolving",
-  "disposition_why": "2026-10-13 (repackage job 1). Every episode ready to upload today lacks a long-form title that passes loop/longform_title.py. loop-repackage proposes titles for every not-yet-uploaded script every day on the $0 route; the next upload run takes each slug the moment its title passes. Nothing is lost: the renders stay on the shelf. (run 1 of at most 5 before this escalates to a human.)",
+  "disposition_why": "The YouTube allowance resets at midnight Pacific and every lane that raises this runs at least daily, so the work is deferred by a few hours, not lost. (run 1 of at most 3 before this escalates to a human.)",
   "consecutive": 1,
-  "held_items": [
-    "why-bread-rises-steak-browns-chocolate-snaps"
-  ],
+  "held_items": [],
   "exit_code": 0,
   "work_done_before_stop": [],
   "notes": [
-    "shelf: r2://how-we-know-renders",
-    "held 1 episode(s) with no long-form title that passes loop/longform_title.py: why-bread-rises-steak-browns-chocolate-snaps. They stay on the shelf; nothing is deleted."
+    "shelf: r2://how-we-know-renders"
   ]
 }
