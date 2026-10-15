@@ -1,12 +1,13 @@
 {
   "day": "2026-10-15",
-  "spent": 6822,
+  "spent": 7465,
   "by_lane": {
-    "demand": 1,
     "backfill": 1700,
-    "cloud-upload": 1700,
-    "handoff": 553,
     "captions": 1950,
+    "chapters-backfill": 643,
+    "cloud-upload": 1700,
+    "demand": 1,
+    "handoff": 553,
     "localize": 153,
     "tags-backfill": 765
   }

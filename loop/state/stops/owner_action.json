@@ -1,1 +1,10 @@
-{}
+{
+  "imagery-harvest-mac": {
+    "code": "DELEGATED_HARVEST_STALE",
+    "message": "1 delegated harvester(s) have not been run by their host inside the 10-day cap: research/imagery_food.py on ci (last run: never; last success: never). This host cannot run it and the host that can has been silent, so the pool it feeds has stopped growing.",
+    "unblock": "ci: gh workflow run loop-imagery-harvest.yml. The next run there stamps loop/state/harvest_runs.json and this clears on its own.",
+    "at": "2026-10-15T12:28:13+00:00",
+    "week": "2026-W42",
+    "consecutive": 1
+  }
+}
