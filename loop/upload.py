@@ -200,8 +200,61 @@ def _enforce_min_gap(rows: list[tuple[int, str]]) -> list[tuple[int, str]]:
     return out
 
 
+def _visuals_captions():
+    """visuals/captions.py. A bare `import captions` from loop/ can bind the
+    repo's captions/ DIRECTORY as a namespace package instead (no __file__),
+    so the module is loaded by path when that has happened."""
+    mod = sys.modules.get("captions")
+    if mod is not None and getattr(mod, "__file__", None):
+        return mod
+    sys.modules.pop("captions", None)
+    vis = str(ROOT / "visuals")
+    if vis not in sys.path:
+        sys.path.insert(0, vis)
+    import importlib.util                                  # noqa: PLC0415
+    spec = importlib.util.spec_from_file_location("captions", f"{vis}/captions.py")
+    mod = importlib.util.module_from_spec(spec)
+    sys.modules["captions"] = mod
+    spec.loader.exec_module(mod)
+    return mod
+
+
+def measured_chapters(slug: str) -> list[tuple[int, str]] | None:
+    """The RENDER's chapter starts: each plan heading at its measured beat
+    offset, folded the way YouTube requires - computed now, by the same
+    visuals/captions.py functions that write captions/<slug>.chapters.txt, from
+    the same durations visuals/assemble.py cut the render to (the wavs on the
+    Mac, audio/<slug>/beats.json in the cloud). None when the episode has no
+    frozen plan or its timing is not fully measured.
+
+    WHY NOT JUST READ captions/<slug>.chapters.txt. It is a cache, written
+    once, and nothing re-writes it when its basis moves. CONFIRMED 2026-10-14:
+    20-what-is-the-midnight-zone's file was computed on 4 Sep from the plan's
+    word-count ESTIMATE (its timing.json says "estimate") and puts "How the
+    zone connects the surface and abyss" at 4:32, while the render has it at
+    5:16 (316 s, the measured beat offset - the same instant its rank-2 Short
+    was cut from); three extended episodes' files predate the two chapters
+    their tails added, so "Closing" sat 116-173 s early. 12 of 41 live
+    descriptions carried drifted chapter times.
+    """
+    if not (ROOT / "plans" / f"{slug}.json").exists():
+        return None
+    CAP = _visuals_captions()
+    plan, _ = CAP.load_plan(slug)
+    durs, timing, _ = CAP.beat_durations(slug, plan)
+    if timing not in CAP.MEASURED_TIMINGS:
+        return None
+    real, total = CAP.real_chapters(plan, durs)
+    chs, _ = CAP.enforce_youtube(real, total)
+    return [(int(c["seconds"]), c["title"]) for c in chs]
+
+
 def build_chapters(slug: str, script_text: str) -> list[str]:
     """The chapter list actually sent to YouTube, timing-correct.
+
+    FIRST: measured_chapters() - computed from the render's measured timeline
+    every time, never from a cached file. The two paths below are fallbacks
+    for an episode whose timing is not measured yet.
 
     PREFERRED: `captions/<slug>.chapters.txt`, which visuals/captions.py
     derives from the real caption timing (not the script's ESTIMATED
@@ -220,8 +273,10 @@ def build_chapters(slug: str, script_text: str) -> list[str]:
     for a given episode.
     """
     computed = ROOT / "captions" / f"{slug}.chapters.txt"
-    rows: list[tuple[int, str]] = []
-    if computed.exists():
+    rows: list[tuple[int, str]] = measured_chapters(slug) or []
+    if rows:
+        pass
+    elif computed.exists():
         for line in computed.read_text(encoding="utf-8").splitlines():
             line = line.strip()
             if not line:

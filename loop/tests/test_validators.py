@@ -189,12 +189,16 @@ def check() -> list[str]:
             rec = json.loads(path.read_text())
             plan = json.loads(
                 Path(ROOT, "plans", f"{rec['slug']}.json").read_text())
-            if SH.resolve_credits(rec["slug"], plan, rec["beats"])[0]:
+            # credits as they stand with NO footage on any beat: the species
+            # and `source` lines alone (the render record is not needed to
+            # find a beat that is credited either way)
+            none = {i: None for i in range(len(plan))}
+            if SH.resolve_credits(rec["slug"], plan, rec["beats"], none)[0]:
                 continue                    # this one does show a credit
             extra = [i for i, b in enumerate(plan)
                      if b.get("segment") == "species_image"
                      and i not in rec["beats"]
-                     and SH.resolve_credits(rec["slug"], plan, [i])[0]]
+                     and SH.resolve_credits(rec["slug"], plan, [i], none)[0]]
             if extra:
                 bare = (path, rec, extra[0])
                 break

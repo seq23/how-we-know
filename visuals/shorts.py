@@ -24,10 +24,11 @@ Three decisions are encoded here, and each one is a claim that can be checked:
 
    That crop also takes the source credit with it: `species_image` draws it at
    row 975 and `footage.py` draws its strip at rows 991-1038, both below the
-   plate, which ends at 962. The credit is not only pixels - it is a field in
-   channel/imagery/rights.json and channel/imagery/video_rights.json, the same
-   manifests the renderer read. So `resolve_credits()` re-reads it for the picked
-   beats and `draw_chrome()` redraws it in the Short's own chrome, larger and more
+   plate, which ends at 962. So `resolve_credits()` resolves it for the picked
+   beats - a FOOTAGE credit from the render's own per-beat record of what it
+   burned (`render_footage_record()`, never a re-run of today's footage
+   placement), a species credit from channel/imagery/species.json - and
+   `draw_chrome()` redraws it in the Short's own chrome, larger and more
    legible than the 12px it was reduced to when the whole 1080 was scaled down.
    ATTRIBUTION IS NEVER DROPPED: a beat whose credit cannot be resolved is
    excluded from the Short rather than shown uncredited.
@@ -181,66 +182,234 @@ def cue_lines_for(slug: str, beats_wanted: set[int]) -> tuple[int, dict]:
 #
 # The crop above removes every row below 782, and that is where the renderer put
 # the source credit: segments_species.py at row 975, footage.py at 991-1038.
-# Those credits are DATA before they are pixels - `credit_line` in
-# channel/imagery/species.json, `required_credit` in
-# channel/imagery/video_rights.json - so they are re-read here from the same
-# manifests the renderer read, and redrawn in the Short's own chrome.
+# Those credits are redrawn in the Short's own chrome.
 #
-# A `stat_card` / `definition_card` "Source: ..." line is drawn at row 1010 and
-# goes with the same crop. It is an attribution too, and it comes free: it is
-# already in the plan's own args.
+# A FOOTAGE CREDIT COMES FROM THE RENDER, NEVER FROM TODAY'S MANIFEST.
+# Until 2026-10-14 `beat_credits` re-ran footage.assign() against whatever
+# channel/imagery/video_rights.json the cutting checkout held. That is a
+# re-derivation, not a record: the manifest grows and the pools rotate, and in a
+# checkout without the (git-ignored) manifest load_manifest() returns an empty
+# pool by design - so every footage beat silently became "no footage" and the
+# Short credited the species ENGRAVING instead of the NOAA clip the master
+# actually showed. CONFIRMED on the 14 Oct re-cuts: 01 short3 credited
+# "ZOOLOGICAL SOCIETY PLATE, 1864" over a beat whose master burns "NOAA Ocean
+# Exploration, 2019 Southeastern U.S. Deep-Sea Exploration"; 07/08/18 short2
+# credited "NOAA OCEAN EXPLORATION" (the species plate's line) over Voyage to
+# the Ridge and Seascape Alaska clips. V14 held all four.
+#
+# The render's own record of what it showed is therefore the authority:
+# `render_footage_record()` reads the master's footage.py credit strip for
+# EVERY beat once, matches it to a credit line, cross-checks the count against
+# the render receipt (renders/<slug>-final.mp4.render.json: footage.footage_beats)
+# and keeps it beside the render as renders/<slug>-final.mp4.footage.json. A
+# record that cannot be built or does not add up refuses the whole cut
+# (RenderRecordUnreadable) - attribution is never guessed.
+#
+# Species credits (`credit_line` in channel/imagery/species.json) are not placed
+# by rotation and still come from that manifest. A `stat_card` /
+# `definition_card` "Source: ..." line comes from the plan's own args.
 
 class CreditUnresolved(Exception):
     """A beat draws a credit that could not be read back. The beat is dropped."""
 
 
-def _assemble_durations(slug: str, plan: list) -> list[float]:
-    """visuals/assemble.py's durations, exactly - including the tail pad it adds
-    to the last beat. footage.assign() places cuts against these."""
-    import math
-    durs, _, _ = CAP.beat_durations(slug, plan)
-    need = math.ceil(sum(durs) * FPS)
-    have = sum(max(1, int(round(d * FPS))) for d in durs)
-    pad = max(0, need - have)
-    if pad:
-        durs = list(durs)
-        durs[-1] += pad / FPS
-    return durs
+class RenderRecordUnreadable(Exception):
+    """What the master burned cannot be established. The whole cut is refused."""
 
 
-_FOOTAGE_CUTS: dict[str, list] = {}
+FOOTAGE_RECORD_SUFFIX = ".footage.json"
+# footage.py:_credit_overlay draws "<LABEL>   ·   <CREDIT>" lower left
+# Full width: a long credit runs past x=1360 (18 beat 32, "...EXPRESS WEST
+# COAST EXPLORATIO"), and a crop that clips it matches nothing.
+FOOTAGE_STRIP = (0, SRC_H - 120, SRC_W, 110)                 # x, y, w, h
+# ...with its text at rows 991-1038. segments_species.py's own credit sits at
+# row 975, INSIDE that crop, and a species line can read exactly like a
+# footage line ("NOAA Ocean Exploration"): measured on 01 beat 38, the species
+# credit's box top is row 974 and the footage strip's is 999. Only text whose
+# box starts at or below this row is footage strip.
+FOOTAGE_TEXT_TOP = SRC_H - 95                                # 985
 
 
-def footage_cuts(slug: str, plan: list) -> list:
-    """Per-beat footage cut, or None. The same deterministic placement
-    visuals/assemble.py made when it rendered the master."""
-    if slug not in _FOOTAGE_CUTS:
-        import footage as FT
-        _FOOTAGE_CUTS[slug] = FT.assign(plan, _assemble_durations(slug, plan),
-                                        slug)
-    return _FOOTAGE_CUTS[slug]
+def _tokens(text: str) -> list[str]:
+    return re.findall(r"[A-Z0-9]+", text.upper())
 
 
-def beat_credits(slug: str, plan: list, index: int) -> list[str]:
+def match_credit_line(read: str, known: list[str]) -> str | None:
+    """The one known credit line the OCR'd strip `read` shows, or None.
+
+    Every word of three letters or more must be present. Where several lines
+    pass that (`Seascape Alaska` and `Seascape Alaska 5`), the line whose EVERY
+    token - digits included - is on screen wins, longest first; if that still
+    does not single one out, the answer is None rather than a guess.
+    """
+    seen = set(_tokens(read))
+    cands = [c for c in known
+             if (w := [t for t in _tokens(c) if len(t) > 2])
+             and all(t in seen for t in w)]
+    if not cands:
+        return None
+    # Lines that differ only in case or punctuation ("Deep-Sea" / "Deep-sea"
+    # both occur in the manifest) are one credit on screen: the chrome draws
+    # it upper case either way.
+    # "Full" = the line's whole token sequence appears, in order, in the read:
+    # a set test cannot tell "...WEST COAST EXPLORATIO" (truncated in the
+    # manifest, burned that way) from "...WEST COAST EXPLORATION" when the
+    # strip also starts "NOAA OCEAN EXPLORATION".
+    rt = _tokens(read)
+
+    def _in_order(c: str) -> bool:
+        ct = _tokens(c)
+        return any(rt[k:k + len(ct)] == ct for k in range(len(rt) - len(ct) + 1))
+    full = [c for c in cands if _in_order(c)]
+    pool = full or cands
+    top = max(len(_tokens(c)) for c in pool)
+    best = sorted(c for c in pool if len(_tokens(c)) == top)
+    if len({tuple(_tokens(c)) for c in best}) != 1:
+        return None
+    if not full and len({tuple(_tokens(c)) for c in cands}) != 1:
+        return None
+    return best[0]
+
+
+def footage_credit_lines() -> list[str]:
+    """Every credit line a footage beat can burn."""
+    import footage as FT                                    # noqa: PLC0415
+    lines = {str(a.get("required_credit") or a.get("source_org") or "")
+             for a in FT.load_manifest().get("assets", [])}
+    return sorted(c for c in lines if c)
+
+
+def _footage_record_path(src: str) -> str:
+    return src + FOOTAGE_RECORD_SUFFIX
+
+
+def _master_stamp(src: str) -> dict:
+    st = os.stat(src)
+    return {"bytes": st.st_size, "mtime": int(st.st_mtime)}
+
+
+def load_footage_record(src: str) -> dict[int, str | None] | None:
+    """The kept record for this exact master, or None (absent or stale)."""
+    path = _footage_record_path(src)
+    if not os.path.exists(path):
+        return None
+    try:
+        d = json.load(open(path))
+    except (OSError, ValueError):
+        return None
+    if d.get("master") != _master_stamp(src):
+        return None                      # the master was re-rendered
+    return {int(k): v for k, v in d["beats"].items()}
+
+
+def _read_strips(src: str, times: dict, workdir: str) -> dict:
+    """{key: OCR text} of the footage credit strip at each time in `times`."""
+    sys.path.insert(0, os.path.join(ROOT, "research"))
+    import imagery_video as IV                              # noqa: PLC0415
+    x, y, w, h = FOOTAGE_STRIP
+    paths = {}
+    for k, t in times.items():
+        png = os.path.join(workdir, f"strip.{k[0]}.{k[1]}.png")
+        _run(["ffmpeg", "-v", "error", "-ss", f"{float(t):.3f}", "-i", src,
+              "-vf", f"crop={w}:{h}:{x}:{y}", "-frames:v", "1", "-y", png])
+        paths[k] = png
+    res = IV.ocr(list(paths.values()))
+    return {k: footage_strip_text(res.get(p, [])) for k, p in paths.items()}
+
+
+def footage_strip_text(items: list[dict]) -> str:
+    """The footage strip's words from Vision boxes over a FOOTAGE_STRIP crop
+    (normalised, top-left origin) - the species credit above it excluded."""
+    # A stat_card / definition_card draws "Source: <org>" at row 1010, inside
+    # the strip's rows; "Source: NOAA Ocean Exploration" is a citation the
+    # plan's own `source` arg already credits, not a footage strip.
+    x, y, w, h = FOOTAGE_STRIP
+    return " ".join(i["t"] for i in items
+                    if y + float(i.get("y", 0)) * h >= FOOTAGE_TEXT_TOP - 0.5
+                    and not re.match(r"\W*source\b", i["t"], re.I))
+
+
+def render_footage_record(slug: str, plan: list, src: str,
+                          timeline: list[dict]) -> dict[int, str | None]:
+    """{beat: footage credit the master burned, or None} for EVERY beat.
+
+    Built once from the master's own pixels and kept beside it. Refuses
+    (RenderRecordUnreadable) when the master shows footage but no credit line
+    is known to match it against, or when the beats found do not add up to the
+    render receipt's footage_beats.
+    """
+    kept = load_footage_record(src)
+    if kept is not None and len(kept) == len(plan):
+        return kept
+    receipt = source_render_receipt(src)
+    expected = (receipt.get("footage") or {}).get("footage_beats") \
+        if receipt else None
+    record: dict[int, str | None] = {b["i"]: None for b in timeline}
+    if expected != 0:
+        known = footage_credit_lines()
+        if not known:
+            raise RenderRecordUnreadable(
+                f"{slug}: the master may burn footage credits "
+                f"(render receipt footage_beats={expected}) but no footage "
+                f"manifest is on this machine to read them against - cut on "
+                f"the Mac checkout that holds channel/imagery/video_rights.json")
+        work = os.path.join(ROOT, "loop", "state", "_footage_record", slug)
+        os.makedirs(work, exist_ok=True)
+        todo = [b for b in timeline]
+        for q in (0.5, 0.25, 0.75):
+            if not todo:
+                break
+            reads = _read_strips(src, {(b["i"], q): b["video_start"] + b["video_s"] * q
+                                       for b in todo}, work)
+            left = []
+            for b in todo:
+                hit = match_credit_line(reads[(b["i"], q)], known)
+                if hit:
+                    record[b["i"]] = hit
+                else:
+                    left.append(b)
+            todo = left
+        shutil.rmtree(work, ignore_errors=True)
+        found = sum(1 for v in record.values() if v)
+        if expected is not None and found != expected:
+            raise RenderRecordUnreadable(
+                f"{slug}: read {found} footage credit(s) off the master but its "
+                f"render receipt says footage_beats={expected}; refusing to "
+                f"credit from a record that does not add up")
+    with open(_footage_record_path(src), "w") as fh:
+        json.dump({"_why": "What this master burned in footage.py's credit "
+                           "strip, per beat, read off its pixels by "
+                           "visuals/shorts.py:render_footage_record. The "
+                           "authority for a Short's footage credit.",
+                   "master": _master_stamp(src),
+                   "footage_beats_expected": expected,
+                   "beats": {str(k): v for k, v in sorted(record.items())}},
+                  fh, indent=2)
+        fh.write("\n")
+    return record
+
+
+def beat_credits(slug: str, plan: list, index: int,
+                 record: dict[int, str | None]) -> list[str]:
     """Every attribution the master burned into this beat's frames.
 
-    Raises CreditUnresolved when the beat is one that DOES draw a credit and the
-    manifest can no longer supply it. Returns [] for a beat that draws none.
+    `record` is the render's own per-beat footage record
+    (render_footage_record). Raises CreditUnresolved when the beat is one that
+    DOES draw a credit and it cannot be supplied. Returns [] for a beat that
+    draws none.
     """
+    if index not in record:
+        raise CreditUnresolved(f"{slug} beat {index}: not in the render's "
+                               f"footage record")
     b = plan[index]
     seg = b.get("segment")
     args = b.get("args") or {}
     out = []
 
-    cut = footage_cuts(slug, plan)[index]
-    if cut is not None:
-        # footage.py: "<LABEL>   ·   <CREDIT>", credit = required_credit or org
-        credit = cut.get("credit")
-        if not credit:
-            raise CreditUnresolved(
-                f"{slug} beat {index}: footage clip {cut['asset'].get('title')!r} "
-                f"carries neither required_credit nor source_org")
-        out.append(str(credit))
+    burned = record[index]
+    if burned:
+        # footage.py: "<LABEL>   ·   <CREDIT>" - the credit the master showed
+        out.append(str(burned))
     elif seg == "species_image":
         import segments_species as SPX
         try:
@@ -260,7 +429,8 @@ def beat_credits(slug: str, plan: list, index: int) -> list[str]:
     return out
 
 
-def resolve_credits(slug: str, plan: list, picked: list[int]):
+def resolve_credits(slug: str, plan: list, picked: list[int],
+                    record: dict[int, str | None]):
     """(ordered unique credit lines, {beat: reason} for beats that must be cut).
 
     Deduplicated: a Short that uses three sea-cucumber beats off one NOAA clip
@@ -269,7 +439,7 @@ def resolve_credits(slug: str, plan: list, picked: list[int]):
     lines, seen, dropped = [], set(), {}
     for i in picked:
         try:
-            for c in beat_credits(slug, plan, i):
+            for c in beat_credits(slug, plan, i, record):
                 k = re.sub(r"[^a-z0-9]+", "", c.lower())
                 if k and k not in seen:
                     seen.add(k)
@@ -784,7 +954,9 @@ def make_short(slug: str, outdir: str, max_seconds: float = MAX_SECONDS,
     # A beat whose credit cannot be read back out of the manifests is dropped
     # rather than shown uncredited. Dropping the anchor would leave a Short with
     # no answer in it, so that is a failure, not a trim.
-    credits, dropped = resolve_credits(slug, plan, picked)
+    record = render_footage_record(slug, plan, src, beats)
+    sel["footage_record"] = os.path.relpath(_footage_record_path(src), ROOT)
+    credits, dropped = resolve_credits(slug, plan, picked, record)
     if dropped:
         for i, why in dropped.items():
             print(f"  {slug}: dropping beat {i} - credit unresolved: {why}",
@@ -798,7 +970,7 @@ def make_short(slug: str, outdir: str, max_seconds: float = MAX_SECONDS,
         sel["beats"] = picked
         sel["dropped_uncredited"] = {str(i): w for i, w in dropped.items()}
         sel["seconds"] = sum(by_index[i]["video_s"] for i in picked)
-        credits, _ = resolve_credits(slug, plan, picked)
+        credits, _ = resolve_credits(slug, plan, picked, record)
     if not picked:
         raise ValueError(f"{slug}: every picked beat was dropped for a "
                          f"missing credit; nothing to cut")
