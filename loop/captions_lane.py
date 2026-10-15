@@ -4,6 +4,12 @@
     .venv/bin/python loop/captions_lane.py --limit 4  # smaller quota bite
     .venv/bin/python loop/captions_lane.py --dry-run  # plan and manifest only
 
+A track that is already live is REPLACED (captions.update, same caption id)
+when the local .srt it was uploaded from has since been rebuilt — see
+`replace_stale()` below for the guards: the live cut's duration must match the
+timeline the track was built for, and replacements spend at most
+REPLACE_DAILY_CAP units a day, after the upload lanes' reserve.
+
 ## The defect this closes
 
 `captions/` has held a timed `.srt` and `.vtt` for all twenty episodes since
@@ -82,6 +88,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 import urllib.error
 import urllib.parse
@@ -107,6 +114,27 @@ CAPTIONS_DIR = ROOT / "captions"
 
 API = "https://www.googleapis.com/youtube/v3/captions"
 UPLOAD_API = "https://www.googleapis.com/upload/youtube/v3/captions"
+VIDEOS_API = "https://www.googleapis.com/youtube/v3/videos"
+
+# ---- replacing a live track whose local source moved (2026-10-15) ----------
+# PR #226 rebuilt sixteen episodes' .srt from measured timing, but this lane
+# only ever INSERTED: a video that already had a track was "done" for good, and
+# a changed sha merely re-recorded the old track under the new file's hash
+# ("found-on-channel"). Seven public videos kept captions timed to an older
+# cut. Now a track this lane uploaded is replaced when its source changes.
+#
+# Replacements are the most deferrable spend there is (a track exists; it is
+# only mis-timed), so they get their own quota book and a hard daily cap, and
+# they spend only what is left after the upload lanes' reserve AND after this
+# run's own inserts. Leftovers carry to the next daily run.
+REPLACE_LANE = "captions-replace"
+REPLACE_DAILY_CAP = 2000          # units/day; 4 x captions.update at 450
+# The live cut must be the timeline the local track was built for. YouTube
+# reports whole seconds; the render and its timing.json agree to a few ms.
+DURATION_TOLERANCE_S = 2.0
+# Only tracks THIS lane sent are ever overwritten. A row recorded from the
+# channel ("found-on-channel") may be a human's upload: never replaced.
+OURS = ("inserted", "replaced")
 
 FORCE_SSL = "https://www.googleapis.com/auth/youtube.force-ssl"
 
@@ -223,6 +251,242 @@ def insert_track(token: str, video_id: str, srt: Path,
         return json.loads(r.read())["id"]
 
 
+def update_track(token: str, caption_id: str, srt: Path,
+                 timeout: int = 120) -> dict:
+    """captions.update, multipart. 450 units. Replaces the BODY of one track.
+
+    Same caption id, same language, same name: only the timed text changes, so
+    no second English track appears and no other language is touched.
+    """
+    meta = {"id": caption_id, "snippet": {"isDraft": False}}
+    boundary = "howweknow-caption-boundary"
+    body = b"".join([
+        f"--{boundary}\r\n".encode(),
+        b"Content-Type: application/json; charset=UTF-8\r\n\r\n",
+        json.dumps(meta).encode("utf-8"), b"\r\n",
+        f"--{boundary}\r\n".encode(),
+        b"Content-Type: application/octet-stream\r\n\r\n",
+        srt.read_bytes(), b"\r\n",
+        f"--{boundary}--\r\n".encode(),
+    ])
+    req = urllib.request.Request(
+        f"{UPLOAD_API}?uploadType=multipart&part=snippet",
+        data=body, method="PUT",
+        headers={"Authorization": f"Bearer {token}",
+                 "Content-Type": f"multipart/related; boundary={boundary}"})
+    with urllib.request.urlopen(req, timeout=timeout) as r:
+        return json.loads(r.read())
+
+
+def live_meta(token: str, video_ids: list[str],
+              timeout: int = 30) -> dict[str, dict]:
+    """videos.list contentDetails+status for up to 50 ids. 1 unit per call."""
+    out: dict[str, dict] = {}
+    for i in range(0, len(video_ids), 50):
+        q = urllib.parse.urlencode({"part": "contentDetails,status",
+                                    "id": ",".join(video_ids[i:i + 50])})
+        req = urllib.request.Request(
+            f"{VIDEOS_API}?{q}", headers={"Authorization": f"Bearer {token}"})
+        with urllib.request.urlopen(req, timeout=timeout) as r:
+            for it in json.loads(r.read()).get("items") or []:
+                out[it["id"]] = it
+    return out
+
+
+_ISO = re.compile(r"^P(?:(\d+)D)?T?(?:(\d+)H)?(?:(\d+)M)?(?:(\d+(?:\.\d+)?)S)?$")
+
+
+def iso_seconds(iso: str | None) -> float | None:
+    """'PT7M44S' -> 464.0. None for anything unparseable."""
+    m = _ISO.match(iso or "")
+    if not m or not any(m.groups()):
+        return None
+    d, h, mi, se = (float(g) if g else 0.0 for g in m.groups())
+    return d * 86400 + h * 3600 + mi * 60 + se
+
+
+def timeline_seconds(slug: str) -> float | None:
+    """The measured total the local track was built for (its .timing.json)."""
+    try:
+        rec = json.loads((CAPTIONS_DIR / f"{slug}.timing.json")
+                         .read_text(encoding="utf-8"))
+        return float(rec["duration_s"])
+    except (OSError, ValueError, KeyError, TypeError):
+        return None
+
+
+def local_track_stale(slug: str) -> str | None:
+    """visuals/captions.py:derived_stale(), or None where it cannot run.
+
+    A local track that is itself behind its measured timeline must not be
+    pushed over the live one; captions_build rebuilds it first.
+    """
+    try:
+        if str(ROOT / "visuals") not in sys.path:
+            sys.path.insert(0, str(ROOT / "visuals"))
+        import captions as CAP                    # noqa: PLC0415
+    except Exception:                             # noqa: BLE001
+        return None
+    try:
+        return CAP.derived_stale(slug)
+    except Exception:                             # noqa: BLE001
+        return None
+
+
+def stale_tracks(plan: list[dict], state: dict) -> list[dict]:
+    """Plan rows whose LIVE track (uploaded by this lane) is not the local file.
+
+    The recorded srt_sha256 is the sha of the bytes this lane sent; the plan
+    row's sha256 is the file on disk now. Different = the live track is stale.
+    """
+    out = []
+    for p in plan:
+        rec = state["videos"].get(p["video_id"]) or {}
+        if (rec.get("caption_id") and rec.get("source") in OURS
+                and rec.get("track_kind", "standard") != "asr"
+                and rec.get("srt_sha256") != p["sha256"]):
+            out.append(p)
+    return out
+
+
+def replace_order(stale: list[dict], meta: dict[str, dict]) -> list[dict]:
+    """Public videos first (what viewers are watching now), then ledger order."""
+    def pub(p):
+        st = (meta.get(p["video_id"]) or {}).get("status") or {}
+        return 0 if st.get("privacyStatus") == "public" else 1
+    return sorted(stale, key=lambda p: (pub(p), p.get("order", 0)))
+
+
+def replace_skip_reason(p: dict, meta: dict[str, dict]) -> str | None:
+    """Why this stale track must NOT be replaced now, or None to replace it."""
+    slug = p["slug"]
+    item = meta.get(p["video_id"])
+    if not item:
+        return "videos.list did not return the video"
+    why = local_track_stale(slug)
+    if why:
+        return f"the local track is itself stale ({why})"
+    want = timeline_seconds(slug)
+    if want is None:
+        return f"captions/{slug}.timing.json has no measured duration_s"
+    live = iso_seconds((item.get("contentDetails") or {}).get("duration"))
+    if live is None:
+        return "the live video reports no duration"
+    if abs(live - want) > DURATION_TOLERANCE_S:
+        return (f"the live cut is {live:.0f}s but the local track was built "
+                f"for a {want:.1f}s timeline - replacing would mis-time it "
+                f"the other way")
+    return None
+
+
+def replace_budget(want: int, unbooked: int = 0) -> int:
+    """How many captions.update calls today may take, at most `want`.
+
+    Bounded twice: the lane's own daily cap (counted from quota.json, so a
+    second run the same day sees the first's spend), and units_affordable()
+    behind deferrable_reserve() plus whatever this run has spent but not yet
+    booked - so a replacement can never eat an upload's or an insert's units.
+    """
+    done_today = int((quota._load().get("by_lane") or {})  # noqa: SLF001
+                     .get(REPLACE_LANE, 0))
+    by_cap = max(0, REPLACE_DAILY_CAP - done_today) // quota.CAPTION_UPDATE
+    by_day = quota.units_affordable(
+        quota.CAPTION_UPDATE, want,
+        reserve=quota.deferrable_reserve() + max(0, unbooked))
+    return max(0, min(want, by_cap, by_day))
+
+
+def replace_stale(token: str, plan: list[dict], state: dict, st,
+                  unbooked: int = 0, dry_run: bool = False) -> dict:
+    """Replace every stale live track that is safe and affordable today.
+
+    Returns {"replaced": [...], "skipped": {slug: why}, "deferred": [...],
+    "spent_list": units}. captions.update spend is booked to REPLACE_LANE as
+    each call returns (a rejected call still costs); the 1-unit videos.list is
+    returned for the caller to book under LANE.
+    """
+    out = {"replaced": [], "skipped": {}, "deferred": [], "spent_list": 0}
+    stale = stale_tracks(plan, state)
+    if not stale:
+        return out
+    meta = live_meta(token, [p["video_id"] for p in stale])
+    out["spent_list"] = -(-len(stale) // 50) * quota.VIDEO_READ
+    ready = []
+    for p in replace_order(stale, meta):
+        why = replace_skip_reason(p, meta)
+        if why:
+            out["skipped"][p["slug"]] = why
+            st.note(f"{p['slug']}: live track is stale but NOT replaced: {why}")
+        else:
+            ready.append(p)
+    n = replace_budget(len(ready), unbooked=unbooked + out["spent_list"])
+    out["deferred"] = [p["slug"] for p in ready[n:]]
+    if out["deferred"]:
+        st.note(f"replacing {n} of {len(ready)} stale live track(s) today "
+                f"(cap {REPLACE_DAILY_CAP} units/day, after the upload "
+                f"reserve); the next daily run takes "
+                f"{', '.join(out['deferred'])}")
+    for p in ready[:n]:
+        vid, slug = p["video_id"], p["slug"]
+        rec = state["videos"][vid]
+        if dry_run:
+            st.note(f"DRY RUN: would replace {slug}'s live track "
+                    f"{rec['caption_id']}")
+            continue
+        try:
+            update_track(token, rec["caption_id"], Path(p["srt"]))
+        except urllib.error.HTTPError as e:
+            quota.spend(quota.CAPTION_UPDATE, REPLACE_LANE)
+            detail = e.read().decode("utf-8", "ignore")[:400]
+            if e.code == 404:
+                rec.pop("caption_id", None)
+                rec["lost_at"] = now()
+                st.work(f"{slug}: the track to replace is GONE from YouTube "
+                        f"- recorded as missing so the next run inserts it")
+            else:
+                st.note(f"{slug}: captions.update failed {e.code} {detail}")
+            continue
+        quota.spend(quota.CAPTION_UPDATE, REPLACE_LANE)
+        rec.update({"previous_sha256": rec.get("srt_sha256"),
+                    "srt_sha256": p["sha256"], "cues": p["cues"],
+                    "source": "replaced", "replaced_at": now()})
+        out["replaced"].append(slug)
+        st.work(f"{slug}: REPLACED the live {LANGUAGE} track "
+                f"{rec['caption_id']} with the re-timed .srt "
+                f"({p['cues']} cues, sha {p['sha256'][:12]})")
+    state["replace"] = {"at": now(), "replaced": out["replaced"],
+                        "skipped": out["skipped"],
+                        "deferred": out["deferred"]}
+    return out
+
+
+def build_plan(live: list[dict], state: dict) -> tuple[list[dict], list[str]]:
+    """One row per live video with a usable .srt; gaps say why the rest lack one.
+
+    `already` means YouTube carries a track THIS lane recorded - whether or not
+    the local file has moved since. A moved file is a REPLACEMENT
+    (stale_tracks), never a fresh insert: the insert path's captions.list would
+    find the old track and re-record it under the new hash, which is exactly
+    how sixteen re-timed tracks were reported live while the old ones played.
+    """
+    plan, gaps = [], []
+    for i, row in enumerate(live):
+        slug, vid = row["slug"], row["video_id"]
+        srt = srt_for(slug)
+        if not srt.exists():
+            gaps.append(f"{slug}: captions/{slug}.srt does not exist")
+            continue
+        cues = cue_count(srt)
+        if cues == 0:
+            gaps.append(f"{slug}: captions/{slug}.srt has zero timed cues")
+            continue
+        rec = state["videos"].get(vid)
+        plan.append({"slug": slug, "video_id": vid, "srt": str(srt),
+                     "cues": cues, "sha256": sha256(srt), "order": i,
+                     "already": bool(rec and rec.get("caption_id"))})
+    return plan, gaps
+
+
 def _is_scope_error(e: urllib.error.HTTPError, detail: str) -> bool:
     return e.code in (401, 403) and (
         "insufficientPermissions" in detail or "forbidden" in detail.lower()
@@ -281,26 +545,12 @@ def run(limit: int = 15, dry_run: bool = False, verify: int = 3) -> int:
         # blocked credential: the moment the scope appears, the first run has
         # nothing left to figure out, and a broken .srt is found today rather
         # than in the middle of a 400-unit call.
-        plan, gaps = [], []
-        for row in live:
-            slug, vid = row["slug"], row["video_id"]
-            srt = srt_for(slug)
-            if not srt.exists():
-                gaps.append(f"{slug}: captions/{slug}.srt does not exist")
-                continue
-            cues = cue_count(srt)
-            if cues == 0:
-                gaps.append(f"{slug}: captions/{slug}.srt has zero timed cues")
-                continue
-            digest = sha256(srt)
-            rec = state["videos"].get(vid)
-            done = bool(rec and rec.get("caption_id")
-                        and rec.get("srt_sha256") == digest)
-            plan.append({"slug": slug, "video_id": vid, "srt": str(srt),
-                         "cues": cues, "sha256": digest, "already": done})
-            st.work(f"verified {slug}: {cues} timed cues, "
-                    f"{srt.stat().st_size:,} bytes, sha {digest[:12]}…"
-                    + (" (already shipped)" if done else " — NEEDS a track"))
+        plan, gaps = build_plan(live, state)
+        for p in plan:
+            st.work(f"verified {p['slug']}: {p['cues']} timed cues, sha "
+                    f"{p['sha256'][:12]}…"
+                    + (" (already shipped)" if p["already"]
+                       else " — NEEDS a track"))
         for g in gaps:
             st.note(g)
 
@@ -525,6 +775,18 @@ def run(limit: int = 15, dry_run: bool = False, verify: int = 3) -> int:
                     f"Auto-translated subtitles and auto-dubbed audio now have "
                     f"a source.")
 
+        # ---- re-timed sources: REPLACE the stale live tracks ---------------
+        # After the inserts (a video with no track outranks a mis-timed one)
+        # and before re-verification. Booked to REPLACE_LANE as it goes.
+        rep = {"replaced": [], "skipped": {}, "deferred": []}
+        try:
+            rep = replace_stale(token, plan, state, st, unbooked=spent,
+                                dry_run=dry_run)
+            spent += rep.get("spent_list", 0)
+        except urllib.error.HTTPError as e:
+            st.note(f"replacement pass: videos.list failed {e.code}")
+        replaced = len(rep["replaced"])
+
         # ---- steady state: VERIFY, do not merely assume ---------------------
         # On a day with nothing to insert this lane still has real work: a
         # track deleted in Studio would otherwise never be noticed, and the
@@ -582,7 +844,8 @@ def run(limit: int = 15, dry_run: bool = False, verify: int = 3) -> int:
         # touched nothing at all would still look green on the strength of
         # having read some files off disk.
         code = None if dry_run else inert_code(
-            len(pending), len(shipped), budget, inserted, confirmed)
+            len(pending), len(shipped), budget, inserted + replaced,
+            confirmed)
         if code == "CAPTIONS_QUOTA_DEFERRED":
             st.named_stop(
                 "CAPTIONS_QUOTA_DEFERRED",
