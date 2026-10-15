@@ -1,20 +1,20 @@
 {
   "episode": "how-deep-can-whales-dive",
-  "beats": 71,
+  "beats": 78,
   "plan_source": "plans/how-deep-can-whales-dive.json",
   "timing": "audio",
-  "beats_measured": 71,
-  "durations_recorded": 71,
-  "duration_s": 537.917,
-  "cues": 146,
-  "chapters_real": 12,
-  "chapters_published": 10,
+  "beats_measured": 78,
+  "durations_recorded": 0,
+  "duration_s": 603.709,
+  "cues": 160,
+  "chapters_real": 13,
+  "chapters_published": 11,
   "chapter_notes": [
-    "merged 2 chapter(s) under 10s: Title card (2.3s), Producer POV (9.0s)"
+    "merged 2 chapter(s) under 10s: Title card (4.0s), Producer POV (5.4s)"
   ],
   "drift": {
-    "mean_abs_s": 66.0,
-    "worst_abs_s": 172.6,
+    "mean_abs_s": 55.0,
+    "worst_abs_s": 118.5,
     "rows": [
       {
         "title": "Cold open",
@@ -25,96 +25,91 @@
       {
         "title": "Title card",
         "hand": "00:40",
-        "real": "0:32",
-        "drift_s": -7.2
+        "real": "0:35",
+        "drift_s": -4.9
       },
       {
         "title": "The record is a sensor reading, not a sighting",
         "hand": "00:45",
-        "real": "0:35",
-        "drift_s": -9.9
+        "real": "0:39",
+        "drift_s": -5.9
       },
       {
         "title": "Before tags, depth was inferred from clues",
         "hand": "02:45",
-        "real": "2:17",
-        "drift_s": -27.7
+        "real": "2:21",
+        "drift_s": -23.8
       },
       {
         "title": "Producer POV",
         "hand": "04:30",
-        "real": "3:42",
-        "drift_s": -47.9
+        "real": "3:51",
+        "drift_s": -38.9
       },
       {
         "title": "A deep diver carries its oxygen in its muscles",
         "hand": "04:40",
-        "real": "3:51",
-        "drift_s": -48.9
+        "real": "3:56",
+        "drift_s": -43.5
       },
       {
         "title": "Depth and duration are different records",
         "hand": "06:05",
-        "real": "4:59",
-        "drift_s": -65.0
+        "real": "5:09",
+        "drift_s": -55.7
       },
       {
         "title": "Other whales dive deep, but their numbers are softer",
         "hand": "07:15",
-        "real": "5:56",
-        "drift_s": -78.3
+        "real": "6:07",
+        "drift_s": -67.1
       },
       {
         "title": "The deepest known dive is a floor, not a ceiling",
         "hand": "08:25",
-        "real": "6:51",
-        "drift_s": -93.6
+        "real": "6:55",
+        "drift_s": -89.3
       },
       {
         "title": "What to notice in the edit",
         "hand": "09:35",
-        "real": "7:41",
-        "drift_s": -113.7
+        "real": "7:49",
+        "drift_s": -105.5
       },
       {
         "title": "Evidence limit",
         "hand": "10:15",
-        "real": "8:08",
-        "drift_s": -126.8
+        "real": "8:16",
+        "drift_s": -118.5
       },
       {
         "title": "Closing",
         "hand": "11:30",
-        "real": "8:37",
-        "drift_s": -172.6
+        "real": "9:43",
+        "drift_s": -107.0
       }
     ]
   },
   "ffprobe": {
     "file": "renders/how-deep-can-whales-dive-final.mp4",
-    "video_s": 537.917,
-    "last_cue_end_s": 537.917,
+    "video_s": 603.709,
+    "last_cue_end_s": 603.709,
     "delta_s": 0.0,
     "ok": true
   },
   "text_checks": {
     "beats_json": {
-      "checked": 71,
+      "checked": 78,
       "mismatched": []
     },
     "script_text": {
-      "checked": 71,
+      "checked": 78,
       "absent_from_narration": []
     }
   },
   "script_chapters": {
-    "written": true,
-    "changed": true,
-    "removed_lines": [
-      "Title card",
-      "Producer POV"
-    ],
-    "chapters_not_in_script": []
+    "written": false,
+    "reason": "skipped"
   },
   "artifacts": [
     "captions/how-deep-can-whales-dive.vtt",

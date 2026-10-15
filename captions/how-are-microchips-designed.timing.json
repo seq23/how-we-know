@@ -1,20 +1,20 @@
 {
   "episode": "how-are-microchips-designed",
-  "beats": 73,
+  "beats": 72,
   "plan_source": "plans/how-are-microchips-designed.json",
   "timing": "audio",
-  "beats_measured": 73,
-  "durations_recorded": 73,
-  "duration_s": 626.816,
-  "cues": 167,
+  "beats_measured": 72,
+  "durations_recorded": 0,
+  "duration_s": 624.043,
+  "cues": 166,
   "chapters_real": 11,
   "chapters_published": 10,
   "chapter_notes": [
-    "merged 1 chapter(s) under 10s: Producer POV (9.1s)"
+    "merged 1 chapter(s) under 10s: Producer POV (9.9s)"
   ],
   "drift": {
-    "mean_abs_s": 34.4,
-    "worst_abs_s": 68.4,
+    "mean_abs_s": 37.7,
+    "worst_abs_s": 69.7,
     "rows": [
       {
         "title": "Cold open",
@@ -25,90 +25,85 @@
       {
         "title": "A chip begins as a description of what it does",
         "hand": "00:53",
-        "real": "0:42",
-        "drift_s": -10.4
+        "real": "0:37",
+        "drift_s": -15.3
       },
       {
         "title": "Synthesis turns the description into gates the factory already knows how to make",
         "hand": "02:22",
-        "real": "2:07",
-        "drift_s": -14.6
+        "real": "2:02",
+        "drift_s": -19.9
       },
       {
         "title": "Producer POV",
         "hand": "03:42",
-        "real": "3:22",
-        "drift_s": -19.9
+        "real": "3:18",
+        "drift_s": -23.3
       },
       {
         "title": "Verification samples behaviour, then proves what it can",
         "hand": "03:50",
-        "real": "3:31",
-        "drift_s": -18.8
+        "real": "3:28",
+        "drift_s": -21.4
       },
       {
         "title": "Physical design turns a list of gates into geometry",
         "hand": "05:38",
-        "real": "5:07",
-        "drift_s": -30.1
+        "real": "5:04",
+        "drift_s": -34.0
       },
       {
         "title": "Signoff checks the layout against the factory's own rules",
         "hand": "07:10",
-        "real": "6:28",
-        "drift_s": -41.8
+        "real": "6:22",
+        "drift_s": -47.3
       },
       {
         "title": "The first chips back from the factory are the real experiment",
         "hand": "08:46",
-        "real": "7:53",
-        "drift_s": -52.7
+        "real": "7:49",
+        "drift_s": -56.6
       },
       {
         "title": "What to notice in the edit",
         "hand": "10:00",
-        "real": "9:00",
-        "drift_s": -59.4
+        "real": "8:57",
+        "drift_s": -62.1
       },
       {
         "title": "Evidence limit",
         "hand": "10:32",
-        "real": "9:29",
-        "drift_s": -62.5
+        "real": "9:26",
+        "drift_s": -65.4
       },
       {
         "title": "Closing",
         "hand": "11:15",
-        "real": "10:06",
-        "drift_s": -68.4
+        "real": "10:05",
+        "drift_s": -69.7
       }
     ]
   },
   "ffprobe": {
     "file": "renders/how-are-microchips-designed-final.mp4",
-    "video_s": 626.816,
-    "last_cue_end_s": 626.816,
-    "delta_s": 0.0,
+    "video_s": 624.043,
+    "last_cue_end_s": 624.043,
+    "delta_s": -0.0,
     "ok": true
   },
   "text_checks": {
     "beats_json": {
-      "checked": 73,
+      "checked": 72,
       "mismatched": []
     },
     "script_text": {
-      "checked": 73,
+      "checked": 72,
       "absent_from_narration": []
     }
   },
   "script_chapters": {
-    "written": true,
-    "changed": true,
-    "removed_lines": [
-      "Title card",
-      "Producer POV"
-    ],
-    "chapters_not_in_script": []
+    "written": false,
+    "reason": "skipped"
   },
   "artifacts": [
     "captions/how-are-microchips-designed.vtt",

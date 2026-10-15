@@ -124,7 +124,14 @@ check(D.domain_of_slug(SLUG) == "food-science", "domain_of_slug reads scripts/fo
 spec_kind = json.loads((ROOT / "channel" / "specs" / f"{SLUG}.json").read_text()).get("kind")
 pending = [s for s, _, _ in BF.library_pending(assets=lambda s: (Path("r.mp4"), Path("t.jpg")))]
 if spec_kind == "food-episode" and not FE.check_episode_files(ROOT / "channel" / "specs" / f"{SLUG}.json"):
-    check(SLUG in pending, "a passing food episode is pending for the upload lane")
+    import ledger as LED  # noqa: E402
+    uploaded = SLUG in {r["slug"] for r in LED.load().get("published") or []}
+    if uploaded:
+        # Once the lane has uploaded it, it must never be pending again (a
+        # second upload of the same episode is the failure to guard).
+        check(SLUG not in pending, "an uploaded food episode is no longer pending")
+    else:
+        check(SLUG in pending, "a passing food episode is pending for the upload lane")
 else:
     check(SLUG not in pending, "a food episode without a passing spec is HELD by library_pending")
     try:

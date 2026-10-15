@@ -1,20 +1,20 @@
 {
   "episode": "why-deep-sea-fish-die-when-brought-to-surface",
-  "beats": 78,
+  "beats": 90,
   "plan_source": "plans/why-deep-sea-fish-die-when-brought-to-surface.json",
   "timing": "audio",
-  "beats_measured": 78,
-  "durations_recorded": 78,
-  "duration_s": 591.413,
-  "cues": 157,
-  "chapters_real": 13,
-  "chapters_published": 12,
+  "beats_measured": 90,
+  "durations_recorded": 0,
+  "duration_s": 703.36,
+  "cues": 186,
+  "chapters_real": 15,
+  "chapters_published": 14,
   "chapter_notes": [
     "merged 1 chapter(s) under 10s: Title card (3.3s)"
   ],
   "drift": {
-    "mean_abs_s": 45.0,
-    "worst_abs_s": 106.6,
+    "mean_abs_s": 35.7,
+    "worst_abs_s": 98.7,
     "rows": [
       {
         "title": "Cold open",
@@ -79,40 +79,31 @@
       {
         "title": "Closing",
         "hand": "11:20",
-        "real": "9:33",
-        "drift_s": -106.6
+        "real": "11:23",
+        "drift_s": 3.6
       }
     ]
   },
   "ffprobe": {
     "file": "renders/why-deep-sea-fish-die-when-brought-to-surface-final.mp4",
-    "video_s": 591.413,
-    "last_cue_end_s": 591.413,
+    "video_s": 703.36,
+    "last_cue_end_s": 703.36,
     "delta_s": 0.0,
     "ok": true
   },
   "text_checks": {
     "beats_json": {
-      "checked": 78,
+      "checked": 90,
       "mismatched": []
     },
     "script_text": {
-      "checked": 78,
+      "checked": 90,
       "absent_from_narration": []
     }
   },
   "script_chapters": {
-    "written": true,
-    "changed": true,
-    "removed_lines": [
-      "Title card",
-      "Pressure is not weight pressing down",
-      "Observation requires in situ study or fatal collection"
-    ],
-    "chapters_not_in_script": [
-      "Pressure is not weight pressing down \u2014 it is force from all directions",
-      "Observation requires either in situ study or fatal collection"
-    ]
+    "written": false,
+    "reason": "skipped"
   },
   "artifacts": [
     "captions/why-deep-sea-fish-die-when-brought-to-surface.vtt",

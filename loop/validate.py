@@ -4371,9 +4371,14 @@ def v47_longform_title(items) -> Result:
     if _lt.title_problems("The midnight zone has no sunlight", probe):
         r.fail("self-check: the formula refused a plain, traceable, staked title")
 
+    import domains as _dom                                 # noqa: PLC0415
+
     def script_of(slug):
-        p = ROOT / "scripts" / f"{slug}.md"
-        return p.read_text(encoding="utf-8") if p.exists() else None
+        # domains.script_of: scripts/<slug>.md, else a food episode's
+        # scripts/food/<slug>.md. Reading only the first named the food
+        # episode uploaded 2026-10-15 "no script" and failed V47.
+        p = _dom.script_of(slug)
+        return p.read_text(encoding="utf-8") if p else None
 
     retitle: list[str] = []
     for row in _led.load().get("published") or []:

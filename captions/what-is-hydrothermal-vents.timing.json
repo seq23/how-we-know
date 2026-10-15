@@ -1,20 +1,20 @@
 {
   "episode": "what-is-hydrothermal-vents",
-  "beats": 82,
+  "beats": 83,
   "plan_source": "plans/what-is-hydrothermal-vents.json",
   "timing": "audio",
-  "beats_measured": 82,
-  "durations_recorded": 82,
-  "duration_s": 628.96,
+  "beats_measured": 83,
+  "durations_recorded": 0,
+  "duration_s": 636.525,
   "cues": 168,
   "chapters_real": 12,
   "chapters_published": 10,
   "chapter_notes": [
-    "merged 2 chapter(s) under 10s: Title card (1.9s), Producer POV (7.0s)"
+    "merged 2 chapter(s) under 10s: Title card (2.4s), Producer POV (6.7s)"
   ],
   "drift": {
-    "mean_abs_s": 38.1,
-    "worst_abs_s": 67.8,
+    "mean_abs_s": 33.1,
+    "worst_abs_s": 60.4,
     "rows": [
       {
         "title": "Cold open",
@@ -25,96 +25,91 @@
       {
         "title": "Title card",
         "hand": "00:42",
-        "real": "0:34",
-        "drift_s": -7.5
+        "real": "0:38",
+        "drift_s": -3.3
       },
       {
         "title": "Geologists predicted vents before anyone saw one",
         "hand": "00:47",
-        "real": "0:36",
-        "drift_s": -10.7
+        "real": "0:41",
+        "drift_s": -5.9
       },
       {
         "title": "A vent is the exit of plumbing you cannot see",
         "hand": "02:12",
-        "real": "1:52",
-        "drift_s": -19.7
+        "real": "1:56",
+        "drift_s": -15.9
       },
       {
         "title": "The water stays liquid because pressure moves the boiling point",
         "hand": "04:10",
-        "real": "3:36",
-        "drift_s": -33.1
+        "real": "3:41",
+        "drift_s": -28.1
       },
       {
         "title": "Vent life runs on chemistry, not sunlight",
         "hand": "05:25",
-        "real": "4:40",
-        "drift_s": -44.2
+        "real": "4:42",
+        "drift_s": -42.2
       },
       {
         "title": "Some vents run on rock chemistry instead of magma",
         "hand": "07:25",
-        "real": "6:42",
-        "drift_s": -42.0
+        "real": "6:47",
+        "drift_s": -37.6
       },
       {
         "title": "Vents shape more than the animals living on them",
         "hand": "08:30",
-        "real": "7:39",
-        "drift_s": -50.7
+        "real": "7:45",
+        "drift_s": -44.3
       },
       {
         "title": "Producer POV",
         "hand": "09:45",
-        "real": "8:49",
-        "drift_s": -55.4
+        "real": "8:57",
+        "drift_s": -47.8
       },
       {
         "title": "What to notice in the edit",
         "hand": "09:55",
-        "real": "8:56",
-        "drift_s": -58.3
+        "real": "9:03",
+        "drift_s": -51.1
       },
       {
         "title": "Evidence limit",
         "hand": "10:35",
-        "real": "9:27",
-        "drift_s": -67.5
+        "real": "9:34",
+        "drift_s": -60.3
       },
       {
         "title": "Closing",
         "hand": "11:15",
-        "real": "10:07",
-        "drift_s": -67.8
+        "real": "10:14",
+        "drift_s": -60.4
       }
     ]
   },
   "ffprobe": {
     "file": "renders/what-is-hydrothermal-vents-final.mp4",
-    "video_s": 628.96,
-    "last_cue_end_s": 628.96,
-    "delta_s": -0.0,
+    "video_s": 636.525,
+    "last_cue_end_s": 636.525,
+    "delta_s": 0.0,
     "ok": true
   },
   "text_checks": {
     "beats_json": {
-      "checked": 82,
+      "checked": 83,
       "mismatched": []
     },
     "script_text": {
-      "checked": 82,
+      "checked": 83,
       "absent_from_narration": []
     }
   },
   "script_chapters": {
-    "written": true,
-    "changed": true,
-    "removed_lines": [
-      "Title card",
-      "Producer POV"
-    ],
-    "chapters_not_in_script": []
+    "written": false,
+    "reason": "skipped"
   },
   "artifacts": [
     "captions/what-is-hydrothermal-vents.vtt",

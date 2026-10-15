@@ -546,6 +546,75 @@ def enforce_youtube(chs, total):
     return merged, notes
 
 
+def youtube_chapters(plan, durs):
+    """(real, published, notes): the ONE chapter computation. process() writes
+    captions/<slug>.chapters.txt from it and loop/upload.py:measured_chapters()
+    sends it to YouTube, so the file and the description cannot be computed
+    two different ways."""
+    real, total = real_chapters(plan, durs)
+    chs, notes = enforce_youtube(real, total)
+    return real, chs, notes
+
+
+def chapters_file_text(chs) -> str:
+    """The exact bytes of captions/<slug>.chapters.txt for a chapter list."""
+    return "\n".join(f"{hms(c['seconds'])} {c['title']}" for c in chs) + "\n"
+
+
+def measured_chapters(slug: str):
+    """The published chapter list from fully MEASURED timing, or None when the
+    episode has no frozen plan or any beat is still an estimate."""
+    if not (PLANS / f"{slug}.json").exists():
+        return None
+    plan, _ = load_plan(slug)
+    durs, timing, _ = beat_durations(slug, plan)
+    if timing not in MEASURED_TIMINGS:
+        return None
+    return youtube_chapters(plan, durs)[1]
+
+
+def derived_stale(slug: str) -> str | None:
+    """Why this episode's caption files no longer describe its measured
+    timeline, or None when they do (or the timeline is not measured yet).
+
+    THE DEFECT (2026-10-15, main red since 563b01d). The batch re-narrated
+    how-deep-can-whales-dive (a full re-render), loop/captions_build.py
+    recorded the new wav durations into audio/<slug>/beats.json - and nothing
+    rewrote captions/<slug>.chapters.txt, .srt, .vtt or .timing.json, because
+    the episode already HAD a track, and the track builder only builds missing
+    ones. The cached chapters put "The record is a sensor reading" at 0:35
+    while the render has it at 0:39. Seventeen tracks were stale the same way.
+    Every file process() writes is a function of (plan, measured durations);
+    when either moves, they are all rebuilt together - captions_build calls
+    this for every episode, every pass.
+    """
+    if not (PLANS / f"{slug}.json").exists():
+        return None
+    try:
+        plan, _ = load_plan(slug)
+    except (SystemExit, FileNotFoundError):
+        return None
+    durs, timing, _ = beat_durations(slug, plan)
+    if timing not in MEASURED_TIMINGS:
+        return None
+    if not (OUT / f"{slug}.srt").exists():
+        return None                      # uncaptioned: heal() owns that case
+    ch = OUT / f"{slug}.chapters.txt"
+    want = chapters_file_text(youtube_chapters(plan, durs)[1])
+    if not ch.exists() or ch.read_text(encoding="utf-8") != want:
+        return f"captions/{slug}.chapters.txt is not the measured chapter list"
+    tj = OUT / f"{slug}.timing.json"
+    try:
+        rec = json.loads(tj.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return f"captions/{slug}.timing.json is missing or unreadable"
+    if rec.get("duration_s") != round(sum(durs), 3) or rec.get("beats") != len(plan):
+        return (f"captions/{slug}.timing.json was built for {rec.get('beats')} "
+                f"beats / {rec.get('duration_s')} s; the measured timeline is "
+                f"{len(plan)} beats / {round(sum(durs), 3)} s")
+    return None
+
+
 def rewrite_script_chapters(slug: str, chs, dry=False):
     """Correct the timestamps inside the script's own `## Chapters` block.
 
@@ -624,10 +693,8 @@ def process(slug: str, write_script=True, check=None, verbose=True) -> dict:
     write_vtt(cues, vtt, slug)
     write_srt(cues, srt)
 
-    real, total2 = real_chapters(plan, durs)
-    chs, notes = enforce_youtube(real, total)
-    lines = [f"{hms(c['seconds'])} {c['title']}" for c in chs]
-    (OUT / f"{slug}.chapters.txt").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    real, chs, notes = youtube_chapters(plan, durs)
+    (OUT / f"{slug}.chapters.txt").write_text(chapters_file_text(chs), encoding="utf-8")
 
     # drift against the hand-written stamps
     hand = handwritten(slug)
