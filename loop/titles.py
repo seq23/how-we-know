@@ -247,6 +247,69 @@ def title_for(question: str, script_text: str = "") -> str:
     return t
 
 
+def _subject(base: str) -> str:
+    """The subject half of an episode title: the part before its promise."""
+    s = re.sub(r"\?\s*Here's how we know$", "", base.strip())
+    s = re.split(r"\s+[—–]\s+", s)[0]
+    s = re.sub(rf"\s*[—–-]?\s*{PROMISE}.*$", "", s, flags=re.I)
+    return s.strip().rstrip("?:.,; ")
+
+
+def _chapter_phrase(chapter: str) -> str:
+    c = re.sub(r"\s+", " ", (chapter or "").strip()).rstrip(".?:;,")
+    c = re.sub(r"\s*:\s*", " — ", c)          # one colon per title: ours
+    first = c.split(" ", 1)[0] if c else ""
+    keep = (first.lower() in PROPER or any(c.lower().startswith(k)
+                                           for k in PROPER_PHRASES)
+            or first[1:2].isupper() or first == "I")
+    return c if keep else c[:1].lower() + c[1:]
+
+
+def chapter_title(question: str, chapter: str, script_text: str = "",
+                  rank: int = 2) -> str:
+    """The title of a rank 2+ cut: the episode's subject, then ITS chapter.
+
+    Owner build 2026-10-14. A rank 2+ cut titled from the episode question
+    alone read as a repeat of rank 1 ("What is the deepest part of the
+    ocean?" in September, "The deepest part of the ocean — and how we know"
+    in October). The subject words stay - the title must still pass
+    `title_problems` against the QUERY, so it is still on-search - and the
+    chapter heading says which angle this cut takes:
+    "The deepest part of the ocean: what a depth number leaves out — and how
+    we know". Never raises; never returns the rank-1 title.
+    """
+    base = title_for(question, script_text)
+    subj = _subject(base) or _sentence(question.strip().rstrip("?"))
+    ch = _chapter_phrase(chapter)
+    cands = []
+    if ch:
+        cands += [f"{subj}: {ch} — {PROMISE}", f"{subj}: {ch}"]
+        words = ch.split(" ")
+        while len(words) > 2:              # trim the angle, never the subject
+            words.pop()
+            if words[-1].lower().strip(",;—") in STOPWORDS or words[-1] == "—":
+                continue                   # never end on "from", "the", "and"
+            cands.append(f"{subj}: {' '.join(words).rstrip(',;')}")
+    cands.append(f"{subj}: part {rank} — {PROMISE}")
+    for t in cands:
+        if t != base and not title_problems(t, question, script_text):
+            return t
+    return f"{_sentence(question.strip().rstrip('?'))}, part {rank}"[:TITLE_MAX]
+
+
+def title_for_cut(question: str, script_text: str = "", rank: int = 1,
+                  chapter: str | None = None) -> str:
+    """The title for cut `rank` of an episode. Rank 1 is `title_for`, unchanged;
+    rank 2+ must name its chapter (`chapter_title`) - a rank 2+ cut with no
+    chapter is refused rather than given the rank-1 title again."""
+    if rank <= 1:
+        return title_for(question, script_text)
+    if not (chapter or "").strip():
+        raise ValueError(f"cut {rank} has no chapter heading; it would be "
+                         f"titled exactly like cut 1")
+    return chapter_title(question, chapter, script_text, rank)
+
+
 if __name__ == "__main__":
     for q in sys.argv[1:]:
         print(title_for(q))

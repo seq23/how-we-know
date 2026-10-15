@@ -22,7 +22,7 @@ chapters against that episode's own direct-answer lock. Rank 1 publishes for
 every episode. Ranks 2 and 3 publish for DEEP SEA only (owner build
 2026-10-08: deep-sea Shorts bring 93% of views; config.json
 shorts_topics.cuts_per_episode), each one through the same receipt, V14/V15
-and render-gate checks as rank 1, never two from one episode on the same day
+and render-gate checks as rank 1, never two from one episode within 14 days
 (plan), and spread through the queue rank by rank (order_by_mix). Materials
 stays at one Short an episode.
 
@@ -274,37 +274,89 @@ def _local_day(stamp) -> object:
     return stamp.astimezone(SHORTS_TZ).date()
 
 
+# Two cuts of one episode air at least this far apart (owner build
+# 2026-10-14). "Not on the same day" (2026-10-08) still let rank 2 follow
+# rank 1 a day later, and a viewer saw the same episode's Short twice in a
+# week - read as a repeat. Fourteen days puts a different episode between them
+# on every evening of the ladder.
+EPISODE_GAP_DAYS = 14
+# A slot no pick may take is left empty, but never more than this many in a
+# row: past that the run stops and tomorrow's run tries again, because
+# schedule_for() hands out evenings strictly after the last Short on the
+# calendar - an evening skipped now is never offered again.
+MAX_EMPTY_SLOTS = 2
+
+
 def plan(led: dict, picks: list, n: int,
          drain: bool = False) -> list[tuple[Pick, datetime]]:
     """Up to `n` of `picks` (in their mix order), each with its evening slot.
 
-    THE ONE RULE ADDED WITH THE DEEP-SEA CUTS 2 AND 3: no two Shorts from the
-    same episode on the same local day - counting every Short already on the
-    calendar, not just this run's. Slots come from `schedule_for`, unchanged,
-    so the evening ladder and the cadence decide WHEN; this only decides WHICH
-    pick takes each slot. A slot is filled by the first pick (in mix order)
-    whose episode is not already on that day; a slot no pick may take is left
-    empty rather than doubled up.
+    THE RULE: two Shorts from the same episode are at least EPISODE_GAP_DAYS
+    local days apart - counting every Short already on the calendar, not just
+    this run's (2026-10-08 it was "not the same day"; 2026-10-14 fourteen
+    days). Slots come from `schedule_for`, unchanged, so the evening ladder and
+    the cadence decide WHEN; this only decides WHICH pick takes each slot. A
+    slot is filled by the first pick (in mix order) whose episode is clear of
+    the gap; a slot no pick may take is left empty rather than given to a
+    repeat, and after MAX_EMPTY_SLOTS empty slots in a row the plan stops
+    rather than open a gap in the calendar.
     """
     picks = [p if isinstance(p, Pick) else Pick(p) for p in picks]
     if n <= 0 or not picks:
         return []
-    on_day = {(r["slug"], _local_day(r["scheduled_publish_at"]))
-              for r in led.get("published", [])
-              if r.get("slug") and r.get("scheduled_publish_at")}
+    aired: dict[str, list] = {}
+    for r in led.get("published", []):
+        if r.get("slug") and r.get("scheduled_publish_at"):
+            aired.setdefault(r["slug"], []).append(
+                _local_day(r["scheduled_publish_at"]))
+
+    def clear(slug: str, day) -> bool:
+        return all(abs((day - d).days) >= EPISODE_GAP_DAYS
+                   for d in aired.get(slug, ()))
+
     remaining = list(picks)
     out: list[tuple[Pick, datetime]] = []
+    empty = 0
     for t in schedule_for(led, n + 14, drain=drain):
         if len(out) == n or not remaining:
             break
         day = _local_day(t)
         for i, p in enumerate(remaining):
-            if (p.slug, day) not in on_day:
+            if clear(p.slug, day):
                 out.append((p, t))
-                on_day.add((p.slug, day))
+                aired.setdefault(p.slug, []).append(day)
                 del remaining[i]
+                empty = 0
+                break
+        else:
+            empty += 1
+            if empty > MAX_EMPTY_SLOTS:
                 break
     return out
+
+
+def cut_chapter(path: Path, rank: int = 1) -> tuple[str | None, float | None]:
+    """(chapter heading, its start in the episode, seconds) from the cut's own
+    `.short.json` receipt beside `path`. Rank 1 needs neither and gets
+    (None, None). A rank 2+ cut MUST have them: its title and its link into
+    the episode come from its chapter (owner build 2026-10-14), and without
+    them it would go out titled exactly like rank 1 - the repeat this rule
+    exists to stop - so it is refused rather than uploaded."""
+    if rank <= 1:
+        return None, None
+    rec_path = Path(f"{path}.short.json")
+    try:
+        rec = json.loads(rec_path.read_text(encoding="utf-8"))
+    except (OSError, ValueError) as e:
+        raise ValueError(f"{path.name}: cut {rank} has no readable receipt "
+                         f"({e}); refusing to upload it with cut 1's title")
+    if rec.get("opening") != "chapter" or not rec.get("chapter"):
+        raise ValueError(f"{path.name}: cut {rank} was made under the old "
+                         f"shared-opening rule (receipt opening="
+                         f"{rec.get('opening')!r}); re-cut it - "
+                         f"bin/make-shorts.sh --keep-existing does")
+    at = rec.get("chapter_start_s")
+    return rec["chapter"], (float(at) if at is not None else None)
 
 
 def upload_short(st, token: str, slug: str, question: str, path: Path,
@@ -319,10 +371,12 @@ def upload_short(st, token: str, slug: str, question: str, path: Path,
     # The hand-off line goes in at upload when the episode is already public;
     # otherwise the row is `handoff: pending` and loop/handoff.py finishes it.
     import handoff                                         # noqa: PLC0415
+    chapter, at_s = cut_chapter(path, rank)
     episode_id = handoff.episode_link_for(token, slug)
     related = None if episode_id else handoff.related_episode_for(token, slug)
     payload = build_payload(slug, question, episode_video_id=episode_id,
-                            related=related)
+                            related=related, rank=rank, chapter=chapter,
+                            chapter_start_s=at_s)
     vid = up.resumable_upload(token, payload, path)
     stamp = when.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     P.set_privacy(token, vid, "private", publish_at=stamp)
@@ -338,6 +392,8 @@ def upload_short(st, token: str, slug: str, question: str, path: Path,
         "slug": slug, "video_id": vid, "file": path.name,
         "uploaded_at": now(), "privacy": "private",
         "scheduled_publish_at": stamp, "rank": rank, "lane": lane,
+        "title": payload["snippet"]["title"],
+        **({"chapter": chapter, "chapter_start_s": at_s} if rank > 1 else {}),
         "handoff": "done" if episode_id else "pending",
         **({"handoff_episode": episode_id, "handoff_at": now()} if episode_id else {})})
     save_ledger(led)
@@ -577,6 +633,9 @@ def order_by_mix(slugs: list, recent: list[str] | None = None,
     Items are slugs or Picks. Inside a domain every episode's rank 1 goes
     before any rank 2, and every rank 2 before any rank 3, so an episode's
     deeper cuts are spread across the queue rather than airing back to back.
+    Across domains, a rank 1 in a domain still below its share takes the
+    place of another domain's rank 2+ (2026-10-14), so a new episode's first
+    Short never waits behind an old episode's deeper cut.
 
     Stateless across runs by design — the ledger IS the memory, so a run that
     takes 2 of a 9/week cadence still converges on 3:1 over the week.
@@ -618,6 +677,18 @@ def order_by_mix(slugs: list, recent: list[str] | None = None,
         n += 1
         pick = max(ready, key=lambda d: (mix[d] / total_w * n - counts[d],
                                          mix[d]))
+        if _rank_of(buckets[pick][0]) > 1:
+            # An episode's FIRST Short outranks another episode's deeper cut
+            # (owner build 2026-10-14): a rank-1 waiting in a domain that is
+            # still below its share goes now, not after the mix happens to
+            # reach it. A domain at or over its share keeps waiting, so the
+            # 3:1 mix still holds.
+            first = [d for d in ready if d != pick
+                     and _rank_of(buckets[d][0]) == 1
+                     and mix[d] / total_w * n - counts[d] > 0]
+            if first:
+                pick = max(first, key=lambda d: (mix[d] / total_w * n
+                                                 - counts[d], mix[d]))
         out.append(buckets[pick].pop(0))
         counts[pick] += 1
     return out
@@ -640,7 +711,9 @@ def cut(slug: str) -> Path | None:
 
 def build_payload(slug: str, question: str,
                   episode_video_id: str | None = None,
-                  related: tuple[str, str] | None = None) -> dict:
+                  related: tuple[str, str] | None = None,
+                  rank: int = 1, chapter: str | None = None,
+                  chapter_start_s: float | None = None) -> dict:
     """Metadata for a Short. Deliberately NOT the episode's description.
 
     A Short carries a pointer back to the episode, because a viewer moving from
@@ -664,7 +737,10 @@ def build_payload(slug: str, question: str,
     script_text = script_path.read_text(encoding="utf-8") if script_path.exists() else ""
     # 2026-10-08: curiosity-led, still on-search — loop/titles.py.
     import titles                                          # noqa: PLC0415
-    title = titles.title_for(question, script_text)
+    # Rank 2+ names its own chapter (owner build 2026-10-14): titled from the
+    # question alone it read as a repeat of rank 1. titles.title_for_cut keeps
+    # every query word, so it still passes title_problems.
+    title = titles.title_for_cut(question, script_text, rank, chapter)
     domain = domains.domain_of_slug(slug)
     blurb = DOMAIN_BLURB.get(domain, DOMAIN_BLURB["deep-sea-ocean-science"])
 
@@ -686,7 +762,10 @@ def build_payload(slug: str, question: str,
     desc = discovery.add_hashtag_line(body, hashtags)
     import handoff                                         # noqa: PLC0415
     if episode_video_id:
-        desc = handoff.short_description(desc, episode_video_id, question)
+        # A rank 2+ cut links the episode AT its chapter, not at 0:00.
+        desc = handoff.short_description(
+            desc, episode_video_id, question,
+            chapter_start_s if rank > 1 else None)
     elif related:
         # Owner build 2026-10-08: a Short whose own episode is not public yet
         # still hands its viewer to a long episode — the closest public one in

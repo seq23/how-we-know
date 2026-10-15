@@ -95,11 +95,17 @@ hours = sorted({t.astimezone(SL.SHORTS_TZ).hour for _, t in p_drain})
 check("2 drain slots are 19:00 and 21:00 local", hours == [19, 21], str(hours))
 check("2 drain never puts one episode twice on a day",
       all(len({p.slug for p, _ in v}) == len(v) for v in days.values()))
-# a lone episode's ranks still go to different days in drain mode
+# a lone episode's ranks are kept fourteen days apart in drain mode too
 lone = SL.plan(empty, [SL.Pick(slugs[0], 1), SL.Pick(slugs[0], 2)], 2, drain=True)
-check("2 drain: a lone episode's two cuts land on two days",
-      len(lone) == 2 and SL._local_day(lone[0][1]) != SL._local_day(lone[1][1]),
-      str(lone))
+# 2026-10-14: fourteen days apart, not merely two days - so in one run only
+# the first is planned; the second never lands inside the gap.
+check("2 drain: a lone episode's second cut never lands inside fourteen days",
+      [p for p, _ in lone] == [SL.Pick(slugs[0], 1)], str(lone))
+two = SL.plan(empty, [SL.Pick(slugs[0], 1), SL.Pick(slugs[0], 2),
+                      SL.Pick(slugs[1], 1)], 3, drain=True)
+check("2 drain: the other episode takes the next slot, the repeat waits",
+      [p for p, _ in two] == [SL.Pick(slugs[0], 1), SL.Pick(slugs[1], 1)],
+      str(two))
 p_norm = SL.plan(empty, picks, 18)
 first = min(t for _, t in p_norm)
 in_week = [t for _, t in p_norm if t < first + timedelta(days=7)]

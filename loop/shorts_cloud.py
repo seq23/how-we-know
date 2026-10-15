@@ -255,12 +255,17 @@ def run(limit: int = 2, dry_run: bool = False) -> int:
             tmp = Path(td)
             for (slug, rank), t in planned:
                 path = tmp / SL.short_file(slug, rank)
-                # The receipt travels with the cut. It is not used to decide
-                # anything here — V14 already read it on the Mac — but pulling
-                # it proves the pair is intact, and a Short whose receipt has
-                # gone missing is one nobody can audit later.
+                # The receipt travels with the cut: pulling it proves the pair
+                # is intact, and a Short whose receipt has gone missing is one
+                # nobody can audit later. Since 2026-10-14 it also decides
+                # something: a rank 2+ cut's title and its link into the
+                # episode come from the chapter it names
+                # (shorts_lane.cut_chapter), so it is pulled beside the cut.
                 meta = shelf.head(r2.short_receipt_key(slug, rank))
                 fetch_verified(shelf, r2.short_key(slug, rank), path)
+                if rank > 1:
+                    fetch_verified(shelf, r2.short_receipt_key(slug, rank),
+                                   Path(f"{path}.short.json"))
                 st.work(f"pulled {SL.Pick(slug, rank).label} Short from {shelf.label} "
                         f"({path.stat().st_size:,} bytes, verified; receipt "
                         f"{meta['size']} bytes)")

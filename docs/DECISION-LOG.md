@@ -1394,3 +1394,28 @@ food in motion - real MOVEMENT and the impossible-scale feel (round 1 was 11/13 
 - **Voice throughput is the long pole on this 8 GB Mac**: Chatterbox needs ~4 GB; with other work
   resident it is paged out and slows from ~12x to ~40x real time. A food episode's ~25 new minutes of
   narration took most of an afternoon; plan food voicing for a quiet Mac.
+
+## 2026-10-14 — Deep-sea cuts 2-3 read as repeats; they now open on their own chapter
+
+- **Found:** from 12 Oct the cloud lane published rank-2 cuts of episodes whose rank 1 aired in
+  September. Every cut opened on the episode's cold open + title card (21/21 multi-cut episodes
+  shared their first two beats) and was titled from the episode question alone, so nothing told a
+  viewer it was a new angle. 38 unpublished cuts waited behind them.
+- **Rank 2+ opens on its own chapter** (`visuals/shorts.py select_beats`): the chapter's first
+  beat(s) up to HOOK_MAX, never the cold open or title card; rank 1 is unchanged. Receipts carry
+  `opening` and `chapter_start_s`.
+- **Rank 2+ is titled from its chapter** (`loop/titles.py title_for_cut`), still passing
+  `title_problems` against the query: "The deepest part of the ocean: what a depth number leaves
+  out — and how we know". A rank 2+ cut with no chapter, or an old-rule receipt, is refused at
+  upload (`shorts_lane.cut_chapter`), never given rank 1's title.
+- **Rank 2+ links the episode at its chapter** (`?t=` from the receipt; `loop/handoff.py` keeps the
+  offset when it rewrites the line).
+- **Spacing:** one episode's Shorts at least 14 days apart (was "not the same day"); after two empty
+  slots in a row the plan stops rather than open a gap. A waiting rank 1 goes before another
+  domain's rank 2+ while its domain is below its 3:1 share.
+- **`--keep-existing` re-cuts an old-rule rank 2+ cut that has not aired**; one already on the
+  channel is kept (never re-uploaded). The 38 waiting cuts were re-cut on the Mac and re-shelved; the
+  live rank-2 Shorts were retitled (videos.update, title + description only).
+- Guard: `loop/tests/test_shorts_cuts_never_repeat.py` (reads real receipts in `shorts/` on the
+  Mac); `test_shorts_deep_sea_all_cuts.py` and `test_shorts_drain_and_dry_shelf.py` pins rewritten
+  to the 14-day rule.

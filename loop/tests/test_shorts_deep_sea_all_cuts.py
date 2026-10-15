@@ -12,10 +12,13 @@ rank 1 ever published. Proves, with no network and no credential:
   3. the 3:1 deep-sea mix from #153 still holds over a run of eight, and
      inside deep sea every rank 1 airs before any rank 2, every rank 2 before
      any rank 3;
-  4. plan() never puts two Shorts from one episode on the same local day -
-     against the ledger AND inside one run - on the 9/week ladder, whose
-     Saturday and Sunday carry two evening slots; a slot only one episode's
-     cut could take is left empty, never doubled;
+  4. plan() keeps two Shorts from one episode at least 14 days apart
+     (2026-10-14; was "not the same local day") - against the ledger AND
+     inside one run - on the 9/week ladder, whose Saturday and Sunday carry
+     two evening slots; a slot only one episode's cut could take is left
+     empty, never given to a repeat, and the plan stops after two empty
+     slots rather than open a gap in the calendar; a waiting rank 1 goes
+     before any rank 2+, across domains too, while the 3:1 mix holds;
   5. the R2 shelf keys and push_shorts are rank-aware: deep sea's cuts 2-3 are
      shelved, a materials cut 2 is not;
   6. cut_groups() asks the nightly batch for 3 cuts of a deep-sea episode
@@ -108,6 +111,17 @@ deep_ranks = [p.rank for p in out if domains.domain_of_slug(p.slug) == DEEP]
 check("3 ranks ascend inside deep sea", deep_ranks == sorted(deep_ranks),
       str(deep_ranks))
 check("3 nothing dropped", sorted(out) == sorted(cands))
+# 2026-10-14: an episode's FIRST Short goes before another episode's deeper
+# cut across domains too, while its domain is below its share - recent all
+# deep sea, so the materials rank 1 opens the queue.
+deeper = [SL.Pick(s, r) for s in deep[:4] for r in (2, 3)]
+o2 = SL.order_by_mix(deeper + [SL.Pick(mat[0], 1)], recent=deep[:4] * 3, cfg=cfg)
+check("3 a waiting rank 1 goes before any rank 2+",
+      o2[0] == SL.Pick(mat[0], 1), str(o2[:3]))
+o3 = SL.order_by_mix([SL.Pick(deep[0], 2), SL.Pick(deep[1], 1), SL.Pick(mat[0], 1)],
+                     recent=[], cfg=cfg)
+check("3 rank 1s of both domains before the rank 2",
+      [p.rank for p in o3] == [1, 1, 2], str(o3))
 check("3 plain slugs still accepted (#153 callers)",
       SL.order_by_mix(mat[:3], recent=[], cfg=cfg) == mat[:3])
 
@@ -122,33 +136,50 @@ stamp = sat.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 led = {"published": [{"slug": d_new, "rank": 1, "scheduled_publish_at": stamp}]}
 
 p1 = SL.plan(led, [SL.Pick(d_new, 2), SL.Pick(d_pub, 2)], 2)
-check("4 plan size", len(p1) == 2, str(p1))
-first_day = p1[0][1].astimezone(SL.SHORTS_TZ)
+first_day = p1[0][1].astimezone(SL.SHORTS_TZ) if p1 else None
 check("4 Sat 21:00 slot goes to the OTHER episode",
-      p1[0][0] == SL.Pick(d_pub, 2) and first_day.date() == sat.date()
+      bool(p1) and p1[0][0] == SL.Pick(d_pub, 2) and first_day.date() == sat.date()
       and first_day.hour == 21, str(p1))
-check("4 the same episode moves to the next day",
-      p1[1][0] == SL.Pick(d_new, 2)
-      and p1[1][1].astimezone(SL.SHORTS_TZ).date() > sat.date(), str(p1))
+# 2026-10-14: not merely another day - the same episode waits EPISODE_GAP_DAYS,
+# and the plan stops rather than leave more than MAX_EMPTY_SLOTS evenings
+# empty, so d_new's cut 2 is not planned at all this run.
+check("4 gap is fourteen days, empty run capped at two",
+      SL.EPISODE_GAP_DAYS == 14 and SL.MAX_EMPTY_SLOTS == 2)
+check("4 the same episode is not planned inside fourteen days",
+      len(p1) == 1 and SL.Pick(d_new, 2) not in [p for p, _ in p1], str(p1))
 
-# Only one episode's cuts left: its two remaining ranks never share a day, and
-# the Saturday 21:00 slot is left empty rather than doubled up.
+# Only one episode's cuts left, its rank 1 aired tonight: nothing is planned -
+# neither the Saturday 21:00 slot nor any evening inside the gap.
 p2 = SL.plan(led, [SL.Pick(d_new, 2), SL.Pick(d_new, 3)], 2)
-days = [t.astimezone(SL.SHORTS_TZ).date() for _, t in p2]
-check("4 lone episode: two cuts, two days, neither Saturday",
-      len(p2) == 2 and len(set(days)) == 2 and sat.date() not in days, str(p2))
+check("4 lone episode inside the gap: nothing planned, nothing doubled",
+      p2 == [], str(p2))
 
-# A full week from pending's own order, against the ledger: no duplicates.
+# The same lone episode whose rank 1 aired fifteen days before the calendar's
+# last Short: its cut 2 takes the next slot, its cut 3 is NOT planned behind
+# it (that would be inside the gap).
+old = (sat - timedelta(days=15)).astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+led_old = {"published": [{"slug": d_new, "rank": 1, "scheduled_publish_at": old},
+                         {"slug": d_pub, "rank": 1, "scheduled_publish_at": stamp}]}
+p2b = SL.plan(led_old, [SL.Pick(d_new, 2), SL.Pick(d_new, 3)], 2)
+check("4 past the gap the next cut goes, the one after it waits",
+      [p for p, _ in p2b] == [SL.Pick(d_new, 2)], str(p2b))
+
+# A full week from pending's own order, against the ledger: every episode's
+# Shorts at least fourteen days apart, and every eligible episode placed.
 p3 = SL.plan(led, out, 9)
-seen = {(r["slug"], SL._local_day(r["scheduled_publish_at"])) for r in led["published"]}
-dupes = []
+aired = {}
+for r in led["published"]:
+    aired.setdefault(r["slug"], []).append(SL._local_day(r["scheduled_publish_at"]))
+close = []
 for p, t in p3:
-    k = (p.slug, SL._local_day(t))
-    if k in seen:
-        dupes.append(k)
-    seen.add(k)
-check("4 a planned week has no episode twice on one day",
-      len(p3) == 9 and not dupes, f"{len(p3)} planned, dupes {dupes}")
+    d = SL._local_day(t)
+    close += [(p.slug, str(d), str(x)) for x in aired.get(p.slug, [])
+              if abs((d - x).days) < 14]
+    aired.setdefault(p.slug, []).append(d)
+eligible = {p.slug for p in out} - {d_new}
+check("4 a planned week keeps every episode's Shorts fourteen days apart",
+      not close and {p.slug for p, _ in p3} == eligible
+      and len(p3) == len(eligible), f"{len(p3)} planned, too close {close}")
 check("4 slots strictly after the calendar's last Short",
       all(t > sat for _, t in p3))
 
@@ -220,5 +251,5 @@ if fails:
         print(f"  - {f}")
     sys.exit(1)
 print(f"OK  test_shorts_deep_sea_all_cuts: {examined} checks - deep sea "
-      f"publishes cuts 1-3, materials 1, 3:1 mix held, never one episode twice "
-      f"on a day")
+      f"publishes cuts 1-3, materials 1, 3:1 mix held, rank 1 first, one "
+      f"episode's Shorts fourteen days apart")
