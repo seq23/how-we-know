@@ -909,21 +909,74 @@
       "en_title": "How Hot Are Hydrothermal Vents?",
       "source_hash": "d491685fd23ba2dcc8f6eba5c6c2d3c8",
       "applied_at": "2026-10-14T15:15:07+00:00"
-    }
-  },
-  "updated": "2026-10-14T15:15:07+00:00",
-  "blocked": {
+    },
     "rn99K4kav40": {
       "slug": "how-are-microchips-designed",
-      "reason": "QUOTA_DEFERRED",
-      "since": "2026-10-14T15:11:25+00:00",
-      "missing": [
+      "languages": [
         "de",
         "es",
         "hi",
         "id",
         "pt-BR"
-      ]
+      ],
+      "all_languages": [
+        "de",
+        "en",
+        "es",
+        "hi",
+        "id",
+        "pt-BR"
+      ],
+      "default_language": "en",
+      "en_title": "Do Microchips Start as Text?",
+      "source_hash": "ebe0d0357fc40a8bda3c9c1cb2895ca9",
+      "applied_at": "2026-10-15T15:11:50+00:00"
+    },
+    "pb27XYAfKAs": {
+      "slug": "how-deep-can-whales-dive",
+      "languages": [
+        "de",
+        "es",
+        "hi",
+        "id",
+        "pt-BR"
+      ],
+      "all_languages": [
+        "de",
+        "en",
+        "es",
+        "hi",
+        "id",
+        "pt-BR"
+      ],
+      "default_language": "en",
+      "en_title": "How Deep Do Whales Go?",
+      "source_hash": "7dfb3111c9f78bd10653e89f69365e77",
+      "applied_at": "2026-10-15T15:13:05+00:00"
+    },
+    "8bVPoTWAfFQ": {
+      "slug": "why-bread-rises-steak-browns-chocolate-snaps",
+      "languages": [
+        "de",
+        "es",
+        "hi",
+        "id",
+        "pt-BR"
+      ],
+      "all_languages": [
+        "de",
+        "en",
+        "es",
+        "hi",
+        "id",
+        "pt-BR"
+      ],
+      "default_language": "en",
+      "en_title": "Bread, Steak, Chocolate: What's Inside?",
+      "source_hash": "6676d0739a80bdbbd6f9906e573d6a79",
+      "applied_at": "2026-10-15T15:14:12+00:00"
     }
-  }
+  },
+  "updated": "2026-10-15T15:14:12+00:00",
+  "blocked": {}
 }
