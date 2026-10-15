@@ -119,7 +119,7 @@
       "track_kind": "standard",
       "source": "inserted",
       "recorded_at": "2026-09-03T17:28:08+00:00",
-      "verified_at": "2026-10-01T15:12:50+00:00"
+      "verified_at": "2026-10-15T15:10:49+00:00"
     },
     "IbrSPKUK1IM": {
       "slug": "18-why-does-black-smoker-water-not-boil",
@@ -261,7 +261,7 @@
       "track_kind": "standard",
       "source": "inserted",
       "recorded_at": "2026-09-07T15:18:09+00:00",
-      "verified_at": "2026-10-01T15:12:48+00:00"
+      "verified_at": "2026-10-15T15:10:49+00:00"
     },
     "kTBlLeWdi4g": {
       "slug": "what-is-a-semiconductor-made-of",
@@ -436,30 +436,59 @@
       "cues": 230,
       "track_kind": "standard",
       "source": "inserted",
-      "recorded_at": "2026-10-14T15:11:20+00:00"
-    }
-  },
-  "blocked": {
+      "recorded_at": "2026-10-14T15:11:20+00:00",
+      "verified_at": "2026-10-15T15:10:49+00:00"
+    },
     "REa1JiBNVto": {
       "slug": "what-lives-in-mariana-trench",
-      "reason": "QUOTA_DEFERRED",
-      "since": "2026-10-14T15:11:20+00:00",
-      "sha256": "0a84762a8a74f8b08adff6bb591357c638636bf3802ed7df00851465bd2d5ec3"
+      "caption_id": "AUieDaZPMNwpQXFh0TM_Ft4728WYngdEXoM4DjNKRKEFrWEq-7YRMS-q",
+      "language": "en",
+      "srt_sha256": "0a84762a8a74f8b08adff6bb591357c638636bf3802ed7df00851465bd2d5ec3",
+      "cues": 188,
+      "track_kind": "standard",
+      "source": "inserted",
+      "recorded_at": "2026-10-15T15:10:46+00:00"
     },
     "09O44lDEYYo": {
       "slug": "what-is-hydrothermal-vents",
-      "reason": "QUOTA_DEFERRED",
-      "since": "2026-10-14T15:11:20+00:00",
-      "sha256": "672a882f9549dc139bf4c657555839463f3ca205bb979ac1349b14a56fa2e25b"
+      "caption_id": "AUieDaaP5v6mqS-9LCzJk5uOHnUFC1kWh4ZjOWugXch6gh8LNuP-cRgf",
+      "language": "en",
+      "srt_sha256": "672a882f9549dc139bf4c657555839463f3ca205bb979ac1349b14a56fa2e25b",
+      "cues": 168,
+      "track_kind": "standard",
+      "source": "inserted",
+      "recorded_at": "2026-10-15T15:10:47+00:00"
     },
     "rn99K4kav40": {
       "slug": "how-are-microchips-designed",
-      "reason": "QUOTA_DEFERRED",
-      "since": "2026-10-14T15:11:20+00:00",
-      "sha256": "232dd1272a1aa0629daeadd253cbabaf5ffac4b7dbfccdc7ea7a416ce45a8ea9"
+      "caption_id": "AUieDaYzx9SXge8fYEPav4-CimhW37RywMf8I6WpAIA6vv0m_qd9Ar4n",
+      "language": "en",
+      "srt_sha256": "232dd1272a1aa0629daeadd253cbabaf5ffac4b7dbfccdc7ea7a416ce45a8ea9",
+      "cues": 167,
+      "track_kind": "standard",
+      "source": "inserted",
+      "recorded_at": "2026-10-15T15:10:48+00:00"
+    },
+    "pb27XYAfKAs": {
+      "slug": "how-deep-can-whales-dive",
+      "caption_id": "AUieDabCbMpSMUifYhNHCOr_sWrAH6P99BSQBwEvqsMtbe_uDd1xXgS-",
+      "language": "en",
+      "srt_sha256": "397ab285ef0a03aa972a967021ecc25e4cce4b575c7cd482b329ecdec1162275",
+      "cues": 146,
+      "track_kind": "standard",
+      "source": "inserted",
+      "recorded_at": "2026-10-15T15:10:48+00:00"
     }
   },
-  "updated": "2026-10-14T15:11:21+00:00",
+  "blocked": {
+    "8bVPoTWAfFQ": {
+      "slug": "why-bread-rises-steak-browns-chocolate-snaps",
+      "reason": "QUOTA_DEFERRED",
+      "since": "2026-10-15T15:10:46+00:00",
+      "sha256": "e78d38baf36321a20e5b9d09ad27c500602082cdf0706c81233496ee4c9f936b"
+    }
+  },
+  "updated": "2026-10-15T15:10:49+00:00",
   "token_scopes": [],
   "token_has_force_ssl": true
 }

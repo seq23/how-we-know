@@ -1,6 +1,6 @@
 {
   "week": "2026-W42",
-  "at": "2026-10-14T15:11:19+00:00",
+  "at": "2026-10-15T15:10:45+00:00",
   "plan": [
     {
       "slug": "10-what-is-the-deepest-part-of-the-ocean",
@@ -312,7 +312,7 @@
       "srt": "/home/runner/work/how-we-know/how-we-know/captions/how-deep-can-a-sperm-whale-go.srt",
       "cues": 230,
       "sha256": "db4772ae95478784d9754bef130952d83d4fa8ff8198a0ca70a77e5c3c604003",
-      "already": false
+      "already": true
     },
     {
       "slug": "what-lives-in-mariana-trench",
@@ -336,6 +336,22 @@
       "srt": "/home/runner/work/how-we-know/how-we-know/captions/how-are-microchips-designed.srt",
       "cues": 167,
       "sha256": "232dd1272a1aa0629daeadd253cbabaf5ffac4b7dbfccdc7ea7a416ce45a8ea9",
+      "already": false
+    },
+    {
+      "slug": "how-deep-can-whales-dive",
+      "video_id": "pb27XYAfKAs",
+      "srt": "/home/runner/work/how-we-know/how-we-know/captions/how-deep-can-whales-dive.srt",
+      "cues": 146,
+      "sha256": "397ab285ef0a03aa972a967021ecc25e4cce4b575c7cd482b329ecdec1162275",
+      "already": false
+    },
+    {
+      "slug": "why-bread-rises-steak-browns-chocolate-snaps",
+      "video_id": "8bVPoTWAfFQ",
+      "srt": "/home/runner/work/how-we-know/how-we-know/captions/why-bread-rises-steak-browns-chocolate-snaps.srt",
+      "cues": 673,
+      "sha256": "e78d38baf36321a20e5b9d09ad27c500602082cdf0706c81233496ee4c9f936b",
       "already": false
     }
   ],
