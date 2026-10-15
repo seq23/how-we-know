@@ -93,6 +93,14 @@ Notice that every number in this episode came from an instrument that rode along
 {{checklist: What the evidence settles | +a whale reached 2,992 metres | -the maximum depth any whale can reach | ?how often beaked whales dive that deep}}
 This evidence establishes that at least one Cuvier's beaked whale reached 2,992 metres and returned. It does not establish the maximum depth any whale can reach, the depth limit of the species, or how often such dives happen. It rests on a small number of tagged animals in a few regions. It also says nothing about what the whale found at the bottom of that dive. The sensor recorded pressure, and pressure is all it recorded.
 
+### How tag data become depth profiles
+
+{{steps: From raw pressure to depth | pressure readings logged | temperature correction applied | satellite‑compressed summary transmitted | >depth‑time profile reconstructed}}
+The tag does not output depth directly; it records pressure at set intervals. Researchers first correct the raw pressure for water temperature and salinity, because the same pressure can correspond to slightly different depths if the water is denser or lighter. After correction, the pressure‑to‑depth conversion (roughly 1 atm per 10 m of seawater) yields a depth value for each timestamp. The compressed summaries sent via satellite are then decompressed on shore, giving scientists a full dive profile that shows descent, bottom time, and ascent.
+
+{{stat: 1 500 | metres | median foraging depth for Cuvier’s beaked whales | NOAA Fisheries}}
+NOAA’s species profile for Cuvier’s beaked whale reports that their typical foraging dives centre around 1 500 metres, with a common range of 1 000–2 000 metres. This figure comes from the same tagging efforts that produced the extreme record, showing that while individuals can reach nearly three kilometres, most of their hunting occurs at roughly half that depth.
+
 ### Closing
 
 {{ambient}}
@@ -124,6 +132,8 @@ So how deep can whales dive? At least 2,992 metres, because a tag says so. Beyon
 - 11:30 Closing
 
 ## Sources
+- https://www.fisheries.noaa.gov/species/cuviers-beaked-whale
+- https://oceanexplorer.noaa.gov/facts/
 
 - Guinness World Records: Deepest dive by a mammal — https://www.guinnessworldrecords.com/world-records/deepest-dive-by-a-mammal
 - NOAA Ocean Exploration: Ocean Facts — https://oceanexplorer.noaa.gov/facts/

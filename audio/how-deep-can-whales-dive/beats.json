@@ -415,20 +415,56 @@
   },
   {
     "i": 69,
-    "segment": "ambient_drift",
-    "narration": "So how deep can whales dive? At least 2,992 metres, because a tag says so.",
-    "seconds": 6.874666666666666
+    "segment": "process_steps",
+    "narration": "The tag does not output depth directly; it records pressure at set intervals.",
+    "seconds": 4.965333333333334
   },
   {
     "i": 70,
-    "segment": "ambient_drift",
-    "narration": "Beyond that, the honest answer is that the ocean has not been asked often enough.",
-    "seconds": 6.064
+    "segment": "text_beat",
+    "narration": "Researchers first correct the raw pressure for water temperature and salinity, because the same pressure can correspond to slightly different depths if the water is denser or lighter.",
+    "seconds": 10.28
   },
   {
     "i": 71,
+    "segment": "process_steps",
+    "narration": "After correction, the pressure\u2011to\u2011depth conversion (roughly 1\u202fatm per 10\u202fm of seawater) yields a depth value for each timestamp.",
+    "seconds": 9.288
+  },
+  {
+    "i": 72,
+    "segment": "text_beat",
+    "narration": "The compressed summaries sent via satellite are then decompressed on shore, giving scientists a full dive profile that shows descent, bottom time, and ascent.",
+    "seconds": 10.277333333333333
+  },
+  {
+    "i": 73,
+    "segment": "stat_card",
+    "narration": "NOAA\u2019s species profile for Cuvier\u2019s beaked whale reports that their typical foraging dives centre around 1\u202f500\u202fmetres, with a common range of 1\u202f000\u20132\u202f000\u202fmetres.",
+    "seconds": 11.397333333333334
+  },
+  {
+    "i": 74,
+    "segment": "text_beat",
+    "narration": "This figure comes from the same tagging efforts that produced the extreme record, showing that while individuals can reach nearly three kilometres, most of their hunting occurs at roughly half that depth.",
+    "seconds": 11.685333333333332
+  },
+  {
+    "i": 75,
+    "segment": "ambient_drift",
+    "narration": "So how deep can whales dive? At least 2,992 metres, because a tag says so.",
+    "seconds": 7.290666666666667
+  },
+  {
+    "i": 76,
+    "segment": "ambient_drift",
+    "narration": "Beyond that, the honest answer is that the ocean has not been asked often enough.",
+    "seconds": 5.306666666666667
+  },
+  {
+    "i": 77,
     "segment": "text_beat",
     "narration": "Every tag that rides down with a whale is a small question put to the dark, and each answer is only as deep as the dive it happened to catch.",
-    "seconds": 8.538666666666666
+    "seconds": 8.090666666666667
   }
 ]
