@@ -73,6 +73,7 @@ VIDEO_READ = 1            # videos.list
 CAPTION_LIST = 50         # captions.list  — how we tell "already has a track"
 CAPTION_INSERT = 400      # captions.insert — the expensive one
 VIDEO_UPDATE = 50         # videos.update  — the localizations write
+CAPTION_UPDATE = 450      # captions.update — re-time a track already live
 
 # What one video costs each reach lane, end to end.
 PER_CAPTION = CAPTION_LIST + CAPTION_INSERT       # 450
