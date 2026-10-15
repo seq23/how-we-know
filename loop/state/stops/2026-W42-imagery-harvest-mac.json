@@ -1,7 +1,7 @@
 {
   "stage": "imagery-harvest-mac",
   "week": "2026-W42",
-  "at": "2026-10-14T12:18:49+00:00",
+  "at": "2026-10-15T12:28:13+00:00",
   "code": "DELEGATED_HARVEST_STALE",
   "message": "1 delegated harvester(s) have not been run by their host inside the 10-day cap: research/imagery_food.py on ci (last run: never; last success: never). This host cannot run it and the host that can has been silent, so the pool it feeds has stopped growing.",
   "detail": {
@@ -30,9 +30,9 @@
   "held_items": [],
   "exit_code": 0,
   "work_done_before_stop": [
-    "verified research/imagery.py is harvesting on ci (delegated): last success 2026-10-10T04:19:12+00:00 (4.3 day(s) ago), 108 record(s) - within the 10-day cap",
-    "verified research/imagery_materials.py is harvesting on ci (delegated): last success 2026-10-10T04:37:16+00:00 (4.3 day(s) ago), 12 record(s) - within the 10-day cap",
-    "verified research/imagery_species.py is harvesting on ci (delegated): last success 2026-10-10T04:38:13+00:00 (4.3 day(s) ago), 33 record(s) - within the 10-day cap"
+    "verified research/imagery.py is harvesting on ci (delegated): last success 2026-10-10T04:19:12+00:00 (5.3 day(s) ago), 108 record(s) - within the 10-day cap",
+    "verified research/imagery_materials.py is harvesting on ci (delegated): last success 2026-10-10T04:37:16+00:00 (5.3 day(s) ago), 12 record(s) - within the 10-day cap",
+    "verified research/imagery_species.py is harvesting on ci (delegated): last success 2026-10-10T04:38:13+00:00 (5.3 day(s) ago), 33 record(s) - within the 10-day cap"
   ],
   "notes": [
     "allocation: deep-sea-ocean-science 2, materials-and-manufacturing 2, food-science 2 -> 5 scheduled harvester(s): 1 run here on mac-batch, 4 delegated",
@@ -47,7 +47,7 @@
     "cleared pool before: channel/imagery/video_rights.json 163 record(s)",
     "demand at the current cadence: 6/week, 48 episode(s) over the next 8 weeks. An episode with no cleared footage is illustrated, which is a legitimate outcome and never a reason to widen the gate.",
     "research/imagery_video.py: rights gate credit_is_noaa_only() present",
-    "research/imagery_video.py: harvested 4.3 day(s) ago on mac-batch; due again after 6 (loop/config.json harvest.interval_days) - not re-run tonight",
+    "research/imagery_video.py: harvested 5.3 day(s) ago on mac-batch; due again after 6 (loop/config.json harvest.interval_days) - not re-run tonight",
     "cleared pool after: channel/imagery/food.json 5 record(s)",
     "cleared pool after: channel/imagery/materials.json 12 record(s)",
     "cleared pool after: channel/imagery/rights.json 108 record(s)",
