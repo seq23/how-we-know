@@ -146,11 +146,22 @@ def title_of(question: str) -> str:
     return (t[:1].upper() + t[1:] if t else t) + "?"
 
 
-def link_line(episode_video_id: str, question: str) -> str:
-    return f"{LINK_PREFIX}{episode_video_id} — {title_of(question)}"
+def at_suffix(at_s: float | None) -> str:
+    """`?t=<s>` when a rank 2+ cut hands its viewer to its own chapter of the
+    episode (owner build 2026-10-14); empty for rank 1, which opens the
+    episode at the top."""
+    t = int(at_s) if at_s else 0
+    return f"?t={t}" if t > 0 else ""
 
 
-def short_description(current: str, episode_video_id: str, question: str) -> str:
+def link_line(episode_video_id: str, question: str,
+              at_s: float | None = None) -> str:
+    return (f"{LINK_PREFIX}{episode_video_id}{at_suffix(at_s)}"
+            f" — {title_of(question)}")
+
+
+def short_description(current: str, episode_video_id: str, question: str,
+                      at_s: float | None = None) -> str:
     """`current` with the hand-off line as its FIRST line, exactly once.
 
     An existing hand-off line (any episode id) is replaced, so a corrected
@@ -163,7 +174,8 @@ def short_description(current: str, episode_video_id: str, question: str) -> str
         while lines and lines[0].strip() == "":
             lines.pop(0)
     body = "\n".join(lines).strip("\n")
-    out = link_line(episode_video_id, question) + ("\n\n" + body if body else "")
+    out = (link_line(episode_video_id, question, at_s)
+           + ("\n\n" + body if body else ""))
     return out[:DESC_MAX]
 
 
@@ -224,9 +236,15 @@ def related_episode_for(token: str | None, slug: str, yt=None,
     return None
 
 
-def has_link(description: str, episode_video_id: str) -> bool:
+def has_link(description: str, episode_video_id: str,
+             at_s: float | None = None) -> bool:
+    """The first line links the episode - at `at_s` exactly when given, so a
+    rank 2+ cut whose line lost its chapter offset is rewritten."""
     first = (description or "").split("\n", 1)[0]
-    return first.startswith(LINK_PREFIX + episode_video_id)
+    if at_s is None:
+        return first.startswith(LINK_PREFIX + episode_video_id)
+    want = LINK_PREFIX + episode_video_id + at_suffix(at_s)
+    return first.startswith(want + " ") or first == want
 
 
 def strip_block(description: str) -> str:
@@ -439,11 +457,12 @@ def plan(yt, episodes: list[dict], shorts: list[dict], pl: dict,
                 actions.append({"kind": "mark_pending", "short": s["video_id"]})
             continue
         desc = (v["snippet"] or {}).get("description") or ""
-        if not has_link(desc, ep["video_id"]) or s.get("handoff") != "done":
+        at = s.get("chapter_start_s") if int(s.get("rank") or 1) > 1 else None
+        if not has_link(desc, ep["video_id"], at) or s.get("handoff") != "done":
             actions.append({"kind": "short_desc", "short": s["video_id"],
                             "episode": ep["video_id"], "question": ep.get("question", ""),
-                            "snippet": v["snippet"],
-                            "write": not has_link(desc, ep["video_id"])})
+                            "snippet": v["snippet"], "at_s": at,
+                            "write": not has_link(desc, ep["video_id"], at)})
         if _public(v) and not s.get("handoff_comment_id"):
             actions.append({"kind": "comment", "short": s["video_id"],
                             "episode": ep["video_id"], "question": ep.get("question", "")})
@@ -591,7 +610,8 @@ def apply(st, yt, token: str, actions: list[dict], budget: int,
                 row = sh_by_id[a["short"]]
                 if a.get("write", True):
                     desc = short_description(a["snippet"].get("description") or "",
-                                             a["episode"], a["question"])
+                                             a["episode"], a["question"],
+                                             a.get("at_s"))
                     yt.api_put("videos", {"part": "snippet"},
                            {"id": a["short"], "snippet": _snippet_for_update(a["snippet"], desc)})
                     spent += WRITE_UNITS; budget -= 1

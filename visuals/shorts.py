@@ -40,6 +40,9 @@ Three decisions are encoded here, and each one is a claim that can be checked:
    lock` sentence and builds hook + answer: cold open and title card, then the
    winning chapter. One question, one answer. `--count N` takes the next-best
    chapters too, so an 8-minute episode yields several Shorts rather than one.
+   Rank 2+ does NOT reuse the cold open and title card: it opens on its own
+   chapter's first beat(s) (owner build 2026-10-14), so two cuts of one episode
+   never share an opening - loop/tests/test_shorts_cuts_never_repeat.py.
 
 3. AUDIO IS THE ORIGINAL NARRATION WAVS, NEVER A RE-RENDER.
    The selected beats' wavs are concatenated directly. `verify()` then measures
@@ -79,7 +82,8 @@ OUT_W, OUT_H = 1080, 1920
 SRC_W, SRC_H = 1920, 1080     # the master's frame; asserted at runtime
 MAX_SECONDS = 58.0            # YouTube Shorts cutoff is 60; leave headroom
 TARGET_SECONDS = 50.0
-HOOK_MAX = 16.0               # cold open + title card; must not eat the answer
+HOOK_MAX = 16.0               # the opening (rank 1: cold open + title card;
+                              # rank 2+: chapter's first beats); must not eat the answer
 NARRATION_DBFS = -22.9        # what voice/ normalises to
 DBFS_TOLERANCE = 3.0
 
@@ -422,10 +426,12 @@ def select_beats(beats: list[dict], answer: str,
 
     The rule, in order:
 
-      1. HOOK - the `Cold open` beats plus the `Title card` beat, in plan order.
-         The cold open is already written as a hook ("A red shrimp can look almost
-         black in the water where it lives") and the title card is literally the
-         question. Capped at HOOK_MAX seconds so it cannot eat the answer.
+      1. HOOK - rank 1 (rank == 0): the `Cold open` beats plus the `Title card`
+         beat, in plan order. The cold open is already written as a hook ("A red
+         shrimp can look almost black in the water where it lives") and the title
+         card is literally the question. Rank 2+: the chosen chapter's own first
+         content beat(s) - never the episode's cold open, which rank 1 already
+         aired. Capped at HOOK_MAX seconds so it cannot eat the answer.
 
       2. ANSWER CHAPTER - every chapter is scored as a whole against the script's
          `## Direct-answer lock` sentence: shared content words, IDF-weighted over
@@ -461,28 +467,52 @@ def select_beats(beats: list[dict], answer: str,
     if len(ranked) <= rank:
         raise ValueError(f"only {len(ranked)} eligible chapter(s); no rank {rank}")
     _, heading, content = ranked[rank]
+    run = next(idxs for h, idxs in _chapters(beats) if content[0] in idxs)
+    chapter_start_s = beats[run[0]]["video_start"]
 
-    # Hook: cold open + title card, budget-capped.
-    # The title card is reserved first: it is the question, and a Short that never
-    # asks one is a fragment. Cold-open beats then fill whatever budget is left.
-    card = [b["i"] for b in beats if b["heading"] == "Title card"][:1]
-    hook_s = sum(beats[i]["video_s"] for i in card)
-    hook = list(card)
-    for b in beats:
-        if (b["heading"] == "Cold open" and not META.search(b["narration"])
-                and hook_s + b["video_s"] <= HOOK_MAX):
-            hook.append(b["i"])
-            hook_s += b["video_s"]
-    hook.sort()
+    if rank == 0:
+        # Hook: cold open + title card, budget-capped.
+        # The title card is reserved first: it is the question, and a Short that
+        # never asks one is a fragment. Cold-open beats then fill whatever budget
+        # is left.
+        card = [b["i"] for b in beats if b["heading"] == "Title card"][:1]
+        hook_s = sum(beats[i]["video_s"] for i in card)
+        hook = list(card)
+        for b in beats:
+            if (b["heading"] == "Cold open" and not META.search(b["narration"])
+                    and hook_s + b["video_s"] <= HOOK_MAX):
+                hook.append(b["i"])
+                hook_s += b["video_s"]
+        hook.sort()
+        floor = 0
+    else:
+        # RANK 2+ OPENS ON ITS OWN CHAPTER (owner build 2026-10-14). Until then
+        # every cut of an episode opened on the same cold open and title card,
+        # so a viewer who had seen rank 1 in September saw rank 2 in October as
+        # a repeat: 21 of 21 multi-cut episodes shared their first two beats.
+        # The hook is now the chapter's own first beat(s), in plan order, up to
+        # HOOK_MAX - always at least one beat, so the cut starts where the
+        # chapter starts rather than mid-thought.
+        hook, hook_s = [], 0.0
+        for i in content:
+            if hook and hook_s + beats[i]["video_s"] > HOOK_MAX:
+                break
+            hook.append(i)
+            hook_s += beats[i]["video_s"]
+        floor = len(hook)
 
     budget = min(target_seconds, max_seconds - hook_s)
     best = max(content, key=lambda i: _score(beats[i]["narration"], df, len(beats)))
-    lo = hi = content.index(best)
-    total = beats[best]["video_s"]
+    if content.index(best) < floor:
+        # The answer beat is already in the hook: grow forward from the hook.
+        lo, hi, total = floor, floor - 1, 0.0
+    else:
+        lo = hi = content.index(best)
+        total = beats[best]["video_s"]
     for direction in ("fwd", "back"):
         while True:
             nxt = hi + 1 if direction == "fwd" else lo - 1
-            if not 0 <= nxt < len(content):
+            if not floor <= nxt < len(content):
                 break
             if total + beats[content[nxt]]["video_s"] > budget:
                 break
@@ -502,6 +532,8 @@ def select_beats(beats: list[dict], answer: str,
         raise ValueError(f"beat {best} alone is {total:.1f}s, over the {max_seconds}s budget")
 
     return {"anchor": best, "hook": hook, "chapter": heading, "rank": rank,
+            "opening": "episode" if rank == 0 else "chapter",
+            "chapter_start_s": round(chapter_start_s, 3),
             "beats": picked, "seconds": total, "eligible_chapters": len(ranked),
             "ranking": [(round(s, 2), h) for s, h, _ in ranked[:5]]}
 
@@ -1048,6 +1080,35 @@ def verify(path: str, narration_s: float | None = None) -> dict:
 
 # ------------------------------------------------------------------------ cli
 
+def _published_files() -> set[str]:
+    """Cut file names already uploaded, per loop/state/shorts_ledger.json."""
+    try:
+        led = json.load(open(os.path.join(ROOT, "loop", "state",
+                                          "shorts_ledger.json")))
+    except (OSError, ValueError):
+        return set()
+    return {r.get("file") for r in led.get("published", []) if r.get("file")}
+
+
+def stale_opening(mp4: str, rank: int, published: set[str] | None = None) -> bool:
+    """True for a rank 2+ cut on disk that was made under the OLD rule (it opens
+    on the episode's cold open and title card, like rank 1) and has not been
+    uploaded. `--keep-existing` must re-cut it, never keep it: keeping it is how
+    six weeks of apparent repeats would reach the channel. A cut already on
+    YouTube is kept as it is - it is never re-uploaded, so re-cutting it would
+    only make the file on disk disagree with the video."""
+    if rank == 0:
+        return False
+    try:
+        rec = json.load(open(f"{mp4}.short.json"))
+    except (OSError, ValueError):
+        return True
+    if rec.get("opening") == "chapter":
+        return False
+    pub = _published_files() if published is None else published
+    return os.path.basename(mp4) not in pub
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("slugs", nargs="+", help="episode slugs, or 'all'")
@@ -1063,7 +1124,9 @@ def main(argv=None):
                     help="skip a rank whose cut AND receipt are already in "
                          "--out: the nightly batch asks for deep sea's ranks "
                          "2-3 on episodes whose rank 1 may already be on the "
-                         "channel, and that cut is never re-rendered")
+                         "channel, and that cut is never re-rendered. A rank "
+                         "2+ cut made under the old shared-opening rule and "
+                         "not yet uploaded is re-cut, not kept")
     a = ap.parse_args(argv)
 
     slugs = a.slugs
@@ -1084,7 +1147,8 @@ def main(argv=None):
             stem = f"{slug}-short" if rank == 0 else f"{slug}-short{rank + 1}"
             mp4 = os.path.join(a.out, f"{stem}.mp4")
             if a.keep_existing and os.path.exists(mp4) \
-                    and os.path.exists(f"{mp4}.short.json"):
+                    and os.path.exists(f"{mp4}.short.json") \
+                    and not stale_opening(mp4, rank):
                 print(f"keep {mp4} (already cut)")
                 kept.append(mp4)
                 continue
