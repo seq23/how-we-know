@@ -451,6 +451,25 @@ def handoff_rows() -> list[dict] | None:
     return list((read_json(RENDER_QUEUE, default={}) or {}).get("items") or [])
 
 
+def run_swaps(st, shelf, cfg, dry_run: bool) -> dict:
+    """Run loop/supersede_swap.py inside this lane's Stage and quota order."""
+    import supersede_swap                                  # noqa: PLC0415
+
+    def api_factory():
+        creds = up.load_credentials(cfg)
+        if not creds or creds.get("unusable"):
+            code, msg, unblock = up.credential_stop(creds, cfg)
+            st.named_stop(code, "a superseded-after-upload swap is due but "
+                          + msg, unblock=unblock)
+        return supersede_swap.Api(up.access_token(creds))
+
+    with tempfile.TemporaryDirectory(prefix="how-we-know-swap-") as td:
+        return supersede_swap.run(
+            st, api_factory=api_factory, shelf_look=shelf_lookup(shelf),
+            fetch=lambda key, dest: fetch(shelf, key, dest), tmp=Path(td),
+            lane=LANE, reserve=quota.shorts_reserve(), dry_run=dry_run)
+
+
 def run(limit: int = 4, dry_run: bool = False) -> int:
     # THE CIRCUIT BREAKER (2026-10-12). This lane is one of the two that
     # actually put episodes on the channel, and it never asked the breaker:
@@ -495,6 +514,15 @@ def run(limit: int = 4, dry_run: bool = False) -> int:
         except r2.R2Unavailable as e:
             st.named_stop(e.code, e.message, detail=e.detail, unblock=e.unblock)
         st.note(f"shelf: {shelf.label}")
+
+        # -- superseded-after-upload swaps, FIRST ------------------------
+        # A private, scheduled upload whose render was superseded after it
+        # went up (how-deep-can-a-sperm-whale-go / hh5mMno-Iis, 2026-10-14)
+        # carries the old cut to its publish date unless this lane swaps it.
+        # Same quota order as the episode upload (the Shorts reserve), first
+        # because it has a deadline. Public videos are never touched.
+        # loop/supersede_swap.py; pinned by test_supersede_swap.py.
+        run_swaps(st, shelf, cfg, dry_run)
 
         pending = backfill.library_pending(verbose=True,
                                            assets=shelf_lookup(shelf))

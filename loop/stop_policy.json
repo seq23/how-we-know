@@ -781,6 +781,18 @@
       "why": "A retired video kept its publishAt, so YouTube could re-publish it.",
       "plain": "a retired video still has an air date and could go public again"
     },
+    "SUPERSEDED_SWAP_LATE": {
+      "why": "A private, scheduled upload carries a render that was superseded after it went up (loop/supersede_swap.py), and the swap to the new cut could not run (quota, shelf or captions, named in the message) with its publish time closer than the next daily run. Left alone, the OLD cut airs.",
+      "plain": "a scheduled video still has its old cut and airs before the swap can run"
+    },
+    "SUPERSEDED_SWAP_NOT_SCHEDULED": {
+      "why": "The swap uploaded the new cut but YouTube did not apply the old video's publishAt to it. The old video is untouched and still scheduled, so nothing airs wrongly, but the new cut is undated.",
+      "plain": "the re-uploaded cut did not take its air date"
+    },
+    "SUPERSEDED_SWAP_OLD_NOT_RETIRED": {
+      "why": "The new cut is scheduled but the superseded video did not read back private with no publishAt, so both could air on the same date.",
+      "plain": "the replaced video still has an air date beside its replacement"
+    },
     "UPLOAD_FAILED": {
       "why": "The upload itself failed. A defect or a platform error that has already consumed quota.",
       "plain": "an upload to YouTube failed"
