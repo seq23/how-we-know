@@ -71,7 +71,7 @@ SCRIPTS = os.path.join(ROOT, "scripts")
 VARIANTS_DIR = os.path.join(ROOT, "channel", "thumbnails", "variants")
 
 TW, TH = 1280, 720
-MAX_WORDS = 3
+MAX_WORDS = 4      # thumbnail words only (owner, 14 Oct 2026: a title echo); titles keep their own gate
 SUBJECT_FILL_MIN = 0.60
 VARIANT_NAMES = ("A", "B", "C")
 CHOSEN = "A"
@@ -316,180 +316,195 @@ DANGLING = {"ever", "your", "you", "my", "per", "plus", "minus", "because", "up"
             "that", "which", "a", "an", "the", "is", "are", "it", "its"}
 
 
-# THE DRAMA LINE (owner's lock, 13 Oct 2026): "thumbnail text (<=3 words)
-# carries the drama/subject; the title stays clear and short". A question
-# title yields fragments ("FISH LIVE", "STEEL STRONG"), so the words are
-# drafted on the $0 route from the script's own answer and gated here:
-# <=3 words, every word traceable to the script, short common words, and
-# the subject, a simple figure or a contradiction in it. Cached per slug in
-# loop/state/thumb_text.json; text_options() is the fallback.
-THUMB_TEXT = os.path.join(ROOT, "loop", "state", "thumb_text.json")
-DRAMA_PROMPT = """Write {n} candidate thumbnail texts for a science video, one \
-per line, nothing else. Each is 1 to 3 words, in capitals, the most dramatic \
-TRUE thing the script's answer says - the surprise, a simple figure, or what \
-is NOT so. Short common words a 12-year-old knows; every word must be in the \
-script below; never repeat the title's question; no punctuation except an \
-apostrophe. Shapes (other videos): "NOT STRONGER", "NO SUNLIGHT", "5 MILES DOWN".
-
-TITLE: {title}
-SUBJECT: {subject}
-DIRECT-ANSWER LOCK: {answer}
-SCRIPT EXCERPT: {excerpt}
-"""
+# THE TITLE ECHO (owner, 14 Oct 2026; replaces the 13 Oct model-drafted
+# "drama line"): the thumbnail text is a short echo of the title's own core
+# phrase - "Can a Deep Sea Fish Eat a Human?" -> "FISH EAT A HUMAN?". Built
+# deterministically from the title (text_options) and gated by ONE rule
+# (text_problems). The drama line's bare negations ("NOT DEFINED", "NOT ONE
+# ANGLERFISH", "FILMED NOT CAUGHT" - 12 of 25 cached sets) made no sense on
+# the channel page; the model path, its prompt and its cache are gone.
+# The TITLE itself stays the clear, short question (13 Oct lock); only the
+# words on the picture changed.
+QUESTION_LEAD = {"can", "could", "why", "how", "what", "what's", "is", "are",
+                 "does", "do", "did", "makes", "make", "which", "who", "when",
+                 "where", "will", "would", "should", "was", "were", "has", "have",
+                 "must", "be", "been", "am"}
+END_WEAK = DANGLING | {"does", "do", "did", "can", "could", "was", "were", "be",
+                       "will", "would", "so", "very", "just", "much", "as",
+                       "own", "must"}
+_FIG = re.compile(r"^\d[\d,.]*%?$")
 
 
-def drama_problems(text: str, script: str, subject: set[str]) -> list[str]:
+def _title_tokens(title: str) -> tuple[list[str], list[bool]]:
+    toks = re.findall(r"[\w][\w,.'’%-]*[:;?!]?", title or "")
+    clean = [t.strip(".,'’:;?!") for t in toks]
+    ends = [bool(re.search(r"[,:;.!?]$", t)) for t in toks]
+    return clean, ends
+
+
+def _subject_stems(title: str, subject: set[str] | None) -> set[str]:
+    """The episode's subject words plus the title's own subject words (its
+    content words minus question words, stakes and negations)."""
+    sys.path.insert(0, os.path.join(ROOT, "loop"))
+    import longform_title as LT                            # noqa: PLC0415
+    tw = {w for w in LT.subject_words(title or "")
+          if w not in LT.STAKE and w not in LT.CONTRADICTION
+          and w not in QUESTION_LEAD}
+    return {LT.stem(w) for w in set(subject or ()) | tw}
+
+
+def _is_subject(word: str, ss: set[str]) -> bool:
+    sys.path.insert(0, os.path.join(ROOT, "loop"))
+    import longform_title as LT                            # noqa: PLC0415
+    return any(LT.stem(x) in ss for x in re.split(r"[-–]", word.lower()) if x)
+
+
+def _figure_with_unit(words: list[str]) -> bool:
+    sys.path.insert(0, os.path.join(ROOT, "loop"))
+    import longform_title as LT                            # noqa: PLC0415
+    for i, w in enumerate(words):
+        if not _FIG.match(w):
+            continue
+        nxt = words[i + 1] if i + 1 < len(words) else ""
+        if w.endswith("%") or (re.fullmatch(r"[a-z]+", nxt or "-")
+                               and nxt not in LT.STOP and nxt not in END_WEAK
+                               and nxt not in LT.CONTRADICTION):
+            return True
+    return False
+
+
+def text_problems(text: str, title: str, subject: set[str] | None = None) -> list[str]:
+    """THE thumbnail-text rule - the one function every path reads.
+
+    The text is the title's core phrase: 1-4 words in capitals, every word
+    from the title, a trailing "?" only when the title is a question; it
+    starts on the subject or a figure (never a riddle fragment), never ends
+    on a word that needs the next one, holds NO negation (not / no / never /
+    only / nothing / without ...), is never a stake word alone, and names
+    the subject or a simple figure with its unit ("8,336 METERS")."""
     sys.path.insert(0, os.path.join(ROOT, "loop"))
     import longform_title as LT                            # noqa: PLC0415
     p: list[str] = []
-    words = text.split()
+    t = (text or "").strip()
+    q = t.endswith("?")
+    body = t[:-1].rstrip() if q else t
+    words = body.split()
     if not 1 <= len(words) <= MAX_WORDS:
-        p.append(f"{len(words)} words")
-    if re.search(r"[^A-Z0-9' %-]", text):
+        p.append(f"{len(words)} words (1 to {MAX_WORDS})")
+    if re.search(r"[^A-Z0-9' %,.-]", body):
         p.append("not plain capitals")
-    ev = LT.evidence_text(script)
-    have = {LT.stem(w) for w in LT.content_words(ev)}
-    ss = {LT.stem(w) for w in subject}
-    for w in LT.content_words(text.lower()):
-        if not LT._match(LT.stem(w), have) and w not in LT.CONTRADICTION:  # noqa: SLF001
-            p.append(f"{w!r} is not in the script")
-        if LT._syllables(w) > LT.MAX_SYLLABLES and LT.stem(w) not in ss:  # noqa: SLF001
-            p.append(f"{w!r} is a long word")
-    low_ = text.lower().split()
-    if low_ and (low_[-1] in DANGLING or low_[-1] == "than"):
+    if q and not (title or "").rstrip().endswith("?"):
+        p.append("a question mark on a title that asks nothing")
+    low = [w.lower().strip(".,'") for w in words]
+    have = {w.lower() for w in _title_tokens(title)[0]}
+    missing = [w for w in low if w and w not in have]
+    if missing:
+        p.append(f"{missing[0]!r} is not in the title")
+    neg = [w for w in low if w in LT.CONTRADICTION or w.endswith("n't")]
+    if neg:
+        p.append(f"a negation ({neg[0].upper()}) - a riddle on the channel "
+                 f"page, never the plain subject or a figure")
+    ss = _subject_stems(title, subject)
+    if low and not (_is_subject(low[0], ss) or _FIG.match(low[0])):
+        p.append(f"a riddle fragment: starts on {low[0].upper()!r}, not the "
+                 f"subject or a figure")
+    if low and low[0] in END_WEAK:
+        p.append(f"starts on a word that needs the one before ({low[0].upper()})")
+    if low and low[-1] in END_WEAK:
         p.append("ends on a word that needs the next one")
-    if sum(1 for w in low_ if w in LT.NUMBER_WORDS or w in ("point", "to")) >= 2:
-        p.append("a spelled-out figure or a range - one simple figure in digits")
-    nums = re.findall(r"\d[\d,.]*", text)
-    if any(not LT._simple_number(n) for n in nums):        # noqa: SLF001
-        p.append("a figure that is not simple")
-    bad = [n for n in LT._numbers_in_title(text.lower())   # noqa: SLF001
-           if n not in set(LT.figures(ev))]
-    if bad:
-        p.append("a figure the script never states")
-    toks = {LT.stem(w) for w in re.findall(r"[a-z0-9]+", text.lower())}
-    if not (toks & ss or nums or toks & {LT.stem(w) for w in LT.CONTRADICTION}
-            or toks & {LT.stem(w) for w in LT.STAKE}):
-        p.append("names neither the subject, a figure nor a contradiction")
+    inner = [w for w in low if w in QUESTION_LEAD]
+    if inner:
+        p.append(f"a question word inside the echo ({inner[0].upper()})")
+    content = [w for w in low if w not in LT.STOP]
+    if content and all(w in LT.STAKE for w in content):
+        p.append("a stake word alone - names nothing")
+    if not (any(_is_subject(w, ss) for w in low) or _figure_with_unit(low)):
+        p.append("names neither the subject nor a figure with its unit")
     return p
 
 
-def drama_text(slug: str, title: str, script: str, subject: set[str],
-               ask=None) -> list[str]:
-    """Cached, gated drama lines for one slug (newest title wins)."""
-    try:
-        cache = json.load(open(THUMB_TEXT))
-    except (OSError, ValueError):
-        cache = {}
-    rec = cache.get(slug) or {}
-    if rec.get("title") == title and rec.get("texts"):
-        return [t for t in rec["texts"] if not drama_problems(t, script, subject)]
-    if ask is None:
-        return []
+def text_options(title: str, subject: set[str] | None = None) -> list[str]:
+    """Up to three title echoes, best first, each passing text_problems.
+
+    Windows of 1-4 consecutive title words inside one clause (a phrase never
+    crosses a comma or a negation: "Steel fails at 0.4 gigapascals, graphene
+    at 130" never prints 0.4 over GRAPHENE). With `subject` (the episode's
+    subject words) only clauses that name it count. Ranked: holds a stake or
+    a figure with its unit, then two words or more, then ends where the title
+    ends (keeping its "?"), then starts on a figure, then longer. "Can a Deep Sea Fish Eat a Human?"
+    -> "FISH EAT A HUMAN?"; "What Makes Steel So Strong?" -> "STEEL SO
+    STRONG?"."""
     sys.path.insert(0, os.path.join(ROOT, "loop"))
     import longform_title as LT                            # noqa: PLC0415
-    msg = DRAMA_PROMPT.format(n=6, title=title, subject=", ".join(sorted(subject)),
-                              answer=LT.answer_lock(script),
-                              excerpt=LT._excerpt(script, 400))  # noqa: SLF001
-    try:
-        reply, model = ask([{"role": "user", "content": msg}])
-    except Exception:                                      # noqa: BLE001
+    clean, ends = _title_tokens(title)
+    low = [w.lower() for w in clean]
+    if not low:
         return []
-    out = []
-    for ln in (reply or "").splitlines():
-        t = re.sub(r"^\s*(?:[-*]|\d{1,2}[.)])\s+", "", ln).strip().strip('"').upper()
-        if t and t not in out and not drama_problems(t, script, subject):
-            out.append(t)
-    cache[slug] = {"title": title, "texts": out[:3], "model": model}
-    with open(THUMB_TEXT, "w") as fh:
-        json.dump(cache, fh, indent=2, sort_keys=True)
-        fh.write("\n")
+    question = (title or "").rstrip().endswith("?")
+    last = len(low) - 1
+    ss = _subject_stems(title, subject)
+    episode = {LT.stem(w) for w in (subject or ())}
+    # segments: split at clause ends; a negation ENDS its clause's usable
+    # words - what follows it is the opposite of the claim ("The Deep Sea Is
+    # Not Empty" must never print EMPTY, "Concrete Does Not Dry" never DRY).
+    # Only a question's leading contracted auxiliary ("Why Aren't Deep Sea
+    # Fish Crushed?") is part of the asking and is skipped like "Why".
+    segs, cur, dead = [], [], False
+    for i, w in enumerate(low):
+        neg = w in LT.CONTRADICTION or w.endswith("n't")
+        if neg and question and i <= 1 and w.endswith("n't"):
+            neg = False
+        if neg:
+            if cur:
+                segs.append(cur)
+            cur, dead = [], True
+        elif not dead:
+            cur.append(i)
+        if ends[i]:
+            if cur:
+                segs.append(cur)
+            cur, dead = [], False
+    if cur:
+        segs.append(cur)
+    # clause ids for the episode-subject check (clauses end at punctuation)
+    clause, k = [], 0
+    for e in ends:
+        clause.append(k)
+        k += e
+    named = {clause[i] for i, w in enumerate(low) if _is_subject(w, episode)}
+    domain = set().union(*LT.DOMAIN_PLAIN.values())
+    cands = []
+    for seg in segs:
+        for a in range(len(seg)):
+            # never start inside a noun phrase ("SEA ANIMALS", "FIBER SO
+            # STRONG", "STRONGER THAN STEEL"): the word before may only be a
+            # question word, a stop word, or the domain's own "deep sea"
+            # ahead of a new noun ("Deep Sea FISH EAT A HUMAN").
+            if a:
+                prev, w0 = low[seg[a - 1]], low[seg[a]]
+                if (prev not in LT.STOP and prev not in QUESTION_LEAD
+                        and not prev.endswith("n't")
+                        and not (prev in domain and w0 not in domain)):
+                    continue
+            for b in range(a, min(a + MAX_WORDS, len(seg))):
+                idx = seg[a:b + 1]
+                if episode and clause[idx[0]] not in named:
+                    continue
+                ws = [low[i] for i in idx]
+                txt = " ".join(clean[i] for i in idx).upper()
+                at_end = idx[-1] == last
+                if question and at_end:
+                    txt += "?"
+                if text_problems(txt, title, subject):
+                    continue
+                key = (any(w in LT.STAKE for w in ws) or _figure_with_unit(ws),
+                       len(ws) >= 2, at_end, bool(_FIG.match(ws[0])), len(ws), -idx[0])
+                cands.append((key, txt))
+    out: list[str] = []
+    for _, txt in sorted(cands, key=lambda c: c[0], reverse=True):
+        if txt not in out:
+            out.append(txt)
     return out[:3]
-
-
-def text_options(title: str, subject: set[str] | None = None) -> list[str]:
-    """Up to three <=3-word phrases from the (already truth-guarded) title.
-
-    With `subject` (longform_title.subject_words of the episode's question)
-    the PLAINNESS rule holds (owner, 13 Oct 2026): every phrase is the plain
-    subject or a figure with its unit, never a riddle fragment ("NOT FISH",
-    "NOT SEEN"); the subject phrase comes first, so variant A names it."""
-    import longform_title as LT                            # noqa: PLC0415
-    toks = [t for t in re.findall(r"[\w][\w,.'%-]*[:;]?", title or "")]
-    clean = [t.strip(".,'':;") for t in toks]
-    low = [t.lower() for t in clean]
-    # A phrase never crosses a clause boundary: "Steel fails at 0.4
-    # gigapascals, graphene at 130" gave "0.4 GIGAPASCALS GRAPHENE" (13 Oct
-    # 2026) - steel's figure printed over graphene's name.
-    ends = [bool(re.search(r"[,:;]$", t)) for t in toks]
-    opts: list[list[str]] = []
-
-    def phrase_from(i):
-        ph = [clean[i]]
-        j = i + 1
-        while j < len(clean) and len(ph) < MAX_WORDS and not ends[j - 1]:
-            if low[j] not in STOP:
-                ph.append(clean[j])
-            elif len(ph) >= 2:
-                break
-            j += 1
-        return ph
-
-    subj = {LT.stem(w) for w in (subject or ())}
-
-    def names_subject(ph):
-        return any(LT.stem(x) in subj for w in ph
-                   for x in re.split(r"[-\u2013]", w.lower()) if x)
-
-    if subj:
-        for i, t in enumerate(clean):
-            if names_subject([t]):
-                opts.append(phrase_from(i))
-                break
-    for i, t in enumerate(clean):
-        if re.search(r"\d", t):
-            ph = phrase_from(i)
-            if not subj or len(ph) >= 2:      # a bare number is a riddle too
-                opts.append(ph)
-            break
-    for i, t in enumerate(low):
-        if t in LT.CONTRADICTION or t in LT.STAKE:
-            opts.append(phrase_from(i))
-            break
-    if subj:
-        # a figure counts only inside a clause that names the subject:
-        # "Steel fails at 0.4 gigapascals, graphene at 130" -> 0.4 is steel's
-        clause, k = [], 0
-        for e in ends:
-            clause.append(k)
-            k += e
-        subj_clauses = {clause[i] for i, t in enumerate(clean)
-                        if names_subject([t])}
-
-        def figure_ok(o):
-            return any(re.search(r"\d", w) and clause[clean.index(w)] in subj_clauses
-                       for w in o if w in clean)
-        opts = [o for o in opts if names_subject(o) or figure_ok(o)]
-    content: list[str] = []
-    for c, lo, e in zip(clean, low, ends):
-        if lo not in STOP:
-            content.append(c)
-        if e and content:
-            break                       # the first clause only
-    if content and (not subj or names_subject(content[:MAX_WORDS])):
-        opts.append(content[:MAX_WORDS])
-    out = []
-    for ph in opts:
-        ph = list(ph[:MAX_WORDS])
-        # Never end on a word that needs the next one ("100 DEGREES PER",
-        # "10,935 METERS PLUS", "NOT FLATTENED BECAUSE" - all built on
-        # 2026-10-13 before this trim).
-        while len(ph) > 1 and ph[-1].lower() in DANGLING:
-            ph.pop()
-        s = " ".join(ph).upper()
-        if s and s not in out:
-            out.append(s)
-    return out
 
 
 def draw(base: Image.Image, text: str, credit: str, side: str = "left") -> tuple[Image.Image, list, list]:
@@ -565,7 +580,14 @@ def _slug_phrase(slug: str) -> str:
     return " ".join(w[:min(2, MAX_WORDS)]).upper()
 
 
-DRAMA_ASK = None     # set by the CLI (the $0 route); tests pass a fixture
+def subject_for(slug: str, script: str) -> set[str]:
+    """The episode's subject words (longform_title.subject_words of its
+    question, plus the domain's plain words)."""
+    sys.path.insert(0, os.path.join(ROOT, "loop"))
+    import longform_title as LT                            # noqa: PLC0415
+    subject = LT.subject_words(LT._question_for(slug, script))  # noqa: SLF001
+    dm = re.search(r"^\*\*Domain:\*\*\s*(\S+)", script, re.M)
+    return subject | LT.DOMAIN_PLAIN.get(dm.group(1) if dm else "", set())
 
 
 def build_variants(slug: str, out_root: str | None = None,
@@ -597,11 +619,7 @@ def build_into(slug: str, final_dir: str, title: str | None = None,
         raise ContractRefused(f"{slug}: thumbnail text over {MAX_WORDS} words: {texts}")
     sys.path.insert(0, os.path.join(ROOT, "loop"))
     import longform_title as LT                            # noqa: PLC0415
-    subject = None
-    if text_src:
-        subject = LT.subject_words(LT._question_for(slug, text_src))  # noqa: SLF001
-        dm = re.search(r"^\*\*Domain:\*\*\s*(\S+)", text_src, re.M)
-        subject |= LT.DOMAIN_PLAIN.get(dm.group(1) if dm else "", set())
+    subject = subject_for(slug, text_src) if text_src else None
     if texts:
         texts = [t.upper() for t in texts]
     else:
@@ -610,10 +628,6 @@ def build_into(slug: str, final_dir: str, title: str | None = None,
         raise ContractRefused(f"{slug}: no title or hook to take <= {MAX_WORDS} "
                               f"words from")
     cands = candidates(slug, sp)
-    if cands and text_src and not owner_texts:
-        # the drama line only for an episode that has a picture to carry it
-        drama = drama_text(slug, title, text_src, subject or set(), ask=DRAMA_ASK)
-        texts = list(dict.fromkeys(drama + texts))[:3]
     if not texts:
         raise ContractRefused(f"{slug}: no title or hook to take <= {MAX_WORDS} "
                               f"words from")
@@ -631,8 +645,11 @@ def build_into(slug: str, final_dir: str, title: str | None = None,
     # (visuals/thumb_distinct.py). Texts are not all identical.
     import thumb_distinct as TD                            # noqa: PLC0415
     alt = texts[1] if len(texts) > 1 else _shorter(texts[0])
-    if alt.upper() == texts[0].upper():
+    if alt.upper() == texts[0].upper() or (
+            not owner_texts and text_problems(alt, title, subject)):
         alt = _slug_phrase(slug) or alt
+        if not owner_texts and text_problems(alt, title, subject):
+            alt = texts[0]          # the one rule wins over variety
     alt2 = texts[2] if len(texts) > 2 else (texts[0] if alt != texts[0] else alt)
     crops = [(0.72, (0.66, 0.45), "left"), (0.95, (0.34, 0.5), "right"),
              (0.62, (0.5, 0.42), "left"), (0.9, (0.7, 0.5), "left"),
@@ -835,13 +852,6 @@ def needed_slugs() -> list[str]:
 
 
 def main(argv: list[str]) -> int:
-    global DRAMA_ASK
-    if "--drama" in argv:
-        # Draft drama lines on the repo's $0 route (subscription first, then
-        # the free tiers; never paid): loop/longform_title._ask.
-        sys.path.insert(0, os.path.join(ROOT, "loop"))
-        import longform_title as LT                        # noqa: PLC0415
-        DRAMA_ASK = LT._ask                                # noqa: SLF001
     if "--chosen" in argv:
         for s in [a for a in argv if not a.startswith("--")]:
             print(chooser(s))
