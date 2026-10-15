@@ -214,6 +214,52 @@ def record_durations(slugs, *, note=print) -> list[str]:
     return touched
 
 
+def refresh_stale(slugs=None, *, note=print) -> list[str]:
+    """Rebuild every caption track whose files no longer describe the measured
+    timeline (visuals/captions.py:derived_stale). Default: every episode with
+    a frozen plan, queued or already published - the description chapters of
+    a live video are read from the same timeline.
+
+    The script's own `## Chapters` stamps are left alone (write_script=False):
+    a bound script's bytes are lengthen.py's fingerprint, and the description
+    never reads them while measured timing exists.
+    """
+    CAP = _cap()
+    if slugs is None:
+        slugs = sorted(p.stem for p in CAP.PLANS.glob("*.json"))
+    rebuilt = []
+    for slug in slugs:
+        why = CAP.derived_stale(slug)
+        if not why:
+            continue
+        try:
+            CAP.process(slug, write_script=False, verbose=False)
+        except (SystemExit, Exception) as e:   # noqa: BLE001 - a per-slug
+            # verdict (verify_text refuses mismatched words): one episode must
+            # never cost every other episode its rebuild, nor the batch its night.
+            note(f"could not rebuild {slug}'s stale caption track: {e}")
+            continue
+        rebuilt.append(slug)
+        note(f"rebuilt {slug}'s caption track and chapters: {why}")
+    return rebuilt
+
+
+def sync_measured(selection, *, note=print, stage_git: bool = True) -> list[str]:
+    """Record measured durations, then rebuild whatever they made stale, then
+    stage both IN ONE SET. This is the only order that keeps
+    captions/<slug>.chapters.txt equal to the render: the durations land in
+    beats.json and every file derived from them lands beside it, in the same
+    commit (bin/batch-session.sh commits what this stages, then mac_sync
+    pushes). Proved by loop/tests/test_caption_files_follow_timing.py.
+    """
+    touched = record_durations(selection, note=note)
+    rebuilt = refresh_stale(note=note)
+    slugs = sorted(set(touched) | set(rebuilt))
+    if slugs and stage_git:
+        stage_artifacts(slugs)
+    return slugs
+
+
 def heal(slugs, *, note=print, stage_git: bool = True) -> dict:
     """Caption every slug in `slugs` that is missing a track and can have one.
 
@@ -279,10 +325,8 @@ def run(slugs=None, dry_run: bool = False) -> int:
                 st.note("DRY RUN — nothing to build.")
         else:
             res = heal(can, note=st.work)
-            recorded = record_durations(
+            recorded = sync_measured(
                 [s for s in selection if s not in can], note=st.work)
-            if recorded:
-                stage_artifacts(recorded)
             if res["staged"] or recorded:
                 st.note(f"staged {len(res['staged'])} caption file(s) and "
                         f"{len(recorded)} manifest(s) for commit")

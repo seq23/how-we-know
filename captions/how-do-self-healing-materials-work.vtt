@@ -486,14 +486,207 @@ systems behave after years of real
 00:08:19.994 --> 00:08:22.893
 weather, real loading, and real neglect.
 
-00:08:22.893 --> 00:08:26.984
+00:08:22.893 --> 00:08:24.679
+When different laboratories test the same
+capsule formulation, reported healing
+
+00:08:24.679 --> 00:08:26.532
+efficiencies can vary by ten percentage
+points or more, even when the chemistry is
+
+00:08:26.532 --> 00:08:26.984
+nominally identical.
+
+00:08:26.984 --> 00:08:32.419
+Part of that scatter is real differences
+in how capsules are made and dispersed.
+
+00:08:32.419 --> 00:08:36.627
+Part of it is measurement. There is no
+single standard for what counts as healed.
+
+00:08:36.627 --> 00:08:41.499
+Some groups measure recovered fracture
+toughness, some measure recovered tensile
+
+00:08:41.499 --> 00:08:46.128
+strength, some measure stiffness, and
+these properties do not recover at the
+
+00:08:46.128 --> 00:08:48.077
+same rate or to the same degree.
+
+00:08:48.077 --> 00:08:53.373
+A crack can regain most of its stiffness
+while recovering far less of its strength,
+
+00:08:53.373 --> 00:08:58.414
+because stiffness depends on the crack
+being closed and strength depends on the
+
+00:08:58.414 --> 00:09:01.859
+bond across it being as strong as the
+original matrix.
+
+00:09:01.859 --> 00:09:05.432
+The number reported depends on which
+question was asked.
+
+00:09:05.432 --> 00:09:10.883
+The standard approach is to fracture a
+specimen, let it heal, then fracture it
+
+00:09:10.883 --> 00:09:12.840
+again and compare the loads.
+
+00:09:12.840 --> 00:09:19.384
+But that protocol has variables at every
+stage. How fast was the first crack
+
+00:09:19.384 --> 00:09:21.053
+How long was healing allowed?
+
+00:09:21.053 --> 00:09:25.139
+Was the specimen held closed, or did the
+crack faces separate slightly?
+
+00:09:25.139 --> 00:09:27.926
+Was it heated, and if so to what
+temperature?
+
+00:09:27.926 --> 00:09:33.190
+All of these affect the result, and papers
+do not always report them in enough detail
+
+00:09:33.190 --> 00:09:36.163
+for another group to reproduce the test
+exactly.
+
+00:09:36.163 --> 00:09:41.485
+This is not misconduct; it is the ordinary
+difficulty of specifying a physical
+
+00:09:41.485 --> 00:09:42.781
+process completely.
+
+00:09:42.781 --> 00:09:46.992
+But it means that a healing efficiency of
+seventy-five percent in one paper and
+
+00:09:46.992 --> 00:09:50.723
+sixty percent in another may not be a real
+difference in the material.
+
+00:09:50.723 --> 00:09:55.835
+A related technology that is often grouped
+with self-healing is shape memory, and the
+
+00:09:55.835 --> 00:09:57.459
+two are not the same thing.
+
+00:09:57.459 --> 00:10:02.118
+A shape-memory polymer can be deformed,
+then returned to its original shape by
+
+00:10:02.118 --> 00:10:06.896
+heating or some other trigger, but that
+does not mean a crack has been repaired.
+
+00:10:06.896 --> 00:10:11.527
+The crack may close because the bulk shape
+has been restored, but unless the crack
+
+00:10:11.527 --> 00:10:15.029
+faces have bonded, the material has not
+regained its strength.
+
+00:10:15.029 --> 00:10:18.981
+Shape recovery and strength recovery are
+independent properties.
+
+00:10:18.981 --> 00:10:23.673
+Some intrinsic self-healing polymers also
+have shape memory, which makes for
+
+00:10:23.673 --> 00:10:28.736
+compelling demonstrations: a cut specimen
+is heated, the cut closes, and the piece
+
+00:10:28.736 --> 00:10:29.477
+looks whole.
+
+00:10:29.477 --> 00:10:33.067
+But whether it can carry the load it
+carried before the cut is a separate
+
+00:10:33.067 --> 00:10:37.049
+measurement, and it is that measurement
+that decides whether healing has occurred
+
+00:10:37.049 --> 00:10:38.229
+in the structural sense.
+
+00:10:38.229 --> 00:10:43.267
+In capsule systems, the catalyst is as
+critical as the agent, and its placement
+
+00:10:43.267 --> 00:10:45.691
+is a constrained optimization problem.
+
+00:10:45.691 --> 00:10:49.788
+It has to be distributed finely enough
+that a crack of any orientation will
+
+00:10:49.788 --> 00:10:52.629
+encounter it within the distance the agent
+can wick.
+
+00:10:52.629 --> 00:10:57.517
+But it also has to remain inert until the
+agent is released, which means it cannot
+
+00:10:57.517 --> 00:11:01.987
+catalyse any agent that leaks from a
+capsule during mixing or curing of the
+
+00:11:01.987 --> 00:11:02.821
+bulk material.
+
+00:11:02.821 --> 00:11:07.658
+And it has to be chemically compatible
+with the matrix for the entire service
+
+00:11:07.658 --> 00:11:10.987
+life, which for a polymer composite might
+be decades.
+
+00:11:10.987 --> 00:11:15.872
+Ruthenium-based Grubbs catalysts meet
+these requirements for dicyclopentadiene
+
+00:11:15.872 --> 00:11:19.568
+in epoxy, but they are expensive and
+sensitive to moisture.
+
+00:11:19.568 --> 00:11:25.531
+Finding a catalyst that is cheap, stable,
+finely dispersible, and inactive until
+
+00:11:25.531 --> 00:11:31.568
+needed is as hard as finding the agent
+itself, and many otherwise promising agent
+
+00:11:31.568 --> 00:11:34.400
+chemistries have no suitable catalyst.
+
+00:11:34.400 --> 00:11:39.355
 A self-healing material does not repair
 itself in the way living tissue does.
 
-00:08:26.984 --> 00:08:32.419
+00:11:39.355 --> 00:11:44.832
 It carries the repair with it, spends it
 once or spends it slowly, and buys time.
 
-00:08:32.419 --> 00:08:36.627
+00:11:44.832 --> 00:11:48.699
 That is a smaller claim than the name
 suggests, and it is still a real one.

@@ -237,15 +237,9 @@ def measured_chapters(slug: str) -> list[tuple[int, str]] | None:
     their tails added, so "Closing" sat 116-173 s early. 12 of 41 live
     descriptions carried drifted chapter times.
     """
-    if not (ROOT / "plans" / f"{slug}.json").exists():
+    chs = _visuals_captions().measured_chapters(slug)
+    if chs is None:
         return None
-    CAP = _visuals_captions()
-    plan, _ = CAP.load_plan(slug)
-    durs, timing, _ = CAP.beat_durations(slug, plan)
-    if timing not in CAP.MEASURED_TIMINGS:
-        return None
-    real, total = CAP.real_chapters(plan, durs)
-    chs, _ = CAP.enforce_youtube(real, total)
     return [(int(c["seconds"]), c["title"]) for c in chs]
 
 

@@ -91,6 +91,8 @@ for pj in sorted((ROOT / "plans").glob("*.json")):
         if txt.exists() else None
     check(f"3 {slug}: captions/{slug}.chapters.txt agrees with the render",
           cached == want, f"cached {cached and cached[:3]} vs {want[:3]}")
+    check(f"3 {slug}: every caption file is built from the measured timeline",
+          CAP.derived_stale(slug) is None, str(CAP.derived_stale(slug)))
 check("3 examined at least one measured episode", n > 0)
 
 if examined == 0:

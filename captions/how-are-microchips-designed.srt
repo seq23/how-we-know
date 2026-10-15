@@ -1,789 +1,784 @@
 1
-00:00:00,000 --> 00:00:02,628
-Microchips are designed mostly as text.
+00:00:00,000 --> 00:00:03,648
+Chipmakers publish lists of bugs in chips
+they have already shipped.
 
 2
-00:00:02,628 --> 00:00:08,019
-Engineers describe a chip's behaviour in a
-hardware description language such as
+00:00:03,648 --> 00:00:06,331
+Those lists exist because of how the work
+is done.
 
 3
-00:00:08,019 --> 00:00:12,938
-Verilog or VHDL, and software tools
-translate that description into logic
+00:00:06,331 --> 00:00:11,479
+Microchips are designed mostly as text:
+engineers describe a chip's behaviour in a
 
 4
-00:00:12,938 --> 00:00:17,520
-gates and then into the geometric layout
-of billions of transistors.
+00:00:11,479 --> 00:00:16,063
+hardware description language such as
+Verilog or VHDL, and software tools
 
 5
-00:00:17,520 --> 00:00:21,099
-Both languages are published as standards
-by the IEEE.
+00:00:16,063 --> 00:00:20,961
+translate that description into logic
+gates and then into the geometric layout
 
 6
-00:00:21,099 --> 00:00:24,811
-So the answer to who draws the chip is,
-largely, nobody.
+00:00:20,961 --> 00:00:22,656
+of billions of transistors.
 
 7
-00:00:24,811 --> 00:00:26,361
-It is not drawn by hand.
+00:00:22,656 --> 00:00:25,232
+Both languages are IEEE standards.
 
 8
-00:00:26,361 --> 00:00:31,141
-What that answer does not settle is how
-anyone knows the result will work.
+00:00:25,232 --> 00:00:31,292
+Most effort goes into proving the design
+before manufacture, through simulation,
 
 9
-00:00:31,141 --> 00:00:35,909
-Nobody can inspect billions of transistors
-before the factory runs, and a mistake
+00:00:31,292 --> 00:00:34,171
+formal proofs and the foundry's rules.
 
 10
-00:00:35,909 --> 00:00:37,675
-found afterwards is expensive.
+00:00:34,171 --> 00:00:37,717
+Those checks reduce risk, and the errata
+show they cannot remove it.
 
 11
-00:00:37,675 --> 00:00:42,565
-The real story of chip design is the story
-of how that confidence is built.
-
-12
-00:00:42,565 --> 00:00:46,603
+00:00:37,717 --> 00:00:41,808
 Start with the language, because that is
 where the design actually lives.
 
-13
-00:00:46,603 --> 00:00:51,154
+12
+00:00:41,808 --> 00:00:46,574
 A hardware description language looks like
 code, and engineers type it in an editor
 
-14
-00:00:51,154 --> 00:00:52,251
+13
+00:00:46,574 --> 00:00:47,723
 like any programmer.
 
-15
-00:00:52,251 --> 00:00:56,000
+14
+00:00:47,723 --> 00:00:52,251
 But it does not describe steps to be run
 one after another.
 
-16
-00:00:56,000 --> 00:01:01,118
+15
+00:00:52,251 --> 00:00:57,470
 It describes structure and behaviour that
 exist all at once: these signals connect
 
-17
-00:01:01,118 --> 00:01:06,299
+16
+00:00:57,470 --> 00:01:02,752
 here, this value updates on every tick of
 the clock, this block waits for that one.
 
-18
-00:01:06,299 --> 00:01:11,887
+17
+00:01:02,752 --> 00:01:08,926
 The two dominant languages, Verilog and
 VHDL, along with an extended form called
 
-19
-00:01:11,887 --> 00:01:15,659
+18
+00:01:08,926 --> 00:01:13,093
 SystemVerilog, are published as standards
 by the IEEE.
 
-20
-00:01:15,659 --> 00:01:21,476
+19
+00:01:13,093 --> 00:01:18,337
 That is how every tool vendor and every
 design team can agree on what a given line
 
-21
-00:01:21,476 --> 00:01:22,469
+20
+00:01:18,337 --> 00:01:19,232
 of text means.
 
-22
-00:01:22,469 --> 00:01:24,074
+21
+00:01:19,232 --> 00:01:20,884
 The agreement is not a detail.
 
-23
-00:01:24,074 --> 00:01:28,191
+22
+00:01:20,884 --> 00:01:25,123
 Without a shared, written definition of
 the language, a design could mean one
 
-24
-00:01:28,191 --> 00:01:32,416
+23
+00:01:25,123 --> 00:01:29,472
 thing in the simulator and something
 slightly different in the tool that builds
 
-25
-00:01:32,416 --> 00:01:32,576
+24
+00:01:29,472 --> 00:01:29,637
 it.
 
-26
-00:01:32,576 --> 00:01:37,801
+25
+00:01:29,637 --> 00:01:34,603
 Most designs are written at what engineers
 call the register-transfer level.
 
-27
-00:01:37,801 --> 00:01:41,032
+26
+00:01:34,603 --> 00:01:37,675
 A register is a small store that holds a
 value.
 
-28
-00:01:41,032 --> 00:01:45,432
+27
+00:01:37,675 --> 00:01:41,966
 The description says how values move
 between registers, and what logic
 
-29
-00:01:45,432 --> 00:01:48,827
+28
+00:01:41,966 --> 00:01:45,277
 transforms them on the way, at each edge
 of the clock.
 
-30
-00:01:48,827 --> 00:01:54,208
+29
+00:01:45,277 --> 00:01:50,413
 Nothing at this level says where a
 transistor sits or how long a wire is.
 
-31
-00:01:54,208 --> 00:01:56,068
+30
+00:01:50,413 --> 00:01:52,065
 That separation is deliberate.
 
-32
-00:01:56,068 --> 00:02:01,215
+31
+00:01:52,065 --> 00:01:56,636
 It lets a team reason about what the chip
 should compute before anyone decides what
 
-33
-00:02:01,215 --> 00:02:05,866
+32
+00:01:56,636 --> 00:02:00,766
 it physically looks like, and it lets the
 same description be rebuilt for a
 
-34
-00:02:05,866 --> 00:02:07,355
+33
+00:02:00,766 --> 00:02:02,088
 different factory later.
 
-35
-00:02:07,355 --> 00:02:11,659
+34
+00:02:02,088 --> 00:02:06,083
 The next step is called logic synthesis,
 and it is done by software.
 
-36
-00:02:11,659 --> 00:02:16,128
+35
+00:02:06,083 --> 00:02:10,284
 The synthesis tool reads the
 register-transfer description and maps it
 
-37
-00:02:16,128 --> 00:02:18,235
+36
+00:02:10,284 --> 00:02:12,264
 onto a library of standard cells.
 
-38
-00:02:18,235 --> 00:02:23,386
+37
+00:02:12,264 --> 00:02:18,057
 A standard cell is a small, pre-designed
 circuit — a gate that performs AND, a gate
 
-39
-00:02:23,386 --> 00:02:27,793
+38
+00:02:18,057 --> 00:02:23,013
 that inverts a signal, a storage element
 called a flip-flop — drawn and
 
-40
-00:02:27,793 --> 00:02:31,765
+39
+00:02:23,013 --> 00:02:27,480
 characterised in advance for one specific
 manufacturing process.
 
-41
-00:02:31,765 --> 00:02:35,716
+40
+00:02:27,480 --> 00:02:32,226
 The factory, usually called a foundry, or
 a library vendor working with it, has
 
-42
-00:02:35,716 --> 00:02:39,716
+41
+00:02:32,226 --> 00:02:37,032
 measured how fast each cell switches and
 how much power it draws under different
 
-43
-00:02:39,716 --> 00:02:41,616
+42
+00:02:37,032 --> 00:02:39,315
 conditions of voltage and temperature.
 
-44
-00:02:41,616 --> 00:02:46,480
+43
+00:02:39,315 --> 00:02:44,028
 The output of synthesis is a netlist: a
 list of cells and the wires that connect
 
-45
-00:02:46,480 --> 00:02:46,784
+44
+00:02:44,028 --> 00:02:44,323
 them.
 
-46
-00:02:46,784 --> 00:02:50,860
+45
+00:02:44,323 --> 00:02:48,324
 Here is the first place the "how we know"
 question bites.
 
-47
-00:02:50,860 --> 00:02:56,581
+46
+00:02:48,324 --> 00:02:53,941
 Synthesis does not simply translate; it
 optimises, rewriting logic to be smaller
 
-48
-00:02:56,581 --> 00:02:57,296
+47
+00:02:53,941 --> 00:02:54,643
 or faster.
 
-49
-00:02:57,296 --> 00:03:01,333
+48
+00:02:54,643 --> 00:02:58,669
 So the netlist is not a line-by-line copy
 of what the engineer wrote.
 
-50
-00:03:01,333 --> 00:03:06,204
+49
+00:02:58,669 --> 00:03:03,508
 To confirm the two still mean the same
 thing, teams run equivalence checking, a
 
-51
-00:03:06,204 --> 00:03:10,767
+50
+00:03:03,508 --> 00:03:08,040
 formal method that proves mathematically
 that the netlist and the original
 
-52
-00:03:10,767 --> 00:03:14,096
+51
+00:03:08,040 --> 00:03:11,347
 description produce identical outputs for
 every input.
 
-53
-00:03:14,096 --> 00:03:16,504
+52
+00:03:11,347 --> 00:03:13,572
 It is not a test that tries examples.
 
-54
-00:03:16,504 --> 00:03:21,581
+53
+00:03:13,572 --> 00:03:18,263
 It is a proof for every input, and that
 difference matters for everything that
 
-55
-00:03:21,581 --> 00:03:22,101
+54
+00:03:18,263 --> 00:03:18,744
 follows.
 
-56
-00:03:22,101 --> 00:03:27,116
+55
+00:03:18,744 --> 00:03:24,174
 Deep-sea science builds conclusions from
 incomplete observations, damaged
 
-57
-00:03:27,116 --> 00:03:31,237
+56
+00:03:24,174 --> 00:03:28,637
 specimens, sonar, water samples and tiny
 windows of footage.
 
-58
-00:03:31,237 --> 00:03:36,597
+57
+00:03:28,637 --> 00:03:33,475
 That question, asked about animals, is
 exactly the right one to ask about chips.
 
-59
-00:03:36,597 --> 00:03:41,888
+58
+00:03:33,475 --> 00:03:38,285
 A modern processor has far more possible
 internal states than any simulation could
 
-60
-00:03:41,888 --> 00:03:42,597
+59
+00:03:38,285 --> 00:03:38,931
 ever visit.
 
-61
-00:03:42,597 --> 00:03:45,462
+60
+00:03:38,931 --> 00:03:41,889
 So no one observes a chip's behaviour
 exhaustively.
 
-62
-00:03:45,462 --> 00:03:49,842
+61
+00:03:41,889 --> 00:03:46,415
 Verification engineers build a testbench,
 a surrounding program that feeds the
 
-63
-00:03:49,842 --> 00:03:54,167
+62
+00:03:46,415 --> 00:03:50,882
 design inputs and checks its outputs
 against a reference model of what should
 
-64
-00:03:54,167 --> 00:03:54,560
+63
+00:03:50,882 --> 00:03:51,288
 happen.
 
-65
-00:03:54,560 --> 00:03:59,349
+64
+00:03:51,288 --> 00:03:55,983
 On many teams verification takes more
 effort than writing the design itself,
 
-66
-00:03:59,349 --> 00:04:04,389
+65
+00:03:55,983 --> 00:04:00,925
 though published estimates of the split
 vary and this script will not quote one.
 
-67
-00:04:04,389 --> 00:04:09,605
+66
+00:04:00,925 --> 00:04:05,974
 Engineers generate constrained random
 stimulus, enormous numbers of plausible
 
-68
-00:04:09,605 --> 00:04:14,955
+67
+00:04:05,974 --> 00:04:11,155
 but unplanned input sequences, because
 bugs hide in combinations no one thought
 
-69
-00:04:14,955 --> 00:04:16,107
+68
+00:04:11,155 --> 00:04:12,269
 to write by hand.
 
-70
-00:04:16,107 --> 00:04:21,151
+69
+00:04:12,269 --> 00:04:17,499
 Then they measure coverage: which lines
 executed, which states were reached, which
 
-71
-00:04:21,151 --> 00:04:23,304
+70
+00:04:17,499 --> 00:04:19,731
 scenarios the plan said must occur.
 
-72
-00:04:23,304 --> 00:04:25,239
+71
+00:04:19,731 --> 00:04:21,723
 Coverage is the honest part.
 
-73
-00:04:25,239 --> 00:04:30,147
+72
+00:04:21,723 --> 00:04:26,776
 It tells the team what was exercised and,
 by subtraction, what was not.
 
-74
-00:04:30,147 --> 00:04:34,210
+73
+00:04:26,776 --> 00:04:30,796
 Where simulation cannot reach, formal
 verification steps in.
 
-75
-00:04:34,210 --> 00:04:39,628
+74
+00:04:30,796 --> 00:04:36,155
 A tool is given a property — this buffer
 never overflows, these two requests are
 
-76
-00:04:39,628 --> 00:04:44,979
+75
+00:04:36,155 --> 00:04:41,448
 never granted at once — and searches for
 any sequence of inputs that breaks it.
 
-77
-00:04:44,979 --> 00:04:50,349
+76
+00:04:41,448 --> 00:04:46,029
 If none exists, the property is proven
 within the bounds the tool was given.
 
-78
-00:04:50,349 --> 00:04:55,231
+77
+00:04:46,029 --> 00:04:51,039
 For large designs, teams also load the
 description onto emulation hardware, or
 
-79
-00:04:55,231 --> 00:04:59,926
+78
+00:04:51,039 --> 00:04:55,856
 onto reconfigurable chips called FPGAs,
 which run the logic far faster than
 
-80
-00:04:59,926 --> 00:05:05,246
+79
+00:04:55,856 --> 00:05:01,316
 simulation and let real software boot on a
 design that does not physically exist yet.
 
-81
-00:05:05,246 --> 00:05:07,875
+80
+00:05:01,316 --> 00:05:04,013
 Each method covers a gap the others leave.
 
-82
-00:05:07,875 --> 00:05:10,129
+81
+00:05:04,013 --> 00:05:06,347
 Only now does the chip acquire a shape.
 
-83
-00:05:10,129 --> 00:05:14,636
+82
+00:05:06,347 --> 00:05:11,014
 Physical design begins with floorplanning:
 deciding where large blocks such as
 
-84
-00:05:14,636 --> 00:05:18,451
+83
+00:05:11,014 --> 00:05:14,963
 memories and processor cores will sit, and
 how power reaches them.
 
-85
-00:05:18,451 --> 00:05:22,453
+84
+00:05:14,963 --> 00:05:19,505
 Placement software then positions every
 standard cell from the netlist.
 
-86
-00:05:22,453 --> 00:05:27,020
+85
+00:05:19,505 --> 00:05:24,687
 Clock tree synthesis builds the network
 that delivers the clock signal so that it
 
-87
-00:05:27,020 --> 00:05:30,008
+86
+00:05:24,687 --> 00:05:28,077
 arrives at every flip-flop at nearly the
 same moment.
 
-88
-00:05:30,008 --> 00:05:35,532
+87
+00:05:28,077 --> 00:05:33,063
 Routing draws the metal wires that connect
 everything, stacked in many layers above
 
-89
-00:05:35,532 --> 00:05:36,597
+88
+00:05:33,063 --> 00:05:34,024
 the transistors.
 
-90
-00:05:36,597 --> 00:05:41,210
+89
+00:05:34,024 --> 00:05:38,323
 All of this is automated, because the
 number of cells is far too large for
 
-91
-00:05:41,210 --> 00:05:46,384
+90
+00:05:38,323 --> 00:05:43,144
 hands, but engineers steer it constantly,
 adjusting constraints and re-running when
 
-92
-00:05:46,384 --> 00:05:47,568
+91
+00:05:43,144 --> 00:05:44,248
 results fall short.
 
-93
-00:05:47,568 --> 00:05:52,779
+92
+00:05:44,248 --> 00:05:49,587
 How do they know when results fall short?
 Mainly through static timing analysis.
 
-94
-00:05:52,779 --> 00:05:58,173
+93
+00:05:49,587 --> 00:05:54,756
 Instead of simulating signals, the tool
 adds up the delay along every path between
 
-95
-00:05:58,173 --> 00:06:03,239
+94
+00:05:54,756 --> 00:05:59,611
 registers, using the characterised cell
 data and estimates of wire delay, and
 
-96
-00:06:03,239 --> 00:06:07,120
+95
+00:05:59,611 --> 00:06:03,331
 checks that each signal arrives before the
 next clock edge.
 
-97
-00:06:07,120 --> 00:06:11,033
+96
+00:06:03,331 --> 00:06:07,004
 A path that is too slow is called a timing
 violation.
 
-98
-00:06:11,033 --> 00:06:16,791
+97
+00:06:07,004 --> 00:06:12,409
 Static timing analysis is powerful because
 it is exhaustive over paths without
 
-99
-00:06:16,791 --> 00:06:18,784
+98
+00:06:12,409 --> 00:06:14,280
 needing any input patterns.
 
-100
-00:06:18,784 --> 00:06:24,057
+99
+00:06:14,280 --> 00:06:19,009
 Its boundary is that it is only as good as
 the delay models it is fed, which is why
 
-101
-00:06:24,057 --> 00:06:28,187
+100
+00:06:19,009 --> 00:06:22,712
 the careful measurement work done by the
 foundry matters so much.
 
-102
-00:06:28,187 --> 00:06:31,491
+101
+00:06:22,712 --> 00:06:26,355
 Before a design leaves the team, it goes
 through signoff.
 
-103
-00:06:31,491 --> 00:06:36,245
+102
+00:06:26,355 --> 00:06:31,597
 Design rule checking compares every shape
 in the layout against the foundry's rule
 
-104
-00:06:36,245 --> 00:06:39,840
+103
+00:06:31,597 --> 00:06:35,560
 set: minimum widths, minimum spacings, how
 layers may overlap.
 
-105
-00:06:39,840 --> 00:06:44,289
+104
+00:06:35,560 --> 00:06:39,778
 Those rules encode what the manufacturing
 process can reliably print.
 
-106
-00:06:44,289 --> 00:06:49,447
+105
+00:06:39,778 --> 00:06:44,667
 Layout versus schematic checking extracts
 the circuit that the geometry actually
 
-107
-00:06:49,447 --> 00:06:52,155
+106
+00:06:44,667 --> 00:06:47,235
 forms and confirms it matches the netlist.
 
-108
-00:06:52,155 --> 00:06:56,937
+107
+00:06:47,235 --> 00:06:51,489
 Parasitic extraction calculates the
 resistance and capacitance of the real
 
-109
-00:06:56,937 --> 00:07:00,363
+108
+00:06:51,489 --> 00:06:54,536
 wires, and timing is checked again with
 those values.
 
-110
-00:07:00,363 --> 00:07:05,477
+109
+00:06:54,536 --> 00:06:59,307
 A design that passes all of this is handed
 off in a step still called tape-out, a
 
-111
-00:07:05,477 --> 00:07:10,213
+110
+00:06:59,307 --> 00:07:03,725
 name commonly traced to the era when
 layouts were shipped on magnetic tape.
 
-112
-00:07:10,213 --> 00:07:15,276
+111
+00:07:03,725 --> 00:07:08,893
 The layout becomes a set of photomasks,
 the stencils used to pattern each layer of
 
-113
-00:07:15,276 --> 00:07:15,893
+112
+00:07:08,893 --> 00:07:09,523
 the wafer.
 
-114
-00:07:15,893 --> 00:07:19,442
+113
+00:07:09,523 --> 00:07:13,103
 Here the design world meets the public
 standards bodies.
 
-115
-00:07:19,442 --> 00:07:24,322
+114
+00:07:13,103 --> 00:07:18,027
 SEMI, the industry association for
 semiconductor manufacturing, publishes the
 
-116
-00:07:24,322 --> 00:07:29,518
+115
+00:07:18,027 --> 00:07:23,270
 SEMI International Standards used across
 equipment, materials and masks, so that a
 
-117
-00:07:29,518 --> 00:07:33,637
+116
+00:07:23,270 --> 00:07:27,427
 design from one company can be built with
 tools from many others.
 
-118
-00:07:33,637 --> 00:07:37,784
+117
+00:07:27,427 --> 00:07:31,870
 NIST, the United States national
 measurement institute, works on
 
-119
-00:07:37,784 --> 00:07:42,902
+118
+00:07:31,870 --> 00:07:37,354
 semiconductor metrology — how to measure
 features far too small to see, and how
 
-120
-00:07:42,902 --> 00:07:45,429
+119
+00:07:37,354 --> 00:07:40,061
 sure anyone can be of that measurement.
 
-121
-00:07:45,429 --> 00:07:47,220
+120
+00:07:40,061 --> 00:07:42,187
 These bodies do not design chips.
 
-122
-00:07:47,220 --> 00:07:51,560
+121
+00:07:42,187 --> 00:07:47,339
 They supply the shared definitions and
 measurements that let a design be trusted
 
-123
-00:07:51,560 --> 00:07:53,296
+122
+00:07:47,339 --> 00:07:49,400
 outside the room it was made in.
 
-124
-00:07:53,296 --> 00:07:55,658
+123
+00:07:49,400 --> 00:07:51,531
 Everything up to tape-out is prediction.
 
-125
-00:07:55,658 --> 00:07:59,968
+124
+00:07:51,531 --> 00:07:55,421
 The first wafers back from the foundry are
 where prediction meets matter.
 
-126
-00:07:59,968 --> 00:08:04,613
+125
+00:07:55,421 --> 00:08:00,646
 Engineers run bring-up: they power the
 first chips, check that clocks start, load
 
-127
-00:08:04,613 --> 00:08:07,824
+126
+00:08:00,646 --> 00:08:04,259
 test software, and compare behaviour
 against the models.
 
-128
-00:08:07,824 --> 00:08:13,056
+127
+00:08:04,259 --> 00:08:09,373
 To make this possible, designers add
 circuitry whose only purpose is to be
 
-129
-00:08:13,056 --> 00:08:17,943
+128
+00:08:09,373 --> 00:08:14,379
 Scan chains link the flip-flops so their
 contents can be shifted out and read,
 
-130
-00:08:17,943 --> 00:08:22,768
+129
+00:08:14,379 --> 00:08:19,321
 which lets automated test equipment check
 each manufactured chip for physical
 
-131
-00:08:22,768 --> 00:08:23,269
+130
+00:08:19,321 --> 00:08:19,835
 defects.
 
-132
-00:08:23,269 --> 00:08:28,230
+131
+00:08:19,835 --> 00:08:25,512
 This practice is called design for test,
 and it is why a chip can be checked after
 
-133
-00:08:28,230 --> 00:08:29,984
+132
+00:08:25,512 --> 00:08:27,520
 manufacture, not only before.
 
-134
-00:08:29,984 --> 00:08:34,232
+133
+00:08:27,520 --> 00:08:31,946
 When bring-up finds a bug that slipped
 through, the outcome depends on where it
 
-135
-00:08:34,232 --> 00:08:34,555
+134
+00:08:31,946 --> 00:08:32,283
 lives.
 
-136
-00:08:34,555 --> 00:08:38,073
+135
+00:08:32,283 --> 00:08:35,988
 Some bugs can be worked around in software
 or firmware.
 
-137
-00:08:38,073 --> 00:08:43,062
+136
+00:08:35,988 --> 00:08:41,242
 Others require a respin: corrected masks
 and another trip through the factory,
 
-138
-00:08:43,062 --> 00:08:44,789
+137
+00:08:41,242 --> 00:08:43,061
 which costs time and money.
 
-139
-00:08:44,789 --> 00:08:50,612
+138
+00:08:43,061 --> 00:08:48,481
 Manufacturers also publish lists of known
 bugs in shipped products, usually called
 
-140
-00:08:50,612 --> 00:08:51,109
+139
+00:08:48,481 --> 00:08:48,944
 errata.
 
-141
-00:08:51,109 --> 00:08:55,905
+140
+00:08:48,944 --> 00:08:53,456
 Those documents are some of the most
 candid public evidence about chip design,
 
-142
-00:08:55,905 --> 00:09:00,456
+141
+00:08:53,456 --> 00:08:57,736
 because they show directly that
 verification reduces risk without removing
 
-143
-00:09:00,456 --> 00:09:00,640
+142
+00:08:57,736 --> 00:08:57,909
 it.
 
-144
-00:09:00,640 --> 00:09:04,485
+143
+00:08:57,909 --> 00:09:02,107
 In the edit, watch for the shift between
 two kinds of evidence.
 
-145
-00:09:04,485 --> 00:09:09,988
+144
+00:09:02,107 --> 00:09:07,580
 Some steps, like equivalence checking,
 formal proofs and static timing analysis,
 
-146
-00:09:09,988 --> 00:09:12,533
+145
+00:09:07,580 --> 00:09:10,112
 are exhaustive within a stated model.
 
-147
-00:09:12,533 --> 00:09:16,076
+146
+00:09:10,112 --> 00:09:13,176
 Others, like simulation and bring-up, are
 samples.
 
-148
-00:09:16,076 --> 00:09:18,768
+147
+00:09:13,176 --> 00:09:15,504
 The animation draws those differently.
 
-149
-00:09:18,768 --> 00:09:23,467
+148
+00:09:15,504 --> 00:09:20,710
 A proven claim is drawn solid; a sampled
 one is drawn as scattered points with gaps
 
-150
-00:09:23,467 --> 00:09:24,203
+149
+00:09:20,710 --> 00:09:21,525
 between them.
 
-151
-00:09:24,203 --> 00:09:29,214
+150
+00:09:21,525 --> 00:09:26,275
 Whenever you see the gaps, that is the
 honest picture of what testing alone can
 
-152
-00:09:29,214 --> 00:09:29,531
+151
+00:09:26,275 --> 00:09:26,576
 show.
 
-153
-00:09:29,531 --> 00:09:34,405
+152
+00:09:26,576 --> 00:09:31,950
 This account describes the method as
 public standards and teaching material lay
 
-154
-00:09:34,405 --> 00:09:34,837
+153
+00:09:31,950 --> 00:09:32,427
 it out.
 
-155
-00:09:34,837 --> 00:09:39,087
+154
+00:09:32,427 --> 00:09:36,688
 It does not establish how any particular
 company runs its flow.
 
-156
-00:09:39,087 --> 00:09:44,350
+155
+00:09:36,688 --> 00:09:41,963
 Those details, including the tools chosen,
 the size of teams and the cost of a
 
-157
-00:09:44,350 --> 00:09:49,409
+156
+00:09:41,963 --> 00:09:47,036
 design, are mostly proprietary, and
 published estimates vary so widely that
 
-158
-00:09:49,409 --> 00:09:51,568
+157
+00:09:47,036 --> 00:09:49,200
 this script states none of them.
 
-159
-00:09:51,568 --> 00:09:55,819
+158
+00:09:49,200 --> 00:09:53,803
 It also does not establish that any
 shipped chip is free of bugs.
 
-160
-00:09:55,819 --> 00:10:00,447
+159
+00:09:53,803 --> 00:09:58,751
 Verification proves properties inside
 models, and the models themselves are
 
-161
-00:10:00,447 --> 00:10:02,792
+160
+00:09:58,751 --> 00:10:01,259
 assumptions about how silicon behaves.
 
-162
-00:10:02,792 --> 00:10:06,619
+161
+00:10:01,259 --> 00:10:05,349
 The published errata are the reminder of
 where that gap shows.
 
-163
-00:10:06,619 --> 00:10:11,612
+162
+00:10:05,349 --> 00:10:09,858
 So a microchip is designed the way a
 careful argument is written: stated in a
 
-164
-00:10:11,612 --> 00:10:17,125
+163
+00:10:09,858 --> 00:10:14,834
 precise language, translated step by step,
 and checked at each step against something
 
-165
-00:10:17,125 --> 00:10:18,357
+164
+00:10:14,834 --> 00:10:15,947
 it must agree with.
 
-166
-00:10:18,357 --> 00:10:21,979
+165
+00:10:15,947 --> 00:10:19,291
 The chip you are holding is the last link
 in that chain.
 
-167
-00:10:21,979 --> 00:10:26,816
+166
+00:10:19,291 --> 00:10:24,043
 The evidence that it works is not one
 test, but the agreement of all of them.

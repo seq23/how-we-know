@@ -2,18 +2,19 @@
   "episode": "19-what-is-the-deepest-fish-ever-recorded",
   "beats": 59,
   "plan_source": "plans/19-what-is-the-deepest-fish-ever-recorded.json",
-  "timing": "estimate",
-  "beats_measured": 0,
-  "duration_s": 430.02,
+  "timing": "audio",
+  "beats_measured": 59,
+  "durations_recorded": 0,
+  "duration_s": 496.213,
   "cues": 123,
   "chapters_real": 14,
-  "chapters_published": 12,
+  "chapters_published": 13,
   "chapter_notes": [
-    "merged 2 chapter(s) under 10s: Title card (3.5s), Producer POV (9.0s)"
+    "merged 1 chapter(s) under 10s: Title card (2.4s)"
   ],
   "drift": {
-    "mean_abs_s": 27.1,
-    "worst_abs_s": 47.1,
+    "mean_abs_s": 13.1,
+    "worst_abs_s": 24.9,
     "rows": [
       {
         "title": "Cold open",
@@ -24,88 +25,88 @@
       {
         "title": "Title card",
         "hand": "00:13",
-        "real": "0:09",
-        "drift_s": -4.0
+        "real": "0:12",
+        "drift_s": -0.0
       },
       {
         "title": "A record made by a camera, not a net",
         "hand": "00:16",
-        "real": "0:12",
-        "drift_s": -3.5
+        "real": "0:15",
+        "drift_s": -0.6
       },
       {
         "title": "Producer POV",
         "hand": "01:15",
-        "real": "1:01",
-        "drift_s": -13.5
+        "real": "1:21",
+        "drift_s": 6.8
       },
       {
         "title": "The body avoids some obvious pressure problems",
         "hand": "01:26",
-        "real": "1:10",
-        "drift_s": -15.5
+        "real": "1:32",
+        "drift_s": 6.2
       },
       {
         "title": "Trenches can concentrate food",
         "hand": "02:26",
-        "real": "2:09",
-        "drift_s": -16.6
+        "real": "2:36",
+        "drift_s": 10.9
       },
       {
         "title": "The deepest trench floor may be beyond fish physiology",
         "hand": "03:33",
-        "real": "3:02",
-        "drift_s": -30.9
+        "real": "3:47",
+        "drift_s": 14.1
       },
       {
         "title": "Two records, two standards of proof",
         "hand": "04:36",
-        "real": "3:57",
-        "drift_s": -38.5
+        "real": "4:51",
+        "drift_s": 15.3
       },
       {
         "title": "Why the boundary is biochemical, not a wall",
         "hand": "05:10",
-        "real": "4:29",
-        "drift_s": -40.2
+        "real": "5:34",
+        "drift_s": 24.9
       },
       {
         "title": "The record label",
         "hand": "06:07",
-        "real": "5:27",
-        "drift_s": -39.4
+        "real": "6:31",
+        "drift_s": 24.8
       },
       {
         "title": "The next record",
         "hand": "06:32",
-        "real": "5:50",
-        "drift_s": -41.3
+        "real": "6:53",
+        "drift_s": 21.5
       },
       {
         "title": "What to notice in the edit",
         "hand": "06:56",
-        "real": "6:12",
-        "drift_s": -43.2
+        "real": "7:16",
+        "drift_s": 20.4
       },
       {
         "title": "Evidence limit",
         "hand": "07:16",
-        "real": "6:30",
-        "drift_s": -45.3
+        "real": "7:34",
+        "drift_s": 18.9
       },
       {
         "title": "Closing",
         "hand": "07:41",
-        "real": "6:53",
-        "drift_s": -47.1
+        "real": "7:59",
+        "drift_s": 18.8
       }
     ]
   },
   "ffprobe": {
-    "file": "renders/19-what-is-the-deepest-fish-ever-recorded.mp4",
-    "video_s": 430.031,
-    "last_cue_end_s": 430.02,
-    "delta_s": -0.011,
+    "file": "renders/19-what-is-the-deepest-fish-ever-recorded-final.mp4",
+    "video_s": 496.213,
+    "last_cue_end_s": 496.213,
+    "delta_s": 0.0,
     "ok": true
   },
   "text_checks": {
@@ -115,12 +116,16 @@
     },
     "script_text": {
       "checked": 59,
-      "absent_from_narration": []
+      "absent_from_narration": [
+        51,
+        52,
+        53
+      ]
     }
   },
   "script_chapters": {
     "written": false,
-    "reason": "timing source is 'estimate'; stamps are only written from fully measured audio"
+    "reason": "skipped"
   },
   "artifacts": [
     "captions/19-what-is-the-deepest-fish-ever-recorded.vtt",
