@@ -1,13 +1,14 @@
-"""The thumbnail lane: contract sets for live long-form videos, drama line on $0.
+"""The thumbnail lane: contract sets for live long-form videos, words echo the title.
 
     python loop/thumbs_lane.py            # stage "thumbs", daily in loop-repackage
 
-Owner's lock, 13 Oct 2026: the title stays a clear, short question and the
-thumbnail's <=3 words carry the drama or the subject. This stage builds a
-contract set (visuals/thumb_contract.py: three variants, one grade, variant A
-ships) for every live long-form video whose set is missing or was built for
-another title, drafting the drama line on the repo's $0 route (subscription
-first) and gating it (thumb_contract.drama_problems). An episode with no
+Owner's lock, 13 Oct 2026: the title stays a clear, short question. Owner,
+14 Oct 2026: the thumbnail's <=4 words ECHO the title's core phrase ("Can a
+Deep Sea Fish Eat a Human?" -> "FISH EAT A HUMAN?"), built deterministically
+and gated by one rule (thumb_contract.text_problems); the model-drafted drama
+line is retired. This stage builds a contract set (visuals/thumb_contract.py:
+three variants, one grade, variant A ships) for every live long-form video
+whose set is missing or was built for another title. An episode with no
 rights-verified picture of its own subject is refused by name and keeps its
 thumbnail. `repackage apply` then ships variant A (a rebuilt A goes up alone).
 """
@@ -25,9 +26,7 @@ import thumb_contract as TC                                # noqa: E402
 
 
 def main() -> int:
-    import longform_title as LT                            # noqa: PLC0415
     from common import Stage, week_id                      # noqa: PLC0415
-    TC.DRAMA_ASK = LT._ask                                 # noqa: SLF001
     with Stage("thumbs", week_id(),
                zero_work_hint="Every live long-form video's thumbnail set "
                               "matches its title.") as st:

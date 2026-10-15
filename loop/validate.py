@@ -4450,13 +4450,14 @@ def v48_thumbnail_contract() -> Result:
         r.fail("self-check: the grade is not deterministic")
     if list(a.getdata()) == list(probe.getdata()):
         r.fail("self-check: the grade changed nothing")
-    if _tc.MAX_WORDS != 3 or _tc.SUBJECT_FILL_MIN < 0.60 or _tc.CHOSEN != "A":
+    # 4 = the title echo (owner, 14 Oct 2026: "FISH EAT A HUMAN?"); was 3
+    if _tc.MAX_WORDS != 4 or _tc.SUBJECT_FILL_MIN < 0.60 or _tc.CHOSEN != "A":
         r.fail("self-check: the contract constants were loosened "
                f"(MAX_WORDS={_tc.MAX_WORDS}, SUBJECT_FILL_MIN="
                f"{_tc.SUBJECT_FILL_MIN}, CHOSEN={_tc.CHOSEN})")
     try:
-        _tc.draw(probe.resize((_tc.TW, _tc.TH)), "ONE TWO THREE FOUR", "x")
-        r.fail("self-check: draw() accepted four words")
+        _tc.draw(probe.resize((_tc.TW, _tc.TH)), "ONE TWO THREE FOUR FIVE", "x")
+        r.fail("self-check: draw() accepted five words")
     except ValueError:
         pass
     for slug in _tc.contract_slugs():

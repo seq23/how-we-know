@@ -10,7 +10,7 @@ rights-verified imagery into a scratch directory, then proves:
      energy, 1280x720, and the channel GRADE applied (verify() re-grades the
      recorded crop of the recorded source and compares the published pixels);
   3. negatives: an UNGRADED variant fails verify; a contract claiming a crop
-     whose subject fills under 60% fails; draw() refuses four words; a slug
+     whose subject fills under 60% fails; draw() refuses five words; a slug
      with no rights-verified image of its subject is ContractRefused, named;
   4. V48 passes on the real repo and fails on a planted bad contract.
 
@@ -67,8 +67,8 @@ for slug, title in SLUGS.items():
     check(len({json.dumps([v['box'], v['text'], v['source']]) for v in c["variants"].values()}) == 3,
           f"{slug}: the three variants are not distinct in crop, text or image")
     for name, v in c["variants"].items():
-        check(v["words"] <= 3 and len(v["text"].split()) <= 3,
-              f"{slug}/{name}: {v['text']!r} is over three words")
+        check(TC.MAX_WORDS == 4 and v["words"] <= 4 and len(v["text"].split()) <= 4,
+              f"{slug}/{name}: {v['text']!r} is over four words")
         check(v["fill"] >= TC.SUBJECT_FILL_MIN,
               f"{slug}/{name}: subject fill {v['fill']} under 60%")
         check(v["credit"], f"{slug}/{name}: the image credit was dropped")
@@ -87,7 +87,7 @@ check(Path(p).read_bytes() == (out / "variants" / "19-what-is-the-deepest-fish-e
 for t_, want in (("Faster than 100 degrees per second, carbon is trapped", "100 DEGREES"),
                  ("Challenger Deep is 10,935 meters, plus or minus six", "10,935 METERS")):
     got = TC.text_options(t_)
-    check(got and got[0] == want and not any(
+    check(got and got[0].startswith(want) and not any(
         x.split()[-1].lower() in TC.DANGLING for x in got if len(x.split()) > 1),
           f"thumbnail text ends on a dangling word: {t_!r} -> {got}")
 
@@ -125,26 +125,115 @@ _t = TC.text_options("Steel fails at 0.4 gigapascals, graphene at 130",
                      _LT.subject_words("how strong is graphene"))
 check(not any("0.4" in x for x in _t), f"a figure from another subject's clause: {_t}")
 
-# ------------------------------------ 2e. THE DRAMA LINE (owner's lock)
+# ------------------- 2e. THE TITLE ECHO, one rule (owner, 14 Oct 2026)
+# The thumbnail words echo the title's core phrase; the model "drama line"
+# is retired (12 of 25 of its cached sets were bare negations). NEGATIVE
+# PROOF (run once, 2026-10-14): make text_problems() skip its negation check
+# -> the "(a)" negation cases below fail; restore -> green.
+import re as _re                                                # noqa: E402
 _ti = (ROOT / "scripts" / "how-strong-is-titanium.md").read_text(encoding="utf-8")
-_sub = {"titanium"}
-check(not TC.drama_problems("TITANIUM", _ti, _sub), "a bare subject failed the drama gate")
-check(TC.drama_problems("TITANIUM BEATS DIAMOND HAMMERS", _ti, _sub),
-      "four words passed the drama gate")
-check(any("not in the script" in x for x in TC.drama_problems("TITANIUM UNICORN", _ti, _sub)),
-      "a word the script never says passed the drama gate")
-check(any("neither" in x for x in TC.drama_problems("VERY GOOD", _ti, _sub)),
-      "a line with no subject, figure or contradiction passed")
-_saved_tt = TC.THUMB_TEXT
-TC.THUMB_TEXT = os.path.join(_tf.mkdtemp(), "thumb_text.json")
-_asked = []
-_lines = TC.drama_text("how-strong-is-titanium", "Is Titanium Stronger Than Steel?", _ti, _sub,
-                       ask=lambda m: (_asked.append(m) or ("TITANIUM\nTITANIUM UNICORN\nA B C D", "fx")))
-check(_lines == ["TITANIUM"] and len(_asked) == 1, f"drama_text did not gate the model's lines: {_lines}")
-_again = TC.drama_text("how-strong-is-titanium", "Is Titanium Stronger Than Steel?", _ti, _sub,
-                       ask=lambda m: (_ for _ in ()).throw(AssertionError("asked twice")))
-check(_again == ["TITANIUM"], "the cached drama line was not reused")
-TC.THUMB_TEXT = _saved_tt
+_tt = "Is Titanium Stronger Than Steel?"
+check(not TC.text_problems("TITANIUM", _tt, {"titanium"}), "a bare subject failed the rule")
+check(TC.text_problems("TITANIUM STRONGER THAN STEEL TODAY", _tt, {"titanium"}),
+      "five words passed the rule")
+check(any("not in the title" in x for x in TC.text_problems("TITANIUM UNICORN", _tt, {"titanium"})),
+      "a word the title never says passed the rule")
+check(any("neither" in x for x in TC.text_problems("FAST", "Why Must Quenching Be So Fast?",
+                                                   {"quenching"})),
+      "a text with no subject and no figure passed")
+check(any("stake word alone" in x for x in TC.text_problems("MELTS", "Why Steel Melts", {"steel"})),
+      "a stake word alone passed the rule")
+check(any("question mark" in x for x in TC.text_problems("STEEL?", "Why Steel Melts", {"steel"})),
+      "a ? on a title that asks nothing passed")
+# MAX_WORDS is 4 for thumbnails only; titles keep their own gate
+check(TC.MAX_WORDS == 4, f"thumbnail MAX_WORDS is {TC.MAX_WORDS}, not 4")
+check(not hasattr(_LT, "MAX_WORDS") and "thumb_contract" not in
+      (ROOT / "loop" / "longform_title.py").read_text(encoding="utf-8"),
+      "the title gate borrows the thumbnail word limit")
+# owner's examples
+_g = TC.text_options("Can a Deep Sea Fish Eat a Human?")
+check(_g and _g[0] == "FISH EAT A HUMAN?", f"owner's echo example: {_g}")
+_g = TC.text_options("What Makes Steel So Strong?", {"steel"})
+check(_g and _g[0] == "STEEL SO STRONG?", f"owner's echo example: {_g}")
+_g = TC.text_options("The Deep Sea Is Not Empty", {"creatures", "deep", "sea"})
+check(_g and not any(("EMPTY" in x or "NOT" in x) for x in _g),
+      f"an echo printed the words after a negation (the opposite claim): {_g}")
+# (a) the 12 negation texts of 14 Oct fail with a named reason, against
+# their own episode's title, and the generator can never produce them
+_neg = {"01-why-deep-sea-creatures-look-so-weird": ["NOT DEFORMED"],
+        "08-what-creatures-live-in-the-deep-sea": ["NOT ONE ANGLERFISH", "NOT DEFINED"],
+        "09-what-is-the-scariest-deep-sea-creature": ["NOT DANGEROUS", "NOT A THREAT"],
+        "19-what-is-the-deepest-fish-ever-recorded": ["FILMED NOT CAUGHT", "NOT CAUGHT"],
+        "10-what-is-the-deepest-part-of-the-ocean": ["NOT ONE HOLE", "NOT EXIST"],
+        "how-strong-is-graphene": ["ONLY PERFECT SHEETS", "NO DEFECTS"],
+        "why-is-carbon-fiber-so-strong": ["NEVER PERFECT"],
+        "what-is-concrete-made-of": ["NOT IN NATURE"]}
+_n12 = 0
+for _slug, _txts in _neg.items():
+    _sc = (ROOT / "scripts" / f"{_slug}.md").read_text(encoding="utf-8")
+    _t, _sb = TC.title_for(_slug, _sc), TC.subject_for(_slug, _sc)
+    _opts = TC.text_options(_t, _sb)
+    for _x in _txts:
+        _n12 += 1
+        check(any("negation" in r for r in TC.text_problems(_x, _t, _sb)),
+              f"a bare negation passed the rule: {_slug} {_x!r}")
+        check(_x not in _opts, f"the echo produced a negation: {_slug} {_x!r}")
+check(_n12 == 13, f"negation cases examined: {_n12}")
+# (b) the model path is gone: no prompt, no drafter, no cache, no reader
+for _name in ("DRAMA_PROMPT", "drama_text", "drama_problems", "DRAMA_ASK", "THUMB_TEXT"):
+    check(not hasattr(TC, _name), f"thumb_contract still carries {_name}")
+check(not (ROOT / "loop" / "state" / "thumb_text.json").exists(),
+      "loop/state/thumb_text.json is a dead cache nothing reads")
+for _f in list((ROOT / "loop").glob("*.py")) + list((ROOT / "visuals").glob("*.py")):
+    _src = _f.read_text(encoding="utf-8")
+    check(not _re.search(r"DRAMA_ASK|drama_text|thumb_text\.json", _src),
+          f"{_f.name} still calls the retired drama path")
+# (c) every LIVE title echoes to <=4 words, no negation, subject present
+_live = 0
+import ledger as _ledger                                        # noqa: E402
+_seen = set()
+for _r in _ledger.load()["published"]:
+    _slug = _r.get("slug")
+    if not _r.get("video_id") or _r.get("retired_at") or _slug in _seen:
+        continue
+    _seen.add(_slug)
+    _p = ROOT / "scripts" / f"{_slug}.md"
+    if not _p.exists():
+        continue
+    _sc = _p.read_text(encoding="utf-8")
+    _t, _sb = TC.title_for(_slug, _sc), TC.subject_for(_slug, _sc)
+    _opts = TC.text_options(_t, _sb)
+    _live += 1
+    check(bool(_opts), f"live title {_t!r} ({_slug}) yields no echo")
+    for _x in _opts:
+        _w = _x.rstrip("?").split()
+        check(len(_w) <= 4 and not any(w.lower() in _LT.CONTRADICTION or
+                                       w.lower().endswith("n't") for w in _w)
+              and not TC.text_problems(_x, _t, _sb),
+              f"live title {_t!r} -> {_x!r}: {TC.text_problems(_x, _t, _sb)}")
+check(_live >= 20, f"only {_live} live titles examined")
+# (d) text_options reads the ONE rule function
+_real = TC.text_problems
+_calls = []
+TC.text_problems = lambda t, ti, s=None: (_calls.append(t) or ["sentinel"])
+try:
+    _to = TC.text_options("What Makes Steel So Strong?", {"steel"})
+finally:
+    TC.text_problems = _real
+check(_to == [] and "STEEL SO STRONG?" in _calls,
+      f"text_options does not gate on text_problems: {_to} {_calls}")
+# (e) FORWARD ONLY: needed_slugs() is keyed on the title alone - the rule
+# never marks a live set for rebuild
+_need = TC.needed_slugs()
+TC.text_problems = lambda t, ti, s=None: ["everything fails"]
+_saved_opts = TC.text_options
+TC.text_options = lambda *a, **k: []
+try:
+    _need2 = TC.needed_slugs()
+finally:
+    TC.text_problems = _real
+    TC.text_options = _saved_opts
+check(_need == _need2, f"needed_slugs() moved with the text rule: {_need} vs {_need2}")
 
 # --------------------------------------------------------------- 3. negatives
 slug = "19-what-is-the-deepest-fish-ever-recorded"
@@ -167,8 +256,8 @@ pr = TC.verify(slug, str(bad_root))
 check(any("/B:" in p for p in pr),
       f"a contract whose recorded crop is not the published one passed: {pr}")
 try:
-    TC.draw(ungraded, "ONE TWO THREE FOUR", "credit")
-    check(False, "draw() accepted four words")
+    TC.draw(ungraded, "ONE TWO THREE FOUR FIVE", "credit")
+    check(False, "draw() accepted five words")
 except ValueError:
     check(True, "")
 try:
