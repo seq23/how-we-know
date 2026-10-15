@@ -883,42 +883,40 @@ FRAME_SLACK = 2       # V15: master frames either side of t_src each hypothesis 
 
 
 def _footage_credit_lines(SH) -> list[str]:
-    """Every credit line a footage beat can burn, longest first."""
-    import footage as FT                                    # noqa: PLC0415
-    lines = {str(a.get("required_credit") or a.get("source_org") or "")
-             for a in FT.load_manifest().get("assets", [])}
-    return sorted((c for c in lines if c), key=len, reverse=True)
+    """Every credit line a footage beat can burn."""
+    return SH.footage_credit_lines()
 
 
 def _credits_the_master_burned(SH, ocr, rec: dict, plan: list, tmp: Path):
-    """(credit lines, {beat: why}) for the beats a Short uses - for a FOOTAGE
-    beat, the credit the MASTER actually burned, read off its pixels.
+    """(credit lines, {beat: why}, [record disagreements]) for the beats a
+    Short uses - for a FOOTAGE beat, the credit the MASTER actually burned,
+    read off its pixels HERE, independently of the cutter.
 
-    WHY NOT JUST visuals/shorts.py:resolve_credits. It re-runs footage.assign()
-    against TODAY's channel/imagery/video_rights.json. Placement is
-    deterministic for a given manifest, but the manifest grows (Cook Islands
-    and American Samoa clips arrived 19 Sep - 9 Oct 2026), the pools rotate,
-    and a master rendered on 30 Aug now re-resolves to a clip it never
-    contained. From 2026-10-09 V14 failed 08-...-deep-sea-short2 and
-    20-what-is-the-midnight-zone-short2 for not showing '2026 Cook Islands ROV
-    Exploration' - while the master itself burns 'VOYAGE TO THE RIDGE 2022' on
-    that beat and the Short correctly credits exactly that. The validator was
-    comparing the cut against footage that is not in it.
+    WHY NOT TODAY'S footage.assign(). It re-derives placement from the
+    manifest the checkout holds, and the manifest grows and rotates: from
+    2026-10-09 V14 failed 08 and 20 short2 for not showing a Cook Islands clip
+    the masters never contained. And in a checkout with no manifest it places
+    no footage at all - which is how four 14 Oct re-cuts came to credit a
+    species engraving over a NOAA clip (visuals/shorts.py, attribution).
 
-    So for a footage beat the expected credit is read off the master's own
-    credit strip (footage.py:_credit_overlay, lower left) at three points in
-    the beat and matched to a credit line the manifest knows. That is
-    independent of the Short's receipt and of manifest drift. Only when the
-    master's strip cannot be read is today's assignment used - which fails
-    closed rather than open. Species and `source` credits are not placed by
-    rotation and still come from the manifests.
+    So for EVERY beat the Short uses - not only beats some re-derivation
+    calls footage - the master's credit strip (footage.py:_credit_overlay,
+    lower left) is read at three points and matched to a known credit line.
+    Species and `source` credits come from SH.beat_credits on that record.
+    Where the cutter kept a render record (renders/<slug>-final.mp4
+    .footage.json) and it disagrees with this read, that is reported: the
+    record the Short was credited from is wrong.
     """
-    import footage as FT                                    # noqa: PLC0415
-    lines, seen, dropped = [], set(), {}
-    known = None
+    lines, seen, dropped, disagree = [], set(), {}, []
     segs = {int(s["beat"]): s for s in rec.get("segments") or []}
     src = ROOT / rec["source"]
-    cuts = SH.footage_cuts(rec["slug"], plan)
+    known = _footage_credit_lines(SH)
+    if not known:
+        raise RuntimeError("no footage credit lines known on this machine - "
+                           "V14 cannot read what a master burned")
+    kept = SH.load_footage_record(str(src)) if src.exists() else None
+    x, y, w, h = SH.FOOTAGE_STRIP
+    strip = f"crop={w}:{h}:{x}:{y}"
 
     def add(c):
         k = re.sub(r"[^a-z0-9]+", "", c.lower())
@@ -927,47 +925,45 @@ def _credits_the_master_burned(SH, ocr, rec: dict, plan: list, tmp: Path):
             lines.append(c)
 
     for i in rec["beats"]:
+        i = int(i)
+        seg = segs.get(i)
+        if seg is None or not src.exists():
+            dropped[i] = (f"{rec['slug']} beat {i}: no segment or no master "
+                          f"to read the burned credit from")
+            continue
         burned = None
-        seg = segs.get(int(i))
-        if cuts[i] is not None and seg is not None and src.exists():
-            known = known if known is not None else _footage_credit_lines(SH)
-            strip = f"crop={FT.W // 2 + 400}:110:0:{FT.H - 120}"
-            for q in (0.25, 0.5, 0.75):
-                t = seg["source_start"] + seg["seconds"] * q
-                read = _ocr_words(ocr, _frame(
-                    src, t, tmp / f"{rec['slug']}.b{i}.{q}.master.png", strip))
-                for c in known:
-                    words = [w for w in re.findall(r"[A-Z0-9]+", c.upper())
-                             if len(w) > 2]
-                    if words and all(f" {w} " in read for w in words):
-                        burned = c
-                        break
-                if burned:
-                    break
+        for q in (0.25, 0.5, 0.75):
+            t = seg["source_start"] + seg["seconds"] * q
+            png = _frame(src, t, tmp / f"{rec['slug']}.b{i}.{q}.master.png",
+                         strip)
+            # the footage strip's own rows only: a species credit drawn just
+            # above it can read like a footage line (SH.FOOTAGE_TEXT_TOP)
+            read = SH.footage_strip_text(ocr([png]).get(png, []))
+            burned = SH.match_credit_line(read, known)
+            if burned:
+                break
+        if kept is not None and i in kept and (kept[i] or None) != burned:
+            disagree.append(f"beat {i}: render record {kept[i]!r}, master "
+                            f"strip reads {burned!r}")
         try:
-            got = SH.beat_credits(rec["slug"], plan, i)
+            got = SH.beat_credits(rec["slug"], plan, i, {i: burned})
         except SH.CreditUnresolved as e:
-            if burned is None:
-                dropped[i] = str(e)
-                continue
-            got = []
-        if burned is not None:
-            # replace the drifted footage credit with the burned one; keep any
-            # `Source:` line the beat also draws
-            got = [burned] + [g for g in got if g.startswith("Source: ")]
+            dropped[i] = str(e)
+            continue
         for c in got:
             add(c)
-    return lines, dropped
+    return lines, dropped, disagree
 
 
 def v14_shorts_attribution() -> Result:
     """HARD. A Short built from a beat whose asset carries a credit SHOWS it.
 
     The credit is not taken from the Short's own receipt - that would be the
-    receipt marking its own homework. It is re-resolved from the imagery
-    manifests for the beats the receipt says were used, and then read back OFF
-    THE PIXELS of the finished file with Apple Vision, inside the credit strip
-    the chrome is supposed to have drawn it in.
+    receipt marking its own homework. For every beat the receipt says was
+    used it is read off the MASTER's pixels (footage) or resolved from the
+    species manifest, then read back OFF THE PIXELS of the finished Short with
+    Apple Vision, inside the credit strip the chrome draws, at every beat. A
+    credit the Short claims that the master does not show fails too.
 
     Stripping or omitting attribution is the one thing this pipeline may not do,
     so this examines every Short that uses credited material and hard-fails if
@@ -1000,7 +996,16 @@ def v14_shorts_attribution() -> Result:
                         f"credit its beats require cannot be re-resolved")
             continue
         plan = json.loads(plan_path.read_text())
-        want, dropped = _credits_the_master_burned(SH, ocr, rec, plan, tmp)
+        try:
+            want, dropped, disagree = _credits_the_master_burned(
+                SH, ocr, rec, plan, tmp)
+        except RuntimeError as e:
+            r.fail(f"V14 cannot read the masters' burned credits: {e}")
+            return r
+        if disagree:
+            r.fail_file(mp4.name, f"{mp4.name}: the render record it was "
+                        f"credited from disagrees with the master: "
+                        f"{'; '.join(disagree)}")
         if dropped:
             r.fail_file(mp4.name, f"{mp4.name}: kept beat(s) {sorted(dropped)} "
                         f"whose credit cannot be resolved: "
@@ -1009,17 +1014,33 @@ def v14_shorts_attribution() -> Result:
             uncredited += 1
             continue
         r.examined += 1
+        # A credit the Short says it drew that the master never showed is a
+        # misattribution even when the right one is also on screen.
+        norm = lambda c: re.sub(r"[^a-z0-9]+", "", c.lower())   # noqa: E731
+        extra = [c for c in rec.get("credits") or []
+                 if norm(c) not in {norm(w) for w in want}]
+        if extra:
+            r.fail_file(mp4.name, f"{mp4.name}: credits {extra} that the "
+                        f"master does not show on the beats used (it shows "
+                        f"{want})")
         band_y, band_h = rec["band_y"], rec["band_h"]
         strip = f"crop={SH.OUT_W}:{SH.CREDIT_GAP}:0:{band_y + band_h}"
-        seen = _ocr_words(ocr, _frame(mp4, _samples(rec, 1)[0][0],
-                                      tmp / f"{mp4.stem}.credit.png", strip))
-        for c in want:
-            words = [w for w in re.findall(r"[A-Z0-9]+", c.upper()) if len(w) > 2]
-            missing = [w for w in words if f" {w} " not in seen]
-            if missing:
-                r.fail_file(mp4.name, f"{mp4.name}: credit {c!r} is not on "
-                            f"screen - Vision read {seen.strip()!r} in the "
-                            f"credit strip, missing {missing}")
+        # EVERY beat of the Short, not one: the credit must be on screen for
+        # the whole cut, whichever beat a viewer pauses on.
+        for n, (t_short, _t_src) in enumerate(_samples(rec, 10 ** 6)):
+            seen = _ocr_words(ocr, _frame(mp4, t_short,
+                                          tmp / f"{mp4.stem}.credit{n}.png", strip))
+            for c in want:
+                words = [w for w in re.findall(r"[A-Z0-9]+", c.upper())
+                         if len(w) > 2]
+                missing = [w for w in words if f" {w} " not in seen]
+                if missing:
+                    r.fail_file(mp4.name, f"{mp4.name}: credit {c!r} is not on "
+                                f"screen at {t_short:.1f}s - Vision read "
+                                f"{seen.strip()!r} in the credit strip, "
+                                f"missing {missing}")
+            if mp4.name in r.failed_files:
+                break                     # one named failure per cut is enough
     if r.examined == 0:
         r.fail(f"examined 0 Shorts that carry credited material ({len(receipts)} "
                f"Short(s) present, {uncredited} using no credited asset) - this "
