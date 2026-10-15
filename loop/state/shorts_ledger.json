@@ -230,9 +230,13 @@
       "scheduled_publish_at": "2026-09-14T00:00:00Z",
       "rank": 1,
       "lane": "shorts-cloud",
-      "handoff": "pending",
+      "handoff": "done",
       "playlist_item_id": "UExPclpNRHlveTFYTS4zMDg5MkQ5MEVDMEM1NTg2",
-      "playlist": "PLOrZMDyoy1XM"
+      "playlist": "PLOrZMDyoy1XM",
+      "handoff_episode": "l6HwRYGo-Nw",
+      "handoff_at": "2026-10-15T23:10:22+00:00",
+      "handoff_comment_id": "Ugxcw1Z1SpQVutqcCA14AaABAg",
+      "handoff_comment_at": "2026-10-15T23:10:23+00:00"
     },
     {
       "slug": "13-how-does-bioluminescence-work-in-the-deep-sea",
@@ -717,5 +721,5 @@
       "handoff": "pending"
     }
   ],
-  "updated": "2026-10-15T23:10:19+00:00"
+  "updated": "2026-10-15T23:10:25+00:00"
 }
