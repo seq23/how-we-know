@@ -21,8 +21,8 @@
         "A"
       ],
       "packaging_since": "2026-10-14",
-      "days_public": 44,
-      "days_since_packaging": 1,
+      "days_public": 45,
+      "days_since_packaging": 2,
       "public": true,
       "lifetime": {
         "views": 5,
@@ -48,7 +48,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-14"
       },
-      "measured_on": "2026-10-15",
+      "measured_on": "2026-10-16",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
@@ -76,8 +76,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-10-14",
-      "days_public": 39,
-      "days_since_packaging": 1,
+      "days_public": 40,
+      "days_since_packaging": 2,
       "public": true,
       "lifetime": {
         "views": 4,
@@ -103,7 +103,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-14"
       },
-      "measured_on": "2026-10-15",
+      "measured_on": "2026-10-16",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
@@ -133,8 +133,8 @@
         "A"
       ],
       "packaging_since": "2026-10-14",
-      "days_public": 37,
-      "days_since_packaging": 1,
+      "days_public": 38,
+      "days_since_packaging": 2,
       "public": true,
       "lifetime": {
         "views": 7,
@@ -160,7 +160,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-14"
       },
-      "measured_on": "2026-10-15",
+      "measured_on": "2026-10-16",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
@@ -190,8 +190,8 @@
         "A"
       ],
       "packaging_since": "2026-10-13",
-      "days_public": 32,
-      "days_since_packaging": 2,
+      "days_public": 33,
+      "days_since_packaging": 3,
       "public": true,
       "lifetime": {
         "views": 9,
@@ -217,7 +217,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-13"
       },
-      "measured_on": "2026-10-15",
+      "measured_on": "2026-10-16",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
@@ -245,8 +245,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-09-15",
-      "days_public": 30,
-      "days_since_packaging": 30,
+      "days_public": 31,
+      "days_since_packaging": 31,
       "public": true,
       "lifetime": {
         "views": 12,
@@ -272,7 +272,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-09-15"
       },
-      "measured_on": "2026-10-15",
+      "measured_on": "2026-10-16",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
@@ -302,8 +302,8 @@
         "A"
       ],
       "packaging_since": "2026-10-14",
-      "days_public": 25,
-      "days_since_packaging": 1,
+      "days_public": 26,
+      "days_since_packaging": 2,
       "public": true,
       "lifetime": {
         "views": 19,
@@ -329,7 +329,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-14"
       },
-      "measured_on": "2026-10-15",
+      "measured_on": "2026-10-16",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
@@ -359,8 +359,8 @@
         "A"
       ],
       "packaging_since": "2026-10-14",
-      "days_public": 23,
-      "days_since_packaging": 1,
+      "days_public": 24,
+      "days_since_packaging": 2,
       "public": true,
       "lifetime": {
         "views": 15,
@@ -386,7 +386,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-14"
       },
-      "measured_on": "2026-10-15",
+      "measured_on": "2026-10-16",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
@@ -414,11 +414,11 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-10-13",
-      "days_public": 18,
-      "days_since_packaging": 2,
+      "days_public": 19,
+      "days_since_packaging": 3,
       "public": true,
       "lifetime": {
-        "views": 4,
+        "views": 5,
         "watch_minutes": 10.0,
         "avd_s": 215.0,
         "avp_pct": 44.72,
@@ -426,26 +426,26 @@
         "traffic": {
           "browse": 0,
           "suggested": 2,
-          "search": 1,
+          "search": 2,
           "external": 0,
           "other": 1
         },
         "retention_30s_pct": "insufficient"
       },
       "current": {
-        "views": 0,
+        "views": 1,
         "watch_minutes": 0.0,
-        "avd_s": null,
-        "avp_pct": null,
+        "avd_s": 0.0,
+        "avp_pct": 0.0,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
         "since": "2026-10-13"
       },
-      "measured_on": "2026-10-15",
+      "measured_on": "2026-10-16",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
-        "avp": "unknown"
+        "avp": "fail"
       },
       "verdict": "INSUFFICIENT",
       "needs_review": false
@@ -471,17 +471,17 @@
         "A"
       ],
       "packaging_since": "2026-10-14",
-      "days_public": 16,
-      "days_since_packaging": 1,
+      "days_public": 17,
+      "days_since_packaging": 2,
       "public": true,
       "lifetime": {
-        "views": 10,
-        "watch_minutes": 17.0,
+        "views": 11,
+        "watch_minutes": 18.0,
         "avd_s": 107.0,
         "avp_pct": 20.5,
         "subscribers_gained": 0,
         "traffic": {
-          "browse": 0,
+          "browse": 1,
           "suggested": 8,
           "search": 1,
           "external": 0,
@@ -498,7 +498,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-14"
       },
-      "measured_on": "2026-10-15",
+      "measured_on": "2026-10-16",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
@@ -528,18 +528,18 @@
         "A"
       ],
       "packaging_since": "2026-10-14",
-      "days_public": 11,
-      "days_since_packaging": 1,
+      "days_public": 12,
+      "days_since_packaging": 2,
       "public": true,
       "lifetime": {
-        "views": 6,
-        "watch_minutes": 4.0,
-        "avd_s": 49.0,
-        "avp_pct": 9.74,
+        "views": 8,
+        "watch_minutes": 21.0,
+        "avd_s": 180.0,
+        "avp_pct": 35.49,
         "subscribers_gained": 1,
         "traffic": {
           "browse": 0,
-          "suggested": 3,
+          "suggested": 5,
           "search": 1,
           "external": 0,
           "other": 2
@@ -555,7 +555,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-14"
       },
-      "measured_on": "2026-10-15",
+      "measured_on": "2026-10-16",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
@@ -585,34 +585,34 @@
         "A"
       ],
       "packaging_since": "2026-10-06",
-      "days_public": 9,
-      "days_since_packaging": 9,
+      "days_public": 10,
+      "days_since_packaging": 10,
       "public": true,
       "lifetime": {
-        "views": 11,
-        "watch_minutes": 9.0,
-        "avd_s": 96.0,
-        "avp_pct": 19.34,
+        "views": 15,
+        "watch_minutes": 10.0,
+        "avd_s": 85.0,
+        "avp_pct": 17.3,
         "subscribers_gained": 0,
         "traffic": {
-          "browse": 6,
+          "browse": 9,
           "suggested": 3,
-          "search": 0,
+          "search": 1,
           "external": 1,
           "other": 1
         },
         "retention_30s_pct": "insufficient"
       },
       "current": {
-        "views": 11,
-        "watch_minutes": 9.0,
-        "avd_s": 96.0,
-        "avp_pct": 19.34,
+        "views": 15,
+        "watch_minutes": 10.0,
+        "avd_s": 85.0,
+        "avp_pct": 17.3,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
         "since": "2026-10-06"
       },
-      "measured_on": "2026-10-15",
+      "measured_on": "2026-10-16",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
@@ -642,38 +642,38 @@
         "A"
       ],
       "packaging_since": "2026-10-13",
-      "days_public": 4,
-      "days_since_packaging": 2,
+      "days_public": 5,
+      "days_since_packaging": 3,
       "public": true,
       "lifetime": {
-        "views": 10,
-        "watch_minutes": 17.0,
-        "avd_s": 133.0,
-        "avp_pct": 26.72,
+        "views": 12,
+        "watch_minutes": 19.0,
+        "avd_s": 129.0,
+        "avp_pct": 25.9,
         "subscribers_gained": 0,
         "traffic": {
           "browse": 2,
           "suggested": 7,
-          "search": 0,
+          "search": 2,
           "external": 0,
           "other": 1
         },
         "retention_30s_pct": "insufficient"
       },
       "current": {
-        "views": 0,
-        "watch_minutes": 0.0,
-        "avd_s": null,
-        "avp_pct": null,
+        "views": 2,
+        "watch_minutes": 1.0,
+        "avd_s": 96.0,
+        "avp_pct": 19.36,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
         "since": "2026-10-13"
       },
-      "measured_on": "2026-10-15",
+      "measured_on": "2026-10-16",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
-        "avp": "unknown"
+        "avp": "fail"
       },
       "verdict": "INSUFFICIENT",
       "needs_review": false
@@ -688,7 +688,7 @@
       "variant_of": "pre-rule",
       "public_since": "2026-10-13",
       "duration_s": 456.0,
-      "packaging_pass_at": "2026-10-14T23:41:17+00:00",
+      "packaging_pass_at": "2026-10-15T23:41:23+00:00",
       "hooked": false,
       "thumbnail_test": {
         "active": false,
@@ -698,22 +698,22 @@
       "thumbnails_used": [
         "A"
       ],
-      "packaging_since": "2026-10-14",
-      "days_public": 2,
+      "packaging_since": "2026-10-15",
+      "days_public": 3,
       "days_since_packaging": 1,
       "public": true,
       "lifetime": {
-        "views": 0,
-        "watch_minutes": 0.0,
-        "avd_s": null,
-        "avp_pct": null,
-        "subscribers_gained": 0,
+        "views": 13,
+        "watch_minutes": 17.0,
+        "avd_s": 106.0,
+        "avp_pct": 23.42,
+        "subscribers_gained": 1,
         "traffic": {
-          "browse": 0,
-          "suggested": 0,
-          "search": 0,
+          "browse": 3,
+          "suggested": 7,
+          "search": 2,
           "external": 0,
-          "other": 0
+          "other": 1
         },
         "retention_30s_pct": "insufficient"
       },
@@ -724,9 +724,9 @@
         "avp_pct": null,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
-        "since": "2026-10-14"
+        "since": "2026-10-15"
       },
-      "measured_on": "2026-10-15",
+      "measured_on": "2026-10-16",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
@@ -756,8 +756,8 @@
         "A"
       ],
       "packaging_since": "2026-10-13",
-      "days_public": 38,
-      "days_since_packaging": 2,
+      "days_public": 39,
+      "days_since_packaging": 3,
       "public": true,
       "lifetime": {
         "views": 8,
@@ -783,7 +783,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-13"
       },
-      "measured_on": "2026-10-15",
+      "measured_on": "2026-10-16",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
@@ -813,8 +813,8 @@
         "A"
       ],
       "packaging_since": "2026-10-13",
-      "days_public": 34,
-      "days_since_packaging": 2,
+      "days_public": 35,
+      "days_since_packaging": 3,
       "public": true,
       "lifetime": {
         "views": 45,
@@ -840,7 +840,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-13"
       },
-      "measured_on": "2026-10-15",
+      "measured_on": "2026-10-16",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
@@ -870,8 +870,8 @@
         "A"
       ],
       "packaging_since": "2026-10-13",
-      "days_public": 31,
-      "days_since_packaging": 2,
+      "days_public": 32,
+      "days_since_packaging": 3,
       "public": true,
       "lifetime": {
         "views": 19,
@@ -897,7 +897,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-13"
       },
-      "measured_on": "2026-10-15",
+      "measured_on": "2026-10-16",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
@@ -925,11 +925,11 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-10-13",
-      "days_public": 27,
-      "days_since_packaging": 2,
+      "days_public": 28,
+      "days_since_packaging": 3,
       "public": true,
       "lifetime": {
-        "views": 10,
+        "views": 11,
         "watch_minutes": 0.0,
         "avd_s": 5.0,
         "avp_pct": 0.88,
@@ -937,26 +937,26 @@
         "traffic": {
           "browse": 0,
           "suggested": 0,
-          "search": 4,
+          "search": 5,
           "external": 6,
           "other": 0
         },
         "retention_30s_pct": "insufficient"
       },
       "current": {
-        "views": 0,
+        "views": 1,
         "watch_minutes": 0.0,
-        "avd_s": null,
-        "avp_pct": null,
+        "avd_s": 0.0,
+        "avp_pct": 0.0,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
         "since": "2026-10-13"
       },
-      "measured_on": "2026-10-15",
+      "measured_on": "2026-10-16",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
-        "avp": "unknown"
+        "avp": "fail"
       },
       "verdict": "INSUFFICIENT",
       "needs_review": false
@@ -980,8 +980,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-09-21",
-      "days_public": 24,
-      "days_since_packaging": 24,
+      "days_public": 25,
+      "days_since_packaging": 25,
       "public": true,
       "lifetime": {
         "views": 18,
@@ -1007,7 +1007,7 @@
         "retention_30s_pct": 71.3,
         "since": "2026-09-21"
       },
-      "measured_on": "2026-10-15",
+      "measured_on": "2026-10-16",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "pass",
@@ -1035,8 +1035,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-10-13",
-      "days_public": 20,
-      "days_since_packaging": 2,
+      "days_public": 21,
+      "days_since_packaging": 3,
       "public": true,
       "lifetime": {
         "views": 4,
@@ -1062,7 +1062,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-13"
       },
-      "measured_on": "2026-10-15",
+      "measured_on": "2026-10-16",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
@@ -1092,11 +1092,11 @@
         "A"
       ],
       "packaging_since": "2026-10-13",
-      "days_public": 17,
-      "days_since_packaging": 2,
+      "days_public": 18,
+      "days_since_packaging": 3,
       "public": true,
       "lifetime": {
-        "views": 29,
+        "views": 31,
         "watch_minutes": 41.0,
         "avd_s": 162.0,
         "avp_pct": 24.89,
@@ -1104,26 +1104,26 @@
         "traffic": {
           "browse": 0,
           "suggested": 1,
-          "search": 22,
+          "search": 24,
           "external": 5,
           "other": 1
         },
         "retention_30s_pct": 66.7
       },
       "current": {
-        "views": 0,
+        "views": 2,
         "watch_minutes": 0.0,
-        "avd_s": null,
-        "avp_pct": null,
+        "avd_s": 0.0,
+        "avp_pct": 0.0,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
         "since": "2026-10-13"
       },
-      "measured_on": "2026-10-15",
+      "measured_on": "2026-10-16",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
-        "avp": "unknown"
+        "avp": "fail"
       },
       "verdict": "INSUFFICIENT",
       "needs_review": false
@@ -1149,8 +1149,8 @@
         "A"
       ],
       "packaging_since": "2026-10-13",
-      "days_public": 13,
-      "days_since_packaging": 2,
+      "days_public": 14,
+      "days_since_packaging": 3,
       "public": true,
       "lifetime": {
         "views": 9,
@@ -1176,7 +1176,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-13"
       },
-      "measured_on": "2026-10-15",
+      "measured_on": "2026-10-16",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
@@ -1204,38 +1204,38 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-10-13",
-      "days_public": 10,
-      "days_since_packaging": 2,
+      "days_public": 11,
+      "days_since_packaging": 3,
       "public": true,
       "lifetime": {
-        "views": 10,
-        "watch_minutes": 12.0,
-        "avd_s": 241.0,
-        "avp_pct": 38.97,
+        "views": 13,
+        "watch_minutes": 25.0,
+        "avd_s": 299.0,
+        "avp_pct": 48.3,
         "subscribers_gained": 0,
         "traffic": {
           "browse": 0,
-          "suggested": 2,
-          "search": 8,
+          "suggested": 4,
+          "search": 9,
           "external": 0,
           "other": 0
         },
         "retention_30s_pct": "insufficient"
       },
       "current": {
-        "views": 0,
-        "watch_minutes": 0.0,
-        "avd_s": null,
-        "avp_pct": null,
+        "views": 3,
+        "watch_minutes": 12.0,
+        "avd_s": 386.0,
+        "avp_pct": 62.29,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
         "since": "2026-10-13"
       },
-      "measured_on": "2026-10-15",
+      "measured_on": "2026-10-16",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
-        "avp": "unknown"
+        "avp": "pass"
       },
       "verdict": "INSUFFICIENT",
       "needs_review": false
@@ -1259,14 +1259,14 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-10-13",
-      "days_public": 6,
-      "days_since_packaging": 2,
+      "days_public": 7,
+      "days_since_packaging": 3,
       "public": true,
       "lifetime": {
         "views": 156,
-        "watch_minutes": 61.0,
-        "avd_s": 91.0,
-        "avp_pct": 12.54,
+        "watch_minutes": 62.0,
+        "avd_s": 93.0,
+        "avp_pct": 12.86,
         "subscribers_gained": 0,
         "traffic": {
           "browse": 149,
@@ -1286,7 +1286,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-13"
       },
-      "measured_on": "2026-10-15",
+      "measured_on": "2026-10-16",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
@@ -1316,11 +1316,11 @@
         "A"
       ],
       "packaging_since": "2026-10-13",
-      "days_public": 3,
-      "days_since_packaging": 2,
+      "days_public": 4,
+      "days_since_packaging": 3,
       "public": true,
       "lifetime": {
-        "views": 5,
+        "views": 7,
         "watch_minutes": 0.0,
         "avd_s": 24.0,
         "avp_pct": 3.45,
@@ -1328,7 +1328,62 @@
         "traffic": {
           "browse": 0,
           "suggested": 2,
-          "search": 3,
+          "search": 5,
+          "external": 0,
+          "other": 0
+        },
+        "retention_30s_pct": "insufficient"
+      },
+      "current": {
+        "views": 2,
+        "watch_minutes": 0.0,
+        "avd_s": 0.0,
+        "avp_pct": 0.0,
+        "subscribers_gained": 0,
+        "retention_30s_pct": "insufficient",
+        "since": "2026-10-13"
+      },
+      "measured_on": "2026-10-16",
+      "floors": {
+        "ctr": "unknown",
+        "retention_30s": "unknown",
+        "avp": "fail"
+      },
+      "verdict": "INSUFFICIENT",
+      "needs_review": false
+    },
+    "l6HwRYGo-Nw": {
+      "video_id": "l6HwRYGo-Nw",
+      "repackage_round": 0,
+      "repackages": [],
+      "slug": "16-what-happens-when-a-whale-dies-in-the-deep-ocean",
+      "title": "The whale meal that is not finished when the flesh goes",
+      "domain": "deep-sea-ocean-science",
+      "variant_of": "pre-rule",
+      "public_since": "2026-10-15",
+      "duration_s": 477.0,
+      "packaging_pass_at": "2026-10-13T13:55:53+00:00",
+      "hooked": false,
+      "thumbnail_test": {
+        "active": false,
+        "started": null,
+        "variants": []
+      },
+      "thumbnails_used": [],
+      "packaging_since": "2026-10-15",
+      "days_public": 1,
+      "days_since_packaging": 1,
+      "public": true,
+      "lifetime": {
+        "views": 0,
+        "watch_minutes": 0.0,
+        "avd_s": null,
+        "avp_pct": null,
+        "subscribers_gained": 0,
+        "traffic": {
+          "browse": 0,
+          "suggested": 0,
+          "search": 0,
           "external": 0,
           "other": 0
         },
@@ -1341,9 +1396,9 @@
         "avp_pct": null,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
-        "since": "2026-10-13"
+        "since": "2026-10-15"
       },
-      "measured_on": "2026-10-15",
+      "measured_on": "2026-10-16",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
@@ -1353,7 +1408,7 @@
       "needs_review": false
     }
   },
-  "as_of": "2026-10-15",
+  "as_of": "2026-10-16",
   "config": {
     "floors": {
       "ctr_pct": 4.0,
@@ -1370,14 +1425,14 @@
   },
   "channel": {
     "week": "2026-W42",
-    "date": "2026-10-15",
-    "public_longform": 24,
+    "date": "2026-10-16",
+    "public_longform": 25,
     "packaging_working": "too early",
     "counts": {
       "PASS": 0,
       "WATCH": 0,
       "FAIL": 0,
-      "INSUFFICIENT": 24
+      "INSUFFICIENT": 25
     },
     "judged_medians": {
       "n": 0,
@@ -1387,10 +1442,10 @@
     },
     "cohorts": {
       "pre-rule": {
-        "n": 24,
+        "n": 25,
         "ctr_pct": null,
         "retention_30s_pct": 63.4,
-        "avp_pct": 20.5
+        "avp_pct": 22.5
       }
     },
     "best3": [
@@ -1407,17 +1462,17 @@
         "watch_minutes_per_view": 2.84
       },
       {
-        "video_id": "IbrSPKUK1IM",
-        "title": "The tubeworm is not bathing in 340-degree water",
-        "views": 10,
-        "watch_minutes_per_view": 1.7
+        "video_id": "debozzLtVRA",
+        "title": "Steel fails at 0.4 gigapascals, graphene at 130",
+        "views": 13,
+        "watch_minutes_per_view": 1.92
       }
     ],
     "worst3": [
       {
         "video_id": "TjrpzJE3utU",
         "title": "Tempered glass does not weaken, it switches states",
-        "views": 10,
+        "views": 11,
         "watch_minutes_per_view": 0.0
       },
       {
@@ -1439,13 +1494,13 @@
     "gate": {
       "first_repackaged": "2026-10-14",
       "gate_date": "2026-11-13",
-      "days_left": 29
+      "days_left": 28
     },
     "food": []
   },
   "pull": {
-    "at": "2026-10-15T13:41:23+00:00",
-    "date": "2026-10-15",
+    "at": "2026-10-16T13:40:43+00:00",
+    "date": "2026-10-16",
     "public_ids": [
       "2zQAc_ZSbMs",
       "7tdvXATeeng",
@@ -1467,18 +1522,19 @@
       "izdEaeOQBvI",
       "jec80gk8rM0",
       "kTBlLeWdi4g",
+      "l6HwRYGo-Nw",
       "mOP33elEfpU",
       "sfveDF88ZHo",
       "xbmIX6n2OI8",
       "xyZ9xs7OF3g"
     ],
-    "ledger_longform": 42,
-    "analytics_calls": 27,
+    "ledger_longform": 44,
+    "analytics_calls": 35,
     "data_api_units": 1,
     "retention": {
       "returned": 6,
-      "insufficient": 18
+      "insufficient": 19
     }
   },
-  "updated": "2026-10-15T13:41:23+00:00"
+  "updated": "2026-10-16T13:40:43+00:00"
 }
