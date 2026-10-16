@@ -1,0 +1,20 @@
+{
+  "stage": "cloud-upload",
+  "week": "2026-W42",
+  "at": "2026-10-16T14:13:49+00:00",
+  "code": "SUPERSEDED_SWAP_NOT_SCHEDULED",
+  "message": "F684ebB13gg (new cut of how-deep-can-a-sperm-whale-go) should be private with publishAt 2026-11-09T16:00:00Z but reads {'found': True, 'privacy': 'private', 'publishAt': None, 'upload_status': 'processed', 'rejection_reason': None, 'made_for_kids': False, 'title': 'The air-breathing mammal that dives to 2,992 meters'}. hh5mMno-Iis is untouched and still scheduled.",
+  "detail": null,
+  "unblock": "Check both videos in YouTube Studio.",
+  "disposition": "needs_human",
+  "disposition_why": "'SUPERSEDED_SWAP_NOT_SCHEDULED' is classified needs_human in loop/stop_policy.json: it is a defect a person reads. 'SUPERSEDED_SWAP_NOT_SCHEDULED' did not name what it is waiting on (no held_items), so this run cannot tell a repeat from a new problem. A stop that cannot be identified is never held.",
+  "consecutive": 1,
+  "held_items": [],
+  "exit_code": 3,
+  "work_done_before_stop": [
+    "how-deep-can-a-sperm-whale-go: uploaded the re-rendered cut -> F684ebB13gg (private, undated) to replace hh5mMno-Iis"
+  ],
+  "notes": [
+    "shelf: r2://how-we-know-renders"
+  ]
+}
