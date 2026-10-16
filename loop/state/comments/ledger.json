@@ -908,6 +908,33 @@
         "applied_at": "2026-10-15T23:10:23+00:00",
         "result": "posted (Ugxcw1Z1SpQVutqcCA14AaABAg)"
       }
+    },
+    "UgyL6E-5JEb9xSKuZMF4AaABAg": {
+      "comment_id": "UgyL6E-5JEb9xSKuZMF4AaABAg",
+      "video_id": "ikWFDhaOgG4",
+      "author": "@howweknowdeep",
+      "author_channel_id": "UC5vZFZc15DIM6IrFwFgAECg",
+      "text": "Why is carbon fiber so strong? Full episode: https://youtu.be/Eueb6oHEbMs",
+      "published_at": "2026-10-16T23:10:58+00:00",
+      "like_count": 0,
+      "reply_count": 0,
+      "class": "own_channel",
+      "proposed_action": null,
+      "proposed_reply": null,
+      "product_note": null,
+      "seen_at": "2026-10-16T23:10:58+00:00",
+      "acted": {
+        "comment_id": "UgyL6E-5JEb9xSKuZMF4AaABAg",
+        "video_id": "ikWFDhaOgG4",
+        "action": "channel_comment",
+        "reply_text": "Why is carbon fiber so strong? Full episode: https://youtu.be/Eueb6oHEbMs",
+        "instructed_by": "owner",
+        "instructed_at": "2026-10-03",
+        "source": "loop/handoff: owner decision 2026-10-03",
+        "note": null,
+        "applied_at": "2026-10-16T23:10:58+00:00",
+        "result": "posted (UgyL6E-5JEb9xSKuZMF4AaABAg)"
+      }
     }
   },
   "instructions": {},
@@ -1259,6 +1286,18 @@
       "note": null,
       "applied_at": "2026-10-15T23:10:23+00:00",
       "result": "posted (Ugxcw1Z1SpQVutqcCA14AaABAg)"
+    },
+    {
+      "comment_id": "UgyL6E-5JEb9xSKuZMF4AaABAg",
+      "video_id": "ikWFDhaOgG4",
+      "action": "channel_comment",
+      "reply_text": "Why is carbon fiber so strong? Full episode: https://youtu.be/Eueb6oHEbMs",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03",
+      "note": null,
+      "applied_at": "2026-10-16T23:10:58+00:00",
+      "result": "posted (UgyL6E-5JEb9xSKuZMF4AaABAg)"
     }
   ],
   "sweeps": [
@@ -1537,7 +1576,15 @@
       "instructed_by": "owner",
       "instructed_at": "2026-10-03",
       "source": "loop/handoff: owner decision 2026-10-03"
+    },
+    "ikWFDhaOgG4": {
+      "comment_id": "UgyL6E-5JEb9xSKuZMF4AaABAg",
+      "text": "Why is carbon fiber so strong? Full episode: https://youtu.be/Eueb6oHEbMs",
+      "posted_at": "2026-10-16T23:10:58+00:00",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03"
     }
   },
-  "updated": "2026-10-15T23:10:23+00:00"
+  "updated": "2026-10-16T23:10:58+00:00"
 }

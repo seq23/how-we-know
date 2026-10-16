@@ -482,9 +482,13 @@
       "scheduled_publish_at": "2026-09-27T00:00:00Z",
       "rank": 1,
       "lane": "shorts-cloud",
-      "handoff": "pending",
+      "handoff": "done",
       "playlist_item_id": "UExHNUdZLUd1aGlGOC4zMDg5MkQ5MEVDMEM1NTg2",
-      "playlist": "PLG5GY-GuhiF8"
+      "playlist": "PLG5GY-GuhiF8",
+      "handoff_episode": "Eueb6oHEbMs",
+      "handoff_at": "2026-10-16T23:10:57+00:00",
+      "handoff_comment_id": "UgyL6E-5JEb9xSKuZMF4AaABAg",
+      "handoff_comment_at": "2026-10-16T23:10:58+00:00"
     },
     {
       "slug": "why-is-steel-so-strong",
@@ -735,5 +739,5 @@
       "handoff": "pending"
     }
   ],
-  "updated": "2026-10-16T23:10:54+00:00"
+  "updated": "2026-10-16T23:10:59+00:00"
 }
