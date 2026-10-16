@@ -109,19 +109,17 @@ So the deep sea is not full of monsters. It is full of answers to darkness, hung
 
 ## Chapters
 
-- 00:00 Cold open
-- 00:46 Title card
-- 00:49 The creepy features are answers to darkness
-- 02:24 Producer POV
-- 02:31 Light is the deep sea's main language
-- 04:09 A big mouth is what scarce food looks like
-- 05:22 Eyes go to extremes, not to average
-- 06:55 Pressure explains the soft bodies, and the blobfish
-- 08:41 Finding a mate in the dark rewrites the body
-- 09:29 The creepiness is partly in the camera
-- 10:42 What to notice in the edit
-- 11:13 Evidence limit
-- 11:57 Closing
+- 0:00 Cold open
+- 0:36 The creepy features are answers to darkness
+- 2:03 Light is the deep sea's main language
+- 3:30 A big mouth is what scarce food looks like
+- 4:40 Eyes go to extremes, not to average
+- 5:57 Pressure explains the soft bodies, and the blobfish
+- 7:31 Finding a mate in the dark rewrites the body
+- 8:15 The creepiness is partly in the camera
+- 9:19 What to notice in the edit
+- 9:45 Evidence limit
+- 10:24 Closing
 
 ## Sources
 

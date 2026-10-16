@@ -1,0 +1,130 @@
+{
+  "episode": "why-deep-sea-creatures-are-creepers",
+  "beats": 85,
+  "plan_source": "plans/why-deep-sea-creatures-are-creepers.json",
+  "timing": "audio",
+  "beats_measured": 85,
+  "durations_recorded": 85,
+  "duration_s": 641.091,
+  "cues": 172,
+  "chapters_real": 13,
+  "chapters_published": 11,
+  "chapter_notes": [
+    "merged 2 chapter(s) under 10s: Title card (2.6s), Producer POV (5.8s)"
+  ],
+  "drift": {
+    "mean_abs_s": 47.8,
+    "worst_abs_s": 92.3,
+    "rows": [
+      {
+        "title": "Cold open",
+        "hand": "00:00",
+        "real": "0:00",
+        "drift_s": 0.0
+      },
+      {
+        "title": "Title card",
+        "hand": "00:46",
+        "real": "0:34",
+        "drift_s": -11.8
+      },
+      {
+        "title": "The creepy features are answers to darkness",
+        "hand": "00:49",
+        "real": "0:36",
+        "drift_s": -12.2
+      },
+      {
+        "title": "Producer POV",
+        "hand": "02:24",
+        "real": "1:57",
+        "drift_s": -26.5
+      },
+      {
+        "title": "Light is the deep sea's main language",
+        "hand": "02:31",
+        "real": "2:03",
+        "drift_s": -27.7
+      },
+      {
+        "title": "A big mouth is what scarce food looks like",
+        "hand": "04:09",
+        "real": "3:30",
+        "drift_s": -38.9
+      },
+      {
+        "title": "Eyes go to extremes, not to average",
+        "hand": "05:22",
+        "real": "4:40",
+        "drift_s": -41.8
+      },
+      {
+        "title": "Pressure explains the soft bodies, and the blobfish",
+        "hand": "06:55",
+        "real": "5:57",
+        "drift_s": -57.1
+      },
+      {
+        "title": "Finding a mate in the dark rewrites the body",
+        "hand": "08:41",
+        "real": "7:31",
+        "drift_s": -69.4
+      },
+      {
+        "title": "The creepiness is partly in the camera",
+        "hand": "09:29",
+        "real": "8:15",
+        "drift_s": -73.5
+      },
+      {
+        "title": "What to notice in the edit",
+        "hand": "10:42",
+        "real": "9:19",
+        "drift_s": -82.3
+      },
+      {
+        "title": "Evidence limit",
+        "hand": "11:13",
+        "real": "9:45",
+        "drift_s": -87.7
+      },
+      {
+        "title": "Closing",
+        "hand": "11:57",
+        "real": "10:24",
+        "drift_s": -92.3
+      }
+    ]
+  },
+  "ffprobe": {
+    "file": "renders/why-deep-sea-creatures-are-creepers-final.mp4",
+    "video_s": 641.091,
+    "last_cue_end_s": 641.091,
+    "delta_s": -0.0,
+    "ok": true
+  },
+  "text_checks": {
+    "beats_json": {
+      "checked": 85,
+      "mismatched": []
+    },
+    "script_text": {
+      "checked": 85,
+      "absent_from_narration": []
+    }
+  },
+  "script_chapters": {
+    "written": true,
+    "changed": true,
+    "removed_lines": [
+      "Title card",
+      "Producer POV"
+    ],
+    "chapters_not_in_script": []
+  },
+  "artifacts": [
+    "captions/why-deep-sea-creatures-are-creepers.vtt",
+    "captions/why-deep-sea-creatures-are-creepers.srt",
+    "captions/why-deep-sea-creatures-are-creepers.chapters.txt"
+  ]
+}

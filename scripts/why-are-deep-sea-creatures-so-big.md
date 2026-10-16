@@ -118,19 +118,18 @@ The deep sea is not a place where everything grows huge. It is a place where a f
 
 ## Chapters
 
-- 00:00 Cold open
-- 00:36 Title card
-- 00:40 Most deep-sea animals are small, and the giants are the exception
-- 02:00 The giants cluster in a few cold-blooded groups
-- 03:15 Producer POV
-- 03:30 Cold water makes cold-blooded bodies mature larger
-- 04:45 Oxygen may set the ceiling, and cold deep water carries more of it
-- 06:30 Scarce food rewards a body that can search far and wait long
-- 08:00 Our nets and traps favour the big ones
-- 09:05 Seeing giants alive is changing what can be asked
-- 10:25 What to notice in the edit
-- 11:00 Evidence limit
-- 11:40 Closing
+- 0:00 Cold open
+- 0:39 Most deep-sea animals are small, and the giants are the exception
+- 1:43 The giants cluster in a few cold-blooded groups
+- 2:49 Producer POV
+- 2:59 Cold water makes cold-blooded bodies mature larger
+- 4:02 Oxygen may set the ceiling, and cold deep water carries more of it
+- 5:39 Scarce food rewards a body that can search far and wait long
+- 7:01 Our nets and traps favour the big ones
+- 7:59 Seeing giants alive is changing what can be asked
+- 9:03 What to notice in the edit
+- 9:32 Evidence limit
+- 10:12 Closing
 
 ## Sources
 

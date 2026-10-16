@@ -1,0 +1,129 @@
+{
+  "episode": "why-are-deep-sea-creatures-so-big",
+  "beats": 84,
+  "plan_source": "plans/why-are-deep-sea-creatures-so-big.json",
+  "timing": "audio",
+  "beats_measured": 84,
+  "durations_recorded": 42,
+  "duration_s": 635.616,
+  "cues": 177,
+  "chapters_real": 13,
+  "chapters_published": 12,
+  "chapter_notes": [
+    "merged 1 chapter(s) under 10s: Title card (2.4s)"
+  ],
+  "drift": {
+    "mean_abs_s": 42.0,
+    "worst_abs_s": 87.4,
+    "rows": [
+      {
+        "title": "Cold open",
+        "hand": "00:00",
+        "real": "0:00",
+        "drift_s": 0.0
+      },
+      {
+        "title": "Title card",
+        "hand": "00:36",
+        "real": "0:37",
+        "drift_s": 1.3
+      },
+      {
+        "title": "Most deep-sea animals are small, and the giants are the exception",
+        "hand": "00:40",
+        "real": "0:39",
+        "drift_s": -0.2
+      },
+      {
+        "title": "The giants cluster in a few cold-blooded groups",
+        "hand": "02:00",
+        "real": "1:43",
+        "drift_s": -16.4
+      },
+      {
+        "title": "Producer POV",
+        "hand": "03:15",
+        "real": "2:49",
+        "drift_s": -25.8
+      },
+      {
+        "title": "Cold water makes cold-blooded bodies mature larger",
+        "hand": "03:30",
+        "real": "2:59",
+        "drift_s": -30.4
+      },
+      {
+        "title": "Oxygen may set the ceiling, and cold deep water carries more of it",
+        "hand": "04:45",
+        "real": "4:02",
+        "drift_s": -42.3
+      },
+      {
+        "title": "Scarce food rewards a body that can search far and wait long",
+        "hand": "06:30",
+        "real": "5:39",
+        "drift_s": -50.6
+      },
+      {
+        "title": "Our nets and traps favour the big ones",
+        "hand": "08:00",
+        "real": "7:01",
+        "drift_s": -58.5
+      },
+      {
+        "title": "Seeing giants alive is changing what can be asked",
+        "hand": "09:05",
+        "real": "7:59",
+        "drift_s": -65.2
+      },
+      {
+        "title": "What to notice in the edit",
+        "hand": "10:25",
+        "real": "9:03",
+        "drift_s": -81.4
+      },
+      {
+        "title": "Evidence limit",
+        "hand": "11:00",
+        "real": "9:32",
+        "drift_s": -87.4
+      },
+      {
+        "title": "Closing",
+        "hand": "11:40",
+        "real": "10:12",
+        "drift_s": -87.0
+      }
+    ]
+  },
+  "ffprobe": {
+    "file": "renders/why-are-deep-sea-creatures-so-big-final.mp4",
+    "video_s": 635.616,
+    "last_cue_end_s": 635.616,
+    "delta_s": -0.0,
+    "ok": true
+  },
+  "text_checks": {
+    "beats_json": {
+      "checked": 84,
+      "mismatched": []
+    },
+    "script_text": {
+      "checked": 84,
+      "absent_from_narration": []
+    }
+  },
+  "script_chapters": {
+    "written": true,
+    "changed": true,
+    "removed_lines": [
+      "Title card"
+    ],
+    "chapters_not_in_script": []
+  },
+  "artifacts": [
+    "captions/why-are-deep-sea-creatures-so-big.vtt",
+    "captions/why-are-deep-sea-creatures-so-big.srt",
+    "captions/why-are-deep-sea-creatures-so-big.chapters.txt"
+  ]
+}
