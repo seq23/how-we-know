@@ -29,7 +29,7 @@ name: loop · daily 18:30 CT (+ 03:30 CT apply) · long-form repackage (titles +
 #
 # SECOND CRON, APPLY ONLY (16 Oct 2026). At 18:30 CT the quota day (PT) is
 # nearly spent: 14 Oct left 976 units (9 of 40 applied), 15 Oct left 182
-# (1 of 37), so 36 locked titles sat waiting at ~1 a day. '30 8 * * *' is
+# (1 of 37), so 36 locked titles sat waiting at ~1 a day. '30 8 * * 0,2-6' is
 # 01:30 PDT / 00:30 PST (03:30 / 02:30 CT): just after the YouTube quota reset
 # in both clock seasons (07:00 UTC PDT, 08:00 UTC PST): the apply step
 # alone runs (no propose, re-open, thumbs or describe - those stay at 18:30 so
@@ -44,7 +44,7 @@ name: loop · daily 18:30 CT (+ 03:30 CT apply) · long-form repackage (titles +
 on:
   schedule:
     - cron: '30 23 * * *'
-    - cron: '30 8 * * *'     # apply only (see above)
+    - cron: '30 8 * * 0,2-6'     # apply only (see above); not Monday: loop-mon-draft owns 05:00 UTC onward
   workflow_dispatch:
     inputs:
       limit:
@@ -120,7 +120,7 @@ jobs:
           YT_OAUTH_REFRESH_TOKEN: ${{ secrets.YT_OAUTH_REFRESH_TOKEN }}
         run: python3 auth/check_ci_scopes.py
       - name: Propose long-form titles (queued scripts, then live videos with none)
-        if: ${{ github.event.schedule != '30 8 * * *' }}
+        if: ${{ github.event.schedule != '30 8 * * 0,2-6' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
@@ -136,7 +136,7 @@ jobs:
           fi
           bin/loop-stage.sh titles loop/longform_title.py propose $ARGS
       - name: Re-open / extend queued scripts (hook rule, ten-minute floor)
-        if: ${{ !cancelled() && github.event.inputs.propose_only != 'true' && github.event.schedule != '30 8 * * *' }}
+        if: ${{ !cancelled() && github.event.inputs.propose_only != 'true' && github.event.schedule != '30 8 * * 0,2-6' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
@@ -149,7 +149,7 @@ jobs:
           fi
           bin/loop-stage.sh queue-reopen loop/queue_reopen.py $ARGS
       - name: Build contract thumbnails for live videos (words echo the title)
-        if: ${{ !cancelled() && github.event.inputs.propose_only != 'true' && github.event.inputs.dry_run != 'true' && github.event.schedule != '30 8 * * *' }}
+        if: ${{ !cancelled() && github.event.inputs.propose_only != 'true' && github.event.inputs.dry_run != 'true' && github.event.schedule != '30 8 * * 0,2-6' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
@@ -157,7 +157,7 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: bin/loop-stage.sh thumbs loop/thumbs_lane.py
       - name: Prepare search blocks for descriptions (autocomplete phrasings, chapter questions)
-        if: ${{ !cancelled() && github.event.schedule != '30 8 * * *' }}
+        if: ${{ !cancelled() && github.event.schedule != '30 8 * * 0,2-6' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}

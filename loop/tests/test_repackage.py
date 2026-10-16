@@ -377,9 +377,9 @@ check(any("rotation day" in f for f in res["failures"]),
 import re as _re                                              # noqa: E402
 _wf = (ROOT / ".github" / "workflows" / "loop-repackage.yml").read_text()
 _crons = _re.findall(r"^\s*- cron: '([^']+)'", _wf, _re.M)
-check(_crons == ["30 23 * * *", "30 8 * * *"],
+check(_crons == ["30 23 * * *", "30 8 * * 0,2-6"],
       f"loop-repackage crons are {_crons}, not the evening run + the 08:30 UTC apply")
-_EARLY = "github.event.schedule != '30 8 * * *'"
+_EARLY = "github.event.schedule != '30 8 * * 0,2-6'"
 _steps = {m.group(1).strip(): m.group(2) for m in _re.finditer(
     r"- name: ([^\n]+)\n((?:        [^\n]*\n)+)", _wf)}
 _apply = next(v for k, v in _steps.items() if k.startswith("Apply new titles"))
