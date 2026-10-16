@@ -129,12 +129,12 @@
       "thumbnail_sha256": "152f78a2d20ed24a2f89348d7385a1094db08c321b8dc4efdc4672ab25cf41e8"
     },
     "07-why-deep-sea-creatures-get-creepier-deeper": {
-      "applied_at": "2026-10-14T23:41:20+00:00",
+      "applied_at": "2026-10-16T23:40:41+00:00",
       "applied_video_id": "MAV4PF056RA",
       "attempts": 1,
       "checks_passed": true,
-      "description_applied_at": "2026-10-14T23:41:20+00:00",
-      "description_sha256": "a47fd2fd6e1dc80472e5e6212834fbd895edd9d9ca2cb737fc6c28a28bca189c",
+      "description_applied_at": "2026-10-16T23:40:41+00:00",
+      "description_sha256": "24cd6ee26bd3bbf8628d2137978ec7e8b81ea110f3372c7702bc726f69c33cac",
       "model": "claude-subscription/opus",
       "new_title": "Do Deep Sea Animals Get Scarier?",
       "old_title": "The deepest fish is not a giant fanged predator",
@@ -152,12 +152,12 @@
       "thumbnail_sha256": "a43845588aee4fa7e65e563ad7bd4178fe7d667d4b3699b4b876abbeea4c3c88"
     },
     "08-what-creatures-live-in-the-deep-sea": {
-      "applied_at": "2026-10-14T23:41:25+00:00",
+      "applied_at": "2026-10-16T23:40:42+00:00",
       "applied_video_id": "jec80gk8rM0",
       "attempts": 1,
       "checks_passed": true,
-      "description_applied_at": "2026-10-14T23:41:25+00:00",
-      "description_sha256": "72565636c7c8b31ee6f24945055bef7e59854b8ae6cbdb4befee9cfacdbff6fe",
+      "description_applied_at": "2026-10-16T23:40:42+00:00",
+      "description_sha256": "22e545966af2ffbd88e626e3da6f28f8b187ed47166507287f1e914af3ab3fed",
       "model": "claude-subscription/opus",
       "new_title": "The Deep Sea Is Not Empty",
       "old_title": "Sharks use deep water, but not the greatest trench depths",
@@ -253,9 +253,12 @@
       "slug": "12-what-is-a-frilled-shark"
     },
     "13-how-does-bioluminescence-work-in-the-deep-sea": {
-      "applied_at": null,
+      "applied_at": "2026-10-16T23:40:49+00:00",
+      "applied_video_id": "EFimztjj_j8",
       "attempts": 1,
       "checks_passed": true,
+      "description_applied_at": "2026-10-16T23:40:49+00:00",
+      "description_sha256": "79989582d51d5f6d0cbf2c1bb5585a0831430fa70f70d489678267c29b7927ab",
       "model": "claude-subscription/opus",
       "new_title": "Why Is Deep Sea Light Blue?",
       "old_title": "The deep-sea light that tries not to be seen",
@@ -267,12 +270,18 @@
       "problems": [],
       "proposed_at": "2026-10-13T16:05:32+00:00",
       "question": "how does bioluminescence work in the deep sea",
-      "slug": "13-how-does-bioluminescence-work-in-the-deep-sea"
+      "slug": "13-how-does-bioluminescence-work-in-the-deep-sea",
+      "thumbnail_applied": true,
+      "thumbnail_applied_at": "2026-10-16T23:40:49+00:00",
+      "thumbnail_sha256": "6c235528afd7e3ddc2535e54171e94fea122dfdf07d09295a7d048c64ff7f8a2"
     },
     "14-how-big-is-a-colossal-squid": {
-      "applied_at": null,
+      "applied_at": "2026-10-16T23:40:55+00:00",
+      "applied_video_id": "9FcDJniofMM",
       "attempts": 1,
       "checks_passed": true,
+      "description_applied_at": "2026-10-16T23:40:55+00:00",
+      "description_sha256": "b0b37244546085bac795f9f37da925b02024b1b2856457ee8b7385d74eb267df",
       "model": "claude-subscription/opus",
       "new_title": "How Long Is a Colossal Squid?",
       "old_title": "The colossal squid is heaviest, not longest",
@@ -284,12 +293,18 @@
       "problems": [],
       "proposed_at": "2026-10-13T16:03:54+00:00",
       "question": "how big is a colossal squid",
-      "slug": "14-how-big-is-a-colossal-squid"
+      "slug": "14-how-big-is-a-colossal-squid",
+      "thumbnail_applied": true,
+      "thumbnail_applied_at": "2026-10-16T23:40:55+00:00",
+      "thumbnail_sha256": "7fe8ecd5077073fa0e2d1d5df2d0c3704f4f78a0c8ed5f3061825a84eaae11ed"
     },
     "15-how-do-people-reach-challenger-deep": {
-      "applied_at": null,
+      "applied_at": "2026-10-16T23:40:56+00:00",
+      "applied_video_id": "MWOUa3UEXSk",
       "attempts": 1,
       "checks_passed": true,
+      "description_applied_at": "2026-10-16T23:40:56+00:00",
+      "description_sha256": "9de3a4e5c487dc04ba9a16e201e8f0dd31d5df3a3873d82fd2ae221db59cc34d",
       "model": "claude-subscription/opus",
       "new_title": "How Do Humans Survive Challenger Deep?",
       "old_title": "Challenger Deep is 10,935 meters, plus or minus six",
@@ -301,12 +316,16 @@
       "problems": [],
       "proposed_at": "2026-10-13T16:04:27+00:00",
       "question": "how do people reach challenger deep",
-      "slug": "15-how-do-people-reach-challenger-deep"
+      "slug": "15-how-do-people-reach-challenger-deep",
+      "thumbnail_applied": false
     },
     "16-what-happens-when-a-whale-dies-in-the-deep-ocean": {
-      "applied_at": null,
+      "applied_at": "2026-10-16T23:40:58+00:00",
+      "applied_video_id": "l6HwRYGo-Nw",
       "attempts": 1,
       "checks_passed": true,
+      "description_applied_at": "2026-10-16T23:40:58+00:00",
+      "description_sha256": "5c1b037426604aa998815e7aa81c9faff3ad13142c39a3ea068ac4e2b7a1c1ea",
       "model": "claude-subscription/opus",
       "new_title": "Why Do Whale Bones Feed Life So Long?",
       "old_title": "The whale meal that is not finished when the flesh goes",
@@ -318,7 +337,8 @@
       "problems": [],
       "proposed_at": "2026-10-13T16:05:23+00:00",
       "question": "what happens when a whale dies in the deep ocean",
-      "slug": "16-what-happens-when-a-whale-dies-in-the-deep-ocean"
+      "slug": "16-what-happens-when-a-whale-dies-in-the-deep-ocean",
+      "thumbnail_applied": false
     },
     "17-what-is-a-yeti-crab": {
       "applied_at": null,
@@ -338,7 +358,8 @@
       "slug": "17-what-is-a-yeti-crab"
     },
     "18-why-does-black-smoker-water-not-boil": {
-      "applied_at": null,
+      "applied_at": "2026-10-16T23:41:02+00:00",
+      "applied_video_id": "IbrSPKUK1IM",
       "attempts": 1,
       "checks_passed": true,
       "model": "claude-subscription/opus",
@@ -352,7 +373,10 @@
       "problems": [],
       "proposed_at": "2026-10-13T16:05:01+00:00",
       "question": "why does black-smoker water not boil",
-      "slug": "18-why-does-black-smoker-water-not-boil"
+      "slug": "18-why-does-black-smoker-water-not-boil",
+      "thumbnail_applied": true,
+      "thumbnail_applied_at": "2026-10-16T23:41:02+00:00",
+      "thumbnail_sha256": "6a861770e674ff373b57074588a8abb0cc121e0957e2f5d6d15b7475e3859c69"
     },
     "19-what-is-the-deepest-fish-ever-recorded": {
       "applied_at": null,
@@ -929,5 +953,5 @@
       "slug": "why-is-steel-so-strong"
     }
   },
-  "updated": "2026-10-15T23:41:23+00:00"
+  "updated": "2026-10-16T23:41:02+00:00"
 }
