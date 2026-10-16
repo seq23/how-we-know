@@ -56,6 +56,16 @@ def read_status(token: str, video_id: str) -> dict:
             "title": items[0].get("snippet", {}).get("title")}
 
 
+# THE READ-BACK OF A STATUS WRITE IS EVENTUALLY CONSISTENT. A videos.update
+# that YouTube applied can still read back the OLD publishAt for seconds:
+# 2026-10-13, run 38401393843 (repackage: ten re-dates applied, every
+# immediate read stale) and 2026-10-16, run 38913876948 (supersede swap:
+# F684ebB13gg read publishAt=None straight after its schedule write and the
+# 09:00 lane went red as SUPERSEDED_SWAP_NOT_SCHEDULED). Every lane that
+# verifies a write polls on THIS one list, never its own.
+READBACK_WAITS_S = (3, 6, 10, 15, 20)
+
+
 def set_privacy(token: str, video_id: str, privacy: str,
                 publish_at: str | None = None) -> None:
     """Flip a video, or schedule it.
