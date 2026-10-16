@@ -478,17 +478,61 @@
       "track_kind": "standard",
       "source": "inserted",
       "recorded_at": "2026-10-15T15:10:48+00:00"
+    },
+    "8bVPoTWAfFQ": {
+      "slug": "why-bread-rises-steak-browns-chocolate-snaps",
+      "caption_id": "AUieDaanYFGxX6P8rUZPx-V3yK-Wy4ZRxlm4cqL2xDUl76OniCwrZCPp",
+      "language": "en",
+      "srt_sha256": "e78d38baf36321a20e5b9d09ad27c500602082cdf0706c81233496ee4c9f936b",
+      "cues": 673,
+      "track_kind": "standard",
+      "source": "inserted",
+      "recorded_at": "2026-10-16T15:09:31+00:00"
+    },
+    "xex6Bbzbdkg": {
+      "slug": "why-deep-sea-creatures-are-creepers",
+      "caption_id": "AUieDaY3ysqz1Y0Q-S5JNm8sE18QbgwMJnWpMMC7lzekUKicXlQIaOmY",
+      "language": "en",
+      "srt_sha256": "3b680fe95e7fc1f862add9ecbedfbe7546fca3bba8a7d372adec07755f01f509",
+      "cues": 172,
+      "track_kind": "standard",
+      "source": "inserted",
+      "recorded_at": "2026-10-16T15:09:32+00:00"
     }
   },
   "blocked": {
-    "8bVPoTWAfFQ": {
-      "slug": "why-bread-rises-steak-browns-chocolate-snaps",
+    "1ME4-ztFBXM": {
+      "slug": "why-are-deep-sea-creatures-so-big",
       "reason": "QUOTA_DEFERRED",
-      "since": "2026-10-15T15:10:46+00:00",
-      "sha256": "e78d38baf36321a20e5b9d09ad27c500602082cdf0706c81233496ee4c9f936b"
+      "since": "2026-10-16T15:09:30+00:00",
+      "sha256": "0b39e22c23c7c8e2bab2d677e783433f12c01a5dd3ab4bfb61f8e1f27bfde06e"
     }
   },
-  "updated": "2026-10-15T15:10:49+00:00",
+  "updated": "2026-10-16T15:09:32+00:00",
   "token_scopes": [],
-  "token_has_force_ssl": true
+  "token_has_force_ssl": true,
+  "replace": {
+    "at": "2026-10-16T15:09:32+00:00",
+    "replaced": [],
+    "skipped": {
+      "how-do-self-healing-materials-work": "the live cut is 517s but the local track was built for a 708.7s timeline - replacing would mis-time it the other way",
+      "how-deep-can-a-sperm-whale-go": "the live cut is 930s but the local track was built for a 910.6s timeline - replacing would mis-time it the other way"
+    },
+    "deferred": [
+      "20-what-is-the-midnight-zone",
+      "07-why-deep-sea-creatures-get-creepier-deeper",
+      "08-what-creatures-live-in-the-deep-sea",
+      "09-what-is-the-scariest-deep-sea-creature",
+      "19-what-is-the-deepest-fish-ever-recorded",
+      "04-why-deep-sea-creatures-are-so-scary",
+      "16-what-happens-when-a-whale-dies-in-the-deep-ocean",
+      "13-how-does-bioluminescence-work-in-the-deep-sea",
+      "how-do-scientists-know-so-much",
+      "how-do-scientists-know-how-old-something-is",
+      "why-deep-sea-fish-die-when-brought-to-surface",
+      "what-is-hydrothermal-vents",
+      "how-are-microchips-designed",
+      "how-deep-can-whales-dive"
+    ]
+  }
 }
