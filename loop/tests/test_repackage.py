@@ -370,6 +370,29 @@ res = V.v50_repackage_state().as_dict()
 check(any("rotation day" in f for f in res["failures"]),
       f"V50 passed a re-dated row off its rotation day: {res['failures']}")
 
+# --- the apply step owns the first minutes of the quota day (16 Oct 2026)
+# At 18:30 CT the PT quota day was spent (14 Oct: 9 of 40 fit; 15 Oct: 1 of
+# 37). A second cron runs APPLY ONLY right after the reset; every other step
+# stays on the evening cron so the Mac's 23:00 CT batch still binds re-opens.
+import re as _re                                              # noqa: E402
+_wf = (ROOT / ".github" / "workflows" / "loop-repackage.yml").read_text()
+_crons = _re.findall(r"^\s*- cron: '([^']+)'", _wf, _re.M)
+check(_crons == ["30 23 * * *", "30 8 * * 0,2-6"],
+      f"loop-repackage crons are {_crons}, not the evening run + the 08:30 UTC apply")
+_EARLY = "github.event.schedule != '30 8 * * 0,2-6'"
+_steps = {m.group(1).strip(): m.group(2) for m in _re.finditer(
+    r"- name: ([^\n]+)\n((?:        [^\n]*\n)+)", _wf)}
+_apply = next(v for k, v in _steps.items() if k.startswith("Apply new titles"))
+check(_EARLY not in _apply and "repackage.py apply" in _apply,
+      "the 08:30 UTC cron does not run the apply step")
+for _name in ("Propose long-form titles", "Re-open / extend queued scripts",
+              "Build contract thumbnails", "Prepare search blocks"):
+    _body = next(v for k, v in _steps.items() if k.startswith(_name))
+    check(_EARLY in _body.split("\n", 1)[0] or _EARLY in _body.split("run:", 1)[0],
+          f"{_name!r} also runs on the 08:30 UTC apply-only cron")
+# 08:30 UTC sits after the PT reset in BOTH clock seasons (07:00 UTC PDT,
+# 08:00 UTC PST); 07:30 UTC would land at the END of the old day all winter.
+
 if examined == 0:
     fails.append("examined nothing")
 print(f"examined {examined} case(s)")
