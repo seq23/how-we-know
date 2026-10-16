@@ -88,6 +88,14 @@ def check() -> list[str]:
 
     for row in rows:
         st = row["status"]
+        if st.startswith("N/A(EMPTY:"):
+            # A declared-empty input set is green but never quiet: print it.
+            for stop in row.get("stops") or []:
+                print(f"  {row['validator']} {st}: {stop['message']}")
+            if not row.get("stops"):
+                fails.append(f"{row['validator']} is {st} with no stop "
+                             f"naming what it accounted for")
+            continue
         if st.startswith("PASS") or st.startswith("N/A"):
             continue
         fails.append(f"{row['validator']} is {st} on this commit: "

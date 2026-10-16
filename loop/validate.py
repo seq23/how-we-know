@@ -245,6 +245,45 @@ class Result:
         self.stops.append({"code": code, "message": msg,
                            "items": sorted(items or [])})
 
+    def nothing_to_examine(self, code: str, why: str,
+                           accounted: dict[str, str]) -> None:
+        """Declare a LEGITIMATELY EMPTY input set: a named, visible N/A.
+
+        THE CLASS THIS CLOSES. V5, V9-V15, V32 and V71 have each gone red as
+        `FAIL(examined 0)` on a commit where the set they govern was really
+        empty, and each was answered with its own hand-set `exempt = True` -
+        which cannot tell "nothing to govern" from "a reader that reached
+        nothing". This is the one door for the first, and it refuses the
+        second:
+
+          * `accounted` maps EVERY input the validator scanned to the reason
+            it is out of scope ("published", "no script yet"). An EMPTY
+            `accounted` means the reader reached no inputs at all: that stays
+            a hard FAIL, never an N/A.
+          * It is a named stop, not a pass: the status reads
+            `N/A(EMPTY:<code>)` and the stop prints its code, the reason
+            counts and every item, every run.
+          * It may not follow real work or a failure: examined > 0 or an
+            existing failure makes the call itself a failure.
+        """
+        if self.examined or self.failures:
+            self.fail(f"nothing_to_examine({code}) called after examining "
+                      f"{self.examined} item(s) with {len(self.failures)} "
+                      f"failure(s) - an empty set cannot follow real work")
+            return
+        if not accounted:
+            self.fail(f"examined ZERO and its input set was itself empty "
+                      f"({why}) - the reader reached no inputs, which is not "
+                      f"a legitimately empty set")
+            return
+        counts: dict[str, int] = {}
+        for reason in accounted.values():
+            counts[reason] = counts.get(reason, 0) + 1
+        self.exempt = True
+        self.named_stop(code, f"{why}: {len(accounted)} input(s) scanned, "
+                        + "; ".join(f"{n} {r}" for r, n in sorted(counts.items())),
+                        items=sorted(accounted))
+
     @property
     def ok(self) -> bool:
         # Zero examined is itself a failure: it means the validator could not
@@ -257,6 +296,10 @@ class Result:
     @property
     def status(self) -> str:
         if self.examined == 0:
+            if self.exempt and self.failures:
+                return f"FAIL({len(self.failures)})"
+            if self.exempt and self.stops:
+                return f"N/A(EMPTY:{self.stops[0]['code']})"
             return "N/A(nothing generated)" if self.exempt else "FAIL(examined 0)"
         if self.failures:
             return f"FAIL({len(self.failures)})"
@@ -3161,7 +3204,11 @@ def v71_queued_pov_traced(slugs=None) -> Result:
          (its frozen plan is the OLD script's by design until the Mac binds).
          No plan yet is a note: the batch builds missing plans first.
 
-    Hard-fails when it examines zero scripts.
+    Examining zero is N/A(EMPTY:NO_QUEUED_HUMAN_BEAT) only when every queued
+    slug is accounted for (published, no script yet, no beat) - e.g.
+    2026-10-16, when the Mac backfill uploaded the last beat-carrying queued
+    script and the six left had no script authored. An empty or unreadable
+    queue still hard-fails (Result.nothing_to_examine).
     """
     r = Result("V71 queued-pov-traced")
     import batch_queue as _bq                               # noqa: PLC0415
@@ -3174,11 +3221,19 @@ def v71_queued_pov_traced(slugs=None) -> Result:
     hand = _pov.hand_assignments()
     bank = {l["id"]: l for l in _pov.bank()}
     live = _bq.live_slugs()
+    # Every queued slug is accounted for: examined, or the reason it is out
+    # of scope. nothing_to_examine() below refuses an empty account.
+    out_of_scope: dict[str, str] = {}
     for slug in (slugs if slugs is not None else _bq.queued_slugs()):
         if slug in published:
+            out_of_scope[slug] = "published (V32/V40 govern it)"
+            continue
+        if not (_rep.SCRIPTS / f"{slug}.md").exists():
+            out_of_scope[slug] = "queued, no script authored yet"
             continue
         beat = _rep.human_beat(slug)
         if beat is None:
+            out_of_scope[slug] = "script carries no [HUMAN] beat"
             continue
         r.examined += 1
         _para, said = beat
@@ -3215,8 +3270,12 @@ def v71_queued_pov_traced(slugs=None) -> Result:
                    f"its [HUMAN] line - the script and plans/{slug}.json have "
                    f"diverged")
     if r.examined == 0:
-        r.fail("examined ZERO queued scripts with a [HUMAN] beat - a guard "
-               "that sees nothing is not a clean one")
+        # Legitimately empty only when every queued slug is accounted for; an
+        # empty queue (or an unreadable one) still hard-fails inside.
+        r.nothing_to_examine(
+            "NO_QUEUED_HUMAN_BEAT",
+            "no queued, unpublished script carries a [HUMAN] beat",
+            out_of_scope)
         return r
     r.note(f"examined {r.examined} queued [HUMAN] beat(s): each must trace to its plan and to "
            f"one bank line no other live episode speaks")

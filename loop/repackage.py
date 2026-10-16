@@ -429,7 +429,7 @@ def reschedule_plan(led: dict | None = None) -> list[dict]:
     return out
 
 
-READBACK_WAITS_S = (3, 6, 10, 15, 20)
+READBACK_WAITS_S = __import__("publish").READBACK_WAITS_S   # one list: publish.py
 SLEEP = __import__("time").sleep          # tests replace it
 
 

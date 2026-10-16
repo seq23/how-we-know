@@ -230,7 +230,34 @@ def _repoint(old: str, new: str, slug: str, srt: Path | None, cid: str | None,
     return done
 
 
-def _finish(st, api, rec: dict, lane: str) -> bool:
+def _scheduled(got: dict, stamp: str) -> bool:
+    return (got.get("privacy") == "private"
+            and (got.get("publishAt") or "")[:19] == stamp[:19])
+
+
+def _retired(got: dict) -> bool:
+    return got.get("privacy") == "private" and not got.get("publishAt")
+
+
+def _read_until(api, vid: str, done, lane: str, sleep) -> dict:
+    """Read `vid` until `done(status)` or publish.READBACK_WAITS_S runs out.
+
+    A write YouTube applied can read back stale for seconds (see the list's
+    comment in publish.py); one immediate read is not a verdict.
+    """
+    import publish as P                                    # noqa: PLC0415
+    got = api.status(vid)
+    quota.spend(quota.VIDEO_READ, lane)
+    for wait in P.READBACK_WAITS_S:
+        if done(got):
+            break
+        sleep(wait)
+        got = api.status(vid)
+        quota.spend(quota.VIDEO_READ, lane)
+    return got
+
+
+def _finish(st, api, rec: dict, lane: str, sleep=time.sleep) -> bool:
     """Date the new video, caption it, retire the old one, repoint. True = done."""
     old, new, stamp, slug = rec["old"], rec["new"], rec["stamp"], rec["slug"]
     live_old = api.status(old)
@@ -239,10 +266,15 @@ def _finish(st, api, rec: dict, lane: str) -> bool:
                 f"finished; it is never privated. {new} stays private, undated.")
         rec["phase"] = "abandoned_old_public"
         return True
-    api.schedule(new, stamp)
-    quota.spend(quota.PRIVACY_FLIP, lane)
+    # READ FIRST: a resumed swap whose earlier write applied (and read back
+    # stale) is not re-sent.
     got = api.status(new)
-    if got.get("privacy") != "private" or (got.get("publishAt") or "")[:19] != stamp[:19]:
+    quota.spend(quota.VIDEO_READ, lane)
+    if not _scheduled(got, stamp):
+        api.schedule(new, stamp)
+        quota.spend(quota.PRIVACY_FLIP, lane)
+        got = _read_until(api, new, lambda g: _scheduled(g, stamp), lane, sleep)
+    if not _scheduled(got, stamp):
         st.named_stop("SUPERSEDED_SWAP_NOT_SCHEDULED",
                       f"{new} (new cut of {slug}) should be private with "
                       f"publishAt {stamp} but reads {got}. {old} is untouched "
@@ -259,8 +291,8 @@ def _finish(st, api, rec: dict, lane: str) -> bool:
     api.make_private(old)
     cleared = api.cancel_schedule(old)
     quota.spend(3 * quota.VIDEO_UPDATE, lane)
-    after = api.status(old)
-    if after.get("privacy") != "private" or after.get("publishAt"):
+    after = _read_until(api, old, _retired, lane, sleep)
+    if not _retired(after):
         st.named_stop("SUPERSEDED_SWAP_OLD_NOT_RETIRED",
                       f"{old} (old cut of {slug}) should be private with no "
                       f"publishAt but reads {after}; {new} is scheduled for "
@@ -309,7 +341,7 @@ def run(st, *, api_factory, shelf_look, fetch, tmp: Path, lane: str,
                 out["waiting"][slug] = f"{rec['new']} is not processed yet"
                 out["inflight"].append(slug)
                 continue
-            _finish(st, api, rec, lane)
+            _finish(st, api, rec, lane, sleep)
             write_json(STATE, state)
             out["swapped"].append(slug)
             continue
@@ -362,7 +394,7 @@ def run(st, *, api_factory, shelf_look, fetch, tmp: Path, lane: str,
             out["waiting"][slug] = f"{new} is not processed yet; resumes next run"
             out["inflight"].append(slug)
             continue
-        _finish(st, api, rec, lane)
+        _finish(st, api, rec, lane, sleep)
         write_json(STATE, state)
         out["swapped"].append(slug)
 

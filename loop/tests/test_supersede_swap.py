@@ -26,6 +26,9 @@ NEGATIVE PROOF (2026-10-15): making candidates() return [] fails case 1
 (16 checks: the private video stays on the old cut); dropping both public checks (ledger and
 read-back) fails case 2; replacing make_private+cancel_schedule with a delete call fails cases 1
 and 5 (10 checks, "never deleted" among them). Restored -> green.
+
+  8. (2026-10-16) poll a stale read-back after each verified write rather than
+     stop red on one immediate read; a write that never applies still stops.
 """
 from __future__ import annotations
 
@@ -136,6 +139,41 @@ class FakeApi:
     def insert_caption(self, vid, srt):
         self.calls.append(("caption", vid))
         return f"CAP-{vid}"
+
+
+class StaleApi(FakeApi):
+    """YouTube whose read-back lags a status write by `lag` reads - what run
+    38913876948 met: F684ebB13gg's schedule applied, the next read said
+    publishAt=None. `never` = the write is accepted and never applied."""
+
+    def __init__(self, videos, lag=2, never=False):
+        super().__init__(videos)
+        self.lag, self.never, self.shown, self.pending = lag, never, {}, {}
+
+    def _write(self, vid, real, before):
+        self.shown[vid] = before
+        self.pending[vid] = 0 if self.never else self.lag
+        if self.never:
+            self.v[vid].update(before)
+        return real
+
+    def schedule(self, vid, stamp):
+        before = {k: self.v[vid].get(k) for k in ("privacy", "publishAt")}
+        super().schedule(vid, stamp)
+        self._write(vid, None, before)
+        if self.never:
+            self.pending.pop(vid)
+
+    def cancel_schedule(self, vid):
+        before = {k: self.v[vid].get(k) for k in ("privacy", "publishAt")}
+        return self._write(vid, super().cancel_schedule(vid), before)
+
+    def status(self, vid):
+        got = super().status(vid)
+        if self.pending.get(vid, 0) > 0:
+            self.pending[vid] -= 1
+            return {**got, **self.shown[vid]}
+        return got
 
 
 TMP = Path(tempfile.mkdtemp(prefix="supersede-swap-"))
@@ -294,6 +332,39 @@ try:
     check(out["swapped"] == ["whale"]
           and sum(c[0] == "upload" for c in api.calls) == 1,
           f"5 resume did not finish, or uploaded twice: {out}")
+
+    # 8 --------------------------- a stale read-back is not a failed write
+    # 2026-10-16, run 38913876948: the schedule applied, the immediate read
+    # said publishAt=None, the lane stopped red. Both verified writes (the new
+    # cut's date, the old cut's cleared date) must poll, not judge one read.
+    setup([row("whale", "OLD", "2026-10-13T14:05:07+00:00")], {"whale": SUP})
+    api = StaleApi({"OLD": {"privacy": "private", "publishAt": STAMP,
+                            "title": "Live title", "upload_status": "processed"}},
+                   lag=3)
+    st, out = go(api)
+    check(out["swapped"] == ["whale"] and not out.get("stop"),
+          f"8 a stale read-back after the schedule write stopped the swap: {out}")
+    check(api.v["NEW1"]["publishAt"] == STAMP and not api.v["OLD"]["publishAt"],
+          "8 the swap did not finish on the real (lagged) state")
+    check(sum(c[0] == "schedule" for c in api.calls) == 1,
+          "8 a lagged read made the swap write the schedule twice")
+    # ...and a write YouTube never applies is still the named stop.
+    setup([row("whale", "OLD", "2026-10-13T14:05:07+00:00")], {"whale": SUP})
+    api = StaleApi({"OLD": {"privacy": "private", "publishAt": STAMP,
+                            "upload_status": "processed"}}, never=True)
+    st, out = go(api)
+    check(out.get("stop") == "SUPERSEDED_SWAP_NOT_SCHEDULED"
+          and api.v["OLD"]["publishAt"] == STAMP
+          and not any(c[0] in ("private", "cancel") for c in api.calls),
+          f"8 a schedule that never applied did not stop with the old video "
+          f"untouched: {out}")
+    # resume: the earlier write applied after all - read first, never re-sent
+    api.never = False
+    api.v["NEW1"].update(privacy="private", publishAt=STAMP)
+    st, out = go(api)
+    check(out["swapped"] == ["whale"]
+          and sum(c[0] == "schedule" for c in api.calls) == 1,
+          f"8 a resumed swap re-sent a schedule YouTube already holds: {out}")
 
     # 6 ------------------------------------------------------ wired, not inert
     src = (LOOP / "cloud_upload.py").read_text(encoding="utf-8")
