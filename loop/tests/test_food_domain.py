@@ -133,10 +133,78 @@ check(any("[HUMAN]" in f for f in c10c.failures),
 
 # ------------------------------------------------------------------ 4. queue
 po = json.loads((ROOT / "research" / "publish_order_food_science.json").read_text())
+# Every question put to the gate, whatever it decided (2026-10-17: the first
+# Saturday score measured the seeded rows; killed ones left the queue).
 rows = po["queue"] + po["unmeasured"]
-qs = {r["query"] for r in rows}
-check(set(po["first_video"]) <= qs and len(qs) >= 23,
+ep_parts = [list(r.get("first_video_parts") or []) for r in po["queue"]]
+qs = ({r["query"] for k in ("queue", "unmeasured", "killed", "parts_of_episodes")
+       for r in po.get(k) or []} | {q for ps in ep_parts for q in ps})
+check(len(po["first_video"]) == 3 and set(po["first_video"]) <= qs and len(qs) >= 23,
       f"queue seeds the first video's three + >= 20 more ({len(qs)})")
+check(po["first_video"] in ep_parts,
+      "the first video's three are the first_video_parts of a queued episode row")
+import batch_queue as BQ                                       # noqa: E402
+check(not [r["slug"] for r in po["queue"]
+           if (r.get("gate") or {}).get("verdict") in BQ.KILL_VERDICTS
+           and not r.get("gate_overridden")],
+      "no row the gate killed sits in the food queue")
+check(not [r["slug"] for r in po["queue"] if not r.get("first_video_parts")
+           and any(r["query"] in ps for ps in ep_parts)],
+      "no part of a made episode is queued as its own topic")
+check(all(p.get("episode") in {r["slug"] for r in po["queue"]}
+          for p in po.get("parts_of_episodes") or []),
+      "every recorded part names a queued episode")
+check([r["slug"] for r in BQ.food_entries()] ==
+      [r["slug"] for r in po["queue"] if BQ.food_made(r["slug"])
+       and r.get("first_video_parts")],
+      "the batch's food rows are the made episodes only, never their parts")
+# The settle pass that keeps it so, on a rebuilt blob with the 2026-10-17
+# defects planted: a killed row, a part as a topic, no first_video.
+import publish_order_domain as POD                             # noqa: E402
+_ep = next(r for r in po["queue"] if r.get("first_video_parts"))
+_bad = {"queue": [dict(_ep),
+                  {"slug": "x-part", "query": _ep["first_video_parts"][1],
+                   "gate": {"verdict": "passed"}},
+                  {"slug": "x-dead", "query": "why is x",
+                   "gate": {"verdict": "killed_provisional"}},
+                  {"slug": "x-live", "query": "why is y",
+                   "gate": {"verdict": "passed"}}],
+        "killed": [], "unmeasured": [{"query": "why is z",
+                                      "meets_floor_on_free_signals": True}]}
+_nofile = str(ROOT / "research" / "zz-no-such-queue.json")
+POD.settle(_nofile, _bad)
+check([r["slug"] for r in _bad["queue"]] == [_ep["slug"], "x-live"]
+      and [r["slug"] for r in _bad["killed"]] == ["x-dead"]
+      and [(p["slug"], p["episode"]) for p in _bad["parts_of_episodes"]]
+      == [("x-part", _ep["slug"])]
+      and _bad["first_video"] == list(_ep["first_video_parts"])
+      and _bad["meets_floor_on_free_signals"] == ["why is z"],
+      "settle() removes killed rows and parts, carries first_video: "
+      f"{[r['slug'] for r in _bad['queue']]}")
+
+# ...and the batch's read applies the same two rules to whatever a queue FILE
+# holds (files are left as written; batch_queue._screened is the one read).
+_saved_raw = BQ._raw_entries
+BQ._raw_entries = lambda: [dict(_ep, _domain_file="f.json"),
+                           {"slug": "zz-part-unwritten", "query": _ep["first_video_parts"][1],
+                            "gate": {"verdict": "passed"}, "_domain_file": "f.json"},
+                           {"slug": "zz-killed-unwritten", "query": "why is the sky green",
+                            "gate": {"verdict": "killed"}, "_domain_file": "f.json"}]
+try:
+    _kept = [r["slug"] for r in BQ.queued_entries()]
+    _ref = {r["slug"]: r["killed_by"] for r in BQ.refused_entries()}
+finally:
+    BQ._raw_entries = _saved_raw
+check(_kept == [_ep["slug"]] and _ref == {"zz-part-unwritten": "PART_OF_EPISODE",
+                                          "zz-killed-unwritten": "GATE_KILLED"},
+      f"the batch refuses a part and a killed topic by name: {_kept} {_ref}")
+
+# ONE WRITER for the food clip manifest: research/food_footage.py. On
+# 2026-10-17 research/imagery_food.py's Commons clip pass rewrote it in its own
+# schema on the CI harvest and V53 went red.
+_writers = sorted(p.name for p in (ROOT / "research").glob("*.py")
+                  if "food_clips.json" in p.read_text() and p.name != "food_footage.py")
+check(_writers == [], f"only research/food_footage.py names food_clips.json: {_writers}")
 check(all("demand_without_competition" in r and "meets_floor_on_free_signals" in r
           for r in po["unmeasured"]),
       "every unmeasured row records its free demand and its floor verdict")

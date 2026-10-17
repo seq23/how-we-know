@@ -44,6 +44,10 @@ PY = (str(ROOT / ".venv" / "bin" / "python")
       if (ROOT / ".venv" / "bin" / "python").exists()
       else sys.executable)
 TIMEOUT_S = 1800          # the mining pass sleeps between autocomplete calls
+# research/publish_order.py KILL_VERDICTS: the gate() verdicts that keep a
+# topic out of a queue. Copied, not imported (loop/ never imports research/
+# at module load); test_holds_are_decided_by_the_saturday_gate.py pins them equal.
+KILL_VERDICTS = ("killed", "killed_provisional")
 
 QUOTA_MARKERS = re.compile(
     r"quota|quotaExceeded|rateLimitExceeded|dailyLimitExceeded|"
@@ -211,7 +215,11 @@ def gate_query(domain: str, query: str) -> tuple[str, dict]:
         if not rows:
             return "unscored", tail
         row = rows[0]
-        return ("kill" if row["gate"]["verdict"] == "kill" else "passed", row)
+        # The gate's kill verdicts are "killed" and "killed_provisional"
+        # (research/publish_order.py gate()); it never says "kill". Until
+        # 2026-10-17 this compared against "kill", so every killed hold was
+        # PROMOTED as a pass.
+        return ("kill" if row["gate"]["verdict"] in KILL_VERDICTS else "passed", row)
     if KEY_ABSENT_MARKERS.search(gout):
         return "key_absent", tail
     if QUOTA_MARKERS.search(gout):

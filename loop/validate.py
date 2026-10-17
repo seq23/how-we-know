@@ -4726,11 +4726,32 @@ def v52_food_domain() -> Result:
         r.fail("research/publish_order_food_science.json is missing")
     else:
         doc = json.loads(po.read_text())
-        asked = {x["query"] for x in (doc.get("queue") or []) + (doc.get("unmeasured") or [])}
-        first = set(doc.get("first_video") or [])
-        if len(asked) < 23 or not first or not first <= asked:
+        # Every question put to the gate counts, whatever it decided: queued,
+        # unmeasured, killed, or a made episode's part. Before the first
+        # Saturday score (2026-10-17) all of them sat in `unmeasured`; once
+        # measured, killed rows leave the queue and must not shrink the count.
+        queue = doc.get("queue") or []
+        ep_parts = [list(x.get("first_video_parts") or []) for x in queue]
+        asked = {x["query"] for k in ("queue", "unmeasured", "killed",
+                                      "parts_of_episodes")
+                 for x in (doc.get(k) or [])} | {q for ps in ep_parts for q in ps}
+        first = list(doc.get("first_video") or [])
+        if len(asked) < 23 or len(first) != 3 or not set(first) <= asked:
             r.fail(f"food queue holds {len(asked)} question(s); the first video's "
                    f"three plus >= 20 more are required")
+        if first and first not in ep_parts:
+            r.fail(f"the first video's three {first} are not the "
+                   f"first_video_parts of any queued episode row")
+        import batch_queue as _bq                          # noqa: PLC0415
+        dead = [x["slug"] for x in queue
+                if (x.get("gate") or {}).get("verdict") in _bq.KILL_VERDICTS
+                and not x.get("gate_overridden")]
+        if dead:
+            r.fail(f"food queue holds {len(dead)} row(s) the gate killed: {dead[:5]}")
+        part_rows = [x["slug"] for x in queue if not x.get("first_video_parts")
+                     and any(x.get("query") in ps for ps in ep_parts)]
+        if part_rows:
+            r.fail(f"food queue lists a made episode's part as its own topic: {part_rows}")
     # THE HOLD, and its self-check
     gated = _d.sample_gated(cfg)
     row = {"slug": "v51-probe", "domain": FOOD}

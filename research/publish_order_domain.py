@@ -69,8 +69,9 @@ import topic_identity as TI                                    # noqa: E402
 from competition import content_tokens                         # noqa: E402
 from mine import ENDPOINT, suggest                             # noqa: E402
 from publish_order import (                                    # noqa: E402
-    DEMAND_FIRM_BELOW, DEMAND_FLOOR, SATURATION_FIRM_AT_OR_BELOW,
-    SATURATION_GAP_CEILING, combined, demand_index, gate, reason,
+    DEMAND_FIRM_BELOW, DEMAND_FLOOR, KILL_VERDICTS,
+    SATURATION_FIRM_AT_OR_BELOW, SATURATION_GAP_CEILING, combined,
+    demand_index, gate, reason,
 )
 
 BROAD = os.path.join(HERE, "broad_mined.json")
@@ -690,9 +691,12 @@ def build(domain: str, pause: float, budget: int,
     # keyed "combined_score", never "score" - confirmed 2026-09-25, live,
     # immediately after the median_subscribers fix: this line was the NEXT
     # crash, masked until now because the previous one always fired first.
-    queue = sorted([r for r in out_rows if r["gate"]["verdict"] != "kill"],
+    # KILL_VERDICTS, never a literal: this compared against "kill", which
+    # gate() never returns, so until 2026-10-17 every killed topic was queued
+    # (food-science: 12 of 25 rows).
+    queue = sorted([r for r in out_rows if r["gate"]["verdict"] not in KILL_VERDICTS],
                    key=lambda r: -(r["combined"]["combined_score"] or 0))
-    dead = [r for r in out_rows if r["gate"]["verdict"] == "kill"]
+    dead = [r for r in out_rows if r["gate"]["verdict"] in KILL_VERDICTS]
     return {
         "generated_utc": datetime.now(timezone.utc).isoformat(),
         "generator": f"research/publish_order_domain.py --domain {domain}",
@@ -871,6 +875,7 @@ def main() -> int:
     blob = build(a.domain, a.pause, a.budget, network=not a.no_network)
     path = out_path(a.domain)
     carried = carry_forward(path, blob)
+    settle(path, blob)
     with open(path, "w", encoding="utf-8") as fh:
         json.dump(blob, fh, indent=2)
         fh.write("\n")
@@ -929,6 +934,62 @@ def carry_forward(path: str, blob: dict) -> int:
                  or r["slug"] in holds)]
     blob["queue"] = keep + blob["queue"]
     return len(keep)
+
+
+def settle(path: str, blob: dict) -> dict:
+    """The regenerated queue's last pass, after carry_forward(). Idempotent.
+
+    1. A carried row the gate KILLED leaves the queue for `killed`
+       (KILL_VERDICTS; an owner override, `gate_overridden`, stays).
+    2. A made episode's PARTS (`first_video_parts` on its row) are chapters of
+       it, not topics: a scored row asking one moves to `parts_of_episodes`
+       with the episode it belongs to.
+    3. What the owner declared is carried, never dropped by a rebuild:
+       `first_video` (her first video's three questions, CHANNEL-PLAN 13 Oct
+       2026) from the old file, else from the episode row's parts.
+    4. `meets_floor_on_free_signals` is derived from `unmeasured`, never typed.
+
+    2026-10-17: the Saturday score lane rebuilt the food queue with none of
+    this - it dropped `first_video`, queued twelve killed topics and the
+    seared-meat part as an episode, and main went red (V52, c10)."""
+    old = {}
+    if os.path.exists(path):
+        with open(path, encoding="utf-8") as fh:
+            old = json.load(fh)
+    queue, killed = [], list(blob.get("killed") or [])
+    have_killed = {r.get("slug") for r in killed}
+    for r in blob.get("queue") or []:
+        if (r.get("gate") or {}).get("verdict") in KILL_VERDICTS \
+                and not r.get("gate_overridden"):
+            if r.get("slug") not in have_killed:
+                killed.append(r)
+            continue
+        queue.append(r)
+    episodes = {q: r["slug"] for r in queue
+                for q in (r.get("first_video_parts") or [])}
+    parts = [p for p in (old.get("parts_of_episodes") or [])
+             if p.get("episode") in {r.get("slug") for r in queue}]
+    seen = {p.get("query") for p in parts}
+    kept = []
+    for r in queue:
+        ep = episodes.get(r.get("query"))
+        if ep and not r.get("first_video_parts") and r.get("slug") != ep:
+            if r.get("query") not in seen:
+                parts.append(dict(r, episode=ep))
+                seen.add(r.get("query"))
+            continue
+        kept.append(r)
+    blob["queue"], blob["killed"] = kept, killed
+    blob["parts_of_episodes"] = parts
+    first = old.get("first_video") or next(
+        (list(r["first_video_parts"]) for r in kept if r.get("first_video_parts")), None)
+    if first:
+        blob["first_video"] = list(first)
+    blob["meets_floor_on_free_signals"] = [
+        r["query"] for r in blob.get("unmeasured") or []
+        if r.get("meets_floor_on_free_signals")]
+    blob["queue_length"] = len(kept)
+    return blob
 
 
 if __name__ == "__main__":

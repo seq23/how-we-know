@@ -21,6 +21,11 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+
+# research/publish_order.py KILL_VERDICTS - the gate() verdicts that keep a
+# topic out of a queue. loop/ does not import research/ at load, so this is a
+# copy; test_holds_are_decided_by_the_saturday_gate.py pins every copy equal.
+KILL_VERDICTS = ("killed", "killed_provisional")
 PUBLISH_ORDER_GLOB = "publish_order*.json"
 
 
@@ -138,8 +143,33 @@ def _screened() -> tuple[list[dict], list[dict]]:
     passes = ([r for r in rows if r["slug"] not in published and written(r)],
               [r for r in rows if r["slug"] not in published
                and not written(r)])
+    # The questions a made, multi-part episode answers inside itself
+    # (`first_video_parts` on its row: the food episode's bread, seared meat
+    # and chocolate). A part is a chapter of that episode, never an episode of
+    # its own - on 2026-10-17 a regenerated food queue listed "why does seared
+    # meat taste good" as a topic, its part script (which carries a [HUMAN]
+    # beat) became a "shipping episode", and c10 redded main.
+    parts = {T.question_key(q): r["slug"] for r in rows
+             for q in (r.get("first_video_parts") or [])}
     for group in passes:
         for r in group:
+            if (r.get("gate") or {}).get("verdict") in KILL_VERDICTS \
+                    and not written(r) and not r.get("gate_overridden"):
+                refused[r["slug"]] = {
+                    **r, "killed_by": "GATE_KILLED",
+                    "matched": r["gate"]["verdict"],
+                    "why": "the gate killed it ("
+                           + str(r["gate"].get("reason") or "no reason recorded")
+                           + "); a killed topic is never authored"}
+                continue
+            if not r.get("first_video_parts"):
+                ep = parts.get(T.question_key(_question_of(r)))
+                if ep and ep != r["slug"]:
+                    refused[r["slug"]] = {
+                        **r, "killed_by": "PART_OF_EPISODE", "matched": ep,
+                        "why": f"a chapter of {ep} (its first_video_parts), "
+                               f"not an episode of its own"}
+                    continue
             # A written row is judged on its queue question AND on the
             # question its script actually asks: the held
             # why-deep-sea-creatures row is queued as "why deep sea
