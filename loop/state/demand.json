@@ -21,8 +21,8 @@
         "A"
       ],
       "packaging_since": "2026-10-14",
-      "days_public": 45,
-      "days_since_packaging": 2,
+      "days_public": 46,
+      "days_since_packaging": 3,
       "public": true,
       "lifetime": {
         "views": 5,
@@ -48,7 +48,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-14"
       },
-      "measured_on": "2026-10-16",
+      "measured_on": "2026-10-17",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
@@ -76,8 +76,8 @@
       },
       "thumbnails_used": [],
       "packaging_since": "2026-10-14",
-      "days_public": 40,
-      "days_since_packaging": 2,
+      "days_public": 41,
+      "days_since_packaging": 3,
       "public": true,
       "lifetime": {
         "views": 4,
@@ -103,7 +103,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-14"
       },
-      "measured_on": "2026-10-16",
+      "measured_on": "2026-10-17",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
@@ -133,8 +133,8 @@
         "A"
       ],
       "packaging_since": "2026-10-14",
-      "days_public": 38,
-      "days_since_packaging": 2,
+      "days_public": 39,
+      "days_since_packaging": 3,
       "public": true,
       "lifetime": {
         "views": 7,
@@ -160,7 +160,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-14"
       },
-      "measured_on": "2026-10-16",
+      "measured_on": "2026-10-17",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
@@ -174,12 +174,12 @@
       "repackage_round": 0,
       "repackages": [],
       "slug": "14-how-big-is-a-colossal-squid",
-      "title": "The colossal squid is heaviest, not longest",
+      "title": "How Long Is a Colossal Squid?",
       "domain": "deep-sea-ocean-science",
       "variant_of": "pre-rule",
       "public_since": "2026-09-13",
       "duration_s": 473.0,
-      "packaging_pass_at": "2026-10-13T13:55:51+00:00",
+      "packaging_pass_at": "2026-10-16T23:40:55+00:00",
       "hooked": false,
       "thumbnail_test": {
         "active": false,
@@ -189,9 +189,9 @@
       "thumbnails_used": [
         "A"
       ],
-      "packaging_since": "2026-10-13",
-      "days_public": 33,
-      "days_since_packaging": 3,
+      "packaging_since": "2026-10-16",
+      "days_public": 34,
+      "days_since_packaging": 1,
       "public": true,
       "lifetime": {
         "views": 9,
@@ -215,9 +215,9 @@
         "avp_pct": null,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
-        "since": "2026-10-13"
+        "since": "2026-10-16"
       },
-      "measured_on": "2026-10-16",
+      "measured_on": "2026-10-17",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
@@ -231,12 +231,12 @@
       "repackage_round": 0,
       "repackages": [],
       "slug": "20-what-is-the-midnight-zone",
-      "title": "The bathypelagic zone: cold, dark, and not empty",
+      "title": "Why Is the Deep Sea So Dark?",
       "domain": "deep-sea-ocean-science",
       "variant_of": "pre-rule",
       "public_since": "2026-09-15",
       "duration_s": 486.0,
-      "packaging_pass_at": null,
+      "packaging_pass_at": "2026-10-17T08:41:58+00:00",
       "hooked": false,
       "thumbnail_test": {
         "active": false,
@@ -244,12 +244,12 @@
         "variants": []
       },
       "thumbnails_used": [],
-      "packaging_since": "2026-09-15",
-      "days_public": 31,
-      "days_since_packaging": 31,
+      "packaging_since": "2026-10-17",
+      "days_public": 32,
+      "days_since_packaging": 0,
       "public": true,
       "lifetime": {
-        "views": 12,
+        "views": 13,
         "watch_minutes": 18.0,
         "avd_s": 157.0,
         "avp_pct": 32.49,
@@ -257,26 +257,26 @@
         "traffic": {
           "browse": 2,
           "suggested": 6,
-          "search": 3,
+          "search": 4,
           "external": 0,
           "other": 1
         },
         "retention_30s_pct": "insufficient"
       },
       "current": {
-        "views": 12,
-        "watch_minutes": 18.0,
-        "avd_s": 157.0,
-        "avp_pct": 32.49,
+        "views": 0,
+        "watch_minutes": 0.0,
+        "avd_s": null,
+        "avp_pct": null,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
-        "since": "2026-09-15"
+        "since": "2026-10-17"
       },
-      "measured_on": "2026-10-16",
+      "measured_on": "2026-10-17",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
-        "avp": "fail"
+        "avp": "unknown"
       },
       "verdict": "INSUFFICIENT",
       "needs_review": false
@@ -291,7 +291,7 @@
       "variant_of": "pre-rule",
       "public_since": "2026-09-20",
       "duration_s": 535.0,
-      "packaging_pass_at": "2026-10-14T23:41:20+00:00",
+      "packaging_pass_at": "2026-10-16T23:40:41+00:00",
       "hooked": false,
       "thumbnail_test": {
         "active": false,
@@ -301,9 +301,9 @@
       "thumbnails_used": [
         "A"
       ],
-      "packaging_since": "2026-10-14",
-      "days_public": 26,
-      "days_since_packaging": 2,
+      "packaging_since": "2026-10-16",
+      "days_public": 27,
+      "days_since_packaging": 1,
       "public": true,
       "lifetime": {
         "views": 19,
@@ -327,9 +327,9 @@
         "avp_pct": null,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
-        "since": "2026-10-14"
+        "since": "2026-10-16"
       },
-      "measured_on": "2026-10-16",
+      "measured_on": "2026-10-17",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
@@ -359,8 +359,8 @@
         "A"
       ],
       "packaging_since": "2026-10-14",
-      "days_public": 24,
-      "days_since_packaging": 2,
+      "days_public": 25,
+      "days_since_packaging": 3,
       "public": true,
       "lifetime": {
         "views": 15,
@@ -386,7 +386,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-14"
       },
-      "measured_on": "2026-10-16",
+      "measured_on": "2026-10-17",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
@@ -400,12 +400,12 @@
       "repackage_round": 0,
       "repackages": [],
       "slug": "15-how-do-people-reach-challenger-deep",
-      "title": "Challenger Deep is 10,935 meters, plus or minus six",
+      "title": "How Do Humans Survive Challenger Deep?",
       "domain": "deep-sea-ocean-science",
       "variant_of": "pre-rule",
       "public_since": "2026-09-27",
       "duration_s": 481.0,
-      "packaging_pass_at": "2026-10-13T13:55:52+00:00",
+      "packaging_pass_at": "2026-10-16T23:40:56+00:00",
       "hooked": false,
       "thumbnail_test": {
         "active": false,
@@ -413,9 +413,9 @@
         "variants": []
       },
       "thumbnails_used": [],
-      "packaging_since": "2026-10-13",
-      "days_public": 19,
-      "days_since_packaging": 3,
+      "packaging_since": "2026-10-16",
+      "days_public": 20,
+      "days_since_packaging": 1,
       "public": true,
       "lifetime": {
         "views": 5,
@@ -433,19 +433,19 @@
         "retention_30s_pct": "insufficient"
       },
       "current": {
-        "views": 1,
+        "views": 0,
         "watch_minutes": 0.0,
-        "avd_s": 0.0,
-        "avp_pct": 0.0,
+        "avd_s": null,
+        "avp_pct": null,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
-        "since": "2026-10-13"
+        "since": "2026-10-16"
       },
-      "measured_on": "2026-10-16",
+      "measured_on": "2026-10-17",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
-        "avp": "fail"
+        "avp": "unknown"
       },
       "verdict": "INSUFFICIENT",
       "needs_review": false
@@ -460,7 +460,7 @@
       "variant_of": "pre-rule",
       "public_since": "2026-09-29",
       "duration_s": 526.0,
-      "packaging_pass_at": "2026-10-14T23:41:25+00:00",
+      "packaging_pass_at": "2026-10-16T23:40:42+00:00",
       "hooked": false,
       "thumbnail_test": {
         "active": false,
@@ -470,24 +470,24 @@
       "thumbnails_used": [
         "A"
       ],
-      "packaging_since": "2026-10-14",
-      "days_public": 17,
-      "days_since_packaging": 2,
+      "packaging_since": "2026-10-16",
+      "days_public": 18,
+      "days_since_packaging": 1,
       "public": true,
       "lifetime": {
-        "views": 11,
+        "views": 12,
         "watch_minutes": 18.0,
-        "avd_s": 107.0,
-        "avp_pct": 20.5,
+        "avd_s": 98.0,
+        "avp_pct": 18.74,
         "subscribers_gained": 0,
         "traffic": {
           "browse": 1,
-          "suggested": 8,
+          "suggested": 9,
           "search": 1,
           "external": 0,
           "other": 1
         },
-        "retention_30s_pct": 43.0
+        "retention_30s_pct": 39.1
       },
       "current": {
         "views": 0,
@@ -496,9 +496,9 @@
         "avp_pct": null,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
-        "since": "2026-10-14"
+        "since": "2026-10-16"
       },
-      "measured_on": "2026-10-16",
+      "measured_on": "2026-10-17",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
@@ -528,21 +528,78 @@
         "A"
       ],
       "packaging_since": "2026-10-14",
-      "days_public": 12,
-      "days_since_packaging": 2,
+      "days_public": 13,
+      "days_since_packaging": 3,
       "public": true,
       "lifetime": {
-        "views": 8,
+        "views": 9,
         "watch_minutes": 21.0,
-        "avd_s": 180.0,
-        "avp_pct": 35.49,
+        "avd_s": 158.0,
+        "avp_pct": 31.23,
         "subscribers_gained": 1,
         "traffic": {
           "browse": 0,
-          "suggested": 5,
+          "suggested": 6,
           "search": 1,
           "external": 0,
           "other": 2
+        },
+        "retention_30s_pct": "insufficient"
+      },
+      "current": {
+        "views": 1,
+        "watch_minutes": 0.0,
+        "avd_s": 7.0,
+        "avp_pct": 1.42,
+        "subscribers_gained": 0,
+        "retention_30s_pct": "insufficient",
+        "since": "2026-10-14"
+      },
+      "measured_on": "2026-10-17",
+      "floors": {
+        "ctr": "unknown",
+        "retention_30s": "unknown",
+        "avp": "fail"
+      },
+      "verdict": "INSUFFICIENT",
+      "needs_review": false
+    },
+    "OdYunlbB73g": {
+      "video_id": "OdYunlbB73g",
+      "repackage_round": 0,
+      "repackages": [],
+      "slug": "19-what-is-the-deepest-fish-ever-recorded",
+      "title": "How Deep Can a Fish Live?",
+      "domain": "deep-sea-ocean-science",
+      "variant_of": "pre-rule",
+      "public_since": "2026-10-06",
+      "duration_s": 497.0,
+      "packaging_pass_at": "2026-10-17T08:41:58+00:00",
+      "hooked": false,
+      "thumbnail_test": {
+        "active": false,
+        "started": null,
+        "variants": []
+      },
+      "thumbnails_used": [
+        "A"
+      ],
+      "packaging_since": "2026-10-17",
+      "days_public": 11,
+      "days_since_packaging": 0,
+      "public": true,
+      "lifetime": {
+        "views": 17,
+        "watch_minutes": 10.0,
+        "avd_s": 85.0,
+        "avp_pct": 17.3,
+        "subscribers_gained": 0,
+        "traffic": {
+          "browse": 11,
+          "suggested": 3,
+          "search": 1,
+          "external": 1,
+          "other": 1
         },
         "retention_30s_pct": "insufficient"
       },
@@ -553,70 +610,13 @@
         "avp_pct": null,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
-        "since": "2026-10-14"
+        "since": "2026-10-17"
       },
-      "measured_on": "2026-10-16",
+      "measured_on": "2026-10-17",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
         "avp": "unknown"
-      },
-      "verdict": "INSUFFICIENT",
-      "needs_review": false
-    },
-    "OdYunlbB73g": {
-      "video_id": "OdYunlbB73g",
-      "repackage_round": 0,
-      "repackages": [],
-      "slug": "19-what-is-the-deepest-fish-ever-recorded",
-      "title": "Hadal snailfish lack a swim bladder at 8,336 meters",
-      "domain": "deep-sea-ocean-science",
-      "variant_of": "pre-rule",
-      "public_since": "2026-10-06",
-      "duration_s": 497.0,
-      "packaging_pass_at": null,
-      "hooked": false,
-      "thumbnail_test": {
-        "active": false,
-        "started": null,
-        "variants": []
-      },
-      "thumbnails_used": [
-        "A"
-      ],
-      "packaging_since": "2026-10-06",
-      "days_public": 10,
-      "days_since_packaging": 10,
-      "public": true,
-      "lifetime": {
-        "views": 15,
-        "watch_minutes": 10.0,
-        "avd_s": 85.0,
-        "avp_pct": 17.3,
-        "subscribers_gained": 0,
-        "traffic": {
-          "browse": 9,
-          "suggested": 3,
-          "search": 1,
-          "external": 1,
-          "other": 1
-        },
-        "retention_30s_pct": "insufficient"
-      },
-      "current": {
-        "views": 15,
-        "watch_minutes": 10.0,
-        "avd_s": 85.0,
-        "avp_pct": 17.3,
-        "subscribers_gained": 0,
-        "retention_30s_pct": "insufficient",
-        "since": "2026-10-06"
-      },
-      "measured_on": "2026-10-16",
-      "floors": {
-        "ctr": "unknown",
-        "retention_30s": "unknown",
-        "avp": "fail"
       },
       "verdict": "INSUFFICIENT",
       "needs_review": false
@@ -626,12 +626,12 @@
       "repackage_round": 0,
       "repackages": [],
       "slug": "18-why-does-black-smoker-water-not-boil",
-      "title": "The tubeworm is not bathing in 340-degree water",
+      "title": "Why Does Deep Sea Water Not Boil?",
       "domain": "deep-sea-ocean-science",
       "variant_of": "pre-rule",
       "public_since": "2026-10-11",
       "duration_s": 499.0,
-      "packaging_pass_at": "2026-10-13T13:55:59+00:00",
+      "packaging_pass_at": "2026-10-16T23:41:02+00:00",
       "hooked": false,
       "thumbnail_test": {
         "active": false,
@@ -641,12 +641,12 @@
       "thumbnails_used": [
         "A"
       ],
-      "packaging_since": "2026-10-13",
-      "days_public": 5,
-      "days_since_packaging": 3,
+      "packaging_since": "2026-10-16",
+      "days_public": 6,
+      "days_since_packaging": 1,
       "public": true,
       "lifetime": {
-        "views": 12,
+        "views": 13,
         "watch_minutes": 19.0,
         "avd_s": 129.0,
         "avp_pct": 25.9,
@@ -654,26 +654,26 @@
         "traffic": {
           "browse": 2,
           "suggested": 7,
-          "search": 2,
+          "search": 3,
           "external": 0,
           "other": 1
         },
         "retention_30s_pct": "insufficient"
       },
       "current": {
-        "views": 2,
-        "watch_minutes": 1.0,
-        "avd_s": 96.0,
-        "avp_pct": 19.36,
+        "views": 0,
+        "watch_minutes": 0.0,
+        "avd_s": null,
+        "avp_pct": null,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
-        "since": "2026-10-13"
+        "since": "2026-10-16"
       },
-      "measured_on": "2026-10-16",
+      "measured_on": "2026-10-17",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
-        "avp": "fail"
+        "avp": "unknown"
       },
       "verdict": "INSUFFICIENT",
       "needs_review": false
@@ -699,23 +699,23 @@
         "A"
       ],
       "packaging_since": "2026-10-15",
-      "days_public": 3,
-      "days_since_packaging": 1,
+      "days_public": 4,
+      "days_since_packaging": 2,
       "public": true,
       "lifetime": {
-        "views": 13,
-        "watch_minutes": 17.0,
-        "avd_s": 106.0,
-        "avp_pct": 23.42,
+        "views": 18,
+        "watch_minutes": 18.0,
+        "avd_s": 101.0,
+        "avp_pct": 22.18,
         "subscribers_gained": 1,
         "traffic": {
-          "browse": 3,
+          "browse": 5,
           "suggested": 7,
-          "search": 2,
+          "search": 5,
           "external": 0,
           "other": 1
         },
-        "retention_30s_pct": "insufficient"
+        "retention_30s_pct": 64.2
       },
       "current": {
         "views": 0,
@@ -726,7 +726,7 @@
         "retention_30s_pct": "insufficient",
         "since": "2026-10-15"
       },
-      "measured_on": "2026-10-16",
+      "measured_on": "2026-10-17",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
@@ -740,12 +740,12 @@
       "repackage_round": 0,
       "repackages": [],
       "slug": "how-are-microchips-made",
-      "title": "Silicon wafers are not cut from a natural crystal",
+      "title": "How Are Microchips Built With Light?",
       "domain": "materials-and-manufacturing",
       "variant_of": "pre-rule",
       "public_since": "2026-09-07",
       "duration_s": 635.0,
-      "packaging_pass_at": "2026-10-13T13:56:05+00:00",
+      "packaging_pass_at": "2026-10-17T08:42:11+00:00",
       "hooked": false,
       "thumbnail_test": {
         "active": false,
@@ -755,9 +755,9 @@
       "thumbnails_used": [
         "A"
       ],
-      "packaging_since": "2026-10-13",
-      "days_public": 39,
-      "days_since_packaging": 3,
+      "packaging_since": "2026-10-17",
+      "days_public": 40,
+      "days_since_packaging": 0,
       "public": true,
       "lifetime": {
         "views": 8,
@@ -781,9 +781,9 @@
         "avp_pct": null,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
-        "since": "2026-10-13"
+        "since": "2026-10-17"
       },
-      "measured_on": "2026-10-16",
+      "measured_on": "2026-10-17",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
@@ -797,12 +797,12 @@
       "repackage_round": 0,
       "repackages": [],
       "slug": "how-does-quenching-harden-steel",
-      "title": "Faster than 100 degrees per second, carbon is trapped",
+      "title": "Why Must Quenching Be So Fast?",
       "domain": "materials-and-manufacturing",
       "variant_of": "pre-rule",
       "public_since": "2026-09-11",
       "duration_s": 680.0,
-      "packaging_pass_at": "2026-10-13T13:56:15+00:00",
+      "packaging_pass_at": "2026-10-17T08:42:25+00:00",
       "hooked": false,
       "thumbnail_test": {
         "active": false,
@@ -812,9 +812,9 @@
       "thumbnails_used": [
         "A"
       ],
-      "packaging_since": "2026-10-13",
-      "days_public": 35,
-      "days_since_packaging": 3,
+      "packaging_since": "2026-10-17",
+      "days_public": 36,
+      "days_since_packaging": 0,
       "public": true,
       "lifetime": {
         "views": 45,
@@ -838,9 +838,9 @@
         "avp_pct": null,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
-        "since": "2026-10-13"
+        "since": "2026-10-17"
       },
-      "measured_on": "2026-10-16",
+      "measured_on": "2026-10-17",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
@@ -854,12 +854,12 @@
       "repackage_round": 0,
       "repackages": [],
       "slug": "how-do-self-healing-materials-work",
-      "title": "The crack that breaks open its own repair",
+      "title": "Can a Material Repair Its Own Cracks?",
       "domain": "materials-and-manufacturing",
       "variant_of": "pre-rule",
       "public_since": "2026-09-14",
       "duration_s": 517.0,
-      "packaging_pass_at": "2026-10-13T13:56:12+00:00",
+      "packaging_pass_at": "2026-10-17T08:42:19+00:00",
       "hooked": false,
       "thumbnail_test": {
         "active": false,
@@ -869,12 +869,12 @@
       "thumbnails_used": [
         "A"
       ],
-      "packaging_since": "2026-10-13",
-      "days_public": 32,
-      "days_since_packaging": 3,
+      "packaging_since": "2026-10-17",
+      "days_public": 33,
+      "days_since_packaging": 0,
       "public": true,
       "lifetime": {
-        "views": 19,
+        "views": 20,
         "watch_minutes": 7.0,
         "avd_s": 57.0,
         "avp_pct": 11.08,
@@ -882,7 +882,7 @@
         "traffic": {
           "browse": 6,
           "suggested": 1,
-          "search": 9,
+          "search": 10,
           "external": 3,
           "other": 0
         },
@@ -895,9 +895,9 @@
         "avp_pct": null,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
-        "since": "2026-10-13"
+        "since": "2026-10-17"
       },
-      "measured_on": "2026-10-16",
+      "measured_on": "2026-10-17",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
@@ -911,12 +911,12 @@
       "repackage_round": 0,
       "repackages": [],
       "slug": "how-does-tempered-glass-shatter",
-      "title": "Tempered glass does not weaken, it switches states",
+      "title": "How Fast Does Glass Shatter?",
       "domain": "materials-and-manufacturing",
       "variant_of": "pre-rule",
       "public_since": "2026-09-18",
       "duration_s": 604.0,
-      "packaging_pass_at": "2026-10-13T13:56:16+00:00",
+      "packaging_pass_at": "2026-10-17T08:42:26+00:00",
       "hooked": false,
       "thumbnail_test": {
         "active": false,
@@ -924,9 +924,9 @@
         "variants": []
       },
       "thumbnails_used": [],
-      "packaging_since": "2026-10-13",
-      "days_public": 28,
-      "days_since_packaging": 3,
+      "packaging_since": "2026-10-17",
+      "days_public": 29,
+      "days_since_packaging": 0,
       "public": true,
       "lifetime": {
         "views": 11,
@@ -944,19 +944,19 @@
         "retention_30s_pct": "insufficient"
       },
       "current": {
-        "views": 1,
+        "views": 0,
         "watch_minutes": 0.0,
-        "avd_s": 0.0,
-        "avp_pct": 0.0,
+        "avd_s": null,
+        "avp_pct": null,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
-        "since": "2026-10-13"
+        "since": "2026-10-17"
       },
-      "measured_on": "2026-10-16",
+      "measured_on": "2026-10-17",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
-        "avp": "fail"
+        "avp": "unknown"
       },
       "verdict": "INSUFFICIENT",
       "needs_review": false
@@ -966,12 +966,12 @@
       "repackage_round": 0,
       "repackages": [],
       "slug": "how-strong-is-titanium",
-      "title": "Titanium strength is not one number, it is four",
+      "title": "Is Titanium Stronger Than Steel?",
       "domain": "materials-and-manufacturing",
       "variant_of": "pre-rule",
       "public_since": "2026-09-21",
       "duration_s": 702.0,
-      "packaging_pass_at": null,
+      "packaging_pass_at": "2026-10-17T08:42:44+00:00",
       "hooked": false,
       "thumbnail_test": {
         "active": false,
@@ -979,9 +979,9 @@
         "variants": []
       },
       "thumbnails_used": [],
-      "packaging_since": "2026-09-21",
-      "days_public": 25,
-      "days_since_packaging": 25,
+      "packaging_since": "2026-10-17",
+      "days_public": 26,
+      "days_since_packaging": 0,
       "public": true,
       "lifetime": {
         "views": 18,
@@ -999,19 +999,19 @@
         "retention_30s_pct": 71.3
       },
       "current": {
-        "views": 18,
-        "watch_minutes": 53.0,
-        "avd_s": 245.0,
-        "avp_pct": 35.02,
+        "views": 0,
+        "watch_minutes": 0.0,
+        "avd_s": null,
+        "avp_pct": null,
         "subscribers_gained": 0,
-        "retention_30s_pct": 71.3,
-        "since": "2026-09-21"
+        "retention_30s_pct": "insufficient",
+        "since": "2026-10-17"
       },
-      "measured_on": "2026-10-16",
+      "measured_on": "2026-10-17",
       "floors": {
         "ctr": "unknown",
-        "retention_30s": "pass",
-        "avp": "fail"
+        "retention_30s": "unknown",
+        "avp": "unknown"
       },
       "verdict": "INSUFFICIENT",
       "needs_review": false
@@ -1021,12 +1021,12 @@
       "repackage_round": 0,
       "repackages": [],
       "slug": "how-is-damascus-steel-made",
-      "title": "The Damascus steel process lost by the mid-1800s",
+      "title": "Damascus Steel Is Not One Thing",
       "domain": "materials-and-manufacturing",
       "variant_of": "pre-rule",
       "public_since": "2026-09-25",
       "duration_s": 614.0,
-      "packaging_pass_at": "2026-10-13T13:56:27+00:00",
+      "packaging_pass_at": "2026-10-17T08:42:40+00:00",
       "hooked": false,
       "thumbnail_test": {
         "active": false,
@@ -1034,9 +1034,9 @@
         "variants": []
       },
       "thumbnails_used": [],
-      "packaging_since": "2026-10-13",
-      "days_public": 21,
-      "days_since_packaging": 3,
+      "packaging_since": "2026-10-17",
+      "days_public": 22,
+      "days_since_packaging": 0,
       "public": true,
       "lifetime": {
         "views": 4,
@@ -1060,9 +1060,9 @@
         "avp_pct": null,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
-        "since": "2026-10-13"
+        "since": "2026-10-17"
       },
-      "measured_on": "2026-10-16",
+      "measured_on": "2026-10-17",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
@@ -1076,12 +1076,12 @@
       "repackage_round": 0,
       "repackages": [],
       "slug": "how-is-a-silicon-wafer-made",
-      "title": "Nine-nines silicon does not exist in nature",
+      "title": "How Pure Is a Silicon Wafer?",
       "domain": "materials-and-manufacturing",
       "variant_of": "pre-rule",
       "public_since": "2026-09-28",
       "duration_s": 654.0,
-      "packaging_pass_at": "2026-10-13T13:56:26+00:00",
+      "packaging_pass_at": "2026-10-17T08:42:39+00:00",
       "hooked": false,
       "thumbnail_test": {
         "active": false,
@@ -1091,12 +1091,12 @@
       "thumbnails_used": [
         "A"
       ],
-      "packaging_since": "2026-10-13",
-      "days_public": 18,
-      "days_since_packaging": 3,
+      "packaging_since": "2026-10-17",
+      "days_public": 19,
+      "days_since_packaging": 0,
       "public": true,
       "lifetime": {
-        "views": 31,
+        "views": 35,
         "watch_minutes": 41.0,
         "avd_s": 162.0,
         "avp_pct": 24.89,
@@ -1104,26 +1104,26 @@
         "traffic": {
           "browse": 0,
           "suggested": 1,
-          "search": 24,
+          "search": 28,
           "external": 5,
           "other": 1
         },
         "retention_30s_pct": 66.7
       },
       "current": {
-        "views": 2,
+        "views": 0,
         "watch_minutes": 0.0,
-        "avd_s": 0.0,
-        "avp_pct": 0.0,
+        "avd_s": null,
+        "avp_pct": null,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
-        "since": "2026-10-13"
+        "since": "2026-10-17"
       },
-      "measured_on": "2026-10-16",
+      "measured_on": "2026-10-17",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
-        "avp": "fail"
+        "avp": "unknown"
       },
       "verdict": "INSUFFICIENT",
       "needs_review": false
@@ -1133,12 +1133,12 @@
       "repackage_round": 0,
       "repackages": [],
       "slug": "what-is-a-semiconductor-made-of",
-      "title": "A semiconductor is not defined by being silicon",
+      "title": "Is a Semiconductor Just Silicon?",
       "domain": "materials-and-manufacturing",
       "variant_of": "pre-rule",
       "public_since": "2026-10-02",
       "duration_s": 638.0,
-      "packaging_pass_at": "2026-10-13T13:56:35+00:00",
+      "packaging_pass_at": "2026-10-17T08:42:49+00:00",
       "hooked": false,
       "thumbnail_test": {
         "active": false,
@@ -1148,12 +1148,12 @@
       "thumbnails_used": [
         "A"
       ],
-      "packaging_since": "2026-10-13",
-      "days_public": 14,
-      "days_since_packaging": 3,
+      "packaging_since": "2026-10-17",
+      "days_public": 15,
+      "days_since_packaging": 0,
       "public": true,
       "lifetime": {
-        "views": 9,
+        "views": 10,
         "watch_minutes": 0.0,
         "avd_s": 4.0,
         "avp_pct": 0.69,
@@ -1161,7 +1161,7 @@
         "traffic": {
           "browse": 2,
           "suggested": 0,
-          "search": 4,
+          "search": 5,
           "external": 0,
           "other": 3
         },
@@ -1174,9 +1174,9 @@
         "avp_pct": null,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
-        "since": "2026-10-13"
+        "since": "2026-10-17"
       },
-      "measured_on": "2026-10-16",
+      "measured_on": "2026-10-17",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
@@ -1190,12 +1190,12 @@
       "repackage_round": 0,
       "repackages": [],
       "slug": "how-strong-is-graphene",
-      "title": "Steel fails at 0.4 gigapascals, graphene at 130",
+      "title": "Is Graphene Stronger Than Steel?",
       "domain": "materials-and-manufacturing",
       "variant_of": "pre-rule",
       "public_since": "2026-10-05",
       "duration_s": 620.0,
-      "packaging_pass_at": "2026-10-13T13:56:30+00:00",
+      "packaging_pass_at": "2026-10-17T08:42:44+00:00",
       "hooked": false,
       "thumbnail_test": {
         "active": false,
@@ -1203,19 +1203,19 @@
         "variants": []
       },
       "thumbnails_used": [],
-      "packaging_since": "2026-10-13",
-      "days_public": 11,
-      "days_since_packaging": 3,
+      "packaging_since": "2026-10-17",
+      "days_public": 12,
+      "days_since_packaging": 0,
       "public": true,
       "lifetime": {
-        "views": 13,
-        "watch_minutes": 25.0,
-        "avd_s": 299.0,
-        "avp_pct": 48.3,
+        "views": 14,
+        "watch_minutes": 35.0,
+        "avd_s": 352.0,
+        "avp_pct": 56.91,
         "subscribers_gained": 0,
         "traffic": {
           "browse": 0,
-          "suggested": 4,
+          "suggested": 5,
           "search": 9,
           "external": 0,
           "other": 0
@@ -1223,19 +1223,19 @@
         "retention_30s_pct": "insufficient"
       },
       "current": {
-        "views": 3,
-        "watch_minutes": 12.0,
-        "avd_s": 386.0,
-        "avp_pct": 62.29,
+        "views": 0,
+        "watch_minutes": 0.0,
+        "avd_s": null,
+        "avp_pct": null,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
-        "since": "2026-10-13"
+        "since": "2026-10-17"
       },
-      "measured_on": "2026-10-16",
+      "measured_on": "2026-10-17",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
-        "avp": "pass"
+        "avp": "unknown"
       },
       "verdict": "INSUFFICIENT",
       "needs_review": false
@@ -1245,12 +1245,12 @@
       "repackage_round": 0,
       "repackages": [],
       "slug": "why-does-old-iron-not-rust",
-      "title": "Iron tools from 3200 BCE that retain metallic cores",
+      "title": "Can Rust Protect Iron?",
       "domain": "materials-and-manufacturing",
       "variant_of": "pre-rule",
       "public_since": "2026-10-09",
       "duration_s": 728.0,
-      "packaging_pass_at": "2026-10-13T13:56:50+00:00",
+      "packaging_pass_at": "2026-10-17T08:43:25+00:00",
       "hooked": false,
       "thumbnail_test": {
         "active": false,
@@ -1258,18 +1258,18 @@
         "variants": []
       },
       "thumbnails_used": [],
-      "packaging_since": "2026-10-13",
-      "days_public": 7,
-      "days_since_packaging": 3,
+      "packaging_since": "2026-10-17",
+      "days_public": 8,
+      "days_since_packaging": 0,
       "public": true,
       "lifetime": {
-        "views": 156,
+        "views": 157,
         "watch_minutes": 62.0,
         "avd_s": 93.0,
         "avp_pct": 12.86,
         "subscribers_gained": 0,
         "traffic": {
-          "browse": 149,
+          "browse": 150,
           "suggested": 1,
           "search": 2,
           "external": 0,
@@ -1284,9 +1284,9 @@
         "avp_pct": null,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
-        "since": "2026-10-13"
+        "since": "2026-10-17"
       },
-      "measured_on": "2026-10-16",
+      "measured_on": "2026-10-17",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
@@ -1300,12 +1300,12 @@
       "repackage_round": 0,
       "repackages": [],
       "slug": "how-is-3d-printed-metal-made",
-      "title": "Metal cooling at 10000 degrees per second",
+      "title": "How Does 3D Printing Melt Metal?",
       "domain": "materials-and-manufacturing",
       "variant_of": "pre-rule",
       "public_since": "2026-10-12",
       "duration_s": 722.0,
-      "packaging_pass_at": "2026-10-13T13:56:23+00:00",
+      "packaging_pass_at": "2026-10-17T08:42:35+00:00",
       "hooked": false,
       "thumbnail_test": {
         "active": false,
@@ -1315,39 +1315,39 @@
       "thumbnails_used": [
         "A"
       ],
-      "packaging_since": "2026-10-13",
-      "days_public": 4,
-      "days_since_packaging": 3,
+      "packaging_since": "2026-10-17",
+      "days_public": 5,
+      "days_since_packaging": 0,
       "public": true,
       "lifetime": {
-        "views": 7,
-        "watch_minutes": 0.0,
-        "avd_s": 24.0,
-        "avp_pct": 3.45,
+        "views": 9,
+        "watch_minutes": 10.0,
+        "avd_s": 197.0,
+        "avp_pct": 27.41,
         "subscribers_gained": 0,
         "traffic": {
           "browse": 0,
           "suggested": 2,
-          "search": 5,
+          "search": 6,
           "external": 0,
-          "other": 0
+          "other": 1
         },
         "retention_30s_pct": "insufficient"
       },
       "current": {
-        "views": 2,
+        "views": 0,
         "watch_minutes": 0.0,
-        "avd_s": 0.0,
-        "avp_pct": 0.0,
+        "avd_s": null,
+        "avp_pct": null,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
-        "since": "2026-10-13"
+        "since": "2026-10-17"
       },
-      "measured_on": "2026-10-16",
+      "measured_on": "2026-10-17",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
-        "avp": "fail"
+        "avp": "unknown"
       },
       "verdict": "INSUFFICIENT",
       "needs_review": false
@@ -1357,12 +1357,12 @@
       "repackage_round": 0,
       "repackages": [],
       "slug": "16-what-happens-when-a-whale-dies-in-the-deep-ocean",
-      "title": "The whale meal that is not finished when the flesh goes",
+      "title": "Why Do Whale Bones Feed Life So Long?",
       "domain": "deep-sea-ocean-science",
       "variant_of": "pre-rule",
       "public_since": "2026-10-15",
       "duration_s": 477.0,
-      "packaging_pass_at": "2026-10-13T13:55:53+00:00",
+      "packaging_pass_at": "2026-10-16T23:40:58+00:00",
       "hooked": false,
       "thumbnail_test": {
         "active": false,
@@ -1370,8 +1370,8 @@
         "variants": []
       },
       "thumbnails_used": [],
-      "packaging_since": "2026-10-15",
-      "days_public": 1,
+      "packaging_since": "2026-10-16",
+      "days_public": 2,
       "days_since_packaging": 1,
       "public": true,
       "lifetime": {
@@ -1396,9 +1396,66 @@
         "avp_pct": null,
         "subscribers_gained": 0,
         "retention_30s_pct": "insufficient",
-        "since": "2026-10-15"
+        "since": "2026-10-16"
       },
-      "measured_on": "2026-10-16",
+      "measured_on": "2026-10-17",
+      "floors": {
+        "ctr": "unknown",
+        "retention_30s": "unknown",
+        "avp": "unknown"
+      },
+      "verdict": "INSUFFICIENT",
+      "needs_review": false
+    },
+    "Eueb6oHEbMs": {
+      "video_id": "Eueb6oHEbMs",
+      "repackage_round": 0,
+      "repackages": [],
+      "slug": "why-is-carbon-fiber-so-strong",
+      "title": "What Makes Carbon Fiber So Strong?",
+      "domain": "materials-and-manufacturing",
+      "variant_of": "pre-rule",
+      "public_since": "2026-10-16",
+      "duration_s": 657.0,
+      "packaging_pass_at": "2026-10-17T08:43:31+00:00",
+      "hooked": false,
+      "thumbnail_test": {
+        "active": false,
+        "started": null,
+        "variants": []
+      },
+      "thumbnails_used": [
+        "A"
+      ],
+      "packaging_since": "2026-10-17",
+      "days_public": 1,
+      "days_since_packaging": 0,
+      "public": true,
+      "lifetime": {
+        "views": 0,
+        "watch_minutes": 0.0,
+        "avd_s": null,
+        "avp_pct": null,
+        "subscribers_gained": 0,
+        "traffic": {
+          "browse": 0,
+          "suggested": 0,
+          "search": 0,
+          "external": 0,
+          "other": 0
+        },
+        "retention_30s_pct": "insufficient"
+      },
+      "current": {
+        "views": 0,
+        "watch_minutes": 0.0,
+        "avd_s": null,
+        "avp_pct": null,
+        "subscribers_gained": 0,
+        "retention_30s_pct": "insufficient",
+        "since": "2026-10-17"
+      },
+      "measured_on": "2026-10-17",
       "floors": {
         "ctr": "unknown",
         "retention_30s": "unknown",
@@ -1408,7 +1465,7 @@
       "needs_review": false
     }
   },
-  "as_of": "2026-10-16",
+  "as_of": "2026-10-17",
   "config": {
     "floors": {
       "ctr_pct": 4.0,
@@ -1425,14 +1482,14 @@
   },
   "channel": {
     "week": "2026-W42",
-    "date": "2026-10-16",
-    "public_longform": 25,
+    "date": "2026-10-17",
+    "public_longform": 26,
     "packaging_working": "too early",
     "counts": {
       "PASS": 0,
       "WATCH": 0,
       "FAIL": 0,
-      "INSUFFICIENT": 25
+      "INSUFFICIENT": 26
     },
     "judged_medians": {
       "n": 0,
@@ -1442,16 +1499,16 @@
     },
     "cohorts": {
       "pre-rule": {
-        "n": 25,
+        "n": 26,
         "ctr_pct": null,
-        "retention_30s_pct": 63.4,
-        "avp_pct": 22.5
+        "retention_30s_pct": 64.2,
+        "avp_pct": 22.6
       }
     },
     "best3": [
       {
         "video_id": "RlbR0qGmU0s",
-        "title": "Titanium strength is not one number, it is four",
+        "title": "Is Titanium Stronger Than Steel?",
         "views": 18,
         "watch_minutes_per_view": 2.94
       },
@@ -1463,29 +1520,29 @@
       },
       {
         "video_id": "debozzLtVRA",
-        "title": "Steel fails at 0.4 gigapascals, graphene at 130",
-        "views": 13,
-        "watch_minutes_per_view": 1.92
+        "title": "Is Graphene Stronger Than Steel?",
+        "views": 14,
+        "watch_minutes_per_view": 2.5
       }
     ],
     "worst3": [
       {
+        "video_id": "kTBlLeWdi4g",
+        "title": "Is a Semiconductor Just Silicon?",
+        "views": 10,
+        "watch_minutes_per_view": 0.0
+      },
+      {
         "video_id": "TjrpzJE3utU",
-        "title": "Tempered glass does not weaken, it switches states",
+        "title": "How Fast Does Glass Shatter?",
         "views": 11,
         "watch_minutes_per_view": 0.0
       },
       {
         "video_id": "aKyOg7xbxC0",
-        "title": "Faster than 100 degrees per second, carbon is trapped",
+        "title": "Why Must Quenching Be So Fast?",
         "views": 45,
         "watch_minutes_per_view": 0.24
-      },
-      {
-        "video_id": "eJSCm5sk5AA",
-        "title": "The crack that breaks open its own repair",
-        "views": 19,
-        "watch_minutes_per_view": 0.37
       }
     ],
     "repackaged_this_week": [],
@@ -1494,18 +1551,19 @@
     "gate": {
       "first_repackaged": "2026-10-14",
       "gate_date": "2026-11-13",
-      "days_left": 28
+      "days_left": 27
     },
     "food": []
   },
   "pull": {
-    "at": "2026-10-16T13:40:43+00:00",
-    "date": "2026-10-16",
+    "at": "2026-10-17T13:36:25+00:00",
+    "date": "2026-10-17",
     "public_ids": [
       "2zQAc_ZSbMs",
       "7tdvXATeeng",
       "9FcDJniofMM",
       "EY__zREBIUk",
+      "Eueb6oHEbMs",
       "G1TqXmf36Qo",
       "IbrSPKUK1IM",
       "MAV4PF056RA",
@@ -1528,13 +1586,13 @@
       "xbmIX6n2OI8",
       "xyZ9xs7OF3g"
     ],
-    "ledger_longform": 44,
-    "analytics_calls": 35,
+    "ledger_longform": 46,
+    "analytics_calls": 31,
     "data_api_units": 1,
     "retention": {
-      "returned": 6,
+      "returned": 7,
       "insufficient": 19
     }
   },
-  "updated": "2026-10-16T13:40:43+00:00"
+  "updated": "2026-10-17T13:36:25+00:00"
 }
