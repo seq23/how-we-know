@@ -208,6 +208,12 @@ def demand_index(d: dict, comp: dict | None = None) -> float:
 #   half the owner's already-rendered inventory, for a channel whose topic the
 #   same research ratified as rising and best-in-class. That was a bad
 #   threshold on a bad metric, not a bad inventory.
+# gate() verdicts that keep a topic OUT of a queue - the one list. Anything
+# that filters a queue by verdict compares against this, never a literal
+# (research/publish_order_domain.py compared against "kill" until 2026-10-17
+# and queued every killed topic).
+KILL_VERDICTS = ("killed", "killed_provisional")
+
 DEMAND_FLOOR = 0.16
 #   Nothing in this sample sits below 0.10 on the audience-led index, so a
 #   demand kill is provisional by default. Killing a topic outright needs

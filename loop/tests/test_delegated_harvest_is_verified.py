@@ -81,8 +81,16 @@ def iso(days_ago: float) -> str:
             - dt.timedelta(days=days_ago)).isoformat(timespec="seconds")
 
 
-def plant_probe(host: str, requires: list[str], exit_code: int = 0) -> None:
-    """A harvester that declares `host`, does no network, and exits as told."""
+PROBE_WRITES = "channel/imagery/zzprobe-written.json"
+
+
+def plant_probe(host: str, requires: list[str], exit_code: int = 0,
+                writes: bool = False) -> None:
+    """A harvester that declares `host`, does no network, and exits as told.
+    With `writes`, it first writes PROBE_WRITES - a manifest it leaves behind
+    before failing, as research/imagery_food.py did on 2026-10-17."""
+    write_line = (f"open({os.path.join(ROOT, PROBE_WRITES)!r}, 'w').write('{{}}')"
+                  if writes else "pass")
     src = f'''"""Planted by loop/tests/test_delegated_harvest_is_verified.py. Delete me."""
 import sys
 HARVESTER = {{
@@ -103,6 +111,7 @@ def probe_gate():
 
 if __name__ == "__main__":
     print("probe ran on", sys.platform)
+    {write_line}
     sys.exit({exit_code})
 '''
     with open(os.path.join(RESEARCH, PROBE), "w", encoding="utf-8") as fh:
@@ -110,10 +119,11 @@ if __name__ == "__main__":
 
 
 def unplant() -> None:
-    try:
-        os.remove(os.path.join(RESEARCH, PROBE))
-    except FileNotFoundError:
-        pass
+    for p in (os.path.join(RESEARCH, PROBE), os.path.join(ROOT, PROBE_WRITES)):
+        try:
+            os.remove(p)
+        except FileNotFoundError:
+            pass
 
 
 def path_without(*tools: str) -> str:
@@ -310,12 +320,25 @@ def main() -> int:
                   FL.stamps(stamps_p)["research/imagery_video.py"]["last_run_at"]
                   == VIDEO_FRESH["research/imagery_video.py"]["last_run_at"])
             # and a FAILING probe is stamped as failing, not skipped
-            plant_probe(host=other, requires=["ffmpeg"], exit_code=7)
+            plant_probe(host=other, requires=["ffmpeg"], exit_code=7, writes=True)
             json.dump(dict(VIDEO_OWNED, **ci_fresh), open(stamps_p, "w"))
+            before_m = FL.manifest_snapshot()
             try:
                 rc2 = FL.run(dry_run=False, host=other)
             except SystemExit as exc:
                 rc2 = exc.code
+            # 2026-10-17: research/imagery_food.py rewrote food_clips.json,
+            # exited 1, and the lane committed the rewrite. A failed run's
+            # manifest writes are rolled back, so "the pool is unchanged" is
+            # a fact: the manifest it created is gone and every other
+            # channel/imagery/*.json is byte-identical to before the run.
+            check("5: a FAILED harvester's manifest writes are rolled back - "
+                  "the manifest it wrote before failing is gone and every "
+                  "other manifest is byte-identical",
+                  not os.path.exists(os.path.join(ROOT, PROBE_WRITES))
+                  and FL.manifest_snapshot() == before_m,
+                  f"{PROBE_WRITES} exists="
+                  f"{os.path.exists(os.path.join(ROOT, PROBE_WRITES))}")
             bad = FL.stamps(stamps_p).get(PROBE_REL) or {}
             check("5: a harvester that exits non-zero is stamped ok=false with "
                   "its exit code and output tail - the other host can tell "
@@ -507,6 +530,31 @@ def main() -> int:
         unplant()
         for k in ("LOOP_STOPS_DIR", "LOOP_HARVEST_STAMPS", "LOOP_DRY_RUN"):
             os.environ.pop(k, None)
+
+    # ---- 11. restore_manifests() puts back a MUTATED manifest and removes a
+    # created one, in a sandbox (the real manifests are never edited here).
+    sb = tempfile.mkdtemp(prefix="hwk-deleg-11-")
+    img = os.path.join(sb, "channel", "imagery")
+    os.makedirs(img)
+    keep = os.path.join(img, "food_clips.json")
+    open(keep, "w").write('{"index": [1, 2, 3]}')
+    saved = (FL.ROOT, FL.IMAGERY)
+    FL.ROOT, FL.IMAGERY = FL.Path(sb), FL.Path(img)
+    try:
+        snap = FL.manifest_snapshot()
+        open(keep, "w").write('{"index": [1]}')
+        open(os.path.join(img, "new.json"), "w").write("{}")
+        undone = FL.restore_manifests(snap)
+        check("11: a mutated manifest is restored byte-for-byte and a created "
+              "one removed; both are named",
+              open(keep).read() == '{"index": [1, 2, 3]}'
+              and not os.path.exists(os.path.join(img, "new.json"))
+              and undone == ["channel/imagery/food_clips.json",
+                             "channel/imagery/new.json"], str(undone))
+        check("11: nothing changed -> nothing restored",
+              FL.restore_manifests(FL.manifest_snapshot()) == [])
+    finally:
+        FL.ROOT, FL.IMAGERY = saved
 
     print(f"\nexamined {examined} item(s), {len(fails)} failure(s)")
     if examined == 0:

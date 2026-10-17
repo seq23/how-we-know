@@ -293,6 +293,38 @@ class NoHarvesterForDomain(Exception):
     """A domain holds a weekly slot and nothing harvests imagery for it."""
 
 
+IMAGERY = ROOT / "channel" / "imagery"
+
+
+def manifest_snapshot() -> dict[str, bytes | None]:
+    """Every channel/imagery/*.json manifest's bytes, before a harvester runs."""
+    return {str(p.relative_to(ROOT)): p.read_bytes()
+            for p in sorted(IMAGERY.glob("*.json"))}
+
+
+def restore_manifests(snap: dict[str, bytes | None]) -> list[str]:
+    """Put every manifest back to `snap` (a file the run created is removed).
+
+    Returns the manifests that had changed, sorted. The lane commits
+    channel/imagery, so whatever a FAILED harvester left there would ship."""
+    undone = []
+    now = {str(p.relative_to(ROOT)) for p in IMAGERY.glob("*.json")}
+    for rel in sorted(set(snap) | now):
+        # An f-string, so loop/tools/write_set.py reads the target as
+        # channel/imagery/*.json - the pathspec the lane commits.
+        f = IMAGERY / f"{Path(rel).stem}.json"
+        old = snap.get(rel)
+        cur = f.read_bytes() if f.exists() else None
+        if cur == old:
+            continue
+        if old is None:
+            f.unlink()
+        else:
+            f.write_bytes(old)
+        undone.append(rel)
+    return undone
+
+
 def declared_harvesters() -> list[dict]:
     """Every research/imagery*.py that declares a HARVESTER contract.
 
@@ -534,6 +566,7 @@ def run(dry_run: bool = False, host: str = DEFAULT_HOST) -> int:
             # have timed the delegated harvest out on every run and reported
             # DELEGATED_HARVEST_FAILING for a harvester that was working.
             budget = int(h.get("timeout_seconds") or 3600)
+            before_files = manifest_snapshot()
             try:
                 r = subprocess.run([sys.executable, str(path), *args],
                                    capture_output=True, text=True, cwd=ROOT,
@@ -558,7 +591,20 @@ def run(dry_run: bool = False, host: str = DEFAULT_HOST) -> int:
                 # the pool is unchanged. Note it; the shrink check below is
                 # what would catch real damage, and the other host's
                 # verification is what catches a run of these.
-                st.note(f"{rel} exited {rc}; the pool is unchanged")
+                # ...and the pool IS unchanged, because a failed run's
+                # manifest writes are rolled back here. Until 2026-10-17 this
+                # line was only a claim: research/imagery_food.py rewrote
+                # channel/imagery/food_clips.json, then failed its own rights
+                # verify (exit 1), and the lane committed the rewritten file -
+                # main went red on V53. A run that did not verify leaves no
+                # manifest behind it.
+                undone = restore_manifests(before_files)
+                if undone:
+                    st.note(f"{rel} exited {rc}; rolled back what it wrote "
+                            f"before failing: {', '.join(undone)} - the pool "
+                            f"is unchanged")
+                else:
+                    st.note(f"{rel} exited {rc}; the pool is unchanged")
                 continue
             st.work(f"harvested {what} through {shown}")
             ran += 1

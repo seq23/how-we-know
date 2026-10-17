@@ -128,7 +128,10 @@ def check() -> list[str]:
                                         "and title gap 0.9 clears the 0.3 "
                                         "ceiling.")
         elif q.startswith("how do scientists know so much"):
-            row = gate_row(q, "kill", "demand 0.04 is under the 0.10 firm "
+            # "killed", the real gate's firm verdict (publish_order.gate());
+            # the fixture said "kill", a verdict the gate never emits, so it
+            # passed while every real killed hold was promoted (2026-10-17).
+            row = gate_row(q, "killed", "demand 0.04 is under the 0.10 firm "
                                       "floor.")
         elif q.startswith("how do scientists know how old"):
             return SimpleNamespace(returncode=3, stdout="", stderr=
@@ -303,6 +306,34 @@ def check() -> list[str]:
         elif exit_code != 3:
             fails.append(f"HOLD_GATE_FAILED is needs_human and must exit 3; "
                          f"got {exit_code}")
+        # Both of the real gate's kill verdicts decline a hold, and the
+        # scorer and the generator read ONE list of them.
+        sys.path.insert(0, str(LOOP.parent / "research"))
+        import publish_order as PO                          # noqa: PLC0415
+        import publish_order_domain as POD                  # noqa: PLC0415
+        for v in ("killed", "killed_provisional", "passed"):
+            def one(cmd, _v=v, **kw):
+                return SimpleNamespace(returncode=0, stderr="", stdout=
+                                       "HOLD_GATE_VERDICT " + json.dumps(
+                                           {"rows": [gate_row("q", _v, "r")],
+                                            "unmeasured": []}) + "\n")
+            score.subprocess.run = one
+            got = score.gate_query("deep-sea-ocean-science", "q")[0]
+            want = "passed" if v == "passed" else "kill"
+            examined += 1
+            if got != want:
+                fails.append(f"gate verdict {v!r} classified {got!r}, not {want!r}")
+        examined += 1
+        if not (score.KILL_VERDICTS == PO.KILL_VERDICTS == POD.KILL_VERDICTS
+                == batch_queue.KILL_VERDICTS
+                and PO.gate(0.0, 0.0, {"autocomplete_completions": 0,
+                                        "corpus_breadth": 0})["verdict"]
+                in PO.KILL_VERDICTS):
+            fails.append(f"kill verdict lists disagree or miss the gate's own "
+                         f"verdict: score {score.KILL_VERDICTS}, publish_order "
+                         f"{PO.KILL_VERDICTS}, publish_order_domain "
+                         f"{POD.KILL_VERDICTS}, batch_queue "
+                         f"{batch_queue.KILL_VERDICTS}")
     finally:
         (score.subprocess.run, score.HOLDS_PATH, score.SCRIPTS_DIR,
          score.DECLINED_DIR, score.DECISION_LOG, score.RESEARCH_DIR,

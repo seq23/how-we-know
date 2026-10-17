@@ -64,6 +64,34 @@ def check() -> list[str]:
                          f"matrix names {have} - a missing shard is a slice of "
                          f"the suite that never runs")
 
+    # A lane that commits loop state pushes with GITHUB_TOKEN, which never
+    # fires `push`; loop-tests.yml re-tests main when each one completes
+    # (workflow_run). Every committing workflow must be named there, by its
+    # exact `name:`, or the state it commits goes untested until the next
+    # human push and its red lands on someone else (2026-10-17, run
+    # 39039023653: imagery-harvest + weekly-score commits, red on the Mac's
+    # backfill).
+    wr = re.search(r"^  workflow_run:\n    workflows:\n((?:      - '[^']+'\n)+)"
+                   r"    types: \[completed\]", wf, re.M)
+    listed = set(re.findall(r"- '([^']+)'", wr.group(1))) if wr else set()
+    committing = {}
+    for f in sorted((ROOT / ".github" / "workflows").glob("*.yml")):
+        if f.name == "loop-tests.yml":
+            continue
+        t = f.read_text()
+        if re.search(r"git push|loop-stage\.sh|git commit", t):
+            committing[f.name] = re.search(r"^name:\s*(.+?)\s*$", t, re.M).group(1)
+    if not committing:
+        fails.append("found ZERO committing workflows - the scan reached nothing")
+    missing = sorted(f"{k} ({v!r})" for k, v in committing.items() if v not in listed)
+    if not wr or missing:
+        fails.append("loop-tests.yml workflow_run does not re-test main after "
+                     f"every committing lane; missing: {missing or 'the block'}")
+    stale = sorted(listed - set(committing.values()))
+    if stale:
+        fails.append(f"loop-tests.yml workflow_run names no such committing "
+                     f"workflow: {stale}")
+
     items = copy.deepcopy(read_json(ROOT / "loop" / "render_queue.json")["items"])
     ok, rows = validate.run_all(items)
 

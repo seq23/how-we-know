@@ -56,76 +56,6 @@
       "queued": "2026-10-13"
     },
     {
-      "slug": "why-does-seared-meat-taste-good",
-      "domain": "food-science",
-      "title": "Why does seared meat taste good?",
-      "query": "why does seared meat taste good",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.468 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.4675,
-        "autocomplete_completions": 2,
-        "exact_in_autocomplete": false,
-        "corpus_breadth": 0,
-        "key_term": "good",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 0,
-        "sample_completions": [
-          "why does meat taste so good",
-          "why steak can be eaten rare"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-17T10:14:14.463107+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.657,
-        "title_gap": 1.0,
-        "title_coverage_mean": 0.075,
-        "strong_match_count": 0,
-        "results_examined": 20,
-        "median_views": 2669937.5,
-        "p90_views": 15313161,
-        "median_subscribers": 2520000.0,
-        "channels_under_100k_subs": 3,
-        "median_age_days": 767,
-        "published_last_365d": 3,
-        "interpretation": "nobody has made the definitive video on this query",
-        "components": {
-          "title_gap": 1.0,
-          "incumbent_subs": 0.086,
-          "view_ceiling": 0.082,
-          "staleness": 0.85
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-10-17T10:13:52.238855+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.5542,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "CONTESTED DESPITE THE GAP: 100% lexical title gap, but median 2,669,938 views and 2,520,000 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated."
-    },
-    {
       "slug": "why-does-chocolate-taste-so-good",
       "domain": "food-science",
       "title": "Why does chocolate taste so good?",
@@ -682,90 +612,6 @@
       "reason": "Middle of the field: title gap 0.70, demand 0.29, opportunity 0.56."
     },
     {
-      "slug": "why-does-popcorn-pop",
-      "domain": "food-science",
-      "title": "Why does popcorn pop?",
-      "query": "why does popcorn pop",
-      "gate": {
-        "verdict": "killed_provisional",
-        "failed": [
-          "saturation"
-        ],
-        "measurement": {
-          "demand_index": 0.5478,
-          "demand_floor": 0.16,
-          "title_gap": 0.2,
-          "saturation_ceiling": 0.3,
-          "autocomplete_completions": 9,
-          "corpus_breadth": 0
-        },
-        "reason": "title gap 0.20 is at or below the 0.3 saturation ceiling: 16 of the top 20 titles already answer this question squarely.",
-        "what_would_settle_it": "Re-measure with a larger result set and on a different day; 20 results at one moment is thin evidence to end a topic on."
-      },
-      "demand": {
-        "demand_index": 0.5478,
-        "autocomplete_completions": 9,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 0,
-        "key_term": "pop",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 0,
-        "sample_completions": [
-          "why does popcorn pop",
-          "why does popcorn pop video",
-          "why does popcorn pop scishow",
-          "why does popcorn pop jenny hoyos",
-          "why does popcorn pop aumsum"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-17T10:14:11.781439+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.283,
-        "title_gap": 0.2,
-        "title_coverage_mean": 0.9,
-        "strong_match_count": 16,
-        "results_examined": 20,
-        "median_views": 438241.5,
-        "p90_views": 21243625,
-        "median_subscribers": 2215000.0,
-        "channels_under_100k_subs": 4,
-        "median_age_days": 1225,
-        "published_last_365d": 2,
-        "interpretation": "16 of 20 ranking titles squarely answer the query",
-        "components": {
-          "title_gap": 0.2,
-          "incumbent_subs": 0.094,
-          "view_ceiling": 0.194,
-          "staleness": 0.9
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-10-17T10:13:48.823873+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.3937,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "SATURATED: 80% of the top 20 titles answer this question squarely (median 438,242 views, 2,215,000 subs). The definitive video exists."
-    },
-    {
       "slug": "why-does-honey-never-spoil",
       "domain": "food-science",
       "title": "Why does honey never spoil?",
@@ -906,6 +752,162 @@
       "reason": "Middle of the field: title gap 0.60, demand 0.27, opportunity 0.54."
     },
     {
+      "slug": "why-does-cheese-melt",
+      "domain": "food-science",
+      "title": "Why does cheese melt?",
+      "query": "why does cheese melt",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.285 clears the 0.16 floor and title gap 0.45 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.2853,
+        "autocomplete_completions": 2,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "melt",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 9,
+        "sample_completions": [
+          "why does cheese melt",
+          "does cheddar cheese melt"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-17T10:14:02.863840+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.431,
+        "title_gap": 0.45,
+        "title_coverage_mean": 0.775,
+        "strong_match_count": 11,
+        "results_examined": 20,
+        "median_views": 89470.0,
+        "p90_views": 627005,
+        "median_subscribers": 344000.0,
+        "channels_under_100k_subs": 8,
+        "median_age_days": 685,
+        "published_last_365d": 4,
+        "interpretation": "11 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.45,
+          "incumbent_subs": 0.209,
+          "view_ceiling": 0.293,
+          "staleness": 0.8
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-10-17T10:13:36.937120+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.3507,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Middle of the field: title gap 0.45, demand 0.29, opportunity 0.43."
+    }
+  ],
+  "killed": [
+    {
+      "slug": "why-does-popcorn-pop",
+      "domain": "food-science",
+      "title": "Why does popcorn pop?",
+      "query": "why does popcorn pop",
+      "gate": {
+        "verdict": "killed_provisional",
+        "failed": [
+          "saturation"
+        ],
+        "measurement": {
+          "demand_index": 0.5478,
+          "demand_floor": 0.16,
+          "title_gap": 0.2,
+          "saturation_ceiling": 0.3,
+          "autocomplete_completions": 9,
+          "corpus_breadth": 0
+        },
+        "reason": "title gap 0.20 is at or below the 0.3 saturation ceiling: 16 of the top 20 titles already answer this question squarely.",
+        "what_would_settle_it": "Re-measure with a larger result set and on a different day; 20 results at one moment is thin evidence to end a topic on."
+      },
+      "demand": {
+        "demand_index": 0.5478,
+        "autocomplete_completions": 9,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "pop",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "why does popcorn pop",
+          "why does popcorn pop video",
+          "why does popcorn pop scishow",
+          "why does popcorn pop jenny hoyos",
+          "why does popcorn pop aumsum"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-17T10:14:11.781439+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.283,
+        "title_gap": 0.2,
+        "title_coverage_mean": 0.9,
+        "strong_match_count": 16,
+        "results_examined": 20,
+        "median_views": 438241.5,
+        "p90_views": 21243625,
+        "median_subscribers": 2215000.0,
+        "channels_under_100k_subs": 4,
+        "median_age_days": 1225,
+        "published_last_365d": 2,
+        "interpretation": "16 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.2,
+          "incumbent_subs": 0.094,
+          "view_ceiling": 0.194,
+          "staleness": 0.9
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-10-17T10:13:48.823873+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.3937,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "SATURATED: 80% of the top 20 titles answer this question squarely (median 438,242 views, 2,215,000 subs). The definitive video exists."
+    },
+    {
       "slug": "why-do-onions-make-you-cry",
       "domain": "food-science",
       "title": "Why do onions make you cry?",
@@ -988,76 +990,6 @@
         "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
       },
       "reason": "SATURATED: 89% of the top 20 titles answer this question squarely (median 107,454 views, 887,000 subs). The definitive video exists."
-    },
-    {
-      "slug": "why-does-cheese-melt",
-      "domain": "food-science",
-      "title": "Why does cheese melt?",
-      "query": "why does cheese melt",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.285 clears the 0.16 floor and title gap 0.45 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.2853,
-        "autocomplete_completions": 2,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 0,
-        "key_term": "melt",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 9,
-        "sample_completions": [
-          "why does cheese melt",
-          "does cheddar cheese melt"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-17T10:14:02.863840+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.431,
-        "title_gap": 0.45,
-        "title_coverage_mean": 0.775,
-        "strong_match_count": 11,
-        "results_examined": 20,
-        "median_views": 89470.0,
-        "p90_views": 627005,
-        "median_subscribers": 344000.0,
-        "channels_under_100k_subs": 8,
-        "median_age_days": 685,
-        "published_last_365d": 4,
-        "interpretation": "11 of 20 ranking titles squarely answer the query",
-        "components": {
-          "title_gap": 0.45,
-          "incumbent_subs": 0.209,
-          "view_ceiling": 0.293,
-          "staleness": 0.8
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-10-17T10:13:36.937120+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.3507,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "Middle of the field: title gap 0.45, demand 0.29, opportunity 0.43."
     },
     {
       "slug": "how-does-cheese-get-its-holes",
@@ -1866,6 +1798,85 @@
       "reason": "SATURATED: 100% of the top 20 titles answer this question squarely (median 464 views, 815 subs). The definitive video exists."
     }
   ],
-  "killed": [],
-  "unmeasured": []
+  "unmeasured": [],
+  "first_video": [
+    "why does bread rise",
+    "why does seared meat taste good",
+    "why does chocolate melt"
+  ],
+  "parts_of_episodes": [
+    {
+      "slug": "why-does-seared-meat-taste-good",
+      "domain": "food-science",
+      "title": "Why does seared meat taste good?",
+      "query": "why does seared meat taste good",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.468 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.4675,
+        "autocomplete_completions": 2,
+        "exact_in_autocomplete": false,
+        "corpus_breadth": 0,
+        "key_term": "good",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "why does meat taste so good",
+          "why steak can be eaten rare"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-17T10:14:14.463107+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.657,
+        "title_gap": 1.0,
+        "title_coverage_mean": 0.075,
+        "strong_match_count": 0,
+        "results_examined": 20,
+        "median_views": 2669937.5,
+        "p90_views": 15313161,
+        "median_subscribers": 2520000.0,
+        "channels_under_100k_subs": 3,
+        "median_age_days": 767,
+        "published_last_365d": 3,
+        "interpretation": "nobody has made the definitive video on this query",
+        "components": {
+          "title_gap": 1.0,
+          "incumbent_subs": 0.086,
+          "view_ceiling": 0.082,
+          "staleness": 0.85
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-10-17T10:13:52.238855+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.5542,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "CONTESTED DESPITE THE GAP: 100% lexical title gap, but median 2,669,938 views and 2,520,000 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated.",
+      "episode": "why-bread-rises-steak-browns-chocolate-snaps"
+    }
+  ],
+  "meets_floor_on_free_signals": [],
+  "queue_length": 12
 }

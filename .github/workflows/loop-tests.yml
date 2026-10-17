@@ -7,6 +7,31 @@ on:
             '.gitattributes']
   pull_request:
   workflow_dispatch:
+  # Every lane that commits loop state to main, re-tested on main when it
+  # finishes. Their pushes use GITHUB_TOKEN, which never fires `push`, so until
+  # 2026-10-17 the state a lane committed was first tested by the NEXT human or
+  # Mac push: the Sat imagery-harvest and weekly-score commits redded main and
+  # the red landed on the Mac's backfill (run 39039023653). Now the red is on
+  # the lane that caused it. test_registry_green_on_main.py pins this list to
+  # every committing workflow.
+  workflow_run:
+    workflows:
+      - 'loop · daily demand + Mon 08:30 CT email'
+      - 'loop · Fri 17:00 · measure'
+      - 'loop · Fri 09:00 · flip to public'
+      - 'loop · Sat 04:00 UTC · grow the rights-cleared footage pool'
+      - 'loop · Mon 00:00 CT · draft, validate, gate'
+      - 'loop · 1st 07:00 · monthly review'
+      - 'loop · owner override'
+      - 'loop · Quarterly · refresh the candidate-niche taxonomy'
+      - 'loop · daily 10:00 CT · reach (captions + localizations + tags)'
+      - 'loop · daily 18:30 CT (+ 03:30 CT apply) · long-form repackage (titles + thumbnails)'
+      - 'loop · Sat 06:00 · score demand ÷ competition'
+      - 'loop · daily 18:00 CT · publish a Short from R2'
+      - 'loop · Sun 12:00 · weekly digest'
+      - 'loop · Sun 06:00 · rank topics'
+      - 'loop · daily 09:00 CT · upload from R2'
+    types: [completed]
 
 permissions:
   contents: read

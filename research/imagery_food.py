@@ -1,4 +1,4 @@
-"""Food-science -> image and clip index. The materials gate, unchanged, on food.
+"""Food-science -> image index (stills). The materials gate, unchanged, on food.
 
 The third domain (owner decision 2026-10-13, docs/CHANNEL-PLAN.md "A third
 domain: food science") needs REAL pictures for the things that are real - a
@@ -18,9 +18,13 @@ THE GATE is research/imagery_materials.py's, imported and run unchanged:
       is (`depicts`), why it belongs under that sentence (`subject_basis`),
       and the credit drawn on screen.
 
-CLIPS go through the same three gates, with the mime restricted to Commons'
-open video formats and a minimum width; each records its licence, item page
-and sha256 exactly as a still does.
+CLIPS ARE NOT HARVESTED HERE. Real food footage comes through
+research/food_footage.py only (CLAUDE.md, owner widening 2026-10-13), and
+the food clip manifest (food_footage.MANIFEST) is that module's alone. Until
+2026-10-17 this module also ran a Commons-only clip pass that rewrote the same
+file in its own schema: the first Saturday CI harvest replaced the Mac's
+verified clip records with one Commons record and redded main (V53,
+test_food_footage_chain). One manifest, one writer; test_food_domain pins it.
 
 PEXELS AND PIXABAY. Both licences allow free commercial use and the owner's
 brief names them. Their search APIs need a free key tied to an account, and
@@ -30,28 +34,22 @@ the manifest (named, never silent) and harvests from Commons alone. A
 Pexels/Pixabay asset, when one is added, must record `licence` = "Pexels
 License" / "Pixabay Content License" and its page URL per asset, like these.
 
-    python research/imagery_food.py            # stills + clips
+    python research/imagery_food.py            # stills
     python research/imagery_food.py --missing  # only subjects with nothing yet
     python research/imagery_food.py --verify   # sha256 + rights fields on disk
 """
 from __future__ import annotations
 
-import hashlib
 import json
 import os
-import re
 import sys
-import urllib.parse
-from datetime import datetime, timezone
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 
-import imagery as I                                            # noqa: E402
 import imagery_materials as M                                  # noqa: E402
 
 FOOD_MANIFEST = os.path.join(M.OUT, "food.json")
-CLIP_MANIFEST = os.path.join(M.OUT, "food_clips.json")
 DOMAIN = "food-science"
 
 HARVESTER = {
@@ -60,7 +58,7 @@ HARVESTER = {
     "manifest": "channel/imagery/food.json",
     "args": ["--missing"],
     "scheduled": True,
-    "what": "food stills and clips - Wikimedia Commons, public-domain/CC0 gate only",
+    "what": "food stills - Wikimedia Commons, public-domain/CC0 gate only",
 }
 
 SUBJECTS: list[dict] = [
@@ -149,28 +147,6 @@ UNILLUSTRATABLE: dict[str, dict] = {
                "copyright. The drawn cross-section device stands in."},
 }
 
-# Food in motion. Commons' open video formats only; the same three gates.
-CLIP_SUBJECTS: list[dict] = [
-    {"key": "chocolate-pour", "title_any": ["chocolate"], "label": "MELTED CHOCOLATE",
-     "queries": ["chocolate pouring video", "melted chocolate webm", "chocolate fountain"],
-     "depicts": "video", "subject_basis": "Liquid chocolate in motion."},
-    {"key": "chocolate-making", "title_any": ["chocolate", "cacao", "cocoa"], "label": "CHOCOLATE MAKING",
-     "queries": ["chocolate making video", "chocolate factory webm", "tempering chocolate"],
-     "depicts": "video", "subject_basis": "Chocolate being worked or tempered."},
-    {"key": "steak-sizzle", "title_any": ["steak", "meat", "beef", "fry", "grill"], "label": "SEARING",
-     "queries": ["steak frying pan video", "frying meat webm", "grilling meat video"],
-     "depicts": "video", "subject_basis": "Meat searing on a hot surface."},
-    {"key": "dough-kneading", "title_any": ["dough", "bread", "knead"], "label": "DOUGH",
-     "queries": ["kneading dough video", "bread dough webm", "baking bread video"],
-     "depicts": "video", "subject_basis": "Dough being worked or bread baking."},
-]
-CLIP_MIMES = ("webm", "ogg")
-# Clips are large and never enter git (.gitignore: channel/imagery/clips/),
-# the same rule as the deep-sea video pool; the manifest and sha256 do.
-CLIPS = os.path.join(M.OUT, "clips")
-CLIP_MIN_WIDTH = 640
-
-
 def unavailable_sources() -> list[dict]:
     """The owner-named free sources this host cannot reach, named in the manifest."""
     out = []
@@ -179,103 +155,6 @@ def unavailable_sources() -> list[dict]:
             out.append({"source": name, "why": f"${var} absent: the free search API "
                         f"needs an account key; Commons PD/CC0 is used alone"})
     return out
-
-
-def harvest_clips(dry_run: bool = False, only: list[str] | None = None) -> dict:
-    """Clips through the same gates as stills: pd_licence_ok + copyright screen."""
-    os.makedirs(CLIPS, exist_ok=True)
-    prior = {}
-    if os.path.exists(CLIP_MANIFEST):
-        prior = {r["subject"]: r for r in json.load(open(CLIP_MANIFEST)).get("index", [])}
-    accepted, rejected = [], []
-    for sub in CLIP_SUBJECTS:
-        if only is not None and sub["key"] not in only:
-            if sub["key"] in prior:
-                accepted.append(prior[sub["key"]])
-            continue
-        got = None
-        for phrase in sub["queries"]:
-            for title in M._search(phrase):
-                if not re.search(r"\.(webm|ogv|ogg)$", title, re.I):
-                    continue
-                if not any(w in title.lower() for w in sub.get("title_any") or [""]):
-                    continue
-                try:
-                    iq = (f"{M.COMMONS_API}?action=query&format=json&prop=imageinfo"
-                          f"&iiprop=url|size|mime|extmetadata&titles="
-                          + urllib.parse.quote(title))
-                    page = next(iter(json.loads(M._polite(iq))["query"]["pages"].values()))
-                    info = page["imageinfo"][0]
-                except Exception as e:                       # noqa: BLE001
-                    rejected.append({"subject": sub["key"], "title": title,
-                                     "reason": f"imageinfo failed: {e}"})
-                    continue
-                if (info.get("mime") or "").split("/")[-1] not in CLIP_MIMES:
-                    continue
-                if int(info.get("width") or 0) < CLIP_MIN_WIDTH:
-                    continue
-                ok, why = I.pd_licence_ok(info)
-                if not ok:
-                    rejected.append({"subject": sub["key"], "title": title,
-                                     "item_url": info.get("descriptionurl"), "reason": why})
-                    continue
-                claimed, why_c = M.copyright_asserted(info)
-                if claimed:
-                    rejected.append({"subject": sub["key"], "title": title,
-                                     "item_url": info.get("descriptionurl"), "reason": why_c})
-                    continue
-                got = (title, info, phrase, why)
-                break
-            if got:
-                break
-        if not got:
-            rejected.append({"subject": sub["key"], "title": None,
-                             "reason": "no clip passed both gates"})
-            if sub["key"] in prior:
-                accepted.append(prior[sub["key"]])
-            continue
-        title, info, phrase, why = got
-        stem = re.sub(r"[^a-z0-9]+", "-", title.lower().removeprefix("file:")).strip("-")[:60]
-        src = info["url"].split("?")[0]
-        ext = os.path.splitext(urllib.parse.urlparse(src).path)[1].lower() or ".webm"
-        fname = f"food_clip__{sub['key']}__{stem}{ext}"
-        sha = None
-        if not dry_run:
-            blob = M._polite(src, binary=True)
-            with open(os.path.join(CLIPS, fname), "wb") as fh:
-                fh.write(blob)
-            sha = hashlib.sha256(blob).hexdigest()
-        artist = re.sub(r"\s+", " ", M._text(info, "Artist")).strip()
-        licence = re.sub(r"<[^>]+>", "", str(
-            info.get("extmetadata", {}).get("LicenseShortName", {}).get("value", ""))).strip()
-        accepted.append({
-            "subject": sub["key"], "label": sub["label"],
-            "title": title.removeprefix("File:"), "depicts": "video",
-            "subject_basis": sub["subject_basis"],
-            "credit_line": f"{sub['label']} - FOOTAGE, "
-                           f"{(artist or 'UNATTRIBUTED')[:48].upper()} ({licence.upper()})",
-            "source_org": artist or "Wikimedia Commons", "licence": licence,
-            "matched_query": phrase, "item_url": info.get("descriptionurl"),
-            "direct_url": src, "local_file": f"clips/{fname}" if not dry_run else None,
-            "sha256": sha, "width": info.get("width"), "height": info.get("height"),
-            "licence_basis": why, "ai_generated": False,
-        })
-        print(f"  CLIP {sub['key']:<18} {title[:58]}")
-    man = {
-        "generated": datetime.now(timezone.utc).isoformat(),
-        "domain": DOMAIN,
-        "policy": "Public domain or CC0 only, verified live; same gates as the stills.",
-        "rights_fields_required": ["depicts", "subject_basis", "credit_line", "item_url",
-                                   "licence", "sha256"],
-        "asset_count": len(accepted),
-        "subjects_total": len(CLIP_SUBJECTS),
-        "sources_unavailable": unavailable_sources(),
-        "rejected": [r for r in rejected if r["title"] is None],
-        "index": sorted(accepted, key=lambda a: a["subject"]),
-    }
-    if not dry_run:
-        json.dump(man, open(CLIP_MANIFEST, "w"), indent=2)
-    return man
 
 
 def harvest(dry_run: bool = False, only: list[str] | None = None) -> dict:
@@ -289,12 +168,11 @@ def harvest(dry_run: bool = False, only: list[str] | None = None) -> dict:
 
 
 def verify_rights() -> int:
-    n = M.verify_rights(manifest=FOOD_MANIFEST)
-    if os.path.exists(CLIP_MANIFEST):
-        clips = json.load(open(CLIP_MANIFEST))
-        if clips.get("index"):
-            n += M.verify_rights(man=clips)
-    return n
+    """The STILLS this module writes. The food clip manifest is
+    research/food_footage.py's manifest (its clips live on the Mac, never in
+    git) and that module verifies it; reading it here failed every CI run
+    with "<clip> is not on disk" (run of 2026-10-17, harvest_runs.json)."""
+    return M.verify_rights(manifest=FOOD_MANIFEST)
 
 
 if __name__ == "__main__":
@@ -303,17 +181,12 @@ if __name__ == "__main__":
         raise SystemExit(0)
     dry = "--dry-run" in sys.argv
     only = None
-    clip_only = None
     if "--missing" in sys.argv:
         have = set()
         if os.path.exists(FOOD_MANIFEST):
             have = {r["subject"] for r in json.load(open(FOOD_MANIFEST)).get("index", [])}
         only = [s["key"] for s in SUBJECTS if s["key"] not in have]
-        chave = set()
-        if os.path.exists(CLIP_MANIFEST):
-            chave = {r["subject"] for r in json.load(open(CLIP_MANIFEST)).get("index", [])}
-        clip_only = [s["key"] for s in CLIP_SUBJECTS if s["key"] not in chave]
-        print(f"retrying {len(only)} still subject(s), {len(clip_only)} clip subject(s)")
+        print(f"retrying {len(only)} still subject(s)")
     # One subject per pass so the manifest is written after EACH subject:
     # a slow Commons day or a killed run keeps everything already verified
     # (harvest() merges into the manifest; the first full pass on 2026-10-13
@@ -323,8 +196,5 @@ if __name__ == "__main__":
         man = harvest(dry_run=dry, only=[key])
     if man:
         print(f"\n{man['asset_count']}/{len(SUBJECTS)} still subjects -> {FOOD_MANIFEST}")
-    cman = harvest_clips(dry_run=dry, only=clip_only) if (clip_only is None or clip_only) else None
-    if cman:
-        print(f"{cman['asset_count']}/{len(CLIP_SUBJECTS)} clip subjects -> {CLIP_MANIFEST}")
     if not dry:
         print(f"rights verified: {verify_rights()} assets, sha256 matched on every file")
