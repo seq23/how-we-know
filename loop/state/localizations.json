@@ -977,7 +977,7 @@
       "applied_at": "2026-10-15T15:14:12+00:00"
     }
   },
-  "updated": "2026-10-16T15:09:37+00:00",
+  "updated": "2026-10-17T15:08:41+00:00",
   "blocked": {
     "xex6Bbzbdkg": {
       "slug": "why-deep-sea-creatures-are-creepers",
@@ -995,6 +995,18 @@
       "slug": "why-are-deep-sea-creatures-so-big",
       "reason": "QUOTA_DEFERRED",
       "since": "2026-10-16T15:09:37+00:00",
+      "missing": [
+        "de",
+        "es",
+        "hi",
+        "id",
+        "pt-BR"
+      ]
+    },
+    "F684ebB13gg": {
+      "slug": "how-deep-can-a-sperm-whale-go",
+      "reason": "QUOTA_DEFERRED",
+      "since": "2026-10-17T15:08:41+00:00",
       "missing": [
         "de",
         "es",
