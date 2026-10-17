@@ -1,11 +1,11 @@
 {
-  "mined_at": "2026-09-26T10:14:56.140125+00:00",
+  "mined_at": "2026-10-17T10:13:26.640463+00:00",
   "endpoint": "https://suggestqueries.google.com/complete/search",
   "surface": "youtube_autocomplete",
   "generator": "research/mine_domain.py",
-  "seeds_file": "/tmp/tmpxhfn5cby.json",
-  "seed_count": 31,
-  "unique_queries": 3250,
+  "seeds_file": "/tmp/tmph1n7knv4.json",
+  "seed_count": 25,
+  "unique_queries": 3249,
   "queries": [
     {
       "query": "what lives in the deep sea",
@@ -17,18 +17,6 @@
         "what lives in the deep a",
         "what lives in the deep b",
         "what lives in the deep c"
-      ]
-    },
-    {
-      "query": "why deep sea creatures are scary",
-      "is_question": true,
-      "words": 6,
-      "seed_hits": 35,
-      "seeds": [
-        "why deep sea",
-        "why deep sea a",
-        "why deep sea c",
-        "why deep sea creatures"
       ]
     },
     {
@@ -44,63 +32,15 @@
       ]
     },
     {
-      "query": "why are deep sea creatures so big",
-      "is_question": true,
-      "words": 7,
-      "seed_hits": 30,
-      "seeds": [
-        "why are deep sea creatures so big",
-        "why are deep sea creatures so big a",
-        "why are deep sea creatures so big b",
-        "why are deep sea creatures so big c"
-      ]
-    },
-    {
       "query": "why deep sea creatures",
       "is_question": true,
       "words": 4,
-      "seed_hits": 29,
+      "seed_hits": 28,
       "seeds": [
         "why deep sea a",
         "why deep sea b",
         "why deep sea creatures",
-        "why deep sea creatures are creepers e"
-      ]
-    },
-    {
-      "query": "why deep sea fish die when brought to surface",
-      "is_question": true,
-      "words": 9,
-      "seed_hits": 29,
-      "seeds": [
-        "why deep sea creatures w",
-        "why deep sea f",
-        "why deep sea fish die when brought to surface",
-        "why deep sea fish die when brought to surface a"
-      ]
-    },
-    {
-      "query": "what is hydrothermal vents",
-      "is_question": true,
-      "words": 4,
-      "seed_hits": 27,
-      "seeds": [
-        "hydrothermal vent n",
-        "what is hydrothermal vents",
-        "what is hydrothermal vents b",
-        "what is hydrothermal vents c"
-      ]
-    },
-    {
-      "query": "how deep can whales dive",
-      "is_question": true,
-      "words": 5,
-      "seed_hits": 27,
-      "seeds": [
-        "how deep c",
-        "how deep can whales dive",
-        "how deep can whales dive b",
-        "how deep can whales dive c"
+        "why deep sea creatures g"
       ]
     },
     {
@@ -125,18 +65,6 @@
         "how do scientists know a",
         "how do scientists know b",
         "how do scientists know c"
-      ]
-    },
-    {
-      "query": "what lives in mariana trench",
-      "is_question": true,
-      "words": 5,
-      "seed_hits": 26,
-      "seeds": [
-        "what lives in mariana trench",
-        "what lives in mariana trench a",
-        "what lives in mariana trench b",
-        "what lives in mariana trench c"
       ]
     },
     {
@@ -236,18 +164,6 @@
       ]
     },
     {
-      "query": "what animals live in the mariana trench",
-      "is_question": true,
-      "words": 7,
-      "seed_hits": 17,
-      "seeds": [
-        "what lives in mariana trench a",
-        "what lives in mariana trench b",
-        "what lives in mariana trench d",
-        "what lives in mariana trench f"
-      ]
-    },
-    {
       "query": "hydrothermal vents life",
       "is_question": false,
       "words": 3,
@@ -296,18 +212,6 @@
       ]
     },
     {
-      "query": "whale fall video",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 15,
-      "seeds": [
-        "whale fall",
-        "whale fall c",
-        "whale fall d",
-        "whale fall e"
-      ]
-    },
-    {
       "query": "ocean environment",
       "is_question": false,
       "words": 2,
@@ -320,15 +224,15 @@
       ]
     },
     {
-      "query": "hydrothermal vents and cold seeps",
+      "query": "whale fall video",
       "is_question": false,
-      "words": 5,
-      "seed_hits": 14,
+      "words": 3,
+      "seed_hits": 13,
       "seeds": [
-        "hydrothermal vent a",
-        "hydrothermal vent c",
-        "what is hydrothermal vents b",
-        "what is hydrothermal vents d"
+        "whale fall c",
+        "whale fall d",
+        "whale fall e",
+        "whale fall h"
       ]
     },
     {
@@ -464,6 +368,18 @@
       ]
     },
     {
+      "query": "why deep sea creatures are scary",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 8,
+      "seeds": [
+        "why deep sea",
+        "why deep sea a",
+        "why deep sea c",
+        "why deep sea creatures"
+      ]
+    },
+    {
       "query": "why deep sea creatures are weird",
       "is_question": true,
       "words": 6,
@@ -488,18 +404,6 @@
       ]
     },
     {
-      "query": "why deep sea creatures grow so terrifying huge",
-      "is_question": true,
-      "words": 8,
-      "seed_hits": 8,
-      "seeds": [
-        "why are deep sea creatures so big t",
-        "why deep sea",
-        "why deep sea c",
-        "why deep sea creatures"
-      ]
-    },
-    {
       "query": "midnight zone footage",
       "is_question": false,
       "words": 3,
@@ -512,18 +416,6 @@
       ]
     },
     {
-      "query": "whale fall the madrean",
-      "is_question": false,
-      "words": 4,
-      "seed_hits": 8,
-      "seeds": [
-        "whale fall a",
-        "whale fall f",
-        "whale fall g",
-        "whale fall m"
-      ]
-    },
-    {
       "query": "midnight zone in ocean",
       "is_question": false,
       "words": 4,
@@ -533,6 +425,18 @@
         "midnight zone g",
         "midnight zone j",
         "midnight zone l"
+      ]
+    },
+    {
+      "query": "why deep sea creatures grow so terrifying huge",
+      "is_question": true,
+      "words": 8,
+      "seed_hits": 7,
+      "seeds": [
+        "why deep sea",
+        "why deep sea c",
+        "why deep sea creatures",
+        "why deep sea creatures g"
       ]
     },
     {
@@ -593,6 +497,18 @@
         "hadal zone",
         "hadal zone f",
         "hadal zone h"
+      ]
+    },
+    {
+      "query": "whale fall the madrean",
+      "is_question": false,
+      "words": 4,
+      "seed_hits": 7,
+      "seeds": [
+        "whale fall a",
+        "whale fall f",
+        "whale fall g",
+        "whale fall m"
       ]
     },
     {
@@ -824,15 +740,15 @@
       ]
     },
     {
-      "query": "hydrothermal vents",
+      "query": "bioluminescence for kids",
       "is_question": false,
-      "words": 2,
+      "words": 3,
       "seed_hits": 5,
       "seeds": [
-        "hydrothermal vent",
-        "hydrothermal vent w",
-        "hydrothermal vent y",
-        "hydrothermal vent z"
+        "bioluminescence",
+        "bioluminescence e",
+        "bioluminescence f",
+        "bioluminescence q"
       ]
     },
     {
@@ -857,18 +773,6 @@
         "deep sea creature q",
         "deep sea creature x",
         "deep sea creature z"
-      ]
-    },
-    {
-      "query": "whale carcass deep sea",
-      "is_question": false,
-      "words": 4,
-      "seed_hits": 5,
-      "seeds": [
-        "whale fall i",
-        "whale fall o",
-        "whale fall s",
-        "whale fall u"
       ]
     },
     {
@@ -932,6 +836,18 @@
       ]
     },
     {
+      "query": "how deep is your love remix",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 4,
+      "seeds": [
+        "how deep",
+        "how deep i",
+        "how deep u",
+        "how deep x"
+      ]
+    },
+    {
       "query": "why deep sea creatures coming to surface",
       "is_question": true,
       "words": 7,
@@ -969,18 +885,6 @@
     },
     {
       "query": "how deep is your love calvin harris",
-      "is_question": true,
-      "words": 7,
-      "seed_hits": 4,
-      "seeds": [
-        "how deep",
-        "how deep i",
-        "how deep u",
-        "how deep x"
-      ]
-    },
-    {
-      "query": "how deep is your love pj morton",
       "is_question": true,
       "words": 7,
       "seed_hits": 4,
@@ -1049,6 +953,18 @@
         "bioluminescence s",
         "bioluminescence y",
         "bioluminescence z"
+      ]
+    },
+    {
+      "query": "hydrothermal vents",
+      "is_question": false,
+      "words": 2,
+      "seed_hits": 4,
+      "seeds": [
+        "hydrothermal vent",
+        "hydrothermal vent w",
+        "hydrothermal vent y",
+        "hydrothermal vent z"
       ]
     },
     {
@@ -1121,6 +1037,18 @@
         "challenger deep m",
         "challenger deep o",
         "challenger deep t"
+      ]
+    },
+    {
+      "query": "whale carcass deep sea",
+      "is_question": false,
+      "words": 4,
+      "seed_hits": 4,
+      "seeds": [
+        "whale fall i",
+        "whale fall o",
+        "whale fall u",
+        "whale fall x"
       ]
     },
     {
@@ -1346,14 +1274,14 @@
       ]
     },
     {
-      "query": "how can whales dive so deep",
+      "query": "why are deep sea creatures so big",
       "is_question": true,
-      "words": 6,
+      "words": 7,
       "seed_hits": 3,
       "seeds": [
-        "how deep can whales dive",
-        "how deep can whales dive n",
-        "how deep can whales dive s"
+        "why deep sea creatures a",
+        "why deep sea creatures b",
+        "why deep sea creatures s"
       ]
     },
     {
@@ -1456,17 +1384,6 @@
       ]
     },
     {
-      "query": "deep sea fishing",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 3,
-      "seeds": [
-        "deep sea",
-        "deep sea f",
-        "deep sea fish"
-      ]
-    },
-    {
       "query": "deep sea creatures",
       "is_question": false,
       "words": 3,
@@ -1475,6 +1392,17 @@
         "deep sea",
         "deep sea c",
         "deep sea creature"
+      ]
+    },
+    {
+      "query": "deep sea fishing",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 3,
+      "seeds": [
+        "deep sea",
+        "deep sea f",
+        "deep sea fish"
       ]
     },
     {
@@ -1676,17 +1604,6 @@
       ]
     },
     {
-      "query": "deep sea creatures documentary",
-      "is_question": false,
-      "words": 4,
-      "seed_hits": 3,
-      "seeds": [
-        "deep sea c",
-        "deep sea creature",
-        "why deep sea creatures d"
-      ]
-    },
-    {
       "query": "deep sea creatures footage",
       "is_question": false,
       "words": 4,
@@ -1695,6 +1612,17 @@
         "deep sea c",
         "deep sea creature",
         "why deep sea creatures f"
+      ]
+    },
+    {
+      "query": "deep sea creatures documentary",
+      "is_question": false,
+      "words": 4,
+      "seed_hits": 3,
+      "seeds": [
+        "deep sea c",
+        "deep sea creature",
+        "why deep sea creatures d"
       ]
     },
     {
@@ -1827,39 +1755,6 @@
         "challenger deep",
         "challenger deep c",
         "challenger deep j"
-      ]
-    },
-    {
-      "query": "whale fall time lapse",
-      "is_question": false,
-      "words": 4,
-      "seed_hits": 3,
-      "seeds": [
-        "whale fall",
-        "whale fall l",
-        "whale fall t"
-      ]
-    },
-    {
-      "query": "whale fall david attenborough",
-      "is_question": false,
-      "words": 4,
-      "seed_hits": 3,
-      "seeds": [
-        "whale fall",
-        "whale fall a",
-        "whale fall d"
-      ]
-    },
-    {
-      "query": "whale falls on boat",
-      "is_question": false,
-      "words": 4,
-      "seed_hits": 3,
-      "seeds": [
-        "whale fall",
-        "whale fall b",
-        "whale fall o"
       ]
     },
     {
@@ -2565,16 +2460,6 @@
       ]
     },
     {
-      "query": "how deep can sperm whales dive",
-      "is_question": true,
-      "words": 6,
-      "seed_hits": 2,
-      "seeds": [
-        "how deep c",
-        "how deep can whales dive s"
-      ]
-    },
-    {
       "query": "how deep will you go questions",
       "is_question": true,
       "words": 6,
@@ -2815,7 +2700,7 @@
       ]
     },
     {
-      "query": "how deep is your love dru hill",
+      "query": "how deep is your love pj morton",
       "is_question": true,
       "words": 7,
       "seed_hits": 2,
@@ -2832,16 +2717,6 @@
       "seeds": [
         "how do scientists know a",
         "how do scientists know w"
-      ]
-    },
-    {
-      "query": "how deep can a sperm whale go",
-      "is_question": true,
-      "words": 7,
-      "seed_hits": 2,
-      "seeds": [
-        "how deep can whales dive",
-        "how deep can whales dive n"
       ]
     },
     {
@@ -2922,6 +2797,16 @@
       "seeds": [
         "how do scientists know",
         "how do scientists know h"
+      ]
+    },
+    {
+      "query": "why deep sea fish die when brought to surface",
+      "is_question": true,
+      "words": 9,
+      "seed_hits": 2,
+      "seeds": [
+        "why deep sea creatures w",
+        "why deep sea f"
       ]
     },
     {
@@ -3055,6 +2940,16 @@
       ]
     },
     {
+      "query": "bioluminescence beach",
+      "is_question": false,
+      "words": 2,
+      "seed_hits": 2,
+      "seeds": [
+        "bioluminescence",
+        "bioluminescence b"
+      ]
+    },
+    {
       "query": "bioluminescence explained",
       "is_question": false,
       "words": 2,
@@ -3175,16 +3070,6 @@
       ]
     },
     {
-      "query": "deep sea exploration",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 2,
-      "seeds": [
-        "deep sea",
-        "deep sea e"
-      ]
-    },
-    {
       "query": "deep sea girl",
       "is_question": false,
       "words": 3,
@@ -3195,13 +3080,13 @@
       ]
     },
     {
-      "query": "deep sea monsters",
+      "query": "deep sea exploration",
       "is_question": false,
       "words": 3,
       "seed_hits": 2,
       "seeds": [
         "deep sea",
-        "deep sea m"
+        "deep sea e"
       ]
     },
     {
@@ -3275,6 +3160,16 @@
       ]
     },
     {
+      "query": "mariana trench documentary",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 2,
+      "seeds": [
+        "mariana trench",
+        "mariana trench d"
+      ]
+    },
+    {
       "query": "mariana trench footage",
       "is_question": false,
       "words": 3,
@@ -3282,26 +3177,6 @@
       "seeds": [
         "mariana trench",
         "mariana trench f"
-      ]
-    },
-    {
-      "query": "mariana trench productions",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 2,
-      "seeds": [
-        "mariana trench",
-        "mariana trench p"
-      ]
-    },
-    {
-      "query": "mariana trench exploration",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 2,
-      "seeds": [
-        "mariana trench",
-        "mariana trench e"
       ]
     },
     {
@@ -3315,16 +3190,6 @@
       ]
     },
     {
-      "query": "mariana trench documentary",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 2,
-      "seeds": [
-        "mariana trench",
-        "mariana trench d"
-      ]
-    },
-    {
       "query": "mariana trench band",
       "is_question": false,
       "words": 3,
@@ -3332,6 +3197,16 @@
       "seeds": [
         "mariana trench",
         "mariana trench b"
+      ]
+    },
+    {
+      "query": "mariana trench productions",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 2,
+      "seeds": [
+        "mariana trench",
+        "mariana trench p"
       ]
     },
     {
@@ -3346,6 +3221,16 @@
     },
     {
       "query": "mariana trench song",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 2,
+      "seeds": [
+        "mariana trench",
+        "mariana trench s"
+      ]
+    },
+    {
+      "query": "mariana trench sounds",
       "is_question": false,
       "words": 3,
       "seed_hits": 2,
@@ -3415,16 +3300,6 @@
       ]
     },
     {
-      "query": "bioluminescence for kids",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 2,
-      "seeds": [
-        "bioluminescence",
-        "bioluminescence f"
-      ]
-    },
-    {
       "query": "bioluminescence goth babe",
       "is_question": false,
       "words": 3,
@@ -3452,16 +3327,6 @@
       "seeds": [
         "bioluminescence",
         "bioluminescence i"
-      ]
-    },
-    {
-      "query": "bioluminescence deep sea",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 2,
-      "seeds": [
-        "bioluminescence",
-        "bioluminescence d"
       ]
     },
     {
@@ -3532,16 +3397,6 @@
       "seeds": [
         "challenger deep",
         "challenger deep b"
-      ]
-    },
-    {
-      "query": "challenger deep footage",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 2,
-      "seeds": [
-        "challenger deep b",
-        "challenger deep f"
       ]
     },
     {
@@ -3745,6 +3600,16 @@
       ]
     },
     {
+      "query": "whale fall review",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 2,
+      "seeds": [
+        "whale fall",
+        "whale fall r"
+      ]
+    },
+    {
       "query": "whale fall trailer",
       "is_question": false,
       "words": 3,
@@ -3755,43 +3620,43 @@
       ]
     },
     {
-      "query": "whale fall animation",
+      "query": "whale fall ending",
       "is_question": false,
       "words": 3,
       "seed_hits": 2,
       "seeds": [
         "whale fall",
-        "whale fall a"
+        "whale fall e"
       ]
     },
     {
-      "query": "whale fall book",
+      "query": "whale fall recap",
       "is_question": false,
       "words": 3,
       "seed_hits": 2,
       "seeds": [
         "whale fall",
-        "whale fall b"
+        "whale fall r"
       ]
     },
     {
-      "query": "whale fall nautilus",
+      "query": "whale fall clip",
       "is_question": false,
       "words": 3,
       "seed_hits": 2,
       "seeds": [
         "whale fall",
-        "whale fall n"
+        "whale fall c"
       ]
     },
     {
-      "query": "whale fall movie",
+      "query": "whale fall explained",
       "is_question": false,
       "words": 3,
       "seed_hits": 2,
       "seeds": [
         "whale fall",
-        "whale fall m"
+        "whale fall e"
       ]
     },
     {
@@ -4085,6 +3950,16 @@
       ]
     },
     {
+      "query": "deep sea trawling osrs",
+      "is_question": false,
+      "words": 4,
+      "seed_hits": 2,
+      "seeds": [
+        "deep sea",
+        "deep sea t"
+      ]
+    },
+    {
       "query": "deep sea bunny pressure",
       "is_question": false,
       "words": 4,
@@ -4095,7 +3970,17 @@
       ]
     },
     {
-      "query": "deep sea fishing videos",
+      "query": "deep sea creatures 4k",
+      "is_question": false,
+      "words": 4,
+      "seed_hits": 2,
+      "seeds": [
+        "deep sea c",
+        "deep sea creature"
+      ]
+    },
+    {
+      "query": "deep sea fishing battle",
       "is_question": false,
       "words": 4,
       "seed_hits": 2,
@@ -4105,7 +3990,7 @@
       ]
     },
     {
-      "query": "deep sea fishing battle",
+      "query": "deep sea fishing videos",
       "is_question": false,
       "words": 4,
       "seed_hits": 2,
@@ -4945,6 +4830,16 @@
       ]
     },
     {
+      "query": "challenger deep full movie",
+      "is_question": false,
+      "words": 4,
+      "seed_hits": 2,
+      "seeds": [
+        "challenger deep f",
+        "challenger deep m"
+      ]
+    },
+    {
       "query": "challenger deep national geographic",
       "is_question": false,
       "words": 4,
@@ -5125,6 +5020,16 @@
       ]
     },
     {
+      "query": "whale fall david attenborough",
+      "is_question": false,
+      "words": 4,
+      "seed_hits": 2,
+      "seeds": [
+        "whale fall a",
+        "whale fall d"
+      ]
+    },
+    {
       "query": "whale fall read aloud",
       "is_question": false,
       "words": 4,
@@ -5145,13 +5050,13 @@
       ]
     },
     {
-      "query": "blue whale fall video",
+      "query": "whale falls on boat",
       "is_question": false,
       "words": 4,
       "seed_hits": 2,
       "seeds": [
         "whale fall b",
-        "whale fall v"
+        "whale fall o"
       ]
     },
     {
@@ -5202,6 +5107,16 @@
       "seeds": [
         "whale fall l",
         "whale fall z"
+      ]
+    },
+    {
+      "query": "whale fall time lapse",
+      "is_question": false,
+      "words": 4,
+      "seed_hits": 2,
+      "seeds": [
+        "whale fall l",
+        "whale fall t"
       ]
     },
     {
@@ -6105,6 +6020,16 @@
       ]
     },
     {
+      "query": "hydrothermal vents and cold seeps",
+      "is_question": false,
+      "words": 5,
+      "seed_hits": 2,
+      "seeds": [
+        "hydrothermal vent a",
+        "hydrothermal vent c"
+      ]
+    },
+    {
       "query": "hydrothermal vents dave the diver",
       "is_question": false,
       "words": 5,
@@ -6132,6 +6057,16 @@
       "seeds": [
         "hydrothermal vent n",
         "hydrothermal vent w"
+      ]
+    },
+    {
+      "query": "whale fall behind the scenes",
+      "is_question": false,
+      "words": 5,
+      "seed_hits": 2,
+      "seeds": [
+        "whale fall",
+        "whale fall b"
       ]
     },
     {
@@ -7761,12 +7696,12 @@
       ]
     },
     {
-      "query": "what's in mariana trench",
+      "query": "what is hydrothermal vents",
       "is_question": true,
       "words": 4,
       "seed_hits": 1,
       "seeds": [
-        "what lives in mariana trench"
+        "hydrothermal vent n"
       ]
     },
     {
@@ -7951,6 +7886,15 @@
     },
     {
       "query": "how deep can you go",
+      "is_question": true,
+      "words": 5,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep c"
+      ]
+    },
+    {
+      "query": "how deep can whales dive",
       "is_question": true,
       "words": 5,
       "seed_hits": 1,
@@ -8328,24 +8272,6 @@
       ]
     },
     {
-      "query": "how deep do whales dive",
-      "is_question": true,
-      "words": 5,
-      "seed_hits": 1,
-      "seeds": [
-        "how deep can whales dive n"
-      ]
-    },
-    {
-      "query": "how do hydrothermal vents work",
-      "is_question": true,
-      "words": 5,
-      "seed_hits": 1,
-      "seeds": [
-        "what is hydrothermal vents r"
-      ]
-    },
-    {
       "query": "why deep sea creatures are creepers",
       "is_question": true,
       "words": 6,
@@ -8374,15 +8300,6 @@
     },
     {
       "query": "how deep is the ocean barbershop",
-      "is_question": true,
-      "words": 6,
-      "seed_hits": 1,
-      "seeds": [
-        "how deep is the ocean b"
-      ]
-    },
-    {
-      "query": "how deep is the ocean beckbrojack",
       "is_question": true,
       "words": 6,
       "seed_hits": 1,
@@ -8958,6 +8875,15 @@
       ]
     },
     {
+      "query": "how deep can sperm whales dive",
+      "is_question": true,
+      "words": 6,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep c"
+      ]
+    },
+    {
       "query": "how deep does the ocean go",
       "is_question": true,
       "words": 6,
@@ -9192,33 +9118,6 @@
       ]
     },
     {
-      "query": "what lives in the mariana trench",
-      "is_question": true,
-      "words": 6,
-      "seed_hits": 1,
-      "seeds": [
-        "what lives in mariana trench t"
-      ]
-    },
-    {
-      "query": "how deep can a whale dive",
-      "is_question": true,
-      "words": 6,
-      "seed_hits": 1,
-      "seeds": [
-        "how deep can whales dive a"
-      ]
-    },
-    {
-      "query": "how deep can blue whales dive",
-      "is_question": true,
-      "words": 6,
-      "seed_hits": 1,
-      "seeds": [
-        "how deep can whales dive b"
-      ]
-    },
-    {
       "query": "why deep ocean creatures are coming out",
       "is_question": true,
       "words": 7,
@@ -9256,6 +9155,15 @@
     },
     {
       "query": "how deep is the ocean bing crosby",
+      "is_question": true,
+      "words": 7,
+      "seed_hits": 1,
+      "seeds": [
+        "how deep is the ocean b"
+      ]
+    },
+    {
+      "query": "how deep is the ocean barbra streisand",
       "is_question": true,
       "words": 7,
       "seed_hits": 1,
@@ -10065,24 +9973,6 @@
       ]
     },
     {
-      "query": "how deep can a sperm whale dive",
-      "is_question": true,
-      "words": 7,
-      "seed_hits": 1,
-      "seeds": [
-        "how deep can whales dive a"
-      ]
-    },
-    {
-      "query": "how deep can a blue whale dive",
-      "is_question": true,
-      "words": 7,
-      "seed_hits": 1,
-      "seeds": [
-        "how deep can whales dive a"
-      ]
-    },
-    {
       "query": "why are deep-sea creatures rising to the surface",
       "is_question": true,
       "words": 8,
@@ -10470,15 +10360,6 @@
       ]
     },
     {
-      "query": "what lives at the bottom of the mariana trench",
-      "is_question": true,
-      "words": 9,
-      "seed_hits": 1,
-      "seeds": [
-        "what lives in mariana trench u"
-      ]
-    },
-    {
       "query": "how deep is the ocean barbra streisand and jason gould",
       "is_question": true,
       "words": 10,
@@ -10722,6 +10603,15 @@
       ]
     },
     {
+      "query": "anglerfish fisch",
+      "is_question": false,
+      "words": 2,
+      "seed_hits": 1,
+      "seeds": [
+        "anglerfish f"
+      ]
+    },
+    {
       "query": "anglerfish fusing",
       "is_question": false,
       "words": 2,
@@ -10759,15 +10649,6 @@
     },
     {
       "query": "anglerfish female",
-      "is_question": false,
-      "words": 2,
-      "seed_hits": 1,
-      "seeds": [
-        "anglerfish f"
-      ]
-    },
-    {
-      "query": "anglerfish fisch",
       "is_question": false,
       "words": 2,
       "seed_hits": 1,
@@ -11124,15 +11005,6 @@
       "seed_hits": 1,
       "seeds": [
         "bioluminescence a"
-      ]
-    },
-    {
-      "query": "bioluminescence beach",
-      "is_question": false,
-      "words": 2,
-      "seed_hits": 1,
-      "seeds": [
-        "bioluminescence b"
       ]
     },
     {
@@ -12105,6 +11977,60 @@
       "seed_hits": 1,
       "seeds": [
         "colossal squid"
+      ]
+    },
+    {
+      "query": "whalefall scene",
+      "is_question": false,
+      "words": 2,
+      "seed_hits": 1,
+      "seeds": [
+        "whale fall s"
+      ]
+    },
+    {
+      "query": "whalefall soundtrack",
+      "is_question": false,
+      "words": 2,
+      "seed_hits": 1,
+      "seeds": [
+        "whale fall s"
+      ]
+    },
+    {
+      "query": "whalefall spoilers",
+      "is_question": false,
+      "words": 2,
+      "seed_hits": 1,
+      "seeds": [
+        "whale fall s"
+      ]
+    },
+    {
+      "query": "whalefall squid",
+      "is_question": false,
+      "words": 2,
+      "seed_hits": 1,
+      "seeds": [
+        "whale fall s"
+      ]
+    },
+    {
+      "query": "whalefall summary",
+      "is_question": false,
+      "words": 2,
+      "seed_hits": 1,
+      "seeds": [
+        "whale fall s"
+      ]
+    },
+    {
+      "query": "whalefall score",
+      "is_question": false,
+      "words": 2,
+      "seed_hits": 1,
+      "seeds": [
+        "whale fall s"
       ]
     },
     {
@@ -13116,6 +13042,15 @@
       ]
     },
     {
+      "query": "deep sea implosion",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 1,
+      "seeds": [
+        "deep sea i"
+      ]
+    },
+    {
       "query": "deep sea imax",
       "is_question": false,
       "words": 3,
@@ -13242,7 +13177,7 @@
       ]
     },
     {
-      "query": "deep sea movie",
+      "query": "deep sea monsters",
       "is_question": false,
       "words": 3,
       "seed_hits": 1,
@@ -13252,6 +13187,15 @@
     },
     {
       "query": "deep sea mining",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 1,
+      "seeds": [
+        "deep sea m"
+      ]
+    },
+    {
+      "query": "deep sea movie",
       "is_question": false,
       "words": 3,
       "seed_hits": 1,
@@ -13476,7 +13420,7 @@
       ]
     },
     {
-      "query": "deep sea relaxation",
+      "query": "deep sea reaction",
       "is_question": false,
       "words": 3,
       "seed_hits": 1,
@@ -13485,7 +13429,7 @@
       ]
     },
     {
-      "query": "deep sea reaction",
+      "query": "deep sea remix",
       "is_question": false,
       "words": 3,
       "seed_hits": 1,
@@ -14403,6 +14347,15 @@
       ]
     },
     {
+      "query": "mariana trench exploration",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 1,
+      "seeds": [
+        "mariana trench e"
+      ]
+    },
+    {
       "query": "mariana trench explained",
       "is_question": false,
       "words": 3,
@@ -14448,7 +14401,7 @@
       ]
     },
     {
-      "query": "mariana trench fisch",
+      "query": "mariana trench fish",
       "is_question": false,
       "words": 3,
       "seed_hits": 1,
@@ -14457,7 +14410,7 @@
       ]
     },
     {
-      "query": "mariana trench fish",
+      "query": "mariana trench fisch",
       "is_question": false,
       "words": 3,
       "seed_hits": 1,
@@ -14967,15 +14920,6 @@
       "seed_hits": 1,
       "seeds": [
         "mariana trench r"
-      ]
-    },
-    {
-      "query": "mariana trench sounds",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 1,
-      "seeds": [
-        "mariana trench s"
       ]
     },
     {
@@ -15852,15 +15796,6 @@
       ]
     },
     {
-      "query": "anglerfish real footage",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 1,
-      "seeds": [
-        "anglerfish r"
-      ]
-    },
-    {
       "query": "angler fish review",
       "is_question": false,
       "words": 3,
@@ -16155,6 +16090,15 @@
       "seed_hits": 1,
       "seeds": [
         "bioluminescence c"
+      ]
+    },
+    {
+      "query": "bioluminescence deep sea",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 1,
+      "seeds": [
+        "bioluminescence d"
       ]
     },
     {
@@ -16641,6 +16585,15 @@
       "seed_hits": 1,
       "seeds": [
         "challenger deep a"
+      ]
+    },
+    {
+      "query": "challenger deep footage",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 1,
+      "seeds": [
+        "challenger deep b"
       ]
     },
     {
@@ -18165,6 +18118,33 @@
       ]
     },
     {
+      "query": "whale fall scene",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 1,
+      "seeds": [
+        "whale fall"
+      ]
+    },
+    {
+      "query": "whale fall soundtrack",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 1,
+      "seeds": [
+        "whale fall"
+      ]
+    },
+    {
+      "query": "whale fall animation",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 1,
+      "seeds": [
+        "whale fall a"
+      ]
+    },
+    {
       "query": "whale fall audiobook",
       "is_question": false,
       "words": 3,
@@ -18180,6 +18160,15 @@
       "seed_hits": 1,
       "seeds": [
         "whale fall a"
+      ]
+    },
+    {
+      "query": "whale fall book",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 1,
+      "seeds": [
+        "whale fall b"
       ]
     },
     {
@@ -18282,6 +18271,15 @@
       ]
     },
     {
+      "query": "whale fall film",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 1,
+      "seeds": [
+        "whale fall f"
+      ]
+    },
+    {
       "query": "whale fish fall",
       "is_question": false,
       "words": 3,
@@ -18315,6 +18313,15 @@
       "seed_hits": 1,
       "seeds": [
         "whale fall h"
+      ]
+    },
+    {
+      "query": "whale fall interview",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 1,
+      "seeds": [
+        "whale fall i"
       ]
     },
     {
@@ -18381,6 +18388,15 @@
       ]
     },
     {
+      "query": "whale fall movie",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 1,
+      "seeds": [
+        "whale fall m"
+      ]
+    },
+    {
       "query": "whale fall music",
       "is_question": false,
       "words": 3,
@@ -18405,6 +18421,15 @@
       "seed_hits": 1,
       "seeds": [
         "whale fall m"
+      ]
+    },
+    {
+      "query": "whale fall nautilus",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 1,
+      "seeds": [
+        "whale fall n"
       ]
     },
     {
@@ -18435,34 +18460,16 @@
       ]
     },
     {
+      "query": "whalefall spoiler review",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 1,
+      "seeds": [
+        "whale fall s"
+      ]
+    },
+    {
       "query": "whale fall song",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 1,
-      "seeds": [
-        "whale fall s"
-      ]
-    },
-    {
-      "query": "whale fall sabab",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 1,
-      "seeds": [
-        "whale fall s"
-      ]
-    },
-    {
-      "query": "scientists whale fall",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 1,
-      "seeds": [
-        "whale fall s"
-      ]
-    },
-    {
-      "query": "sperm whale fall",
       "is_question": false,
       "words": 3,
       "seed_hits": 1,
@@ -18930,15 +18937,6 @@
       ]
     },
     {
-      "query": "submersible explosion footage",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 1,
-      "seeds": [
-        "submersible e"
-      ]
-    },
-    {
       "query": "submersible elux lab-id",
       "is_question": false,
       "words": 3,
@@ -19317,15 +19315,6 @@
       ]
     },
     {
-      "query": "submersible pump installation",
-      "is_question": false,
-      "words": 3,
-      "seed_hits": 1,
-      "seeds": [
-        "submersible p"
-      ]
-    },
-    {
       "query": "submersible pool pump",
       "is_question": false,
       "words": 3,
@@ -19354,6 +19343,15 @@
     },
     {
       "query": "submersible pressure gauge",
+      "is_question": false,
+      "words": 3,
+      "seed_hits": 1,
+      "seeds": [
+        "submersible p"
+      ]
+    },
+    {
+      "query": "submersible pump 12v",
       "is_question": false,
       "words": 3,
       "seed_hits": 1,
@@ -20478,15 +20476,6 @@
       ]
     },
     {
-      "query": "deep sea city underground",
-      "is_question": false,
-      "words": 4,
-      "seed_hits": 1,
-      "seeds": [
-        "deep sea c"
-      ]
-    },
-    {
       "query": "deep sea camera footage",
       "is_question": false,
       "words": 4,
@@ -20505,15 +20494,6 @@
       ]
     },
     {
-      "query": "deep sea diver song",
-      "is_question": false,
-      "words": 4,
-      "seed_hits": 1,
-      "seeds": [
-        "deep sea d"
-      ]
-    },
-    {
       "query": "deep sea diver band",
       "is_question": false,
       "words": 4,
@@ -20524,6 +20504,15 @@
     },
     {
       "query": "deep sea drilling project",
+      "is_question": false,
+      "words": 4,
+      "seed_hits": 1,
+      "seeds": [
+        "deep sea d"
+      ]
+    },
+    {
+      "query": "deep sea diver shovel",
       "is_question": false,
       "words": 4,
       "seed_hits": 1,
@@ -20668,15 +20657,6 @@
     },
     {
       "query": "deep sea ice fishing",
-      "is_question": false,
-      "words": 4,
-      "seed_hits": 1,
-      "seeds": [
-        "deep sea i"
-      ]
-    },
-    {
-      "query": "deep sea in spanish",
       "is_question": false,
       "words": 4,
       "seed_hits": 1,
@@ -20970,15 +20950,6 @@
       "seed_hits": 1,
       "seeds": [
         "deep sea s"
-      ]
-    },
-    {
-      "query": "deep sea trawling osrs",
-      "is_question": false,
-      "words": 4,
-      "seed_hits": 1,
-      "seeds": [
-        "deep sea t"
       ]
     },
     {
@@ -22566,6 +22537,15 @@
       ]
     },
     {
+      "query": "angler fish rain world",
+      "is_question": false,
+      "words": 4,
+      "seed_hits": 1,
+      "seeds": [
+        "anglerfish r"
+      ]
+    },
+    {
       "query": "anglerfish sound animal company",
       "is_question": false,
       "words": 4,
@@ -22887,15 +22867,6 @@
       "seed_hits": 1,
       "seeds": [
         "bioluminescence z"
-      ]
-    },
-    {
-      "query": "deep sea creatures 4k",
-      "is_question": false,
-      "words": 4,
-      "seed_hits": 1,
-      "seeds": [
-        "deep sea creature"
       ]
     },
     {
@@ -23535,15 +23506,6 @@
       "seed_hits": 1,
       "seeds": [
         "challenger deep l"
-      ]
-    },
-    {
-      "query": "challenger deep full movie",
-      "is_question": false,
-      "words": 4,
-      "seed_hits": 1,
-      "seeds": [
-        "challenger deep m"
       ]
     },
     {
@@ -24276,6 +24238,15 @@
       ]
     },
     {
+      "query": "whale fall final scene",
+      "is_question": false,
+      "words": 4,
+      "seed_hits": 1,
+      "seeds": [
+        "whale fall f"
+      ]
+    },
+    {
       "query": "whale fall full album",
       "is_question": false,
       "words": 4,
@@ -24294,6 +24265,24 @@
       ]
     },
     {
+      "query": "whale fall movie review",
+      "is_question": false,
+      "words": 4,
+      "seed_hits": 1,
+      "seeds": [
+        "whale fall m"
+      ]
+    },
+    {
+      "query": "whale fall movie trailer",
+      "is_question": false,
+      "words": 4,
+      "seed_hits": 1,
+      "seeds": [
+        "whale fall m"
+      ]
+    },
+    {
       "query": "whale fall blue planet",
       "is_question": false,
       "words": 4,
@@ -24303,12 +24292,12 @@
       ]
     },
     {
-      "query": "the whale falling scene",
+      "query": "whale fall review spoiler",
       "is_question": false,
       "words": 4,
       "seed_hits": 1,
       "seeds": [
-        "whale fall s"
+        "whale fall r"
       ]
     },
     {
@@ -24318,6 +24307,15 @@
       "seed_hits": 1,
       "seeds": [
         "whale fall t"
+      ]
+    },
+    {
+      "query": "blue whale fall video",
+      "is_question": false,
+      "words": 4,
+      "seed_hits": 1,
+      "seeds": [
+        "whale fall v"
       ]
     },
     {
@@ -26337,15 +26335,6 @@
       ]
     },
     {
-      "query": "life in mariana trench",
-      "is_question": false,
-      "words": 4,
-      "seed_hits": 1,
-      "seeds": [
-        "what lives in mariana trench"
-      ]
-    },
-    {
       "query": "deep sea adventure board game",
       "is_question": false,
       "words": 5,
@@ -27786,6 +27775,15 @@
       ]
     },
     {
+      "query": "everbilt submersible utility pump 1/6hp",
+      "is_question": false,
+      "words": 5,
+      "seed_hits": 1,
+      "seeds": [
+        "submersible e"
+      ]
+    },
+    {
       "query": "submersible gmt luna rossa titanio",
       "is_question": false,
       "words": 5,
@@ -28692,33 +28690,6 @@
       "seed_hits": 1,
       "seeds": [
         "deepest part of the ocean s"
-      ]
-    },
-    {
-      "query": "living creatures in mariana trench",
-      "is_question": false,
-      "words": 5,
-      "seed_hits": 1,
-      "seeds": [
-        "what lives in mariana trench"
-      ]
-    },
-    {
-      "query": "animals living in mariana trench",
-      "is_question": false,
-      "words": 5,
-      "seed_hits": 1,
-      "seeds": [
-        "what lives in mariana trench"
-      ]
-    },
-    {
-      "query": "life in mariana trench documentary",
-      "is_question": false,
-      "words": 5,
-      "seed_hits": 1,
-      "seeds": [
-        "what lives in mariana trench d"
       ]
     },
     {

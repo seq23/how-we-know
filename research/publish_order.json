@@ -22,7 +22,7 @@
       "pin_errors"
     ]
   },
-  "generated_at": "2026-10-10T10:09:31.282855+00:00",
+  "generated_at": "2026-10-17T10:08:55.759634+00:00",
   "generator": "research/publish_order.py",
   "rule": "pov/topic-taxonomy.json: 'Rank candidates by (search demand / competition).' Implemented as a hard GATE on both axes, then a geometric combined score among survivors.",
   "gate": {
@@ -162,8 +162,23 @@
   "unmeasured": [],
   "episodes_without_competition_score": [
     {
+      "slug": "how-are-microchips-designed",
+      "query": "how are microchips designed",
+      "status": "no_competition_score"
+    },
+    {
       "slug": "how-are-microchips-made",
       "query": "how are microchips made",
+      "status": "no_competition_score"
+    },
+    {
+      "slug": "how-deep-can-a-sperm-whale-go",
+      "query": "how deep can a sperm whale go",
+      "status": "no_competition_score"
+    },
+    {
+      "slug": "how-deep-can-whales-dive",
+      "query": "how deep can whales dive",
       "status": "no_competition_score"
     },
     {
@@ -252,8 +267,18 @@
       "status": "no_competition_score"
     },
     {
+      "slug": "what-is-hydrothermal-vents",
+      "query": "what is a hydrothermal vent",
+      "status": "no_competition_score"
+    },
+    {
       "slug": "what-is-kevlar-made-of",
       "query": "what is kevlar made of",
+      "status": "no_competition_score"
+    },
+    {
+      "slug": "what-lives-in-mariana-trench",
+      "query": "what lives in the mariana trench",
       "status": "no_competition_score"
     },
     {
@@ -264,6 +289,16 @@
     {
       "slug": "what-lives-in-the-sea",
       "query": "what lives in the sea",
+      "status": "no_competition_score"
+    },
+    {
+      "slug": "why-are-deep-sea-creatures-so-big",
+      "query": "why are deep sea creatures so big",
+      "status": "no_competition_score"
+    },
+    {
+      "slug": "why-deep-sea-creatures-are-creepers",
+      "query": "why are deep sea creatures creepers",
       "status": "no_competition_score"
     },
     {
@@ -317,7 +352,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-10T10:09:21.664623+00:00"
+          "fetched_utc": "2026-10-17T10:08:46.795034+00:00"
         }
       },
       "competition": {
@@ -396,7 +431,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-10T10:09:16.786534+00:00"
+          "fetched_utc": "2026-10-17T10:08:42.336457+00:00"
         }
       },
       "competition": {
@@ -474,7 +509,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-10T10:09:12.965577+00:00"
+          "fetched_utc": "2026-10-17T10:08:38.793526+00:00"
         }
       },
       "competition": {
@@ -552,7 +587,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-10T10:09:25.508363+00:00"
+          "fetched_utc": "2026-10-17T10:08:50.358762+00:00"
         }
       },
       "competition": {
@@ -632,7 +667,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-10T10:09:31.282420+00:00"
+          "fetched_utc": "2026-10-17T10:08:55.759090+00:00"
         }
       },
       "competition": {
@@ -703,8 +738,8 @@
         "key_term_completions": 10,
         "key_term_corpus_breadth": 0,
         "sample_completions": [
-          "why deep sea creatures are scary",
           "why do deep sea creatures",
+          "why deep sea creatures are scary",
           "why deep sea creatures",
           "what is the deepest sea creature"
         ],
@@ -712,7 +747,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-10T10:09:17.777470+00:00"
+          "fetched_utc": "2026-10-17T10:08:43.216826+00:00"
         }
       },
       "competition": {
@@ -793,7 +828,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-10T10:09:18.742957+00:00"
+          "fetched_utc": "2026-10-17T10:08:44.120592+00:00"
         }
       },
       "competition": {
@@ -871,7 +906,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-10T10:09:26.465137+00:00"
+          "fetched_utc": "2026-10-17T10:08:51.251897+00:00"
         }
       },
       "competition": {
@@ -952,7 +987,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-10T10:09:19.731611+00:00"
+          "fetched_utc": "2026-10-17T10:08:45.021466+00:00"
         }
       },
       "competition": {
@@ -1012,11 +1047,11 @@
       "gate": {
         "verdict": "passed",
         "failed": [],
-        "reason": "demand 0.434 clears the 0.16 floor and title gap 0.90 clears the 0.3 saturation ceiling."
+        "reason": "demand 0.427 clears the 0.16 floor and title gap 0.90 clears the 0.3 saturation ceiling."
       },
       "demand": {
-        "demand_index": 0.4344,
-        "autocomplete_completions": 3,
+        "demand_index": 0.4269,
+        "autocomplete_completions": 2,
         "exact_in_autocomplete": false,
         "corpus_breadth": 0,
         "key_term": "scariest",
@@ -1024,14 +1059,13 @@
         "key_term_corpus_breadth": 0,
         "sample_completions": [
           "the scariest deep sea creatures",
-          "the most scariest deep sea creatures",
-          "scariest deep sea monsters"
+          "the most scariest deep sea creatures"
         ],
         "caveat": "autocomplete presence, NOT search volume",
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-10T10:09:20.734703+00:00"
+          "fetched_utc": "2026-10-17T10:08:45.927199+00:00"
         }
       },
       "competition": {
@@ -1072,7 +1106,7 @@
         "breakouts": 0,
         "status": "ok"
       },
-      "combined_score": 0.4945,
+      "combined_score": 0.4902,
       "trend_multiplier": 1.0,
       "trend_note": "Trends series not quotable; neutral",
       "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
@@ -1108,7 +1142,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-10T10:09:30.292860+00:00"
+          "fetched_utc": "2026-10-17T10:08:54.843738+00:00"
         }
       },
       "competition": {
@@ -1183,7 +1217,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-10T10:09:29.342304+00:00"
+          "fetched_utc": "2026-10-17T10:08:53.942896+00:00"
         }
       },
       "competition": {
@@ -1262,7 +1296,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-10T10:09:15.831044+00:00"
+          "fetched_utc": "2026-10-17T10:08:41.448258+00:00"
         }
       },
       "competition": {
@@ -1340,7 +1374,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-10T10:09:27.432016+00:00"
+          "fetched_utc": "2026-10-17T10:08:52.161883+00:00"
         }
       },
       "competition": {
@@ -1417,7 +1451,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-10T10:09:24.552983+00:00"
+          "fetched_utc": "2026-10-17T10:08:49.465621+00:00"
         }
       },
       "competition": {
@@ -1495,7 +1529,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-10T10:09:13.922432+00:00"
+          "fetched_utc": "2026-10-17T10:08:39.677157+00:00"
         }
       },
       "competition": {
