@@ -1,12 +1,13 @@
 {
   "day": "2026-10-17",
-  "spent": 6188,
+  "spent": 6953,
   "by_lane": {
     "repackage": 2481,
     "demand": 1,
     "cloud-upload": 552,
     "handoff": 853,
     "captions-replace": 1800,
-    "captions": 501
+    "captions": 501,
+    "tags-backfill": 765
   }
 }
