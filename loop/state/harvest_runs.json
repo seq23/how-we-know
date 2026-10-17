@@ -3,11 +3,11 @@
   "_seeded": "2026-09-19: the three ci-hosted stamps below record run 35420734439 (loop \u00b7 Sat 04:00 UTC, 2026-09-19T04:14Z-04:35Z), in which research/imagery.py, imagery_materials.py and imagery_species.py ran and committed their pools (rights.json 100, materials.json 12, species.json 33). research/imagery_video.py has NO stamp on purpose: no scheduled host has ever run it. Its first stamp is written by the Mac's batch.",
   "research/imagery.py": {
     "host": "ci",
-    "last_run_at": "2026-10-10T04:19:12+00:00",
-    "last_success_at": "2026-10-10T04:19:12+00:00",
+    "last_run_at": "2026-10-17T04:16:50+00:00",
+    "last_success_at": "2026-10-17T04:16:50+00:00",
     "ok": true,
     "exit": 0,
-    "week": "2026-W41",
+    "week": "2026-W42",
     "records": 108,
     "tail": [
       "by slot: {'trench': 5, 'frilled_shark': 6, 'vehicle': 11, 'column': 5, 'anglerfish': 5, 'jelly': 3, 'sponge': 9, 'coral': 5, 'cucumber': 6, 'star': 7, 'red_animal': 5, 'siphonophore': 2, 'squid': 5, 'vent': 4, 'crab': 5, 'seafloor': 4, 'eyes': 4, 'transparent': 5, 'octopus': 3, 'fish': 3, 'snailfish': 3, 'biolum': 3}",
@@ -20,11 +20,11 @@
   },
   "research/imagery_materials.py": {
     "host": "ci",
-    "last_run_at": "2026-10-10T04:37:16+00:00",
-    "last_success_at": "2026-10-10T04:37:16+00:00",
+    "last_run_at": "2026-10-17T04:48:04+00:00",
+    "last_success_at": "2026-10-17T04:48:04+00:00",
     "ok": true,
     "exit": 0,
-    "week": "2026-W41",
+    "week": "2026-W42",
     "records": 12,
     "tail": [
       "  DROP tempered-glass     no candidate passed both gates",
@@ -37,11 +37,11 @@
   },
   "research/imagery_species.py": {
     "host": "ci",
-    "last_run_at": "2026-10-10T04:38:13+00:00",
-    "last_success_at": "2026-10-10T04:38:13+00:00",
+    "last_run_at": "2026-10-17T04:49:24+00:00",
+    "last_success_at": "2026-10-17T04:49:24+00:00",
     "ok": true,
     "exit": 0,
-    "week": "2026-W41",
+    "week": "2026-W42",
     "records": 33,
     "tail": [
       "  uncovered         0  Lanternfish                ep 08",
@@ -68,5 +68,21 @@
       "verified 164 clips: sha256 matches, clean window present, commercial use cleared"
     ],
     "last_success_at": "2026-10-16T07:50:26+00:00"
+  },
+  "research/imagery_food.py": {
+    "host": "ci",
+    "last_run_at": "2026-10-17T04:30:07+00:00",
+    "ok": false,
+    "exit": 1,
+    "week": "2026-W42",
+    "records": 10,
+    "tail": [
+      "  File \"/home/runner/work/how-we-know/how-we-know/research/imagery_food.py\", line 296, in verify_rights",
+      "    n += M.verify_rights(man=clips)",
+      "         ^^^^^^^^^^^^^^^^^^^^^^^^^^",
+      "  File \"/home/runner/work/how-we-know/how-we-know/research/imagery_materials.py\", line 464, in verify_rights",
+      "    raise AssertionError(f\"{rec['subject']}: {rec['local_file']} is not on disk\")",
+      "AssertionError: steak-sizzle: clips/food_clip__steak-sizzle__pixabay-11632__sizzling-steak-barbecue-bbq-food-grill-meat-fire.mp4 is not on disk"
+    ]
   }
 }
