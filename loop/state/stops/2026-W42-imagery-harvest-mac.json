@@ -1,7 +1,7 @@
 {
   "stage": "imagery-harvest-mac",
   "week": "2026-W42",
-  "at": "2026-10-16T07:50:26+00:00",
+  "at": "2026-10-17T04:20:40+00:00",
   "code": "DELEGATED_HARVEST_STALE",
   "message": "1 delegated harvester(s) have not been run by their host inside the 10-day cap: research/imagery_food.py on ci (last run: never; last success: never). This host cannot run it and the host that can has been silent, so the pool it feeds has stopped growing.",
   "detail": {
@@ -30,11 +30,9 @@
   "held_items": [],
   "exit_code": 0,
   "work_done_before_stop": [
-    "harvested video clips - the scarce pool through research/imagery_video.py --harvest --refresh",
-    "verified research/imagery.py is harvesting on ci (delegated): last success 2026-10-10T04:19:12+00:00 (6.1 day(s) ago), 108 record(s) - within the 10-day cap",
-    "verified research/imagery_materials.py is harvesting on ci (delegated): last success 2026-10-10T04:37:16+00:00 (6.1 day(s) ago), 12 record(s) - within the 10-day cap",
-    "verified research/imagery_species.py is harvesting on ci (delegated): last success 2026-10-10T04:38:13+00:00 (6.1 day(s) ago), 33 record(s) - within the 10-day cap",
-    "channel/imagery/video_rights.json grew 163 -> 164"
+    "verified research/imagery.py is harvesting on ci (delegated): last success 2026-10-10T04:19:12+00:00 (7.0 day(s) ago), 108 record(s) - within the 10-day cap",
+    "verified research/imagery_materials.py is harvesting on ci (delegated): last success 2026-10-10T04:37:16+00:00 (7.0 day(s) ago), 12 record(s) - within the 10-day cap",
+    "verified research/imagery_species.py is harvesting on ci (delegated): last success 2026-10-10T04:38:13+00:00 (7.0 day(s) ago), 33 record(s) - within the 10-day cap"
   ],
   "notes": [
     "allocation: deep-sea-ocean-science 2, materials-and-manufacturing 2, food-science 2 -> 5 scheduled harvester(s): 1 run here on mac-batch, 4 delegated",
@@ -46,15 +44,10 @@
     "cleared pool before: channel/imagery/materials.json 12 record(s)",
     "cleared pool before: channel/imagery/rights.json 108 record(s)",
     "cleared pool before: channel/imagery/species.json 33 record(s)",
-    "cleared pool before: channel/imagery/video_rights.json 163 record(s)",
+    "cleared pool before: channel/imagery/video_rights.json 164 record(s)",
     "demand at the current cadence: 6/week, 48 episode(s) over the next 8 weeks. An episode with no cleared footage is illustrated, which is a legitimate outcome and never a reason to widen the gate.",
     "research/imagery_video.py: rights gate credit_is_noaa_only() present",
-    "  research/imagery_video.py:   rejected   42  gate 0-size",
-    "  research/imagery_video.py:   rejected    1  gate C-window",
-    "  research/imagery_video.py:   carried forward 4 previously-accepted clip(s)",
-    "  research/imagery_video.py: downloaded 160 clips -> /Users/sequoiataylor/GitHub/how-we-know/channel/imagery/clips",
-    "  research/imagery_video.py: manifest -> /Users/sequoiataylor/GitHub/how-we-know/channel/imagery/video_rights.json",
-    "  research/imagery_video.py: verified 164 clips: sha256 matches, clean window present, commercial use cleared",
+    "research/imagery_video.py: harvested 0.9 day(s) ago on mac-batch; due again after 6 (loop/config.json harvest.interval_days) - not re-run tonight",
     "cleared pool after: channel/imagery/food.json 5 record(s)",
     "cleared pool after: channel/imagery/materials.json 12 record(s)",
     "cleared pool after: channel/imagery/rights.json 108 record(s)",
