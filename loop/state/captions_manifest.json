@@ -1,6 +1,6 @@
 {
   "week": "2026-W42",
-  "at": "2026-10-16T15:09:30+00:00",
+  "at": "2026-10-17T15:08:32+00:00",
   "plan": [
     {
       "slug": "10-what-is-the-deepest-part-of-the-ocean",
@@ -345,21 +345,12 @@
       "already": true
     },
     {
-      "slug": "how-deep-can-a-sperm-whale-go",
-      "video_id": "hh5mMno-Iis",
-      "srt": "/home/runner/work/how-we-know/how-we-know/captions/how-deep-can-a-sperm-whale-go.srt",
-      "cues": 230,
-      "sha256": "69acb8a32c1601d1fcf91bed457956185a02589997db88b9d316ddeadf4ca7aa",
-      "order": 38,
-      "already": true
-    },
-    {
       "slug": "what-lives-in-mariana-trench",
       "video_id": "REa1JiBNVto",
       "srt": "/home/runner/work/how-we-know/how-we-know/captions/what-lives-in-mariana-trench.srt",
       "cues": 188,
       "sha256": "0a84762a8a74f8b08adff6bb591357c638636bf3802ed7df00851465bd2d5ec3",
-      "order": 39,
+      "order": 38,
       "already": true
     },
     {
@@ -368,7 +359,7 @@
       "srt": "/home/runner/work/how-we-know/how-we-know/captions/what-is-hydrothermal-vents.srt",
       "cues": 168,
       "sha256": "e4c1312f8cff6415c7a4da5104bf2115a02753a836ee34ec3315818ce4dcc16f",
-      "order": 40,
+      "order": 39,
       "already": true
     },
     {
@@ -377,7 +368,7 @@
       "srt": "/home/runner/work/how-we-know/how-we-know/captions/how-are-microchips-designed.srt",
       "cues": 166,
       "sha256": "c85b5afcc824ee28ea77d6844561b011c2d934b8e9a0a2d821acaec34e339a58",
-      "order": 41,
+      "order": 40,
       "already": true
     },
     {
@@ -386,7 +377,7 @@
       "srt": "/home/runner/work/how-we-know/how-we-know/captions/how-deep-can-whales-dive.srt",
       "cues": 160,
       "sha256": "f89d476bef9f85d4de7f96a7c21900ca881e3bf450eafe44dd84a00ec78de0b5",
-      "order": 42,
+      "order": 41,
       "already": true
     },
     {
@@ -395,8 +386,8 @@
       "srt": "/home/runner/work/how-we-know/how-we-know/captions/why-bread-rises-steak-browns-chocolate-snaps.srt",
       "cues": 673,
       "sha256": "e78d38baf36321a20e5b9d09ad27c500602082cdf0706c81233496ee4c9f936b",
-      "order": 43,
-      "already": false
+      "order": 42,
+      "already": true
     },
     {
       "slug": "why-deep-sea-creatures-are-creepers",
@@ -404,8 +395,8 @@
       "srt": "/home/runner/work/how-we-know/how-we-know/captions/why-deep-sea-creatures-are-creepers.srt",
       "cues": 172,
       "sha256": "3b680fe95e7fc1f862add9ecbedfbe7546fca3bba8a7d372adec07755f01f509",
-      "order": 44,
-      "already": false
+      "order": 43,
+      "already": true
     },
     {
       "slug": "why-are-deep-sea-creatures-so-big",
@@ -413,8 +404,17 @@
       "srt": "/home/runner/work/how-we-know/how-we-know/captions/why-are-deep-sea-creatures-so-big.srt",
       "cues": 177,
       "sha256": "0b39e22c23c7c8e2bab2d677e783433f12c01a5dd3ab4bfb61f8e1f27bfde06e",
-      "order": 45,
+      "order": 44,
       "already": false
+    },
+    {
+      "slug": "how-deep-can-a-sperm-whale-go",
+      "video_id": "F684ebB13gg",
+      "srt": "/home/runner/work/how-we-know/how-we-know/captions/how-deep-can-a-sperm-whale-go.srt",
+      "cues": 230,
+      "sha256": "69acb8a32c1601d1fcf91bed457956185a02589997db88b9d316ddeadf4ca7aa",
+      "order": 45,
+      "already": true
     }
   ],
   "gaps": []

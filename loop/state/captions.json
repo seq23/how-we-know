@@ -48,23 +48,27 @@
       "slug": "20-what-is-the-midnight-zone",
       "caption_id": "AUieDaZDGBhpDHO_U-KwRGeoA7EmjSBW2B-_LdDop2LN75NBvIlqmx3y",
       "language": "en",
-      "srt_sha256": "6bfca129e03f9cd2b747f1aca57a0897d679e9e848d4e013d5879bb69a9626f9",
+      "srt_sha256": "ad7320268ebeb77f6f01a4b8a6b671550df9b85fccd686c9bb5e3fb709c60f2a",
       "cues": 124,
       "track_kind": "standard",
-      "source": "inserted",
+      "source": "replaced",
       "recorded_at": "2026-09-03T17:28:03+00:00",
-      "verified_at": "2026-10-10T15:10:01+00:00"
+      "verified_at": "2026-10-10T15:10:01+00:00",
+      "previous_sha256": "6bfca129e03f9cd2b747f1aca57a0897d679e9e848d4e013d5879bb69a9626f9",
+      "replaced_at": "2026-10-17T15:08:34+00:00"
     },
     "MAV4PF056RA": {
       "slug": "07-why-deep-sea-creatures-get-creepier-deeper",
       "caption_id": "AUieDabp19xhi0pSE1USurfJlEDTXsSf4Dj2Xh_8_2VeuOQLtraQw2EH",
       "language": "en",
-      "srt_sha256": "eaa3524f0b85824526e23c0edf000eed5c97ca1a1271783c93edc6c81b84b3d9",
+      "srt_sha256": "648939f97ccbe483ba5c2933e0f21e6d47e99838c276380b9abded26aa7b2b0f",
       "cues": 143,
       "track_kind": "standard",
-      "source": "inserted",
+      "source": "replaced",
       "recorded_at": "2026-09-03T17:28:04+00:00",
-      "verified_at": "2026-10-12T15:32:12+00:00"
+      "verified_at": "2026-10-12T15:32:12+00:00",
+      "previous_sha256": "eaa3524f0b85824526e23c0edf000eed5c97ca1a1271783c93edc6c81b84b3d9",
+      "replaced_at": "2026-10-17T15:08:35+00:00"
     },
     "MozJZ-ChEZU": {
       "slug": "06-why-some-deep-sea-creatures-are-transparent",
@@ -92,23 +96,27 @@
       "slug": "08-what-creatures-live-in-the-deep-sea",
       "caption_id": "AUieDaZiiDh5e-IR11svzPVPWEg21mm8Gw4irGx5Zc6DPVRHsYpkq-dJ",
       "language": "en",
-      "srt_sha256": "5c19503cf6bc5dff45bd5fbb865f9e2b9bb55a09d59e892cd1b27b478c4d6ac0",
+      "srt_sha256": "2017ce82244de1a973ad7c6366202a6d24ad28696c1c0ecef640b1dc85a51cb0",
       "cues": 127,
       "track_kind": "standard",
-      "source": "inserted",
+      "source": "replaced",
       "recorded_at": "2026-09-03T17:28:06+00:00",
-      "verified_at": "2026-10-14T15:11:21+00:00"
+      "verified_at": "2026-10-14T15:11:21+00:00",
+      "previous_sha256": "5c19503cf6bc5dff45bd5fbb865f9e2b9bb55a09d59e892cd1b27b478c4d6ac0",
+      "replaced_at": "2026-10-17T15:08:35+00:00"
     },
     "G1TqXmf36Qo": {
       "slug": "09-what-is-the-scariest-deep-sea-creature",
       "caption_id": "AUieDabpl4kElzsAISTxZ3TBA31w9XHhOy51A3pL4QCvy4OuBr53PRH7",
       "language": "en",
-      "srt_sha256": "e22d53306e0fcd72a6393bb601f13774731665f5e2c0a90b95879eaadfeb51d5",
+      "srt_sha256": "9a4e16edba776250ef9016edf332640ea142519ff1068f59cb04441e4a5500ae",
       "cues": 135,
       "track_kind": "standard",
-      "source": "inserted",
+      "source": "replaced",
       "recorded_at": "2026-09-03T17:28:07+00:00",
-      "verified_at": "2026-10-02T15:10:59+00:00"
+      "verified_at": "2026-10-02T15:10:59+00:00",
+      "previous_sha256": "e22d53306e0fcd72a6393bb601f13774731665f5e2c0a90b95879eaadfeb51d5",
+      "replaced_at": "2026-10-17T15:08:36+00:00"
     },
     "OdYunlbB73g": {
       "slug": "19-what-is-the-deepest-fish-ever-recorded",
@@ -447,7 +455,8 @@
       "cues": 188,
       "track_kind": "standard",
       "source": "inserted",
-      "recorded_at": "2026-10-15T15:10:46+00:00"
+      "recorded_at": "2026-10-15T15:10:46+00:00",
+      "verified_at": "2026-10-17T15:08:36+00:00"
     },
     "09O44lDEYYo": {
       "slug": "what-is-hydrothermal-vents",
@@ -508,31 +517,34 @@
       "track_kind": "standard",
       "source": "inserted",
       "recorded_at": "2026-10-17T14:10:00+00:00"
-    }
-  },
-  "blocked": {
+    },
     "1ME4-ztFBXM": {
       "slug": "why-are-deep-sea-creatures-so-big",
-      "reason": "QUOTA_DEFERRED",
-      "since": "2026-10-16T15:09:30+00:00",
-      "sha256": "0b39e22c23c7c8e2bab2d677e783433f12c01a5dd3ab4bfb61f8e1f27bfde06e"
+      "caption_id": "AUieDaZZ-IIbkuS-VqokNW1UekQKQSaI1i7hRnkvRMgYKj7v75IRe9wW",
+      "language": "en",
+      "srt_sha256": "0b39e22c23c7c8e2bab2d677e783433f12c01a5dd3ab4bfb61f8e1f27bfde06e",
+      "cues": 177,
+      "track_kind": "standard",
+      "source": "inserted",
+      "recorded_at": "2026-10-17T15:08:33+00:00"
     }
   },
-  "updated": "2026-10-17T14:10:00+00:00",
+  "blocked": {},
+  "updated": "2026-10-17T15:08:36+00:00",
   "token_scopes": [],
   "token_has_force_ssl": true,
   "replace": {
-    "at": "2026-10-16T15:09:32+00:00",
-    "replaced": [],
-    "skipped": {
-      "how-do-self-healing-materials-work": "the live cut is 517s but the local track was built for a 708.7s timeline - replacing would mis-time it the other way",
-      "how-deep-can-a-sperm-whale-go": "the live cut is 930s but the local track was built for a 910.6s timeline - replacing would mis-time it the other way"
-    },
-    "deferred": [
+    "at": "2026-10-17T15:08:36+00:00",
+    "replaced": [
       "20-what-is-the-midnight-zone",
       "07-why-deep-sea-creatures-get-creepier-deeper",
       "08-what-creatures-live-in-the-deep-sea",
-      "09-what-is-the-scariest-deep-sea-creature",
+      "09-what-is-the-scariest-deep-sea-creature"
+    ],
+    "skipped": {
+      "how-do-self-healing-materials-work": "the live cut is 517s but the local track was built for a 708.7s timeline - replacing would mis-time it the other way"
+    },
+    "deferred": [
       "19-what-is-the-deepest-fish-ever-recorded",
       "04-why-deep-sea-creatures-are-so-scary",
       "16-what-happens-when-a-whale-dies-in-the-deep-ocean",
