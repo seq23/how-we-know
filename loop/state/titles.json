@@ -379,9 +379,12 @@
       "thumbnail_sha256": "6a861770e674ff373b57074588a8abb0cc121e0957e2f5d6d15b7475e3859c69"
     },
     "19-what-is-the-deepest-fish-ever-recorded": {
-      "applied_at": null,
+      "applied_at": "2026-10-17T08:41:58+00:00",
+      "applied_video_id": "OdYunlbB73g",
       "attempts": 0,
       "checks_passed": true,
+      "description_applied_at": "2026-10-17T08:41:58+00:00",
+      "description_sha256": "347d5ed4c610673fa8bc3d3f4356f0164e0ca5be8d3514f33ead1211a8744907",
       "model": "owner (locked exemplar, 13 Oct 2026)",
       "new_title": "How Deep Can a Fish Live?",
       "old_title": "Hadal snailfish lack a swim bladder at 8,336 meters",
@@ -393,10 +396,14 @@
       "problems": [],
       "proposed_at": "2026-10-13T16:04:46+00:00",
       "question": "what is the deepest fish ever recorded",
-      "slug": "19-what-is-the-deepest-fish-ever-recorded"
+      "slug": "19-what-is-the-deepest-fish-ever-recorded",
+      "thumbnail_applied": true,
+      "thumbnail_applied_at": "2026-10-17T08:41:58+00:00",
+      "thumbnail_sha256": "19cc97289e2915858aad1cdb62791f852b985dfd31017b3295cee6d8ebc23cb8"
     },
     "20-what-is-the-midnight-zone": {
-      "applied_at": null,
+      "applied_at": "2026-10-17T08:41:58+00:00",
+      "applied_video_id": "izdEaeOQBvI",
       "attempts": 0,
       "checks_passed": true,
       "model": "owner (locked exemplar, 13 Oct 2026)",
@@ -410,12 +417,16 @@
       "problems": [],
       "proposed_at": "2026-10-13T16:03:54+00:00",
       "question": "what is the midnight zone",
-      "slug": "20-what-is-the-midnight-zone"
+      "slug": "20-what-is-the-midnight-zone",
+      "thumbnail_applied": false
     },
     "how-are-microchips-designed": {
-      "applied_at": null,
+      "applied_at": "2026-10-17T08:42:06+00:00",
+      "applied_video_id": "rn99K4kav40",
       "attempts": 1,
       "checks_passed": true,
+      "description_applied_at": "2026-10-17T08:42:06+00:00",
+      "description_sha256": "89595e17386d1026ed9d8043d8f0ab8ac2dacc52e096d5dfd89eafafd6c85a3d",
       "model": "claude-subscription/opus",
       "new_title": "Do Microchips Start as Text?",
       "old_title": "Microchips are designed as written text, not drawn by hand — and how we know",
@@ -427,12 +438,18 @@
       "problems": [],
       "proposed_at": "2026-10-13T18:37:38+00:00",
       "question": "how are microchips designed",
-      "slug": "how-are-microchips-designed"
+      "slug": "how-are-microchips-designed",
+      "thumbnail_applied": true,
+      "thumbnail_applied_at": "2026-10-17T08:42:06+00:00",
+      "thumbnail_sha256": "6835502116a507b2e34af02e698bb6030f990ac5fdb9d861247f5447a2caf19c"
     },
     "how-are-microchips-made": {
-      "applied_at": null,
+      "applied_at": "2026-10-17T08:42:11+00:00",
+      "applied_video_id": "YuZxDiNUw4w",
       "attempts": 1,
       "checks_passed": true,
+      "description_applied_at": "2026-10-17T08:42:11+00:00",
+      "description_sha256": "a0049252867ca06b4f11929183aa62754105c1c08254cb935627c5d405f2b4a9",
       "model": "claude-subscription/opus",
       "new_title": "How Are Microchips Built With Light?",
       "old_title": "Silicon wafers are not cut from a natural crystal",
@@ -444,12 +461,18 @@
       "problems": [],
       "proposed_at": "2026-10-13T16:05:57+00:00",
       "question": "how are microchips made",
-      "slug": "how-are-microchips-made"
+      "slug": "how-are-microchips-made",
+      "thumbnail_applied": true,
+      "thumbnail_applied_at": "2026-10-17T08:42:11+00:00",
+      "thumbnail_sha256": "337a63b9b89ec3d7d2643d16d6efa22e80cf489b2a8afd31fe9d9ff2984c178e"
     },
     "how-deep-can-a-sperm-whale-go": {
-      "applied_at": null,
+      "applied_at": "2026-10-17T08:42:12+00:00",
+      "applied_video_id": "hh5mMno-Iis",
       "attempts": 1,
       "checks_passed": true,
+      "description_applied_at": "2026-10-17T08:42:12+00:00",
+      "description_sha256": "f274db4096e54c0d1eb6d4766589ab99d679e4f47d796b609e73e5e0a7ee0086",
       "model": "claude-subscription/opus",
       "new_title": "How Deep Do Sperm Whales Dive?",
       "old_title": "The sperm whale record is a 2,992 meter deep dive — and how we know",
@@ -461,12 +484,16 @@
       "problems": [],
       "proposed_at": "2026-10-13T18:37:51+00:00",
       "question": "how deep can a sperm whale go",
-      "slug": "how-deep-can-a-sperm-whale-go"
+      "slug": "how-deep-can-a-sperm-whale-go",
+      "thumbnail_applied": false
     },
     "how-deep-can-whales-dive": {
-      "applied_at": null,
+      "applied_at": "2026-10-17T08:42:12+00:00",
+      "applied_video_id": "pb27XYAfKAs",
       "attempts": 1,
       "checks_passed": true,
+      "description_applied_at": "2026-10-17T08:42:12+00:00",
+      "description_sha256": "1cfa8d1b3ea2e2d82d5138bad34250aead9efb4139b6505f4f61fe003bf9b95e",
       "model": "claude-subscription/opus",
       "new_title": "How Deep Do Whales Go?",
       "old_title": "Whales can dive 2,992 m deep, a beaked whale's record — and how we know",
@@ -478,7 +505,8 @@
       "problems": [],
       "proposed_at": "2026-10-13T18:38:02+00:00",
       "question": "how deep can whales dive",
-      "slug": "how-deep-can-whales-dive"
+      "slug": "how-deep-can-whales-dive",
+      "thumbnail_applied": false
     },
     "how-deep-mariana-trench": {
       "applied_at": null,
@@ -498,9 +526,12 @@
       "slug": "how-deep-mariana-trench"
     },
     "how-do-scientists-know-about-other-galaxies": {
-      "applied_at": null,
+      "applied_at": "2026-10-17T08:42:13+00:00",
+      "applied_video_id": "Z-Z1FNVQXW0",
       "attempts": 1,
       "checks_passed": true,
+      "description_applied_at": "2026-10-17T08:42:13+00:00",
+      "description_sha256": "63bada10cef020f78ad033b0988fa2be17812aaa865944236dd28a24a5f01a43",
       "model": "claude-subscription/opus",
       "new_title": "How Far Away Are Galaxies?",
       "old_title": "Type Ia supernovae explode at 1.4 solar masses",
@@ -512,12 +543,16 @@
       "problems": [],
       "proposed_at": "2026-10-13T16:09:15+00:00",
       "question": "how do scientists know about other galaxies",
-      "slug": "how-do-scientists-know-about-other-galaxies"
+      "slug": "how-do-scientists-know-about-other-galaxies",
+      "thumbnail_applied": false
     },
     "how-do-scientists-know-how-old-something-is": {
-      "applied_at": null,
+      "applied_at": "2026-10-17T08:42:14+00:00",
+      "applied_video_id": "T6XeND2qM4k",
       "attempts": 2,
       "checks_passed": true,
+      "description_applied_at": "2026-10-17T08:42:14+00:00",
+      "description_sha256": "4a2e8e958a7f1b529db5d605557a8c9f792c5b9c99b60e199fd0f63664689742",
       "model": "claude-subscription/opus",
       "new_title": "How Old Is a Deep Sea Shell?",
       "old_title": "Carbon-14 works up to about fifty thousand years",
@@ -529,12 +564,16 @@
       "problems": [],
       "proposed_at": "2026-10-13T16:09:03+00:00",
       "question": "how do scientists know how old something is",
-      "slug": "how-do-scientists-know-how-old-something-is"
+      "slug": "how-do-scientists-know-how-old-something-is",
+      "thumbnail_applied": false
     },
     "how-do-scientists-know-so-much": {
-      "applied_at": null,
+      "applied_at": "2026-10-17T08:42:15+00:00",
+      "applied_video_id": "zs-gueHeX8k",
       "attempts": 1,
       "checks_passed": true,
+      "description_applied_at": "2026-10-17T08:42:15+00:00",
+      "description_sha256": "9a42f11fa4e2a42a8a5a78620dd4eb3bc59ade62dda20945152eced53400b4d1",
       "model": "claude-subscription/opus",
       "new_title": "How Is the Deep Sea Mapped?",
       "old_title": "Five percent mapped is not five percent known",
@@ -546,10 +585,12 @@
       "problems": [],
       "proposed_at": "2026-10-13T16:08:41+00:00",
       "question": "how do scientists know so much about the deep ocean when we've explored so little of it",
-      "slug": "how-do-scientists-know-so-much"
+      "slug": "how-do-scientists-know-so-much",
+      "thumbnail_applied": false
     },
     "how-do-self-healing-materials-work": {
-      "applied_at": null,
+      "applied_at": "2026-10-17T08:42:19+00:00",
+      "applied_video_id": "eJSCm5sk5AA",
       "attempts": 1,
       "checks_passed": true,
       "model": "claude-subscription/opus",
@@ -563,10 +604,14 @@
       "problems": [],
       "proposed_at": "2026-10-13T16:06:19+00:00",
       "question": "how do self-healing materials work",
-      "slug": "how-do-self-healing-materials-work"
+      "slug": "how-do-self-healing-materials-work",
+      "thumbnail_applied": true,
+      "thumbnail_applied_at": "2026-10-17T08:42:19+00:00",
+      "thumbnail_sha256": "7efab7f2cfbf1254887ffa363d9e9d07acb29902a1d303574eb940f0f1b5fe3d"
     },
     "how-does-quenching-harden-steel": {
-      "applied_at": null,
+      "applied_at": "2026-10-17T08:42:25+00:00",
+      "applied_video_id": "aKyOg7xbxC0",
       "attempts": 1,
       "checks_passed": true,
       "model": "claude-subscription/opus",
@@ -580,12 +625,18 @@
       "problems": [],
       "proposed_at": "2026-10-13T16:06:07+00:00",
       "question": "how does quenching harden steel",
-      "slug": "how-does-quenching-harden-steel"
+      "slug": "how-does-quenching-harden-steel",
+      "thumbnail_applied": true,
+      "thumbnail_applied_at": "2026-10-17T08:42:25+00:00",
+      "thumbnail_sha256": "2e01a75ffc09f78ad12dccb67f9c4b5c773f506ea2c3794f67a8a57a649018ae"
     },
     "how-does-tempered-glass-shatter": {
-      "applied_at": null,
+      "applied_at": "2026-10-17T08:42:26+00:00",
+      "applied_video_id": "TjrpzJE3utU",
       "attempts": 1,
       "checks_passed": true,
+      "description_applied_at": "2026-10-17T08:42:26+00:00",
+      "description_sha256": "24c3823dea0c1aba7f841d4399568f07a1a66554b659eb45e6808795a1d7579b",
       "model": "claude-subscription/opus",
       "new_title": "How Fast Does Glass Shatter?",
       "old_title": "Tempered glass does not weaken, it switches states",
@@ -597,12 +648,16 @@
       "problems": [],
       "proposed_at": "2026-10-13T16:06:32+00:00",
       "question": "how does tempered glass shatter",
-      "slug": "how-does-tempered-glass-shatter"
+      "slug": "how-does-tempered-glass-shatter",
+      "thumbnail_applied": false
     },
     "how-hot-does-a-welding-arc-get": {
-      "applied_at": null,
+      "applied_at": "2026-10-17T08:42:32+00:00",
+      "applied_video_id": "k4OOYUrar30",
       "attempts": 1,
       "checks_passed": true,
+      "description_applied_at": "2026-10-17T08:42:32+00:00",
+      "description_sha256": "2da6f4877beba6bfdb64699b16805d6184c9140c4df66f9da387fdfe83d3d2c5",
       "model": "claude-subscription/opus",
       "new_title": "A Welding Arc Is Not One Thing",
       "old_title": "The welding arc is not one thing, so not one number",
@@ -614,12 +669,18 @@
       "problems": [],
       "proposed_at": "2026-10-13T16:08:11+00:00",
       "question": "how hot does a welding arc get",
-      "slug": "how-hot-does-a-welding-arc-get"
+      "slug": "how-hot-does-a-welding-arc-get",
+      "thumbnail_applied": true,
+      "thumbnail_applied_at": "2026-10-17T08:42:32+00:00",
+      "thumbnail_sha256": "c1d0ddd44dd0066809e7556faf826a7a7a7b1a298a64a1d76376fcec317e3c55"
     },
     "how-is-3d-printed-metal-made": {
-      "applied_at": null,
+      "applied_at": "2026-10-17T08:42:35+00:00",
+      "applied_video_id": "VDFFur-xYUU",
       "attempts": 1,
       "checks_passed": true,
+      "description_applied_at": "2026-10-17T08:42:35+00:00",
+      "description_sha256": "6e0a83b3041196b97784a3c20b6c9b47b611504fe250301ae2823734ff3e7d0b",
       "model": "claude-subscription/opus",
       "new_title": "How Does 3D Printing Melt Metal?",
       "old_title": "Metal cooling at 10000 degrees per second",
@@ -631,12 +692,18 @@
       "problems": [],
       "proposed_at": "2026-10-13T16:07:21+00:00",
       "question": "how is 3d printed metal made",
-      "slug": "how-is-3d-printed-metal-made"
+      "slug": "how-is-3d-printed-metal-made",
+      "thumbnail_applied": true,
+      "thumbnail_applied_at": "2026-10-17T08:42:35+00:00",
+      "thumbnail_sha256": "b3ff7220169044a0d10b8a89393dbdb1ee65614ec891b2667d7ce2cc2098cf73"
     },
     "how-is-a-silicon-wafer-made": {
-      "applied_at": null,
+      "applied_at": "2026-10-17T08:42:39+00:00",
+      "applied_video_id": "xbmIX6n2OI8",
       "attempts": 1,
       "checks_passed": true,
+      "description_applied_at": "2026-10-17T08:42:39+00:00",
+      "description_sha256": "3123432beca72025965c3bcb48ac5c1a149a5f21d00759782e9c5440d861b3af",
       "model": "claude-subscription/opus",
       "new_title": "How Pure Is a Silicon Wafer?",
       "old_title": "Nine-nines silicon does not exist in nature",
@@ -648,12 +715,18 @@
       "problems": [],
       "proposed_at": "2026-10-13T16:06:49+00:00",
       "question": "how is a silicon wafer made",
-      "slug": "how-is-a-silicon-wafer-made"
+      "slug": "how-is-a-silicon-wafer-made",
+      "thumbnail_applied": true,
+      "thumbnail_applied_at": "2026-10-17T08:42:39+00:00",
+      "thumbnail_sha256": "d022a0dbb98a5d26ca5209cf702f75ee599ce447f3afe8cb14ee4b270ac77652"
     },
     "how-is-damascus-steel-made": {
-      "applied_at": null,
+      "applied_at": "2026-10-17T08:42:40+00:00",
+      "applied_video_id": "2zQAc_ZSbMs",
       "attempts": 1,
       "checks_passed": true,
+      "description_applied_at": "2026-10-17T08:42:40+00:00",
+      "description_sha256": "f0deaae1ce25b9f7a6fb09d8fbe14333e43769f89f1b36a5cca1b138368c9291",
       "model": "claude-subscription/opus",
       "new_title": "Damascus Steel Is Not One Thing",
       "old_title": "The Damascus steel process lost by the mid-1800s",
@@ -665,12 +738,16 @@
       "problems": [],
       "proposed_at": "2026-10-13T16:06:40+00:00",
       "question": "how is damascus steel made",
-      "slug": "how-is-damascus-steel-made"
+      "slug": "how-is-damascus-steel-made",
+      "thumbnail_applied": false
     },
     "how-strong-is-graphene": {
-      "applied_at": null,
+      "applied_at": "2026-10-17T08:42:44+00:00",
+      "applied_video_id": "debozzLtVRA",
       "attempts": 1,
       "checks_passed": true,
+      "description_applied_at": "2026-10-17T08:42:44+00:00",
+      "description_sha256": "ac7649d43dbd4061e603585ff153838ad72fbbd72b1ae4f53f7a2569a594906e",
       "model": "claude-subscription/opus",
       "new_title": "Is Graphene Stronger Than Steel?",
       "old_title": "Steel fails at 0.4 gigapascals, graphene at 130",
@@ -682,12 +759,18 @@
       "problems": [],
       "proposed_at": "2026-10-13T16:07:05+00:00",
       "question": "how strong is graphene",
-      "slug": "how-strong-is-graphene"
+      "slug": "how-strong-is-graphene",
+      "thumbnail_applied": true,
+      "thumbnail_applied_at": "2026-10-17T08:42:44+00:00",
+      "thumbnail_sha256": "4ce120dcde10a1fd553ef9ab0583dafa282ee0d751ae92696c58ad4868a602ed"
     },
     "how-strong-is-titanium": {
-      "applied_at": null,
+      "applied_at": "2026-10-17T08:42:44+00:00",
+      "applied_video_id": "RlbR0qGmU0s",
       "attempts": 0,
       "checks_passed": true,
+      "description_applied_at": "2026-10-17T08:42:44+00:00",
+      "description_sha256": "9e2b9c6bf03b25d3501d0c7bef854fee175f0ed617c0cdefe80151ae6da390ad",
       "model": "owner (locked exemplar, 13 Oct 2026)",
       "new_title": "Is Titanium Stronger Than Steel?",
       "old_title": "Titanium strength is not one number, it is four",
@@ -699,12 +782,16 @@
       "problems": [],
       "proposed_at": "2026-10-13T16:06:32+00:00",
       "question": "how strong is titanium",
-      "slug": "how-strong-is-titanium"
+      "slug": "how-strong-is-titanium",
+      "thumbnail_applied": false
     },
     "what-is-a-semiconductor-made-of": {
-      "applied_at": null,
+      "applied_at": "2026-10-17T08:42:49+00:00",
+      "applied_video_id": "kTBlLeWdi4g",
       "attempts": 1,
       "checks_passed": true,
+      "description_applied_at": "2026-10-17T08:42:49+00:00",
+      "description_sha256": "fb2aa59d47ce38a0f0335f968abaad573f3cba5f2a2d2a55c9a2b9c614de2231",
       "model": "claude-subscription/opus",
       "new_title": "Is a Semiconductor Just Silicon?",
       "old_title": "A semiconductor is not defined by being silicon",
@@ -716,12 +803,18 @@
       "problems": [],
       "proposed_at": "2026-10-13T16:06:58+00:00",
       "question": "what is a semiconductor made of",
-      "slug": "what-is-a-semiconductor-made-of"
+      "slug": "what-is-a-semiconductor-made-of",
+      "thumbnail_applied": true,
+      "thumbnail_applied_at": "2026-10-17T08:42:49+00:00",
+      "thumbnail_sha256": "e28665113ef427cca0a8ea8a2b66b460450628f2cbbac231106b0c64ccb42af7"
     },
     "what-is-aerogel-made-of": {
-      "applied_at": null,
+      "applied_at": "2026-10-17T08:42:56+00:00",
+      "applied_video_id": "vrb83gWWaYw",
       "attempts": 1,
       "checks_passed": true,
+      "description_applied_at": "2026-10-17T08:42:56+00:00",
+      "description_sha256": "149cf7af725c25cdffa3f844fbea8aa4980cefd221340ea839ce74cf5c977006",
       "model": "claude-subscription/opus",
       "new_title": "Is Aerogel Just Glass and Air?",
       "old_title": "Window glass that is ninety-nine percent air",
@@ -733,12 +826,18 @@
       "problems": [],
       "proposed_at": "2026-10-13T16:07:52+00:00",
       "question": "what is aerogel made of",
-      "slug": "what-is-aerogel-made-of"
+      "slug": "what-is-aerogel-made-of",
+      "thumbnail_applied": true,
+      "thumbnail_applied_at": "2026-10-17T08:42:56+00:00",
+      "thumbnail_sha256": "80e4fd66776b434a9bd8cb25edb6f9f9085e0eb4c534aca79260281f6bc1efb4"
     },
     "what-is-carbon-fiber-made-of": {
-      "applied_at": null,
+      "applied_at": "2026-10-17T08:43:02+00:00",
+      "applied_video_id": "X2_UfcYnXwc",
       "attempts": 1,
       "checks_passed": true,
+      "description_applied_at": "2026-10-17T08:43:02+00:00",
+      "description_sha256": "4580107c563618080e9e20c940c95f0c9d7317091b3b648f78aff598a4b18ff9",
       "model": "claude-subscription/opus",
       "new_title": "Why Is Carbon Fiber So Expensive?",
       "old_title": "Without stabilization, PAN fiber melts and collapses",
@@ -750,12 +849,18 @@
       "problems": [],
       "proposed_at": "2026-10-13T16:08:19+00:00",
       "question": "what is carbon fiber made of",
-      "slug": "what-is-carbon-fiber-made-of"
+      "slug": "what-is-carbon-fiber-made-of",
+      "thumbnail_applied": true,
+      "thumbnail_applied_at": "2026-10-17T08:43:02+00:00",
+      "thumbnail_sha256": "c24e2c1ac9b00533991af3f9ad2f48a125e617a34d3298deec489de5a5ba315f"
     },
     "what-is-concrete-made-of": {
-      "applied_at": null,
+      "applied_at": "2026-10-17T08:43:09+00:00",
+      "applied_video_id": "C-5IQ_E_P9k",
       "attempts": 1,
       "checks_passed": true,
+      "description_applied_at": "2026-10-17T08:43:09+00:00",
+      "description_sha256": "52717ec30849778a29b5be5f5d09a8b946b313551749ea89336adb844b46ebf1",
       "model": "claude-subscription/opus",
       "new_title": "Concrete Does Not Dry",
       "old_title": "The water in concrete is not a solvent, it is a reagent",
@@ -767,12 +872,18 @@
       "problems": [],
       "proposed_at": "2026-10-13T16:08:25+00:00",
       "question": "what is concrete made of",
-      "slug": "what-is-concrete-made-of"
+      "slug": "what-is-concrete-made-of",
+      "thumbnail_applied": true,
+      "thumbnail_applied_at": "2026-10-17T08:43:09+00:00",
+      "thumbnail_sha256": "c8b0d21808e101633e5f7b89b9ece3e8aacd2a2dd78dba7b1111a332f29eeab7"
     },
     "what-is-hydrothermal-vents": {
-      "applied_at": null,
+      "applied_at": "2026-10-17T08:43:16+00:00",
+      "applied_video_id": "09O44lDEYYo",
       "attempts": 1,
       "checks_passed": true,
+      "description_applied_at": "2026-10-17T08:43:16+00:00",
+      "description_sha256": "70375e5fed647a16c12e502007c19fc91789bb8615d8d9df75ef96eec10a0483",
       "model": "claude-subscription/opus",
       "new_title": "How Hot Are Hydrothermal Vents?",
       "old_title": "Hydrothermal vents pour out seawater up to 400°C, still liquid — and how we know",
@@ -784,12 +895,18 @@
       "problems": [],
       "proposed_at": "2026-10-13T23:38:02+00:00",
       "question": "what is hydrothermal vents",
-      "slug": "what-is-hydrothermal-vents"
+      "slug": "what-is-hydrothermal-vents",
+      "thumbnail_applied": true,
+      "thumbnail_applied_at": "2026-10-17T08:43:16+00:00",
+      "thumbnail_sha256": "ae64abdf1fad7e4af596f497e761cc29266b36b447cce78f94f8ae3095d29da7"
     },
     "what-is-kevlar-made-of": {
-      "applied_at": null,
+      "applied_at": "2026-10-17T08:43:17+00:00",
+      "applied_video_id": "rY7t_VDz9sk",
       "attempts": 1,
       "checks_passed": true,
+      "description_applied_at": "2026-10-17T08:43:17+00:00",
+      "description_sha256": "ceed878d1af06a5441cd474444adbd38e245f9ef89c33f963c05786a1c074272",
       "model": "claude-subscription/opus",
       "new_title": "Why Doesn't Kevlar Melt?",
       "old_title": "The Kevlar polymer does not coil in solution",
@@ -801,12 +918,16 @@
       "problems": [],
       "proposed_at": "2026-10-13T16:08:00+00:00",
       "question": "what is kevlar made of",
-      "slug": "what-is-kevlar-made-of"
+      "slug": "what-is-kevlar-made-of",
+      "thumbnail_applied": false
     },
     "what-lives-in-mariana-trench": {
-      "applied_at": null,
+      "applied_at": "2026-10-17T08:43:20+00:00",
+      "applied_video_id": "REa1JiBNVto",
       "attempts": 1,
       "checks_passed": true,
+      "description_applied_at": "2026-10-17T08:43:20+00:00",
+      "description_sha256": "860fea404358dd213c519ba460c39a7798f42aa3d25cced8269ee5ca21934e9a",
       "model": "claude-subscription/opus",
       "new_title": "Is the Mariana Trench Empty?",
       "old_title": "What really lives in Mariana Trench — and how we know",
@@ -818,7 +939,10 @@
       "problems": [],
       "proposed_at": "2026-10-13T23:38:17+00:00",
       "question": "what lives in mariana trench",
-      "slug": "what-lives-in-mariana-trench"
+      "slug": "what-lives-in-mariana-trench",
+      "thumbnail_applied": true,
+      "thumbnail_applied_at": "2026-10-17T08:43:20+00:00",
+      "thumbnail_sha256": "37d63fce553ee053ce454ddf121d524db3305b06537c553fdf3dba1c096de1c2"
     },
     "what-lives-in-the-depths-of-the-ocean": {
       "applied_at": null,
@@ -855,9 +979,12 @@
       "slug": "what-lives-in-the-sea"
     },
     "why-are-deep-sea-creatures-so-big": {
-      "applied_at": null,
+      "applied_at": "2026-10-17T08:43:20+00:00",
+      "applied_video_id": "1ME4-ztFBXM",
       "attempts": 1,
       "checks_passed": true,
+      "description_applied_at": "2026-10-17T08:43:20+00:00",
+      "description_sha256": "c4e4aab2fc43210b248941c0573ffe0067da1595ed39f294b4178594c15aa208",
       "model": "claude-subscription/opus",
       "new_title": "Most deep-sea creatures are not big",
       "old_title": "Deep sea creatures grow so big in cold, oxygen-rich water — and how we know",
@@ -865,12 +992,16 @@
       "problems": [],
       "proposed_at": "2026-10-13T13:33:48+00:00",
       "question": "why are deep sea creatures so big",
-      "slug": "why-are-deep-sea-creatures-so-big"
+      "slug": "why-are-deep-sea-creatures-so-big",
+      "thumbnail_applied": false
     },
     "why-deep-sea-creatures-are-creepers": {
-      "applied_at": null,
+      "applied_at": "2026-10-17T08:43:20+00:00",
+      "applied_video_id": "xex6Bbzbdkg",
       "attempts": 1,
       "checks_passed": true,
+      "description_applied_at": "2026-10-17T08:43:20+00:00",
+      "description_sha256": "bcd0410c68554962f4a14e1638c4f009caf6f23a6e4ecc0f5db005967b6b9ca9",
       "model": "claude-subscription/opus",
       "new_title": "Why Are Deep Sea Animals Red?",
       "old_title": "Deep sea creatures are creepers built by darkness — and how we know",
@@ -882,12 +1013,16 @@
       "problems": [],
       "proposed_at": "2026-10-13T23:38:47+00:00",
       "question": "why deep sea creatures are creepers",
-      "slug": "why-deep-sea-creatures-are-creepers"
+      "slug": "why-deep-sea-creatures-are-creepers",
+      "thumbnail_applied": false
     },
     "why-deep-sea-fish-die-when-brought-to-surface": {
-      "applied_at": null,
+      "applied_at": "2026-10-17T08:43:25+00:00",
+      "applied_video_id": "qECmixjkDDU",
       "attempts": 1,
       "checks_passed": true,
+      "description_applied_at": "2026-10-17T08:43:25+00:00",
+      "description_sha256": "20bea1dddec071f0e19b5218402b1cb565d5ca1068aa1ac73c0add72b2dac5a3",
       "model": "claude-subscription/opus",
       "new_title": "Why Do Deep Sea Fish Eyes Bulge?",
       "old_title": "Deep sea fish are not being squeezed at depth",
@@ -899,12 +1034,18 @@
       "problems": [],
       "proposed_at": "2026-10-13T16:09:27+00:00",
       "question": "why deep sea fish die when brought to surface",
-      "slug": "why-deep-sea-fish-die-when-brought-to-surface"
+      "slug": "why-deep-sea-fish-die-when-brought-to-surface",
+      "thumbnail_applied": true,
+      "thumbnail_applied_at": "2026-10-17T08:43:25+00:00",
+      "thumbnail_sha256": "61fee5a3a9d6547c4ed7037bddce4255487350eb6e348c55cecdc574550de6f1"
     },
     "why-does-old-iron-not-rust": {
-      "applied_at": null,
+      "applied_at": "2026-10-17T08:43:25+00:00",
+      "applied_video_id": "7tdvXATeeng",
       "attempts": 1,
       "checks_passed": true,
+      "description_applied_at": "2026-10-17T08:43:25+00:00",
+      "description_sha256": "fe2e643e0b8e2eb863ced656d0b519fa3e386a0992b71845636b2fb779586fe7",
       "model": "claude-subscription/opus",
       "new_title": "Can Rust Protect Iron?",
       "old_title": "Iron tools from 3200 BCE that retain metallic cores",
@@ -916,12 +1057,16 @@
       "problems": [],
       "proposed_at": "2026-10-13T16:07:15+00:00",
       "question": "why does old iron not rust",
-      "slug": "why-does-old-iron-not-rust"
+      "slug": "why-does-old-iron-not-rust",
+      "thumbnail_applied": false
     },
     "why-is-carbon-fiber-so-strong": {
-      "applied_at": null,
+      "applied_at": "2026-10-17T08:43:31+00:00",
+      "applied_video_id": "Eueb6oHEbMs",
       "attempts": 1,
       "checks_passed": true,
+      "description_applied_at": "2026-10-17T08:43:31+00:00",
+      "description_sha256": "2973d4c97c0266ed7a8b97046d11c1d33d795e7a350a4008979d1b7c2ee51503",
       "model": "claude-subscription/opus",
       "new_title": "What Makes Carbon Fiber So Strong?",
       "old_title": "Carbon in a graphite plane does not slide",
@@ -933,12 +1078,18 @@
       "problems": [],
       "proposed_at": "2026-10-13T16:07:32+00:00",
       "question": "why is carbon fiber so strong",
-      "slug": "why-is-carbon-fiber-so-strong"
+      "slug": "why-is-carbon-fiber-so-strong",
+      "thumbnail_applied": true,
+      "thumbnail_applied_at": "2026-10-17T08:43:31+00:00",
+      "thumbnail_sha256": "a04f04cdfcd0c18b15cdeb2f5c85b9620ec40994c398520a39ebd5339fd0a099"
     },
     "why-is-steel-so-strong": {
-      "applied_at": null,
+      "applied_at": "2026-10-17T08:43:36+00:00",
+      "applied_video_id": "98ejztJsQNY",
       "attempts": 1,
       "checks_passed": true,
+      "description_applied_at": "2026-10-17T08:43:36+00:00",
+      "description_sha256": "bb6a89f983a4574c8c81d1156514cba4ad2c8ea0350d7b3aadac107655b79d1f",
       "model": "claude-subscription/opus",
       "new_title": "What Makes Steel So Strong?",
       "old_title": "Beyond one point two percent carbon, it is cast iron",
@@ -950,8 +1101,11 @@
       "problems": [],
       "proposed_at": "2026-10-13T16:07:44+00:00",
       "question": "why is steel so strong",
-      "slug": "why-is-steel-so-strong"
+      "slug": "why-is-steel-so-strong",
+      "thumbnail_applied": true,
+      "thumbnail_applied_at": "2026-10-17T08:43:36+00:00",
+      "thumbnail_sha256": "5612dfe6532a5fd9a0c1dbfae4466204d0c16e16143b24ba80ac0c805384af52"
     }
   },
-  "updated": "2026-10-16T23:41:02+00:00"
+  "updated": "2026-10-17T08:43:36+00:00"
 }
