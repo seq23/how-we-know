@@ -614,8 +614,13 @@
       "title": "How Deep Do Sperm Whales Dive?",
       "uploaded_at": "2026-10-13T14:05:07+00:00",
       "privacy": "private",
-      "scheduled_publish_at": "2026-11-09T16:00:00Z",
-      "note": "backfill: scheduled, not yet public"
+      "note": "backfill: scheduled, not yet public",
+      "schedule_was": "2026-11-09T16:00:00Z",
+      "schedule_cancelled_at": "2026-10-17T14:10:00+00:00",
+      "status": "superseded_duplicate",
+      "retired_at": "2026-10-17T14:10:00+00:00",
+      "retired_reason": "render superseded after upload; replaced by F684ebB13gg (loop/supersede_swap.py)",
+      "superseded_by": "F684ebB13gg"
     },
     {
       "slug": "what-lives-in-mariana-trench",
@@ -688,8 +693,19 @@
       "privacy": "private",
       "scheduled_publish_at": "2026-11-26T16:00:00Z",
       "note": "backfill: scheduled, not yet public"
+    },
+    {
+      "slug": "how-deep-can-a-sperm-whale-go",
+      "question": "how deep can a sperm whale go",
+      "title": "How Deep Do Sperm Whales Dive?",
+      "video_id": "F684ebB13gg",
+      "uploaded_at": "2026-10-17T14:10:00+00:00",
+      "privacy": "private",
+      "scheduled_publish_at": "2026-11-09T16:00:00Z",
+      "replaces": "hh5mMno-Iis",
+      "note": "cloud-upload: re-upload of the superseded render, scheduled, not yet public"
     }
   ],
   "queued": [],
-  "updated": "2026-10-17T08:43:36+00:00"
+  "updated": "2026-10-17T14:10:00+00:00"
 }
