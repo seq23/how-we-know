@@ -1,69 +1,95 @@
 {
-  "week": "2026-W41",
-  "generated": "2026-10-11T10:04:29+00:00",
-  "videos_per_week": 4,
+  "week": "2026-W42",
+  "generated": "2026-10-18T10:04:03+00:00",
+  "videos_per_week": 6,
   "cadence_ceiling_note": "Deliberate. Never raised to clear a backlog.",
   "selection_mode": "automatic",
   "owner_involvement": "notified, not asked",
   "selected": [
     {
-      "slug": "what-lives-in-mariana-trench",
-      "question": "what lives in mariana trench",
-      "script": "loop/drafts/what-lives-in-mariana-trench.md",
+      "slug": "why-does-chocolate-taste-so-good",
+      "question": "why does chocolate taste so good",
+      "script": "loop/drafts/why-does-chocolate-taste-so-good.md",
       "source": "publish-queue",
-      "queue_file": "publish_order_deep_sea_ocean_science.json",
+      "queue_file": "publish_order_food_science.json",
       "needs_authoring": true,
-      "pov_id": "pov-001",
-      "pov_line": "When I picture the deep ocean I don't see blue water or fish. I see black. A massive amount of black space where you can't tell what's beside you or beneath you.",
-      "pov_tag": "scale",
-      "pov_tier": "specific",
-      "pov_matched_by": "tag:scale score 5.6"
-    },
-    {
-      "slug": "how-deep-can-a-sperm-whale-go",
-      "question": "how deep can a sperm whale go",
-      "script": "loop/drafts/how-deep-can-a-sperm-whale-go.md",
-      "source": "publish-queue",
-      "queue_file": "publish_order_deep_sea_ocean_science.json",
-      "needs_authoring": true,
-      "pov_id": "pov-038",
-      "pov_line": "How do we know an animal behaves a certain way when we've seen it three times?",
-      "pov_tag": "evidence",
+      "pov_id": "pov-095",
+      "pov_line": "What are people repeating without checking? What's hidden by the way the story is usually told?",
+      "pov_tag": "thesis",
       "pov_tier": "transferable",
-      "pov_matched_by": "transferable fallback (tag:evidence); no tag signal fired for this subject"
+      "pov_matched_by": "tag:thesis score 2.0"
     },
     {
-      "slug": "why-deep-sea-creatures-are-creepers",
-      "question": "why deep sea creatures are creepers",
-      "script": "loop/drafts/why-deep-sea-creatures-are-creepers.md",
+      "slug": "why-does-steak-taste-better-seared",
+      "question": "why does steak taste better seared",
+      "script": "loop/drafts/why-does-steak-taste-better-seared.md",
       "source": "publish-queue",
-      "queue_file": "publish_order_deep_sea_ocean_science.json",
+      "queue_file": "publish_order_food_science.json",
       "needs_authoring": true,
-      "pov_id": "pov-002",
-      "pov_line": "It feels quiet, but not peaceful quiet. More like being somewhere you were never designed to be.",
-      "pov_tag": "scale",
-      "pov_tier": "specific",
-      "pov_matched_by": "tag:scale score 2.8"
-    },
-    {
-      "slug": "how-deep-can-whales-dive",
-      "question": "how deep can whales dive",
-      "script": "loop/drafts/how-deep-can-whales-dive.md",
-      "source": "publish-queue",
-      "queue_file": "publish_order_deep_sea_ocean_science.json",
-      "needs_authoring": true,
-      "pov_id": "pov-085",
-      "pov_line": "It doesn't bother me that instruments extend what we can know. Human senses are extremely limited. That's the point of technology.",
-      "pov_tag": "instruments",
+      "pov_id": "pov-081",
+      "pov_line": "Octopuses impress me. So much of their nervous system runs through their arms. They aren't just unusual \u2014 they look like a completely different solution to intelligence.",
+      "pov_tag": "adaptation",
       "pov_tier": "transferable",
-      "pov_matched_by": "tag:instruments score 2.0"
+      "pov_matched_by": "tag:adaptation score 3.0"
+    },
+    {
+      "slug": "why-is-my-bread-not-rising",
+      "question": "why is my bread not rising",
+      "script": "loop/drafts/why-is-my-bread-not-rising.md",
+      "source": "publish-queue",
+      "queue_file": "publish_order_food_science.json",
+      "needs_authoring": true,
+      "pov_id": "pov-096",
+      "pov_line": "I like questions where the obvious answer starts falling apart once you look closely.",
+      "pov_tag": "thesis",
+      "pov_tier": "transferable",
+      "pov_matched_by": "tag:thesis score 2.0"
+    },
+    {
+      "slug": "how-does-butter-get-made-from-cream",
+      "question": "how does butter get made from cream",
+      "script": "loop/drafts/how-does-butter-get-made-from-cream.md",
+      "source": "publish-queue",
+      "queue_file": "publish_order_food_science.json",
+      "needs_authoring": true,
+      "pov_id": "pov-112",
+      "pov_line": "The finished object is impressive, but I'm usually more interested in the chain of decisions and tolerances that keeps it from becoming a disaster.",
+      "pov_tag": "systems",
+      "pov_tier": "transferable",
+      "pov_matched_by": "tag:systems score 2.0"
+    },
+    {
+      "slug": "why-does-rice-get-sticky",
+      "question": "why does rice get sticky",
+      "script": "loop/drafts/why-does-rice-get-sticky.md",
+      "source": "publish-queue",
+      "queue_file": "publish_order_food_science.json",
+      "needs_authoring": true,
+      "pov_id": "pov-097",
+      "pov_line": "It feels like the subject gets larger instead of smaller. One answer rearranges everything around it.",
+      "pov_tag": "thesis",
+      "pov_tier": "transferable",
+      "pov_matched_by": "tag:thesis score 2.0"
+    },
+    {
+      "slug": "why-does-meat-need-to-rest-after-cooking",
+      "question": "why does meat need to rest after cooking",
+      "script": "loop/drafts/why-does-meat-need-to-rest-after-cooking.md",
+      "source": "publish-queue",
+      "queue_file": "publish_order_food_science.json",
+      "needs_authoring": true,
+      "pov_id": "pov-098",
+      "pov_line": "That's the feeling I'm chasing. Not collecting another fact \u2014 realising the model in my head was incomplete, and now I have a better one.",
+      "pov_tag": "thesis",
+      "pov_tier": "transferable",
+      "pov_matched_by": "tag:thesis score 2.0"
     }
   ],
-  "to_author": 4,
+  "to_author": 6,
   "inventory_remaining": 0,
   "cadence": {
-    "videos_per_week": 4,
-    "why": "configured default (4/week)"
+    "videos_per_week": 6,
+    "why": "configured default (6/week)"
   },
   "publish_order": {
     "ranked": 0,
@@ -80,9 +106,9 @@
       "17-what-is-a-yeti-crab"
     ],
     "queued_despite_kill": [],
-    "order_entries": 51,
+    "order_entries": 62,
     "source": "research/publish_order.json",
-    "generated_at": "2026-10-10T10:09:31.282855+00:00",
+    "generated_at": "2026-10-17T10:08:55.759634+00:00",
     "generator": "research/publish_order.py",
     "status": "PRODUCTION",
     "episodes_ranked": null,
@@ -92,34 +118,42 @@
   "runway": {
     "unpublished_scripts": 7,
     "publishable": 0,
-    "scheduled_not_yet_aired": 17,
+    "scheduled_not_yet_aired": 19,
     "basis": "publish queue",
-    "videos_per_week": 4,
-    "weeks_remaining": 4.2,
+    "videos_per_week": 6,
+    "weeks_remaining": 3.2,
     "warn_below_weeks": 4.0,
     "critical_below_weeks": 2.0,
-    "level": "ok",
+    "level": "warn",
     "by_domain": {
       "deep-sea-ocean-science": {
         "slots_per_week": 2,
-        "queued": 6,
-        "scheduled_ahead": 9,
-        "weeks": 7.5,
+        "queued": 0,
+        "scheduled_ahead": 12,
+        "weeks": 6.0,
         "level": "ok",
-        "message": "deep-sea-ocean-science: 7.5 week(s) at 2/week (6 queued, 9 already dated)"
+        "message": "deep-sea-ocean-science: 6.0 week(s) at 2/week (0 queued, 12 already dated)"
       },
       "materials-and-manufacturing": {
         "slots_per_week": 2,
-        "queued": 7,
-        "scheduled_ahead": 8,
-        "weeks": 7.5,
+        "queued": 5,
+        "scheduled_ahead": 7,
+        "weeks": 6.0,
         "level": "ok",
-        "message": "materials-and-manufacturing: 7.5 week(s) at 2/week (7 queued, 8 already dated)"
+        "message": "materials-and-manufacturing: 6.0 week(s) at 2/week (5 queued, 7 already dated)"
+      },
+      "food-science": {
+        "slots_per_week": 2,
+        "queued": 11,
+        "scheduled_ahead": 0,
+        "weeks": 5.5,
+        "level": "ok",
+        "message": "food-science: 5.5 week(s) at 2/week (11 queued, 0 already dated)"
       }
     },
     "short_domains": [],
     "never_go_dark": true,
-    "message": "4.2 weeks of queue at 4/week (0 publishable of 7 on disk). By domain: deep-sea-ocean-science: 7.5 week(s) at 2/week (6 queued, 9 already dated); materials-and-manufacturing: 7.5 week(s) at 2/week (7 queued, 8 already dated)."
+    "message": "RUNWAY WARNING: only 3.2 weeks of queue left at 6/week - 0 publishable episode(s) of 7 on disk. Act now, not later: the authoring lane needs lead time and its human fallback needs more. By domain: deep-sea-ocean-science: 6.0 week(s) at 2/week (0 queued, 12 already dated); materials-and-manufacturing: 6.0 week(s) at 2/week (5 queued, 7 already dated); food-science: 5.5 week(s) at 2/week (11 queued, 0 already dated)."
   },
   "gate": {
     "authority": "pov/topic-taxonomy.json",
@@ -650,7 +684,7 @@
     }
   ],
   "candidate_skips": {
-    "already_published": 5,
+    "already_published": 7,
     "already_authored": 2,
     "excluded": 15
   },
