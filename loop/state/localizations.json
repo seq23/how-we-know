@@ -975,45 +975,74 @@
       "en_title": "Bread, Steak, Chocolate: What's Inside?",
       "source_hash": "6676d0739a80bdbbd6f9906e573d6a79",
       "applied_at": "2026-10-15T15:14:12+00:00"
-    }
-  },
-  "updated": "2026-10-17T15:08:41+00:00",
-  "blocked": {
+    },
     "xex6Bbzbdkg": {
       "slug": "why-deep-sea-creatures-are-creepers",
-      "reason": "QUOTA_DEFERRED",
-      "since": "2026-10-16T15:09:37+00:00",
-      "missing": [
+      "languages": [
         "de",
         "es",
         "hi",
         "id",
         "pt-BR"
-      ]
+      ],
+      "all_languages": [
+        "de",
+        "en",
+        "es",
+        "hi",
+        "id",
+        "pt-BR"
+      ],
+      "default_language": "en",
+      "en_title": "Why Are Deep Sea Animals Red?",
+      "source_hash": "b5fa0fb40d1a37df7360b14101bab523",
+      "applied_at": "2026-10-18T15:10:58+00:00"
     },
     "1ME4-ztFBXM": {
       "slug": "why-are-deep-sea-creatures-so-big",
-      "reason": "QUOTA_DEFERRED",
-      "since": "2026-10-16T15:09:37+00:00",
-      "missing": [
+      "languages": [
         "de",
         "es",
         "hi",
         "id",
         "pt-BR"
-      ]
+      ],
+      "all_languages": [
+        "de",
+        "en",
+        "es",
+        "hi",
+        "id",
+        "pt-BR"
+      ],
+      "default_language": "en",
+      "en_title": "Most deep-sea creatures are not big",
+      "source_hash": "fcf2f0458e56ee6f2b7c04806c66ee57",
+      "applied_at": "2026-10-18T15:12:25+00:00"
     },
     "F684ebB13gg": {
       "slug": "how-deep-can-a-sperm-whale-go",
-      "reason": "QUOTA_DEFERRED",
-      "since": "2026-10-17T15:08:41+00:00",
-      "missing": [
+      "languages": [
         "de",
         "es",
         "hi",
         "id",
         "pt-BR"
-      ]
+      ],
+      "all_languages": [
+        "de",
+        "en",
+        "es",
+        "hi",
+        "id",
+        "pt-BR"
+      ],
+      "default_language": "en",
+      "en_title": "The air-breathing mammal that dives to 2,992 meters",
+      "source_hash": "e0dd5cef5bfe0e8d71c8fac4a9a5fb71",
+      "applied_at": "2026-10-18T15:13:57+00:00"
     }
-  }
+  },
+  "updated": "2026-10-18T15:13:57+00:00",
+  "blocked": {}
 }
