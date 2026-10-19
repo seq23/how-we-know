@@ -404,23 +404,27 @@
       "slug": "how-do-scientists-know-so-much",
       "caption_id": "AUieDaaryCbONOsaSCzR027U0BedpoBLBZwZxahYGPetY35Y6mOWM_D_",
       "language": "en",
-      "srt_sha256": "e4da2e3be44755ae9c8bf7fc47d41acdb9e7b29887b05bfb6ba9dc50da12b4b4",
-      "cues": 164,
+      "srt_sha256": "d4827a29eb4705871406842dde9d16fb1090c2c7a0ba8ffa5ff839e5ba33d446",
+      "cues": 195,
       "track_kind": "standard",
-      "source": "inserted",
+      "source": "replaced",
       "recorded_at": "2026-10-05T15:11:45+00:00",
-      "verified_at": "2026-10-06T15:11:00+00:00"
+      "verified_at": "2026-10-06T15:11:00+00:00",
+      "previous_sha256": "e4da2e3be44755ae9c8bf7fc47d41acdb9e7b29887b05bfb6ba9dc50da12b4b4",
+      "replaced_at": "2026-10-19T20:21:28+00:00"
     },
     "T6XeND2qM4k": {
       "slug": "how-do-scientists-know-how-old-something-is",
       "caption_id": "AUieDaYTeJ6hsYkvakM1OjhJU8R7qOzktxifM0SRagaQRwLjv1rgXVQQ",
       "language": "en",
-      "srt_sha256": "7600bcf400a6c6917ff3a395b953ad26c2dda5709ee29c9b30d9c02eb5095c81",
-      "cues": 160,
+      "srt_sha256": "484aef51decb6e99d7874f95f82210710b8f383e71a8b9756f32d014d9c0e9aa",
+      "cues": 202,
       "track_kind": "standard",
-      "source": "inserted",
+      "source": "replaced",
       "recorded_at": "2026-10-05T15:11:46+00:00",
-      "verified_at": "2026-10-06T15:11:00+00:00"
+      "verified_at": "2026-10-06T15:11:00+00:00",
+      "previous_sha256": "7600bcf400a6c6917ff3a395b953ad26c2dda5709ee29c9b30d9c02eb5095c81",
+      "replaced_at": "2026-10-19T20:21:28+00:00"
     },
     "Z-Z1FNVQXW0": {
       "slug": "how-do-scientists-know-about-other-galaxies",
@@ -437,12 +441,14 @@
       "slug": "why-deep-sea-fish-die-when-brought-to-surface",
       "caption_id": "AUieDaaOxe5df37iOqkzy7ujaylDYiXGnYlA_4OXLMb8j0yrHpdi3VqZ",
       "language": "en",
-      "srt_sha256": "d0d0663937918dff5a4310e342ed21bc66eb0b3a0e7f95558056426da8b50ca3",
-      "cues": 157,
+      "srt_sha256": "6110389600d3a6d3721d9a5aecaf9cb933ee0b9946b32c81dc0a6fe4f71bd246",
+      "cues": 186,
       "track_kind": "standard",
-      "source": "inserted",
+      "source": "replaced",
       "recorded_at": "2026-10-05T15:11:48+00:00",
-      "verified_at": "2026-10-07T15:19:25+00:00"
+      "verified_at": "2026-10-07T15:19:25+00:00",
+      "previous_sha256": "d0d0663937918dff5a4310e342ed21bc66eb0b3a0e7f95558056426da8b50ca3",
+      "replaced_at": "2026-10-19T20:21:29+00:00"
     },
     "hh5mMno-Iis": {
       "slug": "how-deep-can-a-sperm-whale-go",
@@ -470,12 +476,14 @@
       "slug": "what-is-hydrothermal-vents",
       "caption_id": "AUieDaaP5v6mqS-9LCzJk5uOHnUFC1kWh4ZjOWugXch6gh8LNuP-cRgf",
       "language": "en",
-      "srt_sha256": "672a882f9549dc139bf4c657555839463f3ca205bb979ac1349b14a56fa2e25b",
+      "srt_sha256": "e4c1312f8cff6415c7a4da5104bf2115a02753a836ee34ec3315818ce4dcc16f",
       "cues": 168,
       "track_kind": "standard",
-      "source": "inserted",
+      "source": "replaced",
       "recorded_at": "2026-10-15T15:10:47+00:00",
-      "verified_at": "2026-10-18T15:09:47+00:00"
+      "verified_at": "2026-10-18T15:09:47+00:00",
+      "previous_sha256": "672a882f9549dc139bf4c657555839463f3ca205bb979ac1349b14a56fa2e25b",
+      "replaced_at": "2026-10-19T20:21:30+00:00"
     },
     "rn99K4kav40": {
       "slug": "how-are-microchips-designed",
@@ -507,7 +515,8 @@
       "cues": 673,
       "track_kind": "standard",
       "source": "inserted",
-      "recorded_at": "2026-10-16T15:09:31+00:00"
+      "recorded_at": "2026-10-16T15:09:31+00:00",
+      "verified_at": "2026-10-19T20:21:30+00:00"
     },
     "xex6Bbzbdkg": {
       "slug": "why-deep-sea-creatures-are-creepers",
@@ -517,7 +526,8 @@
       "cues": 172,
       "track_kind": "standard",
       "source": "inserted",
-      "recorded_at": "2026-10-16T15:09:32+00:00"
+      "recorded_at": "2026-10-16T15:09:32+00:00",
+      "verified_at": "2026-10-19T20:21:30+00:00"
     },
     "F684ebB13gg": {
       "slug": "how-deep-can-a-sperm-whale-go",
@@ -537,29 +547,26 @@
       "cues": 177,
       "track_kind": "standard",
       "source": "inserted",
-      "recorded_at": "2026-10-17T15:08:33+00:00"
+      "recorded_at": "2026-10-17T15:08:33+00:00",
+      "verified_at": "2026-10-19T20:21:31+00:00"
     }
   },
   "blocked": {},
-  "updated": "2026-10-18T15:09:47+00:00",
+  "updated": "2026-10-19T20:21:31+00:00",
   "token_scopes": [],
   "token_has_force_ssl": true,
   "replace": {
-    "at": "2026-10-18T15:09:46+00:00",
+    "at": "2026-10-19T20:21:30+00:00",
     "replaced": [
-      "19-what-is-the-deepest-fish-ever-recorded",
-      "04-why-deep-sea-creatures-are-so-scary",
-      "16-what-happens-when-a-whale-dies-in-the-deep-ocean",
-      "13-how-does-bioluminescence-work-in-the-deep-sea"
+      "how-do-scientists-know-so-much",
+      "how-do-scientists-know-how-old-something-is",
+      "why-deep-sea-fish-die-when-brought-to-surface",
+      "what-is-hydrothermal-vents"
     ],
     "skipped": {
       "how-do-self-healing-materials-work": "the live cut is 517s but the local track was built for a 708.7s timeline - replacing would mis-time it the other way"
     },
     "deferred": [
-      "how-do-scientists-know-so-much",
-      "how-do-scientists-know-how-old-something-is",
-      "why-deep-sea-fish-die-when-brought-to-surface",
-      "what-is-hydrothermal-vents",
       "how-are-microchips-designed",
       "how-deep-can-whales-dive"
     ]
