@@ -2210,10 +2210,175 @@
       "completion_tokens": 2332,
       "total_tokens": 7777,
       "cost_usd": 0
+    },
+    {
+      "at": "2026-10-19T05:16:25+00:00",
+      "slug": "why-does-chocolate-taste-so-good",
+      "model": "claude-subscription/opus",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 3689,
+      "completion_tokens": 16902,
+      "total_tokens": 20591,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-19T05:17:11+00:00",
+      "slug": "why-does-chocolate-taste-so-good",
+      "model": "claude-subscription/opus",
+      "attempt": 2,
+      "accepted": true,
+      "prompt_tokens": 9301,
+      "completion_tokens": 6444,
+      "total_tokens": 15745,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-19T05:18:50+00:00",
+      "slug": "why-does-steak-taste-better-seared",
+      "model": "claude-subscription/opus",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 3735,
+      "completion_tokens": 9059,
+      "total_tokens": 12794,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-19T05:19:33+00:00",
+      "slug": "why-does-steak-taste-better-seared",
+      "model": "claude-subscription/opus",
+      "attempt": 2,
+      "accepted": true,
+      "prompt_tokens": 8722,
+      "completion_tokens": 5589,
+      "total_tokens": 14311,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-19T05:21:47+00:00",
+      "slug": "why-is-my-bread-not-rising",
+      "model": "claude-subscription/opus",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 3683,
+      "completion_tokens": 13988,
+      "total_tokens": 17671,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-19T05:22:28+00:00",
+      "slug": "why-is-my-bread-not-rising",
+      "model": "claude-subscription/opus",
+      "attempt": 2,
+      "accepted": false,
+      "prompt_tokens": 8896,
+      "completion_tokens": 5638,
+      "total_tokens": 14534,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-19T05:23:10+00:00",
+      "slug": "why-is-my-bread-not-rising",
+      "model": "claude-subscription/opus",
+      "attempt": 3,
+      "accepted": true,
+      "prompt_tokens": 13918,
+      "completion_tokens": 5560,
+      "total_tokens": 19478,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-19T05:25:39+00:00",
+      "slug": "how-does-butter-get-made-from-cream",
+      "model": "claude-subscription/opus",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 3728,
+      "completion_tokens": 15854,
+      "total_tokens": 19582,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-19T05:26:29+00:00",
+      "slug": "how-does-butter-get-made-from-cream",
+      "model": "claude-subscription/opus",
+      "attempt": 2,
+      "accepted": false,
+      "prompt_tokens": 9216,
+      "completion_tokens": 6654,
+      "total_tokens": 15870,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-19T05:27:11+00:00",
+      "slug": "how-does-butter-get-made-from-cream",
+      "model": "claude-subscription/opus",
+      "attempt": 3,
+      "accepted": false,
+      "prompt_tokens": 14558,
+      "completion_tokens": 5928,
+      "total_tokens": 20486,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-19T05:27:52+00:00",
+      "slug": "how-does-butter-get-made-from-cream",
+      "model": "claude-subscription/opus",
+      "attempt": 4,
+      "accepted": true,
+      "prompt_tokens": 20016,
+      "completion_tokens": 5857,
+      "total_tokens": 25873,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-19T05:29:45+00:00",
+      "slug": "why-does-rice-get-sticky",
+      "model": "claude-subscription/opus",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 3696,
+      "completion_tokens": 11007,
+      "total_tokens": 14703,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-19T05:30:33+00:00",
+      "slug": "why-does-rice-get-sticky",
+      "model": "claude-subscription/opus",
+      "attempt": 2,
+      "accepted": true,
+      "prompt_tokens": 8762,
+      "completion_tokens": 6275,
+      "total_tokens": 15037,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-19T05:33:34+00:00",
+      "slug": "why-does-meat-need-to-rest-after-cooking",
+      "model": "claude-subscription/opus",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 3725,
+      "completion_tokens": 18659,
+      "total_tokens": 22384,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-19T05:34:19+00:00",
+      "slug": "why-does-meat-need-to-rest-after-cooking",
+      "model": "claude-subscription/opus",
+      "attempt": 2,
+      "accepted": true,
+      "prompt_tokens": 9022,
+      "completion_tokens": 5860,
+      "total_tokens": 14882,
+      "cost_usd": 0
     }
   ],
   "total_usd": 10.175922,
-  "drafts_written": 94,
-  "average_usd_per_accepted_draft": 0.108254,
-  "updated": "2026-10-14T14:02:29+00:00"
+  "drafts_written": 100,
+  "average_usd_per_accepted_draft": 0.101759,
+  "updated": "2026-10-19T05:34:19+00:00"
 }

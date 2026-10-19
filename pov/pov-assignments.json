@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-13T20:47:53Z",
+  "generated": "2026-10-19T05:35:31Z",
   "rule": "one POV per video, no reuse, owner's own words only",
   "assignments": [
     {
@@ -430,6 +430,48 @@
       "line": "When someone gives me a fact with a number in it, my first instinct is: where did the number come from? Not because I assume they're lying. Numbers can make almost anything sound authoritative.",
       "matched_by": "transferable tag:numbers (the bank permits any evidence-based niche)",
       "recorded_by": "loop/pov_repair.py"
+    },
+    {
+      "video": "why-does-chocolate-taste-so-good",
+      "pov_id": "pov-095",
+      "tier": "transferable",
+      "source": "matched by author",
+      "line": "What are people repeating without checking? What's hidden by the way the story is usually told?"
+    },
+    {
+      "video": "why-does-steak-taste-better-seared",
+      "pov_id": "pov-081",
+      "tier": "transferable",
+      "source": "matched by author",
+      "line": "Octopuses impress me. So much of their nervous system runs through their arms. They aren't just unusual \u2014 they look like a completely different solution to intelligence."
+    },
+    {
+      "video": "why-is-my-bread-not-rising",
+      "pov_id": "pov-096",
+      "tier": "transferable",
+      "source": "matched by author",
+      "line": "I like questions where the obvious answer starts falling apart once you look closely."
+    },
+    {
+      "video": "how-does-butter-get-made-from-cream",
+      "pov_id": "pov-112",
+      "tier": "transferable",
+      "source": "matched by author",
+      "line": "The finished object is impressive, but I'm usually more interested in the chain of decisions and tolerances that keeps it from becoming a disaster."
+    },
+    {
+      "video": "why-does-rice-get-sticky",
+      "pov_id": "pov-097",
+      "tier": "transferable",
+      "source": "matched by author",
+      "line": "It feels like the subject gets larger instead of smaller. One answer rearranges everything around it."
+    },
+    {
+      "video": "why-does-meat-need-to-rest-after-cooking",
+      "pov_id": "pov-098",
+      "tier": "transferable",
+      "source": "matched by author",
+      "line": "That's the feeling I'm chasing. Not collecting another fact \u2014 realising the model in my head was incomplete, and now I have a better one."
     }
   ]
 }
