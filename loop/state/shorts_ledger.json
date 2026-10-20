@@ -503,9 +503,13 @@
       "scheduled_publish_at": "2026-09-27T02:00:00Z",
       "rank": 1,
       "lane": "shorts-cloud",
-      "handoff": "pending",
+      "handoff": "done",
       "playlist_item_id": "UExHNUdZLUd1aGlGOC41Mzk2QTAxMTkzNDk4MDhF",
-      "playlist": "PLG5GY-GuhiF8"
+      "playlist": "PLG5GY-GuhiF8",
+      "handoff_episode": "98ejztJsQNY",
+      "handoff_at": "2026-10-20T18:23:08+00:00",
+      "handoff_comment_id": "Ugx9uF487h785De20Mp4AaABAg",
+      "handoff_comment_at": "2026-10-20T18:23:10+00:00"
     },
     {
       "slug": "what-is-aerogel-made-of",
@@ -796,7 +800,9 @@
       "rank": 1,
       "lane": "shorts-cloud",
       "title": "Hydrothermal vents pour out seawater up to 400\u00b0C, still liquid \u2014 and how we know",
-      "handoff": "pending"
+      "handoff": "pending",
+      "playlist_item_id": "UExPclpNRHlveTFYTS41MzY4MzcwOUFFRUU3QzEx",
+      "playlist": "PLOrZMDyoy1XM"
     },
     {
       "slug": "how-deep-can-whales-dive",
@@ -811,5 +817,5 @@
       "handoff": "pending"
     }
   ],
-  "updated": "2026-10-20T01:36:07+00:00"
+  "updated": "2026-10-20T18:23:11+00:00"
 }

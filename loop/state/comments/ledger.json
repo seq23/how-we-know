@@ -962,6 +962,33 @@
         "applied_at": "2026-10-19T19:41:08+00:00",
         "result": "posted (UgzrM1AOUfvzKeFIKJB4AaABAg)"
       }
+    },
+    "Ugx9uF487h785De20Mp4AaABAg": {
+      "comment_id": "Ugx9uF487h785De20Mp4AaABAg",
+      "video_id": "NEr_OQfTgWE",
+      "author": "@howweknowdeep",
+      "author_channel_id": "UC5vZFZc15DIM6IrFwFgAECg",
+      "text": "Why is steel so strong? Full episode: https://youtu.be/98ejztJsQNY",
+      "published_at": "2026-10-20T18:23:10+00:00",
+      "like_count": 0,
+      "reply_count": 0,
+      "class": "own_channel",
+      "proposed_action": null,
+      "proposed_reply": null,
+      "product_note": null,
+      "seen_at": "2026-10-20T18:23:10+00:00",
+      "acted": {
+        "comment_id": "Ugx9uF487h785De20Mp4AaABAg",
+        "video_id": "NEr_OQfTgWE",
+        "action": "channel_comment",
+        "reply_text": "Why is steel so strong? Full episode: https://youtu.be/98ejztJsQNY",
+        "instructed_by": "owner",
+        "instructed_at": "2026-10-03",
+        "source": "loop/handoff: owner decision 2026-10-03",
+        "note": null,
+        "applied_at": "2026-10-20T18:23:10+00:00",
+        "result": "posted (Ugx9uF487h785De20Mp4AaABAg)"
+      }
     }
   },
   "instructions": {},
@@ -1337,6 +1364,18 @@
       "note": null,
       "applied_at": "2026-10-19T19:41:08+00:00",
       "result": "posted (UgzrM1AOUfvzKeFIKJB4AaABAg)"
+    },
+    {
+      "comment_id": "Ugx9uF487h785De20Mp4AaABAg",
+      "video_id": "NEr_OQfTgWE",
+      "action": "channel_comment",
+      "reply_text": "Why is steel so strong? Full episode: https://youtu.be/98ejztJsQNY",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03",
+      "note": null,
+      "applied_at": "2026-10-20T18:23:10+00:00",
+      "result": "posted (Ugx9uF487h785De20Mp4AaABAg)"
     }
   ],
   "sweeps": [
@@ -1631,7 +1670,15 @@
       "instructed_by": "owner",
       "instructed_at": "2026-10-03",
       "source": "loop/handoff: owner decision 2026-10-03"
+    },
+    "NEr_OQfTgWE": {
+      "comment_id": "Ugx9uF487h785De20Mp4AaABAg",
+      "text": "Why is steel so strong? Full episode: https://youtu.be/98ejztJsQNY",
+      "posted_at": "2026-10-20T18:23:10+00:00",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03"
     }
   },
-  "updated": "2026-10-19T19:41:08+00:00"
+  "updated": "2026-10-20T18:23:10+00:00"
 }
