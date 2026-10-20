@@ -1,0 +1,64 @@
+{
+  "stage": "imagery-harvest-mac",
+  "week": "2026-W43",
+  "at": "2026-10-20T12:38:48+00:00",
+  "code": "DELEGATED_HARVEST_FAILING",
+  "message": "1 delegated harvester(s) ran on their host inside the 10-day cap and did not succeed: research/imagery_food.py on ci exited 1 at 2026-10-17T04:30:07+00:00 (last success: never). The host is running; the harvester is not finishing. Its pool is not growing and the stamp's output tail says why.",
+  "detail": {
+    "failing": [
+      {
+        "rel": "research/imagery_food.py",
+        "host": "ci",
+        "state": "failing",
+        "cap_days": 10,
+        "last_success_at": null,
+        "last_run_at": "2026-10-17T04:30:07+00:00",
+        "success_age_days": null,
+        "run_age_days": 3.3,
+        "records": 10,
+        "exit": 1,
+        "tail": [
+          "  File \"/home/runner/work/how-we-know/how-we-know/research/imagery_food.py\", line 296, in verify_rights",
+          "    n += M.verify_rights(man=clips)",
+          "         ^^^^^^^^^^^^^^^^^^^^^^^^^^",
+          "  File \"/home/runner/work/how-we-know/how-we-know/research/imagery_materials.py\", line 464, in verify_rights",
+          "    raise AssertionError(f\"{rec['subject']}: {rec['local_file']} is not on disk\")",
+          "AssertionError: steak-sizzle: clips/food_clip__steak-sizzle__pixabay-11632__sizzling-steak-barbecue-bbq-food-grill-meat-fire.mp4 is not on disk"
+        ]
+      }
+    ],
+    "host": "mac-batch",
+    "stamps": "loop/state/harvest_runs.json"
+  },
+  "unblock": "Read `tail` for that harvester in loop/state/harvest_runs.json and fix the harvester or the host it runs on; then let its next scheduled run stamp a success.",
+  "disposition": "needs_human",
+  "disposition_why": "'DELEGATED_HARVEST_FAILING' is classified needs_human in loop/stop_policy.json: it is a defect a person reads. 'DELEGATED_HARVEST_FAILING' did not name what it is waiting on (no held_items), so this run cannot tell a repeat from a new problem. A stop that cannot be identified is never held.",
+  "consecutive": 1,
+  "held_items": [],
+  "exit_code": 3,
+  "work_done_before_stop": [
+    "verified research/imagery.py is harvesting on ci (delegated): last success 2026-10-17T04:16:50+00:00 (3.3 day(s) ago), 108 record(s) - within the 10-day cap",
+    "verified research/imagery_materials.py is harvesting on ci (delegated): last success 2026-10-17T04:48:04+00:00 (3.3 day(s) ago), 12 record(s) - within the 10-day cap",
+    "verified research/imagery_species.py is harvesting on ci (delegated): last success 2026-10-17T04:49:24+00:00 (3.3 day(s) ago), 33 record(s) - within the 10-day cap"
+  ],
+  "notes": [
+    "allocation: deep-sea-ocean-science 2, materials-and-manufacturing 2, food-science 2 -> 5 scheduled harvester(s): 1 run here on mac-batch, 4 delegated",
+    "research/imagery.py is delegated to ci (the Saturday GitHub Actions lane (.github/workflows/loop-imagery-harvest.yml, ubuntu-latest, 04:00 UTC)); verified below, not run",
+    "research/imagery_food.py is delegated to ci (the Saturday GitHub Actions lane (.github/workflows/loop-imagery-harvest.yml, ubuntu-latest, 04:00 UTC)); verified below, not run",
+    "research/imagery_materials.py is delegated to ci (the Saturday GitHub Actions lane (.github/workflows/loop-imagery-harvest.yml, ubuntu-latest, 04:00 UTC)); verified below, not run",
+    "research/imagery_species.py is delegated to ci (the Saturday GitHub Actions lane (.github/workflows/loop-imagery-harvest.yml, ubuntu-latest, 04:00 UTC)); verified below, not run",
+    "cleared pool before: channel/imagery/food.json 10 record(s)",
+    "cleared pool before: channel/imagery/materials.json 12 record(s)",
+    "cleared pool before: channel/imagery/rights.json 108 record(s)",
+    "cleared pool before: channel/imagery/species.json 33 record(s)",
+    "cleared pool before: channel/imagery/video_rights.json 164 record(s)",
+    "demand at the current cadence: 6/week, 48 episode(s) over the next 8 weeks. An episode with no cleared footage is illustrated, which is a legitimate outcome and never a reason to widen the gate.",
+    "research/imagery_video.py: rights gate credit_is_noaa_only() present",
+    "research/imagery_video.py: harvested 4.2 day(s) ago on mac-batch; due again after 6 (loop/config.json harvest.interval_days) - not re-run tonight",
+    "cleared pool after: channel/imagery/food.json 10 record(s)",
+    "cleared pool after: channel/imagery/materials.json 12 record(s)",
+    "cleared pool after: channel/imagery/rights.json 108 record(s)",
+    "cleared pool after: channel/imagery/species.json 33 record(s)",
+    "cleared pool after: channel/imagery/video_rights.json 164 record(s)"
+  ]
+}
