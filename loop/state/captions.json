@@ -114,7 +114,7 @@
       "track_kind": "standard",
       "source": "replaced",
       "recorded_at": "2026-09-03T17:28:07+00:00",
-      "verified_at": "2026-10-02T15:10:59+00:00",
+      "verified_at": "2026-10-20T18:53:55+00:00",
       "previous_sha256": "e22d53306e0fcd72a6393bb601f13774731665f5e2c0a90b95879eaadfeb51d5",
       "replaced_at": "2026-10-17T15:08:36+00:00"
     },
@@ -288,7 +288,7 @@
       "track_kind": "standard",
       "source": "inserted",
       "recorded_at": "2026-09-08T15:10:51+00:00",
-      "verified_at": "2026-10-02T15:10:59+00:00"
+      "verified_at": "2026-10-20T18:53:55+00:00"
     },
     "debozzLtVRA": {
       "slug": "how-strong-is-graphene",
@@ -489,23 +489,27 @@
       "slug": "how-are-microchips-designed",
       "caption_id": "AUieDaYzx9SXge8fYEPav4-CimhW37RywMf8I6WpAIA6vv0m_qd9Ar4n",
       "language": "en",
-      "srt_sha256": "232dd1272a1aa0629daeadd253cbabaf5ffac4b7dbfccdc7ea7a416ce45a8ea9",
-      "cues": 167,
+      "srt_sha256": "c85b5afcc824ee28ea77d6844561b011c2d934b8e9a0a2d821acaec34e339a58",
+      "cues": 166,
       "track_kind": "standard",
-      "source": "inserted",
+      "source": "replaced",
       "recorded_at": "2026-10-15T15:10:48+00:00",
-      "verified_at": "2026-10-18T15:09:47+00:00"
+      "verified_at": "2026-10-18T15:09:47+00:00",
+      "previous_sha256": "232dd1272a1aa0629daeadd253cbabaf5ffac4b7dbfccdc7ea7a416ce45a8ea9",
+      "replaced_at": "2026-10-20T18:53:53+00:00"
     },
     "pb27XYAfKAs": {
       "slug": "how-deep-can-whales-dive",
       "caption_id": "AUieDabCbMpSMUifYhNHCOr_sWrAH6P99BSQBwEvqsMtbe_uDd1xXgS-",
       "language": "en",
-      "srt_sha256": "397ab285ef0a03aa972a967021ecc25e4cce4b575c7cd482b329ecdec1162275",
-      "cues": 146,
+      "srt_sha256": "f89d476bef9f85d4de7f96a7c21900ca881e3bf450eafe44dd84a00ec78de0b5",
+      "cues": 160,
       "track_kind": "standard",
-      "source": "inserted",
+      "source": "replaced",
       "recorded_at": "2026-10-15T15:10:48+00:00",
-      "verified_at": "2026-10-18T15:09:47+00:00"
+      "verified_at": "2026-10-18T15:09:47+00:00",
+      "previous_sha256": "397ab285ef0a03aa972a967021ecc25e4cce4b575c7cd482b329ecdec1162275",
+      "replaced_at": "2026-10-20T18:53:55+00:00"
     },
     "8bVPoTWAfFQ": {
       "slug": "why-bread-rises-steak-browns-chocolate-snaps",
@@ -537,7 +541,8 @@
       "cues": 230,
       "track_kind": "standard",
       "source": "inserted",
-      "recorded_at": "2026-10-17T14:10:00+00:00"
+      "recorded_at": "2026-10-17T14:10:00+00:00",
+      "verified_at": "2026-10-20T18:53:55+00:00"
     },
     "1ME4-ztFBXM": {
       "slug": "why-are-deep-sea-creatures-so-big",
@@ -552,23 +557,18 @@
     }
   },
   "blocked": {},
-  "updated": "2026-10-19T20:21:31+00:00",
+  "updated": "2026-10-20T18:53:55+00:00",
   "token_scopes": [],
   "token_has_force_ssl": true,
   "replace": {
-    "at": "2026-10-19T20:21:30+00:00",
+    "at": "2026-10-20T18:53:55+00:00",
     "replaced": [
-      "how-do-scientists-know-so-much",
-      "how-do-scientists-know-how-old-something-is",
-      "why-deep-sea-fish-die-when-brought-to-surface",
-      "what-is-hydrothermal-vents"
+      "how-are-microchips-designed",
+      "how-deep-can-whales-dive"
     ],
     "skipped": {
       "how-do-self-healing-materials-work": "the live cut is 517s but the local track was built for a 708.7s timeline - replacing would mis-time it the other way"
     },
-    "deferred": [
-      "how-are-microchips-designed",
-      "how-deep-can-whales-dive"
-    ]
+    "deferred": []
   }
 }
