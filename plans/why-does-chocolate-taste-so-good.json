@@ -1,0 +1,1295 @@
+[
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Cold open",
+    "narration": "Cocoa butter can freeze into six different solids, and only one feels right.",
+    "args": {
+      "lines": [
+        "Cocoa butter can freeze",
+        "into six different solids,",
+        "and only"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "Chocolate tastes so good largely because of how it melts and what that melt releases: cocoa butter, tempered into a crystal form that melts at about 34 degrees Celsius, stays solid in your hand and turns liquid on your tongue, carrying aroma built during fermentation and roasting up to your nose.",
+    "args": {
+      "lines": [
+        "Chocolate tastes so good",
+        "largely because of how",
+        "it melts"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.03,
+    "heading": "Cold open",
+    "narration": "The six forms were mapped with X-ray diffraction, in work published through the American Oil Chemists' Society.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Cold open",
+    "narration": "But that number explains texture, not flavour, and it says nothing about why anyone likes it.",
+    "args": {
+      "lines": [
+        "But that number explains",
+        "texture, not flavour, and",
+        "it says"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "Cold open",
+    "narration": "Those are separate questions, answered by separate instruments, and one of them is barely answered at all.",
+    "args": {
+      "lines": [
+        "Those are separate questions,",
+        "answered by separate instruments,",
+        "and one"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 3.5,
+    "heading": "Title card",
+    "narration": "Why does chocolate taste so good?",
+    "args": {
+      "variant": 1
+    },
+    "from": "heading+destagnate"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.62,
+    "heading": "The pleasure starts as a change of state",
+    "narration": "Start with the moment of eating, because that is where the physics is easiest to see.",
+    "args": {
+      "variant": 0
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The pleasure starts as a change of state",
+    "narration": "A square of well-made dark chocolate snaps cleanly. Held in a warm palm for a minute it softens, but on the tongue it collapses into liquid within seconds.",
+    "args": {
+      "lines": [
+        "A square of well-made",
+        "dark chocolate snaps cleanly.",
+        "Held"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "The pleasure starts as a change of state",
+    "narration": "That contrast is not luck. Cocoa butter, the fat pressed from cacao beans, has a melting range that sits just under the temperature inside your mouth.",
+    "args": {
+      "variant": 1
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.69,
+    "heading": "The pleasure starts as a change of state",
+    "narration": "Solid on the shelf, solid in the hand, liquid in the mouth: a narrow window, and good chocolate lives inside it.",
+    "args": {
+      "variant": 2
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 5.38,
+    "heading": "The pleasure starts as a change of state",
+    "narration": "Melting is a phase change, not a chemical reaction, and it takes energy.",
+    "args": {
+      "term": "melting",
+      "includes": [
+        "a phase change"
+      ],
+      "excludes": [
+        "a chemical reaction"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The pleasure starts as a change of state",
+    "narration": "As the fat turns from solid to liquid it draws heat from your tongue, which is part of why tempered chocolate can feel faintly cool as it goes.",
+    "args": {
+      "lines": [
+        "As the fat turns",
+        "from solid to liquid",
+        "it draws"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 8.69,
+    "heading": "The pleasure starts as a change of state",
+    "narration": "The liquid fat then coats the mouth, and with it come sugar, cocoa solids and the volatile molecules that carry aroma.",
+    "args": {
+      "term": "melting",
+      "includes": [
+        "a phase change"
+      ],
+      "excludes": [
+        "a chemical reaction"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "The pleasure starts as a change of state",
+    "narration": "Texture comes first, and texture is the delivery system for everything else.",
+    "args": {
+      "lines": [
+        "Texture comes first, and",
+        "texture is the delivery",
+        "system"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "The pleasure starts as a change of state",
+    "narration": "A chocolate that melts too high feels waxy and holds its flavour back. One that melts too low goes soft in the wrapper.",
+    "args": {
+      "term": "melting",
+      "includes": [
+        "a phase change"
+      ],
+      "excludes": [
+        "a chemical reaction"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 5.38,
+    "heading": "One fat can set into six different solids",
+    "narration": "Here is the part that surprises people. Cocoa butter is not one solid.",
+    "args": {
+      "term": "polymorphism",
+      "meaning": "several different crystal arrangements",
+      "boundary": "the molecules are the same; only the packing changes",
+      "source": "American Oil Chemists' Society"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "One fat can set into six different solids",
+    "narration": "Its fat molecules, mostly triglycerides, can stack together in several different crystal arrangements, a property called polymorphism.",
+    "args": {
+      "lines": [
+        "Its fat molecules, mostly",
+        "triglycerides, can stack together"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "One fat can set into six different solids",
+    "narration": "The molecules are the same; only the packing changes. Different packing means a different melting point, a different hardness and a different surface.",
+    "args": {
+      "term": "polymorphism",
+      "meaning": "several different crystal arrangements",
+      "boundary": "the molecules are the same; only the packing changes",
+      "source": "American Oil Chemists' Society"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "One fat can set into six different solids",
+    "narration": "The standard scheme, published in the Journal of the American Oil Chemists' Society and still the reference point in confectionery science, describes six forms, numbered One to Six.",
+    "args": {
+      "lines": [
+        "The standard scheme, published",
+        "in the Journal"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "One fat can set into six different solids",
+    "narration": "The way chemists tell these forms apart is X-ray diffraction. A beam of X-rays passed through a crystalline sample scatters off the regular layers of molecules, and the angles of the scattered beams reveal how far apart those layers are.",
+    "args": {
+      "title": "X-ray diffraction",
+      "stages": [
+        "angles of the scattered beams",
+        "how far apart those layers are"
+      ],
+      "conclusion": "each form leaves its own pattern"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "One fat can set into six different solids",
+    "narration": "Each form leaves its own pattern, a kind of fingerprint for packing.",
+    "args": {
+      "lines": [
+        "Each form leaves its",
+        "own pattern, a kind",
+        "of fingerprint"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "One fat can set into six different solids",
+    "narration": "Paired with an instrument that measures how much heat a sample absorbs as it warms, known as differential scanning calorimetry, the patterns let researchers match each crystal arrangement to its melting behaviour.",
+    "args": {
+      "title": "X-ray diffraction",
+      "stages": [
+        "angles of the scattered beams",
+        "how far apart those layers are"
+      ],
+      "conclusion": "each form leaves its own pattern"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "One fat can set into six different solids",
+    "narration": "Nobody had to taste their way to this result. It was measured.",
+    "args": {
+      "lines": [
+        "Nobody had to taste",
+        "their way to this",
+        "result. It"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 9.0,
+    "heading": "One fat can set into six different solids",
+    "narration": "Of the six, Form Five is the one chocolate makers want. It melts at about 34 degrees Celsius, it is hard enough to snap, and it sets with a glossy surface.",
+    "args": {
+      "value": "34",
+      "unit": "degrees Celsius",
+      "caption": "Form Five melts at about 34 degrees Celsius",
+      "source": "American Oil Chemists' Society"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "One fat can set into six different solids",
+    "narration": "The lower forms melt too easily and feel greasy. Form Six is more stable still, but it forms slowly, over long storage, and as it does the surface turns dull and the texture grainy.",
+    "args": {
+      "lines": [
+        "The lower forms melt",
+        "too easily and feel",
+        "greasy. Form Six"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 9.0,
+    "heading": "One fat can set into six different solids",
+    "narration": "That is why the number in the cold open matters: it is the melting point of one specific crystal, not of cocoa butter in general.",
+    "args": {
+      "value": "34",
+      "unit": "degrees Celsius",
+      "caption": "Form Five melts at about 34 degrees Celsius",
+      "source": "American Oil Chemists' Society"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "Tempering is a method for choosing one crystal",
+    "narration": "Left to cool on its own, melted chocolate sets into a mixture of forms, and the result is soft, streaky and dull.",
+    "args": {
+      "title": "Tempering",
+      "steps": [
+        [
+          "heated until every existing crystal is gone",
+          ""
+        ],
+        [
+          "cooled, so crystals begin to form",
+          ""
+        ],
+        [
+          "warmed slightly",
+          ""
+        ]
+      ],
+      "note": "the Form Five crystals survive"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "Tempering is a method for choosing one crystal",
+    "narration": "Tempering is the fix. First the chocolate is heated until every existing crystal is gone.",
+    "args": {
+      "lines": [
+        "Tempering is the fix.",
+        "First the chocolate is",
+        "heated until"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "Tempering is a method for choosing one crystal",
+    "narration": "Then it is cooled, so crystals begin to form. Then it is warmed slightly, just enough to melt the unstable forms while the Form Five crystals survive.",
+    "args": {
+      "title": "Tempering",
+      "steps": [
+        [
+          "heated until every existing crystal is gone",
+          ""
+        ],
+        [
+          "cooled, so crystals begin to form",
+          ""
+        ],
+        [
+          "warmed slightly",
+          ""
+        ]
+      ],
+      "note": "the Form Five crystals survive"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Tempering is a method for choosing one crystal",
+    "narration": "Those survivors act as seeds, and as the chocolate sets they template the rest of the fat into the same arrangement.",
+    "args": {
+      "lines": [
+        "Those survivors act as",
+        "seeds, and as the",
+        "chocolate sets"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 5.79,
+    "heading": "Tempering is a method for choosing one crystal",
+    "narration": "Professionals do it on marble slabs or in machines; the principle is the same.",
+    "args": {
+      "title": "Tempering",
+      "steps": [
+        [
+          "heated until every existing crystal is gone",
+          ""
+        ],
+        [
+          "cooled, so crystals begin to form",
+          ""
+        ],
+        [
+          "warmed slightly",
+          ""
+        ]
+      ],
+      "note": "the Form Five crystals survive"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 5.79,
+    "heading": "Tempering is a method for choosing one crystal",
+    "narration": "When tempering fails, or when a bar is stored warm, you can see it.",
+    "args": {
+      "term": "fat bloom",
+      "includes": [
+        "fat recrystallising"
+      ],
+      "excludes": [
+        "mould"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Tempering is a method for choosing one crystal",
+    "narration": "Grey-white streaks and a dusty film appear on the surface. This is fat bloom, and it is often mistaken for mould.",
+    "args": {
+      "lines": [
+        "Grey-white streaks and a",
+        "dusty film appear on",
+        "the surface."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 5.79,
+    "heading": "Tempering is a method for choosing one crystal",
+    "narration": "It is fat recrystallising, frequently into Form Six, scattering light instead of reflecting it.",
+    "args": {
+      "term": "fat bloom",
+      "includes": [
+        "fat recrystallising"
+      ],
+      "excludes": [
+        "mould"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Tempering is a method for choosing one crystal",
+    "narration": "It is a change in structure, not something growing. But the melt changes, and so does the eating.",
+    "args": {
+      "lines": [
+        "It is a change",
+        "in structure, not something",
+        "growing."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 5.79,
+    "heading": "Tempering is a method for choosing one crystal",
+    "narration": "The bloom is visible proof that crystal form is part of what you taste.",
+    "args": {
+      "term": "fat bloom",
+      "includes": [
+        "fat recrystallising"
+      ],
+      "excludes": [
+        "mould"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 6.62,
+    "heading": "Producer POV",
+    "narration": "What are people repeating without checking? What's hidden by the way the story is usually told?",
+    "args": {
+      "text": "What are people repeating without checking? What's hidden by the way the story is usually told?",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "Most chocolate flavour is smelled, not tasted",
+    "narration": "The tongue detects a short list of basic tastes: sweet, sour, salty, bitter and savoury.",
+    "args": {
+      "lines": [
+        "The tongue detects a",
+        "short list of basic",
+        "tastes: sweet"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Most chocolate flavour is smelled, not tasted",
+    "narration": "Chocolate certainly registers on that list, mostly as sweet and bitter. But the character people mean when they say chocolate, the roasted, fruity, nutty, sometimes floral quality, is aroma.",
+    "args": {
+      "lines": [
+        "Chocolate certainly registers on",
+        "that list, mostly as",
+        "sweet"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.03,
+    "heading": "Most chocolate flavour is smelled, not tasted",
+    "narration": "Volatile molecules released by the melting fat travel up the back of the throat to the nose.",
+    "args": {
+      "variant": 2
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Most chocolate flavour is smelled, not tasted",
+    "narration": "This route is called retronasal smell, and it is why chocolate tastes flat when your nose is blocked.",
+    "args": {
+      "lines": [
+        "This route is called",
+        "retronasal smell, and it",
+        "is why"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Most chocolate flavour is smelled, not tasted",
+    "narration": "You can notice it yourself by pinching your nostrils while a piece melts, then letting go.",
+    "args": {
+      "lines": [
+        "You can notice it",
+        "yourself by pinching your",
+        "nostrils while"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "Most chocolate flavour is smelled, not tasted",
+    "narration": "So how do chemists find out which molecules carry that aroma? A chocolate extract is fed through a gas chromatograph, which separates a mixture into its components as they travel through a long, thin column at different speeds.",
+    "args": {
+      "title": "gas chromatography\u2013olfactometry",
+      "stages": [
+        "separates a mixture into its components",
+        "a sniffing port"
+      ],
+      "conclusion": "the human nose is part of the instrument"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Most chocolate flavour is smelled, not tasted",
+    "narration": "At the end, the stream is split. Part goes to a detector, often a mass spectrometer that identifies the molecule.",
+    "args": {
+      "lines": [
+        "At the end, the",
+        "stream is split. Part",
+        "goes"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 7.86,
+    "heading": "Most chocolate flavour is smelled, not tasted",
+    "narration": "Part goes to a sniffing port, where a trained person records what each component smells like and how strongly.",
+    "args": {
+      "title": "gas chromatography\u2013olfactometry",
+      "stages": [
+        "separates a mixture into its components",
+        "a sniffing port"
+      ],
+      "conclusion": "the human nose is part of the instrument"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Most chocolate flavour is smelled, not tasted",
+    "narration": "This is gas chromatography\u2013olfactometry, and the human nose is part of the instrument.",
+    "args": {
+      "lines": [
+        "This is gas chromatography\u2013olfactometry,",
+        "and the human nose",
+        "is part"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 5.79,
+    "heading": "Most chocolate flavour is smelled, not tasted",
+    "narration": "Results of this kind appear regularly in the Journal of Agricultural and Food Chemistry.",
+    "args": {
+      "title": "gas chromatography\u2013olfactometry",
+      "stages": [
+        "separates a mixture into its components",
+        "a sniffing port"
+      ],
+      "conclusion": "the human nose is part of the instrument"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Most chocolate flavour is smelled, not tasted",
+    "narration": "What this work shows is that no single molecule smells like chocolate.",
+    "args": {
+      "lines": [
+        "What this work shows",
+        "is that no single",
+        "molecule smells"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Most chocolate flavour is smelled, not tasted",
+    "narration": "Chemists have identified a large number of volatile compounds in cocoa, and estimates of how many vary with the method and with what counts as present.",
+    "args": {
+      "lines": [
+        "Chemists have identified a",
+        "large number of volatile",
+        "compounds"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.69,
+    "heading": "Most chocolate flavour is smelled, not tasted",
+    "narration": "Only a fraction of them reach a level the nose can detect, and the impression of chocolate comes from their combination.",
+    "args": {
+      "variant": 3
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Most chocolate flavour is smelled, not tasted",
+    "narration": "Remove one and the picture shifts. Some of the important ones, smelled alone, would not remind you of chocolate at all.",
+    "args": {
+      "lines": [
+        "Remove one and the",
+        "picture shifts. Some of",
+        "the important"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 8.28,
+    "heading": "The flavour is started on the farm",
+    "narration": "Fresh cacao beans taste nothing like chocolate. They are bitter and astringent, packed inside a pod in sweet white pulp.",
+    "args": {
+      "title": "From pod to bean",
+      "steps": [
+        [
+          "yeasts ferment the sugars in the pulp",
+          ""
+        ],
+        [
+          "bacteria turn the products into lactic and acetic acid",
+          ""
+        ],
+        [
+          "the acids enter the bean",
+          ""
+        ]
+      ],
+      "note": "flavour precursors"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "The flavour is started on the farm",
+    "narration": "After harvest, beans and pulp are heaped or boxed and left for several days.",
+    "args": {
+      "lines": [
+        "After harvest, beans and",
+        "pulp are heaped or",
+        "boxed"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 7.03,
+    "heading": "The flavour is started on the farm",
+    "narration": "Yeasts ferment the sugars in the pulp, then bacteria turn the products into lactic and acetic acid.",
+    "args": {
+      "title": "From pod to bean",
+      "steps": [
+        [
+          "yeasts ferment the sugars in the pulp",
+          ""
+        ],
+        [
+          "bacteria turn the products into lactic and acetic acid",
+          ""
+        ],
+        [
+          "the acids enter the bean",
+          ""
+        ]
+      ],
+      "note": "flavour precursors"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "The flavour is started on the farm",
+    "narration": "Heat builds, the acids enter the bean, and the bean's internal structure breaks down.",
+    "args": {
+      "lines": [
+        "Heat builds, the acids",
+        "enter the bean, and",
+        "the bean's"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 4.97,
+    "heading": "The flavour is started on the farm",
+    "narration": "Its own enzymes begin cutting proteins into smaller pieces and splitting sugars.",
+    "args": {
+      "title": "From pod to bean",
+      "steps": [
+        [
+          "yeasts ferment the sugars in the pulp",
+          ""
+        ],
+        [
+          "bacteria turn the products into lactic and acetic acid",
+          ""
+        ],
+        [
+          "the acids enter the bean",
+          ""
+        ]
+      ],
+      "note": "flavour precursors"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "The flavour is started on the farm",
+    "narration": "Those fragments are flavour precursors: they do not yet smell of chocolate, but without them roasting has little to work with.",
+    "args": {
+      "lines": [
+        "Those fragments are flavour",
+        "precursors: they do not",
+        "yet smell"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "The flavour is started on the farm",
+    "narration": "Roasting is where the precursors pay off. Heated together, amino acids and reducing sugars undergo the Maillard reaction, the same family of reactions that browns bread crust and seared meat.",
+    "args": {
+      "title": "Maillard reaction",
+      "stages": [
+        "amino acids and reducing sugars",
+        "heated together"
+      ],
+      "conclusion": "pyrazines"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "The flavour is started on the farm",
+    "narration": "It produces a cascade of new molecules, among them pyrazines, which carry roasted and nutty notes.",
+    "args": {
+      "lines": [
+        "It produces a cascade",
+        "of new molecules, among",
+        "them pyrazines"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "The flavour is started on the farm",
+    "narration": "Researchers established the role of fermentation partly by comparison: beans dried without proper fermentation and then roasted develop only weak chocolate aroma.",
+    "args": {
+      "title": "Maillard reaction",
+      "stages": [
+        "amino acids and reducing sugars",
+        "heated together"
+      ],
+      "conclusion": "pyrazines"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "The flavour is started on the farm",
+    "narration": "The farm, in other words, writes much of the recipe before the beans ever reach a factory.",
+    "args": {
+      "lines": [
+        "The farm, in other",
+        "words, writes much of",
+        "the recipe"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.62,
+    "heading": "The flavour is started on the farm",
+    "narration": "After roasting, the beans are cracked, the shells removed, and the nibs ground into a paste.",
+    "args": {
+      "variant": 3
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "The flavour is started on the farm",
+    "narration": "Sugar and often extra cocoa butter are added, the mixture is ground until the particles are too fine for the tongue to notice as grit, and then it is conched: stirred and kneaded for hours.",
+    "args": {
+      "variant": 4
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "The flavour is started on the farm",
+    "narration": "Conching lets some harsh, volatile acids escape and coats every solid particle in fat.",
+    "args": {
+      "lines": [
+        "Conching lets some harsh,",
+        "volatile acids escape and",
+        "coats"
+      ]
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.86,
+    "heading": "The flavour is started on the farm",
+    "narration": "That coating is why smooth chocolate feels smooth. Once again, texture and flavour turn out not to be separable.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "Bitterness is part of the design",
+    "narration": "Chocolate is not only sweet. Cacao contains theobromine, a bitter compound closely related to caffeine, along with polyphenols that taste bitter and feel astringent, a drying pull on the mouth.",
+    "args": {
+      "term": "theobromine",
+      "meaning": "a bitter compound closely related to caffeine",
+      "boundary": "bitterness here is not a flaw to be removed",
+      "source": "PubChem"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Bitterness is part of the design",
+    "narration": "Theobromine takes its name from the genus of the cacao tree, Theobroma, from the Greek for food of the gods.",
+    "args": {
+      "lines": [
+        "Theobromine takes its name",
+        "from the genus of",
+        "the cacao"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 7.86,
+    "heading": "Bitterness is part of the design",
+    "narration": "Its structure and properties are catalogued in PubChem, the open chemistry database run by the National Institutes of Health.",
+    "args": {
+      "term": "theobromine",
+      "meaning": "a bitter compound closely related to caffeine",
+      "boundary": "bitterness here is not a flaw to be removed",
+      "source": "PubChem"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Bitterness is part of the design",
+    "narration": "Bitterness here is not a flaw to be removed. Makers balance it against sugar and fat, and that balance is much of what separates a dark bar from a milk one.",
+    "args": {
+      "lines": [
+        "Bitterness here is not",
+        "a flaw to be",
+        "removed. Makers"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Bitterness is part of the design",
+    "narration": "This is also why preference splits so sharply between people. The same chemistry reaches every tongue, but sensitivity to bitterness differs from person to person, and so does what someone grew up eating.",
+    "args": {
+      "lines": [
+        "This is also why",
+        "preference splits so sharply",
+        "between people."
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Bitterness is part of the design",
+    "narration": "A bar one person finds richly complex, another finds harsh. Food science can describe the bar precisely. It cannot, from the bar alone, predict the verdict.",
+    "args": {
+      "variant": 4
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "The famous molecule story outruns its evidence",
+    "narration": "Now to what people repeat without checking. A popular story says chocolate tastes good because it contains special molecules that act on the brain, sometimes called a love chemical.",
+    "args": {
+      "title": "The pleasure molecule story",
+      "items": [
+        "+present in cocoa",
+        "-shown to explain the pleasure",
+        "?how much liking is learned"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "The famous molecule story outruns its evidence",
+    "narration": "Some of the compounds named in that story are genuinely present in cocoa; that part checks out.",
+    "args": {
+      "lines": [
+        "Some of the compounds",
+        "named in that story",
+        "are genuinely"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "The famous molecule story outruns its evidence",
+    "narration": "What has not been shown is that they reach the brain from an ordinary piece of chocolate in amounts that explain the pleasure.",
+    "args": {
+      "title": "The pleasure molecule story",
+      "items": [
+        "+present in cocoa",
+        "-shown to explain the pleasure",
+        "?how much liking is learned"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The famous molecule story outruns its evidence",
+    "narration": "How much liking is learned rather than triggered remains open. The story survives because it is simpler than the real one, which is a crystal, a melt, a nose and a long chain of processing.",
+    "args": {
+      "lines": [
+        "How much liking is",
+        "learned rather than triggered",
+        "remains open."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 9.0,
+    "heading": "The famous molecule story outruns its evidence",
+    "narration": "Notice what the stronger explanation rests on. Crystal forms are measured by diffraction and calorimetry, in work published through the American Oil Chemists' Society.",
+    "args": {
+      "title": "Who measured what",
+      "sources": [
+        [
+          "American Oil Chemists' Society",
+          "six crystal forms"
+        ],
+        [
+          "Journal of Agricultural and Food Chemistry",
+          "aroma compounds in cocoa"
+        ],
+        [
+          "PubChem",
+          "theobromine"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "The famous molecule story outruns its evidence",
+    "narration": "Aroma compounds are separated by chromatography and confirmed by trained noses, in journals like the Journal of Agricultural and Food Chemistry.",
+    "args": {
+      "lines": [
+        "Aroma compounds are separated",
+        "by chromatography and confirmed",
+        "by trained"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 9.0,
+    "heading": "The famous molecule story outruns its evidence",
+    "narration": "The bitter compounds are catalogued in PubChem. Each step has an instrument behind it, and each step can be checked by someone else repeating it.",
+    "args": {
+      "title": "Who measured what",
+      "sources": [
+        [
+          "American Oil Chemists' Society",
+          "six crystal forms"
+        ],
+        [
+          "Journal of Agricultural and Food Chemistry",
+          "aroma compounds in cocoa"
+        ],
+        [
+          "PubChem",
+          "theobromine"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "The famous molecule story outruns its evidence",
+    "narration": "The pleasure molecule story has none of that chain. It has a plausible name and a satisfying shape.",
+    "args": {
+      "lines": [
+        "The pleasure molecule story",
+        "has none of that",
+        "chain. It"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 5.38,
+    "heading": "What to notice in the edit",
+    "narration": "When the cross-section of tempered chocolate appears, watch the packing, not the colour.",
+    "args": {
+      "value": "34",
+      "unit": "DEGREES",
+      "caption": "",
+      "source": ""
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "What to notice in the edit",
+    "narration": "The glow marks the Form Five crystals, the ordered layers that diffraction measures.",
+    "args": {
+      "lines": [
+        "The glow marks the",
+        "Form Five crystals, the",
+        "ordered layers"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 7.45,
+    "heading": "What to notice in the edit",
+    "narration": "The animation is a model, not a microscope image; real crystals are far smaller and far less tidy.",
+    "args": {
+      "value": "34",
+      "unit": "DEGREES",
+      "caption": "",
+      "source": ""
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "The degree counter earlier showed one temperature only, about 34 degrees Celsius, because that is the one figure this episode can source.",
+    "args": {
+      "variant": 2
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "What to notice in the edit",
+    "narration": "Everything else, from roasting heat to conching time, varies with the maker, and the graphics leave it out on purpose.",
+    "args": {
+      "lines": [
+        "Everything else, from roasting",
+        "heat to conching time,",
+        "varies"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "Be clear about what this evidence does not establish. It explains why chocolate melts the way it does, where much of its aroma comes from, and why processing changes the result.",
+    "args": {
+      "title": "What the evidence settles",
+      "items": [
+        "+why chocolate melts the way it does",
+        "+where much of its aroma comes from",
+        "-why a particular person loves it"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Evidence limit",
+    "narration": "It does not explain why a particular person loves it, or why liking differs across people and places.",
+    "args": {
+      "lines": [
+        "It does not explain",
+        "why a particular person",
+        "loves it"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 7.45,
+    "heading": "Evidence limit",
+    "narration": "Those are questions about perception, memory and culture, and the instruments in this episode do not measure them.",
+    "args": {
+      "title": "What the evidence settles",
+      "items": [
+        "+why chocolate melts the way it does",
+        "+where much of its aroma comes from",
+        "-why a particular person loves it"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Evidence limit",
+    "narration": "Nothing here says anything about chocolate and health; that is a different body of evidence, and not one this episode examined.",
+    "args": {
+      "lines": [
+        "Nothing here says anything",
+        "about chocolate and health"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "So the next square you eat is doing something precise. A crystal chosen by tempering gives way just below the heat of your mouth, and the fat releases molecules built by microbes and a roaster, long before and far away. The pleasure is yours. The melt, at least, has been measured.",
+    "args": {
+      "variant": 3
+    },
+    "from": "directive"
+  }
+]

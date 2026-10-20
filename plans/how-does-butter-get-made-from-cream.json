@@ -1,0 +1,1278 @@
+[
+  {
+    "segment": "stat_card",
+    "seconds": 6.21,
+    "heading": "Cold open",
+    "narration": "A liquid that is mostly water ends up as a solid that is mostly fat.",
+    "args": {
+      "value": "80",
+      "unit": "percent milkfat",
+      "caption": "federal definition of butter, finished product",
+      "source": "USDA"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "Butter is made by agitating cream until its fat globules collide, break their membranes and clump together, turning a fat-in-water emulsion into a water-in-fat one.",
+    "args": {
+      "lines": [
+        "Butter is made by",
+        "agitating cream until its",
+        "fat globules"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "Under the federal definition of butter that the USDA's grade standards for butter rely on, the finished product must contain at least 80 percent milkfat by weight.",
+    "args": {
+      "value": "80",
+      "unit": "percent milkfat",
+      "caption": "federal definition of butter, finished product",
+      "source": "USDA"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "That figure tells you where the process ends. It does not tell you how a liquid with fat scattered through water becomes a solid with water scattered through fat.",
+    "args": {
+      "lines": [
+        "That figure tells you",
+        "where the process ends.",
+        "It does"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 7.86,
+    "heading": "Cold open",
+    "narration": "That reversal is the real subject, and every step of it was worked out by looking inside the material.",
+    "args": {
+      "value": "80",
+      "unit": "percent milkfat",
+      "caption": "federal definition of butter, finished product",
+      "source": "USDA"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 3.5,
+    "heading": "Title card",
+    "narration": "How does butter get made from cream?",
+    "args": {
+      "lines": [
+        "How does butter get",
+        "made from cream?"
+      ]
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.69,
+    "heading": "Cream is fat hiding inside water",
+    "narration": "Start with what is on screen: a cross-section of cream. The background is water, carrying dissolved milk sugar, minerals and proteins.",
+    "args": {
+      "variant": 0
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Cream is fat hiding inside water",
+    "narration": "Floating in it are fat globules, each one wrapped in a thin skin called the milk fat globule membrane.",
+    "args": {
+      "lines": [
+        "Floating in it are",
+        "fat globules, each one",
+        "wrapped"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Cream is fat hiding inside water",
+    "narration": "That membrane is built from phospholipids and proteins, the same broad classes of molecule that form the membranes of living cells, and that is no accident.",
+    "args": {
+      "variant": 1
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.03,
+    "heading": "Cream is fat hiding inside water",
+    "narration": "It is pinched off from the secreting cells of the mammary gland as the fat leaves them.",
+    "args": {
+      "variant": 2
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cream is fat hiding inside water",
+    "narration": "Under an ordinary light microscope, the globules appear as separate bright spheres that do not merge, even when they drift against each other. The membrane is what keeps them apart.",
+    "args": {
+      "lines": [
+        "Under an ordinary light",
+        "microscope, the globules appear",
+        "as separate"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 8.69,
+    "heading": "Cream is fat hiding inside water",
+    "narration": "Food scientists call this arrangement an emulsion: droplets of one liquid held in another liquid they would not normally mix with.",
+    "args": {
+      "term": "emulsion",
+      "meaning": "droplets of one liquid held in another liquid",
+      "boundary": "cream is an oil-in-water emulsion",
+      "source": "food scientists"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cream is fat hiding inside water",
+    "narration": "Cream is an oil-in-water emulsion. The fat is the dispersed phase, the water is the continuous phase, and the continuous phase decides how the material behaves.",
+    "args": {
+      "lines": [
+        "Cream is an oil-in-water",
+        "emulsion. The fat is",
+        "the dispersed"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 5.38,
+    "heading": "Cream is fat hiding inside water",
+    "narration": "That is why cream pours, wets your finger and rinses off in water.",
+    "args": {
+      "term": "emulsion",
+      "meaning": "droplets of one liquid held in another liquid",
+      "boundary": "cream is an oil-in-water emulsion",
+      "source": "food scientists"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cream is fat hiding inside water",
+    "narration": "It also explains how cream is collected in the first place. Fat is less dense than water, so if milk is left standing, the globules slowly rise.",
+    "args": {
+      "lines": [
+        "It also explains how",
+        "cream is collected in",
+        "the first"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 8.28,
+    "heading": "Cream is fat hiding inside water",
+    "narration": "Modern dairies speed that up with centrifugal separators, which spin milk so the lighter, fat-rich fraction can be drawn off.",
+    "args": {
+      "term": "emulsion",
+      "meaning": "droplets of one liquid held in another liquid",
+      "boundary": "cream is an oil-in-water emulsion",
+      "source": "food scientists"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "Cream is fat hiding inside water",
+    "narration": "Either way, what you get is still an emulsion, just a more crowded one.",
+    "args": {
+      "lines": [
+        "Either way, what you",
+        "get is still an",
+        "emulsion, just"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 5.38,
+    "heading": "Butter needs fat that is partly frozen",
+    "narration": "Here is the first tolerance that matters. Milk fat is not one substance.",
+    "args": {
+      "term": "milk fat",
+      "includes": [
+        "a mixture that melts gradually"
+      ],
+      "excludes": [
+        "a single fat with one melting point"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "Butter needs fat that is partly frozen",
+    "narration": "It is a mixture of a very large number of different triglycerides, molecules whose melting points differ.",
+    "args": {
+      "lines": [
+        "It is a mixture",
+        "of a very large",
+        "number"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 5.79,
+    "heading": "Butter needs fat that is partly frozen",
+    "narration": "So milk fat does not melt at a single temperature the way ice does.",
+    "args": {
+      "term": "milk fat",
+      "includes": [
+        "a mixture that melts gradually"
+      ],
+      "excludes": [
+        "a single fat with one melting point"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Butter needs fat that is partly frozen",
+    "narration": "It softens across a broad range, and at any given temperature some of it is crystalline solid and some of it is liquid oil.",
+    "args": {
+      "lines": [
+        "It softens across a",
+        "broad range, and at",
+        "any given"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Butter needs fat that is partly frozen",
+    "narration": "On screen the contrast is simple: milk fat is a mixture that melts gradually, not a single fat with one melting point.",
+    "args": {
+      "term": "milk fat",
+      "includes": [
+        "a mixture that melts gradually"
+      ],
+      "excludes": [
+        "a single fat with one melting point"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Butter needs fat that is partly frozen",
+    "narration": "Butter makers depend on that in-between state. If the fat inside the globules is entirely liquid, churning tends to produce a greasy mess. If it is entirely solid, the globules resist sticking together.",
+    "args": {
+      "lines": [
+        "Butter makers depend on",
+        "that in-between state. If",
+        "the fat"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 7.86,
+    "heading": "Butter needs fat that is partly frozen",
+    "narration": "So how is the solid share of the fat actually measured? One standard route is pulsed nuclear magnetic resonance.",
+    "args": {
+      "title": "Measuring solid fat",
+      "stages": [
+        "pulsed nuclear magnetic resonance",
+        "radio-frequency pulses",
+        "solid fat content"
+      ],
+      "conclusion": "results from different laboratories can be compared"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Butter needs fat that is partly frozen",
+    "narration": "The instrument sends radio-frequency pulses into a sample held in a magnetic field and listens to the hydrogen nuclei respond.",
+    "args": {
+      "lines": [
+        "The instrument sends radio-frequency",
+        "pulses into a sample",
+        "held"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 7.45,
+    "heading": "Butter needs fat that is partly frozen",
+    "narration": "Hydrogen locked in solid crystals loses its signal very quickly; hydrogen in liquid oil keeps signalling for longer.",
+    "args": {
+      "title": "Measuring solid fat",
+      "stages": [
+        "pulsed nuclear magnetic resonance",
+        "radio-frequency pulses",
+        "solid fat content"
+      ],
+      "conclusion": "results from different laboratories can be compared"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Butter needs fat that is partly frozen",
+    "narration": "Comparing the two parts of the signal gives the solid fat content.",
+    "args": {
+      "lines": [
+        "Comparing the two parts",
+        "of the signal gives",
+        "the solid"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "Butter needs fat that is partly frozen",
+    "narration": "Methods for this measurement are standardised by the American Oil Chemists' Society, which is why results from different laboratories can be compared.",
+    "args": {
+      "title": "Measuring solid fat",
+      "stages": [
+        "pulsed nuclear magnetic resonance",
+        "radio-frequency pulses",
+        "solid fat content"
+      ],
+      "conclusion": "results from different laboratories can be compared"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Butter needs fat that is partly frozen",
+    "narration": "Another instrument, the differential scanning calorimeter, measures the heat absorbed as fat melts, and it draws that broad melting range as a wide, lumpy curve rather than a single sharp peak.",
+    "args": {
+      "lines": [
+        "Another instrument, the differential",
+        "scanning calorimeter, measures the",
+        "heat absorbed"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Butter needs fat that is partly frozen",
+    "narration": "That is why cream for butter is usually cooled and then held for hours before churning, a step often called ageing.",
+    "args": {
+      "lines": [
+        "That is why cream",
+        "for butter is usually",
+        "cooled"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Butter needs fat that is partly frozen",
+    "narration": "Fat crystals take time to form and organise. Churn too soon after cooling and the crystal structure inside the globules has not settled.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Butter needs fat that is partly frozen",
+    "narration": "The exact temperatures and holding times vary between dairies and between seasons, because the fat itself changes with the cows' feed, so this script will not give you a single number.",
+    "args": {
+      "lines": [
+        "The exact temperatures and",
+        "holding times vary between",
+        "dairies"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Butter needs fat that is partly frozen",
+    "narration": "What is consistent is the principle: the cream is prepared so that its fat is partly solid when the agitation begins.",
+    "args": {
+      "lines": [
+        "What is consistent is",
+        "the principle: the cream",
+        "is prepared"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 9.0,
+    "heading": "Producer POV",
+    "narration": "The finished object is impressive, but I'm usually more interested in the chain of decisions and tolerances that keeps it from becoming a disaster.",
+    "args": {
+      "text": "The finished object is impressive, but I'm usually more interested in the chain of decisions and tolerances that keeps it from becoming a disaster.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 7.45,
+    "heading": "Churning breaks membranes rather than squeezing out fat",
+    "narration": "Now the churn. A common picture is that churning presses fat out of cream like juice from fruit.",
+    "args": {
+      "title": "Partial coalescence",
+      "steps": [
+        [
+          "air is beaten in",
+          ""
+        ],
+        [
+          "membranes are damaged",
+          ""
+        ],
+        [
+          "crystals bridge globules",
+          ""
+        ]
+      ],
+      "note": "clumps grow"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Churning breaks membranes rather than squeezing out fat",
+    "narration": "Butter is not pressed out of cream; microscopy shows something different. Agitation beats air into the cream, and the bubbles do much of the work.",
+    "args": {
+      "lines": [
+        "Butter is not pressed",
+        "out of cream"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 6.62,
+    "heading": "Churning breaks membranes rather than squeezing out fat",
+    "narration": "Fat globules collide with the surfaces of those bubbles, and their membranes spread and thin there.",
+    "args": {
+      "title": "Partial coalescence",
+      "steps": [
+        [
+          "air is beaten in",
+          ""
+        ],
+        [
+          "membranes are damaged",
+          ""
+        ],
+        [
+          "crystals bridge globules",
+          ""
+        ]
+      ],
+      "note": "clumps grow"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Churning breaks membranes rather than squeezing out fat",
+    "narration": "Meanwhile, the fat crystals inside a globule can poke through its weakened skin.",
+    "args": {
+      "lines": [
+        "Meanwhile, the fat crystals",
+        "inside a globule can",
+        "poke through"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "Churning breaks membranes rather than squeezing out fat",
+    "narration": "When two damaged globules touch, the crystals of one can bridge into the liquid oil of the other, and they stick without fully merging into one sphere.",
+    "args": {
+      "title": "Partial coalescence",
+      "steps": [
+        [
+          "air is beaten in",
+          ""
+        ],
+        [
+          "membranes are damaged",
+          ""
+        ],
+        [
+          "crystals bridge globules",
+          ""
+        ]
+      ],
+      "note": "clumps grow"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Churning breaks membranes rather than squeezing out fat",
+    "narration": "This is called partial coalescence. The steps on screen run in order: air is beaten in, membranes are damaged, crystals bridge globules, clumps grow.",
+    "args": {
+      "lines": [
+        "This is called partial",
+        "coalescence. The steps on",
+        "screen run"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 5.79,
+    "heading": "Churning breaks membranes rather than squeezing out fat",
+    "narration": "If you have whipped cream by hand, you have already seen the halfway point.",
+    "args": {
+      "term": "whipped cream",
+      "meaning": "a foam held up by partly coalesced clumps of fat",
+      "boundary": "overwhipped cream carried to its end",
+      "source": "microscopy"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Churning breaks membranes rather than squeezing out fat",
+    "narration": "Whipped cream is a foam held up by these partly coalesced clumps of fat, forming a network around the air bubbles.",
+    "args": {
+      "lines": [
+        "Whipped cream is a",
+        "foam held up by",
+        "these partly"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 5.79,
+    "heading": "Churning breaks membranes rather than squeezing out fat",
+    "narration": "That is why whipped cream holds its shape. Keep going and the network tightens.",
+    "args": {
+      "term": "whipped cream",
+      "meaning": "a foam held up by partly coalesced clumps of fat",
+      "boundary": "overwhipped cream carried to its end",
+      "source": "microscopy"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Churning breaks membranes rather than squeezing out fat",
+    "narration": "The clumps grow larger, they pull fat away from the bubble surfaces, the foam can no longer support itself, and it collapses.",
+    "args": {
+      "lines": [
+        "The clumps grow larger,",
+        "they pull fat away"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "Churning breaks membranes rather than squeezing out fat",
+    "narration": "Microscopy of whipped cream sampled at different moments traces this progression: first separate globules, then clusters lining the bubbles, then larger aggregates that no longer belong to any bubble at all. Butter is, in a sense, overwhipped cream carried to its end.",
+    "args": {
+      "term": "whipped cream",
+      "meaning": "a foam held up by partly coalesced clumps of fat",
+      "boundary": "overwhipped cream carried to its end",
+      "source": "microscopy"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "The break is a phase inversion you can see and hear",
+    "narration": "Then comes the moment butter makers call the break. Quite suddenly, the smooth cream turns into small yellow grains floating in a thin, watery liquid.",
+    "args": {
+      "term": "butter",
+      "includes": [
+        "a water-in-fat material"
+      ],
+      "excludes": [
+        "a fat-in-water one"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The break is a phase inversion you can see and hear",
+    "narration": "The sound in the churn changes from a soft thud to a slosh, because there is now free liquid moving around solid lumps.",
+    "args": {
+      "lines": [
+        "The sound in the",
+        "churn changes from a",
+        "soft thud"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.86,
+    "heading": "The break is a phase inversion you can see and hear",
+    "narration": "What has happened is a phase inversion. Before the break, water was the continuous phase and fat was dispersed.",
+    "args": {
+      "term": "butter",
+      "includes": [
+        "a water-in-fat material"
+      ],
+      "excludes": [
+        "a fat-in-water one"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The break is a phase inversion you can see and hear",
+    "narration": "After it, the fat grains join into a connected mass, and the water that remains inside them is trapped as small droplets.",
+    "args": {
+      "lines": [
+        "After it, the fat",
+        "grains join into a",
+        "connected mass"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "The break is a phase inversion you can see and hear",
+    "narration": "Butter is a water-in-fat material, not a fat-in-water one. That is the reversal from the cold open, and it is why butter feels greasy and repels water, where cream wets everything it touches.",
+    "args": {
+      "term": "butter",
+      "includes": [
+        "a water-in-fat material"
+      ],
+      "excludes": [
+        "a fat-in-water one"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The break is a phase inversion you can see and hear",
+    "narration": "The liquid left behind is the original buttermilk. It is not the thick cultured drink sold under the same name in many supermarkets.",
+    "args": {
+      "lines": [
+        "The liquid left behind",
+        "is the original buttermilk.",
+        "It"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "The break is a phase inversion you can see and hear",
+    "narration": "It is the water phase of the cream, carrying lactose, proteins, minerals and much of the torn membrane material.",
+    "args": {
+      "lines": [
+        "It is the water",
+        "phase of the cream,",
+        "carrying lactose"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.86,
+    "heading": "The break is a phase inversion you can see and hear",
+    "narration": "Because those membrane phospholipids are good emulsifiers, food scientists have studied buttermilk as an ingredient in its own right.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The break is a phase inversion you can see and hear",
+    "narration": "Draining it is the first separation in the process, and a substantial share of what went into the churn leaves as buttermilk rather than becoming butter.",
+    "args": {
+      "lines": [
+        "Draining it is the",
+        "first separation in the",
+        "process"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 7.45,
+    "heading": "Washing and working decide what butter keeps",
+    "narration": "The grains are still coated in buttermilk, so they are usually washed with cold water, then drained again.",
+    "args": {
+      "title": "Washing and working",
+      "steps": [
+        [
+          "washed with cold water",
+          ""
+        ],
+        [
+          "drained again",
+          ""
+        ],
+        [
+          "working",
+          ""
+        ]
+      ],
+      "note": "salt dissolves into those droplets"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Washing and working decide what butter keeps",
+    "narration": "Washing removes residual milk sugar and protein that bacteria could otherwise feed on.",
+    "args": {
+      "lines": [
+        "Washing removes residual milk",
+        "sugar and protein that",
+        "bacteria"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 7.03,
+    "heading": "Washing and working decide what butter keeps",
+    "narration": "Then comes working: kneading the mass, traditionally with paddles, industrially between rollers or inside continuous butter-making machines.",
+    "args": {
+      "title": "Washing and working",
+      "steps": [
+        [
+          "washed with cold water",
+          ""
+        ],
+        [
+          "drained again",
+          ""
+        ],
+        [
+          "working",
+          ""
+        ]
+      ],
+      "note": "salt dissolves into those droplets"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Washing and working decide what butter keeps",
+    "narration": "Working presses the grains into one block and squeezes out loose water, but its more important job is to break the water that stays behind into a very large number of very small droplets, spread evenly through the fat.",
+    "args": {
+      "lines": [
+        "Working presses the grains",
+        "into one block and",
+        "squeezes out"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 5.79,
+    "heading": "Washing and working decide what butter keeps",
+    "narration": "If salt is added, it dissolves into those droplets rather than into the fat.",
+    "args": {
+      "title": "Washing and working",
+      "steps": [
+        [
+          "washed with cold water",
+          ""
+        ],
+        [
+          "drained again",
+          ""
+        ],
+        [
+          "working",
+          ""
+        ]
+      ],
+      "note": "salt dissolves into those droplets"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "Washing and working decide what butter keeps",
+    "narration": "This internal structure is visible with confocal laser scanning microscopy. Researchers stain the fat and the water with different fluorescent dyes, and the instrument scans a focused laser through the sample, building sharp optical slices at different depths.",
+    "args": {
+      "title": "confocal laser scanning microscopy",
+      "stages": [
+        "different fluorescent dyes",
+        "sharp optical slices"
+      ],
+      "conclusion": "the water appears as fine, scattered droplets"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Washing and working decide what butter keeps",
+    "narration": "In images of well-worked butter, the water appears as fine, scattered droplets, separated by a continuous fat phase that contains crystals, surviving whole globules and liquid oil.",
+    "args": {
+      "lines": [
+        "In images of well-worked",
+        "butter, the water appears",
+        "as fine"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "Washing and working decide what butter keeps",
+    "narration": "That droplet pattern matters for keeping quality. Bacteria that do enter the butter are confined to tiny isolated pockets of water, many carrying little nutrient, and in salted butter a concentrated brine.",
+    "args": {
+      "title": "confocal laser scanning microscopy",
+      "stages": [
+        "different fluorescent dyes",
+        "sharp optical slices"
+      ],
+      "conclusion": "the water appears as fine, scattered droplets"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Washing and working decide what butter keeps",
+    "narration": "Poorly worked butter, with larger connected water channels, gives microbes more room. This is a description of structure, not guidance about storing anything.",
+    "args": {
+      "lines": [
+        "Poorly worked butter, with",
+        "larger connected water channels,",
+        "gives microbes"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 6.21,
+    "heading": "Cultured butter adds bacteria before the churn, on purpose",
+    "narration": "Everything so far describes sweet cream butter, made from cream that has not been fermented.",
+    "args": {
+      "term": "diacetyl",
+      "meaning": "aroma compounds produced by certain strains",
+      "boundary": "catalogued in PubChem",
+      "source": "PubChem"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cultured butter adds bacteria before the churn, on purpose",
+    "narration": "Cultured butter adds a step at the start. The cream is inoculated with lactic acid bacteria and allowed to ripen before churning.",
+    "args": {
+      "lines": [
+        "Cultured butter adds a",
+        "step at the start.",
+        "The cream"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "Cultured butter adds bacteria before the churn, on purpose",
+    "narration": "The bacteria convert some of the milk sugar into lactic acid, which sours the cream, and certain strains also produce aroma compounds.",
+    "args": {
+      "term": "diacetyl",
+      "meaning": "aroma compounds produced by certain strains",
+      "boundary": "catalogued in PubChem",
+      "source": "PubChem"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cultured butter adds bacteria before the churn, on purpose",
+    "narration": "The best known is diacetyl. It is catalogued in PubChem, the chemical database run by the National Institutes of Health, where its structure and properties can be checked.",
+    "args": {
+      "lines": [
+        "The best known is",
+        "diacetyl. It is catalogued",
+        "in PubChem"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 5.38,
+    "heading": "Cultured butter adds bacteria before the churn, on purpose",
+    "narration": "Flavor chemists have long linked it to the characteristic aroma of cultured butter.",
+    "args": {
+      "term": "diacetyl",
+      "meaning": "aroma compounds produced by certain strains",
+      "boundary": "catalogued in PubChem",
+      "source": "PubChem"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 4.97,
+    "heading": "Cultured butter adds bacteria before the churn, on purpose",
+    "narration": "Identifying which molecule smells of what took a particular pairing of instruments.",
+    "args": {
+      "title": "Identifying aroma",
+      "stages": [
+        "gas chromatography",
+        "sniffing port",
+        "mass spectrometry"
+      ],
+      "conclusion": "aroma molecules in dairy products have been pinned down"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "Cultured butter adds bacteria before the churn, on purpose",
+    "narration": "Gas chromatography separates a sample's volatile compounds by how quickly they travel through a long, coated column.",
+    "args": {
+      "lines": [
+        "Gas chromatography separates a",
+        "sample's volatile compounds by",
+        "how quickly"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "Cultured butter adds bacteria before the churn, on purpose",
+    "narration": "In gas chromatography olfactometry, the stream leaving the column is split: one part goes to a detector, the other to a sniffing port, where a trained person notes what they smell and when.",
+    "args": {
+      "title": "Identifying aroma",
+      "stages": [
+        "gas chromatography",
+        "sniffing port",
+        "mass spectrometry"
+      ],
+      "conclusion": "aroma molecules in dairy products have been pinned down"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cultured butter adds bacteria before the churn, on purpose",
+    "narration": "Matching a buttery note to the moment a known compound emerges is how aroma molecules in dairy products have been pinned down.",
+    "args": {
+      "lines": [
+        "Matching a buttery note",
+        "to the moment a",
+        "known compound"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "Cultured butter adds bacteria before the churn, on purpose",
+    "narration": "Mass spectrometry then confirms the identity from the compound's fragmentation pattern. Research of this kind appears in journals published by the American Chemical Society.",
+    "args": {
+      "title": "Identifying aroma",
+      "stages": [
+        "gas chromatography",
+        "sniffing port",
+        "mass spectrometry"
+      ],
+      "conclusion": "aroma molecules in dairy products have been pinned down"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 5.38,
+    "heading": "Grading judges arrangement, not just amount",
+    "narration": "Once butter is made, someone has to decide whether it is any good.",
+    "args": {
+      "term": "grading",
+      "includes": [
+        "how it is arranged"
+      ],
+      "excludes": [
+        "how much fat is present"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Grading judges arrangement, not just amount",
+    "narration": "In the United States, the USDA publishes voluntary grade standards for butter, and the top grade is Grade AA.",
+    "args": {
+      "lines": [
+        "In the United States,",
+        "the USDA publishes voluntary",
+        "grade standards"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Grading judges arrangement, not just amount",
+    "narration": "Graders assess flavor, body, color and salt. Body is where the physical chemistry from earlier returns: a grader is judging texture, spreadability and whether water beads out of the cut surface, all consequences of crystal structure and droplet dispersion.",
+    "args": {
+      "term": "grading",
+      "includes": [
+        "how it is arranged"
+      ],
+      "excludes": [
+        "how much fat is present"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "Grading judges arrangement, not just amount",
+    "narration": "The 80 percent milkfat requirement in the federal definition is a separate, compositional line.",
+    "args": {
+      "lines": [
+        "The 80 percent milkfat",
+        "requirement in the federal",
+        "definition"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Grading judges arrangement, not just amount",
+    "narration": "A product can meet it and still grade poorly, because composition says how much fat is present, not how it is arranged.",
+    "args": {
+      "term": "grading",
+      "includes": [
+        "how it is arranged"
+      ],
+      "excludes": [
+        "how much fat is present"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "What to notice in the edit",
+    "narration": "Watch the cross-sections as the episode moves. The cream shot shows separate spheres in a bright continuous background.",
+    "args": {
+      "lines": [
+        "Watch the cross-sections as",
+        "the episode moves. The",
+        "cream shot"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "What to notice in the edit",
+    "narration": "The butter shot inverts it: the background is the fat, and the water has become the scattered droplets.",
+    "args": {
+      "lines": [
+        "The butter shot inverts",
+        "it: the background is",
+        "the fat"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.28,
+    "heading": "What to notice in the edit",
+    "narration": "Every transition between them is the same few events, repeated: air, damaged membranes, crystals bridging globules, clumps, and finally inversion.",
+    "args": {
+      "variant": 2
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "What to notice in the edit",
+    "narration": "The instruments named on screen are the reason those images are diagrams and not guesses.",
+    "args": {
+      "lines": [
+        "The instruments named on",
+        "screen are the reason",
+        "those images"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "Here is what this evidence does not settle. Microscopy shows structures in small samples, often after staining or preparation that can disturb what is being imaged, so each picture is a careful snapshot rather than a live film of a churn.",
+    "args": {
+      "title": "What this evidence settles",
+      "items": [
+        "+partial coalescence explains the main mechanism",
+        "?how much each factor contributes",
+        "-no single temperature recipe is universal",
+        "?other countries set their own standards"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "The partial coalescence account explains the main mechanism well, but how much each factor contributes, from fat crystal shape to membrane composition to churn speed, varies with the cream and is still studied.",
+    "args": {
+      "lines": [
+        "The partial coalescence account",
+        "explains the main mechanism",
+        "well"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 6.21,
+    "heading": "Evidence limit",
+    "narration": "Milk fat composition shifts with feed and season, so no single temperature recipe is universal.",
+    "args": {
+      "title": "What this evidence settles",
+      "items": [
+        "+partial coalescence explains the main mechanism",
+        "?how much each factor contributes",
+        "-no single temperature recipe is universal",
+        "?other countries set their own standards"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "And the 80 percent figure is a United States legal definition; other countries set their own standards, which this episode has not surveyed.",
+    "args": {
+      "lines": [
+        "And the 80 percent",
+        "figure is a United",
+        "States legal"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "Cream becomes butter when its structure is turned inside out. The fat that was scattered becomes the frame, and the water that was everywhere is left in small, sealed pockets.",
+    "args": {
+      "variant": 3
+    },
+    "from": "directive"
+  }
+]

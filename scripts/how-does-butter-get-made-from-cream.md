@@ -112,19 +112,17 @@ Cream becomes butter when its structure is turned inside out. The fat that was s
 
 ## Chapters
 
-- 00:00 Cold open
-- 00:46 Title card
-- 00:49 Cream is fat hiding inside water
-- 02:28 Butter needs fat that is partly frozen
-- 04:39 Producer POV
-- 04:50 Churning breaks membranes rather than squeezing out fat
-- 06:27 The break is a phase inversion you can see and hear
-- 07:48 Washing and working decide what butter keeps
-- 09:19 Cultured butter adds bacteria before the churn, on purpose
-- 10:45 Grading judges arrangement, not just amount
-- 11:29 What to notice in the edit
-- 11:59 Evidence limit
-- 12:46 Closing
+- 0:00 Cold open
+- 0:42 Cream is fat hiding inside water
+- 2:06 Butter needs fat that is partly frozen
+- 4:17 Churning breaks membranes rather than squeezing out fat
+- 5:40 The break is a phase inversion you can see and hear
+- 6:52 Washing and working decide what butter keeps
+- 8:20 Cultured butter adds bacteria before the churn, on purpose
+- 9:38 Grading judges arrangement, not just amount
+- 10:19 What to notice in the edit
+- 10:48 Evidence limit
+- 11:31 Closing
 
 ## Sources
 

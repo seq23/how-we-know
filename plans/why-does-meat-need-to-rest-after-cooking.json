@@ -1,0 +1,1413 @@
+[
+  {
+    "segment": "stat_card",
+    "seconds": 4.97,
+    "heading": "Cold open",
+    "narration": "Take a roast off the heat, and its centre keeps getting hotter.",
+    "args": {
+      "value": "3",
+      "unit": "minutes",
+      "caption": "Rest time paired with 145 degrees Fahrenheit for whole cuts",
+      "source": "USDA"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "Resting lets two physical processes finish after the heat is gone: heat keeps travelling inward from the hot outer layers, so the centre continues to cook, and the meat cools enough that less of its liquid runs out when it is cut.",
+    "args": {
+      "lines": [
+        "Resting lets two physical",
+        "processes finish after the",
+        "heat"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "The USDA's temperature guidance for whole cuts of beef, pork, veal and lamb pairs 145 degrees Fahrenheit with a 3-minute rest, because the temperature holds or climbs during that time.",
+    "args": {
+      "value": "3",
+      "unit": "minutes",
+      "caption": "Rest time paired with 145 degrees Fahrenheit for whole cuts",
+      "source": "USDA"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "That figure settles the heat question. It does not settle the question most people mean, which is about the puddle on the board.",
+    "args": {
+      "lines": [
+        "That figure settles the",
+        "heat question. It does",
+        "not settle"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 3.5,
+    "heading": "Title card",
+    "narration": "Why does meat need to rest after cooking?",
+    "args": {
+      "lines": [
+        "Why does meat need",
+        "to rest after cooking?"
+      ]
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "size_ladder",
+    "seconds": 5.79,
+    "heading": "The heat is still moving when the pan goes cold",
+    "narration": "Start with what the pan or oven actually does. Heat enters at the surface.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "The heat is still moving when the pan goes cold",
+    "narration": "It travels inward by conduction, with each layer of meat warming the next.",
+    "args": {
+      "lines": [
+        "It travels inward by",
+        "conduction, with each layer",
+        "of meat"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "size_ladder",
+    "seconds": 6.62,
+    "heading": "The heat is still moving when the pan goes cold",
+    "narration": "That process is slow, because meat is mostly water and protein, and neither moves heat quickly.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.38,
+    "heading": "The heat is still moving when the pan goes cold",
+    "narration": "So at any moment during cooking, a thick roast is not one temperature.",
+    "args": {
+      "variant": 0
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "The heat is still moving when the pan goes cold",
+    "narration": "It has hot outer layers, a cooler centre, and a slope of temperatures running between them.",
+    "args": {
+      "lines": [
+        "It has hot outer",
+        "layers, a cooler centre"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "size_ladder",
+    "seconds": 9.0,
+    "heading": "The heat is still moving when the pan goes cold",
+    "narration": "When you lift it out, nothing feeds the outside any more. The heat already stored in those outer layers does not vanish, though.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "The heat is still moving when the pan goes cold",
+    "narration": "Some of it escapes into the air. The rest keeps flowing the only other way it can, inward and down the slope toward the cooler centre.",
+    "args": {
+      "variant": 1
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "The heat is still moving when the pan goes cold",
+    "narration": "That is why a roast keeps cooking after it leaves the heat.",
+    "args": {
+      "lines": [
+        "That is why a",
+        "roast keeps cooking after",
+        "it leaves"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "The heat is still moving when the pan goes cold",
+    "narration": "You do not have to take this on trust. The instrument is a probe thermometer in the centre, left in place after the meat comes off the heat.",
+    "args": {
+      "title": "Measuring carryover",
+      "stages": [
+        "probe thermometer in the centre",
+        "reading keeps rising off the heat"
+      ],
+      "conclusion": "heat still travelling inward"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "The heat is still moving when the pan goes cold",
+    "narration": "For a while, the reading keeps rising off the heat, with no flame and no oven involved.",
+    "args": {
+      "lines": [
+        "For a while, the",
+        "reading keeps rising off",
+        "the heat"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 6.21,
+    "heading": "The heat is still moving when the pan goes cold",
+    "narration": "Then it levels off, and then it falls. Cooks call the rising part carryover cooking.",
+    "args": {
+      "title": "Measuring carryover",
+      "stages": [
+        "probe thermometer in the centre",
+        "reading keeps rising off the heat"
+      ],
+      "conclusion": "heat still travelling inward"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The heat is still moving when the pan goes cold",
+    "narration": "The shape of that curve is the evidence. After the source is removed, the only heat that can warm the centre is heat still travelling inward from the outer layers.",
+    "args": {
+      "lines": [
+        "The shape of that",
+        "curve is the evidence.",
+        "After"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "The heat is still moving when the pan goes cold",
+    "narration": "Cut a roast in half and a thermal camera shows the same pattern in colour: a hot rim fading into a cooler middle.",
+    "args": {
+      "title": "Measuring carryover",
+      "stages": [
+        "probe thermometer in the centre",
+        "reading keeps rising off the heat"
+      ],
+      "conclusion": "heat still travelling inward"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.03,
+    "heading": "The heat is still moving when the pan goes cold",
+    "narration": "How much the centre rises is where the honest answer becomes a range with no fixed edges.",
+    "args": {
+      "term": "carryover",
+      "includes": [
+        "heat already inside moving inward"
+      ],
+      "excludes": [
+        "new heat from the pan"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "The heat is still moving when the pan goes cold",
+    "narration": "It depends on the size of the cut, how hot the outside was, and how long it cooked.",
+    "args": {
+      "lines": [
+        "It depends on the",
+        "size of the cut,",
+        "how hot"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 8.69,
+    "heading": "The heat is still moving when the pan goes cold",
+    "narration": "A large roast from a hot oven stores a great deal of heat in its outer layers and can rise noticeably.",
+    "args": {
+      "term": "carryover",
+      "includes": [
+        "heat already inside moving inward"
+      ],
+      "excludes": [
+        "new heat from the pan"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "The heat is still moving when the pan goes cold",
+    "narration": "A thin steak stores little heat and cools from both faces almost at once.",
+    "args": {
+      "lines": [
+        "A thin steak stores",
+        "little heat and cools"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.03,
+    "heading": "The heat is still moving when the pan goes cold",
+    "narration": "Estimates vary, and different figures get quoted for different cuts, so this script will not pick one.",
+    "args": {
+      "term": "carryover",
+      "includes": [
+        "heat already inside moving inward"
+      ],
+      "excludes": [
+        "new heat from the pan"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "The heat is still moving when the pan goes cold",
+    "narration": "The mechanism, though, does not change. Carryover is heat already inside moving inward, not new heat from the pan.",
+    "args": {
+      "lines": [
+        "The mechanism, though, does",
+        "not change. Carryover is",
+        "heat already"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 5.38,
+    "heading": "The heat is still moving when the pan goes cold",
+    "narration": "Carryover is also the reason the USDA guidance includes a rest at all.",
+    "args": {
+      "term": "rest time",
+      "meaning": "the time after removal when the temperature remains constant or continues to rise",
+      "boundary": "not a cooking instruction from this channel",
+      "source": "USDA"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "The heat is still moving when the pan goes cold",
+    "narration": "The guidance describes its 3-minute rest as the time after removal when the temperature remains constant or continues to rise.",
+    "args": {
+      "lines": [
+        "The guidance describes its",
+        "3-minute rest as the",
+        "time after"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 7.03,
+    "heading": "The heat is still moving when the pan goes cold",
+    "narration": "That statement is about temperature and time, and this episode quotes it only to explain the physics.",
+    "args": {
+      "term": "rest time",
+      "meaning": "the time after removal when the temperature remains constant or continues to rise",
+      "boundary": "not a cooking instruction from this channel",
+      "source": "USDA"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "The heat is still moving when the pan goes cold",
+    "narration": "It is not a cooking instruction from this channel. The point here is narrower.",
+    "args": {
+      "lines": [
+        "It is not a",
+        "cooking instruction from this",
+        "channel."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 8.28,
+    "heading": "The heat is still moving when the pan goes cold",
+    "narration": "An official body treats the minutes after cooking as part of the cooking, because the thermometer shows that they are.",
+    "args": {
+      "term": "rest time",
+      "meaning": "the time after removal when the temperature remains constant or continues to rise",
+      "boundary": "not a cooking instruction from this channel",
+      "source": "USDA"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 9.0,
+    "heading": "Producer POV",
+    "narration": "That's the feeling I'm chasing. Not collecting another fact \u2014 realising the model in my head was incomplete, and now I have a better one.",
+    "args": {
+      "text": "That's the feeling I'm chasing. Not collecting another fact \u2014 realising the model in my head was incomplete, and now I have a better one.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "Cooking wrings water out of muscle fibres",
+    "narration": "Now for the juice. Raw muscle is a bundle of long fibres, each one packed with protein filaments, and most of its weight is water held in and around them.",
+    "args": {
+      "title": "What heat does to muscle",
+      "steps": [
+        [
+          "proteins in the fibres contract",
+          ""
+        ],
+        [
+          "water is squeezed out",
+          ""
+        ],
+        [
+          "connective tissue shrinks",
+          ""
+        ]
+      ],
+      "note": "liquid collects between the fibres"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Cooking wrings water out of muscle fibres",
+    "narration": "As the meat heats, proteins in the fibres contract. They unfold, tangle and tighten, and the fibres shorten and narrow.",
+    "args": {
+      "lines": [
+        "As the meat heats,",
+        "proteins in the fibres",
+        "contract. They"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 5.79,
+    "heading": "Cooking wrings water out of muscle fibres",
+    "narration": "Water is squeezed out, the way water leaves a sponge as you wring it.",
+    "args": {
+      "title": "What heat does to muscle",
+      "steps": [
+        [
+          "proteins in the fibres contract",
+          ""
+        ],
+        [
+          "water is squeezed out",
+          ""
+        ],
+        [
+          "connective tissue shrinks",
+          ""
+        ]
+      ],
+      "note": "liquid collects between the fibres"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "Cooking wrings water out of muscle fibres",
+    "narration": "The connective tissue shrinks as well, wrapped around the bundles and tightening the squeeze.",
+    "args": {
+      "lines": [
+        "The connective tissue shrinks",
+        "as well, wrapped around",
+        "the bundles"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 5.79,
+    "heading": "Cooking wrings water out of muscle fibres",
+    "narration": "The released liquid collects between the fibres, in channels it did not fill before.",
+    "args": {
+      "title": "What heat does to muscle",
+      "steps": [
+        [
+          "proteins in the fibres contract",
+          ""
+        ],
+        [
+          "water is squeezed out",
+          ""
+        ],
+        [
+          "connective tissue shrinks",
+          ""
+        ]
+      ],
+      "note": "liquid collects between the fibres"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cooking wrings water out of muscle fibres",
+    "narration": "Some of it reaches the surface and evaporates or drips. Some is still in the meat, loose, when you pick up the knife.",
+    "args": {
+      "lines": [
+        "Some of it reaches",
+        "the surface and evaporates",
+        "or drips."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 5.79,
+    "heading": "Cooking wrings water out of muscle fibres",
+    "narration": "You cannot see water inside a steak, so this has to be measured indirectly.",
+    "args": {
+      "title": "Watching water move",
+      "stages": [
+        "low-field NMR",
+        "how freely that water moves"
+      ],
+      "conclusion": "heating shifts water toward the free fraction"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cooking wrings water out of muscle fibres",
+    "narration": "One tool is low-field NMR, short for nuclear magnetic resonance. It uses the same physics as medical scanners, at a smaller scale.",
+    "args": {
+      "lines": [
+        "One tool is low-field",
+        "NMR, short for nuclear",
+        "magnetic resonance."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 5.79,
+    "heading": "Cooking wrings water out of muscle fibres",
+    "narration": "It listens to hydrogen in water molecules and reports how freely that water moves.",
+    "args": {
+      "title": "Watching water move",
+      "stages": [
+        "low-field NMR",
+        "how freely that water moves"
+      ],
+      "conclusion": "heating shifts water toward the free fraction"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Cooking wrings water out of muscle fibres",
+    "narration": "Water bound tightly to protein, water trapped inside the fibres and water sitting loose between them each give a different signal.",
+    "args": {
+      "lines": [
+        "Water bound tightly to",
+        "protein, water trapped inside",
+        "the fibres"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "Cooking wrings water out of muscle fibres",
+    "narration": "Meat scientists publishing in journals such as the Journal of Agricultural and Food Chemistry, from the American Chemical Society, have used it to follow cooking.",
+    "args": {
+      "title": "Watching water move",
+      "stages": [
+        "low-field NMR",
+        "how freely that water moves"
+      ],
+      "conclusion": "heating shifts water toward the free fraction"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Cooking wrings water out of muscle fibres",
+    "narration": "As the meat heats, the signal from water inside the fibres shrinks and the signal from water between them grows.",
+    "args": {
+      "lines": [
+        "As the meat heats,",
+        "the signal from water",
+        "inside"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 7.45,
+    "heading": "Cooking wrings water out of muscle fibres",
+    "narration": "In other words, heating shifts water toward the free fraction, out of the fibres and into the gaps.",
+    "args": {
+      "title": "Watching water move",
+      "stages": [
+        "low-field NMR",
+        "how freely that water moves"
+      ],
+      "conclusion": "heating shifts water toward the free fraction"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 9.0,
+    "heading": "Cooking wrings water out of muscle fibres",
+    "narration": "This is mainstream science. Researchers at the USDA Agricultural Research Service study meat quality, including how much water a cut holds and loses.",
+    "args": {
+      "title": "Who studies this",
+      "sources": [
+        [
+          "USDA Agricultural Research Service",
+          "meat quality research"
+        ],
+        [
+          "American Chemical Society",
+          "water in cooked meat"
+        ],
+        [
+          "Institute of Food Technologists",
+          "heat and food"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Cooking wrings water out of muscle fibres",
+    "narration": "The Institute of Food Technologists publishes widely on how heat changes food.",
+    "args": {
+      "lines": [
+        "The Institute of Food",
+        "Technologists publishes widely on",
+        "how heat"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 7.86,
+    "heading": "Cooking wrings water out of muscle fibres",
+    "narration": "Across that literature the direction is consistent: more heat means more contraction, and more contraction pushes more liquid loose.",
+    "args": {
+      "title": "Who studies this",
+      "sources": [
+        [
+          "USDA Agricultural Research Service",
+          "meat quality research"
+        ],
+        [
+          "American Chemical Society",
+          "water in cooked meat"
+        ],
+        [
+          "Institute of Food Technologists",
+          "heat and food"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "Cooking wrings water out of muscle fibres",
+    "narration": "The old kitchen explanation gets that part right. It goes wrong about what happens next.",
+    "args": {
+      "lines": [
+        "The old kitchen explanation",
+        "gets that part right.",
+        "It goes"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Juice is not herded into the centre",
+    "narration": "The familiar version goes like this. A hot sear seals the surface, the heat drives the juice inward to the centre, and resting lets it spread back out to the edges so the slice stays moist.",
+    "args": {
+      "term": "the juice story",
+      "includes": [
+        "liquid squeezed loose throughout the meat"
+      ],
+      "excludes": [
+        "juice herded into the centre"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "Juice is not herded into the centre",
+    "narration": "Each step sounds physical, but few of them survive measurement. A seared surface is not a seal.",
+    "args": {
+      "lines": [
+        "Each step sounds physical,",
+        "but few of them",
+        "survive measurement."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.86,
+    "heading": "Juice is not herded into the centre",
+    "narration": "When meat seared first is weighed against meat that was not, the seared piece does not reliably lose less.",
+    "args": {
+      "term": "the juice story",
+      "includes": [
+        "liquid squeezed loose throughout the meat"
+      ],
+      "excludes": [
+        "juice herded into the centre"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Juice is not herded into the centre",
+    "narration": "You can hear the answer too. A searing steak keeps sizzling, and that sizzle is water reaching hot metal.",
+    "args": {
+      "lines": [
+        "You can hear the",
+        "answer too. A searing",
+        "steak keeps"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 5.38,
+    "heading": "Juice is not herded into the centre",
+    "narration": "There is also little direct evidence that juice gets herded into the centre.",
+    "args": {
+      "term": "the juice story",
+      "includes": [
+        "liquid squeezed loose throughout the meat"
+      ],
+      "excludes": [
+        "juice herded into the centre"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Juice is not herded into the centre",
+    "narration": "Squeezing happens wherever the meat is hot enough, which is everywhere, and it is strongest at the outside.",
+    "args": {
+      "lines": [
+        "Squeezing happens wherever the",
+        "meat is hot enough"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 6.21,
+    "heading": "Juice is not herded into the centre",
+    "narration": "The evidence supports liquid squeezed loose throughout the meat, not juice herded into the centre.",
+    "args": {
+      "term": "the juice story",
+      "includes": [
+        "liquid squeezed loose throughout the meat"
+      ],
+      "excludes": [
+        "juice herded into the centre"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 7.03,
+    "heading": "Juice is not herded into the centre",
+    "narration": "So the popular story scores unevenly. The claim that liquid is squeezed loose by heat is supported.",
+    "args": {
+      "title": "The popular story",
+      "items": [
+        "-a sear seals the surface",
+        "?juice is herded into the centre",
+        "+liquid is squeezed loose by heat"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Juice is not herded into the centre",
+    "narration": "The claim that a sear seals the surface is not. The claim that juice is herded into the centre and flows back is unproven at best, and nothing else in the explanation depends on it.",
+    "args": {
+      "lines": [
+        "The claim that a",
+        "sear seals the surface",
+        "is not."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 7.86,
+    "heading": "Juice is not herded into the centre",
+    "narration": "That last point matters most. If the juice is not migrating, resting cannot be about letting it migrate home.",
+    "args": {
+      "title": "The popular story",
+      "items": [
+        "-a sear seals the surface",
+        "?juice is herded into the centre",
+        "+liquid is squeezed loose by heat"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Juice is not herded into the centre",
+    "narration": "Something else has to explain the real difference cooks see on the board.",
+    "args": {
+      "lines": [
+        "Something else has to",
+        "explain the real difference",
+        "cooks see"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 6.21,
+    "heading": "A scale tests what a story cannot",
+    "narration": "The least glamorous instrument in any lab settles most of this. It is a scale.",
+    "args": {
+      "title": "Weighing the loss",
+      "steps": [
+        [
+          "weigh the raw meat",
+          ""
+        ],
+        [
+          "weigh it after cooking",
+          ""
+        ],
+        [
+          "weigh it after resting",
+          ""
+        ],
+        [
+          "weigh what runs onto the board",
+          ""
+        ]
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "A scale tests what a story cannot",
+    "narration": "Meat scientists call the result cooking loss, and the method fits in a breath.",
+    "args": {
+      "lines": [
+        "Meat scientists call the",
+        "result cooking loss, and",
+        "the method"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 4.97,
+    "heading": "A scale tests what a story cannot",
+    "narration": "Weigh the raw meat. Weigh it after cooking. Weigh it after resting.",
+    "args": {
+      "title": "Weighing the loss",
+      "steps": [
+        [
+          "weigh the raw meat",
+          ""
+        ],
+        [
+          "weigh it after cooking",
+          ""
+        ],
+        [
+          "weigh it after resting",
+          ""
+        ],
+        [
+          "weigh what runs onto the board",
+          ""
+        ]
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "A scale tests what a story cannot",
+    "narration": "Then cut it and weigh what runs onto the board. Do that for pieces sliced at once and pieces left to rest, and you have numbers instead of impressions.",
+    "args": {
+      "lines": [
+        "Then cut it and",
+        "weigh what runs onto",
+        "the board."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 7.86,
+    "heading": "A scale tests what a story cannot",
+    "narration": "Everyone notices the liquid on the board. The earlier weighings tell you where the rest of the water went.",
+    "args": {
+      "title": "Weighing the loss",
+      "steps": [
+        [
+          "weigh the raw meat",
+          ""
+        ],
+        [
+          "weigh it after cooking",
+          ""
+        ],
+        [
+          "weigh it after resting",
+          ""
+        ],
+        [
+          "weigh what runs onto the board",
+          ""
+        ]
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "A scale tests what a story cannot",
+    "narration": "When cooks and researchers run comparisons like this, the results point one way.",
+    "args": {
+      "lines": [
+        "When cooks and researchers",
+        "run comparisons like this,",
+        "the results"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "A scale tests what a story cannot",
+    "narration": "Meat sliced straight away sheds more onto the board than meat that has rested.",
+    "args": {
+      "lines": [
+        "Meat sliced straight away",
+        "sheds more onto the",
+        "board"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "A scale tests what a story cannot",
+    "narration": "That difference is real. Resting meat is not sealed either, though. While it sits, it stays hot, keeps steaming and drips a little onto the plate.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "A scale tests what a story cannot",
+    "narration": "Some of the water that would have reached the board goes into the air instead.",
+    "args": {
+      "lines": [
+        "Some of the water",
+        "that would have reached",
+        "the board"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "A scale tests what a story cannot",
+    "narration": "As a result, the total loss of a rested piece is often closer to that of an unrested piece than the puddle suggests.",
+    "args": {
+      "lines": [
+        "As a result, the",
+        "total loss of a",
+        "rested piece"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "A scale tests what a story cannot",
+    "narration": "How close depends on the cut and the conditions, and published comparisons do not agree on a single figure. Resting shrinks the puddle more clearly than it shrinks the total.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 6.62,
+    "heading": "Cooler juice runs out more slowly",
+    "narration": "So why does less run out of rested meat? The best-supported answer concerns the liquid itself.",
+    "args": {
+      "term": "viscosity",
+      "meaning": "how strongly a liquid resists flowing",
+      "boundary": "a property of the liquid, not the amount of it",
+      "source": "American Chemical Society"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Cooler juice runs out more slowly",
+    "narration": "Meat juice is not plain water. It carries dissolved proteins, along with gelatin from connective tissue.",
+    "args": {
+      "lines": [
+        "Meat juice is not",
+        "plain water. It carries",
+        "dissolved proteins"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "Cooler juice runs out more slowly",
+    "narration": "Its viscosity, meaning how strongly a liquid resists flowing, rises as it cools, and gelatin in particular thickens as the temperature drops.",
+    "args": {
+      "term": "viscosity",
+      "meaning": "how strongly a liquid resists flowing",
+      "boundary": "a property of the liquid, not the amount of it",
+      "source": "American Chemical Society"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Cooler juice runs out more slowly",
+    "narration": "Viscosity is a property of the liquid, not the amount of it.",
+    "args": {
+      "lines": [
+        "Viscosity is a property",
+        "of the liquid, not",
+        "the amount"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 4.97,
+    "heading": "Cooler juice runs out more slowly",
+    "narration": "The same volume can pour freely when hot and creep when cooler.",
+    "args": {
+      "term": "viscosity",
+      "meaning": "how strongly a liquid resists flowing",
+      "boundary": "a property of the liquid, not the amount of it",
+      "source": "American Chemical Society"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cooler juice runs out more slowly",
+    "narration": "This is standard physical chemistry, the kind covered in the American Chemical Society's general chemistry resources. A knife cutting a cooler piece is cutting through thicker liquid.",
+    "args": {
+      "lines": [
+        "This is standard physical",
+        "chemistry, the kind covered"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Cooler juice runs out more slowly",
+    "narration": "A second, less certain part of the explanation is often repeated. As the outer layers cool, the fibres there may relax slightly and hold some of the loose liquid back in the spaces between them.",
+    "args": {
+      "variant": 2
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.62,
+    "heading": "Cooler juice runs out more slowly",
+    "narration": "The idea is plausible, but it is harder to isolate in a measurement than viscosity is.",
+    "args": {
+      "variant": 3
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Cooler juice runs out more slowly",
+    "narration": "Treat it as a possible contributor, not a settled cause. Either way, both effects push in the same direction.",
+    "args": {
+      "lines": [
+        "Treat it as a",
+        "possible contributor, not a",
+        "settled cause."
+      ]
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Cooler juice runs out more slowly",
+    "narration": "A slightly cooler, more evenly heated piece of meat releases its loose liquid more slowly when it is cut, so less of it reaches the board in the first minute.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 4.97,
+    "heading": "The size of the cut decides how much any of this matters",
+    "narration": "Put the two effects together and the role of size becomes clear.",
+    "args": {
+      "title": "Why size matters",
+      "stages": [
+        "thick roast stores more heat",
+        "centre rises for longer"
+      ],
+      "conclusion": "resting changes a roast more than a thin steak"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The size of the cut decides how much any of this matters",
+    "narration": "A thick roast stores more heat, so its centre rises for longer after it leaves the oven, and its outside and inside start further apart.",
+    "args": {
+      "lines": [
+        "A thick roast stores",
+        "more heat, so its",
+        "centre rises"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 5.38,
+    "heading": "The size of the cut decides how much any of this matters",
+    "narration": "Resting has more work to do on both the temperature and the liquid.",
+    "args": {
+      "title": "Why size matters",
+      "stages": [
+        "thick roast stores more heat",
+        "centre rises for longer"
+      ],
+      "conclusion": "resting changes a roast more than a thin steak"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "The size of the cut decides how much any of this matters",
+    "narration": "A thin steak stores little heat, evens out quickly and cools fast whether you wait or not.",
+    "args": {
+      "lines": [
+        "A thin steak stores",
+        "little heat, evens out",
+        "quickly"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 7.03,
+    "heading": "The size of the cut decides how much any of this matters",
+    "narration": "For a thin steak, the gap between resting and not resting is small and hard to measure.",
+    "args": {
+      "title": "Why size matters",
+      "stages": [
+        "thick roast stores more heat",
+        "centre rises for longer"
+      ],
+      "conclusion": "resting changes a roast more than a thin steak"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "The size of the cut decides how much any of this matters",
+    "narration": "Resting changes a roast more than a thin steak, which matches what the thermometer and the scale both report.",
+    "args": {
+      "lines": [
+        "Resting changes a roast",
+        "more than a thin",
+        "steak"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 5.38,
+    "heading": "What to notice in the edit",
+    "narration": "When you watch this back, notice that the two instruments do different jobs.",
+    "args": {
+      "title": "What the evidence shows",
+      "items": [
+        "+the centre keeps rising off the heat",
+        "+less liquid reaches the board",
+        "-a sear seals the surface",
+        "?how much resting changes total loss"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "What to notice in the edit",
+    "narration": "The probe thermometer answers the temperature question, and its answer is clean: the centre keeps rising off the heat.",
+    "args": {
+      "lines": [
+        "The probe thermometer answers",
+        "the temperature question, and",
+        "its answer"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "The scale answers the juice question, and its answer is quieter. Less liquid reaches the board, but some of the water left by another route.",
+    "args": {
+      "title": "What the evidence shows",
+      "items": [
+        "+the centre keeps rising off the heat",
+        "+less liquid reaches the board",
+        "-a sear seals the surface",
+        "?how much resting changes total loss"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "Watch the sear, which keeps sizzling because it never sealed anything. And notice the one box left open, which is how much resting changes total loss. The answer depends on the cut and the conditions.",
+    "args": {
+      "lines": [
+        "Watch the sear, which",
+        "keeps sizzling because it",
+        "never sealed"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Evidence limit",
+    "narration": "This evidence does not give a single correct resting time for every cut.",
+    "args": {
+      "lines": [
+        "This evidence does not",
+        "give a single correct",
+        "resting time"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.69,
+    "heading": "Evidence limit",
+    "narration": "The only time stated in this episode is the USDA's 3-minute rest, and that rest exists for temperature, not for juiciness.",
+    "args": {
+      "variant": 2
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "The evidence does not show that juice migrates to the centre. It also does not show that resting saves most of the liquid that cooking pushes loose, because much of that liquid is gone before the meat leaves the heat.",
+    "args": {
+      "lines": [
+        "The evidence does not",
+        "show that juice migrates"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "Evidence limit",
+    "narration": "It does not settle whether people can taste the difference in a blind comparison.",
+    "args": {
+      "lines": [
+        "It does not settle",
+        "whether people can taste",
+        "the difference"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 4.97,
+    "heading": "Evidence limit",
+    "narration": "Juiciness is partly a sensation, and sensory studies measure people, not water.",
+    "args": {
+      "variant": 3
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "Evidence limit",
+    "narration": "Finally, the carryover rise has no fixed size. Mass, heat and time set its range.",
+    "args": {
+      "lines": [
+        "Finally, the carryover rise",
+        "has no fixed size.",
+        "Mass, heat"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "So the minutes after cooking are not empty. Heat is still crossing the meat from the outside in, and the loose liquid inside it is cooling and thickening.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.45,
+    "heading": "Closing",
+    "narration": "Resting is the name for letting both of those finish before the knife decides where the water goes.",
+    "args": {
+      "variant": 2
+    },
+    "from": "directive"
+  }
+]

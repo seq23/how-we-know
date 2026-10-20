@@ -121,19 +121,17 @@ So the next square you eat is doing something precise. A crystal chosen by tempe
 
 ## Chapters
 
-- 00:00 Cold open
-- 00:48 Title card
-- 00:52 The pleasure starts as a change of state
-- 02:05 One fat can set into six different solids
-- 03:50 Tempering is a method for choosing one crystal
-- 05:00 Producer POV
-- 05:08 Most chocolate flavour is smelled, not tasted
-- 06:55 The flavour is started on the farm
-- 08:40 Bitterness is part of the design
-- 09:40 The famous molecule story outruns its evidence
-- 10:45 What to notice in the edit
-- 11:20 Evidence limit
-- 11:52 Closing
+- 0:00 Cold open
+- 0:43 The pleasure starts as a change of state
+- 1:47 One fat can set into six different solids
+- 3:25 Tempering is a method for choosing one crystal
+- 4:35 Most chocolate flavour is smelled, not tasted
+- 6:14 The flavour is started on the farm
+- 7:54 Bitterness is part of the design
+- 8:52 The famous molecule story outruns its evidence
+- 10:04 What to notice in the edit
+- 10:36 Evidence limit
+- 11:07 Closing
 
 ## Sources
 

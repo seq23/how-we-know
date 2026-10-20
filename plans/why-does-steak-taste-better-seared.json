@@ -1,0 +1,1114 @@
+[
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "Cold open",
+    "narration": "A wet steak cannot brown until its surface climbs past boiling water.",
+    "args": {
+      "lines": [
+        "A wet steak cannot",
+        "brown until its surface",
+        "climbs past"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "Searing tastes better because a dry, very hot surface drives the Maillard reaction, in which amino acids and sugars in the meat recombine into brown pigments and a large family of new aroma compounds that raw or gently cooked meat does not have.",
+    "args": {
+      "lines": [
+        "Searing tastes better because",
+        "a dry, very hot",
+        "surface drives"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.86,
+    "heading": "Cold open",
+    "narration": "The reaction carries the name of Louis-Camille Maillard, who described it to the French Academy of Sciences in 1912.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "That date does not explain why a frying pan produces this flavour on meat and a pot of simmering water does not.",
+    "args": {
+      "lines": [
+        "That date does not",
+        "explain why a frying",
+        "pan produces"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "Cold open",
+    "narration": "The answer is mostly about water, and about the places on a steak where water cannot stay.",
+    "args": {
+      "lines": [
+        "The answer is mostly",
+        "about water, and about",
+        "the places"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 3.5,
+    "heading": "Title card",
+    "narration": "Why does steak taste better seared?",
+    "args": {
+      "variant": 1
+    },
+    "from": "heading+destagnate"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "The brown crust is new chemistry, not concentrated meat",
+    "narration": "Look at a seared steak cut in half. On screen is a dry crust over a wet interior, and the two layers cooked in the same pan.",
+    "args": {
+      "variant": 0
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "The brown crust is new chemistry, not concentrated meat",
+    "narration": "The thin outer layer is brown, firm and fragrant. A few millimetres in, the meat is pink and still wet.",
+    "args": {
+      "lines": [
+        "The thin outer layer",
+        "is brown, firm and",
+        "fragrant."
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.21,
+    "heading": "The brown crust is new chemistry, not concentrated meat",
+    "narration": "Those two zones did not simply cook to different degrees. They went through different chemistry.",
+    "args": {
+      "variant": 1
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "The brown crust is new chemistry, not concentrated meat",
+    "narration": "The interior was heated, and its proteins changed shape and tightened. The crust was transformed: molecules that were there in the raw meat reacted with each other and became molecules that were not there before.",
+    "args": {
+      "variant": 2
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "The brown crust is new chemistry, not concentrated meat",
+    "narration": "That distinction is the whole episode. It is tempting to think a crust tastes stronger because it is concentrated, the way a sauce gets stronger as it reduces.",
+    "args": {
+      "term": "browned crust",
+      "includes": [
+        "new molecules made in the pan"
+      ],
+      "excludes": [
+        "the same meat with the water driven off"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "The brown crust is new chemistry, not concentrated meat",
+    "narration": "Some of that happens; drying does concentrate what is already present. But concentration cannot explain new smells.",
+    "args": {
+      "lines": [
+        "Some of that happens"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.03,
+    "heading": "The brown crust is new chemistry, not concentrated meat",
+    "narration": "Raw beef has a faint, metallic, slightly sweet aroma. A seared crust smells roasted, nutty and savoury.",
+    "args": {
+      "term": "browned crust",
+      "includes": [
+        "new molecules made in the pan"
+      ],
+      "excludes": [
+        "the same meat with the water driven off"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "The brown crust is new chemistry, not concentrated meat",
+    "narration": "Those notes come from compounds that have to be built, and building them needs a specific reaction under specific conditions.",
+    "args": {
+      "lines": [
+        "Those notes come from",
+        "compounds that have to",
+        "be built"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 9.0,
+    "heading": "A chemist in a test tube found the reaction a century before the pan explanation",
+    "narration": "Maillard was not studying steak. He was a physician and chemist interested in how amino acids, the building blocks of proteins, behave.",
+    "args": {
+      "value": "1912",
+      "unit": "year",
+      "caption": "Maillard reports to the French Academy of Sciences",
+      "source": "French Academy of Sciences"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "A chemist in a test tube found the reaction a century before the pan explanation",
+    "narration": "In his report to the French Academy of Sciences in 1912, he described heating solutions of amino acids with sugars and watching them turn yellow, then brown, while giving off new odours.",
+    "args": {
+      "lines": [
+        "In his report to",
+        "the French Academy of",
+        "Sciences"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 9.0,
+    "heading": "A chemist in a test tube found the reaction a century before the pan explanation",
+    "narration": "The important part of his observation was that neither ingredient did this on its own at those temperatures. It took the pair.",
+    "args": {
+      "value": "1912",
+      "unit": "year",
+      "caption": "Maillard reports to the French Academy of Sciences",
+      "source": "French Academy of Sciences"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "A chemist in a test tube found the reaction a century before the pan explanation",
+    "narration": "Chemists now define the Maillard reaction as a network of reactions between amino groups, usually on amino acids or proteins, and reducing sugars, a class of sugars with a reactive group that can open up and bond.",
+    "args": {
+      "term": "Maillard reaction",
+      "meaning": "amino acids and reducing sugars forming brown pigments and aroma compounds",
+      "boundary": "not caramelization, which needs sugar alone",
+      "source": "American Chemical Society"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "A chemist in a test tube found the reaction a century before the pan explanation",
+    "narration": "The American Chemical Society, which publishes extensively on this chemistry, treats it as distinct from caramelization.",
+    "args": {
+      "lines": [
+        "The American Chemical Society,",
+        "which publishes extensively on",
+        "this chemistry"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "A chemist in a test tube found the reaction a century before the pan explanation",
+    "narration": "Caramelization is what sugar does alone when it is heated hard. Meat contains very little free sugar, so a steak crust is overwhelmingly Maillard chemistry, with caramelization playing at most a minor part.",
+    "args": {
+      "term": "Maillard reaction",
+      "meaning": "amino acids and reducing sugars forming brown pigments and aroma compounds",
+      "boundary": "not caramelization, which needs sugar alone",
+      "source": "American Chemical Society"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.69,
+    "heading": "A chemist in a test tube found the reaction a century before the pan explanation",
+    "narration": "That raises an obvious question about the meat. If there is so little sugar, where does the reaction get its partner?",
+    "args": {
+      "variant": 3
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "A chemist in a test tube found the reaction a century before the pan explanation",
+    "narration": "Muscle contains small amounts of glucose and, importantly, ribose, a sugar that is part of the energy-carrying molecules muscle cells use.",
+    "args": {
+      "lines": [
+        "Muscle contains small amounts",
+        "of glucose and, importantly,",
+        "ribose"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 4.97,
+    "heading": "A chemist in a test tube found the reaction a century before the pan explanation",
+    "narration": "Small quantities are enough, because each reaction can feed many downstream ones.",
+    "args": {
+      "variant": 4
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "size_ladder",
+    "seconds": 9.0,
+    "heading": "Water holds the surface below the browning zone",
+    "narration": "Here is where the pan matters. Chemistry explainers from the American Chemical Society describe the Maillard reaction as slow at ordinary cooking temperatures and speeding up sharply above roughly 140 degrees Celsius, while a wet surface stalls near 100 degrees.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Water holds the surface below the browning zone",
+    "narration": "Treat that 140 as a convenient landmark rather than a switch. The reaction does occur at lower temperatures, very slowly, which is why some foods brown over long storage.",
+    "args": {
+      "lines": [
+        "Treat that 140 as",
+        "a convenient landmark rather"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "size_ladder",
+    "seconds": 7.45,
+    "heading": "Water holds the surface below the browning zone",
+    "narration": "In a kitchen timeframe of minutes, though, browning needs a surface well above the boiling point of water.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Water holds the surface below the browning zone",
+    "narration": "And a wet surface cannot get there. While liquid water sits on the meat, the energy arriving from the pan goes into turning that water into steam.",
+    "args": {
+      "lines": [
+        "And a wet surface",
+        "cannot get there. While",
+        "liquid water"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Water holds the surface below the browning zone",
+    "narration": "The surface temperature is pinned close to boiling until the water is gone.",
+    "args": {
+      "lines": [
+        "The surface temperature is",
+        "pinned close to boiling",
+        "until"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "size_ladder",
+    "seconds": 7.03,
+    "heading": "Water holds the surface below the browning zone",
+    "narration": "This is why a steak dropped into simmering stock turns grey, not brown, however long it cooks.",
+    "args": {},
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Water holds the surface below the browning zone",
+    "narration": "It is also why a crowded pan steams instead of searing: the meat releases moisture faster than the pan can drive it off.",
+    "args": {
+      "lines": [
+        "It is also why",
+        "a crowded pan steams",
+        "instead"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 7.03,
+    "heading": "Water holds the surface below the browning zone",
+    "narration": "So the sequence on screen is a chain of conditions. The hot pan boils away surface water.",
+    "args": {
+      "title": "Why searing needs a hot pan",
+      "stages": [
+        "surface water boils away",
+        "surface dries",
+        "temperature climbs past boiling"
+      ],
+      "conclusion": "Maillard reaction speeds up"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Water holds the surface below the browning zone",
+    "narration": "The surface dries. Only then can its temperature climb past boiling, and only then does the Maillard reaction speed up enough to build a crust in the minutes before the inside overcooks.",
+    "args": {
+      "lines": [
+        "The surface dries. Only",
+        "then can its temperature",
+        "climb past"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 5.38,
+    "heading": "Water holds the surface below the browning zone",
+    "narration": "A sear is a race between drying the outside and heating the inside.",
+    "args": {
+      "title": "Why searing needs a hot pan",
+      "stages": [
+        "surface water boils away",
+        "surface dries",
+        "temperature climbs past boiling"
+      ],
+      "conclusion": "Maillard reaction speeds up"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Water holds the surface below the browning zone",
+    "narration": "A very hot pan wins that race because it dries the surface quickly while the interior lags behind.",
+    "args": {
+      "lines": [
+        "A very hot pan",
+        "wins that race because",
+        "it dries"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 5.38,
+    "heading": "Producer POV",
+    "narration": "Octopuses impress me. So much of their nervous system runs through their arms.",
+    "args": {
+      "text": "Octopuses impress me. So much of their nervous system runs through their arms.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 5.79,
+    "heading": "Producer POV",
+    "narration": "They aren't just unusual \u2014 they look like a completely different solution to intelligence.",
+    "args": {
+      "text": "They aren't just unusual \u2014 they look like a completely different solution to intelligence.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "timeline",
+    "seconds": 5.79,
+    "heading": "Hodge turned a brown smear into a sequence of stages",
+    "narration": "For four decades after Maillard, browning was a well-known effect without a clear map.",
+    "args": {
+      "events": [
+        [
+          1912,
+          "Maillard reports to the French Academy of Sciences"
+        ],
+        [
+          1953,
+          "Hodge publishes his scheme in the Journal of Agricultural and Food Chemistry"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Hodge turned a brown smear into a sequence of stages",
+    "narration": "In 1953, John Hodge, a chemist at a USDA research laboratory in Peoria, Illinois, published a scheme in the Journal of Agricultural and Food Chemistry that organised the reaction into a sequence.",
+    "args": {
+      "lines": [
+        "In 1953, John Hodge,",
+        "a chemist at a",
+        "USDA research"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "timeline",
+    "seconds": 9.0,
+    "heading": "Hodge turned a brown smear into a sequence of stages",
+    "narration": "His paper became one of the most cited in food chemistry, because it gave researchers a framework for asking which step produced which colour or smell.",
+    "args": {
+      "events": [
+        [
+          1912,
+          "Maillard reports to the French Academy of Sciences"
+        ],
+        [
+          1953,
+          "Hodge publishes his scheme in the Journal of Agricultural and Food Chemistry"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 6.21,
+    "heading": "Hodge turned a brown smear into a sequence of stages",
+    "narration": "Hodge divided the reaction into an early stage, an intermediate stage and a final stage.",
+    "args": {
+      "title": "Hodge's scheme",
+      "steps": [
+        [
+          "early stage",
+          ""
+        ],
+        [
+          "intermediate stage",
+          ""
+        ],
+        [
+          "final stage",
+          ""
+        ]
+      ],
+      "note": "brown pigments and aroma compounds"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Hodge turned a brown smear into a sequence of stages",
+    "narration": "In the early stage, a sugar and an amino group join and rearrange into a more stable intermediate.",
+    "args": {
+      "lines": [
+        "In the early stage,",
+        "a sugar and an",
+        "amino group"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "Hodge turned a brown smear into a sequence of stages",
+    "narration": "Nothing is brown yet, and little has an aroma. In the intermediate stage, those intermediates break apart and recombine into smaller, reactive fragments.",
+    "args": {
+      "title": "Hodge's scheme",
+      "steps": [
+        [
+          "early stage",
+          ""
+        ],
+        [
+          "intermediate stage",
+          ""
+        ],
+        [
+          "final stage",
+          ""
+        ]
+      ],
+      "note": "brown pigments and aroma compounds"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Hodge turned a brown smear into a sequence of stages",
+    "narration": "Many of the smells appear here. In the final stage, fragments link into large brown polymers, the pigments you see as the crust.",
+    "args": {
+      "lines": [
+        "Many of the smells",
+        "appear here. In the",
+        "final stage"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Hodge turned a brown smear into a sequence of stages",
+    "narration": "The scheme mattered because it was testable. If a smell comes from the intermediate stage, you should be able to block or boost it by changing the conditions that govern that stage, such as acidity, moisture or the particular amino acid involved.",
+    "args": {
+      "lines": [
+        "The scheme mattered because",
+        "it was testable. If",
+        "a smell"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "timeline",
+    "seconds": 7.45,
+    "heading": "Hodge turned a brown smear into a sequence of stages",
+    "narration": "Decades of model experiments, mixing one sugar with one amino acid and heating them, have done exactly that.",
+    "args": {
+      "events": [
+        [
+          1912,
+          "Maillard reports to the French Academy of Sciences"
+        ],
+        [
+          1953,
+          "Hodge publishes his scheme in the Journal of Agricultural and Food Chemistry"
+        ]
+      ]
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Hodge turned a brown smear into a sequence of stages",
+    "narration": "The broad outline Hodge drew has held, although later work showed the network is far more branched than a three-stage diagram suggests.",
+    "args": {
+      "lines": [
+        "The broad outline Hodge",
+        "drew has held, although",
+        "later work"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 6.62,
+    "heading": "Instruments separated the smell into molecules",
+    "narration": "Knowing that browning makes smells is different from knowing which smells. That answer came from instruments.",
+    "args": {
+      "title": "From aroma to molecule",
+      "stages": [
+        "gas chromatography separates the volatiles",
+        "mass spectrometry identifies them",
+        "sniffing port links each molecule to a smell"
+      ],
+      "conclusion": "which compounds carry seared flavour"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Instruments separated the smell into molecules",
+    "narration": "Gas chromatography separates the volatile molecules escaping from cooked meat, sending them through a long, thin column where they emerge one after another.",
+    "args": {
+      "lines": [
+        "Gas chromatography separates the",
+        "volatile molecules escaping from",
+        "cooked meat"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 4.97,
+    "heading": "Instruments separated the smell into molecules",
+    "narration": "Mass spectrometry then identifies each one by how it breaks into fragments.",
+    "args": {
+      "title": "From aroma to molecule",
+      "stages": [
+        "gas chromatography separates the volatiles",
+        "mass spectrometry identifies them",
+        "sniffing port links each molecule to a smell"
+      ],
+      "conclusion": "which compounds carry seared flavour"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Instruments separated the smell into molecules",
+    "narration": "And a sniffing port, where a trained person smells the gas leaving the column, links each molecule to a smell.",
+    "args": {
+      "lines": [
+        "And a sniffing port,",
+        "where a trained person",
+        "smells"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 6.62,
+    "heading": "Instruments separated the smell into molecules",
+    "narration": "That last step matters, because the most abundant compounds are often not the ones you notice.",
+    "args": {
+      "title": "From aroma to molecule",
+      "stages": [
+        "gas chromatography separates the volatiles",
+        "mass spectrometry identifies them",
+        "sniffing port links each molecule to a smell"
+      ],
+      "conclusion": "which compounds carry seared flavour"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 9.0,
+    "heading": "Instruments separated the smell into molecules",
+    "narration": "Studies of this kind, many published in the Journal of Agricultural and Food Chemistry, have catalogued a large number of volatiles in cooked beef.",
+    "args": {
+      "title": "Who documented the chemistry",
+      "sources": [
+        [
+          "French Academy of Sciences",
+          "the 1912 report"
+        ],
+        [
+          "Journal of Agricultural and Food Chemistry",
+          "Hodge's scheme"
+        ],
+        [
+          "PubChem",
+          "compound records"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Instruments separated the smell into molecules",
+    "narration": "Published counts vary with the method and the cut, so no single total is worth quoting.",
+    "args": {
+      "lines": [
+        "Published counts vary with",
+        "the method and the",
+        "cut"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 7.45,
+    "heading": "Instruments separated the smell into molecules",
+    "narration": "Several families keep recurring: pyrazines, with roasted and nutty notes; furans; and sulfur-containing compounds with savoury, meaty character.",
+    "args": {
+      "title": "Who documented the chemistry",
+      "sources": [
+        [
+          "French Academy of Sciences",
+          "the 1912 report"
+        ],
+        [
+          "Journal of Agricultural and Food Chemistry",
+          "Hodge's scheme"
+        ],
+        [
+          "PubChem",
+          "compound records"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Instruments separated the smell into molecules",
+    "narration": "PubChem, the public chemical database, lists one of them, 2-methyl-3-furanthiol, which forms when the sulfur-bearing amino acid cysteine reacts with ribose.",
+    "args": {
+      "lines": [
+        "PubChem, the public chemical",
+        "database, lists one of",
+        "them, 2-methyl-3-furanthiol"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 6.21,
+    "heading": "Instruments separated the smell into molecules",
+    "narration": "Small amounts of compounds like it carry an outsized share of what people call meaty.",
+    "args": {
+      "title": "Who documented the chemistry",
+      "sources": [
+        [
+          "French Academy of Sciences",
+          "the 1912 report"
+        ],
+        [
+          "Journal of Agricultural and Food Chemistry",
+          "Hodge's scheme"
+        ],
+        [
+          "PubChem",
+          "compound records"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Instruments separated the smell into molecules",
+    "narration": "One more process runs alongside. Strecker degradation, a side reaction of the Maillard network, breaks amino acids into small aldehydes with malty, toasty smells.",
+    "args": {
+      "lines": [
+        "One more process runs",
+        "alongside. Strecker degradation, a",
+        "side reaction"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "Instruments separated the smell into molecules",
+    "narration": "It is another reason the crust smells of more than the meat it came from.",
+    "args": {
+      "lines": [
+        "It is another reason",
+        "the crust smells"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Instruments separated the smell into molecules",
+    "narration": "Many of these molecules are perceived by smell rather than by the tongue, often through the back of the mouth as you chew.",
+    "args": {
+      "variant": 2
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "Instruments separated the smell into molecules",
+    "narration": "When people say a seared steak tastes better, much of what they detect is aroma.",
+    "args": {
+      "lines": [
+        "When people say a",
+        "seared steak tastes better,",
+        "much"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 6.62,
+    "heading": "Searing does not seal anything in",
+    "narration": "There is a popular explanation that searing locks in juices, and it does not survive testing.",
+    "args": {
+      "term": "searing",
+      "includes": [
+        "adding flavour chemistry"
+      ],
+      "excludes": [
+        "sealing in juices"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Searing does not seal anything in",
+    "narration": "Cooks and food scientists have weighed steaks before and after cooking, comparing ones seared first with ones that were not.",
+    "args": {
+      "lines": [
+        "Cooks and food scientists",
+        "have weighed steaks before",
+        "and after"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.03,
+    "heading": "Searing does not seal anything in",
+    "narration": "Seared steaks lose about as much moisture, and sometimes more, because the surface reaches a higher temperature.",
+    "args": {
+      "term": "searing",
+      "includes": [
+        "adding flavour chemistry"
+      ],
+      "excludes": [
+        "sealing in juices"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Searing does not seal anything in",
+    "narration": "The crust is porous. The sizzle you hear the whole time is water escaping as steam, which is direct evidence that nothing has been sealed.",
+    "args": {
+      "lines": [
+        "The crust is porous.",
+        "The sizzle you hear"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "Searing does not seal anything in",
+    "narration": "This is worth holding onto, because it shows how the right explanation was reached.",
+    "args": {
+      "lines": [
+        "This is worth holding",
+        "onto, because it shows",
+        "how"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.38,
+    "heading": "Searing does not seal anything in",
+    "narration": "The sealing idea predicted something measurable, a heavier steak, and the scale disagreed.",
+    "args": {
+      "variant": 3
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Searing does not seal anything in",
+    "narration": "The Maillard explanation predicts other measurable things: no browning while the surface is wet, faster browning at higher temperatures, and specific new compounds in the crust.",
+    "args": {
+      "lines": [
+        "The Maillard explanation predicts",
+        "other measurable things: no",
+        "browning while"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Searing does not seal anything in",
+    "narration": "Each of those has been observed. The question is answered by what weighs, smells and separates as predicted.",
+    "args": {
+      "lines": [
+        "Each of those has",
+        "been observed. The question",
+        "is answered"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 7.86,
+    "heading": "Fat runs parallel reactions of its own",
+    "narration": "The Maillard reaction is not alone in the pan. Fat on and in the meat also changes when heated.",
+    "args": {
+      "title": "What builds seared flavour",
+      "items": [
+        "+Maillard reaction in the crust",
+        "+Strecker degradation",
+        "+reactions in heated fat",
+        "-sealing in juices"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Fat runs parallel reactions of its own",
+    "narration": "Its components oxidise and break into fragments with their own aromas, and some of those fragments then join the Maillard network, reacting with amino acids to make compounds neither process would make separately.",
+    "args": {
+      "lines": [
+        "Its components oxidise and",
+        "break into fragments with",
+        "their"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "Fat runs parallel reactions of its own",
+    "narration": "Researchers who compare beef with other meats attribute much of the difference between them to fat chemistry, while the roasted character common to all of them traces back to Maillard browning.",
+    "args": {
+      "title": "What builds seared flavour",
+      "items": [
+        "+Maillard reaction in the crust",
+        "+Strecker degradation",
+        "+reactions in heated fat",
+        "-sealing in juices"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 4.97,
+    "heading": "What to notice in the edit",
+    "narration": "When the edit cuts to the pan, notice the order of events.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.45,
+    "heading": "What to notice in the edit",
+    "narration": "First there is steam and noise, as surface water boils off. Only after that does the colour deepen.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "The visual delay between sizzle and brown is the experiment playing out in real time, and the sequence of the cuts should keep that order.",
+    "args": {
+      "lines": [
+        "The visual delay between",
+        "sizzle and brown is",
+        "the experiment"
+      ]
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 7.86,
+    "heading": "Evidence limit",
+    "narration": "This evidence explains which molecules a sear creates and why a dry, hot surface is needed to make them.",
+    "args": {
+      "title": "What the evidence settles",
+      "items": [
+        "+browning needs a dry surface",
+        "+specific compounds form in the crust",
+        "-searing seals in juices",
+        "?why people prefer the result"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Evidence limit",
+    "narration": "It does not establish that seared steak is better in any absolute sense.",
+    "args": {
+      "lines": [
+        "It does not establish",
+        "that seared steak is",
+        "better"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "Preference is learned and varies between people and cuisines. The chemistry also comes from model systems and measured samples; a real steak, with its own cut, fat and history, will not match any published profile exactly.",
+    "args": {
+      "title": "What the evidence settles",
+      "items": [
+        "+browning needs a dry surface",
+        "+specific compounds form in the crust",
+        "-searing seals in juices",
+        "?why people prefer the result"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "A wet steak cannot brown. Dry it, heat it past boiling, and a reaction first seen in a test tube in 1912 begins building flavour that was never in the raw meat.",
+    "args": {
+      "lines": [
+        "A wet steak cannot",
+        "brown. Dry it, heat",
+        "it past"
+      ]
+    },
+    "from": "directive"
+  }
+]

@@ -107,18 +107,16 @@ A word that sounds like wheat turns out to describe a missing enzyme. The glue o
 
 ## Chapters
 
-- 00:00 Cold open
-- 00:50 Title card
-- 00:55 Stickiness lives in starch, not in protein
-- 02:50 Heat and water take the granule apart below boiling
-- 04:20 Producer POV
-- 04:30 What leaks out of the grain becomes the glue
-- 06:05 One gene sets most of the ratio
-- 08:10 Amylose holds grains apart as it cools
-- 09:25 The variety sets the range and the cook moves within it
-- 10:15 What to notice in the edit
-- 10:35 Evidence limit
-- 11:40 Closing
+- 0:00 Cold open
+- 0:43 Stickiness lives in starch, not in protein
+- 2:19 Heat and water take the granule apart below boiling
+- 3:51 What leaks out of the grain becomes the glue
+- 5:18 One gene sets most of the ratio
+- 7:11 Amylose holds grains apart as it cools
+- 8:24 The variety sets the range and the cook moves within it
+- 9:03 What to notice in the edit
+- 9:23 Evidence limit
+- 9:55 Closing
 
 ## Sources
 

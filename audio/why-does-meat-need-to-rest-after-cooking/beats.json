@@ -1,0 +1,584 @@
+[
+  {
+    "i": 0,
+    "segment": "stat_card",
+    "narration": "Take a roast off the heat, and its centre keeps getting hotter.",
+    "seconds": 3.152
+  },
+  {
+    "i": 1,
+    "segment": "text_beat",
+    "narration": "Resting lets two physical processes finish after the heat is gone: heat keeps travelling inward from the hot outer layers, so the centre continues to cook, and the meat cools enough that less of its liquid runs out when it is cut.",
+    "seconds": 13.744
+  },
+  {
+    "i": 2,
+    "segment": "stat_card",
+    "narration": "The USDA's temperature guidance for whole cuts of beef, pork, veal and lamb pairs 145 degrees Fahrenheit with a 3-minute rest, because the temperature holds or climbs during that time.",
+    "seconds": 12.218666666666667
+  },
+  {
+    "i": 3,
+    "segment": "text_beat",
+    "narration": "That figure settles the heat question. It does not settle the question most people mean, which is about the puddle on the board.",
+    "seconds": 7.088
+  },
+  {
+    "i": 4,
+    "segment": "text_beat",
+    "narration": "Why does meat need to rest after cooking?",
+    "seconds": 2.576
+  },
+  {
+    "i": 5,
+    "segment": "size_ladder",
+    "narration": "Start with what the pan or oven actually does. Heat enters at the surface.",
+    "seconds": 5.808
+  },
+  {
+    "i": 6,
+    "segment": "text_beat",
+    "narration": "It travels inward by conduction, with each layer of meat warming the next.",
+    "seconds": 4.506666666666667
+  },
+  {
+    "i": 7,
+    "segment": "size_ladder",
+    "narration": "That process is slow, because meat is mostly water and protein, and neither moves heat quickly.",
+    "seconds": 5.914666666666666
+  },
+  {
+    "i": 8,
+    "segment": "ambient_drift",
+    "narration": "So at any moment during cooking, a thick roast is not one temperature.",
+    "seconds": 4.506666666666667
+  },
+  {
+    "i": 9,
+    "segment": "text_beat",
+    "narration": "It has hot outer layers, a cooler centre, and a slope of temperatures running between them.",
+    "seconds": 5.904
+  },
+  {
+    "i": 10,
+    "segment": "size_ladder",
+    "narration": "When you lift it out, nothing feeds the outside any more. The heat already stored in those outer layers does not vanish, though.",
+    "seconds": 7.290666666666667
+  },
+  {
+    "i": 11,
+    "segment": "ambient_drift",
+    "narration": "Some of it escapes into the air. The rest keeps flowing the only other way it can, inward and down the slope toward the cooler centre.",
+    "seconds": 7.696
+  },
+  {
+    "i": 12,
+    "segment": "text_beat",
+    "narration": "That is why a roast keeps cooking after it leaves the heat.",
+    "seconds": 3.6106666666666665
+  },
+  {
+    "i": 13,
+    "segment": "evidence_chain",
+    "narration": "You do not have to take this on trust. The instrument is a probe thermometer in the centre, left in place after the meat comes off the heat.",
+    "seconds": 7.792
+  },
+  {
+    "i": 14,
+    "segment": "text_beat",
+    "narration": "For a while, the reading keeps rising off the heat, with no flame and no oven involved.",
+    "seconds": 5.306666666666667
+  },
+  {
+    "i": 15,
+    "segment": "evidence_chain",
+    "narration": "Then it levels off, and then it falls. Cooks call the rising part carryover cooking.",
+    "seconds": 5.104
+  },
+  {
+    "i": 16,
+    "segment": "text_beat",
+    "narration": "The shape of that curve is the evidence. After the source is removed, the only heat that can warm the centre is heat still travelling inward from the outer layers.",
+    "seconds": 9.498666666666667
+  },
+  {
+    "i": 17,
+    "segment": "evidence_chain",
+    "narration": "Cut a roast in half and a thermal camera shows the same pattern in colour: a hot rim fading into a cooler middle.",
+    "seconds": 5.808
+  },
+  {
+    "i": 18,
+    "segment": "contrast_pair",
+    "narration": "How much the centre rises is where the honest answer becomes a range with no fixed edges.",
+    "seconds": 5.978666666666666
+  },
+  {
+    "i": 19,
+    "segment": "text_beat",
+    "narration": "It depends on the size of the cut, how hot the outside was, and how long it cooked.",
+    "seconds": 5.018666666666666
+  },
+  {
+    "i": 20,
+    "segment": "contrast_pair",
+    "narration": "A large roast from a hot oven stores a great deal of heat in its outer layers and can rise noticeably.",
+    "seconds": 6.661333333333333
+  },
+  {
+    "i": 21,
+    "segment": "text_beat",
+    "narration": "A thin steak stores little heat and cools from both faces almost at once.",
+    "seconds": 4.506666666666667
+  },
+  {
+    "i": 22,
+    "segment": "contrast_pair",
+    "narration": "Estimates vary, and different figures get quoted for different cuts, so this script will not pick one.",
+    "seconds": 5.722666666666667
+  },
+  {
+    "i": 23,
+    "segment": "text_beat",
+    "narration": "The mechanism, though, does not change. Carryover is heat already inside moving inward, not new heat from the pan.",
+    "seconds": 7.898666666666666
+  },
+  {
+    "i": 24,
+    "segment": "definition_card",
+    "narration": "Carryover is also the reason the USDA guidance includes a rest at all.",
+    "seconds": 4.933333333333334
+  },
+  {
+    "i": 25,
+    "segment": "text_beat",
+    "narration": "The guidance describes its 3-minute rest as the time after removal when the temperature remains constant or continues to rise.",
+    "seconds": 7.216
+  },
+  {
+    "i": 26,
+    "segment": "definition_card",
+    "narration": "That statement is about temperature and time, and this episode quotes it only to explain the physics.",
+    "seconds": 6.341333333333333
+  },
+  {
+    "i": 27,
+    "segment": "text_beat",
+    "narration": "It is not a cooking instruction from this channel. The point here is narrower.",
+    "seconds": 4.368
+  },
+  {
+    "i": 28,
+    "segment": "definition_card",
+    "narration": "An official body treats the minutes after cooking as part of the cooking, because the thermometer shows that they are.",
+    "seconds": 7.141333333333334
+  },
+  {
+    "i": 29,
+    "segment": "quote_card",
+    "narration": "That's the feeling I'm chasing. Not collecting another fact \u2014 realising the model in my head was incomplete, and now I have a better one.",
+    "seconds": 8.4
+  },
+  {
+    "i": 30,
+    "segment": "process_steps",
+    "narration": "Now for the juice. Raw muscle is a bundle of long fibres, each one packed with protein filaments, and most of its weight is water held in and around them.",
+    "seconds": 10.405333333333333
+  },
+  {
+    "i": 31,
+    "segment": "text_beat",
+    "narration": "As the meat heats, proteins in the fibres contract. They unfold, tangle and tighten, and the fibres shorten and narrow.",
+    "seconds": 8.477333333333334
+  },
+  {
+    "i": 32,
+    "segment": "process_steps",
+    "narration": "Water is squeezed out, the way water leaves a sponge as you wring it.",
+    "seconds": 4.1866666666666665
+  },
+  {
+    "i": 33,
+    "segment": "text_beat",
+    "narration": "The connective tissue shrinks as well, wrapped around the bundles and tightening the squeeze.",
+    "seconds": 4.944
+  },
+  {
+    "i": 34,
+    "segment": "process_steps",
+    "narration": "The released liquid collects between the fibres, in channels it did not fill before.",
+    "seconds": 5.317333333333333
+  },
+  {
+    "i": 35,
+    "segment": "text_beat",
+    "narration": "Some of it reaches the surface and evaporates or drips. Some is still in the meat, loose, when you pick up the knife.",
+    "seconds": 6.685333333333333
+  },
+  {
+    "i": 36,
+    "segment": "evidence_chain",
+    "narration": "You cannot see water inside a steak, so this has to be measured indirectly.",
+    "seconds": 5.050666666666666
+  },
+  {
+    "i": 37,
+    "segment": "text_beat",
+    "narration": "One tool is low-field NMR, short for nuclear magnetic resonance. It uses the same physics as medical scanners, at a smaller scale.",
+    "seconds": 9.690666666666667
+  },
+  {
+    "i": 38,
+    "segment": "evidence_chain",
+    "narration": "It listens to hydrogen in water molecules and reports how freely that water moves.",
+    "seconds": 4.8933333333333335
+  },
+  {
+    "i": 39,
+    "segment": "text_beat",
+    "narration": "Water bound tightly to protein, water trapped inside the fibres and water sitting loose between them each give a different signal.",
+    "seconds": 7.536
+  },
+  {
+    "i": 40,
+    "segment": "evidence_chain",
+    "narration": "Meat scientists publishing in journals such as the Journal of Agricultural and Food Chemistry, from the American Chemical Society, have used it to follow cooking.",
+    "seconds": 9.776
+  },
+  {
+    "i": 41,
+    "segment": "text_beat",
+    "narration": "As the meat heats, the signal from water inside the fibres shrinks and the signal from water between them grows.",
+    "seconds": 6.874666666666666
+  },
+  {
+    "i": 42,
+    "segment": "evidence_chain",
+    "narration": "In other words, heating shifts water toward the free fraction, out of the fibres and into the gaps.",
+    "seconds": 6.128
+  },
+  {
+    "i": 43,
+    "segment": "source_compare",
+    "narration": "This is mainstream science. Researchers at the USDA Agricultural Research Service study meat quality, including how much water a cut holds and loses.",
+    "seconds": 10.213333333333333
+  },
+  {
+    "i": 44,
+    "segment": "text_beat",
+    "narration": "The Institute of Food Technologists publishes widely on how heat changes food.",
+    "seconds": 5.189333333333333
+  },
+  {
+    "i": 45,
+    "segment": "source_compare",
+    "narration": "Across that literature the direction is consistent: more heat means more contraction, and more contraction pushes more liquid loose.",
+    "seconds": 8.666666666666666
+  },
+  {
+    "i": 46,
+    "segment": "text_beat",
+    "narration": "The old kitchen explanation gets that part right. It goes wrong about what happens next.",
+    "seconds": 4.976
+  },
+  {
+    "i": 47,
+    "segment": "contrast_pair",
+    "narration": "The familiar version goes like this. A hot sear seals the surface, the heat drives the juice inward to the centre, and resting lets it spread back out to the edges so the slice stays moist.",
+    "seconds": 12.314666666666668
+  },
+  {
+    "i": 48,
+    "segment": "text_beat",
+    "narration": "Each step sounds physical, but few of them survive measurement. A seared surface is not a seal.",
+    "seconds": 6.1386666666666665
+  },
+  {
+    "i": 49,
+    "segment": "contrast_pair",
+    "narration": "When meat seared first is weighed against meat that was not, the seared piece does not reliably lose less.",
+    "seconds": 6.298666666666667
+  },
+  {
+    "i": 50,
+    "segment": "text_beat",
+    "narration": "You can hear the answer too. A searing steak keeps sizzling, and that sizzle is water reaching hot metal.",
+    "seconds": 7.216
+  },
+  {
+    "i": 51,
+    "segment": "contrast_pair",
+    "narration": "There is also little direct evidence that juice gets herded into the centre.",
+    "seconds": 4.0906666666666665
+  },
+  {
+    "i": 52,
+    "segment": "text_beat",
+    "narration": "Squeezing happens wherever the meat is hot enough, which is everywhere, and it is strongest at the outside.",
+    "seconds": 6.533333333333333
+  },
+  {
+    "i": 53,
+    "segment": "contrast_pair",
+    "narration": "The evidence supports liquid squeezed loose throughout the meat, not juice herded into the centre.",
+    "seconds": 5.552
+  },
+  {
+    "i": 54,
+    "segment": "checklist_reveal",
+    "narration": "So the popular story scores unevenly. The claim that liquid is squeezed loose by heat is supported.",
+    "seconds": 5.669333333333333
+  },
+  {
+    "i": 55,
+    "segment": "text_beat",
+    "narration": "The claim that a sear seals the surface is not. The claim that juice is herded into the centre and flows back is unproven at best, and nothing else in the explanation depends on it.",
+    "seconds": 11.013333333333334
+  },
+  {
+    "i": 56,
+    "segment": "checklist_reveal",
+    "narration": "That last point matters most. If the juice is not migrating, resting cannot be about letting it migrate home.",
+    "seconds": 6.778666666666667
+  },
+  {
+    "i": 57,
+    "segment": "text_beat",
+    "narration": "Something else has to explain the real difference cooks see on the board.",
+    "seconds": 4.304
+  },
+  {
+    "i": 58,
+    "segment": "process_steps",
+    "narration": "The least glamorous instrument in any lab settles most of this. It is a scale.",
+    "seconds": 5.189333333333333
+  },
+  {
+    "i": 59,
+    "segment": "text_beat",
+    "narration": "Meat scientists call the result cooking loss, and the method fits in a breath.",
+    "seconds": 5.349333333333333
+  },
+  {
+    "i": 60,
+    "segment": "process_steps",
+    "narration": "Weigh the raw meat. Weigh it after cooking. Weigh it after resting.",
+    "seconds": 3.962666666666667
+  },
+  {
+    "i": 61,
+    "segment": "text_beat",
+    "narration": "Then cut it and weigh what runs onto the board. Do that for pieces sliced at once and pieces left to rest, and you have numbers instead of impressions.",
+    "seconds": 9.008
+  },
+  {
+    "i": 62,
+    "segment": "process_steps",
+    "narration": "Everyone notices the liquid on the board. The earlier weighings tell you where the rest of the water went.",
+    "seconds": 5.264
+  },
+  {
+    "i": 63,
+    "segment": "text_beat",
+    "narration": "When cooks and researchers run comparisons like this, the results point one way.",
+    "seconds": 5.008
+  },
+  {
+    "i": 64,
+    "segment": "text_beat",
+    "narration": "Meat sliced straight away sheds more onto the board than meat that has rested.",
+    "seconds": 4.442666666666667
+  },
+  {
+    "i": 65,
+    "segment": "ambient_drift",
+    "narration": "That difference is real. Resting meat is not sealed either, though. While it sits, it stays hot, keeps steaming and drips a little onto the plate.",
+    "seconds": 9.093333333333334
+  },
+  {
+    "i": 66,
+    "segment": "text_beat",
+    "narration": "Some of the water that would have reached the board goes into the air instead.",
+    "seconds": 3.7066666666666666
+  },
+  {
+    "i": 67,
+    "segment": "text_beat",
+    "narration": "As a result, the total loss of a rested piece is often closer to that of an unrested piece than the puddle suggests.",
+    "seconds": 7.173333333333333
+  },
+  {
+    "i": 68,
+    "segment": "ambient_drift",
+    "narration": "How close depends on the cut and the conditions, and published comparisons do not agree on a single figure. Resting shrinks the puddle more clearly than it shrinks the total.",
+    "seconds": 10.021333333333333
+  },
+  {
+    "i": 69,
+    "segment": "definition_card",
+    "narration": "So why does less run out of rested meat? The best-supported answer concerns the liquid itself.",
+    "seconds": 6.277333333333333
+  },
+  {
+    "i": 70,
+    "segment": "text_beat",
+    "narration": "Meat juice is not plain water. It carries dissolved proteins, along with gelatin from connective tissue.",
+    "seconds": 6.650666666666667
+  },
+  {
+    "i": 71,
+    "segment": "definition_card",
+    "narration": "Its viscosity, meaning how strongly a liquid resists flowing, rises as it cools, and gelatin in particular thickens as the temperature drops.",
+    "seconds": 8.656
+  },
+  {
+    "i": 72,
+    "segment": "text_beat",
+    "narration": "Viscosity is a property of the liquid, not the amount of it.",
+    "seconds": 3.7173333333333334
+  },
+  {
+    "i": 73,
+    "segment": "definition_card",
+    "narration": "The same volume can pour freely when hot and creep when cooler.",
+    "seconds": 4.485333333333333
+  },
+  {
+    "i": 74,
+    "segment": "text_beat",
+    "narration": "This is standard physical chemistry, the kind covered in the American Chemical Society's general chemistry resources. A knife cutting a cooler piece is cutting through thicker liquid.",
+    "seconds": 11.002666666666666
+  },
+  {
+    "i": 75,
+    "segment": "ambient_drift",
+    "narration": "A second, less certain part of the explanation is often repeated. As the outer layers cool, the fibres there may relax slightly and hold some of the loose liquid back in the spaces between them.",
+    "seconds": 11.301333333333334
+  },
+  {
+    "i": 76,
+    "segment": "ambient_drift",
+    "narration": "The idea is plausible, but it is harder to isolate in a measurement than viscosity is.",
+    "seconds": 5.594666666666667
+  },
+  {
+    "i": 77,
+    "segment": "text_beat",
+    "narration": "Treat it as a possible contributor, not a settled cause. Either way, both effects push in the same direction.",
+    "seconds": 7.504
+  },
+  {
+    "i": 78,
+    "segment": "ambient_drift",
+    "narration": "A slightly cooler, more evenly heated piece of meat releases its loose liquid more slowly when it is cut, so less of it reaches the board in the first minute.",
+    "seconds": 9.317333333333334
+  },
+  {
+    "i": 79,
+    "segment": "evidence_chain",
+    "narration": "Put the two effects together and the role of size becomes clear.",
+    "seconds": 3.4506666666666668
+  },
+  {
+    "i": 80,
+    "segment": "text_beat",
+    "narration": "A thick roast stores more heat, so its centre rises for longer after it leaves the oven, and its outside and inside start further apart.",
+    "seconds": 8.538666666666666
+  },
+  {
+    "i": 81,
+    "segment": "evidence_chain",
+    "narration": "Resting has more work to do on both the temperature and the liquid.",
+    "seconds": 4.048
+  },
+  {
+    "i": 82,
+    "segment": "text_beat",
+    "narration": "A thin steak stores little heat, evens out quickly and cools fast whether you wait or not.",
+    "seconds": 5.712
+  },
+  {
+    "i": 83,
+    "segment": "evidence_chain",
+    "narration": "For a thin steak, the gap between resting and not resting is small and hard to measure.",
+    "seconds": 5.914666666666666
+  },
+  {
+    "i": 84,
+    "segment": "text_beat",
+    "narration": "Resting changes a roast more than a thin steak, which matches what the thermometer and the scale both report.",
+    "seconds": 6.149333333333334
+  },
+  {
+    "i": 85,
+    "segment": "checklist_reveal",
+    "narration": "When you watch this back, notice that the two instruments do different jobs.",
+    "seconds": 3.9093333333333335
+  },
+  {
+    "i": 86,
+    "segment": "text_beat",
+    "narration": "The probe thermometer answers the temperature question, and its answer is clean: the centre keeps rising off the heat.",
+    "seconds": 6.736
+  },
+  {
+    "i": 87,
+    "segment": "checklist_reveal",
+    "narration": "The scale answers the juice question, and its answer is quieter. Less liquid reaches the board, but some of the water left by another route.",
+    "seconds": 8.826666666666666
+  },
+  {
+    "i": 88,
+    "segment": "text_beat",
+    "narration": "Watch the sear, which keeps sizzling because it never sealed anything. And notice the one box left open, which is how much resting changes total loss. The answer depends on the cut and the conditions.",
+    "seconds": 12.133333333333333
+  },
+  {
+    "i": 89,
+    "segment": "text_beat",
+    "narration": "This evidence does not give a single correct resting time for every cut.",
+    "seconds": 4.005333333333334
+  },
+  {
+    "i": 90,
+    "segment": "ambient_drift",
+    "narration": "The only time stated in this episode is the USDA's 3-minute rest, and that rest exists for temperature, not for juiciness.",
+    "seconds": 7.610666666666667
+  },
+  {
+    "i": 91,
+    "segment": "text_beat",
+    "narration": "The evidence does not show that juice migrates to the centre. It also does not show that resting saves most of the liquid that cooking pushes loose, because much of that liquid is gone before the meat leaves the heat.",
+    "seconds": 12.752
+  },
+  {
+    "i": 92,
+    "segment": "text_beat",
+    "narration": "It does not settle whether people can taste the difference in a blind comparison.",
+    "seconds": 3.6853333333333333
+  },
+  {
+    "i": 93,
+    "segment": "ambient_drift",
+    "narration": "Juiciness is partly a sensation, and sensory studies measure people, not water.",
+    "seconds": 5.008
+  },
+  {
+    "i": 94,
+    "segment": "text_beat",
+    "narration": "Finally, the carryover rise has no fixed size. Mass, heat and time set its range.",
+    "seconds": 6.661333333333333
+  },
+  {
+    "i": 95,
+    "segment": "ambient_drift",
+    "narration": "So the minutes after cooking are not empty. Heat is still crossing the meat from the outside in, and the loose liquid inside it is cooling and thickening.",
+    "seconds": 9.256
+  },
+  {
+    "i": 96,
+    "segment": "ambient_drift",
+    "narration": "Resting is the name for letting both of those finish before the knife decides where the water goes.",
+    "seconds": 5.402666666666667
+  }
+]

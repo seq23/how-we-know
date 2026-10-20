@@ -1,0 +1,1145 @@
+[
+  {
+    "segment": "stat_card",
+    "seconds": 5.79,
+    "heading": "Cold open",
+    "narration": "One molecule of glucose yields two of carbon dioxide, yet the loaf stays flat.",
+    "args": {
+      "value": "two",
+      "unit": "molecules of carbon dioxide",
+      "caption": "one molecule of glucose",
+      "source": "American Chemical Society"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "Bread fails to rise for one of two physical reasons: the yeast is not producing enough carbon dioxide, or the dough cannot hold the gas it does produce.",
+    "args": {
+      "lines": [
+        "Bread fails to rise",
+        "for one of two",
+        "physical reasons:"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "The gas itself follows a fixed recipe. In yeast fermentation, as chemistry references from the American Chemical Society set it out, one molecule of glucose becomes two molecules of ethanol and two molecules of carbon dioxide.",
+    "args": {
+      "value": "two",
+      "unit": "molecules of carbon dioxide",
+      "caption": "one molecule of glucose",
+      "source": "American Chemical Society"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Cold open",
+    "narration": "That figure tells you the gas gets made, even when the fermenter is alive and well.",
+    "args": {
+      "lines": [
+        "That figure tells you",
+        "the gas gets made,",
+        "even"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 7.86,
+    "heading": "Cold open",
+    "narration": "It does not tell you where the gas goes, and that is where many flat loaves are actually lost.",
+    "args": {
+      "value": "two",
+      "unit": "molecules of carbon dioxide",
+      "caption": "one molecule of glucose",
+      "source": "American Chemical Society"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 3.5,
+    "heading": "Title card",
+    "narration": "Why is my bread not rising?",
+    "args": {
+      "lines": [
+        "Why is my bread",
+        "not rising?"
+      ]
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Yeast inflates bubbles it never made",
+    "narration": "Start with the bubble, because the obvious picture is wrong. It is natural to imagine yeast cells blowing brand new bubbles into the dough, like tiny balloons appearing out of nowhere.",
+    "args": {
+      "variant": 0
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Yeast inflates bubbles it never made",
+    "narration": "Cereal chemists who study dough structure describe something different. Carbon dioxide from the yeast dissolves first into the water of the dough.",
+    "args": {
+      "lines": [
+        "Cereal chemists who study",
+        "dough structure describe something",
+        "different. Carbon"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Yeast inflates bubbles it never made",
+    "narration": "Once that water is saturated, the gas has to go somewhere, and it diffuses into gas cells that already exist: small pockets of air folded in during mixing and kneading.",
+    "args": {
+      "variant": 1
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.28,
+    "heading": "Yeast inflates bubbles it never made",
+    "narration": "Yeast is poor at creating a bubble from nothing. It is very good at inflating one that is already there.",
+    "args": {
+      "variant": 2
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Yeast inflates bubbles it never made",
+    "narration": "Slice through a proofing dough and what you see is gas cells around a gluten network.",
+    "args": {
+      "lines": [
+        "Slice through a proofing",
+        "dough and what you",
+        "see"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Yeast inflates bubbles it never made",
+    "narration": "That network is a web of hydrated wheat proteins, and as each gas cell swells, the web around it stretches.",
+    "args": {
+      "lines": [
+        "That network is a",
+        "web of hydrated wheat",
+        "proteins"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.45,
+    "heading": "Yeast inflates bubbles it never made",
+    "narration": "Rising, then, is two events stacked on top of each other: gas being made, and gas being kept.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Yeast inflates bubbles it never made",
+    "narration": "A failure in either one gives you the same flat dough sitting in the bowl, which is why the symptom alone rarely tells you the cause.",
+    "args": {
+      "lines": [
+        "A failure in either",
+        "one gives you the",
+        "same flat"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Yeast inflates bubbles it never made",
+    "narration": "Everything that follows sorts into one of those two halves, and the useful habit is to ask which half you are looking at before you change anything.",
+    "args": {
+      "lines": [
+        "Everything that follows sorts",
+        "into one of those",
+        "two halves"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 8.28,
+    "heading": "The yeast has to be fed from inside the flour",
+    "narration": "Here is where the sugar comes from. Flour is mostly starch, and yeast cannot ferment the starch in flour directly.",
+    "args": {
+      "title": "where the sugar comes from",
+      "stages": [
+        "starch in flour",
+        "amylase enzymes",
+        "simple sugars",
+        "yeast fermentation"
+      ],
+      "conclusion": "carbon dioxide and ethanol"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The yeast has to be fed from inside the flour",
+    "narration": "Amylase enzymes, some naturally present in the grain and some added by millers, cut starch into simple sugars that yeast can take up.",
+    "args": {
+      "lines": [
+        "Amylase enzymes, some naturally",
+        "present in the grain",
+        "and some"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 4.97,
+    "heading": "The yeast has to be fed from inside the flour",
+    "narration": "Starch granules damaged during milling are easier for those enzymes to reach.",
+    "args": {
+      "title": "where the sugar comes from",
+      "stages": [
+        "starch in flour",
+        "amylase enzymes",
+        "simple sugars",
+        "yeast fermentation"
+      ],
+      "conclusion": "carbon dioxide and ethanol"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "The yeast has to be fed from inside the flour",
+    "narration": "Only then does yeast fermentation begin, turning those sugars into carbon dioxide and ethanol.",
+    "args": {
+      "lines": [
+        "Only then does yeast",
+        "fermentation begin, turning those",
+        "sugars"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "The yeast has to be fed from inside the flour",
+    "narration": "So part of the fuel supply for your rise is decided before the bag of flour is ever opened, by the grain and by the mill.",
+    "args": {
+      "title": "where the sugar comes from",
+      "stages": [
+        "starch in flour",
+        "amylase enzymes",
+        "simple sugars",
+        "yeast fermentation"
+      ],
+      "conclusion": "carbon dioxide and ethanol"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 8.28,
+    "heading": "The yeast has to be fed from inside the flour",
+    "narration": "Inside the yeast cell, the species bakers use is Saccharomyces cerevisiae, sugar is broken down by a chain of enzymes.",
+    "args": {
+      "term": "fermentation",
+      "meaning": "converting sugar to carbon dioxide and ethanol",
+      "boundary": "not the same as yeast growth",
+      "source": "Institut Pasteur"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "The yeast has to be fed from inside the flour",
+    "narration": "When oxygen runs short, which happens quickly inside a dense dough, the cell routes that chain toward ethanol and carbon dioxide.",
+    "args": {
+      "lines": [
+        "When oxygen runs short,",
+        "which happens quickly inside",
+        "a dense"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 6.21,
+    "heading": "The yeast has to be fed from inside the flour",
+    "narration": "Fermentation, in this strict sense, means converting sugar to carbon dioxide and ethanol without oxygen.",
+    "args": {
+      "term": "fermentation",
+      "meaning": "converting sugar to carbon dioxide and ethanol",
+      "boundary": "not the same as yeast growth",
+      "source": "Institut Pasteur"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "The yeast has to be fed from inside the flour",
+    "narration": "Fermentation is not the same as yeast growth; a dough can ferment vigorously while its yeast barely multiplies.",
+    "args": {
+      "lines": [
+        "Fermentation is not the",
+        "same as yeast growth"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "The yeast has to be fed from inside the flour",
+    "narration": "That fermentation is the work of a living organism was established by Louis Pasteur, whose research the Institut Pasteur, the institute bearing his name, documents.",
+    "args": {
+      "term": "fermentation",
+      "meaning": "converting sugar to carbon dioxide and ethanol",
+      "boundary": "not the same as yeast growth",
+      "source": "Institut Pasteur"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "The yeast has to be fed from inside the flour",
+    "narration": "Later, Eduard Buchner showed that juice pressed from yeast, with no intact cells at all, could still ferment sugar.",
+    "args": {
+      "lines": [
+        "Later, Eduard Buchner showed",
+        "that juice pressed from",
+        "yeast"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "The yeast has to be fed from inside the flour",
+    "narration": "That result matters to a baker for a quiet reason. The gas comes from enzymes, and enzymes are sensitive to temperature, to salt, and to how much water is available.",
+    "args": {
+      "term": "fermentation",
+      "meaning": "converting sugar to carbon dioxide and ethanol",
+      "boundary": "not the same as yeast growth",
+      "source": "Institut Pasteur"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 5.79,
+    "heading": "Producer POV",
+    "narration": "I like questions where the obvious answer starts falling apart once you look closely.",
+    "args": {
+      "text": "I like questions where the obvious answer starts falling apart once you look closely.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 6.21,
+    "heading": "Living yeast can be slowed to a standstill",
+    "narration": "The first group of failures is about the fermenter: what stops the gas being made.",
+    "args": {
+      "title": "what stops the gas being made",
+      "items": [
+        "-yeast killed by hot water",
+        "-dough kept too cold",
+        "-salt or sugar drawing water away",
+        "?yeast weakened by age"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Living yeast can be slowed to a standstill",
+    "narration": "Yeast killed by hot water is the classic case. Published thermal limits for baker's yeast vary with the strain and with how long the cells are held at temperature, so there is no single safe line worth quoting here.",
+    "args": {
+      "lines": [
+        "Yeast killed by hot",
+        "water is the classic",
+        "case. Published"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "Living yeast can be slowed to a standstill",
+    "narration": "What is consistent is the direction: water that feels hot rather than warm is in the range that damages the cells. Dead yeast produces nothing, and no amount of waiting changes that.",
+    "args": {
+      "title": "what stops the gas being made",
+      "items": [
+        "-yeast killed by hot water",
+        "-dough kept too cold",
+        "-salt or sugar drawing water away",
+        "?yeast weakened by age"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Living yeast can be slowed to a standstill",
+    "narration": "The opposite failure is quieter. A dough kept too cold is not dead; its enzymes are simply working slowly.",
+    "args": {
+      "lines": [
+        "The opposite failure is",
+        "quieter. A dough kept",
+        "too cold"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Living yeast can be slowed to a standstill",
+    "narration": "Bakers use this deliberately, retarding dough in a refrigerator to stretch fermentation over a much longer period and develop flavour.",
+    "args": {
+      "lines": [
+        "Bakers use this deliberately,",
+        "retarding dough in a",
+        "refrigerator"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.62,
+    "heading": "Living yeast can be slowed to a standstill",
+    "narration": "In a cool kitchen, the same slowing can look like failure when it is only delay.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Living yeast can be slowed to a standstill",
+    "narration": "The test here is patience. A cold dough with living yeast will eventually move, and if it does, the fermenter was never the problem.",
+    "args": {
+      "lines": [
+        "The test here is",
+        "patience. A cold dough",
+        "with living"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Living yeast can be slowed to a standstill",
+    "narration": "Salt or sugar drawing water away is the third failure. Both dissolve in the dough's water and raise its osmotic pressure, which pulls water out of the yeast cells.",
+    "args": {
+      "term": "salt in dough",
+      "includes": [
+        "a flavour and a gluten strengthener"
+      ],
+      "excludes": [
+        "harmless to yeast at close contact"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Living yeast can be slowed to a standstill",
+    "narration": "In a normal recipe, salt in dough is a flavour and a gluten strengthener, and the yeast copes.",
+    "args": {
+      "lines": [
+        "In a normal recipe,",
+        "salt in dough is",
+        "a flavour"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.45,
+    "heading": "Living yeast can be slowed to a standstill",
+    "narration": "Poured directly onto the yeast, or added in excess, it is not harmless to yeast at close contact.",
+    "args": {
+      "term": "salt in dough",
+      "includes": [
+        "a flavour and a gluten strengthener"
+      ],
+      "excludes": [
+        "harmless to yeast at close contact"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Living yeast can be slowed to a standstill",
+    "narration": "Rich doughs heavy with sugar are known to rise slowly for the same osmotic reason, and some yeast strains are sold specifically for sweet doughs.",
+    "args": {
+      "lines": [
+        "Rich doughs heavy with",
+        "sugar are known to",
+        "rise slowly"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "Living yeast can be slowed to a standstill",
+    "narration": "Finally, yeast weakened by age is an open case rather than a settled one.",
+    "args": {
+      "lines": [
+        "Finally, yeast weakened by",
+        "age is an open",
+        "case rather"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Living yeast can be slowed to a standstill",
+    "narration": "Dried yeast loses activity in storage, but how fast depends on packaging, moisture and temperature, and the date printed on a packet is a manufacturer's estimate, not a measurement of the yeast in your cupboard.",
+    "args": {
+      "variant": 2
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Living yeast can be slowed to a standstill",
+    "narration": "The direct check is the old one: stir a little into warm water with a pinch of sugar and watch whether it foams. That small test separates a dead fermenter from a slow one.",
+    "args": {
+      "lines": [
+        "The direct check is",
+        "the old one: stir",
+        "a little"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 7.45,
+    "heading": "A strong fermenter cannot fill a broken net",
+    "narration": "Now the second group: gas that is made but not kept. This is how the gluten network forms.",
+    "args": {
+      "title": "how the gluten network forms",
+      "steps": [
+        [
+          "water hydrates gliadin and glutenin",
+          ""
+        ],
+        [
+          "kneading aligns and links the proteins",
+          ""
+        ],
+        [
+          "the network stretches around gas cells",
+          ""
+        ]
+      ],
+      "note": "weak or torn gluten lets gas escape"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "A strong fermenter cannot fill a broken net",
+    "narration": "Wheat flour contains two families of protein, and water hydrates gliadin and glutenin as soon as it reaches them.",
+    "args": {
+      "lines": [
+        "Wheat flour contains two",
+        "families of protein, and",
+        "water hydrates"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "A strong fermenter cannot fill a broken net",
+    "narration": "Then kneading aligns and links the proteins. The glutenins join into long elastic chains, while the gliadins let the mass flow and extend.",
+    "args": {
+      "title": "how the gluten network forms",
+      "steps": [
+        [
+          "water hydrates gliadin and glutenin",
+          ""
+        ],
+        [
+          "kneading aligns and links the proteins",
+          ""
+        ],
+        [
+          "the network stretches around gas cells",
+          ""
+        ]
+      ],
+      "note": "weak or torn gluten lets gas escape"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "A strong fermenter cannot fill a broken net",
+    "narration": "Together they form gluten. In a well-developed dough, the network stretches around gas cells in thin films, like the skin of a balloon, so each cell swells instead of bursting.",
+    "args": {
+      "lines": [
+        "Together they form gluten.",
+        "In a well-developed dough,",
+        "the network"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 4.97,
+    "heading": "A strong fermenter cannot fill a broken net",
+    "narration": "Weak or torn gluten lets gas escape, and it has several sources.",
+    "args": {
+      "variant": 3
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 7.45,
+    "heading": "A strong fermenter cannot fill a broken net",
+    "narration": "Too little kneading leaves the proteins unaligned. Flour from lower-protein wheat simply supplies less network to work with.",
+    "args": {
+      "variant": 4
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "A strong fermenter cannot fill a broken net",
+    "narration": "Whole wheat flour carries bran, and those sharp particles cut through the gluten films.",
+    "args": {
+      "lines": [
+        "Whole wheat flour carries",
+        "bran, and those sharp",
+        "particles cut"
+      ]
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "A strong fermenter cannot fill a broken net",
+    "narration": "Flours from rye, barley or oats behave differently again, because their proteins do not form the same elastic web, so they never rise like wheat even when fermentation is vigorous.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.69,
+    "heading": "A strong fermenter cannot fill a broken net",
+    "narration": "A dense loaf made from those grains is often not a failure at all. It is the chemistry of the grain.",
+    "args": {
+      "variant": 2
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 7.86,
+    "heading": "A strong fermenter cannot fill a broken net",
+    "narration": "This is why protein quality is measured rather than assumed, and it is worth knowing who measures the rise.",
+    "args": {
+      "title": "Who measures the rise",
+      "sources": [
+        [
+          "USDA Agricultural Research Service",
+          "bake test loaves"
+        ],
+        [
+          "Institute of Food Technologists",
+          "dough as a material"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "A strong fermenter cannot fill a broken net",
+    "narration": "The USDA Agricultural Research Service runs wheat quality laboratories that mill grain samples and bake test loaves, because protein content alone does not reliably predict how a flour will perform.",
+    "args": {
+      "lines": [
+        "The USDA Agricultural Research",
+        "Service runs wheat quality",
+        "laboratories"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 6.21,
+    "heading": "A strong fermenter cannot fill a broken net",
+    "narration": "Flours with similar protein can make very different bread, depending on how those proteins link.",
+    "args": {
+      "title": "Who measures the rise",
+      "sources": [
+        [
+          "USDA Agricultural Research Service",
+          "bake test loaves"
+        ],
+        [
+          "Institute of Food Technologists",
+          "dough as a material"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "A strong fermenter cannot fill a broken net",
+    "narration": "Research published through the Institute of Food Technologists treats dough as a material to be characterised, not a recipe to be trusted.",
+    "args": {
+      "lines": [
+        "Research published through the",
+        "Institute of Food Technologists",
+        "treats dough"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 5.79,
+    "heading": "Too much rising can look like no rising",
+    "narration": "There is one failure that looks like the others but is really the reverse.",
+    "args": {
+      "term": "an overproofed dough",
+      "includes": [
+        "a dough that rose and then collapsed"
+      ],
+      "excludes": [
+        "a dough that never rose"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Too much rising can look like no rising",
+    "narration": "Leave a dough to proof too long, and the yeast keeps making gas after the gluten network has stretched as far as it can.",
+    "args": {
+      "lines": [
+        "Leave a dough to",
+        "proof too long, and",
+        "the yeast"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 4.97,
+    "heading": "Too much rising can look like no rising",
+    "narration": "The thinnest films tear, neighbouring gas cells merge, and the structure sags.",
+    "args": {
+      "term": "an overproofed dough",
+      "includes": [
+        "a dough that rose and then collapsed"
+      ],
+      "excludes": [
+        "a dough that never rose"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Too much rising can look like no rising",
+    "narration": "By the time you come back, an overproofed dough is a dough that rose and then collapsed, not a dough that never rose.",
+    "args": {
+      "lines": [
+        "By the time you",
+        "come back, an overproofed",
+        "dough"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.03,
+    "heading": "Too much rising can look like no rising",
+    "narration": "The yeast may also have used up much of the available sugar, leaving little for the oven.",
+    "args": {
+      "term": "an overproofed dough",
+      "includes": [
+        "a dough that rose and then collapsed"
+      ],
+      "excludes": [
+        "a dough that never rose"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Too much rising can look like no rising",
+    "narration": "That oven phase is the last chance for rise, and it explains why some loaves look fine on the counter and disappoint later.",
+    "args": {
+      "lines": [
+        "That oven phase is",
+        "the last chance for",
+        "rise"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Too much rising can look like no rising",
+    "narration": "In the oven, gas cells expand with heat, dissolved carbon dioxide comes out of solution, and ethanol and water turn to vapour, all pushing outward.",
+    "args": {
+      "lines": [
+        "In the oven, gas",
+        "cells expand with heat,",
+        "dissolved carbon"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.28,
+    "heading": "Too much rising can look like no rising",
+    "narration": "Bakers call this oven spring. It ends when the starch gelatinises and the proteins set, fixing the crumb in place.",
+    "args": {
+      "variant": 3
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "Too much rising can look like no rising",
+    "narration": "A dough that has already exhausted its network has nothing left to spring with.",
+    "args": {
+      "lines": [
+        "A dough that has",
+        "already exhausted its network",
+        "has nothing"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "Instruments separate gas made from gas kept",
+    "narration": "So how does anyone know which half of the rise failed? In a cereal laboratory, the job of separating the two failures is handed to instruments.",
+    "args": {
+      "title": "separating the two failures",
+      "stages": [
+        "rheofermentometer",
+        "gas produced and gas retained",
+        "dough height over time"
+      ],
+      "conclusion": "which half of the rise failed"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Instruments separate gas made from gas kept",
+    "narration": "A rheofermentometer holds a dough in a sealed chamber and tracks gas produced and gas retained at the same time: the total carbon dioxide the yeast releases, and how much of it the dough actually holds.",
+    "args": {
+      "lines": [
+        "A rheofermentometer holds a",
+        "dough in a sealed",
+        "chamber"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "Instruments separate gas made from gas kept",
+    "narration": "A sensor resting on the dough records dough height over time. If production is high but retention is low, the problem is the network.",
+    "args": {
+      "title": "separating the two failures",
+      "stages": [
+        "rheofermentometer",
+        "gas produced and gas retained",
+        "dough height over time"
+      ],
+      "conclusion": "which half of the rise failed"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Instruments separate gas made from gas kept",
+    "narration": "If both are low, the problem is the fermenter. That separation is exactly what a home kitchen cannot do by eye.",
+    "args": {
+      "lines": [
+        "If both are low,",
+        "the problem is the",
+        "fermenter."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "Instruments separate gas made from gas kept",
+    "narration": "Dough strength gets its own instrument. A farinograph mixes dough at a constant speed and records the resistance of dough to mixing as the gluten develops and then weakens.",
+    "args": {
+      "term": "farinograph",
+      "meaning": "the resistance of dough to mixing",
+      "boundary": "measures dough development, not gas",
+      "source": "USDA Agricultural Research Service"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Instruments separate gas made from gas kept",
+    "narration": "The curve shows how much water a flour absorbs, how long it takes to develop, and how quickly it breaks down.",
+    "args": {
+      "lines": [
+        "The curve shows how",
+        "much water a flour",
+        "absorbs, how"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "Instruments separate gas made from gas kept",
+    "narration": "It measures dough development, not gas. For the inside of the loaf, researchers use X-ray microtomography, which builds a three-dimensional image of the crumb, and magnetic resonance imaging, which can follow a dough while it proofs.",
+    "args": {
+      "term": "farinograph",
+      "meaning": "the resistance of dough to mixing",
+      "boundary": "measures dough development, not gas",
+      "source": "USDA Agricultural Research Service"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Instruments separate gas made from gas kept",
+    "narration": "Those images show gas cells growing, merging and, in an overproofed dough, collapsing.",
+    "args": {
+      "lines": [
+        "Those images show gas",
+        "cells growing, merging"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "What to notice in the edit",
+    "narration": "Watch how the edit keeps returning to two words: made and kept.",
+    "args": {
+      "lines": [
+        "Watch how the edit",
+        "keeps returning to two",
+        "words: made"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 4.97,
+    "heading": "What to notice in the edit",
+    "narration": "Every graphic in this episode sits on one side of that line.",
+    "args": {
+      "variant": 4
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "What to notice in the edit",
+    "narration": "The checklist of heat, cold, salt and age belongs to the fermenter.",
+    "args": {
+      "lines": [
+        "The checklist of heat,",
+        "cold, salt and age",
+        "belongs"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "The gluten steps and the overproofing contrast belong to the network. The instruments are shown last on purpose, because they are the only thing in the story that can pull those two halves apart and measure each one separately.",
+    "args": {
+      "lines": [
+        "The gluten steps and",
+        "the overproofing contrast belong"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "Here is what this evidence settles, and what it does not. Laboratory instruments separate gas made from gas kept under controlled conditions, with measured flour, water and temperature.",
+    "args": {
+      "title": "what this evidence settles",
+      "items": [
+        "+gas must be made and kept",
+        "-the cause of any single loaf",
+        "?how fast stored yeast declines"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "A home kitchen varies all of them at once, and failures often overlap: a slightly cool room, a weaker flour and a little extra salt can together do what none of them would do alone.",
+    "args": {
+      "lines": [
+        "A home kitchen varies",
+        "all of them at",
+        "once"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 8.28,
+    "heading": "Evidence limit",
+    "narration": "The evidence settles that gas must be made and kept. It does not identify the cause of any single loaf.",
+    "args": {
+      "title": "what this evidence settles",
+      "items": [
+        "+gas must be made and kept",
+        "-the cause of any single loaf",
+        "?how fast stored yeast declines"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "Nor does it fix how fast stored yeast declines, and published figures for yeast tolerance vary enough that a single threshold would be false precision.",
+    "args": {
+      "lines": [
+        "Nor does it fix",
+        "how fast stored yeast",
+        "declines"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.79,
+    "heading": "Closing",
+    "narration": "A flat dough is a record of two systems, one alive and one structural.",
+    "args": {
+      "variant": 3
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "Before changing the recipe, it is worth asking which of them gave out: the yeast that makes the gas, or the gluten that was meant to hold it.",
+    "args": {
+      "variant": 4
+    },
+    "from": "directive"
+  }
+]

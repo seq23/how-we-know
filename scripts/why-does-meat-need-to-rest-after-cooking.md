@@ -110,18 +110,16 @@ So the minutes after cooking are not empty. Heat is still crossing the meat from
 
 ## Chapters
 
-- 00:00 Cold open
-- 00:45 Title card
-- 00:50 The heat is still moving when the pan goes cold
-- 03:55 Producer POV
-- 04:05 Cooking wrings water out of muscle fibres
-- 06:15 Juice is not herded into the centre
-- 07:40 A scale tests what a story cannot
-- 08:55 Cooler juice runs out more slowly
-- 10:05 The size of the cut decides how much any of this matters
-- 10:45 What to notice in the edit
-- 11:20 Evidence limit
-- 12:00 Closing
+- 0:00 Cold open
+- 0:38 The heat is still moving when the pan goes cold
+- 3:11 Cooking wrings water out of muscle fibres
+- 5:10 Juice is not herded into the centre
+- 6:26 A scale tests what a story cannot
+- 7:34 Cooler juice runs out more slowly
+- 8:49 The size of the cut decides how much any of this matters
+- 9:23 What to notice in the edit
+- 9:54 Evidence limit
+- 10:34 Closing
 
 ## Sources
 

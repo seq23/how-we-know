@@ -1,0 +1,1104 @@
+[
+  {
+    "segment": "depth_descent",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "A grain sold as glutinous contains no gluten whatsoever. Rice gets sticky because cooking makes its starch granules swell and break down, and starch released at the grain surface acts as a glue between neighbouring grains.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "The word glutinous describes a texture, glue-like, not an ingredient. Gluten is a wheat protein, and rice stickiness is not a protein story at all.",
+    "args": {
+      "lines": [
+        "The word glutinous describes",
+        "a texture, glue-like, not",
+        "an ingredient."
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "depth_descent",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "It is a starch story built from two molecules, which chemical databases such as PubChem list as separate entries: amylose and amylopectin.",
+    "args": {},
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "That much is settled. What it does not settle is why the same two molecules give you loose, separate grains of basmati in one pot and a single cohesive mass of sticky rice in another.",
+    "args": {
+      "variant": 0
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 3.5,
+    "heading": "Title card",
+    "narration": "Why does rice get sticky",
+    "args": {
+      "lines": [
+        "Why does rice get",
+        "sticky"
+      ]
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Stickiness lives in starch, not in protein",
+    "narration": "Start with what is inside a grain of milled white rice. Most of it is endosperm, the stored food the seed would have used to grow, and most of that endosperm is starch.",
+    "args": {
+      "term": "glutinous",
+      "includes": [
+        "glue-like"
+      ],
+      "excludes": [
+        "gluten"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Stickiness lives in starch, not in protein",
+    "narration": "Proteins are present, but they are minor partners here. Wheat dough becomes elastic because two families of wheat proteins link into a stretchy network when the flour is wetted and worked.",
+    "args": {
+      "lines": [
+        "Proteins are present, but",
+        "they are minor partners",
+        "here. Wheat"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "Stickiness lives in starch, not in protein",
+    "narration": "Rice has no comparable network. So when rice clumps, the glue has to be coming from somewhere else, and every line of evidence points to the starch.",
+    "args": {
+      "term": "glutinous",
+      "includes": [
+        "glue-like"
+      ],
+      "excludes": [
+        "gluten"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 7.86,
+    "heading": "Stickiness lives in starch, not in protein",
+    "narration": "Starch is not one substance. It is glucose, linked into long chains, and those chains come in two architectures.",
+    "args": {
+      "term": "amylose",
+      "meaning": "a mostly linear chain of glucose",
+      "boundary": "amylopectin is the heavily branched form",
+      "source": "PubChem"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Stickiness lives in starch, not in protein",
+    "narration": "Amylose is mostly linear: a long chain that can coil into a helix.",
+    "args": {
+      "lines": [
+        "Amylose is mostly linear:",
+        "a long chain that",
+        "can coil"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "Stickiness lives in starch, not in protein",
+    "narration": "Amylopectin is heavily branched, a bushy molecule with many short chains hanging off a backbone, and it is far larger than amylose.",
+    "args": {
+      "term": "amylose",
+      "meaning": "a mostly linear chain of glucose",
+      "boundary": "amylopectin is the heavily branched form",
+      "source": "PubChem"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "Stickiness lives in starch, not in protein",
+    "narration": "Both are catalogued by PubChem, the chemical database run under the National Institutes of Health.",
+    "args": {
+      "lines": [
+        "Both are catalogued by",
+        "PubChem, the chemical database",
+        "run under"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "Stickiness lives in starch, not in protein",
+    "narration": "Inside the grain, these molecules are packed into tiny starch granules, and rice granules are among the smallest of the cereal starches.",
+    "args": {
+      "term": "amylose",
+      "meaning": "a mostly linear chain of glucose",
+      "boundary": "amylopectin is the heavily branched form",
+      "source": "PubChem"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Stickiness lives in starch, not in protein",
+    "narration": "Within each granule, the branches of amylopectin line up side by side into ordered, crystalline layers, with amylose threaded through the less ordered regions.",
+    "args": {
+      "lines": [
+        "Within each granule, the",
+        "branches of amylopectin line",
+        "up side"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 8.69,
+    "heading": "Stickiness lives in starch, not in protein",
+    "narration": "That ordered packing is the key to everything that follows. A raw granule is dense, partly crystalline and resistant to water.",
+    "args": {
+      "title": "What the uncooked granule is",
+      "items": [
+        "+packed with amylose and amylopectin",
+        "+partly crystalline",
+        "-swollen",
+        "-sticky"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "Stickiness lives in starch, not in protein",
+    "narration": "Uncooked rice is hard and not sticky, because its starch is locked away in that structure.",
+    "args": {
+      "lines": [
+        "Uncooked rice is hard",
+        "and not sticky, because",
+        "its starch"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "Stickiness lives in starch, not in protein",
+    "narration": "Stickiness only appears when that structure is taken apart, and the methods that show it happening are worth looking at one by one.",
+    "args": {
+      "title": "What the uncooked granule is",
+      "items": [
+        "+packed with amylose and amylopectin",
+        "+partly crystalline",
+        "-swollen",
+        "-sticky"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 5.38,
+    "heading": "Heat and water take the granule apart below boiling",
+    "narration": "The process is called gelatinization, and it was not inferred from texture alone.",
+    "args": {
+      "title": "Seeing the granule change",
+      "stages": [
+        "polarized light",
+        "X-ray diffraction",
+        "differential scanning calorimetry"
+      ],
+      "conclusion": "the crystalline order is lost"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Heat and water take the granule apart below boiling",
+    "narration": "Three instruments show it from different angles. Under polarized light, a raw starch granule glows with a dark cross across it, called a Maltese cross, because its ordered layers bend light.",
+    "args": {
+      "lines": [
+        "Three instruments show it",
+        "from different angles. Under",
+        "polarized light"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 4.97,
+    "heading": "Heat and water take the granule apart below boiling",
+    "narration": "As the granule is heated in water, the cross fades and disappears.",
+    "args": {
+      "title": "Seeing the granule change",
+      "stages": [
+        "polarized light",
+        "X-ray diffraction",
+        "differential scanning calorimetry"
+      ],
+      "conclusion": "the crystalline order is lost"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Heat and water take the granule apart below boiling",
+    "narration": "X-ray diffraction gives the same verdict in another language: raw cereal starch scatters X-rays into a characteristic pattern of sharp rings, and after heating in water that pattern collapses into a diffuse blur.",
+    "args": {
+      "lines": [
+        "X-ray diffraction gives the",
+        "same verdict in another",
+        "language: raw"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "Heat and water take the granule apart below boiling",
+    "narration": "Differential scanning calorimetry measures heat flow, and it records a distinct absorption of energy at the moment the crystals melt. Three independent signals, one conclusion: the crystalline order is lost.",
+    "args": {
+      "title": "Seeing the granule change",
+      "stages": [
+        "polarized light",
+        "X-ray diffraction",
+        "differential scanning calorimetry"
+      ],
+      "conclusion": "the crystalline order is lost"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 6.62,
+    "heading": "Heat and water take the granule apart below boiling",
+    "narration": "Here is a detail that surprises many cooks. Rice starch gelatinizes well below the boiling point.",
+    "args": {
+      "value": "100",
+      "unit": "DEGREES",
+      "caption": "",
+      "source": ""
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Heat and water take the granule apart below boiling",
+    "narration": "Water at sea level boils at 100 degrees Celsius, and a pot of simmering rice sits close to that, but the granules begin swelling and losing their order at noticeably lower temperatures.",
+    "args": {
+      "variant": 1
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Heat and water take the granule apart below boiling",
+    "narration": "Different varieties gelatinize at different temperatures, and rice breeders classify grains as low, intermediate or high on that scale.",
+    "args": {
+      "lines": [
+        "Different varieties gelatinize at",
+        "different temperatures, and rice",
+        "breeders classify"
+      ]
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "stat_card",
+    "seconds": 7.03,
+    "heading": "Heat and water take the granule apart below boiling",
+    "narration": "The published values vary with variety and method, so this script will not quote a single figure.",
+    "args": {
+      "value": "100",
+      "unit": "DEGREES",
+      "caption": "",
+      "source": ""
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.62,
+    "heading": "Heat and water take the granule apart below boiling",
+    "narration": "What matters is that by the time the pot is simmering, gelatinization is well under way.",
+    "args": {
+      "variant": 2
+    },
+    "from": "heuristic"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 6.62,
+    "heading": "Producer POV",
+    "narration": "It feels like the subject gets larger instead of smaller. One answer rearranges everything around it.",
+    "args": {
+      "text": "It feels like the subject gets larger instead of smaller. One answer rearranges everything around it.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 6.62,
+    "heading": "What leaks out of the grain becomes the glue",
+    "narration": "Once the crystals melt, water floods in and the granules swell, many times their original volume.",
+    "args": {
+      "title": "From granule to glue",
+      "steps": [
+        [
+          "granules swell",
+          ""
+        ],
+        [
+          "starch leaches out",
+          ""
+        ],
+        [
+          "the surface film dries",
+          ""
+        ]
+      ],
+      "note": "grains bond where films touch"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "What leaks out of the grain becomes the glue",
+    "narration": "Swelling is not tidy. As the granules swell, some starch leaches out, both from granules at the surface of each grain and from the fine starch dust left behind by milling.",
+    "args": {
+      "lines": [
+        "Swelling is not tidy.",
+        "As the granules swell,",
+        "some starch"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 5.79,
+    "heading": "What leaks out of the grain becomes the glue",
+    "narration": "That released starch forms a thin, viscous film on the outside of every grain.",
+    "args": {
+      "title": "From granule to glue",
+      "steps": [
+        [
+          "granules swell",
+          ""
+        ],
+        [
+          "starch leaches out",
+          ""
+        ],
+        [
+          "the surface film dries",
+          ""
+        ]
+      ],
+      "note": "grains bond where films touch"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "What leaks out of the grain becomes the glue",
+    "narration": "When cooking stops and steam escapes, the surface film dries and thickens.",
+    "args": {
+      "lines": [
+        "When cooking stops and",
+        "steam escapes, the surface",
+        "film dries"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 5.79,
+    "heading": "What leaks out of the grain becomes the glue",
+    "narration": "Where two grains touch, their films merge, and the grains bond where films touch.",
+    "args": {
+      "title": "From granule to glue",
+      "steps": [
+        [
+          "granules swell",
+          ""
+        ],
+        [
+          "starch leaches out",
+          ""
+        ],
+        [
+          "the surface film dries",
+          ""
+        ]
+      ],
+      "note": "grains bond where films touch"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "What leaks out of the grain becomes the glue",
+    "narration": "Electron microscopes show this directly: images of cooked rice surfaces reveal a layer of smeared, gelled material that is absent on raw grains.",
+    "args": {
+      "lines": [
+        "Electron microscopes show this",
+        "directly: images of cooked",
+        "rice surfaces"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "What leaks out of the grain becomes the glue",
+    "narration": "Food chemists publishing in journals such as the Journal of Agricultural and Food Chemistry, from the American Chemical Society, have analysed that surface material and linked its quantity and composition to measured stickiness.",
+    "args": {
+      "title": "From granule to glue",
+      "steps": [
+        [
+          "granules swell",
+          ""
+        ],
+        [
+          "starch leaches out",
+          ""
+        ],
+        [
+          "the surface film dries",
+          ""
+        ]
+      ],
+      "note": "grains bond where films touch"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 4.97,
+    "heading": "What leaks out of the grain becomes the glue",
+    "narration": "This is also why rinsing rice before cooking can change the result.",
+    "args": {
+      "term": "rinsing",
+      "includes": [
+        "removing surface starch"
+      ],
+      "excludes": [
+        "changing the starch inside"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "What leaks out of the grain becomes the glue",
+    "narration": "Rinsing washes away loose starch dust from the outside of milled grains, so less material is available to form that first surface film.",
+    "args": {
+      "lines": [
+        "Rinsing washes away loose",
+        "starch dust from the",
+        "outside"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 8.28,
+    "heading": "What leaks out of the grain becomes the glue",
+    "narration": "It does not alter the starch locked inside each grain, which still gelatinizes and still releases some starch during cooking.",
+    "args": {
+      "term": "rinsing",
+      "includes": [
+        "removing surface starch"
+      ],
+      "excludes": [
+        "changing the starch inside"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "What leaks out of the grain becomes the glue",
+    "narration": "Studies of rinsing report effects that differ by variety and by how thoroughly the rice is washed, so the honest summary is modest.",
+    "args": {
+      "lines": [
+        "Studies of rinsing report",
+        "effects that differ by",
+        "variety"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 4.97,
+    "heading": "What leaks out of the grain becomes the glue",
+    "narration": "Rinsing reduces one source of glue. It does not remove the mechanism.",
+    "args": {
+      "term": "rinsing",
+      "includes": [
+        "removing surface starch"
+      ],
+      "excludes": [
+        "changing the starch inside"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 7.03,
+    "heading": "One gene sets most of the ratio",
+    "narration": "So why is glutinous rice so much stickier than basmati, if both gelatinize and both release starch?",
+    "args": {
+      "term": "Waxy gene",
+      "meaning": "encodes granule-bound starch synthase",
+      "boundary": "without it, the grain makes almost no amylose",
+      "source": "USDA Agricultural Research Service"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "One gene sets most of the ratio",
+    "narration": "The answer lies in the ratio of the two molecules, and much of that ratio is controlled by a single gene.",
+    "args": {
+      "lines": [
+        "The answer lies in",
+        "the ratio of the",
+        "two molecules"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 8.69,
+    "heading": "One gene sets most of the ratio",
+    "narration": "It is called the Waxy gene, and it encodes an enzyme called granule-bound starch synthase, which builds amylose inside the granule.",
+    "args": {
+      "term": "Waxy gene",
+      "meaning": "encodes granule-bound starch synthase",
+      "boundary": "without it, the grain makes almost no amylose",
+      "source": "USDA Agricultural Research Service"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "One gene sets most of the ratio",
+    "narration": "When that enzyme is broken, without it, the grain makes almost no amylose.",
+    "args": {
+      "lines": [
+        "When that enzyme is",
+        "broken, without it, the",
+        "grain makes"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 6.21,
+    "heading": "One gene sets most of the ratio",
+    "narration": "Its starch is almost entirely amylopectin. Glutinous rice varieties carry broken versions of this gene.",
+    "args": {
+      "term": "Waxy gene",
+      "meaning": "encodes granule-bound starch synthase",
+      "boundary": "without it, the grain makes almost no amylose",
+      "source": "USDA Agricultural Research Service"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "One gene sets most of the ratio",
+    "narration": "Rice geneticists, including those at the USDA Agricultural Research Service, which breeds rice and studies its grain quality, use the Waxy gene as one of the main markers for predicting how a new line will cook.",
+    "args": {
+      "lines": [
+        "Rice geneticists, including those",
+        "at the USDA Agricultural",
+        "Research Service"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "One gene sets most of the ratio",
+    "narration": "The oldest way to see this needs no sequencer. Iodine slips inside the helical coil of amylose and turns it a deep blue.",
+    "args": {
+      "title": "The iodine test",
+      "stages": [
+        "add iodine to starch",
+        "amylose turns deep blue",
+        "amylopectin turns reddish-brown"
+      ],
+      "conclusion": "colour estimates amylose content"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "One gene sets most of the ratio",
+    "narration": "Amylopectin, with its short branches, cannot hold iodine the same way, and stains a reddish-brown instead.",
+    "args": {
+      "lines": [
+        "Amylopectin, with its short",
+        "branches, cannot hold iodine"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 5.38,
+    "heading": "One gene sets most of the ratio",
+    "narration": "Cut a grain of ordinary rice, add iodine, and it turns dark blue.",
+    "args": {
+      "title": "The iodine test",
+      "stages": [
+        "add iodine to starch",
+        "amylose turns deep blue",
+        "amylopectin turns reddish-brown"
+      ],
+      "conclusion": "colour estimates amylose content"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "One gene sets most of the ratio",
+    "narration": "Do the same with glutinous rice and it turns reddish-brown. Measured carefully, with a spectrophotometer reading the depth of the colour, this reaction becomes a standard laboratory method in which colour estimates amylose content, used by breeding programmes and grain-quality laboratories.",
+    "args": {
+      "lines": [
+        "Do the same with",
+        "glutinous rice and it",
+        "turns reddish-brown."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 9.0,
+    "heading": "One gene sets most of the ratio",
+    "narration": "Across those sources a consistent pattern appears. Varieties with relatively high amylose, such as many long-grain types, cook firmer and more separate.",
+    "args": {
+      "title": "Who measures rice starch",
+      "sources": [
+        [
+          "USDA Agricultural Research Service",
+          "rice breeding and grain quality"
+        ],
+        [
+          "Journal of Agricultural and Food Chemistry",
+          "starch structure and stickiness"
+        ],
+        [
+          "Royal Society of Chemistry",
+          "the chemistry of starch"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "One gene sets most of the ratio",
+    "narration": "Varieties with lower amylose, such as many short-grain types, cook softer and stickier.",
+    "args": {
+      "lines": [
+        "Varieties with lower amylose,",
+        "such as many short-grain",
+        "types, cook"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 9.0,
+    "heading": "One gene sets most of the ratio",
+    "narration": "Glutinous rice, with almost no amylose, sits at the extreme. Researchers publishing on starch structure, and bodies such as the Royal Society of Chemistry that cover the chemistry of starch, describe the same direction of effect, even where their exact measurements differ.",
+    "args": {
+      "title": "Who measures rice starch",
+      "sources": [
+        [
+          "USDA Agricultural Research Service",
+          "rice breeding and grain quality"
+        ],
+        [
+          "Journal of Agricultural and Food Chemistry",
+          "starch structure and stickiness"
+        ],
+        [
+          "Royal Society of Chemistry",
+          "the chemistry of starch"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "Amylose holds grains apart as it cools",
+    "narration": "Why would amylose make grains less sticky? Part of the answer comes from viscosity instruments, such as the Rapid Visco Analyser, which heat a starch slurry while stirring and record viscosity as it thickens.",
+    "args": {
+      "title": "Pasting test",
+      "steps": [
+        [
+          "heat a starch slurry while stirring",
+          ""
+        ],
+        [
+          "record viscosity as it thickens",
+          ""
+        ],
+        [
+          "cool it and record again",
+          ""
+        ]
+      ],
+      "note": "setback tracks amylose"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Amylose holds grains apart as it cools",
+    "narration": "The procedure is to heat a starch slurry while stirring, record viscosity as it thickens, then cool it and record again.",
+    "args": {
+      "lines": [
+        "The procedure is to",
+        "heat a starch slurry",
+        "while stirring"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 5.79,
+    "heading": "Amylose holds grains apart as it cools",
+    "narration": "On cooling, the paste firms up, a rise called setback, and setback tracks amylose.",
+    "args": {
+      "title": "Pasting test",
+      "steps": [
+        [
+          "heat a starch slurry while stirring",
+          ""
+        ],
+        [
+          "record viscosity as it thickens",
+          ""
+        ],
+        [
+          "cool it and record again",
+          ""
+        ]
+      ],
+      "note": "setback tracks amylose"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Amylose holds grains apart as it cools",
+    "narration": "Linear amylose chains, freed from the granule, quickly find each other and pack back into ordered bundles, a process called retrogradation.",
+    "args": {
+      "lines": [
+        "Linear amylose chains, freed",
+        "from the granule, quickly",
+        "find"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "Amylose holds grains apart as it cools",
+    "narration": "That rapid re-ordering firms the grain and its surface, so the film between grains sets into something closer to a firm skin than a tacky paste.",
+    "args": {
+      "title": "Pasting test",
+      "steps": [
+        [
+          "heat a starch slurry while stirring",
+          ""
+        ],
+        [
+          "record viscosity as it thickens",
+          ""
+        ],
+        [
+          "cool it and record again",
+          ""
+        ]
+      ],
+      "note": "setback tracks amylose"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "Amylose holds grains apart as it cools",
+    "narration": "Amylopectin behaves differently. Its bushy branches swell more freely, hold water and re-order only slowly, over days rather than hours.",
+    "args": {
+      "lines": [
+        "Amylopectin behaves differently. Its",
+        "bushy branches swell more",
+        "freely, hold"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Amylose holds grains apart as it cools",
+    "narration": "A grain rich in amylopectin stays soft, swollen and tacky at the surface, which is exactly the texture glutinous rice is prized for.",
+    "args": {
+      "lines": [
+        "A grain rich in",
+        "amylopectin stays soft, swollen",
+        "and tacky"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Amylose holds grains apart as it cools",
+    "narration": "The same retrogradation explains a familiar kitchen observation: day-old rice from the refrigerator is harder and less sticky than fresh rice, because its starch has partly re-ordered.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 4.97,
+    "heading": "The variety sets the range and the cook moves within it",
+    "narration": "Variety sets the range, but the method moves the result within it.",
+    "args": {
+      "term": "long-grain",
+      "includes": [
+        "firmer and more separate"
+      ],
+      "excludes": [
+        "soft and tacky"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The variety sets the range and the cook moves within it",
+    "narration": "Long-grain rice tends to cook firmer and more separate, while glutinous rice cooks soft and tacky, and no amount of technique fully swaps one for the other.",
+    "args": {
+      "lines": [
+        "Long-grain rice tends to",
+        "cook firmer and more",
+        "separate, while"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "The variety sets the range and the cook moves within it",
+    "narration": "More water lets granules swell further and release more starch. Stirring rubs grains together and scrapes starch off their surfaces, which is why risotto, made with constant stirring, turns creamy.",
+    "args": {
+      "term": "long-grain",
+      "includes": [
+        "firmer and more separate"
+      ],
+      "excludes": [
+        "soft and tacky"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The variety sets the range and the cook moves within it",
+    "narration": "Resting after cooking lets steam redistribute and the surface film set. Laboratories quantify the outcome with texture analysers, which press a probe into cooked rice and measure the force needed to pull it away, alongside trained tasting panels.",
+    "args": {
+      "lines": [
+        "Resting after cooking lets",
+        "steam redistribute and the",
+        "surface film"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "When the cross-section glows, watch the granules, not the grain. The grain barely changes shape, while its starch granules swell and spill.",
+    "args": {
+      "variant": 3
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "Every instrument in this episode, polarized light, X-ray diffraction, calorimetry, iodine and viscosity, is looking at that same small event from a different side.",
+    "args": {
+      "variant": 4
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 6.62,
+    "heading": "Evidence limit",
+    "narration": "This evidence establishes that stickiness comes from starch, and that amylose content predicts much of it.",
+    "args": {
+      "title": "What this evidence settles",
+      "items": [
+        "+stickiness comes from starch",
+        "+amylose content predicts much of it",
+        "-one number that defines stickiness",
+        "?how much rinsing changes it"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "It does not give a single number that defines stickiness: instruments and tasting panels measure different things, and they do not always agree.",
+    "args": {
+      "lines": [
+        "It does not give",
+        "a single number that",
+        "defines stickiness:"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "Two varieties with similar amylose can still cook differently, because amylopectin chain lengths, protein and fat content also play roles that remain under study.",
+    "args": {
+      "title": "What this evidence settles",
+      "items": [
+        "+stickiness comes from starch",
+        "+amylose content predicts much of it",
+        "-one number that defines stickiness",
+        "?how much rinsing changes it"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Evidence limit",
+    "narration": "How much rinsing changes the result remains open. And none of this evidence says anything about nutrition or health.",
+    "args": {
+      "lines": [
+        "How much rinsing changes",
+        "the result remains open.",
+        "And none"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Closing",
+    "narration": "A word that sounds like wheat turns out to describe a missing enzyme.",
+    "args": {
+      "lines": [
+        "A word that sounds",
+        "like wheat turns out",
+        "to describe"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Closing",
+    "narration": "The glue on your rice is starch that escaped its granule, and how much escapes was written, in large part, into a single gene.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+destagnate"
+  }
+]

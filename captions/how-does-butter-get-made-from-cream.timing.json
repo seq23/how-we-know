@@ -1,0 +1,130 @@
+{
+  "episode": "how-does-butter-get-made-from-cream",
+  "beats": 87,
+  "plan_source": "plans/how-does-butter-get-made-from-cream.json",
+  "timing": "audio",
+  "beats_measured": 87,
+  "durations_recorded": 87,
+  "duration_s": 702.123,
+  "cues": 189,
+  "chapters_real": 13,
+  "chapters_published": 11,
+  "chapter_notes": [
+    "merged 2 chapter(s) under 10s: Title card (2.4s), Producer POV (7.8s)"
+  ],
+  "drift": {
+    "mean_abs_s": 41.5,
+    "worst_abs_s": 74.2,
+    "rows": [
+      {
+        "title": "Cold open",
+        "hand": "00:00",
+        "real": "0:00",
+        "drift_s": 0.0
+      },
+      {
+        "title": "Title card",
+        "hand": "00:46",
+        "real": "0:39",
+        "drift_s": -6.4
+      },
+      {
+        "title": "Cream is fat hiding inside water",
+        "hand": "00:49",
+        "real": "0:42",
+        "drift_s": -7.0
+      },
+      {
+        "title": "Butter needs fat that is partly frozen",
+        "hand": "02:28",
+        "real": "2:06",
+        "drift_s": -21.7
+      },
+      {
+        "title": "Producer POV",
+        "hand": "04:39",
+        "real": "4:09",
+        "drift_s": -29.3
+      },
+      {
+        "title": "Churning breaks membranes rather than squeezing out fat",
+        "hand": "04:50",
+        "real": "4:17",
+        "drift_s": -32.5
+      },
+      {
+        "title": "The break is a phase inversion you can see and hear",
+        "hand": "06:27",
+        "real": "5:40",
+        "drift_s": -47.0
+      },
+      {
+        "title": "Washing and working decide what butter keeps",
+        "hand": "07:48",
+        "real": "6:52",
+        "drift_s": -55.2
+      },
+      {
+        "title": "Cultured butter adds bacteria before the churn, on purpose",
+        "hand": "09:19",
+        "real": "8:20",
+        "drift_s": -58.7
+      },
+      {
+        "title": "Grading judges arrangement, not just amount",
+        "hand": "10:45",
+        "real": "9:38",
+        "drift_s": -66.7
+      },
+      {
+        "title": "What to notice in the edit",
+        "hand": "11:29",
+        "real": "10:19",
+        "drift_s": -69.9
+      },
+      {
+        "title": "Evidence limit",
+        "hand": "11:59",
+        "real": "10:48",
+        "drift_s": -70.7
+      },
+      {
+        "title": "Closing",
+        "hand": "12:46",
+        "real": "11:31",
+        "drift_s": -74.2
+      }
+    ]
+  },
+  "ffprobe": {
+    "file": "renders/how-does-butter-get-made-from-cream-final.mp4",
+    "video_s": 702.123,
+    "last_cue_end_s": 702.123,
+    "delta_s": -0.0,
+    "ok": true
+  },
+  "text_checks": {
+    "beats_json": {
+      "checked": 87,
+      "mismatched": []
+    },
+    "script_text": {
+      "checked": 87,
+      "absent_from_narration": []
+    }
+  },
+  "script_chapters": {
+    "written": true,
+    "changed": true,
+    "removed_lines": [
+      "Title card",
+      "Producer POV"
+    ],
+    "chapters_not_in_script": []
+  },
+  "artifacts": [
+    "captions/how-does-butter-get-made-from-cream.vtt",
+    "captions/how-does-butter-get-made-from-cream.srt",
+    "captions/how-does-butter-get-made-from-cream.chapters.txt"
+  ]
+}
