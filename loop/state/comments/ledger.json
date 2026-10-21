@@ -27,7 +27,17 @@
     "T0vMkXym-Zs": "2026-10-03T14:30:54Z",
     "0BZkBylEZRo": "2026-10-03T14:30:54Z",
     "-LXdt8tsw9k": "2026-10-03T14:30:53Z",
-    "_rK7dhwqe8w": "2026-10-03T14:30:52Z"
+    "_rK7dhwqe8w": "2026-10-03T14:30:52Z",
+    "tJz6_OYNoJE": "2026-10-21T18:25:37Z",
+    "EFimztjj_j8": "2026-10-20T03:14:59Z",
+    "hm4tKu0sLj8": "2026-10-15T14:17:52Z",
+    "NEr_OQfTgWE": "2026-10-20T18:23:10Z",
+    "_XTpEhfkZe0": "2026-10-19T19:41:08Z",
+    "ztPOe-oxs_E": "2026-10-15T23:10:23Z",
+    "nFW6gjUH7-A": "2026-10-13T23:09:51Z",
+    "zd_fjP4RPWE": "2026-10-11T23:10:55Z",
+    "ibVKSYTdhek": "2026-10-06T23:10:05Z",
+    "XlKl3Gh7_rY": "2026-10-04T15:35:14Z"
   },
   "seen": {
     "UgwwhKbVrAMub0De6_d4AaABAg": {
@@ -996,26 +1006,15 @@
       "author": "@howweknowdeep",
       "author_channel_id": "UC5vZFZc15DIM6IrFwFgAECg",
       "text": "Why deep sea creatures look so weird? Full episode: https://youtu.be/EY__zREBIUk",
-      "published_at": "2026-10-21T18:25:37+00:00",
+      "published_at": "2026-10-21T18:25:37Z",
       "like_count": 0,
       "reply_count": 0,
-      "class": "own_channel",
+      "video_title": "Why deep sea creatures look so weird: soft bodies can be an advantage under pressure",
+      "class": "spam",
       "proposed_action": null,
       "proposed_reply": null,
       "product_note": null,
-      "seen_at": "2026-10-21T18:25:37+00:00",
-      "acted": {
-        "comment_id": "UgzgK7EsCk6QBw0tyip4AaABAg",
-        "video_id": "tJz6_OYNoJE",
-        "action": "channel_comment",
-        "reply_text": "Why deep sea creatures look so weird? Full episode: https://youtu.be/EY__zREBIUk",
-        "instructed_by": "owner",
-        "instructed_at": "2026-10-03",
-        "source": "loop/handoff: owner decision 2026-10-03",
-        "note": null,
-        "applied_at": "2026-10-21T18:25:37+00:00",
-        "result": "posted (UgzgK7EsCk6QBw0tyip4AaABAg)"
-      }
+      "seen_at": "2026-10-21T19:05:41+00:00"
     },
     "Ugy9rAmmjccCAdclKYF4AaABAg": {
       "comment_id": "Ugy9rAmmjccCAdclKYF4AaABAg",
@@ -1286,6 +1285,22 @@
         "applied_at": "2026-10-25T00:49:34+00:00",
         "result": "posted (UgzCLlZo8F__hnbSqW54AaABAg)"
       }
+    },
+    "UgwjL7Ep1JHjQZlDo0J4AaABAg": {
+      "comment_id": "UgwjL7Ep1JHjQZlDo0J4AaABAg",
+      "video_id": "EFimztjj_j8",
+      "author": "@filonin2",
+      "author_channel_id": "UCF5-UkPMkE5JGefUq1nWq2w",
+      "text": "AI had a stroke trying to say \"bioluminescence.\"",
+      "published_at": "2026-10-20T03:14:59Z",
+      "like_count": 1,
+      "reply_count": 0,
+      "video_title": "Why Is Deep Sea Light Blue?",
+      "class": "negative",
+      "proposed_action": "ignore",
+      "proposed_reply": null,
+      "product_note": "pronunciation: bioluminescence",
+      "seen_at": "2026-10-21T19:05:41+00:00"
     }
   },
   "instructions": {},
@@ -1847,6 +1862,15 @@
       "new": 1,
       "reported": 0,
       "units": 88,
+      "cost_usd": 0.0,
+      "model": "nvidia/nemotron-3-ultra-550b-a55b:free"
+    },
+    {
+      "at": "2026-10-21T19:05:41+00:00",
+      "videos": 101,
+      "new": 3,
+      "reported": 2,
+      "units": 104,
       "cost_usd": 0.0,
       "model": "nvidia/nemotron-3-ultra-550b-a55b:free"
     }
