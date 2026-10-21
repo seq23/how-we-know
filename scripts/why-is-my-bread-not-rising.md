@@ -113,18 +113,16 @@ A flat dough is a record of two systems, one alive and one structural. Before ch
 
 ## Chapters
 
-- 00:00 Cold open
-- 00:45 Title card
-- 00:50 Yeast inflates bubbles it never made
-- 02:05 The yeast has to be fed from inside the flour
-- 03:30 Producer POV
-- 03:35 Living yeast can be slowed to a standstill
-- 05:45 A strong fermenter cannot fill a broken net
-- 07:35 Too much rising can look like no rising
-- 08:45 Instruments separate gas made from gas kept
-- 10:10 What to notice in the edit
-- 10:45 Evidence limit
-- 11:40 Closing
+- 0:00 Cold open
+- 0:42 Yeast inflates bubbles it never made
+- 1:50 The yeast has to be fed from inside the flour
+- 3:24 Living yeast can be slowed to a standstill
+- 5:19 A strong fermenter cannot fill a broken net
+- 6:57 Too much rising can look like no rising
+- 7:54 Instruments separate gas made from gas kept
+- 9:11 What to notice in the edit
+- 9:35 Evidence limit
+- 10:13 Closing
 
 ## Sources
 

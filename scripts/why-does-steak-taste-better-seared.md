@@ -120,19 +120,17 @@ A wet steak cannot brown. Dry it, heat it past boiling, and a reaction first see
 
 ## Chapters
 
-- 00:00 Cold open
-- 00:45 Title card
-- 00:50 The brown crust is new chemistry, not concentrated meat
-- 01:55 A chemist in a test tube found the reaction a century before the pan explanation
-- 03:20 Water holds the surface below the browning zone
-- 05:00 Producer POV
-- 05:15 Hodge turned a brown smear into a sequence of stages
-- 06:55 Instruments separated the smell into molecules
-- 08:40 Searing does not seal anything in
-- 09:55 Fat runs parallel reactions of its own
-- 10:35 What to notice in the edit
-- 10:55 Evidence limit
-- 11:35 Closing
+- 0:00 Cold open
+- 0:41 The brown crust is new chemistry, not concentrated meat
+- 1:47 A chemist in a test tube found the reaction a century before the pan explanation
+- 3:09 Water holds the surface below the browning zone
+- 4:49 Hodge turned a brown smear into a sequence of stages
+- 6:16 Instruments separated the smell into molecules
+- 7:54 Searing does not seal anything in
+- 8:49 Fat runs parallel reactions of its own
+- 9:18 What to notice in the edit
+- 9:36 Evidence limit
+- 10:02 Closing
 
 ## Sources
 

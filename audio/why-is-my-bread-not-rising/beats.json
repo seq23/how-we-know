@@ -1,0 +1,494 @@
+[
+  {
+    "i": 0,
+    "segment": "stat_card",
+    "narration": "One molecule of glucose yields two of carbon dioxide, yet the loaf stays flat.",
+    "seconds": 5.434666666666667
+  },
+  {
+    "i": 1,
+    "segment": "text_beat",
+    "narration": "Bread fails to rise for one of two physical reasons: the yeast is not producing enough carbon dioxide, or the dough cannot hold the gas it does produce.",
+    "seconds": 9.274666666666667
+  },
+  {
+    "i": 2,
+    "segment": "stat_card",
+    "narration": "The gas itself follows a fixed recipe. In yeast fermentation, as chemistry references from the American Chemical Society set it out, one molecule of glucose becomes two molecules of ethanol and two molecules of carbon dioxide.",
+    "seconds": 15.141333333333334
+  },
+  {
+    "i": 3,
+    "segment": "text_beat",
+    "narration": "That figure tells you the gas gets made, even when the fermenter is alive and well.",
+    "seconds": 4.410666666666667
+  },
+  {
+    "i": 4,
+    "segment": "stat_card",
+    "narration": "It does not tell you where the gas goes, and that is where many flat loaves are actually lost.",
+    "seconds": 5.957333333333334
+  },
+  {
+    "i": 5,
+    "segment": "text_beat",
+    "narration": "Why is my bread not rising?",
+    "seconds": 1.9573333333333334
+  },
+  {
+    "i": 6,
+    "segment": "ambient_drift",
+    "narration": "Start with the bubble, because the obvious picture is wrong. It is natural to imagine yeast cells blowing brand new bubbles into the dough, like tiny balloons appearing out of nowhere.",
+    "seconds": 10.0
+  },
+  {
+    "i": 7,
+    "segment": "text_beat",
+    "narration": "Cereal chemists who study dough structure describe something different. Carbon dioxide from the yeast dissolves first into the water of the dough.",
+    "seconds": 8.581333333333333
+  },
+  {
+    "i": 8,
+    "segment": "ambient_drift",
+    "narration": "Once that water is saturated, the gas has to go somewhere, and it diffuses into gas cells that already exist: small pockets of air folded in during mixing and kneading.",
+    "seconds": 10.405333333333333
+  },
+  {
+    "i": 9,
+    "segment": "ambient_drift",
+    "narration": "Yeast is poor at creating a bubble from nothing. It is very good at inflating one that is already there.",
+    "seconds": 6.309333333333333
+  },
+  {
+    "i": 10,
+    "segment": "text_beat",
+    "narration": "Slice through a proofing dough and what you see is gas cells around a gluten network.",
+    "seconds": 5.1786666666666665
+  },
+  {
+    "i": 11,
+    "segment": "text_beat",
+    "narration": "That network is a web of hydrated wheat proteins, and as each gas cell swells, the web around it stretches.",
+    "seconds": 6.8
+  },
+  {
+    "i": 12,
+    "segment": "ambient_drift",
+    "narration": "Rising, then, is two events stacked on top of each other: gas being made, and gas being kept.",
+    "seconds": 6.16
+  },
+  {
+    "i": 13,
+    "segment": "text_beat",
+    "narration": "A failure in either one gives you the same flat dough sitting in the bowl, which is why the symptom alone rarely tells you the cause.",
+    "seconds": 7.354666666666667
+  },
+  {
+    "i": 14,
+    "segment": "text_beat",
+    "narration": "Everything that follows sorts into one of those two halves, and the useful habit is to ask which half you are looking at before you change anything.",
+    "seconds": 7.685333333333333
+  },
+  {
+    "i": 15,
+    "segment": "evidence_chain",
+    "narration": "Here is where the sugar comes from. Flour is mostly starch, and yeast cannot ferment the starch in flour directly.",
+    "seconds": 6.938666666666666
+  },
+  {
+    "i": 16,
+    "segment": "text_beat",
+    "narration": "Amylase enzymes, some naturally present in the grain and some added by millers, cut starch into simple sugars that yeast can take up.",
+    "seconds": 7.824
+  },
+  {
+    "i": 17,
+    "segment": "evidence_chain",
+    "narration": "Starch granules damaged during milling are easier for those enzymes to reach.",
+    "seconds": 4.496
+  },
+  {
+    "i": 18,
+    "segment": "text_beat",
+    "narration": "Only then does yeast fermentation begin, turning those sugars into carbon dioxide and ethanol.",
+    "seconds": 6.373333333333333
+  },
+  {
+    "i": 19,
+    "segment": "evidence_chain",
+    "narration": "So part of the fuel supply for your rise is decided before the bag of flour is ever opened, by the grain and by the mill.",
+    "seconds": 7.429333333333333
+  },
+  {
+    "i": 20,
+    "segment": "definition_card",
+    "narration": "Inside the yeast cell, the species bakers use is Saccharomyces cerevisiae, sugar is broken down by a chain of enzymes.",
+    "seconds": 8.4
+  },
+  {
+    "i": 21,
+    "segment": "text_beat",
+    "narration": "When oxygen runs short, which happens quickly inside a dense dough, the cell routes that chain toward ethanol and carbon dioxide.",
+    "seconds": 7.344
+  },
+  {
+    "i": 22,
+    "segment": "definition_card",
+    "narration": "Fermentation, in this strict sense, means converting sugar to carbon dioxide and ethanol without oxygen.",
+    "seconds": 6.938666666666666
+  },
+  {
+    "i": 23,
+    "segment": "text_beat",
+    "narration": "Fermentation is not the same as yeast growth; a dough can ferment vigorously while its yeast barely multiplies.",
+    "seconds": 6.842666666666666
+  },
+  {
+    "i": 24,
+    "segment": "definition_card",
+    "narration": "That fermentation is the work of a living organism was established by Louis Pasteur, whose research the Institut Pasteur, the institute bearing his name, documents.",
+    "seconds": 10.330666666666668
+  },
+  {
+    "i": 25,
+    "segment": "text_beat",
+    "narration": "Later, Eduard Buchner showed that juice pressed from yeast, with no intact cells at all, could still ferment sugar.",
+    "seconds": 6.618666666666667
+  },
+  {
+    "i": 26,
+    "segment": "definition_card",
+    "narration": "That result matters to a baker for a quiet reason. The gas comes from enzymes, and enzymes are sensitive to temperature, to salt, and to how much water is available.",
+    "seconds": 10.597333333333333
+  },
+  {
+    "i": 27,
+    "segment": "quote_card",
+    "narration": "I like questions where the obvious answer starts falling apart once you look closely.",
+    "seconds": 4.08
+  },
+  {
+    "i": 28,
+    "segment": "checklist_reveal",
+    "narration": "The first group of failures is about the fermenter: what stops the gas being made.",
+    "seconds": 4.848
+  },
+  {
+    "i": 29,
+    "segment": "text_beat",
+    "narration": "Yeast killed by hot water is the classic case. Published thermal limits for baker's yeast vary with the strain and with how long the cells are held at temperature, so there is no single safe line worth quoting here.",
+    "seconds": 11.333333333333334
+  },
+  {
+    "i": 30,
+    "segment": "checklist_reveal",
+    "narration": "What is consistent is the direction: water that feels hot rather than warm is in the range that damages the cells. Dead yeast produces nothing, and no amount of waiting changes that.",
+    "seconds": 11.888
+  },
+  {
+    "i": 31,
+    "segment": "text_beat",
+    "narration": "The opposite failure is quieter. A dough kept too cold is not dead; its enzymes are simply working slowly.",
+    "seconds": 6.48
+  },
+  {
+    "i": 32,
+    "segment": "text_beat",
+    "narration": "Bakers use this deliberately, retarding dough in a refrigerator to stretch fermentation over a much longer period and develop flavour.",
+    "seconds": 7.514666666666667
+  },
+  {
+    "i": 33,
+    "segment": "ambient_drift",
+    "narration": "In a cool kitchen, the same slowing can look like failure when it is only delay.",
+    "seconds": 5.36
+  },
+  {
+    "i": 34,
+    "segment": "text_beat",
+    "narration": "The test here is patience. A cold dough with living yeast will eventually move, and if it does, the fermenter was never the problem.",
+    "seconds": 7.973333333333334
+  },
+  {
+    "i": 35,
+    "segment": "contrast_pair",
+    "narration": "Salt or sugar drawing water away is the third failure. Both dissolve in the dough's water and raise its osmotic pressure, which pulls water out of the yeast cells.",
+    "seconds": 9.661333333333333
+  },
+  {
+    "i": 36,
+    "segment": "text_beat",
+    "narration": "In a normal recipe, salt in dough is a flavour and a gluten strengthener, and the yeast copes.",
+    "seconds": 5.914666666666666
+  },
+  {
+    "i": 37,
+    "segment": "contrast_pair",
+    "narration": "Poured directly onto the yeast, or added in excess, it is not harmless to yeast at close contact.",
+    "seconds": 6.1706666666666665
+  },
+  {
+    "i": 38,
+    "segment": "text_beat",
+    "narration": "Rich doughs heavy with sugar are known to rise slowly for the same osmotic reason, and some yeast strains are sold specifically for sweet doughs.",
+    "seconds": 8.669333333333332
+  },
+  {
+    "i": 39,
+    "segment": "text_beat",
+    "narration": "Finally, yeast weakened by age is an open case rather than a settled one.",
+    "seconds": 5.1146666666666665
+  },
+  {
+    "i": 40,
+    "segment": "ambient_drift",
+    "narration": "Dried yeast loses activity in storage, but how fast depends on packaging, moisture and temperature, and the date printed on a packet is a manufacturer's estimate, not a measurement of the yeast in your cupboard.",
+    "seconds": 12.421333333333333
+  },
+  {
+    "i": 41,
+    "segment": "text_beat",
+    "narration": "The direct check is the old one: stir a little into warm water with a pinch of sugar and watch whether it foams. That small test separates a dead fermenter from a slow one.",
+    "seconds": 10.842666666666666
+  },
+  {
+    "i": 42,
+    "segment": "process_steps",
+    "narration": "Now the second group: gas that is made but not kept. This is how the gluten network forms.",
+    "seconds": 6.384
+  },
+  {
+    "i": 43,
+    "segment": "text_beat",
+    "narration": "Wheat flour contains two families of protein, and water hydrates gliadin and glutenin as soon as it reaches them.",
+    "seconds": 6.501333333333333
+  },
+  {
+    "i": 44,
+    "segment": "process_steps",
+    "narration": "Then kneading aligns and links the proteins. The glutenins join into long elastic chains, while the gliadins let the mass flow and extend.",
+    "seconds": 8.677333333333333
+  },
+  {
+    "i": 45,
+    "segment": "text_beat",
+    "narration": "Together they form gluten. In a well-developed dough, the network stretches around gas cells in thin films, like the skin of a balloon, so each cell swells instead of bursting.",
+    "seconds": 10.842666666666666
+  },
+  {
+    "i": 46,
+    "segment": "ambient_drift",
+    "narration": "Weak or torn gluten lets gas escape, and it has several sources.",
+    "seconds": 4.144
+  },
+  {
+    "i": 47,
+    "segment": "ambient_drift",
+    "narration": "Too little kneading leaves the proteins unaligned. Flour from lower-protein wheat simply supplies less network to work with.",
+    "seconds": 7.0986666666666665
+  },
+  {
+    "i": 48,
+    "segment": "text_beat",
+    "narration": "Whole wheat flour carries bran, and those sharp particles cut through the gluten films.",
+    "seconds": 4.56
+  },
+  {
+    "i": 49,
+    "segment": "ambient_drift",
+    "narration": "Flours from rye, barley or oats behave differently again, because their proteins do not form the same elastic web, so they never rise like wheat even when fermentation is vigorous.",
+    "seconds": 10.949333333333334
+  },
+  {
+    "i": 50,
+    "segment": "ambient_drift",
+    "narration": "A dense loaf made from those grains is often not a failure at all. It is the chemistry of the grain.",
+    "seconds": 5.776
+  },
+  {
+    "i": 51,
+    "segment": "source_compare",
+    "narration": "This is why protein quality is measured rather than assumed, and it is worth knowing who measures the rise.",
+    "seconds": 6.362666666666667
+  },
+  {
+    "i": 52,
+    "segment": "text_beat",
+    "narration": "The USDA Agricultural Research Service runs wheat quality laboratories that mill grain samples and bake test loaves, because protein content alone does not reliably predict how a flour will perform.",
+    "seconds": 13.690666666666667
+  },
+  {
+    "i": 53,
+    "segment": "source_compare",
+    "narration": "Flours with similar protein can make very different bread, depending on how those proteins link.",
+    "seconds": 5.605333333333333
+  },
+  {
+    "i": 54,
+    "segment": "text_beat",
+    "narration": "Research published through the Institute of Food Technologists treats dough as a material to be characterised, not a recipe to be trusted.",
+    "seconds": 7.888
+  },
+  {
+    "i": 55,
+    "segment": "contrast_pair",
+    "narration": "There is one failure that looks like the others but is really the reverse.",
+    "seconds": 3.9306666666666668
+  },
+  {
+    "i": 56,
+    "segment": "text_beat",
+    "narration": "Leave a dough to proof too long, and the yeast keeps making gas after the gluten network has stretched as far as it can.",
+    "seconds": 7.216
+  },
+  {
+    "i": 57,
+    "segment": "contrast_pair",
+    "narration": "The thinnest films tear, neighbouring gas cells merge, and the structure sags.",
+    "seconds": 4.976
+  },
+  {
+    "i": 58,
+    "segment": "text_beat",
+    "narration": "By the time you come back, an overproofed dough is a dough that rose and then collapsed, not a dough that never rose.",
+    "seconds": 6.906666666666666
+  },
+  {
+    "i": 59,
+    "segment": "contrast_pair",
+    "narration": "The yeast may also have used up much of the available sugar, leaving little for the oven.",
+    "seconds": 5.157333333333334
+  },
+  {
+    "i": 60,
+    "segment": "text_beat",
+    "narration": "That oven phase is the last chance for rise, and it explains why some loaves look fine on the counter and disappoint later.",
+    "seconds": 7.205333333333333
+  },
+  {
+    "i": 61,
+    "segment": "text_beat",
+    "narration": "In the oven, gas cells expand with heat, dissolved carbon dioxide comes out of solution, and ethanol and water turn to vapour, all pushing outward.",
+    "seconds": 9.829333333333333
+  },
+  {
+    "i": 62,
+    "segment": "ambient_drift",
+    "narration": "Bakers call this oven spring. It ends when the starch gelatinises and the proteins set, fixing the crumb in place.",
+    "seconds": 6.864
+  },
+  {
+    "i": 63,
+    "segment": "text_beat",
+    "narration": "A dough that has already exhausted its network has nothing left to spring with.",
+    "seconds": 4.538666666666667
+  },
+  {
+    "i": 64,
+    "segment": "evidence_chain",
+    "narration": "So how does anyone know which half of the rise failed? In a cereal laboratory, the job of separating the two failures is handed to instruments.",
+    "seconds": 9.829333333333333
+  },
+  {
+    "i": 65,
+    "segment": "text_beat",
+    "narration": "A rheofermentometer holds a dough in a sealed chamber and tracks gas produced and gas retained at the same time: the total carbon dioxide the yeast releases, and how much of it the dough actually holds.",
+    "seconds": 12.368
+  },
+  {
+    "i": 66,
+    "segment": "evidence_chain",
+    "narration": "A sensor resting on the dough records dough height over time. If production is high but retention is low, the problem is the network.",
+    "seconds": 8.389333333333333
+  },
+  {
+    "i": 67,
+    "segment": "text_beat",
+    "narration": "If both are low, the problem is the fermenter. That separation is exactly what a home kitchen cannot do by eye.",
+    "seconds": 7.045333333333334
+  },
+  {
+    "i": 68,
+    "segment": "definition_card",
+    "narration": "Dough strength gets its own instrument. A farinograph mixes dough at a constant speed and records the resistance of dough to mixing as the gluten develops and then weakens.",
+    "seconds": 10.298666666666668
+  },
+  {
+    "i": 69,
+    "segment": "text_beat",
+    "narration": "The curve shows how much water a flour absorbs, how long it takes to develop, and how quickly it breaks down.",
+    "seconds": 6.693333333333333
+  },
+  {
+    "i": 70,
+    "segment": "definition_card",
+    "narration": "It measures dough development, not gas. For the inside of the loaf, researchers use X-ray microtomography, which builds a three-dimensional image of the crumb, and magnetic resonance imaging, which can follow a dough while it proofs.",
+    "seconds": 14.352
+  },
+  {
+    "i": 71,
+    "segment": "text_beat",
+    "narration": "Those images show gas cells growing, merging and, in an overproofed dough, collapsing.",
+    "seconds": 7.941333333333334
+  },
+  {
+    "i": 72,
+    "segment": "text_beat",
+    "narration": "Watch how the edit keeps returning to two words: made and kept.",
+    "seconds": 4.368
+  },
+  {
+    "i": 73,
+    "segment": "ambient_drift",
+    "narration": "Every graphic in this episode sits on one side of that line.",
+    "seconds": 3.76
+  },
+  {
+    "i": 74,
+    "segment": "text_beat",
+    "narration": "The checklist of heat, cold, salt and age belongs to the fermenter.",
+    "seconds": 3.9093333333333335
+  },
+  {
+    "i": 75,
+    "segment": "text_beat",
+    "narration": "The gluten steps and the overproofing contrast belong to the network. The instruments are shown last on purpose, because they are the only thing in the story that can pull those two halves apart and measure each one separately.",
+    "seconds": 12.72
+  },
+  {
+    "i": 76,
+    "segment": "checklist_reveal",
+    "narration": "Here is what this evidence settles, and what it does not. Laboratory instruments separate gas made from gas kept under controlled conditions, with measured flour, water and temperature.",
+    "seconds": 10.693333333333333
+  },
+  {
+    "i": 77,
+    "segment": "text_beat",
+    "narration": "A home kitchen varies all of them at once, and failures often overlap: a slightly cool room, a weaker flour and a little extra salt can together do what none of them would do alone.",
+    "seconds": 11.408
+  },
+  {
+    "i": 78,
+    "segment": "checklist_reveal",
+    "narration": "The evidence settles that gas must be made and kept. It does not identify the cause of any single loaf.",
+    "seconds": 7.205333333333333
+  },
+  {
+    "i": 79,
+    "segment": "text_beat",
+    "narration": "Nor does it fix how fast stored yeast declines, and published figures for yeast tolerance vary enough that a single threshold would be false precision.",
+    "seconds": 8.314666666666668
+  },
+  {
+    "i": 80,
+    "segment": "ambient_drift",
+    "narration": "A flat dough is a record of two systems, one alive and one structural.",
+    "seconds": 4.634666666666667
+  },
+  {
+    "i": 81,
+    "segment": "ambient_drift",
+    "narration": "Before changing the recipe, it is worth asking which of them gave out: the yeast that makes the gas, or the gluten that was meant to hold it.",
+    "seconds": 8.165333333333333
+  }
+]

@@ -1,0 +1,124 @@
+{
+  "episode": "why-is-my-bread-not-rising",
+  "beats": 82,
+  "plan_source": "plans/why-is-my-bread-not-rising.json",
+  "timing": "audio",
+  "beats_measured": 82,
+  "durations_recorded": 82,
+  "duration_s": 626.256,
+  "cues": 171,
+  "chapters_real": 12,
+  "chapters_published": 10,
+  "chapter_notes": [
+    "merged 2 chapter(s) under 10s: Title card (2.0s), Producer POV (4.1s)"
+  ],
+  "drift": {
+    "mean_abs_s": 31.2,
+    "worst_abs_s": 86.5,
+    "rows": [
+      {
+        "title": "Cold open",
+        "hand": "00:00",
+        "real": "0:00",
+        "drift_s": 0.0
+      },
+      {
+        "title": "Title card",
+        "hand": "00:45",
+        "real": "0:40",
+        "drift_s": -4.8
+      },
+      {
+        "title": "Yeast inflates bubbles it never made",
+        "hand": "00:50",
+        "real": "0:42",
+        "drift_s": -7.8
+      },
+      {
+        "title": "The yeast has to be fed from inside the flour",
+        "hand": "02:05",
+        "real": "1:50",
+        "drift_s": -14.3
+      },
+      {
+        "title": "Producer POV",
+        "hand": "03:30",
+        "real": "3:20",
+        "drift_s": -9.2
+      },
+      {
+        "title": "Living yeast can be slowed to a standstill",
+        "hand": "03:35",
+        "real": "3:24",
+        "drift_s": -10.1
+      },
+      {
+        "title": "A strong fermenter cannot fill a broken net",
+        "hand": "05:45",
+        "real": "5:19",
+        "drift_s": -25.9
+      },
+      {
+        "title": "Too much rising can look like no rising",
+        "hand": "07:35",
+        "real": "6:57",
+        "drift_s": -37.5
+      },
+      {
+        "title": "Instruments separate gas made from gas kept",
+        "hand": "08:45",
+        "real": "7:54",
+        "drift_s": -50.8
+      },
+      {
+        "title": "What to notice in the edit",
+        "hand": "10:10",
+        "real": "9:11",
+        "drift_s": -58.9
+      },
+      {
+        "title": "Evidence limit",
+        "hand": "10:45",
+        "real": "9:35",
+        "drift_s": -69.2
+      },
+      {
+        "title": "Closing",
+        "hand": "11:40",
+        "real": "10:13",
+        "drift_s": -86.5
+      }
+    ]
+  },
+  "ffprobe": {
+    "file": "renders/why-is-my-bread-not-rising-final.mp4",
+    "video_s": 626.256,
+    "last_cue_end_s": 626.256,
+    "delta_s": 0.0,
+    "ok": true
+  },
+  "text_checks": {
+    "beats_json": {
+      "checked": 82,
+      "mismatched": []
+    },
+    "script_text": {
+      "checked": 82,
+      "absent_from_narration": []
+    }
+  },
+  "script_chapters": {
+    "written": true,
+    "changed": true,
+    "removed_lines": [
+      "Title card",
+      "Producer POV"
+    ],
+    "chapters_not_in_script": []
+  },
+  "artifacts": [
+    "captions/why-is-my-bread-not-rising.vtt",
+    "captions/why-is-my-bread-not-rising.srt",
+    "captions/why-is-my-bread-not-rising.chapters.txt"
+  ]
+}
