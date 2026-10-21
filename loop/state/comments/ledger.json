@@ -989,6 +989,33 @@
         "applied_at": "2026-10-20T18:23:10+00:00",
         "result": "posted (Ugx9uF487h785De20Mp4AaABAg)"
       }
+    },
+    "UgzgK7EsCk6QBw0tyip4AaABAg": {
+      "comment_id": "UgzgK7EsCk6QBw0tyip4AaABAg",
+      "video_id": "tJz6_OYNoJE",
+      "author": "@howweknowdeep",
+      "author_channel_id": "UC5vZFZc15DIM6IrFwFgAECg",
+      "text": "Why deep sea creatures look so weird? Full episode: https://youtu.be/EY__zREBIUk",
+      "published_at": "2026-10-21T18:25:37+00:00",
+      "like_count": 0,
+      "reply_count": 0,
+      "class": "own_channel",
+      "proposed_action": null,
+      "proposed_reply": null,
+      "product_note": null,
+      "seen_at": "2026-10-21T18:25:37+00:00",
+      "acted": {
+        "comment_id": "UgzgK7EsCk6QBw0tyip4AaABAg",
+        "video_id": "tJz6_OYNoJE",
+        "action": "channel_comment",
+        "reply_text": "Why deep sea creatures look so weird? Full episode: https://youtu.be/EY__zREBIUk",
+        "instructed_by": "owner",
+        "instructed_at": "2026-10-03",
+        "source": "loop/handoff: owner decision 2026-10-03",
+        "note": null,
+        "applied_at": "2026-10-21T18:25:37+00:00",
+        "result": "posted (UgzgK7EsCk6QBw0tyip4AaABAg)"
+      }
     }
   },
   "instructions": {},
@@ -1376,6 +1403,18 @@
       "note": null,
       "applied_at": "2026-10-20T18:23:10+00:00",
       "result": "posted (Ugx9uF487h785De20Mp4AaABAg)"
+    },
+    {
+      "comment_id": "UgzgK7EsCk6QBw0tyip4AaABAg",
+      "video_id": "tJz6_OYNoJE",
+      "action": "channel_comment",
+      "reply_text": "Why deep sea creatures look so weird? Full episode: https://youtu.be/EY__zREBIUk",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03",
+      "note": null,
+      "applied_at": "2026-10-21T18:25:37+00:00",
+      "result": "posted (UgzgK7EsCk6QBw0tyip4AaABAg)"
     }
   ],
   "sweeps": [
@@ -1678,7 +1717,15 @@
       "instructed_by": "owner",
       "instructed_at": "2026-10-03",
       "source": "loop/handoff: owner decision 2026-10-03"
+    },
+    "tJz6_OYNoJE": {
+      "comment_id": "UgzgK7EsCk6QBw0tyip4AaABAg",
+      "text": "Why deep sea creatures look so weird? Full episode: https://youtu.be/EY__zREBIUk",
+      "posted_at": "2026-10-21T18:25:37+00:00",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03"
     }
   },
-  "updated": "2026-10-20T18:23:10+00:00"
+  "updated": "2026-10-21T18:25:37+00:00"
 }
