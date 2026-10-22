@@ -1,7 +1,7 @@
 {
   "stage": "cloud-upload",
   "week": "2026-W43",
-  "at": "2026-10-21T18:25:34+00:00",
+  "at": "2026-10-22T18:20:46+00:00",
   "code": "NOTHING_SHELVED",
   "message": "6 render(s) shelved without a thumbnail: why-does-chocolate-taste-so-good, why-does-steak-taste-better-seared, why-is-my-bread-not-rising, how-does-butter-get-made-from-cream, why-does-rice-get-sticky, why-does-meat-need-to-rest-after-cooking \u2014 the Mac rendered and pushed these but built no thumbnail, and this lane will not upload a video it cannot thumbnail. Mac batch last ran 2026-10-21T06:47:06+00:00 (ok); 52 renders finished on the Mac; 0 held by the render gate. 10 queued episode(s) are not in the ledger and not on the R2 shelf, so they are still waiting on the Mac (narration, render or push): why-do-chili-peppers-taste-hot, why-does-coffee-taste-bitter, why-does-honey-never-spoil, why-does-salt-make-food-taste-better, why-does-cheese-melt, is-damascus-steel-better, how-to-tell-if-steel-is-hardened, does-damascus-steel-rust ...",
   "detail": {
@@ -43,8 +43,8 @@
   },
   "unblock": "On the Mac: .venv/bin/python visuals/thumbs_for.py why-does-chocolate-taste-so-good why-does-steak-taste-better-seared why-is-my-bread-not-rising how-does-butter-get-made-from-cream why-does-rice-get-sticky why-does-meat-need-to-rest-after-cooking && bin/push-to-r2.sh why-does-chocolate-taste-so-good why-does-steak-taste-better-seared why-is-my-bread-not-rising how-does-butter-get-made-from-cream why-does-rice-get-sticky why-does-meat-need-to-rest-after-cooking \u2014 the nightly batch does this itself for anything it renders; this is what to run if it has not. For the rest, read the '=== batch session' block in ~/Library/Logs/how-we-know/batch.log. 'to narrate' and 'to render' list these slugs until they are built; bin/push-to-r2.sh shelves them afterwards.",
   "disposition": "self_resolving",
-  "disposition_why": "Queued episodes are not in the ledger and not on the R2 shelf yet: the Mac's nightly batch is still narrating, rendering or pushing them, and it pushes what it renders, so the shelf fills on a later night. Since 2026-09-23 this code is raised ONLY in that state and names the waiting slugs in detail.awaiting_mac. An empty shelf because the whole queue is uploaded is PUBLISH_QUEUE_UPLOADED, and scripts stuck outside the queue are AUTHORED_NOT_QUEUED (see loop/cloud_upload.py diagnose_empty_shelf). (run 6 of at most 7 before this escalates to a human.)",
-  "consecutive": 6,
+  "disposition_why": "Queued episodes are not in the ledger and not on the R2 shelf yet: the Mac's nightly batch is still narrating, rendering or pushing them, and it pushes what it renders, so the shelf fills on a later night. Since 2026-09-23 this code is raised ONLY in that state and names the waiting slugs in detail.awaiting_mac. An empty shelf because the whole queue is uploaded is PUBLISH_QUEUE_UPLOADED, and scripts stuck outside the queue are AUTHORED_NOT_QUEUED (see loop/cloud_upload.py diagnose_empty_shelf). (run 7 of at most 7 before this escalates to a human.)",
+  "consecutive": 7,
   "held_items": [],
   "exit_code": 0,
   "work_done_before_stop": [],
