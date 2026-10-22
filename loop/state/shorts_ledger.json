@@ -264,9 +264,13 @@
       "scheduled_publish_at": "2026-09-15T00:00:00Z",
       "rank": 1,
       "lane": "shorts-cloud",
-      "handoff": "pending",
+      "handoff": "done",
       "playlist_item_id": "UExPclpNRHlveTFYTS5EQUE1NTFDRjcwMDg0NEMz",
-      "playlist": "PLOrZMDyoy1XM"
+      "playlist": "PLOrZMDyoy1XM",
+      "handoff_episode": "nv-M6q8h-Lk",
+      "handoff_at": "2026-10-22T18:20:50+00:00",
+      "handoff_comment_id": "Ugyw4gyl2hm5u-poEAB4AaABAg",
+      "handoff_comment_at": "2026-10-22T18:20:53+00:00"
     },
     {
       "slug": "how-does-tempered-glass-shatter",
@@ -667,14 +671,18 @@
       "scheduled_publish_at": "2026-10-14T00:00:00Z",
       "rank": 2,
       "lane": "shorts-cloud",
-      "handoff": "pending",
+      "handoff": "done",
       "playlist_item_id": "UExPclpNRHlveTFYTS45RjNFMDhGQ0Q2RkFCQTc1",
       "playlist": "PLOrZMDyoy1XM",
       "title": "How deep sea creatures survive the pressure: pressure acts most dramatically on gas",
       "title_previous": "How deep sea creatures survive the pressure \u2014 and how we know",
       "chapter": "Pressure acts most dramatically on gas",
       "chapter_start_s": 55.900000000000006,
-      "retitled_at": "2026-10-15T03:01:23+00:00"
+      "retitled_at": "2026-10-15T03:01:23+00:00",
+      "handoff_episode": "nv-M6q8h-Lk",
+      "handoff_at": "2026-10-22T18:20:51+00:00",
+      "handoff_comment_id": "UgwMmKA9IfNBupfp4NV4AaABAg",
+      "handoff_comment_at": "2026-10-22T18:20:54+00:00"
     },
     {
       "slug": "10-what-is-the-deepest-part-of-the-ocean",
@@ -872,7 +880,11 @@
       "chapter_start_s": 69.167,
       "handoff": "done",
       "handoff_episode": "MozJZ-ChEZU",
-      "handoff_at": "2026-10-22T01:13:29+00:00"
+      "handoff_at": "2026-10-22T01:13:29+00:00",
+      "playlist_item_id": "UExPclpNRHlveTFYTS41RTNBREYwMkI5QzU3RkY2",
+      "playlist": "PLOrZMDyoy1XM",
+      "handoff_comment_id": "Ugzgr8C9plE57BEvm1h4AaABAg",
+      "handoff_comment_at": "2026-10-22T18:20:54+00:00"
     },
     {
       "slug": "07-why-deep-sea-creatures-get-creepier-deeper",
@@ -891,5 +903,5 @@
       "handoff_at": "2026-10-22T01:13:44+00:00"
     }
   ],
-  "updated": "2026-10-22T01:13:49+00:00"
+  "updated": "2026-10-22T18:20:56+00:00"
 }
