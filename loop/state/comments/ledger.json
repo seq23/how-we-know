@@ -1124,6 +1124,33 @@
         "applied_at": "2026-10-22T18:20:54+00:00",
         "result": "posted (Ugzgr8C9plE57BEvm1h4AaABAg)"
       }
+    },
+    "Ugw2lsdmM4yRN5kdP354AaABAg": {
+      "comment_id": "Ugw2lsdmM4yRN5kdP354AaABAg",
+      "video_id": "Kh2k6I4il3g",
+      "author": "@howweknowdeep",
+      "author_channel_id": "UC5vZFZc15DIM6IrFwFgAECg",
+      "text": "Why deep sea creatures get creepier the deeper you go? Full episode: https://youtu.be/MAV4PF056RA",
+      "published_at": "2026-10-23T01:13:42+00:00",
+      "like_count": 0,
+      "reply_count": 0,
+      "class": "own_channel",
+      "proposed_action": null,
+      "proposed_reply": null,
+      "product_note": null,
+      "seen_at": "2026-10-23T01:13:42+00:00",
+      "acted": {
+        "comment_id": "Ugw2lsdmM4yRN5kdP354AaABAg",
+        "video_id": "Kh2k6I4il3g",
+        "action": "channel_comment",
+        "reply_text": "Why deep sea creatures get creepier the deeper you go? Full episode: https://youtu.be/MAV4PF056RA",
+        "instructed_by": "owner",
+        "instructed_at": "2026-10-03",
+        "source": "loop/handoff: owner decision 2026-10-03",
+        "note": null,
+        "applied_at": "2026-10-23T01:13:42+00:00",
+        "result": "posted (Ugw2lsdmM4yRN5kdP354AaABAg)"
+      }
     }
   },
   "instructions": {},
@@ -1571,6 +1598,18 @@
       "note": null,
       "applied_at": "2026-10-22T18:20:54+00:00",
       "result": "posted (Ugzgr8C9plE57BEvm1h4AaABAg)"
+    },
+    {
+      "comment_id": "Ugw2lsdmM4yRN5kdP354AaABAg",
+      "video_id": "Kh2k6I4il3g",
+      "action": "channel_comment",
+      "reply_text": "Why deep sea creatures get creepier the deeper you go? Full episode: https://youtu.be/MAV4PF056RA",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03",
+      "note": null,
+      "applied_at": "2026-10-23T01:13:42+00:00",
+      "result": "posted (Ugw2lsdmM4yRN5kdP354AaABAg)"
     }
   ],
   "sweeps": [
@@ -1913,7 +1952,15 @@
       "instructed_by": "owner",
       "instructed_at": "2026-10-03",
       "source": "loop/handoff: owner decision 2026-10-03"
+    },
+    "Kh2k6I4il3g": {
+      "comment_id": "Ugw2lsdmM4yRN5kdP354AaABAg",
+      "text": "Why deep sea creatures get creepier the deeper you go? Full episode: https://youtu.be/MAV4PF056RA",
+      "posted_at": "2026-10-23T01:13:42+00:00",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03"
     }
   },
-  "updated": "2026-10-22T18:20:54+00:00"
+  "updated": "2026-10-23T01:13:42+00:00"
 }
