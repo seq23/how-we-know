@@ -524,9 +524,13 @@
       "scheduled_publish_at": "2026-09-28T00:00:00Z",
       "rank": 1,
       "lane": "shorts-cloud",
-      "handoff": "pending",
+      "handoff": "done",
       "playlist_item_id": "UExHNUdZLUd1aGlGOC5EQUE1NTFDRjcwMDg0NEMz",
-      "playlist": "PLG5GY-GuhiF8"
+      "playlist": "PLG5GY-GuhiF8",
+      "handoff_episode": "vrb83gWWaYw",
+      "handoff_at": "2026-10-23T18:07:21+00:00",
+      "handoff_comment_id": "UgxhrX65LS6VsuxoWzZ4AaABAg",
+      "handoff_comment_at": "2026-10-23T18:07:22+00:00"
     },
     {
       "slug": "how-hot-does-a-welding-arc-get",
@@ -920,7 +924,11 @@
       "chapter_start_s": 151.867,
       "handoff": "done",
       "handoff_episode": "MWOUa3UEXSk",
-      "handoff_at": "2026-10-23T01:13:24+00:00"
+      "handoff_at": "2026-10-23T01:13:24+00:00",
+      "playlist_item_id": "UExPclpNRHlveTFYTS4xMzgwMzBERjQ4NjEzNUE5",
+      "playlist": "PLOrZMDyoy1XM",
+      "handoff_comment_id": "Ugw2iw_cfS-7KOBwyEd4AaABAg",
+      "handoff_comment_at": "2026-10-23T18:07:23+00:00"
     },
     {
       "slug": "08-what-creatures-live-in-the-deep-sea",
@@ -939,5 +947,5 @@
       "handoff_at": "2026-10-23T01:13:39+00:00"
     }
   ],
-  "updated": "2026-10-23T01:13:43+00:00"
+  "updated": "2026-10-23T18:07:24+00:00"
 }

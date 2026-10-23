@@ -1151,6 +1151,60 @@
         "applied_at": "2026-10-23T01:13:42+00:00",
         "result": "posted (Ugw2lsdmM4yRN5kdP354AaABAg)"
       }
+    },
+    "UgxhrX65LS6VsuxoWzZ4AaABAg": {
+      "comment_id": "UgxhrX65LS6VsuxoWzZ4AaABAg",
+      "video_id": "Fkw7S2dU8QA",
+      "author": "@howweknowdeep",
+      "author_channel_id": "UC5vZFZc15DIM6IrFwFgAECg",
+      "text": "What is aerogel made of? Full episode: https://youtu.be/vrb83gWWaYw",
+      "published_at": "2026-10-23T18:07:22+00:00",
+      "like_count": 0,
+      "reply_count": 0,
+      "class": "own_channel",
+      "proposed_action": null,
+      "proposed_reply": null,
+      "product_note": null,
+      "seen_at": "2026-10-23T18:07:22+00:00",
+      "acted": {
+        "comment_id": "UgxhrX65LS6VsuxoWzZ4AaABAg",
+        "video_id": "Fkw7S2dU8QA",
+        "action": "channel_comment",
+        "reply_text": "What is aerogel made of? Full episode: https://youtu.be/vrb83gWWaYw",
+        "instructed_by": "owner",
+        "instructed_at": "2026-10-03",
+        "source": "loop/handoff: owner decision 2026-10-03",
+        "note": null,
+        "applied_at": "2026-10-23T18:07:22+00:00",
+        "result": "posted (UgxhrX65LS6VsuxoWzZ4AaABAg)"
+      }
+    },
+    "Ugw2iw_cfS-7KOBwyEd4AaABAg": {
+      "comment_id": "Ugw2iw_cfS-7KOBwyEd4AaABAg",
+      "video_id": "sICeM1lLrVE",
+      "author": "@howweknowdeep",
+      "author_channel_id": "UC5vZFZc15DIM6IrFwFgAECg",
+      "text": "How do people reach challenger deep? Full episode: https://youtu.be/MWOUa3UEXSk",
+      "published_at": "2026-10-23T18:07:23+00:00",
+      "like_count": 0,
+      "reply_count": 0,
+      "class": "own_channel",
+      "proposed_action": null,
+      "proposed_reply": null,
+      "product_note": null,
+      "seen_at": "2026-10-23T18:07:23+00:00",
+      "acted": {
+        "comment_id": "Ugw2iw_cfS-7KOBwyEd4AaABAg",
+        "video_id": "sICeM1lLrVE",
+        "action": "channel_comment",
+        "reply_text": "How do people reach challenger deep? Full episode: https://youtu.be/MWOUa3UEXSk",
+        "instructed_by": "owner",
+        "instructed_at": "2026-10-03",
+        "source": "loop/handoff: owner decision 2026-10-03",
+        "note": null,
+        "applied_at": "2026-10-23T18:07:23+00:00",
+        "result": "posted (Ugw2iw_cfS-7KOBwyEd4AaABAg)"
+      }
     }
   },
   "instructions": {},
@@ -1610,6 +1664,30 @@
       "note": null,
       "applied_at": "2026-10-23T01:13:42+00:00",
       "result": "posted (Ugw2lsdmM4yRN5kdP354AaABAg)"
+    },
+    {
+      "comment_id": "UgxhrX65LS6VsuxoWzZ4AaABAg",
+      "video_id": "Fkw7S2dU8QA",
+      "action": "channel_comment",
+      "reply_text": "What is aerogel made of? Full episode: https://youtu.be/vrb83gWWaYw",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03",
+      "note": null,
+      "applied_at": "2026-10-23T18:07:22+00:00",
+      "result": "posted (UgxhrX65LS6VsuxoWzZ4AaABAg)"
+    },
+    {
+      "comment_id": "Ugw2iw_cfS-7KOBwyEd4AaABAg",
+      "video_id": "sICeM1lLrVE",
+      "action": "channel_comment",
+      "reply_text": "How do people reach challenger deep? Full episode: https://youtu.be/MWOUa3UEXSk",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03",
+      "note": null,
+      "applied_at": "2026-10-23T18:07:23+00:00",
+      "result": "posted (Ugw2iw_cfS-7KOBwyEd4AaABAg)"
     }
   ],
   "sweeps": [
@@ -1960,7 +2038,23 @@
       "instructed_by": "owner",
       "instructed_at": "2026-10-03",
       "source": "loop/handoff: owner decision 2026-10-03"
+    },
+    "Fkw7S2dU8QA": {
+      "comment_id": "UgxhrX65LS6VsuxoWzZ4AaABAg",
+      "text": "What is aerogel made of? Full episode: https://youtu.be/vrb83gWWaYw",
+      "posted_at": "2026-10-23T18:07:22+00:00",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03"
+    },
+    "sICeM1lLrVE": {
+      "comment_id": "Ugw2iw_cfS-7KOBwyEd4AaABAg",
+      "text": "How do people reach challenger deep? Full episode: https://youtu.be/MWOUa3UEXSk",
+      "posted_at": "2026-10-23T18:07:23+00:00",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03"
     }
   },
-  "updated": "2026-10-23T01:13:42+00:00"
+  "updated": "2026-10-23T18:07:23+00:00"
 }
