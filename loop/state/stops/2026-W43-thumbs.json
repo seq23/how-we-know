@@ -1,14 +1,14 @@
 {
   "stage": "thumbs",
   "week": "2026-W43",
-  "at": "2026-10-22T01:43:31+00:00",
+  "at": "2026-10-23T01:48:32+00:00",
   "code": "THUMBS_REFUSED",
   "message": "17 live video(s) have no rights-verified picture of their own subject; they keep their current thumbnail",
   "detail": null,
   "unblock": "Nothing to type: harvesting a public-domain image of the subject (research/imagery.py) clears it.",
   "disposition": "self_resolving",
-  "disposition_why": "These live long-form videos have no rights-verified public-domain picture of their own subject, so the contract refuses rather than borrow one; they keep their current thumbnail. (run 7 of at most 400 before this escalates to a human.)",
-  "consecutive": 7,
+  "disposition_why": "These live long-form videos have no rights-verified public-domain picture of their own subject, so the contract refuses rather than borrow one; they keep their current thumbnail. (run 8 of at most 400 before this escalates to a human.)",
+  "consecutive": 8,
   "held_items": [
     "02-how-deep-sea-creatures-survive-pressure",
     "05-why-many-deep-sea-creatures-are-red",
