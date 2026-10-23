@@ -177,7 +177,7 @@
       "track_kind": "standard",
       "source": "replaced",
       "recorded_at": "2026-09-03T17:28:12+00:00",
-      "verified_at": "2026-10-07T15:19:26+00:00",
+      "verified_at": "2026-10-23T18:53:39+00:00",
       "previous_sha256": "571e72c87813524aad52e1e09bf83cf845624f6b429cda8a3dc356bf3bed463d",
       "replaced_at": "2026-10-18T15:09:46+00:00"
     },
@@ -435,7 +435,7 @@
       "track_kind": "standard",
       "source": "inserted",
       "recorded_at": "2026-10-05T15:11:47+00:00",
-      "verified_at": "2026-10-06T15:11:00+00:00"
+      "verified_at": "2026-10-23T18:53:38+00:00"
     },
     "qECmixjkDDU": {
       "slug": "why-deep-sea-fish-die-when-brought-to-surface",
@@ -446,7 +446,7 @@
       "track_kind": "standard",
       "source": "replaced",
       "recorded_at": "2026-10-05T15:11:48+00:00",
-      "verified_at": "2026-10-07T15:19:25+00:00",
+      "verified_at": "2026-10-23T18:53:39+00:00",
       "previous_sha256": "d0d0663937918dff5a4310e342ed21bc66eb0b3a0e7f95558056426da8b50ca3",
       "replaced_at": "2026-10-19T20:21:29+00:00"
     },
@@ -557,11 +557,11 @@
     }
   },
   "blocked": {},
-  "updated": "2026-10-22T19:02:50+00:00",
+  "updated": "2026-10-23T18:53:39+00:00",
   "token_scopes": [],
   "token_has_force_ssl": true,
   "replace": {
-    "at": "2026-10-22T19:02:49+00:00",
+    "at": "2026-10-23T18:53:38+00:00",
     "replaced": [],
     "skipped": {
       "how-do-self-healing-materials-work": "the live cut is 517s but the local track was built for a 708.7s timeline - replacing would mis-time it the other way"
