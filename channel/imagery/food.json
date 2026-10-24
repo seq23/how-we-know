@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-17T04:27:09.735625+00:00",
+  "generated": "2026-10-24T04:24:15.754072+00:00",
   "domain": "food-science",
   "policy": "Public domain or CC0 only, verified live at the Commons item page. CC-BY is not a public-domain dedication and this channel is monetised. Licence gate is research/imagery.pd_licence_ok, imported not reimplemented; the copyright-assertion screen is this module's own and differs from imagery.THIRD_PARTY on purpose - see the module docstring.",
   "rights_fields_required": [
@@ -32,7 +32,41 @@
       "why": "Published X-ray tomography of a baking loaf is journal figures under copyright. The drawn cross-section device stands in."
     }
   },
-  "rejected": [],
+  "rejected": [
+    {
+      "subject": "calorimeter",
+      "title": "File:Perkin-Elmer Model DSC-1 Differential Scanning Calorimeter - DPLA - 7208a05b70eb0b8d44f063dc24dca370.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Perkin-Elmer_Model_DSC-1_Differential_Scanning_Calorimeter_-_DPLA_-_7208a05b70eb0b8d44f063dc24dca370.jpg",
+      "reason": "item page marks the work as copyrighted (no restrictions)"
+    },
+    {
+      "subject": "calorimeter",
+      "title": "File:Differential scanning calorimetry ARABIC.PNG",
+      "reason": "imageinfo failed: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "subject": "calorimeter",
+      "title": "File:Perkin-Elmer Model DSC-1 Differential Scanning Calorimeter - DPLA - 7208a05b70eb0b8d44f063dc24dca370.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Perkin-Elmer_Model_DSC-1_Differential_Scanning_Calorimeter_-_DPLA_-_7208a05b70eb0b8d44f063dc24dca370.jpg",
+      "reason": "item page marks the work as copyrighted (no restrictions)"
+    },
+    {
+      "subject": "calorimeter",
+      "title": "File:Ice-calorimeter.jpg",
+      "reason": "imageinfo failed: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "subject": "calorimeter",
+      "title": "File:Perkin-Elmer calorimeter in use at U.S. Army Chemical Test Branch laboratory - DPLA - e96efad68d26e56b8194f9cb9986c77c.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Perkin-Elmer_calorimeter_in_use_at_U.S._Army_Chemical_Test_Branch_laboratory_-_DPLA_-_e96efad68d26e56b8194f9cb9986c77c.jpg",
+      "reason": "item page marks the work as copyrighted (no restrictions)"
+    },
+    {
+      "subject": "calorimeter",
+      "title": null,
+      "reason": "no candidate passed both gates"
+    }
+  ],
   "index": [
     {
       "subject": "bread-loaf",
