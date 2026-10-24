@@ -1260,10 +1260,31 @@
       "proposed_action": "ignore",
       "proposed_reply": null,
       "product_note": "pronunciation: bioluminescence",
-      "seen_at": "2026-10-21T19:05:41+00:00"
+      "seen_at": "2026-10-21T19:05:41+00:00",
+      "acted": {
+        "comment_id": "UgwjL7Ep1JHjQZlDo0J4AaABAg",
+        "video_id": "EFimztjj_j8",
+        "action": "ignore",
+        "reply_text": null,
+        "instructed_by": "the owner (in chat with the main session)",
+        "instructed_at": "2026-10-24T00:00:00.000Z",
+        "source": "owner in chat, 24 Oct 2026: ignore it, no reply (the pronunciation fault is being fixed)",
+        "note": null,
+        "applied_at": "2026-10-24T18:05:03+00:00",
+        "result": "ignored"
+      }
     }
   },
-  "instructions": {},
+  "instructions": {
+    "UgwjL7Ep1JHjQZlDo0J4AaABAg": {
+      "action": "ignore",
+      "reply_text": null,
+      "instructed_by": "the owner (in chat with the main session)",
+      "instructed_at": "2026-10-24T00:00:00.000Z",
+      "source": "owner in chat, 24 Oct 2026: ignore it, no reply (the pronunciation fault is being fixed)",
+      "note": null
+    }
+  },
   "actions": [
     {
       "comment_id": "UgyICtDJde3UTosP_CN4AaABAg",
@@ -1780,6 +1801,18 @@
       "note": null,
       "applied_at": "2026-10-25T00:49:34+00:00",
       "result": "posted (UgzCLlZo8F__hnbSqW54AaABAg)"
+    },
+    {
+      "comment_id": "UgwjL7Ep1JHjQZlDo0J4AaABAg",
+      "video_id": "EFimztjj_j8",
+      "action": "ignore",
+      "reply_text": null,
+      "instructed_by": "the owner (in chat with the main session)",
+      "instructed_at": "2026-10-24T00:00:00.000Z",
+      "source": "owner in chat, 24 Oct 2026: ignore it, no reply (the pronunciation fault is being fixed)",
+      "note": null,
+      "applied_at": "2026-10-24T18:05:03+00:00",
+      "result": "ignored"
     }
   ],
   "sweeps": [
