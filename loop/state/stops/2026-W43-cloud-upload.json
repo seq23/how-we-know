@@ -1,7 +1,7 @@
 {
   "stage": "cloud-upload",
   "week": "2026-W43",
-  "at": "2026-10-23T18:07:15+00:00",
+  "at": "2026-10-24T17:14:40+00:00",
   "code": "NOTHING_SHELVED",
   "message": "6 render(s) shelved without a thumbnail: why-does-chocolate-taste-so-good, why-does-steak-taste-better-seared, why-is-my-bread-not-rising, how-does-butter-get-made-from-cream, why-does-rice-get-sticky, why-does-meat-need-to-rest-after-cooking \u2014 the Mac rendered and pushed these but built no thumbnail, and this lane will not upload a video it cannot thumbnail. Mac batch last ran 2026-10-21T06:47:06+00:00 (ok); 52 renders finished on the Mac; 0 held by the render gate. 10 queued episode(s) are not in the ledger and not on the R2 shelf, so they are still waiting on the Mac (narration, render or push): why-do-chili-peppers-taste-hot, why-does-coffee-taste-bitter, why-does-honey-never-spoil, why-does-salt-make-food-taste-better, why-does-cheese-melt, is-damascus-steel-better, how-to-tell-if-steel-is-hardened, does-damascus-steel-rust ...",
   "detail": {
@@ -43,8 +43,8 @@
   },
   "unblock": "On the Mac: .venv/bin/python visuals/thumbs_for.py why-does-chocolate-taste-so-good why-does-steak-taste-better-seared why-is-my-bread-not-rising how-does-butter-get-made-from-cream why-does-rice-get-sticky why-does-meat-need-to-rest-after-cooking && bin/push-to-r2.sh why-does-chocolate-taste-so-good why-does-steak-taste-better-seared why-is-my-bread-not-rising how-does-butter-get-made-from-cream why-does-rice-get-sticky why-does-meat-need-to-rest-after-cooking \u2014 the nightly batch does this itself for anything it renders; this is what to run if it has not. For the rest, read the '=== batch session' block in ~/Library/Logs/how-we-know/batch.log. 'to narrate' and 'to render' list these slugs until they are built; bin/push-to-r2.sh shelves them afterwards.",
   "disposition": "needs_human",
-  "disposition_why": "'NOTHING_SHELVED' has now stopped cloud-upload on 8 consecutive runs (limit 7), so it is not resolving itself. Seven consecutive days with the same queued episodes still not shelved. Read the stop's FIRST LINE before blaming the Mac: 'N render(s) shelved without a thumbnail: <slugs>' means the Mac rendered and pushed but built no thumbnail (detail.shelved_without_thumbnail) - on the Mac, .venv/bin/python visuals/thumbs_for.py <slugs> && bin/push-to-r2.sh <slugs>. The heartbeat sentence (detail.mac_heartbeat) says when the batch last ran and how many renders are finished, so a Mac that is producing but behind the queue reads as behind, not stuck. Only when neither applies read the '=== batch session' block in ~/Library/Logs/how-we-know/batch.log: if 'to narrate' or 'to render' lists the slugs, narration or rendering is the slow part; if both say none and the renders exist, bin/push-to-r2.sh is.",
-  "consecutive": 8,
+  "disposition_why": "'NOTHING_SHELVED' has now stopped cloud-upload on 9 consecutive runs (limit 7), so it is not resolving itself. Seven consecutive days with the same queued episodes still not shelved. Read the stop's FIRST LINE before blaming the Mac: 'N render(s) shelved without a thumbnail: <slugs>' means the Mac rendered and pushed but built no thumbnail (detail.shelved_without_thumbnail) - on the Mac, .venv/bin/python visuals/thumbs_for.py <slugs> && bin/push-to-r2.sh <slugs>. The heartbeat sentence (detail.mac_heartbeat) says when the batch last ran and how many renders are finished, so a Mac that is producing but behind the queue reads as behind, not stuck. Only when neither applies read the '=== batch session' block in ~/Library/Logs/how-we-know/batch.log: if 'to narrate' or 'to render' lists the slugs, narration or rendering is the slow part; if both say none and the renders exist, bin/push-to-r2.sh is.",
+  "consecutive": 9,
   "held_items": [],
   "exit_code": 3,
   "work_done_before_stop": [],
