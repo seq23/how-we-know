@@ -60,8 +60,9 @@ ROOT = HERE.parent
 sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(ROOT / "visuals"))
 
+import pronounce  # noqa: E402  - the pronunciation layer; every beat goes through it
 from synth import (  # noqa: E402
-    LEXICON, apply_lexicon, chunk_paragraph, high_shelf, match_rms,
+    chunk_paragraph, high_shelf, match_rms,
     rms_dbfs, trim_silence,
 )
 # visuals/captions.py owns the manifest's ONE serialization (indent=2 + "\n").
@@ -362,6 +363,21 @@ def run(args, plans, total_beats) -> int:
     model.prepare_conditionals(args.reference, exaggeration=args.exaggeration)
     print(f"conditioned on {Path(args.reference).name}", flush=True)
 
+    # PRONUNCIATION GATE (2026-10-24, "AI had a stroke trying to say
+    # 'bioluminescence'"). Before any beat is voiced, every hard word in the
+    # beats about to be voiced is classified; unproven ones are spoken by THIS
+    # model and heard back by local whisper.cpp ($0), and a respelling is
+    # learned only if the raw word is mangled. Log: audio/<slug>/pronunciation.json.
+    say = pronounce.model_sayer(model, sf, SR, {
+        "exaggeration": args.exaggeration, "cfg_weight": args.cfg_weight,
+        "temperature": args.temperature}, seed=args.seed)
+    by_slug: dict[str, list[str]] = {}
+    for slug, _i, text in todo:
+        by_slug.setdefault(slug, []).append(text)
+    for slug, texts in by_slug.items():
+        pronounce.job_check(slug, texts, say=say, out_dir=AUDIO / slug)
+    lex = pronounce.effective_lexicon()
+
     sil = np.zeros(int(args.pause_sentence * SR), dtype=np.float32)
     failures, truncated = [], []
     t_start = time.time()
@@ -402,7 +418,7 @@ def run(args, plans, total_beats) -> int:
                 for ci, c in enumerate(chunks):
                     torch.manual_seed(args.seed + idx * 97 + attempt * 7919 + ci)
                     wav = model.generate(
-                        apply_lexicon(c, LEXICON), audio_prompt_path=None,
+                        pronounce.prepare(c, lex), audio_prompt_path=None,
                         exaggeration=args.exaggeration,
                         cfg_weight=args.cfg_weight,
                         temperature=args.temperature)

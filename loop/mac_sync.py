@@ -353,6 +353,9 @@ def main() -> int:
             f"loop/state/stops/{wk}-render-gate.json",
             "loop/state/render_hold.json",
             "loop/state/stops/_held.json",
+            # what the narrator's pronunciation gate learned (voice/pronounce.py);
+            # only the Mac writes it, so every Mac push carries it
+            "loop/state/pronunciation_learned.json",
         ] + bind_paths()
         ok, msg = push(sorted(set(paths)), f"{a.lane}: Mac state {dt.date.today():%Y-%m-%d}")
         print(f"  {msg}")

@@ -1,0 +1,74 @@
+{
+ "why": "Cut but not yet aired on 2026-10-24, each containing beats voiced before 2026-09-21 through the old hyphen/CAPS lexicon (voice/lexicon_legacy.json) - the mispronunciation a viewer heard on EFimztjj_j8. loop/shorts_lane.pending() never offers them. New cuts cannot join this list: visuals/shorts.py drops legacy-voiced beats before cutting.",
+ "computed_at": "2026-10-24",
+ "cuts": [
+  {
+   "slug": "08-what-creatures-live-in-the-deep-sea",
+   "rank": 3,
+   "file": "08-what-creatures-live-in-the-deep-sea-short3.mp4",
+   "legacy_terms": [
+    "abyssal",
+    "hydrothermal"
+   ]
+  },
+  {
+   "slug": "13-how-does-bioluminescence-work-in-the-deep-sea",
+   "rank": 2,
+   "file": "13-how-does-bioluminescence-work-in-the-deep-sea-short2.mp4",
+   "legacy_terms": [
+    "bioluminescence"
+   ]
+  },
+  {
+   "slug": "13-how-does-bioluminescence-work-in-the-deep-sea",
+   "rank": 3,
+   "file": "13-how-does-bioluminescence-work-in-the-deep-sea-short3.mp4",
+   "legacy_terms": [
+    "MBARI",
+    "bioluminescence"
+   ]
+  },
+  {
+   "slug": "16-what-happens-when-a-whale-dies-in-the-deep-ocean",
+   "rank": 2,
+   "file": "16-what-happens-when-a-whale-dies-in-the-deep-ocean-short2.mp4",
+   "legacy_terms": [
+    "amphipods"
+   ]
+  },
+  {
+   "slug": "16-what-happens-when-a-whale-dies-in-the-deep-ocean",
+   "rank": 3,
+   "file": "16-what-happens-when-a-whale-dies-in-the-deep-ocean-short3.mp4",
+   "legacy_terms": [
+    "chemosynthetic"
+   ]
+  },
+  {
+   "slug": "18-why-does-black-smoker-water-not-boil",
+   "rank": 2,
+   "file": "18-why-does-black-smoker-water-not-boil-short2.mp4",
+   "legacy_terms": [
+    "chemosynthetic"
+   ]
+  },
+  {
+   "slug": "19-what-is-the-deepest-fish-ever-recorded",
+   "rank": 3,
+   "file": "19-what-is-the-deepest-fish-ever-recorded-short3.mp4",
+   "legacy_terms": [
+    "amphipods",
+    "hadal"
+   ]
+  },
+  {
+   "slug": "20-what-is-the-midnight-zone",
+   "rank": 3,
+   "file": "20-what-is-the-midnight-zone-short3.mp4",
+   "legacy_terms": [
+    "bathypelagic",
+    "bioluminescence"
+   ]
+  }
+ ]
+}

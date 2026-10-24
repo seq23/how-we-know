@@ -20,12 +20,16 @@ change without being listened to again.
 
 Run on the Mac (narration runs there; the render venv has no torch):
 
-    cd ~/GitHub/creator-network && python3 scripts/vault-exec.py -- \
-        ~/GitHub/how-we-know/.venv-tts/bin/python \
+    ~/GitHub/how-we-know/.venv-tts/bin/python \
         ~/GitHub/how-we-know/voice/tests/pronunciation_probe.py
 
-The vault injects an OpenAI key as OPENAI_IMAGE_API_KEY (a general key) for
-whisper-1 only. It is read from the environment and never written anywhere.
+2026-10-24: transcription is LOCAL now - whisper.cpp (`whisper-cli`, ggml-small.en,
+fetched once by voice/pronounce.py) - so a probe costs $0 and needs no key
+(AI cost posture: nothing paid). The paid whisper-1 path is gone.
+
+    --raw-ok TERM[,TERM] speak each term with NO entry and record the ones
+                         heard correctly in the pin's "raw_ok" section: the
+                         committed proof that a hard word needs no respelling
 
     --only TERM[,TERM]   probe a subset (iterating on a respelling)
     --keep               keep the per-term wavs in voice/tests/probe_wavs/
@@ -119,51 +123,19 @@ def heard(intended: str, transcript: str) -> tuple[bool, float]:
     return best >= MATCH_RATIO, best
 
 
-def transcribe(wav: np.ndarray, key: str) -> str:
-    buf = io.BytesIO()
-    sf.write(buf, wav, synth.SR, format="WAV", subtype="PCM_16")
-    boundary = uuid.uuid4().hex
-    body = b""
-    for name, val in (("model", "whisper-1"), ("language", "en"),
-                      ("response_format", "text"), ("temperature", "0")):
-        body += (f"--{boundary}\r\nContent-Disposition: form-data; "
-                 f"name=\"{name}\"\r\n\r\n{val}\r\n").encode()
-    body += (f"--{boundary}\r\nContent-Disposition: form-data; name=\"file\"; "
-             f"filename=\"probe.wav\"\r\nContent-Type: audio/wav\r\n\r\n").encode()
-    body += buf.getvalue() + f"\r\n--{boundary}--\r\n".encode()
-    req = urllib.request.Request(
-        "https://api.openai.com/v1/audio/transcriptions", data=body, method="POST",
-        headers={"Authorization": f"Bearer {key}",
-                 "Content-Type": f"multipart/form-data; boundary={boundary}"})
-    for attempt in range(3):
+def transcribe(wav: np.ndarray, key: str | None = None) -> str:
+    """Local whisper.cpp; `key` is accepted and ignored (the old paid path)."""
+    import tempfile
+    import pronounce  # noqa: PLC0415
+    why = pronounce.whisper_ready()
+    if why:
+        raise SystemExit(f"NAMED STOP [WHISPER_LOCAL_UNAVAILABLE]: {why}")
+    with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as fh:
+        sf.write(fh.name, wav, synth.SR, subtype="PCM_16")
         try:
-            with urllib.request.urlopen(req, timeout=120) as r:
-                return r.read().decode("utf-8", "ignore").strip()
-        except urllib.error.HTTPError as e:
-            if e.code in (429, 500, 502, 503) and attempt < 2:
-                time.sleep(3 * (attempt + 1))
-                continue
-            raise SystemExit(f"NAMED STOP [WHISPER_HTTP_{e.code}]: "
-                             f"{e.read().decode('utf-8', 'ignore')[:200]}")
-        except (TimeoutError, urllib.error.URLError, ConnectionError) as e:
-            # A read timeout 12 terms into a 14-term run threw away twenty
-            # minutes of synthesis on 2026-09-21. Transient; retry.
-            if attempt < 2:
-                print(f"    [self-heal] whisper {type(e).__name__}; retrying", flush=True)
-                time.sleep(5 * (attempt + 1))
-                continue
-            raise SystemExit(f"NAMED STOP [WHISPER_UNREACHABLE]: {type(e).__name__}")
-    raise SystemExit("NAMED STOP [WHISPER_UNREACHABLE]")
-
-
-def openai_key() -> str:
-    k = (os.environ.get("OPENAI_IMAGE_API_KEY") or os.environ.get("OPENAI_API_KEY") or "").strip()
-    if not k:
-        raise SystemExit(
-            "NAMED STOP [OPENAI_KEY_MISSING]: run through the creator-network "
-            "vault: cd ~/GitHub/creator-network && python3 scripts/vault-exec.py "
-            "-- <this command>")
-    return k
+            return pronounce.transcribe_file(fh.name)
+        finally:
+            os.unlink(fh.name)
 
 
 def main() -> int:
@@ -174,6 +146,8 @@ def main() -> int:
     ap.add_argument("--raw", action="store_true",
                     help="speak each term WITHOUT its entry, to learn whether "
                          "the entry is needed at all")
+    ap.add_argument("--raw-ok", default="",
+                    help="comma list: probe raw and pin the passes as raw_ok")
     ap.add_argument("--device", default="cpu")
     ap.add_argument("--carriers", type=int, default=len(CARRIERS),
                     help="readings per term; a pin always uses all of them, "
@@ -182,8 +156,10 @@ def main() -> int:
     if args.carriers < len(CARRIERS) and not args.raw:
         raise SystemExit("a pin needs every carrier; --carriers applies to --raw only")
 
-    key = openai_key()
+    key = None   # local whisper.cpp; see transcribe()
     lex = dict(synth.LEXICON)
+    if args.raw_ok:
+        args.raw, args.only = True, args.raw_ok
     terms = [t.strip() for t in args.only.split(",") if t.strip()] or list(lex)
     unknown = [t for t in terms if t not in lex]
     if unknown and not args.raw:
@@ -239,6 +215,18 @@ def main() -> int:
     failed = [t for t in terms if not rows[t]["ok"]]
     if failed:
         print("MISS: " + ", ".join(failed))
+
+    if args.raw_ok:
+        pin = json.loads(PIN.read_text())
+        ro = pin.setdefault("raw_ok", {})
+        for t in terms:
+            if rows[t]["ok"] and t not in lex:
+                ro[t] = {"ok": True, "readings": rows[t]["readings"]}
+        pin["raw_ok"] = dict(sorted(ro.items(), key=lambda kv: kv[0].lower()))
+        pin["raw_ok_transcriber"] = "whisper.cpp ggml-small.en (local, $0)"
+        PIN.write_text(json.dumps(pin, indent=1, ensure_ascii=False) + "\n")
+        print(f"wrote {len(ro)} raw_ok proof(s) to {PIN.relative_to(ROOT)}")
+        return 1 if failed else 0
 
     full = not args.only and not args.raw
     if args.write_pin or (full and not failed):

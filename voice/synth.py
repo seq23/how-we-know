@@ -284,7 +284,9 @@ def main() -> int:
         print(f"error: no narration text found in {args.script}", file=sys.stderr)
         return 2
 
-    lex = {} if args.no_lexicon else dict(LEXICON)
+    # curated LEXICON + respellings learned by the batch (voice/pronounce.py)
+    import pronounce  # noqa: PLC0415
+    lex = {} if args.no_lexicon else pronounce.effective_lexicon()
     if args.lexicon:
         lex.update(json.loads(Path(args.lexicon).read_text(encoding="utf-8")))
 

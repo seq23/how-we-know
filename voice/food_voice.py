@@ -68,7 +68,8 @@ def _chunks(text: str, max_words: int = 40) -> list[str]:
 def synthesise(plan: list[dict], out: Path, reference: str,
                device: str = "cpu") -> dict:
     sys.path.insert(0, str(HERE))
-    from synth import LEXICON, apply_lexicon, match_rms, trim_silence  # noqa: PLC0415
+    from synth import match_rms, trim_silence  # noqa: PLC0415
+    import pronounce                                         # noqa: PLC0415
     import torch                                             # noqa: PLC0415
     from chatterbox.tts import ChatterboxTTS                 # noqa: PLC0415
     torch.set_num_threads(min(4, os.cpu_count() or 4))
@@ -78,6 +79,7 @@ def synthesise(plan: list[dict], out: Path, reference: str,
     import soundfile as sf                                   # noqa: PLC0415
     manifest = {"reference": os.path.basename(reference), "sr": SR, "beats": []}
     conditioned = None
+    lex = None
     t0 = time.time()
     for i, beat in enumerate(plan):
         if beat.get("register", "standard") != "standard":
@@ -92,6 +94,15 @@ def synthesise(plan: list[dict], out: Path, reference: str,
         if conditioned != reg["exaggeration"]:
             model.prepare_conditionals(reference, exaggeration=reg["exaggeration"])
             conditioned = reg["exaggeration"]
+        if lex is None:
+            # Pronunciation gate, once per job, with the conditioned voice: see
+            # voice/pronounce.py. Log lands in <out>/pronunciation.json.
+            pronounce.job_check(out.name, [b["text"] for b in plan], out_dir=out,
+                                say=pronounce.model_sayer(model, sf, SR, {
+                                    "exaggeration": reg["exaggeration"],
+                                    "cfg_weight": reg["cfg_weight"],
+                                    "temperature": reg["temperature"]}))
+            lex = pronounce.effective_lexicon()
         f = pitch_factor(reg["pitch_semitones"])
         pieces, spans, cursor = [], [], 0.0
         chunks = _chunks(beat["text"], int(reg.get("max_words", 40)))
@@ -100,7 +111,7 @@ def synthesise(plan: list[dict], out: Path, reference: str,
             # the one-voice contract (visuals/food_episode.py reroll) with another
             # draw of the same voice, never a different register
             torch.manual_seed(int(beat.get("seed", 1234)) + i * 31 + ci)
-            w = model.generate(apply_lexicon(chunk, LEXICON), audio_prompt_path=None,
+            w = model.generate(pronounce.prepare(chunk, lex), audio_prompt_path=None,
                                exaggeration=reg["exaggeration"],
                                cfg_weight=reg["cfg_weight"],
                                temperature=reg["temperature"])
