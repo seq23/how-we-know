@@ -100,12 +100,14 @@ def _vowel_groups(w: str) -> int:
 
 def is_hard(word: str) -> bool:
     w = word.lower().split("'")[0]
-    if len(w) < 8 or w in COMMON:
+    if len(w) < 7 or w in COMMON:
         return False
     if re.search(r"[À-ÿĀ-ž]", word):
         return True
     if len(w) >= 13 or _vowel_groups(w) >= 6:
         return True
+    if re.search(r"(aill|eau|oux|ieu|eaux|ois$|ier$)", w):
+        return True            # French loans: Maillard, gâteau - English rules misread them
     return len(w) >= 9 and bool(_GRECO.search(w))
 
 
@@ -192,7 +194,7 @@ _MORPH = ("bio", "photo", "phyto", "chloro", "zoo", "hydro", "thermo", "chemo",
 _SOUNDS = ((r"ph", "f"), (r"^ps", "s"), (r"^pt", "t"), (r"chl", "kl"),
            (r"chr", "kr"), (r"ch(?=[aeiou])", "k"), (r"ae", "ee"), (r"oe", "ee"),
            (r"eu", "yoo"), (r"(?<=[^aeiou])y(?=[^aeiou])", "i"), (r"rh", "r"),
-           (r"escen", "essen"), (r"yll$", "il"), (r"x", "ks"))
+           (r"escen", "essen"), (r"yll$", "il"), (r"x", "ks"), (r"aill", "ai y"))
 
 
 def _split_morphs(w: str) -> list[str]:

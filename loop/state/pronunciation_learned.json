@@ -1,0 +1,114 @@
+{
+ "respell": {
+  "epipelagic": {
+   "respelling": "epi pelagic",
+   "at": "2026-10-24T11:46:25-04:00",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied epipelagic for decades.",
+     "spoken_text": "Scientists have studied epi pelagic for decades.",
+     "heard": "Scientists have studied epipelagic for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The epipelagic is what the survey measured first.",
+     "spoken_text": "The epi pelagic is what the survey measured first.",
+     "heard": "The epipelagic is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  }
+ },
+ "raw_ok": {
+  "foraminifera": {
+   "at": "2026-10-24T11:53:10-04:00",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied foraminifera for decades.",
+     "spoken_text": "Scientists have studied foraminifera for decades.",
+     "heard": "Scientists have studied foraminifera for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The foraminifera is what the survey measured first.",
+     "spoken_text": "The foraminifera is what the survey measured first.",
+     "heard": "The foraminifera is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  }
+ },
+ "unresolved": {
+  "xenophyophore": {
+   "at": "2026-10-24T11:49:25-04:00",
+   "tried": [
+    {
+     "respelling": "xenophyophore",
+     "ok": false,
+     "readings": [
+      {
+       "carrier": "Scientists have studied xenophyophore for decades.",
+       "spoken_text": "Scientists have studied xenophyophore for decades.",
+       "heard": "Scientists have studied xenophya for decades.",
+       "ratio": 0.769,
+       "ok": false
+      },
+      {
+       "carrier": "The xenophyophore is what the survey measured first.",
+       "spoken_text": "The xenophyophore is what the survey measured first.",
+       "heard": "The xenophyophore is what the survey measured first.",
+       "ratio": 1.0,
+       "ok": true
+      }
+     ]
+    },
+    {
+     "respelling": "ksenofyofore",
+     "ok": false,
+     "readings": [
+      {
+       "carrier": "Scientists have studied xenophyophore for decades.",
+       "spoken_text": "Scientists have studied ksenofyofore for decades.",
+       "heard": "Scientists have studied xenophyophore for decades.",
+       "ratio": 1.0,
+       "ok": true
+      },
+      {
+       "carrier": "The xenophyophore is what the survey measured first.",
+       "spoken_text": "The ksenofyofore is what the survey measured first.",
+       "heard": "The cakes in a file for is what the survey measured first.",
+       "ratio": 0.333,
+       "ok": false
+      }
+     ]
+    },
+    {
+     "respelling": "ksenof yofor e",
+     "ok": false,
+     "readings": [
+      {
+       "carrier": "Scientists have studied xenophyophore for decades.",
+       "spoken_text": "Scientists have studied ksenof yofor e for decades.",
+       "heard": "Scientists have studied Ksenov-U4-E for decades.",
+       "ratio": 0.5,
+       "ok": false
+      },
+      {
+       "carrier": "The xenophyophore is what the survey measured first.",
+       "spoken_text": "The ksenof yofor e is what the survey measured first.",
+       "heard": "The Kacenov-E04E is what the survey measured first.",
+       "ratio": 0.429,
+       "ok": false
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

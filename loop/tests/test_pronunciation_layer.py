@@ -41,7 +41,8 @@ sys.path.insert(0, str(ROOT / "voice"))
 import pronounce  # noqa: E402
 
 MUST_FLAG = ("bioluminescence", "bioluminescent", "phytoplankton", "chlorophyll",
-             "chemosynthetic", "bathypelagic", "hydrothermal", "Saccharomyces")
+             "chemosynthetic", "bathypelagic", "hydrothermal", "Saccharomyces",
+             "Maillard")
 MUST_NOT_FLAG = ("water", "everyone", "because", "light", "ocean", "scientists",
                  "temperature")
 
