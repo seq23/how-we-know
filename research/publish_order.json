@@ -22,7 +22,7 @@
       "pin_errors"
     ]
   },
-  "generated_at": "2026-10-17T10:08:55.759634+00:00",
+  "generated_at": "2026-10-24T10:09:05.339921+00:00",
   "generator": "research/publish_order.py",
   "rule": "pov/topic-taxonomy.json: 'Rank candidates by (search demand / competition).' Implemented as a hard GATE on both axes, then a geometric combined score among survivors.",
   "gate": {
@@ -207,6 +207,11 @@
       "status": "no_competition_score"
     },
     {
+      "slug": "how-does-butter-get-made-from-cream",
+      "query": "how does butter get made from cream",
+      "status": "no_competition_score"
+    },
+    {
       "slug": "how-does-quenching-harden-steel",
       "query": "how does quenching harden steel",
       "status": "no_competition_score"
@@ -307,13 +312,38 @@
       "status": "no_competition_score"
     },
     {
+      "slug": "why-does-chocolate-taste-so-good",
+      "query": "why does chocolate taste so good",
+      "status": "no_competition_score"
+    },
+    {
+      "slug": "why-does-meat-need-to-rest-after-cooking",
+      "query": "why does meat need to rest after cooking",
+      "status": "no_competition_score"
+    },
+    {
       "slug": "why-does-old-iron-not-rust",
       "query": "why does old iron not rust",
       "status": "no_competition_score"
     },
     {
+      "slug": "why-does-rice-get-sticky",
+      "query": "why does rice get sticky",
+      "status": "no_competition_score"
+    },
+    {
+      "slug": "why-does-steak-taste-better-seared",
+      "query": "why does steak taste better seared",
+      "status": "no_competition_score"
+    },
+    {
       "slug": "why-is-carbon-fiber-so-strong",
       "query": "why is carbon fiber so strong",
+      "status": "no_competition_score"
+    },
+    {
+      "slug": "why-is-my-bread-not-rising",
+      "query": "why is my bread not rising",
       "status": "no_competition_score"
     },
     {
@@ -352,7 +382,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-17T10:08:46.795034+00:00"
+          "fetched_utc": "2026-10-24T10:08:56.186524+00:00"
         }
       },
       "competition": {
@@ -431,7 +461,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-17T10:08:42.336457+00:00"
+          "fetched_utc": "2026-10-24T10:08:51.602398+00:00"
         }
       },
       "competition": {
@@ -509,7 +539,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-17T10:08:38.793526+00:00"
+          "fetched_utc": "2026-10-24T10:08:47.924650+00:00"
         }
       },
       "competition": {
@@ -587,7 +617,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-17T10:08:50.358762+00:00"
+          "fetched_utc": "2026-10-24T10:08:59.846180+00:00"
         }
       },
       "competition": {
@@ -667,7 +697,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-17T10:08:55.759090+00:00"
+          "fetched_utc": "2026-10-24T10:09:05.339327+00:00"
         }
       },
       "competition": {
@@ -747,7 +777,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-17T10:08:43.216826+00:00"
+          "fetched_utc": "2026-10-24T10:08:52.523482+00:00"
         }
       },
       "competition": {
@@ -828,7 +858,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-17T10:08:44.120592+00:00"
+          "fetched_utc": "2026-10-24T10:08:53.442861+00:00"
         }
       },
       "competition": {
@@ -906,7 +936,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-17T10:08:51.251897+00:00"
+          "fetched_utc": "2026-10-24T10:09:00.764184+00:00"
         }
       },
       "competition": {
@@ -987,7 +1017,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-17T10:08:45.021466+00:00"
+          "fetched_utc": "2026-10-24T10:08:54.363696+00:00"
         }
       },
       "competition": {
@@ -1065,7 +1095,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-17T10:08:45.927199+00:00"
+          "fetched_utc": "2026-10-24T10:08:55.286001+00:00"
         }
       },
       "competition": {
@@ -1142,7 +1172,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-17T10:08:54.843738+00:00"
+          "fetched_utc": "2026-10-24T10:09:04.429460+00:00"
         }
       },
       "competition": {
@@ -1217,7 +1247,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-17T10:08:53.942896+00:00"
+          "fetched_utc": "2026-10-24T10:09:03.513261+00:00"
         }
       },
       "competition": {
@@ -1296,7 +1326,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-17T10:08:41.448258+00:00"
+          "fetched_utc": "2026-10-24T10:08:50.682178+00:00"
         }
       },
       "competition": {
@@ -1374,7 +1404,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-17T10:08:52.161883+00:00"
+          "fetched_utc": "2026-10-24T10:09:01.682988+00:00"
         }
       },
       "competition": {
@@ -1451,7 +1481,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-17T10:08:49.465621+00:00"
+          "fetched_utc": "2026-10-24T10:08:58.938355+00:00"
         }
       },
       "competition": {
@@ -1529,7 +1559,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-17T10:08:39.677157+00:00"
+          "fetched_utc": "2026-10-24T10:08:48.842848+00:00"
         }
       },
       "competition": {

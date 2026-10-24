@@ -1,0 +1,48 @@
+{
+  "stage": "weekly-score",
+  "week": "2026-W43",
+  "at": "2026-10-24T10:13:46+00:00",
+  "code": "DOMAIN_QUEUE_THIN",
+  "message": "1 domain(s) could not be scored this run: deep-sea-ocean-science. deep-sea-ocean-science has 0 admitted, non-duplicate candidate(s) before the gate, under the floor of 4, and every mining source is exhausted (broad mine, deep-mine cache, dedicated seeds, a fresh autocomplete mine).",
+  "detail": {
+    "stops": [
+      {
+        "domain": "deep-sea-ocean-science",
+        "code": "DOMAIN_QUEUE_THIN",
+        "message": "deep-sea-ocean-science has 0 admitted, non-duplicate candidate(s) before the gate, under the floor of 4, and every mining source is exhausted (broad mine, deep-mine cache, dedicated seeds, a fresh autocomplete mine).",
+        "tail": [
+          "    6x  why deep sea creatures are big",
+          "    6x  why deep sea creatures are coming out",
+          "fresh autocomplete mine: 0 -> 0 candidate(s)",
+          "NAMED STOP DOMAIN_QUEUE_THIN: deep-sea-ocean-science has 0 admitted, non-duplicate candidate(s) before the gate, under the floor of 4, and every mining source is exhausted (broad mine, deep-mine cache, dedicated seeds, a fresh autocomplete mine)."
+        ],
+        "unblock": "Add seeds for this domain to research/seeds_broad.json or its dedicated seed file (research/publish_order_domain.py DEDICATED_SEEDS); the next Saturday run mines them. The domain keeps publishing whatever it already has queued."
+      }
+    ]
+  },
+  "unblock": "deep-sea-ocean-science: Add seeds for this domain to research/seeds_broad.json or its dedicated seed file (research/publish_order_domain.py DEDICATED_SEEDS); the next Saturday run mines them. The domain keeps publishing whatever it already has queued.",
+  "disposition": "self_resolving",
+  "disposition_why": "The Saturday miner widened every source it has (broad mine, deep-mine cache, dedicated seeds, a fresh autocomplete mine) and still found fewer than 4 unwritten topics that are not repeats of aired episodes. It wrote the queue it could; autocomplete changes week to week and the next Saturday mines again. The runway stops, not this, protect publishing. (run 2 of at most 3 before this escalates to a human.)",
+  "consecutive": 2,
+  "held_items": [],
+  "exit_code": 0,
+  "work_done_before_stop": [
+    "scored and ranked 62 candidate(s)",
+    "ranking is fresh as of 2026-10-24T10:09:05.339921+00:00"
+  ],
+  "notes": [
+    "running research/publish_order.py (owned by the research agent)",
+    "  scorer: ",
+    "  scorer: KILLED 4:",
+    "  scorer:    killed              12-what-is-a-frilled-shark                    (saturation)",
+    "  scorer:    killed              11-what-is-a-dumbo-octopus                    (saturation)",
+    "  scorer:    killed              17-what-is-a-yeti-crab                        (demand,saturation)",
+    "  scorer:    killed_provisional  03-why-deep-sea-creatures-are-surfacing       (saturation)",
+    "no scripts held in loop/promotion_holds.json",
+    "deep-sea-ocean-science holds weekly slots and has fewer than 4 unwritten, non-duplicate topics queued; mining and running the gate for it",
+    "  deep-sea-ocean-science:     6x  why deep sea creatures are big",
+    "  deep-sea-ocean-science:     6x  why deep sea creatures are coming out",
+    "  deep-sea-ocean-science: fresh autocomplete mine: 0 -> 0 candidate(s)",
+    "  deep-sea-ocean-science: NAMED STOP DOMAIN_QUEUE_THIN: deep-sea-ocean-science has 0 admitted, non-duplicate candidate(s) before the gate, under the floor of 4, and every minin"
+  ]
+}
