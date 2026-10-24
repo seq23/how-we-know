@@ -1232,6 +1232,33 @@
         "applied_at": "2026-10-24T01:23:34+00:00",
         "result": "posted (UgwRC22MKeVymNLbLrp4AaABAg)"
       }
+    },
+    "Ugx1h2ICH5kYFjc04Md4AaABAg": {
+      "comment_id": "Ugx1h2ICH5kYFjc04Md4AaABAg",
+      "video_id": "dpL6cNWnwe0",
+      "author": "@howweknowdeep",
+      "author_channel_id": "UC5vZFZc15DIM6IrFwFgAECg",
+      "text": "What is the scariest deep sea creature? Full episode: https://youtu.be/G1TqXmf36Qo",
+      "published_at": "2026-10-24T17:14:45+00:00",
+      "like_count": 0,
+      "reply_count": 0,
+      "class": "own_channel",
+      "proposed_action": null,
+      "proposed_reply": null,
+      "product_note": null,
+      "seen_at": "2026-10-24T17:14:45+00:00",
+      "acted": {
+        "comment_id": "Ugx1h2ICH5kYFjc04Md4AaABAg",
+        "video_id": "dpL6cNWnwe0",
+        "action": "channel_comment",
+        "reply_text": "What is the scariest deep sea creature? Full episode: https://youtu.be/G1TqXmf36Qo",
+        "instructed_by": "owner",
+        "instructed_at": "2026-10-03",
+        "source": "loop/handoff: owner decision 2026-10-03",
+        "note": null,
+        "applied_at": "2026-10-24T17:14:45+00:00",
+        "result": "posted (Ugx1h2ICH5kYFjc04Md4AaABAg)"
+      }
     }
   },
   "instructions": {},
@@ -1727,6 +1754,18 @@
       "note": null,
       "applied_at": "2026-10-24T01:23:34+00:00",
       "result": "posted (UgwRC22MKeVymNLbLrp4AaABAg)"
+    },
+    {
+      "comment_id": "Ugx1h2ICH5kYFjc04Md4AaABAg",
+      "video_id": "dpL6cNWnwe0",
+      "action": "channel_comment",
+      "reply_text": "What is the scariest deep sea creature? Full episode: https://youtu.be/G1TqXmf36Qo",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03",
+      "note": null,
+      "applied_at": "2026-10-24T17:14:45+00:00",
+      "result": "posted (Ugx1h2ICH5kYFjc04Md4AaABAg)"
     }
   ],
   "sweeps": [
@@ -2101,7 +2140,15 @@
       "instructed_by": "owner",
       "instructed_at": "2026-10-03",
       "source": "loop/handoff: owner decision 2026-10-03"
+    },
+    "dpL6cNWnwe0": {
+      "comment_id": "Ugx1h2ICH5kYFjc04Md4AaABAg",
+      "text": "What is the scariest deep sea creature? Full episode: https://youtu.be/G1TqXmf36Qo",
+      "posted_at": "2026-10-24T17:14:45+00:00",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03"
     }
   },
-  "updated": "2026-10-24T01:23:34+00:00"
+  "updated": "2026-10-24T17:14:45+00:00"
 }
