@@ -293,5 +293,578 @@
     }
    ]
   }
- }
+ },
+ "raw_ok": {
+  "amphipods": {
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied amphipods for decades.",
+     "spoken_text": "Scientists have studied amphipods for decades.",
+     "heard": "Scientists have studied amphipods for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The amphipods is what the survey measured first.",
+     "spoken_text": "The amphipods is what the survey measured first.",
+     "heard": "The amphipods is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "amylopectin": {
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied amylopectin for decades.",
+     "spoken_text": "Scientists have studied amylopectin for decades.",
+     "heard": "Scientists have studied amylopectin for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The amylopectin is what the survey measured first.",
+     "spoken_text": "The amylopectin is what the survey measured first.",
+     "heard": "The amylopectin is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "bathypelagic": {
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied bathypelagic for decades.",
+     "spoken_text": "Scientists have studied bathypelagic for decades.",
+     "heard": "Scientists have studied bathypelagic for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The bathypelagic is what the survey measured first.",
+     "spoken_text": "The bathypelagic is what the survey measured first.",
+     "heard": "The bathypelagic is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "bioluminescence": {
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied bioluminescence for decades.",
+     "spoken_text": "Scientists have studied bioluminescence for decades.",
+     "heard": "Scientists have studied bioluminescence for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The bioluminescence is what the survey measured first.",
+     "spoken_text": "The bioluminescence is what the survey measured first.",
+     "heard": "The bioluminescence is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "bioluminescent": {
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied bioluminescent for decades.",
+     "spoken_text": "Scientists have studied bioluminescent for decades.",
+     "heard": "Scientists have studied bioluminescent for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The bioluminescent is what the survey measured first.",
+     "spoken_text": "The bioluminescent is what the survey measured first.",
+     "heard": "The bioluminescent is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "caramelization": {
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied caramelization for decades.",
+     "spoken_text": "Scientists have studied caramelization for decades.",
+     "heard": "Scientists have studied caramelization for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The caramelization is what the survey measured first.",
+     "spoken_text": "The caramelization is what the survey measured first.",
+     "heard": "The caramelization is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "cephalopod": {
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied cephalopod for decades.",
+     "spoken_text": "Scientists have studied cephalopod for decades.",
+     "heard": "Scientists have studied cephalopod for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The cephalopod is what the survey measured first.",
+     "spoken_text": "The cephalopod is what the survey measured first.",
+     "heard": "The cephalopod is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "cephalopods": {
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied cephalopods for decades.",
+     "spoken_text": "Scientists have studied cephalopods for decades.",
+     "heard": "Scientists have studied cephalopods for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The cephalopods is what the survey measured first.",
+     "spoken_text": "The cephalopods is what the survey measured first.",
+     "heard": "The cephalopods is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "cerevisiae": {
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied cerevisiae for decades.",
+     "spoken_text": "Scientists have studied cerevisiae for decades.",
+     "heard": "Scientists have studied cerevisiae for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The cerevisiae is what the survey measured first.",
+     "spoken_text": "The cerevisiae is what the survey measured first.",
+     "heard": "The cerevisiae is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "chemosynthesis": {
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied chemosynthesis for decades.",
+     "spoken_text": "Scientists have studied chemosynthesis for decades.",
+     "heard": "Scientists have studied chemosynthesis for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The chemosynthesis is what the survey measured first.",
+     "spoken_text": "The chemosynthesis is what the survey measured first.",
+     "heard": "The chemosynthesis is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "chemosynthetic": {
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied chemosynthetic for decades.",
+     "spoken_text": "Scientists have studied chemosynthetic for decades.",
+     "heard": "Scientists have studied chemosynthetic for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The chemosynthetic is what the survey measured first.",
+     "spoken_text": "The chemosynthetic is what the survey measured first.",
+     "heard": "The chemosynthetic is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "chlorophyll": {
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied chlorophyll for decades.",
+     "spoken_text": "Scientists have studied chlorophyll for decades.",
+     "heard": "Scientists have studied chlorophyll for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The chlorophyll is what the survey measured first.",
+     "spoken_text": "The chlorophyll is what the survey measured first.",
+     "heard": "The chlorophyll is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "counterillumination": {
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied counterillumination for decades.",
+     "spoken_text": "Scientists have studied counterillumination for decades.",
+     "heard": "Scientists have studied counter-illumination for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The counterillumination is what the survey measured first.",
+     "spoken_text": "The counterillumination is what the survey measured first.",
+     "heard": "The counter-illumination is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "fluorescence": {
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied fluorescence for decades.",
+     "spoken_text": "Scientists have studied fluorescence for decades.",
+     "heard": "Scientists have studied fluorescence for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The fluorescence is what the survey measured first.",
+     "spoken_text": "The fluorescence is what the survey measured first.",
+     "heard": "The fluorescence is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "gelatinization": {
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied gelatinization for decades.",
+     "spoken_text": "Scientists have studied gelatinization for decades.",
+     "heard": "Scientists have studied gelatinization for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The gelatinization is what the survey measured first.",
+     "spoken_text": "The gelatinization is what the survey measured first.",
+     "heard": "The gelatinization is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "hydrothermal": {
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied hydrothermal for decades.",
+     "spoken_text": "Scientists have studied hydrothermal for decades.",
+     "heard": "Scientists have studied hydrothermal for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The hydrothermal is what the survey measured first.",
+     "spoken_text": "The hydrothermal is what the survey measured first.",
+     "heard": "The hydrothermal is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "luciferase": {
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied luciferase for decades.",
+     "spoken_text": "Scientists have studied luciferase for decades.",
+     "heard": "Scientists have studied luciferase for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The luciferase is what the survey measured first.",
+     "spoken_text": "The luciferase is what the survey measured first.",
+     "heard": "The luciferase is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "luciferin": {
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied luciferin for decades.",
+     "spoken_text": "Scientists have studied luciferin for decades.",
+     "heard": "Scientists have studied luciferin for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The luciferin is what the survey measured first.",
+     "spoken_text": "The luciferin is what the survey measured first.",
+     "heard": "The luciferin is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "mesopelagic": {
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied mesopelagic for decades.",
+     "spoken_text": "Scientists have studied mesopelagic for decades.",
+     "heard": "Scientists have studied mesopelagic for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The mesopelagic is what the survey measured first.",
+     "spoken_text": "The mesopelagic is what the survey measured first.",
+     "heard": "The mesopelagic is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "photophore": {
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied photophore for decades.",
+     "spoken_text": "Scientists have studied photophore for decades.",
+     "heard": "Scientists have studied photophore for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The photophore is what the survey measured first.",
+     "spoken_text": "The photophore is what the survey measured first.",
+     "heard": "The photophore is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "photophores": {
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied photophores for decades.",
+     "spoken_text": "Scientists have studied photophores for decades.",
+     "heard": "Scientists have studied photophores for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The photophores is what the survey measured first.",
+     "spoken_text": "The photophores is what the survey measured first.",
+     "heard": "The photophores is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "photosynthesis": {
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied photosynthesis for decades.",
+     "spoken_text": "Scientists have studied photosynthesis for decades.",
+     "heard": "Scientists have studied photosynthesis for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The photosynthesis is what the survey measured first.",
+     "spoken_text": "The photosynthesis is what the survey measured first.",
+     "heard": "The photosynthesis is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "phytoplankton": {
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied phytoplankton for decades.",
+     "spoken_text": "Scientists have studied phytoplankton for decades.",
+     "heard": "Scientists have studied phytoplankton for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The phytoplankton is what the survey measured first.",
+     "spoken_text": "The phytoplankton is what the survey measured first.",
+     "heard": "The phytoplankton is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "polyphenols": {
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied polyphenols for decades.",
+     "spoken_text": "Scientists have studied polyphenols for decades.",
+     "heard": "Scientists have studied polyphenols for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The polyphenols is what the survey measured first.",
+     "spoken_text": "The polyphenols is what the survey measured first.",
+     "heard": "The polyphenols is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "pyrazines": {
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied pyrazines for decades.",
+     "spoken_text": "Scientists have studied pyrazines for decades.",
+     "heard": "Scientists have studied pyrazines for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The pyrazines is what the survey measured first.",
+     "spoken_text": "The pyrazines is what the survey measured first.",
+     "heard": "The pyrazines is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "Saccharomyces": {
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied Saccharomyces for decades.",
+     "spoken_text": "Scientists have studied Saccharomyces for decades.",
+     "heard": "Scientists have studied saccharomyces for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The Saccharomyces is what the survey measured first.",
+     "spoken_text": "The Saccharomyces is what the survey measured first.",
+     "heard": "The saccharomyces is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "siphonophore": {
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied siphonophore for decades.",
+     "spoken_text": "Scientists have studied siphonophore for decades.",
+     "heard": "Scientists have studied siphonophore for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The siphonophore is what the survey measured first.",
+     "spoken_text": "The siphonophore is what the survey measured first.",
+     "heard": "The siphonophore is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "siphonophores": {
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied siphonophores for decades.",
+     "spoken_text": "Scientists have studied siphonophores for decades.",
+     "heard": "Scientists have studied siphonophores for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The siphonophores is what the survey measured first.",
+     "spoken_text": "The siphonophores is what the survey measured first.",
+     "heard": "The siphonophores is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "trimethylamine": {
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied trimethylamine for decades.",
+     "spoken_text": "Scientists have studied trimethylamine for decades.",
+     "heard": "Scientists have studied trimethylamine for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The trimethylamine is what the survey measured first.",
+     "spoken_text": "The trimethylamine is what the survey measured first.",
+     "heard": "The trimethylamine is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "zooplankton": {
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied zooplankton for decades.",
+     "spoken_text": "Scientists have studied zooplankton for decades.",
+     "heard": "Scientists have studied zooplankton for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The zooplankton is what the survey measured first.",
+     "spoken_text": "The zooplankton is what the survey measured first.",
+     "heard": "The zooplankton is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  }
+ },
+ "raw_ok_transcriber": "whisper.cpp ggml-small.en (local, $0)"
 }

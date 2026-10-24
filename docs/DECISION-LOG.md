@@ -1419,3 +1419,27 @@ food in motion - real MOVEMENT and the impossible-scale feel (round 1 was 11/13 
 - Guard: `loop/tests/test_shorts_cuts_never_repeat.py` (reads real receipts in `shorts/` on the
   Mac); `test_shorts_deep_sea_all_cuts.py` and `test_shorts_drain_and_dry_shelf.py` pins rewritten
   to the 14-day rule.
+
+## 2026-10-24 — Pronunciation layer before every TTS call (viewer: "AI had a stroke trying to say 'bioluminescence'")
+
+- **Evidence:** comment of 2026-10-20 on "Why Is Deep Sea Light Blue?" (EFimztjj_j8,
+  `13-how-does-bioluminescence-work-in-the-deep-sea`). Local whisper.cpp (ggml-small.en) on that
+  episode's own beat wavs heard "Biolu Min ESS Ents", "bai, olu, mine, ESS, ensay".
+- **Root cause:** those beats were voiced 2026-08-31 through the pre-#99 lexicon
+  (`"bye-oh-loo-min-ESS-ence"`), which Chatterbox reads as letters and separate words. #99 removed
+  the style; today the raw word is heard correctly (re-synthesised with the production voice).
+  Three gaps remained: the word was never proven, new scripts' hard words were never checked, and
+  Shorts re-use old wavs verbatim (121 legacy-respelled beats across 17 published episodes; 8
+  cut-but-unaired Shorts carried them).
+- **Fix (forward only; published videos untouched):** `voice/pronounce.py`. Both narrators
+  (`narrate_all.py`, `food_voice.py`) run `job_check` before voicing: hard words (long or
+  Greek/Latin-shaped) are classified curated / learned / raw_ok / unproven; unproven ones are spoken
+  by the loaded voice and heard back by local whisper.cpp ($0, up to 12 per job); a model-readable
+  respelling is learned only when the raw word is mangled. Per-job log
+  `audio/<slug>/pronunciation.json`; learned table `loop/state/pronunciation_learned.json` (pushed
+  with Mac state). `visuals/shorts.py` drops any beat voiced before the cutover with an old
+  respelling (`voice/lexicon_legacy.json`); losing the anchor refuses the cut. The 8 unaired cuts are listed in
+  `loop/state/shorts_voice_blocked.json` and `shorts_lane.pending()` never offers them.
+- **Probe is $0 now:** `voice/tests/pronunciation_probe.py` transcribes with whisper.cpp, not the paid
+  whisper-1; `--raw-ok` pins hard words that need no entry.
+- Guard: `loop/tests/test_pronunciation_layer.py`.

@@ -926,6 +926,19 @@ def vfilter(crop_h: int, band_y: int, band_h: int) -> str:
     )
 
 
+def drop_stale_voice(picked: list[int], by_index: dict) -> tuple[list[int], dict]:
+    """(kept beats, {beat: legacy terms}) - see voice/pronounce.stale_legacy_beat."""
+    sys.path.insert(0, os.path.join(ROOT, "voice"))
+    import pronounce  # noqa: PLC0415 - stdlib only
+    stale = {}
+    for i in picked:
+        b = by_index[i]
+        hits = pronounce.stale_legacy_beat(b["narration"], b["wav"])
+        if hits:
+            stale[i] = hits
+    return [i for i in picked if i not in stale], stale
+
+
 def make_short(slug: str, outdir: str, max_seconds: float = MAX_SECONDS,
                target_seconds: float = TARGET_SECONDS,
                dry_run: bool = False, rank: int = 0) -> dict:
@@ -975,6 +988,30 @@ def make_short(slug: str, outdir: str, max_seconds: float = MAX_SECONDS,
         raise ValueError(f"{slug}: every picked beat was dropped for a "
                          f"missing credit; nothing to cut")
     sel["credits"] = credits
+
+    # --- a beat voiced through the pre-#99 lexicon is never re-aired ----------
+    # The audio is taken verbatim from audio/<slug>/*.wav. Beats written before
+    # 2026-09-21 were voiced with dictionary respellings ("bye-oh-loo-min-ESS-
+    # ence") that the model speaks as letters - the viewer comment of
+    # 2026-10-20 on 13-how-does-bioluminescence-work-in-the-deep-sea. Such a
+    # beat is dropped like an uncredited one; losing the anchor refuses the cut.
+    picked, stale = drop_stale_voice(picked, by_index)
+    if stale:
+        for i, terms in stale.items():
+            print(f"  {slug}: dropping beat {i} - voiced with legacy respelling(s) "
+                  f"{', '.join(terms)}", file=sys.stderr)
+        if sel["anchor"] in stale:
+            raise ValueError(
+                f"{slug}: the anchor beat {sel['anchor']} was voiced with legacy "
+                f"respelling(s) {stale[sel['anchor']]}; refusing to cut a Short "
+                f"that mispronounces its answer")
+        if not picked:
+            raise ValueError(f"{slug}: every picked beat carries a legacy "
+                             f"respelling; nothing to cut")
+        sel["beats"] = picked
+        sel["dropped_stale_voice"] = {str(i): t for i, t in stale.items()}
+        sel["seconds"] = sum(by_index[i]["video_s"] for i in picked)
+        sel["credits"], _ = resolve_credits(slug, plan, picked, record)
 
     # --- how much of the source frame the burned captions cost us ------------
     cap_lines, _ = cue_lines_for(slug, set(picked))

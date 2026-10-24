@@ -562,6 +562,19 @@ def cut_groups(renders_dir: Path | None = None, shorts_dir: Path | None = None,
     return groups
 
 
+VOICE_BLOCKED = Path(__file__).resolve().parent / "state" / "shorts_voice_blocked.json"
+
+
+def voice_blocked() -> set[tuple[str, int]]:
+    """Cuts that carry pre-2026-09-21 legacy-respelled narration (a viewer
+    heard "Biolu Min ESS Ents" on EFimztjj_j8). Never offered for upload."""
+    try:
+        doc = json.loads(VOICE_BLOCKED.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return set()
+    return {(c["slug"], int(c["rank"])) for c in doc.get("cuts", [])}
+
+
 def pending(have=None, cfg: dict | None = None) -> list[Pick]:
     """Cut Shorts not published yet, as Picks, in the order they should air.
 
@@ -591,13 +604,14 @@ def pending(have=None, cfg: dict | None = None) -> list[Pick]:
     # the episode it points back to. A held slug is DEFERRED, not dropped: it
     # returns the run after the hold lifts, and its cut is never re-made.
     held = render_gate.held_slugs()
+    blocked = voice_blocked()
     out = []
     for q in batch_queue.queued_entries():
         slug = q["slug"]
         if slug in held:
             continue
         for rank in range(1, cuts_for(slug, cfg) + 1):
-            if (slug, rank) in done:
+            if (slug, rank) in done or (slug, rank) in blocked:
                 continue
             if have(slug, rank) is not True:
                 continue
