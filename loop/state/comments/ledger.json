@@ -1205,6 +1205,33 @@
         "applied_at": "2026-10-23T18:07:23+00:00",
         "result": "posted (Ugw2iw_cfS-7KOBwyEd4AaABAg)"
       }
+    },
+    "UgwRC22MKeVymNLbLrp4AaABAg": {
+      "comment_id": "UgwRC22MKeVymNLbLrp4AaABAg",
+      "video_id": "LCQ_0ZWCJvU",
+      "author": "@howweknowdeep",
+      "author_channel_id": "UC5vZFZc15DIM6IrFwFgAECg",
+      "text": "What creatures live in the deep sea? Full episode: https://youtu.be/jec80gk8rM0",
+      "published_at": "2026-10-24T01:23:34+00:00",
+      "like_count": 0,
+      "reply_count": 0,
+      "class": "own_channel",
+      "proposed_action": null,
+      "proposed_reply": null,
+      "product_note": null,
+      "seen_at": "2026-10-24T01:23:34+00:00",
+      "acted": {
+        "comment_id": "UgwRC22MKeVymNLbLrp4AaABAg",
+        "video_id": "LCQ_0ZWCJvU",
+        "action": "channel_comment",
+        "reply_text": "What creatures live in the deep sea? Full episode: https://youtu.be/jec80gk8rM0",
+        "instructed_by": "owner",
+        "instructed_at": "2026-10-03",
+        "source": "loop/handoff: owner decision 2026-10-03",
+        "note": null,
+        "applied_at": "2026-10-24T01:23:34+00:00",
+        "result": "posted (UgwRC22MKeVymNLbLrp4AaABAg)"
+      }
     }
   },
   "instructions": {},
@@ -1688,6 +1715,18 @@
       "note": null,
       "applied_at": "2026-10-23T18:07:23+00:00",
       "result": "posted (Ugw2iw_cfS-7KOBwyEd4AaABAg)"
+    },
+    {
+      "comment_id": "UgwRC22MKeVymNLbLrp4AaABAg",
+      "video_id": "LCQ_0ZWCJvU",
+      "action": "channel_comment",
+      "reply_text": "What creatures live in the deep sea? Full episode: https://youtu.be/jec80gk8rM0",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03",
+      "note": null,
+      "applied_at": "2026-10-24T01:23:34+00:00",
+      "result": "posted (UgwRC22MKeVymNLbLrp4AaABAg)"
     }
   ],
   "sweeps": [
@@ -2054,7 +2093,15 @@
       "instructed_by": "owner",
       "instructed_at": "2026-10-03",
       "source": "loop/handoff: owner decision 2026-10-03"
+    },
+    "LCQ_0ZWCJvU": {
+      "comment_id": "UgwRC22MKeVymNLbLrp4AaABAg",
+      "text": "What creatures live in the deep sea? Full episode: https://youtu.be/jec80gk8rM0",
+      "posted_at": "2026-10-24T01:23:34+00:00",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03"
     }
   },
-  "updated": "2026-10-23T18:07:23+00:00"
+  "updated": "2026-10-24T01:23:34+00:00"
 }
