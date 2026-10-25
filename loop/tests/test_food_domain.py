@@ -221,7 +221,22 @@ import longform_title as LT                                    # noqa: E402
 import opening                                                 # noqa: E402
 import re                                                      # noqa: E402
 food = sorted((ROOT / "scripts" / "food").glob("*.md"))
-check(len(food) == 4, f"four food scripts (three parts + the episode): {[p.name for p in food]}")
+# The hand-made four (the first episode and its three parts), exactly; every
+# other food script is the food author lane's (2026-10-25): it carries the
+# lane's mark and a kit for each of its segments, and passes the same checks.
+HAND = {"why-bread-rises-steak-browns-chocolate-snaps.md", "why-does-bread-rise.md",
+        "why-does-chocolate-melt-in-your-mouth-not-your-hand.md", "why-does-seared-meat-taste-good.md"}
+import food_author as FA                                       # noqa: E402
+check(HAND <= {p.name for p in food}, f"the four hand-made food scripts: {[p.name for p in food]}")
+for p in food:
+    if p.name in HAND:
+        continue
+    t = p.read_text()
+    check(FA.LANE_MARK in t, f"{p.name}: a food script not hand-made must be the lane's")
+    segs = re.findall(r"^### ([A-Z][a-z]+): ", t, re.M)
+    for s in dict.fromkeys(segs):
+        check((ROOT / "channel" / "food_kits" / f"{s.lower()}.json").exists(),
+              f"{p.name}: segment {s} has no kit")
 for p in food:
     t = p.read_text()
     check(D.domain_of_script(p) == FOOD, f"{p.name}: **Domain:** food-science")

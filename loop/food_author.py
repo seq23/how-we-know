@@ -200,8 +200,9 @@ def episode_open(foods: list[str], questions: list[str], drafts: list[str]) -> s
     """The cold open, from the parts' own answers - no figure, no name added."""
     labels = [f.capitalize() for f in foods]
     answers = [_first_sentence(x) for x in _locks(drafts)]
-    hook = (f"Three ordinary foods, and inside each one is something nobody could see "
-            f"until an instrument showed it. Here is the whole video, one food at a time.")
+    # the opening rule (loop/opening.py): the first sentence is the hook, <= 15 words
+    hook = ("Three foods hide something no one could see without an instrument. "
+            "Here is the whole video, one food at a time.")
     lines = [hook] + [f"{lab}. {a}" for lab, a in zip(labels, answers) if a]
     tail = (f"None of this was found by tasting. It was found by measuring - by pulling a "
             f"food apart until its parts could be counted. By the end you will know what is "
@@ -222,6 +223,21 @@ def episode_close(foods: list[str], nxt: str | None) -> str:
     else:
         s += " Stay curious, and stay hungry."
     return "{{ambient}}\n" + s
+
+
+LEADS = re.compile(r"^(why|how|what)\s+(does|do|is|are|can)\s+", re.I)
+
+
+def combined_question(rows: list[dict]) -> str:
+    """The episode's one question, the first episode's shape ("Why does bread
+    rise, steak brown and chocolate snap?"): the first part's question whole,
+    the others without their "why does". The title stays the series shape;
+    this is what it must not merely restate (longform_title.title_problems)."""
+    qs = [str(r.get("title") or r["query"]).strip().rstrip("?") for r in rows]
+    rest = [LEADS.sub("", q) for q in qs[1:]]
+    head = qs[0][0].upper() + qs[0][1:]
+    return head + (", " + ", ".join(rest[:-1]) if len(rest) > 1 else "") + \
+        (" and " + rest[-1] if rest else "") + "?"
 
 
 def sources_of(text: str) -> list[str]:
@@ -246,7 +262,7 @@ def assemble(foods: list[str], rows: list[dict], drafts: list[str], nxt: str | N
             if ln not in seen:
                 seen.add(ln)
                 srcs.append(ln)
-    body = [f"# {title}", "",
+    body = [f"# {combined_question(rows)}", "",
             "**Status:** AUTHORED BY THE FOOD LANE - format approved by the owner 13 Oct 2026 "
             "(round-2 sample, \"MUCH better\"); rendered and held to the food contract on the Mac",
             "**Domain:** food-science", f"**Episode:** {slug}",
@@ -322,8 +338,9 @@ def register_episode(slug: str, title: str, rows: list[dict]) -> None:
         return
     part_slugs = {r["slug"] for r in rows}
     first = min(i for i, r in enumerate(queue) if r.get("slug") in part_slugs)
-    ep = {"slug": slug, "domain": "food-science", "title": title,
-          "query": title.rstrip("?").lower(),
+    cq = combined_question(rows)
+    ep = {"slug": slug, "domain": "food-science", "title": cq,
+          "query": re.sub(r"[^a-z ]", "", cq.lower()).strip(),
           "gate": {"verdict": "passed", "failed": [],
                    "reason": "an episode of three gated food rows, each of which passed: "
                              + "; ".join(f"{r['slug']}: {(r.get('gate') or {}).get('reason', '')}"

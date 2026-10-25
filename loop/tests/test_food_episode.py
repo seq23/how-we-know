@@ -87,7 +87,11 @@ check(FM._span({"black": {"spans": [[7.0, 9.17]]}}, 9.17)[1] < 7.0, "nor from th
 paras = food.parse(ROOT / "scripts" / "food" / f"{SLUG}.md")
 pcs = food.pieces(paras)
 check(list(pcs) == ["open", "chocolate", "bread", "steak", "tail"], f"pieces in order: {list(pcs)}")
-for s in food.SEGMENTS:
+# THIS episode's segments, in its order (food.SEGMENTS also holds every kit
+# food since 2026-10-25 - chili, coffee, honey are not pieces of this one)
+segs = [s for s in pcs if s not in ("open", "tail")]
+check(segs == ["chocolate", "bread", "steak"], f"the first episode's three segments: {segs}")
+for s in segs:
     first = paras[pcs[s][0]]["text"]
     check(first.endswith("?") and paras[pcs[s][0]]["phase"] == "opening",
           f"{s} opens by saying its question, cut like an opening: {first!r}")

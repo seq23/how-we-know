@@ -1,4 +1,4 @@
-# Chili, Coffee, Honey: What's Inside?
+# Why do chili peppers taste hot, coffee taste bitter and honey never spoil?
 
 **Status:** AUTHORED BY THE FOOD LANE - format approved by the owner 13 Oct 2026 (round-2 sample, "MUCH better"); rendered and held to the food contract on the Mac
 **Domain:** food-science
@@ -22,7 +22,7 @@ Chili peppers taste hot because capsaicin binds to TRPV1, the same receptor on p
 ### Cold open
 
 {{ambient}}
-Three ordinary foods, and inside each one is something nobody could see until an instrument showed it. Here is the whole video, one food at a time.
+Three foods hide something no one could see without an instrument. Here is the whole video, one food at a time.
 
 {{ambient}}
 Chili. Chili peppers taste hot because capsaicin binds to TRPV1, the same receptor on pain-sensing nerves that normally fires when tissue is heated above about 43 degrees Celsius. Coffee. Coffee tastes bitter mainly because roasting breaks the bean's chlorogenic acids into new bitter molecules, which bind bitter taste receptors on the tongue; caffeine contributes, but only part of the effect. Honey. Honey resists spoiling because it holds so little water, and so much sugar, that microbes cannot draw enough water to grow.
