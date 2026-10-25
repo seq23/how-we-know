@@ -469,217 +469,22 @@
       "reason": "Open field (95% of top-20 titles miss the question) but thin demand (0.30) -- uncontested because few ask it."
     },
     {
-      "slug": "why-do-chili-peppers-taste-hot",
+      "slug": "what-is-inside-chili-coffee-honey",
       "domain": "food-science",
-      "title": "Why do chili peppers taste hot?",
-      "query": "why do chili peppers taste hot",
+      "title": "Chili, Coffee, Honey: What's Inside?",
+      "query": "chili, coffee, honey: what's inside",
       "gate": {
         "verdict": "passed",
         "failed": [],
-        "reason": "demand 0.312 clears the 0.16 floor and title gap 0.90 clears the 0.3 saturation ceiling."
+        "reason": "an episode of three gated food rows, each of which passed: why-do-chili-peppers-taste-hot: demand 0.312 clears the 0.16 floor and title gap 0.90 clears the 0.3 saturation ceiling.; why-does-coffee-taste-bitter: demand 0.293 clears the 0.16 floor and title gap 0.70 clears the 0.3 saturation ceiling.; why-does-honey-never-spoil: demand 0.317 clears the 0.16 floor and title gap 0.50 clears the 0.3 saturation ceiling."
       },
-      "demand": {
-        "demand_index": 0.3122,
-        "autocomplete_completions": 3,
-        "exact_in_autocomplete": false,
-        "corpus_breadth": 0,
-        "key_term": "chili",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 0,
-        "sample_completions": [
-          "why are chillies hot",
-          "hot peppers health benefits",
-          "why are chili peppers hot"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-17T10:13:59.278976+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.635,
-        "title_gap": 0.9,
-        "title_coverage_mean": 0.338,
-        "strong_match_count": 2,
-        "results_examined": 20,
-        "median_views": 94960.0,
-        "p90_views": 5061781,
-        "median_subscribers": 934000.0,
-        "channels_under_100k_subs": 6,
-        "median_age_days": 1165,
-        "published_last_365d": 5,
-        "interpretation": "2 of 20 ranking titles squarely answer the query",
-        "components": {
-          "title_gap": 0.9,
-          "incumbent_subs": 0.147,
-          "view_ceiling": 0.289,
-          "staleness": 0.75
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-10-17T10:13:32.133969+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.4452,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "Open field (90% of top-20 titles miss the question) but thin demand (0.31) -- uncontested because few ask it."
-    },
-    {
-      "slug": "why-does-coffee-taste-bitter",
-      "domain": "food-science",
-      "title": "Why does coffee taste bitter?",
-      "query": "why does coffee taste bitter",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.293 clears the 0.16 floor and title gap 0.70 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.2931,
-        "autocomplete_completions": 4,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 0,
-        "key_term": "bitter",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 0,
-        "sample_completions": [
-          "why does coffee taste bitter",
-          "why does coffee taste bad",
-          "why coffee taste bitter",
-          "why does my instant coffee taste bad"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-17T10:14:05.549279+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.565,
-        "title_gap": 0.7,
-        "title_coverage_mean": 0.7,
-        "strong_match_count": 6,
-        "results_examined": 20,
-        "median_views": 44027.0,
-        "p90_views": 921808,
-        "median_subscribers": 148550.0,
-        "channels_under_100k_subs": 10,
-        "median_age_days": 1212,
-        "published_last_365d": 5,
-        "interpretation": "6 of 20 ranking titles squarely answer the query",
-        "components": {
-          "title_gap": 0.7,
-          "incumbent_subs": 0.261,
-          "view_ceiling": 0.337,
-          "staleness": 0.75
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-10-17T10:13:40.614896+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.4069,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "Middle of the field: title gap 0.70, demand 0.29, opportunity 0.56."
-    },
-    {
-      "slug": "why-does-honey-never-spoil",
-      "domain": "food-science",
-      "title": "Why does honey never spoil?",
-      "query": "why does honey never spoil",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.317 clears the 0.16 floor and title gap 0.50 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.3174,
-        "autocomplete_completions": 2,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 0,
-        "key_term": "never",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 0,
-        "sample_completions": [
-          "why does honey never spoil",
-          "why does honey never go bad"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-17T10:14:07.309169+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.469,
-        "title_gap": 0.5,
-        "title_coverage_mean": 0.783,
-        "strong_match_count": 10,
-        "results_examined": 20,
-        "median_views": 15424.0,
-        "p90_views": 5032771,
-        "median_subscribers": 22000.0,
-        "channels_under_100k_subs": 14,
-        "median_age_days": 513,
-        "published_last_365d": 9,
-        "interpretation": "10 of 20 ranking titles squarely answer the query",
-        "components": {
-          "title_gap": 0.5,
-          "incumbent_subs": 0.38,
-          "view_ceiling": 0.402,
-          "staleness": 0.55
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-10-17T10:13:42.781977+00:00"
-        }
-      },
-      "combined": {
-        "combined_score": 0.3858,
-        "trend_multiplier": 1.0,
-        "trend_note": "no Trends data; neutral",
-        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
-      },
-      "reason": "Middle of the field: title gap 0.50, demand 0.32, opportunity 0.47."
+      "first_video_parts": [
+        "why do chili peppers taste hot",
+        "why does coffee taste bitter",
+        "why does honey never spoil"
+      ],
+      "made_by": "loop/food_author.py + bin/food-session.sh (scripts/food/, rendered as pieces and stitched)",
+      "queued": "2026-10-25"
     },
     {
       "slug": "why-does-salt-make-food-taste-better",
@@ -1875,8 +1680,224 @@
       },
       "reason": "CONTESTED DESPITE THE GAP: 100% lexical title gap, but median 2,669,938 views and 2,520,000 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated.",
       "episode": "why-bread-rises-steak-browns-chocolate-snaps"
+    },
+    {
+      "slug": "why-do-chili-peppers-taste-hot",
+      "domain": "food-science",
+      "title": "Why do chili peppers taste hot?",
+      "query": "why do chili peppers taste hot",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.312 clears the 0.16 floor and title gap 0.90 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.3122,
+        "autocomplete_completions": 3,
+        "exact_in_autocomplete": false,
+        "corpus_breadth": 0,
+        "key_term": "chili",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "why are chillies hot",
+          "hot peppers health benefits",
+          "why are chili peppers hot"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-17T10:13:59.278976+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.635,
+        "title_gap": 0.9,
+        "title_coverage_mean": 0.338,
+        "strong_match_count": 2,
+        "results_examined": 20,
+        "median_views": 94960.0,
+        "p90_views": 5061781,
+        "median_subscribers": 934000.0,
+        "channels_under_100k_subs": 6,
+        "median_age_days": 1165,
+        "published_last_365d": 5,
+        "interpretation": "2 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.9,
+          "incumbent_subs": 0.147,
+          "view_ceiling": 0.289,
+          "staleness": 0.75
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-10-17T10:13:32.133969+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.4452,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Open field (90% of top-20 titles miss the question) but thin demand (0.31) -- uncontested because few ask it.",
+      "episode": "what-is-inside-chili-coffee-honey"
+    },
+    {
+      "slug": "why-does-coffee-taste-bitter",
+      "domain": "food-science",
+      "title": "Why does coffee taste bitter?",
+      "query": "why does coffee taste bitter",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.293 clears the 0.16 floor and title gap 0.70 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.2931,
+        "autocomplete_completions": 4,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "bitter",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "why does coffee taste bitter",
+          "why does coffee taste bad",
+          "why coffee taste bitter",
+          "why does my instant coffee taste bad"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-17T10:14:05.549279+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.565,
+        "title_gap": 0.7,
+        "title_coverage_mean": 0.7,
+        "strong_match_count": 6,
+        "results_examined": 20,
+        "median_views": 44027.0,
+        "p90_views": 921808,
+        "median_subscribers": 148550.0,
+        "channels_under_100k_subs": 10,
+        "median_age_days": 1212,
+        "published_last_365d": 5,
+        "interpretation": "6 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.7,
+          "incumbent_subs": 0.261,
+          "view_ceiling": 0.337,
+          "staleness": 0.75
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-10-17T10:13:40.614896+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.4069,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Middle of the field: title gap 0.70, demand 0.29, opportunity 0.56.",
+      "episode": "what-is-inside-chili-coffee-honey"
+    },
+    {
+      "slug": "why-does-honey-never-spoil",
+      "domain": "food-science",
+      "title": "Why does honey never spoil?",
+      "query": "why does honey never spoil",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.317 clears the 0.16 floor and title gap 0.50 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.3174,
+        "autocomplete_completions": 2,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "never",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "why does honey never spoil",
+          "why does honey never go bad"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "corpus_caveat": "breadth is measured against research/broad_mined.json's 8-seed pass for this domain, not a dedicated deep mine. It is comparable across domains scored this way and is NOT directly comparable to deep sea's mined_queries.json.",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-17T10:14:07.309169+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.469,
+        "title_gap": 0.5,
+        "title_coverage_mean": 0.783,
+        "strong_match_count": 10,
+        "results_examined": 20,
+        "median_views": 15424.0,
+        "p90_views": 5032771,
+        "median_subscribers": 22000.0,
+        "channels_under_100k_subs": 14,
+        "median_age_days": 513,
+        "published_last_365d": 9,
+        "interpretation": "10 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.5,
+          "incumbent_subs": 0.38,
+          "view_ceiling": 0.402,
+          "staleness": 0.55
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-10-17T10:13:42.781977+00:00"
+        }
+      },
+      "combined": {
+        "combined_score": 0.3858,
+        "trend_multiplier": 1.0,
+        "trend_note": "no Trends data; neutral",
+        "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier"
+      },
+      "reason": "Middle of the field: title gap 0.50, demand 0.32, opportunity 0.47.",
+      "episode": "what-is-inside-chili-coffee-honey"
     }
   ],
   "meets_floor_on_free_signals": [],
-  "queue_length": 12
+  "queue_length": 10
 }

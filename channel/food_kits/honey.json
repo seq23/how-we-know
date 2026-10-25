@@ -1,0 +1,167 @@
+{
+ "_why": "visuals/food_kits.py; written by loop/food_author.py",
+ "food": "honey",
+ "label": "HONEY",
+ "words": [
+  "honey",
+  "honeycomb"
+ ],
+ "queries": [
+  {
+   "query": "honey",
+   "uses": [
+    "subject",
+    "scale"
+   ],
+   "take": 3,
+   "sound": "pour"
+  },
+  {
+   "query": "honey close up",
+   "uses": [
+    "subject",
+    "macro"
+   ],
+   "take": 3,
+   "sound": "pour"
+  },
+  {
+   "query": "honey slow motion",
+   "uses": [
+    "subject",
+    "pour"
+   ],
+   "take": 3,
+   "sound": "pour"
+  },
+  {
+   "query": "honey macro",
+   "uses": [
+    "subject",
+    "macro"
+   ],
+   "take": 2,
+   "sound": "pour"
+  },
+  {
+   "query": "honey kitchen",
+   "uses": [
+    "subject",
+    "process"
+   ],
+   "take": 2,
+   "sound": "pour"
+  },
+  {
+   "query": "honey food",
+   "uses": [
+    "subject"
+   ],
+   "take": 2,
+   "sound": "pour"
+  },
+  {
+   "query": "honey dripping",
+   "uses": [
+    "drip",
+    "liquid",
+    "pour"
+   ],
+   "take": 3,
+   "sound": "pour"
+  },
+  {
+   "query": "honeycomb",
+   "uses": [
+    "subject",
+    "macro"
+   ],
+   "take": 2,
+   "sound": "pour"
+  }
+ ],
+ "off": [
+  "cartoon",
+  "drawing",
+  "logo",
+  "advert"
+ ],
+ "word_uses": [
+  [
+   "honey",
+   [
+    "subject"
+   ]
+  ],
+  [
+   "pour",
+   [
+    "pour",
+    "liquid"
+   ]
+  ],
+  [
+   "drip",
+   [
+    "drip",
+    "liquid"
+   ]
+  ],
+  [
+   "melt",
+   [
+    "melt",
+    "liquid"
+   ]
+  ],
+  [
+   "crystal",
+   [
+    "crystal",
+    "macro"
+   ]
+  ],
+  [
+   "molecule",
+   [
+    "macro"
+   ]
+  ],
+  [
+   "heat",
+   [
+    "heat",
+    "subject"
+   ]
+  ],
+  [
+   "roast",
+   [
+    "roast"
+   ]
+  ],
+  [
+   "field",
+   [
+    "scale"
+   ]
+  ],
+  [
+   "farm",
+   [
+    "scale"
+   ]
+  ],
+  [
+   "inside",
+   [
+    "macro"
+   ]
+  ]
+ ],
+ "diagram": {
+  "key": "honey-cross-macro",
+  "subject": "honey",
+  "prompt": "a honey cut open in cross-section, its inner structure glowing softly, extreme macro, realistic"
+ }
+}

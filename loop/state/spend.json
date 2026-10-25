@@ -2375,10 +2375,109 @@
       "completion_tokens": 5860,
       "total_tokens": 14882,
       "cost_usd": 0
+    },
+    {
+      "at": "2026-10-25T20:11:38+00:00",
+      "slug": "why-do-chili-peppers-taste-hot",
+      "model": "claude-subscription/opus",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 3710,
+      "completion_tokens": 16335,
+      "total_tokens": 20045,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-25T20:12:33+00:00",
+      "slug": "why-do-chili-peppers-taste-hot",
+      "model": "claude-subscription/opus",
+      "attempt": 2,
+      "accepted": true,
+      "prompt_tokens": 8733,
+      "completion_tokens": 7150,
+      "total_tokens": 15883,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-25T20:15:13+00:00",
+      "slug": "why-does-coffee-taste-bitter",
+      "model": "claude-subscription/opus",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 3709,
+      "completion_tokens": 16743,
+      "total_tokens": 20452,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-25T20:15:57+00:00",
+      "slug": "why-does-coffee-taste-bitter",
+      "model": "claude-subscription/opus",
+      "attempt": 2,
+      "accepted": false,
+      "prompt_tokens": 8980,
+      "completion_tokens": 6143,
+      "total_tokens": 15123,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-25T20:16:39+00:00",
+      "slug": "why-does-coffee-taste-bitter",
+      "model": "claude-subscription/opus",
+      "attempt": 3,
+      "accepted": false,
+      "prompt_tokens": 14269,
+      "completion_tokens": 5673,
+      "total_tokens": 19942,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-25T20:17:16+00:00",
+      "slug": "why-does-coffee-taste-bitter",
+      "model": "claude-subscription/opus",
+      "attempt": 4,
+      "accepted": true,
+      "prompt_tokens": 19517,
+      "completion_tokens": 5481,
+      "total_tokens": 24998,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-25T20:18:53+00:00",
+      "slug": "why-does-honey-never-spoil",
+      "model": "claude-subscription/opus",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 3707,
+      "completion_tokens": 9213,
+      "total_tokens": 12920,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-25T20:19:35+00:00",
+      "slug": "why-does-honey-never-spoil",
+      "model": "claude-subscription/opus",
+      "attempt": 2,
+      "accepted": false,
+      "prompt_tokens": 8564,
+      "completion_tokens": 5630,
+      "total_tokens": 14194,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-25T20:20:10+00:00",
+      "slug": "why-does-honey-never-spoil",
+      "model": "claude-subscription/opus",
+      "attempt": 3,
+      "accepted": true,
+      "prompt_tokens": 13331,
+      "completion_tokens": 4956,
+      "total_tokens": 18287,
+      "cost_usd": 0
     }
   ],
   "total_usd": 10.175922,
-  "drafts_written": 100,
-  "average_usd_per_accepted_draft": 0.101759,
-  "updated": "2026-10-19T05:34:19+00:00"
+  "drafts_written": 103,
+  "average_usd_per_accepted_draft": 0.098795,
+  "updated": "2026-10-25T20:20:10+00:00"
 }

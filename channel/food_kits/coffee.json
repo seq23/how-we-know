@@ -1,0 +1,166 @@
+{
+ "_why": "visuals/food_kits.py; written by loop/food_author.py",
+ "food": "coffee",
+ "label": "COFFEE",
+ "words": [
+  "coffee",
+  "espresso"
+ ],
+ "queries": [
+  {
+   "query": "coffee",
+   "uses": [
+    "subject",
+    "scale"
+   ],
+   "take": 3,
+   "sound": "pour"
+  },
+  {
+   "query": "coffee close up",
+   "uses": [
+    "subject",
+    "macro"
+   ],
+   "take": 3,
+   "sound": "pour"
+  },
+  {
+   "query": "coffee slow motion",
+   "uses": [
+    "subject",
+    "pour"
+   ],
+   "take": 3,
+   "sound": "pour"
+  },
+  {
+   "query": "coffee macro",
+   "uses": [
+    "subject",
+    "macro"
+   ],
+   "take": 2,
+   "sound": "pour"
+  },
+  {
+   "query": "coffee kitchen",
+   "uses": [
+    "subject",
+    "process"
+   ],
+   "take": 2,
+   "sound": "pour"
+  },
+  {
+   "query": "coffee food",
+   "uses": [
+    "subject"
+   ],
+   "take": 2,
+   "sound": "pour"
+  },
+  {
+   "query": "coffee beans",
+   "uses": [
+    "subject",
+    "roast"
+   ],
+   "take": 3,
+   "sound": "pour"
+  },
+  {
+   "query": "coffee pour",
+   "uses": [
+    "pour",
+    "liquid"
+   ],
+   "take": 2,
+   "sound": "pour"
+  }
+ ],
+ "off": [
+  "cartoon",
+  "drawing",
+  "logo",
+  "advert"
+ ],
+ "word_uses": [
+  [
+   "coffee",
+   [
+    "subject"
+   ]
+  ],
+  [
+   "pour",
+   [
+    "pour",
+    "liquid"
+   ]
+  ],
+  [
+   "drip",
+   [
+    "drip",
+    "liquid"
+   ]
+  ],
+  [
+   "melt",
+   [
+    "melt",
+    "liquid"
+   ]
+  ],
+  [
+   "crystal",
+   [
+    "crystal",
+    "macro"
+   ]
+  ],
+  [
+   "molecule",
+   [
+    "macro"
+   ]
+  ],
+  [
+   "heat",
+   [
+    "heat",
+    "subject"
+   ]
+  ],
+  [
+   "roast",
+   [
+    "roast"
+   ]
+  ],
+  [
+   "field",
+   [
+    "scale"
+   ]
+  ],
+  [
+   "farm",
+   [
+    "scale"
+   ]
+  ],
+  [
+   "inside",
+   [
+    "macro"
+   ]
+  ]
+ ],
+ "diagram": {
+  "key": "coffee-cross-macro",
+  "subject": "coffee",
+  "prompt": "a coffee cut open in cross-section, its inner structure glowing softly, extreme macro, realistic"
+ }
+}

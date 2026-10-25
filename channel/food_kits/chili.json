@@ -1,0 +1,169 @@
+{
+ "_why": "visuals/food_kits.py; written by loop/food_author.py",
+ "food": "chili",
+ "label": "CHILI",
+ "words": [
+  "chili",
+  "chilli",
+  "pepper",
+  "jalapeno",
+  "capsicum"
+ ],
+ "queries": [
+  {
+   "query": "chili",
+   "uses": [
+    "subject",
+    "scale"
+   ],
+   "take": 3,
+   "sound": "sizzle"
+  },
+  {
+   "query": "chili close up",
+   "uses": [
+    "subject",
+    "macro"
+   ],
+   "take": 3,
+   "sound": "sizzle"
+  },
+  {
+   "query": "chili slow motion",
+   "uses": [
+    "subject",
+    "pour"
+   ],
+   "take": 3,
+   "sound": "sizzle"
+  },
+  {
+   "query": "chili macro",
+   "uses": [
+    "subject",
+    "macro"
+   ],
+   "take": 2,
+   "sound": "sizzle"
+  },
+  {
+   "query": "chili kitchen",
+   "uses": [
+    "subject",
+    "process"
+   ],
+   "take": 2,
+   "sound": "sizzle"
+  },
+  {
+   "query": "chili food",
+   "uses": [
+    "subject"
+   ],
+   "take": 2,
+   "sound": "sizzle"
+  },
+  {
+   "query": "red chili pepper",
+   "uses": [
+    "subject",
+    "heat"
+   ],
+   "take": 2,
+   "sound": "sizzle"
+  },
+  {
+   "query": "hot pepper",
+   "uses": [
+    "subject",
+    "heat"
+   ],
+   "take": 2,
+   "sound": "sizzle"
+  }
+ ],
+ "off": [
+  "cartoon",
+  "drawing",
+  "logo",
+  "advert"
+ ],
+ "word_uses": [
+  [
+   "chili",
+   [
+    "subject"
+   ]
+  ],
+  [
+   "pour",
+   [
+    "pour",
+    "liquid"
+   ]
+  ],
+  [
+   "drip",
+   [
+    "drip",
+    "liquid"
+   ]
+  ],
+  [
+   "melt",
+   [
+    "melt",
+    "liquid"
+   ]
+  ],
+  [
+   "crystal",
+   [
+    "crystal",
+    "macro"
+   ]
+  ],
+  [
+   "molecule",
+   [
+    "macro"
+   ]
+  ],
+  [
+   "heat",
+   [
+    "heat",
+    "subject"
+   ]
+  ],
+  [
+   "roast",
+   [
+    "roast"
+   ]
+  ],
+  [
+   "field",
+   [
+    "scale"
+   ]
+  ],
+  [
+   "farm",
+   [
+    "scale"
+   ]
+  ],
+  [
+   "inside",
+   [
+    "macro"
+   ]
+  ]
+ ],
+ "diagram": {
+  "key": "chili-cross-macro",
+  "subject": "chili",
+  "prompt": "a chili cut open in cross-section, its inner structure glowing softly, extreme macro, realistic"
+ }
+}
