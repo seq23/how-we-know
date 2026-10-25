@@ -1,14 +1,14 @@
 {
   "stage": "describe",
   "week": "2026-W43",
-  "at": "2026-10-24T01:56:13+00:00",
+  "at": "2026-10-25T01:32:17+00:00",
   "code": "DESCRIPTIONS_HELD",
   "message": "6 slug(s) got no search block: 20-what-is-the-midnight-zone (3 phrasings); 09-what-is-the-scariest-deep-sea-creature (3 phrasings); 18-why-does-black-smoker-water-not-boil (2 phrasings); how-does-quenching-harden-steel (3 phrasings); how-do-self-healing-materials-work (2 phrasings); 11-what-is-a-dumbo-octopus (3 phrasings)",
   "detail": null,
   "unblock": "Nothing to type: titles land first, then the next run describes them.",
   "disposition": "self_resolving",
-  "disposition_why": "No search block could be prepared for these slugs: no passing title yet, or fewer than four real autocomplete phrasings. Retried daily. (run 4 of at most 7 before this escalates to a human.)",
-  "consecutive": 4,
+  "disposition_why": "No search block could be prepared for these slugs: no passing title yet, or fewer than four real autocomplete phrasings. Retried daily. (run 5 of at most 7 before this escalates to a human.)",
+  "consecutive": 5,
   "held_items": [
     "09-what-is-the-scariest-deep-sea-creature",
     "11-what-is-a-dumbo-octopus",
