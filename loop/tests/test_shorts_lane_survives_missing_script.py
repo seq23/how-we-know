@@ -204,12 +204,30 @@ for s in live_food:
         fails.append(f"1b: food_entries() names {s!r}, which has no scripts/food/ script")
     if s in live_written or s in live_unwritten:
         fails.append(f"1b: food episode {s!r} is also a batch or Monday row")
+# 2026-10-25 (#235): the food class is EVERY food row (batch_queue.is_food,
+# the one definition), made or not yet made - a food row with no scripts/food/
+# script is still the food pipeline's, never the Monday lane's or the batch's.
+# Six such rows were authored into scripts/*.md and batch-rendered because the
+# old class was only "scripts/food/<slug>.md exists".
+live_food_rows = [r["slug"] for r in batch_queue.food_rows()]
+if not live_food_rows:
+    fails.append("1b: no food row in the live queue - the food class examined nothing")
+for s in live_food_rows:
+    if s in live_written or s in live_unwritten:
+        fails.append(f"1b: food row {s!r} is also a batch or Monday row")
+if not set(live_food) <= set(live_food_rows):
+    fails.append("1b: a food-pipeline episode is not in food_rows()")
 uncovered = [s for s in live_queued
              if s not in live_written and s not in live_unwritten
-             and s not in live_held and s not in live_food]
+             and s not in live_held and s not in live_food_rows]
 if uncovered:
-    fails.append(f"1b: queued rows that are neither written, unwritten, food-made nor "
+    fails.append(f"1b: queued rows that are neither written, unwritten, food nor "
                  f"held: {uncovered}")
+# EXACTLY ONE class each: a row in two classes is two lanes' to make.
+for s in live_queued:
+    n = sum(s in c for c in (set(live_written), set(live_unwritten), set(live_food_rows)))
+    if n > 1:
+        fails.append(f"1b: {s!r} is in {n} of written / unwritten / food")
 
 # ---------------------------------- 3. the batch script keeps its Shorts
 batch = (ROOT / "bin" / "batch-session.sh").read_text()

@@ -363,15 +363,81 @@ def unwritten_by_domain() -> dict[str, int]:
 # belongs to the upload lane alone, which ships it once its render and its
 # episode spec pass the food contract (visuals/food.check_episode).
 FOOD_SCRIPTS = ROOT / "scripts" / "food"
+FOOD_DOMAIN = "food-science"
+
+
+def _row_domain(r: dict) -> str | None:
+    d = r.get("domain")
+    if d:
+        return d
+    f = r.get("_domain_file")
+    if not f:
+        return None
+    try:
+        return json.loads((ROOT / "research" / f).read_text()).get("domain")
+    except (OSError, ValueError):
+        return None
+
+
+def is_food(slug_or_row) -> bool:
+    """THE ONE DEFINITION of "a food video" (2026-10-25). A queue row, or a
+    slug, whose domain is food-science - by the row's own `domain`, its
+    publish-order file's, or its script's **Domain:** line.
+
+    Every reader decides food-ness HERE: unwritten_entries() (the Monday lane
+    may not author one into scripts/), written_entries() (the Mac's batch may
+    not narrate or render one), loop/backfill.food_hold() (the upload lane's
+    food contract) and loop/cloud_upload.diagnose_empty_shelf(). Until this
+    existed the producer side asked food_made() - "is scripts/food/<slug>.md
+    on disk?" - while the contract asked the domain. A food-science row with
+    no food-pipeline script was therefore the Monday lane's to author and the
+    batch's to render: mon-draft (6b650ac, 19 Oct 2026) wrote six food
+    topics into scripts/*.md, the batch rendered them as ~11-minute
+    explainers with no episode spec, and the contract held all six on every
+    upload run while NOTHING_SHELVED blamed the Mac (#235). Only the food
+    pipeline (visuals/food_episode.py) makes a food video, and its stitch
+    writes channel/specs/<slug>.json from the render it just made.
+    Guarded by V72 and loop/tests/test_food_one_definition.py."""
+    if isinstance(slug_or_row, dict):
+        d = _row_domain(slug_or_row)
+        if d:
+            return d == FOOD_DOMAIN
+        slug = slug_or_row.get("slug")
+    else:
+        slug = slug_or_row
+        for r in _raw_entries():
+            if r.get("slug") == slug:
+                d = _row_domain(r)
+                if d:
+                    return d == FOOD_DOMAIN
+                break
+    import domains as _dom                                 # noqa: PLC0415
+    return _dom.domain_of_slug(str(slug)) == FOOD_DOMAIN
 
 
 def food_made(slug: str) -> bool:
+    """The food pipeline wrote this episode's script (scripts/food/<slug>.md)."""
     return (FOOD_SCRIPTS / f"{slug}.md").exists()
+
+
+def food_batch_made(slug: str) -> bool:
+    """A food video made the wrong way: a food-science slug whose script is in
+    the nightly batch's scripts/<slug>.md and not the food pipeline's. Its
+    render (if any) never had an episode spec and never will - the contract
+    holds it by name, it stays on the shelf, and it is never uploaded."""
+    return ((ROOT / "scripts" / f"{slug}.md").exists()
+            and not food_made(slug) and is_food(slug))
 
 
 def food_entries() -> list[dict]:
     """Queue rows made by the food pipeline. Best first."""
     return [r for r in queued_entries() if food_made(r["slug"])]
+
+
+def food_rows() -> list[dict]:
+    """Every queued food row (is_food): the food pipeline's alone, made or
+    not yet made. food_entries() is the made subset. Best first."""
+    return [r for r in queued_entries() if is_food(r) or food_made(r["slug"])]
 
 
 def unwritten_entries() -> list[dict]:
@@ -385,7 +451,8 @@ def unwritten_entries() -> list[dict]:
     return [r for r in queued_entries()
             if r["slug"] not in holds
             and not (ROOT / "scripts" / f"{r['slug']}.md").exists()
-            and not food_made(r["slug"])]
+            and not food_made(r["slug"])
+            and not is_food(r)]
 
 
 def written_entries() -> list[dict]:
@@ -402,11 +469,13 @@ def written_entries() -> list[dict]:
     `unwritten_entries()` and the ONE definition of "the batch's queue", so
     the writer (draft.py) and the batch cannot disagree about whose row a
     slug is: unwritten rows belong to Monday, written rows to the Mac, and
-    every queued row is exactly one or the other (or held).
+    every queued row is exactly one or the other (or held) - except a food
+    row (is_food), which is neither: only the food pipeline makes it.
     """
     return [r for r in queued_entries()
             if (ROOT / "scripts" / f"{r['slug']}.md").exists()
-            and not food_made(r["slug"])]
+            and not food_made(r["slug"])
+            and not is_food(r)]
 
 
 def written_slugs() -> list[str]:

@@ -185,7 +185,9 @@ def diagnose_empty_shelf(queued: list[str], done: set[str], held: set[str],
                          runway: dict | None = None,
                          refused: set | None = None,
                          shelf=None,
-                         heartbeat: dict | None = None) -> dict:
+                         heartbeat: dict | None = None,
+                         food: set | None = None,
+                         written: set | None = None) -> dict:
     """WHY the shelf holds nothing to upload, worked out from state this lane
     can already read. Returns the named stop to raise.
 
@@ -264,9 +266,32 @@ def diagnose_empty_shelf(queued: list[str], done: set[str], held: set[str],
     # refuses to author a held slug in the first place. Read early so both
     # this check and the promotion-hold check below agree on one register.
     promotion_holds_now = set(promotion_held or {})
-    awaiting_mac = [s for s in queued
+    pending_rows = [s for s in queued
                     if s not in done and s not in held
                     and s not in promotion_holds_now]
+    # ONLY THE BATCH'S ROWS WAIT ON THE MAC (2026-10-25, #235). The Mac
+    # narrates and renders exactly batch_queue.written_entries(): a row with
+    # scripts/<slug>.md that is not food. A FOOD row (batch_queue.is_food, the
+    # one definition) is the food pipeline's alone, and an UNWRITTEN row is
+    # the Monday authoring lane's. Counting either here blamed the Mac for
+    # work it is forbidden to do: from 22 Oct this stop named six food renders
+    # the contract holds as "shelved without a thumbnail" and five steel topics
+    # nobody had written yet as "waiting on the Mac", until the streak paged.
+    # `food` / `written` default to the repository's own answer (the one
+    # definition); a caller or test may name them for slugs not on disk.
+    is_food = (lambda s: s in food) if food is not None else batch_queue.is_food
+    has_script = ((lambda s: s in written) if written is not None
+                  else (lambda s: (ROOT / "scripts" / f"{s}.md").exists()))
+    food_rows = [s for s in pending_rows if is_food(s)]
+    food_wrong = [s for s in food_rows
+                  if has_script(s) and not batch_queue.food_made(s)]
+    unwritten = [s for s in pending_rows if s not in food_rows
+                 and not has_script(s)]
+    awaiting_mac = [s for s in pending_rows
+                    if s not in food_rows and s not in unwritten]
+    lanes_detail = {"food_pipeline": food_rows,
+                    "food_made_by_batch_held": food_wrong,
+                    "awaiting_authoring": unwritten}
     if awaiting_mac:
         # NAME THE BLOCKER THE CLOUD CAN SEE, FIRST. "Waiting on the Mac" was
         # true of #143 only in the sense that the Mac had rendered, pushed and
@@ -311,8 +336,42 @@ def diagnose_empty_shelf(queued: list[str], done: set[str], held: set[str],
                                "renders_finished": (heartbeat or {}).get("renders_finished"),
                                "held": ((heartbeat or {}).get("batch") or {}).get("held")},
                            "render_gate_held": held_q,
+                           **lanes_detail,
                            "queued": len(queued), "uploaded": len(done & queued_set)},
                 "unblock": unblock,
+                "held_items": None}
+    if food_rows or unwritten:
+        parts = []
+        if unwritten:
+            parts.append(f"{len(unwritten)} queued topic(s) have no script yet "
+                         f"and wait on the Monday authoring lane (loop/draft.py): "
+                         f"{', '.join(unwritten[:8])}"
+                         f"{' ...' if len(unwritten) > 8 else ''}.")
+        if food_rows:
+            made = [s for s in food_rows if s not in food_wrong]
+            parts.append(f"{len(food_rows)} queued food topic(s) are the food "
+                         f"pipeline's (visuals/food_episode.py; its stitch "
+                         f"writes channel/specs/<slug>.json), never the Mac "
+                         f"batch's"
+                         + (f"; {len(food_wrong)} of them were rendered by the "
+                            f"nightly batch as standard explainers before the "
+                            f"one food definition existed and are held by the "
+                            f"food contract - kept on the shelf, never uploaded: "
+                            f"{', '.join(food_wrong)}" if food_wrong else "")
+                         + (f"; waiting on a food-pipeline episode: "
+                            f"{', '.join(made[:8])}" if made else "")
+                         + ".")
+        return {"code": "QUEUE_AWAITING_PRODUCTION",
+                "message": "Nothing on the shelf to upload, and the Mac is not "
+                           "the one behind: " + " ".join(parts) + " "
+                           + mac_heartbeat_line(heartbeat),
+                "detail": {**lanes_detail, "render_gate_held": held_q,
+                           "queued": len(queued),
+                           "uploaded": len(done & queued_set)},
+                "unblock": "Nothing for a person: the Monday lane authors the "
+                           "unwritten topics and the food pipeline makes the "
+                           "food episodes; this lane uploads each one the run "
+                           "after it is shelved.",
                 "held_items": None}
 
     # Everything queued is uploaded (or held by the gate). Look upstream.

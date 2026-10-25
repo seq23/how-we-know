@@ -59,6 +59,16 @@ STRANDED = ["how-do-scientists-know-so-much",
             "how-do-scientists-know-about-other-galaxies"]
 
 
+def diag(*a, **k):
+    """The fixture's ep-NN rows are WRITTEN batch rows (scripts the Mac
+    narrates), and none is food: said explicitly, because since 2026-10-25
+    (#235) only those wait on the Mac - unwritten rows are the Monday lane's
+    and food rows the food pipeline's (test_food_one_definition.py)."""
+    k.setdefault("written", set(QUEUED))
+    k.setdefault("food", set())
+    return CU.diagnose_empty_shelf(*a, **k)
+
+
 def rows(slugs, status="queued"):
     return [{"slug": s, "status": status} for s in slugs]
 
@@ -70,7 +80,7 @@ def blames_mac(why: dict) -> bool:
 
 # -- 1. the 2026-09-22 state -------------------------------------------------
 examined += 1
-why = CU.diagnose_empty_shelf(QUEUED, set(QUEUED), set(), rows(STRANDED))
+why = diag(QUEUED, set(QUEUED), set(), rows(STRANDED))
 if why["code"] != "AUTHORED_NOT_QUEUED":
     fails.append(f"the 2026-09-22 state was diagnosed {why['code']}, not "
                  f"AUTHORED_NOT_QUEUED")
@@ -108,7 +118,7 @@ if "AUTHORED_NOT_QUEUED" in policy.get("self_resolving", {}):
 # -- 2. queued episodes still waiting on the Mac ------------------------------
 examined += 1
 waiting = QUEUED[30:]
-why = CU.diagnose_empty_shelf(QUEUED, set(QUEUED[:30]), set(), rows(STRANDED))
+why = diag(QUEUED, set(QUEUED[:30]), set(), rows(STRANDED))
 if why["code"] != "NOTHING_SHELVED":
     fails.append(f"episodes not yet uploaded gave {why['code']}, not "
                  f"NOTHING_SHELVED")
@@ -118,7 +128,7 @@ if why["detail"].get("awaiting_mac") != waiting:
 
 # -- 3. render-gate holds are not the Mac's fault -----------------------------
 examined += 1
-why = CU.diagnose_empty_shelf(QUEUED, set(QUEUED[:33]), {QUEUED[33]}, [])
+why = diag(QUEUED, set(QUEUED[:33]), {QUEUED[33]}, [])
 if why["code"] == "NOTHING_SHELVED":
     fails.append("an episode held by the render gate was blamed on the Mac")
 if why["detail"].get("render_gate_held") != [QUEUED[33]]:
@@ -126,7 +136,7 @@ if why["detail"].get("render_gate_held") != [QUEUED[33]]:
 
 # -- 4. used up, nothing stranded ---------------------------------------------
 examined += 1
-why = CU.diagnose_empty_shelf(QUEUED, set(QUEUED), set(), [])
+why = diag(QUEUED, set(QUEUED), set(), [])
 if why["code"] != "PUBLISH_QUEUE_UPLOADED":
     fails.append(f"a fully uploaded queue gave {why['code']}")
 if blames_mac(why):
@@ -146,7 +156,7 @@ examined += 1
 past = (rows(["a"], "dropped") + rows(["b"], "rendered")
         + rows(["c"], "published") + rows([QUEUED[0]], "queued")
         + [{"status": "queued"}])
-why = CU.diagnose_empty_shelf(QUEUED, set(QUEUED) | {"d"}, set(),
+why = diag(QUEUED, set(QUEUED) | {"d"}, set(),
                               past + rows(["d"], "approved"))
 if why["code"] != "PUBLISH_QUEUE_UPLOADED":
     fails.append(f"finished/dropped/queued/uploaded rows were read as stranded:"
@@ -182,7 +192,7 @@ hb = {"batch": {"last_run_at": "2026-10-03T11:49:54+00:00", "ok": True,
                 "held": ["held-one"]},
       "renders_finished": 36}
 shelf = FakeShelf({QUEUED[31]})
-why = CU.diagnose_empty_shelf(QUEUED, set(QUEUED[:30]), set(), rows(STRANDED),
+why = diag(QUEUED, set(QUEUED[:30]), set(), rows(STRANDED),
                               shelf=shelf, heartbeat=hb)
 if why["code"] != "NOTHING_SHELVED":
     fails.append(f"shelved-without-thumbnail gave {why['code']}")
@@ -206,7 +216,7 @@ if shelf.heads > 2 * len(QUEUED[30:]):
                  f"is fetching more than two sidecars per episode")
 # Without a shelf or heartbeat the stop still names the waiting slugs and says
 # the heartbeat is missing rather than inventing one.
-why = CU.diagnose_empty_shelf(QUEUED, set(QUEUED[:30]), set(), rows(STRANDED))
+why = diag(QUEUED, set(QUEUED[:30]), set(), rows(STRANDED))
 if "No Mac heartbeat is committed" not in why["message"]:
     fails.append("a missing heartbeat is not said to be missing")
 if why["detail"].get("shelved_without_thumbnail") != []:
@@ -214,10 +224,10 @@ if why["detail"].get("shelved_without_thumbnail") != []:
 
 # -- 6. never 'finished' by default -------------------------------------------
 examined += 1
-why = CU.diagnose_empty_shelf([], set(), set(), [])
+why = diag([], set(), set(), [])
 if why["code"] != "PUBLISH_QUEUE_EMPTY":
     fails.append(f"a queue with zero rows gave {why['code']}")
-why = CU.diagnose_empty_shelf(QUEUED, set(QUEUED), set(), None)
+why = diag(QUEUED, set(QUEUED), set(), None)
 if why["code"] != "NO_QUEUE":
     fails.append(f"a missing loop/render_queue.json gave {why['code']}, so "
                  f"'could not look upstream' reads as 'nothing upstream'")

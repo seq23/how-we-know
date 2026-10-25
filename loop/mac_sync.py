@@ -62,6 +62,10 @@ def _git(*args: str, check: bool = False) -> subprocess.CompletedProcess:
                           capture_output=True, check=check)
 
 
+def _repo() -> Path:
+    return Path(os.environ.get("MAC_SYNC_REPO") or ROOT)
+
+
 def _now() -> str:
     return dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
 
@@ -175,6 +179,115 @@ def set_aside(paths: list[str]) -> list[str]:
     return kept
 
 
+# ---------------------------------------------------------------- two-writer state
+
+# LOOP-STATE FILES TWO HOSTS WRITE, AND HOW TO MERGE THEM (2026-10-25, #235).
+# The Mac commits loop/state/comments/ledger.json (boss-os's comment watch runs
+# loop/comments.py here, then `mac_sync.py push --lane comments`) and the cloud
+# handoff lane writes the same file when it posts a channel comment; both bump
+# loop/state/stops/_streaks.json. On 21 Oct 2026 14:05 the Mac's commit
+# (9cba7cc) could not push, its rebase conflicted with the cloud's handoff
+# commit, push() aborted and LEFT THE COMMIT ON MAIN - and from then every
+# pull() failed on the same conflict: PULL_FAILED, "the night is refused",
+# four nights with nothing rendered, and a stop file that could not reach
+# origin because the push was the thing failing. Both writers only ADD to
+# these files (keyed records, append-only lists), so a merge that keeps both
+# sides' records is exact, not a guess. Only these named files are merged;
+# any other conflict is still PULL_FAILED. Guarded by
+# loop/tests/test_mac_sync_two_writer_merge.py.
+
+def _merge_records(a: dict, b: dict, newer_key: str | None = None) -> dict:
+    out = dict(a)
+    for k, v in b.items():
+        if k not in out:
+            out[k] = v
+        elif isinstance(out[k], dict) and isinstance(v, dict):
+            if newer_key and (str(v.get(newer_key) or "") > str(out[k].get(newer_key) or "")):
+                out[k] = v
+            elif not newer_key:
+                out[k] = _merge_records(out[k], v)
+        elif isinstance(out[k], list) and isinstance(v, list):
+            seen = {json.dumps(x, sort_keys=True) for x in out[k]}
+            out[k] = out[k] + [x for x in v if json.dumps(x, sort_keys=True) not in seen]
+        elif isinstance(v, str) and isinstance(out[k], str) and k in ("updated", "last_at"):
+            out[k] = max(out[k], v)
+    return out
+
+
+def merge_comments_ledger(upstream: dict, mac: dict) -> dict:
+    """Every record either side holds: cursors/seen/channel_comments keyed by
+    id (the Mac's newer sweep wins a shared key), actions/sweeps appended."""
+    out = _merge_records(upstream, mac)
+    for k in ("cursors", "seen", "instructions", "channel_comments"):
+        if isinstance(mac.get(k), dict) and isinstance(upstream.get(k), dict):
+            out[k] = {**upstream[k], **mac[k]}
+    return out
+
+
+def merge_streaks(upstream: dict, mac: dict) -> dict:
+    """Keyed by stage; each host owns its own stages. A stage both touched
+    keeps the record with the later last_at."""
+    return _merge_records(upstream, mac, newer_key="last_at")
+
+
+TWO_WRITER_MERGE = {
+    "loop/state/comments/ledger.json": merge_comments_ledger,
+    "loop/state/stops/_streaks.json": merge_streaks,
+}
+
+
+def _resolve_two_writer_rebase(max_steps: int = 50) -> tuple[bool, list[str]]:
+    """Inside a stopped rebase: merge every conflicted path that is in
+    TWO_WRITER_MERGE and continue, until the rebase finishes. Returns
+    (finished, merged paths). Any other conflicted path -> (False, ...) and
+    the caller aborts. Stage 2 is upstream (the base being rebuilt), stage 3
+    the Mac's commit being replayed."""
+    merged: list[str] = []
+    for _ in range(max_steps):
+        unmerged = [p for p in _git("diff", "--name-only", "--diff-filter=U").stdout.split("\n") if p]
+        if not unmerged:
+            c = _git("-c", "core.editor=true", "rebase", "--continue")
+            if c.returncode == 0 and not _rebase_in_progress():
+                return True, merged
+            if not _rebase_in_progress():
+                return False, merged
+            continue
+        if any(p not in TWO_WRITER_MERGE for p in unmerged):
+            return False, merged
+        for p in unmerged:
+            try:
+                up = json.loads(_git("show", f":2:{p}").stdout or "{}")
+                mac = json.loads(_git("show", f":3:{p}").stdout or "{}")
+            except ValueError:
+                return False, merged
+            write_json(_repo() / p, TWO_WRITER_MERGE[p](up, mac))
+            _git("add", "--", p)
+            merged.append(p)
+    return False, merged
+
+
+def _rebase_in_progress() -> bool:
+    gd = _git("rev-parse", "--git-dir").stdout.strip() or ".git"
+    gdp = Path(gd) if Path(gd).is_absolute() else _repo() / gd
+    return (gdp / "rebase-merge").exists() or (gdp / "rebase-apply").exists()
+
+
+def _rebase_onto_upstream() -> tuple[bool, str]:
+    """`git pull --rebase --autostash origin main`, healing a two-writer
+    loop-state conflict instead of failing on it."""
+    r = _git("pull", "--rebase", "--autostash", "origin", "main")
+    if r.returncode == 0:
+        return True, (r.stdout.strip().splitlines() or ["up to date"])[-1]
+    if _rebase_in_progress():
+        done, merged = _resolve_two_writer_rebase()
+        if done:
+            return True, (f"merged both writers' records in {', '.join(sorted(set(merged)))} "
+                          f"and rebased the Mac's commits onto origin/main")
+        _git("rebase", "--abort")
+    tail = (r.stderr.strip() or r.stdout.strip()).splitlines()[-2:]
+    return False, "pull --rebase failed: " + " / ".join(tail)
+
+
 def pull(base: str = "origin/main") -> tuple[bool, str]:
     """Bring main up to date. Returns (ok, message). Never raises."""
     if off_main_reason():
@@ -197,12 +310,12 @@ def pull(base: str = "origin/main") -> tuple[bool, str]:
             _git("checkout", "--", *tracked)
         notes.append(f"took upstream for {len(collide)} loop-state file(s) the "
                      f"Mac had touched; the Mac's copies are in {LOCAL.relative_to(ROOT)}/")
-    r = _git("pull", "--rebase", "--autostash", "origin", "main")
-    if r.returncode != 0:
-        tail = (r.stderr.strip() or r.stdout.strip()).splitlines()[-2:]
+    ok, rmsg = _rebase_onto_upstream()
+    if not ok:
         # Leave nothing half-done: a stranded rebase blocks every later run.
-        _git("rebase", "--abort")
-        return False, "; ".join(notes + ["pull --rebase failed: " + " / ".join(tail)])
+        if _rebase_in_progress():
+            _git("rebase", "--abort")
+        return False, "; ".join(notes + [rmsg])
     # A PERSON'S EDIT THAT CONFLICTS is the one thing left that can go wrong,
     # and git handles it quietly: the autostash fails to re-apply, exit 0, the
     # edit is kept in `git stash list` and the working tree is left with
@@ -216,7 +329,7 @@ def pull(base: str = "origin/main") -> tuple[bool, str]:
         return False, "; ".join(notes + [
             f"a local edit conflicts with upstream in {', '.join(unmerged)}; the edit is "
             f"kept in `git stash list` and the file(s) are at upstream's version"])
-    return True, "; ".join(notes + [(r.stdout.strip().splitlines() or ["up to date"])[-1]])
+    return True, "; ".join(notes + [rmsg])
 
 
 # ---------------------------------------------------------------- heartbeat
@@ -298,10 +411,9 @@ def push(paths: list[str], message: str) -> tuple[bool, str]:
     if p.returncode != 0:
         # The cloud committed meanwhile. Rebase onto it once and retry; the
         # files here are the Mac's own, so a rebase cannot lose anyone's work.
-        r = _git("pull", "--rebase", "--autostash", "origin", "main")
-        if r.returncode != 0:
-            _git("rebase", "--abort")
-            return False, "push failed and the rebase to retry it failed; next run rebases"
+        ok, rmsg = _rebase_onto_upstream()
+        if not ok:
+            return False, f"push failed and the rebase to retry it failed ({rmsg}); next run rebases"
         p = _git("push", "origin", "main")
         if p.returncode != 0:
             return False, "push failed twice; next run retries"

@@ -150,11 +150,20 @@ def food_hold(slug: str) -> str | None:
     from the stitched render) and its proof frames are what is checked, so the
     cloud lane - which never sees the render's pixels until it downloads them -
     holds a failing food video by name. Not a food episode -> None."""
-    import domains as _dom                                 # noqa: PLC0415
-    if _dom.domain_of_slug(slug) != "food-science":
+    import batch_queue as _bq                              # noqa: PLC0415
+    # ONE definition of a food video (batch_queue.is_food), the same one the
+    # Monday lane and the Mac's batch read, so the producer and this contract
+    # can never again disagree about which slugs are food.
+    if not _bq.is_food(slug):
         return None
     spec_p = ROOT / "channel" / "specs" / f"{slug}.json"
     if not spec_p.exists():
+        if _bq.food_batch_made(slug):
+            return ("made by the nightly batch as a standard explainer "
+                    "(scripts/<slug>.md), not by the food pipeline, so it has "
+                    "no episode spec and never will - only visuals/food_episode.py "
+                    "stitch makes a food video and writes channel/specs/<slug>.json; "
+                    "the render stays on the shelf and is never uploaded")
         return "no episode spec at channel/specs/<slug>.json - a food video ships only with one"
     sys.path.insert(0, str(ROOT / "visuals"))
     import food_episode as _fe                             # noqa: PLC0415
