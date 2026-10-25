@@ -7,7 +7,13 @@ last spoken beat. Four materials renders shipped that way and V13 caught them.
 
 Proved on the REAL beat durations of those four episodes, not on invented
 numbers, because the defect is an accumulation and only real data accumulates
-the same way.
+the same way. Those durations are frozen in
+loop/tests/fixtures/frame_allocation_v13_beats.json (as V13 measured them on
+2026-09-05), so the proof runs in CI and a later re-voice of an episode cannot
+silently move the numbers under it - which is exactly what happened when
+what-is-carbon-fiber-made-of beats 41-42 were re-voiced on 2026-09-08 and its
+live shortfall became -0.104s. When the audio is on this machine, the current
+files are checked as well: the new allocation must cover whatever is there now.
 
   1. the old per-beat rounding reproduces the exact shortfall V13 reported
   2. the drift-corrected allocation is never short, on any of the four
@@ -33,9 +39,9 @@ sys.path.insert(0, os.path.join(ROOT, "visuals"))
 
 FPS = 30
 CHECKS = 0
+FIXTURE = os.path.join(HERE, "fixtures", "frame_allocation_v13_beats.json")
 
-# The four V13 caught, and what it measured. The audio is on disk; these are
-# the numbers the validator reported, kept so a regression is recognisable.
+# The four V13 caught, and what it measured on the fixture's durations.
 KNOWN_SHORT = {
     "how-does-tempered-glass-shatter": -0.051,
     "how-is-damascus-steel-made": -0.089,
@@ -69,6 +75,21 @@ def new_allocation(durs: list) -> list:
     return frames
 
 
+def covers(label: str, durs: list) -> None:
+    """The drift-corrected allocation covers the narration, within a frame."""
+    total = sum(durs)
+    frames = new_allocation(durs)
+    new_s = sum(frames) / FPS
+    check(f"{label}: the new allocation is never short",
+          new_s >= total,
+          f"new allocation gave {new_s:.3f}s for {total:.3f}s of audio")
+    check(f"{label}: and does not overshoot by more than a frame",
+          new_s - total <= 1.0 / FPS + 1e-9,
+          f"overshoot {new_s - total:.4f}s")
+    check(f"{label}: every beat keeps at least one frame",
+          all(f >= 1 for f in frames) and len(frames) == len(durs))
+
+
 def probe(path: str) -> float:
     out = subprocess.run(
         ["ffprobe", "-v", "error", "-show_entries", "format=duration",
@@ -87,8 +108,34 @@ def main() -> int:
     check("assemble.py asserts the allocation covers the narration",
           "the mux would clip the last beat" in src)
 
-    examined = 0
+    # 1. The frozen V13 data: always present, so this runs everywhere.
+    with open(FIXTURE, encoding="utf-8") as fh:
+        fixture = json.load(fh)
+    check("fixture is at the frame rate assemble.py renders",
+          fixture.get("fps") == FPS, f"fixture fps {fixture.get('fps')}")
+    episodes = fixture.get("episodes", {})
+    check("fixture holds every episode V13 caught, and only those",
+          set(episodes) == set(KNOWN_SHORT),
+          f"fixture has {sorted(episodes)}")
     for slug, reported in KNOWN_SHORT.items():
+        durs = [max(0.4, float(x)) for x in episodes[slug]]
+        check(f"{slug} (fixture): has real beats",
+              len(durs) >= 50, f"only {len(durs)} beats")
+        total = sum(durs)
+        old_s = old_allocation(durs) / FPS
+        check(f"{slug} (fixture): the old rounding really was short",
+              old_s < total,
+              f"old allocation gave {old_s:.3f}s for {total:.3f}s of audio")
+        check(f"{slug} (fixture): the shortfall matches what V13 reported",
+              abs((old_s - total) - reported) < 0.01,
+              f"got {old_s - total:+.3f}s, V13 reported {reported:+.3f}s")
+        covers(f"{slug} (fixture)", durs)
+
+    # 2. The audio as it is now, when it is on this machine. A re-voice changes
+    #    the durations (and so the old shortfall), but the new allocation must
+    #    still cover them - derived from the files, never from pinned numbers.
+    examined = 0
+    for slug in KNOWN_SHORT:
         d = os.path.join(ROOT, "audio", slug)
         if not os.path.isdir(d):
             continue                      # audio lives on the Mac, not in CI
@@ -96,33 +143,13 @@ def main() -> int:
         if not wavs:
             continue
         durs = [max(0.4, probe(os.path.join(d, w))) for w in wavs]
-        total = sum(durs)
         examined += 1
-
-        old_s = old_allocation(durs) / FPS
-        check(f"{slug}: the old rounding really was short",
-              old_s < total,
-              f"old allocation gave {old_s:.3f}s for {total:.3f}s of audio")
-        check(f"{slug}: the shortfall matches what V13 reported",
-              abs((old_s - total) - reported) < 0.01,
-              f"got {old_s - total:+.3f}s, V13 reported {reported:+.3f}s")
-
-        frames = new_allocation(durs)
-        new_s = sum(frames) / FPS
-        check(f"{slug}: the new allocation is never short",
-              new_s >= total,
-              f"new allocation gave {new_s:.3f}s for {total:.3f}s of audio")
-        check(f"{slug}: and does not overshoot by more than a frame",
-              new_s - total <= 1.0 / FPS + 1e-9,
-              f"overshoot {new_s - total:.4f}s")
-        check(f"{slug}: every beat keeps at least one frame",
-              all(f >= 1 for f in frames) and len(frames) == len(durs))
+        covers(f"{slug} (current audio)", durs)
 
     if examined == 0:
-        # CI has no audio. The synthetic cases below still have to run, and the
-        # source checks above already ran, so this is a legitimate partial - but
-        # it must be said out loud rather than passing silently.
-        print("  note: no audio on this machine; real-episode checks skipped")
+        # CI has no audio. The fixture checks above are the real-data proof;
+        # say out loud that the live files were not re-checked.
+        print("  note: no audio on this machine; current-audio checks skipped")
 
     # Worst case for rounding: every beat exactly on a half-frame boundary.
     half = [0.5 / FPS + 1.0] * 200
