@@ -235,7 +235,10 @@ for now, want in [("2026-10-13T07:30", 1), ("2026-10-13T02:00", 0),
     check(rc == want, f"(e) narration-window at {now} = {rc}, want {want}")
 src = SCRIPT.read_text()
 _lh = src[src.index("lock_holder() {"):src.index("take_lock() {")]
-check("| grep" not in _lh and 'case "$cmd" in *batch-session*)' in _lh,
+# the food lane (bin/food-session.sh, 2026-10-25) holds this same lock on its
+# nights: a live food session is a live holder, so the batch never narrates
+# beside it - and the match is still one `case`, never a pipe
+check("| grep" not in _lh and 'case "$cmd" in *batch-session*|*food-session*)' in _lh,
       "(d) lock_holder() pipes ps into grep again - the pipefail/SIGPIPE race is back")
 check('if [ -n "${pending_audio// }" ] && ! narration_allowed; then' in src,
       "(e) phase_narrate no longer consults narration_allowed")
@@ -258,8 +261,10 @@ check(bool(prog_args) and prog_args[-1].endswith(
       f"(f) program: {prog_args}")
 check(pl.get("RunAtLoad") is True, "(f) RunAtLoad must be true (check at login)")
 inst = (ROOT / "bin" / "loop-install-launchd.sh").read_text()
-check('AGENT_NAMES="batch nightquit batch-resume"' in inst
-      and 'print_one batch-resume > "$AGENTS/com.howweknow.batch-resume.plist"' in inst,
+check('AGENT_NAMES="batch nightquit batch-resume food backfill"' in inst
+      and 'print_one batch-resume > "$AGENTS/com.howweknow.batch-resume.plist"' in inst
+      and 'print_one food > "$AGENTS/com.howweknow.food.plist"' in inst
+      and 'print_one backfill > "$AGENTS/com.howweknow.backfill.plist"' in inst,
       "(f) --install does not write and load com.howweknow.batch-resume")
 
 # -- g. the incomplete-night report reaches heartbeat + stop file ---------

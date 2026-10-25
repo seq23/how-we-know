@@ -640,6 +640,15 @@ for _s in SHOTS:
     if _s["need"] in SOUND_FOR:
         _s["sound"] = SOUND_FOR[_s["need"]]
 
+# KIT SEGMENTS (2026-10-25): every food past the first episode's three comes
+# from its kit (channel/food_kits/<food>.json, visuals/food_kits.py), written
+# by the food author lane. Built-in needs above are never overridden by a kit.
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "visuals"))
+import food_kits as _kits                                   # noqa: E402
+KIT_SHOTS = [x for k in _kits.load_all().values() for x in _kits.shots(k)]
+_have = {x["need"] for x in SHOTS}
+SHOTS += [x for x in KIT_SHOTS if x["need"] not in _have]
+
 # Looked at and refused, with the reason (source:id -> why).
 REFUSED: dict[str, str] = {
     "pixabay:307248": "Pixabay marks it AI-generated (type animation)",
@@ -800,7 +809,10 @@ def _head(c: dict) -> str:
 
 def strict(c: dict, shot: dict) -> bool:
     h = _head(c)
-    return (any(w in h for w in shot["must"][0]) and not any(w in h for w in OFF_SUBJECT)
+    # a kit shot carries its own off-subject words: OFF_SUBJECT is the first
+    # episode's (it refuses "coffee" and "milk", which a coffee segment needs)
+    off = shot["off"] if "off" in shot else OFF_SUBJECT
+    return (any(w in h for w in shot["must"][0]) and not any(w in h for w in off)
             and matches(c, shot))
 
 
@@ -932,6 +944,7 @@ def _record(pick: dict, shot: dict, meta: dict, blob: bytes) -> dict:
         "source_org": meta.get("source_org") or who, "depicts": "video",
         "subject_basis": shot["basis"], "uses": shot["uses"], "sound": shot.get("sound"),
         "segment": shot.get("segment", "chocolate"),
+        **({"kit": shot["kit"]} if shot.get("kit") else {}),
         "ai_generated": False, **probe(CLIPS / fname),
         **shot_extras(shot, f"{pick['source']}:{pick['id']}"),
     }
@@ -950,6 +963,90 @@ def shot_extras(shot: dict, uid: str) -> dict:
     if h is not None:
         out["hands"], out["hands_basis"] = bool(h[0]), h[1]
     return out
+
+
+# HANDS, MEASURED (2026-10-25). The first episode's hands answers are a
+# reviewed record (HANDS above, from contact sheets). A kit clip arrives with no
+# session to look at it, so its answer is MEASURED: Apple Vision's hand-pose
+# detector (VNDetectHumanHandPoseRequest, on this Mac, $0) on five frames of
+# the usable span. Any frame with a confident hand = hands. The basis is
+# recorded on the clip's row; visuals/food.hands_of reads it.
+_HANDS_SWIFT = r'''
+import Foundation
+import Vision
+for path in CommandLine.arguments.dropFirst() {
+    let url = URL(fileURLWithPath: path)
+    let req = VNDetectHumanHandPoseRequest()
+    req.maximumHandCount = 4
+    let h = VNImageRequestHandler(url: url, options: [:])
+    do {
+        try h.perform([req])
+        let n = (req.results ?? []).filter { $0.confidence > 0.5 }.count
+        print("\(path)\t\(n)")
+    } catch { print("\(path)\tERR") }
+}
+'''
+HANDS_FRAMES = 5
+
+
+def _hands_binary() -> str:
+    import shutil                                              # noqa: PLC0415
+    cache = Path.home() / ".cache" / "how-we-know"
+    cache.mkdir(parents=True, exist_ok=True)
+    src, binp = cache / "hands.swift", cache / "hands"
+    if binp.exists() and src.exists() and src.read_text() == _HANDS_SWIFT:
+        return str(binp)
+    if not shutil.which("swiftc"):
+        raise RuntimeError("swiftc not found: hands cannot be measured, so the clip is "
+                           "treated as showing hands (never as hands-free unmeasured)")
+    src.write_text(_HANDS_SWIFT)
+    subprocess.run(["swiftc", str(src), "-o", str(binp)], check=True, capture_output=True,
+                   timeout=900)
+    return str(binp)
+
+
+def vision_hands(path: Path, ranges: list | None = None) -> dict:
+    """{hands, frames, frames_with_hands, basis}. Unmeasurable = hands True."""
+    import tempfile                                            # noqa: PLC0415
+    dur = float(probe(path).get("duration_s") or 0) or 10.0
+    lo, hi = (ranges[0] if ranges else (0.0, dur))
+    with tempfile.TemporaryDirectory() as td:
+        pngs = []
+        for k in range(HANDS_FRAMES):
+            t = lo + (hi - lo) * (k + 0.5) / HANDS_FRAMES
+            png = Path(td) / f"f{k}.png"
+            subprocess.run(["ffmpeg", "-v", "error", "-ss", f"{t:.2f}", "-i", str(path),
+                            "-frames:v", "1", "-vf", "scale=640:-2", "-y", str(png)],
+                           capture_output=True)
+            if png.exists():
+                pngs.append(str(png))
+        try:
+            out = subprocess.run([_hands_binary(), *pngs], capture_output=True, text=True,
+                                 timeout=600).stdout
+        except Exception as e:                                 # noqa: BLE001
+            return {"hands": True, "frames": 0, "frames_with_hands": 0,
+                    "basis": f"not measured ({str(e)[:80]}): counted as hands"}
+    counts = [ln.split("\t", 1)[1] for ln in out.splitlines() if "\t" in ln]
+    ok = [int(c) for c in counts if c.isdigit()]
+    hit = sum(1 for c in ok if c > 0)
+    if not ok:
+        return {"hands": True, "frames": 0, "frames_with_hands": 0,
+                "basis": "no frame could be read: counted as hands"}
+    return {"hands": hit > 0, "frames": len(ok), "frames_with_hands": hit,
+            "basis": f"Apple Vision hand pose: {hit}/{len(ok)} frames show a hand"}
+
+
+def measure_hands(index: list[dict]) -> list[dict]:
+    """Kit clips (no reviewed HANDS answer) get a measured one, once per sha256."""
+    for r in index:
+        if r.get("subject") in HANDS or not r.get("kit"):
+            continue
+        path = IMAGERY / r["local_file"]
+        if path.exists() and (r.get("hands_measured") or {}).get("sha256") != r.get("sha256"):
+            m = vision_hands(path, r.get("ranges"))
+            r["hands_measured"] = {**m, "sha256": r.get("sha256")}
+            r["hands"], r["hands_basis"] = bool(m["hands"]), m["basis"]
+    return index
 
 
 # RICHNESS (owner, 13 Oct 2026: "favour the richest-looking clips - gloss,
@@ -1039,12 +1136,19 @@ def save(index: list[dict], rejected: list[dict], resolved: dict | None = None) 
     return man
 
 
-def harvest(only_missing: bool = True) -> dict:
+def harvest(only_missing: bool = True, segments: list[str] | None = None) -> dict:
+    """`segments`: harvest only those foods' needs and keep every other row
+    exactly as recorded (the food lane fetches one episode's kits without
+    re-resolving - and possibly changing - a shipped episode's footage)."""
     prior = {r["subject"]: r for r in load().get("index") or [] if r.get("source") in BY_NAME}
-    res = resolve()
+    scope = [s for s in SHOTS if not segments or s.get("segment") in segments]
+    res = resolve(scope)
     # The manifest is exactly what resolves now: a need whose pick changed, or
     # that no longer resolves, never keeps its old clip.
     index, rejected, fetched = {}, [], 0
+    if segments:
+        index = {k: v for k, v in prior.items()
+                 if v.get("segment", "chocolate") not in segments}
     shot_by = {s["need"]: s for s in SHOTS}
     for pick in res["picks"]:
         shot = shot_by[pick["need"]]
@@ -1067,7 +1171,7 @@ def harvest(only_missing: bool = True) -> dict:
         save(list(index.values()), rejected, res)
     for need in res["misses"]:
         rejected.append({"subject": need, "reason": "no adapter in the chain had a matching clip"})
-    return save(score_richness(list(index.values())), rejected, res)
+    return save(measure_hands(score_richness(list(index.values()))), rejected, res)
 
 
 def record_problems(rec: dict) -> list[str]:
@@ -1137,7 +1241,18 @@ def main(argv: list[str]) -> int:
         print(f"ok: {r['count']} real clips resolved (>= {MIN_REAL_CLIPS})")
         return 0
     if "--harvest" in argv:
-        m = harvest()
+        segs = argv[argv.index("--segments") + 1].split(",") if "--segments" in argv else None
+        m = harvest(segments=segs)
+        if segs:
+            have = {}
+            for r in m["index"]:
+                have[r.get("segment")] = have.get(r.get("segment"), 0) + 1
+            short = {s_: have.get(s_, 0) for s_ in segs if have.get(s_, 0) < MIN_REAL_CLIPS}
+            print(f"{json.dumps({s_: have.get(s_, 0) for s_ in segs})} clips per segment")
+            if short:
+                print(f"FAIL: fewer than {MIN_REAL_CLIPS} real clips for {short}")
+                return 1
+            return 0
         print(f"{m['asset_count']} clips -> {MANIFEST.relative_to(ROOT)}; {len(m['rejected'])} not fetched")
         for r in m["rejected"]:
             print("  not fetched:", r)

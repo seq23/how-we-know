@@ -175,8 +175,18 @@ def parse(script: Path) -> list[dict]:
 # "<Food>: <heading>". The prefix is the segment; "Cold open" and "Title card"
 # are the open, "Closing" the tail. A single-question script (the sample) has no
 # prefixes and is one segment, "chocolate".
-SEGMENTS = ("chocolate", "bread", "steak")
+# The first episode's three are built in; every later food is a KIT
+# (channel/food_kits/<food>.json, visuals/food_kits.py), written by the food
+# author lane, so a new episode needs no edit here (2026-10-25).
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import food_kits as _kits                                   # noqa: E402
+KITS = _kits.load_all()
+SEGMENTS = _kits.segments()
 SEGMENT_OPENING_BEATS = 2
+# The segments of the episode being rendered (set by render()). The open and
+# the tail show only THIS episode's foods: a chili episode's cold open never
+# cuts to the bread. Empty = every segment (the first episode, as built).
+EPISODE_SEGMENTS: set[str] = set()
 
 
 def segment_of(section: str | None) -> str:
@@ -225,7 +235,7 @@ def catalogue() -> dict[str, dict]:
     return cat
 
 
-def hands_of(rec: dict) -> bool:
+def hands_of(rec: dict) -> bool:  # noqa: D401
     """Does this clip show human hands? The reviewed answer
     (research/food_footage.HANDS, from contact sheets) when there is one, else
     the clip's own words. Owner, 13 Oct 2026: LIMIT HUMAN HANDS - not a ban,
@@ -235,6 +245,10 @@ def hands_of(rec: dict) -> bool:
     got = _ff.HANDS.get(rec.get("subject") or rec.get("key") or "")
     if got is not None:
         return bool(got[0])
+    if rec.get("hands_measured"):                 # a kit clip: Apple Vision's answer
+        return bool(rec["hands_measured"].get("hands"))
+    if rec.get("kit"):                            # a kit clip not yet measured: assume hands
+        return True
     words = f"{rec.get('title') or ''}".lower()
     return any(w in words for w in _ff.HAND_WORDS)
 
@@ -291,13 +305,15 @@ WORD_USES_STEAK: list[tuple[str, list[str]]] = [
     ("cut", ["sliced"]), ("butter", ["butter"]), ("cook", ["grill", "pan"]),
     ("steak", ["sear", "grill", "meat"]), ("meat", ["meat", "grill"]), ("beef", ["meat", "sear"]),
 ]
-WORD_USES_BY = {"chocolate": WORD_USES, "bread": WORD_USES_BREAD, "steak": WORD_USES_STEAK}
+WORD_USES_BY = {"chocolate": WORD_USES, "bread": WORD_USES_BREAD, "steak": WORD_USES_STEAK,
+                **{f: _kits.word_uses(k) for f, k in KITS.items()}}
 # Diagram stills (AI) - the only place an AI still may appear: under the glowing
 # cross-section device. Never food in motion. One device per segment.
 DIAGRAM_STILLS_BY = {
     "chocolate": ["chocolate-break-macro", "gloss-macro"],
     "bread": ["loaf-crumb-macro"],
     "steak": ["seared-crust-macro"],
+    **{f: [k["diagram"]["key"]] for f, k in KITS.items() if (k.get("diagram") or {}).get("key")},
 }
 DIAGRAM_STILLS = DIAGRAM_STILLS_BY["chocolate"]
 # Thumbnail subjects per slug, best first (visuals/thumb_contract.candidates).
@@ -385,9 +401,33 @@ HANDS_BUDGET = 0.12          # what the timeline aims for, per piece
 
 def clips_of(cat: dict, segment: str | None = None) -> list[str]:
     """Clip keys; a segment sees only its own food's clips (the open and the tail
-    see all three)."""
-    return [k for k, r in cat.items() if r["kind"] == "clip"
-            and (segment in (None, "open", "tail") or r.get("segment", "chocolate") == segment)]
+    see the episode's foods - EPISODE_SEGMENTS - or, unset, all of them)."""
+    def ok(r: dict) -> bool:
+        seg = r.get("segment", "chocolate")
+        if segment in (None, "open", "tail"):
+            return not EPISODE_SEGMENTS or seg in EPISODE_SEGMENTS
+        return seg == segment
+    return [k for k, r in cat.items() if r["kind"] == "clip" and ok(r)]
+
+
+def composite_clips(cat: dict, role: str, kind: str) -> list[str]:
+    """Wall / kaleidoscope clips for a piece. The first episode's are the
+    reviewed lists below; a kit segment (and a kit episode's open and tail)
+    takes its own hands-free clips, richest first - a kaleidoscope prefers
+    the ones the shot list marked as flowing (SLOW_USES)."""
+    table = WALL_CLIPS_BY if kind == "wall" else KALEIDO_CLIPS_BY
+    kit_ep = bool(EPISODE_SEGMENTS - set(_kits.BUILT_IN))
+    if role in table and not (kit_ep and role in ("open", "tail")):
+        return table[role]
+    if role not in KITS and role not in ("open", "tail"):
+        return table.get(role, WALL_CLIPS if kind == "wall" else KALEIDO_CLIPS)
+    keys = [k for k in clips_of(cat, role) if not cat[k].get("hands")]
+    rich = lambda k: -float((cat[k].get("richness") or {}).get("score") or 0)   # noqa: E731
+    if kind == "kaleido":
+        keys.sort(key=lambda k: (not (set(cat[k].get("uses") or []) & SLOW_USES), rich(k)))
+    else:
+        keys.sort(key=rich)
+    return keys[:6]
 
 
 def pool_for(text: str, cat: dict, segment: str | None = None) -> list[str]:
@@ -396,7 +436,9 @@ def pool_for(text: str, cat: dict, segment: str | None = None) -> list[str]:
     low = text.lower()
     want: list[str] = []
     tables = ([WORD_USES_BY.get(segment, WORD_USES)] if segment in WORD_USES_BY
-              else list(WORD_USES_BY.values()) if segment in ("open", "tail") else [WORD_USES])
+              else [v for k, v in WORD_USES_BY.items()
+                    if not EPISODE_SEGMENTS or k in EPISODE_SEGMENTS]
+              if segment in ("open", "tail") else [WORD_USES])
     for table in tables:
         for word, uses in table:
             if word in low:
@@ -456,7 +498,7 @@ def build_timeline(paras: list[dict], beats: list[dict], cat: dict) -> dict:
     devices: dict[str, int] = {}
     hands_s, piece_s = 0.0, sum(float(b["duration"]) for b in beats)
     lo_c, hi_c = PRESET["composites"]
-    clips = clips_of(cat)
+    clips = clips_of(cat, "open")
     for i, (p, b) in enumerate(zip(paras, beats)):
         dur = float(b["duration"])
         if p["section"] == "Title card":
@@ -591,8 +633,8 @@ def _place_composites(shots: list[dict], cat: dict, lo: int, hi: int,
     taken: set[str] = set()
     for n, s in enumerate(chosen):
         kind = "wall" if s["phase"] == "opening" or n % 2 else "kaleido"
-        walls = WALL_CLIPS_BY.get(role, WALL_CLIPS)
-        kals = KALEIDO_CLIPS_BY.get(role, KALEIDO_CLIPS)
+        walls = composite_clips(cat, role, "wall")
+        kals = composite_clips(cat, role, "kaleido")
         ok = [k for k in (walls if kind == "wall" else kals) if k in cat and not cat[k].get("hands")]
         pref = [k for k in ok if k not in taken] or ok      # reuse a reviewed clip before an unsuitable one
         if pref:
@@ -848,6 +890,10 @@ def render(script: Path, voice_dir: Path, out: Path, beat_idx: list[int] | None,
            bed: Path | None = None, proof_every: int = 90) -> dict:
     import food_motion as FM                                  # noqa: PLC0415
     paras = parse(script)
+    global EPISODE_SEGMENTS
+    EPISODE_SEGMENTS = {p["segment"] for p in paras} - {"open", "tail"}
+    if EPISODE_SEGMENTS <= set(_kits.BUILT_IN):
+        EPISODE_SEGMENTS = set()               # the first episode renders exactly as built
     if beat_idx is not None:
         paras = [paras[i] for i in beat_idx]
     beats = json.loads((voice_dir / "beats.json").read_text())["beats"]

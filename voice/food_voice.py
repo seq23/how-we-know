@@ -65,8 +65,13 @@ def _chunks(text: str, max_words: int = 40) -> list[str]:
     return chunk_paragraph(text, max_words)
 
 
+class Unfinished(Exception):
+    """The wall clock (--until) was reached between beats; every finished beat
+    is on disk and the next run resumes after it."""
+
+
 def synthesise(plan: list[dict], out: Path, reference: str,
-               device: str = "cpu") -> dict:
+               device: str = "cpu", until: float | None = None) -> dict:
     sys.path.insert(0, str(HERE))
     from synth import match_rms, trim_silence  # noqa: PLC0415
     import pronounce                                         # noqa: PLC0415
@@ -91,6 +96,8 @@ def synthesise(plan: list[dict], out: Path, reference: str,
         if wav_path.exists() and meta_path.exists():
             manifest["beats"].append(json.loads(meta_path.read_text()))
             continue
+        if until is not None and time.time() >= until:
+            raise Unfinished(f"{out.name}: stopped at beat {i} of {len(plan)} (--until)")
         if conditioned != reg["exaggeration"]:
             model.prepare_conditionals(reference, exaggeration=reg["exaggeration"])
             conditioned = reg["exaggeration"]
@@ -282,6 +289,9 @@ def main() -> int:
     ap.add_argument("out")
     ap.add_argument("--reference", required=False)
     ap.add_argument("--measure", action="store_true")
+    ap.add_argument("--until", default=None,
+                    help="HH:MM local: stop between beats at this time (the food "
+                         "lane's narration window, the batch's 07:00); exit 4")
     a = ap.parse_args()
     out = Path(a.out)
     if a.measure:
@@ -289,7 +299,20 @@ def main() -> int:
         print(json.dumps({"measured": m, "problems": check(m)}, indent=1))
         return 0
     plan = json.loads(Path(a.plan).read_text())
-    synthesise(plan, out, a.reference)
+    until = None
+    if a.until:
+        from datetime import datetime, timedelta                 # noqa: PLC0415
+        hh, mm = (int(x) for x in a.until.split(":"))
+        now = datetime.now()
+        stop = now.replace(hour=hh, minute=mm, second=0, microsecond=0)
+        if stop <= now:
+            stop += timedelta(days=1)
+        until = stop.timestamp()
+    try:
+        synthesise(plan, out, a.reference, until=until)
+    except Unfinished as e:
+        print(f"UNFINISHED: {e}")
+        return 4
     m = measure(out)
     (out / "measurements.json").write_text(json.dumps(m, indent=1))
     print(json.dumps({"measured": m, "problems": check(m)}, indent=1))

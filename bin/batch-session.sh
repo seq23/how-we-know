@@ -140,7 +140,9 @@ lock_holder() {
   pid=$(cat "$BATCH_LOCK" 2>/dev/null) || return 1
   [ -n "$pid" ] && [ "$pid" != "$$" ] && kill -0 "$pid" 2>/dev/null || return 1
   cmd=$(ps -p "$pid" -o command= 2>/dev/null) || return 1
-  case "$cmd" in *batch-session*) echo "$pid"; return 0 ;; esac
+  # bin/food-session.sh takes this same lock on its food nights (one narrator
+  # at a time, 2026-10-25): a live food session is a live holder too.
+  case "$cmd" in *batch-session*|*food-session*) echo "$pid"; return 0 ;; esac
   return 1
 }
 take_lock() {

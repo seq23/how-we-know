@@ -1443,3 +1443,37 @@ food in motion - real MOVEMENT and the impossible-scale feel (round 1 was 11/13 
 - **Probe is $0 now:** `voice/tests/pronunciation_probe.py` transcribes with whisper.cpp, not the paid
   whisper-1; `--raw-ok` pins hard words that need no entry.
 - Guard: `loop/tests/test_pronunciation_layer.py`.
+
+## 2026-10-25 — The food lane is scheduled; every lane must have a runner (V73)
+
+- **Found (CONFIRMED):** food had rotation days (Wed/Sat), a pipeline (`visuals/food_episode.py`)
+  and an upload contract (`backfill.food_hold`, #237) and NO runner: its first episode was made by a
+  session by hand; chili, coffee, honey, salt and cheese waited with no episode. Defect class: "exists
+  but nothing invokes it".
+- **Authoring in the cloud, $0** (`loop/food_author.py`, `loop-food-author.yml`, Mon 19:00 UTC, after mon-draft's window): the
+  next three unmade food rows become one episode; each part is drafted by `author.draft()` (same $0
+  route and validation as mon-draft), re-headed as a segment that opens by saying its question; the
+  Producer POV is dropped (no food POV until her interview); cold open and closing are built from the
+  parts' own direct-answer locks (no new figures); whole sections are dropped from the longest segment
+  to fit 28-32 min at the first episode's measured 169.5 wpm. Writes a kit per food, the episode row
+  (`first_video_parts`, so settle() keeps the parts as chapters). One episode in flight at a time.
+- **Rendering on the Mac** (`bin/food-session.sh` -> `loop/food_lane.py`, launchd `com.howweknow.food`,
+  Tue + Thu 22:58): footage harvest for the episode's kits only (a shipped episode's footage is never
+  re-resolved), diagram stills ($0 Workers AI), plans, voice to 07:00 with resume, the one-voice check
+  over the whole episode with outlier beats re-drawn, pieces, stitch + spec, R2. It holds the batch's
+  own lock: one narrator.
+- **Cadence: one food episode a week.** The long-form target is 4/week across three niches, so food's
+  share is ~1; one episode is ~25-30 min of new narration (most of a night on this 8 GB Mac) plus five
+  pieces, so two nights; the other five stay the batch's. Tue/Thu: Monday's script is ready Tuesday,
+  Thursday's finish is shelved Friday, >= 24 h ahead of Saturday's slot.
+- **Kits, not hand tables** (`visuals/food_kits.py`, `channel/food_kits/<food>.json`): shot list,
+  words, word->footage table, diagram per food; the first episode's tables untouched. Composites for a
+  kit segment are its own hands-free clips, richest first; the open and tail show only the episode's
+  foods. **Hands are measured** for kit clips (Apple Vision hand pose on five frames, recorded with its
+  basis); an unmeasured kit clip counts as hands.
+- **The backfill agent joins the installer** (it was loaded from a hand-written plist the installer did
+  not know); the generated plist is the same job (daily 09:00, `bin/loop-backfill-daily.sh`).
+- Guard: **V73** (`loop/lanes.py` is the one lane list; every lane has a scheduled runner invoking its
+  entry, every scheduled runner is a listed lane, every rotation domain has an author and a render
+  lane; on the Mac each agent is loaded) and `loop/tests/test_every_lane_has_a_runner.py` (nine breaks).
+

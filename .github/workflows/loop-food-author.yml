@@ -1,0 +1,58 @@
+name: loop · Mon 14:00 CT · food author (next food episode, $0)
+
+# THE FOOD LANE'S CLOUD HALF (2026-10-25). loop/food_author.py writes the next
+# food episode - three queued food topics as one "<Food>, <Food>, <Food>:
+# What's Inside?" episode, its kits and its publish-order row - through the
+# same $0 route as mon-draft (her subscription first, the free OpenRouter list
+# second, never paid). The Mac renders it on its food nights
+# (bin/food-session.sh, launchd com.howweknow.food, Tue + Thu 22:58).
+#
+# CADENCE: weekly, one episode in flight at a time (FOOD_EPISODE_IN_FLIGHT,
+# self-resolving), because the Mac renders one food episode a week - the
+# reason is at the top of bin/food-session.sh. Monday 19:00 UTC: AFTER
+# mon-draft's whole authoring window (05:00 UTC + its budget, which no other
+# loop-state cron may enter - loop/tests/test_mon_draft_authoring_budget.py)
+# and after the 14:00 upload, in the same concurrency group, so no two lanes
+# push over each other; Tuesday night's render has the script a day early. loop/lanes.py lists this lane; V73 holds it to this file.
+on:
+  schedule:
+    - cron: '0 19 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: loop-state
+  cancel-in-progress: false
+
+jobs:
+  food-author:
+    timeout-minutes: 180
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install loop dependencies
+        run: pip install -r requirements-loop.txt
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install the Claude Code CLI (subscription tier, pinned)
+        run: npm install -g @anthropic-ai/claude-code@2.1.296
+      - name: Refresh to the current main before any stage acts
+        run: |
+          git fetch --quiet origin ${{ github.ref_name }}
+          git reset --hard --quiet "origin/${{ github.ref_name }}"
+      - name: Author the next food episode
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: bin/loop-stage.sh food-author loop/food_author.py

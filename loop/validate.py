@@ -5328,6 +5328,7 @@ def run_all(items) -> tuple[bool, list[dict]]:
                v40_pov_assignment_integrity(),
                v71_queued_pov_traced(),
                v72_food_one_definition(),
+               v73_every_lane_has_a_runner(),
                v33_every_domain_is_harvested(),
                v34_niche_lifecycle_is_acted_on(),
                v35_digest_reaches_her(),
@@ -5383,6 +5384,116 @@ def v72_food_one_definition() -> Result:
             r.fail(f"{s}: made by the batch, and the food contract would ship it")
     if not rows:
         r.fail("no food-science queue row found: V72 cannot reach what it governs")
+    return r
+
+
+def v73_every_lane_has_a_runner(lanes: dict | None = None, workflows_dir: Path | None = None,
+                                installer: Path | None = None, config: dict | None = None,
+                                loaded: set | None = None) -> Result:
+    """V73: every scheduled lane has a runner, every runner is a listed lane,
+    and every rotation domain is authored AND rendered by one (loop/lanes.py).
+
+    THE DEFECT CLASS: "exists but nothing invokes it". 2026-10-25: food had its
+    rotation days, its pipeline and its upload contract, and NO runner - its
+    episodes appeared only when a session made one by hand. Asserted from the
+    files that actually schedule things (the workflow YAML, the plists the
+    installer writes), never from prose. On this Mac each launchd lane's agent
+    must also be LOADED (`launchctl list`); elsewhere (CI) that half is a note.
+    Arguments exist for the negative proofs (loop/tests/test_every_lane_has_a_runner.py).
+    Hard-fails when it examines zero lanes.
+    """
+    import plistlib                                         # noqa: PLC0415
+    import re as _re                                        # noqa: PLC0415
+    import subprocess as _sp                                # noqa: PLC0415
+    r = Result("V73 every-lane-has-a-runner")
+    if lanes is None:
+        import lanes as _lanes                              # noqa: PLC0415
+        lanes = _lanes.LANES
+    wf_dir = workflows_dir or ROOT / ".github" / "workflows"
+    inst = installer or ROOT / "bin" / "loop-install-launchd.sh"
+    cfg = config if config is not None else read_json(ROOT / "loop" / "config.json")
+    if not lanes:
+        r.fail("loop/lanes.py lists no lanes: V73 cannot reach what it governs")
+        return r
+
+    def crons(text: str) -> list[str]:
+        return [m.group(1) for m in _re.finditer(r"^\s*-\s*cron:\s*['\"]([^'\"]+)['\"]", text, _re.M)]
+
+    itext = inst.read_text() if inst.exists() else ""
+    m = _re.search(r'^AGENT_NAMES="([^"]*)"', itext, _re.M)
+    agents = set(m.group(1).split()) if m else set()
+    if not m:
+        r.fail(f"{inst.name}: no AGENT_NAMES line - the launchd runners cannot be read")
+    if loaded is None and sys.platform == "darwin" and os.environ.get("HWK_V73_LOADED", "1") != "0" \
+            and (Path.home() / "Library" / "LaunchAgents").exists():
+        out = _sp.run(["launchctl", "list"], capture_output=True, text=True).stdout
+        loaded = {ln.split()[-1].removeprefix("com.howweknow.") for ln in out.splitlines()
+                  if "com.howweknow." in ln}
+
+    for name, lane in sorted(lanes.items()):
+        r.examined += 1
+        entry = lane.get("entry") or ""
+        if not entry or not (ROOT / entry).exists():
+            r.fail(f"{name}: entry {entry!r} does not exist")
+        if lane.get("runner") == "workflow":
+            wf = wf_dir / lane.get("file", "")
+            if not wf.exists():
+                r.fail(f"{name}: runner {wf.name} does not exist - a lane nothing invokes")
+                continue
+            text = wf.read_text()
+            if not crons(text):
+                r.fail(f"{name}: {wf.name} has no uncommented schedule cron - nothing fires it")
+            if entry and entry not in text:
+                r.fail(f"{name}: {wf.name} never invokes {entry}")
+        elif lane.get("runner") == "launchd":
+            ag = lane.get("agent", "")
+            if ag not in agents:
+                r.fail(f"{name}: agent {ag!r} is not in {inst.name} AGENT_NAMES - never installed")
+                continue
+            try:
+                raw = _sp.run(["bash", str(inst), "--plist", ag], capture_output=True,
+                              text=True, timeout=30).stdout
+                pl = plistlib.loads(raw.encode())
+            except Exception as e:                          # noqa: BLE001
+                r.fail(f"{name}: the {ag} plist does not parse ({str(e)[:80]})")
+                continue
+            if not (pl.get("StartCalendarInterval") or pl.get("StartInterval")):
+                r.fail(f"{name}: the {ag} plist has no schedule - nothing fires it")
+            cmd = " ".join(pl.get("ProgramArguments") or [])
+            if entry and entry not in cmd:
+                r.fail(f"{name}: the {ag} plist runs {cmd[-60:]!r}, not {entry}")
+            if entry and (ROOT / entry).exists() and not os.access(ROOT / entry, os.X_OK):
+                r.fail(f"{name}: {entry} is not executable - launchd cannot run it")
+            if loaded is not None and ag not in loaded:
+                r.fail(f"{name}: com.howweknow.{ag} is not loaded on this Mac - installed in "
+                       f"the repository, invoked by nothing (bin/loop-install-launchd.sh --install)")
+        else:
+            r.fail(f"{name}: unknown runner {lane.get('runner')!r}")
+    if loaded is None:
+        r.note("launchd load state not checked off the Mac")
+
+    # both ways: a runner the list does not name is a lane nobody governs
+    listed_wf = {x.get("file") for x in lanes.values() if x.get("runner") == "workflow"}
+    for wf in sorted(wf_dir.glob("*.yml")):
+        r.examined += 1
+        if crons(wf.read_text()) and wf.name not in listed_wf:
+            r.fail(f"{wf.name} is scheduled and is not a lane in loop/lanes.py")
+    listed_ag = {x.get("agent") for x in lanes.values() if x.get("runner") == "launchd"}
+    for ag in sorted(agents - listed_ag):
+        r.fail(f"launchd agent {ag!r} is installed and is not a lane in loop/lanes.py")
+
+    # every rotation domain is authored AND rendered by a scheduled lane
+    rot = ((cfg.get("cadence") or {}).get("rotation") or {}).get("weekdays") or {}
+    doms = sorted({d for d in rot.values() if d})
+    if not doms:
+        r.fail("cadence.rotation names no domain: the coverage half examined nothing")
+    for d in doms:
+        r.examined += 1
+        for need in ("author", "render"):
+            if not any(x.get("makes") == need and d in (x.get("domains") or [])
+                       for x in lanes.values()):
+                r.fail(f"{d} has rotation days and no scheduled lane that {need}s it - "
+                       f"its episodes exist only when someone makes one by hand")
     return r
 
 

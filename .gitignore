@@ -14,6 +14,9 @@ renders/*.mp4
 # record of what was superseded and why is the part worth keeping.
 renders/**/*.mp4
 renders/*.work/
+# The food lane's per-episode work (pieces, plans, voice): bin/food-session.sh.
+# The episode's tracked outputs are its spec, captions and the script.
+renders/food/
 renders/*.png
 visuals/sample/
 visuals/_ext_test/

@@ -54,6 +54,13 @@ import food  # noqa: E402
 SPECS = ROOT / "channel" / "specs"
 CAPTIONS = ROOT / "captions"
 PIECE_ORDER = ("open", *food.SEGMENTS, "tail")
+
+
+def piece_order(pcs: dict) -> list[str]:
+    """The cold open, the script's segments IN SCRIPT ORDER, the tail. A kit
+    episode's segments (chili, coffee, honey) are not in a fixed tuple."""
+    return (["open"] if "open" in pcs else []) + \
+        [p for p in pcs if p not in ("open", "tail")] + (["tail"] if "tail" in pcs else [])
 EPISODE_MINUTES = (28.0, 32.0)          # the first-video format; owner, 13 Oct 2026
 MIN_CLIPS_PER_SEGMENT = 10
 ATTRIBUTION_READ_SHARE_MIN = 0.8
@@ -85,7 +92,7 @@ def render_pieces(script: Path, voice_root: Path, work: Path,
     pcs = food.pieces(paras)
     work.mkdir(parents=True, exist_ok=True)
     problems = {}
-    for piece in [p for p in PIECE_ORDER if p in pcs]:
+    for piece in piece_order(pcs):
         if only and piece not in only:
             continue
         out = work / f"{piece}.mp4"
@@ -259,7 +266,7 @@ def stitch(script: Path, voice_root: Path, work: Path, final: Path) -> dict:
     slug = slug_of(script)
     paras = food.parse(script)
     pcs = food.pieces(paras)
-    order = [p for p in PIECE_ORDER if p in pcs]
+    order = piece_order(pcs)
     files = [work / f"{p}.mp4" for p in order]
     for f in files:
         if not f.exists():
