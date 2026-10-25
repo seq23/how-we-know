@@ -1,6 +1,6 @@
 {
-  "week": "2026-W42",
-  "generated": "2026-10-18T10:04:03+00:00",
+  "week": "2026-W43",
+  "generated": "2026-10-25T14:01:32+00:00",
   "videos_per_week": 6,
   "cadence_ceiling_note": "Deliberate. Never raised to clear a backlog.",
   "selection_mode": "automatic",
@@ -8,91 +8,97 @@
   "selected": [
     {
       "slug": "why-does-chocolate-taste-so-good",
-      "question": "why does chocolate taste so good",
-      "script": "loop/drafts/why-does-chocolate-taste-so-good.md",
-      "source": "publish-queue",
-      "queue_file": "publish_order_food_science.json",
-      "needs_authoring": true,
+      "question": "Why does chocolate taste so good?",
+      "script": "scripts/why-does-chocolate-taste-so-good.md",
+      "source": "authored-inventory",
+      "publish_rank": 28,
+      "front_loaded": false,
+      "needs_authoring": false,
       "pov_id": "pov-095",
       "pov_line": "What are people repeating without checking? What's hidden by the way the story is usually told?",
       "pov_tag": "thesis",
       "pov_tier": "transferable",
-      "pov_matched_by": "tag:thesis score 2.0"
+      "pov_matched_by": "hand assignment in pov/pov-assignments.json"
     },
     {
       "slug": "why-does-steak-taste-better-seared",
-      "question": "why does steak taste better seared",
-      "script": "loop/drafts/why-does-steak-taste-better-seared.md",
-      "source": "publish-queue",
-      "queue_file": "publish_order_food_science.json",
-      "needs_authoring": true,
+      "question": "Why does steak taste better seared?",
+      "script": "scripts/why-does-steak-taste-better-seared.md",
+      "source": "authored-inventory",
+      "publish_rank": 29,
+      "front_loaded": false,
+      "needs_authoring": false,
       "pov_id": "pov-081",
       "pov_line": "Octopuses impress me. So much of their nervous system runs through their arms. They aren't just unusual \u2014 they look like a completely different solution to intelligence.",
       "pov_tag": "adaptation",
       "pov_tier": "transferable",
-      "pov_matched_by": "tag:adaptation score 3.0"
+      "pov_matched_by": "hand assignment in pov/pov-assignments.json"
     },
     {
       "slug": "why-is-my-bread-not-rising",
-      "question": "why is my bread not rising",
-      "script": "loop/drafts/why-is-my-bread-not-rising.md",
-      "source": "publish-queue",
-      "queue_file": "publish_order_food_science.json",
-      "needs_authoring": true,
+      "question": "Why is my bread not rising?",
+      "script": "scripts/why-is-my-bread-not-rising.md",
+      "source": "authored-inventory",
+      "publish_rank": 30,
+      "front_loaded": false,
+      "needs_authoring": false,
       "pov_id": "pov-096",
       "pov_line": "I like questions where the obvious answer starts falling apart once you look closely.",
       "pov_tag": "thesis",
       "pov_tier": "transferable",
-      "pov_matched_by": "tag:thesis score 2.0"
+      "pov_matched_by": "hand assignment in pov/pov-assignments.json"
     },
     {
       "slug": "how-does-butter-get-made-from-cream",
-      "question": "how does butter get made from cream",
-      "script": "loop/drafts/how-does-butter-get-made-from-cream.md",
-      "source": "publish-queue",
-      "queue_file": "publish_order_food_science.json",
-      "needs_authoring": true,
+      "question": "How does butter get made from cream?",
+      "script": "scripts/how-does-butter-get-made-from-cream.md",
+      "source": "authored-inventory",
+      "publish_rank": 31,
+      "front_loaded": false,
+      "needs_authoring": false,
       "pov_id": "pov-112",
       "pov_line": "The finished object is impressive, but I'm usually more interested in the chain of decisions and tolerances that keeps it from becoming a disaster.",
       "pov_tag": "systems",
       "pov_tier": "transferable",
-      "pov_matched_by": "tag:systems score 2.0"
+      "pov_matched_by": "hand assignment in pov/pov-assignments.json"
     },
     {
       "slug": "why-does-rice-get-sticky",
-      "question": "why does rice get sticky",
-      "script": "loop/drafts/why-does-rice-get-sticky.md",
-      "source": "publish-queue",
-      "queue_file": "publish_order_food_science.json",
-      "needs_authoring": true,
+      "question": "Why Does Rice Get Sticky?",
+      "script": "scripts/why-does-rice-get-sticky.md",
+      "source": "authored-inventory",
+      "publish_rank": 32,
+      "front_loaded": false,
+      "needs_authoring": false,
       "pov_id": "pov-097",
       "pov_line": "It feels like the subject gets larger instead of smaller. One answer rearranges everything around it.",
       "pov_tag": "thesis",
       "pov_tier": "transferable",
-      "pov_matched_by": "tag:thesis score 2.0"
+      "pov_matched_by": "hand assignment in pov/pov-assignments.json"
     },
     {
       "slug": "why-does-meat-need-to-rest-after-cooking",
-      "question": "why does meat need to rest after cooking",
-      "script": "loop/drafts/why-does-meat-need-to-rest-after-cooking.md",
-      "source": "publish-queue",
-      "queue_file": "publish_order_food_science.json",
-      "needs_authoring": true,
+      "question": "Why does meat need to rest after cooking?",
+      "script": "scripts/why-does-meat-need-to-rest-after-cooking.md",
+      "source": "authored-inventory",
+      "publish_rank": 33,
+      "front_loaded": false,
+      "needs_authoring": false,
       "pov_id": "pov-098",
       "pov_line": "That's the feeling I'm chasing. Not collecting another fact \u2014 realising the model in my head was incomplete, and now I have a better one.",
       "pov_tag": "thesis",
       "pov_tier": "transferable",
-      "pov_matched_by": "tag:thesis score 2.0"
+      "pov_matched_by": "hand assignment in pov/pov-assignments.json"
     }
   ],
-  "to_author": 6,
+  "to_author": 0,
   "inventory_remaining": 0,
   "cadence": {
     "videos_per_week": 6,
     "why": "configured default (6/week)"
   },
   "publish_order": {
-    "ranked": 0,
+    "ranked": 6,
     "unranked": 3,
     "unranked_slugs": [
       "how-deep-mariana-trench",
@@ -108,7 +114,7 @@
     "queued_despite_kill": [],
     "order_entries": 62,
     "source": "research/publish_order.json",
-    "generated_at": "2026-10-17T10:08:55.759634+00:00",
+    "generated_at": "2026-10-24T10:09:05.339921+00:00",
     "generator": "research/publish_order.py",
     "status": "PRODUCTION",
     "episodes_ranked": null,
@@ -116,12 +122,12 @@
     "saturated_tail": []
   },
   "runway": {
-    "unpublished_scripts": 7,
-    "publishable": 0,
-    "scheduled_not_yet_aired": 19,
+    "unpublished_scripts": 13,
+    "publishable": 6,
+    "scheduled_not_yet_aired": 15,
     "basis": "publish queue",
     "videos_per_week": 6,
-    "weeks_remaining": 3.2,
+    "weeks_remaining": 3.5,
     "warn_below_weeks": 4.0,
     "critical_below_weeks": 2.0,
     "level": "warn",
@@ -129,18 +135,18 @@
       "deep-sea-ocean-science": {
         "slots_per_week": 2,
         "queued": 0,
-        "scheduled_ahead": 12,
-        "weeks": 6.0,
+        "scheduled_ahead": 10,
+        "weeks": 5.0,
         "level": "ok",
-        "message": "deep-sea-ocean-science: 6.0 week(s) at 2/week (0 queued, 12 already dated)"
+        "message": "deep-sea-ocean-science: 5.0 week(s) at 2/week (0 queued, 10 already dated)"
       },
       "materials-and-manufacturing": {
         "slots_per_week": 2,
         "queued": 5,
-        "scheduled_ahead": 7,
-        "weeks": 6.0,
+        "scheduled_ahead": 5,
+        "weeks": 5.0,
         "level": "ok",
-        "message": "materials-and-manufacturing: 6.0 week(s) at 2/week (5 queued, 7 already dated)"
+        "message": "materials-and-manufacturing: 5.0 week(s) at 2/week (5 queued, 5 already dated)"
       },
       "food-science": {
         "slots_per_week": 2,
@@ -153,7 +159,7 @@
     },
     "short_domains": [],
     "never_go_dark": true,
-    "message": "RUNWAY WARNING: only 3.2 weeks of queue left at 6/week - 0 publishable episode(s) of 7 on disk. Act now, not later: the authoring lane needs lead time and its human fallback needs more. By domain: deep-sea-ocean-science: 6.0 week(s) at 2/week (0 queued, 12 already dated); materials-and-manufacturing: 6.0 week(s) at 2/week (5 queued, 7 already dated); food-science: 5.5 week(s) at 2/week (11 queued, 0 already dated)."
+    "message": "RUNWAY WARNING: only 3.5 weeks of queue left at 6/week - 6 publishable episode(s) of 13 on disk. Act now, not later: the authoring lane needs lead time and its human fallback needs more. By domain: deep-sea-ocean-science: 5.0 week(s) at 2/week (0 queued, 10 already dated); materials-and-manufacturing: 5.0 week(s) at 2/week (5 queued, 5 already dated); food-science: 5.5 week(s) at 2/week (11 queued, 0 already dated)."
   },
   "gate": {
     "authority": "pov/topic-taxonomy.json",

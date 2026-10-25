@@ -1,0 +1,69 @@
+{
+  "stage": "sun-rank",
+  "week": "2026-W43",
+  "at": "2026-10-25T14:01:32+00:00",
+  "code": "RUNWAY_WARN",
+  "message": "RUNWAY WARNING: only 3.5 weeks of queue left at 6/week - 6 publishable episode(s) of 13 on disk. Act now, not later: the authoring lane needs lead time and its human fallback needs more. By domain: deep-sea-ocean-science: 5.0 week(s) at 2/week (0 queued, 10 already dated); materials-and-manufacturing: 5.0 week(s) at 2/week (5 queued, 5 already dated); food-science: 5.5 week(s) at 2/week (11 queued, 0 already dated).",
+  "detail": {
+    "unpublished_scripts": 13,
+    "publishable": 6,
+    "scheduled_not_yet_aired": 15,
+    "basis": "publish queue",
+    "videos_per_week": 6,
+    "weeks_remaining": 3.5,
+    "warn_below_weeks": 4.0,
+    "critical_below_weeks": 2.0,
+    "level": "warn",
+    "by_domain": {
+      "deep-sea-ocean-science": {
+        "slots_per_week": 2,
+        "queued": 0,
+        "scheduled_ahead": 10,
+        "weeks": 5.0,
+        "level": "ok",
+        "message": "deep-sea-ocean-science: 5.0 week(s) at 2/week (0 queued, 10 already dated)"
+      },
+      "materials-and-manufacturing": {
+        "slots_per_week": 2,
+        "queued": 5,
+        "scheduled_ahead": 5,
+        "weeks": 5.0,
+        "level": "ok",
+        "message": "materials-and-manufacturing: 5.0 week(s) at 2/week (5 queued, 5 already dated)"
+      },
+      "food-science": {
+        "slots_per_week": 2,
+        "queued": 11,
+        "scheduled_ahead": 0,
+        "weeks": 5.5,
+        "level": "ok",
+        "message": "food-science: 5.5 week(s) at 2/week (11 queued, 0 already dated)"
+      }
+    },
+    "short_domains": [],
+    "never_go_dark": true,
+    "message": "RUNWAY WARNING: only 3.5 weeks of queue left at 6/week - 6 publishable episode(s) of 13 on disk. Act now, not later: the authoring lane needs lead time and its human fallback needs more. By domain: deep-sea-ocean-science: 5.0 week(s) at 2/week (0 queued, 10 already dated); materials-and-manufacturing: 5.0 week(s) at 2/week (5 queued, 5 already dated); food-science: 5.5 week(s) at 2/week (11 queued, 0 already dated)."
+  },
+  "unblock": "Nothing to run. The loop refills runway itself: the Monday lane authors from the publish queue, the Saturday miner refills thin queues, and com.howweknow.batch narrates and renders every night at 23:00 on the Mac (bin/batch-session.sh). A warning that persists means the Mac has been asleep or shut at 23:00 - the one external host only she holds; `launchctl list | grep howweknow` and ~/Library/Logs/how-we-know/batch.log say which. The week above still ships - publishing is never halted to protect the backlog.",
+  "disposition": "self_resolving",
+  "disposition_why": "Four weeks of runway left. Automated policy: the Monday lane authors from the queue, the Saturday miner refills thin queues and the Mac's nightly batch narrates and renders; publishing never halts. A green warning with the runway figures, not a page. (run 2 of at most 3 before this escalates to a human.)",
+  "consecutive": 2,
+  "held_items": [],
+  "exit_code": 0,
+  "work_done_before_stop": [
+    "ranked 40 admitted candidates by demand; the exclusion gate refused 15",
+    "picked why-does-chocolate-taste-so-good (authored-inventory, pov pov-095)",
+    "picked why-does-steak-taste-better-seared (authored-inventory, pov pov-081)",
+    "picked why-is-my-bread-not-rising (authored-inventory, pov pov-096)",
+    "picked how-does-butter-get-made-from-cream (authored-inventory, pov pov-112)",
+    "picked why-does-rice-get-sticky (authored-inventory, pov pov-097)",
+    "picked why-does-meat-need-to-rest-after-cooking (authored-inventory, pov pov-098)",
+    "wrote loop/next_topics.json - 6 picked, 0 to author"
+  ],
+  "notes": [
+    "cadence: configured default (6/week)",
+    "publish order: 6 ranked, 3 unranked, from research/publish_order.json",
+    "3 unpublished script(s) are not in the ranking; they queue AFTER every ranked entry, never promoted to the front",
+    "runway: RUNWAY WARNING: only 3.5 weeks of queue left at 6/week - 6 publishable episode(s) of 13 on disk. Act now, not later: the authoring lane needs lead time and its human fallback needs more. By domain: deep-sea-ocean-science: 5.0 week(s) at 2/week (0 queued, 10 already dated); materials-and-manufacturing: 5.0 week(s) at 2/week (5 queued, 5 already dated); food-science: 5.5 week(s) at 2/week (11 queued, 0 already dated)."
+  ]
+}
