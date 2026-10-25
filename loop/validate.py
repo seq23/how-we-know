@@ -5327,6 +5327,7 @@ def run_all(items) -> tuple[bool, list[dict]]:
                v32_scheduled_pov_is_hers(),
                v40_pov_assignment_integrity(),
                v71_queued_pov_traced(),
+               v72_food_one_definition(),
                v33_every_domain_is_harvested(),
                v34_niche_lifecycle_is_acted_on(),
                v35_digest_reaches_her(),
@@ -5352,6 +5353,37 @@ def run_all(items) -> tuple[bool, list[dict]]:
                v70_demand_verdict()]
     rows = [r.as_dict() for r in results]
     return all(r.ok for r in results), rows
+
+
+def v72_food_one_definition() -> Result:
+    """V72: one definition of a food video, read by producer and contract (#235).
+
+    loop/batch_queue.is_food is the only test of "food". This holds the
+    repository to it: no food-science queue row is in the Monday lane's
+    unwritten_entries() or the Mac batch's written_entries() (only the food
+    pipeline makes a food video, and its stitch writes the episode spec), and
+    every food row without a passing spec is held by loop/backfill.food_hold
+    by name - so the producer and the upload contract cannot disagree about
+    which slugs are food again. Zero food rows is a hard fail, never a pass.
+    """
+    r = Result("V72 food-one-definition")
+    import batch_queue as _bq                               # noqa: PLC0415
+    import backfill as _bf                                  # noqa: PLC0415
+    monday = {x["slug"] for x in _bq.unwritten_entries()}
+    batch = {x["slug"] for x in _bq.written_entries()}
+    rows = [x for x in _bq._raw_entries() if _bq.is_food(x)]
+    for x in rows:
+        s = x["slug"]
+        r.examined += 1
+        if s in monday:
+            r.fail(f"{s}: a food row is the Monday lane's to author (unwritten_entries)")
+        if s in batch:
+            r.fail(f"{s}: a food row is the Mac batch's to render (written_entries)")
+        if _bq.food_batch_made(s) and not _bf.food_hold(s):
+            r.fail(f"{s}: made by the batch, and the food contract would ship it")
+    if not rows:
+        r.fail("no food-science queue row found: V72 cannot reach what it governs")
+    return r
 
 
 def main() -> int:

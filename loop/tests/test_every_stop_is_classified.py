@@ -123,6 +123,7 @@ GENERATED = {
     # The upload lane's empty-shelf diagnosis picks one of these from state
     # (loop/cloud_upload.py diagnose_empty_shelf) and raises it by variable.
     "NOTHING_SHELVED":             ("cloud_upload.py", '"code": "NOTHING_SHELVED"'),
+    "QUEUE_AWAITING_PRODUCTION":   ("cloud_upload.py", '"code": "QUEUE_AWAITING_PRODUCTION"'),
     "PUBLISH_QUEUE_UPLOADED":      ("cloud_upload.py", '"code": "PUBLISH_QUEUE_UPLOADED"'),
     "AUTHORED_NOT_QUEUED":         ("cloud_upload.py", '"code": "AUTHORED_NOT_QUEUED"'),
     "SCRIPTS_AWAITING_PROMOTION":  ("cloud_upload.py", '"code": "SCRIPTS_AWAITING_PROMOTION"'),
