@@ -88,6 +88,24 @@ wf = (ROOT / ".github" / "workflows" / "loop-food-author.yml").read_text()
 if "- cron:" not in wf or "loop/food_author.py" not in wf:
     fails.append("loop-food-author.yml has no cron invoking loop/food_author.py")
 
+# 2b. the session script survives the shell launchd gives it: /bin/bash
+# (3.2 on macOS) under `set -u`. Its first fired run died on an empty array
+# ("SLUG_ARGS[@]: unbound variable", 2026-10-25) before doing anything.
+for args in ([], ["--slug", "some-episode"]):
+    examined += 1
+    out = subprocess.run(["/bin/bash", str(ROOT / "bin" / "food-session.sh"), *args],
+                         capture_output=True, text=True, env={**os.environ, "FOOD_SESSION_DRY": "1"})
+    if out.returncode != 0 or "DRY: " not in out.stdout or "unbound" in out.stderr:
+        fails.append(f"food-session.sh {args} under /bin/bash: rc={out.returncode} "
+                     f"{out.stderr.strip()[-120:]!r}")
+    elif args and "--slug some-episode" not in out.stdout:
+        fails.append("food-session.sh drops --slug")
+    elif not args and "food_lane.py run --until 07:00" not in out.stdout:
+        fails.append(f"food-session.sh runs the wrong lane command: {out.stdout!r}")
+if "[@]" in (ROOT / "bin" / "food-session.sh").read_text():
+    fails.append("food-session.sh uses a bash array again (empty arrays are unbound under "
+                 "set -u in /bin/bash 3.2)")
+
 # 3. no food render lane
 lanes = copy.deepcopy(L.LANES)
 lanes.pop("food", None)
