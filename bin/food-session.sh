@@ -35,16 +35,21 @@ PY=.venv/bin/python
 PYP="$PY"; [ -x "$PYP" ] || PYP=python3
 NARRATION_UNTIL="${NARRATION_UNTIL:-07:00}"
 BATCH_LOCK="${BATCH_LOCK:-$ROOT/loop/state/_local/batch.lock}"
-SLUG_ARGS=()
+# No bash arrays: launchd runs /bin/bash 3.2, where an EMPTY array under
+# `set -u` is an "unbound variable" and kills the night (2026-10-25, the first
+# fired run). A plain string, tested in loop/tests/test_every_lane_has_a_runner.py.
+SLUG_OPT=""
 while [ $# -gt 0 ]; do
   case "$1" in
-    --slug) SLUG_ARGS=(--slug "$2"); shift ;;
+    --slug) SLUG_OPT="--slug $2"; shift ;;
     *) echo "usage: bin/food-session.sh [--slug SLUG]"; exit 2 ;;
   esac
   shift
 done
 
+LANE_CMD="$PY loop/food_lane.py run --until $NARRATION_UNTIL $SLUG_OPT"
 echo "=== food night $(date '+%F %H:%M') ==="
+if [ -n "${FOOD_SESSION_DRY:-}" ]; then echo "DRY: $LANE_CMD"; exit 0; fi
 
 # the batch's lock, the batch's rule: a live holder that is either session
 lock_holder() {
@@ -75,7 +80,7 @@ fi
 caffeinate -dimsu -w $$ &
 
 echo "--- stage 1/3: render the in-flight food episode (loop/food_lane.py) ---"
-$PY loop/food_lane.py run --until "$NARRATION_UNTIL" "${SLUG_ARGS[@]}"
+$LANE_CMD
 RC=$?
 SLUG=$($PY -c "import json;print(json.load(open('loop/state/_local/food_lane.json')).get('slug',''))" 2>/dev/null || echo "")
 
@@ -88,12 +93,13 @@ fi
 echo "--- stage 3/3: report to the repository ---"
 OK=1; [ "$RC" -eq 0 ] || [ "$RC" -eq 4 ] || OK=0
 $PY loop/mac_sync.py heartbeat --lane food --ok "$OK" 2>&1 | tail -1
-PATHS=(channel/imagery/food_clips.json channel/imagery/food_ai.json)
+PATHS="channel/imagery/food_clips.json channel/imagery/food_ai.json"
 if [ -n "$SLUG" ]; then
-  PATHS+=("channel/specs/$SLUG.json" "channel/specs/$SLUG.proof.npz"
-          "captions/$SLUG.srt" "captions/$SLUG.chapters.txt")
+  PATHS="$PATHS channel/specs/$SLUG.json channel/specs/$SLUG.proof.npz"
+  PATHS="$PATHS captions/$SLUG.srt captions/$SLUG.chapters.txt"
 fi
-$PY loop/mac_sync.py push --lane food "${PATHS[@]}" 2>&1 | tail -1
+# shellcheck disable=SC2086  # word-split on purpose: paths have no spaces
+$PY loop/mac_sync.py push --lane food $PATHS 2>&1 | tail -1
 case $RC in
   0) echo "=== food night complete: $SLUG ready for upload $(date '+%H:%M') ===" ;;
   4) echo "=== food night ended at the window ($NARRATION_UNTIL); the next food night resumes $SLUG ===" ;;
