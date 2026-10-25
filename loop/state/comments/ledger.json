@@ -1259,6 +1259,33 @@
         "applied_at": "2026-10-24T17:14:45+00:00",
         "result": "posted (Ugx1h2ICH5kYFjc04Md4AaABAg)"
       }
+    },
+    "UgzCLlZo8F__hnbSqW54AaABAg": {
+      "comment_id": "UgzCLlZo8F__hnbSqW54AaABAg",
+      "video_id": "q_SGlBjkJX8",
+      "author": "@howweknowdeep",
+      "author_channel_id": "UC5vZFZc15DIM6IrFwFgAECg",
+      "text": "Why deep sea creatures are so scary? Full episode: https://youtu.be/xyZ9xs7OF3g",
+      "published_at": "2026-10-25T00:49:34+00:00",
+      "like_count": 0,
+      "reply_count": 0,
+      "class": "own_channel",
+      "proposed_action": null,
+      "proposed_reply": null,
+      "product_note": null,
+      "seen_at": "2026-10-25T00:49:34+00:00",
+      "acted": {
+        "comment_id": "UgzCLlZo8F__hnbSqW54AaABAg",
+        "video_id": "q_SGlBjkJX8",
+        "action": "channel_comment",
+        "reply_text": "Why deep sea creatures are so scary? Full episode: https://youtu.be/xyZ9xs7OF3g",
+        "instructed_by": "owner",
+        "instructed_at": "2026-10-03",
+        "source": "loop/handoff: owner decision 2026-10-03",
+        "note": null,
+        "applied_at": "2026-10-25T00:49:34+00:00",
+        "result": "posted (UgzCLlZo8F__hnbSqW54AaABAg)"
+      }
     }
   },
   "instructions": {},
@@ -1766,6 +1793,18 @@
       "note": null,
       "applied_at": "2026-10-24T17:14:45+00:00",
       "result": "posted (Ugx1h2ICH5kYFjc04Md4AaABAg)"
+    },
+    {
+      "comment_id": "UgzCLlZo8F__hnbSqW54AaABAg",
+      "video_id": "q_SGlBjkJX8",
+      "action": "channel_comment",
+      "reply_text": "Why deep sea creatures are so scary? Full episode: https://youtu.be/xyZ9xs7OF3g",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03",
+      "note": null,
+      "applied_at": "2026-10-25T00:49:34+00:00",
+      "result": "posted (UgzCLlZo8F__hnbSqW54AaABAg)"
     }
   ],
   "sweeps": [
@@ -2148,7 +2187,15 @@
       "instructed_by": "owner",
       "instructed_at": "2026-10-03",
       "source": "loop/handoff: owner decision 2026-10-03"
+    },
+    "q_SGlBjkJX8": {
+      "comment_id": "UgzCLlZo8F__hnbSqW54AaABAg",
+      "text": "Why deep sea creatures are so scary? Full episode: https://youtu.be/xyZ9xs7OF3g",
+      "posted_at": "2026-10-25T00:49:34+00:00",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03"
     }
   },
-  "updated": "2026-10-24T17:14:45+00:00"
+  "updated": "2026-10-25T00:49:34+00:00"
 }
