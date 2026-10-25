@@ -424,6 +424,24 @@
       "max_consecutive": 3,
       "escalation": "Three runs with no free model answering is not a burst: a listed model has probably been withdrawn or gated. Refresh config/llm_routing.json from https://openrouter.ai/api/v1/models (keep only ':free' 0/0 models, >=32k context) and re-run; detail lists each model's failure.",
       "plain": "every free AI model failed this run; nothing was written and it tries again"
+    },
+    "FOOD_EPISODE_IN_FLIGHT": {
+      "why": "loop/food_author.py authors one food episode at a time; the previous one is still the Mac's to render (bin/food-session.sh, Tue and Thu nights). Its stitch writes channel/specs/<slug>.json and the next weekly run authors the next episode.",
+      "max_consecutive": 3,
+      "escalation": "Three weeks with the same episode in flight means the Mac's food nights are not finishing it: read ~/Library/Logs/how-we-know/food.log and loop/state/food_lane.json.",
+      "plain": "the next food episode waits until the Mac finishes the current one"
+    },
+    "FOOD_QUEUE_SHORT": {
+      "why": "Fewer than three unmade food topics are queued; an episode is three. The Saturday score lane refills research/publish_order_food_science.json.",
+      "max_consecutive": 4,
+      "escalation": "Four weeks short: the food score lane is not refilling the queue - check loop-sat-score.yml for the food-science domain.",
+      "plain": "not enough food topics yet for the next episode; the score lane adds more"
+    },
+    "FOOD_SCRIPT_TOO_SHORT": {
+      "why": "The three parts drafted shorter than the 28-minute food contract allows; nothing was written and the next weekly run drafts again.",
+      "max_consecutive": 2,
+      "escalation": "Twice running: the free models are drafting short for food - raise the parts' target in loop/food_author.py or add a fourth part.",
+      "plain": "the food script came out too short; it is drafted again next week"
     }
   },
   "owner_action": {

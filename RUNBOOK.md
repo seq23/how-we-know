@@ -477,6 +477,13 @@ split monthly and writes its reasoning to `loop/state/monthly/<month>.md`.
 
 ## Food, the third domain — approved, running
 
+- **It runs itself now (25 October).** Monday the cloud writes the next food episode — three queued
+  topics as one "<Food>, <Food>, <Food>: What's Inside?" video (first: **Chili, Coffee, Honey**) — and
+  this Mac renders it on **Tuesday and Thursday nights** (`com.howweknow.food`, 22:58, in place of the
+  batch on those two nights). **One food episode a week**, shelved by Friday, uploaded private and
+  dated into the next Wednesday or Saturday food slot. Nothing to run. The six food videos the
+  ordinary batch made stay on the shelf, held, never uploaded and never deleted.
+
 - **You approved the chocolate sample on 13 October** ("MUCH better"); the gate is open
   (`loop/config.json` `domains.sample_gate`). The first full video, **"Bread, Steak, Chocolate:
   What's Inside?"**, is rendered on this Mac in five pieces and stitched, and the cloud upload lane
@@ -567,6 +574,8 @@ and `loop/tests/test_runbook_lanes.py` fails if a `loop-state` workflow has no r
 | `loop-sun-digest` | Sun 11:00 (`0 16 * * 0`) | The one email a week, whatever the week was: its subject is one plain sentence, worst problem first (see "Digest" below). | no |
 | `loop-mon-draft` | Sun night 00:00 (`0 5 * * 1`) | Builds `loop/render_queue.json` (the only handoff to the Mac), authors any topic that has no script yet (480-minute authoring budget, 500-minute job ceiling, pinned by `loop/tests/test_mon_draft_authoring_budget.py`; done by 13:20 UTC, before the 14:00 UTC upload lane), promotes validated drafts to `scripts/`, and rebuilds the dashboard. | yes |
 | Mac render batch | daily 23:00 on her Mac (launchd, `bin/loop-install-launchd.sh` → `bin/batch-session.sh`) | Narrates every script that has no audio, renders every episode that has audio but no video, and pushes the results out for uploading; it reads `loop/render_queue.json`. | yes — `loop/extend.py` heals short episodes; the $0 route only, the Mac holds no subscription token |
+| `loop-food-author` | Mon 14:00 (`0 19 * * 1`) | The food lane's cloud half: writes the next food episode (three queued food topics as one "<Food>, <Food>, <Food>: What's Inside?" script), a footage kit per food and its queue row; one episode in flight at a time (`loop/food_author.py`). | yes — the same $0 route as mon-draft |
+| Mac food nights | Tue + Thu 22:58 on her Mac (launchd `com.howweknow.food` → `bin/food-session.sh`) | Footage, voice, render and stitch of that food episode, held to the food contract, then shelved for the upload lane. Holds the batch's lock, so the batch stands down those two nights. | no |
 | `loop-upload-cloud` | daily 09:00 (`0 14 * * *`) | Pulls the next pending episode's render and thumbnail from Cloudflare R2 and uploads it to YouTube as private with its publish date. Halts while the circuit breaker is tripped (`BREAKER_TRIPPED`). | no |
 | `loop-reach` | daily 10:00 (`0 15 * * *`) | Non-English reach plus discovery metadata: English captions, localized titles and descriptions, tags. | yes (localization) |
 | `loop-shorts-cloud` | daily 18:00 (`0 23 * * *`) | Pulls a verified Short from R2 and uploads it to YouTube as private with its evening slot. Halts while the circuit breaker is tripped (`BREAKER_TRIPPED`). | no |

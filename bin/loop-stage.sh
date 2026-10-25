@@ -207,6 +207,11 @@ fi
 if [ "$STAGE" = "queue-reopen" ]; then
   git add scripts 2>/dev/null
 fi
+# the food author lane (2026-10-25): its episode script, its kits and the
+# episode row; loop/drafts/ (its parts' drafts) is under loop/ above
+if [ "$STAGE" = "food-author" ]; then
+  git add scripts/food channel/food_kits research/publish_order*.json 2>/dev/null
+fi
 if [ "$STAGE" = "mon-draft" ]; then
   git add scripts 2>/dev/null
   git add pov/pov-assignments.json 2>/dev/null

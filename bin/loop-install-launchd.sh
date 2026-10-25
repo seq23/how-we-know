@@ -8,7 +8,12 @@
 #                                        battery interrupted; a no-op in well
 #                                        under a second otherwise (2026-10-12)
 #
-# ONE AGENT, and only one, because only one thing here narrates. tuesday and
+#   TUE+THU 22:58  bin/food-session.sh   the food lane: footage, voice, render,
+#                                        stitch, shelve one food episode a week
+#                                        (2026-10-25; it holds the batch's lock)
+#
+# ONE NARRATOR at a time (the food agent takes the batch's own lock), because
+# only one thing here may narrate at once. tuesday and
 # thursday are deliberately NOT installed - see the --install block.
 #
 # 23:00 is the owner's choice (2026-09-04): start the night's narration when
@@ -100,12 +105,52 @@ cat <<XML
 XML
 }
 
-AGENT_NAMES="batch nightquit batch-resume"
+# Several weekdays at one time: the FOOD agent (2026-10-25). launchd takes an
+# ARRAY of calendar dicts for this; one dict per night.
+plist_weekdays(){ # name script hour minute weekday...
+local name="$1" script="$2" hour="$3" min="$4"; shift 4
+local cal=""
+for wd in "$@"; do
+  cal="$cal
+    <dict><key>Weekday</key><integer>$wd</integer>
+          <key>Hour</key><integer>$hour</integer>
+          <key>Minute</key><integer>$min</integer></dict>"
+done
+cat <<XML
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+  <key>Label</key><string>com.howweknow.$name</string>
+  <key>ProgramArguments</key>
+  <array><string>/bin/bash</string><string>-lc</string>
+    <string>cd $ROOT &amp;&amp; $ROOT/bin/$script</string></array>
+  <key>StartCalendarInterval</key>
+  <array>$cal
+  </array>
+  <key>StandardOutPath</key><string>$LOGDIR/$name.log</string>
+  <key>StandardErrorPath</key><string>$LOGDIR/$name.err</string>
+  <key>RunAtLoad</key><false/>
+</dict></plist>
+XML
+}
+
+AGENT_NAMES="batch nightquit batch-resume food backfill"
 print_one(){
   case "$1" in
     batch)        plist batch    batch-session.sh - 23 ;;
     nightquit)    plist nightquit night-quit.sh - 22 55 ;;
     batch-resume) plist_interval batch-resume 300 batch-session.sh --resume-if-interrupted ;;
+    # THE FOOD LANE (2026-10-25): Tuesday and Thursday at 22:58, two minutes
+    # before the batch, holding the batch's own lock - so it is the ONE
+    # narrator on those nights. One food episode a week over two nights; the
+    # reason is written at the top of bin/food-session.sh.
+    food)         plist_weekdays food food-session.sh 22 58 2 4 ;;
+    # DAILY 09:00: the Mac's upload lane (bin/loop-backfill-daily.sh), sharing
+    # one ledger with loop-upload-cloud.yml (pull before, push after). It was
+    # loaded on this Mac from a hand-written plist the installer did not know;
+    # written here since 2026-10-25 so loop/lanes.py has ONE source for it.
+    backfill)     plist backfill loop-backfill-daily.sh - 9 ;;
     *) echo "unknown agent: $1 (one of: $AGENT_NAMES)" >&2; return 2 ;;
   esac
 }
@@ -138,6 +183,10 @@ case "${1:-}" in
     print_one nightquit > "$AGENTS/com.howweknow.nightquit.plist"
     # EVERY 300 s: resume a night a reboot or a dead battery interrupted.
     print_one batch-resume > "$AGENTS/com.howweknow.batch-resume.plist"
+    # TUE + THU 22:58: the food lane's Mac nights (bin/food-session.sh). It
+    # takes the batch's lock, so it is still ONE narrator, never a second.
+    print_one food > "$AGENTS/com.howweknow.food.plist"
+    print_one backfill > "$AGENTS/com.howweknow.backfill.plist"
     # VERIFY THE XML, never launchctl's own word. A plist launchd cannot parse
     # is still reported "loaded" and simply never fires; that is how two agents
     # sat installed and dead. plutil is the only thing that actually knows.
@@ -166,6 +215,7 @@ case "${1:-}" in
     echo "# Daily 23:00 - the batch"; print_one batch
     echo "# Daily 22:55 - quit the apps that compete for RAM"; print_one nightquit
     echo "# Every 300 s - resume an interrupted night"; print_one batch-resume
+    echo "# Tue + Thu 22:58 - the food lane"; print_one food
     echo; echo "Nothing was written. Re-run with --install to load these."
     ;;
 esac
