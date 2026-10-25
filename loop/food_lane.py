@@ -41,7 +41,11 @@ sys.path.insert(0, str(LOOP))
 sys.path.insert(0, str(ROOT / "visuals"))
 sys.path.insert(0, str(ROOT / "voice"))
 
-PY = str(ROOT / ".venv" / "bin" / "python")
+# The render venv when it exists, else this interpreter (loop/tests/run_all.py's
+# rule, V28). The voice venv has no fallback on purpose: torch and chatterbox
+# live only there, so its absence is the named stop FOOD_TTS_MISSING below.
+_VENV = ROOT / ".venv" / "bin" / "python"
+PY = str(_VENV) if _VENV.exists() else sys.executable
 PY_TTS = str(ROOT / ".venv-tts" / "bin" / "python")
 REFERENCE = ROOT / "voice" / "reference_A_clean_cond10.wav"
 WORK = ROOT / "renders" / "food"
