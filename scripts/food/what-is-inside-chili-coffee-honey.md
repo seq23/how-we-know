@@ -5,8 +5,8 @@
 **Episode:** what-is-inside-chili-coffee-honey
 **Parts:** why-do-chili-peppers-taste-hot, why-does-coffee-taste-bitter, why-does-honey-never-spoil (segment order: chili, coffee, honey)
 **Register:** one voice at normal explainer pace start to finish (voice/registers.json, V54)
-**Word count:** 5151
-**Estimated narration:** about 30 minutes at 169.5 words a minute (the first episode's stitched rate)
+**Word count:** 4872
+**Estimated narration:** 28.8-30.8 minutes at the 169.1-158.0 words a minute the food voice has measured on stitched episodes (food_author.measured_rates); trimmed 2026-10-26 by food_author.fit after the first render ran 32.6 min
 **Made by:** loop/food_author.py
 
 ## YouTube title
@@ -149,17 +149,6 @@ The next step closes the loop. Once a structure is proposed, chemists make the c
 
 {{text}}
 There is a stricter test still, and it is the closest thing this field has to a controlled experiment. Researchers rebuild the cup. They take each identified compound at the concentration measured in a real brew, dissolve the set in water, and ask a panel to compare the mixture with the coffee it came from. If the rebuilt version tastes about as bitter, the list is reasonably complete. Then they leave compounds out, one group at a time. When removing a group makes the mixture noticeably less bitter, that group is pulling its weight. Omission tests of this kind are how caffeine's modest role was measured, rather than assumed.
-
-### Coffee: Bitter is a verdict reached by receptors
-
-{{cross_section: taste bud | bitter receptors}}
-Molecules are only half of the story. Bitterness is something a cell decides. On the tongue, and on the soft palate, taste buds hold receptor cells, and some of those cells carry bitter receptors. These are proteins that span the cell membrane. When the right molecule docks on the outside, the receptor changes shape and triggers a signal inside the cell, and a nerve carries the message on. As research supported by the NIH has described, humans carry about 25 types of bitter receptor, and many of them respond to several different molecules.
-
-{{steps: receptor assay | receptor gene | cultured cells | calcium signal | >which molecule activates which receptor}}
-The way scientists learned which molecule triggers which receptor is not by tasting. The method is a receptor assay. They take a single receptor gene and insert it into cultured cells that do not normally taste anything. They load those cells with a dye that glows when calcium floods in, which is what happens when the receptor fires, producing a calcium signal. Then they add a test compound. If the cells light up, that receptor responds. Repeating this across the family maps which molecule activates which receptor. Caffeine, tested this way, activates several of them. Roast compounds can be screened the same way, though fewer have been fully mapped.
-
-{{contrast: bitterness | is=a response in the taster | not=a fixed property of the molecule}}
-This is why bitterness is a response in the taster, not a fixed property of the molecule. The receptor genes vary between people. Some versions of a receptor bind a given compound strongly, others weakly, and some people barely detect certain bitter molecules at all. The same cup can register as harsh to one person and mild to another, without either of them being wrong. The chemistry in the cup is the same. The sensors are not.
 
 ### Coffee: Brewing decides how much of the bitterness reaches you
 
