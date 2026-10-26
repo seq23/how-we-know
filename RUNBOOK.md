@@ -314,12 +314,14 @@ nothing for you to do; it tells whoever reads it where to look.
 
 ### What is on the Mac right now
 
-Four timers, all `launchctl`-loaded and `plutil -lint`-valid (batch-resume added 2026-10-12):
+Six timers, all `launchctl`-loaded and `plutil -lint`-valid (batch-resume added 2026-10-12, food and food-resume 2026-10-25):
 
 | Agent | When | What it does |
 |---|---|---|
 | `com.howweknow.batch` | **daily 23:00** | `bin/batch-session.sh` — narrates, renders, shelves to R2. This is step 2 of "The whole loop, plainly" above; see "The nightly batch, in detail". |
 | `com.howweknow.batch-resume` | every 5 min | `bin/batch-session.sh --resume-if-interrupted` — resumes a night a restart or flat battery cut off, until 09:00; otherwise does nothing. |
+| `com.howweknow.food` | Tue + Thu 22:58 | `bin/food-session.sh` — renders the week's food episode, holding the batch's lock (one narrator). |
+| `com.howweknow.food-resume` | every 5 min, and at login | `bin/food-session.sh --resume-if-interrupted` — a food night that died (a restart, a crash, a kill) is written to `food.log` as `FOOD_RUN_DIED` and resumed while its 07:00 window lasts, at most 3 times; otherwise does nothing. A deliberate stop that must not resume: `.venv/bin/python loop/food_lane.py resume-cancel`. |
 | `com.howweknow.nightquit` | daily 22:55 | Quits Chrome, Signal and Spotify before the batch. |
 | `com.howweknow.backfill` | daily 09:00 | Uploads the last few of the original 16 pre-cloud-upload episodes. It **stops by itself** when they are done; it does not narrate or render. |
 

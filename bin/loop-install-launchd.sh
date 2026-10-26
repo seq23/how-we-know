@@ -135,7 +135,7 @@ cat <<XML
 XML
 }
 
-AGENT_NAMES="batch nightquit batch-resume food backfill"
+AGENT_NAMES="batch nightquit batch-resume food food-resume backfill"
 print_one(){
   case "$1" in
     batch)        plist batch    batch-session.sh - 23 ;;
@@ -146,6 +146,10 @@ print_one(){
     # narrator on those nights. One food episode a week over two nights; the
     # reason is written at the top of bin/food-session.sh.
     food)         plist_weekdays food food-session.sh 22 58 2 4 ;;
+    # EVERY 300 s AND AT LOGIN: resume a food night that died (2026-10-25: the
+    # Mac went down mid-narration and nothing re-ran it). The decision is
+    # loop/food_lane.py resume-gate's; it exits in well under a second otherwise.
+    food-resume)  plist_interval food-resume 300 food-session.sh --resume-if-interrupted ;;
     # DAILY 09:00: the Mac's upload lane (bin/loop-backfill-daily.sh), sharing
     # one ledger with loop-upload-cloud.yml (pull before, push after). It was
     # loaded on this Mac from a hand-written plist the installer did not know;
@@ -186,6 +190,8 @@ case "${1:-}" in
     # TUE + THU 22:58: the food lane's Mac nights (bin/food-session.sh). It
     # takes the batch's lock, so it is still ONE narrator, never a second.
     print_one food > "$AGENTS/com.howweknow.food.plist"
+    # EVERY 300 s + AT LOGIN: resume a food night that died (food-session.sh).
+    print_one food-resume > "$AGENTS/com.howweknow.food-resume.plist"
     print_one backfill > "$AGENTS/com.howweknow.backfill.plist"
     # VERIFY THE XML, never launchctl's own word. A plist launchd cannot parse
     # is still reported "loaded" and simply never fires; that is how two agents
@@ -194,9 +200,37 @@ case "${1:-}" in
       plutil -lint "$AGENTS/com.howweknow.$n.plist" >/dev/null \
         || { echo "NAMED STOP: com.howweknow.$n.plist is not valid XML; not loading it." >&2; exit 4; }
     done
+    # NEVER KILL A RUNNING NIGHT. `launchctl unload` stops a job that is
+    # running: re-installing during a batch or a food night used to end it
+    # mid-narration with no line in its log. An agent whose plist did not
+    # change is left loaded as it is; a changed one whose job is running is
+    # NOT reloaded now - it says so, and the next --install (after the run)
+    # loads it. LAUNCHCTL lets loop/tests/test_food_resume_on_death.py fake it.
+    # The copy of what was last loaded lives OUTSIDE LaunchAgents: launchd
+    # reads every file in that folder at login.
+    LCTL="${LAUNCHCTL:-launchctl}"
+    LOADED="$LOGDIR/loaded-plists"
+    mkdir -p "$LOADED"
     for n in $AGENT_NAMES; do
-      launchctl unload "$AGENTS/com.howweknow.$n.plist" 2>/dev/null || true
-      launchctl load  "$AGENTS/com.howweknow.$n.plist"
+      f="$AGENTS/com.howweknow.$n.plist"
+      was="$LOADED/com.howweknow.$n.plist"
+      pid=$("$LCTL" list "com.howweknow.$n" 2>/dev/null | awk -F'= ' '/"PID"/{gsub(/;/,"",$2); print $2}' || true)
+      if [ -n "$pid" ]; then
+        if cmp -s "$f" "$was" 2>/dev/null; then
+          echo "kept   com.howweknow.$n  (running, pid $pid; plist unchanged)"
+        else
+          echo "DEFERRED com.howweknow.$n: its job is running (pid $pid); not reloading it" \
+               "mid-run. Run bin/loop-install-launchd.sh --install again after it ends."
+        fi
+        continue
+      fi
+      if "$LCTL" list "com.howweknow.$n" >/dev/null 2>&1 && cmp -s "$f" "$was" 2>/dev/null; then
+        echo "kept   com.howweknow.$n  (plist unchanged)"
+        continue
+      fi
+      "$LCTL" unload "$f" 2>/dev/null || true
+      "$LCTL" load  "$f"
+      cp "$f" "$was"
       echo "loaded com.howweknow.$n  (logs: $LOGDIR/$n.log)"
     done
     ;;
