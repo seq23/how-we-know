@@ -1273,6 +1273,60 @@
         "applied_at": "2026-10-24T18:05:03+00:00",
         "result": "ignored"
       }
+    },
+    "UgzGYO0BQ1drHYqGBJ54AaABAg": {
+      "comment_id": "UgzGYO0BQ1drHYqGBJ54AaABAg",
+      "video_id": "qPnBKYAR3ps",
+      "author": "@howweknowdeep",
+      "author_channel_id": "UC5vZFZc15DIM6IrFwFgAECg",
+      "text": "How do scientists know so much about the deep ocean when we've explored so little of it? Full episode: https://youtu.be/zs-gueHeX8k",
+      "published_at": "2026-10-26T15:01:02+00:00",
+      "like_count": 0,
+      "reply_count": 0,
+      "class": "own_channel",
+      "proposed_action": null,
+      "proposed_reply": null,
+      "product_note": null,
+      "seen_at": "2026-10-26T15:01:02+00:00",
+      "acted": {
+        "comment_id": "UgzGYO0BQ1drHYqGBJ54AaABAg",
+        "video_id": "qPnBKYAR3ps",
+        "action": "channel_comment",
+        "reply_text": "How do scientists know so much about the deep ocean when we've explored so little of it? Full episode: https://youtu.be/zs-gueHeX8k",
+        "instructed_by": "owner",
+        "instructed_at": "2026-10-03",
+        "source": "loop/handoff: owner decision 2026-10-03",
+        "note": null,
+        "applied_at": "2026-10-26T15:01:02+00:00",
+        "result": "posted (UgzGYO0BQ1drHYqGBJ54AaABAg)"
+      }
+    },
+    "Ugz5B7z--EjPowxsfy54AaABAg": {
+      "comment_id": "Ugz5B7z--EjPowxsfy54AaABAg",
+      "video_id": "PzNU6whcXjc",
+      "author": "@howweknowdeep",
+      "author_channel_id": "UC5vZFZc15DIM6IrFwFgAECg",
+      "text": "How do scientists know so much about the deep ocean when we've explored so little of it? Full episode: https://youtu.be/zs-gueHeX8k",
+      "published_at": "2026-10-26T15:01:03+00:00",
+      "like_count": 0,
+      "reply_count": 0,
+      "class": "own_channel",
+      "proposed_action": null,
+      "proposed_reply": null,
+      "product_note": null,
+      "seen_at": "2026-10-26T15:01:03+00:00",
+      "acted": {
+        "comment_id": "Ugz5B7z--EjPowxsfy54AaABAg",
+        "video_id": "PzNU6whcXjc",
+        "action": "channel_comment",
+        "reply_text": "How do scientists know so much about the deep ocean when we've explored so little of it? Full episode: https://youtu.be/zs-gueHeX8k",
+        "instructed_by": "owner",
+        "instructed_at": "2026-10-03",
+        "source": "loop/handoff: owner decision 2026-10-03",
+        "note": null,
+        "applied_at": "2026-10-26T15:01:03+00:00",
+        "result": "posted (Ugz5B7z--EjPowxsfy54AaABAg)"
+      }
     }
   },
   "instructions": {
@@ -1813,6 +1867,30 @@
       "note": null,
       "applied_at": "2026-10-24T18:05:03+00:00",
       "result": "ignored"
+    },
+    {
+      "comment_id": "UgzGYO0BQ1drHYqGBJ54AaABAg",
+      "video_id": "qPnBKYAR3ps",
+      "action": "channel_comment",
+      "reply_text": "How do scientists know so much about the deep ocean when we've explored so little of it? Full episode: https://youtu.be/zs-gueHeX8k",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03",
+      "note": null,
+      "applied_at": "2026-10-26T15:01:02+00:00",
+      "result": "posted (UgzGYO0BQ1drHYqGBJ54AaABAg)"
+    },
+    {
+      "comment_id": "Ugz5B7z--EjPowxsfy54AaABAg",
+      "video_id": "PzNU6whcXjc",
+      "action": "channel_comment",
+      "reply_text": "How do scientists know so much about the deep ocean when we've explored so little of it? Full episode: https://youtu.be/zs-gueHeX8k",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03",
+      "note": null,
+      "applied_at": "2026-10-26T15:01:03+00:00",
+      "result": "posted (Ugz5B7z--EjPowxsfy54AaABAg)"
     }
   ],
   "sweeps": [
@@ -2221,7 +2299,23 @@
       "instructed_by": "owner",
       "instructed_at": "2026-10-03",
       "source": "loop/handoff: owner decision 2026-10-03"
+    },
+    "qPnBKYAR3ps": {
+      "comment_id": "UgzGYO0BQ1drHYqGBJ54AaABAg",
+      "text": "How do scientists know so much about the deep ocean when we've explored so little of it? Full episode: https://youtu.be/zs-gueHeX8k",
+      "posted_at": "2026-10-26T15:01:02+00:00",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03"
+    },
+    "PzNU6whcXjc": {
+      "comment_id": "Ugz5B7z--EjPowxsfy54AaABAg",
+      "text": "How do scientists know so much about the deep ocean when we've explored so little of it? Full episode: https://youtu.be/zs-gueHeX8k",
+      "posted_at": "2026-10-26T15:01:03+00:00",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03"
     }
   },
-  "updated": "2026-10-25T00:49:34+00:00"
+  "updated": "2026-10-26T15:01:03+00:00"
 }

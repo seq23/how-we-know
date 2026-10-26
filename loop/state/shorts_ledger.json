@@ -574,10 +574,14 @@
       "schedule_was": "2026-10-04T00:00:00Z",
       "held_at": "2026-10-03T13:40:00+00:00",
       "held_why": "uploaded before #138 landed; episode held under the 10-minute floor; unscheduled by hand, released by shorts_lane.release_held when the hold lifts",
-      "handoff": "pending",
+      "handoff": "done",
       "released_at": "2026-10-04T23:09:28+00:00",
       "playlist_item_id": "UExPclpNRHlveTFYTS5DQ0MyQ0Y4Mzg0M0VGOEYw",
-      "playlist": "PLOrZMDyoy1XM"
+      "playlist": "PLOrZMDyoy1XM",
+      "handoff_episode": "zs-gueHeX8k",
+      "handoff_at": "2026-10-26T15:01:00+00:00",
+      "handoff_comment_id": "UgzGYO0BQ1drHYqGBJ54AaABAg",
+      "handoff_comment_at": "2026-10-26T15:01:02+00:00"
     },
     {
       "slug": "how-do-scientists-know-how-old-something-is",
@@ -1018,9 +1022,13 @@
       "title": "How scientists know so much about the deep ocean when we've explored so little of it: remote sensing",
       "chapter": "Remote sensing technologies measure without visiting",
       "chapter_start_s": 274.167,
-      "handoff": "pending",
+      "handoff": "done",
       "playlist_item_id": "UExPclpNRHlveTFYTS5GNjAwN0Y0QTFGOTVDMEMy",
-      "playlist": "PLOrZMDyoy1XM"
+      "playlist": "PLOrZMDyoy1XM",
+      "handoff_episode": "zs-gueHeX8k",
+      "handoff_at": "2026-10-26T15:01:01+00:00",
+      "handoff_comment_id": "Ugz5B7z--EjPowxsfy54AaABAg",
+      "handoff_comment_at": "2026-10-26T15:01:03+00:00"
     },
     {
       "slug": "how-do-scientists-know-how-old-something-is",
@@ -1034,7 +1042,9 @@
       "title": "How scientists know how old something is: deep-sea sediments accumulate slowly and unevenly",
       "chapter": "Deep-sea sediments accumulate slowly and unevenly",
       "chapter_start_s": 358.2,
-      "handoff": "pending"
+      "handoff": "pending",
+      "playlist_item_id": "UExPclpNRHlveTFYTS5CQkEwRDA0MDkwNUM2MDY1",
+      "playlist": "PLOrZMDyoy1XM"
     },
     {
       "slug": "how-do-scientists-know-about-other-galaxies",
@@ -1051,5 +1061,5 @@
       "handoff": "pending"
     }
   ],
-  "updated": "2026-10-26T01:00:09+00:00"
+  "updated": "2026-10-26T15:01:03+00:00"
 }
