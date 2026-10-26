@@ -1,0 +1,55 @@
+name: site · post-deploy live check
+
+# Search readiness item h4: a post-deploy live check that reads the deployed
+# site from outside — crawl files, icons, og image, schema types, the redirects
+# of measured URLs, and the IndexNow key.
+#
+# The deploy job in site-check.yml already runs this script the moment a deploy
+# lands, which is what blocks a bad deploy. This workflow exists for the drift no
+# deploy caused: a Pages project rolled back, a DNS or redirect change, an icon
+# that stopped answering, an expired cert. Before it, the next thing to notice
+# any of those was the weekly audit, on a Monday.
+#
+# Both callers run scripts/validate-live-host.mjs. One script, one list of
+# expectations — a second copy here would drift from the one the deploy enforces.
+#
+# It reads only public URLs, so it needs no secret and spends nothing.
+
+on:
+  # After a deploy has landed on main, independently of the deploy job.
+  workflow_run:
+    workflows: ['site · build, validate, deploy']
+    branches: [main]
+    types: [completed]
+  schedule:
+    # 11:20 UTC daily. Off the hour: scheduled runs bunch on the hour and are
+    # dropped under load, and nothing here needs a particular minute.
+    - cron: '20 11 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: site-post-deploy-check
+  cancel-in-progress: false
+
+jobs:
+  live:
+    # The script itself retries for up to ~75s while Pages promotes a deploy, and
+    # samples a dozen sitemap URLs. ~4x the measured minute: a fault detector,
+    # not a budget.
+    timeout-minutes: 8
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: site
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      # No npm ci: the check uses only node's own fetch and the committed
+      # site-flags.json, so an install would be a minute spent on nothing.
+      - name: Read the deployed site from outside
+        run: node scripts/validate-live-host.mjs
