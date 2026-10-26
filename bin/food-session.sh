@@ -181,7 +181,14 @@ fi
 echo "--- stage 3/3: report to the repository ---"
 OK=1; [ "$RC" -eq 0 ] || [ "$RC" -eq 4 ] || OK=0
 $PY loop/mac_sync.py heartbeat --lane food --ok "$OK" 2>&1 | tail -1
+# The rights manifests AND the stills they name. food_ai.json's assets are
+# NOT gitignored, so V30 rule B requires them in git with their manifest:
+# committing the manifest alone is what redded main on 2026-10-26, when two
+# stills generated the night before stayed on this Mac. (food_clips.json is
+# the other shape on purpose: its clips are hundreds of megabytes, live under
+# the gitignored channel/imagery/clips/, and are pinned by sha256 instead.)
 PATHS="channel/imagery/food_clips.json channel/imagery/food_ai.json"
+PATHS="$PATHS channel/imagery/assets"
 if [ -n "$SLUG" ]; then
   PATHS="$PATHS channel/specs/$SLUG.json channel/specs/$SLUG.proof.npz"
   PATHS="$PATHS captions/$SLUG.srt captions/$SLUG.chapters.txt"
