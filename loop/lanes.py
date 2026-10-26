@@ -50,6 +50,12 @@ LANES: dict[str, dict] = {
     "sun-digest":       {"runner": "workflow", "file": "loop-sun-digest.yml", "entry": "loop/digest.py"},
     "sun-rank":         {"runner": "workflow", "file": "loop-sun-rank.yml", "entry": "loop/rank.py"},
     "upload-cloud":     {"runner": "workflow", "file": "loop-upload-cloud.yml", "entry": "loop/cloud_upload.py"},
+    # ---- the cloud: the website's own lanes (not episode work, so they make
+    # ---- nothing; they measure the deployed site and what search engines see)
+    "search-console":   {"runner": "workflow", "file": "search-console-daily.yml",
+                         "entry": "site/scripts/search-console-truth.mjs"},
+    "site-live-check":  {"runner": "workflow", "file": "site-post-deploy-check.yml",
+                         "entry": "site/scripts/validate-live-host.mjs"},
     # ---- this Mac (launchd, bin/loop-install-launchd.sh)
     "batch":            {"runner": "launchd", "agent": "batch", "entry": "bin/batch-session.sh",
                          "makes": "render", "domains": [DEEP, MATS]},

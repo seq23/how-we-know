@@ -13,6 +13,13 @@
  * This reads the live origin the way the weekly search-readiness audit reads it,
  * so the next person to find those is this job and not the following Monday.
  *
+ * It is also the whole of the post-deploy live check (search readiness item h4:
+ * crawl files, icons, og image, schema types, redirects of measured URLs, the
+ * IndexNow key). Two callers, one list: the deploy job in site-check.yml runs it
+ * the moment a deploy lands, and site-post-deploy-check.yml re-runs it on a
+ * schedule so live drift that no deploy caused is found by a job and not by the
+ * next audit.
+ *
  * Rule 0: a run that made zero requests fails.
  */
 import fs from 'node:fs'
@@ -105,6 +112,107 @@ for (const file of ['/favicon.ico', '/apple-touch-icon.png', '/site.webmanifest'
   checks += 1
   const { status } = await get(`${origin}/about/`)
   if (status !== 200) failures.push(`/about/ answered ${status}`)
+}
+
+// ─── the rest of the post-deploy live check (search readiness h4) ───────────
+//
+// h4 names six things to read on the deployed site: crawl files, icons, the og
+// image, schema types, the redirects of measured URLs, and the IndexNow key. The
+// three above cover icons, the og image and the host redirect. These cover the
+// rest, so this one script is the whole check and nothing keeps a second list.
+
+// Crawl files. robots.txt that does not point at the sitemap, or a sitemap that
+// does not answer, is a site no crawler can enumerate — and both are generated,
+// so a generator regression would show up here first.
+{
+  checks += 1
+  const { status, response } = await get(`${origin}/robots.txt`)
+  if (status !== 200) failures.push(`/robots.txt answered ${status}`)
+  else {
+    const text = await response.text()
+    if (!/^sitemap:\s*\S+/im.test(text)) failures.push('/robots.txt names no Sitemap')
+    if (/^disallow:\s*\/\s*$/im.test(text)) {
+      failures.push('/robots.txt disallows the whole site')
+    }
+  }
+}
+
+for (const file of ['/sitemap.xml', '/llms.txt']) {
+  checks += 1
+  const { status, response } = await get(`${origin}${file}`)
+  if (status !== 200) failures.push(`${file} answered ${status}`)
+  else if (file.endsWith('.xml')) {
+    const text = await response.text()
+    const locs = [...text.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1])
+    if (locs.length === 0) failures.push('/sitemap.xml holds zero <loc> entries')
+    else if (locs.some((loc) => new URL(loc).host !== host)) {
+      failures.push(`/sitemap.xml lists URLs on another host (e.g. ${locs.find((loc) => new URL(loc).host !== host)})`)
+    }
+  }
+}
+
+// The IndexNow key, read over HTTP from the deployed host. The build guards the
+// file (validate-indexnow.mjs); this proves the deploy actually serves it, which
+// is the only thing IndexNow itself will check.
+{
+  checks += 1
+  const key = flags.indexNowKey
+  const { status, response } = await get(`${origin}/${key}.txt`)
+  if (status !== 200) failures.push(`/${key}.txt answered ${status}, so IndexNow cannot verify the key`)
+  else if ((await response.text()).trim() !== key) {
+    failures.push(`/${key}.txt does not contain the key it is named for`)
+  }
+}
+
+// Schema types. The homepage declares an Organization, a WebSite and a WebPage;
+// a prerender that dropped the JSON-LD would leave the pages looking fine and
+// make the site unquotable, which is the entire point of this publication.
+{
+  checks += 1
+  const { status, response } = await get(`${origin}/`)
+  if (status !== 200) failures.push(`${origin}/ answered ${status} when reading its schema`)
+  else {
+    const html = await response.text()
+    const types = new Set()
+    for (const match of html.matchAll(
+      /<script[^>]+application\/ld\+json[^>]*>([\s\S]*?)<\/script>/gi,
+    )) {
+      let parsed
+      try {
+        parsed = JSON.parse(match[1])
+      } catch {
+        failures.push('the homepage carries JSON-LD that does not parse')
+        continue
+      }
+      const nodes = Array.isArray(parsed) ? parsed : (parsed['@graph'] ?? [parsed])
+      for (const node of nodes) {
+        for (const type of [node?.['@type']].flat()) if (type) types.add(String(type))
+      }
+    }
+    for (const required of ['Organization', 'WebSite', 'WebPage']) {
+      if (!types.has(required)) {
+        failures.push(`the homepage declares no ${required} in JSON-LD (found: ${[...types].join(', ') || 'nothing'})`)
+      }
+    }
+  }
+}
+
+// The redirects of measured URLs. Every sitemap URL is a URL search engines are
+// told to index, so one that redirects wastes the signal it was given — this is
+// the defect the sitemap generator's trailing-slash rule exists to prevent, read
+// from outside instead of trusted. A sample keeps the check inside a minute.
+{
+  const sitemap = await get(`${origin}/sitemap.xml`)
+  const locs =
+    sitemap.status === 200
+      ? [...(await sitemap.response.text()).matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1])
+      : []
+  const sample = locs.filter((_, index) => index % Math.ceil(locs.length / 12 || 1) === 0).slice(0, 12)
+  for (const url of sample) {
+    checks += 1
+    const { status, location } = await get(url, 'manual')
+    if (status !== 200) failures.push(`sitemap URL ${url} answered ${status}${location ? ` -> ${location}` : ''}`)
+  }
 }
 
 }

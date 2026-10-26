@@ -1,0 +1,74 @@
+name: search console · daily truth, coverage and sitemap status
+
+# Search readiness items e4, e5 and i6 (owner's checklist, 25 Oct 2026).
+#
+# Search Console shows a rolling 28-day window and the URL Inspection API answers
+# one URL at a time. Neither can be read later: a query that mattered five weeks
+# ago is gone from the window, and "why is this page not indexed" has no history
+# at all unless something writes it down. So this runs daily and commits what it
+# saw, into site/data/search-console/:
+#
+#   gsc_truth.json            the 28-day window, plus every sitemap's status
+#   gsc_query_history.json    every query ever seen, so a target that leaves the
+#                             window does not leave the record
+#   index_coverage.json       indexed / crawled-not-indexed / discovered /
+#                             unknown, 150 URLs a day, 8 at a time, rotating
+#
+# Read-only (webmasters.readonly) and free.
+#
+# It needs one thing this repository cannot give itself: a Search Console
+# property for the domain with the gsc-bot service account added to it. Without
+# it the script prints a NAMED STOP that says exactly that and exits 0 — green,
+# because a red check every morning for something only the owner can clear
+# teaches people to ignore red checks. The stop is also written into
+# gsc_truth.json, so a gap in the record is visible rather than quiet.
+
+on:
+  schedule:
+    # 09:40 UTC daily, after Google has finalised the previous day. Off the hour:
+    # scheduled runs bunch on the hour and are dropped under load.
+    - cron: '40 9 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: search-console-daily
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    # The inspection pass is 150 URLs at 8 at a time; ~4x the measured couple of
+    # minutes. A fault detector, not a budget.
+    timeout-minutes: 12
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: site
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      # No npm ci: the collector uses only node's own crypto and fetch, so an
+      # install would be a minute spent on nothing.
+      - name: Read Search Console
+        env:
+          GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
+        run: node "$GITHUB_WORKSPACE/site/scripts/search-console-truth.mjs"
+
+      - name: Commit what changed
+        # Only the three data files, and only when they moved. A day whose
+        # numbers are identical is not a commit.
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          git config user.name  'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add site/data/search-console
+          if git diff --cached --quiet; then
+            echo 'Search Console truth is unchanged today; nothing to commit.'
+            exit 0
+          fi
+          git commit -m "search console: daily truth, coverage and sitemap status ($(date -u +%Y-%m-%d))"
+          git push
