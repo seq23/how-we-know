@@ -467,6 +467,40 @@
       "altered_content": true,
       "licence": "generated on Workers AI (FLUX.1 [schnell], Apache-2.0 weights); output owned by the channel",
       "credit_line": "AI-GENERATED IMAGE"
+    },
+    {
+      "key": "chili-cross-macro",
+      "prompt": "a chili cut open in cross-section, its inner structure glowing softly, extreme macro, realistic",
+      "full_prompt": "a chili cut open in cross-section, its inner structure glowing softly, extreme macro, realistic. photorealistic macro food photography, single glossy subject lit from the side by one warm key light, deep dark warm background, rich saturated colour, shallow depth of field, cinematic, no text, no people, no hands, no logos",
+      "seed": 7,
+      "model": "@cf/black-forest-labs/flux-1-schnell",
+      "steps": 4,
+      "width": 1024,
+      "height": 576,
+      "local_file": "assets/food_ai__chili-cross-macro__s7.jpg",
+      "sha256": "c7850a74ec3467a4b7f64e6f7bb01791a11e423c51a853d39fb12a773b318157",
+      "generated_at": "2026-10-25T21:11:11.845783+00:00",
+      "ai_generated": true,
+      "altered_content": true,
+      "licence": "generated on Workers AI (FLUX.1 [schnell], Apache-2.0 weights); output owned by the channel",
+      "credit_line": "AI-GENERATED IMAGE"
+    },
+    {
+      "key": "honey-cross-macro",
+      "prompt": "a honey cut open in cross-section, its inner structure glowing softly, extreme macro, realistic",
+      "full_prompt": "a honey cut open in cross-section, its inner structure glowing softly, extreme macro, realistic. photorealistic macro food photography, single glossy subject lit from the side by one warm key light, deep dark warm background, rich saturated colour, shallow depth of field, cinematic, no text, no people, no hands, no logos",
+      "seed": 7,
+      "model": "@cf/black-forest-labs/flux-1-schnell",
+      "steps": 4,
+      "width": 1024,
+      "height": 576,
+      "local_file": "assets/food_ai__honey-cross-macro__s7.jpg",
+      "sha256": "825613747048547a66c734ee3c2e2b1e175beeadfdb952cd90fd0bc4486f4282",
+      "generated_at": "2026-10-25T21:11:15.702011+00:00",
+      "ai_generated": true,
+      "altered_content": true,
+      "licence": "generated on Workers AI (FLUX.1 [schnell], Apache-2.0 weights); output owned by the channel",
+      "credit_line": "AI-GENERATED IMAGE"
     }
   ]
 }

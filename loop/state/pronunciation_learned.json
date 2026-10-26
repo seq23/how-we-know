@@ -20,9 +20,370 @@
      "ok": true
     }
    ]
+  },
+  "hydroxymethylfurfural": {
+   "respelling": "hydro xymethylfurfural",
+   "at": "2026-10-25T23:42:27-04:00",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied hydroxymethylfurfural for decades.",
+     "spoken_text": "Scientists have studied hydro xymethylfurfural for decades.",
+     "heard": "Scientists have studied hydrozymethyl furfural for decades.",
+     "ratio": 0.952,
+     "ok": true
+    },
+    {
+     "carrier": "The hydroxymethylfurfural is what the survey measured first.",
+     "spoken_text": "The hydro xymethylfurfural is what the survey measured first.",
+     "heard": "The hydroxymethyl furfural is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
   }
  },
  "raw_ok": {
+  "Decaffeination": {
+   "at": "2026-10-25T21:06:17-04:00",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied Decaffeination for decades.",
+     "spoken_text": "Scientists have studied Decaffeination for decades.",
+     "heard": "Scientists have studied decaffeination for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The Decaffeination is what the survey measured first.",
+     "spoken_text": "The Decaffeination is what the survey measured first.",
+     "heard": "The decaffeination is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "Maillard": {
+   "at": "2026-10-25T21:07:46-04:00",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied Maillard for decades.",
+     "spoken_text": "Scientists have studied Maillard for decades.",
+     "heard": "Scientists have studied Maillard for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The Maillard is what the survey measured first.",
+     "spoken_text": "The Maillard is what the survey measured first.",
+     "heard": "The mail-ard is what the survey measured first.",
+     "ratio": 0.933,
+     "ok": true
+    }
+   ]
+  },
+  "Melanoidins": {
+   "at": "2026-10-25T21:18:49-04:00",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied Melanoidins for decades.",
+     "spoken_text": "Scientists have studied Melanoidins for decades.",
+     "heard": "Scientists have studied melanoidins for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The Melanoidins is what the survey measured first.",
+     "spoken_text": "The Melanoidins is what the survey measured first.",
+     "heard": "The melanoidins is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "assumption": {
+   "at": "2026-10-25T23:26:57-04:00",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied assumption for decades.",
+     "spoken_text": "Scientists have studied assumption for decades.",
+     "heard": "Scientists have studied assumption for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The assumption is what the survey measured first.",
+     "spoken_text": "The assumption is what the survey measured first.",
+     "heard": "The assumption is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "bacterium": {
+   "at": "2026-10-25T23:30:53-04:00",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied bacterium for decades.",
+     "spoken_text": "Scientists have studied bacterium for decades.",
+     "heard": "Scientists have studied bacterium for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The bacterium is what the survey measured first.",
+     "spoken_text": "The bacterium is what the survey measured first.",
+     "heard": "The bacterium is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "barrier": {
+   "at": "2026-10-25T23:34:28-04:00",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied barrier for decades.",
+     "spoken_text": "Scientists have studied barrier for decades.",
+     "heard": "Scientists have studied barrier for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The barrier is what the survey measured first.",
+     "spoken_text": "The barrier is what the survey measured first.",
+     "heard": "The barrier is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "capsaicin": {
+   "at": "2026-10-25T17:11:51-04:00",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied capsaicin for decades.",
+     "spoken_text": "Scientists have studied capsaicin for decades.",
+     "heard": "Scientists have studied capsaicin for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The capsaicin is what the survey measured first.",
+     "spoken_text": "The capsaicin is what the survey measured first.",
+     "heard": "The capsaicin is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "capsaicinoids": {
+   "at": "2026-10-25T17:45:36-04:00",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied capsaicinoids for decades.",
+     "spoken_text": "Scientists have studied capsaicinoids for decades.",
+     "heard": "Scientists have studied capsaicinoids for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The capsaicinoids is what the survey measured first.",
+     "spoken_text": "The capsaicinoids is what the survey measured first.",
+     "heard": "The capsaicinoids is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "chemesthesis": {
+   "at": "2026-10-25T17:34:39-04:00",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied chemesthesis for decades.",
+     "spoken_text": "Scientists have studied chemesthesis for decades.",
+     "heard": "Scientists have studied chemesthesis for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The chemesthesis is what the survey measured first.",
+     "spoken_text": "The chemesthesis is what the survey measured first.",
+     "heard": "The chemesthesis is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "chlorogenic": {
+   "at": "2026-10-25T17:12:48-04:00",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied chlorogenic for decades.",
+     "spoken_text": "Scientists have studied chlorogenic for decades.",
+     "heard": "Scientists have studied chlorogenic for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The chlorogenic is what the survey measured first.",
+     "spoken_text": "The chlorogenic is what the survey measured first.",
+     "heard": "The chlorogenic is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "chromatograph": {
+   "at": "2026-10-25T23:46:01-04:00",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied chromatograph for decades.",
+     "spoken_text": "Scientists have studied chromatograph for decades.",
+     "heard": "Scientists have studied chromatograph for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The chromatograph is what the survey measured first.",
+     "spoken_text": "The chromatograph is what the survey measured first.",
+     "heard": "The chromatograph is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "chromatography": {
+   "at": "2026-10-25T17:54:20-04:00",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied chromatography for decades.",
+     "spoken_text": "Scientists have studied chromatography for decades.",
+     "heard": "Scientists have studied chromatography for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The chromatography is what the survey measured first.",
+     "spoken_text": "The chromatography is what the survey measured first.",
+     "heard": "The chromatography is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "concentration": {
+   "at": "2026-10-25T17:57:43-04:00",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied concentration for decades.",
+     "spoken_text": "Scientists have studied concentration for decades.",
+     "heard": "Scientists have studied concentration for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The concentration is what the survey measured first.",
+     "spoken_text": "The concentration is what the survey measured first.",
+     "heard": "The concentration is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "crystallization": {
+   "at": "2026-10-25T23:38:53-04:00",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied crystallization for decades.",
+     "spoken_text": "Scientists have studied crystallization for decades.",
+     "heard": "Scientists have studied crystallization for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The crystallization is what the survey measured first.",
+     "spoken_text": "The crystallization is what the survey measured first.",
+     "heard": "The crystallization is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "crystallize": {
+   "at": "2026-10-25T23:41:03-04:00",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied crystallize for decades.",
+     "spoken_text": "Scientists have studied crystallize for decades.",
+     "heard": "Scientists have studied crystallize for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The crystallize is what the survey measured first.",
+     "spoken_text": "The crystallize is what the survey measured first.",
+     "heard": "The crystallize is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "decaffeinated": {
+   "at": "2026-10-25T21:04:37-04:00",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied decaffeinated for decades.",
+     "spoken_text": "Scientists have studied decaffeinated for decades.",
+     "heard": "Scientists have studied decaffeinated for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The decaffeinated is what the survey measured first.",
+     "spoken_text": "The decaffeinated is what the survey measured first.",
+     "heard": "The decaffeinated is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "evolutionary": {
+   "at": "2026-10-25T17:49:19-04:00",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied evolutionary for decades.",
+     "spoken_text": "Scientists have studied evolutionary for decades.",
+     "heard": "Scientists have studied evolutionary for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The evolutionary is what the survey measured first.",
+     "spoken_text": "The evolutionary is what the survey measured first.",
+     "heard": "The evolutionary is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
   "foraminifera": {
    "at": "2026-10-24T11:53:10-04:00",
    "ok": true,
@@ -42,9 +403,314 @@
      "ok": true
     }
    ]
+  },
+  "heavier": {
+   "at": "2026-10-25T21:14:06-04:00",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied heavier for decades.",
+     "spoken_text": "Scientists have studied heavier for decades.",
+     "heard": "Scientists have studied heavier for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The heavier is what the survey measured first.",
+     "spoken_text": "The heavier is what the survey measured first.",
+     "heard": "The heavier is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "hydrogens": {
+   "at": "2026-10-25T17:47:27-04:00",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied hydrogens for decades.",
+     "spoken_text": "Scientists have studied hydrogens for decades.",
+     "heard": "Scientists have studied hydrogens for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The hydrogens is what the survey measured first.",
+     "spoken_text": "The hydrogens is what the survey measured first.",
+     "heard": "The hydrogens is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "hygroscopic": {
+   "at": "2026-10-25T23:36:54-04:00",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied hygroscopic for decades.",
+     "spoken_text": "Scientists have studied hygroscopic for decades.",
+     "heard": "Scientists have studied hygroscopic for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The hygroscopic is what the survey measured first.",
+     "spoken_text": "The hygroscopic is what the survey measured first.",
+     "heard": "The hygroscopic is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "identification": {
+   "at": "2026-10-25T21:12:24-04:00",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied identification for decades.",
+     "spoken_text": "Scientists have studied identification for decades.",
+     "heard": "Scientists have studied identification for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The identification is what the survey measured first.",
+     "spoken_text": "The identification is what the survey measured first.",
+     "heard": "The identification is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "perception": {
+   "at": "2026-10-25T21:17:24-04:00",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied perception for decades.",
+     "spoken_text": "Scientists have studied perception for decades.",
+     "heard": "Scientists have studied perception for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The perception is what the survey measured first.",
+     "spoken_text": "The perception is what the survey measured first.",
+     "heard": "The perception is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "pharmacist": {
+   "at": "2026-10-25T17:51:12-04:00",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied pharmacist for decades.",
+     "spoken_text": "Scientists have studied pharmacist for decades.",
+     "heard": "Scientists have studied pharmacists for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The pharmacist is what the survey measured first.",
+     "spoken_text": "The pharmacist is what the survey measured first.",
+     "heard": "The pharmacist is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "phenylindanes": {
+   "at": "2026-10-25T21:09:05-04:00",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied phenylindanes for decades.",
+     "spoken_text": "Scientists have studied phenylindanes for decades.",
+     "heard": "Scientists have studied phenylindanes for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The phenylindanes is what the survey measured first.",
+     "spoken_text": "The phenylindanes is what the survey measured first.",
+     "heard": "The phenylindines is what the survey measured first.",
+     "ratio": 0.923,
+     "ok": true
+    }
+   ]
+  },
+  "physiologists": {
+   "at": "2026-10-25T17:37:43-04:00",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied physiologists for decades.",
+     "spoken_text": "Scientists have studied physiologists for decades.",
+     "heard": "Scientists have studied Physiologists for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The physiologists is what the survey measured first.",
+     "spoken_text": "The physiologists is what the survey measured first.",
+     "heard": "The Physiologist is what the survey measured first.",
+     "ratio": 0.963,
+     "ok": true
+    }
+   ]
+  },
+  "professionals": {
+   "at": "2026-10-25T21:15:47-04:00",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied professionals for decades.",
+     "spoken_text": "Scientists have studied professionals for decades.",
+     "heard": "Scientists have studied professionals for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The professionals is what the survey measured first.",
+     "spoken_text": "The professionals is what the survey measured first.",
+     "heard": "The professionals is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "receptors": {
+   "at": "2026-10-25T17:13:55-04:00",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied receptors for decades.",
+     "spoken_text": "Scientists have studied receptors for decades.",
+     "heard": "Scientists have studied receptors for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The receptors is what the survey measured first.",
+     "spoken_text": "The receptors is what the survey measured first.",
+     "heard": "The receptors is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "refractometer": {
+   "at": "2026-10-25T23:32:37-04:00",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied refractometer for decades.",
+     "spoken_text": "Scientists have studied refractometer for decades.",
+     "heard": "Scientists have studied refractometer for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The refractometer is what the survey measured first.",
+     "spoken_text": "The refractometer is what the survey measured first.",
+     "heard": "The refractometer is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "sensitivities": {
+   "at": "2026-10-25T17:43:55-04:00",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied sensitivities for decades.",
+     "spoken_text": "Scientists have studied sensitivities for decades.",
+     "heard": "Scientists have studied sensitivities for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The sensitivities is what the survey measured first.",
+     "spoken_text": "The sensitivities is what the survey measured first.",
+     "heard": "The sensitivities is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
+  },
+  "synthetic": {
+   "at": "2026-10-25T21:11:05-04:00",
+   "ok": true,
+   "readings": [
+    {
+     "carrier": "Scientists have studied synthetic for decades.",
+     "spoken_text": "Scientists have studied synthetic for decades.",
+     "heard": "Scientists have studied synthetic for decades.",
+     "ratio": 1.0,
+     "ok": true
+    },
+    {
+     "carrier": "The synthetic is what the survey measured first.",
+     "spoken_text": "The synthetic is what the survey measured first.",
+     "heard": "The synthetic is what the survey measured first.",
+     "ratio": 1.0,
+     "ok": true
+    }
+   ]
   }
  },
  "unresolved": {
+  "vanilloid": {
+   "at": "2026-10-25T17:40:08-04:00",
+   "tried": [
+    {
+     "respelling": "vanilloid",
+     "ok": false,
+     "readings": [
+      {
+       "carrier": "Scientists have studied vanilloid for decades.",
+       "spoken_text": "Scientists have studied vanilloid for decades.",
+       "heard": "Scientists have studied ventiloid for decades.",
+       "ratio": 0.778,
+       "ok": false
+      },
+      {
+       "carrier": "The vanilloid is what the survey measured first.",
+       "spoken_text": "The vanilloid is what the survey measured first.",
+       "heard": "The Vanilloid is what the survey measured first.",
+       "ratio": 1.0,
+       "ok": true
+      }
+     ]
+    },
+    {
+     "respelling": "vanil loid",
+     "ok": false,
+     "readings": [
+      {
+       "carrier": "Scientists have studied vanilloid for decades.",
+       "spoken_text": "Scientists have studied vanil loid for decades.",
+       "heard": "Scientists have studied Vanilloid for decades.",
+       "ratio": 1.0,
+       "ok": true
+      },
+      {
+       "carrier": "The vanilloid is what the survey measured first.",
+       "spoken_text": "The vanil loid is what the survey measured first.",
+       "heard": "The Vanille Lloyd is what the survey measured first.",
+       "ratio": 0.762,
+       "ok": false
+      }
+     ]
+    }
+   ]
+  },
   "xenophyophore": {
    "at": "2026-10-24T11:49:25-04:00",
    "tried": [
