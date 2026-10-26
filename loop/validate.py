@@ -5189,8 +5189,20 @@ def v55_food_episode() -> Result:
         spec_p = ROOT / "channel" / "specs" / f"{slug}.json"
         spec = json.loads(spec_p.read_text()) if spec_p.exists() else {}
         if spec.get("kind") == "food-episode":
-            for p_ in _fe.check_episode_files(spec_p):
-                r.fail(f"{slug}: {p_}")
+            probs = _fe.check_episode_files(spec_p)
+            if probs and slug in published:
+                for p_ in probs:
+                    r.fail(f"{slug}: on the channel but {p_}")
+            elif probs:
+                # rendered, failing, not shipped: the contract is met when the
+                # upload lane HOLDS it by that same reason (a named hold is a
+                # note, never a red main - 26 Oct 2026, chili-coffee-honey 32.6 min)
+                why = _bf.food_hold(slug)
+                if why != probs[0]:
+                    r.fail(f"{slug}: fails the contract ({probs[0]}) but food_hold says "
+                           f"{why!r} - it would ship")
+                else:
+                    r.note(f"{slug}: HELD by the upload lane: {why}")
             st = spec.get("screen_time") or {}
             seg = {pm["piece"]: pm["screen_time"].get("spectacle_share") for pm in spec["pieces"]}
             r.note(f"{slug}: {spec['duration_s'] / 60:.1f} min, real video "

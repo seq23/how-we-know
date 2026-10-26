@@ -59,7 +59,11 @@ KITS = ROOT / "channel" / "food_kits"
 SPECS = ROOT / "channel" / "specs"
 ORDER = ROOT / "research" / "publish_order_food_science.json"
 PARTS_PER_EPISODE = 3
-FOOD_WPM = 169.5                 # the first episode: 4,830 words, 28.5 minutes stitched
+# Measured stitched rate. 169.5 came from the first episode (4,830 words, 28.5 min)
+# and overshot: chili-coffee-honey ran 5,145 narrated words in 32.56 min = 158.0
+# (26 Oct 2026, 0.6 min over the window). At 158.0 the AIM lands 28.4 min even
+# at the first episode's faster rate. Pinned by loop/tests/test_food_author_pace.py.
+FOOD_WPM = 158.0
 MINUTES = (28.0, 32.0)
 AIM_MINUTES = 30.5
 LANE_MARK = "**Made by:** loop/food_author.py"
