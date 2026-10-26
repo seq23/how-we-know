@@ -103,6 +103,34 @@ def render_pieces(script: Path, voice_root: Path, work: Path,
     return problems
 
 
+def render_result_path(work: Path) -> Path:
+    return Path(work) / "render-result.json"
+
+
+def write_render_result(work: Path, problems: dict | None = None,
+                        error: str | None = None) -> None:
+    """What `render` ended on, for loop/food_lane.py's stop line: the first
+    failing piece and its first problem, or the exception that killed it."""
+    Path(work).mkdir(parents=True, exist_ok=True)
+    render_result_path(work).write_text(json.dumps(
+        {"problems": problems or {}, "error": error}, indent=1) + "\n")
+
+
+def render_failure(work: Path) -> str:
+    """One line naming why `render` failed, read back from render-result.json."""
+    try:
+        r = json.loads(render_result_path(work).read_text())
+    except (OSError, ValueError):
+        return "food_episode.py render left no render-result.json (killed before it could say)"
+    if r.get("error"):
+        return str(r["error"])
+    for piece, probs in (r.get("problems") or {}).items():
+        if probs:
+            more = f" (+{len(probs) - 1} more)" if len(probs) > 1 else ""
+            return f"piece {piece}: {probs[0]}{more}"
+    return "food_episode.py render failed but recorded no problem"
+
+
 # ----------------------------------------------------------------- stitch
 def ffprobe_s(path: Path, stream: str | None = None) -> float:
     args = ["ffprobe", "-v", "error"]
@@ -564,8 +592,17 @@ def main(argv: list[str]) -> int:
         return 0
     if cmd == "render":
         only = argv[argv.index("--pieces") + 1].split(",") if "--pieces" in argv else None
-        probs = render_pieces(Path(argv[1]), Path(argv[2]), Path(argv[3]), only)
-        return 1 if any(probs.values()) else 0
+        work = Path(argv[3])
+        result = render_result_path(work)
+        result.unlink(missing_ok=True)
+        try:
+            probs = render_pieces(Path(argv[1]), Path(argv[2]), work, only)
+        except Exception as exc:
+            write_render_result(work, error=f"{type(exc).__name__}: {exc}")
+            raise
+        bad = {k: v for k, v in probs.items() if v}
+        write_render_result(work, problems=bad)
+        return 1 if bad else 0
     if cmd == "stitch":
         spec = stitch(Path(argv[1]), Path(argv[2]), Path(argv[3]), Path(argv[4]))
         print(json.dumps({k: spec[k] for k in ("duration_s", "screen_time", "clips_per_segment",
