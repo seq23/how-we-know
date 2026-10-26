@@ -8,5 +8,7 @@
   "privacyContactEmail": "",
   "_privacyContactEmail": "Contact address published on /privacy and /terms for privacy questions, complaints and data-deletion requests. YouTube API Services Developer Policy III.A.2.i requires one, and the API audit form checks for it. Empty => both pages render an explicit 'not yet published' line and point at the Google security settings revocation route instead, and validate-legal-policy.mjs prints a NAMED STOP naming this key. The candidate is the Gmail that owns @howweknowdeep (the channel's own Google account), left unset because publishing an address is the owner's decision, not the build's. Set it here, rebuild, redeploy.",
   "webAnalyticsToken": "",
-  "_webAnalyticsToken": "Cloudflare Web Analytics beacon token. Cookieless, no consent banner required. Empty => beacon not emitted. Paste the token from Cloudflare dash > Web Analytics to activate."
+  "_webAnalyticsToken": "Cloudflare Web Analytics beacon token. Cookieless, no consent banner required. Empty => beacon not emitted. Paste the token from Cloudflare dash > Web Analytics to activate.",
+  "indexNowKey": "5808185504be860a1f279e9d9cfc4a7e765a1cbcf0af47eb7dd1e7f48c8d5e65",
+  "_indexNowKey": "IndexNow key for Bing, Yandex and Seznam. NOT a secret: ownership is proven by serving the same value publicly, so generate-static-assets.mjs writes public/<indexNowKey>.txt from this one field and deletes any other key file, and validate-indexnow.mjs fails the build if the served file and this field ever disagree. scripts/indexnow-ping.mjs submits the sitemap URLs after each deploy. Rotate by pasting a new 64-character hex value here and rebuilding; nothing else needs editing."
 }

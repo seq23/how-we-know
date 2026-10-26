@@ -28,6 +28,7 @@
     "render:validate": "python production/automation/validate_rendered_batch.py --count 20",
     "youtube:batch:dry": "python production/automation/upload_batch.py --start-date 2026-08-03 --timezone America/Chicago --limit 20",
     "human:validate": "python production/automation/validate_human_pass.py --count 20",
+    "indexnow:ping": "node scripts/indexnow-ping.mjs",
     "validate:live": "node scripts/validate-live-canonicals.mjs && node scripts/validate-legal-policy.mjs --live",
     "deploy:pages": "npm run build && wrangler pages deploy .output/public --project-name how-we-know --branch main --commit-dirty=true && npm run validate:live"
   },

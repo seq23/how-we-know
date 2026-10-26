@@ -86,4 +86,14 @@ jobs:
         # the canonical host answers, the other host 301s to it, and the icons
         # that were 404ing are there. A deploy that reports success and leaves
         # any of those wrong is a deploy that did nothing.
+        #
+        # The same script is the whole of the post-deploy live check
+        # (site-post-deploy-check.yml re-runs it on a schedule). One script, one
+        # list: a second copy of these expectations would drift from this one.
         run: node scripts/validate-live-host.mjs
+
+      - name: Tell IndexNow what changed
+        # Search readiness e3: the key file alone is an unused credential. Bing,
+        # Yandex and Seznam get the changed URLs now instead of whenever they
+        # next crawl. Free, and it runs only after the deploy has been proven.
+        run: node scripts/indexnow-ping.mjs --since "${{ github.event.before }}"

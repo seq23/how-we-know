@@ -165,8 +165,31 @@ const llms = [
 
 fs.writeFileSync(path.join(root, 'public/llms.txt'), `${llms.join('\n')}\n`)
 
+// The IndexNow key file. IndexNow proves ownership by asking the host to serve the
+// key it is submitted with, so this value is deliberately public and lives in
+// site-flags.json beside the other switches rather than in a secret.
+//
+// One field, one file: a rotated key that left the old file behind would keep
+// proving ownership for a key nobody submits with, so every other key file in
+// public/ is removed here. validate-indexnow.mjs fails the build if the file and
+// the flag ever disagree, and the post-deploy live check reads it over HTTP.
+const indexNowKey = flags.indexNowKey
+if (!/^[0-9a-f]{32,64}$/.test(String(indexNowKey ?? ''))) {
+  throw new Error(
+    'site-flags.json indexNowKey must be 32-64 lowercase hex characters; ' +
+      `got ${JSON.stringify(indexNowKey)}`,
+  )
+}
+for (const entry of fs.readdirSync(path.join(root, 'public'))) {
+  if (/^[0-9a-f]{32,64}\.txt$/.test(entry) && entry !== `${indexNowKey}.txt`) {
+    fs.rmSync(path.join(root, 'public', entry))
+  }
+}
+fs.writeFileSync(path.join(root, `public/${indexNowKey}.txt`), `${indexNowKey}\n`)
+
 console.log(
-  `Generated sitemap, robots, _redirects and llms.txt for ${paths.length} routes ` +
+  `Generated sitemap, robots, _redirects, llms.txt and the IndexNow key file ` +
+    `for ${paths.length} routes ` +
     `(indexing ${flags.searchIndexingEnabled ? 'ENABLED' : 'DISABLED'}, ` +
     `custom domain ${flags.customDomainLive ? 'LIVE' : 'not live'}; ` +
     `host canonicalisation in functions/_middleware.js).`,
