@@ -454,11 +454,11 @@ def check_v21() -> list[str]:
                      "against its own previous script")
     cases += 1
     import author as _author  # noqa: PLC0415
-    if ("verbatim_repeat_problems" not in inspect_src(_author.shape_problems)
-            or "shape_problems(text, pov, slug)" not in inspect_src(_author.draft)):
-        fails.append("V21 (f'): author.shape_problems must apply "
-                     "verbatim_repeat_problems and author.draft must pass the "
-                     "slug, or a stock sentence reaches the gate unretried")
+    if ("verbatim_repeat_problems" not in inspect_src(_author.boilerplate_problems)
+            or "boilerplate_problems(text, slug)" not in inspect_src(_author.draft)):
+        fails.append("V21 (f'): author.draft must apply boilerplate_problems "
+                     "(validate.verbatim_repeat_problems) to every attempt, or "
+                     "a stock sentence reaches the gate unretried")
     # zero scripts examined is a failure, not a pass
     cases += 1
     r = validate.v21_no_boilerplate(scripts_dir=tempfile.mkdtemp(prefix="v21-"),

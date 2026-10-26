@@ -699,12 +699,9 @@ DIRECTIVE_REMEDY = (
     "do not support.")
 
 
-def shape_problems(text: str, pov: dict, slug: str | None = None) -> list[str]:
+def shape_problems(text: str, pov: dict) -> list[str]:
     """Cheap structural checks before the expensive ones. Not a substitute for
-    loop/validate.py — that still runs at full strength afterwards.
-
-    `slug` (the topic being authored) turns on the V21 verbatim-repeat check
-    against every live script; the authoring loop always passes it."""
+    loop/validate.py — that still runs at full strength afterwards."""
     p = []
     for s in REQUIRED_SECTIONS:
         if s not in text:
@@ -784,15 +781,18 @@ def shape_problems(text: str, pov: dict, slug: str | None = None) -> list[str]:
     else:
         p += [f"YouTube title {own!r}: {x}"
               for x in longform_title.title_problems(own, text)]
-    # V21 NO-BOILERPLATE, here where the model can still rewrite (2026-10-26,
-    # run 40311984912): is-damascus-steel-better opened its Evidence limit
-    # with "Here is what this evidence does not establish." - verbatim from a
-    # live deep-sea script. V21 only saw it a commit after promotion, on main,
-    # where nothing retries. Same rule, same index V21 judges.
-    if slug:
-        import validate                                    # noqa: PLC0415
-        p += validate.verbatim_repeat_problems(text, slug)
     return p
+
+
+def boilerplate_problems(text: str, slug: str) -> list[str]:
+    """V21 NO-BOILERPLATE, here where the model can still rewrite (2026-10-26,
+    run 40311984912): is-damascus-steel-better opened its Evidence limit with
+    "Here is what this evidence does not establish." - verbatim from a live
+    deep-sea script. V21 only saw it a commit after promotion, on main, where
+    nothing retries. Same rule, same index V21 judges; `slug` is the topic
+    being authored, never judged against its own previous script."""
+    import validate                                        # noqa: PLC0415
+    return validate.verbatim_repeat_problems(text, slug)
 
 
 def nearest_live_ancestor(url: str, probe) -> str | None:
@@ -961,7 +961,8 @@ def draft(question: str, slug: str, pov: dict, model: str | None = None,
             cost = usage["cost_details"].get("upstream_inference_cost")
 
         text = re.sub(r"^```(?:markdown|md)?\s*\n|\n```\s*$", "", text.strip())
-        problems = shape_problems(text, pov, slug)
+        problems = shape_problems(text, pov)
+        problems += boilerplate_problems(text, slug)
         # Fetch every citation BEFORE accepting the draft. On the first real
         # run, two of five URLs from a frontier model were plausible-looking
         # 404s - which is precisely the failure a human reviewer skims past.
