@@ -64,10 +64,16 @@ SPECS = ROOT / "channel" / "specs"
 SUPERSEDED = SPECS / "superseded"
 ORDER = ROOT / "research" / "publish_order_food_science.json"
 PARTS_PER_EPISODE = 3
-FOOD_WPM = 169.5                 # the first episode: 4,830 words, 28.5 minutes stitched
+# Fallback stitched rate, used only before any food episode is stitched; the
+# fit itself holds at every MEASURED rate (measured_rates, word_window).
+# 169.5 came from the first episode (4,830 words, 28.5 min) and overshot:
+# chili-coffee-honey ran 5,145 narrated words in 32.56 min = 158.0 (26 Oct
+# 2026, 0.6 min over the window). Pinned by loop/tests/test_food_author_pace.py.
+FOOD_WPM = 158.0
 # The contract's window is visuals/food_episode.EPISODE_MINUTES - one copy,
 # the one check_episode and V55 judge the stitched render by.
 from food_episode import EPISODE_MINUTES as MINUTES  # noqa: E402
+AIM_MINUTES = 30.5               # the aim at FOOD_WPM when nothing is measured yet
 LANE_MARK = "**Made by:** loop/food_author.py"
 KEEP_SECTIONS = ("evidence limit", "closing")
 STOPWORDS = {"why", "how", "does", "do", "is", "are", "my", "the", "a", "an", "what", "can"}
@@ -211,7 +217,9 @@ def word_window(rates: list[float] | None = None) -> tuple[int, int, int]:
     MINUTES[1] at the slowest; aim is the middle. With no stitched episode
     yet, FOOD_WPM alone."""
     rates = rates if rates is not None else [r for _, r in measured_rates()]
-    rates = rates or [FOOD_WPM]
+    if not rates:
+        return (math.ceil(MINUTES[0] * FOOD_WPM), round(AIM_MINUTES * FOOD_WPM),
+                math.floor(MINUTES[1] * FOOD_WPM))
     lo = math.ceil(MINUTES[0] * max(rates))
     hi = math.floor(MINUTES[1] * min(rates))
     return lo, (lo + hi) // 2, hi
