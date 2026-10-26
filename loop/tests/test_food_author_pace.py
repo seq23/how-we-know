@@ -58,13 +58,13 @@ src = (ROOT / "loop" / "food_lane.py").read_text()
 line = src[src.index("NAMED STOP [FOOD_EPISODE_CONTRACT]"):][:200]
 check("episode_failure(spec)" in line, "the FOOD_EPISODE_CONTRACT stop line does not name its reason")
 
-# 5-6. V55: a failing, unshipped food episode is HELD by name (a note), and a
-# failing episode that food_hold would let ship is still a hard failure
 import validate as V                                           # noqa: E402
 import backfill as BF                                          # noqa: E402
+# 5-6. V55: a failing, unshipped food episode is HELD by name (a note), and a
+# failing episode that food_hold would let ship is still a hard failure
 spec_p = ROOT / "channel" / "specs" / "what-is-inside-chili-coffee-honey.json"
 import food_episode as FE                                      # noqa: E402
-if spec_p.exists() and FE.check_episode_files(spec_p):
+if spec_p.exists() and BF.food_problems(spec_p.stem, spec_p)[0]:
     res = V.v55_food_episode().as_dict()
     check(not res["failures"], f"V55 reds main on a held episode: {res['failures']}")
     check(any("HELD by the upload lane" in n for n in res.get("notes") or []),
