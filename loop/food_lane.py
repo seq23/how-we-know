@@ -334,6 +334,17 @@ def run(slug: str | None, until: str | None) -> int:
         say(f"NAMED STOP [FOOD_SCRIPT_MISSING]: {script.relative_to(ROOT)} is not on this Mac "
             f"(pull main)")
         return 3
+    # every bed sound the preset can pick, on disk BEFORE hours of footage and
+    # voice (25 Oct: the night died at the first render, after five hours,
+    # on a sizzle .ogg this checkout never harvested)
+    import food_sound                                        # noqa: PLC0415
+    try:
+        got = food_sound.ensure()
+    except food_sound.SoundMissing as exc:
+        say(f"NAMED STOP [FOOD_SOUND_MISSING]: {exc}")
+        return 3
+    if got:
+        say(f"  fetched the missing food sounds: {', '.join(got)}")
     end = deadline(until)
     st = _load()
     if st.get("slug") != ep:
@@ -432,8 +443,8 @@ def run(slug: str | None, until: str | None) -> int:
     if "render" not in st["stages"]:
         rc = sh([PY, "visuals/food_episode.py", "render", script, voice_root, work])
         if rc != 0:
-            say(f"NAMED STOP [FOOD_PIECE_CONTRACT]: a piece fails the food preset contract "
-                f"(see the lines above)")
+            say(f"NAMED STOP [FOOD_PIECE_CONTRACT]: a piece fails the food preset contract: "
+                f"{FE.render_failure(work)}")
             return 3
         done("render")
     # ---- stitch + spec

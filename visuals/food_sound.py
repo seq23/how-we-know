@@ -2,6 +2,7 @@
 
     .venv/bin/python visuals/food_sound.py harvest     # fetch + rights-check the sounds
     .venv/bin/python visuals/food_sound.py --verify    # sha256 + licence on disk
+    .venv/bin/python visuals/food_sound.py ensure      # fetch any missing (food nights do)
 
 SOURCES. Wikimedia Commons recordings that pass the SAME licence gate as the
 pictures (research/imagery.pd_licence_ok: public domain or CC0 only, read live
@@ -105,6 +106,67 @@ def verify() -> int:
     return n
 
 
+class SoundMissing(RuntimeError):
+    """A bed sound the food preset can pick is not on disk (or not the file
+    whose rights were checked). The message names the file."""
+
+
+def _fetch_one(rec: dict) -> bytes:
+    """One manifest recording, fetched from its Commons item through the same
+    live licence gate harvest() uses. The manifest is NOT rewritten: the bytes
+    must hash to the sha256 recorded when the rights were checked."""
+    sys.path.insert(0, str(ROOT / "research"))
+    import imagery as I                                       # noqa: PLC0415
+    import imagery_materials as M                              # noqa: PLC0415
+    title = "File:" + rec["title"].removeprefix("File:")
+    iq = (f"{M.COMMONS_API}?action=query&format=json&prop=imageinfo"
+          f"&iiprop=url|size|mime|extmetadata&titles=" + urllib.parse.quote(title))
+    info = next(iter(json.loads(M._polite(iq))["query"]["pages"].values()))["imageinfo"][0]
+    ok, why = I.pd_licence_ok(info)
+    claimed, why_c = M.copyright_asserted(info)
+    if not ok or claimed:
+        raise SoundMissing(f"{title}: licence gate refused it ({why if not ok else why_c})")
+    return M._polite(info["url"], binary=True)
+
+
+def ensure(fetch=None) -> list[str]:
+    """Every sound the food preset can pick (SOUNDS, CUE_FOR) is on disk and is
+    the file whose rights were checked; a missing one is fetched. The .ogg files
+    are gitignored, so a checkout that never ran harvest (this Mac's main
+    checkout: the 13 Oct harvest ran in a worktree) has none of them - the
+    25 Oct food night rendered for five hours and then died on the sizzle.
+    Raises SoundMissing naming the file; returns the files it fetched."""
+    fetch = fetch or _fetch_one
+    recs = {r["key"]: r for r in json.loads(MANIFEST.read_text())["index"]}
+    keys = sorted(set(SOUNDS) | set(CUE_FOR))
+    if not keys:
+        raise SoundMissing("the food preset lists zero sounds")
+    fetched = []
+    for key in keys:
+        rec = recs.get(key)
+        if not rec:
+            raise SoundMissing(f"sound '{key}' has no record in channel/sound/food.json")
+        p = SOUND / rec["local_file"]
+        rel = f"channel/sound/{rec['local_file']}"
+        if p.exists() and hashlib.sha256(p.read_bytes()).hexdigest() == rec["sha256"]:
+            continue
+        try:
+            blob = fetch(rec)
+        except SoundMissing:
+            raise
+        except Exception as exc:                              # noqa: BLE001
+            raise SoundMissing(f"{rel} is not on disk and the fetch from "
+                               f"{rec.get('item_url')} failed: {exc}") from exc
+        got = hashlib.sha256(blob).hexdigest()
+        if got != rec["sha256"]:
+            raise SoundMissing(f"{rel}: the Commons file now hashes {got[:12]}, not the "
+                               f"{rec['sha256'][:12]} whose rights were checked")
+        SOUND.mkdir(parents=True, exist_ok=True)
+        p.write_bytes(blob)
+        fetched.append(rel)
+    return fetched
+
+
 def cue_for(asset: str | None) -> str | None:
     a = (asset or "").lower()
     for cue, words in CUE_FOR.items():
@@ -114,7 +176,12 @@ def cue_for(asset: str | None) -> str | None:
 
 
 def _load(key: str) -> np.ndarray:
-    rec = next(r for r in json.loads(MANIFEST.read_text())["index"] if r["key"] == key)
+    rec = next((r for r in json.loads(MANIFEST.read_text())["index"] if r["key"] == key), None)
+    if rec is None:
+        raise SoundMissing(f"sound '{key}' has no record in channel/sound/food.json")
+    if not (SOUND / rec["local_file"]).exists():
+        raise SoundMissing(f"channel/sound/{rec['local_file']} is not on disk "
+                           f"(visuals/food_sound.py ensure fetches it)")
     raw = subprocess.run(["ffmpeg", "-v", "error", "-i", str(SOUND / rec["local_file"]),
                           "-ac", "1", "-ar", str(SR), "-f", "f32le", "-"],
                          capture_output=True, check=True).stdout
@@ -255,7 +322,9 @@ def duck_and_mix(voice: Path, bed: Path, work: Path) -> dict:
 
 
 if __name__ == "__main__":
-    if "--verify" in sys.argv:
+    if "ensure" in sys.argv:
+        print(f"food sounds on disk; fetched: {ensure() or 'none'}")
+    elif "--verify" in sys.argv:
         print(f"food sounds verified: {verify()}")
     elif "harvest" in sys.argv:
         print(json.dumps(harvest(), indent=1)[:800])
