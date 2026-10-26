@@ -5189,7 +5189,9 @@ def v55_food_episode() -> Result:
         spec_p = ROOT / "channel" / "specs" / f"{slug}.json"
         spec = json.loads(spec_p.read_text()) if spec_p.exists() else {}
         if spec.get("kind") == "food-episode":
-            probs = _fe.check_episode_files(spec_p)
+            probs, waived = _bf.food_problems(slug, spec_p)
+            for w_ in waived:
+                r.note(f"{slug}: ACCEPTED one-off (channel/specs/acceptances.json): {w_}")
             if probs and slug in published:
                 for p_ in probs:
                     r.fail(f"{slug}: on the channel but {p_}")

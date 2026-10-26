@@ -137,6 +137,44 @@ class FoodContractRefused(Exception):
         self.slug, self.why = slug, why
 
 
+ACCEPTANCES = ROOT / "channel" / "specs" / "acceptances.json"
+# check id -> (the problem it may waive, the hard cap no record can exceed)
+ACCEPTANCE_CAPS = {"episode_minutes": ("episode runs ", 33.0)}
+
+
+def food_acceptances() -> list[dict]:
+    try:
+        return list(json.loads(ACCEPTANCES.read_text()).get("acceptances") or [])
+    except (OSError, ValueError):
+        return []
+
+
+def food_problems(slug: str, spec_p: Path) -> tuple[list[str], list[str]]:
+    """(problems still standing, problems waived) for one food episode spec.
+
+    A waiver needs an acceptance record naming THIS episode and THIS check
+    (channel/specs/acceptances.json), and holds only within its bound: for
+    episode_minutes, the spec's measured duration at most the record's max_min
+    and never past ACCEPTANCE_CAPS. Every other problem stands."""
+    sys.path.insert(0, str(ROOT / "visuals"))
+    import food_episode as _fe                             # noqa: PLC0415
+    probs = _fe.check_episode_files(spec_p)
+    spec = json.loads(Path(spec_p).read_text())
+    mins = float(spec.get("duration_s") or 0) / 60
+    waived = []
+    for a in food_acceptances():
+        if a.get("episode") != slug or a.get("check") not in ACCEPTANCE_CAPS:
+            continue
+        prefix, cap = ACCEPTANCE_CAPS[a["check"]]
+        bound = min(float(a.get("max_min") or 0), cap)
+        if not (a.get("reason") and a.get("accepted_by") and a.get("date")):
+            continue
+        if a["check"] == "episode_minutes" and mins > bound:
+            continue
+        waived += [p for p in probs if p.startswith(prefix) and p not in waived]
+    return [p for p in probs if p not in waived], waived
+
+
 def food_hold(slug: str) -> str | None:
     """Why a food-science episode may not ship, or None.
 
@@ -165,9 +203,7 @@ def food_hold(slug: str) -> str | None:
                     "stitch makes a food video and writes channel/specs/<slug>.json; "
                     "the render stays on the shelf and is never uploaded")
         return "no episode spec at channel/specs/<slug>.json - a food video ships only with one"
-    sys.path.insert(0, str(ROOT / "visuals"))
-    import food_episode as _fe                             # noqa: PLC0415
-    probs = _fe.check_episode_files(spec_p)
+    probs, _waived = food_problems(slug, spec_p)
     return probs[0] if probs else None
 
 

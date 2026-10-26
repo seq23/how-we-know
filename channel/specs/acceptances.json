@@ -1,0 +1,15 @@
+{
+  "policy": "One-off owner acceptances of a single failing food-episode check. loop/backfill.food_problems reads this: an entry lets ONLY its episode pass ONLY its check, only up to its bound (and never past the hard caps in loop/backfill.ACCEPTANCE_CAPS). Every other contract check still applies.",
+  "acceptances": [
+    {
+      "episode": "what-is-inside-chili-coffee-honey",
+      "check": "episode_minutes",
+      "failing": "episode runs 32.6 min, outside 28-32",
+      "measured_min": 32.56,
+      "max_min": 33.0,
+      "reason": "32.6 min, 0.6 over the 28-32 window; the author's WPM constant was miscalibrated (169.5 vs the measured 158.0, fixed in #250); format otherwise passes; accepted 26 Oct",
+      "date": "2026-10-26",
+      "accepted_by": "Sequoia via coordinator, 26 Oct 2026"
+    }
+  ]
+}
