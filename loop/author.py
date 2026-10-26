@@ -348,7 +348,8 @@ reaches". No clickbait words.>
 ### Evidence limit
 
 <directive>
-<A paragraph stating plainly what this evidence does NOT establish.>
+<A paragraph stating plainly what this evidence does NOT establish, in
+this topic's own terms - never a stock opener reused across episodes.>
 
 ### Closing
 
@@ -698,9 +699,12 @@ DIRECTIVE_REMEDY = (
     "do not support.")
 
 
-def shape_problems(text: str, pov: dict) -> list[str]:
+def shape_problems(text: str, pov: dict, slug: str | None = None) -> list[str]:
     """Cheap structural checks before the expensive ones. Not a substitute for
-    loop/validate.py — that still runs at full strength afterwards."""
+    loop/validate.py — that still runs at full strength afterwards.
+
+    `slug` (the topic being authored) turns on the V21 verbatim-repeat check
+    against every live script; the authoring loop always passes it."""
     p = []
     for s in REQUIRED_SECTIONS:
         if s not in text:
@@ -780,6 +784,14 @@ def shape_problems(text: str, pov: dict) -> list[str]:
     else:
         p += [f"YouTube title {own!r}: {x}"
               for x in longform_title.title_problems(own, text)]
+    # V21 NO-BOILERPLATE, here where the model can still rewrite (2026-10-26,
+    # run 40311984912): is-damascus-steel-better opened its Evidence limit
+    # with "Here is what this evidence does not establish." - verbatim from a
+    # live deep-sea script. V21 only saw it a commit after promotion, on main,
+    # where nothing retries. Same rule, same index V21 judges.
+    if slug:
+        import validate                                    # noqa: PLC0415
+        p += validate.verbatim_repeat_problems(text, slug)
     return p
 
 
@@ -949,7 +961,7 @@ def draft(question: str, slug: str, pov: dict, model: str | None = None,
             cost = usage["cost_details"].get("upstream_inference_cost")
 
         text = re.sub(r"^```(?:markdown|md)?\s*\n|\n```\s*$", "", text.strip())
-        problems = shape_problems(text, pov)
+        problems = shape_problems(text, pov, slug)
         # Fetch every citation BEFORE accepting the draft. On the first real
         # run, two of five URLs from a frontier model were plausible-looking
         # 404s - which is precisely the failure a human reviewer skims past.

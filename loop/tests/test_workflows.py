@@ -91,7 +91,7 @@ def load_yaml():
 
 def check() -> list[str]:
     yaml = load_yaml()
-    fails, seen, dep_jobs = [], 0, 0
+    fails, seen, dep_jobs, history_jobs = [], 0, 0, 0
     files = sorted(glob.glob(os.path.join(WF, "*.yml")) +
                    glob.glob(os.path.join(WF, "*.yaml")))
     for path in files:
@@ -121,6 +121,30 @@ def check() -> list[str]:
             if not steps:
                 fails.append(f"{name}:{jname}: no steps — a job that does "
                              f"nothing is Rule 0's failure mode in YAML form")
+
+        # THE HISTORY GUARD. Runs 40257232507 and 40290860670 (2026-10-26,
+        # site deploy on main): `indexnow-ping.mjs --since
+        # ${{ github.event.before }}` ran `git diff <before>..HEAD` in a job
+        # whose actions/checkout had the default fetch-depth of 1, so the
+        # previous commit did not exist and every push to main went red AFTER
+        # a successful deploy. PR runs never execute the deploy job, so the PR
+        # was green and main was not. A job that reads a commit range must
+        # check out the history that range lives in.
+        for jname, job in jobs.items():
+            steps = [st for st in (job.get("steps") or [])
+                     if isinstance(st, dict)]
+            runs = " ".join(str(st.get("run", "")) for st in steps)
+            if "github.event.before" not in runs and "--since" not in runs:
+                continue
+            history_jobs += 1
+            deep = any(str(st.get("uses", "")).startswith("actions/checkout")
+                       and str((st.get("with") or {}).get("fetch-depth")) == "0"
+                       for st in steps)
+            if not deep:
+                fails.append(f"{name}:{jname}: reads a commit range "
+                             f"(github.event.before / --since) but its "
+                             f"actions/checkout has no `fetch-depth: 0`, so "
+                             f"the range's base commit is not in the clone")
 
         # THE DEPENDENCY GUARD. Run 33381208414 (2026-08-31, Mon draft) failed
         # with `ModuleNotFoundError: No module named 'PIL'`: the workflow ran a
@@ -171,6 +195,11 @@ def check() -> list[str]:
                      "dependency guard matched nothing, so it is asserting "
                      "nothing. Either every lane stopped running python, or "
                      "the way workflows invoke stages changed under it.")
+    if history_jobs == 0:
+        fails.append("examined ZERO jobs that read a commit range - the "
+                     "history guard matched nothing (site-check.yml's deploy "
+                     "job passes --since github.event.before); it is "
+                     "asserting nothing.")
     print(f"inspected {seen} workflow file(s), {dep_jobs} of them running a "
           f"loop stage")
     return fails
