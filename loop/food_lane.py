@@ -453,11 +453,22 @@ def run(slug: str | None, until: str | None) -> int:
     spec = ROOT / "channel" / "specs" / f"{ep}.json"
     done("stitch", rc=rc, spec=str(spec.relative_to(ROOT)) if spec.exists() else None)
     if rc != 0:
-        say(f"NAMED STOP [FOOD_EPISODE_CONTRACT]: {ep} stitched but fails the episode contract; "
-            f"the upload lane holds it by name (backfill.food_hold)")
+        say(f"NAMED STOP [FOOD_EPISODE_CONTRACT]: {ep} stitched but fails the episode contract: "
+            f"{episode_failure(spec)}; the upload lane holds it by name (backfill.food_hold)")
         return 3
     say(f"READY FOR UPLOAD: renders/{ep}-final.mp4 + channel/specs/{ep}.json (contract holds)")
     return 0
+
+
+def episode_failure(spec: Path) -> str:
+    """The episode contract's own reason, read from the spec stitch wrote."""
+    try:
+        probs = json.loads(Path(spec).read_text()).get("episode_problems") or []
+    except (OSError, ValueError):
+        return f"no readable episode spec at {spec}"
+    if not probs:
+        return "stitch exited non-zero but the spec records no episode problem"
+    return probs[0] + (f" (+{len(probs) - 1} more)" if len(probs) > 1 else "")
 
 
 def status() -> int:
