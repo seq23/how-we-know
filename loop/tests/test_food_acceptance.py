@@ -56,11 +56,14 @@ with tempfile.TemporaryDirectory() as td:
     root = Path(td)
     specs = root / "channel" / "specs"
     specs.mkdir(parents=True)
-    base = json.loads((src / f"{SLUG}.json").read_text())
+    # the 32.6-min spec is the fixture; #251 moved it to specs/superseded/
+    # when it trimmed the script for a re-render, so read it from either place
+    sdir = src if (src / f"{SLUG}.json").exists() else src / "superseded"
+    base = json.loads((sdir / f"{SLUG}.json").read_text())
 
     def put(slug: str, spec: dict, acc: list[dict] | None = None) -> None:
         (specs / f"{slug}.json").write_text(json.dumps(spec))
-        shutil.copy(src / f"{SLUG}.proof.npz", specs / f"{slug}.proof.npz")
+        shutil.copy(sdir / f"{SLUG}.proof.npz", specs / f"{slug}.proof.npz")
         (specs / "acceptances.json").write_text(json.dumps({"acceptances": acc if acc is not None else recs}))
 
     BF.ROOT, BF.ACCEPTANCES = root, specs / "acceptances.json"
@@ -102,8 +105,10 @@ with tempfile.TemporaryDirectory() as td:
 import validate as V                                           # noqa: E402
 res = V.v55_food_episode().as_dict()
 check(not res["failures"], f"6: V55 fails: {res['failures']}")
-check(any("ACCEPTED one-off" in n and SLUG in n for n in res.get("notes") or []),
-      "6: V55 does not note the acceptance")
+live = src / f"{SLUG}.json"
+if live.exists() and BF.food_problems(SLUG, live)[1]:
+    check(any("ACCEPTED one-off" in n and SLUG in n for n in res.get("notes") or []),
+          "6: V55 does not note the acceptance")
 
 if examined == 0:
     fails.append("examined nothing")
