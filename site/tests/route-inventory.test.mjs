@@ -19,6 +19,10 @@ const STATIC_ROUTES = [
   '/methods',
   '/methodology',
   '/editorial-policy',
+  // /about joined the universe on 2026-10-25: the site had a methodology and an
+  // editorial policy but nothing that said who was publishing, which is the first
+  // thing an answer engine weighs.
+  '/about',
   '/privacy',
   '/terms',
 ]

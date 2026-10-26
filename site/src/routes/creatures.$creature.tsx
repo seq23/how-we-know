@@ -4,7 +4,6 @@ import { getZoneBySlug, formatDepth } from '~/lib/ocean-data'
 import { getSources } from '~/lib/sources-data'
 import { SourcesList } from '~/components/SourcesList'
 import { pageMeta } from '~/lib/seo'
-import { breadcrumbSchema, jsonLdScript } from '~/lib/schema'
 
 export const Route = createFileRoute('/creatures/$creature')({
   loader: ({ params }) => {
@@ -14,18 +13,7 @@ export const Route = createFileRoute('/creatures/$creature')({
   },
   head: ({ loaderData }) => {
     if (!loaderData) return {}
-    return {
-      ...pageMeta(loaderData.name, loaderData.summary, `/creatures/${loaderData.slug}`),
-      scripts: [
-        jsonLdScript(
-          breadcrumbSchema([
-            { name: 'Home', path: '/' },
-            { name: 'Creatures', path: '/creatures' },
-            { name: loaderData.name, path: `/creatures/${loaderData.slug}` },
-          ]),
-        ),
-      ],
-    }
+    return pageMeta(loaderData.name, loaderData.summary, `/creatures/${loaderData.slug}`)
   },
   component: CreaturePage,
 })

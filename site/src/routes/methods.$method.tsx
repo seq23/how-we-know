@@ -2,7 +2,6 @@ import { createFileRoute, notFound } from '@tanstack/react-router'
 import { getMethodEntry } from '~/lib/method-index'
 import { getSubject } from '~/lib/taxonomy'
 import { pageMeta } from '~/lib/seo'
-import { breadcrumbSchema, jsonLdScript } from '~/lib/schema'
 
 export const Route = createFileRoute('/methods/$method')({
   loader: ({ params }) => {
@@ -12,18 +11,7 @@ export const Route = createFileRoute('/methods/$method')({
   },
   head: ({ loaderData }) => {
     if (!loaderData) return {}
-    return {
-      ...pageMeta(loaderData.name, loaderData.blurb, `/methods/${loaderData.id}`),
-      scripts: [
-        jsonLdScript(
-          breadcrumbSchema([
-            { name: 'Home', path: '/' },
-            { name: 'How we know it', path: '/methods' },
-            { name: loaderData.name, path: `/methods/${loaderData.id}` },
-          ]),
-        ),
-      ],
-    }
+    return pageMeta(loaderData.name, loaderData.blurb, `/methods/${loaderData.id}`)
   },
   component: MethodPage,
 })

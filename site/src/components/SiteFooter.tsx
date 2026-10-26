@@ -17,6 +17,7 @@ export function SiteFooter() {
         </div>
         <div>
           <strong>Editorial</strong>
+          <a href="/about">About</a>
           <a href="/methods">How we know it</a>
           <a href="/methodology">Methodology</a>
           <a href="/editorial-policy">Editorial policy</a>
