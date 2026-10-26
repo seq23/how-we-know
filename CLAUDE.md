@@ -27,6 +27,7 @@ too. The convention is `runbook <project>` -> that repo's `RUNBOOK.md`.
 |---|---|
 | [`RUNBOOK.md`](RUNBOOK.md) | What SHE does — as of 2026-09-23, nothing routine. Start here. |
 | [`RUNBOOK.md` § Model route](RUNBOOK.md#model-route) | The model order: her Claude subscription (`CLAUDE_CODE_OAUTH_TOKEN`) first, the $0 OpenRouter list second, never paid. `config/llm_routing.json` and the tests decide. |
+| [`docs/cost/zero-paid-llm.md`](docs/cost/zero-paid-llm.md) | **Nothing paid** — every model call, every probe, every lane. The free route, what it replaced, and its named stops. Guarded by V74 and `loop/tests/test_nothing_paid_rule.py`. |
 | [`docs/OPERATING-MANUAL.md`](docs/OPERATING-MANUAL.md) | How it works, and why the numbers are what they are. |
 | [`docs/CHANNEL-PLAN.md`](docs/CHANNEL-PLAN.md) | Locked strategy. Guarded by `loop/validate_plan.py`. Drift means the pipeline is wrong, not the plan. |
 | [`docs/DECISION-LOG.md`](docs/DECISION-LOG.md) | Dated decisions, near misses, research with its evidential quality, and rejected figures. Append-only. |
@@ -51,6 +52,15 @@ and say what you chose and why.
   with no attribution required (Pixabay, Pexels, Mixkit), through
   `research/food_footage.py` only, each clip's licence wording stored and
   re-checked, and still credited on screen. Photographic stills stay PD/CC0.
+- **Nothing paid.** No model call, probe or lane in this repo may cost money.
+  Her Claude subscription answers first, then her free-tier Gemini key, then the
+  $0 OpenRouter list — and nothing else, ever: `max_cost_usd: 0`,
+  `paid_fallback: false`, a per-request max price of 0, and a reported cost above
+  $0 fails loudly. A free route that cannot answer is a named stop, never a paid
+  retry. The rule, what it replaced and its stops are
+  [`docs/cost/zero-paid-llm.md`](docs/cost/zero-paid-llm.md); V74 and
+  `loop/tests/test_nothing_paid_rule.py` read this bullet and that document, so
+  neither can quietly go away.
 - **No invented figures.** Every on-screen number is stated in the narration and
   traced to a named public source.
 - **Rule 0: no stage may exit 0 having done nothing.** Work done, or a NAMED stop
