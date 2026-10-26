@@ -82,7 +82,7 @@ When the macro shots of etched steel appear, look at the boundaries, not the swi
 ### Evidence limit
 
 {{checklist: what this evidence settles | +carbon-steel Damascus rusts | +the etch is deliberate corrosion | -how fast a given blade will rust | ?how individual historical blades were made}}
-Here is what this evidence does not establish. It shows that carbon-steel Damascus rusts, and that the etch is deliberate corrosion. It does not tell you how fast a given blade will rust, because that depends on alloys, finish, climate and handling that differ blade by blade, and no single published figure covers them. It does not settle how individual historical blades were made; wootz production methods are reconstructed from surviving steel, experiments and incomplete texts, and scholars still debate the details. And the nanotube finding comes from analysis of a single sabre, so it describes that object rather than every watered blade ever forged.
+The rust question still has open edges. It shows that carbon-steel Damascus rusts, and that the etch is deliberate corrosion. It does not tell you how fast a given blade will rust, because that depends on alloys, finish, climate and handling that differ blade by blade, and no single published figure covers them. It does not settle how individual historical blades were made; wootz production methods are reconstructed from surviving steel, experiments and incomplete texts, and scholars still debate the details. And the nanotube finding comes from analysis of a single sabre, so it describes that object rather than every watered blade ever forged.
 
 ### Closing
 

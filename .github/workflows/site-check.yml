@@ -63,6 +63,11 @@ jobs:
         working-directory: site
     steps:
       - uses: actions/checkout@v4
+        with:
+          # The IndexNow step diffs github.event.before..HEAD. A depth-1 clone
+          # holds no previous commit, so that diff failed on every push to main
+          # (runs 40257232507, 40290860670). loop/tests/test_workflows.py pins it.
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '22'

@@ -57,9 +57,12 @@ if (sitemapUrls.length === 0) {
  * touching only, say, a workflow changes no page. Mapping a changed slug back to
  * its URL is exactly the sitemap entry that contains it.
  */
-const sinceRef = process.argv.includes('--since')
+const sinceArg = process.argv.includes('--since')
   ? process.argv[process.argv.indexOf('--since') + 1]
   : null
+// github.event.before is forty zeros when a push creates the branch: there is
+// no previous commit, which is the same answer as no range at all.
+const sinceRef = sinceArg && !/^0+$/.test(sinceArg) ? sinceArg : null
 
 let urls = sitemapUrls
 let why = 'the whole sitemap (no commit range given)'

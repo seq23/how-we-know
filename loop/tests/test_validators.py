@@ -403,6 +403,62 @@ def check_v21() -> list[str]:
     import inspect  # noqa: PLC0415
     if "rotation_window()" not in inspect.getsource(validate.v21_no_boilerplate):
         fails.append("V21 must read its window from pov_match.rotation_window()")
+    # (e) 2026-10-26, run 40311984912: a draft the run is ABOUT to promote is
+    # judged at the gate. It sat in loop/drafts/ while V21 globbed scripts/
+    # alone, so the collision surfaced a commit later on main.
+    cases += 1
+    sd = tempfile.mkdtemp(prefix="v21-scripts-")
+    dd = tempfile.mkdtemp(prefix="v21-drafts-")
+    write(sd, "a", narrated)
+    write(dd, "p", narrated)
+    item = {"slug": "p", "script": str(Path(dd, "p.md"))}
+    r = validate.v21_no_boilerplate(scripts_dir=sd, aired=(), window=2,
+                                    live={"a"}, items=[item])
+    if r.examined != 2 or not any("verbatim narrated" in f and "p.md" in f
+                                  for f in r.failures):
+        fails.append(f"V21 (e): a draft pending promotion that repeats a live "
+                     f"script's sentence must fail at the gate; got "
+                     f"examined={r.examined} failures={r.failures}")
+    # (e') promotion never overwrites scripts/<slug>.md, so a draft whose slug
+    # already has a script is not pending and not judged twice.
+    cases += 1
+    write(sd, "p", "")
+    r = validate.v21_no_boilerplate(scripts_dir=sd, aired=(), window=2,
+                                    live={"a", "p"}, items=[item])
+    if r.failures or r.examined != 2:
+        fails.append(f"V21 (e'): a draft whose scripts/ copy exists is not "
+                     f"pending; got examined={r.examined} failures={r.failures}")
+    # (e'') run_all hands its queue rows to V21, or (e) never runs in the lane
+    cases += 1
+    if "v21_no_boilerplate(items=items)" not in inspect_src(validate.run_all):
+        fails.append("V21 (e''): validate.run_all() must pass its items to "
+                     "v21_no_boilerplate, or drafts pending promotion go unjudged")
+    # (f) the author's retry loop applies the same rule to draft TEXT, against
+    # live scripts AND live unpromoted drafts, never against its own slug.
+    cases += 1
+    sd = tempfile.mkdtemp(prefix="v21-idx-s-")
+    dd = tempfile.mkdtemp(prefix="v21-idx-d-")
+    write(sd, "a", narrated)
+    write(dd, "q", "Another long narrated sentence that only the draft q says aloud.")
+    idx = validate.live_narration_index(scripts_dir=sd, drafts_dir=dd,
+                                        live={"a", "q"})
+    text = Path(sd, "a.md").read_text().replace("Unique prose for a", "Unique prose for z")
+    probs = validate.verbatim_repeat_problems(text, "z", index=idx)
+    if len(idx) < 2 or not any("a.md" in x for x in probs):
+        fails.append(f"V21 (f): verbatim_repeat_problems must flag a draft "
+                     f"repeating a live script; index={len(idx)} probs={probs}")
+    own = validate.live_narration_index(exclude_slug="a", scripts_dir=sd,
+                                        drafts_dir=dd, live={"a", "q"})
+    if validate.verbatim_repeat_problems(text, "a", index=own):
+        fails.append("V21 (f): re-authoring a slug must not be judged "
+                     "against its own previous script")
+    cases += 1
+    import author as _author  # noqa: PLC0415
+    if ("verbatim_repeat_problems" not in inspect_src(_author.boilerplate_problems)
+            or "boilerplate_problems(text, slug)" not in inspect_src(_author.draft)):
+        fails.append("V21 (f'): author.draft must apply boilerplate_problems "
+                     "(validate.verbatim_repeat_problems) to every attempt, or "
+                     "a stock sentence reaches the gate unretried")
     # zero scripts examined is a failure, not a pass
     cases += 1
     r = validate.v21_no_boilerplate(scripts_dir=tempfile.mkdtemp(prefix="v21-"),

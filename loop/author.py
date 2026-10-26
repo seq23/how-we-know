@@ -348,7 +348,8 @@ reaches". No clickbait words.>
 ### Evidence limit
 
 <directive>
-<A paragraph stating plainly what this evidence does NOT establish.>
+<A paragraph stating plainly what this evidence does NOT establish, in
+this topic's own terms - never a stock opener reused across episodes.>
 
 ### Closing
 
@@ -783,6 +784,17 @@ def shape_problems(text: str, pov: dict) -> list[str]:
     return p
 
 
+def boilerplate_problems(text: str, slug: str) -> list[str]:
+    """V21 NO-BOILERPLATE, here where the model can still rewrite (2026-10-26,
+    run 40311984912): is-damascus-steel-better opened its Evidence limit with
+    "Here is what this evidence does not establish." - verbatim from a live
+    deep-sea script. V21 only saw it a commit after promotion, on main, where
+    nothing retries. Same rule, same index V21 judges; `slug` is the topic
+    being authored, never judged against its own previous script."""
+    import validate                                        # noqa: PLC0415
+    return validate.verbatim_repeat_problems(text, slug)
+
+
 def nearest_live_ancestor(url: str, probe) -> str | None:
     """Walk a dead URL's path upward and return the first page that exists.
 
@@ -950,6 +962,7 @@ def draft(question: str, slug: str, pov: dict, model: str | None = None,
 
         text = re.sub(r"^```(?:markdown|md)?\s*\n|\n```\s*$", "", text.strip())
         problems = shape_problems(text, pov)
+        problems += boilerplate_problems(text, slug)
         # Fetch every citation BEFORE accepting the draft. On the first real
         # run, two of five URLs from a frontier model were plausible-looking
         # 404s - which is precisely the failure a human reviewer skims past.

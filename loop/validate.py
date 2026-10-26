@@ -318,7 +318,12 @@ class Result:
 # ------------------------------------------------------------------ helpers
 
 def narration(path) -> str:
-    body = Path(path).read_text()
+    return narration_of_text(Path(path).read_text())
+
+
+def narration_of_text(body: str) -> str:
+    """narration() over a script's TEXT, for a draft that is not on disk yet
+    (loop/author.py checks V21 inside its own retries)."""
     if "## Narration" not in body:
         return ""
     body = body.split("## Narration", 1)[1]
@@ -1976,8 +1981,13 @@ def spoken_parts(path) -> tuple[str, list[str]]:
     SOURCE decides, never a text match: a narrated sentence that happens to
     echo a bank line is still narration.
     """
+    return spoken_parts_of_text(Path(path).read_text())
+
+
+def spoken_parts_of_text(body: str) -> tuple[str, list[str]]:
+    """spoken_parts() over a script's TEXT rather than a path."""
     narrated, human = [], []
-    for line in narration(path).split("\n"):
+    for line in narration_of_text(body).split("\n"):
         s = line.strip()
         if not s or s.startswith("#") or s.startswith(("-", "*", "+")):
             continue
@@ -2010,8 +2020,82 @@ def _aired_slugs(now=None) -> set[str]:
     return out
 
 
+def _long_sentences(narrated: str) -> list[str]:
+    """The narrated sentences V21 judges: 8+ words, whitespace-normalised."""
+    text = re.sub(r"\s+", " ", narrated).strip()
+    return [s.strip() for s in _SENT_SPLIT.split(text)
+            if len(s.strip().split()) >= 8]
+
+
+def pending_promotions(items, scripts_dir=None) -> list[Path]:
+    """The drafts this run is about to promote into scripts/.
+
+    draft.promote_to_scripts() copies item["script"] to scripts/<slug>.md
+    AFTER validate.run_all() passes, and never over an existing file. So a
+    draft whose scripts/<slug>.md does not exist yet is exactly a script that
+    will be live the moment the gate passes - and V21 must judge it now, at
+    the gate, not a run later where nothing retries.
+    """
+    scripts_dir = Path(scripts_dir) if scripts_dir else ROOT / "scripts"
+    out = []
+    for it in items or []:
+        src = it.get("script")
+        slug = it.get("slug")
+        if not src or not slug:
+            continue
+        src = Path(src) if Path(src).is_absolute() else ROOT / src
+        if not src.exists() or (scripts_dir / f"{slug}.md").exists():
+            continue
+        if src.resolve().parent == scripts_dir.resolve():
+            continue
+        out.append(src)
+    return out
+
+
+def live_narration_index(exclude_slug=None, scripts_dir=None, drafts_dir=None,
+                         live=None) -> dict[str, str]:
+    """{8+-word narrated sentence: file} over everything V21 will judge.
+
+    Live scripts in scripts/, plus live drafts in loop/drafts/ that have no
+    scripts/ copy yet (they are promoted as-is). `exclude_slug` is the script
+    being (re)written, which may share its own old sentences.
+    """
+    scripts_dir = Path(scripts_dir) if scripts_dir else ROOT / "scripts"
+    drafts_dir = Path(drafts_dir) if drafts_dir else ROOT / "loop" / "drafts"
+    if live is None:
+        import batch_queue as _bq                          # noqa: PLC0415
+        live = _bq.live_slugs()
+    live = set(live)
+    files = [p for p in sorted(scripts_dir.glob("*.md")) if p.stem in live]
+    have = {p.stem for p in files}
+    files += [p for p in sorted(drafts_dir.glob("*.md"))
+              if p.stem in live and p.stem not in have]
+    index: dict[str, str] = {}
+    for p in files:
+        if p.stem == exclude_slug:
+            continue
+        for sent in _long_sentences(spoken_parts(p)[0]):
+            index.setdefault(sent, p.name)
+    return index
+
+
+def verbatim_repeat_problems(text: str, slug=None, index=None) -> list[str]:
+    """V21's rule applied to a DRAFT's text, for loop/author.py's retry loop.
+
+    The same rule, checked where the model can still rewrite the sentence.
+    """
+    index = live_narration_index(exclude_slug=slug) if index is None else index
+    out = []
+    for sent in _long_sentences(spoken_parts_of_text(text)[0]):
+        if sent in index:
+            out.append(f"narration repeats a sentence verbatim from "
+                       f"{index[sent]} (V21 no-boilerplate): {sent[:100]!r} - "
+                       f"say it in this topic's own words")
+    return out
+
+
 def v21_no_boilerplate(scripts_dir=None, aired=None, window=None,
-                       live=None) -> Result:
+                       live=None, items=None) -> Result:
     """No NARRATED sentence may be a verbatim repeat across two scripts, and no
     [HUMAN] line may sit in more unaired scripts than the POV rotation window.
 
@@ -2054,6 +2138,17 @@ def v21_no_boilerplate(scripts_dir=None, aired=None, window=None,
           reported by count, never silently dropped, and un-killing it puts it
           straight back in scope.
 
+    2026-10-26, run 40311984912 (loop tests on bb13e6a, mon-draft W44): V21
+    passed inside mon-draft, then failed on main one commit later.
+    is-damascus-steel-better was validated while it sat in loop/drafts/ and
+    promoted to scripts/ only AFTER run_all() passed - so V21, which globbed
+    scripts/ alone, never saw it beside why-are-deep-sea-creatures-so-big.md,
+    with which it shares "Here is what this evidence does not establish." So:
+      (4) `items` - the run's queue rows - adds every draft the run is about
+          to promote (pending_promotions()) to what is judged, at the gate;
+      (5) loop/author.py applies verbatim_repeat_problems() inside its own
+          retries, so a model that writes a stock sentence rewrites it there.
+
     Hard-fails when it examines zero scripts.
     """
     import pov_match as _pm                                # noqa: PLC0415
@@ -2068,18 +2163,18 @@ def v21_no_boilerplate(scripts_dir=None, aired=None, window=None,
     seen: dict[str, str] = {}
     human_in: dict[str, list[str]] = {}
     dead: list[str] = []
-    for p in sorted(scripts_dir.glob("*.md")):
-        if p.stem not in live:
+    pending = pending_promotions(items, scripts_dir)
+    if pending:
+        r.note(f"{len(pending)} draft(s) judged before promotion: "
+               f"{', '.join(p.name for p in pending)}")
+    for p in sorted(scripts_dir.glob("*.md")) + pending:
+        if p.stem not in live and p not in pending:
             dead.append(p.name)
             continue
         r.examined += 1
         narrated, human = spoken_parts(p)
-        text = re.sub(r"\s+", " ", narrated).strip()
-        for sent in _SENT_SPLIT.split(text):
-            sent = sent.strip()
+        for sent in _long_sentences(narrated):
             words = sent.split()
-            if len(words) < 8:
-                continue
             if sent in seen and seen[sent] != p.name:
                 r.fail(f"{p.name} and {seen[sent]} share a verbatim narrated "
                        f"sentence ({len(words)} words): {sent[:100]!r}")
@@ -5439,7 +5534,7 @@ def run_all(items) -> tuple[bool, list[dict]]:
                v9_footage_window(), v10_footage_crop(), v11_footage_hash(),
                v12_footage_scope(), v13_render_not_clipped(),
                v14_shorts_attribution(), v15_shorts_caption_crop(),
-               v20_cadence_schedule(), v21_no_boilerplate(),
+               v20_cadence_schedule(), v21_no_boilerplate(items=items),
                v22_producer_notes_second_person(), v23_chapters_compliant(),
                v24_render_duration_floor(), v25_domain_abstraction(),
                v27_lanes_see_every_domain(), v28_lane_interpreters(),

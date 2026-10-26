@@ -102,7 +102,7 @@ When the edit shows a swirling pattern, notice what it can and cannot tell you. 
 ### Evidence limit
 
 {{checklist: What is established | +wootz is high-carbon crucible steel | +the pattern is carbide | -a cutting advantage from nanotubes | ?when the recipe was lost}}
-Here is what this evidence does not establish. It shows that wootz is high-carbon crucible steel and that the pattern is carbide gathered into bands by trace elements and repeated forging. It does not establish a cutting advantage from nanotubes, because no one has measured one. It does not tell us how representative the sectioned blades are, or how many historical blades failed in use. It does not fix when the recipe was lost or why, beyond a reasonable inference about ore. And it does not support any single figure for how much better or worse the old blades were, because large standardized comparisons across authenticated blades are not part of the published record this episode relies on.
+The sectioned blades leave real gaps. It shows that wootz is high-carbon crucible steel and that the pattern is carbide gathered into bands by trace elements and repeated forging. It does not establish a cutting advantage from nanotubes, because no one has measured one. It does not tell us how representative the sectioned blades are, or how many historical blades failed in use. It does not fix when the recipe was lost or why, beyond a reasonable inference about ore. And it does not support any single figure for how much better or worse the old blades were, because large standardized comparisons across authenticated blades are not part of the published record this episode relies on.
 
 ### Closing
 
