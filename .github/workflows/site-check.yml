@@ -1,0 +1,89 @@
+name: site · build, validate, deploy
+
+# Nothing in CI had ever built site/. Every workflow here runs the Python loop,
+# so a pull request that changed only the website went green without the site's
+# own validators, its tests or its typecheck ever running — and the live site was
+# whatever had last been deployed by hand from a laptop. On 2026-10-25 that was a
+# build from a month earlier, which is why a www redirect that had never worked
+# and four missing icons went unnoticed.
+#
+# This is the ≤5-minute merge gate for the site: generate, validate, test,
+# typecheck, build, then the built-HTML check that reads the emitted pages the
+# way a crawler does. On main it deploys the build it just proved.
+
+on:
+  push:
+    branches: [main]
+    paths: ['site/**', '.github/workflows/site-check.yml']
+  pull_request:
+    paths: ['site/**', '.github/workflows/site-check.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: site-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    timeout-minutes: 12 # ~4x the measured 3m build; a fault detector, not a budget
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: site
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+      - name: Install
+        run: npm ci
+      - name: Build, validate, typecheck, test, and check the emitted HTML
+        run: npm run build
+      - name: Keep the build for the deploy job
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-build
+          path: site/.output/public
+          retention-days: 1
+          include-hidden-files: true
+
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: site
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+      - name: Install
+        run: npm ci
+      - uses: actions/download-artifact@v4
+        with:
+          name: site-build
+          path: site/.output/public
+      - name: Deploy to Cloudflare Pages
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: 8d147e242033699dd37c6f5a451f48d2
+        run: >-
+          npx wrangler pages deploy .output/public
+          --project-name how-we-know --branch main --commit-dirty=true
+      - name: Prove it live
+        # The deployed site, read the way the search-readiness audit reads it:
+        # the canonical host answers, the other host 301s to it, and the icons
+        # that were 404ing are there. A deploy that reports success and leaves
+        # any of those wrong is a deploy that did nothing.
+        run: node scripts/validate-live-host.mjs

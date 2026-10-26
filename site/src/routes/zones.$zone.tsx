@@ -4,7 +4,6 @@ import { creatures } from '~/lib/creatures-data'
 import { getSources } from '~/lib/sources-data'
 import { SourcesList } from '~/components/SourcesList'
 import { pageMeta } from '~/lib/seo'
-import { breadcrumbSchema, jsonLdScript } from '~/lib/schema'
 
 export const Route = createFileRoute('/zones/$zone')({
   loader: ({ params }) => {
@@ -14,22 +13,11 @@ export const Route = createFileRoute('/zones/$zone')({
   },
   head: ({ loaderData }) => {
     if (!loaderData) return {}
-    return {
-      ...pageMeta(
-        `${loaderData.name} (${loaderData.scientificName})`,
-        loaderData.summary,
-        `/zones/${loaderData.slug}`,
-      ),
-      scripts: [
-        jsonLdScript(
-          breadcrumbSchema([
-            { name: 'Home', path: '/' },
-            { name: 'Zones', path: '/zones' },
-            { name: loaderData.name, path: `/zones/${loaderData.slug}` },
-          ]),
-        ),
-      ],
-    }
+    return pageMeta(
+      `${loaderData.name} (${loaderData.scientificName})`,
+      loaderData.summary,
+      `/zones/${loaderData.slug}`,
+    )
   },
   component: ZonePage,
 })

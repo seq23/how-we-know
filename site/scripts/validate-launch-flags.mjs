@@ -46,14 +46,39 @@ if (flags.searchIndexingEnabled) {
   assert(!robots.includes('Sitemap:'), 'A noindexed site must not advertise a sitemap')
 }
 
-// Host redirects must only be live when the domain is.
-if (flags.customDomainLive) {
-  assert(redirects.includes(`https://www.${host}/*`), 'www -> apex redirect is missing')
-  assert(redirects.includes('.pages.dev/*'), 'pages.dev -> apex redirect is missing')
-  assert(redirects.includes(`${origin}/:splat`), 'Redirect target must be the canonical apex')
-} else {
-  assert(!/^https:/mu.test(redirects), 'customDomainLive is false but host redirects are active')
-}
+// Host canonicalisation must live where it can actually fire.
+//
+// The three assertions that used to be here checked public/_redirects for
+// `https://www.<host>/* ...` and passed for weeks while that rule did nothing:
+// Cloudflare Pages matches _redirects by path and never reads the Host header,
+// so www.howweknowdeep.com answered 200 with the whole site next to the apex.
+// A validator that asserts the presence of an inert line is worse than no
+// validator, so these now check the mechanism that does see the Host header and
+// forbid the syntax that cannot.
+assert(
+  !/^\s*https?:\/\//mu.test(redirects),
+  'public/_redirects has an absolute-URL source. Pages matches by path only, so such a ' +
+    'rule never fires; host canonicalisation belongs in functions/_middleware.js',
+)
+assert(fs.existsSync('functions/_middleware.js'), 'functions/_middleware.js is missing')
+const middleware = fs.readFileSync('functions/_middleware.js', 'utf8')
+assert(
+  middleware.includes(`const CANONICAL_HOST = '${host}'`),
+  `functions/_middleware.js must canonicalise to ${host}, the canonicalOrigin host`,
+)
+assert(middleware.includes('301'), 'Host canonicalisation must be a 301, not a soft redirect')
+assert(
+  /request\.method !== 'GET'/u.test(middleware),
+  'Host canonicalisation must leave non-GET requests alone; redirecting a POST drops its body',
+)
+assert(
+  middleware.includes("hostname === 'localhost'"),
+  'Host canonicalisation must exempt local development',
+)
+assert(
+  /how-we-know\\\.pages\\\.dev\$/u.test(middleware),
+  'Host canonicalisation must exempt Pages deployment previews',
+)
 
 // Canonical URLs must already be absolute apex URLs. Rule 0: never pass on nothing.
 const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/gu)].map((match) => match[1])
@@ -65,5 +90,6 @@ for (const loc of locs) {
 console.log(
   `Launch-flag validation passed (${locs.length} canonical URLs on ${host}; ` +
     `indexing ${flags.searchIndexingEnabled ? 'enabled' : 'DISABLED'}; ` +
-    `custom domain ${flags.customDomainLive ? 'live' : 'not live'}).`,
+    `custom domain ${flags.customDomainLive ? 'live' : 'not live'}; ` +
+    `host canonicalisation to ${host} in functions/_middleware.js).`,
 )

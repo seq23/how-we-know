@@ -19,6 +19,7 @@ const staticPaths = [
   ...activeMethodIds.map((id) => `/methods/${id}`),
   '/methodology',
   '/editorial-policy',
+  '/about',
   '/privacy',
   '/terms',
   '/admin',

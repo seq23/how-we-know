@@ -11,7 +11,7 @@ import { jsonLdScript, organizationSchema, websiteSchema } from '~/lib/schema'
 import { searchIndexingEnabled, site } from '~/lib/site'
 
 export const Route = createRootRoute({
-  head:()=>({ meta:[{charSet:'utf-8'},{name:'viewport',content:'width=device-width, initial-scale=1'},{title:site.name},{name:'description',content:site.description},{name:'theme-color',content:site.themeColor},...(searchIndexingEnabled?[]:[{name:'robots',content:'noindex,follow'}])], links:[{rel:'stylesheet',href:appCss},{rel:'icon',href:'/favicon.svg',type:'image/svg+xml'},{rel:'manifest',href:'/site.webmanifest'}], scripts:[jsonLdScript(organizationSchema),jsonLdScript(websiteSchema)] }),
+  head:()=>({ meta:[{charSet:'utf-8'},{name:'viewport',content:'width=device-width, initial-scale=1'},{title:site.name},{name:'description',content:site.description},{name:'theme-color',content:site.themeColor},...(searchIndexingEnabled?[]:[{name:'robots',content:'noindex,follow'}])], links:[{rel:'stylesheet',href:appCss},{rel:'icon',href:'/favicon.ico',sizes:'any'},{rel:'icon',href:'/favicon.svg',type:'image/svg+xml'},{rel:'apple-touch-icon',href:'/apple-touch-icon.png',sizes:'180x180'},{rel:'manifest',href:'/site.webmanifest'}], scripts:[jsonLdScript(organizationSchema),jsonLdScript(websiteSchema)] }),
   errorComponent:ErrorBoundary, notFoundComponent:NotFound, shellComponent:RootDocument,
 })
 function RootDocument({children}:{children:ReactNode}) { return <html lang="en"><head><HeadContent/></head><body><a className="skip-link" href="#main-content">Skip to content</a><SiteHeader/><div id="main-content">{children}</div><SiteFooter/><Analytics/><Scripts/></body></html> }

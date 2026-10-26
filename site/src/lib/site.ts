@@ -12,6 +12,7 @@ export const site = {
     'How we know what we know. Evidence-backed answers that show the instrument, the proxy, or the observation behind each figure — and say plainly where the evidence stops.',
   /** Canonical origin. Apex from day one, so canonical tags never need retrofitting. */
   origin: import.meta.env.VITE_SITE_URL || flags.canonicalOrigin,
+  tagline: 'evidence-backed answers about the deep ocean',
   author: 'How We Know',
   publisher: 'How We Know',
   themeColor: '#04111f',
