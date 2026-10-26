@@ -1,13 +1,13 @@
 {
   "domain": "howweknowdeep.com",
   "property": "sc-domain:howweknowdeep.com",
-  "collected_at": "2026-10-26T07:42:25.909Z",
+  "collected_at": "2026-10-26T09:57:48.337Z",
   "window_days": 28,
   "sitemap_total": 52,
-  "inspected_today": 52,
+  "inspected_today": 51,
   "per_day": 150,
   "parallel": 8,
-  "refused_because": null,
+  "refused_because": "500 {\n  \"error\": {\n    \"code\": 500,\n    \"message\": \"Internal error encountered.\",\n    \"status\": \"INTERNAL\"\n  }\n}\n",
   "buckets": {
     "indexed": 48,
     "crawled_not_indexed": 0,
