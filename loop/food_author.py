@@ -41,6 +41,7 @@ WHAT ONE RUN DOES
 from __future__ import annotations
 
 import json
+import math
 import re
 import sys
 import time
@@ -57,15 +58,22 @@ import batch_queue as BQ                                    # noqa: E402
 FOOD_DIR = ROOT / "scripts" / "food"
 KITS = ROOT / "channel" / "food_kits"
 SPECS = ROOT / "channel" / "specs"
+# A stitched render whose script was changed after it (trimmed back into the
+# contract) moves here: its episode is in flight again, so the Mac re-renders
+# it, and its measured voice rate still counts (measured_rates).
+SUPERSEDED = SPECS / "superseded"
 ORDER = ROOT / "research" / "publish_order_food_science.json"
 PARTS_PER_EPISODE = 3
-# Measured stitched rate. 169.5 came from the first episode (4,830 words, 28.5 min)
-# and overshot: chili-coffee-honey ran 5,145 narrated words in 32.56 min = 158.0
-# (26 Oct 2026, 0.6 min over the window). At 158.0 the AIM lands 28.4 min even
-# at the first episode's faster rate. Pinned by loop/tests/test_food_author_pace.py.
+# Fallback stitched rate, used only before any food episode is stitched; the
+# fit itself holds at every MEASURED rate (measured_rates, word_window).
+# 169.5 came from the first episode (4,830 words, 28.5 min) and overshot:
+# chili-coffee-honey ran 5,145 narrated words in 32.56 min = 158.0 (26 Oct
+# 2026, 0.6 min over the window). Pinned by loop/tests/test_food_author_pace.py.
 FOOD_WPM = 158.0
-MINUTES = (28.0, 32.0)
-AIM_MINUTES = 30.5
+# The contract's window is visuals/food_episode.EPISODE_MINUTES - one copy,
+# the one check_episode and V55 judge the stitched render by.
+from food_episode import EPISODE_MINUTES as MINUTES  # noqa: E402
+AIM_MINUTES = 30.5               # the aim at FOOD_WPM when nothing is measured yet
 LANE_MARK = "**Made by:** loop/food_author.py"
 KEEP_SECTIONS = ("evidence limit", "closing")
 STOPWORDS = {"why", "how", "does", "do", "is", "are", "my", "the", "a", "an", "what", "can"}
@@ -167,10 +175,62 @@ def words(body: str) -> int:
                 for w in ln.split()])
 
 
-def fit(segments: list[list[tuple[str, str]]], fixed_words: int) -> list[list[tuple[str, str]]]:
+def _script_words(text: str) -> int:
+    m = re.search(r"^\*\*Word count:\*\* (\d+)", text, re.M)
+    return int(m.group(1)) if m else 0
+
+
+def measured_rates(specs_dir: Path | None = None) -> list[tuple[str, float]]:
+    """(episode, words a minute) for every STITCHED food episode: its script's
+    word count over the render's real duration_s.
+
+    WHY (2026-10-26, run 40328601655): FOOD_WPM was one episode's rate
+    (169.4, bread/steak/chocolate) used as a fact. The chili/coffee/honey
+    episode was fitted to 30.5 min at it - 5,151 words - and the same voice
+    read it at 158.2 wpm: 32.6 min, outside the 28-32 contract, found only by
+    V55 after a full night of rendering. The rate varies by ~7 % between
+    episodes and the window is only +/-6.7 % wide, so the fit must hold at
+    every rate the voice has actually shown, not at one of them.
+
+    The words are the render's OWN (spec["voice"]["words"], what the voice
+    actually read), so a superseded render (SUPERSEDED, a script trimmed and
+    sent back to the Mac) keeps its measurement after its script changes.
+    """
+    specs_dir = specs_dir or SPECS
+    out = []
+    for sp in sorted(specs_dir.glob("*.json")) + sorted((specs_dir / "superseded").glob("*.json")):
+        try:
+            spec = json.loads(sp.read_text())
+        except (OSError, ValueError):
+            continue
+        if spec.get("kind") != "food-episode" or not spec.get("duration_s"):
+            continue
+        n = int((spec.get("voice") or {}).get("words") or 0)
+        if n:
+            out.append((sp.stem, n / (float(spec["duration_s"]) / 60)))
+    return out
+
+
+def word_window(rates: list[float] | None = None) -> tuple[int, int, int]:
+    """(lowest, aim, highest) word count that lands inside the contract at
+    EVERY measured rate: at least MINUTES[0] at the fastest, at most
+    MINUTES[1] at the slowest; aim is the middle. With no stitched episode
+    yet, FOOD_WPM alone."""
+    rates = rates if rates is not None else [r for _, r in measured_rates()]
+    if not rates:
+        return (math.ceil(MINUTES[0] * FOOD_WPM), round(AIM_MINUTES * FOOD_WPM),
+                math.floor(MINUTES[1] * FOOD_WPM))
+    lo = math.ceil(MINUTES[0] * max(rates))
+    hi = math.floor(MINUTES[1] * min(rates))
+    return lo, (lo + hi) // 2, hi
+
+
+def fit(segments: list[list[tuple[str, str]]], fixed_words: int,
+        aim: int | None = None) -> list[list[tuple[str, str]]]:
     """Drop whole sections from the longest segment until the episode fits
-    AIM_MINUTES; never a segment's opening, evidence limit or closing."""
-    aim = AIM_MINUTES * FOOD_WPM
+    the aim of word_window(); never a segment's opening, evidence limit or
+    closing."""
+    aim = word_window()[1] if aim is None else aim
     total = lambda: fixed_words + sum(words(b) for s in segments for _, b in s)  # noqa: E731
     while total() > aim:
         seg = max(segments, key=lambda s: sum(words(b) for _, b in s))
@@ -258,7 +318,8 @@ def assemble(foods: list[str], rows: list[dict], drafts: list[str], nxt: str | N
     fixed = words(open_) + words(close) + len(title.split())
     segs = fit(segs, fixed)
     total = fixed + sum(words(b) for s in segs for _, b in s)
-    mins = total / FOOD_WPM
+    rates = [r for _, r in measured_rates()] or [FOOD_WPM]
+    slow, fast = min(rates), max(rates)
     slug = episode_slug(foods)
     srcs, seen = [], set()
     for t in drafts:
@@ -272,8 +333,9 @@ def assemble(foods: list[str], rows: list[dict], drafts: list[str], nxt: str | N
             "**Domain:** food-science", f"**Episode:** {slug}",
             f"**Parts:** {', '.join(r['slug'] for r in rows)} (segment order: {', '.join(foods)})",
             "**Register:** one voice at normal explainer pace start to finish (voice/registers.json, V54)",
-            f"**Word count:** {total}", f"**Estimated narration:** about {mins:.0f} minutes at "
-            f"{FOOD_WPM} words a minute (the first episode's stitched rate)", LANE_MARK, "",
+            f"**Word count:** {total}", f"**Estimated narration:** {total / fast:.1f}-"
+            f"{total / slow:.1f} minutes at the {fast:.1f}-{slow:.1f} words a minute the food "
+            f"voice has measured on stitched episodes (food_author.measured_rates)", LANE_MARK, "",
             "## YouTube title", "", title, "", "## Direct-answer lock", "",
             " ".join(_first_sentence(x) for x in _locks(drafts)), "", "## Narration", "",
             "### Cold open", "", open_, "", "### Title card", "", title.replace(":", "."), ""]
@@ -284,13 +346,20 @@ def assemble(foods: list[str], rows: list[dict], drafts: list[str], nxt: str | N
     return "\n".join(body)
 
 
-def length_problems(script: str) -> list[str]:
-    m = re.search(r"^\*\*Word count:\*\* (\d+)", script, re.M)
-    n = int(m.group(1)) if m else 0
-    lo, hi = (x * FOOD_WPM for x in MINUTES)
+def length_problems(script: str, rates: list[float] | None = None) -> list[str]:
+    """The word count must land inside the contract at every measured rate."""
+    n = _script_words(script)
+    rates = rates if rates is not None else [r for _, r in measured_rates()]
+    rates = rates or [FOOD_WPM]
+    lo, _, hi = word_window(rates)
+    if lo > hi:
+        return [f"the measured food voice rates {min(rates):.1f}-{max(rates):.1f} wpm "
+                f"spread wider than the {MINUTES[0]:.0f}-{MINUTES[1]:.0f} min window "
+                f"allows; no word count fits them all"]
     if not lo <= n <= hi:
-        return [f"{n} words is {n / FOOD_WPM:.1f} min at {FOOD_WPM} wpm, outside "
-                f"{MINUTES[0]:.0f}-{MINUTES[1]:.0f}"]
+        return [f"{n} words runs {n / max(rates):.1f}-{n / min(rates):.1f} min at the "
+                f"measured {max(rates):.1f}-{min(rates):.1f} wpm, outside "
+                f"{MINUTES[0]:.0f}-{MINUTES[1]:.0f} (fits {lo}-{hi} words)"]
     return []
 
 
@@ -412,9 +481,14 @@ def run(plan_only: bool = False) -> int:
         later = next_after(rows)
         script = assemble(foods, rows, drafts, later)
         bad = length_problems(script)
-        if bad:
+        if bad and _script_words(script) < word_window()[0]:
             st.named_stop("FOOD_SCRIPT_TOO_SHORT", f"{slug}: {bad[0]}",
                           unblock="The parts drafted short; the next run drafts them again.")
+        if bad:
+            st.named_stop("FOOD_SCRIPT_OFF_LENGTH", f"{slug}: {bad[0]}",
+                          unblock="fit() could not trim into the window without dropping a "
+                                  "protected section, or the measured voice rates spread "
+                                  "wider than the window; the next run drafts again.")
         FOOD_DIR.mkdir(parents=True, exist_ok=True)
         (FOOD_DIR / f"{slug}.md").write_text(script)
         st.work(f"wrote scripts/food/{slug}.md")

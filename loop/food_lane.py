@@ -51,6 +51,7 @@ script does the same around its git pull, R2 push and report push.
 """
 from __future__ import annotations
 
+import hashlib
 import json
 import os
 import signal
@@ -347,9 +348,28 @@ def run(slug: str | None, until: str | None) -> int:
         say(f"  fetched the missing food sounds: {', '.join(got)}")
     end = deadline(until)
     st = _load()
+    # THE SCRIPT IS PART OF THE KEY (2026-10-26, run 40328601655). The chili/
+    # coffee/honey episode stitched at 32.6 min, outside the contract; its
+    # script was trimmed and its spec moved to channel/specs/superseded/, which
+    # puts it back in flight. A state keyed on the slug alone would skip every
+    # stage and re-stitch the OLD voice. A changed script, or a finished run
+    # whose spec is gone, re-plans, re-voices and re-renders in a fresh work
+    # dir; footage and stills belong to the kits, not the script, and stand.
+    sha = hashlib.sha256(script.read_bytes()).hexdigest()[:12]
+    spec_p = ROOT / "channel" / "specs" / f"{ep}.json"
     if st.get("slug") != ep:
         st = {"slug": ep, "started": datetime.now().isoformat(timespec="seconds"), "stages": {}}
-    work, voice_root = WORK / ep, WORK / ep / "voice"
+    elif st.get("script_sha", sha) != sha or ("stitch" in st["stages"] and not spec_p.exists()):
+        kept = {k: v for k, v in st["stages"].items() if k in ("footage", "stills")}
+        say(f"  {ep}: the script changed or its stitched spec was superseded; "
+            f"re-planning, re-voicing and re-rendering (footage and stills kept)")
+        st = {"slug": ep, "started": datetime.now().isoformat(timespec="seconds"), "stages": kept}
+    if st.get("script_sha") is None and st["stages"].get("plans"):
+        st["script_sha"] = sha          # a run already under way: keep its work dir
+        st["work"] = str(WORK / ep)
+    st.setdefault("script_sha", sha)
+    work = Path(st.setdefault("work", str(WORK / ep / sha)))
+    voice_root = work / "voice"
     work.mkdir(parents=True, exist_ok=True)
     paras = food.parse(script)
     pcs = food.pieces(paras)
@@ -438,7 +458,17 @@ def run(slug: str | None, until: str | None) -> int:
                     FE.reroll(plans_dir / f"plan-{p}.json", voice_root / p, local, attempt + 1)
                     say(f"  re-drawing {p} beats {local} (round {attempt + 1})")
                 k += nb
-        done("voice")
+        # THE RUNTIME GATE, before hours of rendering (2026-10-26): the voice
+        # IS the episode's length (the stitch matched it to 0.01 s), so a
+        # narration outside check_episode's window is known here, not after
+        # the stitch where only V55 on main would say so.
+        lo, hi = FE.EPISODE_MINUTES
+        if not lo <= off / 60 <= hi:
+            say(f"NAMED STOP [FOOD_RUNTIME_OFF_CONTRACT]: {ep} narrates {off / 60:.1f} min, "
+                f"outside {lo:.0f}-{hi:.0f}; nothing rendered. Trim scripts/food/{ep}.md with "
+                f"food_author.fit (the lane's own rule) - a changed script re-voices it")
+            return 3
+        done("voice", minutes=round(off / 60, 2))
     # ---- render pieces (each skips a finished, unchanged piece itself)
     if "render" not in st["stages"]:
         rc = sh([PY, "visuals/food_episode.py", "render", script, voice_root, work])

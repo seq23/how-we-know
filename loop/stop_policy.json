@@ -442,6 +442,12 @@
       "max_consecutive": 2,
       "escalation": "Twice running: the free models are drafting short for food - raise the parts' target in loop/food_author.py or add a fourth part.",
       "plain": "the food script came out too short; it is drafted again next week"
+    },
+    "FOOD_SCRIPT_OFF_LENGTH": {
+      "why": "The assembled food script does not land inside 28-32 minutes at every rate the food voice has measured on stitched episodes (food_author.measured_rates), even after fit() trimmed it; nothing was written and the next weekly run drafts again.",
+      "max_consecutive": 2,
+      "escalation": "Twice running: either the parts draft with too many protected words to trim, or the measured voice rates spread wider than the window - read the stop line, which names which.",
+      "plain": "the food script would not fit the 28-32 minute window; it is drafted again next week"
     }
   },
   "owner_action": {
