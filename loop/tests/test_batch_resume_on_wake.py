@@ -261,11 +261,12 @@ check(bool(prog_args) and prog_args[-1].endswith(
       f"(f) program: {prog_args}")
 check(pl.get("RunAtLoad") is True, "(f) RunAtLoad must be true (check at login)")
 inst = (ROOT / "bin" / "loop-install-launchd.sh").read_text()
-check('AGENT_NAMES="batch nightquit batch-resume food backfill"' in inst
+check('AGENT_NAMES="batch nightquit batch-resume food food-resume backfill"' in inst
+      and 'print_one food-resume > "$AGENTS/com.howweknow.food-resume.plist"' in inst
       and 'print_one batch-resume > "$AGENTS/com.howweknow.batch-resume.plist"' in inst
       and 'print_one food > "$AGENTS/com.howweknow.food.plist"' in inst
       and 'print_one backfill > "$AGENTS/com.howweknow.backfill.plist"' in inst,
-      "(f) --install does not write and load com.howweknow.batch-resume")
+      "(f) --install does not write and load com.howweknow.batch-resume (and food-resume)")
 
 # -- g. the incomplete-night report reaches heartbeat + stop file ---------
 cases += 1

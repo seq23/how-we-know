@@ -84,6 +84,17 @@ if sorted((c.get("Weekday"), c.get("Hour"), c.get("Minute")) for c in cal) != [(
     fails.append(f"com.howweknow.food does not fire Tue + Thu 22:58: {cal}")
 if "bin/food-session.sh" not in " ".join(pl.get("ProgramArguments") or []):
     fails.append("com.howweknow.food does not run bin/food-session.sh")
+# 2a. a food night that dies is resumed: com.howweknow.food-resume (2026-10-25)
+raw = subprocess.run(["bash", str(ROOT / "bin" / "loop-install-launchd.sh"), "--plist", "food-resume"],
+                     capture_output=True, text=True).stdout
+rp = plistlib.loads(raw.encode())
+examined += 1
+if rp.get("StartInterval") != 300 or rp.get("RunAtLoad") is not True \
+        or "bin/food-session.sh --resume-if-interrupted" not in " ".join(rp.get("ProgramArguments") or []):
+    fails.append(f"com.howweknow.food-resume is not every 300 s + at login running "
+                 f"food-session.sh --resume-if-interrupted: {rp}")
+expect_fail("food-resume agent not loaded", run(loaded=ALL - {"food-resume"}),
+            "com.howweknow.food-resume is not loaded")
 wf = (ROOT / ".github" / "workflows" / "loop-food-author.yml").read_text()
 if "- cron:" not in wf or "loop/food_author.py" not in wf:
     fails.append("loop-food-author.yml has no cron invoking loop/food_author.py")
@@ -91,15 +102,17 @@ if "- cron:" not in wf or "loop/food_author.py" not in wf:
 # 2b. the session script survives the shell launchd gives it: /bin/bash
 # (3.2 on macOS) under `set -u`. Its first fired run died on an empty array
 # ("SLUG_ARGS[@]: unbound variable", 2026-10-25) before doing anything.
-for args in ([], ["--slug", "some-episode"]):
+for args in ([], ["--slug", "some-episode"], ["--resume-if-interrupted"]):
     examined += 1
     out = subprocess.run(["/bin/bash", str(ROOT / "bin" / "food-session.sh"), *args],
                          capture_output=True, text=True, env={**os.environ, "FOOD_SESSION_DRY": "1"})
     if out.returncode != 0 or "DRY: " not in out.stdout or "unbound" in out.stderr:
         fails.append(f"food-session.sh {args} under /bin/bash: rc={out.returncode} "
                      f"{out.stderr.strip()[-120:]!r}")
-    elif args and "--slug some-episode" not in out.stdout:
+    elif args[:1] == ["--slug"] and "--slug some-episode" not in out.stdout:
         fails.append("food-session.sh drops --slug")
+    elif args == ["--resume-if-interrupted"] and "DRY: resume gate, then" not in out.stdout:
+        fails.append(f"food-session.sh --resume-if-interrupted skips the gate: {out.stdout!r}")
     elif not args and "food_lane.py run --until 07:00" not in out.stdout:
         fails.append(f"food-session.sh runs the wrong lane command: {out.stdout!r}")
 if "[@]" in (ROOT / "bin" / "food-session.sh").read_text():

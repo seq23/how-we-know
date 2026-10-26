@@ -2,6 +2,9 @@
 
     .venv/bin/python loop/food_lane.py run [--until 07:00] [--slug S]
     .venv/bin/python loop/food_lane.py status
+    .venv/bin/python loop/food_lane.py resume-gate      # com.howweknow.food-resume
+    .venv/bin/python loop/food_lane.py resume-cancel    # a deliberate stop: never resume it
+    .venv/bin/python loop/food_lane.py net-wait [--budget S]
 
 Called by bin/food-session.sh (launchd com.howweknow.food, Tue and Thu 22:58),
 never by hand in the normal course. It renders the episode loop/food_author.py
@@ -23,12 +26,35 @@ docstring), in order, each resumable from what is on disk:
 
 Rule 0: every exit is work done or a named line the session log and the
 heartbeat carry. Exit codes: 0 stitched and contract holds; 4 unfinished
-(window closed - the next food night resumes); 3 named stop.
+(window closed - the next food night resumes); 3 named stop; 5 no network
+after the bounded wait (resumable).
+
+A NIGHT THAT DIES IS RESUMED, AND SAYS WHY (2026-10-25). The Mac went down
+mid-narration (kern.boottime 19:56, no shutdown record; the food log stopped at
+beat 15/19 of chili at 19:25 with no error line) and nothing re-ran the lane:
+com.howweknow.food is calendar-only, so the episode would have waited for the
+next Tuesday. A process that dies with its machine cannot log its own death,
+so the RUN RECORD (loop/state/_local/food_run.json) does it for it:
+bin/food-session.sh writes it "running" once it holds the narration lock and
+"exited" on every exit it lives to see (a signal, or a lane killed by one,
+leaves it "died"). com.howweknow.food-resume (every 300 s, and at login) asks
+`resume-gate`: a "running" record whose session is gone is a death - the line
+saying so, and the boot time when the Mac restarted, goes into the food log -
+and it is resumed while the dead run's own --until window (07:00) has at least
+RESUME_MARGIN_S left, at most MAX_RESUMES times per window, always through the
+same lock as the batch, so there is never a second narrator.
+
+NETWORK WAITS, IT DOES NOT KILL. A step that fails while the network is down
+(footage, stills, voice's whisper download) waits for it with a bounded backoff
+(NET_BACKOFF, NET_BUDGET_S, never past the window) and is retried; the session
+script does the same around its git pull, R2 push and report push.
 """
 from __future__ import annotations
 
 import json
 import os
+import signal
+import socket
 import subprocess
 import sys
 import time
@@ -50,8 +76,18 @@ PY_TTS = str(ROOT / ".venv-tts" / "bin" / "python")
 REFERENCE = ROOT / "voice" / "reference_A_clean_cond10.wav"
 WORK = ROOT / "renders" / "food"
 STATE = ROOT / "loop" / "state" / "_local" / "food_lane.json"
+RUN = Path(os.environ.get("FOOD_RUN") or ROOT / "loop" / "state" / "_local" / "food_run.json")
+FOOD_LOG = Path(os.environ.get("FOOD_LOG")
+                or Path.home() / "Library" / "Logs" / "how-we-know" / "food.log")
 MAX_REROLLS = 3
 MAX_HARVEST_PASSES = 4
+RESUME_MARGIN_S = 15 * 60      # less window than this left: not worth a model load
+MAX_RESUMES = 3                # per narration window; then a named stop
+GATE_GO, GATE_NOOP, GATE_REPORT = 0, 10, 11
+NET_HOSTS = (("github.com", 443), ("1.1.1.1", 443))
+NET_BACKOFF = (30, 60, 120, 240, 300)       # seconds; the last repeats
+NET_BUDGET_S = 30 * 60
+NET_ATTEMPTS = 4               # tries of one step across network outages
 
 
 def say(msg: str) -> None:
@@ -70,11 +106,17 @@ def _load() -> dict:
         return {}
 
 
+def _now() -> datetime:
+    """The wall clock; FOOD_NOW (YYYY-MM-DDTHH:MM) lets the tests drive it."""
+    s = os.environ.get("FOOD_NOW")
+    return datetime.fromisoformat(s) if s else datetime.now()
+
+
 def deadline(until: str | None) -> float | None:
     if not until:
         return None
     hh, mm = (int(x) for x in until.split(":"))
-    now = datetime.now()
+    now = _now()
     stop = now.replace(hour=hh, minute=mm, second=0, microsecond=0)
     if stop <= now:
         stop += timedelta(days=1)
@@ -85,6 +127,189 @@ def sh(args: list[str], log: bool = True) -> int:
     if log:
         say("$ " + " ".join(str(a) for a in args))
     return subprocess.call([str(a) for a in args], cwd=ROOT)
+
+
+# ---------------------------------------------------------------- network
+
+def net_up() -> bool:
+    for host, port in NET_HOSTS:
+        try:
+            socket.create_connection((host, port), timeout=5).close()
+            return True
+        except OSError:
+            continue
+    return False
+
+
+def _sleep(s: float) -> None:
+    time.sleep(s)
+
+
+def net_wait(budget_s: float = NET_BUDGET_S, until_ts: float | None = None) -> bool:
+    """True once the network answers; False (with a named line) after budget_s
+    of bounded backoff, or sooner when the narration window would close."""
+    if net_up():
+        return True
+    say(f"network is down; waiting for it (backoff {NET_BACKOFF}s, up to {int(budget_s // 60)} min)")
+    waited, i = 0.0, 0
+    while waited < budget_s:
+        d = min(NET_BACKOFF[min(i, len(NET_BACKOFF) - 1)], budget_s - waited)
+        if until_ts and time.time() + d >= until_ts:
+            break
+        _sleep(d)
+        waited += d
+        i += 1
+        if net_up():
+            say(f"network is back after {int(waited)}s")
+            return True
+    say(f"NAMED STOP [FOOD_NETWORK_DOWN]: no network after {int(waited)}s of waiting; "
+        f"com.howweknow.food-resume retries this run while its window lasts")
+    return False
+
+
+def sh_net(args: list, until_ts: float | None = None, attempts: int = NET_ATTEMPTS) -> int:
+    """sh(), but a failure while the network is down waits and retries instead
+    of ending the night. A failure with the network UP is returned as it is."""
+    rc = 1
+    for k in range(attempts):
+        rc = sh(args)
+        if rc in (0, 4) or net_up():
+            return rc
+        say(f"  {Path(str(args[1])).name} exited {rc} with the network down "
+            f"(try {k + 1}/{attempts}); waiting to retry")
+        if k == attempts - 1 or not net_wait(until_ts=until_ts):
+            break
+    return rc
+
+
+# ---------------------------------------------------------------- the run record
+
+def _run_read() -> dict:
+    try:
+        return json.loads(RUN.read_text())
+    except (OSError, ValueError):
+        return {}
+
+
+def _run_write(rec: dict) -> None:
+    RUN.parent.mkdir(parents=True, exist_ok=True)
+    tmp = RUN.with_suffix(".tmp")
+    tmp.write_text(json.dumps(rec, indent=1) + "\n")
+    tmp.replace(RUN)
+
+
+def _stamp(ts: float | None = None) -> str:
+    return (datetime.fromtimestamp(ts) if ts else _now()).isoformat(timespec="minutes")
+
+
+def run_begin(pid: int, until: str | None) -> dict:
+    prev = _run_read()
+    dl = deadline(until)
+    same = prev.get("deadline") == dl and prev.get("state") in ("died", "running")
+    rec = {"state": "running", "pid": pid, "started": _stamp(), "until": until,
+           "deadline": dl, "resumes": prev.get("resumes", 0) if same else 0}
+    _run_write(rec)
+    return rec
+
+
+def run_end(rc: int) -> dict:
+    """Every exit the session lives to see. A lane killed by a signal (rc >
+    128) and a network-down stop (5) are deaths, resumable; the rest exited."""
+    rec = _run_read()
+    rec.update({"ended": _stamp(), "rc": rc})
+    if rc > 128:
+        rec.update(state="died", why=f"the session ended on signal {rc - 128}")
+    elif rc == 5:
+        rec.update(state="died", why="no network after the bounded wait")
+    else:
+        rec["state"] = "exited"
+    _run_write(rec)
+    return rec
+
+
+def _alive(pid) -> bool:
+    """The pid is a live food session (a pid reused after a reboot is not)."""
+    try:
+        os.kill(int(pid), 0)
+    except (ProcessLookupError, ValueError, TypeError):
+        return False
+    except PermissionError:
+        pass
+    cmd = subprocess.run(["ps", "-p", str(pid), "-o", "command="],
+                         capture_output=True, text=True).stdout
+    return "food-session" in cmd
+
+
+def boot_time() -> float | None:
+    s = os.environ.get("FOOD_BOOT_TIME")
+    if s:
+        return datetime.fromisoformat(s).timestamp()
+    out = subprocess.run(["sysctl", "-n", "kern.boottime"], capture_output=True, text=True).stdout
+    try:
+        return float(out.split("sec =")[1].split(",")[0])
+    except (IndexError, ValueError):
+        return None
+
+
+def _to_food_log(line: str) -> None:
+    """The death is written where the dead night's own lines are."""
+    try:
+        FOOD_LOG.parent.mkdir(parents=True, exist_ok=True)
+        with FOOD_LOG.open("a") as f:
+            f.write(f"{_now():%F %H:%M} food-resume: {line}\n")
+    except OSError:
+        pass
+
+
+def resume_gate() -> tuple[int, str]:
+    rec = _run_read()
+    st = rec.get("state")
+    if st not in ("running", "died"):
+        return GATE_NOOP, f"nothing to resume (last food run: {st or 'none recorded'})"
+    if st == "running":
+        if _alive(rec.get("pid")):
+            return GATE_NOOP, f"food session pid {rec.get('pid')} is running"
+        started = rec.get("started", "?")
+        bt = boot_time()
+        try:
+            restarted = bt is not None and bt > datetime.fromisoformat(started).timestamp()
+        except ValueError:
+            restarted = False
+        why = (f"the Mac restarted at {_stamp(bt)} (power loss, a crash or a forced restart)"
+               if restarted else "it was killed outright (SIGKILL, or its launchd job was unloaded)")
+        line = (f"FOOD_RUN_DIED: food session pid {rec.get('pid')} (started {started}) "
+                f"ended with no exit line: {why}")
+        rec.update(state="died", why=why, died_seen=_stamp())
+        _run_write(rec)
+        _to_food_log(line)
+        print(line, flush=True)
+    dl = rec.get("deadline")
+    if dl and _now().timestamp() >= dl - RESUME_MARGIN_S:
+        rec["state"] = "expired"
+        _run_write(rec)
+        line = (f"the interrupted food run's window ({rec.get('until')}) has closed; "
+                f"the next food night resumes it from disk")
+        _to_food_log(line)
+        return GATE_REPORT, line
+    if rec.get("resumes", 0) >= MAX_RESUMES:
+        rec["state"] = "exhausted"
+        _run_write(rec)
+        line = (f"NAMED STOP [FOOD_RESUME_EXHAUSTED]: resumed {MAX_RESUMES} times in this window "
+                f"and it died again ({rec.get('why')}); the next food night resumes it from disk")
+        _to_food_log(line)
+        return GATE_REPORT, line
+    rec["resumes"] = rec.get("resumes", 0) + 1
+    _run_write(rec)
+    return GATE_GO, (f"RESUMING the interrupted food run (died: {rec.get('why')}; "
+                     f"resume {rec['resumes']}/{MAX_RESUMES}, window to {rec.get('until')})")
+
+
+def resume_cancel() -> int:
+    rec = _run_read()
+    rec.update(state="cancelled", cancelled=_stamp())
+    _run_write(rec)
+    print("food run marked cancelled: com.howweknow.food-resume will not resume it")
+    return 0
 
 
 def episode(slug: str | None) -> str | None:
@@ -129,7 +354,8 @@ def run(slug: str | None, until: str | None) -> int:
     if "footage" not in st["stages"]:
         rc = 1
         for n in range(MAX_HARVEST_PASSES):          # 20 downloads a pass (food_footage.MAX_PER_RUN)
-            rc = sh([PY, "research/food_footage.py", "--harvest", "--segments", ",".join(segs)])
+            rc = sh_net([PY, "research/food_footage.py", "--harvest", "--segments", ",".join(segs)],
+                        until_ts=end)
             if rc == 0:
                 break
         if rc != 0:
@@ -143,7 +369,7 @@ def run(slug: str | None, until: str | None) -> int:
             kit = food.KITS.get(s) or {}
             dg = kit.get("diagram") or {}
             if dg.get("key"):
-                rc = sh([PY, "visuals/food_stills.py", dg["key"], dg["prompt"]])
+                rc = sh_net([PY, "visuals/food_stills.py", dg["key"], dg["prompt"]], until_ts=end)
                 if rc != 0:
                     say(f"  {s}: no diagram still ({rc}); its {{{{cross_section}}}} shows footage")
         done("stills")
@@ -172,7 +398,7 @@ def run(slug: str | None, until: str | None) -> int:
                 args = [PY_TTS, "voice/food_voice.py", plan_p, vd, "--reference", REFERENCE]
                 if until:
                     args += ["--until", until]
-                rc = sh(args)
+                rc = sh_net(args, until_ts=end)
                 if rc == 4:
                     say(f"UNFINISHED: narration window closed inside {p}; the next food night resumes")
                     return 4
@@ -229,12 +455,37 @@ def status() -> int:
     return 0
 
 
+def _named_death(signum, _frame) -> None:
+    say(f"NAMED STOP [FOOD_LANE_KILLED]: the lane received {signal.Signals(signum).name}; "
+        f"the run record says so and com.howweknow.food-resume picks it up")
+    raise SystemExit(128 + signum)
+
+
 def main(argv: list[str]) -> int:
     cmd = argv[0] if argv else ""
     until = argv[argv.index("--until") + 1] if "--until" in argv else None
     slug = argv[argv.index("--slug") + 1] if "--slug" in argv else None
     if cmd == "run":
+        for sig in (signal.SIGTERM, signal.SIGHUP):
+            signal.signal(sig, _named_death)
         return run(slug, until)
+    if cmd == "run-begin":
+        run_begin(int(argv[argv.index("--pid") + 1]), until)
+        return 0
+    if cmd == "run-end":
+        run_end(int(argv[argv.index("--rc") + 1]))
+        return 0
+    if cmd == "resume-gate":
+        rc, line = resume_gate()
+        print(line)
+        return rc
+    if cmd == "resume-cancel":
+        return resume_cancel()
+    if cmd == "net-up":
+        return 0 if net_up() else 1
+    if cmd == "net-wait":
+        budget = float(argv[argv.index("--budget") + 1]) if "--budget" in argv else NET_BUDGET_S
+        return 0 if net_wait(budget, deadline(until)) else 5
     if cmd == "status":
         return status()
     print(__doc__.split("\n\n")[0])

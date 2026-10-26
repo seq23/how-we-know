@@ -58,4 +58,5 @@ LANES: dict[str, dict] = {
     "backfill":         {"runner": "launchd", "agent": "backfill", "entry": "bin/loop-backfill-daily.sh"},
     "food":             {"runner": "launchd", "agent": "food", "entry": "bin/food-session.sh",
                          "makes": "render", "domains": [FOOD]},
+    "food-resume":      {"runner": "launchd", "agent": "food-resume", "entry": "bin/food-session.sh"},
 }
