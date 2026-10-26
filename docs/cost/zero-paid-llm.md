@@ -63,6 +63,21 @@ Guarded by `loop/tests/test_llm_routing.py` (config shape + negative proofs, no
 paid literal or model variable in workflows/scripts/loop, router behaviour,
 Monday-lane fallback).
 
+**Where the rule is read.** The sentence itself is a rule in
+[`CLAUDE.md`](../../CLAUDE.md) § "Rules that are not up for debate" — so an
+agent starting in this repo meets it before it writes a line — and `V74
+nothing-paid rule` (`loop/validate.py`, in `run_all`) reads that bullet, this
+document and `config/llm_routing.json` together: the rule must be in CLAUDE.md
+and point here, this document must name the code that enforces it, every named
+stop above must be one a `loop/` module can actually raise, and the config must
+still say `max_cost_usd: 0`, `paid_fallback: false`, only `:free` models, her
+subscription token (never an API key) and a free-tier-only Gemini route.
+`loop/tests/test_nothing_paid_rule.py` proves it negatively, twelve ways — the
+rule deleted, demoted or unlinked, this document gone or no longer naming the
+router, a stop it promises that nothing raises, a cost limit above $0, a paid
+fallback, a paid model in the list, an API key on the subscription route
+(search-readiness item i10, 2026-10-25).
+
 ## Refreshing the list
 
 `curl -s https://openrouter.ai/api/v1/models` (no key), keep `:free` text models

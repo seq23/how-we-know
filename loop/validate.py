@@ -4234,6 +4234,127 @@ def v45_nothing_waits_on_the_owner() -> Result:
     return r
 
 
+def v74_nothing_paid_rule(root: Path | None = None) -> Result:
+    """HARD. The "nothing paid" rule is where code reads it, and what it says
+    is true of the configuration it governs.
+
+    Owner policy, 2026-10-11, verbatim: "nothing should be paid ... cut the
+    probes and make them free." The rule lived only in
+    `docs/cost/zero-paid-llm.md`, which nothing read and CLAUDE.md never
+    mentioned, so an agent starting in this repo could not find it
+    (search-readiness item i10, 2026-10-25). This closes that loop in both
+    directions: CLAUDE.md carries the rule and points at the document, the
+    document names the code that enforces it, and `config/llm_routing.json`
+    still matches what both of them claim.
+
+    `root` is for negative proof on a scratch copy; it defaults to the repo.
+
+    Hard-fails when it examines zero claims.
+    """
+    r = Result("V74 nothing-paid rule")
+    base = Path(root) if root else ROOT
+    doc_rel = "docs/cost/zero-paid-llm.md"
+
+    # ---------------------------------------------------- 1. CLAUDE.md
+    claude = base / "CLAUDE.md"
+    r.examined += 1
+    if not claude.exists():
+        r.fail("CLAUDE.md is missing")
+        return r
+    text = claude.read_text()
+    flat = " ".join(text.split())
+    r.examined += 1
+    if "nothing paid" not in flat.lower():
+        r.fail('CLAUDE.md does not say "nothing paid"')
+    r.examined += 1
+    if doc_rel not in text:
+        r.fail(f"CLAUDE.md does not point at {doc_rel}")
+    # The rule belongs in the section that is not up for debate, not in a
+    # passing aside: a bullet under that heading, with the words on it.
+    r.examined += 1
+    section = text.split("## Rules that are not up for debate")
+    if len(section) < 2:
+        r.fail("CLAUDE.md has no 'Rules that are not up for debate' section")
+    else:
+        body = section[1].split("\n## ")[0]
+        if "nothing paid" not in " ".join(body.split()).lower():
+            r.fail('"nothing paid" is not a rule that is not up for debate')
+
+    # ---------------------------------------------------- 2. the document
+    doc = base / doc_rel
+    r.examined += 1
+    if not doc.exists():
+        r.fail(f"no {doc_rel}")
+        return r
+    dtext = doc.read_text()
+    r.examined += 1
+    if len(dtext) < 1000:
+        r.fail(f"{doc_rel} is {len(dtext)} bytes - too thin to be the rule")
+    for name in ("config/llm_routing.json", "loop/llm_router.py",
+                 "loop/tests/test_llm_routing.py"):
+        r.examined += 1
+        if name not in dtext:
+            r.fail(f"{doc_rel} does not name {name}, which enforces it")
+
+    # Every stop code the document promises is a code the source can raise.
+    codes = sorted(set(re.findall(r"OPENROUTER_[A-Z_]+", dtext)))
+    r.examined += 1
+    if not codes:
+        r.fail(f"{doc_rel} names no named stop")
+    src = "\n".join((base / "loop" / f).read_text()
+                     for f in sorted(x.name for x in (base / "loop").glob("*.py")))
+    for code in codes:
+        r.examined += 1
+        if code not in src:
+            r.fail(f"{doc_rel} promises the stop {code}, which no loop module raises")
+
+    # ---------------------------------------------------- 3. the config
+    cfg_path = base / "config" / "llm_routing.json"
+    r.examined += 1
+    if not cfg_path.exists():
+        r.fail("no config/llm_routing.json")
+        return r
+    try:
+        cfg = json.loads(cfg_path.read_text())
+    except Exception as e:                                  # noqa: BLE001
+        r.fail(f"config/llm_routing.json is unreadable: {e}")
+        return r
+    r.examined += 1
+    if cfg.get("max_cost_usd") != 0:
+        r.fail(f"max_cost_usd is {cfg.get('max_cost_usd')!r}, not 0")
+    r.examined += 1
+    if cfg.get("paid_fallback") is not False:
+        r.fail(f"paid_fallback is {cfg.get('paid_fallback')!r}, not false")
+    r.examined += 1
+    if not cfg.get("snapshot_date"):
+        r.fail("config/llm_routing.json carries no snapshot_date")
+    models = cfg.get("models") or []
+    r.examined += 1
+    if not models:
+        r.fail("config/llm_routing.json lists no models")
+    for m in models:
+        mid = m if isinstance(m, str) else (m.get("id") or "")
+        r.examined += 1
+        if not mid.endswith(":free"):
+            r.fail(f"model {mid!r} is not a ':free' model")
+    # The two routes that answer ahead of the list are prepaid or free-tier.
+    sub = cfg.get("subscription_route") or {}
+    r.examined += 1
+    if sub and sub.get("env") != "CLAUDE_CODE_OAUTH_TOKEN":
+        r.fail(f"subscription_route reads {sub.get('env')!r}, not her "
+               f"subscription token - an API key is a paid call")
+    gem = cfg.get("gemini_route") or {}
+    r.examined += 1
+    if gem and gem.get("free_tier_only") is not True:
+        r.fail("gemini_route is not marked free_tier_only")
+
+    if r.examined == 0:
+        r.fail("examined nothing")
+    r.note(f"{len(models)} free model(s), {len(codes)} named stop(s), "
+           f"rule in CLAUDE.md and {doc_rel}")
+    return r
+
+
 def v42_authored_domain_is_allocated(items) -> Result:
     """HARD. No item this run hands to the Mac names a domain outside
     `loop/config.json` `domains.allocation`.
@@ -5340,6 +5461,7 @@ def run_all(items) -> tuple[bool, list[dict]]:
                v43_queue_asks_distinct_questions(items),
                v44_opening_payoff_first(items),
                v45_nothing_waits_on_the_owner(),
+               v74_nothing_paid_rule(),
                v46_shorts_handoff(),
                v47_longform_title(items),
                v48_thumbnail_contract(),
