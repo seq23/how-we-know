@@ -1,12 +1,12 @@
 {
-  "week": "2026-W43",
-  "generated": "2026-10-19T05:35:31+00:00",
+  "week": "2026-W44",
+  "generated": "2026-10-26T10:48:42+00:00",
   "videos_per_week": 6,
   "breaker": "closed",
   "validators": [
     {
       "validator": "V1 directive-truth",
-      "examined": 549,
+      "examined": 616,
       "status": "PASS",
       "failures": [],
       "notes": [
@@ -66,21 +66,11 @@
     },
     {
       "validator": "V8 source-urls",
-      "examined": 33,
-      "status": "PASS",
+      "examined": 0,
+      "status": "N/A(nothing generated)",
       "failures": [],
       "notes": [
-        "why-does-chocolate-taste-so-good: https://pubs.acs.org/journal/jafcau returned 403 (bot-blocked, treated as reachable)",
-        "why-does-chocolate-taste-so-good: https://www.nih.gov/ returned 403 (bot-blocked, treated as reachable)",
-        "why-does-steak-taste-better-seared: https://pubs.acs.org/journal/jafcau returned 403 (bot-blocked, treated as reachable)",
-        "why-does-steak-taste-better-seared: https://www.usda.gov/ returned 403 (bot-blocked, treated as reachable)",
-        "how-does-butter-get-made-from-cream: https://www.usda.gov/ returned 403 (bot-blocked, treated as reachable)",
-        "how-does-butter-get-made-from-cream: https://www.nih.gov/ returned 403 (bot-blocked, treated as reachable)",
-        "why-does-rice-get-sticky: https://www.nih.gov/ returned 403 (bot-blocked, treated as reachable)",
-        "why-does-rice-get-sticky: https://pubs.acs.org/journal/jafcau returned 403 (bot-blocked, treated as reachable)",
-        "why-does-meat-need-to-rest-after-cooking: https://www.fsis.usda.gov/ returned 403 (bot-blocked, treated as reachable)",
-        "why-does-meat-need-to-rest-after-cooking: https://www.usda.gov/ returned 403 (bot-blocked, treated as reachable)",
-        "why-does-meat-need-to-rest-after-cooking: https://pubs.acs.org/journal/jafcau returned 403 (bot-blocked, treated as reachable)"
+        "no generated scripts this week; nothing to fetch"
       ],
       "stops": []
     },
@@ -156,17 +146,17 @@
     },
     {
       "validator": "V20 cadence-schedule",
-      "examined": 76,
+      "examined": 68,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "19 episode(s) dated through 2026-11-26; 3 domain(s) allocating on disjoint days {'food-science': (2, 5), 'deep-sea-ocean-science': (0, 3), 'materials-and-manufacturing': (1, 4)} at 6/week"
+        "15 episode(s) dated through 2026-11-26; 3 domain(s) allocating on disjoint days {'food-science': (2, 5), 'deep-sea-ocean-science': (0, 3), 'materials-and-manufacturing': (1, 4)} at 6/week"
       ],
       "stops": []
     },
     {
       "validator": "V21 no-boilerplate",
-      "examined": 45,
+      "examined": 51,
       "status": "PASS",
       "failures": [],
       "notes": [
@@ -176,7 +166,7 @@
     },
     {
       "validator": "V22 producer-notes-second-person",
-      "examined": 52,
+      "examined": 58,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -184,7 +174,7 @@
     },
     {
       "validator": "V23 chapters-yt-compliant",
-      "examined": 52,
+      "examined": 58,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -210,7 +200,7 @@
     },
     {
       "validator": "V27 lanes-see-domains",
-      "examined": 47,
+      "examined": 48,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -218,7 +208,7 @@
     },
     {
       "validator": "V28 lane-interpreters",
-      "examined": 34,
+      "examined": 36,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -234,11 +224,11 @@
     },
     {
       "validator": "V30 cloud-visibility",
-      "examined": 392,
+      "examined": 448,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "channel/imagery/food_clips.json: 47 asset(s) machine-local by design (.gitignore), each pinned by sha256 in the manifest",
+        "channel/imagery/food_clips.json: 90 asset(s) machine-local by design (.gitignore), each pinned by sha256 in the manifest",
         "channel/sound/food.json: 3 asset(s) machine-local by design (.gitignore), each pinned by sha256 in the manifest"
       ],
       "stops": []
@@ -255,7 +245,7 @@
     },
     {
       "validator": "V32 scheduled-pov",
-      "examined": 21,
+      "examined": 17,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -263,90 +253,41 @@
     },
     {
       "validator": "V40 pov-assignment-integrity",
-      "examined": 51,
+      "examined": 57,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "51 assignment(s) agree with pov/pov-bank.json on the line, its tier and its domain, and no line is used twice"
+        "57 assignment(s) agree with pov/pov-bank.json on the line, its tier and its domain, and no line is used twice"
       ],
       "stops": []
     },
     {
       "validator": "V71 queued-pov-traced",
-      "examined": 0,
-      "status": "N/A(EMPTY:NO_QUEUED_HUMAN_BEAT)",
+      "examined": 6,
+      "status": "PASS",
+      "failures": [],
+      "notes": [
+        "examined 6 queued [HUMAN] beat(s): each must trace to its plan and to one bank line no other live episode speaks"
+      ],
+      "stops": []
+    },
+    {
+      "validator": "V72 food-one-definition",
+      "examined": 10,
+      "status": "PASS",
       "failures": [],
       "notes": [],
-      "stops": [
-        {
-          "code": "NO_QUEUED_HUMAN_BEAT",
-          "message": "no queued, unpublished script carries a [HUMAN] beat: 62 input(s) scanned, 46 published (V32/V40 govern it); 16 queued, no script authored yet",
-          "items": [
-            "01-why-deep-sea-creatures-look-so-weird",
-            "02-how-deep-sea-creatures-survive-pressure",
-            "04-why-deep-sea-creatures-are-so-scary",
-            "05-why-many-deep-sea-creatures-are-red",
-            "06-why-some-deep-sea-creatures-are-transparent",
-            "07-why-deep-sea-creatures-get-creepier-deeper",
-            "08-what-creatures-live-in-the-deep-sea",
-            "09-what-is-the-scariest-deep-sea-creature",
-            "10-what-is-the-deepest-part-of-the-ocean",
-            "13-how-does-bioluminescence-work-in-the-deep-sea",
-            "14-how-big-is-a-colossal-squid",
-            "15-how-do-people-reach-challenger-deep",
-            "16-what-happens-when-a-whale-dies-in-the-deep-ocean",
-            "18-why-does-black-smoker-water-not-boil",
-            "19-what-is-the-deepest-fish-ever-recorded",
-            "20-what-is-the-midnight-zone",
-            "does-damascus-steel-rust",
-            "how-are-microchips-designed",
-            "how-are-microchips-made",
-            "how-deep-can-a-sperm-whale-go",
-            "how-deep-can-whales-dive",
-            "how-do-scientists-know-about-other-galaxies",
-            "how-do-scientists-know-how-old-something-is",
-            "how-do-scientists-know-so-much",
-            "how-do-self-healing-materials-work",
-            "how-does-butter-get-made-from-cream",
-            "how-does-quenching-harden-steel",
-            "how-does-tempered-glass-shatter",
-            "how-hot-does-a-welding-arc-get",
-            "how-is-3d-printed-metal-made",
-            "how-is-a-silicon-wafer-made",
-            "how-is-damascus-steel-made",
-            "how-strong-is-graphene",
-            "how-strong-is-titanium",
-            "how-to-tell-if-steel-is-hardened",
-            "how-to-tell-if-steel-is-high-carbon",
-            "is-aluminum-stronger-than-steel",
-            "is-damascus-steel-better",
-            "what-is-a-semiconductor-made-of",
-            "what-is-aerogel-made-of",
-            "what-is-carbon-fiber-made-of",
-            "what-is-concrete-made-of",
-            "what-is-hydrothermal-vents",
-            "what-is-kevlar-made-of",
-            "what-lives-in-mariana-trench",
-            "why-are-deep-sea-creatures-so-big",
-            "why-bread-rises-steak-browns-chocolate-snaps",
-            "why-deep-sea-creatures-are-creepers",
-            "why-deep-sea-fish-die-when-brought-to-surface",
-            "why-do-chili-peppers-taste-hot",
-            "why-does-cheese-melt",
-            "why-does-chocolate-taste-so-good",
-            "why-does-coffee-taste-bitter",
-            "why-does-honey-never-spoil",
-            "why-does-meat-need-to-rest-after-cooking",
-            "why-does-old-iron-not-rust",
-            "why-does-rice-get-sticky",
-            "why-does-salt-make-food-taste-better",
-            "why-does-steak-taste-better-seared",
-            "why-is-carbon-fiber-so-strong",
-            "why-is-my-bread-not-rising",
-            "why-is-steel-so-strong"
-          ]
-        }
-      ]
+      "stops": []
+    },
+    {
+      "validator": "V73 every-lane-has-a-runner",
+      "examined": 46,
+      "status": "PASS",
+      "failures": [],
+      "notes": [
+        "launchd load state not checked off the Mac"
+      ],
+      "stops": []
     },
     {
       "validator": "V33 domain-harvesters",
@@ -374,7 +315,7 @@
     },
     {
       "validator": "V36 editorial-gate",
-      "examined": 417,
+      "examined": 465,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -416,7 +357,7 @@
     },
     {
       "validator": "V43 distinct-questions",
-      "examined": 22,
+      "examined": 20,
       "status": "PASS",
       "failures": [],
       "notes": [
@@ -434,17 +375,27 @@
     },
     {
       "validator": "V45 nothing-waits-on-owner",
-      "examined": 169,
+      "examined": 173,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "stop kinds by class: automated 63, automated/error 1, error 89, owner_secret 16"
+        "stop kinds by class: automated 67, automated/error 1, error 89, owner_secret 16"
+      ],
+      "stops": []
+    },
+    {
+      "validator": "V74 nothing-paid rule",
+      "examined": 26,
+      "status": "PASS",
+      "failures": [],
+      "notes": [
+        "4 free model(s), 5 named stop(s), rule in CLAUDE.md and docs/cost/zero-paid-llm.md"
       ],
       "stops": []
     },
     {
       "validator": "V46 shorts-handoff",
-      "examined": 74,
+      "examined": 90,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -476,7 +427,7 @@
     },
     {
       "validator": "V50 repackage-state",
-      "examined": 102,
+      "examined": 105,
       "status": "PASS",
       "failures": [],
       "notes": [],
@@ -494,7 +445,7 @@
     },
     {
       "validator": "V60 description-search-block",
-      "examined": 47,
+      "examined": 53,
       "status": "PASS(STOP:DESCRIPTION_PENDING)",
       "failures": [],
       "notes": [],
@@ -538,21 +489,22 @@
     },
     {
       "validator": "V55 food-episode",
-      "examined": 6,
+      "examined": 7,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "why-bread-rises-steak-browns-chocolate-snaps: 28.5 min, real video 96%, hands 13%, spectacle by piece {'open': 0.0918, 'chocolate': 0.5888, 'bread': 0.5055, 'steak': 0.512, 'tail': 1.0}"
+        "why-bread-rises-steak-browns-chocolate-snaps: 28.5 min, real video 96%, hands 13%, spectacle by piece {'open': 0.0918, 'chocolate': 0.5888, 'bread': 0.5055, 'steak': 0.512, 'tail': 1.0}",
+        "what-is-inside-chili-coffee-honey: held by the upload lane until rendered: no episode spec at channel/specs/<slug>.json - a food video ships only with one"
       ],
       "stops": []
     },
     {
       "validator": "V70 demand-verdict",
-      "examined": 27,
+      "examined": 31,
       "status": "PASS",
       "failures": [],
       "notes": [
-        "pull 2026-10-18: {'PASS': 0, 'WATCH': 0, 'FAIL': 0, 'INSUFFICIENT': 27}"
+        "pull 2026-10-25: {'PASS': 0, 'WATCH': 0, 'FAIL': 1, 'INSUFFICIENT': 30}"
       ],
       "stops": []
     }
@@ -572,198 +524,237 @@
   "runway": {
     "unpublished_scripts": 13,
     "publishable": 6,
-    "scheduled_not_yet_aired": 19,
+    "scheduled_not_yet_aired": 15,
     "basis": "publish queue",
     "videos_per_week": 6,
-    "weeks_remaining": 4.2,
+    "weeks_remaining": 3.5,
     "warn_below_weeks": 4.0,
     "critical_below_weeks": 2.0,
-    "level": "ok",
+    "level": "warn",
     "by_domain": {
       "deep-sea-ocean-science": {
         "slots_per_week": 2,
         "queued": 0,
-        "scheduled_ahead": 12,
-        "weeks": 6.0,
+        "scheduled_ahead": 10,
+        "weeks": 5.0,
         "level": "ok",
-        "message": "deep-sea-ocean-science: 6.0 week(s) at 2/week (0 queued, 12 already dated)"
+        "message": "deep-sea-ocean-science: 5.0 week(s) at 2/week (0 queued, 10 already dated)"
       },
       "materials-and-manufacturing": {
         "slots_per_week": 2,
         "queued": 5,
-        "scheduled_ahead": 7,
-        "weeks": 6.0,
+        "scheduled_ahead": 5,
+        "weeks": 5.0,
         "level": "ok",
-        "message": "materials-and-manufacturing: 6.0 week(s) at 2/week (5 queued, 7 already dated)"
+        "message": "materials-and-manufacturing: 5.0 week(s) at 2/week (5 queued, 5 already dated)"
       },
       "food-science": {
         "slots_per_week": 2,
-        "queued": 11,
+        "queued": 9,
         "scheduled_ahead": 0,
-        "weeks": 5.5,
+        "weeks": 4.5,
         "level": "ok",
-        "message": "food-science: 5.5 week(s) at 2/week (11 queued, 0 already dated)"
+        "message": "food-science: 4.5 week(s) at 2/week (9 queued, 0 already dated)"
       }
     },
     "short_domains": [],
     "never_go_dark": true,
-    "message": "4.2 weeks of queue at 6/week (6 publishable of 13 on disk). By domain: deep-sea-ocean-science: 6.0 week(s) at 2/week (0 queued, 12 already dated); materials-and-manufacturing: 6.0 week(s) at 2/week (5 queued, 7 already dated); food-science: 5.5 week(s) at 2/week (11 queued, 0 already dated)."
+    "message": "RUNWAY WARNING: only 3.5 weeks of queue left at 6/week - 6 publishable episode(s) of 13 on disk. Act now, not later: the authoring lane needs lead time and its human fallback needs more. By domain: deep-sea-ocean-science: 5.0 week(s) at 2/week (0 queued, 10 already dated); materials-and-manufacturing: 5.0 week(s) at 2/week (5 queued, 5 already dated); food-science: 4.5 week(s) at 2/week (9 queued, 0 already dated)."
   },
   "authoring": {
-    "generated_this_week": 6,
+    "generated_this_week": 0,
     "cost_usd": 0.0,
     "model": "nvidia/nemotron-3-ultra-550b-a55b:free"
   },
   "items": [
     {
       "slug": "why-does-chocolate-taste-so-good",
-      "question": "why does chocolate taste so good",
+      "question": "Why does chocolate taste so good?",
       "script": "scripts/why-does-chocolate-taste-so-good.md",
-      "generated": true,
+      "generated": false,
       "carried_draft": false,
-      "author_cost_usd": 0,
-      "author_model": "claude-subscription/opus",
+      "author_cost_usd": null,
+      "author_model": null,
       "pov_id": "pov-095",
       "pov_line": "What are people repeating without checking? What's hidden by the way the story is usually told?",
       "pov_tier": "transferable",
-      "pov_matched_by": "tag:thesis score 2.0",
+      "pov_matched_by": "hand assignment in pov/pov-assignments.json",
       "work_copy": "loop/work/why-does-chocolate-taste-so-good.md",
       "audio_dir": "audio/why-does-chocolate-taste-so-good",
       "plan": "loop/plans/why-does-chocolate-taste-so-good.json",
       "render": "renders/why-does-chocolate-taste-so-good.mp4",
-      "source": "publish-queue",
+      "source": "authored-inventory",
       "status": "queued",
       "pov_bank_line": "What are people repeating without checking? What's hidden by the way the story is usually told?",
       "pov_script_line": "What are people repeating without checking? What's hidden by the way the story is usually told?",
       "source_count": 5,
-      "sources_cited": [],
+      "sources_cited": [
+        "Journal of Agricultural and Food Chemistry",
+        "Food Chemistry",
+        "National Institutes of Health",
+        "PubChem",
+        "American Oil Chemists' Society"
+      ],
       "attribution_gaps": [],
       "planned_beats": 89
     },
     {
       "slug": "why-does-steak-taste-better-seared",
-      "question": "why does steak taste better seared",
+      "question": "Why does steak taste better seared?",
       "script": "scripts/why-does-steak-taste-better-seared.md",
-      "generated": true,
+      "generated": false,
       "carried_draft": false,
-      "author_cost_usd": 0,
-      "author_model": "claude-subscription/opus",
+      "author_cost_usd": null,
+      "author_model": null,
       "pov_id": "pov-081",
       "pov_line": "Octopuses impress me. So much of their nervous system runs through their arms. They aren't just unusual \u2014 they look like a completely different solution to intelligence.",
       "pov_tier": "transferable",
-      "pov_matched_by": "tag:adaptation score 3.0",
+      "pov_matched_by": "hand assignment in pov/pov-assignments.json",
       "work_copy": "loop/work/why-does-steak-taste-better-seared.md",
       "audio_dir": "audio/why-does-steak-taste-better-seared",
       "plan": "loop/plans/why-does-steak-taste-better-seared.json",
       "render": "renders/why-does-steak-taste-better-seared.mp4",
-      "source": "publish-queue",
+      "source": "authored-inventory",
       "status": "queued",
       "pov_bank_line": "Octopuses impress me. So much of their nervous system runs through their arms. They aren't just unusual \u2014 they look like a completely different solution to intelligence.",
       "pov_script_line": "Octopuses impress me. So much of their nervous system runs through their arms. They aren't just unusual \u2014 they look like a completely different solution to intelligence.",
       "source_count": 6,
-      "sources_cited": [],
+      "sources_cited": [
+        "USDA",
+        "American Chemical Society",
+        "Journal of Agricultural and Food Chemistry",
+        "Food Chemistry",
+        "PubChem",
+        "French Academy of Sciences"
+      ],
       "attribution_gaps": [],
       "planned_beats": 78
     },
     {
       "slug": "why-is-my-bread-not-rising",
-      "question": "why is my bread not rising",
+      "question": "Why is my bread not rising?",
       "script": "scripts/why-is-my-bread-not-rising.md",
-      "generated": true,
+      "generated": false,
       "carried_draft": false,
-      "author_cost_usd": 0,
-      "author_model": "claude-subscription/opus",
+      "author_cost_usd": null,
+      "author_model": null,
       "pov_id": "pov-096",
       "pov_line": "I like questions where the obvious answer starts falling apart once you look closely.",
       "pov_tier": "transferable",
-      "pov_matched_by": "tag:thesis score 2.0",
+      "pov_matched_by": "hand assignment in pov/pov-assignments.json",
       "work_copy": "loop/work/why-is-my-bread-not-rising.md",
       "audio_dir": "audio/why-is-my-bread-not-rising",
       "plan": "loop/plans/why-is-my-bread-not-rising.json",
       "render": "renders/why-is-my-bread-not-rising.mp4",
-      "source": "publish-queue",
+      "source": "authored-inventory",
       "status": "queued",
       "pov_bank_line": "I like questions where the obvious answer starts falling apart once you look closely.",
       "pov_script_line": "I like questions where the obvious answer starts falling apart once you look closely.",
       "source_count": 5,
-      "sources_cited": [],
+      "sources_cited": [
+        "USDA",
+        "USDA Agricultural Research Service",
+        "Institute of Food Technologists",
+        "American Chemical Society",
+        "Institut Pasteur"
+      ],
       "attribution_gaps": [],
       "planned_beats": 82
     },
     {
       "slug": "how-does-butter-get-made-from-cream",
-      "question": "how does butter get made from cream",
+      "question": "How does butter get made from cream?",
       "script": "scripts/how-does-butter-get-made-from-cream.md",
-      "generated": true,
+      "generated": false,
       "carried_draft": false,
-      "author_cost_usd": 0,
-      "author_model": "claude-subscription/opus",
+      "author_cost_usd": null,
+      "author_model": null,
       "pov_id": "pov-112",
       "pov_line": "The finished object is impressive, but I'm usually more interested in the chain of decisions and tolerances that keeps it from becoming a disaster.",
       "pov_tier": "transferable",
-      "pov_matched_by": "tag:systems score 2.0",
+      "pov_matched_by": "hand assignment in pov/pov-assignments.json",
       "work_copy": "loop/work/how-does-butter-get-made-from-cream.md",
       "audio_dir": "audio/how-does-butter-get-made-from-cream",
       "plan": "loop/plans/how-does-butter-get-made-from-cream.json",
       "render": "renders/how-does-butter-get-made-from-cream.mp4",
-      "source": "publish-queue",
+      "source": "authored-inventory",
       "status": "queued",
       "pov_bank_line": "The finished object is impressive, but I'm usually more interested in the chain of decisions and tolerances that keeps it from becoming a disaster.",
       "pov_script_line": "The finished object is impressive, but I'm usually more interested in the chain of decisions and tolerances that keeps it from becoming a disaster.",
       "source_count": 5,
-      "sources_cited": [],
+      "sources_cited": [
+        "USDA",
+        "American Chemical Society",
+        "National Institutes of Health",
+        "PubChem",
+        "American Oil Chemists' Society"
+      ],
       "attribution_gaps": [],
       "planned_beats": 87
     },
     {
       "slug": "why-does-rice-get-sticky",
-      "question": "why does rice get sticky",
+      "question": "Why Does Rice Get Sticky?",
       "script": "scripts/why-does-rice-get-sticky.md",
-      "generated": true,
+      "generated": false,
       "carried_draft": false,
-      "author_cost_usd": 0,
-      "author_model": "claude-subscription/opus",
+      "author_cost_usd": null,
+      "author_model": null,
       "pov_id": "pov-097",
       "pov_line": "It feels like the subject gets larger instead of smaller. One answer rearranges everything around it.",
       "pov_tier": "transferable",
-      "pov_matched_by": "tag:thesis score 2.0",
+      "pov_matched_by": "hand assignment in pov/pov-assignments.json",
       "work_copy": "loop/work/why-does-rice-get-sticky.md",
       "audio_dir": "audio/why-does-rice-get-sticky",
       "plan": "loop/plans/why-does-rice-get-sticky.json",
       "render": "renders/why-does-rice-get-sticky.mp4",
-      "source": "publish-queue",
+      "source": "authored-inventory",
       "status": "queued",
       "pov_bank_line": "It feels like the subject gets larger instead of smaller. One answer rearranges everything around it.",
       "pov_script_line": "It feels like the subject gets larger instead of smaller. One answer rearranges everything around it.",
       "source_count": 6,
       "sources_cited": [
-        "Royal Society"
+        "USDA",
+        "USDA Agricultural Research Service",
+        "American Chemical Society",
+        "Royal Society of Chemistry",
+        "Journal of Agricultural and Food Chemistry",
+        "Food Chemistry",
+        "National Institutes of Health",
+        "PubChem"
       ],
       "attribution_gaps": [],
       "planned_beats": 73
     },
     {
       "slug": "why-does-meat-need-to-rest-after-cooking",
-      "question": "why does meat need to rest after cooking",
+      "question": "Why does meat need to rest after cooking?",
       "script": "scripts/why-does-meat-need-to-rest-after-cooking.md",
-      "generated": true,
+      "generated": false,
       "carried_draft": false,
-      "author_cost_usd": 0,
-      "author_model": "claude-subscription/opus",
+      "author_cost_usd": null,
+      "author_model": null,
       "pov_id": "pov-098",
       "pov_line": "That's the feeling I'm chasing. Not collecting another fact \u2014 realising the model in my head was incomplete, and now I have a better one.",
       "pov_tier": "transferable",
-      "pov_matched_by": "tag:thesis score 2.0",
+      "pov_matched_by": "hand assignment in pov/pov-assignments.json",
       "work_copy": "loop/work/why-does-meat-need-to-rest-after-cooking.md",
       "audio_dir": "audio/why-does-meat-need-to-rest-after-cooking",
       "plan": "loop/plans/why-does-meat-need-to-rest-after-cooking.json",
       "render": "renders/why-does-meat-need-to-rest-after-cooking.mp4",
-      "source": "publish-queue",
+      "source": "authored-inventory",
       "status": "queued",
       "pov_bank_line": "That's the feeling I'm chasing. Not collecting another fact \u2014 realising the model in my head was incomplete, and now I have a better one.",
       "pov_script_line": "That's the feeling I'm chasing. Not collecting another fact \u2014 realising the model in my head was incomplete, and now I have a better one.",
       "source_count": 6,
-      "sources_cited": [],
+      "sources_cited": [
+        "USDA",
+        "USDA Agricultural Research Service",
+        "Institute of Food Technologists",
+        "American Chemical Society",
+        "Journal of Agricultural and Food Chemistry",
+        "Food Chemistry"
+      ],
       "attribution_gaps": [],
       "planned_beats": 97
     }

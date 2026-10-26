@@ -2474,10 +2474,98 @@
       "completion_tokens": 4956,
       "total_tokens": 18287,
       "cost_usd": 0
+    },
+    {
+      "at": "2026-10-26T10:51:20+00:00",
+      "slug": "is-damascus-steel-better",
+      "model": "claude-subscription/opus",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 3662,
+      "completion_tokens": 15981,
+      "total_tokens": 19643,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-26T10:51:59+00:00",
+      "slug": "is-damascus-steel-better",
+      "model": "claude-subscription/opus",
+      "attempt": 2,
+      "accepted": false,
+      "prompt_tokens": 8741,
+      "completion_tokens": 5493,
+      "total_tokens": 14234,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-26T10:52:39+00:00",
+      "slug": "is-damascus-steel-better",
+      "model": "claude-subscription/opus",
+      "attempt": 3,
+      "accepted": true,
+      "prompt_tokens": 13813,
+      "completion_tokens": 5626,
+      "total_tokens": 19439,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-26T10:55:45+00:00",
+      "slug": "how-to-tell-if-steel-is-hardened",
+      "model": "claude-subscription/opus",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 3707,
+      "completion_tokens": 14306,
+      "total_tokens": 18013,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-26T10:56:26+00:00",
+      "slug": "how-to-tell-if-steel-is-hardened",
+      "model": "claude-subscription/opus",
+      "attempt": 2,
+      "accepted": true,
+      "prompt_tokens": 8941,
+      "completion_tokens": 5570,
+      "total_tokens": 14511,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-26T10:59:44+00:00",
+      "slug": "does-damascus-steel-rust",
+      "model": "claude-subscription/opus",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 3675,
+      "completion_tokens": 16082,
+      "total_tokens": 19757,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-26T11:00:25+00:00",
+      "slug": "does-damascus-steel-rust",
+      "model": "claude-subscription/opus",
+      "attempt": 2,
+      "accepted": false,
+      "prompt_tokens": 8893,
+      "completion_tokens": 5688,
+      "total_tokens": 14581,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-10-26T11:01:05+00:00",
+      "slug": "does-damascus-steel-rust",
+      "model": "claude-subscription/opus",
+      "attempt": 3,
+      "accepted": true,
+      "prompt_tokens": 13850,
+      "completion_tokens": 5423,
+      "total_tokens": 19273,
+      "cost_usd": 0
     }
   ],
   "total_usd": 10.175922,
-  "drafts_written": 103,
-  "average_usd_per_accepted_draft": 0.098795,
-  "updated": "2026-10-25T20:20:10+00:00"
+  "drafts_written": 106,
+  "average_usd_per_accepted_draft": 0.095999,
+  "updated": "2026-10-26T11:01:05+00:00"
 }
