@@ -52,4 +52,4 @@ jobs:
       # No npm ci: the check uses only node's own fetch and the committed
       # site-flags.json, so an install would be a minute spent on nothing.
       - name: Read the deployed site from outside
-        run: node scripts/validate-live-host.mjs
+        run: node "$GITHUB_WORKSPACE/site/scripts/validate-live-host.mjs"
