@@ -55,6 +55,30 @@ def state_changes(before: dict[str, str], after: dict[str, str]) -> list[str]:
                   if before.get(k) != after.get(k))
 
 
+def slow_names() -> list[str]:
+    """The long suite, from loop/tests/slow_tests.txt — the ONE list.
+
+    Both halves of the split read this file: --skip-slow (the merge gate) and
+    --only-slow (the long suite on main). Two lists would drift, and a file in
+    neither set would never run at all.
+    """
+    path = os.path.join(HERE, "slow_tests.txt")
+    with open(path, encoding="utf-8") as fh:
+        names = [ln.strip() for ln in fh
+                 if ln.strip() and not ln.strip().startswith("#")]
+    if not names:
+        print(f"FAIL: {path} names no tests — the long suite would be empty "
+              f"and --skip-slow would silently mean 'everything'")
+        raise SystemExit(1)
+    missing = [n for n in names
+               if not os.path.isfile(os.path.join(HERE, n))]
+    if missing:
+        print(f"FAIL: slow_tests.txt names {missing}, which do not exist. A "
+              f"renamed test parked here runs in NEITHER set")
+        raise SystemExit(1)
+    return names
+
+
 def main() -> int:
     files = sorted(glob.glob(os.path.join(HERE, "test_*.py")))
     if not files:
@@ -67,7 +91,30 @@ def main() -> int:
     # (test_registry_green_on_main.py) pushed a PR run over it. No argument
     # = every file, as before. test_registry_green_on_main.py asserts the
     # matrix names every shard 1..N, so no file can fall between shards.
+    # --skip-slow / --only-slow split the suite into the merge gate and the long
+    # suite that runs on main after merge (loop/tests/slow_tests.txt holds the
+    # one list; search readiness h5). Five files were 468s of a 625s suite, so
+    # sharding alone could not bring the gate under five minutes.
     args = sys.argv[1:]
+    mode = None
+    for flag in ("--skip-slow", "--only-slow"):
+        if flag in args:
+            if mode:
+                print("FAIL: --skip-slow and --only-slow are mutually exclusive")
+                return 1
+            mode = flag
+            args = [a for a in args if a != flag]
+    if mode:
+        slow = set(slow_names())
+        keep = (lambda name: name not in slow) if mode == "--skip-slow" \
+            else (lambda name: name in slow)
+        files = [f for f in files if keep(os.path.basename(f))]
+        print(f"{mode}: {len(files)} of {len(slow)} slow / "
+              f"{len(glob.glob(os.path.join(HERE, 'test_*.py')))} total file(s)")
+        if not files:
+            print(f"FAIL: {mode} selected zero test files")
+            return 1
+
     if args[:1] == ["--shard"] and len(args) == 2:
         k, n = (int(x) for x in args[1].split("/"))
         if not 1 <= k <= n:
@@ -79,7 +126,8 @@ def main() -> int:
             print("FAIL: this shard holds zero test files")
             return 1
     elif args:
-        print(f"FAIL: unknown arguments {args}; usage: run_all.py [--shard K/N]")
+        print(f"FAIL: unknown arguments {args}; usage: "
+              f"run_all.py [--shard K/N] [--skip-slow | --only-slow]")
         return 1
 
     before = state_snapshot()

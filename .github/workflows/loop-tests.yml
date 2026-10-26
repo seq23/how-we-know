@@ -38,9 +38,21 @@ on:
 permissions:
   contents: read
 
+# THE MERGE GATE AND THE LONG SUITE (search readiness h5)
+#
+# The gate is `test`; the long suite is `long-suite`, which runs on main after
+# merge and never blocks a pull request. On 2026-10-26 the median PR run was 6.4
+# minutes against a five-minute target, and sharding could not fix it: five files
+# were 468s of a 625s suite (test_stage_write_set_is_committed.py alone was
+# 274s). loop/tests/slow_tests.txt is the one list, read by --skip-slow here and
+# --only-slow below; test_registry_green_on_main.py asserts the two sets are
+# every test_*.py between them, so nothing falls through the split.
+#
+# Nothing is skipped: a red long suite on main blocks the next deploy the way a
+# red gate blocks a merge.
 jobs:
   test:
-    timeout-minutes: 8  # ~3x median 2.3m over 8 green runs; fault detector, not a budget
+    timeout-minutes: 8  # ~3x the fast set's measured time; fault detector, not a budget
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -56,8 +68,31 @@ jobs:
       - name: Install the one dependency the tests need
         run: pip install --quiet pyyaml
       - name: Loop tests
-        run: python loop/tests/run_all.py --shard ${{ matrix.shard }}/2
+        run: python loop/tests/run_all.py --shard ${{ matrix.shard }}/2 --skip-slow
       - name: Conformance with the locked plan
         run: python loop/validate_plan.py
       - name: Shell syntax
         run: for f in bin/loop-*.sh; do bash -n "$f"; done
+
+  long-suite:
+    # The five long files, on main after merge and on the lanes' own completions.
+    # Never on a pull request: that is the whole point of the split.
+    if: github.event_name != 'pull_request'
+    needs: test
+    timeout-minutes: 20  # ~4x the measured ~5m; fault detector, not a budget
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2]  # run_all.py --only-slow --shard K/2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install loop dependencies
+        run: pip install -r requirements-loop.txt
+      - name: Install the one dependency the tests need
+        run: pip install --quiet pyyaml
+      - name: The long suite
+        run: python loop/tests/run_all.py --shard ${{ matrix.shard }}/2 --only-slow

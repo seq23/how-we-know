@@ -54,15 +54,63 @@ def check() -> list[str]:
     if "loop/tests/run_all.py" not in wf or "pull_request" not in wf:
         fails.append("loop-tests.yml no longer runs loop/tests/run_all.py on "
                      "pull_request, so this registry gate blocks nothing")
-    m = re.search(r"run_all\.py --shard \$\{\{ matrix\.shard \}\}/(\d+)", wf)
-    shards = re.search(r"shard:\s*\[([0-9,\s]+)\]", wf)
-    if m:
+    # Both jobs shard, so every `--shard K/N` is checked against the matrix of
+    # the job it sits in: the nearest `shard: [...]` above it.
+    runners = list(re.finditer(r"run_all\.py --shard \$\{\{ matrix\.shard \}\}/(\d+)", wf))
+    if not runners:
+        fails.append("loop-tests.yml runs run_all.py in no sharded job, so this "
+                     "shard check examined nothing")
+    for m in runners:
         n = int(m.group(1))
-        have = sorted(int(x) for x in shards.group(1).split(",")) if shards else []
+        above = re.findall(r"shard:\s*\[([0-9,\s]+)\]", wf[:m.start()])
+        have = sorted(int(x) for x in above[-1].split(",")) if above else []
         if have != list(range(1, n + 1)):
-            fails.append(f"loop-tests.yml runs run_all.py in {n} shards but its "
-                         f"matrix names {have} - a missing shard is a slice of "
-                         f"the suite that never runs")
+            fails.append(f"loop-tests.yml runs run_all.py in {n} shards but the "
+                         f"matrix above it names {have} - a missing shard is a "
+                         f"slice of the suite that never runs")
+
+    # THE SPLIT MUST NOT LOSE A TEST (search readiness h5).
+    #
+    # The merge gate runs --skip-slow and the long suite on main runs
+    # --only-slow, both reading loop/tests/slow_tests.txt. Three ways that can
+    # rot, each of which leaves a test file that NOTHING runs:
+    #   - a file is named in slow_tests.txt and no longer exists;
+    #   - the long-suite job stops running --only-slow, so the slow files are
+    #     skipped by the gate and run nowhere;
+    #   - the gate stops running --skip-slow while the long suite still runs
+    #     --only-slow, so the slow files run twice and the gate is slow again.
+    here = Path(__file__).resolve().parent
+    slow_file = here / "slow_tests.txt"
+    if not slow_file.exists():
+        fails.append("loop/tests/slow_tests.txt is missing, so --skip-slow and "
+                     "--only-slow cannot agree on what the long suite is")
+    else:
+        slow = [ln.strip() for ln in slow_file.read_text().splitlines()
+                if ln.strip() and not ln.strip().startswith("#")]
+        if not slow:
+            fails.append("slow_tests.txt names no tests, so --skip-slow means "
+                         "'everything' and the long suite is empty")
+        gone = [n for n in slow if not (here / n).is_file()]
+        if gone:
+            fails.append(f"slow_tests.txt names {gone}, which do not exist - a "
+                         f"renamed test parked there runs in NEITHER set")
+        every = {p.name for p in here.glob("test_*.py")}
+        orphans = sorted(set(slow) - every)
+        if orphans:
+            fails.append(f"slow_tests.txt names {orphans}, which the runner's "
+                         f"own glob would never pick up")
+        if "--skip-slow" not in wf:
+            fails.append("loop-tests.yml no longer runs the gate with "
+                         "--skip-slow, so the merge gate carries the long suite")
+        if "--only-slow" not in wf:
+            fails.append("loop-tests.yml no longer runs --only-slow anywhere, so "
+                         f"the {len(slow)} file(s) in slow_tests.txt are skipped "
+                         f"by the gate and run NOWHERE")
+        # The long suite must be barred from pull requests, or the split bought
+        # nothing; and it must not be the gate's only caller.
+        if "--only-slow" in wf and "github.event_name != 'pull_request'" not in wf:
+            fails.append("the --only-slow job is not barred from pull requests, "
+                         "so the long suite still runs in the merge gate")
 
     # A lane that commits loop state pushes with GITHUB_TOKEN, which never
     # fires `push`; loop-tests.yml re-tests main when each one completes

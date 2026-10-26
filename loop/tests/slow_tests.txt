@@ -1,0 +1,33 @@
+# THE LONG SUITE: tests that run on main after merge, not in the merge gate.
+#
+# Search readiness item h5 asks the merge gate to stay under five minutes. On
+# 2026-10-26 the median pull-request run was 6.4 minutes, and sharding could not
+# fix it, because the cost was not spread across the suite — it was these files.
+# Measured from run 39046... (loop · tests, two shards):
+#
+#   test_stage_write_set_is_committed.py   274s
+#   test_registry_green_on_main.py          90s
+#   test_thumb_contract.py                  42s
+#   test_thumb_distinct.py                  36s
+#   test_repackage.py                       26s
+#
+# Those five are 468s of a ~625s suite. Everything else together is under three
+# minutes across two shards, which is the gate this split buys.
+#
+# NOTHING IS SKIPPED. Every file here runs on every push to main, in the
+# long-suite job of loop-tests.yml, and a red there blocks the next deploy the
+# same way a red gate blocks a merge. The owner's rule is "build first, test in
+# batches": the fast checks per merge, the long suites on main after it.
+#
+# test_registry_green_on_main.py asserts that this list plus the fast set is
+# EVERY test_*.py in this directory, that every name here exists, and that the
+# long-suite job actually runs them. A file cannot fall between the two sets,
+# and a file cannot be parked here and quietly never run.
+#
+# One name per line, bare file name. A line starting with # is a comment.
+
+test_stage_write_set_is_committed.py
+test_registry_green_on_main.py
+test_thumb_contract.py
+test_thumb_distinct.py
+test_repackage.py
