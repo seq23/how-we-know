@@ -1,0 +1,16 @@
+{
+  "stage": "food-author",
+  "week": "2026-W44",
+  "at": "2026-10-26T19:13:31+00:00",
+  "code": "FOOD_EPISODE_IN_FLIGHT",
+  "message": "what-is-inside-chili-coffee-honey is authored and waiting for the Mac's food nights (bin/food-session.sh); one food episode is in flight at a time",
+  "detail": null,
+  "unblock": "Nothing to do: the food night that stitches it writes its spec, and the next run here authors the next episode.",
+  "disposition": "self_resolving",
+  "disposition_why": "loop/food_author.py authors one food episode at a time; the previous one is still the Mac's to render (bin/food-session.sh, Tue and Thu nights). Its stitch writes channel/specs/<slug>.json and the next weekly run authors the next episode. (run 1 of at most 3 before this escalates to a human.)",
+  "consecutive": 1,
+  "held_items": [],
+  "exit_code": 0,
+  "work_done_before_stop": [],
+  "notes": []
+}
