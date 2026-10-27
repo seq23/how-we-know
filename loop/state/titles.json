@@ -785,6 +785,19 @@
       "slug": "how-strong-is-titanium",
       "thumbnail_applied": false
     },
+    "is-damascus-steel-better": {
+      "applied_at": null,
+      "attempts": 1,
+      "checks_passed": true,
+      "model": "claude-subscription/opus",
+      "new_title": "Are Damascus Knives Better?",
+      "old_title": "Damascus steel is not better now",
+      "old_title_source": "ledger",
+      "problems": [],
+      "proposed_at": "2026-10-27T23:37:06+00:00",
+      "question": "is damascus steel better",
+      "slug": "is-damascus-steel-better"
+    },
     "what-is-a-semiconductor-made-of": {
       "applied_at": "2026-10-17T08:42:49+00:00",
       "applied_video_id": "kTBlLeWdi4g",
@@ -1107,5 +1120,5 @@
       "thumbnail_sha256": "5612dfe6532a5fd9a0c1dbfae4466204d0c16e16143b24ba80ac0c805384af52"
     }
   },
-  "updated": "2026-10-17T08:43:36+00:00"
+  "updated": "2026-10-27T23:37:06+00:00"
 }
