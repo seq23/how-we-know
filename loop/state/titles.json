@@ -786,9 +786,12 @@
       "thumbnail_applied": false
     },
     "is-damascus-steel-better": {
-      "applied_at": null,
+      "applied_at": "2026-10-27T23:41:21+00:00",
+      "applied_video_id": "a2Kbf3jFqtg",
       "attempts": 1,
       "checks_passed": true,
+      "description_applied_at": "2026-10-27T23:41:21+00:00",
+      "description_sha256": "1d7640d083acbd30484ec0f1a861c49010dd252d6b14900d3d627f6ed664b033",
       "model": "claude-subscription/opus",
       "new_title": "Are Damascus Knives Better?",
       "old_title": "Damascus steel is not better now",
@@ -796,7 +799,8 @@
       "problems": [],
       "proposed_at": "2026-10-27T23:37:06+00:00",
       "question": "is damascus steel better",
-      "slug": "is-damascus-steel-better"
+      "slug": "is-damascus-steel-better",
+      "thumbnail_applied": false
     },
     "what-is-a-semiconductor-made-of": {
       "applied_at": "2026-10-17T08:42:49+00:00",
@@ -1120,5 +1124,5 @@
       "thumbnail_sha256": "5612dfe6532a5fd9a0c1dbfae4466204d0c16e16143b24ba80ac0c805384af52"
     }
   },
-  "updated": "2026-10-27T23:37:06+00:00"
+  "updated": "2026-10-27T23:41:21+00:00"
 }
