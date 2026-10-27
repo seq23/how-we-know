@@ -244,7 +244,7 @@
       "track_kind": "standard",
       "source": "inserted",
       "recorded_at": "2026-09-07T14:43:49+00:00",
-      "verified_at": "2026-10-10T15:10:02+00:00"
+      "verified_at": "2026-10-27T15:12:04+00:00"
     },
     "RlbR0qGmU0s": {
       "slug": "how-strong-is-titanium",
@@ -255,7 +255,7 @@
       "track_kind": "standard",
       "source": "inserted",
       "recorded_at": "2026-09-07T14:43:49+00:00",
-      "verified_at": "2026-10-11T15:09:36+00:00"
+      "verified_at": "2026-10-27T15:12:04+00:00"
     },
     "2zQAc_ZSbMs": {
       "slug": "how-is-damascus-steel-made",
@@ -266,7 +266,7 @@
       "track_kind": "standard",
       "source": "inserted",
       "recorded_at": "2026-09-07T14:43:50+00:00",
-      "verified_at": "2026-10-11T15:09:37+00:00"
+      "verified_at": "2026-10-27T15:12:05+00:00"
     },
     "xbmIX6n2OI8": {
       "slug": "how-is-a-silicon-wafer-made",
@@ -554,14 +554,24 @@
       "source": "inserted",
       "recorded_at": "2026-10-17T15:08:33+00:00",
       "verified_at": "2026-10-19T20:21:31+00:00"
+    },
+    "a2Kbf3jFqtg": {
+      "slug": "is-damascus-steel-better",
+      "caption_id": "AUieDaaNi8IiKVzTlMQ1Ujopf9sJyxE0bFyf9SrmrRT06VCHtUcxJiq5",
+      "language": "en",
+      "srt_sha256": "981b998e45883b351e759e93d63f35e9377a0313fb0f051e158925e1bfb6ac95",
+      "cues": 184,
+      "track_kind": "standard",
+      "source": "inserted",
+      "recorded_at": "2026-10-27T15:12:03+00:00"
     }
   },
   "blocked": {},
-  "updated": "2026-10-26T15:31:27+00:00",
+  "updated": "2026-10-27T15:12:05+00:00",
   "token_scopes": [],
   "token_has_force_ssl": true,
   "replace": {
-    "at": "2026-10-26T15:31:26+00:00",
+    "at": "2026-10-27T15:12:04+00:00",
     "replaced": [],
     "skipped": {
       "how-do-self-healing-materials-work": "the live cut is 517s but the local track was built for a 708.7s timeline - replacing would mis-time it the other way"
