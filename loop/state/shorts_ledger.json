@@ -417,9 +417,13 @@
       "scheduled_publish_at": "2026-09-22T00:00:00Z",
       "rank": 1,
       "lane": "shorts-cloud",
-      "handoff": "pending",
+      "handoff": "done",
       "playlist_item_id": "UExHNUdZLUd1aGlGOC45NDk1REZENzhEMzU5MDQz",
-      "playlist": "PLG5GY-GuhiF8"
+      "playlist": "PLG5GY-GuhiF8",
+      "handoff_episode": "rY7t_VDz9sk",
+      "handoff_at": "2026-10-27T23:08:53+00:00",
+      "handoff_comment_id": "UgycV6Q1xD-1gbrw3p94AaABAg",
+      "handoff_comment_at": "2026-10-27T23:08:54+00:00"
     },
     {
       "slug": "what-is-carbon-fiber-made-of",
@@ -1127,5 +1131,5 @@
       "handoff_at": "2026-10-27T23:08:49+00:00"
     }
   ],
-  "updated": "2026-10-27T23:08:49+00:00"
+  "updated": "2026-10-27T23:08:55+00:00"
 }
