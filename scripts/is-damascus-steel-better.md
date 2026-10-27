@@ -121,19 +121,17 @@ Damascus steel was a real achievement: smiths controlled a structure they could 
 
 ## Chapters
 
-- 00:00 Cold open
-- 00:42 Title card
-- 00:46 One name covers two different materials
-- 02:08 The wootz pattern is written in carbide
-- 03:50 Producer POV
-- 03:57 A trace impurity turned out to be part of the recipe
-- 05:30 The nanotubes are real, and they are not the edge
-- 07:00 Hardness and toughness pull in opposite directions
-- 08:42 Modern steel wins on control
-- 10:22 The best evidence sits in cases that cannot be cut
-- 11:22 What to notice in the edit
-- 11:58 Evidence limit
-- 12:32 Closing
+- 0:00 Cold open
+- 0:38 One name covers two different materials
+- 1:50 The wootz pattern is written in carbide
+- 3:19 A trace impurity turned out to be part of the recipe
+- 4:43 The nanotubes are real, and they are not the edge
+- 5:58 Hardness and toughness pull in opposite directions
+- 7:25 Modern steel wins on control
+- 8:52 The best evidence sits in cases that cannot be cut
+- 9:47 What to notice in the edit
+- 10:15 Evidence limit
+- 10:56 Closing
 
 ## Sources
 

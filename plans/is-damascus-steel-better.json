@@ -1,0 +1,1207 @@
+[
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "Inside a centuries-old sword, a microscope found structures resembling carbon nanotubes. Original Damascus steel was better than most steel of its own era, but it is not better than good modern steel.",
+    "args": {
+      "lines": [
+        "Inside a centuries-old sword,",
+        "a microscope found structures",
+        "resembling carbon"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "Cold open",
+    "narration": "That nanotube result, reported in the journal Nature in 2006, is often quoted as proof of a lost super-technology.",
+    "args": {
+      "lines": [
+        "That nanotube result, reported",
+        "in the journal Nature",
+        "in 2006"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Cold open",
+    "narration": "It proves something narrower and more interesting: that smiths working without any theory of carbon produced a material whose structure we can only now image.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Cold open",
+    "narration": "Whether that structure made the blade superior is a separate question, and the evidence for it is thinner than the legend.",
+    "args": {
+      "lines": [
+        "Whether that structure made",
+        "the blade superior is",
+        "a separate"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "One name covers two different materials",
+    "narration": "Start with the name, because it hides two separate things. The historical blades that built the reputation were forged from wootz, a crucible steel made in South India and Sri Lanka.",
+    "args": {
+      "term": "Damascus steel",
+      "includes": [
+        "wootz"
+      ],
+      "excludes": [
+        "pattern-welded steel"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "One name covers two different materials",
+    "narration": "Small charges of iron and carbon-bearing material were sealed in clay crucibles and heated until the metal melted and absorbed carbon, then cooled slowly into a solid cake.",
+    "args": {
+      "lines": [
+        "Small charges of iron",
+        "and carbon-bearing material were",
+        "sealed"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 5.79,
+    "heading": "One name covers two different materials",
+    "narration": "Those cakes travelled west, and smiths in Persia and Syria forged them into blades.",
+    "args": {
+      "term": "Damascus steel",
+      "includes": [
+        "wootz"
+      ],
+      "excludes": [
+        "pattern-welded steel"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "One name covers two different materials",
+    "narration": "Whether the word Damascus refers to the city, to trade passing through it, or to the watery damask look of the steel is still argued. The written record does not settle it.",
+    "args": {
+      "lines": [
+        "Whether the word Damascus",
+        "refers to the city,",
+        "to trade"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "One name covers two different materials",
+    "narration": "The other thing called Damascus is what most knife shops sell today.",
+    "args": {
+      "lines": [
+        "The other thing called",
+        "Damascus is what most",
+        "knife shops"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "One name covers two different materials",
+    "narration": "That is pattern-welded steel: two different steels stacked, forge-welded, folded or twisted, then etched so that one steel darkens more than the other.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "One name covers two different materials",
+    "narration": "It is a real and skilled craft with its own long history.",
+    "args": {
+      "lines": [
+        "It is a real",
+        "and skilled craft"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "One name covers two different materials",
+    "narration": "But it is a laminate. Its pattern sits in the arrangement of layers.",
+    "args": {
+      "lines": [
+        "But it is a",
+        "laminate. Its pattern sits"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "One name covers two different materials",
+    "narration": "The pattern in wootz comes from inside a single steel. So when someone asks whether Damascus is better, the first honest answer is that they need to say which one.",
+    "args": {
+      "variant": 2
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 9.0,
+    "heading": "The wootz pattern is written in carbide",
+    "narration": "Wootz is rich in carbon, roughly one and a half percent by the figures summarized in metallurgical references such as those from ASM International, several times the carbon of ordinary structural steel.",
+    "args": {
+      "term": "cementite",
+      "meaning": "a hard, brittle iron carbide",
+      "boundary": "forms bands inside one steel",
+      "source": "ASM International"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "The wootz pattern is written in carbide",
+    "narration": "At that level, iron cannot hold all the carbon in its usual crystal form as it cools.",
+    "args": {
+      "lines": [
+        "At that level, iron",
+        "cannot hold all the",
+        "carbon"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 6.62,
+    "heading": "The wootz pattern is written in carbide",
+    "narration": "The excess comes out as cementite, an iron carbide that is very hard and very brittle.",
+    "args": {
+      "term": "cementite",
+      "meaning": "a hard, brittle iron carbide",
+      "boundary": "forms bands inside one steel",
+      "source": "ASM International"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 5.38,
+    "heading": "The wootz pattern is written in carbide",
+    "narration": "In a good wootz blade, that cementite gathers into sheets of fine particles.",
+    "args": {
+      "title": "Metallography",
+      "stages": [
+        "section a sample",
+        "polish it to a mirror",
+        "etch it with a mild acid"
+      ],
+      "conclusion": "particles of carbide lying in lines"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.28,
+    "heading": "The wootz pattern is written in carbide",
+    "narration": "Polished and etched, the sheets show as light bands against a darker background, and those bands are the famous pattern.",
+    "args": {
+      "lines": [
+        "Polished and etched, the",
+        "sheets show as light",
+        "bands against"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "The wootz pattern is written in carbide",
+    "narration": "The way this is known is by cutting. Metallographers section a sample, polish it to a mirror, etch it with a mild acid, and look under an optical microscope.",
+    "args": {
+      "title": "Metallography",
+      "stages": [
+        "section a sample",
+        "polish it to a mirror",
+        "etch it with a mild acid"
+      ],
+      "conclusion": "particles of carbide lying in lines"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The wootz pattern is written in carbide",
+    "narration": "The light swirls resolve into particles of carbide lying in lines. Done on authenticated blades, that procedure is the backbone of everything that follows. It is also destructive, which matters later.",
+    "args": {
+      "lines": [
+        "The light swirls resolve",
+        "into particles of carbide",
+        "lying"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "The wootz pattern is written in carbide",
+    "narration": "The cake then had to be forged with restraint. Heat high-carbon steel too much and the carbide dissolves, taking the pattern with it.",
+    "args": {
+      "title": "Making wootz",
+      "steps": [
+        [
+          "sealed in clay crucibles",
+          ""
+        ],
+        [
+          "cooled slowly into a solid cake",
+          ""
+        ],
+        [
+          "forged with restraint",
+          ""
+        ],
+        [
+          "etched",
+          ""
+        ]
+      ],
+      "note": "the pattern is carbide, not layers"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The wootz pattern is written in carbide",
+    "narration": "Work it too cold and the brittle steel cracks. Accounts of the process describe forging at a relatively low heat, a dull glow rather than a bright one.",
+    "args": {
+      "lines": [
+        "Work it too cold",
+        "and the brittle steel",
+        "cracks. Accounts"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 9.0,
+    "heading": "The wootz pattern is written in carbide",
+    "narration": "That narrow window is part of why the craft was hard to pass on. In wootz, the pattern is carbide, not layers.",
+    "args": {
+      "title": "Making wootz",
+      "steps": [
+        [
+          "sealed in clay crucibles",
+          ""
+        ],
+        [
+          "cooled slowly into a solid cake",
+          ""
+        ],
+        [
+          "forged with restraint",
+          ""
+        ],
+        [
+          "etched",
+          ""
+        ]
+      ],
+      "note": "the pattern is carbide, not layers"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "quote_card",
+    "seconds": 6.21,
+    "heading": "Producer POV",
+    "narration": "I'm interested in the evidence chain, not just the final fact somebody puts on screen.",
+    "args": {
+      "text": "I'm interested in the evidence chain, not just the final fact somebody puts on screen.",
+      "attrib": ""
+    },
+    "from": "heading"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "A trace impurity turned out to be part of the recipe",
+    "narration": "After the tradition faded, people who tried to copy the blades mostly failed, and historians still disagree about exactly when and why the supply ended.",
+    "args": {
+      "title": "Reproduction evidence",
+      "stages": [
+        "trace vanadium",
+        "repeated heating and cooling",
+        "carbide particles line up"
+      ],
+      "conclusion": "banded pattern"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 4.97,
+    "heading": "A trace impurity turned out to be part of the recipe",
+    "narration": "The most convincing modern explanation came from reproduction rather than from texts.",
+    "args": {
+      "lines": [
+        "The most convincing modern",
+        "explanation came from reproduction",
+        "rather"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "A trace impurity turned out to be part of the recipe",
+    "narration": "In the late twentieth century, the metallurgist John Verhoeven and the bladesmith Al Pendray worked to make wootz-type blades that showed the authentic banded pattern.",
+    "args": {
+      "title": "Reproduction evidence",
+      "stages": [
+        "trace vanadium",
+        "repeated heating and cooling",
+        "carbide particles line up"
+      ],
+      "conclusion": "banded pattern"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "A trace impurity turned out to be part of the recipe",
+    "narration": "Their key finding was that the pattern formed reliably only when the steel carried tiny amounts of certain other elements, trace vanadium above all, at levels far too small for any smith of the period to measure.",
+    "args": {
+      "lines": [
+        "Their key finding was",
+        "that the pattern formed",
+        "reliably only"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "A trace impurity turned out to be part of the recipe",
+    "narration": "Through repeated heating and cooling in the forge, those trace elements appear to concentrate in thin regions of the steel, and carbide particles line up into bands along them.",
+    "args": {
+      "title": "Reproduction evidence",
+      "stages": [
+        "trace vanadium",
+        "repeated heating and cooling",
+        "carbide particles line up"
+      ],
+      "conclusion": "banded pattern"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "A trace impurity turned out to be part of the recipe",
+    "narration": "This is a strong kind of evidence, and it is worth seeing why.",
+    "args": {
+      "lines": [
+        "This is a strong",
+        "kind of evidence, and",
+        "it"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "A trace impurity turned out to be part of the recipe",
+    "narration": "A story about an old process can be shaped to fit almost any artifact.",
+    "args": {
+      "lines": [
+        "A story about an",
+        "old process can be",
+        "shaped"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "A trace impurity turned out to be part of the recipe",
+    "narration": "A reproduction is harder to fake: either the pattern appears when the impurity is present and the cycling is done, or it does not.",
+    "args": {
+      "variant": 3
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "A trace impurity turned out to be part of the recipe",
+    "narration": "They also reported trace elements in analysed historical blades consistent with that mechanism.",
+    "args": {
+      "lines": [
+        "They also reported trace",
+        "elements in analysed historical",
+        "blades consistent"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "A trace impurity turned out to be part of the recipe",
+    "narration": "The implication is quiet but important. If the recipe depended on impurities in particular ore sources, the loss of the technique may have followed a change in those sources rather than the death of a secret. That remains an inference, not a documented fact.",
+    "args": {
+      "lines": [
+        "The implication is quiet",
+        "but important. If the",
+        "recipe depended"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "The nanotubes are real, and they are not the edge",
+    "narration": "Now the headline. In 2006, a materials team reported in Nature that they had examined a sample from a seventeenth-century Damascus sabre.",
+    "args": {
+      "title": "What the 2006 result shows",
+      "items": [
+        "+carbon nanotubes in one sabre",
+        "+cementite nanowires",
+        "-a measured cutting advantage",
+        "?how common they are"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.62,
+    "heading": "The nanotubes are real, and they are not the edge",
+    "narration": "They dissolved a fragment in hydrochloric acid and studied what remained with high-resolution transmission electron microscopy.",
+    "args": {
+      "lines": [
+        "They dissolved a fragment",
+        "in hydrochloric acid and",
+        "studied what"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 6.62,
+    "heading": "The nanotubes are real, and they are not the edge",
+    "narration": "They described carbon nanotubes, and they described cementite nanowires that appeared to be encased in them.",
+    "args": {
+      "title": "What the 2006 result shows",
+      "items": [
+        "+carbon nanotubes in one sabre",
+        "+cementite nanowires",
+        "-a measured cutting advantage",
+        "?how common they are"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "The nanotubes are real, and they are not the edge",
+    "narration": "The images are extraordinary, and they changed how people talk about old steel.",
+    "args": {
+      "lines": [
+        "The images are extraordinary,",
+        "and they changed how",
+        "people talk"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 5.38,
+    "heading": "The nanotubes are real, and they are not the edge",
+    "narration": "Read the claim carefully, though. The team found carbon nanotubes in one sabre.",
+    "args": {
+      "term": "the 2006 finding",
+      "includes": [
+        "what is in there"
+      ],
+      "excludes": [
+        "is it better"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The nanotubes are real, and they are not the edge",
+    "narration": "They proposed that the trace elements and the forging cycles could have helped such structures form, and that the nanotubes might have guided the carbide into fine wires.",
+    "args": {
+      "lines": [
+        "They proposed that the",
+        "trace elements and the",
+        "forging cycles"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 9.0,
+    "heading": "The nanotubes are real, and they are not the edge",
+    "narration": "They did not report a measured cutting advantage that came from those structures, and the study was not built to do that.",
+    "args": {
+      "term": "the 2006 finding",
+      "includes": [
+        "what is in there"
+      ],
+      "excludes": [
+        "is it better"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The nanotubes are real, and they are not the edge",
+    "narration": "Nobody has shown how common they are across the surviving blades, and other microscopists have asked whether some features could arise during sample preparation.",
+    "args": {
+      "lines": [
+        "Nobody has shown how",
+        "common they are across",
+        "the surviving"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 7.45,
+    "heading": "The nanotubes are real, and they are not the edge",
+    "narration": "So the finding answers \"what is in there\" for one blade. It does not answer \"is it better\".",
+    "args": {
+      "term": "the 2006 finding",
+      "includes": [
+        "what is in there"
+      ],
+      "excludes": [
+        "is it better"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The nanotubes are real, and they are not the edge",
+    "narration": "The popular version, nanotech swords slicing a falling silk scarf, welds a real observation onto an old anecdote that was never tested.",
+    "args": {
+      "lines": [
+        "The popular version, nanotech",
+        "swords slicing a falling",
+        "silk scarf"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 6.21,
+    "heading": "Hardness and toughness pull in opposite directions",
+    "narration": "To judge better, you have to say better at what. Two properties dominate a blade.",
+    "args": {
+      "term": "toughness",
+      "meaning": "resisting a crack",
+      "boundary": "not the same as hardness",
+      "source": "ASTM International"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.38,
+    "heading": "Hardness and toughness pull in opposite directions",
+    "narration": "Hardness means resisting a dent or scratch; it lets an edge stay sharp.",
+    "args": {
+      "lines": [
+        "Hardness means resisting a",
+        "dent or scratch"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "definition_card",
+    "seconds": 7.86,
+    "heading": "Hardness and toughness pull in opposite directions",
+    "narration": "Toughness means resisting a crack; it keeps the blade in one piece when it twists or strikes something hard.",
+    "args": {
+      "term": "toughness",
+      "meaning": "resisting a crack",
+      "boundary": "not the same as hardness",
+      "source": "ASTM International"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Hardness and toughness pull in opposite directions",
+    "narration": "Toughness is not the same as hardness, and in most steels, raising one costs some of the other.",
+    "args": {
+      "lines": [
+        "Toughness is not the",
+        "same as hardness"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Hardness and toughness pull in opposite directions",
+    "narration": "Wootz is a striking compromise. The carbide bands are extremely hard, so the edge holds hard particles in a softer, tougher surrounding steel, a little like a saw with microscopic teeth.",
+    "args": {
+      "lines": [
+        "Wootz is a striking",
+        "compromise. The carbide bands",
+        "are extremely"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Hardness and toughness pull in opposite directions",
+    "narration": "That plausibly explains reports of a keen, aggressive edge. But carbide is brittle, and a blade with too much of it, or with coarse carbide, can chip or snap.",
+    "args": {
+      "variant": 4
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Hardness and toughness pull in opposite directions",
+    "narration": "Quality varied from smith to smith and from cake to cake. The good blades were good. The record does not tell you how many were not.",
+    "args": {
+      "lines": [
+        "Quality varied from smith",
+        "to smith and from",
+        "cake"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 9.0,
+    "heading": "Hardness and toughness pull in opposite directions",
+    "narration": "Hardness itself is measured, not judged by feel. A hard indenter is pressed into a polished surface under a set load, and the size or depth of the mark is converted to a number on standard scales.",
+    "args": {
+      "title": "Measuring hardness",
+      "sources": [
+        [
+          "ASTM International",
+          "standard scales"
+        ],
+        [
+          "NIST",
+          "reference blocks"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Hardness and toughness pull in opposite directions",
+    "narration": "Those scales are defined in published standards from ASTM International, and NIST maintains reference blocks so laboratories can check their machines against a common benchmark.",
+    "args": {
+      "lines": [
+        "Those scales are defined",
+        "in published standards from",
+        "ASTM International"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "source_compare",
+    "seconds": 5.79,
+    "heading": "Hardness and toughness pull in opposite directions",
+    "narration": "That is why a hardness figure from one lab can be compared with another.",
+    "args": {
+      "title": "Measuring hardness",
+      "sources": [
+        [
+          "ASTM International",
+          "standard scales"
+        ],
+        [
+          "NIST",
+          "reference blocks"
+        ]
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 8.69,
+    "heading": "Hardness and toughness pull in opposite directions",
+    "narration": "Toughness tests are different: they need notched specimens broken on purpose, which is exactly what nobody does to a historic sword.",
+    "args": {
+      "lines": [
+        "Toughness tests are different:",
+        "they need notched specimens",
+        "broken"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "Modern steel wins on control",
+    "narration": "Here is where the comparison turns. A modern blade steel starts from measured composition: the carbon, the chromium and the vanadium are specified and checked by chemical analysis before the steel is sold.",
+    "args": {
+      "title": "Modern control",
+      "stages": [
+        "measured composition",
+        "controlled heat treatment"
+      ],
+      "conclusion": "consistent blades"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Modern steel wins on control",
+    "narration": "Then comes controlled heat treatment, in furnaces that hold temperature far more evenly than a charcoal forge could, followed by quenching and tempering on a schedule.",
+    "args": {
+      "lines": [
+        "Then comes controlled heat",
+        "treatment, in furnaces that",
+        "hold temperature"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "evidence_chain",
+    "seconds": 9.0,
+    "heading": "Modern steel wins on control",
+    "narration": "Some modern steels are made from powdered metal, which keeps carbides small and evenly spread, the very thing wootz smiths achieved only partly and by craft. The result is consistent blades: one knife behaves like the next.",
+    "args": {
+      "title": "Modern control",
+      "stages": [
+        "measured composition",
+        "controlled heat treatment"
+      ],
+      "conclusion": "consistent blades"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Modern steel wins on control",
+    "narration": "Vanadium shows up again, this time deliberately. Modern makers add it in controlled amounts to form hard vanadium carbides that resist wear.",
+    "args": {
+      "lines": [
+        "Vanadium shows up again,",
+        "this time deliberately. Modern",
+        "makers add"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.45,
+    "heading": "Modern steel wins on control",
+    "narration": "The trace element wootz smiths depended on without knowing it is now a line on a specification sheet.",
+    "args": {
+      "lines": [
+        "The trace element wootz",
+        "smiths depended on without",
+        "knowing it"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "Modern steel wins on control",
+    "narration": "On hardness, wear resistance and toughness taken together, well-made modern tool and stainless steels match or exceed the historical blades that have been examined, and they do it reliably.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Modern steel wins on control",
+    "narration": "That is the core of the answer. Wootz was exceptional against what else existed. It is not exceptional against what exists now.",
+    "args": {
+      "lines": [
+        "That is the core",
+        "of the answer. Wootz",
+        "was exceptional"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "contrast_pair",
+    "seconds": 8.69,
+    "heading": "Modern steel wins on control",
+    "narration": "And modern pattern-welded Damascus? Its performance depends on the two steels chosen and on how well they are welded and heat-treated.",
+    "args": {
+      "term": "the pattern",
+      "includes": [
+        "the signature of the process"
+      ],
+      "excludes": [
+        "a source of performance"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "Modern steel wins on control",
+    "narration": "A good one can be an excellent knife. But the swirl is the signature of the process, not a source of performance.",
+    "args": {
+      "lines": [
+        "A good one can",
+        "be an excellent knife."
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "The best evidence sits in cases that cannot be cut",
+    "narration": "There is a structural problem under all of this. The most reliable way to learn what a blade is made of is to cut it, and the blades that matter most are museum objects.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 9.0,
+    "heading": "The best evidence sits in cases that cannot be cut",
+    "narration": "Collections such as the British Museum hold historic arms with watered patterns, and curators rightly do not section them to settle an argument.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The best evidence sits in cases that cannot be cut",
+    "narration": "So the metallurgical picture rests on a fairly small number of blades that were already damaged, sampled at the edges, or sacrificed long ago.",
+    "args": {
+      "lines": [
+        "So the metallurgical picture",
+        "rests on a fairly",
+        "small number"
+      ]
+    },
+    "from": "directive+destagnate"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.21,
+    "heading": "The best evidence sits in cases that cannot be cut",
+    "narration": "Surface methods help, since patterns can be photographed and some techniques probe composition without cutting.",
+    "args": {
+      "variant": 3
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 6.21,
+    "heading": "The best evidence sits in cases that cannot be cut",
+    "narration": "But the deep structure, the part that decides toughness, mostly comes from a few cross-sections.",
+    "args": {
+      "variant": 4
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "The best evidence sits in cases that cannot be cut",
+    "narration": "That limit shapes the claims. When you read that Damascus blades had a certain microstructure, it usually means some sectioned blades had it.",
+    "args": {
+      "lines": [
+        "That limit shapes the",
+        "claims. When you read",
+        "that Damascus"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.86,
+    "heading": "The best evidence sits in cases that cannot be cut",
+    "narration": "Stretching that to a whole tradition, across many workshops and generations, is a step the evidence should take cautiously.",
+    "args": {
+      "lines": [
+        "Stretching that to a",
+        "whole tradition, across many",
+        "workshops"
+      ]
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 6.21,
+    "heading": "What to notice in the edit",
+    "narration": "When the edit shows a swirling pattern, notice what it can and cannot tell you.",
+    "args": {
+      "title": "How to read a Damascus claim",
+      "steps": [
+        [
+          "which material",
+          ""
+        ],
+        [
+          "which blade",
+          ""
+        ],
+        [
+          "which test",
+          ""
+        ]
+      ],
+      "note": "better at what"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "A pattern alone does not reveal which material you are looking at; wootz and pattern-welded steel both look watered, though trained eyes read them differently.",
+    "args": {
+      "lines": [
+        "A pattern alone does",
+        "not reveal which material",
+        "you"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "process_steps",
+    "seconds": 5.38,
+    "heading": "What to notice in the edit",
+    "narration": "For any claim of superiority, ask which material, which blade, and which test.",
+    "args": {
+      "title": "How to read a Damascus claim",
+      "steps": [
+        [
+          "which material",
+          ""
+        ],
+        [
+          "which blade",
+          ""
+        ],
+        [
+          "which test",
+          ""
+        ]
+      ],
+      "note": "better at what"
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 9.0,
+    "heading": "What to notice in the edit",
+    "narration": "If the answer to the last one is a story rather than a measurement, the claim has not been tested. And always ask better at what.",
+    "args": {
+      "lines": [
+        "If the answer to",
+        "the last one is",
+        "a story"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "The sectioned blades leave real gaps. It shows that wootz is high-carbon crucible steel and that the pattern is carbide gathered into bands by trace elements and repeated forging.",
+    "args": {
+      "title": "What is established",
+      "items": [
+        "+wootz is high-carbon crucible steel",
+        "+the pattern is carbide",
+        "-a cutting advantage from nanotubes",
+        "?when the recipe was lost"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 6.21,
+    "heading": "Evidence limit",
+    "narration": "It does not establish a cutting advantage from nanotubes, because no one has measured one.",
+    "args": {
+      "lines": [
+        "It does not establish",
+        "a cutting advantage from",
+        "nanotubes, because"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 7.86,
+    "heading": "Evidence limit",
+    "narration": "It does not tell us how representative the sectioned blades are, or how many historical blades failed in use.",
+    "args": {
+      "title": "What is established",
+      "items": [
+        "+wootz is high-carbon crucible steel",
+        "+the pattern is carbide",
+        "-a cutting advantage from nanotubes",
+        "?when the recipe was lost"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 7.03,
+    "heading": "Evidence limit",
+    "narration": "It does not fix when the recipe was lost or why, beyond a reasonable inference about ore.",
+    "args": {
+      "lines": [
+        "It does not fix",
+        "when the recipe was",
+        "lost"
+      ]
+    },
+    "from": "directive-rhythm"
+  },
+  {
+    "segment": "checklist_reveal",
+    "seconds": 9.0,
+    "heading": "Evidence limit",
+    "narration": "And it does not support any single figure for how much better or worse the old blades were, because large standardized comparisons across authenticated blades are not part of the published record this episode relies on.",
+    "args": {
+      "title": "What is established",
+      "items": [
+        "+wootz is high-carbon crucible steel",
+        "+the pattern is carbide",
+        "-a cutting advantage from nanotubes",
+        "?when the recipe was lost"
+      ],
+      "note": ""
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 8.28,
+    "heading": "Closing",
+    "narration": "Damascus steel was a real achievement: smiths controlled a structure they could not see, using ingredients they could not measure.",
+    "args": {
+      "variant": 0
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "ambient_drift",
+    "seconds": 5.79,
+    "heading": "Closing",
+    "narration": "That deserves admiration on its own terms. Better than modern steel it is not.",
+    "args": {
+      "variant": 1
+    },
+    "from": "directive"
+  },
+  {
+    "segment": "text_beat",
+    "seconds": 5.79,
+    "heading": "Closing",
+    "narration": "What it shows instead is how far careful practice can run ahead of theory.",
+    "args": {
+      "lines": [
+        "What it shows instead",
+        "is how far careful",
+        "practice"
+      ]
+    },
+    "from": "directive+destagnate"
+  }
+]
