@@ -310,7 +310,7 @@
       "track_kind": "standard",
       "source": "inserted",
       "recorded_at": "2026-09-14T15:11:29+00:00",
-      "verified_at": "2026-10-11T15:09:37+00:00"
+      "verified_at": "2026-10-28T15:08:49+00:00"
     },
     "VDFFur-xYUU": {
       "slug": "how-is-3d-printed-metal-made",
@@ -321,7 +321,7 @@
       "track_kind": "standard",
       "source": "inserted",
       "recorded_at": "2026-09-14T15:11:30+00:00",
-      "verified_at": "2026-10-11T17:25:01+00:00"
+      "verified_at": "2026-10-28T15:08:49+00:00"
     },
     "Eueb6oHEbMs": {
       "slug": "why-is-carbon-fiber-so-strong",
@@ -563,15 +563,16 @@
       "cues": 184,
       "track_kind": "standard",
       "source": "inserted",
-      "recorded_at": "2026-10-27T15:12:03+00:00"
+      "recorded_at": "2026-10-27T15:12:03+00:00",
+      "verified_at": "2026-10-28T15:08:49+00:00"
     }
   },
   "blocked": {},
-  "updated": "2026-10-27T15:12:05+00:00",
+  "updated": "2026-10-28T15:08:49+00:00",
   "token_scopes": [],
   "token_has_force_ssl": true,
   "replace": {
-    "at": "2026-10-27T15:12:04+00:00",
+    "at": "2026-10-28T15:08:48+00:00",
     "replaced": [],
     "skipped": {
       "how-do-self-healing-materials-work": "the live cut is 517s but the local track was built for a 708.7s timeline - replacing would mis-time it the other way"
