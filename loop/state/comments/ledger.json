@@ -1381,6 +1381,33 @@
         "applied_at": "2026-10-27T23:08:54+00:00",
         "result": "posted (UgycV6Q1xD-1gbrw3p94AaABAg)"
       }
+    },
+    "Ugz-E4CImEaqNNjS4054AaABAg": {
+      "comment_id": "Ugz-E4CImEaqNNjS4054AaABAg",
+      "video_id": "Mou_ltfkI1c",
+      "author": "@howweknowdeep",
+      "author_channel_id": "UC5vZFZc15DIM6IrFwFgAECg",
+      "text": "How deep sea creatures survive the pressure? Full episode: https://youtu.be/nv-M6q8h-Lk",
+      "published_at": "2026-10-28T14:09:55+00:00",
+      "like_count": 0,
+      "reply_count": 0,
+      "class": "own_channel",
+      "proposed_action": null,
+      "proposed_reply": null,
+      "product_note": null,
+      "seen_at": "2026-10-28T14:09:55+00:00",
+      "acted": {
+        "comment_id": "Ugz-E4CImEaqNNjS4054AaABAg",
+        "video_id": "Mou_ltfkI1c",
+        "action": "channel_comment",
+        "reply_text": "How deep sea creatures survive the pressure? Full episode: https://youtu.be/nv-M6q8h-Lk",
+        "instructed_by": "owner",
+        "instructed_at": "2026-10-03",
+        "source": "loop/handoff: owner decision 2026-10-03",
+        "note": null,
+        "applied_at": "2026-10-28T14:09:55+00:00",
+        "result": "posted (Ugz-E4CImEaqNNjS4054AaABAg)"
+      }
     }
   },
   "instructions": {
@@ -1969,6 +1996,18 @@
       "note": null,
       "applied_at": "2026-10-27T23:08:54+00:00",
       "result": "posted (UgycV6Q1xD-1gbrw3p94AaABAg)"
+    },
+    {
+      "comment_id": "Ugz-E4CImEaqNNjS4054AaABAg",
+      "video_id": "Mou_ltfkI1c",
+      "action": "channel_comment",
+      "reply_text": "How deep sea creatures survive the pressure? Full episode: https://youtu.be/nv-M6q8h-Lk",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03",
+      "note": null,
+      "applied_at": "2026-10-28T14:09:55+00:00",
+      "result": "posted (Ugz-E4CImEaqNNjS4054AaABAg)"
     }
   ],
   "sweeps": [
@@ -2409,7 +2448,15 @@
       "instructed_by": "owner",
       "instructed_at": "2026-10-03",
       "source": "loop/handoff: owner decision 2026-10-03"
+    },
+    "Mou_ltfkI1c": {
+      "comment_id": "Ugz-E4CImEaqNNjS4054AaABAg",
+      "text": "How deep sea creatures survive the pressure? Full episode: https://youtu.be/nv-M6q8h-Lk",
+      "posted_at": "2026-10-28T14:09:55+00:00",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03"
     }
   },
-  "updated": "2026-10-27T23:08:54+00:00"
+  "updated": "2026-10-28T14:09:55+00:00"
 }
