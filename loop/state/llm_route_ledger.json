@@ -131,6 +131,42 @@
         "latency_s": 7.7,
         "outcome": "answered",
         "ts": "2026-10-14T19:05:34Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 10.5,
+        "outcome": "answered",
+        "ts": "2026-10-28T23:39:44Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 11.0,
+        "outcome": "answered",
+        "ts": "2026-10-28T23:42:18Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 10.3,
+        "outcome": "answered",
+        "ts": "2026-10-28T23:44:50Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 11.7,
+        "outcome": "answered",
+        "ts": "2026-10-28T23:47:23Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 9.6,
+        "outcome": "answered",
+        "ts": "2026-10-28T23:48:58Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 14.1,
+        "outcome": "answered",
+        "ts": "2026-10-28T23:49:33Z"
       }
     ],
     "gemini/gemini-2.5-flash-lite": [
@@ -145,6 +181,18 @@
         "latency_s": 0.2,
         "outcome": "error",
         "ts": "2026-10-14T19:05:26Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 0.2,
+        "outcome": "error",
+        "ts": "2026-10-28T23:37:33Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 0.2,
+        "outcome": "error",
+        "ts": "2026-10-28T23:40:07Z"
       }
     ],
     "gemini/gemini-3-flash-preview": [
@@ -207,6 +255,36 @@
         "latency_s": 0.3,
         "outcome": "error",
         "ts": "2026-10-14T19:05:26Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 120.1,
+        "outcome": "timeout",
+        "ts": "2026-10-28T23:39:34Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 120.1,
+        "outcome": "timeout",
+        "ts": "2026-10-28T23:42:07Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 120.1,
+        "outcome": "timeout",
+        "ts": "2026-10-28T23:44:40Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 120.0,
+        "outcome": "timeout",
+        "ts": "2026-10-28T23:47:12Z"
+      },
+      {
+        "lane": "describe",
+        "latency_s": 62.6,
+        "outcome": "error",
+        "ts": "2026-10-28T23:48:48Z"
       }
     ],
     "gemini/gemini-3.5-flash": [
