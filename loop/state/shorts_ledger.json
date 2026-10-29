@@ -599,10 +599,14 @@
       "schedule_was": "2026-10-04T02:00:00Z",
       "held_at": "2026-10-03T13:40:00+00:00",
       "held_why": "uploaded before #138 landed; episode held under the 10-minute floor; unscheduled by hand, released by shorts_lane.release_held when the hold lifts",
-      "handoff": "pending",
+      "handoff": "done",
       "released_at": "2026-10-04T23:09:30+00:00",
       "playlist_item_id": "UExPclpNRHlveTFYTS4yQUE2Q0JEMTk4NTM3RTZC",
-      "playlist": "PLOrZMDyoy1XM"
+      "playlist": "PLOrZMDyoy1XM",
+      "handoff_episode": "T6XeND2qM4k",
+      "handoff_at": "2026-10-29T23:08:33+00:00",
+      "handoff_comment_id": "UgzdstSXssZnzFFnmC54AaABAg",
+      "handoff_comment_at": "2026-10-29T23:08:34+00:00"
     },
     {
       "slug": "how-do-scientists-know-about-other-galaxies",
@@ -1046,9 +1050,13 @@
       "title": "How scientists know how old something is: deep-sea sediments accumulate slowly and unevenly",
       "chapter": "Deep-sea sediments accumulate slowly and unevenly",
       "chapter_start_s": 358.2,
-      "handoff": "pending",
+      "handoff": "done",
       "playlist_item_id": "UExPclpNRHlveTFYTS5CQkEwRDA0MDkwNUM2MDY1",
-      "playlist": "PLOrZMDyoy1XM"
+      "playlist": "PLOrZMDyoy1XM",
+      "handoff_episode": "T6XeND2qM4k",
+      "handoff_at": "2026-10-29T23:08:33+00:00",
+      "handoff_comment_id": "Ugy7uqayAM9C4TX8PaF4AaABAg",
+      "handoff_comment_at": "2026-10-29T23:08:35+00:00"
     },
     {
       "slug": "how-do-scientists-know-about-other-galaxies",
@@ -1199,5 +1207,5 @@
       "handoff": "pending"
     }
   ],
-  "updated": "2026-10-29T23:08:29+00:00"
+  "updated": "2026-10-29T23:08:35+00:00"
 }
