@@ -1,7 +1,7 @@
 {
   "stage": "cloud-upload",
   "week": "2026-W44",
-  "at": "2026-10-28T14:09:49+00:00",
+  "at": "2026-10-29T14:10:29+00:00",
   "code": "QUEUE_AWAITING_PRODUCTION",
   "message": "Nothing on the shelf to upload, and the Mac is not the one behind: 4 queued topic(s) have no script yet and wait on the Monday authoring lane (loop/draft.py): how-to-tell-if-steel-is-hardened, does-damascus-steel-rust, is-aluminum-stronger-than-steel, how-to-tell-if-steel-is-high-carbon. 9 queued food topic(s) are the food pipeline's (visuals/food_episode.py; its stitch writes channel/specs/<slug>.json), never the Mac batch's; 6 of them were rendered by the nightly batch as standard explainers before the one food definition existed and are held by the food contract - kept on the shelf, never uploaded: why-does-chocolate-taste-so-good, why-does-steak-taste-better-seared, why-is-my-bread-not-rising, how-does-butter-get-made-from-cream, why-does-rice-get-sticky, why-does-meat-need-to-rest-after-cooking; waiting on a food-pipeline episode: what-is-inside-chili-coffee-honey, why-does-salt-make-food-taste-better, why-does-cheese-melt. Mac batch last ran 2026-10-27T11:32:36+00:00 (ok); 53 renders finished on the Mac; 0 held by the render gate.",
   "detail": {
@@ -36,8 +36,8 @@
   },
   "unblock": "Nothing for a person: the Monday lane authors the unwritten topics and the food pipeline makes the food episodes; this lane uploads each one the run after it is shelved.",
   "disposition": "self_resolving",
-  "disposition_why": "2026-10-25 (#235). Nothing is shelved, and every pending queued row belongs to a lane other than the Mac's batch: unwritten topics wait on the Monday authoring lane (loop/draft.py), and food topics (loop/batch_queue.is_food, the one definition) are made only by the food pipeline, whose stitch writes channel/specs/<slug>.json. Before this code existed both were counted as NOTHING_SHELVED, which blamed the Mac and paged after seven runs for work the Mac is forbidden to do. detail.awaiting_authoring and detail.food_pipeline name every slug. (run 2 of at most 14 before this escalates to a human.)",
-  "consecutive": 2,
+  "disposition_why": "2026-10-25 (#235). Nothing is shelved, and every pending queued row belongs to a lane other than the Mac's batch: unwritten topics wait on the Monday authoring lane (loop/draft.py), and food topics (loop/batch_queue.is_food, the one definition) are made only by the food pipeline, whose stitch writes channel/specs/<slug>.json. Before this code existed both were counted as NOTHING_SHELVED, which blamed the Mac and paged after seven runs for work the Mac is forbidden to do. detail.awaiting_authoring and detail.food_pipeline name every slug. (run 3 of at most 14 before this escalates to a human.)",
+  "consecutive": 3,
   "held_items": [],
   "exit_code": 0,
   "work_done_before_stop": [],
