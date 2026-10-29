@@ -167,6 +167,12 @@
         "latency_s": 14.1,
         "outcome": "answered",
         "ts": "2026-10-28T23:49:33Z"
+      },
+      {
+        "lane": "demand-pull",
+        "latency_s": 11.7,
+        "outcome": "answered",
+        "ts": "2026-10-29T13:37:29Z"
       }
     ],
     "gemini/gemini-2.5-flash-lite": [
