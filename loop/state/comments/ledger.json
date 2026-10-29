@@ -1441,6 +1441,60 @@
       "proposed_reply": null,
       "product_note": null,
       "seen_at": "2026-10-28T19:06:11+00:00"
+    },
+    "UgxjB0rT4twdp2453G54AaABAg": {
+      "comment_id": "UgxjB0rT4twdp2453G54AaABAg",
+      "video_id": "Ky9Omx9nHr4",
+      "author": "@howweknowdeep",
+      "author_channel_id": "UC5vZFZc15DIM6IrFwFgAECg",
+      "text": "What is the deepest part of the ocean? Full episode: https://youtu.be/sfveDF88ZHo",
+      "published_at": "2026-10-29T14:10:34+00:00",
+      "like_count": 0,
+      "reply_count": 0,
+      "class": "own_channel",
+      "proposed_action": null,
+      "proposed_reply": null,
+      "product_note": null,
+      "seen_at": "2026-10-29T14:10:34+00:00",
+      "acted": {
+        "comment_id": "UgxjB0rT4twdp2453G54AaABAg",
+        "video_id": "Ky9Omx9nHr4",
+        "action": "channel_comment",
+        "reply_text": "What is the deepest part of the ocean? Full episode: https://youtu.be/sfveDF88ZHo",
+        "instructed_by": "owner",
+        "instructed_at": "2026-10-03",
+        "source": "loop/handoff: owner decision 2026-10-03",
+        "note": null,
+        "applied_at": "2026-10-29T14:10:34+00:00",
+        "result": "posted (UgxjB0rT4twdp2453G54AaABAg)"
+      }
+    },
+    "Ugwj7H7-_Aw0tmfEN454AaABAg": {
+      "comment_id": "Ugwj7H7-_Aw0tmfEN454AaABAg",
+      "video_id": "rDJ0lUO1Yf0",
+      "author": "@howweknowdeep",
+      "author_channel_id": "UC5vZFZc15DIM6IrFwFgAECg",
+      "text": "Why many deep sea creatures are red? Full episode: https://youtu.be/mOP33elEfpU",
+      "published_at": "2026-10-29T14:10:35+00:00",
+      "like_count": 0,
+      "reply_count": 0,
+      "class": "own_channel",
+      "proposed_action": null,
+      "proposed_reply": null,
+      "product_note": null,
+      "seen_at": "2026-10-29T14:10:35+00:00",
+      "acted": {
+        "comment_id": "Ugwj7H7-_Aw0tmfEN454AaABAg",
+        "video_id": "rDJ0lUO1Yf0",
+        "action": "channel_comment",
+        "reply_text": "Why many deep sea creatures are red? Full episode: https://youtu.be/mOP33elEfpU",
+        "instructed_by": "owner",
+        "instructed_at": "2026-10-03",
+        "source": "loop/handoff: owner decision 2026-10-03",
+        "note": null,
+        "applied_at": "2026-10-29T14:10:35+00:00",
+        "result": "posted (Ugwj7H7-_Aw0tmfEN454AaABAg)"
+      }
     }
   },
   "instructions": {
@@ -2041,6 +2095,30 @@
       "note": null,
       "applied_at": "2026-10-28T14:09:55+00:00",
       "result": "posted (Ugz-E4CImEaqNNjS4054AaABAg)"
+    },
+    {
+      "comment_id": "UgxjB0rT4twdp2453G54AaABAg",
+      "video_id": "Ky9Omx9nHr4",
+      "action": "channel_comment",
+      "reply_text": "What is the deepest part of the ocean? Full episode: https://youtu.be/sfveDF88ZHo",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03",
+      "note": null,
+      "applied_at": "2026-10-29T14:10:34+00:00",
+      "result": "posted (UgxjB0rT4twdp2453G54AaABAg)"
+    },
+    {
+      "comment_id": "Ugwj7H7-_Aw0tmfEN454AaABAg",
+      "video_id": "rDJ0lUO1Yf0",
+      "action": "channel_comment",
+      "reply_text": "Why many deep sea creatures are red? Full episode: https://youtu.be/mOP33elEfpU",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03",
+      "note": null,
+      "applied_at": "2026-10-29T14:10:35+00:00",
+      "result": "posted (Ugwj7H7-_Aw0tmfEN454AaABAg)"
     }
   ],
   "sweeps": [
@@ -2498,7 +2576,23 @@
       "instructed_by": "owner",
       "instructed_at": "2026-10-03",
       "source": "loop/handoff: owner decision 2026-10-03"
+    },
+    "Ky9Omx9nHr4": {
+      "comment_id": "UgxjB0rT4twdp2453G54AaABAg",
+      "text": "What is the deepest part of the ocean? Full episode: https://youtu.be/sfveDF88ZHo",
+      "posted_at": "2026-10-29T14:10:34+00:00",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03"
+    },
+    "rDJ0lUO1Yf0": {
+      "comment_id": "Ugwj7H7-_Aw0tmfEN454AaABAg",
+      "text": "Why many deep sea creatures are red? Full episode: https://youtu.be/mOP33elEfpU",
+      "posted_at": "2026-10-29T14:10:35+00:00",
+      "instructed_by": "owner",
+      "instructed_at": "2026-10-03",
+      "source": "loop/handoff: owner decision 2026-10-03"
     }
   },
-  "updated": "2026-10-28T19:06:11+00:00"
+  "updated": "2026-10-29T14:10:35+00:00"
 }
