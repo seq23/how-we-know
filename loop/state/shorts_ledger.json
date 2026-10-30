@@ -545,9 +545,13 @@
       "scheduled_publish_at": "2026-09-28T02:00:00Z",
       "rank": 1,
       "lane": "shorts-cloud",
-      "handoff": "pending",
+      "handoff": "done",
       "playlist_item_id": "UExHNUdZLUd1aGlGOC41QTY1Q0UxMTVCODczNThE",
-      "playlist": "PLG5GY-GuhiF8"
+      "playlist": "PLG5GY-GuhiF8",
+      "handoff_episode": "k4OOYUrar30",
+      "handoff_at": "2026-10-30T23:08:00+00:00",
+      "handoff_comment_id": "UgwP2pMxPmko1JnpTE54AaABAg",
+      "handoff_comment_at": "2026-10-30T23:08:01+00:00"
     },
     {
       "slug": "how-do-self-healing-materials-work",
@@ -1237,5 +1241,5 @@
       "handoff": "pending"
     }
   ],
-  "updated": "2026-10-30T23:07:57+00:00"
+  "updated": "2026-10-30T23:08:02+00:00"
 }
