@@ -1,6 +1,6 @@
 import type { QuestionPageRecord } from './types'
 import { getSources } from './sources-data'
-import { absoluteUrl, site } from './site'
+import { absoluteUrl, entity, site } from './site'
 import { getMethod, getSubject } from './taxonomy'
 
 export const organizationId = `${site.origin}/#organization`
@@ -30,7 +30,15 @@ export const organizationSchema = {
     height: 512,
     caption: site.name,
   },
-  sameAs: [site.youtubeUrl],
+  sameAs: entity.sameAs,
+  // A reference by @id, not a second Organization node: Spry Labs' full node
+  // lives on its own entity home, and validate-built-html requires every
+  // Organization node emitted HERE to carry its own logo and sameAs.
+  parentOrganization: {
+    '@id': entity.parentOrganization['@id'],
+    name: entity.parentOrganization.name,
+    url: entity.parentOrganization.url,
+  },
 }
 
 /** The publisher as it appears nested inside another node: the same entity, by id. */

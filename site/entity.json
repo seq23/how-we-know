@@ -1,0 +1,16 @@
+{
+  "$comment": "The one definition of this site's entity. schema.ts builds the Organization node from it; scripts/validate-entity-graph.mjs fails the build if the emitted JSON-LD drifts from it; the weekly entity-backlink-watch (.github/workflows/entity-backlink-watch.yml) fetches every sameAs URL, removes dead ones and promotes pending ones by PR. sameAs lists only profiles that resolve now; anything not yet claimed goes in profiles_pending.",
+  "@id": "https://howweknowdeep.com/#organization",
+  "name": "How We Know",
+  "url": "https://howweknowdeep.com",
+  "logo": "https://howweknowdeep.com/logo.png",
+  "description": "How we know what we know. Evidence-backed answers that show the instrument, the proxy, or the observation behind each figure — and say plainly where the evidence stops.",
+  "sameAs": ["https://www.youtube.com/@howweknowdeep"],
+  "parentOrganization": {
+    "@id": "https://billionairehighperformancecoach.com/spry-labs#organization",
+    "name": "Spry Labs",
+    "url": "https://billionairehighperformancecoach.com/spry-labs"
+  },
+  "founder": null,
+  "profiles_pending": []
+}

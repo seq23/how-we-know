@@ -16,7 +16,7 @@ Right now: {{DOMAINS}} — and more as we go.
 
 Every figure is sourced to named public research, from NOAA, MBARI, Woods Hole and the Smithsonian to NIST, ASTM and ASM International. Uncertainty is stated, not smoothed over; when the evidence is thin, the episode says so.
 
-New episodes every week.
+New episodes every week. Every answer, with its sources: https://howweknowdeep.com
 <!-- ABOUT:END -->
 
 ## Provenance
@@ -51,3 +51,10 @@ New episodes every week.
   without anyone editing it. The opening now leads with "How we know what we know" and "the evidence chain", the banner's own words (owner, 13 Oct 2026). The sources sentence (same
   seven named bodies) and the uncertainty sentences are kept. Validator V51
   fails if the live description misses any channel domain.
+- **2026-10-30** — the site address added to the last line (authority audit,
+  30 Oct 2026). The channel is the site's one `sameAs` profile, and a profile
+  that never names the site is a one-way claim: the weekly
+  `entity-backlink-watch` (site/scripts/entity-backlink-watch.mjs) fetches the
+  channel page and looks for `howweknowdeep.com` in it. The About text is the
+  one field YouTube renders server-side, so it is the link-back the watch can
+  verify.
