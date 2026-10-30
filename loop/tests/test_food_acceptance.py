@@ -7,6 +7,7 @@ the 28-32 window because the author's WPM constant was miscalibrated; Sequoia
 accepted it via the coordinator, with a hard bound of 33.0 min.
 
 Cases (on copies of the real spec, so no file in the repo changes):
+  0. the frozen 32.6-min fixture fails the window with no acceptance;
   1. the accepted episode passes food_hold;
   2. the same episode at 33.5 min is held;
   3. a different episode with the same failing length is held;
@@ -56,10 +57,17 @@ with tempfile.TemporaryDirectory() as td:
     root = Path(td)
     specs = root / "channel" / "specs"
     specs.mkdir(parents=True)
-    # the 32.6-min spec is the fixture; #251 moved it to specs/superseded/
-    # when it trimmed the script for a re-render, so read it from either place
-    sdir = src if (src / f"{SLUG}.json").exists() else src / "superseded"
-    base = json.loads((sdir / f"{SLUG}.json").read_text())
+    # The fixture is the 32.6-min spec the owner accepted. #251 moved it to
+    # specs/superseded/; the Mac's 28 Oct state commit then wrote a fresh
+    # 30.8-min re-render back to specs/, and reading "whichever exists, live
+    # first" turned the fixture into a PASSING episode (case 3 went green-by-
+    # default -> main red). The frozen copy wins, and the length is pinned to
+    # the acceptance record's own measurement, so a re-render can never move
+    # the fixture again.
+    sdir = src / "superseded" if (src / "superseded" / f"{SLUG}.json").exists() else src
+    rec = next(a for a in recs if a["episode"] == SLUG and a["check"] == "episode_minutes")
+    base = dict(json.loads((sdir / f"{SLUG}.json").read_text()),
+                duration_s=float(rec["measured_min"]) * 60)
 
     def put(slug: str, spec: dict, acc: list[dict] | None = None) -> None:
         (specs / f"{slug}.json").write_text(json.dumps(spec))
@@ -71,6 +79,13 @@ with tempfile.TemporaryDirectory() as td:
     is_food = BQ.is_food
     BQ.is_food = lambda s: True
     try:
+        # the fixture must actually fail the length window without its
+        # acceptance, or every case below proves nothing
+        put(SLUG, base, [])
+        standing, _w = BF.food_problems(SLUG, specs / f"{SLUG}.json")
+        check(any(p.startswith("episode runs 32.6 min") for p in standing),
+              f"0: the fixture no longer fails the length window: {standing}")
+
         put(SLUG, base)
         why = BF.food_hold(SLUG)
         check(why is None, f"1: the accepted episode is still held: {why}")
