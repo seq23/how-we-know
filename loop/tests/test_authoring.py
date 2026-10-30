@@ -189,12 +189,70 @@ def check() -> list[str]:
             fails.append(f"loop/{f} appears to skip checks for generated "
                          f"scripts — they must run at full strength")
 
-    # V8 probe classifies correctly
-    examined += 1
+    # V8 probe classifies correctly - against a LOCAL server, never a live
+    # site. 30 Oct 2026: main was red for days because
+    # oceanexplorer.noaa.gov began answering 504 for a missing page; a test
+    # that asks a third party what a status code means tests the third party.
     import validate
-    code, _ = validate.probe("https://oceanexplorer.noaa.gov/definitely-not-a-real-page-xyz")
-    if code not in (404, 410, 403, 0):
-        fails.append(f"probe() returned {code} for a non-existent NOAA page")
+    import http.server
+    import socket
+    import threading
+
+    class _H(http.server.BaseHTTPRequestHandler):
+        def _answer(self):
+            path = self.path
+            if path == "/gone":
+                code = 410
+            elif path == "/ok":
+                code = 200
+            elif path == "/no-head":
+                code = 405 if self.command == "HEAD" else 200
+            else:
+                code = 404
+            self.send_response(code)
+            self.send_header("Content-Length", "0")
+            self.end_headers()
+
+        do_HEAD = do_GET = _answer
+
+        def log_message(self, *a):
+            pass
+
+    srv = http.server.ThreadingHTTPServer(("127.0.0.1", 0), _H)
+    threading.Thread(target=srv.serve_forever, daemon=True).start()
+    base = f"http://127.0.0.1:{srv.server_address[1]}"
+    with socket.socket() as _s:          # a port nothing listens on
+        _s.bind(("127.0.0.1", 0))
+        dead_port = _s.getsockname()[1]
+    probe_cases = [(f"{base}/definitely-not-a-real-page-xyz", 404),
+                   (f"{base}/gone", 410),
+                   (f"{base}/ok", 200),
+                   (f"{base}/no-head", 200),      # HEAD 405 -> retried as GET
+                   (f"http://127.0.0.1:{dead_port}/x", 0)]
+    probed = 0
+    try:
+        for url, want in probe_cases:
+            examined += 1
+            probed += 1
+            code, _ = validate.probe(url, timeout=5)
+            if code != want:
+                fails.append(f"probe() returned {code} for {url}, want {want}")
+    finally:
+        srv.shutdown()
+        srv.server_close()
+    if probed == 0:
+        fails.append("the probe classification examined 0 cases")
+    # No test may hand probe() a live third-party URL: that is the class of
+    # failure above, not one instance of it.
+    live_probe = re.compile(r"probe\(\s*[\"']https?://(?!127\.0\.0\.1|localhost)")
+    scanned = 0
+    for tf in sorted(HERE.glob("test_*.py")):
+        scanned += 1
+        if live_probe.search(tf.read_text()):
+            fails.append(f"{tf.name} probes a live third-party URL; serve the "
+                         f"status from a local server instead")
+    if scanned == 0:
+        fails.append("the live-probe scan examined 0 test files")
 
     # ------------------------------------------------ 4. truncation caught
     examined += 1
