@@ -22,6 +22,14 @@
   requirement names the Developer Policy clause it comes from. Runs inside `npm run validate`
   against the route sources, and again with `--live` inside `npm run validate:live` against the
   deployed HTML. Hard-fails if its check set is empty or truncated.
+- Entity graph (`scripts/validate-entity-graph.mjs`). `entity.json` is the one definition of the
+  publisher: `@id`, name, logo, description, `sameAs` (only profiles that resolve now),
+  `parentOrganization` (Spry Labs) and `profiles_pending`. Inside `npm run validate` it checks the
+  file (no self-host `sameAs`, no duplicates, nothing both live and pending, parent is Spry Labs);
+  with `--built`, at the end of `npm run build`, every built page's Organization node must carry
+  exactly that `sameAs`, name, description, logo and parent. Zero pages or zero matching nodes
+  fails. The weekly `entity-backlink-watch` workflow keeps `sameAs` true: dead URLs removed and
+  pending profiles promoted by PR, a missing link-back filed as one named-stop issue.
 - Rights-manifest duplicate, hash, commercial-use and attribution rules.
 - ZIP root and required-file checks during packaging.
 

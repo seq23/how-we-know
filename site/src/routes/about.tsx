@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { pageMeta } from '~/lib/seo'
-import { site } from '~/lib/site'
+import { entity, site } from '~/lib/site'
 
 /**
  * Who publishes this, and how a claim gets onto the site.
@@ -37,8 +37,25 @@ function About() {
             {site.youtubeHandle}
           </a>{' '}
           video channel. The two carry one name, one editorial standard and one correction process.
-          Nothing here is sponsored, and nothing on the site is for sale: it is free to read and
-          free to quote with a link back.
+          It is made by{' '}
+          <a href={entity.parentOrganization.url} rel="noopener">
+            {entity.parentOrganization.name}
+          </a>
+          , the independent studio behind it. Nothing here is sponsored, and nothing on the site is
+          for sale: it is free to read and free to quote with a link back.
+        </p>
+      </section>
+      <section>
+        <h2>Who researches the videos</h2>
+        <p>
+          The {entity.parentOrganization.name} editorial team. Questions, sources and scripts are
+          researched and drafted with AI assistance from named public research, then checked
+          against those sources under <a href="/methodology">the written methodology</a> before
+          anything is published: a figure that cannot be traced to a named public source does not
+          go on screen or on the page. The narration is a synthetic voice, and any AI-generated
+          image in a video is labelled as one on screen. No page claims review by an outside
+          scientist; the authority behind each answer is the source it cites, and every page lists
+          those sources so you can check them yourself.
         </p>
       </section>
       <section>

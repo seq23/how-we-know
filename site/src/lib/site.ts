@@ -1,4 +1,5 @@
 import flags from '../../site-flags.json'
+import entityJson from '../../entity.json'
 
 /** THE NOINDEX SWITCH lives in site-flags.json. Do not hardcode it anywhere else. */
 export const searchIndexingEnabled: boolean = flags.searchIndexingEnabled
@@ -19,6 +20,23 @@ export const site = {
   youtubeHandle: '@howweknowdeep',
   youtubeUrl: 'https://youtube.com/@howweknowdeep',
 } as const
+
+/**
+ * The entity: the one definition in site/entity.json of who publishes this site,
+ * which profiles are the same entity (sameAs), and the parent organisation.
+ * schema.ts reads it; scripts/validate-entity-graph.mjs fails the build if the
+ * emitted JSON-LD drifts from it; the weekly entity-backlink-watch keeps sameAs
+ * honest (dead URLs removed, pending profiles promoted) by PR.
+ */
+export const entity = {
+  id: entityJson['@id'],
+  name: entityJson.name,
+  logo: entityJson.logo,
+  description: entityJson.description,
+  sameAs: entityJson.sameAs as string[],
+  /** Spry Labs, whose entity home is billionairehighperformancecoach.com/spry-labs. */
+  parentOrganization: entityJson.parentOrganization,
+}
 
 /**
  * The absolute URL for a path, normalised to the form the server actually serves.
