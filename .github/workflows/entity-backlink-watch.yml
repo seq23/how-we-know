@@ -38,7 +38,7 @@ jobs:
         working-directory: site
         env:
           WATCH_REPORT: ${{ runner.temp }}/entity-watch.json
-        run: node scripts/entity-backlink-watch.mjs | tee -a "$GITHUB_STEP_SUMMARY"
+        run: node "$GITHUB_WORKSPACE/site/scripts/entity-backlink-watch.mjs" | tee -a "$GITHUB_STEP_SUMMARY"
       - name: Self-heal as a PR
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -56,6 +56,8 @@ LANES: dict[str, dict] = {
                          "entry": "site/scripts/search-console-truth.mjs"},
     "site-live-check":  {"runner": "workflow", "file": "site-post-deploy-check.yml",
                          "entry": "site/scripts/validate-live-host.mjs"},
+    "entity-watch":     {"runner": "workflow", "file": "entity-backlink-watch.yml",
+                         "entry": "site/scripts/entity-backlink-watch.mjs"},
     # ---- this Mac (launchd, bin/loop-install-launchd.sh)
     "batch":            {"runner": "launchd", "agent": "batch", "entry": "bin/batch-session.sh",
                          "makes": "render", "domains": [DEEP, MATS]},
