@@ -1,1035 +1,25 @@
 {
-  "measured_at": "2026-10-17T10:13:55.642541+00:00",
+  "measured_at": "2026-10-31T15:41:00.146016+00:00",
   "generator": "research/competition.py",
   "source": "YouTube Data API v3 (search.list, videos.list, channels.list)",
   "key_source": "environment $YOUTUBE_API_KEY",
   "key_handling": "The API key is never printed, logged, or written here.",
-  "quota_units_spent": 2448,
+  "quota_units_spent": 612,
   "quota_budget": 3000,
   "allocation_plan": null,
-  "candidates_scored": 24,
+  "candidates_scored": 6,
   "candidates_unmeasured": [],
   "unmeasured_note": "Anything listed here has NO competition value. It is not scored as zero and must not be ranked as if it were measured.",
   "domain_summary": {},
   "results": [
     {
-      "query": "why does milk curdle",
+      "query": "what to do if melted chocolate is too thick",
       "status": "ok",
       "results_examined": 20,
       "title_match": {
         "status": "ok",
         "n": 20,
-        "mean_coverage": 0.325,
-        "max_coverage": 1.0,
-        "strong_match_count": 2,
-        "strong_match_rate": 0.1,
-        "loose_match_rate": 0.45,
-        "gap_signal": 0.9,
-        "interpretation": "2 of 20 ranking titles squarely answer the query"
-      },
-      "view_profile": {
-        "median": 466.0,
-        "p90": 80406,
-        "max": 2614805,
-        "n": 20
-      },
-      "incumbents": {
-        "median_subscribers": 114.5,
-        "max_subscribers": 8020000,
-        "under_100k_subs": 18,
-        "n": 20
-      },
-      "recency": {
-        "median_age_days": 2,
-        "published_last_365d": 15,
-        "n": 20
-      },
-      "opportunity_score": 0.721,
-      "opportunity_components": {
-        "title_gap": 0.9,
-        "incumbent_subs": 0.706,
-        "view_ceiling": 0.619,
-        "staleness": 0.25
-      },
-      "opportunity_weights": {
-        "title_gap": 0.5,
-        "incumbent_subs": 0.2,
-        "view_ceiling": 0.15,
-        "staleness": 0.15
-      },
-      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
-      "provenance": {
-        "endpoint": "https://www.googleapis.com/youtube/v3",
-        "calls": [
-          "search.list",
-          "videos.list",
-          "channels.list"
-        ],
-        "region": "US",
-        "language": "en",
-        "order": "relevance",
-        "fetched_utc": "2026-10-17T10:13:46.435136+00:00"
-      },
-      "top_results": [
-        {
-          "title": "Why Babies Spit Up Curdled Milk! \ud83c\udf7c (3D Stomach View) #shorts",
-          "views": 8,
-          "subs": 32,
-          "published_at": "2026-10-16T20:21:13Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "What Happens Inside Your Body When You Drink Milk? \ud83e\udd5b",
-          "views": 124,
-          "subs": 0,
-          "published_at": "2026-10-16T16:00:16Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "Why does milk curdle? #sciencefacts#foodchemistry  #milk",
-          "views": 5,
-          "subs": 18,
-          "published_at": "2026-10-15T12:18:36Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Tiny Rasmalai | Miniature Cooking #shorts",
-          "views": 92,
-          "subs": 56,
-          "published_at": "2026-10-15T18:25:07Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "#asmrfood #food #cookingtutorial #cooking How to Make Perfect Spongy Mini Rasgulla",
-          "views": 1929,
-          "subs": 8,
-          "published_at": "2026-10-15T09:38:31Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "How to Make Perfect Homemade Paneer in Minutes",
-          "views": 95,
-          "subs": 26,
-          "published_at": "2026-10-16T10:16:44Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "Bahu Turns Spoiled Milk Into A Royal Dessert!",
-          "views": 5,
-          "subs": 2040,
-          "published_at": "2026-10-16T16:28:08Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "Turning Spilt Milk into Shahi Kalakand: A Saas-Bahu Kitchen Drama &amp; Recipe",
-          "views": 1798,
-          "subs": 11200,
-          "published_at": "2026-10-15T12:12:43Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "This Is How They Make Tons of Paneer Every Day! \ud83d\udcc8\ud83e\uddc0 #shorts #technology",
-          "views": 140,
-          "subs": 60,
-          "published_at": "2026-10-15T09:06:46Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "Homemade Cream Cheese With Just Milk and Vinegar  #easyrecipes #cooking #healthydessert",
-          "views": 1306,
-          "subs": 93,
-          "published_at": "2026-10-15T07:26:40Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "\ud83d\ude31 \u0928\u0928\u0926 \u0928\u0947 \u092b\u093e\u0921\u093c\u093e \u0926\u0942\u0927, \u092c\u0939\u0942 \u0928\u0947 \u092c\u0928\u093e \u0926\u093f\u092f\u093e \u0932\u093e\u091c\u0935\u093e\u092c \u0915\u0932\u093e\u0915\u0902\u0926! \ud83c\udf6c #saasbahu #shorts",
-          "views": 22983,
-          "subs": 354,
-          "published_at": "2026-10-14T11:05:05Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "\ud83e\udd63 How To Make Authentic Soft Rasgulla #aicreator #recipe #likecmntshare #food #support #subscribe",
-          "views": 199,
-          "subs": 127,
-          "published_at": "2026-10-14T11:41:36Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "Why Does Milk Curdle When Lemon is Added?",
-          "views": 15,
-          "subs": 447,
-          "published_at": "2024-12-21T10:28:41Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "What to do when milk splits | Sanjeev Kapoor Khazana",
-          "views": 83475,
-          "subs": 8020000,
-          "published_at": "2021-08-03T08:39:04Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "What if You Drink Expired Milk? | What Happens If You Drink Spoiled Milk? | The Dr. Binocs Show",
-          "views": 2614805,
-          "subs": 7870000,
-          "published_at": "2025-08-12T13:05:00Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "\u092e\u093e\u0901 \u0928\u0947 \u092c\u0947\u091f\u0940 \u0915\u0940 \u092b\u094b\u091f\u094b \u092a\u0930 filter \u0932\u0917\u093e\u092f\u093e\u2026 \u092b\u093f\u0930 \u0932\u0921\u093c\u0915\u0947 \u0928\u0947 \u091c\u094b \u0926\u093f\u0916\u093e\u092f\u093e \ud83e\ude94 | \u0917\u0941\u0921\u093c \u0935\u093e\u0932\u0940 \u0916\u0940\u0930 + \u0935\u094d\u0930\u0924 \u091f\u093f\u0915\u094d\u0915\u0940 \u091a\u093e\u091f",
-          "views": 80406,
-          "subs": 55300,
-          "published_at": "2026-10-16T15:00:04Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "\ud83e\udd63 Authentic Odisha Style Rasgulla Recipe",
-          "views": 462,
-          "subs": 1050,
-          "published_at": "2026-10-16T16:21:31Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "Instant Rasmalai Recipe | Quick &amp; Creamy Dessert in 20 Minutes (Easy) #asmr #recipe #cooking",
-          "views": 470,
-          "subs": 102,
-          "published_at": "2026-10-14T13:45:07Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "The rate of milk curdling",
-          "views": 3233,
-          "subs": 3340,
-          "published_at": "2014-05-12T20:10:26Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "used almond milk &amp; it curdled \ud83d\ude35\u200d\ud83d\udcab does anyone know how i can prevent this from happening \ud83e\udd72",
-          "views": 4578,
-          "subs": 20,
-          "published_at": "2022-02-15T11:00:21Z",
-          "coverage": 0.5
-        }
-      ],
-      "domain": null
-    },
-    {
-      "query": "why does pasta water get starchy",
-      "status": "ok",
-      "results_examined": 20,
-      "title_match": {
-        "status": "ok",
-        "n": 20,
-        "mean_coverage": 0.525,
-        "max_coverage": 0.75,
-        "strong_match_count": 3,
-        "strong_match_rate": 0.15,
-        "loose_match_rate": 0.05,
-        "gap_signal": 0.85,
-        "interpretation": "3 of 20 ranking titles squarely answer the query"
-      },
-      "view_profile": {
-        "median": 858.5,
-        "p90": 1006586,
-        "max": 11562778,
-        "n": 20
-      },
-      "incumbents": {
-        "median_subscribers": 108.5,
-        "max_subscribers": 17000000,
-        "under_100k_subs": 14,
-        "n": 20
-      },
-      "recency": {
-        "median_age_days": 174,
-        "published_last_365d": 13,
-        "n": 20
-      },
-      "opportunity_score": 0.706,
-      "opportunity_components": {
-        "title_gap": 0.85,
-        "incumbent_subs": 0.709,
-        "view_ceiling": 0.581,
-        "staleness": 0.35
-      },
-      "opportunity_weights": {
-        "title_gap": 0.5,
-        "incumbent_subs": 0.2,
-        "view_ceiling": 0.15,
-        "staleness": 0.15
-      },
-      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
-      "provenance": {
-        "endpoint": "https://www.googleapis.com/youtube/v3",
-        "calls": [
-          "search.list",
-          "videos.list",
-          "channels.list"
-        ],
-        "region": "US",
-        "language": "en",
-        "order": "relevance",
-        "fetched_utc": "2026-10-17T10:13:47.654051+00:00"
-      },
-      "top_results": [
-        {
-          "title": "Why do you put pasta WATER in the sauce?",
-          "views": 11562778,
-          "subs": 17000000,
-          "published_at": "2025-11-23T15:00:14Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "Why Pasta Water?",
-          "views": 119813,
-          "subs": 1610000,
-          "published_at": "2023-09-11T17:46:28Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "Pasta Water Magic: Unique uses for the starchy elixir",
-          "views": 722,
-          "subs": 429000,
-          "published_at": "2023-03-15T13:28:10Z",
-          "coverage": 0.75
-        },
-        {
-          "title": "Why Pasta Gets Tender: Starch Science EXPLAINED #shorts #foodscience #cooking",
-          "views": 95,
-          "subs": 157,
-          "published_at": "2026-06-18T19:00:28Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "Why Does Pasta Water Get Cloudy? | A Million Whys",
-          "views": 1,
-          "subs": 4,
-          "published_at": "2026-10-03T13:30:15Z",
-          "coverage": 0.75
-        },
-        {
-          "title": "Why Pasta Water Makes Sauce Better: The Starch Science",
-          "views": 935,
-          "subs": 60,
-          "published_at": "2026-08-13T10:45:19Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "Why Pasta Water Makes Everything Better (The Starch Trick)",
-          "views": 10,
-          "subs": 4,
-          "published_at": "2026-05-30T19:00:20Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "Why Does Pasta Stick Together After Cooling? \ud83c\udf5d\ud83d\ude31",
-          "views": 28,
-          "subs": 452,
-          "published_at": "2026-10-16T19:14:41Z",
-          "coverage": 0.25
-        },
-        {
-          "title": "Stop Saving Your Pasta Water (Do THIS Instead)",
-          "views": 2009845,
-          "subs": 4610000,
-          "published_at": "2023-11-15T11:00:10Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "When should you salt pasta water? How much?",
-          "views": 1006586,
-          "subs": 2610000,
-          "published_at": "2021-08-16T18:00:06Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "Pasta water tip #pasta #sauce",
-          "views": 63627,
-          "subs": 742,
-          "published_at": "2024-10-08T12:34:01Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "Pasta water chemistry and why starch makes perfect sauce emulsions #cooking #foodscience #pasta",
-          "views": 782,
-          "subs": 46,
-          "published_at": "2026-03-22T12:00:59Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "Why Pasta Water Turns Cloudy #Shorts",
-          "views": 946,
-          "subs": 9,
-          "published_at": "2026-10-09T16:00:05Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "Starch Science :How Pasta, Potatoes, and Bread Behave in Heat and Water",
-          "views": 8,
-          "subs": 21,
-          "published_at": "2026-02-10T01:08:18Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "Why Does Pasta Water Foam Up and Spill Over?",
-          "views": 4,
-          "subs": 0,
-          "published_at": "2026-10-15T04:04:09Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "Why Do Chefs Add Pasta Water to Pasta Sauce?",
-          "views": 1232,
-          "subs": 31,
-          "published_at": "2026-09-01T13:30:14Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "Why Does Pasta Get Soft? | A Million Whys",
-          "views": 0,
-          "subs": 1,
-          "published_at": "2026-10-04T11:02:19Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "Pasta Water Boils Over and Plain Water Does Not \u2014 Starch Builds a Structure",
-          "views": 3,
-          "subs": 2,
-          "published_at": "2026-10-11T23:30:18Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "Why You Should Be Adding Pasta Water To Your Pasta | The Golden Balance",
-          "views": 440087,
-          "subs": 3580000,
-          "published_at": "2022-03-10T16:00:04Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "Starchy Pasta Water Dupe",
-          "views": 3394,
-          "subs": 14800,
-          "published_at": "2025-05-16T02:35:02Z",
-          "coverage": 0.75
-        }
-      ],
-      "domain": null
-    },
-    {
-      "query": "why does meat need to rest after cooking",
-      "status": "ok",
-      "results_examined": 20,
-      "title_match": {
-        "status": "ok",
-        "n": 20,
-        "mean_coverage": 0.28,
-        "max_coverage": 0.8,
-        "strong_match_count": 1,
-        "strong_match_rate": 0.05,
-        "loose_match_rate": 0.65,
-        "gap_signal": 0.95,
-        "interpretation": "1 of 20 ranking titles squarely answer the query"
-      },
-      "view_profile": {
-        "median": 60071.5,
-        "p90": 9750524,
-        "max": 13326730,
-        "n": 20
-      },
-      "incumbents": {
-        "median_subscribers": 104500.0,
-        "max_subscribers": 10300000,
-        "under_100k_subs": 9,
-        "n": 20
-      },
-      "recency": {
-        "median_age_days": 863,
-        "published_last_365d": 4,
-        "n": 20
-      },
-      "opportunity_score": 0.699,
-      "opportunity_components": {
-        "title_gap": 0.95,
-        "incumbent_subs": 0.283,
-        "view_ceiling": 0.317,
-        "staleness": 0.8
-      },
-      "opportunity_weights": {
-        "title_gap": 0.5,
-        "incumbent_subs": 0.2,
-        "view_ceiling": 0.15,
-        "staleness": 0.15
-      },
-      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
-      "provenance": {
-        "endpoint": "https://www.googleapis.com/youtube/v3",
-        "calls": [
-          "search.list",
-          "videos.list",
-          "channels.list"
-        ],
-        "region": "US",
-        "language": "en",
-        "order": "relevance",
-        "fetched_utc": "2026-10-17T10:13:45.111895+00:00"
-      },
-      "top_results": [
-        {
-          "title": "Why to Rest Steak After Cooking",
-          "views": 13628,
-          "subs": 67200,
-          "published_at": "2021-06-14T16:31:38Z",
-          "coverage": 0.6
-        },
-        {
-          "title": "Why You Should Rest Steak",
-          "views": 9957822,
-          "subs": 6410000,
-          "published_at": "2025-12-27T17:01:23Z",
-          "coverage": 0.2
-        },
-        {
-          "title": "Proof Resting Doesn&#39;t Keep Meat Juicy",
-          "views": 1294275,
-          "subs": 622000,
-          "published_at": "2024-04-05T12:59:31Z",
-          "coverage": 0.2
-        },
-        {
-          "title": "Does Resting Meat Matter? | Techniquely with Lan Lam",
-          "views": 115187,
-          "subs": 3050000,
-          "published_at": "2024-09-24T17:00:05Z",
-          "coverage": 0.2
-        },
-        {
-          "title": "Is Resting Steaks BULLSH*T?",
-          "views": 13326730,
-          "subs": 1660000,
-          "published_at": "2023-12-18T12:00:02Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "Why You Should Always Rest Your Steak",
-          "views": 84405,
-          "subs": 252000,
-          "published_at": "2021-05-05T15:18:09Z",
-          "coverage": 0.2
-        },
-        {
-          "title": "How long to let Steak rest after cooking",
-          "views": 35738,
-          "subs": 106000,
-          "published_at": "2024-08-07T17:00:52Z",
-          "coverage": 0.6
-        },
-        {
-          "title": "Stop Resting Your Steak",
-          "views": 2248396,
-          "subs": 1220000,
-          "published_at": "2025-08-01T16:04:42Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "Rest ya steaks! \ud83e\udd69 #shorts",
-          "views": 5275979,
-          "subs": 6340000,
-          "published_at": "2023-08-10T10:53:15Z",
-          "coverage": 0.2
-        },
-        {
-          "title": "Why You Should Rest Your Steak (and How To Do It)",
-          "views": 259873,
-          "subs": 2490000,
-          "published_at": "2024-11-22T16:16:31Z",
-          "coverage": 0.2
-        },
-        {
-          "title": "Your Cooler is Killing Your Brisket (Proper Way to Rest)",
-          "views": 17647,
-          "subs": 1130,
-          "published_at": "2026-01-29T16:39:22Z",
-          "coverage": 0.2
-        },
-        {
-          "title": "Here\u2019s a tip on resting your brisket #brisket #bbq",
-          "views": 1191293,
-          "subs": 103000,
-          "published_at": "2022-08-08T19:57:32Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "How to rest meat but not let it get too cold?",
-          "views": 3227,
-          "subs": 2680,
-          "published_at": "2022-06-20T17:14:37Z",
-          "coverage": 0.4
-        },
-        {
-          "title": "RESTING MEAT: explained. Now, will you do it?",
-          "views": 7741,
-          "subs": 76500,
-          "published_at": "2022-04-16T12:59:54Z",
-          "coverage": 0.2
-        },
-        {
-          "title": "Why You Must Rest Meat After Cooking: The Science of Keeping Juices In",
-          "views": 1352,
-          "subs": 4,
-          "published_at": "2026-10-14T10:31:13Z",
-          "coverage": 0.8
-        },
-        {
-          "title": "Why Letting Meat Rest is the Secret to Juicy Perfection \ud83c\udf56",
-          "views": 1070,
-          "subs": 364,
-          "published_at": "2024-11-24T16:00:38Z",
-          "coverage": 0.4
-        },
-        {
-          "title": "\ud83e\udd69 Why You Must Rest Cooked Meat \ud83e\udd69\u2728",
-          "views": 58,
-          "subs": 4,
-          "published_at": "2026-09-29T16:00:24Z",
-          "coverage": 0.4
-        },
-        {
-          "title": "Why You Should Always Rest Your Steak",
-          "views": 28269,
-          "subs": 93200,
-          "published_at": "2024-12-27T17:00:12Z",
-          "coverage": 0.2
-        },
-        {
-          "title": "Why Do You Rest Meat? - Tutorial Video",
-          "views": 2853,
-          "subs": 5690,
-          "published_at": "2015-06-11T17:08:54Z",
-          "coverage": 0.4
-        },
-        {
-          "title": "Should steaks be left at room temp before cooking?",
-          "views": 9750524,
-          "subs": 10300000,
-          "published_at": "2022-03-02T21:00:07Z",
-          "coverage": 0.2
-        }
-      ],
-      "domain": null
-    },
-    {
-      "query": "why does sourdough taste sour",
-      "status": "ok",
-      "results_examined": 20,
-      "title_match": {
-        "status": "ok",
-        "n": 20,
-        "mean_coverage": 0.65,
-        "max_coverage": 1.0,
-        "strong_match_count": 2,
-        "strong_match_rate": 0.1,
-        "loose_match_rate": 0.15,
-        "gap_signal": 0.9,
-        "interpretation": "2 of 20 ranking titles squarely answer the query"
-      },
-      "view_profile": {
-        "median": 18106.0,
-        "p90": 214292,
-        "max": 840904,
-        "n": 20
-      },
-      "incumbents": {
-        "median_subscribers": 55350.0,
-        "max_subscribers": 8420000,
-        "under_100k_subs": 12,
-        "n": 20
-      },
-      "recency": {
-        "median_age_days": 699,
-        "published_last_365d": 4,
-        "n": 20
-      },
-      "opportunity_score": 0.693,
-      "opportunity_components": {
-        "title_gap": 0.9,
-        "incumbent_subs": 0.322,
-        "view_ceiling": 0.392,
-        "staleness": 0.8
-      },
-      "opportunity_weights": {
-        "title_gap": 0.5,
-        "incumbent_subs": 0.2,
-        "view_ceiling": 0.15,
-        "staleness": 0.15
-      },
-      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
-      "provenance": {
-        "endpoint": "https://www.googleapis.com/youtube/v3",
-        "calls": [
-          "search.list",
-          "videos.list",
-          "channels.list"
-        ],
-        "region": "US",
-        "language": "en",
-        "order": "relevance",
-        "fetched_utc": "2026-10-17T10:13:53.392701+00:00"
-      },
-      "top_results": [
-        {
-          "title": "17 Ways to Make your Sourdough Less (or More) Sour",
-          "views": 59554,
-          "subs": 175000,
-          "published_at": "2023-05-16T14:00:30Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Why isn&#39;t my sourdough SOUR?!?",
-          "views": 43265,
-          "subs": 204000,
-          "published_at": "2024-04-18T14:27:58Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "The Secret to Sourdough Flavor | How To Make Your Sourdough Less Sour",
-          "views": 16378,
-          "subs": 41900,
-          "published_at": "2024-07-01T17:00:11Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "What Makes Sourdough Bread Sour?",
-          "views": 250498,
-          "subs": 8420000,
-          "published_at": "2016-09-03T21:00:01Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Mastering Your Sourdough Starter - A deep dive into Flavor and Acidity",
-          "views": 214292,
-          "subs": 348000,
-          "published_at": "2022-03-06T11:32:54Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "How to make your sourdough bread more or less sour!",
-          "views": 21032,
-          "subs": 28200,
-          "published_at": "2025-02-05T22:37:06Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "How to Make Sourdough LESS Sour",
-          "views": 25203,
-          "subs": 1880,
-          "published_at": "2025-04-11T13:49:07Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "My bread tastes really sour",
-          "views": 11660,
-          "subs": 24100,
-          "published_at": "2023-06-22T18:00:33Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "Does OVER-PROOFING Sourdough Make It More Sour?",
-          "views": 27651,
-          "subs": 162000,
-          "published_at": "2024-03-22T13:00:35Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Want Extra Sour Sourdough? (3 Things That DON&#39;T Work for Me)",
-          "views": 19834,
-          "subs": 162000,
-          "published_at": "2024-02-15T14:00:07Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Why your sourdough bread may taste more sour after a few days on the counter",
-          "views": 6363,
-          "subs": 68800,
-          "published_at": "2025-08-08T11:30:30Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Want a more sour loaf? Here\u2019s how to increase that San Francisco tangy flavor in your sourdough.",
-          "views": 2516,
-          "subs": 11600,
-          "published_at": "2026-03-04T13:59:58Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "How to Make Sourdough MORE Sour",
-          "views": 34799,
-          "subs": 1880,
-          "published_at": "2025-04-13T00:00:45Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Why Does Sourdough Taste Tangy?",
-          "views": 1552,
-          "subs": 51,
-          "published_at": "2025-04-11T22:10:06Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "How to make sourdough LESS (or more!) sour",
-          "views": 1478,
-          "subs": 8280,
-          "published_at": "2026-05-29T13:00:02Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "What makes sourdough sour?",
-          "views": 1755,
-          "subs": 41900,
-          "published_at": "2024-08-28T18:00:09Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Why sourdough tastes sour",
-          "views": 5333,
-          "subs": 68800,
-          "published_at": "2026-02-22T12:05:00Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Sourdough vs. \u201cNormal\u201d Bread. What\u2019s the Difference?",
-          "views": 840904,
-          "subs": 106000,
-          "published_at": "2022-04-07T16:00:12Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "How to Make Sourdough More Sour (2 Simple Ways)",
-          "views": 4533,
-          "subs": 5400,
-          "published_at": "2025-08-19T21:19:09Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Why Doesn\u2019t Homemade Sourdough Taste Sour? Live Q&amp;A Replay!  #sourdough #sourdoughbread",
-          "views": 12808,
-          "subs": 106000,
-          "published_at": "2026-05-10T14:16:53Z",
-          "coverage": 1.0
-        }
-      ],
-      "domain": null
-    },
-    {
-      "query": "why do eggs turn white when cooked",
-      "status": "ok",
-      "results_examined": 20,
-      "title_match": {
-        "status": "ok",
-        "n": 20,
-        "mean_coverage": 0.45,
-        "max_coverage": 1.0,
-        "strong_match_count": 4,
-        "strong_match_rate": 0.2,
-        "loose_match_rate": 0.45,
-        "gap_signal": 0.8,
-        "interpretation": "4 of 20 ranking titles squarely answer the query"
-      },
-      "view_profile": {
-        "median": 25042.5,
-        "p90": 237334,
-        "max": 396177,
-        "n": 20
-      },
-      "incumbents": {
-        "median_subscribers": 330.0,
-        "max_subscribers": 1720000,
-        "under_100k_subs": 16,
-        "n": 20
-      },
-      "recency": {
-        "median_age_days": 1688,
-        "published_last_365d": 6,
-        "n": 20
-      },
-      "opportunity_score": 0.689,
-      "opportunity_components": {
-        "title_gap": 0.8,
-        "incumbent_subs": 0.64,
-        "view_ceiling": 0.372,
-        "staleness": 0.7
-      },
-      "opportunity_weights": {
-        "title_gap": 0.5,
-        "incumbent_subs": 0.2,
-        "view_ceiling": 0.15,
-        "staleness": 0.15
-      },
-      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
-      "provenance": {
-        "endpoint": "https://www.googleapis.com/youtube/v3",
-        "calls": [
-          "search.list",
-          "videos.list",
-          "channels.list"
-        ],
-        "region": "US",
-        "language": "en",
-        "order": "relevance",
-        "fetched_utc": "2026-10-17T10:13:33.364288+00:00"
-      },
-      "top_results": [
-        {
-          "title": "Why do eggs turn white when they cook?",
-          "views": 1209,
-          "subs": 207,
-          "published_at": "2014-06-09T12:39:36Z",
-          "coverage": 0.75
-        },
-        {
-          "title": "How to Cook Egg Whites",
-          "views": 170080,
-          "subs": 918000,
-          "published_at": "2020-06-08T23:40:38Z",
-          "coverage": 0.25
-        },
-        {
-          "title": "Why Does Cooking Eggs Make Them Hard? | The Science of Cooking | SciShow Kids",
-          "views": 237334,
-          "subs": 1720000,
-          "published_at": "2021-02-02T17:28:19Z",
-          "coverage": 0.25
-        },
-        {
-          "title": "Why Do Eggs Change Color When Cooked? \ud83e\udd5a The Science Is Crazy!",
-          "views": 169,
-          "subs": 41,
-          "published_at": "2026-09-20T09:03:38Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "Why Do Eggs Turn Solid When Cooked",
-          "views": 1318,
-          "subs": 23,
-          "published_at": "2026-10-09T15:00:01Z",
-          "coverage": 0.75
-        },
-        {
-          "title": "How to Cook Egg Whites",
-          "views": 55716,
-          "subs": 366000,
-          "published_at": "2020-06-05T18:02:45Z",
-          "coverage": 0.25
-        },
-        {
-          "title": "How to make Plain Egg White using egg white liquid!",
-          "views": 30002,
-          "subs": 10,
-          "published_at": "2023-09-16T16:07:47Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "How to make fried egg whites the right way.| Super easy #DatBoiCanCook #friedegg",
-          "views": 18283,
-          "subs": 5640,
-          "published_at": "2022-03-08T18:52:09Z",
-          "coverage": 0.25
-        },
-        {
-          "title": "Egg Whites Cooking",
-          "views": 70547,
-          "subs": 2490,
-          "published_at": "2021-03-15T16:57:44Z",
-          "coverage": 0.25
-        },
-        {
-          "title": "TITLE Why Do Eggs Turn Solid When Cooked? \ud83e\udd5a | \u0644\u0645\u0627\u0630\u0627 \u064a\u062a\u0635\u0644\u0651\u0628 \u0627\u0644\u0628\u064a\u0636 \u0639\u0646\u062f \u0637\u0647\u064a\u0647\u061f",
-          "views": 37,
-          "subs": 19,
-          "published_at": "2026-10-02T15:51:01Z",
-          "coverage": 0.75
-        },
-        {
-          "title": "Quick Scrambled egg whites | How to make healthy breakfast eggs",
-          "views": 23300,
-          "subs": 84,
-          "published_at": "2020-12-17T14:24:57Z",
-          "coverage": 0.25
-        },
-        {
-          "title": "Why eggs turn white when cooked #shorts",
-          "views": 140,
-          "subs": 0,
-          "published_at": "2026-10-12T01:00:04Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "BEST EVER EGG WHITES RECIPE!",
-          "views": 310555,
-          "subs": 2770,
-          "published_at": "2022-06-21T14:47:55Z",
-          "coverage": 0.25
-        },
-        {
-          "title": "Why Egg Whites Turn Solid With Heat",
-          "views": 57,
-          "subs": 133,
-          "published_at": "2026-10-14T17:25:20Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "#shorts egg poached in boil water /egg white omelet\ud83e\udd29",
-          "views": 8236,
-          "subs": 317,
-          "published_at": "2022-02-27T08:27:00Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "Why Do Eggs Turn Solid When You Cook Them? \ud83c\udf73",
-          "views": 88,
-          "subs": 33,
-          "published_at": "2026-09-23T17:00:35Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "Healthy Scrambled Egg Whites",
-          "views": 84436,
-          "subs": 18500,
-          "published_at": "2021-03-05T09:36:01Z",
-          "coverage": 0.25
-        },
-        {
-          "title": "How to  make a Egg White Omelette",
-          "views": 26785,
-          "subs": 7720,
-          "published_at": "2023-01-24T23:00:28Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "Egg White Omelet- Martha Stewart",
-          "views": 396177,
-          "subs": 1200000,
-          "published_at": "2018-08-04T15:00:04Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "How To Make Egg Whites in the Microwave",
-          "views": 125529,
-          "subs": 343,
-          "published_at": "2012-01-26T02:28:59Z",
-          "coverage": 0.25
-        }
-      ],
-      "domain": null
-    },
-    {
-      "query": "why is my bread not rising",
-      "status": "ok",
-      "results_examined": 20,
-      "title_match": {
-        "status": "ok",
-        "n": 20,
-        "mean_coverage": 0.267,
+        "mean_coverage": 0.287,
         "max_coverage": 1.0,
         "strong_match_count": 2,
         "strong_match_rate": 0.1,
@@ -1038,1434 +28,27 @@
         "interpretation": "2 of 20 ranking titles squarely answer the query"
       },
       "view_profile": {
-        "median": 95571.0,
-        "p90": 892351,
-        "max": 1802321,
+        "median": 274995.0,
+        "p90": 3007176,
+        "max": 18978447,
         "n": 20
       },
       "incumbents": {
-        "median_subscribers": 75350.0,
-        "max_subscribers": 2900000,
-        "under_100k_subs": 12,
+        "median_subscribers": 94200.0,
+        "max_subscribers": 3590000,
+        "under_100k_subs": 10,
         "n": 20
       },
       "recency": {
-        "median_age_days": 1489,
-        "published_last_365d": 2,
-        "n": 20
-      },
-      "opportunity_score": 0.689,
-      "opportunity_components": {
-        "title_gap": 0.9,
-        "incumbent_subs": 0.303,
-        "view_ceiling": 0.289,
-        "staleness": 0.9
-      },
-      "opportunity_weights": {
-        "title_gap": 0.5,
-        "incumbent_subs": 0.2,
-        "view_ceiling": 0.15,
-        "staleness": 0.15
-      },
-      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
-      "provenance": {
-        "endpoint": "https://www.googleapis.com/youtube/v3",
-        "calls": [
-          "search.list",
-          "videos.list",
-          "channels.list"
-        ],
-        "region": "US",
-        "language": "en",
-        "order": "relevance",
-        "fetched_utc": "2026-10-17T10:13:55.642284+00:00"
-      },
-      "top_results": [
-        {
-          "title": "Why Is My Bread Dough Not Rising SOLVED With Simple Fixes!",
-          "views": 60015,
-          "subs": 42900,
-          "published_at": "2025-03-17T19:55:12Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Your Sourdough Bread WON&#39;T Rise [and how to fix it]",
-          "views": 88520,
-          "subs": 27000,
-          "published_at": "2025-05-09T12:00:49Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "How to Fix Dough That Won&#39;t Rise",
-          "views": 591937,
-          "subs": 918000,
-          "published_at": "2020-05-21T02:35:02Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "4 Common Bread Baking Problems &amp; How to Fix Them | Bread Not Rising | Bread Falls | Bread Fails Help",
-          "views": 39097,
-          "subs": 98300,
-          "published_at": "2021-07-30T12:25:00Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Bread not risen correctly in breadmaker",
-          "views": 102622,
-          "subs": 52600,
-          "published_at": "2012-10-01T11:22:53Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "4 Things you can make when your Bread Dough doesn\u2019t rise - 227",
-          "views": 52206,
-          "subs": 322000,
-          "published_at": "2024-02-01T17:45:00Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "If dough isn\u2019t rising, do this !",
-          "views": 88443,
-          "subs": 36,
-          "published_at": "2024-07-25T19:03:35Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "SIX REASONS WHY YOUR DOUGH DIDN\u2019T RISE | HOW TO FIX DOUGH THAT WON\u2019T RISE",
-          "views": 154732,
-          "subs": 10900,
-          "published_at": "2022-02-12T20:36:21Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "How to Fix Your Sourdough Starter When It WON&#39;T RISE",
-          "views": 892351,
-          "subs": 162000,
-          "published_at": "2022-09-15T13:00:00Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "The 7 Most Common Breadmaking Mistakes You\u2019re Probably Making",
-          "views": 768348,
-          "subs": 2900000,
-          "published_at": "2020-01-16T16:30:12Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "Why Won&#39;t My Bread Dough Rise and How Can I Fix It?",
-          "views": 326,
-          "subs": 81600,
-          "published_at": "2025-08-31T11:33:48Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "Ever wonder why your dough doesnt rise?",
-          "views": 54227,
-          "subs": 69100,
-          "published_at": "2022-09-24T03:47:08Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "A Handy Bread Machine Troubleshooting Guide (Frequent Problems And Solutions)",
-          "views": 146090,
-          "subs": 49700,
-          "published_at": "2021-01-10T00:21:45Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "Three reasons your bread dough didn&#39;t rise   and what to do differently next time",
-          "views": 15862,
-          "subs": 6460,
-          "published_at": "2023-05-13T11:30:11Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "How Do You Fix Dough That Won\u2019t Rise?",
-          "views": 5635,
-          "subs": 918000,
-          "published_at": "2024-06-14T09:26:10Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "The #1 Reason Your Sourdough Won\u2019t Rise",
-          "views": 2132,
-          "subs": 1330,
-          "published_at": "2026-01-21T16:58:58Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "5 WAYS TO GET A BETTER OVEN SPRING | SOURDOUGH BREAD TIPS",
-          "views": 1802321,
-          "subs": 106000,
-          "published_at": "2020-05-01T20:30:02Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "Expert&#39;s Secret to Saving Dough That WON&#39;T Rise!",
-          "views": 103724,
-          "subs": 30600,
-          "published_at": "2021-05-13T16:53:35Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "6 Mistakes to Avoid when Making Doughs (bread and pizza)",
-          "views": 1042975,
-          "subs": 348000,
-          "published_at": "2022-04-24T17:41:44Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "Three Reasons Your Sourdough is Flat",
-          "views": 240056,
-          "subs": 122000,
-          "published_at": "2025-10-24T01:56:51Z",
-          "coverage": 0.0
-        }
-      ],
-      "domain": null
-    },
-    {
-      "query": "how does cheese get its holes",
-      "status": "ok",
-      "results_examined": 20,
-      "title_match": {
-        "status": "ok",
-        "n": 20,
-        "mean_coverage": 0.683,
-        "max_coverage": 1.0,
-        "strong_match_count": 2,
-        "strong_match_rate": 0.1,
-        "loose_match_rate": 0.05,
-        "gap_signal": 0.9,
-        "interpretation": "2 of 20 ranking titles squarely answer the query"
-      },
-      "view_profile": {
-        "median": 17247.5,
-        "p90": 587014,
-        "max": 3148730,
-        "n": 20
-      },
-      "incumbents": {
-        "median_subscribers": 68150.0,
-        "max_subscribers": 8420000,
-        "under_100k_subs": 11,
-        "n": 20
-      },
-      "recency": {
-        "median_age_days": 941,
-        "published_last_365d": 6,
-        "n": 20
-      },
-      "opportunity_score": 0.676,
-      "opportunity_components": {
-        "title_gap": 0.9,
-        "incumbent_subs": 0.31,
-        "view_ceiling": 0.395,
-        "staleness": 0.7
-      },
-      "opportunity_weights": {
-        "title_gap": 0.5,
-        "incumbent_subs": 0.2,
-        "view_ceiling": 0.15,
-        "staleness": 0.15
-      },
-      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
-      "provenance": {
-        "endpoint": "https://www.googleapis.com/youtube/v3",
-        "calls": [
-          "search.list",
-          "videos.list",
-          "channels.list"
-        ],
-        "region": "US",
-        "language": "en",
-        "order": "relevance",
-        "fetched_utc": "2026-10-17T10:13:29.643705+00:00"
-      },
-      "top_results": [
-        {
-          "title": "Why Does Swiss Cheese Have Holes?",
-          "views": 280412,
-          "subs": 8420000,
-          "published_at": "2014-04-22T18:53:02Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "How they saved the holes in Swiss cheese",
-          "views": 3148730,
-          "subs": 6740000,
-          "published_at": "2023-05-01T15:06:00Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Why Does Swiss Cheese Have Holes? | COLOSSAL QUESTIONS",
-          "views": 162122,
-          "subs": 949000,
-          "published_at": "2023-01-13T18:00:26Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Why Does Some Cheese Have Holes?",
-          "views": 154687,
-          "subs": 1720000,
-          "published_at": "2018-07-24T21:00:06Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Why Does Swiss Cheese Have Holes? | Food Unwrapped",
-          "views": 18789,
-          "subs": 89000,
-          "published_at": "2021-11-11T18:15:01Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Why does Swiss cheese have holes? | #aumsum #kids #science #education #children",
-          "views": 868767,
-          "subs": 4770000,
-          "published_at": "2017-11-23T11:30:26Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Why Is Cheese Full of Holes? The Century-Old Mystery",
-          "views": 8896,
-          "subs": 294000,
-          "published_at": "2026-03-22T17:30:14Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Why Does Swiss Cheese Have Holes?",
-          "views": 66450,
-          "subs": 20800,
-          "published_at": "2024-01-14T00:40:00Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Why Does Swiss Cheese Have Holes? \ud83e\uddc0",
-          "views": 8991,
-          "subs": 59,
-          "published_at": "2026-10-15T15:00:37Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Why does cheese have holes?",
-          "views": 15706,
-          "subs": 8280,
-          "published_at": "2024-09-30T13:22:20Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Why does Swiss cheese have holes? #shorts #science #SciShow",
-          "views": 135624,
-          "subs": 8420000,
-          "published_at": "2022-03-07T20:03:18Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Why Swiss Cheese is Losing Its Holes",
-          "views": 33427,
-          "subs": 4310,
-          "published_at": "2025-09-11T16:00:05Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Why Do Some Cheeses Have Holes? | Uncover the Cheesy Mystery!",
-          "views": 21,
-          "subs": 158,
-          "published_at": "2024-05-24T23:00:32Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "Why Cheese Have Holes? \ud83e\uddc0",
-          "views": 587014,
-          "subs": 2540000,
-          "published_at": "2025-07-07T10:00:04Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Why Does Swiss Cheese Have Holes? (The 100-Year Mystery Solved)",
-          "views": 263,
-          "subs": 47300,
-          "published_at": "2026-09-10T08:30:35Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "WHY DOES CHEESE HAVE HOLES? (Hole Lot&#39;O Fun)",
-          "views": 5460,
-          "subs": 967,
-          "published_at": "2017-04-19T19:35:59Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "How Swiss Cheese Gets Its Holes (No Gnomes Required)",
-          "views": 10,
-          "subs": 59,
-          "published_at": "2026-10-03T23:00:14Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Holey Science: Why are there holes in Swiss Cheese?",
-          "views": 1727,
-          "subs": 10400,
-          "published_at": "2012-05-04T14:47:28Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "How Swiss Cheese Gets Its Holes #shorts #viralvideo",
-          "views": 22,
-          "subs": 44,
-          "published_at": "2026-10-11T17:05:33Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Does Cheese Have Holes? | The Amazing Science Behind Cheese",
-          "views": 167,
-          "subs": 250000,
-          "published_at": "2026-08-29T06:00:12Z",
-          "coverage": 0.667
-        }
-      ],
-      "domain": null
-    },
-    {
-      "query": "why does rice get sticky",
-      "status": "ok",
-      "results_examined": 19,
-      "title_match": {
-        "status": "ok",
-        "n": 19,
-        "mean_coverage": 0.579,
-        "max_coverage": 1.0,
-        "strong_match_count": 1,
-        "strong_match_rate": 0.053,
-        "loose_match_rate": 0.316,
-        "gap_signal": 0.947,
-        "interpretation": "1 of 19 ranking titles squarely answer the query"
-      },
-      "view_profile": {
-        "median": 314982,
-        "p90": 3537616,
-        "max": 7362978,
-        "n": 19
-      },
-      "incumbents": {
-        "median_subscribers": 1110000,
-        "max_subscribers": 22000000,
-        "under_100k_subs": 8,
-        "n": 19
-      },
-      "recency": {
-        "median_age_days": 1585,
-        "published_last_365d": 2,
-        "n": 19
-      },
-      "opportunity_score": 0.667,
-      "opportunity_components": {
-        "title_gap": 0.947,
-        "incumbent_subs": 0.136,
-        "view_ceiling": 0.215,
-        "staleness": 0.895
-      },
-      "opportunity_weights": {
-        "title_gap": 0.5,
-        "incumbent_subs": 0.2,
-        "view_ceiling": 0.15,
-        "staleness": 0.15
-      },
-      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
-      "provenance": {
-        "endpoint": "https://www.googleapis.com/youtube/v3",
-        "calls": [
-          "search.list",
-          "videos.list",
-          "channels.list"
-        ],
-        "region": "US",
-        "language": "en",
-        "order": "relevance",
-        "fetched_utc": "2026-10-17T10:13:50.016488+00:00"
-      },
-      "top_results": [
-        {
-          "title": "Easy Ways to Avoid Sticky Rice by Tarla Dalal",
-          "views": 849303,
-          "subs": 1110000,
-          "published_at": "2014-08-14T10:30:02Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "The Secret to Sticky Rice",
-          "views": 1253723,
-          "subs": 2630000,
-          "published_at": "2025-11-06T03:00:11Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Why Your Rice Is Sticky! Fix It with This Trick",
-          "views": 21191,
-          "subs": 217,
-          "published_at": "2025-03-28T21:30:06Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Easily fix sticky or gummy rice #shorts",
-          "views": 979814,
-          "subs": 31100,
-          "published_at": "2023-07-01T03:43:32Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "How you&#39;ve been cooking rice WRONG your entire life - BBC",
-          "views": 5798842,
-          "subs": 15700000,
-          "published_at": "2018-08-19T19:00:03Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "Easily Make Rice That Isn\u2019t Gummy Or Sticky and Comes Out Perfect Every Time",
-          "views": 25868,
-          "subs": 31100,
-          "published_at": "2022-12-25T22:04:39Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "How to cook perfect fluffy, non sticky rice | Toast first garlic and rice recipe \ud83e\uddc4 \ud83c\udf5a",
-          "views": 229045,
-          "subs": 3860,
-          "published_at": "2020-07-06T12:32:51Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "A Perfect Non Stick Basmati Rice | How to",
-          "views": 60442,
-          "subs": 1910,
-          "published_at": "2022-03-07T18:44:12Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "Tip to avoid sticky rice",
-          "views": 16608,
-          "subs": 4470,
-          "published_at": "2012-11-06T12:02:51Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "How to Make The Perfect Sticky Rice without a Rice Cooker",
-          "views": 903093,
-          "subs": 14200,
-          "published_at": "2024-06-05T12:16:02Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "How To Cook The Perfect Rice | Gordon Ramsay",
-          "views": 7362978,
-          "subs": 22000000,
-          "published_at": "2013-12-05T16:00:00Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "This 37 minute video will change the how you think about Rice.",
-          "views": 1208495,
-          "subs": 2440000,
-          "published_at": "2025-02-27T16:30:09Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "Have I been washing rice wrong",
-          "views": 3537616,
-          "subs": 1980000,
-          "published_at": "2022-06-15T16:00:19Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "20 Minute Sticky Rice Hack | Lao Food Kitchen Hacks with Saeng",
-          "views": 239334,
-          "subs": 167000,
-          "published_at": "2020-07-02T18:00:19Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Why Does Rice Get Sticky When You Cook It?#Rice #FoodScience #Agricultue #ScienceFacts",
-          "views": 1533,
-          "subs": 151,
-          "published_at": "2026-10-08T02:00:08Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "7 Ways to Cook Thai Sticky Rice (with Bonus Hack!) \u0e2b\u0e38\u0e07\u0e02\u0e49\u0e32\u0e27\u0e40\u0e2b\u0e19\u0e35\u0e22\u0e27 7 \u0e27\u0e34\u0e18\u0e35",
-          "views": 1064180,
-          "subs": 2340000,
-          "published_at": "2020-11-06T14:00:09Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Martha Stewart&#39;s Method for Perfect Stovetop Rice",
-          "views": 314982,
-          "subs": 1200000,
-          "published_at": "2022-09-21T13:26:10Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "Try this simple Thai sticky rice recipe | GMA",
-          "views": 207136,
-          "subs": 5510000,
-          "published_at": "2023-02-28T16:00:25Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "RICE DONE RIGHT! | How To Cook Perfect Fluffy Non-Sticky Rice Every Time! Simple, Quick and Easy!",
-          "views": 22406,
-          "subs": 1250000,
-          "published_at": "2019-08-05T15:30:11Z",
-          "coverage": 0.667
-        }
-      ],
-      "domain": null
-    },
-    {
-      "query": "why does chocolate taste so good",
-      "status": "ok",
-      "results_examined": 20,
-      "title_match": {
-        "status": "ok",
-        "n": 20,
-        "mean_coverage": 0.433,
-        "max_coverage": 1.0,
-        "strong_match_count": 1,
-        "strong_match_rate": 0.05,
-        "loose_match_rate": 0.7,
-        "gap_signal": 0.95,
-        "interpretation": "1 of 20 ranking titles squarely answer the query"
-      },
-      "view_profile": {
-        "median": 426763.5,
-        "p90": 5994715,
-        "max": 12529580,
-        "n": 20
-      },
-      "incumbents": {
-        "median_subscribers": 343500.0,
-        "max_subscribers": 4540000,
-        "under_100k_subs": 6,
-        "n": 20
-      },
-      "recency": {
-        "median_age_days": 692,
-        "published_last_365d": 5,
-        "n": 20
-      },
-      "opportunity_score": 0.659,
-      "opportunity_components": {
-        "title_gap": 0.95,
-        "incumbent_subs": 0.209,
-        "view_ceiling": 0.196,
-        "staleness": 0.75
-      },
-      "opportunity_weights": {
-        "title_gap": 0.5,
-        "incumbent_subs": 0.2,
-        "view_ceiling": 0.15,
-        "staleness": 0.15
-      },
-      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
-      "provenance": {
-        "endpoint": "https://www.googleapis.com/youtube/v3",
-        "calls": [
-          "search.list",
-          "videos.list",
-          "channels.list"
-        ],
-        "region": "US",
-        "language": "en",
-        "order": "relevance",
-        "fetched_utc": "2026-10-17T10:13:39.307943+00:00"
-      },
-      "top_results": [
-        {
-          "title": "Why American chocolate taste like vomit #chocolate #hersheychocolate",
-          "views": 524519,
-          "subs": 61600,
-          "published_at": "2025-12-13T12:53:43Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Why Does Chocolate Taste so Good? How Things Work",
-          "views": 22550,
-          "subs": 9600,
-          "published_at": "2025-03-31T06:10:22Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Hershey bars taste like vomit (and I love them)",
-          "views": 3095234,
-          "subs": 2610000,
-          "published_at": "2020-08-03T18:00:02Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "Why Europeans Hate the Taste of American Chocolate - Cheddar Explains",
-          "views": 1319217,
-          "subs": 1060000,
-          "published_at": "2021-04-01T13:00:16Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Why does American Chocolate Taste so BAD? \ud83e\udd22\ud83c\udf6b",
-          "views": 41266,
-          "subs": 61800,
-          "published_at": "2025-03-11T23:49:48Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Why Did WW2 Chocolate Taste Terrible?",
-          "views": 5994715,
-          "subs": 356000,
-          "published_at": "2026-04-15T17:19:33Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "\ud83c\udf6b Chocolate Cheatsheet",
-          "views": 9425089,
-          "subs": 946000,
-          "published_at": "2024-06-22T16:52:26Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "Hershey&#39;s chocolate tastes BAD. Here&#39;s why...",
-          "views": 15256,
-          "subs": 1140,
-          "published_at": "2022-10-21T19:00:33Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "Why Chocolate Tastes Different in the US vs UK",
-          "views": 22352,
-          "subs": 317000,
-          "published_at": "2024-08-08T12:30:32Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "UK vs USA Chocolate",
-          "views": 4397772,
-          "subs": 854000,
-          "published_at": "2025-10-23T17:01:17Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "Which Country Has The BEST Chocolate?",
-          "views": 12529580,
-          "subs": 4540000,
-          "published_at": "2025-04-09T15:43:08Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "Why Europeans hate US American chocolate",
-          "views": 65589,
-          "subs": 261000,
-          "published_at": "2025-07-11T13:00:01Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "Your Brain On Chocolate",
-          "views": 293426,
-          "subs": 944000,
-          "published_at": "2021-09-13T22:01:54Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "Why does chocolate feel so good?",
-          "views": 5554,
-          "subs": 4270000,
-          "published_at": "2023-01-13T17:04:07Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Why Nutella is so addictive",
-          "views": 1721714,
-          "subs": 1040000,
-          "published_at": "2023-06-14T14:40:52Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "Why Norwegian Chocolate is so Popular \ud83c\udf6b\ud83c\uddf3\ud83c\uddf4",
-          "views": 329008,
-          "subs": 1040000,
-          "published_at": "2025-01-17T20:01:23Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "When does dark chocolate become inedible??",
-          "views": 1570992,
-          "subs": 331000,
-          "published_at": "2024-10-01T22:00:16Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "\ud83c\udf6c Double Bubble Gum Is So Good! \ud83d\ude0b | Gum Challenge #asmr",
-          "views": 155277,
-          "subs": 44800,
-          "published_at": "2026-10-16T09:00:36Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "\ud83d\udca5\u0b9f\u0bcb\u0baa\u0bcd\u0bb2\u0bb0\u0bcb\u0ba9\u0bcd Chocolate \u0b9a\u0bc6\u0baf\u0bcd\u0bb5\u0ba4\u0bc1 \u0b8e\u0baa\u0bcd\u0baa\u0b9f\u0bbf  #shorts #shortsfeed",
-          "views": 114418,
-          "subs": 132000,
-          "published_at": "2026-10-15T13:11:16Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "Shocking Truth About Dark Chocolate",
-          "views": 599374,
-          "subs": 64400,
-          "published_at": "2023-10-07T06:00:01Z",
-          "coverage": 0.333
-        }
-      ],
-      "domain": null
-    },
-    {
-      "query": "why does seared meat taste good",
-      "status": "ok",
-      "results_examined": 20,
-      "title_match": {
-        "status": "ok",
-        "n": 20,
-        "mean_coverage": 0.075,
-        "max_coverage": 0.5,
-        "strong_match_count": 0,
-        "strong_match_rate": 0.0,
-        "loose_match_rate": 0.95,
-        "gap_signal": 1.0,
-        "interpretation": "nobody has made the definitive video on this query"
-      },
-      "view_profile": {
-        "median": 2669937.5,
-        "p90": 15313161,
-        "max": 82142084,
-        "n": 20
-      },
-      "incumbents": {
-        "median_subscribers": 2520000.0,
-        "max_subscribers": 47600000,
-        "under_100k_subs": 3,
-        "n": 20
-      },
-      "recency": {
-        "median_age_days": 767,
-        "published_last_365d": 3,
-        "n": 20
-      },
-      "opportunity_score": 0.657,
-      "opportunity_components": {
-        "title_gap": 1.0,
-        "incumbent_subs": 0.086,
-        "view_ceiling": 0.082,
-        "staleness": 0.85
-      },
-      "opportunity_weights": {
-        "title_gap": 0.5,
-        "incumbent_subs": 0.2,
-        "view_ceiling": 0.15,
-        "staleness": 0.15
-      },
-      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
-      "provenance": {
-        "endpoint": "https://www.googleapis.com/youtube/v3",
-        "calls": [
-          "search.list",
-          "videos.list",
-          "channels.list"
-        ],
-        "region": "US",
-        "language": "en",
-        "order": "relevance",
-        "fetched_utc": "2026-10-17T10:13:52.238855+00:00"
-      },
-      "top_results": [
-        {
-          "title": "How To Master The Maillard Reaction &amp; Sear Meat Perfectly | Epicurious 101",
-          "views": 661435,
-          "subs": 6320000,
-          "published_at": "2022-10-11T16:00:12Z",
-          "coverage": 0.25
-        },
-        {
-          "title": "Why you should wait after salting steak.",
-          "views": 14772742,
-          "subs": 1760000,
-          "published_at": "2025-02-14T17:52:19Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "How to PERFECTLY Pan-Sear Steak",
-          "views": 2193548,
-          "subs": 10300000,
-          "published_at": "2024-09-15T15:00:05Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "Reverse Sear VS Forward Sear",
-          "views": 3146327,
-          "subs": 61700,
-          "published_at": "2025-07-17T23:00:03Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "This is why Steaks are better in Restaurants",
-          "views": 7881457,
-          "subs": 2520000,
-          "published_at": "2024-09-17T16:59:47Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "Master the Art of Pan Fried Steaks",
-          "views": 9334129,
-          "subs": 2520000,
-          "published_at": "2024-09-05T17:18:32Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "What\u2019s better? PAN SEARED vs GRILLED STEAK \ud83e\udd69 #Shorts #Food #steak",
-          "views": 13300,
-          "subs": 203000,
-          "published_at": "2022-10-24T19:18:41Z",
-          "coverage": 0.25
-        },
-        {
-          "title": "4 Butter Basting Mistakes to Stop Making",
-          "views": 32428233,
-          "subs": 10300000,
-          "published_at": "2022-06-03T20:26:40Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "Why Seared Meat Tastes Better Than Boiled #shorts #science #cooking",
-          "views": 10,
-          "subs": 158,
-          "published_at": "2026-10-08T19:35:30Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "How to perfectly cook steak every time (COLD SEARING)",
-          "views": 1342159,
-          "subs": 749000,
-          "published_at": "2025-03-01T13:00:26Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "Reverse Sear vs Forward Sear \ud83e\udd69",
-          "views": 1641579,
-          "subs": 6340000,
-          "published_at": "2026-08-22T11:15:25Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "Should steaks be left at room temp before cooking?",
-          "views": 9750524,
-          "subs": 10300000,
-          "published_at": "2022-03-02T21:00:07Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "Pan Seared Steak",
-          "views": 1742485,
-          "subs": 1470000,
-          "published_at": "2023-02-14T12:32:46Z",
-          "coverage": 0.25
-        },
-        {
-          "title": "What&#39;s Better: Traditional Sear Vs Reverse Sear?  | Made In Cookware",
-          "views": 23724,
-          "subs": 96000,
-          "published_at": "2024-03-21T11:00:22Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "This is why Salmon tastes better in Restaurants",
-          "views": 15313161,
-          "subs": 2520000,
-          "published_at": "2024-08-26T18:06:29Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "This Is How To Cook Steak Perfectly Every Time",
-          "views": 5246385,
-          "subs": 1670000,
-          "published_at": "2024-01-12T20:00:14Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "My Steak Crust/Sear Method",
-          "views": 3378702,
-          "subs": 1660000,
-          "published_at": "2024-12-14T19:42:14Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "5 Steps to the Perfect Steak",
-          "views": 1484679,
-          "subs": 4610000,
-          "published_at": "2023-05-22T10:00:39Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "Seared Steak with Fresh Black Truffle",
-          "views": 428135,
-          "subs": 5450000,
-          "published_at": "2025-01-16T01:05:00Z",
-          "coverage": 0.25
-        },
-        {
-          "title": "Perfectly Medium Steak",
-          "views": 82142084,
-          "subs": 47600000,
-          "published_at": "2026-02-06T17:00:07Z",
-          "coverage": 0.0
-        }
-      ],
-      "domain": null
-    },
-    {
-      "query": "why do chili peppers taste hot",
-      "status": "ok",
-      "results_examined": 20,
-      "title_match": {
-        "status": "ok",
-        "n": 20,
-        "mean_coverage": 0.338,
-        "max_coverage": 0.75,
-        "strong_match_count": 2,
-        "strong_match_rate": 0.1,
-        "loose_match_rate": 0.45,
-        "gap_signal": 0.9,
-        "interpretation": "2 of 20 ranking titles squarely answer the query"
-      },
-      "view_profile": {
-        "median": 94960.0,
-        "p90": 5061781,
-        "max": 27667789,
-        "n": 20
-      },
-      "incumbents": {
-        "median_subscribers": 934000.0,
-        "max_subscribers": 29200000,
-        "under_100k_subs": 6,
-        "n": 20
-      },
-      "recency": {
-        "median_age_days": 1165,
-        "published_last_365d": 5,
-        "n": 20
-      },
-      "opportunity_score": 0.635,
-      "opportunity_components": {
-        "title_gap": 0.9,
-        "incumbent_subs": 0.147,
-        "view_ceiling": 0.289,
-        "staleness": 0.75
-      },
-      "opportunity_weights": {
-        "title_gap": 0.5,
-        "incumbent_subs": 0.2,
-        "view_ceiling": 0.15,
-        "staleness": 0.15
-      },
-      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
-      "provenance": {
-        "endpoint": "https://www.googleapis.com/youtube/v3",
-        "calls": [
-          "search.list",
-          "videos.list",
-          "channels.list"
-        ],
-        "region": "US",
-        "language": "en",
-        "order": "relevance",
-        "fetched_utc": "2026-10-17T10:13:32.133969+00:00"
-      },
-      "top_results": [
-        {
-          "title": "The science of spiciness - Rose Eveleth",
-          "views": 5061781,
-          "subs": 23000000,
-          "published_at": "2014-03-10T15:08:46Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "How Does Spicy Food Work? Spiciness, Explained With Science",
-          "views": 21465,
-          "subs": 6710000,
-          "published_at": "2022-07-20T19:20:44Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "\ud83d\udd25 Why Are Chili Peppers So Spicy? \ud83c\udf36\ufe0f | Amazing Science Behind the Heat! \ud83e\udde0 #facts",
-          "views": 5427,
-          "subs": 346,
-          "published_at": "2024-10-05T17:53:14Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "How Eating Spicy Food Affects Your Brain And Body | The Human Body",
-          "views": 1268856,
-          "subs": 4220000,
-          "published_at": "2017-10-30T23:00:06Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "Why Spicy Foods Make Your Mouth Hot \ud83e\udd75",
-          "views": 27667789,
-          "subs": 29200000,
-          "published_at": "2023-08-20T14:30:03Z",
-          "coverage": 0.25
-        },
-        {
-          "title": "Why Do We Like Spicy Food?",
-          "views": 3730671,
-          "subs": 2010000,
-          "published_at": "2023-07-29T16:16:18Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "Why Do Peppers Taste Hot and Mint Taste Cold?",
-          "views": 68571,
-          "subs": 3250000,
-          "published_at": "2016-12-31T00:39:36Z",
-          "coverage": 0.75
-        },
-        {
-          "title": "Why Do Some People Tolerate Spicy Food?",
-          "views": 504290,
-          "subs": 8420000,
-          "published_at": "2017-04-22T21:00:01Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "Why Do Chili Peppers Feel Hot? #shorts",
-          "views": 115,
-          "subs": 6,
-          "published_at": "2026-10-05T16:00:36Z",
-          "coverage": 0.75
-        },
-        {
-          "title": "\ud83c\udf36\ufe0fWhy Do Chilis Taste So Spicy\u2753 #shorts #trivia #comedy",
-          "views": 1387334,
-          "subs": 165000,
-          "published_at": "2025-07-16T10:30:18Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "I Grew and Tasted the World\u2019s HOTTEST Chili Peppers! \ud83e\udd75\ud83c\udf36\ufe0f\ud83d\udd25",
-          "views": 37077,
-          "subs": 528000,
-          "published_at": "2024-09-06T19:00:16Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "I Tasted the Spiciest Peppers in the World",
-          "views": 10994767,
-          "subs": 10300000,
-          "published_at": "2025-12-23T22:08:13Z",
-          "coverage": 0.25
-        },
-        {
-          "title": "Smokin&#39; Ed Currie Tastes 10 Of The Hottest Peppers in the World | Epicurious",
-          "views": 3420968,
-          "subs": 6320000,
-          "published_at": "2023-01-10T17:00:13Z",
-          "coverage": 0.25
-        },
-        {
-          "title": "The Science of Why Chilli Peppers Taste Spicy",
-          "views": 1767,
-          "subs": 4760,
-          "published_at": "2025-01-16T04:00:39Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "What Makes Chili Peppers Spicy? #viral #foryou",
-          "views": 367,
-          "subs": 715,
-          "published_at": "2026-10-16T15:13:30Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "\ud83c\udf36\ufe0f Why Do Chili Peppers Actually Burn?",
-          "views": 1444,
-          "subs": 7,
-          "published_at": "2026-10-16T20:41:04Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "Hatch Chile Peppers | What They Are &amp; How They Taste",
-          "views": 39298,
-          "subs": 74600,
-          "published_at": "2022-08-22T22:53:45Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "What Are The 5 Kinds of CHILI PEPPERS? (also my top secret chili recipe) -Weird Fruit Explorer",
-          "views": 61337,
-          "subs": 463000,
-          "published_at": "2022-04-10T14:54:54Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "\ud83c\udf36\ufe0f All chipotles are jalape\u00f1os, but not all jalape\u00f1os become chipotles\u2026make sense?!",
-          "views": 3431649,
-          "subs": 1340000,
-          "published_at": "2026-02-23T17:01:54Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "15 Health Benefits Of Chili Peppers That Will Surprise You\u2757\ufe0f",
-          "views": 121349,
-          "subs": 440000,
-          "published_at": "2022-03-21T14:00:00Z",
-          "coverage": 0.5
-        }
-      ],
-      "domain": null
-    },
-    {
-      "query": "how does butter get made from cream",
-      "status": "ok",
-      "results_examined": 20,
-      "title_match": {
-        "status": "ok",
-        "n": 20,
-        "mean_coverage": 0.375,
-        "max_coverage": 0.75,
-        "strong_match_count": 2,
-        "strong_match_rate": 0.1,
-        "loose_match_rate": 0.6,
-        "gap_signal": 0.9,
-        "interpretation": "2 of 20 ranking titles squarely answer the query"
-      },
-      "view_profile": {
-        "median": 2218591.5,
-        "p90": 8459259,
-        "max": 15423760,
-        "n": 20
-      },
-      "incumbents": {
-        "median_subscribers": 1695000.0,
-        "max_subscribers": 6410000,
-        "under_100k_subs": 4,
-        "n": 20
-      },
-      "recency": {
-        "median_age_days": 1045,
-        "published_last_365d": 3,
-        "n": 20
-      },
-      "opportunity_score": 0.614,
-      "opportunity_components": {
-        "title_gap": 0.9,
-        "incumbent_subs": 0.11,
-        "view_ceiling": 0.093,
-        "staleness": 0.85
-      },
-      "opportunity_weights": {
-        "title_gap": 0.5,
-        "incumbent_subs": 0.2,
-        "view_ceiling": 0.15,
-        "staleness": 0.15
-      },
-      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
-      "provenance": {
-        "endpoint": "https://www.googleapis.com/youtube/v3",
-        "calls": [
-          "search.list",
-          "videos.list",
-          "channels.list"
-        ],
-        "region": "US",
-        "language": "en",
-        "order": "relevance",
-        "fetched_utc": "2026-10-17T10:13:28.523716+00:00"
-      },
-      "top_results": [
-        {
-          "title": "Homemade Butter",
-          "views": 15423760,
-          "subs": 6410000,
-          "published_at": "2025-08-09T16:00:52Z",
-          "coverage": 0.25
-        },
-        {
-          "title": "Let&#39;s Make Butter! - #sciencegoals",
-          "views": 457452,
-          "subs": 1720000,
-          "published_at": "2017-04-13T22:59:57Z",
-          "coverage": 0.25
-        },
-        {
-          "title": "Make Butter in 10 Minutes or Less! | Chef Jean-Pierre",
-          "views": 7828625,
-          "subs": 2480000,
-          "published_at": "2022-11-28T15:00:41Z",
-          "coverage": 0.25
-        },
-        {
-          "title": "How It&#39;s Made: Butter",
-          "views": 531380,
-          "subs": 166000,
-          "published_at": "2023-02-06T21:45:01Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "How It&#39;s Actually Made - Butter",
-          "views": 6119828,
-          "subs": 2470000,
-          "published_at": "2021-02-18T22:27:41Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "How to Make Old Fashioned Butter",
-          "views": 1609148,
-          "subs": 4500000,
-          "published_at": "2023-09-26T15:00:12Z",
-          "coverage": 0.25
-        },
-        {
-          "title": "Homemade Butter In 10 Minutes Using 1 Ingredient",
-          "views": 461489,
-          "subs": 1670000,
-          "published_at": "2023-10-18T19:30:04Z",
-          "coverage": 0.25
-        },
-        {
-          "title": "Making Fresh Butter",
-          "views": 342841,
-          "subs": 607000,
-          "published_at": "2024-11-24T23:30:04Z",
-          "coverage": 0.25
-        },
-        {
-          "title": "This is how they make butter- The first ingredient will shock you",
-          "views": 2844062,
-          "subs": 115000,
-          "published_at": "2023-08-24T11:27:22Z",
-          "coverage": 0.25
-        },
-        {
-          "title": "Fresh butter in under 15 minutes #sustainableliving #homemade #homemadebutter",
-          "views": 7228473,
-          "subs": 695000,
-          "published_at": "2025-10-06T22:07:18Z",
-          "coverage": 0.25
-        },
-        {
-          "title": "Whipping Heavy Cream into Butter \ud83e\uddc8\ud83e\udd5b\ud83e\udd17",
-          "views": 303894,
-          "subs": 11500,
-          "published_at": "2024-04-26T00:58:50Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "Is cultured butter worth it? \ud83e\uddc8",
-          "views": 1771588,
-          "subs": 5400000,
-          "published_at": "2025-01-31T16:31:38Z",
-          "coverage": 0.25
-        },
-        {
-          "title": "How Butter Used To Be Made",
-          "views": 11755398,
-          "subs": 566000,
-          "published_at": "2026-05-08T20:38:46Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "How butter is made in a factory from cream to blocks #butter #satisfying",
-          "views": 120078,
-          "subs": 95,
-          "published_at": "2026-10-16T02:58:52Z",
-          "coverage": 0.75
-        },
-        {
-          "title": "Home made butter \ud83e\uddc8 #shorts",
-          "views": 2665595,
-          "subs": 6340000,
-          "published_at": "2023-08-26T10:53:30Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "Turning cream into butter",
-          "views": 3173339,
-          "subs": 3610000,
-          "published_at": "2024-01-25T17:00:00Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "This week I learned to make butter",
-          "views": 8459259,
-          "subs": 2930000,
-          "published_at": "2023-05-02T19:32:19Z",
-          "coverage": 0.25
-        },
-        {
-          "title": "Making Butter In Early America #history #cooking #dairyfarm #butter",
-          "views": 434906,
-          "subs": 2990000,
-          "published_at": "2025-10-14T22:02:09Z",
-          "coverage": 0.25
-        },
-        {
-          "title": "Churning in the Olden Days -- Irish Butter Making",
-          "views": 262820,
-          "subs": 51900,
-          "published_at": "2019-02-27T15:52:16Z",
-          "coverage": 0.25
-        },
-        {
-          "title": "How Butter Is Made in Factory \ud83e\uddc8 | From Cream to Butter Blocks",
-          "views": 6057505,
-          "subs": 13400,
-          "published_at": "2026-01-02T15:43:55Z",
-          "coverage": 0.75
-        }
-      ],
-      "domain": null
-    },
-    {
-      "query": "why does steak taste better seared",
-      "status": "ok",
-      "results_examined": 20,
-      "title_match": {
-        "status": "ok",
-        "n": 20,
-        "mean_coverage": 0.35,
-        "max_coverage": 0.75,
-        "strong_match_count": 3,
-        "strong_match_rate": 0.15,
-        "loose_match_rate": 0.65,
-        "gap_signal": 0.85,
-        "interpretation": "3 of 20 ranking titles squarely answer the query"
-      },
-      "view_profile": {
-        "median": 4402967.0,
-        "p90": 14772742,
-        "max": 32428233,
-        "n": 20
-      },
-      "incumbents": {
-        "median_subscribers": 2020000.0,
-        "max_subscribers": 10300000,
-        "under_100k_subs": 3,
-        "n": 20
-      },
-      "recency": {
-        "median_age_days": 908,
+        "median_age_days": 1429,
         "published_last_365d": 0,
         "n": 20
       },
-      "opportunity_score": 0.602,
+      "opportunity_score": 0.691,
       "opportunity_components": {
-        "title_gap": 0.85,
-        "incumbent_subs": 0.099,
-        "view_ceiling": 0.051,
+        "title_gap": 0.9,
+        "incumbent_subs": 0.289,
+        "view_ceiling": 0.223,
         "staleness": 1.0
       },
       "opportunity_weights": {
@@ -2485,190 +68,190 @@
         "region": "US",
         "language": "en",
         "order": "relevance",
-        "fetched_utc": "2026-10-17T10:13:54.527923+00:00"
+        "fetched_utc": "2026-10-31T15:40:56.440221+00:00"
       },
       "top_results": [
         {
-          "title": "This is why Steaks are better in Restaurants",
-          "views": 7881457,
-          "subs": 2520000,
-          "published_at": "2024-09-17T16:59:47Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "Is that raw?? No. Medium Rare Steak Perfection",
-          "views": 10446293,
-          "subs": 2280000,
-          "published_at": "2021-04-11T17:45:08Z",
-          "coverage": 0.25
-        },
-        {
-          "title": "Master the Art of Pan Fried Steaks",
-          "views": 9334129,
-          "subs": 2520000,
-          "published_at": "2024-09-05T17:18:32Z",
-          "coverage": 0.25
-        },
-        {
-          "title": "Why Steaks in Restaurants are Better",
-          "views": 22170522,
-          "subs": 1660000,
-          "published_at": "2024-04-08T12:00:06Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "The Ultimate Steak Hack | How to Nail the Reverse Sear",
-          "views": 1268218,
-          "subs": 2520000,
-          "published_at": "2021-02-21T21:07:59Z",
-          "coverage": 0.25
-        },
-        {
-          "title": "What\u2019s better? PAN SEARED vs GRILLED STEAK \ud83e\udd69 #Shorts #Food #steak",
-          "views": 13300,
-          "subs": 203000,
-          "published_at": "2022-10-24T19:18:41Z",
+          "title": "How to fix grainy thick melted chocolate (seized chocolate) #chocolate #foodscience",
+          "views": 272165,
+          "subs": 69400,
+          "published_at": "2025-03-26T01:25:14Z",
           "coverage": 0.75
         },
         {
-          "title": "White vs. Black: We Try Each Other&#39;s Steaks | Taste Wars",
-          "views": 3711891,
-          "subs": 1340000,
-          "published_at": "2025-07-11T19:00:06Z",
-          "coverage": 0.5
+          "title": "More stirring, less heat to fix your clumpy chocolate! #chocolate",
+          "views": 8546,
+          "subs": 1670,
+          "published_at": "2023-06-13T03:15:51Z",
+          "coverage": 0.25
         },
         {
-          "title": "Reverse Sear VS Forward Sear",
-          "views": 3146310,
-          "subs": 61700,
-          "published_at": "2025-07-17T23:00:03Z",
+          "title": "How to Fix Seized Chocolate: Kitchen Hack Advent Calendar Day 22 #Shorts",
+          "views": 84943,
+          "subs": 3060000,
+          "published_at": "2022-12-22T20:00:26Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Melted Chocolate Too Thick",
+          "views": 13054,
+          "subs": 16800,
+          "published_at": "2022-01-26T18:45:59Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Super Quick Video Tips: How to Fix Seized Chocolate",
+          "views": 512354,
+          "subs": 3060000,
+          "published_at": "2012-03-20T19:54:25Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "saving broken ganache",
+          "views": 76702,
+          "subs": 1380000,
+          "published_at": "2022-03-29T18:18:01Z",
           "coverage": 0.0
         },
         {
-          "title": "Grilled vs Pan Seared Steak: Which is Better?",
-          "views": 6867,
-          "subs": 37400,
-          "published_at": "2024-06-13T21:12:15Z",
-          "coverage": 0.75
-        },
-        {
-          "title": "Why does steak taste better dry-aged?",
-          "views": 42743,
-          "subs": 574,
-          "published_at": "2025-07-21T12:43:38Z",
-          "coverage": 0.75
-        },
-        {
-          "title": "This Is How To Cook Steak Perfectly Every Time",
-          "views": 5246385,
-          "subs": 1670000,
-          "published_at": "2024-01-12T20:00:14Z",
+          "title": "How to melt chocolate (the right way) \ud83c\udf6b #meltchocolate #chocolatelover",
+          "views": 1760535,
+          "subs": 119000,
+          "published_at": "2023-12-19T00:15:41Z",
           "coverage": 0.25
         },
         {
-          "title": "Why you should wait after salting steak.",
-          "views": 14772742,
-          "subs": 1760000,
-          "published_at": "2025-02-14T17:52:19Z",
-          "coverage": 0.25
-        },
-        {
-          "title": "How to PERFECTLY Pan-Sear Steak",
-          "views": 2193548,
-          "subs": 10300000,
-          "published_at": "2024-09-15T15:00:05Z",
-          "coverage": 0.25
-        },
-        {
-          "title": "My 5 tips for the perfect grilled steak #shorts",
-          "views": 868019,
-          "subs": 358000,
-          "published_at": "2024-01-02T21:25:20Z",
-          "coverage": 0.25
-        },
-        {
-          "title": "5 Steps to the Perfect Steak",
-          "views": 1484673,
-          "subs": 4610000,
-          "published_at": "2023-05-22T10:00:39Z",
-          "coverage": 0.25
-        },
-        {
-          "title": "4 Butter Basting Mistakes to Stop Making",
-          "views": 32428233,
-          "subs": 10300000,
-          "published_at": "2022-06-03T20:26:40Z",
+          "title": "HOW TO MELT &amp; THIN OUT CANDY MELTS FOR CAKE POPS",
+          "views": 66069,
+          "subs": 14500,
+          "published_at": "2019-06-26T21:04:21Z",
           "coverage": 0.0
         },
         {
-          "title": "Cast Iron Steak!",
-          "views": 11175484,
-          "subs": 3500000,
-          "published_at": "2022-05-13T13:15:00Z",
+          "title": "HOW TO SAVE &quot;RUINED&quot; CHOCOLATE - 2 ways to fix seized chocolate #shorts",
+          "views": 277825,
+          "subs": 3690,
+          "published_at": "2021-02-08T14:59:00Z",
           "coverage": 0.25
         },
         {
-          "title": "Why Do Our Parents Like WELL-DONE Steak?",
-          "views": 11462193,
-          "subs": 6270000,
-          "published_at": "2024-05-06T03:08:46Z",
+          "title": "How to Melt Chocolate, the Right Way! - Kitchen Conundrums with Thomas Joseph",
+          "views": 3007176,
+          "subs": 1730000,
+          "published_at": "2014-09-23T13:00:05Z",
           "coverage": 0.25
         },
         {
-          "title": "Reverse Seared Chuck Steak is one of the most flavorful and affordable ways to enjoy steak.",
-          "views": 1764058,
-          "subs": 649000,
-          "published_at": "2024-01-20T16:00:07Z",
+          "title": "How to melt your chocolate .. perfectly \ud83e\udd2d",
+          "views": 32047,
+          "subs": 643000,
+          "published_at": "2025-05-26T19:59:38Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Thick &amp; gloppy chocolate? Dipping Truffles/Pretzels HACK!",
+          "views": 4937,
+          "subs": 44900,
+          "published_at": "2022-11-12T18:44:56Z",
           "coverage": 0.5
         },
         {
-          "title": "The Best Way To Make Steak",
-          "views": 5094043,
-          "subs": 3580000,
-          "published_at": "2024-12-20T14:01:05Z",
+          "title": "3 Easy Ways to Melt Chocolate | Allrecipes",
+          "views": 1249325,
+          "subs": 3590000,
+          "published_at": "2021-02-10T15:26:22Z",
           "coverage": 0.25
+        },
+        {
+          "title": "Fix Chocolate Ganache | Ganache gone bad? Oily ganache|",
+          "views": 33672,
+          "subs": 2260,
+          "published_at": "2022-09-17T15:00:05Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Why Temper Dark Chocolate and How To Do It",
+          "views": 12706402,
+          "subs": 1380000,
+          "published_at": "2023-05-01T14:00:00Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "How to melt chocolate #chocolate #chocolatecoveredstrawberries #howto #tutorial #meltingchocolate",
+          "views": 483399,
+          "subs": 17100,
+          "published_at": "2023-04-15T19:53:50Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Tips When Melting Chocolate",
+          "views": 1222541,
+          "subs": 2330,
+          "published_at": "2022-09-29T02:11:07Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "How I make my chocolate melt runny #viral #shorts #chocolatelover #chocolates #chocolatelovers",
+          "views": 376816,
+          "subs": 195000,
+          "published_at": "2023-07-25T23:16:38Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "Why Your Chocolate Won\u2019t Set: Tempering Tutorial \ud83c\udf6b",
+          "views": 18978447,
+          "subs": 632000,
+          "published_at": "2025-07-05T19:23:53Z",
+          "coverage": 0.25
+        },
+        {
+          "title": "How to melt Nutella | Melting Nutella is easier than you thought #viral #trending #shorts #nutella",
+          "views": 103162,
+          "subs": 1440,
+          "published_at": "2023-12-27T23:36:59Z",
+          "coverage": 0.0
         }
       ],
       "domain": null
     },
     {
-      "query": "why does coffee taste bitter",
+      "query": "what to do when chocolate is not melting",
       "status": "ok",
       "results_examined": 20,
       "title_match": {
         "status": "ok",
         "n": 20,
-        "mean_coverage": 0.7,
-        "max_coverage": 1.0,
-        "strong_match_count": 6,
-        "strong_match_rate": 0.3,
-        "loose_match_rate": 0.15,
-        "gap_signal": 0.7,
-        "interpretation": "6 of 20 ranking titles squarely answer the query"
+        "mean_coverage": 0.367,
+        "max_coverage": 0.667,
+        "strong_match_count": 0,
+        "strong_match_rate": 0.0,
+        "loose_match_rate": 0.9,
+        "gap_signal": 1.0,
+        "interpretation": "nobody has made the definitive video on this query"
       },
       "view_profile": {
-        "median": 44027.0,
-        "p90": 921808,
-        "max": 1347215,
+        "median": 653011.5,
+        "p90": 12706402,
+        "max": 28430521,
         "n": 20
       },
       "incumbents": {
-        "median_subscribers": 148550.0,
-        "max_subscribers": 2570000,
-        "under_100k_subs": 10,
+        "median_subscribers": 552500.0,
+        "max_subscribers": 3590000,
+        "under_100k_subs": 8,
         "n": 20
       },
       "recency": {
-        "median_age_days": 1212,
-        "published_last_365d": 5,
+        "median_age_days": 874,
+        "published_last_365d": 3,
         "n": 20
       },
-      "opportunity_score": 0.565,
+      "opportunity_score": 0.689,
       "opportunity_components": {
-        "title_gap": 0.7,
-        "incumbent_subs": 0.261,
-        "view_ceiling": 0.337,
-        "staleness": 0.75
+        "title_gap": 1.0,
+        "incumbent_subs": 0.18,
+        "view_ceiling": 0.169,
+        "staleness": 0.85
       },
       "opportunity_weights": {
         "title_gap": 0.5,
@@ -2687,154 +270,356 @@
         "region": "US",
         "language": "en",
         "order": "relevance",
-        "fetched_utc": "2026-10-17T10:13:40.614896+00:00"
+        "fetched_utc": "2026-10-31T15:40:55.266214+00:00"
       },
       "top_results": [
         {
-          "title": "Why Does my Coffee Taste Bitter, Sour or Burnt? #coffee",
-          "views": 185636,
-          "subs": 28700,
-          "published_at": "2020-06-18T23:01:11Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Does My Coffee Taste Bitter? 15 Reasons &amp; How to Fix It.",
-          "views": 2089,
-          "subs": 29300,
-          "published_at": "2020-11-29T01:11:44Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Your Coffee Tastes Bitter (And How To Fix It)",
-          "views": 195608,
-          "subs": 25400,
-          "published_at": "2026-05-19T11:00:36Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Why Does My Coffee Taste Bitter [Common Brewing Mistakes And Remedies]",
-          "views": 1544,
-          "subs": 189,
-          "published_at": "2020-06-05T16:13:27Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why your Coffee is Sour/Bitter! (and how to fix it)",
-          "views": 320014,
-          "subs": 456000,
-          "published_at": "2025-02-25T20:21:07Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Why Is My Espresso Bitter? Common Causes and How to Fix Them! #espresso",
-          "views": 35970,
-          "subs": 693000,
-          "published_at": "2024-12-21T14:00:20Z",
+          "title": "How to fix grainy thick melted chocolate (seized chocolate) #chocolate #foodscience",
+          "views": 272165,
+          "subs": 69400,
+          "published_at": "2025-03-26T01:25:14Z",
           "coverage": 0.333
         },
         {
-          "title": "Bitter Espresso: The top 3 reasons your coffee tastes bitter",
-          "views": 176758,
-          "subs": 207000,
-          "published_at": "2020-09-14T05:00:00Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "How To Taste Acidity &amp; Bitterness In Coffee",
-          "views": 25664,
-          "subs": 396000,
-          "published_at": "2023-08-14T20:30:00Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Is There a Coffee That Isn\u2019t Bitter?",
-          "views": 946,
-          "subs": 2980,
-          "published_at": "2025-02-13T12:30:33Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "What Does A Great Cup Of Coffee Taste Like?",
-          "views": 1347215,
-          "subs": 2570000,
-          "published_at": "2024-05-17T15:00:23Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Why Your Coffee Tastes Bitter or Sour",
-          "views": 26,
-          "subs": 2,
-          "published_at": "2026-10-14T00:00:28Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Why Is Your Coffee Bitter/Sour?",
-          "views": 6253,
-          "subs": 8580,
-          "published_at": "2020-10-05T14:00:01Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Why does my coffee taste bitter? Why and how to fix it! #espresso #espressocoffee",
-          "views": 16942,
-          "subs": 693000,
-          "published_at": "2022-11-18T15:30:09Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Coffee Aroma vs. Taste: Why It\u2019s Bitter &amp; How to Fix",
-          "views": 869,
-          "subs": 234,
-          "published_at": "2026-01-21T00:09:17Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Chef Tip (How to fix bitter coffee) #shorts",
-          "views": 84877,
-          "subs": 1250000,
-          "published_at": "2022-10-14T18:31:34Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Think Your Coffee Is Bitter? It Might Be Astringent (Here\u2019s the Fix)",
-          "views": 60352,
-          "subs": 456000,
-          "published_at": "2026-05-09T13:25:32Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "No More Bitter Coffee! How to Improve The Taste of Your Morning Cup of Coffee! | FIX.com",
-          "views": 39346,
-          "subs": 90100,
-          "published_at": "2019-05-16T18:58:46Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Fix Sour or Bitter Espresso With These 3 Recipes #espresso #homebarista #espressomachine #coffee",
-          "views": 48708,
-          "subs": 21100,
-          "published_at": "2026-01-27T14:52:38Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Doctor Explains How Salt Makes Coffee Sweeter!",
-          "views": 1046732,
-          "subs": 2240000,
-          "published_at": "2023-05-02T16:28:33Z",
+          "title": "Super Quick Video Tips: How to Fix Seized Chocolate",
+          "views": 512354,
+          "subs": 3060000,
+          "published_at": "2012-03-20T19:54:25Z",
           "coverage": 0.333
         },
         {
-          "title": "Here\u2019s why your espresso is bad. #espresso",
-          "views": 921808,
-          "subs": 1210000,
-          "published_at": "2023-01-12T20:46:33Z",
+          "title": "We Finally Know Exactly Why Chocolate No Longer Melts\u2026",
+          "views": 553271,
+          "subs": 3180000,
+          "published_at": "2026-04-02T20:36:03Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "What To Do When Chocolate Chips Won\u2019t Melt",
+          "views": 18094,
+          "subs": 16800,
+          "published_at": "2023-01-24T06:00:06Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "How to Fix Seized Chocolate: Kitchen Hack Advent Calendar Day 22 #Shorts",
+          "views": 84943,
+          "subs": 3060000,
+          "published_at": "2022-12-22T20:00:26Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Chocolate that WON\u2019T melt?! \ud83d\ude33\ud83c\udf6b",
+          "views": 752752,
+          "subs": 18600,
+          "published_at": "2026-05-06T09:35:06Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Why Your Chocolate Won\u2019t Set: Tempering Tutorial \ud83c\udf6b",
+          "views": 18978447,
+          "subs": 632000,
+          "published_at": "2025-07-05T19:23:53Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Let\u2019s find out if chocolate still melts (testing if chocolate doesn\u2019t melt anymore) #chocolate #her",
+          "views": 1779061,
+          "subs": 5660,
+          "published_at": "2026-04-02T01:55:13Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "How to Melt Chocolate, the Right Way! - Kitchen Conundrums with Thomas Joseph",
+          "views": 3007176,
+          "subs": 1730000,
+          "published_at": "2014-09-23T13:00:05Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Avoid this COMMON mistake using Candy Melts #food #cooking #cakepops #chocolate",
+          "views": 49077,
+          "subs": 283,
+          "published_at": "2023-10-21T22:04:10Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "How to melt chocolate (the right way) \ud83c\udf6b #meltchocolate #chocolatelover",
+          "views": 1760535,
+          "subs": 119000,
+          "published_at": "2023-12-19T00:15:41Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "This Chocolate Can\u2019t Melt \ud83c\udf6b",
+          "views": 12218658,
+          "subs": 3000000,
+          "published_at": "2024-11-29T19:57:13Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "3 Easy Ways to Melt Chocolate | Allrecipes",
+          "views": 1249325,
+          "subs": 3590000,
+          "published_at": "2021-02-10T15:26:22Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Why Temper Dark Chocolate and How To Do It",
+          "views": 12706402,
+          "subs": 1380000,
+          "published_at": "2023-05-01T14:00:00Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "This Chocolate Bar Refuses to Melt\u2026 No Matter What You Do \ud83c\udf6b",
+          "views": 74957,
+          "subs": 11600,
+          "published_at": "2025-05-17T07:31:32Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "This Chocolate Can\u2019t Melt \ud83c\udf6b (Part 3)",
+          "views": 8529925,
+          "subs": 3000000,
+          "published_at": "2025-07-04T18:54:04Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "How to keep chocolate from melting without a refrigerator?",
+          "views": 4218,
+          "subs": 6140,
+          "published_at": "2025-01-20T11:19:00Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Cadbury Flake NOT melting - Explained #shorts",
+          "views": 133829,
+          "subs": 1420000,
+          "published_at": "2024-12-31T10:30:10Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "You NEED to do this! Why tempering is important! \ud83e\udd14 #chocolate #satisfying #tiktok #shorts #viral",
+          "views": 28430521,
+          "subs": 473000,
+          "published_at": "2023-05-23T15:20:00Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "HOW TO SAVE &quot;RUINED&quot; CHOCOLATE - 2 ways to fix seized chocolate #shorts",
+          "views": 277825,
+          "subs": 3690,
+          "published_at": "2021-02-08T14:59:00Z",
+          "coverage": 0.333
+        }
+      ],
+      "domain": null
+    },
+    {
+      "query": "what happens to meat when you cook it",
+      "status": "ok",
+      "results_examined": 20,
+      "title_match": {
+        "status": "ok",
+        "n": 20,
+        "mean_coverage": 0.233,
+        "max_coverage": 0.667,
+        "strong_match_count": 0,
+        "strong_match_rate": 0.0,
+        "loose_match_rate": 0.9,
+        "gap_signal": 1.0,
+        "interpretation": "nobody has made the definitive video on this query"
+      },
+      "view_profile": {
+        "median": 7953308.5,
+        "p90": 66623598,
+        "max": 143760719,
+        "n": 20
+      },
+      "incumbents": {
+        "median_subscribers": 4820000.0,
+        "max_subscribers": 12400000,
+        "under_100k_subs": 2,
+        "n": 20
+      },
+      "recency": {
+        "median_age_days": 780,
+        "published_last_365d": 4,
+        "n": 20
+      },
+      "opportunity_score": 0.631,
+      "opportunity_components": {
+        "title_gap": 1.0,
+        "incumbent_subs": 0.045,
+        "view_ceiling": 0.014,
+        "staleness": 0.8
+      },
+      "opportunity_weights": {
+        "title_gap": 0.5,
+        "incumbent_subs": 0.2,
+        "view_ceiling": 0.15,
+        "staleness": 0.15
+      },
+      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
+      "provenance": {
+        "endpoint": "https://www.googleapis.com/youtube/v3",
+        "calls": [
+          "search.list",
+          "videos.list",
+          "channels.list"
+        ],
+        "region": "US",
+        "language": "en",
+        "order": "relevance",
+        "fetched_utc": "2026-10-31T15:40:58.873858+00:00"
+      },
+      "top_results": [
+        {
+          "title": "This Is Why You Need To Cook The Food You Eat",
+          "views": 121072,
+          "subs": 3750000,
+          "published_at": "2025-08-29T15:10:49Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Ask the Test Kitchen: How Long Will Meat Last in the Fridge?",
+          "views": 484008,
+          "subs": 3060000,
+          "published_at": "2012-08-08T20:41:36Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Why Meat Browns When Cooking",
+          "views": 12446,
+          "subs": 1040000,
+          "published_at": "2025-12-15T15:00:14Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Why Do We Cook?",
+          "views": 1824517,
+          "subs": 5890000,
+          "published_at": "2013-12-24T01:03:44Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Should You Really Wash Your Meat Before Cooking?",
+          "views": 7353088,
+          "subs": 172000,
+          "published_at": "2025-09-05T18:58:43Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Should steaks be left at room temp before cooking?",
+          "views": 9752910,
+          "subs": 10300000,
+          "published_at": "2022-03-02T21:00:07Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "What Happens If You Eat Only Meat for a Week?",
+          "views": 341854,
+          "subs": 84800,
+          "published_at": "2025-03-23T14:48:37Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Is it normal to wash meat before cooking?",
+          "views": 29051015,
+          "subs": 698000,
+          "published_at": "2024-06-20T08:33:07Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Why Does Meat Fall Off The Bone?",
+          "views": 19461944,
+          "subs": 1230000,
+          "published_at": "2025-07-16T20:56:57Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "Why I Cook Meat Straight from the Freezer (&amp; why you should too)",
+          "views": 2593664,
+          "subs": 2450000,
+          "published_at": "2023-04-30T14:30:14Z",
+          "coverage": 0.667
+        },
+        {
+          "title": "Fix Overcooked Meat | Cooking 911",
+          "views": 116230,
+          "subs": 95000,
+          "published_at": "2023-10-17T16:11:24Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "How do you like your meat cooked?",
+          "views": 8553529,
+          "subs": 12400000,
+          "published_at": "2022-06-05T18:15:23Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "YouTubers Season My Steak\u2026",
+          "views": 143760719,
+          "subs": 10300000,
+          "published_at": "2026-03-18T21:56:07Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Grinding Every Animal Into One Burger @NickDiGiovanni",
+          "views": 11335577,
+          "subs": 10300000,
+          "published_at": "2025-04-21T19:45:35Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "I \u201cruined\u201d a $300 steak (on purpose)",
+          "views": 42804364,
+          "subs": 7150000,
+          "published_at": "2026-08-12T11:22:00Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Best &quot;it&#39;s raw&quot; comment wins",
+          "views": 12574107,
+          "subs": 10300000,
+          "published_at": "2023-07-14T15:00:38Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "100 Layer Beef Monster",
+          "views": 66623598,
+          "subs": 10300000,
+          "published_at": "2025-11-07T16:45:01Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "7 Day Honey Cured Steak",
+          "views": 91369257,
+          "subs": 10300000,
+          "published_at": "2024-12-03T18:30:17Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Can You Refreeze Meat? Here&#39;s Why You Shouldn&#39;t",
+          "views": 68688,
+          "subs": 3060000,
+          "published_at": "2018-05-06T18:30:01Z",
+          "coverage": 0.333
+        },
+        {
+          "title": "The Half Cow Beef-Chetta",
+          "views": 4099832,
+          "subs": 10300000,
+          "published_at": "2023-04-07T18:51:03Z",
           "coverage": 0.0
         }
       ],
       "domain": null
     },
     {
-      "query": "why does salt make food taste better",
+      "query": "why is my bread flat",
       "status": "ok",
       "results_examined": 20,
       "title_match": {
@@ -2842,34 +627,34 @@
         "n": 20,
         "mean_coverage": 0.55,
         "max_coverage": 1.0,
-        "strong_match_count": 8,
-        "strong_match_rate": 0.4,
-        "loose_match_rate": 0.4,
-        "gap_signal": 0.6,
-        "interpretation": "8 of 20 ranking titles squarely answer the query"
+        "strong_match_count": 4,
+        "strong_match_rate": 0.2,
+        "loose_match_rate": 0.1,
+        "gap_signal": 0.8,
+        "interpretation": "4 of 20 ranking titles squarely answer the query"
       },
       "view_profile": {
-        "median": 14072.5,
-        "p90": 1681869,
-        "max": 34104932,
+        "median": 130006.5,
+        "p90": 1804171,
+        "max": 3276721,
         "n": 20
       },
       "incumbents": {
-        "median_subscribers": 120500.0,
-        "max_subscribers": 47600000,
-        "under_100k_subs": 10,
+        "median_subscribers": 115500.0,
+        "max_subscribers": 2910000,
+        "under_100k_subs": 9,
         "n": 20
       },
       "recency": {
-        "median_age_days": 680,
+        "median_age_days": 939,
         "published_last_365d": 4,
         "n": 20
       },
-      "opportunity_score": 0.536,
+      "opportunity_score": 0.616,
       "opportunity_components": {
-        "title_gap": 0.6,
-        "incumbent_subs": 0.274,
-        "view_ceiling": 0.407,
+        "title_gap": 0.8,
+        "incumbent_subs": 0.277,
+        "view_ceiling": 0.269,
         "staleness": 0.8
       },
       "opportunity_weights": {
@@ -2889,796 +674,190 @@
         "region": "US",
         "language": "en",
         "order": "relevance",
-        "fetched_utc": "2026-10-17T10:13:51.109541+00:00"
+        "fetched_utc": "2026-10-31T15:41:00.145703+00:00"
       },
       "top_results": [
         {
-          "title": "Why Does Salt Make Food Taste Better?",
-          "views": 613407,
-          "subs": 8420000,
-          "published_at": "2018-02-17T22:00:01Z",
+          "title": "3 Reasons Your Sourdough Bread Is Flat \u2014 And How to Fix It",
+          "views": 724732,
+          "subs": 125000,
+          "published_at": "2026-02-01T14:00:21Z",
           "coverage": 1.0
         },
         {
-          "title": "Why does salt make food taste better? + more videos | #aumsum #kids #education #whatif",
-          "views": 568981,
-          "subs": 4770000,
-          "published_at": "2018-07-17T09:36:54Z",
+          "title": "If your sourdough bread is flat &amp; sad, don\u2019t be afraid to let it bulk ferment longer!",
+          "views": 89825,
+          "subs": 125000,
+          "published_at": "2025-10-07T21:51:48Z",
           "coverage": 1.0
         },
         {
-          "title": "Why Does Salt Change the Taste of Everything?",
-          "views": 24670,
-          "subs": 885000,
-          "published_at": "2022-09-29T13:31:26Z",
-          "coverage": 0.4
+          "title": "Why Is My Bread Dough Not Rising SOLVED With Simple Fixes!",
+          "views": 61263,
+          "subs": 42900,
+          "published_at": "2025-03-17T19:55:12Z",
+          "coverage": 0.5
         },
         {
-          "title": "Why Does Salt Enhance Flavor?",
-          "views": 61688,
-          "subs": 3250000,
-          "published_at": "2016-11-08T16:00:01Z",
-          "coverage": 0.2
-        },
-        {
-          "title": "Why Food Tastes Better at Restaurants (It&#39;s Not &quot;More Salt&quot;)",
-          "views": 48454,
-          "subs": 207000,
-          "published_at": "2022-12-01T19:00:29Z",
-          "coverage": 0.6
-        },
-        {
-          "title": "Why Salt Makes Everything Taste Better (The Science Behind Flavor)",
-          "views": 2487,
-          "subs": 2110,
-          "published_at": "2025-02-11T19:00:36Z",
-          "coverage": 0.6
-        },
-        {
-          "title": "Why does salt taste so good?",
-          "views": 233,
-          "subs": 23900,
-          "published_at": "2025-01-21T19:25:45Z",
-          "coverage": 0.4
-        },
-        {
-          "title": "\ud83e\uddc2 Why Does Salt Make Everything Taste Better? (The Tasty Science!)",
-          "views": 544,
-          "subs": 1,
-          "published_at": "2025-02-23T11:00:02Z",
-          "coverage": 0.8
-        },
-        {
-          "title": "Why Does Salt Make Food Taste Better? The Science Behind a Simple Ingredient",
-          "views": 3475,
-          "subs": 34000,
-          "published_at": "2026-03-25T21:00:20Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Salt Makes Food Taste Better \ud83d\ude0b",
-          "views": 1696,
-          "subs": 9,
-          "published_at": "2025-10-16T17:32:52Z",
-          "coverage": 0.8
-        },
-        {
-          "title": "This 52 minute video will change how you think about Salt.",
-          "views": 1740907,
-          "subs": 2440000,
-          "published_at": "2024-10-20T15:00:18Z",
-          "coverage": 0.2
-        },
-        {
-          "title": "Principles of Flavor | Salt vs Acid | Crom Cooks",
-          "views": 1186,
-          "subs": 122,
-          "published_at": "2020-06-03T05:30:02Z",
-          "coverage": 0.2
-        },
-        {
-          "title": "Why Does Salt Make Food Taste Better?",
-          "views": 39,
-          "subs": 115,
-          "published_at": "2026-10-14T23:00:04Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Does Salt Enhance Flavor? (In Under 30 Seconds!)",
-          "views": 1927,
-          "subs": 1030,
-          "published_at": "2025-04-25T14:45:07Z",
-          "coverage": 0.2
-        },
-        {
-          "title": "Doctor Explains How Salt Makes Coffee Sweeter!",
-          "views": 1046725,
-          "subs": 2240000,
-          "published_at": "2023-05-02T16:28:33Z",
-          "coverage": 0.2
-        },
-        {
-          "title": "Why Salt Makes Food Taste Better?  #funny #facts",
-          "views": 101,
-          "subs": 5,
-          "published_at": "2026-10-02T10:44:18Z",
-          "coverage": 0.8
-        },
-        {
-          "title": "Science: When to Add Salt During Cooking\u2014and Why (It Makes a Huge Difference)",
-          "views": 1681869,
-          "subs": 3050000,
-          "published_at": "2015-02-13T18:27:30Z",
-          "coverage": 0.2
-        },
-        {
-          "title": "Why does salt make food taste better?   #motivation #wonderwhy #simplescience #science #curiosity",
-          "views": 57,
-          "subs": 45,
-          "published_at": "2025-04-27T09:03:15Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Frying With Salt?",
-          "views": 34104932,
-          "subs": 47600000,
-          "published_at": "2025-11-17T17:00:18Z",
-          "coverage": 0.2
-        },
-        {
-          "title": "Why MSG SHOULD be in EVERY Pantry | MSG vs SALT",
-          "views": 545420,
-          "subs": 714000,
-          "published_at": "2019-09-11T20:30:41Z",
-          "coverage": 0.2
-        }
-      ],
-      "domain": null
-    },
-    {
-      "query": "why does garlic smell so strong",
-      "status": "ok",
-      "results_examined": 20,
-      "title_match": {
-        "status": "ok",
-        "n": 20,
-        "mean_coverage": 0.75,
-        "max_coverage": 1.0,
-        "strong_match_count": 11,
-        "strong_match_rate": 0.55,
-        "loose_match_rate": 0.25,
-        "gap_signal": 0.45,
-        "interpretation": "11 of 20 ranking titles squarely answer the query"
-      },
-      "view_profile": {
-        "median": 986.5,
-        "p90": 164356,
-        "max": 3338922,
-        "n": 20
-      },
-      "incumbents": {
-        "median_subscribers": 1196.0,
-        "max_subscribers": 10700000,
-        "under_100k_subs": 14,
-        "n": 20
-      },
-      "recency": {
-        "median_age_days": 276,
-        "published_last_365d": 11,
-        "n": 20
-      },
-      "opportunity_score": 0.49,
-      "opportunity_components": {
-        "title_gap": 0.45,
-        "incumbent_subs": 0.56,
-        "view_ceiling": 0.572,
-        "staleness": 0.45
-      },
-      "opportunity_weights": {
-        "title_gap": 0.5,
-        "incumbent_subs": 0.2,
-        "view_ceiling": 0.15,
-        "staleness": 0.15
-      },
-      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
-      "provenance": {
-        "endpoint": "https://www.googleapis.com/youtube/v3",
-        "calls": [
-          "search.list",
-          "videos.list",
-          "channels.list"
-        ],
-        "region": "US",
-        "language": "en",
-        "order": "relevance",
-        "fetched_utc": "2026-10-17T10:13:41.691547+00:00"
-      },
-      "top_results": [
-        {
-          "title": "Why Does Garlic Make Your Breath Smell?",
-          "views": 160323,
-          "subs": 885000,
-          "published_at": "2014-06-09T10:00:04Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Think BRUSHING Your Teeth Will Fix Garlic Breath? Think Again!",
-          "views": 36827,
-          "subs": 158000,
-          "published_at": "2025-01-07T14:15:02Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "Garlic: Why Does It Smell So Strong?",
-          "views": 243,
-          "subs": 92800,
-          "published_at": "2026-07-26T15:00:21Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "What an Apple Can Do for Your Garlic Breath!  Dr. Mandell",
-          "views": 164356,
-          "subs": 10700000,
-          "published_at": "2023-05-06T02:37:42Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "Why You Should Be Eating Garlic EVERY DAY!",
-          "views": 569257,
-          "subs": 1300000,
-          "published_at": "2024-10-11T18:59:41Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "Why Does Garlic Smell So Strong? \ud83e\uddc4",
-          "views": 708,
-          "subs": 14,
-          "published_at": "2026-09-17T13:00:38Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Does Garlic Taste So Strong? #foodeducation #shorts #garlic",
-          "views": 1009,
-          "subs": 6250,
-          "published_at": "2022-05-01T18:47:26Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Why Does Garlic Smell So Strong? The Science Explained",
-          "views": 291,
-          "subs": 20,
-          "published_at": "2026-09-07T19:07:07Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Garlic Smells So Strong",
-          "views": 292,
-          "subs": 22,
-          "published_at": "2026-07-09T12:00:03Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Does Garlic Smell So Strong? | The Science Explained",
-          "views": 1579,
-          "subs": 181,
-          "published_at": "2025-06-30T09:00:17Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Garlic Smells So Strong \u2014 The Science Behind the Stink \ud83d\ude05\ud83e\udde0 #healthnutnation #drwellness #garlic",
-          "views": 13,
-          "subs": 732,
-          "published_at": "2025-11-04T15:14:33Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Garlic Has Such a Strong Smell",
-          "views": 1109,
-          "subs": 1040000,
-          "published_at": "2026-07-09T13:00:14Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "The Weird Science Behind Garlic\u2019s Smell \ud83e\uddc4\ud83d\ude33",
-          "views": 964,
-          "subs": 91,
-          "published_at": "2026-05-19T04:00:42Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Why Does Garlic Smell So Strong? \ud83e\uddc4 | Food Decoded",
-          "views": 374,
-          "subs": 9,
-          "published_at": "2026-09-09T08:40:32Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Do We Stink When We Eat Garlic?",
-          "views": 619,
-          "subs": 3440,
-          "published_at": "2020-11-03T08:59:59Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "Why Do I Smell Like Garlic With or Without Eating Them?",
-          "views": 12423,
-          "subs": 1660,
-          "published_at": "2020-06-03T03:48:45Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Why Does Garlic Smell So Strong? Unveiling the Mystery!",
-          "views": 619,
-          "subs": 223,
-          "published_at": "2026-03-26T16:41:17Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Garlic Smells So Strong",
-          "views": 4485,
-          "subs": 80,
-          "published_at": "2026-08-17T11:30:00Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Smelly armpits?! Doctor Shah explains #shorts",
-          "views": 3338922,
-          "subs": 3590000,
-          "published_at": "2021-11-28T14:00:36Z",
+          "title": "The 7 Most Common Breadmaking Mistakes You\u2019re Probably Making",
+          "views": 769839,
+          "subs": 2910000,
+          "published_at": "2020-01-16T16:30:12Z",
           "coverage": 0.0
         },
         {
-          "title": "Why Does Garlic Smell So Strong? \ud83e\uddc4\ud83d\ude31",
-          "views": 265,
-          "subs": 51,
-          "published_at": "2026-08-02T15:44:33Z",
+          "title": "Fix Flat Sourdough: What to Do [and What Not to Do]",
+          "views": 169330,
+          "subs": 28300,
+          "published_at": "2026-01-31T17:00:34Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "HELP my Bread Dough has COLLAPSED!",
+          "views": 63975,
+          "subs": 322000,
+          "published_at": "2022-12-02T09:49:30Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Why Your Sourdough Bread WON&#39;T Rise [and how to fix it]",
+          "views": 90827,
+          "subs": 28300,
+          "published_at": "2025-05-09T12:00:49Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "134: SIX Reasons why your bread dough DIDN&#39;T PUFF UP Properly - Bake with Jack",
+          "views": 161038,
+          "subs": 322000,
+          "published_at": "2020-02-20T07:00:02Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "The #1 Reason Your Homemade Bread Turns Out Dense (And How to Fix It)",
+          "views": 189464,
+          "subs": 5840,
+          "published_at": "2026-06-24T23:00:32Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "5 WAYS TO GET A BETTER OVEN SPRING | SOURDOUGH BREAD TIPS",
+          "views": 1804171,
+          "subs": 106000,
+          "published_at": "2020-05-01T20:30:02Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Why Does My Bread Dough Collapse?",
+          "views": 98975,
+          "subs": 209000,
+          "published_at": "2013-01-11T21:04:02Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "6 Mistakes to Avoid when Making Doughs (bread and pizza)",
+          "views": 1057593,
+          "subs": 349000,
+          "published_at": "2022-04-24T17:41:44Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "The Effect of Dough Hydration on Bread&#39;s Texture  #baking #bread",
+          "views": 3276721,
+          "subs": 1380000,
+          "published_at": "2023-12-16T15:00:00Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Sunken Bread Explained \u2014 What Went Wrong Before Baking",
+          "views": 11269,
+          "subs": 16200,
+          "published_at": "2026-01-28T18:24:05Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How to stop your bread dough spreading out flat as it rises.",
+          "views": 14030,
+          "subs": 6470,
+          "published_at": "2023-05-27T10:57:29Z",
           "coverage": 1.0
+        },
+        {
+          "title": "24: How to stop your dough from spreading out flat! - Bake with Jack",
+          "views": 788564,
+          "subs": 322000,
+          "published_at": "2017-02-16T07:05:15Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Why Your Homemade Bread is Dense (And the Easy Fix)",
+          "views": 33978,
+          "subs": 919000,
+          "published_at": "2025-10-22T12:01:18Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How To Make Flat Bread - The Oldest Bread In The World - Perfect Survival Bread!",
+          "views": 1899143,
+          "subs": 53000,
+          "published_at": "2021-01-15T01:10:22Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "If dough isn\u2019t rising, do this !",
+          "views": 92857,
+          "subs": 36,
+          "published_at": "2024-07-25T19:03:35Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "\ud83d\ude31My Sourdough Went FLAT After Proofing\u2026 Here\u2019s What No One Tells You  #sourdoughstarter #breadfail",
+          "views": 27646,
+          "subs": 2930,
+          "published_at": "2025-06-17T01:53:47Z",
+          "coverage": 0.5
         }
       ],
       "domain": null
     },
     {
-      "query": "why does honey never spoil",
+      "query": "why does dough rise",
       "status": "ok",
       "results_examined": 20,
       "title_match": {
         "status": "ok",
         "n": 20,
-        "mean_coverage": 0.783,
+        "mean_coverage": 0.65,
         "max_coverage": 1.0,
-        "strong_match_count": 10,
-        "strong_match_rate": 0.5,
+        "strong_match_count": 9,
+        "strong_match_rate": 0.45,
         "loose_match_rate": 0.15,
-        "gap_signal": 0.5,
-        "interpretation": "10 of 20 ranking titles squarely answer the query"
+        "gap_signal": 0.55,
+        "interpretation": "9 of 20 ranking titles squarely answer the query"
       },
       "view_profile": {
-        "median": 15424.0,
-        "p90": 5032771,
-        "max": 13893278,
+        "median": 95544.5,
+        "p90": 593926,
+        "max": 7169863,
         "n": 20
       },
       "incumbents": {
-        "median_subscribers": 22000.0,
-        "max_subscribers": 12200000,
-        "under_100k_subs": 14,
-        "n": 20
-      },
-      "recency": {
-        "median_age_days": 513,
-        "published_last_365d": 9,
-        "n": 20
-      },
-      "opportunity_score": 0.469,
-      "opportunity_components": {
-        "title_gap": 0.5,
-        "incumbent_subs": 0.38,
-        "view_ceiling": 0.402,
-        "staleness": 0.55
-      },
-      "opportunity_weights": {
-        "title_gap": 0.5,
-        "incumbent_subs": 0.2,
-        "view_ceiling": 0.15,
-        "staleness": 0.15
-      },
-      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
-      "provenance": {
-        "endpoint": "https://www.googleapis.com/youtube/v3",
-        "calls": [
-          "search.list",
-          "videos.list",
-          "channels.list"
-        ],
-        "region": "US",
-        "language": "en",
-        "order": "relevance",
-        "fetched_utc": "2026-10-17T10:13:42.781977+00:00"
-      },
-      "top_results": [
-        {
-          "title": "Why Honey Never Expires",
-          "views": 6471,
-          "subs": 7030,
-          "published_at": "2023-08-26T17:03:04Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Why Honey Never Expires?",
-          "views": 25704,
-          "subs": 294000,
-          "published_at": "2026-01-23T17:30:12Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Why honey doesn&#39;t spoil? | #aumsum #kids #science #education #children",
-          "views": 233526,
-          "subs": 4770000,
-          "published_at": "2018-06-03T06:41:52Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "The Mystery of Honey: Why It Never Spoils",
-          "views": 192943,
-          "subs": 1040000,
-          "published_at": "2026-01-20T02:00:04Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Honey Never Spoils\u2026 So Why Does It Expire?",
-          "views": 171,
-          "subs": 72,
-          "published_at": "2026-03-25T17:30:04Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Honey Never Spoils",
-          "views": 33426,
-          "subs": 25200,
-          "published_at": "2025-10-26T14:00:30Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Honey Doesn&#39;t Spoil (3000 years) \ud83c\udf6f",
-          "views": 13728,
-          "subs": 244,
-          "published_at": "2025-01-14T14:00:52Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Why Honey Never Spoils",
-          "views": 11213297,
-          "subs": 687000,
-          "published_at": "2025-03-26T11:36:40Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why honey doesn&#39;t spoil?\ud83e\udd14",
-          "views": 29579,
-          "subs": 1370,
-          "published_at": "2024-03-29T17:00:45Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "5 Reasons Why HONEY Never Spoils",
-          "views": 1194,
-          "subs": 18800,
-          "published_at": "2026-02-23T17:24:41Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Honey Never Spoils",
-          "views": 2075,
-          "subs": 16300,
-          "published_at": "2026-06-28T16:00:09Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "How Honey Can Fight Deadly Bacteria",
-          "views": 5032771,
-          "subs": 8420000,
-          "published_at": "2016-05-11T22:42:03Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "One reason why honey NEVER SPOILS! #shorts",
-          "views": 7695,
-          "subs": 2450,
-          "published_at": "2023-10-25T05:12:00Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "WHY HONEY NEVER SPOILS: The food that can last forever",
-          "views": 36,
-          "subs": 1,
-          "published_at": "2026-08-07T00:24:10Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "The Science Behind Why Honey Never Spoils",
-          "views": 133,
-          "subs": 10,
-          "published_at": "2022-08-12T00:47:06Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Foods That Never Expire",
-          "views": 13893278,
-          "subs": 12200000,
-          "published_at": "2025-07-17T19:15:00Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "Why doesn&#39;t Honey ever Spoil?",
-          "views": 19658,
-          "subs": 271,
-          "published_at": "2025-02-23T02:57:37Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Why doesn\u2019t honey go bad?",
-          "views": 9912,
-          "subs": 27400,
-          "published_at": "2023-04-12T15:54:54Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "Why does honey never expire?",
-          "views": 17120,
-          "subs": 60500,
-          "published_at": "2026-06-16T20:00:32Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Why Does Honey Never Spoil? \ud83c\udf6f",
-          "views": 2256,
-          "subs": 35800,
-          "published_at": "2026-08-13T19:00:36Z",
-          "coverage": 1.0
-        }
-      ],
-      "domain": null
-    },
-    {
-      "query": "why does cheese melt",
-      "status": "ok",
-      "results_examined": 20,
-      "title_match": {
-        "status": "ok",
-        "n": 20,
-        "mean_coverage": 0.775,
-        "max_coverage": 1.0,
-        "strong_match_count": 11,
-        "strong_match_rate": 0.55,
-        "loose_match_rate": 0.0,
-        "gap_signal": 0.45,
-        "interpretation": "11 of 20 ranking titles squarely answer the query"
-      },
-      "view_profile": {
-        "median": 89470.0,
-        "p90": 627005,
-        "max": 2448653,
-        "n": 20
-      },
-      "incumbents": {
-        "median_subscribers": 344000.0,
-        "max_subscribers": 18300000,
-        "under_100k_subs": 8,
-        "n": 20
-      },
-      "recency": {
-        "median_age_days": 685,
-        "published_last_365d": 4,
-        "n": 20
-      },
-      "opportunity_score": 0.431,
-      "opportunity_components": {
-        "title_gap": 0.45,
-        "incumbent_subs": 0.209,
-        "view_ceiling": 0.293,
-        "staleness": 0.8
-      },
-      "opportunity_weights": {
-        "title_gap": 0.5,
-        "incumbent_subs": 0.2,
-        "view_ceiling": 0.15,
-        "staleness": 0.15
-      },
-      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
-      "provenance": {
-        "endpoint": "https://www.googleapis.com/youtube/v3",
-        "calls": [
-          "search.list",
-          "videos.list",
-          "channels.list"
-        ],
-        "region": "US",
-        "language": "en",
-        "order": "relevance",
-        "fetched_utc": "2026-10-17T10:13:36.937120+00:00"
-      },
-      "top_results": [
-        {
-          "title": "The Science Behind Why Cheeses Melt So Differently",
-          "views": 3633,
-          "subs": 1040000,
-          "published_at": "2026-01-17T13:01:14Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "Why Does Melted Cheese Taste So Much Better?",
-          "views": 197860,
-          "subs": 8420000,
-          "published_at": "2019-05-25T21:00:01Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "Why Some Cheeses Melt Perfectly (and Others Don\u2019t)",
-          "views": 280,
-          "subs": 616,
-          "published_at": "2026-01-23T00:01:08Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "The Science of Why Cheese Melts Differently",
-          "views": 2847,
-          "subs": 4760,
-          "published_at": "2025-01-16T19:00:25Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "WHY does CHEESE MELT: The secret science you did not know",
-          "views": 422,
-          "subs": 2700,
-          "published_at": "2025-08-05T20:48:07Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Do Some Cheeses Melt Easily and Others Don&#39;t? | Grilled Cheese | What&#39;s Eating Dan?",
-          "views": 295384,
-          "subs": 3050000,
-          "published_at": "2018-10-06T15:00:01Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Melted Cheese Is a Lie",
-          "views": 39390,
-          "subs": 379000,
-          "published_at": "2025-03-05T18:15:52Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "Does fake cheese melt?",
-          "views": 139550,
-          "subs": 309000,
-          "published_at": "2023-10-03T21:57:09Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Unlocking CHEESE MELTING Secrets, So Fascinating!",
-          "views": 1000119,
-          "subs": 2150000,
-          "published_at": "2020-07-02T13:15:00Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "Why Your Cheese Doesn&#39;t Melt Anymore!",
-          "views": 1140,
-          "subs": 122,
-          "published_at": "2025-08-10T20:15:00Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "WTF is American cheese?",
-          "views": 420718,
-          "subs": 379000,
-          "published_at": "2024-08-29T16:26:25Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "Why Does Cheese Melt and Stretch? | The Science of Melting Cheese",
-          "views": 6,
-          "subs": 54,
-          "published_at": "2026-10-16T05:23:02Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "How Cheese Melts: The Secrets Behind That Satisfying Stretch",
-          "views": 3814,
-          "subs": 1040000,
-          "published_at": "2025-03-16T17:15:00Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Recipe - The Science of Melting Cheese for Pepper Jack Dip - Hallmark Channel",
-          "views": 3479,
-          "subs": 26900,
-          "published_at": "2017-01-05T02:43:24Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "Does Fake Cheese Actually Melt? #shorts",
-          "views": 627005,
-          "subs": 1250000,
-          "published_at": "2024-10-15T23:38:00Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Freaking Out About Cheese",
-          "views": 2448653,
-          "subs": 18300000,
-          "published_at": "2026-06-06T02:00:16Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "Why do only some cheese melt? #foodfacts",
-          "views": 10146,
-          "subs": 1160,
-          "published_at": "2025-09-01T22:34:18Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why is it so Difficult to Melt Halloumi? | Food Unwrapped",
-          "views": 204553,
-          "subs": 89000,
-          "published_at": "2020-02-22T17:15:00Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "Melt your block of cheese like this on a hot pan",
-          "views": 321379,
-          "subs": 214000,
-          "published_at": "2024-07-27T15:55:05Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Vegan Cheese Doesn&#39;t Melt | WIRED",
-          "views": 172124,
-          "subs": 13000000,
-          "published_at": "2021-09-07T16:00:08Z",
-          "coverage": 1.0
-        }
-      ],
-      "domain": null
-    },
-    {
-      "query": "why do apples turn brown",
-      "status": "ok",
-      "results_examined": 20,
-      "title_match": {
-        "status": "ok",
-        "n": 20,
-        "mean_coverage": 0.867,
-        "max_coverage": 1.0,
-        "strong_match_count": 14,
-        "strong_match_rate": 0.7,
-        "loose_match_rate": 0.1,
-        "gap_signal": 0.3,
-        "interpretation": "14 of 20 ranking titles squarely answer the query"
-      },
-      "view_profile": {
-        "median": 32312.5,
-        "p90": 184372,
-        "max": 1025292,
-        "n": 20
-      },
-      "incumbents": {
-        "median_subscribers": 62550.0,
-        "max_subscribers": 8420000,
+        "median_subscribers": 75700.0,
+        "max_subscribers": 6220000,
         "under_100k_subs": 11,
         "n": 20
       },
       "recency": {
-        "median_age_days": 794,
-        "published_last_365d": 6,
+        "median_age_days": 1659,
+        "published_last_365d": 0,
         "n": 20
       },
-      "opportunity_score": 0.371,
+      "opportunity_score": 0.529,
       "opportunity_components": {
-        "title_gap": 0.3,
-        "incumbent_subs": 0.315,
-        "view_ceiling": 0.356,
-        "staleness": 0.7
+        "title_gap": 0.55,
+        "incumbent_subs": 0.303,
+        "view_ceiling": 0.289,
+        "staleness": 1.0
       },
       "opportunity_weights": {
         "title_gap": 0.5,
@@ -3697,594 +876,190 @@
         "region": "US",
         "language": "en",
         "order": "relevance",
-        "fetched_utc": "2026-10-17T10:13:30.932158+00:00"
+        "fetched_utc": "2026-10-31T15:40:57.624032+00:00"
       },
       "top_results": [
         {
-          "title": "Why Do Apples Turn Brown?",
-          "views": 531265,
-          "subs": 8420000,
-          "published_at": "2014-07-09T15:00:43Z",
+          "title": "Why Does Bread Dough Need To Rise Twice?",
+          "views": 98093,
+          "subs": 2840,
+          "published_at": "2020-04-16T00:49:13Z",
           "coverage": 1.0
         },
         {
-          "title": "Why Do Apples Turn Brown When You Slice Them?",
-          "views": 64135,
+          "title": "How Does Bread Rise?",
+          "views": 215562,
           "subs": 681000,
-          "published_at": "2013-09-23T16:00:37Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Does An Apple Turn Brown On Being Cut? - I Wonder Why - Amazing &amp; Interesting Fun Facts For Kids",
-          "views": 88306,
-          "subs": 1070000,
-          "published_at": "2015-02-03T11:23:41Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Why Apples Turn Brown (The Hidden Chemistry Explained)",
-          "views": 191,
-          "subs": 103,
-          "published_at": "2025-10-24T21:01:08Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Apples Turn Brown | Enzyme Reaction Explained",
-          "views": 235,
-          "subs": 20,
-          "published_at": "2025-05-27T19:07:54Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why the Inside of Apples Turn Brown When Exposed to Air",
-          "views": 33052,
-          "subs": 3250000,
-          "published_at": "2015-10-02T21:00:00Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Do Apples Turn Brown? \ud83c\udf4e | Science for Kids",
-          "views": 364,
-          "subs": 4410,
-          "published_at": "2026-09-02T12:30:05Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Sliced Apples Go Brown So Quickly: A Calm Explanation",
-          "views": 682,
-          "subs": 21300,
-          "published_at": "2026-10-17T00:47:03Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Why Do Apples Turn Brown? \ud83c\udf4e | Fun Chemistry Song for Kids! | Oxidation for Kids | STEM Spark Zone",
-          "views": 1087,
-          "subs": 1150,
-          "published_at": "2026-05-26T11:00:40Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why do Apples get BROWN?",
-          "views": 52739,
-          "subs": 286000,
-          "published_at": "2025-09-20T09:00:19Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Why Do Apples Turn Brown When You Slice Them?",
-          "views": 5240,
-          "subs": 1040000,
-          "published_at": "2025-12-20T15:00:42Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why do Apples Turn Brown? - Coma Niddy University",
-          "views": 31573,
-          "subs": 37300,
-          "published_at": "2012-10-11T13:05:27Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Keep Apples from browning without Lemon or Vinegar #shorts",
-          "views": 143533,
-          "subs": 1250000,
-          "published_at": "2024-07-08T23:16:49Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "Oxidation | Why Apples Turn Brown - Science Experiment | Best Way to Keep Apples from Browning |",
-          "views": 156975,
-          "subs": 87800,
-          "published_at": "2021-07-03T01:22:45Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Do Apples Turn Brown? \ud83c\udf4e | Kids\u2019 Food Discovery Club",
-          "views": 5176,
-          "subs": 328,
-          "published_at": "2025-08-21T12:00:50Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "How to prevent apples from turning brown- info in pinned comment. #tipsandtricks #lifehacks",
-          "views": 184372,
-          "subs": 26600,
-          "published_at": "2024-09-20T19:44:41Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "How To Keep Your Apples Fresh After Cutting",
-          "views": 1025292,
-          "subs": 157000,
-          "published_at": "2021-09-14T22:43:13Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "Why Do Apples Turn Brown?",
-          "views": 1276,
-          "subs": 3820,
-          "published_at": "2023-09-22T23:51:36Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "\ud83c\udf4e Why Do Apples Turn Brown? Discover the Real Science, Facts &amp; Myths @SuperSimpleScienceStories ",
-          "views": 2489,
-          "subs": 314,
-          "published_at": "2026-07-02T17:30:18Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Do Apples and Bananas Turn Brown? - STEM activity",
-          "views": 123341,
-          "subs": 453000,
-          "published_at": "2019-04-22T13:24:18Z",
-          "coverage": 1.0
-        }
-      ],
-      "domain": null
-    },
-    {
-      "query": "why does bread go stale",
-      "status": "ok",
-      "results_examined": 20,
-      "title_match": {
-        "status": "ok",
-        "n": 20,
-        "mean_coverage": 0.95,
-        "max_coverage": 1.0,
-        "strong_match_count": 18,
-        "strong_match_rate": 0.9,
-        "loose_match_rate": 0.0,
-        "gap_signal": 0.1,
-        "interpretation": "18 of 20 ranking titles squarely answer the query"
-      },
-      "view_profile": {
-        "median": 773.0,
-        "p90": 380244,
-        "max": 15805114,
-        "n": 20
-      },
-      "incumbents": {
-        "median_subscribers": 220.5,
-        "max_subscribers": 6410000,
-        "under_100k_subs": 16,
-        "n": 20
-      },
-      "recency": {
-        "median_age_days": 244,
-        "published_last_365d": 12,
-        "n": 20
-      },
-      "opportunity_score": 0.331,
-      "opportunity_components": {
-        "title_gap": 0.1,
-        "incumbent_subs": 0.665,
-        "view_ceiling": 0.587,
-        "staleness": 0.4
-      },
-      "opportunity_weights": {
-        "title_gap": 0.5,
-        "incumbent_subs": 0.2,
-        "view_ceiling": 0.15,
-        "staleness": 0.15
-      },
-      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
-      "provenance": {
-        "endpoint": "https://www.googleapis.com/youtube/v3",
-        "calls": [
-          "search.list",
-          "videos.list",
-          "channels.list"
-        ],
-        "region": "US",
-        "language": "en",
-        "order": "relevance",
-        "fetched_utc": "2026-10-17T10:13:35.764336+00:00"
-      },
-      "top_results": [
-        {
-          "title": "Stale bread is confusing",
-          "views": 380244,
-          "subs": 379000,
-          "published_at": "2025-10-03T15:23:27Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Bread Goes Stale (It&#39;s Not What You Think)",
-          "views": 20,
-          "subs": 0,
-          "published_at": "2026-06-10T17:10:03Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "WHY DOES BREAD GO STALE AND QUICK FIX TO REVERSE STALING // Stale definition, meaning, and hack",
-          "views": 1214,
-          "subs": 158000,
-          "published_at": "2020-06-18T17:42:01Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Does Bread Go Stale? It&#39;s NOT What You Think!",
-          "views": 6829,
-          "subs": 228,
-          "published_at": "2025-03-13T03:10:34Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Does Bread Go Stale? You&#39;ve Been Storing It Wrong Your Whole Life \ud83c\udf5e #food #science #curiosity",
-          "views": 845,
-          "subs": 227,
-          "published_at": "2026-04-28T03:55:39Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "How to Revive Stale Bread",
-          "views": 663362,
-          "subs": 1170000,
-          "published_at": "2023-12-08T21:59:22Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why does bread go stale?",
-          "views": 0,
-          "subs": 1,
-          "published_at": "2026-10-11T03:45:31Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Does Bread Go Stale So Quickly After Baking?",
-          "views": 841,
-          "subs": 214,
-          "published_at": "2026-08-27T13:00:42Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Does Bread Go Stale? \ud83c\udf5e",
-          "views": 2220,
-          "subs": 35800,
-          "published_at": "2026-08-28T20:00:20Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Science of Stale",
-          "views": 6147,
-          "subs": 2950,
-          "published_at": "2017-03-18T12:00:04Z",
+          "published_at": "2014-02-24T17:00:05Z",
           "coverage": 0.5
         },
         {
-          "title": "Why Does Bread Go Stale? The Science You&#39;ve Been Missing",
-          "views": 6963,
-          "subs": 21300,
-          "published_at": "2026-10-05T01:00:34Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Does Bread Go Stale?",
-          "views": 687,
-          "subs": 104,
-          "published_at": "2025-08-01T00:00:18Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Does Bread Go Stale\ud83c\udf5e #facts #shorts #food",
-          "views": 213,
-          "subs": 30,
-          "published_at": "2025-11-21T20:00:04Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Does Bread Go Stale?",
-          "views": 689,
-          "subs": 104,
-          "published_at": "2025-07-14T00:00:03Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "The Science of Stale Bread \u2014 Why It Happens &amp; How to Stop It",
-          "views": 3,
-          "subs": 0,
-          "published_at": "2026-09-21T15:00:01Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Does Bread Go Stale? It\u2019s Not Just Drying Out!",
-          "views": 201,
-          "subs": 2,
-          "published_at": "2026-07-27T17:00:36Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Does Bread Go Stale? #ScienceShorts #EverydayScience #FunFact",
-          "views": 581,
-          "subs": 24,
-          "published_at": "2026-01-03T22:06:38Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "WHY DOES BREAD GO STALE?",
-          "views": 705,
-          "subs": 18700,
-          "published_at": "2024-11-10T04:48:16Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Stale Bread Hack",
-          "views": 15805114,
-          "subs": 6410000,
-          "published_at": "2026-03-30T16:00:37Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Does Bread Become Hard?",
-          "views": 86,
-          "subs": 29,
-          "published_at": "2026-09-08T06:30:22Z",
+          "title": "Why Is My Bread Dough Not Rising SOLVED With Simple Fixes!",
+          "views": 61263,
+          "subs": 42900,
+          "published_at": "2025-03-17T19:55:12Z",
           "coverage": 0.5
-        }
-      ],
-      "domain": null
-    },
-    {
-      "query": "why does chocolate melt",
-      "status": "ok",
-      "results_examined": 20,
-      "title_match": {
-        "status": "ok",
-        "n": 20,
-        "mean_coverage": 1.0,
-        "max_coverage": 1.0,
-        "strong_match_count": 20,
-        "strong_match_rate": 1.0,
-        "loose_match_rate": 0.0,
-        "gap_signal": 0.0,
-        "interpretation": "20 of 20 ranking titles squarely answer the query"
-      },
-      "view_profile": {
-        "median": 743.5,
-        "p90": 246756,
-        "max": 3004848,
-        "n": 20
-      },
-      "incumbents": {
-        "median_subscribers": 465.5,
-        "max_subscribers": 2960000,
-        "under_100k_subs": 16,
-        "n": 20
-      },
-      "recency": {
-        "median_age_days": 432,
-        "published_last_365d": 8,
-        "n": 20
-      },
-      "opportunity_score": 0.302,
-      "opportunity_components": {
-        "title_gap": 0.0,
-        "incumbent_subs": 0.619,
-        "view_ceiling": 0.59,
-        "staleness": 0.6
-      },
-      "opportunity_weights": {
-        "title_gap": 0.5,
-        "incumbent_subs": 0.2,
-        "view_ceiling": 0.15,
-        "staleness": 0.15
-      },
-      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
-      "provenance": {
-        "endpoint": "https://www.googleapis.com/youtube/v3",
-        "calls": [
-          "search.list",
-          "videos.list",
-          "channels.list"
-        ],
-        "region": "US",
-        "language": "en",
-        "order": "relevance",
-        "fetched_utc": "2026-10-17T10:13:38.118105+00:00"
-      },
-      "top_results": [
+        },
         {
-          "title": "Why Does Chocolate Melt in Your Mouth \ud83c\udf6b",
-          "views": 2004,
-          "subs": 1930,
-          "published_at": "2024-10-25T12:15:02Z",
+          "title": "How to Fix Dough That Won&#39;t Rise",
+          "views": 593926,
+          "subs": 923000,
+          "published_at": "2020-05-21T02:35:02Z",
           "coverage": 1.0
         },
         {
-          "title": "Why Does Chocolate Melt? Learn Its Crystal Secrets | COSI&#39;s Science Now with Dr. Marci Howdyshell",
-          "views": 1995,
-          "subs": 144000,
-          "published_at": "2020-02-12T20:00:16Z",
+          "title": "4 Things you can make when your Bread Dough doesn\u2019t rise - 227",
+          "views": 52628,
+          "subs": 322000,
+          "published_at": "2024-02-01T17:45:00Z",
           "coverage": 1.0
         },
         {
-          "title": "Why Does CHOCOLATE melt so perfectly? | The Secret SCIENCE Behind its MAGIC",
-          "views": 35,
+          "title": "If dough isn\u2019t rising, do this !",
+          "views": 92910,
+          "subs": 36,
+          "published_at": "2024-07-25T19:03:35Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "How To Prove Dough | 1 Minute Tips | Four Spoons Bakery",
+          "views": 363861,
+          "subs": 6220000,
+          "published_at": "2015-06-10T18:30:00Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Ever wonder why your dough doesnt rise?",
+          "views": 54887,
+          "subs": 69800,
+          "published_at": "2022-09-24T03:47:08Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "SIX REASONS WHY YOUR DOUGH DIDN\u2019T RISE | HOW TO FIX DOUGH THAT WON\u2019T RISE",
+          "views": 155352,
+          "subs": 10900,
+          "published_at": "2022-02-12T20:36:21Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Why Won&#39;t My Bread Dough Rise and How Can I Fix It?",
+          "views": 339,
+          "subs": 81600,
+          "published_at": "2025-08-31T11:33:48Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "Why Does My Bread Dough Collapse?",
+          "views": 98975,
+          "subs": 209000,
+          "published_at": "2013-01-11T21:04:02Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "The Rise and Fall of pizza dough.",
+          "views": 92996,
           "subs": 436,
-          "published_at": "2025-09-25T15:11:58Z",
+          "published_at": "2021-08-29T20:43:13Z",
           "coverage": 1.0
         },
         {
-          "title": "Why does chocolate melt ?",
-          "views": 661,
-          "subs": 495,
-          "published_at": "2023-02-20T15:51:56Z",
+          "title": "proofing bread",
+          "views": 7169863,
+          "subs": 1380000,
+          "published_at": "2022-03-01T03:15:06Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "how to perfectly proof dough every time #shorts  | recipe for disaster",
+          "views": 226882,
+          "subs": 945,
+          "published_at": "2022-04-09T01:37:03Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "HELP my Bread Dough has COLLAPSED!",
+          "views": 63975,
+          "subs": 322000,
+          "published_at": "2022-12-02T09:49:30Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Expert&#39;s Secret to Saving Dough That WON&#39;T Rise!",
+          "views": 105077,
+          "subs": 30800,
+          "published_at": "2021-05-13T16:53:35Z",
           "coverage": 1.0
         },
         {
-          "title": "Why Does Chocolate Melt So Easily in Your Hand? \ud83c\udf6b\ud83d\udd25 | The Science Explained! #Shorts",
-          "views": 316,
-          "subs": 271,
-          "published_at": "2026-08-30T18:22:50Z",
-          "coverage": 1.0
+          "title": "The Science of Why Bread Rises: Yeast Fermentation Explained",
+          "views": 4825,
+          "subs": 69,
+          "published_at": "2025-07-06T18:15:56Z",
+          "coverage": 0.0
         },
         {
-          "title": "Why Does Chocolate Melt in Your Mouth? Simplified #boddy #facts #science",
-          "views": 527,
-          "subs": 83,
-          "published_at": "2025-01-05T03:30:19Z",
-          "coverage": 1.0
+          "title": "The Science of Yeast | How Yeast Works in Bread-Making",
+          "views": 11854,
+          "subs": 65,
+          "published_at": "2024-09-05T22:37:47Z",
+          "coverage": 0.0
         },
         {
-          "title": "Why Does Chocolate Melt So Perfectly in Your Mouth? \ud83c\udf6b\ud83d\ude33 #america #americanfood #food",
-          "views": 32,
-          "subs": 41,
-          "published_at": "2026-09-17T01:56:47Z",
-          "coverage": 1.0
+          "title": "6 Mistakes to Avoid when Making Doughs (bread and pizza)",
+          "views": 1057593,
+          "subs": 349000,
+          "published_at": "2022-04-24T17:41:44Z",
+          "coverage": 0.5
         },
         {
-          "title": "Why Does Chocolate Melt So Fast? The Science Secret | ELI5 Shorts",
-          "views": 52,
-          "subs": 757,
-          "published_at": "2025-12-09T16:51:58Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Chocolate vs Candy Melts - How to Melt, Color &amp; Thin Chocolate &amp; Candy Melts",
-          "views": 1317010,
-          "subs": 2960000,
-          "published_at": "2014-03-28T01:00:00Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Does Real Chocolate Melt in Your Mouth?",
-          "views": 239,
-          "subs": 17,
-          "published_at": "2026-10-13T13:18:33Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "How to melt chocolate over a bain marie",
-          "views": 74665,
-          "subs": 4890,
-          "published_at": "2011-05-16T15:53:19Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "How To Melt Chocolate (Microwave and Stovetop)",
-          "views": 246756,
-          "subs": 117000,
-          "published_at": "2023-12-18T23:09:59Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Does Chocolate Melt So Easily? \ud83c\udf6b\ud83e\udee0 #didyouknow , #mindblown , #scienceexplained",
-          "views": 826,
-          "subs": 1140,
-          "published_at": "2025-08-05T15:44:06Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "How to Melt Chocolate, the Right Way! - Kitchen Conundrums with Thomas Joseph",
-          "views": 3004848,
-          "subs": 1730000,
-          "published_at": "2014-09-23T13:00:05Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Leo\u2019s Melting Chocolate Mystery | Why Did It Melt? \ud83c\udf6b\ud83d\udd0d",
-          "views": 1817,
-          "subs": 384,
-          "published_at": "2025-08-17T22:57:35Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Does Chocolate Melt So Perfectly in Your Mouth? \ud83c\udf6b\ud83e\udd2f #facts",
-          "views": 934,
-          "subs": 197,
-          "published_at": "2026-09-10T12:30:23Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Does Chocolate Melt?",
-          "views": 96,
-          "subs": 27,
-          "published_at": "2026-02-04T05:00:19Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Does Chocolate Melt So Easily? \ud83c\udf6b\ud83d\udd25 The Science Explained!",
-          "views": 490,
-          "subs": 46,
-          "published_at": "2026-09-12T03:30:29Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Best way to melt chocolate",
-          "views": 37917,
-          "subs": 96600,
-          "published_at": "2023-01-24T22:05:01Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Does Chocolate Melt in Your Mouth? \ud83c\udf6b",
-          "views": 268,
-          "subs": 137,
-          "published_at": "2026-01-10T10:45:05Z",
+          "title": "How Do You Fix Dough That Won\u2019t Rise?",
+          "views": 5765,
+          "subs": 923000,
+          "published_at": "2024-06-14T09:26:10Z",
           "coverage": 1.0
         }
       ],
       "domain": null
     },
     {
-      "query": "why does popcorn pop",
+      "query": "how is cheese made",
       "status": "ok",
       "results_examined": 20,
       "title_match": {
         "status": "ok",
         "n": 20,
-        "mean_coverage": 0.9,
+        "mean_coverage": 0.825,
         "max_coverage": 1.0,
-        "strong_match_count": 16,
-        "strong_match_rate": 0.8,
+        "strong_match_count": 13,
+        "strong_match_rate": 0.65,
         "loose_match_rate": 0.0,
-        "gap_signal": 0.2,
-        "interpretation": "16 of 20 ranking titles squarely answer the query"
+        "gap_signal": 0.35,
+        "interpretation": "13 of 20 ranking titles squarely answer the query"
       },
       "view_profile": {
-        "median": 438241.5,
-        "p90": 21243625,
-        "max": 344448676,
+        "median": 1249761.5,
+        "p90": 15156402,
+        "max": 21865114,
         "n": 20
       },
       "incumbents": {
-        "median_subscribers": 2215000.0,
-        "max_subscribers": 29200000,
-        "under_100k_subs": 4,
+        "median_subscribers": 1755000.0,
+        "max_subscribers": 23000000,
+        "under_100k_subs": 5,
         "n": 20
       },
       "recency": {
-        "median_age_days": 1225,
-        "published_last_365d": 2,
+        "median_age_days": 1187,
+        "published_last_365d": 1,
         "n": 20
       },
-      "opportunity_score": 0.283,
+      "opportunity_score": 0.358,
       "opportunity_components": {
-        "title_gap": 0.2,
-        "incumbent_subs": 0.094,
-        "view_ceiling": 0.194,
-        "staleness": 0.9
+        "title_gap": 0.35,
+        "incumbent_subs": 0.108,
+        "view_ceiling": 0.129,
+        "staleness": 0.95
       },
       "opportunity_weights": {
         "title_gap": 0.5,
@@ -4303,545 +1078,148 @@
         "region": "US",
         "language": "en",
         "order": "relevance",
-        "fetched_utc": "2026-10-17T10:13:48.823873+00:00"
+        "fetched_utc": "2026-10-31T15:40:53.911766+00:00"
       },
       "top_results": [
         {
-          "title": "Why Does Popcorn Pop? | The Science of Food! | SciShow Kids",
-          "views": 610442,
-          "subs": 1720000,
-          "published_at": "2022-04-11T10:00:15Z",
+          "title": "How Cheese Is Made",
+          "views": 19980853,
+          "subs": 21200000,
+          "published_at": "2018-10-13T15:00:10Z",
           "coverage": 1.0
         },
         {
-          "title": "Why Does Popcorn Pop?",
-          "views": 117988,
-          "subs": 3250000,
-          "published_at": "2016-12-21T17:33:40Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Popcorn Kernels Pop \ud83e\udd28",
-          "views": 21243625,
-          "subs": 29200000,
-          "published_at": "2023-06-10T14:30:00Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Does Popcorn Pop? Tiny Explosion Explained!",
-          "views": 8687,
+          "title": "How Is Cheese Made?",
+          "views": 39168,
           "subs": 1040000,
-          "published_at": "2026-01-20T04:00:12Z",
+          "published_at": "2025-02-21T20:07:06Z",
           "coverage": 1.0
         },
         {
-          "title": "Why does popcorn pop??",
-          "views": 2125510,
-          "subs": 3530000,
-          "published_at": "2024-03-14T19:51:15Z",
+          "title": "How Cheese Is Made! | Ever Wonder? | Highlights Kids",
+          "views": 341948,
+          "subs": 35800,
+          "published_at": "2020-02-02T01:00:01Z",
           "coverage": 1.0
         },
         {
-          "title": "Why does popcorn... Pop? \ud83c\udf7f @JennyHoyos",
-          "views": 344448676,
-          "subs": 180000,
-          "published_at": "2024-03-09T15:59:59Z",
+          "title": "How 10,000,000 Cheddar Cheese Slices Are Made Inside a High Tech Factory \ud83e\uddc0\u26a1#foodfactory",
+          "views": 1296557,
+          "subs": 9780,
+          "published_at": "2026-09-05T13:00:16Z",
           "coverage": 1.0
         },
         {
-          "title": "How Popcorn Works | How Things Work with Kamri Noel",
-          "views": 363681,
-          "subs": 2070000,
-          "published_at": "2018-12-17T20:00:02Z",
+          "title": "Making Cheese In The 18th Century",
+          "views": 1202966,
+          "subs": 3000000,
+          "published_at": "2025-03-16T13:00:30Z",
           "coverage": 0.5
         },
         {
-          "title": "Why Does Popcorn Pop? Discover the Science!",
-          "views": 25958,
-          "subs": 793000,
-          "published_at": "2024-11-07T08:15:01Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "What makes Popcorn Pop? - Slow Motion Popping",
-          "views": 762734,
-          "subs": 2360000,
-          "published_at": "2022-05-01T21:06:07Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Does Popcorn Pop?",
-          "views": 48544,
-          "subs": 16700,
-          "published_at": "2017-06-17T12:59:58Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why does Popcorn Pop? | How Does Popcorn Pop? | How Popcorn Works | Science behind Popcorn Popping",
-          "views": 6297,
-          "subs": 13600,
-          "published_at": "2022-06-29T01:12:56Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "How Does Popcorn Pop? \ud83c\udf7f\ud83d\ude80 StoryBots Songs for Kids | Netflix Jr",
-          "views": 1493182,
-          "subs": 26500000,
-          "published_at": "2023-06-10T13:00:00Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why does popcorn pop? | #aumsum #kids #science #education #children",
-          "views": 371472,
-          "subs": 4770000,
-          "published_at": "2017-10-12T09:06:19Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why do we eat popcorn at the movies? - Andrew Smith",
-          "views": 1619288,
+          "title": "A brie(f) history of cheese - Paul Kindstedt",
+          "views": 21865114,
           "subs": 23000000,
-          "published_at": "2023-04-20T15:00:54Z",
+          "published_at": "2018-12-13T16:00:49Z",
           "coverage": 0.5
         },
         {
-          "title": "The science behind popping popcorn",
-          "views": 15129,
-          "subs": 2850000,
-          "published_at": "2019-02-28T11:26:01Z",
+          "title": "\ud83e\uddc0Did You Ever Wonder How Cheese Is Made? \ud83e\uddc0| Highlights Kids",
+          "views": 199133,
+          "subs": 35800,
+          "published_at": "2020-03-11T17:30:00Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How Dutch Gouda Cheese Is Made On A 150-Year-Old Family Farm | Big Business",
+          "views": 3722615,
+          "subs": 10600000,
+          "published_at": "2024-01-22T19:00:14Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How CHEESE Is Made - Modern Cheese Factory",
+          "views": 480209,
+          "subs": 2860,
+          "published_at": "2024-01-11T21:45:03Z",
+          "coverage": 1.0
+        },
+        {
+          "title": "How traditional British Cheddar is made in Somerset",
+          "views": 147625,
+          "subs": 261000,
+          "published_at": "2023-10-21T13:00:01Z",
           "coverage": 0.5
         },
         {
-          "title": "Why Does Popcorn Pop? \ud83c\udf7f The Science Explained | Physics Unseen",
-          "views": 378,
-          "subs": 8,
-          "published_at": "2025-09-13T01:16:14Z",
+          "title": "How Cheese is Made | The Art of Cheesemaking",
+          "views": 62207,
+          "subs": 6100,
+          "published_at": "2019-03-25T13:11:08Z",
           "coverage": 1.0
         },
         {
-          "title": "Why Some Popcorn Kernels Don&#39;t Pop \ud83e\uddd0",
-          "views": 35227546,
-          "subs": 29200000,
-          "published_at": "2023-07-29T14:30:13Z",
+          "title": "Cheese - How it&#39;s Made for Kids",
+          "views": 196744,
+          "subs": 771000,
+          "published_at": "2020-10-05T09:00:06Z",
           "coverage": 1.0
         },
         {
-          "title": "How popcorn pops in slow motion and macro #urday #macro #satisfy #closeup",
-          "views": 1735570,
-          "subs": 2370000,
-          "published_at": "2023-07-30T12:00:21Z",
+          "title": "How It&#39;s Made: Blue Stilton Cheese",
+          "views": 2423882,
+          "subs": 5380000,
+          "published_at": "2022-07-19T13:00:25Z",
           "coverage": 1.0
         },
         {
-          "title": "How to pop the un-poppable kernels",
-          "views": 505011,
-          "subs": 379000,
-          "published_at": "2025-08-29T16:31:43Z",
+          "title": "How 20 Cheeses Are Made Around The World | Regional Eats | Insider Food Marathon",
+          "views": 15156402,
+          "subs": 5220000,
+          "published_at": "2023-05-31T16:00:19Z",
           "coverage": 0.5
         },
         {
-          "title": "Why Does Popcorn Pop? The Science Inside a Kernel",
-          "views": 104591,
-          "subs": 46500,
-          "published_at": "2026-08-10T11:10:18Z",
-          "coverage": 1.0
-        }
-      ],
-      "domain": null
-    },
-    {
-      "query": "why does ice cream melt so fast",
-      "status": "ok",
-      "results_examined": 20,
-      "title_match": {
-        "status": "ok",
-        "n": 20,
-        "mean_coverage": 0.925,
-        "max_coverage": 1.0,
-        "strong_match_count": 20,
-        "strong_match_rate": 1.0,
-        "loose_match_rate": 0.0,
-        "gap_signal": 0.0,
-        "interpretation": "20 of 20 ranking titles squarely answer the query"
-      },
-      "view_profile": {
-        "median": 464.0,
-        "p90": 27135,
-        "max": 37340,
-        "n": 20
-      },
-      "incumbents": {
-        "median_subscribers": 815.0,
-        "max_subscribers": 65200,
-        "under_100k_subs": 20,
-        "n": 20
-      },
-      "recency": {
-        "median_age_days": 66,
-        "published_last_365d": 14,
-        "n": 20
-      },
-      "opportunity_score": 0.255,
-      "opportunity_components": {
-        "title_gap": 0.0,
-        "incumbent_subs": 0.584,
-        "view_ceiling": 0.619,
-        "staleness": 0.3
-      },
-      "opportunity_weights": {
-        "title_gap": 0.5,
-        "incumbent_subs": 0.2,
-        "view_ceiling": 0.15,
-        "staleness": 0.15
-      },
-      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
-      "provenance": {
-        "endpoint": "https://www.googleapis.com/youtube/v3",
-        "calls": [
-          "search.list",
-          "videos.list",
-          "channels.list"
-        ],
-        "region": "US",
-        "language": "en",
-        "order": "relevance",
-        "fetched_utc": "2026-10-17T10:13:43.914713+00:00"
-      },
-      "top_results": [
+          "title": "How A 100-Year-Old Vermont Creamery Makes Cheddar Cheese | Regional Eats",
+          "views": 1795591,
+          "subs": 5220000,
+          "published_at": "2019-04-09T18:00:02Z",
+          "coverage": 0.5
+        },
         {
-          "title": "Why does my homemade ice cream melt so fast?",
-          "views": 2569,
-          "subs": 48700,
-          "published_at": "2020-09-17T08:16:41Z",
+          "title": "How Parmigiano Reggiano cheese is made Part 1",
+          "views": 1123743,
+          "subs": 319000,
+          "published_at": "2024-11-21T22:50:23Z",
           "coverage": 1.0
         },
         {
-          "title": "Why Does Ice Cream Melt? \ud83c\udf66 | The Discovery Club #ScienceForKids #STEMforkids #icecream #melting",
-          "views": 3941,
-          "subs": 833,
-          "published_at": "2025-08-14T17:08:27Z",
-          "coverage": 0.75
-        },
-        {
-          "title": "Why Does Ice Cream Melt So Fast? \ud83e\udd14",
-          "views": 1963,
-          "subs": 15,
-          "published_at": "2026-10-04T04:57:03Z",
+          "title": "How It&#39;s Actually Made - Mozzarella Cheese",
+          "views": 2922993,
+          "subs": 2470000,
+          "published_at": "2021-08-28T18:25:36Z",
           "coverage": 1.0
         },
         {
-          "title": "\ud83c\udf66 Why Does Ice Cream Melt So Fast? \ud83d\ude33\ud83d\udc40",
-          "views": 28179,
-          "subs": 1700,
-          "published_at": "2026-10-04T05:48:44Z",
+          "title": "How Parmesan Cheese Is Made",
+          "views": 116492,
+          "subs": 330000,
+          "published_at": "2024-12-07T01:00:21Z",
           "coverage": 1.0
         },
         {
-          "title": "Why Does Ice Cream Melt So Fast? \ud83c\udf66\ud83d\udd2c #Shorts #IceCream #foodscience",
-          "views": 38,
-          "subs": 93,
-          "published_at": "2026-09-24T16:00:12Z",
-          "coverage": 1.0
+          "title": "Making American cheese to debunk a conspiracy",
+          "views": 13380341,
+          "subs": 3620000,
+          "published_at": "2024-02-02T01:49:49Z",
+          "coverage": 0.5
         },
         {
-          "title": "Why Does Ice Cream Melt So Fast? \ud83c\udf66\ud83d\ude31 #shorts #ytshorts #viralshorts #icecream #kidsscience #mvg",
-          "views": 32,
-          "subs": 26,
-          "published_at": "2026-08-23T09:20:39Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Tiny Engineers | Why Does Ice Cream Melt So Fast? \ud83c\udf66\ud83e\udd16 Kabir, Glowy &amp; Anaya Find Out!",
-          "views": 4,
-          "subs": 30,
-          "published_at": "2026-09-08T05:04:05Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "The Science of Why Ice Cream Melts So Quickly",
-          "views": 773,
-          "subs": 4760,
-          "published_at": "2025-01-20T12:00:21Z",
-          "coverage": 0.75
-        },
-        {
-          "title": "Why Does Ice Cream Melt So Fast? The Simple Science Behind It",
-          "views": 27135,
-          "subs": 8240,
-          "published_at": "2026-09-28T10:30:10Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Does Ice Cream MELT So Fast? \ud83c\udf66 #shorts",
-          "views": 0,
-          "subs": 4,
-          "published_at": "2026-10-15T12:30:16Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Does Ice Cream Melt So Fast?",
-          "views": 114,
-          "subs": 29,
-          "published_at": "2026-09-26T06:30:02Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Does Ice Cream Melt So Fast?",
-          "views": 5,
-          "subs": 11,
-          "published_at": "2026-02-21T17:10:57Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Does Ice Cream Melt So FAST in Summer? \ud83c\udf66 States of Matter for Kids",
-          "views": 2,
-          "subs": 797,
-          "published_at": "2026-03-04T03:30:08Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Does Ice Cream Melt So Fast?",
-          "views": 1049,
-          "subs": 223,
-          "published_at": "2026-08-07T09:11:20Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Does Ice Cream Melt So Fast? \ud83e\udd2f",
-          "views": 25,
-          "subs": 4360,
-          "published_at": "2026-08-08T22:48:05Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "\ud83c\udf66 Why Does Ice Cream Melt? | Tiny Paw Mysteries",
-          "views": 45,
-          "subs": 18,
-          "published_at": "2026-09-03T16:18:15Z",
-          "coverage": 0.75
-        },
-        {
-          "title": "Why Does Ice Cream Melt? \ud83c\udf66 Ultimate Kids Science Guide",
-          "views": 155,
-          "subs": 14400,
-          "published_at": "2025-10-02T15:11:06Z",
-          "coverage": 0.75
-        },
-        {
-          "title": "Why Does Ice Cream Melt So Fast? \ud83c\udf66\ud83d\udca8 | Food Science Fact #Shorts",
-          "views": 845,
-          "subs": 3140,
-          "published_at": "2025-07-03T12:03:09Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why does ice cream melt in the freezer?",
-          "views": 23599,
-          "subs": 48700,
-          "published_at": "2020-09-14T17:45:37Z",
-          "coverage": 0.75
-        },
-        {
-          "title": "Why Does Ice Cream Melt? \ud83c\udf66 | \ud83d\udd0dWolfoo Explore - Fun Science for Kids | Educational Videos",
-          "views": 37340,
-          "subs": 65200,
-          "published_at": "2026-08-15T07:00:29Z",
-          "coverage": 0.75
-        }
-      ],
-      "domain": null
-    },
-    {
-      "query": "why do onions make you cry",
-      "status": "ok",
-      "results_examined": 19,
-      "title_match": {
-        "status": "ok",
-        "n": 19,
-        "mean_coverage": 0.947,
-        "max_coverage": 1.0,
-        "strong_match_count": 17,
-        "strong_match_rate": 0.895,
-        "loose_match_rate": 0.053,
-        "gap_signal": 0.105,
-        "interpretation": "17 of 19 ranking titles squarely answer the query"
-      },
-      "view_profile": {
-        "median": 107454,
-        "p90": 2914731,
-        "max": 4945919,
-        "n": 19
-      },
-      "incumbents": {
-        "median_subscribers": 887000,
-        "max_subscribers": 10700000,
-        "under_100k_subs": 6,
-        "n": 19
-      },
-      "recency": {
-        "median_age_days": 1620,
-        "published_last_365d": 5,
-        "n": 19
-      },
-      "opportunity_score": 0.235,
-      "opportunity_components": {
-        "title_gap": 0.105,
-        "incumbent_subs": 0.15,
-        "view_ceiling": 0.281,
-        "staleness": 0.737
-      },
-      "opportunity_weights": {
-        "title_gap": 0.5,
-        "incumbent_subs": 0.2,
-        "view_ceiling": 0.15,
-        "staleness": 0.15
-      },
-      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
-      "provenance": {
-        "endpoint": "https://www.googleapis.com/youtube/v3",
-        "calls": [
-          "search.list",
-          "videos.list",
-          "channels.list"
-        ],
-        "region": "US",
-        "language": "en",
-        "order": "relevance",
-        "fetched_utc": "2026-10-17T10:13:34.537071+00:00"
-      },
-      "top_results": [
-        {
-          "title": "How Onions ACTUALLY Make You Cry (And How to Stop Them)",
-          "views": 99152,
-          "subs": 8420000,
-          "published_at": "2026-05-20T17:00:04Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Do Onions Make You Cry? - Science Explained",
-          "views": 292,
-          "subs": 345,
-          "published_at": "2025-09-12T21:00:12Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Mayo Clinic Minute: Why do onions make you cry?",
-          "views": 39744,
-          "subs": 1270000,
-          "published_at": "2017-10-06T18:04:21Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Do Onions Make You Cry?",
-          "views": 194384,
-          "subs": 4990000,
-          "published_at": "2015-05-25T20:00:00Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Do Onions Make You Cry?",
-          "views": 107454,
-          "subs": 885000,
-          "published_at": "2016-06-07T12:00:01Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Do Onions Make Me Cry?",
-          "views": 300487,
-          "subs": 1720000,
-          "published_at": "2017-09-14T21:00:02Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Do Onions Make You Cry ?",
-          "views": 1116276,
-          "subs": 282000,
-          "published_at": "2026-03-26T21:15:03Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Do Onions Make Us Cry? | COLOSSAL QUESTIONS | Learn #withme",
-          "views": 3480024,
-          "subs": 949000,
-          "published_at": "2018-03-20T19:00:00Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Human Tears - Why do onions make you cry? | #aumsum #kids #science #education #children",
-          "views": 2447302,
-          "subs": 4770000,
-          "published_at": "2017-10-18T09:54:15Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why ONIONS Make You Cry..",
-          "views": 959993,
-          "subs": 324000,
-          "published_at": "2026-08-27T18:51:49Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Cutting Onions Makes You Cry: Science Explained",
-          "views": 46,
-          "subs": 30700,
-          "published_at": "2025-06-14T03:13:59Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Why do onions make you cry? | But Why Bites | Vermont Public PBS",
-          "views": 12691,
-          "subs": 95600,
-          "published_at": "2026-01-02T21:13:25Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why do Onions make us Cry? | #aumsum #kids #education #science",
-          "views": 2914731,
-          "subs": 887000,
-          "published_at": "2025-10-28T11:51:03Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Do Onions Make You Cry? - I Wonder Why - Animated Educational Video For Kids",
-          "views": 79991,
-          "subs": 1070000,
-          "published_at": "2015-02-07T11:42:40Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why do onions make you cry? - Naked Science Scrapbook",
-          "views": 16534,
-          "subs": 35500,
-          "published_at": "2010-12-25T11:32:31Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why do onions make you cry??",
-          "views": 4945919,
-          "subs": 3530000,
-          "published_at": "2024-01-15T18:37:05Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Stop Your Eyes From Tearing When Cutting Your Onions!  Dr. Mandell",
-          "views": 262553,
-          "subs": 10700000,
-          "published_at": "2022-02-23T03:54:56Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "Why Do Onions Make You Cry? Super Funny Science Animation for Kids!",
-          "views": 34218,
-          "subs": 2350,
-          "published_at": "2022-05-28T02:54:30Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Do Onions Make You Cry?",
-          "views": 52144,
-          "subs": 27300,
-          "published_at": "2022-05-10T23:34:35Z",
-          "coverage": 1.0
+          "title": "Homemade ricotta cheese! #cheese #ricotta #milk",
+          "views": 1663150,
+          "subs": 5350000,
+          "published_at": "2023-10-02T08:26:20Z",
+          "coverage": 0.5
         }
       ],
       "domain": null

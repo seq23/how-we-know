@@ -22,7 +22,7 @@
       "pin_errors"
     ]
   },
-  "generated_at": "2026-10-24T10:09:05.339921+00:00",
+  "generated_at": "2026-10-31T15:36:11.344162+00:00",
   "generator": "research/publish_order.py",
   "rule": "pov/topic-taxonomy.json: 'Rank candidates by (search demand / competition).' Implemented as a hard GATE on both axes, then a geometric combined score among survivors.",
   "gate": {
@@ -146,15 +146,15 @@
       ],
       "reason": "title gap 0.20 is at or below the 0.3 saturation ceiling: 16 of the top 20 titles already answer this question squarely.",
       "measurement": {
-        "demand_index": 0.3717,
+        "demand_index": 0.3417,
         "demand_floor": 0.16,
         "title_gap": 0.2,
         "saturation_ceiling": 0.3,
-        "autocomplete_completions": 4,
+        "autocomplete_completions": 0,
         "corpus_breadth": 0
       },
       "what_would_settle_it": "Re-measure with a larger result set and on a different day; 20 results at one moment is thin evidence to end a topic on.",
-      "demand_index": 0.3717,
+      "demand_index": 0.3417,
       "opportunity_score": 0.325,
       "title_gap": 0.2
     }
@@ -249,6 +249,11 @@
     {
       "slug": "how-strong-is-titanium",
       "query": "how strong is titanium",
+      "status": "no_competition_score"
+    },
+    {
+      "slug": "is-damascus-steel-better",
+      "query": "is damascus steel better",
       "status": "no_competition_score"
     },
     {
@@ -376,13 +381,13 @@
           "what is the deepest part of the ocean called",
           "what is the deepest part of the ocean we've explored",
           "what is the deepest point of the ocean",
-          "what the deepest part of the ocean looks like"
+          "what is found in the deepest part of the ocean"
         ],
         "caveat": "autocomplete presence, NOT search volume",
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-24T10:08:56.186524+00:00"
+          "fetched_utc": "2026-10-31T15:36:02.361219+00:00"
         }
       },
       "competition": {
@@ -461,7 +466,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-24T10:08:51.602398+00:00"
+          "fetched_utc": "2026-10-31T15:35:57.859626+00:00"
         }
       },
       "competition": {
@@ -514,6 +519,85 @@
       "gate_overridden": false
     },
     {
+      "slug": "14-how-big-is-a-colossal-squid",
+      "script": "scripts/14-how-big-is-a-colossal-squid.md",
+      "title": "How big is a colossal squid?",
+      "query": "how big is a colossal squid",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.471 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.4712,
+        "autocomplete_completions": 3,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "big",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 8,
+        "sample_completions": [
+          "how big is a colossal squid",
+          "how big is a giant squid",
+          "how long is a giant squid"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-31T15:36:05.953577+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.669,
+        "title_gap": 1.0,
+        "title_coverage_mean": 0.533,
+        "strong_match_count": 0,
+        "results_examined": 20,
+        "median_views": 984157.5,
+        "p90_views": 5575272,
+        "median_subscribers": 333000.0,
+        "channels_under_100k_subs": 3,
+        "median_age_days": 677,
+        "published_last_365d": 6,
+        "interpretation": "nobody has made the definitive video on this query",
+        "components": {
+          "title_gap": 1.0,
+          "incumbent_subs": 0.211,
+          "view_ceiling": 0.144,
+          "staleness": 0.7
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-08-30T20:51:44.338911+00:00"
+        }
+      },
+      "trend": {
+        "direction_12m": "rising",
+        "verdict": "direction NOT QUOTABLE - low_resolution; only the rising/breakout queries are usable here",
+        "breakouts": 0,
+        "status": "ok"
+      },
+      "combined_score": 0.5615,
+      "trend_multiplier": 1.0,
+      "trend_note": "Trends series not quotable; neutral",
+      "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
+      "reason": "Open field (100% of top-20 titles miss the question) but thin demand (0.47) -- uncontested because few ask it.",
+      "queue_position": 3,
+      "source": "COMBINED_SCORE",
+      "pinned": false,
+      "overridden_gate_verdict": null,
+      "gate_overridden": false
+    },
+    {
       "slug": "01-why-deep-sea-creatures-look-so-weird",
       "script": "scripts/01-why-deep-sea-creatures-look-so-weird.md",
       "title": "Why deep sea creatures look so weird?",
@@ -539,7 +623,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-24T10:08:47.924650+00:00"
+          "fetched_utc": "2026-10-31T15:35:54.214828+00:00"
         }
       },
       "competition": {
@@ -585,84 +669,6 @@
       "trend_note": "Trends series not quotable; neutral",
       "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
       "reason": "CONTESTED DESPITE THE GAP: 80% lexical title gap, but median 2,476,624 views and 719,500 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated.",
-      "queue_position": 3,
-      "source": "COMBINED_SCORE",
-      "pinned": false,
-      "overridden_gate_verdict": null,
-      "gate_overridden": false
-    },
-    {
-      "slug": "14-how-big-is-a-colossal-squid",
-      "script": "scripts/14-how-big-is-a-colossal-squid.md",
-      "title": "How big is a colossal squid?",
-      "query": "how big is a colossal squid",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.464 clears the 0.16 floor and title gap 1.00 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.4637,
-        "autocomplete_completions": 2,
-        "exact_in_autocomplete": true,
-        "corpus_breadth": 0,
-        "key_term": "big",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 8,
-        "sample_completions": [
-          "how big is a colossal squid",
-          "how big is a giant squid"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-24T10:08:59.846180+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.669,
-        "title_gap": 1.0,
-        "title_coverage_mean": 0.533,
-        "strong_match_count": 0,
-        "results_examined": 20,
-        "median_views": 984157.5,
-        "p90_views": 5575272,
-        "median_subscribers": 333000.0,
-        "channels_under_100k_subs": 3,
-        "median_age_days": 677,
-        "published_last_365d": 6,
-        "interpretation": "nobody has made the definitive video on this query",
-        "components": {
-          "title_gap": 1.0,
-          "incumbent_subs": 0.211,
-          "view_ceiling": 0.144,
-          "staleness": 0.7
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-08-30T20:51:44.338911+00:00"
-        }
-      },
-      "trend": {
-        "direction_12m": "rising",
-        "verdict": "direction NOT QUOTABLE - low_resolution; only the rising/breakout queries are usable here",
-        "breakouts": 0,
-        "status": "ok"
-      },
-      "combined_score": 0.557,
-      "trend_multiplier": 1.0,
-      "trend_note": "Trends series not quotable; neutral",
-      "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
-      "reason": "Open field (100% of top-20 titles miss the question) but thin demand (0.46) -- uncontested because few ask it.",
       "queue_position": 4,
       "source": "COMBINED_SCORE",
       "pinned": false,
@@ -677,11 +683,11 @@
       "gate": {
         "verdict": "passed",
         "failed": [],
-        "reason": "demand 0.723 clears the 0.16 floor and title gap 0.40 clears the 0.3 saturation ceiling."
+        "reason": "demand 0.716 clears the 0.16 floor and title gap 0.40 clears the 0.3 saturation ceiling."
       },
       "demand": {
-        "demand_index": 0.7232,
-        "autocomplete_completions": 4,
+        "demand_index": 0.7157,
+        "autocomplete_completions": 3,
         "exact_in_autocomplete": true,
         "corpus_breadth": 90,
         "key_term": "midnight",
@@ -689,7 +695,6 @@
         "key_term_corpus_breadth": 93,
         "sample_completions": [
           "what is the midnight zone",
-          "what does the midnight zone look like",
           "what lurks in the midnight zone",
           "what lives in the midnight zone"
         ],
@@ -697,7 +702,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-24T10:09:05.339327+00:00"
+          "fetched_utc": "2026-10-31T15:36:11.343501+00:00"
         }
       },
       "competition": {
@@ -738,7 +743,7 @@
         "breakouts": 0,
         "status": "ok"
       },
-      "combined_score": 0.5399,
+      "combined_score": 0.5371,
       "trend_multiplier": 1.0,
       "trend_note": "Trends series not quotable; neutral",
       "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
@@ -777,7 +782,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-24T10:08:52.523482+00:00"
+          "fetched_utc": "2026-10-31T15:35:58.758933+00:00"
         }
       },
       "competition": {
@@ -858,7 +863,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-24T10:08:53.442861+00:00"
+          "fetched_utc": "2026-10-31T15:35:59.658900+00:00"
         }
       },
       "competition": {
@@ -936,7 +941,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-24T10:09:00.764184+00:00"
+          "fetched_utc": "2026-10-31T15:36:06.852233+00:00"
         }
       },
       "competition": {
@@ -989,6 +994,87 @@
       "gate_overridden": false
     },
     {
+      "slug": "09-what-is-the-scariest-deep-sea-creature",
+      "script": "scripts/09-what-is-the-scariest-deep-sea-creature.md",
+      "title": "What is the scariest deep sea creature?",
+      "query": "what is the scariest deep sea creature",
+      "gate": {
+        "verdict": "passed",
+        "failed": [],
+        "reason": "demand 0.449 clears the 0.16 floor and title gap 0.90 clears the 0.3 saturation ceiling."
+      },
+      "demand": {
+        "demand_index": 0.4494,
+        "autocomplete_completions": 5,
+        "exact_in_autocomplete": false,
+        "corpus_breadth": 0,
+        "key_term": "scariest",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "the scariest deep sea creatures",
+          "the scariest deep sea creatures ever caught on camera",
+          "the scariest deep sea creatures ever caught on camera documentary",
+          "the scariest deep sea creatures at every depth",
+          "the most scariest deep sea creatures"
+        ],
+        "caveat": "autocomplete presence, NOT search volume",
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-31T15:36:01.479907+00:00"
+        }
+      },
+      "competition": {
+        "opportunity_score": 0.563,
+        "title_gap": 0.9,
+        "title_coverage_mean": 0.338,
+        "strong_match_count": 2,
+        "results_examined": 20,
+        "median_views": 2505611.5,
+        "p90_views": 6427866,
+        "median_subscribers": 1295000.0,
+        "channels_under_100k_subs": 3,
+        "median_age_days": 350,
+        "published_last_365d": 10,
+        "interpretation": "2 of 20 ranking titles squarely answer the query",
+        "components": {
+          "title_gap": 0.9,
+          "incumbent_subs": 0.127,
+          "view_ceiling": 0.086,
+          "staleness": 0.5
+        },
+        "provenance": {
+          "endpoint": "https://www.googleapis.com/youtube/v3",
+          "calls": [
+            "search.list",
+            "videos.list",
+            "channels.list"
+          ],
+          "region": "US",
+          "language": "en",
+          "order": "relevance",
+          "fetched_utc": "2026-08-30T20:51:36.457851+00:00"
+        }
+      },
+      "trend": {
+        "direction_12m": null,
+        "verdict": "direction NOT QUOTABLE - no_data; only the rising/breakout queries are usable here",
+        "breakouts": 0,
+        "status": "ok"
+      },
+      "combined_score": 0.503,
+      "trend_multiplier": 1.0,
+      "trend_note": "Trends series not quotable; neutral",
+      "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
+      "reason": "CONTESTED DESPITE THE GAP: 90% lexical title gap, but median 2,505,612 views and 1,295,000 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated.",
+      "queue_position": 9,
+      "source": "COMBINED_SCORE",
+      "pinned": false,
+      "overridden_gate_verdict": null,
+      "gate_overridden": false
+    },
+    {
       "slug": "08-what-creatures-live-in-the-deep-sea",
       "script": "scripts/08-what-creatures-live-in-the-deep-sea.md",
       "title": "What creatures live in the deep sea?",
@@ -1008,16 +1094,16 @@
         "key_term_corpus_breadth": 29,
         "sample_completions": [
           "what animals live in the dead sea",
+          "what creatures live in the midnight zone of the deep sea",
           "what creatures live deep in the ocean",
           "creatures living in the deep sea",
-          "what sea creatures live in the deepest part of the ocean",
           "creatures living in the deepest sea"
         ],
         "caveat": "autocomplete presence, NOT search volume",
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-24T10:08:54.363696+00:00"
+          "fetched_utc": "2026-10-31T15:36:00.577619+00:00"
         }
       },
       "competition": {
@@ -1063,84 +1149,6 @@
       "trend_note": "Trends series not quotable; neutral",
       "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
       "reason": "Middle of the field: title gap 0.60, demand 0.56, opportunity 0.44.",
-      "queue_position": 9,
-      "source": "COMBINED_SCORE",
-      "pinned": false,
-      "overridden_gate_verdict": null,
-      "gate_overridden": false
-    },
-    {
-      "slug": "09-what-is-the-scariest-deep-sea-creature",
-      "script": "scripts/09-what-is-the-scariest-deep-sea-creature.md",
-      "title": "What is the scariest deep sea creature?",
-      "query": "what is the scariest deep sea creature",
-      "gate": {
-        "verdict": "passed",
-        "failed": [],
-        "reason": "demand 0.427 clears the 0.16 floor and title gap 0.90 clears the 0.3 saturation ceiling."
-      },
-      "demand": {
-        "demand_index": 0.4269,
-        "autocomplete_completions": 2,
-        "exact_in_autocomplete": false,
-        "corpus_breadth": 0,
-        "key_term": "scariest",
-        "key_term_completions": 10,
-        "key_term_corpus_breadth": 0,
-        "sample_completions": [
-          "the scariest deep sea creatures",
-          "the most scariest deep sea creatures"
-        ],
-        "caveat": "autocomplete presence, NOT search volume",
-        "provenance": {
-          "endpoint": "https://suggestqueries.google.com/complete/search",
-          "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-24T10:08:55.286001+00:00"
-        }
-      },
-      "competition": {
-        "opportunity_score": 0.563,
-        "title_gap": 0.9,
-        "title_coverage_mean": 0.338,
-        "strong_match_count": 2,
-        "results_examined": 20,
-        "median_views": 2505611.5,
-        "p90_views": 6427866,
-        "median_subscribers": 1295000.0,
-        "channels_under_100k_subs": 3,
-        "median_age_days": 350,
-        "published_last_365d": 10,
-        "interpretation": "2 of 20 ranking titles squarely answer the query",
-        "components": {
-          "title_gap": 0.9,
-          "incumbent_subs": 0.127,
-          "view_ceiling": 0.086,
-          "staleness": 0.5
-        },
-        "provenance": {
-          "endpoint": "https://www.googleapis.com/youtube/v3",
-          "calls": [
-            "search.list",
-            "videos.list",
-            "channels.list"
-          ],
-          "region": "US",
-          "language": "en",
-          "order": "relevance",
-          "fetched_utc": "2026-08-30T20:51:36.457851+00:00"
-        }
-      },
-      "trend": {
-        "direction_12m": null,
-        "verdict": "direction NOT QUOTABLE - no_data; only the rising/breakout queries are usable here",
-        "breakouts": 0,
-        "status": "ok"
-      },
-      "combined_score": 0.4902,
-      "trend_multiplier": 1.0,
-      "trend_note": "Trends series not quotable; neutral",
-      "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
-      "reason": "CONTESTED DESPITE THE GAP: 90% lexical title gap, but median 2,505,612 views and 1,295,000 subs in the top 20. Coverage is word-matching, so incumbents answering the same question in different words score as a miss. Treat the gap here as overstated.",
       "queue_position": 10,
       "source": "COMBINED_SCORE",
       "pinned": false,
@@ -1155,24 +1163,25 @@
       "gate": {
         "verdict": "passed",
         "failed": [],
-        "reason": "demand 0.404 clears the 0.16 floor and title gap 0.65 clears the 0.3 saturation ceiling."
+        "reason": "demand 0.412 clears the 0.16 floor and title gap 0.65 clears the 0.3 saturation ceiling."
       },
       "demand": {
-        "demand_index": 0.4043,
-        "autocomplete_completions": 1,
+        "demand_index": 0.4118,
+        "autocomplete_completions": 2,
         "exact_in_autocomplete": false,
         "corpus_breadth": 0,
         "key_term": "ever",
         "key_term_completions": 10,
         "key_term_corpus_breadth": 5,
         "sample_completions": [
-          "what is the biggest fish ever caught"
+          "what is the biggest fish ever caught",
+          "what is the biggest fish ever caught in the world"
         ],
         "caveat": "autocomplete presence, NOT search volume",
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-24T10:09:04.429460+00:00"
+          "fetched_utc": "2026-10-31T15:36:10.432455+00:00"
         }
       },
       "competition": {
@@ -1213,11 +1222,11 @@
         "breakouts": 0,
         "status": "unavailable"
       },
-      "combined_score": 0.4545,
+      "combined_score": 0.4587,
       "trend_multiplier": 1.0,
       "trend_note": "no Trends data; neutral",
       "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
-      "reason": "Middle of the field: title gap 0.65, demand 0.40, opportunity 0.51.",
+      "reason": "Middle of the field: title gap 0.65, demand 0.41, opportunity 0.51.",
       "queue_position": 11,
       "source": "COMBINED_SCORE",
       "pinned": false,
@@ -1247,7 +1256,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-24T10:09:03.513261+00:00"
+          "fetched_utc": "2026-10-31T15:36:09.545794+00:00"
         }
       },
       "competition": {
@@ -1307,26 +1316,24 @@
       "gate": {
         "verdict": "passed",
         "failed": [],
-        "reason": "demand 0.558 clears the 0.16 floor and title gap 0.45 clears the 0.3 saturation ceiling."
+        "reason": "demand 0.543 clears the 0.16 floor and title gap 0.45 clears the 0.3 saturation ceiling."
       },
       "demand": {
-        "demand_index": 0.5583,
-        "autocomplete_completions": 3,
+        "demand_index": 0.5433,
+        "autocomplete_completions": 1,
         "exact_in_autocomplete": false,
         "corpus_breadth": 4,
         "key_term": "scary",
         "key_term_completions": 10,
         "key_term_corpus_breadth": 9,
         "sample_completions": [
-          "why are deep sea creatures so scary",
-          "why deep sea creatures grow so terrifying huge",
           "why deep sea creatures are scary"
         ],
         "caveat": "autocomplete presence, NOT search volume",
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-24T10:08:50.682178+00:00"
+          "fetched_utc": "2026-10-31T15:35:56.959323+00:00"
         }
       },
       "competition": {
@@ -1367,11 +1374,11 @@
         "breakouts": 0,
         "status": "ok"
       },
-      "combined_score": 0.4376,
+      "combined_score": 0.4317,
       "trend_multiplier": 1.0,
       "trend_note": "Trends series not quotable; neutral",
       "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
-      "reason": "Middle of the field: title gap 0.45, demand 0.56, opportunity 0.34.",
+      "reason": "Middle of the field: title gap 0.45, demand 0.54, opportunity 0.34.",
       "queue_position": 13,
       "source": "COMBINED_SCORE",
       "pinned": false,
@@ -1404,7 +1411,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-24T10:09:01.682988+00:00"
+          "fetched_utc": "2026-10-31T15:36:07.763751+00:00"
         }
       },
       "competition": {
@@ -1481,7 +1488,7 @@
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-24T10:08:58.938355+00:00"
+          "fetched_utc": "2026-10-31T15:36:05.055282+00:00"
         }
       },
       "competition": {
@@ -1541,11 +1548,11 @@
       "gate": {
         "verdict": "passed",
         "failed": [],
-        "reason": "demand 0.190 clears the 0.16 floor and title gap 0.45 clears the 0.3 saturation ceiling."
+        "reason": "demand 0.198 clears the 0.16 floor and title gap 0.45 clears the 0.3 saturation ceiling."
       },
       "demand": {
-        "demand_index": 0.1904,
-        "autocomplete_completions": 2,
+        "demand_index": 0.1979,
+        "autocomplete_completions": 3,
         "exact_in_autocomplete": false,
         "corpus_breadth": 0,
         "key_term": "survive",
@@ -1553,13 +1560,14 @@
         "key_term_corpus_breadth": 0,
         "sample_completions": [
           "how do deep sea creatures survive the pressure",
-          "how can deep sea fish survive the pressure"
+          "how can deep sea fish survive the pressure",
+          "how deep sea creatures withstand pressure"
         ],
         "caveat": "autocomplete presence, NOT search volume",
         "provenance": {
           "endpoint": "https://suggestqueries.google.com/complete/search",
           "surface": "youtube_autocomplete",
-          "fetched_utc": "2026-10-24T10:08:48.842848+00:00"
+          "fetched_utc": "2026-10-31T15:35:55.125503+00:00"
         }
       },
       "competition": {
@@ -1600,11 +1608,11 @@
         "breakouts": 0,
         "status": "ok"
       },
-      "combined_score": 0.2995,
+      "combined_score": 0.3053,
       "trend_multiplier": 1.0,
       "trend_note": "Trends series not quotable; neutral",
       "formula": "sqrt(demand_index * opportunity_score) * trend_multiplier",
-      "reason": "Middle of the field: title gap 0.45, demand 0.19, opportunity 0.47.",
+      "reason": "Middle of the field: title gap 0.45, demand 0.20, opportunity 0.47.",
       "queue_position": 16,
       "source": "COMBINED_SCORE",
       "pinned": false,

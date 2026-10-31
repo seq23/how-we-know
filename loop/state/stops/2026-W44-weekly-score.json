@@ -1,0 +1,67 @@
+{
+  "stage": "weekly-score",
+  "week": "2026-W44",
+  "at": "2026-10-31T15:41:05+00:00",
+  "code": "DOMAIN_QUEUE_THIN",
+  "message": "2 domain(s) could not be scored this run: deep-sea-ocean-science, food-science. deep-sea-ocean-science has 1 unwritten, non-duplicate topic(s) after the gate, under the floor of 4, and every mining source is exhausted (broad mine, deep-mine cache, dedicated seeds, a fresh autocomplete mine).",
+  "detail": {
+    "stops": [
+      {
+        "domain": "deep-sea-ocean-science",
+        "code": "DOMAIN_QUEUE_THIN",
+        "message": "deep-sea-ocean-science has 1 unwritten, non-duplicate topic(s) after the gate, under the floor of 4, and every mining source is exhausted (broad mine, deep-mine cache, dedicated seeds, a fresh autocomplete mine).",
+        "tail": [
+          "domain                            n    opp    gap   medViews    medSubs",
+          "",
+          "12 topic(s) survived the gate, 3 killed, 13 written row(s) carried forward -> research/publish_order_deep_sea_ocean_science.json",
+          "NAMED STOP DOMAIN_QUEUE_THIN: deep-sea-ocean-science has 1 unwritten, non-duplicate topic(s) after the gate, under the floor of 4, and every mining source is exhausted (broad mine, deep-mine cache, dedicated seeds, a fresh autocomplete mine)."
+        ],
+        "unblock": "Add seeds for this domain to research/seeds_broad.json or its dedicated seed file (research/publish_order_domain.py DEDICATED_SEEDS); the next Saturday run mines them. The domain keeps publishing whatever it already has queued."
+      },
+      {
+        "domain": "food-science",
+        "code": "DOMAIN_QUEUE_THIN",
+        "message": "food-science has 0 unwritten, non-duplicate topic(s) after the gate, under the floor of 4, and every mining source is exhausted (broad mine, deep-mine cache, dedicated seeds, a fresh autocomplete mine).",
+        "tail": [
+          "domain                            n    opp    gap   medViews    medSubs",
+          "",
+          "14 topic(s) survived the gate, 0 killed, 8 written row(s) carried forward -> research/publish_order_food_science.json",
+          "NAMED STOP DOMAIN_QUEUE_THIN: food-science has 0 unwritten, non-duplicate topic(s) after the gate, under the floor of 4, and every mining source is exhausted (broad mine, deep-mine cache, dedicated seeds, a fresh autocomplete mine)."
+        ],
+        "unblock": "Add seeds for this domain to research/seeds_broad.json or its dedicated seed file (research/publish_order_domain.py DEDICATED_SEEDS); the next Saturday run mines them. The domain keeps publishing whatever it already has queued."
+      }
+    ]
+  },
+  "unblock": "deep-sea-ocean-science: Add seeds for this domain to research/seeds_broad.json or its dedicated seed file (research/publish_order_domain.py DEDICATED_SEEDS); the next Saturday run mines them. The domain keeps publishing whatever it already has queued.; food-science: Add seeds for this domain to research/seeds_broad.json or its dedicated seed file (research/publish_order_domain.py DEDICATED_SEEDS); the next Saturday run mines them. The domain keeps publishing whatever it already has queued.",
+  "disposition": "self_resolving",
+  "disposition_why": "The Saturday miner widened every source it has (broad mine, deep-mine cache, dedicated seeds, a fresh autocomplete mine) and still found fewer than 4 unwritten topics that are not repeats of aired episodes. It wrote the queue it could; autocomplete changes week to week and the next Saturday mines again. The runway stops, not this, protect publishing. (run 3 of at most 3 before this escalates to a human.)",
+  "consecutive": 3,
+  "held_items": [],
+  "exit_code": 0,
+  "work_done_before_stop": [
+    "scored and ranked 60 candidate(s)",
+    "ranking is fresh as of 2026-10-31T15:36:11.344162+00:00",
+    "scored a queue for deep-sea-ocean-science -> research/publish_order_deep_sea_ocean_science.json (under the floor)",
+    "scored a queue for food-science -> research/publish_order_food_science.json (under the floor)"
+  ],
+  "notes": [
+    "running research/publish_order.py (owned by the research agent)",
+    "  scorer: ",
+    "  scorer: KILLED 4:",
+    "  scorer:    killed              12-what-is-a-frilled-shark                    (saturation)",
+    "  scorer:    killed              11-what-is-a-dumbo-octopus                    (saturation)",
+    "  scorer:    killed              17-what-is-a-yeti-crab                        (demand,saturation)",
+    "  scorer:    killed_provisional  03-why-deep-sea-creatures-are-surfacing       (saturation)",
+    "no scripts held in loop/promotion_holds.json",
+    "deep-sea-ocean-science holds weekly slots and has fewer than 4 unwritten, non-duplicate topics queued; mining and running the gate for it",
+    "  deep-sea-ocean-science: domain                            n    opp    gap   medViews    medSubs",
+    "  deep-sea-ocean-science: ",
+    "  deep-sea-ocean-science: 12 topic(s) survived the gate, 3 killed, 13 written row(s) carried forward -> research/publish_order_deep_sea_ocean_science.json",
+    "  deep-sea-ocean-science: NAMED STOP DOMAIN_QUEUE_THIN: deep-sea-ocean-science has 1 unwritten, non-duplicate topic(s) after the gate, under the floor of 4, and every mining so",
+    "food-science holds weekly slots and has fewer than 4 unwritten, non-duplicate topics queued; mining and running the gate for it",
+    "  food-science: domain                            n    opp    gap   medViews    medSubs",
+    "  food-science: ",
+    "  food-science: 14 topic(s) survived the gate, 0 killed, 8 written row(s) carried forward -> research/publish_order_food_science.json",
+    "  food-science: NAMED STOP DOMAIN_QUEUE_THIN: food-science has 0 unwritten, non-duplicate topic(s) after the gate, under the floor of 4, and every mining source is ex"
+  ]
+}

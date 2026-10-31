@@ -1,661 +1,55 @@
 {
-  "measured_at": "2026-09-26T10:15:05.009404+00:00",
+  "measured_at": "2026-10-31T15:40:50.247481+00:00",
   "generator": "research/competition.py",
   "source": "YouTube Data API v3 (search.list, videos.list, channels.list)",
   "key_source": "environment $YOUTUBE_API_KEY",
   "key_handling": "The API key is never printed, logged, or written here.",
-  "quota_units_spent": 714,
+  "quota_units_spent": 204,
   "quota_budget": 3000,
   "allocation_plan": null,
-  "candidates_scored": 7,
+  "candidates_scored": 2,
   "candidates_unmeasured": [],
   "unmeasured_note": "Anything listed here has NO competition value. It is not scored as zero and must not be ranked as if it were measured.",
   "domain_summary": {},
   "results": [
     {
-      "query": "why deep sea fish die when brought to surface",
-      "status": "ok",
-      "results_examined": 20,
-      "title_match": {
-        "status": "ok",
-        "n": 20,
-        "mean_coverage": 0.35,
-        "max_coverage": 0.833,
-        "strong_match_count": 1,
-        "strong_match_rate": 0.05,
-        "loose_match_rate": 0.55,
-        "gap_signal": 0.95,
-        "interpretation": "1 of 20 ranking titles squarely answer the query"
-      },
-      "view_profile": {
-        "median": 790563.5,
-        "p90": 10059598,
-        "max": 11244175,
-        "n": 20
-      },
-      "incumbents": {
-        "median_subscribers": 82150.0,
-        "max_subscribers": 28600000,
-        "under_100k_subs": 11,
-        "n": 20
-      },
-      "recency": {
-        "median_age_days": 585,
-        "published_last_365d": 5,
-        "n": 20
-      },
-      "opportunity_score": 0.671,
-      "opportunity_components": {
-        "title_gap": 0.95,
-        "incumbent_subs": 0.298,
-        "view_ceiling": 0.157,
-        "staleness": 0.75
-      },
-      "opportunity_weights": {
-        "title_gap": 0.5,
-        "incumbent_subs": 0.2,
-        "view_ceiling": 0.15,
-        "staleness": 0.15
-      },
-      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
-      "provenance": {
-        "endpoint": "https://www.googleapis.com/youtube/v3",
-        "calls": [
-          "search.list",
-          "videos.list",
-          "channels.list"
-        ],
-        "region": "US",
-        "language": "en",
-        "order": "relevance",
-        "fetched_utc": "2026-09-26T10:15:01.328210+00:00"
-      },
-      "top_results": [
-        {
-          "title": "Why This Fish Looks Like It\u2019s About to Explode!",
-          "views": 37483,
-          "subs": 7280,
-          "published_at": "2025-02-01T08:00:35Z",
-          "coverage": 0.167
-        },
-        {
-          "title": "The truth behind &#39;demon-fish&#39;",
-          "views": 862382,
-          "subs": 5030000,
-          "published_at": "2025-02-20T17:52:40Z",
-          "coverage": 0.167
-        },
-        {
-          "title": "How Do Deep Sea Fish Survive the Extreme Pressure?",
-          "views": 203306,
-          "subs": 32100,
-          "published_at": "2022-09-29T09:30:11Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "Rare deep sea fish washes ashore in Carlsbad",
-          "views": 718745,
-          "subs": 536000,
-          "published_at": "2025-02-19T01:21:46Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "Earthquake Fish: Why Do Oarfish Surface?",
-          "views": 1345908,
-          "subs": 773000,
-          "published_at": "2023-08-12T10:00:09Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "The Anglerfish That Swam to the Surface and Died refers to a viral video of a black seadevil story",
-          "views": 12275,
-          "subs": 5110,
-          "published_at": "2025-02-25T02:40:10Z",
-          "coverage": 0.167
-        },
-        {
-          "title": "Why Do Deep-Sea Fish &#39;Explode&#39; When Brought to the Surface? #Shorts",
-          "views": 70,
-          "subs": 29,
-          "published_at": "2026-09-25T08:00:16Z",
-          "coverage": 0.833
-        },
-        {
-          "title": "4 reasons why deep-sea fish can survive the pressure",
-          "views": 8142,
-          "subs": 83900,
-          "published_at": "2025-05-08T20:43:21Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "Female Anglerfish can get Huge",
-          "views": 2894500,
-          "subs": 5380,
-          "published_at": "2023-06-12T19:30:06Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "Scientists&#39; Hilarious Reaction to Bizarre Deep-Sea Fish | National Geographic",
-          "views": 11244175,
-          "subs": 26500000,
-          "published_at": "2018-09-21T20:00:29Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "New Invention Keeps Deep-Sea Creatures Alive at Surface | National Geographic",
-          "views": 198087,
-          "subs": 26500000,
-          "published_at": "2018-06-07T12:00:00Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "Deep-Sea Fish Bodies EXPLODE at the Surface",
-          "views": 1157,
-          "subs": 151,
-          "published_at": "2026-09-24T20:06:53Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "First Ever Daylight Footage of the Black Devil Fish (Seadevil Anglerfish) #ocean",
-          "views": 4131345,
-          "subs": 3790,
-          "published_at": "2025-02-16T13:12:28Z",
-          "coverage": 0.167
-        },
-        {
-          "title": "Why Deep-Sea Fish Don&#39;t Get Crushed",
-          "views": 257,
-          "subs": 154,
-          "published_at": "2026-08-19T08:06:39Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "Black Seadevil Aka Angler Fish \ud83d\ude22 #shorts",
-          "views": 2748385,
-          "subs": 6840000,
-          "published_at": "2025-02-18T06:18:27Z",
-          "coverage": 0.167
-        },
-        {
-          "title": "How Fish Breathe Underwater \ud83e\udd14",
-          "views": 7359130,
-          "subs": 28600000,
-          "published_at": "2025-03-26T17:30:09Z",
-          "coverage": 0.167
-        },
-        {
-          "title": "How DEEP is Titanic?",
-          "views": 10059598,
-          "subs": 101000,
-          "published_at": "2023-06-21T12:01:55Z",
-          "coverage": 0.167
-        },
-        {
-          "title": "How Does This Deep-Sea Fish Survive Where Almost Nothing Else Can?",
-          "views": 3,
-          "subs": 0,
-          "published_at": "2026-09-05T00:08:42Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "Not every fish looks cute! \u2620\ufe0f",
-          "views": 4541893,
-          "subs": 80400,
-          "published_at": "2025-10-16T13:30:26Z",
-          "coverage": 0.167
-        },
-        {
-          "title": "First footage of deep-sea anglerfish pair",
-          "views": 10451951,
-          "subs": 358000,
-          "published_at": "2018-03-22T14:02:45Z",
-          "coverage": 0.333
-        }
-      ],
-      "domain": null
-    },
-    {
-      "query": "what lives in mariana trench",
-      "status": "ok",
-      "results_examined": 20,
-      "title_match": {
-        "status": "ok",
-        "n": 20,
-        "mean_coverage": 0.65,
-        "max_coverage": 1.0,
-        "strong_match_count": 1,
-        "strong_match_rate": 0.05,
-        "loose_match_rate": 0.05,
-        "gap_signal": 0.95,
-        "interpretation": "1 of 20 ranking titles squarely answer the query"
-      },
-      "view_profile": {
-        "median": 113206.0,
-        "p90": 12244972,
-        "max": 22584772,
-        "n": 20
-      },
-      "incumbents": {
-        "median_subscribers": 179000.0,
-        "max_subscribers": 26500000,
-        "under_100k_subs": 8,
-        "n": 20
-      },
-      "recency": {
-        "median_age_days": 910,
-        "published_last_365d": 7,
-        "n": 20
-      },
-      "opportunity_score": 0.664,
-      "opportunity_components": {
-        "title_gap": 0.95,
-        "incumbent_subs": 0.25,
-        "view_ceiling": 0.278,
-        "staleness": 0.65
-      },
-      "opportunity_weights": {
-        "title_gap": 0.5,
-        "incumbent_subs": 0.2,
-        "view_ceiling": 0.15,
-        "staleness": 0.15
-      },
-      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
-      "provenance": {
-        "endpoint": "https://www.googleapis.com/youtube/v3",
-        "calls": [
-          "search.list",
-          "videos.list",
-          "channels.list"
-        ],
-        "region": "US",
-        "language": "en",
-        "order": "relevance",
-        "fetched_utc": "2026-09-26T10:14:58.907522+00:00"
-      },
-      "top_results": [
-        {
-          "title": "15 Mariana Trench Creatures that are SCARY",
-          "views": 46467,
-          "subs": 3160000,
-          "published_at": "2022-12-12T22:00:27Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "What&#39;s Inside The Mariana Trench?",
-          "views": 129397,
-          "subs": 3060000,
-          "published_at": "2020-02-18T22:00:11Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Nothing About The Mariana Trench Is Normal... Here&#39;s Why",
-          "views": 2625773,
-          "subs": 220000,
-          "published_at": "2025-12-21T20:41:53Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Mariana Trench: Record-breaking journey to the bottom of the ocean - BBC News",
-          "views": 12244972,
-          "subs": 20100000,
-          "published_at": "2019-05-14T14:50:10Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "10 STRANGEST Animals in the Mariana Trench",
-          "views": 2392,
-          "subs": 564,
-          "published_at": "2022-08-26T16:07:15Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "What Animals Live At The Mariana Trench",
-          "views": 14448,
-          "subs": 49,
-          "published_at": "2022-01-02T05:51:41Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Top 5 Creatures of the Mariana Trench \ud83d\udc1f\ud83c\udf0a",
-          "views": 9696,
-          "subs": 209,
-          "published_at": "2024-12-13T05:29:28Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Every Creature in the Mariana Trench Explained",
-          "views": 5301,
-          "subs": 21200,
-          "published_at": "2026-04-14T11:01:18Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "The Deepest Part of the Ocean!",
-          "views": 812706,
-          "subs": 1710000,
-          "published_at": "2017-12-07T22:00:00Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "CREATURES Of The Mariana Trench #shorts #animals",
-          "views": 8955,
-          "subs": 40200,
-          "published_at": "2023-07-15T15:45:01Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "What Animals Lives At The Bottom Of The Mariana Trench?",
-          "views": 215978,
-          "subs": 5420000,
-          "published_at": "2020-03-07T21:45:00Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Mariana Trench | In Pursuit of the Abyss",
-          "views": 22584772,
-          "subs": 1070000,
-          "published_at": "2021-06-22T11:00:12Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Why the Mariana Trench Gets Weirder the Deeper You Go",
-          "views": 1197975,
-          "subs": 138000,
-          "published_at": "2026-02-18T15:00:06Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "MARIANA TRENCH | Almost Unknown Creatures at the Deepest Point | Nature Animal Documentary",
-          "views": 97015,
-          "subs": 103000,
-          "published_at": "2026-06-11T13:00:23Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "This Discovery in the Mariana Trench Will Transform Geopolitics (4K)",
-          "views": 12457416,
-          "subs": 232000,
-          "published_at": "2025-07-01T05:07:06Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Disturbing Discoveries Found in the Mariana Trench",
-          "views": 43786,
-          "subs": 7850000,
-          "published_at": "2026-05-01T23:00:04Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Scientists Reveal Never-Before-Seen Creatures from the Mariana Trench Depths",
-          "views": 314641,
-          "subs": 39100,
-          "published_at": "2025-04-29T23:00:24Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "100 Strange Creatures from the Mariana Trench (Extreme Deep-Sea Life)",
-          "views": 12728,
-          "subs": 85,
-          "published_at": "2025-12-14T17:00:28Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Long Way Down: Mariana Trench | National Geographic",
-          "views": 4801004,
-          "subs": 26500000,
-          "published_at": "2012-03-08T16:49:50Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Mariana Trench: Earth\u2019s Deepest Abyss | Science Documentary for Sleep (4K)",
-          "views": 62652,
-          "subs": 1290,
-          "published_at": "2026-01-08T20:00:43Z",
-          "coverage": 0.667
-        }
-      ],
-      "domain": null
-    },
-    {
-      "query": "how deep can a sperm whale go",
-      "status": "ok",
-      "results_examined": 20,
-      "title_match": {
-        "status": "ok",
-        "n": 20,
-        "mean_coverage": 0.467,
-        "max_coverage": 1.0,
-        "strong_match_count": 1,
-        "strong_match_rate": 0.05,
-        "loose_match_rate": 0.6,
-        "gap_signal": 0.95,
-        "interpretation": "1 of 20 ranking titles squarely answer the query"
-      },
-      "view_profile": {
-        "median": 321808.5,
-        "p90": 5697089,
-        "max": 79409421,
-        "n": 20
-      },
-      "incumbents": {
-        "median_subscribers": 220000.0,
-        "max_subscribers": 28600000,
-        "under_100k_subs": 7,
-        "n": 20
-      },
-      "recency": {
-        "median_age_days": 727,
-        "published_last_365d": 6,
-        "n": 20
-      },
-      "opportunity_score": 0.659,
-      "opportunity_components": {
-        "title_gap": 0.95,
-        "incumbent_subs": 0.237,
-        "view_ceiling": 0.213,
-        "staleness": 0.7
-      },
-      "opportunity_weights": {
-        "title_gap": 0.5,
-        "incumbent_subs": 0.2,
-        "view_ceiling": 0.15,
-        "staleness": 0.15
-      },
-      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
-      "provenance": {
-        "endpoint": "https://www.googleapis.com/youtube/v3",
-        "calls": [
-          "search.list",
-          "videos.list",
-          "channels.list"
-        ],
-        "region": "US",
-        "language": "en",
-        "order": "relevance",
-        "fetched_utc": "2026-09-26T10:15:05.009162+00:00"
-      },
-      "top_results": [
-        {
-          "title": "How to Dive Like a Sperm Whale | Whales of the Deep",
-          "views": 212983,
-          "subs": 6500000,
-          "published_at": "2018-06-10T12:00:04Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "How Deep Can Whales Dive? \ud83d\udc0b Deeper Than A Submarine?",
-          "views": 8661,
-          "subs": 1290,
-          "published_at": "2024-10-07T02:26:38Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "The Insane Biology of: The Sperm Whale",
-          "views": 4543215,
-          "subs": 2090000,
-          "published_at": "2022-12-10T14:00:06Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "The Ridiculously Extreme Lives of Deep Sea Whales",
-          "views": 876106,
-          "subs": 510000,
-          "published_at": "2024-03-23T17:00:26Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "How DEEP Can Whales Dive? And HOW Do They Survive Such Bone CRUSHING Debths?",
-          "views": 1014,
-          "subs": 1290,
-          "published_at": "2025-02-13T02:17:04Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "How DEEP Can a Whale Dive?",
-          "views": 14380,
-          "subs": 434000,
-          "published_at": "2021-07-03T14:01:11Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Nothing About Sperm Whales Is Normal\u2026 Here\u2019s Why",
-          "views": 3349203,
-          "subs": 252000,
-          "published_at": "2025-11-26T14:33:39Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "Being clicked by a sperm whale is such an experience!! #spermwhale #dominica #whales #ocean #snorkel",
-          "views": 3980816,
-          "subs": 118000,
-          "published_at": "2025-04-13T16:59:20Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Can Sperm Whales Reach The Mariana Trench?",
-          "views": 133565,
-          "subs": 30300,
-          "published_at": "2026-09-04T19:00:30Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "Why The Entire Ocean Is Terrified of Sperm Whales",
-          "views": 2605995,
-          "subs": 220000,
-          "published_at": "2026-02-06T16:45:03Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "Under Pressure: How Whales Conquer CRUSHING Depths",
-          "views": 14946,
-          "subs": 434000,
-          "published_at": "2023-07-01T19:40:41Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "Why Sperm Whales Get Deadlier The Deeper You Go",
-          "views": 311358,
-          "subs": 64500,
-          "published_at": "2026-05-29T16:00:51Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "How Deep Can Sperm Whales Dive into the Ocean? #shorts #spermwhales #shortsfeed #whales   #animals",
-          "views": 3509,
-          "subs": 5350,
-          "published_at": "2023-08-11T15:42:06Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Rare Sperm Whale Encounter with ROV | Nautilus Live",
-          "views": 5697089,
-          "subs": 700000,
-          "published_at": "2015-04-15T01:09:59Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Swallowed By A Sperm Whale?! \ud83d\udc0b\ud83d\ude28",
-          "views": 79409421,
-          "subs": 28600000,
-          "published_at": "2024-07-10T14:30:06Z",
-          "coverage": 0.667
-        },
-        {
-          "title": "Sperm Whales Clicking You Inside Out \u2014 James Nestor at The Interval",
-          "views": 9596178,
-          "subs": 140000,
-          "published_at": "2017-04-27T01:01:13Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "Why Giant Squids are Terrified of Sperm Whales",
-          "views": 173122,
-          "subs": 220000,
-          "published_at": "2026-05-11T17:04:54Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "Why Sperm Whales Get Deadlier the Deeper You Go",
-          "views": 332259,
-          "subs": 3940,
-          "published_at": "2025-11-07T16:15:13Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "OceanXplorers: Giants of the Deep with James Cameron (Full Episode) | National Geographic",
-          "views": 1790841,
-          "subs": 26500000,
-          "published_at": "2024-09-22T15:00:02Z",
-          "coverage": 0.333
-        },
-        {
-          "title": "How deep can Sperm Whales dive?",
-          "views": 915,
-          "subs": 3990,
-          "published_at": "2024-12-05T16:00:22Z",
-          "coverage": 0.667
-        }
-      ],
-      "domain": null
-    },
-    {
-      "query": "how deep can whales dive",
+      "query": "how to get abyssal zone warframe",
       "status": "ok",
       "results_examined": 20,
       "title_match": {
         "status": "ok",
         "n": 20,
         "mean_coverage": 0.45,
-        "max_coverage": 1.0,
+        "max_coverage": 0.75,
         "strong_match_count": 5,
         "strong_match_rate": 0.25,
-        "loose_match_rate": 0.6,
+        "loose_match_rate": 0.4,
         "gap_signal": 0.75,
         "interpretation": "5 of 20 ranking titles squarely answer the query"
       },
       "view_profile": {
-        "median": 262174.0,
-        "p90": 6066136,
-        "max": 79409421,
+        "median": 6615.5,
+        "p90": 112183,
+        "max": 176110,
         "n": 20
       },
       "incumbents": {
-        "median_subscribers": 236000.0,
-        "max_subscribers": 28600000,
-        "under_100k_subs": 7,
+        "median_subscribers": 5360.0,
+        "max_subscribers": 968000,
+        "under_100k_subs": 16,
         "n": 20
       },
       "recency": {
-        "median_age_days": 561,
-        "published_last_365d": 6,
+        "median_age_days": 1094,
+        "published_last_365d": 2,
         "n": 20
       },
-      "opportunity_score": 0.56,
+      "opportunity_score": 0.672,
       "opportunity_components": {
         "title_gap": 0.75,
-        "incumbent_subs": 0.232,
-        "view_ceiling": 0.226,
-        "staleness": 0.7
+        "incumbent_subs": 0.467,
+        "view_ceiling": 0.454,
+        "staleness": 0.9
       },
       "opportunity_weights": {
         "title_gap": 0.5,
@@ -674,189 +68,189 @@
         "region": "US",
         "language": "en",
         "order": "relevance",
-        "fetched_utc": "2026-09-26T10:15:02.542395+00:00"
+        "fetched_utc": "2026-10-31T15:40:49.015009+00:00"
       },
       "top_results": [
         {
-          "title": "How DEEP Can a Whale Dive?",
-          "views": 14380,
-          "subs": 434000,
-          "published_at": "2021-07-03T14:01:11Z",
-          "coverage": 0.667
+          "title": "How To Farm Vainthorn Fast For Dagath And Her Dorrclave! Warframe Beginners Guide",
+          "views": 112183,
+          "subs": 284000,
+          "published_at": "2023-10-28T23:00:10Z",
+          "coverage": 0.25
         },
         {
-          "title": "How Deep Can Whales Dive? \ud83d\udc0b Deeper Than A Submarine?",
-          "views": 8660,
-          "subs": 1290,
-          "published_at": "2024-10-07T02:26:38Z",
-          "coverage": 1.0
+          "title": "How to get Vainthorns in Warframe 2023",
+          "views": 22714,
+          "subs": 9350,
+          "published_at": "2023-10-30T06:41:23Z",
+          "coverage": 0.5
         },
         {
-          "title": "The Ridiculously Extreme Lives of Deep Sea Whales",
-          "views": 876103,
-          "subs": 510000,
-          "published_at": "2024-03-23T17:00:26Z",
-          "coverage": 0.667
+          "title": "How To Farm Dagath &amp; Vainthorn | Warframe Guide",
+          "views": 176110,
+          "subs": 205000,
+          "published_at": "2023-10-18T17:04:21Z",
+          "coverage": 0.25
         },
         {
-          "title": "How to Dive Like a Sperm Whale | Whales of the Deep",
-          "views": 212991,
-          "subs": 6500000,
-          "published_at": "2018-06-10T12:00:04Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "How DEEP Can Whales Dive? And HOW Do They Survive Such Bone CRUSHING Debths?",
-          "views": 1014,
-          "subs": 1290,
-          "published_at": "2025-02-13T02:17:04Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "This is the DEEPEST Diving Mammal! #beakedwhale #cuviersbeakedwhale",
-          "views": 34529,
-          "subs": 2130,
-          "published_at": "2025-07-03T16:25:32Z",
+          "title": "How to Farm Dagath FAST \u26a1",
+          "views": 28962,
+          "subs": 170,
+          "published_at": "2023-11-28T22:00:01Z",
           "coverage": 0.0
         },
         {
-          "title": "Why Beaked Whales Dive Nearly 10,000 Feet | Part 4 |\u00a0SLICE EARTH",
-          "views": 27400,
-          "subs": 149000,
-          "published_at": "2026-05-26T14:00:08Z",
-          "coverage": 0.667
+          "title": "How To Farm Dagath In Warframe | Warframe Hunters Updated Guide!",
+          "views": 34192,
+          "subs": 284000,
+          "published_at": "2024-05-30T00:00:07Z",
+          "coverage": 0.25
         },
         {
-          "title": "The Insane Biology of: The Sperm Whale",
-          "views": 4543215,
-          "subs": 2090000,
-          "published_at": "2022-12-10T14:00:06Z",
-          "coverage": 0.0
+          "title": "Warframe: Abyssal Zone - How to Start &amp; How to Play [32:9 | 4K]",
+          "views": 10636,
+          "subs": 633,
+          "published_at": "2023-10-19T14:31:20Z",
+          "coverage": 0.75
         },
         {
-          "title": "The Worlds Deepest Diving Mammal \ud83d\udc0b",
-          "views": 8972,
-          "subs": 11200,
-          "published_at": "2023-12-29T19:22:25Z",
-          "coverage": 0.0
+          "title": "How to get Vainthorn in Warframe",
+          "views": 4966,
+          "subs": 9520,
+          "published_at": "2024-07-25T17:15:07Z",
+          "coverage": 0.5
         },
         {
-          "title": "Under Pressure: How Whales Conquer CRUSHING Depths",
-          "views": 14946,
-          "subs": 434000,
-          "published_at": "2023-07-01T19:40:41Z",
-          "coverage": 0.333
+          "title": "Warframe 2025 VAINTHORN FARM FOR DAGATH WARFRAME/ABYSSAL ZONE STEEL PATH/Rhino CHAD RUN + BUILD 2025",
+          "views": 176,
+          "subs": 282,
+          "published_at": "2025-03-02T22:00:36Z",
+          "coverage": 0.75
         },
         {
-          "title": "Nothing About Sperm Whales Is Normal\u2026 Here\u2019s Why",
-          "views": 3349203,
-          "subs": 252000,
-          "published_at": "2025-11-26T14:33:39Z",
-          "coverage": 0.333
+          "title": "How to Get Vainthorn FAST \u2013 Warframe Farming Guide",
+          "views": 16075,
+          "subs": 1130,
+          "published_at": "2024-04-12T16:00:36Z",
+          "coverage": 0.5
         },
         {
-          "title": "Why The Entire Ocean Is Terrified of Sperm Whales",
-          "views": 2605995,
-          "subs": 220000,
-          "published_at": "2026-02-06T16:45:03Z",
-          "coverage": 0.333
+          "title": "How to Farm Dagath and Dorrclave in Warframe 2023 | Abyss of Dagath",
+          "views": 651,
+          "subs": 25500,
+          "published_at": "2023-10-24T18:32:12Z",
+          "coverage": 0.25
         },
         {
-          "title": "Being clicked by a sperm whale is such an experience!! #spermwhale #dominica #whales #ocean #snorkel",
-          "views": 3980816,
-          "subs": 118000,
-          "published_at": "2025-04-13T16:59:20Z",
-          "coverage": 0.333
+          "title": "Earn a FREE Honoria for your #Warframe profile. wrfr.me/48ZpcQR",
+          "views": 174956,
+          "subs": 968000,
+          "published_at": "2025-12-10T18:40:34Z",
+          "coverage": 0.25
         },
         {
-          "title": "What If You Were A Whale?",
-          "views": 6066136,
-          "subs": 8760000,
-          "published_at": "2026-05-22T19:50:19Z",
-          "coverage": 0.0
+          "title": "A Straightforward Guide on Obtaining Vainthorn | Warframe Beginner Guide",
+          "views": 560,
+          "subs": 39300,
+          "published_at": "2026-01-29T02:21:44Z",
+          "coverage": 0.25
         },
         {
-          "title": "How Deep Can Whales Really Dive? | Animal Byte",
-          "views": 111,
-          "subs": 52,
-          "published_at": "2025-08-31T16:08:44Z",
-          "coverage": 1.0
+          "title": "Let&#39;s Play Warframe - Abyss of Dagath (Abyssal Beacon, Abyssal Zone &amp; Vainthorn) Dagath&#39;s Hollow",
+          "views": 5674,
+          "subs": 5470,
+          "published_at": "2023-10-23T23:26:36Z",
+          "coverage": 0.75
         },
         {
-          "title": "OceanXplorers: Giants of the Deep with James Cameron (Full Episode) | National Geographic",
-          "views": 1790836,
-          "subs": 26500000,
-          "published_at": "2024-09-22T15:00:02Z",
-          "coverage": 0.333
+          "title": "Abyssal beacon farm #warframe",
+          "views": 2268,
+          "subs": 416,
+          "published_at": "2023-10-18T19:00:12Z",
+          "coverage": 0.5
         },
         {
-          "title": "Swallowed By A Sperm Whale?! \ud83d\udc0b\ud83d\ude28",
-          "views": 79409421,
-          "subs": 28600000,
-          "published_at": "2024-07-10T14:30:06Z",
-          "coverage": 0.0
+          "title": "HOW TO GET DAGATH AND HOW TO FARM VAINTHORN - WARFRAME",
+          "views": 1523,
+          "subs": 5250,
+          "published_at": "2023-11-17T18:44:14Z",
+          "coverage": 0.5
         },
         {
-          "title": "Whalefall | Official Teaser | In Theaters October 16",
-          "views": 6768500,
-          "subs": 5130000,
-          "published_at": "2026-06-09T16:00:21Z",
-          "coverage": 0.0
+          "title": "Warframe | HOW TO GET THE DAGATH WARFRAME",
+          "views": 2990,
+          "subs": 1010,
+          "published_at": "2023-10-24T13:00:34Z",
+          "coverage": 0.5
         },
         {
-          "title": "Do You Know Blue Whales Deep Dive Before Death \u2620\ufe0f #shorts",
-          "views": 23157,
-          "subs": 3120,
-          "published_at": "2025-09-14T11:46:47Z",
-          "coverage": 1.0
+          "title": "How to Exterminate First Glimpse Abyssal Zone | How to Find Defixio | Abyssal Zone | Warframe |2023",
+          "views": 903,
+          "subs": 101,
+          "published_at": "2023-10-28T12:47:39Z",
+          "coverage": 0.75
         },
         {
-          "title": "Why Sperm Whales Get Deadlier The Deeper You Go",
-          "views": 311357,
-          "subs": 64500,
-          "published_at": "2026-05-29T16:00:51Z",
-          "coverage": 0.333
+          "title": "Warframe - Ceres - Abyssal Zone - Exterminate",
+          "views": 42,
+          "subs": 40,
+          "published_at": "2025-05-20T09:50:06Z",
+          "coverage": 0.75
+        },
+        {
+          "title": "HOW TO GET DAGATH!!! - Warframe",
+          "views": 7557,
+          "subs": 3340,
+          "published_at": "2023-11-05T14:39:58Z",
+          "coverage": 0.5
+        },
+        {
+          "title": "Beacons - What are becons &amp; How to get them - Wolf Beacon, Zanuka Hunter Beacon, G3 Beacon",
+          "views": 55136,
+          "subs": 25700,
+          "published_at": "2022-08-06T16:12:03Z",
+          "coverage": 0.25
         }
       ],
       "domain": null
     },
     {
-      "query": "why deep sea creatures are creepers",
+      "query": "why deepu was killed by sea creatures",
       "status": "ok",
       "results_examined": 20,
       "title_match": {
         "status": "ok",
         "n": 20,
-        "mean_coverage": 0.362,
-        "max_coverage": 1.0,
-        "strong_match_count": 5,
-        "strong_match_rate": 0.25,
-        "loose_match_rate": 0.55,
-        "gap_signal": 0.75,
-        "interpretation": "5 of 20 ranking titles squarely answer the query"
+        "mean_coverage": 0.075,
+        "max_coverage": 0.75,
+        "strong_match_count": 1,
+        "strong_match_rate": 0.05,
+        "loose_match_rate": 0.9,
+        "gap_signal": 0.95,
+        "interpretation": "1 of 20 ranking titles squarely answer the query"
       },
       "view_profile": {
-        "median": 4027725.5,
-        "p90": 17285038,
-        "max": 25715240,
+        "median": 2405700.5,
+        "p90": 18253383,
+        "max": 23399033,
         "n": 20
       },
       "incumbents": {
-        "median_subscribers": 451500.0,
-        "max_subscribers": 44500000,
-        "under_100k_subs": 6,
+        "median_subscribers": 206500.0,
+        "max_subscribers": 29500000,
+        "under_100k_subs": 9,
         "n": 20
       },
       "recency": {
-        "median_age_days": 566,
+        "median_age_days": 780,
         "published_last_365d": 5,
         "n": 20
       },
-      "opportunity_score": 0.534,
+      "opportunity_score": 0.649,
       "opportunity_components": {
-        "title_gap": 0.75,
-        "incumbent_subs": 0.192,
-        "view_ceiling": 0.056,
+        "title_gap": 0.95,
+        "incumbent_subs": 0.241,
+        "view_ceiling": 0.088,
         "staleness": 0.75
       },
       "opportunity_weights": {
@@ -876,552 +270,148 @@
         "region": "US",
         "language": "en",
         "order": "relevance",
-        "fetched_utc": "2026-09-26T10:15:00.098426+00:00"
+        "fetched_utc": "2026-10-31T15:40:50.247079+00:00"
       },
       "top_results": [
         {
-          "title": "Why Animals Get Creepier the Deeper You Go",
-          "views": 3802040,
-          "subs": 2090000,
-          "published_at": "2023-06-10T13:00:37Z",
-          "coverage": 0.0
+          "title": "Why Did The Deep Get Killed by Sea Creatures? #theboys #deep #shorts",
+          "views": 10139,
+          "subs": 9830,
+          "published_at": "2026-05-23T01:00:09Z",
+          "coverage": 0.75
         },
         {
-          "title": "The Deeper You Go, The Creepier Prehistoric Oceans Get",
-          "views": 5531276,
-          "subs": 554000,
-          "published_at": "2025-08-23T22:38:59Z",
-          "coverage": 0.0
-        },
-        {
-          "title": "WHY DEEP-SEA CREATURES GET CREEPER THE DEEPER YOU GO | Documentary For Sleep EPS20",
-          "views": 12,
-          "subs": 31,
-          "published_at": "2026-04-24T16:37:39Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "The deeper, the creepier (sea creatures)",
-          "views": 2808499,
-          "subs": 44500000,
-          "published_at": "2020-11-21T11:00:07Z",
+          "title": "Why did the sea creatures kill The Deep#theboys #story",
+          "views": 911062,
+          "subs": 13500,
+          "published_at": "2026-05-21T10:04:24Z",
           "coverage": 0.5
         },
         {
-          "title": "The Deeper the Ocean gets The Creeper Life Becomes",
-          "views": 12,
-          "subs": 1,
-          "published_at": "2026-04-20T21:34:41Z",
+          "title": "Why was The Deep killed so easily by the octopus? #theboys #homelander #thedeep #vought",
+          "views": 70428,
+          "subs": 105000,
+          "published_at": "2026-05-20T15:19:37Z",
           "coverage": 0.25
         },
         {
-          "title": "Why Sea Creatures Become More  Creeper the Deeper You Dive",
-          "views": 36,
-          "subs": 159,
-          "published_at": "2026-01-04T13:01:53Z",
-          "coverage": 0.75
-        },
-        {
-          "title": "What\u2019s Hiding at the Most Solitary Place on Earth? The Deep Sea",
-          "views": 25715240,
-          "subs": 25600000,
-          "published_at": "2019-09-15T12:30:01Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "Top 4 Creepiest Deep-Sea Creatures Caught on Camera!",
-          "views": 2018412,
-          "subs": 54400,
-          "published_at": "2025-03-02T21:00:14Z",
-          "coverage": 0.75
-        },
-        {
-          "title": "Top 5 Deep Sea Creatures That\u2019ll Kill You Instantly \ud83d\ude31 #shorts #viral",
-          "views": 15923689,
-          "subs": 1290000,
-          "published_at": "2025-07-03T20:33:00Z",
-          "coverage": 0.75
-        },
-        {
-          "title": "Not every fish looks cute! \u2620\ufe0f",
-          "views": 4541893,
-          "subs": 80400,
-          "published_at": "2025-10-16T13:30:26Z",
+          "title": "The Deep | Tragic Backstory (Lovely Bastards) #theboys",
+          "views": 358139,
+          "subs": 16500,
+          "published_at": "2024-07-29T18:52:40Z",
           "coverage": 0.0
         },
         {
-          "title": "Keepers of the deep \ud83d\udc20 #thalassophobia #megalophobia #shorts",
-          "views": 20516008,
-          "subs": 5600000,
-          "published_at": "2023-03-09T02:37:01Z",
-          "coverage": 0.25
-        },
-        {
-          "title": "Nature\u2019s Ultimate Trap: The Anglerfish",
-          "views": 17285038,
-          "subs": 140000,
-          "published_at": "2025-06-06T22:00:25Z",
+          "title": "The Deep Is A Joke In The Boys",
+          "views": 2023287,
+          "subs": 43700,
+          "published_at": "2024-06-30T17:32:55Z",
           "coverage": 0.0
         },
         {
-          "title": "The Creepiest Fish Found at the Bottom of Our Oceans",
-          "views": 870290,
-          "subs": 220000,
-          "published_at": "2025-11-14T21:25:17Z",
+          "title": "The Deep Mourns Lucy the Whale | The Boys (Chase Crawford, Antony Starr, Erin Moriarty)",
+          "views": 735107,
+          "subs": 3330000,
+          "published_at": "2023-07-03T16:00:34Z",
           "coverage": 0.0
         },
         {
-          "title": "How Deep Does The Ocean Go?",
-          "views": 16949703,
-          "subs": 202000,
-          "published_at": "2024-01-11T21:49:04Z",
-          "coverage": 0.25
-        },
-        {
-          "title": "Why Do Sea Creatures Get Creeper The Deeper You Go?(Like share and subscribe to facts of soft)",
-          "views": 213,
-          "subs": 95,
-          "published_at": "2025-02-24T16:25:34Z",
-          "coverage": 0.75
-        },
-        {
-          "title": "Most Dangerous Thing in Ocean \ud83c\udf0a",
-          "views": 4253411,
-          "subs": 2020000,
-          "published_at": "2023-05-13T09:29:00Z",
+          "title": "Dumbest Ways People Have Died \ud83d\udc80 (Part 38) #ytshorts",
+          "views": 561750,
+          "subs": 671000,
+          "published_at": "2025-01-31T14:59:34Z",
           "coverage": 0.0
         },
         {
-          "title": "What Is The Creeper In Minecraft?",
-          "views": 614610,
-          "subs": 2090000,
-          "published_at": "2023-02-04T20:13:49Z",
-          "coverage": 0.25
-        },
-        {
-          "title": "Top 5 DEADLIEST Sea Creatures That Shouldn\u2019t Exist \ud83d\ude31\ud83c\udf0a",
-          "views": 5995808,
-          "subs": 349000,
-          "published_at": "2025-06-27T22:41:00Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "Unknown sea creatures you didn\u2019t know existed\ud83d\ude33",
-          "views": 2764775,
-          "subs": 1530000,
-          "published_at": "2022-01-24T17:23:23Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "scary creatures found in the ocean! #facts #mysterious #animals",
-          "views": 9022650,
-          "subs": 575000,
-          "published_at": "2025-03-16T13:20:34Z",
-          "coverage": 0.25
-        }
-      ],
-      "domain": null
-    },
-    {
-      "query": "what is hydrothermal vents",
-      "status": "ok",
-      "results_examined": 20,
-      "title_match": {
-        "status": "ok",
-        "n": 20,
-        "mean_coverage": 1.0,
-        "max_coverage": 1.0,
-        "strong_match_count": 20,
-        "strong_match_rate": 1.0,
-        "loose_match_rate": 0.0,
-        "gap_signal": 0.0,
-        "interpretation": "20 of 20 ranking titles squarely answer the query"
-      },
-      "view_profile": {
-        "median": 20768.0,
-        "p90": 203481,
-        "max": 778337,
-        "n": 20
-      },
-      "incumbents": {
-        "median_subscribers": 10410.0,
-        "max_subscribers": 1690000,
-        "under_100k_subs": 16,
-        "n": 20
-      },
-      "recency": {
-        "median_age_days": 1686,
-        "published_last_365d": 1,
-        "n": 20
-      },
-      "opportunity_score": 0.285,
-      "opportunity_components": {
-        "title_gap": 0.0,
-        "incumbent_subs": 0.426,
-        "view_ceiling": 0.383,
-        "staleness": 0.95
-      },
-      "opportunity_weights": {
-        "title_gap": 0.5,
-        "incumbent_subs": 0.2,
-        "view_ceiling": 0.15,
-        "staleness": 0.15
-      },
-      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
-      "provenance": {
-        "endpoint": "https://www.googleapis.com/youtube/v3",
-        "calls": [
-          "search.list",
-          "videos.list",
-          "channels.list"
-        ],
-        "region": "US",
-        "language": "en",
-        "order": "relevance",
-        "fetched_utc": "2026-09-26T10:15:03.748532+00:00"
-      },
-      "top_results": [
-        {
-          "title": "What are hydrothermal vents?",
-          "views": 169147,
-          "subs": 91900,
-          "published_at": "2019-09-11T14:28:51Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Hydrothermal Vents | Oases in the Deep Sea",
-          "views": 778337,
-          "subs": 1070000,
-          "published_at": "2022-04-22T17:49:24Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Episode 5: Hydrothermal Vents",
-          "views": 9104,
-          "subs": 490,
-          "published_at": "2022-09-29T12:04:41Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Hydrothermal Vent",
-          "views": 5773,
-          "subs": 63000,
-          "published_at": "2021-12-06T10:50:24Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "What are hydrothermal vents?",
-          "views": 2533,
-          "subs": 91900,
-          "published_at": "2025-01-09T19:28:13Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "The Geological Wonder of Hydrothermal Vents",
-          "views": 25162,
-          "subs": 33900,
-          "published_at": "2024-02-18T16:26:20Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Hydrothermal Vents: Geysers of the Deep",
-          "views": 23219,
-          "subs": 1260,
-          "published_at": "2021-03-18T17:14:47Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "What is Hydrothermal vent ?",
-          "views": 40,
-          "subs": 3180,
-          "published_at": "2025-05-07T09:00:10Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Hydrothermal vents: Explore a bizarre deep ocean habitat",
-          "views": 203481,
-          "subs": 290000,
-          "published_at": "2020-10-21T16:00:05Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Hydrothermal Vents",
-          "views": 24518,
-          "subs": 67200,
-          "published_at": "2015-01-16T17:30:13Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Life at hydrothermal vents | Natural History Museum",
-          "views": 65328,
-          "subs": 277000,
-          "published_at": "2018-11-30T12:17:06Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Bill Nye Hydrothermal Vents",
-          "views": 8085,
-          "subs": 12,
-          "published_at": "2020-04-22T15:28:01Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Nanostructures In Hydrothermal Vents Hint at the Origins of Life on Earth",
-          "views": 92527,
-          "subs": 1690000,
-          "published_at": "2024-10-15T22:00:17Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Deep-Ocean Bites: Hydrothermal Vents - Microbes and Chemosynthesis",
-          "views": 230,
-          "subs": 30,
-          "published_at": "2023-01-13T23:24:40Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "How Giant Tube Worms Survive at Hydrothermal Vents | I Contain Multitudes",
-          "views": 239281,
-          "subs": 11800,
-          "published_at": "2017-11-13T17:23:29Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "The Birth of Cells at Hydrothermal Vents",
-          "views": 24661,
-          "subs": 9020,
-          "published_at": "2021-01-05T17:53:06Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Enceladus&#39; Hydrothermal Vents: Origin of Life on Earth?!",
-          "views": 7707,
-          "subs": 1400,
-          "published_at": "2025-06-01T19:58:32Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "David Attenborough on Hydrothermal Vents",
-          "views": 18317,
-          "subs": 12,
-          "published_at": "2020-04-22T15:16:27Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Hydrothermal Vent Field Discovered in Galapagos Islands by Scientists at Schmidt Ocean Institute",
-          "views": 619,
-          "subs": 118,
-          "published_at": "2023-09-30T19:42:47Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Hydrothermal Vents: Plume Colors, Mineral Chimneys Explained",
-          "views": 816,
-          "subs": 408,
-          "published_at": "2025-10-14T17:58:36Z",
-          "coverage": 1.0
-        }
-      ],
-      "domain": null
-    },
-    {
-      "query": "why are deep sea creatures so big",
-      "status": "ok",
-      "results_examined": 20,
-      "title_match": {
-        "status": "ok",
-        "n": 20,
-        "mean_coverage": 0.762,
-        "max_coverage": 1.0,
-        "strong_match_count": 17,
-        "strong_match_rate": 0.85,
-        "loose_match_rate": 0.1,
-        "gap_signal": 0.15,
-        "interpretation": "17 of 20 ranking titles squarely answer the query"
-      },
-      "view_profile": {
-        "median": 51471.0,
-        "p90": 6743647,
-        "max": 17023545,
-        "n": 20
-      },
-      "incumbents": {
-        "median_subscribers": 119900.0,
-        "max_subscribers": 8760000,
-        "under_100k_subs": 10,
-        "n": 20
-      },
-      "recency": {
-        "median_age_days": 397,
-        "published_last_365d": 10,
-        "n": 20
-      },
-      "opportunity_score": 0.254,
-      "opportunity_components": {
-        "title_gap": 0.15,
-        "incumbent_subs": 0.274,
-        "view_ceiling": 0.327,
-        "staleness": 0.5
-      },
-      "opportunity_weights": {
-        "title_gap": 0.5,
-        "incumbent_subs": 0.2,
-        "view_ceiling": 0.15,
-        "staleness": 0.15
-      },
-      "score_definition": "0-1, higher = more room for a new entrant. 50% title gap (share of top results whose title does NOT squarely answer the query), 20% small incumbent channels, 15% low view ceiling, 15% stale results. Log-scaled against a 10M cap for views and subscribers.",
-      "provenance": {
-        "endpoint": "https://www.googleapis.com/youtube/v3",
-        "calls": [
-          "search.list",
-          "videos.list",
-          "channels.list"
-        ],
-        "region": "US",
-        "language": "en",
-        "order": "relevance",
-        "fetched_utc": "2026-09-26T10:14:57.726618+00:00"
-      },
-      "top_results": [
-        {
-          "title": "Why Deep Sea Creatures Grow So Terrifyingly Huge?",
-          "views": 762262,
-          "subs": 252000,
-          "published_at": "2025-11-04T19:11:54Z",
-          "coverage": 0.75
-        },
-        {
-          "title": "Reasons Why Deep Sea Creatures Get So Big",
-          "views": 92458,
-          "subs": 3890000,
-          "published_at": "2022-10-23T00:00:13Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Do Deep Sea Creatures Evolve Into Giants?",
-          "views": 9463756,
-          "subs": 2090000,
-          "published_at": "2022-07-16T13:00:38Z",
-          "coverage": 0.75
-        },
-        {
-          "title": "What Makes Deep Sea Animals So Big?",
-          "views": 248109,
-          "subs": 2950000,
-          "published_at": "2026-07-09T16:00:10Z",
-          "coverage": 0.75
-        },
-        {
-          "title": "Why Are Deep Sea Creatures Evolving Into Giants?",
-          "views": 2065658,
-          "subs": 2950000,
-          "published_at": "2026-05-23T16:00:41Z",
-          "coverage": 0.75
-        },
-        {
-          "title": "What Makes Deep Sea Animals So Big?",
-          "views": 149937,
-          "subs": 2950000,
-          "published_at": "2026-07-12T16:00:26Z",
-          "coverage": 0.75
-        },
-        {
-          "title": "Why Deep-Sea Creatures Grow So Big!",
-          "views": 515,
-          "subs": 143,
-          "published_at": "2024-09-03T16:00:24Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Deep Sea Creatures Grow So Terrifyingly Huge?",
-          "views": 79,
-          "subs": 2,
-          "published_at": "2026-04-05T17:30:02Z",
-          "coverage": 0.75
-        },
-        {
-          "title": "Why Are Deep-Sea Creatures So Big? Universal facts",
-          "views": 176,
-          "subs": 19800,
-          "published_at": "2025-01-13T01:30:11Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Are Deep-Sea Creatures So Big? \ud83c\udf0a Discover Secrets of Gigantism! \ud83d\udc19 #OceanFacts #Gigantism #shorts",
-          "views": 1359,
-          "subs": 58,
-          "published_at": "2025-01-22T04:00:32Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Deep Sea Gigantism | Why the Ocean Breeds Giants",
-          "views": 6743647,
-          "subs": 1070000,
-          "published_at": "2022-11-15T12:00:10Z",
-          "coverage": 0.5
-        },
-        {
-          "title": "Why Deep Sea Creatures are So Big",
-          "views": 66,
-          "subs": 185,
-          "published_at": "2024-02-02T11:51:52Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Deep Sea Creatures - Why Are Deep Sea Creatures So Huge?",
-          "views": 1272,
-          "subs": 1360,
-          "published_at": "2025-06-17T07:45:21Z",
-          "coverage": 0.75
-        },
-        {
-          "title": "Deep Sea Gigantism: Why Do Creatures in the Depth of the Oceans Grow So Big?",
-          "views": 10484,
-          "subs": 15300,
-          "published_at": "2024-05-15T14:12:23Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why DEEP SEA Animals are SO BIG? Ever wondered?",
-          "views": 3105,
-          "subs": 183,
-          "published_at": "2025-03-05T11:30:24Z",
-          "coverage": 0.75
-        },
-        {
-          "title": "Why Are Deep Sea Creatures SO Big? \ud83d\ude31",
-          "views": 324,
-          "subs": 99,
-          "published_at": "2026-08-31T14:27:38Z",
-          "coverage": 1.0
-        },
-        {
-          "title": "Why Do Deep Oceans Have So Many Giants?",
-          "views": 304201,
-          "subs": 220000,
-          "published_at": "2026-01-31T15:30:40Z",
-          "coverage": 0.25
-        },
-        {
-          "title": "Why Sea Creatures so Big\ud83d\ude31 #shorts #viral  #youtubeshorts",
-          "views": 1054,
-          "subs": 41,
-          "published_at": "2026-07-23T00:16:01Z",
-          "coverage": 0.75
-        },
-        {
-          "title": "Why Do Antarctic Ocean Animals Become GIANTS?",
-          "views": 5478348,
-          "subs": 8760000,
-          "published_at": "2026-04-14T14:41:05Z",
+          "title": "\ud83d\udccdPART 426 : &quot; THE DOOMS DAY PART 3 &quot; \ud83c\udf0a\ud83d\ude31\ud83d\ude33| #teluguhorrorstories #amarraghu #shorts #shortfeed",
+          "views": 4291156,
+          "subs": 3550000,
+          "published_at": "2025-03-03T11:25:26Z",
           "coverage": 0.0
         },
         {
-          "title": "Why Deep Sea Creatures Get Creepier the Deeper You Go",
-          "views": 17023545,
-          "subs": 252000,
-          "published_at": "2025-11-02T15:27:57Z",
-          "coverage": 0.75
+          "title": "POV: You\u2019re a professional shark diver for a living \ud83d\ude33",
+          "views": 2252325,
+          "subs": 14600000,
+          "published_at": "2022-10-08T20:34:05Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "CREEPY EVIL WITCH bites your head off when you drive! #horrorshort #scary #horrorclips #shortfilm",
+          "views": 18253383,
+          "subs": 308000,
+          "published_at": "2024-10-24T20:21:05Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "The Last Photos Of People Before They Went Missing #shorts #creepy",
+          "views": 3300290,
+          "subs": 3740000,
+          "published_at": "2022-02-26T19:11:12Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "We Were Completely Wrong About Megalodon!",
+          "views": 3514826,
+          "subs": 2000000,
+          "published_at": "2026-09-14T04:30:10Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "#shorts #shortvideo #viral #video #trending #youtube !!How rare is a lionfish?",
+          "views": 17,
+          "subs": 56,
+          "published_at": "2023-02-17T11:04:13Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "When a Child K*lled a Snake (3D) by Professor Of How",
+          "views": 19490940,
+          "subs": 16200000,
+          "published_at": "2025-08-26T06:04:21Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Hippo&#39;s Giant Watermelon Snack! \ud83c\udf49 #viralvideo #animals #action #animalshorts #funny",
+          "views": 16227374,
+          "subs": 4230,
+          "published_at": "2025-08-02T16:37:12Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "YouTubers Who Have Gone Missing #shorts",
+          "views": 23399033,
+          "subs": 1210000,
+          "published_at": "2021-11-15T08:53:16Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "This Deep Forest Triggered Terror Bigfoot Nightmare! Can He Escape?!",
+          "views": 25181,
+          "subs": 27500,
+          "published_at": "2026-10-24T20:00:07Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Rare Videotape of North Sentinel Island \ud83c\udfdd #shorts",
+          "views": 5117072,
+          "subs": 66600,
+          "published_at": "2022-07-09T12:01:32Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "Uncontacted Tribe: The Secret Rules of an Isolated Andaman Island",
+          "views": 2559076,
+          "subs": 68100,
+          "published_at": "2022-12-09T16:48:24Z",
+          "coverage": 0.0
+        },
+        {
+          "title": "The Shipwreck On A Dangerous Island \ud83d\ude2e (Sentinelese)",
+          "views": 7259778,
+          "subs": 29500000,
+          "published_at": "2022-07-04T14:00:25Z",
+          "coverage": 0.0
         }
       ],
       "domain": null
