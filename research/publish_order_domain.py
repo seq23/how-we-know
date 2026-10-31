@@ -668,6 +668,23 @@ def demand_probe(query: str, corpus_tokens: list[set], pause: float) -> dict:
     }
 
 
+def unmeasured_row(query: str, d: dict) -> dict:
+    """A question competition.py returned no score for: its FREE demand and
+    its floor verdict, never a bare status.
+
+    2026-10-31 (main red, run 41216027220): the Saturday score lane wrote 18
+    food rows as {"query", "status"} only, so `meets_floor_on_free_signals`
+    (settle() step 4) was derived from nothing and test_food_domain.py read a
+    missing key. The seeded file (#203) always carried these fields; the
+    rebuild now records them the same way - publish_order.demand_index's own
+    no-competition fallback, compared with the same DEMAND_FLOOR."""
+    dwc = demand_index(d, None)
+    return {"query": query, "status": "no_competition_score",
+            "demand_without_competition": dwc,
+            "meets_floor_on_free_signals": dwc >= DEMAND_FLOOR,
+            "demand": d}
+
+
 def build(domain: str, pause: float, budget: int,
           network: bool = True) -> dict:
     cands, killed_early = candidates(domain, network=network)
@@ -746,7 +763,7 @@ def score_queries(domain: str, queries: list[str], pause: float,
     rows, unmeasured = [], []
     for q in queries:
         if q not in by_query:
-            unmeasured.append({"query": q, "status": "no_competition_score"})
+            unmeasured.append(unmeasured_row(q, demand_probe(q, corpus_tokens, pause)))
             continue
         rows.append({"query": q, "_c": by_query[q],
                      "_d": demand_probe(q, corpus_tokens, pause)})
