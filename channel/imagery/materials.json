@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-24T04:43:04.429667+00:00",
+  "generated": "2026-10-31T10:41:07.261242+00:00",
   "domain": "materials-and-manufacturing",
   "policy": "Public domain or CC0 only, verified live at the Commons item page. CC-BY is not a public-domain dedication and this channel is monetised. Licence gate is research/imagery.pd_licence_ok, imported not reimplemented; the copyright-assertion screen is this module's own and differs from imagery.THIRD_PARTY on purpose - see the module docstring.",
   "rights_fields_required": [
@@ -32,11 +32,6 @@
     }
   },
   "rejected": [
-    {
-      "subject": "damascus-blade",
-      "title": "File:Pictures of the patriarchs, and other poems (IA picturesofpatria00john).pdf",
-      "reason": "imageinfo failed: HTTP Error 429: Too Many Requests"
-    },
     {
       "subject": "damascus-blade",
       "title": "File:Front and back of blades of hair-cutting shears made from Damascus steel.jpg",
@@ -98,9 +93,8 @@
     },
     {
       "subject": "damascus-blade",
-      "title": "File:Damascus steel hunting knife (4121912077).jpg",
-      "item_url": "https://commons.wikimedia.org/wiki/File:Damascus_steel_hunting_knife_(4121912077).jpg",
-      "reason": "item page marks the work as copyrighted (cc by 2.0)"
+      "title": "File:The manufacture of steel- containing the practice and principles of working and making steel .. (IA manufactureofste00over).pdf",
+      "reason": "imageinfo failed: HTTP Error 429: Too Many Requests"
     },
     {
       "subject": "damascus-blade",
@@ -110,8 +104,8 @@
     },
     {
       "subject": "damascus-blade",
-      "title": "File:Damascus steel hunting knife (4121912845).jpg",
-      "item_url": "https://commons.wikimedia.org/wiki/File:Damascus_steel_hunting_knife_(4121912845).jpg",
+      "title": "File:Damascus steel hunting knife (4121912077).jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Damascus_steel_hunting_knife_(4121912077).jpg",
       "reason": "item page marks the work as copyrighted (cc by 2.0)"
     },
     {
@@ -128,8 +122,15 @@
     },
     {
       "subject": "damascus-blade",
-      "title": "File:Damascus steel hunting knife (4122684912).jpg",
-      "reason": "imageinfo failed: HTTP Error 429: Too Many Requests"
+      "title": "File:Damascus steel hunting knife (4121912845).jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Damascus_steel_hunting_knife_(4121912845).jpg",
+      "reason": "item page marks the work as copyrighted (cc by 2.0)"
+    },
+    {
+      "subject": "damascus-blade",
+      "title": "File:Damascus steel hunting knife (4121913093).jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Damascus_steel_hunting_knife_(4121913093).jpg",
+      "reason": "item page marks the work as copyrighted (cc by 2.0)"
     },
     {
       "subject": "damascus-blade",
@@ -145,6 +146,12 @@
     {
       "subject": "rust",
       "title": "File:Iron (Virginia, USA) (16718063283).jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Iron_(Virginia,_USA)_(16718063283).jpg",
+      "reason": "item page marks the work as copyrighted (cc by 2.0)"
+    },
+    {
+      "subject": "rust",
+      "title": "File:Iron tannage (IA irontannage00hout).pdf",
       "reason": "imageinfo failed: HTTP Error 429: Too Many Requests"
     },
     {
@@ -162,7 +169,8 @@
     {
       "subject": "rust",
       "title": "File:Treasure case 2012T351, Early Medieval silver, iron and gold buckle plate from Alkham, Kent (FindID 522561).jpg",
-      "reason": "imageinfo failed: HTTP Error 429: Too Many Requests"
+      "item_url": "https://commons.wikimedia.org/wiki/File:Treasure_case_2012T351,_Early_Medieval_silver,_iron_and_gold_buckle_plate_from_Alkham,_Kent_(FindID_522561).jpg",
+      "reason": "item page marks the work as copyrighted (cc by-sa 2.0)"
     },
     {
       "subject": "rust",
@@ -178,47 +186,12 @@
     },
     {
       "subject": "rust",
-      "title": "File:Acid-corrosion-in-a-flue-gas-duct-01.jpg",
-      "reason": "imageinfo failed: HTTP Error 429: Too Many Requests"
-    },
-    {
-      "subject": "rust",
-      "title": "File:Rusted corroded metal 1578.jpg",
-      "item_url": "https://commons.wikimedia.org/wiki/File:Rusted_corroded_metal_1578.jpg",
-      "reason": "item page marks the work as copyrighted (cc by-sa 4.0)"
-    },
-    {
-      "subject": "rust",
-      "title": "File:Vinylite and corrosion applied in a horse hoof.jpg",
-      "item_url": "https://commons.wikimedia.org/wiki/File:Vinylite_and_corrosion_applied_in_a_horse_hoof.jpg",
-      "reason": "item page marks the work as copyrighted (cc by-sa 4.0)"
-    },
-    {
-      "subject": "rust",
-      "title": "File:Corroded Bolt.jpg",
-      "item_url": "https://commons.wikimedia.org/wiki/File:Corroded_Bolt.jpg",
-      "reason": "item page marks the work as copyrighted (cc by-sa 4.0)"
-    },
-    {
-      "subject": "rust",
-      "title": "File:Corrosion activa.jpg",
-      "item_url": "https://commons.wikimedia.org/wiki/File:Corrosion_activa.jpg",
-      "reason": "item page marks the work as copyrighted (cc0)"
-    },
-    {
-      "subject": "rust",
-      "title": "File:Corrosion of a car at the seaside.jpg",
-      "item_url": "https://commons.wikimedia.org/wiki/File:Corrosion_of_a_car_at_the_seaside.jpg",
-      "reason": "item page marks the work as copyrighted (cc by-sa 4.0)"
-    },
-    {
-      "subject": "rust",
       "title": null,
       "reason": "no candidate passed both gates"
     },
     {
       "subject": "titanium",
-      "title": "File:On Metallic Titanium (IA jstor-107631).pdf",
+      "title": "File:Titanium dioxide rectifiers (IA jresv49n2p65).pdf",
       "reason": "imageinfo failed: HTTP Error 429: Too Many Requests"
     },
     {
@@ -241,7 +214,7 @@
     },
     {
       "subject": "titanium",
-      "title": "File:Determination of niobium and tantalum in titanium-base alloys (IA jresv62n2p53).pdf",
+      "title": "File:Ferro carbon titanium in steel making (IA ferrocarbontitan00titarich).pdf",
       "reason": "imageinfo failed: HTTP Error 429: Too Many Requests"
     },
     {
@@ -282,17 +255,12 @@
     },
     {
       "subject": "titanium",
-      "title": "File:Titanium standards for hydrogen content (IA jresv66An6p483).pdf",
-      "reason": "imageinfo failed: HTTP Error 429: Too Many Requests"
-    },
-    {
-      "subject": "titanium",
       "title": null,
       "reason": "no candidate passed both gates"
     },
     {
       "subject": "tempered-glass",
-      "title": "File:Polymer film applied to glass- effectiveness at mitigating damage from flying glass due to explosions (IA polymerfilmappli5779gilm).pdf",
+      "title": "File:Antiscatter treatments of glass (IA antiscattertreat175rein).pdf",
       "reason": "imageinfo failed: HTTP Error 429: Too Many Requests"
     },
     {
@@ -302,8 +270,8 @@
     },
     {
       "subject": "tempered-glass",
-      "title": "File:Shattered laminated glass in broken window in railway tram train carriage Cracks fragments visual effects patterns NORWAY Knust vindu i togvogn med laminert sikkerhetsglass sprekker sm\u00e5biter lyseffekter 2019-02-11 DSC03344.jpg",
-      "item_url": "https://commons.wikimedia.org/wiki/File:Shattered_laminated_glass_in_broken_window_in_railway_tram_train_carriage_Cracks_fragments_visual_effects_patterns_NORWAY_Knust_vindu_i_togvogn_med_laminert_sikkerhetsglass_sprekker_sm%C3%A5biter_lyseffekter_2019-02-11_DSC03344.jpg",
+      "title": "File:Shattered laminated glass in broken window in railway tram train carriage Cracks fragments pieces create visual effects patterns NORWAY Knust vindu i togvogn med laminert sikkerhetsglass sprekker sm\u00e5biter lyseffekter 2019 DSC03375.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Shattered_laminated_glass_in_broken_window_in_railway_tram_train_carriage_Cracks_fragments_pieces_create_visual_effects_patterns_NORWAY_Knust_vindu_i_togvogn_med_laminert_sikkerhetsglass_sprekker_sm%C3%A5biter_lyseffekter_2019_DSC03375.jpg",
       "reason": "item page marks the work as copyrighted (cc by-sa 4.0)"
     },
     {
@@ -314,14 +282,14 @@
     },
     {
       "subject": "tempered-glass",
-      "title": "File:Shattered laminated glass in broken window in railway tram train carriage Cracks fragments visual effects patterns NORWAY Knust vindu i togvogn med laminert sikkerhetsglass sprekker sm\u00e5biter lyseffekter 2019-02-11 DSC03351.jpg",
-      "item_url": "https://commons.wikimedia.org/wiki/File:Shattered_laminated_glass_in_broken_window_in_railway_tram_train_carriage_Cracks_fragments_visual_effects_patterns_NORWAY_Knust_vindu_i_togvogn_med_laminert_sikkerhetsglass_sprekker_sm%C3%A5biter_lyseffekter_2019-02-11_DSC03351.jpg",
+      "title": "File:Shattered laminated glass in broken window in railway tram train carriage Cracks fragments visual effects patterns NORWAY Knust vindu i togvogn med laminert sikkerhetsglass sprekker sm\u00e5biter lyseffekter 2019-02-11 DSC03344.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Shattered_laminated_glass_in_broken_window_in_railway_tram_train_carriage_Cracks_fragments_visual_effects_patterns_NORWAY_Knust_vindu_i_togvogn_med_laminert_sikkerhetsglass_sprekker_sm%C3%A5biter_lyseffekter_2019-02-11_DSC03344.jpg",
       "reason": "item page marks the work as copyrighted (cc by-sa 4.0)"
     },
     {
       "subject": "tempered-glass",
-      "title": "File:Shattered laminated glass in broken window in railway tram train carriage Cracks fragments pieces create visual effects patterns NORWAY Knust vindu i togvogn med laminert sikkerhetsglass sprekker sm\u00e5biter lyseffekter 2019 DSC03375.jpg",
-      "item_url": "https://commons.wikimedia.org/wiki/File:Shattered_laminated_glass_in_broken_window_in_railway_tram_train_carriage_Cracks_fragments_pieces_create_visual_effects_patterns_NORWAY_Knust_vindu_i_togvogn_med_laminert_sikkerhetsglass_sprekker_sm%C3%A5biter_lyseffekter_2019_DSC03375.jpg",
+      "title": "File:Shattered laminated glass in broken window in railway tram train carriage Cracks fragments visual effects patterns NORWAY Knust vindu i togvogn med laminert sikkerhetsglass sprekker sm\u00e5biter lyseffekter 2019-02-11 DSC03352.jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Shattered_laminated_glass_in_broken_window_in_railway_tram_train_carriage_Cracks_fragments_visual_effects_patterns_NORWAY_Knust_vindu_i_togvogn_med_laminert_sikkerhetsglass_sprekker_sm%C3%A5biter_lyseffekter_2019-02-11_DSC03352.jpg",
       "reason": "item page marks the work as copyrighted (cc by-sa 4.0)"
     },
     {
@@ -338,7 +306,7 @@
     },
     {
       "subject": "tempered-glass",
-      "title": "File:Glass manufacture (IA glassmanufacture00roserich).pdf",
+      "title": "File:Glass manufacture (IA glassmanufacture00rose 0).pdf",
       "reason": "imageinfo failed: HTTP Error 429: Too Many Requests"
     },
     {
@@ -360,7 +328,7 @@
     },
     {
       "subject": "crystal-structure",
-      "title": "File:Structure of tricalcium aluminate (IA jresv27n6p499).pdf",
+      "title": "File:Equipment for the production and study of crystal imperfections (IA equipmentforprod00fade).pdf",
       "reason": "imageinfo failed: HTTP Error 429: Too Many Requests"
     },
     {
@@ -377,7 +345,7 @@
     },
     {
       "subject": "crystal-structure",
-      "title": "File:Deformation banding and grain refinement in FCC materials (IA deformationbandi109459875).pdf",
+      "title": "File:X-ray diffraction patterns from foulted face-centered cubic and diamond cubic crystals. (IA xraydiffractionp00davi).pdf",
       "reason": "imageinfo failed: HTTP Error 429: Too Many Requests"
     },
     {
@@ -387,9 +355,20 @@
     },
     {
       "subject": "kevlar-aramid",
+      "title": "File:Thermal performance for fire-fighters' protective clothing. 3. simulating a TPP test for single-layered fabrics (IA thermalperforman6993kuku).pdf",
+      "reason": "imageinfo failed: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "subject": "kevlar-aramid",
       "title": "File:ATV shielding after impact test ESA313132.jpg",
       "item_url": "https://commons.wikimedia.org/wiki/File:ATV_shielding_after_impact_test_ESA313132.jpg",
       "reason": "item page marks the work as copyrighted (cc by-sa 3.0 igo)"
+    },
+    {
+      "subject": "kevlar-aramid",
+      "title": "File:Gondola, Breitling Orbiter 3 - DPLA - 163f1f735fcc13ecd31e1dd3773102a6 (page 1).jpg",
+      "item_url": "https://commons.wikimedia.org/wiki/File:Gondola,_Breitling_Orbiter_3_-_DPLA_-_163f1f735fcc13ecd31e1dd3773102a6_(page_1).jpg",
+      "reason": "item page marks the work as copyrighted (cc0)"
     },
     {
       "subject": "kevlar-aramid",
@@ -401,12 +380,6 @@
       "subject": "kevlar-aramid",
       "title": "File:Gondola, Breitling Orbiter 3 - DPLA - 163f1f735fcc13ecd31e1dd3773102a6 (page 5).jpg",
       "item_url": "https://commons.wikimedia.org/wiki/File:Gondola,_Breitling_Orbiter_3_-_DPLA_-_163f1f735fcc13ecd31e1dd3773102a6_(page_5).jpg",
-      "reason": "item page marks the work as copyrighted (cc0)"
-    },
-    {
-      "subject": "kevlar-aramid",
-      "title": "File:Gondola, Breitling Orbiter 3 - DPLA - 163f1f735fcc13ecd31e1dd3773102a6 (page 1).jpg",
-      "item_url": "https://commons.wikimedia.org/wiki/File:Gondola,_Breitling_Orbiter_3_-_DPLA_-_163f1f735fcc13ecd31e1dd3773102a6_(page_1).jpg",
       "reason": "item page marks the work as copyrighted (cc0)"
     },
     {
