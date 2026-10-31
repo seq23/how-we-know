@@ -1200,75 +1200,422 @@
   "unmeasured": [
     {
       "query": "how does cheese get its holes",
-      "status": "no_competition_score"
+      "status": "no_competition_score",
+      "demand_without_competition": 0.0525,
+      "meets_floor_on_free_signals": false,
+      "demand": {
+        "autocomplete_completions": 3,
+        "exact_in_autocomplete": false,
+        "corpus_breadth": 0,
+        "key_term": "hol",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "how swiss cheese gets its holes",
+          "how does cheese get made",
+          "why do cheese have holes"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-31T19:29:00.342475+00:00"
+        }
+      }
     },
     {
       "query": "why do apples turn brown",
-      "status": "no_competition_score"
+      "status": "no_competition_score",
+      "demand_without_competition": 0.21,
+      "meets_floor_on_free_signals": true,
+      "demand": {
+        "autocomplete_completions": 2,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "appl",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "why do apples turn brown",
+          "why do apples turn brown after cutting"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-31T19:29:01.398847+00:00"
+        }
+      }
     },
     {
       "query": "why do chili peppers taste hot",
-      "status": "no_competition_score"
+      "status": "no_competition_score",
+      "demand_without_competition": 0.0525,
+      "meets_floor_on_free_signals": false,
+      "demand": {
+        "autocomplete_completions": 3,
+        "exact_in_autocomplete": false,
+        "corpus_breadth": 0,
+        "key_term": "chili",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "why are chillies hot",
+          "hot peppers health benefits",
+          "why are chili peppers hot"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-31T19:29:02.448043+00:00"
+        }
+      }
     },
     {
       "query": "why do eggs turn white when cooked",
-      "status": "no_competition_score"
+      "status": "no_competition_score",
+      "demand_without_competition": 0.035,
+      "meets_floor_on_free_signals": false,
+      "demand": {
+        "autocomplete_completions": 2,
+        "exact_in_autocomplete": false,
+        "corpus_breadth": 0,
+        "key_term": "cooked",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "why boiled eggs turn black",
+          "why do eggs turn solid when cooked"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-31T19:29:03.491383+00:00"
+        }
+      }
     },
     {
       "query": "why do onions make you cry",
-      "status": "no_competition_score"
+      "status": "no_competition_score",
+      "demand_without_competition": 0.6789,
+      "meets_floor_on_free_signals": true,
+      "demand": {
+        "autocomplete_completions": 7,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 14,
+        "key_term": "cry",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 14,
+        "sample_completions": [
+          "why do onions make you cry",
+          "why do onions make you cry zack d films",
+          "why do onions make you cry aumsum",
+          "why do onions make you cry muppets",
+          "why do onions make us cry"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-31T19:29:04.519044+00:00"
+        }
+      }
     },
     {
       "query": "why does bread go stale",
-      "status": "no_competition_score"
+      "status": "no_competition_score",
+      "demand_without_competition": 0.21,
+      "meets_floor_on_free_signals": true,
+      "demand": {
+        "autocomplete_completions": 2,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "stale",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "why does bread go stale",
+          "why does bread get moldy"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-31T19:29:05.560933+00:00"
+        }
+      }
     },
     {
       "query": "why does cheese melt",
-      "status": "no_competition_score"
+      "status": "no_competition_score",
+      "demand_without_competition": 0.21,
+      "meets_floor_on_free_signals": true,
+      "demand": {
+        "autocomplete_completions": 2,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "melt",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 9,
+        "sample_completions": [
+          "why does cheese melt",
+          "does cheddar cheese melt"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-31T19:29:06.633467+00:00"
+        }
+      }
     },
     {
       "query": "why does chocolate melt",
-      "status": "no_competition_score"
+      "status": "no_competition_score",
+      "demand_without_competition": 0.5518,
+      "meets_floor_on_free_signals": true,
+      "demand": {
+        "autocomplete_completions": 3,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 9,
+        "key_term": "melt",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 9,
+        "sample_completions": [
+          "why does chocolate melt",
+          "why are my chocolate melts so thick",
+          "how can chocolate melt"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-31T19:29:07.656204+00:00"
+        }
+      }
     },
     {
       "query": "why does coffee taste bitter",
-      "status": "no_competition_score"
+      "status": "no_competition_score",
+      "demand_without_competition": 0.2975,
+      "meets_floor_on_free_signals": true,
+      "demand": {
+        "autocomplete_completions": 7,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "bitter",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "why does coffee taste bitter",
+          "why does coffee taste bad",
+          "why does my coffee taste bad",
+          "why does my coffee taste sour",
+          "why coffee taste bitter"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-31T19:29:08.703536+00:00"
+        }
+      }
     },
     {
       "query": "why does garlic smell so strong",
-      "status": "no_competition_score"
+      "status": "no_competition_score",
+      "demand_without_competition": 0.0,
+      "meets_floor_on_free_signals": false,
+      "demand": {
+        "autocomplete_completions": 0,
+        "exact_in_autocomplete": false,
+        "corpus_breadth": 0,
+        "key_term": "smell",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-31T19:29:09.751543+00:00"
+        }
+      }
     },
     {
       "query": "why does honey never spoil",
-      "status": "no_competition_score"
+      "status": "no_competition_score",
+      "demand_without_competition": 0.2275,
+      "meets_floor_on_free_signals": true,
+      "demand": {
+        "autocomplete_completions": 3,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "never",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "why does honey never spoil",
+          "why honey never spoils",
+          "why does honey never go bad"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-31T19:29:10.765975+00:00"
+        }
+      }
     },
     {
       "query": "why does ice cream melt so fast",
-      "status": "no_competition_score"
+      "status": "no_competition_score",
+      "demand_without_competition": 0.0,
+      "meets_floor_on_free_signals": false,
+      "demand": {
+        "autocomplete_completions": 0,
+        "exact_in_autocomplete": false,
+        "corpus_breadth": 0,
+        "key_term": "fast",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-31T19:29:11.823996+00:00"
+        }
+      }
     },
     {
       "query": "why does milk curdle",
-      "status": "no_competition_score"
+      "status": "no_competition_score",
+      "demand_without_competition": 0.1925,
+      "meets_floor_on_free_signals": true,
+      "demand": {
+        "autocomplete_completions": 1,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "curdle",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "why does milk curdle"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-31T19:29:12.854109+00:00"
+        }
+      }
     },
     {
       "query": "why does pasta water get starchy",
-      "status": "no_competition_score"
+      "status": "no_competition_score",
+      "demand_without_competition": 0.035,
+      "meets_floor_on_free_signals": false,
+      "demand": {
+        "autocomplete_completions": 2,
+        "exact_in_autocomplete": false,
+        "corpus_breadth": 0,
+        "key_term": "starchy",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "what does pasta water do",
+          "how to drain pasta water"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-31T19:29:13.887808+00:00"
+        }
+      }
     },
     {
       "query": "why does popcorn pop",
-      "status": "no_competition_score"
+      "status": "no_competition_score",
+      "demand_without_competition": 0.315,
+      "meets_floor_on_free_signals": true,
+      "demand": {
+        "autocomplete_completions": 8,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "pop",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "why does popcorn pop",
+          "why does popcorn pop video",
+          "why does popcorn pop scishow",
+          "why does popcorn pop jenny hoyos",
+          "why does popcorn pop aumsum"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-31T19:29:14.916378+00:00"
+        }
+      }
     },
     {
       "query": "why does salt make food taste better",
-      "status": "no_competition_score"
+      "status": "no_competition_score",
+      "demand_without_competition": 0.1925,
+      "meets_floor_on_free_signals": true,
+      "demand": {
+        "autocomplete_completions": 1,
+        "exact_in_autocomplete": true,
+        "corpus_breadth": 0,
+        "key_term": "better",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "why does salt make food taste better"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-31T19:29:15.947628+00:00"
+        }
+      }
     },
     {
       "query": "why does seared meat taste good",
-      "status": "no_competition_score"
+      "status": "no_competition_score",
+      "demand_without_competition": 0.035,
+      "meets_floor_on_free_signals": false,
+      "demand": {
+        "autocomplete_completions": 2,
+        "exact_in_autocomplete": false,
+        "corpus_breadth": 0,
+        "key_term": "good",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "why does meat taste so good",
+          "why steak can be eaten rare"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-31T19:29:16.977191+00:00"
+        }
+      }
     },
     {
       "query": "why does sourdough taste sour",
-      "status": "no_competition_score"
+      "status": "no_competition_score",
+      "demand_without_competition": 0.035,
+      "meets_floor_on_free_signals": false,
+      "demand": {
+        "autocomplete_completions": 2,
+        "exact_in_autocomplete": false,
+        "corpus_breadth": 0,
+        "key_term": "sour",
+        "key_term_completions": 10,
+        "key_term_corpus_breadth": 0,
+        "sample_completions": [
+          "why is sourdough sour",
+          "what does sourdough taste like"
+        ],
+        "provenance": {
+          "endpoint": "https://suggestqueries.google.com/complete/search",
+          "surface": "youtube_autocomplete",
+          "fetched_utc": "2026-10-31T19:29:18.009810+00:00"
+        }
+      }
     }
   ],
   "parts_of_episodes": [
@@ -1565,6 +1912,17 @@
     "why does seared meat taste good",
     "why does chocolate melt"
   ],
-  "meets_floor_on_free_signals": [],
+  "meets_floor_on_free_signals": [
+    "why do apples turn brown",
+    "why do onions make you cry",
+    "why does bread go stale",
+    "why does cheese melt",
+    "why does chocolate melt",
+    "why does coffee taste bitter",
+    "why does honey never spoil",
+    "why does milk curdle",
+    "why does popcorn pop",
+    "why does salt make food taste better"
+  ],
   "queue_length": 14
 }

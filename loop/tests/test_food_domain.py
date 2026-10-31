@@ -213,6 +213,36 @@ check(po["meets_floor_on_free_signals"] == [r["query"] for r in po["unmeasured"]
       "the floor list is derived from the rows, not typed")
 import publish_order_domain as POD                             # noqa: E402
 seeded = [r["query"] for r in POD.seed_questions(FOOD)]
+
+# THE WRITER, not only the file (2026-10-31, run 41216027220): the Saturday
+# score lane's score_queries() wrote unmeasured rows as {"query", "status"}
+# and the checks above went red on committed data. Drive it with one scored and
+# one unscored question (competition stubbed from the real measured file, the
+# free probe stubbed) and require the unscored row to carry both fields.
+import tempfile                                                # noqa: E402
+_comp = json.loads((ROOT / "research" / "competition_food_science.json").read_text())
+_ok = next(r for r in _comp["results"] if r["status"] == "ok")
+_tmp = tempfile.NamedTemporaryFile("w", suffix=".json", delete=False)
+json.dump(dict(_comp, results=[_ok]), _tmp)
+_tmp.close()
+_probe = {"autocomplete_completions": 10, "exact_in_autocomplete": True,
+          "corpus_breadth": 5, "key_term": "zz", "key_term_completions": 3,
+          "key_term_corpus_breadth": 5, "sample_completions": [],
+          "provenance": {"endpoint": "stub", "surface": "stub", "fetched_utc": "stub"}}
+_saved = POD.ensure_competition, POD.demand_probe
+POD.ensure_competition = lambda *a, **k: _tmp.name
+POD.demand_probe = lambda q, ct, pause: dict(_probe)
+try:
+    _rows, _un = POD.score_queries(FOOD, [_ok["query"], "why is zz unscored"], 0, 0)
+finally:
+    POD.ensure_competition, POD.demand_probe = _saved
+    os.unlink(_tmp.name)
+check(len(_rows) == 1 and [u["query"] for u in _un] == ["why is zz unscored"]
+      and all(isinstance(u.get("demand_without_competition"), float)
+              and u.get("meets_floor_on_free_signals")
+              == (u["demand_without_competition"] >= POD.DEMAND_FLOOR)
+              for u in _un),
+      f"score_queries() records free demand and the floor verdict on every unmeasured row: {_un}")
 check(seeded[:3] == po["first_video"], "the seeded questions lead with the first video's three")
 
 # ------------------------------------------------------------------ 5. scripts
