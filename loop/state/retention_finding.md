@@ -1,6 +1,6 @@
 # Retention checkpoint
 
-**2m15s average view duration** across 28 measured video(s), against a 146.0s floor. That is 23.1% of each video's own measured duration (27 of 28 measured).
+**2m11s average view duration** across 32 measured video(s), against a 146.0s floor. That is 22.2% of each video's own measured duration (31 of 32 measured).
 
 
 ## What the loop is doing about it
@@ -11,4 +11,4 @@ Measurement: stake-then-payoff vs pre-rule by average view duration, compared on
 
 | opening | measured videos | average view duration |
 |---|---|---|
-| pre-rule | 29 | 130.6s |
+| pre-rule | 33 | 127.4s |
