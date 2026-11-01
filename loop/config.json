@@ -30,10 +30,10 @@
     "shorts_floor": 4,
     "rotation": {
       "weekdays": {
-        "mon": "space-astronomy",
+        "mon": "deep-sea-ocean-science",
         "tue": "materials-and-manufacturing",
         "wed": "food-science",
-        "thu": "space-astronomy",
+        "thu": "deep-sea-ocean-science",
         "fri": "materials-and-manufacturing",
         "sat": "food-science",
         "sun": null
@@ -168,9 +168,9 @@
     "taxonomy_file": "research/proposed-taxonomy.json",
     "taxonomy_note": "The ONLY source of domain names. Nothing in this repo may name a domain absent from ranked_domains; loop/domains.py refuses one.",
     "allocation": {
+      "deep-sea-ocean-science": 2,
       "materials-and-manufacturing": 2,
-      "food-science": 2,
-      "space-astronomy": 2
+      "food-science": 2
     },
     "allocation_note": "Weekly long-form slots per domain AT THE CADENCE CEILING (cadence.ceiling). The live weekly split is derived from cadence.videos_per_week by loop/domains.py live_slots(), largest share first, so there is ONE list and the split cannot drift from the cadence. At today's 2/week that is deep sea 2, materials 0; at the owner's 4/week target it is 2 and 2. The monthly review may move at most ONE ceiling slot a month, from measured evidence, and never to zero - a domain is retired on queue decay, not on one bad month.",
     "min_episodes_to_judge": 8,

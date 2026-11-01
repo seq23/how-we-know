@@ -648,6 +648,62 @@ def reallocate(cfg: dict, per_domain: dict[str, dict]) -> dict:
 
 # ----------------------------------------------------------- niche lifecycle
 
+def onboarding_gaps(name: str, cfg: dict) -> list[str]:
+    """What `name` still lacks before it may hold a weekly slot.
+
+    1 Nov 2026: the monthly review promoted space-astronomy (next in the
+    taxonomy) into the allocation the moment deep sea's queue decayed. Nothing
+    about it existed yet - no tags, no branding, no playlist, no sources, no
+    harvester, no lane that authors or renders it - so every domain-keyed
+    consumer refused it at once and main went red in three workflows. Ranking
+    says WHICH domain is next; this says whether it can run at all.
+
+    Each line asks the consumer that would refuse the domain, through that
+    consumer's own data, so there is no second list to drift. Empty = ready.
+    """
+    gaps: list[str] = []
+    disc = ((cfg.get("discovery") or {}).get("domains") or {}).get(name) or {}
+    for k in ("tags", "hashtags"):
+        if not disc.get(k):
+            gaps.append(f"loop/config.json discovery.domains has no `{k}`")
+    if not ((cfg.get("domains") or {}).get("publish_days") or {}).get(name):
+        gaps.append("loop/config.json domains.publish_days has no entry")
+
+    import channel_branding as _cb                         # noqa: PLC0415
+    e = ((_cb.spec().get("domains") or {}).get(name)) or {}
+    if not e.get("display") or not e.get("keywords"):
+        gaps.append("channel/branding/branding.json has no display/keywords")
+
+    import handoff as _ho                                  # noqa: PLC0415
+    if name not in _ho.PLAYLIST_TITLES:
+        gaps.append("loop/handoff.py PLAYLIST_TITLES has no playlist title")
+
+    tax = _read_json_default(ROOT / "pov" / "topic-taxonomy.json")
+    if not (tax.get("admitted_domain_ids") or {}).get(name):
+        gaps.append("pov/topic-taxonomy.json admitted_domain_ids has no entry")
+
+    import domain_sources as _ds                           # noqa: PLC0415
+    if len(_ds.ALLOWLIST.get(name) or []) < 3:
+        gaps.append("loop/domain_sources.py ALLOWLIST has fewer than 3 sources")
+
+    import footage_lane as _fl                             # noqa: PLC0415
+    probe = {**cfg, "domains": {**(cfg.get("domains") or {}),
+                                "allocation": {name: 1}}}
+    if _fl.harvesters_for(probe)[1]:
+        gaps.append("no research/imagery*.py declares a scheduled HARVESTER")
+
+    import lanes as _ln                                    # noqa: PLC0415
+    for need in ("author", "render"):
+        if not any(x.get("makes") == need and name in (x.get("domains") or [])
+                   for x in _ln.LANES.values()):
+            gaps.append(f"no scheduled lane in loop/lanes.py {need}s it")
+
+    if not any(domain_of_script(p) == name for p in script_paths()):
+        gaps.append("no script on disk carries it (scripts/ or its sample "
+                    "drafts), so its tags cannot be proved against a payload")
+    return gaps
+
+
 def lifecycle(cfg: dict, per_domain: dict[str, dict],
               published_slugs: list[str] | None = None) -> dict:
     """RETIRE a decayed domain and PROMOTE the next-ranked one into its slots.
@@ -706,7 +762,34 @@ def lifecycle(cfg: dict, per_domain: dict[str, dict],
     # Deterministic: the weakest holder of viewers among the decayed domains,
     # ties broken by name so two runs of the same month agree.
     retire = min(ready, key=lambda d: ((per_domain[d].get("avd_s") or 0.0), d))
-    promote = next_unused(list(alloc))
+    # The next-ranked domain that can actually run. A higher-ranked one that
+    # is not onboarded is passed over by name, never promoted into a red main.
+    skipped: dict[str, list[str]] = {}
+    promote = None
+    active = list(alloc)
+    while (cand := next_unused(active)):
+        gaps = onboarding_gaps(cand, cfg)
+        if not gaps:
+            promote = cand
+            break
+        skipped[cand] = gaps
+        active.append(cand)
+    if not promote and skipped:
+        first = next(iter(skipped))
+        return {
+            "applied": False, "allocation": alloc,
+            "stop": "REPLACEMENT_NOT_ONBOARDED",
+            "why": (f"{retire} has decayed past the queue floor with "
+                    f"{per_domain[retire]['measured']} measured episode(s). "
+                    f"The next-ranked domain, {first}, is not onboarded: "
+                    f"{'; '.join(skipped[first])}. No other unused domain is "
+                    f"onboarded either, so the allocation is held and "
+                    f"{retire} keeps its slots until one is. Promoting a "
+                    f"domain nothing can tag, brand, source, author or render "
+                    f"publishes nothing and turns every lane red."),
+            "retire_candidates": ready,
+            "not_onboarded": skipped,
+        }
     if not promote:
         return {
             "applied": False, "allocation": alloc,
@@ -725,6 +808,7 @@ def lifecycle(cfg: dict, per_domain: dict[str, dict],
     return {
         "applied": True, "allocation": new, "from": alloc,
         "retired": retire, "promoted": promote,
+        "passed_over": skipped,
         "moved": {"from": retire, "to": promote, "slots": alloc[retire]},
         "why": (f"{retire}'s scored queue has decayed to "
                 f"{queue_depth().get(retire, 0)} topic(s), below the "

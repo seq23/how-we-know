@@ -27,7 +27,7 @@
     },
     {
       "key": "domains.allocation",
-      "applied": true,
+      "applied": false,
       "from": {
         "deep-sea-ocean-science": 2,
         "materials-and-manufacturing": 2,
@@ -40,7 +40,9 @@
       },
       "why": "deep-sea-ocean-science's scored queue has decayed to 1 topic(s), below the 4 floor, after 17 measured episode(s). Its 2 weekly slot(s) pass to space-astronomy, the next-ranked domain in research/proposed-taxonomy.json (demand 0.7379). Retirement is decided by queue decay, never by one month of retention.",
       "month": "2026-11",
-      "at": "2026-11-01T08:19:37.403719+00:00"
+      "at": "2026-11-01T08:19:37.403719+00:00",
+      "blocked_by": "REPLACEMENT_NOT_ONBOARDED",
+      "reverted": "2026-11-01: undone by hand. space-astronomy was promoted with no tags, branding, playlist, sources, harvester or lanes, and every domain-keyed lane refused it (main red in three workflows). loop/domains.lifecycle() now promotes only a domain onboarding_gaps() finds ready; deep-sea-ocean-science keeps its slots until one is."
     }
   ]
 }
