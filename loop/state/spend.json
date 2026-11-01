@@ -3112,10 +3112,219 @@
       "completion_tokens": 7246,
       "total_tokens": 16903,
       "cost_usd": 0
+    },
+    {
+      "at": "2026-11-01T22:09:37+00:00",
+      "slug": "how-do-scientists-know-the-layers-of-the-earth",
+      "model": "claude-subscription/opus",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 3948,
+      "completion_tokens": 8500,
+      "total_tokens": 12448,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-11-01T22:10:15+00:00",
+      "slug": "how-do-scientists-know-the-layers-of-the-earth",
+      "model": "claude-subscription/opus",
+      "attempt": 2,
+      "accepted": true,
+      "prompt_tokens": 8908,
+      "completion_tokens": 5310,
+      "total_tokens": 14218,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-11-01T22:13:53+00:00",
+      "slug": "are-sea-pigs-real",
+      "model": "claude-subscription/opus",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 3868,
+      "completion_tokens": 16117,
+      "total_tokens": 19985,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-11-01T22:14:33+00:00",
+      "slug": "are-sea-pigs-real",
+      "model": "claude-subscription/opus",
+      "attempt": 2,
+      "accepted": true,
+      "prompt_tokens": 9085,
+      "completion_tokens": 5562,
+      "total_tokens": 14647,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-11-01T22:18:20+00:00",
+      "slug": "what-does-a-sea-pig-look-like",
+      "model": "claude-subscription/opus",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 3884,
+      "completion_tokens": 17905,
+      "total_tokens": 21789,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-11-01T22:18:57+00:00",
+      "slug": "what-does-a-sea-pig-look-like",
+      "model": "claude-subscription/opus",
+      "attempt": 2,
+      "accepted": true,
+      "prompt_tokens": 8748,
+      "completion_tokens": 5332,
+      "total_tokens": 14080,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-11-01T22:22:17+00:00",
+      "slug": "is-damascus-steel-stronger",
+      "model": "claude-subscription/opus",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 3783,
+      "completion_tokens": 14849,
+      "total_tokens": 18632,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-11-01T22:22:54+00:00",
+      "slug": "is-damascus-steel-stronger",
+      "model": "claude-subscription/opus",
+      "attempt": 2,
+      "accepted": false,
+      "prompt_tokens": 8653,
+      "completion_tokens": 5149,
+      "total_tokens": 13802,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-11-01T22:23:32+00:00",
+      "slug": "is-damascus-steel-stronger",
+      "model": "claude-subscription/opus",
+      "attempt": 3,
+      "accepted": true,
+      "prompt_tokens": 13526,
+      "completion_tokens": 5234,
+      "total_tokens": 18760,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-11-01T22:26:57+00:00",
+      "slug": "is-diamond-stronger-than-metal",
+      "model": "claude-subscription/opus",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 3724,
+      "completion_tokens": 15340,
+      "total_tokens": 19064,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-11-01T22:27:38+00:00",
+      "slug": "is-diamond-stronger-than-metal",
+      "model": "claude-subscription/opus",
+      "attempt": 2,
+      "accepted": false,
+      "prompt_tokens": 8611,
+      "completion_tokens": 5524,
+      "total_tokens": 14135,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-11-01T22:28:16+00:00",
+      "slug": "is-diamond-stronger-than-metal",
+      "model": "claude-subscription/opus",
+      "attempt": 3,
+      "accepted": false,
+      "prompt_tokens": 13441,
+      "completion_tokens": 5091,
+      "total_tokens": 18532,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-11-01T22:28:50+00:00",
+      "slug": "is-diamond-stronger-than-metal",
+      "model": "claude-subscription/opus",
+      "attempt": 4,
+      "accepted": true,
+      "prompt_tokens": 18248,
+      "completion_tokens": 4892,
+      "total_tokens": 23140,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-11-01T22:32:51+00:00",
+      "slug": "how-powder-metallurgy-works",
+      "model": "claude-subscription/opus",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 3769,
+      "completion_tokens": 18216,
+      "total_tokens": 21985,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-11-01T22:33:33+00:00",
+      "slug": "how-powder-metallurgy-works",
+      "model": "claude-subscription/opus",
+      "attempt": 2,
+      "accepted": true,
+      "prompt_tokens": 8889,
+      "completion_tokens": 5806,
+      "total_tokens": 14695,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-11-01T22:36:58+00:00",
+      "slug": "why-is-glass-clear",
+      "model": "claude-subscription/opus",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 3810,
+      "completion_tokens": 14748,
+      "total_tokens": 18558,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-11-01T22:37:37+00:00",
+      "slug": "why-is-glass-clear",
+      "model": "claude-subscription/opus",
+      "attempt": 2,
+      "accepted": true,
+      "prompt_tokens": 8803,
+      "completion_tokens": 5396,
+      "total_tokens": 14199,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-11-01T22:41:06+00:00",
+      "slug": "is-titanium-stronger-than-steel",
+      "model": "claude-subscription/opus",
+      "attempt": 1,
+      "accepted": false,
+      "prompt_tokens": 3723,
+      "completion_tokens": 15672,
+      "total_tokens": 19395,
+      "cost_usd": 0
+    },
+    {
+      "at": "2026-11-01T22:41:42+00:00",
+      "slug": "is-titanium-stronger-than-steel",
+      "model": "claude-subscription/opus",
+      "attempt": 2,
+      "accepted": true,
+      "prompt_tokens": 8703,
+      "completion_tokens": 5127,
+      "total_tokens": 13830,
+      "cost_usd": 0
     }
   ],
   "total_usd": 10.175922,
-  "drafts_written": 125,
-  "average_usd_per_accepted_draft": 0.081407,
-  "updated": "2026-11-01T21:44:52+00:00"
+  "drafts_written": 133,
+  "average_usd_per_accepted_draft": 0.076511,
+  "updated": "2026-11-01T22:41:42+00:00"
 }

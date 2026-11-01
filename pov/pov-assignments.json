@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-01T21:10:08Z",
+  "generated": "2026-11-01T22:42:44Z",
   "rule": "one POV per video, no reuse, owner's own words only",
   "assignments": [
     {
@@ -591,6 +591,62 @@
       "tier": "transferable",
       "source": "matched by author",
       "line": "What was actually measured? By whom? Over what period? How big was the sample?"
+    },
+    {
+      "video": "how-do-scientists-know-the-layers-of-the-earth",
+      "pov_id": "pov-108",
+      "tier": "transferable",
+      "source": "matched by author",
+      "line": "People describe systems as if a clean interface proves the machinery underneath. Automated, when a human is rescuing it offstage. Secure, because there's a login page. Validated, because a check turned green."
+    },
+    {
+      "video": "are-sea-pigs-real",
+      "pov_id": "pov-048",
+      "tier": "transferable",
+      "source": "matched by author",
+      "line": "What was actually measured? By whom? Over what period? How big was the sample?"
+    },
+    {
+      "video": "what-does-a-sea-pig-look-like",
+      "pov_id": "pov-049",
+      "tier": "transferable",
+      "source": "matched by author",
+      "line": "Is this the original number, or has it been repeated through fifty articles that all trace back to the same study?"
+    },
+    {
+      "video": "is-damascus-steel-stronger",
+      "pov_id": "pov-056",
+      "tier": "transferable",
+      "source": "matched by author",
+      "line": "Real expertise usually sounds more precise than confident. An expert can tell you what is known, what is likely, what is disputed, and where the evidence stops."
+    },
+    {
+      "video": "is-diamond-stronger-than-metal",
+      "pov_id": "pov-057",
+      "tier": "transferable",
+      "source": "matched by author",
+      "line": "Someone performing expertise just sounds certain about everything."
+    },
+    {
+      "video": "how-powder-metallurgy-works",
+      "pov_id": "pov-050",
+      "tier": "transferable",
+      "source": "matched by author",
+      "line": "An increase of 300% sounds dramatic until you find out it went from one case to four. A precise number is not automatically a reliable number."
+    },
+    {
+      "video": "why-is-glass-clear",
+      "pov_id": "pov-106",
+      "tier": "transferable",
+      "source": "matched by author",
+      "line": "Numbers acquire authority faster than they acquire meaning. A precise figure can pass through ten articles, a slide deck and an AI answer until nobody knows who measured it or what they actually measured."
+    },
+    {
+      "video": "is-titanium-stronger-than-steel",
+      "pov_id": "pov-109",
+      "tier": "transferable",
+      "source": "matched by author",
+      "line": "The confidence usually rises as contact with the thing falls."
     }
   ]
 }
