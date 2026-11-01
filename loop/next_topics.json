@@ -1,6 +1,6 @@
 {
-  "week": "2026-W43",
-  "generated": "2026-10-25T14:01:32+00:00",
+  "week": "2026-W44",
+  "generated": "2026-11-01T11:06:02+00:00",
   "videos_per_week": 6,
   "cadence_ceiling_note": "Deliberate. Never raised to clear a backlog.",
   "selection_mode": "automatic",
@@ -11,7 +11,7 @@
       "question": "Why does chocolate taste so good?",
       "script": "scripts/why-does-chocolate-taste-so-good.md",
       "source": "authored-inventory",
-      "publish_rank": 28,
+      "publish_rank": 27,
       "front_loaded": false,
       "needs_authoring": false,
       "pov_id": "pov-095",
@@ -25,7 +25,7 @@
       "question": "Why does steak taste better seared?",
       "script": "scripts/why-does-steak-taste-better-seared.md",
       "source": "authored-inventory",
-      "publish_rank": 29,
+      "publish_rank": 28,
       "front_loaded": false,
       "needs_authoring": false,
       "pov_id": "pov-081",
@@ -39,7 +39,7 @@
       "question": "Why is my bread not rising?",
       "script": "scripts/why-is-my-bread-not-rising.md",
       "source": "authored-inventory",
-      "publish_rank": 30,
+      "publish_rank": 29,
       "front_loaded": false,
       "needs_authoring": false,
       "pov_id": "pov-096",
@@ -53,7 +53,7 @@
       "question": "How does butter get made from cream?",
       "script": "scripts/how-does-butter-get-made-from-cream.md",
       "source": "authored-inventory",
-      "publish_rank": 31,
+      "publish_rank": 30,
       "front_loaded": false,
       "needs_authoring": false,
       "pov_id": "pov-112",
@@ -67,7 +67,7 @@
       "question": "Why Does Rice Get Sticky?",
       "script": "scripts/why-does-rice-get-sticky.md",
       "source": "authored-inventory",
-      "publish_rank": 32,
+      "publish_rank": 31,
       "front_loaded": false,
       "needs_authoring": false,
       "pov_id": "pov-097",
@@ -81,7 +81,7 @@
       "question": "Why does meat need to rest after cooking?",
       "script": "scripts/why-does-meat-need-to-rest-after-cooking.md",
       "source": "authored-inventory",
-      "publish_rank": 33,
+      "publish_rank": 32,
       "front_loaded": false,
       "needs_authoring": false,
       "pov_id": "pov-098",
@@ -112,9 +112,9 @@
       "17-what-is-a-yeti-crab"
     ],
     "queued_despite_kill": [],
-    "order_entries": 62,
+    "order_entries": 63,
     "source": "research/publish_order.json",
-    "generated_at": "2026-10-24T10:09:05.339921+00:00",
+    "generated_at": "2026-10-31T15:36:11.344162+00:00",
     "generator": "research/publish_order.py",
     "status": "PRODUCTION",
     "episodes_ranked": null,
@@ -124,42 +124,45 @@
   "runway": {
     "unpublished_scripts": 13,
     "publishable": 6,
-    "scheduled_not_yet_aired": 15,
+    "scheduled_not_yet_aired": 12,
     "basis": "publish queue",
     "videos_per_week": 6,
-    "weeks_remaining": 3.5,
+    "weeks_remaining": 3.0,
     "warn_below_weeks": 4.0,
     "critical_below_weeks": 2.0,
-    "level": "warn",
+    "level": "critical",
     "by_domain": {
-      "deep-sea-ocean-science": {
-        "slots_per_week": 2,
-        "queued": 0,
-        "scheduled_ahead": 10,
-        "weeks": 5.0,
-        "level": "ok",
-        "message": "deep-sea-ocean-science: 5.0 week(s) at 2/week (0 queued, 10 already dated)"
-      },
       "materials-and-manufacturing": {
         "slots_per_week": 2,
-        "queued": 5,
-        "scheduled_ahead": 5,
-        "weeks": 5.0,
-        "level": "ok",
-        "message": "materials-and-manufacturing: 5.0 week(s) at 2/week (5 queued, 5 already dated)"
+        "queued": 4,
+        "scheduled_ahead": 4,
+        "weeks": 4.0,
+        "level": "warn",
+        "message": "materials-and-manufacturing: 4.0 week(s) at 2/week (4 queued, 4 already dated)"
       },
       "food-science": {
         "slots_per_week": 2,
-        "queued": 11,
+        "queued": 13,
         "scheduled_ahead": 0,
-        "weeks": 5.5,
+        "weeks": 6.5,
         "level": "ok",
-        "message": "food-science: 5.5 week(s) at 2/week (11 queued, 0 already dated)"
+        "message": "food-science: 6.5 week(s) at 2/week (13 queued, 0 already dated)"
+      },
+      "space-astronomy": {
+        "slots_per_week": 2,
+        "queued": 0,
+        "scheduled_ahead": 0,
+        "weeks": 0.0,
+        "level": "critical",
+        "message": "space-astronomy: 0.0 week(s) at 2/week (0 queued, 0 already dated)"
       }
     },
-    "short_domains": [],
+    "short_domains": [
+      "materials-and-manufacturing",
+      "space-astronomy"
+    ],
     "never_go_dark": true,
-    "message": "RUNWAY WARNING: only 3.5 weeks of queue left at 6/week - 6 publishable episode(s) of 13 on disk. Act now, not later: the authoring lane needs lead time and its human fallback needs more. By domain: deep-sea-ocean-science: 5.0 week(s) at 2/week (0 queued, 10 already dated); materials-and-manufacturing: 5.0 week(s) at 2/week (5 queued, 5 already dated); food-science: 5.5 week(s) at 2/week (11 queued, 0 already dated)."
+    "message": "RUNWAY CRITICAL: 3.0 weeks left at 6/week - 6 publishable episode(s). The channel goes dark within the month unless topics are added. By domain: materials-and-manufacturing: 4.0 week(s) at 2/week (4 queued, 4 already dated); food-science: 6.5 week(s) at 2/week (13 queued, 0 already dated); space-astronomy: 0.0 week(s) at 2/week (0 queued, 0 already dated)."
   },
   "gate": {
     "authority": "pov/topic-taxonomy.json",

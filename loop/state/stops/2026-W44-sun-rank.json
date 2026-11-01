@@ -1,0 +1,72 @@
+{
+  "stage": "sun-rank",
+  "week": "2026-W44",
+  "at": "2026-11-01T11:06:02+00:00",
+  "code": "RUNWAY_CRITICAL",
+  "message": "RUNWAY CRITICAL: 3.0 weeks left at 6/week - 6 publishable episode(s). The channel goes dark within the month unless topics are added. By domain: materials-and-manufacturing: 4.0 week(s) at 2/week (4 queued, 4 already dated); food-science: 6.5 week(s) at 2/week (13 queued, 0 already dated); space-astronomy: 0.0 week(s) at 2/week (0 queued, 0 already dated).",
+  "detail": {
+    "unpublished_scripts": 13,
+    "publishable": 6,
+    "scheduled_not_yet_aired": 12,
+    "basis": "publish queue",
+    "videos_per_week": 6,
+    "weeks_remaining": 3.0,
+    "warn_below_weeks": 4.0,
+    "critical_below_weeks": 2.0,
+    "level": "critical",
+    "by_domain": {
+      "materials-and-manufacturing": {
+        "slots_per_week": 2,
+        "queued": 4,
+        "scheduled_ahead": 4,
+        "weeks": 4.0,
+        "level": "warn",
+        "message": "materials-and-manufacturing: 4.0 week(s) at 2/week (4 queued, 4 already dated)"
+      },
+      "food-science": {
+        "slots_per_week": 2,
+        "queued": 13,
+        "scheduled_ahead": 0,
+        "weeks": 6.5,
+        "level": "ok",
+        "message": "food-science: 6.5 week(s) at 2/week (13 queued, 0 already dated)"
+      },
+      "space-astronomy": {
+        "slots_per_week": 2,
+        "queued": 0,
+        "scheduled_ahead": 0,
+        "weeks": 0.0,
+        "level": "critical",
+        "message": "space-astronomy: 0.0 week(s) at 2/week (0 queued, 0 already dated)"
+      }
+    },
+    "short_domains": [
+      "materials-and-manufacturing",
+      "space-astronomy"
+    ],
+    "never_go_dark": true,
+    "message": "RUNWAY CRITICAL: 3.0 weeks left at 6/week - 6 publishable episode(s). The channel goes dark within the month unless topics are added. By domain: materials-and-manufacturing: 4.0 week(s) at 2/week (4 queued, 4 already dated); food-science: 6.5 week(s) at 2/week (13 queued, 0 already dated); space-astronomy: 0.0 week(s) at 2/week (0 queued, 0 already dated)."
+  },
+  "unblock": "Nothing to run. The loop refills runway itself: the Monday lane authors from the publish queue, the Saturday miner refills thin queues, and com.howweknow.batch narrates and renders every night at 23:00 on the Mac (bin/batch-session.sh). A warning that persists means the Mac has been asleep or shut at 23:00 - the one external host only she holds; `launchctl list | grep howweknow` and ~/Library/Logs/how-we-know/batch.log say which. The week above still ships - publishing is never halted to protect the backlog.",
+  "disposition": "needs_human",
+  "disposition_why": "'RUNWAY_CRITICAL' is classified needs_human in loop/stop_policy.json: it is a defect a person reads. 'RUNWAY_CRITICAL' did not name what it is waiting on (no held_items), so this run cannot tell a repeat from a new problem. A stop that cannot be identified is never held.",
+  "consecutive": 1,
+  "held_items": [],
+  "exit_code": 3,
+  "work_done_before_stop": [
+    "ranked 40 admitted candidates by demand; the exclusion gate refused 15",
+    "picked why-does-chocolate-taste-so-good (authored-inventory, pov pov-095)",
+    "picked why-does-steak-taste-better-seared (authored-inventory, pov pov-081)",
+    "picked why-is-my-bread-not-rising (authored-inventory, pov pov-096)",
+    "picked how-does-butter-get-made-from-cream (authored-inventory, pov pov-112)",
+    "picked why-does-rice-get-sticky (authored-inventory, pov pov-097)",
+    "picked why-does-meat-need-to-rest-after-cooking (authored-inventory, pov pov-098)",
+    "wrote loop/next_topics.json - 6 picked, 0 to author"
+  ],
+  "notes": [
+    "cadence: configured default (6/week)",
+    "publish order: 6 ranked, 3 unranked, from research/publish_order.json",
+    "3 unpublished script(s) are not in the ranking; they queue AFTER every ranked entry, never promoted to the front",
+    "runway: RUNWAY CRITICAL: 3.0 weeks left at 6/week - 6 publishable episode(s). The channel goes dark within the month unless topics are added. By domain: materials-and-manufacturing: 4.0 week(s) at 2/week (4 queued, 4 already dated); food-science: 6.5 week(s) at 2/week (13 queued, 0 already dated); space-astronomy: 0.0 week(s) at 2/week (0 queued, 0 already dated)."
+  ]
+}
