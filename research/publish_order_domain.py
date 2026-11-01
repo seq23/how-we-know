@@ -331,7 +331,8 @@ def _screen(rows: list, seed_tokens: set, limit: int,
         ch = TI.names_other_channel(q)
         if ch:
             killed.append({"query": q, "killed_by": "OTHER_CHANNEL",
-                           "rule": "names another channel", "matched": ch})
+                           "rule": "names another channel, show or game",
+                           "matched": ch})
             continue
         # THE SAME QUESTION AS AN EPISODE ALREADY MADE, IN OTHER WORDS. The
         # slug check above only sees an exact slug, and the deep-sea
@@ -539,6 +540,10 @@ def parse_seeds(text: str, known: list) -> list:
     new: list = []
     for line in text.splitlines():
         s = _clean_seed(line)
+        # A grown seed that names a game, show or channel ("brine pool
+        # exotic") only mines that game's autocomplete: never a seed.
+        if s and TI.names_other_channel(s):
+            continue
         if s and s not in known_set and s not in new:
             new.append(s)
         if len(new) >= GROW_SEEDS_PER_RUN:
@@ -850,6 +855,108 @@ def unmeasured_row(query: str, d: dict) -> dict:
             "demand": d}
 
 
+# ─── RELEVANCE: THE DOMAIN'S OWN DEFINITION DECIDES (2026-11-01) ───────────
+# Grown seeds (above) widened the miner's reach, and the screen's vocabulary
+# test is token overlap: "how deep are pools" shares "deep"/"pool" with deep
+# sea ("brine pool" was a grown seed) and passed the gate into the queue,
+# where the Monday lane authored it. Overlap cannot tell a swimming pool from
+# a brine pool, so every candidate that survives the screen is put, in ONE
+# batch, to the $0 route (loop/llm_router.py) against the domain's admitted
+# definition (pov/topic-taxonomy.json admitted_domain_ids). Cheap
+# deterministic refusals run first (topic_identity.names_other_channel: games,
+# shows, channels, game-item phrasing), so a refused row never costs a token.
+# Refuse on doubt: a question the model leaves unanswered is refused. No
+# route at all is RELEVANCE_UNCHECKED, a named stop that writes no queue -
+# last week's queue stands and the next Saturday retries.
+RELEVANCE_MARKER = "RELEVANCE_UNCHECKED"
+TOPIC_TAXONOMY = os.path.join(ROOT, "pov", "topic-taxonomy.json")
+
+
+class RelevanceUnchecked(Exception):
+    """The free route could not judge relevance; nothing is admitted."""
+
+
+def domain_definition(domain: str) -> str:
+    """The domain's admitted definition, in the owner's taxonomy's words."""
+    try:
+        with open(TOPIC_TAXONOMY, encoding="utf-8") as fh:
+            ids = json.load(fh).get("admitted_domain_ids") or {}
+    except (OSError, ValueError):
+        ids = {}
+    return ids.get(domain) or domain.replace("-", " ")
+
+
+def relevance_prompt(domain: str, queries: list) -> str:
+    lines = "\n".join(f"{i}. {q}" for i, q in enumerate(queries, 1))
+    return (
+        f"A science YouTube channel's series covers exactly this subject: "
+        f"\"{domain_definition(domain)}\".\n"
+        f"For each numbered search query below, answer whether a viewer "
+        f"typing it wants a science explanation squarely inside that "
+        f"subject. A question about how something inside the subject "
+        f"behaves, feels, is made or why it has a property counts as yes. "
+        f"Answer no when the query is about a video game, TV show, "
+        f"film, song or other pop culture; asks how to obtain or unlock an "
+        f"item; or only shares a word with the subject but means something "
+        f"else (a swimming pool is not a brine pool; the layers of the earth "
+        f"are geology, not the ocean).\n"
+        f"Reply with one line per query, exactly: <number>. yes  or  "
+        f"<number>. no - <short reason>. Nothing else.\n\n{lines}")
+
+
+def relevance_gate(domain: str, queries: list) -> tuple[list, list]:
+    """(kept, refused) for `queries`, in order. Refused rows carry
+    killed_by OFF_DOMAIN_RELEVANCE / OTHER_CHANNEL and why. Raises
+    RelevanceUnchecked when the $0 route gives no usable verdict at all."""
+    refused, ask = [], []
+    for q in queries:
+        ch = TI.names_other_channel(q)
+        if ch:
+            refused.append({"query": q, "killed_by": "OTHER_CHANNEL",
+                            "rule": "names another channel, show or game",
+                            "matched": ch})
+        else:
+            ask.append(q)
+    if not ask:
+        return [], refused
+    sys.path.insert(0, os.path.join(ROOT, "loop"))
+    import llm_router                                       # noqa: PLC0415
+    try:
+        resp = llm_router.complete(
+            [{"role": "user", "content": relevance_prompt(domain, ask)}],
+            os.environ.get("OPENROUTER_API_KEY", ""), timeout=180,
+            temperature=0.0)
+    except Exception as e:                                  # noqa: BLE001
+        raise RelevanceUnchecked(str(e)[:200]) from e
+    text = (((resp.get("choices") or [{}])[0].get("message") or {})
+            .get("content") or "")
+    verdict: dict = {}
+    for line in text.splitlines():
+        m = re.match(r"^\s*\**\s*(\d+)\s*[.):\-]\s*\**\s*(yes|no)\b\W*(.*)$",
+                     line.strip(), re.I)
+        if m and 1 <= int(m.group(1)) <= len(ask):
+            verdict.setdefault(int(m.group(1)),
+                               (m.group(2).lower() == "yes",
+                                m.group(3).strip()[:160]))
+    if not verdict:
+        raise RelevanceUnchecked(
+            f"{resp.get('model_used') or 'the free route'} answered with no "
+            f"usable verdict")
+    model = str(resp.get("model_used") or "?")
+    kept = []
+    for i, q in enumerate(ask, 1):
+        ok, why = verdict.get(i, (False, "no verdict given; refused on doubt"))
+        if ok:
+            kept.append(q)
+        else:
+            refused.append({"query": q, "killed_by": "OFF_DOMAIN_RELEVANCE",
+                            "rule": f"not inside "
+                                    f"\"{domain_definition(domain)}\" "
+                                    f"({model})",
+                            "matched": why or "no"})
+    return kept, refused
+
+
 def build(domain: str, pause: float, budget: int,
           network: bool = True) -> dict:
     cands, killed_early = candidates(domain, network=network)
@@ -864,8 +971,22 @@ def build(domain: str, pause: float, budget: int,
         print(thin_stop(domain, 0, "admitted, non-duplicate candidate(s) "
                         "before the gate"), file=sys.stderr, flush=True)
         raise SystemExit(NAMED_STOP)
+    try:
+        cands, off = relevance_gate(domain, cands)
+    except RelevanceUnchecked as e:
+        print(f"NAMED STOP {RELEVANCE_MARKER}: {domain}'s candidates could "
+              f"not be judged against its definition ({e}); no queue is "
+              f"written, last week's stands, the next run retries.",
+              file=sys.stderr, flush=True)
+        raise SystemExit(NAMED_STOP)
+    killed_early = killed_early + off
+    if not cands:
+        print(thin_stop(domain, 0, "on-domain candidate(s) before the gate"),
+              file=sys.stderr, flush=True)
+        raise SystemExit(NAMED_STOP)
     print(f"{len(cands)} candidate(s) for {domain} "
-          f"({len(killed_early)} refused by exclusions before any quota spend)")
+          f"({len(killed_early)} refused by exclusions or relevance before "
+          f"any quota spend)")
 
     out_rows, unmeasured = score_queries(domain, cands, pause, budget)
 

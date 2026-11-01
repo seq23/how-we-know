@@ -91,7 +91,37 @@ OTHER_CHANNELS = (
     # "why deepu was killed by sea creatures" had passed the gate into the
     # deep-sea queue, one rebuild away from being authored.
     "deepu", "warframe",
+    # Games whose items, zones and creatures share words with this channel's
+    # subjects (2026-11-01): "how to get brine pool exotic" was authored into
+    # the deep-sea queue from a grown "brine pool" seed. A query that names
+    # the game is someone else's topic, whatever science word it carries.
+    "roblox", "fisch", "minecraft", "fortnite", "subnautica",
+    "subnautica below zero", "osrs", "runescape", "old school runescape",
+    "destiny 2", "terraria", "genshin", "genshin impact", "pokemon",
+    "zelda", "animal crossing", "stardew", "stardew valley", "sea of thieves",
+    "no man's sky", "no mans sky", "deep rock galactic", "elden ring",
+    "skyrim", "fallout", "valheim", "palworld", "ark survival", "grow a garden",
+    "blox fruits", "spongebob", "finding nemo", "finding dory", "moana",
+    "the meg", "meg 2", "stranger things",
 )
+
+# GAME-ITEM PHRASING (2026-11-01). The game is not always named: "how to get
+# brine pool exotic" names only the item. These words ask for a game's loot,
+# not a science question, and "how to obtain/unlock/farm/craft X" is a
+# player's question whatever X is. Part of names_other_channel(), so every
+# place that refuses a channel (generation, the read-time queue screen,
+# grown-seed parsing, validate.py) refuses these too: one blocker.
+GAME_PHRASING_RE = re.compile(
+    r"(?<![a-z0-9])("
+    r"loot|respawns?|spawns?|boss fight|bosses|questline|dlc|mods?|"
+    r"walkthrough|speedrun|glitch|codes|npc|xp|raid|dungeon|emotes?|"
+    r"how (?:to|do (?:i|you)|can (?:i|you)) "
+    r"(?:obtain|unlock|farm|craft|summon|tame|equip)|"
+    # "how to get <item> exotic/legendary/mythic": a rarity tier is loot.
+    # Only with get-phrasing: "why is a brine pool so exotic" is science.
+    r"how (?:to|do (?:i|you)|can (?:i|you)) get\b.*\b"
+    r"(?:exotic|legendary|mythic(?:al)?|shiny|rare)s?$"
+    r")(?![a-z0-9])", re.I)
 
 # Company and product names. Not refused -- "how are apple microchips made"
 # is a real question -- but stripped from the key, because the question is
@@ -266,8 +296,10 @@ def _fold_facts(q: str) -> str:
 
 
 def names_other_channel(q: str) -> str | None:
-    """The other channel/creator/show this topic names, or None."""
-    m = CHANNEL_RE.search(_clean(q))
+    """The other channel/creator/show/game this topic names, or its game-item
+    phrasing (GAME_PHRASING_RE), or None."""
+    c = _clean(q)
+    m = CHANNEL_RE.search(c) or GAME_PHRASING_RE.search(c)
     return m.group(1).strip() if m else None
 
 

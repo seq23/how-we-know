@@ -20,6 +20,13 @@ question is already made: the grown subjects are persisted, mined once
 (stubbed autocomplete) and their questions become candidates. It also proves a dead route grows nothing.
 Part 2 drives the real rebuild with runway ok but under target: two failing
 drafts must not stop it reaching its cap of validated scripts.
+Part 4 (2026-11-01): grown seeds let "how deep are pools" and "how to get
+brine pool exotic" into the deep-sea queue and the Monday lane authored
+both. The real build() must hand the gate only on-domain candidates: a game
+phrasing is refused before any model call, the $0 route's "no" is obeyed
+against the domain's taxonomy definition, an unanswered row is refused, no
+route at all is the RELEVANCE_UNCHECKED stop, and a grown seed naming a game
+is never kept.
 No network. Writes only to temp dirs. Hard-fails on zero items.
 """
 from __future__ import annotations
@@ -283,6 +290,66 @@ if rw["publishable"] != 2:
 if food_count != 1:
     fails.append(f"food rows the food pipeline has yet to make: {food_count}, "
                  f"want 1 (food-todo)")
+
+# ------------- 4. relevance: grown-seed junk never reaches the scored queue
+import re                                                  # noqa: E402
+
+POOLS, EXOTIC = "how deep are pools", "how to get brine pool exotic"
+SQUID, SHARK = ("what does a vampire squid look like",
+                "how deep can a goblin shark dive")
+shown: list[str] = []
+
+
+def judge(msgs, key, **kw):
+    """The $0 route, stubbed: says no to the swimming pool, gives NO verdict
+    for the goblin shark (refuse on doubt), yes to everything else."""
+    text = msgs[0]["content"]
+    shown.append(text)
+    out = []
+    for m in re.finditer(r"^(\d+)\. (.+)$", text, re.M):
+        n, q = m.groups()
+        if q == SHARK:
+            continue
+        out.append(f"{n}. no - a swimming pool" if q == POOLS else f"{n}. yes")
+    return {"choices": [{"message": {"content": "\n".join(out)}}],
+            "model_used": "stub"}
+
+
+scored: list = []
+saved = (pod.candidates, pod.score_queries, llm_router.complete)
+pod.candidates = lambda domain, **kw: ([POOLS, EXOTIC, SQUID, SHARK], [])
+pod.score_queries = lambda domain, qs, pause, budget: (
+    scored.extend(qs) or ([], []))
+llm_router.complete = judge
+try:
+    blob = quiet(pod.build, DOM, 0, 0)
+    llm_router.complete = dead
+    try:
+        quiet(pod.build, DOM, 0, 0)
+        unchecked = None
+    except SystemExit as e:
+        unchecked = e.code
+finally:
+    pod.candidates, pod.score_queries, llm_router.complete = saved
+refused = {k["query"]: k["killed_by"] for k in blob["refused_before_scoring"]}
+if scored != [SQUID]:
+    fails.append(f"the gate scored {scored}, want only [{SQUID!r}] "
+                 f"(on-domain kept; pools, game phrasing, no-verdict refused)")
+if refused.get(POOLS) != "OFF_DOMAIN_RELEVANCE":
+    fails.append(f"{POOLS!r} not refused on relevance: {refused}")
+if refused.get(EXOTIC) != "OTHER_CHANNEL" or any(EXOTIC in t for t in shown):
+    fails.append(f"{EXOTIC!r} must be refused deterministically, before the "
+                 f"model sees it: {refused}")
+if refused.get(SHARK) != "OFF_DOMAIN_RELEVANCE":
+    fails.append(f"a row the model left unanswered was not refused: {refused}")
+if not shown or "Deep sea and ocean science" not in shown[0]:
+    fails.append("the relevance prompt does not carry the domain's taxonomy "
+                 "definition")
+if unchecked != pod.NAMED_STOP:
+    fails.append(f"a dead route admitted candidates (exit {unchecked}), want "
+                 f"the RELEVANCE_UNCHECKED named stop")
+if pod.parse_seeds("fisch brine pool\nbrine pool", []) != ["brine pool"]:
+    fails.append("a grown seed naming a game was kept")
 
 print(f"examined {len(picked)} candidate(s), {len(validated)} rebuild draft(s)")
 for f in fails:

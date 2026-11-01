@@ -677,6 +677,11 @@ def score_new_domains(st: Stage) -> None:
                     "grow_seeds -> research/seeds_grown_<domain>.json) and "
                     "mines the new subjects each Saturday. The domain keeps "
                     "publishing whatever it already has queued."})
+        elif "NAMED STOP RELEVANCE_UNCHECKED" in gout:
+            # The free route could not judge relevance, so nothing new was
+            # admitted. Last week's queue stands; next Saturday retries.
+            st.note(f"{dom}: queue not rebuilt - relevance unchecked (the "
+                    f"$0 route did not answer); last week's queue stands")
         elif TRACEBACK_MARKER.search(gout):
             stops.append({
                 "domain": dom, "code": "NEW_DOMAIN_UNSCORED",
